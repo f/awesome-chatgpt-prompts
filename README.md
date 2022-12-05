@@ -1,6 +1,6 @@
 # 🧠 Awesome ChatGPT Prompts
 
-This project contains some [https://chat.openai.com/chat](ChatGPT) prompts that works well.
+This project contains some [ChatGPT](https://chat.openai.com/chat) prompts that works well.
 
 ## Act as a Linux Terminal
 
