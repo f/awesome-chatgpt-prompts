@@ -1,4 +1,4 @@
-# Awesome ChatGPT Prompts
+# 🧠 Awesome ChatGPT Prompts
 
 This project contains some [https://chat.openai.com/chat](ChatGPT) prompts that works well.
 
