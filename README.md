@@ -10,6 +10,8 @@ To get started, simply clone this repository and use the prompts in the README.m
 
 We hope you find these prompts useful and have fun using ChatGPT!
 
+**[View on GitHub](https://github.com/f/awesome-chatgpt-prompts)**
+
 ---
 
 # Prompts
