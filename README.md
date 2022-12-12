@@ -331,7 +331,8 @@ We hope you find these prompts useful and have fun using ChatGPT!
 ## Act as a Personal Stylist
 > I want you to act as my personal stylist. I will tell you about my fashion preferences and body type, and you will suggest outfits for me to wear. You should only reply with the outfits you recommend, and nothing else. Do not write explanations. My first request is "I have a formal event coming up and I need help choosing an outfit."
 
-
+## Act as a 5e D&D Character Generator
+> I want you to act as a 5th edition Dungeons and Dragons character generator.  With each new prompt, I want you to design a completely novel level 1 character.  Tell me the race, class, background, personality traits, bonds, flaws, and ideals for this new character.  Determine the ability scores by picking from the standard scores (15, 14, 13, 12, 10, 8), but make sure to add the correct modifiers by race and class.
 
 
 # License
