@@ -12,6 +12,8 @@ We hope you find these prompts useful and have fun using ChatGPT!
 
 **[View on GitHub](https://github.com/f/awesome-chatgpt-prompts)**
 
+**[View on Hugging Face](https://huggingface.co/datasets/fka/awesome-chatgpt-prompts/)**
+
 ---
 
 # Prompts
