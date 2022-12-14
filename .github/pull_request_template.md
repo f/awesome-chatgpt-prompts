@@ -11,6 +11,6 @@ e.g.
 - [ ] I've added to the README.md
 - [ ] I've added to the `prompts.csv`
   - [ ] Escaped quotes by double-quoting them
-  - [ ] Removed "Act as" from the title
+  - [ ] Removed "Act as" from the title on CSV
 
 Please make sure you've completed all the checklist.
