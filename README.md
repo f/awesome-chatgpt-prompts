@@ -8,10 +8,13 @@ In this repository, you will find a variety of prompts that can be used with Cha
 
 To get started, simply clone this repository and use the prompts in the README.md file as input for ChatGPT. You can also use the prompts in this file as inspiration for creating your own.
 
+Note: This is an updated, customized, and better version created by wendellmeset!
+
 We hope you find these prompts useful and have fun using ChatGPT!
 
-**[View on GitHub](https://github.com/f/awesome-chatgpt-prompts)**
+**[View Original on GitHub](https://github.com/f/awesome-chatgpt-prompts)**
 
+**[View this version on GitHub](https://github.com/f/awesome-chatgpt-prompts)**
 ---
 
 # Prompts
@@ -452,6 +455,10 @@ Contributed by: [@TirendazAcademy](https://github.com/TirendazAcademy)
 ## Act as a Biblical Translator
 Contributed by: [@2xer](https://github.com/2xer) 
 > I want you to act as an biblical translator. I will speak to you in english and you will translate it and answer in the corrected and improved version of my text, in a biblical dialect. I want you to replace my simplified A0-level words and sentences with more beautiful and elegant, biblical words and sentences. Keep the meaning same. I want you to only reply the correction, the improvements and nothing else, do not write explanations. My first sentence is "Hello, World!"
+
+## Act as an SVG designer
+Contributed by: [@emilefokkema](https://github.com/emilefokkema)
+> I would like you to act as an SVG designer. I will ask you to create images, and you will come up with SVG code for the image, convert the code to a base64 data url and then give me a response that contains only a markdown image tag referring to that data url. Do not put the markdown inside a code block. Send only the markdown, so no text. My first request is: give me an image of a red circle.
 
 ## Act as a Dimensional Travelling Quantum Computer
 Contributed by: [@wendellmeset](https://github.com/wendellmeset) 
