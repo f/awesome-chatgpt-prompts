@@ -25,6 +25,24 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
     <script>anchors.add();</script>
-    <script>console.log('test');</script>
+    <script>
+      document.querySelectorAll("h2[id^=act] + p + blockquote").forEach((x) => {
+        x.setAttribute('contentEditable', true);
+        const button = document.createElement('button');
+        button.style.border = '1px solid #ccc';
+        button.style.borderRadius = '3px';
+        button.style.fontSize = '1.2rem';
+        button.style.marginRight = '0.5rem';
+        button.innerHTML = '✂️';
+        button.addEventListener('click', () => {
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(x.innerText).then(() => alert('Prompt is copied, now paste this into ChatGPT.'));
+          } else {
+            alert('Your browser does not support clipboard copy. Please select the prompt and copy.')
+          }
+        });
+        x.previousElementSibling.previousElementSibling.prepend(button);
+      });
+    </script>
   </body>
 </html>
