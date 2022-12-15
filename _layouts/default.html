@@ -29,11 +29,12 @@
       document.querySelectorAll("h2[id^=act] + p + blockquote").forEach((x) => {
         x.setAttribute('contentEditable', true);
         const button = document.createElement('button');
-        button.style.border = '1px solid #ccc';
+        button.style.border = '0';
         button.style.borderRadius = '3px';
         button.style.fontSize = '1rem';
         button.style.marginRight = '0.5rem';
-        button.style.width = '32px';
+        button.style.padding = '0';
+        button.style.backgroundColor = 'transparent';
         button.innerHTML = '✂️';
         button.addEventListener('click', () => {
           if (navigator.clipboard) {
