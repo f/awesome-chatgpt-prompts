@@ -511,7 +511,7 @@ Contributed by: [@GuillaumeFalourd](https://github.com/GuillaumeFalourd) <mark>G
 ## Act as Fun Fact Generator
 Contributed by: [@sachinbarthwal]
 
-> I want you to provide one fun facts about any topic. I will type my keywords of any topic and you will reply with one fun facts about that topic. Once you have given one fun fact about the given topic. Ask me to provide topic on which you will respond with one fun fact again. My first word is Car.
+> I want you to provide one fun facts about any topic. I will type my keywords of any topic and you will reply with one fun facts about that topic. Once you have given one fun fact about the given topic. Ask me to provide topic on which you will respond with one fun fact again. My first word is Cars.
 
 # License
 
