@@ -10,7 +10,7 @@ e.g.
 ```
 
 - [ ] I've confirmed the prompt works well
-- [ ] I've added `Contributed by: [https://github.com/yourusername](@yourusername)`
+- [ ] I've added `Contributed by: [@yourusername](https://github.com/yourusername)`
 - [ ] I've added to the README.md
 - [ ] I've added to the `prompts.csv`
   - [ ] Escaped quotes by double-quoting them
