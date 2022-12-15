@@ -20,6 +20,8 @@ To find a prompt, you can either use the search function in your web browser or 
 
 <img width="436" alt="Screenshot 2022-12-14 at 14 36 30" src="https://user-images.githubusercontent.com/196477/207585322-6b8a8630-bea1-4f23-a7e3-c62b5992a226.png">
 
+> ℹ️ **NOTE:** Sometimes, some of the prompts may not be working as you expected or may be rejected by the AI. Please try again, start a new thread, or log out and log back in. If these solutions do not work, please try rewriting the prompt using your own sentences while keeping the instructions same.
+
 ---
 
 # Prompts
