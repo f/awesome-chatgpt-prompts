@@ -14,15 +14,11 @@ We hope you find these prompts useful and have fun using ChatGPT!
 
 **[View on Hugging Face](https://huggingface.co/datasets/fka/awesome-chatgpt-prompts/)**
 
-## Search Prompt
-
-To find a prompt, you can either use the search function in your web browser or open the [`prompts.csv`](https://github.com/f/awesome-chatgpt-prompts/blob/main/prompts.csv) file:
-
-<img width="436" alt="Screenshot 2022-12-14 at 14 36 30" src="https://user-images.githubusercontent.com/196477/207585322-6b8a8630-bea1-4f23-a7e3-c62b5992a226.png">
+---
 
 > ℹ️ **NOTE:** Sometimes, some of the prompts may not be working as you expected or may be rejected by the AI. Please try again, start a new thread, or log out and log back in. If these solutions do not work, please try rewriting the prompt using your own sentences while keeping the instructions same.
 
-## prompts.chat
+## Using prompts.chat
 
 [prompts.chat](https://prompts.chat) is designed to provide an enhanced UX when working with prompts. With just a few clicks, you can easily edit and copy the prompts on the site to fit your specific needs and preferences. The copy button will copy the prompt exactly as you have edited it.
 
