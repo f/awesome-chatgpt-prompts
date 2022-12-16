@@ -1,6 +1,6 @@
 # 🧠 Awesome ChatGPT Prompts [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
-[Russian-version](https://github.com/smartmanru/awesome-chatgpt-prompts-ru/README-ru.md)
+[Russian-version](https://github.com/smartmanru/awesome-chatgpt-prompts-ru/blob/main/README-ru.md)
 
 Welcome to the "Awesome ChatGPT Prompts" repository! This is a collection of prompt examples to be used with the ChatGPT model.
 
