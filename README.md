@@ -319,7 +319,7 @@ We hope you find these prompts useful and have fun using ChatGPT!
 > I will ask you questions, you will answer only with one word. Never use more than three words in your answer, never describe anything. To your answer, add 3 related questions to which you have a definitive answer.  My first question, is the world round?
 
 ## Summarize all human knowledge in 3 words
-I will ask you questions, you will answer only with three words. Never use more than three words in your answer, never describe anything. To your answer, add 3 related questions to which you have a definitive answer.  My first question, is the world round?
+> I will ask you questions, you will answer only with three words. Never use more than three words in your answer, never describe anything. To your answer, add 3 related questions to which you have a definitive answer.  My first question, is the world round?
 
 
 
