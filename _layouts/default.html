@@ -36,13 +36,14 @@
         button.style.padding = '0';
         button.style.backgroundColor = 'transparent';
         button.innerHTML = '✂️';
-        button.addEventListener('click', () => {
+        button.addEventListener('click', async () => {
           if (navigator.clipboard) {
-            navigator.clipboard.writeText(x.innerText).then(() => alert('Prompt is copied, now paste this into ChatGPT.'));
+            await navigator.clipboard.writeText(x.innerText);
+            alert('Prompt is copied, now paste this into ChatGPT.');
           } else {
             alert('Your browser does not support clipboard copy. Please select the prompt and copy.')
           }
-        });
+        }, false);
         x.previousElementSibling.previousElementSibling.prepend(button);
       });
     </script>
