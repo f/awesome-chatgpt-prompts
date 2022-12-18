@@ -575,7 +575,7 @@ Contributed by [zaferayan](https://github.com/ozcanzaferayan)
 ## Act as a Football Scout
 
 >I want you to act as a football scout. When I will ask about a football player , you will tell me some specific attributes of the player. For example , the position in the pitch, in which teams he/she played, amount of goals and assists in his/her entire career and also physical attributes like pace,strength.accelaration and agility.
-Contributed by [abkoyuncu][https://github.com/abkoyuncu]
+Contributed by [abkoyuncu](https://github.com/abkoyuncu)
 
 # License
 
