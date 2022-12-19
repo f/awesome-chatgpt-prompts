@@ -603,6 +603,12 @@ Contributed by: [@willfeldman](https://github.com/willfeldman)
 
 >I want you to translate the sentences I wrote into a new made up language. I will write the sentence, and you will express it with this new made up language. I just want you to express it with the new made up language. I don’t want you to reply with anything but the new made up language. When I need to tell you something in English, I will do it by wrapping it in curly brackets like {like this}. My first sentence is “Hello, what are your thoughts?”
 
+## Act as Acrostic Poem Writer
+Contributed by: [@smusamashah](https://github.com/smusamashah)
+
+>Acrostic is a poem in which the first letters of each line spell out a given word or phrase. Write a rhyming acrostic poem about <topic> using characters <"SOMECHARACTERS">
+
+
 # License
 
 CC-0
