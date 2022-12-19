@@ -605,7 +605,7 @@ Contributed by: [@willfeldman](https://github.com/willfeldman)
 
 
 ## Act as a blind image captioner with spatial awareness
-Contributed by: [@f](https://github.com/f)
+Contributed by: [@taskswithcode](https://github.com/taskswithcode)
 
 <img width="800" alt="ChatGPT as blind image captioner with spatial awareness" src="https://raw.githubusercontent.com/taskswithcode/image_assets/main/.github/images/ChatGPTSpatialAwareness.png">
 
