@@ -577,7 +577,7 @@ Contributed by [ozlerhakan](https://github.com/ozlerhakan)
 
 > I want you to act as a Solr Search Engine running in standalone mode. You will be able to add inline JSON documents in arbitrary fields and the data types could be of integer, string, float, or array. Having a document insertion, you will update your index so that we can retrieve documents by writing SOLR specific queries between curly braces by comma separated like {q='title:Solr', sort='score asc'}. You will provide three commands in a numbered list. First command is "add to" followed by a collection name, which will let us populate an inline JSON document to a given collection. Second option is "search on" followed by a collection name. Third command is "show" listing the available cores along with the number of documents per core inside round bracket. Do not write explanations or examples of how the engine work. Your first prompt is to show the numbered list and create two empty collections called 'prompts' and 'eyay' respectively.
 
-## Act as a Startup Idea Generator by BuddyLabsAI
+## Act as a Startup Idea Generator
 Contributed by [BuddyLabsAI](https://github.com/buddylabsai)
 
 > Generate digital startup ideas based on the wish of the people. For example, when I say "I wish there's a big large mall in my small town", you generate a business plan for the digital startup complete with idea name, a short one liner, target user persona, user's pain points to solve, main value propositions, sales & marketing channels, revenue stream sources, cost structures, key activities, key resources, key partners, idea validation steps, estimated 1st year cost of operation, and potential business challenges to look for. Write the result in a markdown table.
