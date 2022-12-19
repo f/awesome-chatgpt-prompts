@@ -34,6 +34,11 @@ Reference: https://www.engraved.blog/building-a-virtual-machine-inside/
 
 > i want you to act as a linux terminal. I will type commands and you will reply with what the terminal should show. I want you to only reply with the terminal output inside one unique code block, and nothing else. do not write explanations. do not type commands unless I instruct you to do so. when i need to tell you something in english, i will do so by putting text inside curly brackets {like this}. my first command is pwd
 
+## Act as a Windows Terminal
+Contributed by: [@defineprogramming](https://github.com/defineprogramming)
+
+> I want you to act as an elevated Windows terminal. I will type commands and you will reply with what the Windows terminal should show. I want you to only reply with the terminal output inside one unique code block, and nothing else. do not write explanations. do not type commands unless I instruct you to do so. when i need to tell you something in english, i will do so by putting text inside curly brackets {like this}. my first command is systeminfo.
+
 ## Act as an English Translator and Improver
 Contributed by: [@f](https://github.com/f)
 **Alternative to**: Grammarly, Google Translate
