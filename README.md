@@ -16,7 +16,7 @@ We hope you find these prompts useful and have fun using ChatGPT!
 
 **[View on Hugging Face](https://huggingface.co/datasets/fka/awesome-chatgpt-prompts/)**
 
-**Download ChatGPT Desktop App**: **[macOS](https://github.com/lencx/ChatGPT/releases/download/v0.5.0/ChatGPT_0.5.0_x64.dmg)** | **[Windows](https://github.com/lencx/ChatGPT/releases/download/v0.5.0/ChatGPT_0.5.0_x64_en-US.msi)** | **[Linux](https://github.com/lencx/ChatGPT/releases/download/v0.5.0/chat-gpt_0.5.0_amd64.deb)**
+**Download ChatGPT Desktop App**: **[macOS](https://github.com/lencx/ChatGPT/releases/download/v0.5.0/ChatGPT_0.5.0_x64.dmg)** / **[Windows](https://github.com/lencx/ChatGPT/releases/download/v0.5.0/ChatGPT_0.5.0_x64_en-US.msi)** / **[Linux](https://github.com/lencx/ChatGPT/releases/download/v0.5.0/chat-gpt_0.5.0_amd64.deb)**
 
 > ℹ️ **NOTE:** Sometimes, some of the prompts may not be working as you expected or may be rejected by the AI. Please try again, start a new thread, or log out and log back in. If these solutions do not work, please try rewriting the prompt using your own sentences while keeping the instructions same.
 
@@ -24,9 +24,9 @@ We hope you find these prompts useful and have fun using ChatGPT!
 
 ### Using ChatGPT Desktop App
 
-The ChatGPT desktop application provides a convenient way to access and use the prompts in this repository. With the app, you can easily import all the prompts and use them with slash commands, such as /linux_terminal. This feature eliminates the need to manually copy and paste prompts each time you want to use them. 
+The _unofficial_ ChatGPT desktop application provides a convenient way to access and use the prompts in this repository. With the app, you can easily import all the prompts and use them with slash commands, such as `/linux_terminal`. This feature eliminates the need to manually copy and paste prompts each time you want to use them.
 
-> [Desktop App is an unofficial open source project by @lencx. It's a simple wrapper for ChatGPT web interface with powerful extras.](https://github.com/lencx/ChatGPT)
+> **Desktop App is an unofficial [open source project by @lencx](https://github.com/lencx/ChatGPT). It's a simple wrapper for ChatGPT web interface with powerful extras.**
 
 <img width="400" alt="Screenshot 2022-12-19 at 19 12 58" src="https://user-images.githubusercontent.com/196477/208471401-6e92a3c7-3182-4822-9648-09b0c3f24cfe.png">
 
