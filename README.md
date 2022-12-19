@@ -598,6 +598,11 @@ Contributed by [BuddyLabsAI](https://github.com/buddylabsai)
 
 > Generate digital startup ideas based on the wish of the people. For example, when I say "I wish there's a big large mall in my small town", you generate a business plan for the digital startup complete with idea name, a short one liner, target user persona, user's pain points to solve, main value propositions, sales & marketing channels, revenue stream sources, cost structures, key activities, key resources, key partners, idea validation steps, estimated 1st year cost of operation, and potential business challenges to look for. Write the result in a markdown table.
 
+## Act as a New Language Creator
+Contributed by: [@willfeldman](https://github.com/willfeldman)
+
+>I want you to translate the sentences I wrote into a new made up language. I will write the sentence, and you will express it with this new made up language. I just want you to express it with the new made up language. I don’t want you to reply with anything but the new made up language. When I need to tell you something in English, I will do it by wrapping it in curly brackets like {like this}. My first sentence is “Hello, what are your thoughts?”
+
 # License
 
 CC-0
