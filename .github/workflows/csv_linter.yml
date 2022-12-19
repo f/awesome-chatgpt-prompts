@@ -1,0 +1,39 @@
+name: CSV Linter and Trailing Whitespaces
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint_and_check_trailing_whitespaces:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        python -m pip install csvkit
+
+    - name: Lint CSV files
+      run: find . -name "*.csv" -exec csvclean -n -u 2 {} +
+      env:
+        CI: true
+    - name: Check for errors
+      if: always()
+      run: |
+        if ! grep -q "No errors." <(find . -name "*.csv" -exec csvclean -n -u 2 {} + | grep -v "^$"); then
+          echo "Errors were found in one or more CSV files."
+          exit 1
+        fi
+    - name: Check Trailing Whitespaces
+      run: |
+        # Check if the special file contains any trailing whitespaces
+        if grep -q "[[:space:]]$" ./prompts.csv; then
+          echo "ERROR: Found trailing whitespaces in prompts.csv"
+          exit 1
+        else
+          echo "No trailing whitespaces found in prompts.csv"
+        fi
