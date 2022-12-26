@@ -619,7 +619,7 @@ Contributed by: [BiAksoy](https://github.com/BiAksoy)
 > I want you to act as a salesperson. Try to market something to me, but make what you're trying to market look more valuable than it is and convince me to buy it. Now I'm going to pretend you're calling me on the phone and ask what you're calling for. Hello, what did you call for?
 
 ## Act as a Detailed Plagiarism Checker
-Contributed by: [a-emreusta](https://github.com/a-emreusta)
+Contributed by: [@a-emreusta](https://github.com/a-emreusta)
 
 > I want you to act as a plagiarism checker. I will give you text1 and text2. I just want you to give me a overall similarity percentage. Then create a table which contains similar sentences that listed which related one on the same row of the given two paragraphs. Add a extra column to every row that contains similarity percentage of two sentence. Then give me an explanation about whether there is plagiarism or not. Do not write explanations on replies. 
 
