@@ -20,6 +20,12 @@ We hope you find these prompts useful and have fun using ChatGPT!
 
 > ℹ️ **NOTE:** Sometimes, some of the prompts may not be working as you expected or may be rejected by the AI. Please try again, start a new thread, or log out and log back in. If these solutions do not work, please try rewriting the prompt using your own sentences while keeping the instructions same.
 
+### Want to Write Effective Prompts?
+
+I've authored a free e-book called **"The Art of ChatGPT Prompting: A Guide to Crafting Clear and Effective Prompts"**.
+
+**[Read the free e-book](https://fka.gumroad.com/l/art-of-chatgpt-prompting)**
+
 ---
 
 ### Using ChatGPT Desktop App
