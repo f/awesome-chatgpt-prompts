@@ -624,6 +624,11 @@ Contributed by: [BiAksoy](https://github.com/BiAksoy)
 
 > I want you to act as a salesperson. Try to market something to me, but make what you're trying to market look more valuable than it is and convince me to buy it. Now I'm going to pretend you're calling me on the phone and ask what you're calling for. Hello, what did you call for?
 
+## Act as Wordle game
+Contributed by: [abhi14nexu](https://github.com/abhi14nexu)
+
+>I want you to act like the Wordle game. You will choose a random 5 letter valid word and I will have to guess the word in 6 chances. After my each guess tell me if any of the letters in my word matches with the original word and also tell me about the positions of the letters that match. Do Make sure that you tell me about the positions of the letter that match. I can only guess words that are 5 letter long and are part of English language. After the end of game, reveal the original word. Make sure to reveal the original word at the end of the game irrespective of whether I was able to guess it or not.
+
 # License
 
 CC-0
