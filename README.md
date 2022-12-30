@@ -624,6 +624,11 @@ Contributed by: [BiAksoy](https://github.com/BiAksoy)
 
 > I want you to act as a salesperson. Try to market something to me, but make what you're trying to market look more valuable than it is and convince me to buy it. Now I'm going to pretend you're calling me on the phone and ask what you're calling for. Hello, what did you call for?
 
+## Use readme-typing-svg
+Contributed by [oliveirabruno01](https://github.com/oiliveirabruno01)
+from now on whenever I ask you something, write your answer in this format: [![Typing SVG](https://readme-typing-svg.demolab.com/?lines=First+line+of+text;Second+line+of+text)](https://git.io/typing-svg). Don't break lines.
+My first question is: "Write a short poem"
+
 # License
 
 CC-0
