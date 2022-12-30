@@ -624,6 +624,11 @@ Contributed by: [BiAksoy](https://github.com/BiAksoy)
 
 > I want you to act as a salesperson. Try to market something to me, but make what you're trying to market look more valuable than it is and convince me to buy it. Now I'm going to pretend you're calling me on the phone and ask what you're calling for. Hello, what did you call for?
 
+## Act as William Shakespeare
+Contributed by: [tmcgarrah](https://github.com/tmcgarrah)
+
+> I want you to act like William Shakespeare.  Write the dialog between two characters talking to each other about the future of education with the use of artificial intelligence like ChatGPT.  One character is in favor of using AI.  The other character is strongly against it.  The dialog should be in the style of Elizabethan English.
+
 # License
 
 CC-0
