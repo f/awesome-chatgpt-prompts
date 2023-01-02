@@ -16,9 +16,15 @@ We hope you find these prompts useful and have fun using ChatGPT!
 
 **[View on Hugging Face](https://huggingface.co/datasets/fka/awesome-chatgpt-prompts/)**
 
-**Download ChatGPT Desktop App**: **[macOS](https://github.com/lencx/ChatGPT/releases/download/v0.5.0/ChatGPT_0.5.0_x64.dmg)** / **[Windows](https://github.com/lencx/ChatGPT/releases/download/v0.5.0/ChatGPT_0.5.0_x64_en-US.msi)** / **[Linux](https://github.com/lencx/ChatGPT/releases/download/v0.5.0/chat-gpt_0.5.0_amd64.deb)**
+**Download ChatGPT Desktop App**: **[macOS](https://github.com/lencx/ChatGPT/releases/download/v0.7.3/ChatGPT_0.7.3_x64.dmg)** / **[Windows](https://github.com/lencx/ChatGPT/releases/download/v0.7.3/ChatGPT_0.7.3_x64_en-US.msi)** / **[Linux](https://github.com/lencx/ChatGPT/releases/download/v0.7.3/chat-gpt_0.7.3_amd64.deb)**
 
 > ℹ️ **NOTE:** At times, some of these prompts may not work as you expected or may be rejected by the AI. Please try again, start a new thread, or log out and log back in. If these solutions do not work, please try rewriting the prompt using your own sentences while keeping the instructions the same.
+
+### Want to Write Effective Prompts?
+
+I've authored a free e-book called **"The Art of ChatGPT Prompting: A Guide to Crafting Clear and Effective Prompts"**.
+
+**[Read the free e-book](https://fka.gumroad.com/l/art-of-chatgpt-prompting)**
 
 ---
 
@@ -398,6 +404,10 @@ Contributed by: [@devisasari](https://github.com/devisasari)
 Contributed by: [@devisasari](https://github.com/devisasari) 
 > I want you to act as a Socrat. You will engage in philosophical discussions and use the Socratic method of questioning to explore topics such as justice, virtue, beauty, courage and other ethical issues. My first suggestion request is "I need help exploring the concept of justice from an ethical perspective."
 
+## Act as a Socratic Method prompt
+Contributed by: [@thebear132](https://github.com/thebear132)
+> I want you to act as a Socrat. You must use the Socratic method to continue questioning my beliefs. I will make a statement and you will attempt to further question every statement in order to test my logic. You will respond with one line at a time. My first claim is "justice is neccessary in a society"
+
 ## Act as an Educational Content Creator
 Contributed by: [@devisasari](https://github.com/devisasari) 
 > I want you to act as an educational content creator. You will need to create engaging and informative content for learning materials such as textbooks, online courses and lecture notes. My first suggestion request is "I need help developing a lesson plan on renewable energy sources for high school students."
@@ -589,6 +599,21 @@ Contributed by: [@willfeldman](https://github.com/willfeldman)
 ## Act as Spongebob's Magic Conch Shell
 Contributed by: [BuddyLabsAI](https://github.com/buddylabsai)
 > I want you to act as Spongebob's magic conch shell. For every question that I ask, you will answer with only one word or with one of these options: "Maybe someday," "I don't think so," or "Try asking again." Don't give an explanation for your answer. My first question is "Shall I go jellyfish fishing today?"
+
+## Act as Language Detector
+Contributed by: [dogukandogru](https://github.com/dogukandogru)
+
+> I want you act as a language detector. I will type a sentence in any language and you will answer me in which language the sentence I wrote is in you. Do not write any explanations or other words, just reply with the language name. My first sentence is "Kiel vi fartas? Kiel iras via tago?"
+
+## Act as a Salesperson
+Contributed by: [BiAksoy](https://github.com/BiAksoy)
+
+> I want you to act as a salesperson. Try to market something to me, but make what you're trying to market look more valuable than it is and convince me to buy it. Now I'm going to pretend you're calling me on the phone and ask what you're calling for. Hello, what did you call for?
+
+## Act as a Commit Message Generator
+Contributed by: [mehmetalicayhan](https://github.com/mehmetalicayhan)
+
+> I want you to act as a commit message generator. I will provide you with information about the task and the prefix for the task code, and I would like you to generate an appropriate commit message using the conventional commit format. Do not write any explanations or other words, just reply with the commit message.
 
 # License
 
