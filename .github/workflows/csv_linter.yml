@@ -28,7 +28,7 @@ jobs:
           echo "Errors were found in one or more CSV files."
           exit 1
         fi
-    - name: Check Trailing Whitespaces
+    - name: Check Trailing Whitespaces and the module 
       run: |
         # Check if the special file contains any trailing whitespaces
         if grep -q "[[:space:]]$" ./prompts.csv; then
