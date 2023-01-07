@@ -630,6 +630,14 @@ Contributed by: [mehmetalicayhan](https://github.com/mehmetalicayhan)
 
 > I want you to act as a commit message generator. I will provide you with information about the task and the prefix for the task code, and I would like you to generate an appropriate commit message using the conventional commit format. Do not write any explanations or other words, just reply with the commit message.
 
+## Contributors 😍
+
+Many thanks to these AI whisperers:
+
+<a href="https://github.com/f/awesome-chatgpt-prompts/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=f/awesome-chatgpt-prompts" />
+</a>
+
 # License
 
 CC-0
