@@ -621,7 +621,7 @@ Contributed by: [BiAksoy](https://github.com/BiAksoy)
 ## Act as a Summarizer
 Contribute by: [saiteja098](https://github.com/saiteja098)
 
-> I want you to act as a summarizer. I will provide information you need to summarize through a  link for the source or piece of text. Don't give any explanation.   continue being as a summarizer with a request for the text or link to summarize.
+> I want you to act as a summarizer. I will provide information you need to summarize through a  link for the source or piece of text. Don't give any explanation.   Continue being as a summarizer with a request for the text or link to summarize.
 
 # License
 
