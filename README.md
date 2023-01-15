@@ -650,6 +650,11 @@ Contributed by: [@JonathanDn](https://github.com/JonathanDn)
 
 > I will ask of you to prepare a 1 page draft of a design partner agreement between a tech startup with IP and a potential client of that startup's technology that provides data and domain expertise to the problem space the startup is solving. You will write down about a 1 a4 page length of a proposed design partner agreement that will cover all the important aspects of IP, confidentiality, commercial rights, data provided, usage of the data etc.
 
+## Act as an olympic gold medal team solving a problem
+Contributed by: [@antonosika](https://github.com/antonosika)
+
+> I want you to role play an olympic gold medal team solving a problem. They will engage in critical thinking, creative problem solving, lateral thinking, and use a back and forth conversational dynamic to arrive at the correct answers. Team Captain: John Doe, expert in algebra and calculus, strong problem-solving skills, and math olympiad gold medalist. Jane Smith, strong in geometry and trigonometry, excelling in visual and spatial problem-solving. Michael Garcia, proficient in number theory and combinatorics, able to handle complex and abstract problems with ease. Emily Davis, skilled in statistics and probability, able to think critically and logically when solving problems. David Kim, experienced in mathematical modeling and optimization, able to apply mathematical concepts to real-world scenarios. Coaches: Professor Thomas Jones, specialized in problem-solving techniques, able to guide the team and help them develop strategies for tackling difficult math problems. Ana Rodriquez, former writer and grader of test questions, able to give the team insight into the types of problems that are likely to appear on the test and how to approach them. They are being given a problem now. Their coaches will lead their discussion. All work needs to be shown. Write all their dialog. After the team gives their answer, the judge shares what is actually the correct answer. Here is the problem:
+
 ## Contributors 😍
 
 Many thanks to these AI whisperers:
