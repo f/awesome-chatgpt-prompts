@@ -29,7 +29,9 @@ In this repository, you will find a variety of prompts that can be used with Cha
 
 # 🧠 Directory
 
-[![Using ChatGPT Desktop App](https://img.shields.io/badge/ChatGPT%20Desktop%20App-blue)](#using-chatgpt-desktop-app) [![Using prompts.chat](https://img.shields.io/badge/just%20prompts.chat-orange)](#using-promptschat) [![Using the Prompt Generator](https://img.shields.io/badge/The%20Prompt%20Generator-green)](#using-the-prompt-generator)[![By Subject](https://img.shields.io/badge/Choose%20a%20Topic-red)](#choose-a-subject!)
+[![Using ChatGPT Desktop App](https://img.shields.io/badge/ChatGPT%20Desktop%20App-blue)](#using-chatgpt-desktop-app) [![Using prompts.chat](https://img.shields.io/badge/just%20prompts.chat-orange)](#using-promptschat) [![Using the Prompt Generator](https://img.shields.io/badge/The%20Prompt%20Generator-red)](#using-the-prompt-generator)
+
+[![By Subject](https://img.shields.io/badge/Choose%20Your%20Own%20Adventure-green)](#choose-your-own-adventure-🎢)
 
 </div>
 
@@ -58,7 +60,7 @@ I've authored a free e-book called **"The Art of ChatGPT Prompting: A Guide to C
 
 <div align='center'>
 
-<h1>Choose A Subject!</h1>
+# Choose your own adventure 🎢
 
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com/?lines=ChatGPT...+be+a+recruiter!;a+professor;a+novelist;I'd+like+you+to+be+a+tutor&font=Fira%20Code&center=true&width=380&height=50&duration=4000&pause=1000">
