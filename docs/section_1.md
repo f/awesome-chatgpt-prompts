@@ -29,7 +29,7 @@ In this repository, you will find a variety of prompts that can be used with Cha
 
 # 🧠 Directory
 
-[![Using ChatGPT Desktop App](https://img.shields.io/badge/ChatGPT%20Desktop%20App-blue)](#using-chatgpt-desktop-app) [![Using prompts.chat](https://img.shields.io/badge/just%20prompts.chat-orange)](#using-promptschat) [![Using the Prompt Generator](https://img.shields.io/badge/The%20Prompt%20Generator-green)](#using-the-prompt-generator)
+[![Using ChatGPT Desktop App](https://img.shields.io/badge/ChatGPT%20Desktop%20App-blue)](#using-chatgpt-desktop-app) [![Using prompts.chat](https://img.shields.io/badge/just%20prompts.chat-orange)](#using-promptschat) [![Using the Prompt Generator](https://img.shields.io/badge/The%20Prompt%20Generator-green)](#using-the-prompt-generator)[![By Subject](https://img.shields.io/badge/Choose%20a%20Topic-red)](#choose-a-subject!)
 
 </div>
 
