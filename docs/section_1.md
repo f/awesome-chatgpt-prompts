@@ -1,9 +1,8 @@
-<!-- add header banner here -->
-![Awesome ChatGPT Prompts](./images/banner.png)
-
-
+<!-- <div align="center"><h1>🧠 Awesome ChatGPT Prompts</h1> -->
 <div align = "center">
 <!-- add the banner from ./images/banner.png using markdown -->
+<img src = "https://github.com/grahamwaters/awesome-chatgpt-prompts/blob/features/images/banner.png" alt = "Awesome ChatGPT Prompts" width = "100%" height = "auto" />
+
 ---
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
