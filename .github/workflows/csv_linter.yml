@@ -31,9 +31,9 @@ jobs:
     - name: Check Trailing Whitespaces
       run: |
         # Check if the special file contains any trailing whitespaces
-        if grep -q "[[:space:]]$" ./prompts.csv; then
-          echo "ERROR: Found trailing whitespaces in prompts.csv"
+        if grep -q "[[:space:]]$" ./data/csv/prompts.csv; then
+          echo "ERROR: Found trailing whitespaces in data/csv/prompts.csv"
           exit 1
         else
-          echo "No trailing whitespaces found in prompts.csv"
+          echo "No trailing whitespaces found in data/csv/prompts.csv"
         fi
