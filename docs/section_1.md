@@ -3,14 +3,17 @@
 <!-- add the banner from ./images/banner.png using markdown -->
 <img src = "https://github.com/grahamwaters/awesome-chatgpt-prompts/blob/features/images/banner.png" alt = "Awesome ChatGPT Prompts" width = "100%" height = "auto" />
 
----
-
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
 <!-- add badging for pull requests, latest changes, number of open issues -->
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/f/awesome-chatgpt-prompts)
 ![GitHub last commit](https://img.shields.io/github/last-commit/f/awesome-chatgpt-prompts)
 ![GitHub issues](https://img.shields.io/github/issues/f/awesome-chatgpt-prompts)
+![GitHub repo size](https://img.shields.io/github/repo-size/f/awesome-chatgpt-prompts)
+![GitHub language count](https://img.shields.io/github/languages/count/f/awesome-chatgpt-prompts)
+![GitHub top language](https://img.shields.io/github/languages/top/f/awesome-chatgpt-prompts)
+![GitHub contributors](https://img.shields.io/github/contributors/f/awesome-chatgpt-prompts)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/f/awesome-chatgpt-prompts)
 
 </div>
 
