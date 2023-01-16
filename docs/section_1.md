@@ -26,7 +26,9 @@ In this repository, you will find a variety of prompts that can be used with Cha
 </div>
 # 🧠 Awesome ChatGPT Prompts
 <div align = "center">
+
 [![Using ChatGPT Desktop App](https://img.shields.io/badge/ChatGPT%20Desktop%20App-blue)](#using-chatgpt-desktop-app) [![Using prompts.chat](https://img.shields.io/badge/just%20prompts.chat-orange)](#using-promptschat) [![Using the Prompt Generator](https://img.shields.io/badge/The%Prompt%20Generator-purple)](#using-the-prompt-generator)
+
 </div>
 
 
