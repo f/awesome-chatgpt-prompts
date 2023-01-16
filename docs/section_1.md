@@ -23,6 +23,14 @@ Welcome to the "Awesome ChatGPT Prompts" repository! This is a collection of pro
 The [ChatGPT](https://chat.openai.com/chat) model is a large language model trained by [OpenAI](https://openai.com) that is capable of generating human-like text. By providing it with a prompt, it can generate responses that continue the conversation or expand on the given prompt.
 
 In this repository, you will find a variety of prompts that can be used with ChatGPT. We encourage you to [add your own prompts](https://github.com/f/awesome-chatgpt-prompts/edit/main/README.md) to the list and to use ChatGPT to generate new prompts as well.
+</div>
+# 🧠 Awesome ChatGPT Prompts
+<div align = "center">
+[![Using ChatGPT Desktop App](https://img.shields.io/badge/ChatGPT%20Desktop%20App-blue)](#using-chatgpt-desktop-app) [![Using prompts.chat](https://img.shields.io/badge/just%20prompts.chat-orange)](#using-promptschat) [![Using the Prompt Generator](https://img.shields.io/badge/The%Prompt%20Generator-purple)](#using-the-prompt-generator)
+</div>
+
+
+# Getting Started
 
 To get started, clone this repository and use the prompts in the README.md file as input for ChatGPT. You can also use the prompts in this file as inspiration for creating your own.
 
