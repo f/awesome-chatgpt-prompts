@@ -70,23 +70,23 @@ def extract_prompts(markdown_file, TOPICS):
         markdown_text = f.read()
     for topic in tqdm(TOPICS, total=len(TOPICS)):
         # write the prompts to the file "topic.md" in the "./data/prompts/specific_topics" folder
-        with open(f"./data/prompts/specific_topics/{topic.replace(' ', '_')}.md", "w") as f:
+        with open(
+            f"./data/prompts/specific_topics/{topic.replace(' ', '_')}.md", "w"
+        ) as f:
             f.write("\n".join(topic_prompts))
 
 
 def populate_files_from_csv():
 
-
     # code to read csv file and create prompts_df here
     prompts_df = pd.read_csv("./data/csv/prompts.csv")
-    with open('./data/csv/topics.csv', 'r') as f:
+    with open("./data/csv/topics.csv", "r") as f:
         topics_str = f.read()
     topics = topics_str.split("\n")
     topics = [x.strip() for x in topics if x]
     # remove " and , from the topics
     topics = [topic.replace('"', "") for topic in topics]
     topics = [topic.replace(",", "") for topic in topics]
-
 
     # iterate through the topics
     for topic in tqdm(topics, total=len(topics)):
@@ -99,15 +99,15 @@ def populate_files_from_csv():
             with open(f"./data/prompts/specific_topics/{topic_filename}", "w") as f:
                 print("creating file: ", topic_filename)
                 # write a well-formatted header to the file to make it easier to read
-                f.write(f"# Prompts related to: {topic}\n\n")  # write the topic to the file
-                f.write('-'*20)
-                f.write('\n\n')
-                pass # create the file
+                f.write(
+                    f"# Prompts related to: {topic}\n\n"
+                )  # write the topic to the file
+                f.write("-" * 20)
+                f.write("\n\n")
+                pass  # create the file
 
         # open the file in append mode, create it only if it doesn't exist
-        with open(
-            f"./data/prompts/specific_topics/{topic_filename}", "a+"
-        ) as f:
+        with open(f"./data/prompts/specific_topics/{topic_filename}", "a+") as f:
 
             # if the prompt is already in the file, skip it
             if topic in f.read():
@@ -115,28 +115,37 @@ def populate_files_from_csv():
                 continue
 
             # define a small data frame with only the rows where the topic matches the topic_string
-            prompts_df_sub = prompts_df[prompts_df["topic"].str.contains(topic, case=False, na=False)]
+            prompts_df_sub = prompts_df[
+                prompts_df["topic"].str.contains(topic, case=False, na=False)
+            ]
             if prompts_df_sub.empty:
                 print(f"topic: {topic} not found in prompts_df")
                 continue
             # iterate through the rows of the data frame
             for _, row in prompts_df_sub.iterrows():
-                if not pd.isna(row["contributor"]): # if the contributor is not null
-                    contributor = row["contributor"] # set the contributor to the contributor in the row
+                if not pd.isna(row["contributor"]):  # if the contributor is not null
+                    contributor = row[
+                        "contributor"
+                    ]  # set the contributor to the contributor in the row
                 else:
-                    contributor = "None" # otherwise set the contributor to "None"
-                prompt = row["prompt"] # set the prompt to the prompt in the row
+                    contributor = "None"  # otherwise set the contributor to "None"
+                prompt = row["prompt"]  # set the prompt to the prompt in the row
                 f.write(f"## {topic}\n")
-                if not pd.isna(row["contributor"]): # if the contributor is not null
-                    contributor = row["contributor"] # set the contributor to the contributor in the row
-                    f.write(f"Contributed by: [{contributor}](https://www.github.com/{contributor})\n")
+                if not pd.isna(row["contributor"]):  # if the contributor is not null
+                    contributor = row[
+                        "contributor"
+                    ]  # set the contributor to the contributor in the row
+                    f.write(
+                        f"Contributed by: [{contributor}](https://www.github.com/{contributor})\n"
+                    )
                 else:
-                    contributor = "None" # otherwise set the contributor to "None"
+                    contributor = "None"  # otherwise set the contributor to "None"
                     f.write(f"Contributed by: {contributor}\n")
 
-                f.write(f"> {prompt}\n\n") # write the prompt to the file in the correct format
+                f.write(
+                    f"> {prompt}\n\n"
+                )  # write the prompt to the file in the correct format
         print(f"Finished populating {topic}.md")
-
 
 
 ######## Fresh Start ########
@@ -149,15 +158,15 @@ def populate_files_from_csv():
 prompts_df = pd.read_csv("./data/csv/prompts.csv")
 
 
-
-
-
 def main():
     #! Legacy code used README.md to create prompts.csv when readme was the only file with prompts
     #!create_prompts_csv("README.md") # create the prompts csv file from the markdown file (only needs to be run once)
-    create_prompts_csv("add_me.md") # create the prompts csv file from the add_me markdown file (only needs to be run once)
+    create_prompts_csv(
+        "add_me.md"
+    )  # create the prompts csv file from the add_me markdown file (only needs to be run once)
     # extract_prompts("readme_other.md", TOPICS)
-    populate_files_from_csv() # populate the markdown files in the "./data/prompts/specific_topics" folder with the prompts from the csv file
+    populate_files_from_csv()  # populate the markdown files in the "./data/prompts/specific_topics" folder with the prompts from the csv file
+
 
 if __name__ == "__main__":
     main()

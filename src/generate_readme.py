@@ -11,43 +11,74 @@ import numpy as np
 import random
 
 
-
-def collect_badges(directory='./data/prompts/specific_topics'):
+def collect_badges(directory="./data/prompts/specific_topics"):
     # Create dynamic badges for middle section
     badges = []
     badge_texts = []
     badge_count = len(os.listdir(directory))
     for i in tqdm(range(badge_count)):
-        badge_color = random.choice(["brightgreen", "green", "yellowgreen", "darkred","lightblue","darkgreen","purple","yellow", "orange", "red", "blue", "lightgrey","success", "important", "critical", "informational", "inactive","blueviolet", "ff69b4", "9cf"])
+        badge_color = random.choice(
+            [
+                "brightgreen",
+                "green",
+                "yellowgreen",
+                "darkred",
+                "lightblue",
+                "darkgreen",
+                "purple",
+                "yellow",
+                "orange",
+                "red",
+                "blue",
+                "lightgrey",
+                "success",
+                "important",
+                "critical",
+                "informational",
+                "inactive",
+                "blueviolet",
+                "ff69b4",
+                "9cf",
+            ]
+        )
         # get the name of the file
-        badge_filename = os.listdir(directory)[i] # get the name of the file
-        badge_text = badge_filename.replace(".md", "") # remove the .md extension
-        badge_text_two = badge_text.replace(" ", "_") # replace spaces with underscores
+        badge_filename = os.listdir(directory)[i]  # get the name of the file
+        badge_text = badge_filename.replace(".md", "")  # remove the .md extension
+        badge_text_two = badge_text.replace(" ", "_")  # replace spaces with underscores
         badge_link = f"./{directory}/{badge_text_two}.md"
-        while ' ' in badge_text:
-            badge_text = badge_text.replace(' ', '_')
+        while " " in badge_text:
+            badge_text = badge_text.replace(" ", "_")
         if badge_text not in badge_texts:
             badge = f"[![{badge_text}](https://img.shields.io/badge/{badge_text}-{badge_color})]({badge_link})"
-            badges.append(badge) # add the badge to the list
-        badge_texts.append(badge_text.replace("_"," ")) # add the badge text to the list
+            badges.append(badge)  # add the badge to the list
+        badge_texts.append(
+            badge_text.replace("_", " ")
+        )  # add the badge text to the list
     # concatenate the badges together then return the concatenated string
-    #badges = "\n".join(badges)
+    # badges = "\n".join(badges)
     return badges
+
 
 def collect_badges_from_dirs(dirs_list):
     # go to each directory and collect the badges
     badges = []
     for directory in dirs_list:
         new_badges_list = collect_badges(directory=directory)
-        updated_badges = [badge for badge in new_badges_list if badge not in badges] # remove duplicates
+        updated_badges = [
+            badge for badge in new_badges_list if badge not in badges
+        ]  # remove duplicates
         badges.extend(updated_badges)
     # join the badges together and return the string
     badges = "\n ".join(badges)
     return badges
 
+
 def master_badge_function():
-    badges = collect_badges_from_dirs(dirs_list=['./data/prompts/specific_topics'])  # can add user_defined_topics later
+    badges = collect_badges_from_dirs(
+        dirs_list=["./data/prompts/specific_topics"]
+    )  # can add user_defined_topics later
     return badges
+
 
 # Read in the top, middle, and bottom sections of the README
 with open("./docs/section_1.md", "r") as file:
@@ -58,7 +89,7 @@ with open("./docs/section_1.md", "r") as file:
 
 with open("./docs/section_2.md", "r") as file:
     # middle = file.read()
-    updated_middle = master_badge_function() # collect the badges
+    updated_middle = master_badge_function()  # collect the badges
     # Convert to HTML
     #!middle = mistune.markdown(updated_middle)
     middle = "\n\n" + updated_middle
