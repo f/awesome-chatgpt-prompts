@@ -24,8 +24,10 @@ The [ChatGPT](https://chat.openai.com/chat) model is a large language model trai
 
 In this repository, you will find a variety of prompts that can be used with ChatGPT. We encourage you to [add your own prompts](https://github.com/f/awesome-chatgpt-prompts/edit/main/README.md) to the list and to use ChatGPT to generate new prompts as well.
 </div>
-# 🧠 Awesome ChatGPT Prompts
+
 <div align = "center">
+
+# 🧠 Directory
 
 [![Using ChatGPT Desktop App](https://img.shields.io/badge/ChatGPT%20Desktop%20App-blue)](#using-chatgpt-desktop-app) [![Using prompts.chat](https://img.shields.io/badge/just%20prompts.chat-orange)](#using-promptschat) [![Using the Prompt Generator](https://img.shields.io/badge/The%20Prompt%20Generator-green)](#using-the-prompt-generator)
 
