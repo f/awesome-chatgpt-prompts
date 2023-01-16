@@ -1,7 +1,9 @@
 <!-- <div align="center"><h1>🧠 Awesome ChatGPT Prompts</h1> -->
 <div align = "center">
-![Banner](./../images/banner.png)
-
+<!-- add the banner from ./images/banner.png using markdown -->
+<!-- ![Awesome ChatGPT Prompts](https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/images/banner.png) -->
+<!-- using local image in the images folder and using markdown syntax not html -->
+![Awesome ChatGPT Prompts](../images/banner.png)
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
