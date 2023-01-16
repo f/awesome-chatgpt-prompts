@@ -153,7 +153,9 @@ prompts_df = pd.read_csv("./data/csv/prompts.csv")
 
 
 def main():
-    create_prompts_csv("README.md") # create the prompts csv file from the markdown file (only needs to be run once)
+    #! Legacy code used README.md to create prompts.csv when readme was the only file with prompts
+    #!create_prompts_csv("README.md") # create the prompts csv file from the markdown file (only needs to be run once)
+    create_prompts_csv("add_me.md") # create the prompts csv file from the add_me markdown file (only needs to be run once)
     # extract_prompts("readme_other.md", TOPICS)
     populate_files_from_csv() # populate the markdown files in the "./data/prompts/specific_topics" folder with the prompts from the csv file
 

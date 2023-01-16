@@ -68,8 +68,8 @@ with open("./docs/section_2.md", "r") as file:
 
 with open("./docs/section_3.md", "r") as file:
     bottom = file.read()
-    # Format with black
-    #bottom = black.format_str(bottom, mode=black.FileMode())
+    # add a new line to the bottom
+    bottom += "\n"
     # write the section to the bottom of the readme
     with open("README.md", "a") as file:
         file.write(bottom)

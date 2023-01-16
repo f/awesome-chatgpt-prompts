@@ -1,5 +1,6 @@
-<div align="center"><h1>🧠 Awesome ChatGPT Prompts</h1>
-
+<!-- <div align="center"><h1>🧠 Awesome ChatGPT Prompts</h1> -->
+<div align = "center">
+![Banner](./../images/banner.png)
 
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
@@ -69,7 +70,4 @@ If you are feeling like having your mind melt into magic today then head over to
 
 <div align='center'>
 
-<h1>Topics To Choose From</h1>
-<!-- brightgreengreenyellowgreenyelloworangeredbluelightgrey
-successimportantcriticalinformationalinactive
-bluevioletff69b49cf -->
+<h1>Choose A Subject!</h1>
