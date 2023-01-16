@@ -12,7 +12,7 @@ import random
 
 
 
-def collect_badges(directory='../data/prompts/specific_topics'):
+def collect_badges(directory='./data/prompts/specific_topics'):
     # Create dynamic badges for middle section
     badges = []
     badge_texts = []
@@ -46,17 +46,17 @@ def collect_badges_from_dirs(dirs_list):
     return badges
 
 def master_badge_function():
-    badges = collect_badges_from_dirs(dirs_list=['../data/prompts/industries', '../data/prompts/specific_topics'])
+    badges = collect_badges_from_dirs(dirs_list=['./data/prompts/industries', './data/prompts/specific_topics'])
     return badges
 
 # Read in the top, middle, and bottom sections of the README
-with open("../docs/section_1.md", "r") as file:
+with open("./docs/section_1.md", "r") as file:
     top = file.read()
     # Write the section to the top of the readme
     with open("README.md", "w") as file:
         file.write(top)
 
-with open("../docs/section_2.md", "r") as file:
+with open("./docs/section_2.md", "r") as file:
     # middle = file.read()
     updated_middle = master_badge_function() # collect the badges
     # Convert to HTML
@@ -66,7 +66,7 @@ with open("../docs/section_2.md", "r") as file:
     with open("README.md", "a") as file:
         file.write(middle)
 
-with open("../docs/section_3.md", "r") as file:
+with open("./docs/section_3.md", "r") as file:
     bottom = file.read()
     # Format with black
     #bottom = black.format_str(bottom, mode=black.FileMode())

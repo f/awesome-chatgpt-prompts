@@ -1,1 +1,0 @@
-## Prompts for concurrent programming
