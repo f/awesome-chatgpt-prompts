@@ -101,13 +101,19 @@ def populate_files_from_csv():
                 # write a well-formatted header to the file to make it easier to read
                 f.write(f"# Prompts related to: {topic}\n\n")  # write the topic to the file
                 f.write('-'*20)
+                f.write('\n\n')
                 pass # create the file
 
         # open the file in append mode, create it only if it doesn't exist
         with open(
             f"./data/prompts/specific_topics/{topic_filename}", "a+"
         ) as f:
-            # define a small data frame with only the rows where the topic matches the topic_string
+
+            # if the prompt is already in the file, skip it
+            if topic in f.read():
+                print(f"topic: {topic} already in file")
+                continue
+
             # define a small data frame with only the rows where the topic matches the topic_string
             prompts_df_sub = prompts_df[prompts_df["topic"].str.contains(topic, case=False, na=False)]
             if prompts_df_sub.empty:
