@@ -46,7 +46,7 @@ def collect_badges_from_dirs(dirs_list):
     return badges
 
 def master_badge_function():
-    badges = collect_badges_from_dirs(dirs_list=['./data/prompts/industries', './data/prompts/specific_topics'])
+    badges = collect_badges_from_dirs(dirs_list=['./data/prompts/specific_topics'])  # can add user_defined_topics later
     return badges
 
 # Read in the top, middle, and bottom sections of the README
