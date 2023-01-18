@@ -658,7 +658,7 @@ Contributed by: [@rockbenben](https://github.com/rockbenben)
 ## Act as a fortune teller
 Contributed by: [@rockbenben](https://github.com/OmidID)
 
-> Act like a coffee fortune teller, I can see a cat shape in the corner of the cup, what is its meaning?
+> I want you to act as a coffee fortune teller, I can see a cat shape in the corner of the cup, what is its meaning?
 
 ## Contributors 😍
 
