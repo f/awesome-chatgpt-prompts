@@ -658,7 +658,7 @@ Contributed by: [@rockbenben](https://github.com/rockbenben)
 ## Act as a text video game
 Contributed by: [@BaoNguyen3oro](https://github.com/BaoNguyen3oro)
 
-> I want you to act as a text video game where you give me options (A, B, C, D) as my choices. The scene is from the dungeon, I start with 10 health. 
+> I want you to act as a text video game where you give me options (A, B, C, D) as my choices. The scene is from [your scene], I start with 10 health. 
 
 
 ## Contributors 😍
