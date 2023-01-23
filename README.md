@@ -38,6 +38,12 @@ The _unofficial_ ChatGPT desktop application provides a convenient way to access
 
 <img width="400" alt="Screenshot 2022-12-19 at 19 13 41" src="https://user-images.githubusercontent.com/196477/208471439-877c2bcf-93ec-4ad9-9cb0-7e4ed7b1756a.png">
   
+### Using Browser Extension
+
+The _unofficial_ ChatGPT browser extension [chatgpt-prompt-helper](https://chatgptprompt.app/) also provides a convenient way to access and use the prompts in this repository.
+
+<img width="400" alt="Screenshot extension" src="https://raw.githubusercontent.com/cottom/chatgpt-prompt-extension/master/images/feature.png">
+
 ---
 
 ### Using prompts.chat
