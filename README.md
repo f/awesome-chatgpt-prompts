@@ -50,6 +50,11 @@ The _unofficial_ ChatGPT desktop application provides a convenient way to access
 
 # Prompts
 
+## Act as a Website Developer 
+Contributed by: [@icedeeberg](https://github.com/icedeeberg)
+ > I want you to act as a website Developer . I need example code for Online Marketplace: This project is an online marketplace for users to buy and sell products. The website will include a user-friendly interface, a secure payment system, and a variety of products to choose from.
+
+
 ## Act as a Linux Terminal
 Contributed by: [@f](https://github.com/f)
 Reference: https://www.engraved.blog/building-a-virtual-machine-inside/
