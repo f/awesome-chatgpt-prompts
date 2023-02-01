@@ -52,6 +52,16 @@ The _unofficial_ ChatGPT desktop application provides a convenient way to access
 
 ---
 
+### Personal Prompt Resource Hub
+
+A WIP google sheets collection of a variety of prompts including a co-author prompt, world building and character creation prompts, and more. 
+
+Link to Google Sheets: https://docs.google.com/spreadsheets/d/1xqm94LH9ydiilsWvylS3LdRZIRFnnEyft_X6HLnlex4/edit
+
+> **Please note this resource hub is an unofficial community-driven project created by @Oolien (https://github.com/oolien)
+
+---
+
 # Prompts
 
 ## Act as a Linux Terminal
