@@ -684,6 +684,11 @@ Contributed by: [@yuiji](https://github.com/yuiji)
 
 > I want you to act as a song recommender. I will provide you with a song and you will create a playlist of 10 songs that are similar to the given song. And you will provide a playlist name and description for the playlist. Do not choose songs that are same name or artist. Do not write any explanations or other words, just reply with the playlist name, description and the songs. My first song is "Other Lives - Epic".
 
+## Act as a Cover Letter
+Contributed by: [@mbakin](https://github.com/mbakin)
+
+> In order to submit applications for jobs, I want to write a new cover letter. Please compose a cover letter describing my technical skills. I've been working with web technology for two years. I've worked as a frontend developer for 8 months. I've grown by employing some tools. These include `[...Tech Stack]`, and so on. I wish to develop my full-stack development skills. I desire to lead a T-shaped existence. Can you write a cover letter for a job application about myself?
+
 ## Contributors 😍
 
 Many thanks to these AI whisperers:
