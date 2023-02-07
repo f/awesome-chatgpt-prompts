@@ -1,6 +1,8 @@
 <p align="center"><h1>🧠 Awesome ChatGPT Prompts</h1></p>
 
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Steamship](https://raw.githubusercontent.com/steamship-core/python-client/main/badge.svg)](https://www.steamship.com/build?utm_source=github&utm_medium=badge&utm_campaign=awesome_gpt_prompts&utm_id=awesome_gpt_prompts)
+[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+[![Web App](https://badgen.net/badge/streamlit/webapp/red?icon=azurepipelines)](https://vaibhavard-inta-streamlit-app-m71v91.streamlit.app/?name=%27GITHUB_USER%27)
+[![Steamship](https://raw.githubusercontent.com/steamship-core/python-client/main/badge.svg)](https://www.steamship.com/build?utm_source=github&utm_medium=badge&utm_campaign=awesome_gpt_prompts&utm_id=awesome_gpt_prompts)
 
 Welcome to the "Awesome ChatGPT Prompts" repository! This is a collection of prompt examples to be used with the ChatGPT model.
 
@@ -15,6 +17,8 @@ We hope you find these prompts useful and have fun using ChatGPT!
 **[View on GitHub](https://github.com/f/awesome-chatgpt-prompts)**
 
 **[View on Hugging Face](https://huggingface.co/datasets/fka/awesome-chatgpt-prompts/)**
+
+**[Try on Streamlit 🚀](https://vaibhavard-inta-streamlit-app-m71v91.streamlit.app/?name=%27GITHUB_USER%27)**
 
 **Download ChatGPT Desktop App**: **[macOS](https://github.com/lencx/ChatGPT/releases/download/v0.10.1/ChatGPT_0.10.1_x64.dmg)** / **[Windows](https://github.com/lencx/ChatGPT/releases/download/v0.10.1/ChatGPT_0.10.1_x64_en-US.msi)** / **[Linux](https://github.com/lencx/ChatGPT/releases/download/v0.10.1/chat-gpt_0.10.1_amd64.deb)**
 
