@@ -29,3 +29,13 @@ To add a new prompt to this repository, a contributor should take the following 
 4. Submit a pull request on the repository's main branch.
     - If possible, provide some documentation of how you tested your prompt and the kinds of results you received.
     - Be sure to include a detailed title and description.
+
+### New Prompt Checklist:
+- [ ] I've confirmed the prompt works well
+- [ ] I've added `Contributed by: [@yourusername](https://github.com/yourusername)`
+- [ ] I've added to the README.md
+- [ ] I've added to the `prompts.csv`
+  - [ ] Escaped quotes by double-quoting them
+  - [ ] Removed "Act as" from the title on CSV
+
+Please ensure these requirements are met before submitting a pull request.
