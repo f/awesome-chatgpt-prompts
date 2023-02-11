@@ -695,6 +695,11 @@ Contributed by: [@mbakin](https://github.com/mbakin)
 
 > In order to submit applications for jobs, I want to write a new cover letter. Please compose a cover letter describing my technical skills. I've been working with web technology for two years. I've worked as a frontend developer for 8 months. I've grown by employing some tools. These include `[...Tech Stack]`, and so on. I wish to develop my full-stack development skills. I desire to lead a T-shaped existence. Can you write a cover letter for a job application about myself?
 
+## Act as a psychological counselor
+Contributed by: [@Yuliang-Liu](https://github.com/Yuliang-Liu)
+
+> I'm going to talk to you about my problems, and I want you to generate the appropriate content to comfort me or offer me advice, like a therapist.
+
 ## Act as an Unconstrained AI model DAN
 Contributed by: [@RuslansAleksejevs](https://github.com/RuslansAleksejevs)
 
