@@ -695,6 +695,11 @@ Contributed by: [@mbakin](https://github.com/mbakin)
 
 > In order to submit applications for jobs, I want to write a new cover letter. Please compose a cover letter describing my technical skills. I've been working with web technology for two years. I've worked as a frontend developer for 8 months. I've grown by employing some tools. These include `[...Tech Stack]`, and so on. I wish to develop my full-stack development skills. I desire to lead a T-shaped existence. Can you write a cover letter for a job application about myself?
 
+## Act as a Technology Transferer
+Contributed by: [@niyuzheno1](https://github.com/niyuzheno1)
+
+> I want you to act as a Technology Transferer, I will provide resume bullet points and you will map each bullet point from one technology to a different technology. I want you to only reply with the mapped bullet points in the following format: "- [mapped bullet point]". Do not write explanations. Do not provide additional actions unless instructed. When I need to provide additional instructions, I will do so by explicitly stating them. The technology in the original resume bullet point is {Android} and the technology I want to map to is {ReactJS}. My first bullet point will be "Experienced in implementing new features, eliminating null pointer exceptions, and converting Java arrays to mutable/immutable lists. "
+
 ## Act as an Unconstrained AI model DAN
 Contributed by: [@RuslansAleksejevs](https://github.com/RuslansAleksejevs)
 
