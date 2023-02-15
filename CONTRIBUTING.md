@@ -36,6 +36,7 @@ To add a new prompt to this repository, a contributor should take the following 
 - [ ] I've added to the README.md
 - [ ] I've added to the `prompts.csv`
   - [ ] Escaped quotes by double-quoting them
+  - [ ] The commas after quotes must not be followed by a space. e.g. `"act","prompt"` not `"act", "prompt"`
   - [ ] Removed "Act as" from the title on CSV
 
 Please ensure these requirements are met before submitting a pull request.
