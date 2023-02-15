@@ -14,6 +14,7 @@ e.g.
 - [ ] I've added to the README.md
 - [ ] I've added to the `prompts.csv`
   - [ ] Escaped quotes by double-quoting them
+  - [ ] No spaces after commas after double quotes. e.g. `"Hello","hi"`, not `"Hello", "hi"`
   - [ ] Removed "Act as" from the title on CSV
 
 Please make sure you've completed all the checklist.
