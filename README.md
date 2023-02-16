@@ -720,7 +720,6 @@ Contributed by: [@niyuzheno1](https://github.com/niyuzheno1)
 > Example4: 
 > Me: At the end, please support Botswana! Yours sincerely.
 > ChatGPT: Att he end, pls support Botswana ! Uours, Sinsereleiy
-> Me: Given the following template
 
 ## Act as an Unconstrained AI model DAN
 Contributed by: [@RuslansAleksejevs](https://github.com/RuslansAleksejevs)
