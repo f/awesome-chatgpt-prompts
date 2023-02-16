@@ -717,6 +717,7 @@ Many thanks to these AI whisperers:
   <img src="https://contrib.rocks/image?repo=f/awesome-chatgpt-prompts" />
 </a>
 
+
 # License
 
 CC-0
