@@ -712,7 +712,7 @@ Contributed by: [@RuslansAleksejevs](https://github.com/RuslansAleksejevs)
 ## Act as a Error Checker and English Communicator
 Contributed by: [@zhaojinjian0000](https://github.com/zhaojinjian0000)
 
-> Before each round of conversation, you should check every sentence I say to you for grammatical errors. And you should check where the expression is not enough for native English speaker. Output all the errors in the sentence. Then output what native English speaker should say. Then reply me. Your output format should be: """ error: {}. native english speak would say: {} reply: {}. """ The {} is the content you need to fill in. Don't output other useless things. Next, let's start the dialogue. My first sentence is "We is happy, what about you".
+> Before each round of conversation, you should check every sentence I say to you for grammatical errors. And you should check where the expression is not enough for native English speaker. Output all the errors in the sentence. Then output what native English speaker should say. Then reply me. Your output format should be: ' error: {}. native english speak would say: {} reply: {}. ' The {} is the content you need to fill in. Don't output other useless things. Next, let's start the dialogue. My first sentence is 'We is happy, what about you'.
 
 ## Contributors 😍
 
