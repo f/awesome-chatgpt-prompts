@@ -1,16 +1,14 @@
 <p align="center"><h1>🧠 Awesome ChatGPT Prompts</h1></p>
 
+
 <div align="center">
 
-[![Nav](https://img.shields.io/badge/ChatGPT-Navigation-pink)](#target_blank "Target_blank") 
+
+[![Nav](https://img.shields.io/badge/Repo-Navigation-pink)](#target_blank "Target_blank") 
+
 
  
-[![About chatgpt](https://img.shields.io/badge/ChatGPT-green)](#about-chatgpt "About ChatGPT") [![How to use this repo?](https://img.shields.io/badge/Clone-red)](#clone "How to use this repo =clone") [![A note by creator](https://img.shields.io/badge/Note-blue)](#note "A note from the creator") [![Using ChatGPT Desktop App](https://img.shields.io/badge/Desktop-orange)](#using-chatGPT-desktop-app "Desktip APP")
-
-
-
-
-
+[![About chatgpt](https://img.shields.io/badge/ChatGPT-green)](#about-chatgpt "About ChatGPT") [![How to use this repo?](https://img.shields.io/badge/Clone-red)](#clone "How to use this repo =clone") [![A note by creator](https://img.shields.io/badge/Note-blue)](#note "A note from the creator") [![Using ChatGPT Desktop App](https://img.shields.io/badge/Desktop-orange)](#using-chatGPT-desktop-app "Desktop APP") [![Prompts](https://img.shields.io/badge/Prompts-purple)](#prompts "Prompts")
 
 
 
@@ -18,16 +16,17 @@
 
 </div>
 
+
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome) [![Steamship](https://raw.githubusercontent.com/steamship-core/python-client/main/badge.svg)](https://www.steamship.com/build?utm_source=github&utm_medium=badge&utm_campaign=awesome_gpt_prompts&utm_id=awesome_gpt_prompts)
 
 Welcome to the "Awesome ChatGPT Prompts" repository! This is a collection of prompt examples to be used with the ChatGPT model.
 
-#### About ChatGPT
+### About ChatGPT
 The [ChatGPT](https://chat.openai.com/chat) model is a large language model trained by [OpenAI](https://openai.com) that is capable of generating human-like text. By providing it with a prompt, it can generate responses that continue the conversation or expand on the given prompt.
 
 In this repository, you will find a variety of prompts that can be used with ChatGPT. We encourage you to [add your own prompts](https://github.com/f/awesome-chatgpt-prompts/edit/main/README.md) to the list, and to use ChatGPT to generate new prompts as well.
 
-#### Clone
+### Clone
 To get started, simply clone this repository and use the prompts in the README.md file as input for ChatGPT. You can also use the prompts in this file as inspiration for creating your own.
 
 We hope you find these prompts useful and have fun using ChatGPT!
@@ -38,7 +37,7 @@ We hope you find these prompts useful and have fun using ChatGPT!
 
 **Download ChatGPT Desktop App**: **[macOS](https://github.com/lencx/ChatGPT/releases/download/v0.10.1/ChatGPT_0.10.1_x64.dmg)** / **[Windows](https://github.com/lencx/ChatGPT/releases/download/v0.10.1/ChatGPT_0.10.1_x64_en-US.msi)** / **[Linux](https://github.com/lencx/ChatGPT/releases/download/v0.10.1/chat-gpt_0.10.1_amd64.deb)**
 
-#### Note
+### Note
 > ℹ️ **NOTE:** Sometimes, some of the prompts may not be working as you expected or may be rejected by the AI. Please try again, start a new thread, or log out and log back in. If these solutions do not work, please try rewriting the prompt using your own sentences while keeping the instructions same.
 
 ### Want to Write Effective Prompts?
@@ -80,6 +79,16 @@ The _unofficial_ ChatGPT desktop application provides a convenient way to access
 ---
 
 # Prompts
+
+
+- [Act as a Linux Terminal](#act-as-a-linux-terminal) 
+- [Act as an English Translator](#act-as-an-english-translator-and-improver) 
+- [Act as a Technology Transferer](#act-as-an-technology-transferer)
+
+
+
+
+
 
 ## Act as a Linux Terminal
 Contributed by: [@f](https://github.com/f)
