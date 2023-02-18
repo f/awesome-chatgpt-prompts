@@ -60,6 +60,11 @@ The _unofficial_ ChatGPT desktop application provides a convenient way to access
 
 # Prompts
 
+## Act as Document Summarizer
+Contributed by: [@mriamnobody](https://github.com/mriamnobody)
+
+> I want you to summarize a document. I will provide you with a large document in the form of smaller, segmented paragraphs, and I would like to recall each segment in order to provide a comprehensive summary of the entire document at the end.
+
 ## Act as a Linux Terminal
 Contributed by: [@f](https://github.com/f)
 Reference: https://www.engraved.blog/building-a-virtual-machine-inside/
