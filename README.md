@@ -32,6 +32,12 @@ The folks at [Steamship](https://www.steamship.com/build?utm_source=github&utm_m
 
 👷‍♂️ **[Build your own GPT Prompt App](https://www.steamship.com/build?utm_source=github&utm_medium=explainer&utm_campaign=awesome_gpt_prompts&utm_id=awesome_gpt_prompts)**
 
+### Want to Learn How to Make Money using ChatGPT Prompts?
+
+I've authored an e-book called **"How to Make Money with ChatGPT: Strategies, Tips, and Tactics"**.
+
+📖 **[Buy the e-book](https://fka.gumroad.com/l/how-to-make-money-with-chatgpt)**
+
 ---
 
 ### Using ChatGPT Desktop App
