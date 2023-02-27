@@ -24,13 +24,19 @@ We hope you find these prompts useful and have fun using ChatGPT!
 
 I've authored a free e-book called **"The Art of ChatGPT Prompting: A Guide to Crafting Clear and Effective Prompts"**.
 
-📖 **[Read the free e-book](https://fka.gumroad.com/l/art-of-chatgpt-prompting)**
+📖 **[Read the free e-book](https://fka.gumroad.com/l/art-of-chatgpt-prompting?a=705657043)**
 
 ### Want to deploy your own Prompt App?
 
 The folks at [Steamship](https://www.steamship.com/build?utm_source=github&utm_medium=explainer&utm_campaign=awesome_gpt_prompts&utm_id=awesome_gpt_prompts) built a framework to host and share your GPT apps. They're sponsoring this repo by giving you free (up to 500 calls per day) access to the latest GPT models.  
 
 👷‍♂️ **[Build your own GPT Prompt App](https://www.steamship.com/build?utm_source=github&utm_medium=explainer&utm_campaign=awesome_gpt_prompts&utm_id=awesome_gpt_prompts)**
+
+### Want to Learn How to Make Money using ChatGPT Prompts?
+
+I've authored an e-book called **"How to Make Money with ChatGPT: Strategies, Tips, and Tactics"**.
+
+📖 **[Buy the e-book](https://fka.gumroad.com/l/how-to-make-money-with-chatgpt?a=705657043)**
 
 ---
 
@@ -715,6 +721,10 @@ Contributed by: [@GoodCoder666](https://github.com/GoodCoder666)
 > Let's play Gomoku. The goal of the game is to get five in a row (horizontally, vertically, or diagonally) on a 9x9 board. Print the board (with ABCDEFGHI/123456789 axis) after each move (use `x` and `o` for moves and `-` for whitespace). You and I take turns in moving, that is, make your move after my each move. You cannot place a move an top of other moves. Do not modify the original board before a move. Now make the first move.
 
 Note: if ChatGPT makes an invalid move, try `Regenerate response`.
+
+## Act as a Proofreader
+Contributed by: [@virtualitems](https://github.com/virtualitems)
+I want you act as a proofreader. I will provide you texts and I would like you to review them for any spelling, grammar, or punctuation errors. Once you have finished reviewing the text, provide me with any necessary corrections or suggestions for improve the text.
 
 ## Contributors 😍
 
