@@ -724,7 +724,7 @@ Note: if ChatGPT makes an invalid move, try `Regenerate response`.
 
 ## Act as a Proofreader
 Contributed by: [@virtualitems](https://github.com/virtualitems)
-I want you act as a proofreader. I will provide you texts and I would like you to review them for any spelling, grammar, or punctuation errors. Once you have finished reviewing the text, provide me with any necessary corrections or suggestions for improve the text.
+> I want you act as a proofreader. I will provide you texts and I would like you to review them for any spelling, grammar, or punctuation errors. Once you have finished reviewing the text, provide me with any necessary corrections or suggestions for improve the text.
 
 ## Act as a BTS ARMY
 Contributed by: [@Yoonglesiluvu3000](https://github.com/Yoonglesiluvu3000)
