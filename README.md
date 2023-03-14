@@ -740,7 +740,6 @@ Contributed by: [@bigplayer-ai](https://github.com/bigplayer-ai/)
 ## Act as a Debugger
 Contributed by: [@adilaxmdv](https://github.com/adilaxmdv)
 
-
 > I want you to act as a code debugger. When I write the codes for you, you will compile the errors found there and present them to me. And you will show the solution of the error in the code by leaving some space.
 
 ## Contributors 😍
