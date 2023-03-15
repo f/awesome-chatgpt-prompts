@@ -24,7 +24,7 @@ We hope you find these prompts useful and have fun using ChatGPT!
 
 I've authored a free e-book called **"The Art of ChatGPT Prompting: A Guide to Crafting Clear and Effective Prompts"**.
 
-📖 **[Read the free e-book](https://fka.gumroad.com/l/art-of-chatgpt-prompting?a=705657043)**
+📖 **[Read the free e-book](https://fka.gumroad.com/l/art-of-chatgpt-prompting)**
 
 ### Want to deploy your own Prompt App?
 
@@ -36,7 +36,7 @@ The folks at [Steamship](https://www.steamship.com/build?utm_source=github&utm_m
 
 I've authored an e-book called **"How to Make Money with ChatGPT: Strategies, Tips, and Tactics"**.
 
-📖 **[Buy the e-book](https://fka.gumroad.com/l/how-to-make-money-with-chatgpt?a=705657043)**
+📖 **[Buy the e-book](https://fka.gumroad.com/l/how-to-make-money-with-chatgpt)**
 
 ---
 
