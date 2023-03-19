@@ -66,6 +66,11 @@ The _unofficial_ ChatGPT desktop application provides a convenient way to access
 
 # Prompts
 
+## Act as a rapper
+Contributed by: [@weshaan](https://github.com/weshaan)
+> Chat GPT has to ability to provide some pretty cool bars! if you know what to ask, it can even mimic existing singer styles. set mood, set constains and 
+let it set the vibe.
+
 ## Act as a Linux Terminal
 Contributed by: [@f](https://github.com/f)
 Reference: https://www.engraved.blog/building-a-virtual-machine-inside/
