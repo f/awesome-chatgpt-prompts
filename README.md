@@ -752,6 +752,11 @@ Contributed by [@y1j2x34](https://github.com/y1j2x34)
 
 > I want you to act as a ChatGPT prompt generator, I will send a topic, you have to generate a ChatGPT prompt based on the content of the topic, the prompt should start with "I want you to act as ", and guess what I might do, and expand the prompt accordingly Describe the content to make it useful.
 
+## Act as a Wikipedia page
+Contributed by [@royforlife](https://github.com/royforlife)
+
+> I want you to act as a Wikipedia page. I will give you the name of a topic, and you will provide a summary of that topic in the format of a Wikipedia page. Your summary should be informative and factual, covering the most important aspects of the topic. Start your summary with an introductory paragraph that gives an overview of the topic. My first topic is "The Great Barrier Reef."
+
 ## Contributors 😍
 
 Many thanks to these AI whisperers:
