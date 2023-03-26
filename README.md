@@ -38,6 +38,10 @@ I've authored an e-book called **"How to Make Money with ChatGPT: Strategies, Ti
 
 📖 **[Buy the e-book](https://fka.gumroad.com/l/how-to-make-money-with-chatgpt)**
 
+### Wondering how to efficiently store and re-use awesome AI prompts?
+
+Install and use **[Templify Extension](https://templify.l4b5.com/?utm_campaign=github-awesome-gpt-prompts)** to store frequently used messages/prompts and easily apply them on any web page, service or platform (including popular AI tools, like chatGPT, midjourney, etc).
+
 ---
 
 ### Using ChatGPT Desktop App
