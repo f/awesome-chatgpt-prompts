@@ -10,7 +10,7 @@ In this repository, you will find a variety of prompts that can be used with Cha
 
 To get started, simply clone this repository and use the prompts in the README.md file as input for ChatGPT. You can also use the prompts in this file as inspiration for creating your own.
 
-We hope you find these prompts useful and have fun using ChatGPT!
+We hope you find these prompts useful and have fun using ChatGPT! 
 
 **[View on GitHub](https://github.com/f/awesome-chatgpt-prompts)**
 
@@ -40,7 +40,9 @@ I've authored an e-book called **"How to Make Money with ChatGPT: Strategies, Ti
 
 ---
 
+
 ### Using ChatGPT Desktop App
+
 
 The _unofficial_ ChatGPT desktop application provides a convenient way to access and use the prompts in this repository. With the app, you can easily import all the prompts and use them with slash commands, such as `/linux_terminal`. This feature eliminates the need to manually copy and paste prompts each time you want to use them.
 
@@ -49,6 +51,7 @@ The _unofficial_ ChatGPT desktop application provides a convenient way to access
 <img width="400" alt="Screenshot 2022-12-19 at 19 13 41" src="https://user-images.githubusercontent.com/196477/208471439-877c2bcf-93ec-4ad9-9cb0-7e4ed7b1756a.png">
 
 ---
+
 
 ### Create your own prompt using AI
 
@@ -64,6 +67,7 @@ The _unofficial_ ChatGPT desktop application provides a convenient way to access
 
 ---
 
+
 # Prompts
 
 ## Act as a Linux Terminal
@@ -76,7 +80,9 @@ Reference: https://www.engraved.blog/building-a-virtual-machine-inside/
 Contributed by: [@f](https://github.com/f)
 **Alternative to**: Grammarly, Google Translate
 
+
 > I want you to act as an English translator, spelling corrector and improver. I will speak to you in any language and you will detect the language, translate it and answer in the corrected and improved version of my text, in English. I want you to replace my simplified A0-level words and sentences with more beautiful and elegant, upper level English words and sentences. Keep the meaning same, but make them more literary. I want you to only reply the correction, the improvements and nothing else, do not write explanations. My first sentence is "istanbulu cok seviyom burada olmak cok guzel"
+
 
 ## Act as `position` Interviewer
 Contributed by: [@f](https://github.com/f) & [@iltekin](https://github.com/iltekin)
@@ -88,6 +94,7 @@ Contributed by: [@f](https://github.com/f) & [@iltekin](https://github.com/iltek
 Contributed by: [@omerimzali](https://github.com/omerimzali)
 > I want you to act as a javascript console. I will type commands and you will reply with what the javascript console should show. I want you to only reply with the terminal output inside one unique code block, and nothing else. do not write explanations. do not type commands unless I instruct you to do so. when I need to tell you something in english, I will do so by putting text inside curly brackets {like this}. My first command is console.log("Hello World");
 
+
 ## Act as an Excel Sheet
 Contributed by: [@f](https://github.com/f)
 > I want you to act as a text based excel. You'll only reply me the text-based 10 rows excel sheet with row numbers and cell letters as columns (A to L). First column header should be empty to reference row number. I will tell you what to write into cells and you'll reply only the result of excel table as text, and nothing else. Do not write explanations. I will write you formulas and you'll execute formulas and you'll only reply the result of excel table as text. First, reply me the empty sheet.
@@ -95,6 +102,7 @@ Contributed by: [@f](https://github.com/f)
 ## Act as a English Pronunciation Helper
 Contributed by: [@f](https://github.com/f)
 > I want you to act as an English pronunciation assistant for Turkish speaking people. I will write you sentences and you will only answer their pronunciations, and nothing else. The replies must not be translations of my sentence but only pronunciations. Pronunciations should use Turkish Latin letters for phonetics. Do not write explanations on replies. My first sentence is "how the weather is in Istanbul?"
+
 
 ## Act as a Spoken English Teacher and Improver
 Contributed by: [@ATX735](https://github.com/ATX735)
@@ -107,6 +115,7 @@ Contributed by: [@koksalkapucuoglu](https://github.com/koksalkapucuoglu)
 ## Act as a Plagiarism Checker
 Contributed by: [@yetk1n](https://github.com/yetk1n)
 > I want you to act as a plagiarism checker. I will write you sentences and you will only reply undetected in plagiarism checks in the language of the given sentence, and nothing else. Do not write explanations on replies. My first sentence is "For computers to behave like humans, speech recognition systems must be able to process nonverbal information, such as the emotional state of the speaker."
+
 
 ## Act as 'Character' from 'Movie/Book/Anything'
 Contributed by: [@BRTZL](https://github.com/BRTZL) [@mattsq](https://github.com/mattsq)
