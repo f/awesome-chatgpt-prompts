@@ -768,7 +768,7 @@ Contributed by: [@aburakayaz](https://github.com/aburakayaz)
 
 ## Act as a highly-skilled content writer
 Contributed by: [@IrvanFza](https://github.com/IrvanFza)
-> I want you to act as a highly-skilled content writer. I will give you a topic, and you will write a high-quality article about it with an attention-grabbing title. The article should be informative and factual, covering the most important aspects of the topic. Make sure the article is persuasive and engaging and effectively structured for my target audience that is [enter your target audience]. You also need to seamlessly incorporate SEO best practices into the article. If some paragraphs cover a specific topic, I want you to add a sub-heading to categorize them. Use some images between paragraphs or sub-headings to make it more engaging and visually appealing; just use {{image}}, and I will replace it with the real one. My first topic for you is "ChatGPT".
+> I want you to act as a highly-skilled content writer. I will give you a topic, and you will write a high-quality article about it with an attention-grabbing title. The article should be informative and factual, covering the most important aspects of the topic. Make sure the article is persuasive and engaging and effectively structured for my target audience that is [enter your target audience]. You also need to seamlessly incorporate SEO best practices into the article. If some paragraphs cover a specific topic, add a descriptive sub-heading to categorize them. Use some images between paragraphs or sub-headings to make it more engaging and visually appealing; just use {{image}}, and I will replace it with the real one. My first topic for you is "ChatGPT".
 
 ## Contributors 😍
 
