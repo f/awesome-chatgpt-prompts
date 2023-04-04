@@ -20,7 +20,7 @@ We hope you find these prompts useful and have fun using ChatGPT!
 
 > ℹ️ **NOTE:** Sometimes, some of the prompts may not be working as you expected or may be rejected by the AI. Please try again, start a new thread, or log out and log back in. If these solutions do not work, please try rewriting the prompt using your own sentences while keeping the instructions same.
 
-**Download GPTPal (Desktop App for ChatGPT API)**: **[macOS](https://github.com/openai-rs/gptpal/releases/download/v0.1.1/GPTPal_0.1.0_x64.dmg)** / **[Windows](https://github.com/openai-rs/gptpal/releases/download/v0.1.1/GPTPal_0.1.0_x64_en-US.msi)** / **[Linux](https://github.com/openai-rs/gptpal/releases/download/v0.1.1/gpt-pal_0.1.0_amd64.deb)**
+**Download GPTPal (Desktop App for ChatGPT API)**: **[macOS](https://github.com/openai-rs/gptpal/releases/latest)** / **[Windows](https://github.com/openai-rs/gptpal/releases/latest)** / **[Linux](https://github.com/openai-rs/gptpal/releases/latest)**
 
 ### Want to Write Effective Prompts?
 
@@ -54,7 +54,7 @@ The _unofficial_ ChatGPT desktop application provides a convenient way to access
 
 ### Using GPTPal
 
-[GPTPal](https://github.com/openai-rs/gptpal) is a powerful desktop application for ChatGPT API. It enables you to synchronize all the prompts and use them with slash commands. Additionally, you can customize your experience by pinning your favorite prompts to your homepage for quick access.
+[GPTPal](https://github.com/openai-rs/gptpal) is an _unofficial_ desktop application for ChatGPT API. It allows you to synchronize all the prompts and use them with slash commands. Additionally, you can customize your experience by pinning your favorite prompts to your homepage for quick access.
 
 <img width="400" src="https://raw.githubusercontent.com/openai-rs/gptpal/main/src/assets/pin-prompt.png">
 
