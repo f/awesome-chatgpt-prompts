@@ -54,9 +54,9 @@ The _unofficial_ ChatGPT desktop application provides a convenient way to access
 
 ### Using GPTPal
 
-[GPTPal](https://github.com/openai-rs/gptpal) is an _unofficial_ desktop application for ChatGPT API. It allows you to synchronize all the prompts and use them with slash commands. Additionally, you can customize your experience by pinning your favorite prompts to your homepage for quick access.
+[GPTPal](https://github.com/openai-rs/gptpal) is an _unofficial_ desktop application for ChatGPT API with voice control. It allows you to synchronize all the prompts and use them with slash commands. Additionally, you can customize your experience by pinning your favorite prompts to your homepage for quick access.
 
-<img width="400" src="https://raw.githubusercontent.com/openai-rs/gptpal/main/src/assets/pin-prompt.png">
+<img width="400" src="https://raw.githubusercontent.com/openai-rs/gptpal/main/src/assets/voice.png">
 
 ---
 
