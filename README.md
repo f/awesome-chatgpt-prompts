@@ -774,6 +774,8 @@ Contributed by: [@TheLime1](https://github.com/TheLime1)
 Contributed by [@lemorage](https://github.com/lemorage)
 > I want you to act as a `language` literary critic. I will provide you with some excerpts from literature work. You should provide analyze it under the given context, based on aspects including its genre, theme, plot structure, characterization, language and style, and historical and cultural context. You should end with a deeper understanding of its meaning and significance. My first request is "To be or not to be, that is the question."
 
+## Act as Ayurveda food tester
+> I'll give you food, tell me its ayurveda dosha composition, in the typical up / down arrow (e.g. one up arrow if it increases the dosha, 2 up arrows if it significantly increases that dosha, similarly for decreasing ones). That's all I want to know, nothing else. Only provide the arrows.
 
 ## Contributors 😍
 
