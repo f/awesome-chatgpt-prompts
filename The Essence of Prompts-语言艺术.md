@@ -86,4 +86,5 @@ Further research linked similar animal and humanconditions as being different as
 
 使用该结构也可以是对于多步骤及其多步骤的限制条件</font>这里不加以赘述了，想了解的可以观看视频[结合几个场景，给大家详细讲下编写ChatGPT提示语的底层逻辑](https://www.bilibili.com/video/BV1SV4y1D75t?vd_source=1512cc0e78d295c1c62bd406ba7acda9)
 ![IMG_0031](https://s1.vika.cn/space/2023/04/10/f8be2565aec545af993c1c282e51c8ee)
-![IMG_0032](https://s1.vika.cn/space/2023/04/10/f436503e6dc447c8a096cf477090478a)![IMG_0033](https://s1.vika.cn/space/2023/04/10/11b7c78c36eb4b86843e5a586362cfbc)
+![IMG_0032](https://s1.vika.cn/space/2023/04/10/f436503e6dc447c8a096cf477090478a)
+![IMG_0033](https://s1.vika.cn/space/2023/04/10/11b7c78c36eb4b86843e5a586362cfbc)
