@@ -777,7 +777,7 @@ Contributed by [@lemorage](https://github.com/lemorage)
 ## Act as a political analyst
 
 Contributed by: [@TheLime1](https://github.com/TheLime1)
->I want you to act as a political analyst and provide theoretical opinions for both sides on a given topic. Your topic `topic`. What would the left and right opinions be on that topic, and how would they argue their stance? Please provide brief but distinct statements for each side.
+>I want you to act as a political analyst and provide theoretical opinions for both sides on a given topic. Your topic is `topic`. What would the left and right opinions be on that topic, and how would they argue their stance? Please provide brief but distinct statements for each side.
 
 
 ## Contributors 😍
