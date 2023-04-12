@@ -40,6 +40,16 @@ I've authored an e-book called **"How to Make Money with ChatGPT: Strategies, Ti
 
 ---
 
+## Other Prompting Resources
+
+### Want to Learn How to write image prompts for Midjourney AI?
+
+I've authored an e-book called **"The Art of Midjourney AI: A Guide to Creating Images from Text"**.
+
+📖 **[Read the e-book](https://fka.gumroad.com/l/the-art-of-midjourney-ai-guide-to-creating-images-from-text)**
+
+---
+
 ### Using ChatGPT Desktop App
 
 The _unofficial_ ChatGPT desktop application provides a convenient way to access and use the prompts in this repository. With the app, you can easily import all the prompts and use them with slash commands, such as `/linux_terminal`. This feature eliminates the need to manually copy and paste prompts each time you want to use them.
