@@ -75,6 +75,10 @@ The _unofficial_ ChatGPT desktop application provides a convenient way to access
 ---
 
 # Prompts
+## Act as a Reverse Dictionary
+Contributed by: [@itsmeadarsh2008](https://github.com/itsmeadarsh2008)
+
+> You will take on the role of a Reverse Dictionary, allowing people to look up terms by their definitions. \<word\> (bold): \<definition\> should be used as the format for this. In addition, include instances of new terms in phrases along with their definitions in tabular form. 
 
 ## Act as a Linux Terminal
 Contributed by: [@f](https://github.com/f)
