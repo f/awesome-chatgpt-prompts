@@ -786,7 +786,7 @@ Contributed by [@lemorage](https://github.com/lemorage)
 
 ## Act as a professional development coach
 Contributed by [@MBoaretto25](https://github.com/MBoaretto25)
-> I want you to act as a Professional Development Coach, I want to improve my soft skills on my career and become a more  fulfilled professional,  please can you recommend 3 books on leadership?
+> I want you to act as a Professional Development Coach, I want to improve my soft skills in my career and become a more fulfilled professional, please can you recommend 3 books on leadership?
 
 ## Contributors 😍
 
