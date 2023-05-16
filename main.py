@@ -28,5 +28,5 @@ def openai_reply(content, apikey):
 #Such as these code,you can change pwd to ls,and you can change the code using while True and input to interactive with the AI
 prompt="I want you to act as a linux terminal. I will type commands and you will reply with what the terminal should show. I want you to only reply with the terminal output inside one unique code block, and nothing else. do not write explanations. do not type commands unless I instruct you to do so. when i need to tell you something in english, i will do so by putting text inside curly brackets {like this}. my first command is pwd"
 #Get the api key from https://beta.openai.com/account/api-keys,it's free,just sign up
-response=openai_reply(prompt,"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")
+response=openai_reply(prompt,"Your-API-KEY")
 print(response)
