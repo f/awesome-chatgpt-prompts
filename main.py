@@ -1,6 +1,6 @@
 import openai
 def generate_prompt(prompt):
-    #You can DIY by these function
+    #U can DIY by these function
     return prompt
 def openai_reply(content, apikey):
     openai.api_key = apikey
