@@ -27,7 +27,7 @@ I've authored a free e-book called **"The Art of ChatGPT Prompting: A Guide to C
 📖 **[Read the free e-book](https://fka.gumroad.com/l/art-of-chatgpt-prompting)**
 
 ### Want to deploy your own Prompt App?
-
+ 
 The folks at [Steamship](https://www.steamship.com/build?utm_source=github&utm_medium=explainer&utm_campaign=awesome_gpt_prompts&utm_id=awesome_gpt_prompts) built a framework to host and share your GPT apps. They're sponsoring this repo by giving you free (up to 500 calls per day) access to the latest GPT models.  
 
 👷‍♂️ **[Build your own GPT Prompt App](https://www.steamship.com/build?utm_source=github&utm_medium=explainer&utm_campaign=awesome_gpt_prompts&utm_id=awesome_gpt_prompts)**
