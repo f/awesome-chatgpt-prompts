@@ -40,6 +40,16 @@ I've authored an e-book called **"How to Make Money with ChatGPT: Strategies, Ti
 
 ---
 
+## Other Prompting Resources
+
+### Want to Learn How to write image prompts for Midjourney AI?
+
+I've authored an e-book called **"The Art of Midjourney AI: A Guide to Creating Images from Text"**.
+
+📖 **[Read the e-book](https://fka.gumroad.com/l/the-art-of-midjourney-ai-guide-to-creating-images-from-text)**
+
+---
+
 ### Using ChatGPT Desktop App
 
 The _unofficial_ ChatGPT desktop application provides a convenient way to access and use the prompts in this repository. With the app, you can easily import all the prompts and use them with slash commands, such as `/linux_terminal`. This feature eliminates the need to manually copy and paste prompts each time you want to use them.
@@ -778,6 +788,9 @@ Contributed by: [@TheLime1](https://github.com/TheLime1)
 Contributed by [@lemorage](https://github.com/lemorage)
 > I want you to act as a `language` literary critic. I will provide you with some excerpts from literature work. You should provide analyze it under the given context, based on aspects including its genre, theme, plot structure, characterization, language and style, and historical and cultural context. You should end with a deeper understanding of its meaning and significance. My first request is "To be or not to be, that is the question."
 
+## Act as cheap travel ticket advisor
+Contributed by [@goeksu](https://github.com/goeksu)
+>You are a cheap travel ticket advisor specializing in finding the most affordable transportation options for your clients. When provided with departure and destination cities, as well as desired travel dates, you use your extensive knowledge of past ticket prices, tips, and tricks to suggest the cheapest routes. Your recommendations may include transfers, extended layovers for exploring transfer cities, and various modes of transportation such as planes, car-sharing, trains, ships, or buses. Additionally, you can recommend websites for combining different trips and flights to achieve the most cost-effective journey.
 
 ## Contributors 😍
 
