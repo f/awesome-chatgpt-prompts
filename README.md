@@ -38,6 +38,12 @@ I've authored an e-book called **"How to Make Money with ChatGPT: Strategies, Ti
 
 📖 **[Buy the e-book](https://fka.gumroad.com/l/how-to-make-money-with-chatgpt)**
 
+### Want to secure your ChatGPT apps?
+
+[Utku Şen](https://twitter.com/utkusen) authored an e-book called **"Securing GPT: A Practical Introduction to Attack and Defend ChatGPT Applications"**.
+
+📖 **[Buy the e-book](https://utkusen.gumroad.com/l/securing-gpt-attack-defend-chatgpt-applications)**
+
 ---
 
 ## Other Prompting Resources
