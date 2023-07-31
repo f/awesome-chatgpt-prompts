@@ -70,6 +70,12 @@ The _unofficial_ ChatGPT desktop application provides a convenient way to access
 
 [Merve Noyan](https://huggingface.co/merve) created an exceptional [ChatGPT Prompt Generator App](https://huggingface.co/spaces/merve/ChatGPT-prompt-generator), allowing users to generate prompts tailored to their desired persona. The app uses this repository as its training dataset.
   
+### Using Browser Extension
+
+The _unofficial_ ChatGPT browser extension [chatgpt-prompt-helper](https://chatgptprompt.app/) also provides a convenient way to access and use the prompts in this repository.
+
+<img width="400" alt="Screenshot extension" src="https://raw.githubusercontent.com/cottom/chatgpt-prompt-extension/master/images/feature.png">
+
 ---
 
 ### Using prompts.chat
