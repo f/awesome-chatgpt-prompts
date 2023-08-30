@@ -797,7 +797,7 @@ Contributed by [@goeksu](https://github.com/goeksu)
 ## Contributors 😍
 
 Many thanks to these AI whisperers:
-
+<openworkspacesource@gmail.com
 <a href="https://github.com/f/awesome-chatgpt-prompts/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=f/awesome-chatgpt-prompts" />
 </a>
