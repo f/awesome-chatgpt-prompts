@@ -1,5 +1,5 @@
 > # 🇵🇸 FREE PALESTINE!
-> Israel is killing tens of thousands of palestinian civilians and displacing millions more. **It's a genocide**. Please help defend their freedom and Palesine's right to exist.
+> Israel is killing tens of thousands of palestinian civilians and displacing millions more. **It's a genocide**. Please help defend their freedom and Palestine's right to exist.
 
 ---
 
