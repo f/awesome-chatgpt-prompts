@@ -1,3 +1,8 @@
+> # 🇵🇸 FREE PALESTINE!
+> Israel killing tens of thousands of palestinian civilians and displacing millions more. **It's a genocide**. Please help defend their freedom and Palesine's right to exist.
+
+---
+
 <p align="center"><h1>🧠 Awesome ChatGPT Prompts</h1></p>
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
