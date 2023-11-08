@@ -10,6 +10,8 @@
 ### Sponsors
 <a href="https://www.illacloud.com/"><img src="https://avatars.githubusercontent.com/u/93245159?s=200&v=4" height="80"></a>
 
+<a href="https://il.ly/"><img src="https://avatars.githubusercontent.com/u/304283?s=200&v=4" height="80"></a>
+
 **[Be my sponsor and your logo will be here and prompts.chat!](https://github.com/sponsors/f/sponsorships?sponsor=f&tier_id=319423)**
 
 ---
@@ -75,7 +77,7 @@ The _unofficial_ ChatGPT desktop application provides a convenient way to access
 ### Create your own prompt using AI
 
 [Merve Noyan](https://huggingface.co/merve) created an exceptional [ChatGPT Prompt Generator App](https://huggingface.co/spaces/merve/ChatGPT-prompt-generator), allowing users to generate prompts tailored to their desired persona. The app uses this repository as its training dataset.
-  
+
 ---
 
 ### Using prompts.chat
@@ -87,6 +89,19 @@ The _unofficial_ ChatGPT desktop application provides a convenient way to access
 ---
 
 # Prompts
+
+## ChatGPT SEO prompts
+Contributed by: [StoryChief AI](https://www.storychief.io/ai-power-mode)
+Reference: https://storychief.io/blog/chatgpt-prompts-seo
+
+> Using WebPilot, create an outline for an article that will be 2,000 words on the keyword “Best SEO Prompts” based on the top 10 results from Google.<br/>
+> Include every relevant heading possible. Keep the keyword density of the headings high.<br/>
+> For each section of the outline, include the word count.<br/>
+> Include FAQs section in the outline too, based on people also ask section from Google for the keyword.<br/>
+> This outline must be very detailed and comprehensive, so that I can create a 2,000 word article from it.<br/>
+> Generate a long list of LSI and NLP keywords related to my keyword. Also include any other words related to the keyword.<br/>
+> Give me a list of 3 relevant external links to include and the recommended anchor text. Make sure they’re not competing articles.<br/>
+> Split the outline into part 1 and part 2.
 
 ## Act as a Linux Terminal
 Contributed by: [@f](https://github.com/f)
