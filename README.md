@@ -92,7 +92,7 @@ The _unofficial_ ChatGPT desktop application provides a convenient way to access
 
 ## ChatGPT SEO prompts
 Contributed by: [StoryChief AI](https://www.storychief.io/ai-power-mode)
-Reference: https://storychief.io/blog/chatgpt-prompts-seo
+Reference: [https://storychief.io/blog/chatgpt-prompts-seo](https://storychief.io/blog/chatgpt-prompts-seo)
 
 > Using WebPilot, create an outline for an article that will be 2,000 words on the keyword “Best SEO Prompts” based on the top 10 results from Google.<br/>
 > Include every relevant heading possible. Keep the keyword density of the headings high.<br/>
@@ -105,7 +105,7 @@ Reference: https://storychief.io/blog/chatgpt-prompts-seo
 
 ## Act as a Linux Terminal
 Contributed by: [@f](https://github.com/f)
-Reference: https://www.engraved.blog/building-a-virtual-machine-inside/
+Reference: [https://www.engraved.blog/building-a-virtual-machine-inside/](https://www.engraved.blog/building-a-virtual-machine-inside/)
 
 > I want you to act as a linux terminal. I will type commands and you will reply with what the terminal should show. I want you to only reply with the terminal output inside one unique code block, and nothing else. do not write explanations. do not type commands unless I instruct you to do so. When I need to tell you something in English, I will do so by putting text inside curly brackets {like this}. My first command is pwd
 
