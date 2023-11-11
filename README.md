@@ -9,10 +9,19 @@
 
 ### Sponsors
 <a href="https://www.illacloud.com/"><img src="https://avatars.githubusercontent.com/u/93245159?s=200&v=4" height="80"></a>
-
 <a href="https://il.ly/"><img src="https://avatars.githubusercontent.com/u/304283?s=200&v=4" height="80"></a>
 
 **[Be my sponsor and your logo will be here and prompts.chat!](https://github.com/sponsors/f/sponsorships?sponsor=f&tier_id=319423)**
+
+---
+
+### ⭐️ NEW: Awesome ChatGPT Store: A Hub for Custom GPTs
+
+Now you can access [Awesome ChatGPT Store](https://github.com/devisasari/awesome-chatgpt-store), a dynamic new addition to the ChatGPT ecosystem! With the introduction of customizable GPT models, our store provides a curated collection of specialized ChatGPT GPTs, each tailored for unique applications and use cases.
+
+Explore a wide range of GPTs, from those optimized for specific programming languages, to models fine-tuned for creative writing, technical analysis, and more. This repository is not just a store; it's a community-driven platform where developers and enthusiasts can share, discover, and leverage the full potential of ChatGPT's versatility.
+
+Dive into the world of customized conversational AI models and enrich your projects with cutting-edge technology. Visit the Awesome ChatGPT Store now at [Awesome ChatGPT Store](https://github.com/devisasari/awesome-chatgpt-store) and start exploring the possibilities!
 
 ---
 
