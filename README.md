@@ -1,5 +1,5 @@
-> # 🇵🇸 FREE PALESTINE!
-> Israel is killing tens of thousands of palestinian civilians and displacing millions more. **It's a genocide**. Please help defend their freedom and Palestine's right to exist.
+> # 🇮🇱 STAND WITH ISRAEL!
+> The Hamas Attack Is Israel’s 9/11. On October 7, militants from Gaza breached the heavily fortified border fence with Israel and infiltrated deep into Israeli territory. Once there, Hamas gunmen reportedly killed over 1,400 individuals, comprising both civilians and soldiers, and took more than 200 hostages, according to Israeli authorities. **This incident has been described as one of the most devastating attacks on Jews since the Holocaust.**
 
 ---
 
