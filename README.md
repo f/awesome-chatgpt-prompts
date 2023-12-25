@@ -1,14 +1,6 @@
-> # 🇵🇸 FREE PALESTINE!
-> Israel is killing tens of thousands of palestinian civilians and displacing millions more. **It's a genocide**. Please help defend their freedom and Palestine's right to exist.
-
----
-
 <p align="center"><h1>🧠 Awesome ChatGPT Prompts</h1></p>
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
-
-### Sponsors
-<a href="https://il.ly/"><img src="https://avatars.githubusercontent.com/u/304283?s=200&v=4" height="80"></a>
 
 **[Be my sponsor and your logo will be here and prompts.chat!](https://github.com/sponsors/f/sponsorships?sponsor=f&tier_id=319423)**
 
@@ -845,3 +837,8 @@ Many thanks to these AI whisperers:
 # License
 
 CC-0
+
+---
+
+> # 🇵🇸 FREE PALESTINE!
+> Israel is killing tens of thousands of palestinian civilians and displacing millions more. **It's a genocide**. Please help defend their freedom and Palestine's right to exist.
