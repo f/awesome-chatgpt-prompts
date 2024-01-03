@@ -14,7 +14,7 @@ class PromptFinder:
 
 
 if __name__ == "__main__":
-    prompt_finder = PromptFinder("./prompts.csv")
+    prompt_finder = PromptFinder("../prompts.csv")
     if not sys.stdin.isatty():
         act_to_search = sys.stdin.readline().rstrip()
     else:
