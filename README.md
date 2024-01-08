@@ -32,6 +32,12 @@ Dive into the world of customized conversational AI models and enrich your proje
 
 ---
 
+### AI Character for GPT Chrome Extension: A tool to fast access your favorite prompts
+
+You can use and add your favorite prompts for daily usage with [AI Character for GPT](https://chromewebstore.google.com/detail/ai-character-for-gpt/daoeioifimkjegafelcaljboknjkkohh), a built-in button in most conversational AIs to help your start your questions.
+
+---
+
 **Download ChatGPT Desktop App**: **[macOS](https://github.com/lencx/ChatGPT/releases/download/v0.10.1/ChatGPT_0.10.1_x64.dmg)** / **[Windows](https://github.com/lencx/ChatGPT/releases/download/v0.10.1/ChatGPT_0.10.1_x64_en-US.msi)** / **[Linux](https://github.com/lencx/ChatGPT/releases/download/v0.10.1/chat-gpt_0.10.1_amd64.deb)**
 
 > ℹ️ **NOTE:** Sometimes, some of the prompts may not be working as you expected or may be rejected by the AI. Please try again, start a new thread, or log out and log back in. If these solutions do not work, please try rewriting the prompt using your own sentences while keeping the instructions same.
