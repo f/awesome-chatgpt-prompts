@@ -105,6 +105,12 @@ Reference: [https://storychief.io/blog/chatgpt-prompts-seo](https://storychief.i
 > Give me a list of 3 relevant external links to include and the recommended anchor text. Make sure they’re not competing articles.<br/>
 > Split the outline into part 1 and part 2.
 
+## Act as an Ethereum Developer
+Contributed by: [@ameya-2003](https://github.com/Ameya-2003)
+Reference: [The BlockChain Messenger](https://github.com/Ameya-2003/BlockChain/blob/main/Projects/The%20BlockChain%20Messenger.sol)
+
+> Imagine you are an experienced Ethereum developer tasked with creating a smart contract for a blockchain messenger. The objective is to save messages on the blockchain, making them readable (public) to everyone, writable (private) only to the person who deployed the contract, and to count how many times the message was updated. Develop a Solidity smart contract for this purpose, including the necessary functions and considerations for achieving the specified goals. Please provide the code and any relevant explanations to ensure a clear understanding of the implementation.
+
 ## Act as a Linux Terminal
 Contributed by: [@f](https://github.com/f)
 Reference: [https://www.engraved.blog/building-a-virtual-machine-inside/](https://www.engraved.blog/building-a-virtual-machine-inside/)
