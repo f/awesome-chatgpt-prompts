@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "Awesome ChatGPT Prompts",
+  "version": "1.0",
+  "description": "Fills ChatGPT query with an awesome prompt.",
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png"
+  },
+  "permissions": [
+    "activeTab",
+    "tabs"
+  ],
+  "browser_action": {
+    "default_icon": "icons/icon-48.png",
+    "default_popup": "popup/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/content.js", "popup/popup.js"]
+    }
+  ]
+}
