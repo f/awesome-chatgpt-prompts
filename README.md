@@ -16,6 +16,8 @@ To get started, simply clone this repository and use the prompts in the README.m
 
 We hope you find these prompts useful and have fun using ChatGPT!
 
+**[Try prompts on Ultimate ChatGPT (Free to Use)](https://chatgpt.kiask.xyz)**
+
 **[View on GitHub](https://github.com/f/awesome-chatgpt-prompts)**
 
 **[View on Hugging Face](https://huggingface.co/datasets/fka/awesome-chatgpt-prompts/)**
