@@ -36,6 +36,8 @@ Dive into the world of customized conversational AI models and enrich your proje
 
 > ℹ️ **NOTE:** Sometimes, some of the prompts may not be working as you expected or may be rejected by the AI. Please try again, start a new thread, or log out and log back in. If these solutions do not work, please try rewriting the prompt using your own sentences while keeping the instructions same.
 
+**Download GPTPal (Desktop App for ChatGPT API)**: **[macOS](https://github.com/openai-rs/gptpal/releases/latest)** / **[Windows](https://github.com/openai-rs/gptpal/releases/latest)** / **[Linux](https://github.com/openai-rs/gptpal/releases/latest)**
+
 ### Want to Write Effective Prompts?
 
 I've authored a free e-book called **"The Art of ChatGPT Prompting: A Guide to Crafting Clear and Effective Prompts"**.
@@ -73,6 +75,14 @@ The _unofficial_ ChatGPT desktop application provides a convenient way to access
 > **Desktop App is an unofficial [open source project by @lencx](https://github.com/lencx/ChatGPT). It's a simple wrapper for ChatGPT web interface with powerful extras.**
 
 <img width="400" alt="Screenshot 2022-12-19 at 19 13 41" src="https://user-images.githubusercontent.com/196477/208471439-877c2bcf-93ec-4ad9-9cb0-7e4ed7b1756a.png">
+
+---
+
+### Using GPTPal
+
+[GPTPal](https://github.com/openai-rs/gptpal) is an _unofficial_ desktop application for ChatGPT API with voice control. It allows you to synchronize all the prompts and use them with slash commands. Additionally, you can customize your experience by pinning your favorite prompts to your homepage for quick access.
+
+<img width="400" src="https://raw.githubusercontent.com/openai-rs/gptpal/main/src/assets/voice.png">
 
 ---
 
