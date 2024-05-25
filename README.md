@@ -98,6 +98,7 @@ The _unofficial_ ChatGPT desktop application provides a convenient way to access
 
 ## ChatGPT (3.5) The Hacker Jailbreak
 Contributed by: [MarkCyber](https://github.com/MarkCyber)
+
 Important: This script will consist of multiple steps. Follow in order. Also, do not take offense to the curse words. This is done intentionally for the purposes needed.
 
 Step 1: Open [this](https://www.rapidtables.com/convert/number/ascii-to-hex.html) to convert your request into hexadecimal.
