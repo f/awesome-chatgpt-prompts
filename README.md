@@ -96,6 +96,17 @@ The _unofficial_ ChatGPT desktop application provides a convenient way to access
 
 # Prompts
 
+## Synthetic Multilingual LLM Prompts
+Contributed by: [Gretel](https://gretel.ai)
+Reference: [https://huggingface.co/datasets/gretelai/synthetic_multilingual_llm_prompts](https://huggingface.co/datasets/gretelai/synthetic_multilingual_llm_prompts)
+
+- The "Synthetic Multilingual LLM Prompts" dataset features 1,250 synthetic LLM prompts generated using [Gretel Navigator](https://gretel.ai/navigator), available in seven different languages.
+- To ensure accuracy, diversity, and maintain translation quality and consistency, we employed Gretel Navigator both as a generation tool and in an LLM-as-a-judge approach. More info can be found in the [README](https://huggingface.co/datasets/gretelai/synthetic_multilingual_llm_prompts).
+- This dataset is designed to be used with LLMs to generate diverse and multilingual responses based on the provided prompts.
+- The dataset includes prompts in English, Dutch, French, Spanish, German, Brazilian Portuguese, and Simplified Chinese. Detailed evaluations of translation quality are available for each language.
+- This dataset is released under the Apache 2.0 license, making it open for public use with proper attribution. We invite the community to explore, utilize, and contribute to this dataset to enhance the versatility and richness of LLM interactions.
+- Disclaimer: The translations and overall quality of this dataset are generated synthetically and have not been perfected by human review. As a result, inaccuracies may be present.
+
 ## ChatGPT SEO prompts
 Contributed by: [StoryChief AI](https://www.storychief.io/ai-power-mode)
 Reference: [https://storychief.io/blog/chatgpt-prompts-seo](https://storychief.io/blog/chatgpt-prompts-seo)
