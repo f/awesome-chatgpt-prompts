@@ -16,6 +16,9 @@
       <h1><a href="{{ "/" | absolute_url }}">{{ site.title }}</a></h1>
       {% endif %}
 
+      <!-- Navigation link to sponsor-wall.html added -->
+      <p><a href="{{ '/sponsor-wall.html' | relative_url }}">Sponsor Wall</a></p>
+
       {{ content }}
 
       {% if site.github.private != true and site.github.license %}
