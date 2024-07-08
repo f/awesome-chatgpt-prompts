@@ -7,10 +7,45 @@
 
 {% seo %}
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    <style>
+      :root {
+        --bg-color-light: #ffffff;
+        --bg-color-dark: #1a1a1a;
+        --text-color-light: #000000;
+        --text-color-dark: #ffffff;
+      }
+
+      body {
+        background-color: var(--bg-color-light);
+        color: var(--text-color-light);
+      }
+
+      body.dark-mode {
+        background-color: var(--bg-color-dark);
+        color: var(--text-color-dark);
+      }
+
+      .dark-mode-toggle {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        background-color: var(--bg-color-light);
+        color: var(--text-color-light);
+        border: none;
+        padding: 0.5rem;
+        cursor: pointer;
+      }
+
+      body.dark-mode .dark-mode-toggle {
+        background-color: var(--bg-color-dark);
+        color: var(--text-color-dark);
+      }
+    </style>
     {% include head-custom.html %}
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6945602608405209" crossorigin="anonymous"></script>
   </head>
   <body>
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌞</button>
     <div class="container-lg px-3 my-5 markdown-body">
       {% if site.title and site.title != page.title %}
       <h1><a href="{{ "/" | absolute_url }}">{{ site.title }}</a></h1>
@@ -46,6 +81,22 @@
           }
         }, false);
         x.previousElementSibling.previousElementSibling.prepend(button);
+      });
+
+      function toggleDarkMode() {
+        const body = document.body;
+        body.classList.toggle('dark-mode');
+        const isDarkMode = body.classList.contains('dark-mode');
+        localStorage.setItem('dark-mode', isDarkMode);
+        document.querySelector('.dark-mode-toggle').textContent = isDarkMode ? '🌙' : '🌞';
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const isDarkMode = localStorage.getItem('dark-mode') === 'true';
+        if (isDarkMode) {
+          document.body.classList.add('dark-mode');
+          document.querySelector('.dark-mode-toggle').textContent = '🌙';
+        }
       });
     </script>
     <style>video { max-width: 100% !important; }</style>
