@@ -94,6 +94,14 @@ The _unofficial_ ChatGPT desktop application provides a convenient way to access
 
 ---
 
+## Dark Mode Implementation
+
+We have implemented a dark mode for this repository to enhance your reading experience. The dark mode is implemented using CSS variables and a toggle button. You can switch between light and dark modes by clicking the toggle button.
+
+## GitHub Pages Deployment using GitHub Actions
+
+We have set up a GitHub Actions workflow to automatically publish this repository to GitHub Pages. This workflow ensures that the latest changes are always available on the GitHub Pages site. You can find the workflow configuration in the `.github/workflows/publish.yml` file.
+
 # Prompts
 
 ## ChatGPT SEO prompts
