@@ -2,7 +2,7 @@
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
-Sponsors
+### Sponsors
 
 <a href="https://hf.co" target="_blank"><img height="40" alt="Hugging Face logo" src="https://github.com/user-attachments/assets/6fedf067-437c-48e7-bb2f-44c1feab08fc"></a>
 
