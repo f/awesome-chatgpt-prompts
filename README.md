@@ -5,7 +5,7 @@
 ### Sponsors
 
 <a href="https://hf.co/chat" target="_blank">
-  <img height="40" alt="Hugging Face logo" src="https://github.com/user-attachments/assets/4187ef06-7cae-402a-a410-e0a999758fed">
+  <img height="60" alt="Hugging Face logo" src="https://github.com/user-attachments/assets/4187ef06-7cae-402a-a410-e0a999758fed">
 </a>
 
 **[Be my sponsor and your logo will be here and prompts.chat!](https://github.com/sponsors/f/sponsorships?sponsor=f&tier_id=319423)**
