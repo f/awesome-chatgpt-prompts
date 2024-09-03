@@ -2,13 +2,16 @@
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
-### Sponsors
 
-<a href="https://hf.co/chat" target="_blank">
-  <img height="60" alt="Hugging Face logo" src="https://github.com/user-attachments/assets/4187ef06-7cae-402a-a410-e0a999758fed">
-</a>
+<h2 align="center">Sponsors</h2>
 
-**[Be my sponsor and your logo will be here and prompts.chat!](https://github.com/sponsors/f/sponsorships?sponsor=f&tier_id=319423)**
+<p align="center">
+  <a href="https://hf.co/chat" align="center" target="_blank">
+    <img height="60" alt="Hugging Face logo" src="https://github.com/user-attachments/assets/4187ef06-7cae-402a-a410-e0a999758fed">
+  </a>
+  <br>
+  <sub><a href="https://github.com/sponsors/f/sponsorships?sponsor=f&amp;tier_id=319423">Be my sponsor and your logo will be here and prompts.chat!</a></sub>
+</p>
 
 ---
 
