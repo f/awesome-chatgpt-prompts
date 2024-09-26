@@ -2,14 +2,17 @@
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
-
 <h2 align="center">Sponsors</h2>
 
 <p align="center">
   <a href="https://clemta.com" align="center" target="_blank">
     <img height="50" alt="Clemta logo" src="https://clemta.com/wp-content/uploads/2023/03/logo-clemta-com-1.png.webp">
   </a>
-  <br>
+  <br><br>
+  <a href="https://llmchat.co" align="center" target="_blank">
+    <img height="25" alt="LLMChat" src="https://github.com/user-attachments/assets/78bf6b22-234c-4ee2-a484-869e749eef42">
+  </a>
+  <br><sub><a href="https://git.new/llmchat" target="_blank">https://git.new/llmchat</a></sub><br><br>
   <a href="https://hf.co/chat" align="center" target="_blank">
     <img height="60" alt="Hugging Face logo" src="https://github.com/user-attachments/assets/4187ef06-7cae-402a-a410-e0a999758fed">
   </a>
