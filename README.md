@@ -2,7 +2,23 @@
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
-**[Be my sponsor and your logo will be here and prompts.chat!](https://github.com/sponsors/f/sponsorships?sponsor=f&tier_id=319423)**
+<h2 align="center">Sponsors</h2>
+
+<p align="center">
+  <a href="https://clemta.com" align="center" target="_blank">
+    <img height="50" alt="Clemta logo" src="https://clemta.com/wp-content/uploads/2023/03/logo-clemta-com-1.png.webp">
+  </a>
+  <br><br>
+  <a href="https://llmchat.co" align="center" target="_blank">
+    <img height="25" alt="LLMChat" src="https://github.com/user-attachments/assets/78bf6b22-234c-4ee2-a484-869e749eef42">
+  </a>
+  <br><sub><a href="https://git.new/llmchat" target="_blank">https://git.new/llmchat</a></sub><br><br>
+  <a href="https://hf.co/chat" align="center" target="_blank">
+    <img height="60" alt="Hugging Face logo" src="https://github.com/user-attachments/assets/4187ef06-7cae-402a-a410-e0a999758fed">
+  </a>
+  <br>
+  <sub><a href="https://github.com/sponsors/f/sponsorships?sponsor=f&amp;tier_id=319423">Be my sponsor and your logo will be here and prompts.chat!</a></sub>
+</p>
 
 ---
 
@@ -32,13 +48,11 @@ Dive into the world of customized conversational AI models and enrich your proje
 
 ---
 
-**Download ChatGPT Desktop App**: **[macOS](https://github.com/lencx/ChatGPT/releases/download/v0.10.1/ChatGPT_0.10.1_x64.dmg)** / **[Windows](https://github.com/lencx/ChatGPT/releases/download/v0.10.1/ChatGPT_0.10.1_x64_en-US.msi)** / **[Linux](https://github.com/lencx/ChatGPT/releases/download/v0.10.1/chat-gpt_0.10.1_amd64.deb)**
-
 > ℹ️ **NOTE:** Sometimes, some of the prompts may not be working as you expected or may be rejected by the AI. Please try again, start a new thread, or log out and log back in. If these solutions do not work, please try rewriting the prompt using your own sentences while keeping the instructions same.
 
 ### Want to Write Effective Prompts?
 
-I've authored a free e-book called **"The Art of ChatGPT Prompting: A Guide to Crafting Clear and Effective Prompts"**.
+I've authored an e-book called **"The Art of ChatGPT Prompting: A Guide to Crafting Clear and Effective Prompts"**.
 
 📖 **[Read the free e-book](https://fka.gumroad.com/l/art-of-chatgpt-prompting)**
 
@@ -66,16 +80,6 @@ I've authored an e-book called **"The Art of Midjourney AI: A Guide to Creating 
 
 ---
 
-### Using ChatGPT Desktop App
-
-The _unofficial_ ChatGPT desktop application provides a convenient way to access and use the prompts in this repository. With the app, you can easily import all the prompts and use them with slash commands, such as `/linux_terminal`. This feature eliminates the need to manually copy and paste prompts each time you want to use them.
-
-> **Desktop App is an unofficial [open source project by @lencx](https://github.com/lencx/ChatGPT). It's a simple wrapper for ChatGPT web interface with powerful extras.**
-
-<img width="400" alt="Screenshot 2022-12-19 at 19 13 41" src="https://user-images.githubusercontent.com/196477/208471439-877c2bcf-93ec-4ad9-9cb0-7e4ed7b1756a.png">
-
----
-
 ### Create your own prompt using AI
 
 [Merve Noyan](https://huggingface.co/merve) created an exceptional [ChatGPT Prompt Generator App](https://huggingface.co/spaces/merve/ChatGPT-prompt-generator), allowing users to generate prompts tailored to their desired persona. The app uses this repository as its training dataset.
@@ -89,6 +93,20 @@ The _unofficial_ ChatGPT desktop application provides a convenient way to access
 <video autoplay loop muted playsinline src="https://user-images.githubusercontent.com/196477/207992596-6846398c-9ee7-4d7b-8fbe-b7c9e6daad23.mov"></video>
 
 ---
+
+## Dark Mode (on https://prompts.chat)
+
+We have implemented a dark mode for this repository to enhance your reading experience. The dark mode is implemented using CSS variables and a toggle button. You can switch between light and dark modes by clicking the toggle button.
+
+## GitHub Pages Deployment using GitHub Actions
+
+We have set up a GitHub Actions workflow to automatically publish this repository to GitHub Pages. This workflow ensures that the latest changes are always available on the GitHub Pages site. You can find the workflow configuration in the `.github/workflows/publish.yml` file.
+
+## Unmerged Prompts
+
+There are many Pull Requests to this repository waiting to be merged. There are many hidden gems there. Take a look!
+
+📖 **[View Unmerged Prompts](https://github.com/f/awesome-chatgpt-prompts/pulls)**
 
 # Prompts
 
@@ -837,10 +855,21 @@ Contributed by: [@JulianFisla](https://github.com/JulianFisla)
 
 >I want you to act as a person who plays a lot of League of Legends. Your rank in the game is diamond, which is above the average but not high enough to be considered a professional. You are irrational, get angry and irritated at the smallest things, and blame your teammates for all of your losing games. You do not go outside of your room very often, besides for your school/work, and the occasional outing with friends. If someone asks you a question, answer it honestly, but do not share much interest in questions outside of League of Legends. If someone asks you a question that isn't about League of Legends, at the end of your response try and loop the conversation back to the video game. You have few desires in life besides playing the video game. You play the jungle role and think you are better than everyone else because of it.
 
+
 ## Act as a Rephraser with Obfuscation
 Contributed by: [@FahadBinHussain](https://github.com/FahadBinHussain)
 
 >I would like you to act as a language assistant who specializes in rephrasing with obfuscation. The task is to take the sentences I provide and rephrase them in a way that conveys the same meaning but with added complexity and ambiguity, making the original source difficult to trace. This should be achieved while maintaining coherence and readability. The rephrased sentences should not be translations or direct synonyms of my original sentences, but rather creatively obfuscated versions. Please refrain from providing any explanations or annotations in your responses. The first sentence I'd like you to work with is 'The quick brown fox jumps over the lazy dog'.
+
+## Act as a Restaurant Owner
+Contributed by: [@buimatt](https://github.com/buimatt)
+
+>I want you to act as a Restaurant Owner. When given a restaurant theme, give me some dishes you would put on your menu for appetizers, entrees, and desserts. Give me basic recipes for these dishes. Also give me a name for your restaurant, and then some ways to promote your restaurant. The first prompt is "Taco Truck"
+
+## Act as a Architectural Expert
+Contributed by: [@nextdoorUncleLiu](https://github.com/nextdoorUncleLiu)
+
+>I am an expert in the field of architecture, well-versed in various aspects including architectural design, architectural history and theory, structural engineering, building materials and construction, architectural physics and environmental control, building codes and standards, green buildings and sustainable design, project management and economics, architectural technology and digital tools, social cultural context and human behavior, communication and collaboration, as well as ethical and professional responsibilities. I am equipped to address your inquiries across these dimensions without necessitating further explanations.
 
 ## Contributors 😍
 
