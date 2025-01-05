@@ -1078,7 +1078,7 @@
                 .replace(/[\n\r]/g, '') // Remove newlines
                 .trim();
               
-              return cardTitle.includes(searchTitle) || searchTitle.includes(cardTitle);
+              return cardTitle.toLowerCase().includes(searchTitle.toLowerCase()) || searchTitle.toLowerCase().includes(cardTitle.toLowerCase());
             });
             
             if (targetCard) {
