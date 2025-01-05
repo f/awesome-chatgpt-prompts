@@ -186,51 +186,77 @@ jobs:
                   readmeContent = readmeContent.slice(0, contributorsIndex) + newSection + readmeContent.slice(contributorsIndex);
                 }
 
-                // Get current files from PR branch to get their SHAs
-                const { data: prReadmeFile } = await octokit.repos.getContent({
-                  owner: event.repository.owner.login,
-                  repo: event.repository.name,
-                  path: 'README.md',
-                  ref: pr.head.ref
-                });
-
-                const { data: prCsvFile } = await octokit.repos.getContent({
-                  owner: event.repository.owner.login,
-                  repo: event.repository.name,
-                  path: 'prompts.csv',
-                  ref: pr.head.ref
-                });
-
-                // Update files in PR branch using PR's file SHAs
-                await octokit.repos.createOrUpdateFileContents({
-                  owner: event.repository.owner.login,
-                  repo: event.repository.name,
-                  path: 'README.md',
-                  message: `feat: Add "${actName}" to README`,
-                  content: Buffer.from(readmeContent).toString('base64'),
-                  branch: pr.head.ref,
-                  sha: prReadmeFile.sha  // Use PR's file SHA
-                });
-
-                // Update CSV in PR branch
+                // Prepare CSV content
                 const csvContent = Buffer.from(csvFile.content, 'base64').toString('utf-8') +
                   `\n"${actName.replace(/"/g, '""')}","${newPrompt.replace(/"/g, '""')}"`;
 
-                await octokit.repos.createOrUpdateFileContents({
+                // Create a tree with both files
+                const { data: mainTree } = await octokit.git.getTree({
                   owner: event.repository.owner.login,
                   repo: event.repository.name,
-                  path: 'prompts.csv',
-                  message: `feat: Add "${actName}" to prompts.csv`,
-                  content: Buffer.from(csvContent).toString('base64'),
-                  branch: pr.head.ref,
-                  sha: prCsvFile.sha  // Use PR's file SHA
+                  tree_sha: pr.head.sha,
+                  recursive: true
+                });
+
+                // Create blobs for both files
+                const [readmeBlob, csvBlob] = await Promise.all([
+                  octokit.git.createBlob({
+                    owner: event.repository.owner.login,
+                    repo: event.repository.name,
+                    content: Buffer.from(readmeContent).toString('base64'),
+                    encoding: 'base64'
+                  }),
+                  octokit.git.createBlob({
+                    owner: event.repository.owner.login,
+                    repo: event.repository.name,
+                    content: Buffer.from(csvContent).toString('base64'),
+                    encoding: 'base64'
+                  })
+                ]);
+
+                // Create a new tree
+                const { data: newTree } = await octokit.git.createTree({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  base_tree: mainTree.sha,
+                  tree: [
+                    {
+                      path: 'README.md',
+                      mode: '100644',
+                      type: 'blob',
+                      sha: readmeBlob.data.sha
+                    },
+                    {
+                      path: 'prompts.csv',
+                      mode: '100644',
+                      type: 'blob',
+                      sha: csvBlob.data.sha
+                    }
+                  ]
+                });
+
+                // Create a commit
+                const { data: newCommit } = await octokit.git.createCommit({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  message: `feat: Add "${actName}" to prompts`,
+                  tree: newTree.sha,
+                  parents: [pr.head.sha]
+                });
+
+                // Update the reference
+                await octokit.git.updateRef({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  ref: `heads/${pr.head.ref}`,
+                  sha: newCommit.sha
                 });
 
                 await octokit.issues.createComment({
                   owner: event.repository.owner.login,
                   repo: event.repository.name,
                   issue_number: issueNumber,
-                  body: `✨ Updated files in your PR using main branch as base:\n1. Added "${actName}" to README.md\n2. Added the prompt to prompts.csv`
+                  body: `✨ Added "${actName}" to both files`
                 });
 
               } catch (error) {
