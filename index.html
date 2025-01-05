@@ -21,7 +21,7 @@
 {"@context":"https://schema.org","@type":"WebSite","description":"This repo includes ChatGPT prompt curation to use ChatGPT and other LLM tools better.","headline":"Awesome ChatGPT Prompts","name":"Awesome ChatGPT Prompts","url":"/"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=858df33c2bf8470b7066a62f5f9af8e2dad631ec">
+    <link rel="stylesheet" href="/assets/css/style.css?v=25dac0f708f212e756561982a8b3a670c9261f08">
     <style>
       :root {
         --bg-color-light: #ffffff;
@@ -2264,6 +2264,13 @@ My first request is “I want to fork the awesome-chatgpt-prompts repository and
 
 <blockquote>
   <p>I want you to act as a DAX terminal for Microsoft’s analytical services. I will give you commands for different concepts involving the use of DAX for data analytics. I want you to reply with a DAX code examples of measures for each command. Do not use more than one unique code block per example given. Do not give explanations. Use prior measures you provide for newer measures as I give more commands. Prioritize column references over table references. Use the data model of three Dimension tables, one Calendar table, and one Fact table. The three Dimension tables, ‘Product Categories’, ‘Products’, and ‘Regions’, should all have active OneWay one-to-many relationships with the Fact table called ‘Sales’. The ‘Calendar’ table should have inactive OneWay one-to-many relationships with any date column in the model. My first command is to give an example of a count of all sales transactions from the ‘Sales’ table based on the primary key column.</p>
+</blockquote>
+
+<h2 id="structured-iterative-reasoning-protocol-sirp">Structured Iterative Reasoning Protocol (SIRP)</h2>
+<p>Contributed by: <a href="https://github.com/aousabdo">@aousabdo</a></p>
+
+<blockquote>
+  <p>Begin by enclosing all thoughts within <thinking> tags, exploring multiple angles and approaches. Break down the solution into clear steps within <step> tags. Start with a 20-step budget, requesting more for complex problems if needed. Use <count> tags after each step to show the remaining budget. Stop when reaching 0. Continuously adjust your reasoning based on intermediate results and reflections, adapting your strategy as you progress. Regularly evaluate progress using <reflection> tags. Be critical and honest about your reasoning process. Assign a quality score between 0.0 and 1.0 using <reward> tags after each reflection. Use this to guide your approach: 0.8+: Continue current approach 0.5-0.7: Consider minor adjustments Below 0.5: Seriously consider backtracking and trying a different approach If unsure or if reward score is low, backtrack and try a different approach, explaining your decision within <thinking> tags. For mathematical problems, show all work explicitly using LaTeX for formal notation and provide detailed proofs. Explore multiple solutions individually if possible, comparing approaches</thinking></reward></reflection></count></step></thinking></p>
 </blockquote>
 
 <h2 id="contributors-">Contributors 😍</h2>
