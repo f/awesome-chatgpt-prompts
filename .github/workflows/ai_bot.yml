@@ -115,24 +115,38 @@ jobs:
                 pull_number: issueNumber
               });
 
-              // Get the PR diff for better context
-              const { data: diff } = await octokit.pulls.get({
+              // Get the list of files changed in the PR
+              const { data: files } = await octokit.pulls.listFiles({
                 owner: event.repository.owner.login,
                 repo: event.repository.name,
-                pull_number: issueNumber,
-                mediaType: { format: 'diff' }
+                pull_number: issueNumber
               });
+
+              // Process file changes
+              const fileChanges = await Promise.all(files.map(async file => {
+                if (file.status === 'removed') {
+                  return `Deleted: ${file.filename}`;
+                }
+                
+                // Get file content for added or modified files
+                if (file.status === 'added' || file.status === 'modified') {
+                  const patch = file.patch || '';
+                  return `${file.status === 'added' ? 'Added' : 'Modified'}: ${file.filename}\nChanges:\n${patch}`;
+                }
+                
+                return `${file.status}: ${file.filename}`;
+              }));
 
               const completion = await openai.chat.completions.create({
                 model: "gpt-3.5-turbo",
                 messages: [
                   {
                     role: "system",
-                    content: "You are a helpful assistant that generates clear, concise, and descriptive pull request titles. Follow conventional commit message style. Return ONLY the new title, nothing else."
+                    content: "You are a helpful assistant that generates clear, concise, and descriptive pull request titles based on code changes. Follow conventional commit message style (e.g., 'feat:', 'fix:', 'refactor:', 'docs:', etc.). Return ONLY the new title, nothing else."
                   },
                   {
                     role: "user",
-                    content: `Based on this pull request content, generate a better title.\n\nCurrent title: ${pr.title}\n\nDescription: ${pr.body}\n\nChanges:\n${diff}`
+                    content: `Based on these file changes, generate a descriptive PR title:\n\n${fileChanges.join('\n\n')}`
                   }
                 ],
                 temperature: 0.7,
@@ -154,7 +168,7 @@ jobs:
                 owner: event.repository.owner.login,
                 repo: event.repository.name,
                 issue_number: issueNumber,
-                body: `✨ Updated PR title to: "${newTitle}"`
+                body: `✨ Updated PR title to: "${newTitle}"\n\nBased on the following changes:\n\`\`\`diff\n${fileChanges.join('\n')}\n\`\`\``
               });
               return;
             }
