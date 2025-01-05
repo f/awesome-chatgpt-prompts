@@ -231,7 +231,24 @@ jobs:
                   sha: mainRef.object.sha
                 });
 
+                // Get current files from the new branch
+                console.log('Getting current file SHAs...');
+                const { data: currentReadme } = await octokit.repos.getContent({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  path: 'README.md',
+                  ref: branchName
+                });
+
+                const { data: currentCsv } = await octokit.repos.getContent({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  path: 'prompts.csv',
+                  ref: branchName
+                });
+
                 // Update files with correct author
+                console.log('Updating README.md...');
                 await octokit.repos.createOrUpdateFileContents({
                   owner: event.repository.owner.login,
                   repo: event.repository.name,
@@ -239,6 +256,7 @@ jobs:
                   message: `feat: Add "${actName}" to README`,
                   content: Buffer.from(readmeContent).toString('base64'),
                   branch: branchName,
+                  sha: currentReadme.sha,
                   committer: {
                     name: pr.user.login,
                     email: `${pr.user.login}@users.noreply.github.com`
@@ -249,6 +267,7 @@ jobs:
                   }
                 });
 
+                console.log('Updating prompts.csv...');
                 await octokit.repos.createOrUpdateFileContents({
                   owner: event.repository.owner.login,
                   repo: event.repository.name,
@@ -256,6 +275,7 @@ jobs:
                   message: `feat: Add "${actName}" to prompts.csv`,
                   content: Buffer.from(csvContent).toString('base64'),
                   branch: branchName,
+                  sha: currentCsv.sha,
                   committer: {
                     name: pr.user.login,
                     email: `${pr.user.login}@users.noreply.github.com`
