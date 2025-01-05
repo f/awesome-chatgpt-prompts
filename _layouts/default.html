@@ -321,6 +321,13 @@
         background: rgba(16, 185, 129, 0.1);
         color: var(--accent-color);
         border: 1px solid var(--accent-color);
+        text-decoration: none;
+        transition: all 0.2s ease;
+      }
+
+      .platform-tag:hover {
+        background: rgba(16, 185, 129, 0.2);
+        transform: translateY(-1px);
       }
 
       .dark-mode .platform-tag {
@@ -835,11 +842,11 @@
         <div class="header-left">
           <h1 class="site-title">prompts.chat</h1>
           <div class="site-description">
-            <span class="platform-tag">ChatGPT</span>
-            <span class="platform-tag">Claude</span>
-            <span class="platform-tag">Gemini</span>
-            <span class="platform-tag">Llama</span>
-            <span class="platform-tag">Mistral</span>
+            <a href="https://chat.openai.com" target="_blank" class="platform-tag">ChatGPT</a>
+            <a href="https://claude.ai/new" target="_blank" class="platform-tag">Claude</a>
+            <a href="https://gemini.google.com" target="_blank" class="platform-tag">Gemini</a>
+            <a href="https://meta.ai" target="_blank" class="platform-tag">Llama</a>
+            <a href="https://chat.mistral.ai" target="_blank" class="platform-tag">Mistral</a>
           </div>
         </div>
         <div class="header-right">
