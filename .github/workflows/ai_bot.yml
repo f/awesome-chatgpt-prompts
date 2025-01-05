@@ -115,8 +115,13 @@ jobs:
                 pull_number: issueNumber
               });
 
-              let readmeContent = '';
-              let csvContent = '';
+              // Get PR details to know the branch
+              const { data: pr } = await octokit.pulls.get({
+                owner: event.repository.owner.login,
+                repo: event.repository.name,
+                pull_number: issueNumber
+              });
+
               let readmeChanged = false;
               let csvChanged = false;
               let newPrompt = '';
@@ -177,68 +182,39 @@ jobs:
                 return;
               }
 
-              // Create a new branch for fixes
-              const branchName = `ai-bot/fix-conflicts-${issueNumber}`;
-              const defaultBranch = event.repository.default_branch;
-              
-              // Get current branch ref
-              const { data: ref } = await octokit.git.getRef({
-                owner: event.repository.owner.login,
-                repo: event.repository.name,
-                ref: `heads/${defaultBranch}`
-              });
-
               try {
-                // Create new branch
-                await octokit.git.createRef({
-                  owner: event.repository.owner.login,
-                  repo: event.repository.name,
-                  ref: `refs/heads/${branchName}`,
-                  sha: ref.object.sha
-                });
-
-                // If CSV wasn't updated, update it
+                // If CSV wasn't updated, update it directly in the PR branch
                 if (!csvChanged) {
                   // Get current CSV content
                   const { data: currentCsv } = await octokit.repos.getContent({
                     owner: event.repository.owner.login,
                     repo: event.repository.name,
                     path: 'prompts.csv',
-                    ref: branchName
+                    ref: pr.head.ref // Use PR's branch
                   });
 
                   // Add new prompt to CSV
                   const newCsvContent = Buffer.from(currentCsv.content, 'base64').toString('utf-8') +
                     `\n"${actName.replace(/"/g, '""')}","${newPrompt.replace(/"/g, '""')}"`;
 
-                  // Update CSV file
+                  // Update CSV file directly in the PR branch
                   await octokit.repos.createOrUpdateFileContents({
                     owner: event.repository.owner.login,
                     repo: event.repository.name,
                     path: 'prompts.csv',
                     message: `feat: Add "${actName}" to prompts.csv`,
                     content: Buffer.from(newCsvContent).toString('base64'),
-                    branch: branchName,
+                    branch: pr.head.ref, // Use PR's branch
                     sha: currentCsv.sha
                   });
 
-                  // Create PR or update existing one
-                  await octokit.pulls.create({
+                  await octokit.issues.createComment({
                     owner: event.repository.owner.login,
                     repo: event.repository.name,
-                    title: `feat: Add "${actName}" to prompts.csv`,
-                    body: `This PR was automatically generated to sync prompts.csv with README.md changes.\n\nRelated to #${issueNumber}`,
-                    head: branchName,
-                    base: defaultBranch
+                    issue_number: issueNumber,
+                    body: '✨ Updated prompts.csv in the PR with the new prompt'
                   });
                 }
-
-                await octokit.issues.createComment({
-                  owner: event.repository.owner.login,
-                  repo: event.repository.name,
-                  issue_number: issueNumber,
-                  body: '✨ Created a fix PR to sync README.md and prompts.csv'
-                });
 
               } catch (error) {
                 console.error('Error:', error);
@@ -246,7 +222,7 @@ jobs:
                   owner: event.repository.owner.login,
                   repo: event.repository.name,
                   issue_number: issueNumber,
-                  body: `❌ Error while trying to fix conflicts: ${error.message}`
+                  body: `❌ Error while trying to update files: ${error.message}`
                 });
               }
               return;
