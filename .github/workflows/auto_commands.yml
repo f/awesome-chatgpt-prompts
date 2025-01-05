@@ -1,0 +1,43 @@
+name: Auto AI Commands
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+  pull_request_target:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  check-and-comment:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      issues: write
+
+    steps:
+      - name: Check PR status and comment
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            
+            // Check if PR has conflicts
+            if (pr.mergeable === false) {
+              console.log('PR has conflicts, commenting /ai resolve');
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr.number,
+                body: '/ai resolve'
+              });
+            }
+            
+            // Check if PR title starts with "updated"
+            if (pr.title.toLowerCase().startsWith('updated')) {
+              console.log('PR title starts with "updated", commenting /ai suggest title');
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr.number,
+                body: '/ai suggest title'
+              });
+            } 
