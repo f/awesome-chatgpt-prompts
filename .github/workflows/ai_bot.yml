@@ -196,24 +196,32 @@ jobs:
                 console.log('Preparing content updates...');
                 // Remove markdown quote character and trim whitespace for both files
                 const cleanPrompt = newPrompt.replace(/^>\s*/gm, '').trim();
-                const newSection = `## ${actName}\n${contributorInfo}\n\n> ${cleanPrompt}\n\n`;
+                
+                // For README: Add quote to each line
+                const readmePrompt = cleanPrompt.split('\n')
+                  .map(line => `> ${line.trim()}`)
+                  .join('\n');
+                const newSection = `## ${actName}\n${contributorInfo}\n\n${readmePrompt}\n\n`;
+                
+                // For CSV: Convert to single paragraph
+                const csvPrompt = cleanPrompt.replace(/\n+/g, ' ').trim();
                 
                 // Insert the new section before Contributors in README
                 let readmeContent = Buffer.from(readmeFile.content, 'base64').toString('utf-8');
                 const contributorsIndex = readmeContent.indexOf('## Contributors');
                 if (contributorsIndex === -1) {
-                  console.log('Contributors section not found, appending to end');
-                  readmeContent += newSection;
+                    console.log('Contributors section not found, appending to end');
+                    readmeContent += newSection;
                 } else {
-                  console.log('Inserting before Contributors section');
-                  readmeContent = readmeContent.slice(0, contributorsIndex) + newSection + readmeContent.slice(contributorsIndex);
+                    console.log('Inserting before Contributors section');
+                    readmeContent = readmeContent.slice(0, contributorsIndex) + newSection + readmeContent.slice(contributorsIndex);
                 }
 
                 // Prepare CSV content
                 console.log('Preparing CSV content...');
                 let csvContent = Buffer.from(csvFile.content, 'base64').toString('utf-8');
                 if (!csvContent.endsWith('\n')) csvContent += '\n';
-                csvContent += `"${actName.replace(/"/g, '""')}","${cleanPrompt.replace(/"/g, '""')}"`;
+                csvContent += `"${actName.replace(/"/g, '""')}","${csvPrompt.replace(/"/g, '""')}"`;
 
                 // Create new branch
                 const branchName = `prompt/${actName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
