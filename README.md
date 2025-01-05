@@ -13,7 +13,7 @@
     <img height="60" alt="Hugging Face logo" src="https://github.com/user-attachments/assets/4187ef06-7cae-402a-a410-e0a999758fed">
   </a>
   <br>
-  <sub><a href="https://github.com/sponsors/f/sponsorships?sponsor=f&amp;tier_id=319423">Be my sponsor and your logo will be here and prompts.chat!</a></sub>
+  <sub><a href="https://github.com/sponsors/f/sponsorships?sponsor=f&amp;tier_id=319423">Be my sponsor and your logo will be here!</a></sub>
 </p>
 
 ---
@@ -34,39 +34,19 @@ We hope you find these prompts useful and have fun using ChatGPT!
 
 ---
 
-### ⭐️ NEW: Awesome ChatGPT Store: A Hub for Custom GPTs
-
-Now you can access [Awesome ChatGPT Store](https://github.com/devisasari/awesome-chatgpt-store), a dynamic new addition to the ChatGPT ecosystem! With the introduction of customizable GPT models, our store provides a curated collection of specialized ChatGPT GPTs, each tailored for unique applications and use cases.
-
-Explore a wide range of GPTs, from those optimized for specific programming languages, to models fine-tuned for creative writing, technical analysis, and more. This repository is not just a store; it's a community-driven platform where developers and enthusiasts can share, discover, and leverage the full potential of ChatGPT's versatility.
-
-Dive into the world of customized conversational AI models and enrich your projects with cutting-edge technology. Visit the Awesome ChatGPT Store now at [Awesome ChatGPT Store](https://github.com/devisasari/awesome-chatgpt-store) and start exploring the possibilities!
-
----
-
 > ℹ️ **NOTE:** Sometimes, some of the prompts may not be working as you expected or may be rejected by the AI. Please try again, start a new thread, or log out and log back in. If these solutions do not work, please try rewriting the prompt using your own sentences while keeping the instructions same.
 
 ### Want to Write Effective Prompts?
 
 I've authored an e-book called **"The Art of ChatGPT Prompting: A Guide to Crafting Clear and Effective Prompts"**.
 
-📖 **[Read the free e-book](https://fka.gumroad.com/l/art-of-chatgpt-prompting)**
+📖 **[Read the e-book](https://fka.gumroad.com/l/art-of-chatgpt-prompting)**
 
 ### Want to Learn How to Make Money using ChatGPT Prompts?
 
 I've authored an e-book called **"How to Make Money with ChatGPT: Strategies, Tips, and Tactics"**.
 
 📖 **[Buy the e-book](https://fka.gumroad.com/l/how-to-make-money-with-chatgpt)**
-
-### Want to secure your ChatGPT apps?
-
-[Utku Şen](https://twitter.com/utkusen) authored an e-book called **"Securing GPT: A Practical Introduction to Attack and Defend ChatGPT Applications"**.
-
-📖 **[Buy the e-book](https://utkusen.gumroad.com/l/securing-gpt-attack-defend-chatgpt-applications)**
-
----
-
-## Other Prompting Resources
 
 ### Want to Learn How to write image prompts for Midjourney AI?
 
@@ -76,33 +56,21 @@ I've authored an e-book called **"The Art of Midjourney AI: A Guide to Creating 
 
 ---
 
-### Create your own prompt using AI
-
-[Merve Noyan](https://huggingface.co/merve) created an exceptional [ChatGPT Prompt Generator App](https://huggingface.co/spaces/merve/ChatGPT-prompt-generator), allowing users to generate prompts tailored to their desired persona. The app uses this repository as its training dataset.
-
----
-
 ### Using prompts.chat
 
-[prompts.chat](https://prompts.chat) is designed to provide an enhanced UX when working with prompts. With just a few clicks, you can easily edit and copy the prompts on the site to fit your specific needs and preferences. The copy button will copy the prompt exactly as you have edited it.
+[prompts.chat](https://prompts.chat) is designed to provide an enhanced UX when working with prompts. With just a few clicks, you can easily edit and copy the prompts on the site to fit your specific needs and preferences.
 
-<video autoplay loop muted playsinline src="https://user-images.githubusercontent.com/196477/207992596-6846398c-9ee7-4d7b-8fbe-b7c9e6daad23.mov"></video>
+<img width="1400" alt="Screenshot 2025-01-05 at 22 17 19" src="https://github.com/user-attachments/assets/272d2092-b651-452a-a049-f46b31c32889" />
 
 ---
-
-## Dark Mode (on https://prompts.chat)
-
-We have implemented a dark mode for this repository to enhance your reading experience. The dark mode is implemented using CSS variables and a toggle button. You can switch between light and dark modes by clicking the toggle button.
-
-## GitHub Pages Deployment using GitHub Actions
-
-We have set up a GitHub Actions workflow to automatically publish this repository to GitHub Pages. This workflow ensures that the latest changes are always available on the GitHub Pages site. You can find the workflow configuration in the `.github/workflows/publish.yml` file.
 
 ## Unmerged Prompts
 
 There are many Pull Requests to this repository waiting to be merged. There are many hidden gems there. Take a look!
 
 📖 **[View Unmerged Prompts](https://github.com/f/awesome-chatgpt-prompts/pulls)**
+
+---
 
 # Prompts
 
