@@ -159,50 +159,43 @@ jobs:
                   return;
                 }
 
-                // Get README from main branch
+                // Get content from main branch
                 const { data: readmeFile } = await octokit.repos.getContent({
                   owner: event.repository.owner.login,
                   repo: event.repository.name,
                   path: 'README.md',
-                  ref: 'main'
+                  ref: 'main'  // Get from main branch
                 });
 
-                // Get CSV from main branch
                 const { data: csvFile } = await octokit.repos.getContent({
                   owner: event.repository.owner.login,
                   repo: event.repository.name,
                   path: 'prompts.csv',
-                  ref: 'main'
+                  ref: 'main'  // Get from main branch
                 });
 
-                // Prepare new README content
-                let readmeContent = Buffer.from(readmeFile.content, 'base64').toString('utf-8');
+                // Format the new prompt section
                 const newSection = `\n## ${actName}\n${contributorInfo ? contributorInfo + '\n' : ''}\n> ${newPrompt}\n`;
-                readmeContent += newSection;
-
-                // Prepare new CSV content
-                let csvContent = Buffer.from(csvFile.content, 'base64').toString('utf-8');
-                csvContent += `\n"${actName.replace(/"/g, '""')}","${newPrompt.replace(/"/g, '""')}"`;
-
-                // Update README in PR branch
+                
+                // Update files in PR branch
                 await octokit.repos.createOrUpdateFileContents({
                   owner: event.repository.owner.login,
                   repo: event.repository.name,
                   path: 'README.md',
                   message: `feat: Add "${actName}" to README`,
-                  content: Buffer.from(readmeContent).toString('base64'),
-                  branch: pr.head.ref,
+                  content: Buffer.from(Buffer.from(readmeFile.content, 'base64').toString('utf-8') + newSection).toString('base64'),
+                  branch: pr.head.ref,  // Update PR's branch
                   sha: readmeFile.sha
                 });
 
-                // Update CSV in PR branch
                 await octokit.repos.createOrUpdateFileContents({
                   owner: event.repository.owner.login,
                   repo: event.repository.name,
                   path: 'prompts.csv',
                   message: `feat: Add "${actName}" to prompts.csv`,
-                  content: Buffer.from(csvContent).toString('base64'),
-                  branch: pr.head.ref,
+                  content: Buffer.from(Buffer.from(csvFile.content, 'base64').toString('utf-8') + 
+                    `\n"${actName.replace(/"/g, '""')}","${newPrompt.replace(/"/g, '""')}"`).toString('base64'),
+                  branch: pr.head.ref,  // Update PR's branch
                   sha: csvFile.sha
                 });
 
@@ -210,7 +203,7 @@ jobs:
                   owner: event.repository.owner.login,
                   repo: event.repository.name,
                   issue_number: issueNumber,
-                  body: `✨ Updated both files:\n1. Added "${actName}" to README.md\n2. Added the prompt to prompts.csv`
+                  body: `✨ Updated files in your PR using main branch as base:\n1. Added "${actName}" to README.md\n2. Added the prompt to prompts.csv`
                 });
 
               } catch (error) {
