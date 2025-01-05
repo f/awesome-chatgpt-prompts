@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <title>prompts.chat — awesome AI prompts</title>
 {% seo %}
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
     <style>
@@ -13,11 +14,16 @@
         --bg-color-dark: #1a1a1a;
         --text-color-light: #000000;
         --text-color-dark: #ffffff;
+        --sidebar-width: 300px;
+        --accent-color: #10b981;
+        --accent-color-hover: #059669;
       }
 
       body {
         background-color: var(--bg-color-light);
         color: var(--text-color-light);
+        margin: 0;
+        padding: 0;
       }
 
       body.dark-mode {
@@ -26,31 +32,921 @@
       }
 
       .dark-mode-toggle {
+        background-color: transparent;
+        border: none;
+        color: var(--accent-color);
+        cursor: pointer;
+        padding: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.8;
+        transition: opacity 0.2s ease;
+      }
+
+      .dark-mode-toggle:hover {
+        opacity: 1;
+      }
+
+      .mode-icon {
+        width: 20px;
+        height: 20px;
+        stroke: currentColor;
+      }
+
+      .site-header {
+        padding: 1rem 2rem;
+        text-align: left;
+        border-bottom: 1px solid #e1e4e8;
+        background-color: var(--bg-color-light);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .dark-mode .site-header {
+        background-color: var(--bg-color-dark);
+        border-bottom-color: #2d2d2d;
+      }
+
+      .header-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .star-count {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        color: var(--accent-color);
+        font-size: 0.9rem;
+        opacity: 0.8;
+        text-decoration: none;
+        transition: opacity 0.2s ease;
+      }
+
+      .star-count:hover {
+        opacity: 1;
+      }
+
+      .star-count svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .social-links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-right: 8px;
+      }
+
+      .social-link {
+        color: var(--accent-color);
+        opacity: 0.8;
+        transition: opacity 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .social-link:hover {
+        opacity: 1;
+      }
+
+      .social-link svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .site-footer {
+        padding: 12px 20px;
+        text-align: center;
+        border-top: 1px solid #e1e4e8;
+        background: var(--bg-color-light);
         position: fixed;
-        top: 1rem;
-        right: 1rem;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+      }
+
+      .dark-mode .site-footer {
+        background: var(--bg-color-dark);
+        border-color: #2d2d2d;
+      }
+
+      .footer-content {
+        max-width: none;
+        margin: 0;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0 30px;
+        text-align: left;
+        font-size: 0.7rem;
+        padding: 0 1rem;
+      }
+
+      .footer-section {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .footer-section h3 {
+        font-size: 0.8rem;
+        margin: 0;
+        opacity: 0.8;
+      }
+
+      .dark-mode .footer-section h3 {
+        color: var(--text-color-dark);
+      }
+
+      .footer-section p {
+        font-size: inherit;
+        margin: 0;
+        line-height: 1.3;
+        opacity: 0.6;
+        color: var(--text-color-light);
+      }
+
+      .dark-mode .footer-section p {
+        color: var(--text-color-dark);
+      }
+
+      .book-links {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .book-link svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      /* Add padding to main content to prevent overlap with fixed footer */
+      .layout-wrapper {
+        padding-bottom: 100px;
+      }
+
+      @media (max-width: 768px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 12px;
+          text-align: left;
+          padding: 0 1rem;
+        }
+
+        .footer-section {
+          text-align: left;
+        }
+
+        .footer-section p {
+          text-align: left;
+        }
+
+        .book-links {
+          align-items: flex-start;
+        }
+
+        .site-footer {
+          position: static;
+          text-align: left;
+        }
+
+        .layout-wrapper {
+          padding-bottom: 0;
+        }
+
+        .site-description {
+          display: none !important;
+        }
+
+        .site-header {
+          padding: 0.75rem 1.5rem;
+        }
+
+        .prompt-count {
+          padding: 4px 8px;
+          font-size: 0.75rem;
+          margin-bottom: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .count-number {
+          font-size: 0.8rem;
+        }
+
+        #searchInput {
+          padding: 6px 8px;
+          font-size: 0.9rem;
+        }
+
+        #searchResults {
+          display: none;
+        }
+
+        #searchInput:not(:placeholder-shown) + #searchResults {
+          display: block;
+        }
+
+        #searchResults .search-result-item:nth-child(n+4) {
+          display: none;
+        }
+
+        #searchResults .search-result-item:nth-child(3) {
+          position: relative;
+          padding-bottom: 30px;
+        }
+
+        #searchResults .search-result-item:nth-child(3)::after {
+          content: "Scroll main content to see more results";
+          position: absolute;
+          bottom: 8px;
+          left: 0;
+          right: 0;
+          text-align: center;
+          font-size: 0.8rem;
+          color: var(--accent-color);
+          opacity: 0.8;
+        }
+      }
+
+      .site-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 0;
+        background: linear-gradient(45deg, var(--accent-color), #3b82f6);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+        position: relative;
+        transition: transform 0.3s ease;
+      }
+
+      .site-slogan {
+        font-size: 0.9rem;
+        opacity: 0.7;
+        margin: 0 0 0.8rem 0;
+        line-height: 1;
+      }
+
+      @media (max-width: 768px) {
+        .site-slogan {
+          display: none;
+        }
+      }
+
+      .site-title:hover {
+        transform: translateY(-2px);
+      }
+
+      .site-title::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, var(--accent-color), #3b82f6);
+        filter: blur(20px);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+      }
+
+      .site-title:hover::before {
+        opacity: 0.15;
+      }
+
+      .site-description {
+        color: var(--text-color-light);
+        margin: 0;
+        font-size: 0.95rem;
+        opacity: 0.8;
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .platform-tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-size: 0.85rem;
+        background: rgba(16, 185, 129, 0.1);
+        color: var(--accent-color);
+        border: 1px solid var(--accent-color);
+        text-decoration: none;
+        transition: all 0.2s ease;
+      }
+
+      .platform-tag:hover {
+        background: rgba(16, 185, 129, 0.2);
+        transform: translateY(-1px);
+      }
+
+      .dark-mode .platform-tag {
+        background: rgba(16, 185, 129, 0.2);
+      }
+
+      .dark-mode .site-description {
+        color: var(--text-color-dark);
+      }
+
+      .layout-wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .content-wrapper {
+        display: flex;
+        flex: 1;
+      }
+
+      .sidebar {
+        width: var(--sidebar-width);
+        padding: 20px;
+        border-right: 1px solid #e1e4e8;
+        height: calc(100vh - 140px);
+        overflow-y: auto;
+        background-color: var(--bg-color-light);
+      }
+
+      .dark-mode .sidebar {
+        background-color: var(--bg-color-dark);
+        border-right-color: #2d2d2d;
+      }
+
+      .main-content {
+        flex: 1;
+        height: calc(100vh - 140px);
+        overflow-y: auto;
+        padding: 20px;
+      }
+
+      .prompts-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        max-width: 100%;
+        margin: 0;
+        padding: 16px;
+      }
+
+      .container-lg.markdown-body {
+        padding: 0;
+        max-width: none;
+      }
+
+      @media (max-width: 1600px) {
+        .prompts-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 1200px) {
+        .prompts-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .prompts-grid {
+          grid-template-columns: 1fr;
+          gap: 15px;
+        }
+      }
+
+      .prompt-card {
+        background: var(--bg-color-light);
+        border: 1px solid #e1e4e8;
+        border-radius: 12px;
+        padding: 16px;
+        position: relative;
+        transition: transform 0.2s ease;
+        display: flex;
+        flex-direction: column;
+        min-height: 200px;
+      }
+
+      .dark-mode .prompt-card {
+        background: var(--bg-color-dark);
+        border-color: #2d2d2d;
+      }
+
+      .prompt-card:hover {
+        transform: translateY(-2px);
+      }
+
+      .prompt-title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0 0 12px 0;
+        color: var(--text-color-light);
+        line-height: 1.4;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .dark-mode .prompt-title {
+        color: var(--text-color-dark);
+      }
+
+      .prompt-content {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: var(--text-color-light);
+        opacity: 0.8;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin-bottom: 40px;
+      }
+
+      .dark-mode .prompt-content {
+        color: var(--text-color-dark);
+      }
+
+      .copy-button {
+        position: static;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 2px;
+        color: var(--accent-color);
+        opacity: 0.8;
+        transition: opacity 0.2s ease;
+        z-index: 2;
+        margin-left: 8px;
+        flex-shrink: 0;
+      }
+
+      .copy-button:hover {
+        opacity: 1;
+      }
+
+      .copy-button svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .search-container {
+        margin-bottom: 20px;
+      }
+
+      .prompt-count {
+        margin-bottom: 12px;
+        padding: 6px 10px;
+        border-radius: 6px;
+        background: rgba(16, 185, 129, 0.1);
+        color: var(--accent-color);
+        font-size: 0.8rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .dark-mode .prompt-count {
+        background: rgba(16, 185, 129, 0.15);
+      }
+
+      .prompt-count .count-number {
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      .prompt-count.filtered {
+        background: rgba(59, 130, 246, 0.1);
+        color: #3b82f6;
+      }
+
+      .dark-mode .prompt-count.filtered {
+        background: rgba(59, 130, 246, 0.15);
+      }
+
+      #searchInput {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #e1e4e8;
+        border-radius: 4px;
+        margin-bottom: 10px;
         background-color: var(--bg-color-light);
         color: var(--text-color-light);
+      }
+
+      .dark-mode #searchInput {
+        background-color: var(--bg-color-dark);
+        color: var(--text-color-dark);
+        border-color: #2d2d2d;
+      }
+
+      #searchResults {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .search-result-item {
+        padding: 8px 12px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border-radius: 6px;
+      }
+
+      .search-result-item:hover {
+        background-color: rgba(16, 185, 129, 0.1);
+        border-radius: 6px;
+        transform: translateX(4px);
+      }
+
+      .dark-mode .search-result-item:hover {
+        background-color: rgba(16, 185, 129, 0.2);
+      }
+
+      .search-result-item.active {
+        background-color: var(--accent-color);
+        color: white;
+      }
+
+      @media (max-width: 768px) {
+        .content-wrapper {
+          flex-direction: column;
+        }
+
+        .sidebar {
+          width: 100%;
+          height: auto;
+          border-right: none;
+          border-bottom: 1px solid #e1e4e8;
+        }
+
+        .dark-mode .sidebar {
+          border-bottom-color: #2d2d2d;
+        }
+
+        .main-content {
+          height: auto;
+        }
+
+        .header-right {
+          gap: 8px;
+        }
+
+        .mode-text {
+          display: none;
+        }
+
+        .dark-mode-toggle {
+          padding: 6px;
+        }
+
+        .github-link {
+          padding: 6px;
+        }
+
+        .github-link span {
+          display: none;
+        }
+      }
+
+      /* Add modal styles */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 1000;
+        backdrop-filter: blur(4px);
+      }
+
+      .modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: var(--bg-color-light);
+        border-radius: 12px;
+        padding: 24px;
+        width: 90%;
+        max-width: 800px;
+        max-height: 90vh;
+        overflow-y: auto;
+        z-index: 1001;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+      }
+
+      .dark-mode .modal {
+        background: var(--bg-color-dark);
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 16px;
+      }
+
+      .modal-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin: 0;
+        padding-right: 80px;
+        color: var(--text-color-light);
+        flex: 1;
+      }
+
+      .modal-actions {
+        display: flex;
+        gap: 12px;
+        flex-shrink: 0;
+      }
+
+      .modal-copy-button {
+        background: transparent;
         border: none;
-        padding: 0.5rem;
+        cursor: pointer;
+        padding: 4px;
+        color: var(--accent-color);
+        opacity: 0.8;
+        transition: opacity 0.2s ease;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-close {
+        position: static;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: var(--text-color-light);
+        padding: 4px;
+        opacity: 0.7;
+        transition: opacity 0.2s ease;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .dark-mode .modal-close {
+        color: var(--text-color-dark);
+      }
+
+      .modal-close:hover {
+        opacity: 1;
+      }
+
+      .prompt-card {
         cursor: pointer;
       }
 
-      body.dark-mode .dark-mode-toggle {
-        background-color: var(--bg-color-dark);
+      /* Add contributor badge styles */
+      .contributor-badge {
+        position: absolute;
+        bottom: 8px;
+        right: 12px;
+        font-size: 0.65rem;
+        color: var(--accent-color);
+        text-decoration: none;
+        opacity: 0.7;
+        transition: all 0.2s ease;
+        background: rgba(16, 185, 129, 0.1);
+        padding: 1px 6px;
+        border-radius: 8px;
+      }
+
+      .dark-mode .contributor-badge {
+        background: rgba(16, 185, 129, 0.15);
+      }
+
+      .contributor-badge:hover {
+        opacity: 1;
+        transform: translateY(-1px);
+        background: var(--accent-color);
+        color: white;
+      }
+
+      .dark-mode .contributor-badge:hover {
+        color: var(--bg-color-dark);
+      }
+
+      .prompt-content {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: var(--text-color-light);
+        opacity: 0.8;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin-bottom: 40px;
+      }
+
+      /* Add modal header and footer styles */
+      .modal-footer {
+        margin-top: 20px;
+        padding-top: 16px;
+        border-top: 1px solid #e1e4e8;
+      }
+
+      .dark-mode .modal-footer {
+        border-color: #2d2d2d;
+      }
+
+      .modal-contributor {
+        font-size: 0.8rem;
+        color: var(--accent-color);
+        text-decoration: none;
+        opacity: 0.8;
+        transition: opacity 0.2s ease;
+      }
+
+      .modal-contributor:hover {
+        opacity: 1;
+      }
+
+      .dark-mode .modal-title {
         color: var(--text-color-dark);
+      }
+
+      .modal-content {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--text-color-light);
+      }
+
+      .dark-mode .modal-content {
+        color: var(--text-color-dark);
+      }
+
+      .modal-copy-button:hover {
+        opacity: 1;
+      }
+
+      .modal-copy-button svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .modal-close svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .dark-mode .modal-close {
+        color: var(--text-color-dark);
+      }
+
+      .footer-section a {
+        color: var(--accent-color);
+        text-decoration: none;
+      }
+
+      .footer-section a:hover {
+        opacity: 1;
+      }
+
+      .book-link {
+        color: var(--accent-color) !important;
+        padding: 1px 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        opacity: 0.7;
+        transition: opacity 0.2s ease;
+      }
+
+      .dark-mode .book-link {
+        color: var(--accent-color) !important;
+      }
+
+      .book-link:hover {
+        opacity: 1;
+      }
+
+      .social-footer-link {
+        color: var(--accent-color);
+        opacity: 0.8;
+        transition: opacity 0.2s ease;
+      }
+
+      .dark-mode .social-footer-link {
+        color: var(--accent-color);
+      }
+
+      .contribute-card {
+        border: 2px dashed var(--accent-color);
+        background: rgba(16, 185, 129, 0.05);
+        transition: all 0.2s ease;
+      }
+
+      .contribute-card:hover {
+        background: rgba(16, 185, 129, 0.1);
+        transform: translateY(-2px);
+      }
+
+      .dark-mode .contribute-card {
+        background: rgba(16, 185, 129, 0.1);
+      }
+
+      .dark-mode .contribute-card:hover {
+        background: rgba(16, 185, 129, 0.15);
+      }
+
+      .search-result-item.add-prompt {
+        color: var(--accent-color);
+        border: 1px dashed var(--accent-color);
+        background: rgba(16, 185, 129, 0.05);
+        transition: all 0.2s ease;
+      }
+
+      .search-result-item.add-prompt:hover {
+        background: rgba(16, 185, 129, 0.1);
+        transform: translateY(-1px);
+      }
+
+      .dark-mode .search-result-item.add-prompt {
+        background: rgba(16, 185, 129, 0.1);
+      }
+
+      .dark-mode .search-result-item.add-prompt:hover {
+        background: rgba(16, 185, 129, 0.15);
       }
     </style>
     {% include head-custom.html %}
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6945602608405209" crossorigin="anonymous"></script>
   </head>
   <body>
-    <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌞</button>
-    <div class="container-lg px-3 my-5 markdown-body">
-      {% if site.title and site.title != page.title %}
-      <h1><a href="{{ "/" | absolute_url }}">{{ site.title }}</a></h1>
-      {% endif %}
+    <div class="layout-wrapper">
+      <header class="site-header">
+        <div class="header-left">
+          <h1 class="site-title">prompts.chat</h1>
+          <p class="site-slogan">World's First & Most Famous Prompts Directory</p>
+          <div class="site-description">
+            <a href="https://chat.openai.com" target="_blank" class="platform-tag">ChatGPT</a>
+            <a href="https://claude.ai/new" target="_blank" class="platform-tag">Claude</a>
+            <a href="https://gemini.google.com" target="_blank" class="platform-tag">Gemini</a>
+            <a href="https://meta.ai" target="_blank" class="platform-tag">Llama</a>
+            <a href="https://chat.mistral.ai" target="_blank" class="platform-tag">Mistral</a>
+          </div>
+        </div>
+        <div class="header-right">
+          <a href="https://github.com/f/awesome-chatgpt-prompts/stargazers" target="_blank" class="star-count">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <span id="starCount">...</span>
+          </a>
+          <button class="dark-mode-toggle" onclick="toggleDarkMode()" title="Toggle dark mode">
+            <svg class="mode-icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="mode-icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+        </div>
+      </header>
 
+      <div class="content-wrapper">
+        <div class="sidebar">
+          <div class="search-container">
+            <div class="prompt-count" id="promptCount">
+              <span class="count-label">All Prompts</span>
+              <span class="count-number">0</span>
+            </div>
+            <input type="text" id="searchInput" placeholder="Search prompts...">
+            <ul id="searchResults"></ul>
+          </div>
+        </div>
+        <div class="main-content">
+          <div class="container-lg markdown-body">
       {{ content }}
 
       {% if site.github.private != true and site.github.license %}
@@ -58,46 +954,547 @@
         Awesome ChatGPT Prompts is open source. {% github_edit_link "Improve this page" %}.
       </div>
       {% endif %}
+          </div>
+        </div>
+      </div>
+      <footer class="site-footer">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>About</h3>
+            <p>A curated collection of effective prompts for ChatGPT and other AI assistants, curated by <a href="https://x.com/fkadev">Fatih Kadir Akın</a>. While designed for ChatGPT, these prompts can be adapted for Claude, Gemini, Llama, and other language models to help you get more out of AI interactions.</p>
+          </div>
+          <div class="footer-section">
+            <h3>Contributing</h3>
+            <p>If you'd like to contribute, please fork the repository and make changes as you'd like. Pull requests are warmly welcome. Please read the <a href="https://github.com/f/awesome-chatgpt-prompts/blob/main/CONTRIBUTING.md" style="color: var(--accent-color);">contribution guidelines</a> first.</p>
+          </div>
+          <div class="footer-section">
+            <h3>Links</h3>
+            <div class="book-links">
+              <a href="https://www.forbes.com/sites/tjmccue/2023/01/19/chatgpt-success-completely-depends-on-your-prompt/?sh=497a92a21a16" target="_blank" class="book-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                Featured on Forbes
+              </a>
+              <a href="https://github.com/f/awesome-chatgpt-prompts" target="_blank" class="book-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                GitHub Repository
+              </a>
+              <a href="https://huggingface.co/datasets/fka/awesome-chatgpt-prompts" target="_blank" class="book-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                  <line x1="7" y1="15" x2="7" y2="19"></line>
+                  <line x1="11" y1="15" x2="11" y2="19"></line>
+                  <line x1="15" y1="15" x2="15" y2="19"></line>
+                </svg>
+                Hugging Face Dataset
+              </a>
+              <a href="https://github.com/f/awesome-chatgpt-prompts/pulls" target="_blank" class="book-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="16"></line>
+                  <line x1="8" y1="12" x2="16" y2="12"></line>
+                </svg>
+                View Unmerged Prompts
+              </a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h3>e-Books by @f</h3>
+            <div class="book-links">
+              <a href="https://fka.gumroad.com/l/art-of-chatgpt-prompting" class="book-link" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                The Art of ChatGPT Prompting
+              </a>
+              <a href="https://fka.gumroad.com/l/how-to-make-money-with-chatgpt" class="book-link" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                How to Make Money with ChatGPT
+              </a>
+              <a href="https://fka.gumroad.com/l/the-art-of-midjourney-ai-guide-to-creating-images-from-text" class="book-link" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                The Art of Midjourney AI
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
-    <script>anchors.add();</script>
     <script>
-      document.querySelectorAll("h2[id^=act] + p + blockquote").forEach((x) => {
-        x.setAttribute('contentEditable', true);
-        const button = document.createElement('button');
-        button.style.border = '0';
-        button.style.borderRadius = '3px';
-        button.style.fontSize = '1rem';
-        button.style.marginRight = '0.5rem';
-        button.style.padding = '0';
-        button.style.backgroundColor = 'transparent';
-        button.innerHTML = '✂️';
-        button.addEventListener('click', async () => {
-          if (navigator.clipboard) {
-            await navigator.clipboard.writeText(x.innerText);
-            alert('Prompt is copied, now paste this into ChatGPT.');
-          } else {
-            alert('Your browser does not support clipboard copy. Please select the prompt and copy.')
-          }
-        }, false);
-        x.previousElementSibling.previousElementSibling.prepend(button);
-      });
-
+      // Dark mode functionality
       function toggleDarkMode() {
         const body = document.body;
+        const toggle = document.querySelector('.dark-mode-toggle');
+        const sunIcon = toggle.querySelector('.sun-icon');
+        const moonIcon = toggle.querySelector('.moon-icon');
+        
         body.classList.toggle('dark-mode');
         const isDarkMode = body.classList.contains('dark-mode');
+        
         localStorage.setItem('dark-mode', isDarkMode);
-        document.querySelector('.dark-mode-toggle').textContent = isDarkMode ? '🌙' : '🌞';
+        sunIcon.style.display = isDarkMode ? 'none' : 'block';
+        moonIcon.style.display = isDarkMode ? 'block' : 'none';
       }
 
+      // Initialize everything after DOM loads
       document.addEventListener('DOMContentLoaded', () => {
-        const isDarkMode = localStorage.getItem('dark-mode') === 'true';
-        if (isDarkMode) {
+        // Fetch GitHub stars
+        fetch('https://api.github.com/repos/f/awesome-chatgpt-prompts')
+          .then(response => response.json())
+          .then(data => {
+            const stars = data.stargazers_count;
+            document.getElementById('starCount').textContent = stars.toLocaleString();
+          })
+          .catch(error => {
+            console.error('Error fetching star count:', error);
+            document.getElementById('starCount').textContent = '50k+';
+          });
+
+        // Create prompt cards
+        createPromptCards();
+        
+        // Initialize dark mode
+        const isDarkMode = localStorage.getItem('dark-mode');
+        const toggle = document.querySelector('.dark-mode-toggle');
+        const sunIcon = toggle.querySelector('.sun-icon');
+        const moonIcon = toggle.querySelector('.moon-icon');
+        
+        // Set dark mode by default if not set
+        if (isDarkMode === null) {
+          localStorage.setItem('dark-mode', 'true');
           document.body.classList.add('dark-mode');
-          document.querySelector('.dark-mode-toggle').textContent = '🌙';
+          sunIcon.style.display = 'none';
+          moonIcon.style.display = 'block';
+        } else if (isDarkMode === 'true') {
+          document.body.classList.add('dark-mode');
+          sunIcon.style.display = 'none';
+          moonIcon.style.display = 'block';
+        } else {
+          sunIcon.style.display = 'block';
+          moonIcon.style.display = 'none';
+        }
+        
+        // Initialize search functionality
+        initializeSearch();
+      });
+
+      // Search functionality
+      async function initializeSearch() {
+        try {
+          const response = await fetch('/prompts.csv');
+          const csvText = await response.text();
+          const prompts = parseCSV(csvText);
+          
+          // Sort prompts alphabetically by act
+          prompts.sort((a, b) => a.act.localeCompare(b.act));
+          
+          const searchInput = document.getElementById('searchInput');
+          const searchResults = document.getElementById('searchResults');
+          const promptCount = document.getElementById('promptCount');
+          
+          // Update prompt count
+          updatePromptCount(prompts.length, prompts.length);
+          
+          // Show all prompts initially
+          displaySearchResults(prompts);
+          
+          searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredPrompts = searchTerm 
+              ? prompts.filter(prompt => 
+                  prompt.act.toLowerCase().includes(searchTerm) || 
+                  prompt.prompt.toLowerCase().includes(searchTerm)
+                )
+              : prompts;
+            
+            // Update count with filtered results
+            updatePromptCount(filteredPrompts.length, prompts.length);
+            displaySearchResults(filteredPrompts);
+          });
+        } catch (error) {
+          console.error('Error loading prompts:', error);
+        }
+      }
+
+      function updatePromptCount(filteredCount, totalCount) {
+        const promptCount = document.getElementById('promptCount');
+        const countLabel = promptCount.querySelector('.count-label');
+        const countNumber = promptCount.querySelector('.count-number');
+        
+        if (filteredCount === totalCount) {
+          promptCount.classList.remove('filtered');
+          countLabel.textContent = 'All Prompts';
+          countNumber.textContent = totalCount;
+        } else {
+          promptCount.classList.add('filtered');
+          countLabel.textContent = `Found ${filteredCount} of ${totalCount}`;
+          countNumber.textContent = filteredCount;
+        }
+      }
+
+      function parseCSV(csv) {
+        const lines = csv.split('\n');
+        const headers = lines[0].split(',').map(header => header.replace(/"/g, '').trim());
+        
+        return lines.slice(1).map(line => {
+          const values = line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || [];
+          const entry = {};
+          
+          headers.forEach((header, index) => {
+            let value = values[index] ? values[index].replace(/"/g, '').trim() : '';
+            // Remove backticks from the act/title
+            if (header === 'act') {
+              value = value.replace(/`/g, '');
+            }
+            entry[header] = value;
+          });
+          
+          return entry;
+        }).filter(entry => entry.act && entry.prompt);
+      }
+
+      function displaySearchResults(results) {
+        const searchResults = document.getElementById('searchResults');
+        const searchInput = document.getElementById('searchInput');
+        searchResults.innerHTML = '';
+        
+        if (window.innerWidth <= 768 && !searchInput.value.trim()) {
+          return;
+        }
+        
+        if (results.length === 0) {
+          const li = document.createElement('li');
+          li.className = 'search-result-item add-prompt';
+          li.innerHTML = `
+            <a href="https://github.com/f/awesome-chatgpt-prompts/pulls" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 8px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="16"></line>
+                <line x1="8" y1="12" x2="16" y2="12"></line>
+              </svg>
+              Add this prompt
+            </a>
+          `;
+          searchResults.appendChild(li);
+          return;
+        }
+        
+        results.forEach(result => {
+          const li = document.createElement('li');
+          li.className = 'search-result-item';
+          li.textContent = result.act;
+          li.addEventListener('click', () => {
+            // Find the prompt card with matching title
+            const cards = document.querySelectorAll('.prompt-card');
+            const targetCard = Array.from(cards).find(card => {
+              const cardTitle = card.querySelector('.prompt-title').textContent
+                .replace(/\s+/g, ' ')  // Normalize whitespace
+                .replace(/[\n\r]/g, '') // Remove newlines
+                .trim();
+              
+              const searchTitle = result.act
+                .replace(/\s+/g, ' ')  // Normalize whitespace
+                .replace(/[\n\r]/g, '') // Remove newlines
+                .trim();
+              
+              return cardTitle.toLowerCase().includes(searchTitle.toLowerCase()) || searchTitle.toLowerCase().includes(cardTitle.toLowerCase());
+            });
+            
+            if (targetCard) {
+              // Remove highlight from all cards
+              cards.forEach(card => {
+                card.style.transition = 'all 0.3s ease';
+                card.style.transform = 'none';
+                card.style.boxShadow = 'none';
+                card.style.borderColor = '';
+              });
+              
+              // Different scroll behavior for mobile and desktop
+              const isMobile = window.innerWidth <= 768;
+              const headerHeight = document.querySelector('.site-header').offsetHeight;
+              
+              if (isMobile) {
+                // On mobile, scroll the window
+                const cardRect = targetCard.getBoundingClientRect();
+                const scrollTop = window.pageYOffset + cardRect.top - headerHeight - 20;
+                
+                window.scrollTo({
+                  top: scrollTop,
+                  behavior: 'smooth'
+                });
+              } else {
+                // On desktop, scroll the main-content container
+                const mainContent = document.querySelector('.main-content');
+                const cardRect = targetCard.getBoundingClientRect();
+                const scrollTop = mainContent.scrollTop + cardRect.top - headerHeight - 20;
+                
+                mainContent.scrollTo({
+                  top: scrollTop,
+                  behavior: 'smooth'
+                });
+              }
+              
+              // Add highlight effect after scrolling completes
+              setTimeout(() => {
+                targetCard.style.transform = 'scale(1.02)';
+                targetCard.style.boxShadow = '0 0 0 2px var(--accent-color)';
+                targetCard.style.borderColor = 'var(--accent-color)';
+                
+                // Remove highlight after animation
+                setTimeout(() => {
+                  targetCard.style.transform = 'none';
+                  targetCard.style.boxShadow = 'none';
+                  targetCard.style.borderColor = '';
+                }, 2000);
+              }, 500); // Wait for scroll to complete
+            } else {
+              console.log('Card not found for:', result.act);
+            }
+          });
+          searchResults.appendChild(li);
+        });
+      }
+
+      // Update the modal initialization and event listeners
+      function createPromptCards() {
+        const container = document.querySelector('.container-lg.markdown-body');
+        const promptsGrid = document.createElement('div');
+        promptsGrid.className = 'prompts-grid';
+        
+        // Add contribute box
+        const contributeCard = document.createElement('div');
+        contributeCard.className = 'prompt-card contribute-card';
+        contributeCard.innerHTML = `
+          <a href="https://github.com/f/awesome-chatgpt-prompts/pulls" target="_blank" style="text-decoration: none; color: inherit; height: 100%; display: flex; flex-direction: column;">
+            <div class="prompt-title" style="display: flex; align-items: center; gap: 8px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="16"></line>
+                <line x1="8" y1="12" x2="16" y2="12"></line>
+              </svg>
+              Add Your Prompt
+            </div>
+            <p class="prompt-content" style="flex-grow: 1;">
+              Share your creative prompts with the community! Submit a pull request to add your prompts to the collection.
+            </p>
+            <span class="contributor-badge">Contribute Now</span>
+          </a>
+        `;
+        promptsGrid.appendChild(contributeCard);
+        
+        const promptElements = document.querySelectorAll('h2[id^=act] + p + blockquote');
+        
+        promptElements.forEach((blockquote) => {
+          const title = blockquote.previousElementSibling.previousElementSibling.textContent;
+          const content = blockquote.textContent;
+          
+          // Extract contributor from the paragraph element
+          const contributorParagraph = blockquote.previousElementSibling;
+          const contributorText = contributorParagraph.textContent;
+          let contributor = null;
+          
+          // Try different contributor formats
+          const formats = [
+            /Contributed by: \[([^\]]+)\]/i,
+            /Contributed by \[([^\]]+)\]/i,
+            /Contributed by: @([^\s]+)/i,
+            /Contributed by @([^\s]+)/i,
+            /Contributed by: \[@([^\]]+)\]/i,
+            /Contributed by \[@([^\]]+)\]/i
+          ];
+          
+          for (const format of formats) {
+            const match = contributorText.match(format);
+            if (match) {
+              contributor = match[1];
+              // Remove @ if it exists at the start
+              contributor = contributor.replace(/^@/, '');
+              break;
+            }
+          }
+          
+          // Set default contributor to 'f' if none found
+          if (!contributor) {
+            contributor = 'f';
+          }
+          
+          const card = document.createElement('div');
+          card.className = 'prompt-card';
+          
+          card.innerHTML = `
+            <div class="prompt-title">
+              ${title}
+              <button class="copy-button" title="Copy prompt">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+              </button>
+            </div>
+            <p class="prompt-content">${content}</p>
+            <a href="https://github.com/${contributor}" class="contributor-badge" target="_blank" rel="noopener">@${contributor}</a>
+          `;
+          
+          // Add click event for showing modal
+          card.addEventListener('click', (e) => {
+            if (!e.target.closest('.copy-button') && !e.target.closest('.contributor-badge')) {
+              showModal(title, content);
+            }
+          });
+          
+          const copyButton = card.querySelector('.copy-button');
+          copyButton.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            try {
+              await navigator.clipboard.writeText(content);
+              copyButton.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              `;
+              setTimeout(() => {
+                copyButton.innerHTML = `
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                `;
+              }, 2000);
+            } catch (err) {
+              alert('Failed to copy prompt to clipboard');
+            }
+          });
+          
+          promptsGrid.appendChild(card);
+        });
+        
+        container.innerHTML = '';
+        container.appendChild(promptsGrid);
+
+        // Initialize modal event listeners
+        initializeModalListeners();
+      }
+
+      function initializeModalListeners() {
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalClose = document.querySelector('.modal-close');
+        
+        if (!modalOverlay || !modalClose) return;
+        
+        modalClose.addEventListener('click', hideModal);
+        modalOverlay.addEventListener('click', (e) => {
+          if (e.target === modalOverlay) {
+            hideModal();
+          }
+        });
+      }
+
+      // Add global event listener for Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          hideModal();
         }
       });
+
+      function createModal() {
+        const modalHTML = `
+          <div class="modal-overlay" id="modalOverlay">
+            <div class="modal">
+              <div class="modal-header">
+                <h2 class="modal-title"></h2>
+                <div class="modal-actions">
+                  <button class="modal-copy-button" title="Copy prompt">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                  </button>
+                  <button class="modal-close" title="Close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="18" y1="6" x2="6" y2="18"></line>
+                      <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="modal-content"></div>
+              <div class="modal-footer">
+                <a class="modal-contributor" target="_blank" rel="noopener"></a>
+              </div>
+            </div>
+          </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+        initializeModalListeners();
+      }
+
+      function showModal(title, content) {
+        let modalOverlay = document.getElementById('modalOverlay');
+        if (!modalOverlay) {
+          createModal();
+          modalOverlay = document.getElementById('modalOverlay');
+        }
+        
+        const modalTitle = modalOverlay.querySelector('.modal-title');
+        const modalContent = modalOverlay.querySelector('.modal-content');
+        const modalCopyButton = modalOverlay.querySelector('.modal-copy-button');
+        const modalContributor = modalOverlay.querySelector('.modal-contributor');
+        
+        if (!modalTitle || !modalContent) return;
+        
+        modalTitle.textContent = title;
+        modalContent.textContent = content;
+        
+        // Find the contributor for this prompt
+        const promptCard = Array.from(document.querySelectorAll('.prompt-card')).find(card => 
+          card.querySelector('.prompt-title').textContent.trim() === title.trim()
+        );
+        
+        if (promptCard) {
+          const contributorBadge = promptCard.querySelector('.contributor-badge');
+          if (contributorBadge) {
+            modalContributor.href = contributorBadge.href;
+            modalContributor.textContent = `Contributed by ${contributorBadge.textContent}`;
+          }
+        }
+        
+        // Add copy functionality
+        modalCopyButton.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(content);
+            modalCopyButton.innerHTML = `
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            `;
+            setTimeout(() => {
+              modalCopyButton.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+              `;
+            }, 2000);
+          } catch (err) {
+            alert('Failed to copy prompt to clipboard');
+          }
+        });
+        
+        modalOverlay.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      }
+
+      function hideModal() {
+        const modalOverlay = document.getElementById('modalOverlay');
+        if (!modalOverlay) return;
+        
+        modalOverlay.style.display = 'none';
+        document.body.style.overflow = '';
+        
+        // Optional: Remove modal from DOM when hidden
+        modalOverlay.remove();
+      }
     </script>
     <style>video { max-width: 100% !important; }</style>
     <!-- Google tag (gtag.js) -->

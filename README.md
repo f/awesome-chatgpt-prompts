@@ -13,34 +13,24 @@
     <img height="60" alt="Hugging Face logo" src="https://github.com/user-attachments/assets/4187ef06-7cae-402a-a410-e0a999758fed">
   </a>
   <br>
-  <sub><a href="https://github.com/sponsors/f/sponsorships?sponsor=f&amp;tier_id=319423">Be my sponsor and your logo will be here and prompts.chat!</a></sub>
+  <sub><a href="https://github.com/sponsors/f/sponsorships?sponsor=f&amp;tier_id=319423">Be my sponsor and your logo will be here!</a></sub>
 </p>
 
 ---
 
-Welcome to the "Awesome ChatGPT Prompts" repository! This is a collection of prompt examples to be used with the ChatGPT model.
+Welcome to the "Awesome ChatGPT Prompts" repository! While this collection was originally created for [ChatGPT](https://chat.openai.com/chat), these prompts work great with other AI models like [Claude](https://claude.ai/new), [Gemini](https://gemini.google.com), [Hugging Face Chat](https://hf.co/chat), [Llama](https://meta.ai), [Mistral](https://chat.mistral.ai), and more.
 
-The [ChatGPT](https://chat.openai.com/chat) model is a large language model trained by [OpenAI](https://openai.com) that is capable of generating human-like text. By providing it with a prompt, it can generate responses that continue the conversation or expand on the given prompt.
+[ChatGPT](https://chat.openai.com/chat) is a web interface created by [OpenAI](https://openai.com) that provides access to their GPT (Generative Pre-trained Transformer) language models. The underlying models, like GPT-4o and GPT-o1, are large language models trained on vast amounts of text data that can understand and generate human-like text. Like other AI chat interfaces, you can provide prompts and have natural conversations with the AI, which will generate contextual responses based on the conversation history and your inputs.
 
-In this repository, you will find a variety of prompts that can be used with ChatGPT. We encourage you to [add your own prompts](https://github.com/f/awesome-chatgpt-prompts/edit/main/README.md) to the list, and to use ChatGPT to generate new prompts as well.
+In this repository, you will find a variety of prompts that can be used with ChatGPT and other AI chat models. We encourage you to [add your own prompts](https://github.com/f/awesome-chatgpt-prompts/edit/main/README.md) to the list, and to use AI to help generate new prompts as well.
 
-To get started, simply clone this repository and use the prompts in the README.md file as input for ChatGPT. You can also use the prompts in this file as inspiration for creating your own.
+To get started, simply clone this repository and use the prompts in the README.md file as input for your preferred AI chat model. You can also use the prompts in this file as inspiration for creating your own.
 
-We hope you find these prompts useful and have fun using ChatGPT!
+We hope you find these prompts useful and have fun exploring AI chat models!
 
-**[View on GitHub](https://github.com/f/awesome-chatgpt-prompts)**
+**[View on prompts.chat](https://prompts.chat)**
 
 **[View on Hugging Face](https://huggingface.co/datasets/fka/awesome-chatgpt-prompts/)**
-
----
-
-### ⭐️ NEW: Awesome ChatGPT Store: A Hub for Custom GPTs
-
-Now you can access [Awesome ChatGPT Store](https://github.com/devisasari/awesome-chatgpt-store), a dynamic new addition to the ChatGPT ecosystem! With the introduction of customizable GPT models, our store provides a curated collection of specialized ChatGPT GPTs, each tailored for unique applications and use cases.
-
-Explore a wide range of GPTs, from those optimized for specific programming languages, to models fine-tuned for creative writing, technical analysis, and more. This repository is not just a store; it's a community-driven platform where developers and enthusiasts can share, discover, and leverage the full potential of ChatGPT's versatility.
-
-Dive into the world of customized conversational AI models and enrich your projects with cutting-edge technology. Visit the Awesome ChatGPT Store now at [Awesome ChatGPT Store](https://github.com/devisasari/awesome-chatgpt-store) and start exploring the possibilities!
 
 ---
 
@@ -50,23 +40,13 @@ Dive into the world of customized conversational AI models and enrich your proje
 
 I've authored an e-book called **"The Art of ChatGPT Prompting: A Guide to Crafting Clear and Effective Prompts"**.
 
-📖 **[Read the free e-book](https://fka.gumroad.com/l/art-of-chatgpt-prompting)**
+📖 **[Read the e-book](https://fka.gumroad.com/l/art-of-chatgpt-prompting)**
 
 ### Want to Learn How to Make Money using ChatGPT Prompts?
 
 I've authored an e-book called **"How to Make Money with ChatGPT: Strategies, Tips, and Tactics"**.
 
 📖 **[Buy the e-book](https://fka.gumroad.com/l/how-to-make-money-with-chatgpt)**
-
-### Want to secure your ChatGPT apps?
-
-[Utku Şen](https://twitter.com/utkusen) authored an e-book called **"Securing GPT: A Practical Introduction to Attack and Defend ChatGPT Applications"**.
-
-📖 **[Buy the e-book](https://utkusen.gumroad.com/l/securing-gpt-attack-defend-chatgpt-applications)**
-
----
-
-## Other Prompting Resources
 
 ### Want to Learn How to write image prompts for Midjourney AI?
 
@@ -76,33 +56,21 @@ I've authored an e-book called **"The Art of Midjourney AI: A Guide to Creating 
 
 ---
 
-### Create your own prompt using AI
-
-[Merve Noyan](https://huggingface.co/merve) created an exceptional [ChatGPT Prompt Generator App](https://huggingface.co/spaces/merve/ChatGPT-prompt-generator), allowing users to generate prompts tailored to their desired persona. The app uses this repository as its training dataset.
-
----
-
 ### Using prompts.chat
 
-[prompts.chat](https://prompts.chat) is designed to provide an enhanced UX when working with prompts. With just a few clicks, you can easily edit and copy the prompts on the site to fit your specific needs and preferences. The copy button will copy the prompt exactly as you have edited it.
+[prompts.chat](https://prompts.chat) is designed to provide an enhanced UX when working with prompts. With just a few clicks, you can easily edit and copy the prompts on the site to fit your specific needs and preferences.
 
-<video autoplay loop muted playsinline src="https://user-images.githubusercontent.com/196477/207992596-6846398c-9ee7-4d7b-8fbe-b7c9e6daad23.mov"></video>
+<img width="1400" alt="Screenshot 2025-01-05 at 22 17 19" src="https://github.com/user-attachments/assets/272d2092-b651-452a-a049-f46b31c32889" />
 
 ---
-
-## Dark Mode (on https://prompts.chat)
-
-We have implemented a dark mode for this repository to enhance your reading experience. The dark mode is implemented using CSS variables and a toggle button. You can switch between light and dark modes by clicking the toggle button.
-
-## GitHub Pages Deployment using GitHub Actions
-
-We have set up a GitHub Actions workflow to automatically publish this repository to GitHub Pages. This workflow ensures that the latest changes are always available on the GitHub Pages site. You can find the workflow configuration in the `.github/workflows/publish.yml` file.
 
 ## Unmerged Prompts
 
 There are many Pull Requests to this repository waiting to be merged. There are many hidden gems there. Take a look!
 
 📖 **[View Unmerged Prompts](https://github.com/f/awesome-chatgpt-prompts/pulls)**
+
+---
 
 # Prompts
 
@@ -866,6 +834,15 @@ Contributed by: [@nextdoorUncleLiu](https://github.com/nextdoorUncleLiu)
 Contributed by: [@demian-ae](https://github.com/demian-ae)
 
 > Act as an expert software engineer in test with strong experience in `programming language` who is teaching a junior developer how to write tests. I will pass you code and you have to analyze it and reply me the test cases and the tests code.
+
+## Act as a Wisdom Generator
+Contributed by: [@sreyas-b-anand](https://github.com/sreyas-b-anand/)
+
+>I want you to act as an empathetic mentor, sharing timeless knowledge fitted to modern challenges. Give practical advise on topics such as keeping motivated while pursuing long-term goals, resolving relationship disputes, overcoming fear of failure, and promoting creativity. Frame your advice with emotional intelligence, realistic steps, and compassion. Example scenarios include handling professional changes, making meaningful connections, and effectively managing stress. Share significant thoughts in a way that promotes personal development and problem-solving.
+
+## Act as a YouTube Video Analyst
+Contributed by: [@aviral-trivedi](https://github.com/aviral-trivedi)
+>I want you to act as an expert YouTube video analyst. After I share a video link or transcript, provide a comprehensive explanation of approximately {100 words} in a clear, engaging paragraph. Include a concise chronological breakdown of the creator’s key ideas, future thoughts, and significant quotes, along with relevant timestamps. Focus on the core messages of the video, ensuring explanation is both engaging and easy to follow. Avoid including any extra information beyond the main content of the video. {Link or Transcript}
 
 ## Contributors 😍
 
