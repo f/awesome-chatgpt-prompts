@@ -11,16 +11,22 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Ruby
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.7'
+          ruby-version: '3.2'
+          bundler-cache: true # This will cache dependencies
+
+      - name: Update Bundler
+        run: |
+          gem update --system
+          bundle update --bundler
 
       - name: Install dependencies
         run: |
-          gem install bundler
+          rm -f Gemfile.lock # Remove existing lockfile
           bundle install
 
       - name: Build site
