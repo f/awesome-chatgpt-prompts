@@ -28,6 +28,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          token: ${{ secrets.PAT_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -40,7 +41,7 @@ jobs:
       - name: Process command
         id: process
         env:
-          GH_SECRET: ${{ secrets.GH_SECRET }}
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           node << 'EOF'
@@ -53,7 +54,7 @@ jobs:
             });
             
             const octokit = new Octokit({
-              auth: process.env.GH_SECRET
+              auth: process.env.GH_TOKEN
             });
 
             const eventName = process.env.GITHUB_EVENT_NAME;
