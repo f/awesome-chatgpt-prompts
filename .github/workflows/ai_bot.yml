@@ -159,44 +159,71 @@ jobs:
                   return;
                 }
 
-                // Get content from main branch
+                // Get content from main branch as reference
                 const { data: readmeFile } = await octokit.repos.getContent({
                   owner: event.repository.owner.login,
                   repo: event.repository.name,
                   path: 'README.md',
-                  ref: 'main'  // Get from main branch
+                  ref: 'main'
                 });
 
                 const { data: csvFile } = await octokit.repos.getContent({
                   owner: event.repository.owner.login,
                   repo: event.repository.name,
                   path: 'prompts.csv',
-                  ref: 'main'  // Get from main branch
+                  ref: 'main'
                 });
 
                 // Format the new prompt section
                 const newSection = `\n## ${actName}\n${contributorInfo ? contributorInfo + '\n' : ''}\n> ${newPrompt}\n`;
                 
-                // Update files in PR branch
+                // Insert the new section before Contributors in README
+                let readmeContent = Buffer.from(readmeFile.content, 'base64').toString('utf-8');
+                const contributorsIndex = readmeContent.indexOf('## Contributors');
+                if (contributorsIndex === -1) {
+                  readmeContent += newSection; // Append if Contributors section not found
+                } else {
+                  readmeContent = readmeContent.slice(0, contributorsIndex) + newSection + readmeContent.slice(contributorsIndex);
+                }
+
+                // Get current files from PR branch to get their SHAs
+                const { data: prReadmeFile } = await octokit.repos.getContent({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  path: 'README.md',
+                  ref: pr.head.ref
+                });
+
+                const { data: prCsvFile } = await octokit.repos.getContent({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  path: 'prompts.csv',
+                  ref: pr.head.ref
+                });
+
+                // Update files in PR branch using PR's file SHAs
                 await octokit.repos.createOrUpdateFileContents({
                   owner: event.repository.owner.login,
                   repo: event.repository.name,
                   path: 'README.md',
                   message: `feat: Add "${actName}" to README`,
-                  content: Buffer.from(Buffer.from(readmeFile.content, 'base64').toString('utf-8') + newSection).toString('base64'),
-                  branch: pr.head.ref,  // Update PR's branch
-                  sha: readmeFile.sha
+                  content: Buffer.from(readmeContent).toString('base64'),
+                  branch: pr.head.ref,
+                  sha: prReadmeFile.sha  // Use PR's file SHA
                 });
+
+                // Update CSV in PR branch
+                const csvContent = Buffer.from(csvFile.content, 'base64').toString('utf-8') +
+                  `\n"${actName.replace(/"/g, '""')}","${newPrompt.replace(/"/g, '""')}"`;
 
                 await octokit.repos.createOrUpdateFileContents({
                   owner: event.repository.owner.login,
                   repo: event.repository.name,
                   path: 'prompts.csv',
                   message: `feat: Add "${actName}" to prompts.csv`,
-                  content: Buffer.from(Buffer.from(csvFile.content, 'base64').toString('utf-8') + 
-                    `\n"${actName.replace(/"/g, '""')}","${newPrompt.replace(/"/g, '""')}"`).toString('base64'),
-                  branch: pr.head.ref,  // Update PR's branch
-                  sha: csvFile.sha
+                  content: Buffer.from(csvContent).toString('base64'),
+                  branch: pr.head.ref,
+                  sha: prCsvFile.sha  // Use PR's file SHA
                 });
 
                 await octokit.issues.createComment({
