@@ -211,11 +211,39 @@ jobs:
                 console.log('Preparing CSV content...');
                 let csvContent = Buffer.from(csvFile.content, 'base64').toString('utf-8');
                 if (!csvContent.endsWith('\n')) csvContent += '\n';
-                csvContent += `"${actName.replace(/"/g, '""')}","${newPrompt.replace(/"/g, '""')}"`;
+                // Remove markdown quote character and trim whitespace
+                const cleanPrompt = newPrompt.replace(/^>\s*/gm, '').trim();
+                csvContent += `"${actName.replace(/"/g, '""')}","${cleanPrompt.replace(/"/g, '""')}"`;
 
                 // Create new branch
                 const branchName = `prompt/${actName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
                 console.log(`Creating new branch: ${branchName}`);
+
+                // Check if branch exists and delete it
+                try {
+                  console.log('Checking if branch already exists...');
+                  const { data: existingRef } = await octokit.git.getRef({
+                    owner: event.repository.owner.login,
+                    repo: event.repository.name,
+                    ref: `heads/${branchName}`
+                  });
+
+                  if (existingRef) {
+                    console.log('Branch exists, deleting it...');
+                    await octokit.git.deleteRef({
+                      owner: event.repository.owner.login,
+                      repo: event.repository.name,
+                      ref: `heads/${branchName}`
+                    });
+                    console.log('Existing branch deleted');
+                  }
+                } catch (error) {
+                  // 404 means branch doesn't exist, which is fine
+                  if (error.status !== 404) {
+                    throw error;
+                  }
+                  console.log('Branch does not exist, proceeding with creation');
+                }
 
                 // Get main branch ref
                 const { data: mainRef } = await octokit.git.getRef({
