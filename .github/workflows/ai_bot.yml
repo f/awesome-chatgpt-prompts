@@ -145,7 +145,7 @@ jobs:
                       .join('\n');
 
                     console.log('Attempting to extract prompts from README changes...');
-                    const promptMatches = [...addedLines.matchAll(/## Act as (?:a |an )?([^\n]+)\n(?:Contributed by:[^\n]*\n)?(?:> )?([^#]+?)(?=\n##|\n\n##|$)/g)];
+                    const promptMatches = [...addedLines.matchAll(/## Act as (?:a |an )?([^\n]+)\n(?:Contributed by:[^\n]*\n)?(?:> )?([^#]+?)(?=\n##|\n\n##|$)/ig)];
                     
                     for (const match of promptMatches) {
                       const actName = `Act as ${match[1].trim()}`;
