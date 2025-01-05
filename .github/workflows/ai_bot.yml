@@ -273,15 +273,8 @@ jobs:
                   title: `feat: Add "${actName}"`,
                   head: branchName,
                   base: 'main',
-                  body: |
-                    This PR supersedes #${{ issueNumber }} with proper formatting.
-
-                    Original PR by @${{ pr.user.login }}
-
-                    Changes:
-                    - Added "${{ actName }}" to README.md
-                    - Added prompt to prompts.csv
-                    - Preserved original attribution
+                  body: `This PR supersedes #${issueNumber} with proper formatting. Original PR by @${pr.user.login}. Added "${actName}" to README.md and prompts.csv, preserving original attribution.`
+                });
 
                 // Comment on original PR
                 await octokit.issues.createComment({
