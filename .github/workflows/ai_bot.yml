@@ -133,7 +133,7 @@ jobs:
 
                 // Extract prompt from changes
                 console.log('Analyzing changes to extract prompt information...');
-                const prompts = [];
+                const prompts = new Map(); // Use Map to deduplicate prompts by title
 
                 for (const file of files) {
                   console.log(`Processing file: ${file.filename}`);
@@ -155,13 +155,36 @@ jobs:
                         ? `Contributed by: [@${contributorLine[1]}](https://github.com/${contributorLine[2]})`
                         : `Contributed by: [@${pr.user.login}](https://github.com/${pr.user.login})`;
                       
-                      prompts.push({ actName, promptText, contributorInfo });
-                      console.log(`Found prompt: "${actName}"`);
+                      prompts.set(actName, { actName, promptText, contributorInfo });
+                      console.log(`Found prompt in README: "${actName}"`);
+                    }
+                  } else if (file.filename === 'prompts.csv') {
+                    const patch = file.patch || '';
+                    const addedLines = patch.split('\n')
+                      .filter(line => line.startsWith('+'))
+                      .map(line => line.substring(1))
+                      .filter(line => line.trim()); // Remove empty lines
+
+                    console.log('Attempting to extract prompts from CSV changes...');
+                    for (const line of addedLines) {
+                      // Parse CSV line considering escaped quotes
+                      const matches = [...line.matchAll(/"([^"]*(?:""[^"]*)*)"/g)];
+                      if (matches.length >= 2) {
+                        const actName = matches[0][1].replace(/""/g, '"').trim();
+                        const promptText = matches[1][1].replace(/""/g, '"').trim();
+                        
+                        // Only add if not already found in README
+                        if (!prompts.has(actName)) {
+                          const contributorInfo = `Contributed by: [@${pr.user.login}](https://github.com/${pr.user.login})`;
+                          prompts.set(actName, { actName, promptText, contributorInfo });
+                          console.log(`Found prompt in CSV: "${actName}"`);
+                        }
+                      }
                     }
                   }
                 }
 
-                if (prompts.length === 0) {
+                if (prompts.size === 0) {
                   console.log('Failed to extract prompt information');
                   await octokit.issues.createComment({
                     owner: event.repository.owner.login,
@@ -194,8 +217,11 @@ jobs:
                 let csvContent = Buffer.from(csvFile.content, 'base64').toString('utf-8');
                 if (!csvContent.endsWith('\n')) csvContent += '\n';
 
+                // Convert Map to array for processing
+                const promptsArray = Array.from(prompts.values());
+
                 // Process each prompt
-                for (const { actName, promptText, contributorInfo } of prompts) {
+                for (const { actName, promptText, contributorInfo } of promptsArray) {
                   // Remove markdown quote character and trim whitespace
                   const cleanPrompt = promptText.replace(/^>\s*/gm, '').trim();
                   
@@ -223,7 +249,7 @@ jobs:
                 }
 
                 // Create new branch
-                const branchName = `prompt/${prompts.map(p => p.actName.toLowerCase().replace(/[^a-z0-9]+/g, '-')).join('-')}`;
+                const branchName = `prompt/${promptsArray.map(p => p.actName.toLowerCase().replace(/[^a-z0-9]+/g, '-')).join('-')}`;
                 console.log(`Creating new branch: ${branchName}`);
 
                 // Check if branch exists and delete it
@@ -309,8 +335,8 @@ jobs:
                   owner: event.repository.owner.login,
                   repo: event.repository.name,
                   path: 'README.md',
-                  message: prompts.length === 1
-                    ? `feat: Add "${prompts[0].actName}" to README`
+                  message: promptsArray.length === 1
+                    ? `feat: Add "${promptsArray[0].actName}" to README`
                     : `feat: Add multiple prompts to README`,
                   content: Buffer.from(readmeContent).toString('base64'),
                   branch: branchName,
@@ -330,8 +356,8 @@ jobs:
                   owner: event.repository.owner.login,
                   repo: event.repository.name,
                   path: 'prompts.csv',
-                  message: prompts.length === 1
-                    ? `feat: Add "${prompts[0].actName}" to prompts.csv`
+                  message: promptsArray.length === 1
+                    ? `feat: Add "${promptsArray[0].actName}" to prompts.csv`
                     : `feat: Add multiple prompts to prompts.csv`,
                   content: Buffer.from(csvContent).toString('base64'),
                   branch: branchName,
@@ -347,13 +373,13 @@ jobs:
                 });
 
                 // Create new PR
-                const prTitle = prompts.length === 1
-                  ? `feat: Add "${prompts[0].actName}"`
-                  : `feat: Add multiple prompts (${prompts.map(p => `"${p.actName}"`).join(', ')})`;
+                const prTitle = promptsArray.length === 1
+                  ? `feat: Add "${promptsArray[0].actName}"`
+                  : `feat: Add multiple prompts (${promptsArray.map(p => `"${p.actName}"`).join(', ')})`;
 
-                const prBody = prompts.length === 1
-                  ? `This PR supersedes #${issueNumber} with proper formatting. Original PR by @${pr.user.login}. Added "${prompts[0].actName}" to README.md and prompts.csv, preserving original attribution.`
-                  : `This PR supersedes #${issueNumber} with proper formatting. Original PR by @${pr.user.login}.\n\nAdded the following prompts:\n${prompts.map(p => `- "${p.actName}"`).join('\n')}\n\nAll prompts have been added to README.md and prompts.csv, preserving original attribution.`;
+                const prBody = promptsArray.length === 1
+                  ? `This PR supersedes #${issueNumber} with proper formatting. Original PR by @${pr.user.login}. Added "${promptsArray[0].actName}" to README.md and prompts.csv, preserving original attribution.`
+                  : `This PR supersedes #${issueNumber} with proper formatting. Original PR by @${pr.user.login}.\n\nAdded the following prompts:\n${promptsArray.map(p => `- "${p.actName}"`).join('\n')}\n\nAll prompts have been added to README.md and prompts.csv, preserving original attribution.`;
 
                 const { data: newPr } = await octokit.pulls.create({
                   owner: event.repository.owner.login,
