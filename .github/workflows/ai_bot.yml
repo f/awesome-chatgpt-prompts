@@ -120,7 +120,7 @@ jobs:
                   repo: event.repository.name,
                   pull_number: issueNumber
                 });
-                console.log(`PR found: #${issueNumber} from branch ${pr.head.ref}`);
+                console.log(`Original PR found: #${issueNumber} from ${pr.user.login}`);
 
                 // Get the PR diff to extract the new prompt
                 console.log('Fetching PR file changes...');
@@ -158,7 +158,8 @@ jobs:
                         contributorInfo = `Contributed by: [@${contributorLine[1]}](https://github.com/${contributorLine[2]})`;
                         console.log(`Found contributor info: ${contributorInfo}`);
                       } else {
-                        console.log('No contributor info found');
+                        contributorInfo = `Contributed by: [@${pr.user.login}](https://github.com/${pr.user.login})`;
+                        console.log(`Using PR author as contributor: ${contributorInfo}`);
                       }
                     }
                   }
@@ -175,7 +176,7 @@ jobs:
                   return;
                 }
 
-                // Get content from main branch as reference
+                // Get content from main branch
                 console.log('Fetching current content from main branch...');
                 const { data: readmeFile } = await octokit.repos.getContent({
                   owner: event.repository.owner.login,
@@ -183,7 +184,6 @@ jobs:
                   path: 'README.md',
                   ref: 'main'
                 });
-                console.log('README.md content fetched');
 
                 const { data: csvFile } = await octokit.repos.getContent({
                   owner: event.repository.owner.login,
@@ -191,11 +191,10 @@ jobs:
                   path: 'prompts.csv',
                   ref: 'main'
                 });
-                console.log('prompts.csv content fetched');
 
-                // Format the new prompt section
+                // Prepare new content
                 console.log('Preparing content updates...');
-                const newSection = `## ${actName}\n${contributorInfo ? contributorInfo + '\n' : ''}\n> ${newPrompt}\n\n`;
+                const newSection = `## ${actName}\n${contributorInfo}\n\n> ${newPrompt}\n\n`;
                 
                 // Insert the new section before Contributors in README
                 let readmeContent = Buffer.from(readmeFile.content, 'base64').toString('utf-8');
@@ -213,89 +212,95 @@ jobs:
                 const csvContent = Buffer.from(csvFile.content, 'base64').toString('utf-8') +
                   `\n"${actName.replace(/"/g, '""')}","${newPrompt.replace(/"/g, '""')}"`;
 
-                console.log('Creating Git operations in fork...');
-                console.log(`Fork owner: ${pr.head.user.login}`);
-                console.log(`Fork repo: ${pr.head.repo.name}`);
-                console.log(`Branch: ${pr.head.ref}`);
+                // Create new branch
+                const branchName = `prompt/${actName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+                console.log(`Creating new branch: ${branchName}`);
 
-                // Create blobs in fork
-                console.log('Creating file blobs in fork...');
-                const [readmeBlob, csvBlob] = await Promise.all([
-                  octokit.git.createBlob({
-                    owner: pr.head.user.login,
-                    repo: pr.head.repo.name,
-                    content: Buffer.from(readmeContent).toString('base64'),
-                    encoding: 'base64'
-                  }),
-                  octokit.git.createBlob({
-                    owner: pr.head.user.login,
-                    repo: pr.head.repo.name,
-                    content: Buffer.from(csvContent).toString('base64'),
-                    encoding: 'base64'
-                  })
-                ]);
-                console.log('File blobs created in fork');
-
-                // Get current tree from fork
-                const { data: currentTree } = await octokit.git.getTree({
-                  owner: pr.head.user.login,
-                  repo: pr.head.repo.name,
-                  tree_sha: pr.head.sha,
-                  recursive: true
+                // Get main branch ref
+                const { data: mainRef } = await octokit.git.getRef({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  ref: 'heads/main'
                 });
 
-                // Create a new tree in fork
-                console.log('Creating new tree in fork...');
-                const { data: newTree } = await octokit.git.createTree({
-                  owner: pr.head.user.login,
-                  repo: pr.head.repo.name,
-                  base_tree: currentTree.sha,
-                  tree: [
-                    {
-                      path: 'README.md',
-                      mode: '100644',
-                      type: 'blob',
-                      sha: readmeBlob.data.sha
-                    },
-                    {
-                      path: 'prompts.csv',
-                      mode: '100644',
-                      type: 'blob',
-                      sha: csvBlob.data.sha
-                    }
-                  ]
+                // Create new branch
+                await octokit.git.createRef({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  ref: `refs/heads/${branchName}`,
+                  sha: mainRef.object.sha
                 });
-                console.log('New tree created in fork');
 
-                // Create a commit in fork
-                console.log('Creating commit in fork...');
-                const { data: newCommit } = await octokit.git.createCommit({
-                  owner: pr.head.user.login,
-                  repo: pr.head.repo.name,
-                  message: `feat: Add "${actName}" to prompts`,
-                  tree: newTree.sha,
-                  parents: [pr.head.sha]
+                // Update files with correct author
+                await octokit.repos.createOrUpdateFileContents({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  path: 'README.md',
+                  message: `feat: Add "${actName}" to README`,
+                  content: Buffer.from(readmeContent).toString('base64'),
+                  branch: branchName,
+                  committer: {
+                    name: pr.user.login,
+                    email: `${pr.user.login}@users.noreply.github.com`
+                  },
+                  author: {
+                    name: pr.user.login,
+                    email: `${pr.user.login}@users.noreply.github.com`
+                  }
                 });
-                console.log(`New commit created in fork: ${newCommit.sha}`);
 
-                // Update the reference in fork
-                console.log(`Updating branch ${pr.head.ref} in fork...`);
-                await octokit.git.updateRef({
-                  owner: pr.head.user.login,
-                  repo: pr.head.repo.name,
-                  ref: `heads/${pr.head.ref}`,
-                  sha: newCommit.sha
+                await octokit.repos.createOrUpdateFileContents({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  path: 'prompts.csv',
+                  message: `feat: Add "${actName}" to prompts.csv`,
+                  content: Buffer.from(csvContent).toString('base64'),
+                  branch: branchName,
+                  committer: {
+                    name: pr.user.login,
+                    email: `${pr.user.login}@users.noreply.github.com`
+                  },
+                  author: {
+                    name: pr.user.login,
+                    email: `${pr.user.login}@users.noreply.github.com`
+                  }
                 });
-                console.log('Branch updated successfully in fork');
 
-                console.log('Adding success comment to PR...');
+                // Create new PR
+                const { data: newPr } = await octokit.pulls.create({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  title: `feat: Add "${actName}"`,
+                  head: branchName,
+                  base: 'main',
+                  body: `This PR supersedes #${issueNumber} with proper formatting.
+
+Original PR by @${pr.user.login}
+
+Changes:
+- Added "${actName}" to README.md
+- Added prompt to prompts.csv
+- Preserved original attribution
+`
+                });
+
+                // Comment on original PR
                 await octokit.issues.createComment({
                   owner: event.repository.owner.login,
                   repo: event.repository.name,
                   issue_number: issueNumber,
-                  body: `✨ Added "${actName}" to both files`
+                  body: `I've created a new PR #${newPr.number} with your contribution properly formatted. This PR will be closed in favor of the new one.`
                 });
-                console.log('Process completed successfully');
+
+                // Close original PR
+                await octokit.pulls.update({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  pull_number: issueNumber,
+                  state: 'closed'
+                });
+
+                console.log(`Created new PR #${newPr.number} and closed original PR #${issueNumber}`);
 
               } catch (error) {
                 console.error('Error details:', error);
@@ -303,7 +308,7 @@ jobs:
                   owner: event.repository.owner.login,
                   repo: event.repository.name,
                   issue_number: issueNumber,
-                  body: `❌ Error while trying to update files:\n\`\`\`\n${error.message}\n\`\`\``
+                  body: `❌ Error while trying to create new PR:\n\`\`\`\n${error.message}\n\`\`\``
                 });
               }
               return;
