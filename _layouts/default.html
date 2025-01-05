@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <title>prompts.chat — awesome AI prompts</title>
 {% seo %}
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
     <style>
@@ -832,6 +833,45 @@
       .dark-mode .social-footer-link {
         color: var(--accent-color);
       }
+
+      .contribute-card {
+        border: 2px dashed var(--accent-color);
+        background: rgba(16, 185, 129, 0.05);
+        transition: all 0.2s ease;
+      }
+
+      .contribute-card:hover {
+        background: rgba(16, 185, 129, 0.1);
+        transform: translateY(-2px);
+      }
+
+      .dark-mode .contribute-card {
+        background: rgba(16, 185, 129, 0.1);
+      }
+
+      .dark-mode .contribute-card:hover {
+        background: rgba(16, 185, 129, 0.15);
+      }
+
+      .search-result-item.add-prompt {
+        color: var(--accent-color);
+        border: 1px dashed var(--accent-color);
+        background: rgba(16, 185, 129, 0.05);
+        transition: all 0.2s ease;
+      }
+
+      .search-result-item.add-prompt:hover {
+        background: rgba(16, 185, 129, 0.1);
+        transform: translateY(-1px);
+      }
+
+      .dark-mode .search-result-item.add-prompt {
+        background: rgba(16, 185, 129, 0.1);
+      }
+
+      .dark-mode .search-result-item.add-prompt:hover {
+        background: rgba(16, 185, 129, 0.15);
+      }
     </style>
     {% include head-custom.html %}
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6945602608405209" crossorigin="anonymous"></script>
@@ -1061,8 +1101,17 @@
         
         if (results.length === 0) {
           const li = document.createElement('li');
-          li.className = 'search-result-item';
-          li.textContent = 'No prompts found';
+          li.className = 'search-result-item add-prompt';
+          li.innerHTML = `
+            <a href="https://github.com/f/awesome-chatgpt-prompts/pulls" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 8px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="16"></line>
+                <line x1="8" y1="12" x2="16" y2="12"></line>
+              </svg>
+              Add this prompt
+            </a>
+          `;
           searchResults.appendChild(li);
           return;
         }
@@ -1148,6 +1197,27 @@
         const container = document.querySelector('.container-lg.markdown-body');
         const promptsGrid = document.createElement('div');
         promptsGrid.className = 'prompts-grid';
+        
+        // Add contribute box
+        const contributeCard = document.createElement('div');
+        contributeCard.className = 'prompt-card contribute-card';
+        contributeCard.innerHTML = `
+          <a href="https://github.com/f/awesome-chatgpt-prompts/pulls" target="_blank" style="text-decoration: none; color: inherit; height: 100%; display: flex; flex-direction: column;">
+            <div class="prompt-title" style="display: flex; align-items: center; gap: 8px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="16"></line>
+                <line x1="8" y1="12" x2="16" y2="12"></line>
+              </svg>
+              Add Your Prompt
+            </div>
+            <p class="prompt-content" style="flex-grow: 1;">
+              Share your creative prompts with the community! Submit a pull request to add your prompts to the collection.
+            </p>
+            <span class="contributor-badge">Contribute Now</span>
+          </a>
+        `;
+        promptsGrid.appendChild(contributeCard);
         
         const promptElements = document.querySelectorAll('h2[id^=act] + p + blockquote');
         
