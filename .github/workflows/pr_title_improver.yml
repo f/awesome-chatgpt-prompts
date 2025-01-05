@@ -1,0 +1,58 @@
+name: Improve PR Title
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+jobs:
+  improve-title:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Get PR Content
+        id: pr-content
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { data: pr } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number
+            });
+            const content = `${pr.title}\n\n${pr.body}`;
+            return content;
+
+      - name: Generate Better Title
+        id: generate-title
+        uses: openai/openai-api@v1
+        with:
+          api-key: ${{ secrets.OPENAI_API_KEY }}
+          model: gpt-3.5-turbo
+          messages: |
+            [
+              {
+                "role": "system",
+                "content": "You are a helpful assistant that improves pull request titles. Make titles concise, descriptive, and following conventional commit message style."
+              },
+              {
+                "role": "user",
+                "content": "Based on this pull request content, generate a better title:\n\n${{ steps.pr-content.outputs.result }}"
+              }
+            ]
+
+      - name: Update PR Title
+        if: steps.generate-title.outputs.response != ''
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const newTitle = ${{ steps.generate-title.outputs.response }}.choices[0].message.content.trim();
+            await github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              title: newTitle
+            }); 
