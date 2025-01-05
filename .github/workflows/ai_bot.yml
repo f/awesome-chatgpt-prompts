@@ -96,6 +96,150 @@ jobs:
             // Extract the actual command after /ai
             const aiCommand = command.substring(3).trim();
             
+            // Handle resolve conflicts command
+            if (aiCommand === 'resolve' || aiCommand === 'fix conflicts') {
+              if (!isPullRequest) {
+                await octokit.issues.createComment({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  issue_number: issueNumber,
+                  body: '❌ The resolve command can only be used on pull requests.'
+                });
+                return;
+              }
+
+              // Get PR files
+              const { data: files } = await octokit.pulls.listFiles({
+                owner: event.repository.owner.login,
+                repo: event.repository.name,
+                pull_number: issueNumber
+              });
+
+              let readmeContent = '';
+              let csvContent = '';
+              let readmeChanged = false;
+              let csvChanged = false;
+              let newPrompt = '';
+              let actName = '';
+
+              // Analyze changes to extract prompt information
+              for (const file of files) {
+                if (file.filename === 'README.md' && (file.status === 'modified' || file.status === 'added')) {
+                  readmeChanged = true;
+                  const patch = file.patch || '';
+                  // Look for added lines in the patch
+                  const addedLines = patch.split('\n')
+                    .filter(line => line.startsWith('+'))
+                    .map(line => line.substring(1))
+                    .join('\n');
+                  
+                  // Extract the new prompt section
+                  const promptMatch = addedLines.match(/### (.*?)\n([\s\S]*?)(?=\n###|$)/);
+                  if (promptMatch) {
+                    actName = promptMatch[1];
+                    newPrompt = promptMatch[2].trim();
+                  }
+                }
+                if (file.filename === 'prompts.csv' && (file.status === 'modified' || file.status === 'added')) {
+                  csvChanged = true;
+                }
+              }
+
+              if (!readmeChanged && !csvChanged) {
+                await octokit.issues.createComment({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  issue_number: issueNumber,
+                  body: '❌ No changes found in README.md or prompts.csv'
+                });
+                return;
+              }
+
+              if (!actName || !newPrompt) {
+                await octokit.issues.createComment({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  issue_number: issueNumber,
+                  body: '❌ Could not extract prompt information from README.md'
+                });
+                return;
+              }
+
+              // Create a new branch for fixes
+              const branchName = `ai-bot/fix-conflicts-${issueNumber}`;
+              const defaultBranch = event.repository.default_branch;
+              
+              // Get current branch ref
+              const { data: ref } = await octokit.git.getRef({
+                owner: event.repository.owner.login,
+                repo: event.repository.name,
+                ref: `heads/${defaultBranch}`
+              });
+
+              try {
+                // Create new branch
+                await octokit.git.createRef({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  ref: `refs/heads/${branchName}`,
+                  sha: ref.object.sha
+                });
+
+                // If CSV wasn't updated, update it
+                if (!csvChanged) {
+                  // Get current CSV content
+                  const { data: currentCsv } = await octokit.repos.getContent({
+                    owner: event.repository.owner.login,
+                    repo: event.repository.name,
+                    path: 'prompts.csv',
+                    ref: branchName
+                  });
+
+                  // Add new prompt to CSV
+                  const newCsvContent = Buffer.from(currentCsv.content, 'base64').toString('utf-8') +
+                    `\n"${actName.replace(/"/g, '""')}","${newPrompt.replace(/"/g, '""')}"`;
+
+                  // Update CSV file
+                  await octokit.repos.createOrUpdateFileContents({
+                    owner: event.repository.owner.login,
+                    repo: event.repository.name,
+                    path: 'prompts.csv',
+                    message: `feat: Add "${actName}" to prompts.csv`,
+                    content: Buffer.from(newCsvContent).toString('base64'),
+                    branch: branchName,
+                    sha: currentCsv.sha
+                  });
+
+                  // Create PR or update existing one
+                  await octokit.pulls.create({
+                    owner: event.repository.owner.login,
+                    repo: event.repository.name,
+                    title: `feat: Add "${actName}" to prompts.csv`,
+                    body: `This PR was automatically generated to sync prompts.csv with README.md changes.\n\nRelated to #${issueNumber}`,
+                    head: branchName,
+                    base: defaultBranch
+                  });
+                }
+
+                await octokit.issues.createComment({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  issue_number: issueNumber,
+                  body: '✨ Created a fix PR to sync README.md and prompts.csv'
+                });
+
+              } catch (error) {
+                console.error('Error:', error);
+                await octokit.issues.createComment({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  issue_number: issueNumber,
+                  body: `❌ Error while trying to fix conflicts: ${error.message}`
+                });
+              }
+              return;
+            }
+
             // Handle rename command specifically
             if (aiCommand.startsWith('rename') || aiCommand === 'suggest title') {
               if (!isPullRequest) {
