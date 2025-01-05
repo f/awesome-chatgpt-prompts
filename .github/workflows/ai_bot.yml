@@ -133,9 +133,7 @@ jobs:
 
                 // Extract prompt from changes
                 console.log('Analyzing changes to extract prompt information...');
-                let newPrompt = '';
-                let actName = '';
-                let contributorInfo = '';
+                const prompts = [];
 
                 for (const file of files) {
                   console.log(`Processing file: ${file.filename}`);
@@ -146,26 +144,24 @@ jobs:
                       .map(line => line.substring(1))
                       .join('\n');
 
-                    console.log('Attempting to extract prompt from README changes...');
-                    const promptMatch = addedLines.match(/## Act as (?:a |an )?([^\n]+)\n(?:Contributed by:[^\n]*\n)?(?:> )?([^#]+?)(?=\n\n|$)/);
-                    if (promptMatch) {
-                      actName = `Act as ${promptMatch[1].trim()}`;
-                      newPrompt = promptMatch[2].trim();
-                      console.log(`Found prompt: "${actName}"`);
-                      
+                    console.log('Attempting to extract prompts from README changes...');
+                    const promptMatches = [...addedLines.matchAll(/## Act as (?:a |an )?([^\n]+)\n(?:Contributed by:[^\n]*\n)?(?:> )?([^#]+?)(?=\n##|\n\n##|$)/g)];
+                    
+                    for (const match of promptMatches) {
+                      const actName = `Act as ${match[1].trim()}`;
+                      const promptText = match[2].trim();
                       const contributorLine = addedLines.match(/Contributed by: \[@([^\]]+)\]\(https:\/\/github\.com\/([^\)]+)\)/);
-                      if (contributorLine) {
-                        contributorInfo = `Contributed by: [@${contributorLine[1]}](https://github.com/${contributorLine[2]})`;
-                        console.log(`Found contributor info: ${contributorInfo}`);
-                      } else {
-                        contributorInfo = `Contributed by: [@${pr.user.login}](https://github.com/${pr.user.login})`;
-                        console.log(`Using PR author as contributor: ${contributorInfo}`);
-                      }
+                      const contributorInfo = contributorLine 
+                        ? `Contributed by: [@${contributorLine[1]}](https://github.com/${contributorLine[2]})`
+                        : `Contributed by: [@${pr.user.login}](https://github.com/${pr.user.login})`;
+                      
+                      prompts.push({ actName, promptText, contributorInfo });
+                      console.log(`Found prompt: "${actName}"`);
                     }
                   }
                 }
 
-                if (!actName || !newPrompt) {
+                if (prompts.length === 0) {
                   console.log('Failed to extract prompt information');
                   await octokit.issues.createComment({
                     owner: event.repository.owner.login,
@@ -194,37 +190,40 @@ jobs:
 
                 // Prepare new content
                 console.log('Preparing content updates...');
-                // Remove markdown quote character and trim whitespace for both files
-                const cleanPrompt = newPrompt.replace(/^>\s*/gm, '').trim();
-                
-                // For README: Add quote to each line
-                const readmePrompt = cleanPrompt.split('\n')
-                  .map(line => `> ${line.trim()}`)
-                  .join('\n');
-                const newSection = `## ${actName}\n${contributorInfo}\n\n${readmePrompt}\n\n`;
-                
-                // For CSV: Convert to single paragraph
-                const csvPrompt = cleanPrompt.replace(/\n+/g, ' ').trim();
-                
-                // Insert the new section before Contributors in README
                 let readmeContent = Buffer.from(readmeFile.content, 'base64').toString('utf-8');
-                const contributorsIndex = readmeContent.indexOf('## Contributors');
-                if (contributorsIndex === -1) {
-                    console.log('Contributors section not found, appending to end');
-                    readmeContent += newSection;
-                } else {
-                    console.log('Inserting before Contributors section');
-                    readmeContent = readmeContent.slice(0, contributorsIndex) + newSection + readmeContent.slice(contributorsIndex);
-                }
-
-                // Prepare CSV content
-                console.log('Preparing CSV content...');
                 let csvContent = Buffer.from(csvFile.content, 'base64').toString('utf-8');
                 if (!csvContent.endsWith('\n')) csvContent += '\n';
-                csvContent += `"${actName.replace(/"/g, '""')}","${csvPrompt.replace(/"/g, '""')}"`;
+
+                // Process each prompt
+                for (const { actName, promptText, contributorInfo } of prompts) {
+                  // Remove markdown quote character and trim whitespace
+                  const cleanPrompt = promptText.replace(/^>\s*/gm, '').trim();
+                  
+                  // For README: Add quote to each line
+                  const readmePrompt = cleanPrompt.split('\n')
+                    .map(line => `> ${line.trim()}`)
+                    .join('\n');
+                  const newSection = `## ${actName}\n${contributorInfo}\n\n${readmePrompt}\n\n`;
+                  
+                  // For CSV: Convert to single paragraph
+                  const csvPrompt = cleanPrompt.replace(/\n+/g, ' ').trim();
+                  
+                  // Insert the new section before Contributors in README
+                  const contributorsIndex = readmeContent.indexOf('## Contributors');
+                  if (contributorsIndex === -1) {
+                    console.log('Contributors section not found, appending to end');
+                    readmeContent += newSection;
+                  } else {
+                    console.log('Inserting before Contributors section');
+                    readmeContent = readmeContent.slice(0, contributorsIndex) + newSection + readmeContent.slice(contributorsIndex);
+                  }
+
+                  // Add to CSV content
+                  csvContent += `"${actName.replace(/"/g, '""')}","${csvPrompt.replace(/"/g, '""')}"\n`;
+                }
 
                 // Create new branch
-                const branchName = `prompt/${actName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+                const branchName = `prompt/batch-${Date.now()}`;
                 console.log(`Creating new branch: ${branchName}`);
 
                 // Check if branch exists and delete it
@@ -310,7 +309,7 @@ jobs:
                   owner: event.repository.owner.login,
                   repo: event.repository.name,
                   path: 'README.md',
-                  message: `feat: Add "${actName}" to README`,
+                  message: `feat: Add "${prompts[0].actName}" to README`,
                   content: Buffer.from(readmeContent).toString('base64'),
                   branch: branchName,
                   sha: currentReadme.sha,
@@ -329,7 +328,7 @@ jobs:
                   owner: event.repository.owner.login,
                   repo: event.repository.name,
                   path: 'prompts.csv',
-                  message: `feat: Add "${actName}" to prompts.csv`,
+                  message: `feat: Add "${prompts[0].actName}" to prompts.csv`,
                   content: Buffer.from(csvContent).toString('base64'),
                   branch: branchName,
                   sha: currentCsv.sha,
@@ -347,10 +346,10 @@ jobs:
                 const { data: newPr } = await octokit.pulls.create({
                   owner: event.repository.owner.login,
                   repo: event.repository.name,
-                  title: `feat: Add "${actName}"`,
+                  title: `feat: Add "${prompts[0].actName}"`,
                   head: branchName,
                   base: 'main',
-                  body: `This PR supersedes #${issueNumber} with proper formatting. Original PR by @${pr.user.login}. Added "${actName}" to README.md and prompts.csv, preserving original attribution.`
+                  body: `This PR supersedes #${issueNumber} with proper formatting. Original PR by @${pr.user.login}. Added "${prompts[0].actName}" to README.md and prompts.csv, preserving original attribution.`
                 });
 
                 // Comment on original PR
