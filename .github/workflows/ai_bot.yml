@@ -142,14 +142,14 @@ jobs:
                 messages: [
                   {
                     role: "system",
-                    content: "You are a helpful assistant that generates clear, concise, and descriptive pull request titles based on code changes. Follow conventional commit message style (e.g., 'feat:', 'fix:', 'refactor:', 'docs:', etc.). Return ONLY the new title, nothing else."
+                    content: "You are a helpful assistant that generates clear and concise pull request titles. Follow these rules:\n1. Use conventional commit style (feat:, fix:, docs:, etc.)\n2. Focus on WHAT changed, not HOW or WHERE\n3. Keep it short and meaningful\n4. Don't mention file names or technical implementation details\n5. Return ONLY the new title, nothing else\n\nGood examples:\n- feat: Add \"Act as a Career Coach\"\n- fix: Correct typo in Linux Terminal prompt\n- docs: Update installation instructions\n- refactor: Improve error handling"
                   },
                   {
                     role: "user",
-                    content: `Based on these file changes, generate a descriptive PR title:\n\n${fileChanges.join('\n\n')}`
+                    content: `Based on these file changes, generate a concise PR title:\n\n${fileChanges.join('\n\n')}`
                   }
                 ],
-                temperature: 0.7,
+                temperature: 0.5,
                 max_tokens: 60
               });
 
