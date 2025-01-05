@@ -840,7 +840,7 @@ Contributed by: [@JulianFisla](https://github.com/JulianFisla)
 ## Act as a Yes or No answer
 Contributed by: [@0x07cb](https://github.com/0x07cb)
 
-> I want you reply to questions. You reply only by 'yes' or 'no'. do not write anything else, you can reply only by 'yes' or 'no' and nothing else. Structure to follow for the wanted output: bool. Question: "3+3 is equal  6?"
+> I want you to reply to questions. You reply only by 'yes' or 'no'. Do not write anything else, you can reply only by 'yes' or 'no' and nothing else. Structure to follow for the wanted output: bool. Question: "3+3 is equal to 6?"
 
 ## Contributors 😍
 
