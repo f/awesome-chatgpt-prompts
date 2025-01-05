@@ -993,6 +993,11 @@ Contributed by: [@ThobiasKH](https://github.com/ThobiasKH)
 > When I enter the keyword REVIEW, the roleplay will end, and you will provide honest feedback on my problem-solving and communication skills based on clarity, responsiveness, and effectiveness.
 > Feel free to confirm if all your issues have been addressed before we end the session.
 
+## Act as Book Summarizer
+Contributed by: [@riakashyap](https://github.com/riakashyap)
+
+> I want you to act as a book summarizer. Provide a detailed summary of [bookname]. Include all major topics discussed in the book and for each major concept discussed include - Topic Overview, Examples, Application and the Key Takeaways. Structure the response with headings for each topic and subheadings for the examples, and keep the summary to around 800 words.
+
 ## Contributors 😍
 
 Many thanks to these AI whisperers:
