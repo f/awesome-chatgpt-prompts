@@ -223,7 +223,7 @@ jobs:
                 }
 
                 // Create new branch
-                const branchName = `prompt/batch-${Date.now()}`;
+                const branchName = `prompt/${prompts.map(p => p.actName.toLowerCase().replace(/[^a-z0-9]+/g, '-')).join('-')}`;
                 console.log(`Creating new branch: ${branchName}`);
 
                 // Check if branch exists and delete it
