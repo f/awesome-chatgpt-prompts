@@ -209,8 +209,9 @@ jobs:
 
                 // Prepare CSV content
                 console.log('Preparing CSV content...');
-                const csvContent = Buffer.from(csvFile.content, 'base64').toString('utf-8') +
-                  `\n"${actName.replace(/"/g, '""')}","${newPrompt.replace(/"/g, '""')}"`;
+                let csvContent = Buffer.from(csvFile.content, 'base64').toString('utf-8');
+                if (!csvContent.endsWith('\n')) csvContent += '\n';
+                csvContent += `"${actName.replace(/"/g, '""')}","${newPrompt.replace(/"/g, '""')}"`;
 
                 // Create new branch
                 const branchName = `prompt/${actName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
