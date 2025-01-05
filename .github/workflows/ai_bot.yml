@@ -194,7 +194,9 @@ jobs:
 
                 // Prepare new content
                 console.log('Preparing content updates...');
-                const newSection = `## ${actName}\n${contributorInfo}\n\n> ${newPrompt}\n\n`;
+                // Remove markdown quote character and trim whitespace for both files
+                const cleanPrompt = newPrompt.replace(/^>\s*/gm, '').trim();
+                const newSection = `## ${actName}\n${contributorInfo}\n\n> ${cleanPrompt}\n\n`;
                 
                 // Insert the new section before Contributors in README
                 let readmeContent = Buffer.from(readmeFile.content, 'base64').toString('utf-8');
@@ -211,8 +213,6 @@ jobs:
                 console.log('Preparing CSV content...');
                 let csvContent = Buffer.from(csvFile.content, 'base64').toString('utf-8');
                 if (!csvContent.endsWith('\n')) csvContent += '\n';
-                // Remove markdown quote character and trim whitespace
-                const cleanPrompt = newPrompt.replace(/^>\s*/gm, '').trim();
                 csvContent += `"${actName.replace(/"/g, '""')}","${cleanPrompt.replace(/"/g, '""')}"`;
 
                 // Create new branch
@@ -229,6 +229,26 @@ jobs:
                   });
 
                   if (existingRef) {
+                    // Check for existing PRs from this branch
+                    console.log('Checking for existing PRs from this branch...');
+                    const { data: existingPRs } = await octokit.pulls.list({
+                      owner: event.repository.owner.login,
+                      repo: event.repository.name,
+                      head: `${event.repository.owner.login}:${branchName}`,
+                      state: 'open'
+                    });
+
+                    // Close any existing PRs
+                    for (const pr of existingPRs) {
+                      console.log(`Closing existing PR #${pr.number}...`);
+                      await octokit.pulls.update({
+                        owner: event.repository.owner.login,
+                        repo: event.repository.name,
+                        pull_number: pr.number,
+                        state: 'closed'
+                      });
+                    }
+
                     console.log('Branch exists, deleting it...');
                     await octokit.git.deleteRef({
                       owner: event.repository.owner.login,
