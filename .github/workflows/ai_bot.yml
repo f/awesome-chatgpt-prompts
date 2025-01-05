@@ -108,113 +108,110 @@ jobs:
                 return;
               }
 
-              // Get PR files
-              const { data: files } = await octokit.pulls.listFiles({
-                owner: event.repository.owner.login,
-                repo: event.repository.name,
-                pull_number: issueNumber
-              });
+              try {
+                // Get PR details
+                const { data: pr } = await octokit.pulls.get({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  pull_number: issueNumber
+                });
 
-              // Get PR details to know the branch
-              const { data: pr } = await octokit.pulls.get({
-                owner: event.repository.owner.login,
-                repo: event.repository.name,
-                pull_number: issueNumber
-              });
+                // Get the PR diff to extract the new prompt
+                const { data: files } = await octokit.pulls.listFiles({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  pull_number: issueNumber
+                });
 
-              let readmeChanged = false;
-              let csvChanged = false;
-              let newPrompt = '';
-              let actName = '';
+                // Extract prompt from changes
+                let newPrompt = '';
+                let actName = '';
+                let contributorInfo = '';
 
-              // Analyze changes to extract prompt information
-              for (const file of files) {
-                if (file.filename === 'README.md' && (file.status === 'modified' || file.status === 'added')) {
-                  readmeChanged = true;
-                  const patch = file.patch || '';
-                  // Look for added lines in the patch
-                  const addedLines = patch.split('\n')
-                    .filter(line => line.startsWith('+'))
-                    .map(line => line.substring(1))
-                    .join('\n');
-                  
-                  // Extract the new prompt section using the correct format
-                  const promptMatch = addedLines.match(/## Act as (?:a |an )?([^\n]+)\n(?:Contributed by:[^\n]*\n)?(?:> )?([^#]+?)(?=\n\n|$)/);
-                  if (promptMatch) {
-                    actName = `Act as ${promptMatch[1].trim()}`;
-                    newPrompt = promptMatch[2].trim();
-                    
-                    // Check if contributor line exists and is properly formatted
-                    const contributorLine = addedLines.match(/Contributed by: \[@([^\]]+)\]\(https:\/\/github\.com\/([^\)]+)\)/);
-                    if (!contributorLine) {
-                      // If no contributor line or improperly formatted, add a comment about it
-                      await octokit.issues.createComment({
-                        owner: event.repository.owner.login,
-                        repo: event.repository.name,
-                        issue_number: issueNumber,
-                        body: '⚠️ Note: Contributor line is missing or improperly formatted. Please add it in the format:\nContributed by: [@username](https://github.com/username)'
-                      });
+                for (const file of files) {
+                  if (file.filename === 'README.md') {
+                    const patch = file.patch || '';
+                    const addedLines = patch.split('\n')
+                      .filter(line => line.startsWith('+'))
+                      .map(line => line.substring(1))
+                      .join('\n');
+
+                    const promptMatch = addedLines.match(/## Act as (?:a |an )?([^\n]+)\n(?:Contributed by:[^\n]*\n)?(?:> )?([^#]+?)(?=\n\n|$)/);
+                    if (promptMatch) {
+                      actName = `Act as ${promptMatch[1].trim()}`;
+                      newPrompt = promptMatch[2].trim();
+                      
+                      const contributorLine = addedLines.match(/Contributed by: \[@([^\]]+)\]\(https:\/\/github\.com\/([^\)]+)\)/);
+                      if (contributorLine) {
+                        contributorInfo = `Contributed by: [@${contributorLine[1]}](https://github.com/${contributorLine[2]})`;
+                      }
                     }
                   }
                 }
-                if (file.filename === 'prompts.csv' && (file.status === 'modified' || file.status === 'added')) {
-                  csvChanged = true;
-                }
-              }
 
-              if (!readmeChanged && !csvChanged) {
-                await octokit.issues.createComment({
-                  owner: event.repository.owner.login,
-                  repo: event.repository.name,
-                  issue_number: issueNumber,
-                  body: '❌ No changes found in README.md or prompts.csv'
-                });
-                return;
-              }
-
-              if (!actName || !newPrompt) {
-                await octokit.issues.createComment({
-                  owner: event.repository.owner.login,
-                  repo: event.repository.name,
-                  issue_number: issueNumber,
-                  body: '❌ Could not extract prompt information from README.md'
-                });
-                return;
-              }
-
-              try {
-                // If CSV wasn't updated, update it directly in the PR branch
-                if (!csvChanged) {
-                  // Get current CSV content
-                  const { data: currentCsv } = await octokit.repos.getContent({
-                    owner: event.repository.owner.login,
-                    repo: event.repository.name,
-                    path: 'prompts.csv',
-                    ref: pr.head.ref // Use PR's branch
-                  });
-
-                  // Add new prompt to CSV
-                  const newCsvContent = Buffer.from(currentCsv.content, 'base64').toString('utf-8') +
-                    `\n"${actName.replace(/"/g, '""')}","${newPrompt.replace(/"/g, '""')}"`;
-
-                  // Update CSV file directly in the PR branch
-                  await octokit.repos.createOrUpdateFileContents({
-                    owner: event.repository.owner.login,
-                    repo: event.repository.name,
-                    path: 'prompts.csv',
-                    message: `feat: Add "${actName}" to prompts.csv`,
-                    content: Buffer.from(newCsvContent).toString('base64'),
-                    branch: pr.head.ref, // Use PR's branch
-                    sha: currentCsv.sha
-                  });
-
+                if (!actName || !newPrompt) {
                   await octokit.issues.createComment({
                     owner: event.repository.owner.login,
                     repo: event.repository.name,
                     issue_number: issueNumber,
-                    body: '✨ Updated prompts.csv in the PR with the new prompt'
+                    body: '❌ Could not extract prompt information from changes'
                   });
+                  return;
                 }
+
+                // Get README from main branch
+                const { data: readmeFile } = await octokit.repos.getContent({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  path: 'README.md',
+                  ref: 'main'
+                });
+
+                // Get CSV from main branch
+                const { data: csvFile } = await octokit.repos.getContent({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  path: 'prompts.csv',
+                  ref: 'main'
+                });
+
+                // Prepare new README content
+                let readmeContent = Buffer.from(readmeFile.content, 'base64').toString('utf-8');
+                const newSection = `\n## ${actName}\n${contributorInfo ? contributorInfo + '\n' : ''}\n> ${newPrompt}\n`;
+                readmeContent += newSection;
+
+                // Prepare new CSV content
+                let csvContent = Buffer.from(csvFile.content, 'base64').toString('utf-8');
+                csvContent += `\n"${actName.replace(/"/g, '""')}","${newPrompt.replace(/"/g, '""')}"`;
+
+                // Update README in PR branch
+                await octokit.repos.createOrUpdateFileContents({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  path: 'README.md',
+                  message: `feat: Add "${actName}" to README`,
+                  content: Buffer.from(readmeContent).toString('base64'),
+                  branch: pr.head.ref,
+                  sha: readmeFile.sha
+                });
+
+                // Update CSV in PR branch
+                await octokit.repos.createOrUpdateFileContents({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  path: 'prompts.csv',
+                  message: `feat: Add "${actName}" to prompts.csv`,
+                  content: Buffer.from(csvContent).toString('base64'),
+                  branch: pr.head.ref,
+                  sha: csvFile.sha
+                });
+
+                await octokit.issues.createComment({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  issue_number: issueNumber,
+                  body: `✨ Updated both files:\n1. Added "${actName}" to README.md\n2. Added the prompt to prompts.csv`
+                });
 
               } catch (error) {
                 console.error('Error:', error);
