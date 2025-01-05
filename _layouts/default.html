@@ -570,19 +570,16 @@
       }
 
       .search-result-item {
-        padding: 10px;
-        border-bottom: 1px solid #e1e4e8;
+        padding: 8px 12px;
         cursor: pointer;
-        color: var(--text-color-light);
-      }
-
-      .dark-mode .search-result-item {
-        color: var(--text-color-dark);
-        border-bottom-color: #2d2d2d;
+        transition: all 0.2s ease;
+        border-radius: 6px;
       }
 
       .search-result-item:hover {
         background-color: rgba(16, 185, 129, 0.1);
+        border-radius: 6px;
+        transform: translateX(4px);
       }
 
       .dark-mode .search-result-item:hover {
@@ -914,7 +911,7 @@
       <header class="site-header">
         <div class="header-left">
           <h1 class="site-title">prompts.chat</h1>
-          <p class="site-slogan">Internet's Most Famous Prompts Directory</p>
+          <p class="site-slogan">World's First & Most Famous Prompts Directory</p>
           <div class="site-description">
             <a href="https://chat.openai.com" target="_blank" class="platform-tag">ChatGPT</a>
             <a href="https://claude.ai/new" target="_blank" class="platform-tag">Claude</a>
@@ -964,32 +961,22 @@
         <div class="footer-content">
           <div class="footer-section">
             <h3>About</h3>
-            <p>A curated collection of effective prompts for ChatGPT and other AI assistants. While designed for ChatGPT, these prompts can be adapted for Claude, Gemini, Llama, and other language models to help you get more out of AI interactions.</p>
+            <p>A curated collection of effective prompts for ChatGPT and other AI assistants, curated by <a href="https://x.com/fkadev">Fatih Kadir Akın</a>. While designed for ChatGPT, these prompts can be adapted for Claude, Gemini, Llama, and other language models to help you get more out of AI interactions.</p>
           </div>
           <div class="footer-section">
             <h3>Contributing</h3>
             <p>If you'd like to contribute, please fork the repository and make changes as you'd like. Pull requests are warmly welcome. Please read the <a href="https://github.com/f/awesome-chatgpt-prompts/blob/main/CONTRIBUTING.md" style="color: var(--accent-color);">contribution guidelines</a> first.</p>
           </div>
           <div class="footer-section">
-            <h3>e-Books by @f</h3>
-            <div class="book-links">
-              <a href="https://fka.gumroad.com/l/art-of-chatgpt-prompting" class="book-link" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                The Art of ChatGPT Prompting
-              </a>
-              <a href="https://fka.gumroad.com/l/how-to-make-money-with-chatgpt" class="book-link" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                How to Make Money with ChatGPT
-              </a>
-              <a href="https://fka.gumroad.com/l/the-art-of-midjourney-ai-guide-to-creating-images-from-text" class="book-link" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                The Art of Midjourney AI
-              </a>
-            </div>
-          </div>
-          <div class="footer-section">
             <h3>Links</h3>
             <div class="book-links">
+              <a href="https://www.forbes.com/sites/tjmccue/2023/01/19/chatgpt-success-completely-depends-on-your-prompt/?sh=497a92a21a16" target="_blank" class="book-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                Featured on Forbes
+              </a>
               <a href="https://github.com/f/awesome-chatgpt-prompts" target="_blank" class="book-link">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                 GitHub Repository
@@ -1011,6 +998,23 @@
                   <line x1="8" y1="12" x2="16" y2="12"></line>
                 </svg>
                 View Unmerged Prompts
+              </a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h3>e-Books by @f</h3>
+            <div class="book-links">
+              <a href="https://fka.gumroad.com/l/art-of-chatgpt-prompting" class="book-link" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                The Art of ChatGPT Prompting
+              </a>
+              <a href="https://fka.gumroad.com/l/how-to-make-money-with-chatgpt" class="book-link" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                How to Make Money with ChatGPT
+              </a>
+              <a href="https://fka.gumroad.com/l/the-art-of-midjourney-ai-guide-to-creating-images-from-text" class="book-link" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                The Art of Midjourney AI
               </a>
             </div>
           </div>
