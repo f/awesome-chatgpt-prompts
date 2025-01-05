@@ -1,0 +1,172 @@
+name: AI Bot
+
+on:
+  issues:
+    types: [opened]
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+
+jobs:
+  respond-to-commands:
+    runs-on: ubuntu-latest
+    if: |
+      (github.event_name == 'issues' && contains(github.event.issue.body, '/ai')) ||
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '/ai')) ||
+      (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '/ai'))
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install openai@^4.0.0 @octokit/rest@^19.0.0
+
+      - name: Process command
+        id: process
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          node << 'EOF'
+          const OpenAI = require('openai');
+          const { Octokit } = require('@octokit/rest');
+
+          async function main() {
+            const openai = new OpenAI({
+              apiKey: process.env.OPENAI_API_KEY
+            });
+            
+            const octokit = new Octokit({
+              auth: process.env.GITHUB_TOKEN
+            });
+
+            const eventName = process.env.GITHUB_EVENT_NAME;
+            const eventPath = process.env.GITHUB_EVENT_PATH;
+            const event = require(eventPath);
+            
+            // Get command and context
+            let command = '';
+            let issueNumber = null;
+            
+            if (eventName === 'issues') {
+              command = event.issue.body;
+              issueNumber = event.issue.number;
+            } else if (eventName === 'issue_comment') {
+              command = event.comment.body;
+              issueNumber = event.issue.number;
+            } else if (eventName === 'pull_request_review_comment') {
+              command = event.comment.body;
+              issueNumber = event.pull_request.number;
+            }
+
+            if (!command.startsWith('/ai')) {
+              return;
+            }
+
+            // Extract the actual command after /ai
+            const aiCommand = command.substring(3).trim();
+
+            // Generate response using OpenAI
+            const completion = await openai.chat.completions.create({
+              model: "gpt-3.5-turbo",
+              messages: [
+                {
+                  role: "system",
+                  content: "You are a helpful AI assistant that helps with GitHub repositories. You can suggest code changes, fix issues, and improve code quality."
+                },
+                {
+                  role: "user",
+                  content: aiCommand
+                }
+              ],
+              temperature: 0.7,
+              max_tokens: 2000
+            });
+
+            const response = completion.choices[0].message.content;
+
+            // If response contains code changes, create a new branch and PR
+            if (response.includes('```')) {
+              const branchName = `ai-bot/fix-${issueNumber}`;
+              
+              // Create new branch
+              const defaultBranch = event.repository.default_branch;
+              const ref = await octokit.git.getRef({
+                owner: event.repository.owner.login,
+                repo: event.repository.name,
+                ref: `heads/${defaultBranch}`
+              });
+              
+              await octokit.git.createRef({
+                owner: event.repository.owner.login,
+                repo: event.repository.name,
+                ref: `refs/heads/${branchName}`,
+                sha: ref.data.object.sha
+              });
+
+              // Extract code changes and file paths from response
+              const codeBlocks = response.match(/```[\s\S]*?```/g);
+              for (const block of codeBlocks) {
+                const [_, filePath, ...codeLines] = block.split('\n');
+                const content = Buffer.from(codeLines.join('\n')).toString('base64');
+                
+                await octokit.repos.createOrUpdateFileContents({
+                  owner: event.repository.owner.login,
+                  repo: event.repository.name,
+                  path: filePath,
+                  message: `AI Bot: Apply suggested changes for #${issueNumber}`,
+                  content,
+                  branch: branchName
+                });
+              }
+
+              // Create PR
+              await octokit.pulls.create({
+                owner: event.repository.owner.login,
+                repo: event.repository.name,
+                title: `AI Bot: Fix for #${issueNumber}`,
+                body: `This PR was automatically generated in response to #${issueNumber}\n\nChanges proposed:\n${response}`,
+                head: branchName,
+                base: defaultBranch
+              });
+            }
+
+            // Add comment with response
+            await octokit.issues.createComment({
+              owner: event.repository.owner.login,
+              repo: event.repository.name,
+              issue_number: issueNumber,
+              body: `AI Bot Response:\n\n${response}`
+            });
+          }
+
+          main().catch(error => {
+            console.error('Error:', error);
+            process.exit(1);
+          });
+          EOF
+
+      - name: Handle errors
+        if: failure()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const issueNumber = context.issue.number || context.payload.pull_request.number;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              body: '❌ Sorry, there was an error processing your command. Please try again or contact the repository maintainers.'
+            }); 
