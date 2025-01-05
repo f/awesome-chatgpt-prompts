@@ -309,7 +309,9 @@ jobs:
                   owner: event.repository.owner.login,
                   repo: event.repository.name,
                   path: 'README.md',
-                  message: `feat: Add "${prompts[0].actName}" to README`,
+                  message: prompts.length === 1
+                    ? `feat: Add "${prompts[0].actName}" to README`
+                    : `feat: Add multiple prompts to README`,
                   content: Buffer.from(readmeContent).toString('base64'),
                   branch: branchName,
                   sha: currentReadme.sha,
@@ -328,7 +330,9 @@ jobs:
                   owner: event.repository.owner.login,
                   repo: event.repository.name,
                   path: 'prompts.csv',
-                  message: `feat: Add "${prompts[0].actName}" to prompts.csv`,
+                  message: prompts.length === 1
+                    ? `feat: Add "${prompts[0].actName}" to prompts.csv`
+                    : `feat: Add multiple prompts to prompts.csv`,
                   content: Buffer.from(csvContent).toString('base64'),
                   branch: branchName,
                   sha: currentCsv.sha,
@@ -343,13 +347,21 @@ jobs:
                 });
 
                 // Create new PR
+                const prTitle = prompts.length === 1
+                  ? `feat: Add "${prompts[0].actName}"`
+                  : `feat: Add multiple prompts (${prompts.map(p => `"${p.actName}"`).join(', ')})`;
+
+                const prBody = prompts.length === 1
+                  ? `This PR supersedes #${issueNumber} with proper formatting. Original PR by @${pr.user.login}. Added "${prompts[0].actName}" to README.md and prompts.csv, preserving original attribution.`
+                  : `This PR supersedes #${issueNumber} with proper formatting. Original PR by @${pr.user.login}.\n\nAdded the following prompts:\n${prompts.map(p => `- "${p.actName}"`).join('\n')}\n\nAll prompts have been added to README.md and prompts.csv, preserving original attribution.`;
+
                 const { data: newPr } = await octokit.pulls.create({
                   owner: event.repository.owner.login,
                   repo: event.repository.name,
-                  title: `feat: Add "${prompts[0].actName}"`,
+                  title: prTitle,
                   head: branchName,
                   base: 'main',
-                  body: `This PR supersedes #${issueNumber} with proper formatting. Original PR by @${pr.user.login}. Added "${prompts[0].actName}" to README.md and prompts.csv, preserving original attribution.`
+                  body: prBody
                 });
 
                 // Comment on original PR
