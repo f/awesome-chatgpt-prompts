@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <title>prompts.chat — awesome AI prompts</title>
 {% seo %}
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
     <style>
@@ -75,7 +76,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: 0.2rem;
+        gap: 0;
       }
 
       .header-right {
@@ -83,6 +84,26 @@
         align-items: center;
         justify-content: center;
         gap: 12px;
+      }
+
+      .star-count {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        color: var(--accent-color);
+        font-size: 0.9rem;
+        opacity: 0.8;
+        text-decoration: none;
+        transition: opacity 0.2s ease;
+      }
+
+      .star-count:hover {
+        opacity: 1;
+      }
+
+      .star-count svg {
+        width: 16px;
+        height: 16px;
       }
 
       .social-links {
@@ -281,6 +302,19 @@
         transition: transform 0.3s ease;
       }
 
+      .site-slogan {
+        font-size: 0.9rem;
+        opacity: 0.7;
+        margin: 0 0 0.8rem 0;
+        line-height: 1;
+      }
+
+      @media (max-width: 768px) {
+        .site-slogan {
+          display: none;
+        }
+      }
+
       .site-title:hover {
         transform: translateY(-2px);
       }
@@ -321,6 +355,13 @@
         background: rgba(16, 185, 129, 0.1);
         color: var(--accent-color);
         border: 1px solid var(--accent-color);
+        text-decoration: none;
+        transition: all 0.2s ease;
+      }
+
+      .platform-tag:hover {
+        background: rgba(16, 185, 129, 0.2);
+        transform: translateY(-1px);
       }
 
       .dark-mode .platform-tag {
@@ -825,6 +866,45 @@
       .dark-mode .social-footer-link {
         color: var(--accent-color);
       }
+
+      .contribute-card {
+        border: 2px dashed var(--accent-color);
+        background: rgba(16, 185, 129, 0.05);
+        transition: all 0.2s ease;
+      }
+
+      .contribute-card:hover {
+        background: rgba(16, 185, 129, 0.1);
+        transform: translateY(-2px);
+      }
+
+      .dark-mode .contribute-card {
+        background: rgba(16, 185, 129, 0.1);
+      }
+
+      .dark-mode .contribute-card:hover {
+        background: rgba(16, 185, 129, 0.15);
+      }
+
+      .search-result-item.add-prompt {
+        color: var(--accent-color);
+        border: 1px dashed var(--accent-color);
+        background: rgba(16, 185, 129, 0.05);
+        transition: all 0.2s ease;
+      }
+
+      .search-result-item.add-prompt:hover {
+        background: rgba(16, 185, 129, 0.1);
+        transform: translateY(-1px);
+      }
+
+      .dark-mode .search-result-item.add-prompt {
+        background: rgba(16, 185, 129, 0.1);
+      }
+
+      .dark-mode .search-result-item.add-prompt:hover {
+        background: rgba(16, 185, 129, 0.15);
+      }
     </style>
     {% include head-custom.html %}
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6945602608405209" crossorigin="anonymous"></script>
@@ -834,15 +914,22 @@
       <header class="site-header">
         <div class="header-left">
           <h1 class="site-title">prompts.chat</h1>
+          <p class="site-slogan">Internet's Most Famous Prompts Directory</p>
           <div class="site-description">
-            <span class="platform-tag">ChatGPT</span>
-            <span class="platform-tag">Claude</span>
-            <span class="platform-tag">Gemini</span>
-            <span class="platform-tag">Llama</span>
-            <span class="platform-tag">Mistral</span>
+            <a href="https://chat.openai.com" target="_blank" class="platform-tag">ChatGPT</a>
+            <a href="https://claude.ai/new" target="_blank" class="platform-tag">Claude</a>
+            <a href="https://gemini.google.com" target="_blank" class="platform-tag">Gemini</a>
+            <a href="https://meta.ai" target="_blank" class="platform-tag">Llama</a>
+            <a href="https://chat.mistral.ai" target="_blank" class="platform-tag">Mistral</a>
           </div>
         </div>
         <div class="header-right">
+          <a href="https://github.com/f/awesome-chatgpt-prompts/stargazers" target="_blank" class="star-count">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <span id="starCount">...</span>
+          </a>
           <button class="dark-mode-toggle" onclick="toggleDarkMode()" title="Toggle dark mode">
             <svg class="mode-icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
             <svg class="mode-icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
@@ -917,6 +1004,14 @@
                 </svg>
                 Hugging Face Dataset
               </a>
+              <a href="https://github.com/f/awesome-chatgpt-prompts/pulls" target="_blank" class="book-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="16"></line>
+                  <line x1="8" y1="12" x2="16" y2="12"></line>
+                </svg>
+                View Unmerged Prompts
+              </a>
             </div>
           </div>
         </div>
@@ -940,6 +1035,18 @@
 
       // Initialize everything after DOM loads
       document.addEventListener('DOMContentLoaded', () => {
+        // Fetch GitHub stars
+        fetch('https://api.github.com/repos/f/awesome-chatgpt-prompts')
+          .then(response => response.json())
+          .then(data => {
+            const stars = data.stargazers_count;
+            document.getElementById('starCount').textContent = stars.toLocaleString();
+          })
+          .catch(error => {
+            console.error('Error fetching star count:', error);
+            document.getElementById('starCount').textContent = '50k+';
+          });
+
         // Create prompt cards
         createPromptCards();
         
@@ -1054,8 +1161,17 @@
         
         if (results.length === 0) {
           const li = document.createElement('li');
-          li.className = 'search-result-item';
-          li.textContent = 'No prompts found';
+          li.className = 'search-result-item add-prompt';
+          li.innerHTML = `
+            <a href="https://github.com/f/awesome-chatgpt-prompts/pulls" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 8px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="16"></line>
+                <line x1="8" y1="12" x2="16" y2="12"></line>
+              </svg>
+              Add this prompt
+            </a>
+          `;
           searchResults.appendChild(li);
           return;
         }
@@ -1141,6 +1257,27 @@
         const container = document.querySelector('.container-lg.markdown-body');
         const promptsGrid = document.createElement('div');
         promptsGrid.className = 'prompts-grid';
+        
+        // Add contribute box
+        const contributeCard = document.createElement('div');
+        contributeCard.className = 'prompt-card contribute-card';
+        contributeCard.innerHTML = `
+          <a href="https://github.com/f/awesome-chatgpt-prompts/pulls" target="_blank" style="text-decoration: none; color: inherit; height: 100%; display: flex; flex-direction: column;">
+            <div class="prompt-title" style="display: flex; align-items: center; gap: 8px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="16"></line>
+                <line x1="8" y1="12" x2="16" y2="12"></line>
+              </svg>
+              Add Your Prompt
+            </div>
+            <p class="prompt-content" style="flex-grow: 1;">
+              Share your creative prompts with the community! Submit a pull request to add your prompts to the collection.
+            </p>
+            <span class="contributor-badge">Contribute Now</span>
+          </a>
+        `;
+        promptsGrid.appendChild(contributeCard);
         
         const promptElements = document.querySelectorAll('h2[id^=act] + p + blockquote');
         
