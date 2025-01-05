@@ -175,7 +175,7 @@ jobs:
                 });
 
                 // Format the new prompt section
-                const newSection = `\n## ${actName}\n${contributorInfo ? contributorInfo + '\n' : ''}\n> ${newPrompt}\n`;
+                const newSection = `## ${actName}\n${contributorInfo ? contributorInfo + '\n' : ''}\n> ${newPrompt}\n\n`;
                 
                 // Insert the new section before Contributors in README
                 let readmeContent = Buffer.from(readmeFile.content, 'base64').toString('utf-8');
