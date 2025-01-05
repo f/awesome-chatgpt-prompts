@@ -144,6 +144,8 @@ jobs:
                   return `Act as ${title}`;
                 };
 
+                // First try to find prompts in README
+                let foundInReadme = false;
                 for (const file of files) {
                   console.log(`Processing file: ${file.filename}`);
                   if (file.filename === 'README.md') {
@@ -166,24 +168,30 @@ jobs:
                       
                       prompts.set(actName.toLowerCase(), { actName, promptText, contributorInfo });
                       console.log(`Found prompt in README: "${actName}"`);
+                      foundInReadme = true;
                     }
-                  } else if (file.filename === 'prompts.csv') {
-                    const patch = file.patch || '';
-                    const addedLines = patch.split('\n')
-                      .filter(line => line.startsWith('+'))
-                      .map(line => line.substring(1))
-                      .filter(line => line.trim()); // Remove empty lines
+                  }
+                }
 
-                    console.log('Attempting to extract prompts from CSV changes...');
-                    for (const line of addedLines) {
-                      // Parse CSV line considering escaped quotes
-                      const matches = [...line.matchAll(/"([^"]*(?:""[^"]*)*)"/g)];
-                      if (matches.length >= 2) {
-                        const actName = normalizeTitle(matches[0][1].replace(/""/g, '"').trim());
-                        const promptText = matches[1][1].replace(/""/g, '"').trim();
-                        
-                        // Only add if not already found in README
-                        if (!prompts.has(actName.toLowerCase())) {
+                // Only look in CSV if we didn't find anything in README
+                if (!foundInReadme) {
+                  console.log('No prompts found in README, checking CSV...');
+                  for (const file of files) {
+                    if (file.filename === 'prompts.csv') {
+                      const patch = file.patch || '';
+                      const addedLines = patch.split('\n')
+                        .filter(line => line.startsWith('+'))
+                        .map(line => line.substring(1))
+                        .filter(line => line.trim()); // Remove empty lines
+
+                      console.log('Attempting to extract prompts from CSV changes...');
+                      for (const line of addedLines) {
+                        // Parse CSV line considering escaped quotes
+                        const matches = [...line.matchAll(/"([^"]*(?:""[^"]*)*)"/g)];
+                        if (matches.length >= 2) {
+                          const actName = normalizeTitle(matches[0][1].replace(/""/g, '"').trim());
+                          const promptText = matches[1][1].replace(/""/g, '"').trim();
+                          
                           const contributorInfo = `Contributed by: [@${pr.user.login}](https://github.com/${pr.user.login})`;
                           prompts.set(actName.toLowerCase(), { actName, promptText, contributorInfo });
                           console.log(`Found prompt in CSV: "${actName}"`);
