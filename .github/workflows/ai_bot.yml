@@ -133,11 +133,23 @@ jobs:
                     .map(line => line.substring(1))
                     .join('\n');
                   
-                  // Extract the new prompt section
-                  const promptMatch = addedLines.match(/### (.*?)\n([\s\S]*?)(?=\n###|$)/);
+                  // Extract the new prompt section using the correct format
+                  const promptMatch = addedLines.match(/## Act as (?:a |an )?([^\n]+)\n(?:Contributed by:[^\n]*\n)?(?:> )?([^#]+?)(?=\n\n|$)/);
                   if (promptMatch) {
-                    actName = promptMatch[1];
+                    actName = `Act as ${promptMatch[1].trim()}`;
                     newPrompt = promptMatch[2].trim();
+                    
+                    // Check if contributor line exists and is properly formatted
+                    const contributorLine = addedLines.match(/Contributed by: \[@([^\]]+)\]\(https:\/\/github\.com\/([^\)]+)\)/);
+                    if (!contributorLine) {
+                      // If no contributor line or improperly formatted, add a comment about it
+                      await octokit.issues.createComment({
+                        owner: event.repository.owner.login,
+                        repo: event.repository.name,
+                        issue_number: issueNumber,
+                        body: '⚠️ Note: Contributor line is missing or improperly formatted. Please add it in the format:\nContributed by: [@username](https://github.com/username)'
+                      });
+                    }
                   }
                 }
                 if (file.filename === 'prompts.csv' && (file.status === 'modified' || file.status === 'added')) {
