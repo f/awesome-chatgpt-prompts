@@ -212,40 +212,43 @@ jobs:
                 const csvContent = Buffer.from(csvFile.content, 'base64').toString('utf-8') +
                   `\n"${actName.replace(/"/g, '""')}","${newPrompt.replace(/"/g, '""')}"`;
 
-                // Create a tree with both files
-                console.log('Creating Git tree...');
-                console.log(`Using PR head SHA: ${pr.head.sha}`);
-                const { data: mainTree } = await octokit.git.getTree({
-                  owner: event.repository.owner.login,
-                  repo: event.repository.name,
-                  tree_sha: pr.head.sha,
-                  recursive: true
-                });
+                console.log('Creating Git operations in fork...');
+                console.log(`Fork owner: ${pr.head.user.login}`);
+                console.log(`Fork repo: ${pr.head.repo.name}`);
+                console.log(`Branch: ${pr.head.ref}`);
 
-                // Create blobs for both files
-                console.log('Creating file blobs...');
+                // Create blobs in fork
+                console.log('Creating file blobs in fork...');
                 const [readmeBlob, csvBlob] = await Promise.all([
                   octokit.git.createBlob({
-                    owner: event.repository.owner.login,
-                    repo: event.repository.name,
+                    owner: pr.head.user.login,
+                    repo: pr.head.repo.name,
                     content: Buffer.from(readmeContent).toString('base64'),
                     encoding: 'base64'
                   }),
                   octokit.git.createBlob({
-                    owner: event.repository.owner.login,
-                    repo: event.repository.name,
+                    owner: pr.head.user.login,
+                    repo: pr.head.repo.name,
                     content: Buffer.from(csvContent).toString('base64'),
                     encoding: 'base64'
                   })
                 ]);
-                console.log('File blobs created');
+                console.log('File blobs created in fork');
 
-                // Create a new tree
-                console.log('Creating new tree with updated files...');
+                // Get current tree from fork
+                const { data: currentTree } = await octokit.git.getTree({
+                  owner: pr.head.user.login,
+                  repo: pr.head.repo.name,
+                  tree_sha: pr.head.sha,
+                  recursive: true
+                });
+
+                // Create a new tree in fork
+                console.log('Creating new tree in fork...');
                 const { data: newTree } = await octokit.git.createTree({
-                  owner: event.repository.owner.login,
-                  repo: event.repository.name,
-                  base_tree: mainTree.sha,
+                  owner: pr.head.user.login,
+                  repo: pr.head.repo.name,
+                  base_tree: currentTree.sha,
                   tree: [
                     {
                       path: 'README.md',
@@ -261,28 +264,28 @@ jobs:
                     }
                   ]
                 });
-                console.log('New tree created');
+                console.log('New tree created in fork');
 
-                // Create a commit
-                console.log('Creating commit...');
+                // Create a commit in fork
+                console.log('Creating commit in fork...');
                 const { data: newCommit } = await octokit.git.createCommit({
-                  owner: event.repository.owner.login,
-                  repo: event.repository.name,
+                  owner: pr.head.user.login,
+                  repo: pr.head.repo.name,
                   message: `feat: Add "${actName}" to prompts`,
                   tree: newTree.sha,
                   parents: [pr.head.sha]
                 });
-                console.log(`New commit created: ${newCommit.sha}`);
+                console.log(`New commit created in fork: ${newCommit.sha}`);
 
-                // Update the reference
-                console.log(`Updating branch ${pr.head.ref}...`);
+                // Update the reference in fork
+                console.log(`Updating branch ${pr.head.ref} in fork...`);
                 await octokit.git.updateRef({
-                  owner: event.repository.owner.login,
-                  repo: event.repository.name,
+                  owner: pr.head.user.login,
+                  repo: pr.head.repo.name,
                   ref: `heads/${pr.head.ref}`,
                   sha: newCommit.sha
                 });
-                console.log('Branch updated successfully');
+                console.log('Branch updated successfully in fork');
 
                 console.log('Adding success comment to PR...');
                 await octokit.issues.createComment({
