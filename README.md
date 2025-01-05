@@ -18,18 +18,17 @@
 
 ---
 
-Welcome to the "Awesome ChatGPT Prompts" repository! This is a collection of prompt examples to be used with the ChatGPT model.
+Welcome to the "Awesome ChatGPT Prompts" repository! While this collection was originally created for [ChatGPT](https://chat.openai.com/chat), these prompts work great with other AI models like [Claude](https://claude.ai/new), [Gemini](https://gemini.google.com), [Hugging Face Chat](https://hf.co/chat), [Llama](https://meta.ai), [Mistral](https://chat.mistral.ai), and more.
 
-The [ChatGPT](https://chat.openai.com/chat) model is a large language model trained by [OpenAI](https://openai.com) that is capable of generating human-like text. By providing it with a prompt, it can generate responses that continue the conversation or expand on the given prompt.
+[ChatGPT](https://chat.openai.com/chat) is a web interface created by [OpenAI](https://openai.com) that provides access to their GPT (Generative Pre-trained Transformer) language models. The underlying models, like GPT-4o and GPT-o1, are large language models trained on vast amounts of text data that can understand and generate human-like text. Like other AI chat interfaces, you can provide prompts and have natural conversations with the AI, which will generate contextual responses based on the conversation history and your inputs.
 
-In this repository, you will find a variety of prompts that can be used with ChatGPT. We encourage you to [add your own prompts](https://github.com/f/awesome-chatgpt-prompts/edit/main/README.md) to the list, and to use ChatGPT to generate new prompts as well.
+In this repository, you will find a variety of prompts that can be used with ChatGPT and other AI chat models. We encourage you to [add your own prompts](https://github.com/f/awesome-chatgpt-prompts/edit/main/README.md) to the list, and to use AI to help generate new prompts as well.
 
-To get started, simply clone this repository and use the prompts in the README.md file as input for ChatGPT. You can also use the prompts in this file as inspiration for creating your own.
+To get started, simply clone this repository and use the prompts in the README.md file as input for your preferred AI chat model. You can also use the prompts in this file as inspiration for creating your own.
 
-We hope you find these prompts useful and have fun using ChatGPT!
+We hope you find these prompts useful and have fun exploring AI chat models!
 
-**[View on GitHub](https://github.com/f/awesome-chatgpt-prompts)**
-
+**[View on prompts.chat](https://prompts.chat)**
 **[View on Hugging Face](https://huggingface.co/datasets/fka/awesome-chatgpt-prompts/)**
 
 ---
