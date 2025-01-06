@@ -171,7 +171,9 @@ jobs:
                     
                     for (const match of promptMatches) {
                       const actName = normalizeTitle(match[1]);
-                      const promptText = match[2].trim();
+                      const promptText = match[2].trim()
+                        .replace(/^(?:Contributed by:?[^\n]*\n\s*)+/i, '')
+                        .trim();
                       const contributorLine = addedLines.match(/Contributed by: \[@([^\]]+)\]\(https:\/\/github\.com\/([^\)]+)\)/);
                       const contributorInfo = contributorLine 
                         ? `Contributed by: [@${contributorLine[1]}](https://github.com/${contributorLine[2]})`
@@ -201,7 +203,9 @@ jobs:
                         const matches = [...line.matchAll(/"([^"]*(?:""[^"]*)*)"/g)];
                         if (matches.length >= 2) {
                           const actName = normalizeTitle(matches[0][1].replace(/""/g, '"').trim());
-                          const promptText = matches[1][1].replace(/""/g, '"').trim();
+                          const promptText = matches[1][1].replace(/""/g, '"').trim()
+                            .replace(/^(?:Contributed by:?[^\n]*\n\s*)+/i, '')
+                            .trim();
                           
                           const contributorInfo = `Contributed by: [@${pr.user.login}](https://github.com/${pr.user.login})`;
                           prompts.set(actName.toLowerCase(), { actName, promptText, contributorInfo });
