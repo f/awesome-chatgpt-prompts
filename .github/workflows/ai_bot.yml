@@ -140,8 +140,19 @@ jobs:
                   title = title.trim();
                   // Remove "Act as" or "Act as a" or "Act as an" from start if present
                   title = title.replace(/^Act as (?:a |an )?/i, '');
+                  
+                  // Capitalize each word except common articles and prepositions
+                  const lowercaseWords = ['a', 'an', 'the', 'and', 'but', 'or', 'for', 'nor', 'on', 'at', 'to', 'for', 'with', 'in'];
+                  const capitalized = title.toLowerCase().split(' ').map((word, index) => {
+                    // Always capitalize first and last word
+                    if (index === 0 || !lowercaseWords.includes(word)) {
+                      return word.charAt(0).toUpperCase() + word.slice(1);
+                    }
+                    return word;
+                  }).join(' ');
+                  
                   // Add "Act as" prefix
-                  return `Act as ${title}`;
+                  return `Act as ${capitalized}`;
                 };
 
                 // First try to find prompts in README
