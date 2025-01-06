@@ -262,7 +262,7 @@ jobs:
                   }
 
                   // Add to CSV content
-                  csvContent += `"${actName.replace(/"/g, '""')}","${csvPrompt.replace(/"/g, '""')}"\n`;
+                  csvContent += `"${actName.replace(/^Act as an?/i, '').replace(/"/g, '""')}","${csvPrompt.replace(/"/g, '""')}"\n`;
                 }
 
                 // Create new branch
