@@ -73,6 +73,16 @@ There are many Pull Requests to this repository waiting to be merged. There are 
 
 ---
 
+### Personal Prompt Resource Hub
+
+A WIP google sheets collection of a variety of prompts including a co-author prompt, world building and character creation prompts, and more. 
+
+Link to Google Sheets: https://docs.google.com/spreadsheets/d/1xqm94LH9ydiilsWvylS3LdRZIRFnnEyft_X6HLnlex4/edit
+
+> **Please note this resource hub is an unofficial community-driven project created by @Oolien (https://github.com/oolien)
+
+---
+
 # Prompts
 
 ## ChatGPT SEO prompts
