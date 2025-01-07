@@ -21,7 +21,7 @@
 {"@context":"https://schema.org","@type":"WebSite","description":"This repo includes ChatGPT prompt curation to use ChatGPT and other LLM tools better.","headline":"Awesome ChatGPT Prompts","name":"Awesome ChatGPT Prompts","url":"/"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=768a390e9b69036342ba98c99f6527af6e7f3a3e">
+    <link rel="stylesheet" href="/assets/css/style.css?v=72df762e8738b7dbde69a5af4ceb5a3516b55d4d">
     <style>
       :root {
         --bg-color-light: #ffffff;
@@ -355,6 +355,18 @@
         font-size: 0.95rem;
         opacity: 0.8;
         display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+
+      .platform-hint {
+        font-size: 0.75rem;
+        opacity: 0.6;
+        margin: 0;
+      }
+
+      .platform-pills {
+        display: flex;
         gap: 0.5rem;
         align-items: center;
         flex-wrap: wrap;
@@ -370,6 +382,7 @@
         color: var(--accent-color);
         border: 1px solid var(--accent-color);
         text-decoration: none;
+        cursor: pointer;
         transition: all 0.2s ease;
       }
 
@@ -378,12 +391,53 @@
         transform: translateY(-1px);
       }
 
+      .platform-tag.active {
+        background: var(--accent-color);
+        color: white;
+        transform: translateY(-1px);
+      }
+
       .dark-mode .platform-tag {
         background: rgba(16, 185, 129, 0.2);
       }
 
+      .dark-mode .platform-tag:hover {
+        background: rgba(16, 185, 129, 0.25);
+      }
+
+      .dark-mode .platform-tag.active {
+        background: var(--accent-color);
+      }
+
       .dark-mode .site-description {
         color: var(--text-color-dark);
+      }
+
+      .action-buttons {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .chat-button {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 2px;
+        color: var(--accent-color);
+        opacity: 0.8;
+        transition: opacity 0.2s ease;
+        z-index: 2;
+        flex-shrink: 0;
+      }
+
+      .chat-button:hover {
+        opacity: 1;
+      }
+
+      .chat-button svg {
+        width: 16px;
+        height: 16px;
       }
 
       .layout-wrapper {
@@ -791,10 +845,48 @@
         margin-top: 20px;
         padding-top: 16px;
         border-top: 1px solid #e1e4e8;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
 
       .dark-mode .modal-footer {
         border-color: #2d2d2d;
+      }
+
+      .modal-footer-left {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .modal-footer-right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .modal-chat-button {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        background: var(--accent-color);
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .modal-chat-button:hover {
+        background: var(--accent-color-hover);
+      }
+
+      .modal-chat-button svg {
+        width: 16px;
+        height: 16px;
       }
 
       .modal-contributor {
@@ -937,11 +1029,15 @@
           <h1 class="site-title">prompts.chat</h1>
           <p class="site-slogan">World's First & Most Famous Prompts Directory</p>
           <div class="site-description">
-            <a href="https://chat.openai.com" target="_blank" class="platform-tag">ChatGPT</a>
-            <a href="https://claude.ai/new" target="_blank" class="platform-tag">Claude</a>
-            <a href="https://gemini.google.com" target="_blank" class="platform-tag">Gemini</a>
-            <a href="https://meta.ai" target="_blank" class="platform-tag">Llama</a>
-            <a href="https://chat.mistral.ai" target="_blank" class="platform-tag">Mistral</a>
+            <p class="platform-hint">Choose your AI platform</p>
+            <div class="platform-pills">
+              <button class="platform-tag" data-platform="chatgpt" data-url="https://chat.openai.com">ChatGPT</button>
+              <button class="platform-tag" data-platform="claude" data-url="https://claude.ai/new">Claude</button>
+              <button class="platform-tag" data-platform="perplexity" data-url="https://perplexity.ai">Perplexity</button>
+              <button class="platform-tag" data-platform="gemini" data-url="https://gemini.google.com">Gemini</button>
+              <button class="platform-tag" data-platform="llama" data-url="https://meta.ai">Llama</button>
+              <button class="platform-tag" data-platform="mistral" data-url="https://chat.mistral.ai/chat">Mistral</button>
+            </div>
           </div>
         </div>
         <div class="header-right">
@@ -2790,8 +2886,8 @@ I want you to act as an SEO specialist. I will provide you with search engine op
         const promptElements = document.querySelectorAll('h2[id^=act] + p + blockquote');
         
         promptElements.forEach((blockquote) => {
-          const title = blockquote.previousElementSibling.previousElementSibling.textContent;
-          const content = blockquote.textContent;
+          const title = blockquote.previousElementSibling.previousElementSibling.textContent.trim();
+          const content = blockquote.textContent.trim();
           
           // Extract contributor from the paragraph element
           const contributorParagraph = blockquote.previousElementSibling;
@@ -2829,12 +2925,19 @@ I want you to act as an SEO specialist. I will provide you with search engine op
           card.innerHTML = `
             <div class="prompt-title">
               ${title}
-              <button class="copy-button" title="Copy prompt">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                </svg>
-              </button>
+              <div class="action-buttons">
+                <button class="chat-button" title="Open in AI Chat" onclick="openInChat(this, '${encodeURIComponent(content.trim())}')">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                  </svg>
+                </button>
+                <button class="copy-button" title="Copy prompt" onclick="copyPrompt(this, '${encodeURIComponent(content.trim())}')">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                  </svg>
+                </button>
+              </div>
             </div>
             <p class="prompt-content">${content}</p>
             <a href="https://github.com/${contributor}" class="contributor-badge" target="_blank" rel="noopener">@${contributor}</a>
@@ -2924,7 +3027,17 @@ I want you to act as an SEO specialist. I will provide you with search engine op
               </div>
               <div class="modal-content"></div>
               <div class="modal-footer">
-                <a class="modal-contributor" target="_blank" rel="noopener"></a>
+                <div class="modal-footer-left">
+                  <a class="modal-contributor" target="_blank" rel="noopener"></a>
+                </div>
+                <div class="modal-footer-right">
+                  <button class="modal-chat-button" onclick="openModalChat()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    Start Chat
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -2944,11 +3057,31 @@ I want you to act as an SEO specialist. I will provide you with search engine op
         const modalContent = modalOverlay.querySelector('.modal-content');
         const modalCopyButton = modalOverlay.querySelector('.modal-copy-button');
         const modalContributor = modalOverlay.querySelector('.modal-contributor');
+        const modalChatButton = modalOverlay.querySelector('.modal-chat-button');
         
         if (!modalTitle || !modalContent) return;
         
         modalTitle.textContent = title;
         modalContent.textContent = content;
+
+        // Update chat button text with platform name and handle visibility
+        const platform = document.querySelector('.platform-tag.active');
+        if (platform) {
+          const shouldHideChat = ['gemini', 'llama'].includes(platform.dataset.platform);
+          modalChatButton.style.display = shouldHideChat ? 'none' : 'flex';
+          
+          if (!shouldHideChat) {
+            modalChatButton.innerHTML = `
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+              Chat with ${platform.textContent}
+            `;
+          }
+        }
+        
+        // Store content for chat button
+        modalChatButton.dataset.content = content;
         
         // Find the contributor for this prompt
         const promptCard = Array.from(document.querySelectorAll('.prompt-card')).find(card => 
@@ -2998,6 +3131,90 @@ I want you to act as an SEO specialist. I will provide you with search engine op
         
         // Optional: Remove modal from DOM when hidden
         modalOverlay.remove();
+      }
+
+      let selectedPlatform = localStorage.getItem('selected-platform') || 'chatgpt'; // Get from localStorage or default to chatgpt
+
+      // Platform toggle functionality
+      document.querySelectorAll('.platform-tag').forEach(button => {
+        button.addEventListener('click', () => {
+          document.querySelectorAll('.platform-tag').forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          selectedPlatform = button.dataset.platform;
+          localStorage.setItem('selected-platform', selectedPlatform);
+          
+          // Hide/show chat buttons based on platform
+          const chatButtons = document.querySelectorAll('.chat-button, .modal-chat-button');
+          const shouldHideChat = ['gemini', 'llama'].includes(selectedPlatform);
+          chatButtons.forEach(btn => {
+            btn.style.display = shouldHideChat ? 'none' : 'flex';
+          });
+        });
+      });
+
+      // Set active platform from localStorage and handle initial button visibility
+      const platformToActivate = document.querySelector(`[data-platform="${selectedPlatform}"]`) || 
+                                   document.querySelector('[data-platform="chatgpt"]');
+      platformToActivate.classList.add('active');
+      
+      // Set initial chat button visibility
+      const shouldHideChat = ['gemini', 'llama'].includes(selectedPlatform);
+      document.querySelectorAll('.chat-button, .modal-chat-button').forEach(btn => {
+        btn.style.display = shouldHideChat ? 'none' : 'flex';
+      });
+
+      // Function to open prompt in selected AI chat platform
+      function openInChat(button, encodedPrompt) {
+        const promptText = decodeURIComponent(encodedPrompt);
+        const platform = document.querySelector('.platform-tag.active');
+        
+        if (!platform) return;
+
+        const baseUrl = platform.dataset.url;
+        let url;
+
+        switch (platform.dataset.platform) {
+          case 'chatgpt':
+            url = `${baseUrl}?prompt=${encodeURIComponent(promptText)}`;
+            break;
+          case 'claude':
+            url = `${baseUrl}?q=${encodeURIComponent(promptText)}`;
+            break;
+          case 'perplexity':
+            url = `${baseUrl}/search?q=${encodeURIComponent(promptText)}`;
+            break;
+          case 'mistral':
+            url = `${baseUrl}?q=${encodeURIComponent(promptText)}`;
+            break;
+          default:
+            url = `${baseUrl}?q=${encodeURIComponent(promptText)}`;
+        }
+
+        window.open(url, '_blank');
+      }
+
+      // Existing copy function
+      async function copyPrompt(button, encodedPrompt) {
+        const promptText = decodeURIComponent(encodedPrompt);
+        try {
+          await navigator.clipboard.writeText(promptText);
+          const originalHTML = button.innerHTML;
+          button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+          setTimeout(() => {
+            button.innerHTML = originalHTML;
+          }, 1000);
+        } catch (err) {
+          console.error('Failed to copy text: ', err);
+        }
+      }
+
+      // Function to handle chat button click in modal
+      function openModalChat() {
+        const modalContent = document.querySelector('.modal-content');
+        if (modalContent) {
+          const content = modalContent.textContent;
+          openInChat(null, encodeURIComponent(content.trim()));
+        }
       }
     </script>
     <style>video { max-width: 100% !important; }</style>
