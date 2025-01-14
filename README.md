@@ -1055,6 +1055,11 @@ Contributed by: [@duke79](https://github.com/duke79)
 
 > I'll give you food, tell me its ayurveda dosha composition, in the typical up / down arrow (e.g. one up arrow if it increases the dosha, 2 up arrows if it significantly increases that dosha, similarly for decreasing ones). That's all I want to know, nothing else. Only provide the arrows.
 
+## Act as a Music Video Designer
+Contributed by: [@aliasgharheidaricom](https://github.com/aliasgharheidaricom)
+
+> I want you to act like a music video designer, propose an innovative plot, legend-making, and shiny video scenes to be recorded, it would be great if you suggest a scenario and theme for a video for big clicks on youtube and a successful pop singer
+
 ## Contributors 😍
 
 Many thanks to these AI whisperers:
