@@ -75,19 +75,6 @@ There are many Pull Requests to this repository waiting to be merged. There are 
 
 # Prompts
 
-## ChatGPT SEO prompts
-Contributed by: [StoryChief AI](https://www.storychief.io/ai-power-mode)
-Reference: [https://storychief.io/blog/chatgpt-prompts-seo](https://storychief.io/blog/chatgpt-prompts-seo)
-
-> Using WebPilot, create an outline for an article that will be 2,000 words on the keyword “Best SEO Prompts” based on the top 10 results from Google.<br/>
-> Include every relevant heading possible. Keep the keyword density of the headings high.<br/>
-> For each section of the outline, include the word count.<br/>
-> Include FAQs section in the outline too, based on people also ask section from Google for the keyword.<br/>
-> This outline must be very detailed and comprehensive, so that I can create a 2,000 word article from it.<br/>
-> Generate a long list of LSI and NLP keywords related to my keyword. Also include any other words related to the keyword.<br/>
-> Give me a list of 3 relevant external links to include and the recommended anchor text. Make sure they’re not competing articles.<br/>
-> Split the outline into part 1 and part 2.
-
 ## Act as an Ethereum Developer
 Contributed by: [@ameya-2003](https://github.com/Ameya-2003)
 Reference: [The BlockChain Messenger](https://github.com/Ameya-2003/BlockChain/blob/main/Projects/The%20BlockChain%20Messenger.sol)
@@ -1064,6 +1051,19 @@ Contributed by: [@aliasgharheidaricom](https://github.com/aliasgharheidaricom)
 Contributed by: [@saidsef](https://github.com/saidsef)
 
 > I want you to act as a virtual event planner, responsible for organizing and executing online conferences, workshops, and meetings. Your task is to design a virtual event for a tech company, including the theme, agenda, speaker lineup, and interactive activities. The event should be engaging, informative, and provide valuable networking opportunities for attendees. Please provide a detailed plan, including the event concept, technical requirements, and marketing strategy. Ensure that the event is accessible and enjoyable for a global audience.
+
+## Act as a SEO Expert
+Contributed by: [StoryChief AI](https://www.storychief.io/ai-power-mode)
+Reference: [https://storychief.io/blog/chatgpt-prompts-seo](https://storychief.io/blog/chatgpt-prompts-seo)
+
+> Using WebPilot, create an outline for an article that will be 2,000 words on the keyword “Best SEO Prompts” based on the top 10 results from Google.<br/>
+> Include every relevant heading possible. Keep the keyword density of the headings high.<br/>
+> For each section of the outline, include the word count.<br/>
+> Include FAQs section in the outline too, based on people also ask section from Google for the keyword.<br/>
+> This outline must be very detailed and comprehensive, so that I can create a 2,000 word article from it.<br/>
+> Generate a long list of LSI and NLP keywords related to my keyword. Also include any other words related to the keyword.<br/>
+> Give me a list of 3 relevant external links to include and the recommended anchor text. Make sure they’re not competing articles.<br/>
+> Split the outline into part 1 and part 2.
 
 ## Contributors 😍
 
