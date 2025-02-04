@@ -21,7 +21,7 @@
 {"@context":"https://schema.org","@type":"WebSite","description":"This repo includes ChatGPT prompt curation to use ChatGPT and other LLM tools better.","headline":"Awesome ChatGPT Prompts","name":"Awesome ChatGPT Prompts","url":"/"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=dab74ce8d5866f3029ea090280cbdcc3effc0c09">
+    <link rel="stylesheet" href="/assets/css/style.css?v=8da22ebc59d3ef2458dbaf6e0e394de24035a83a">
     <style>
       :root {
         --bg-color-light: #ffffff;
@@ -1094,6 +1094,219 @@
           height: 14px;
         }
       }
+
+      /* Dev Mode Toggle Switch Styles */
+      .dev-mode-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-right: 12px;
+      }
+
+      .dev-mode-label {
+        font-size: 0.9rem;
+        color: var(--accent-color);
+        opacity: 0.8;
+      }
+
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 20px;
+      }
+
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: .4s;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        left: 2px;
+        bottom: 2px;
+        background-color: white;
+        transition: .4s;
+      }
+
+      input:checked + .slider {
+        background-color: var(--accent-color);
+      }
+
+      input:focus + .slider {
+        box-shadow: 0 0 1px var(--accent-color);
+      }
+
+      input:checked + .slider:before {
+        transform: translateX(20px);
+      }
+
+      .slider.round {
+        border-radius: 34px;
+      }
+
+      .slider.round:before {
+        border-radius: 50%;
+      }
+
+      @media (max-width: 768px) {
+        .dev-mode-label {
+          display: none;
+        }
+      }
+
+      /* Copilot Suggestion Modal Styles */
+      .copilot-suggestion-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        z-index: 1001;
+        display: none;
+      }
+
+      .dark-mode .copilot-suggestion-backdrop {
+        background: rgba(0, 0, 0, 0.7);
+      }
+
+      .copilot-suggestion-modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: var(--bg-color-light);
+        border-radius: 12px;
+        padding: 32px;
+        width: 90%;
+        max-width: 460px;
+        z-index: 1002;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+        display: none;
+      }
+
+      .dark-mode .copilot-suggestion-modal {
+        background: var(--bg-color-dark);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+      }
+
+      .copilot-suggestion-content {
+        margin-bottom: 24px;
+        color: var(--text-color-light);
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+
+      .dark-mode .copilot-suggestion-content {
+        color: var(--text-color-dark);
+      }
+
+      .copilot-suggestion-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .copilot-suggestion-checkbox {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--text-color-light);
+        font-size: 0.9rem;
+        opacity: 0.8;
+        order: 2;
+      }
+
+      .dark-mode .copilot-suggestion-checkbox {
+        color: var(--text-color-dark);
+      }
+
+      .copilot-suggestion-checkbox input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        accent-color: var(--accent-color);
+      }
+
+      .copilot-suggestion-buttons {
+        display: flex;
+        gap: 12px;
+        order: 1;
+      }
+
+      .copilot-suggestion-button {
+        padding: 10px 16px;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        flex: 1;
+        font-weight: 500;
+      }
+
+      .copilot-suggestion-button.primary {
+        background: var(--accent-color);
+        color: white;
+      }
+
+      .copilot-suggestion-button.primary:hover {
+        background: var(--accent-color-hover);
+        transform: translateY(-1px);
+      }
+
+      .copilot-suggestion-button.secondary {
+        background: transparent;
+        color: var(--text-color-light);
+        border: 1px solid #e1e4e8;
+      }
+
+      .dark-mode .copilot-suggestion-button.secondary {
+        color: var(--text-color-dark);
+        border-color: #2d2d2d;
+      }
+
+      .copilot-suggestion-button.secondary:hover {
+        background: rgba(0, 0, 0, 0.05);
+        transform: translateY(-1px);
+      }
+
+      .dark-mode .copilot-suggestion-button.secondary:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      @media (max-width: 480px) {
+        .copilot-suggestion-modal {
+          padding: 24px;
+        }
+
+        .copilot-suggestion-content {
+          font-size: 0.95rem;
+          margin-bottom: 20px;
+        }
+
+        .copilot-suggestion-button {
+          padding: 8px 14px;
+          font-size: 0.9rem;
+        }
+      }
     </style>
     <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
 
@@ -1110,6 +1323,24 @@
   </head>
   <body>
     <div class="layout-wrapper">
+      <!-- Copilot Suggestion Modal Backdrop -->
+      <div class="copilot-suggestion-backdrop"></div>
+      <!-- Copilot Suggestion Modal -->
+      <div class="copilot-suggestion-modal" id="copilotSuggestionModal">
+        <div class="copilot-suggestion-content">
+          GitHub Copilot may work better with developer mode. Would you like to switch to GitHub Copilot?
+        </div>
+        <div class="copilot-suggestion-actions">
+          <div class="copilot-suggestion-buttons">
+            <button class="copilot-suggestion-button secondary" onclick="hideCopilotSuggestion(false)">No, thanks</button>
+            <button class="copilot-suggestion-button primary" onclick="hideCopilotSuggestion(true)">Switch to Copilot</button>
+          </div>
+          <label class="copilot-suggestion-checkbox">
+            <input type="checkbox" id="doNotShowAgain">
+            Don't show again
+          </label>
+        </div>
+      </div>
       <header class="site-header">
         <div class="header-left">
           <h1 class="site-title">prompts.chat</h1>
@@ -1128,6 +1359,13 @@
           </div>
         </div>
         <div class="header-right">
+          <div class="dev-mode-toggle">
+            <label class="switch">
+              <input type="checkbox" id="devModeToggle">
+              <span class="slider round"></span>
+            </label>
+            <span class="dev-mode-label">Dev Prompts</span>
+          </div>
           <a href="https://github.com/f/awesome-chatgpt-prompts/stargazers" target="_blank" class="star-count">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
@@ -1257,7 +1495,7 @@ Reference: <a href="https://www.engraved.blog/building-a-virtual-machine-inside/
   <p>I want you to act as an English translator, spelling corrector and improver. I will speak to you in any language and you will detect the language, translate it and answer in the corrected and improved version of my text, in English. I want you to replace my simplified A0-level words and sentences with more beautiful and elegant, upper level English words and sentences. Keep the meaning same, but make them more literary. I want you to only reply the correction, the improvements and nothing else, do not write explanations. My first sentence is “istanbulu cok seviyom burada olmak cok guzel”</p>
 </blockquote>
 
-<h2 id="act-as-position-interviewer">Act as <code class="language-plaintext highlighter-rouge">position</code> Interviewer</h2>
+<h2 id="act-as-job-interviewer">Act as Job Interviewer</h2>
 <p>Contributed by: <a href="https://github.com/f">@f</a> &amp; <a href="https://github.com/iltekin">@iltekin</a>
 <strong>Examples</strong>: Node.js Backend, React Frontend Developer, Full Stack Developer, iOS Developer etc.</p>
 
@@ -2275,13 +2513,13 @@ Reference: <a href="https://www.engraved.blog/building-a-virtual-machine-inside/
   <p>I want you to act as a note-taking assistant for a lecture. Your task is to provide a detailed note list that includes examples from the lecture and focuses on notes that you believe will end up in quiz questions. Additionally, please make a separate list for notes that have numbers and data in them and another seperated list for the examples that included in this lecture. The notes should be concise and easy to read.</p>
 </blockquote>
 
-<h2 id="act-as-a-language-literary-critic">Act as a <code class="language-plaintext highlighter-rouge">language</code> Literary Critic</h2>
+<h2 id="act-as-a-literary-critic">Act as a Literary Critic</h2>
 <p>Contributed by <a href="https://github.com/lemorage">@lemorage</a></p>
 <blockquote>
   <p>I want you to act as a <code class="language-plaintext highlighter-rouge">language</code> literary critic. I will provide you with some excerpts from literature work. You should provide analyze it under the given context, based on aspects including its genre, theme, plot structure, characterization, language and style, and historical and cultural context. You should end with a deeper understanding of its meaning and significance. My first request is “To be or not to be, that is the question.”</p>
 </blockquote>
 
-<h2 id="act-as-cheap-travel-ticket-advisor">Act as cheap travel ticket advisor</h2>
+<h2 id="act-as-cheap-travel-ticket-advisor">Act as Cheap Travel Ticket Advisor</h2>
 <p>Contributed by <a href="https://github.com/goeksu">@goeksu</a></p>
 <blockquote>
   <p>You are a cheap travel ticket advisor specializing in finding the most affordable transportation options for your clients. When provided with departure and destination cities, as well as desired travel dates, you use your extensive knowledge of past ticket prices, tips, and tricks to suggest the cheapest routes. Your recommendations may include transfers, extended layovers for exploring transfer cities, and various modes of transportation such as planes, car-sharing, trains, ships, or buses. Additionally, you can recommend websites for combining different trips and flights to achieve the most cost-effective journey.</p>
@@ -2322,7 +2560,7 @@ Reference: <a href="https://www.engraved.blog/building-a-virtual-machine-inside/
   <p>I want you to act as an expert in Large Language Model research. Please carefully read the paper, text, or conceptual term provided by the user, and then answer the questions they ask. While answering, ensure you do not miss any important details. Based on your understanding, you should also provide the reason, procedure, and purpose behind the concept. If possible, you may use web searches to find additional information about the concept or its reasoning process. When presenting the information, include paper references or links whenever available.</p>
 </blockquote>
 
-<h2 id="act-as-a-unit-tester-assistant">Act as a Unit Tester assistant</h2>
+<h2 id="act-as-a-unit-tester-assistant">Act as a Unit Tester Assistant</h2>
 
 <p>Contributed by: <a href="https://github.com/demian-ae">@demian-ae</a></p>
 
@@ -2357,7 +2595,7 @@ Reference: <a href="https://www.engraved.blog/building-a-virtual-machine-inside/
   <p>I want you to act as a acoustic guitar composer. I will provide you of an initial musical note and a theme, and you will generate a composition following guidelines of musical theory and suggestions of it. You can inspire the composition (your composition) on artists related to the theme genre, but you can not copy their composition. Please keep the composition concise, popular and under 5 chords. Make sure the progression maintains the asked theme. Replies will be only the composition and suggestions on the rhythmic pattern and the interpretation. Do not break the character. Answer: “Give me a note and a theme” if you understood.</p>
 </blockquote>
 
-<h2 id="act-as-knowledgeable-software-development-mentor">Act as knowledgeable Software Development Mentor</h2>
+<h2 id="act-as-knowledgeable-software-development-mentor">Act as Knowledgeable Software Development Mentor</h2>
 <p>Contributed by: <a href="https://github.com/yamanerkam">@yamanerkam</a></p>
 
 <blockquote>
@@ -2385,7 +2623,7 @@ Reference: <a href="https://www.engraved.blog/building-a-virtual-machine-inside/
   <p>I want you to act as my teacher of React.js. I want to learn React.js from scratch for front-end development. Give me in response TABLE format. First Column should be for all the list of topics i should learn. Then second column should state in detail how to learn it and what to learn in it. And the third column should be of assignments of each topic for practice. Make sure it is beginner friendly, as I am learning from scratch.</p>
 </blockquote>
 
-<h2 id="act-as-github-expert">Act as Github Expert</h2>
+<h2 id="act-as-github-expert">Act as GitHub Expert</h2>
 <p>Contributed by: <a href="https://github.com/khushaljethava">@khushaljethava</a></p>
 
 <blockquote>
@@ -2414,14 +2652,14 @@ My first request is “I want to fork the awesome-chatgpt-prompts repository and
   <p>Please pretend to be a chess player, you play with white. you write me chess moves in algebraic notation. Please write me your first move. After that I write you my move and you answer me with your next move. Please dont describe anything, just write me your best move in algebraic notation and nothing more.</p>
 </blockquote>
 
-<h2 id="act-as-young-boy-flirting-with-a-girl-on-chat">Act as young boy flirting with a girl on chat</h2>
+<h2 id="act-as-flirting-boy">Act as Flirting Boy</h2>
 <p>Contributed by: <a href="https://github.com/Mythli">@Mythli</a></p>
 
 <blockquote>
   <p>I want you to pretend to be a 24 year old guy flirting with a girl on chat. The girl writes messages in the chat and you answer. You try to invite the girl out for a date. Answer short, funny and flirting with lots of emojees. I want you to reply with the answer and nothing else. Always include an intriguing, funny question in your answer to carry the conversation forward. Do not write explanations. The first message from the girl is “Hey, how are you?”</p>
 </blockquote>
 
-<h2 id="act-as-girl-of-dreams-modify-as-per-liking">Act as girl of dreams, modify as per liking</h2>
+<h2 id="act-as-girl-of-dreams">Act as Girl of Dreams</h2>
 <p>Contributed by: <a href="https://github.com/Mythli">@Mythli</a></p>
 
 <blockquote>
@@ -2470,7 +2708,7 @@ My first request is “I want to fork the awesome-chatgpt-prompts repository and
   </ul>
 </blockquote>
 
-<h2 id="act-as-top-programming-expert">Act as top programming expert</h2>
+<h2 id="act-as-top-programming-expert">Act as Top Programming Expert</h2>
 <p>Contributed by: <a href="https://github.com/Ai-trainee/GPT-Prompts-Hub">@Aitrainee</a></p>
 
 <blockquote>
@@ -2504,7 +2742,7 @@ Many thanks to these AI whisperers:</p>
   </ul>
 </blockquote>
 
-<h2 id="act-as-chatgpt-prompt-generator">Act as ChatGPT prompt generator</h2>
+<h2 id="act-as-chatgpt-prompt-generator">Act as ChatGPT Prompt Generator</h2>
 <p>Contributed by: <a href="https://github.com/Ai-trainee/GPT-Prompts-Hub">@Aitrainee</a></p>
 
 <blockquote>
@@ -2551,7 +2789,7 @@ Feel free to confirm if all your issues have been addressed before we end the se
   <p>I want you to act as a book summarizer. Provide a detailed summary of [bookname]. Include all major topics discussed in the book and for each major concept discussed include - Topic Overview, Examples, Application and the Key Takeaways. Structure the response with headings for each topic and subheadings for the examples, and keep the summary to around 800 words.</p>
 </blockquote>
 
-<h2 id="act-as-study-planner">Act as study planner</h2>
+<h2 id="act-as-study-planner">Act as Study Planner</h2>
 <p>Contributed by: <a href="https://github.com/AhmedYasserIbrahim">@AhmedYasserIbrahim</a></p>
 
 <blockquote>
@@ -2573,7 +2811,7 @@ I want you to act as an SEO specialist. I will provide you with search engine op
   <p>I want you to act as a note-taking assistant for a lecture. Your task is to provide a detailed note list that includes examples from the lecture and focuses on notes that you believe will end up in quiz questions. Additionally, please make a separate list for notes that have numbers and data in them and another separated list for the examples that included in this lecture. The notes should be concise and easy to read.</p>
 </blockquote>
 
-<h2 id="act-as-nutritionist">Act as nutritionist</h2>
+<h2 id="act-as-nutritionist">Act as Nutritionist</h2>
 <p>Contributed by: <a href="https://github.com/nababuddin">@nababuddin</a></p>
 
 <blockquote>
@@ -2761,6 +2999,31 @@ Split the outline into part 1 and part 2.</p>
 
       // Initialize everything after DOM loads
       document.addEventListener('DOMContentLoaded', () => {
+        // Initialize dev mode
+        const devModeToggle = document.getElementById('devModeToggle');
+        const isDevMode = localStorage.getItem('dev-mode') === 'true';
+        devModeToggle.checked = isDevMode;
+        
+        // Handle dev mode toggle
+        devModeToggle.addEventListener('change', (e) => {
+          const isDevMode = e.target.checked;
+          localStorage.setItem('dev-mode', isDevMode);
+          
+          // Check if we should show Copilot suggestion
+          if (isDevMode) {
+            const currentPlatform = document.querySelector('.platform-tag.active');
+            const shouldNotShow = localStorage.getItem('copilot-suggestion-hidden') === 'true';
+            
+            if (currentPlatform && 
+                currentPlatform.dataset.platform !== 'github-copilot' && 
+                !shouldNotShow) {
+              showCopilotSuggestion();
+            }
+          }
+          
+          filterPrompts();
+        });
+
         // Fetch GitHub stars
         fetch('https://api.github.com/repos/f/awesome-chatgpt-prompts')
           .then(response => response.json())
@@ -2814,24 +3077,29 @@ Split the outline into part 1 and part 2.</p>
           const searchInput = document.getElementById('searchInput');
           const searchResults = document.getElementById('searchResults');
           const promptCount = document.getElementById('promptCount');
+          const isDevMode = document.getElementById('devModeToggle').checked;
           
           // Update prompt count
-          updatePromptCount(prompts.length, prompts.length);
+          const totalPrompts = isDevMode ? prompts.filter(p => p.for_devs === true).length : prompts.length;
+          updatePromptCount(totalPrompts, totalPrompts);
           
-          // Show all prompts initially
-          displaySearchResults(prompts);
+          // Show filtered prompts initially
+          const filteredPrompts = isDevMode ? prompts.filter(p => p.for_devs === true) : prompts;
+          displaySearchResults(filteredPrompts);
           
           searchInput.addEventListener('input', (e) => {
             const searchTerm = e.target.value.toLowerCase();
-            const filteredPrompts = searchTerm 
-              ? prompts.filter(prompt => 
-                  prompt.act.toLowerCase().includes(searchTerm) || 
-                  prompt.prompt.toLowerCase().includes(searchTerm)
-                )
-              : prompts;
+            
+            const filteredPrompts = prompts.filter(prompt => {
+              const matchesSearch = prompt.act.toLowerCase().includes(searchTerm) || 
+                prompt.prompt.toLowerCase().includes(searchTerm);
+              
+              return isDevMode ? (matchesSearch && prompt.for_devs === true) : matchesSearch;
+            });
             
             // Update count with filtered results
-            updatePromptCount(filteredPrompts.length, prompts.length);
+            const totalPrompts = isDevMode ? prompts.filter(p => p.for_devs === true).length : prompts.length;
+            updatePromptCount(filteredPrompts.length, totalPrompts);
             displaySearchResults(filteredPrompts);
           });
         } catch (error) {
@@ -2869,6 +3137,10 @@ Split the outline into part 1 and part 2.</p>
             if (header === 'act') {
               value = value.replace(/`/g, '');
             }
+            // Convert 'TRUE'/'FALSE' strings to boolean for for_devs
+            if (header === 'for_devs') {
+              value = value.toUpperCase() === 'TRUE';
+            }
             entry[header] = value;
           });
           
@@ -2879,6 +3151,13 @@ Split the outline into part 1 and part 2.</p>
       function displaySearchResults(results) {
         const searchResults = document.getElementById('searchResults');
         const searchInput = document.getElementById('searchInput');
+        const isDevMode = document.getElementById('devModeToggle').checked;
+        
+        // Filter results based on dev mode
+        if (isDevMode) {
+          results = results.filter(result => result.for_devs === true);
+        }
+        
         searchResults.innerHTML = '';
         
         if (window.innerWidth <= 768 && !searchInput.value.trim()) {
@@ -2978,6 +3257,50 @@ Split the outline into part 1 and part 2.</p>
         });
       }
 
+      // Function to filter prompts based on dev mode
+      function filterPrompts() {
+        const isDevMode = document.getElementById('devModeToggle').checked;
+        const searchInput = document.getElementById('searchInput');
+        const searchTerm = searchInput.value.toLowerCase();
+        
+        // Re-fetch and filter prompts
+        fetch('/prompts.csv')
+          .then(response => response.text())
+          .then(csvText => {
+            const prompts = parseCSV(csvText);
+            const filteredPrompts = prompts.filter(prompt => {
+              const matchesSearch = !searchTerm || 
+                prompt.act.toLowerCase().includes(searchTerm) || 
+                prompt.prompt.toLowerCase().includes(searchTerm);
+              
+              return isDevMode ? (matchesSearch && prompt.for_devs === true) : matchesSearch;
+            });
+            
+            // Update count with filtered results
+            updatePromptCount(filteredPrompts.length, isDevMode ? prompts.filter(p => p.for_devs === true).length : prompts.length);
+            displaySearchResults(filteredPrompts);
+            
+            // Update prompt cards visibility
+            const promptsGrid = document.querySelector('.prompts-grid');
+            if (promptsGrid) {
+              const cards = promptsGrid.querySelectorAll('.prompt-card:not(.contribute-card)');
+              cards.forEach(card => {
+                const title = card.querySelector('.prompt-title').textContent.trim();
+                const matchingPrompt = prompts.find(p => {
+                  const pTitle = p.act.replace(/\s+/g, ' ').replace(/[\n\r]/g, '').trim();
+                  const cardTitle = title.replace(/\s+/g, ' ').replace(/[\n\r]/g, '').trim();
+                  return pTitle.toLowerCase() === cardTitle.toLowerCase() ||
+                         pTitle.toLowerCase().includes(cardTitle.toLowerCase()) ||
+                         cardTitle.toLowerCase().includes(pTitle.toLowerCase());
+                });
+                
+                // Show card if not in dev mode or if it's a dev prompt in dev mode
+                card.style.display = (!isDevMode || (matchingPrompt && matchingPrompt.for_devs === true)) ? '' : 'none';
+              });
+            }
+          });
+      }
+
       // Update the modal initialization and event listeners
       function createPromptCards() {
         const container = document.querySelector('.container-lg.markdown-body');
@@ -3004,105 +3327,130 @@ Split the outline into part 1 and part 2.</p>
           </a>
         `;
         promptsGrid.appendChild(contributeCard);
-        
-        const promptElements = document.querySelectorAll('h2[id^=act] + p + blockquote');
-        
-        promptElements.forEach((blockquote) => {
-          const title = blockquote.previousElementSibling.previousElementSibling.textContent.trim();
-          const content = blockquote.textContent.trim();
-          
-          // Extract contributor from the paragraph element
-          const contributorParagraph = blockquote.previousElementSibling;
-          const contributorText = contributorParagraph.textContent;
-          let contributor = null;
-          
-          // Try different contributor formats
-          const formats = [
-            /Contributed by: \[([^\]]+)\]/i,
-            /Contributed by \[([^\]]+)\]/i,
-            /Contributed by: @([^\s]+)/i,
-            /Contributed by @([^\s]+)/i,
-            /Contributed by: \[@([^\]]+)\]/i,
-            /Contributed by \[@([^\]]+)\]/i
-          ];
-          
-          for (const format of formats) {
-            const match = contributorText.match(format);
-            if (match) {
-              contributor = match[1];
-              // Remove @ if it exists at the start
-              contributor = contributor.replace(/^@/, '');
-              break;
-            }
-          }
-          
-          // Set default contributor to 'f' if none found
-          if (!contributor) {
-            contributor = 'f';
-          }
-          
-          const card = document.createElement('div');
-          card.className = 'prompt-card';
-          
-          card.innerHTML = `
-            <div class="prompt-title">
-              ${title}
-              <div class="action-buttons">
-                <button class="chat-button" title="Open in AI Chat" onclick="openInChat(this, '${encodeURIComponent(content.trim())}')">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                  </svg>
-                </button>
-                <button class="copy-button" title="Copy prompt" onclick="copyPrompt(this, '${encodeURIComponent(content.trim())}')">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
-                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <p class="prompt-content">${content}</p>
-            <a href="https://github.com/${contributor}" class="contributor-badge" target="_blank" rel="noopener">@${contributor}</a>
-          `;
-          
-          // Add click event for showing modal
-          card.addEventListener('click', (e) => {
-            if (!e.target.closest('.copy-button') && !e.target.closest('.contributor-badge')) {
-              showModal(title, content);
-            }
-          });
-          
-          const copyButton = card.querySelector('.copy-button');
-          copyButton.addEventListener('click', async (e) => {
-            e.stopPropagation();
-            try {
-              await navigator.clipboard.writeText(content);
-              copyButton.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              `;
-              setTimeout(() => {
-                copyButton.innerHTML = `
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                  </svg>
-                `;
-              }, 2000);
-            } catch (err) {
-              alert('Failed to copy prompt to clipboard');
-            }
-          });
-          
-          promptsGrid.appendChild(card);
-        });
-        
-        container.innerHTML = '';
-        container.appendChild(promptsGrid);
 
-        // Initialize modal event listeners
-        initializeModalListeners();
+        // Fetch prompts.csv to get for_devs information
+        fetch('/prompts.csv')
+          .then(response => response.text())
+          .then(csvText => {
+            const prompts = parseCSV(csvText);
+            const isDevMode = document.getElementById('devModeToggle').checked;
+            
+            const promptElements = document.querySelectorAll('h2[id^=act] + p + blockquote');
+            
+            promptElements.forEach((blockquote) => {
+              const title = blockquote.previousElementSibling.previousElementSibling.textContent.trim();
+              const content = blockquote.textContent.trim();
+              
+              // Find matching prompt in CSV
+              const matchingPrompt = prompts.find(p => {
+                const csvTitle = p.act.replace(/\s+/g, ' ').replace(/[\n\r]/g, '').trim();
+                const elementTitle = title.replace(/\s+/g, ' ').replace(/[\n\r]/g, '').trim();
+                return csvTitle.toLowerCase() === elementTitle.toLowerCase() ||
+                       csvTitle.toLowerCase().includes(elementTitle.toLowerCase()) ||
+                       elementTitle.toLowerCase().includes(csvTitle.toLowerCase());
+              });
+              
+              // Extract contributor from the paragraph element
+              const contributorParagraph = blockquote.previousElementSibling;
+              const contributorText = contributorParagraph.textContent;
+              let contributor = null;
+              
+              // Try different contributor formats
+              const formats = [
+                /Contributed by: \[([^\]]+)\]/i,
+                /Contributed by \[([^\]]+)\]/i,
+                /Contributed by: @([^\s]+)/i,
+                /Contributed by @([^\s]+)/i,
+                /Contributed by: \[@([^\]]+)\]/i,
+                /Contributed by \[@([^\]]+)\]/i
+              ];
+              
+              for (const format of formats) {
+                const match = contributorText.match(format);
+                if (match) {
+                  contributor = match[1];
+                  // Remove @ if it exists at the start
+                  contributor = contributor.replace(/^@/, '');
+                  break;
+                }
+              }
+              
+              // Set default contributor to 'f' if none found
+              if (!contributor) {
+                contributor = 'f';
+              }
+              
+              const card = document.createElement('div');
+              card.className = 'prompt-card';
+              
+              // Set initial visibility based on dev mode
+              if (isDevMode && (!matchingPrompt || !matchingPrompt.for_devs)) {
+                card.style.display = 'none';
+              }
+              
+              card.innerHTML = `
+                <div class="prompt-title">
+                  ${title}
+                  <div class="action-buttons">
+                    <button class="chat-button" title="Open in AI Chat" onclick="openInChat(this, '${encodeURIComponent(content.trim())}')">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                      </svg>
+                    </button>
+                    <button class="copy-button" title="Copy prompt" onclick="copyPrompt(this, '${encodeURIComponent(content.trim())}')">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                        <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <p class="prompt-content">${content}</p>
+                <a href="https://github.com/${contributor}" class="contributor-badge" target="_blank" rel="noopener">@${contributor}</a>
+              `;
+              
+              // Add click event for showing modal
+              card.addEventListener('click', (e) => {
+                if (!e.target.closest('.copy-button') && !e.target.closest('.contributor-badge')) {
+                  showModal(title, content);
+                }
+              });
+              
+              const copyButton = card.querySelector('.copy-button');
+              copyButton.addEventListener('click', async (e) => {
+                e.stopPropagation();
+                try {
+                  await navigator.clipboard.writeText(content);
+                  copyButton.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  `;
+                  setTimeout(() => {
+                    copyButton.innerHTML = `
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    `;
+                  }, 2000);
+                } catch (err) {
+                  alert('Failed to copy prompt to clipboard');
+                }
+              });
+              
+              promptsGrid.appendChild(card);
+            });
+            
+            container.innerHTML = '';
+            container.appendChild(promptsGrid);
+
+            // Initialize modal event listeners
+            initializeModalListeners();
+          })
+          .catch(error => {
+            console.error('Error loading prompts:', error);
+          });
       }
 
       function initializeModalListeners() {
@@ -3324,7 +3672,7 @@ Split the outline into part 1 and part 2.</p>
         try {
           await navigator.clipboard.writeText(promptText);
           const originalHTML = button.innerHTML;
-          button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+          button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17 4 12"/></svg>';
           setTimeout(() => {
             button.innerHTML = originalHTML;
           }, 1000);
@@ -3339,6 +3687,47 @@ Split the outline into part 1 and part 2.</p>
         if (modalContent) {
           const content = modalContent.textContent;
           openInChat(null, encodeURIComponent(content.trim()));
+        }
+      }
+
+      // Add these functions before the closing script tag
+      function showCopilotSuggestion() {
+        const modal = document.getElementById('copilotSuggestionModal');
+        const backdrop = document.querySelector('.copilot-suggestion-backdrop');
+        if (modal) {
+          if (!backdrop) {
+            const backdropDiv = document.createElement('div');
+            backdropDiv.className = 'copilot-suggestion-backdrop';
+            document.body.appendChild(backdropDiv);
+          }
+          modal.style.display = 'block';
+          backdrop.style.display = 'block';
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      function hideCopilotSuggestion(switchToCopilot) {
+        const modal = document.getElementById('copilotSuggestionModal');
+        const backdrop = document.querySelector('.copilot-suggestion-backdrop');
+        const doNotShowCheckbox = document.getElementById('doNotShowAgain');
+        
+        if (doNotShowCheckbox && doNotShowCheckbox.checked) {
+          localStorage.setItem('copilot-suggestion-hidden', 'true');
+        }
+        
+        if (switchToCopilot) {
+          const copilotButton = document.querySelector('[data-platform="github-copilot"]');
+          if (copilotButton) {
+            copilotButton.click();
+          }
+        }
+        
+        if (modal) {
+          modal.style.display = 'none';
+          if (backdrop) {
+            backdrop.style.display = 'none';
+          }
+          document.body.style.overflow = '';
         }
       }
     </script>
