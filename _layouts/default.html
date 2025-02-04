@@ -1080,12 +1080,243 @@
           height: 14px;
         }
       }
+
+      /* Dev Mode Toggle Switch Styles */
+      .dev-mode-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-right: 12px;
+      }
+
+      .dev-mode-label {
+        font-size: 0.9rem;
+        color: var(--accent-color);
+        opacity: 0.8;
+      }
+
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 20px;
+      }
+
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: .4s;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        left: 2px;
+        bottom: 2px;
+        background-color: white;
+        transition: .4s;
+      }
+
+      input:checked + .slider {
+        background-color: var(--accent-color);
+      }
+
+      input:focus + .slider {
+        box-shadow: 0 0 1px var(--accent-color);
+      }
+
+      input:checked + .slider:before {
+        transform: translateX(20px);
+      }
+
+      .slider.round {
+        border-radius: 34px;
+      }
+
+      .slider.round:before {
+        border-radius: 50%;
+      }
+
+      @media (max-width: 768px) {
+        .dev-mode-label {
+          display: none;
+        }
+      }
+
+      /* Copilot Suggestion Modal Styles */
+      .copilot-suggestion-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        z-index: 1001;
+        display: none;
+      }
+
+      .dark-mode .copilot-suggestion-backdrop {
+        background: rgba(0, 0, 0, 0.7);
+      }
+
+      .copilot-suggestion-modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: var(--bg-color-light);
+        border-radius: 12px;
+        padding: 32px;
+        width: 90%;
+        max-width: 460px;
+        z-index: 1002;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+        display: none;
+      }
+
+      .dark-mode .copilot-suggestion-modal {
+        background: var(--bg-color-dark);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+      }
+
+      .copilot-suggestion-content {
+        margin-bottom: 24px;
+        color: var(--text-color-light);
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+
+      .dark-mode .copilot-suggestion-content {
+        color: var(--text-color-dark);
+      }
+
+      .copilot-suggestion-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .copilot-suggestion-checkbox {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--text-color-light);
+        font-size: 0.9rem;
+        opacity: 0.8;
+        order: 2;
+      }
+
+      .dark-mode .copilot-suggestion-checkbox {
+        color: var(--text-color-dark);
+      }
+
+      .copilot-suggestion-checkbox input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        accent-color: var(--accent-color);
+      }
+
+      .copilot-suggestion-buttons {
+        display: flex;
+        gap: 12px;
+        order: 1;
+      }
+
+      .copilot-suggestion-button {
+        padding: 10px 16px;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        flex: 1;
+        font-weight: 500;
+      }
+
+      .copilot-suggestion-button.primary {
+        background: var(--accent-color);
+        color: white;
+      }
+
+      .copilot-suggestion-button.primary:hover {
+        background: var(--accent-color-hover);
+        transform: translateY(-1px);
+      }
+
+      .copilot-suggestion-button.secondary {
+        background: transparent;
+        color: var(--text-color-light);
+        border: 1px solid #e1e4e8;
+      }
+
+      .dark-mode .copilot-suggestion-button.secondary {
+        color: var(--text-color-dark);
+        border-color: #2d2d2d;
+      }
+
+      .copilot-suggestion-button.secondary:hover {
+        background: rgba(0, 0, 0, 0.05);
+        transform: translateY(-1px);
+      }
+
+      .dark-mode .copilot-suggestion-button.secondary:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      @media (max-width: 480px) {
+        .copilot-suggestion-modal {
+          padding: 24px;
+        }
+
+        .copilot-suggestion-content {
+          font-size: 0.95rem;
+          margin-bottom: 20px;
+        }
+
+        .copilot-suggestion-button {
+          padding: 8px 14px;
+          font-size: 0.9rem;
+        }
+      }
     </style>
     {% include head-custom.html %}
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6945602608405209" crossorigin="anonymous"></script>
   </head>
   <body>
     <div class="layout-wrapper">
+      <!-- Copilot Suggestion Modal Backdrop -->
+      <div class="copilot-suggestion-backdrop"></div>
+      <!-- Copilot Suggestion Modal -->
+      <div class="copilot-suggestion-modal" id="copilotSuggestionModal">
+        <div class="copilot-suggestion-content">
+          GitHub Copilot may work better with developer mode. Would you like to switch to GitHub Copilot?
+        </div>
+        <div class="copilot-suggestion-actions">
+          <div class="copilot-suggestion-buttons">
+            <button class="copilot-suggestion-button secondary" onclick="hideCopilotSuggestion(false)">No, thanks</button>
+            <button class="copilot-suggestion-button primary" onclick="hideCopilotSuggestion(true)">Switch to Copilot</button>
+          </div>
+          <label class="copilot-suggestion-checkbox">
+            <input type="checkbox" id="doNotShowAgain">
+            Don't show again
+          </label>
+        </div>
+      </div>
       <header class="site-header">
         <div class="header-left">
           <h1 class="site-title">prompts.chat</h1>
@@ -1104,6 +1335,13 @@
           </div>
         </div>
         <div class="header-right">
+          <div class="dev-mode-toggle">
+            <label class="switch">
+              <input type="checkbox" id="devModeToggle">
+              <span class="slider round"></span>
+            </label>
+            <span class="dev-mode-label">Dev Prompts</span>
+          </div>
           <a href="https://github.com/f/awesome-chatgpt-prompts/stargazers" target="_blank" class="star-count">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
@@ -1222,6 +1460,31 @@
 
       // Initialize everything after DOM loads
       document.addEventListener('DOMContentLoaded', () => {
+        // Initialize dev mode
+        const devModeToggle = document.getElementById('devModeToggle');
+        const isDevMode = localStorage.getItem('dev-mode') === 'true';
+        devModeToggle.checked = isDevMode;
+        
+        // Handle dev mode toggle
+        devModeToggle.addEventListener('change', (e) => {
+          const isDevMode = e.target.checked;
+          localStorage.setItem('dev-mode', isDevMode);
+          
+          // Check if we should show Copilot suggestion
+          if (isDevMode) {
+            const currentPlatform = document.querySelector('.platform-tag.active');
+            const shouldNotShow = localStorage.getItem('copilot-suggestion-hidden') === 'true';
+            
+            if (currentPlatform && 
+                currentPlatform.dataset.platform !== 'github-copilot' && 
+                !shouldNotShow) {
+              showCopilotSuggestion();
+            }
+          }
+          
+          filterPrompts();
+        });
+
         // Fetch GitHub stars
         fetch('https://api.github.com/repos/f/awesome-chatgpt-prompts')
           .then(response => response.json())
@@ -1275,24 +1538,29 @@
           const searchInput = document.getElementById('searchInput');
           const searchResults = document.getElementById('searchResults');
           const promptCount = document.getElementById('promptCount');
+          const isDevMode = document.getElementById('devModeToggle').checked;
           
           // Update prompt count
-          updatePromptCount(prompts.length, prompts.length);
+          const totalPrompts = isDevMode ? prompts.filter(p => p.for_devs === true).length : prompts.length;
+          updatePromptCount(totalPrompts, totalPrompts);
           
-          // Show all prompts initially
-          displaySearchResults(prompts);
+          // Show filtered prompts initially
+          const filteredPrompts = isDevMode ? prompts.filter(p => p.for_devs === true) : prompts;
+          displaySearchResults(filteredPrompts);
           
           searchInput.addEventListener('input', (e) => {
             const searchTerm = e.target.value.toLowerCase();
-            const filteredPrompts = searchTerm 
-              ? prompts.filter(prompt => 
-                  prompt.act.toLowerCase().includes(searchTerm) || 
-                  prompt.prompt.toLowerCase().includes(searchTerm)
-                )
-              : prompts;
+            
+            const filteredPrompts = prompts.filter(prompt => {
+              const matchesSearch = prompt.act.toLowerCase().includes(searchTerm) || 
+                prompt.prompt.toLowerCase().includes(searchTerm);
+              
+              return isDevMode ? (matchesSearch && prompt.for_devs === true) : matchesSearch;
+            });
             
             // Update count with filtered results
-            updatePromptCount(filteredPrompts.length, prompts.length);
+            const totalPrompts = isDevMode ? prompts.filter(p => p.for_devs === true).length : prompts.length;
+            updatePromptCount(filteredPrompts.length, totalPrompts);
             displaySearchResults(filteredPrompts);
           });
         } catch (error) {
@@ -1330,6 +1598,10 @@
             if (header === 'act') {
               value = value.replace(/`/g, '');
             }
+            // Convert 'TRUE'/'FALSE' strings to boolean for for_devs
+            if (header === 'for_devs') {
+              value = value.toUpperCase() === 'TRUE';
+            }
             entry[header] = value;
           });
           
@@ -1340,6 +1612,13 @@
       function displaySearchResults(results) {
         const searchResults = document.getElementById('searchResults');
         const searchInput = document.getElementById('searchInput');
+        const isDevMode = document.getElementById('devModeToggle').checked;
+        
+        // Filter results based on dev mode
+        if (isDevMode) {
+          results = results.filter(result => result.for_devs === true);
+        }
+        
         searchResults.innerHTML = '';
         
         if (window.innerWidth <= 768 && !searchInput.value.trim()) {
@@ -1439,6 +1718,50 @@
         });
       }
 
+      // Function to filter prompts based on dev mode
+      function filterPrompts() {
+        const isDevMode = document.getElementById('devModeToggle').checked;
+        const searchInput = document.getElementById('searchInput');
+        const searchTerm = searchInput.value.toLowerCase();
+        
+        // Re-fetch and filter prompts
+        fetch('/prompts.csv')
+          .then(response => response.text())
+          .then(csvText => {
+            const prompts = parseCSV(csvText);
+            const filteredPrompts = prompts.filter(prompt => {
+              const matchesSearch = !searchTerm || 
+                prompt.act.toLowerCase().includes(searchTerm) || 
+                prompt.prompt.toLowerCase().includes(searchTerm);
+              
+              return isDevMode ? (matchesSearch && prompt.for_devs === true) : matchesSearch;
+            });
+            
+            // Update count with filtered results
+            updatePromptCount(filteredPrompts.length, isDevMode ? prompts.filter(p => p.for_devs === true).length : prompts.length);
+            displaySearchResults(filteredPrompts);
+            
+            // Update prompt cards visibility
+            const promptsGrid = document.querySelector('.prompts-grid');
+            if (promptsGrid) {
+              const cards = promptsGrid.querySelectorAll('.prompt-card:not(.contribute-card)');
+              cards.forEach(card => {
+                const title = card.querySelector('.prompt-title').textContent.trim();
+                const matchingPrompt = prompts.find(p => {
+                  const pTitle = p.act.replace(/\s+/g, ' ').replace(/[\n\r]/g, '').trim();
+                  const cardTitle = title.replace(/\s+/g, ' ').replace(/[\n\r]/g, '').trim();
+                  return pTitle.toLowerCase() === cardTitle.toLowerCase() ||
+                         pTitle.toLowerCase().includes(cardTitle.toLowerCase()) ||
+                         cardTitle.toLowerCase().includes(pTitle.toLowerCase());
+                });
+                
+                // Show card if not in dev mode or if it's a dev prompt in dev mode
+                card.style.display = (!isDevMode || (matchingPrompt && matchingPrompt.for_devs === true)) ? '' : 'none';
+              });
+            }
+          });
+      }
+
       // Update the modal initialization and event listeners
       function createPromptCards() {
         const container = document.querySelector('.container-lg.markdown-body');
@@ -1465,105 +1788,130 @@
           </a>
         `;
         promptsGrid.appendChild(contributeCard);
-        
-        const promptElements = document.querySelectorAll('h2[id^=act] + p + blockquote');
-        
-        promptElements.forEach((blockquote) => {
-          const title = blockquote.previousElementSibling.previousElementSibling.textContent.trim();
-          const content = blockquote.textContent.trim();
-          
-          // Extract contributor from the paragraph element
-          const contributorParagraph = blockquote.previousElementSibling;
-          const contributorText = contributorParagraph.textContent;
-          let contributor = null;
-          
-          // Try different contributor formats
-          const formats = [
-            /Contributed by: \[([^\]]+)\]/i,
-            /Contributed by \[([^\]]+)\]/i,
-            /Contributed by: @([^\s]+)/i,
-            /Contributed by @([^\s]+)/i,
-            /Contributed by: \[@([^\]]+)\]/i,
-            /Contributed by \[@([^\]]+)\]/i
-          ];
-          
-          for (const format of formats) {
-            const match = contributorText.match(format);
-            if (match) {
-              contributor = match[1];
-              // Remove @ if it exists at the start
-              contributor = contributor.replace(/^@/, '');
-              break;
-            }
-          }
-          
-          // Set default contributor to 'f' if none found
-          if (!contributor) {
-            contributor = 'f';
-          }
-          
-          const card = document.createElement('div');
-          card.className = 'prompt-card';
-          
-          card.innerHTML = `
-            <div class="prompt-title">
-              ${title}
-              <div class="action-buttons">
-                <button class="chat-button" title="Open in AI Chat" onclick="openInChat(this, '${encodeURIComponent(content.trim())}')">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                  </svg>
-                </button>
-                <button class="copy-button" title="Copy prompt" onclick="copyPrompt(this, '${encodeURIComponent(content.trim())}')">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
-                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <p class="prompt-content">${content}</p>
-            <a href="https://github.com/${contributor}" class="contributor-badge" target="_blank" rel="noopener">@${contributor}</a>
-          `;
-          
-          // Add click event for showing modal
-          card.addEventListener('click', (e) => {
-            if (!e.target.closest('.copy-button') && !e.target.closest('.contributor-badge')) {
-              showModal(title, content);
-            }
-          });
-          
-          const copyButton = card.querySelector('.copy-button');
-          copyButton.addEventListener('click', async (e) => {
-            e.stopPropagation();
-            try {
-              await navigator.clipboard.writeText(content);
-              copyButton.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              `;
-              setTimeout(() => {
-                copyButton.innerHTML = `
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                  </svg>
-                `;
-              }, 2000);
-            } catch (err) {
-              alert('Failed to copy prompt to clipboard');
-            }
-          });
-          
-          promptsGrid.appendChild(card);
-        });
-        
-        container.innerHTML = '';
-        container.appendChild(promptsGrid);
 
-        // Initialize modal event listeners
-        initializeModalListeners();
+        // Fetch prompts.csv to get for_devs information
+        fetch('/prompts.csv')
+          .then(response => response.text())
+          .then(csvText => {
+            const prompts = parseCSV(csvText);
+            const isDevMode = document.getElementById('devModeToggle').checked;
+            
+            const promptElements = document.querySelectorAll('h2[id^=act] + p + blockquote');
+            
+            promptElements.forEach((blockquote) => {
+              const title = blockquote.previousElementSibling.previousElementSibling.textContent.trim();
+              const content = blockquote.textContent.trim();
+              
+              // Find matching prompt in CSV
+              const matchingPrompt = prompts.find(p => {
+                const csvTitle = p.act.replace(/\s+/g, ' ').replace(/[\n\r]/g, '').trim();
+                const elementTitle = title.replace(/\s+/g, ' ').replace(/[\n\r]/g, '').trim();
+                return csvTitle.toLowerCase() === elementTitle.toLowerCase() ||
+                       csvTitle.toLowerCase().includes(elementTitle.toLowerCase()) ||
+                       elementTitle.toLowerCase().includes(csvTitle.toLowerCase());
+              });
+              
+              // Extract contributor from the paragraph element
+              const contributorParagraph = blockquote.previousElementSibling;
+              const contributorText = contributorParagraph.textContent;
+              let contributor = null;
+              
+              // Try different contributor formats
+              const formats = [
+                /Contributed by: \[([^\]]+)\]/i,
+                /Contributed by \[([^\]]+)\]/i,
+                /Contributed by: @([^\s]+)/i,
+                /Contributed by @([^\s]+)/i,
+                /Contributed by: \[@([^\]]+)\]/i,
+                /Contributed by \[@([^\]]+)\]/i
+              ];
+              
+              for (const format of formats) {
+                const match = contributorText.match(format);
+                if (match) {
+                  contributor = match[1];
+                  // Remove @ if it exists at the start
+                  contributor = contributor.replace(/^@/, '');
+                  break;
+                }
+              }
+              
+              // Set default contributor to 'f' if none found
+              if (!contributor) {
+                contributor = 'f';
+              }
+              
+              const card = document.createElement('div');
+              card.className = 'prompt-card';
+              
+              // Set initial visibility based on dev mode
+              if (isDevMode && (!matchingPrompt || !matchingPrompt.for_devs)) {
+                card.style.display = 'none';
+              }
+              
+              card.innerHTML = `
+                <div class="prompt-title">
+                  ${title}
+                  <div class="action-buttons">
+                    <button class="chat-button" title="Open in AI Chat" onclick="openInChat(this, '${encodeURIComponent(content.trim())}')">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                      </svg>
+                    </button>
+                    <button class="copy-button" title="Copy prompt" onclick="copyPrompt(this, '${encodeURIComponent(content.trim())}')">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                        <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <p class="prompt-content">${content}</p>
+                <a href="https://github.com/${contributor}" class="contributor-badge" target="_blank" rel="noopener">@${contributor}</a>
+              `;
+              
+              // Add click event for showing modal
+              card.addEventListener('click', (e) => {
+                if (!e.target.closest('.copy-button') && !e.target.closest('.contributor-badge')) {
+                  showModal(title, content);
+                }
+              });
+              
+              const copyButton = card.querySelector('.copy-button');
+              copyButton.addEventListener('click', async (e) => {
+                e.stopPropagation();
+                try {
+                  await navigator.clipboard.writeText(content);
+                  copyButton.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  `;
+                  setTimeout(() => {
+                    copyButton.innerHTML = `
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    `;
+                  }, 2000);
+                } catch (err) {
+                  alert('Failed to copy prompt to clipboard');
+                }
+              });
+              
+              promptsGrid.appendChild(card);
+            });
+            
+            container.innerHTML = '';
+            container.appendChild(promptsGrid);
+
+            // Initialize modal event listeners
+            initializeModalListeners();
+          })
+          .catch(error => {
+            console.error('Error loading prompts:', error);
+          });
       }
 
       function initializeModalListeners() {
@@ -1785,7 +2133,7 @@
         try {
           await navigator.clipboard.writeText(promptText);
           const originalHTML = button.innerHTML;
-          button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+          button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17 4 12"/></svg>';
           setTimeout(() => {
             button.innerHTML = originalHTML;
           }, 1000);
@@ -1800,6 +2148,47 @@
         if (modalContent) {
           const content = modalContent.textContent;
           openInChat(null, encodeURIComponent(content.trim()));
+        }
+      }
+
+      // Add these functions before the closing script tag
+      function showCopilotSuggestion() {
+        const modal = document.getElementById('copilotSuggestionModal');
+        const backdrop = document.querySelector('.copilot-suggestion-backdrop');
+        if (modal) {
+          if (!backdrop) {
+            const backdropDiv = document.createElement('div');
+            backdropDiv.className = 'copilot-suggestion-backdrop';
+            document.body.appendChild(backdropDiv);
+          }
+          modal.style.display = 'block';
+          backdrop.style.display = 'block';
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      function hideCopilotSuggestion(switchToCopilot) {
+        const modal = document.getElementById('copilotSuggestionModal');
+        const backdrop = document.querySelector('.copilot-suggestion-backdrop');
+        const doNotShowCheckbox = document.getElementById('doNotShowAgain');
+        
+        if (doNotShowCheckbox && doNotShowCheckbox.checked) {
+          localStorage.setItem('copilot-suggestion-hidden', 'true');
+        }
+        
+        if (switchToCopilot) {
+          const copilotButton = document.querySelector('[data-platform="github-copilot"]');
+          if (copilotButton) {
+            copilotButton.click();
+          }
+        }
+        
+        if (modal) {
+          modal.style.display = 'none';
+          if (backdrop) {
+            backdrop.style.display = 'none';
+          }
+          document.body.style.overflow = '';
         }
       }
     </script>
