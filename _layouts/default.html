@@ -1462,16 +1462,22 @@
       document.addEventListener('DOMContentLoaded', () => {
         // Initialize dev mode
         const devModeToggle = document.getElementById('devModeToggle');
-        const isDevMode = localStorage.getItem('dev-mode') === 'true';
-        devModeToggle.checked = isDevMode;
+        const initialDevMode = localStorage.getItem('dev-mode') === 'true';
+        devModeToggle.checked = initialDevMode;
+        
+        // Initialize chat button icons
+        updateChatButtonIcons(initialDevMode);
         
         // Handle dev mode toggle
         devModeToggle.addEventListener('change', (e) => {
-          const isDevMode = e.target.checked;
-          localStorage.setItem('dev-mode', isDevMode);
+          const newDevMode = e.target.checked;
+          localStorage.setItem('dev-mode', newDevMode);
+          
+          // Update chat button icons
+          updateChatButtonIcons(newDevMode);
           
           // Check if we should show Copilot suggestion
-          if (isDevMode) {
+          if (newDevMode) {
             const currentPlatform = document.querySelector('.platform-tag.active');
             const shouldNotShow = localStorage.getItem('copilot-suggestion-hidden') === 'true';
             
@@ -1523,6 +1529,10 @@
         
         // Initialize search functionality
         initializeSearch();
+
+        // Initialize chat button icons on page load
+        const isDevMode = localStorage.getItem('dev-mode') === 'true';
+        updateChatButtonIcons(isDevMode);
       });
 
       // Search functionality
@@ -1854,8 +1864,12 @@
                   ${title}
                   <div class="action-buttons">
                     <button class="chat-button" title="Open in AI Chat" onclick="openInChat(this, '${encodeURIComponent(content.trim())}')">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <svg class="chat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                      </svg>
+                      <svg class="terminal-icon" style="display: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="4 17 10 11 4 5"></polyline>
+                        <line x1="12" y1="19" x2="20" y2="19"></line>
                       </svg>
                     </button>
                     <button class="copy-button" title="Copy prompt" onclick="copyPrompt(this, '${encodeURIComponent(content.trim())}')">
@@ -1963,8 +1977,12 @@
                 </div>
                 <div class="modal-footer-right">
                   <button class="modal-chat-button" onclick="openModalChat()">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="chat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <svg class="terminal-icon" style="display: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="4 17 10 11 4 5"></polyline>
+                      <line x1="12" y1="19" x2="20" y2="19"></line>
                     </svg>
                     Start Chat
                   </button>
@@ -1997,14 +2015,28 @@
 
         // Update chat button text with platform name and handle visibility
         const platform = document.querySelector('.platform-tag.active');
+        const isDevMode = document.getElementById('devModeToggle').checked;
+        
         if (platform) {
           const shouldHideChat = ['gemini', 'llama'].includes(platform.dataset.platform);
           modalChatButton.style.display = shouldHideChat ? 'none' : 'flex';
           
           if (!shouldHideChat) {
+            const chatIcon = modalChatButton.querySelector('.chat-icon');
+            const terminalIcon = modalChatButton.querySelector('.terminal-icon');
+            
+            if (chatIcon && terminalIcon) {
+              chatIcon.style.display = isDevMode ? 'none' : 'block';
+              terminalIcon.style.display = isDevMode ? 'block' : 'none';
+            }
+            
             modalChatButton.innerHTML = `
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="chat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: ${isDevMode ? 'none' : 'block'}">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+              <svg class="terminal-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: ${isDevMode ? 'block' : 'none'}">
+                <polyline points="4 17 10 11 4 5"></polyline>
+                <line x1="12" y1="19" x2="20" y2="19"></line>
               </svg>
               Chat with ${platform.textContent}
             `;
@@ -2190,6 +2222,18 @@
           }
           document.body.style.overflow = '';
         }
+      }
+
+      // Function to update chat button icons based on dev mode
+      function updateChatButtonIcons(isDevMode) {
+        document.querySelectorAll('.chat-button, .modal-chat-button').forEach(button => {
+          const chatIcon = button.querySelector('.chat-icon');
+          const terminalIcon = button.querySelector('.terminal-icon');
+          if (chatIcon && terminalIcon) {
+            chatIcon.style.display = isDevMode ? 'none' : 'block';
+            terminalIcon.style.display = isDevMode ? 'block' : 'none';
+          }
+        });
       }
     </script>
     <style>video { max-width: 100% !important; }</style>
