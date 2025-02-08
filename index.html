@@ -28,9 +28,10 @@
         --bg-color-dark: #1a1a1a;
         --text-color-light: #000000;
         --text-color-dark: #ffffff;
-        --sidebar-width: 300px;
         --accent-color: #10b981;
         --accent-color-hover: #059669;
+        --sidebar-width: 300px;
+        --footer-height: 152.13px;
       }
 
       body {
@@ -151,11 +152,15 @@
         text-align: center;
         border-top: 1px solid #e1e4e8;
         background: var(--bg-color-light);
-        position: fixed;
+        position: sticky;
         bottom: 0;
-        left: 0;
-        right: 0;
         z-index: 100;
+        content-visibility: auto;
+      }
+
+      .site-footer.closed {
+        height: 0;
+        padding: 0px 20px;
       }
 
       .dark-mode .site-footer {
@@ -214,9 +219,9 @@
       }
 
       /* Add padding to main content to prevent overlap with fixed footer */
-      .layout-wrapper {
+      /* .layout-wrapper {
         padding-bottom: 100px;
-      }
+      } */
 
       @media (max-width: 768px) {
         .footer-content {
@@ -238,10 +243,10 @@
           align-items: flex-start;
         }
 
-        .site-footer {
+         .site-footer {
           position: static;
           text-align: left;
-        }
+        } 
 
         .layout-wrapper {
           padding-bottom: 0;
@@ -478,7 +483,6 @@
         gap: 8px;
         align-items: center;
       }
-
       .chat-button {
         background: transparent;
         border: none;
@@ -507,17 +511,46 @@
       }
 
       .content-wrapper {
+        position: relative;
         display: flex;
+        padding-left: var(--sidebar-width);
+        /* padding-bottom: var(--footer-height); */
+        flex-direction: column;
         flex: 1;
+        transition: padding 0.2s ease;
       }
+
+      .content-wrapper.closed-sidebar {
+        padding-left: 150px;
+        padding-right: 150px;
+      }
+
+      /* .content-wrapper.closed-footer {
+        padding-bottom: var(--footer-height);
+      } */
 
       .sidebar {
         width: var(--sidebar-width);
+        position: absolute;
+        left: 0;
         padding: 20px;
         border-right: 1px solid #e1e4e8;
-        height: calc(100vh - 140px);
+        height: calc(100vh - var(--header-height));
         overflow-y: auto;
         background-color: var(--bg-color-light);
+        transition: transform 0.2s ease, flex-basis 0.2s ease;
+        flex-basis: auto;
+      }
+
+      .sidebar-sticky {
+        top: var(--header-height);
+        height: calc(100vh - var(--header-height));
+        position: sticky;
+        z-index: 100;
+      }
+
+      .sidebar.closed {
+        transform: translateX(-300px);
       }
 
       .dark-mode .sidebar {
@@ -527,7 +560,6 @@
 
       .main-content {
         flex: 1;
-        height: calc(100vh - 140px);
         overflow-y: auto;
         padding: 20px;
       }
@@ -635,6 +667,60 @@
         opacity: 1;
       }
 
+      .layout-buttons {
+        display: flex;
+        justify-content: center;
+      }
+
+      #closeSidebar {
+        background: transparent;
+        color: var(--accent-color);
+        cursor: pointer;
+        padding: 0;
+        opacity: 0.8;
+        transition: all 0.2s ease;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        rotate: 90deg;
+
+        svg {
+          width: 24px;
+          height: 24px;
+        }
+
+        &:hover {
+        opacity: 1;
+      }
+      }
+
+      #closeFooter {
+        background: transparent;
+        color: var(--accent-color);
+        cursor: pointer;
+        opacity: 0.8;
+        transition: all 0.2s ease;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translateY(-0.6px);
+        svg {
+          width: 24px;
+          height: 24px;
+          margin-bottom: 2px;
+        }
+
+        &:hover {
+        opacity: 1;
+      }
+      }
+
+      .hidden {
+        display: none;
+      }
+
       .copy-button svg {
         width: 16px;
         height: 16px;
@@ -722,10 +808,16 @@
       @media (max-width: 768px) {
         .content-wrapper {
           flex-direction: column;
+          padding-left: 0;
+          padding-right: 0;
+        }
+
+        .sidebar-sticky {
+          display: none;
         }
 
         .sidebar {
-          width: 100%;
+           width: 100%;
           height: auto;
           border-right: none;
           border-bottom: 1px solid #e1e4e8;
@@ -739,8 +831,21 @@
           height: auto;
         }
 
+        .site-header {
+          --site-header-height: 120px;
+          height: var(--site-header-height);
+        }
+
         .header-right {
           gap: 8px;
+        }
+
+        .header-left {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          gap: 1px;
         }
 
         .mode-text {
@@ -802,7 +907,7 @@
 
       .modal-title {
         font-size: 1.4rem;
-        font-weight: 600;
+        font-weight: 60;
         margin: 0;
         padding-right: 80px;
         color: var(--text-color-light);
@@ -1395,10 +1500,11 @@
           </label>
         </div>
       </div>
-      <header class="site-header">
+<main>
+   <header class="site-header">
         <div class="header-left">
-          <h1 class="site-title">prompts.chat</h1>
-          <p class="site-slogan">World's First & Most Famous Prompts Directory</p>
+            <h1 class="site-title">prompts.chat</h1>
+            <p class="site-slogan">World's First & Most Famous Prompts Directory</p>
           <div class="site-description">
             <p class="platform-hint">Choose your AI platform</p>
             <div class="platform-pills">
@@ -1430,11 +1536,36 @@
             <svg class="mode-icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
             <svg class="mode-icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
           </button>
+      <div class="layout-buttons flex space-x-4">
+  <button id="closeSidebar">
+    <svg class="collapsed-sider-icon hidden" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <title>collapsed</title>
+      <path d="M5 8.69231L5 27.3077C5 27.7565 5.21071 28.187 5.58579 28.5043C5.96086 28.8217 6.46957 29 7 29L25 29C25.5304 29 26.0391 28.8217 26.4142 28.5043C26.7893 28.187 27 27.7565 27 27.3077L27 8.69231C27 8.24348 26.7893 7.81304 26.4142 7.49567C26.0391 7.1783 25.5304 7 25 7L7 7C6.46957 7 5.96086 7.1783 5.58579 7.49567C5.21071 7.81304 5 8.24348 5 8.69231ZM7 27.3077L7 23.0769L25 23.0769L25 27.3077L7 27.3077ZM25 8.69231L25 21.3846L7 21.3846L7 8.69231L25 8.69231Z" fill="currentColor"/>
+    </svg>
+    <svg class="expanded-sider-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <title>expanded</title>
+      <path d="M5 8.69231L5 27.3077C5 27.7565 5.21071 28.187 5.58579 28.5043C5.96086 28.8217 6.46957 29 7 29L25 29C25.5304 29 26.0391 28.8217 26.4142 28.5043C26.7893 28.187 27 27.7565 27 27.3077L27 8.69231C27 8.24348 26.7893 7.81304 26.4142 7.49567C26.0391 7.1783 25.5304 7 25 7L7 7C6.46957 7 5.96086 7.1783 5.58579 7.49567C5.21071 7.81304 5 8.24348 5 8.69231ZM25 8.69231L25 22.2308L7 22.2308L7 8.69231L25 8.69231Z" fill="currentColor"/>
+    </svg>
+  </button>
+
+  <button id="closeFooter">
+    <svg class="collapsed-footer-icon hidden" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 8.69231L5 27.3077C5 27.7565 5.21071 28.187 5.58579 28.5043C5.96086 28.8217 6.46957 29 7 29L25 29C25.5304 29 26.0391 28.8217 26.4142 28.5043C26.7893 28.187 27 27.7565 27 27.3077L27 8.69231C27 8.24348 26.7893 7.81304 26.4142 7.49567C26.0391 7.1783 25.5304 7 25 7L7 7C6.46957 7 5.96086 7.1783 5.58579 7.49567C5.21071 7.81304 5 8.24348 5 8.69231ZM7 27.3077L7 23.0769L25 23.0769L25 27.3077L7 27.3077ZM25 8.69231L25 21.3846L7 21.3846L7 8.69231L25 8.69231Z" fill="currentColor"/>
+    </svg>
+
+    <svg class="expanded-footer-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 8.69231L5 27.3077C5 27.7565 5.21071 28.187 5.58579 28.5043C5.96086 28.8217 6.46957 29 7 29L25 29C25.5304 29 26.0391 28.8217 26.4142 28.5043C26.7893 28.187 27 27.7565 27 27.3077L27 8.69231C27 8.24348 26.7893 7.81304 26.4142 7.49567C26.0391 7.1783 25.5304 7 25 7L7 7C6.46957 7 5.96086 7.1783 5.58579 7.49567C5.21071 7.81304 5 8.24348 5 8.69231ZM25 8.69231L25 22.2308L7 22.2308L7 8.69231L25 8.69231Z" fill="currentColor"/>
+    </svg>
+  </button>
+</div>
         </div>
       </header>
 
-      <div class="content-wrapper">
-        <div class="sidebar">
+
+      <div style="display: flex;">
+<div class="sidebar-sticky">
+
+              <aside class="sidebar">
           <div class="search-container">
             <div class="prompt-count" id="promptCount">
               <span class="count-label">All Prompts</span>
@@ -1444,7 +1575,9 @@
             <input type="text" id="searchInput" placeholder="Search prompts...">
             <ul id="searchResults"></ul>
           </div>
-        </div>
+        </aside>
+</div>
+        <div class="content-wrapper" >
         <div class="main-content">
           <div class="container-lg markdown-body">
       <p align="center">
@@ -4558,8 +4691,7 @@ issues and high performance of application in low or no network as well.</p>
       
           </div>
         </div>
-      </div>
-      <footer class="site-footer">
+              <footer class="site-footer">
         <div class="footer-content">
           <div class="footer-section">
             <h3>About</h3>
@@ -4622,6 +4754,12 @@ issues and high performance of application in low or no network as well.</p>
           </div>
         </div>
       </footer>
+      </div>
+      </div>
+
+
+</main>
+
     </div>
     <script src="script.js"></script>
     <style>video { max-width: 100% !important; }</style>

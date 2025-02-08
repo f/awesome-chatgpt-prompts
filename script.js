@@ -13,6 +13,17 @@ function toggleDarkMode() {
   moonIcon.style.display = isDarkMode ? "block" : "none";
 }
 
+function updateHeaderHeight() {
+  const siteHeader = document.querySelector('.site-header');
+  if (!siteHeader) return; // Eğer element yoksa hata vermemesi için
+
+  const root = document.documentElement;
+  root.style.setProperty('--header-height', `${siteHeader.offsetHeight}px`);
+}
+
+window.addEventListener('load', updateHeaderHeight);
+window.addEventListener('resize', updateHeaderHeight);
+
 // Initialize everything after DOM loads
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize dev mode
@@ -20,6 +31,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const initialDevMode = localStorage.getItem("dev-mode") === "true";
   devModeToggle.checked = initialDevMode;
 
+  // Initialize sidebar toggle
+  const sidebar = document.querySelector('.sidebar');
+  const footer = document.querySelector('.site-footer');
+  const contentWrapper = document.querySelector('.content-wrapper');
+  const collapsedSiderIcon = document.querySelector('.collapsed-sider-icon');
+  const expandedSiderIcon = document.querySelector('.expanded-sider-icon');
+  const closeSidebar = document.getElementById('closeSidebar');
+  const closeFooter = document.getElementById('closeFooter');
+  const collapsedFooterIcon = document.querySelector('.collapsed-footer-icon');
+  const expandedFooterIcon = document.querySelector('.expanded-footer-icon');
+
+  closeSidebar.addEventListener('click', () => {
+    contentWrapper.classList.toggle('closed-sidebar');
+    sidebar.classList.toggle('closed');
+    collapsedSiderIcon.classList.toggle('hidden');
+    expandedSiderIcon.classList.toggle('hidden');
+  });
+
+closeFooter.addEventListener('click', () => {
+  contentWrapper.classList.toggle('closed-footer');
+  footer.classList.toggle('closed');
+  collapsedFooterIcon.classList.toggle('hidden');
+  expandedFooterIcon.classList.toggle('hidden');
+});
   // Initialize chat button icons
   updateChatButtonIcons(initialDevMode);
 
@@ -60,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch((error) => {
       console.error("Error fetching star count:", error);
-      document.getElementById("starCount").textContent = "50k+";
+      document.getElementById("starCount").textContent = "120k+";
     });
 
   // Create prompt cards
