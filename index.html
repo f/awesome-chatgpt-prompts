@@ -804,6 +804,16 @@
         background-color: var(--accent-color);
         color: white;
       }
+     
+
+      @media (min-width: 400px) and (max-width: 1920px) {
+      .content-wrapper.closed-sidebar {
+        padding-left: 0px;
+        padding-right: 0px;
+      }
+
+        
+      }
 
       @media (max-width: 768px) {
         .content-wrapper {
@@ -813,7 +823,22 @@
         }
 
         .sidebar-sticky {
+          position: absolute;
+          top: 50px;
+          left: 0;
+          width: 100%;
+          transition: transform 0.2s ease;
+          background: #00000050;
+          backdrop-filter: blur(4px);
+          height: 100%;
+        }
+
+        #closeFooter {
           display: none;
+        }
+        
+        .sidebar-sticky.closed {
+          transform: translateX(-600px);
         }
 
         .sidebar {
@@ -823,6 +848,10 @@
           border-bottom: 1px solid #e1e4e8;
         }
 
+              .sidebar.closed {
+        transform: translateX(-600px);
+      }
+
         .dark-mode .sidebar {
           border-bottom-color: #2d2d2d;
         }
@@ -831,8 +860,8 @@
           height: auto;
         }
 
+
         .site-header {
-          --site-header-height: 120px;
           height: var(--site-header-height);
         }
 
@@ -1567,10 +1596,10 @@
 
               <aside class="sidebar">
           <div class="search-container">
-            <div class="prompt-count" id="promptCount">
-              <span class="count-label">All Prompts</span>
-              <span class="prompts-count-label">Developer Prompts</span>
-              <span class="count-number">0</span>
+              <div class="prompt-count" id="promptCount">
+                <span class="count-label">All Prompts</span>
+                <span class="prompts-count-label">Developer Prompts</span>
+                <span class="count-number">0</span>
             </div>
             <input type="text" id="searchInput" placeholder="Search prompts...">
             <ul id="searchResults"></ul>
