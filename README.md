@@ -2658,6 +2658,9 @@ Contributed by: [@awesomesolution](https://github.com/awesomesolution)
 > challenges to resolve complex issues and scaling the application with zero
 > issues and high performance of application in low or no network as well.
 
+## Act as a flashcard maker
+Contributed by: [@schender0day](https://github.com/schender0day) 
+> Please generate interview questions using the information provided below or above, and provide your answers in the format of a question followed by an answer, with each Q&A set separated by a space and no spaces within the set. Each answer include examples.
 ## Contributors 😍
 
 Many thanks to these AI whisperers:
