@@ -2658,6 +2658,9 @@ Contributed by: [@awesomesolution](https://github.com/awesomesolution)
 > challenges to resolve complex issues and scaling the application with zero
 > issues and high performance of application in low or no network as well.
 
+Prompt: I want to examine whether a topic is 'A' and 'B' using a 2x2 matrix. The X-axis is labeled 'A' (having two values 'low' and 'high') and Y-axis is labeled 'B' (Having two values 'low' and 'high'). Draw a 2X2 matrix and name each quadrant uniquely.
+
+Follow up: Give a unique relevant name to each quadrant
 ## Contributors 😍
 
 Many thanks to these AI whisperers:
