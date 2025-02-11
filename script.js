@@ -13,6 +13,95 @@ function toggleDarkMode() {
   moonIcon.style.display = isDarkMode ? "block" : "none";
 }
 
+// Add these new functions at the top
+function extractVariables(text) {
+  const regex = /\${([^}]+)}/g;
+  const variables = [];
+  let match;
+  
+  while ((match = regex.exec(text)) !== null) {
+    const [variable, defaultValue] = match[1].split(':').map(s => s.trim());
+    variables.push({ name: variable, default: defaultValue || '' });
+  }
+  
+  return [...new Set(variables.map(v => JSON.stringify(v)))].map(v => JSON.parse(v));  // Remove duplicates
+}
+
+function createVariableInputs(variables, container) {
+  const form = document.createElement('div');
+  form.className = 'variable-form';
+  
+  variables.forEach(variable => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'variable-input-wrapper';
+    
+    const label = document.createElement('label');
+    label.textContent = variable.name;
+    label.style.fontWeight = '600';
+    
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.className = 'variable-input';
+    input.placeholder = variable.default || `Enter ${variable.name}`;
+    input.dataset.variable = variable.name;
+    input.dataset.default = variable.default || '';
+    
+    wrapper.appendChild(label);
+    wrapper.appendChild(input);
+    form.appendChild(wrapper);
+  });
+  
+  container.appendChild(form);
+  return form;
+}
+// Function to update the prompt preview with user input
+function updatePromptPreview(promptText, form) {
+  let previewText = promptText;
+  const inputs = form.querySelectorAll('.variable-input');
+  
+  inputs.forEach(input => {
+    const value = input.value.trim();
+    const variable = input.dataset.variable;
+    const defaultValue = input.dataset.default;
+    const pattern = new RegExp(`\\$\{${variable}[^}]*\}`, 'g');
+    let replacement;
+    if (value) {
+      // User entered value
+      replacement = value;
+    } else if (defaultValue) {
+      // Show default value with highlight
+      replacement = defaultValue;
+    } else {
+      // No value or default, show variable name
+      replacement = variable;
+    }
+    replacement = `<b>${replacement}</b>`;
+    
+    previewText = previewText.replace(pattern,replacement);
+  });
+  
+  return previewText;
+}
+
+function updatedContent(promptText) {
+  // Check if content has variables
+  const variables = extractVariables(promptText);
+  
+  if (variables.length === 0) {
+    return promptText; // Return original text if no variables found
+  }
+  
+  // Replace variables with their default values if they exist
+  let updatedText = promptText;
+  variables.forEach(variable => {
+    const pattern = new RegExp(`\\$\{${variable.name}[^}]*\}`, 'g');
+    const replacement = variable.default || `<b>${variable.name}</b>`;
+    updatedText = updatedText.replace(pattern, replacement);
+  });
+  
+  return updatedText;
+}
+
 // Initialize everything after DOM loads
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize dev mode
@@ -458,7 +547,7 @@ function createPromptCards() {
             ${title}
             <div class="action-buttons">
             <button class="chat-button" title="Open in AI Chat" onclick="openInChat(this, '${
-          encodeURIComponent(content.trim())
+          encodeURIComponent(updatedContent(content.trim()))
         }')">
                 <svg class="chat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
@@ -469,7 +558,7 @@ function createPromptCards() {
                 </svg>
             </button>
             <button class="copy-button" title="Copy prompt" onclick="copyPrompt(this, '${
-          encodeURIComponent(content.trim())
+          encodeURIComponent(updatedContent(content.trim()))
         }')">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
@@ -478,7 +567,7 @@ function createPromptCards() {
             </button>
             </div>
         </div>
-        <p class="prompt-content">${content}</p>
+        <p class="prompt-content">${updatedContent(content)}</p>
         <a href="https://github.com/${contributor}" class="contributor-badge" target="_blank" rel="noopener">@${contributor}</a>
         `;
 
@@ -496,7 +585,7 @@ function createPromptCards() {
         copyButton.addEventListener("click", async (e) => {
           e.stopPropagation();
           try {
-            await navigator.clipboard.writeText(content);
+            await navigator.clipboard.writeText(updatedContent(content));
             copyButton.innerHTML = `
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
@@ -596,6 +685,7 @@ function createModal() {
   initializeModalListeners();
 }
 
+// Modify the existing showModal function
 function showModal(title, content) {
   let modalOverlay = document.getElementById("modalOverlay");
   if (!modalOverlay) {
@@ -605,14 +695,47 @@ function showModal(title, content) {
 
   const modalTitle = modalOverlay.querySelector(".modal-title");
   const modalContent = modalOverlay.querySelector(".modal-content");
+  
+  // Extract variables from content
+  const variables = extractVariables(content);
+  
+  // Create variable inputs container if variables exist
+  if (variables.length > 0) {
+    const variableContainer = document.createElement('div');
+    variableContainer.className = 'variable-container';
+    
+    const form = createVariableInputs(variables, variableContainer);
+    
+  // Initialize the modal content with updated prompt preview if variables exist
+    const previewText = updatePromptPreview(content, form);
+    modalContent.innerHTML = previewText;
+
+    // Add event listeners for real-time updates
+    form.addEventListener('input', () => {
+      const previewText = updatePromptPreview(content, form);
+      modalContent.innerHTML = previewText;
+      
+      // Update chat button data
+      const modalChatButton = modalOverlay.querySelector(".modal-chat-button");
+      if (modalChatButton) {
+        modalChatButton.dataset.content = previewText;
+      }
+    });
+    
+    // Insert variable container before content
+    modalContent.parentElement.insertBefore(variableContainer, modalContent);
+  }else{
+    modalTitle.textContent = title;
+    modalContent.textContent = content;
+  }
+
   const modalCopyButton = modalOverlay.querySelector(".modal-copy-button");
   const modalContributor = modalOverlay.querySelector(".modal-contributor");
   const modalChatButton = modalOverlay.querySelector(".modal-chat-button");
 
   if (!modalTitle || !modalContent) return;
 
-  modalTitle.textContent = title;
-  modalContent.textContent = content;
+
 
   // Update chat button text with platform name and handle visibility
   const platform = document.querySelector(".platform-tag.active");
@@ -651,7 +774,7 @@ function showModal(title, content) {
   }
 
   // Store content for chat button
-  modalChatButton.dataset.content = content;
+  modalChatButton.dataset.content = modalContent.textContent;
 
   // Find the contributor for this prompt
   const promptCard = Array.from(document.querySelectorAll(".prompt-card")).find(
@@ -671,7 +794,7 @@ function showModal(title, content) {
   // Add copy functionality
   modalCopyButton.addEventListener("click", async () => {
     try {
-      await navigator.clipboard.writeText(content);
+      await navigator.clipboard.writeText(modalContent.textContent);
       modalCopyButton.innerHTML = `
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="20 6 9 17 4 12"></polyline>
@@ -717,7 +840,7 @@ document.querySelectorAll(".platform-tag").forEach((button) => {
     button.classList.add("active");
     selectedPlatform = button.dataset.platform;
     localStorage.setItem("selected-platform", selectedPlatform);
-
+  
     // Hide/show chat buttons based on platform
     const chatButtons = document.querySelectorAll(
       ".chat-button, .modal-chat-button",
@@ -776,15 +899,39 @@ function openInChat(button, encodedPrompt) {
 
 // Existing copy function
 async function copyPrompt(button, encodedPrompt) {
-  const promptText = decodeURIComponent(encodedPrompt);
+  let promptText = decodeURIComponent(encodedPrompt);
+  
+  // If there's a modal open, use the current state of variables
+  const modalContent = document.querySelector('.modal-content');
+  if (modalContent) {
+    // Get all variable inputs
+    const form = document.querySelector('.variable-form');
+    if (form) {
+      const inputs = form.querySelectorAll('.variable-input');
+      inputs.forEach(input => {
+        const value = input.value.trim();
+        const variable = input.dataset.variable;
+        const defaultValue = input.dataset.default;
+        const pattern = new RegExp(`\\$\{${variable}[^}]*\}`, 'g');
+        
+        // Use value or default value
+        const replacement = value || defaultValue || variable;
+        promptText = promptText.replace(pattern, replacement);
+      });
+    }
+  }
+
   try {
-    await navigator.clipboard.writeText(promptText);
+    await navigator.clipboard.writeText(updatedContent(promptText));
     const originalHTML = button.innerHTML;
-    button.innerHTML =
-      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17 4 12"/></svg>';
+    button.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    `;
     setTimeout(() => {
       button.innerHTML = originalHTML;
-    }, 1000);
+    }, 2000);
   } catch (err) {
     console.error("Failed to copy text: ", err);
   }
