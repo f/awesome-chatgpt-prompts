@@ -1347,6 +1347,59 @@
           font-size: 0.9rem;
         }
       }
+
+      /* Variable Input Field Styles */
+      .variable-container {
+        margin-bottom: 24px;
+        padding: 16px;
+        background: rgba(16, 185, 129, 0.05);
+        border-radius: 8px;
+        border: 1px solid var(--accent-color);
+      }
+
+      .variable-form {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+
+      .variable-input-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .variable-input-wrapper label {
+        font-size: 0.8rem;
+        color: var(--accent-color);
+        font-weight: 500;
+      }
+
+      .variable-input {
+        padding: 8px;
+        border: 1px solid #e1e4e8;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        background: var(--bg-color-light);
+        color: var(--text-color-light);
+        transition: all 0.2s ease;
+      }
+
+      .dark-mode .variable-input {
+        background: var(--bg-color-dark);
+        color: var(--text-color-dark);
+        border-color: #2d2d2d;
+      }
+
+      .variable-input:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.1);
+      }
+
+      .modal-content {
+        /* white-space: pre-wrap; */
+      }
     </style>
     {% include head-custom.html %}
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6945602608405209" crossorigin="anonymous"></script>
@@ -1423,13 +1476,13 @@
         </div>
         <div class="main-content">
           <div class="container-lg markdown-body">
-      {{ content }}
+            {{ content }}
 
       {% if site.github.private != true and site.github.license %}
-      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+            <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
         Awesome ChatGPT Prompts is open source. {% github_edit_link "Improve this page" %}.
-      </div>
-      {% endif %}
+            </div>
+            {% endif %}
           </div>
         </div>
       </div>
