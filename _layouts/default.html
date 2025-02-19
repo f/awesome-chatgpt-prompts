@@ -530,7 +530,7 @@
         position: sticky;
         top: 0;
         background-color: var(--bg-color-light);
-        padding: 8px 35px;
+        padding: 6px 38px;
         border-bottom: 1px solid #e1e4e8;
         z-index: 10;
         margin: -20px -20px 20px -20px;
@@ -546,7 +546,7 @@
       .main-content-header .header-content {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: end;
         max-width: 1200px;
         margin: 0 auto;
         gap: 16px;
@@ -571,6 +571,7 @@
         color: var(--text-color-light);
         opacity: 0.9;
         flex-wrap: wrap;
+        margin-right: 0 !important;
       }
 
       .dark-mode .main-content-header .platform-selectors {
@@ -615,7 +616,7 @@
 
       @media (max-width: 768px) {
         .main-content-header {
-          padding: 12px;
+          padding: 12px 40px;
           margin: -16px -16px 16px -16px;
         }
 
@@ -658,7 +659,7 @@
       }
 
       .main-content-header .custom-select {
-        padding: 2px 24px 2px 4px;
+        padding: 2px 20px 2px 4px;
         font-size: inherit;
         border: none;
         border-radius: 4px;
@@ -1735,7 +1736,6 @@
       }
 
       .main-content-header .custom-select {
-        flex: 1;
         min-width: 0;
       }
 
@@ -1746,7 +1746,7 @@
 
       @media (max-width: 768px) {
         .main-content-header {
-          padding: 12px;
+          padding: 12px 40px;
           margin: -16px -16px 16px -16px;
         }
 
@@ -1868,22 +1868,21 @@
             <div class="header-content">
               <div class="platform-selectors">
                 Reply in <select id="languageSelect" class="custom-select">
-                  <option value="en">English</option>
-                  <option value="es">Spanish</option>
-                  <option value="fr">French</option>
-                  <option value="de">German</option>
-                  <option value="it">Italian</option>
-                  <option value="pt">Portuguese</option>
-                  <option value="ru">Russian</option>
-                  <option value="zh">Chinese</option>
-                  <option value="ja">Japanese</option>
-                  <option value="ko">Korean</option>
-                  <option value="tr">Turkish</option>
+                  <option value="English">English</option>
+                  <option value="Spanish">Spanish</option>
+                  <option value="French">French</option>
+                  <option value="German">German</option>
+                  <option value="Italian">Italian</option>
+                  <option value="Portuguese">Portuguese</option>
+                  <option value="Russian">Russian</option>
+                  <option value="Chinese">Chinese</option>
+                  <option value="Japanese">Japanese</option>
+                  <option value="Korean">Korean</option>
+                  <option value="Turkish">Turkish</option>
                   <option value="custom">Custom...</option>
                 </select>
                 <input type="text" id="customLanguage" class="custom-input" placeholder="language..." style="display: none;">
                 using <select id="toneSelect" class="custom-select">
-                  <option value="developer">developer</option>
                   <option value="professional">professional</option>
                   <option value="casual">casual</option>
                   <option value="friendly">friendly</option>
@@ -1990,12 +1989,6 @@
       audienceSelect.addEventListener('change', (e) => {
         const isDevMode = e.target.value === 'developers';
         document.body.classList.toggle('dev-mode', isDevMode);
-        
-        // Update URL params
-        const params = new URLSearchParams(window.location.search);
-        params.set('audience', e.target.value);
-        const newUrl = `${window.location.pathname}?${params.toString()}`;
-        window.history.pushState({}, '', newUrl);
         
         // Trigger prompt filtering
         filterPrompts();

@@ -860,6 +860,29 @@ document.querySelectorAll(".platform-tag").forEach((button) => {
     chatButtons.forEach((btn) => {
       btn.style.display = shouldHideChat ? "none" : "flex";
     });
+
+    // Auto-select technical tone and developers audience for GitHub Copilot
+    if (selectedPlatform === "github-copilot") {
+      const toneSelect = document.getElementById('toneSelect');
+      const audienceSelect = document.getElementById('audienceSelect');
+      
+      // Set tone to technical
+      toneSelect.value = 'technical';
+      localStorage.setItem('selected-tone', 'technical');
+      
+      // Set audience to developers
+      audienceSelect.value = 'developers';
+      localStorage.setItem('audience', 'developers');
+      
+      // Update dev mode class on body
+      document.body.classList.add('dev-mode');
+      
+      // Update chat button icons
+      updateChatButtonIcons(true);
+      
+      // Trigger prompt filtering for dev mode
+      filterPrompts();
+    }
   });
 });
 
@@ -946,7 +969,7 @@ function buildPrompt(encodedPrompt) {
   const audience = audienceSelect.value;
 
   // Append preferences as a new line
-  promptText += `\n\nReply in ${language} using ${tone} tone for ${audience}`;
+  promptText += ` Reply in ${language} using ${tone} tone for ${audience}.`;
 
   return promptText;
 }
