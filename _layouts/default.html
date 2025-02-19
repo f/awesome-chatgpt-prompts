@@ -371,7 +371,13 @@
         }
 
         .star-count {
-          display: none;
+          display: flex;
+          font-size: 0.8rem;
+        }
+
+        .star-count svg {
+          width: 14px;
+          height: 14px;
         }
       }
 
@@ -516,6 +522,177 @@
         height: calc(100vh - 140px);
         overflow-y: auto;
         padding: 20px;
+        padding-top: 0;
+        position: relative;
+      }
+
+      .main-content-header {
+        position: sticky;
+        top: 0;
+        background-color: var(--bg-color-light);
+        padding: 8px 35px;
+        border-bottom: 1px solid #e1e4e8;
+        z-index: 10;
+        margin: -20px -20px 20px -20px;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+      }
+
+      .dark-mode .main-content-header {
+        background-color: var(--bg-color-dark);
+        border-color: #2d2d2d;
+      }
+
+      .main-content-header .header-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 16px;
+      }
+
+      .main-content-header .header-description {
+        font-size: 0.85rem;
+        color: var(--text-color-light);
+        opacity: 0.8;
+        white-space: nowrap;
+      }
+
+      .dark-mode .main-content-header .header-description {
+        color: var(--text-color-dark);
+      }
+
+      .main-content-header .platform-selectors {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        color: var(--text-color-light);
+        opacity: 0.9;
+        flex-wrap: wrap;
+      }
+
+      .dark-mode .main-content-header .platform-selectors {
+        color: var(--text-color-dark);
+      }
+
+      .main-content-header .dev-mode-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 4px 8px;
+        border: 1px solid #e1e4e8;
+        border-radius: 6px;
+        background-color: var(--bg-color-light);
+        min-width: 120px;
+        margin-left: auto;
+      }
+
+      .dark-mode .main-content-header .dev-mode-toggle {
+        background-color: var(--bg-color-dark);
+        border-color: #2d2d2d;
+      }
+
+      .main-content-header .dev-mode-toggle:hover {
+        border-color: var(--accent-color);
+      }
+
+      .main-content-header .dev-mode-label {
+        font-size: 13px;
+        color: var(--text-color-light);
+        white-space: nowrap;
+        order: 1;
+      }
+
+      .dark-mode .main-content-header .dev-mode-label {
+        color: var(--text-color-dark);
+      }
+
+      .main-content-header .switch {
+        order: 2;
+      }
+
+      @media (max-width: 768px) {
+        .main-content-header {
+          padding: 12px;
+          margin: -16px -16px 16px -16px;
+        }
+
+        .main-content-header .header-content {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 12px;
+        }
+
+        .main-content-header .header-description {
+          text-align: left;
+          white-space: normal;
+        }
+
+        .main-content-header .platform-selectors {
+          flex-direction: row;
+          flex-wrap: wrap;
+          width: 100%;
+          align-items: center;
+          text-align: left;
+          gap: 4px;
+        }
+
+        .main-content-header .custom-select,
+        .main-content-header .custom-input {
+          width: auto;
+          min-width: 0;
+          flex: 0 1 auto;
+        }
+
+        .main-content-header .custom-input {
+          width: 100%;
+        }
+
+        /* Show custom inputs on new line when visible */
+        .main-content-header .custom-input:not([style*="display: none"]) {
+          margin-top: 4px;
+          margin-bottom: 4px;
+        }
+      }
+
+      .main-content-header .custom-select {
+        padding: 2px 24px 2px 4px;
+        font-size: inherit;
+        border: none;
+        border-radius: 4px;
+        background-color: transparent;
+        color: var(--accent-color);
+        cursor: pointer;
+        min-width: 0;
+        font-weight: 500;
+        background-position: right 4px center;
+        background-size: 12px;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      .main-content-header .custom-select:hover {
+        opacity: 0.8;
+      }
+
+      .main-content-header .custom-input {
+        padding: 2px 4px;
+        font-size: inherit;
+        border: none;
+        border-bottom: 1px dashed var(--accent-color);
+        border-radius: 0;
+        background-color: transparent;
+        color: var(--accent-color);
+        min-width: 100px;
+        font-weight: 500;
+      }
+
+      .main-content-header .custom-input:focus {
+        outline: none;
+        box-shadow: none;
+        border-bottom-style: solid;
       }
 
       .prompts-grid {
@@ -1091,14 +1268,20 @@
       .dev-mode-toggle {
         display: flex;
         align-items: center;
-        gap: 8px;
-        margin-right: 12px;
+        justify-content: space-between;
+        padding: 6px 12px;
+        border: 1px solid #e1e4e8;
+        border-radius: 6px;
+        background-color: var(--bg-color-light);
+        min-width: 120px;
+        flex: 1;
       }
 
       .dev-mode-label {
-        font-size: 0.9rem;
-        color: var(--accent-color);
-        opacity: 0.8;
+        font-size: 14px;
+        color: var(--text-color-light);
+        white-space: nowrap;
+        order: 1;
       }
 
       .switch {
@@ -1172,19 +1355,55 @@
         border-radius: 50%;
       }
 
-      .dev-mode-label {
-        color: var(--text-color-light);
-        margin-left: 8px;
-        font-size: 0.9rem;
+      .main-content-header .dev-mode-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 6px 12px;
+        border: 1px solid #e1e4e8;
+        border-radius: 6px;
+        background-color: var(--bg-color-light);
+        min-width: 160px;
+        flex: 1;
       }
 
-      .dark-mode .dev-mode-label {
+      .dark-mode .main-content-header .dev-mode-toggle {
+        background-color: var(--bg-color-dark);
+        border-color: #2d2d2d;
+      }
+
+      .main-content-header .dev-mode-toggle:hover {
+        border-color: var(--accent-color);
+      }
+
+      .main-content-header .dev-mode-label {
+        font-size: 14px;
+        color: var(--text-color-light);
+        white-space: nowrap;
+        order: 1;
+      }
+
+      .dark-mode .main-content-header .dev-mode-label {
         color: var(--text-color-dark);
       }
 
+      .main-content-header .switch {
+        order: 2;
+      }
+
       @media (max-width: 768px) {
-        .dev-mode-label {
-          display: none;
+        .main-content-header .dev-mode-toggle {
+          width: 100%;
+          order: -1;
+        }
+        
+        .main-content-header .dev-mode-label {
+          display: inline-block;
+        }
+
+        .main-content-header .platform-selectors {
+          flex-direction: column;
+          width: 100%;
         }
       }
 
@@ -1420,6 +1639,154 @@
         width: 20px;
         height: 20px;
       }
+
+      .platform-selectors {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-right: 16px;
+      }
+
+      .custom-select {
+        padding: 6px 12px;
+        font-size: 14px;
+        border: 1px solid #e1e4e8;
+        border-radius: 6px;
+        background-color: var(--bg-color-light);
+        color: var(--text-color-light);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        min-width: 120px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2310b981' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 8px center;
+        background-size: 16px;
+        padding-right: 32px;
+      }
+
+      .dark-mode .custom-select {
+        background-color: var(--bg-color-dark);
+        color: var(--text-color-dark);
+        border-color: #2d2d2d;
+      }
+
+      .custom-select:hover {
+        border-color: var(--accent-color);
+      }
+
+      .custom-select:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+      }
+
+      .custom-input {
+        padding: 6px 12px;
+        font-size: 14px;
+        border: 1px solid #e1e4e8;
+        border-radius: 6px;
+        background-color: var(--bg-color-light);
+        color: var(--text-color-light);
+        transition: all 0.2s ease;
+        min-width: 150px;
+      }
+
+      .dark-mode .custom-input {
+        background-color: var(--bg-color-dark);
+        color: var(--text-color-dark);
+        border-color: #2d2d2d;
+      }
+
+      .custom-input:hover {
+        border-color: var(--accent-color);
+      }
+
+      .custom-input:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+      }
+
+      .custom-input::placeholder {
+        color: #6a737d;
+        opacity: 0.8;
+      }
+
+      .dark-mode .custom-input::placeholder {
+        color: #8b949e;
+      }
+
+      @media (max-width: 768px) {
+        .platform-selectors {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 8px;
+          margin-bottom: 12px;
+          width: 100%;
+        }
+        
+        .custom-select,
+        .custom-input {
+          width: 100%;
+        }
+      }
+
+      .main-content-header .custom-select {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .main-content-header .custom-input {
+        flex: 1;
+        min-width: 0;
+      }
+
+      @media (max-width: 768px) {
+        .main-content-header {
+          padding: 12px;
+          margin: -16px -16px 16px -16px;
+        }
+
+        .main-content-header .header-content {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 12px;
+        }
+
+        .main-content-header .header-description {
+          text-align: left;
+          white-space: normal;
+        }
+
+        .main-content-header .platform-selectors {
+          flex-direction: row;
+          flex-wrap: wrap;
+          width: 100%;
+          align-items: center;
+          text-align: left;
+          gap: 4px;
+        }
+
+        .main-content-header .custom-select,
+        .main-content-header .custom-input {
+          width: auto;
+          min-width: 0;
+          flex: 0 1 auto;
+        }
+
+        .main-content-header .custom-input {
+          width: 100%;
+        }
+
+        /* Show custom inputs on new line when visible */
+        .main-content-header .custom-input:not([style*="display: none"]) {
+          margin-top: 4px;
+          margin-bottom: 4px;
+        }
+      }
     </style>
     {% include head-custom.html %}
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6945602608405209" crossorigin="anonymous"></script>
@@ -1462,13 +1829,6 @@
           </div>
         </div>
         <div class="header-right">
-          <div class="dev-mode-toggle">
-            <label class="switch">
-              <input type="checkbox" id="devModeToggle">
-              <span class="slider round"></span>
-            </label>
-            <span class="dev-mode-label">Dev Prompts</span>
-          </div>
           <a href="https://github.com/f/awesome-chatgpt-prompts/stargazers" target="_blank" class="star-count">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
@@ -1504,6 +1864,42 @@
           </div>
         </div>
         <div class="main-content">
+          <div class="main-content-header">
+            <div class="header-content">
+              <div class="platform-selectors">
+                Reply in <select id="languageSelect" class="custom-select">
+                  <option value="en">English</option>
+                  <option value="es">Spanish</option>
+                  <option value="fr">French</option>
+                  <option value="de">German</option>
+                  <option value="it">Italian</option>
+                  <option value="pt">Portuguese</option>
+                  <option value="ru">Russian</option>
+                  <option value="zh">Chinese</option>
+                  <option value="ja">Japanese</option>
+                  <option value="ko">Korean</option>
+                  <option value="tr">Turkish</option>
+                  <option value="custom">Custom...</option>
+                </select>
+                <input type="text" id="customLanguage" class="custom-input" placeholder="language..." style="display: none;">
+                using <select id="toneSelect" class="custom-select">
+                  <option value="developer">developer</option>
+                  <option value="professional">professional</option>
+                  <option value="casual">casual</option>
+                  <option value="friendly">friendly</option>
+                  <option value="formal">formal</option>
+                  <option value="technical">technical</option>
+                  <option value="creative">creative</option>
+                  <option value="custom">Custom...</option>
+                </select>
+                <input type="text" id="customTone" class="custom-input" placeholder="tone..." style="display: none;">
+                tone, for <select id="audienceSelect" class="custom-select">
+                  <option value="everyone">everyone</option>
+                  <option value="developers">developers</option>
+                </select>
+              </div>
+            </div>
+          </div>
           <div class="container-lg markdown-body">
             {{ content }}
 
@@ -1580,6 +1976,31 @@
       </footer>
     </div>
     <script src="script.js"></script>
+    <script>
+      // Initialize audience selector
+      const audienceSelect = document.getElementById('audienceSelect');
+      
+      // Set initial state based on URL params or default
+      const urlParams = new URLSearchParams(window.location.search);
+      const initialAudience = urlParams.get('audience') || 'everyone';
+      audienceSelect.value = initialAudience;
+      document.body.classList.toggle('dev-mode', initialAudience === 'developers');
+      
+      // Handle audience changes
+      audienceSelect.addEventListener('change', (e) => {
+        const isDevMode = e.target.value === 'developers';
+        document.body.classList.toggle('dev-mode', isDevMode);
+        
+        // Update URL params
+        const params = new URLSearchParams(window.location.search);
+        params.set('audience', e.target.value);
+        const newUrl = `${window.location.pathname}?${params.toString()}`;
+        window.history.pushState({}, '', newUrl);
+        
+        // Trigger prompt filtering
+        filterPrompts();
+      });
+    </script>
     <style>video { max-width: 100% !important; }</style>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MSNHFWTE77"></script>

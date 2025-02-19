@@ -104,39 +104,34 @@ function updatePromptPreview(promptText, form) {
 
 // Initialize everything after DOM loads
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize dev mode
-  const devModeToggle = document.getElementById("devModeToggle");
-  const initialDevMode = localStorage.getItem("dev-mode") === "true";
-  devModeToggle.checked = initialDevMode;
+  // Initialize audience selector and dev mode
+  const audienceSelect = document.getElementById('audienceSelect');
+  const initialAudience = localStorage.getItem('audience') || 'everyone';
+  audienceSelect.value = initialAudience;
+  document.body.classList.toggle('dev-mode', initialAudience === 'developers');
 
-  // Initialize chat button icons
-  updateChatButtonIcons(initialDevMode);
-
-  // Handle dev mode toggle
-  devModeToggle.addEventListener("change", (e) => {
-    const newDevMode = e.target.checked;
-    localStorage.setItem("dev-mode", newDevMode);
-    // Toggle dev-mode class on body element
-    document.body.classList.toggle("dev-mode", newDevMode);
-
+  // Handle audience changes
+  audienceSelect.addEventListener('change', (e) => {
+    const isDevMode = e.target.value === 'developers';
+    document.body.classList.toggle('dev-mode', isDevMode);
+    localStorage.setItem('audience', e.target.value);
+    
     // Update chat button icons
-    updateChatButtonIcons(newDevMode);
+    updateChatButtonIcons(isDevMode);
 
     // Check if we should show Copilot suggestion
-    if (newDevMode) {
+    if (isDevMode) {
       const currentPlatform = document.querySelector(".platform-tag.active");
-      const shouldNotShow =
-        localStorage.getItem("copilot-suggestion-hidden") === "true";
+      const shouldNotShow = localStorage.getItem("copilot-suggestion-hidden") === "true";
 
-      if (
-        currentPlatform &&
-        currentPlatform.dataset.platform !== "github-copilot" &&
-        !shouldNotShow
-      ) {
+      if (currentPlatform && 
+          currentPlatform.dataset.platform !== "github-copilot" && 
+          !shouldNotShow) {
         showCopilotSuggestion();
       }
     }
 
+    // Trigger prompt filtering
     filterPrompts();
   });
 
@@ -179,10 +174,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize search functionality
   initializeSearch();
 
-  // Initialize chat button icons on page load
-  const isDevMode = localStorage.getItem("dev-mode") === "true";
-  document.body.classList.toggle("dev-mode", isDevMode);
-  updateChatButtonIcons(isDevMode);
+  // Initialize language and tone selectors
+  initializeLanguageAndTone();
 });
 
 // Search functionality
@@ -198,7 +191,7 @@ async function initializeSearch() {
     const searchInput = document.getElementById("searchInput");
     const searchResults = document.getElementById("searchResults");
     const promptCount = document.getElementById("promptCount");
-    const isDevMode = document.getElementById("devModeToggle").checked;
+    const isDevMode = document.getElementById("audienceSelect").value === "developers";
 
     // Update prompt count
     const totalPrompts = isDevMode
@@ -214,6 +207,7 @@ async function initializeSearch() {
 
     searchInput.addEventListener("input", (e) => {
       const searchTerm = e.target.value.toLowerCase();
+      const isDevMode = document.getElementById("audienceSelect").value === "developers";
 
       const filteredPrompts = prompts.filter((prompt) => {
         const matchesSearch =
@@ -286,7 +280,7 @@ function parseCSV(csv) {
 function displaySearchResults(results) {
   const searchResults = document.getElementById("searchResults");
   const searchInput = document.getElementById("searchInput");
-  const isDevMode = document.getElementById("devModeToggle").checked;
+  const isDevMode = document.getElementById("audienceSelect").value === "developers";
 
   // Filter results based on dev mode
   if (isDevMode) {
@@ -401,7 +395,7 @@ function displaySearchResults(results) {
 
 // Function to filter prompts based on dev mode
 function filterPrompts() {
-  const isDevMode = document.getElementById("devModeToggle").checked;
+  const isDevMode = document.getElementById("audienceSelect").value === "developers";
   const searchInput = document.getElementById("searchInput");
   const searchTerm = searchInput.value.toLowerCase();
 
@@ -496,7 +490,7 @@ function createPromptCards() {
     .then((response) => response.text())
     .then((csvText) => {
       const prompts = parseCSV(csvText);
-      const isDevMode = document.getElementById("devModeToggle").checked;
+      const isDevMode = document.getElementById("audienceSelect").value === "developers";
 
       const promptElements = document.querySelectorAll(
         "h2[id^=act] + p + blockquote"
@@ -757,7 +751,7 @@ function showModal(title, content) {
 
   // Update chat button text with platform name and handle visibility
   const platform = document.querySelector(".platform-tag.active");
-  const isDevMode = document.getElementById("devModeToggle").checked;
+  const isDevMode = document.getElementById("audienceSelect").value === "developers";
 
   if (platform) {
     const shouldHideChat = ["gemini", "llama"].includes(
@@ -811,7 +805,7 @@ function showModal(title, content) {
   // Add copy functionality
   modalCopyButton.addEventListener("click", async () => {
     try {
-      await navigator.clipboard.writeText(modalContent.textContent);
+      copyPrompt(modalCopyButton, modalContent.textContent);
       modalCopyButton.innerHTML = `
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="20 6 9 17 4 12"></polyline>
@@ -883,7 +877,7 @@ document.querySelectorAll(".chat-button, .modal-chat-button").forEach((btn) => {
 
 // Function to open prompt in selected AI chat platform
 function openInChat(button, encodedPrompt) {
-  const promptText = decodeURIComponent(encodedPrompt);
+  const promptText = buildPrompt(encodedPrompt);
   const platform = document.querySelector(".platform-tag.active");
 
   if (!platform) return;
@@ -914,8 +908,7 @@ function openInChat(button, encodedPrompt) {
   window.open(url, "_blank");
 }
 
-// Existing copy function
-async function copyPrompt(button, encodedPrompt) {
+function buildPrompt(encodedPrompt) {
   let promptText = decodeURIComponent(encodedPrompt);
 
   // If there's a modal open, use the current state of variables
@@ -938,8 +931,31 @@ async function copyPrompt(button, encodedPrompt) {
     }
   }
 
+  // Clean up newlines and normalize whitespace
+  promptText = promptText.replace(/\s+/g, ' ').trim();
+
+  // Get language, tone and audience preferences
+  const languageSelect = document.getElementById('languageSelect');
+  const customLanguage = document.getElementById('customLanguage');
+  const toneSelect = document.getElementById('toneSelect');
+  const customTone = document.getElementById('customTone');
+  const audienceSelect = document.getElementById('audienceSelect');
+
+  const language = languageSelect.value === 'custom' ? customLanguage.value : languageSelect.value;
+  const tone = toneSelect.value === 'custom' ? customTone.value : toneSelect.value;
+  const audience = audienceSelect.value;
+
+  // Append preferences as a new line
+  promptText += `\n\nReply in ${language} using ${tone} tone for ${audience}`;
+
+  return promptText;
+}
+
+// Existing copy function
+async function copyPrompt(button, encodedPrompt) {
   try {
-    await navigator.clipboard.writeText(updatePromptPreview(promptText));
+    const promptText = buildPrompt(encodedPrompt);
+    await navigator.clipboard.writeText(promptText);
     const originalHTML = button.innerHTML;
     button.innerHTML = `
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1018,4 +1034,68 @@ function updateChatButtonIcons(isDevMode) {
         terminalIcon.style.display = isDevMode ? "block" : "none";
       }
     });
+}
+
+// Language and Tone Selection
+function initializeLanguageAndTone() {
+  const languageSelect = document.getElementById('languageSelect');
+  const customLanguage = document.getElementById('customLanguage');
+  const toneSelect = document.getElementById('toneSelect');
+  const customTone = document.getElementById('customTone');
+
+  // Load saved preferences
+  const savedLanguage = localStorage.getItem('selected-language');
+  const savedCustomLanguage = localStorage.getItem('custom-language');
+  const savedTone = localStorage.getItem('selected-tone');
+  const savedCustomTone = localStorage.getItem('custom-tone');
+
+  if (savedLanguage) {
+    languageSelect.value = savedLanguage;
+    if (savedLanguage === 'custom' && savedCustomLanguage) {
+      customLanguage.value = savedCustomLanguage;
+      customLanguage.style.display = 'inline-block';
+    }
+  }
+
+  if (savedTone) {
+    toneSelect.value = savedTone;
+    if (savedTone === 'custom' && savedCustomTone) {
+      customTone.value = savedCustomTone;
+      customTone.style.display = 'inline-block';
+    }
+  }
+
+  // Language select handler
+  languageSelect.addEventListener('change', (e) => {
+    const isCustom = e.target.value === 'custom';
+    customLanguage.style.display = isCustom ? 'inline-block' : 'none';
+    localStorage.setItem('selected-language', e.target.value);
+    
+    if (!isCustom) {
+      customLanguage.value = '';
+      localStorage.removeItem('custom-language');
+    }
+  });
+
+  // Custom language input handler
+  customLanguage.addEventListener('input', (e) => {
+    localStorage.setItem('custom-language', e.target.value);
+  });
+
+  // Tone select handler
+  toneSelect.addEventListener('change', (e) => {
+    const isCustom = e.target.value === 'custom';
+    customTone.style.display = isCustom ? 'inline-block' : 'none';
+    localStorage.setItem('selected-tone', e.target.value);
+    
+    if (!isCustom) {
+      customTone.value = '';
+      localStorage.removeItem('custom-tone');
+    }
+  });
+
+  // Custom tone input handler
+  customTone.addEventListener('input', (e) => {
+    localStorage.setItem('custom-tone', e.target.value);
+  });
 }
