@@ -33,7 +33,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: "18"
 
       - name: Install dependencies
         run: npm install openai@^4.0.0 @octokit/rest@^19.0.0
@@ -52,7 +52,7 @@ jobs:
             const openai = new OpenAI({
               apiKey: process.env.OPENAI_API_KEY
             });
-            
+
             const octokit = new Octokit({
               auth: process.env.GH_TOKEN
             });
@@ -60,7 +60,7 @@ jobs:
             const eventName = process.env.GITHUB_EVENT_NAME;
             const eventPath = process.env.GITHUB_EVENT_PATH;
             const event = require(eventPath);
-            
+
             // Double check user authorization
             const actor = event.sender?.login || event.pull_request?.user?.login || event.issue?.user?.login;
             if (actor !== 'f') {
@@ -72,7 +72,7 @@ jobs:
             let command = '';
             let issueNumber = null;
             let isPullRequest = false;
-            
+
             if (eventName === 'issues') {
               command = event.issue.body;
               issueNumber = event.issue.number;
@@ -96,7 +96,7 @@ jobs:
 
             // Extract the actual command after /ai
             const aiCommand = command.substring(3).trim();
-            
+
             // Handle resolve conflicts command
             if (aiCommand === 'resolve' || aiCommand === 'fix conflicts') {
               if (!isPullRequest) {
@@ -112,7 +112,7 @@ jobs:
 
               try {
                 console.log('Starting resolve command execution...');
-                
+
                 // Get PR details
                 console.log('Fetching PR details...');
                 const { data: pr } = await octokit.pulls.get({
@@ -140,7 +140,7 @@ jobs:
                   title = title.trim();
                   // Remove "Act as" or "Act as a" or "Act as an" from start if present
                   title = title.replace(/^Act as (?:a |an )?/i, '');
-                  
+
                   // Capitalize each word except common articles and prepositions
                   const lowercaseWords = ['a', 'an', 'the', 'and', 'but', 'or', 'for', 'nor', 'on', 'at', 'to', 'for', 'with', 'in'];
                   const capitalized = title.toLowerCase().split(' ').map((word, index) => {
@@ -150,7 +150,7 @@ jobs:
                     }
                     return word;
                   }).join(' ');
-                  
+
                   // Add "Act as" prefix
                   return `Act as ${capitalized}`;
                 };
@@ -168,17 +168,17 @@ jobs:
 
                     console.log('Attempting to extract prompts from README changes...');
                     const promptMatches = [...addedLines.matchAll(/## (?:Act as (?:a |an )?)?([^\n]+)\n(?:Contributed by:[^\n]*\n)?(?:> )?([^#]+?)(?=\n##|\n\n##|$)/ig)];
-                    
+
                     for (const match of promptMatches) {
                       const actName = normalizeTitle(match[1]);
                       const promptText = match[2].trim()
                         .replace(/^(?:Contributed by:?[^\n]*\n\s*)+/i, '')
                         .trim();
                       const contributorLine = addedLines.match(/Contributed by: \[@([^\]]+)\]\(https:\/\/github\.com\/([^\)]+)\)/);
-                      const contributorInfo = contributorLine 
+                      const contributorInfo = contributorLine
                         ? `Contributed by: [@${contributorLine[1]}](https://github.com/${contributorLine[2]})`
                         : `Contributed by: [@${pr.user.login}](https://github.com/${pr.user.login})`;
-                      
+
                       prompts.set(actName.toLowerCase(), { actName, promptText, contributorInfo });
                       console.log(`Found prompt in README: "${actName}"`);
                       foundInReadme = true;
@@ -206,7 +206,7 @@ jobs:
                           const promptText = matches[1][1].replace(/""/g, '"').trim()
                             .replace(/^(?:Contributed by:?[^\n]*\n\s*)+/i, '')
                             .trim();
-                          
+
                           const contributorInfo = `Contributed by: [@${pr.user.login}](https://github.com/${pr.user.login})`;
                           prompts.set(actName.toLowerCase(), { actName, promptText, contributorInfo });
                           console.log(`Found prompt in CSV: "${actName}"`);
@@ -256,16 +256,16 @@ jobs:
                 for (const { actName, promptText, contributorInfo } of promptsArray) {
                   // Remove markdown quote character and trim whitespace
                   const cleanPrompt = promptText.replace(/^>\s*/gm, '').trim();
-                  
+
                   // For README: Add quote to each line
                   const readmePrompt = cleanPrompt.split('\n')
                     .map(line => `> ${line.trim()}`)
                     .join('\n');
                   const newSection = `## ${actName}\n${contributorInfo}\n\n${readmePrompt}\n\n`;
-                  
+
                   // For CSV: Convert to single paragraph
                   const csvPrompt = cleanPrompt.replace(/\n+/g, ' ').trim();
-                  
+
                   // Insert the new section before Contributors in README
                   const contributorsIndex = readmeContent.indexOf('## Contributors');
                   if (contributorsIndex === -1) {
@@ -483,13 +483,13 @@ jobs:
                 if (file.status === 'removed') {
                   return `Deleted: ${file.filename}`;
                 }
-                
+
                 // Get file content for added or modified files
                 if (file.status === 'added' || file.status === 'modified') {
                   const patch = file.patch || '';
                   return `${file.status === 'added' ? 'Added' : 'Modified'}: ${file.filename}\nChanges:\n${patch}`;
                 }
-                
+
                 return `${file.status}: ${file.filename}`;
               }));
 
@@ -551,7 +551,7 @@ jobs:
             // If response contains code changes, create a new branch and PR
             if (response.includes('```')) {
               const branchName = `ai-bot/fix-${issueNumber}`;
-              
+
               // Create new branch
               const defaultBranch = event.repository.default_branch;
               const ref = await octokit.git.getRef({
@@ -559,7 +559,7 @@ jobs:
                 repo: event.repository.name,
                 ref: `heads/${defaultBranch}`
               });
-              
+
               await octokit.git.createRef({
                 owner: event.repository.owner.login,
                 repo: event.repository.name,
@@ -572,7 +572,7 @@ jobs:
               for (const block of codeBlocks) {
                 const [_, filePath, ...codeLines] = block.split('\n');
                 const content = Buffer.from(codeLines.join('\n')).toString('base64');
-                
+
                 await octokit.repos.createOrUpdateFileContents({
                   owner: event.repository.owner.login,
                   repo: event.repository.name,
@@ -620,4 +620,4 @@ jobs:
               repo: context.repo.repo,
               issue_number: issueNumber,
               body: '❌ Sorry, there was an error processing your command. Please try again or contact the repository maintainers.'
-            }); 
+            });

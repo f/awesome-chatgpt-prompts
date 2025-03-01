@@ -19,7 +19,7 @@ jobs:
         with:
           script: |
             const pr = context.payload.pull_request;
-            
+
             // Check if PR has conflicts
             if (pr.mergeable === false) {
               console.log('PR has conflicts, commenting /ai resolve');
@@ -30,7 +30,7 @@ jobs:
                 body: '/ai resolve'
               });
             }
-            
+
             // Check if PR title starts with "updated"
             if (pr.title.toLowerCase().startsWith('updated')) {
               console.log('PR title starts with "updated", commenting /ai suggest title');
@@ -40,4 +40,4 @@ jobs:
                 issue_number: pr.number,
                 body: '/ai suggest title'
               });
-            } 
+            }
