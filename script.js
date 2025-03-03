@@ -906,6 +906,7 @@ function openInChat(button, encodedPrompt) {
   if (!platform) return;
 
   const baseUrl = platform.dataset.url;
+  console.log(baseUrl);
   let url;
 
   switch (platform.dataset.platform) {
@@ -914,6 +915,9 @@ function openInChat(button, encodedPrompt) {
       break;
     case "chatgpt":
       url = `${baseUrl}?prompt=${encodeURIComponent(promptText)}`;
+      break;
+    case "grok":
+      url = `${baseUrl}&q=${encodeURIComponent(promptText)}`;
       break;
     case "claude":
       url = `${baseUrl}?q=${encodeURIComponent(promptText)}`;

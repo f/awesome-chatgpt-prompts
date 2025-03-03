@@ -369,16 +369,6 @@
         .github-link span {
           display: none;
         }
-
-        .star-count {
-          display: flex;
-          font-size: 0.8rem;
-        }
-
-        .star-count svg {
-          width: 14px;
-          height: 14px;
-        }
       }
 
       .site-title:hover {
@@ -1787,6 +1777,54 @@
           margin-bottom: 4px;
         }
       }
+
+      .platform-tag-container {
+        position: relative;
+        display: inline-block;
+      }
+
+      .grok-mode-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+        min-width: 160px;
+        margin-top: 4px;
+        background: var(--bg-color-light);
+        border: 1px solid var(--accent-color);
+        border-radius: 6px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        font-size: 0.8rem;
+        overflow: hidden;
+        padding: 4px;
+      }
+
+      .dark-mode .grok-mode-dropdown {
+        background: var(--bg-color-dark);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .grok-mode-option {
+        padding: 4px 8px;
+        cursor: pointer;
+        color: var(--text-color-light);
+        transition: all 0.2s ease;
+        border-radius: 4px;
+        white-space: nowrap;
+      }
+
+      .dark-mode .grok-mode-option {
+        color: var(--text-color-dark);
+      }
+
+      .grok-mode-option:hover {
+        background: rgba(16, 185, 129, 0.1);
+        color: var(--accent-color);
+      }
+
+      .dark-mode .grok-mode-option:hover {
+        background: rgba(16, 185, 129, 0.2);
+      }
     </style>
     {% include head-custom.html %}
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6945602608405209" crossorigin="anonymous"></script>
@@ -1820,7 +1858,14 @@
             <div class="platform-pills">
               <button class="platform-tag" data-platform="github-copilot" data-url="https://github.com/copilot">GitHub Copilot</button>
               <button class="platform-tag" data-platform="chatgpt" data-url="https://chat.openai.com">ChatGPT</button>
-              <button class="platform-tag" data-platform="grok" data-url="https://grok.com/chat">Grok</button>
+              <div class="platform-tag-container">
+                <button class="platform-tag" data-platform="grok" data-url="https://grok.com/chat">Grok</button>
+                <div class="grok-mode-dropdown" style="display: none;">
+                  <div class="grok-mode-option" data-url="https://grok.com/chat">Grok</div>
+                  <div class="grok-mode-option" data-url="https://grok.com/chat?reasoningMode=deepsearch">Grok Deep Search</div>
+                  <div class="grok-mode-option" data-url="https://grok.com/chat?reasoningMode=thinking">Grok Thinking</div>
+                </div>
+              </div>
               <button class="platform-tag" data-platform="claude" data-url="https://claude.ai/new">Claude</button>
               <button class="platform-tag" data-platform="perplexity" data-url="https://perplexity.ai">Perplexity</button>
               <button class="platform-tag" data-platform="mistral" data-url="https://chat.mistral.ai/chat">Mistral</button>
@@ -1988,6 +2033,41 @@
     <script>
       // Initialize audience selector
       const audienceSelect = document.getElementById('audienceSelect');
+      
+      // Handle Grok platform selection
+      document.addEventListener('DOMContentLoaded', () => {
+        const grokButton = document.querySelector('[data-platform="grok"]');
+        const grokDropdown = document.querySelector('.grok-mode-dropdown');
+        const grokOptions = document.querySelectorAll('.grok-mode-option');
+        let isGrokDropdownVisible = false;
+
+        // Hide dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!e.target.closest('.platform-tag-container')) {
+            grokDropdown.style.display = 'none';
+            isGrokDropdownVisible = false;
+          }
+        });
+
+        // Toggle dropdown
+        grokButton.addEventListener('click', (e) => {
+          e.stopPropagation();
+          isGrokDropdownVisible = !isGrokDropdownVisible;
+          grokDropdown.style.display = isGrokDropdownVisible ? 'block' : 'none';
+        });
+
+        // Handle option selection
+        grokOptions.forEach(option => {
+          option.addEventListener('click', (e) => {
+            const selectedUrl = option.dataset.url;
+            const selectedText = option.textContent;
+            grokButton.dataset.url = selectedUrl;
+            grokButton.textContent = selectedText;
+            grokDropdown.style.display = 'none';
+            isGrokDropdownVisible = false;
+          });
+        });
+      });
       
       // Set initial state based on URL params or default
       const urlParams = new URLSearchParams(window.location.search);
