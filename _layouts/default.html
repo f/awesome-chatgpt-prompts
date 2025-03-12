@@ -2088,6 +2088,23 @@
         const grokOptions = document.querySelectorAll('.grok-mode-option');
         let isGrokDropdownVisible = false;
 
+        // Add event listeners for all platform buttons
+        const platformButtons = document.querySelectorAll('.platform-tag');
+        platformButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const platform = button.getAttribute('data-platform');
+            // If platform is not github-copilot, set audience to "everyone"
+            if (platform !== 'github-copilot') {
+              audienceSelect.value = 'everyone';
+              document.body.classList.remove('dev-mode');
+              // Trigger filtering if needed
+              if (typeof filterPrompts === 'function') {
+                filterPrompts();
+              }
+            }
+          });
+        });
+
         // Hide dropdown when clicking outside
         document.addEventListener('click', (e) => {
           if (!e.target.closest('.platform-tag-container')) {
@@ -2112,6 +2129,14 @@
             grokButton.textContent = selectedText;
             grokDropdown.style.display = 'none';
             isGrokDropdownVisible = false;
+            
+            // Also set audience to "everyone" for Grok options
+            audienceSelect.value = 'everyone';
+            document.body.classList.remove('dev-mode');
+            // Trigger filtering if needed
+            if (typeof filterPrompts === 'function') {
+              filterPrompts();
+            }
           });
         });
       });
