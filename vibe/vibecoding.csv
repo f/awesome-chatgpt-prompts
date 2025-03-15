@@ -1,0 +1,11 @@
+act,prompt
+TodoApp,"Create a simple todo app with HTML, CSS, and JavaScript that allows users to add, complete, and delete tasks. Include local storage functionality."
+WeatherApp,"Build a weather app that fetches data from a weather API. Show current temperature, conditions, and a 5-day forecast. Use modern CSS for styling."
+CalculatorApp,"Create a calculator web app with basic arithmetic operations (+, -, *, /). Include a clean, modern interface with proper error handling."
+NotesApp,"Develop a notes application that lets users create, edit, and delete notes. Include markdown support and local storage persistence."
+TimerApp,"Build a countdown timer app with start, pause, and reset functionality. Add sound notifications when timer completes."
+QuizApp,"Create a simple quiz app that presents multiple-choice questions, tracks score, and shows results at the end."
+ColorPicker,"Build a color picker tool that shows RGB, HEX values and generates complementary colors."
+PasswordGenerator,"Create a password generator that creates strong passwords with customizable length and character types."
+BMICalculator,"Build a BMI calculator that takes height and weight inputs and shows the BMI category with health recommendations."
+CurrencyConverter,"Create a currency converter that fetches real-time exchange rates and converts between different currencies."
