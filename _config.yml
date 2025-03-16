@@ -1,10 +1,7 @@
-name: Awesome ChatGPT Prompts
-title: null
+name: prompts.chat
+title: prompts.chat
+subtitle: World's First & Most Famous Prompts Directory
 
-# Dark mode configuration
-dark_mode: true
-
-# GitHub Pages configuration
 github_pages:
-  url: "https://<your-github-username>.github.io/<your-repo-name>"
-  branch: "gh-pages"
+  url: "https://prompts.chat"
+  branch: "main"

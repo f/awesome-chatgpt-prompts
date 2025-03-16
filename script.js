@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch((error) => {
       console.error("Error fetching star count:", error);
-      document.getElementById("starCount").textContent = "50k+";
+      document.getElementById("starCount").textContent = "122k+";
     });
 
   // Create prompt cards
@@ -353,7 +353,7 @@ function displaySearchResults(results) {
           // On mobile, scroll the window
           const cardRect = targetCard.getBoundingClientRect();
           const scrollTop =
-            window.pageYOffset + cardRect.top - headerHeight - 20;
+            window.pageYOffset + cardRect.top - headerHeight - 50;
 
           window.scrollTo({
             top: scrollTop,
@@ -364,7 +364,7 @@ function displaySearchResults(results) {
           const mainContent = document.querySelector(".main-content");
           const cardRect = targetCard.getBoundingClientRect();
           const scrollTop =
-            mainContent.scrollTop + cardRect.top - headerHeight - 20;
+            mainContent.scrollTop + cardRect.top - headerHeight - 50;
 
           mainContent.scrollTo({
             top: scrollTop,
