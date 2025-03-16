@@ -11,7 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ "/style.css?v=" | append: site.github.build_revision | relative_url }}">
   </head>
-  <body>
+  <body class="{{ page.body_class | default: '' }}">
     <div class="layout-wrapper">
       <!-- Copilot Suggestion Modal Backdrop -->
       <div class="copilot-suggestion-backdrop"></div>

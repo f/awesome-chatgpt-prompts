@@ -288,6 +288,14 @@ body.dark-mode {
         gap: 8px;
         position: relative;
     }
+
+    body.vibe .site-header {
+        height: auto !important;
+    }
+
+    body.vibe .sidebar {
+        display: none !important;
+    }
     
     .header-right {
         position: absolute;
