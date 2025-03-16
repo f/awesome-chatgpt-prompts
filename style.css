@@ -26,6 +26,13 @@ body {
     overflow-y: hidden;
 }
 
+body.vibe {
+    font-family: 'SF Mono', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
 @media (max-width: 768px) {
     body {
         overflow-y: auto !important;
@@ -296,7 +303,7 @@ body.dark-mode {
     body.vibe .sidebar {
         display: none !important;
     }
-    
+
     .header-right {
         position: absolute;
         top: 1.3rem;
