@@ -355,18 +355,6 @@ function showModal(app, prompt, contributor) {
             <div class="modal-footer-left">
               <a class="modal-contributor" target="_blank" rel="noopener"></a>
             </div>
-            <div class="modal-footer-right">
-              <button class="modal-chat-button" onclick="openModalChat()">
-                <svg class="chat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                </svg>
-                <svg class="terminal-icon" style="display: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="4 17 10 11 4 5"></polyline>
-                  <line x1="12" y1="19" x2="20" y2="19"></line>
-                </svg>
-                Start Chat
-              </button>
-            </div>
           </div>
         </div>
       </div>
@@ -419,12 +407,3 @@ document.addEventListener('keydown', (e) => {
     hideModal();
   }
 });
-
-// Function to handle chat button click in modal
-function openModalChat() {
-  const modalContent = document.querySelector('.modal-content code');
-  if (modalContent) {
-    const content = modalContent.textContent;
-    openInChat(null, encodeURIComponent(content.trim()));
-  }
-}
