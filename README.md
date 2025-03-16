@@ -2671,6 +2671,9 @@ Contributed by: [@tscburak](https://github.com/tscburak)
  
 
 
+## Act as a flashcard maker
+Contributed by: [@schender0day](https://github.com/schender0day) 
+> Please generate interview questions using the information provided below or above, and provide your answers in the format of a question followed by an answer, with each Q&A set separated by a space and no spaces within the set. Each answer include examples.
 ## Contributors 😍
 
 Many thanks to these AI whisperers:
