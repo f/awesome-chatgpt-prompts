@@ -212,8 +212,6 @@ Contributed by: [@JefferyLiu6](https://github.com/JefferyLiu6)
 > travel needs.  My first request is: "I am planning a one-week trip to Japan on 
 > a mid-range budget, focusing on cultural experiences and local cuisine."
 
-
-
 ## Act as a Plagiarism Checker
 
 Contributed by: [@yetk1n](https://github.com/yetk1n)
