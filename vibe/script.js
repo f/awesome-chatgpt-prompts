@@ -356,7 +356,7 @@ function showModal(app, prompt, contributor) {
               <a class="modal-contributor" target="_blank" rel="noopener"></a>
             </div>
             <div class="modal-footer-right">
-            <button class="modal-chat-button" onclick="openModalChat()">
+            <button class="modal-chat-button">
                 <svg class="terminal-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="4 17 10 11 4 5"></polyline>
                     <line x1="12" y1="19" x2="20" y2="19"></line>
@@ -381,9 +381,15 @@ function showModal(app, prompt, contributor) {
     });
 
     // Add copy functionality
-    const modalCopyButton = modalOverlay.querySelector('.modal-copy-button');
-    modalCopyButton.addEventListener('click', () => {
-      copyPrompt(modalCopyButton, encodeURIComponent(prompt));
+    const modalCopyButton = modalOverlay.querySelectorAll('.modal-copy-button, .modal-chat-button');
+    modalCopyButton.forEach(button => {
+      button.addEventListener('click', () => {
+        // TODO: Add open in chat functionality
+        copyPrompt(button, encodeURIComponent(prompt));
+        if (button.classList.contains('modal-chat-button')) {
+          alert('Now you can paste the prompt into your AI IDE, deeplinks to AI IDEs are coming soon (I hope)! — IDE devs, please DM me!');
+        }
+      });
     });
   }
 
