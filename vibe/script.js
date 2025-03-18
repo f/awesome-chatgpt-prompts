@@ -211,9 +211,9 @@ function setupSearch() {
                 Add this prompt
               </a>
             </div>`
-          : filtered.map(({ act, prompt }) => `
-              <li class="search-result-item" onclick="scrollToPrompt('${act}', '${prompt}')">
-                ${act}
+          : filtered.map(({ app, prompt }) => `
+              <li class="search-result-item" onclick="scrollToPrompt('${app}', '${prompt}')">
+                ${app}
               </li>
             `).join('');
       }
