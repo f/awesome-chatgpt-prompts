@@ -189,8 +189,8 @@ function setupSearch() {
     searchInput.addEventListener('input', async (e) => {
       const query = e.target.value.toLowerCase();
       const prompts = await loadPrompts();
-      const filtered = prompts.filter(({ act, prompt }) => 
-        act.toLowerCase().includes(query) || prompt.toLowerCase().includes(query)
+      const filtered = prompts.filter(({ app, prompt }) => 
+        app.toLowerCase().includes(query) || prompt.toLowerCase().includes(query)
       );
 
       // Update prompt count
