@@ -970,7 +970,7 @@ Contributed by: [@sinanerdinc](https://github.com/sinanerdinc)
 > want you to reply with a table of query results in a single code block, and
 > nothing else. Do not write explanations. Do not type commands unless I
 > instruct you to do so. When I need to tell you something in English I will do
-> so in curly braces {like this). My first command is 'SELECT TOP 10 * FROM
+> so in curly braces {like this}. My first command is 'SELECT TOP 10 * FROM
 > Products ORDER BY Id DESC'
 
 ## Act as a Dietitian
