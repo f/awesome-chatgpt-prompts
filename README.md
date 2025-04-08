@@ -9,10 +9,13 @@
     <img height="50" alt="Clemta logo" src="https://clemta.com/wp-content/uploads/2023/03/logo-clemta-com-1.png.webp">
   </a>
   <br><br>
-  <a href="https://hf.co/chat" align="center" target="_blank">
-    <img height="60" alt="Hugging Face logo" src="https://github.com/user-attachments/assets/4187ef06-7cae-402a-a410-e0a999758fed">
+  
+  <a href="https://github.com/f/mcptools" align="center" target="_blank">
+    <img height="60" alt="Hugging Face logo" src="https://github.com/f/mcptools/raw/master/.github/resources/logo.png">
   </a>
   <br>
+  <sub>If you're building MCPs, <a href="https://github.com/f/mcptools">MCP Tools</a> is a Swiss-army knife for MCP Servers.</sub>
+  <br><br>
   <sub><a href="https://github.com/sponsors/f/sponsorships?sponsor=f&amp;tier_id=319423">Be my sponsor and your logo will be here!</a></sub>
 </p>
 
