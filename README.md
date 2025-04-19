@@ -141,7 +141,7 @@ Translate
 I want you to become a chat keeper. I will add Chat GPT prompts in this chat, 
 your task is to just save it for my future reference, 
 if I ask you in future, show me the prompt message related to this topic, 
-you just have to give me the answer which i have shared with you earlier ok?
+you just have to give me the answer which I have shared with you earlier ok?
 
 ## Act as Job Interviewer
 
