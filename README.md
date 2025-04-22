@@ -94,6 +94,14 @@ many hidden gems there. Take a look!
 
 ---
 
+### Using prompts.chat in VSCode
+
+[VSCode Prompts Chat Extension](https://github.com/Lin-jun-xiang/vscode-prompts-chat-extension) lets you search and copy prompt from `prompts.chat` directly in the editor, making it easy to use them in VSCode, ex: GitHub Copilot Chat.
+
+<img width="1400" src="https://github.com/Lin-jun-xiang/vscode-prompts-chat-extension/blob/main/static/demo.gif?raw=true" />
+
+---
+
 # Prompts
 
 ## Act as an Ethereum Developer
