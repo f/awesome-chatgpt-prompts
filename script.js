@@ -15,13 +15,23 @@ function toggleDarkMode() {
 
 // Add these new functions at the top
 function extractVariables(text) {
-  const regex = /\${([^}]+)}/g;
   const variables = [];
+  
+  // Extract ${var:default} format variables
+  const regex1 = /\${([^}]+)}/g;
   let match;
-
-  while ((match = regex.exec(text)) !== null) {
+  while ((match = regex1.exec(text)) !== null) {
     const [variable, defaultValue] = match[1].split(":").map((s) => s.trim());
     variables.push({ name: variable, default: defaultValue || "" });
+  }
+  
+  // Extract {{var}} format variables
+  const regex2 = /\{\{([^}]+)\}\}/g;
+  while ((match = regex2.exec(text)) !== null) {
+    const variable = match[1].trim();
+    if (!variables.some(v => v.name === variable)) {
+      variables.push({ name: variable, default: "" });
+    }
   }
 
   return [...new Set(variables.map((v) => JSON.stringify(v)))].map((v) =>
@@ -69,9 +79,14 @@ function updatePromptPreview(promptText, form) {
   // Replace variables with their default values without editting (for prompt cards, copy buttons, chat)
   if (!form) {
     variables.forEach(variable => {
-      const pattern = new RegExp(`\\$\{${variable.name}[^}]*\}`, 'g');
+      // Handle old-style ${var:default} format
+      const pattern1 = new RegExp(`\\$\{${variable.name}[^}]*\}`, 'g');
       const replacement = variable.default || `<b>${variable.name}</b>`;
-      previewText = previewText.replace(pattern, replacement);
+      previewText = previewText.replace(pattern1, replacement);
+      
+      // Handle new-style {{var}} format
+      const pattern2 = new RegExp(`\\{\\{${variable.name}\\}\\}`, 'g');
+      previewText = previewText.replace(pattern2, replacement);
     });
   }
   // Replace variables according to the user inputs.
@@ -82,7 +97,12 @@ function updatePromptPreview(promptText, form) {
       const value = input.value.trim();
       const variable = input.dataset.variable;
       const defaultValue = input.dataset.default;
-    const pattern = new RegExp(`\\$\{${variable}[^}]*\}`, 'g');
+      
+      // Handle old-style ${var:default} format
+      const pattern1 = new RegExp(`\\$\{${variable}[^}]*\}`, 'g');
+      // Handle new-style {{var}} format
+      const pattern2 = new RegExp(`\\{\\{${variable}\\}\\}`, 'g');
+      
       let replacement;
       if (value) {
         // User entered value
@@ -96,7 +116,8 @@ function updatePromptPreview(promptText, form) {
       }
       replacement = `<b>${replacement}</b>`;
 
-      previewText = previewText.replace(pattern, replacement);
+      previewText = previewText.replace(pattern1, replacement);
+      previewText = previewText.replace(pattern2, replacement);
     });
   }
   return previewText;
@@ -1223,8 +1244,13 @@ function showYamlModal(event, title, content) {
   const createYamlButton = modalOverlay.querySelector(".create-yaml-button");
   
   // Create the YAML content
-  const cleanTitle = decodeURIComponent(title).trim().replace(/^Act as a?n?\s?/ig, '');
+  const cleanTitle = decodeURIComponent(title).trim().replace(/^Act as a?n?\s*/ig, '');
   const cleanContent = decodeURIComponent(content).trim().replace(/\n+/g, ' ');
+  
+  // Convert variables from ${Variable: Default} format to {{Variable}} format
+  const convertedContent = cleanContent.replace(/\${([^:}]+)(?::[^}]*)?}/g, (match, varName) => {
+    return `{{${varName.trim()}}}`;
+  });
   
   const yamlText = `name: ${cleanTitle}
 model: gpt-4o-mini
@@ -1233,14 +1259,15 @@ modelParameters:
 messages:
   - role: system
     content: | 
-      ${cleanContent.replace(/\n/g, '\n      ')}`;
+      ${convertedContent.replace(/\n/g, '\n      ')}`;
   
   // Apply basic syntax highlighting
   const highlightedYaml = yamlText
     .replace(/(name|model|modelParameters|temperature|messages|role|content):/g, '<span class="key">$1:</span>')
     .replace(/(gpt-4o-mini)/g, '<span class="string">$1</span>')
     .replace(/([0-9]\.?[0-9]*)/g, '<span class="number">$1</span>')
-    .replace(/(true|false)/g, '<span class="boolean">$1</span>');
+    .replace(/(true|false)/g, '<span class="boolean">$1</span>')
+    .replace(/(\{\{[^}]+\}\})/g, '<span class="string">$1</span>'); // Highlight the new variable format
   
   yamlContent.innerHTML = highlightedYaml;
   
