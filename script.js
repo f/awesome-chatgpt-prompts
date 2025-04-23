@@ -571,6 +571,15 @@ function createPromptCards() {
                 <line x1="12" y1="19" x2="20" y2="19"></line>
                 </svg>
             </button>
+            <button class="yaml-button" title="Show prompt.yml format" onclick="showYamlModal(event, '${encodeURIComponent(title)}', '${encodeURIComponent(content)}')">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+            </button>
             <button class="copy-button" title="Copy prompt" onclick="copyPrompt(this, '${encodeURIComponent(
               updatePromptPreview(content.trim())
             )}')">
@@ -589,7 +598,8 @@ function createPromptCards() {
         card.addEventListener("click", (e) => {
           if (
             !e.target.closest(".copy-button") &&
-            !e.target.closest(".contributor-badge")
+            !e.target.closest(".contributor-badge") &&
+            !e.target.closest(".yaml-button")
           ) {
             showModal(title, content);
           }
@@ -650,6 +660,14 @@ function initializeModalListeners() {
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     hideModal();
+    
+    // Also hide YAML modal if it exists
+    const yamlModal = document.getElementById("yamlModalOverlay");
+    if (yamlModal) {
+      yamlModal.style.display = "none";
+      document.body.style.overflow = "";
+      yamlModal.remove();
+    }
   }
 });
 
@@ -1125,4 +1143,140 @@ function initializeLanguageAndTone() {
   customTone.addEventListener('input', (e) => {
     localStorage.setItem('custom-tone', e.target.value);
   });
+}
+
+// Function to show a modal with YAML format and GitHub create button
+function showYamlModal(event, title, content) {
+  event.stopPropagation();
+  let modalOverlay = document.getElementById("yamlModalOverlay");
+  if (!modalOverlay) {
+    const modalHTML = `
+      <div class="modal-overlay" id="yamlModalOverlay">
+      <div class="modal">
+          <div class="modal-header">
+          <h2 class="modal-title">Prompt YAML</h2>
+          <div class="modal-actions">
+              <button class="modal-copy-button" title="Copy YAML">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              </button>
+              <button class="modal-close" title="Close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+              </button>
+          </div>
+          </div>
+          <div class="modal-content">
+            <pre class="yaml-content"></pre>
+          </div>
+          <div class="modal-footer">
+          <div class="modal-footer-left">
+              <span class="modal-hint">You can create a new <code>.prompt.yml</code> file in your GitHub repository.</span>
+          </div>
+          <div class="modal-footer-right">
+              <div class="github-form">
+                <div class="github-inputs">
+                  <input type="text" id="github-org" class="github-input" placeholder="Organization" value="">
+                  <span>/</span>
+                  <input type="text" id="github-repo" class="github-input" placeholder="Repository" value="">
+                  <span>#</span>
+                  <input type="text" id="github-branch" class="github-input" placeholder="Branch" value="main">
+                </div>
+                <button class="create-yaml-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                Create .prompt.yml
+                </button>
+              </div>
+          </div>
+          </div>
+      </div>
+      </div>
+    `;
+    document.body.insertAdjacentHTML("beforeend", modalHTML);
+    modalOverlay = document.getElementById("yamlModalOverlay");
+    
+    // Add event listeners
+    const modalClose = modalOverlay.querySelector(".modal-close");
+    modalClose.addEventListener("click", () => {
+      modalOverlay.style.display = "none";
+      document.body.style.overflow = "";
+      modalOverlay.remove();
+    });
+    
+    modalOverlay.addEventListener("click", (e) => {
+      if (e.target === modalOverlay) {
+        modalOverlay.style.display = "none";
+        document.body.style.overflow = "";
+        modalOverlay.remove();
+      }
+    });
+  }
+
+  const yamlContent = modalOverlay.querySelector(".yaml-content");
+  const modalCopyButton = modalOverlay.querySelector(".modal-copy-button");
+  const createYamlButton = modalOverlay.querySelector(".create-yaml-button");
+  
+  // Create the YAML content
+  const cleanTitle = decodeURIComponent(title).trim().replace(/^Act as an? /ig, '');
+  const cleanContent = decodeURIComponent(content).trim().replace(/\n+/g, ' ');
+  
+  const yamlText = `name: ${cleanTitle}
+model: gpt-4o-mini
+modelParameters:
+  temperature: 0.5
+messages:
+  - role: system
+    content: | 
+      ${cleanContent.replace(/\n/g, '\n      ')}`;
+  
+  // Apply basic syntax highlighting
+  const highlightedYaml = yamlText
+    .replace(/(name|model|modelParameters|temperature|messages|role|content):/g, '<span class="key">$1:</span>')
+    .replace(/(gpt-4o-mini)/g, '<span class="string">$1</span>')
+    .replace(/([0-9]\.?[0-9]*)/g, '<span class="number">$1</span>')
+    .replace(/(true|false)/g, '<span class="boolean">$1</span>');
+  
+  yamlContent.innerHTML = highlightedYaml;
+  
+  // Add copy functionality - use the plain text version for clipboard
+  modalCopyButton.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(yamlText);
+      modalCopyButton.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      `;
+      setTimeout(() => {
+        modalCopyButton.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+        `;
+      }, 2000);
+    } catch (err) {
+      alert("Failed to copy YAML to clipboard");
+    }
+  });
+  
+  // Add create functionality
+  createYamlButton.addEventListener("click", () => {
+    const orgName = document.getElementById('github-org').value.trim();
+    const repoName = document.getElementById('github-repo').value.trim();
+    const branchName = document.getElementById('github-branch').value.trim();
+    const filename = cleanTitle.toLocaleLowerCase().replace(/\s+/g, '-') + '.prompt.yml';
+    const encodedYaml = encodeURIComponent(yamlText);
+    const githubUrl = `https://github.com/${orgName}/${repoName}/new/${branchName}?filename=${filename}&value=${encodedYaml}`;
+    window.open(githubUrl, '_blank');
+  });
+
+  modalOverlay.style.display = "block";
+  document.body.style.overflow = "hidden";
 }

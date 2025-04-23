@@ -541,6 +541,126 @@ body.dark-mode {
     height: 16px;
 }
 
+.yaml-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 2px;
+    color: var(--accent-color);
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+    z-index: 2;
+    flex-shrink: 0;
+}
+
+.yaml-button:hover {
+    opacity: 1;
+}
+
+.yaml-button svg {
+    width: 16px;
+    height: 16px;
+}
+
+.create-yaml-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.create-yaml-button:hover {
+    background-color: #0e9f71;
+}
+
+.create-yaml-button svg {
+    width: 14px;
+    height: 14px;
+}
+
+.dark-mode .create-yaml-button {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.dark-mode .create-yaml-button:hover {
+    background-color: #0e9f71;
+}
+
+.yaml-content {
+    background-color: #f5f5f5;
+    padding: 12px;
+    border-radius: 6px;
+    color: #333;
+    font-family: "SF Mono", "Segoe UI Mono", "Roboto Mono", monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    overflow: auto;
+    white-space: pre-wrap;
+    margin: 0;
+}
+
+.dark-mode .yaml-content {
+    background-color: #2d2d2d;
+    color: #f5f5f5;
+}
+
+/* YAML syntax highlighting */
+.yaml-content .key {
+    color: #0550ae;
+    font-weight: 500;
+}
+
+.dark-mode .yaml-content .key {
+    color: #4d9eee;
+}
+
+.yaml-content .string {
+    color: #22863a;
+}
+
+.yaml-content .string .number {
+    color: #56b366 !important;
+}
+
+.dark-mode .yaml-content .string {
+    color: #56b366;
+}
+
+.yaml-content .number {
+    color: #905;
+}
+
+.dark-mode .yaml-content .number {
+    color: #e76086;
+}
+
+.yaml-content .boolean {
+    color: #0550ae;
+    font-weight: 500;
+}
+
+.dark-mode .yaml-content .boolean {
+    color: #4d9eee;
+}
+
+/* Style title as code in the yml modal */
+#yamlModalOverlay .modal-title {
+    font-family: "SF Mono", "Segoe UI Mono", "Roboto Mono", monospace;
+    font-size: 1.2rem;
+}
+
 .layout-wrapper {
     display: flex;
     flex-direction: column;
@@ -1123,28 +1243,30 @@ body.dark-mode {
 
 /* Add modal header and footer styles */
 .modal-footer {
-    margin-top: 20px;
+    margin-top: 24px;
     padding-top: 16px;
     border-top: 1px solid #e1e4e8;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-}
-
-.dark-mode .modal-footer {
-    border-color: #2d2d2d;
+    gap: 16px;
 }
 
 .modal-footer-left {
     display: flex;
-    align-items: center;
-    gap: 8px;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 0;
+    max-width: 50%;
 }
 
 .modal-footer-right {
     display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: flex-end;
+    flex: 0 0 auto;
+    white-space: nowrap;
 }
 
 .modal-chat-button {
@@ -1936,22 +2058,17 @@ input:checked + .slider:before {
 }
 
 .modal-hint {
-    margin-bottom: 1rem;
-    background-color: var(--hover-color);
-    border-radius: 6px;
-    font-size: 0.9rem;
-    color: var(--text-color);
+    margin-bottom: 0;
+    font-size: 0.75rem;
+    color: var(--text-color-light);
+    opacity: 0.7;
+    display: block;
     line-height: 1.4;
+    max-width: 300px;
 }
 
-.modal-hint a {
-    color: var(--accent-color);
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.modal-hint a:hover {
-    text-decoration: underline;
+.dark-mode .modal-hint {
+    color: var(--text-color-dark);
 }
 
 .content-well {
@@ -2000,4 +2117,127 @@ input:checked + .slider:before {
 .dark-mode .content-well {
     border-color: var(--dark-border-color);
     background-color: var(--dark-background);
+}
+
+.github-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 0;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+}
+
+.github-inputs {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 13px;
+    color: var(--text-color-light);
+}
+
+.github-inputs span {
+    opacity: 0.7;
+    font-size: 12px;
+}
+
+.github-input {
+    border: 1px solid #e1e4e8;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 12px;
+    width: 100px;
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+    transition: all 0.2s ease;
+}
+
+#github-branch {
+    width: 80px;
+}
+
+@media (max-width: 768px) {
+    .modal-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    
+    .modal-footer-left {
+        max-width: 100%;
+        margin-bottom: 0;
+    }
+    
+    .modal-footer-right {
+        width: 100%;
+    }
+    
+    .github-form {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+        width: 100%;
+    }
+    
+    .github-inputs {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    
+    .github-inputs span {
+        margin: 0 2px;
+    }
+    
+    .github-input {
+        flex: 1;
+        min-width: 60px;
+    }
+    
+    .create-yaml-button {
+        width: 100%;
+    }
+}
+
+.dark-mode .modal-footer {
+    border-color: #2d2d2d;
+}
+
+.github-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.1);
+}
+
+.dark-mode .github-inputs {
+    color: var(--text-color-dark);
+}
+
+.dark-mode .github-input {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+    border-color: #2d2d2d;
+}
+
+.create-yaml-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.create-yaml-button:hover {
+    background-color: #0e9f71;
 } 
