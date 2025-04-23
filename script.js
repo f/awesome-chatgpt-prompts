@@ -1223,7 +1223,7 @@ function showYamlModal(event, title, content) {
   const createYamlButton = modalOverlay.querySelector(".create-yaml-button");
   
   // Create the YAML content
-  const cleanTitle = decodeURIComponent(title).trim().replace(/^Act as an? /ig, '');
+  const cleanTitle = decodeURIComponent(title).trim().replace(/^Act as a?n?\s?/ig, '');
   const cleanContent = decodeURIComponent(content).trim().replace(/\n+/g, ' ');
   
   const yamlText = `name: ${cleanTitle}
