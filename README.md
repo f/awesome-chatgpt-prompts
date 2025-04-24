@@ -9,10 +9,20 @@
     <img height="50" alt="Clemta logo" src="https://clemta.com/wp-content/uploads/2023/03/logo-clemta-com-1.png.webp">
   </a>
   <br><br>
-  <a href="https://hf.co/chat" align="center" target="_blank">
-    <img height="60" alt="Hugging Face logo" src="https://github.com/user-attachments/assets/4187ef06-7cae-402a-a410-e0a999758fed">
+
+  <a href="https://graphite.dev/?utm_source=github&utm_medium=repo&utm_campaign=awesome_chatgpt_prompts" align="center" target="_blank">
+    <img height="100" alt="Graphite logo" src="https://github.com/user-attachments/assets/981a244b-4bc8-4884-98f7-dd1d425063ae">
   </a>
   <br>
+  <sub>Graphite is the AI developer productivity platform helping teams on GitHub ship higher quality software, faster.</sub>
+  <br><br>
+  
+  <a href="https://github.com/f/mcptools" align="center" target="_blank">
+    <img height="60" alt="Hugging Face logo" src="https://github.com/f/mcptools/raw/master/.github/resources/logo.png">
+  </a>
+  <br>
+  <sub>If you're building MCPs, <a href="https://github.com/f/mcptools">MCP Tools</a> is a Swiss-army knife for MCP Servers.</sub>
+  <br><br>
   <sub><a href="https://github.com/sponsors/f/sponsorships?sponsor=f&amp;tier_id=319423">Be my sponsor and your logo will be here!</a></sub>
 </p>
 
@@ -1632,6 +1642,25 @@ Contributed by [zaferayan](https://github.com/ozcanzaferayan)
 > in single index.js file and nothing else. Do not write explanations. My first
 > request is "Create Pokemon App that lists pokemons with images that come from
 > PokeAPI sprites endpoint"
+
+## Act as a Code Reviewer
+
+Contributed by: [rajudandigam](https://github.com/rajudandigam)
+
+> I want you to act as a Code reviewer who is experienced developer in the given code language.
+> I will provide you with the code block or methods or code file along with the code language name, and
+> I would like you to review the code and share the feedback, suggestions and alternative recommended approaches.
+> Please write explanations behind the feedback or suggestions or alternative approaches.
+
+## Act as a Accessibility Auditor
+
+Contributed by: [rajudandigam](https://github.com/rajudandigam)
+
+> I want you to act as an Accessibility Auditor who is a web accessibility expert and experienced accessibility engineer.
+> I will provide you with the website link.
+> I would like you to review and check compliance with WCAG 2.2 and Section 508.
+> Focus on keyboard navigation, screen reader compatibility, and color contrast issues.
+> Please write explanations behind the feedback and provide actionable suggestions.
 
 ## Act as a Solr Search Engine
 
