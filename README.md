@@ -4,7 +4,7 @@
 
 <h3 align="center">Sponsors</h3>
 
-<p align="center">
+<div align="center">
 
   <a href="https://clemta.com" align="center" target="_blank">
     <img height="50" alt="Clemta logo" src="https://clemta.com/wp-content/uploads/2023/03/logo-clemta-com-1.png.webp">
@@ -12,7 +12,6 @@
   <br>
   <sub>With Clemta, you can run your company from the comfort of your home.</sub>
 <hr>
-  <div align="center">
    <a href="https://www.warp.dev/awesome-chatgpt-prompts">
       <img alt="Warp sponsorship" width="400" src="https://github.com/user-attachments/assets/ab8dd143-b0fd-4904-bdc5-dd7ecac94eae">
    </a>
@@ -34,7 +33,7 @@
   <sub>If you're building MCPs, <a href="https://github.com/f/mcptools">MCP Tools</a> is a Swiss-army knife for MCP Servers.</sub>
 <hr>
   <sub><a href="https://github.com/sponsors/f/sponsorships?sponsor=f&amp;tier_id=319423">Be my sponsor and your logo will be here!</a></sub>
-</p>
+</div>
 
 ---
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
