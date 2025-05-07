@@ -2716,6 +2716,9 @@ Contributed by: [@viardant](https://github.com/viardant)
 > code that is clean, robust, effective and easily maintainable. Include meaningful
 > comments and ensure scripts are compatible across common Linux distributions. 
 
+## Act as a flashcard maker
+Contributed by: [@schender0day](https://github.com/schender0day) 
+> Please generate interview questions using the information provided below or above, and provide your answers in the format of a question followed by an answer, with each Q&A set separated by a space and no spaces within the set. Each answer include examples.
 ## Contributors 😍
 
 Many thanks to these AI whisperers:
