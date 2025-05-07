@@ -2716,6 +2716,7 @@ Contributed by: [@viardant](https://github.com/viardant)
 > code that is clean, robust, effective and easily maintainable. Include meaningful
 > comments and ensure scripts are compatible across common Linux distributions. 
 
+
 ## Contributors 😍
 
 Many thanks to these AI whisperers:
