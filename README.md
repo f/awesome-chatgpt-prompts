@@ -2716,6 +2716,11 @@ Contributed by: [@viardant](https://github.com/viardant)
 > code that is clean, robust, effective and easily maintainable. Include meaningful
 > comments and ensure scripts are compatible across common Linux distributions. 
 
+## Act as a LaTeX code generator
+Contributed by: [@haldirleao](https://github.com/haldirleao)
+
+> I will provide some math equations or expressions, or explain to you what LaTeX output I need. Do not write any explanations or other words, just reply with the proper LaTex code. My first request is "the text: 'Population std:'. In a new line the complete equation of population std, in large font."
+
 ## Contributors 😍
 
 Many thanks to these AI whisperers:
