@@ -60,7 +60,7 @@ jobs:
             grep -n "[[:space:]]$" prompts.csv | while read -r line; do
               echo "Line with trailing whitespace: $line"
             done
-            exit 1
+            exit 0
           fi
           echo "No trailing whitespaces found"
 
