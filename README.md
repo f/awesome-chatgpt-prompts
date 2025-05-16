@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/f-awesome-chatgpt-prompts-badge.png)](https://mseep.ai/app/f-awesome-chatgpt-prompts)
+
 <p align="center">
 <img width="395" alt="prompts.chat" src="https://github.com/user-attachments/assets/e0d0e32d-d2ce-4459-9f37-e951d9f4f5de" />
 </p>
