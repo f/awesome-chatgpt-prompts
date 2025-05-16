@@ -40,11 +40,11 @@ jobs:
               if headers != ["act", "prompt", "for_devs"]:
                   print("Error: CSV headers must be exactly [act, prompt, for_devs]")
                   exit(1)
-              for row_num, row in enumerate(reader, 2):
-                  if len(row) != 2:
+              for row_num, row in enumerate(reader, 3):
+                  if len(row) != 3:
                       print(f"Error: Row {row_num} has {len(row)} columns, expected 2")
                       exit(1)
-                  if not row[0] or not row[1]:
+                  if not row[0] or not row[1] or not row[2]:
                       print(f"Error: Row {row_num} has empty values")
                       exit(1)
           '; then
