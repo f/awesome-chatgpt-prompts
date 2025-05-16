@@ -37,8 +37,8 @@ jobs:
           with open("prompts.csv", "r", encoding="utf-8") as f:
               reader = csv.reader(f)
               headers = next(reader)
-              if headers != ["act", "prompt"]:
-                  print("Error: CSV headers must be exactly [act, prompt]")
+              if headers != ["act", "prompt", "for_devs"]:
+                  print("Error: CSV headers must be exactly [act, prompt, for_devs]")
                   exit(1)
               for row_num, row in enumerate(reader, 2):
                   if len(row) != 2:
