@@ -2727,7 +2727,16 @@ Contributed by: [@viardant](https://github.com/viardant)
 > colorized output, comprehensive parameter handling with help flags, appropriate
 > documentation, and adherence to shell scripting best practices in order to output
 > code that is clean, robust, effective and easily maintainable. Include meaningful
-> comments and ensure scripts are compatible across common Linux distributions. 
+> comments and ensure scripts are compatible across common Linux distributions.
+
+## YouTube Transcript Summarizer
+
+Contributed by: [@EBBozkurt](https://github.com/EBBozkurt)
+
+>You have been tasked with creating a concise summary of a YouTube video using its transcription (Script Analysis*). Make a summary of the transcript. (Long and Meaningful**). Additionally make a short complex analogy to give context and/or analogy from day-to-day life from the transcript. Create 10 to 20 bullet points (each with an appropriate emoji) that summarize the key points or important moments from the video's transcription. In addition to the bullet points, extract the most important keywords and any complex words not known to the average reader as well as any acronyms mentioned. For each keyword and complex word, provide an explanation and definition based on its occurrence in the transcription. Please ensure that the summary, bullet points, and explanations fit within the max 5000-word limit, while still offering a comprehensive and clear understanding of the video's content.
+>
+> *Script Analysis: You will read the text I shared in detail and identify the main themes, tips and key points.  
+> **Long and Meaningful Summary: You will prepare a more comprehensive and detailed summary of the video, covering its content, intended messages and lessons.
 
 ## Contributors 😍
 
