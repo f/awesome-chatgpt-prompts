@@ -1,0 +1,89 @@
+#!/usr/bin/env python3
+
+import csv
+import json
+import uuid
+import os
+import argparse
+
+
+def convert_csv_to_json(prompt_csv, dev_filter=None):
+    """
+    Convert the prompt CSV to open webUI compatible JSON.
+
+    Args:
+        prompt_csv (str): Path to the CSV file
+        dev_filter (str, optional): Filter entries by for_devs value ('true' or 'false')
+
+    Returns:
+        str: Path to the generated JSON file
+    """
+    file_timestamp = int(os.path.getmtime(prompt_csv))
+    user_id = str(uuid.uuid4())
+    result = []
+
+    with open(prompt_csv, 'r', encoding='utf-8') as f:
+        csv_reader = csv.DictReader(f)
+        fieldnames = csv_reader.fieldnames
+        required_fields = ['act', 'prompt', 'for_devs']
+        if not all(field in fieldnames for field in required_fields):
+            raise ValueError(f"CSV file must contain columns: {', '.join(required_fields)}")
+        for row in csv_reader:
+            if dev_filter is not None and dev_filter.lower() != row['for_devs'].strip().lower():
+                continue
+            act = row['act'].strip()
+            prompt = row['prompt'].strip()
+            command = act.lower().replace(' ', '-').replace('"', '').replace("'", '')
+            entry = {
+                "id": str(uuid.uuid4()),
+                "userId": user_id,
+                "command": command,
+                "title": act,
+                "content": prompt,
+                "downloads": 0,
+                "upvotes": 0,
+                "downvotes": 0,
+                "createdAt": file_timestamp,
+                "public": True,
+                "user": {
+                    "id": user_id,
+                    "username": "awesome-chatgpt-prompts",
+                    "name": "Awesome ChatGPT prompts",
+                    "createdAt": file_timestamp,
+                    "role": None,
+                    "verified": False
+                }
+            }
+            result.append(entry)
+
+    if dev_filter:
+        output_file = f"open_webui_prompts_dev_{dev_filter.lower()}.json"
+    else:
+        output_file = "open_webui_prompts.json"
+
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(result, f, indent=2)
+
+    return output_file
+
+
+def main():
+    parser = argparse.ArgumentParser(description='Convert prompt CSV to Open WebUI compatible JSON')
+    parser.add_argument('--prompt_csv',
+                        help='Path to the CSV file. Defaults to ../prompts.csv',
+                        default='../prompts.csv')
+    parser.add_argument('--dev-filter', choices=['true', 'false'],
+                        help='Filter entries by for_devs value. By default, both are included.')
+    args = parser.parse_args()
+
+    try:
+        output_file = convert_csv_to_json(args.prompt_csv, args.dev_filter)
+        print(f"Conversion complete. Output saved to {output_file}")
+    except Exception as e:
+        print(f"Error: {e}")
+        return 1
+    return 0
+
+
+if __name__ == "__main__":
+    exit(main())
