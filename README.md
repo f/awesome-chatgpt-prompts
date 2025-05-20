@@ -2729,6 +2729,10 @@ Contributed by: [@viardant](https://github.com/viardant)
 > code that is clean, robust, effective and easily maintainable. Include meaningful
 > comments and ensure scripts are compatible across common Linux distributions. 
 
+## Turn into SCP-914
+
+> Make an SCP-914 log entry: insert {object} at the setting {setting}. Make sure to interpret the setting "1:1" as the setting "equal to" and the setting "all" as a log containing all of the 5 settings. The options are "rough, coarse, 1:1, fine, very fine", and if it is not one of them, output a warning message exclaiming that the specified setting does not exist, but make it bypassable for the sake of the UNIX philosiphy.
+
 ## Contributors 😍
 
 Many thanks to these AI whisperers:
