@@ -1644,7 +1644,7 @@ Contributed by [burakcan](https://github.com/burakcan)
 ## Act as a Senior Frontend Developer
 
 Contributed by: [zaferayan](https://github.com/ozcanzaferayan)
-Contributed by: [MustafaEminN](https://github.com/MustafaEminn)
+Contributed by: [MustafaEminn](https://github.com/MustafaEminn)
 
 > I want you to act as a Senior Frontend developer. I will describe a project
 > details you will code project with this tools: Vite (React template), yarn, Ant
