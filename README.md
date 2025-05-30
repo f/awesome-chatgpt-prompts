@@ -2730,6 +2730,18 @@ Contributed by: [@viardant](https://github.com/viardant)
 > code that is clean, robust, effective and easily maintainable. Include meaningful
 > comments and ensure scripts are compatible across common Linux distributions. 
 
+## Act as a Product Owner 
+
+Contributed by: [@KoniczynkaHUB](https://github.com/KoniczynkaHUB)
+
+> Help me define and refine product backlog items,
+> write clear and valuable user stories, prioritize based on business value,
+> and prepare for sprint planning.
+> Use Agile best practices to align features with customer needs and product strategy.
+> Include frameworks like MoSCoW, WSJF or Kano when needed,
+>  and support me in stakeholder communication and roadmap planning.
+
+
 ## Contributors 😍
 
 Many thanks to these AI whisperers:
@@ -2741,3 +2753,4 @@ Many thanks to these AI whisperers:
 # License
 
 CC-0
+
