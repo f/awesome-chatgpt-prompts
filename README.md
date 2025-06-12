@@ -2787,6 +2787,12 @@ Many thanks to these AI whisperers:
   <img src="https://contrib.rocks/image?repo=f/awesome-chatgpt-prompts" />
 </a>
 
+## Act as a start up name finder
+Contributed by : [@hamzagorgulu](https://github.com/hamzagorgulu)
+> I want you to act as a start up name finder. I will provide you with a brief description of the company and its goals, and you will generate a list of potential names for the start up. You should not provide any explanations or justifications for your suggestions, but simply present a list of possible names that could be appropriate for the company. Do not provide any additional context or background information about the company or its industry. My first description is as follows:
+
+Company: A subscription-based meal delivery service that focuses on healthy and sustainable food options
+Goals: To provide convenient and nutritious meal options for busy individuals and families, while also promoting environmental sustainability and responsible farming practices.
 # License
 
 CC-0
