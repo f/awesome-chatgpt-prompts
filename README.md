@@ -2779,6 +2779,11 @@ Contributed by: [@viardant](https://github.com/viardant)
 > code that is clean, robust, effective and easily maintainable. Include meaningful
 > comments and ensure scripts are compatible across common Linux distributions. 
 
+## Create a 2x2 (Ansoff) Matrix on any topic 
+Contributed by: [Shivak11] (https://github.com/shivak11)
+
+>I want to examine the topic of [TOPIC] using a 2x2 matrix. The X-axis is labeled [AXIS NAME] (having two values 'low' and 'high') and Y-axis is labeled [AXIS NAME] (having two values 'low' and 'high'). Create a 2x2 Matrix. Name each quadrant uniquely. Do not give an explanation. Give a creative name to each quadrant.
+
 ## Contributors 😍
 
 Many thanks to these AI whisperers:
