@@ -49,6 +49,14 @@
         <div class="designer-panel w-80 flex flex-col h-full overflow-hidden">
             <div class="flex-1 overflow-y-auto custom-scrollbar">
                 <div class="p-6 space-y-4">
+                    <!-- Context -->
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium text-dynamic-muted-foreground">Context</label>
+                        <input type="text" id="designer-context" 
+                               class="w-full p-2 bg-dynamic-background border border-dynamic-border rounded-lg text-sm focus-ring"
+                               placeholder="file.py, @web, @codebase, #image">
+                    </div>
+                    
                     <!-- Prompt Text -->
                     <div class="space-y-2">
                         <label class="text-sm font-medium text-dynamic-muted-foreground">Prompt Text</label>
@@ -203,14 +211,6 @@
                         </div>
                     </div>
                     
-                    <!-- Context -->
-                    <div class="space-y-2">
-                        <label class="text-sm font-medium text-dynamic-muted-foreground">Context</label>
-                        <input type="text" id="designer-context" 
-                               class="w-full p-2 bg-dynamic-background border border-dynamic-border rounded-lg text-sm focus-ring"
-                               placeholder="file.py, @web, @codebase, #image">
-                    </div>
-                    
                     <!-- Height -->
                     <div class="space-y-2">
                         <label class="text-sm font-medium text-dynamic-muted-foreground">
@@ -232,11 +232,9 @@
                 <button id="generate-embed" class="w-full bg-dynamic-primary text-white p-2 rounded-lg text-sm font-medium hover:opacity-90 transition-opacity">
                     Generate Embed Code
                 </button>
-                <div class="pt-3 border-t border-dynamic-border">
-                    <button id="reset-settings" class="w-full text-dynamic-muted-foreground p-2 text-sm hover:text-dynamic-foreground transition-colors">
-                        Reset All Settings
-                    </button>
-                </div>
+                <button id="reset-settings" class="text-[11px] text-dynamic-muted-foreground hover:text-dynamic-foreground transition-colors opacity-60 hover:opacity-100">
+                    Reset settings
+                </button>
             </div>
         </div>
         
