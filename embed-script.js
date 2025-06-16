@@ -15,24 +15,45 @@ class EmbedDesigner {
     }
     
     getInitialConfig() {
-        // Try to load from localStorage first
+        // Check if we have URL parameters
+        const hasUrlParams = Object.keys(this.params).length > 0;
+        
+        // If URL params exist, prioritize them over saved config
+        if (hasUrlParams) {
+            // Start with defaults, then apply saved config, then override with URL params
+            const savedConfig = this.loadFromLocalStorage() || {};
+            return {
+                prompt: this.params.prompt || savedConfig.prompt || '',
+                context: this.params.context ? this.params.context.split(',').map(c => c.trim()) : (savedConfig.context || []),
+                model: this.params.model || savedConfig.model || 'gpt-4o',
+                mode: this.params.agentMode || savedConfig.mode || 'chat',
+                thinking: this.params.thinking === 'true' ? true : (this.params.thinking === 'false' ? false : (savedConfig.thinking || false)),
+                max: this.params.max === 'true' ? true : (this.params.max === 'false' ? false : (savedConfig.max || false)),
+                lightColor: this.params.lightColor || savedConfig.lightColor || '#3b82f6',
+                darkColor: this.params.darkColor || savedConfig.darkColor || '#60a5fa',
+                height: this.params.height || savedConfig.height || '400',
+                themeMode: this.params.themeMode || savedConfig.themeMode || 'auto'
+            };
+        }
+        
+        // Otherwise, try to load from localStorage
         const savedConfig = this.loadFromLocalStorage();
         if (savedConfig) {
             return savedConfig;
         }
         
-        // Otherwise, use URL params or defaults
+        // Fall back to defaults
         return {
-            prompt: this.params.prompt || '',
-            context: this.params.context ? this.params.context.split(',').map(c => c.trim()) : [],
-            model: this.params.model || 'gpt-4o',
-            mode: this.params.agentMode || 'chat',
-            thinking: this.params.thinking === 'true',
-            max: this.params.max === 'true',
-            lightColor: this.params.lightColor || '#3b82f6',
-            darkColor: this.params.darkColor || '#60a5fa',
-            height: this.params.height || '400',
-            themeMode: this.params.themeMode || 'auto'
+            prompt: '',
+            context: [],
+            model: 'gpt-4o',
+            mode: 'chat',
+            thinking: false,
+            max: false,
+            lightColor: '#3b82f6',
+            darkColor: '#60a5fa',
+            height: '400',
+            themeMode: 'auto'
         };
     }
     

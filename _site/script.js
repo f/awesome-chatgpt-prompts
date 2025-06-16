@@ -719,6 +719,21 @@ function createModal() {
             <a class="modal-contributor" target="_blank" rel="noopener"></a>
         </div>
         <div class="modal-footer-right">
+            <button class="modal-embed-button" onclick="openEmbedDesigner()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                <rect x="9" y="9" width="6" height="6"></rect>
+                <path d="M15 2v2"></path>
+                <path d="M15 20v2"></path>
+                <path d="M2 15h2"></path>
+                <path d="M20 15h2"></path>
+                <path d="M2 9h2"></path>
+                <path d="M20 9h2"></path>
+                <path d="M9 2v2"></path>
+                <path d="M9 20v2"></path>
+            </svg>
+            Embed
+            </button>
             <button class="modal-chat-button" onclick="openModalChat()">
             <svg class="chat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
@@ -1042,6 +1057,28 @@ function openModalChat() {
   if (modalContent) {
     const content = modalContent.textContent;
     openInChat(null, encodeURIComponent(content.trim()));
+  }
+}
+
+// Function to handle embed button click in modal
+function openEmbedDesigner() {
+  const modalContent = document.querySelector(".modal-content");
+  if (modalContent) {
+    let content = modalContent.textContent || modalContent.innerText;
+    
+    // If there's a variable form, get the processed content with variables
+    const form = document.querySelector(".variable-form");
+    if (form) {
+      content = buildPrompt(encodeURIComponent(content.trim()));
+      // Remove the added language/tone preferences for embed
+      content = content.replace(/\s*Reply in .+ using .+ tone for .+\.$/, '').trim();
+    }
+    
+    // Build the embed URL
+    const embedUrl = `/embed/?prompt=${encodeURIComponent(content)}&context=https://prompts.chat&model=gpt-4o&agentMode=chat&thinking=false&max=false&height=400`;
+    
+    // Open in new tab
+    window.open(embedUrl, '_blank');
   }
 }
 

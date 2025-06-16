@@ -25,7 +25,7 @@
 
 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/style.css?v=30d68386ccc36c5cd3aaa3773656bc130a8f1918">
+    <link rel="stylesheet" href="/style.css?v=02b85cf83506c024ac20fde0b38f51f24ed21336">
   </head>
   <body class="">
     <div class="layout-wrapper">
@@ -3567,7 +3567,57 @@ comments and ensure scripts are compatible across common Linux distributions.</p
       });
     </script>
     
-    <style>video { max-width: 100% !important; }</style>
+    <style>
+      video { max-width: 100% !important; }
+      
+      /* Embed button styling */
+      .modal-embed-button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        background-color: var(--accent-color);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        margin-right: 8px;
+      }
+      
+      .modal-embed-button:hover {
+        background-color: var(--accent-color-hover);
+        transform: translateY(-1px);
+      }
+      
+      .modal-embed-button svg {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+      }
+      
+      /* Responsive adjustments for modal buttons */
+      @media (max-width: 640px) {
+        .modal-footer-right {
+          flex-direction: column-reverse;
+          gap: 8px;
+        }
+        
+        .modal-embed-button {
+          margin-right: 0;
+          margin-bottom: 0;
+          width: 100%;
+          justify-content: center;
+        }
+        
+        .modal-chat-button {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MSNHFWTE77"></script>
     <script>
