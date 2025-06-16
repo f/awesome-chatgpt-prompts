@@ -31,7 +31,7 @@
     <!-- Viewer Mode -->
     <div id="viewer-mode" class="viewer-mode h-screen flex flex-col p-2 sm:p-4">
         <!-- Context Pills -->
-        <div id="context-pills" class="flex overflow-x-auto gap-2 empty:hidden mb-0 sm:mb-2 pb-1 scrollbar-hide min-h-[25px]"></div>
+        <div id="context-pills" class="flex overflow-x-auto gap-2 empty:hidden mb-0 sm:mb-2 pb-1 scrollbar-hide"></div>
         
         <!-- Main Prompt Interface - Full Height -->
         <div class="flex-1 flex flex-col">
@@ -45,13 +45,6 @@
         <div class="flex justify-between items-center gap-2 mt-0 sm:mt-2">
             <!-- Settings Pills -->
             <div id="settings-pills" class="flex gap-1 sm:gap-2 flex-wrap flex-1 min-w-0"></div>
-            
-            <!-- Download Button -->
-            <button id="download-button" class="w-8 h-8 sm:w-10 sm:h-10 bg-dynamic-muted text-dynamic-foreground rounded-full flex items-center justify-center hover:bg-dynamic-muted/80 transition-colors focus-ring flex-shrink-0 shadow-lg touch-target mr-2" title="Download as PNG">
-                <svg width="16" height="16" class="sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-                </svg>
-            </button>
             
             <!-- Send Button (circular with arrow up) -->
             <button id="copy-button" class="w-8 h-8 sm:w-10 sm:h-10 bg-dynamic-primary text-white rounded-full flex items-center justify-center hover:opacity-90 transition-opacity focus-ring flex-shrink-0 shadow-lg touch-target" title="Send prompt">
