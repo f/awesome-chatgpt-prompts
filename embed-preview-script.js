@@ -177,6 +177,11 @@ class EmbedPreview {
         if (copyButton) {
             copyButton.addEventListener('click', () => this.handleCopy());
         }
+        
+        const editButton = document.getElementById('edit-button');
+        if (editButton) {
+            editButton.addEventListener('click', () => this.handleEdit());
+        }
     }
     
     render() {
@@ -351,6 +356,30 @@ class EmbedPreview {
         
         await this.copyToClipboard(this.config.prompt);
         this.showNotification('Prompt copied to clipboard!');
+    }
+    
+    handleEdit() {
+        // Get current query string
+        const queryString = window.location.search;
+        
+        // Get current URL path parts
+        const pathParts = window.location.pathname.split('/');
+        
+        // Find index of 'embed-preview' and replace with 'embed'
+        const embedPreviewIndex = pathParts.findIndex(part => part === 'embed-preview');
+        if (embedPreviewIndex !== -1) {
+            pathParts[embedPreviewIndex] = 'embed';
+        } else {
+            // Fallback: just append /embed/ if embed-preview not found
+            pathParts.push('embed');
+        }
+        
+        // Construct new URL
+        const newPath = pathParts.join('/');
+        const newUrl = window.location.origin + newPath + queryString;
+        
+        // Open in new tab
+        window.open(newUrl, '_blank');
     }
     
     async copyToClipboard(text) {
