@@ -522,7 +522,7 @@ class EmbedDesigner {
         this.config = {
             prompt: 'Build an MCP server that works with Weather API. See @Web for cool weather APIs.',
             context: ['@Web', 'https://modelcontextprotocol.io/full-llms.txt'],
-            model: 'claude-4-sonnet',
+            model: 'Claude 4 Sonnet',
             mode: 'agent',
             thinking: true,
             max: true,
