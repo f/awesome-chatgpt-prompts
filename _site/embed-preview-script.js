@@ -277,7 +277,7 @@ class EmbedPreview {
     
     createSettingPill(text, type) {
         const pill = document.createElement('div');
-        pill.className = 'px-3 py-2 rounded-full text-xs font-medium flex items-center gap-1.5';
+        pill.className = 'rounded-full text-xs font-medium flex items-center gap-1.5';
         
         let icon = '';
         
@@ -285,13 +285,13 @@ class EmbedPreview {
         if (type === 'mode') {
             // Mode pill keeps the background
             if (this.isDarkMode) {
-                pill.className += ' bg-dynamic-primary/20 text-dynamic-foreground border border-dynamic-primary/30';
+                pill.className += ' px-3 py-2 bg-dynamic-primary/20 text-dynamic-foreground border border-dynamic-primary/30';
             } else {
-                pill.className += ' bg-dynamic-primary/10 text-dynamic-foreground border border-dynamic-primary/20';
+                pill.className += ' px-3 py-2 bg-dynamic-primary/10 text-dynamic-foreground border border-dynamic-primary/20';
             }
         } else {
             // Model, thinking, and max pills only have text color
-            pill.className += ' text-dynamic-primary';
+            pill.className += ' pl-1 text-dynamic-primary';
         }
         
         switch (type) {

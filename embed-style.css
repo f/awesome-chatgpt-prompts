@@ -21,14 +21,33 @@
     --border-color-dark: #2d2d2d;
 }
 
+/* Reset body margin and ensure full height */
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* Allow scrolling on mobile */
+@media (max-width: 768px) {
+    body {
+        overflow: auto !important;
+        height: auto !important;
+        min-height: 100vh;
+    }
+}
+
 /* Site Header Styles */
 .site-header {
     padding: 1rem 2rem;
     text-align: left;
     border-bottom: 1px solid var(--border-color);
     background-color: var(--bg-color-light);
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
     display: flex;
     justify-content: space-between;
@@ -109,7 +128,18 @@ body.dark-mode .site-slogan {
 
 /* Adjust designer content to account for header */
 .designer-content {
-    height: calc(100vh - var(--header-height));
+    height: 100vh;
+    padding-top: 0;
+    box-sizing: border-box;
+    display: flex;
+}
+
+/* Override height on mobile to allow scrolling */
+@media (max-width: 768px) {
+    .designer-content {
+        height: auto !important;
+        min-height: 100vh;
+    }
 }
 
 /* Dynamic color classes */
@@ -206,11 +236,36 @@ body.dark-mode .border-dynamic-border {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    height: 100vh;
+    position: relative;
+    width: 320px;
+    flex-shrink: 0;
 }
 
 body.dark-mode .designer-panel {
     background-color: #262626;
     border-right-color: var(--border-color-dark);
+}
+
+/* Adjust the scrollable content area */
+.designer-panel > .flex-1 {
+    padding-top: calc(var(--header-height) + 1rem);
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ensure the bottom generate buttons section stays at bottom */
+.designer-panel > .p-6:last-child {
+    position: sticky;
+    bottom: 0;
+    background-color: rgb(var(--muted));
+    margin-top: auto;
+}
+
+body.dark-mode .designer-panel > .p-6:last-child {
+    background-color: #2a2a2a;
 }
 
 /* Ensure textarea can be full height */
@@ -249,10 +304,31 @@ body.dark-mode .designer-panel {
 }
 
 /* Responsive design improvements */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+    .designer-content {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+    }
+    
     .designer-panel {
+        width: 100%;
+        height: auto;
+        min-height: auto;
         border-right: 0;
         border-bottom: 1px solid rgb(var(--border));
+        position: relative;
+    }
+    
+    .designer-panel > .flex-1 {
+        padding-top: 1rem;
+        height: auto;
+    }
+    
+    /* Ensure the preview area doesn't take full height on mobile */
+    .designer-content > .flex-1 {
+        min-height: 300px;
+        height: auto;
     }
 }
 
@@ -386,4 +462,303 @@ body.dark-mode #iframe-snippet {
 body.dark-mode #iframe-snippet:hover {
     background-color: rgba(255, 255, 255, 0.08);
     color: rgba(255, 255, 255, 0.9);
+}
+
+/* ============================== */
+/* Mobile Responsive Styles       */
+/* ============================== */
+
+/* Touch target improvements for mobile */
+.touch-target {
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .touch-target {
+        min-height: 48px;
+        min-width: 48px;
+    }
+}
+
+/* Mobile menu toggle button */
+.mobile-menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--accent-color);
+    cursor: pointer;
+    padding: 8px;
+    margin-right: 8px;
+}
+
+.mobile-menu-toggle svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Mobile close button - hidden by default */
+.mobile-close-btn {
+    display: none;
+    position: absolute;
+    top: calc(var(--header-height) + 1rem);
+    right: 1rem;
+    z-index: 10;
+    background: transparent;
+    border: none;
+    color: rgb(var(--muted-foreground));
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.mobile-close-btn:hover {
+    background: rgb(var(--muted));
+    color: rgb(var(--foreground));
+}
+
+.mobile-close-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Mobile overlay */
+.mobile-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-overlay.active {
+    opacity: 1;
+}
+
+
+
+/* Mobile devices */
+@media (max-width: 768px) {
+    /* Header adjustments */
+    .site-header {
+        padding: 1rem;
+        height: 60px;
+        --header-height: 60px;
+    }
+    
+    .header-left {
+        flex: 1;
+    }
+    
+    .site-title {
+        font-size: 1.4rem;
+    }
+    
+    .site-slogan {
+        font-size: 0.75rem;
+    }
+    
+    /* Simplified mobile layout - stack vertically */
+    .designer-content {
+        flex-direction: column !important;
+        height: auto !important;
+        min-height: 100vh;
+        padding-top: 60px; /* Account for fixed header */
+        overflow: visible !important;
+    }
+    
+    .designer-panel {
+        position: relative;
+        width: 100%;
+        height: auto;
+        min-height: auto;
+        border-right: none;
+        border-bottom: 1px solid rgb(var(--border));
+        order: 2; /* Bottom on mobile */
+        overflow: visible;
+    }
+    
+    .designer-panel > .flex-1 {
+        padding-top: 1rem;
+        height: auto;
+        max-height: none;
+        overflow: visible;
+    }
+    
+    /* Preview adjustments */
+    .designer-content > .flex-1 {
+        order: 1; /* Top on mobile */
+        padding: 1rem;
+        min-height: 300px;
+        height: auto;
+    }
+    
+    #preview-wrapper {
+        max-width: 100%;
+        height: 250px; /* Fixed height on mobile */
+    }
+    
+    /* Form element adjustments */
+    .designer-panel .p-4 {
+        padding: 1rem;
+    }
+    
+    input[type="text"],
+    input[type="color"],
+    textarea,
+    select {
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+    
+    /* Make buttons more touch-friendly */
+    button {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .color-preset {
+        height: 40px;
+    }
+    
+    /* Modal adjustments */
+    #embed-modal > div {
+        margin: 1rem;
+        max-height: calc(100vh - 2rem);
+    }
+    
+    /* Notification adjustments */
+    #notification {
+        top: auto;
+        bottom: 1rem;
+        right: 1rem;
+        left: 1rem;
+        text-align: center;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    .site-header {
+        padding: 0.75rem;
+    }
+    
+    .site-title {
+        font-size: 1.2rem;
+    }
+    
+    /* Stack color inputs vertically */
+    .flex.items-center.gap-3 {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    /* Stack grid columns on very small screens */
+    .grid.grid-cols-2,
+    .grid.grid-cols-3,
+    .grid.grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Adjust modal padding */
+    #embed-modal > div {
+        padding: 1rem;
+    }
+    
+    /* Make range slider easier to use */
+    input[type="range"]::-webkit-slider-thumb {
+        height: 24px;
+        width: 24px;
+        margin-top: -8px;
+    }
+    
+    input[type="range"]::-moz-range-thumb {
+        height: 24px;
+        width: 24px;
+    }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 600px) and (orientation: landscape) {
+    .site-header {
+        height: 50px;
+        --header-height: 50px;
+        padding: 0.5rem 1rem;
+    }
+    
+    .designer-panel {
+        max-height: calc(100vh - 50px);
+    }
+    
+    .designer-panel .flex-1 {
+        max-height: calc(100vh - 170px);
+    }
+    
+    #designer-prompt {
+        min-height: 100px;
+        rows: 4;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Increase tap targets */
+    button,
+    input[type="checkbox"],
+    input[type="radio"],
+    select {
+        min-height: 44px;
+    }
+    
+    /* Remove hover effects on touch devices */
+    .theme-mode-btn:hover:not(.bg-dynamic-primary),
+    .color-preset:hover,
+    button:hover {
+        transform: none;
+        opacity: 1;
+    }
+    
+    /* Add active states for better feedback */
+    button:active,
+    .theme-mode-btn:active,
+    .color-preset:active {
+        transform: scale(0.95);
+        transition: transform 0.1s ease;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .border-dynamic-border {
+        border-width: 2px;
+    }
+    
+    input:focus,
+    textarea:focus,
+    select:focus {
+        outline-width: 3px;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Right Panel - Preview adjustments */
+.designer-content > .flex-1 {
+    padding-top: var(--header-height);
+    box-sizing: border-box;
 } 

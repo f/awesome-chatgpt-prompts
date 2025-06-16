@@ -78,4 +78,108 @@
 
 .viewer-mode .prompt-input:focus {
     outline: none;
+}
+
+/* Hide scrollbar for horizontal scrolling pills */
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+
+/* Touch target improvements for mobile */
+.touch-target {
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsive improvements */
+@media (max-width: 640px) {
+    /* Ensure context pills don't wrap and scroll horizontally */
+    #context-pills {
+        flex-wrap: nowrap;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    
+    /* More compact pill spacing on mobile */
+    .pill,
+    #settings-pills .pill,
+    #settings-pills > * {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+        white-space: nowrap;
+    }
+    
+    /* Ensure button maintains minimum touch target */
+    #copy-button {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Adjust text size in prompt area for better mobile readability */
+    #prompt-text {
+        line-height: 1.5;
+    }
+    
+    /* Make sure settings pills don't overflow */
+    #settings-pills {
+        overflow: hidden;
+    }
+    
+    /* Compact layout adjustments */
+    .viewer-mode {
+        gap: 0.5rem;
+    }
+}
+
+/* Very small mobile devices */
+@media (max-width: 480px) {
+    /* Even more compact spacing */
+    .pill,
+    #settings-pills .pill,
+    #settings-pills > * {
+        padding: 0.125rem 0.375rem;
+        font-size: 0.6875rem;
+    }
+    
+    /* Smaller button on very small screens */
+    #copy-button {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        min-height: 36px;
+    }
+    
+    #copy-button svg {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+/* Ensure proper touch behavior */
+@media (hover: none) and (pointer: coarse) {
+    /* All interactive elements get proper touch targets */
+    button, 
+    .pill,
+    #settings-pills > * {
+        min-height: 44px;
+    }
+    
+    /* Remove hover effects on touch devices */
+    button:hover {
+        opacity: 1;
+    }
+    
+    /* Add active states for better feedback */
+    button:active {
+        transform: scale(0.95);
+        transition: transform 0.1s ease;
+    }
 } 
