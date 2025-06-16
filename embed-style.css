@@ -374,4 +374,16 @@ input[type="color"]::-webkit-color-swatch {
 /* Better visual hierarchy for labels */
 label {
     font-weight: 500;
+}
+
+/* Dark mode iframe snippet styling */
+body.dark-mode #iframe-snippet {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+}
+
+body.dark-mode #iframe-snippet:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.9);
 } 

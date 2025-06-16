@@ -33,7 +33,7 @@
     <header class="site-header">
         <div class="header-left">
             <h1 class="site-title">prompts.chat/embed</h1>
-            <p class="site-slogan">Design and share beautiful AI prompts</p>
+            <p class="site-slogan">Design and share beautiful AI prompts, for your website or blog.</p>
         </div>
         <div class="header-right">
             <button class="dark-mode-toggle" onclick="toggleDarkMode()" title="Toggle dark mode">
@@ -56,6 +56,9 @@
                                  class="w-full p-3 bg-dynamic-background border border-dynamic-border rounded-lg text-sm resize-none focus-ring custom-scrollbar"
                                  rows="8"
                                  placeholder="Enter your prompt..."></textarea>
+                        <button type="button" id="load-example" class="text-xs text-dynamic-primary hover:text-opacity-80 transition-opacity">
+                            Load example →
+                        </button>
                     </div>
                     
                     <!-- Model & Mode -->
@@ -226,11 +229,8 @@
             
             <!-- Generate Buttons - Fixed at bottom -->
             <div class="p-6 space-y-3 border-t border-dynamic-border bg-dynamic-muted">
-                <button id="generate-embed" class="w-full bg-dynamic-primary text-white p-3 rounded-lg font-medium hover:opacity-90 transition-opacity">
+                <button id="generate-embed" class="w-full bg-dynamic-primary text-white p-2 rounded-lg text-sm font-medium hover:opacity-90 transition-opacity">
                     Generate Embed Code
-                </button>
-                <button id="copy-url" class="w-full bg-dynamic-muted text-dynamic-foreground p-3 rounded-lg font-medium hover:bg-opacity-80 transition-opacity border border-dynamic-border">
-                    Copy Share URL
                 </button>
                 <div class="pt-3 border-t border-dynamic-border">
                     <button id="reset-settings" class="w-full text-dynamic-muted-foreground p-2 text-sm hover:text-dynamic-foreground transition-colors">
@@ -247,6 +247,12 @@
                 <div id="preview-wrapper" class="bg-dynamic-background border border-dynamic-border rounded-xl overflow-hidden shadow-lg" style="height: 400px;">
                     <div class="h-full" id="preview-container">
                         <!-- Preview iframe will be injected here -->
+                    </div>
+                </div>
+                <div class="mt-4 space-y-1">
+                    <label class="text-[10px] text-dynamic-muted-foreground opacity-60 dark:opacity-40">Click to copy iframe code:</label>
+                    <div id="iframe-snippet" class="px-2 py-1 bg-dynamic-muted/30 border border-dynamic-border/50 rounded text-[10px] text-dynamic-muted-foreground font-mono cursor-pointer hover:bg-dynamic-muted/50 hover:text-dynamic-foreground transition-all overflow-hidden">
+                        &lt;iframe src="..."&gt;&lt;/iframe&gt;
                     </div>
                 </div>
             </div>

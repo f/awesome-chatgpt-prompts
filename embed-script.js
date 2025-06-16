@@ -75,6 +75,7 @@ class EmbedDesigner {
         this.setupDesignerEvents();
         this.setupDesignerColors();
         this.updatePreview();
+        this.updateIframeSnippet();
     }
     
     setupDesignerElements() {
@@ -260,8 +261,8 @@ class EmbedDesigner {
         // Generate embed button
         document.getElementById('generate-embed').addEventListener('click', () => this.showEmbedModal());
         
-        // Copy URL button
-        document.getElementById('copy-url').addEventListener('click', () => this.copyShareURL());
+        // Iframe snippet click to copy
+        document.getElementById('iframe-snippet').addEventListener('click', () => this.copyIframeCode());
         
         // Reset settings button
         document.getElementById('reset-settings').addEventListener('click', () => {
@@ -283,7 +284,13 @@ class EmbedDesigner {
                 // Update UI to reflect defaults
                 this.setupDesignerElements();
                 this.updatePreview();
+                this.updateIframeSnippet();
             }
+        });
+        
+        // Load example button
+        document.getElementById('load-example').addEventListener('click', () => {
+            this.loadExample();
         });
         
         // Modal events
@@ -325,6 +332,17 @@ class EmbedDesigner {
         
         this.updatePreview();
         this.saveToLocalStorage();
+        this.updateIframeSnippet();
+    }
+    
+    updateIframeSnippet() {
+        const snippet = document.getElementById('iframe-snippet');
+        if (!snippet) return;
+        
+        const code = this.generateEmbedCode();
+        // Show a shortened version in the snippet
+        const shortCode = code.replace(/\n/g, ' ').replace(/\s+/g, ' ');
+        snippet.textContent = shortCode;
     }
     
     setupDesignerColors() {
@@ -440,6 +458,12 @@ class EmbedDesigner {
         this.showNotification('Share URL copied to clipboard!');
     }
     
+    async copyIframeCode() {
+        const embedCode = this.generateEmbedCode();
+        await this.copyToClipboard(embedCode);
+        this.showNotification('Iframe code copied to clipboard!');
+    }
+    
     async copyToClipboard(text) {
         if (navigator.clipboard && window.isSecureContext) {
             await navigator.clipboard.writeText(text);
@@ -470,6 +494,31 @@ class EmbedDesigner {
             notification.classList.remove('opacity-100');
             notification.classList.add('opacity-0');
         }, duration);
+    }
+    
+    loadExample() {
+        // Set example data
+        this.config = {
+            prompt: 'Build an MCP server that works with Weather API. See @Web for cool weather APIs.',
+            context: ['@Web', 'https://modelcontextprotocol.io/full-llms.txt'],
+            model: 'claude-4-sonnet',
+            mode: 'agent',
+            thinking: true,
+            max: true,
+            lightColor: '#3b82f6',
+            darkColor: '#60a5fa',
+            height: '250',
+            themeMode: 'auto'
+        };
+        
+        // Update all form elements
+        this.setupDesignerElements();
+        this.updatePreview();
+        this.updateIframeSnippet();
+        this.saveToLocalStorage();
+        
+        // Show notification
+        this.showNotification('Example loaded!');
     }
 }
 
