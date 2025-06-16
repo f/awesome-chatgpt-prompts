@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: 'Prompt Share' }} - {{ site.title }}</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dynamic-background': 'rgb(var(--background) / <alpha-value>)',
+                        'dynamic-foreground': 'rgb(var(--foreground) / <alpha-value>)',
+                        'dynamic-muted': 'rgb(var(--muted) / <alpha-value>)',
+                        'dynamic-muted-foreground': 'rgb(var(--muted-foreground) / <alpha-value>)',
+                        'dynamic-primary': 'rgb(var(--primary) / <alpha-value>)',
+                        'dynamic-accent': 'rgb(var(--accent) / <alpha-value>)',
+                        'dynamic-border': 'rgb(var(--border) / <alpha-value>)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="{{ '/embed-preview-style.css' | relative_url }}">
+    <link rel="icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}">
+    <meta name="description" content="AI prompt viewer">
+</head>
+<body class="bg-dynamic-background text-dynamic-foreground overflow-hidden">
+    <!-- Viewer Mode -->
+    <div id="viewer-mode" class="viewer-mode h-screen flex flex-col p-4">
+        <!-- Context Pills -->
+        <div id="context-pills" class="flex flex-wrap gap-2 empty:hidden mb-4"></div>
+        
+        <!-- Main Prompt Interface - Full Height -->
+        <div class="flex-1 flex flex-col">
+            <div id="prompt-container" class="flex-1 bg-dynamic-muted border border-dynamic-border rounded-xl p-6 relative focus-within:border-dynamic-primary transition-colors flex flex-col">
+                <div id="prompt-text" class="flex-1 text-dynamic-foreground leading-relaxed whitespace-pre-wrap overflow-y-auto custom-scrollbar"></div>
+                <div id="prompt-placeholder" class="text-dynamic-muted-foreground italic absolute top-6 left-6 pointer-events-none">← Enter your prompt on designer...</div>
+            </div>
+        </div>
+        
+        <!-- Bottom Bar -->
+        <div class="flex justify-between items-center mt-4">
+            <!-- Settings Pills -->
+            <div id="settings-pills" class="flex gap-2 flex-wrap"></div>
+            
+            <!-- Send Button (circular with arrow up) -->
+            <button id="copy-button" class="w-10 h-10 bg-dynamic-primary text-white rounded-full flex items-center justify-center hover:opacity-90 transition-opacity focus-ring flex-shrink-0 shadow-lg" title="Send prompt">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M12 19V5M5 12l7-7 7 7"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Notification -->
+    <div id="notification" class="fixed top-4 right-4 bg-dynamic-accent text-white px-4 py-2 rounded-lg font-medium opacity-0 transition-opacity z-50 pointer-events-none"></div>
+    
+    <script src="{{ '/embed-preview-script.js' | relative_url }}"></script>
+</body>
+</html> 

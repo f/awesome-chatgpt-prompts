@@ -1,0 +1,377 @@
+/* Custom CSS variables for dynamic theming */
+:root {
+    /* These will be dynamically set by JavaScript based on light/dark colors */
+    --primary: 59 130 246; /* Default blue-500 */
+    --background: 255 255 255;
+    --foreground: 15 23 42;
+    --muted: 248 250 252;
+    --muted-foreground: 100 116 139;
+    --border: 226 232 240;
+    --accent: 16 185 129;
+    
+    /* Main site theme variables */
+    --bg-color-light: #ffffff;
+    --bg-color-dark: #1a1a1a;
+    --text-color-light: #000000;
+    --text-color-dark: #ffffff;
+    --header-height: 80px;
+    --accent-color: #10b981;
+    --accent-color-hover: #059669;
+    --border-color: #e1e4e8;
+    --border-color-dark: #2d2d2d;
+}
+
+/* Site Header Styles */
+.site-header {
+    padding: 1rem 2rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-color-light);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--header-height);
+}
+
+body.dark-mode .site-header {
+    background-color: var(--bg-color-dark);
+    border-bottom-color: var(--border-color-dark);
+}
+
+.header-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.site-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    background: linear-gradient(45deg, var(--accent-color), #3b82f6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.site-title:hover {
+    transform: translateY(-2px);
+}
+
+.site-slogan {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin: 0;
+    line-height: 1;
+    color: var(--text-color-light);
+}
+
+body.dark-mode .site-slogan {
+    color: var(--text-color-dark);
+}
+
+.dark-mode-toggle {
+    background-color: transparent;
+    border: none;
+    color: var(--accent-color);
+    cursor: pointer;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.dark-mode-toggle:hover {
+    opacity: 1;
+}
+
+.mode-icon {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+}
+
+/* Adjust designer content to account for header */
+.designer-content {
+    height: calc(100vh - var(--header-height));
+}
+
+/* Dynamic color classes */
+.bg-dynamic-background { background-color: rgb(var(--background)); }
+.bg-dynamic-muted { background-color: rgb(var(--muted)); }
+.bg-dynamic-primary { background-color: rgb(var(--primary)); }
+.bg-dynamic-accent { background-color: rgb(var(--accent)); }
+.text-dynamic-foreground { color: rgb(var(--foreground)); }
+.text-dynamic-muted-foreground { color: rgb(var(--muted-foreground)); }
+.text-dynamic-primary { color: rgb(var(--primary)); }
+.text-dynamic-accent { color: rgb(var(--accent)); }
+.border-dynamic-border { border-color: rgb(var(--border)); }
+.border-dynamic-primary { border-color: rgb(var(--primary)); }
+
+/* Dynamic color opacity variants for pills */
+.bg-dynamic-primary\/10 { background-color: rgb(var(--primary) / 0.1); }
+.bg-dynamic-primary\/20 { background-color: rgb(var(--primary) / 0.2); }
+.border-dynamic-primary\/20 { border-color: rgb(var(--primary) / 0.2); }
+.border-dynamic-primary\/30 { border-color: rgb(var(--primary) / 0.3); }
+
+/* Custom animations */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Mention highlighting */
+.mention {
+    background-color: rgb(var(--primary) / 0.1);
+    color: rgb(var(--primary));
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+}
+
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgb(var(--border));
+    border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--muted-foreground));
+}
+
+/* Focus styles */
+.focus-ring:focus {
+    outline: 2px solid rgb(var(--primary));
+    outline-offset: 2px;
+}
+
+/* Dark mode support */
+body.dark-mode {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+}
+
+body.dark-mode .bg-dynamic-background {
+    background-color: var(--bg-color-dark);
+}
+
+body.dark-mode .bg-dynamic-muted {
+    background-color: #2a2a2a;
+}
+
+body.dark-mode .text-dynamic-foreground {
+    color: var(--text-color-dark);
+}
+
+body.dark-mode .text-dynamic-muted-foreground {
+    color: #a0a0a0;
+}
+
+body.dark-mode .border-dynamic-border {
+    border-color: var(--border-color-dark);
+}
+
+/* Designer mode specific styles */
+.designer-panel {
+    border-right: 1px solid var(--border-color);
+    background-color: #f8fafb;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+body.dark-mode .designer-panel {
+    background-color: #262626;
+    border-right-color: var(--border-color-dark);
+}
+
+/* Ensure textarea can be full height */
+#designer-prompt {
+    min-height: 200px;
+}
+
+.viewer-mode .prompt-input {
+    cursor: default;
+}
+
+.viewer-mode .prompt-input:focus {
+    outline: none;
+}
+
+/* Theme button styles */
+.theme-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem; /* gap-1 */
+    padding: 0.5rem; /* p-2 */
+    border-radius: 0.5rem; /* rounded-lg */
+    border: 1px solid rgb(var(--border));
+    transition: border-color 0.15s ease; /* transition-colors */
+    cursor: pointer;
+}
+
+.theme-btn:hover {
+    border-color: rgb(var(--primary));
+}
+
+.theme-btn.active {
+    border-color: rgb(var(--primary));
+    background-color: rgb(var(--primary) / 0.05);
+}
+
+/* Responsive design improvements */
+@media (max-width: 768px) {
+    .designer-panel {
+        border-right: 0;
+        border-bottom: 1px solid rgb(var(--border));
+    }
+}
+
+/* Range slider styles */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-track {
+    background: rgb(var(--border));
+    height: 8px;
+    border-radius: 4px;
+}
+
+input[type="range"]::-moz-range-track {
+    background: rgb(var(--border));
+    height: 8px;
+    border-radius: 4px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgb(var(--primary));
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    margin-top: -6px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+input[type="range"]::-moz-range-thumb {
+    border: none;
+    background: rgb(var(--primary));
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+input[type="range"]:hover::-webkit-slider-thumb {
+    transform: scale(1.1);
+}
+
+input[type="range"]:hover::-moz-range-thumb {
+    transform: scale(1.1);
+}
+
+input[type="range"]:focus {
+    outline: none;
+}
+
+input[type="range"]:focus::-webkit-slider-thumb {
+    box-shadow: 0 0 0 3px rgb(var(--primary) / 0.2);
+}
+
+input[type="range"]:focus::-moz-range-thumb {
+    box-shadow: 0 0 0 3px rgb(var(--primary) / 0.2);
+}
+
+/* Color picker styles */
+input[type="color"] {
+    -webkit-appearance: none;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border: none;
+    border-radius: 0.5rem;
+}
+
+/* Color preset button styles */
+.color-preset {
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.color-preset:hover {
+    transform: scale(1.05);
+}
+
+.color-preset.selected {
+    border-color: rgb(var(--primary)) !important;
+    box-shadow: 0 0 0 3px rgb(var(--primary) / 0.2);
+}
+
+/* Theme mode button active state */
+.theme-mode-btn {
+    position: relative;
+    transition: all 0.15s ease;
+}
+
+.theme-mode-btn:hover:not(.bg-dynamic-primary) {
+    background-color: rgb(var(--muted));
+    border-color: rgb(var(--primary) / 0.5);
+}
+
+.theme-mode-btn.bg-dynamic-primary {
+    box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+}
+
+/* Improve color input layout */
+.color-input-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Better visual hierarchy for labels */
+label {
+    font-weight: 500;
+} 
