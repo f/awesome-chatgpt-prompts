@@ -29,40 +29,51 @@
 </head>
 <body class="bg-dynamic-background text-dynamic-foreground overflow-hidden">
     <!-- Viewer Mode -->
-    <div id="viewer-mode" class="viewer-mode h-screen flex flex-col p-2 sm:p-4">
-        <!-- Top Bar with Context Pills and Edit Button -->
-        <div class="flex justify-between items-start gap-2 mb-0 sm:mb-2">
-            <!-- Context Pills -->
-            <div id="context-pills" class="flex overflow-x-auto gap-2 empty:hidden pb-1 scrollbar-hide flex-1"></div>
-            
-            <!-- Edit Button -->
-            <button id="edit-button" class="p-1 text-dynamic-muted-foreground hover:text-dynamic-foreground transition-colors" title="Edit in designer">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
-                </svg>
-            </button>
-        </div>
-        
-        <!-- Main Prompt Interface - Full Height -->
-        <div class="flex-1 flex flex-col">
-            <div id="prompt-container" class="flex-1 bg-dynamic-muted border border-dynamic-border rounded-xl p-3 sm:p-6 relative focus-within:border-dynamic-primary transition-colors flex flex-col">
-                <div id="prompt-text" class="flex-1 text-dynamic-foreground leading-relaxed whitespace-pre-wrap overflow-y-auto custom-scrollbar text-sm sm:text-base"></div>
-                <div id="prompt-placeholder" class="text-dynamic-muted-foreground italic absolute top-3 sm:top-6 left-3 sm:left-6 pointer-events-none text-sm sm:text-base">← Enter your prompt on designer...</div>
+    <div id="viewer-mode" class="viewer-mode h-screen flex">
+        <!-- Sidebar - File Tree -->
+        <div id="file-sidebar" class="hidden w-48 sm:w-56 border-r border-dynamic-border bg-dynamic-muted/30 flex-shrink-0 overflow-y-auto custom-scrollbar">
+            <div class="p-3 border-b border-dynamic-border">
+                <h3 class="text-xs font-semibold text-dynamic-muted-foreground uppercase tracking-wider">Files</h3>
             </div>
+            <div id="file-tree" class="p-2"></div>
         </div>
         
-        <!-- Bottom Bar -->
-        <div class="flex justify-between items-center gap-2 mt-0 sm:mt-2">
-            <!-- Settings Pills -->
-            <div id="settings-pills" class="flex gap-1 sm:gap-2 flex-wrap flex-1 min-w-0"></div>
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col p-2 sm:p-4">
+            <!-- Top Bar with Context Pills and Edit Button -->
+            <div class="flex justify-between items-start gap-2 mb-0 sm:mb-2">
+                <!-- Context Pills -->
+                <div id="context-pills" class="flex overflow-x-auto gap-2 empty:hidden pb-1 scrollbar-hide flex-1"></div>
+                
+                <!-- Edit Button -->
+                <button id="edit-button" class="p-1 text-dynamic-muted-foreground hover:text-dynamic-foreground transition-colors" title="Edit in designer">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                    </svg>
+                </button>
+            </div>
             
-            <!-- Send Button (circular with arrow up) -->
-            <button id="copy-button" class="w-8 h-8 sm:w-10 sm:h-10 bg-dynamic-primary text-white rounded-full flex items-center justify-center hover:opacity-90 transition-opacity focus-ring flex-shrink-0 shadow-lg touch-target" title="Send prompt">
-                <svg width="16" height="16" class="sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <path d="M12 19V5M5 12l7-7 7 7"/>
-                </svg>
-            </button>
+            <!-- Main Prompt Interface - Full Height -->
+            <div class="flex-1 flex flex-col">
+                <div id="prompt-container" class="flex-1 bg-dynamic-muted border border-dynamic-border rounded-xl p-3 sm:p-6 relative focus-within:border-dynamic-primary transition-colors flex flex-col">
+                    <div id="prompt-text" class="flex-1 text-dynamic-foreground leading-relaxed whitespace-pre-wrap overflow-y-auto custom-scrollbar text-sm sm:text-base"></div>
+                    <div id="prompt-placeholder" class="text-dynamic-muted-foreground italic absolute top-3 sm:top-6 left-3 sm:left-6 pointer-events-none text-sm sm:text-base">← Enter your prompt on designer...</div>
+                </div>
+            </div>
+            
+            <!-- Bottom Bar -->
+            <div class="flex justify-between items-center gap-2 mt-0 sm:mt-2">
+                <!-- Settings Pills -->
+                <div id="settings-pills" class="flex gap-1 sm:gap-2 flex-wrap flex-1 min-w-0"></div>
+                
+                <!-- Send Button (circular with arrow up) -->
+                <button id="copy-button" class="w-8 h-8 sm:w-10 sm:h-10 bg-dynamic-primary text-white rounded-full flex items-center justify-center hover:opacity-90 transition-opacity focus-ring flex-shrink-0 shadow-lg touch-target" title="Send prompt">
+                    <svg width="16" height="16" class="sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M12 19V5M5 12l7-7 7 7"/>
+                    </svg>
+                </button>
+            </div>
         </div>
     </div>
     

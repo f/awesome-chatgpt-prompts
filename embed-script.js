@@ -32,7 +32,8 @@ class EmbedDesigner {
                 lightColor: this.params.lightColor || savedConfig.lightColor || '#3b82f6',
                 darkColor: this.params.darkColor || savedConfig.darkColor || '#60a5fa',
                 height: this.params.height || savedConfig.height || '400',
-                themeMode: this.params.themeMode || savedConfig.themeMode || 'auto'
+                themeMode: this.params.themeMode || savedConfig.themeMode || 'auto',
+                filetree: this.params.filetree ? decodeURIComponent(this.params.filetree).split('\n').filter(f => f.trim()) : (savedConfig.filetree || [])
             };
         }
         
@@ -53,7 +54,8 @@ class EmbedDesigner {
             lightColor: '#3b82f6',
             darkColor: '#60a5fa',
             height: '400',
-            themeMode: 'auto'
+            themeMode: 'auto',
+            filetree: []
         };
     }
     
@@ -64,7 +66,20 @@ class EmbedDesigner {
                 const config = JSON.parse(saved);
                 // Validate the loaded config has all required fields
                 if (config && typeof config === 'object') {
-                    return config;
+                    // Ensure all properties have defaults
+                    return {
+                        prompt: config.prompt || '',
+                        context: config.context || [],
+                        model: config.model || 'gpt-4o',
+                        mode: config.mode || 'chat',
+                        thinking: config.thinking || false,
+                        max: config.max || false,
+                        lightColor: config.lightColor || '#3b82f6',
+                        darkColor: config.darkColor || '#60a5fa',
+                        height: config.height || '400',
+                        themeMode: config.themeMode || 'auto',
+                        filetree: config.filetree || []
+                    };
                 }
             }
         } catch (e) {
@@ -103,6 +118,7 @@ class EmbedDesigner {
         // Populate form with current config
         document.getElementById('designer-prompt').value = this.config.prompt;
         document.getElementById('designer-context').value = this.config.context.join(', ');
+        document.getElementById('designer-filetree').value = this.config.filetree.join('\n');
         
         // Handle model selection
         const modelSelect = document.getElementById('designer-model');
@@ -170,7 +186,7 @@ class EmbedDesigner {
     
     setupDesignerEvents() {
         // Form changes update preview
-        ['designer-prompt', 'designer-context', 'designer-mode-select', 'designer-thinking', 'designer-max'].forEach(id => {
+        ['designer-prompt', 'designer-context', 'designer-mode-select', 'designer-thinking', 'designer-max', 'designer-filetree'].forEach(id => {
             const element = document.getElementById(id);
             element.addEventListener('input', () => this.updateConfigFromForm());
             element.addEventListener('change', () => this.updateConfigFromForm());
@@ -300,7 +316,8 @@ class EmbedDesigner {
                     lightColor: '#3b82f6',
                     darkColor: '#60a5fa',
                     height: '400',
-                    themeMode: 'auto'
+                    themeMode: 'auto',
+                    filetree: []
                 };
                 // Update UI to reflect defaults
                 this.setupDesignerElements();
@@ -348,7 +365,8 @@ class EmbedDesigner {
             lightColor: lightColorText ? lightColorText.value : '#3b82f6',
             darkColor: darkColorText ? darkColorText.value : '#60a5fa',
             height: heightSlider ? heightSlider.value : '400',
-            themeMode: this.config.themeMode || 'auto'
+            themeMode: this.config.themeMode || 'auto',
+            filetree: document.getElementById('designer-filetree').value.split('\n').map(f => f.trim()).filter(f => f)
         };
         
         this.updatePreview();
@@ -421,6 +439,7 @@ class EmbedDesigner {
         if (this.config.lightColor !== '#3b82f6') params.set('lightColor', this.config.lightColor);
         if (this.config.darkColor !== '#60a5fa') params.set('darkColor', this.config.darkColor);
         if (this.config.themeMode !== 'auto') params.set('themeMode', this.config.themeMode);
+        if (this.config.filetree && this.config.filetree.length > 0) params.set('filetree', encodeURIComponent(this.config.filetree.join('\n')));
         params.set('preview', 'true');
         
         return `/embed-preview/?${params.toString()}`;
@@ -437,6 +456,7 @@ class EmbedDesigner {
         if (this.config.lightColor !== '#3b82f6') params.set('lightColor', this.config.lightColor);
         if (this.config.darkColor !== '#60a5fa') params.set('darkColor', this.config.darkColor);
         if (this.config.themeMode !== 'auto') params.set('themeMode', this.config.themeMode);
+        if (this.config.filetree && this.config.filetree.length > 0) params.set('filetree', encodeURIComponent(this.config.filetree.join('\n')));
         
         return `${window.location.origin}/embed-preview/?${params.toString()}`;
     }
@@ -518,27 +538,40 @@ class EmbedDesigner {
     }
     
     loadExample() {
-        // Set example data
-        this.config = {
-            prompt: 'Build an MCP server that works with Weather API. See @Web for cool weather APIs.',
-            context: ['@Web', 'https://modelcontextprotocol.io/full-llms.txt'],
-            model: 'Claude 4 Sonnet',
-            mode: 'agent',
-            thinking: true,
-            max: true,
-            lightColor: '#3b82f6',
-            darkColor: '#60a5fa',
-            height: '250',
-            themeMode: 'auto'
-        };
+        // Set example values
+        document.getElementById('designer-prompt').value = 
+`You are a senior React developer. I need help building a modern e-commerce product listing component.
+
+Requirements:
+- Use React hooks and functional components
+- Implement product filtering by category and price range
+- Add smooth animations for product cards
+- Make it fully responsive with a grid layout
+- Include loading states and error handling
+
+The component should fetch data from a REST API and display products with images, titles, prices, and ratings. Please provide clean, well-commented code following React best practices.`;
         
-        // Update all form elements
-        this.setupDesignerElements();
-        this.updatePreview();
-        this.updateIframeSnippet();
-        this.saveToLocalStorage();
+        document.getElementById('designer-context').value = '@codebase, ProductList.jsx';
+        document.getElementById('designer-filetree').value = 
+`src/components/ProductList.jsx
+src/components/ProductCard.jsx
+src/components/Filters.jsx
+src/hooks/useProducts.js
+src/api/products.js
+src/styles/products.css
+src/utils/formatters.js
+public/index.html
+package.json
+README.md`;
         
-        // Show notification
+        // Set some example settings
+        document.getElementById('designer-model').value = 'Claude 3.7 Sonnet';
+        document.getElementById('designer-mode-select').value = 'agent';
+        document.getElementById('designer-thinking').checked = true;
+        
+        // Update config from form
+        this.updateConfigFromForm();
+        
         this.showNotification('Example loaded!');
     }
 }

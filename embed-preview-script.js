@@ -24,7 +24,8 @@ class EmbedPreview {
             max: this.params.max === 'true',
             lightColor: this.params.lightColor || '#3b82f6',
             darkColor: this.params.darkColor || '#60a5fa',
-            themeMode: this.params.themeMode || 'auto'
+            themeMode: this.params.themeMode || 'auto',
+            filetree: this.params.filetree ? decodeURIComponent(this.params.filetree).split('\n').filter(f => f.trim()) : []
         };
     }
     
@@ -188,6 +189,7 @@ class EmbedPreview {
         this.renderContextPills();
         this.renderPromptText();
         this.renderSettingsPills();
+        this.renderFileTree();
     }
     
     renderContextPills() {
@@ -412,6 +414,116 @@ class EmbedPreview {
             notification.classList.remove('opacity-100');
             notification.classList.add('opacity-0');
         }, 2000);
+    }
+    
+    buildFileTree(paths) {
+        const tree = {};
+        
+        paths.forEach(path => {
+            const parts = path.split('/');
+            let current = tree;
+            
+            parts.forEach((part, index) => {
+                if (!current[part]) {
+                    current[part] = {
+                        name: part,
+                        isFile: index === parts.length - 1,
+                        children: {}
+                    };
+                }
+                if (index < parts.length - 1) {
+                    current = current[part].children;
+                }
+            });
+        });
+        
+        return tree;
+    }
+    
+    renderFileTree() {
+        const sidebar = document.getElementById('file-sidebar');
+        const treeContainer = document.getElementById('file-tree');
+        
+        if (!sidebar || !treeContainer) return;
+        
+        // Show/hide sidebar based on whether there are files
+        if (this.config.filetree && this.config.filetree.length > 0) {
+            sidebar.classList.remove('hidden');
+            
+            // Build tree structure
+            const tree = this.buildFileTree(this.config.filetree);
+            
+            // Clear existing content
+            treeContainer.innerHTML = '';
+            
+            // Render tree
+            this.renderTreeNode(tree, treeContainer, 0);
+        } else {
+            sidebar.classList.add('hidden');
+        }
+    }
+    
+    renderTreeNode(node, container, level) {
+        const sortedKeys = Object.keys(node).sort((a, b) => {
+            // Folders first, then files
+            const aIsFile = node[a].isFile;
+            const bIsFile = node[b].isFile;
+            if (aIsFile !== bIsFile) return aIsFile ? 1 : -1;
+            return a.localeCompare(b);
+        });
+        
+        sortedKeys.forEach(key => {
+            const item = node[key];
+            const itemElement = document.createElement('div');
+            itemElement.className = 'flex items-center gap-1.5 py-1 px-2 hover:bg-dynamic-primary/10 rounded cursor-pointer text-sm text-dynamic-foreground/80 hover:text-dynamic-foreground transition-colors';
+            itemElement.style.paddingLeft = `${level * 16 + 8}px`;
+            
+            // Add icon
+            const icon = document.createElement('span');
+            icon.className = 'flex-shrink-0';
+            
+            if (item.isFile) {
+                // File icon with different colors based on extension
+                const ext = key.split('.').pop().toLowerCase();
+                let iconColor = 'text-dynamic-muted-foreground';
+                
+                // Color code common file types
+                if (['js', 'jsx', 'ts', 'tsx'].includes(ext)) {
+                    iconColor = 'text-yellow-500';
+                } else if (['css', 'scss', 'sass', 'less'].includes(ext)) {
+                    iconColor = 'text-blue-500';
+                } else if (['html', 'htm'].includes(ext)) {
+                    iconColor = 'text-orange-500';
+                } else if (['vue', 'svelte'].includes(ext)) {
+                    iconColor = 'text-green-500';
+                } else if (['json', 'xml', 'yaml', 'yml'].includes(ext)) {
+                    iconColor = 'text-purple-500';
+                } else if (['md', 'mdx'].includes(ext)) {
+                    iconColor = 'text-gray-500';
+                } else if (['png', 'jpg', 'jpeg', 'gif', 'svg', 'webp'].includes(ext)) {
+                    iconColor = 'text-pink-500';
+                }
+                
+                icon.innerHTML = `<svg class="w-4 h-4 ${iconColor}" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V7.414A2 2 0 0017.414 6L14 2.586A2 2 0 0012.586 2H4zm2 4a1 1 0 011-1h4a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7zm-1 5a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>`;
+            } else {
+                // Folder icon
+                icon.innerHTML = '<svg class="w-4 h-4 text-dynamic-primary" viewBox="0 0 20 20" fill="currentColor"><path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"/></svg>';
+            }
+            
+            // Add name
+            const nameSpan = document.createElement('span');
+            nameSpan.className = 'truncate';
+            nameSpan.textContent = item.name;
+            
+            itemElement.appendChild(icon);
+            itemElement.appendChild(nameSpan);
+            container.appendChild(itemElement);
+            
+            // Recursively render children
+            if (!item.isFile && Object.keys(item.children).length > 0) {
+                this.renderTreeNode(item.children, container, level + 1);
+            }
+        });
     }
 }
 
