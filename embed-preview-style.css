@@ -119,7 +119,6 @@
     height: 100%;
     overflow-y: auto !important;
     flex: 1;
-    white-space: wrap;
 }
 
 /* Responsive improvements */

@@ -31,11 +31,11 @@
     <!-- Viewer Mode -->
     <div id="viewer-mode" class="viewer-mode h-screen flex">
         <!-- Sidebar - File Tree -->
-        <div id="file-sidebar" class="hidden w-48 sm:w-56 border-r border-dynamic-border bg-dynamic-muted/30 flex-shrink-0 overflow-y-auto custom-scrollbar">
-            <div class="p-3 border-b border-dynamic-border">
-                <h3 class="text-xs font-semibold text-dynamic-muted-foreground uppercase tracking-wider">Files</h3>
+        <div id="file-sidebar" class="hidden w-40 sm:w-44 border-r border-dynamic-border bg-dynamic-muted/30 flex-shrink-0 overflow-y-auto custom-scrollbar">
+            <div class="p-2 border-b border-dynamic-border">
+                <h3 class="text-[10px] font-semibold text-dynamic-muted-foreground uppercase tracking-wider">Files</h3>
             </div>
-            <div id="file-tree" class="p-2"></div>
+            <div id="file-tree" class="p-1"></div>
         </div>
         
         <!-- Main Content -->
@@ -56,7 +56,7 @@
             
             <!-- Main Prompt Interface - Full Height -->
             <div class="flex-1 flex flex-col">
-                <div id="prompt-container" class="flex-1 bg-dynamic-muted border border-dynamic-border rounded-xl p-3 sm:p-6 relative focus-within:border-dynamic-primary transition-colors flex flex-col">
+                <div id="prompt-container" class="flex-1 bg-dynamic-muted border border-dynamic-border rounded-xl p-3 relative focus-within:border-dynamic-primary transition-colors flex flex-col">
                     <div id="prompt-text" class="flex-1 text-dynamic-foreground leading-relaxed whitespace-pre-wrap overflow-y-auto custom-scrollbar text-sm sm:text-base"></div>
                     <div id="prompt-placeholder" class="text-dynamic-muted-foreground italic absolute top-3 sm:top-6 left-3 sm:left-6 pointer-events-none text-sm sm:text-base">← Enter your prompt on designer...</div>
                 </div>

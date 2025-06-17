@@ -553,7 +553,7 @@ The component should fetch data from a REST API and display products with images
         
         document.getElementById('designer-context').value = '@codebase, ProductList.jsx';
         document.getElementById('designer-filetree').value = 
-`src/components/ProductList.jsx
+`src/components/ProductList.jsx*
 src/components/ProductCard.jsx
 src/components/Filters.jsx
 src/hooks/useProducts.js

@@ -343,7 +343,7 @@ class EmbedPreview {
     }
     
     highlightMentions(text) {
-        return text.replace(/@(\w+)/g, '<span class="mention">@$1</span>');
+        return text.replace(/@([\w\.\/\:\-\&\=\?]+)/g, '<span class="mention">@$1</span>');
     }
     
     capitalizeFirst(str) {
@@ -420,7 +420,12 @@ class EmbedPreview {
         const tree = {};
         
         paths.forEach(path => {
-            const parts = path.split('/');
+            // Check if the path ends with an asterisk
+            const isHighlighted = path.endsWith('*');
+            // Remove asterisk if present
+            const cleanPath = isHighlighted ? path.slice(0, -1) : path;
+            
+            const parts = cleanPath.split('/');
             let current = tree;
             
             parts.forEach((part, index) => {
@@ -428,6 +433,7 @@ class EmbedPreview {
                     current[part] = {
                         name: part,
                         isFile: index === parts.length - 1,
+                        isHighlighted: index === parts.length - 1 && isHighlighted,
                         children: {}
                     };
                 }
@@ -475,8 +481,15 @@ class EmbedPreview {
         sortedKeys.forEach(key => {
             const item = node[key];
             const itemElement = document.createElement('div');
-            itemElement.className = 'flex items-center gap-1.5 py-1 px-2 hover:bg-dynamic-primary/10 rounded cursor-pointer text-sm text-dynamic-foreground/80 hover:text-dynamic-foreground transition-colors';
-            itemElement.style.paddingLeft = `${level * 16 + 8}px`;
+            
+            // Add highlighting class if the file is marked
+            if (item.isHighlighted) {
+                itemElement.className = 'flex items-center gap-1 py-0.5 px-1.5 bg-dynamic-primary/20 rounded cursor-pointer text-xs text-dynamic-foreground font-medium transition-all hover:bg-dynamic-primary/30';
+            } else {
+                itemElement.className = 'flex items-center gap-1 py-0.5 px-1.5 hover:bg-dynamic-primary/10 rounded cursor-pointer text-xs text-dynamic-foreground/80 hover:text-dynamic-foreground transition-colors';
+            }
+            
+            itemElement.style.paddingLeft = `${level * 12 + 6}px`;
             
             // Add icon
             const icon = document.createElement('span');
@@ -487,36 +500,50 @@ class EmbedPreview {
                 const ext = key.split('.').pop().toLowerCase();
                 let iconColor = 'text-dynamic-muted-foreground';
                 
-                // Color code common file types
-                if (['js', 'jsx', 'ts', 'tsx'].includes(ext)) {
-                    iconColor = 'text-yellow-500';
-                } else if (['css', 'scss', 'sass', 'less'].includes(ext)) {
-                    iconColor = 'text-blue-500';
-                } else if (['html', 'htm'].includes(ext)) {
-                    iconColor = 'text-orange-500';
-                } else if (['vue', 'svelte'].includes(ext)) {
-                    iconColor = 'text-green-500';
-                } else if (['json', 'xml', 'yaml', 'yml'].includes(ext)) {
-                    iconColor = 'text-purple-500';
-                } else if (['md', 'mdx'].includes(ext)) {
-                    iconColor = 'text-gray-500';
-                } else if (['png', 'jpg', 'jpeg', 'gif', 'svg', 'webp'].includes(ext)) {
-                    iconColor = 'text-pink-500';
+                // If highlighted, use primary color for icon
+                if (item.isHighlighted) {
+                    iconColor = 'text-dynamic-primary';
+                } else {
+                    // Color code common file types
+                    if (['js', 'jsx', 'ts', 'tsx'].includes(ext)) {
+                        iconColor = 'text-yellow-500';
+                    } else if (['css', 'scss', 'sass', 'less'].includes(ext)) {
+                        iconColor = 'text-blue-500';
+                    } else if (['html', 'htm'].includes(ext)) {
+                        iconColor = 'text-orange-500';
+                    } else if (['vue', 'svelte'].includes(ext)) {
+                        iconColor = 'text-green-500';
+                    } else if (['json', 'xml', 'yaml', 'yml'].includes(ext)) {
+                        iconColor = 'text-purple-500';
+                    } else if (['md', 'mdx'].includes(ext)) {
+                        iconColor = 'text-gray-500';
+                    } else if (['png', 'jpg', 'jpeg', 'gif', 'svg', 'webp'].includes(ext)) {
+                        iconColor = 'text-pink-500';
+                    }
                 }
                 
-                icon.innerHTML = `<svg class="w-4 h-4 ${iconColor}" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V7.414A2 2 0 0017.414 6L14 2.586A2 2 0 0012.586 2H4zm2 4a1 1 0 011-1h4a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7zm-1 5a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>`;
+                icon.innerHTML = `<svg class="w-3 h-3 ${iconColor}" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V7.414A2 2 0 0017.414 6L14 2.586A2 2 0 0012.586 2H4zm2 4a1 1 0 011-1h4a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7zm-1 5a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>`;
             } else {
                 // Folder icon
-                icon.innerHTML = '<svg class="w-4 h-4 text-dynamic-primary" viewBox="0 0 20 20" fill="currentColor"><path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"/></svg>';
+                icon.innerHTML = '<svg class="w-3 h-3 text-dynamic-primary" viewBox="0 0 20 20" fill="currentColor"><path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"/></svg>';
             }
             
             // Add name
             const nameSpan = document.createElement('span');
-            nameSpan.className = 'truncate';
+            nameSpan.className = 'truncate flex-1';
             nameSpan.textContent = item.name;
             
             itemElement.appendChild(icon);
             itemElement.appendChild(nameSpan);
+            
+            // Add a star indicator for highlighted files
+            if (item.isHighlighted) {
+                const starIcon = document.createElement('span');
+                starIcon.className = 'ml-auto text-dynamic-primary';
+                starIcon.innerHTML = '<svg class="w-2.5 h-2.5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>';
+                itemElement.appendChild(starIcon);
+            }
+            
             container.appendChild(itemElement);
             
             // Recursively render children
