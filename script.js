@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch((error) => {
       console.error("Error fetching star count:", error);
-      document.getElementById("starCount").textContent = "122k+";
+      document.getElementById("starCount").textContent = "129k+";
     });
 
   // Create prompt cards

@@ -598,6 +598,26 @@ tsconfig.json`;
         document.getElementById('designer-max').checked = true;
         document.getElementById('designer-show-filetree').checked = true;
         
+        // Set height and colors for coding example
+        const heightSlider = document.getElementById('designer-height');
+        const heightValue = document.getElementById('height-value');
+        if (heightSlider) {
+            heightSlider.value = '500';
+            if (heightValue) {
+                heightValue.textContent = '500';
+            }
+        }
+        
+        // Set developer-friendly color scheme (purple/violet)
+        document.getElementById('designer-light-color').value = '#8b5cf6';
+        document.getElementById('designer-light-color-text').value = '#8b5cf6';
+        document.getElementById('designer-dark-color').value = '#a78bfa';
+        document.getElementById('designer-dark-color-text').value = '#a78bfa';
+        
+        // Set dark theme mode for coding
+        this.config.themeMode = 'dark';
+        this.updateThemeModeButtons();
+        
         // Update config from form
         this.updateConfigFromForm();
         
@@ -620,6 +640,26 @@ Can you suggest a menu with appetizers, main course, and dessert that would work
         document.getElementById('designer-thinking').checked = false;
         document.getElementById('designer-max').checked = false;
         document.getElementById('designer-show-filetree').checked = false;
+        
+        // Set height and colors for chat example
+        const heightSlider = document.getElementById('designer-height');
+        const heightValue = document.getElementById('height-value');
+        if (heightSlider) {
+            heightSlider.value = '350';
+            if (heightValue) {
+                heightValue.textContent = '350';
+            }
+        }
+        
+        // Set friendly color scheme (green)
+        document.getElementById('designer-light-color').value = '#10b981';
+        document.getElementById('designer-light-color-text').value = '#10b981';
+        document.getElementById('designer-dark-color').value = '#34d399';
+        document.getElementById('designer-dark-color-text').value = '#34d399';
+        
+        // Set light theme mode for chat
+        this.config.themeMode = 'light';
+        this.updateThemeModeButtons();
         
         // Update config from form
         this.updateConfigFromForm();
