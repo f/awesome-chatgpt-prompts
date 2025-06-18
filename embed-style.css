@@ -249,7 +249,7 @@ body.dark-mode .designer-panel {
 
 /* Adjust the scrollable content area */
 .designer-panel > .flex-1 {
-    padding-top: calc(var(--header-height) + 1rem);
+    padding-top: calc(var(--header-height));
     height: 100%;
     box-sizing: border-box;
     display: flex;

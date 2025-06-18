@@ -948,7 +948,7 @@ Keep it warm but professional, around 150-200 words.`;
 
 Include endpoint definitions, request/response schemas, and error handling patterns.`;
         
-        document.getElementById('designer-context').value = '@web REST best practices, openapi.yaml';
+        document.getElementById('designer-context').value = '@Web, openapi.yaml';
         document.getElementById('designer-filetree').value = 
 `api/
 api/v1/

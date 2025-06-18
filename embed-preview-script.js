@@ -439,7 +439,7 @@ class EmbedPreview {
         const filenameElement = container.querySelector('[id$="-filename"]');
         if (filenameElement) {
             const filename = this.config.diffFilename || 'untitled';
-            filenameElement.innerHTML = `
+        filenameElement.innerHTML = `
                 <span>${filename}</span>
                 <span class="ml-2 text-[10px] font-mono">
                     <span class="text-green-600 dark:text-green-400">+${newLines}</span>
@@ -517,7 +517,7 @@ class EmbedPreview {
                 // Function to update prompt margin based on diff view height
                 const updatePromptMargin = () => {
                     const diffHeight = container.offsetHeight;
-                    promptText.style.marginTop = `${diffHeight + 16}px`; // 16px for some breathing room
+                    promptText.parentElement.style.paddingTop = `${diffHeight + 16}px`; // 16px for some breathing room
                 };
                 
                 // Set initial margin
