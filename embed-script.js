@@ -565,7 +565,9 @@ Can you help me refactor it to:
 3. Add proper TypeScript types
 4. Implement virtualization for better performance with large product lists
 
-The component currently handles products display, filtering by category/price, sorting, and pagination all in one file. I want a cleaner architecture.`;
+The component currently handles products display, filtering by category/price, sorting, and pagination all in one file. I want a cleaner architecture.
+
+Please check the @https://tanstack.com/query/latest/docs/react/overview for data fetching best practices and consider if we should integrate it for product data management.`;
         
         document.getElementById('designer-context').value = '@codebase, ProductList.tsx, components/, hooks/';
         document.getElementById('designer-filetree').value = 

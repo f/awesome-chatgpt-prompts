@@ -374,7 +374,7 @@ class EmbedPreview {
     }
     
     highlightMentions(text) {
-        return text.replace(/@(\w+)/g, '<span class="mention">@$1</span>');
+        return text.replaceAll(/@(https?:\/\/[^\s]+.*?|\w+\.\w+|\w+)/g, '<span class="mention">@$1</span>');
     }
     
     capitalizeFirst(str) {
