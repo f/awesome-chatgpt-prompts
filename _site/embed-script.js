@@ -33,7 +33,8 @@ class EmbedDesigner {
                 darkColor: this.params.darkColor || savedConfig.darkColor || '#60a5fa',
                 height: this.params.height || savedConfig.height || '400',
                 themeMode: this.params.themeMode || savedConfig.themeMode || 'auto',
-                filetree: this.params.filetree ? decodeURIComponent(this.params.filetree).split('\n').filter(f => f.trim()) : (savedConfig.filetree || [])
+                filetree: this.params.filetree ? decodeURIComponent(this.params.filetree).split('\n').filter(f => f.trim()) : (savedConfig.filetree || []),
+                showFiletree: savedConfig.showFiletree !== undefined ? savedConfig.showFiletree : true
             };
         }
         
@@ -55,7 +56,8 @@ class EmbedDesigner {
             darkColor: '#60a5fa',
             height: '400',
             themeMode: 'auto',
-            filetree: []
+            filetree: [],
+            showFiletree: true
         };
     }
     
@@ -78,7 +80,8 @@ class EmbedDesigner {
                         darkColor: config.darkColor || '#60a5fa',
                         height: config.height || '400',
                         themeMode: config.themeMode || 'auto',
-                        filetree: config.filetree || []
+                        filetree: config.filetree || [],
+                        showFiletree: config.showFiletree !== undefined ? config.showFiletree : true
                     };
                 }
             }
@@ -141,6 +144,12 @@ class EmbedDesigner {
         document.getElementById('designer-thinking').checked = this.config.thinking;
         document.getElementById('designer-max').checked = this.config.max;
         
+        // Set show filetree checkbox (default to true if not set)
+        const showFiletreeCheckbox = document.getElementById('designer-show-filetree');
+        if (showFiletreeCheckbox) {
+            showFiletreeCheckbox.checked = this.config.showFiletree !== false;
+        }
+        
         // Set height slider
         const heightSlider = document.getElementById('designer-height');
         const heightValue = document.getElementById('height-value');
@@ -186,10 +195,12 @@ class EmbedDesigner {
     
     setupDesignerEvents() {
         // Form changes update preview
-        ['designer-prompt', 'designer-context', 'designer-mode-select', 'designer-thinking', 'designer-max', 'designer-filetree'].forEach(id => {
+        ['designer-prompt', 'designer-context', 'designer-mode-select', 'designer-thinking', 'designer-max', 'designer-filetree', 'designer-show-filetree'].forEach(id => {
             const element = document.getElementById(id);
-            element.addEventListener('input', () => this.updateConfigFromForm());
-            element.addEventListener('change', () => this.updateConfigFromForm());
+            if (element) {
+                element.addEventListener('input', () => this.updateConfigFromForm());
+                element.addEventListener('change', () => this.updateConfigFromForm());
+            }
         });
         
         // Theme mode buttons
@@ -317,7 +328,8 @@ class EmbedDesigner {
                     darkColor: '#60a5fa',
                     height: '400',
                     themeMode: 'auto',
-                    filetree: []
+                    filetree: [],
+                    showFiletree: true
                 };
                 // Update UI to reflect defaults
                 this.setupDesignerElements();
@@ -326,9 +338,13 @@ class EmbedDesigner {
             }
         });
         
-        // Load example button
-        document.getElementById('load-example').addEventListener('click', () => {
-            this.loadExample();
+        // Example buttons
+        document.getElementById('vibe-example').addEventListener('click', () => {
+            this.loadVibeExample();
+        });
+        
+        document.getElementById('chat-example').addEventListener('click', () => {
+            this.loadChatExample();
         });
         
         // Modal events
@@ -366,7 +382,8 @@ class EmbedDesigner {
             darkColor: darkColorText ? darkColorText.value : '#60a5fa',
             height: heightSlider ? heightSlider.value : '400',
             themeMode: this.config.themeMode || 'auto',
-            filetree: document.getElementById('designer-filetree').value.split('\n').map(f => f.trim()).filter(f => f)
+            filetree: document.getElementById('designer-filetree').value.split('\n').map(f => f.trim()).filter(f => f),
+            showFiletree: document.getElementById('designer-show-filetree').checked
         };
         
         this.updatePreview();
@@ -439,7 +456,7 @@ class EmbedDesigner {
         if (this.config.lightColor !== '#3b82f6') params.set('lightColor', this.config.lightColor);
         if (this.config.darkColor !== '#60a5fa') params.set('darkColor', this.config.darkColor);
         if (this.config.themeMode !== 'auto') params.set('themeMode', this.config.themeMode);
-        if (this.config.filetree && this.config.filetree.length > 0) params.set('filetree', encodeURIComponent(this.config.filetree.join('\n')));
+        if (this.config.showFiletree && this.config.filetree && this.config.filetree.length > 0) params.set('filetree', encodeURIComponent(this.config.filetree.join('\n')));
         params.set('preview', 'true');
         
         return `/embed-preview/?${params.toString()}`;
@@ -456,7 +473,7 @@ class EmbedDesigner {
         if (this.config.lightColor !== '#3b82f6') params.set('lightColor', this.config.lightColor);
         if (this.config.darkColor !== '#60a5fa') params.set('darkColor', this.config.darkColor);
         if (this.config.themeMode !== 'auto') params.set('themeMode', this.config.themeMode);
-        if (this.config.filetree && this.config.filetree.length > 0) params.set('filetree', encodeURIComponent(this.config.filetree.join('\n')));
+        if (this.config.showFiletree && this.config.filetree && this.config.filetree.length > 0) params.set('filetree', encodeURIComponent(this.config.filetree.join('\n')));
         
         return `${window.location.origin}/embed-preview/?${params.toString()}`;
     }
@@ -537,42 +554,77 @@ class EmbedDesigner {
         }, duration);
     }
     
-    loadExample() {
-        // Set example values
+    loadVibeExample() {
+        // Set vibe coding example values
         document.getElementById('designer-prompt').value = 
-`You are a senior React developer. I need help building a modern e-commerce product listing component.
+`I'm working on a React e-commerce app. The current ProductList component is getting messy with too much logic. 
 
-Requirements:
-- Use React hooks and functional components
-- Implement product filtering by category and price range
-- Add smooth animations for product cards
-- Make it fully responsive with a grid layout
-- Include loading states and error handling
+Can you help me refactor it to:
+1. Extract the filtering logic into a custom hook
+2. Split the large component into smaller, reusable pieces
+3. Add proper TypeScript types
+4. Implement virtualization for better performance with large product lists
 
-The component should fetch data from a REST API and display products with images, titles, prices, and ratings. Please provide clean, well-commented code following React best practices.`;
+The component currently handles products display, filtering by category/price, sorting, and pagination all in one file. I want a cleaner architecture.`;
         
-        document.getElementById('designer-context').value = '@codebase, ProductList.jsx';
+        document.getElementById('designer-context').value = '@codebase, ProductList.tsx, components/, hooks/';
         document.getElementById('designer-filetree').value = 
-`src/components/ProductList.jsx*
-src/components/ProductCard.jsx
-src/components/Filters.jsx
-src/hooks/useProducts.js
-src/api/products.js
-src/styles/products.css
-src/utils/formatters.js
-public/index.html
+`src/
+src/components/
+src/components/ProductList.tsx*
+src/components/ProductCard.tsx
+src/components/ProductGrid.tsx
+src/components/Filters/
+src/components/Filters/CategoryFilter.tsx
+src/components/Filters/PriceRangeFilter.tsx
+src/components/Filters/index.tsx
+src/hooks/
+src/hooks/useProducts.ts
+src/hooks/useFilters.ts
+src/hooks/useInfiniteScroll.ts
+src/types/
+src/types/product.ts
+src/api/
+src/api/products.ts
+src/utils/
+src/utils/formatters.ts
 package.json
-README.md`;
+tsconfig.json`;
         
-        // Set some example settings
-        document.getElementById('designer-model').value = 'Claude 3.7 Sonnet';
+        // Set vibe coding settings
+        document.getElementById('designer-model').value = 'Claude 4 Opus';
         document.getElementById('designer-mode-select').value = 'agent';
         document.getElementById('designer-thinking').checked = true;
+        document.getElementById('designer-max').checked = true;
+        document.getElementById('designer-show-filetree').checked = true;
         
         // Update config from form
         this.updateConfigFromForm();
         
-        this.showNotification('Example loaded!');
+        this.showNotification('Vibe coding example loaded!');
+    }
+    
+    loadChatExample() {
+        // Set chat example values
+        document.getElementById('designer-prompt').value = 
+`I'm planning a dinner party for 8 people this weekend. One person is vegetarian, another is gluten-free, and I want to make something impressive but not too complicated. 
+
+Can you suggest a menu with appetizers, main course, and dessert that would work for everyone? I have about 4 hours to prepare everything and a moderate cooking skill level.`;
+        
+        document.getElementById('designer-context').value = '#Screenshot Kitchen Layout.png, Recipes Collection.pdf';
+        document.getElementById('designer-filetree').value = '';
+        
+        // Set chat settings
+        document.getElementById('designer-model').value = 'GPT 4o';
+        document.getElementById('designer-mode-select').value = 'chat';
+        document.getElementById('designer-thinking').checked = false;
+        document.getElementById('designer-max').checked = false;
+        document.getElementById('designer-show-filetree').checked = false;
+        
+        // Update config from form
+        this.updateConfigFromForm();
+        
+        this.showNotification('Chat example loaded!');
     }
 }
 

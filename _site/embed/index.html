@@ -65,9 +65,14 @@
                                  class="w-full p-3 bg-dynamic-background border border-dynamic-border rounded-lg text-sm resize-none focus-ring custom-scrollbar touch-target"
                                  rows="8"
                                  placeholder="Enter your prompt..."></textarea>
-                        <button type="button" id="load-example" class="text-xs text-dynamic-primary hover:text-opacity-80 transition-opacity touch-target py-1">
-                            Load example →
-                        </button>
+                        <div class="flex gap-3">
+                            <button type="button" id="vibe-example" class="text-xs text-dynamic-primary hover:text-opacity-80 transition-opacity touch-target py-1">
+                                Vibe coding example →
+                            </button>
+                            <button type="button" id="chat-example" class="text-xs text-dynamic-primary hover:text-opacity-80 transition-opacity touch-target py-1">
+                                Chat example →
+                            </button>
+                        </div>
                     </div>
                     
                     <!-- Model & Mode -->
@@ -229,7 +234,13 @@
                     
                     <!-- File Tree -->
                     <div class="space-y-2">
-                        <label class="text-sm font-medium text-dynamic-muted-foreground">File Tree</label>
+                        <div class="flex items-center justify-between">
+                            <label class="text-sm font-medium text-dynamic-muted-foreground">File Tree</label>
+                            <label class="flex items-center space-x-1.5 text-xs">
+                                <input type="checkbox" id="designer-show-filetree" class="rounded border-dynamic-border w-3.5 h-3.5" checked>
+                                <span class="text-dynamic-muted-foreground">Show in preview</span>
+                            </label>
+                        </div>
                         <textarea id="designer-filetree" 
                                  class="w-full p-3 bg-dynamic-background border border-dynamic-border rounded-lg text-sm resize-none focus-ring custom-scrollbar touch-target font-mono"
                                  rows="6"

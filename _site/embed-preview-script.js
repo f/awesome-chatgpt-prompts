@@ -2,6 +2,7 @@ class EmbedPreview {
     constructor() {
         this.params = this.parseURLParams();
         this.config = this.getInitialConfig();
+        this.selectedFiles = new Set(); // Track selected files
         this.init();
     }
     
@@ -198,17 +199,27 @@ class EmbedPreview {
         
         container.innerHTML = '';
         
+        // Render initial context from config
         this.config.context.forEach(context => {
-            const pill = this.createContextPill(context);
+            const pill = this.createContextPill(context, false);
+            container.appendChild(pill);
+        });
+        
+        // Render selected files and folders
+        this.selectedFiles.forEach(filePath => {
+            const fileName = this.getFileName(filePath);
+            const pill = this.createContextPill(fileName, true, filePath);
+            pill.title = filePath; // Show full path on hover
             container.appendChild(pill);
         });
     }
     
-    createContextPill(context) {
+    createContextPill(context, isRemovable, fullPath = null) {
         const pill = document.createElement('div');
-        pill.className = 'px-2 py-0.5 rounded-lg text-[0.65rem] font-medium animate-slide-in flex items-center gap-1';
+        pill.className = 'px-2 py-0.5 rounded-lg text-[0.65rem] font-medium animate-slide-in flex items-center gap-1 flex-shrink-0 whitespace-nowrap';
         
         let icon = '';
+        let content = '';
         
         // Use dynamic color classes for all pills
         if (this.isDarkMode) {
@@ -219,24 +230,44 @@ class EmbedPreview {
         
         if (context.startsWith('@')) {
             // @mentions - just show the text
-            pill.innerHTML = '<span>' + context + '</span>';
+            content = '<span>' + context + '</span>';
         } else if (context.startsWith('http://') || context.startsWith('https://')) {
             // Web URLs show world icon
             icon = '<svg class="w-3 h-3" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clip-rule="evenodd"/></svg>';
-            pill.innerHTML = icon + '<span>' + context + '</span>';
+            content = icon + '<span>' + context + '</span>';
         } else if (context.startsWith('#')) {
             // Any hashtag context shows image icon
             icon = '<svg class="w-3 h-3" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"/></svg>';
             // Remove hash from display
-            pill.innerHTML = icon + '<span>' + context.substring(1) + '</span>';
-        } else if (context.includes('.')) {
-            // File context (contains a dot)
+            content = icon + '<span>' + context.substring(1) + '</span>';
+        } else if (context.endsWith('/')) {
+            // Folder context (ends with /)
+            icon = '<svg class="w-3 h-3" viewBox="0 0 20 20" fill="currentColor"><path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"/></svg>';
+            // Keep trailing slash for display
+            content = icon + '<span>' + context + '</span>';
+        } else if (context.includes('.') || isRemovable) {
+            // File context (contains a dot) or removable file from sidebar
             icon = '<svg class="w-3 h-3" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V7.414A2 2 0 0017.414 6L14 2.586A2 2 0 0012.586 2H4zm2 4a1 1 0 011-1h4a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7zm-1 5a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>';
-            pill.innerHTML = icon + '<span>' + context + '</span>';
+            content = icon + '<span>' + context + '</span>';
         } else {
             // Generic context
-            pill.innerHTML = '<span>' + context + '</span>';
+            content = '<span>' + context + '</span>';
         }
+        
+        pill.innerHTML = content;
+        
+        // Add remove button for removable pills
+        if (isRemovable && fullPath) {
+            const removeBtn = document.createElement('button');
+            removeBtn.className = 'ml-0.5 text-dynamic-muted-foreground hover:text-dynamic-foreground transition-colors';
+            removeBtn.innerHTML = '<svg class="w-2.5 h-2.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>';
+            removeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.removeFileFromContext(fullPath);
+            });
+            pill.appendChild(removeBtn);
+        }
+        
         return pill;
     }
     
@@ -343,7 +374,7 @@ class EmbedPreview {
     }
     
     highlightMentions(text) {
-        return text.replace(/@([\w\.\/\:\-\&\=\?]+)/g, '<span class="mention">@$1</span>');
+        return text.replace(/@(\w+)/g, '<span class="mention">@$1</span>');
     }
     
     capitalizeFirst(str) {
@@ -416,6 +447,36 @@ class EmbedPreview {
         }, 2000);
     }
     
+    addFileToContext(filePath) {
+        if (!this.selectedFiles.has(filePath)) {
+            this.selectedFiles.add(filePath);
+            this.renderContextPills();
+            this.renderFileTree(); // Re-render to show selection
+        }
+    }
+    
+    getFileName(filePath) {
+        // Extract just the filename or folder name from the path
+        const cleanPath = filePath.endsWith('/') ? filePath.slice(0, -1) : filePath;
+        const parts = cleanPath.split('/');
+        const name = parts[parts.length - 1];
+        // Add trailing slash back for folders to maintain context
+        return filePath.endsWith('/') ? name + '/' : name;
+    }
+    
+    removeFileFromContext(filePath) {
+        if (this.selectedFiles.has(filePath)) {
+            this.selectedFiles.delete(filePath);
+            this.renderContextPills();
+            this.renderFileTree(); // Re-render to update selection
+        }
+    }
+    
+    getFullPath(node, currentPath = '') {
+        // Helper to get the full path from a node
+        return currentPath ? `${currentPath}/${node.name}` : node.name;
+    }
+    
     buildFileTree(paths) {
         const tree = {};
         
@@ -425,19 +486,26 @@ class EmbedPreview {
             // Remove asterisk if present
             const cleanPath = isHighlighted ? path.slice(0, -1) : path;
             
-            const parts = cleanPath.split('/');
+            // Check if it's a folder (ends with /)
+            const isFolder = cleanPath.endsWith('/');
+            
+            // Remove trailing slash for processing
+            const processPath = isFolder ? cleanPath.slice(0, -1) : cleanPath;
+            
+            const parts = processPath.split('/').filter(p => p !== ''); // Filter out empty strings
             let current = tree;
             
             parts.forEach((part, index) => {
                 if (!current[part]) {
+                    const isLastPart = index === parts.length - 1;
                     current[part] = {
                         name: part,
-                        isFile: index === parts.length - 1,
-                        isHighlighted: index === parts.length - 1 && isHighlighted,
+                        isFile: isLastPart && !isFolder,
+                        isHighlighted: isLastPart && isHighlighted,
                         children: {}
                     };
                 }
-                if (index < parts.length - 1) {
+                if (index < parts.length - 1 || (index === parts.length - 1 && !current[part].isFile)) {
                     current = current[part].children;
                 }
             });
@@ -463,13 +531,13 @@ class EmbedPreview {
             treeContainer.innerHTML = '';
             
             // Render tree
-            this.renderTreeNode(tree, treeContainer, 0);
+            this.renderTreeNode(tree, treeContainer, 0, '');
         } else {
             sidebar.classList.add('hidden');
         }
     }
     
-    renderTreeNode(node, container, level) {
+    renderTreeNode(node, container, level, parentPath) {
         const sortedKeys = Object.keys(node).sort((a, b) => {
             // Folders first, then files
             const aIsFile = node[a].isFile;
@@ -480,16 +548,40 @@ class EmbedPreview {
         
         sortedKeys.forEach(key => {
             const item = node[key];
+            const fullPath = parentPath ? `${parentPath}/${item.name}` : item.name;
             const itemElement = document.createElement('div');
             
-            // Add highlighting class if the file is marked
+            // Check if file or folder is selected
+            const contextPath = item.isFile ? fullPath : fullPath + '/';
+            const isSelected = this.selectedFiles.has(contextPath);
+            
+            // Add highlighting class if the file is marked or selected
             if (item.isHighlighted) {
+                itemElement.className = 'flex items-center gap-1 py-0.5 px-1.5 bg-dynamic-primary/20 rounded text-xs text-dynamic-foreground font-medium transition-all';
+            } else if (isSelected) {
                 itemElement.className = 'flex items-center gap-1 py-0.5 px-1.5 bg-dynamic-primary/20 rounded cursor-pointer text-xs text-dynamic-foreground font-medium transition-all hover:bg-dynamic-primary/30';
             } else {
                 itemElement.className = 'flex items-center gap-1 py-0.5 px-1.5 hover:bg-dynamic-primary/10 rounded cursor-pointer text-xs text-dynamic-foreground/80 hover:text-dynamic-foreground transition-colors';
             }
             
             itemElement.style.paddingLeft = `${level * 12 + 6}px`;
+            
+            // Add click handler for files and folders (but not starred items)
+            if (!item.isHighlighted) {
+                itemElement.addEventListener('click', () => {
+                    const contextPath = item.isFile ? fullPath : fullPath + '/';
+                    if (isSelected) {
+                        this.removeFileFromContext(contextPath);
+                    } else {
+                        this.addFileToContext(contextPath);
+                    }
+                });
+                itemElement.title = isSelected ? 'Click to remove from context' : 'Click to add to context';
+                itemElement.style.cursor = 'pointer';
+            } else {
+                itemElement.style.cursor = 'default';
+                itemElement.title = 'Starred items cannot be selected';
+            }
             
             // Add icon
             const icon = document.createElement('span');
@@ -500,8 +592,8 @@ class EmbedPreview {
                 const ext = key.split('.').pop().toLowerCase();
                 let iconColor = 'text-dynamic-muted-foreground';
                 
-                // If highlighted, use primary color for icon
-                if (item.isHighlighted) {
+                // If highlighted or selected, use primary color for icon
+                if (item.isHighlighted || isSelected) {
                     iconColor = 'text-dynamic-primary';
                 } else {
                     // Color code common file types
@@ -536,19 +628,35 @@ class EmbedPreview {
             itemElement.appendChild(icon);
             itemElement.appendChild(nameSpan);
             
-            // Add a star indicator for highlighted files
-            if (item.isHighlighted) {
-                const starIcon = document.createElement('span');
-                starIcon.className = 'ml-auto text-dynamic-primary';
-                starIcon.innerHTML = '<svg class="w-2.5 h-2.5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>';
-                itemElement.appendChild(starIcon);
+            // Add indicators for highlighted or selected items
+            if (item.isHighlighted || isSelected) {
+                const indicatorContainer = document.createElement('span');
+                indicatorContainer.className = 'ml-auto flex items-center gap-1';
+                
+                // Add star for highlighted items
+                if (item.isHighlighted) {
+                    const starIcon = document.createElement('span');
+                    starIcon.className = 'text-dynamic-primary';
+                    starIcon.innerHTML = '<svg class="w-2.5 h-2.5" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>';
+                    indicatorContainer.appendChild(starIcon);
+                }
+                
+                // Add checkmark for selected items (not highlighted)
+                if (isSelected && !item.isHighlighted) {
+                    const checkIcon = document.createElement('span');
+                    checkIcon.className = 'text-dynamic-primary';
+                    checkIcon.innerHTML = '<svg class="w-2.5 h-2.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>';
+                    indicatorContainer.appendChild(checkIcon);
+                }
+                
+                itemElement.appendChild(indicatorContainer);
             }
             
             container.appendChild(itemElement);
             
             // Recursively render children
             if (!item.isFile && Object.keys(item.children).length > 0) {
-                this.renderTreeNode(item.children, container, level + 1);
+                this.renderTreeNode(item.children, container, level + 1, fullPath);
             }
         });
     }

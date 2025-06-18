@@ -39,14 +39,14 @@
         </div>
         
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col p-2 sm:p-4">
+        <div class="flex-1 flex flex-col p-2 sm:p-4 min-h-0">
             <!-- Top Bar with Context Pills and Edit Button -->
-            <div class="flex justify-between items-start gap-2 mb-0 sm:mb-2">
+            <div class="flex justify-between items-start gap-2 mb-1 sm:mb-2 max-w-full flex-shrink-0">
                 <!-- Context Pills -->
-                <div id="context-pills" class="flex overflow-x-auto gap-2 empty:hidden pb-1 scrollbar-hide flex-1"></div>
+                <div id="context-pills" class="flex flex-wrap gap-1.5 empty:hidden flex-1 min-w-0 pr-2"></div>
                 
                 <!-- Edit Button -->
-                <button id="edit-button" class="p-1 text-dynamic-muted-foreground hover:text-dynamic-foreground transition-colors" title="Edit in designer">
+                <button id="edit-button" class="p-1 text-dynamic-muted-foreground hover:text-dynamic-foreground transition-colors flex-shrink-0" title="Edit in designer">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
                         <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
@@ -55,15 +55,15 @@
             </div>
             
             <!-- Main Prompt Interface - Full Height -->
-            <div class="flex-1 flex flex-col">
-                <div id="prompt-container" class="flex-1 bg-dynamic-muted border border-dynamic-border rounded-xl p-3 relative focus-within:border-dynamic-primary transition-colors flex flex-col">
+            <div class="flex-1 flex flex-col min-h-0">
+                <div id="prompt-container" class="flex-1 bg-dynamic-muted border border-dynamic-border rounded-xl p-3 relative focus-within:border-dynamic-primary transition-colors flex flex-col min-h-0">
                     <div id="prompt-text" class="flex-1 text-dynamic-foreground leading-relaxed whitespace-pre-wrap overflow-y-auto custom-scrollbar text-sm sm:text-base"></div>
-                    <div id="prompt-placeholder" class="text-dynamic-muted-foreground italic absolute top-3 sm:top-6 left-3 sm:left-6 pointer-events-none text-sm sm:text-base">← Enter your prompt on designer...</div>
+                    <div id="prompt-placeholder" class="text-dynamic-muted-foreground italic absolute top-3 left-3 pointer-events-none text-sm sm:text-base">← Enter your prompt on designer...</div>
                 </div>
             </div>
             
             <!-- Bottom Bar -->
-            <div class="flex justify-between items-center gap-2 mt-0 sm:mt-2">
+            <div class="flex justify-between items-center gap-2 mt-1 sm:mt-2 flex-shrink-0">
                 <!-- Settings Pills -->
                 <div id="settings-pills" class="flex gap-1 sm:gap-2 flex-wrap flex-1 min-w-0"></div>
                 

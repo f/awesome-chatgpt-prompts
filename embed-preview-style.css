@@ -90,6 +90,8 @@
     display: none;  /* Safari and Chrome */
 }
 
+
+
 /* Touch target improvements for mobile */
 .touch-target {
     min-height: 44px;
@@ -101,16 +103,15 @@
 
 /* Fixed height for prompt container to enable scrolling */
 #prompt-container {
-    height: calc(100vh - 140px); /* Fixed height minus header and footer space */
     min-height: 100px;
-    max-height: calc(100vh - 120px);
-    /* max-height: 100vh; */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 @media (max-width: 640px) {
     #prompt-container {
-        height: calc(100vh - 90px); /* Smaller on mobile */
-        max-height: calc(100vh - 90px);
+        min-height: 80px;
     }
 }
 
@@ -123,11 +124,10 @@
 
 /* Responsive improvements */
 @media (max-width: 640px) {
-    /* Ensure context pills don't wrap and scroll horizontally */
+    /* Context pills can wrap on mobile too */
     #context-pills {
-        flex-wrap: nowrap;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
+        flex-wrap: wrap !important;
+        max-height: 80px; /* Smaller on mobile */
     }
     
     /* More compact pill spacing on mobile */
@@ -190,6 +190,43 @@
     #file-sidebar {
         display: none !important;
     }
+}
+
+/* Context pills container improvements */
+#context-pills {
+    max-width: calc(100% - 40px); /* Reserve space for edit button */
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 120px; /* Limit context pills height */
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Custom scrollbar for context pills */
+#context-pills {
+    scrollbar-width: thin; /* Firefox */
+}
+
+#context-pills::-webkit-scrollbar {
+    width: 4px;
+}
+
+#context-pills::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#context-pills::-webkit-scrollbar-thumb {
+    background: rgb(var(--border) / 0.5);
+    border-radius: 2px;
+}
+
+#context-pills::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--border));
+}
+
+/* Ensure pills maintain size */
+#context-pills > div {
+    flex-shrink: 0;
 }
 
 /* Ensure proper touch behavior */
