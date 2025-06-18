@@ -26,7 +26,11 @@ class EmbedPreview {
             lightColor: this.params.lightColor || '#3b82f6',
             darkColor: this.params.darkColor || '#60a5fa',
             themeMode: this.params.themeMode || 'auto',
-            filetree: this.params.filetree ? decodeURIComponent(this.params.filetree).split('\n').filter(f => f.trim()) : []
+            filetree: this.params.filetree ? decodeURIComponent(this.params.filetree).split('\n').filter(f => f.trim()) : [],
+            showDiff: this.params.showDiff === 'true',
+            diffFilename: this.params.diffFilename || '',
+            diffOldText: this.params.diffOldText ? decodeURIComponent(this.params.diffOldText) : '',
+            diffNewText: this.params.diffNewText ? decodeURIComponent(this.params.diffNewText) : ''
         };
     }
     
@@ -187,6 +191,7 @@ class EmbedPreview {
     }
     
     render() {
+        this.renderDiffView();
         this.renderContextPills();
         this.renderPromptText();
         this.renderSettingsPills();
@@ -371,6 +376,57 @@ class EmbedPreview {
         }
         
         return pill;
+    }
+    
+    renderDiffView() {
+        const diffView = document.getElementById('diff-view');
+        if (!diffView) return;
+        
+        if (this.config.showDiff && (this.config.diffOldText || this.config.diffNewText)) {
+            diffView.classList.remove('hidden');
+            
+            // Set filename
+            const filenameElement = document.getElementById('diff-filename');
+            if (filenameElement) {
+                filenameElement.textContent = this.config.diffFilename || 'untitled';
+            }
+            
+            // Set diff content
+            const oldContent = document.getElementById('diff-old-content');
+            const newContent = document.getElementById('diff-new-content');
+            
+            if (oldContent) {
+                oldContent.textContent = this.config.diffOldText || '(empty)';
+                // Update colors based on dark mode
+                if (this.isDarkMode) {
+                    oldContent.style.backgroundColor = 'rgba(127, 29, 29, 0.15)';
+                    oldContent.style.color = '#fca5a5';
+                    oldContent.style.borderColor = 'rgba(127, 29, 29, 0.3)';
+                } else {
+                    oldContent.style.backgroundColor = 'rgba(254, 226, 226, 0.7)';
+                    oldContent.style.color = '#b91c1c';
+                    oldContent.style.borderColor = 'rgba(252, 165, 165, 0.5)';
+                }
+            }
+            if (newContent) {
+                newContent.textContent = this.config.diffNewText || '(empty)';
+                // Update colors based on dark mode
+                if (this.isDarkMode) {
+                    newContent.style.backgroundColor = 'rgba(20, 83, 45, 0.15)';
+                    newContent.style.color = '#86efac';
+                    newContent.style.borderColor = 'rgba(20, 83, 45, 0.3)';
+                } else {
+                    newContent.style.backgroundColor = 'rgba(220, 252, 231, 0.7)';
+                    newContent.style.color = '#15803d';
+                    newContent.style.borderColor = 'rgba(134, 239, 172, 0.5)';
+                }
+            }
+            
+            // Buttons are dummy - no click handlers needed
+            // They're just for visual representation
+        } else {
+            diffView.classList.add('hidden');
+        }
     }
     
     highlightMentions(text) {

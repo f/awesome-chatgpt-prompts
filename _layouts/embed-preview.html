@@ -54,6 +54,38 @@
                 </button>
             </div>
             
+            <!-- Diff View (if enabled) -->
+            <div id="diff-view" class="hidden mb-2">
+                <div class="bg-dynamic-muted border border-dynamic-border rounded-lg p-2">
+                    <div class="flex items-center justify-between mb-1.5">
+                        <div class="flex items-center gap-1.5">
+                            <svg class="w-3 h-3 text-dynamic-primary flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V7.414A2 2 0 0017.414 6L14 2.586A2 2 0 0012.586 2H4zm2 4a1 1 0 011-1h4a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7zm-1 5a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                            </svg>
+                            <span id="diff-filename" class="text-xs font-medium text-dynamic-foreground truncate"></span>
+                        </div>
+                        <div class="flex rounded-md overflow-hidden">
+                            <button id="accept-diff" class="px-2 py-0.5 bg-green-500 hover:bg-green-600 text-white text-[10px] font-medium transition-colors flex items-center gap-0.5">
+                                <svg class="w-2.5 h-2.5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="hidden sm:inline">Accept</span>
+                            </button>
+                            <button id="reject-diff" class="px-2 py-0.5 bg-red-500 hover:bg-red-600 text-white text-[10px] font-medium transition-colors flex items-center gap-0.5">
+                                <svg class="w-2.5 h-2.5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="hidden sm:inline">Reject</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="space-y-0.5">
+                        <div id="diff-old-content" class="bg-red-50/70 dark:bg-red-950/20 p-1 rounded text-[10px] font-mono whitespace-pre-wrap text-red-700 dark:text-red-400 overflow-x-auto border border-red-200/50 dark:border-red-900/30 max-h-20 overflow-y-auto custom-scrollbar"></div>
+                        <div id="diff-new-content" class="bg-green-50/70 dark:bg-green-950/20 p-1 rounded text-[10px] font-mono whitespace-pre-wrap text-green-700 dark:text-green-400 overflow-x-auto border border-green-200/50 dark:border-green-900/30 max-h-20 overflow-y-auto custom-scrollbar"></div>
+                    </div>
+                </div>
+            </div>
+            
             <!-- Main Prompt Interface - Full Height -->
             <div class="flex-1 flex flex-col min-h-0">
                 <div id="prompt-container" class="flex-1 bg-dynamic-muted border border-dynamic-border rounded-xl p-3 relative focus-within:border-dynamic-primary transition-colors flex flex-col min-h-0">

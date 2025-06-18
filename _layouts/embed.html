@@ -50,6 +50,22 @@
         <div class="designer-panel w-full lg:w-80 flex flex-col h-auto lg:h-full overflow-hidden order-2 lg:order-1 flex-shrink-0">
             <div class="flex-1 overflow-y-auto custom-scrollbar">
                 <div class="p-4 lg:p-6 lg:pt-0 space-y-4">
+                    <!-- Example Selector - Separated at top -->
+                    <div class="pb-4 border-b border-dynamic-border">
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-dynamic-muted-foreground">Load Example</label>
+                            <select id="example-select" class="w-full p-3 lg:p-2 bg-dynamic-muted border border-dynamic-border rounded-lg text-sm focus-ring touch-target">
+                                <option value="">Choose an example...</option>
+                                <option value="vibe-coding">Vibe coding (no diff)</option>
+                                <option value="vibe-coding-diff">Vibe coding with diff</option>
+                                <option value="chatgpt">ChatGPT example</option>
+                                <option value="claude">Claude example</option>
+                                <option value="image-analysis">Image analysis</option>
+                                <option value="api-design">API design</option>
+                            </select>
+                        </div>
+                    </div>
+                    
                     <!-- Context -->
                     <div class="space-y-2">
                         <label class="text-sm font-medium text-dynamic-muted-foreground">Context</label>
@@ -65,14 +81,6 @@
                                  class="w-full p-3 bg-dynamic-background border border-dynamic-border rounded-lg text-sm resize-none focus-ring custom-scrollbar touch-target"
                                  rows="8"
                                  placeholder="Enter your prompt..."></textarea>
-                        <div class="flex gap-3">
-                            <button type="button" id="vibe-example" class="text-xs text-dynamic-primary hover:text-opacity-80 transition-opacity touch-target py-1">
-                                Vibe coding example →
-                            </button>
-                            <button type="button" id="chat-example" class="text-xs text-dynamic-primary hover:text-opacity-80 transition-opacity touch-target py-1">
-                                Chat example →
-                            </button>
-                        </div>
                     </div>
                     
                     <!-- Model & Mode -->
@@ -249,6 +257,42 @@
                             Enter filenames one per line. Use forward slashes for folders (e.g., folder/file.js).
                             Add * at the end of a filename to highlight it (e.g., main.js*)
                         </p>
+                    </div>
+                    
+                    <!-- Diff View -->
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between">
+                            <label class="text-sm font-medium text-dynamic-muted-foreground">Diff View</label>
+                            <label class="flex items-center space-x-1.5 text-xs">
+                                <input type="checkbox" id="designer-show-diff" class="rounded border-dynamic-border w-3.5 h-3.5">
+                                <span class="text-dynamic-muted-foreground">Show diff</span>
+                            </label>
+                        </div>
+                        <div id="diff-fields" class="space-y-3 hidden">
+                            <div>
+                                <label class="text-xs text-dynamic-muted-foreground">File Name</label>
+                                <input type="text" id="designer-diff-filename" 
+                                       class="w-full p-2 bg-dynamic-background border border-dynamic-border rounded-lg text-sm focus-ring touch-target font-mono"
+                                       placeholder="components/ProductList.tsx">
+                            </div>
+                            <div>
+                                <label class="text-xs text-dynamic-muted-foreground">Old Text</label>
+                                <textarea id="designer-diff-old" 
+                                         class="w-full p-3 bg-dynamic-background border border-dynamic-border rounded-lg text-sm resize-none focus-ring custom-scrollbar touch-target font-mono"
+                                         rows="4"
+                                         placeholder="// Original code..."></textarea>
+                            </div>
+                            <div>
+                                <label class="text-xs text-dynamic-muted-foreground">New Text</label>
+                                <textarea id="designer-diff-new" 
+                                         class="w-full p-3 bg-dynamic-background border border-dynamic-border rounded-lg text-sm resize-none focus-ring custom-scrollbar touch-target font-mono"
+                                         rows="4"
+                                         placeholder="// Updated code..."></textarea>
+                            </div>
+                            <p class="text-[10px] text-dynamic-muted-foreground mt-2 opacity-70">
+                                Note: Large diffs may exceed URL length limits. Keep diff text short for sharing.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
