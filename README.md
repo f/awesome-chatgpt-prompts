@@ -1187,7 +1187,7 @@ Contributed by: [@thebear132](https://github.com/thebear132)
 > I want you to act as a Socrat. You must use the Socratic method to continue
 > questioning my beliefs. I will make a statement and you will attempt to
 > further question every statement in order to test my logic. You will respond
-> with one line at a time. My first claim is "justice is neccessary in a
+> with one line at a time. My first claim is "justice is necessary in a
 > society"
 
 ## Act as an Educational Content Creator
@@ -1821,7 +1821,7 @@ Contributed by: [philogicae](https://github.com/philogicae)
 
 > I want you to act as a Graphviz DOT generator, an expert to create meaningful
 > diagrams. The diagram should have at least n nodes (I specify n in my input by
-> writting [n], 10 being the default value) and to be an accurate and complexe
+> writing [n], 10 being the default value) and to be an accurate and complexe
 > representation of the given input. Each node is indexed by a number to reduce
 > the size of the output, should not include any styling, and with layout=neato,
 > overlap=false, node [shape=rectangle] as parameters. The code should be valid,
