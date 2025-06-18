@@ -26,6 +26,46 @@
     <link rel="stylesheet" href="{{ '/embed-preview-style.css' | relative_url }}">
     <link rel="icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}">
     <meta name="description" content="AI prompt viewer">
+    <style>
+        @keyframes flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        
+        .flash-animation {
+            animation: flash 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideDown {
+            from {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+        }
+        
+        .diff-enter {
+            animation: slideUp 0.3s ease-out;
+        }
+        
+        .diff-exit {
+            animation: slideDown 0.3s ease-out;
+        }
+    </style>
 </head>
 <body class="bg-dynamic-background text-dynamic-foreground overflow-hidden">
     <!-- Viewer Mode -->
@@ -39,9 +79,9 @@
         </div>
         
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col p-2 sm:p-4 min-h-0">
+        <div class="flex-1 flex flex-col p-2 sm:p-4 h-full overflow-hidden">
             <!-- Top Bar with Context Pills and Edit Button -->
-            <div class="flex justify-between items-start gap-2 mb-1 sm:mb-2 max-w-full flex-shrink-0">
+            <div class="flex justify-between items-start gap-2 mb-1 sm:mb-2 flex-shrink-0">
                 <!-- Context Pills -->
                 <div id="context-pills" class="flex flex-wrap gap-1.5 empty:hidden flex-1 min-w-0 pr-2"></div>
                 
@@ -54,54 +94,98 @@
                 </button>
             </div>
             
-            <!-- Diff View (if enabled) -->
-            <div id="diff-view" class="hidden mb-2">
-                <div class="bg-dynamic-muted border border-dynamic-border rounded-lg p-2">
-                    <div class="flex items-center justify-between mb-1.5">
-                        <div class="flex items-center gap-1.5">
-                            <svg class="w-3 h-3 text-dynamic-primary flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V7.414A2 2 0 0017.414 6L14 2.586A2 2 0 0012.586 2H4zm2 4a1 1 0 011-1h4a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7zm-1 5a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1z" clip-rule="evenodd"/>
-                            </svg>
-                            <span id="diff-filename" class="text-xs font-medium text-dynamic-foreground truncate"></span>
+            <!-- Main Prompt Interface with Floating Diff - Flex-1 to take remaining space -->
+            <div class="flex-1 relative min-h-0 overflow-hidden">
+                <!-- Floating Diff View (when enabled and viewport is compact) -->
+                <div id="diff-view" class="hidden absolute top-2 left-2 right-2 z-10 diff-floating">
+                    <div class="bg-dynamic-background/95 backdrop-blur-sm border border-dynamic-border shadow-lg rounded-lg p-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-1.5">
+                                <svg class="w-3 h-3 text-dynamic-primary flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V7.414A2 2 0 0017.414 6L14 2.586A2 2 0 0012.586 2H4zm2 4a1 1 0 011-1h4a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7zm-1 5a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                                </svg>
+                                <span id="diff-filename" class="text-xs font-medium text-dynamic-foreground truncate"></span>
+                            </div>
+                            <div class="flex gap-1 items-center">
+                                <div class="flex rounded-md overflow-hidden">
+                                    <button id="diff-accept-diff" class="px-2 py-0.5 bg-green-500 hover:bg-green-600 text-white text-[10px] font-medium transition-colors flex items-center gap-0.5">
+                                        <svg class="w-2.5 h-2.5" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span class="hidden sm:inline">Accept</span>
+                                    </button>
+                                    <button id="diff-reject-diff" class="px-2 py-0.5 bg-red-500 hover:bg-red-600 text-white text-[10px] font-medium transition-colors flex items-center gap-0.5">
+                                        <svg class="w-2.5 h-2.5" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span class="hidden sm:inline">Reject</span>
+                                    </button>
+                                </div>
+                                <!-- Collapse/Expand button -->
+                                <button id="toggle-diff" class="p-0.5 text-dynamic-muted-foreground hover:text-dynamic-foreground transition-colors" title="Toggle diff view">
+                                    <svg class="w-3 h-3 transform transition-transform" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
-                        <div class="flex rounded-md overflow-hidden">
-                            <button id="accept-diff" class="px-2 py-0.5 bg-green-500 hover:bg-green-600 text-white text-[10px] font-medium transition-colors flex items-center gap-0.5">
-                                <svg class="w-2.5 h-2.5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                                </svg>
-                                <span class="hidden sm:inline">Accept</span>
-                            </button>
-                            <button id="reject-diff" class="px-2 py-0.5 bg-red-500 hover:bg-red-600 text-white text-[10px] font-medium transition-colors flex items-center gap-0.5">
-                                <svg class="w-2.5 h-2.5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                                </svg>
-                                <span class="hidden sm:inline">Reject</span>
-                            </button>
+                        <div id="diff-content" class="space-y-1 transition-all duration-300 overflow-hidden">
+                            <div id="diff-old-content" class="bg-red-50/70 dark:bg-red-950/20 p-2 rounded text-[10px] font-mono whitespace-pre-wrap text-red-700 dark:text-red-400 overflow-x-auto border border-red-200/50 dark:border-red-900/30 max-h-20 overflow-y-auto custom-scrollbar"></div>
+                            <div id="diff-new-content" class="bg-green-50/70 dark:bg-green-950/20 p-2 rounded text-[10px] font-mono whitespace-pre-wrap text-green-700 dark:text-green-400 overflow-x-auto border border-green-200/50 dark:border-green-900/30 max-h-20 overflow-y-auto custom-scrollbar"></div>
                         </div>
                     </div>
-                    <div class="space-y-0.5">
-                        <div id="diff-old-content" class="bg-red-50/70 dark:bg-red-950/20 p-1 rounded text-[10px] font-mono whitespace-pre-wrap text-red-700 dark:text-red-400 overflow-x-auto border border-red-200/50 dark:border-red-900/30 max-h-20 overflow-y-auto custom-scrollbar"></div>
-                        <div id="diff-new-content" class="bg-green-50/70 dark:bg-green-950/20 p-1 rounded text-[10px] font-mono whitespace-pre-wrap text-green-700 dark:text-green-400 overflow-x-auto border border-green-200/50 dark:border-green-900/30 max-h-20 overflow-y-auto custom-scrollbar"></div>
-                    </div>
                 </div>
-            </div>
-            
-            <!-- Main Prompt Interface - Full Height -->
-            <div class="flex-1 flex flex-col min-h-0">
-                <div id="prompt-container" class="flex-1 bg-dynamic-muted border border-dynamic-border rounded-xl p-3 relative focus-within:border-dynamic-primary transition-colors flex flex-col min-h-0">
-                    <div id="prompt-text" class="flex-1 text-dynamic-foreground leading-relaxed whitespace-pre-wrap overflow-y-auto custom-scrollbar text-sm sm:text-base"></div>
-                    <div id="prompt-placeholder" class="text-dynamic-muted-foreground italic absolute top-3 left-3 pointer-events-none text-sm sm:text-base">← Enter your prompt on designer...</div>
-                </div>
-            </div>
-            
-            <!-- Bottom Bar -->
-            <div class="flex justify-between items-center gap-2 mt-1 sm:mt-2 flex-shrink-0">
-                <!-- Settings Pills -->
-                <div id="settings-pills" class="flex gap-1 sm:gap-2 flex-wrap flex-1 min-w-0"></div>
                 
-                <!-- Send Button (circular with arrow up) -->
-                <button id="copy-button" class="w-8 h-8 sm:w-10 sm:h-10 bg-dynamic-primary text-white rounded-full flex items-center justify-center hover:opacity-90 transition-opacity focus-ring flex-shrink-0 shadow-lg touch-target" title="Send prompt">
-                    <svg width="16" height="16" class="sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <!-- Container for inline diff and prompt -->
+                <div class="h-full flex flex-col">
+                    <!-- Inline Diff View (when enabled and viewport has space) -->
+                    <div id="diff-view-inline" class="hidden mb-2 flex-shrink-0">
+                        <div class="bg-dynamic-muted border border-dynamic-border rounded-lg p-2">
+                            <div class="flex items-center justify-between mb-1.5">
+                                <div class="flex items-center gap-1.5">
+                                    <svg class="w-3 h-3 text-dynamic-primary flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V7.414A2 2 0 0017.414 6L14 2.586A2 2 0 0012.586 2H4zm2 4a1 1 0 011-1h4a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7zm-1 5a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span id="inline-diff-filename" class="text-xs font-medium text-dynamic-foreground truncate"></span>
+                                </div>
+                                <div class="flex rounded-md overflow-hidden">
+                                    <button id="inline-accept-diff" class="px-2 py-0.5 bg-green-500 hover:bg-green-600 text-white text-[10px] font-medium transition-colors flex items-center gap-0.5">
+                                        <svg class="w-2.5 h-2.5" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span class="hidden sm:inline">Accept</span>
+                                    </button>
+                                    <button id="inline-reject-diff" class="px-2 py-0.5 bg-red-500 hover:bg-red-600 text-white text-[10px] font-medium transition-colors flex items-center gap-0.5">
+                                        <svg class="w-2.5 h-2.5" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span class="hidden sm:inline">Reject</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="space-y-0.5">
+                                <div id="inline-old-content" class="bg-red-50/70 dark:bg-red-950/20 p-1 rounded text-[10px] font-mono whitespace-pre-wrap text-red-700 dark:text-red-400 overflow-x-auto border border-red-200/50 dark:border-red-900/30 max-h-20 overflow-y-auto custom-scrollbar"></div>
+                                <div id="inline-new-content" class="bg-green-50/70 dark:bg-green-950/20 p-1 rounded text-[10px] font-mono whitespace-pre-wrap text-green-700 dark:text-green-400 overflow-x-auto border border-green-200/50 dark:border-green-900/30 max-h-20 overflow-y-auto custom-scrollbar"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Prompt Container - Full height of parent -->
+                    <div id="prompt-container" class="flex-1 bg-dynamic-muted border border-dynamic-border rounded-xl p-3 relative focus-within:border-dynamic-primary transition-colors flex flex-col min-h-0">
+                        <div id="prompt-text" class="flex-1 text-dynamic-foreground leading-relaxed whitespace-pre-wrap overflow-y-auto custom-scrollbar text-sm sm:text-base transition-all duration-300"></div>
+                        <div id="prompt-placeholder" class="text-dynamic-muted-foreground italic absolute top-3 left-3 pointer-events-none text-sm sm:text-base">← Enter your prompt on designer...</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom Bar - Always visible with reduced height -->
+            <div class="flex justify-between items-center gap-2 mt-1 pt-1 flex-shrink-0">
+                <!-- Settings Pills - Smaller -->
+                <div id="settings-pills" class="flex gap-1 flex-wrap flex-1 min-w-0"></div>
+                
+                <!-- Send Button - Smaller -->
+                <button id="copy-button" class="w-7 h-7 sm:w-8 sm:h-8 bg-dynamic-primary text-white rounded-full flex items-center justify-center hover:opacity-90 transition-opacity flex-shrink-0 shadow-md" title="Send prompt">
+                    <svg width="14" height="14" class="sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                         <path d="M12 19V5M5 12l7-7 7 7"/>
                     </svg>
                 </button>

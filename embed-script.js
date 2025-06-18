@@ -38,7 +38,8 @@ class EmbedDesigner {
                 showDiff: this.params.showDiff === 'true' || savedConfig.showDiff || false,
                 diffFilename: this.params.diffFilename || savedConfig.diffFilename || '',
                 diffOldText: this.params.diffOldText ? decodeURIComponent(this.params.diffOldText) : (savedConfig.diffOldText || ''),
-                diffNewText: this.params.diffNewText ? decodeURIComponent(this.params.diffNewText) : (savedConfig.diffNewText || '')
+                diffNewText: this.params.diffNewText ? decodeURIComponent(this.params.diffNewText) : (savedConfig.diffNewText || ''),
+                flashButton: this.params.flashButton || savedConfig.flashButton || 'none'
             };
         }
         
@@ -65,7 +66,8 @@ class EmbedDesigner {
             showDiff: false,
             diffFilename: '',
             diffOldText: '',
-            diffNewText: ''
+            diffNewText: '',
+            flashButton: 'none'
         };
     }
     
@@ -93,7 +95,8 @@ class EmbedDesigner {
                         showDiff: config.showDiff || false,
                         diffFilename: config.diffFilename || '',
                         diffOldText: config.diffOldText || '',
-                        diffNewText: config.diffNewText || ''
+                        diffNewText: config.diffNewText || '',
+                        flashButton: config.flashButton || 'none'
                     };
                 }
             }
@@ -204,10 +207,12 @@ class EmbedDesigner {
         const diffFilename = document.getElementById('designer-diff-filename');
         const diffOldText = document.getElementById('designer-diff-old');
         const diffNewText = document.getElementById('designer-diff-new');
+        const flashButton = document.getElementById('designer-flash-button');
         
         if (diffFilename) diffFilename.value = this.config.diffFilename || '';
         if (diffOldText) diffOldText.value = this.config.diffOldText || '';
         if (diffNewText) diffNewText.value = this.config.diffNewText || '';
+        if (flashButton) flashButton.value = this.config.flashButton || 'none';
     }
     
     updateThemeModeButtons() {
@@ -226,7 +231,7 @@ class EmbedDesigner {
     
     setupDesignerEvents() {
         // Form changes update preview
-        ['designer-prompt', 'designer-context', 'designer-mode-select', 'designer-thinking', 'designer-max', 'designer-filetree', 'designer-show-filetree', 'designer-diff-filename', 'designer-diff-old', 'designer-diff-new'].forEach(id => {
+        ['designer-prompt', 'designer-context', 'designer-mode-select', 'designer-thinking', 'designer-max', 'designer-filetree', 'designer-show-filetree', 'designer-diff-filename', 'designer-diff-old', 'designer-diff-new', 'designer-flash-button'].forEach(id => {
             const element = document.getElementById(id);
             if (element) {
                 element.addEventListener('input', () => this.updateConfigFromForm());
@@ -457,7 +462,8 @@ class EmbedDesigner {
             showDiff: document.getElementById('designer-show-diff').checked,
             diffFilename: document.getElementById('designer-diff-filename').value,
             diffOldText: document.getElementById('designer-diff-old').value,
-            diffNewText: document.getElementById('designer-diff-new').value
+            diffNewText: document.getElementById('designer-diff-new').value,
+            flashButton: document.getElementById('designer-flash-button').value
         };
         
         this.updatePreview();
@@ -534,6 +540,7 @@ class EmbedDesigner {
         if (this.config.showDiff) {
             params.set('showDiff', 'true');
             if (this.config.diffFilename) params.set('diffFilename', this.config.diffFilename);
+            if (this.config.flashButton && this.config.flashButton !== 'none') params.set('flashButton', this.config.flashButton);
             // Truncate diff text if too long to prevent URL length issues
             if (this.config.diffOldText) {
                 const truncated = this.config.diffOldText.substring(0, 100);
@@ -564,6 +571,7 @@ class EmbedDesigner {
         if (this.config.showDiff) {
             params.set('showDiff', 'true');
             if (this.config.diffFilename) params.set('diffFilename', this.config.diffFilename);
+            if (this.config.flashButton && this.config.flashButton !== 'none') params.set('flashButton', this.config.flashButton);
             // Truncate diff text if too long to prevent URL length issues
             if (this.config.diffOldText) {
                 const truncated = this.config.diffOldText.substring(0, 150);
@@ -705,6 +713,7 @@ src/types/product.ts`;
         // No diff for this example
         document.getElementById('designer-show-diff').checked = false;
         document.getElementById('diff-fields').classList.add('hidden');
+        document.getElementById('designer-flash-button').value = 'none';
         
         // Update config from form
         this.updateConfigFromForm();
@@ -766,6 +775,9 @@ const [loading, setLoading] = useState(true);`;
 const [loading, setLoading] = useState(true);
 const [error, setError] = useState<Error | null>(null);`;
         
+        // Flash accept button for this example with diff
+        document.getElementById('designer-flash-button').value = 'accept';
+        
         // Update config from form
         this.updateConfigFromForm();
         
@@ -812,6 +824,7 @@ Can you suggest a menu with appetizers, main course, and dessert that would work
         // Clear diff view
         document.getElementById('designer-show-diff').checked = false;
         document.getElementById('diff-fields').classList.add('hidden');
+        document.getElementById('designer-flash-button').value = 'none';
         
         // Update config from form
         this.updateConfigFromForm();
@@ -865,6 +878,7 @@ Keep it warm but professional, around 150-200 words.`;
         // Clear diff view
         document.getElementById('designer-show-diff').checked = false;
         document.getElementById('diff-fields').classList.add('hidden');
+        document.getElementById('designer-flash-button').value = 'none';
         
         // Update config from form
         this.updateConfigFromForm();
@@ -915,6 +929,7 @@ Keep it warm but professional, around 150-200 words.`;
         // Clear diff view
         document.getElementById('designer-show-diff').checked = false;
         document.getElementById('diff-fields').classList.add('hidden');
+        document.getElementById('designer-flash-button').value = 'none';
         
         // Update config from form
         this.updateConfigFromForm();
@@ -972,6 +987,7 @@ docs/openapi.yaml*`;
         // Clear diff view
         document.getElementById('designer-show-diff').checked = false;
         document.getElementById('diff-fields').classList.add('hidden');
+        document.getElementById('designer-flash-button').value = 'none';
         
         // Update config from form
         this.updateConfigFromForm();

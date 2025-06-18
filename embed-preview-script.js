@@ -30,7 +30,8 @@ class EmbedPreview {
             showDiff: this.params.showDiff === 'true',
             diffFilename: this.params.diffFilename || '',
             diffOldText: this.params.diffOldText ? decodeURIComponent(this.params.diffOldText) : '',
-            diffNewText: this.params.diffNewText ? decodeURIComponent(this.params.diffNewText) : ''
+            diffNewText: this.params.diffNewText ? decodeURIComponent(this.params.diffNewText) : '',
+            flashButton: this.params.flashButton || 'none'
         };
     }
     
@@ -38,6 +39,7 @@ class EmbedPreview {
         this.setupColors();
         this.setupElements();
         this.render();
+        this.setupResizeListener();
     }
     
     setupColors() {
@@ -320,21 +322,21 @@ class EmbedPreview {
     
     createSettingPill(text, type) {
         const pill = document.createElement('div');
-        pill.className = 'rounded-full text-xs font-medium flex items-center gap-1.5';
+        pill.className = 'rounded-full text-[10px] font-medium flex items-center gap-1';
         
         let icon = '';
         
         // Use different styling based on pill type
         if (type === 'mode') {
-            // Mode pill keeps the background
+            // Mode pill keeps the background with reduced padding
             if (this.isDarkMode) {
-                pill.className += ' px-3 py-2 bg-dynamic-primary/20 text-dynamic-foreground border border-dynamic-primary/30';
+                pill.className += ' px-2 py-1 bg-dynamic-primary/20 text-dynamic-foreground border border-dynamic-primary/30';
             } else {
-                pill.className += ' px-3 py-2 bg-dynamic-primary/10 text-dynamic-foreground border border-dynamic-primary/20';
+                pill.className += ' px-2 py-1 bg-dynamic-primary/10 text-dynamic-foreground border border-dynamic-primary/20';
             }
         } else {
             // Model, thinking, and max pills only have text color
-            pill.className += ' pl-1 text-dynamic-primary';
+            pill.className += ' pl-0.5 text-dynamic-primary';
         }
         
         switch (type) {
@@ -346,16 +348,16 @@ class EmbedPreview {
                 const modeType = text.toLowerCase();
                 switch (modeType) {
                     case 'agent':
-                        icon = '<svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18.18 8.04c-.78-.84-1.92-1.54-3.18-1.54-1.44 0-2.7.93-3.48 2.25-.78-1.32-2.04-2.25-3.48-2.25-1.26 0-2.4.7-3.18 1.54-.87.94-1.36 2.11-1.36 3.46 0 1.35.49 2.52 1.36 3.46.78.84 1.92 1.54 3.18 1.54 1.44 0 2.7-.93 3.48-2.25.78 1.32 2.04 2.25 3.48 2.25 1.26 0 2.4-.7 3.18-1.54.87-.94 1.36-2.11 1.36-3.46 0-1.35-.49-2.52-1.36-3.46z"/></svg>';
+                        icon = '<svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18.18 8.04c-.78-.84-1.92-1.54-3.18-1.54-1.44 0-2.7.93-3.48 2.25-.78-1.32-2.04-2.25-3.48-2.25-1.26 0-2.4.7-3.18 1.54-.87.94-1.36 2.11-1.36 3.46 0 1.35.49 2.52 1.36 3.46.78.84 1.92 1.54 3.18 1.54 1.44 0 2.7-.93 3.48-2.25.78 1.32 2.04 2.25 3.48 2.25 1.26 0 2.4-.7 3.18-1.54.87-.94 1.36-2.11 1.36-3.46 0-1.35-.49-2.52-1.36-3.46z"/></svg>';
                         break;
                     case 'chat':
-                        icon = '<svg class="w-3 h-3" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"/></svg>';
+                        icon = '<svg class="w-2.5 h-2.5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"/></svg>';
                         break;
                     case 'manual':
-                        icon = '<svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>';
+                        icon = '<svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>';
                         break;
                     case 'cloud':
-                        icon = '<svg class="w-3 h-3" viewBox="0 0 20 20" fill="currentColor"><path d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z"/></svg>';
+                        icon = '<svg class="w-2.5 h-2.5" viewBox="0 0 20 20" fill="currentColor"><path d="M5.5 16a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 16h-8z"/></svg>';
                         break;
                     default:
                         icon = '';
@@ -365,12 +367,12 @@ class EmbedPreview {
                 break;
             case 'thinking':
                 // Brain icon for thinking mode
-                icon = '<svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M19.864 8.465a3.505 3.505 0 0 0-3.03-4.449A3.005 3.005 0 0 0 14 2a2.98 2.98 0 0 0-2 .78A2.98 2.98 0 0 0 10 2c-1.301 0-2.41.831-2.825 2.015a3.505 3.505 0 0 0-3.039 4.45A4.028 4.028 0 0 0 2 12c0 1.075.428 2.086 1.172 2.832A4.067 4.067 0 0 0 3 16c0 1.957 1.412 3.59 3.306 3.934A3.515 3.515 0 0 0 9.5 22c.979 0 1.864-.407 2.5-1.059A3.484 3.484 0 0 0 14.5 22a3.51 3.51 0 0 0 3.19-2.06 4.006 4.006 0 0 0 3.138-5.108A4.003 4.003 0 0 0 22 12a4.028 4.028 0 0 0-2.136-3.535zM9.5 20c-.711 0-1.33-.504-1.47-1.198L7.818 18H7c-1.103 0-2-.897-2-2 0-.352.085-.682.253-.981l.456-.816-.784-.51A2.019 2.019 0 0 1 4 12c0-.977.723-1.824 1.682-1.972l1.693-.26-1.059-1.346a1.502 1.502 0 0 1 1.498-2.39L9 6.207V5a1 1 0 0 1 2 0v13.5c0 .827-.673 1.5-1.5 1.5zm9.575-6.308-.784.51.456.816c.168.3.253.63.253.982 0 1.103-.897 2-2.05 2h-.818l-.162.802A1.502 1.502 0 0 1 14.5 20c-.827 0-1.5-.673-1.5-1.5V5c0-.552.448-1 1-1s1 .448 1 1.05v1.207l1.186-.225a1.502 1.502 0 0 1 1.498 2.39l-1.059 1.347 1.693.26A2.002 2.002 0 0 1 20 12c0 .683-.346 1.315-.925 1.692z"></path></svg>';
+                icon = '<svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.864 8.465a3.505 3.505 0 0 0-3.03-4.449A3.005 3.005 0 0 0 14 2a2.98 2.98 0 0 0-2 .78A2.98 2.98 0 0 0 10 2c-1.301 0-2.41.831-2.825 2.015a3.505 3.505 0 0 0-3.039 4.45A4.028 4.028 0 0 0 2 12c0 1.075.428 2.086 1.172 2.832A4.067 4.067 0 0 0 3 16c0 1.957 1.412 3.59 3.306 3.934A3.515 3.515 0 0 0 9.5 22c.979 0 1.864-.407 2.5-1.059A3.484 3.484 0 0 0 14.5 22a3.51 3.51 0 0 0 3.19-2.06 4.006 4.006 0 0 0 3.138-5.108A4.003 4.003 0 0 0 22 12a4.028 4.028 0 0 0-2.136-3.535zM9.5 20c-.711 0-1.33-.504-1.47-1.198L7.818 18H7c-1.103 0-2-.897-2-2 0-.352.085-.682.253-.981l.456-.816-.784-.51A2.019 2.019 0 0 1 4 12c0-.977.723-1.824 1.682-1.972l1.693-.26-1.059-1.346a1.502 1.502 0 0 1 1.498-2.39L9 6.207V5a1 1 0 0 1 2 0v13.5c0 .827-.673 1.5-1.5 1.5zm9.575-6.308-.784.51.456.816c.168.3.253.63.253.982 0 1.103-.897 2-2.05 2h-.818l-.162.802A1.502 1.502 0 0 1 14.5 20c-.827 0-1.5-.673-1.5-1.5V5c0-.552.448-1 1-1s1 .448 1 1.05v1.207l1.186-.225a1.502 1.502 0 0 1 1.498 2.39l-1.059 1.347 1.693.26A2.002 2.002 0 0 1 20 12c0 .683-.346 1.315-.925 1.692z"></path></svg>';
                 pill.innerHTML = icon + '<span>' + text + '</span>';
                 break;
             case 'max':
                 // Lightning bolt icon for MAX mode
-                icon = '<svg class="w-3 h-3" viewBox="0 0 20 20" fill="currentColor"><path d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"/></svg>';
+                icon = '<svg class="w-2.5 h-2.5" viewBox="0 0 20 20" fill="currentColor"><path d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"/></svg>';
                 pill.innerHTML = icon + '<span>' + text + '</span>';
                 break;
         }
@@ -378,54 +380,166 @@ class EmbedPreview {
         return pill;
     }
     
+    setupResizeListener() {
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                this.renderDiffView();
+            }, 100);
+        });
+    }
+    
     renderDiffView() {
         const diffView = document.getElementById('diff-view');
-        if (!diffView) return;
+        const diffViewInline = document.getElementById('diff-view-inline');
+        const promptText = document.getElementById('prompt-text');
+        if (!diffView || !diffViewInline) return;
+        
+        const viewportHeight = window.innerHeight;
+        const isCompact = viewportHeight < 400;
         
         if (this.config.showDiff && (this.config.diffOldText || this.config.diffNewText)) {
-            diffView.classList.remove('hidden');
-            
-            // Set filename
-            const filenameElement = document.getElementById('diff-filename');
-            if (filenameElement) {
-                filenameElement.textContent = this.config.diffFilename || 'untitled';
-            }
-            
-            // Set diff content
-            const oldContent = document.getElementById('diff-old-content');
-            const newContent = document.getElementById('diff-new-content');
-            
-            if (oldContent) {
-                oldContent.textContent = this.config.diffOldText || '(empty)';
-                // Update colors based on dark mode
-                if (this.isDarkMode) {
-                    oldContent.style.backgroundColor = 'rgba(127, 29, 29, 0.15)';
-                    oldContent.style.color = '#fca5a5';
-                    oldContent.style.borderColor = 'rgba(127, 29, 29, 0.3)';
-                } else {
-                    oldContent.style.backgroundColor = 'rgba(254, 226, 226, 0.7)';
-                    oldContent.style.color = '#b91c1c';
-                    oldContent.style.borderColor = 'rgba(252, 165, 165, 0.5)';
+            // Determine which view to show based on viewport height
+            if (isCompact) {
+                // Show floating diff view
+                diffView.classList.remove('hidden');
+                diffView.classList.add('diff-enter');
+                diffViewInline.classList.add('hidden');
+                this.setupDiffContent('diff-view');
+            } else {
+                // Show inline diff view
+                diffViewInline.classList.remove('hidden');
+                diffView.classList.add('hidden');
+                this.setupDiffContent('diff-view-inline');
+                // Reset margin when switching to inline view
+                if (promptText) {
+                    promptText.style.marginTop = '0';
                 }
             }
-            if (newContent) {
-                newContent.textContent = this.config.diffNewText || '(empty)';
-                // Update colors based on dark mode
-                if (this.isDarkMode) {
-                    newContent.style.backgroundColor = 'rgba(20, 83, 45, 0.15)';
-                    newContent.style.color = '#86efac';
-                    newContent.style.borderColor = 'rgba(20, 83, 45, 0.3)';
-                } else {
-                    newContent.style.backgroundColor = 'rgba(220, 252, 231, 0.7)';
-                    newContent.style.color = '#15803d';
-                    newContent.style.borderColor = 'rgba(134, 239, 172, 0.5)';
-                }
-            }
-            
-            // Buttons are dummy - no click handlers needed
-            // They're just for visual representation
         } else {
             diffView.classList.add('hidden');
+            diffViewInline.classList.add('hidden');
+            // Reset margin when diff is hidden
+            if (promptText) {
+                promptText.style.marginTop = '0';
+            }
+        }
+    }
+    
+    setupDiffContent(containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        
+        // Count lines in old and new content
+        const oldLines = this.config.diffOldText ? this.config.diffOldText.split('\n').length : 0;
+        const newLines = this.config.diffNewText ? this.config.diffNewText.split('\n').length : 0;
+        
+        // Set filename with line counts
+        const filenameElement = container.querySelector('[id$="-filename"]');
+        if (filenameElement) {
+            const filename = this.config.diffFilename || 'untitled';
+            filenameElement.innerHTML = `
+                <span>${filename}</span>
+                <span class="ml-2 text-[10px] font-mono">
+                    <span class="text-green-600 dark:text-green-400">+${newLines}</span>
+                    <span class="text-red-600 dark:text-red-400">-${oldLines}</span>
+                </span>
+            `;
+        }
+        
+        // Set diff content
+        const oldContent = container.querySelector('[id$="-old-content"]');
+        const newContent = container.querySelector('[id$="-new-content"]');
+        
+        if (oldContent) {
+            oldContent.textContent = this.config.diffOldText || '(empty)';
+            // Update colors based on dark mode
+            if (this.isDarkMode) {
+                oldContent.style.backgroundColor = 'rgba(127, 29, 29, 0.15)';
+                oldContent.style.color = '#fca5a5';
+                oldContent.style.borderColor = 'rgba(127, 29, 29, 0.3)';
+            } else {
+                oldContent.style.backgroundColor = 'rgba(254, 226, 226, 0.7)';
+                oldContent.style.color = '#b91c1c';
+                oldContent.style.borderColor = 'rgba(252, 165, 165, 0.5)';
+            }
+        }
+        if (newContent) {
+            newContent.textContent = this.config.diffNewText || '(empty)';
+            // Update colors based on dark mode
+            if (this.isDarkMode) {
+                newContent.style.backgroundColor = 'rgba(20, 83, 45, 0.15)';
+                newContent.style.color = '#86efac';
+                newContent.style.borderColor = 'rgba(20, 83, 45, 0.3)';
+            } else {
+                newContent.style.backgroundColor = 'rgba(220, 252, 231, 0.7)';
+                newContent.style.color = '#15803d';
+                newContent.style.borderColor = 'rgba(134, 239, 172, 0.5)';
+            }
+        }
+        
+        // Apply flash animation to buttons if configured
+        const acceptButton = container.querySelector('[id$="-accept-diff"]');
+        const rejectButton = container.querySelector('[id$="-reject-diff"]');
+        
+        if (this.config.flashButton === 'accept' && acceptButton) {
+            acceptButton.classList.add('flash-animation');
+            // Remove from reject button if it exists
+            if (rejectButton) rejectButton.classList.remove('flash-animation');
+        } else if (this.config.flashButton === 'reject' && rejectButton) {
+            rejectButton.classList.add('flash-animation');
+            // Remove from accept button if it exists
+            if (acceptButton) acceptButton.classList.remove('flash-animation');
+        } else {
+            // Remove animation from both if 'none'
+            if (acceptButton) acceptButton.classList.remove('flash-animation');
+            if (rejectButton) rejectButton.classList.remove('flash-animation');
+        }
+        
+        // Setup toggle button for floating view only
+        if (containerId === 'diff-view') {
+            const toggleButton = container.querySelector('#toggle-diff');
+            const diffContent = container.querySelector('#diff-content');
+            const promptText = document.getElementById('prompt-text');
+            
+            if (toggleButton && diffContent && promptText) {
+                // Remove existing listeners
+                const newToggleButton = toggleButton.cloneNode(true);
+                toggleButton.parentNode.replaceChild(newToggleButton, toggleButton);
+                
+                // Set initial state - collapsed when compact
+                let isExpanded = false;
+                diffContent.style.maxHeight = '0';
+                diffContent.style.overflow = 'hidden';
+                newToggleButton.querySelector('svg').style.transform = 'rotate(-90deg)';
+                
+                // Function to update prompt margin based on diff view height
+                const updatePromptMargin = () => {
+                    const diffHeight = container.offsetHeight;
+                    promptText.style.marginTop = `${diffHeight + 16}px`; // 16px for some breathing room
+                };
+                
+                // Set initial margin
+                setTimeout(updatePromptMargin, 0);
+                
+                newToggleButton.addEventListener('click', () => {
+                    isExpanded = !isExpanded;
+                    
+                    if (isExpanded) {
+                        diffContent.style.maxHeight = diffContent.scrollHeight + 'px';
+                        newToggleButton.querySelector('svg').style.transform = 'rotate(0deg)';
+                        // Update margin after animation
+                        setTimeout(updatePromptMargin, 300);
+                    } else {
+                        diffContent.style.maxHeight = '0';
+                        diffContent.style.overflow = 'hidden';
+                        newToggleButton.querySelector('svg').style.transform = 'rotate(-90deg)';
+                        // Update margin after animation
+                        setTimeout(updatePromptMargin, 300);
+                    }
+                });
+            }
         }
     }
     
