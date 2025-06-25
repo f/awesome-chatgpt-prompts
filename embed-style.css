@@ -1,25 +1,25 @@
-/* Custom CSS variables for dynamic theming */
 :root {
-    /* These will be dynamically set by JavaScript based on light/dark colors */
-    --primary: 59 130 246; /* Default blue-500 */
-    --background: 255 255 255;
-    --foreground: 15 23 42;
-    --muted: 248 250 252;
-    --muted-foreground: 100 116 139;
-    --border: 226 232 240;
-    --accent: 16 185 129;
-    
-    /* Main site theme variables */
-    --bg-color-light: #ffffff;
-    --bg-color-dark: #1a1a1a;
-    --text-color-light: #000000;
-    --text-color-dark: #ffffff;
+    /* Refined RGB values */
+    --primary: 78 129 142;             /* Teal-Gray */
+    --background: 248 245 240;         /* Off-White Beige */
+    --foreground: 30 30 30;            /* Almost Black */
+    --muted: 235 232 225;              /* Soft Warm Gray */
+    --muted-foreground: 120 120 120;   /* Medium Gray */
+    --border: 220 215 210;             /* Light Stone Border */
+    --accent: 209 108 127;             /* Dusty Rose */
+
+    /* Hex variables for consistency */
+    --bg-color-light: #f8f5f0;
+    --bg-color-dark: #1e1e1e;
+    --text-color-light: #1e1e1e;
+    --text-color-dark: #f2f2f2;
     --header-height: 80px;
-    --accent-color: #10b981;
-    --accent-color-hover: #059669;
-    --border-color: #e1e4e8;
-    --border-color-dark: #2d2d2d;
+    --accent-color: #d16c7f;
+    --accent-color-hover: #b15569;
+    --border-color: #dcd7d2;
+    --border-color-dark: #2a2a2a;
 }
+
 
 /* Reset body margin and ensure full height */
 body {
