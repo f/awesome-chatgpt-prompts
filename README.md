@@ -2787,6 +2787,8 @@ Contributed by: [@jcordon5](https://github.com/jcordon5)
 
 ## Act as en Explainer with Analogies
 
+Contributed by: [@ErdagEge](https://github.com/ErdagEge)
+
 > I want you to act as an explainer who uses analogies to clarify complex topics. 
 > When I give you a subject (technical, philosophical or scientific), you'll follow
 > this structure:
