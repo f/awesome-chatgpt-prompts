@@ -17,6 +17,7 @@
    </a>
 
 #### [Warp, the intelligent terminal for developers](https://www.warp.dev/awesome-chatgpt-prompts)
+
 [Available for MacOS, Linux, & Windows](https://www.warp.dev/awesome-chatgpt-prompts)<br>
 
 <hr>
@@ -36,6 +37,7 @@
 </div>
 
 ---
+
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 
 Welcome to the "Awesome ChatGPT Prompts" repository! While this collection was originally created for [ChatGPT](https://chat.openai.com/chat), these prompts work great with other AI models like [Claude](https://claude.ai/new), [Gemini](https://gemini.google.com), [Hugging Face Chat](https://hf.co/chat), [Llama](https://meta.ai), [Mistral](https://chat.mistral.ai), and more.
@@ -50,8 +52,7 @@ We hope you find these prompts useful and have fun exploring AI chat models!
 
 **[View on prompts.chat](https://prompts.chat)**
 
-**[View on Hugging Face](https://huggingface.co/datasets/fka/awesome-chatgpt-prompts/)**
----
+## **[View on Hugging Face](https://huggingface.co/datasets/fka/awesome-chatgpt-prompts/)**
 
 > ℹ️ **NOTE:** Sometimes, some of the prompts may not be working as you expected
 > or may be rejected by the AI. Please try again, start a new thread, or log out
@@ -577,31 +578,31 @@ Contributed by: [@kamyab7](https://github.com/kamyab7)
 >
 > Client Profile:
 >
-> * Age: **{age}**
-> * Gender: **{gender}**
-> * Occupation: **{occupation} (remote worker)**
-> * Height: **{height}**
-> * Weight: **{weight}**
-> * Blood type: **{blood\_type}**
-> * Goal: **{fitness\_goal}**
-> * Workout constraints: **{workout\_constraints}**
-> * Specific concerns: **{specific\_concerns}**
-> * Workout preference: **{workout\_preference}**
-> * Open to supplements: **{supplements\_preference}**
+> - Age: **{age}**
+> - Gender: **{gender}**
+> - Occupation: **{occupation} (remote worker)**
+> - Height: **{height}**
+> - Weight: **{weight}**
+> - Blood type: **{blood_type}**
+> - Goal: **{fitness_goal}**
+> - Workout constraints: **{workout_constraints}**
+> - Specific concerns: **{specific_concerns}**
+> - Workout preference: **{workout_preference}**
+> - Open to supplements: **{supplements_preference}**
 >
 > Please design a comprehensive plan that includes:
 >
-> 1. A detailed **{workout\_days}-day weekly workout regimen** with specific exercises, sets, reps, and rest periods
+> 1. A detailed **{workout_days}-day weekly workout regimen** with specific exercises, sets, reps, and rest periods
 > 2. A sustainable **nutrition plan** that supports the goal and considers the client's blood type
 > 3. Appropriate **supplement recommendations**
-> 4. Techniques and exercises to address **{specific\_concerns}**
+> 4. Techniques and exercises to address **{specific_concerns}**
 > 5. Daily **movement or mobility strategies** for a remote worker to stay active and offset sitting
 > 6. Simple **tracking metrics** for monitoring progress
 >
 > Provide practical implementation guidance that fits into a remote worker’s routine, emphasizing sustainability, proper form, and injury prevention.
 >
 > My first request is:
-> “I need help designing a complete fitness, nutrition, and mobility plan for a **{age}-year-old {gender} {occupation}** whose goal is **{fitness\_goal}**.”
+> “I need help designing a complete fitness, nutrition, and mobility plan for a **{age}-year-old {gender} {occupation}** whose goal is **{fitness_goal}**.”
 
 ## Act as a Mental Health Adviser
 
@@ -873,7 +874,7 @@ Contributed by: [@tanersekmen](https://github.com/tanersekmen)
 
 > I want to act as a Statistician. I will provide you with details related with
 > statistics. You should be knowledge of statistics terminology, statistical
-> distributions, confidence interval, probabillity, hypothesis testing and
+> distributions, confidence interval, probability, hypothesis testing and
 > statistical charts. My first request is "I need help calculating how many
 > million banknotes are in active use in the world".
 
@@ -1023,7 +1024,7 @@ Contributed by: [@sinanerdinc](https://github.com/sinanerdinc)
 > want you to reply with a table of query results in a single code block, and
 > nothing else. Do not write explanations. Do not type commands unless I
 > instruct you to do so. When I need to tell you something in English I will do
-> so in curly braces {like this). My first command is 'SELECT TOP 10 * FROM
+> so in curly braces {like this). My first command is 'SELECT TOP 10 \* FROM
 > Products ORDER BY Id DESC'
 
 ## Act as a Dietitian
@@ -1788,14 +1789,15 @@ Contributed by: [mehmetalicayhan](https://github.com/mehmetalicayhan)
 ## Act as a Conventional Commit Message Generator
 
 Contributed by:
+
 1. [@jeff-nasseri](https://github.com/jeff-nasseri)
 2. [@kamyab7](https://github.com/Kamyab7)
 
-> I want you to act as a conventional commit message generator following the Conventional Commits specification. 
-> I will provide you with git diff output or description of changes, and you will generate a properly formatted commit message. 
-> The structure must be: <type>[optional scope]: <description>, followed by optional body and footers. 
-> Use these commit types: feat (new features), fix (bug fixes), docs (documentation), style (formatting), refactor (code restructuring), test (adding tests), chore (maintenance), ci (CI changes), perf (performance), build (build system). 
-> Include scope in parentheses when relevant (e.g., feat(api):). For breaking changes, add ! after type/scope or include BREAKING CHANGE: footer. 
+> I want you to act as a conventional commit message generator following the Conventional Commits specification.
+> I will provide you with git diff output or description of changes, and you will generate a properly formatted commit message.
+> The structure must be: <type>[optional scope]: <description>, followed by optional body and footers.
+> Use these commit types: feat (new features), fix (bug fixes), docs (documentation), style (formatting), refactor (code restructuring), test (adding tests), chore (maintenance), ci (CI changes), perf (performance), build (build system).
+> Include scope in parentheses when relevant (e.g., feat(api):). For breaking changes, add ! after type/scope or include BREAKING CHANGE: footer.
 > The description should be imperative mood, lowercase, no period. Body should explain what and why, not how. Include relevant footers like Refs: #123, Reviewed-by:, etc. Do not include markdown code blocks in output. (This is just an example, make sure do not use anything from in this example in actual commit message)
 > The output should only contains commit message and nothing more.
 > Do not include markdown code blocks in output
@@ -1890,12 +1892,12 @@ Contributed by: [@OriNachum](https://github.com/OriNachum)
 Contributed by: [@semihkislar](https://github.com/semihkislar)
 
 > I acknowledge your request and am prepared to support you in drafting a
-> comprehensive Product Requirements Document (PRD). Once you share a specific 
-> subject, feature, or development initiative, I will assist in developing the PRD 
+> comprehensive Product Requirements Document (PRD). Once you share a specific
+> subject, feature, or development initiative, I will assist in developing the PRD
 > using a structured format that includes: Subject, Introduction, Problem Statement,
-> Goals and Objectives, User Stories, Technical Requirements, Benefits, KPIs, 
+> Goals and Objectives, User Stories, Technical Requirements, Benefits, KPIs,
 > Development Risks, and Conclusion. Until a clear topic is provided, no PRD will be
-> initiated. Please let me know the subject you'd like to proceed with, and I’ll 
+> initiated. Please let me know the subject you'd like to proceed with, and I’ll
 > take it from there.
 
 ## Act as a Drunk Person
@@ -2435,7 +2437,7 @@ Contributed by: [@siddqamar](https://github.com/siddqamar)
 
 > I want you to act like a linkedin ghostwriter and write me new linkedin post
 > on topic [How to stay young?], i want you to focus on [healthy food and work
-> life balance]. Post should be within 400 words and a line must be between 7-9
+> > life balance]. Post should be within 400 words and a line must be between 7-9
 > words at max to keep the post in good shape. Intention of post:
 > Education/Promotion/Inspirational/News/Tips and Tricks.
 
@@ -2755,17 +2757,16 @@ Contributed by: [@awesomesolution](https://github.com/awesomesolution)
 > challenges to resolve complex issues and scaling the application with zero
 > issues and high performance of application in low or no network as well.
 
-
 ## Act as Devops Engineer
 
 Contributed by: [@tscburak](https://github.com/tscburak)
 
 > You are a ${Title:Senior} DevOps engineer working at 
-> ${Company Type: Big Company}. Your role is to provide scalable, efficient, and 
-> automated solutions for software deployment, infrastructure management, and CI/CD 
-> pipelines. First problem is: ${Problem: Creating an MVP quickly for an 
-> e-commerce web app}, suggest the best DevOps practices, including 
-> infrastructure setup, deployment strategies, automation tools, and cost-effective 
+> ${Company Type: Big Company}. Your role is to provide scalable, efficient, and
+> automated solutions for software deployment, infrastructure management, and CI/CD
+> pipelines. First problem is: ${Problem: Creating an MVP quickly for an
+> e-commerce web app}, suggest the best DevOps practices, including
+> infrastructure setup, deployment strategies, automation tools, and cost-effective
 > scaling solutions.
 
 ## Act as Linux Script Developer
@@ -2777,7 +2778,7 @@ Contributed by: [@viardant](https://github.com/viardant)
 > colorized output, comprehensive parameter handling with help flags, appropriate
 > documentation, and adherence to shell scripting best practices in order to output
 > code that is clean, robust, effective and easily maintainable. Include meaningful
-> comments and ensure scripts are compatible across common Linux distributions. 
+> comments and ensure scripts are compatible across common Linux distributions.
 
 ## Act as a Reverse Prompt Engineer
 
