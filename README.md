@@ -42,7 +42,7 @@ Welcome to the "Awesome ChatGPT Prompts" repository! While this collection was o
 
 [ChatGPT](https://chat.openai.com/chat) is a web interface created by [OpenAI](https://openai.com) that provides access to their GPT (Generative Pre-trained Transformer) language models. The underlying models, like GPT-4o and GPT-o1, are large language models trained on vast amounts of text data that can understand and generate human-like text. Like other AI chat interfaces, you can provide prompts and have natural conversations with the AI, which will generate contextual responses based on the conversation history and your inputs.
 
-In this repository, you will find a variety of prompts that can be used with ChatGPT and other AI chat models. We encourage you to [add your own prompts](https://github.com/f/awesome-chatgpt-prompts/edit/main/README.md) to the list, and to use AI to help generate new prompts as well.
+在这个仓库中，您将找到各种可以与ChatGPT和其他AI聊天模型一起使用的提示。我们鼓励您[添加您自己的提示](https://github.com/f/awesome-chatgpt-prompts/edit/main/README.md) 到列表中，并使用AI帮助生成新的提示。
 
 To get started, simply clone this repository and use the prompts in the README.md file as input for your preferred AI chat model. You can also use the prompts in this file as inspiration for creating your own.
 
