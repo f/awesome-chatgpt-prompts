@@ -12,20 +12,6 @@
   <br>
   <sub>With Clemta, you can run your company from the comfort of your home.</sub>
 <hr>
-   <a href="https://www.warp.dev/awesome-chatgpt-prompts">
-      <img alt="Warp sponsorship" width="400" src="https://github.com/user-attachments/assets/ab8dd143-b0fd-4904-bdc5-dd7ecac94eae">
-   </a>
-
-#### [Warp, the intelligent terminal for developers](https://www.warp.dev/awesome-chatgpt-prompts)
-[Available for MacOS, Linux, & Windows](https://www.warp.dev/awesome-chatgpt-prompts)<br>
-
-<hr>
-  <a href="https://graphite.dev/?utm_source=github&utm_medium=repo&utm_campaign=awesome_chatgpt_prompts" align="center" target="_blank">
-    <img height="100" alt="Graphite logo" src="https://github.com/user-attachments/assets/981a244b-4bc8-4884-98f7-dd1d425063ae">
-  </a>
-  <br>
-  <sub>Graphite is the AI developer productivity platform helping teams on GitHub ship higher quality software, faster.</sub>
-<hr>
   <a href="https://github.com/f/mcptools" align="center" target="_blank">
     <img height="60" alt="Hugging Face logo" src="https://github.com/f/mcptools/raw/master/.github/resources/logo.png">
   </a>
