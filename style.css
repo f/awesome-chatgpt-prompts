@@ -1269,6 +1269,29 @@ body.dark-mode {
     white-space: nowrap;
 }
 
+.modal-goose-button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.modal-goose-button:hover {
+    background: var(--accent-color-hover);
+}
+
+.modal-goose-button svg {
+    width: 16px;
+    height: 16px;
+}
+
 .modal-chat-button {
     display: flex;
     align-items: center;
