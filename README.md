@@ -89,6 +89,12 @@ many hidden gems there. Take a look!
 
 ---
 
+### Make your own prompt apps
+
+[PromptAppGPT](https://github.com/mleoking/PromptAppGPT) can convert your prompts to apps with automatically generated user interface. [PromptAppGPT](https://promptappgpt.wangzhishi.net/) significantly lowers the barrier to GPT application development, allowing anyone to develop AutoGPT-like applications with a few lines of low code.
+
+---
+
 # Prompts
 
 ## Act as an Ethereum Developer
