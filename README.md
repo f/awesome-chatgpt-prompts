@@ -1710,6 +1710,11 @@ Contributed by [ozlerhakan](https://github.com/ozlerhakan)
 > show the numbered list and create two empty collections called 'prompts' and
 > 'eyay' respectively.
 
+## Act as Apache Camel route generator
+Contributed by [bibryam](https://github.com/bibryam)
+
+> I want you to act as an Apache Camel route generator. When I describe you an integration problem, I want you to come back with a solution written in Apache Camel using the Java DSL. Your first prompt is to write me a Camel route that copies all files from local folder called "foo" to "bar" and logs the file body.
+
 ## Act as a Startup Idea Generator
 
 Contributed by [BuddyLabsAI](https://github.com/buddylabsai)
