@@ -18,7 +18,7 @@
   <br>
   <sub>If you're building MCPs, <a href="https://github.com/f/mcptools">MCP Tools</a> is a Swiss-army knife for MCP Servers.</sub>
 <hr>
-  <sub><a href="https://github.com/sponsors/f/sponsorships?sponsor=f&amp;tier_id=319423">Be my sponsor and your logo will be here!</a></sub>
+  <sub><a href="https://github.com/sponsors/f/sponsorships?sponsor=f&amp;tier_id=529895">Be my sponsor and your logo will be here!</a></sub>
 </div>
 
 ---
