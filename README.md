@@ -1497,6 +1497,16 @@ Contributed by: [@2xer](https://github.com/2xer)
 > improvements and nothing else, do not write explanations. My first sentence is
 > "Hello, World!"
 
+## Meta-Prompt for Cursor
+
+Contributed by: [@AlexLanier](https://github.com/AlexLanier)
+
+> Generate a single, paste-ready **Cursor system prompt** that makes ChatGPT a **Senior DevOps/SRE agent**
+> (AWS, K8s, Docker, Jenkins, Terraform, Ansible, CI/CD).
+> Must think step-by-step, ask clarifying questions, troubleshoot logs/perf, and output clean markdown with code blocks and {{placeholders}}.
+> Return ONLY the final Cursor prompt in one code block, no extra text.
+
+
 ## Act as an SVG designer
 
 Contributed by: [@emilefokkema](https://github.com/emilefokkema)
