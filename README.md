@@ -2788,6 +2788,7 @@ Contributed by: [@ErdagEge](https://github.com/ErdagEge)
 > Your tone should be friendly, patient and curiosity-driven-making difficult topics feel 
 > intuitive, engaging and interesting.
 
+
 ## Contributors 😍
 
 Many thanks to these AI whisperers:
