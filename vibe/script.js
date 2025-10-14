@@ -1,28 +1,4 @@
-function parseCSV(csv) {
-  const lines = csv.split("\n");
-  const headers = lines[0]
-    .split(",")
-    .map((header) => header.replace(/"/g, "").trim());
-
-  return lines
-    .slice(1)
-    .map((line) => {
-      const values = line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || [];
-      const entry = {};
-
-      headers.forEach((header, index) => {
-        let value = values[index] ? values[index].replace(/"/g, "").trim() : "";
-        // Remove backticks from the act/title
-        if (header === "app") {
-          value = value.replace(/`/g, "");
-        }
-        entry[header] = value;
-      });
-
-      return entry;
-    })
-    .filter((entry) => entry.app && entry.prompt);
-}
+// parseCSV is now imported from ../shared-utils.js
 
 // Load prompts from CSV
 async function loadPrompts() {
@@ -113,70 +89,13 @@ async function renderSidebarPrompts() {
 
 // Scroll to prompt card function
 function scrollToPrompt(title, prompt) {
-  // Find the prompt card with matching title
-  const cards = document.querySelectorAll('.prompt-card');
-  const targetCard = Array.from(cards).find(card => {
-    const cardTitle = card.querySelector('.prompt-title').textContent
-      .replace(/\s+/g, ' ') // Normalize whitespace
-      .replace(/[\n\r]/g, '') // Remove newlines
-      .trim();
-
-    const searchTitle = title
-      .replace(/\s+/g, ' ') // Normalize whitespace
-      .replace(/[\n\r]/g, '') // Remove newlines
-      .trim();
-
-    return cardTitle.toLowerCase().includes(searchTitle.toLowerCase()) ||
-           searchTitle.toLowerCase().includes(cardTitle.toLowerCase());
-  });
+  // Find the prompt card with matching title using shared utility
+  const targetCard = findPromptCardByTitle(title);
 
   if (targetCard) {
-    // Remove highlight from all cards
-    cards.forEach(card => {
-      card.style.transition = 'all 0.3s ease';
-      card.style.transform = 'none';
-      card.style.boxShadow = 'none';
-      card.style.borderColor = '';
-    });
-
-    // Different scroll behavior for mobile and desktop
     const isMobile = window.innerWidth <= 768;
     const headerHeight = document.querySelector('.site-header').offsetHeight;
-
-    if (isMobile) {
-      // On mobile, scroll the window
-      const cardRect = targetCard.getBoundingClientRect();
-      const scrollTop = window.pageYOffset + cardRect.top - headerHeight - 20;
-
-      window.scrollTo({
-        top: scrollTop,
-        behavior: 'smooth'
-      });
-    } else {
-      // On desktop, scroll the main-content container
-      const mainContent = document.querySelector('.main-content');
-      const cardRect = targetCard.getBoundingClientRect();
-      const scrollTop = mainContent.scrollTop + cardRect.top - headerHeight - 20;
-
-      mainContent.scrollTo({
-        top: scrollTop,
-        behavior: 'smooth'
-      });
-    }
-
-    // Add highlight effect after scrolling completes
-    setTimeout(() => {
-      targetCard.style.transform = 'scale(1.02)';
-      targetCard.style.boxShadow = '0 0 0 2px var(--accent-color)';
-      targetCard.style.borderColor = 'var(--accent-color)';
-
-      // Remove highlight after animation
-      setTimeout(() => {
-        targetCard.style.transform = 'none';
-        targetCard.style.boxShadow = 'none';
-        targetCard.style.borderColor = '';
-      }, 2000);
-    }, 500); // Wait for scroll to complete
+    scrollToPromptCard(targetCard, isMobile, headerHeight);
   }
 }
 
@@ -248,12 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
   fetchGitHubStars();
 });
 
-// Dark mode toggle
-function toggleDarkMode() {
-  document.body.classList.toggle('dark-mode');
-  const isDark = document.body.classList.contains('dark-mode');
-  localStorage.setItem('dark-mode', isDark);
-}
+// Dark mode toggle - using shared utility
+// toggleDarkMode is now imported from ../shared-utils.js
 
 // Initialize dark mode from localStorage
 const savedDarkMode = localStorage.getItem('dark-mode') === 'true';
