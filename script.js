@@ -1,17 +1,5 @@
-// Dark mode functionality
-function toggleDarkMode() {
-  const body = document.body;
-  const toggle = document.querySelector(".dark-mode-toggle");
-  const sunIcon = toggle.querySelector(".sun-icon");
-  const moonIcon = toggle.querySelector(".moon-icon");
-
-  body.classList.toggle("dark-mode");
-  const isDarkMode = body.classList.contains("dark-mode");
-
-  localStorage.setItem("dark-mode", isDarkMode);
-  sunIcon.style.display = isDarkMode ? "none" : "block";
-  moonIcon.style.display = isDarkMode ? "block" : "none";
-}
+// Dark mode functionality - using shared utility
+// toggleDarkMode is now imported from shared-utils.js
 
 // Add these new functions at the top
 function extractVariables(text) {
@@ -268,35 +256,7 @@ function updatePromptCount(filteredCount, totalCount) {
   }
 }
 
-function parseCSV(csv) {
-  const lines = csv.split("\n");
-  const headers = lines[0]
-    .split(",")
-    .map((header) => header.replace(/"/g, "").trim());
-
-  return lines
-    .slice(1)
-    .map((line) => {
-      const values = line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || [];
-      const entry = {};
-
-      headers.forEach((header, index) => {
-        let value = values[index] ? values[index].replace(/"/g, "").trim() : "";
-        // Remove backticks from the act/title
-        if (header === "act") {
-          value = value.replace(/`/g, "");
-        }
-        // Convert 'TRUE'/'FALSE' strings to boolean for for_devs
-        if (header === "for_devs") {
-          value = value.toUpperCase() === "TRUE";
-        }
-        entry[header] = value;
-      });
-
-      return entry;
-    })
-    .filter((entry) => entry.act && entry.prompt);
-}
+// parseCSV is now imported from shared-utils.js
 
 function displaySearchResults(results) {
   const searchResults = document.getElementById("searchResults");
@@ -336,76 +296,13 @@ function displaySearchResults(results) {
     li.className = "search-result-item";
     li.textContent = result.act;
     li.addEventListener("click", () => {
-      // Find the prompt card with matching title
-      const cards = document.querySelectorAll(".prompt-card");
-      const targetCard = Array.from(cards).find((card) => {
-        const cardTitle = card
-          .querySelector(".prompt-title")
-          .textContent.replace(/\s+/g, " ") // Normalize whitespace
-          .replace(/[\n\r]/g, "") // Remove newlines
-          .trim();
-
-        const searchTitle = result.act
-          .replace(/\s+/g, " ") // Normalize whitespace
-          .replace(/[\n\r]/g, "") // Remove newlines
-          .trim();
-
-        return (
-          cardTitle.toLowerCase().includes(searchTitle.toLowerCase()) ||
-          searchTitle.toLowerCase().includes(cardTitle.toLowerCase())
-        );
-      });
+      // Find the prompt card with matching title using shared utility
+      const targetCard = findPromptCardByTitle(result.act);
 
       if (targetCard) {
-        // Remove highlight from all cards
-        cards.forEach((card) => {
-          card.style.transition = "all 0.3s ease";
-          card.style.transform = "none";
-          card.style.boxShadow = "none";
-          card.style.borderColor = "";
-        });
-
-        // Different scroll behavior for mobile and desktop
         const isMobile = window.innerWidth <= 768;
-        const headerHeight =
-          document.querySelector(".site-header").offsetHeight;
-
-        if (isMobile) {
-          // On mobile, scroll the window
-          const cardRect = targetCard.getBoundingClientRect();
-          const scrollTop =
-            window.pageYOffset + cardRect.top - headerHeight - 50;
-
-          window.scrollTo({
-            top: scrollTop,
-            behavior: "smooth",
-          });
-        } else {
-          // On desktop, scroll the main-content container
-          const mainContent = document.querySelector(".main-content");
-          const cardRect = targetCard.getBoundingClientRect();
-          const scrollTop =
-            mainContent.scrollTop + cardRect.top - headerHeight - 50;
-
-          mainContent.scrollTo({
-            top: scrollTop,
-            behavior: "smooth",
-          });
-        }
-
-        // Add highlight effect after scrolling completes
-        setTimeout(() => {
-          targetCard.style.transform = "scale(1.02)";
-          targetCard.style.boxShadow = "0 0 0 2px var(--accent-color)";
-          targetCard.style.borderColor = "var(--accent-color)";
-
-          // Remove highlight after animation
-          setTimeout(() => {
-            targetCard.style.transform = "none";
-            targetCard.style.boxShadow = "none";
-            targetCard.style.borderColor = "";
-          }, 2000);
-        }, 500); // Wait for scroll to complete
+        const headerHeight = document.querySelector(".site-header").offsetHeight;
+        scrollToPromptCard(targetCard, isMobile, headerHeight);
       } else {
         console.log("Card not found for:", result.act);
       }
@@ -454,14 +351,8 @@ function filterPrompts() {
         cards.forEach((card) => {
           const title = card.querySelector(".prompt-title").textContent.trim();
           const matchingPrompt = prompts.find((p) => {
-            const pTitle = p.act
-              .replace(/\s+/g, " ")
-              .replace(/[\n\r]/g, "")
-              .trim();
-            const cardTitle = title
-              .replace(/\s+/g, " ")
-              .replace(/[\n\r]/g, "")
-              .trim();
+            const pTitle = normalizeText(p.act);
+            const cardTitle = normalizeText(title);
             return (
               pTitle.toLowerCase() === cardTitle.toLowerCase() ||
               pTitle.toLowerCase().includes(cardTitle.toLowerCase()) ||
@@ -524,14 +415,8 @@ function createPromptCards() {
 
         // Find matching prompt in CSV
         const matchingPrompt = prompts.find((p) => {
-          const csvTitle = p.act
-            .replace(/\s+/g, " ")
-            .replace(/[\n\r]/g, "")
-            .trim();
-          const elementTitle = title
-            .replace(/\s+/g, " ")
-            .replace(/[\n\r]/g, "")
-            .trim();
+          const csvTitle = normalizeText(p.act);
+          const elementTitle = normalizeText(title);
           return (
             csvTitle.toLowerCase() === elementTitle.toLowerCase() ||
             csvTitle.toLowerCase().includes(elementTitle.toLowerCase()) ||

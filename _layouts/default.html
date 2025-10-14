@@ -230,7 +230,11 @@
         </div>
       </footer>
     </div>
+    <script src="shared-utils.js"></script>
     <script src="script.js"></script>
+    {% if page.body_class == 'vibe' %}
+    <script src="vibe/script.js"></script>
+    {% endif %}
     {% if page.hide_tone_selector != true %}
     <script>
       // Initialize audience selector
