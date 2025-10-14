@@ -4,6 +4,15 @@
 function toggleDarkMode() {
   const body = document.body;
   const toggle = document.querySelector(".dark-mode-toggle");
+  
+  // Handle case where toggle doesn't exist
+  if (!toggle) {
+    body.classList.toggle("dark-mode");
+    const isDarkMode = body.classList.contains("dark-mode");
+    localStorage.setItem("dark-mode", isDarkMode);
+    return;
+  }
+  
   const sunIcon = toggle.querySelector(".sun-icon");
   const moonIcon = toggle.querySelector(".moon-icon");
 
@@ -48,6 +57,7 @@ function parseCSV(csv) {
 
 // Normalize text by removing extra whitespace and newlines
 function normalizeText(text) {
+  if (!text) return "";
   return text
     .replace(/\s+/g, " ") // Normalize whitespace
     .replace(/[\n\r]/g, "") // Remove newlines
@@ -55,6 +65,7 @@ function normalizeText(text) {
 }
 
 // Scroll to a prompt card with highlight animation
+// Note: offset is set to -50 for consistent spacing across all pages
 function scrollToPromptCard(targetCard, isMobile, headerHeight) {
   if (!targetCard) return;
 
@@ -80,6 +91,17 @@ function scrollToPromptCard(targetCard, isMobile, headerHeight) {
   } else {
     // On desktop, scroll the main-content container
     const mainContent = document.querySelector(".main-content");
+    if (!mainContent) {
+      // Fallback to window scroll if main-content doesn't exist
+      const cardRect = targetCard.getBoundingClientRect();
+      const scrollTop = window.pageYOffset + cardRect.top - headerHeight - 50;
+      window.scrollTo({
+        top: scrollTop,
+        behavior: "smooth",
+      });
+      return;
+    }
+    
     const cardRect = targetCard.getBoundingClientRect();
     const scrollTop = mainContent.scrollTop + cardRect.top - headerHeight - 50;
 
