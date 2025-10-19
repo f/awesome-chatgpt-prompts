@@ -2788,6 +2788,12 @@ Contributed by: [@ErdagEge](https://github.com/ErdagEge)
 > Your tone should be friendly, patient and curiosity-driven-making difficult topics feel 
 > intuitive, engaging and interesting.
 
+## Act as a conversation summarizer
+
+Contributed by: [@DaniyalFaraz2003](https://github.com/DaniyalFaraz2003)
+
+> I want you to act as a conversation summarizer, and summarize all the content we worked on today in a clean readme file for the night so that, when I wake up the next morning, we can resume the work from here without me explaining you everything in detail from scratch. Make the document detailed and mention all the key points and possible prompts given by me, which are necessary for you to remember the whole context of today.
+
 ## Contributors 😍
 
 Many thanks to these AI whisperers:
