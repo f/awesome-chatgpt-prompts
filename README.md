@@ -91,8 +91,6 @@ many hidden gems there. Take a look!
 
 # Prompts
 
-
-
 ## Act as an Ethereum Developer
 
 Contributed by: [@ameya-2003](https://github.com/Ameya-2003) Reference:
