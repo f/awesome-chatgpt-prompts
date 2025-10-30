@@ -63,8 +63,8 @@
               <button class="platform-tag" data-platform="mistral" data-url="https://chat.mistral.ai/chat">Mistral</button>
               <button class="platform-tag" data-platform="gemini" data-url="https://gemini.google.com">Gemini</button>
               <button class="platform-tag" data-platform="llama" data-url="https://meta.ai">Meta</button>
-              <span class="saved-toggle" 
-                    t-data="{ 
+              <span class="saved-toggle"
+                    t-data="{
                       get count(){ try{ return (JSON.parse(localStorage.getItem('saved-prompts'))||[]).length } catch(_) { return 0 } },
                       get savedOnly(){ return document.body.classList.contains('saved-only') },
                       methods:{ toggle(){ document.body.classList.toggle('saved-only'); if (typeof filterPrompts==='function'){ filterPrompts(); } } }
@@ -169,7 +169,7 @@
             </div>
           </div>
           {% endif %}
-          <div class="container-lg markdown-body">
+          <div class="container-lg markdown-body" t-data="savedPromptsController()">
             <div id="promptContent">
               {{ content }}
             </div>
@@ -241,18 +241,104 @@
       </footer>
     </div>
     <script src="script.js"></script>
-    <!-- TinyPine CDN and minimal init -->
     <script src="https://unpkg.com/tinypine@1.1.1/dist/tinypine.min.js"></script>
     <script>
+      // TinyPine controller for saved prompts (delegated star handling)
+      function savedPromptsController() {
+        const KEY = 'saved-prompts';
+
+        const readList = () => {
+          try {
+            return JSON.parse(localStorage.getItem(KEY)) || [];
+          } catch (_) {
+            return [];
+          }
+        };
+
+        const writeList = (list) => {
+          try {
+            localStorage.setItem(KEY, JSON.stringify(list));
+          } catch (err) {
+            console.error('Could not persist saved prompts', err);
+          }
+        };
+
+        const updateButtonUI = (btn, saved) => {
+          btn.setAttribute('aria-pressed', String(saved));
+          btn.classList.toggle('saved', saved);
+          btn.style.opacity = saved ? '1' : '0.7';
+          const svg = btn.querySelector && btn.querySelector('svg');
+          if (svg) svg.setAttribute('fill', saved ? 'currentColor' : 'none');
+        };
+
+        // named handler so we can remove it on destroy
+        const handleClick = (e) => {
+          const btn = e.target?.closest?.('.star-button');
+          if (!btn) return;
+          e.preventDefault();
+          e.stopPropagation();
+
+          const card = btn.closest('.prompt-card');
+          if (!card) return;
+          const title = card.querySelector('.prompt-title')?.textContent?.trim();
+          if (!title) return;
+
+          const list = readList();
+          const idx = list.indexOf(title);
+          const willSave = idx === -1;
+
+          if (willSave) {
+            list.push(title);
+          } else {
+            list.splice(idx, 1);
+          }
+
+          writeList(list);
+          updateButtonUI(btn, willSave);
+
+          if (!willSave && document.body.classList.contains('saved-only')) {
+            // hide immediately when un-saving in saved-only mode
+            card.style.display = 'none';
+          }
+
+          document.dispatchEvent(new CustomEvent('saved-prompts-changed', { detail: { count: list.length } }));
+          // indicate TinyPine is in charge (used by fallback script.js logic)
+          try { document.body.dataset.tinypineSavedHandler = '1'; } catch (_) {}
+        };
+
+        return {
+          init() {
+            // mark early so other scripts know the controller is present
+            try { document.body.dataset.tinypineSavedHandler = '1'; } catch (_) {}
+            document.addEventListener('click', handleClick);
+            // reconcile existing buttons to saved state on mount
+            try {
+              const saved = new Set(readList());
+              document.querySelectorAll('.star-button').forEach((btn) => {
+                const card = btn.closest('.prompt-card');
+                const title = card?.querySelector('.prompt-title')?.textContent?.trim();
+                updateButtonUI(btn, Boolean(title && saved.has(title)));
+              });
+            } catch (err) {
+              // non-fatal
+              console.debug('savedPromptsController: reconcile failed', err);
+            }
+          },
+          destroy() {
+            document.removeEventListener('click', handleClick);
+            try { delete document.body.dataset.tinypineSavedHandler; } catch (_) {}
+          }
+        };
+      }
+
       if (window.TinyPine && typeof window.TinyPine.init === 'function') {
         window.TinyPine.init();
       }
     </script>
     {% if page.hide_tone_selector != true %}
     <script>
-      // Initialize audience selector
       const audienceSelect = document.getElementById('audienceSelect');
-      
+
       // Handle Grok platform selection
       document.addEventListener('DOMContentLoaded', () => {
         const grokButton = document.querySelector('[data-platform="grok"]');
@@ -301,7 +387,7 @@
             grokButton.textContent = selectedText;
             grokDropdown.style.display = 'none';
             isGrokDropdownVisible = false;
-            
+
             // Also set audience to "everyone" for Grok options
             audienceSelect.value = 'everyone';
             document.body.classList.remove('dev-mode');
@@ -312,18 +398,18 @@
           });
         });
       });
-      
+
       // Set initial state based on URL params or default
       const urlParams = new URLSearchParams(window.location.search);
       const initialAudience = urlParams.get('audience') || 'everyone';
       audienceSelect.value = initialAudience;
       document.body.classList.toggle('dev-mode', initialAudience === 'developers');
-      
+
       // Handle audience changes
       audienceSelect.addEventListener('change', (e) => {
         const isDevMode = e.target.value === 'developers';
         document.body.classList.toggle('dev-mode', isDevMode);
-        
+
         // Trigger prompt filtering
         filterPrompts();
       });
@@ -331,7 +417,7 @@
     {% endif %}
     <style>
       video { max-width: 100% !important; }
-      
+
       /* Embed button styling */
       .modal-embed-button {
         display: flex;
@@ -348,32 +434,32 @@
         transition: all 0.2s ease;
         margin-right: 8px;
       }
-      
+
       .modal-embed-button:hover {
         background-color: var(--accent-color-hover);
         transform: translateY(-1px);
       }
-      
+
       .modal-embed-button svg {
         width: 16px;
         height: 16px;
         flex-shrink: 0;
       }
-      
+
       /* Responsive adjustments for modal buttons */
       @media (max-width: 640px) {
         .modal-footer-right {
           flex-direction: column-reverse;
           gap: 8px;
         }
-        
+
         .modal-embed-button {
           margin-right: 0;
           margin-bottom: 0;
           width: 100%;
           justify-content: center;
         }
-        
+
         .modal-chat-button {
           width: 100%;
           justify-content: center;
