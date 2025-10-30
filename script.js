@@ -195,9 +195,25 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize search functionality
   initializeSearch();
 
+  // Initialize saved toggle count
+  updateSavedToggleCount();
+  // Listen custom events to refresh count
+  document.addEventListener('saved-prompts-changed', updateSavedToggleCount);
+
   // Initialize language and tone selectors
   initializeLanguageAndTone();
 });
+// Update Saved toggle pill text with current count and mode
+function updateSavedToggleCount() {
+  try {
+    const span = document.querySelector('.saved-toggle .platform-tag span');
+    if (!span) return;
+    const list = JSON.parse(localStorage.getItem('saved-prompts') || '[]');
+    const count = Array.isArray(list) ? list.length : 0;
+    const savedOnly = document.body.classList.contains('saved-only');
+    span.textContent = savedOnly ? `Saved Only: ${count}` : `Saved: ${count}`;
+  } catch (_) {}
+}
 
 // Search functionality
 async function initializeSearch() {
@@ -697,6 +713,10 @@ function createPromptCards() {
               }
             }
             localStorage.setItem('saved-prompts', JSON.stringify(list));
+            // Update Saved toggle count immediately
+            updateSavedToggleCount();
+            // Fire a custom event for any reactive listeners
+            document.dispatchEvent(new CustomEvent('saved-prompts-changed', { detail: { count: list.length } }));
           } catch (_) {}
         });
 
