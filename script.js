@@ -16,7 +16,7 @@ function toggleDarkMode() {
 // Add these new functions at the top
 function extractVariables(text) {
   const variables = [];
-  
+
   // Extract ${var:default} format variables
   const regex1 = /\${([^}]+)}/g;
   let match;
@@ -24,7 +24,7 @@ function extractVariables(text) {
     const [variable, defaultValue] = match[1].split(":").map((s) => s.trim());
     variables.push({ name: variable, default: defaultValue || "" });
   }
-  
+
   // Extract {{var}} format variables
   const regex2 = /\{\{([^}]+)\}\}/g;
   while ((match = regex2.exec(text)) !== null) {
@@ -83,7 +83,7 @@ function updatePromptPreview(promptText, form) {
       const pattern1 = new RegExp(`\\$\{${variable.name}[^}]*\}`, 'g');
       const replacement = variable.default || `<b>${variable.name}</b>`;
       previewText = previewText.replace(pattern1, replacement);
-      
+
       // Handle new-style {{var}} format
       const pattern2 = new RegExp(`\\{\\{${variable.name}\\}\\}`, 'g');
       previewText = previewText.replace(pattern2, replacement);
@@ -97,12 +97,12 @@ function updatePromptPreview(promptText, form) {
       const value = input.value.trim();
       const variable = input.dataset.variable;
       const defaultValue = input.dataset.default;
-      
+
       // Handle old-style ${var:default} format
       const pattern1 = new RegExp(`\\$\{${variable}[^}]*\}`, 'g');
       // Handle new-style {{var}} format
       const pattern2 = new RegExp(`\\{\\{${variable}\\}\\}`, 'g');
-      
+
       let replacement;
       if (value) {
         // User entered value
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const isDevMode = e.target.value === 'developers';
     document.body.classList.toggle('dev-mode', isDevMode);
     localStorage.setItem('audience', e.target.value);
-    
+
     // Update chat button icons
     updateChatButtonIcons(isDevMode);
 
@@ -145,8 +145,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const currentPlatform = document.querySelector(".platform-tag.active");
       const shouldNotShow = localStorage.getItem("copilot-suggestion-hidden") === "true";
 
-      if (currentPlatform && 
-          currentPlatform.dataset.platform !== "github-copilot" && 
+      if (currentPlatform &&
+          currentPlatform.dataset.platform !== "github-copilot" &&
           !shouldNotShow) {
         showCopilotSuggestion();
       }
@@ -195,9 +195,29 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize search functionality
   initializeSearch();
 
+  // Initialize saved toggle count
+  updateSavedToggleCount();
+  // Listen custom events to refresh count
+  document.addEventListener('saved-prompts-changed', updateSavedToggleCount);
+
   // Initialize language and tone selectors
   initializeLanguageAndTone();
+  // Star handling is managed by the TinyPine controller in `_layouts/default.html`.
+  // Fallback logic removed to avoid duplicate handlers. The controller sets
+  // `document.body.dataset.tinypineSavedHandler = '1'` so older fallbacks can
+  // detect its presence if necessary.
 });
+// Update Saved toggle pill text with current count and mode
+function updateSavedToggleCount() {
+  try {
+    const span = document.querySelector('.saved-toggle .platform-tag span');
+    if (!span) return;
+    const list = JSON.parse(localStorage.getItem('saved-prompts') || '[]');
+    const count = Array.isArray(list) ? list.length : 0;
+    const savedOnly = document.body.classList.contains('saved-only');
+    span.textContent = savedOnly ? `Saved Only: ${count}` : `Saved: ${count}`;
+  } catch (_) {}
+}
 
 // Search functionality
 async function initializeSearch() {
@@ -221,23 +241,29 @@ async function initializeSearch() {
     updatePromptCount(totalPrompts, totalPrompts);
 
     // Show filtered prompts initially
-    const filteredPrompts = isDevMode
-      ? prompts.filter((p) => p.for_devs === true)
-      : prompts;
+    const savedOnly = document.body.classList.contains('saved-only');
+    const savedSet = (() => { try { return new Set((JSON.parse(localStorage.getItem('saved-prompts'))||[]).map(s=>s.toLowerCase())); } catch(_) { return new Set(); } })();
+    const filteredPrompts = prompts.filter((p) => {
+      const devOk = !isDevMode || p.for_devs === true;
+      const savedOk = !savedOnly || savedSet.has((p.act||'').toLowerCase());
+      return devOk && savedOk;
+    });
     displaySearchResults(filteredPrompts);
 
     searchInput.addEventListener("input", (e) => {
       const searchTerm = e.target.value.toLowerCase();
       const isDevMode = document.getElementById("audienceSelect").value === "developers";
+      const savedOnly = document.body.classList.contains('saved-only');
+      const savedSet = (() => { try { return new Set((JSON.parse(localStorage.getItem('saved-prompts'))||[]).map(s=>s.toLowerCase())); } catch(_) { return new Set(); } })();
 
       const filteredPrompts = prompts.filter((prompt) => {
         const matchesSearch =
           prompt.act.toLowerCase().includes(searchTerm) ||
           prompt.prompt.toLowerCase().includes(searchTerm);
 
-        return isDevMode
-          ? matchesSearch && prompt.for_devs === true
-          : matchesSearch;
+        const devOk = !isDevMode || prompt.for_devs === true;
+        const savedOk = !savedOnly || savedSet.has((prompt.act||'').toLowerCase());
+        return matchesSearch && devOk && savedOk;
       });
 
       // Update count with filtered results
@@ -302,6 +328,8 @@ function displaySearchResults(results) {
   const searchResults = document.getElementById("searchResults");
   const searchInput = document.getElementById("searchInput");
   const isDevMode = document.getElementById("audienceSelect").value === "developers";
+  const savedOnly = document.body.classList.contains('saved-only');
+  const savedSet = (() => { try { return new Set((JSON.parse(localStorage.getItem('saved-prompts'))||[]).map(s=>s.toLowerCase())); } catch(_) { return new Set(); } })();
 
   // Filter results based on dev mode
   if (isDevMode) {
@@ -448,6 +476,8 @@ function filterPrompts() {
       // Update prompt cards visibility
       const promptsGrid = document.querySelector(".prompts-grid");
       if (promptsGrid) {
+        const savedOnly = document.body.classList.contains('saved-only');
+        const savedSet = (() => { try { return new Set((JSON.parse(localStorage.getItem('saved-prompts'))||[]).map(s=>s.toLowerCase())); } catch(_) { return new Set(); } })();
         const cards = promptsGrid.querySelectorAll(
           ".prompt-card:not(.contribute-card)"
         );
@@ -469,11 +499,11 @@ function filterPrompts() {
             );
           });
 
-          // Show card if not in dev mode or if it's a dev prompt in dev mode
-          card.style.display =
-            !isDevMode || (matchingPrompt && matchingPrompt.for_devs === true)
-              ? ""
-              : "none";
+        // Show based on dev mode and saved-only toggle
+        const titleLc = title.replace(/\s+/g, ' ').replace(/[\n\r]/g, '').trim().toLowerCase();
+        const devOk = !isDevMode || (matchingPrompt && matchingPrompt.for_devs === true);
+        const savedOk = !savedOnly || savedSet.has(titleLc);
+        card.style.display = (devOk && savedOk) ? "" : "none";
         });
       }
     });
@@ -577,10 +607,24 @@ function createPromptCards() {
           card.style.display = "none";
         }
 
+        // Determine initial saved state from localStorage
+        const isSaved = (() => {
+          try {
+            const raw = localStorage.getItem('saved-prompts');
+            const list = raw ? JSON.parse(raw) : [];
+            return list.includes(title);
+          } catch (_) { return false; }
+        })();
+
         card.innerHTML = `
         <div class="prompt-title">
             ${title}
             <div class="action-buttons">
+            <button class="star-button" title="Save prompt" aria-pressed="${isSaved}" style="background:transparent;border:none;cursor:pointer;padding:2px;color:var(--accent-color);opacity:${isSaved ? '1' : '0.7'}">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="${isSaved ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+            </button>
             <button class="chat-button" title="Open in AI Chat" onclick="openInChat(this, '${encodeURIComponent(
               updatePromptPreview(content.trim())
             )}')">
@@ -620,13 +664,15 @@ function createPromptCards() {
           if (
             !e.target.closest(".copy-button") &&
             !e.target.closest(".contributor-badge") &&
-            !e.target.closest(".yaml-button")
+            !e.target.closest(".yaml-button") &&
+            !e.target.closest(".star-button")
           ) {
             showModal(title, content);
           }
         });
 
         const copyButton = card.querySelector(".copy-button");
+        const starButton = card.querySelector(".star-button");
         copyButton.addEventListener("click", async (e) => {
           e.stopPropagation();
           try {
@@ -648,6 +694,8 @@ function createPromptCards() {
             alert("Failed to copy prompt to clipboard");
           }
         });
+
+        // Star toggle handled centrally by TinyPine controller (delegated in _layouts/default.html)
 
         promptsGrid.appendChild(card);
       });
@@ -681,7 +729,7 @@ function initializeModalListeners() {
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     hideModal();
-    
+
     // Also hide YAML modal if it exists
     const yamlModal = document.getElementById("yamlModalOverlay");
     if (yamlModal) {
@@ -919,21 +967,21 @@ document.querySelectorAll(".platform-tag").forEach((button) => {
     if (selectedPlatform === "github-copilot") {
       const toneSelect = document.getElementById('toneSelect');
       const audienceSelect = document.getElementById('audienceSelect');
-      
+
       // Set tone to technical
       toneSelect.value = 'technical';
       localStorage.setItem('selected-tone', 'technical');
-      
+
       // Set audience to developers
       audienceSelect.value = 'developers';
       localStorage.setItem('audience', 'developers');
-      
+
       // Update dev mode class on body
       document.body.classList.add('dev-mode');
-      
+
       // Update chat button icons
       updateChatButtonIcons(true);
-      
+
       // Trigger prompt filtering for dev mode
       filterPrompts();
     }
@@ -1065,7 +1113,7 @@ function openEmbedDesigner() {
   const modalContent = document.querySelector(".modal-content");
   if (modalContent) {
     let content = modalContent.textContent || modalContent.innerText;
-    
+
     // If there's a variable form, get the processed content with variables
     const form = document.querySelector(".variable-form");
     if (form) {
@@ -1073,10 +1121,10 @@ function openEmbedDesigner() {
       // Remove the added language/tone preferences for embed
       content = content.replace(/\s*Reply in .+ using .+ tone for .+\.$/, '').trim();
     }
-    
+
     // Build the embed URL
     const embedUrl = `/embed/?prompt=${encodeURIComponent(content)}&context=https://prompts.chat&model=gpt-4o&agentMode=chat&thinking=false&max=false&height=400`;
-    
+
     // Open in new tab
     window.open(embedUrl, '_blank');
   }
@@ -1173,7 +1221,7 @@ function initializeLanguageAndTone() {
     const isCustom = e.target.value === 'custom';
     customLanguage.style.display = isCustom ? 'inline-block' : 'none';
     localStorage.setItem('selected-language', e.target.value);
-    
+
     if (!isCustom) {
       customLanguage.value = '';
       localStorage.removeItem('custom-language');
@@ -1190,7 +1238,7 @@ function initializeLanguageAndTone() {
     const isCustom = e.target.value === 'custom';
     customTone.style.display = isCustom ? 'inline-block' : 'none';
     localStorage.setItem('selected-tone', e.target.value);
-    
+
     if (!isCustom) {
       customTone.value = '';
       localStorage.removeItem('custom-tone');
@@ -1258,7 +1306,7 @@ function showYamlModal(event, title, content) {
     `;
     document.body.insertAdjacentHTML("beforeend", modalHTML);
     modalOverlay = document.getElementById("yamlModalOverlay");
-    
+
     // Add event listeners
     const modalClose = modalOverlay.querySelector(".modal-close");
     modalClose.addEventListener("click", () => {
@@ -1266,7 +1314,7 @@ function showYamlModal(event, title, content) {
       document.body.style.overflow = "";
       modalOverlay.remove();
     });
-    
+
     modalOverlay.addEventListener("click", (e) => {
       if (e.target === modalOverlay) {
         modalOverlay.style.display = "none";
@@ -1279,25 +1327,25 @@ function showYamlModal(event, title, content) {
   const yamlContent = modalOverlay.querySelector(".yaml-content");
   const modalCopyButton = modalOverlay.querySelector(".modal-copy-button");
   const createYamlButton = modalOverlay.querySelector(".create-yaml-button");
-  
+
   // Create the YAML content
   const cleanTitle = decodeURIComponent(title).trim().replace(/^Act as a?n?\s*/ig, '');
   const cleanContent = decodeURIComponent(content).trim().replace(/\n+/g, ' ');
-  
+
   // Convert variables from ${Variable: Default} format to {{Variable}} format
   const convertedContent = cleanContent.replace(/\${([^:}]+)(?::[^}]*)?}/g, (match, varName) => {
     return `{{${varName.trim()}}}`;
   });
-  
+
   const yamlText = `name: ${cleanTitle}
 model: gpt-4o-mini
 modelParameters:
   temperature: 0.5
 messages:
   - role: system
-    content: | 
+    content: |
       ${convertedContent.replace(/\n/g, '\n      ')}`;
-  
+
   // Apply basic syntax highlighting
   const highlightedYaml = yamlText
     .replace(/(name|model|modelParameters|temperature|messages|role|content):/g, '<span class="key">$1:</span>')
@@ -1305,9 +1353,9 @@ messages:
     .replace(/([0-9]\.?[0-9]*)/g, '<span class="number">$1</span>')
     .replace(/(true|false)/g, '<span class="boolean">$1</span>')
     .replace(/(\{\{[^}]+\}\})/g, '<span class="string">$1</span>'); // Highlight the new variable format
-  
+
   yamlContent.innerHTML = highlightedYaml;
-  
+
   // Add copy functionality - use the plain text version for clipboard
   modalCopyButton.addEventListener("click", async () => {
     try {
@@ -1329,7 +1377,7 @@ messages:
       alert("Failed to copy YAML to clipboard");
     }
   });
-  
+
   // Add create functionality
   createYamlButton.addEventListener("click", () => {
     const orgName = document.getElementById('github-org').value.trim();
