@@ -63,6 +63,16 @@
               <button class="platform-tag" data-platform="mistral" data-url="https://chat.mistral.ai/chat">Mistral</button>
               <button class="platform-tag" data-platform="gemini" data-url="https://gemini.google.com">Gemini</button>
               <button class="platform-tag" data-platform="llama" data-url="https://meta.ai">Meta</button>
+              <span class="saved-toggle" 
+                    t-data="{ 
+                      get count(){ try{ return (JSON.parse(localStorage.getItem('saved-prompts'))||[]).length } catch(_) { return 0 } },
+                      get savedOnly(){ return document.body.classList.contains('saved-only') },
+                      methods:{ toggle(){ document.body.classList.toggle('saved-only'); if (typeof filterPrompts==='function'){ filterPrompts(); } } }
+                    }">
+                <button class="platform-tag" t-click="methods.toggle()">
+                  <span t-text="savedOnly ? 'Saved Only: ' + count : 'Saved: ' + count"></span>
+                </button>
+              </span>
             </div>
           </div>
           {% endif %}
@@ -231,6 +241,13 @@
       </footer>
     </div>
     <script src="script.js"></script>
+    <!-- TinyPine CDN and minimal init -->
+    <script src="https://unpkg.com/tinypine@1.1.1/dist/tinypine.min.js"></script>
+    <script>
+      if (window.TinyPine && typeof window.TinyPine.init === 'function') {
+        window.TinyPine.init();
+      }
+    </script>
     {% if page.hide_tone_selector != true %}
     <script>
       // Initialize audience selector

@@ -221,23 +221,29 @@ async function initializeSearch() {
     updatePromptCount(totalPrompts, totalPrompts);
 
     // Show filtered prompts initially
-    const filteredPrompts = isDevMode
-      ? prompts.filter((p) => p.for_devs === true)
-      : prompts;
+    const savedOnly = document.body.classList.contains('saved-only');
+    const savedSet = (() => { try { return new Set((JSON.parse(localStorage.getItem('saved-prompts'))||[]).map(s=>s.toLowerCase())); } catch(_) { return new Set(); } })();
+    const filteredPrompts = prompts.filter((p) => {
+      const devOk = !isDevMode || p.for_devs === true;
+      const savedOk = !savedOnly || savedSet.has((p.act||'').toLowerCase());
+      return devOk && savedOk;
+    });
     displaySearchResults(filteredPrompts);
 
     searchInput.addEventListener("input", (e) => {
       const searchTerm = e.target.value.toLowerCase();
       const isDevMode = document.getElementById("audienceSelect").value === "developers";
+      const savedOnly = document.body.classList.contains('saved-only');
+      const savedSet = (() => { try { return new Set((JSON.parse(localStorage.getItem('saved-prompts'))||[]).map(s=>s.toLowerCase())); } catch(_) { return new Set(); } })();
 
       const filteredPrompts = prompts.filter((prompt) => {
         const matchesSearch =
           prompt.act.toLowerCase().includes(searchTerm) ||
           prompt.prompt.toLowerCase().includes(searchTerm);
 
-        return isDevMode
-          ? matchesSearch && prompt.for_devs === true
-          : matchesSearch;
+        const devOk = !isDevMode || prompt.for_devs === true;
+        const savedOk = !savedOnly || savedSet.has((prompt.act||'').toLowerCase());
+        return matchesSearch && devOk && savedOk;
       });
 
       // Update count with filtered results
@@ -302,6 +308,8 @@ function displaySearchResults(results) {
   const searchResults = document.getElementById("searchResults");
   const searchInput = document.getElementById("searchInput");
   const isDevMode = document.getElementById("audienceSelect").value === "developers";
+  const savedOnly = document.body.classList.contains('saved-only');
+  const savedSet = (() => { try { return new Set((JSON.parse(localStorage.getItem('saved-prompts'))||[]).map(s=>s.toLowerCase())); } catch(_) { return new Set(); } })();
 
   // Filter results based on dev mode
   if (isDevMode) {
@@ -448,6 +456,8 @@ function filterPrompts() {
       // Update prompt cards visibility
       const promptsGrid = document.querySelector(".prompts-grid");
       if (promptsGrid) {
+        const savedOnly = document.body.classList.contains('saved-only');
+        const savedSet = (() => { try { return new Set((JSON.parse(localStorage.getItem('saved-prompts'))||[]).map(s=>s.toLowerCase())); } catch(_) { return new Set(); } })();
         const cards = promptsGrid.querySelectorAll(
           ".prompt-card:not(.contribute-card)"
         );
@@ -469,11 +479,11 @@ function filterPrompts() {
             );
           });
 
-          // Show card if not in dev mode or if it's a dev prompt in dev mode
-          card.style.display =
-            !isDevMode || (matchingPrompt && matchingPrompt.for_devs === true)
-              ? ""
-              : "none";
+        // Show based on dev mode and saved-only toggle
+        const titleLc = title.replace(/\s+/g, ' ').replace(/[\n\r]/g, '').trim().toLowerCase();
+        const devOk = !isDevMode || (matchingPrompt && matchingPrompt.for_devs === true);
+        const savedOk = !savedOnly || savedSet.has(titleLc);
+        card.style.display = (devOk && savedOk) ? "" : "none";
         });
       }
     });
@@ -577,10 +587,24 @@ function createPromptCards() {
           card.style.display = "none";
         }
 
+        // Determine initial saved state from localStorage
+        const isSaved = (() => {
+          try {
+            const raw = localStorage.getItem('saved-prompts');
+            const list = raw ? JSON.parse(raw) : [];
+            return list.includes(title);
+          } catch (_) { return false; }
+        })();
+
         card.innerHTML = `
         <div class="prompt-title">
             ${title}
             <div class="action-buttons">
+            <button class="star-button" title="Save prompt" aria-pressed="${isSaved}" style="background:transparent;border:none;cursor:pointer;padding:2px;color:var(--accent-color);opacity:${isSaved ? '1' : '0.7'}">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="${isSaved ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+            </button>
             <button class="chat-button" title="Open in AI Chat" onclick="openInChat(this, '${encodeURIComponent(
               updatePromptPreview(content.trim())
             )}')">
@@ -627,6 +651,7 @@ function createPromptCards() {
         });
 
         const copyButton = card.querySelector(".copy-button");
+        const starButton = card.querySelector(".star-button");
         copyButton.addEventListener("click", async (e) => {
           e.stopPropagation();
           try {
@@ -647,6 +672,32 @@ function createPromptCards() {
           } catch (err) {
             alert("Failed to copy prompt to clipboard");
           }
+        });
+
+        // Star toggle persistence
+        starButton.addEventListener('click', (e) => {
+          e.stopPropagation();
+          try {
+            const raw = localStorage.getItem('saved-prompts');
+            const list = raw ? JSON.parse(raw) : [];
+            const idx = list.indexOf(title);
+            if (idx === -1) {
+              list.push(title);
+              starButton.setAttribute('aria-pressed', 'true');
+              starButton.style.opacity = '1';
+              starButton.querySelector('svg').setAttribute('fill', 'currentColor');
+            } else {
+              list.splice(idx, 1);
+              starButton.setAttribute('aria-pressed', 'false');
+              starButton.style.opacity = '0.7';
+              starButton.querySelector('svg').setAttribute('fill', 'none');
+              // If saved-only mode active, hide the card on unstar
+              if (document.body.classList.contains('saved-only')) {
+                card.style.display = 'none';
+              }
+            }
+            localStorage.setItem('saved-prompts', JSON.stringify(list));
+          } catch (_) {}
         });
 
         promptsGrid.appendChild(card);
