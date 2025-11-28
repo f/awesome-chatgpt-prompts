@@ -274,14 +274,45 @@ function parseCSV(csv) {
     .split(",")
     .map((header) => header.replace(/"/g, "").trim());
 
+  // Helper function to properly parse CSV line with quoted fields
+  function parseCSVLine(line) {
+    const values = [];
+    let current = '';
+    let inQuotes = false;
+    
+    for (let i = 0; i < line.length; i++) {
+      const char = line[i];
+      const nextChar = line[i + 1];
+      
+      if (char === '"' && !inQuotes) {
+        inQuotes = true;
+      } else if (char === '"' && inQuotes) {
+        if (nextChar === '"') {
+          // Escaped quote
+          current += '"';
+          i++; // Skip next quote
+        } else {
+          inQuotes = false;
+        }
+      } else if (char === ',' && !inQuotes) {
+        values.push(current.trim());
+        current = '';
+      } else {
+        current += char;
+      }
+    }
+    values.push(current.trim());
+    return values;
+  }
+
   return lines
     .slice(1)
     .map((line) => {
-      const values = line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || [];
+      const values = parseCSVLine(line);
       const entry = {};
 
       headers.forEach((header, index) => {
-        let value = values[index] ? values[index].replace(/"/g, "").trim() : "";
+        let value = values[index] ? values[index].trim() : "";
         // Remove backticks from the act/title
         if (header === "act") {
           value = value.replace(/`/g, "");
@@ -310,8 +341,13 @@ function parseCSV(csv) {
 // Format JSON with syntax highlighting
 function formatJsonWithHighlighting(jsonString) {
   try {
+    // Clean up the JSON string - replace curly quotes with straight quotes
+    let cleanedJson = jsonString
+      .replace(/[\u201C\u201D]/g, '"')  // Replace curly double quotes
+      .replace(/[\u2018\u2019]/g, "'"); // Replace curly single quotes
+    
     // Try to parse and re-format the JSON
-    const parsed = JSON.parse(jsonString);
+    const parsed = JSON.parse(cleanedJson);
     const formatted = JSON.stringify(parsed, null, 2);
     
     // Apply syntax highlighting
@@ -332,8 +368,12 @@ function formatJsonWithHighlighting(jsonString) {
       .replace(/\b(null)\b/g, '<span class="json-null">$1</span>')
       .replace(/\b(-?\d+\.?\d*)\b/g, '<span class="json-number">$1</span>');
   } catch (e) {
-    // If JSON parsing fails, return the original string
-    return jsonString;
+    // If JSON parsing fails, try to format it as-is with basic highlighting
+    console.warn('JSON parsing failed:', e.message);
+    return jsonString
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
   }
 }
 
@@ -638,15 +678,25 @@ function createPromptCards() {
           renderedContent = `<p class="prompt-content">${updatePromptPreview(content)}</p>`;
         }
 
+        // JSON icon HTML - only show for JSON prompts
+        const jsonIconHtml = isJsonPrompt ? `
+            <span class="prompt-json-icon" title="JSON Prompt">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"></path>
+                    <path d="M16 3h1a2 2 0 0 1 2 2v5a2 2 0 0 0 2 2 2 2 0 0 0-2 2v5a2 2 0 0 1-2 2h-1"></path>
+                </svg>
+            </span>
+        ` : '';
+
         card.innerHTML = `
         <div class="prompt-title">
             ${title}
             <div class="action-buttons">
-            <span class="prompt-type-badge ${isJsonPrompt ? 'json-badge' : 'text-badge'}">${promptType}</span>
+            ${jsonIconHtml}
             <button class="chat-button" title="Open in AI Chat" onclick="openInChat(this, '${encodeURIComponent(
-              updatePromptPreview(content.trim())
+              isJsonPrompt ? content.trim() : updatePromptPreview(content.trim())
             )}')">
-                <svg class="chat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="chat-icon"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                 </svg>
                 <svg class="terminal-icon" style="display: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

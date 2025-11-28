@@ -2241,40 +2241,24 @@ input:checked + .slider:before {
 .create-yaml-button:hover {
     background-color: #0e9f71;
 } 
-/* JSON Prompt Type Badge Styles */
-.prompt-type-badge {
+/* JSON Prompt Icon Styles */
+.prompt-json-icon {
     display: inline-flex;
     align-items: center;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 0.65rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.text-badge {
-    background-color: rgba(59, 130, 246, 0.15);
-    color: #3b82f6;
-    border: 1px solid rgba(59, 130, 246, 0.3);
-}
-
-.json-badge {
-    background-color: rgba(245, 158, 11, 0.15);
+    justify-content: center;
+    width: 20px;
+    height: 20px;
     color: #f59e0b;
-    border: 1px solid rgba(245, 158, 11, 0.3);
+    margin-right: 4px;
 }
 
-.dark-mode .text-badge {
-    background-color: rgba(59, 130, 246, 0.2);
-    color: #60a5fa;
-    border-color: rgba(59, 130, 246, 0.4);
+.prompt-json-icon svg {
+    width: 16px;
+    height: 16px;
 }
 
-.dark-mode .json-badge {
-    background-color: rgba(245, 158, 11, 0.2);
+.dark-mode .prompt-json-icon {
     color: #fbbf24;
-    border-color: rgba(245, 158, 11, 0.4);
 }
 
 /* JSON Content Styles */
@@ -2344,4 +2328,4 @@ input:checked + .slider:before {
 
 .dark-mode .json-null {
     color: #8b949e;
-}
+}  
