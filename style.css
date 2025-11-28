@@ -2241,3 +2241,107 @@ input:checked + .slider:before {
 .create-yaml-button:hover {
     background-color: #0e9f71;
 } 
+/* JSON Prompt Type Badge Styles */
+.prompt-type-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.text-badge {
+    background-color: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.json-badge {
+    background-color: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.dark-mode .text-badge {
+    background-color: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+    border-color: rgba(59, 130, 246, 0.4);
+}
+
+.dark-mode .json-badge {
+    background-color: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+    border-color: rgba(245, 158, 11, 0.4);
+}
+
+/* JSON Content Styles */
+.json-content {
+    background-color: #f8f9fa;
+    padding: 12px;
+    border-radius: 6px;
+    font-family: 'SF Mono', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.dark-mode .json-content {
+    background-color: #2d2d2d;
+    color: #f5f5f5;
+}
+
+.modal-json {
+    max-height: 400px;
+}
+
+/* JSON Syntax Highlighting */
+.json-key {
+    color: #0550ae;
+    font-weight: 500;
+}
+
+.dark-mode .json-key {
+    color: #79c0ff;
+}
+
+.json-string {
+    color: #22863a;
+}
+
+.dark-mode .json-string {
+    color: #a5d6a7;
+}
+
+.json-number {
+    color: #905;
+}
+
+.dark-mode .json-number {
+    color: #f48fb1;
+}
+
+.json-boolean {
+    color: #0550ae;
+    font-weight: 500;
+}
+
+.dark-mode .json-boolean {
+    color: #79c0ff;
+}
+
+.json-null {
+    color: #6e7781;
+    font-style: italic;
+}
+
+.dark-mode .json-null {
+    color: #8b949e;
+}

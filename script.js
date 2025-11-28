@@ -290,12 +290,61 @@ function parseCSV(csv) {
         if (header === "for_devs") {
           value = value.toUpperCase() === "TRUE";
         }
+        // Default type to TEXT if not specified
+        if (header === "type" && !value) {
+          value = "TEXT";
+        }
         entry[header] = value;
       });
+
+      // Ensure type defaults to TEXT if not present
+      if (!entry.type) {
+        entry.type = "TEXT";
+      }
 
       return entry;
     })
     .filter((entry) => entry.act && entry.prompt);
+}
+
+// Format JSON with syntax highlighting
+function formatJsonWithHighlighting(jsonString) {
+  try {
+    // Try to parse and re-format the JSON
+    const parsed = JSON.parse(jsonString);
+    const formatted = JSON.stringify(parsed, null, 2);
+    
+    // Apply syntax highlighting
+    return formatted
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?)/g, (match) => {
+        let cls = 'json-string';
+        if (/:$/.test(match)) {
+          cls = 'json-key';
+          match = match.replace(/:$/, '');
+          return `<span class="${cls}">${match}</span>:`;
+        }
+        return `<span class="${cls}">${match}</span>`;
+      })
+      .replace(/\b(true|false)\b/g, '<span class="json-boolean">$1</span>')
+      .replace(/\b(null)\b/g, '<span class="json-null">$1</span>')
+      .replace(/\b(-?\d+\.?\d*)\b/g, '<span class="json-number">$1</span>');
+  } catch (e) {
+    // If JSON parsing fails, return the original string
+    return jsonString;
+  }
+}
+
+// Check if a string is valid JSON
+function isValidJson(str) {
+  try {
+    JSON.parse(str);
+    return true;
+  } catch (e) {
+    return false;
+  }
 }
 
 function displaySearchResults(results) {
@@ -577,10 +626,23 @@ function createPromptCards() {
           card.style.display = "none";
         }
 
+        // Determine prompt type from CSV data
+        const promptType = matchingPrompt && matchingPrompt.type ? matchingPrompt.type : 'TEXT';
+        const isJsonPrompt = promptType === 'JSON';
+        
+        // Render content based on type
+        let renderedContent;
+        if (isJsonPrompt) {
+          renderedContent = `<pre class="json-content">${formatJsonWithHighlighting(content)}</pre>`;
+        } else {
+          renderedContent = `<p class="prompt-content">${updatePromptPreview(content)}</p>`;
+        }
+
         card.innerHTML = `
         <div class="prompt-title">
             ${title}
             <div class="action-buttons">
+            <span class="prompt-type-badge ${isJsonPrompt ? 'json-badge' : 'text-badge'}">${promptType}</span>
             <button class="chat-button" title="Open in AI Chat" onclick="openInChat(this, '${encodeURIComponent(
               updatePromptPreview(content.trim())
             )}')">
@@ -611,7 +673,7 @@ function createPromptCards() {
             </button>
             </div>
         </div>
-        <p class="prompt-content">${updatePromptPreview(content)}</p>
+        ${renderedContent}
         <a href="https://github.com/${contributor}" class="contributor-badge" target="_blank" rel="noopener">@${contributor}</a>
         `;
 
@@ -622,7 +684,7 @@ function createPromptCards() {
             !e.target.closest(".contributor-badge") &&
             !e.target.closest(".yaml-button")
           ) {
-            showModal(title, content);
+            showModal(title, content, promptType);
           }
         });
 
@@ -754,7 +816,7 @@ function createModal() {
 }
 
 // Modify the existing showModal function
-function showModal(title, content) {
+function showModal(title, content, promptType = 'TEXT') {
   let modalOverlay = document.getElementById("modalOverlay");
   if (!modalOverlay) {
     createModal();
@@ -763,12 +825,15 @@ function showModal(title, content) {
 
   const modalTitle = modalOverlay.querySelector(".modal-title");
   const modalContent = modalOverlay.querySelector(".modal-content");
+  
+  // Check if this is a JSON prompt
+  const isJsonPrompt = promptType === 'JSON' || isValidJson(content);
 
   // Extract variables from content
   const variables = extractVariables(content);
 
-  // Create variable inputs container if variables exist
-  if (variables.length > 0) {
+  // Create variable inputs container if variables exist (only for TEXT prompts)
+  if (variables.length > 0 && !isJsonPrompt) {
     const variableContainer = document.createElement("div");
     variableContainer.className = "variable-container";
 
@@ -792,6 +857,10 @@ function showModal(title, content) {
 
     // Insert variable container before content
     modalContent.parentElement.insertBefore(variableContainer, modalContent);
+  } else if (isJsonPrompt) {
+    // Render JSON content with syntax highlighting
+    modalTitle.textContent = title;
+    modalContent.innerHTML = `<pre class="json-content modal-json">${formatJsonWithHighlighting(content)}</pre>`;
   } else {
     modalTitle.textContent = title;
     modalContent.textContent = content;

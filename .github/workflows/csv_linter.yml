@@ -37,16 +37,21 @@ jobs:
           with open("prompts.csv", "r", encoding="utf-8") as f:
               reader = csv.reader(f)
               headers = next(reader)
-              if headers != ["act", "prompt", "for_devs"]:
-                  print("Error: CSV headers must be exactly [act, prompt, for_devs]")
+              if headers != ["act", "prompt", "for_devs", "type"]:
+                  print("Error: CSV headers must be exactly [act, prompt, for_devs, type]")
                   exit(1)
-              for row_num, row in enumerate(reader, 3):
-                  if len(row) != 3:
-                      print(f"Error: Row {row_num} has {len(row)} columns, expected 2")
+              valid_types = ["TEXT", "JSON"]
+              for row_num, row in enumerate(reader, 2):
+                  if len(row) != 4:
+                      print(f"Error: Row {row_num} has {len(row)} columns, expected 4")
                       exit(1)
-                  if not row[0] or not row[1] or not row[2]:
+                  if not row[0] or not row[1] or not row[2] or not row[3]:
                       print(f"Error: Row {row_num} has empty values")
                       exit(1)
+                  if row[3] not in valid_types:
+                      print(f"Error: Row {row_num} has invalid type \"{row[3]}\". Must be TEXT or JSON")
+                      exit(1)
+          print("CSV format OK")
           '; then
             echo "::error::CSV format check failed"
             exit 1
