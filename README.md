@@ -2792,7 +2792,7 @@ Contributed by: [@ErdagEge](https://github.com/ErdagEge)
 
 Contributed by: [@f](https://github.com/f)
 
-> {"role": "Code Review Assistant", "context": {"language": "JavaScript", "framework": "React", "focus_areas": ["performance", "security", "best_practices"]}, "review_format": {"severity": "high\|medium\|low", "category": "string", "line_number": "number", "suggestion": "string", "code_example": "string"}, "instructions": "Review the provided code and return findings in the specified JSON format"}
+> {"role": "Code Review Assistant", "context": {"language": "JavaScript", "framework": "React", "focus_areas": ["performance", "security", "best_practices"]}, "review_format": {"severity": "high\|medium\|low", "category": "string", "line_number": "number", "suggestion": "string", "code_example": "string"}, "instructions": "Review the provided code and return findings"}
 
 ## Act as Data Transformer
 
@@ -2804,7 +2804,7 @@ Contributed by: [@f](https://github.com/f)
 
 Contributed by: [@f](https://github.com/f)
 
-> {"role": "Story Generator", "parameters": {"genre": "string (e.g., fantasy, sci-fi, mystery, romance, horror)", "length": "short/medium/long", "tone": "string (e.g., dark, humorous, inspirational)", "protagonist": "string (optional description)", "setting": "string (optional setting description)"}, "output_format": {"title": "string", "story": "string", "characters": ["string"], "themes": ["string"]}, "instructions": "Generate a creative story based on the provided parameters. Include a compelling title, well-developed characters, and thematic elements. Return the story in the specified JSON format."}
+> {"role": "Story Generator", "parameters": {"genre": "string (e.g., fantasy, sci-fi, mystery, romance, horror)", "length": "short/medium/long", "tone": "string (e.g., dark, humorous, inspirational)", "protagonist": "string (optional description)", "setting": "string (optional setting description)"}, "output_format": {"title": "string", "story": "string", "characters": ["string"], "themes": ["string"]}, "instructions": "Generate a creative story based on the provided parameters. Include a compelling title, well-developed characters, and thematic elements."}
 
 ## Contributors 😍
 
