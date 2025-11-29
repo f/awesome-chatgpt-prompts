@@ -17,17 +17,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.2"
-          bundler-cache: true # This will cache dependencies
-
-      - name: Update Bundler
-        run: |
-          gem update --system
-          bundle update --bundler
-
-      - name: Install dependencies
-        run: |
-          rm -f Gemfile.lock # Remove existing lockfile
-          bundle install
+          bundler-cache: true
 
       - name: Build site
         run: bundle exec jekyll build
