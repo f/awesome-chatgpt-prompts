@@ -2241,3 +2241,91 @@ input:checked + .slider:before {
 .create-yaml-button:hover {
     background-color: #0e9f71;
 } 
+/* JSON Prompt Icon Styles */
+.prompt-json-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    color: #f59e0b;
+    margin-right: 4px;
+}
+
+.prompt-json-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+.dark-mode .prompt-json-icon {
+    color: #fbbf24;
+}
+
+/* JSON Content Styles */
+.json-content {
+    background-color: #f8f9fa;
+    padding: 12px;
+    border-radius: 6px;
+    font-family: 'SF Mono', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.dark-mode .json-content {
+    background-color: #2d2d2d;
+    color: #f5f5f5;
+}
+
+.modal-json {
+    max-height: 400px;
+}
+
+/* JSON Syntax Highlighting */
+.json-key {
+    color: #0550ae;
+    font-weight: 500;
+}
+
+.dark-mode .json-key {
+    color: #79c0ff;
+}
+
+.json-string {
+    color: #22863a;
+}
+
+.dark-mode .json-string {
+    color: #a5d6a7;
+}
+
+.json-number {
+    color: #905;
+}
+
+.dark-mode .json-number {
+    color: #f48fb1;
+}
+
+.json-boolean {
+    color: #0550ae;
+    font-weight: 500;
+}
+
+.dark-mode .json-boolean {
+    color: #79c0ff;
+}
+
+.json-null {
+    color: #6e7781;
+    font-style: italic;
+}
+
+.dark-mode .json-null {
+    color: #8b949e;
+}  

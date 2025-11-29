@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "category": "Crafting a Compelling Bio",
+    "title": "Create a Professional Bio",
+    "prompt": "Write a GitHub Sponsors bio for my profile that highlights my experience in [your field], the impact of my open source work, and my commitment to community growth.",
+    "tags": ["bio", "profile", "introduction"]
+  },
+  {
+    "id": 2,
+    "category": "Crafting a Compelling Bio",
+    "title": "Showcase Top Repositories",
+    "prompt": "Summarize my top three repositories ([repo1], [repo2], [repo3]) in a way that inspires potential sponsors to support my work.",
+    "tags": ["bio", "repositories", "showcase"]
+  },
+  {
+    "id": 3,
+    "category": "Explaining Why Funding Matters",
+    "title": "Explain Funding Impact",
+    "prompt": "Create a section for my Sponsors page that explains how funding will help me dedicate more time to [project/topics], support new contributors, and ensure the sustainability of my open source work.",
+    "tags": ["funding", "impact", "sustainability"]
+  },
+  {
+    "id": 4,
+    "category": "Explaining Why Funding Matters",
+    "title": "Show Direct Impact",
+    "prompt": "Write a paragraph that shows sponsors the direct impact their funding will have on my projects and the wider community.",
+    "tags": ["funding", "impact", "community"]
+  },
+  {
+    "id": 5,
+    "category": "Unlocking New Pricing Tiers",
+    "title": "Suggest Pricing Tiers",
+    "prompt": "Suggest ideas for pricing tiers on GitHub Sponsors, including unique benefits at each level for individuals and companies.",
+    "tags": ["pricing", "tiers", "benefits"]
+  },
+  {
+    "id": 6,
+    "category": "Unlocking New Pricing Tiers",
+    "title": "Write Tier Descriptions",
+    "prompt": "Write descriptions for three GitHub Sponsors tiers ($5, $25, $100) that offer increasing value and recognition to supporters.",
+    "tags": ["pricing", "tiers", "descriptions"]
+  },
+  {
+    "id": 7,
+    "category": "Spotlighting Your Project",
+    "title": "Create Project Spotlight",
+    "prompt": "Draft a brief 'Project Spotlight' section for my Sponsors page, showcasing the goals, achievements, and roadmap of [project name].",
+    "tags": ["project", "spotlight", "roadmap"]
+  },
+  {
+    "id": 8,
+    "category": "Spotlighting Your Project",
+    "title": "Announce Milestone",
+    "prompt": "Write an announcement for my Sponsors page about a new milestone or feature in [project], encouraging new and existing sponsors to get involved.",
+    "tags": ["project", "milestone", "announcement"]
+  },
+  {
+    "id": 9,
+    "category": "Enhancing Community Engagement",
+    "title": "Recognize Sponsors",
+    "prompt": "List ways I can recognize or involve sponsors in my project's community (e.g., special Discord roles, early feature access, private Q&A sessions).",
+    "tags": ["community", "engagement", "recognition"]
+  },
+  {
+    "id": 10,
+    "category": "Enhancing Community Engagement",
+    "title": "Creative Perks",
+    "prompt": "Suggest creative perks or acknowledgments for sponsors to foster a sense of belonging and appreciation.",
+    "tags": ["community", "perks", "appreciation"]
+  },
+  {
+    "id": 11,
+    "category": "Crafting a Compelling Bio",
+    "title": "Tell Your Story",
+    "prompt": "Write a personal story about why I started contributing to open source, what drives me, and how sponsorship helps me continue this journey in [field/technology].",
+    "tags": ["bio", "story", "personal"]
+  },
+  {
+    "id": 12,
+    "category": "Explaining Why Funding Matters",
+    "title": "Break Down Costs",
+    "prompt": "Create a transparent breakdown of how sponsor funds will be used (e.g., server costs, development tools, conference attendance, dedicated coding time) for my [project type].",
+    "tags": ["funding", "transparency", "costs"]
+  },
+  {
+    "id": 13,
+    "category": "Unlocking New Pricing Tiers",
+    "title": "Enterprise Sponsorship",
+    "prompt": "Design enterprise-level sponsorship tiers ($500, $1000, $5000) with benefits like priority support, custom features, and brand visibility for my [project].",
+    "tags": ["pricing", "enterprise", "tiers"]
+  },
+  {
+    "id": 14,
+    "category": "Spotlighting Your Project",
+    "title": "Impact Metrics",
+    "prompt": "Create a compelling data-driven section showing the impact of [project name]: downloads, users helped, issues resolved, and community growth statistics.",
+    "tags": ["project", "metrics", "impact"]
+  },
+  {
+    "id": 15,
+    "category": "Enhancing Community Engagement",
+    "title": "Sponsor Hall of Fame",
+    "prompt": "Design a 'Sponsor Hall of Fame' section for my README and Sponsors page that creatively showcases and thanks all contributors at different tiers.",
+    "tags": ["community", "recognition", "readme"]
+  },
+  {
+    "id": 16,
+    "category": "Crafting a Compelling Bio",
+    "title": "Future Vision",
+    "prompt": "Write a compelling vision statement about where I see [project/work] going in the next 2-3 years and how sponsors can be part of that journey.",
+    "tags": ["bio", "vision", "future"]
+  },
+  {
+    "id": 17,
+    "category": "Explaining Why Funding Matters",
+    "title": "Time Commitment",
+    "prompt": "Explain how sponsorship would allow me to dedicate [X hours/days] per week/month to open source, comparing current volunteer time vs. potential sponsored time.",
+    "tags": ["funding", "time", "commitment"]
+  },
+  {
+    "id": 18,
+    "category": "Unlocking New Pricing Tiers",
+    "title": "Student Tier",
+    "prompt": "Create a special $1-2 student sponsorship tier with meaningful benefits that acknowledges their support while respecting their budget.",
+    "tags": ["pricing", "students", "accessibility"]
+  },
+  {
+    "id": 19,
+    "category": "Spotlighting Your Project",
+    "title": "Success Stories",
+    "prompt": "Write 3-5 brief success stories or testimonials from users who have benefited from [project name], showing real-world impact.",
+    "tags": ["project", "testimonials", "success"]
+  },
+  {
+    "id": 20,
+    "category": "Enhancing Community Engagement",
+    "title": "Monthly Updates",
+    "prompt": "Create a template for monthly sponsor updates that includes progress, challenges, wins, and upcoming features for [project].",
+    "tags": ["community", "updates", "communication"]
+  }
+]

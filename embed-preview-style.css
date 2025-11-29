@@ -1,0 +1,251 @@
+/* Custom CSS variables for dynamic theming */
+:root {
+    /* These will be dynamically set by JavaScript based on light/dark colors */
+    --primary: 59 130 246; /* Default blue-500 */
+    --background: 255 255 255;
+    --foreground: 15 23 42;
+    --muted: 248 250 252;
+    --muted-foreground: 100 116 139;
+    --border: 226 232 240;
+    --accent: 16 185 129;
+}
+
+/* Dynamic color classes */
+.bg-dynamic-background { background-color: rgb(var(--background)); }
+.bg-dynamic-muted { background-color: rgb(var(--muted)); }
+.bg-dynamic-primary { background-color: rgb(var(--primary)); }
+.bg-dynamic-accent { background-color: rgb(var(--accent)); }
+.text-dynamic-foreground { color: rgb(var(--foreground)); }
+.text-dynamic-muted-foreground { color: rgb(var(--muted-foreground)); }
+.text-dynamic-primary { color: rgb(var(--primary)); }
+.text-dynamic-accent { color: rgb(var(--accent)); }
+.border-dynamic-border { border-color: rgb(var(--border)); }
+.border-dynamic-primary { border-color: rgb(var(--primary)); }
+
+/* Dynamic color opacity variants for pills */
+.bg-dynamic-primary\/10 { background-color: rgb(var(--primary) / 0.1); }
+.bg-dynamic-primary\/20 { background-color: rgb(var(--primary) / 0.2); }
+.border-dynamic-primary\/20 { border-color: rgb(var(--primary) / 0.2); }
+.border-dynamic-primary\/30 { border-color: rgb(var(--primary) / 0.3); }
+
+/* Custom animations */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Mention highlighting */
+.mention {
+    background-color: rgb(var(--primary) / 0.1);
+    color: rgb(var(--primary));
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+}
+
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgb(var(--border));
+    border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--muted-foreground));
+}
+
+/* Focus styles */
+.focus-ring:focus {
+    outline: 2px solid rgb(var(--primary));
+    outline-offset: 2px;
+}
+
+/* Viewer mode specific styles */
+.viewer-mode .prompt-input {
+    cursor: default;
+}
+
+.viewer-mode .prompt-input:focus {
+    outline: none;
+}
+
+/* Hide scrollbar for horizontal scrolling pills */
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+
+
+
+/* Touch target improvements for mobile */
+.touch-target {
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Fixed height for prompt container to enable scrolling */
+#prompt-container {
+    min-height: 100px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 640px) {
+    #prompt-container {
+        min-height: 80px;
+    }
+}
+
+/* Ensure prompt text scrolls within container */
+#prompt-text {
+    height: 100%;
+    overflow-y: auto !important;
+    flex: 1;
+}
+
+/* Responsive improvements */
+@media (max-width: 640px) {
+    /* Context pills can wrap on mobile too */
+    #context-pills {
+        flex-wrap: wrap !important;
+        max-height: 80px; /* Smaller on mobile */
+    }
+    
+    /* More compact pill spacing on mobile */
+    .pill,
+    #settings-pills .pill,
+    #settings-pills > * {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+        white-space: nowrap;
+    }
+    
+    /* Ensure button maintains minimum touch target */
+    #copy-button {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Adjust text size in prompt area for better mobile readability */
+    #prompt-text {
+        line-height: 1.5;
+    }
+    
+    /* Make sure settings pills don't overflow */
+    #settings-pills {
+        overflow: hidden;
+    }
+    
+    /* Compact layout adjustments */
+    .viewer-mode {
+        gap: 0.5rem;
+    }
+}
+
+/* Very small mobile devices */
+@media (max-width: 480px) {
+    /* Even more compact spacing */
+    .pill,
+    #settings-pills .pill,
+    #settings-pills > * {
+        padding: 0.125rem 0.375rem;
+        font-size: 0.6875rem;
+    }
+    
+    /* Smaller button on very small screens */
+    #copy-button {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        min-height: 36px;
+    }
+    
+    #copy-button svg {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+/* Hide file sidebar on mobile devices */
+@media (max-width: 640px) {
+    #file-sidebar {
+        display: none !important;
+    }
+}
+
+/* Context pills container improvements */
+#context-pills {
+    max-width: calc(100% - 40px); /* Reserve space for edit button */
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 120px; /* Limit context pills height */
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Custom scrollbar for context pills */
+#context-pills {
+    scrollbar-width: thin; /* Firefox */
+}
+
+#context-pills::-webkit-scrollbar {
+    width: 4px;
+}
+
+#context-pills::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#context-pills::-webkit-scrollbar-thumb {
+    background: rgb(var(--border) / 0.5);
+    border-radius: 2px;
+}
+
+#context-pills::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--border));
+}
+
+/* Ensure pills maintain size */
+#context-pills > div {
+    flex-shrink: 0;
+}
+
+/* Ensure proper touch behavior */
+@media (hover: none) and (pointer: coarse) {
+    /* All interactive elements get proper touch targets */
+    button, 
+    .pill,
+    #settings-pills > * {
+        min-height: 44px;
+    }
+    
+    /* Remove hover effects on touch devices */
+    button:hover {
+        opacity: 1;
+    }
+    
+    /* Add active states for better feedback */
+    button:active {
+        transform: scale(0.95);
+        transition: transform 0.1s ease;
+    }
+} 

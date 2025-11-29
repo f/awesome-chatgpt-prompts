@@ -235,7 +235,7 @@ async function fetchGitHubStars() {
     console.error("Error fetching star count:", error);
     const starCount = document.getElementById("starCount");
     if (starCount) {
-      starCount.textContent = "122k+";
+      starCount.textContent = "129k+";
     }
   }
 }
