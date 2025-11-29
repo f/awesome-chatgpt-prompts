@@ -742,7 +742,10 @@ function createPromptCards() {
         copyButton.addEventListener("click", async (e) => {
           e.stopPropagation();
           try {
-            await navigator.clipboard.writeText(updatePromptPreview(content));
+            // Use buildPrompt to properly handle JSON prompts with structured preferences
+            const promptToCopy = isJsonPrompt ? content : updatePromptPreview(content);
+            const finalPrompt = buildPrompt(encodeURIComponent(promptToCopy));
+            await navigator.clipboard.writeText(finalPrompt);
             copyButton.innerHTML = `
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="20 6 9 17 4 12"></polyline>
@@ -1110,7 +1113,48 @@ function openInChat(button, encodedPrompt) {
 
 function buildPrompt(encodedPrompt) {
   let promptText = decodeURIComponent(encodedPrompt);
+  
+  // Check if this is a JSON prompt
+  const isJsonPrompt = isValidJson(promptText);
 
+  // Get language, tone and audience preferences (shared for both JSON and TEXT)
+  const languageSelect = document.getElementById('languageSelect');
+  const customLanguage = document.getElementById('customLanguage');
+  const toneSelect = document.getElementById('toneSelect');
+  const customTone = document.getElementById('customTone');
+  const audienceSelect = document.getElementById('audienceSelect');
+
+  const language = languageSelect.value === 'custom' ? customLanguage.value : languageSelect.value;
+  const tone = toneSelect.value === 'custom' ? customTone.value : toneSelect.value;
+  const audience = audienceSelect.value;
+
+  // Handle JSON prompts differently
+  if (isJsonPrompt) {
+    try {
+      // Clean up curly quotes if present
+      let cleanedJson = promptText
+        .replace(/[\u201C\u201D]/g, '"')
+        .replace(/[\u2018\u2019]/g, "'");
+      
+      const data = JSON.parse(cleanedJson);
+      
+      // Add preferences as a structured JSON object
+      data.preferences = {
+        language: language,
+        tone: tone,
+        for_developers: audience === 'developers'
+      };
+      
+      // Return prettified JSON
+      return JSON.stringify(data, null, 2);
+    } catch (e) {
+      console.warn('Failed to merge preferences into JSON prompt:', e);
+      // Fallback: return original prompt if JSON parsing fails
+      return promptText;
+    }
+  }
+
+  // TEXT prompt handling (existing logic)
   // If there's a modal open, use the current state of variables
   const modalContent = document.querySelector(".modal-content");
   if (modalContent) {
@@ -1134,18 +1178,7 @@ function buildPrompt(encodedPrompt) {
   // Clean up newlines and normalize whitespace
   promptText = promptText.replace(/\s+/g, ' ').trim();
 
-  // Get language, tone and audience preferences
-  const languageSelect = document.getElementById('languageSelect');
-  const customLanguage = document.getElementById('customLanguage');
-  const toneSelect = document.getElementById('toneSelect');
-  const customTone = document.getElementById('customTone');
-  const audienceSelect = document.getElementById('audienceSelect');
-
-  const language = languageSelect.value === 'custom' ? customLanguage.value : languageSelect.value;
-  const tone = toneSelect.value === 'custom' ? customTone.value : toneSelect.value;
-  const audience = audienceSelect.value;
-
-  // Append preferences as a new line
+  // Append preferences as a new line for TEXT prompts
   promptText += ` Reply in ${language} using ${tone} tone for ${audience}.`;
 
   return promptText;
