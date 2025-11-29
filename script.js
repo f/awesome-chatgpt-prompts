@@ -197,6 +197,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize language and tone selectors
   initializeLanguageAndTone();
+
+  filterPrompts();
 });
 
 // Search functionality
@@ -344,8 +346,11 @@ function formatJsonWithHighlighting(jsonString) {
     // Clean up the JSON string - replace curly quotes with straight quotes
     let cleanedJson = jsonString
       .replace(/[\u201C\u201D]/g, '"')  // Replace curly double quotes
-      .replace(/[\u2018\u2019]/g, "'"); // Replace curly single quotes
-    
+      .replace(/[\u2018\u2019]/g, "'")  // Replace curly single quotes
+      .replace(/“/g, '"')               // Replace left double quote
+      .replace(/”/g, '"');               // Replace right double quote
+      // .replace(/\n/g, '\\n');           // Replace newlines
+
     // Try to parse and re-format the JSON
     const parsed = JSON.parse(cleanedJson);
     const formatted = JSON.stringify(parsed, null, 2);
@@ -380,10 +385,20 @@ function formatJsonWithHighlighting(jsonString) {
 // Check if a string is valid JSON
 function isValidJson(str) {
   try {
+    // First try to parse as-is
     JSON.parse(str);
     return true;
   } catch (e) {
-    return false;
+    // If that fails, try to clean it up and parse again
+    try {
+      const cleaned = str
+        .replace(/[\u201C\u201D]/g, '"')  // Replace curly double quotes
+        .replace(/[\u2018\u2019]/g, "'"); // Replace curly single quotes
+      JSON.parse(cleaned);
+      return true;
+    } catch (e2) {
+      return false;
+    }
   }
 }
 

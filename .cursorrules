@@ -4,6 +4,8 @@
 - Static Site Generator: Jekyll
 - Hosting: GitHub Pages
 
+
+
 ## Build Commands
 - `bundle install`: Install dependencies
 - `bundle exec jekyll serve`: Run development server
