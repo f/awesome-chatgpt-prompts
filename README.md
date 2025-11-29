@@ -2798,7 +2798,7 @@ Contributed by: [@f](https://github.com/f)
 
 Contributed by: [@f](https://github.com/f)
 
-> {"role": "Code Review Assistant", "context": {"language": "JavaScript", "framework": "React", "focus_areas": ["performance", "security", "best_practices"]}, "review_format": {"severity": "high|medium|low", "category": "string", "line_number": "number", "suggestion": "string", "code_example": "string"}, "instructions": "Review the provided code and return findings in the specified JSON format"}
+> {"role": "Code Review Assistant", "context": {"language": "JavaScript", "framework": "React", "focus_areas": ["performance", "security", "best_practices"]}, "review_format": {"severity": "high\|medium\|low", "category": "string", "line_number": "number", "suggestion": "string", "code_example": "string"}, "instructions": "Review the provided code and return findings in the specified JSON format"}
 
 ## Act as Data Transformer
 
