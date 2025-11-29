@@ -714,7 +714,7 @@ function createPromptCards() {
                 </svg>
             </button>
             <button class="copy-button" title="Copy prompt" onclick="copyPrompt(this, '${encodeURIComponent(
-              updatePromptPreview(content.trim())
+              isJsonPrompt ? content.trim() : updatePromptPreview(content.trim())
             )}')">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
@@ -735,32 +735,6 @@ function createPromptCards() {
             !e.target.closest(".yaml-button")
           ) {
             showModal(title, content, promptType);
-          }
-        });
-
-        const copyButton = card.querySelector(".copy-button");
-        copyButton.addEventListener("click", async (e) => {
-          e.stopPropagation();
-          try {
-            // Use buildPrompt to properly handle JSON prompts with structured preferences
-            const promptToCopy = isJsonPrompt ? content : updatePromptPreview(content);
-            const finalPrompt = buildPrompt(encodeURIComponent(promptToCopy));
-            await navigator.clipboard.writeText(finalPrompt);
-            copyButton.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            `;
-            setTimeout(() => {
-              copyButton.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                </svg>
-            `;
-            }, 2000);
-          } catch (err) {
-            alert("Failed to copy prompt to clipboard");
           }
         });
 
