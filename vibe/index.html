@@ -23,7 +23,7 @@
 
 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/style.css?v=9fb34617abf2aca7f87fcd45f917398f6b67e230">
+    <link rel="stylesheet" href="/style.css?v=400f88f0286ee512ba63c928cc230463df33d46d">
   </head>
   <body class="vibe">
     <div class="layout-wrapper">
@@ -87,6 +87,10 @@
       </header>
 
       <div class="content-wrapper">
+        <button class="sidebar-toggle" type="button" aria-label="Toggle sidebar" aria-expanded="true">
+          <svg class="sidebar-toggle-icon collapse-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg>
+          <svg class="sidebar-toggle-icon expand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg>
+        </button>
         <div class="sidebar">
           <div class="search-container">
             <div class="prompt-count" id="promptCount">
