@@ -670,6 +670,64 @@ body.dark-mode {
 .content-wrapper {
     display: flex;
     flex: 1;
+    position: relative;
+}
+
+.sidebar-toggle {
+    position: absolute;
+    top: 50%;
+    left: var(--sidebar-width);
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    width: 24px;
+    height: 48px;
+    border-radius: 0 8px 8px 0;
+    border: 1px solid var(--border-color);
+    border-left: none;
+    background: var(--bg-color-light);
+    color: var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: left 0.3s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.sidebar-toggle:hover {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: var(--accent-color);
+}
+
+.sidebar-toggle-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.dark-mode .sidebar-toggle {
+    background: var(--bg-color-dark);
+    border-color: var(--border-color-dark);
+}
+
+.dark-mode .sidebar-toggle:hover {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: var(--accent-color);
+}
+
+body.sidebar-collapsed .sidebar-toggle {
+    left: 0;
+    transform: translate(0, -50%);
+    border-radius: 0 8px 8px 0;
+    border-left: 1px solid var(--border-color);
+}
+
+.dark-mode.sidebar-collapsed .sidebar-toggle {
+    border-left-color: var(--border-color-dark);
+}
+
+@media (max-width: 768px) {
+    .sidebar-toggle {
+        display: none;
+    }
 }
 
 .sidebar {
@@ -679,6 +737,20 @@ body.dark-mode {
     height: calc(100vh - var(--header-height) - var(--footer-height));
     overflow-y: auto;
     background-color: var(--bg-color-light);
+    flex-shrink: 0;
+    transition: width 0.3s ease, padding 0.3s ease, opacity 0.2s ease, border-color 0.3s ease;
+}
+
+body.sidebar-collapsed .sidebar {
+    width: 0;
+    padding: 0;
+    border-right-width: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+
+body.sidebar-collapsed .sidebar .search-container {
+    pointer-events: none;
 }
 
 .dark-mode .sidebar {
@@ -2240,7 +2312,8 @@ input:checked + .slider:before {
 
 .create-yaml-button:hover {
     background-color: #0e9f71;
-} 
+}
+
 /* JSON Prompt Icon Styles */
 .prompt-json-icon {
     display: inline-flex;
@@ -2328,4 +2401,4 @@ input:checked + .slider:before {
 
 .dark-mode .json-null {
     color: #8b949e;
-}  
+}   
