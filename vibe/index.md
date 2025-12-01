@@ -1,4 +1,5 @@
 ---
+layout: vibe
 title: /vibe
 subtitle: awesome vibe coding prompts to help you build simple apps
 hide_platform_selector: true

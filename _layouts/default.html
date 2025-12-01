@@ -234,7 +234,24 @@
         </div>
       </footer>
     </div>
-    <script src="script.js"></script>
+    <!-- Shared modules -->
+    <script src="{{ '/js/shared/csv-utils.js' | relative_url }}"></script>
+    <script src="{{ '/js/shared/json-utils.js' | relative_url }}"></script>
+    <script src="{{ '/js/shared/variables.js' | relative_url }}"></script>
+    
+    <!-- Main module templates -->
+    <script src="{{ '/js/main/templates/card-template.js' | relative_url }}"></script>
+    <script src="{{ '/js/main/templates/modal-template.js' | relative_url }}"></script>
+    
+    <!-- Main modules -->
+    <script src="{{ '/js/main/theme.js' | relative_url }}"></script>
+    <script src="{{ '/js/main/search.js' | relative_url }}"></script>
+    <script src="{{ '/js/main/cards.js' | relative_url }}"></script>
+    <script src="{{ '/js/main/modal.js' | relative_url }}"></script>
+    <script src="{{ '/js/main/platform.js' | relative_url }}"></script>
+    <script src="{{ '/js/main/preferences.js' | relative_url }}"></script>
+    <script src="{{ '/js/main/yaml-modal.js' | relative_url }}"></script>
+    <script src="{{ '/js/main/init.js' | relative_url }}"></script>
     {% if page.hide_tone_selector != true %}
     <script>
       // Initialize audience selector
