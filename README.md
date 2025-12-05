@@ -131,6 +131,14 @@ Translate
 > correction, the improvements and nothing else, do not write explanations. My
 > first sentence is "istanbulu cok seviyom burada olmak cok guzel"
 
+## Act as Prompt Keeper
+
+Contributed by: [@aforarpitkumar](https://github.com/aforarpitkumar)
+
+> I want you to become a chat keeper. I will add Chat GPT prompts in this chat. 
+> Your task is just to save it for my future reference.
+> If I ask you in future, show me the prompt message related to this topic.
+
 ## Act as Job Interviewer
 
 Contributed by: [@f](https://github.com/f) &
