@@ -9,6 +9,7 @@ interface CsvRow {
   prompt: string;
   for_devs: string;
   type: string;
+  contributor: string;
 }
 
 // Unescape literal escape sequences like \n, \t, etc.
@@ -63,6 +64,7 @@ function parseCSV(content: string): CsvRow[] {
         prompt: unescapeString(values[1]),
         for_devs: values[2],
         type: values[3],
+        contributor: values[4] || "",
       });
     }
   }
@@ -98,7 +100,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "No valid rows found in CSV" }, { status: 400 });
     }
 
-    // Get the admin user ID for author assignment
+    // Get the admin user ID for fallback author assignment
     const adminUserId = session.user.id;
 
     // Upsert "Coding" category for for_devs prompts
@@ -112,6 +114,63 @@ export async function POST(request: NextRequest) {
         icon: "💻",
       },
     });
+
+    // Cache for contributor users (username -> userId)
+    const contributorCache = new Map<string, string>();
+
+    // Helper to get or create contributor user
+    async function getOrCreateContributorUser(username: string): Promise<string> {
+      const normalizedUsername = username.toLowerCase().trim();
+      
+      // Check cache first
+      if (contributorCache.has(normalizedUsername)) {
+        return contributorCache.get(normalizedUsername)!;
+      }
+
+      // Check if user exists by username or pseudo email
+      const pseudoEmail = `${normalizedUsername}@unclaimed.prompts.chat`;
+      
+      let user = await db.user.findFirst({
+        where: {
+          OR: [
+            { username: normalizedUsername },
+            { email: pseudoEmail },
+          ],
+        },
+      });
+
+      if (!user) {
+        // Create pseudo user - they can claim this account later by logging in with GitHub
+        user = await db.user.create({
+          data: {
+            username: normalizedUsername,
+            email: pseudoEmail,
+            name: normalizedUsername,
+            role: "USER",
+          },
+        });
+      }
+
+      contributorCache.set(normalizedUsername, user.id);
+      return user.id;
+    }
+
+    // Handle multiple contributors (comma-separated), return first as primary author
+    async function getOrCreateContributor(contributorField: string): Promise<string> {
+      if (!contributorField) return adminUserId;
+      
+      // Split by comma for multiple contributors
+      const contributors = contributorField.split(',').map(c => c.trim()).filter(Boolean);
+      
+      if (contributors.length === 0) return adminUserId;
+      
+      // Create users for all contributors, return first as primary author
+      for (const username of contributors) {
+        await getOrCreateContributorUser(username);
+      }
+      
+      return contributorCache.get(contributors[0].toLowerCase())!;
+    }
 
     let imported = 0;
     let skipped = 0;
@@ -129,6 +188,9 @@ export async function POST(request: NextRequest) {
           continue;
         }
 
+        // Get or create contributor user
+        const authorId = await getOrCreateContributor(row.contributor);
+
         // Determine type and structured format
         const { type, structuredFormat } = mapCsvTypeToPromptType(row.type);
         
@@ -144,7 +206,7 @@ export async function POST(request: NextRequest) {
             type,
             structuredFormat,
             isPrivate: false,
-            authorId: adminUserId,
+            authorId,
             categoryId,
           },
         });
@@ -156,7 +218,7 @@ export async function POST(request: NextRequest) {
             version: 1,
             content: row.prompt,
             changeNote: "Imported from prompts.csv",
-            createdBy: adminUserId,
+            createdBy: authorId,
           },
         });
 
@@ -205,9 +267,17 @@ export async function DELETE(request: NextRequest) {
       },
     });
 
+    // Delete all unclaimed users (users with @unclaimed.prompts.chat emails)
+    const deletedUsers = await db.user.deleteMany({
+      where: {
+        email: { endsWith: "@unclaimed.prompts.chat" },
+      },
+    });
+
     return NextResponse.json({
       success: true,
       deleted: result.count,
+      deletedUsers: deletedUsers.count,
     });
   } catch (error) {
     console.error("Error deleting community prompts:", error);

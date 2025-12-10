@@ -377,7 +377,7 @@
       "confirm": "İçe Aktar",
       "deleteButton": "Sil",
       "deleteConfirmTitle": "Topluluk Promptları Silinsin mi?",
-      "deleteConfirmDescription": "Bu işlem prompts.csv'den içe aktarılan tüm promptları kalıcı olarak silecek. Bu işlem geri alınamaz.",
+      "deleteConfirmDescription": "Bu işlem prompts.csv'den içe aktarılan tüm promptları ve sahipsiz katkıda bulunan kullanıcıları kalıcı olarak silecek. Bu işlem geri alınamaz.",
       "deleteSuccess": "{count} topluluk promptu silindi"
     }
   },

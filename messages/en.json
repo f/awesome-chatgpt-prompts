@@ -377,7 +377,7 @@
       "confirm": "Import",
       "deleteButton": "Delete",
       "deleteConfirmTitle": "Delete Community Prompts?",
-      "deleteConfirmDescription": "This will permanently delete all prompts that were imported from prompts.csv. This action cannot be undone.",
+      "deleteConfirmDescription": "This will permanently delete all prompts imported from prompts.csv and unclaimed contributor users. This action cannot be undone.",
       "deleteSuccess": "{count} community prompts deleted"
     }
   },

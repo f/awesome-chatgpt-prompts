@@ -333,7 +333,7 @@
       "confirm": "Importar",
       "deleteButton": "Eliminar",
       "deleteConfirmTitle": "¿Eliminar Prompts de la Comunidad?",
-      "deleteConfirmDescription": "Esto eliminará permanentemente todos los prompts importados de prompts.csv. Esta acción no se puede deshacer.",
+      "deleteConfirmDescription": "Esto eliminará permanentemente todos los prompts importados de prompts.csv y los usuarios contribuyentes no reclamados. Esta acción no se puede deshacer.",
       "deleteSuccess": "{count} prompts de la comunidad eliminados"
     }
   },
