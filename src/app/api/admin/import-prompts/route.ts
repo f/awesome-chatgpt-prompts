@@ -11,6 +11,15 @@ interface CsvRow {
   type: string;
 }
 
+// Unescape literal escape sequences like \n, \t, etc.
+function unescapeString(str: string): string {
+  return str
+    .replace(/\\n/g, '\n')
+    .replace(/\\r/g, '\r')
+    .replace(/\\t/g, '\t')
+    .replace(/\\\\/g, '\\');
+}
+
 function parseCSV(content: string): CsvRow[] {
   const lines = content.split("\n");
   const rows: CsvRow[] = [];
@@ -51,7 +60,7 @@ function parseCSV(content: string): CsvRow[] {
     if (values.length >= 4) {
       rows.push({
         act: values[0],
-        prompt: values[1],
+        prompt: unescapeString(values[1]),
         for_devs: values[2],
         type: values[3],
       });

@@ -1,16 +1,18 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { formatDistanceToNow } from "@/lib/date";
-import { ArrowBigUp, Lock, Copy, ImageIcon, Pin } from "lucide-react";
+import { ArrowBigUp, Lock, Copy, ImageIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { CodeView } from "@/components/ui/code-view";
 import { toast } from "sonner";
 import { prettifyJson } from "@/lib/format";
-import { RunPromptButton } from "@/components/prompts/run-prompt-button";
 import { PinButton } from "@/components/prompts/pin-button";
+import { RunPromptButton } from "@/components/prompts/run-prompt-button";
+import { VariableFillModal, hasVariables, renderContentWithVariables } from "@/components/prompts/variable-fill-modal";
 
 export interface PromptCardProps {
   prompt: {
@@ -53,12 +55,29 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
   const t = useTranslations("prompts");
   const tCommon = useTranslations("common");
   const locale = useLocale();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalMode, setModalMode] = useState<"copy" | "run">("copy");
 
   const hasMediaBackground = prompt.type === "IMAGE" || (prompt.type === "STRUCTURED" && !!prompt.mediaUrl);
+  const contentHasVariables = hasVariables(prompt.content);
 
   const copyToClipboard = async (content: string) => {
     await navigator.clipboard.writeText(content);
     toast.success(tCommon("copiedToClipboard"));
+  };
+
+  const handleCopyClick = () => {
+    if (contentHasVariables) {
+      setModalMode("copy");
+      setModalOpen(true);
+    } else {
+      copyToClipboard(prompt.content);
+    }
+  };
+
+  const handleRunClick = () => {
+    setModalMode("run");
+    setModalOpen(true);
   };
 
   return (
@@ -124,7 +143,7 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
             />
           ) : (
             <pre className={`text-xs text-muted-foreground bg-muted p-2 rounded overflow-hidden font-mono h-full whitespace-pre-wrap break-words ${hasMediaBackground ? "line-clamp-2" : "line-clamp-4"}`}>
-              {prompt.content}
+              {contentHasVariables ? renderContentWithVariables(prompt.content) : prompt.content}
             </pre>
           )}
           <div className="absolute top-1.5 right-1.5 flex items-center gap-1 opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition-opacity">
@@ -132,19 +151,38 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
               <PinButton promptId={prompt.id} initialPinned={isPinned} iconOnly />
             )}
             <button
-              onClick={() => copyToClipboard(prompt.content)}
+              onClick={handleCopyClick}
               className="p-1 rounded bg-background/80 border hover:bg-accent"
             >
               <Copy className="h-3 w-3" />
             </button>
-            <RunPromptButton 
-              content={prompt.content} 
-              size="icon" 
-              variant="outline" 
-              className="h-6 w-6 bg-background/80 [&_svg]:h-3 [&_svg]:w-3" 
-            />
+            {contentHasVariables ? (
+              <button
+                onClick={handleRunClick}
+                className="p-1 rounded bg-background/80 border hover:bg-accent"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+              </button>
+            ) : (
+              <RunPromptButton 
+                content={prompt.content} 
+                size="icon" 
+                variant="outline" 
+                className="h-6 w-6 bg-background/80 [&_svg]:h-3 [&_svg]:w-3" 
+              />
+            )}
           </div>
         </div>
+
+        {/* Variable fill modal */}
+        {contentHasVariables && (
+          <VariableFillModal
+            content={prompt.content}
+            open={modalOpen}
+            onOpenChange={setModalOpen}
+            mode={modalMode}
+          />
+        )}
 
         {/* Tags */}
         {prompt.tags.length > 0 && (
