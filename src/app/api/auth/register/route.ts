@@ -6,7 +6,7 @@ import { getConfig } from "@/lib/config";
 
 const registerSchema = z.object({
   name: z.string().min(2),
-  username: z.string().min(3).regex(/^[a-zA-Z0-9_]+$/),
+  username: z.string().min(1).regex(/^[a-zA-Z0-9_]+$/),
   email: z.string().email(),
   password: z.string().min(6),
 });

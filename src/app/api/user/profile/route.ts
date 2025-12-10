@@ -7,7 +7,7 @@ const updateProfileSchema = z.object({
   name: z.string().min(1).max(100),
   username: z
     .string()
-    .min(3)
+    .min(1)
     .max(30)
     .regex(/^[a-zA-Z0-9_]+$/),
   avatar: z.string().url().optional().or(z.literal("")),

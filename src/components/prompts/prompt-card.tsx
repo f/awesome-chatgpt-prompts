@@ -13,6 +13,7 @@ import { prettifyJson } from "@/lib/format";
 import { PinButton } from "@/components/prompts/pin-button";
 import { RunPromptButton } from "@/components/prompts/run-prompt-button";
 import { VariableFillModal, hasVariables, renderContentWithVariables } from "@/components/prompts/variable-fill-modal";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export interface PromptCardProps {
   prompt: {
@@ -205,7 +206,11 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
 
         {/* Footer */}
         <div className="flex items-center justify-between text-[11px] text-muted-foreground pt-2 border-t mt-auto">
-          <Link href={`/@${prompt.author.username}`} className="hover:text-foreground">
+          <Link href={`/@${prompt.author.username}`} className="hover:text-foreground flex items-center gap-1.5">
+            <Avatar className="h-4 w-4">
+              <AvatarImage src={prompt.author.avatar || undefined} alt={prompt.author.username} />
+              <AvatarFallback className="text-[8px]">{prompt.author.username[0]?.toUpperCase()}</AvatarFallback>
+            </Avatar>
             @{prompt.author.username}{prompt.contributorCount ? ` +${prompt.contributorCount}` : ""}
           </Link>
           <div className="flex items-center gap-2">

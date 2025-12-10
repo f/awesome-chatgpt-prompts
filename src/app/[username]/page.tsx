@@ -72,6 +72,7 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
       id: true,
       name: true,
       username: true,
+      email: true,
       avatar: true,
       role: true,
       createdAt: true,
@@ -90,6 +91,7 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
   const page = parseInt(pageParam || "1");
   const perPage = 12;
   const isOwner = session?.user?.id === user.id;
+  const isUnclaimed = user.email?.endsWith("@unclaimed.prompts.chat") ?? false;
 
   // Build where clause - show private prompts only if owner
   const where = {
@@ -235,7 +237,14 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
                   <Badge variant="default" className="text-xs">Admin</Badge>
                 )}
               </div>
-              <p className="text-muted-foreground text-sm mb-3">@{user.username}</p>
+              <p className="text-muted-foreground text-sm mb-3 flex items-center gap-2">
+                @{user.username}
+                {isUnclaimed && (
+                  <Badge variant="outline" className="text-[10px] text-amber-600 border-amber-500/30 bg-amber-500/10">
+                    {t("unclaimedUser")}
+                  </Badge>
+                )}
+              </p>
             </div>
             {isOwner && (
               <Button variant="outline" size="sm" asChild>
