@@ -449,6 +449,7 @@
   },
   "subscription": {
     "subscribe": "Subscribe",
+    "subscribed": "Subscribed",
     "unsubscribe": "Unsubscribe",
     "subscribedTo": "Subscribed to {name}",
     "unsubscribedFrom": "Unsubscribed from {name}",

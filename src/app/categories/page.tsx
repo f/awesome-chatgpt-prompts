@@ -3,9 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { FolderOpen, ChevronRight } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { Badge } from "@/components/ui/badge";
 import { SubscribeButton } from "@/components/categories/subscribe-button";
-import { CategoryItem } from "@/components/categories/category-item";
 
 export default async function CategoriesPage() {
   const t = await getTranslations("categories");
@@ -27,6 +25,7 @@ export default async function CategoriesPage() {
           },
         },
       },
+      // Include parent's direct prompts count
     },
   });
 
@@ -53,66 +52,80 @@ export default async function CategoriesPage() {
           <p className="text-sm text-muted-foreground">{t("noCategories")}</p>
         </div>
       ) : (
-        <div className="space-y-8">
+        <div className="divide-y">
           {rootCategories.map((category) => (
-            <section key={category.id}>
+            <section key={category.id} className="py-6 first:pt-0">
               {/* Main Category Header */}
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  {category.icon && (
-                    <span className="text-2xl">{category.icon}</span>
-                  )}
-                  <div>
+              <div className="flex items-start gap-3 mb-3">
+                {category.icon && (
+                  <span className="text-xl mt-0.5">{category.icon}</span>
+                )}
+                <div className="min-w-0">
+                  <div className="flex items-center gap-1.5">
                     <Link
                       href={`/categories/${category.slug}`}
-                      className="text-lg font-semibold hover:underline flex items-center gap-1"
+                      className="font-semibold hover:underline inline-flex items-center gap-1"
                     >
                       {category.name}
                       <ChevronRight className="h-4 w-4" />
                     </Link>
-                    {category.description && (
-                      <p className="text-sm text-muted-foreground">
-                        {category.description}
-                      </p>
+                    {session?.user && (
+                      <SubscribeButton
+                        categoryId={category.id}
+                        categoryName={category.name}
+                        initialSubscribed={subscribedIds.has(category.id)}
+                        iconOnly
+                      />
                     )}
+                    <span className="text-xs text-muted-foreground">
+                      {category._count.prompts} {t("prompts")}
+                    </span>
                   </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Badge variant="outline" className="text-xs">
-                    {category._count.prompts} {t("prompts")}
-                  </Badge>
-                  {session?.user && (
-                    <SubscribeButton
-                      categoryId={category.id}
-                      categoryName={category.name}
-                      initialSubscribed={subscribedIds.has(category.id)}
-                      iconOnly
-                    />
+                  {category.description && (
+                    <p className="text-sm text-muted-foreground mt-0.5">
+                      {category.description}
+                    </p>
                   )}
                 </div>
               </div>
 
-              {/* Subcategories Grid */}
-              {category.children.length > 0 ? (
-                <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {/* Subcategories List */}
+              {category.children.length > 0 && (
+                <div className="ml-8 space-y-1">
                   {category.children.map((child) => (
-                    <CategoryItem
+                    <div
                       key={child.id}
-                      category={{
-                        id: child.id,
-                        name: child.name,
-                        slug: child.slug,
-                        icon: child.icon,
-                        promptCount: child._count.prompts,
-                      }}
-                      isSubscribed={subscribedIds.has(child.id)}
-                      showSubscribe={!!session?.user}
-                    />
+                      className="group py-2 px-3 -mx-3 rounded-md hover:bg-muted/50 transition-colors"
+                    >
+                      <div className="flex items-center gap-2">
+                        {child.icon && (
+                          <span className="text-sm">{child.icon}</span>
+                        )}
+                        <Link
+                          href={`/categories/${child.slug}`}
+                          className="text-sm font-medium hover:underline"
+                        >
+                          {child.name}
+                        </Link>
+                        {session?.user && (
+                          <SubscribeButton
+                            categoryId={child.id}
+                            categoryName={child.name}
+                            initialSubscribed={subscribedIds.has(child.id)}
+                            iconOnly
+                          />
+                        )}
+                        <span className="text-xs text-muted-foreground">
+                          {child._count.prompts}
+                        </span>
+                      </div>
+                      {child.description && (
+                        <p className="text-xs text-muted-foreground mt-1 ml-6 line-clamp-1">
+                          {child.description}
+                        </p>
+                      )}
+                    </div>
                   ))}
-                </div>
-              ) : (
-                <div className="text-sm text-muted-foreground border rounded-lg p-4 bg-muted/20">
-                  {t("noSubcategories")}
                 </div>
               )}
             </section>

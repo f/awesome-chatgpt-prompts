@@ -11,9 +11,10 @@ interface SubscribeButtonProps {
   categoryName: string;
   initialSubscribed: boolean;
   iconOnly?: boolean;
+  pill?: boolean;
 }
 
-export function SubscribeButton({ categoryId, categoryName, initialSubscribed, iconOnly = false }: SubscribeButtonProps) {
+export function SubscribeButton({ categoryId, categoryName, initialSubscribed, iconOnly = false, pill = false }: SubscribeButtonProps) {
   const t = useTranslations("subscription");
   const tCommon = useTranslations("common");
   const [isSubscribed, setIsSubscribed] = useState(initialSubscribed);
@@ -63,6 +64,27 @@ export function SubscribeButton({ categoryId, categoryName, initialSubscribed, i
           <Bell className="h-3.5 w-3.5" />
         )}
       </Button>
+    );
+  }
+
+  if (pill) {
+    return (
+      <button
+        onClick={handleToggle}
+        disabled={isLoading}
+        className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium transition-colors ${
+          isSubscribed
+            ? "bg-primary/10 text-primary hover:bg-primary/20"
+            : "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
+        } disabled:opacity-50`}
+      >
+        {isLoading ? (
+          <Loader2 className="h-3 w-3 animate-spin" />
+        ) : (
+          <Bell className={`h-3 w-3 ${isSubscribed ? "fill-current" : ""}`} />
+        )}
+        {isSubscribed ? t("subscribed") : t("subscribe")}
+      </button>
     );
   }
 

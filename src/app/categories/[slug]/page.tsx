@@ -103,28 +103,28 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           </Link>
         </Button>
 
-        <div className="flex items-start justify-between gap-4">
-          <div>
+        <div>
+          <div className="flex items-center gap-2">
             <h1 className="text-xl font-semibold">{category.name}</h1>
-            {category.description && (
-              <p className="text-sm text-muted-foreground mt-1">
-                {category.description}
-              </p>
+            {session?.user && (
+              <SubscribeButton
+                categoryId={category.id}
+                categoryName={category.name}
+                initialSubscribed={!!isSubscribed}
+                pill
+              />
             )}
-            <div className="flex items-center gap-3 mt-2 text-sm text-muted-foreground">
-              <span>{category._count.prompts} prompts</span>
-              <span>•</span>
-              <span>{category._count.subscribers} subscribers</span>
-            </div>
           </div>
-
-          {session?.user && (
-            <SubscribeButton
-              categoryId={category.id}
-              categoryName={category.name}
-              initialSubscribed={!!isSubscribed}
-            />
+          {category.description && (
+            <p className="text-sm text-muted-foreground mt-1">
+              {category.description}
+            </p>
           )}
+          <div className="flex items-center gap-3 mt-2 text-sm text-muted-foreground">
+            <span>{category._count.prompts} prompts</span>
+            <span>•</span>
+            <span>{category._count.subscribers} subscribers</span>
+          </div>
         </div>
       </div>
 
