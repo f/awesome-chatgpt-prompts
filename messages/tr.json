@@ -14,6 +14,8 @@
     "view": "Görüntüle",
     "copy": "Kopyala",
     "copied": "Kopyalandı!",
+    "reset": "Sıfırla",
+    "variables": "Değişkenler",
     "copiedToClipboard": "Panoya kopyalandı",
     "failedToCopy": "Kopyalama başarısız",
     "submit": "Gönder",
@@ -243,7 +245,8 @@
       "users": "Kullanıcılar",
       "categories": "Kategoriler",
       "tags": "Etiketler",
-      "webhooks": "Webhook'lar"
+      "webhooks": "Webhook'lar",
+      "import": "Topluluk Promptlarını İçe Aktar"
     },
     "users": {
       "title": "Kullanıcı Yönetimi",
@@ -353,6 +356,29 @@
       "test": "Test",
       "testSuccess": "Webhook testi başarılı!",
       "testFailed": "Webhook testi başarısız"
+    },
+    "import": {
+      "title": "Topluluk Promptlarını İçe Aktar",
+      "description": "Awesome ChatGPT Prompts'un prompts.csv dosyasından promptları içe aktar",
+      "fileInfo": "Proje kök dizinindeki prompts.csv dosyasından içe aktar",
+      "csvFormat": "Format: act, prompt, for_devs, type",
+      "importButton": "Topluluk Promptlarını İçe Aktar",
+      "importing": "İçe aktarılıyor...",
+      "success": "{count} prompt başarıyla içe aktarıldı",
+      "allSkipped": "Tüm promptlar zaten mevcut",
+      "resultTitle": "İçe Aktarma Sonuçları",
+      "imported": "İçe aktarılan: {count}",
+      "skipped": "Atlanan (zaten mevcut): {count}",
+      "total": "CSV'deki toplam: {count}",
+      "errors": "Hatalar:",
+      "confirmTitle": "Promptlar İçe Aktarılsın mı?",
+      "confirmDescription": "Bu işlem prompts.csv'deki tüm promptları içe aktaracak. Aynı başlığa sahip mevcut promptlar atlanacak.",
+      "cancel": "İptal",
+      "confirm": "İçe Aktar",
+      "deleteButton": "Sil",
+      "deleteConfirmTitle": "Topluluk Promptları Silinsin mi?",
+      "deleteConfirmDescription": "Bu işlem prompts.csv'den içe aktarılan tüm promptları kalıcı olarak silecek. Bu işlem geri alınamaz.",
+      "deleteSuccess": "{count} topluluk promptu silindi"
     }
   },
   "search": {

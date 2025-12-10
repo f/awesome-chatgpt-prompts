@@ -12,14 +12,12 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { CopyButton } from "@/components/prompts/copy-button";
-import { RunPromptButton } from "@/components/prompts/run-prompt-button";
+import { InteractivePromptContent } from "@/components/prompts/interactive-prompt-content";
 import { UpvoteButton } from "@/components/prompts/upvote-button";
 import { AddVersionForm } from "@/components/prompts/add-version-form";
 import { DeleteVersionButton } from "@/components/prompts/delete-version-button";
 import { VersionCompareModal } from "@/components/prompts/version-compare-modal";
 import { VersionCompareButton } from "@/components/prompts/version-compare-button";
-import { CodeView } from "@/components/ui/code-view";
 
 interface PromptPageProps {
   params: Promise<{ id: string }>;
@@ -337,37 +335,29 @@ export default async function PromptPage({ params }: PromptPageProps) {
 
           {/* Prompt Text Content */}
           <div>
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="text-base font-semibold">{t("promptContent")}</h3>
-              <div className="flex items-center gap-2">
-                {prompt.requiresMediaUpload && prompt.requiredMediaType && prompt.requiredMediaCount && (
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-400">
-                    {prompt.requiredMediaType === "IMAGE" && <ImageIcon className="h-3.5 w-3.5" />}
-                    {prompt.requiredMediaType === "VIDEO" && <Video className="h-3.5 w-3.5" />}
-                    {prompt.requiredMediaType === "DOCUMENT" && <FileText className="h-3.5 w-3.5" />}
-                    <span className="text-xs font-medium">
-                      {prompt.requiredMediaType === "IMAGE" 
-                        ? t("requiresImage", { count: prompt.requiredMediaCount })
-                        : prompt.requiredMediaType === "VIDEO"
-                        ? t("requiresVideo", { count: prompt.requiredMediaCount })
-                        : t("requiresDocument", { count: prompt.requiredMediaCount })}
-                    </span>
-                  </div>
-                )}
-                <RunPromptButton content={prompt.content} />
-                <CopyButton content={prompt.content} />
+            {prompt.requiresMediaUpload && prompt.requiredMediaType && prompt.requiredMediaCount && (
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-400 mb-3">
+                {prompt.requiredMediaType === "IMAGE" && <ImageIcon className="h-3.5 w-3.5" />}
+                {prompt.requiredMediaType === "VIDEO" && <Video className="h-3.5 w-3.5" />}
+                {prompt.requiredMediaType === "DOCUMENT" && <FileText className="h-3.5 w-3.5" />}
+                <span className="text-xs font-medium">
+                  {prompt.requiredMediaType === "IMAGE" 
+                    ? t("requiresImage", { count: prompt.requiredMediaCount })
+                    : prompt.requiredMediaType === "VIDEO"
+                    ? t("requiresVideo", { count: prompt.requiredMediaCount })
+                    : t("requiresDocument", { count: prompt.requiredMediaCount })}
+                </span>
               </div>
-            </div>
+            )}
             {prompt.type === "STRUCTURED" ? (
-              <CodeView 
+              <InteractivePromptContent 
                 content={prompt.content} 
-                language={(prompt.structuredFormat?.toLowerCase() as "json" | "yaml") || "json"}
-                className="text-sm"
+                isStructured={true}
+                structuredFormat={(prompt.structuredFormat?.toLowerCase() as "json" | "yaml") || "json"}
+                title={t("promptContent")}
               />
             ) : (
-              <pre className="whitespace-pre-wrap text-sm bg-muted p-4 rounded-lg font-mono border">
-                {prompt.content}
-              </pre>
+              <InteractivePromptContent content={prompt.content} title={t("promptContent")} />
             )}
           </div>
         </TabsContent>

@@ -11,6 +11,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { DiffView } from "@/components/ui/diff-view";
+import { prettifyJson } from "@/lib/format";
 
 interface VersionCompareButtonProps {
   versionContent: string;
@@ -52,8 +53,8 @@ export function VersionCompareButton({
           </DialogHeader>
           <div className="flex-1 min-h-0 overflow-hidden">
             <DiffView
-              original={versionContent}
-              modified={currentContent}
+              original={isStructured && structuredFormat?.toLowerCase() === "json" ? prettifyJson(versionContent) : versionContent}
+              modified={isStructured && structuredFormat?.toLowerCase() === "json" ? prettifyJson(currentContent) : currentContent}
               className="max-h-[calc(90vh-120px)]"
               language={isStructured ? (structuredFormat?.toLowerCase() as "json" | "yaml") || "json" : undefined}
             />

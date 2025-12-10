@@ -14,6 +14,8 @@
     "view": "عرض",
     "copy": "نسخ",
     "copied": "تم النسخ!",
+    "reset": "إعادة تعيين",
+    "variables": "المتغيرات",
     "copiedToClipboard": "تم النسخ إلى الحافظة",
     "failedToCopy": "فشل النسخ",
     "submit": "إرسال",
@@ -234,7 +236,9 @@
     "tabs": {
       "users": "المستخدمون",
       "categories": "التصنيفات",
-      "tags": "الوسوم"
+      "tags": "الوسوم",
+      "webhooks": "Webhooks",
+      "import": "استيراد أوامر المجتمع"
     },
     "users": {
       "title": "إدارة المستخدمين",

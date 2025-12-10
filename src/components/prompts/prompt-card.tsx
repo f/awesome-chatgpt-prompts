@@ -8,6 +8,7 @@ import { ArrowBigUp, Lock, Copy, ImageIcon, Pin } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { CodeView } from "@/components/ui/code-view";
 import { toast } from "sonner";
+import { prettifyJson } from "@/lib/format";
 import { RunPromptButton } from "@/components/prompts/run-prompt-button";
 import { PinButton } from "@/components/prompts/pin-button";
 
@@ -116,7 +117,7 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
         <div className="relative flex-1 mb-3 min-h-0">
           {prompt.type === "STRUCTURED" ? (
             <CodeView 
-              content={prompt.content} 
+              content={prompt.structuredFormat?.toLowerCase() === "json" ? prettifyJson(prompt.content) : prompt.content} 
               language={(prompt.structuredFormat?.toLowerCase() as "json" | "yaml") || "json"}
               maxLines={hasMediaBackground ? 3 : 10}
               fontSize="xs"

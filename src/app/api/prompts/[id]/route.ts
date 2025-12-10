@@ -122,13 +122,20 @@ export async function PATCH(
       );
     }
 
-    const { tagIds, ...data } = parsed.data;
+    const { tagIds, categoryId, mediaUrl, ...data } = parsed.data;
+
+    // Convert empty strings to null for optional foreign keys
+    const cleanedData = {
+      ...data,
+      ...(categoryId !== undefined && { categoryId: categoryId || null }),
+      ...(mediaUrl !== undefined && { mediaUrl: mediaUrl || null }),
+    };
 
     // Update prompt
     const prompt = await db.prompt.update({
       where: { id },
       data: {
-        ...data,
+        ...cleanedData,
         ...(tagIds && {
           tags: {
             deleteMany: {},

@@ -14,6 +14,8 @@
     "view": "Ver",
     "copy": "Copiar",
     "copied": "¡Copiado!",
+    "reset": "Restablecer",
+    "variables": "Variables",
     "copiedToClipboard": "Copiado al portapapeles",
     "failedToCopy": "Error al copiar",
     "submit": "Enviar",
@@ -228,7 +230,9 @@
     "tabs": {
       "users": "Usuarios",
       "categories": "Categorías",
-      "tags": "Etiquetas"
+      "tags": "Etiquetas",
+      "webhooks": "Webhooks",
+      "import": "Importar Prompts de la Comunidad"
     },
     "users": {
       "title": "Gestión de Usuarios",
@@ -308,6 +312,29 @@
       "editDescription": "Actualizar detalles de la etiqueta",
       "deleteConfirmTitle": "¿Eliminar Etiqueta?",
       "deleteConfirmDescription": "Esto eliminará la etiqueta de todos los prompts."
+    },
+    "import": {
+      "title": "Importar Prompts de la Comunidad",
+      "description": "Importar prompts desde el archivo prompts.csv de Awesome ChatGPT Prompts",
+      "fileInfo": "Importar desde prompts.csv en la raíz del proyecto",
+      "csvFormat": "Formato: act, prompt, for_devs, type",
+      "importButton": "Importar Prompts de la Comunidad",
+      "importing": "Importando...",
+      "success": "{count} prompts importados exitosamente",
+      "allSkipped": "Todos los prompts ya existen",
+      "resultTitle": "Resultados de Importación",
+      "imported": "Importados: {count}",
+      "skipped": "Omitidos (ya existen): {count}",
+      "total": "Total en CSV: {count}",
+      "errors": "Errores:",
+      "confirmTitle": "¿Importar Prompts?",
+      "confirmDescription": "Esto importará todos los prompts de prompts.csv. Los prompts existentes con el mismo título serán omitidos.",
+      "cancel": "Cancelar",
+      "confirm": "Importar",
+      "deleteButton": "Eliminar",
+      "deleteConfirmTitle": "¿Eliminar Prompts de la Comunidad?",
+      "deleteConfirmDescription": "Esto eliminará permanentemente todos los prompts importados de prompts.csv. Esta acción no se puede deshacer.",
+      "deleteSuccess": "{count} prompts de la comunidad eliminados"
     }
   },
   "search": {

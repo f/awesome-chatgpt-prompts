@@ -30,6 +30,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { CodeEditor } from "@/components/ui/code-editor";
 import { toast } from "sonner";
+import { prettifyJson } from "@/lib/format";
 
 const createPromptSchema = (t: (key: string) => string) => z.object({
   title: z.string().min(1, t("titleRequired")).max(200),
@@ -78,7 +79,9 @@ export function PromptForm({ categories, tags, initialData, promptId, mode = "cr
     defaultValues: {
       title: initialData?.title || "",
       description: initialData?.description || "",
-      content: initialData?.content || "",
+      content: initialData?.content && initialData?.structuredFormat === "JSON" 
+        ? prettifyJson(initialData.content) 
+        : (initialData?.content || ""),
       type: initialData?.type || "TEXT",
       structuredFormat: initialData?.structuredFormat || "JSON",
       categoryId: initialData?.categoryId || "",

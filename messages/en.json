@@ -14,6 +14,8 @@
     "view": "View",
     "copy": "Copy",
     "copied": "Copied!",
+    "reset": "Reset",
+    "variables": "Variables",
     "copiedToClipboard": "Copied to clipboard",
     "failedToCopy": "Failed to copy",
     "submit": "Submit",
@@ -243,7 +245,8 @@
       "users": "Users",
       "categories": "Categories",
       "tags": "Tags",
-      "webhooks": "Webhooks"
+      "webhooks": "Webhooks",
+      "import": "Import Community Prompts"
     },
     "users": {
       "title": "User Management",
@@ -353,6 +356,29 @@
       "test": "Test",
       "testSuccess": "Webhook test successful!",
       "testFailed": "Webhook test failed"
+    },
+    "import": {
+      "title": "Import Community Prompts",
+      "description": "Import prompts from the Awesome ChatGPT Prompts' prompts.csv file",
+      "fileInfo": "Import from prompts.csv in project root",
+      "csvFormat": "Format: act, prompt, for_devs, type",
+      "importButton": "Import Community Prompts",
+      "importing": "Importing...",
+      "success": "{count} prompts imported successfully",
+      "allSkipped": "All prompts already exist",
+      "resultTitle": "Import Results",
+      "imported": "Imported: {count}",
+      "skipped": "Skipped (already exist): {count}",
+      "total": "Total in CSV: {count}",
+      "errors": "Errors:",
+      "confirmTitle": "Import Prompts?",
+      "confirmDescription": "This will import all prompts from prompts.csv. Existing prompts with the same title will be skipped.",
+      "cancel": "Cancel",
+      "confirm": "Import",
+      "deleteButton": "Delete",
+      "deleteConfirmTitle": "Delete Community Prompts?",
+      "deleteConfirmDescription": "This will permanently delete all prompts that were imported from prompts.csv. This action cannot be undone.",
+      "deleteSuccess": "{count} community prompts deleted"
     }
   },
   "search": {

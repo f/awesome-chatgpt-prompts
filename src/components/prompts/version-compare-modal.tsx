@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { DiffView } from "@/components/ui/diff-view";
+import { prettifyJson } from "@/lib/format";
 
 interface Version {
   id: string;
@@ -63,13 +64,15 @@ export function VersionCompareModal({ versions, currentContent, promptType, stru
 
   const contentA = useMemo(() => {
     const v = allVersions.find((v) => v.id === versionA);
-    return v?.content || "";
-  }, [allVersions, versionA]);
+    const content = v?.content || "";
+    return isStructured && structuredFormat?.toLowerCase() === "json" ? prettifyJson(content) : content;
+  }, [allVersions, versionA, isStructured, structuredFormat]);
 
   const contentB = useMemo(() => {
     const v = allVersions.find((v) => v.id === versionB);
-    return v?.content || "";
-  }, [allVersions, versionB]);
+    const content = v?.content || "";
+    return isStructured && structuredFormat?.toLowerCase() === "json" ? prettifyJson(content) : content;
+  }, [allVersions, versionB, isStructured, structuredFormat]);
 
   const versionALabel = useMemo(() => {
     const v = allVersions.find((v) => v.id === versionA);

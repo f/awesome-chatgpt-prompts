@@ -14,6 +14,8 @@
     "view": "表示",
     "copy": "コピー",
     "copied": "コピーしました！",
+    "reset": "リセット",
+    "variables": "変数",
     "copiedToClipboard": "クリップボードにコピーしました",
     "failedToCopy": "コピーに失敗しました",
     "submit": "送信",
@@ -228,7 +230,9 @@
     "tabs": {
       "users": "ユーザー",
       "categories": "カテゴリー",
-      "tags": "タグ"
+      "tags": "タグ",
+      "webhooks": "Webhook",
+      "import": "コミュニティプロンプトをインポート"
     },
     "users": {
       "title": "ユーザー管理",

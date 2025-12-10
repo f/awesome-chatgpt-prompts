@@ -14,6 +14,8 @@
     "view": "查看",
     "copy": "复制",
     "copied": "已复制！",
+    "reset": "重置",
+    "variables": "变量",
     "copiedToClipboard": "已复制到剪贴板",
     "failedToCopy": "复制失败",
     "submit": "提交",
@@ -228,7 +230,9 @@
     "tabs": {
       "users": "用户",
       "categories": "分类",
-      "tags": "标签"
+      "tags": "标签",
+      "webhooks": "Webhooks",
+      "import": "导入社区提示词"
     },
     "users": {
       "title": "用户管理",
