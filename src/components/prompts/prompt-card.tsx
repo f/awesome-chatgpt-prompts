@@ -104,7 +104,6 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
           {/* Badges overlay */}
           <div className="absolute top-2 right-2 flex items-center gap-1.5">
-            {prompt.isPrivate && <Lock className="h-3 w-3 text-white drop-shadow" />}
             <Badge variant="secondary" className="text-[10px] bg-background/80 backdrop-blur-sm">
               {t(`types.${prompt.type.toLowerCase()}`)}
             </Badge>
@@ -115,16 +114,16 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
       <div className={hasMediaBackground ? "p-3 flex-1 flex flex-col" : "flex-1 flex flex-col"}>
         {/* Header */}
         <div className="flex items-start justify-between gap-2 mb-2">
-          <Link href={`/prompts/${prompt.id}`} className="font-medium text-sm hover:underline line-clamp-1 flex-1">
-            {prompt.title}
-          </Link>
+          <div className="flex items-center gap-1 flex-1 min-w-0">
+            {prompt.isPrivate && <Lock className="h-3 w-3 text-muted-foreground shrink-0" />}
+            <Link href={`/prompts/${prompt.id}`} className="font-medium text-sm hover:underline line-clamp-1">
+              {prompt.title}
+            </Link>
+          </div>
           {!hasMediaBackground && (
-            <div className="flex items-center gap-1.5 shrink-0">
-              {prompt.isPrivate && <Lock className="h-3 w-3 text-muted-foreground" />}
-              <Badge variant="outline" className="text-[10px]">
-                {t(`types.${prompt.type.toLowerCase()}`)}
-              </Badge>
-            </div>
+            <Badge variant="outline" className="text-[10px] shrink-0">
+              {t(`types.${prompt.type.toLowerCase()}`)}
+            </Badge>
           )}
         </div>
 

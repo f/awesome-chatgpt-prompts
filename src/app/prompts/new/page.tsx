@@ -36,7 +36,6 @@ export default async function NewPromptPage() {
 
   return (
     <div className="container max-w-3xl py-8">
-      <h1 className="text-3xl font-bold mb-8">{t("create")}</h1>
       <PromptForm categories={categories} tags={tags} />
     </div>
   );

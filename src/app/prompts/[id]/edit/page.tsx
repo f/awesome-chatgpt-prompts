@@ -75,11 +75,7 @@ export default async function EditPromptPage({ params }: EditPromptPageProps) {
   };
 
   return (
-    <div className="container py-6 max-w-2xl">
-      <div className="mb-6">
-        <h1 className="text-lg font-semibold">{t("edit")}</h1>
-        <p className="text-sm text-muted-foreground">Update your prompt details</p>
-      </div>
+    <div className="container max-w-3xl py-8">
       <PromptForm
         categories={categories}
         tags={tags}

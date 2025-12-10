@@ -25,16 +25,16 @@ interface InteractivePromptContentProps {
   title?: string;
 }
 
-// Parse ${variablename:defaultvalue} patterns
+// Parse ${variablename:defaultvalue} or ${variablename} patterns
 function parseVariables(content: string): Variable[] {
-  const regex = /\$\{([^:}]+):([^}]*)\}/g;
+  const regex = /\$\{([^:}]+)(?::([^}]*))?\}/g;
   const variables: Variable[] = [];
   let match;
 
   while ((match = regex.exec(content)) !== null) {
     variables.push({
       name: match[1].trim(),
-      defaultValue: match[2].trim(),
+      defaultValue: (match[2] ?? "").trim(),
       fullMatch: match[0],
     });
   }
@@ -232,7 +232,7 @@ export function InteractivePromptContent({
             {isModified && (
               <Button variant="ghost" size="sm" onClick={handleReset} className="h-7 px-2 text-xs">
                 <RotateCcw className="h-3 w-3 mr-1" />
-                Reset
+                {t("reset")}
               </Button>
             )}
             <RunPromptButton content={getFinalContent()} />
@@ -279,7 +279,7 @@ export function InteractivePromptContent({
   const renderContent = () => {
     const parts: React.ReactNode[] = [];
     let lastIndex = 0;
-    const regex = /\$\{([^:}]+):([^}]*)\}/g;
+    const regex = /\$\{([^:}]+)(?::([^}]*))?\}/g;
     let match;
     let keyIndex = 0;
 

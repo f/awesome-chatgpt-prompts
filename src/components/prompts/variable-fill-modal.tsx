@@ -28,16 +28,16 @@ interface VariableFillModalProps {
   mode: "copy" | "run";
 }
 
-// Parse ${variablename:defaultvalue} patterns
+// Parse ${variablename:defaultvalue} or ${variablename} patterns
 function parseVariables(content: string): Variable[] {
-  const regex = /\$\{([^:}]+):([^}]*)\}/g;
+  const regex = /\$\{([^:}]+)(?::([^}]*))?\}/g;
   const variables: Variable[] = [];
   let match;
 
   while ((match = regex.exec(content)) !== null) {
     variables.push({
       name: match[1].trim(),
-      defaultValue: match[2].trim(),
+      defaultValue: (match[2] ?? "").trim(),
       fullMatch: match[0],
     });
   }
@@ -144,14 +144,14 @@ export function VariableFillModal({
 
 // Check if content has variables
 export function hasVariables(content: string): boolean {
-  return /\$\{[^:}]+:[^}]*\}/.test(content);
+  return /\$\{[^:}]+(?::[^}]*)?\}/.test(content);
 }
 
 // Render content with styled variable placeholders (non-editable)
 export function renderContentWithVariables(content: string): React.ReactNode {
   const parts: React.ReactNode[] = [];
   let lastIndex = 0;
-  const regex = /\$\{([^:}]+):([^}]*)\}/g;
+  const regex = /\$\{([^:}]+)(?::([^}]*))?\}/g;
   let match;
   let keyIndex = 0;
 
@@ -161,15 +161,16 @@ export function renderContentWithVariables(content: string): React.ReactNode {
       parts.push(content.slice(lastIndex, match.index));
     }
 
-    const defaultValue = match[2].trim();
+    const name = match[1].trim();
+    const defaultValue = (match[2] ?? "").trim();
 
-    // Add styled variable badge showing default value
+    // Add styled variable badge showing default value or name
     parts.push(
       <span
         key={keyIndex++}
         className="inline-block px-1 py-0.5 mx-0.5 rounded bg-primary/15 text-primary text-[10px] font-medium"
       >
-        {defaultValue}
+        {defaultValue || name}
       </span>
     );
 

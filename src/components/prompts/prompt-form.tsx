@@ -170,21 +170,84 @@ export function PromptForm({ categories, tags, initialData, promptId, mode = "cr
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <FormField
-          control={form.control}
-          name="title"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>{t("promptTitle")}</FormLabel>
-              <FormControl>
-                <Input placeholder={t("titlePlaceholder")} {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        {/* Header: Page title + Private Switch */}
+        <div className="flex items-center justify-between mb-2">
+          <h1 className="text-lg font-semibold">{mode === "edit" ? t("edit") : t("create")}</h1>
+          <FormField
+            control={form.control}
+            name="isPrivate"
+            render={({ field }) => (
+              <FormItem className="flex items-center gap-2">
+                <FormControl>
+                  <Switch
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+                <FormLabel className="!mt-0 text-sm font-normal">{t("promptPrivate")}</FormLabel>
+              </FormItem>
+            )}
+          />
+        </div>
 
+        {/* Row 1: Title + Category */}
+        <div className="flex items-start gap-4">
+          <FormField
+            control={form.control}
+            name="title"
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormLabel>{t("promptTitle")}</FormLabel>
+                <FormControl>
+                  <Input placeholder={t("titlePlaceholder")} {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="categoryId"
+            render={({ field }) => (
+              <FormItem className="w-64">
+                <FormLabel>{t("promptCategory")}</FormLabel>
+                <Select 
+                  onValueChange={(value) => field.onChange(value === "__none__" ? undefined : value)} 
+                  defaultValue={field.value || "__none__"}
+                >
+                  <FormControl>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder={t("selectCategory")} />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="__none__">{t("noCategory")}</SelectItem>
+                    {categories
+                      .filter((c) => c.id && !c.parentId)
+                      .map((parent) => (
+                        <div key={parent.id}>
+                          <SelectItem value={parent.id} className="font-medium">
+                            {parent.name}
+                          </SelectItem>
+                          {categories
+                            .filter((c) => c.parentId === parent.id)
+                            .map((child) => (
+                              <SelectItem key={child.id} value={child.id} className="pl-6 text-muted-foreground">
+                                ↳ {child.name}
+                              </SelectItem>
+                            ))}
+                        </div>
+                      ))}
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          </div>
+
+        {/* Row 2: Description */}
         <FormField
           control={form.control}
           name="description"
@@ -204,16 +267,54 @@ export function PromptForm({ categories, tags, initialData, promptId, mode = "cr
           )}
         />
 
+        {/* Row 3: Content with Type/Format controls */}
         <FormField
           control={form.control}
           name="content"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
-                {promptType === "STRUCTURED" 
-                  ? `${t("promptContent")} (${structuredFormat})` 
-                  : t("promptContent")}
-              </FormLabel>
+              <div className="flex items-center justify-between mb-2">
+                <FormLabel className="mb-0">{t("promptContent")}</FormLabel>
+                <div className="flex items-center gap-2">
+                  {/* Type selector */}
+                  <Select value={promptType} onValueChange={(v) => form.setValue("type", v as any)}>
+                    <SelectTrigger className="h-8 w-32 text-xs">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="TEXT">{t("types.text")}</SelectItem>
+                      <SelectItem value="STRUCTURED">{t("types.structured")}</SelectItem>
+                      <SelectItem value="IMAGE">{t("types.image")}</SelectItem>
+                      <SelectItem value="VIDEO">{t("types.video")}</SelectItem>
+                      <SelectItem value="AUDIO">{t("types.audio")}</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  {/* Format selector (only for STRUCTURED) */}
+                  {promptType === "STRUCTURED" && (
+                    <Select value={structuredFormat || "JSON"} onValueChange={(v) => form.setValue("structuredFormat", v as any)}>
+                      <SelectTrigger className="h-8 w-20 text-xs">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="JSON">JSON</SelectItem>
+                        <SelectItem value="YAML">YAML</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  )}
+                  {/* Media upload toggle */}
+                  <div className="flex items-center gap-1.5 ml-2 pl-2 border-l">
+                    <Switch
+                      id="media-upload"
+                      checked={requiresMediaUpload}
+                      onCheckedChange={(v) => form.setValue("requiresMediaUpload", v)}
+                      className="scale-75"
+                    />
+                    <label htmlFor="media-upload" className="text-xs text-muted-foreground cursor-pointer">
+                      {t("requiresMediaUpload")}
+                    </label>
+                  </div>
+                </div>
+              </div>
               <FormControl>
                 {promptType === "STRUCTURED" ? (
                   <div className="rounded-md border overflow-hidden">
@@ -228,7 +329,7 @@ export function PromptForm({ categories, tags, initialData, promptId, mode = "cr
                           ? '{\n  "name": "My Workflow",\n  "steps": []\n}'
                           : 'name: My Workflow\nsteps:\n  - step: first\n    prompt: "..."'
                       }
-                      minHeight="350px"
+                      minHeight="300px"
                       className="border-0 rounded-none"
                     />
                   </div>
@@ -245,114 +346,43 @@ export function PromptForm({ categories, tags, initialData, promptId, mode = "cr
                       onChange={field.onChange}
                       onBlur={field.onBlur}
                       placeholder={t("contentPlaceholder")}
-                      className="min-h-[200px] font-mono border-0 rounded-none focus-visible:ring-0"
+                      className="min-h-[180px] font-mono border-0 rounded-none focus-visible:ring-0"
                     />
                   </div>
                 )}
               </FormControl>
-              {promptType === "STRUCTURED" && (
-                <FormDescription>
-                  {t("structuredContentDescription")}
-                </FormDescription>
-              )}
               <FormMessage />
             </FormItem>
           )}
         />
 
-        <div className={`grid gap-4 ${promptType === "STRUCTURED" ? "grid-cols-3" : "grid-cols-2"}`}>
-          <FormField
-            control={form.control}
-            name="type"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>{t("promptType")}</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="TEXT">{t("types.text")}</SelectItem>
-                    <SelectItem value="STRUCTURED">{t("types.structured")}</SelectItem>
-                    <SelectItem value="IMAGE">{t("types.image")}</SelectItem>
-                    <SelectItem value="VIDEO">{t("types.video")}</SelectItem>
-                    <SelectItem value="AUDIO">{t("types.audio")}</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          {promptType === "STRUCTURED" && (
-            <FormField
-              control={form.control}
-              name="structuredFormat"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t("structuredFormat")}</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="JSON">JSON</SelectItem>
-                      <SelectItem value="YAML">YAML</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
+        {/* Media upload options (shown when requiresMediaUpload is true) */}
+        {requiresMediaUpload && (
+          <div className="flex items-center gap-4 p-3 rounded-md border bg-muted/30">
+            <span className="text-sm text-muted-foreground">{t("requiredMediaType")}:</span>
+            <Select value={form.watch("requiredMediaType")} onValueChange={(v) => form.setValue("requiredMediaType", v as any)}>
+              <SelectTrigger className="h-8 w-32 text-xs">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="IMAGE">{t("types.image")}</SelectItem>
+                <SelectItem value="VIDEO">{t("types.video")}</SelectItem>
+                <SelectItem value="DOCUMENT">{t("types.document")}</SelectItem>
+              </SelectContent>
+            </Select>
+            <span className="text-sm text-muted-foreground">{t("requiredMediaCount")}:</span>
+            <Input 
+              type="number" 
+              min={1} 
+              max={10}
+              value={form.watch("requiredMediaCount")}
+              onChange={(e) => form.setValue("requiredMediaCount", parseInt(e.target.value) || 1)}
+              className="h-8 w-16 text-xs"
             />
-          )}
+          </div>
+        )}
 
-          <FormField
-            control={form.control}
-            name="categoryId"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>{t("promptCategory")}</FormLabel>
-                <Select 
-                  onValueChange={(value) => field.onChange(value === "__none__" ? undefined : value)} 
-                  defaultValue={field.value || "__none__"}
-                >
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder={t("selectCategory")} />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="__none__">{t("noCategory")}</SelectItem>
-                    {/* Parent categories */}
-                    {categories
-                      .filter((c) => c.id && !c.parentId)
-                      .map((parent) => (
-                        <div key={parent.id}>
-                          <SelectItem value={parent.id} className="font-medium">
-                            {parent.name}
-                          </SelectItem>
-                          {/* Child categories */}
-                          {categories
-                            .filter((c) => c.parentId === parent.id)
-                            .map((child) => (
-                              <SelectItem key={child.id} value={child.id} className="pl-6 text-muted-foreground">
-                                ↳ {child.name}
-                              </SelectItem>
-                            ))}
-                        </div>
-                      ))}
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-
+        {/* Media URL (for IMAGE/VIDEO/AUDIO/STRUCTURED types) */}
         {(promptType === "IMAGE" || promptType === "VIDEO" || promptType === "AUDIO" || promptType === "STRUCTURED") && (
           <FormField
             control={form.control}
@@ -363,15 +393,13 @@ export function PromptForm({ categories, tags, initialData, promptId, mode = "cr
                 <FormControl>
                   <Input placeholder={t("mediaUrlPlaceholder")} {...field} />
                 </FormControl>
-                <FormDescription>
-                  {t("mediaUrlDescription")}
-                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
           />
         )}
 
+        {/* Tags */}
         <FormField
           control={form.control}
           name="tagIds"
@@ -400,96 +428,7 @@ export function PromptForm({ categories, tags, initialData, promptId, mode = "cr
           )}
         />
 
-        <FormField
-          control={form.control}
-          name="isPrivate"
-          render={({ field }) => (
-            <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
-              <div className="space-y-0.5">
-                <FormLabel className="text-base">{t("promptPrivate")}</FormLabel>
-                <FormDescription>
-                  {t("privateDescription")}
-                </FormDescription>
-              </div>
-              <FormControl>
-                <Switch
-                  checked={field.value}
-                  onCheckedChange={field.onChange}
-                />
-              </FormControl>
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="requiresMediaUpload"
-          render={({ field }) => (
-            <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
-              <div className="space-y-0.5">
-                <FormLabel className="text-base">{t("requiresMediaUpload")}</FormLabel>
-                <FormDescription>
-                  {t("requiresMediaUploadDescription")}
-                </FormDescription>
-              </div>
-              <FormControl>
-                <Switch
-                  checked={field.value}
-                  onCheckedChange={field.onChange}
-                />
-              </FormControl>
-            </FormItem>
-          )}
-        />
-
-        {requiresMediaUpload && (
-          <div className="grid grid-cols-2 gap-4">
-            <FormField
-              control={form.control}
-              name="requiredMediaType"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t("requiredMediaType")}</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="IMAGE">{t("types.image")}</SelectItem>
-                      <SelectItem value="VIDEO">{t("types.video")}</SelectItem>
-                      <SelectItem value="DOCUMENT">{t("types.document")}</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="requiredMediaCount"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t("requiredMediaCount")}</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="number" 
-                      min={1} 
-                      max={10} 
-                      {...field}
-                      onChange={(e) => field.onChange(parseInt(e.target.value) || 1)}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-        )}
-
-        <div className="flex justify-end gap-4">
+        <div className="flex justify-end gap-4 pt-2">
           <Button type="button" variant="outline" onClick={() => router.back()}>
             {tCommon("cancel")}
           </Button>
