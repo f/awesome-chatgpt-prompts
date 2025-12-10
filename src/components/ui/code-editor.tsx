@@ -3,7 +3,11 @@
 import { useTheme } from "next-themes";
 import Editor, { type OnMount } from "@monaco-editor/react";
 import { cn } from "@/lib/utils";
-import { useCallback, useRef, useEffect, memo } from "react";
+import { useCallback, useRef, useEffect, memo, forwardRef, useImperativeHandle } from "react";
+
+export interface CodeEditorHandle {
+  insertAtCursor: (text: string) => void;
+}
 
 interface CodeEditorProps {
   value: string;
@@ -15,7 +19,7 @@ interface CodeEditorProps {
   debounceMs?: number;
 }
 
-function CodeEditorInner({
+const CodeEditorInner = forwardRef<CodeEditorHandle, CodeEditorProps>(function CodeEditorInner({
   value,
   onChange,
   language,
@@ -23,7 +27,7 @@ function CodeEditorInner({
   className,
   minHeight = "300px",
   debounceMs = 0,
-}: CodeEditorProps) {
+}, ref) {
   const { resolvedTheme } = useTheme();
   const editorRef = useRef<Parameters<OnMount>[0] | null>(null);
   const debounceTimer = useRef<NodeJS.Timeout | null>(null);
@@ -38,6 +42,23 @@ function CodeEditorInner({
   const handleEditorMount: OnMount = useCallback((editor) => {
     editorRef.current = editor;
   }, []);
+
+  useImperativeHandle(ref, () => ({
+    insertAtCursor: (text: string) => {
+      const editor = editorRef.current;
+      if (editor) {
+        const selection = editor.getSelection();
+        if (selection) {
+          editor.executeEdits("insert", [{
+            range: selection,
+            text,
+            forceMoveMarkers: true,
+          }]);
+          editor.focus();
+        }
+      }
+    },
+  }), []);
 
   const handleChange = useCallback(
     (newValue: string | undefined) => {
@@ -111,7 +132,7 @@ function CodeEditorInner({
       />
     </div>
   );
-}
+});
 
 // Memoize to prevent re-renders when parent state changes
 // Only re-render when value, language, placeholder, className, minHeight, or debounceMs change

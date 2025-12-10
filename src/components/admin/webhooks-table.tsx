@@ -424,23 +424,19 @@ export function WebhooksTable({ webhooks: initialWebhooks }: WebhooksTableProps)
   );
 
   return (
-    <Card>
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <div>
-            <CardTitle className="flex items-center gap-2">
-              <Webhook className="h-5 w-5" />
-              {t("title")}
-            </CardTitle>
-            <CardDescription>{t("description")}</CardDescription>
-          </div>
-          <Dialog open={isCreateOpen} onOpenChange={setIsCreateOpen}>
-            <DialogTrigger asChild>
-              <Button onClick={() => { resetForm(); setIsCreateOpen(true); }}>
-                <Plus className="h-4 w-4 mr-2" />
-                {t("add")}
-              </Button>
-            </DialogTrigger>
+    <>
+      <div className="flex items-center justify-between mb-4">
+        <div>
+          <h3 className="text-lg font-semibold">{t("title")}</h3>
+          <p className="text-sm text-muted-foreground">{t("description")}</p>
+        </div>
+        <Dialog open={isCreateOpen} onOpenChange={setIsCreateOpen}>
+          <DialogTrigger asChild>
+            <Button onClick={() => { resetForm(); setIsCreateOpen(true); }}>
+              <Plus className="h-4 w-4 mr-2" />
+              {t("add")}
+            </Button>
+          </DialogTrigger>
             <DialogContent className="sm:max-w-4xl max-h-[90vh] overflow-y-auto">
               <DialogHeader>
                 <DialogTitle>{t("addTitle")}</DialogTitle>
@@ -457,9 +453,9 @@ export function WebhooksTable({ webhooks: initialWebhooks }: WebhooksTableProps)
               </DialogFooter>
             </DialogContent>
           </Dialog>
-        </div>
-      </CardHeader>
-      <CardContent>
+      </div>
+
+      <div className="rounded-md border">
         {webhooks.length === 0 ? (
           <div className="text-center py-8 text-muted-foreground">
             {t("empty")}
@@ -528,7 +524,7 @@ export function WebhooksTable({ webhooks: initialWebhooks }: WebhooksTableProps)
             </TableBody>
           </Table>
         )}
-      </CardContent>
+      </div>
 
       {/* Edit Dialog */}
       <Dialog open={isEditOpen} onOpenChange={setIsEditOpen}>
@@ -548,6 +544,6 @@ export function WebhooksTable({ webhooks: initialWebhooks }: WebhooksTableProps)
           </DialogFooter>
         </DialogContent>
       </Dialog>
-    </Card>
+    </>
   );
 }

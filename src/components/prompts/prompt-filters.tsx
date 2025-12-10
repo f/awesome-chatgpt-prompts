@@ -12,7 +12,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { X } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
+import { X, Sparkles } from "lucide-react";
 
 interface PromptFiltersProps {
   categories: Array<{
@@ -33,12 +34,14 @@ interface PromptFiltersProps {
     category?: string;
     tag?: string;
     sort?: string;
+    ai?: string;
   };
+  aiSearchEnabled?: boolean;
 }
 
 const promptTypes = ["TEXT", "STRUCTURED", "IMAGE", "VIDEO", "AUDIO"];
 
-export function PromptFilters({ categories, tags, currentFilters }: PromptFiltersProps) {
+export function PromptFilters({ categories, tags, currentFilters, aiSearchEnabled }: PromptFiltersProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const t = useTranslations();
@@ -89,6 +92,21 @@ export function PromptFilters({ categories, tags, currentFilters }: PromptFilter
           }}
         />
       </div>
+
+      {/* AI Search Toggle */}
+      {aiSearchEnabled && (
+        <div className="flex items-center justify-between py-1">
+          <Label className="text-xs flex items-center gap-1.5 cursor-pointer" htmlFor="ai-search">
+            <Sparkles className="h-3 w-3 text-primary" />
+            {t("search.aiSearch")}
+          </Label>
+          <Switch
+            id="ai-search"
+            checked={currentFilters.ai === "1"}
+            onCheckedChange={(checked) => updateFilter("ai", checked ? "1" : null)}
+          />
+        </div>
+      )}
 
       {/* Type filter */}
       <div className="space-y-1.5">

@@ -124,6 +124,9 @@ model Prompt {
   isPrivate        Boolean           @default(false)
   mediaUrl         String?           // For non-text prompts
   
+  // AI Search embedding (stored as JSON array of floats)
+  embedding        Json?             // OpenAI embedding vector for semantic search
+  
   // Media requirements (user needs to upload media to use this prompt)
   requiresMediaUpload  Boolean           @default(false)
   requiredMediaType    RequiredMediaType?

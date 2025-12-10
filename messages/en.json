@@ -130,6 +130,12 @@
     "titlePlaceholder": "Enter a title for your prompt",
     "descriptionPlaceholder": "Optional description of your prompt",
     "contentPlaceholder": "Enter your prompt content here...",
+    "insertVariable": "Insert Variable",
+    "variableName": "Variable Name",
+    "variableDefault": "Default Value (optional)",
+    "variableDefaultPlaceholder": "e.g., technology",
+    "variableHint": "Use $'{'name'}' or $'{'name:default'}' syntax",
+    "insert": "Insert",
     "selectCategory": "Select a category",
     "noCategory": "None",
     "mediaUrl": "Media URL",
@@ -247,7 +253,27 @@
       "categories": "Categories",
       "tags": "Tags",
       "webhooks": "Webhooks",
-      "import": "Import Community Prompts"
+      "prompts": "Prompts"
+    },
+    "prompts": {
+      "title": "Prompts Management",
+      "description": "Import prompts from prompts.csv and manage AI embeddings",
+      "import": "Import CSV",
+      "importSuccess": "{count} prompts imported",
+      "allSkipped": "All prompts already exist",
+      "importResult": "Imported: {imported}, Skipped: {skipped}",
+      "deleteSuccess": "{count} prompts deleted",
+      "importConfirmTitle": "Import Prompts?",
+      "importConfirmDescription": "This will import prompts from prompts.csv. Existing prompts will be skipped.",
+      "deleteConfirmTitle": "Delete Community Prompts?",
+      "deleteConfirmDescription": "This will permanently delete all imported prompts and unclaimed contributors.",
+      "cancel": "Cancel",
+      "confirm": "Import",
+      "delete": "Delete",
+      "generateEmbeddings": "Generate Embeddings",
+      "pending": "pending",
+      "embeddingsSuccess": "{count} embeddings generated",
+      "embeddingsResult": "Generated: {success}, Failed: {failed}"
     },
     "users": {
       "title": "User Management",
@@ -361,7 +387,7 @@
     "import": {
       "title": "Import Community Prompts",
       "description": "Import prompts from the Awesome ChatGPT Prompts' prompts.csv file",
-      "fileInfo": "Import from prompts.csv in project root",
+      "fileInfo": "Import from Awesome ChatGPT Prompts community prompts.csv",
       "csvFormat": "Format: act, prompt, for_devs, type",
       "importButton": "Import Community Prompts",
       "importing": "Importing...",
@@ -380,6 +406,15 @@
       "deleteConfirmTitle": "Delete Community Prompts?",
       "deleteConfirmDescription": "This will permanently delete all prompts imported from prompts.csv and unclaimed contributor users. This action cannot be undone.",
       "deleteSuccess": "{count} community prompts deleted"
+    },
+    "aiSearch": {
+      "title": "AI Search",
+      "description": "Generate embeddings for semantic search powered by OpenAI",
+      "promptsWithoutEmbeddings": "Prompts without embeddings",
+      "generateButton": "Generate Embeddings",
+      "generating": "Generating...",
+      "generateSuccess": "{count} embeddings generated",
+      "generateResult": "Generated: {success}, Failed: {failed}"
     }
   },
   "search": {
@@ -396,7 +431,8 @@
     "mostUpvoted": "Most Upvoted",
     "search": "Search",
     "clear": "Clear",
-    "found": "{count} found"
+    "found": "{count} found",
+    "aiSearch": "AI Search"
   },
   "user": {
     "profile": "Profile",

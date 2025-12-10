@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Loader2 } from "lucide-react";
+import { VariableToolbar } from "./variable-toolbar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -28,7 +29,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { CodeEditor } from "@/components/ui/code-editor";
+import { CodeEditor, type CodeEditorHandle } from "@/components/ui/code-editor";
 import { toast } from "sonner";
 import { prettifyJson } from "@/lib/format";
 
@@ -98,6 +99,36 @@ export function PromptForm({ categories, tags, initialData, promptId, mode = "cr
   const promptType = form.watch("type");
   const structuredFormat = form.watch("structuredFormat");
   const requiresMediaUpload = form.watch("requiresMediaUpload");
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const codeEditorRef = useRef<CodeEditorHandle>(null);
+
+  const insertVariable = (variable: string) => {
+    // For structured prompts using Monaco editor
+    if (promptType === "STRUCTURED" && codeEditorRef.current) {
+      codeEditorRef.current.insertAtCursor(variable);
+      return;
+    }
+    
+    // For text prompts using textarea
+    const textarea = textareaRef.current;
+    const currentContent = form.getValues("content");
+    
+    if (textarea) {
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const newContent = currentContent.slice(0, start) + variable + currentContent.slice(end);
+      form.setValue("content", newContent);
+      
+      // Set cursor position after inserted variable
+      setTimeout(() => {
+        textarea.focus();
+        textarea.setSelectionRange(start + variable.length, start + variable.length);
+      }, 0);
+    } else {
+      // Fallback: append to end
+      form.setValue("content", currentContent + variable);
+    }
+  };
 
   async function onSubmit(data: PromptFormValues) {
     setIsLoading(true);
@@ -185,23 +216,38 @@ export function PromptForm({ categories, tags, initialData, promptId, mode = "cr
               </FormLabel>
               <FormControl>
                 {promptType === "STRUCTURED" ? (
-                  <CodeEditor
-                    value={field.value}
-                    onChange={field.onChange}
-                    language={structuredFormat?.toLowerCase() as "json" | "yaml" || "json"}
-                    placeholder={
-                      structuredFormat === "JSON"
-                        ? '{\n  "name": "My Workflow",\n  "steps": []\n}'
-                        : 'name: My Workflow\nsteps:\n  - step: first\n    prompt: "..."'
-                    }
-                    minHeight="350px"
-                  />
+                  <div className="rounded-md border overflow-hidden">
+                    <VariableToolbar onInsert={insertVariable} />
+                    <CodeEditor
+                      ref={codeEditorRef}
+                      value={field.value}
+                      onChange={field.onChange}
+                      language={structuredFormat?.toLowerCase() as "json" | "yaml" || "json"}
+                      placeholder={
+                        structuredFormat === "JSON"
+                          ? '{\n  "name": "My Workflow",\n  "steps": []\n}'
+                          : 'name: My Workflow\nsteps:\n  - step: first\n    prompt: "..."'
+                      }
+                      minHeight="350px"
+                      className="border-0 rounded-none"
+                    />
+                  </div>
                 ) : (
-                  <Textarea
-                    placeholder={t("contentPlaceholder")}
-                    className="min-h-[200px] font-mono"
-                    {...field}
-                  />
+                  <div className="rounded-md border overflow-hidden">
+                    <VariableToolbar onInsert={insertVariable} />
+                    <Textarea
+                      ref={(el) => {
+                        textareaRef.current = el;
+                        if (typeof field.ref === 'function') field.ref(el);
+                      }}
+                      name={field.name}
+                      value={field.value}
+                      onChange={field.onChange}
+                      onBlur={field.onBlur}
+                      placeholder={t("contentPlaceholder")}
+                      className="min-h-[200px] font-mono border-0 rounded-none focus-visible:ring-0"
+                    />
+                  </div>
                 )}
               </FormControl>
               {promptType === "STRUCTURED" && (

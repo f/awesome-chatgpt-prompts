@@ -132,13 +132,20 @@ async function buildAuthConfig() {
           token.locale = (user as User).locale;
         }
         
-        // Refresh user data from database on update or if username is missing
-        if (trigger === "update" || !token.username) {
+        // Always verify user exists in database
+        if (token.id) {
           const dbUser = await db.user.findUnique({
             where: { id: token.id as string },
             select: { role: true, username: true, locale: true },
           });
-          if (dbUser) {
+          
+          // User no longer exists - invalidate token
+          if (!dbUser) {
+            return null;
+          }
+          
+          // Update token with latest user data
+          if (trigger === "update" || !token.username) {
             token.role = dbUser.role;
             token.username = dbUser.username;
             token.locale = dbUser.locale;
@@ -148,6 +155,10 @@ async function buildAuthConfig() {
         return token;
       },
       async session({ session, token }) {
+        // If token is null/invalid, return empty session
+        if (!token) {
+          return { ...session, user: undefined };
+        }
         if (token && session.user) {
           session.user.id = token.id as string;
           session.user.role = token.role as string;

@@ -53,5 +53,7 @@ export default defineConfig({
     categories: true,
     // Enable tags
     tags: true,
+    // Enable AI-powered semantic search (requires OPENAI_API_KEY)
+    aiSearch: true,
   },
 });

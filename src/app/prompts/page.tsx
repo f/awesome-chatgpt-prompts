@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { InfinitePromptList } from "@/components/prompts/infinite-prompt-list";
 import { PromptFilters } from "@/components/prompts/prompt-filters";
 import { db } from "@/lib/db";
+import { isAISearchEnabled, semanticSearch } from "@/lib/ai/embeddings";
 
 export const metadata: Metadata = {
   title: "Prompts",
@@ -20,6 +21,7 @@ interface PromptsPageProps {
     tag?: string;
     sort?: string;
     page?: string;
+    ai?: string;
   }>;
 }
 
@@ -29,90 +31,113 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
   const params = await searchParams;
   
   const perPage = 12;
-  
-  // Build where clause based on filters
-  const where: Record<string, unknown> = {
-    isPrivate: false,
-  };
-  
-  if (params.q) {
-    where.OR = [
-      { title: { contains: params.q, mode: "insensitive" } },
-      { content: { contains: params.q, mode: "insensitive" } },
-      { description: { contains: params.q, mode: "insensitive" } },
-    ];
+  const aiSearchAvailable = await isAISearchEnabled();
+  const useAISearch = aiSearchAvailable && params.ai === "1" && params.q;
+
+  let prompts: any[] = [];
+  let total = 0;
+
+  if (useAISearch && params.q) {
+    // Use AI semantic search
+    try {
+      const aiResults = await semanticSearch(params.q, perPage);
+      prompts = aiResults.map((p) => ({
+        ...p,
+        contributorCount: 0,
+      }));
+      total = aiResults.length;
+    } catch {
+      // Fallback to regular search on error
+    }
   }
   
-  if (params.type) {
-    where.type = params.type;
-  }
-  
-  if (params.category) {
-    where.categoryId = params.category;
-  }
-  
-  if (params.tag) {
-    where.tags = {
-      some: {
-        tag: {
-          slug: params.tag,
-        },
-      },
+  // Regular search if AI search not used or failed
+  if (!useAISearch || prompts.length === 0) {
+    // Build where clause based on filters
+    const where: Record<string, unknown> = {
+      isPrivate: false,
     };
-  }
-  
-  // Build order by clause
-  const isUpvoteSort = params.sort === "upvotes";
-  let orderBy: any = { createdAt: "desc" };
-  if (params.sort === "oldest") {
-    orderBy = { createdAt: "asc" };
-  } else if (isUpvoteSort) {
-    // Sort by vote count descending
-    orderBy = { votes: { _count: "desc" } };
-  }
+    
+    if (params.q) {
+      where.OR = [
+        { title: { contains: params.q, mode: "insensitive" } },
+        { content: { contains: params.q, mode: "insensitive" } },
+        { description: { contains: params.q, mode: "insensitive" } },
+      ];
+    }
+    
+    if (params.type) {
+      where.type = params.type;
+    }
+    
+    if (params.category) {
+      where.categoryId = params.category;
+    }
+    
+    if (params.tag) {
+      where.tags = {
+        some: {
+          tag: {
+            slug: params.tag,
+          },
+        },
+      };
+    }
+    
+    // Build order by clause
+    const isUpvoteSort = params.sort === "upvotes";
+    let orderBy: any = { createdAt: "desc" };
+    if (params.sort === "oldest") {
+      orderBy = { createdAt: "asc" };
+    } else if (isUpvoteSort) {
+      // Sort by vote count descending
+      orderBy = { votes: { _count: "desc" } };
+    }
 
-  // Fetch initial prompts (first page)
-  const [promptsRaw, total] = await Promise.all([
-    db.prompt.findMany({
-      where,
-      orderBy,
-      skip: 0,
-      take: perPage,
-      include: {
-        author: {
-          select: {
-            id: true,
-            name: true,
-            username: true,
-            avatar: true,
+    // Fetch initial prompts (first page)
+    const [promptsRaw, totalCount] = await Promise.all([
+      db.prompt.findMany({
+        where,
+        orderBy,
+        skip: 0,
+        take: perPage,
+        include: {
+          author: {
+            select: {
+              id: true,
+              name: true,
+              username: true,
+              avatar: true,
+            },
+          },
+          category: {
+            select: {
+              id: true,
+              name: true,
+              slug: true,
+            },
+          },
+          tags: {
+            include: {
+              tag: true,
+            },
+          },
+          _count: {
+            select: { votes: true, contributors: true },
           },
         },
-        category: {
-          select: {
-            id: true,
-            name: true,
-            slug: true,
-          },
-        },
-        tags: {
-          include: {
-            tag: true,
-          },
-        },
-        _count: {
-          select: { votes: true, contributors: true },
-        },
-      },
-    }),
-    db.prompt.count({ where }),
-  ]);
+      }),
+      db.prompt.count({ where }),
+    ]);
 
-  // Transform to include voteCount and contributorCount
-  const prompts = promptsRaw.map((p) => ({
-    ...p,
-    voteCount: p._count.votes,
-    contributorCount: p._count.contributors,
-  }));
+    // Transform to include voteCount and contributorCount
+    prompts = promptsRaw.map((p) => ({
+      ...p,
+      voteCount: p._count.votes,
+      contributorCount: p._count.contributors,
+    }));
+    total = totalCount;
+  }
 
   // Fetch categories for filter (with parent info for nesting)
   const categories = await db.category.findMany({
@@ -151,6 +176,7 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
             categories={categories}
             tags={tags}
             currentFilters={params}
+            aiSearchEnabled={aiSearchAvailable}
           />
         </aside>
         <main className="flex-1 min-w-0">

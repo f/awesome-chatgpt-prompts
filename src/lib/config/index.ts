@@ -37,6 +37,7 @@ export interface FeaturesConfig {
   changeRequests: boolean;
   categories: boolean;
   tags: boolean;
+  aiSearch?: boolean;
 }
 
 export interface PromptsConfig {
@@ -96,6 +97,7 @@ export async function getConfig(): Promise<PromptsConfig> {
         changeRequests: true,
         categories: true,
         tags: true,
+        aiSearch: false,
       },
     };
     return cachedConfig;

@@ -3,14 +3,16 @@ import { redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { Prisma } from "@prisma/client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Users, FolderTree, Tags, FileText, TrendingUp, Webhook, Upload } from "lucide-react";
+import { Users, FolderTree, Tags, FileText, Webhook } from "lucide-react";
 import { UsersTable } from "@/components/admin/users-table";
 import { CategoriesTable } from "@/components/admin/categories-table";
 import { TagsTable } from "@/components/admin/tags-table";
 import { WebhooksTable } from "@/components/admin/webhooks-table";
-import { ImportPrompts } from "@/components/admin/import-prompts";
+import { PromptsManagement } from "@/components/admin/prompts-management";
+import { isAISearchEnabled } from "@/lib/ai/embeddings";
 
 export const metadata: Metadata = {
   title: "Admin Dashboard",
@@ -26,13 +28,25 @@ export default async function AdminPage() {
     redirect("/");
   }
 
-  // Fetch stats
-  const [userCount, promptCount, categoryCount, tagCount] = await Promise.all([
+  // Fetch stats and AI search status
+  const [userCount, promptCount, categoryCount, tagCount, aiSearchEnabled] = await Promise.all([
     db.user.count(),
     db.prompt.count(),
     db.category.count(),
     db.tag.count(),
+    isAISearchEnabled(),
   ]);
+  
+  // Count prompts without embeddings (JSON null check requires separate query)
+  let promptsWithoutEmbeddings = 0;
+  if (aiSearchEnabled) {
+    promptsWithoutEmbeddings = await db.prompt.count({
+      where: {
+        isPrivate: false,
+        embedding: { equals: Prisma.DbNull },
+      },
+    });
+  }
 
   // Fetch data for tables
   const [users, categories, tags, webhooks] = await Promise.all([
@@ -151,9 +165,9 @@ export default async function AdminPage() {
             <Webhook className="h-4 w-4" />
             {t("tabs.webhooks")}
           </TabsTrigger>
-          <TabsTrigger value="import" className="gap-2">
-            <Upload className="h-4 w-4" />
-            {t("tabs.import")}
+          <TabsTrigger value="prompts" className="gap-2">
+            <FileText className="h-4 w-4" />
+            {t("tabs.prompts")}
           </TabsTrigger>
         </TabsList>
 
@@ -173,8 +187,11 @@ export default async function AdminPage() {
           <WebhooksTable webhooks={webhooks} />
         </TabsContent>
 
-        <TabsContent value="import">
-          <ImportPrompts />
+        <TabsContent value="prompts">
+          <PromptsManagement 
+            aiSearchEnabled={aiSearchEnabled} 
+            promptsWithoutEmbeddings={promptsWithoutEmbeddings} 
+          />
         </TabsContent>
       </Tabs>
     </div>

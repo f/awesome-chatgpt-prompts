@@ -130,6 +130,12 @@
     "titlePlaceholder": "Promptunuz için bir başlık girin",
     "descriptionPlaceholder": "İsteğe bağlı açıklama",
     "contentPlaceholder": "Prompt içeriğinizi buraya girin...",
+    "insertVariable": "Değişken Ekle",
+    "variableName": "Değişken Adı",
+    "variableDefault": "Varsayılan Değer (isteğe bağlı)",
+    "variableDefaultPlaceholder": "örn., teknoloji",
+    "variableHint": "$'{'ad'}' veya $'{'ad:varsayılan'}' sözdizimini kullanın",
+    "insert": "Ekle",
     "selectCategory": "Kategori seçin",
     "noCategory": "Yok",
     "mediaUrl": "Medya URL",
@@ -246,8 +252,28 @@
       "users": "Kullanıcılar",
       "categories": "Kategoriler",
       "tags": "Etiketler",
-      "webhooks": "Webhook'lar",
-      "import": "Topluluk Promptlarını İçe Aktar"
+      "webhooks": "Webhooklar",
+      "prompts": "Promptlar"
+    },
+    "prompts": {
+      "title": "Prompt Yönetimi",
+      "description": "prompts.csv'den prompt içe aktar ve AI gömme vektörlerini yönet",
+      "import": "CSV İçe Aktar",
+      "importSuccess": "{count} prompt içe aktarıldı",
+      "allSkipped": "Tüm promptlar zaten mevcut",
+      "importResult": "İçe aktarılan: {imported}, Atlanan: {skipped}",
+      "deleteSuccess": "{count} prompt silindi",
+      "importConfirmTitle": "Promptlar İçe Aktarılsın mı?",
+      "importConfirmDescription": "Bu işlem prompts.csv'den promptları içe aktaracak. Mevcut promptlar atlanacak.",
+      "deleteConfirmTitle": "Topluluk Promptları Silinsin mi?",
+      "deleteConfirmDescription": "Bu işlem tüm içe aktarılan promptları ve sahipsiz katkıda bulunanları kalıcı olarak silecek.",
+      "cancel": "İptal",
+      "confirm": "İçe Aktar",
+      "delete": "Sil",
+      "generateEmbeddings": "Gömme Vektörü Oluştur",
+      "pending": "bekliyor",
+      "embeddingsSuccess": "{count} gömme vektörü oluşturuldu",
+      "embeddingsResult": "Oluşturulan: {success}, Başarısız: {failed}"
     },
     "users": {
       "title": "Kullanıcı Yönetimi",
@@ -361,7 +387,7 @@
     "import": {
       "title": "Topluluk Promptlarını İçe Aktar",
       "description": "Awesome ChatGPT Prompts'un prompts.csv dosyasından promptları içe aktar",
-      "fileInfo": "Proje kök dizinindeki prompts.csv dosyasından içe aktar",
+      "fileInfo": "Awesome ChatGPT Prompts topluluk prompts.csv dosyasından içe aktar",
       "csvFormat": "Format: act, prompt, for_devs, type",
       "importButton": "Topluluk Promptlarını İçe Aktar",
       "importing": "İçe aktarılıyor...",
@@ -380,6 +406,15 @@
       "deleteConfirmTitle": "Topluluk Promptları Silinsin mi?",
       "deleteConfirmDescription": "Bu işlem prompts.csv'den içe aktarılan tüm promptları ve sahipsiz katkıda bulunan kullanıcıları kalıcı olarak silecek. Bu işlem geri alınamaz.",
       "deleteSuccess": "{count} topluluk promptu silindi"
+    },
+    "aiSearch": {
+      "title": "AI Arama",
+      "description": "OpenAI destekli semantik arama için gömme vektörleri oluştur",
+      "promptsWithoutEmbeddings": "Gömme vektörü olmayan promptlar",
+      "generateButton": "Gömme Vektörlerini Oluştur",
+      "generating": "Oluşturuluyor...",
+      "generateSuccess": "{count} gömme vektörü oluşturuldu",
+      "generateResult": "Oluşturulan: {success}, Başarısız: {failed}"
     }
   },
   "search": {
@@ -396,7 +431,8 @@
     "mostUpvoted": "En Çok Beğenilen",
     "search": "Ara",
     "clear": "Temizle",
-    "found": "{count} bulundu"
+    "found": "{count} bulundu",
+    "aiSearch": "AI ile Ara"
   },
   "user": {
     "profile": "Profil",
