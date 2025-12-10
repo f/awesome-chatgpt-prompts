@@ -45,6 +45,7 @@
   "auth": {
     "login": "Giriş Yap",
     "loginDescription": "Devam etmek için bilgilerinizi girin",
+    "loginDescriptionOAuth": "Devam etmek için hesabınızla giriş yapın",
     "register": "Kayıt Ol",
     "registerDescription": "Başlamak için bir hesap oluşturun",
     "logout": "Çıkış Yap",

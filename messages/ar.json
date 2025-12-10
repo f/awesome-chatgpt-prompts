@@ -45,6 +45,7 @@
   "auth": {
     "login": "تسجيل الدخول",
     "loginDescription": "أدخل بياناتك للمتابعة",
+    "loginDescriptionOAuth": "سجل الدخول بحسابك للمتابعة",
     "register": "إنشاء حساب",
     "registerDescription": "أنشئ حساباً للبدء",
     "logout": "تسجيل الخروج",

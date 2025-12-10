@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { z } from "zod";
 import { db } from "@/lib/db";
+import { getConfig } from "@/lib/config";
 
 const registerSchema = z.object({
   name: z.string().min(2),
@@ -12,6 +13,15 @@ const registerSchema = z.object({
 
 export async function POST(request: Request) {
   try {
+    // Check if registration is allowed
+    const config = await getConfig();
+    if (!config.auth.allowRegistration) {
+      return NextResponse.json(
+        { error: "registration_disabled", message: "Registration is disabled" },
+        { status: 403 }
+      );
+    }
+
     const body = await request.json();
     const parsed = registerSchema.safeParse(body);
 

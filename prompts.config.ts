@@ -25,10 +25,10 @@ export default defineConfig({
 
   // Authentication plugin
   auth: {
-    // Available: "credentials" | "google" | "azure" | custom
-    provider: "credentials",
+    // Available: "credentials" | "google" | "azure" | "github" | custom
+    provider: "github",
     // Allow public registration
-    allowRegistration: true,
+    allowRegistration: false,
   },
 
   // Storage plugin for media uploads

@@ -30,7 +30,7 @@ export async function getConfiguredAuthPlugin() {
   if (!plugin) {
     throw new Error(
       `Auth plugin "${config.auth.provider}" not found. ` +
-      `Available plugins: credentials, google, azure`
+      `Available plugins: credentials, google, azure, github`
     );
   }
   

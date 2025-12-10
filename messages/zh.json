@@ -45,6 +45,7 @@
   "auth": {
     "login": "登录",
     "loginDescription": "输入您的凭据以继续",
+    "loginDescriptionOAuth": "使用您的账户登录以继续",
     "register": "注册",
     "registerDescription": "创建账户以开始使用",
     "logout": "退出登录",

@@ -45,6 +45,7 @@
   "auth": {
     "login": "Login",
     "loginDescription": "Enter your credentials to continue",
+    "loginDescriptionOAuth": "Sign in with your account to continue",
     "register": "Register",
     "registerDescription": "Create an account to get started",
     "logout": "Logout",

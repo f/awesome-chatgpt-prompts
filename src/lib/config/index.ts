@@ -19,7 +19,7 @@ export interface ThemeConfig {
 }
 
 export interface AuthConfig {
-  provider: "credentials" | "google" | "azure" | string;
+  provider: "credentials" | "google" | "azure" | "github" | string;
   allowRegistration: boolean;
 }
 

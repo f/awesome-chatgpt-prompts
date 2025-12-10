@@ -45,6 +45,7 @@
   "auth": {
     "login": "Iniciar sesión",
     "loginDescription": "Ingresa tus credenciales para continuar",
+    "loginDescriptionOAuth": "Inicia sesión con tu cuenta para continuar",
     "register": "Registrarse",
     "registerDescription": "Crea una cuenta para comenzar",
     "logout": "Cerrar sesión",

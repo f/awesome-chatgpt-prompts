@@ -89,7 +89,7 @@ export default async function RootLayout({
       <body className={`${fontClasses} antialiased`}>
         <Providers locale={locale} messages={messages} theme={config.theme} branding={config.branding}>
           <div className="relative min-h-screen flex flex-col">
-            <Header />
+            <Header showRegister={config.auth.provider === "credentials" && config.auth.allowRegistration} />
             <main className="flex-1">{children}</main>
             <Footer />
           </div>

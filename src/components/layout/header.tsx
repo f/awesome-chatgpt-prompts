@@ -42,7 +42,11 @@ const languages = [
   { code: "ar", name: "العربية" },
 ];
 
-export function Header() {
+interface HeaderProps {
+  showRegister?: boolean;
+}
+
+export function Header({ showRegister = true }: HeaderProps) {
   const { data: session } = useSession();
   const t = useTranslations();
   const { theme, setTheme } = useTheme();
@@ -230,9 +234,11 @@ export function Header() {
               <Button variant="ghost" size="sm" className="h-8 text-xs" asChild>
                 <Link href="/login">{t("nav.login")}</Link>
               </Button>
-              <Button size="sm" className="h-8 text-xs" asChild>
-                <Link href="/register">{t("nav.register")}</Link>
-              </Button>
+              {showRegister && (
+                <Button size="sm" className="h-8 text-xs" asChild>
+                  <Link href="/register">{t("nav.register")}</Link>
+                </Button>
+              )}
             </div>
           )}
         </div>
