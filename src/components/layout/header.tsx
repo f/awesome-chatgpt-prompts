@@ -36,9 +36,9 @@ import { useBranding } from "@/components/providers/branding-provider";
 
 const languages = [
   { code: "en", name: "English" },
-  { code: "tr", name: "Türkçe" },
   { code: "es", name: "Español" },
   { code: "zh", name: "中文" },
+  { code: "tr", name: "Türkçe" },
   { code: "ja", name: "日本語" },
   { code: "ar", name: "العربية" },
 ];

@@ -22,6 +22,12 @@ const notoSansArabic = Noto_Sans_Arabic({
 export const metadata: Metadata = {
   title: "prompts.chat",
   description: "Collect, organize, and share AI prompts",
+  icons: {
+    icon: [
+      { url: "/logo.svg", media: "(prefers-color-scheme: light)" },
+      { url: "/logo-dark.svg", media: "(prefers-color-scheme: dark)" },
+    ],
+  },
 };
 
 const radiusValues = {

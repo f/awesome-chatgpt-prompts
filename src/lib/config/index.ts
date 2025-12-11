@@ -71,6 +71,7 @@ export async function getConfig(): Promise<PromptsConfig> {
       branding: {
         name: "prompts.chat",
         logo: "/logo.svg",
+        logoDark: "/logo-dark.svg",
         favicon: "/favicon.ico",
         description: "Collect, organize, and share AI prompts",
       },
