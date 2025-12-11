@@ -17,7 +17,7 @@ export default defineConfig({
     // UI style: "flat" | "default" | "brutal"
     variant: "default",
     // Spacing density: "compact" | "default" | "comfortable"
-    density: "compact",
+    density: "default",
     // Colors (hex or oklch)
     colors: {
       primary: "#6366f1", // Indigo

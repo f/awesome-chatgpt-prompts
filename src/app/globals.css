@@ -209,14 +209,14 @@
 /* Default density */
 .density-default {
   --spacing-unit: 1rem;
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 1.5;
 }
 
 /* Comfortable density - larger spacing and elements */
 .density-comfortable {
   --spacing-unit: 1.25rem;
-  font-size: 1rem;
+  font-size: 1.125rem;
   line-height: 1.75;
 }
 
