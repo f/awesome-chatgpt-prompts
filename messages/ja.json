@@ -32,6 +32,7 @@
   },
   "nav": {
     "home": "ホーム",
+    "promptmasters": "Promptmasters",
     "prompts": "プロンプト",
     "categories": "カテゴリー",
     "tags": "タグ",
@@ -438,6 +439,17 @@
     "title": "通知",
     "pendingChangeRequests": "保留中の変更リクエスト",
     "noNotifications": "通知はありません"
+  },
+  "promptmasters": {
+    "title": "Promptmasters",
+    "description": "プロンプトで獲得した投票数でランクされたトップ貢献者",
+    "allTime": "全期間",
+    "thisMonth": "今月",
+    "thisWeek": "今週",
+    "topContributors": "トップ貢献者",
+    "prompts": "プロンプト",
+    "upvotes": "票",
+    "noData": "データがまだありません"
   },
   "errors": {
     "notFound": "ページが見つかりません",

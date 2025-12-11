@@ -32,6 +32,7 @@
   },
   "nav": {
     "home": "Ana Sayfa",
+    "promptmasters": "Promptmasters",
     "prompts": "Promptlar",
     "categories": "Kategoriler",
     "tags": "Etiketler",
@@ -543,6 +544,17 @@
     "title": "Bildirimler",
     "pendingChangeRequests": "Bekleyen değişiklik istekleri",
     "noNotifications": "Bildirim yok"
+  },
+  "promptmasters": {
+    "title": "Promptmasters",
+    "description": "Promptlarına aldıkları oylarla sıralanan en iyi katkıda bulunanlar",
+    "allTime": "Tüm Zamanlar",
+    "thisMonth": "Bu Ay",
+    "thisWeek": "Bu Hafta",
+    "topContributors": "En İyi Katkıda Bulunanlar",
+    "prompts": "prompt",
+    "upvotes": "oy",
+    "noData": "Henüz veri yok"
   },
   "errors": {
     "notFound": "Sayfa bulunamadı",

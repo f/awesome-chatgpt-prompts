@@ -32,6 +32,7 @@
   },
   "nav": {
     "home": "الرئيسية",
+    "promptmasters": "Promptmasters",
     "prompts": "الأوامر",
     "categories": "التصنيفات",
     "tags": "الوسوم",
@@ -444,6 +445,17 @@
     "title": "الإشعارات",
     "pendingChangeRequests": "طلبات التغيير المعلقة",
     "noNotifications": "لا توجد إشعارات"
+  },
+  "promptmasters": {
+    "title": "Promptmasters",
+    "description": "أفضل المساهمين مرتبين حسب التصويتات المستلمة على أوامرهم",
+    "allTime": "كل الأوقات",
+    "thisMonth": "هذا الشهر",
+    "thisWeek": "هذا الأسبوع",
+    "topContributors": "أفضل المساهمين",
+    "prompts": "أوامر",
+    "upvotes": "أصوات",
+    "noData": "لا توجد بيانات بعد"
   },
   "errors": {
     "notFound": "الصفحة غير موجودة",

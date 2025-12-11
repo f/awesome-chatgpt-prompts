@@ -32,6 +32,7 @@
   },
   "nav": {
     "home": "Home",
+    "promptmasters": "Promptmasters",
     "prompts": "Prompts",
     "categories": "Categories",
     "tags": "Tags",
@@ -543,6 +544,17 @@
     "title": "Notifications",
     "pendingChangeRequests": "Pending change requests",
     "noNotifications": "No notifications"
+  },
+  "promptmasters": {
+    "title": "Promptmasters",
+    "description": "Top contributors ranked by upvotes received on their prompts",
+    "allTime": "All Time",
+    "thisMonth": "This Month",
+    "thisWeek": "This Week",
+    "topContributors": "Top Contributors",
+    "prompts": "prompts",
+    "upvotes": "upvotes",
+    "noData": "No data available yet"
   },
   "errors": {
     "notFound": "Page not found",

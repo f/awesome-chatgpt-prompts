@@ -32,6 +32,7 @@
   },
   "nav": {
     "home": "首页",
+    "promptmasters": "Promptmasters",
     "prompts": "提示词",
     "categories": "分类",
     "tags": "标签",
@@ -438,6 +439,17 @@
     "title": "通知",
     "pendingChangeRequests": "待处理的变更请求",
     "noNotifications": "暂无通知"
+  },
+  "promptmasters": {
+    "title": "Promptmasters",
+    "description": "根据提示词获得的赞数排名的顶级贡献者",
+    "allTime": "全部时间",
+    "thisMonth": "本月",
+    "thisWeek": "本周",
+    "topContributors": "顶级贡献者",
+    "prompts": "提示词",
+    "upvotes": "赞",
+    "noData": "暂无数据"
   },
   "errors": {
     "notFound": "页面未找到",

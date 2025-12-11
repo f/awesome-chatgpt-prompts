@@ -32,6 +32,7 @@
   },
   "nav": {
     "home": "Inicio",
+    "promptmasters": "Promptmasters",
     "prompts": "Prompts",
     "categories": "Categorías",
     "tags": "Etiquetas",
@@ -461,6 +462,17 @@
     "title": "Notificaciones",
     "pendingChangeRequests": "Solicitudes de cambio pendientes",
     "noNotifications": "Sin notificaciones"
+  },
+  "promptmasters": {
+    "title": "Promptmasters",
+    "description": "Los mejores contribuidores clasificados por votos recibidos en sus prompts",
+    "allTime": "Todos los Tiempos",
+    "thisMonth": "Este Mes",
+    "thisWeek": "Esta Semana",
+    "topContributors": "Mejores Contribuidores",
+    "prompts": "prompts",
+    "upvotes": "votos",
+    "noData": "Aún no hay datos disponibles"
   },
   "errors": {
     "notFound": "Página no encontrada",
