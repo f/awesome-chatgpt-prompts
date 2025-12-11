@@ -155,9 +155,9 @@ export default async function PromptPage({ params }: PromptPageProps) {
   return (
     <div className="container max-w-4xl py-8">
       {/* Header */}
-      <div className="flex items-start justify-between gap-4 mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
         <div className="space-y-1 min-w-0">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             <h1 className="text-3xl font-bold">{prompt.title}</h1>
             {prompt.isPrivate && (
               <Badge variant="secondary">{t("promptPrivate")}</Badge>
@@ -167,7 +167,7 @@ export default async function PromptPage({ params }: PromptPageProps) {
             <p className="text-muted-foreground">{prompt.description}</p>
           )}
         </div>
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 w-full sm:w-auto sm:shrink-0">
           <div className="flex items-center gap-3 text-sm text-muted-foreground">
             <div className="flex items-center gap-1.5">
               <History className="h-4 w-4" />
@@ -180,24 +180,44 @@ export default async function PromptPage({ params }: PromptPageProps) {
               </div>
             )}
           </div>
-          <UpvoteButton
-            promptId={prompt.id}
-            initialVoted={hasVoted}
-            initialCount={voteCount}
-            isLoggedIn={!!session?.user}
-            showLabel
-          />
-          <ShareDropdown title={prompt.title} />
-          {isOwner && (
-            <Button variant="outline" asChild>
-              <Link href={`/prompts/${id}/edit`}>
-                <Edit className="h-4 w-4 mr-2" />
-                {t("edit")}
-              </Link>
-            </Button>
-          )}
+          <div className="flex items-center gap-2 sm:hidden">
+            <UpvoteButton
+              promptId={prompt.id}
+              initialVoted={hasVoted}
+              initialCount={voteCount}
+              isLoggedIn={!!session?.user}
+              showLabel
+            />
+            <ShareDropdown title={prompt.title} />
+            {isOwner && (
+              <Button variant="outline" size="icon" asChild>
+                <Link href={`/prompts/${id}/edit`}>
+                  <Edit className="h-4 w-4" />
+                </Link>
+              </Button>
+            )}
+          </div>
+          <div className="hidden sm:flex items-center gap-2">
+            <UpvoteButton
+              promptId={prompt.id}
+              initialVoted={hasVoted}
+              initialCount={voteCount}
+              isLoggedIn={!!session?.user}
+              showLabel
+            />
+            <ShareDropdown title={prompt.title} />
+            {isOwner && (
+              <Button variant="outline" asChild>
+                <Link href={`/prompts/${id}/edit`}>
+                  <Edit className="h-4 w-4 mr-2" />
+                  {t("edit")}
+                </Link>
+              </Button>
+            )}
+          </div>
         </div>
       </div>
+      <div className="border-b mb-6 sm:hidden" />
 
       {/* Meta info */}
       <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-6">
