@@ -61,7 +61,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     : null;
 
   // Fetch prompts in this category
-  const prompts = await db.prompt.findMany({
+  const promptsRaw = await db.prompt.findMany({
     where: {
       categoryId: category.id,
       isPrivate: false,
@@ -89,8 +89,17 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           tag: true,
         },
       },
+      _count: {
+        select: { votes: true, contributors: true },
+      },
     },
   });
+
+  const prompts = promptsRaw.map((p) => ({
+    ...p,
+    voteCount: p._count.votes,
+    contributorCount: p._count.contributors,
+  }));
 
   return (
     <div className="container py-6">

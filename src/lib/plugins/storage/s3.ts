@@ -20,6 +20,7 @@ import type { StoragePlugin, UploadResult, UploadOptions } from "../types";
 async function getS3Client() {
   try {
     // Use webpackIgnore to prevent bundling this optional dependency
+    // @ts-expect-error - optional dependency, installed at runtime
     const module = await import(/* webpackIgnore: true */ "@aws-sdk/client-s3");
     return module;
   } catch {

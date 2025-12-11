@@ -154,7 +154,7 @@ async function buildAuthConfig() {
         
         return token;
       },
-      async session({ session, token }) {
+      async session({ session, token }: { session: any; token: any }) {
         // If token is null/invalid, return empty session
         if (!token) {
           return { ...session, user: undefined };
@@ -191,7 +191,7 @@ declare module "next-auth" {
   }
 }
 
-declare module "next-auth/jwt" {
+declare module "@auth/core/jwt" {
   interface JWT {
     id: string;
     role: string;

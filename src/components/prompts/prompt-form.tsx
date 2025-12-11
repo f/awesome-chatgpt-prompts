@@ -86,7 +86,7 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
 
   const promptSchema = createPromptSchema(t);
   const form = useForm<PromptFormValues>({
-    resolver: zodResolver(promptSchema),
+    resolver: zodResolver(promptSchema) as never,
     defaultValues: {
       title: initialData?.title || "",
       description: initialData?.description || "",

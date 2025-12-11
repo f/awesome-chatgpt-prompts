@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { Prisma } from "@prisma/client";
 
 const VALID_METHODS = ["GET", "POST", "PUT", "PATCH"];
 const VALID_EVENTS = ["PROMPT_CREATED", "PROMPT_UPDATED", "PROMPT_DELETED"];
@@ -129,9 +130,16 @@ export async function PATCH(
       );
     }
 
+    // Build update data with proper Prisma types
+    const updateData: Record<string, unknown> = { ...validation.data };
+    
+    if (validation.data.headers === null) {
+      updateData.headers = Prisma.JsonNull;
+    }
+
     const webhook = await db.webhookConfig.update({
       where: { id },
-      data: validation.data,
+      data: updateData as Prisma.WebhookConfigUpdateInput,
     });
 
     return NextResponse.json(webhook);
