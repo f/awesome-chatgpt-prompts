@@ -523,7 +523,16 @@
     "freeAndOpen": "Ücretsiz ve açık kaynak.",
     "createAccount": "Hesap Oluştur",
     "featuredPrompts": "Öne Çıkan Promptlar",
-    "latestPrompts": "En Son Promptlar"
+    "latestPrompts": "En Son Promptlar",
+    "achievements": {
+      "featuredIn": "Yayınlandı:",
+      "forbes": "Forbes",
+      "mostLikedDataset": "Hugging Face'de #1 En Beğenilen Veri Seti",
+      "githubStars": "GitHub Yıldızı",
+      "mostStarredRepo": "Dünyada #33 En Çok Yıldızlanan Repo",
+      "usedByThousands": "Her Gün Binlerce Aktif Kullanıcı",
+      "sponsoredBy": "Sponsor"
+    }
   },
   "notifications": {
     "title": "Bildirimler",

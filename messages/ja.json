@@ -418,7 +418,16 @@
     "freeAndOpen": "無料でオープンソース。",
     "createAccount": "アカウントを作成",
     "featuredPrompts": "注目のプロンプト",
-    "latestPrompts": "最新のプロンプト"
+    "latestPrompts": "最新のプロンプト",
+    "achievements": {
+      "featuredIn": "掲載:",
+      "forbes": "Forbes",
+      "mostLikedDataset": "Hugging Faceで#1最も人気のデータセット",
+      "githubStars": "GitHubスター",
+      "mostStarredRepo": "世界で#33最もスターされたリポジトリ",
+      "usedByThousands": "毎日何千人もが利用",
+      "sponsoredBy": "スポンサー"
+    }
   },
   "notifications": {
     "title": "通知",

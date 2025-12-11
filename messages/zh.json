@@ -418,7 +418,16 @@
     "freeAndOpen": "免费且开源。",
     "createAccount": "创建账户",
     "featuredPrompts": "精选提示词",
-    "latestPrompts": "最新提示词"
+    "latestPrompts": "最新提示词",
+    "achievements": {
+      "featuredIn": "刊登于",
+      "forbes": "Forbes",
+      "mostLikedDataset": "Hugging Face 上最受欢迎的数据集 #1",
+      "githubStars": "GitHub 星标",
+      "mostStarredRepo": "全球第 #33 最受欢迎的仓库",
+      "usedByThousands": "每天被数千人使用",
+      "sponsoredBy": "赞助商"
+    }
   },
   "notifications": {
     "title": "通知",

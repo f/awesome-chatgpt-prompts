@@ -523,7 +523,16 @@
     "freeAndOpen": "Free and open source.",
     "createAccount": "Create Account",
     "featuredPrompts": "Featured Prompts",
-    "latestPrompts": "Latest Prompts"
+    "latestPrompts": "Latest Prompts",
+    "achievements": {
+      "featuredIn": "Featured in",
+      "forbes": "Forbes",
+      "mostLikedDataset": "#1 Most Liked Dataset on Hugging Face",
+      "githubStars": "GitHub Stars",
+      "mostStarredRepo": "#33 Most Starred Repo in the World",
+      "usedByThousands": "Used by Thousands Daily",
+      "sponsoredBy": "Sponsored by"
+    }
   },
   "notifications": {
     "title": "Notifications",

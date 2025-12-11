@@ -57,4 +57,19 @@ export default defineConfig({
     // Enable AI-powered semantic search (requires OPENAI_API_KEY)
     aiSearch: false,
   },
+
+  // Homepage customization
+  homepage: {
+    achievements: {
+      enabled: true,
+    },
+    sponsors: {
+      enabled: true,
+      items: [
+        // Add sponsors here
+        { name: "Clemta", logo: "https://clemta.com/wp-content/uploads/2023/03/logo-clemta-com-1.png.webp", url: "https://clemta.com" },
+        { name: "MCPTools", logo: "https://github.com/f/mcptools/raw/master/.github/resources/logo.png", url: "https://github.com/f/mcptools" },
+      ],
+    },
+  },
 });

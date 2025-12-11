@@ -41,6 +41,22 @@ export interface FeaturesConfig {
   aiSearch?: boolean;
 }
 
+export interface Sponsor {
+  name: string;
+  logo: string;
+  url: string;
+}
+
+export interface HomepageConfig {
+  achievements?: {
+    enabled: boolean;
+  };
+  sponsors?: {
+    enabled: boolean;
+    items: Sponsor[];
+  };
+}
+
 export interface PromptsConfig {
   branding: BrandingConfig;
   theme: ThemeConfig;
@@ -48,6 +64,7 @@ export interface PromptsConfig {
   storage: StorageConfig;
   i18n: I18nConfig;
   features: FeaturesConfig;
+  homepage?: HomepageConfig;
 }
 
 export function defineConfig(config: PromptsConfig): PromptsConfig {

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { ArrowRight, Bell, FolderOpen, Sparkles } from "lucide-react";
+import { ArrowRight, Bell, FolderOpen, Sparkles, Star, Heart, Trophy, Users } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { getConfig } from "@/lib/config";
@@ -20,6 +20,22 @@ export default async function HomePage() {
   const isOAuth = config.auth.provider !== "credentials";
   // Show register button for OAuth (with login text) or credentials with registration enabled
   const showRegisterButton = isOAuth || (config.auth.provider === "credentials" && config.auth.allowRegistration);
+
+  // Fetch GitHub stars dynamically (with caching)
+  let githubStars = 139000; // fallback
+  if (config.homepage?.achievements?.enabled !== false) {
+    try {
+      const res = await fetch("https://api.github.com/repos/f/awesome-chatgpt-prompts", {
+        next: { revalidate: 3600 }, // Cache for 1 hour
+      });
+      if (res.ok) {
+        const data = await res.json();
+        githubStars = data.stargazers_count;
+      }
+    } catch {
+      // Use fallback
+    }
+  }
 
   // For logged-in users, show subscribed categories feed
   if (session?.user) {
@@ -216,6 +232,84 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Achievements Section */}
+      {config.homepage?.achievements?.enabled !== false && (
+        <section className="py-8 border-b bg-muted/30">
+          <div className="container">
+            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12 text-sm">
+              <Link 
+                href="https://www.forbes.com/sites/tjmccue/2023/01/19/chatgpt-success-completely-depends-on-your-prompt/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Trophy className="h-4 w-4 text-amber-500" />
+                <span>{tHomepage("achievements.featuredIn")} <strong>{tHomepage("achievements.forbes")}</strong></span>
+              </Link>
+              <Link 
+                href="https://huggingface.co/datasets/fka/awesome-chatgpt-prompts" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Heart className="h-4 w-4 text-red-500" />
+                <span>{tHomepage("achievements.mostLikedDataset")}</span>
+              </Link>
+              <Link 
+                href="https://github.com/f/awesome-chatgpt-prompts" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Star className="h-4 w-4 text-yellow-500" />
+                <span><strong>{(githubStars / 1000).toFixed(0)}k</strong> {tHomepage("achievements.githubStars")}</span>
+              </Link>
+              <Link 
+                href="https://github.com/f/awesome-chatgpt-prompts" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Trophy className="h-4 w-4 text-purple-500" />
+                <span>{tHomepage("achievements.mostStarredRepo")}</span>
+              </Link>
+              <span className="flex items-center gap-2 text-muted-foreground">
+                <Users className="h-4 w-4 text-green-500" />
+                <span>{tHomepage("achievements.usedByThousands")}</span>
+              </span>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Sponsors Section */}
+      {config.homepage?.sponsors?.enabled && config.homepage.sponsors.items.length > 0 && (
+        <section className="py-8 border-b">
+          <div className="container">
+            <p className="text-center text-xs text-muted-foreground mb-4">{tHomepage("achievements.sponsoredBy")}</p>
+            <div className="flex flex-wrap items-center justify-center gap-8">
+              {config.homepage.sponsors.items.map((sponsor) => (
+                <Link
+                  key={sponsor.name}
+                  href={sponsor.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="opacity-60 hover:opacity-100 transition-opacity"
+                >
+                  <Image
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    width={120}
+                    height={40}
+                    className="h-8 w-auto"
+                  />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Featured & Latest Prompts Section */}
       <DiscoveryPrompts isHomepage />

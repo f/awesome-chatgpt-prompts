@@ -441,7 +441,16 @@
     "freeAndOpen": "Gratis y de código abierto.",
     "createAccount": "Crear Cuenta",
     "featuredPrompts": "Prompts Destacados",
-    "latestPrompts": "Últimos Prompts"
+    "latestPrompts": "Últimos Prompts",
+    "achievements": {
+      "featuredIn": "Destacado en",
+      "forbes": "Forbes",
+      "mostLikedDataset": "#1 Dataset Más Gustado en Hugging Face",
+      "githubStars": "Estrellas en GitHub",
+      "mostStarredRepo": "#33 Repo Más Destacado del Mundo",
+      "usedByThousands": "Usado por Miles Diariamente",
+      "sponsoredBy": "Patrocinado por"
+    }
   },
   "notifications": {
     "title": "Notificaciones",
