@@ -93,6 +93,9 @@
     "noUsersFound": "لم يتم العثور على مستخدمين",
     "promptPrivate": "خاص",
     "promptPublic": "عام",
+    "feature": "تمييز",
+    "featured": "مميز",
+    "adminArea": "منطقة المسؤول",
     "types": {
       "text": "نص",
       "image": "صورة",
@@ -411,7 +414,9 @@
     "browsePrompts": "تصفح الأوامر",
     "readyToStart": "مستعد للبدء؟",
     "freeAndOpen": "مجاني ومفتوح المصدر.",
-    "createAccount": "إنشاء حساب"
+    "createAccount": "إنشاء حساب",
+    "featuredPrompts": "الأوامر المميزة",
+    "latestPrompts": "أحدث الأوامر"
   },
   "notifications": {
     "title": "الإشعارات",

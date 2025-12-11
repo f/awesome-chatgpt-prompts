@@ -18,6 +18,7 @@ import { AddVersionForm } from "@/components/prompts/add-version-form";
 import { DeleteVersionButton } from "@/components/prompts/delete-version-button";
 import { VersionCompareModal } from "@/components/prompts/version-compare-modal";
 import { VersionCompareButton } from "@/components/prompts/version-compare-button";
+import { FeaturePromptButton } from "@/components/prompts/feature-prompt-button";
 
 interface PromptPageProps {
   params: Promise<{ id: string }>;
@@ -187,10 +188,9 @@ export default async function PromptPage({ params }: PromptPageProps) {
             showLabel
           />
           <ShareDropdown title={prompt.title} />
-          {canEdit && (
+          {isOwner && (
             <Button variant="outline" asChild>
               <Link href={`/prompts/${id}/edit`}>
-                {isAdmin && !isOwner && <Shield className="h-4 w-4 mr-1 text-amber-500" />}
                 <Edit className="h-4 w-4 mr-2" />
                 {t("edit")}
               </Link>
@@ -509,6 +509,28 @@ export default async function PromptPage({ params }: PromptPageProps) {
           </TabsContent>
         )}
       </Tabs>
+
+      {/* Admin Area */}
+      {isAdmin && (
+        <div className="mt-8 p-4 rounded-lg border border-red-500/30 bg-red-500/5">
+          <div className="flex items-center gap-2 mb-3">
+            <Shield className="h-4 w-4 text-red-500" />
+            <h3 className="text-sm font-semibold text-red-500">{t("adminArea")}</h3>
+          </div>
+          <div className="flex items-center gap-3">
+            <FeaturePromptButton
+              promptId={prompt.id}
+              isFeatured={prompt.isFeatured}
+            />
+            <Button variant="outline" size="sm" asChild>
+              <Link href={`/prompts/${id}/edit`}>
+                <Edit className="h-4 w-4 mr-2" />
+                {t("edit")}
+              </Link>
+            </Button>
+          </div>
+        </div>
+      )}
 
     </div>
   );

@@ -91,6 +91,9 @@
     "noUsersFound": "ユーザーが見つかりません",
     "promptPrivate": "非公開",
     "promptPublic": "公開",
+    "feature": "注目に設定",
+    "featured": "注目",
+    "adminArea": "管理者エリア",
     "types": {
       "text": "テキスト",
       "image": "画像",
@@ -405,7 +408,9 @@
     "browsePrompts": "プロンプトを見る",
     "readyToStart": "始める準備はできましたか？",
     "freeAndOpen": "無料でオープンソース。",
-    "createAccount": "アカウントを作成"
+    "createAccount": "アカウントを作成",
+    "featuredPrompts": "注目のプロンプト",
+    "latestPrompts": "最新のプロンプト"
   },
   "notifications": {
     "title": "通知",

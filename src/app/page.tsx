@@ -1,11 +1,13 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { ArrowRight, Bell, FolderOpen } from "lucide-react";
+import { ArrowRight, Bell, Clock, FolderOpen, Star } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { PromptList } from "@/components/prompts/prompt-list";
+import { PromptCard } from "@/components/prompts/prompt-card";
 
 export default async function HomePage() {
   const t = await getTranslations("feed");
@@ -149,42 +151,179 @@ export default async function HomePage() {
     );
   }
 
+  // Fetch featured prompts and latest prompts for landing page
+  const promptInclude = {
+    author: {
+      select: { id: true, name: true, username: true, avatar: true },
+    },
+    category: {
+      select: { id: true, name: true, slug: true },
+    },
+    tags: {
+      include: { tag: true },
+    },
+    contributors: {
+      select: { id: true, username: true, name: true, avatar: true },
+    },
+    _count: {
+      select: { votes: true, contributors: true },
+    },
+  };
+
+  const [featuredPromptsRaw, latestPromptsRaw] = await Promise.all([
+    db.prompt.findMany({
+      where: {
+        isPrivate: false,
+        isFeatured: true,
+      },
+      orderBy: { featuredAt: "desc" },
+      take: 6,
+      include: promptInclude,
+    }),
+    db.prompt.findMany({
+      where: {
+        isPrivate: false,
+      },
+      orderBy: { createdAt: "desc" },
+      take: 6,
+      include: promptInclude,
+    }),
+  ]);
+
+  const featuredPrompts = featuredPromptsRaw.map((p) => ({
+    ...p,
+    voteCount: p._count?.votes ?? 0,
+    contributorCount: p._count?.contributors ?? 0,
+    contributors: p.contributors,
+  }));
+
+  const latestPrompts = latestPromptsRaw.map((p) => ({
+    ...p,
+    voteCount: p._count?.votes ?? 0,
+    contributorCount: p._count?.contributors ?? 0,
+    contributors: p.contributors,
+  }));
+
   // For non-logged-in users, show landing page
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
       <section className="py-12 md:py-20 border-b">
         <div className="container">
-          <div className="max-w-3xl">
-            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-              {tHomepage("heroTitle")}
-              <span className="block text-muted-foreground">{tHomepage("heroSubtitle")}</span>
-            </h1>
-            <p className="mt-4 text-muted-foreground max-w-xl">
-              {tHomepage("heroDescription")}
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Button asChild>
-                <Link href="/prompts">
-                  {tHomepage("browsePrompts")}
-                  <ArrowRight className="ml-1.5 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button variant="outline" asChild>
-                <Link href="/register">{tNav("register")}</Link>
-              </Button>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+            <div className="max-w-3xl">
+              <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+                {tHomepage("heroTitle")}
+                <span className="block text-muted-foreground">{tHomepage("heroSubtitle")}</span>
+              </h1>
+              <p className="mt-4 text-muted-foreground max-w-xl">
+                {tHomepage("heroDescription")}
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Button asChild>
+                  <Link href="/prompts">
+                    {tHomepage("browsePrompts")}
+                    <ArrowRight className="ml-1.5 h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button variant="outline" asChild>
+                  <Link href="/register">{tNav("register")}</Link>
+                </Button>
+              </div>
+            </div>
+            <div className="hidden md:block">
+              <Image
+                src="/logo.svg"
+                alt="Logo"
+                width={200}
+                height={200}
+                className="h-48 w-48 dark:hidden"
+              />
+              <Image
+                src="/logo-dark.svg"
+                alt="Logo"
+                width={200}
+                height={200}
+                className="h-48 w-48 hidden dark:block"
+              />
             </div>
           </div>
         </div>
       </section>
 
+      {/* Featured Prompts Section */}
+      {featuredPrompts.length > 0 && (
+        <section className="py-12 border-b">
+          <div className="container">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-2">
+                <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                <h2 className="text-xl font-semibold">{tHomepage("featuredPrompts")}</h2>
+              </div>
+              <Button variant="ghost" size="sm" asChild>
+                <Link href="/prompts">
+                  {t("browseAll")}
+                  <ArrowRight className="ml-1.5 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
+              {featuredPrompts.map((prompt) => (
+                <PromptCard key={prompt.id} prompt={prompt} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Latest Prompts Section */}
+      {latestPrompts.length > 0 && (
+        <section className="py-12 border-b">
+          <div className="container">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-2">
+                <Clock className="h-5 w-5 text-muted-foreground" />
+                <h2 className="text-xl font-semibold">{tHomepage("latestPrompts")}</h2>
+              </div>
+              <Button variant="ghost" size="sm" asChild>
+                <Link href="/prompts">
+                  {t("browseAll")}
+                  <ArrowRight className="ml-1.5 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
+              {latestPrompts.map((prompt) => (
+                <PromptCard key={prompt.id} prompt={prompt} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* CTA Section */}
       <section className="py-12">
         <div className="container">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-6 rounded-lg border bg-muted/30">
-            <div>
-              <h2 className="font-semibold">{tHomepage("readyToStart")}</h2>
-              <p className="text-sm text-muted-foreground">{tHomepage("freeAndOpen")}</p>
+            <div className="flex items-center gap-4">
+              <Image
+                src="/logo.svg"
+                alt="Logo"
+                width={48}
+                height={48}
+                className="h-12 w-12 dark:hidden"
+              />
+              <Image
+                src="/logo-dark.svg"
+                alt="Logo"
+                width={48}
+                height={48}
+                className="h-12 w-12 hidden dark:block"
+              />
+              <div>
+                <h2 className="font-semibold">{tHomepage("readyToStart")}</h2>
+                <p className="text-sm text-muted-foreground">{tHomepage("freeAndOpen")}</p>
+              </div>
             </div>
             <Button asChild>
               <Link href="/register">{tHomepage("createAccount")}</Link>

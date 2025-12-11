@@ -5,6 +5,7 @@ import { createContext, useContext, type ReactNode } from "react";
 interface BrandingContextValue {
   name: string;
   logo: string;
+  logoDark?: string;
   description: string;
 }
 

@@ -134,6 +134,8 @@ model Prompt {
   
   // Metadata
   viewCount   Int        @default(0)
+  isFeatured  Boolean    @default(false)
+  featuredAt  DateTime?
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
 
@@ -154,6 +156,7 @@ model Prompt {
   @@index([categoryId])
   @@index([type])
   @@index([isPrivate])
+  @@index([isFeatured])
   @@map("prompts")
 }
 

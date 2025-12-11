@@ -91,6 +91,9 @@
     "noUsersFound": "No se encontraron usuarios",
     "promptPrivate": "Privado",
     "promptPublic": "Público",
+    "feature": "Destacar",
+    "featured": "Destacado",
+    "adminArea": "Área de Administrador",
     "types": {
       "text": "Texto",
       "image": "Imagen",
@@ -428,7 +431,9 @@
     "browsePrompts": "Explorar Prompts",
     "readyToStart": "¿Listo para comenzar?",
     "freeAndOpen": "Gratis y de código abierto.",
-    "createAccount": "Crear Cuenta"
+    "createAccount": "Crear Cuenta",
+    "featuredPrompts": "Prompts Destacados",
+    "latestPrompts": "Últimos Prompts"
   },
   "notifications": {
     "title": "Notificaciones",

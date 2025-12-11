@@ -91,6 +91,9 @@
     "noUsersFound": "未找到用户",
     "promptPrivate": "私有",
     "promptPublic": "公开",
+    "feature": "精选",
+    "featured": "已精选",
+    "adminArea": "管理员区域",
     "types": {
       "text": "文本",
       "image": "图片",
@@ -405,7 +408,9 @@
     "browsePrompts": "浏览提示词",
     "readyToStart": "准备好开始了吗？",
     "freeAndOpen": "免费且开源。",
-    "createAccount": "创建账户"
+    "createAccount": "创建账户",
+    "featuredPrompts": "精选提示词",
+    "latestPrompts": "最新提示词"
   },
   "notifications": {
     "title": "通知",

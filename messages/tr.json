@@ -93,6 +93,9 @@
     "noUsersFound": "Kullanıcı bulunamadı",
     "promptPrivate": "Özel",
     "promptPublic": "Herkese Açık",
+    "feature": "Öne Çıkar",
+    "featured": "Öne Çıkan",
+    "adminArea": "Yönetici Alanı",
     "types": {
       "text": "Metin",
       "image": "Görsel",
@@ -510,7 +513,9 @@
     "browsePrompts": "Promptlara Göz At",
     "readyToStart": "Başlamaya hazır mısınız?",
     "freeAndOpen": "Ücretsiz ve açık kaynak.",
-    "createAccount": "Hesap Oluştur"
+    "createAccount": "Hesap Oluştur",
+    "featuredPrompts": "Öne Çıkan Promptlar",
+    "latestPrompts": "En Son Promptlar"
   },
   "notifications": {
     "title": "Bildirimler",

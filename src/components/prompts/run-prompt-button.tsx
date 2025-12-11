@@ -24,6 +24,7 @@ const platforms: Platform[] = [
   { id: "chatgpt", name: "ChatGPT", baseUrl: "https://chat.openai.com" },
   { id: "claude", name: "Claude", baseUrl: "https://claude.ai/new" },
   { id: "gemini", name: "Gemini", baseUrl: "https://gemini.google.com" },
+  { id: "github-copilot", name: "GitHub Copilot", baseUrl: "https://github.com/copilot" },
   {
     id: "grok",
     name: "Grok",
@@ -34,10 +35,9 @@ const platforms: Platform[] = [
       { name: "Grok Think", baseUrl: "https://grok.com/chat?reasoningMode=think" },
     ],
   },
-  { id: "perplexity", name: "Perplexity", baseUrl: "https://perplexity.ai" },
-  { id: "mistral", name: "Mistral", baseUrl: "https://chat.mistral.ai/chat" },
-  { id: "github-copilot", name: "GitHub Copilot", baseUrl: "https://github.com/copilot" },
   { id: "llama", name: "Meta AI", baseUrl: "https://meta.ai" },
+  { id: "mistral", name: "Mistral", baseUrl: "https://chat.mistral.ai/chat" },
+  { id: "perplexity", name: "Perplexity", baseUrl: "https://perplexity.ai" },
 ];
 
 function buildUrl(platformId: string, baseUrl: string, promptText: string): string {

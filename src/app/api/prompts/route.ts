@@ -199,6 +199,14 @@ export async function GET(request: Request) {
               tag: true,
             },
           },
+          contributors: {
+            select: {
+              id: true,
+              username: true,
+              name: true,
+              avatar: true,
+            },
+          },
           _count: {
             select: { votes: true, contributors: true },
           },
@@ -212,6 +220,7 @@ export async function GET(request: Request) {
       ...p,
       voteCount: p._count.votes,
       contributorCount: p._count.contributors,
+      contributors: p.contributors,
     }));
 
     return NextResponse.json({

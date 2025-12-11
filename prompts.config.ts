@@ -5,7 +5,8 @@ export default defineConfig({
   branding: {
     name: "prompts.chat",
     logo: "/logo.svg",
-    favicon: "/favicon.ico",
+    logoDark: "/logo-dark.svg",
+    favicon: "/logo.svg",
     description: "Collect, organize, and share AI prompts",
   },
 

@@ -1,6 +1,7 @@
 export interface BrandingConfig {
   name: string;
   logo: string;
+  logoDark?: string;
   favicon: string;
   description: string;
 }

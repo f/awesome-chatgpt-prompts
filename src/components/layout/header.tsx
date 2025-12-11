@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useSession, signOut } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import {
@@ -85,8 +86,26 @@ export function Header({ showRegister = true }: HeaderProps) {
         </Sheet>
 
         {/* Logo */}
-        <Link href="/" className="flex items-center">
-          <span className="font-semibold">{branding.name}</span>
+        <Link href="/" className="flex gap-2">
+          {branding.logo && (
+            <>
+              <Image
+                src={branding.logo}
+                alt={branding.name}
+                width={20}
+                height={20}
+                className="h-5 w-5 dark:hidden"
+              />
+              <Image
+                src={branding.logoDark || branding.logo}
+                alt={branding.name}
+                width={20}
+                height={20}
+                className="h-5 w-5 hidden dark:block"
+              />
+            </>
+          )}
+          <span className="font-semibold leading-none">{branding.name}</span>
         </Link>
 
         {/* Desktop nav */}

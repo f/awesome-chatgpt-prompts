@@ -99,7 +99,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         <Button variant="ghost" size="sm" className="mb-4 -ml-2" asChild>
           <Link href="/categories">
             <ArrowLeft className="h-4 w-4 mr-1" />
-            {t("allCategories")}
+            {t("categories.allCategories")}
           </Link>
         </Button>
 

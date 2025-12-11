@@ -122,6 +122,14 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
               tag: true,
             },
           },
+          contributors: {
+            select: {
+              id: true,
+              username: true,
+              name: true,
+              avatar: true,
+            },
+          },
           _count: {
             select: { votes: true, contributors: true },
           },
@@ -135,6 +143,7 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
       ...p,
       voteCount: p._count.votes,
       contributorCount: p._count.contributors,
+      contributors: p.contributors,
     }));
     total = totalCount;
   }

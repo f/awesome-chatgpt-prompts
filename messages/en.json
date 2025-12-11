@@ -93,6 +93,9 @@
     "noUsersFound": "No users found",
     "promptPrivate": "Private",
     "promptPublic": "Public",
+    "feature": "Feature",
+    "featured": "Featured",
+    "adminArea": "Admin Area",
     "types": {
       "text": "Text",
       "image": "Image",
@@ -510,7 +513,9 @@
     "browsePrompts": "Browse Prompts",
     "readyToStart": "Ready to get started?",
     "freeAndOpen": "Free and open source.",
-    "createAccount": "Create Account"
+    "createAccount": "Create Account",
+    "featuredPrompts": "Featured Prompts",
+    "latestPrompts": "Latest Prompts"
   },
   "notifications": {
     "title": "Notifications",
