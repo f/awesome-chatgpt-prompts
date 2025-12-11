@@ -332,7 +332,7 @@ export default async function HomePage() {
                     alt={sponsor.name}
                     width={120}
                     height={40}
-                    className={`h-9 w-auto ${sponsor.className || ''}`}
+                    className={`h-9 w-auto dark:invert ${sponsor.className || ''}`}
                   />
                 </Link>
               ))}
