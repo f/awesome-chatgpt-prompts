@@ -1,0 +1,794 @@
+import React, { useState, useEffect } from 'react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, LineChart, Line } from 'recharts';
+import { TrendingUp, Target, Award, Zap, Brain, Code, Lightbulb, Settings, CheckCircle, Circle, Calendar, Book } from 'lucide-react';
+
+const gradeToScore = {
+  'A+': 100, 'A': 95, 'A-': 90,
+  'B+': 85, 'B': 80, 'B-': 75,
+  'C+': 70, 'C': 65, 'C-': 60,
+  'D+': 55, 'D': 50, 'D-': 45,
+  'F': 40
+};
+
+const AISpecialistDashboard = () => {
+  const [skills, setSkills] = useState([
+    { 
+      id: 1, 
+      category: 'Prompt Engineering', 
+      current: 'B+', 
+      target: 'A+',
+      icon: Brain,
+      color: '#3b82f6',
+      progress: 0,
+      notes: '',
+      milestones: [
+        {
+          title: 'Learn chain-of-thought scaffolds',
+          activities: [
+            { id: 'p1a1', text: 'Read OpenAI\'s guide on chain-of-thought prompting', completed: false },
+            { id: 'p1a2', text: 'Practice 10 prompts using step-by-step reasoning format', completed: false },
+            { id: 'p1a3', text: 'Build a template for complex problem-solving prompts', completed: false },
+            { id: 'p1a4', text: 'Test chain-of-thought on a real client brief', completed: false }
+          ]
+        },
+        {
+          title: 'Master meta-prompts',
+          activities: [
+            { id: 'p1b1', text: 'Study meta-prompt examples from prompt engineering libraries', completed: false },
+            { id: 'p1b2', text: 'Create 5 meta-prompts for different use cases (strategy, creative, research)', completed: false },
+            { id: 'p1b3', text: 'Build a meta-prompt that generates other prompts', completed: false },
+            { id: 'p1b4', text: 'Document your meta-prompt framework', completed: false }
+          ]
+        },
+        {
+          title: 'Build reusable templates',
+          activities: [
+            { id: 'p1c1', text: 'Create 10 prompt templates for your most common tasks', completed: false },
+            { id: 'p1c2', text: 'Build a personal prompt library in Notion or Obsidian', completed: false },
+            { id: 'p1c3', text: 'Test templates across different AI models (GPT, Claude, Gemini)', completed: false },
+            { id: 'p1c4', text: 'Share your templates with colleagues and get feedback', completed: false }
+          ]
+        }
+      ]
+    },
+    { 
+      id: 2, 
+      category: 'Strategic Work', 
+      current: 'A-', 
+      target: 'A+',
+      icon: Target,
+      color: '#10b981',
+      progress: 0,
+      notes: '',
+      milestones: [
+        {
+          title: 'Predictive modeling',
+          activities: [
+            { id: 'p2a1', text: 'Learn basic forecasting techniques using AI', completed: false },
+            { id: 'p2a2', text: 'Build a trend prediction model for your industry', completed: false },
+            { id: 'p2a3', text: 'Use AI to analyze historical data and predict outcomes', completed: false },
+            { id: 'p2a4', text: 'Create a predictive brief for an upcoming campaign', completed: false }
+          ]
+        },
+        {
+          title: 'Real-time synthesis',
+          activities: [
+            { id: 'p2b1', text: 'Set up a multi-source monitoring system', completed: false },
+            { id: 'p2b2', text: 'Practice synthesizing 5+ sources into strategic insights in under 10 minutes', completed: false },
+            { id: 'p2b3', text: 'Build an AI workflow that pulls and summarizes real-time data', completed: false },
+            { id: 'p2b4', text: 'Create a daily strategic briefing using AI synthesis', completed: false }
+          ]
+        },
+        {
+          title: 'Multi-source forecasting',
+          activities: [
+            { id: 'p2c1', text: 'Identify 10 key data sources for your strategic work', completed: false },
+            { id: 'p2c2', text: 'Build a system that aggregates insights from multiple sources', completed: false },
+            { id: 'p2c3', text: 'Use AI to spot patterns across disparate data sets', completed: false },
+            { id: 'p2c4', text: 'Present a multi-source forecast to stakeholders', completed: false }
+          ]
+        }
+      ]
+    },
+    { 
+      id: 3, 
+      category: 'Creativity & Ideation', 
+      current: 'A', 
+      target: 'A+',
+      icon: Lightbulb,
+      color: '#f59e0b',
+      progress: 0,
+      notes: '',
+      milestones: [
+        {
+          title: 'Generative design systems',
+          activities: [
+            { id: 'p3a1', text: 'Experiment with Midjourney, DALL-E, and Runway for design generation', completed: false },
+            { id: 'p3a2', text: 'Create a style guide using AI-generated assets', completed: false },
+            { id: 'p3a3', text: 'Build a system that generates brand variations automatically', completed: false },
+            { id: 'p3a4', text: 'Produce a full campaign concept using only AI-generated visuals', completed: false }
+          ]
+        },
+        {
+          title: 'Multi-modal outputs',
+          activities: [
+            { id: 'p3b1', text: 'Create a project combining AI copy, images, and video', completed: false },
+            { id: 'p3b2', text: 'Use AI to generate a complete brand story with all assets', completed: false },
+            { id: 'p3b3', text: 'Build a workflow that produces synchronized multi-modal content', completed: false },
+            { id: 'p3b4', text: 'Present a fully AI-generated campaign pitch', completed: false }
+          ]
+        },
+        {
+          title: 'Reusable creative frameworks',
+          activities: [
+            { id: 'p3c1', text: 'Document 5 creative frameworks you use repeatedly', completed: false },
+            { id: 'p3c2', text: 'Turn each framework into an AI-powered template', completed: false },
+            { id: 'p3c3', text: 'Test frameworks across 3 different brands', completed: false },
+            { id: 'p3c4', text: 'Build a creative system others can use', completed: false }
+          ]
+        }
+      ]
+    },
+    { 
+      id: 4, 
+      category: 'Technical Tools', 
+      current: 'C', 
+      target: 'A',
+      icon: Settings,
+      color: '#ef4444',
+      progress: 0,
+      notes: '',
+      milestones: [
+        {
+          title: 'Master Opal workflows',
+          activities: [
+            { id: 'p4a1', text: 'Complete Opal\'s tutorial and documentation', completed: false },
+            { id: 'p4a2', text: 'Build 3 working Opal automations for daily tasks', completed: false },
+            { id: 'p4a3', text: 'Connect Opal to your existing tools (Slack, Notion, etc.)', completed: false },
+            { id: 'p4a4', text: 'Create an advanced multi-step Opal workflow', completed: false }
+          ]
+        },
+        {
+          title: 'API thinking',
+          activities: [
+            { id: 'p4b1', text: 'Learn what APIs are and how they work (watch 3 explainer videos)', completed: false },
+            { id: 'p4b2', text: 'Make your first API call using Postman or similar tool', completed: false },
+            { id: 'p4b3', text: 'Connect two services using APIs (e.g., Notion + AI)', completed: false },
+            { id: 'p4b4', text: 'Build a simple automation using API connections', completed: false }
+          ]
+        },
+        {
+          title: 'Multi-agent systems',
+          activities: [
+            { id: 'p4c1', text: 'Build an agentic AI system with 2+ agents working together', completed: false },
+            { id: 'p4c2', text: 'Create a research agent that gathers and synthesizes information', completed: false },
+            { id: 'p4c3', text: 'Build a content creation agent that ideates and writes', completed: false },
+            { id: 'p4c4', text: 'Design a 3-agent system for a complete workflow (research → create → publish)', completed: false }
+          ]
+        }
+      ]
+    },
+    { 
+      id: 5, 
+      category: 'Workflow Design', 
+      current: 'B', 
+      target: 'A+',
+      icon: Zap,
+      color: '#8b5cf6',
+      progress: 0,
+      notes: '',
+      milestones: [
+        {
+          title: 'Build 3-5 reusable workflows',
+          activities: [
+            { id: 'p5a1', text: 'Map out your 5 most repeated tasks', completed: false },
+            { id: 'p5a2', text: 'Design automation workflows for each task', completed: false },
+            { id: 'p5a3', text: 'Build and test each workflow', completed: false },
+            { id: 'p5a4', text: 'Document workflows so others can use them', completed: false }
+          ]
+        },
+        {
+          title: 'Master workflow architecture',
+          activities: [
+            { id: 'p5b1', text: 'Learn the components: triggers → agents → prompts → validation → delivery', completed: false },
+            { id: 'p5b2', text: 'Draw architecture diagrams for 3 existing workflows', completed: false },
+            { id: 'p5b3', text: 'Build a workflow from scratch using proper architecture', completed: false },
+            { id: 'p5b4', text: 'Optimize an existing workflow by redesigning its architecture', completed: false }
+          ]
+        },
+        {
+          title: 'Automate validation',
+          activities: [
+            { id: 'p5c1', text: 'Add quality checks to your AI outputs', completed: false },
+            { id: 'p5c2', text: 'Build a validation agent that reviews AI-generated content', completed: false },
+            { id: 'p5c3', text: 'Create automated testing for your workflows', completed: false },
+            { id: 'p5c4', text: 'Design a self-correcting workflow that improves over time', completed: false }
+          ]
+        }
+      ]
+    },
+    { 
+      id: 6, 
+      category: 'Personal Productivity', 
+      current: 'C+', 
+      target: 'A',
+      icon: TrendingUp,
+      color: '#06b6d4',
+      progress: 0,
+      notes: '',
+      milestones: [
+        {
+          title: 'Daily briefing system',
+          activities: [
+            { id: 'p6a1', text: 'Design your ideal daily briefing (news, tasks, priorities)', completed: false },
+            { id: 'p6a2', text: 'Build an AI agent that compiles your briefing automatically', completed: false },
+            { id: 'p6a3', text: 'Set it to deliver every morning at the same time', completed: false },
+            { id: 'p6a4', text: 'Refine the briefing based on 2 weeks of use', completed: false }
+          ]
+        },
+        {
+          title: 'Research automation',
+          activities: [
+            { id: 'p6b1', text: 'List your top 10 research topics or questions', completed: false },
+            { id: 'p6b2', text: 'Build automated research loops that run daily/weekly', completed: false },
+            { id: 'p6b3', text: 'Create a system that saves and organizes research findings', completed: false },
+            { id: 'p6b4', text: 'Build a research dashboard that updates automatically', completed: false }
+          ]
+        },
+        {
+          title: 'AI dashboard setup',
+          activities: [
+            { id: 'p6c1', text: 'Choose a dashboard tool (Notion, Airtable, custom)', completed: false },
+            { id: 'p6c2', text: 'Design your ideal AI productivity dashboard', completed: false },
+            { id: 'p6c3', text: 'Connect your AI workflows to the dashboard', completed: false },
+            { id: 'p6c4', text: 'Use your dashboard daily for 1 month and iterate', completed: false }
+          ]
+        }
+      ]
+    },
+    { 
+      id: 7, 
+      category: 'Data & Analysis', 
+      current: 'C-', 
+      target: 'B+',
+      icon: BarChart,
+      color: '#ec4899',
+      progress: 0,
+      notes: '',
+      milestones: [
+        {
+          title: 'Learn data frames',
+          activities: [
+            { id: 'p7a1', text: 'Complete a basic Python pandas tutorial', completed: false },
+            { id: 'p7a2', text: 'Load and explore 3 different datasets', completed: false },
+            { id: 'p7a3', text: 'Use AI to help you write data analysis code', completed: false },
+            { id: 'p7a4', text: 'Analyze a real dataset relevant to your work', completed: false }
+          ]
+        },
+        {
+          title: 'Pivot analysis',
+          activities: [
+            { id: 'p7b1', text: 'Learn pivot tables in Excel and Python', completed: false },
+            { id: 'p7b2', text: 'Practice creating 10 different pivot views of data', completed: false },
+            { id: 'p7b3', text: 'Use AI to suggest interesting pivot analyses', completed: false },
+            { id: 'p7b4', text: 'Build automated pivot reports for recurring analysis', completed: false }
+          ]
+        },
+        {
+          title: 'Metrics interpretation',
+          activities: [
+            { id: 'p7c1', text: 'Identify the 10 most important metrics for your work', completed: false },
+            { id: 'p7c2', text: 'Build an AI agent that interprets metric changes', completed: false },
+            { id: 'p7c3', text: 'Create automated alerts for significant metric movements', completed: false },
+            { id: 'p7c4', text: 'Use AI to generate strategic insights from metrics', completed: false }
+          ]
+        }
+      ]
+    },
+    { 
+      id: 8, 
+      category: 'Coding & Technical', 
+      current: 'D+', 
+      target: 'B',
+      icon: Code,
+      color: '#f97316',
+      progress: 0,
+      notes: '',
+      milestones: [
+        {
+          title: 'Python basics',
+          activities: [
+            { id: 'p8a1', text: 'Complete a beginner Python course (Codecademy or similar)', completed: false },
+            { id: 'p8a2', text: 'Write 10 simple Python scripts with AI assistance', completed: false },
+            { id: 'p8a3', text: 'Learn variables, functions, loops, and conditionals', completed: false },
+            { id: 'p8a4', text: 'Build a useful script that solves a real problem for you', completed: false }
+          ]
+        },
+        {
+          title: 'Script building',
+          activities: [
+            { id: 'p8b1', text: 'Create a script that automates a repetitive task', completed: false },
+            { id: 'p8b2', text: 'Build a web scraper to gather data automatically', completed: false },
+            { id: 'p8b3', text: 'Write a script that processes files or data', completed: false },
+            { id: 'p8b4', text: 'Package your scripts so they\'re reusable', completed: false }
+          ]
+        },
+        {
+          title: 'API calls',
+          activities: [
+            { id: 'p8c1', text: 'Make your first API call in Python', completed: false },
+            { id: 'p8c2', text: 'Connect to OpenAI API and make completions', completed: false },
+            { id: 'p8c3', text: 'Build a script that uses 2+ APIs together', completed: false },
+            { id: 'p8c4', text: 'Create an automated workflow using API calls', completed: false }
+          ]
+        }
+      ]
+    },
+    { 
+      id: 9, 
+      category: 'Thought Leadership', 
+      current: 'B', 
+      target: 'A+',
+      icon: Award,
+      color: '#14b8a6',
+      progress: 0,
+      notes: '',
+      milestones: [
+        {
+          title: 'Daily insights',
+          activities: [
+            { id: 'p9a1', text: 'Commit to posting 1 AI insight daily for 30 days', completed: false },
+            { id: 'p9a2', text: 'Build an AI system that helps you generate daily insights', completed: false },
+            { id: 'p9a3', text: 'Share insights on LinkedIn and track engagement', completed: false },
+            { id: 'p9a4', text: 'Compile your best insights into a weekly newsletter', completed: false }
+          ]
+        },
+        {
+          title: 'Weekly breakdowns',
+          activities: [
+            { id: 'p9b1', text: 'Choose a format (video, article, thread)', completed: false },
+            { id: 'p9b2', text: 'Create 4 weekly deep-dives on AI topics', completed: false },
+            { id: 'p9b3', text: 'Build an AI workflow that helps with research and writing', completed: false },
+            { id: 'p9b4', text: 'Grow your audience by 1000 followers through consistent content', completed: false }
+          ]
+        },
+        {
+          title: 'Signature AI perspective',
+          activities: [
+            { id: 'p9c1', text: 'Define your unique angle on AI (what\'s YOUR take?)', completed: false },
+            { id: 'p9c2', text: 'Write your "AI manifesto" - your core beliefs and predictions', completed: false },
+            { id: 'p9c3', text: 'Create content around your signature perspective consistently', completed: false },
+            { id: 'p9c4', text: 'Be invited to speak or write based on your POV', completed: false }
+          ]
+        }
+      ]
+    }
+  ]);
+
+  const [overallGrade, setOverallGrade] = useState('B+');
+  const [view, setView] = useState('overview');
+  const [selectedSkill, setSelectedSkill] = useState(null);
+
+  useEffect(() => {
+    // localStorage is not supported in Claude artifacts
+    // Data will be stored in memory during the session
+  }, []);
+
+  const saveToStorage = (updatedSkills, grade) => {
+    try {
+      const dataToSave = {
+        skills: updatedSkills,
+        overallGrade: grade
+      };
+      const serialized = JSON.stringify(dataToSave);
+      // Don't use localStorage - just keep in memory
+    } catch (error) {
+      console.error('Error saving data:', error);
+    }
+  };
+
+  const updateProgress = (id, value) => {
+    const updatedSkills = skills.map(skill => 
+      skill.id === id ? { ...skill, progress: value } : skill
+    );
+    setSkills(updatedSkills);
+    calculateOverallGrade(updatedSkills);
+  };
+
+  const updateNotes = (id, notes) => {
+    const updatedSkills = skills.map(skill => 
+      skill.id === id ? { ...skill, notes } : skill
+    );
+    setSkills(updatedSkills);
+    saveToStorage(updatedSkills, overallGrade);
+  };
+
+  const toggleActivity = (skillId, milestoneIdx, activityId) => {
+    const updatedSkills = skills.map(skill => {
+      if (skill.id === skillId) {
+        const updatedMilestones = skill.milestones.map((milestone, idx) => {
+          if (idx === milestoneIdx) {
+            return {
+              ...milestone,
+              activities: milestone.activities.map(activity =>
+                activity.id === activityId
+                  ? { ...activity, completed: !activity.completed }
+                  : activity
+              )
+            };
+          }
+          return milestone;
+        });
+        
+        // Auto-update progress based on completed activities
+        const totalActivities = updatedMilestones.reduce((sum, m) => sum + m.activities.length, 0);
+        const completedActivities = updatedMilestones.reduce((sum, m) => 
+          sum + m.activities.filter(a => a.completed).length, 0
+        );
+        const newProgress = Math.round((completedActivities / totalActivities) * 100);
+        
+        return { ...skill, milestones: updatedMilestones, progress: newProgress };
+      }
+      return skill;
+    });
+    
+    setSkills(updatedSkills);
+    calculateOverallGrade(updatedSkills);
+  };
+
+  const calculateOverallGrade = (skillsList) => {
+    const total = skillsList.reduce((sum, skill) => {
+      const currentScore = gradeToScore[skill.current];
+      const improvement = (skill.progress / 100) * (gradeToScore[skill.target] - currentScore);
+      return sum + currentScore + improvement;
+    }, 0);
+    const avg = total / skillsList.length;
+    
+    const newGrade = Object.entries(gradeToScore).find(([_, score]) => score <= avg)?.[0] || 'B+';
+    setOverallGrade(newGrade);
+    saveToStorage(skillsList, newGrade);
+  };
+
+  const radarData = skills.map(skill => ({
+    category: skill.category.split(' ')[0],
+    current: gradeToScore[skill.current],
+    target: gradeToScore[skill.target],
+    actual: gradeToScore[skill.current] + (skill.progress / 100) * (gradeToScore[skill.target] - gradeToScore[skill.current])
+  }));
+
+  const barData = skills.map(skill => ({
+    name: skill.category,
+    current: gradeToScore[skill.current],
+    progress: gradeToScore[skill.current] + (skill.progress / 100) * (gradeToScore[skill.target] - gradeToScore[skill.current]),
+    target: gradeToScore[skill.target]
+  }));
+
+  const getSkillStats = (skill) => {
+    const total = skill.milestones.reduce((sum, m) => sum + m.activities.length, 0);
+    const completed = skill.milestones.reduce((sum, m) => 
+      sum + m.activities.filter(a => a.completed).length, 0
+    );
+    return { total, completed };
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-8">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 mb-8 border border-white/20">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h1 className="text-4xl font-bold text-white mb-2">AI Specialist Growth Dashboard</h1>
+              <p className="text-purple-200">Track your journey to AI expert level</p>
+            </div>
+            <div className="text-center">
+              <div className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+                {overallGrade}
+              </div>
+              <div className="text-purple-200 text-sm">Overall Grade</div>
+            </div>
+          </div>
+          
+          <div className="flex gap-4 mt-6 flex-wrap">
+            <button 
+              onClick={() => setView('overview')}
+              className={`px-6 py-2 rounded-lg font-medium transition-all ${view === 'overview' ? 'bg-purple-500 text-white' : 'bg-white/10 text-purple-200 hover:bg-white/20'}`}
+            >
+              Overview
+            </button>
+            <button 
+              onClick={() => setView('details')}
+              className={`px-6 py-2 rounded-lg font-medium transition-all ${view === 'details' ? 'bg-purple-500 text-white' : 'bg-white/10 text-purple-200 hover:bg-white/20'}`}
+            >
+              Detailed Progress
+            </button>
+            <button 
+              onClick={() => setView('milestones')}
+              className={`px-6 py-2 rounded-lg font-medium transition-all ${view === 'milestones' ? 'bg-purple-500 text-white' : 'bg-white/10 text-purple-200 hover:bg-white/20'}`}
+            >
+              Milestones
+            </button>
+            <button 
+              onClick={() => setView('activities')}
+              className={`px-6 py-2 rounded-lg font-medium transition-all ${view === 'activities' ? 'bg-purple-500 text-white' : 'bg-white/10 text-purple-200 hover:bg-white/20'}`}
+            >
+              Activities & Tasks
+            </button>
+          </div>
+        </div>
+
+        {/* Overview View */}
+        {view === 'overview' && (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
+              <h2 className="text-2xl font-bold text-white mb-4">Skills Radar</h2>
+              <ResponsiveContainer width="100%" height={400}>
+                <RadarChart data={radarData}>
+                  <PolarGrid stroke="#ffffff40" />
+                  <PolarAngleAxis dataKey="category" tick={{ fill: '#e9d5ff', fontSize: 12 }} />
+                  <PolarRadiusAxis domain={[40, 100]} tick={{ fill: '#e9d5ff' }} />
+                  <Radar name="Current" dataKey="current" stroke="#8b5cf6" fill="#8b5cf6" fillOpacity={0.3} />
+                  <Radar name="Actual" dataKey="actual" stroke="#a78bfa" fill="#a78bfa" fillOpacity={0.5} />
+                  <Radar name="Target" dataKey="target" stroke="#06b6d4" fill="#06b6d4" fillOpacity={0.2} />
+                  <Legend wrapperStyle={{ color: '#e9d5ff' }} />
+                </RadarChart>
+              </ResponsiveContainer>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
+              <h2 className="text-2xl font-bold text-white mb-4">Progress by Category</h2>
+              <ResponsiveContainer width="100%" height={400}>
+                <BarChart data={barData}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#ffffff20" />
+                  <XAxis dataKey="name" angle={-45} textAnchor="end" height={120} tick={{ fill: '#e9d5ff', fontSize: 10 }} />
+                  <YAxis domain={[40, 100]} tick={{ fill: '#e9d5ff' }} />
+                  <Tooltip contentStyle={{ backgroundColor: '#1e1b4b', border: '1px solid #8b5cf6' }} />
+                  <Bar dataKey="current" fill="#8b5cf6" name="Starting" />
+                  <Bar dataKey="progress" fill="#a78bfa" name="Current" />
+                  <Bar dataKey="target" fill="#06b6d4" name="Target" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+        )}
+
+        {/* Detailed Progress View */}
+        {view === 'details' && (
+          <div className="grid grid-cols-1 gap-6">
+            {skills.map(skill => {
+              const Icon = skill.icon;
+              return (
+                <div key={skill.id} className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
+                  <div className="flex items-start gap-4">
+                    <div className="p-3 rounded-lg" style={{ backgroundColor: `${skill.color}40` }}>
+                      <Icon size={24} style={{ color: skill.color }} />
+                    </div>
+                    
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between mb-3">
+                        <h3 className="text-xl font-bold text-white">{skill.category}</h3>
+                        <div className="flex gap-4 text-sm">
+                          <span className="text-purple-200">Start: <span className="font-bold text-white">{skill.current}</span></span>
+                          <span className="text-purple-200">Target: <span className="font-bold text-white">{skill.target}</span></span>
+                        </div>
+                      </div>
+                      
+                      <div className="mb-4">
+                        <div className="flex justify-between text-sm text-purple-200 mb-2">
+                          <span>Progress towards target</span>
+                          <span>{skill.progress}%</span>
+                        </div>
+                        <div className="w-full h-2 bg-white/20 rounded-lg overflow-hidden">
+                          <div 
+                            className="h-full transition-all duration-500"
+                            style={{ 
+                              width: `${skill.progress}%`,
+                              backgroundColor: skill.color
+                            }}
+                          />
+                        </div>
+                      </div>
+                      
+                      <textarea
+                        placeholder="Add notes on your progress..."
+                        value={skill.notes}
+                        onChange={(e) => updateNotes(skill.id, e.target.value)}
+                        className="w-full bg-white/5 border border-white/20 rounded-lg p-3 text-white placeholder-purple-300 focus:outline-none focus:border-purple-500 resize-none"
+                        rows="2"
+                      />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {/* Milestones View */}
+        {view === 'milestones' && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {skills.map(skill => {
+              const Icon = skill.icon;
+              const stats = getSkillStats(skill);
+              return (
+                <div key={skill.id} className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 rounded-lg" style={{ backgroundColor: `${skill.color}40` }}>
+                      <Icon size={20} style={{ color: skill.color }} />
+                    </div>
+                    <h3 className="text-lg font-bold text-white">{skill.category}</h3>
+                  </div>
+                  
+                  <div className="space-y-3">
+                    {skill.milestones.map((milestone, idx) => {
+                      const milestoneComplete = milestone.activities.filter(a => a.completed).length;
+                      const milestoneTotal = milestone.activities.length;
+                      return (
+                        <div key={idx} className="flex items-start gap-2">
+                          <div className="mt-1 w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: skill.color }} />
+                          <div className="flex-1">
+                            <span className="text-purple-200 text-sm">{milestone.title}</span>
+                            <div className="text-xs text-purple-300 mt-1">
+                              {milestoneComplete}/{milestoneTotal} activities
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  
+                  <div className="mt-4 pt-4 border-t border-white/20">
+                    <div className="text-sm text-purple-200">
+                      Progress: <span className="font-bold text-white">{stats.completed}/{stats.total} activities</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {/* Activities View */}
+        {view === 'activities' && (
+          <div className="space-y-6">
+            {selectedSkill === null ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {skills.map(skill => {
+                  const Icon = skill.icon;
+                  const stats = getSkillStats(skill);
+                  const completionRate = Math.round((stats.completed / stats.total) * 100);
+                  
+                  return (
+                    <button
+                      key={skill.id}
+                      onClick={() => setSelectedSkill(skill.id)}
+                      className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all text-left"
+                    >
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="p-3 rounded-lg" style={{ backgroundColor: `${skill.color}40` }}>
+                          <Icon size={24} style={{ color: skill.color }} />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-lg font-bold text-white">{skill.category}</h3>
+                          <div className="text-sm text-purple-200">{stats.completed}/{stats.total} completed</div>
+                        </div>
+                      </div>
+                      
+                      <div className="mb-2">
+                        <div className="w-full h-2 bg-white/20 rounded-lg overflow-hidden">
+                          <div 
+                            className="h-full transition-all"
+                            style={{ 
+                              width: `${completionRate}%`,
+                              backgroundColor: skill.color
+                            }}
+                          />
+                        </div>
+                      </div>
+                      
+                      <div className="text-right text-sm font-bold" style={{ color: skill.color }}>
+                        {completionRate}%
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            ) : (
+              <div>
+                <button
+                  onClick={() => setSelectedSkill(null)}
+                  className="mb-6 px-4 py-2 bg-white/10 hover:bg-white/20 text-purple-200 rounded-lg transition-all"
+                >
+                  ← Back to all skills
+                </button>
+                
+                {skills.filter(s => s.id === selectedSkill).map(skill => {
+                  const Icon = skill.icon;
+                  const stats = getSkillStats(skill);
+                  
+                  return (
+                    <div key={skill.id}>
+                      <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 mb-6">
+                        <div className="flex items-center gap-4">
+                          <div className="p-3 rounded-lg" style={{ backgroundColor: `${skill.color}40` }}>
+                            <Icon size={32} style={{ color: skill.color }} />
+                          </div>
+                          <div className="flex-1">
+                            <h2 className="text-3xl font-bold text-white mb-2">{skill.category}</h2>
+                            <div className="text-purple-200">
+                              {stats.completed} of {stats.total} activities completed ({skill.progress}%)
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-6">
+                        {skill.milestones.map((milestone, mIdx) => {
+                          const milestoneStats = {
+                            completed: milestone.activities.filter(a => a.completed).length,
+                            total: milestone.activities.length
+                          };
+                          
+                          return (
+                            <div key={mIdx} className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
+                              <div className="flex items-center justify-between mb-4">
+                                <h3 className="text-xl font-bold text-white">{milestone.title}</h3>
+                                <div className="text-sm text-purple-200">
+                                  {milestoneStats.completed}/{milestoneStats.total}
+                                </div>
+                              </div>
+                              
+                              <div className="space-y-3">
+                                {milestone.activities.map((activity) => (
+                                  <button
+                                    key={activity.id}
+                                    onClick={() => toggleActivity(skill.id, mIdx, activity.id)}
+                                    className="w-full flex items-start gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-all text-left"
+                                  >
+                                    {activity.completed ? (
+                                      <CheckCircle size={20} style={{ color: skill.color }} className="flex-shrink-0 mt-0.5" />
+                                    ) : (
+                                      <Circle size={20} className="text-purple-300 flex-shrink-0 mt-0.5" />
+                                    )}
+                                    <span className={`flex-1 ${activity.completed ? 'text-purple-300 line-through' : 'text-white'}`}>
+                                      {activity.text}
+                                    </span>
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Top 5 Focus Areas */}
+        <div className="mt-8 bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-lg rounded-2xl p-8 border border-purple-500/30">
+          <h2 className="text-2xl font-bold text-white mb-6">Top 5 Focus Areas to Reach Expert Level</h2>
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+            {[
+              { num: 1, text: 'Build repeatable AI workflows', color: '#3b82f6' },
+              { num: 2, text: 'Master tool-specific prompting', color: '#10b981' },
+              { num: 3, text: 'Become semi-technical', color: '#f59e0b' },
+              { num: 4, text: 'Develop your AI POV', color: '#ef4444' },
+              { num: 5, text: 'Design reusable playbooks', color: '#8b5cf6' }
+            ].map(item => (
+              <div key={item.num} className="bg-white/10 rounded-xl p-4 border border-white/20">
+                <div className="text-3xl font-bold mb-2" style={{ color: item.color }}>{item.num}</div>
+                <p className="text-white text-sm">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default AISpecialistDashboard;
