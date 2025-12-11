@@ -515,9 +515,13 @@
     "mostContributed": "En Çok Katkı Alanlar"
   },
   "homepage": {
-    "heroTitle": "Topla, Düzenle ve Paylaş",
-    "heroSubtitle": "AI Promptları",
-    "heroDescription": "AI promptlarını yönetmek için açık kaynak platform. Docker ile kendi sunucunuzda çalıştırın.",
+    "heroTitle": "AI Promptları için",
+    "heroSubtitle": "Sosyal Platform",
+    "heroDescription": "Topluluktan promptları paylaşın, keşfedin ve toplayın. Ücretsiz ve açık kaynak — tam gizlilik için kendi sunucunuzda barındırın.",
+    "heroFeature1": "Ücretsiz & Açık Kaynak",
+    "heroFeature2": "Gizlilik için Self-host",
+    "heroFeature3": "Ekipler & Organizasyonlar için",
+    "cloneOnGithub": "GitHub'dan Klonla",
     "browsePrompts": "Promptlara Göz At",
     "readyToStart": "Başlamaya hazır mısınız?",
     "freeAndOpen": "Ücretsiz ve açık kaynak.",
@@ -531,7 +535,8 @@
       "githubStars": "GitHub Yıldızı",
       "mostStarredRepo": "Dünyada #33 En Çok Yıldızlanan Repo",
       "usedByThousands": "Her Gün Binlerce Aktif Kullanıcı",
-      "sponsoredBy": "Sponsor"
+      "sponsoredBy": "Sponsor",
+      "becomeSponsor": "Sponsor Ol"
     }
   },
   "notifications": {

@@ -515,9 +515,13 @@
     "mostContributed": "Most Contributed"
   },
   "homepage": {
-    "heroTitle": "Collect, Organize & Share",
+    "heroTitle": "The Social Platform for",
     "heroSubtitle": "AI Prompts",
-    "heroDescription": "Open-source platform for managing AI prompts. Self-host with Docker.",
+    "heroDescription": "Share, discover, and collect prompts from the community. Free and open source — self-host for your organization with complete privacy.",
+    "heroFeature1": "Free & Open Source",
+    "heroFeature2": "Self-host for Privacy",
+    "heroFeature3": "For Teams & Organizations",
+    "cloneOnGithub": "Clone on GitHub",
     "browsePrompts": "Browse Prompts",
     "readyToStart": "Ready to get started?",
     "freeAndOpen": "Free and open source.",
@@ -531,7 +535,8 @@
       "githubStars": "GitHub Stars",
       "mostStarredRepo": "#33 Most Starred Repo in the World",
       "usedByThousands": "Used by Thousands Daily",
-      "sponsoredBy": "Sponsored by"
+      "sponsoredBy": "Sponsored by",
+      "becomeSponsor": "Become a Sponsor"
     }
   },
   "notifications": {

@@ -410,9 +410,13 @@
     "mostContributed": "最も貢献されたプロンプト"
   },
   "homepage": {
-    "heroTitle": "収集・整理・共有",
-    "heroSubtitle": "AIプロンプト",
-    "heroDescription": "AIプロンプトを管理するオープンソースプラットフォーム。Dockerでセルフホスト。",
+    "heroTitle": "AIプロンプトの",
+    "heroSubtitle": "ソーシャルプラットフォーム",
+    "heroDescription": "コミュニティからプロンプトを共有、発見、収集。無料でオープンソース — 完全なプライバシーで組織向けにセルフホスト。",
+    "heroFeature1": "無料 & オープンソース",
+    "heroFeature2": "プライバシーのためセルフホスト",
+    "heroFeature3": "チーム & 組織向け",
+    "cloneOnGithub": "GitHubでクローン",
     "browsePrompts": "プロンプトを見る",
     "readyToStart": "始める準備はできましたか？",
     "freeAndOpen": "無料でオープンソース。",
@@ -426,7 +430,8 @@
       "githubStars": "GitHubスター",
       "mostStarredRepo": "世界で#33最もスターされたリポジトリ",
       "usedByThousands": "毎日何千人もが利用",
-      "sponsoredBy": "スポンサー"
+      "sponsoredBy": "スポンサー",
+      "becomeSponsor": "スポンサーになる"
     }
   },
   "notifications": {

@@ -433,9 +433,13 @@
     "mostContributed": "Más Contribuidos"
   },
   "homepage": {
-    "heroTitle": "Recolecta, Organiza y Comparte",
+    "heroTitle": "La Plataforma Social para",
     "heroSubtitle": "Prompts de IA",
-    "heroDescription": "Plataforma de código abierto para gestionar prompts de IA. Auto-hospeda con Docker.",
+    "heroDescription": "Comparte, descubre y colecciona prompts de la comunidad. Gratis y de código abierto — auto-hospeda para tu organización con privacidad total.",
+    "heroFeature1": "Gratis y Código Abierto",
+    "heroFeature2": "Auto-hospeda para Privacidad",
+    "heroFeature3": "Para Equipos y Organizaciones",
+    "cloneOnGithub": "Clonar en GitHub",
     "browsePrompts": "Explorar Prompts",
     "readyToStart": "¿Listo para comenzar?",
     "freeAndOpen": "Gratis y de código abierto.",
@@ -449,7 +453,8 @@
       "githubStars": "Estrellas en GitHub",
       "mostStarredRepo": "#33 Repo Más Destacado del Mundo",
       "usedByThousands": "Usado por Miles Diariamente",
-      "sponsoredBy": "Patrocinado por"
+      "sponsoredBy": "Patrocinado por",
+      "becomeSponsor": "Conviértete en Patrocinador"
     }
   },
   "notifications": {

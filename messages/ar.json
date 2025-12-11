@@ -416,9 +416,13 @@
     "mostContributed": "الأكثر مساهمة"
   },
   "homepage": {
-    "heroTitle": "اجمع، نظّم وشارك",
+    "heroTitle": "المنصة الاجتماعية لـ",
     "heroSubtitle": "أوامر الذكاء الاصطناعي",
-    "heroDescription": "منصة مفتوحة المصدر لإدارة أوامر الذكاء الاصطناعي. استضافة ذاتية باستخدام Docker.",
+    "heroDescription": "شارك واكتشف واجمع الأوامر من المجتمع. مجاني ومفتوح المصدر — استضافة ذاتية لمؤسستك بخصوصية تامة.",
+    "heroFeature1": "مجاني ومفتوح المصدر",
+    "heroFeature2": "استضافة ذاتية للخصوصية",
+    "heroFeature3": "للفرق والمؤسسات",
+    "cloneOnGithub": "استنساخ على GitHub",
     "browsePrompts": "تصفح الأوامر",
     "readyToStart": "مستعد للبدء؟",
     "freeAndOpen": "مجاني ومفتوح المصدر.",
@@ -432,7 +436,8 @@
       "githubStars": "نجوم GitHub",
       "mostStarredRepo": "#33 المستودع الأكثر نجومية في العالم",
       "usedByThousands": "يستخدمه الآلاف يومياً",
-      "sponsoredBy": "برعاية"
+      "sponsoredBy": "برعاية",
+      "becomeSponsor": "كن راعياً"
     }
   },
   "notifications": {

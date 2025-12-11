@@ -23,6 +23,21 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Redirects
+  async redirects() {
+    return [
+      {
+        source: "/vibe",
+        destination: "/categories/vibe",
+        permanent: true,
+      },
+      {
+        source: "/sponsors",
+        destination: "/categories/sponsors",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);

@@ -45,6 +45,7 @@ export interface Sponsor {
   name: string;
   logo: string;
   url: string;
+  className?: string;
 }
 
 export interface HomepageConfig {

@@ -304,10 +304,10 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
               <Button variant="ghost" size="sm" className="h-8 text-xs" asChild>
                 <Link href="/login">{t("nav.login")}</Link>
               </Button>
-              {showRegisterButton && (
+              {authProvider === "credentials" && allowRegistration && (
                 <Button size="sm" className="h-8 text-xs" asChild>
-                  <Link href={isOAuth ? "/login" : "/register"}>
-                    {isOAuth ? t("nav.login") : t("nav.register")}
+                  <Link href="/register">
+                    {t("nav.register")}
                   </Link>
                 </Button>
               )}

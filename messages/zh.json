@@ -410,9 +410,13 @@
     "mostContributed": "贡献最多"
   },
   "homepage": {
-    "heroTitle": "收集、整理和分享",
-    "heroSubtitle": "AI 提示词",
-    "heroDescription": "管理 AI 提示词的开源平台。使用 Docker 自托管。",
+    "heroTitle": "AI 提示词的",
+    "heroSubtitle": "社交平台",
+    "heroDescription": "从社区分享、发现和收集提示词。免费开源 — 为您的组织自托管，完全私密。",
+    "heroFeature1": "免费 & 开源",
+    "heroFeature2": "自托管保护隐私",
+    "heroFeature3": "适用于团队和组织",
+    "cloneOnGithub": "在 GitHub 上克隆",
     "browsePrompts": "浏览提示词",
     "readyToStart": "准备好开始了吗？",
     "freeAndOpen": "免费且开源。",
@@ -426,7 +430,8 @@
       "githubStars": "GitHub 星标",
       "mostStarredRepo": "全球第 #33 最受欢迎的仓库",
       "usedByThousands": "每天被数千人使用",
-      "sponsoredBy": "赞助商"
+      "sponsoredBy": "赞助商",
+      "becomeSponsor": "成为赞助商"
     }
   },
   "notifications": {
