@@ -47,8 +47,8 @@ export default async function PromptPage({ params }: PromptPageProps) {
   const t = await getTranslations("prompts");
   const locale = await getLocale();
 
-  const prompt = await db.prompt.findUnique({
-    where: { id },
+  const prompt = await db.prompt.findFirst({
+    where: { id, deletedAt: null },
     include: {
       author: {
         select: {

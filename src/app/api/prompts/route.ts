@@ -138,6 +138,7 @@ export async function GET(request: Request) {
 
     const where: Record<string, unknown> = {
       isPrivate: false,
+      deletedAt: null, // Exclude soft-deleted prompts
     };
 
     if (type) {

@@ -52,7 +52,7 @@ export async function GET(
       },
     });
 
-    if (!prompt) {
+    if (!prompt || prompt.deletedAt) {
       return NextResponse.json(
         { error: "not_found", message: "Prompt not found" },
         { status: 404 }
@@ -194,7 +194,7 @@ export async function PATCH(
   }
 }
 
-// Delete prompt
+// Soft delete prompt (admin only - CC0 prompts cannot be deleted by users)
 export async function DELETE(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
@@ -210,10 +210,18 @@ export async function DELETE(
       );
     }
 
-    // Check if prompt exists and user owns it
+    // Only admins can soft-delete prompts (CC0 content is public domain)
+    if (session.user.role !== "ADMIN") {
+      return NextResponse.json(
+        { error: "forbidden", message: "Prompts are released under CC0 and cannot be deleted. Contact an admin if there is an issue." },
+        { status: 403 }
+      );
+    }
+
+    // Check if prompt exists
     const existing = await db.prompt.findUnique({
       where: { id },
-      select: { authorId: true },
+      select: { id: true, deletedAt: true },
     });
 
     if (!existing) {
@@ -223,18 +231,20 @@ export async function DELETE(
       );
     }
 
-    if (existing.authorId !== session.user.id && session.user.role !== "ADMIN") {
+    if (existing.deletedAt) {
       return NextResponse.json(
-        { error: "forbidden", message: "You can only delete your own prompts" },
-        { status: 403 }
+        { error: "already_deleted", message: "Prompt is already deleted" },
+        { status: 400 }
       );
     }
 
-    await db.prompt.delete({
+    // Soft delete by setting deletedAt timestamp
+    await db.prompt.update({
       where: { id },
+      data: { deletedAt: new Date() },
     });
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, message: "Prompt soft deleted" });
   } catch (error) {
     console.error("Delete prompt error:", error);
     return NextResponse.json(

@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { ArrowRight, Bell, FolderOpen, Sparkles } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { getConfig } from "@/lib/config";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { PromptList } from "@/components/prompts/prompt-list";
@@ -14,6 +15,11 @@ export default async function HomePage() {
   const tHomepage = await getTranslations("homepage");
   const tNav = await getTranslations("nav");
   const session = await auth();
+  const config = await getConfig();
+  
+  const isOAuth = config.auth.provider !== "credentials";
+  // Show register button for OAuth (with login text) or credentials with registration enabled
+  const showRegisterButton = isOAuth || (config.auth.provider === "credentials" && config.auth.allowRegistration);
 
   // For logged-in users, show subscribed categories feed
   if (session?.user) {
@@ -182,9 +188,13 @@ export default async function HomePage() {
                     <ArrowRight className="ml-1.5 h-4 w-4" />
                   </Link>
                 </Button>
-                <Button variant="outline" asChild>
-                  <Link href="/register">{tNav("register")}</Link>
-                </Button>
+                {showRegisterButton && (
+                  <Button variant="outline" asChild>
+                    <Link href={isOAuth ? "/login" : "/register"}>
+                      {isOAuth ? tNav("login") : tNav("register")}
+                    </Link>
+                  </Button>
+                )}
               </div>
             </div>
             <div className="hidden md:block">
@@ -234,9 +244,13 @@ export default async function HomePage() {
                 <p className="text-sm text-muted-foreground">{tHomepage("freeAndOpen")}</p>
               </div>
             </div>
-            <Button asChild>
-              <Link href="/register">{tHomepage("createAccount")}</Link>
-            </Button>
+            {showRegisterButton && (
+              <Button asChild>
+                <Link href={isOAuth ? "/login" : "/register"}>
+                  {isOAuth ? tNav("login") : tHomepage("createAccount")}
+                </Link>
+              </Button>
+            )}
           </div>
         </div>
       </section>

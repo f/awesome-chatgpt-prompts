@@ -70,6 +70,7 @@ export async function generateAllEmbeddings(): Promise<{ success: number; failed
     where: { 
       embedding: { equals: Prisma.DbNull },
       isPrivate: false,
+      deletedAt: null,
     },
     select: { id: true },
   });
@@ -148,10 +149,11 @@ export async function semanticSearch(
   // Generate embedding for the query
   const queryEmbedding = await generateEmbedding(query);
 
-  // Fetch all public prompts with embeddings
+  // Fetch all public prompts with embeddings (excluding soft-deleted)
   const prompts = await db.prompt.findMany({
     where: {
       isPrivate: false,
+      deletedAt: null,
       embedding: { not: Prisma.DbNull },
     },
     select: {

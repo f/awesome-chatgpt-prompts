@@ -44,10 +44,14 @@ const languages = [
 ];
 
 interface HeaderProps {
-  showRegister?: boolean;
+  authProvider?: string;
+  allowRegistration?: boolean;
 }
 
-export function Header({ showRegister = true }: HeaderProps) {
+export function Header({ authProvider = "credentials", allowRegistration = true }: HeaderProps) {
+  const isOAuth = authProvider !== "credentials";
+  // Show register button for OAuth (with login text) or credentials with registration enabled
+  const showRegisterButton = isOAuth || (authProvider === "credentials" && allowRegistration);
   const { data: session } = useSession();
   const t = useTranslations();
   const { theme, setTheme } = useTheme();
@@ -300,9 +304,11 @@ export function Header({ showRegister = true }: HeaderProps) {
               <Button variant="ghost" size="sm" className="h-8 text-xs" asChild>
                 <Link href="/login">{t("nav.login")}</Link>
               </Button>
-              {showRegister && (
+              {showRegisterButton && (
                 <Button size="sm" className="h-8 text-xs" asChild>
-                  <Link href="/register">{t("nav.register")}</Link>
+                  <Link href={isOAuth ? "/login" : "/register"}>
+                    {isOAuth ? t("nav.login") : t("nav.register")}
+                  </Link>
                 </Button>
               )}
             </div>

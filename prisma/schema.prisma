@@ -136,6 +136,7 @@ model Prompt {
   viewCount   Int        @default(0)
   isFeatured  Boolean    @default(false)
   featuredAt  DateTime?
+  deletedAt   DateTime?  // Soft delete - CC0 prompts cannot be permanently deleted
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
 
