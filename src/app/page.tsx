@@ -203,11 +203,11 @@ export default async function HomePage() {
         
         <div className="container relative z-20">
           <div className="max-w-2xl">
-            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl !text-3xl sm:!text-4xl md:!text-5xl lg:!text-6xl">
+            <h1 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl lg:text-5xl !text-2xl sm:!text-3xl md:!text-4xl lg:!text-5xl">
               {tHomepage("heroTitle")}
               <span className="block text-primary">{tHomepage("heroSubtitle")}</span>
             </h1>
-            <p className="mt-6 text-muted-foreground text-xl max-w-xl">
+            <p className="mt-6 text-muted-foreground text-lg max-w-xl">
               {tHomepage("heroDescription")}
             </p>
             
