@@ -11,6 +11,7 @@ const updatePromptSchema = z.object({
   structuredFormat: z.enum(["JSON", "YAML"]).optional().nullable(),
   categoryId: z.string().optional().nullable(),
   tagIds: z.array(z.string()).optional(),
+  contributorIds: z.array(z.string()).optional(),
   isPrivate: z.boolean().optional(),
   mediaUrl: z.string().url().optional().or(z.literal("")).nullable(),
   requiresMediaUpload: z.boolean().optional(),
@@ -122,7 +123,7 @@ export async function PATCH(
       );
     }
 
-    const { tagIds, categoryId, mediaUrl, ...data } = parsed.data;
+    const { tagIds, contributorIds, categoryId, mediaUrl, ...data } = parsed.data;
 
     // Convert empty strings to null for optional foreign keys
     const cleanedData = {
@@ -140,6 +141,11 @@ export async function PATCH(
           tags: {
             deleteMany: {},
             create: tagIds.map((tagId) => ({ tagId })),
+          },
+        }),
+        ...(contributorIds !== undefined && {
+          contributors: {
+            set: contributorIds.map((id) => ({ id })),
           },
         }),
       },

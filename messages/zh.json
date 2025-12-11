@@ -85,6 +85,10 @@
     "promptType": "类型",
     "promptCategory": "分类",
     "promptTags": "标签",
+    "promptContributors": "贡献者",
+    "contributorsDescription": "帮助编写此提示词的其他用户。变更请求被批准的用户会自动添加。",
+    "searchContributors": "按用户名搜索...",
+    "noUsersFound": "未找到用户",
     "promptPrivate": "私有",
     "promptPublic": "公开",
     "types": {
@@ -183,6 +187,7 @@
   },
   "categories": {
     "title": "分类",
+    "allCategories": "所有分类",
     "description": "浏览和订阅分类",
     "create": "创建分类",
     "edit": "编辑分类",

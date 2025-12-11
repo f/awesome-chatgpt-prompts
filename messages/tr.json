@@ -87,6 +87,10 @@
     "promptType": "Tür",
     "promptCategory": "Kategori",
     "promptTags": "Etiketler",
+    "promptContributors": "Katkıda Bulunanlar",
+    "contributorsDescription": "Bu prompt'u yazmanda yardımcı olan diğer kullanıcılar. Değişiklik isteğinde bulunup kabul edilenler otomatik eklenir.",
+    "searchContributors": "Kullanıcı adına göre ara...",
+    "noUsersFound": "Kullanıcı bulunamadı",
     "promptPrivate": "Özel",
     "promptPublic": "Herkese Açık",
     "types": {
@@ -199,6 +203,7 @@
   },
   "categories": {
     "title": "Kategoriler",
+    "allCategories": "Tüm Kategoriler",
     "description": "Kategorilere göz atın ve abone olun",
     "create": "Kategori Oluştur",
     "edit": "Kategori Düzenle",

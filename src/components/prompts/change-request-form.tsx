@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Loader2, Eye, Edit3, GitCompare } from "lucide-react";
@@ -11,6 +11,7 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { DiffView } from "@/components/ui/diff-view";
 import { CodeEditor } from "@/components/ui/code-editor";
+import { VariableToolbar } from "@/components/prompts/variable-toolbar";
 import { toast } from "sonner";
 
 interface ChangeRequestFormProps {
@@ -30,6 +31,22 @@ export function ChangeRequestForm({ promptId, currentContent, currentTitle, prom
   const [proposedContent, setProposedContent] = useState(currentContent);
   const [proposedTitle, setProposedTitle] = useState(currentTitle);
   const [reason, setReason] = useState("");
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  const handleInsertVariable = (variable: string) => {
+    if (textareaRef.current) {
+      const start = textareaRef.current.selectionStart;
+      const end = textareaRef.current.selectionEnd;
+      const newContent = proposedContent.slice(0, start) + variable + proposedContent.slice(end);
+      setProposedContent(newContent);
+      setTimeout(() => {
+        textareaRef.current?.focus();
+        textareaRef.current?.setSelectionRange(start + variable.length, start + variable.length);
+      }, 0);
+    } else {
+      setProposedContent(proposedContent + variable);
+    }
+  };
 
   const hasContentChanges = proposedContent !== currentContent;
   const hasTitleChanges = proposedTitle !== currentTitle;
@@ -111,23 +128,28 @@ export function ChangeRequestForm({ promptId, currentContent, currentTitle, prom
           </TabsList>
 
           <TabsContent value="edit" className="mt-0">
-            {isStructured ? (
-              <CodeEditor
-                value={proposedContent}
-                onChange={setProposedContent}
-                language={(structuredFormat?.toLowerCase() as "json" | "yaml") || "json"}
-                minHeight="300px"
-              />
-            ) : (
-              <Textarea
-                id="proposedContent"
-                value={proposedContent}
-                onChange={(e) => setProposedContent(e.target.value)}
-                placeholder={t("proposedContentPlaceholder")}
-                className="min-h-[300px] font-mono text-sm"
-                required
-              />
-            )}
+            <div className="border rounded-lg overflow-hidden">
+              <VariableToolbar onInsert={handleInsertVariable} />
+              {isStructured ? (
+                <CodeEditor
+                  value={proposedContent}
+                  onChange={setProposedContent}
+                  language={(structuredFormat?.toLowerCase() as "json" | "yaml") || "json"}
+                  minHeight="300px"
+                  className="border-0"
+                />
+              ) : (
+                <Textarea
+                  ref={textareaRef}
+                  id="proposedContent"
+                  value={proposedContent}
+                  onChange={(e) => setProposedContent(e.target.value)}
+                  placeholder={t("proposedContentPlaceholder")}
+                  className="min-h-[300px] font-mono text-sm border-0 rounded-none focus-visible:ring-0"
+                  required
+                />
+              )}
+            </div>
           </TabsContent>
 
           <TabsContent value="diff" className="mt-0">

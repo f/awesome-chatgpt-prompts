@@ -87,6 +87,10 @@
     "promptType": "Type",
     "promptCategory": "Category",
     "promptTags": "Tags",
+    "promptContributors": "Contributors",
+    "contributorsDescription": "Other users who helped write this prompt. Users whose change requests are approved are added automatically.",
+    "searchContributors": "Search by username...",
+    "noUsersFound": "No users found",
     "promptPrivate": "Private",
     "promptPublic": "Public",
     "types": {
@@ -199,6 +203,7 @@
   },
   "categories": {
     "title": "Categories",
+    "allCategories": "All Categories",
     "description": "Browse and subscribe to categories",
     "create": "Create Category",
     "edit": "Edit Category",

@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getTranslations, getLocale } from "next-intl/server";
 import { formatDistanceToNow } from "@/lib/date";
-import { Calendar, Clock, Copy, Share2, Edit, History, GitPullRequest, Check, X, Users, ImageIcon, Video, FileText } from "lucide-react";
+import { Calendar, Clock, Copy, Share2, Edit, History, GitPullRequest, Check, X, Users, ImageIcon, Video, FileText, Shield } from "lucide-react";
 import { ShareDropdown } from "@/components/prompts/share-dropdown";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -115,6 +115,8 @@ export default async function PromptPage({ params }: PromptPageProps) {
   }
 
   const isOwner = session?.user?.id === prompt.authorId;
+  const isAdmin = session?.user?.role === "ADMIN";
+  const canEdit = isOwner || isAdmin;
   const voteCount = prompt._count?.votes ?? 0;
   const hasVoted = !!userVote;
 
@@ -185,9 +187,10 @@ export default async function PromptPage({ params }: PromptPageProps) {
             showLabel
           />
           <ShareDropdown title={prompt.title} />
-          {isOwner && (
+          {canEdit && (
             <Button variant="outline" asChild>
               <Link href={`/prompts/${id}/edit`}>
+                {isAdmin && !isOwner && <Shield className="h-4 w-4 mr-1 text-amber-500" />}
                 <Edit className="h-4 w-4 mr-2" />
                 {t("edit")}
               </Link>
@@ -224,7 +227,7 @@ export default async function PromptPage({ params }: PromptPageProps) {
               </TooltipTrigger>
               <TooltipContent side="bottom" className="p-2">
                 <div className="space-y-1">
-                  <div className="text-xs font-medium mb-1.5">Contributors</div>
+                  <div className="text-xs font-medium mb-1.5">{t("promptContributors")}</div>
                   {prompt.contributors.map((contributor) => (
                     <Link
                       key={contributor.id}
@@ -373,7 +376,7 @@ export default async function PromptPage({ params }: PromptPageProps) {
                   promptType={prompt.type}
                   structuredFormat={prompt.structuredFormat}
                 />
-                {isOwner && (
+                {canEdit && (
                   <AddVersionForm promptId={prompt.id} currentContent={prompt.content} />
                 )}
               </div>
@@ -420,7 +423,7 @@ export default async function PromptPage({ params }: PromptPageProps) {
                             structuredFormat={prompt.structuredFormat}
                           />
                         )}
-                        {isOwner && !isLatestVersion && (
+                        {canEdit && !isLatestVersion && (
                           <DeleteVersionButton
                             promptId={prompt.id}
                             versionId={version.id}

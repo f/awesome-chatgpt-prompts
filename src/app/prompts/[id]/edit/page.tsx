@@ -32,6 +32,14 @@ export default async function EditPromptPage({ params }: EditPromptPageProps) {
           tag: true,
         },
       },
+      contributors: {
+        select: {
+          id: true,
+          username: true,
+          name: true,
+          avatar: true,
+        },
+      },
     },
   });
 
@@ -39,8 +47,11 @@ export default async function EditPromptPage({ params }: EditPromptPageProps) {
     notFound();
   }
 
-  // Check if user is the author
-  if (prompt.authorId !== session.user.id) {
+  // Check if user is the author or admin
+  const isAuthor = prompt.authorId === session.user.id;
+  const isAdmin = session.user.role === "ADMIN";
+  
+  if (!isAuthor && !isAdmin) {
     redirect(`/prompts/${id}`);
   }
 
@@ -80,6 +91,7 @@ export default async function EditPromptPage({ params }: EditPromptPageProps) {
         categories={categories}
         tags={tags}
         initialData={initialData}
+        initialContributors={prompt.contributors}
         promptId={id}
         mode="edit"
       />

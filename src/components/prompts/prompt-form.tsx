@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Loader2 } from "lucide-react";
 import { VariableToolbar } from "./variable-toolbar";
+import { ContributorSearch } from "./contributor-search";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -50,6 +51,13 @@ const createPromptSchema = (t: (key: string) => string) => z.object({
 
 type PromptFormValues = z.infer<ReturnType<typeof createPromptSchema>>;
 
+interface Contributor {
+  id: string;
+  username: string;
+  name: string | null;
+  avatar: string | null;
+}
+
 interface PromptFormProps {
   categories: Array<{
     id: string;
@@ -64,15 +72,17 @@ interface PromptFormProps {
     color: string;
   }>;
   initialData?: Partial<PromptFormValues>;
+  initialContributors?: Contributor[];
   promptId?: string;
   mode?: "create" | "edit";
 }
 
-export function PromptForm({ categories, tags, initialData, promptId, mode = "create" }: PromptFormProps) {
+export function PromptForm({ categories, tags, initialData, initialContributors = [], promptId, mode = "create" }: PromptFormProps) {
   const router = useRouter();
   const t = useTranslations("prompts");
   const tCommon = useTranslations("common");
   const [isLoading, setIsLoading] = useState(false);
+  const [contributors, setContributors] = useState<Contributor[]>(initialContributors);
 
   const promptSchema = createPromptSchema(t);
   const form = useForm<PromptFormValues>({
@@ -141,7 +151,10 @@ export function PromptForm({ categories, tags, initialData, promptId, mode = "cr
       const response = await fetch(url, {
         method,
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          ...data,
+          contributorIds: contributors.map((c) => c.id),
+        }),
       });
 
       if (!response.ok) {
@@ -427,6 +440,17 @@ export function PromptForm({ categories, tags, initialData, promptId, mode = "cr
             </FormItem>
           )}
         />
+
+        {/* Contributors */}
+        <div className="space-y-2">
+          <label className="text-sm font-medium block">{t("promptContributors")}</label>
+          <p className="text-xs text-muted-foreground">{t("contributorsDescription")}</p>
+          <ContributorSearch
+            selectedUsers={contributors}
+            onSelect={(user) => setContributors((prev) => [...prev, user])}
+            onRemove={(userId) => setContributors((prev) => prev.filter((u) => u.id !== userId))}
+          />
+        </div>
 
         <div className="flex justify-end gap-4 pt-2">
           <Button type="button" variant="outline" onClick={() => router.back()}>

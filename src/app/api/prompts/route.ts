@@ -12,6 +12,7 @@ const promptSchema = z.object({
   structuredFormat: z.enum(["JSON", "YAML"]).optional(),
   categoryId: z.string().optional(),
   tagIds: z.array(z.string()),
+  contributorIds: z.array(z.string()).optional(),
   isPrivate: z.boolean(),
   mediaUrl: z.string().url().optional().or(z.literal("")),
   requiresMediaUpload: z.boolean().optional(),
@@ -40,7 +41,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const { title, description, content, type, structuredFormat, categoryId, tagIds, isPrivate, mediaUrl, requiresMediaUpload, requiredMediaType, requiredMediaCount } = parsed.data;
+    const { title, description, content, type, structuredFormat, categoryId, tagIds, contributorIds, isPrivate, mediaUrl, requiresMediaUpload, requiredMediaType, requiredMediaCount } = parsed.data;
 
     // Create prompt with tags
     const prompt = await db.prompt.create({
@@ -62,6 +63,11 @@ export async function POST(request: Request) {
             tagId,
           })),
         },
+        ...(contributorIds && contributorIds.length > 0 && {
+          contributors: {
+            connect: contributorIds.map((id) => ({ id })),
+          },
+        }),
       },
       include: {
         author: {

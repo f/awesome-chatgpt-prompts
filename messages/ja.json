@@ -85,6 +85,10 @@
     "promptType": "タイプ",
     "promptCategory": "カテゴリー",
     "promptTags": "タグ",
+    "promptContributors": "コントリビューター",
+    "contributorsDescription": "このプロンプトの作成を手伝った他のユーザー。変更リクエストが承認されたユーザーは自動的に追加されます。",
+    "searchContributors": "ユーザー名で検索...",
+    "noUsersFound": "ユーザーが見つかりません",
     "promptPrivate": "非公開",
     "promptPublic": "公開",
     "types": {
@@ -183,6 +187,7 @@
   },
   "categories": {
     "title": "カテゴリー",
+    "allCategories": "すべてのカテゴリー",
     "description": "カテゴリーを閲覧・購読",
     "create": "カテゴリーを作成",
     "edit": "カテゴリーを編集",
