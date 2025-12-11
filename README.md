@@ -1,8 +1,8 @@
 <p align="center">
-<img width="395" alt="prompts.chat" src="https://github.com/user-attachments/assets/e0d0e32d-d2ce-4459-9f37-e951d9f4f5de" />
+  <img width="558" height="148" alt="Screenshot 2025-12-12 at 02 40 52" src="https://github.com/user-attachments/assets/8de2ba4c-5e89-4aae-aecb-32b188fb1bfb" />
 </p>
 
-<h3 align="center">Sponsors</h3>
+<h2 align="center">Sponsors</h3>
 
 <div align="center">
 
@@ -13,7 +13,7 @@
   <sub>With Clemta, you can run your company from the comfort of your home.</sub>
 <hr>
   <a href="https://github.com/f/mcptools" align="center" target="_blank">
-    <img height="60" alt="Hugging Face logo" src="https://github.com/f/mcptools/raw/master/.github/resources/logo.png">
+    <img height="60" alt="MCPTools logo" src="https://github.com/f/mcptools/raw/master/.github/resources/logo.png">
   </a>
   <br>
   <sub>If you're building MCPs, <a href="https://github.com/f/mcptools">MCP Tools</a> is a Swiss-army knife for MCP Servers.</sub>
@@ -74,8 +74,6 @@ Images from Text"**.
 [prompts.chat](https://prompts.chat) is designed to provide an enhanced UX when
 working with prompts. With just a few clicks, you can easily edit and copy the
 prompts on the site to fit your specific needs and preferences.
-
-<img width="1400" alt="Screenshot 2025-01-05 at 22 17 19" src="https://github.com/user-attachments/assets/272d2092-b651-452a-a049-f46b31c32889" />
 
 ---
 
