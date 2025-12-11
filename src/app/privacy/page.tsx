@@ -1,0 +1,110 @@
+import Link from "next/link";
+
+export const metadata = {
+  title: "Privacy Policy - prompts.chat",
+  description: "Privacy Policy for prompts.chat",
+};
+
+export default function PrivacyPage() {
+  return (
+    <div className="container max-w-3xl py-10">
+      <h1 className="text-2xl font-bold mb-6">Privacy Policy</h1>
+      
+      <div className="prose prose-neutral dark:prose-invert max-w-none space-y-6">
+        <p className="text-muted-foreground">
+          Last updated: {new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+        </p>
+
+        <section className="space-y-3">
+          <h2 className="text-lg font-semibold">Overview</h2>
+          <p className="text-muted-foreground">
+            prompts.chat is an open-source platform for collecting, organizing, and sharing AI prompts. 
+            All prompts shared on this platform are released under the{" "}
+            <Link href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">
+              CC0 (Creative Commons Zero)
+            </Link>{" "}
+            license, meaning they are in the public domain.
+          </p>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="text-lg font-semibold">Information We Collect</h2>
+          <p className="text-muted-foreground">
+            When you create an account, we collect:
+          </p>
+          <ul className="list-disc list-inside text-muted-foreground space-y-1">
+            <li>Email address (for authentication)</li>
+            <li>Username and display name</li>
+            <li>Profile information you choose to provide</li>
+          </ul>
+          <p className="text-muted-foreground">
+            When you use the platform, we collect:
+          </p>
+          <ul className="list-disc list-inside text-muted-foreground space-y-1">
+            <li>Prompts you create and share</li>
+            <li>Categories and tags you assign to prompts</li>
+            <li>Basic usage analytics to improve the service</li>
+          </ul>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="text-lg font-semibold">How We Use Your Information</h2>
+          <p className="text-muted-foreground">
+            We use collected information to:
+          </p>
+          <ul className="list-disc list-inside text-muted-foreground space-y-1">
+            <li>Provide and maintain the service</li>
+            <li>Associate prompts with your account</li>
+            <li>Enable discovery of prompts by other users</li>
+            <li>Improve the platform based on usage patterns</li>
+          </ul>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="text-lg font-semibold">Data Sharing</h2>
+          <p className="text-muted-foreground">
+            Prompts you share are public and released under CC0. Your username will be displayed 
+            alongside your prompts. We do not sell your personal information to third parties.
+          </p>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="text-lg font-semibold">Cookies</h2>
+          <p className="text-muted-foreground">
+            We use essential cookies for authentication and session management. We may use 
+            analytics cookies to understand how the service is used.
+          </p>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="text-lg font-semibold">Your Rights</h2>
+          <p className="text-muted-foreground">
+            You can:
+          </p>
+          <ul className="list-disc list-inside text-muted-foreground space-y-1">
+            <li>Access and update your account information</li>
+            <li>Delete your account and associated data</li>
+            <li>Export your prompts</li>
+          </ul>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="text-lg font-semibold">Open Source</h2>
+          <p className="text-muted-foreground">
+            This platform is open source. You can review the code and self-host your own instance at{" "}
+            <Link href="https://github.com/f/awesome-chatgpt-prompts" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">
+              GitHub
+            </Link>.
+          </p>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="text-lg font-semibold">Contact</h2>
+          <p className="text-muted-foreground">
+            For privacy-related inquiries, please open an issue on our GitHub repository.
+          </p>
+        </section>
+      </div>
+    </div>
+  );
+}
