@@ -397,9 +397,17 @@
     "yourFeed": "あなたのフィード",
     "feedDescription": "購読しているカテゴリーのプロンプト",
     "browseAll": "すべて見る",
+    "discover": "発見",
     "noPromptsInFeed": "フィードにプロンプトがありません",
     "subscribeToCategories": "カテゴリーを購読してここにプロンプトを表示",
     "viewAllCategories": "すべてのカテゴリーを見る"
+  },
+  "discovery": {
+    "featuredPrompts": "注目のプロンプト",
+    "todaysMostUpvoted": "今日最も投票された",
+    "latestPrompts": "最新のプロンプト",
+    "recentlyUpdated": "最近更新",
+    "mostContributed": "最も貢献されたプロンプト"
   },
   "homepage": {
     "heroTitle": "収集・整理・共有",

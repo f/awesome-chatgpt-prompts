@@ -420,9 +420,17 @@
     "yourFeed": "Tu Feed",
     "feedDescription": "Prompts de tus categorías suscritas",
     "browseAll": "Ver Todos",
+    "discover": "Descubrir",
     "noPromptsInFeed": "No hay prompts en tu feed",
     "subscribeToCategories": "Suscríbete a categorías para ver prompts aquí",
     "viewAllCategories": "Ver Todas las Categorías"
+  },
+  "discovery": {
+    "featuredPrompts": "Prompts Destacados",
+    "todaysMostUpvoted": "Más Votados Hoy",
+    "latestPrompts": "Últimos Prompts",
+    "recentlyUpdated": "Actualizados Recientemente",
+    "mostContributed": "Más Contribuidos"
   },
   "homepage": {
     "heroTitle": "Recolecta, Organiza y Comparte",

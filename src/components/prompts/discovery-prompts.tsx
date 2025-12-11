@@ -1,0 +1,241 @@
+import Link from "next/link";
+import { getTranslations } from "next-intl/server";
+import { ArrowRight, Clock, Flame, RefreshCw, Star, Users } from "lucide-react";
+import { db } from "@/lib/db";
+import { Button } from "@/components/ui/button";
+import { PromptCard } from "@/components/prompts/prompt-card";
+
+interface DiscoveryPromptsProps {
+  isHomepage?: boolean;
+}
+
+export async function DiscoveryPrompts({ isHomepage = false }: DiscoveryPromptsProps) {
+  const t = await getTranslations("feed");
+  const tDiscovery = await getTranslations("discovery");
+
+  const limit = isHomepage ? 6 : 15;
+
+  const promptInclude = {
+    author: {
+      select: { id: true, name: true, username: true, avatar: true },
+    },
+    category: {
+      select: { id: true, name: true, slug: true },
+    },
+    tags: {
+      include: { tag: true },
+    },
+    contributors: {
+      select: { id: true, username: true, name: true, avatar: true },
+    },
+    _count: {
+      select: { votes: true, contributors: true },
+    },
+  };
+
+  // Get today's date at midnight for filtering today's votes
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const [featuredPromptsRaw, todaysMostUpvotedRaw, latestPromptsRaw, recentlyUpdatedRaw, mostContributedRaw] = await Promise.all([
+    db.prompt.findMany({
+      where: {
+        isPrivate: false,
+        isFeatured: true,
+      },
+      orderBy: { featuredAt: "desc" },
+      take: limit,
+      include: promptInclude,
+    }),
+    // Today's most upvoted - prompts with votes from today, ordered by vote count
+    db.prompt.findMany({
+      where: {
+        isPrivate: false,
+        votes: {
+          some: {
+            createdAt: {
+              gte: today,
+            },
+          },
+        },
+      },
+      orderBy: {
+        votes: {
+          _count: "desc",
+        },
+      },
+      take: limit,
+      include: promptInclude,
+    }),
+    db.prompt.findMany({
+      where: {
+        isPrivate: false,
+      },
+      orderBy: { createdAt: "desc" },
+      take: limit,
+      include: promptInclude,
+    }),
+    db.prompt.findMany({
+      where: {
+        isPrivate: false,
+      },
+      orderBy: { updatedAt: "desc" },
+      take: limit,
+      include: promptInclude,
+    }),
+    db.prompt.findMany({
+      where: {
+        isPrivate: false,
+      },
+      orderBy: {
+        contributors: {
+          _count: "desc",
+        },
+      },
+      take: limit,
+      include: promptInclude,
+    }),
+  ]);
+
+  const mapPrompt = (p: typeof featuredPromptsRaw[0]) => ({
+    ...p,
+    voteCount: p._count?.votes ?? 0,
+    contributorCount: p._count?.contributors ?? 0,
+    contributors: p.contributors,
+  });
+
+  const featuredPrompts = featuredPromptsRaw.map(mapPrompt);
+  const todaysMostUpvoted = todaysMostUpvotedRaw.map(mapPrompt);
+  const latestPrompts = latestPromptsRaw.map(mapPrompt);
+  const recentlyUpdated = recentlyUpdatedRaw.map(mapPrompt);
+  const mostContributed = mostContributedRaw.map(mapPrompt);
+
+  return (
+    <div className={isHomepage ? "flex flex-col" : "container py-6"}>
+      {/* Featured Prompts Section */}
+      {featuredPrompts.length > 0 && (
+        <section className={isHomepage ? "py-12 border-b" : "pb-8 mb-8 border-b"}>
+          <div className={isHomepage ? "container" : ""}>
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-2">
+                <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                <h2 className="text-xl font-semibold">{tDiscovery("featuredPrompts")}</h2>
+              </div>
+              <Button variant="ghost" size="sm" asChild>
+                <Link href="/prompts">
+                  {t("browseAll")}
+                  <ArrowRight className="ml-1.5 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
+              {featuredPrompts.map((prompt) => (
+                <PromptCard key={prompt.id} prompt={prompt} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Today's Most Upvoted Section */}
+      {todaysMostUpvoted.length > 0 && (
+        <section className={isHomepage ? "py-12 border-b" : "pb-8 mb-8 border-b"}>
+          <div className={isHomepage ? "container" : ""}>
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-2">
+                <Flame className="h-5 w-5 text-orange-500" />
+                <h2 className="text-xl font-semibold">{tDiscovery("todaysMostUpvoted")}</h2>
+              </div>
+              <Button variant="ghost" size="sm" asChild>
+                <Link href="/prompts">
+                  {t("browseAll")}
+                  <ArrowRight className="ml-1.5 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
+              {todaysMostUpvoted.map((prompt) => (
+                <PromptCard key={prompt.id} prompt={prompt} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Latest Prompts Section */}
+      {latestPrompts.length > 0 && (
+        <section className={isHomepage ? "py-12 border-b" : "pb-8 mb-8 border-b"}>
+          <div className={isHomepage ? "container" : ""}>
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-2">
+                <Clock className="h-5 w-5 text-muted-foreground" />
+                <h2 className="text-xl font-semibold">{tDiscovery("latestPrompts")}</h2>
+              </div>
+              <Button variant="ghost" size="sm" asChild>
+                <Link href="/prompts">
+                  {t("browseAll")}
+                  <ArrowRight className="ml-1.5 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
+              {latestPrompts.map((prompt) => (
+                <PromptCard key={prompt.id} prompt={prompt} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Recently Updated Section */}
+      {recentlyUpdated.length > 0 && (
+        <section className={isHomepage ? "py-12 border-b" : "pb-8 mb-8 border-b"}>
+          <div className={isHomepage ? "container" : ""}>
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-2">
+                <RefreshCw className="h-5 w-5 text-blue-500" />
+                <h2 className="text-xl font-semibold">{tDiscovery("recentlyUpdated")}</h2>
+              </div>
+              <Button variant="ghost" size="sm" asChild>
+                <Link href="/prompts">
+                  {t("browseAll")}
+                  <ArrowRight className="ml-1.5 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
+              {recentlyUpdated.map((prompt) => (
+                <PromptCard key={prompt.id} prompt={prompt} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Most Contributed Section */}
+      {mostContributed.length > 0 && (
+        <section className={isHomepage ? "py-12 border-b" : "pb-8"}>
+          <div className={isHomepage ? "container" : ""}>
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-2">
+                <Users className="h-5 w-5 text-green-500" />
+                <h2 className="text-xl font-semibold">{tDiscovery("mostContributed")}</h2>
+              </div>
+              <Button variant="ghost" size="sm" asChild>
+                <Link href="/prompts">
+                  {t("browseAll")}
+                  <ArrowRight className="ml-1.5 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
+              {mostContributed.map((prompt) => (
+                <PromptCard key={prompt.id} prompt={prompt} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+    </div>
+  );
+}

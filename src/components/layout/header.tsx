@@ -67,21 +67,68 @@ export function Header({ showRegister = true }: HeaderProps) {
               <span className="sr-only">Toggle menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="w-[300px]">
-            <nav className="flex flex-col gap-4 mt-4">
-              <Link href="/" className="text-lg font-semibold">
-                {branding.name}
-              </Link>
-              <Link href="/prompts" className="text-muted-foreground hover:text-foreground">
-                {t("nav.prompts")}
-              </Link>
-              <Link href="/categories" className="text-muted-foreground hover:text-foreground">
-                {t("nav.categories")}
-              </Link>
-              <Link href="/tags" className="text-muted-foreground hover:text-foreground">
-                {t("nav.tags")}
-              </Link>
-            </nav>
+          <SheetContent side="left" className="w-[280px] p-0">
+            <div className="flex flex-col h-full">
+              {/* Header */}
+              <div className="flex items-center gap-3 p-6 border-b">
+                {branding.logo && (
+                  <>
+                    <Image
+                      src={branding.logo}
+                      alt={branding.name}
+                      width={32}
+                      height={32}
+                      className="h-8 w-8 dark:hidden"
+                    />
+                    <Image
+                      src={branding.logoDark || branding.logo}
+                      alt={branding.name}
+                      width={32}
+                      height={32}
+                      className="h-8 w-8 hidden dark:block"
+                    />
+                  </>
+                )}
+                <span className="text-lg font-semibold">{branding.name}</span>
+              </div>
+
+              {/* Navigation */}
+              <nav className="flex-1 p-4">
+                <div className="space-y-1">
+                  <Link 
+                    href="/prompts" 
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+                  >
+                    {t("nav.prompts")}
+                  </Link>
+                  <Link 
+                    href="/categories" 
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+                  >
+                    {t("nav.categories")}
+                  </Link>
+                  <Link 
+                    href="/tags" 
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+                  >
+                    {t("nav.tags")}
+                  </Link>
+                  <Link 
+                    href="/discover" 
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+                  >
+                    {t("feed.discover")}
+                  </Link>
+                </div>
+              </nav>
+
+              {/* Footer */}
+              <div className="p-4 border-t">
+                <p className="text-xs text-muted-foreground text-center">
+                  {branding.name}
+                </p>
+              </div>
+            </div>
           </SheetContent>
         </Sheet>
 

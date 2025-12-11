@@ -403,9 +403,17 @@
     "yourFeed": "خلاصتك",
     "feedDescription": "أوامر من التصنيفات المشترك بها",
     "browseAll": "تصفح الكل",
+    "discover": "اكتشف",
     "noPromptsInFeed": "لا توجد أوامر في خلاصتك",
     "subscribeToCategories": "اشترك في التصنيفات لرؤية الأوامر هنا",
     "viewAllCategories": "عرض جميع التصنيفات"
+  },
+  "discovery": {
+    "featuredPrompts": "الأوامر المميزة",
+    "todaysMostUpvoted": "الأكثر تصويتاً اليوم",
+    "latestPrompts": "أحدث الأوامر",
+    "recentlyUpdated": "المحدثة مؤخراً",
+    "mostContributed": "الأكثر مساهمة"
   },
   "homepage": {
     "heroTitle": "اجمع، نظّم وشارك",

@@ -502,9 +502,17 @@
     "yourFeed": "Akışınız",
     "feedDescription": "Abone olduğunuz kategorilerden promptlar",
     "browseAll": "Tümüne Göz At",
+    "discover": "Keşfet",
     "noPromptsInFeed": "Akışınızda prompt yok",
     "subscribeToCategories": "Burada promptları görmek için kategorilere abone olun",
     "viewAllCategories": "Tüm Kategorileri Gör"
+  },
+  "discovery": {
+    "featuredPrompts": "Öne Çıkan Promptlar",
+    "todaysMostUpvoted": "Bugün En Çok Oy Alanlar",
+    "latestPrompts": "En Son Promptlar",
+    "recentlyUpdated": "Son Güncellenenler",
+    "mostContributed": "En Çok Katkı Alanlar"
   },
   "homepage": {
     "heroTitle": "Topla, Düzenle ve Paylaş",

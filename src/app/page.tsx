@@ -1,13 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { ArrowRight, Bell, Clock, FolderOpen, Star } from "lucide-react";
+import { ArrowRight, Bell, FolderOpen, Sparkles } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { PromptList } from "@/components/prompts/prompt-list";
-import { PromptCard } from "@/components/prompts/prompt-card";
+import { DiscoveryPrompts } from "@/components/prompts/discovery-prompts";
 
 export default async function HomePage() {
   const t = await getTranslations("feed");
@@ -95,12 +95,20 @@ export default async function HomePage() {
               {t("feedDescription")}
             </p>
           </div>
-          <Button variant="outline" size="sm" asChild>
-            <Link href="/prompts">
-              {t("browseAll")}
-              <ArrowRight className="ml-1.5 h-4 w-4" />
-            </Link>
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button variant="outline" size="sm" asChild>
+              <Link href="/prompts">
+                {t("browseAll")}
+                <ArrowRight className="ml-1.5 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button variant="outline" size="sm" asChild>
+              <Link href="/discover">
+                <Sparkles className="mr-1.5 h-4 w-4" />
+                {t("discover")}
+              </Link>
+            </Button>
+          </div>
         </div>
 
         {/* Subscribed Categories */}
@@ -147,62 +155,10 @@ export default async function HomePage() {
             </div>
           </div>
         )}
+
       </div>
     );
   }
-
-  // Fetch featured prompts and latest prompts for landing page
-  const promptInclude = {
-    author: {
-      select: { id: true, name: true, username: true, avatar: true },
-    },
-    category: {
-      select: { id: true, name: true, slug: true },
-    },
-    tags: {
-      include: { tag: true },
-    },
-    contributors: {
-      select: { id: true, username: true, name: true, avatar: true },
-    },
-    _count: {
-      select: { votes: true, contributors: true },
-    },
-  };
-
-  const [featuredPromptsRaw, latestPromptsRaw] = await Promise.all([
-    db.prompt.findMany({
-      where: {
-        isPrivate: false,
-        isFeatured: true,
-      },
-      orderBy: { featuredAt: "desc" },
-      take: 6,
-      include: promptInclude,
-    }),
-    db.prompt.findMany({
-      where: {
-        isPrivate: false,
-      },
-      orderBy: { createdAt: "desc" },
-      take: 6,
-      include: promptInclude,
-    }),
-  ]);
-
-  const featuredPrompts = featuredPromptsRaw.map((p) => ({
-    ...p,
-    voteCount: p._count?.votes ?? 0,
-    contributorCount: p._count?.contributors ?? 0,
-    contributors: p.contributors,
-  }));
-
-  const latestPrompts = latestPromptsRaw.map((p) => ({
-    ...p,
-    voteCount: p._count?.votes ?? 0,
-    contributorCount: p._count?.contributors ?? 0,
-    contributors: p.contributors,
-  }));
 
   // For non-logged-in users, show landing page
   return (
@@ -251,55 +207,8 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Featured Prompts Section */}
-      {featuredPrompts.length > 0 && (
-        <section className="py-12 border-b">
-          <div className="container">
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-2">
-                <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
-                <h2 className="text-xl font-semibold">{tHomepage("featuredPrompts")}</h2>
-              </div>
-              <Button variant="ghost" size="sm" asChild>
-                <Link href="/prompts">
-                  {t("browseAll")}
-                  <ArrowRight className="ml-1.5 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
-              {featuredPrompts.map((prompt) => (
-                <PromptCard key={prompt.id} prompt={prompt} />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Latest Prompts Section */}
-      {latestPrompts.length > 0 && (
-        <section className="py-12 border-b">
-          <div className="container">
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-2">
-                <Clock className="h-5 w-5 text-muted-foreground" />
-                <h2 className="text-xl font-semibold">{tHomepage("latestPrompts")}</h2>
-              </div>
-              <Button variant="ghost" size="sm" asChild>
-                <Link href="/prompts">
-                  {t("browseAll")}
-                  <ArrowRight className="ml-1.5 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
-              {latestPrompts.map((prompt) => (
-                <PromptCard key={prompt.id} prompt={prompt} />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+      {/* Featured & Latest Prompts Section */}
+      <DiscoveryPrompts isHomepage />
 
       {/* CTA Section */}
       <section className="py-12">

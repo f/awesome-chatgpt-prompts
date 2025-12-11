@@ -502,9 +502,17 @@
     "yourFeed": "Your Feed",
     "feedDescription": "Prompts from your subscribed categories",
     "browseAll": "Browse All",
+    "discover": "Discover",
     "noPromptsInFeed": "No prompts in your feed",
     "subscribeToCategories": "Subscribe to categories to see prompts here",
     "viewAllCategories": "View All Categories"
+  },
+  "discovery": {
+    "featuredPrompts": "Featured Prompts",
+    "todaysMostUpvoted": "Today's Most Upvoted",
+    "latestPrompts": "Latest Prompts",
+    "recentlyUpdated": "Recently Updated",
+    "mostContributed": "Most Contributed"
   },
   "homepage": {
     "heroTitle": "Collect, Organize & Share",
