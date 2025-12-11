@@ -17,12 +17,14 @@ import { Plus, MoreHorizontal, Pencil, Trash2, Webhook, Slack, X, Play } from "l
 import { SLACK_PRESET_PAYLOAD, WEBHOOK_PLACEHOLDERS } from "@/lib/webhook";
 import { CodeEditor } from "@/components/ui/code-editor";
 
+import type { JsonValue } from "@prisma/client/runtime/library";
+
 interface WebhookConfig {
   id: string;
   name: string;
   url: string;
   method: string;
-  headers: Record<string, string> | null;
+  headers: JsonValue;
   payload: string;
   events: string[];
   isEnabled: boolean;
@@ -156,9 +158,9 @@ export function WebhooksTable({ webhooks: initialWebhooks }: WebhooksTableProps)
     return Object.fromEntries(filtered.map((h) => [h.key, h.value]));
   };
 
-  const objectToHeaders = (obj: Record<string, string> | null): HeaderEntry[] => {
-    if (!obj) return [];
-    return Object.entries(obj).map(([key, value]) => ({ key, value }));
+  const objectToHeaders = (obj: JsonValue): HeaderEntry[] => {
+    if (!obj || typeof obj !== "object" || Array.isArray(obj)) return [];
+    return Object.entries(obj).map(([key, value]) => ({ key, value: String(value) }));
   };
 
   const handleCreate = async () => {
