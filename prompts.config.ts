@@ -1,5 +1,8 @@
 import { defineConfig } from "@/lib/config";
 
+// Set to true to use clone branding (hide prompts.chat repo branding)
+const useCloneBranding = false;
+
 export default defineConfig({
   // Branding - customize for white-label
   branding: {
@@ -60,11 +63,13 @@ export default defineConfig({
 
   // Homepage customization
   homepage: {
+    // Set to true to hide prompts.chat repo branding and use your own branding
+    useCloneBranding,
     achievements: {
-      enabled: true,
+      enabled: !useCloneBranding,
     },
     sponsors: {
-      enabled: true,
+      enabled: !useCloneBranding,
       items: [
         // Add sponsors here
         { name: "Clemta", logo: "https://clemta.com/wp-content/uploads/2023/03/logo-clemta-com-1.png.webp", url: "https://clemta.com" },

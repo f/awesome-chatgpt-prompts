@@ -94,7 +94,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={isRtl ? "rtl" : "ltr"} suppressHydrationWarning className={themeClasses} style={themeStyles}>
-      <head>
+      <body className={`${fontClasses} antialiased`}>
         {process.env.GOOGLE_ANALYTICS_ID && (
           <>
             <Script
@@ -111,8 +111,6 @@ export default async function RootLayout({
             </Script>
           </>
         )}
-      </head>
-      <body className={`${fontClasses} antialiased`}>
         <Providers locale={locale} messages={messages} theme={config.theme} branding={config.branding}>
           <div className="relative min-h-screen flex flex-col">
             <Header authProvider={config.auth.provider} allowRegistration={config.auth.allowRegistration} />

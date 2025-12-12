@@ -99,6 +99,14 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
               {/* Navigation */}
               <nav className="flex-1 p-4">
                 <div className="space-y-1">
+                  {user && (
+                    <Link 
+                      href="/feed" 
+                      className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+                    >
+                      {t("nav.feed")}
+                    </Link>
+                  )}
                   <Link 
                     href="/prompts" 
                     className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
@@ -167,6 +175,14 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-1 text-sm">
+          {user && (
+            <Link
+              href="/feed"
+              className="px-3 py-1.5 rounded-md text-muted-foreground transition-colors hover:text-foreground hover:bg-accent"
+            >
+              {t("nav.feed")}
+            </Link>
+          )}
           <Link
             href="/prompts"
             className="px-3 py-1.5 rounded-md text-muted-foreground transition-colors hover:text-foreground hover:bg-accent"

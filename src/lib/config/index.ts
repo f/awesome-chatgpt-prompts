@@ -49,6 +49,8 @@ export interface Sponsor {
 }
 
 export interface HomepageConfig {
+  // Hide prompts.chat repo branding (achievements, GitHub links) and use clone's branding
+  useCloneBranding?: boolean;
   achievements?: {
     enabled: boolean;
   };
