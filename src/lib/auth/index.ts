@@ -102,18 +102,43 @@ function CustomPrismaAdapter(): Adapter {
   };
 }
 
+// Helper to get providers from config (supports both old `provider` and new `providers` array)
+function getConfiguredProviders(config: Awaited<ReturnType<typeof getConfig>>): string[] {
+  // Support new `providers` array
+  if (config.auth.providers && config.auth.providers.length > 0) {
+    return config.auth.providers;
+  }
+  // Backward compatibility with old `provider` string
+  if (config.auth.provider) {
+    return [config.auth.provider];
+  }
+  // Default to credentials
+  return ["credentials"];
+}
+
 // Build auth config dynamically based on prompts.config.ts
 async function buildAuthConfig() {
   const config = await getConfig();
-  const authPlugin = getAuthPlugin(config.auth.provider);
+  const providerIds = getConfiguredProviders(config);
+  
+  const authProviders = providerIds
+    .map((id) => {
+      const plugin = getAuthPlugin(id);
+      if (!plugin) {
+        console.warn(`Auth plugin "${id}" not found, skipping`);
+        return null;
+      }
+      return plugin.getProvider();
+    })
+    .filter((p): p is NonNullable<typeof p> => p !== null);
 
-  if (!authPlugin) {
-    throw new Error(`Auth plugin "${config.auth.provider}" not found`);
+  if (authProviders.length === 0) {
+    throw new Error(`No valid auth plugins found. Configured: ${providerIds.join(", ")}`);
   }
 
   return {
     adapter: CustomPrismaAdapter(),
-    providers: [authPlugin.getProvider()],
+    providers: authProviders,
     session: {
       strategy: "jwt" as const,
     },

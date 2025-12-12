@@ -9,10 +9,23 @@ export const metadata: Metadata = {
   description: "Login to your account",
 };
 
+// Helper to get providers from config (supports both old `provider` and new `providers` array)
+function getProviders(config: Awaited<ReturnType<typeof getConfig>>): string[] {
+  if (config.auth.providers && config.auth.providers.length > 0) {
+    return config.auth.providers;
+  }
+  if (config.auth.provider) {
+    return [config.auth.provider];
+  }
+  return ["credentials"];
+}
+
 export default async function LoginPage() {
   const t = await getTranslations("auth");
   const config = await getConfig();
-  const isCredentials = config.auth.provider === "credentials";
+  const providers = getProviders(config);
+  const hasCredentials = providers.includes("credentials");
+  const hasOnlyCredentials = providers.length === 1 && hasCredentials;
 
   return (
     <div className="container flex min-h-[calc(100vh-6rem)] flex-col items-center justify-center py-8">
@@ -20,13 +33,13 @@ export default async function LoginPage() {
         <div className="text-center space-y-1">
           <h1 className="text-xl font-semibold">{t("login")}</h1>
           <p className="text-xs text-muted-foreground">
-            {isCredentials ? t("loginDescription") : t("loginDescriptionOAuth")}
+            {hasOnlyCredentials ? t("loginDescription") : t("loginDescriptionOAuth")}
           </p>
         </div>
         <div className="border rounded-lg p-4">
-          <AuthContent provider={config.auth.provider} mode="login" />
+          <AuthContent providers={providers} mode="login" />
         </div>
-        {isCredentials && (
+        {hasCredentials && (
           <p className="text-center text-xs text-muted-foreground">
             {t("noAccount")}{" "}
             <Link href="/register" className="text-foreground hover:underline">{t("register")}</Link>

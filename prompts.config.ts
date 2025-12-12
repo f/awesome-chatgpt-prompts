@@ -27,11 +27,12 @@ export default defineConfig({
     },
   },
 
-  // Authentication plugin
+  // Authentication plugins
   auth: {
     // Available: "credentials" | "google" | "azure" | "github" | custom
-    provider: "github",
-    // Allow public registration
+    // Use `providers` array to enable multiple auth providers
+    providers: ["github", "google"],
+    // Allow public registration (only applies to credentials provider)
     allowRegistration: false,
   },
 
