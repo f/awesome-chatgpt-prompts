@@ -105,11 +105,15 @@ OPENAI_API_KEY="your-openai-api-key"
 Customize your instance by editing `prompts.config.ts`:
 
 ```typescript
+// Set to true to use your own branding instead of prompts.chat branding
+const useCloneBranding = true;
+
 export default defineConfig({
   // Branding
   branding: {
     name: "Your Prompt Library",
     logo: "/your-logo.svg",
+    logoDark: "/your-logo-dark.svg",
     description: "Your custom description",
   },
 
@@ -137,6 +141,17 @@ export default defineConfig({
     aiSearch: false,  // Requires OPENAI_API_KEY
   },
 
+  // Homepage
+  homepage: {
+    useCloneBranding,  // Use your branding on homepage
+    achievements: {
+      enabled: !useCloneBranding,  // Hide prompts.chat achievements
+    },
+    sponsors: {
+      enabled: !useCloneBranding,  // Hide prompts.chat sponsors
+    },
+  },
+
   // Internationalization
   i18n: {
     locales: ["en", "es", "ja", "tr", "zh"],
@@ -144,6 +159,19 @@ export default defineConfig({
   },
 });
 ```
+
+### Clone Branding Mode
+
+When `useCloneBranding` is set to `true`, the homepage will:
+
+- Display your **branding name** as the hero title
+- Show your **branding description** below the title
+- Use your **logo** as a watermark background instead of the video
+- Hide the "Clone on GitHub" button
+- Hide the achievements section (Forbes, GitHub stars, etc.)
+- Hide the sponsor links and "Become a Sponsor" CTA
+
+This is ideal for organizations that want to deploy their own white-labeled prompt library without prompts.chat branding.
 
 ## Docker Deployment
 
