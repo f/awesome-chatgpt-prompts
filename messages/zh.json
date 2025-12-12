@@ -150,8 +150,10 @@
     "unpinned": "已从个人资料取消置顶",
     "pinFailed": "置顶更新失败",
     "pinnedPrompts": "已置顶",
-    "previous": "上一页",
-    "next": "下一页"
+    "previous": "上一个",
+    "next": "下一个",
+    "mediaLoadError": "无法加载此提示词的媒体。URL可能无效或资源已不可用。",
+    "mediaUnavailable": "媒体不可用"
   },
   "changeRequests": {
     "title": "变更请求",

@@ -167,7 +167,9 @@
     "pinFailed": "Sabitleme güncellenemedi",
     "pinnedPrompts": "Sabitlenmiş",
     "previous": "Önceki",
-    "next": "Sonraki"
+    "next": "Sonraki",
+    "mediaLoadError": "Bu prompt için medya yüklenemedi. URL geçersiz olabilir veya kaynak artık mevcut değil.",
+    "mediaUnavailable": "Medya kullanılamıyor"
   },
   "changeRequests": {
     "title": "Değişiklik İstekleri",

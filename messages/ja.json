@@ -151,7 +151,9 @@
     "pinFailed": "固定の更新に失敗しました",
     "pinnedPrompts": "固定済み",
     "previous": "前へ",
-    "next": "次へ"
+    "next": "次へ",
+    "mediaLoadError": "このプロンプトのメディアを読み込めませんでした。URLが無効であるか、リソースが利用できなくなっている可能性があります。",
+    "mediaUnavailable": "メディアを利用できません"
   },
   "changeRequests": {
     "title": "変更リクエスト",

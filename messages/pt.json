@@ -167,7 +167,9 @@
     "pinFailed": "Falha ao atualizar fixação",
     "pinnedPrompts": "Fixados",
     "previous": "Anterior",
-    "next": "Próximo"
+    "next": "Próximo",
+    "mediaLoadError": "A mídia deste prompt não pôde ser carregada. A URL pode ser inválida ou o recurso não está mais disponível.",
+    "mediaUnavailable": "Mídia indisponível"
   },
   "changeRequests": {
     "title": "Solicitações de Alteração",

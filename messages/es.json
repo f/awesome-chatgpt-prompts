@@ -151,7 +151,9 @@
     "pinFailed": "Error al actualizar fijado",
     "pinnedPrompts": "Fijados",
     "previous": "Anterior",
-    "next": "Siguiente"
+    "next": "Siguiente",
+    "mediaLoadError": "No se pudo cargar el medio de este prompt. La URL puede ser inválida o el recurso ya no está disponible.",
+    "mediaUnavailable": "Medio no disponible"
   },
   "changeRequests": {
     "title": "Solicitudes de Cambio",

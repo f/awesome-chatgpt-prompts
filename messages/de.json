@@ -167,7 +167,9 @@
     "pinFailed": "Anheften fehlgeschlagen",
     "pinnedPrompts": "Angeheftet",
     "previous": "Zurück",
-    "next": "Weiter"
+    "next": "Weiter",
+    "mediaLoadError": "Das Medium für diesen Prompt konnte nicht geladen werden. Die URL ist möglicherweise ungültig oder die Ressource ist nicht mehr verfügbar.",
+    "mediaUnavailable": "Medium nicht verfügbar"
   },
   "changeRequests": {
     "title": "Änderungsanfragen",

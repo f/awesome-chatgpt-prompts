@@ -167,7 +167,9 @@
     "pinFailed": "고정 업데이트 실패",
     "pinnedPrompts": "고정됨",
     "previous": "이전",
-    "next": "다음"
+    "next": "다음",
+    "mediaLoadError": "이 프롬프트의 미디어를 불러올 수 없습니다. URL이 잘못되었거나 리소스를 더 이상 사용할 수 없습니다.",
+    "mediaUnavailable": "미디어를 사용할 수 없음"
   },
   "changeRequests": {
     "title": "변경 요청",

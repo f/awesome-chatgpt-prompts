@@ -167,7 +167,9 @@
     "pinFailed": "Failed to update pin",
     "pinnedPrompts": "Pinned",
     "previous": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "mediaLoadError": "The media for this prompt could not be loaded. The URL may be invalid or the resource is no longer available.",
+    "mediaUnavailable": "Media unavailable"
   },
   "changeRequests": {
     "title": "Change Requests",

@@ -69,6 +69,7 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
   const locale = useLocale();
   const [modalOpen, setModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState<"copy" | "run">("copy");
+  const [imageError, setImageError] = useState(false);
 
   const hasMediaBackground = prompt.type === "IMAGE" || (prompt.type === "STRUCTURED" && !!prompt.mediaUrl);
   const contentHasVariables = hasVariables(prompt.content);
@@ -99,13 +100,14 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
       {/* Image Background for IMAGE type or STRUCTURED with media */}
       {hasMediaBackground && (
         <div className="relative h-32 bg-muted">
-          {prompt.mediaUrl ? (
+          {prompt.mediaUrl && !imageError ? (
             <Image
               src={prompt.mediaUrl}
               alt={prompt.title}
               fill
               className="object-cover"
               unoptimized
+              onError={() => setImageError(true)}
             />
           ) : (
             <div className="absolute inset-0 flex items-center justify-center">

@@ -167,7 +167,9 @@
     "pinFailed": "Échec de la mise à jour de l'épingle",
     "pinnedPrompts": "Épinglés",
     "previous": "Précédent",
-    "next": "Suivant"
+    "next": "Suivant",
+    "mediaLoadError": "Le média de ce prompt n'a pas pu être chargé. L'URL est peut-être invalide ou la ressource n'est plus disponible.",
+    "mediaUnavailable": "Média non disponible"
   },
   "changeRequests": {
     "title": "Demandes de Modification",
