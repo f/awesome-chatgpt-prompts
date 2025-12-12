@@ -43,7 +43,7 @@ export default defineConfig({
 
   // Internationalization
   i18n: {
-    locales: ["en", "tr", "es", "zh", "ja"],
+    locales: ["en", "tr", "es", "zh", "ja", "ar", "pt", "fr", "de", "ko"],
     defaultLocale: "en",
   },
 
