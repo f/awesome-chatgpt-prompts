@@ -28,6 +28,7 @@ model User {
   avatar        String?
   role          UserRole  @default(USER)
   locale        String    @default("en")
+  verified      Boolean   @default(false)
   emailVerified DateTime?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt

@@ -305,6 +305,11 @@
       "deleteFailed": "Failed to delete user",
       "roleUpdated": "User role updated",
       "roleUpdateFailed": "Failed to update role",
+      "verify": "Verify",
+      "unverify": "Unverify",
+      "verified": "User verified",
+      "unverified": "User unverified",
+      "verifyFailed": "Failed to update verification",
       "deleteConfirmTitle": "Delete User?",
       "deleteConfirmDescription": "This action cannot be undone. All user data will be permanently deleted."
     },

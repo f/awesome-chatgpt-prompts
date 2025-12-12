@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getTranslations, getLocale } from "next-intl/server";
 import { formatDistanceToNow } from "@/lib/date";
-import { Calendar, ArrowBigUp, FileText, Settings, GitPullRequest, Clock, Check, X, Pin } from "lucide-react";
+import { Calendar, ArrowBigUp, FileText, Settings, GitPullRequest, Clock, Check, X, Pin, BadgeCheck } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -75,6 +75,7 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
       email: true,
       avatar: true,
       role: true,
+      verified: true,
       createdAt: true,
       _count: {
         select: {
@@ -283,6 +284,9 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <h1 className="text-2xl font-bold">{user.name || user.username}</h1>
+                {user.verified && (
+                  <BadgeCheck className="h-5 w-5 text-blue-500" />
+                )}
                 {user.role === "ADMIN" && (
                   <Badge variant="default" className="text-xs">Admin</Badge>
                 )}

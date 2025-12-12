@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations, useLocale } from "next-intl";
 import { formatDistanceToNow } from "@/lib/date";
-import { MoreHorizontal, Shield, User, Trash2 } from "lucide-react";
+import { MoreHorizontal, Shield, User, Trash2, BadgeCheck } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -42,6 +42,7 @@ interface User {
   name: string | null;
   avatar: string | null;
   role: "ADMIN" | "USER";
+  verified: boolean;
   createdAt: Date;
   _count: {
     prompts: number;
@@ -73,6 +74,23 @@ export function UsersTable({ users }: UsersTableProps) {
       router.refresh();
     } catch {
       toast.error(t("roleUpdateFailed"));
+    }
+  };
+
+  const handleVerifyToggle = async (userId: string, verified: boolean) => {
+    try {
+      const res = await fetch(`/api/admin/users/${userId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ verified }),
+      });
+
+      if (!res.ok) throw new Error("Failed to update verification");
+
+      toast.success(verified ? t("verified") : t("unverified"));
+      router.refresh();
+    } catch {
+      toast.error(t("verifyFailed"));
     }
   };
 
@@ -130,7 +148,10 @@ export function UsersTable({ users }: UsersTableProps) {
                       </AvatarFallback>
                     </Avatar>
                     <div>
-                      <div className="font-medium">{user.name || user.username}</div>
+                      <div className="font-medium flex items-center gap-1">
+                        {user.name || user.username}
+                        {user.verified && <BadgeCheck className="h-4 w-4 text-blue-500" />}
+                      </div>
                       <div className="text-xs text-muted-foreground">@{user.username}</div>
                     </div>
                   </div>
@@ -165,6 +186,10 @@ export function UsersTable({ users }: UsersTableProps) {
                           {t("removeAdmin")}
                         </DropdownMenuItem>
                       )}
+                      <DropdownMenuItem onClick={() => handleVerifyToggle(user.id, !user.verified)}>
+                        <BadgeCheck className="h-4 w-4 mr-2" />
+                        {user.verified ? t("unverify") : t("verify")}
+                      </DropdownMenuItem>
                       <DropdownMenuSeparator />
                       <DropdownMenuItem
                         className="text-destructive"

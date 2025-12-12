@@ -271,6 +271,11 @@
       "deleteFailed": "فشل حذف المستخدم",
       "roleUpdated": "تم تحديث دور المستخدم",
       "roleUpdateFailed": "فشل تحديث الدور",
+      "verify": "توثيق",
+      "unverify": "إلغاء التوثيق",
+      "verified": "تم توثيق المستخدم",
+      "unverified": "تم إلغاء توثيق المستخدم",
+      "verifyFailed": "فشل تحديث التوثيق",
       "deleteConfirmTitle": "حذف المستخدم؟",
       "deleteConfirmDescription": "هذا الإجراء لا يمكن التراجع عنه. سيتم حذف جميع بيانات المستخدم نهائياً."
     },

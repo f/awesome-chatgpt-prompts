@@ -265,6 +265,11 @@
       "deleteFailed": "ユーザーの削除に失敗しました",
       "roleUpdated": "ユーザーの役割を更新しました",
       "roleUpdateFailed": "役割の更新に失敗しました",
+      "verify": "認証",
+      "unverify": "認証解除",
+      "verified": "ユーザーを認証しました",
+      "unverified": "ユーザーの認証を解除しました",
+      "verifyFailed": "認証の更新に失敗しました",
       "deleteConfirmTitle": "ユーザーを削除しますか？",
       "deleteConfirmDescription": "この操作は取り消せません。すべてのユーザーデータが完全に削除されます。"
     },

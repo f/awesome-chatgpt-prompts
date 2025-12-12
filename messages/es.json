@@ -265,6 +265,11 @@
       "deleteFailed": "Error al eliminar usuario",
       "roleUpdated": "Rol de usuario actualizado",
       "roleUpdateFailed": "Error al actualizar rol",
+      "verify": "Verificar",
+      "unverify": "Quitar verificación",
+      "verified": "Usuario verificado",
+      "unverified": "Usuario no verificado",
+      "verifyFailed": "Error al actualizar verificación",
       "deleteConfirmTitle": "¿Eliminar Usuario?",
       "deleteConfirmDescription": "Esta acción no se puede deshacer. Todos los datos del usuario serán eliminados permanentemente."
     },

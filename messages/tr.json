@@ -305,6 +305,11 @@
       "deleteFailed": "Kullanıcı silinemedi",
       "roleUpdated": "Kullanıcı rolü güncellendi",
       "roleUpdateFailed": "Rol güncellenemedi",
+      "verify": "Doğrula",
+      "unverify": "Doğrulamayı Kaldır",
+      "verified": "Kullanıcı doğrulandı",
+      "unverified": "Kullanıcı doğrulaması kaldırıldı",
+      "verifyFailed": "Doğrulama güncellenemedi",
       "deleteConfirmTitle": "Kullanıcı Silinsin mi?",
       "deleteConfirmDescription": "Bu işlem geri alınamaz. Tüm kullanıcı verileri kalıcı olarak silinecektir."
     },

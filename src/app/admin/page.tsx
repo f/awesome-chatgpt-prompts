@@ -59,6 +59,7 @@ export default async function AdminPage() {
         name: true,
         avatar: true,
         role: true,
+        verified: true,
         createdAt: true,
         _count: {
           select: {

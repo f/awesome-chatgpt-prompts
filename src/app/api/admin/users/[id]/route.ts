@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 
-// Update user (role change)
+// Update user (role change or verification)
 export async function PATCH(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -15,15 +15,25 @@ export async function PATCH(
 
     const { id } = await params;
     const body = await request.json();
-    const { role } = body;
+    const { role, verified } = body;
 
-    if (!["ADMIN", "USER"].includes(role)) {
-      return NextResponse.json({ error: "Invalid role" }, { status: 400 });
+    // Build update data
+    const updateData: { role?: "ADMIN" | "USER"; verified?: boolean } = {};
+
+    if (role !== undefined) {
+      if (!["ADMIN", "USER"].includes(role)) {
+        return NextResponse.json({ error: "Invalid role" }, { status: 400 });
+      }
+      updateData.role = role;
+    }
+
+    if (verified !== undefined) {
+      updateData.verified = verified;
     }
 
     const user = await db.user.update({
       where: { id },
-      data: { role },
+      data: updateData,
     });
 
     return NextResponse.json(user);

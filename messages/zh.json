@@ -265,6 +265,11 @@
       "deleteFailed": "删除用户失败",
       "roleUpdated": "用户角色已更新",
       "roleUpdateFailed": "更新角色失败",
+      "verify": "验证",
+      "unverify": "取消验证",
+      "verified": "用户已验证",
+      "unverified": "用户验证已取消",
+      "verifyFailed": "更新验证失败",
       "deleteConfirmTitle": "删除用户？",
       "deleteConfirmDescription": "此操作无法撤销。所有用户数据将被永久删除。"
     },
