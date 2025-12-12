@@ -14,8 +14,8 @@ export default async function HomePage() {
   const config = await getConfig();
   
   const isOAuth = config.auth.provider !== "credentials";
-  // Show register button for OAuth (with login text) or credentials with registration enabled
-  const showRegisterButton = isOAuth || (config.auth.provider === "credentials" && config.auth.allowRegistration);
+  // Show register button only for non-logged-in users
+  const showRegisterButton = !session && (isOAuth || (config.auth.provider === "credentials" && config.auth.allowRegistration));
 
   const useCloneBranding = config.homepage?.useCloneBranding ?? false;
 
@@ -115,8 +115,8 @@ export default async function HomePage() {
 
             <div className="mt-10 flex flex-wrap gap-3">
               <Button size="lg" asChild>
-                <Link href="/prompts">
-                  {tHomepage("browsePrompts")}
+                <Link href={session ? "/feed" : "/prompts"}>
+                  {session ? tNav("feed") : tHomepage("browsePrompts")}
                   <ArrowRight className="ml-1.5 h-4 w-4" />
                 </Link>
               </Button>
