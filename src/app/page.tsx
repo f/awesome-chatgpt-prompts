@@ -116,7 +116,7 @@ export default async function HomePage() {
             <div className="mt-10 flex flex-wrap gap-3">
               <Button size="lg" asChild>
                 <Link href={session ? "/feed" : "/prompts"}>
-                  {session ? tNav("feed") : tHomepage("browsePrompts")}
+                  {session ? tHomepage("viewFeed") : tHomepage("browsePrompts")}
                   <ArrowRight className="ml-1.5 h-4 w-4" />
                 </Link>
               </Button>
