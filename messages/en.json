@@ -165,7 +165,9 @@
     "pinned": "Pinned to profile",
     "unpinned": "Unpinned from profile",
     "pinFailed": "Failed to update pin",
-    "pinnedPrompts": "Pinned"
+    "pinnedPrompts": "Pinned",
+    "previous": "Previous",
+    "next": "Next"
   },
   "changeRequests": {
     "title": "Change Requests",

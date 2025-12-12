@@ -149,7 +149,9 @@
     "pinned": "プロフィールに固定しました",
     "unpinned": "固定を解除しました",
     "pinFailed": "固定の更新に失敗しました",
-    "pinnedPrompts": "固定済み"
+    "pinnedPrompts": "固定済み",
+    "previous": "前へ",
+    "next": "次へ"
   },
   "changeRequests": {
     "title": "変更リクエスト",
