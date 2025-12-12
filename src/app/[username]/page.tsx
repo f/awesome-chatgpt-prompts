@@ -290,67 +290,79 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
   return (
     <div className="container py-6">
       {/* Profile Header */}
-      <div className="flex flex-col md:flex-row items-start gap-6 mb-8">
-        <Avatar className="h-20 w-20">
-          <AvatarImage src={user.avatar || undefined} />
-          <AvatarFallback className="text-2xl">
-            {user.name?.charAt(0) || user.username.charAt(0)}
-          </AvatarFallback>
-        </Avatar>
-        <div className="flex-1">
-          <div className="flex items-start justify-between">
-            <div>
-              <div className="flex items-center gap-2 mb-1">
-                <h1 className="text-2xl font-bold">{user.name || user.username}</h1>
-                {user.verified && (
-                  <BadgeCheck className="h-5 w-5 text-blue-500" />
-                )}
-                {user.role === "ADMIN" && (
-                  <Badge variant="default" className="text-xs">Admin</Badge>
-                )}
-              </div>
-              <p className="text-muted-foreground text-sm mb-3 flex items-center gap-2">
-                @{user.username}
-                {isUnclaimed && (
-                  <Badge variant="outline" className="text-[10px] text-amber-600 border-amber-500/30 bg-amber-500/10">
-                    {t("unclaimedUser")}
-                  </Badge>
-                )}
-              </p>
+      <div className="flex flex-col gap-4 mb-8">
+        {/* Avatar + Name row */}
+        <div className="flex items-center gap-4">
+          <Avatar className="h-16 w-16 md:h-20 md:w-20 shrink-0">
+            <AvatarImage src={user.avatar || undefined} />
+            <AvatarFallback className="text-xl md:text-2xl">
+              {user.name?.charAt(0) || user.username.charAt(0)}
+            </AvatarFallback>
+          </Avatar>
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-2 flex-wrap">
+              <h1 className="text-xl md:text-2xl font-bold truncate">{user.name || user.username}</h1>
+              {user.verified && (
+                <BadgeCheck className="h-5 w-5 text-blue-500 shrink-0" />
+              )}
+              {user.role === "ADMIN" && (
+                <Badge variant="default" className="text-xs shrink-0">Admin</Badge>
+              )}
             </div>
-            {isOwner && (
-              <Button variant="outline" size="sm" asChild>
-                <Link href="/settings">
-                  <Settings className="h-4 w-4 mr-1.5" />
-                  {t("editProfile")}
-                </Link>
-              </Button>
-            )}
+            <p className="text-muted-foreground text-sm flex items-center gap-2 flex-wrap">
+              @{user.username}
+              {isUnclaimed && (
+                <Badge variant="outline" className="text-[10px] text-amber-600 border-amber-500/30 bg-amber-500/10">
+                  {t("unclaimedUser")}
+                </Badge>
+              )}
+            </p>
           </div>
+          {/* Edit button - desktop only */}
+          {isOwner && (
+            <Button variant="outline" size="sm" asChild className="hidden md:inline-flex shrink-0">
+              <Link href="/settings">
+                <Settings className="h-4 w-4 mr-1.5" />
+                {t("editProfile")}
+              </Link>
+            </Button>
+          )}
+        </div>
 
-          {/* Stats */}
-          <div className="flex items-center gap-6 text-sm">
-            <div className="flex items-center gap-1.5">
-              <FileText className="h-4 w-4 text-muted-foreground" />
-              <span className="font-medium">{user._count.prompts}</span>
-              <span className="text-muted-foreground">{t("prompts").toLowerCase()}</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <ArrowBigUp className="h-4 w-4 text-muted-foreground" />
-              <span className="font-medium">{totalUpvotes}</span>
-              <span className="text-muted-foreground">{t("upvotesReceived")}</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <Users className="h-4 w-4 text-muted-foreground" />
-              <span className="font-medium">{user._count.contributions}</span>
-              <span className="text-muted-foreground">{t("contributionsCount")}</span>
-            </div>
-            <div className="flex items-center gap-1.5 text-muted-foreground">
-              <Calendar className="h-4 w-4" />
-              <span>{t("joined")} {formatDistanceToNow(user.createdAt, locale)}</span>
-            </div>
+        {/* Stats - stacked on mobile, inline on desktop */}
+        <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-6 text-sm">
+          <div className="flex items-center gap-1.5">
+            <FileText className="h-4 w-4 text-muted-foreground" />
+            <span className="font-medium">{user._count.prompts}</span>
+            <span className="text-muted-foreground">{t("prompts").toLowerCase()}</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <ArrowBigUp className="h-4 w-4 text-muted-foreground" />
+            <span className="font-medium">{totalUpvotes}</span>
+            <span className="text-muted-foreground">{t("upvotesReceived")}</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <Users className="h-4 w-4 text-muted-foreground" />
+            <span className="font-medium">{user._count.contributions}</span>
+            <span className="text-muted-foreground">{t("contributionsCount")}</span>
+          </div>
+          <div className="flex items-center gap-1.5 text-muted-foreground">
+            <Calendar className="h-4 w-4" />
+            <span>{t("joined")} {formatDistanceToNow(user.createdAt, locale)}</span>
           </div>
         </div>
+
+        {/* Edit button - below stats on mobile */}
+        {isOwner && (
+          <div className="md:hidden">
+            <Button variant="outline" size="sm" asChild className="w-full">
+              <Link href="/settings">
+                <Settings className="h-4 w-4 mr-1.5" />
+                {t("editProfile")}
+              </Link>
+            </Button>
+          </div>
+        )}
       </div>
 
       {/* Tabs for Prompts and Change Requests */}

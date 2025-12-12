@@ -299,33 +299,47 @@ export default async function PromptPage({ params }: PromptPageProps) {
 
       {/* Content Tabs */}
       <Tabs defaultValue="content">
-        <div className="flex items-center justify-between mb-4">
-          <TabsList>
-          <TabsTrigger value="content">{t("promptContent")}</TabsTrigger>
-          <TabsTrigger value="versions">
-            <History className="h-4 w-4 mr-1" />
-            {t("versions")}
-          </TabsTrigger>
-          {changeRequests.length > 0 && (
-            <TabsTrigger value="changes" className="gap-1">
-              <GitPullRequest className="h-4 w-4" />
-              {t("changeRequests")}
-              {pendingCount > 0 && (
-                <Badge variant="destructive" className="ml-1 h-5 min-w-5 px-1 text-xs">
-                  {pendingCount}
-                </Badge>
-              )}
-            </TabsTrigger>
-          )}
-          </TabsList>
+        <div className="flex flex-col gap-3 mb-4">
+          {/* Propose changes button - on top on mobile */}
           {!isOwner && session?.user && (
-            <Button asChild size="sm">
-              <Link href={`/prompts/${id}/changes/new`}>
-                <GitPullRequest className="h-4 w-4 mr-1.5" />
-                {t("createChangeRequest")}
-              </Link>
-            </Button>
+            <div className="md:hidden">
+              <Button asChild size="sm" className="w-full">
+                <Link href={`/prompts/${id}/changes/new`}>
+                  <GitPullRequest className="h-4 w-4 mr-1.5" />
+                  {t("createChangeRequest")}
+                </Link>
+              </Button>
+            </div>
           )}
+          <div className="flex items-center justify-between">
+            <TabsList>
+              <TabsTrigger value="content">{t("promptContent")}</TabsTrigger>
+              <TabsTrigger value="versions">
+                <History className="h-4 w-4 mr-1" />
+                {t("versions")}
+              </TabsTrigger>
+              {changeRequests.length > 0 && (
+                <TabsTrigger value="changes" className="gap-1">
+                  <GitPullRequest className="h-4 w-4" />
+                  <span className="hidden sm:inline">{t("changeRequests")}</span>
+                  {pendingCount > 0 && (
+                    <Badge variant="destructive" className="ml-1 h-5 min-w-5 px-1 text-xs">
+                      {pendingCount}
+                    </Badge>
+                  )}
+                </TabsTrigger>
+              )}
+            </TabsList>
+            {/* Propose changes button - inline on desktop */}
+            {!isOwner && session?.user && (
+              <Button asChild size="sm" className="hidden md:inline-flex">
+                <Link href={`/prompts/${id}/changes/new`}>
+                  <GitPullRequest className="h-4 w-4 mr-1.5" />
+                  {t("createChangeRequest")}
+                </Link>
+              </Button>
+            )}
+          </div>
         </div>
 
         <TabsContent value="content" className="space-y-4 mt-0">

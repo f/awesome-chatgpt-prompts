@@ -91,9 +91,9 @@ export function VersionCompareModal({ versions, currentContent, promptType, stru
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" size="sm">
-          <GitCompare className="h-4 w-4 mr-1.5" />
-          {t("compare")}
+        <Button variant="outline" size="sm" className="px-2 sm:px-3">
+          <GitCompare className="h-4 w-4 sm:mr-1.5" />
+          <span className="hidden sm:inline">{t("compare")}</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-4xl max-h-[90vh] flex flex-col">

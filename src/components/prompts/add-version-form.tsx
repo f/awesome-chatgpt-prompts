@@ -77,9 +77,9 @@ export function AddVersionForm({ promptId, currentContent }: AddVersionFormProps
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
-        <Button variant="outline" size="sm">
-          <Plus className="h-4 w-4 mr-1.5" />
-          {t("newVersion")}
+        <Button variant="outline" size="sm" className="px-2 sm:px-3">
+          <Plus className="h-4 w-4 sm:mr-1.5" />
+          <span className="hidden sm:inline">{t("newVersion")}</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-2xl">
