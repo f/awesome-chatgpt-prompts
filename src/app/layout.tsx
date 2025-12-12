@@ -21,6 +21,7 @@ const notoSansArabic = Noto_Sans_Arabic({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXTAUTH_URL || "http://localhost:3000"),
   title: "prompts.chat",
   description: "Collect, organize, and share AI prompts",
   icons: {
