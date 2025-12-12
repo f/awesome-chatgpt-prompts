@@ -7,6 +7,12 @@ import { getConfig } from "@/lib/config";
 import { Button } from "@/components/ui/button";
 import { DiscoveryPrompts } from "@/components/prompts/discovery-prompts";
 
+function getOrdinalSuffix(n: number): string {
+  const s = ["th", "st", "nd", "rd"];
+  const v = n % 100;
+  return s[(v - 20) % 10] || s[v] || s[0];
+}
+
 export default async function HomePage() {
   const tHomepage = await getTranslations("homepage");
   const tNav = await getTranslations("nav");
@@ -113,27 +119,40 @@ export default async function HomePage() {
               </>
             )}
 
-            <div className="mt-10 flex flex-wrap gap-3">
-              <Button size="lg" asChild>
-                <Link href={session ? "/feed" : "/prompts"}>
-                  {session ? tHomepage("viewFeed") : tHomepage("browsePrompts")}
-                  <ArrowRight className="ml-1.5 h-4 w-4" />
-                </Link>
-              </Button>
+            <div className="mt-10 flex flex-col gap-4">
+              <div className="flex flex-wrap gap-3">
+                <Button size="lg" asChild>
+                  <Link href={session ? "/feed" : "/prompts"}>
+                    {session ? tHomepage("viewFeed") : tHomepage("browsePrompts")}
+                    <ArrowRight className="ml-1.5 h-4 w-4" />
+                  </Link>
+                </Button>
+                {!useCloneBranding && (
+                  <Button variant="outline" size="lg" asChild>
+                    <Link href="https://github.com/f/awesome-chatgpt-prompts" target="_blank" rel="noopener noreferrer">
+                      <Github className="mr-1.5 h-4 w-4" />
+                      {tHomepage("cloneOnGithub")}
+                    </Link>
+                  </Button>
+                )}
+                {showRegisterButton && (
+                  <Button variant="outline" size="lg" asChild>
+                    <Link href={isOAuth ? "/login" : "/register"}>
+                      {isOAuth ? tNav("login") : tNav("register")}
+                    </Link>
+                  </Button>
+                )}
+              </div>
               {!useCloneBranding && (
-                <Button variant="outline" size="lg" asChild>
-                  <Link href="https://github.com/f/awesome-chatgpt-prompts" target="_blank" rel="noopener noreferrer">
-                    <Github className="mr-1.5 h-4 w-4" />
-                    {tHomepage("cloneOnGithub")}
-                  </Link>
-                </Button>
-              )}
-              {showRegisterButton && (
-                <Button variant="outline" size="lg" asChild>
-                  <Link href={isOAuth ? "/login" : "/register"}>
-                    {isOAuth ? tNav("login") : tNav("register")}
-                  </Link>
-                </Button>
+                <Link 
+                  href="https://github.com/f/awesome-chatgpt-prompts/stargazers" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <Star className="h-4 w-4 text-amber-500" />
+                  <span>{tHomepage("beStargazer", { count: (githubStars + 1).toLocaleString(), ordinal: getOrdinalSuffix(githubStars + 1) })}</span>
+                </Link>
               )}
             </div>
           </div>
