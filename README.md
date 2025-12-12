@@ -32,6 +32,8 @@ In this repository, you will find a variety of prompts that can be used with Cha
 
 To get started, simply clone this repository and use the prompts in the README.md file as input for your preferred AI chat model. You can also use the prompts in this file as inspiration for creating your own.
 
+Want to deploy your own private prompt library? Check out our [Self-Hosting Guide](SELF-HOSTING.md) for instructions on setting up your own instance with customizable branding, themes, and authentication.
+
 We hope you find these prompts useful and have fun exploring AI chat models!
 
 **[View on prompts.chat](https://prompts.chat)**
