@@ -124,19 +124,26 @@ async function buildAuthConfig() {
     },
     callbacks: {
       async jwt({ token, user, trigger }: { token: any; user?: any; trigger?: string }) {
-        // On sign in, add user data to token
-        if (user) {
-          token.id = user.id;
-          token.role = (user as User).role;
-          token.username = (user as User).username;
-          token.locale = (user as User).locale;
+        // On sign in, look up the actual database user by email to ensure correct ID
+        if (user && user.email) {
+          const dbUser = await db.user.findUnique({
+            where: { email: user.email },
+            select: { id: true, role: true, username: true, locale: true },
+          });
+          
+          if (dbUser) {
+            token.id = dbUser.id;
+            token.role = dbUser.role;
+            token.username = dbUser.username;
+            token.locale = dbUser.locale;
+          }
         }
         
-        // Always verify user exists in database
-        if (token.id) {
+        // On subsequent requests, verify user exists and refresh data
+        if (token.id && !user) {
           const dbUser = await db.user.findUnique({
             where: { id: token.id as string },
-            select: { role: true, username: true, locale: true },
+            select: { id: true, role: true, username: true, locale: true },
           });
           
           // User no longer exists - invalidate token
@@ -144,7 +151,7 @@ async function buildAuthConfig() {
             return null;
           }
           
-          // Update token with latest user data
+          // Update token with latest user data on explicit update or if data missing
           if (trigger === "update" || !token.username) {
             token.role = dbUser.role;
             token.username = dbUser.username;

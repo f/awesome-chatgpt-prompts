@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, Noto_Sans_Arabic } from "next/font/google";
 import { getMessages, getLocale } from "next-intl/server";
 import { Providers } from "@/components/providers";
@@ -92,6 +93,24 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={isRtl ? "rtl" : "ltr"} suppressHydrationWarning className={themeClasses} style={themeStyles}>
+      <head>
+        {process.env.GOOGLE_ANALYTICS_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${process.env.GOOGLE_ANALYTICS_ID}');
+              `}
+            </Script>
+          </>
+        )}
+      </head>
       <body className={`${fontClasses} antialiased`}>
         <Providers locale={locale} messages={messages} theme={config.theme} branding={config.branding}>
           <div className="relative min-h-screen flex flex-col">
