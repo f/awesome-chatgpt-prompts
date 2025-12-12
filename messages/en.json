@@ -201,6 +201,8 @@
     "reopen": "Reopen",
     "reopenedSuccess": "Change request reopened",
     "noRequests": "No change requests",
+    "submittedTo": "Submitted to {author}",
+    "receivedFrom": "Received from {author}",
     "edit": "Edit",
     "preview": "Preview",
     "noChangesYet": "No changes yet",

@@ -175,35 +175,85 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
 
   const totalPages = Math.ceil(total / perPage);
 
-  // Fetch pending change requests for user's prompts (only if owner)
-  const changeRequests = isOwner
-    ? await db.changeRequest.findMany({
-        where: {
-          prompt: {
+  // Fetch change requests (only if owner)
+  // 1. Change requests the user submitted
+  // 2. Change requests received on user's prompts (approved ones)
+  const [submittedChangeRequests, receivedChangeRequests] = isOwner
+    ? await Promise.all([
+        // CRs user submitted
+        db.changeRequest.findMany({
+          where: {
             authorId: user.id,
           },
-        },
-        orderBy: { createdAt: "desc" },
-        include: {
-          author: {
-            select: {
-              id: true,
-              name: true,
-              username: true,
-              avatar: true,
+          orderBy: { createdAt: "desc" },
+          include: {
+            author: {
+              select: {
+                id: true,
+                name: true,
+                username: true,
+                avatar: true,
+              },
+            },
+            prompt: {
+              select: {
+                id: true,
+                title: true,
+                author: {
+                  select: {
+                    id: true,
+                    name: true,
+                    username: true,
+                  },
+                },
+              },
             },
           },
-          prompt: {
-            select: {
-              id: true,
-              title: true,
+        }),
+        // CRs received on user's prompts (approved only)
+        db.changeRequest.findMany({
+          where: {
+            prompt: {
+              authorId: user.id,
+            },
+            status: "APPROVED",
+            authorId: { not: user.id }, // Exclude self-submitted
+          },
+          orderBy: { createdAt: "desc" },
+          include: {
+            author: {
+              select: {
+                id: true,
+                name: true,
+                username: true,
+                avatar: true,
+              },
+            },
+            prompt: {
+              select: {
+                id: true,
+                title: true,
+                author: {
+                  select: {
+                    id: true,
+                    name: true,
+                    username: true,
+                  },
+                },
+              },
             },
           },
-        },
-      })
-    : [];
+        }),
+      ])
+    : [[], []];
 
-  const pendingCount = changeRequests.filter((cr) => cr.status === "PENDING").length;
+  // Combine and sort by date, marking the type
+  const allChangeRequests = [
+    ...submittedChangeRequests.map((cr) => ({ ...cr, type: "submitted" as const })),
+    ...receivedChangeRequests.map((cr) => ({ ...cr, type: "received" as const })),
+  ].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+
+  const pendingCount = submittedChangeRequests.filter((cr) => cr.status === "PENDING").length;
   const defaultTab = tab === "changes" ? "changes" : "prompts";
 
   const statusColors = {
@@ -335,28 +385,33 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
           </TabsContent>
 
           <TabsContent value="changes">
-            {changeRequests.length === 0 ? (
+            {allChangeRequests.length === 0 ? (
               <div className="text-center py-12 border rounded-lg bg-muted/30">
                 <GitPullRequest className="h-10 w-10 text-muted-foreground mx-auto mb-3" />
                 <p className="text-muted-foreground">{tChanges("noRequests")}</p>
               </div>
             ) : (
               <div className="divide-y border rounded-lg">
-                {changeRequests.map((cr) => {
-                  const StatusIcon = statusIcons[cr.status];
+                {allChangeRequests.map((cr) => {
+                  const StatusIcon = statusIcons[cr.status as keyof typeof statusIcons];
                   return (
                     <Link 
                       key={cr.id} 
                       href={`/prompts/${cr.prompt.id}/changes/${cr.id}`}
                       className="flex items-center justify-between px-3 py-2 hover:bg-accent/50 transition-colors"
                     >
-                      <div className="min-w-0">
+                      <div className="min-w-0 flex-1">
                         <p className="text-sm font-medium truncate">{cr.prompt.title}</p>
                         <p className="text-xs text-muted-foreground">
+                          {cr.type === "submitted" 
+                            ? tChanges("submittedTo", { author: cr.prompt.author?.name || cr.prompt.author?.username })
+                            : tChanges("receivedFrom", { author: cr.author.name || cr.author.username })
+                          }
+                          {" · "}
                           {formatDistanceToNow(cr.createdAt, locale)}
                         </p>
                       </div>
-                      <Badge className={`ml-2 shrink-0 ${statusColors[cr.status]}`}>
+                      <Badge className={`ml-2 shrink-0 ${statusColors[cr.status as keyof typeof statusColors]}`}>
                         <StatusIcon className="h-3 w-3 mr-1" />
                         {tChanges(cr.status.toLowerCase())}
                       </Badge>
