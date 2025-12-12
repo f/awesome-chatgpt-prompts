@@ -2,8 +2,17 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowBigUp, Loader2 } from "lucide-react";
+import Link from "next/link";
+import { ArrowBigUp, Loader2, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 
@@ -29,10 +38,11 @@ export function UpvoteButton({
   const [isVoted, setIsVoted] = useState(initialVoted);
   const [voteCount, setVoteCount] = useState(initialCount);
   const [isLoading, setIsLoading] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   const handleVote = async () => {
     if (!isLoggedIn) {
-      toast.error(t("loginToVote"));
+      setShowLoginModal(true);
       return;
     }
 
@@ -58,40 +68,70 @@ export function UpvoteButton({
     }
   };
 
+  const loginModal = (
+    <Dialog open={showLoginModal} onOpenChange={setShowLoginModal}>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle>{t("loginRequired")}</DialogTitle>
+          <DialogDescription>
+            {t("loginToVote")}
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter className="flex-col sm:flex-row gap-2">
+          <Button variant="outline" onClick={() => setShowLoginModal(false)}>
+            {tCommon("cancel")}
+          </Button>
+          <Button asChild>
+            <Link href="/login">
+              <LogIn className="h-4 w-4 mr-2" />
+              {t("goToLogin")}
+            </Link>
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+
   if (size === "sm") {
     return (
-      <button
-        onClick={handleVote}
-        disabled={isLoading}
-        className={cn(
-          "flex items-center gap-0.5 text-xs transition-colors",
-          isVoted ? "text-primary" : "text-muted-foreground hover:text-foreground"
-        )}
-      >
-        {isLoading ? (
-          <Loader2 className="h-3 w-3 animate-spin" />
-        ) : (
-          <ArrowBigUp className={cn("h-4 w-4", isVoted && "fill-current")} />
-        )}
-        <span>{voteCount}</span>
-      </button>
+      <>
+        <button
+          onClick={handleVote}
+          disabled={isLoading}
+          className={cn(
+            "flex items-center gap-0.5 text-xs transition-colors",
+            isVoted ? "text-primary" : "text-muted-foreground hover:text-foreground"
+          )}
+        >
+          {isLoading ? (
+            <Loader2 className="h-3 w-3 animate-spin" />
+          ) : (
+            <ArrowBigUp className={cn("h-4 w-4", isVoted && "fill-current")} />
+          )}
+          <span>{voteCount}</span>
+        </button>
+        {loginModal}
+      </>
     );
   }
 
   return (
-    <Button
-      variant={isVoted ? "default" : "outline"}
-      size="sm"
-      onClick={handleVote}
-      disabled={isLoading}
-      className="gap-1.5"
-    >
-      {isLoading ? (
-        <Loader2 className="h-4 w-4 animate-spin" />
-      ) : (
-        <ArrowBigUp className={cn("h-4 w-4", isVoted && "fill-current")} />
-      )}
-      <span>{voteCount}{showLabel && ` ${voteCount === 1 ? t("upvote") : t("upvotes")}`}</span>
-    </Button>
+    <>
+      <Button
+        variant={isVoted ? "default" : "outline"}
+        size="sm"
+        onClick={handleVote}
+        disabled={isLoading}
+        className="gap-1.5"
+      >
+        {isLoading ? (
+          <Loader2 className="h-4 w-4 animate-spin" />
+        ) : (
+          <ArrowBigUp className={cn("h-4 w-4", isVoted && "fill-current")} />
+        )}
+        <span>{voteCount}{showLabel && ` ${voteCount === 1 ? t("upvote") : t("upvotes")}`}</span>
+      </Button>
+      {loginModal}
+    </>
   );
 }

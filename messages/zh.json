@@ -375,7 +375,9 @@
     "loginToSubscribe": "请登录后订阅"
   },
   "vote": {
-    "loginToVote": "请登录后点赞",
+    "loginRequired": "需要登录",
+    "loginToVote": "请登录后点赞并保存您的投票。",
+    "goToLogin": "去登录",
     "upvote": "赞",
     "upvotes": "赞"
   },

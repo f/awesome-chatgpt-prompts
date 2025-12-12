@@ -480,7 +480,9 @@
     "loginToSubscribe": "Abone olmak için giriş yapın"
   },
   "vote": {
-    "loginToVote": "Oy vermek için giriş yapın",
+    "loginRequired": "Giriş Gerekli",
+    "loginToVote": "Promptları beğenmek ve oylarınızı kaydetmek için giriş yapın.",
+    "goToLogin": "Giriş Yap",
     "upvote": "beğeni",
     "upvotes": "beğeni"
   },

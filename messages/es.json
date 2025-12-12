@@ -398,7 +398,9 @@
     "loginToSubscribe": "Por favor inicia sesión para suscribirte"
   },
   "vote": {
-    "loginToVote": "Por favor inicia sesión para votar",
+    "loginRequired": "Inicio de Sesión Requerido",
+    "loginToVote": "Por favor inicia sesión para votar y guardar tus votos.",
+    "goToLogin": "Ir a Iniciar Sesión",
     "upvote": "voto",
     "upvotes": "votos"
   },

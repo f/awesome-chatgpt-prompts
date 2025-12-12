@@ -480,7 +480,9 @@
     "loginToSubscribe": "Please login to subscribe"
   },
   "vote": {
-    "loginToVote": "Please login to upvote",
+    "loginRequired": "Login Required",
+    "loginToVote": "Please login to upvote prompts and save your votes.",
+    "goToLogin": "Go to Login",
     "upvote": "upvote",
     "upvotes": "upvotes"
   },

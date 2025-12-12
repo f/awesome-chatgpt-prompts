@@ -375,7 +375,9 @@
     "loginToSubscribe": "購読するにはログインしてください"
   },
   "vote": {
-    "loginToVote": "高評価するにはログインしてください",
+    "loginRequired": "ログインが必要です",
+    "loginToVote": "プロンプトに高評価を付けて投票を保存するにはログインしてください。",
+    "goToLogin": "ログインへ",
     "upvote": "高評価",
     "upvotes": "高評価"
   },
