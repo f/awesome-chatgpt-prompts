@@ -210,5 +210,7 @@ declare module "@auth/core/jwt" {
     role: string;
     username: string;
     locale: string;
+    name?: string | null;
+    picture?: string | null;
   }
 }
