@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getTranslations, getLocale } from "next-intl/server";
 import { formatDistanceToNow } from "@/lib/date";
-import { Calendar, ArrowBigUp, FileText, Settings, GitPullRequest, Clock, Check, X, Pin, BadgeCheck } from "lucide-react";
+import { Calendar, ArrowBigUp, FileText, Settings, GitPullRequest, Clock, Check, X, Pin, BadgeCheck, Users } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -23,10 +23,12 @@ export async function generateMetadata({ params }: UserProfilePageProps): Promis
   const { username: rawUsername } = await params;
   const decodedUsername = decodeURIComponent(rawUsername);
   
-  // Support both /@username and /username formats
-  const username = decodedUsername.startsWith("@") 
-    ? decodedUsername.slice(1) 
-    : decodedUsername;
+  // Only support /@username format
+  if (!decodedUsername.startsWith("@")) {
+    return { title: "User Not Found" };
+  }
+  
+  const username = decodedUsername.slice(1);
     
   const user = await db.user.findUnique({
     where: { username },
@@ -55,16 +57,12 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
   // Decode URL-encoded @ symbol
   const decodedUsername = decodeURIComponent(rawUsername);
   
-  // Support both /@username and /username formats
-  // Strip @ prefix if present
-  const username = decodedUsername.startsWith("@") 
-    ? decodedUsername.slice(1) 
-    : decodedUsername;
-  
-  // Redirect old format to new @ format
+  // Only support /@username format - reject URLs without @
   if (!decodedUsername.startsWith("@")) {
-    // For now, just continue - could add redirect later
+    notFound();
   }
+  
+  const username = decodedUsername.slice(1);
 
   const user = await db.user.findUnique({
     where: { username },
@@ -80,6 +78,7 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
       _count: {
         select: {
           prompts: true,
+          contributions: true,
         },
       },
     },
@@ -127,8 +126,8 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
     },
   };
 
-  // Fetch prompts, pinned prompts, and counts
-  const [promptsRaw, total, totalUpvotes, pinnedPromptsRaw] = await Promise.all([
+  // Fetch prompts, pinned prompts, contributions, and counts
+  const [promptsRaw, total, totalUpvotes, pinnedPromptsRaw, contributionsRaw] = await Promise.all([
     db.prompt.findMany({
       where,
       orderBy: { createdAt: "desc" },
@@ -153,10 +152,29 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
         },
       },
     }),
+    // Fetch contributions (prompts where user is contributor but not author)
+    db.prompt.findMany({
+      where: {
+        contributors: {
+          some: { id: user.id },
+        },
+        authorId: { not: user.id },
+        isPrivate: false,
+      },
+      orderBy: { updatedAt: "desc" },
+      include: promptInclude,
+    }),
   ]);
 
   // Transform to include voteCount and contributorCount
   const prompts = promptsRaw.map((p) => ({
+    ...p,
+    voteCount: p._count?.votes ?? 0,
+    contributorCount: p._count?.contributors ?? 0,
+  }));
+
+  // Transform contributions
+  const contributions = contributionsRaw.map((p) => ({
     ...p,
     voteCount: p._count?.votes ?? 0,
     contributorCount: p._count?.contributors ?? 0,
@@ -255,7 +273,7 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
   ].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
 
   const pendingCount = submittedChangeRequests.filter((cr) => cr.status === "PENDING").length;
-  const defaultTab = tab === "changes" ? "changes" : "prompts";
+  const defaultTab = tab === "changes" ? "changes" : tab === "contributions" ? "contributions" : "prompts";
 
   const statusColors = {
     PENDING: "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border-yellow-500/20",
@@ -322,6 +340,11 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
               <span className="font-medium">{totalUpvotes}</span>
               <span className="text-muted-foreground">{t("upvotesReceived")}</span>
             </div>
+            <div className="flex items-center gap-1.5">
+              <Users className="h-4 w-4 text-muted-foreground" />
+              <span className="font-medium">{user._count.contributions}</span>
+              <span className="text-muted-foreground">{t("contributionsCount")}</span>
+            </div>
             <div className="flex items-center gap-1.5 text-muted-foreground">
               <Calendar className="h-4 w-4" />
               <span>{t("joined")} {formatDistanceToNow(user.createdAt, locale)}</span>
@@ -336,6 +359,15 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
           <TabsTrigger value="prompts" className="gap-2">
             <FileText className="h-4 w-4" />
             {t("prompts")}
+          </TabsTrigger>
+          <TabsTrigger value="contributions" className="gap-2">
+            <Users className="h-4 w-4" />
+            {t("contributions")}
+            {contributions.length > 0 && (
+              <Badge variant="secondary" className="ml-1 h-5 min-w-5 px-1 text-xs">
+                {contributions.length}
+              </Badge>
+            )}
           </TabsTrigger>
           <TabsTrigger value="changes" className="gap-2">
             <GitPullRequest className="h-4 w-4" />
@@ -387,6 +419,21 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
               />
             </>
           ) : null}
+        </TabsContent>
+
+        <TabsContent value="contributions">
+          {contributions.length === 0 ? (
+            <div className="text-center py-12 border rounded-lg bg-muted/30">
+              <Users className="h-10 w-10 text-muted-foreground mx-auto mb-3" />
+              <p className="text-muted-foreground">{isOwner ? t("noContributionsOwner") : t("noContributions")}</p>
+            </div>
+          ) : (
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {contributions.map((prompt: PromptCardProps["prompt"]) => (
+                <PromptCard key={prompt.id} prompt={prompt} />
+              ))}
+            </div>
+          )}
         </TabsContent>
 
         <TabsContent value="changes">

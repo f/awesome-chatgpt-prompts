@@ -360,7 +360,12 @@
     "noPromptsOwner": "您还没有创建任何提示词",
     "createFirstPrompt": "创建您的第一个提示词",
     "upvotesReceived": "收到的点赞",
-    "editProfile": "编辑资料"
+    "editProfile": "编辑资料",
+    "contributions": "贡献",
+    "contributionsCount": "贡献",
+    "noContributions": "暂无贡献",
+    "noContributionsOwner": "您还没有对任何提示词做出贡献",
+    "contributedTo": "贡献给 {author} 的提示词"
   },
   "subscription": {
     "subscribe": "订阅",

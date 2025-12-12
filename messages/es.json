@@ -383,7 +383,12 @@
     "noPromptsOwner": "Aún no has creado ningún prompt",
     "createFirstPrompt": "Crea tu primer prompt",
     "upvotesReceived": "votos recibidos",
-    "editProfile": "Editar Perfil"
+    "editProfile": "Editar Perfil",
+    "contributions": "Contribuciones",
+    "contributionsCount": "contribuciones",
+    "noContributions": "Sin contribuciones aún",
+    "noContributionsOwner": "Aún no has contribuido a ningún prompt",
+    "contributedTo": "Contribuyó al prompt de {author}"
   },
   "subscription": {
     "subscribe": "Suscribirse",

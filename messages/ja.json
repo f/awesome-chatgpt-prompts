@@ -360,7 +360,12 @@
     "noPromptsOwner": "まだプロンプトを作成していません",
     "createFirstPrompt": "最初のプロンプトを作成",
     "upvotesReceived": "獲得した高評価",
-    "editProfile": "プロフィールを編集"
+    "editProfile": "プロフィールを編集",
+    "contributions": "コントリビューション",
+    "contributionsCount": "コントリビューション",
+    "noContributions": "コントリビューションはまだありません",
+    "noContributionsOwner": "まだどのプロンプトにも貢献していません",
+    "contributedTo": "{author}のプロンプトに貢献"
   },
   "subscription": {
     "subscribe": "購読",

@@ -106,7 +106,7 @@ export default async function ChangeRequestPage({ params }: ChangeRequestPagePro
             <AvatarFallback className="text-xs">{changeRequest.author.name?.[0] || changeRequest.author.username[0]}</AvatarFallback>
           </Avatar>
           <span className="text-sm">
-            <Link href={`/${changeRequest.author.username}`} className="font-medium hover:underline">
+            <Link href={`/@${changeRequest.author.username}`} className="font-medium hover:underline">
               @{changeRequest.author.username}
             </Link>
             <span className="text-muted-foreground"> · {formatDistanceToNow(changeRequest.createdAt, locale)}</span>

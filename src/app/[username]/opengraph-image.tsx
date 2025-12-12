@@ -21,11 +21,31 @@ export default async function OGImage({ params }: { params: Promise<{ username: 
   const config = await getConfig();
   const radius = radiusMap[config.theme?.radius || "sm"] || 8;
 
-  // Support both /@username and /username formats
+  // Only support /@username format
   const decodedUsername = decodeURIComponent(rawUsername);
-  const username = decodedUsername.startsWith("@")
-    ? decodedUsername.slice(1)
-    : decodedUsername;
+  if (!decodedUsername.startsWith("@")) {
+    return new ImageResponse(
+      (
+        <div
+          style={{
+            height: "100%",
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "#0a0a0a",
+            color: "#fff",
+            fontSize: 48,
+            fontWeight: 600,
+          }}
+        >
+          User Not Found
+        </div>
+      ),
+      { ...size }
+    );
+  }
+  const username = decodedUsername.slice(1);
 
   const user = await db.user.findUnique({
     where: { username },

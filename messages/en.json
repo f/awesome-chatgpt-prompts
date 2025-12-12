@@ -464,7 +464,12 @@
     "createFirstPrompt": "Create your first prompt",
     "upvotesReceived": "upvotes received",
     "editProfile": "Edit Profile",
-    "unclaimedUser": "Unclaimed"
+    "unclaimedUser": "Unclaimed",
+    "contributions": "Contributions",
+    "contributionsCount": "contributions",
+    "noContributions": "No contributions yet",
+    "noContributionsOwner": "You haven't contributed to any prompts yet",
+    "contributedTo": "Contributed to {author}'s prompt"
   },
   "subscription": {
     "subscribe": "Subscribe",

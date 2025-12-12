@@ -464,7 +464,12 @@
     "createFirstPrompt": "İlk promptunuzu oluşturun",
     "upvotesReceived": "beğeni aldı",
     "editProfile": "Profili Düzenle",
-    "unclaimedUser": "Sahipsiz"
+    "unclaimedUser": "Sahipsiz",
+    "contributions": "Katkılar",
+    "contributionsCount": "katkı",
+    "noContributions": "Henüz katkı yok",
+    "noContributionsOwner": "Henüz hiçbir prompta katkıda bulunmadınız",
+    "contributedTo": "{author} kullanıcısının promptuna katkıda bulunuldu"
   },
   "subscription": {
     "subscribe": "Abone Ol",

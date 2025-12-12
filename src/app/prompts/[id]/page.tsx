@@ -251,7 +251,7 @@ export default async function PromptPage({ params }: PromptPageProps) {
                   {prompt.contributors.map((contributor) => (
                     <Link
                       key={contributor.id}
-                      href={`/${contributor.username}`}
+                      href={`/@${contributor.username}`}
                       className="flex items-center gap-2 hover:underline rounded px-1 py-0.5 -mx-1"
                     >
                       <Avatar className="h-4 w-4">

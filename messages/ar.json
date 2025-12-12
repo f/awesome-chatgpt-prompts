@@ -366,7 +366,12 @@
     "noPromptsOwner": "لم تقم بإنشاء أي أوامر بعد",
     "createFirstPrompt": "أنشئ أول أمر لك",
     "upvotesReceived": "تصويتات مستلمة",
-    "editProfile": "تعديل الملف الشخصي"
+    "editProfile": "تعديل الملف الشخصي",
+    "contributions": "المساهمات",
+    "contributionsCount": "مساهمات",
+    "noContributions": "لا توجد مساهمات بعد",
+    "noContributionsOwner": "لم تساهم في أي أوامر بعد",
+    "contributedTo": "ساهم في أمر {author}"
   },
   "subscription": {
     "subscribe": "اشتراك",

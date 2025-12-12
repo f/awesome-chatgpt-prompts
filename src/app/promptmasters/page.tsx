@@ -71,7 +71,7 @@ function LeaderboardList({ users }: { users: LeaderboardUser[] }) {
       {users.map((user, index) => (
         <Link
           key={user.id}
-          href={`/${user.username}`}
+          href={`/@${user.username}`}
           className="flex items-center gap-4 p-3 hover:bg-muted/50 transition-colors"
         >
           <div className="w-8 flex justify-center">
