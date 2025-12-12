@@ -71,15 +71,8 @@ export function ProfileForm({ user }: ProfileFormProps) {
         throw new Error(error.message || "Failed to update profile");
       }
 
-      const updatedUser = await response.json();
-
-      // Update NextAuth session with new user data
-      await update({
-        user: {
-          ...updatedUser,
-          image: updatedUser.avatar,
-        },
-      });
+      // Trigger NextAuth session refresh - JWT callback will fetch updated data from DB
+      await update({});
 
       toast.success(t("profileUpdated"));
       router.refresh();
