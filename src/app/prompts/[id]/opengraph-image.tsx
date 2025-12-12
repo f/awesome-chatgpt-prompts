@@ -282,7 +282,7 @@ export default async function OGImage({ params }: { params: Promise<{ id: string
               style={{
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "space-between",
+                justifyContent: "flex-end",
                 marginTop: 20,
               }}
             >
