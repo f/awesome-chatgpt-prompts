@@ -192,7 +192,11 @@
     "edit": "Editar",
     "preview": "Vista previa",
     "noChangesYet": "Sin cambios aún",
-    "changesDetected": "Cambios detectados"
+    "changesDetected": "Cambios detectados",
+    "dismiss": "Retirar",
+    "dismissed": "Solicitud de cambio retirada",
+    "dismissConfirmTitle": "¿Retirar Solicitud de Cambio?",
+    "dismissConfirmDescription": "Esto eliminará permanentemente tu solicitud de cambio. Esta acción no se puede deshacer."
   },
   "categories": {
     "title": "Categorías",

@@ -208,7 +208,11 @@
     "edit": "Düzenle",
     "preview": "Önizleme",
     "noChangesYet": "Henüz değişiklik yok",
-    "changesDetected": "Değişiklikler tespit edildi"
+    "changesDetected": "Değişiklikler tespit edildi",
+    "dismiss": "Geri Çek",
+    "dismissed": "Değişiklik talebi geri çekildi",
+    "dismissConfirmTitle": "Değişiklik Talebini Geri Çek?",
+    "dismissConfirmDescription": "Bu işlem değişiklik talebinizi kalıcı olarak silecektir. Bu işlem geri alınamaz."
   },
   "categories": {
     "title": "Kategoriler",

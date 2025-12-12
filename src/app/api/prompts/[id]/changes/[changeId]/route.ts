@@ -218,3 +218,67 @@ export async function GET(
     );
   }
 }
+
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string; changeId: string }> }
+) {
+  try {
+    const session = await auth();
+    if (!session?.user) {
+      return NextResponse.json(
+        { error: "unauthorized", message: "You must be logged in" },
+        { status: 401 }
+      );
+    }
+
+    const { id: promptId, changeId } = await params;
+
+    // Get change request
+    const changeRequest = await db.changeRequest.findUnique({
+      where: { id: changeId },
+      select: {
+        id: true,
+        promptId: true,
+        status: true,
+        authorId: true,
+      },
+    });
+
+    if (!changeRequest || changeRequest.promptId !== promptId) {
+      return NextResponse.json(
+        { error: "not_found", message: "Change request not found" },
+        { status: 404 }
+      );
+    }
+
+    // Only the author can dismiss their own change request
+    if (changeRequest.authorId !== session.user.id) {
+      return NextResponse.json(
+        { error: "forbidden", message: "Only the author can dismiss their change request" },
+        { status: 403 }
+      );
+    }
+
+    // Can only dismiss pending change requests
+    if (changeRequest.status !== "PENDING") {
+      return NextResponse.json(
+        { error: "invalid_state", message: "Only pending change requests can be dismissed" },
+        { status: 400 }
+      );
+    }
+
+    // Delete the change request
+    await db.changeRequest.delete({
+      where: { id: changeId },
+    });
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error("Delete change request error:", error);
+    return NextResponse.json(
+      { error: "server_error", message: "Something went wrong" },
+      { status: 500 }
+    );
+  }
+}

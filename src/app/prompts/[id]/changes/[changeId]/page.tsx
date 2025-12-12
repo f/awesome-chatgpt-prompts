@@ -11,6 +11,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DiffView } from "@/components/ui/diff-view";
 import { ChangeRequestActions } from "@/components/prompts/change-request-actions";
 import { ReopenChangeRequestButton } from "@/components/prompts/reopen-change-request-button";
+import { DismissChangeRequestButton } from "@/components/prompts/dismiss-change-request-button";
 
 interface ChangeRequestPageProps {
   params: Promise<{ id: string; changeId: string }>;
@@ -49,6 +50,7 @@ export default async function ChangeRequestPage({ params }: ChangeRequestPagePro
   }
 
   const isPromptOwner = session?.user?.id === changeRequest.prompt.authorId;
+  const isChangeRequestAuthor = session?.user?.id === changeRequest.author.id;
 
   const statusConfig = {
     PENDING: { 
@@ -162,6 +164,13 @@ export default async function ChangeRequestPage({ params }: ChangeRequestPagePro
       {isPromptOwner && changeRequest.status === "REJECTED" && (
         <div className="pt-4 border-t">
           <ReopenChangeRequestButton changeRequestId={changeRequest.id} promptId={promptId} />
+        </div>
+      )}
+
+      {/* Dismiss button for change request author (pending only) */}
+      {isChangeRequestAuthor && changeRequest.status === "PENDING" && (
+        <div className="pt-4 border-t">
+          <DismissChangeRequestButton changeRequestId={changeRequest.id} promptId={promptId} />
         </div>
       )}
     </div>

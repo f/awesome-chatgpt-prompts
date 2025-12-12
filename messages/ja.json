@@ -192,7 +192,11 @@
     "edit": "編集",
     "preview": "プレビュー",
     "noChangesYet": "まだ変更はありません",
-    "changesDetected": "変更を検出しました"
+    "changesDetected": "変更を検出しました",
+    "dismiss": "取り下げ",
+    "dismissed": "変更リクエストを取り下げました",
+    "dismissConfirmTitle": "変更リクエストを取り下げますか？",
+    "dismissConfirmDescription": "変更リクエストは完全に削除されます。この操作は取り消せません。"
   },
   "categories": {
     "title": "カテゴリー",

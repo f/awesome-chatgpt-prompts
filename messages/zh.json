@@ -192,7 +192,11 @@
     "edit": "编辑",
     "preview": "预览",
     "noChangesYet": "暂无变更",
-    "changesDetected": "检测到变更"
+    "changesDetected": "检测到变更",
+    "dismiss": "撤回",
+    "dismissed": "变更请求已撤回",
+    "dismissConfirmTitle": "撤回变更请求？",
+    "dismissConfirmDescription": "这将永久删除您的变更请求。此操作无法撤销。"
   },
   "categories": {
     "title": "分类",

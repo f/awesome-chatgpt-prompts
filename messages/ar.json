@@ -194,7 +194,11 @@
     "edit": "تعديل",
     "preview": "معاينة",
     "noChangesYet": "لا توجد تغييرات بعد",
-    "changesDetected": "تم اكتشاف تغييرات"
+    "changesDetected": "تم اكتشاف تغييرات",
+    "dismiss": "سحب",
+    "dismissed": "تم سحب طلب التغيير",
+    "dismissConfirmTitle": "سحب طلب التغيير؟",
+    "dismissConfirmDescription": "سيؤدي هذا إلى حذف طلب التغيير نهائياً. لا يمكن التراجع عن هذا الإجراء."
   },
   "categories": {
     "title": "التصنيفات",

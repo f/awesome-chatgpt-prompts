@@ -208,7 +208,11 @@
     "edit": "Edit",
     "preview": "Preview",
     "noChangesYet": "No changes yet",
-    "changesDetected": "Changes detected"
+    "changesDetected": "Changes detected",
+    "dismiss": "Dismiss",
+    "dismissed": "Change request dismissed",
+    "dismissConfirmTitle": "Dismiss Change Request?",
+    "dismissConfirmDescription": "This will permanently delete your change request. This action cannot be undone."
   },
   "categories": {
     "title": "Categories",
