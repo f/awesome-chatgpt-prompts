@@ -74,6 +74,12 @@
   "prompts": {
     "title": "プロンプト",
     "create": "プロンプトを作成",
+    "hfDataStudio": {
+      "button": "HF Data Studio",
+      "sqlQuery": "SQLクエリ",
+      "openDataset": "データセットを開く",
+      "runQuery": "HFでクエリを実行"
+    },
     "edit": "プロンプトを編集",
     "delete": "プロンプトを削除",
     "myPrompts": "マイプロンプト",

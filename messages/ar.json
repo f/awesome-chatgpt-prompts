@@ -74,6 +74,12 @@
   "prompts": {
     "title": "الأوامر",
     "create": "إنشاء أمر",
+    "hfDataStudio": {
+      "button": "استوديو بيانات HF",
+      "sqlQuery": "استعلام SQL",
+      "openDataset": "فتح مجموعة البيانات",
+      "runQuery": "تشغيل الاستعلام على HF"
+    },
     "edit": "تعديل الأمر",
     "delete": "حذف الأمر",
     "myPrompts": "أوامري",

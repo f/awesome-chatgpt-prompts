@@ -5,6 +5,7 @@ import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { InfinitePromptList } from "@/components/prompts/infinite-prompt-list";
 import { PromptFilters } from "@/components/prompts/prompt-filters";
+import { HFDataStudioDropdown } from "@/components/prompts/hf-data-studio-dropdown";
 import { db } from "@/lib/db";
 import { isAISearchEnabled, semanticSearch } from "@/lib/ai/embeddings";
 import config from "@/../prompts.config";
@@ -174,15 +175,7 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
         </div>
         <div className="flex items-center gap-2">
           {!config.homepage?.useCloneBranding && (
-            <Button size="sm" variant="outline" className="h-8 text-xs" asChild>
-              <a 
-                href="https://huggingface.co/datasets/fka/awesome-chatgpt-prompts/viewer" 
-                target="_blank" 
-                rel="noopener noreferrer"
-              >
-                🤗 HF Data Studio
-              </a>
-            </Button>
+            <HFDataStudioDropdown />
           )}
           <Button size="sm" className="h-8 text-xs" asChild>
             <Link href="/prompts/new">

@@ -74,6 +74,12 @@
   "prompts": {
     "title": "Promptlar",
     "create": "Prompt Oluştur",
+    "hfDataStudio": {
+      "button": "HF Veri Stüdyosu",
+      "sqlQuery": "SQL Sorgusu",
+      "openDataset": "Veri Setini Aç",
+      "runQuery": "HF'de Sorguyu Çalıştır"
+    },
     "edit": "Prompt Düzenle",
     "delete": "Prompt Sil",
     "myPrompts": "Promptlarım",

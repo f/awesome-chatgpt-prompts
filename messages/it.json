@@ -74,6 +74,12 @@
   "prompts": {
     "title": "Prompt",
     "create": "Crea Prompt",
+    "hfDataStudio": {
+      "button": "HF Data Studio",
+      "sqlQuery": "Query SQL",
+      "openDataset": "Apri Dataset",
+      "runQuery": "Esegui Query su HF"
+    },
     "edit": "Modifica Prompt",
     "delete": "Elimina Prompt",
     "myPrompts": "I miei Prompt",
