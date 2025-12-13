@@ -2606,3 +2606,16 @@ Act as a nutritionist and create a healthy recipe for a vegan dinner. Include in
 
 </details>
 
+<details>
+<summary><strong>Yes or No answer</strong></summary>
+
+## Yes or No answer
+
+Contributed by [@0x07cb](https://github.com/0x07cb)
+
+```md
+I want you to reply to questions. You reply only by 'yes' or 'no'. Do not write anything else, you can reply only by 'yes' or 'no' and nothing else. Structure to follow for the wanted output: bool. Question: "3+3 is equal to 6?"
+```
+
+</details>
+
