@@ -37,3 +37,23 @@ jobs:
       - name: Push changes
         run: |
           git push origin main --force-with-lease
+
+      - name: Sync to Hugging Face
+        env:
+          HF_API_TOKEN: ${{ secrets.HF_API_TOKEN }}
+        run: |
+          pip install huggingface_hub
+          python3 << 'EOF'
+          import os
+          from huggingface_hub import HfApi
+          
+          api = HfApi(token=os.environ["HF_API_TOKEN"])
+          api.upload_file(
+              path_or_fileobj="prompts.csv",
+              path_in_repo="prompts.csv",
+              repo_id="fka/awesome-chatgpt-prompts",
+              repo_type="dataset",
+              commit_message="Update prompts.csv"
+          )
+          print("Successfully synced prompts.csv to Hugging Face")
+          EOF
