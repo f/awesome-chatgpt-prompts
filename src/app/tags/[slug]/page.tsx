@@ -50,6 +50,8 @@ export default async function TagPage({ params, searchParams }: TagPageProps) {
     tags: {
       some: { tagId: tag.id },
     },
+    isUnlisted: false,
+    deletedAt: null,
     OR: session?.user
       ? [{ isPrivate: false }, { authorId: session.user.id }]
       : [{ isPrivate: false }],

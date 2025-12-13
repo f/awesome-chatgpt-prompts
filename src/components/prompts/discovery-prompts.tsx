@@ -41,6 +41,8 @@ export async function DiscoveryPrompts({ isHomepage = false }: DiscoveryPromptsP
     db.prompt.findMany({
       where: {
         isPrivate: false,
+        isUnlisted: false,
+        deletedAt: null,
         isFeatured: true,
       },
       orderBy: { featuredAt: "desc" },
@@ -51,6 +53,8 @@ export async function DiscoveryPrompts({ isHomepage = false }: DiscoveryPromptsP
     db.prompt.findMany({
       where: {
         isPrivate: false,
+        isUnlisted: false,
+        deletedAt: null,
         votes: {
           some: {
             createdAt: {
@@ -70,6 +74,8 @@ export async function DiscoveryPrompts({ isHomepage = false }: DiscoveryPromptsP
     db.prompt.findMany({
       where: {
         isPrivate: false,
+        isUnlisted: false,
+        deletedAt: null,
       },
       orderBy: { createdAt: "desc" },
       take: limit,
@@ -78,6 +84,8 @@ export async function DiscoveryPrompts({ isHomepage = false }: DiscoveryPromptsP
     db.prompt.findMany({
       where: {
         isPrivate: false,
+        isUnlisted: false,
+        deletedAt: null,
       },
       orderBy: { updatedAt: "desc" },
       take: limit,
@@ -86,6 +94,8 @@ export async function DiscoveryPrompts({ isHomepage = false }: DiscoveryPromptsP
     db.prompt.findMany({
       where: {
         isPrivate: false,
+        isUnlisted: false,
+        deletedAt: null,
       },
       orderBy: {
         contributors: {

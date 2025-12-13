@@ -93,9 +93,10 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
   const isOwner = session?.user?.id === user.id;
   const isUnclaimed = user.email?.endsWith("@unclaimed.prompts.chat") ?? false;
 
-  // Build where clause - show private prompts only if owner
+  // Build where clause - show private prompts only if owner (unlisted prompts are visible on profiles)
   const where = {
     authorId: user.id,
+    deletedAt: null,
     ...(isOwner ? {} : { isPrivate: false }),
   };
 
@@ -180,7 +181,7 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
     contributorCount: p._count?.contributors ?? 0,
   }));
 
-  // Transform pinned prompts - filter out private prompts for non-owners
+  // Transform pinned prompts - filter out private prompts for non-owners (unlisted are visible)
   const pinnedPrompts = pinnedPromptsRaw
     .filter((pp) => isOwner || !pp.prompt.isPrivate)
     .map((pp) => ({

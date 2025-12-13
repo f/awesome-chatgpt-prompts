@@ -65,6 +65,8 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     where: {
       categoryId: category.id,
       isPrivate: false,
+      isUnlisted: false,
+      deletedAt: null,
     },
     orderBy: { createdAt: "desc" },
     take: 30,

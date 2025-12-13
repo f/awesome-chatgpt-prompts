@@ -38,6 +38,8 @@ export default async function FeedPage() {
     ? await db.prompt.findMany({
         where: {
           isPrivate: false,
+          isUnlisted: false,
+          deletedAt: null,
           categoryId: { in: subscribedCategoryIds },
         },
         orderBy: { createdAt: "desc" },
