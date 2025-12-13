@@ -12,6 +12,7 @@
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
     "db:seed": "prisma db seed",
+    "setup": "node scripts/setup.js",
     "postinstall": "prisma generate"
   },
   "dependencies": {

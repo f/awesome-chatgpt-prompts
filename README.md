@@ -36,6 +36,40 @@ npm run db:push
 npm run dev
 ```
 
+### Private Clone Setup (Recommended for Teams)
+
+For private deployments, use our **interactive setup wizard** to configure your instance with custom branding, disable sponsorship sections, and set up authentication:
+
+```bash
+git clone https://github.com/f/awesome-chatgpt-prompts.git
+cd awesome-chatgpt-prompts
+npm install
+npm run setup
+```
+
+The setup wizard will guide you through:
+- **Branding** — Set your organization name, logo, and description
+- **Theme** — Choose colors, border radius, and UI style
+- **Authentication** — Configure GitHub, Google, Azure AD, or email/password login
+- **Features** — Enable/disable private prompts, categories, tags, AI search
+- **Languages** — Select supported locales
+- **Sponsors** — Optionally add your own sponsor logos (prompts.chat sponsors are disabled)
+
+After setup, complete the configuration:
+
+```bash
+# Edit .env with your database and OAuth credentials
+nano .env
+
+# Run database migrations
+npm run db:push
+
+# Start development server
+npm run dev
+```
+
+> 💡 **Tip:** The setup script automatically enables "clone branding mode" which hides prompts.chat branding, achievements, and sponsors from the homepage.
+
 We hope you find these prompts useful and have fun exploring AI chat models!
 
 **[View on prompts.chat](https://prompts.chat)**
