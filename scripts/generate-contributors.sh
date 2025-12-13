@@ -47,8 +47,11 @@ remote_csv = os.path.join(project_dir, 'prompts.csv.remote')
 # Read existing local prompts (by act title as key)
 local_prompts = {}
 fieldnames = None
-with open(csv_file, 'r') as f:
-    reader = csv.DictReader(f)
+with open(csv_file, 'r', newline='', encoding='utf-8') as f:
+    # Normalize CRLF to LF
+    content = f.read().replace('\r\n', '\n').replace('\r', '\n')
+    import io
+    reader = csv.DictReader(io.StringIO(content))
     fieldnames = reader.fieldnames
     for row in reader:
         act = row.get('act', '').strip()
@@ -57,10 +60,11 @@ with open(csv_file, 'r') as f:
 
 print(f"Found {len(local_prompts)} existing local prompts")
 
-# Read remote prompts
+# Read remote prompts (normalize CRLF to LF)
 remote_prompts = []
-with open(remote_csv, 'r') as f:
-    reader = csv.DictReader(f)
+with open(remote_csv, 'r', newline='', encoding='utf-8') as f:
+    content = f.read().replace('\r\n', '\n').replace('\r', '\n')
+    reader = csv.DictReader(io.StringIO(content))
     remote_fieldnames = reader.fieldnames
     for row in reader:
         remote_prompts.append(row)
