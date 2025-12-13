@@ -96,13 +96,29 @@
     "feature": "Destacar",
     "featured": "Destacado",
     "adminArea": "Área de Administrador",
+    "noMorePrompts": "Has llegado al final",
+    "loading": "Cargando...",
     "types": {
       "text": "Texto",
       "image": "Imagen",
       "video": "Video",
       "audio": "Audio",
-      "structured": "Estructurado"
+      "structured": "Estructurado",
+      "document": "Documento"
     },
+    "insertVariable": "Insertar Variable",
+    "variableName": "Nombre de Variable",
+    "variableDefault": "Valor Predeterminado (opcional)",
+    "variableDefaultPlaceholder": "ej., tecnología",
+    "variableHint": "Usa la sintaxis $'{'nombre'}' o $'{'nombre:predeterminado'}'",
+    "insert": "Insertar",
+    "requiresMediaUpload": "Requiere Subir Medios",
+    "requiresMediaUploadDescription": "Los usuarios deben proporcionar archivos multimedia para usar este prompt",
+    "requiredMediaType": "Tipo de Medio",
+    "requiredMediaCount": "Número de Archivos",
+    "requiresImage": "Requiere {count} imagen(es)",
+    "requiresVideo": "Requiere {count} video(s)",
+    "requiresDocument": "Requiere {count} documento(s)",
     "structuredFormat": "Formato",
     "structuredFormatDescription": "Selecciona el formato para tu prompt estructurado",
     "structuredContentDescription": "Define tu flujo de trabajo, agente o configuración de pipeline",
@@ -131,6 +147,10 @@
     "promptCreated": "Prompt creado",
     "promptUpdated": "Prompt actualizado",
     "run": "Ejecutar",
+    "promptCopied": "Prompt copiado",
+    "promptCopiedDescription": "El prompt se ha copiado al portapapeles. Pégalo en {platform} después de abrirlo.",
+    "openPlatform": "Abrir {platform}",
+    "cancel": "Cancelar",
     "titleRequired": "El título es obligatorio",
     "contentRequired": "El contenido es obligatorio",
     "titlePlaceholder": "Ingresa un título para tu prompt",
@@ -216,13 +236,17 @@
   },
   "tags": {
     "title": "Etiquetas",
+    "description": "Explorar prompts por etiquetas",
     "create": "Crear Etiqueta",
     "edit": "Editar Etiqueta",
     "delete": "Eliminar Etiqueta",
     "name": "Nombre",
     "color": "Color",
     "noTags": "No se encontraron etiquetas",
-    "confirmDelete": "¿Estás seguro de que quieres eliminar esta etiqueta?"
+    "confirmDelete": "¿Estás seguro de que quieres eliminar esta etiqueta?",
+    "prompts": "prompts",
+    "allTags": "Todas las Etiquetas",
+    "popularTags": "Etiquetas Populares"
   },
   "settings": {
     "title": "Configuración",
@@ -384,6 +408,36 @@
       "deleteConfirmTitle": "¿Eliminar Etiqueta?",
       "deleteConfirmDescription": "Esto eliminará la etiqueta de todos los prompts."
     },
+    "webhooks": {
+      "title": "Gestión de Webhooks",
+      "description": "Configura webhooks para recibir notificaciones cuando ocurran eventos",
+      "name": "Nombre",
+      "url": "URL del Webhook",
+      "method": "Método HTTP",
+      "headers": "Cabeceras HTTP",
+      "events": "Eventos",
+      "payload": "Carga JSON",
+      "payloadHelp": "Usa marcadores como {{PROMPT_TITLE}}",
+      "placeholders": "Marcadores Disponibles",
+      "status": "Estado",
+      "enabled": "Habilitado",
+      "add": "Añadir Webhook",
+      "edit": "Editar",
+      "delete": "Eliminar",
+      "cancel": "Cancelar",
+      "save": "Guardar",
+      "create": "Crear",
+      "empty": "No hay webhooks configurados",
+      "addTitle": "Añadir Webhook",
+      "addDescription": "Configura un nuevo endpoint de webhook",
+      "editTitle": "Editar Webhook",
+      "editDescription": "Actualizar configuración del webhook",
+      "deleteConfirm": "¿Estás seguro de eliminar este webhook?",
+      "useSlackPreset": "Usar Preset de Slack",
+      "test": "Probar",
+      "testSuccess": "¡Prueba de webhook exitosa!",
+      "testFailed": "Falló la prueba del webhook"
+    },
     "import": {
       "title": "Importar Prompts de la Comunidad",
       "description": "Importar prompts desde el archivo prompts.csv de Awesome ChatGPT Prompts",
@@ -406,6 +460,15 @@
       "deleteConfirmTitle": "¿Eliminar Prompts de la Comunidad?",
       "deleteConfirmDescription": "Esto eliminará permanentemente todos los prompts importados de prompts.csv y los usuarios contribuyentes no reclamados. Esta acción no se puede deshacer.",
       "deleteSuccess": "{count} prompts de la comunidad eliminados"
+    },
+    "aiSearch": {
+      "title": "Búsqueda IA",
+      "description": "Genera embeddings para búsqueda semántica con OpenAI",
+      "promptsWithoutEmbeddings": "Prompts sin embeddings",
+      "generateButton": "Generar Embeddings",
+      "generating": "Generando...",
+      "generateSuccess": "{count} embeddings generados",
+      "generateResult": "Generados: {success}, Fallidos: {failed}"
     }
   },
   "search": {
@@ -422,7 +485,8 @@
     "mostUpvoted": "Más votados",
     "search": "Buscar",
     "clear": "Limpiar",
-    "found": "{count} encontrados"
+    "found": "{count} encontrados",
+    "aiSearch": "Búsqueda IA"
   },
   "user": {
     "profile": "Perfil",
@@ -435,6 +499,7 @@
     "createFirstPrompt": "Crea tu primer prompt",
     "upvotesReceived": "votos recibidos",
     "editProfile": "Editar Perfil",
+    "unclaimedUser": "No reclamado",
     "contributions": "Contribuciones",
     "contributionsCount": "contribuciones",
     "noContributions": "Sin contribuciones aún",
@@ -443,6 +508,7 @@
   },
   "subscription": {
     "subscribe": "Suscribirse",
+    "subscribed": "Suscrito",
     "unsubscribe": "Cancelar suscripción",
     "subscribedTo": "Suscrito a {name}",
     "unsubscribedFrom": "Suscripción cancelada de {name}",
