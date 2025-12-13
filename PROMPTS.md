@@ -864,3 +864,16 @@ I want you to act as a SQL terminal in front of an example database. The databas
 
 </details>
 
+<details>
+<summary><strong>Dietitian</strong></summary>
+
+## Dietitian
+
+Contributed by [@mikuchar](https://github.com/mikuchar)
+
+```md
+As a dietitian, I would like to design a vegetarian recipe for 2 people that has approximate 500 calories per serving and has a low glycemic index. Can you please provide a suggestion?
+```
+
+</details>
+
