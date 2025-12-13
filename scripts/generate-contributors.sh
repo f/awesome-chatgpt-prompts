@@ -41,6 +41,30 @@ import os
 csv_backup = os.path.join(os.environ.get('PROJECT_DIR', '.'), 'prompts.csv.backup')
 csv_file = os.path.join(os.environ.get('PROJECT_DIR', '.'), 'prompts.csv')
 
+# Get existing commits (author + prompt act) to skip duplicates
+def get_existing_commits():
+    existing = set()
+    try:
+        result = subprocess.run(
+            ['git', 'log', '--format=%ae|%s', '--', 'prompts.csv'],
+            capture_output=True, text=True
+        )
+        for line in result.stdout.strip().split('\n'):
+            if '|Add prompt:' in line:
+                parts = line.split('|Add prompt:')
+                if len(parts) == 2:
+                    email = parts[0].strip()
+                    act = parts[1].strip()
+                    # Extract username from email
+                    username = email.replace('@users.noreply.github.com', '')
+                    existing.add((username, act))
+    except:
+        pass
+    return existing
+
+existing_commits = get_existing_commits()
+print(f"Found {len(existing_commits)} existing contributor commits")
+
 # Read all rows
 rows = []
 with open(csv_backup, 'r') as f:
@@ -50,6 +74,8 @@ with open(csv_backup, 'r') as f:
         rows.append(row)
 
 total = len(rows)
+created = 0
+skipped = 0
 print(f"Processing {total} prompts...")
 
 for i, row in enumerate(rows, 1):
@@ -66,6 +92,12 @@ for i, row in enumerate(rows, 1):
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writerow(row)
     
+    # Check if commit already exists for this contributor + prompt
+    if (contributor, act) in existing_commits:
+        print(f"[{i}/{total}] SKIP (exists): {contributor}: {act}")
+        skipped += 1
+        continue
+    
     # Stage and commit
     subprocess.run(['git', 'add', csv_file], check=True)
     
@@ -81,9 +113,10 @@ for i, row in enumerate(rows, 1):
         f'--author={contributor} <{email}>'
     ], env=env, check=True)
     
+    created += 1
     print(f"[{i}/{total}] {contributor}: {act}")
 
-print(f"\nDone! Created {total} contributor commits.")
+print(f"\nDone! Created {created} commits, skipped {skipped} existing.")
 PYTHON_SCRIPT
 
 # Clean up backup
