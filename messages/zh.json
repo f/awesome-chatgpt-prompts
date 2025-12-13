@@ -277,6 +277,29 @@
         "dismissed": "已驳回"
       }
     },
+    "prompts": {
+      "title": "提示词管理",
+      "description": "从 prompts.csv 导入提示词并管理 AI 嵌入",
+      "import": "导入 CSV",
+      "export": "导出 CSV",
+      "exportInfo": "下载提示词为 CSV 文件以上传至 GitHub/HuggingFace",
+      "exportSuccess": "提示词导出成功",
+      "importSuccess": "{count} 个提示词已导入",
+      "allSkipped": "所有提示词已存在",
+      "importResult": "已导入: {imported}, 已跳过: {skipped}",
+      "deleteSuccess": "{count} 个提示词已删除",
+      "importConfirmTitle": "导入提示词？",
+      "importConfirmDescription": "这将从 prompts.csv 导入提示词。已存在的提示词将被跳过。",
+      "deleteConfirmTitle": "删除社区提示词？",
+      "deleteConfirmDescription": "这将永久删除所有导入的提示词和未认领的贡献者。",
+      "cancel": "取消",
+      "confirm": "导入",
+      "delete": "删除",
+      "pending": "待处理",
+      "generateEmbeddings": "生成嵌入",
+      "embeddingsSuccess": "{count} 个嵌入生成成功",
+      "embeddingsResult": "成功: {success}, 失败: {failed}"
+    },
     "users": {
       "title": "用户管理",
       "description": "查看和管理用户账户",

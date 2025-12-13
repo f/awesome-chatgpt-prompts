@@ -283,6 +283,29 @@
         "dismissed": "مرفوض"
       }
     },
+    "prompts": {
+      "title": "إدارة الأوامر",
+      "description": "استيراد الأوامر من prompts.csv وإدارة تضمينات الذكاء الاصطناعي",
+      "import": "استيراد CSV",
+      "export": "تصدير CSV",
+      "exportInfo": "تحميل الأوامر كملف CSV لـ GitHub/HuggingFace",
+      "exportSuccess": "تم تصدير الأوامر بنجاح",
+      "importSuccess": "تم استيراد {count} أمر",
+      "allSkipped": "جميع الأوامر موجودة بالفعل",
+      "importResult": "مستورد: {imported}, تم تخطيه: {skipped}",
+      "deleteSuccess": "تم حذف {count} أمر",
+      "importConfirmTitle": "استيراد الأوامر؟",
+      "importConfirmDescription": "سيتم استيراد الأوامر من prompts.csv. سيتم تخطي الأوامر الموجودة.",
+      "deleteConfirmTitle": "حذف أوامر المجتمع؟",
+      "deleteConfirmDescription": "سيتم حذف جميع الأوامر المستوردة والمساهمين غير المطالب بهم بشكل دائم.",
+      "cancel": "إلغاء",
+      "confirm": "استيراد",
+      "delete": "حذف",
+      "pending": "قيد الانتظار",
+      "generateEmbeddings": "إنشاء التضمينات",
+      "embeddingsSuccess": "تم إنشاء {count} تضمين",
+      "embeddingsResult": "نجاح: {success}, فشل: {failed}"
+    },
     "users": {
       "title": "إدارة المستخدمين",
       "description": "عرض وإدارة حسابات المستخدمين",

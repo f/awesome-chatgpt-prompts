@@ -277,6 +277,29 @@
         "dismissed": "却下済み"
       }
     },
+    "prompts": {
+      "title": "プロンプト管理",
+      "description": "prompts.csv からプロンプトをインポートし、AI 埋め込みを管理",
+      "import": "CSV インポート",
+      "export": "CSV エクスポート",
+      "exportInfo": "GitHub/HuggingFace 用に CSV でプロンプトをダウンロード",
+      "exportSuccess": "プロンプトのエクスポートに成功しました",
+      "importSuccess": "{count} 件のプロンプトをインポートしました",
+      "allSkipped": "すべてのプロンプトは既に存在します",
+      "importResult": "インポート: {imported}, スキップ: {skipped}",
+      "deleteSuccess": "{count} 件のプロンプトを削除しました",
+      "importConfirmTitle": "プロンプトをインポートしますか？",
+      "importConfirmDescription": "prompts.csv からプロンプトをインポートします。既存のプロンプトはスキップされます。",
+      "deleteConfirmTitle": "コミュニティプロンプトを削除しますか？",
+      "deleteConfirmDescription": "インポートされたすべてのプロンプトと未請求の投稿者が永久に削除されます。",
+      "cancel": "キャンセル",
+      "confirm": "インポート",
+      "delete": "削除",
+      "pending": "保留中",
+      "generateEmbeddings": "埋め込みを生成",
+      "embeddingsSuccess": "{count} 件の埋め込みを生成しました",
+      "embeddingsResult": "成功: {success}, 失敗: {failed}"
+    },
     "users": {
       "title": "ユーザー管理",
       "description": "ユーザーアカウントの表示と管理",

@@ -277,6 +277,29 @@
         "dismissed": "Descartado"
       }
     },
+    "prompts": {
+      "title": "Gestión de Prompts",
+      "description": "Importa prompts de prompts.csv y gestiona los embeddings de IA",
+      "import": "Importar CSV",
+      "export": "Exportar CSV",
+      "exportInfo": "Descargar prompts como CSV para GitHub/HuggingFace",
+      "exportSuccess": "Prompts exportados exitosamente",
+      "importSuccess": "{count} prompts importados",
+      "allSkipped": "Todos los prompts ya existen",
+      "importResult": "Importados: {imported}, Omitidos: {skipped}",
+      "deleteSuccess": "{count} prompts eliminados",
+      "importConfirmTitle": "¿Importar Prompts?",
+      "importConfirmDescription": "Esto importará prompts de prompts.csv. Los prompts existentes se omitirán.",
+      "deleteConfirmTitle": "¿Eliminar Prompts de la Comunidad?",
+      "deleteConfirmDescription": "Esto eliminará permanentemente todos los prompts importados y contribuidores no reclamados.",
+      "cancel": "Cancelar",
+      "confirm": "Importar",
+      "delete": "Eliminar",
+      "pending": "pendientes",
+      "generateEmbeddings": "Generar Embeddings",
+      "embeddingsSuccess": "{count} embeddings generados",
+      "embeddingsResult": "Éxito: {success}, Fallidos: {failed}"
+    },
     "users": {
       "title": "Gestión de Usuarios",
       "description": "Ver y administrar cuentas de usuario",
