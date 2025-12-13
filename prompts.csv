@@ -358,3 +358,259 @@ You should apply your knowledge of UX/UI design principles, accessibility standa
 My first request is:
 “I need help creating a white page that showcases courses, including course listings, brief descriptions, instructor highlights, and clear calls to action.”
 ",FALSE,TEXT,apupsis
+Isometric 3D Weather Cityscapes (PBR Textures),"Present a clear, 45° top-down isometric miniature 3D cartoon scene of ${city_name:İSTANBUL}, featuring its most iconic landmarks and architectural elements. Use soft, refined textures with realistic PBR materials and gentle, lifelike lighting and shadows. Integrate the current weather conditions directly into the city environment to create an immersive atmospheric mood.
+Use a clean, minimalistic composition with a soft, solid-colored background.
+
+At the top-center, place the title “İSTANBUL” in large bold text, a prominent weather icon beneath it, then the date (small text) and temperature (medium text).
+All text must be centered with consistent spacing, and may subtly overlap the tops of the buildings.
+Square 1080x1080 dimension.",FALSE,IMAGE,serkanozcan
+Whimsical 3D Brand Miniatures,"3D chibi-style miniature concept store of ${Brand Name:Mc Donalds}, creatively designed with an exterior inspired by the brand's most iconic product or packaging (such as a giant ${Brand's core product:chicken bucket, hamburger, donut, roast duck}). The store features two floors with large glass windows clearly showcasing the cozy and finely decorated interior: {brand's primary color}-themed decor, warm lighting, and busy staff dressed in outfits matching the brand. Adorable tiny figures stroll or sit along the street, surrounded by benches, street lamps, and potted plants, creating a charming urban scene. Rendered in a miniature cityscape style using Cinema 4D, with a blind-box toy aesthetic, rich in details and realism, and bathed in soft lighting that evokes a relaxing afternoon atmosphere. --ar 2:3
+
+Brand name: ${Brand Name:Mc Donalds}",FALSE,IMAGE,serkanozcan
+Smart Rewriter & Clarity Booster,"Rewrite the user’s text so it becomes clearer, more concise, and easy to understand for a general audience. Keep the original meaning intact. Remove unnecessary jargon, filler words, and overly long sentences. If the text contains unclear arguments, briefly point them out and suggest a clearer version.
+Offer the rewritten text first, then a short note explaining the major improvements.
+Do not add new facts or invent details. This is the content:
+
+${content}",FALSE,TEXT,iltekin
+World Landmarks: Hyper-Realistic 3D Dioramas,"Create a hyper-realistic 3D diorama-style model of ${Landmark Name:EIFFEL TOWER}. The model should appear as a miniature, set on a raised cross-section of earth that reveals soil and rock layers beneath a lush grassy surface. The structure must be highly detailed and proportionally accurate, surrounded by tiny realistic elements like region-appropriate street lamps, native trees, shrubs, water features like small fountains, and historically or culturally fitting pathways. The scene should evoke the unique character of ${Landmark Name:EIFFEL TOWER}’s surrounding landscape. The environment must include a soft white background to draw full attention to the model. Include the text “${Landmark Name:EIFFEL TOWER}” in large, bold, elegant lettering prominently displayed on a big sign or billboard at the front of the diorama, easily readable and eye-catching, along with a large national flag on a tall, prominent flagpole positioned beside ${Landmark Name:EIFFEL TOWER}, clearly visible and waving. 1080x1080 dimension
+",FALSE,IMAGE,serkanozcan
+3D Isometric Miniature Diorama,"""When I give you a movie quote, never reply with text or a prompt. Instead, analyze the scene where the quote appears and visualize it in the style of a '3D Isometric Miniature Diorama, Tilt-Shift, 45-degree angle' (image generation). Provide only the image.""
+
+Quote = ""You shall not pass!""",FALSE,IMAGE,akykaan
+Architectural Sketch & Markup Overlay,"Based on the source image, overlay an architect's busy working process onto the entire scene. The image should look like a blueprint or trace paper covering the original photo, filled with handwritten black ink sketches, technical annotations, dimension lines with measurements (e.g., ""12'-4"""", ""CLG HGT 9'""), rough cross-section diagrams showing structural details, revision clouds with notes like ""REVISE LATER"", and leaders pointing to specific elements labeled with English architect's notes such as ""CHECK BEAM"", ""REMOVE FINISH"", or ""PROPOSED NEW OPENING"". The style should be messy, authentic, and look like a work-in-progress conceptual drawing.",FALSE,IMAGE,iamcanturk
+Floating City Island - Photoreal 4K Poster,"Design a ""floating miniature island"" shaped like the ${city:izmir} map/silhouette, gliding above white clouds. On the island, seamlessly blend ${city:izmir}’s most iconic landmarks, architectural structures, and natural landscapes (parks, waterfronts, hills). Integrate large white 3D letters spelling ""${city:izmir}"" into the island’s surface or geographic texture. Enhance the atmosphere with city-specific birds, cinematic sunlight, vibrant colors, aerial perspective, and realistic shadow/reflection rendering. Ultra HD quality, hyper-realistic textures, 4K+ resolution, digital poster format. Square 1×1 composition, photoreal, volumetric lighting, global illumination, ray tracing.",FALSE,IMAGE,apo-bozdag
+Interdisciplinary Connections and Applications,"""Explore how [topic] connects with other fields or disciplines. Provide examples of cross-disciplinary applications, collaborative opportunities, and how integrating insights from different areas can enhance understanding or innovation in [topic].""",FALSE,TEXT,volkan0x
+Expert-Level Insights and Advanced Resources,"""Curate a collection of expert tips, advanced learning strategies, and high-quality resources (such as books, courses, tools, or communities) for mastering [topic] efficiently. Emphasize credible sources and actionable advice to accelerate expertise.""
+",FALSE,TEXT,volkan0x
+Botanical Diagram,"A botanical diagram of a [subject], illustrated in the style of vintage scientific journals. Accented with natural tones and detailed cross-sections, it’s labeled with handwritten annotations in sepia ink, evoking a scholarly, antique charm.",FALSE,IMAGE,iamcanturk
+AI2sql SQL Model — Query Generator,"Context:
+This prompt is used by AI2sql to generate SQL queries from natural language.
+AI2sql focuses on correctness, clarity, and real-world database usage.
+
+Purpose:
+This prompt converts plain English database requests into clean,
+readable, and production-ready SQL queries.
+
+Database:
+${db:PostgreSQL | MySQL | SQL Server}
+
+Schema:
+${schema:Optional — tables, columns, relationships}
+
+User request:
+${request:Describe the data you want in plain English}
+
+Output:
+- A single SQL query that answers the request
+
+Behavior:
+- Focus exclusively on SQL generation
+- Prioritize correctness and clarity
+- Use explicit column selection
+- Use clear and consistent table aliases
+- Avoid unnecessary complexity
+
+Rules:
+- Output ONLY SQL
+- No explanations
+- No comments
+- No markdown
+- Avoid SELECT *
+- Use standard SQL unless the selected database requires otherwise
+
+Ambiguity handling:
+- If schema details are missing, infer reasonable relationships
+- Make the most practical assumption and continue
+- Do not ask follow-up questions
+
+Optional preferences:
+${preferences:Optional — joins vs subqueries, CTE usage, performance hints}
+",FALSE,TEXT,mergisi
+"Director Variation Grid: One Still, Eight Auteur Re-Shoots","Create a single 3x3 grid image (square, 2048x2048, high detail).
+The center tile (row 2, col 2) must be the exact uploaded reference film still, unchanged. Do not reinterpret, repaint, relight, recolor, crop, reframe, stylize, sharpen, blur, or transform it in any way. It must remain exactly as provided.
+
+Director detection rule
+If the director of the uploaded film still is one of the 8 directors listed below, then the tile for that same director must be an exact duplicate of the ORIGINAL center tile, with no changes at all (same image content, same framing, same colors, same lighting, same texture). Only apply the label.
+All other tiles follow the normal re-shoot rules.
+
+Grid rules
+9 equal tiles in a clean 3x3 layout, thin uniform gutters between tiles.
+Each tile has a simple, readable label in the top-left corner, consistent font and size, high contrast, no warping.
+Center tile label: ORIGINAL
+Other tiles labels exactly:
+Alfred Hitchcock
+Akira Kurosawa
+Federico Fellini
+Andrei Tarkovsky
+Ingmar Bergman
+Jean-Luc Godard
+Agnès Varda
+Sergio Leone
+No other text, logos, subtitles, or watermarks.
+Keep the 3x3 alignment perfectly straight and clean.
+
+IDENTITY + GENDER LOCK (applies to ALL non-ORIGINAL tiles)
+- Use the ORIGINAL center tile as the single source of truth for every person’s identity.
+- Preserve the exact number of people and their roles/positions (no swapping who is who).
+- Do NOT change any person’s gender or gender presentation. No gender swap, no sex change, no cross-casting.
+- Keep each person’s key identity traits consistent: face structure, hairstyle length/type, facial hair (must NOT appear/disappear), makeup level (must NOT appear/disappear), body proportions, age range, skin tone, and distinctive features (moles/scars/glasses).
+- Do not turn one person into a different person. Do not merge faces. Do not split one person into two. Do not duplicate the same face across different people.
+- If any identity attribute is ambiguous, default to matching the ORIGINAL exactly.
+- Allowed changes are ONLY cinematic treatment per director: framing, lens feel, camera height, DOF, lighting, palette, contrast curve, texture, mood, and set emphasis. Identities must remain locked.
+NEGATIVE: gender swap, femininize/masculinize, add/remove beard, add/remove lipstick, change hair length drastically, face replacement, identity drift.
+
+CAST ANCHORING
+- Person A = left-most person in ORIGINAL, Person B = right-most person in ORIGINAL, Person C = center/back person in ORIGINAL, etc.
+- Each tile must keep Person A/B/C as the same individuals (same gender presentation and identity), only reshot cinematically.
+
+Content rules (for non-duplicate tiles)
+Maintain recognizable continuity across all tiles (who/where/what). Do not change identities into different people.
+Vary per director: framing, lens feel, camera height, depth of field, lighting, color palette, contrast curve, texture, production design emphasis, mood.
+Ultra-sharp cinematic stills (except where diffusion is specified), coherent lighting, correct anatomy, no duplicated faces, no mangled hands, no broken perspective, no glitch artifacts, and perfectly readable labels.
+
+Director-specific style and color grading (apply strongly per tile, unless the duplicate rule applies)
+
+Alfred Hitchcock
+Palette: muted neutrals, cool grays, sickly greens, deep blacks, occasional saturated red accent.
+Contrast: high contrast with crisp, suspenseful shadows.
+Texture: classic 35mm cleanliness with tense atmosphere.
+Lens/DOF: 35–50mm, controlled depth, precise geometry.
+Lighting/Blocking: noir-influenced practicals, hard key, voyeuristic framing, psychological tension.
+
+Akira Kurosawa
+Palette: earthy desaturated browns/greens; restrained primaries if color.
+Contrast: bold tonal separation, punchy blacks.
+Texture: gritty film grain, tactile elements (mud, rain, wind).
+Lens/DOF: 24–50mm with deep focus; dynamic staging and strong geometry.
+Lighting/Atmosphere: dramatic natural light, weather as design (fog, rain streaks, backlight).
+
+Federico Fellini
+Palette: warm ambers, carnival reds, creamy highlights, pastel accents.
+Contrast: medium contrast, dreamy glow and gentle bloom.
+Texture: soft diffusion, theatrical surreal polish.
+Lens/DOF: normal to wide, staged tableaux, rich background set dressing.
+Lighting: expressive, stage-like, whimsical yet melancholic mood.
+
+Andrei Tarkovsky
+Palette: subdued sepia/olive, cold cyan-gray, low saturation, weathered tones.
+Contrast: low-to-medium, soft highlight roll-off.
+Texture: organic grain, misty air, water stains, aged surfaces.
+Lens/DOF: 50–85mm, contemplative framing, naturalistic DOF.
+Lighting/Atmosphere: window light, overcast feel, poetic elements (fog, rain, smoke), quiet intensity.
+
+Ingmar Bergman
+Palette: near-monochrome restraint, cold grays, pale skin tones, minimal color distractions.
+Contrast: high contrast, sculpted faces, deep shadows.
+Texture: clean, intimate, psychologically focused.
+Lens/DOF: 50–85mm, tighter framing, shallow-to-medium DOF.
+Lighting: strong key with dramatic falloff, emotionally intense portraits.
+
+Jean-Luc Godard
+Palette: bold primaries (red/blue/yellow) punctuating neutrals, or intentionally flat natural colors.
+Contrast: medium contrast, occasional slightly overexposed highlights.
+Texture: raw 16mm/35mm energy, imperfect and alive.
+Lens/DOF: wider lenses, spontaneous off-center composition.
+Lighting: available light feel, street/neon/practicals, documentary new-wave immediacy.
+
+Agnès Varda
+Palette: warm natural daylight, gentle pastels, honest skin tones, subtle complementary colors.
+Contrast: medium, soft and inviting.
+Texture: tactile lived-in realism, subtle film grain.
+Lens/DOF: 28–50mm, environmental portrait framing with context.
+Lighting: naturalistic, human-first, intimate but open atmosphere.
+
+Sergio Leone
+Palette: sunbaked golds, dusty oranges, sepia browns, deep shadows, occasional turquoise sky tones.
+Contrast: high contrast, harsh sun, strong silhouettes.
+Texture: gritty dust, sweat, leather, weathered surfaces, pronounced grain.
+Lens/DOF: extreme wide (24–35mm) and extreme close-up language; shallow DOF for eyes/details.
+Lighting/Mood: hard sunlight, rim light, operatic tension, iconic dramatic shadow shapes.
+
+Output: a single final 3x3 grid image only.
+",FALSE,IMAGE,semihkislar
+Travel Poster,"{
+  ""style_definition"": {
+    ""art_style"": ""Modern Flat Vector Illustration"",
+    ""medium"": ""Digital Vector Art"",
+    ""vibe"": ""Optimistic, Cheerful, Travel Poster"",
+    ""rendering_engine_simulation"": ""Adobe Illustrator / Vectorized""
+  },
+  ""visual_parameters"": {
+    ""lines_and_shapes"": ""Clean sharp lines, simplified geometry, lack of complex textures, rounded organic shapes for trees and clouds."",
+    ""colors"": ""High saturation, vibrant palette. Dominant turquoise and cyan for water/sky, warm orange and terracotta for buildings, lush green for vegetation, cream/yellow for clouds."",
+    ""lighting"": ""Flat lighting with soft gradients, minimal shadows, bright daylight atmosphere.""
+  },
+  ""generation_prompt"": ""Transform the input photo into a high-quality modern flat vector illustration in the style of a corporate travel poster. The image should feature simplified shapes, clean lines, and a smooth matte finish. Use a vibrant color palette with bright turquoise water, warm orange rooftops, and lush green foliage. The sky should be bright blue with stylized fluffy clouds. Remove all photorealistic textures, noise, and grain. Make it look like a professional digital artwork found on Behance or Dribbble. Maintain the composition of the original photo but vectorize the details."",
+  ""negative_prompt"": ""photorealistic, realistic, 3d render, glossy, shiny, grainy, noise, blur, bokeh, detailed textures, grunge, dark, gloomy, sketch, rough lines, low resolution, photography""
+}",FALSE,STRUCTURED,recep
+Topest,Be unique with perfect explanation ,FALSE,TEXT,adediwuratemitope9-tech
+Profesor Creativo,"Eres un tutor de programación para estudiantes de secundaria. Tienes prohibido darme la solución directa o escribir código corregido. Tu misión es guiarme para que yo mismo tenga el momento ""¡Ajá!"".
+
+Sigue este proceso cuando te envíe mi código:
+
+    1.Identifica el problema: Localiza el error (bug) o la ineficiencia.
+
+    2.Explica el concepto: Antes de decirme dónde está el error, explícame brevemente el concepto teórico que estoy aplicando mal (ej. ámbito de variables, condiciones de salida de un bucle, tipos de datos).
+
+    3.Pista Guiada: Dame una pista sobre en qué bloque o función específica debo mirar.
+
+    4.Prueba Mental: Pídeme que ejecute mentalmente mi código paso a paso (trace table) con un ejemplo de entrada específico para que yo vea dónde se rompe.
+
+Mantén un tono didáctico y motivador.",FALSE,TEXT,kuaichankein
+Pitchside Tunnel Moment with Your Favorite Footballer,"Inputs
+
+Reference 1: User’s uploaded photo
+
+Reference 2: [FOOTBALLER_NAME]
+
+[JERSEY_NUMBER]
+
+[JERSEY_TEAM_NAME] (team of the jersey being held)
+
+[USER_OUTFIT_DESC]
+
+[MOOD]
+
+Prompt
+Create a photorealistic image of the person from the user’s uploaded photo standing next to [FOOTBALLER_NAME] pitchside in front of the stadium stands, posing for a photo.
+
+Location: Pitchside/touchline in a large stadium. Natural grass and advertising boards look realistic.
+
+Stands: The background stands must feel 100% like [FOOTBALLER_NAME]’s team home crowd (single-team atmosphere). Dominant team colors, scarves, flags, and banners. No rival-team colors or mixed sections visible.
+
+Composition: Both subjects centered, shoulder to shoulder. [FOOTBALLER_NAME] can place one arm around the user.
+
+Prop: They are holding a jersey together toward the camera. The back of the jersey must clearly show [FOOTBALLER_NAME] and the number [JERSEY_NUMBER]. Print alignment is clean, sharp, and realistic.
+
+Critical rule (lock the held jersey to a specific team)
+
+The jersey they are holding must be an official kit design of [JERSEY_TEAM_NAME].
+
+Keep the jersey colors, patterns, and overall design consistent with [JERSEY_TEAM_NAME].
+
+If the kit normally includes a crest and sponsor, place them naturally and realistically (no distorted logos or random text).
+
+Prevent color drift: the jersey’s primary and secondary colors must stay true to [JERSEY_TEAM_NAME]’s known colors.
+
+Note: [JERSEY_TEAM_NAME] must not be the club [FOOTBALLER_NAME] currently plays for.
+
+Clothing:
+
+[FOOTBALLER_NAME]: Wearing his current team’s match kit (shirt, shorts, socks), looks natural and accurate.
+
+User: [USER_OUTFIT_DESC]
+
+Camera: Eye level, 35mm, slight wide angle, natural depth of field. Focus on the two people, background slightly blurred.
+
+Lighting: Stadium lighting + daylight (or evening match lights), realistic shadows, natural skin tones.
+
+Faces: Keep the user’s face and identity faithful to the uploaded reference. [FOOTBALLER_NAME] is clearly recognizable. Expression: [MOOD]
+
+Quality: Ultra realistic, natural skin texture and fabric texture, high resolution.
+
+Negative prompts
+Wrong team colors on the held jersey, random or broken logos/text, unreadable name/number, extra limbs/fingers, facial distortion, watermark, heavy blur, duplicated crowd faces, oversharpening.
+
+Output
+Single image, 3:2 landscape or 1:1 square, high resolution.",FALSE,IMAGE,semihkislar
+Gemini,"I want my Gemini to make make smarter, it should use bold text for headings and emojis. When I start for explanation it should also include real life example for easy digestion ",FALSE,TEXT,boii260304@gmail.com
