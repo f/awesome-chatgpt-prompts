@@ -86,7 +86,9 @@ many hidden gems there. Take a look!
 # Prompts
 
 🔍 **[View All Prompts on GitHub (prompts.csv)](https://github.com/f/awesome-chatgpt-prompts/blob/main/prompts.csv)**
+
 📊 **[View All Prompts as Data Studio on HF (prompts.csv)](https://github.com/f/awesome-chatgpt-prompts/blob/main/prompts.csv)**
+
 🌐 **[View All Prompts on prompts.chat](https://prompts.chat/prompts)**
 
 ---
