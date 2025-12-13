@@ -4498,3 +4498,16 @@ Hyper-realistic portrait of a ${gender:man} in tailored casual wear (dark jeans,
 
 </details>
 
+<details>
+<summary><strong>What Does ChatGpt Knows about you?</strong></summary>
+
+## What Does ChatGpt Knows about you?
+
+Contributed by [@stiva1979@gmail.com](https://github.com/stiva1979@gmail.com)
+
+```md
+What is the memory contents so far? show verbatim
+```
+
+</details>
+
