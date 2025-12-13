@@ -37,7 +37,6 @@ export function PromptsManagement({ aiSearchEnabled, promptsWithoutEmbeddings }:
   const [loading, setLoading] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [generating, setGenerating] = useState(false);
-  const [exporting, setExporting] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [importResult, setImportResult] = useState<ImportResult | null>(null);
@@ -115,30 +114,10 @@ export function PromptsManagement({ aiSearchEnabled, promptsWithoutEmbeddings }:
     }
   };
 
-  const handleExport = async () => {
-    setExporting(true);
-    try {
-      const res = await fetch("/api/admin/prompts/export");
-      if (!res.ok) {
-        throw new Error("Export failed");
-      }
-      
-      const blob = await res.blob();
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "prompts.csv";
-      document.body.appendChild(a);
-      a.click();
-      window.URL.revokeObjectURL(url);
-      document.body.removeChild(a);
-      
-      toast.success(t("prompts.exportSuccess"));
-    } catch (error) {
-      toast.error(error instanceof Error ? error.message : "Export failed");
-    } finally {
-      setExporting(false);
-    }
+  const handleExport = () => {
+    // Direct link to public prompts.csv endpoint
+    window.open("/prompts.csv", "_blank");
+    toast.success(t("prompts.exportSuccess"));
   };
 
   return (
@@ -158,7 +137,7 @@ export function PromptsManagement({ aiSearchEnabled, promptsWithoutEmbeddings }:
             size="sm"
             variant="outline"
             onClick={() => setShowConfirm(true)}
-            disabled={loading || deleting || generating || exporting}
+            disabled={loading || deleting || generating}
           >
             {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <><Upload className="h-4 w-4 mr-2" />{t("prompts.import")}</>}
           </Button>
@@ -166,7 +145,7 @@ export function PromptsManagement({ aiSearchEnabled, promptsWithoutEmbeddings }:
             size="sm"
             variant="ghost"
             onClick={() => setShowDeleteConfirm(true)}
-            disabled={loading || deleting || generating || exporting}
+            disabled={loading || deleting || generating}
             className="text-destructive hover:text-destructive"
           >
             {deleting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
@@ -180,9 +159,9 @@ export function PromptsManagement({ aiSearchEnabled, promptsWithoutEmbeddings }:
             size="sm"
             variant="outline"
             onClick={handleExport}
-            disabled={loading || deleting || generating || exporting}
+            disabled={loading || deleting || generating}
           >
-            {exporting ? <Loader2 className="h-4 w-4 animate-spin" /> : <><Download className="h-4 w-4 mr-2" />{t("prompts.export")}</>}
+            <Download className="h-4 w-4 mr-2" />{t("prompts.export")}
           </Button>
         </div>
 

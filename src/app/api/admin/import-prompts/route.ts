@@ -22,49 +22,66 @@ function unescapeString(str: string): string {
 }
 
 function parseCSV(content: string): CsvRow[] {
-  const lines = content.split("\n");
   const rows: CsvRow[] = [];
+  const values: string[] = [];
+  let current = "";
+  let inQuotes = false;
+  let isFirstRow = true;
   
-  // Skip header row
-  for (let i = 1; i < lines.length; i++) {
-    const line = lines[i].trim();
-    if (!line) continue;
+  // Parse character by character to handle multi-line quoted fields
+  for (let i = 0; i < content.length; i++) {
+    const char = content[i];
+    const nextChar = content[i + 1];
     
-    // Parse CSV with proper handling of quoted fields
-    const values: string[] = [];
-    let current = "";
-    let inQuotes = false;
-    
-    for (let j = 0; j < line.length; j++) {
-      const char = line[j];
-      const nextChar = line[j + 1];
-      
-      if (char === '"' && !inQuotes) {
-        inQuotes = true;
-      } else if (char === '"' && inQuotes) {
-        if (nextChar === '"') {
-          // Escaped quote
-          current += '"';
-          j++;
-        } else {
-          inQuotes = false;
-        }
-      } else if (char === "," && !inQuotes) {
-        values.push(current.trim());
-        current = "";
+    if (char === '"' && !inQuotes) {
+      inQuotes = true;
+    } else if (char === '"' && inQuotes) {
+      if (nextChar === '"') {
+        // Escaped quote ""
+        current += '"';
+        i++;
       } else {
-        current += char;
+        inQuotes = false;
       }
+    } else if (char === ',' && !inQuotes) {
+      values.push(current);
+      current = "";
+    } else if ((char === '\n' || (char === '\r' && nextChar === '\n')) && !inQuotes) {
+      // End of row (not inside quotes)
+      if (char === '\r') i++; // Skip \r in \r\n
+      
+      values.push(current);
+      current = "";
+      
+      if (isFirstRow) {
+        // Skip header row
+        isFirstRow = false;
+      } else if (values.some(v => v.trim())) {
+        // Only add non-empty rows
+        rows.push({
+          act: values[0]?.trim() || "",
+          prompt: unescapeString(values[1] || ""),
+          for_devs: values[2]?.trim() || "",
+          type: values[3]?.trim() || "",
+          contributor: values[4]?.trim() || "",
+        });
+      }
+      values.length = 0; // Clear array
+    } else {
+      current += char;
     }
-    values.push(current.trim());
-    
-    if (values.length >= 4) {
+  }
+  
+  // Handle last row if file doesn't end with newline
+  if (current || values.length > 0) {
+    values.push(current);
+    if (!isFirstRow && values.some(v => v.trim())) {
       rows.push({
-        act: values[0],
-        prompt: unescapeString(values[1]),
-        for_devs: values[2],
-        type: values[3],
-        contributor: values[4] || "",
+        act: values[0]?.trim() || "",
+        prompt: unescapeString(values[1] || ""),
+        for_devs: values[2]?.trim() || "",
+        type: values[3]?.trim() || "",
+        contributor: values[4]?.trim() || "",
       });
     }
   }

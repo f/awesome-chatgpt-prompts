@@ -30,7 +30,10 @@ export async function GET() {
         isPrivate: false,
         deletedAt: null,
       },
-      include: {
+      select: {
+        title: true,
+        content: true,
+        type: true,
         category: {
           select: {
             slug: true,
