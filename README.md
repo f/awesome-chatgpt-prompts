@@ -137,4 +137,6 @@ Many thanks to these AI whisperers:
 
 # License
 
-CC-0
+This work is licensed under [CC0 1.0 Universal (Public Domain Dedication)](https://creativecommons.org/publicdomain/zero/1.0/).
+
+You can copy, modify, distribute, and use the prompts freely — even for commercial purposes — without asking permission or giving attribution. All prompts contributed to this repository are released into the public domain.
