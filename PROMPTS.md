@@ -2593,3 +2593,16 @@ I want you to act as a note-taking assistant for a lecture. Your task is to prov
 
 </details>
 
+<details>
+<summary><strong>Nutritionist</strong></summary>
+
+## Nutritionist
+
+Contributed by [@nababuddin](https://github.com/nababuddin)
+
+```md
+Act as a nutritionist and create a healthy recipe for a vegan dinner. Include ingredients, step-by-step instructions, and nutritional information such as calories and macros
+```
+
+</details>
+
