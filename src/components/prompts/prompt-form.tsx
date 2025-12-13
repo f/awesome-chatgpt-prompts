@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Loader2 } from "lucide-react";
+import { Loader2, Upload, X } from "lucide-react";
 import { VariableToolbar } from "./variable-toolbar";
 import { ContributorSearch } from "./contributor-search";
 import { Button } from "@/components/ui/button";
@@ -33,6 +33,160 @@ import { Badge } from "@/components/ui/badge";
 import { CodeEditor, type CodeEditorHandle } from "@/components/ui/code-editor";
 import { toast } from "sonner";
 import { prettifyJson } from "@/lib/format";
+
+interface MediaFieldProps {
+  form: ReturnType<typeof useForm<PromptFormValues>>;
+  t: (key: string) => string;
+}
+
+function MediaField({ form, t }: MediaFieldProps) {
+  const [storageMode, setStorageMode] = useState<string>("url");
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const mediaUrl = form.watch("mediaUrl");
+
+  useEffect(() => {
+    fetch("/api/config/storage")
+      .then((res) => res.json())
+      .then((data) => setStorageMode(data.mode))
+      .catch(() => setStorageMode("url"));
+  }, []);
+
+  const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Validate file size (1MB)
+    if (file.size > 1 * 1024 * 1024) {
+      setUploadError(t("fileTooLarge"));
+      return;
+    }
+
+    // Validate file type
+    const allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+    if (!allowedTypes.includes(file.type)) {
+      setUploadError(t("invalidFileType"));
+      return;
+    }
+
+    setIsUploading(true);
+    setUploadError(null);
+
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || "Upload failed");
+      }
+
+      const result = await response.json();
+      form.setValue("mediaUrl", result.url);
+    } catch (error) {
+      setUploadError(error instanceof Error ? error.message : "Upload failed");
+    } finally {
+      setIsUploading(false);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+    }
+  };
+
+  const clearMedia = () => {
+    form.setValue("mediaUrl", "");
+    setUploadError(null);
+  };
+
+  // URL mode: show text input
+  if (storageMode === "url") {
+    return (
+      <FormField
+        control={form.control}
+        name="mediaUrl"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>{t("mediaUrl")}</FormLabel>
+            <FormControl>
+              <Input placeholder={t("mediaUrlPlaceholder")} {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+    );
+  }
+
+  // Upload mode: show file upload
+  return (
+    <FormField
+      control={form.control}
+      name="mediaUrl"
+      render={() => (
+        <FormItem>
+          <FormLabel>{t("mediaImage")}</FormLabel>
+          <FormControl>
+            <div className="space-y-2">
+              {mediaUrl ? (
+                <div className="relative inline-block">
+                  <img
+                    src={mediaUrl}
+                    alt="Preview"
+                    className="max-h-40 rounded-md border"
+                  />
+                  <Button
+                    type="button"
+                    variant="destructive"
+                    size="icon"
+                    className="absolute -top-2 -right-2 h-6 w-6"
+                    onClick={clearMedia}
+                  >
+                    <X className="h-4 w-4" />
+                  </Button>
+                </div>
+              ) : (
+                <div
+                  className="flex flex-col items-center justify-center gap-2 p-6 border-2 border-dashed rounded-md cursor-pointer hover:border-primary/50 transition-colors"
+                  onClick={() => fileInputRef.current?.click()}
+                >
+                  {isUploading ? (
+                    <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+                  ) : (
+                    <Upload className="h-8 w-8 text-muted-foreground" />
+                  )}
+                  <p className="text-sm text-muted-foreground">
+                    {isUploading ? t("uploading") : t("clickToUpload")}
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    {t("maxFileSize")}
+                  </p>
+                </div>
+              )}
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/jpeg,image/png,image/gif,image/webp"
+                className="hidden"
+                onChange={handleFileSelect}
+                disabled={isUploading}
+              />
+              {uploadError && (
+                <p className="text-sm text-destructive">{uploadError}</p>
+              )}
+            </div>
+          </FormControl>
+          <FormMessage />
+        </FormItem>
+      )}
+    />
+  );
+}
 
 const createPromptSchema = (t: (key: string) => string) => z.object({
   title: z.string().min(1, t("titleRequired")).max(200),
@@ -395,20 +549,11 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
           </div>
         )}
 
-        {/* Media URL (for IMAGE/VIDEO/AUDIO/STRUCTURED types) */}
+        {/* Media URL/Upload (for IMAGE/VIDEO/AUDIO/STRUCTURED types) */}
         {(promptType === "IMAGE" || promptType === "VIDEO" || promptType === "AUDIO" || promptType === "STRUCTURED") && (
-          <FormField
-            control={form.control}
-            name="mediaUrl"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>{t("mediaUrl")}</FormLabel>
-                <FormControl>
-                  <Input placeholder={t("mediaUrlPlaceholder")} {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
+          <MediaField
+            form={form}
+            t={t}
           />
         )}
 

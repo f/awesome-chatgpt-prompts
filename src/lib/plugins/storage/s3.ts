@@ -21,8 +21,8 @@ async function getS3Client() {
   try {
     // Use webpackIgnore to prevent bundling this optional dependency
     // @ts-expect-error - optional dependency, installed at runtime
-    const module = await import(/* webpackIgnore: true */ "@aws-sdk/client-s3");
-    return module;
+    const s3Module = await import(/* webpackIgnore: true */ "@aws-sdk/client-s3");
+    return s3Module;
   } catch {
     throw new Error(
       "S3 storage requires @aws-sdk/client-s3. Install it with: npm install @aws-sdk/client-s3"

@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.11.1",
+    "@aws-sdk/client-s3": "^3.948.0",
     "@hookform/resolvers": "^5.2.2",
     "@monaco-editor/react": "^4.7.0",
     "@prisma/client": "^6.19.0",
@@ -47,6 +48,7 @@
     "openai": "^6.10.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
+    "sharp": "^0.33.5",
     "react-hook-form": "^7.68.0",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.4.0",
