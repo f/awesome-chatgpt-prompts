@@ -28,6 +28,7 @@ export async function GET() {
     const prompts = await db.prompt.findMany({
       where: {
         isPrivate: false,
+        isUnlisted: false, // Exclude unlisted prompts from CSV export
         deletedAt: null,
       },
       select: {

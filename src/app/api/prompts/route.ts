@@ -138,6 +138,7 @@ export async function GET(request: Request) {
 
     const where: Record<string, unknown> = {
       isPrivate: false,
+      isUnlisted: false, // Exclude unlisted prompts from public API
       deletedAt: null, // Exclude soft-deleted prompts
     };
 

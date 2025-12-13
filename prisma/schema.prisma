@@ -1,6 +1,3 @@
-// Prisma schema for prompts.chat
-// https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -10,41 +7,30 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// ============================================
-// User & Authentication
-// ============================================
-
-enum UserRole {
-  ADMIN
-  USER
-}
-
 model User {
-  id             String    @id @default(cuid())
-  email          String    @unique
-  username       String    @unique
+  id             String                 @id @default(cuid())
+  email          String                 @unique
+  username       String                 @unique
   name           String?
-  password       String?   // For credentials auth
+  password       String?
   avatar         String?
-  role           UserRole  @default(USER)
-  locale         String    @default("en")
-  verified       Boolean   @default(false)
+  role           UserRole               @default(USER)
+  locale         String                 @default("en")
   emailVerified  DateTime?
-  githubUsername String?   // Immutable GitHub username for contributor attribution
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
-
-  // Relations
-  prompts        Prompt[]         @relation("PromptAuthor")
-  contributions  Prompt[]         @relation("PromptContributors")
-  promptVersions PromptVersion[]
-  changeRequests ChangeRequest[]
+  createdAt      DateTime               @default(now())
+  updatedAt      DateTime               @updatedAt
+  verified       Boolean                @default(false)
+  githubUsername String?
   accounts       Account[]
-  sessions       Session[]
   subscriptions  CategorySubscription[]
-  votes          PromptVote[]
+  changeRequests ChangeRequest[]
   pinnedPrompts  PinnedPrompt[]
   reports        PromptReport[]
+  promptVersions PromptVersion[]
+  votes          PromptVote[]
+  prompts        Prompt[]               @relation("PromptAuthor")
+  sessions       Session[]
+  contributions  Prompt[]               @relation("PromptContributors")
 
   @@map("users")
 }
@@ -55,15 +41,14 @@ model Account {
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String?
   session_state     String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
   @@map("accounts")
@@ -88,9 +73,199 @@ model VerificationToken {
   @@map("verification_tokens")
 }
 
-// ============================================
-// Prompts & Content
-// ============================================
+model Prompt {
+  id                  String             @id @default(cuid())
+  title               String
+  description         String?
+  content             String
+  type                PromptType         @default(TEXT)
+  isPrivate           Boolean            @default(false)
+  mediaUrl            String?
+  viewCount           Int                @default(0)
+  createdAt           DateTime           @default(now())
+  updatedAt           DateTime           @updatedAt
+  authorId            String
+  categoryId          String?
+  embedding           Json?
+  requiredMediaCount  Int?
+  requiredMediaType   RequiredMediaType?
+  requiresMediaUpload Boolean            @default(false)
+  structuredFormat    StructuredFormat?
+  featuredAt          DateTime?
+  isFeatured          Boolean            @default(false)
+  isUnlisted          Boolean            @default(false)
+  unlistedAt          DateTime?
+  deletedAt           DateTime?
+  changeRequests      ChangeRequest[]
+  pinnedBy            PinnedPrompt[]
+  reports             PromptReport[]
+  tags                PromptTag[]
+  versions            PromptVersion[]
+  votes               PromptVote[]
+  author              User               @relation("PromptAuthor", fields: [authorId], references: [id], onDelete: Cascade)
+  category            Category?          @relation(fields: [categoryId], references: [id])
+  contributors        User[]             @relation("PromptContributors")
+
+  @@index([authorId])
+  @@index([categoryId])
+  @@index([type])
+  @@index([isPrivate])
+  @@index([isFeatured])
+  @@index([isUnlisted])
+  @@map("prompts")
+}
+
+model PromptVersion {
+  id         String   @id @default(cuid())
+  version    Int
+  content    String
+  changeNote String?
+  createdAt  DateTime @default(now())
+  promptId   String
+  createdBy  String
+  author     User     @relation(fields: [createdBy], references: [id], onDelete: Cascade)
+  prompt     Prompt   @relation(fields: [promptId], references: [id], onDelete: Cascade)
+
+  @@unique([promptId, version])
+  @@index([promptId])
+  @@map("prompt_versions")
+}
+
+model ChangeRequest {
+  id              String              @id @default(cuid())
+  proposedContent String
+  proposedTitle   String?
+  reason          String?
+  status          ChangeRequestStatus @default(PENDING)
+  reviewNote      String?
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @updatedAt
+  promptId        String
+  authorId        String
+  originalContent String
+  originalTitle   String
+  author          User                @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  prompt          Prompt              @relation(fields: [promptId], references: [id], onDelete: Cascade)
+
+  @@index([promptId])
+  @@index([authorId])
+  @@index([status])
+  @@map("change_requests")
+}
+
+model Category {
+  id          String                 @id @default(cuid())
+  name        String
+  slug        String                 @unique
+  description String?
+  icon        String?
+  order       Int                    @default(0)
+  parentId    String?
+  parent      Category?              @relation("CategoryHierarchy", fields: [parentId], references: [id])
+  children    Category[]             @relation("CategoryHierarchy")
+  subscribers CategorySubscription[]
+  prompts     Prompt[]
+
+  @@index([parentId])
+  @@map("categories")
+}
+
+model Tag {
+  id      String      @id @default(cuid())
+  name    String      @unique
+  slug    String      @unique
+  color   String      @default("#6366f1")
+  prompts PromptTag[]
+
+  @@map("tags")
+}
+
+model PromptTag {
+  promptId String
+  tagId    String
+  prompt   Prompt @relation(fields: [promptId], references: [id], onDelete: Cascade)
+  tag      Tag    @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([promptId, tagId])
+  @@map("prompt_tags")
+}
+
+model CategorySubscription {
+  userId     String
+  categoryId String
+  createdAt  DateTime @default(now())
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, categoryId])
+  @@index([userId])
+  @@index([categoryId])
+  @@map("category_subscriptions")
+}
+
+model PromptVote {
+  userId    String
+  promptId  String
+  createdAt DateTime @default(now())
+  prompt    Prompt   @relation(fields: [promptId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, promptId])
+  @@index([userId])
+  @@index([promptId])
+  @@map("prompt_votes")
+}
+
+model PinnedPrompt {
+  userId    String
+  promptId  String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  prompt    Prompt   @relation(fields: [promptId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, promptId])
+  @@index([userId])
+  @@map("pinned_prompts")
+}
+
+model PromptReport {
+  id         String       @id @default(cuid())
+  reason     ReportReason
+  details    String?
+  status     ReportStatus @default(PENDING)
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  promptId   String
+  reporterId String
+  prompt     Prompt       @relation(fields: [promptId], references: [id], onDelete: Cascade)
+  reporter   User         @relation(fields: [reporterId], references: [id], onDelete: Cascade)
+
+  @@index([promptId])
+  @@index([reporterId])
+  @@index([status])
+  @@map("prompt_reports")
+}
+
+model WebhookConfig {
+  id        String         @id @default(cuid())
+  name      String
+  url       String
+  method    String         @default("POST")
+  headers   Json?
+  payload   String
+  events    WebhookEvent[]
+  isEnabled Boolean        @default(true)
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+
+  @@map("webhook_configs")
+}
+
+enum UserRole {
+  ADMIN
+  USER
+}
 
 enum PromptType {
   TEXT
@@ -117,191 +292,6 @@ enum RequiredMediaType {
   DOCUMENT
 }
 
-model Prompt {
-  id               String            @id @default(cuid())
-  title            String
-  description      String?
-  content          String            @db.Text
-  type             PromptType        @default(TEXT)
-  structuredFormat StructuredFormat? // For STRUCTURED type: JSON or YAML
-  isPrivate        Boolean           @default(false)
-  mediaUrl         String?           // For non-text prompts
-  
-  // AI Search embedding (stored as JSON array of floats)
-  embedding        Json?             // OpenAI embedding vector for semantic search
-  
-  // Media requirements (user needs to upload media to use this prompt)
-  requiresMediaUpload  Boolean           @default(false)
-  requiredMediaType    RequiredMediaType?
-  requiredMediaCount   Int?
-  
-  // Metadata
-  viewCount   Int        @default(0)
-  isFeatured  Boolean    @default(false)
-  featuredAt  DateTime?
-  deletedAt   DateTime?  // Soft delete - CC0 prompts cannot be permanently deleted
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
-
-  // Relations
-  authorId   String
-  author     User        @relation("PromptAuthor", fields: [authorId], references: [id], onDelete: Cascade)
-  categoryId String?
-  category   Category?   @relation(fields: [categoryId], references: [id], onDelete: SetNull)
-
-  versions       PromptVersion[]
-  changeRequests ChangeRequest[]
-  tags           PromptTag[]
-  votes          PromptVote[]
-  contributors   User[]          @relation("PromptContributors")
-  pinnedBy       PinnedPrompt[]
-  reports        PromptReport[]
-
-  @@index([authorId])
-  @@index([categoryId])
-  @@index([type])
-  @@index([isPrivate])
-  @@index([isFeatured])
-  @@map("prompts")
-}
-
-model PromptVersion {
-  id         String   @id @default(cuid())
-  version    Int
-  content    String   @db.Text
-  changeNote String?
-  createdAt  DateTime @default(now())
-
-  // Relations
-  promptId  String
-  prompt    Prompt @relation(fields: [promptId], references: [id], onDelete: Cascade)
-  createdBy String
-  author    User   @relation(fields: [createdBy], references: [id], onDelete: Cascade)
-
-  @@unique([promptId, version])
-  @@index([promptId])
-  @@map("prompt_versions")
-}
-
-model ChangeRequest {
-  id              String              @id @default(cuid())
-  originalContent String              @db.Text
-  originalTitle   String
-  proposedContent String              @db.Text
-  proposedTitle   String?
-  reason          String?
-  status          ChangeRequestStatus @default(PENDING)
-  reviewNote      String?
-  createdAt       DateTime            @default(now())
-  updatedAt       DateTime            @updatedAt
-
-  // Relations
-  promptId String
-  prompt   Prompt @relation(fields: [promptId], references: [id], onDelete: Cascade)
-  authorId String
-  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
-
-  @@index([promptId])
-  @@index([authorId])
-  @@index([status])
-  @@map("change_requests")
-}
-
-// ============================================
-// Categories & Tags
-// ============================================
-
-model Category {
-  id          String  @id @default(cuid())
-  name        String
-  slug        String  @unique
-  description String?
-  icon        String?
-  order       Int     @default(0)
-
-  // Self-referential for hierarchy
-  parentId String?
-  parent   Category?  @relation("CategoryHierarchy", fields: [parentId], references: [id], onDelete: SetNull)
-  children Category[] @relation("CategoryHierarchy")
-
-  prompts       Prompt[]
-  subscribers   CategorySubscription[]
-
-  @@index([parentId])
-  @@map("categories")
-}
-
-model Tag {
-  id    String @id @default(cuid())
-  name  String @unique
-  slug  String @unique
-  color String @default("#6366f1")
-
-  prompts PromptTag[]
-
-  @@map("tags")
-}
-
-model PromptTag {
-  promptId String
-  tagId    String
-  prompt   Prompt @relation(fields: [promptId], references: [id], onDelete: Cascade)
-  tag      Tag    @relation(fields: [tagId], references: [id], onDelete: Cascade)
-
-  @@id([promptId, tagId])
-  @@map("prompt_tags")
-}
-
-// ============================================
-// Subscriptions
-// ============================================
-
-model CategorySubscription {
-  userId     String
-  categoryId String
-  createdAt  DateTime @default(now())
-
-  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-
-  @@id([userId, categoryId])
-  @@index([userId])
-  @@index([categoryId])
-  @@map("category_subscriptions")
-}
-
-model PromptVote {
-  userId    String
-  promptId  String
-  createdAt DateTime @default(now())
-
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  prompt Prompt @relation(fields: [promptId], references: [id], onDelete: Cascade)
-
-  @@id([userId, promptId])
-  @@index([userId])
-  @@index([promptId])
-  @@map("prompt_votes")
-}
-
-model PinnedPrompt {
-  userId    String
-  promptId  String
-  order     Int      @default(0)
-  createdAt DateTime @default(now())
-
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  prompt Prompt @relation(fields: [promptId], references: [id], onDelete: Cascade)
-
-  @@id([userId, promptId])
-  @@index([userId])
-  @@map("pinned_prompts")
-}
-
-// ============================================
-// Prompt Reports
-// ============================================
-
 enum ReportReason {
   SPAM
   INAPPROPRIATE
@@ -316,47 +306,8 @@ enum ReportStatus {
   DISMISSED
 }
 
-model PromptReport {
-  id        String       @id @default(cuid())
-  reason    ReportReason
-  details   String?      @db.Text
-  status    ReportStatus @default(PENDING)
-  createdAt DateTime     @default(now())
-  updatedAt DateTime     @updatedAt
-
-  // Relations
-  promptId   String
-  prompt     Prompt @relation(fields: [promptId], references: [id], onDelete: Cascade)
-  reporterId String
-  reporter   User   @relation(fields: [reporterId], references: [id], onDelete: Cascade)
-
-  @@index([promptId])
-  @@index([reporterId])
-  @@index([status])
-  @@map("prompt_reports")
-}
-
-// ============================================
-// Webhook Integration
-// ============================================
-
 enum WebhookEvent {
   PROMPT_CREATED
   PROMPT_UPDATED
   PROMPT_DELETED
-}
-
-model WebhookConfig {
-  id          String         @id @default(cuid())
-  name        String         // e.g. "Slack Notifications"
-  url         String         // Webhook URL
-  method      String         @default("POST") // HTTP method
-  headers     Json?          // Custom headers as JSON object
-  payload     String         @db.Text // JSON template with placeholders
-  events      WebhookEvent[] // Which events trigger this webhook
-  isEnabled   Boolean        @default(true)
-  createdAt   DateTime       @default(now())
-  updatedAt   DateTime       @updatedAt
-
-  @@map("webhook_configs")
 }

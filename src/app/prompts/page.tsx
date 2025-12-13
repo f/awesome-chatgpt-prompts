@@ -58,6 +58,8 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
     // Build where clause based on filters
     const where: Record<string, unknown> = {
       isPrivate: false,
+      isUnlisted: false, // Exclude unlisted prompts
+      deletedAt: null, // Exclude soft-deleted prompts
     };
     
     if (params.q) {
