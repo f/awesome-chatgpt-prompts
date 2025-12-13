@@ -2684,3 +2684,16 @@ I want you to act as a tech troubleshooter. I'll describe issues I'm facing with
 
 </details>
 
+<details>
+<summary><strong>Ayurveda Food Tester</strong></summary>
+
+## Ayurveda Food Tester
+
+Contributed by [@duke79](https://github.com/duke79)
+
+```md
+I'll give you food, tell me its ayurveda dosha composition, in the typical up / down arrow (e.g. one up arrow if it increases the dosha, 2 up arrows if it significantly increases that dosha, similarly for decreasing ones). That's all I want to know, nothing else. Only provide the arrows.
+```
+
+</details>
+
