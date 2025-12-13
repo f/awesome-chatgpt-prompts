@@ -3565,3 +3565,56 @@ Her ana adımdan sonra:
 
 </details>
 
+<details>
+<summary><strong>bug-risk-analysis</strong></summary>
+
+## bug-risk-analysis
+
+Contributed by [@wkaandemir](https://github.com/wkaandemir)
+
+```md
+# Hata Riski Analizi: Ajan Personaları
+
+## Yönetici Özeti
+Bu değerlendirme, ajan persona tanımlarındaki güvenirlik ve mantık hatalarına odaklanmaktadır. Birincil riskler, `pm-agent` durum makinesindeki karmaşıklıktan ve uzman ajanlar arasındaki potansiyel çakışan tetikleyicilerden kaynaklanmakta olup, bu durum birden fazla ajanın aynı sorguyu yanıtlamaya çalıştığı "çoklu ajan karışıklığına" yol açmaktadır.
+
+## Detaylı Bulgular
+
+### 1. Durum Makinesi Kırılganlığı (PM Ajanı)
+- **Dosya**: `dev/pm-agent.md`
+- **Konum**: "Oturum Başlangıç Protokolü"
+- **Risk**: **Yüksek**
+- **Açıklama**: Protokol, `list_memories()` ve `read_memory()` işlemlerinin her zaman başarılı olacağını varsayar. MCP sunucusu soğuksa veya boş dönerse, ajanın istemde (prompt) tanımlanmış bir yedek davranışı yoktur. Döngüye girebilir veya olmaması gerektiği halde "yeni" bir başlangıç halüsinasyonu görebilir.
+- **Potansiyel Hata**: Ajan bağlamı başlatamaz ve önceki çalışmaları boş bir sayfa ile üzerine yazar.
+
+### 2. Belirsiz Ajan Tetikleyicileri
+- **Dosya**: `dev/backend-architect.md` vs `dev/security-engineer.md`
+- **Konum**: `Tetikleyiciler` bölümü
+- **Risk**: Orta
+- **Açıklama**: Her iki ajan da "Güvenlik... gereksinimleri" (Backend) ve "Güvenlik açığı..." (Security) üzerinde tetiklenir.
+- **Potansiyel Hata**: "Güvenli API tasarımı" hakkında soru soran bir kullanıcı, *her iki* ajanı da tetikleyebilir, bu da sohbet arayüzünde bir yarış durumuna veya çift yanıta neden olabilir (sistem otomatik yürütmeye izin veriyorsa).
+
+### 3. "Docs/Temp" Dosya Kirliliği
+- **Dosya**: `dev/pm-agent.md`
+- **Konum**: "Dokümantasyon Temizliği"
+- **Risk**: Orta
+- **Açıklama**: Ajan, eski hipotez dosyalarını (>7 gün) silmekten sorumludur. Bu, bir LLM'e verilen manuel bir talimattır. LLM'ler tarih hesaplamasında ve açık, titiz araç zincirleri olmadan "temizlik yapmada" kötü şöhretlidir.
+- **Potansiyel Hata**: Ajan temizlik görevini görmezden geldiği veya "7 günlük" dosyaları doğru tanımlayamadığı için `docs/temp/` dizininde zamanla binlerce dosya birikecektir.
+
+### 4. Sokratik Döngü Kilitlenmeleri
+- **Dosya**: `dev/socratic-mentor.md`
+- **Konum**: "Yanıt Üretim Stratejisi"
+- **Risk**: Düşük
+- **Açıklama**: Ajanın *asla* doğrudan cevap vermemesi talimatı verilmiştir ("sadece... kullanıcı keşfettikten sonra açıkla"). Kullanıcı sıkışır ve hüsrana uğrarsa, ajan inatla soru sormaya devam edebilir, bu da kötü bir kullanıcı deneyimine (sonsuz bir "Neden?" döngüsü) yol açar.
+
+## Önerilen Düzeltmeler
+
+1.  **Yedek Durumları Tanımla**: `pm-agent`'ı güncelleyin: "Bellek okuma başarısız olursa, YENİ OTURUM varsay ve kullanıcıdan onay iste."
+2.  **Tetikleyicileri Ayrıştır**: `backend-architect` tetikleyicilerini "Güvenlik denetimlerini" hariç tutacak ve tamamen "Uygulama"ya odaklanacak şekilde düzenleyin.
+3.  **Temizliği Otomatikleştir**: Dosyaları silmek için ajana güvenmeyin. `docs/temp` temizliği için bir cron işi veya özel bir "Hademe" betiği/aracı kullanın.
+4.  **Kaçış Kapısı**: `socratic-mentor`'a bir "Hüsran Tespit Edildi" maddesi ekleyin: "Kullanıcı hüsran ifade ederse, Doğrudan Açıklama moduna geç."
+
+```
+
+</details>
+
