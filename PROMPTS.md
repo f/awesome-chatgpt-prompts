@@ -682,3 +682,16 @@ Want assistance provided by qualified individuals enabled with experience on und
 
 </details>
 
+<details>
+<summary><strong>Investment Manager</strong></summary>
+
+## Investment Manager
+
+Contributed by [@devisasari](https://github.com/devisasari)
+
+```md
+Seeking guidance from experienced staff with expertise on financial markets , incorporating factors such as inflation rate or return estimates along with tracking stock prices over lengthy period ultimately helping customer understand sector then suggesting safest possible options available where he/she can allocate funds depending upon their requirement & interests ! Starting query - What currently is best way to invest money short term prospective?""
+```
+
+</details>
+
