@@ -97,6 +97,34 @@ if not new_prompts and not updated_prompts:
     import sys
     sys.exit(2)  # Exit code 2 = no changes
 else:
+    # Helper function to parse contributors (supports "user1,user2,user3" format)
+    def parse_contributors(contributor_field):
+        """Parse contributor field, returns (primary_author, co_authors_list)"""
+        if not contributor_field:
+            return 'anonymous', []
+        
+        # Split by comma and clean up
+        contributors = [c.strip() for c in contributor_field.split(',') if c.strip()]
+        
+        if not contributors:
+            return 'anonymous', []
+        
+        primary = contributors[0]
+        co_authors = contributors[1:] if len(contributors) > 1 else []
+        return primary, co_authors
+    
+    def build_commit_message(action, act, co_authors):
+        """Build commit message with optional co-author trailers"""
+        msg = f'{action} prompt: {act}'
+        
+        if co_authors:
+            msg += '\n\n'
+            for co_author in co_authors:
+                co_email = f"{co_author}@users.noreply.github.com"
+                msg += f'Co-authored-by: {co_author} <{co_email}>\n'
+        
+        return msg
+    
     # Process updates first (rewrite entire file with updates applied)
     if updated_prompts:
         print("\nApplying updates to existing prompts...")
@@ -118,42 +146,41 @@ else:
         
         # Commit updates
         for i, (remote_row, local_row) in enumerate(updated_prompts, 1):
-            contributor = remote_row.get('contributor', '').strip()
+            contributor_field = remote_row.get('contributor', '').strip()
             act = remote_row.get('act', 'Unknown')
             
-            if not contributor:
-                contributor = 'anonymous'
-            
-            email = f"{contributor}@users.noreply.github.com"
+            primary_author, co_authors = parse_contributors(contributor_field)
+            email = f"{primary_author}@users.noreply.github.com"
             
             subprocess.run(['git', 'add', csv_file], check=True)
             
             env = os.environ.copy()
-            env['GIT_AUTHOR_NAME'] = contributor
+            env['GIT_AUTHOR_NAME'] = primary_author
             env['GIT_AUTHOR_EMAIL'] = email
-            env['GIT_COMMITTER_NAME'] = contributor
+            env['GIT_COMMITTER_NAME'] = primary_author
             env['GIT_COMMITTER_EMAIL'] = email
+            
+            commit_msg = build_commit_message('Update', act, co_authors)
             
             subprocess.run([
                 'git', 'commit',
-                '-m', f'Update prompt: {act}',
-                f'--author={contributor} <{email}>'
+                '-m', commit_msg,
+                f'--author={primary_author} <{email}>'
             ], env=env, check=True)
             
-            print(f"[UPDATE {i}/{len(updated_prompts)}] {contributor}: {act}")
+            co_authors_str = f" (+ {', '.join(co_authors)})" if co_authors else ""
+            print(f"[UPDATE {i}/{len(updated_prompts)}] {primary_author}{co_authors_str}: {act}")
     
     # Process new prompts
     if new_prompts:
         print("\nCreating commits for new prompts...")
         
         for i, row in enumerate(new_prompts, 1):
-            contributor = row.get('contributor', '').strip()
+            contributor_field = row.get('contributor', '').strip()
             act = row.get('act', 'Unknown')
             
-            if not contributor:
-                contributor = 'anonymous'
-            
-            email = f"{contributor}@users.noreply.github.com"
+            primary_author, co_authors = parse_contributors(contributor_field)
+            email = f"{primary_author}@users.noreply.github.com"
             
             # Append this row to the CSV
             with open(csv_file, 'a', newline='') as f:
@@ -164,18 +191,21 @@ else:
             subprocess.run(['git', 'add', csv_file], check=True)
             
             env = os.environ.copy()
-            env['GIT_AUTHOR_NAME'] = contributor
+            env['GIT_AUTHOR_NAME'] = primary_author
             env['GIT_AUTHOR_EMAIL'] = email
-            env['GIT_COMMITTER_NAME'] = contributor
+            env['GIT_COMMITTER_NAME'] = primary_author
             env['GIT_COMMITTER_EMAIL'] = email
+            
+            commit_msg = build_commit_message('Add', act, co_authors)
             
             subprocess.run([
                 'git', 'commit',
-                '-m', f'Add prompt: {act}',
-                f'--author={contributor} <{email}>'
+                '-m', commit_msg,
+                f'--author={primary_author} <{email}>'
             ], env=env, check=True)
             
-            print(f"[NEW {i}/{len(new_prompts)}] {contributor}: {act}")
+            co_authors_str = f" (+ {', '.join(co_authors)})" if co_authors else ""
+            print(f"[NEW {i}/{len(new_prompts)}] {primary_author}{co_authors_str}: {act}")
     
     print(f"\nDone! Created {len(new_prompts)} new commits, {len(updated_prompts)} update commits.")
 
