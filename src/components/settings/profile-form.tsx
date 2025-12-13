@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -38,6 +39,7 @@ interface ProfileFormProps {
 
 export function ProfileForm({ user }: ProfileFormProps) {
   const router = useRouter();
+  const { update } = useSession();
   const t = useTranslations("profile");
   const tCommon = useTranslations("common");
   const [isLoading, setIsLoading] = useState(false);
@@ -69,12 +71,15 @@ export function ProfileForm({ user }: ProfileFormProps) {
         throw new Error(error.message || "Failed to update profile");
       }
 
+      // Trigger NextAuth session refresh - JWT callback will fetch updated data from DB
+      await update({});
+
       toast.success(t("profileUpdated"));
       router.refresh();
-      
+
       // If username changed, redirect to new profile
       if (data.username !== user.username) {
-        router.push(`/${data.username}`);
+        router.push(`/@${data.username}`);
       }
     } catch (error) {
       toast.error(error instanceof Error ? error.message : tCommon("error"));
