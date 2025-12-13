@@ -107,16 +107,6 @@ Images from Text"**.
 
 ---
 
-## Unmerged Prompts
-
-There are many Pull Requests to this repository waiting to be merged. There are
-many hidden gems there. Take a look!
-
-📖
-**[View Unmerged Prompts](https://github.com/f/awesome-chatgpt-prompts/pulls)**
-
----
-
 # Prompts
 
 🔍 **[View All Prompts on GitHub (prompts.csv)](https://github.com/f/awesome-chatgpt-prompts/blob/main/prompts.csv)**
