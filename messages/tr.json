@@ -188,7 +188,15 @@
     "previous": "Önceki",
     "next": "Sonraki",
     "mediaLoadError": "Bu prompt için medya yüklenemedi. URL geçersiz olabilir veya kaynak artık mevcut değil.",
-    "mediaUnavailable": "Medya kullanılamıyor"
+    "mediaUnavailable": "Medya kullanılamıyor",
+    "variableWarningTitle": "Değişken benzeri kalıplar tespit edildi",
+    "variableWarningDescription": "Dinamik değişkenlere dönüştürülebilecek yer tutucular bulduk. Bu, kullanıcıların bu promptu kullanırken değerleri özelleştirmesine olanak tanır.",
+    "convertVariables": "Tümünü Dönüştür",
+    "more": "daha fazla",
+    "supportedFormat": "Desteklenen format",
+    "or": "veya",
+    "detectedVariables": "Değişkenler",
+    "clickToEdit": "Düzenlemek için tıklayın"
   },
   "changeRequests": {
     "title": "Değişiklik İstekleri",

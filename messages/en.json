@@ -188,7 +188,15 @@
     "previous": "Previous",
     "next": "Next",
     "mediaLoadError": "The media for this prompt could not be loaded. The URL may be invalid or the resource is no longer available.",
-    "mediaUnavailable": "Media unavailable"
+    "mediaUnavailable": "Media unavailable",
+    "variableWarningTitle": "Variable-like patterns detected",
+    "variableWarningDescription": "We found placeholders that could be converted to dynamic variables, allowing users to customize values when using this prompt.",
+    "convertVariables": "Convert All",
+    "more": "more",
+    "supportedFormat": "Supported format",
+    "or": "or",
+    "detectedVariables": "Variables",
+    "clickToEdit": "Click to edit"
   },
   "changeRequests": {
     "title": "Change Requests",

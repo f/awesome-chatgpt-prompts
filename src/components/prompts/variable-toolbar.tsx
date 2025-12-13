@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Variable, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -14,13 +14,28 @@ import {
 
 interface VariableToolbarProps {
   onInsert: (variable: string) => void;
+  getSelectedText?: () => string;
 }
 
-export function VariableToolbar({ onInsert }: VariableToolbarProps) {
+export function VariableToolbar({ onInsert, getSelectedText }: VariableToolbarProps) {
   const t = useTranslations("prompts");
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [defaultValue, setDefaultValue] = useState("");
+
+  // Pre-fill name with selected text when popover opens
+  useEffect(() => {
+    if (open && getSelectedText) {
+      const selected = getSelectedText();
+      if (selected) {
+        // Sanitize: lowercase, replace spaces with underscores, remove invalid chars
+        const sanitized = selected.trim().toLowerCase().replace(/\s+/g, "_").replace(/[^a-z0-9_]/g, "");
+        if (sanitized) {
+          setName(sanitized);
+        }
+      }
+    }
+  }, [open, getSelectedText]);
 
   const handleInsert = () => {
     if (!name.trim()) return;

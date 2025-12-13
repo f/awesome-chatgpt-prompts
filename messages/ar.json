@@ -188,7 +188,15 @@
     "previous": "السابق",
     "next": "التالي",
     "mediaLoadError": "تعذر تحميل الوسائط لهذا الأمر. قد يكون الرابط غير صالح أو أن المورد لم يعد متاحاً.",
-    "mediaUnavailable": "الوسائط غير متاحة"
+    "mediaUnavailable": "الوسائط غير متاحة",
+    "variableWarningTitle": "تم اكتشاف أنماط تشبه المتغيرات",
+    "variableWarningDescription": "وجدنا عناصر نائبة يمكن تحويلها إلى متغيرات ديناميكية، مما يسمح للمستخدمين بتخصيص القيم عند استخدام هذا الأمر.",
+    "convertVariables": "تحويل الكل",
+    "more": "المزيد",
+    "supportedFormat": "الصيغة المدعومة",
+    "or": "أو",
+    "detectedVariables": "المتغيرات",
+    "clickToEdit": "انقر للتعديل"
   },
   "changeRequests": {
     "title": "طلبات التغيير",

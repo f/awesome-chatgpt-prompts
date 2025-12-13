@@ -188,7 +188,15 @@
     "previous": "Precedente",
     "next": "Successivo",
     "mediaLoadError": "Il media per questo prompt non può essere caricato. L'URL potrebbe essere non valido o la risorsa non è più disponibile.",
-    "mediaUnavailable": "Media non disponibile"
+    "mediaUnavailable": "Media non disponibile",
+    "variableWarningTitle": "Rilevati pattern simili a variabili",
+    "variableWarningDescription": "Abbiamo trovato segnaposto che potrebbero essere convertiti in variabili dinamiche, permettendo agli utenti di personalizzare i valori quando usano questo prompt.",
+    "convertVariables": "Converti tutto",
+    "more": "altri",
+    "supportedFormat": "Formato supportato",
+    "or": "o",
+    "detectedVariables": "Variabili",
+    "clickToEdit": "Clicca per modificare"
   },
   "changeRequests": {
     "title": "Richieste di Modifica",

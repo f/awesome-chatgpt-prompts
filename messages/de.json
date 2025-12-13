@@ -188,7 +188,15 @@
     "previous": "Zurück",
     "next": "Weiter",
     "mediaLoadError": "Das Medium für diesen Prompt konnte nicht geladen werden. Die URL ist möglicherweise ungültig oder die Ressource ist nicht mehr verfügbar.",
-    "mediaUnavailable": "Medium nicht verfügbar"
+    "mediaUnavailable": "Medium nicht verfügbar",
+    "variableWarningTitle": "Variablenähnliche Muster erkannt",
+    "variableWarningDescription": "Wir haben Platzhalter gefunden, die in dynamische Variablen umgewandelt werden können, sodass Benutzer Werte bei der Verwendung dieses Prompts anpassen können.",
+    "convertVariables": "Alle konvertieren",
+    "more": "weitere",
+    "supportedFormat": "Unterstütztes Format",
+    "or": "oder",
+    "detectedVariables": "Variablen",
+    "clickToEdit": "Zum Bearbeiten klicken"
   },
   "changeRequests": {
     "title": "Änderungsanfragen",

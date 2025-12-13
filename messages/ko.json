@@ -188,7 +188,15 @@
     "previous": "이전",
     "next": "다음",
     "mediaLoadError": "이 프롬프트의 미디어를 불러올 수 없습니다. URL이 잘못되었거나 리소스를 더 이상 사용할 수 없습니다.",
-    "mediaUnavailable": "미디어를 사용할 수 없음"
+    "mediaUnavailable": "미디어를 사용할 수 없음",
+    "variableWarningTitle": "변수와 유사한 패턴 감지됨",
+    "variableWarningDescription": "동적 변수로 변환할 수 있는 플레이스홀더를 발견했습니다. 이를 통해 사용자가 이 프롬프트를 사용할 때 값을 사용자 지정할 수 있습니다.",
+    "convertVariables": "모두 변환",
+    "more": "개 더",
+    "supportedFormat": "지원 형식",
+    "or": "또는",
+    "detectedVariables": "변수",
+    "clickToEdit": "클릭하여 편집"
   },
   "changeRequests": {
     "title": "변경 요청",

@@ -8,6 +8,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Loader2, Upload, X } from "lucide-react";
 import { VariableToolbar } from "./variable-toolbar";
+import { VariableWarning } from "./variable-warning";
+import { VariableHint } from "./variable-hint";
 import { ContributorSearch } from "./contributor-search";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -263,8 +265,22 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
   const promptType = form.watch("type");
   const structuredFormat = form.watch("structuredFormat");
   const requiresMediaUpload = form.watch("requiresMediaUpload");
+  const promptContent = form.watch("content");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const codeEditorRef = useRef<CodeEditorHandle>(null);
+
+  const getSelectedText = () => {
+    // For structured prompts using Monaco editor
+    if (promptType === "STRUCTURED" && codeEditorRef.current) {
+      return codeEditorRef.current.getSelection?.() || "";
+    }
+    // For text prompts using textarea
+    const textarea = textareaRef.current;
+    if (textarea) {
+      return textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+    }
+    return "";
+  };
 
   const insertVariable = (variable: string) => {
     // For structured prompts using Monaco editor
@@ -485,7 +501,7 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
               <FormControl>
                 {promptType === "STRUCTURED" ? (
                   <div className="rounded-md border overflow-hidden">
-                    <VariableToolbar onInsert={insertVariable} />
+                    <VariableToolbar onInsert={insertVariable} getSelectedText={getSelectedText} />
                     <CodeEditor
                       ref={codeEditorRef}
                       value={field.value}
@@ -502,7 +518,7 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
                   </div>
                 ) : (
                   <div className="rounded-md border overflow-hidden">
-                    <VariableToolbar onInsert={insertVariable} />
+                    <VariableToolbar onInsert={insertVariable} getSelectedText={getSelectedText} />
                     <Textarea
                       ref={(el) => {
                         textareaRef.current = el;
@@ -518,9 +534,16 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
                   </div>
                 )}
               </FormControl>
+              <VariableHint content={field.value} onContentChange={(newContent) => form.setValue("content", newContent)} />
               <FormMessage />
             </FormItem>
           )}
+        />
+
+        {/* Variable detection warning */}
+        <VariableWarning
+          content={promptContent}
+          onConvert={(converted) => form.setValue("content", converted)}
         />
 
         {/* Media upload options (shown when requiresMediaUpload is true) */}

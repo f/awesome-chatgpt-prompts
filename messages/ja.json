@@ -188,7 +188,15 @@
     "previous": "前へ",
     "next": "次へ",
     "mediaLoadError": "このプロンプトのメディアを読み込めませんでした。URLが無効であるか、リソースが利用できなくなっている可能性があります。",
-    "mediaUnavailable": "メディアを利用できません"
+    "mediaUnavailable": "メディアを利用できません",
+    "variableWarningTitle": "変数のようなパターンが検出されました",
+    "variableWarningDescription": "動的変数に変換できるプレースホルダーが見つかりました。これにより、ユーザーはこのプロンプトを使用する際に値をカスタマイズできます。",
+    "convertVariables": "すべて変換",
+    "more": "件以上",
+    "supportedFormat": "対応形式",
+    "or": "または",
+    "detectedVariables": "変数",
+    "clickToEdit": "クリックして編集"
   },
   "changeRequests": {
     "title": "変更リクエスト",

@@ -188,7 +188,15 @@
     "previous": "上一个",
     "next": "下一个",
     "mediaLoadError": "无法加载此提示词的媒体。URL可能无效或资源已不可用。",
-    "mediaUnavailable": "媒体不可用"
+    "mediaUnavailable": "媒体不可用",
+    "variableWarningTitle": "检测到类似变量的模式",
+    "variableWarningDescription": "我们发现了可以转换为动态变量的占位符，允许用户在使用此提示词时自定义值。",
+    "convertVariables": "全部转换",
+    "more": "更多",
+    "supportedFormat": "支持的格式",
+    "or": "或",
+    "detectedVariables": "变量",
+    "clickToEdit": "点击编辑"
   },
   "changeRequests": {
     "title": "变更请求",

@@ -188,7 +188,15 @@
     "previous": "Anterior",
     "next": "Próximo",
     "mediaLoadError": "A mídia deste prompt não pôde ser carregada. A URL pode ser inválida ou o recurso não está mais disponível.",
-    "mediaUnavailable": "Mídia indisponível"
+    "mediaUnavailable": "Mídia indisponível",
+    "variableWarningTitle": "Padrões semelhantes a variáveis detectados",
+    "variableWarningDescription": "Encontramos marcadores que podem ser convertidos em variáveis dinâmicas, permitindo que os usuários personalizem valores ao usar este prompt.",
+    "convertVariables": "Converter tudo",
+    "more": "mais",
+    "supportedFormat": "Formato suportado",
+    "or": "ou",
+    "detectedVariables": "Variáveis",
+    "clickToEdit": "Clique para editar"
   },
   "changeRequests": {
     "title": "Solicitações de Alteração",
