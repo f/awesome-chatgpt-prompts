@@ -2086,3 +2086,16 @@ I want you to act as a ChatGPT prompt generator, I will send a topic, you have t
 
 </details>
 
+<details>
+<summary><strong>Wikipedia Page</strong></summary>
+
+## Wikipedia Page
+
+Contributed by [@royforlife](https://github.com/royforlife)
+
+```md
+I want you to act as a Wikipedia page. I will give you the name of a topic, and you will provide a summary of that topic in the format of a Wikipedia page. Your summary should be informative and factual, covering the most important aspects of the topic. Start your summary with an introductory paragraph that gives an overview of the topic. My first topic is "The Great Barrier Reef."
+```
+
+</details>
+
