@@ -26,6 +26,16 @@ In this repository, you will find a variety of [prompts](prompts.csv) that can b
 
 Check out our [Self-Hosting Guide](SELF-HOSTING.md) for instructions on setting up your own instance with **customizable branding, themes, and authentication**.
 
+### Quickstart
+
+```bash
+git clone https://github.com/f/awesome-chatgpt-prompts.git
+cd awesome-chatgpt-prompts
+npm install
+npm run db:push
+npm run dev
+```
+
 We hope you find these prompts useful and have fun exploring AI chat models!
 
 **[View on prompts.chat](https://prompts.chat)**
