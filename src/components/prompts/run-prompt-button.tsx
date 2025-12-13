@@ -35,6 +35,7 @@ const platforms: Platform[] = [
       { name: "Grok Think", baseUrl: "https://grok.com/chat?reasoningMode=think" },
     ],
   },
+  { id: "huggingface", name: "HuggingChat", baseUrl: "https://huggingface.co/chat" },
   { id: "llama", name: "Meta AI", baseUrl: "https://meta.ai" },
   { id: "mistral", name: "Mistral", baseUrl: "https://chat.mistral.ai/chat" },
   { id: "perplexity", name: "Perplexity", baseUrl: "https://perplexity.ai" },
@@ -52,6 +53,8 @@ function buildUrl(platformId: string, baseUrl: string, promptText: string): stri
       return `${baseUrl}&q=${encoded}`;
     case "claude":
       return `${baseUrl}?q=${encoded}`;
+    case "huggingface":
+      return `${baseUrl}?prompt=${encoded}`;
     case "perplexity":
       return `${baseUrl}/search?q=${encoded}`;
     case "mistral":
