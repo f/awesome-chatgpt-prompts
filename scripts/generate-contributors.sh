@@ -34,6 +34,7 @@ echo "Comparing local and remote prompts.csv..."
 
 # Process diffs and create commits for new prompts
 export PROJECT_DIR
+set +e  # Temporarily allow non-zero exit
 python3 << 'PYTHON_SCRIPT'
 import csv
 import subprocess
@@ -93,6 +94,8 @@ print(f"Found {len(updated_prompts)} updated prompts to modify")
 
 if not new_prompts and not updated_prompts:
     print("\nNo changes detected. Already up to date!")
+    import sys
+    sys.exit(2)  # Exit code 2 = no changes
 else:
     # Process updates first (rewrite entire file with updates applied)
     if updated_prompts:
@@ -177,9 +180,24 @@ else:
     print(f"\nDone! Created {len(new_prompts)} new commits, {len(updated_prompts)} update commits.")
 
 PYTHON_SCRIPT
+PYTHON_EXIT=$?
+set -e  # Re-enable exit on error
 
 # Clean up
 rm -f "$REMOTE_CSV"
+
+# Exit early if no changes (Python exited with code 2)
+if [ $PYTHON_EXIT -eq 2 ]; then
+    echo ""
+    echo "Nothing to commit or push."
+    exit 0
+fi
+
+# Check for actual Python errors
+if [ $PYTHON_EXIT -ne 0 ]; then
+    echo "Error: Script failed with exit code $PYTHON_EXIT"
+    exit 1
+fi
 
 echo ""
 echo "Review with: git log --oneline prompts.csv"
