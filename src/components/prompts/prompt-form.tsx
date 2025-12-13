@@ -57,8 +57,8 @@ function MediaField({ form, t }: MediaFieldProps) {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // Validate file size (1MB)
-    if (file.size > 1 * 1024 * 1024) {
+    // Validate file size (5MB)
+    if (file.size > 5 * 1024 * 1024) {
       setUploadError(t("fileTooLarge"));
       return;
     }

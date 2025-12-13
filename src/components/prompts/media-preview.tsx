@@ -32,7 +32,7 @@ export function MediaPreview({ mediaUrl, title, type }: MediaPreviewProps) {
   }
 
   return (
-    <div className="rounded-lg overflow-hidden border bg-muted/30">
+    <div className="rounded-lg overflow-hidden border bg-muted/30 relative">
       {type === "VIDEO" ? (
         <video
           src={mediaUrl}
@@ -45,13 +45,18 @@ export function MediaPreview({ mediaUrl, title, type }: MediaPreviewProps) {
           href={mediaUrl} 
           target="_blank" 
           rel="noopener noreferrer"
-          className="block"
+          className="block relative"
         >
+          {/* Blurred background for vertical images */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center blur-2xl opacity-50 scale-110"
+            style={{ backgroundImage: `url(${mediaUrl})` }}
+          />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={mediaUrl}
             alt={title}
-            className="w-full max-h-[500px] object-contain block"
+            className="relative w-full max-h-[500px] object-contain block"
             onError={() => setHasError(true)}
           />
         </a>
