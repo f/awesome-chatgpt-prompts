@@ -270,10 +270,6 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
   const codeEditorRef = useRef<CodeEditorHandle>(null);
 
   const getSelectedText = () => {
-    // For structured prompts using Monaco editor
-    if (promptType === "STRUCTURED" && codeEditorRef.current) {
-      return codeEditorRef.current.getSelection?.() || "";
-    }
     // For text prompts using textarea
     const textarea = textareaRef.current;
     if (textarea) {
