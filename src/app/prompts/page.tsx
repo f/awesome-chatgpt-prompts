@@ -7,6 +7,7 @@ import { InfinitePromptList } from "@/components/prompts/infinite-prompt-list";
 import { PromptFilters } from "@/components/prompts/prompt-filters";
 import { db } from "@/lib/db";
 import { isAISearchEnabled, semanticSearch } from "@/lib/ai/embeddings";
+import config from "@/../prompts.config";
 
 export const metadata: Metadata = {
   title: "Prompts",
@@ -171,12 +172,25 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
           <h1 className="text-lg font-semibold">{t("title")}</h1>
           <span className="text-xs text-muted-foreground">{tSearch("found", { count: total })}</span>
         </div>
-        <Button size="sm" className="h-8 text-xs" asChild>
-          <Link href="/prompts/new">
-            <Plus className="h-3.5 w-3.5 mr-1" />
-            {t("create")}
-          </Link>
-        </Button>
+        <div className="flex items-center gap-2">
+          {!config.homepage?.useCloneBranding && (
+            <Button size="sm" variant="outline" className="h-8 text-xs" asChild>
+              <a 
+                href="https://huggingface.co/datasets/fka/awesome-chatgpt-prompts/viewer" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                🤗 HF Data Studio
+              </a>
+            </Button>
+          )}
+          <Button size="sm" className="h-8 text-xs" asChild>
+            <Link href="/prompts/new">
+              <Plus className="h-3.5 w-3.5 mr-1" />
+              {t("create")}
+            </Link>
+          </Button>
+        </div>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-6">

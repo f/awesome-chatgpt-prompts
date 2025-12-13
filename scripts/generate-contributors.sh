@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Script to generate contributor commits from prompts.csv
+# Fetches latest prompts from prompts.chat/prompts.csv
 # Rebuilds prompts.csv line-by-line, with each line committed by its contributor
-# This creates git history showing each contributor adding their prompt
 
 set -e
 
@@ -10,15 +10,19 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 CSV_FILE="$PROJECT_DIR/prompts.csv"
 CSV_BACKUP="$PROJECT_DIR/prompts.csv.backup"
+REMOTE_CSV_URL="https://prompts.chat/prompts.csv"
 
-if [ ! -f "$CSV_FILE" ]; then
-    echo "Error: prompts.csv not found at $CSV_FILE"
+# Fetch latest prompts.csv from prompts.chat
+echo "Fetching latest prompts.csv from $REMOTE_CSV_URL..."
+if ! curl -fsSL "$REMOTE_CSV_URL" -o "$CSV_FILE"; then
+    echo "Error: Failed to fetch prompts.csv from $REMOTE_CSV_URL"
+    echo "Make sure prompts.chat is running and the endpoint is available."
     exit 1
 fi
+echo "Successfully fetched prompts.csv"
 
-# Backup original file
+# Backup the fetched file
 cp "$CSV_FILE" "$CSV_BACKUP"
-echo "Backed up prompts.csv to prompts.csv.backup"
 
 # Count total lines (excluding header)
 total=$(tail -n +2 "$CSV_BACKUP" | wc -l | tr -d ' ')
@@ -27,7 +31,7 @@ echo "Found $total prompts to process"
 # Start fresh - write only header
 head -1 "$CSV_BACKUP" > "$CSV_FILE"
 git add "$CSV_FILE"
-git commit -m "Initialize prompts.csv with header" --allow-empty
+git commit -m "Initialize prompts.csv with header" --allow-empty 2>/dev/null || true
 
 echo ""
 echo "Creating commits for each prompt line..."
