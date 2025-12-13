@@ -34,26 +34,6 @@ jobs:
           chmod +x scripts/generate-contributors.sh
           ./scripts/generate-contributors.sh
 
-      - name: Sync prompts.csv from API (removes unlisted prompts)
-        env:
-          PROMPTS_API_URL: "https://prompts.chat"
-        run: |
-          if [ -n "$PROMPTS_API_URL" ]; then
-            echo "Fetching prompts.csv from API..."
-            curl -s "${PROMPTS_API_URL}/prompts.csv" -o prompts.csv.new
-            if [ -s prompts.csv.new ]; then
-              mv prompts.csv.new prompts.csv
-              git add prompts.csv
-              git diff --cached --quiet || git commit -m "Update prompts.csv (sync from API)"
-              echo "prompts.csv updated from API"
-            else
-              echo "Warning: Empty response from API, keeping existing prompts.csv"
-              rm -f prompts.csv.new
-            fi
-          else
-            echo "PROMPTS_API_URL not set, skipping prompts.csv sync"
-          fi
-
       - name: Push changes
         run: |
           git push origin main --force-with-lease
