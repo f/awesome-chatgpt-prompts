@@ -1,5 +1,7 @@
 <p align="center">
   <img width="558" height="148" alt="Screenshot 2025-12-12 at 02 40 52" src="https://github.com/user-attachments/assets/8de2ba4c-5e89-4aae-aecb-32b188fb1bfb" />
+  <br>
+  <small>a.k.a. Awesome ChatGPT Prompts</small>
 </p>
 
 <h2 align="center">Sponsors</h3>
