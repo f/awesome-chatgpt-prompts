@@ -313,3 +313,39 @@ Budget Tracker,"Develop a comprehensive budget tracking application using HTML5,
 Todo List,"Create a responsive todo app with HTML5, CSS3 and vanilla JavaScript. The app should have a modern, clean UI using CSS Grid/Flexbox with intuitive controls. Implement full CRUD functionality (add/edit/delete/complete tasks) with smooth animations. Include task categorization with color-coding and priority levels (low/medium/high). Add due dates with a date-picker component and reminder notifications. Use localStorage for data persistence between sessions. Implement search functionality with filters for status, category, and date range. Add drag and drop reordering of tasks using the HTML5 Drag and Drop API. Ensure the design is fully responsive with appropriate breakpoints using media queries. Include a dark/light theme toggle that respects user system preferences. Add subtle micro-interactions and transitions for better UX.",FALSE,TEXT,f
 Weather Dashboard,"Build a comprehensive weather dashboard using HTML5, CSS3, JavaScript and the OpenWeatherMap API. Create a visually appealing interface showing current weather conditions with appropriate icons and background changes based on weather/time of day. Display a detailed 5-day forecast with expandable hourly breakdown for each day. Implement location search with autocomplete and history, supporting both city names and coordinates. Add geolocation support to automatically detect user's location. Include toggles for temperature units (°C/°F) and time formats. Display severe weather alerts with priority highlighting. Show detailed meteorological data including wind speed/direction, humidity, pressure, UV index, and air quality when available. Include sunrise/sunset times with visual indicators. Create a fully responsive layout using CSS Grid that adapts to all device sizes with appropriate information density.",FALSE,TEXT,f
 Pomodoro Timer,"Create a comprehensive pomodoro timer app using HTML5, CSS3 and JavaScript following the time management technique. Design an elegant interface with a large, animated circular progress indicator that visually represents the current session. Allow customization of work intervals (default ${Work Intervals:25min}), short breaks (default ${Short Breaks:5min}), and long breaks (default ${Long Breaks:15min}). Include a task list integration where users can associate pomodoro sessions with specific tasks. Add configurable sound notifications for interval transitions with volume control. Implement detailed statistics tracking daily/weekly productivity with visual charts. Use localStorage to persist settings and history between sessions. Make the app installable as a PWA with offline support and notifications. Add keyboard shortcuts for quick timer control (start/pause/reset). Include multiple theme options with customizable colors and fonts. Add a focus mode that blocks distractions during work intervals.",FALSE,TEXT,f
+Isometric City Diorama,"{
+  ""meta"": {
+    ""description"": ""Structured prompt for generating an isometric city diorama in a miniature 3D style, with weather and environment adaptive to the specified city."",
+    ""variable"": ""${City:San Francisco}""
+  },
+  ""prompt_structure"": {
+    ""perspective_and_format"": {
+      ""view"": ""Isometric camera view"",
+      ""format"": ""Miniature 3D diorama resting on a floating square base serving as the ground plinth."",
+      ""ratio"": ""16:9 (vertical phone)""
+    },
+    ""art_style"": {
+      ""medium"": ""High-detail 3D render"",
+      ""texture_quality"": ""Realistic textures appropriate for the region's architecture (e.g., stone/brick, stucco/adobe, glass/steel)."",
+      ""vibe"": ""Toy-like but highly sophisticated architectural model with tactile material qualities.""
+    },
+    ""environment_and_atmosphere"": {
+      ""weather"": ""Typical climate and weather conditions associated with the specified city (e.g., overcast/rainy for London, bright/sunny/arid for Cairo, snowy for Moscow). Lighting matches the weather."",
+      ""ground"": ""Ground surface material typical for the city (e.g., asphalt, cobblestones, sand, dirt). Surface conditions reflect the weather (e.g., wet with reflections if rainy, dry and dusty if arid, snow-covered if winter)."",
+      ""background"": ""Sky gradient and atmosphere matching the chosen weather, filling the upper frame.""
+    },
+    ""architectural_elements"": {
+      ""housing"": ""Dense cluster of residential or commercial buildings reflecting the city's vernacular architecture style."",
+      ""landmarks"": ""Isometric miniature representations of iconic landmarks defining the city.""
+    },
+    ""props_and_details"": {
+      ""street_level"": ""Miniature elements specific to the city's vibe (e.g., iconic vehicles like yellow cabs or red buses, specific vegetation like palm trees or deciduous trees, streetlights, signage)."",
+      ""life"": ""Tiny, stylized figures dressed in clothing appropriate for the climate and culture.""
+    },
+    ""text_overlay"": {
+      ""content"": ""${City:San Francisco}"",
+      ""font_style"": ""White, sans-serif, bold, uppercase letters"",
+      ""placement"": ""Centered floating at the very top of the frame.""
+    }
+  }
+}",FALSE,STRUCTURED,f
