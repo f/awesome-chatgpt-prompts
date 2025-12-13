@@ -1,0 +1,82 @@
+[
+  {
+    "label": "🎲 Random Prompts",
+    "sql": "SELECT \n    act,\n    prompt\nFROM \n    train\nORDER BY \n    RANDOM()\nLIMIT 10;"
+  },
+  {
+    "label": "✍️ Writing & Storytelling",
+    "sql": "SELECT \n    act,\n    prompt\nFROM \n    train\nWHERE \n    LOWER(act) LIKE '%writer%'\n    OR LOWER(act) LIKE '%story%'\n    OR LOWER(act) LIKE '%poet%'\n    OR LOWER(act) LIKE '%novelist%'\nLIMIT 20;"
+  },
+  {
+    "label": "✈️ Travel & Adventure",
+    "sql": "SELECT \n    act,\n    prompt\nFROM \n    train\nWHERE \n    LOWER(prompt) LIKE '%travel%'\n    OR LOWER(act) LIKE '%travel%'\n    OR LOWER(act) LIKE '%guide%'\nLIMIT 20;"
+  },
+  {
+    "label": "🍳 Food & Cooking",
+    "sql": "SELECT \n    act,\n    prompt\nFROM \n    train\nWHERE \n    LOWER(act) LIKE '%chef%'\n    OR LOWER(act) LIKE '%cook%'\n    OR LOWER(act) LIKE '%food%'\n    OR LOWER(prompt) LIKE '%recipe%'\nLIMIT 20;"
+  },
+  {
+    "label": "💪 Health & Fitness",
+    "sql": "SELECT \n    act,\n    prompt\nFROM \n    train\nWHERE \n    LOWER(act) LIKE '%fitness%'\n    OR LOWER(act) LIKE '%trainer%'\n    OR LOWER(act) LIKE '%health%'\n    OR LOWER(act) LIKE '%diet%'\n    OR LOWER(act) LIKE '%coach%'\nLIMIT 20;"
+  },
+  {
+    "label": "🎭 Entertainment & Fun",
+    "sql": "SELECT \n    act,\n    prompt\nFROM \n    train\nWHERE \n    LOWER(act) LIKE '%comedian%'\n    OR LOWER(act) LIKE '%magician%'\n    OR LOWER(act) LIKE '%movie%'\n    OR LOWER(act) LIKE '%game%'\nLIMIT 20;"
+  },
+  {
+    "label": "📚 Education & Learning",
+    "sql": "SELECT \n    act,\n    prompt\nFROM \n    train\nWHERE \n    LOWER(act) LIKE '%teacher%'\n    OR LOWER(act) LIKE '%tutor%'\n    OR LOWER(act) LIKE '%instructor%'\n    OR LOWER(act) LIKE '%professor%'\nLIMIT 20;"
+  },
+  {
+    "label": "💼 Career & Business",
+    "sql": "SELECT \n    act,\n    prompt\nFROM \n    train\nWHERE \n    LOWER(act) LIKE '%interview%'\n    OR LOWER(act) LIKE '%recruiter%'\n    OR LOWER(act) LIKE '%business%'\n    OR LOWER(act) LIKE '%entrepreneur%'\nLIMIT 20;"
+  },
+  {
+    "label": "🎨 Art & Creativity",
+    "sql": "SELECT \n    act,\n    prompt\nFROM \n    train\nWHERE \n    LOWER(act) LIKE '%artist%'\n    OR LOWER(act) LIKE '%designer%'\n    OR LOWER(act) LIKE '%creative%'\n    OR LOWER(act) LIKE '%composer%'\nLIMIT 20;"
+  },
+  {
+    "label": "🗣️ Language Learning",
+    "sql": "SELECT \n    act,\n    prompt\nFROM \n    train\nWHERE \n    LOWER(act) LIKE '%english%'\n    OR LOWER(act) LIKE '%translator%'\n    OR LOWER(act) LIKE '%pronunciation%'\n    OR LOWER(act) LIKE '%language%'\nLIMIT 20;"
+  },
+  {
+    "label": "🧘 Mental Wellness",
+    "sql": "SELECT \n    act,\n    prompt\nFROM \n    train\nWHERE \n    LOWER(act) LIKE '%motivat%'\n    OR LOWER(act) LIKE '%therapist%'\n    OR LOWER(act) LIKE '%coach%'\n    OR LOWER(act) LIKE '%counselor%'\nLIMIT 20;"
+  },
+  {
+    "label": "🎬 Role-Play Characters",
+    "sql": "SELECT \n    act,\n    prompt\nFROM \n    train\nWHERE \n    LOWER(prompt) LIKE '%act as%'\n    OR LOWER(prompt) LIKE '%act like%'\n    OR LOWER(prompt) LIKE '%character%'\nLIMIT 25;"
+  },
+  {
+    "label": "💡 Quick & Simple Prompts",
+    "sql": "SELECT \n    act,\n    prompt\nFROM \n    train\nORDER BY \n    LENGTH(prompt) ASC\nLIMIT 15;"
+  },
+  {
+    "label": "📊 Dataset Overview",
+    "sql": "SELECT \n    COUNT(*) AS total_prompts,\n    COUNT(DISTINCT contributor) AS contributors\nFROM \n    train;"
+  },
+  {
+    "label": "🔍 Search by Keyword",
+    "sql": "-- Change 'music' to any topic you want\nSELECT \n    act,\n    prompt\nFROM \n    train\nWHERE \n    LOWER(prompt) LIKE '%music%'\n    OR LOWER(act) LIKE '%music%'\nLIMIT 20;"
+  },
+  {
+    "label": "👨‍💻 Tech & Developer",
+    "sql": "SELECT \n    act,\n    prompt\nFROM \n    train\nWHERE \n    for_devs = 'TRUE'\nLIMIT 30;"
+  },
+  {
+    "label": "👥 Everyday Life",
+    "sql": "SELECT \n    act,\n    prompt\nFROM \n    train\nWHERE \n    for_devs = 'FALSE'\nORDER BY \n    RANDOM()\nLIMIT 25;"
+  },
+  {
+    "label": "🏆 Top Contributors",
+    "sql": "SELECT \n    contributor,\n    COUNT(*) AS prompts\nFROM \n    train\nWHERE \n    contributor IS NOT NULL\nGROUP BY \n    contributor\nORDER BY \n    prompts DESC\nLIMIT 10;"
+  },
+  {
+    "label": "📝 Detailed Prompts",
+    "sql": "SELECT \n    act,\n    prompt\nFROM \n    train\nORDER BY \n    LENGTH(prompt) DESC\nLIMIT 10;"
+  },
+  {
+    "label": "🎯 All Prompts",
+    "sql": "SELECT \n    act,\n    prompt,\n    type\nFROM \n    train\nLIMIT 100;"
+  }
+]

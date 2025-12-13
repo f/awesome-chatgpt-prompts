@@ -78,7 +78,8 @@
       "button": "HF Data Studio",
       "sqlQuery": "Requête SQL",
       "openDataset": "Ouvrir le Dataset",
-      "runQuery": "Exécuter sur HF"
+      "runQuery": "Exécuter la Requête sur HF",
+      "examples": "Exemples de Requêtes"
     },
     "edit": "Modifier le Prompt",
     "delete": "Supprimer le Prompt",

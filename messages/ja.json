@@ -78,7 +78,8 @@
       "button": "HF Data Studio",
       "sqlQuery": "SQLクエリ",
       "openDataset": "データセットを開く",
-      "runQuery": "HFでクエリを実行"
+      "runQuery": "HFでクエリを実行",
+      "examples": "クエリ例"
     },
     "edit": "プロンプトを編集",
     "delete": "プロンプトを削除",

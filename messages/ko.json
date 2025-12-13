@@ -78,7 +78,8 @@
       "button": "HF 데이터 스튜디오",
       "sqlQuery": "SQL 쿼리",
       "openDataset": "데이터셋 열기",
-      "runQuery": "HF에서 쿼리 실행"
+      "runQuery": "HF에서 쿼리 실행",
+      "examples": "예제 쿼리"
     },
     "edit": "프롬프트 편집",
     "delete": "프롬프트 삭제",

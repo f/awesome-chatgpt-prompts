@@ -11,17 +11,16 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import SQL_EXAMPLES from "@/data/sql-examples.json";
 
-const DEFAULT_SQL = `-- All Software related prompts
-SELECT 
-    act,
-    prompt,
-    type
-FROM 
-    train
-WHERE 
-    lower(prompt) LIKE '%software%'
-LIMIT 100;`;
+const DEFAULT_SQL = SQL_EXAMPLES[0].sql;
 
 const HF_DATASET_URL = "https://huggingface.co/datasets/fka/awesome-chatgpt-prompts/viewer";
 
@@ -41,11 +40,11 @@ export function HFDataStudioDropdown() {
   };
 
   return (
-    <div className="flex">
+    <div className="flex w-full sm:w-auto">
       <Button 
         size="sm" 
         variant="outline" 
-        className="h-8 text-xs rounded-r-none border-r-0"
+        className="h-8 text-xs rounded-r-none border-r-0 flex-1 sm:flex-initial"
         onClick={handleOpenDataset}
       >
         🤗 {t("button")}
@@ -60,10 +59,21 @@ export function HFDataStudioDropdown() {
             <ChevronDown className="h-3 w-3" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent align="end" className="w-[500px] p-0">
+        <PopoverContent align="end" className="w-[calc(100vw-2rem)] sm:w-[500px] p-0 max-sm:!fixed max-sm:!left-4 max-sm:!right-4 max-sm:!top-auto" sideOffset={8}>
           <div className="p-3 space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="text-sm font-medium">{t("sqlQuery")}</span>
+            <div className="flex items-center justify-between gap-2">
+              <Select onValueChange={(value) => setSql(value)}>
+                <SelectTrigger className="w-[200px] h-7 text-xs">
+                  <SelectValue placeholder={t("examples")} />
+                </SelectTrigger>
+                <SelectContent>
+                  {SQL_EXAMPLES.map((example, index) => (
+                    <SelectItem key={index} value={example.sql} className="text-xs">
+                      {example.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
               <a
                 href={HF_DATASET_URL}
                 target="_blank"

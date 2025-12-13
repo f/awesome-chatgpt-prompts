@@ -170,16 +170,16 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
 
   return (
     <div className="container py-6">
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
         <div className="flex items-baseline gap-2">
           <h1 className="text-lg font-semibold">{t("title")}</h1>
           <span className="text-xs text-muted-foreground">{tSearch("found", { count: total })}</span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
           {!config.homepage?.useCloneBranding && (
             <HFDataStudioDropdown />
           )}
-          <Button size="sm" className="h-8 text-xs" asChild>
+          <Button size="sm" className="h-8 text-xs w-full sm:w-auto" asChild>
             <Link href="/prompts/new">
               <Plus className="h-3.5 w-3.5 mr-1" />
               {t("create")}
