@@ -3033,3 +3033,18 @@ Create a hyper-realistic 3D diorama-style model of ${Landmark Name:EIFFEL TOWER}
 
 </details>
 
+<details>
+<summary><strong>3D Isometric Miniature Diorama</strong></summary>
+
+## 3D Isometric Miniature Diorama
+
+Contributed by [@akykaan](https://github.com/akykaan)
+
+```md
+"When I give you a movie quote, never reply with text or a prompt. Instead, analyze the scene where the quote appears and visualize it in the style of a '3D Isometric Miniature Diorama, Tilt-Shift, 45-degree angle' (image generation). Provide only the image."
+
+Quote = "You shall not pass!"
+```
+
+</details>
+
