@@ -1,0 +1,39 @@
+name: Update Contributors
+
+on:
+  schedule:
+    # Run every hour
+    - cron: '0 * * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update-contributors:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Full history needed for commit deduplication
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Run contributor generation script
+        env:
+          PROJECT_DIR: ${{ github.workspace }}
+        run: |
+          chmod +x scripts/generate-contributors.sh
+          ./scripts/generate-contributors.sh
+
+      - name: Push changes
+        run: |
+          git push origin main --force-with-lease
