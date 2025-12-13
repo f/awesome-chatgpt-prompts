@@ -70,52 +70,111 @@ print(f"Found {len(remote_prompts)} remote prompts")
 if not fieldnames:
     fieldnames = remote_fieldnames
 
-# Find new prompts (in remote but not in local)
+# Find new and updated prompts
 new_prompts = []
+updated_prompts = []
+
 for row in remote_prompts:
     act = row.get('act', '').strip()
-    if act and act not in local_prompts:
+    if not act:
+        continue
+    
+    if act not in local_prompts:
         new_prompts.append(row)
+    else:
+        # Check if content changed (compare all fields except contributor which might differ)
+        local_row = local_prompts[act]
+        # Compare prompt content specifically
+        if row.get('prompt', '').strip() != local_row.get('prompt', '').strip():
+            updated_prompts.append((row, local_row))
 
 print(f"Found {len(new_prompts)} new prompts to add")
+print(f"Found {len(updated_prompts)} updated prompts to modify")
 
-if not new_prompts:
-    print("\nNo new prompts to add. Already up to date!")
+if not new_prompts and not updated_prompts:
+    print("\nNo changes detected. Already up to date!")
 else:
-    print("\nCreating commits for new prompts...")
-    
-    for i, row in enumerate(new_prompts, 1):
-        contributor = row.get('contributor', '').strip()
-        act = row.get('act', 'Unknown')
+    # Process updates first (rewrite entire file with updates applied)
+    if updated_prompts:
+        print("\nApplying updates to existing prompts...")
         
-        if not contributor:
-            contributor = 'anonymous'
+        # Build updated local_prompts dict
+        for remote_row, _ in updated_prompts:
+            act = remote_row.get('act', '').strip()
+            local_prompts[act] = remote_row
         
-        email = f"{contributor}@users.noreply.github.com"
-        
-        # Append this row to the CSV
-        with open(csv_file, 'a', newline='') as f:
+        # Rewrite the CSV with updates
+        with open(csv_file, 'w', newline='') as f:
             writer = csv.DictWriter(f, fieldnames=fieldnames)
-            writer.writerow(row)
+            writer.writeheader()
+            # Write in order of remote (to maintain order)
+            for row in remote_prompts:
+                act = row.get('act', '').strip()
+                if act in local_prompts:
+                    writer.writerow(local_prompts[act])
         
-        # Stage and commit
-        subprocess.run(['git', 'add', csv_file], check=True)
-        
-        env = os.environ.copy()
-        env['GIT_AUTHOR_NAME'] = contributor
-        env['GIT_AUTHOR_EMAIL'] = email
-        env['GIT_COMMITTER_NAME'] = contributor
-        env['GIT_COMMITTER_EMAIL'] = email
-        
-        subprocess.run([
-            'git', 'commit',
-            '-m', f'Add prompt: {act}',
-            f'--author={contributor} <{email}>'
-        ], env=env, check=True)
-        
-        print(f"[{i}/{len(new_prompts)}] {contributor}: {act}")
+        # Commit updates
+        for i, (remote_row, local_row) in enumerate(updated_prompts, 1):
+            contributor = remote_row.get('contributor', '').strip()
+            act = remote_row.get('act', 'Unknown')
+            
+            if not contributor:
+                contributor = 'anonymous'
+            
+            email = f"{contributor}@users.noreply.github.com"
+            
+            subprocess.run(['git', 'add', csv_file], check=True)
+            
+            env = os.environ.copy()
+            env['GIT_AUTHOR_NAME'] = contributor
+            env['GIT_AUTHOR_EMAIL'] = email
+            env['GIT_COMMITTER_NAME'] = contributor
+            env['GIT_COMMITTER_EMAIL'] = email
+            
+            subprocess.run([
+                'git', 'commit',
+                '-m', f'Update prompt: {act}',
+                f'--author={contributor} <{email}>'
+            ], env=env, check=True)
+            
+            print(f"[UPDATE {i}/{len(updated_prompts)}] {contributor}: {act}")
     
-    print(f"\nDone! Created {len(new_prompts)} new commits.")
+    # Process new prompts
+    if new_prompts:
+        print("\nCreating commits for new prompts...")
+        
+        for i, row in enumerate(new_prompts, 1):
+            contributor = row.get('contributor', '').strip()
+            act = row.get('act', 'Unknown')
+            
+            if not contributor:
+                contributor = 'anonymous'
+            
+            email = f"{contributor}@users.noreply.github.com"
+            
+            # Append this row to the CSV
+            with open(csv_file, 'a', newline='') as f:
+                writer = csv.DictWriter(f, fieldnames=fieldnames)
+                writer.writerow(row)
+            
+            # Stage and commit
+            subprocess.run(['git', 'add', csv_file], check=True)
+            
+            env = os.environ.copy()
+            env['GIT_AUTHOR_NAME'] = contributor
+            env['GIT_AUTHOR_EMAIL'] = email
+            env['GIT_COMMITTER_NAME'] = contributor
+            env['GIT_COMMITTER_EMAIL'] = email
+            
+            subprocess.run([
+                'git', 'commit',
+                '-m', f'Add prompt: {act}',
+                f'--author={contributor} <{email}>'
+            ], env=env, check=True)
+            
+            print(f"[NEW {i}/{len(new_prompts)}] {contributor}: {act}")
+    
+    print(f"\nDone! Created {len(new_prompts)} new commits, {len(updated_prompts)} update commits.")
 
 PYTHON_SCRIPT
 
