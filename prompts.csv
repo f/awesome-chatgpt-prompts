@@ -260,3 +260,4 @@ Decision Filter,"I want you to act as a Decision Filter. Whenever I’m stuck be
 Student Tier,Create a special $1-2 student sponsorship tier with meaningful benefits that acknowledges their support while respecting their budget.,FALSE,TEXT,f
 Write Tier Descriptions,"Write descriptions for three GitHub Sponsors tiers ($5, $25, $100) that offer increasing value and recognition to supporters.",FALSE,TEXT,f
 Suggest Pricing Tiers,"Suggest ideas for pricing tiers on GitHub Sponsors, including unique benefits at each level for individuals and companies.",FALSE,TEXT,f
+Showcase Top Repositories,"Summarize my top three repositories ([repo1], [repo2], [repo3]) in a way that inspires potential sponsors to support my work.",FALSE,TEXT,f
