@@ -20,18 +20,19 @@ enum UserRole {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  email         String    @unique
-  username      String    @unique
-  name          String?
-  password      String?   // For credentials auth
-  avatar        String?
-  role          UserRole  @default(USER)
-  locale        String    @default("en")
-  verified      Boolean   @default(false)
-  emailVerified DateTime?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  id             String    @id @default(cuid())
+  email          String    @unique
+  username       String    @unique
+  name           String?
+  password       String?   // For credentials auth
+  avatar         String?
+  role           UserRole  @default(USER)
+  locale         String    @default("en")
+  verified       Boolean   @default(false)
+  emailVerified  DateTime?
+  githubUsername String?   // Immutable GitHub username for contributor attribution
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
 
   // Relations
   prompts        Prompt[]         @relation("PromptAuthor")

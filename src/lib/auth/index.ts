@@ -41,9 +41,11 @@ function CustomPrismaAdapter(): Adapter {
   
   return {
     ...prismaAdapter,
-    async createUser(data: AdapterUser & { username?: string }) {
+    async createUser(data: AdapterUser & { username?: string; githubUsername?: string }) {
       // Use GitHub username if provided, otherwise generate one
       let username = (data as any).username;
+      const githubUsername = (data as any).githubUsername; // Immutable GitHub username
+      
       if (!username) {
         username = await generateUsername(data.email, data.name);
       } else {
@@ -64,6 +66,7 @@ function CustomPrismaAdapter(): Adapter {
               email: data.email,
               avatar: data.image,
               emailVerified: data.emailVerified,
+              githubUsername: githubUsername || undefined, // Store immutable GitHub username
             },
           });
           
@@ -91,6 +94,7 @@ function CustomPrismaAdapter(): Adapter {
           avatar: data.image,
           emailVerified: data.emailVerified,
           username,
+          githubUsername: githubUsername || undefined, // Store immutable GitHub username
         },
       });
       

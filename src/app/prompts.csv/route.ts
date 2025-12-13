@@ -29,7 +29,8 @@ export async function GET() {
         },
         author: {
           select: {
-            username: true,
+            email: true,
+            githubUsername: true,
           },
         },
       },
@@ -42,7 +43,9 @@ export async function GET() {
       const promptContent = escapeCSVField(prompt.content);
       const forDevs = prompt.category?.slug === "coding" ? "TRUE" : "FALSE";
       const type = prompt.type;
-      const contributor = escapeCSVField(prompt.author.username);
+      // Use githubUsername for GitHub users, email for others (Google, credentials)
+      // This prevents impersonation since these identifiers are immutable
+      const contributor = escapeCSVField(prompt.author.githubUsername || prompt.author.email);
       
       return [act, promptContent, forDevs, type, contributor].join(",");
     });

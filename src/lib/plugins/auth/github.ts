@@ -14,7 +14,8 @@ export const githubPlugin: AuthPlugin = {
           name: profile.name || profile.login,
           email: profile.email,
           image: profile.avatar_url,
-          username: profile.login, // GitHub username
+          username: profile.login, // GitHub username (used as display username)
+          githubUsername: profile.login, // Immutable GitHub username for contributor attribution
         };
       },
     }),
