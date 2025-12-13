@@ -273,7 +273,29 @@
       "categories": "Categorie",
       "tags": "Tag",
       "webhooks": "Webhook",
-      "prompts": "Prompt"
+      "prompts": "Prompt",
+      "reports": "Segnalazioni"
+    },
+    "reports": {
+      "title": "Gestione Segnalazioni",
+      "description": "Revisiona e gestisci i prompt segnalati",
+      "prompt": "Prompt",
+      "reason": "Motivo",
+      "reportedBy": "Segnalato da",
+      "status": "Stato",
+      "date": "Data",
+      "noReports": "Nessuna segnalazione",
+      "viewPrompt": "Visualizza Prompt",
+      "markReviewed": "Segna come Revisionato",
+      "dismiss": "Archivia",
+      "markedReviewed": "Segnalazione revisionata",
+      "dismissed": "Segnalazione archiviata",
+      "updateFailed": "Impossibile aggiornare la segnalazione",
+      "statuses": {
+        "pending": "In attesa",
+        "reviewed": "Revisionato",
+        "dismissed": "Archiviato"
+      }
     },
     "prompts": {
       "title": "Gestione Prompt",
@@ -601,5 +623,27 @@
     "browsePrompts": "Sfoglia Prompt",
     "categories": "Categorie",
     "createPrompt": "Crea Prompt"
+  },
+  "report": {
+    "report": "Segnala",
+    "reportPrompt": "Segnala Prompt",
+    "reportDescription": "Aiutaci a mantenere la community sicura segnalando contenuti inappropriati.",
+    "reason": "Motivo",
+    "selectReason": "Seleziona un motivo",
+    "reasons": {
+      "spam": "Spam o pubblicità",
+      "inappropriate": "Contenuto inappropriato",
+      "copyright": "Violazione del copyright",
+      "misleading": "Informazioni fuorvianti o false",
+      "other": "Altro"
+    },
+    "details": "Dettagli aggiuntivi",
+    "detailsPlaceholder": "Fornisci maggiori dettagli su questa segnalazione...",
+    "optional": "opzionale",
+    "submitReport": "Invia Segnalazione",
+    "reportSubmitted": "Segnalazione inviata con successo",
+    "reportFailed": "Impossibile inviare la segnalazione",
+    "reasonRequired": "Seleziona un motivo",
+    "alreadyReported": "Hai già segnalato questo prompt"
   }
 }

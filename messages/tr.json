@@ -273,7 +273,29 @@
       "categories": "Kategoriler",
       "tags": "Etiketler",
       "webhooks": "Webhooklar",
-      "prompts": "Promptlar"
+      "prompts": "Promptlar",
+      "reports": "Şikayetler"
+    },
+    "reports": {
+      "title": "Şikayet Yönetimi",
+      "description": "Şikayet edilen promptları incele ve yönet",
+      "prompt": "Prompt",
+      "reason": "Sebep",
+      "reportedBy": "Şikayet Eden",
+      "status": "Durum",
+      "date": "Tarih",
+      "noReports": "Henüz şikayet yok",
+      "viewPrompt": "Promptu Görüntüle",
+      "markReviewed": "İncelendi Olarak İşaretle",
+      "dismiss": "Reddet",
+      "markedReviewed": "Şikayet incelendi olarak işaretlendi",
+      "dismissed": "Şikayet reddedildi",
+      "updateFailed": "Şikayet güncellenemedi",
+      "statuses": {
+        "pending": "Beklemede",
+        "reviewed": "İncelendi",
+        "dismissed": "Reddedildi"
+      }
     },
     "prompts": {
       "title": "Prompt Yönetimi",
@@ -601,5 +623,27 @@
     "browsePrompts": "Promptlara Göz At",
     "categories": "Kategoriler",
     "createPrompt": "Prompt Oluştur"
+  },
+  "report": {
+    "report": "Şikayet Et",
+    "reportPrompt": "Promptu Şikayet Et",
+    "reportDescription": "Uygunsuz içerikleri bildirerek topluluğumuzu güvende tutmamıza yardımcı olun.",
+    "reason": "Sebep",
+    "selectReason": "Bir sebep seçin",
+    "reasons": {
+      "spam": "Spam veya reklam",
+      "inappropriate": "Uygunsuz içerik",
+      "copyright": "Telif hakkı ihlali",
+      "misleading": "Yanıltıcı veya yanlış bilgi",
+      "other": "Diğer"
+    },
+    "details": "Ek detaylar",
+    "detailsPlaceholder": "Bu şikayet hakkında daha fazla bilgi verin...",
+    "optional": "isteğe bağlı",
+    "submitReport": "Şikayeti Gönder",
+    "reportSubmitted": "Şikayet başarıyla gönderildi",
+    "reportFailed": "Şikayet gönderilemedi",
+    "reasonRequired": "Lütfen bir sebep seçin",
+    "alreadyReported": "Bu promptu zaten şikayet ettiniz"
   }
 }

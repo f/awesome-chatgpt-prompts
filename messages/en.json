@@ -273,7 +273,29 @@
       "categories": "Categories",
       "tags": "Tags",
       "webhooks": "Webhooks",
-      "prompts": "Prompts"
+      "prompts": "Prompts",
+      "reports": "Reports"
+    },
+    "reports": {
+      "title": "Reports Management",
+      "description": "Review and manage reported prompts",
+      "prompt": "Prompt",
+      "reason": "Reason",
+      "reportedBy": "Reported By",
+      "status": "Status",
+      "date": "Date",
+      "noReports": "No reports yet",
+      "viewPrompt": "View Prompt",
+      "markReviewed": "Mark as Reviewed",
+      "dismiss": "Dismiss",
+      "markedReviewed": "Report marked as reviewed",
+      "dismissed": "Report dismissed",
+      "updateFailed": "Failed to update report",
+      "statuses": {
+        "pending": "Pending",
+        "reviewed": "Reviewed",
+        "dismissed": "Dismissed"
+      }
     },
     "prompts": {
       "title": "Prompts Management",
@@ -601,5 +623,27 @@
     "browsePrompts": "Browse Prompts",
     "categories": "Categories",
     "createPrompt": "Create Prompt"
+  },
+  "report": {
+    "report": "Report",
+    "reportPrompt": "Report Prompt",
+    "reportDescription": "Help us keep the community safe by reporting inappropriate content.",
+    "reason": "Reason",
+    "selectReason": "Select a reason",
+    "reasons": {
+      "spam": "Spam or advertising",
+      "inappropriate": "Inappropriate content",
+      "copyright": "Copyright violation",
+      "misleading": "Misleading or false information",
+      "other": "Other"
+    },
+    "details": "Additional details",
+    "detailsPlaceholder": "Please provide more context about this report...",
+    "optional": "optional",
+    "submitReport": "Submit Report",
+    "reportSubmitted": "Report submitted successfully",
+    "reportFailed": "Failed to submit report",
+    "reasonRequired": "Please select a reason",
+    "alreadyReported": "You have already reported this prompt"
   }
 }

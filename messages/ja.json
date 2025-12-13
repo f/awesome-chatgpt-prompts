@@ -253,7 +253,29 @@
       "categories": "カテゴリー",
       "tags": "タグ",
       "webhooks": "Webhook",
-      "import": "コミュニティプロンプトをインポート"
+      "prompts": "プロンプト",
+      "reports": "報告"
+    },
+    "reports": {
+      "title": "報告管理",
+      "description": "報告されたプロンプトを確認・管理",
+      "prompt": "プロンプト",
+      "reason": "理由",
+      "reportedBy": "報告者",
+      "status": "ステータス",
+      "date": "日付",
+      "noReports": "報告はまだありません",
+      "viewPrompt": "プロンプトを見る",
+      "markReviewed": "確認済みにする",
+      "dismiss": "却下",
+      "markedReviewed": "報告を確認済みにしました",
+      "dismissed": "報告を却下しました",
+      "updateFailed": "報告の更新に失敗しました",
+      "statuses": {
+        "pending": "保留中",
+        "reviewed": "確認済み",
+        "dismissed": "却下済み"
+      }
     },
     "users": {
       "title": "ユーザー管理",
@@ -496,5 +518,27 @@
     "browsePrompts": "プロンプトを見る",
     "categories": "カテゴリー",
     "createPrompt": "プロンプトを作成"
+  },
+  "report": {
+    "report": "報告",
+    "reportPrompt": "プロンプトを報告",
+    "reportDescription": "不適切なコンテンツを報告して、コミュニティの安全を守るためにご協力ください。",
+    "reason": "理由",
+    "selectReason": "理由を選択",
+    "reasons": {
+      "spam": "スパムまたは広告",
+      "inappropriate": "不適切なコンテンツ",
+      "copyright": "著作権侵害",
+      "misleading": "誤解を招く情報または虚偽情報",
+      "other": "その他"
+    },
+    "details": "詳細情報",
+    "detailsPlaceholder": "この報告についての詳細を入力してください...",
+    "optional": "任意",
+    "submitReport": "報告を送信",
+    "reportSubmitted": "報告が送信されました",
+    "reportFailed": "報告の送信に失敗しました",
+    "reasonRequired": "理由を選択してください",
+    "alreadyReported": "このプロンプトは既に報告済みです"
   }
 }

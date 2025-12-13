@@ -273,7 +273,29 @@
       "categories": "Kategorien",
       "tags": "Tags",
       "webhooks": "Webhooks",
-      "prompts": "Prompts"
+      "prompts": "Prompts",
+      "reports": "Meldungen"
+    },
+    "reports": {
+      "title": "Meldungsverwaltung",
+      "description": "Gemeldete Prompts überprüfen und verwalten",
+      "prompt": "Prompt",
+      "reason": "Grund",
+      "reportedBy": "Gemeldet von",
+      "status": "Status",
+      "date": "Datum",
+      "noReports": "Noch keine Meldungen",
+      "viewPrompt": "Prompt anzeigen",
+      "markReviewed": "Als überprüft markieren",
+      "dismiss": "Ablehnen",
+      "markedReviewed": "Meldung als überprüft markiert",
+      "dismissed": "Meldung abgelehnt",
+      "updateFailed": "Fehler beim Aktualisieren der Meldung",
+      "statuses": {
+        "pending": "Ausstehend",
+        "reviewed": "Überprüft",
+        "dismissed": "Abgelehnt"
+      }
     },
     "prompts": {
       "title": "Prompt-Verwaltung",
@@ -601,5 +623,27 @@
     "browsePrompts": "Prompts durchsuchen",
     "categories": "Kategorien",
     "createPrompt": "Prompt erstellen"
+  },
+  "report": {
+    "report": "Melden",
+    "reportPrompt": "Prompt melden",
+    "reportDescription": "Helfen Sie uns, die Community sicher zu halten, indem Sie unangemessene Inhalte melden.",
+    "reason": "Grund",
+    "selectReason": "Wählen Sie einen Grund",
+    "reasons": {
+      "spam": "Spam oder Werbung",
+      "inappropriate": "Unangemessener Inhalt",
+      "copyright": "Urheberrechtsverletzung",
+      "misleading": "Irreführende oder falsche Informationen",
+      "other": "Sonstiges"
+    },
+    "details": "Zusätzliche Details",
+    "detailsPlaceholder": "Bitte geben Sie mehr Kontext zu dieser Meldung an...",
+    "optional": "optional",
+    "submitReport": "Meldung absenden",
+    "reportSubmitted": "Meldung erfolgreich gesendet",
+    "reportFailed": "Meldung konnte nicht gesendet werden",
+    "reasonRequired": "Bitte wählen Sie einen Grund",
+    "alreadyReported": "Sie haben diesen Prompt bereits gemeldet"
   }
 }

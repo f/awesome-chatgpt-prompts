@@ -259,7 +259,29 @@
       "categories": "التصنيفات",
       "tags": "الوسوم",
       "webhooks": "Webhooks",
-      "import": "استيراد أوامر المجتمع"
+      "prompts": "الأوامر",
+      "reports": "البلاغات"
+    },
+    "reports": {
+      "title": "إدارة البلاغات",
+      "description": "مراجعة وإدارة الأوامر المبلغ عنها",
+      "prompt": "الأمر",
+      "reason": "السبب",
+      "reportedBy": "المبلغ",
+      "status": "الحالة",
+      "date": "التاريخ",
+      "noReports": "لا توجد بلاغات بعد",
+      "viewPrompt": "عرض الأمر",
+      "markReviewed": "تعيين كمراجع",
+      "dismiss": "رفض",
+      "markedReviewed": "تم تعيين البلاغ كمراجع",
+      "dismissed": "تم رفض البلاغ",
+      "updateFailed": "فشل في تحديث البلاغ",
+      "statuses": {
+        "pending": "قيد الانتظار",
+        "reviewed": "تمت المراجعة",
+        "dismissed": "مرفوض"
+      }
     },
     "users": {
       "title": "إدارة المستخدمين",
@@ -502,5 +524,27 @@
     "browsePrompts": "تصفح الأوامر",
     "categories": "التصنيفات",
     "createPrompt": "إنشاء أمر"
+  },
+  "report": {
+    "report": "إبلاغ",
+    "reportPrompt": "الإبلاغ عن الأمر",
+    "reportDescription": "ساعدنا في الحفاظ على أمان المجتمع من خلال الإبلاغ عن المحتوى غير المناسب.",
+    "reason": "السبب",
+    "selectReason": "اختر سبباً",
+    "reasons": {
+      "spam": "رسائل مزعجة أو إعلانات",
+      "inappropriate": "محتوى غير لائق",
+      "copyright": "انتهاك حقوق النشر",
+      "misleading": "معلومات مضللة أو كاذبة",
+      "other": "أخرى"
+    },
+    "details": "تفاصيل إضافية",
+    "detailsPlaceholder": "يرجى تقديم مزيد من المعلومات حول هذا البلاغ...",
+    "optional": "اختياري",
+    "submitReport": "إرسال البلاغ",
+    "reportSubmitted": "تم إرسال البلاغ بنجاح",
+    "reportFailed": "فشل في إرسال البلاغ",
+    "reasonRequired": "يرجى اختيار سبب",
+    "alreadyReported": "لقد أبلغت عن هذا الأمر بالفعل"
   }
 }

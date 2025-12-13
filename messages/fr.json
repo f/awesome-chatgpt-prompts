@@ -273,7 +273,29 @@
       "categories": "Catégories",
       "tags": "Tags",
       "webhooks": "Webhooks",
-      "prompts": "Prompts"
+      "prompts": "Prompts",
+      "reports": "Signalements"
+    },
+    "reports": {
+      "title": "Gestion des Signalements",
+      "description": "Examiner et gérer les prompts signalés",
+      "prompt": "Prompt",
+      "reason": "Raison",
+      "reportedBy": "Signalé par",
+      "status": "Statut",
+      "date": "Date",
+      "noReports": "Aucun signalement pour l'instant",
+      "viewPrompt": "Voir le Prompt",
+      "markReviewed": "Marquer comme Examiné",
+      "dismiss": "Rejeter",
+      "markedReviewed": "Signalement marqué comme examiné",
+      "dismissed": "Signalement rejeté",
+      "updateFailed": "Échec de la mise à jour du signalement",
+      "statuses": {
+        "pending": "En attente",
+        "reviewed": "Examiné",
+        "dismissed": "Rejeté"
+      }
     },
     "prompts": {
       "title": "Gestion des Prompts",
@@ -601,5 +623,27 @@
     "browsePrompts": "Parcourir les Prompts",
     "categories": "Catégories",
     "createPrompt": "Créer un Prompt"
+  },
+  "report": {
+    "report": "Signaler",
+    "reportPrompt": "Signaler le Prompt",
+    "reportDescription": "Aidez-nous à maintenir la communauté en sécurité en signalant les contenus inappropriés.",
+    "reason": "Raison",
+    "selectReason": "Sélectionnez une raison",
+    "reasons": {
+      "spam": "Spam ou publicité",
+      "inappropriate": "Contenu inapproprié",
+      "copyright": "Violation des droits d'auteur",
+      "misleading": "Information trompeuse ou fausse",
+      "other": "Autre"
+    },
+    "details": "Détails supplémentaires",
+    "detailsPlaceholder": "Veuillez fournir plus de contexte sur ce signalement...",
+    "optional": "optionnel",
+    "submitReport": "Envoyer le Signalement",
+    "reportSubmitted": "Signalement envoyé avec succès",
+    "reportFailed": "Échec de l'envoi du signalement",
+    "reasonRequired": "Veuillez sélectionner une raison",
+    "alreadyReported": "Vous avez déjà signalé ce prompt"
   }
 }

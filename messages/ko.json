@@ -273,7 +273,29 @@
       "categories": "카테고리",
       "tags": "태그",
       "webhooks": "웹훅",
-      "prompts": "프롬프트"
+      "prompts": "프롬프트",
+      "reports": "신고"
+    },
+    "reports": {
+      "title": "신고 관리",
+      "description": "신고된 프롬프트를 검토하고 관리합니다",
+      "prompt": "프롬프트",
+      "reason": "사유",
+      "reportedBy": "신고자",
+      "status": "상태",
+      "date": "날짜",
+      "noReports": "아직 신고가 없습니다",
+      "viewPrompt": "프롬프트 보기",
+      "markReviewed": "검토 완료로 표시",
+      "dismiss": "기각",
+      "markedReviewed": "신고가 검토 완료로 표시되었습니다",
+      "dismissed": "신고가 기각되었습니다",
+      "updateFailed": "신고 업데이트에 실패했습니다",
+      "statuses": {
+        "pending": "대기 중",
+        "reviewed": "검토 완료",
+        "dismissed": "기각됨"
+      }
     },
     "prompts": {
       "title": "프롬프트 관리",
@@ -601,5 +623,27 @@
     "browsePrompts": "프롬프트 둘러보기",
     "categories": "카테고리",
     "createPrompt": "프롬프트 만들기"
+  },
+  "report": {
+    "report": "신고",
+    "reportPrompt": "프롬프트 신고",
+    "reportDescription": "부적절한 콘텐츠를 신고하여 커뮤니티를 안전하게 유지하는 데 도움을 주세요.",
+    "reason": "사유",
+    "selectReason": "사유를 선택하세요",
+    "reasons": {
+      "spam": "스팸 또는 광고",
+      "inappropriate": "부적절한 콘텐츠",
+      "copyright": "저작권 침해",
+      "misleading": "오해의 소지가 있거나 허위 정보",
+      "other": "기타"
+    },
+    "details": "추가 세부사항",
+    "detailsPlaceholder": "이 신고에 대한 자세한 내용을 입력하세요...",
+    "optional": "선택사항",
+    "submitReport": "신고 제출",
+    "reportSubmitted": "신고가 성공적으로 제출되었습니다",
+    "reportFailed": "신고 제출에 실패했습니다",
+    "reasonRequired": "사유를 선택하세요",
+    "alreadyReported": "이미 이 프롬프트를 신고하셨습니다"
   }
 }

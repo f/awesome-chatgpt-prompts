@@ -20,6 +20,7 @@ import { VersionCompareModal } from "@/components/prompts/version-compare-modal"
 import { VersionCompareButton } from "@/components/prompts/version-compare-button";
 import { FeaturePromptButton } from "@/components/prompts/feature-prompt-button";
 import { MediaPreview } from "@/components/prompts/media-preview";
+import { ReportPromptDialog } from "@/components/prompts/report-prompt-dialog";
 
 interface PromptPageProps {
   params: Promise<{ id: string }>;
@@ -380,6 +381,12 @@ export default async function PromptPage({ params }: PromptPageProps) {
               <InteractivePromptContent content={prompt.content} title={t("promptContent")} />
             )}
           </div>
+          {/* Report link */}
+          {!isOwner && (
+            <div className="flex justify-end pt-2">
+              <ReportPromptDialog promptId={prompt.id} isLoggedIn={!!session?.user} />
+            </div>
+          )}
         </TabsContent>
 
         <TabsContent value="versions" className="mt-0">

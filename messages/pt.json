@@ -273,7 +273,29 @@
       "categories": "Categorias",
       "tags": "Tags",
       "webhooks": "Webhooks",
-      "prompts": "Prompts"
+      "prompts": "Prompts",
+      "reports": "Denúncias"
+    },
+    "reports": {
+      "title": "Gestão de Denúncias",
+      "description": "Revise e gerencie prompts denunciados",
+      "prompt": "Prompt",
+      "reason": "Motivo",
+      "reportedBy": "Denunciado por",
+      "status": "Estado",
+      "date": "Data",
+      "noReports": "Nenhuma denúncia ainda",
+      "viewPrompt": "Ver Prompt",
+      "markReviewed": "Marcar como Revisado",
+      "dismiss": "Descartar",
+      "markedReviewed": "Denúncia marcada como revisada",
+      "dismissed": "Denúncia descartada",
+      "updateFailed": "Falha ao atualizar denúncia",
+      "statuses": {
+        "pending": "Pendente",
+        "reviewed": "Revisado",
+        "dismissed": "Descartado"
+      }
     },
     "prompts": {
       "title": "Gerenciamento de Prompts",
@@ -601,5 +623,27 @@
     "browsePrompts": "Ver Prompts",
     "categories": "Categorias",
     "createPrompt": "Criar Prompt"
+  },
+  "report": {
+    "report": "Denunciar",
+    "reportPrompt": "Denunciar Prompt",
+    "reportDescription": "Ajude-nos a manter a comunidade segura denunciando conteúdo inadequado.",
+    "reason": "Motivo",
+    "selectReason": "Selecione um motivo",
+    "reasons": {
+      "spam": "Spam ou publicidade",
+      "inappropriate": "Conteúdo inadequado",
+      "copyright": "Violação de direitos autorais",
+      "misleading": "Informação enganosa ou falsa",
+      "other": "Outro"
+    },
+    "details": "Detalhes adicionais",
+    "detailsPlaceholder": "Forneça mais contexto sobre esta denúncia...",
+    "optional": "opcional",
+    "submitReport": "Enviar Denúncia",
+    "reportSubmitted": "Denúncia enviada com sucesso",
+    "reportFailed": "Falha ao enviar denúncia",
+    "reasonRequired": "Por favor, selecione um motivo",
+    "alreadyReported": "Você já denunciou este prompt"
   }
 }

@@ -253,7 +253,29 @@
       "categories": "分类",
       "tags": "标签",
       "webhooks": "Webhooks",
-      "import": "导入社区提示词"
+      "prompts": "提示词",
+      "reports": "举报"
+    },
+    "reports": {
+      "title": "举报管理",
+      "description": "审核和管理被举报的提示词",
+      "prompt": "提示词",
+      "reason": "原因",
+      "reportedBy": "举报人",
+      "status": "状态",
+      "date": "日期",
+      "noReports": "暂无举报",
+      "viewPrompt": "查看提示词",
+      "markReviewed": "标记为已审核",
+      "dismiss": "驳回",
+      "markedReviewed": "举报已标记为已审核",
+      "dismissed": "举报已驳回",
+      "updateFailed": "更新举报失败",
+      "statuses": {
+        "pending": "待处理",
+        "reviewed": "已审核",
+        "dismissed": "已驳回"
+      }
     },
     "users": {
       "title": "用户管理",
@@ -496,5 +518,27 @@
     "browsePrompts": "浏览提示词",
     "categories": "分类",
     "createPrompt": "创建提示词"
+  },
+  "report": {
+    "report": "举报",
+    "reportPrompt": "举报提示词",
+    "reportDescription": "通过举报不当内容，帮助我们维护社区安全。",
+    "reason": "原因",
+    "selectReason": "选择原因",
+    "reasons": {
+      "spam": "垃圾信息或广告",
+      "inappropriate": "不当内容",
+      "copyright": "侵犯版权",
+      "misleading": "误导性或虚假信息",
+      "other": "其他"
+    },
+    "details": "详细说明",
+    "detailsPlaceholder": "请提供更多关于此举报的信息...",
+    "optional": "可选",
+    "submitReport": "提交举报",
+    "reportSubmitted": "举报提交成功",
+    "reportFailed": "举报提交失败",
+    "reasonRequired": "请选择举报原因",
+    "alreadyReported": "您已经举报过此提示词"
   }
 }

@@ -43,6 +43,7 @@ model User {
   subscriptions  CategorySubscription[]
   votes          PromptVote[]
   pinnedPrompts  PinnedPrompt[]
+  reports        PromptReport[]
 
   @@map("users")
 }
@@ -153,6 +154,7 @@ model Prompt {
   votes          PromptVote[]
   contributors   User[]          @relation("PromptContributors")
   pinnedBy       PinnedPrompt[]
+  reports        PromptReport[]
 
   @@index([authorId])
   @@index([categoryId])
@@ -293,6 +295,44 @@ model PinnedPrompt {
   @@id([userId, promptId])
   @@index([userId])
   @@map("pinned_prompts")
+}
+
+// ============================================
+// Prompt Reports
+// ============================================
+
+enum ReportReason {
+  SPAM
+  INAPPROPRIATE
+  COPYRIGHT
+  MISLEADING
+  OTHER
+}
+
+enum ReportStatus {
+  PENDING
+  REVIEWED
+  DISMISSED
+}
+
+model PromptReport {
+  id        String       @id @default(cuid())
+  reason    ReportReason
+  details   String?      @db.Text
+  status    ReportStatus @default(PENDING)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+
+  // Relations
+  promptId   String
+  prompt     Prompt @relation(fields: [promptId], references: [id], onDelete: Cascade)
+  reporterId String
+  reporter   User   @relation(fields: [reporterId], references: [id], onDelete: Cascade)
+
+  @@index([promptId])
+  @@index([reporterId])
+  @@index([status])
+  @@map("prompt_reports")
 }
 
 // ============================================

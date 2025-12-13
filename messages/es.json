@@ -253,7 +253,29 @@
       "categories": "Categorías",
       "tags": "Etiquetas",
       "webhooks": "Webhooks",
-      "import": "Importar Prompts de la Comunidad"
+      "prompts": "Prompts",
+      "reports": "Reportes"
+    },
+    "reports": {
+      "title": "Gestión de Reportes",
+      "description": "Revisa y gestiona los prompts reportados",
+      "prompt": "Prompt",
+      "reason": "Motivo",
+      "reportedBy": "Reportado por",
+      "status": "Estado",
+      "date": "Fecha",
+      "noReports": "No hay reportes aún",
+      "viewPrompt": "Ver Prompt",
+      "markReviewed": "Marcar como Revisado",
+      "dismiss": "Descartar",
+      "markedReviewed": "Reporte marcado como revisado",
+      "dismissed": "Reporte descartado",
+      "updateFailed": "Error al actualizar el reporte",
+      "statuses": {
+        "pending": "Pendiente",
+        "reviewed": "Revisado",
+        "dismissed": "Descartado"
+      }
     },
     "users": {
       "title": "Gestión de Usuarios",
@@ -519,5 +541,27 @@
     "browsePrompts": "Explorar Prompts",
     "categories": "Categorías",
     "createPrompt": "Crear Prompt"
+  },
+  "report": {
+    "report": "Reportar",
+    "reportPrompt": "Reportar Prompt",
+    "reportDescription": "Ayúdanos a mantener la comunidad segura reportando contenido inapropiado.",
+    "reason": "Motivo",
+    "selectReason": "Selecciona un motivo",
+    "reasons": {
+      "spam": "Spam o publicidad",
+      "inappropriate": "Contenido inapropiado",
+      "copyright": "Violación de derechos de autor",
+      "misleading": "Información engañosa o falsa",
+      "other": "Otro"
+    },
+    "details": "Detalles adicionales",
+    "detailsPlaceholder": "Proporciona más contexto sobre este reporte...",
+    "optional": "opcional",
+    "submitReport": "Enviar Reporte",
+    "reportSubmitted": "Reporte enviado exitosamente",
+    "reportFailed": "Error al enviar el reporte",
+    "reasonRequired": "Por favor selecciona un motivo",
+    "alreadyReported": "Ya has reportado este prompt"
   }
 }
