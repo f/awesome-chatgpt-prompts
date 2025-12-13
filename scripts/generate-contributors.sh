@@ -83,10 +83,11 @@ for row in remote_prompts:
     if act not in local_prompts:
         new_prompts.append(row)
     else:
-        # Check if content changed (compare all fields except contributor which might differ)
         local_row = local_prompts[act]
-        # Compare prompt content specifically
-        if row.get('prompt', '').strip() != local_row.get('prompt', '').strip():
+        # Check if content OR contributors changed
+        content_changed = row.get('prompt', '').strip() != local_row.get('prompt', '').strip()
+        contributors_changed = row.get('contributor', '').strip() != local_row.get('contributor', '').strip()
+        if content_changed or contributors_changed:
             updated_prompts.append((row, local_row))
 
 print(f"Found {len(new_prompts)} new prompts to add")
