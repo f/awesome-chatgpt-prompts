@@ -799,3 +799,16 @@ Contributed by [@lgastako](https://github.com/lgastako)
 
 </details>
 
+<details>
+<summary><strong>Fancy Title Generator</strong></summary>
+
+## Fancy Title Generator
+
+Contributed by [@sinanerdinc](https://github.com/sinanerdinc)
+
+```md
+I want you to act as a fancy title generator. I will type keywords via comma and you will reply with fancy titles. my first keywords are api,test,automation
+```
+
+</details>
+
