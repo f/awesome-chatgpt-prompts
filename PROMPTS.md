@@ -2924,3 +2924,16 @@ Contributed by [@f](https://github.com/f)
 
 </details>
 
+<details>
+<summary><strong>The Silent Standoff</strong></summary>
+
+## The Silent Standoff
+
+Contributed by [@f](https://github.com/f)
+
+```md
+High-angle top-down view of a dimly lit abandoned courtyard, cracked concrete ground, scattered old markings and faded impact dents, long eerie character shadows cast off-frame, no violence depicted, dark Teal palette with a strong golden beam, thick outlines, 2D animated cartoon look, flat shading, extreme contrast, atmospheric tension.
+```
+
+</details>
+
