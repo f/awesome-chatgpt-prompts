@@ -39,6 +39,7 @@ python3 << 'PYTHON_SCRIPT'
 import csv
 import subprocess
 import os
+import io
 
 project_dir = os.environ.get('PROJECT_DIR', '.')
 csv_file = os.path.join(project_dir, 'prompts.csv')
@@ -50,7 +51,6 @@ fieldnames = None
 with open(csv_file, 'r', newline='', encoding='utf-8') as f:
     # Normalize CRLF to LF
     content = f.read().replace('\r\n', '\n').replace('\r', '\n')
-    import io
     reader = csv.DictReader(io.StringIO(content))
     fieldnames = reader.fieldnames
     for row in reader:
