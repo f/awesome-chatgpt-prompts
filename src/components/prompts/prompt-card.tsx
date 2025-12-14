@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { formatDistanceToNow } from "@/lib/date";
-import { ArrowBigUp, Lock, Copy, ImageIcon } from "lucide-react";
+import { ArrowBigUp, Lock, Copy, ImageIcon, Play } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { CodeView } from "@/components/ui/code-view";
 import { toast } from "sonner";
@@ -159,32 +159,11 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
               {contentHasVariables ? renderContentWithVariables(prompt.content) : prompt.content}
             </pre>
           )}
-          <div className="absolute top-1.5 right-1.5 flex items-center gap-1 opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition-opacity">
-            {showPinButton && (
+          {showPinButton && (
+            <div className="absolute top-1.5 right-1.5 opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition-opacity">
               <PinButton promptId={prompt.id} initialPinned={isPinned} iconOnly />
-            )}
-            <button
-              onClick={handleCopyClick}
-              className="p-1 rounded bg-background/80 border hover:bg-accent"
-            >
-              <Copy className="h-3 w-3" />
-            </button>
-            {contentHasVariables ? (
-              <button
-                onClick={handleRunClick}
-                className="p-1 rounded bg-background/80 border hover:bg-accent"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
-              </button>
-            ) : (
-              <RunPromptButton 
-                content={prompt.content} 
-                size="icon" 
-                variant="outline" 
-                className="h-6 w-6 bg-background/80 [&_svg]:h-3 [&_svg]:w-3" 
-              />
-            )}
-          </div>
+            </div>
+          )}
         </div>
 
         {/* Variable fill modal */}
@@ -261,7 +240,27 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
               <ArrowBigUp className="h-3.5 w-3.5" />
               {prompt.voteCount}
             </span>
-            <span>{formatDistanceToNow(prompt.createdAt, locale)}</span>
+            <button
+              onClick={handleCopyClick}
+              className="p-1 rounded hover:bg-accent"
+            >
+              <Copy className="h-3 w-3" />
+            </button>
+            {contentHasVariables ? (
+              <button
+                onClick={handleRunClick}
+                className="h-6 w-6 rounded hover:bg-accent flex items-center justify-center"
+              >
+                <Play className="h-4 w-4" />
+              </button>
+            ) : (
+              <RunPromptButton 
+                content={prompt.content} 
+                size="icon" 
+                variant="ghost" 
+                className="h-6 w-6" 
+              />
+            )}
           </div>
         </div>
       </div>
