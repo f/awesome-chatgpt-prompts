@@ -119,6 +119,27 @@
       "structured": "Estructurado",
       "document": "Documento"
     },
+    "inputType": "Prompt del Usuario",
+    "outputType": "Respuesta de IA",
+    "inputTypeDescription": "Cómo está formateado tu prompt",
+    "outputTypeDescription": "Qué tipo de respuesta generará la IA",
+    "outputTypeStructuredNote": "Los prompts estructurados pueden producir varios tipos de salida",
+    "inputTypes": {
+      "text": "Prompt de Texto",
+      "structured": "Estructurado (JSON/YAML)"
+    },
+    "outputTypes": {
+      "text": "Texto",
+      "image": "Imagen",
+      "video": "Video",
+      "audio": "Audio/Voz"
+    },
+    "outputPreview": {
+      "text": "✨ La magia sucede aquí... ¡tu IA escribirá algo brillante!",
+      "imageUpload": "Sube una imagen de ejemplo",
+      "videoUpload": "Sube un video/GIF de ejemplo",
+      "audio": "Vista previa de audio"
+    },
     "insertVariable": "Insertar Variable",
     "variableName": "Nombre de Variable",
     "variableDefault": "Valor Predeterminado (opcional)",

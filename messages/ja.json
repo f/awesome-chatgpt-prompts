@@ -119,6 +119,27 @@
       "structured": "構造化",
       "document": "ドキュメント"
     },
+    "inputType": "ユーザープロンプト",
+    "outputType": "AI レスポンス",
+    "inputTypeDescription": "プロンプトのフォーマット",
+    "outputTypeDescription": "AIが生成するレスポンスの種類",
+    "outputTypeStructuredNote": "構造化プロンプトは様々な出力タイプを生成できます",
+    "inputTypes": {
+      "text": "テキストプロンプト",
+      "structured": "構造化 (JSON/YAML)"
+    },
+    "outputTypes": {
+      "text": "テキスト",
+      "image": "画像",
+      "video": "動画",
+      "audio": "音声/ボイス"
+    },
+    "outputPreview": {
+      "text": "✨ ここで魔法が起こります... AIが素晴らしいものを書きます！",
+      "imageUpload": "サンプル画像をアップロード",
+      "videoUpload": "サンプル動画/GIFをアップロード",
+      "audio": "音声出力プレビュー"
+    },
     "insertVariable": "変数を挿入",
     "variableName": "変数名",
     "variableDefault": "デフォルト値（オプション）",

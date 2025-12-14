@@ -119,6 +119,27 @@
       "structured": "منظم",
       "document": "مستند"
     },
+    "inputType": "أمر المستخدم",
+    "outputType": "استجابة الذكاء الاصطناعي",
+    "inputTypeDescription": "كيف يتم تنسيق الأمر الخاص بك",
+    "outputTypeDescription": "نوع الاستجابة التي سيولدها الذكاء الاصطناعي",
+    "outputTypeStructuredNote": "الأوامر المنظمة يمكن أن تنتج أنواع مختلفة من المخرجات",
+    "inputTypes": {
+      "text": "أمر نصي",
+      "structured": "منظم (JSON/YAML)"
+    },
+    "outputTypes": {
+      "text": "نص",
+      "image": "صورة",
+      "video": "فيديو",
+      "audio": "صوت/صوتي"
+    },
+    "outputPreview": {
+      "text": "✨ السحر يحدث هنا... الذكاء الاصطناعي سيكتب شيئاً رائعاً!",
+      "imageUpload": "ارفع صورة مثال",
+      "videoUpload": "ارفع فيديو/GIF مثال",
+      "audio": "معاينة الإخراج الصوتي"
+    },
     "insertVariable": "إدراج متغير",
     "variableName": "اسم المتغير",
     "variableDefault": "القيمة الافتراضية (اختياري)",

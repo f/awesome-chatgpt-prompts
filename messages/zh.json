@@ -119,6 +119,27 @@
       "structured": "结构化",
       "document": "文档"
     },
+    "inputType": "用户提示词",
+    "outputType": "AI 响应",
+    "inputTypeDescription": "你的提示词格式",
+    "outputTypeDescription": "AI 将生成的响应类型",
+    "outputTypeStructuredNote": "结构化提示词可以产生多种输出类型",
+    "inputTypes": {
+      "text": "文本提示词",
+      "structured": "结构化 (JSON/YAML)"
+    },
+    "outputTypes": {
+      "text": "文本",
+      "image": "图片",
+      "video": "视频",
+      "audio": "音频/语音"
+    },
+    "outputPreview": {
+      "text": "✨ 魔法在这里发生... 你的 AI 将写出精彩的内容！",
+      "imageUpload": "上传示例图片",
+      "videoUpload": "上传示例视频/GIF",
+      "audio": "音频输出预览"
+    },
     "structuredFormat": "格式",
     "structuredFormatDescription": "选择结构化提示词的格式",
     "structuredContentDescription": "定义你的工作流、代理或管道配置",
