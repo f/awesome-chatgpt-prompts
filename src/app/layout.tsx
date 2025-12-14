@@ -5,6 +5,7 @@ import { getMessages, getLocale } from "next-intl/server";
 import { Providers } from "@/components/providers";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { LocaleDetector } from "@/components/providers/locale-detector";
 import { getConfig } from "@/lib/config";
 import { isRtlLocale } from "@/lib/i18n/config";
 import "./globals.css";
@@ -112,6 +113,7 @@ export default async function RootLayout({
           </>
         )}
         <Providers locale={locale} messages={messages} theme={config.theme} branding={{ ...config.branding, useCloneBranding: config.homepage?.useCloneBranding }}>
+          <LocaleDetector />
           <div className="relative min-h-screen flex flex-col">
             <Header authProvider={config.auth.provider} allowRegistration={config.auth.allowRegistration} />
             <main className="flex-1">{children}</main>
