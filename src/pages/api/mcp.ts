@@ -1,13 +1,27 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
-import { ElicitResultSchema, type PrimitiveSchemaDefinition } from "@modelcontextprotocol/sdk/types.js";
+import {
+  ElicitResultSchema,
+  ListPromptsRequestSchema,
+  GetPromptRequestSchema,
+  type PrimitiveSchemaDefinition,
+} from "@modelcontextprotocol/sdk/types.js";
 import { z } from "zod";
 import { db } from "@/lib/db";
 
 interface ExtractedVariable {
   name: string;
   defaultValue?: string;
+}
+
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/[\s_-]+/g, "-")
+    .replace(/^-+|-+$/g, "");
 }
 
 function extractVariables(content: string): ExtractedVariable[] {
@@ -35,10 +49,136 @@ export const config = {
   },
 };
 
-function createServer() {
-  const server = new McpServer({
-    name: "prompts-chat",
-    version: "1.0.0",
+interface ServerOptions {
+  categories?: string[];
+  tags?: string[];
+  username?: string;
+}
+
+function createServer(options: ServerOptions = {}) {
+  const server = new McpServer(
+    {
+      name: "prompts-chat",
+      version: "1.0.0",
+    },
+    {
+      capabilities: {
+        prompts: { listChanged: false },
+      },
+    }
+  );
+
+  // Build category/tag filter for prompts
+  const promptFilter: Record<string, unknown> = {
+    isPrivate: false,
+    isUnlisted: false,
+    deletedAt: null,
+  };
+
+  if (options.categories && options.categories.length > 0) {
+    promptFilter.category = {
+      slug: { in: options.categories },
+    };
+  }
+
+  if (options.tags && options.tags.length > 0) {
+    promptFilter.tags = {
+      some: {
+        tag: { slug: { in: options.tags } },
+      },
+    };
+  }
+
+  if (options.username) {
+    promptFilter.author = {
+      username: options.username,
+    };
+  }
+
+  // Dynamic MCP Prompts - expose database prompts as MCP prompts
+  server.server.setRequestHandler(ListPromptsRequestSchema, async (request) => {
+    const cursor = request.params?.cursor;
+    const page = cursor ? parseInt(cursor, 10) : 1;
+    const perPage = 20;
+
+    const prompts = await db.prompt.findMany({
+      where: promptFilter,
+      skip: (page - 1) * perPage,
+      take: perPage + 1, // fetch one extra to check if there's more
+      orderBy: { createdAt: "desc" },
+      select: {
+        id: true,
+        title: true,
+        description: true,
+        content: true,
+      },
+    });
+
+    const hasMore = prompts.length > perPage;
+    const results = hasMore ? prompts.slice(0, perPage) : prompts;
+
+    return {
+      prompts: results.map((p) => {
+        const variables = extractVariables(p.content);
+        return {
+          name: slugify(p.title),
+          title: p.title,
+          description: p.description || undefined,
+          arguments: variables.map((v) => ({
+            name: v.name,
+            description: v.defaultValue ? `Default: ${v.defaultValue}` : undefined,
+            required: !v.defaultValue,
+          })),
+        };
+      }),
+      nextCursor: hasMore ? String(page + 1) : undefined,
+    };
+  });
+
+  server.server.setRequestHandler(GetPromptRequestSchema, async (request) => {
+    const promptSlug = request.params.name;
+    const args = request.params.arguments || {};
+
+    // Fetch all matching prompts and find by slug
+    const prompts = await db.prompt.findMany({
+      where: promptFilter,
+      select: {
+        title: true,
+        description: true,
+        content: true,
+      },
+    });
+
+    const prompt = prompts.find((p) => slugify(p.title) === promptSlug);
+
+    if (!prompt) {
+      throw new Error(`Prompt not found: ${promptSlug}`);
+    }
+
+    // Replace variables in content
+    let filledContent = prompt.content;
+    const variables = extractVariables(prompt.content);
+    
+    for (const variable of variables) {
+      const value = args[variable.name] ?? variable.defaultValue ?? `\${${variable.name}}`;
+      filledContent = filledContent.replace(
+        new RegExp(`\\$\\{${variable.name}(?::[^}]*)?\\}`, "g"),
+        String(value)
+      );
+    }
+
+    return {
+      description: prompt.description || prompt.title,
+      messages: [
+        {
+          role: "user" as const,
+          content: {
+            type: "text" as const,
+            text: filledContent,
+          },
+        },
+      ],
+    };
   });
 
   server.registerTool(
@@ -331,6 +471,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       version: "1.0.0",
       description: "MCP server for prompts.chat - Search and discover AI prompts",
       protocol: "Model Context Protocol (MCP)",
+      capabilities: {
+        tools: true,
+        prompts: true,
+      },
       tools: [
         {
           name: "search_prompts",
@@ -341,6 +485,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           description: "Get a prompt by ID with variable elicitation support.",
         },
       ],
+      prompts: {
+        description: "All public prompts are available as MCP prompts. Use prompts/list to browse and prompts/get to retrieve with variable substitution.",
+        usage: "Access via slash commands in MCP clients (e.g., /prompt-id)",
+      },
       endpoint: "/api/mcp",
     });
   }
@@ -357,7 +505,24 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
   }
 
-  const server = createServer();
+  // Parse query parameters for filtering
+  const url = new URL(req.url || "", `http://${req.headers.host}`);
+  const categoriesParam = url.searchParams.get("categories");
+  const tagsParam = url.searchParams.get("tags");
+  const usernameParam = url.searchParams.get("username");
+
+  const serverOptions: ServerOptions = {};
+  if (categoriesParam) {
+    serverOptions.categories = categoriesParam.split(",").map((c) => c.trim());
+  }
+  if (tagsParam) {
+    serverOptions.tags = tagsParam.split(",").map((t) => t.trim());
+  }
+  if (usernameParam) {
+    serverOptions.username = usernameParam.trim();
+  }
+
+  const server = createServer(serverOptions);
 
   try {
     const transport = new StreamableHTTPServerTransport({

@@ -72,6 +72,77 @@ export default function ApiDocsPage() {
           </p>
         </section>
 
+        {/* MCP Prompts */}
+        <section className="space-y-4">
+          <h2 className="text-lg font-semibold flex items-center gap-2">
+            <Terminal className="h-5 w-5" />
+            MCP Prompts
+          </h2>
+          <p className="text-muted-foreground">
+            All public prompts are exposed as native MCP prompts. This allows MCP clients to list 
+            and use prompts directly via slash commands or prompt pickers. You can filter prompts 
+            by category or tag using URL query parameters.
+          </p>
+          
+          <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre>{`# Filter by username (someone's prompts)
+"prompts-chat": {
+  "url": "https://prompts.chat/api/mcp?username=f"
+}
+
+# Filter by categories
+"prompts-chat": {
+  "url": "https://prompts.chat/api/mcp?categories=coding,marketing"
+}
+
+# Filter by tags
+"prompts-chat": {
+  "url": "https://prompts.chat/api/mcp?tags=chatgpt,writing"
+}
+
+# Combine filters
+"prompts-chat": {
+  "url": "https://prompts.chat/api/mcp?username=f&categories=coding&tags=js"
+}`}</pre>
+          </div>
+          
+          <div className="bg-muted/50 rounded-lg p-4 text-sm space-y-3">
+            <div>
+              <p className="font-medium">prompts/list</p>
+              <p className="text-muted-foreground">Browse all available prompts with pagination support.</p>
+            </div>
+            <div>
+              <p className="font-medium">prompts/get</p>
+              <p className="text-muted-foreground">
+                Retrieve a prompt by ID. Variables ({"${name}"} or {"${name:default}"}) are automatically 
+                substituted with provided arguments.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre>{`# List prompts
+curl -X POST https://prompts.chat/api/mcp \\
+  -H "Content-Type: application/json" \\
+  -H "Accept: application/json, text/event-stream" \\
+  -d '{"jsonrpc": "2.0", "id": 1, "method": "prompts/list"}'
+
+# Get a specific prompt with arguments
+curl -X POST https://prompts.chat/api/mcp \\
+  -H "Content-Type: application/json" \\
+  -H "Accept: application/json, text/event-stream" \\
+  -d '{
+    "jsonrpc": "2.0",
+    "id": 2,
+    "method": "prompts/get",
+    "params": {
+      "name": "code-review-assistant",
+      "arguments": { "topic": "AI safety" }
+    }
+  }'`}</pre>
+          </div>
+        </section>
+
         {/* Available Tools */}
         <section className="space-y-6">
           <h2 className="text-lg font-semibold flex items-center gap-2">
