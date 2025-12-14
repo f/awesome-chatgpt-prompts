@@ -90,9 +90,9 @@ export default async function ApiDocsPage() {
           </p>
           
           <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre>{`# Filter by username (someone's prompts)
+            <pre>{`# Filter by users (one or more usernames)
 "prompts-chat": {
-  "url": "${baseUrl}/api/mcp?username=f"
+  "url": "${baseUrl}/api/mcp?users=f,linus"
 }
 
 # Filter by categories
@@ -107,7 +107,7 @@ export default async function ApiDocsPage() {
 
 # Combine filters
 "prompts-chat": {
-  "url": "${baseUrl}/api/mcp?username=f&categories=coding&tags=js"
+  "url": "${baseUrl}/api/mcp?users=f&categories=coding&tags=js"
 }`}</pre>
           </div>
           

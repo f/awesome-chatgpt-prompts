@@ -52,7 +52,7 @@ export const config = {
 interface ServerOptions {
   categories?: string[];
   tags?: string[];
-  username?: string;
+  users?: string[];
 }
 
 function createServer(options: ServerOptions = {}) {
@@ -89,9 +89,9 @@ function createServer(options: ServerOptions = {}) {
     };
   }
 
-  if (options.username) {
+  if (options.users && options.users.length > 0) {
     promptFilter.author = {
-      username: options.username,
+      username: { in: options.users },
     };
   }
 
@@ -509,7 +509,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const url = new URL(req.url || "", `http://${req.headers.host}`);
   const categoriesParam = url.searchParams.get("categories");
   const tagsParam = url.searchParams.get("tags");
-  const usernameParam = url.searchParams.get("username");
+  const usersParam = url.searchParams.get("users");
 
   const serverOptions: ServerOptions = {};
   if (categoriesParam) {
@@ -518,8 +518,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (tagsParam) {
     serverOptions.tags = tagsParam.split(",").map((t) => t.trim());
   }
-  if (usernameParam) {
-    serverOptions.username = usernameParam.trim();
+  if (usersParam) {
+    serverOptions.users = usersParam.split(",").map((u) => u.trim());
   }
 
   const server = createServer(serverOptions);
