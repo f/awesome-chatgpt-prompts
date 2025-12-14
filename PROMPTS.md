@@ -5164,3 +5164,16 @@ Rules:
 
 </details>
 
+<details>
+<summary><strong>Turkish Cats hanging out nearby of Galata Tower </strong></summary>
+
+## Turkish Cats hanging out nearby of Galata Tower 
+
+Contributed by [@yunusozbucak](https://github.com/yunusozbucak)
+
+```md
+Turkish Cats hanging out nearby of Galata Tower, vertical 
+```
+
+</details>
+
