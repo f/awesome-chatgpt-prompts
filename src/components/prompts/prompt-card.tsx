@@ -71,7 +71,8 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
   const [modalMode, setModalMode] = useState<"copy" | "run">("copy");
   const [imageError, setImageError] = useState(false);
 
-  const hasMediaBackground = prompt.type === "IMAGE" || (prompt.type === "STRUCTURED" && !!prompt.mediaUrl);
+  const isStructuredInput = !!prompt.structuredFormat;
+  const hasMediaBackground = prompt.type === "IMAGE" || (isStructuredInput && !!prompt.mediaUrl);
   const contentHasVariables = hasVariables(prompt.content);
 
   const copyToClipboard = async (content: string) => {
@@ -147,7 +148,7 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
 
         {/* Content Preview - smaller for image prompts */}
         <div className="relative flex-1 mb-3 min-h-0">
-          {prompt.type === "STRUCTURED" ? (
+          {isStructuredInput ? (
             <CodeView 
               content={prompt.structuredFormat?.toLowerCase() === "json" ? prettifyJson(prompt.content) : prompt.content} 
               language={(prompt.structuredFormat?.toLowerCase() as "json" | "yaml") || "json"}

@@ -376,7 +376,7 @@ export default async function PromptPage({ params }: PromptPageProps) {
                 </span>
               </div>
             )}
-            {prompt.type === "STRUCTURED" ? (
+            {prompt.structuredFormat ? (
               <InteractivePromptContent 
                 content={prompt.content} 
                 isStructured={true}

@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Loader2, Upload, X } from "lucide-react";
+import { Loader2, Upload, X, ArrowDown, Play, Image as ImageIcon, Video, Volume2, Paperclip, Search, Brain } from "lucide-react";
 import { VariableToolbar } from "./variable-toolbar";
 import { VariableWarning } from "./variable-warning";
 import { VariableHint } from "./variable-hint";
@@ -195,7 +195,7 @@ const createPromptSchema = (t: (key: string) => string) => z.object({
   title: z.string().min(1, t("titleRequired")).max(200),
   description: z.string().max(500).optional(),
   content: z.string().min(1, t("contentRequired")),
-  type: z.enum(["TEXT", "IMAGE", "VIDEO", "AUDIO", "STRUCTURED"]),
+  type: z.enum(["TEXT", "IMAGE", "VIDEO", "AUDIO"]), // Output type only
   structuredFormat: z.enum(["JSON", "YAML"]).optional(),
   categoryId: z.string().optional(),
   tagIds: z.array(z.string()),
@@ -254,7 +254,7 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
         ? prettifyJson(initialData.content) 
         : (initialData?.content || ""),
       type: initialData?.type || "TEXT",
-      structuredFormat: initialData?.structuredFormat || "JSON",
+      structuredFormat: initialData?.structuredFormat || undefined,
       categoryId: initialData?.categoryId || "",
       tagIds: initialData?.tagIds || [],
       isPrivate: initialData?.isPrivate || false,
@@ -268,6 +268,10 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
   const selectedTags = form.watch("tagIds");
   const promptType = form.watch("type");
   const structuredFormat = form.watch("structuredFormat");
+  const isStructuredInput = !!structuredFormat;
+  const [tagSearch, setTagSearch] = useState("");
+  const [tagDropdownOpen, setTagDropdownOpen] = useState(false);
+  const tagInputRef = useRef<HTMLInputElement>(null);
   const requiresMediaUpload = form.watch("requiresMediaUpload");
   const promptContent = form.watch("content");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -292,7 +296,7 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
     title: string;
     description: string;
     content: string;
-    type: "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "STRUCTURED";
+    type: "TEXT" | "IMAGE" | "VIDEO" | "AUDIO";
     structuredFormat?: "JSON" | "YAML";
     categoryId?: string;
     tagIds: string[];
@@ -341,7 +345,7 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
 
   const insertVariable = (variable: string) => {
     // For structured prompts using Monaco editor
-    if (promptType === "STRUCTURED" && codeEditorRef.current) {
+    if (isStructuredInput && codeEditorRef.current) {
       codeEditorRef.current.insertAtCursor(variable);
       return;
     }
@@ -380,6 +384,7 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...data,
+          structuredFormat: data.structuredFormat || null, // Explicitly send null to clear
           contributorIds: contributors.map((c) => c.id),
         }),
       });
@@ -444,250 +449,418 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
             </div>
           </div>
 
-        {/* Row 1: Title + Category */}
-        <div className="flex items-start gap-4">
+        {/* ===== METADATA SECTION ===== */}
+        <div className="space-y-4 pb-6 border-b">
+          {/* Row 1: Title + Category */}
+          <div className="flex items-start gap-4">
+            <FormField
+              control={form.control}
+              name="title"
+              render={({ field }) => (
+                <FormItem className="flex-1">
+                  <FormLabel>{t("promptTitle")}</FormLabel>
+                  <FormControl>
+                    <Input placeholder={t("titlePlaceholder")} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="categoryId"
+              render={({ field }) => (
+                <FormItem className="w-64">
+                  <FormLabel>{t("promptCategory")}</FormLabel>
+                  <Select 
+                    onValueChange={(value) => field.onChange(value === "__none__" ? undefined : value)} 
+                    value={field.value || "__none__"}
+                  >
+                    <FormControl>
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder={t("selectCategory")} />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="__none__">{t("noCategory")}</SelectItem>
+                      {categories
+                        .filter((c) => c.id && !c.parentId)
+                        .map((parent) => (
+                          <div key={parent.id}>
+                            <SelectItem value={parent.id} className="font-medium">
+                              {parent.name}
+                            </SelectItem>
+                            {categories
+                              .filter((c) => c.parentId === parent.id)
+                              .map((child) => (
+                                <SelectItem key={child.id} value={child.id} className="pl-6 text-muted-foreground">
+                                  ↳ {child.name}
+                                </SelectItem>
+                              ))}
+                          </div>
+                        ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
+          {/* Row 2: Description */}
           <FormField
             control={form.control}
-            name="title"
+            name="description"
             render={({ field }) => (
-              <FormItem className="flex-1">
-                <FormLabel>{t("promptTitle")}</FormLabel>
+              <FormItem>
+                <FormLabel>{t("promptDescription")}</FormLabel>
                 <FormControl>
-                  <Input placeholder={t("titlePlaceholder")} {...field} />
+                  <Textarea
+                    placeholder={t("descriptionPlaceholder")}
+                    className="resize-none"
+                    rows={2}
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
+
+          {/* Tags with Search Autocomplete */}
           <FormField
             control={form.control}
-            name="categoryId"
-            render={({ field }) => (
-              <FormItem className="w-64">
-                <FormLabel>{t("promptCategory")}</FormLabel>
-                <Select 
-                  onValueChange={(value) => field.onChange(value === "__none__" ? undefined : value)} 
-                  value={field.value || "__none__"}
-                >
-                  <FormControl>
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder={t("selectCategory")} />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="__none__">{t("noCategory")}</SelectItem>
-                    {categories
-                      .filter((c) => c.id && !c.parentId)
-                      .map((parent) => (
-                        <div key={parent.id}>
-                          <SelectItem value={parent.id} className="font-medium">
-                            {parent.name}
-                          </SelectItem>
-                          {categories
-                            .filter((c) => c.parentId === parent.id)
-                            .map((child) => (
-                              <SelectItem key={child.id} value={child.id} className="pl-6 text-muted-foreground">
-                                ↳ {child.name}
-                              </SelectItem>
-                            ))}
-                        </div>
+            name="tagIds"
+            render={() => {
+              const filteredTags = tags.filter(
+                (tag) =>
+                  !selectedTags.includes(tag.id) &&
+                  tag.name.toLowerCase().includes(tagSearch.toLowerCase())
+              );
+              const selectedTagObjects = tags.filter((tag) => selectedTags.includes(tag.id));
+
+              return (
+                <FormItem>
+                  <FormLabel>{t("promptTags")}</FormLabel>
+                  {/* Selected tags */}
+                  {selectedTagObjects.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mb-2">
+                      {selectedTagObjects.map((tag) => (
+                        <Badge
+                          key={tag.id}
+                          style={{ backgroundColor: tag.color, color: "white" }}
+                          className="pr-1 flex items-center gap-1"
+                        >
+                          {tag.name}
+                          <button
+                            type="button"
+                            onClick={() => toggleTag(tag.id)}
+                            className="ml-1 rounded-full hover:bg-white/20 p-0.5"
+                          >
+                            <X className="h-3 w-3" />
+                          </button>
+                        </Badge>
                       ))}
-                  </SelectContent>
-                </Select>
+                    </div>
+                  )}
+                  {/* Search input */}
+                  <div className="relative">
+                    <div className="relative">
+                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                      <Input
+                        ref={tagInputRef}
+                        type="text"
+                        placeholder={t("searchTags")}
+                        value={tagSearch}
+                        onChange={(e) => {
+                          setTagSearch(e.target.value);
+                          setTagDropdownOpen(true);
+                        }}
+                        onFocus={() => setTagDropdownOpen(true)}
+                        onBlur={() => setTimeout(() => setTagDropdownOpen(false), 150)}
+                        className="pl-9"
+                        autoComplete="off"
+                        autoCorrect="off"
+                        autoCapitalize="none"
+                        spellCheck={false}
+                        data-1p-ignore
+                        data-lpignore="true"
+                        data-form-type="other"
+                      />
+                    </div>
+                    {/* Dropdown suggestions */}
+                    {tagDropdownOpen && filteredTags.length > 0 && (
+                      <div className="absolute z-10 w-full mt-1 bg-popover border rounded-md shadow-md max-h-48 overflow-auto">
+                        {filteredTags.map((tag) => (
+                          <button
+                            key={tag.id}
+                            type="button"
+                            onClick={() => {
+                              toggleTag(tag.id);
+                              setTagSearch("");
+                              tagInputRef.current?.focus();
+                            }}
+                            className="w-full px-3 py-2 text-left text-sm hover:bg-muted flex items-center gap-2"
+                          >
+                            <span
+                              className="w-3 h-3 rounded-full"
+                              style={{ backgroundColor: tag.color }}
+                            />
+                            {tag.name}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                    {tagDropdownOpen && tagSearch && filteredTags.length === 0 && (
+                      <div className="absolute z-10 w-full mt-1 bg-popover border rounded-md shadow-md p-3 text-sm text-muted-foreground">
+                        {t("noTagsFound")}
+                      </div>
+                    )}
+                  </div>
+                  <FormMessage />
+                </FormItem>
+              );
+            }}
+          />
+
+          {/* Contributors */}
+          <div className="space-y-2">
+            <label className="text-sm font-medium block">{t("promptContributors")}</label>
+            <p className="text-xs text-muted-foreground">{t("contributorsDescription")}</p>
+            <ContributorSearch
+              selectedUsers={contributors}
+              onSelect={(user) => setContributors((prev) => [...prev, user])}
+              onRemove={(userId) => setContributors((prev) => prev.filter((u) => u.id !== userId))}
+            />
+          </div>
+        </div>
+
+        {/* ===== INPUT SECTION ===== */}
+        <div className="space-y-4 py-6">
+          <div className="flex items-center gap-2">
+            <h2 className="text-base font-semibold">{t("inputType")}</h2>
+          </div>
+          
+          {/* Input Type & Format selectors */}
+          <div className="flex items-center gap-3">
+            <Select 
+              value={isStructuredInput ? "STRUCTURED" : "TEXT"} 
+              onValueChange={(v) => {
+                if (v === "STRUCTURED") {
+                  form.setValue("structuredFormat", "JSON");
+                } else {
+                  form.setValue("structuredFormat", undefined);
+                }
+              }}
+            >
+              <SelectTrigger className="h-9 w-48">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="TEXT">{t("inputTypes.text")}</SelectItem>
+                <SelectItem value="STRUCTURED">{t("inputTypes.structured")}</SelectItem>
+              </SelectContent>
+            </Select>
+            {isStructuredInput && (
+              <Select value={structuredFormat || "JSON"} onValueChange={(v) => form.setValue("structuredFormat", v as any)}>
+                <SelectTrigger className="h-9 w-24">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="JSON">JSON</SelectItem>
+                  <SelectItem value="YAML">YAML</SelectItem>
+                </SelectContent>
+              </Select>
+            )}
+            {/* Media upload toggle */}
+            <div className="flex items-center gap-2 ml-auto">
+              <Switch
+                id="media-upload"
+                checked={requiresMediaUpload}
+                onCheckedChange={(v) => form.setValue("requiresMediaUpload", v)}
+              />
+              <label htmlFor="media-upload" className="text-sm cursor-pointer">
+                {t("requiresMediaUpload")}
+              </label>
+            </div>
+          </div>
+
+          {/* Media type & count - grouped buttons */}
+          {requiresMediaUpload && (
+            <div className="flex items-center gap-3 p-3 rounded-md border bg-muted/30">
+              <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                <Paperclip className="h-4 w-4" />
+                <span>{t("attachedMediaType")}:</span>
+              </div>
+              <div className="inline-flex rounded-md border divide-x">
+                {(["IMAGE", "VIDEO", "DOCUMENT"] as const).map((type) => (
+                  <button
+                    key={type}
+                    type="button"
+                    onClick={() => form.setValue("requiredMediaType", type)}
+                    className={`px-3 py-1.5 text-xs font-medium transition-colors first:rounded-l-md last:rounded-r-md ${
+                      form.watch("requiredMediaType") === type
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-background hover:bg-muted"
+                    }`}
+                  >
+                    {t(`types.${type.toLowerCase()}`)}
+                  </button>
+                ))}
+              </div>
+              <div className="flex items-center gap-1">
+                <span className="text-xs text-muted-foreground">×</span>
+                <Input 
+                  type="number" 
+                  min={1} 
+                  max={10}
+                  value={form.watch("requiredMediaCount")}
+                  onChange={(e) => form.setValue("requiredMediaCount", parseInt(e.target.value) || 1)}
+                  className="h-7 w-16 text-xs"
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Prompt Content */}
+          <FormField
+            control={form.control}
+            name="content"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  {isStructuredInput ? (
+                    <div className="rounded-md border overflow-hidden">
+                      <VariableToolbar onInsert={insertVariable} getSelectedText={getSelectedText} />
+                      <CodeEditor
+                        ref={codeEditorRef}
+                        value={field.value}
+                        onChange={field.onChange}
+                        language={structuredFormat?.toLowerCase() as "json" | "yaml" || "json"}
+                        placeholder={
+                          structuredFormat === "JSON"
+                            ? '{\n  "name": "My Workflow",\n  "steps": []\n}'
+                            : 'name: My Workflow\nsteps:\n  - step: first\n    prompt: "..."'
+                        }
+                        minHeight="250px"
+                        className="border-0 rounded-none"
+                      />
+                    </div>
+                  ) : (
+                    <div className="rounded-md border overflow-hidden">
+                      <VariableToolbar onInsert={insertVariable} getSelectedText={getSelectedText} />
+                      <Textarea
+                        ref={(el) => {
+                          textareaRef.current = el;
+                          if (typeof field.ref === 'function') field.ref(el);
+                        }}
+                        name={field.name}
+                        value={field.value}
+                        onChange={field.onChange}
+                        onBlur={field.onBlur}
+                        placeholder={t("contentPlaceholder")}
+                        className="min-h-[150px] font-mono border-0 rounded-none focus-visible:ring-0"
+                      />
+                    </div>
+                  )}
+                </FormControl>
+                <VariableHint content={field.value} onContentChange={(newContent) => form.setValue("content", newContent)} />
                 <FormMessage />
               </FormItem>
             )}
           />
+
+          {/* Variable detection warning */}
+          <VariableWarning
+            content={promptContent}
+            onConvert={(converted) => form.setValue("content", converted)}
+          />
+        </div>
+
+        {/* ===== LLM PROCESSING ARROW ===== */}
+        <div className="flex flex-col items-center py-4">
+          <div className="flex items-center gap-2 text-muted-foreground">
+            <div className="h-px w-16 bg-border" />
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted text-xs font-medium">
+              <Brain className="h-3.5 w-3.5" />
+              <span>After AI processing...</span>
+            </div>
+            <div className="h-px w-16 bg-border" />
+          </div>
+        </div>
+
+        {/* ===== OUTPUT SECTION ===== */}
+        <div className="space-y-4 py-6 border-t">
+          <div className="flex items-center gap-2">
+            <h2 className="text-base font-semibold">{t("outputType")}</h2>
+          </div>
+          
+          {/* Output Type selector as grouped buttons */}
+          <div className="inline-flex rounded-md border divide-x">
+            {(["TEXT", "IMAGE", "VIDEO", "AUDIO"] as const).map((type) => (
+              <button
+                key={type}
+                type="button"
+                onClick={() => form.setValue("type", type)}
+                className={`px-4 py-2 text-sm font-medium transition-colors first:rounded-l-md last:rounded-r-md flex items-center gap-2 ${
+                  promptType === type
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-background hover:bg-muted"
+                }`}
+              >
+                {type === "TEXT" && <span className="text-xs">Aa</span>}
+                {type === "IMAGE" && <ImageIcon className="h-4 w-4" />}
+                {type === "VIDEO" && <Video className="h-4 w-4" />}
+                {type === "AUDIO" && <Volume2 className="h-4 w-4" />}
+                {t(`outputTypes.${type.toLowerCase()}`)}
+              </button>
+            ))}
           </div>
 
-        {/* Row 2: Description */}
-        <FormField
-          control={form.control}
-          name="description"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>{t("promptDescription")}</FormLabel>
-              <FormControl>
-                <Textarea
-                  placeholder={t("descriptionPlaceholder")}
-                  className="resize-none"
-                  rows={2}
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Row 3: Content with Type/Format controls */}
-        <FormField
-          control={form.control}
-          name="content"
-          render={({ field }) => (
-            <FormItem>
-              <div className="flex items-center justify-between mb-2">
-                <FormLabel className="mb-0">{t("promptContent")}</FormLabel>
-                <div className="flex items-center gap-2">
-                  {/* Type selector */}
-                  <Select value={promptType} onValueChange={(v) => form.setValue("type", v as any)}>
-                    <SelectTrigger className="h-8 w-32 text-xs">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="TEXT">{t("types.text")}</SelectItem>
-                      <SelectItem value="STRUCTURED">{t("types.structured")}</SelectItem>
-                      <SelectItem value="IMAGE">{t("types.image")}</SelectItem>
-                      <SelectItem value="VIDEO">{t("types.video")}</SelectItem>
-                      <SelectItem value="AUDIO">{t("types.audio")}</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  {/* Format selector (only for STRUCTURED) */}
-                  {promptType === "STRUCTURED" && (
-                    <Select value={structuredFormat || "JSON"} onValueChange={(v) => form.setValue("structuredFormat", v as any)}>
-                      <SelectTrigger className="h-8 w-20 text-xs">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="JSON">JSON</SelectItem>
-                        <SelectItem value="YAML">YAML</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  )}
-                  {/* Media upload toggle */}
-                  <div className="flex items-center gap-1.5 ml-2 pl-2 border-l">
-                    <Switch
-                      id="media-upload"
-                      checked={requiresMediaUpload}
-                      onCheckedChange={(v) => form.setValue("requiresMediaUpload", v)}
-                      className="scale-75"
-                    />
-                    <label htmlFor="media-upload" className="text-xs text-muted-foreground cursor-pointer">
-                      {t("requiresMediaUpload")}
-                    </label>
+          {/* Output Preview based on type */}
+          <div className="rounded-lg border bg-muted/20 p-4">
+            {promptType === "TEXT" && (
+              <div className="text-muted-foreground/50 italic text-sm">
+                {t("outputPreview.text")}
+              </div>
+            )}
+            {promptType === "IMAGE" && (
+              <div className="space-y-3">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <ImageIcon className="h-4 w-4" />
+                  <span>{t("outputPreview.imageUpload")}</span>
+                </div>
+                <MediaField form={form} t={t} />
+              </div>
+            )}
+            {promptType === "VIDEO" && (
+              <div className="space-y-3">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Video className="h-4 w-4" />
+                  <span>{t("outputPreview.videoUpload")}</span>
+                </div>
+                <MediaField form={form} t={t} />
+              </div>
+            )}
+            {promptType === "AUDIO" && (
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Volume2 className="h-4 w-4" />
+                  <span>{t("outputPreview.audio")}</span>
+                </div>
+                {/* Fake audio player bar */}
+                <div className="flex items-center gap-3 p-3 rounded-md bg-muted/50">
+                  <button type="button" className="h-8 w-8 rounded-full bg-muted flex items-center justify-center cursor-not-allowed" disabled>
+                    <Play className="h-4 w-4 text-muted-foreground/50" />
+                  </button>
+                  <div className="flex-1 h-1.5 bg-muted-foreground/20 rounded-full">
+                    <div className="h-full w-0 bg-muted-foreground/30 rounded-full" />
                   </div>
+                  <span className="text-xs text-muted-foreground/50">0:00</span>
                 </div>
               </div>
-              <FormControl>
-                {promptType === "STRUCTURED" ? (
-                  <div className="rounded-md border overflow-hidden">
-                    <VariableToolbar onInsert={insertVariable} getSelectedText={getSelectedText} />
-                    <CodeEditor
-                      ref={codeEditorRef}
-                      value={field.value}
-                      onChange={field.onChange}
-                      language={structuredFormat?.toLowerCase() as "json" | "yaml" || "json"}
-                      placeholder={
-                        structuredFormat === "JSON"
-                          ? '{\n  "name": "My Workflow",\n  "steps": []\n}'
-                          : 'name: My Workflow\nsteps:\n  - step: first\n    prompt: "..."'
-                      }
-                      minHeight="300px"
-                      className="border-0 rounded-none"
-                    />
-                  </div>
-                ) : (
-                  <div className="rounded-md border overflow-hidden">
-                    <VariableToolbar onInsert={insertVariable} getSelectedText={getSelectedText} />
-                    <Textarea
-                      ref={(el) => {
-                        textareaRef.current = el;
-                        if (typeof field.ref === 'function') field.ref(el);
-                      }}
-                      name={field.name}
-                      value={field.value}
-                      onChange={field.onChange}
-                      onBlur={field.onBlur}
-                      placeholder={t("contentPlaceholder")}
-                      className="min-h-[180px] font-mono border-0 rounded-none focus-visible:ring-0"
-                    />
-                  </div>
-                )}
-              </FormControl>
-              <VariableHint content={field.value} onContentChange={(newContent) => form.setValue("content", newContent)} />
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Variable detection warning */}
-        <VariableWarning
-          content={promptContent}
-          onConvert={(converted) => form.setValue("content", converted)}
-        />
-
-        {/* Media upload options (shown when requiresMediaUpload is true) */}
-        {requiresMediaUpload && (
-          <div className="flex items-center gap-4 p-3 rounded-md border bg-muted/30">
-            <span className="text-sm text-muted-foreground">{t("requiredMediaType")}:</span>
-            <Select value={form.watch("requiredMediaType")} onValueChange={(v) => form.setValue("requiredMediaType", v as any)}>
-              <SelectTrigger className="h-8 w-32 text-xs">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="IMAGE">{t("types.image")}</SelectItem>
-                <SelectItem value="VIDEO">{t("types.video")}</SelectItem>
-                <SelectItem value="DOCUMENT">{t("types.document")}</SelectItem>
-              </SelectContent>
-            </Select>
-            <span className="text-sm text-muted-foreground">{t("requiredMediaCount")}:</span>
-            <Input 
-              type="number" 
-              min={1} 
-              max={10}
-              value={form.watch("requiredMediaCount")}
-              onChange={(e) => form.setValue("requiredMediaCount", parseInt(e.target.value) || 1)}
-              className="h-8 w-16 text-xs"
-            />
+            )}
           </div>
-        )}
-
-        {/* Media URL/Upload (for IMAGE/VIDEO/AUDIO/STRUCTURED types) */}
-        {(promptType === "IMAGE" || promptType === "VIDEO" || promptType === "AUDIO" || promptType === "STRUCTURED") && (
-          <MediaField
-            form={form}
-            t={t}
-          />
-        )}
-
-        {/* Tags */}
-        <FormField
-          control={form.control}
-          name="tagIds"
-          render={() => (
-            <FormItem>
-              <FormLabel>{t("promptTags")}</FormLabel>
-              <div className="flex flex-wrap gap-2">
-                {tags.map((tag) => (
-                  <Badge
-                    key={tag.id}
-                    variant={selectedTags.includes(tag.id) ? "default" : "outline"}
-                    className="cursor-pointer"
-                    style={
-                      selectedTags.includes(tag.id)
-                        ? { backgroundColor: tag.color, color: "white" }
-                        : {}
-                    }
-                    onClick={() => toggleTag(tag.id)}
-                  >
-                    {tag.name}
-                  </Badge>
-                ))}
-              </div>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Contributors */}
-        <div className="space-y-2">
-          <label className="text-sm font-medium block">{t("promptContributors")}</label>
-          <p className="text-xs text-muted-foreground">{t("contributorsDescription")}</p>
-          <ContributorSearch
-            selectedUsers={contributors}
-            onSelect={(user) => setContributors((prev) => [...prev, user])}
-            onRemove={(userId) => setContributors((prev) => prev.filter((u) => u.id !== userId))}
-          />
         </div>
 
         <div className="flex justify-end gap-4 pt-2">

@@ -14,8 +14,8 @@ interface PromptBuilderState {
   title: string;
   description: string;
   content: string;
-  type: "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "STRUCTURED";
-  structuredFormat?: "JSON" | "YAML";
+  type: "TEXT" | "IMAGE" | "VIDEO" | "AUDIO"; // Output type only
+  structuredFormat?: "JSON" | "YAML"; // Input type indicator
   categoryId?: string;
   tagIds: string[];
   isPrivate: boolean;

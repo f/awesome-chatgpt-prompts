@@ -100,6 +100,8 @@
     "promptType": "Type",
     "promptCategory": "Category",
     "promptTags": "Tags",
+    "searchTags": "Search tags...",
+    "noTagsFound": "No tags found",
     "promptContributors": "Contributors",
     "contributorsDescription": "Other users who helped write this prompt. Users whose change requests are approved are added automatically.",
     "searchContributors": "Search by username...",
@@ -118,6 +120,27 @@
       "audio": "Audio",
       "structured": "Structured",
       "document": "Document"
+    },
+    "inputType": "User Prompt",
+    "outputType": "AI Response",
+    "inputTypeDescription": "How your prompt is formatted",
+    "outputTypeDescription": "What type of response the AI will generate",
+    "outputTypeStructuredNote": "Structured prompts can produce various output types",
+    "inputTypes": {
+      "text": "Text Prompt",
+      "structured": "Structured (JSON/YAML)"
+    },
+    "outputTypes": {
+      "text": "Text",
+      "image": "Image",
+      "video": "Video",
+      "audio": "Audio/Voice"
+    },
+    "outputPreview": {
+      "text": "✨ Magic happens here... your AI will write something brilliant!",
+      "imageUpload": "Upload an example image output",
+      "videoUpload": "Upload an example video/GIF output",
+      "audio": "Audio output preview"
     },
     "structuredFormat": "Format",
     "structuredFormatDescription": "Select the format for your structured prompt",
@@ -167,7 +190,7 @@
     "mediaUrl": "Media URL",
     "mediaUrlPlaceholder": "https://...",
     "mediaUrlDescription": "Enter a URL to the media file for this prompt",
-    "mediaImage": "Media Image",
+    "mediaImage": "Example Media Image",
     "clickToUpload": "Click to upload an image",
     "uploading": "Uploading...",
     "maxFileSize": "Max file size: 5MB (JPEG, PNG, GIF, WebP)",
@@ -175,6 +198,7 @@
     "invalidFileType": "Invalid file type. Only JPEG, PNG, GIF, and WebP are allowed.",
     "privateDescription": "Private prompts are only visible to you",
     "requiresMediaUpload": "Requires Media Upload",
+    "attachedMediaType": "Attached Media Type",
     "requiresMediaUploadDescription": "Users need to provide media files to use this prompt",
     "requiredMediaType": "Media Type",
     "requiredMediaCount": "Number of Files",

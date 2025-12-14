@@ -119,6 +119,27 @@
       "structured": "Yapılandırılmış",
       "document": "Doküman"
     },
+    "inputType": "Kullanıcı Promptu",
+    "outputType": "AI Yanıtı",
+    "inputTypeDescription": "Promptunuz nasıl formatlanmış",
+    "outputTypeDescription": "AI'ın üreteceği yanıt türü",
+    "outputTypeStructuredNote": "Yapılandırılmış promptlar çeşitli çıktı türleri üretebilir",
+    "inputTypes": {
+      "text": "Metin Promptu",
+      "structured": "Yapılandırılmış (JSON/YAML)"
+    },
+    "outputTypes": {
+      "text": "Metin",
+      "image": "Görsel",
+      "video": "Video",
+      "audio": "Ses/Sesli"
+    },
+    "outputPreview": {
+      "text": "✨ Sihir burada gerçekleşir... AI harika bir şey yazacak!",
+      "imageUpload": "Örnek görsel çıktısı yükle",
+      "videoUpload": "Örnek video/GIF çıktısı yükle",
+      "audio": "Ses çıktısı önizlemesi"
+    },
     "structuredFormat": "Format",
     "structuredFormatDescription": "Yapılandırılmış promptunuz için format seçin",
     "structuredContentDescription": "İş akışı, ajan veya pipeline yapılandırmanızı tanımlayın",

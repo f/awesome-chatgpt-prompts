@@ -9,8 +9,8 @@ const promptSchema = z.object({
   title: z.string().min(1).max(200),
   description: z.string().max(500).optional(),
   content: z.string().min(1),
-  type: z.enum(["TEXT", "IMAGE", "VIDEO", "AUDIO", "STRUCTURED"]),
-  structuredFormat: z.enum(["JSON", "YAML"]).optional(),
+  type: z.enum(["TEXT", "IMAGE", "VIDEO", "AUDIO"]), // Output type only
+  structuredFormat: z.enum(["JSON", "YAML"]).optional(), // Input type indicator
   categoryId: z.string().optional(),
   tagIds: z.array(z.string()),
   contributorIds: z.array(z.string()).optional(),
@@ -51,7 +51,7 @@ export async function POST(request: Request) {
         description: description || null,
         content,
         type,
-        structuredFormat: type === "STRUCTURED" ? structuredFormat : null,
+        structuredFormat: structuredFormat || null,
         isPrivate,
         mediaUrl: mediaUrl || null,
         requiresMediaUpload: requiresMediaUpload || false,
