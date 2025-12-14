@@ -35,6 +35,7 @@ const platforms: Platform[] = [
   { id: "claude", name: "Claude", baseUrl: "https://claude.ai/new" },
   { id: "copilot", name: "Copilot", baseUrl: "https://copilot.microsoft.com", supportsQuerystring: false },
   { id: "deepseek", name: "DeepSeek", baseUrl: "https://chat.deepseek.com", supportsQuerystring: false },
+  { id: "fal", name: "fal Sandbox", baseUrl: "https://fal.ai/sandbox" },
   { id: "gemini", name: "Gemini", baseUrl: "https://gemini.google.com/app", supportsQuerystring: false },
   { id: "github-copilot", name: "GitHub Copilot", baseUrl: "https://github.com/copilot" },
   {
@@ -73,6 +74,8 @@ function buildUrl(platformId: string, baseUrl: string, promptText: string): stri
       return `${baseUrl}?prompt=${encoded}`;
     case "grok":
       return `${baseUrl}&q=${encoded}`;
+    case "fal":
+      return `${baseUrl}?prompt=${encoded}`;
     case "huggingface":
       return `${baseUrl}/?prompt=${encoded}`;
     case "mistral":
