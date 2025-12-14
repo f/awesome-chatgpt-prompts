@@ -5035,3 +5035,16 @@ Ensure the uploaded photo clearly shows your face and is well-lit for the best r
 
 </details>
 
+<details>
+<summary><strong>Selar ideas for automation </strong></summary>
+
+## Selar ideas for automation 
+
+Contributed by [@agulilianchika73@gmail.com](https://github.com/agulilianchika73@gmail.com)
+
+```md
+Act as a digital marketing expert.create 10 digital beginner friendly digital product ideas I can sell on selar in Nigeria, explain each idea simply and state the problem it solves
+```
+
+</details>
+
