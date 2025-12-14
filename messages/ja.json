@@ -717,5 +717,18 @@
     "reportFailed": "報告の送信に失敗しました",
     "reasonRequired": "理由を選択してください",
     "alreadyReported": "このプロンプトは既に報告済みです"
+  },
+  "mcp": {
+    "button": "MCPサーバー",
+    "title": "MCPサーバー設定",
+    "copy": "コピー",
+    "copied": "コピーしました！",
+    "customizeFilters": "フィルターをカスタマイズしてプロンプトを絞り込む：",
+    "users": "ユーザー",
+    "userPlaceholder": "ユーザー名を追加...",
+    "categories": "カテゴリー",
+    "categoryPlaceholder": "カテゴリースラッグを追加...",
+    "tags": "タグ",
+    "tagPlaceholder": "タグスラッグを追加..."
   }
 }

@@ -8,6 +8,7 @@ import { db } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { PromptList } from "@/components/prompts/prompt-list";
 import { SubscribeButton } from "@/components/categories/subscribe-button";
+import { McpServerPopup } from "@/components/mcp/mcp-server-popup";
 
 interface CategoryPageProps {
   params: Promise<{ slug: string }>;
@@ -114,28 +115,31 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           </Link>
         </Button>
 
-        <div>
-          <div className="flex items-center gap-2">
-            <h1 className="text-xl font-semibold">{category.name}</h1>
-            {session?.user && (
-              <SubscribeButton
-                categoryId={category.id}
-                categoryName={category.name}
-                initialSubscribed={!!isSubscribed}
-                pill
-              />
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2">
+              <h1 className="text-xl font-semibold">{category.name}</h1>
+              {session?.user && (
+                <SubscribeButton
+                  categoryId={category.id}
+                  categoryName={category.name}
+                  initialSubscribed={!!isSubscribed}
+                  pill
+                />
+              )}
+            </div>
+            {category.description && (
+              <p className="text-sm text-muted-foreground mt-1">
+                {category.description}
+              </p>
             )}
+            <div className="flex items-center gap-3 mt-2 text-sm text-muted-foreground">
+              <span>{category._count.prompts} prompts</span>
+              <span>•</span>
+              <span>{category._count.subscribers} subscribers</span>
+            </div>
           </div>
-          {category.description && (
-            <p className="text-sm text-muted-foreground mt-1">
-              {category.description}
-            </p>
-          )}
-          <div className="flex items-center gap-3 mt-2 text-sm text-muted-foreground">
-            <span>{category._count.prompts} prompts</span>
-            <span>•</span>
-            <span>{category._count.subscribers} subscribers</span>
-          </div>
+          <McpServerPopup initialCategories={[slug]} />
         </div>
       </div>
 

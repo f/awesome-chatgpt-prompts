@@ -717,5 +717,18 @@
     "reportFailed": "举报提交失败",
     "reasonRequired": "请选择举报原因",
     "alreadyReported": "您已经举报过此提示词"
+  },
+  "mcp": {
+    "button": "MCP 服务器",
+    "title": "MCP 服务器配置",
+    "copy": "复制",
+    "copied": "已复制！",
+    "customizeFilters": "自定义过滤器以缩小提示词范围：",
+    "users": "用户",
+    "userPlaceholder": "添加用户名...",
+    "categories": "分类",
+    "categoryPlaceholder": "添加分类标识...",
+    "tags": "标签",
+    "tagPlaceholder": "添加标签标识..."
   }
 }

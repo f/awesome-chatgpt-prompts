@@ -717,5 +717,18 @@
     "reportFailed": "Şikayet gönderilemedi",
     "reasonRequired": "Lütfen bir sebep seçin",
     "alreadyReported": "Bu promptu zaten şikayet ettiniz"
+  },
+  "mcp": {
+    "button": "MCP Sunucusu",
+    "title": "MCP Sunucu Yapılandırması",
+    "copy": "Kopyala",
+    "copied": "Kopyalandı!",
+    "customizeFilters": "Promptları daraltmak için filtreleri özelleştirin:",
+    "users": "Kullanıcılar",
+    "userPlaceholder": "Kullanıcı adı ekle...",
+    "categories": "Kategoriler",
+    "categoryPlaceholder": "Kategori slug ekle...",
+    "tags": "Etiketler",
+    "tagPlaceholder": "Etiket slug ekle..."
   }
 }

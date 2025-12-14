@@ -717,5 +717,18 @@
     "reportFailed": "Failed to submit report",
     "reasonRequired": "Please select a reason",
     "alreadyReported": "You have already reported this prompt"
+  },
+  "mcp": {
+    "button": "MCP Server",
+    "title": "MCP Server Configuration",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "customizeFilters": "Customize filters to narrow down prompts:",
+    "users": "Users",
+    "userPlaceholder": "Add username...",
+    "categories": "Categories",
+    "categoryPlaceholder": "Add category slug...",
+    "tags": "Tags",
+    "tagPlaceholder": "Add tag slug..."
   }
 }

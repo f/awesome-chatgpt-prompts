@@ -717,5 +717,18 @@
     "reportFailed": "Impossibile inviare la segnalazione",
     "reasonRequired": "Seleziona un motivo",
     "alreadyReported": "Hai già segnalato questo prompt"
+  },
+  "mcp": {
+    "button": "Server MCP",
+    "title": "Configurazione Server MCP",
+    "copy": "Copia",
+    "copied": "Copiato!",
+    "customizeFilters": "Personalizza i filtri per restringere i prompt:",
+    "users": "Utenti",
+    "userPlaceholder": "Aggiungi nome utente...",
+    "categories": "Categorie",
+    "categoryPlaceholder": "Aggiungi slug categoria...",
+    "tags": "Tag",
+    "tagPlaceholder": "Aggiungi slug tag..."
   }
 }

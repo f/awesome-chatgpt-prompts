@@ -6,6 +6,7 @@ import { db } from "@/lib/db";
 import { auth } from "@/lib/auth";
 import { Button } from "@/components/ui/button";
 import { PromptCard } from "@/components/prompts/prompt-card";
+import { McpServerPopup } from "@/components/mcp/mcp-server-popup";
 
 interface TagPageProps {
   params: Promise<{ slug: string }>;
@@ -112,15 +113,18 @@ export default async function TagPage({ params, searchParams }: TagPageProps) {
           </Link>
         </Button>
 
-        <div className="flex items-center gap-3">
-          <div
-            className="w-4 h-4 rounded-full"
-            style={{ backgroundColor: tag.color }}
-          />
-          <h1 className="text-xl font-semibold">{tag.name}</h1>
-          <span className="text-sm text-muted-foreground">
-            {total} {t("prompts")}
-          </span>
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div
+              className="w-4 h-4 rounded-full"
+              style={{ backgroundColor: tag.color }}
+            />
+            <h1 className="text-xl font-semibold">{tag.name}</h1>
+            <span className="text-sm text-muted-foreground">
+              {total} {t("prompts")}
+            </span>
+          </div>
+          <McpServerPopup initialTags={[slug]} />
         </div>
       </div>
 

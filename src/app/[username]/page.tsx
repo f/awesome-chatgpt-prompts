@@ -13,6 +13,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { PromptList } from "@/components/prompts/prompt-list";
 import { PromptCard, type PromptCardProps } from "@/components/prompts/prompt-card";
+import { McpServerPopup } from "@/components/mcp/mcp-server-popup";
 
 interface UserProfilePageProps {
   params: Promise<{ username: string }>;
@@ -320,15 +321,18 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
               )}
             </p>
           </div>
-          {/* Edit button - desktop only */}
-          {isOwner && (
-            <Button variant="outline" size="sm" asChild className="hidden md:inline-flex shrink-0">
-              <Link href="/settings">
-                <Settings className="h-4 w-4 mr-1.5" />
-                {t("editProfile")}
-              </Link>
-            </Button>
-          )}
+          {/* Actions - desktop only */}
+          <div className="hidden md:flex items-center gap-2 shrink-0">
+            <McpServerPopup initialUsers={[user.username]} />
+            {isOwner && (
+              <Button variant="outline" size="sm" asChild>
+                <Link href="/settings">
+                  <Settings className="h-4 w-4 mr-1.5" />
+                  {t("editProfile")}
+                </Link>
+              </Button>
+            )}
+          </div>
         </div>
 
         {/* Stats - stacked on mobile, inline on desktop */}
@@ -354,17 +358,18 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
           </div>
         </div>
 
-        {/* Edit button - below stats on mobile */}
-        {isOwner && (
-          <div className="md:hidden">
-            <Button variant="outline" size="sm" asChild className="w-full">
+        {/* Actions - mobile only */}
+        <div className="md:hidden flex gap-2">
+          <McpServerPopup initialUsers={[user.username]} />
+          {isOwner && (
+            <Button variant="outline" size="sm" asChild className="flex-1">
               <Link href="/settings">
                 <Settings className="h-4 w-4 mr-1.5" />
                 {t("editProfile")}
               </Link>
             </Button>
-          </div>
-        )}
+          )}
+        </div>
       </div>
 
       {/* Tabs for Prompts and Change Requests */}

@@ -717,5 +717,18 @@
     "reportFailed": "Falha ao enviar denúncia",
     "reasonRequired": "Por favor, selecione um motivo",
     "alreadyReported": "Você já denunciou este prompt"
+  },
+  "mcp": {
+    "button": "Servidor MCP",
+    "title": "Configuração do Servidor MCP",
+    "copy": "Copiar",
+    "copied": "Copiado!",
+    "customizeFilters": "Personalize os filtros para restringir os prompts:",
+    "users": "Usuários",
+    "userPlaceholder": "Adicionar nome de usuário...",
+    "categories": "Categorias",
+    "categoryPlaceholder": "Adicionar slug da categoria...",
+    "tags": "Tags",
+    "tagPlaceholder": "Adicionar slug da tag..."
   }
 }

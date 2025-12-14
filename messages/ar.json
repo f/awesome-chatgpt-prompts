@@ -717,5 +717,18 @@
     "reportFailed": "فشل في إرسال البلاغ",
     "reasonRequired": "يرجى اختيار سبب",
     "alreadyReported": "لقد أبلغت عن هذا الأمر بالفعل"
+  },
+  "mcp": {
+    "button": "خادم MCP",
+    "title": "إعدادات خادم MCP",
+    "copy": "نسخ",
+    "copied": "تم النسخ!",
+    "customizeFilters": "تخصيص الفلاتر لتضييق نطاق الأوامر:",
+    "users": "المستخدمون",
+    "userPlaceholder": "إضافة اسم مستخدم...",
+    "categories": "الفئات",
+    "categoryPlaceholder": "إضافة رمز الفئة...",
+    "tags": "العلامات",
+    "tagPlaceholder": "إضافة رمز العلامة..."
   }
 }

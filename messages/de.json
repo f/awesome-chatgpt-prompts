@@ -717,5 +717,18 @@
     "reportFailed": "Meldung konnte nicht gesendet werden",
     "reasonRequired": "Bitte wählen Sie einen Grund",
     "alreadyReported": "Sie haben diesen Prompt bereits gemeldet"
+  },
+  "mcp": {
+    "button": "MCP-Server",
+    "title": "MCP-Server-Konfiguration",
+    "copy": "Kopieren",
+    "copied": "Kopiert!",
+    "customizeFilters": "Filter anpassen, um Prompts einzugrenzen:",
+    "users": "Benutzer",
+    "userPlaceholder": "Benutzername hinzufügen...",
+    "categories": "Kategorien",
+    "categoryPlaceholder": "Kategorie-Slug hinzufügen...",
+    "tags": "Tags",
+    "tagPlaceholder": "Tag-Slug hinzufügen..."
   }
 }

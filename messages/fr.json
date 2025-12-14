@@ -717,5 +717,18 @@
     "reportFailed": "Échec de l'envoi du signalement",
     "reasonRequired": "Veuillez sélectionner une raison",
     "alreadyReported": "Vous avez déjà signalé ce prompt"
+  },
+  "mcp": {
+    "button": "Serveur MCP",
+    "title": "Configuration du Serveur MCP",
+    "copy": "Copier",
+    "copied": "Copié !",
+    "customizeFilters": "Personnalisez les filtres pour affiner les prompts :",
+    "users": "Utilisateurs",
+    "userPlaceholder": "Ajouter un nom d'utilisateur...",
+    "categories": "Catégories",
+    "categoryPlaceholder": "Ajouter un slug de catégorie...",
+    "tags": "Tags",
+    "tagPlaceholder": "Ajouter un slug de tag..."
   }
 }

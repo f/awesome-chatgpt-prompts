@@ -717,5 +717,18 @@
     "reportFailed": "신고 제출에 실패했습니다",
     "reasonRequired": "사유를 선택하세요",
     "alreadyReported": "이미 이 프롬프트를 신고하셨습니다"
+  },
+  "mcp": {
+    "button": "MCP 서버",
+    "title": "MCP 서버 설정",
+    "copy": "복사",
+    "copied": "복사됨!",
+    "customizeFilters": "필터를 사용자 정의하여 프롬프트 범위를 좁히세요:",
+    "users": "사용자",
+    "userPlaceholder": "사용자 이름 추가...",
+    "categories": "카테고리",
+    "categoryPlaceholder": "카테고리 슬러그 추가...",
+    "tags": "태그",
+    "tagPlaceholder": "태그 슬러그 추가..."
   }
 }
