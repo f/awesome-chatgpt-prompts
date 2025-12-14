@@ -46,6 +46,7 @@ const languages = [
   { code: "tr", name: "Türkçe" },
   { code: "ko", name: "한국어" },
   { code: "ar", name: "العربية" },
+  { code: "ru", name: "Русский" },
 ];
 
 interface HeaderProps {
