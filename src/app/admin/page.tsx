@@ -38,15 +38,25 @@ export default async function AdminPage() {
     isAISearchEnabled(),
   ]);
   
-  // Count prompts without embeddings (JSON null check requires separate query)
+  // Count prompts without embeddings and total public prompts
   let promptsWithoutEmbeddings = 0;
+  let totalPublicPrompts = 0;
   if (aiSearchEnabled) {
-    promptsWithoutEmbeddings = await db.prompt.count({
-      where: {
-        isPrivate: false,
-        embedding: { equals: Prisma.DbNull },
-      },
-    });
+    [promptsWithoutEmbeddings, totalPublicPrompts] = await Promise.all([
+      db.prompt.count({
+        where: {
+          isPrivate: false,
+          deletedAt: null,
+          embedding: { equals: Prisma.DbNull },
+        },
+      }),
+      db.prompt.count({
+        where: {
+          isPrivate: false,
+          deletedAt: null,
+        },
+      }),
+    ]);
   }
 
   // Fetch data for tables
@@ -220,7 +230,8 @@ export default async function AdminPage() {
         <TabsContent value="prompts">
           <PromptsManagement 
             aiSearchEnabled={aiSearchEnabled} 
-            promptsWithoutEmbeddings={promptsWithoutEmbeddings} 
+            promptsWithoutEmbeddings={promptsWithoutEmbeddings}
+            totalPublicPrompts={totalPublicPrompts}
           />
         </TabsContent>
 

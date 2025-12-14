@@ -346,6 +346,7 @@
       "confirm": "Import",
       "delete": "Delete",
       "generateEmbeddings": "Generate Embeddings",
+      "regenerateEmbeddings": "Regenerate all embeddings",
       "pending": "pending",
       "embeddingsSuccess": "{count} embeddings generated",
       "embeddingsResult": "Generated: {success}, Failed: {failed}"

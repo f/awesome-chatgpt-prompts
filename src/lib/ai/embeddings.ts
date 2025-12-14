@@ -50,19 +50,23 @@ export async function generatePromptEmbedding(promptId: string): Promise<void> {
     prompt.content,
   ].join("\n\n").trim();
 
-  try {
-    const embedding = await generateEmbedding(textToEmbed);
-    
-    await db.prompt.update({
-      where: { id: promptId },
-      data: { embedding },
-    });
-  } catch (error) {
-    console.error(`Failed to generate embedding for prompt ${promptId}:`, error);
-  }
+  const embedding = await generateEmbedding(textToEmbed);
+  
+  await db.prompt.update({
+    where: { id: promptId },
+    data: { embedding },
+  });
 }
 
-export async function generateAllEmbeddings(): Promise<{ success: number; failed: number }> {
+// Delay helper to avoid rate limits
+function delay(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+export async function generateAllEmbeddings(
+  onProgress?: (current: number, total: number, success: number, failed: number) => void,
+  regenerate: boolean = false
+): Promise<{ success: number; failed: number; total: number }> {
   const config = await getConfig();
   if (!config.features.aiSearch) {
     throw new Error("AI Search is not enabled");
@@ -70,26 +74,38 @@ export async function generateAllEmbeddings(): Promise<{ success: number; failed
 
   const prompts = await db.prompt.findMany({
     where: { 
-      embedding: { equals: Prisma.DbNull },
+      ...(regenerate ? {} : { embedding: { equals: Prisma.DbNull } }),
       isPrivate: false,
       deletedAt: null,
     },
     select: { id: true },
   });
 
+  const total = prompts.length;
   let success = 0;
   let failed = 0;
 
-  for (const prompt of prompts) {
+  for (let i = 0; i < prompts.length; i++) {
+    const prompt = prompts[i];
     try {
       await generatePromptEmbedding(prompt.id);
       success++;
     } catch {
       failed++;
     }
+    
+    // Report progress
+    if (onProgress) {
+      onProgress(i + 1, total, success, failed);
+    }
+    
+    // Rate limit: wait 200ms between requests to avoid hitting API limits
+    if (i < prompts.length - 1) {
+      await delay(200);
+    }
   }
 
-  return { success, failed };
+  return { success, failed, total };
 }
 
 function cosineSimilarity(a: number[], b: number[]): number {
