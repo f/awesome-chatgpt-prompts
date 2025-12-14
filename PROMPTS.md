@@ -5394,3 +5394,33 @@ Output Format:
 
 </details>
 
+<details>
+<summary><strong>When to clear the snow (generic)</strong></summary>
+
+## When to clear the snow (generic)
+
+Contributed by [@thanos0000@gmail.com](https://github.com/thanos0000@gmail.com)
+
+```md
+[When to clear the driveway and how]
+[Last modified: 12-14-2025 1:00 PM]
+
+Start by summarizing precipitation conditions for [INSERT YOUR LOCATION HERE — city and state recommended], including:
+- Total snowfall and any mixed precipitation over the previous 24 hours
+- Forecasted snowfall, precipitation type, and intensity over the next 24 hours
+
+Based on the recent and forecasted precipitation and temperatures, determine the most effective time to clear snow. Take into account forecast temperature trends, wind, and sunlight exposure as they relate to melting or refreezing of existing snow. Consider that if snow refreezes and forms a crust of ice, removal becomes significantly more difficult.
+
+Advise whether ice melt should be used, and if so, when and how.
+
+Additional context about the driveway:
+[DESCRIBE YOUR DRIVEWAY HERE — include slope, length, curves, surface material, areas where snow can or cannot be pushed, and any obstacles such as walls, trees, or parked vehicles.]
+
+If helpful, compare two scenarios: clearing immediately versus waiting for passive melting, and explain the tradeoffs.
+
+After considering all factors, produce a concise summary of the recommended action and timing.
+
+```
+
+</details>
+
