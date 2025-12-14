@@ -82,7 +82,8 @@
       "examples": "Örnekler",
       "selectExample": "Bir örnek seçin...",
       "aiGenerate": "AI Oluştur",
-      "aiPlaceholder": "Nasıl bir prompt bulmak istiyorsunuz?"
+      "aiPlaceholder": "İhtiyacınız olan SQL sorgusunu tanımlayın...",
+      "generateSql": "SQL Oluştur"
     },
     "edit": "Prompt Düzenle",
     "delete": "Prompt Sil",

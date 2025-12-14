@@ -7,7 +7,6 @@ import { ChevronDown, Play, ExternalLink, Sparkles, Loader2 } from "lucide-react
 import Editor from "@monaco-editor/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Popover,
   PopoverContent,
@@ -36,6 +35,7 @@ export function HFDataStudioDropdown({ aiGenerationEnabled = false }: HFDataStud
   const [sql, setSql] = useState(DEFAULT_SQL);
   const [aiPrompt, setAiPrompt] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
+  const [showAiInput, setShowAiInput] = useState(false);
 
   const handleOpenDataset = () => {
     window.open(HF_DATASET_URL, "_blank");
@@ -89,97 +89,98 @@ export function HFDataStudioDropdown({ aiGenerationEnabled = false }: HFDataStud
             <ChevronDown className="h-3 w-3" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent align="end" className="w-[calc(100vw-2rem)] sm:w-[500px] p-0 max-sm:!fixed max-sm:!left-4 max-sm:!right-4 max-sm:!top-auto" sideOffset={8}>
-          <Tabs defaultValue={aiGenerationEnabled ? "ai" : "examples"} className="w-full">
-            <div className="flex items-center justify-between px-3 pt-3 pb-2">
-              <TabsList className="h-7">
+        <PopoverContent align="end" className="w-[calc(100vw-2rem)] sm:w-[500px] p-3 max-sm:!fixed max-sm:!left-4 max-sm:!right-4 max-sm:!top-auto" sideOffset={8}>
+          <div className="space-y-3">
+            {/* Header with Examples Select + AI Button */}
+            <div className="flex items-center justify-between gap-2">
+              <div className="flex flex-1 items-stretch">
+                <Select onValueChange={(value) => setSql(value)}>
+                  <SelectTrigger className={`h-8 text-xs flex-1 ${aiGenerationEnabled ? "rounded-r-none border-r-0" : ""}`} size="sm">
+                    <SelectValue placeholder={t("selectExample")} />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {SQL_EXAMPLES.map((example, index) => (
+                      <SelectItem key={index} value={example.sql} className="text-xs">
+                        {example.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
                 {aiGenerationEnabled && (
-                  <TabsTrigger value="ai" className="text-xs h-6 px-2">
-                    <Sparkles className="h-3 w-3 mr-1" />
-                    {t("aiGenerate")}
-                  </TabsTrigger>
+                  <Button
+                    size="sm"
+                    variant={showAiInput ? "secondary" : "outline"}
+                    className="rounded-l-none border-l-0"
+                    onClick={() => setShowAiInput(!showAiInput)}
+                    title={t("aiGenerate")}
+                  >
+                    <Sparkles className="h-3.5 w-3.5" />
+                  </Button>
                 )}
-                <TabsTrigger value="examples" className="text-xs h-6 px-2">
-                  {t("examples")}
-                </TabsTrigger>
-              </TabsList>
+              </div>
               <a
                 href={HF_DATASET_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1"
+                className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1 shrink-0"
               >
                 {t("openDataset")} <ExternalLink className="h-3 w-3" />
               </a>
             </div>
-            
-            {aiGenerationEnabled && (
-              <TabsContent value="ai" className="px-3 pb-3 mt-0 space-y-2">
-                <div className="flex gap-2">
-                  <Input
-                    placeholder={t("aiPlaceholder")}
-                    value={aiPrompt}
-                    onChange={(e) => setAiPrompt(e.target.value)}
-                    onKeyDown={(e) => e.key === "Enter" && handleGenerateSQL()}
-                    className="h-8 text-xs flex-1"
-                  />
-                  <Button 
-                    size="sm" 
-                    variant="secondary"
-                    className="h-8 px-3"
-                    onClick={handleGenerateSQL}
-                    disabled={isGenerating || !aiPrompt.trim()}
-                  >
-                    {isGenerating ? (
-                      <Loader2 className="h-3.5 w-3.5 animate-spin" />
-                    ) : (
-                      <Sparkles className="h-3.5 w-3.5" />
-                    )}
-                  </Button>
-                </div>
-              </TabsContent>
-            )}
-            
-            <TabsContent value="examples" className="px-3 pb-3 mt-0">
-              <Select onValueChange={(value) => setSql(value)}>
-                <SelectTrigger className="h-7 text-xs">
-                  <SelectValue placeholder={t("selectExample")} />
-                </SelectTrigger>
-                <SelectContent>
-                  {SQL_EXAMPLES.map((example, index) => (
-                    <SelectItem key={index} value={example.sql} className="text-xs">
-                      {example.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </TabsContent>
 
-            <div className="px-3 pb-3 space-y-3">
-              <div className="border rounded-md overflow-hidden">
-                <Editor
-                  height="200px"
-                  defaultLanguage="sql"
-                  value={sql}
-                  onChange={(value) => setSql(value || "")}
-                  theme={resolvedTheme === "dark" ? "vs-dark" : "light"}
-                  options={{
-                    minimap: { enabled: false },
-                    fontSize: 12,
-                    lineNumbers: "on",
-                    scrollBeyondLastLine: false,
-                    automaticLayout: true,
-                    tabSize: 2,
-                    wordWrap: "on",
-                  }}
+            {/* AI Input (toggled) */}
+            {aiGenerationEnabled && showAiInput && (
+              <div className="flex rounded-md focus-within:ring-1 focus-within:ring-ring focus-within:border-foreground/30">
+                <input
+                  placeholder={t("aiPlaceholder")}
+                  value={aiPrompt}
+                  onChange={(e) => setAiPrompt(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && handleGenerateSQL()}
+                  className="h-8 text-xs flex-1 rounded-l-md rounded-r-none border border-r-0 border-input bg-transparent px-3 py-1 outline-none placeholder:text-muted-foreground"
+                  autoFocus
                 />
+                <Button 
+                  size="sm" 
+                  variant="outline"
+                  className="rounded-l-none border-l-0 text-[11px] bg-muted/50 hover:bg-muted"
+                  onClick={handleGenerateSQL}
+                  disabled={isGenerating || !aiPrompt.trim()}
+                >
+                  {isGenerating ? (
+                    <Loader2 className="h-3 w-3 animate-spin" />
+                  ) : (
+                    t("generateSql")
+                  )}
+                </Button>
               </div>
-              <Button size="sm" className="w-full" onClick={handleRun}>
-                <Play className="h-3.5 w-3.5 mr-1.5" />
-                {t("runQuery")}
-              </Button>
+            )}
+
+            {/* SQL Editor */}
+            <div className="border rounded-md overflow-hidden">
+              <Editor
+                height="200px"
+                defaultLanguage="sql"
+                value={sql}
+                onChange={(value) => setSql(value || "")}
+                theme={resolvedTheme === "dark" ? "vs-dark" : "light"}
+                options={{
+                  minimap: { enabled: false },
+                  fontSize: 12,
+                  lineNumbers: "on",
+                  scrollBeyondLastLine: false,
+                  automaticLayout: true,
+                  tabSize: 2,
+                  wordWrap: "on",
+                }}
+              />
             </div>
-          </Tabs>
+
+            {/* Run Button */}
+            <Button size="sm" className="w-full" onClick={handleRun}>
+              <Play className="h-3.5 w-3.5 mr-1.5" />
+              {t("runQuery")}
+            </Button>
+          </div>
         </PopoverContent>
       </Popover>
     </div>

@@ -82,7 +82,8 @@
       "examples": "Examples",
       "selectExample": "Select an example...",
       "aiGenerate": "AI Generate",
-      "aiPlaceholder": "Describe the SQL query you need..."
+      "aiPlaceholder": "Describe the SQL query you need...",
+      "generateSql": "Generate SQL"
     },
     "edit": "Edit Prompt",
     "delete": "Delete Prompt",
