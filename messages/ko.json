@@ -119,6 +119,27 @@
       "structured": "구조화",
       "document": "문서"
     },
+    "inputType": "사용자 프롬프트",
+    "outputType": "AI 응답",
+    "inputTypeDescription": "프롬프트 형식",
+    "outputTypeDescription": "AI가 생성할 응답 유형",
+    "outputTypeStructuredNote": "구조화된 프롬프트는 다양한 출력 유형을 생성할 수 있습니다",
+    "inputTypes": {
+      "text": "텍스트 프롬프트",
+      "structured": "구조화 (JSON/YAML)"
+    },
+    "outputTypes": {
+      "text": "텍스트",
+      "image": "이미지",
+      "video": "비디오",
+      "audio": "오디오/음성"
+    },
+    "outputPreview": {
+      "text": "✨ 마법이 일어나는 곳... AI가 멋진 것을 작성할 거예요!",
+      "imageUpload": "예시 이미지 업로드",
+      "videoUpload": "예시 비디오/GIF 업로드",
+      "audio": "오디오 출력 미리보기"
+    },
     "structuredFormat": "형식",
     "structuredFormatDescription": "구조화된 프롬프트의 형식을 선택하세요",
     "structuredContentDescription": "워크플로우, 에이전트 또는 파이프라인 구성을 정의하세요",

@@ -119,6 +119,27 @@
       "structured": "Strutturato",
       "document": "Documento"
     },
+    "inputType": "Prompt Utente",
+    "outputType": "Risposta IA",
+    "inputTypeDescription": "Come è formattato il tuo prompt",
+    "outputTypeDescription": "Tipo di risposta che l'IA genererà",
+    "outputTypeStructuredNote": "I prompt strutturati possono produrre vari tipi di output",
+    "inputTypes": {
+      "text": "Prompt Testuale",
+      "structured": "Strutturato (JSON/YAML)"
+    },
+    "outputTypes": {
+      "text": "Testo",
+      "image": "Immagine",
+      "video": "Video",
+      "audio": "Audio/Voce"
+    },
+    "outputPreview": {
+      "text": "✨ La magia accade qui... la tua IA scriverà qualcosa di brillante!",
+      "imageUpload": "Carica un'immagine di esempio",
+      "videoUpload": "Carica un video/GIF di esempio",
+      "audio": "Anteprima audio"
+    },
     "structuredFormat": "Formato",
     "structuredFormatDescription": "Seleziona il formato per il tuo prompt strutturato",
     "structuredContentDescription": "Definisci la configurazione del tuo workflow, agente o pipeline",

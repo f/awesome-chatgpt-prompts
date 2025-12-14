@@ -119,6 +119,27 @@
       "structured": "Strukturiert",
       "document": "Dokument"
     },
+    "inputType": "Benutzer-Prompt",
+    "outputType": "KI-Antwort",
+    "inputTypeDescription": "Wie Ihr Prompt formatiert ist",
+    "outputTypeDescription": "Welche Art von Antwort die KI generieren wird",
+    "outputTypeStructuredNote": "Strukturierte Prompts können verschiedene Ausgabetypen erzeugen",
+    "inputTypes": {
+      "text": "Text-Prompt",
+      "structured": "Strukturiert (JSON/YAML)"
+    },
+    "outputTypes": {
+      "text": "Text",
+      "image": "Bild",
+      "video": "Video",
+      "audio": "Audio/Stimme"
+    },
+    "outputPreview": {
+      "text": "✨ Hier passiert die Magie... Ihre KI wird etwas Brillantes schreiben!",
+      "imageUpload": "Beispielbild hochladen",
+      "videoUpload": "Beispielvideo/GIF hochladen",
+      "audio": "Audio-Vorschau"
+    },
     "structuredFormat": "Format",
     "structuredFormatDescription": "Wählen Sie das Format für Ihren strukturierten Prompt",
     "structuredContentDescription": "Definieren Sie Ihren Workflow, Agent oder Pipeline-Konfiguration",
