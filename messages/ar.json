@@ -82,7 +82,8 @@
       "examples": "أمثلة",
       "selectExample": "اختر مثالاً...",
       "aiGenerate": "توليد AI",
-      "aiPlaceholder": "صف استعلام SQL الذي تحتاجه..."
+      "aiPlaceholder": "صف استعلام SQL الذي تحتاجه...",
+      "generateSql": "إنشاء SQL"
     },
     "edit": "تعديل الأمر",
     "delete": "حذف الأمر",
@@ -347,6 +348,7 @@
       "delete": "حذف",
       "pending": "قيد الانتظار",
       "generateEmbeddings": "إنشاء التضمينات",
+      "regenerateEmbeddings": "إعادة إنشاء جميع التضمينات",
       "embeddingsSuccess": "تم إنشاء {count} تضمين",
       "embeddingsResult": "نجاح: {success}, فشل: {failed}"
     },

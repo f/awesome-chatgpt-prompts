@@ -347,6 +347,7 @@
       "confirm": "İçe Aktar",
       "delete": "Sil",
       "generateEmbeddings": "Gömme Vektörü Oluştur",
+      "regenerateEmbeddings": "Tüm gömme vektörlerini yeniden oluştur",
       "pending": "bekliyor",
       "embeddingsSuccess": "{count} gömme vektörü oluşturuldu",
       "embeddingsResult": "Oluşturulan: {success}, Başarısız: {failed}"

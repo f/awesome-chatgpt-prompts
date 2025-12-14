@@ -82,7 +82,8 @@
       "examples": "Exemples",
       "selectExample": "Sélectionner un exemple...",
       "aiGenerate": "Générer IA",
-      "aiPlaceholder": "Décrivez la requête SQL dont vous avez besoin..."
+      "aiPlaceholder": "Décrivez la requête SQL dont vous avez besoin...",
+      "generateSql": "Générer SQL"
     },
     "edit": "Modifier le Prompt",
     "delete": "Supprimer le Prompt",
@@ -346,6 +347,7 @@
       "confirm": "Importer",
       "delete": "Supprimer",
       "generateEmbeddings": "Générer les Embeddings",
+      "regenerateEmbeddings": "Régénérer tous les embeddings",
       "pending": "en attente",
       "embeddingsSuccess": "{count} embeddings générés",
       "embeddingsResult": "Générés : {success}, Échecs : {failed}"

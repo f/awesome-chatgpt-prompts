@@ -82,7 +82,8 @@
       "examples": "예제",
       "selectExample": "예제 선택...",
       "aiGenerate": "AI 생성",
-      "aiPlaceholder": "필요한 SQL 쿼리를 설명하세요..."
+      "aiPlaceholder": "필요한 SQL 쿼리를 설명하세요...",
+      "generateSql": "SQL 생성"
     },
     "edit": "프롬프트 편집",
     "delete": "프롬프트 삭제",
@@ -346,6 +347,7 @@
       "confirm": "가져오기",
       "delete": "삭제",
       "generateEmbeddings": "임베딩 생성",
+      "regenerateEmbeddings": "모든 임베딩 재생성",
       "pending": "대기 중",
       "embeddingsSuccess": "{count}개 임베딩 생성됨",
       "embeddingsResult": "생성됨: {success}, 실패: {failed}"

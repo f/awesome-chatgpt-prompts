@@ -82,7 +82,8 @@
       "examples": "示例",
       "selectExample": "选择一个示例...",
       "aiGenerate": "AI生成",
-      "aiPlaceholder": "描述您需要的SQL查询..."
+      "aiPlaceholder": "描述您需要的SQL查询...",
+      "generateSql": "生成SQL"
     },
     "edit": "编辑提示词",
     "delete": "删除提示词",
@@ -347,6 +348,7 @@
       "delete": "删除",
       "pending": "待处理",
       "generateEmbeddings": "生成嵌入",
+      "regenerateEmbeddings": "重新生成所有嵌入",
       "embeddingsSuccess": "{count} 个嵌入生成成功",
       "embeddingsResult": "成功: {success}, 失败: {failed}"
     },

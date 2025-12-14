@@ -82,7 +82,8 @@
       "examples": "例",
       "selectExample": "例を選択...",
       "aiGenerate": "AI生成",
-      "aiPlaceholder": "必要なSQLクエリを説明してください..."
+      "aiPlaceholder": "必要なSQLクエリを説明してください...",
+      "generateSql": "SQL生成"
     },
     "edit": "プロンプトを編集",
     "delete": "プロンプトを削除",
@@ -347,6 +348,7 @@
       "delete": "削除",
       "pending": "保留中",
       "generateEmbeddings": "埋め込みを生成",
+      "regenerateEmbeddings": "すべての埋め込みを再生成",
       "embeddingsSuccess": "{count} 件の埋め込みを生成しました",
       "embeddingsResult": "成功: {success}, 失敗: {failed}"
     },
