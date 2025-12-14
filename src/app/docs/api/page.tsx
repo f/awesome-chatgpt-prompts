@@ -92,7 +92,7 @@ export default async function ApiDocsPage() {
           <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
             <pre>{`# Filter by users (one or more usernames)
 "prompts-chat": {
-  "url": "${baseUrl}/api/mcp?users=f,linus"
+  "url": "${baseUrl}/api/mcp?users=f,torvalds"
 }
 
 # Filter by categories
