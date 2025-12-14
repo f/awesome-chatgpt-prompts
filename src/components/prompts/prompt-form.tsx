@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Loader2, Upload, X, ArrowDown, Play, Image as ImageIcon, Video, Volume2, Paperclip, Search, Brain } from "lucide-react";
+import { Loader2, Upload, X, ArrowDown, Play, Image as ImageIcon, Video, Volume2, Paperclip, Search } from "lucide-react";
 import { VariableToolbar } from "./variable-toolbar";
 import { VariableWarning } from "./variable-warning";
 import { VariableHint } from "./variable-hint";
@@ -782,7 +782,7 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
           <div className="flex items-center gap-2 text-muted-foreground">
             <div className="h-px w-16 bg-border" />
             <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted text-xs font-medium">
-              <Brain className="h-3.5 w-3.5" />
+              <ArrowDown className="h-3.5 w-3.5" />
               <span>After AI processing...</span>
             </div>
             <div className="h-px w-16 bg-border" />

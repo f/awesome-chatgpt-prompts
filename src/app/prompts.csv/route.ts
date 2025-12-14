@@ -34,7 +34,7 @@ export async function GET() {
       select: {
         title: true,
         content: true,
-        type: true,
+        structuredFormat: true,
         category: {
           select: {
             slug: true,
@@ -63,7 +63,7 @@ export async function GET() {
       const act = escapeCSVField(prompt.title);
       const promptContent = escapeCSVField(prompt.content);
       const forDevs = prompt.category?.slug === "coding" ? "TRUE" : "FALSE";
-      const type = prompt.type;
+      const type = prompt.structuredFormat === "JSON" || prompt.structuredFormat === "YAML" ? "STRUCTURED" : "TEXT";
       
       // Build contributor list: author first, then co-contributors
       // Format: "@author,@contributor1,@contributor2" or just "@author"
