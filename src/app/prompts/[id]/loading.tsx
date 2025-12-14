@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function PromptDetailLoading() {
   return (
-    <div className="container py-6">
+    <div className="container max-w-4xl py-8">
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 mb-4">
         <Skeleton className="h-4 w-16" />
