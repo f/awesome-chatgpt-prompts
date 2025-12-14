@@ -145,29 +145,26 @@ else:
         
         return msg
     
-    # Process updates first (rewrite entire file with updates applied)
+    # Process updates one at a time (apply and commit each update separately)
     if updated_prompts:
         print("\nApplying updates to existing prompts...")
         
-        # Build updated local_prompts dict
-        for remote_row, _ in updated_prompts:
-            act = remote_row.get('act', '').strip()
-            local_prompts[act] = remote_row
-        
-        # Rewrite the CSV with updates
-        with open(csv_file, 'w', newline='') as f:
-            writer = csv.DictWriter(f, fieldnames=fieldnames)
-            writer.writeheader()
-            # Write in order of remote (to maintain order)
-            for row in remote_prompts:
-                act = row.get('act', '').strip()
-                if act in local_prompts:
-                    writer.writerow(local_prompts[act])
-        
-        # Commit updates
         for i, (remote_row, local_row) in enumerate(updated_prompts, 1):
+            act = remote_row.get('act', '').strip()
             contributor_field = remote_row.get('contributor', '').strip()
-            act = remote_row.get('act', 'Unknown')
+            
+            # Update this specific prompt in local_prompts
+            local_prompts[act] = remote_row
+            
+            # Rewrite the CSV with this update applied
+            with open(csv_file, 'w', newline='') as f:
+                writer = csv.DictWriter(f, fieldnames=fieldnames)
+                writer.writeheader()
+                # Write in order of remote (to maintain order)
+                for row in remote_prompts:
+                    row_act = row.get('act', '').strip()
+                    if row_act in local_prompts:
+                        writer.writerow(local_prompts[row_act])
             
             primary_author, co_authors = parse_contributors(contributor_field)
             email = f"{primary_author}@users.noreply.github.com"
