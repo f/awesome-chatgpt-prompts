@@ -650,6 +650,20 @@
     "tokens": "tokens",
     "noChanges": "Aucune modification"
   },
+  "heroPromptInput": {
+    "placeholder": "Décrivez le prompt que vous voulez créer...",
+    "ariaLabel": "Décrivez le prompt que vous voulez créer",
+    "submit": "Créer un prompt",
+    "hint": "Cliquez pour commencer à créer avec l'IA",
+    "modelName": "Agent de Prompts",
+    "examples": {
+      "codeReview": "Créez un assistant de revue de code qui détecte les bugs",
+      "emailWriter": "Construisez un rédacteur d'emails professionnels pour toute occasion",
+      "studyPlanner": "Concevez un générateur de plans d'études personnalisés",
+      "recipeGenerator": "Créez un générateur de recettes basé sur les ingrédients disponibles",
+      "interviewCoach": "Créez un coach de préparation aux entretiens"
+    }
+  },
   "notFound": {
     "title": "Page Non Trouvée",
     "description": "La page que vous recherchez n'existe pas ou a été déplacée.",
@@ -676,7 +690,11 @@
     "currentPrompt": "En construction :",
     "stateTitle": "Titre",
     "stateContent": "Contenu",
-    "stateTags": "tags"
+    "stateTags": "tags",
+    "editAction1": "Remplir les champs manquants, mettre à jour les tags.",
+    "editAction2": "Améliorer les variables",
+    "editAction3": "Utiliser des variables",
+    "editAction4": "Convertir en prompt JSON"
   },
   "report": {
     "report": "Signaler",

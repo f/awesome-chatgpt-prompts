@@ -312,7 +312,7 @@ export async function executeToolCall(
           type: string;
           structuredFormat: string | null;
           tags: string[];
-          source: "text" | "semantic";
+          source: "text" | "semantic" | "random";
           similarity?: string;
         }> = [];
 
@@ -354,7 +354,45 @@ export async function executeToolCall(
         }
 
         // Limit final results
-        const finalResults = combinedResults.slice(0, limit);
+        let finalResults = combinedResults.slice(0, limit);
+
+        // If no results found, get random prompts to learn the style
+        if (finalResults.length === 0) {
+          const randomPrompts = await db.prompt.findMany({
+            where: {
+              isPrivate: false,
+              deletedAt: null,
+            },
+            select: {
+              id: true,
+              title: true,
+              description: true,
+              content: true,
+              type: true,
+              structuredFormat: true,
+              tags: {
+                select: {
+                  tag: {
+                    select: { name: true, color: true }
+                  }
+                }
+              }
+            },
+            take: limit,
+            orderBy: { createdAt: "desc" }
+          });
+
+          finalResults = randomPrompts.map(p => ({
+            id: p.id,
+            title: p.title,
+            description: p.description,
+            contentPreview: p.content.substring(0, 200) + (p.content.length > 200 ? "..." : ""),
+            type: p.type,
+            structuredFormat: p.structuredFormat,
+            tags: p.tags.map((t: { tag: { name: string } }) => t.tag.name),
+            source: "random" as const
+          }));
+        }
 
         return {
           result: {
@@ -362,8 +400,13 @@ export async function executeToolCall(
             data: {
               prompts: finalResults,
               count: finalResults.length,
-              searchType: useSemanticSearch ? "hybrid" : "text",
-              filters: { promptType, structuredFormat }
+              searchType: finalResults.length > 0 && finalResults[0].source === "random" 
+                ? "random_examples" 
+                : (useSemanticSearch ? "hybrid" : "text"),
+              filters: { promptType, structuredFormat },
+              note: finalResults.length > 0 && finalResults[0].source === "random"
+                ? "No matching prompts found. Showing random examples to understand the prompt style."
+                : undefined
             }
           },
           newState

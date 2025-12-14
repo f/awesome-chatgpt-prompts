@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { ArrowUp, Loader2, Sparkles, X, ChevronRight, Bot } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
@@ -55,6 +56,7 @@ interface PromptBuilderProps {
   currentState: PromptBuilderState;
   onStateChange: (state: PromptBuilderState) => void;
   modelName?: string;
+  initialPromptRequest?: string;
 }
 
 export function PromptBuilder({
@@ -63,6 +65,7 @@ export function PromptBuilder({
   currentState,
   onStateChange,
   modelName = "gpt-4o-mini",
+  initialPromptRequest,
 }: PromptBuilderProps) {
   const t = useTranslations("promptBuilder");
   const [isOpen, setIsOpen] = useState(true);
@@ -82,13 +85,26 @@ export function PromptBuilder({
     scrollToBottom();
   }, [messages, streamingContent]);
 
-  const sendMessage = async () => {
-    if (!input.trim() || isLoading) return;
+  // Auto-send initial prompt request if provided
+  const initialRequestSentRef = useRef(false);
+  useEffect(() => {
+    if (initialPromptRequest && !initialRequestSentRef.current && !isLoading) {
+      initialRequestSentRef.current = true;
+      setInput(initialPromptRequest);
+      // Use setTimeout to ensure the input is set before sending
+      setTimeout(() => {
+        sendMessageWithContent(initialPromptRequest);
+      }, 100);
+    }
+  }, [initialPromptRequest]);
+
+  const sendMessageWithContent = async (content: string) => {
+    if (!content.trim() || isLoading) return;
 
     const userMessage: Message = {
       id: crypto.randomUUID(),
       role: "user",
-      content: input.trim(),
+      content: content.trim(),
     };
 
     setMessages((prev) => [...prev, userMessage]);
@@ -196,6 +212,11 @@ export function PromptBuilder({
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const sendMessage = async () => {
+    if (!input.trim() || isLoading) return;
+    await sendMessageWithContent(input);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -320,12 +341,7 @@ export function PromptBuilder({
                 {/* Show edit mode actions if there's existing content */}
                 {currentState.content ? (
                   <>
-                    {[
-                      "Fill missing fields, update tags.",
-                      "Make variables better",
-                      "Use variables",
-                      "Convert to JSON prompt"
-                    ].map((action, i) => (
+                    {[t("editAction1"), t("editAction2"), t("editAction3"), t("editAction4")].map((action, i) => (
                       <button
                         type="button"
                         key={i}
@@ -378,7 +394,40 @@ export function PromptBuilder({
                     : "bg-muted"
                 )}
               >
-                <p className="whitespace-pre-wrap">{message.content}</p>
+                {message.role === "user" ? (
+                  <p className="whitespace-pre-wrap">{message.content}</p>
+                ) : (
+                  <div className="text-sm">
+                    <ReactMarkdown
+                      components={{
+                        p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
+                        ul: ({ children }) => <ul className="mb-2 ml-4 list-disc list-inside">{children}</ul>,
+                        ol: ({ children }) => <ol className="mb-2 ml-4 list-decimal list-inside">{children}</ol>,
+                        li: ({ children }) => <li className="mb-1">{children}</li>,
+                        code: ({ className, children, ...props }) => {
+                          const isBlock = className?.includes("language-") || String(children).includes("\n");
+                          if (isBlock) {
+                            return (
+                              <pre className="bg-background/80 border rounded-md p-3 my-2 overflow-x-auto">
+                                <code className="text-xs">{children}</code>
+                              </pre>
+                            );
+                          }
+                          return <code className="bg-background/80 px-1.5 py-0.5 rounded text-xs font-mono" {...props}>{children}</code>;
+                        },
+                        pre: ({ children }) => <>{children}</>,
+                        strong: ({ children }) => <strong className="font-bold">{children}</strong>,
+                        em: ({ children }) => <em className="italic">{children}</em>,
+                        h1: ({ children }) => <h1 className="text-lg font-bold mb-2 mt-3">{children}</h1>,
+                        h2: ({ children }) => <h2 className="text-base font-bold mb-2 mt-3">{children}</h2>,
+                        h3: ({ children }) => <h3 className="text-sm font-bold mb-1 mt-2">{children}</h3>,
+                        blockquote: ({ children }) => <blockquote className="border-l-2 border-muted-foreground/50 pl-3 my-2 italic">{children}</blockquote>,
+                      }}
+                    >
+                      {message.content}
+                    </ReactMarkdown>
+                  </div>
+                )}
               </div>
 
               {/* Tool calls indicator */}

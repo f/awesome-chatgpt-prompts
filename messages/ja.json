@@ -650,6 +650,20 @@
     "tokens": "トークン",
     "noChanges": "変更なし"
   },
+  "heroPromptInput": {
+    "placeholder": "作成したいプロンプトを説明してください...",
+    "ariaLabel": "作成したいプロンプトを説明してください",
+    "submit": "プロンプトを作成",
+    "hint": "クリックしてAIで作成を開始",
+    "modelName": "プロンプトエージェント",
+    "examples": {
+      "codeReview": "バグを検出するコードレビューアシスタントを作成",
+      "emailWriter": "あらゆる場面に対応するプロフェッショナルなメール作成ツールを構築",
+      "studyPlanner": "パーソナライズされた学習プランジェネレーターを設計",
+      "recipeGenerator": "手持ちの食材でレシピを作成するツールを作成",
+      "interviewCoach": "面接対策コーチを作成"
+    }
+  },
   "notFound": {
     "title": "ページが見つかりません",
     "description": "お探しのページは存在しないか、移動された可能性があります。",
@@ -676,7 +690,11 @@
     "currentPrompt": "構築中：",
     "stateTitle": "タイトル",
     "stateContent": "内容",
-    "stateTags": "タグ"
+    "stateTags": "タグ",
+    "editAction1": "不足フィールドを埋め、タグを更新。",
+    "editAction2": "変数を改善",
+    "editAction3": "変数を使用",
+    "editAction4": "JSONプロンプトに変換"
   },
   "report": {
     "report": "報告",

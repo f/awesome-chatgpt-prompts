@@ -11,9 +11,14 @@ export const metadata: Metadata = {
   description: "Create a new prompt",
 };
 
-export default async function NewPromptPage() {
+interface PageProps {
+  searchParams: Promise<{ prompt?: string }>;
+}
+
+export default async function NewPromptPage({ searchParams }: PageProps) {
   const session = await auth();
   const t = await getTranslations("prompts");
+  const { prompt: initialPromptRequest } = await searchParams;
 
   if (!session?.user) {
     redirect("/login");
@@ -46,6 +51,7 @@ export default async function NewPromptPage() {
         tags={tags} 
         aiGenerationEnabled={aiGenerationEnabled}
         aiModelName={aiModelName}
+        initialPromptRequest={initialPromptRequest}
       />
     </div>
   );

@@ -650,6 +650,20 @@
     "tokens": "token",
     "noChanges": "Nessuna modifica"
   },
+  "heroPromptInput": {
+    "placeholder": "Descrivi il prompt che vuoi creare...",
+    "ariaLabel": "Descrivi il prompt che vuoi creare",
+    "submit": "Crea prompt",
+    "hint": "Clicca per iniziare a creare con l'IA",
+    "modelName": "Agente Prompt",
+    "examples": {
+      "codeReview": "Crea un assistente di revisione codice che rileva bug",
+      "emailWriter": "Costruisci uno scrittore di email professionali per ogni occasione",
+      "studyPlanner": "Progetta un generatore di piani di studio personalizzati",
+      "recipeGenerator": "Crea un generatore di ricette basato sugli ingredienti disponibili",
+      "interviewCoach": "Crea un coach di preparazione ai colloqui"
+    }
+  },
   "notFound": {
     "title": "Pagina Non Trovata",
     "description": "La pagina che stai cercando non esiste o è stata spostata.",
@@ -676,7 +690,11 @@
     "currentPrompt": "In costruzione:",
     "stateTitle": "Titolo",
     "stateContent": "Contenuto",
-    "stateTags": "tag"
+    "stateTags": "tag",
+    "editAction1": "Compila i campi mancanti, aggiorna i tag.",
+    "editAction2": "Migliora le variabili",
+    "editAction3": "Usa le variabili",
+    "editAction4": "Converti in prompt JSON"
   },
   "report": {
     "report": "Segnala",

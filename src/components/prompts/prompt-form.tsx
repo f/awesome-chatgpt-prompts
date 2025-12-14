@@ -234,9 +234,10 @@ interface PromptFormProps {
   mode?: "create" | "edit";
   aiGenerationEnabled?: boolean;
   aiModelName?: string;
+  initialPromptRequest?: string;
 }
 
-export function PromptForm({ categories, tags, initialData, initialContributors = [], promptId, mode = "create", aiGenerationEnabled = false, aiModelName }: PromptFormProps) {
+export function PromptForm({ categories, tags, initialData, initialContributors = [], promptId, mode = "create", aiGenerationEnabled = false, aiModelName, initialPromptRequest }: PromptFormProps) {
   const router = useRouter();
   const t = useTranslations("prompts");
   const tCommon = useTranslations("common");
@@ -422,6 +423,7 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
                   currentState={currentBuilderState}
                   onStateChange={handleBuilderStateChange}
                   modelName={aiModelName}
+                  initialPromptRequest={initialPromptRequest}
                 />
               )}
               <FormField

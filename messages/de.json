@@ -650,6 +650,20 @@
     "tokens": "Token",
     "noChanges": "Keine Änderungen"
   },
+  "heroPromptInput": {
+    "placeholder": "Beschreiben Sie den Prompt, den Sie erstellen möchten...",
+    "ariaLabel": "Beschreiben Sie den Prompt, den Sie erstellen möchten",
+    "submit": "Prompt erstellen",
+    "hint": "Klicken Sie, um mit KI zu erstellen",
+    "modelName": "Prompt-Agent",
+    "examples": {
+      "codeReview": "Erstellen Sie einen Code-Review-Assistenten, der Bugs findet",
+      "emailWriter": "Bauen Sie einen professionellen E-Mail-Verfasser für jeden Anlass",
+      "studyPlanner": "Entwerfen Sie einen personalisierten Lernplan-Generator",
+      "recipeGenerator": "Erstellen Sie einen Rezeptgenerator basierend auf verfügbaren Zutaten",
+      "interviewCoach": "Erstellen Sie einen Vorstellungsgespräch-Coach"
+    }
+  },
   "notFound": {
     "title": "Seite nicht gefunden",
     "description": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
@@ -676,7 +690,11 @@
     "currentPrompt": "Erstellen:",
     "stateTitle": "Titel",
     "stateContent": "Inhalt",
-    "stateTags": "Tags"
+    "stateTags": "Tags",
+    "editAction1": "Fehlende Felder ausfüllen, Tags aktualisieren.",
+    "editAction2": "Variablen verbessern",
+    "editAction3": "Variablen verwenden",
+    "editAction4": "In JSON-Prompt konvertieren"
   },
   "report": {
     "report": "Melden",

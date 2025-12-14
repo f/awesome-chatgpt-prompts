@@ -6,6 +6,7 @@ import { auth } from "@/lib/auth";
 import { getConfig } from "@/lib/config";
 import { Button } from "@/components/ui/button";
 import { DiscoveryPrompts } from "@/components/prompts/discovery-prompts";
+import { HeroPromptInput } from "@/components/prompts/hero-prompt-input";
 
 function getOrdinalSuffix(n: number): string {
   const s = ["th", "st", "nd", "rd"];
@@ -24,6 +25,7 @@ export default async function HomePage() {
   const showRegisterButton = !session && (isOAuth || (config.auth.provider === "credentials" && config.auth.allowRegistration));
 
   const useCloneBranding = config.homepage?.useCloneBranding ?? false;
+  const aiGenerationEnabled = config.features?.aiGeneration ?? false;
 
   // Fetch GitHub stars dynamically (with caching) - only if not using clone branding
   let githubStars = 139000; // fallback
@@ -67,16 +69,25 @@ export default async function HomePage() {
           </div>
         ) : (
           <div className="absolute top-0 right-0 bottom-0 w-1/2 hidden md:block pointer-events-none">
-            <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent z-10" />
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="absolute top-1/2 -translate-y-1/2 right-0 w-full h-auto opacity-30 dark:opacity-15 dark:invert"
-            >
-              <source src="/animation.mp4" type="video/mp4" />
-            </video>
+            {/* Video background */}
+            <div className="absolute inset-0">
+              <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent z-10" />
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute top-1/2 -translate-y-1/2 right-0 w-full h-auto opacity-30 dark:opacity-15 dark:invert"
+              >
+                <source src="/animation.mp4" type="video/mp4" />
+              </video>
+            </div>
+            {/* Animated input overlay - only show if AI generation is enabled */}
+            {aiGenerationEnabled && (
+              <div className="absolute inset-0 hidden lg:flex items-center justify-center z-30 pr-8 pointer-events-auto">
+                <HeroPromptInput />
+              </div>
+            )}
           </div>
         )}
         

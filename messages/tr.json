@@ -650,6 +650,20 @@
     "tokens": "token",
     "noChanges": "Değişiklik yok"
   },
+  "heroPromptInput": {
+    "placeholder": "Oluşturmak istediğiniz promptu tanımlayın...",
+    "ariaLabel": "Oluşturmak istediğiniz promptu tanımlayın",
+    "submit": "Prompt oluştur",
+    "hint": "AI ile oluşturmaya başlamak için tıklayın",
+    "modelName": "Prompt Ajanı",
+    "examples": {
+      "codeReview": "Hataları yakalayan bir kod inceleme asistanı oluştur",
+      "emailWriter": "Her durum için profesyonel e-posta yazıcısı oluştur",
+      "studyPlanner": "Kişiselleştirilmiş çalışma planı oluşturucu tasarla",
+      "recipeGenerator": "Mevcut malzemelere göre tarif oluşturucu yap",
+      "interviewCoach": "Mülakat hazırlık koçu oluştur"
+    }
+  },
   "notFound": {
     "title": "Sayfa Bulunamadı",
     "description": "Aradığınız sayfa mevcut değil veya taşınmış olabilir.",
@@ -676,7 +690,11 @@
     "currentPrompt": "Oluşturuluyor:",
     "stateTitle": "Başlık",
     "stateContent": "İçerik",
-    "stateTags": "etiketler"
+    "stateTags": "etiketler",
+    "editAction1": "Eksik alanları doldur, etiketleri güncelle.",
+    "editAction2": "Değişkenleri iyileştir",
+    "editAction3": "Değişkenleri kullan",
+    "editAction4": "JSON promptuna dönüştür"
   },
   "report": {
     "report": "Şikayet Et",

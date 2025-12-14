@@ -660,6 +660,20 @@
     "categories": "Categories",
     "createPrompt": "Create Prompt"
   },
+  "heroPromptInput": {
+    "placeholder": "Describe the prompt you want to build...",
+    "ariaLabel": "Describe the prompt you want to build",
+    "submit": "Create prompt",
+    "hint": "Click to start building with AI",
+    "modelName": "Prompt Agent",
+    "examples": {
+      "codeReview": "Create a code review assistant that catches bugs",
+      "emailWriter": "Build a professional email writer for any occasion",
+      "studyPlanner": "Design a personalized study plan generator",
+      "recipeGenerator": "Make a recipe creator based on available ingredients",
+      "interviewCoach": "Create an interview preparation coach"
+    }
+  },
   "promptBuilder": {
     "title": "Prompt Building Agent",
     "openBuilder": "Prompt Agent",
@@ -676,7 +690,11 @@
     "currentPrompt": "Building:",
     "stateTitle": "Title",
     "stateContent": "Content",
-    "stateTags": "tags"
+    "stateTags": "tags",
+    "editAction1": "Fill missing fields, update tags.",
+    "editAction2": "Make variables better",
+    "editAction3": "Use variables",
+    "editAction4": "Convert to JSON prompt"
   },
   "report": {
     "report": "Report",

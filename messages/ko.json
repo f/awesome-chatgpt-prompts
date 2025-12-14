@@ -650,6 +650,20 @@
     "tokens": "토큰",
     "noChanges": "변경 없음"
   },
+  "heroPromptInput": {
+    "placeholder": "만들고 싶은 프롬프트를 설명하세요...",
+    "ariaLabel": "만들고 싶은 프롬프트를 설명하세요",
+    "submit": "프롬프트 만들기",
+    "hint": "클릭하여 AI로 만들기 시작",
+    "modelName": "프롬프트 에이전트",
+    "examples": {
+      "codeReview": "버그를 잡아내는 코드 리뷰 어시스턴트 만들기",
+      "emailWriter": "모든 상황에 맞는 전문 이메일 작성기 만들기",
+      "studyPlanner": "맞춤형 학습 계획 생성기 설계",
+      "recipeGenerator": "가용 재료로 레시피 생성기 만들기",
+      "interviewCoach": "면접 준비 코치 만들기"
+    }
+  },
   "notFound": {
     "title": "페이지를 찾을 수 없습니다",
     "description": "찾고 계신 페이지가 존재하지 않거나 이동되었습니다.",
@@ -676,7 +690,11 @@
     "currentPrompt": "구축 중:",
     "stateTitle": "제목",
     "stateContent": "내용",
-    "stateTags": "태그"
+    "stateTags": "태그",
+    "editAction1": "누락된 필드 채우기, 태그 업데이트.",
+    "editAction2": "변수 개선",
+    "editAction3": "변수 사용",
+    "editAction4": "JSON 프롬프트로 변환"
   },
   "report": {
     "report": "신고",

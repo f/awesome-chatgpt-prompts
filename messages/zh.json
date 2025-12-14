@@ -650,6 +650,20 @@
     "tokens": "token",
     "noChanges": "无变更"
   },
+  "heroPromptInput": {
+    "placeholder": "描述你想要创建的提示词...",
+    "ariaLabel": "描述你想要创建的提示词",
+    "submit": "创建提示词",
+    "hint": "点击开始用AI创建",
+    "modelName": "提示词助手",
+    "examples": {
+      "codeReview": "创建一个能发现bug的代码审查助手",
+      "emailWriter": "打造一个适用于各种场合的专业邮件撰写器",
+      "studyPlanner": "设计一个个性化学习计划生成器",
+      "recipeGenerator": "制作一个根据现有食材生成食谱的工具",
+      "interviewCoach": "创建一个面试准备教练"
+    }
+  },
   "notFound": {
     "title": "页面未找到",
     "description": "您要查找的页面不存在或已被移动。",
@@ -676,7 +690,11 @@
     "currentPrompt": "构建中：",
     "stateTitle": "标题",
     "stateContent": "内容",
-    "stateTags": "标签"
+    "stateTags": "标签",
+    "editAction1": "填写缺失字段，更新标签。",
+    "editAction2": "改进变量",
+    "editAction3": "使用变量",
+    "editAction4": "转换为JSON提示词"
   },
   "report": {
     "report": "举报",
