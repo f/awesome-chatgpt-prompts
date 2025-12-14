@@ -721,6 +721,7 @@
   "mcp": {
     "button": "MCP Sunucusu",
     "title": "MCP Sunucu Yapılandırması",
+    "description": "VS Code, Cursor ve Claude Desktop gibi desteklenen istemcilerde MCP promptlarını kullanın. Bu yapılandırmayı MCP ayarlarınıza ekleyin.",
     "copy": "Kopyala",
     "copied": "Kopyalandı!",
     "customizeFilters": "Promptları daraltmak için filtreleri özelleştirin:",

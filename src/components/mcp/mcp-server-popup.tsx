@@ -155,9 +155,14 @@ export function McpServerPopup({
             </Button>
           </div>
 
+          {/* Description */}
+          <p className="text-xs text-muted-foreground">
+            {t("description")}
+          </p>
+
           {/* Config JSON */}
           <div className="bg-muted rounded-md p-3 font-mono text-xs overflow-x-auto">
-            <pre className="whitespace-nowrap">{configJson}</pre>
+            <pre className="whitespace-pre">{configJson}</pre>
           </div>
 
           {/* Filters */}

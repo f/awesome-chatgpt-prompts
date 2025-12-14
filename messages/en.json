@@ -721,6 +721,7 @@
   "mcp": {
     "button": "MCP Server",
     "title": "MCP Server Configuration",
+    "description": "Use MCP prompts in supported clients like VS Code, Cursor, and Claude Desktop. Add this config to your MCP settings.",
     "copy": "Copy",
     "copied": "Copied!",
     "customizeFilters": "Customize filters to narrow down prompts:",

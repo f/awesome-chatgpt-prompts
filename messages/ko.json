@@ -721,6 +721,7 @@
   "mcp": {
     "button": "MCP 서버",
     "title": "MCP 서버 설정",
+    "description": "VS Code, Cursor, Claude Desktop과 같은 지원 클라이언트에서 MCP 프롬프트를 사용하세요. 이 설정을 MCP 설정에 추가하세요.",
     "copy": "복사",
     "copied": "복사됨!",
     "customizeFilters": "필터를 사용자 정의하여 프롬프트 범위를 좁히세요:",

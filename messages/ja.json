@@ -721,6 +721,7 @@
   "mcp": {
     "button": "MCPサーバー",
     "title": "MCPサーバー設定",
+    "description": "VS Code、Cursor、Claude Desktopなどの対応クライアントでMCPプロンプトを使用できます。この設定をMCP設定に追加してください。",
     "copy": "コピー",
     "copied": "コピーしました！",
     "customizeFilters": "フィルターをカスタマイズしてプロンプトを絞り込む：",
