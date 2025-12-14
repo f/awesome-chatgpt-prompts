@@ -10,6 +10,31 @@ import {
 
 const GENERATIVE_MODEL = process.env.OPENAI_GENERATIVE_MODEL || "gpt-4o-mini";
 
+// Rate limiting configuration
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
+const RATE_LIMIT_MAX_REQUESTS = 10; // 10 requests per minute per user
+
+// In-memory rate limit store (resets on server restart)
+const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
+
+function checkRateLimit(userId: string): { allowed: boolean; remaining: number; resetIn: number } {
+  const now = Date.now();
+  const userLimit = rateLimitStore.get(userId);
+
+  if (!userLimit || now > userLimit.resetAt) {
+    // Reset or initialize
+    rateLimitStore.set(userId, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return { allowed: true, remaining: RATE_LIMIT_MAX_REQUESTS - 1, resetIn: RATE_LIMIT_WINDOW_MS };
+  }
+
+  if (userLimit.count >= RATE_LIMIT_MAX_REQUESTS) {
+    return { allowed: false, remaining: 0, resetIn: userLimit.resetAt - now };
+  }
+
+  userLimit.count++;
+  return { allowed: true, remaining: RATE_LIMIT_MAX_REQUESTS - userLimit.count, resetIn: userLimit.resetAt - now };
+}
+
 const SYSTEM_PROMPT = `You are an expert prompt engineer agent. Your job is to quickly build high-quality prompts that match the style and quality of existing prompts in the database.
 
 MANDATORY FIRST STEP - LEARN FROM EXAMPLES:
@@ -137,6 +162,23 @@ export async function POST(request: NextRequest) {
     return new Response(JSON.stringify({ error: "Unauthorized" }), {
       status: 401,
       headers: { "Content-Type": "application/json" },
+    });
+  }
+
+  // Check rate limit
+  const userId = session.user.id || session.user.email || "anonymous";
+  const rateLimit = checkRateLimit(userId);
+  if (!rateLimit.allowed) {
+    return new Response(JSON.stringify({ 
+      error: "Rate limit exceeded. Please try again later.",
+      resetIn: Math.ceil(rateLimit.resetIn / 1000)
+    }), {
+      status: 429,
+      headers: { 
+        "Content-Type": "application/json",
+        "X-RateLimit-Remaining": "0",
+        "X-RateLimit-Reset": String(Math.ceil(rateLimit.resetIn / 1000)),
+      },
     });
   }
 
