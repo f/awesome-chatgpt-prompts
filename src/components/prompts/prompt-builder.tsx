@@ -85,16 +85,12 @@ export function PromptBuilder({
     scrollToBottom();
   }, [messages, streamingContent]);
 
-  // Auto-send initial prompt request if provided
-  const initialRequestSentRef = useRef(false);
+  // Pre-fill input with initial prompt request if provided (user needs to press send)
+  const initialRequestFilledRef = useRef(false);
   useEffect(() => {
-    if (initialPromptRequest && !initialRequestSentRef.current && !isLoading) {
-      initialRequestSentRef.current = true;
+    if (initialPromptRequest && !initialRequestFilledRef.current) {
+      initialRequestFilledRef.current = true;
       setInput(initialPromptRequest);
-      // Use setTimeout to ensure the input is set before sending
-      setTimeout(() => {
-        sendMessageWithContent(initialPromptRequest);
-      }, 100);
     }
   }, [initialPromptRequest]);
 
