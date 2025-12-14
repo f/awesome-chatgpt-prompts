@@ -58,7 +58,7 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
   }, [tags, tagSearch]);
 
   const updateFilter = (key: string, value: string | null) => {
-    const params = new URLSearchParams(searchParams.toString());
+    const params = new URLSearchParams(searchParams?.toString() || "");
     if (value) {
       params.set(key, value);
     } else {
