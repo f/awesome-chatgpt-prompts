@@ -660,6 +660,24 @@
     "categories": "Kategoriler",
     "createPrompt": "Prompt Oluştur"
   },
+  "promptBuilder": {
+    "title": "Prompt Oluşturma Ajanı",
+    "openBuilder": "Prompt Ajanı",
+    "welcomeTitle": "Yapay zeka ile prompt oluştur",
+    "welcomeDescription": "Ne oluşturmak istediğinizi açıklayın, adım adım size yardımcı olacağım.",
+    "tryAsking": "Şunu sormayı deneyin:",
+    "example1": "Kod inceleme promptu oluştur",
+    "example2": "Yaratıcı yazarlık için prompt yazmama yardım et",
+    "example3": "Makale özetleme için bir prompt gerekiyor",
+    "inputPlaceholder": "Ne oluşturmak istediğinizi açıklayın...",
+    "thinking": "Düşünüyor...",
+    "errorMessage": "Bir şeyler yanlış gitti. Lütfen tekrar deneyin.",
+    "foundExamples": "{count} benzer prompt bulundu:",
+    "currentPrompt": "Oluşturuluyor:",
+    "stateTitle": "Başlık",
+    "stateContent": "İçerik",
+    "stateTags": "etiketler"
+  },
   "report": {
     "report": "Şikayet Et",
     "reportPrompt": "Promptu Şikayet Et",

@@ -660,6 +660,24 @@
     "categories": "Kategorien",
     "createPrompt": "Prompt erstellen"
   },
+  "promptBuilder": {
+    "title": "Prompt-Erstellungsagent",
+    "openBuilder": "Prompt-Agent",
+    "welcomeTitle": "Prompts mit KI erstellen",
+    "welcomeDescription": "Beschreiben Sie, was Sie erstellen möchten, und ich helfe Ihnen Schritt für Schritt dabei.",
+    "tryAsking": "Versuchen Sie zu fragen:",
+    "example1": "Erstelle einen Code-Review-Prompt",
+    "example2": "Hilf mir, einen Prompt für kreatives Schreiben zu erstellen",
+    "example3": "Ich brauche einen Prompt zum Zusammenfassen von Artikeln",
+    "inputPlaceholder": "Beschreiben Sie, was Sie erstellen möchten...",
+    "thinking": "Denke nach...",
+    "errorMessage": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+    "foundExamples": "{count} ähnliche Prompts gefunden:",
+    "currentPrompt": "Erstellen:",
+    "stateTitle": "Titel",
+    "stateContent": "Inhalt",
+    "stateTags": "Tags"
+  },
   "report": {
     "report": "Melden",
     "reportPrompt": "Prompt melden",

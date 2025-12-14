@@ -660,6 +660,24 @@
     "categories": "分类",
     "createPrompt": "创建提示词"
   },
+  "promptBuilder": {
+    "title": "提示词构建代理",
+    "openBuilder": "提示词代理",
+    "welcomeTitle": "用AI创建提示词",
+    "welcomeDescription": "描述您想创建的内容，我将一步步帮助您构建。",
+    "tryAsking": "尝试询问：",
+    "example1": "创建一个代码审查提示词",
+    "example2": "帮我写一个创意写作提示词",
+    "example3": "我需要一个文章摘要提示词",
+    "inputPlaceholder": "描述您想创建的内容...",
+    "thinking": "思考中...",
+    "errorMessage": "出了点问题。请再试一次。",
+    "foundExamples": "找到{count}个相似提示词：",
+    "currentPrompt": "构建中：",
+    "stateTitle": "标题",
+    "stateContent": "内容",
+    "stateTags": "标签"
+  },
   "report": {
     "report": "举报",
     "reportPrompt": "举报提示词",

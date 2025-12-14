@@ -660,6 +660,24 @@
     "categories": "Categorías",
     "createPrompt": "Crear Prompt"
   },
+  "promptBuilder": {
+    "title": "Agente Constructor de Prompts",
+    "openBuilder": "Agente de Prompts",
+    "welcomeTitle": "Crear prompts con IA",
+    "welcomeDescription": "Describe lo que quieres crear y te ayudaré a construirlo paso a paso.",
+    "tryAsking": "Intenta preguntar:",
+    "example1": "Crear un prompt para revisión de código",
+    "example2": "Ayúdame a escribir un prompt para escritura creativa",
+    "example3": "Necesito un prompt para resumir artículos",
+    "inputPlaceholder": "Describe lo que quieres crear...",
+    "thinking": "Pensando...",
+    "errorMessage": "Algo salió mal. Por favor, inténtalo de nuevo.",
+    "foundExamples": "Se encontraron {count} prompts similares:",
+    "currentPrompt": "Construyendo:",
+    "stateTitle": "Título",
+    "stateContent": "Contenido",
+    "stateTags": "etiquetas"
+  },
   "report": {
     "report": "Reportar",
     "reportPrompt": "Reportar Prompt",

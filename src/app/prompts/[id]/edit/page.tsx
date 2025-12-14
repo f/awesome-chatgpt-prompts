@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { PromptForm } from "@/components/prompts/prompt-form";
+import { isAIGenerationEnabled, getAIModelName } from "@/lib/ai/generation";
 
 interface EditPromptPageProps {
   params: Promise<{ id: string }>;
@@ -85,6 +86,10 @@ export default async function EditPromptPage({ params }: EditPromptPageProps) {
     requiredMediaCount: prompt.requiredMediaCount || 1,
   };
 
+  // Check if AI generation is enabled
+  const aiGenerationEnabled = await isAIGenerationEnabled();
+  const aiModelName = getAIModelName();
+
   return (
     <div className="container max-w-3xl py-8">
       <PromptForm
@@ -94,6 +99,8 @@ export default async function EditPromptPage({ params }: EditPromptPageProps) {
         initialContributors={prompt.contributors}
         promptId={id}
         mode="edit"
+        aiGenerationEnabled={aiGenerationEnabled}
+        aiModelName={aiModelName}
       />
     </div>
   );

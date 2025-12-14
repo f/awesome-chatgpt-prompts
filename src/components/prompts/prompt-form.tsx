@@ -11,6 +11,7 @@ import { VariableToolbar } from "./variable-toolbar";
 import { VariableWarning } from "./variable-warning";
 import { VariableHint } from "./variable-hint";
 import { ContributorSearch } from "./contributor-search";
+import { PromptBuilder } from "./prompt-builder";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -231,9 +232,11 @@ interface PromptFormProps {
   initialContributors?: Contributor[];
   promptId?: string;
   mode?: "create" | "edit";
+  aiGenerationEnabled?: boolean;
+  aiModelName?: string;
 }
 
-export function PromptForm({ categories, tags, initialData, initialContributors = [], promptId, mode = "create" }: PromptFormProps) {
+export function PromptForm({ categories, tags, initialData, initialContributors = [], promptId, mode = "create", aiGenerationEnabled = false, aiModelName }: PromptFormProps) {
   const router = useRouter();
   const t = useTranslations("prompts");
   const tCommon = useTranslations("common");
@@ -268,6 +271,63 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
   const promptContent = form.watch("content");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const codeEditorRef = useRef<CodeEditorHandle>(null);
+
+  // Warn user before leaving page with unsaved changes
+  const isDirty = form.formState.isDirty;
+  useEffect(() => {
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (isDirty) {
+        e.preventDefault();
+        e.returnValue = "";
+      }
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
+  }, [isDirty]);
+
+  // Handler for AI builder state changes
+  const handleBuilderStateChange = (newState: {
+    title: string;
+    description: string;
+    content: string;
+    type: "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "STRUCTURED";
+    structuredFormat?: "JSON" | "YAML";
+    categoryId?: string;
+    tagIds: string[];
+    isPrivate: boolean;
+    requiresMediaUpload: boolean;
+    requiredMediaType?: "IMAGE" | "VIDEO" | "DOCUMENT";
+    requiredMediaCount?: number;
+  }) => {
+    const opts = { shouldDirty: true, shouldTouch: true };
+    if (newState.title) form.setValue("title", newState.title, opts);
+    if (newState.description) form.setValue("description", newState.description, opts);
+    if (newState.content) form.setValue("content", newState.content, opts);
+    if (newState.type) form.setValue("type", newState.type, opts);
+    if (newState.structuredFormat) form.setValue("structuredFormat", newState.structuredFormat, opts);
+    if (newState.categoryId) form.setValue("categoryId", newState.categoryId, opts);
+    if (newState.tagIds?.length) form.setValue("tagIds", newState.tagIds, opts);
+    form.setValue("isPrivate", newState.isPrivate, opts);
+    form.setValue("requiresMediaUpload", newState.requiresMediaUpload, opts);
+    if (newState.requiredMediaType) form.setValue("requiredMediaType", newState.requiredMediaType, opts);
+    if (newState.requiredMediaCount) form.setValue("requiredMediaCount", newState.requiredMediaCount, opts);
+  };
+
+  // Current state for AI builder
+  const currentBuilderState = {
+    title: form.watch("title"),
+    description: form.watch("description") || "",
+    content: form.watch("content"),
+    type: form.watch("type"),
+    structuredFormat: form.watch("structuredFormat"),
+    categoryId: form.watch("categoryId"),
+    tagIds: form.watch("tagIds"),
+    isPrivate: form.watch("isPrivate"),
+    requiresMediaUpload: form.watch("requiresMediaUpload"),
+    requiredMediaType: form.watch("requiredMediaType"),
+    requiredMediaCount: form.watch("requiredMediaCount"),
+  };
 
   const getSelectedText = () => {
     // For text prompts using textarea
@@ -348,27 +408,39 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
   };
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-        {/* Header: Page title + Private Switch */}
-        <div className="flex items-center justify-between mb-2">
-          <h1 className="text-lg font-semibold">{mode === "edit" ? t("edit") : t("create")}</h1>
-          <FormField
-            control={form.control}
-            name="isPrivate"
-            render={({ field }) => (
-              <FormItem className="flex items-center gap-2">
-                <FormControl>
-                  <Switch
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
-                  />
-                </FormControl>
-                <FormLabel className="!mt-0 text-sm font-normal">{t("promptPrivate")}</FormLabel>
-              </FormItem>
-            )}
-          />
-        </div>
+    <>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          {/* Header: Page title + Private Switch */}
+          <div className="flex items-center justify-between mb-2">
+            <h1 className="text-lg font-semibold">{mode === "edit" ? t("edit") : t("create")}</h1>
+            <div className="flex items-center gap-3">
+              {aiGenerationEnabled && (
+                <PromptBuilder
+                  availableTags={tags}
+                  availableCategories={categories}
+                  currentState={currentBuilderState}
+                  onStateChange={handleBuilderStateChange}
+                  modelName={aiModelName}
+                />
+              )}
+              <FormField
+                control={form.control}
+                name="isPrivate"
+                render={({ field }) => (
+                  <FormItem className="flex items-center gap-2">
+                    <FormControl>
+                      <Switch
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                      />
+                    </FormControl>
+                    <FormLabel className="!mt-0 text-sm font-normal">{t("promptPrivate")}</FormLabel>
+                  </FormItem>
+                )}
+              />
+            </div>
+          </div>
 
         {/* Row 1: Title + Category */}
         <div className="flex items-start gap-4">
@@ -393,7 +465,7 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
                 <FormLabel>{t("promptCategory")}</FormLabel>
                 <Select 
                   onValueChange={(value) => field.onChange(value === "__none__" ? undefined : value)} 
-                  defaultValue={field.value || "__none__"}
+                  value={field.value || "__none__"}
                 >
                   <FormControl>
                     <SelectTrigger className="w-full">
@@ -625,7 +697,8 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
             {mode === "edit" ? t("update") : t("createButton")} Prompt
           </Button>
         </div>
-      </form>
-    </Form>
+        </form>
+      </Form>
+    </>
   );
 }

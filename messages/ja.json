@@ -660,6 +660,24 @@
     "categories": "カテゴリー",
     "createPrompt": "プロンプトを作成"
   },
+  "promptBuilder": {
+    "title": "プロンプト構築エージェント",
+    "openBuilder": "プロンプトエージェント",
+    "welcomeTitle": "AIでプロンプトを作成",
+    "welcomeDescription": "作成したいものを説明してください。ステップバイステップでお手伝いします。",
+    "tryAsking": "質問してみてください：",
+    "example1": "コードレビュー用のプロンプトを作成",
+    "example2": "クリエイティブライティング用のプロンプトを書くのを手伝って",
+    "example3": "記事を要約するプロンプトが必要",
+    "inputPlaceholder": "作成したいものを説明してください...",
+    "thinking": "考え中...",
+    "errorMessage": "エラーが発生しました。もう一度お試しください。",
+    "foundExamples": "{count}件の類似プロンプトが見つかりました：",
+    "currentPrompt": "構築中：",
+    "stateTitle": "タイトル",
+    "stateContent": "内容",
+    "stateTags": "タグ"
+  },
   "report": {
     "report": "報告",
     "reportPrompt": "プロンプトを報告",

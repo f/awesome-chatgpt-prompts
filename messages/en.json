@@ -660,6 +660,24 @@
     "categories": "Categories",
     "createPrompt": "Create Prompt"
   },
+  "promptBuilder": {
+    "title": "Prompt Building Agent",
+    "openBuilder": "Prompt Agent",
+    "welcomeTitle": "Build prompts with AI",
+    "welcomeDescription": "Describe what you want to create and I'll help you build it step by step.",
+    "tryAsking": "Try asking:",
+    "example1": "Create a code review prompt",
+    "example2": "Help me write a prompt for creative writing",
+    "example3": "I need a prompt for summarizing articles",
+    "inputPlaceholder": "Describe what you want to create...",
+    "thinking": "Thinking...",
+    "errorMessage": "Something went wrong. Please try again.",
+    "foundExamples": "Found {count} similar prompts:",
+    "currentPrompt": "Building:",
+    "stateTitle": "Title",
+    "stateContent": "Content",
+    "stateTags": "tags"
+  },
   "report": {
     "report": "Report",
     "reportPrompt": "Report Prompt",

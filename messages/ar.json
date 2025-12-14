@@ -660,6 +660,24 @@
     "categories": "التصنيفات",
     "createPrompt": "إنشاء أمر"
   },
+  "promptBuilder": {
+    "title": "وكيل بناء الأوامر",
+    "openBuilder": "وكيل الأوامر",
+    "welcomeTitle": "إنشاء أوامر بالذكاء الاصطناعي",
+    "welcomeDescription": "صف ما تريد إنشاءه وسأساعدك في بنائه خطوة بخطوة.",
+    "tryAsking": "جرب أن تسأل:",
+    "example1": "إنشاء أمر لمراجعة الكود",
+    "example2": "ساعدني في كتابة أمر للكتابة الإبداعية",
+    "example3": "أحتاج أمراً لتلخيص المقالات",
+    "inputPlaceholder": "صف ما تريد إنشاءه...",
+    "thinking": "جارٍ التفكير...",
+    "errorMessage": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+    "foundExamples": "تم العثور على {count} أوامر مشابهة:",
+    "currentPrompt": "قيد الإنشاء:",
+    "stateTitle": "العنوان",
+    "stateContent": "المحتوى",
+    "stateTags": "وسوم"
+  },
   "report": {
     "report": "إبلاغ",
     "reportPrompt": "الإبلاغ عن الأمر",

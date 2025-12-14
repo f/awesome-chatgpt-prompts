@@ -660,6 +660,24 @@
     "categories": "카테고리",
     "createPrompt": "프롬프트 만들기"
   },
+  "promptBuilder": {
+    "title": "프롬프트 빌딩 에이전트",
+    "openBuilder": "프롬프트 에이전트",
+    "welcomeTitle": "AI로 프롬프트 만들기",
+    "welcomeDescription": "만들고 싶은 것을 설명해 주시면 단계별로 도와드리겠습니다.",
+    "tryAsking": "질문해 보세요:",
+    "example1": "코드 리뷰 프롬프트 만들기",
+    "example2": "창작 글쓰기 프롬프트 작성 도와주세요",
+    "example3": "기사 요약 프롬프트가 필요해요",
+    "inputPlaceholder": "만들고 싶은 것을 설명해 주세요...",
+    "thinking": "생각 중...",
+    "errorMessage": "문제가 발생했습니다. 다시 시도해 주세요.",
+    "foundExamples": "{count}개의 유사한 프롬프트를 찾았습니다:",
+    "currentPrompt": "구축 중:",
+    "stateTitle": "제목",
+    "stateContent": "내용",
+    "stateTags": "태그"
+  },
   "report": {
     "report": "신고",
     "reportPrompt": "프롬프트 신고",

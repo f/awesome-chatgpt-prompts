@@ -19,6 +19,10 @@ function getOpenAIClient(): OpenAI {
 
 const GENERATIVE_MODEL = process.env.OPENAI_GENERATIVE_MODEL || "gpt-4o-mini";
 
+export function getAIModelName(): string {
+  return GENERATIVE_MODEL;
+}
+
 export async function isAIGenerationEnabled(): Promise<boolean> {
   const config = await getConfig();
   return !!(config.features.aiGeneration && process.env.OPENAI_API_KEY);

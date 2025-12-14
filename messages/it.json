@@ -660,6 +660,24 @@
     "categories": "Categorie",
     "createPrompt": "Crea Prompt"
   },
+  "promptBuilder": {
+    "title": "Agente Costruttore di Prompt",
+    "openBuilder": "Agente Prompt",
+    "welcomeTitle": "Crea prompt con l'IA",
+    "welcomeDescription": "Descrivi cosa vuoi creare e ti aiuterò a costruirlo passo dopo passo.",
+    "tryAsking": "Prova a chiedere:",
+    "example1": "Crea un prompt per la revisione del codice",
+    "example2": "Aiutami a scrivere un prompt per la scrittura creativa",
+    "example3": "Ho bisogno di un prompt per riassumere articoli",
+    "inputPlaceholder": "Descrivi cosa vuoi creare...",
+    "thinking": "Sto pensando...",
+    "errorMessage": "Qualcosa è andato storto. Riprova.",
+    "foundExamples": "Trovati {count} prompt simili:",
+    "currentPrompt": "In costruzione:",
+    "stateTitle": "Titolo",
+    "stateContent": "Contenuto",
+    "stateTags": "tag"
+  },
   "report": {
     "report": "Segnala",
     "reportPrompt": "Segnala Prompt",
