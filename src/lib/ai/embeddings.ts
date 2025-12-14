@@ -38,10 +38,13 @@ export async function generatePromptEmbedding(promptId: string): Promise<void> {
 
   const prompt = await db.prompt.findUnique({
     where: { id: promptId },
-    select: { title: true, description: true, content: true },
+    select: { title: true, description: true, content: true, isPrivate: true },
   });
 
   if (!prompt) return;
+
+  // Never generate embeddings for private prompts
+  if (prompt.isPrivate) return;
 
   // Combine title, description, and content for embedding
   const textToEmbed = [
@@ -99,9 +102,10 @@ export async function generateAllEmbeddings(
       onProgress(i + 1, total, success, failed);
     }
     
-    // Rate limit: wait 200ms between requests to avoid hitting API limits
+    // Rate limit: wait 1000ms between requests to avoid hitting API limits
+    // (GitHub Models API and other providers have stricter rate limits)
     if (i < prompts.length - 1) {
-      await delay(200);
+      await delay(1000);
     }
   }
 
