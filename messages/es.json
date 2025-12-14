@@ -16,6 +16,8 @@
     "copied": "¡Copiado!",
     "reset": "Restablecer",
     "variables": "Variables",
+    "fillVariables": "Completar Variables",
+    "fillVariablesDescription": "Por favor complete las variables requeridas antes de ejecutar el prompt.",
     "copiedToClipboard": "Copiado al portapapeles",
     "failedToCopy": "Error al copiar",
     "submit": "Enviar",

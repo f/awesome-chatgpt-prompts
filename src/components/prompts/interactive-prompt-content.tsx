@@ -151,6 +151,29 @@ export function InteractivePromptContent({
     return result;
   }, [content, variables, values]);
 
+  // Get content with custom variable values (for RunPromptButton dialog)
+  const getContentWithVariables = useCallback((customValues: Record<string, string>) => {
+    let result = content;
+    for (const variable of variables) {
+      const value = customValues[variable.name] || values[variable.name] || variable.defaultValue;
+      result = result.replace(variable.fullMatch, value);
+    }
+    return result;
+  }, [content, variables, values]);
+
+  // Get unfilled variables (empty current value and no default)
+  const unfilledVariables = useMemo(() => {
+    return uniqueVariables.filter(v => {
+      const currentValue = values[v.name];
+      return !currentValue || currentValue.trim() === "";
+    }).map(v => ({ name: v.name, defaultValue: v.defaultValue }));
+  }, [uniqueVariables, values]);
+
+  // Handle variables filled from RunPromptButton dialog
+  const handleVariablesFilled = useCallback((newValues: Record<string, string>) => {
+    setValues(prev => ({ ...prev, ...newValues }));
+  }, []);
+
   // Update a variable value
   const updateValue = useCallback((name: string, value: string) => {
     setValues((prev) => ({ ...prev, [name]: value }));
@@ -181,7 +204,12 @@ export function InteractivePromptContent({
           <div className="flex items-center justify-between mb-3">
             {title && <h3 className="text-base font-semibold">{title}</h3>}
             <div className="flex items-center gap-2">
-              <RunPromptButton content={displayContent} />
+              <RunPromptButton 
+                content={displayContent}
+                unfilledVariables={unfilledVariables}
+                onVariablesFilled={handleVariablesFilled}
+                getContentWithVariables={getContentWithVariables}
+              />
               <Button variant="ghost" size="sm" onClick={copyToClipboard}>
                 {copied ? (
                   <Check className="h-4 w-4 text-green-500" />
@@ -204,7 +232,12 @@ export function InteractivePromptContent({
         <div className="flex items-center justify-between mb-3">
           {title && <h3 className="text-base font-semibold">{title}</h3>}
           <div className="flex items-center gap-2">
-            <RunPromptButton content={content} />
+            <RunPromptButton 
+              content={content}
+              unfilledVariables={unfilledVariables}
+              onVariablesFilled={handleVariablesFilled}
+              getContentWithVariables={getContentWithVariables}
+            />
             <Button variant="ghost" size="sm" onClick={copyToClipboard}>
               {copied ? (
                 <Check className="h-4 w-4 text-green-500" />
@@ -235,7 +268,12 @@ export function InteractivePromptContent({
                 {t("reset")}
               </Button>
             )}
-            <RunPromptButton content={getFinalContent()} />
+            <RunPromptButton 
+              content={getFinalContent()}
+              unfilledVariables={unfilledVariables}
+              onVariablesFilled={handleVariablesFilled}
+              getContentWithVariables={getContentWithVariables}
+            />
             <Button variant="ghost" size="sm" onClick={copyToClipboard}>
               {copied ? (
                 <Check className="h-4 w-4 text-green-500" />
@@ -323,7 +361,12 @@ export function InteractivePromptContent({
               {t("reset")}
             </Button>
           )}
-          <RunPromptButton content={getFinalContent()} />
+          <RunPromptButton 
+            content={getFinalContent()}
+            unfilledVariables={unfilledVariables}
+            onVariablesFilled={handleVariablesFilled}
+            getContentWithVariables={getContentWithVariables}
+          />
           <Button variant="ghost" size="sm" onClick={copyToClipboard}>
             {copied ? (
               <Check className="h-4 w-4 text-green-500" />
@@ -331,6 +374,26 @@ export function InteractivePromptContent({
               <Copy className="h-4 w-4" />
             )}
           </Button>
+        </div>
+      </div>
+      {/* Variable form for text prompts */}
+      <div className="mb-4 p-4 rounded-lg border bg-muted/30 space-y-3">
+        <span className="text-sm font-medium">{t("variables")}</span>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {uniqueVariables.map(({ name, defaultValue }) => (
+            <div key={name} className="space-y-1">
+              <Label htmlFor={`var-text-${name}`} className="text-xs text-muted-foreground">
+                {name}
+              </Label>
+              <Input
+                id={`var-text-${name}`}
+                value={values[name] || ""}
+                onChange={(e) => updateValue(name, e.target.value)}
+                placeholder={defaultValue}
+                className="h-8 text-sm"
+              />
+            </div>
+          ))}
         </div>
       </div>
       <div className="whitespace-pre-wrap text-sm bg-muted p-4 rounded-lg font-mono border leading-relaxed">

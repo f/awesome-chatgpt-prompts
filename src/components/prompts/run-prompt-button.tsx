@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Play, ExternalLink, Zap, Clipboard } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
@@ -93,27 +93,83 @@ function buildUrl(platformId: string, baseUrl: string, promptText: string): stri
   }
 }
 
+interface UnfilledVariable {
+  name: string;
+  defaultValue: string;
+}
+
 interface RunPromptButtonProps {
   content: string;
   variant?: "default" | "ghost" | "outline";
   size?: "default" | "sm" | "icon";
   className?: string;
+  unfilledVariables?: UnfilledVariable[];
+  onVariablesFilled?: (values: Record<string, string>) => void;
+  getContentWithVariables?: (values: Record<string, string>) => string;
 }
 
 export function RunPromptButton({ 
   content, 
   variant = "outline", 
   size = "sm",
-  className 
+  className,
+  unfilledVariables = [],
+  onVariablesFilled,
+  getContentWithVariables
 }: RunPromptButtonProps) {
   const t = useTranslations("prompts");
+  const tCommon = useTranslations("common");
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [pendingPlatform, setPendingPlatform] = useState<{ name: string; baseUrl: string } | null>(null);
+  const [variableDialogOpen, setVariableDialogOpen] = useState(false);
+  const [pendingPlatform, setPendingPlatform] = useState<{ id: string; name: string; baseUrl: string; supportsQuerystring?: boolean } | null>(null);
+  const [variableValues, setVariableValues] = useState<Record<string, string>>({});
+
+  // Initialize variable values when dialog opens
+  const openVariableDialog = useCallback((platform: Platform, baseUrl: string) => {
+    const initial: Record<string, string> = {};
+    for (const v of unfilledVariables) {
+      initial[v.name] = v.defaultValue;
+    }
+    setVariableValues(initial);
+    setPendingPlatform({ id: platform.id, name: platform.name, baseUrl, supportsQuerystring: platform.supportsQuerystring });
+    setVariableDialogOpen(true);
+  }, [unfilledVariables]);
+
+  const handleVariableSubmit = useCallback(() => {
+    if (onVariablesFilled) {
+      onVariablesFilled(variableValues);
+    }
+    setVariableDialogOpen(false);
+    
+    if (pendingPlatform) {
+      const finalContent = getContentWithVariables 
+        ? getContentWithVariables(variableValues) 
+        : content;
+      
+      if (pendingPlatform.supportsQuerystring === false) {
+        navigator.clipboard.writeText(finalContent);
+        setDialogOpen(true);
+      } else {
+        const url = buildUrl(pendingPlatform.id, pendingPlatform.baseUrl, finalContent);
+        window.open(url, "_blank");
+        setPendingPlatform(null);
+      }
+    }
+  }, [variableValues, onVariablesFilled, pendingPlatform, getContentWithVariables, content]);
 
   const handleRun = (platform: Platform, baseUrl: string) => {
+    // Check if there are unfilled variables (empty values)
+    const hasUnfilled = unfilledVariables.some(v => !v.defaultValue || v.defaultValue.trim() === "");
+    
+    if (hasUnfilled) {
+      // Show variable fill dialog first (for both query string and copy flows)
+      openVariableDialog(platform, baseUrl);
+      return;
+    }
+    
     if (platform.supportsQuerystring === false) {
       navigator.clipboard.writeText(content);
-      setPendingPlatform({ name: platform.name, baseUrl });
+      setPendingPlatform({ id: platform.id, name: platform.name, baseUrl, supportsQuerystring: platform.supportsQuerystring });
       setDialogOpen(true);
     } else {
       const url = buildUrl(platform.id, baseUrl, content);
@@ -190,6 +246,44 @@ export function RunPromptButton({
             <Button onClick={handleOpenPlatform}>
               <ExternalLink className="h-4 w-4 mr-2" />
               {t("openPlatform", { platform: pendingPlatform?.name ?? "" })}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Variable Fill Dialog */}
+      <Dialog open={variableDialogOpen} onOpenChange={setVariableDialogOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>{tCommon("fillVariables")}</DialogTitle>
+            <DialogDescription>
+              {tCommon("fillVariablesDescription")}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4 py-4">
+            {unfilledVariables.map((variable) => (
+              <div key={variable.name} className="space-y-2">
+                <label htmlFor={`run-var-${variable.name}`} className="text-sm font-medium">
+                  {variable.name}
+                </label>
+                <input
+                  id={`run-var-${variable.name}`}
+                  type="text"
+                  value={variableValues[variable.name] || ""}
+                  onChange={(e) => setVariableValues(prev => ({ ...prev, [variable.name]: e.target.value }))}
+                  placeholder={variable.defaultValue || variable.name}
+                  className="w-full px-3 py-2 border rounded-md text-sm bg-background"
+                />
+              </div>
+            ))}
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setVariableDialogOpen(false)}>
+              {t("cancel")}
+            </Button>
+            <Button onClick={handleVariableSubmit}>
+              <Play className="h-4 w-4 mr-2" />
+              {t("run")}
             </Button>
           </DialogFooter>
         </DialogContent>
