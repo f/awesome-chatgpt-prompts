@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { headers } from "next/headers";
 import { Code, Zap, Terminal, Search, Box } from "lucide-react";
 import {
   Table,
@@ -14,7 +15,11 @@ export const metadata = {
   description: "MCP-first API for searching and discovering AI prompts programmatically",
 };
 
-export default function ApiDocsPage() {
+export default async function ApiDocsPage() {
+  const headersList = await headers();
+  const host = headersList.get("host") || "prompts.chat";
+  const protocol = host.includes("localhost") ? "http" : "https";
+  const baseUrl = `${protocol}://${host}`;
   return (
     <div className="container max-w-4xl py-10">
       <h1 className="text-2xl font-bold mb-2">API Documentation</h1>
@@ -45,7 +50,7 @@ export default function ApiDocsPage() {
           </p>
           <div className="bg-muted rounded-lg p-4 font-mono text-sm">
             <p className="text-muted-foreground"># MCP Endpoint</p>
-            <p>POST https://prompts.chat/api/mcp</p>
+            <p>POST {baseUrl}/api/mcp</p>
           </div>
         </section>
 
@@ -62,7 +67,7 @@ export default function ApiDocsPage() {
             <pre>{`{
   "mcpServers": {
     "prompts-chat": {
-      "url": "https://prompts.chat/api/mcp"
+      "url": "${baseUrl}/api/mcp"
     }
   }
 }`}</pre>
@@ -87,22 +92,22 @@ export default function ApiDocsPage() {
           <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
             <pre>{`# Filter by username (someone's prompts)
 "prompts-chat": {
-  "url": "https://prompts.chat/api/mcp?username=f"
+  "url": "${baseUrl}/api/mcp?username=f"
 }
 
 # Filter by categories
 "prompts-chat": {
-  "url": "https://prompts.chat/api/mcp?categories=coding,marketing"
+  "url": "${baseUrl}/api/mcp?categories=coding,marketing"
 }
 
 # Filter by tags
 "prompts-chat": {
-  "url": "https://prompts.chat/api/mcp?tags=chatgpt,writing"
+  "url": "${baseUrl}/api/mcp?tags=chatgpt,writing"
 }
 
 # Combine filters
 "prompts-chat": {
-  "url": "https://prompts.chat/api/mcp?username=f&categories=coding&tags=js"
+  "url": "${baseUrl}/api/mcp?username=f&categories=coding&tags=js"
 }`}</pre>
           </div>
           
@@ -122,13 +127,13 @@ export default function ApiDocsPage() {
 
           <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
             <pre>{`# List prompts
-curl -X POST https://prompts.chat/api/mcp \\
+curl -X POST ${baseUrl}/api/mcp \\
   -H "Content-Type: application/json" \\
   -H "Accept: application/json, text/event-stream" \\
   -d '{"jsonrpc": "2.0", "id": 1, "method": "prompts/list"}'
 
 # Get a specific prompt with arguments
-curl -X POST https://prompts.chat/api/mcp \\
+curl -X POST ${baseUrl}/api/mcp \\
   -H "Content-Type: application/json" \\
   -H "Accept: application/json, text/event-stream" \\
   -d '{
@@ -263,7 +268,7 @@ curl -X POST https://prompts.chat/api/mcp \\
           <div className="space-y-3">
             <h3 className="font-medium">Initialize Connection</h3>
             <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
-              <pre>{`curl -X POST https://prompts.chat/api/mcp \\
+              <pre>{`curl -X POST ${baseUrl}/api/mcp \\
   -H "Content-Type: application/json" \\
   -H "Accept: application/json, text/event-stream" \\
   -d '{
@@ -282,7 +287,7 @@ curl -X POST https://prompts.chat/api/mcp \\
           <div className="space-y-3">
             <h3 className="font-medium">List Available Tools</h3>
             <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
-              <pre>{`curl -X POST https://prompts.chat/api/mcp \\
+              <pre>{`curl -X POST ${baseUrl}/api/mcp \\
   -H "Content-Type: application/json" \\
   -H "Accept: application/json, text/event-stream" \\
   -d '{
@@ -296,7 +301,7 @@ curl -X POST https://prompts.chat/api/mcp \\
           <div className="space-y-3">
             <h3 className="font-medium">Search Prompts</h3>
             <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
-              <pre>{`curl -X POST https://prompts.chat/api/mcp \\
+              <pre>{`curl -X POST ${baseUrl}/api/mcp \\
   -H "Content-Type: application/json" \\
   -H "Accept: application/json, text/event-stream" \\
   -d '{
@@ -351,10 +356,10 @@ curl -X POST https://prompts.chat/api/mcp \\
           </p>
           <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
             <pre>{`# Search prompts via REST
-curl "https://prompts.chat/api/prompts?q=code+review&perPage=10"
+curl "${baseUrl}/api/prompts?q=code+review&perPage=10"
 
 # Get prompt by ID
-curl "https://prompts.chat/api/prompts/{id}"`}</pre>
+curl "${baseUrl}/api/prompts/{id}"`}</pre>
           </div>
         </section>
 
@@ -365,7 +370,7 @@ curl "https://prompts.chat/api/prompts/{id}"`}</pre>
             Get MCP server information and available tools:
           </p>
           <div className="bg-muted rounded-lg p-4 font-mono text-sm">
-            <p>GET https://prompts.chat/api/mcp</p>
+            <p>GET {baseUrl}/api/mcp</p>
           </div>
         </section>
 
