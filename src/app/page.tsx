@@ -50,41 +50,41 @@ export default async function HomePage() {
       <section className="relative py-12 md:py-16 border-b overflow-hidden">
         {/* Background - Right Side */}
         {useCloneBranding ? (
-          <div className="absolute top-0 right-0 bottom-0 w-1/2 hidden md:block pointer-events-none overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent z-10" />
+          <div className="absolute top-0 end-0 bottom-0 w-1/2 hidden md:block pointer-events-none overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r rtl:bg-gradient-to-l from-background via-background/80 to-transparent z-10" />
             <Image
               src={config.branding.logo}
               alt={config.branding.name}
               width={800}
               height={800}
-              className="absolute top-1/2 -translate-y-1/2 -right-20 w-[150%] h-auto opacity-15 dark:hidden"
+              className="absolute top-1/2 -translate-y-1/2 -end-20 w-[150%] h-auto opacity-15 dark:hidden"
             />
             <Image
               src={config.branding.logoDark || config.branding.logo}
               alt={config.branding.name}
               width={800}
               height={800}
-              className="absolute top-1/2 -translate-y-1/2 -right-20 w-[150%] h-auto opacity-10 hidden dark:block"
+              className="absolute top-1/2 -translate-y-1/2 -end-20 w-[150%] h-auto opacity-10 hidden dark:block"
             />
           </div>
         ) : (
-          <div className="absolute top-0 right-0 bottom-0 w-1/2 hidden md:block pointer-events-none">
+          <div className="absolute top-0 end-0 bottom-0 w-1/2 hidden md:block pointer-events-none">
             {/* Video background */}
             <div className="absolute inset-0">
-              <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent z-10" />
+              <div className="absolute inset-0 bg-gradient-to-r rtl:bg-gradient-to-l from-background via-background/80 to-transparent z-10" />
               <video
                 autoPlay
                 loop
                 muted
                 playsInline
-                className="absolute top-1/2 -translate-y-1/2 right-0 w-full h-auto opacity-30 dark:opacity-15 dark:invert"
+                className="absolute top-1/2 -translate-y-1/2 end-0 w-full h-auto opacity-30 dark:opacity-15 dark:invert"
               >
                 <source src="/animation.mp4" type="video/mp4" />
               </video>
             </div>
             {/* Animated input overlay - only show if AI generation is enabled */}
             {aiGenerationEnabled && (
-              <div className="absolute inset-0 hidden lg:flex items-center justify-center z-30 pr-8 pointer-events-auto">
+              <div className="absolute inset-0 hidden lg:flex items-center justify-center z-30 pe-8 pointer-events-auto">
                 <HeroPromptInput />
               </div>
             )}

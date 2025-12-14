@@ -134,11 +134,11 @@ export function HeroPromptInput() {
             <button
               type="button"
               onClick={handleAnimatedTextClick}
-              className="absolute inset-0 flex items-start text-left cursor-pointer hover:opacity-80 transition-opacity"
+              className="absolute inset-0 flex items-start text-start cursor-pointer hover:opacity-80 transition-opacity"
             >
               <span className="text-base text-muted-foreground">
                 {displayText}
-                <span className="inline-block w-0.5 h-5 bg-primary ml-0.5 animate-pulse align-middle" />
+                <span className="inline-block w-0.5 h-5 bg-primary ms-0.5 animate-pulse align-middle" />
               </span>
             </button>
           )}

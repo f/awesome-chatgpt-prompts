@@ -161,7 +161,7 @@ export function McpServerPopup({
           </p>
 
           {/* Config JSON */}
-          <div className="bg-muted rounded-md p-3 font-mono text-xs overflow-x-auto">
+          <div dir="ltr" className="bg-muted rounded-md p-3 font-mono text-xs overflow-x-auto text-left">
             <pre className="whitespace-pre">{configJson}</pre>
           </div>
 

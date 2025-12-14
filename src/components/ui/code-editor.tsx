@@ -96,8 +96,9 @@ const CodeEditorInner = forwardRef<CodeEditorHandle, CodeEditorProps>(function C
 
   return (
     <div
+      dir="ltr"
       className={cn(
-        "border rounded-md overflow-hidden",
+        "border rounded-md overflow-hidden text-left",
         className
       )}
       style={{ minHeight }}

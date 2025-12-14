@@ -74,7 +74,7 @@ export function HFDataStudioDropdown({ aiGenerationEnabled = false }: HFDataStud
       <Button 
         size="sm" 
         variant="outline" 
-        className="h-8 text-xs rounded-r-none border-r-0 flex-1 sm:flex-initial"
+        className="h-8 text-xs rounded-e-none border-e-0 flex-1 sm:flex-initial"
         onClick={handleOpenDataset}
       >
         🤗 {t("button")}
@@ -84,7 +84,7 @@ export function HFDataStudioDropdown({ aiGenerationEnabled = false }: HFDataStud
           <Button 
             size="sm" 
             variant="outline" 
-            className="h-8 px-2 rounded-l-none"
+            className="h-8 px-2 rounded-s-none"
           >
             <ChevronDown className="h-3 w-3" />
           </Button>
@@ -95,7 +95,7 @@ export function HFDataStudioDropdown({ aiGenerationEnabled = false }: HFDataStud
             <div className="flex items-center justify-between gap-2">
               <div className="flex flex-1 items-stretch">
                 <Select onValueChange={(value) => setSql(value)}>
-                  <SelectTrigger className={`h-8 text-xs flex-1 ${aiGenerationEnabled ? "rounded-r-none border-r-0" : ""}`} size="sm">
+                  <SelectTrigger className={`h-8 text-xs flex-1 ${aiGenerationEnabled ? "rounded-e-none border-e-0" : ""}`} size="sm">
                     <SelectValue placeholder={t("selectExample")} />
                   </SelectTrigger>
                   <SelectContent>
@@ -110,7 +110,7 @@ export function HFDataStudioDropdown({ aiGenerationEnabled = false }: HFDataStud
                   <Button
                     size="sm"
                     variant={showAiInput ? "secondary" : "outline"}
-                    className="rounded-l-none border-l-0"
+                    className="rounded-s-none border-s-0"
                     onClick={() => setShowAiInput(!showAiInput)}
                     title={t("aiGenerate")}
                   >
@@ -136,13 +136,13 @@ export function HFDataStudioDropdown({ aiGenerationEnabled = false }: HFDataStud
                   value={aiPrompt}
                   onChange={(e) => setAiPrompt(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && handleGenerateSQL()}
-                  className="h-8 text-xs flex-1 rounded-l-md rounded-r-none border border-r-0 border-input bg-transparent px-3 py-1 outline-none placeholder:text-muted-foreground"
+                  className="h-8 text-xs flex-1 rounded-s-md rounded-e-none border border-e-0 border-input bg-transparent px-3 py-1 outline-none placeholder:text-muted-foreground"
                   autoFocus
                 />
                 <Button 
                   size="sm" 
                   variant="outline"
-                  className="rounded-l-none border-l-0 text-[11px] bg-muted/50 hover:bg-muted"
+                  className="rounded-s-none border-s-0 text-[11px] bg-muted/50 hover:bg-muted"
                   onClick={handleGenerateSQL}
                   disabled={isGenerating || !aiPrompt.trim()}
                 >
@@ -156,7 +156,7 @@ export function HFDataStudioDropdown({ aiGenerationEnabled = false }: HFDataStud
             )}
 
             {/* SQL Editor */}
-            <div className="border rounded-md overflow-hidden">
+            <div dir="ltr" className="border rounded-md overflow-hidden text-left">
               <Editor
                 height="200px"
                 defaultLanguage="sql"
