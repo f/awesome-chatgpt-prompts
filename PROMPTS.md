@@ -4969,3 +4969,16 @@ NEGATIVE CONSTRAINTS
 
 </details>
 
+<details>
+<summary><strong>3D City Prompt</strong></summary>
+
+## 3D City Prompt
+
+Contributed by [@akykaan](https://github.com/akykaan)
+
+```md
+Hyper-realistic 3D square diorama of Istanbul, carved out with exposed soil cross-section beneath showing rocks, roots, and earth layers. Above: whimsical fairytale cityscape featuring iconic landmarks, architecture, and cultural elements of Istanbul. Modern white “Istanbul” label integrated naturally. Pure white studio background with soft natural lighting. DSLR photograph quality - crisp, vibrant, magical realism style. 1080x1080 dimensions
+```
+
+</details>
+
