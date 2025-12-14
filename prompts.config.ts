@@ -59,7 +59,9 @@ export default defineConfig({
     // Enable tags
     tags: true,
     // Enable AI-powered semantic search (requires OPENAI_API_KEY)
-    aiSearch: false,
+    aiSearch: true,
+    // Enable AI-powered generation features (requires OPENAI_API_KEY)
+    aiGeneration: true,
   },
 
   // Homepage customization

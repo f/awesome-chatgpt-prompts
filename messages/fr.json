@@ -79,7 +79,10 @@
       "sqlQuery": "Requête SQL",
       "openDataset": "Ouvrir le Dataset",
       "runQuery": "Exécuter la Requête sur HF",
-      "examples": "Exemples de Requêtes"
+      "examples": "Exemples",
+      "selectExample": "Sélectionner un exemple...",
+      "aiGenerate": "Générer IA",
+      "aiPlaceholder": "Décrivez la requête SQL dont vous avez besoin..."
     },
     "edit": "Modifier le Prompt",
     "delete": "Supprimer le Prompt",
@@ -509,7 +512,8 @@
     "search": "Rechercher",
     "clear": "Effacer",
     "found": "{count} trouvés",
-    "aiSearch": "Recherche IA"
+    "aiSearch": "Recherche IA",
+    "searchTags": "Rechercher des tags..."
   },
   "user": {
     "profile": "Profil",

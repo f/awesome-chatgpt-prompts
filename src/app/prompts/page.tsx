@@ -5,9 +5,11 @@ import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { InfinitePromptList } from "@/components/prompts/infinite-prompt-list";
 import { PromptFilters } from "@/components/prompts/prompt-filters";
+import { FilterProvider } from "@/components/prompts/filter-context";
 import { HFDataStudioDropdown } from "@/components/prompts/hf-data-studio-dropdown";
 import { db } from "@/lib/db";
 import { isAISearchEnabled, semanticSearch } from "@/lib/ai/embeddings";
+import { isAIGenerationEnabled } from "@/lib/ai/generation";
 import config from "@/../prompts.config";
 
 export const metadata: Metadata = {
@@ -34,6 +36,7 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
   
   const perPage = 12;
   const aiSearchAvailable = await isAISearchEnabled();
+  const aiGenerationAvailable = await isAIGenerationEnabled();
   const useAISearch = aiSearchAvailable && params.ai === "1" && params.q;
 
   let prompts: any[] = [];
@@ -177,7 +180,7 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
         </div>
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
           {!config.homepage?.useCloneBranding && (
-            <HFDataStudioDropdown />
+            <HFDataStudioDropdown aiGenerationEnabled={aiGenerationAvailable} />
           )}
           <Button size="sm" className="h-8 text-xs w-full sm:w-auto" asChild>
             <Link href="/prompts/new">
@@ -188,29 +191,31 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-6">
-        <aside className="w-full lg:w-56 shrink-0">
-          <PromptFilters
-            categories={categories}
-            tags={tags}
-            currentFilters={params}
-            aiSearchEnabled={aiSearchAvailable}
-          />
-        </aside>
-        <main className="flex-1 min-w-0">
-          <InfinitePromptList
-            initialPrompts={prompts}
-            initialTotal={total}
-            filters={{
-              q: params.q,
-              type: params.type,
-              category: params.category,
-              tag: params.tag,
-              sort: params.sort,
-            }}
-          />
-        </main>
-      </div>
+      <FilterProvider>
+        <div className="flex flex-col lg:flex-row gap-6">
+          <aside className="w-full lg:w-56 shrink-0">
+            <PromptFilters
+              categories={categories}
+              tags={tags}
+              currentFilters={params}
+              aiSearchEnabled={aiSearchAvailable}
+            />
+          </aside>
+          <main className="flex-1 min-w-0">
+            <InfinitePromptList
+              initialPrompts={prompts}
+              initialTotal={total}
+              filters={{
+                q: params.q,
+                type: params.type,
+                category: params.category,
+                tag: params.tag,
+                sort: params.sort,
+              }}
+            />
+          </main>
+        </div>
+      </FilterProvider>
     </div>
   );
 }

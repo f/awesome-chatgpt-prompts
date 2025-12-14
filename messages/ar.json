@@ -79,7 +79,10 @@
       "sqlQuery": "استعلام SQL",
       "openDataset": "فتح مجموعة البيانات",
       "runQuery": "تشغيل الاستعلام على HF",
-      "examples": "استعلامات نموذجية"
+      "examples": "أمثلة",
+      "selectExample": "اختر مثالاً...",
+      "aiGenerate": "توليد AI",
+      "aiPlaceholder": "صف استعلام SQL الذي تحتاجه..."
     },
     "edit": "تعديل الأمر",
     "delete": "حذف الأمر",
@@ -509,7 +512,8 @@
     "search": "بحث",
     "clear": "مسح",
     "found": "تم العثور على {count}",
-    "aiSearch": "بحث الذكاء الاصطناعي"
+    "aiSearch": "بحث الذكاء الاصطناعي",
+    "searchTags": "البحث عن العلامات..."
   },
   "user": {
     "profile": "الملف الشخصي",

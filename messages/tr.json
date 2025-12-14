@@ -79,7 +79,10 @@
       "sqlQuery": "SQL Sorgusu",
       "openDataset": "Veri Setini Aç",
       "runQuery": "HF'de Sorguyu Çalıştır",
-      "examples": "Örnek Sorgular"
+      "examples": "Örnekler",
+      "selectExample": "Bir örnek seçin...",
+      "aiGenerate": "AI Oluştur",
+      "aiPlaceholder": "Nasıl bir prompt bulmak istiyorsunuz?"
     },
     "edit": "Prompt Düzenle",
     "delete": "Prompt Sil",
@@ -509,7 +512,8 @@
     "search": "Ara",
     "clear": "Temizle",
     "found": "{count} bulundu",
-    "aiSearch": "AI ile Ara"
+    "aiSearch": "AI ile Ara",
+    "searchTags": "Etiket ara..."
   },
   "user": {
     "profile": "Profil",

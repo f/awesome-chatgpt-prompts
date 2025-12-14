@@ -79,7 +79,10 @@
       "sqlQuery": "SQL 查询",
       "openDataset": "打开数据集",
       "runQuery": "在HF上运行查询",
-      "examples": "示例查询"
+      "examples": "示例",
+      "selectExample": "选择一个示例...",
+      "aiGenerate": "AI生成",
+      "aiPlaceholder": "描述您需要的SQL查询..."
     },
     "edit": "编辑提示词",
     "delete": "删除提示词",
@@ -509,7 +512,8 @@
     "search": "搜索",
     "clear": "清除",
     "found": "找到 {count} 个",
-    "aiSearch": "AI 搜索"
+    "aiSearch": "AI 搜索",
+    "searchTags": "搜索标签..."
   },
   "user": {
     "profile": "个人资料",

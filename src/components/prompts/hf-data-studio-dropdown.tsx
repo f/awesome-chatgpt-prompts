@@ -3,9 +3,11 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
-import { ChevronDown, Play, ExternalLink } from "lucide-react";
+import { ChevronDown, Play, ExternalLink, Sparkles, Loader2 } from "lucide-react";
 import Editor from "@monaco-editor/react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Popover,
   PopoverContent,
@@ -24,10 +26,16 @@ const DEFAULT_SQL = SQL_EXAMPLES[0].sql;
 
 const HF_DATASET_URL = "https://huggingface.co/datasets/fka/awesome-chatgpt-prompts/viewer";
 
-export function HFDataStudioDropdown() {
+interface HFDataStudioDropdownProps {
+  aiGenerationEnabled?: boolean;
+}
+
+export function HFDataStudioDropdown({ aiGenerationEnabled = false }: HFDataStudioDropdownProps) {
   const t = useTranslations("prompts.hfDataStudio");
   const { resolvedTheme } = useTheme();
   const [sql, setSql] = useState(DEFAULT_SQL);
+  const [aiPrompt, setAiPrompt] = useState("");
+  const [isGenerating, setIsGenerating] = useState(false);
 
   const handleOpenDataset = () => {
     window.open(HF_DATASET_URL, "_blank");
@@ -37,6 +45,28 @@ export function HFDataStudioDropdown() {
     const encodedSql = encodeURIComponent(sql);
     const url = `${HF_DATASET_URL}?views[]=train&sql=${encodedSql}`;
     window.open(url, "_blank");
+  };
+
+  const handleGenerateSQL = async () => {
+    if (!aiPrompt.trim() || isGenerating) return;
+    
+    setIsGenerating(true);
+    try {
+      const response = await fetch("/api/generate/sql", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: aiPrompt }),
+      });
+      
+      if (!response.ok) throw new Error("Failed to generate SQL");
+      
+      const data = await response.json();
+      setSql(data.sql);
+    } catch (error) {
+      console.error("SQL generation error:", error);
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   return (
@@ -60,20 +90,19 @@ export function HFDataStudioDropdown() {
           </Button>
         </PopoverTrigger>
         <PopoverContent align="end" className="w-[calc(100vw-2rem)] sm:w-[500px] p-0 max-sm:!fixed max-sm:!left-4 max-sm:!right-4 max-sm:!top-auto" sideOffset={8}>
-          <div className="p-3 space-y-3">
-            <div className="flex items-center justify-between gap-2">
-              <Select onValueChange={(value) => setSql(value)}>
-                <SelectTrigger className="w-[200px] h-7 text-xs">
-                  <SelectValue placeholder={t("examples")} />
-                </SelectTrigger>
-                <SelectContent>
-                  {SQL_EXAMPLES.map((example, index) => (
-                    <SelectItem key={index} value={example.sql} className="text-xs">
-                      {example.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+          <Tabs defaultValue={aiGenerationEnabled ? "ai" : "examples"} className="w-full">
+            <div className="flex items-center justify-between px-3 pt-3 pb-2">
+              <TabsList className="h-7">
+                {aiGenerationEnabled && (
+                  <TabsTrigger value="ai" className="text-xs h-6 px-2">
+                    <Sparkles className="h-3 w-3 mr-1" />
+                    {t("aiGenerate")}
+                  </TabsTrigger>
+                )}
+                <TabsTrigger value="examples" className="text-xs h-6 px-2">
+                  {t("examples")}
+                </TabsTrigger>
+              </TabsList>
               <a
                 href={HF_DATASET_URL}
                 target="_blank"
@@ -83,29 +112,74 @@ export function HFDataStudioDropdown() {
                 {t("openDataset")} <ExternalLink className="h-3 w-3" />
               </a>
             </div>
-            <div className="border rounded-md overflow-hidden">
-              <Editor
-                height="200px"
-                defaultLanguage="sql"
-                value={sql}
-                onChange={(value) => setSql(value || "")}
-                theme={resolvedTheme === "dark" ? "vs-dark" : "light"}
-                options={{
-                  minimap: { enabled: false },
-                  fontSize: 12,
-                  lineNumbers: "on",
-                  scrollBeyondLastLine: false,
-                  automaticLayout: true,
-                  tabSize: 2,
-                  wordWrap: "on",
-                }}
-              />
+            
+            {aiGenerationEnabled && (
+              <TabsContent value="ai" className="px-3 pb-3 mt-0 space-y-2">
+                <div className="flex gap-2">
+                  <Input
+                    placeholder={t("aiPlaceholder")}
+                    value={aiPrompt}
+                    onChange={(e) => setAiPrompt(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && handleGenerateSQL()}
+                    className="h-8 text-xs flex-1"
+                  />
+                  <Button 
+                    size="sm" 
+                    variant="secondary"
+                    className="h-8 px-3"
+                    onClick={handleGenerateSQL}
+                    disabled={isGenerating || !aiPrompt.trim()}
+                  >
+                    {isGenerating ? (
+                      <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                    ) : (
+                      <Sparkles className="h-3.5 w-3.5" />
+                    )}
+                  </Button>
+                </div>
+              </TabsContent>
+            )}
+            
+            <TabsContent value="examples" className="px-3 pb-3 mt-0">
+              <Select onValueChange={(value) => setSql(value)}>
+                <SelectTrigger className="h-7 text-xs">
+                  <SelectValue placeholder={t("selectExample")} />
+                </SelectTrigger>
+                <SelectContent>
+                  {SQL_EXAMPLES.map((example, index) => (
+                    <SelectItem key={index} value={example.sql} className="text-xs">
+                      {example.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </TabsContent>
+
+            <div className="px-3 pb-3 space-y-3">
+              <div className="border rounded-md overflow-hidden">
+                <Editor
+                  height="200px"
+                  defaultLanguage="sql"
+                  value={sql}
+                  onChange={(value) => setSql(value || "")}
+                  theme={resolvedTheme === "dark" ? "vs-dark" : "light"}
+                  options={{
+                    minimap: { enabled: false },
+                    fontSize: 12,
+                    lineNumbers: "on",
+                    scrollBeyondLastLine: false,
+                    automaticLayout: true,
+                    tabSize: 2,
+                    wordWrap: "on",
+                  }}
+                />
+              </div>
+              <Button size="sm" className="w-full" onClick={handleRun}>
+                <Play className="h-3.5 w-3.5 mr-1.5" />
+                {t("runQuery")}
+              </Button>
             </div>
-            <Button size="sm" className="w-full" onClick={handleRun}>
-              <Play className="h-3.5 w-3.5 mr-1.5" />
-              {t("runQuery")}
-            </Button>
-          </div>
+          </Tabs>
         </PopoverContent>
       </Popover>
     </div>

@@ -79,7 +79,10 @@
       "sqlQuery": "SQL-Abfrage",
       "openDataset": "Datensatz öffnen",
       "runQuery": "Abfrage auf HF ausführen",
-      "examples": "Beispielabfragen"
+      "examples": "Beispiele",
+      "selectExample": "Beispiel auswählen...",
+      "aiGenerate": "KI Generieren",
+      "aiPlaceholder": "Beschreiben Sie die benötigte SQL-Abfrage..."
     },
     "edit": "Prompt bearbeiten",
     "delete": "Prompt löschen",
@@ -509,7 +512,8 @@
     "search": "Suchen",
     "clear": "Löschen",
     "found": "{count} gefunden",
-    "aiSearch": "KI-Suche"
+    "aiSearch": "KI-Suche",
+    "searchTags": "Tags suchen..."
   },
   "user": {
     "profile": "Profil",

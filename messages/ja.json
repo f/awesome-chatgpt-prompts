@@ -79,7 +79,10 @@
       "sqlQuery": "SQLクエリ",
       "openDataset": "データセットを開く",
       "runQuery": "HFでクエリを実行",
-      "examples": "クエリ例"
+      "examples": "例",
+      "selectExample": "例を選択...",
+      "aiGenerate": "AI生成",
+      "aiPlaceholder": "必要なSQLクエリを説明してください..."
     },
     "edit": "プロンプトを編集",
     "delete": "プロンプトを削除",
@@ -509,7 +512,8 @@
     "search": "検索",
     "clear": "クリア",
     "found": "{count}件見つかりました",
-    "aiSearch": "AI検索"
+    "aiSearch": "AI検索",
+    "searchTags": "タグを検索..."
   },
   "user": {
     "profile": "プロフィール",

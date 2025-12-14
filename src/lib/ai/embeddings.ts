@@ -11,13 +11,15 @@ function getOpenAIClient(): OpenAI {
     if (!apiKey) {
       throw new Error("OPENAI_API_KEY is not set");
     }
-    openai = new OpenAI({ apiKey });
+    openai = new OpenAI({ 
+      apiKey,
+      baseURL: process.env.OPENAI_BASE_URL || undefined,
+    });
   }
   return openai;
 }
 
-const EMBEDDING_MODEL = "text-embedding-3-small";
-const EMBEDDING_DIMENSIONS = 1536;
+const EMBEDDING_MODEL = process.env.OPENAI_EMBEDDING_MODEL || "text-embedding-3-small";
 
 export async function generateEmbedding(text: string): Promise<number[]> {
   const client = getOpenAIClient();
@@ -193,16 +195,20 @@ export async function semanticSearch(
     },
   });
 
-  // Calculate similarity scores
-  const scoredPrompts = prompts.map((prompt) => {
-    const embedding = prompt.embedding as number[];
-    const similarity = cosineSimilarity(queryEmbedding, embedding);
-    return {
-      ...prompt,
-      similarity,
-      voteCount: prompt._count.votes,
-    };
-  });
+  // Calculate similarity scores and filter by threshold
+  const SIMILARITY_THRESHOLD = 0.4; // Filter out results below this similarity
+  
+  const scoredPrompts = prompts
+    .map((prompt) => {
+      const embedding = prompt.embedding as number[];
+      const similarity = cosineSimilarity(queryEmbedding, embedding);
+      return {
+        ...prompt,
+        similarity,
+        voteCount: prompt._count.votes,
+      };
+    })
+    .filter((prompt) => prompt.similarity >= SIMILARITY_THRESHOLD);
 
   // Sort by similarity and return top results
   scoredPrompts.sort((a, b) => b.similarity - a.similarity);

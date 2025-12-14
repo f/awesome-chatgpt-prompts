@@ -79,7 +79,10 @@
       "sqlQuery": "SQL 쿼리",
       "openDataset": "데이터셋 열기",
       "runQuery": "HF에서 쿼리 실행",
-      "examples": "예제 쿼리"
+      "examples": "예제",
+      "selectExample": "예제 선택...",
+      "aiGenerate": "AI 생성",
+      "aiPlaceholder": "필요한 SQL 쿼리를 설명하세요..."
     },
     "edit": "프롬프트 편집",
     "delete": "프롬프트 삭제",
@@ -509,7 +512,8 @@
     "search": "검색",
     "clear": "지우기",
     "found": "{count}개 찾음",
-    "aiSearch": "AI 검색"
+    "aiSearch": "AI 검색",
+    "searchTags": "태그 검색..."
   },
   "user": {
     "profile": "프로필",

@@ -44,6 +44,7 @@ export interface FeaturesConfig {
   categories: boolean;
   tags: boolean;
   aiSearch?: boolean;
+  aiGeneration?: boolean;
 }
 
 export interface Sponsor {
@@ -125,6 +126,7 @@ export async function getConfig(): Promise<PromptsConfig> {
         categories: true,
         tags: true,
         aiSearch: false,
+        aiGeneration: false,
       },
     };
     return cachedConfig;

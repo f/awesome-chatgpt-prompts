@@ -1,7 +1,9 @@
 "use client";
 
+import { useState, useMemo, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { useFilterContext } from "./filter-context";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import {
@@ -13,7 +15,7 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import { X, Sparkles } from "lucide-react";
+import { X, Sparkles, Search } from "lucide-react";
 
 interface PromptFiltersProps {
   categories: Array<{
@@ -45,6 +47,15 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
   const router = useRouter();
   const searchParams = useSearchParams();
   const t = useTranslations();
+  const [tagSearch, setTagSearch] = useState("");
+  const { setFilterPending } = useFilterContext();
+  const debounceRef = useRef<NodeJS.Timeout | null>(null);
+
+  const filteredTags = useMemo(() => {
+    if (!tagSearch.trim()) return tags;
+    const search = tagSearch.toLowerCase();
+    return tags.filter((tag) => tag.name.toLowerCase().includes(search));
+  }, [tags, tagSearch]);
 
   const updateFilter = (key: string, value: string | null) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -85,10 +96,17 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
           className="h-8 text-sm"
           defaultValue={currentFilters.q}
           onChange={(e) => {
-            const timeout = setTimeout(() => {
-              updateFilter("q", e.target.value || null);
+            const value = e.target.value;
+            // Show loading immediately
+            setFilterPending(true);
+            // Clear previous debounce
+            if (debounceRef.current) {
+              clearTimeout(debounceRef.current);
+            }
+            // Debounce the actual navigation
+            debounceRef.current = setTimeout(() => {
+              updateFilter("q", value || null);
             }, 300);
-            return () => clearTimeout(timeout);
           }}
         />
       </div>
@@ -185,8 +203,17 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
       {tags.length > 0 && (
         <div className="space-y-1.5">
           <Label className="text-xs">{t("prompts.promptTags")}</Label>
-          <div className="flex flex-wrap gap-1">
-            {tags.filter((t) => t.id && t.slug).slice(0, 8).map((tag) => (
+          <div className="relative">
+            <Search className="absolute left-2 top-1/2 -translate-y-1/2 h-3 w-3 text-muted-foreground" />
+            <Input
+              placeholder={t("search.searchTags")}
+              className="h-7 text-xs pl-7"
+              value={tagSearch}
+              onChange={(e) => setTagSearch(e.target.value)}
+            />
+          </div>
+          <div className="flex flex-wrap gap-1 max-h-48 overflow-y-auto">
+            {filteredTags.filter((tag) => tag.id && tag.slug).map((tag) => (
               <button
                 key={tag.id}
                 className="px-2 py-0.5 text-[11px] rounded border transition-colors"
@@ -200,6 +227,9 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
                 {tag.name}
               </button>
             ))}
+            {filteredTags.length === 0 && tagSearch && (
+              <span className="text-xs text-muted-foreground">{t("search.noResults")}</span>
+            )}
           </div>
         </div>
       )}
