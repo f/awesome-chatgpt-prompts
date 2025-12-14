@@ -111,7 +111,7 @@ export default async function RootLayout({
             </Script>
           </>
         )}
-        <Providers locale={locale} messages={messages} theme={config.theme} branding={config.branding}>
+        <Providers locale={locale} messages={messages} theme={config.theme} branding={{ ...config.branding, useCloneBranding: config.homepage?.useCloneBranding }}>
           <div className="relative min-h-screen flex flex-col">
             <Header authProvider={config.auth.provider} allowRegistration={config.auth.allowRegistration} />
             <main className="flex-1">{children}</main>

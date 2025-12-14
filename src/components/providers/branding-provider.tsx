@@ -7,6 +7,7 @@ interface BrandingContextValue {
   logo: string;
   logoDark?: string;
   description: string;
+  useCloneBranding?: boolean;
 }
 
 const BrandingContext = createContext<BrandingContextValue | null>(null);

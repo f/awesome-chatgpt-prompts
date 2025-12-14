@@ -16,6 +16,9 @@ export function Footer() {
           {" "}{new Date().getFullYear()} {branding.name}
         </span>
         <nav className="flex items-center gap-4">
+          {!branding.useCloneBranding && (
+            <Link href="/docs/self-hosting" className="hover:text-foreground">Docs</Link>
+          )}
           <Link href="/privacy" className="hover:text-foreground">Privacy</Link>
           <Link href="/terms" className="hover:text-foreground">Terms</Link>
           <Link href="https://github.com/f/awesome-chatgpt-prompts" target="_blank" rel="noopener noreferrer" className="hover:text-foreground flex items-center gap-1">

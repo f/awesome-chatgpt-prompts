@@ -20,6 +20,7 @@ interface BrandingConfig {
   name: string;
   logo: string;
   description: string;
+  useCloneBranding?: boolean;
 }
 
 interface ProvidersProps {
