@@ -17,7 +17,10 @@ export function Footer() {
         </span>
         <nav className="flex items-center gap-4">
           {!branding.useCloneBranding && (
-            <Link href="/docs/self-hosting" className="hover:text-foreground">Docs</Link>
+            <>
+              <Link href="/docs/self-hosting" className="hover:text-foreground">Docs</Link>
+              <Link href="/docs/api" className="hover:text-foreground">API</Link>
+            </>
           )}
           <Link href="/privacy" className="hover:text-foreground">Privacy</Link>
           <Link href="/terms" className="hover:text-foreground">Terms</Link>

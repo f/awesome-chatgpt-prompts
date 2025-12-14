@@ -226,8 +226,8 @@ export async function GET(request: Request) {
       db.prompt.count({ where }),
     ]);
 
-    // Transform to include voteCount and contributorCount
-    const prompts = promptsRaw.map((p) => ({
+    // Transform to include voteCount and contributorCount, exclude internal fields
+    const prompts = promptsRaw.map(({ embedding: _e, isPrivate: _p, isUnlisted: _u, unlistedAt: _ua, deletedAt: _d, ...p }) => ({
       ...p,
       voteCount: p._count.votes,
       contributorCount: p._count.contributors,
