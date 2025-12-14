@@ -721,6 +721,7 @@
   "mcp": {
     "button": "MCP 服务器",
     "title": "MCP 服务器配置",
+    "description": "在 VS Code、Cursor 和 Claude Desktop 等支持的客户端中使用 MCP 提示词。将此配置添加到您的 MCP 设置中。",
     "copy": "复制",
     "copied": "已复制！",
     "customizeFilters": "自定义过滤器以缩小提示词范围：",
