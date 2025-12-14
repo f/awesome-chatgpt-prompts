@@ -79,7 +79,7 @@ export function HFDataStudioDropdown({ aiGenerationEnabled = false }: HFDataStud
       >
         🤗 {t("button")}
       </Button>
-      <Popover>
+      <Popover modal>
         <PopoverTrigger asChild>
           <Button 
             size="sm" 
@@ -89,7 +89,7 @@ export function HFDataStudioDropdown({ aiGenerationEnabled = false }: HFDataStud
             <ChevronDown className="h-3 w-3" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent align="end" className="w-[calc(100vw-2rem)] sm:w-[500px] p-3 max-sm:!fixed max-sm:!left-4 max-sm:!right-4 max-sm:!top-auto" sideOffset={8}>
+        <PopoverContent align="end" className="w-[calc(100vw-2rem)] sm:w-[500px] p-3" sideOffset={8} collisionPadding={16}>
           <div className="space-y-3">
             {/* Header with Examples Select + AI Button */}
             <div className="flex items-center justify-between gap-2">
