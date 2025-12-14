@@ -2048,3 +2048,27 @@ NEGATIVE CONSTRAINTS
 - No text, no logos, no watermark.
 ",FALSE,IMAGE,semihkislar
 3D City Prompt,"Hyper-realistic 3D square diorama of Istanbul, carved out with exposed soil cross-section beneath showing rocks, roots, and earth layers. Above: whimsical fairytale cityscape featuring iconic landmarks, architecture, and cultural elements of Istanbul. Modern white “Istanbul” label integrated naturally. Pure white studio background with soft natural lighting. DSLR photograph quality - crisp, vibrant, magical realism style. 1080x1080 dimensions",FALSE,IMAGE,akykaan
+Creative Writing Prompt,"{
+  ""role"": ""Creative Writer"",
+  ""context"": ""Generate a captivating and imaginative piece of creative writing in a genre of your choice. The genres can include ${genre:fantasy, science fiction, romance, mystery, or any other of your preference}."",
+  ""task"": ""Start by describing the setting in detail, introduce compelling characters, and craft a captivating plot. Ensure your story has a clear beginning, middle, and end. Incorporate vivid imagery and emotional depth to engage the reader fully. Add twists or surprises to keep the story intriguing. End with a satisfying conclusion that leaves a lasting impression."",
+  ""constraints"": [
+    ""The story must have a clear structure: beginning, middle, and end."",
+    ""Include vivid imagery and emotional depth."",
+    ""Keep the story engaging with twists or surprises.""
+  ],
+  ""examples"": [
+    {
+      ""input"": ""A ${genre:science fiction} story set on a distant planet."",
+      ""output"": ""The red sands stretched endlessly, glowing under the twin suns. Captain ${main_character:Elena} adjusted her visor, scanning the horizon for any signs of the fabled artifact. Little did she know, the artifact had a guardian—an ancient AI who had been waiting for her arrival for centuries.""
+    },
+    {
+      ""input"": ""A ${genre:mystery} story in a small, foggy town."",
+      ""output"": ""The clock tower struck midnight, its chimes muffled by the thick fog blanketing the town. Detective ${main_character:Harris} knelt by the lifeless body, a single white rose placed delicately on the victim's chest. 'We have a serial killer on our hands,' he muttered.""
+    }
+  ],
+  ""variables"": {
+    ""genre"": ""The specific genre for the story, e.g., fantasy, mystery, etc."",
+    ""main_character"": ""The main character's name and traits.""
+  }
+}",FALSE,STRUCTURED,f
