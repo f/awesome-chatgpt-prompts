@@ -3,6 +3,7 @@ import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { triggerWebhooks } from "@/lib/webhook";
+import { generatePromptEmbedding } from "@/lib/ai/embeddings";
 
 const promptSchema = z.object({
   title: z.string().min(1).max(200),
@@ -112,6 +113,14 @@ export async function POST(request: Request) {
         category: prompt.category,
         tags: prompt.tags,
       });
+    }
+
+    // Generate embedding for AI search (non-blocking)
+    // Only for public prompts - the function checks if aiSearch is enabled
+    if (!isPrivate) {
+      generatePromptEmbedding(prompt.id).catch((err) =>
+        console.error("Failed to generate embedding for prompt:", prompt.id, err)
+      );
     }
 
     return NextResponse.json(prompt);

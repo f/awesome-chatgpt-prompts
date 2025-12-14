@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { generatePromptEmbedding } from "@/lib/ai/embeddings";
 
 const updatePromptSchema = z.object({
   title: z.string().min(1).max(200).optional(),
@@ -182,6 +183,15 @@ export async function PATCH(
           createdBy: session.user.id,
         },
       });
+    }
+
+    // Regenerate embedding if content, title, or description changed (non-blocking)
+    // Only for public prompts - the function checks if aiSearch is enabled
+    const contentChanged = data.content || data.title || data.description !== undefined;
+    if (contentChanged && !prompt.isPrivate) {
+      generatePromptEmbedding(id).catch((err) =>
+        console.error("Failed to regenerate embedding for prompt:", id, err)
+      );
     }
 
     return NextResponse.json(prompt);
