@@ -157,37 +157,41 @@ async function buildAuthConfig() {
         if (user && user.email) {
           const dbUser = await db.user.findUnique({
             where: { email: user.email },
-            select: { id: true, role: true, username: true, locale: true },
+            select: { id: true, role: true, username: true, locale: true, name: true, avatar: true },
           });
-          
+
           if (dbUser) {
             token.id = dbUser.id;
             token.role = dbUser.role;
             token.username = dbUser.username;
             token.locale = dbUser.locale;
+            token.name = dbUser.name;
+            token.picture = dbUser.avatar;
           }
         }
-        
+
         // On subsequent requests, verify user exists and refresh data
         if (token.id && !user) {
           const dbUser = await db.user.findUnique({
             where: { id: token.id as string },
-            select: { id: true, role: true, username: true, locale: true },
+            select: { id: true, role: true, username: true, locale: true, name: true, avatar: true },
           });
-          
+
           // User no longer exists - invalidate token
           if (!dbUser) {
             return null;
           }
-          
+
           // Update token with latest user data on explicit update or if data missing
           if (trigger === "update" || !token.username) {
             token.role = dbUser.role;
             token.username = dbUser.username;
             token.locale = dbUser.locale;
+            token.name = dbUser.name;
+            token.picture = dbUser.avatar;
           }
         }
-        
+
         return token;
       },
       async session({ session, token }: { session: any; token: any }) {
@@ -200,6 +204,8 @@ async function buildAuthConfig() {
           session.user.role = token.role as string;
           session.user.username = token.username as string;
           session.user.locale = token.locale as string;
+          session.user.name = token.name ?? null;
+          session.user.image = token.picture ?? null;
         }
         return session;
       },
@@ -233,5 +239,7 @@ declare module "@auth/core/jwt" {
     role: string;
     username: string;
     locale: string;
+    name?: string | null;
+    picture?: string | null;
   }
 }
