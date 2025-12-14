@@ -1,3 +1,14 @@
+## ⚠️ Where are all the prompts gone?
+
+> **No worries They are still here.** But it become impossible to maintain a monster README file. So now it has its own system. Still free, still open-sourced.
+>
+> 🌐 **[View All Prompts on prompts.chat](https://prompts.chat/prompts)**
+> 
+> 🔍 **[View All Prompts synced on GitHub (prompts.csv)](https://github.com/f/awesome-chatgpt-prompts/blob/main/prompts.csv)**
+> 
+> 📊 **[View All Prompts synced on Data Studio on HF (prompts.csv)](https://huggingface.co/datasets/fka/awesome-chatgpt-prompts/viewer?views%5B%5D=train)**
+> 
+
 <p align="center">
   <img width="558" height="148" alt="Screenshot 2025-12-12 at 02 40 52" src="https://github.com/user-attachments/assets/8de2ba4c-5e89-4aae-aecb-32b188fb1bfb" />
   <br>
