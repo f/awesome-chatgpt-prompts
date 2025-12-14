@@ -4813,3 +4813,16 @@ Act as a digital marketing expert create 10 beginner friendly digital product id
 
 </details>
 
+<details>
+<summary><strong>Floating City Island - Photoreal 4K Poster</strong></summary>
+
+## Floating City Island - Photoreal 4K Poster
+
+Contributed by [@apo-bozdag](https://github.com/apo-bozdag)
+
+```md
+Design a "floating miniature island" shaped like the ${city:denizli} map/silhouette, gliding above white clouds. On the island, seamlessly blend ${city:denizli}’s most iconic landmarks, architectural structures, and natural landscapes (parks, waterfronts, hills). Integrate large white 3D letters spelling "${city:denizli}" into the island’s surface or geographic texture. Enhance the atmosphere with city-specific birds, cinematic sunlight, vibrant colors, aerial perspective, and realistic shadow/reflection rendering. Ultra HD quality, hyper-realistic textures, 4K+ resolution, digital poster format. Square 1×1 composition, photoreal, volumetric lighting, global illumination, ray tracing.
+```
+
+</details>
+
