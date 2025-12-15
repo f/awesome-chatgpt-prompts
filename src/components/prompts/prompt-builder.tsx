@@ -68,7 +68,11 @@ export function PromptBuilder({
   initialPromptRequest,
 }: PromptBuilderProps) {
   const t = useTranslations("promptBuilder");
-  const [isOpen, setIsOpen] = useState(true);
+  // Default to closed on mobile (< 768px)
+  const [isOpen, setIsOpen] = useState(() => {
+    if (typeof window === "undefined") return true;
+    return window.innerWidth >= 768;
+  });
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -306,20 +310,42 @@ export function PromptBuilder({
 
   if (!isOpen) {
     return (
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={() => setIsOpen(true)}
-        className="gap-1.5 h-7 text-xs px-2"
-      >
-        <Bot className="h-3 w-3" />
-        {t("openBuilder")}
-      </Button>
+      <>
+        {/* Desktop: inline button */}
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => setIsOpen(true)}
+          className="hidden sm:inline-flex gap-1.5 h-7 text-xs px-2"
+        >
+          <Bot className="h-3 w-3" />
+          {t("openBuilder")}
+        </Button>
+        {/* Mobile: floating button */}
+        <Button
+          variant="default"
+          size="icon"
+          onClick={() => setIsOpen(true)}
+          className="sm:hidden fixed bottom-4 right-4 h-12 w-12 rounded-full shadow-lg z-50"
+        >
+          <Bot className="h-5 w-5" />
+        </Button>
+      </>
     );
   }
 
   return (
-    <div className="fixed right-0 top-12 h-[calc(100vh-3rem)] w-[400px] border-l bg-background shadow-lg z-40 flex flex-col">
+    <>
+      {/* Mobile: backdrop overlay */}
+      <div 
+        className="sm:hidden fixed inset-0 bg-black/50 z-40 animate-in fade-in duration-200"
+        onClick={() => setIsOpen(false)}
+      />
+      {/* Desktop: side panel, Mobile: bottom drawer */}
+      <div className="fixed z-50 bg-background shadow-lg flex flex-col
+        sm:right-0 sm:top-12 sm:h-[calc(100vh-3rem)] sm:w-[400px] sm:border-l
+        inset-x-0 bottom-0 h-[70vh] rounded-t-xl sm:rounded-none border-t sm:border-t-0
+        animate-in slide-in-from-bottom sm:slide-in-from-right duration-300">
       {/* Header */}
       <div className="flex items-center justify-between px-3 py-1.5 border-b">
         <div className="flex items-center gap-1.5">
@@ -539,6 +565,7 @@ export function PromptBuilder({
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

@@ -452,7 +452,7 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
         {/* ===== METADATA SECTION ===== */}
         <div className="space-y-4 pb-6 border-b">
           {/* Row 1: Title + Category */}
-          <div className="flex items-start gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-start gap-4">
             <FormField
               control={form.control}
               name="title"
@@ -470,7 +470,7 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
               control={form.control}
               name="categoryId"
               render={({ field }) => (
-                <FormItem className="w-64">
+                <FormItem className="w-full sm:w-64">
                   <FormLabel>{t("promptCategory")}</FormLabel>
                   <Select 
                     onValueChange={(value) => field.onChange(value === "__none__" ? undefined : value)} 
@@ -642,38 +642,40 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
           </div>
           
           {/* Input Type & Format selectors */}
-          <div className="flex items-center gap-3">
-            <Select 
-              value={isStructuredInput ? "STRUCTURED" : "TEXT"} 
-              onValueChange={(v) => {
-                if (v === "STRUCTURED") {
-                  form.setValue("structuredFormat", "JSON");
-                } else {
-                  form.setValue("structuredFormat", undefined);
-                }
-              }}
-            >
-              <SelectTrigger className="h-9 w-48">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="TEXT">{t("inputTypes.text")}</SelectItem>
-                <SelectItem value="STRUCTURED">{t("inputTypes.structured")}</SelectItem>
-              </SelectContent>
-            </Select>
-            {isStructuredInput && (
-              <Select value={structuredFormat || "JSON"} onValueChange={(v) => form.setValue("structuredFormat", v as any)}>
-                <SelectTrigger className="h-9 w-24">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+            <div className="flex items-center gap-3">
+              <Select 
+                value={isStructuredInput ? "STRUCTURED" : "TEXT"} 
+                onValueChange={(v) => {
+                  if (v === "STRUCTURED") {
+                    form.setValue("structuredFormat", "JSON");
+                  } else {
+                    form.setValue("structuredFormat", undefined);
+                  }
+                }}
+              >
+                <SelectTrigger className="h-9 w-48">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="JSON">JSON</SelectItem>
-                  <SelectItem value="YAML">YAML</SelectItem>
+                  <SelectItem value="TEXT">{t("inputTypes.text")}</SelectItem>
+                  <SelectItem value="STRUCTURED">{t("inputTypes.structured")}</SelectItem>
                 </SelectContent>
               </Select>
-            )}
+              {isStructuredInput && (
+                <Select value={structuredFormat || "JSON"} onValueChange={(v) => form.setValue("structuredFormat", v as any)}>
+                  <SelectTrigger className="h-9 w-24">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="JSON">JSON</SelectItem>
+                    <SelectItem value="YAML">YAML</SelectItem>
+                  </SelectContent>
+                </Select>
+              )}
+            </div>
             {/* Media upload toggle */}
-            <div className="flex items-center gap-2 ml-auto">
+            <div className="flex items-center gap-2 sm:ml-auto">
               <Switch
                 id="media-upload"
                 checked={requiresMediaUpload}
@@ -687,37 +689,39 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
 
           {/* Media type & count - grouped buttons */}
           {requiresMediaUpload && (
-            <div className="flex items-center gap-3 p-3 rounded-md border bg-muted/30">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 p-3 rounded-md border bg-muted/30">
               <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
                 <Paperclip className="h-4 w-4" />
                 <span>{t("attachedMediaType")}:</span>
               </div>
-              <div className="inline-flex rounded-md border divide-x">
-                {(["IMAGE", "VIDEO", "DOCUMENT"] as const).map((type) => (
-                  <button
-                    key={type}
-                    type="button"
-                    onClick={() => form.setValue("requiredMediaType", type)}
-                    className={`px-3 py-1.5 text-xs font-medium transition-colors first:rounded-l-md last:rounded-r-md ${
-                      form.watch("requiredMediaType") === type
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-background hover:bg-muted"
-                    }`}
-                  >
-                    {t(`types.${type.toLowerCase()}`)}
-                  </button>
-                ))}
-              </div>
-              <div className="flex items-center gap-1">
-                <span className="text-xs text-muted-foreground">×</span>
-                <Input 
-                  type="number" 
-                  min={1} 
-                  max={10}
-                  value={form.watch("requiredMediaCount")}
-                  onChange={(e) => form.setValue("requiredMediaCount", parseInt(e.target.value) || 1)}
-                  className="h-7 w-16 text-xs"
-                />
+              <div className="flex items-center gap-3">
+                <div className="inline-flex rounded-md border divide-x">
+                  {(["IMAGE", "VIDEO", "DOCUMENT"] as const).map((type) => (
+                    <button
+                      key={type}
+                      type="button"
+                      onClick={() => form.setValue("requiredMediaType", type)}
+                      className={`px-3 py-1.5 text-xs font-medium transition-colors first:rounded-l-md last:rounded-r-md ${
+                        form.watch("requiredMediaType") === type
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-background hover:bg-muted"
+                      }`}
+                    >
+                      {t(`types.${type.toLowerCase()}`)}
+                    </button>
+                  ))}
+                </div>
+                <div className="flex items-center gap-1">
+                  <span className="text-xs text-muted-foreground">×</span>
+                  <Input 
+                    type="number" 
+                    min={1} 
+                    max={10}
+                    value={form.watch("requiredMediaCount")}
+                    onChange={(e) => form.setValue("requiredMediaCount", parseInt(e.target.value) || 1)}
+                    className="h-7 w-16 text-xs"
+                  />
+                </div>
               </div>
             </div>
           )}
@@ -796,13 +800,21 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
           </div>
           
           {/* Output Type selector as grouped buttons */}
-          <div className="inline-flex rounded-md border divide-x">
-            {(["TEXT", "IMAGE", "VIDEO", "AUDIO"] as const).map((type) => (
+          <div className="grid grid-cols-2 sm:inline-flex rounded-md border sm:divide-x">
+            {(["TEXT", "IMAGE", "VIDEO", "AUDIO"] as const).map((type, index) => (
               <button
                 key={type}
                 type="button"
                 onClick={() => form.setValue("type", type)}
-                className={`px-4 py-2 text-sm font-medium transition-colors first:rounded-l-md last:rounded-r-md flex items-center gap-2 ${
+                className={`px-4 py-2 text-sm font-medium transition-colors flex items-center justify-center gap-2 ${
+                  index === 0 ? "rounded-tl-md sm:rounded-l-md sm:rounded-tr-none" : ""
+                } ${
+                  index === 1 ? "rounded-tr-md sm:rounded-none border-l sm:border-l-0" : ""
+                } ${
+                  index === 2 ? "rounded-bl-md sm:rounded-none border-t sm:border-t-0" : ""
+                } ${
+                  index === 3 ? "rounded-br-md sm:rounded-r-md sm:rounded-bl-none border-t border-l sm:border-t-0 sm:border-l-0" : ""
+                } ${
                   promptType === type
                     ? "bg-primary text-primary-foreground"
                     : "bg-background hover:bg-muted"

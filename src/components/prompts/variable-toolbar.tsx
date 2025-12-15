@@ -103,7 +103,7 @@ export function VariableToolbar({ onInsert, getSelectedText }: VariableToolbarPr
           </div>
         </PopoverContent>
       </Popover>
-      <span className="text-xs text-muted-foreground ml-1">
+      <span className="hidden sm:inline text-xs text-muted-foreground ml-1">
         {t("variableHint")}
       </span>
     </div>
