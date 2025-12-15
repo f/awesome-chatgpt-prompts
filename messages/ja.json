@@ -640,11 +640,15 @@
     "latestPrompts": "最新のプロンプト",
     "achievements": {
       "featuredIn": "掲載:",
+      "referencedBy": "参照元:",
       "forbes": "Forbes",
+      "harvardUniversity": "ハーバード大学",
       "mostLikedDataset": "Hugging Faceで#1最も人気のデータセット",
       "githubStars": "GitHubスター",
       "mostStarredRepo": "世界で#33最もスターされたリポジトリ",
       "usedByThousands": "毎日何千人もが利用",
+      "githubStaffPick": "GitHubスタッフのおすすめ",
+      "fullyOpenSource": "唯一の100%無料＆オープンソースのプロンプトライブラリ",
       "sponsoredBy": "スポンサー",
       "becomeSponsor": "スポンサーになる"
     }

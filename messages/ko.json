@@ -640,11 +640,15 @@
     "latestPrompts": "최신 프롬프트",
     "achievements": {
       "featuredIn": "소개됨",
+      "referencedBy": "참조됨",
       "forbes": "Forbes",
+      "harvardUniversity": "하버드 대학교",
       "mostLikedDataset": "Hugging Face에서 #1 가장 많이 좋아요 받은 데이터셋",
       "githubStars": "GitHub 스타",
       "mostStarredRepo": "세계에서 #33 가장 많은 스타 받은 저장소",
       "usedByThousands": "매일 수천 명이 사용",
+      "githubStaffPick": "GitHub 스태프 추천",
+      "fullyOpenSource": "유일한 100% 무료 & 오픈 소스 프롬프트 라이브러리",
       "sponsoredBy": "후원",
       "becomeSponsor": "후원자 되기"
     }

@@ -640,11 +640,15 @@
     "latestPrompts": "Ultimi Prompt",
     "achievements": {
       "featuredIn": "Presentato in",
+      "referencedBy": "Citato da",
       "forbes": "Forbes",
+      "harvardUniversity": "Università di Harvard",
       "mostLikedDataset": "Dataset #1 Più Apprezzato su Hugging Face",
       "githubStars": "Stelle GitHub",
       "mostStarredRepo": "Repo #33 Più Stellata al Mondo",
       "usedByThousands": "Usato da Migliaia Ogni Giorno",
+      "githubStaffPick": "Selezione dello Staff GitHub",
+      "fullyOpenSource": "L'unica libreria di prompt 100% gratuita & open source",
       "sponsoredBy": "Sponsorizzato da",
       "becomeSponsor": "Diventa Sponsor"
     }

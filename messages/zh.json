@@ -640,11 +640,15 @@
     "latestPrompts": "最新提示词",
     "achievements": {
       "featuredIn": "刊登于",
+      "referencedBy": "被引用于",
       "forbes": "Forbes",
+      "harvardUniversity": "哈佛大学",
       "mostLikedDataset": "Hugging Face 上最受欢迎的数据集 #1",
       "githubStars": "GitHub 星标",
       "mostStarredRepo": "全球第 #33 最受欢迎的仓库",
       "usedByThousands": "每天被数千人使用",
+      "githubStaffPick": "GitHub 官方推荐",
+      "fullyOpenSource": "唯一100%免费开源的提示词库",
       "sponsoredBy": "赞助商",
       "becomeSponsor": "成为赞助商"
     }

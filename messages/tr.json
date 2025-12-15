@@ -625,8 +625,8 @@
   "homepage": {
     "heroTitle": "AI Promptları için",
     "heroSubtitle": "Sosyal Platform",
-    "heroDescription": "Topluluktan promptları paylaşın, keşfedin ve toplayın. Ücretsiz ve açık kaynak — tam gizlilik için kendi sunucunuzda barındırın.",
-    "heroFeature1": "Ücretsiz & Açık Kaynak",
+    "heroDescription": "Topluluktan promptları paylaşın, keşfedin ve toplayın. Özgür ve açık kaynak — tam gizlilik için kendi sunucunuzda barındırın.",
+    "heroFeature1": "Özgür & Açık Kaynak",
     "heroFeature2": "Gizlilik için Self-host",
     "heroFeature3": "Ekipler & Organizasyonlar için",
     "cloneOnGithub": "GitHub'dan Klonla",
@@ -634,17 +634,21 @@
     "browsePrompts": "Promptlara Göz At",
     "viewFeed": "Akışı Görüntüle",
     "readyToStart": "Başlamaya hazır mısınız?",
-    "freeAndOpen": "Ücretsiz ve açık kaynak.",
+    "freeAndOpen": "Özgür ve açık kaynak.",
     "createAccount": "Hesap Oluştur",
     "featuredPrompts": "Öne Çıkan Promptlar",
     "latestPrompts": "En Son Promptlar",
     "achievements": {
       "featuredIn": "Yayınlandı:",
+      "referencedBy": "Referans:",
       "forbes": "Forbes",
+      "harvardUniversity": "Harvard Üniversitesi",
       "mostLikedDataset": "Hugging Face'de #1 En Beğenilen Veri Seti",
       "githubStars": "GitHub Yıldızı",
       "mostStarredRepo": "Dünyada #33 En Çok Yıldızlanan Repo",
       "usedByThousands": "Her Gün Binlerce Aktif Kullanıcı",
+      "githubStaffPick": "GitHub Ekip Seçimi",
+      "fullyOpenSource": "Tek 100% özgür ve açık kaynak prompt kütüphanesi",
       "sponsoredBy": "Sponsor",
       "becomeSponsor": "Sponsor Ol"
     }

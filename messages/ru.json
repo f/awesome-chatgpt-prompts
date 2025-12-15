@@ -640,11 +640,15 @@
     "latestPrompts": "Новейшие промпты",
     "achievements": {
       "featuredIn": "Упомянуто в",
+      "referencedBy": "Ссылается",
       "forbes": "Forbes",
+      "harvardUniversity": "Гарвардский университет",
       "mostLikedDataset": "#1 Самый популярный датасет на Hugging Face",
       "githubStars": "Звезд на GitHub",
       "mostStarredRepo": "#33 Самый звездный репозиторий в мире",
       "usedByThousands": "Используется тысячами ежедневно",
+      "githubStaffPick": "Выбор команды GitHub",
+      "fullyOpenSource": "Единственная 100% бесплатная и open source библиотека промптов",
       "sponsoredBy": "Спонсируется",
       "becomeSponsor": "Стать спонсором"
     }
