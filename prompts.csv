@@ -2912,10 +2912,10 @@ Ultra-Detailed Vintage Photo Restoration and Colorization,"Ultra-detailed restor
 Then, colorize it to look like a historical color photograph: natural, muted, historically accurate colors. Avoid plastic skin, oversaturation, digital painting look, and oversharpening artifacts. Museum-quality realism.",FALSE,TEXT,dnn.321123@gmail.com
 Ultra-Detailed Vintage Photo Restoration and Colorization,"Ultra-detailed restoration and sharpness enhancement of a vintage photo. Recover fine details and improve clarity, especially on faces. Remove all scratches, dust, stains, tears. Preserve natural film grain. Correct geometry and tonal range. 
 Then, colorize it to look like a historical color photograph: natural, muted, historically accurate colors. Avoid plastic skin, oversaturation, digital painting look, and oversharpening artifacts. Museum-quality realism.",FALSE,TEXT,dnn.321123@gmail.com
-Revenue Performance Report,"${prompt:Generate a monthly revenue performance report showing MRR, number of active subscriptions, and churned subscriptions for the last 6 months, grouped by month.}
+Revenue Performance Report,"Generate a monthly revenue performance report showing MRR, number of active subscriptions, and churned subscriptions for the last 6 months, grouped by month.
 
 ",FALSE,TEXT,mergisi
-Revenue Performance Report,"${prompt:Generate a monthly revenue performance report showing MRR, number of active subscriptions, and churned subscriptions for the last 6 months, grouped by month.}
+Revenue Performance Report,"Generate a monthly revenue performance report showing MRR, number of active subscriptions, and churned subscriptions for the last 6 months, grouped by month.
 
 ",FALSE,TEXT,mergisi
 Harry Potter / Marauder’s Map,"Render the city of ${city_name} as a hidden magical wizarding world map inspired by the Harry Potter universe, in the style of the Marauder’s Map.
