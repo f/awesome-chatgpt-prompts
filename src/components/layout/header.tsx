@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSession, signOut } from "next-auth/react";
@@ -65,12 +66,13 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
 
   const user = session?.user;
   const isAdmin = user?.role === "ADMIN";
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-12 items-center gap-4">
         {/* Mobile menu */}
-        <Sheet>
+        <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
           <SheetTrigger asChild className="md:hidden">
             <Button variant="ghost" size="icon" className="-ml-2 h-8 w-8">
               <Menu className="h-4 w-4" />
@@ -108,6 +110,7 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
                   {user && (
                     <Link 
                       href="/feed" 
+                      onClick={() => setMobileMenuOpen(false)}
                       className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
                     >
                       {t("nav.feed")}
@@ -115,30 +118,35 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
                   )}
                   <Link 
                     href="/prompts" 
+                    onClick={() => setMobileMenuOpen(false)}
                     className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
                   >
                     {t("nav.prompts")}
                   </Link>
                   <Link 
                     href="/categories" 
+                    onClick={() => setMobileMenuOpen(false)}
                     className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
                   >
                     {t("nav.categories")}
                   </Link>
                   <Link 
                     href="/tags" 
+                    onClick={() => setMobileMenuOpen(false)}
                     className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
                   >
                     {t("nav.tags")}
                   </Link>
                   <Link 
                     href="/discover" 
+                    onClick={() => setMobileMenuOpen(false)}
                     className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
                   >
                     {t("feed.discover")}
                   </Link>
                   <Link 
                     href="/promptmasters" 
+                    onClick={() => setMobileMenuOpen(false)}
                     className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
                   >
                     {t("nav.promptmasters")}
