@@ -171,6 +171,13 @@ else:
             
             subprocess.run(['git', 'add', csv_file], check=True)
             
+            # Check if there are actual changes to commit
+            diff_result = subprocess.run(['git', 'diff', '--cached', '--quiet'], capture_output=True)
+            if diff_result.returncode == 0:
+                # No changes staged, skip this commit
+                print(f"[UPDATE {i}/{len(updated_prompts)}] {act} - no changes, skipping")
+                continue
+            
             env = os.environ.copy()
             env['GIT_AUTHOR_NAME'] = primary_author
             env['GIT_AUTHOR_EMAIL'] = email
@@ -206,6 +213,12 @@ else:
             
             # Stage and commit
             subprocess.run(['git', 'add', csv_file], check=True)
+            
+            # Check if there are actual changes to commit
+            diff_result = subprocess.run(['git', 'diff', '--cached', '--quiet'], capture_output=True)
+            if diff_result.returncode == 0:
+                print(f"[NEW {i}/{len(new_prompts)}] {act} - no changes, skipping")
+                continue
             
             env = os.environ.copy()
             env['GIT_AUTHOR_NAME'] = primary_author
@@ -248,6 +261,12 @@ else:
             
             # Stage and commit
             subprocess.run(['git', 'add', csv_file], check=True)
+            
+            # Check if there are actual changes to commit
+            diff_result = subprocess.run(['git', 'diff', '--cached', '--quiet'], capture_output=True)
+            if diff_result.returncode == 0:
+                print(f"[REMOVE {i}/{len(deleted_prompts)}] {act} - no changes, skipping")
+                continue
             
             env = os.environ.copy()
             env['GIT_AUTHOR_NAME'] = primary_author
