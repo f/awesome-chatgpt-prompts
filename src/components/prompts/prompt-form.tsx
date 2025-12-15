@@ -6,12 +6,12 @@ import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Loader2, Upload, X, ArrowDown, Play, Image as ImageIcon, Video, Volume2, Paperclip, Search } from "lucide-react";
+import { Loader2, Upload, X, ArrowDown, Play, Image as ImageIcon, Video, Volume2, Paperclip, Search, Sparkles } from "lucide-react";
 import { VariableToolbar } from "./variable-toolbar";
 import { VariableWarning } from "./variable-warning";
 import { VariableHint } from "./variable-hint";
 import { ContributorSearch } from "./contributor-search";
-import { PromptBuilder } from "./prompt-builder";
+import { PromptBuilder, type PromptBuilderHandle } from "./prompt-builder";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -243,6 +243,8 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
   const tCommon = useTranslations("common");
   const [isLoading, setIsLoading] = useState(false);
   const [contributors, setContributors] = useState<Contributor[]>(initialContributors);
+  const [usedAiButtons, setUsedAiButtons] = useState<Set<string>>(new Set());
+  const builderRef = useRef<PromptBuilderHandle>(null);
 
   const promptSchema = createPromptSchema(t);
   const form = useForm<PromptFormValues>({
@@ -413,6 +415,32 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
     }
   };
 
+  const handleAiGenerate = (field: string, label: string) => {
+    if (usedAiButtons.has(field) || !builderRef.current) return;
+    setUsedAiButtons(prev => new Set(prev).add(field));
+    builderRef.current.sendMessage(`Generate ${label}`);
+  };
+
+  const AiGenerateButton = ({ field, label }: { field: string; label: string }) => {
+    if (!aiGenerationEnabled) return null;
+    const isUsed = usedAiButtons.has(field);
+    return (
+      <button
+        type="button"
+        onClick={() => handleAiGenerate(field, label)}
+        disabled={isUsed}
+        className={`inline-flex items-center justify-center h-4 w-4 rounded transition-colors ${
+          isUsed 
+            ? "text-muted-foreground/30 cursor-not-allowed" 
+            : "text-primary/60 hover:text-primary hover:bg-primary/10"
+        }`}
+        title={`Generate ${label}`}
+      >
+        <Sparkles className="h-3 w-3" />
+      </button>
+    );
+  };
+
   return (
     <>
       <Form {...form}>
@@ -423,6 +451,7 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
             <div className="flex items-center gap-3">
               {aiGenerationEnabled && (
                 <PromptBuilder
+                  ref={builderRef}
                   availableTags={tags}
                   availableCategories={categories}
                   currentState={currentBuilderState}
@@ -458,7 +487,10 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
               name="title"
               render={({ field }) => (
                 <FormItem className="flex-1">
-                  <FormLabel>{t("promptTitle")}</FormLabel>
+                  <FormLabel className="flex items-center gap-1.5">
+                    {t("promptTitle")}
+                    <AiGenerateButton field="title" label="Title" />
+                  </FormLabel>
                   <FormControl>
                     <Input placeholder={t("titlePlaceholder")} {...field} />
                   </FormControl>
@@ -471,7 +503,10 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
               name="categoryId"
               render={({ field }) => (
                 <FormItem className="w-full sm:w-64">
-                  <FormLabel>{t("promptCategory")}</FormLabel>
+                  <FormLabel className="flex items-center gap-1.5">
+                    {t("promptCategory")}
+                    <AiGenerateButton field="category" label="Category" />
+                  </FormLabel>
                   <Select 
                     onValueChange={(value) => field.onChange(value === "__none__" ? undefined : value)} 
                     value={field.value || "__none__"}
@@ -513,7 +548,10 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
             name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t("promptDescription")}</FormLabel>
+                <FormLabel className="flex items-center gap-1.5">
+                  {t("promptDescription")}
+                  <AiGenerateButton field="description" label="Description" />
+                </FormLabel>
                 <FormControl>
                   <Textarea
                     placeholder={t("descriptionPlaceholder")}
@@ -541,7 +579,10 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
 
               return (
                 <FormItem>
-                  <FormLabel>{t("promptTags")}</FormLabel>
+                  <FormLabel className="flex items-center gap-1.5">
+                    {t("promptTags")}
+                    <AiGenerateButton field="tags" label="Tags" />
+                  </FormLabel>
                   {/* Selected tags */}
                   {selectedTagObjects.length > 0 && (
                     <div className="flex flex-wrap gap-2 mb-2">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useImperativeHandle, forwardRef } from "react";
 import { useTranslations } from "next-intl";
 import { ArrowUp, Loader2, Sparkles, X, ChevronRight, Bot } from "lucide-react";
 import ReactMarkdown from "react-markdown";
@@ -59,14 +59,19 @@ interface PromptBuilderProps {
   initialPromptRequest?: string;
 }
 
-export function PromptBuilder({
+export interface PromptBuilderHandle {
+  sendMessage: (content: string) => void;
+  open: () => void;
+}
+
+export const PromptBuilder = forwardRef<PromptBuilderHandle, PromptBuilderProps>(function PromptBuilder({
   availableTags,
   availableCategories,
   currentState,
   onStateChange,
   modelName = "gpt-4o-mini",
   initialPromptRequest,
-}: PromptBuilderProps) {
+}, ref) {
   const t = useTranslations("promptBuilder");
   // Default to closed on mobile (< 768px)
   const [isOpen, setIsOpen] = useState(() => {
@@ -88,6 +93,15 @@ export function PromptBuilder({
   useEffect(() => {
     scrollToBottom();
   }, [messages, streamingContent]);
+
+  // Expose sendMessage and open to parent via ref
+  useImperativeHandle(ref, () => ({
+    sendMessage: (content: string) => {
+      setIsOpen(true);
+      setTimeout(() => sendMessageWithContent(content), 100);
+    },
+    open: () => setIsOpen(true),
+  }));
 
   // Auto-send initial prompt request if provided
   const initialRequestSentRef = useRef(false);
@@ -568,4 +582,4 @@ export function PromptBuilder({
       </div>
     </>
   );
-}
+});
