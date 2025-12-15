@@ -6197,3 +6197,18 @@ Generate a monthly revenue performance report showing MRR, number of active subs
 
 </details>
 
+<details>
+<summary><strong>Revenue Performance Report</strong></summary>
+
+## Revenue Performance Report
+
+Contributed by [@mergisi](https://github.com/mergisi)
+
+```md
+Generate a monthly revenue performance report showing MRR, number of active subscriptions, and churned subscriptions for the last 6 months, grouped by month.
+
+
+```
+
+</details>
+
