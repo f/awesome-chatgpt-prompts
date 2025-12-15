@@ -31,6 +31,7 @@ interface Platform {
 }
 
 const platforms: Platform[] = [
+  { id: "ai2sql", name: "AI2SQL", baseUrl: "https://builder.ai2sql.io/dashboard/builder-all-lp?tab=generate" },
   { id: "chatgpt", name: "ChatGPT", baseUrl: "https://chatgpt.com" },
   { id: "claude", name: "Claude", baseUrl: "https://claude.ai/new" },
   { id: "copilot", name: "Copilot", baseUrl: "https://copilot.microsoft.com", supportsQuerystring: false },
@@ -62,6 +63,8 @@ function buildUrl(platformId: string, baseUrl: string, promptText: string): stri
   const encoded = encodeURIComponent(promptText);
   
   switch (platformId) {
+    case "ai2sql":
+      return `${baseUrl}&prompt=${encoded}`;
     case "chatgpt":
       return `${baseUrl}/?q=${encoded}`;
     case "claude":
