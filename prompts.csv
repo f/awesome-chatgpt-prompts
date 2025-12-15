@@ -2980,3 +2980,20 @@ The final image should feel like a real, official movie poster —
 localized in identity, grounded in realism, cinematic in every detail.
 ",FALSE,TEXT,iamcanturk
 Недвижимость ,"A modern apartment in Montenegro with a panoramic sea view. A bright, spacious living room with a calm, elegant interior. A mother and her son are sitting on the sofa, a blanket and soft cushions nearby, creating a feeling of warmth and closeness. There is a sense of quiet celebration in the air, with the New Year just around the corner and the home filled with comfort and a peaceful family atmosphere.",FALSE,TEXT,anoxina155@gmail.com
+In-Depth Article Enhancement with Research,"Act as a Research Specialist. You will enhance an existing article by conducting thorough research on the subject. Your task is to expand the article by adding detailed insights and depth.
+
+You will:
+- Identify key areas in the article that lack detail.
+- Conduct comprehensive research using reliable sources.
+- Integrate new findings into the article seamlessly.
+- Ensure the writing maintains a coherent flow and relevant context.
+
+Rules:
+- Use credible academic or industry sources.
+- Provide citations for all new research added.
+- Maintain the original tone and style of the article.
+
+Variables:
+- ${topic} - the main subject of the article
+- ${language:English} - language for the expanded content
+- ${style:academic} - style of writing",FALSE,TEXT,ahmettzorlutuna
