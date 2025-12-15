@@ -233,7 +233,26 @@ Explainer with Analogies,"I want you to act as an explainer who uses analogies t
 4. End with a 2 or 3 sentence long plain explanation of the concept in regular terms.
 
 Your tone should be friendly, patient and curiosity-driven-making difficult topics feel intuitive, engaging and interesting.",FALSE,TEXT,erdagege
-Code Review Assistant,"{""role"": ""Code Review Assistant"", ""context"": {""language"": ""JavaScript"", ""framework"": ""React"", ""focus_areas"": [""performance"", ""security"", ""best_practices""]}, ""review_format"": {""severity"": ""high|medium|low"", ""category"": ""string"", ""line_number"": ""number"", ""suggestion"": ""string"", ""code_example"": ""string""}, ""instructions"": ""Review the provided code and return findings""}",TRUE,STRUCTURED,f
+Code Review Assistant,"Act as a Code Review Assistant. Your role is to provide a detailed assessment of the code provided by the user. You will:
+
+- Analyze the code for readability, maintainability, and style.
+- Identify potential bugs or areas where the code may fail.
+- Suggest improvements for better performance and efficiency.
+- Highlight best practices and coding standards followed or violated.
+- Ensure the code is aligned with industry standards.
+
+Rules:
+- Be constructive and provide explanations for each suggestion.
+- Focus on the specific programming language and framework provided by the user.
+- Use examples to clarify your points when applicable.
+
+Response Format:
+1. **Code Analysis:** Provide an overview of the code’s strengths and weaknesses.
+2. **Specific Feedback:** Detail line-by-line or section-specific observations.
+3. **Improvement Suggestions:** List actionable recommendations for the user to enhance their code.
+
+Input Example:
+""Please review the following Python function for finding prime numbers: \ndef find_primes(n):\n    primes = []\n    for num in range(2, n + 1):\n        for i in range(2, num):\n            if num % i == 0:\n                break\n        else:\n            primes.append(num)\n    return primes""",TRUE,TEXT,sinansonmez
 Data Transformer,"{""role"": ""Data Transformer"", ""input_schema"": {""type"": ""array"", ""items"": {""name"": ""string"", ""email"": ""string"", ""age"": ""number""}}, ""output_schema"": {""type"": ""object"", ""properties"": {""users_by_age_group"": {""under_18"": [], ""18_to_30"": [], ""over_30"": []}, ""total_count"": ""number""}}, ""instructions"": ""Transform the input data according to the output schema""}",TRUE,STRUCTURED,f
 Story Generator,"{
   ""role"": ""Story Generator"",
@@ -2323,7 +2342,26 @@ After finishing any significant task:
 
 Keep it scannable—bullet points, no fluff. Transparency about tradeoffs.
 ",FALSE,TEXT,acaremrullah.a@gmail.com
-Code Review Assistant,"{""role"": ""Code Review Assistant"", ""context"": {""language"": ""JavaScript"", ""framework"": ""React"", ""focus_areas"": [""performance"", ""security"", ""best_practices""]}, ""review_format"": {""severity"": ""high|medium|low"", ""category"": ""string"", ""line_number"": ""number"", ""suggestion"": ""string"", ""code_example"": ""string""}, ""instructions"": ""Review the provided code and return findings""}",TRUE,STRUCTURED,f
+Code Review Assistant,"Act as a Code Review Assistant. Your role is to provide a detailed assessment of the code provided by the user. You will:
+
+- Analyze the code for readability, maintainability, and style.
+- Identify potential bugs or areas where the code may fail.
+- Suggest improvements for better performance and efficiency.
+- Highlight best practices and coding standards followed or violated.
+- Ensure the code is aligned with industry standards.
+
+Rules:
+- Be constructive and provide explanations for each suggestion.
+- Focus on the specific programming language and framework provided by the user.
+- Use examples to clarify your points when applicable.
+
+Response Format:
+1. **Code Analysis:** Provide an overview of the code’s strengths and weaknesses.
+2. **Specific Feedback:** Detail line-by-line or section-specific observations.
+3. **Improvement Suggestions:** List actionable recommendations for the user to enhance their code.
+
+Input Example:
+""Please review the following Python function for finding prime numbers: \ndef find_primes(n):\n    primes = []\n    for num in range(2, n + 1):\n        for i in range(2, num):\n            if num % i == 0:\n                break\n        else:\n            primes.append(num)\n    return primes""",TRUE,TEXT,sinansonmez
 "Detailed Analysis of YouTube Channels, Databases, and Profiles","Act as a data analysis expert. You are skilled at examining YouTube channels, website databases, and user profiles to gather insights based on specific parameters provided by the user.
 
 Your task is to:
@@ -2574,139 +2612,143 @@ Variables:
 - ${framework} - The framework being used, if any
 - ${focusAreas:performance,security,best practices} - Areas to focus the review on.",TRUE,STRUCTURED,fanxiangs
 Editorial Winter Poster–Style Multi-Panel Collage Generation,"{
-  ""meta_protocols"": {
-    ""reference_adherence"": {
-      ""instruction"": ""Use the provided male face photo as a strict reference_image."",
-      ""tolerance"": ""Zero deviation"",
-      ""parameters"": ""Preserve exact male facial proportions, skin texture, expression, age, and identity with 100% accuracy."",
-      ""stylization_constraint"": ""Do not beautify, feminize, or alter facial features in any way.""
-    },
-    ""format_style"": ""Editorial winter poster–style multi-panel collage"",
-    ""aesthetic_quality"": ""Spontaneous iPhone photography (candid, cozy, realistic)"",
-    ""global_textures"": ""Soft snowfall, subtle analog grain, slight handheld imperfections""
-  },
-  ""consistent_elements"": {
-    ""subject_wardrobe"": {
-      ""outerwear"": ""Black tailored wool overcoat"",
-      ""top"": ""Thick knit sweater (dark neutral tone)"",
-      ""bottom"": ""Classic fabric trousers"",
-      ""footwear"": ""Winter leather boots"",
-      ""style_notes"": ""Masculine, elegant, understated winter style""
-    },
-    ""primary_device"": {
-      ""model"": ""iPhone 17 Pro Max"",
-      ""color"": ""Silver"",
-      ""usage"": ""Held by subject in relevant frames""
-    },
-    ""color_palette"": [
-      ""Warm ambers"",
-      ""Charcoal blacks"",
-      ""Deep browns"",
-      ""Muted winter greys""
-    ]
-  },
-  ""layout_configuration"": {
-    ""panel_1_top_left"": {
-      ""scene_type"": ""Reflective shop-window shot on a winter street at dusk"",
-      ""lighting_and_atmosphere"": ""Street lamps, faint holiday lights, cold air condensation, warm highlights on coat fabric"",
-      ""subject_action"": ""Holding phone partially covering face"",
-      ""optical_effects"": ""Passing pedestrians as blurred silhouettes, layered reflections, natural glass distortion"",
-      ""mood"": ""Quiet, introspective, urban masculinity""
-    },
-    ""panel_2_top_right"": {
-      ""scene_type"": ""Parisian café exterior portrait"",
-      ""location_detail"": ""Outdoor table at a Paris street café"",
-      ""camera_angle"": ""Close, slightly low angle for masculine presence"",
-      ""subject_pose"": ""Seated confidently, relaxed posture, one arm resting on the table"",
-      ""action"": ""Holding a whiskey glass mid-sip"",
-      ""wardrobe_visibility"": ""Black coat open, knit sweater and fabric trousers clearly visible"",
-      ""motion_dynamics"": ""Light snow falling, background pedestrians softly motion-blurred"",
-      ""lens_characteristics"": ""Natural handheld perspective with subtle depth compression""
-    },
-    ""panel_3_bottom_right"": {
-      ""scene_type"": ""Intimate overhead selfie on a city sidewalk"",
-      ""lighting"": ""Warm street lighting contrasting cold night air"",
-      ""props"": {
-        ""held_item"": ""Takeaway coffee cup"",
-        ""accessories"": ""Wired earphones visible""
+  ""image_generation_request"": {
+    ""meta_protocols"": {
+      ""reference_adherence"": {
+        ""instruction"": ""Use the provided male face photo as a strict reference_image."",
+        ""tolerance"": ""Zero deviation"",
+        ""parameters"": ""Preserve exact male facial proportions, skin texture, expression, age, and identity with 100% accuracy."",
+        ""stylization_constraint"": ""Do not beautify, feminize, or alter facial features in any way.""
       },
-      ""texture_focus"": ""Detailed wool coat texture, knit sweater fibers, subtle skin grain"",
-      ""mood"": ""Lonely, reflective winter night energy""
+      ""format_style"": ""Editorial winter poster–style multi-panel collage"",
+      ""aesthetic_quality"": ""Spontaneous iPhone photography (candid, cozy, realistic)"",
+      ""global_textures"": ""Soft snowfall, subtle analog grain, slight handheld imperfections""
+    },
+    ""consistent_elements"": {
+      ""subject_wardrobe"": {
+        ""outerwear"": ""Black tailored wool overcoat"",
+        ""top"": ""Thick knit sweater (dark neutral tone)"",
+        ""bottom"": ""Classic fabric trousers"",
+        ""footwear"": ""Winter leather boots"",
+        ""style_notes"": ""Masculine, elegant, understated winter style""
+      },
+      ""primary_device"": {
+        ""model"": ""iPhone 17 Pro Max"",
+        ""color"": ""Silver"",
+        ""usage"": ""Held by subject in relevant frames""
+      },
+      ""color_palette"": [
+        ""Warm ambers"",
+        ""Charcoal blacks"",
+        ""Deep browns"",
+        ""Muted winter greys""
+      ]
+    },
+    ""layout_configuration"": {
+      ""panel_1_top_left"": {
+        ""scene_type"": ""Reflective shop-window shot on a winter street at dusk"",
+        ""lighting_and_atmosphere"": ""Street lamps, faint holiday lights, cold air condensation, warm highlights on coat fabric"",
+        ""subject_action"": ""Holding phone partially covering face"",
+        ""optical_effects"": ""Passing pedestrians as blurred silhouettes, layered reflections, natural glass distortion"",
+        ""mood"": ""Quiet, introspective, urban masculinity""
+      },
+      ""panel_2_top_right"": {
+        ""scene_type"": ""Parisian café exterior portrait"",
+        ""location_detail"": ""Outdoor table at a Paris street café"",
+        ""camera_angle"": ""Close, slightly low angle for masculine presence"",
+        ""subject_pose"": ""Seated confidently, relaxed posture, one arm resting on the table"",
+        ""action"": ""Holding a whiskey glass mid-sip"",
+        ""wardrobe_visibility"": ""Black coat open, knit sweater and fabric trousers clearly visible"",
+        ""motion_dynamics"": ""Light snow falling, background pedestrians softly motion-blurred"",
+        ""lens_characteristics"": ""Natural handheld perspective with subtle depth compression""
+      },
+      ""panel_3_bottom_right"": {
+        ""scene_type"": ""Intimate overhead selfie on a city sidewalk"",
+        ""lighting"": ""Warm street lighting contrasting cold night air"",
+        ""props"": {
+          ""held_item"": ""Takeaway coffee cup"",
+          ""accessories"": ""Wired earphones visible""
+        },
+        ""texture_focus"": ""Detailed wool coat texture, knit sweater fibers, subtle skin grain"",
+        ""mood"": ""Lonely, reflective winter night energy""
+      }
+    },
+    ""graphic_overlay"": {
+      ""element"": ""Minimal Spotify–style mini player"",
+      ""content"": ""Flying - Anathema"",
+      ""style"": ""Flat, clean UI, no shadows"",
+      ""position"": ""Floating subtly across the center of the collage""
     }
-  },
-  ""graphic_overlay"": {
-    ""element"": ""Minimal Spotify–style mini player"",
-    ""content"": ""Flying - Anathema"",
-    ""style"": ""Flat, clean UI, no shadows"",
-    ""position"": ""Floating subtly across the center of the collage""
   }
 }",FALSE,STRUCTURED,cipeberre@gmail.com
 Editorial Winter Poster–Style Multi-Panel Collage Generation,"{
-  ""meta_protocols"": {
-    ""reference_adherence"": {
-      ""instruction"": ""Use the provided male face photo as a strict reference_image."",
-      ""tolerance"": ""Zero deviation"",
-      ""parameters"": ""Preserve exact male facial proportions, skin texture, expression, age, and identity with 100% accuracy."",
-      ""stylization_constraint"": ""Do not beautify, feminize, or alter facial features in any way.""
-    },
-    ""format_style"": ""Editorial winter poster–style multi-panel collage"",
-    ""aesthetic_quality"": ""Spontaneous iPhone photography (candid, cozy, realistic)"",
-    ""global_textures"": ""Soft snowfall, subtle analog grain, slight handheld imperfections""
-  },
-  ""consistent_elements"": {
-    ""subject_wardrobe"": {
-      ""outerwear"": ""Black tailored wool overcoat"",
-      ""top"": ""Thick knit sweater (dark neutral tone)"",
-      ""bottom"": ""Classic fabric trousers"",
-      ""footwear"": ""Winter leather boots"",
-      ""style_notes"": ""Masculine, elegant, understated winter style""
-    },
-    ""primary_device"": {
-      ""model"": ""iPhone 17 Pro Max"",
-      ""color"": ""Silver"",
-      ""usage"": ""Held by subject in relevant frames""
-    },
-    ""color_palette"": [
-      ""Warm ambers"",
-      ""Charcoal blacks"",
-      ""Deep browns"",
-      ""Muted winter greys""
-    ]
-  },
-  ""layout_configuration"": {
-    ""panel_1_top_left"": {
-      ""scene_type"": ""Reflective shop-window shot on a winter street at dusk"",
-      ""lighting_and_atmosphere"": ""Street lamps, faint holiday lights, cold air condensation, warm highlights on coat fabric"",
-      ""subject_action"": ""Holding phone partially covering face"",
-      ""optical_effects"": ""Passing pedestrians as blurred silhouettes, layered reflections, natural glass distortion"",
-      ""mood"": ""Quiet, introspective, urban masculinity""
-    },
-    ""panel_2_top_right"": {
-      ""scene_type"": ""Parisian café exterior portrait"",
-      ""location_detail"": ""Outdoor table at a Paris street café"",
-      ""camera_angle"": ""Close, slightly low angle for masculine presence"",
-      ""subject_pose"": ""Seated confidently, relaxed posture, one arm resting on the table"",
-      ""action"": ""Holding a whiskey glass mid-sip"",
-      ""wardrobe_visibility"": ""Black coat open, knit sweater and fabric trousers clearly visible"",
-      ""motion_dynamics"": ""Light snow falling, background pedestrians softly motion-blurred"",
-      ""lens_characteristics"": ""Natural handheld perspective with subtle depth compression""
-    },
-    ""panel_3_bottom_right"": {
-      ""scene_type"": ""Intimate overhead selfie on a city sidewalk"",
-      ""lighting"": ""Warm street lighting contrasting cold night air"",
-      ""props"": {
-        ""held_item"": ""Takeaway coffee cup"",
-        ""accessories"": ""Wired earphones visible""
+  ""image_generation_request"": {
+    ""meta_protocols"": {
+      ""reference_adherence"": {
+        ""instruction"": ""Use the provided male face photo as a strict reference_image."",
+        ""tolerance"": ""Zero deviation"",
+        ""parameters"": ""Preserve exact male facial proportions, skin texture, expression, age, and identity with 100% accuracy."",
+        ""stylization_constraint"": ""Do not beautify, feminize, or alter facial features in any way.""
       },
-      ""texture_focus"": ""Detailed wool coat texture, knit sweater fibers, subtle skin grain"",
-      ""mood"": ""Lonely, reflective winter night energy""
+      ""format_style"": ""Editorial winter poster–style multi-panel collage"",
+      ""aesthetic_quality"": ""Spontaneous iPhone photography (candid, cozy, realistic)"",
+      ""global_textures"": ""Soft snowfall, subtle analog grain, slight handheld imperfections""
+    },
+    ""consistent_elements"": {
+      ""subject_wardrobe"": {
+        ""outerwear"": ""Black tailored wool overcoat"",
+        ""top"": ""Thick knit sweater (dark neutral tone)"",
+        ""bottom"": ""Classic fabric trousers"",
+        ""footwear"": ""Winter leather boots"",
+        ""style_notes"": ""Masculine, elegant, understated winter style""
+      },
+      ""primary_device"": {
+        ""model"": ""iPhone 17 Pro Max"",
+        ""color"": ""Silver"",
+        ""usage"": ""Held by subject in relevant frames""
+      },
+      ""color_palette"": [
+        ""Warm ambers"",
+        ""Charcoal blacks"",
+        ""Deep browns"",
+        ""Muted winter greys""
+      ]
+    },
+    ""layout_configuration"": {
+      ""panel_1_top_left"": {
+        ""scene_type"": ""Reflective shop-window shot on a winter street at dusk"",
+        ""lighting_and_atmosphere"": ""Street lamps, faint holiday lights, cold air condensation, warm highlights on coat fabric"",
+        ""subject_action"": ""Holding phone partially covering face"",
+        ""optical_effects"": ""Passing pedestrians as blurred silhouettes, layered reflections, natural glass distortion"",
+        ""mood"": ""Quiet, introspective, urban masculinity""
+      },
+      ""panel_2_top_right"": {
+        ""scene_type"": ""Parisian café exterior portrait"",
+        ""location_detail"": ""Outdoor table at a Paris street café"",
+        ""camera_angle"": ""Close, slightly low angle for masculine presence"",
+        ""subject_pose"": ""Seated confidently, relaxed posture, one arm resting on the table"",
+        ""action"": ""Holding a whiskey glass mid-sip"",
+        ""wardrobe_visibility"": ""Black coat open, knit sweater and fabric trousers clearly visible"",
+        ""motion_dynamics"": ""Light snow falling, background pedestrians softly motion-blurred"",
+        ""lens_characteristics"": ""Natural handheld perspective with subtle depth compression""
+      },
+      ""panel_3_bottom_right"": {
+        ""scene_type"": ""Intimate overhead selfie on a city sidewalk"",
+        ""lighting"": ""Warm street lighting contrasting cold night air"",
+        ""props"": {
+          ""held_item"": ""Takeaway coffee cup"",
+          ""accessories"": ""Wired earphones visible""
+        },
+        ""texture_focus"": ""Detailed wool coat texture, knit sweater fibers, subtle skin grain"",
+        ""mood"": ""Lonely, reflective winter night energy""
+      }
+    },
+    ""graphic_overlay"": {
+      ""element"": ""Minimal Spotify–style mini player"",
+      ""content"": ""Flying - Anathema"",
+      ""style"": ""Flat, clean UI, no shadows"",
+      ""position"": ""Floating subtly across the center of the collage""
     }
-  },
-  ""graphic_overlay"": {
-    ""element"": ""Minimal Spotify–style mini player"",
-    ""content"": ""Flying - Anathema"",
-    ""style"": ""Flat, clean UI, no shadows"",
-    ""position"": ""Floating subtly across the center of the collage""
   }
 }",FALSE,STRUCTURED,cipeberre@gmail.com
 Editorial Winter Poster–Style Multi-Panel Collage Generation,"{
