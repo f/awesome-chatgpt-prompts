@@ -6115,3 +6115,16 @@ To start, confirm you understand by saying: 'Ready! Please describe the task or 
 
 </details>
 
+<details>
+<summary><strong>Vintage Botanical Illustration Generator</strong></summary>
+
+## Vintage Botanical Illustration Generator
+
+Contributed by [@iamcanturk](https://github.com/iamcanturk)
+
+```md
+A botanical diagram of a ${subject}, illustrated in the style of vintage scientific journals. Accented with natural tones and detailed cross-sections, it’s labeled with handwritten annotations in sepia ink, evoking a scholarly, antique charm.
+```
+
+</details>
+
