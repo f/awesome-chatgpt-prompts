@@ -5,12 +5,14 @@ import { useTranslations } from "next-intl";
 import { Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { analyticsPrompt } from "@/lib/analytics";
 
 interface CopyButtonProps {
   content: string;
+  promptId?: string;
 }
 
-export function CopyButton({ content }: CopyButtonProps) {
+export function CopyButton({ content, promptId }: CopyButtonProps) {
   const t = useTranslations("common");
   const [copied, setCopied] = useState(false);
 
@@ -18,6 +20,7 @@ export function CopyButton({ content }: CopyButtonProps) {
     try {
       await navigator.clipboard.writeText(content);
       setCopied(true);
+      analyticsPrompt.copy(promptId);
       toast.success(t("copied"));
       setTimeout(() => setCopied(false), 2000);
     } catch {

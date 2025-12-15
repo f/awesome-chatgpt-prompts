@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
+import { analyticsProfile } from "@/lib/analytics";
 
 const profileSchema = z.object({
   name: z.string().min(1, "Name is required").max(100),
@@ -74,6 +75,10 @@ export function ProfileForm({ user }: ProfileFormProps) {
       // Trigger NextAuth session refresh - JWT callback will fetch updated data from DB
       await update({});
 
+      analyticsProfile.updateProfile();
+      if (data.avatar !== user.avatar) {
+        analyticsProfile.updateAvatar();
+      }
       toast.success(t("profileUpdated"));
       router.refresh();
 

@@ -11,6 +11,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { analyticsMcp } from "@/lib/analytics";
 
 // MCP Logo component
 function McpIcon({ className }: { className?: string }) {
@@ -87,6 +88,7 @@ export function McpServerPopup({
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(configJson);
+    analyticsMcp.copyCommand("config_json");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };

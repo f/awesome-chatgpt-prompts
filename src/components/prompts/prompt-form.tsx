@@ -36,6 +36,7 @@ import { Badge } from "@/components/ui/badge";
 import { CodeEditor, type CodeEditorHandle } from "@/components/ui/code-editor";
 import { toast } from "sonner";
 import { prettifyJson } from "@/lib/format";
+import { analyticsPrompt } from "@/lib/analytics";
 
 interface MediaFieldProps {
   form: ReturnType<typeof useForm<PromptFormValues>>;
@@ -396,6 +397,11 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
       }
 
       const result = await response.json();
+      if (isEdit) {
+        analyticsPrompt.edit(promptId!);
+      } else {
+        analyticsPrompt.create(data.type);
+      }
       toast.success(isEdit ? t("promptUpdated") : t("promptCreated"));
       router.push(`/prompts/${result.id || promptId}`);
       router.refresh();

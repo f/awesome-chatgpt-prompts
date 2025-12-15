@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { RotateCcw, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { analyticsPrompt } from "@/lib/analytics";
 
 interface ReopenChangeRequestButtonProps {
   changeRequestId: string;
@@ -33,6 +34,7 @@ export function ReopenChangeRequestButton({ changeRequestId, promptId }: ReopenC
         throw new Error(error.message || "Failed to reopen change request");
       }
 
+      analyticsPrompt.changeRequest(promptId, "reopen");
       toast.success(t("reopenedSuccess"));
       router.refresh();
     } catch (error) {

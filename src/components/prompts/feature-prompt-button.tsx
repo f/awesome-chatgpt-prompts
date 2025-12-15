@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { analyticsPrompt } from "@/lib/analytics";
 
 interface FeaturePromptButtonProps {
   promptId: string;
@@ -31,6 +32,11 @@ export function FeaturePromptButton({
       if (response.ok) {
         const data = await response.json();
         setIsFeatured(data.isFeatured);
+        if (data.isFeatured) {
+          analyticsPrompt.feature(promptId);
+        } else {
+          analyticsPrompt.unfeature(promptId);
+        }
       }
     } catch (error) {
       console.error("Error toggling featured status:", error);

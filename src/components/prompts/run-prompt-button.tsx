@@ -21,6 +21,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { analyticsPrompt } from "@/lib/analytics";
 
 interface Platform {
   id: string;
@@ -109,6 +110,7 @@ interface RunPromptButtonProps {
   unfilledVariables?: UnfilledVariable[];
   onVariablesFilled?: (values: Record<string, string>) => void;
   getContentWithVariables?: (values: Record<string, string>) => string;
+  promptId?: string;
 }
 
 export function RunPromptButton({ 
@@ -118,7 +120,8 @@ export function RunPromptButton({
   className,
   unfilledVariables = [],
   onVariablesFilled,
-  getContentWithVariables
+  getContentWithVariables,
+  promptId
 }: RunPromptButtonProps) {
   const t = useTranslations("prompts");
   const tCommon = useTranslations("common");
@@ -157,8 +160,9 @@ export function RunPromptButton({
         window.open(url, "_blank");
         setPendingPlatform(null);
       }
+      analyticsPrompt.run(promptId, pendingPlatform.name);
     }
-  }, [variableValues, onVariablesFilled, pendingPlatform, getContentWithVariables, content]);
+  }, [variableValues, onVariablesFilled, pendingPlatform, getContentWithVariables, content, promptId]);
 
   const handleRun = (platform: Platform, baseUrl: string) => {
     // Check if there are unfilled variables (empty values)
@@ -174,9 +178,11 @@ export function RunPromptButton({
       navigator.clipboard.writeText(content);
       setPendingPlatform({ id: platform.id, name: platform.name, baseUrl, supportsQuerystring: platform.supportsQuerystring });
       setDialogOpen(true);
+      analyticsPrompt.run(promptId, platform.name);
     } else {
       const url = buildUrl(platform.id, baseUrl, content);
       window.open(url, "_blank");
+      analyticsPrompt.run(promptId, platform.name);
     }
   };
 

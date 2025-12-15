@@ -17,6 +17,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
+import { analyticsPrompt } from "@/lib/analytics";
 
 interface DismissChangeRequestButtonProps {
   changeRequestId: string;
@@ -43,6 +44,7 @@ export function DismissChangeRequestButton({ changeRequestId, promptId }: Dismis
         throw new Error(error.message || "Failed to dismiss change request");
       }
 
+      analyticsPrompt.changeRequest(promptId, "dismiss");
       toast.success(t("dismissed"));
       router.push(`/prompts/${promptId}`);
       router.refresh();

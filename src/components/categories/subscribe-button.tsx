@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Bell, BellOff, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { analyticsCategory } from "@/lib/analytics";
 
 interface SubscribeButtonProps {
   categoryId: string;
@@ -34,6 +35,13 @@ export function SubscribeButton({ categoryId, categoryName, initialSubscribed, i
       }
 
       setIsSubscribed(!isSubscribed);
+      
+      if (isSubscribed) {
+        analyticsCategory.unsubscribe(categoryId, categoryName);
+      } else {
+        analyticsCategory.subscribe(categoryId, categoryName);
+      }
+      
       toast.success(
         isSubscribed
           ? t("unsubscribedFrom", { name: categoryName })

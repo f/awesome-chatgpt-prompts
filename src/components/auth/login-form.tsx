@@ -19,6 +19,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { toast } from "sonner";
+import { analyticsAuth } from "@/lib/analytics";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -51,10 +52,12 @@ export function LoginForm() {
       });
 
       if (result?.error) {
+        analyticsAuth.loginFailed("credentials");
         toast.error(t("invalidCredentials"));
         return;
       }
 
+      analyticsAuth.login("credentials");
       toast.success(t("loginSuccess"));
       router.push("/");
       router.refresh();

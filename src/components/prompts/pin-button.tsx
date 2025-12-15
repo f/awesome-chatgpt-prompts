@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Pin, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { analyticsPrompt } from "@/lib/analytics";
 
 interface PinButtonProps {
   promptId: string;
@@ -32,6 +33,11 @@ export function PinButton({ promptId, initialPinned, iconOnly = false }: PinButt
       }
 
       setIsPinned(data.pinned);
+      if (data.pinned) {
+        analyticsPrompt.pin(promptId);
+      } else {
+        analyticsPrompt.unpin(promptId);
+      }
       toast.success(data.pinned ? t("pinned") : t("unpinned"));
     } catch {
       toast.error(t("pinFailed"));

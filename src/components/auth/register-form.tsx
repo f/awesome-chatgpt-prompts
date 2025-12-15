@@ -18,6 +18,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { toast } from "sonner";
+import { analyticsAuth } from "@/lib/analytics";
 
 const registerSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -68,15 +69,19 @@ export function RegisterForm() {
 
       if (!response.ok) {
         if (result.error === "email_taken") {
+          analyticsAuth.registerFailed("email_taken");
           toast.error(t("emailTaken"));
         } else if (result.error === "username_taken") {
+          analyticsAuth.registerFailed("username_taken");
           toast.error(t("usernameTaken"));
         } else {
+          analyticsAuth.registerFailed(result.error);
           toast.error(result.message || t("registrationFailed"));
         }
         return;
       }
 
+      analyticsAuth.register();
       toast.success(t("registerSuccess"));
       router.push("/login");
     } catch {

@@ -34,6 +34,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { NotificationBell } from "@/components/layout/notification-bell";
 import { setLocale } from "@/lib/i18n/client";
 import { useBranding } from "@/components/providers/branding-provider";
+import { analyticsAuth, analyticsNav, analyticsSettings } from "@/lib/analytics";
 
 const languages = [
   { code: "en", name: "English" },
@@ -246,7 +247,11 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
             variant="ghost"
             size="icon"
             className="h-8 w-8"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            onClick={() => {
+              const newTheme = theme === "dark" ? "light" : "dark";
+              analyticsSettings.changeTheme(newTheme);
+              setTheme(newTheme);
+            }}
           >
             <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
             <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
@@ -309,7 +314,10 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
                     {languages.map((lang) => (
                       <DropdownMenuItem
                         key={lang.code}
-                        onClick={() => setLocale(lang.code)}
+                        onClick={() => {
+                          analyticsSettings.changeLanguage(lang.code);
+                          setLocale(lang.code);
+                        }}
                       >
                         {lang.name}
                       </DropdownMenuItem>
@@ -317,7 +325,10 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
                   </DropdownMenuSubContent>
                 </DropdownMenuSub>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => signOut({ callbackUrl: "/" })}>
+                <DropdownMenuItem onClick={() => {
+                  analyticsAuth.logout();
+                  signOut({ callbackUrl: "/" });
+                }}>
                   <LogOut className="mr-2 h-4 w-4" />
                   {t("nav.logout")}
                 </DropdownMenuItem>
@@ -336,7 +347,10 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
                   {languages.map((lang) => (
                     <DropdownMenuItem
                       key={lang.code}
-                      onClick={() => setLocale(lang.code)}
+                      onClick={() => {
+                        analyticsSettings.changeLanguage(lang.code);
+                        setLocale(lang.code);
+                      }}
                     >
                       {lang.name}
                     </DropdownMenuItem>

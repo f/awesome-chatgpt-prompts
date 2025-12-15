@@ -7,6 +7,7 @@ import { Check, X, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
+import { analyticsPrompt } from "@/lib/analytics";
 
 interface ChangeRequestActionsProps {
   changeRequestId: string;
@@ -40,6 +41,7 @@ export function ChangeRequestActions({ changeRequestId, promptId }: ChangeReques
         throw new Error(error.message || "Failed to update change request");
       }
 
+      analyticsPrompt.changeRequest(promptId, selectedAction === "approve" ? "approve" : "dismiss");
       toast.success(selectedAction === "approve" ? t("approvedSuccess") : t("rejectedSuccess"));
       router.refresh();
     } catch (error) {

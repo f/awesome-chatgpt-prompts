@@ -13,6 +13,7 @@ import { DiffView } from "@/components/ui/diff-view";
 import { CodeEditor } from "@/components/ui/code-editor";
 import { VariableToolbar } from "@/components/prompts/variable-toolbar";
 import { toast } from "sonner";
+import { analyticsPrompt } from "@/lib/analytics";
 
 interface ChangeRequestFormProps {
   promptId: string;
@@ -79,6 +80,7 @@ export function ChangeRequestForm({ promptId, currentContent, currentTitle, prom
       }
 
       const result = await response.json();
+      analyticsPrompt.changeRequest(promptId, "create");
       toast.success(t("created"));
       router.push(`/prompts/${promptId}/changes/${result.id}`);
       router.refresh();

@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/dialog";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
+import { analyticsPrompt } from "@/lib/analytics";
 
 interface UpvoteButtonProps {
   promptId: string;
@@ -61,6 +62,12 @@ export function UpvoteButton({
       const data = await response.json();
       setIsVoted(data.voted);
       setVoteCount(data.voteCount);
+      
+      if (data.voted) {
+        analyticsPrompt.upvote(promptId);
+      } else {
+        analyticsPrompt.removeUpvote(promptId);
+      }
     } catch {
       toast.error(tCommon("error"));
     } finally {

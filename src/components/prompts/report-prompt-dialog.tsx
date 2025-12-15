@@ -23,6 +23,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { analyticsPrompt } from "@/lib/analytics";
 
 interface ReportPromptDialogProps {
   promptId: string;
@@ -58,6 +59,7 @@ export function ReportPromptDialog({ promptId, isLoggedIn }: ReportPromptDialogP
         throw new Error(data.error || "Failed to submit report");
       }
 
+      analyticsPrompt.report(promptId, reason);
       toast.success(t("reportSubmitted"));
       setOpen(false);
       setReason("");

@@ -16,6 +16,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { X, Sparkles, Search } from "lucide-react";
+import { analyticsSearch } from "@/lib/analytics";
 
 interface PromptFiltersProps {
   categories: Array<{
@@ -69,6 +70,7 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
   };
 
   const clearFilters = () => {
+    analyticsSearch.clearFilters();
     router.push("/prompts");
   };
 
@@ -105,6 +107,9 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
             }
             // Debounce the actual navigation
             debounceRef.current = setTimeout(() => {
+              if (value) {
+                analyticsSearch.search(value, currentFilters.ai === "1");
+              }
               updateFilter("q", value || null);
             }, 300);
           }}
@@ -121,7 +126,10 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
           <Switch
             id="ai-search"
             checked={currentFilters.ai === "1"}
-            onCheckedChange={(checked) => updateFilter("ai", checked ? "1" : null)}
+            onCheckedChange={(checked) => {
+              analyticsSearch.aiSearchToggle(checked);
+              updateFilter("ai", checked ? "1" : null);
+            }}
           />
         </div>
       )}
@@ -131,7 +139,12 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
         <Label className="text-xs">{t("prompts.promptType")}</Label>
         <Select
           value={currentFilters.type || "all"}
-          onValueChange={(value) => updateFilter("type", value === "all" ? null : value)}
+          onValueChange={(value) => {
+            if (value !== "all") {
+              analyticsSearch.filter("type", value);
+            }
+            updateFilter("type", value === "all" ? null : value);
+          }}
         >
           <SelectTrigger className="h-8 text-sm w-full">
             <SelectValue placeholder={t("common.all")} />
@@ -151,7 +164,12 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
           <Label className="text-xs">{t("prompts.promptCategory")}</Label>
           <Select
             value={currentFilters.category || "all"}
-            onValueChange={(value) => updateFilter("category", value === "all" ? null : value)}
+            onValueChange={(value) => {
+              if (value !== "all") {
+                analyticsSearch.filter("category", value);
+              }
+              updateFilter("category", value === "all" ? null : value);
+            }}
           >
             <SelectTrigger className="h-8 text-sm w-full">
               <SelectValue placeholder={t("common.all")} />
@@ -186,7 +204,10 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
         <Label className="text-xs">{t("search.sortBy")}</Label>
         <Select
           value={currentFilters.sort || "newest"}
-          onValueChange={(value) => updateFilter("sort", value === "newest" ? null : value)}
+          onValueChange={(value) => {
+            analyticsSearch.sort(value);
+            updateFilter("sort", value === "newest" ? null : value);
+          }}
         >
           <SelectTrigger className="h-8 text-sm w-full">
             <SelectValue />
@@ -222,7 +243,12 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
                     ? { backgroundColor: tag.color, color: "white", borderColor: tag.color }
                     : { borderColor: tag.color + "40", color: tag.color }
                 }
-                onClick={() => updateFilter("tag", currentFilters.tag === tag.slug ? null : tag.slug)}
+                onClick={() => {
+                  if (currentFilters.tag !== tag.slug) {
+                    analyticsSearch.filter("tag", tag.slug);
+                  }
+                  updateFilter("tag", currentFilters.tag === tag.slug ? null : tag.slug);
+                }}
               >
                 {tag.name}
               </button>

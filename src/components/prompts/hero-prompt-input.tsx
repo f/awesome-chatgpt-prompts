@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { Bot, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { analyticsHero } from "@/lib/analytics";
 
 const TYPING_SPEED = 50; // ms per character
 const PAUSE_BETWEEN_PROMPTS = 2000; // ms to pause after completing a prompt
@@ -78,6 +79,7 @@ export function HeroPromptInput() {
     setIsFocused(true);
     setIsAnimating(false);
     clearAnimation();
+    analyticsHero.focusInput();
     // Transfer the animated text to the actual input value
     setInputValue(displayText);
     setDisplayText("");
@@ -95,6 +97,7 @@ export function HeroPromptInput() {
     e?.preventDefault();
     const value = inputValue.trim();
     if (value) {
+      analyticsHero.submitPromptIdea(value);
       router.push(`/prompts/new?prompt=${encodeURIComponent(value)}`);
     }
   };
@@ -113,6 +116,7 @@ export function HeroPromptInput() {
     clearAnimation();
     setInputValue("");
     setDisplayText("");
+    analyticsHero.clickAnimatedPrompt();
     // Focus the textarea
     setTimeout(() => {
       textareaRef.current?.focus();

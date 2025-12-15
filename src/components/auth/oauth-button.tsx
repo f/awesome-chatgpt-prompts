@@ -5,6 +5,7 @@ import { signIn } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { analyticsAuth } from "@/lib/analytics";
 
 interface OAuthButtonProps {
   provider: string;
@@ -38,6 +39,7 @@ export function OAuthButton({ provider, providerName }: OAuthButtonProps) {
 
   const handleSignIn = async () => {
     setIsLoading(true);
+    analyticsAuth.oauthStart(provider);
     try {
       await signIn(provider, { callbackUrl: "/" });
     } catch (error) {

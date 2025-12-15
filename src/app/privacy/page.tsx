@@ -43,7 +43,7 @@ export default function PrivacyPage() {
           <ul className="list-disc list-inside text-muted-foreground space-y-1">
             <li>Prompts you create and share</li>
             <li>Categories and tags you assign to prompts</li>
-            <li>Basic usage analytics to improve the service</li>
+            <li>Analytics data through Google Analytics to understand usage patterns (can be disabled on self-hosted instances)</li>
           </ul>
         </section>
 
@@ -69,23 +69,30 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-lg font-semibold">Cookies</h2>
+          <h2 className="text-lg font-semibold">Analytics & Cookies</h2>
           <p className="text-muted-foreground">
-            We use essential cookies for authentication and session management. We may use 
-            analytics cookies to understand how the service is used.
+            We use essential cookies for authentication and session management. We use Google Analytics 
+            to understand how the service is used, including tracking events such as prompt views, searches, 
+            and interactions. On self-hosted instances, analytics can be disabled by not setting the 
+            <code className="px-1 py-0.5 bg-muted rounded text-xs">GOOGLE_ANALYTICS_ID</code> environment variable.
           </p>
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-lg font-semibold">Your Rights</h2>
+          <h2 className="text-lg font-semibold">Your Rights & CC0 License</h2>
           <p className="text-muted-foreground">
             You can:
           </p>
           <ul className="list-disc list-inside text-muted-foreground space-y-1">
             <li>Access and update your account information</li>
-            <li>Delete your account and associated data</li>
-            <li>Export your prompts</li>
+            <li>Download any prompts directly from the platform (all prompts are CC0 and publicly available)</li>
           </ul>
+          <p className="text-muted-foreground mt-3">
+            <strong>Important:</strong> Because all prompts are released under the CC0 license and belong to 
+            the public domain, they cannot be deleted or removed once published. This is by design—CC0 content 
+            is free for anyone to use, modify, and distribute without restriction. Account deletion does not 
+            remove prompts you have contributed, as they are part of the public commons.
+          </p>
         </section>
 
         <section className="space-y-3">
