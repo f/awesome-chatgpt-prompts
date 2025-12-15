@@ -1977,11 +1977,26 @@ At the top-center, add the city name ${city_name} in a clean, bold, friendly rou
 
 Include no other text, words, or signage anywhere else in the scene. Only sculptural clay elements should define the location through recognizable architectural features. 1080x1080 dimension.",FALSE,IMAGE,semihkislar
 Architectural Study Sheet: [HISTORIC_SITE_NAME],"A vintage architectural infographic of ${historic_site_name} that blends art and technical clarity: a detailed front elevation at the center, a clean line-art landscape of ${location} behind it, and annotated dimension lines with sample values like “${height_value_1}” and “${height_value_2}”. Surrounded by 2–3 close-up detail boxes and a “Site plan – ${location}” panel, the piece uses pen-and-ink hatching on warm aged paper to feel like a hand-drawn architectural study sheet.",FALSE,IMAGE,semihkislar
-"Professional Badge Photo, Ready to Use","Use the uploaded photo of the person as the main subject. Keep the face, hair and identity identical.
+"Professional Badge Photo, Ready to Use","Create a modern corporate ID photo of the person from the uploaded image, suitable for company badges and internal systems.
+Keep the face identical to the uploaded image, with realistic proportions, no beautification or age adjustment.
 
-Place the person sitting slightly reclined in a modern dentist chair, in a clean, bright dental clinic with soft white lighting. Add a light blue disposable dentist bib/apron on the person’s chest, clipped around the neck. Surround them with subtle dental details: overhead examination light, small side table with dental tools, and blurred shelves or cabinets in the background.
+Framing:
+• Neutral, centered head and shoulders
+• Subject looking straight at the camera with a neutral but friendly expression
 
-Keep the original camera angle and approximate framing from the uploaded photo. Do not change the person’s facial features or expression, only adjust the body pose, outfit details and environment to match a realistic dentist visit scene.",FALSE,IMAGE,semihkislar
+Background:
+• Plain, uniform background in [BACKGROUND_COLOR], no texture, no gradient
+• No props, no text, no logos
+
+Style:
+• Even, soft lighting with minimal shadows
+• High clarity and sharpness around the face, natural skin tones, high-resolution
+
+Outfit:
+• Transform clothing into [OUTFIT_STYLE] that matches a corporate environment
+• No visible logos, patterns or distracting accessories
+
+Make the result look like an upgraded, well-lit, professional version of a corporate ID or access badge photo, ready to be dropped into internal tools, email accounts or passes.",FALSE,TEXT,semihkislar
 Clean Clinic Portrait,"Use the uploaded photo of the person as the main subject. Keep the face, hair and identity identical.
 
 Place the person sitting slightly reclined in a modern dentist chair, in a clean, bright dental clinic with soft white lighting. Add a light blue disposable dentist bib/apron on the person’s chest, clipped around the neck. Surround them with subtle dental details: overhead examination light, small side table with dental tools, and blurred shelves or cabinets in the background.
