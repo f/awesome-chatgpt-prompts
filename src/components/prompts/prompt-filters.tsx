@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import { X, Sparkles, Search } from "lucide-react";
+import { X, Sparkles, Search, SlidersHorizontal } from "lucide-react";
 import { analyticsSearch } from "@/lib/analytics";
 
 interface PromptFiltersProps {
@@ -49,6 +49,7 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
   const searchParams = useSearchParams();
   const t = useTranslations();
   const [tagSearch, setTagSearch] = useState("");
+  const [showFilters, setShowFilters] = useState(false);
   const { setFilterPending } = useFilterContext();
   const debounceRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -76,64 +77,140 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
 
   const hasFilters = currentFilters.q || currentFilters.type || currentFilters.category || currentFilters.tag || currentFilters.sort;
 
+  const activeFilterCount = [currentFilters.type, currentFilters.category, currentFilters.tag, currentFilters.sort && currentFilters.sort !== "newest"].filter(Boolean).length;
+
   return (
-    <div className="space-y-4 p-4 border rounded-lg text-sm">
-      <div className="flex items-center justify-between h-6">
-        <span className="font-medium text-xs uppercase text-muted-foreground">{t("search.filters")}</span>
-        <Button 
-          variant="ghost" 
-          size="sm" 
-          className={`h-6 text-xs px-2 ${hasFilters ? "visible" : "invisible"}`} 
-          onClick={clearFilters}
-        >
-          <X className="h-3 w-3 mr-1" />{t("search.clear")}
-        </Button>
+    <div className="space-y-4 p-0 pt-4 border-t lg:pt-4 lg:p-4 lg:border lg:rounded-lg text-sm">
+      {/* Mobile: Compact search with filter toggle */}
+      <div className="lg:hidden space-y-3">
+        {/* Search bar with AI toggle and filter toggle */}
+        <div className="flex gap-1.5 items-center">
+          <div className="relative flex-1">
+            <Search className="absolute left-2 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
+            <Input
+              placeholder={t("search.placeholder")}
+              className="h-8 text-xs pl-8"
+              defaultValue={currentFilters.q}
+              onChange={(e) => {
+                const value = e.target.value;
+                setFilterPending(true);
+                if (debounceRef.current) {
+                  clearTimeout(debounceRef.current);
+                }
+                debounceRef.current = setTimeout(() => {
+                  if (value) {
+                    analyticsSearch.search(value, currentFilters.ai === "1");
+                  }
+                  updateFilter("q", value || null);
+                }, 300);
+              }}
+            />
+          </div>
+          {aiSearchEnabled && (
+            <div className="flex items-center gap-1 shrink-0">
+              <Sparkles className="h-3 w-3 text-primary" />
+              <Switch
+                id="ai-search-mobile"
+                checked={currentFilters.ai === "1"}
+                onCheckedChange={(checked) => {
+                  analyticsSearch.aiSearchToggle(checked);
+                  updateFilter("ai", checked ? "1" : null);
+                }}
+              />
+            </div>
+          )}
+          <Button
+            variant="outline"
+            size="sm"
+            className="h-8 px-2 relative shrink-0"
+            onClick={() => setShowFilters(!showFilters)}
+          >
+            <SlidersHorizontal className="h-3.5 w-3.5" />
+            {activeFilterCount > 0 && (
+              <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-primary text-[10px] text-primary-foreground flex items-center justify-center">
+                {activeFilterCount}
+              </span>
+            )}
+          </Button>
+        </div>
+
+        {/* Collapsible filters */}
+        {showFilters && (
+          <div className="space-y-4 pt-2 border-t">
+            <div className="flex items-center justify-between">
+              <span className="font-medium text-xs uppercase text-muted-foreground">{t("search.filters")}</span>
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className={`h-6 text-xs px-2 ${hasFilters ? "visible" : "invisible"}`} 
+                onClick={clearFilters}
+              >
+                <X className="h-3 w-3 mr-1" />{t("search.clear")}
+              </Button>
+            </div>
+            {/* Mobile filters content rendered below */}
+          </div>
+        )}
       </div>
 
-      {/* Search */}
-      <div className="space-y-1.5">
-        <Label className="text-xs">{t("search.search")}</Label>
-        <Input
-          placeholder={t("search.placeholder")}
-          className="h-8 text-sm"
-          defaultValue={currentFilters.q}
-          onChange={(e) => {
-            const value = e.target.value;
-            // Show loading immediately
-            setFilterPending(true);
-            // Clear previous debounce
-            if (debounceRef.current) {
-              clearTimeout(debounceRef.current);
-            }
-            // Debounce the actual navigation
-            debounceRef.current = setTimeout(() => {
-              if (value) {
-                analyticsSearch.search(value, currentFilters.ai === "1");
+      {/* Desktop: Full filters */}
+      <div className="hidden lg:block space-y-4">
+        <div className="flex items-center justify-between h-6">
+          <span className="font-medium text-xs uppercase text-muted-foreground">{t("search.filters")}</span>
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            className={`h-6 text-xs px-2 ${hasFilters ? "visible" : "invisible"}`} 
+            onClick={clearFilters}
+          >
+            <X className="h-3 w-3 mr-1" />{t("search.clear")}
+          </Button>
+        </div>
+
+        {/* Search */}
+        <div className="space-y-1.5">
+          <Label className="text-xs">{t("search.search")}</Label>
+          <Input
+            placeholder={t("search.placeholder")}
+            className="h-8 text-sm"
+            defaultValue={currentFilters.q}
+            onChange={(e) => {
+              const value = e.target.value;
+              setFilterPending(true);
+              if (debounceRef.current) {
+                clearTimeout(debounceRef.current);
               }
-              updateFilter("q", value || null);
-            }, 300);
-          }}
-        />
-      </div>
-
-      {/* AI Search Toggle */}
-      {aiSearchEnabled && (
-        <div className="flex items-center justify-between py-1">
-          <Label className="text-xs flex items-center gap-1.5 cursor-pointer" htmlFor="ai-search">
-            <Sparkles className="h-3 w-3 text-primary" />
-            {t("search.aiSearch")}
-          </Label>
-          <Switch
-            id="ai-search"
-            checked={currentFilters.ai === "1"}
-            onCheckedChange={(checked) => {
-              analyticsSearch.aiSearchToggle(checked);
-              updateFilter("ai", checked ? "1" : null);
+              debounceRef.current = setTimeout(() => {
+                if (value) {
+                  analyticsSearch.search(value, currentFilters.ai === "1");
+                }
+                updateFilter("q", value || null);
+              }, 300);
             }}
           />
         </div>
-      )}
 
+        {/* AI Search Toggle */}
+        {aiSearchEnabled && (
+          <div className="flex items-center justify-between py-1">
+            <Label className="text-xs flex items-center gap-1.5 cursor-pointer" htmlFor="ai-search">
+              <Sparkles className="h-3 w-3 text-primary" />
+              {t("search.aiSearch")}
+            </Label>
+            <Switch
+              id="ai-search"
+              checked={currentFilters.ai === "1"}
+              onCheckedChange={(checked) => {
+                analyticsSearch.aiSearchToggle(checked);
+                updateFilter("ai", checked ? "1" : null);
+              }}
+            />
+          </div>
+        )}
+      </div>
+
+      {/* Shared filters - shown on desktop always, on mobile when showFilters is true */}
+      <div className={`space-y-4 ${showFilters ? "block" : "hidden"} lg:block`}>
       {/* Type filter */}
       <div className="space-y-1.5">
         <Label className="text-xs">{t("prompts.promptType")}</Label>
@@ -259,6 +336,7 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 }

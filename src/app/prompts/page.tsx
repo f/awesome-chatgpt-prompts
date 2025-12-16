@@ -7,6 +7,7 @@ import { InfinitePromptList } from "@/components/prompts/infinite-prompt-list";
 import { PromptFilters } from "@/components/prompts/prompt-filters";
 import { FilterProvider } from "@/components/prompts/filter-context";
 import { HFDataStudioDropdown } from "@/components/prompts/hf-data-studio-dropdown";
+import { McpServerPopup, McpIcon } from "@/components/mcp/mcp-server-popup";
 import { db } from "@/lib/db";
 import { isAISearchEnabled, semanticSearch } from "@/lib/ai/embeddings";
 import { isAIGenerationEnabled } from "@/lib/ai/generation";
@@ -180,7 +181,10 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
         </div>
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
           {!config.homepage?.useCloneBranding && (
-            <HFDataStudioDropdown aiGenerationEnabled={aiGenerationAvailable} />
+            <div className="flex items-center gap-2">
+              <HFDataStudioDropdown aiGenerationEnabled={aiGenerationAvailable} />
+              <McpServerPopup />
+            </div>
           )}
           <Button size="sm" className="h-8 text-xs w-full sm:w-auto" asChild>
             <Link href="/prompts/new">

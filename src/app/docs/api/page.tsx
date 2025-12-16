@@ -9,6 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { McpConfigTabs } from "@/components/mcp/mcp-config-tabs";
 
 export const metadata = {
   title: "API Documentation - prompts.chat",
@@ -61,19 +62,11 @@ export default async function ApiDocsPage() {
             Using with MCP Clients
           </h2>
           <p className="text-muted-foreground">
-            Add prompts.chat to your MCP client configuration:
+            Add prompts.chat to your MCP client configuration. Choose your client and connection type below:
           </p>
-          <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre>{`{
-  "mcpServers": {
-    "prompts-chat": {
-      "url": "${baseUrl}/api/mcp"
-    }
-  }
-}`}</pre>
-          </div>
-          <p className="text-muted-foreground">
-            Compatible with Claude Desktop, Cursor, Windsurf, and other MCP-enabled tools.
+          <McpConfigTabs baseUrl={baseUrl} className="[&_button]:text-sm [&_button]:px-3 [&_button]:py-1.5 [&_pre]:text-sm [&_pre]:p-4" />
+          <p className="text-muted-foreground text-sm">
+            <strong>Remote</strong> connects directly to prompts.chat API. <strong>Local</strong> runs the MCP server locally via npx.
           </p>
         </section>
 

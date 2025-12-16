@@ -351,7 +351,9 @@ function createServer(options: ServerOptions = {}) {
           }
 
           try {
-            const result = await extra.sendRequest(
+            // Add timeout to prevent hanging if client doesn't support elicitation
+            const timeoutMs = 10000; // 10 seconds
+            const elicitationPromise = extra.sendRequest(
               {
                 method: "elicitation/create",
                 params: {
@@ -366,6 +368,12 @@ function createServer(options: ServerOptions = {}) {
               },
               ElicitResultSchema
             );
+            
+            const timeoutPromise = new Promise<never>((_, reject) => 
+              setTimeout(() => reject(new Error("Elicitation timeout")), timeoutMs)
+            );
+            
+            const result = await Promise.race([elicitationPromise, timeoutPromise]);
 
             if (result.action === "accept" && result.content) {
               let filledContent = prompt.content;
