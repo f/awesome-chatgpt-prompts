@@ -24,6 +24,17 @@ function slugify(text: string): string {
     .replace(/^-+|-+$/g, "");
 }
 
+/**
+ * Get the prompt name/slug for MCP.
+ * Priority: slug > slugify(title) > id
+ */
+function getPromptName(prompt: { id: string; slug?: string | null; title: string }): string {
+  if (prompt.slug) return prompt.slug;
+  const titleSlug = slugify(prompt.title);
+  if (titleSlug) return titleSlug;
+  return prompt.id;
+}
+
 function extractVariables(content: string): ExtractedVariable[] {
   // Format: ${variableName} or ${variableName:default}
   const regex = /\$\{([a-zA-Z_][a-zA-Z0-9_\s]*?)(?::([^}]*))?\}/g;
@@ -108,6 +119,7 @@ function createServer(options: ServerOptions = {}) {
       orderBy: { createdAt: "desc" },
       select: {
         id: true,
+        slug: true,
         title: true,
         description: true,
         content: true,
@@ -121,7 +133,7 @@ function createServer(options: ServerOptions = {}) {
       prompts: results.map((p) => {
         const variables = extractVariables(p.content);
         return {
-          name: slugify(p.title),
+          name: getPromptName(p),
           title: p.title,
           description: p.description || undefined,
           arguments: variables.map((v) => ({
@@ -143,13 +155,20 @@ function createServer(options: ServerOptions = {}) {
     const prompts = await db.prompt.findMany({
       where: promptFilter,
       select: {
+        id: true,
+        slug: true,
         title: true,
         description: true,
         content: true,
       },
     });
 
-    const prompt = prompts.find((p) => slugify(p.title) === promptSlug);
+    // Find by slug field first, then by slugified title, then by id
+    const prompt = prompts.find((p) => 
+      p.slug === promptSlug || 
+      slugify(p.title) === promptSlug || 
+      p.id === promptSlug
+    );
 
     if (!prompt) {
       throw new Error(`Prompt not found: ${promptSlug}`);
@@ -226,6 +245,7 @@ function createServer(options: ServerOptions = {}) {
           orderBy: { createdAt: "desc" },
           select: {
             id: true,
+            slug: true,
             title: true,
             description: true,
             content: true,
@@ -241,6 +261,7 @@ function createServer(options: ServerOptions = {}) {
 
         const results = prompts.map((p) => ({
           id: p.id,
+          slug: getPromptName(p),
           title: p.title,
           description: p.description,
           content: p.content,
@@ -292,6 +313,7 @@ function createServer(options: ServerOptions = {}) {
           },
           select: {
             id: true,
+            slug: true,
             title: true,
             description: true,
             content: true,
