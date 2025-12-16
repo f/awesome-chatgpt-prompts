@@ -6584,3 +6584,16 @@ Result: return only cleaned, structured, readable text.
 
 </details>
 
+<details>
+<summary><strong>A prompt that will turn your photo into a scene from a cult 90s movie</strong></summary>
+
+## A prompt that will turn your photo into a scene from a cult 90s movie
+
+Contributed by [@maheshsid098@gmail.com](https://github.com/maheshsid098@gmail.com)
+
+```md
+Using the provided image of the man, create an ultra-realistic action scene in the gritty visual style of the Russian crime film Bumer. Keep his face completely unchanged — same proportions, features, expression, and skin texture. Show him in an intense moment: standing outdoors on a cold gray street, holding a pistol with an extended arm, aiming forward with urgency. Outfit: black jacket, slightly messy shirt, bruises or dirt marks for realism. Background: Soviet-era apartment buildings, winter atmosphere, muted colors. Lighting: natural overcast daylight with cold tones. Mood: raw, dangerous, chaotic, handheld-camera aesthetic. Capture mid-action tension, sharp details, realistic motion feel. Ensure perfect integration of his real face into the scene.
+```
+
+</details>
+
