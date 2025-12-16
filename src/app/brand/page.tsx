@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Download, Copy, Check } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { useBranding } from "@/components/providers/branding-provider";
 import { notFound } from "next/navigation";
@@ -102,6 +103,7 @@ function isLight(color: string): boolean {
 
 export default function BrandAssetsPage() {
   const branding = useBranding();
+  const t = useTranslations("brand");
 
   // Redirect if using clone branding
   if (branding.useCloneBranding) {
@@ -110,20 +112,20 @@ export default function BrandAssetsPage() {
 
   return (
     <div className="container max-w-4xl py-10">
-      <h1 className="text-3xl font-bold mb-2">Brand Assets</h1>
+      <h1 className="text-3xl font-bold mb-2">{t("title")}</h1>
       <p className="text-muted-foreground mb-10">
-        Official logos, colors, and brand guidelines for {branding.name}. Free to use for press, partnerships, and community projects.
+        {t("description", { name: branding.name })}
       </p>
 
       <div className="space-y-10">
         {/* Logos Section */}
         <section>
-          <h2 className="text-xl font-semibold mb-4">Logos</h2>
+          <h2 className="text-xl font-semibold mb-4">{t("logos")}</h2>
           <div className="grid md:grid-cols-2 gap-4">
             {/* Logo for light backgrounds */}
             <AssetCard
-              title="Logo"
-              description="For light backgrounds"
+              title={t("logo")}
+              description={t("forLightBackgrounds")}
               bgClass="bg-gray-100"
               downloadUrl="/logo.svg"
               filename="prompts-chat-logo.svg"
@@ -139,8 +141,8 @@ export default function BrandAssetsPage() {
 
             {/* Logo for dark backgrounds */}
             <AssetCard
-              title="Logo"
-              description="For dark backgrounds"
+              title={t("logo")}
+              description={t("forDarkBackgrounds")}
               bgClass="bg-gray-900"
               downloadUrl="/logo-dark.svg"
               filename="prompts-chat-logo-dark.svg"
@@ -156,8 +158,8 @@ export default function BrandAssetsPage() {
 
             {/* Logo with text - light */}
             <AssetCard
-              title="Logo with Name"
-              description="For light backgrounds"
+              title={t("logoWithName")}
+              description={t("forLightBackgrounds")}
               bgClass="bg-gray-100"
               downloadUrl="/logo.svg"
               filename="prompts-chat-logo.svg"
@@ -176,8 +178,8 @@ export default function BrandAssetsPage() {
 
             {/* Logo with text - dark */}
             <AssetCard
-              title="Logo with Name"
-              description="For dark backgrounds"
+              title={t("logoWithName")}
+              description={t("forDarkBackgrounds")}
               bgClass="bg-gray-900"
               downloadUrl="/logo-dark.svg"
               filename="prompts-chat-logo-dark.svg"
@@ -198,60 +200,63 @@ export default function BrandAssetsPage() {
 
         {/* Colors Section */}
         <section>
-          <h2 className="text-xl font-semibold mb-4">Brand Colors</h2>
-          <p className="text-sm text-muted-foreground mb-4">Click to copy hex value</p>
+          <h2 className="text-xl font-semibold mb-4">{t("brandColors")}</h2>
+          <p className="text-sm text-muted-foreground mb-4">{t("clickToCopy")}</p>
           <div className="grid gap-2">
             <ColorCard
               color="#000000"
               name="Primary"
-              description="Primary brand color"
+              description={t("primary")}
             />
             <ColorCard
               color="#ffffff"
               name="Background"
-              description="Light background"
+              description={t("background")}
             />
             <ColorCard
               color="#6366f1"
               name="Accent"
-              description="Indigo accent color"
+              description={t("accent")}
             />
             <ColorCard
               color="#71717a"
               name="Muted"
-              description="Muted text color"
+              description={t("muted")}
             />
           </div>
         </section>
 
         {/* Usage Guidelines */}
         <section>
-          <h2 className="text-xl font-semibold mb-4">Usage Guidelines</h2>
+          <h2 className="text-xl font-semibold mb-4">{t("usageGuidelines")}</h2>
           <div className="prose prose-neutral dark:prose-invert max-w-none">
             <ul className="list-disc list-inside text-muted-foreground space-y-2">
-              <li>Do not stretch, distort, or rotate the logo</li>
-              <li>Maintain adequate spacing around the logo</li>
-              <li>Use the dark logo on light backgrounds and vice versa</li>
-              <li>Do not add effects like shadows or gradients to the logo</li>
-              <li>The logo should be clearly visible against the background</li>
+              <li>{t("guideline1")}</li>
+              <li>{t("guideline2")}</li>
+              <li>{t("guideline3")}</li>
+              <li>{t("guideline4")}</li>
+              <li>{t("guideline5")}</li>
             </ul>
           </div>
         </section>
 
         {/* License */}
         <section>
-          <h2 className="text-xl font-semibold mb-4">License</h2>
+          <h2 className="text-xl font-semibold mb-4">{t("license")}</h2>
           <p className="text-muted-foreground">
-            The {branding.name} brand assets are provided under{" "}
-            <a
-              href="https://creativecommons.org/publicdomain/zero/1.0/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:text-foreground"
-            >
-              CC0 1.0 Universal
-            </a>
-            . You are free to use these assets for any purpose without attribution.
+            {t.rich("licenseText", {
+              name: branding.name,
+              link: (chunks) => (
+                <a
+                  href="https://creativecommons.org/publicdomain/zero/1.0/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-foreground"
+                >
+                  {chunks}
+                </a>
+              ),
+            })}
           </p>
         </section>
       </div>

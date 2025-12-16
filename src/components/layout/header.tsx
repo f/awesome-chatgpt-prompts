@@ -34,6 +34,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+} from "@/components/ui/context-menu";
 import { NotificationBell } from "@/components/layout/notification-bell";
 import { setLocale } from "@/lib/i18n/client";
 import { useBranding } from "@/components/providers/branding-provider";
@@ -74,15 +80,6 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
   const user = session?.user;
   const isAdmin = user?.role === "ADMIN";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [logoMenuOpen, setLogoMenuOpen] = useState(false);
-  const [logoMenuPosition, setLogoMenuPosition] = useState({ x: 0, y: 0 });
-
-  const handleLogoContextMenu = (e: React.MouseEvent) => {
-    if (branding.useCloneBranding) return;
-    e.preventDefault();
-    setLogoMenuPosition({ x: e.clientX, y: e.clientY });
-    setLogoMenuOpen(true);
-  };
 
   const handleCopyLogoSvg = async () => {
     try {
@@ -91,7 +88,6 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
       const response = await fetch(logoUrl);
       const svgContent = await response.text();
       await navigator.clipboard.writeText(svgContent);
-      setLogoMenuOpen(false);
     } catch (error) {
       console.error("Failed to copy logo:", error);
     }
@@ -194,54 +190,64 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
         </Sheet>
 
         {/* Logo */}
-        <Link href="/" className="flex gap-2" onContextMenu={handleLogoContextMenu}>
-          {branding.logo && (
-            <>
-              <Image
-                src={branding.logo}
-                alt={branding.name}
-                width={20}
-                height={20}
-                className="h-5 w-5 dark:hidden"
-              />
-              <Image
-                src={branding.logoDark || branding.logo}
-                alt={branding.name}
-                width={20}
-                height={20}
-                className="h-5 w-5 hidden dark:block"
-              />
-            </>
-          )}
-          <span className="font-semibold leading-none">{branding.name}</span>
-        </Link>
-
-        {/* Logo context menu */}
-        {!branding.useCloneBranding && (
-          <DropdownMenu open={logoMenuOpen} onOpenChange={setLogoMenuOpen}>
-            <DropdownMenuTrigger asChild>
-              <span className="sr-only">Logo menu</span>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent
-              style={{
-                position: "fixed",
-                left: logoMenuPosition.x,
-                top: logoMenuPosition.y,
-              }}
-            >
-              <DropdownMenuItem onClick={handleCopyLogoSvg}>
+        {!branding.useCloneBranding ? (
+          <ContextMenu>
+            <ContextMenuTrigger asChild>
+              <Link href="/" className="flex gap-2">
+                {branding.logo && (
+                  <>
+                    <Image
+                      src={branding.logo}
+                      alt={branding.name}
+                      width={20}
+                      height={20}
+                      className="h-5 w-5 dark:hidden"
+                    />
+                    <Image
+                      src={branding.logoDark || branding.logo}
+                      alt={branding.name}
+                      width={20}
+                      height={20}
+                      className="h-5 w-5 hidden dark:block"
+                    />
+                  </>
+                )}
+                <span className="font-semibold leading-none">{branding.name}</span>
+              </Link>
+            </ContextMenuTrigger>
+            <ContextMenuContent>
+              <ContextMenuItem onClick={handleCopyLogoSvg}>
                 <Copy className="mr-2 h-4 w-4" />
-                Copy Logo SVG
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => {
-                router.push("/brand");
-                setLogoMenuOpen(false);
-              }}>
+                {t("brand.copyLogoSvg")}
+              </ContextMenuItem>
+              <ContextMenuItem onClick={() => router.push("/brand")}>
                 <ExternalLink className="mr-2 h-4 w-4" />
-                Brand Assets
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+                {t("brand.brandAssets")}
+              </ContextMenuItem>
+            </ContextMenuContent>
+          </ContextMenu>
+        ) : (
+          <Link href="/" className="flex gap-2">
+            {branding.logo && (
+              <>
+                <Image
+                  src={branding.logo}
+                  alt={branding.name}
+                  width={20}
+                  height={20}
+                  className="h-5 w-5 dark:hidden"
+                />
+                <Image
+                  src={branding.logoDark || branding.logo}
+                  alt={branding.name}
+                  width={20}
+                  height={20}
+                  className="h-5 w-5 hidden dark:block"
+                />
+              </>
+            )}
+            <span className="font-semibold leading-none">{branding.name}</span>
+          </Link>
         )}
 
         {/* Desktop nav */}
