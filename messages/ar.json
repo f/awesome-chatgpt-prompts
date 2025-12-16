@@ -769,6 +769,27 @@
     "categories": "الفئات",
     "categoryPlaceholder": "إضافة رمز الفئة...",
     "tags": "العلامات",
-    "tagPlaceholder": "إضافة رمز العلامة..."
+    "tagPlaceholder": "إضافة رمز العلامة...",
+    "generateApiKey": "أنشئ مفتاح API لحفظ الأوامر عبر MCP"
+  },
+  "apiKey": {
+    "title": "مفتاح API لـ MCP",
+    "description": "أنشئ مفتاح API لحفظ الأوامر عبر MCP والوصول إلى أوامرك الخاصة.",
+    "yourApiKey": "مفتاح API الخاص بك",
+    "keyWarning": "احتفظ بهذا المفتاح سرياً. يمكن لأي شخص لديه هذا المفتاح الوصول إلى أوامرك الخاصة وإنشاء أوامر نيابة عنك.",
+    "noApiKey": "لم تقم بإنشاء مفتاح API بعد.",
+    "generate": "إنشاء مفتاح API",
+    "regenerate": "إعادة الإنشاء",
+    "revoke": "إلغاء",
+    "regenerateTitle": "إعادة إنشاء مفتاح API؟",
+    "regenerateDescription": "سيؤدي هذا إلى إبطال مفتاح API الحالي. ستحتاج عملاء MCP الذين يستخدمون المفتاح القديم إلى التحديث.",
+    "revokeTitle": "إلغاء مفتاح API؟",
+    "revokeDescription": "سيؤدي هذا إلى حذف مفتاح API الخاص بك نهائياً. لن تتمكن من استخدام ميزات MCP التي تتطلب المصادقة حتى تنشئ مفتاحاً جديداً.",
+    "keyGenerated": "تم إنشاء مفتاح API بنجاح",
+    "keyRegenerated": "تم إعادة إنشاء مفتاح API بنجاح",
+    "keyRevoked": "تم إلغاء مفتاح API",
+    "publicByDefault": "أوامر عامة افتراضياً",
+    "publicByDefaultDescription": "عند حفظ الأوامر عبر MCP، اجعلها عامة افتراضياً بدلاً من خاصة.",
+    "settingUpdated": "تم تحديث الإعداد"
   }
 }

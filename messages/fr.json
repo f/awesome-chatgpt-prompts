@@ -769,6 +769,27 @@
     "categories": "Catégories",
     "categoryPlaceholder": "Ajouter un slug de catégorie...",
     "tags": "Tags",
-    "tagPlaceholder": "Ajouter un slug de tag..."
+    "tagPlaceholder": "Ajouter un slug de tag...",
+    "generateApiKey": "Générez une clé API pour enregistrer des prompts via MCP"
+  },
+  "apiKey": {
+    "title": "Clé API MCP",
+    "description": "Générez une clé API pour enregistrer des prompts via MCP et accéder à vos prompts privés.",
+    "yourApiKey": "Votre Clé API",
+    "keyWarning": "Gardez cette clé secrète. Toute personne possédant cette clé peut accéder à vos prompts privés et créer des prompts en votre nom.",
+    "noApiKey": "Vous n'avez pas encore généré de clé API.",
+    "generate": "Générer une Clé API",
+    "regenerate": "Régénérer",
+    "revoke": "Révoquer",
+    "regenerateTitle": "Régénérer la Clé API ?",
+    "regenerateDescription": "Cela invalidera votre clé API actuelle. Les clients MCP utilisant l'ancienne clé devront être mis à jour.",
+    "revokeTitle": "Révoquer la Clé API ?",
+    "revokeDescription": "Cela supprimera définitivement votre clé API. Vous ne pourrez pas utiliser les fonctionnalités MCP nécessitant une authentification jusqu'à ce que vous génériez une nouvelle clé.",
+    "keyGenerated": "Clé API générée avec succès",
+    "keyRegenerated": "Clé API régénérée avec succès",
+    "keyRevoked": "Clé API révoquée",
+    "publicByDefault": "Prompts publics par défaut",
+    "publicByDefaultDescription": "Lors de l'enregistrement de prompts via MCP, les rendre publics par défaut au lieu de privés.",
+    "settingUpdated": "Paramètre mis à jour"
   }
 }

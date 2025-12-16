@@ -769,6 +769,27 @@
     "categories": "Kategoriler",
     "categoryPlaceholder": "Kategori slug ekle...",
     "tags": "Etiketler",
-    "tagPlaceholder": "Etiket slug ekle..."
+    "tagPlaceholder": "Etiket slug ekle...",
+    "generateApiKey": "MCP ile prompt kaydetmek için API anahtarı oluşturun"
+  },
+  "apiKey": {
+    "title": "MCP API Anahtarı",
+    "description": "MCP ile prompt kaydetmek ve özel promptlarınıza erişmek için bir API anahtarı oluşturun.",
+    "yourApiKey": "API Anahtarınız",
+    "keyWarning": "Bu anahtarı gizli tutun. Bu anahtara sahip olan herkes özel promptlarınıza erişebilir ve sizin adınıza prompt oluşturabilir.",
+    "noApiKey": "Henüz bir API anahtarı oluşturmadınız.",
+    "generate": "API Anahtarı Oluştur",
+    "regenerate": "Yeniden Oluştur",
+    "revoke": "İptal Et",
+    "regenerateTitle": "API Anahtarını Yeniden Oluştur?",
+    "regenerateDescription": "Bu, mevcut API anahtarınızı geçersiz kılacak. Eski anahtarı kullanan MCP istemcilerinin güncellenmesi gerekecek.",
+    "revokeTitle": "API Anahtarını İptal Et?",
+    "revokeDescription": "Bu, API anahtarınızı kalıcı olarak silecek. Yeni bir anahtar oluşturana kadar kimlik doğrulaması gerektiren MCP özelliklerini kullanamazsınız.",
+    "keyGenerated": "API anahtarı başarıyla oluşturuldu",
+    "keyRegenerated": "API anahtarı başarıyla yeniden oluşturuldu",
+    "keyRevoked": "API anahtarı iptal edildi",
+    "publicByDefault": "Varsayılan olarak herkese açık promptlar",
+    "publicByDefaultDescription": "MCP ile prompt kaydederken, varsayılan olarak özel yerine herkese açık yap.",
+    "settingUpdated": "Ayar güncellendi"
   }
 }

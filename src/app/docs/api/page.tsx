@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { headers } from "next/headers";
-import { Code, Zap, Terminal, Search, Box } from "lucide-react";
+import { Code, Zap, Terminal, Search, Box, Key, Save } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -67,6 +67,69 @@ export default async function ApiDocsPage() {
           <McpConfigTabs baseUrl={baseUrl} className="[&_button]:text-sm [&_button]:px-3 [&_button]:py-1.5 [&_pre]:text-sm [&_pre]:p-4" />
           <p className="text-muted-foreground text-sm">
             <strong>Remote</strong> connects directly to prompts.chat API. <strong>Local</strong> runs the MCP server locally via npx.
+          </p>
+        </section>
+
+        {/* Authentication */}
+        <section className="space-y-4">
+          <h2 className="text-lg font-semibold flex items-center gap-2">
+            <Key className="h-5 w-5" />
+            Authentication
+          </h2>
+          <p className="text-muted-foreground">
+            Most API features work without authentication. However, to save prompts via MCP or access your private prompts,
+            you need to authenticate using an API key.
+          </p>
+          
+          <div className="bg-muted/50 rounded-lg p-4 text-sm space-y-3">
+            <div>
+              <p className="font-medium">Generate an API Key</p>
+              <p className="text-muted-foreground">
+                Go to{" "}
+                <Link href="/settings" className="underline hover:text-foreground">
+                  Settings
+                </Link>
+                {" "}to generate your API key. Keys start with <code className="bg-muted px-1.5 py-0.5 rounded">pchat_</code>.
+              </p>
+            </div>
+            <div>
+              <p className="font-medium">Using the API Key</p>
+              <p className="text-muted-foreground">
+                Pass your API key via the <code className="bg-muted px-1.5 py-0.5 rounded">PROMPTS_API_KEY</code> header.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre>{`# Remote: HTTP transport with headers
+"prompts-chat": {
+  "url": "${baseUrl}/api/mcp",
+  "headers": {
+    "PROMPTS_API_KEY": "pchat_your_api_key_here"
+  }
+}
+
+# Local: stdio transport with environment variable
+"prompts-chat": {
+  "command": "npx",
+  "args": ["-y", "@fkadev/prompts.chat-mcp"],
+  "env": {
+    "PROMPTS_API_KEY": "pchat_your_api_key_here"
+  }
+}
+
+# Or via curl (remote)
+curl -X POST ${baseUrl}/api/mcp \\
+  -H "Content-Type: application/json" \\
+  -H "PROMPTS_API_KEY: pchat_your_api_key_here" \\
+  -d '{"jsonrpc": "2.0", "id": 1, "method": "tools/list"}'`}</pre>
+          </div>
+
+          <p className="text-muted-foreground text-sm">
+            <strong>Remote (HTTP)</strong> sends requests to prompts.chat with the API key in headers. 
+            <strong> Local (stdio)</strong> runs the MCP server locally via npx with the API key as an environment variable.
+            With authentication, you can use the <code className="bg-muted px-1.5 py-0.5 rounded">save_prompt</code> tool 
+            and search results will include your private prompts.
           </p>
         </section>
 
@@ -247,6 +310,100 @@ curl -X POST ${baseUrl}/api/mcp \\
                 default values (after the colon) are optional. The prompt content will be returned with 
                 variables replaced.
               </p>
+            </div>
+          </div>
+
+          {/* save_prompt Tool */}
+          <div className="space-y-4">
+            <h3 className="font-medium flex items-center gap-2">
+              <Save className="h-4 w-4" />
+              save_prompt
+              <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded">Requires Auth</span>
+            </h3>
+            <p className="text-muted-foreground">
+              Save a new prompt to your account. Requires API key authentication. Prompts are private by default
+              unless you&apos;ve changed the default in your settings.
+            </p>
+
+            <div className="border rounded-lg overflow-hidden">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-[140px]">Parameter</TableHead>
+                    <TableHead className="w-[100px]">Type</TableHead>
+                    <TableHead className="w-[80px]">Required</TableHead>
+                    <TableHead>Description</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className="font-mono text-xs">title</TableCell>
+                    <TableCell className="text-muted-foreground text-xs">string</TableCell>
+                    <TableCell className="text-xs">Yes</TableCell>
+                    <TableCell className="text-muted-foreground text-sm">Title of the prompt (max 200 chars)</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-mono text-xs">content</TableCell>
+                    <TableCell className="text-muted-foreground text-xs">string</TableCell>
+                    <TableCell className="text-xs">Yes</TableCell>
+                    <TableCell className="text-muted-foreground text-sm">The prompt content. Can include variables like {"${var}"}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-mono text-xs">description</TableCell>
+                    <TableCell className="text-muted-foreground text-xs">string</TableCell>
+                    <TableCell className="text-xs">No</TableCell>
+                    <TableCell className="text-muted-foreground text-sm">Optional description (max 500 chars)</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-mono text-xs">tags</TableCell>
+                    <TableCell className="text-muted-foreground text-xs">string[]</TableCell>
+                    <TableCell className="text-xs">No</TableCell>
+                    <TableCell className="text-muted-foreground text-sm">Array of tag names (max 10)</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-mono text-xs">category</TableCell>
+                    <TableCell className="text-muted-foreground text-xs">string</TableCell>
+                    <TableCell className="text-xs">No</TableCell>
+                    <TableCell className="text-muted-foreground text-sm">Category slug</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-mono text-xs">isPrivate</TableCell>
+                    <TableCell className="text-muted-foreground text-xs">boolean</TableCell>
+                    <TableCell className="text-xs">No</TableCell>
+                    <TableCell className="text-muted-foreground text-sm">Override default privacy setting</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-mono text-xs">type</TableCell>
+                    <TableCell className="text-muted-foreground text-xs">string</TableCell>
+                    <TableCell className="text-xs">No</TableCell>
+                    <TableCell className="text-muted-foreground text-sm">
+                      <code className="text-xs">TEXT</code> (default), <code className="text-xs">STRUCTURED</code>, <code className="text-xs">IMAGE</code>, <code className="text-xs">VIDEO</code>, <code className="text-xs">AUDIO</code>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </div>
+
+            <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
+              <pre>{`# Save a prompt via MCP
+curl -X POST ${baseUrl}/api/mcp \\
+  -H "Content-Type: application/json" \\
+  -H "PROMPTS_API_KEY: pchat_your_api_key_here" \\
+  -d '{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "tools/call",
+    "params": {
+      "name": "save_prompt",
+      "arguments": {
+        "title": "My Code Review Prompt",
+        "content": "Review this code for \${language} best practices:\\n\\n\${code}",
+        "description": "A helpful code review assistant",
+        "tags": ["coding", "review"],
+        "isPrivate": false
+      }
+    }
+  }'`}</pre>
             </div>
           </div>
         </section>

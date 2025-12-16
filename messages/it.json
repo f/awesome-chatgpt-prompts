@@ -769,6 +769,27 @@
     "categories": "Categorie",
     "categoryPlaceholder": "Aggiungi slug categoria...",
     "tags": "Tag",
-    "tagPlaceholder": "Aggiungi slug tag..."
+    "tagPlaceholder": "Aggiungi slug tag...",
+    "generateApiKey": "Genera una chiave API per salvare prompt tramite MCP"
+  },
+  "apiKey": {
+    "title": "Chiave API MCP",
+    "description": "Genera una chiave API per salvare prompt tramite MCP e accedere ai tuoi prompt privati.",
+    "yourApiKey": "La Tua Chiave API",
+    "keyWarning": "Mantieni questa chiave segreta. Chiunque abbia questa chiave può accedere ai tuoi prompt privati e creare prompt a tuo nome.",
+    "noApiKey": "Non hai ancora generato una chiave API.",
+    "generate": "Genera Chiave API",
+    "regenerate": "Rigenera",
+    "revoke": "Revoca",
+    "regenerateTitle": "Rigenerare la Chiave API?",
+    "regenerateDescription": "Questo invaliderà la tua chiave API attuale. I client MCP che usano la vecchia chiave dovranno essere aggiornati.",
+    "revokeTitle": "Revocare la Chiave API?",
+    "revokeDescription": "Questo eliminerà permanentemente la tua chiave API. Non potrai usare le funzionalità MCP che richiedono autenticazione fino a quando non genererai una nuova chiave.",
+    "keyGenerated": "Chiave API generata con successo",
+    "keyRegenerated": "Chiave API rigenerata con successo",
+    "keyRevoked": "Chiave API revocata",
+    "publicByDefault": "Prompt pubblici per impostazione predefinita",
+    "publicByDefaultDescription": "Quando salvi prompt tramite MCP, rendili pubblici per impostazione predefinita invece che privati.",
+    "settingUpdated": "Impostazione aggiornata"
   }
 }

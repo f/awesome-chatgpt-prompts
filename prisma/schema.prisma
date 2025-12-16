@@ -8,20 +8,22 @@ datasource db {
 }
 
 model User {
-  id             String                 @id @default(cuid())
-  email          String                 @unique
-  username       String                 @unique
-  name           String?
-  password       String?
-  avatar         String?
-  role           UserRole               @default(USER)
-  locale         String                 @default("en")
-  emailVerified  DateTime?
-  createdAt      DateTime               @default(now())
-  updatedAt      DateTime               @updatedAt
-  verified       Boolean                @default(false)
-  githubUsername String?
-  accounts       Account[]
+  id                        String                 @id @default(cuid())
+  email                     String                 @unique
+  username                  String                 @unique
+  name                      String?
+  password                  String?
+  avatar                    String?
+  role                      UserRole               @default(USER)
+  locale                    String                 @default("en")
+  emailVerified             DateTime?
+  createdAt                 DateTime               @default(now())
+  updatedAt                 DateTime               @updatedAt
+  verified                  Boolean                @default(false)
+  githubUsername            String?
+  apiKey                    String?                @unique
+  mcpPromptsPublicByDefault Boolean                @default(false)
+  accounts                  Account[]
   subscriptions  CategorySubscription[]
   changeRequests ChangeRequest[]
   pinnedPrompts  PinnedPrompt[]

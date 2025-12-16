@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useTranslations } from "next-intl";
-import { Plus, X, ChevronDown } from "lucide-react";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
+import { Plus, X, ChevronDown, Key } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -50,6 +52,7 @@ export function McpServerPopup({
   baseUrl,
 }: McpServerPopupProps) {
   const t = useTranslations("mcp");
+  const { data: session } = useSession();
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [mcpMode, setMcpMode] = useState<"remote" | "local">("remote");
   const [users, setUsers] = useState<string[]>(initialUsers);
@@ -58,6 +61,23 @@ export function McpServerPopup({
   const [userInput, setUserInput] = useState("");
   const [categoryInput, setCategoryInput] = useState("");
   const [tagInput, setTagInput] = useState("");
+  const [apiKey, setApiKey] = useState<string | null>(null);
+
+  // Fetch API key when user is logged in
+  useEffect(() => {
+    if (session?.user) {
+      fetch("/api/user/api-key")
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.apiKey) {
+            setApiKey(data.apiKey);
+          }
+        })
+        .catch(() => {
+          // Ignore errors
+        });
+    }
+  }, [session?.user]);
 
   // Build query params for MCP URL
   const queryParams = useMemo(() => {
@@ -152,7 +172,18 @@ export function McpServerPopup({
           </p>
 
           {/* Config Tabs */}
-          <McpConfigTabs baseUrl={baseUrl} queryParams={queryParams || undefined} mode={mcpMode} hideModeToggle />
+          <McpConfigTabs baseUrl={baseUrl} queryParams={queryParams || undefined} mode={mcpMode} hideModeToggle apiKey={apiKey} />
+
+          {/* API Key Link */}
+          {session?.user && !apiKey && (
+            <Link 
+              href="/settings" 
+              className="flex items-center gap-1.5 text-[11px] text-primary hover:underline"
+            >
+              <Key className="h-3 w-3" />
+              {t("generateApiKey")}
+            </Link>
+          )}
 
           {/* Collapsible Filters */}
           <div className="border-t pt-2">

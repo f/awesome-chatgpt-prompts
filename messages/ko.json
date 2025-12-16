@@ -769,6 +769,27 @@
     "categories": "카테고리",
     "categoryPlaceholder": "카테고리 슬러그 추가...",
     "tags": "태그",
-    "tagPlaceholder": "태그 슬러그 추가..."
+    "tagPlaceholder": "태그 슬러그 추가...",
+    "generateApiKey": "MCP를 통해 프롬프트를 저장하려면 API 키를 생성하세요"
+  },
+  "apiKey": {
+    "title": "MCP API 키",
+    "description": "MCP를 통해 프롬프트를 저장하고 비공개 프롬프트에 접근하려면 API 키를 생성하세요.",
+    "yourApiKey": "API 키",
+    "keyWarning": "이 키를 비밀로 유지하세요. 이 키를 가진 사람은 비공개 프롬프트에 접근하고 대신 프롬프트를 만들 수 있습니다.",
+    "noApiKey": "아직 API 키를 생성하지 않았습니다.",
+    "generate": "API 키 생성",
+    "regenerate": "재생성",
+    "revoke": "취소",
+    "regenerateTitle": "API 키를 재생성하시겠습니까?",
+    "regenerateDescription": "현재 API 키가 무효화됩니다. 이전 키를 사용하는 MCP 클라이언트는 업데이트가 필요합니다.",
+    "revokeTitle": "API 키를 취소하시겠습니까?",
+    "revokeDescription": "API 키가 영구적으로 삭제됩니다. 새 키를 생성할 때까지 인증이 필요한 MCP 기능을 사용할 수 없습니다.",
+    "keyGenerated": "API 키가 성공적으로 생성되었습니다",
+    "keyRegenerated": "API 키가 성공적으로 재생성되었습니다",
+    "keyRevoked": "API 키가 취소되었습니다",
+    "publicByDefault": "기본적으로 공개 프롬프트",
+    "publicByDefaultDescription": "MCP를 통해 프롬프트를 저장할 때 비공개 대신 기본적으로 공개로 설정합니다.",
+    "settingUpdated": "설정이 업데이트되었습니다"
   }
 }

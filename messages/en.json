@@ -769,6 +769,27 @@
     "categories": "Categories",
     "categoryPlaceholder": "Add category slug...",
     "tags": "Tags",
-    "tagPlaceholder": "Add tag slug..."
+    "tagPlaceholder": "Add tag slug...",
+    "generateApiKey": "Generate API key to save prompts via MCP"
+  },
+  "apiKey": {
+    "title": "MCP API Key",
+    "description": "Generate an API key to save prompts via MCP and access your private prompts.",
+    "yourApiKey": "Your API Key",
+    "keyWarning": "Keep this key secret. Anyone with this key can access your private prompts and create prompts on your behalf.",
+    "noApiKey": "You haven't generated an API key yet.",
+    "generate": "Generate API Key",
+    "regenerate": "Regenerate",
+    "revoke": "Revoke",
+    "regenerateTitle": "Regenerate API Key?",
+    "regenerateDescription": "This will invalidate your current API key. Any MCP clients using the old key will need to be updated.",
+    "revokeTitle": "Revoke API Key?",
+    "revokeDescription": "This will permanently delete your API key. You won't be able to use MCP features that require authentication until you generate a new key.",
+    "keyGenerated": "API key generated successfully",
+    "keyRegenerated": "API key regenerated successfully",
+    "keyRevoked": "API key revoked",
+    "publicByDefault": "Public prompts by default",
+    "publicByDefaultDescription": "When saving prompts via MCP, make them public by default instead of private.",
+    "settingUpdated": "Setting updated"
   }
 }

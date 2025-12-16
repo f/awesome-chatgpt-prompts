@@ -769,6 +769,27 @@
     "categories": "カテゴリー",
     "categoryPlaceholder": "カテゴリースラッグを追加...",
     "tags": "タグ",
-    "tagPlaceholder": "タグスラッグを追加..."
+    "tagPlaceholder": "タグスラッグを追加...",
+    "generateApiKey": "MCP経由でプロンプトを保存するためのAPIキーを生成"
+  },
+  "apiKey": {
+    "title": "MCP APIキー",
+    "description": "MCP経由でプロンプトを保存し、プライベートプロンプトにアクセスするためのAPIキーを生成します。",
+    "yourApiKey": "あなたのAPIキー",
+    "keyWarning": "このキーは秘密にしてください。このキーを持っている人は、あなたのプライベートプロンプトにアクセスし、あなたの名前でプロンプトを作成できます。",
+    "noApiKey": "まだAPIキーを生成していません。",
+    "generate": "APIキーを生成",
+    "regenerate": "再生成",
+    "revoke": "取り消し",
+    "regenerateTitle": "APIキーを再生成しますか？",
+    "regenerateDescription": "これにより現在のAPIキーが無効になります。古いキーを使用しているMCPクライアントは更新が必要です。",
+    "revokeTitle": "APIキーを取り消しますか？",
+    "revokeDescription": "これによりAPIキーが永久に削除されます。新しいキーを生成するまで、認証が必要なMCP機能は使用できなくなります。",
+    "keyGenerated": "APIキーが正常に生成されました",
+    "keyRegenerated": "APIキーが正常に再生成されました",
+    "keyRevoked": "APIキーが取り消されました",
+    "publicByDefault": "デフォルトで公開プロンプト",
+    "publicByDefaultDescription": "MCP経由でプロンプトを保存する際、プライベートではなくデフォルトで公開にします。",
+    "settingUpdated": "設定が更新されました"
   }
 }

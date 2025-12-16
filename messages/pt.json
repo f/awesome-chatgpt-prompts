@@ -769,6 +769,27 @@
     "categories": "Categorias",
     "categoryPlaceholder": "Adicionar slug da categoria...",
     "tags": "Tags",
-    "tagPlaceholder": "Adicionar slug da tag..."
+    "tagPlaceholder": "Adicionar slug da tag...",
+    "generateApiKey": "Gere uma chave API para salvar prompts via MCP"
+  },
+  "apiKey": {
+    "title": "Chave API MCP",
+    "description": "Gere uma chave API para salvar prompts via MCP e acessar seus prompts privados.",
+    "yourApiKey": "Sua Chave API",
+    "keyWarning": "Mantenha esta chave em segredo. Qualquer pessoa com esta chave pode acessar seus prompts privados e criar prompts em seu nome.",
+    "noApiKey": "Você ainda não gerou uma chave API.",
+    "generate": "Gerar Chave API",
+    "regenerate": "Regenerar",
+    "revoke": "Revogar",
+    "regenerateTitle": "Regenerar Chave API?",
+    "regenerateDescription": "Isso invalidará sua chave API atual. Os clientes MCP que usam a chave antiga precisarão ser atualizados.",
+    "revokeTitle": "Revogar Chave API?",
+    "revokeDescription": "Isso excluirá permanentemente sua chave API. Você não poderá usar recursos MCP que requerem autenticação até gerar uma nova chave.",
+    "keyGenerated": "Chave API gerada com sucesso",
+    "keyRegenerated": "Chave API regenerada com sucesso",
+    "keyRevoked": "Chave API revogada",
+    "publicByDefault": "Prompts públicos por padrão",
+    "publicByDefaultDescription": "Ao salvar prompts via MCP, torná-los públicos por padrão em vez de privados.",
+    "settingUpdated": "Configuração atualizada"
   }
 }

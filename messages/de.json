@@ -769,6 +769,27 @@
     "categories": "Kategorien",
     "categoryPlaceholder": "Kategorie-Slug hinzufügen...",
     "tags": "Tags",
-    "tagPlaceholder": "Tag-Slug hinzufügen..."
+    "tagPlaceholder": "Tag-Slug hinzufügen...",
+    "generateApiKey": "API-Schlüssel generieren, um Prompts über MCP zu speichern"
+  },
+  "apiKey": {
+    "title": "MCP API-Schlüssel",
+    "description": "Generieren Sie einen API-Schlüssel, um Prompts über MCP zu speichern und auf Ihre privaten Prompts zuzugreifen.",
+    "yourApiKey": "Ihr API-Schlüssel",
+    "keyWarning": "Halten Sie diesen Schlüssel geheim. Jeder mit diesem Schlüssel kann auf Ihre privaten Prompts zugreifen und Prompts in Ihrem Namen erstellen.",
+    "noApiKey": "Sie haben noch keinen API-Schlüssel generiert.",
+    "generate": "API-Schlüssel generieren",
+    "regenerate": "Neu generieren",
+    "revoke": "Widerrufen",
+    "regenerateTitle": "API-Schlüssel neu generieren?",
+    "regenerateDescription": "Dies macht Ihren aktuellen API-Schlüssel ungültig. MCP-Clients, die den alten Schlüssel verwenden, müssen aktualisiert werden.",
+    "revokeTitle": "API-Schlüssel widerrufen?",
+    "revokeDescription": "Dies löscht Ihren API-Schlüssel dauerhaft. Sie können MCP-Funktionen, die eine Authentifizierung erfordern, nicht mehr verwenden, bis Sie einen neuen Schlüssel generieren.",
+    "keyGenerated": "API-Schlüssel erfolgreich generiert",
+    "keyRegenerated": "API-Schlüssel erfolgreich neu generiert",
+    "keyRevoked": "API-Schlüssel widerrufen",
+    "publicByDefault": "Prompts standardmäßig öffentlich",
+    "publicByDefaultDescription": "Beim Speichern von Prompts über MCP standardmäßig öffentlich statt privat machen.",
+    "settingUpdated": "Einstellung aktualisiert"
   }
 }

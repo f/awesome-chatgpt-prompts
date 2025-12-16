@@ -769,6 +769,27 @@
     "categories": "קטגוריות",
     "categoryPlaceholder": "הוסף slug קטגוריה...",
     "tags": "תגיות",
-    "tagPlaceholder": "הוסף slug תגית..."
+    "tagPlaceholder": "הוסף slug תגית...",
+    "generateApiKey": "צור מפתח API לשמירת פרומפטים דרך MCP"
+  },
+  "apiKey": {
+    "title": "מפתח API ל-MCP",
+    "description": "צור מפתח API לשמירת פרומפטים דרך MCP וגישה לפרומפטים הפרטיים שלך.",
+    "yourApiKey": "מפתח ה-API שלך",
+    "keyWarning": "שמור על מפתח זה בסוד. כל מי שיש לו מפתח זה יכול לגשת לפרומפטים הפרטיים שלך וליצור פרומפטים בשמך.",
+    "noApiKey": "עדיין לא יצרת מפתח API.",
+    "generate": "צור מפתח API",
+    "regenerate": "צור מחדש",
+    "revoke": "בטל",
+    "regenerateTitle": "ליצור מחדש מפתח API?",
+    "regenerateDescription": "פעולה זו תבטל את מפתח ה-API הנוכחי שלך. לקוחות MCP המשתמשים במפתח הישן יצטרכו להתעדכן.",
+    "revokeTitle": "לבטל מפתח API?",
+    "revokeDescription": "פעולה זו תמחק לצמיתות את מפתח ה-API שלך. לא תוכל להשתמש בתכונות MCP הדורשות אימות עד שתיצור מפתח חדש.",
+    "keyGenerated": "מפתח API נוצר בהצלחה",
+    "keyRegenerated": "מפתח API נוצר מחדש בהצלחה",
+    "keyRevoked": "מפתח API בוטל",
+    "publicByDefault": "פרומפטים ציבוריים כברירת מחדל",
+    "publicByDefaultDescription": "בעת שמירת פרומפטים דרך MCP, הפוך אותם לציבוריים כברירת מחדל במקום פרטיים.",
+    "settingUpdated": "ההגדרה עודכנה"
   }
 }

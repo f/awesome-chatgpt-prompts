@@ -769,6 +769,27 @@
     "categories": "分类",
     "categoryPlaceholder": "添加分类标识...",
     "tags": "标签",
-    "tagPlaceholder": "添加标签标识..."
+    "tagPlaceholder": "添加标签标识...",
+    "generateApiKey": "生成 API 密钥以通过 MCP 保存提示词"
+  },
+  "apiKey": {
+    "title": "MCP API 密钥",
+    "description": "生成 API 密钥以通过 MCP 保存提示词并访问您的私有提示词。",
+    "yourApiKey": "您的 API 密钥",
+    "keyWarning": "请保密此密钥。任何拥有此密钥的人都可以访问您的私有提示词并以您的名义创建提示词。",
+    "noApiKey": "您尚未生成 API 密钥。",
+    "generate": "生成 API 密钥",
+    "regenerate": "重新生成",
+    "revoke": "撤销",
+    "regenerateTitle": "重新生成 API 密钥？",
+    "regenerateDescription": "这将使您当前的 API 密钥失效。使用旧密钥的 MCP 客户端需要更新。",
+    "revokeTitle": "撤销 API 密钥？",
+    "revokeDescription": "这将永久删除您的 API 密钥。在生成新密钥之前，您将无法使用需要身份验证的 MCP 功能。",
+    "keyGenerated": "API 密钥生成成功",
+    "keyRegenerated": "API 密钥重新生成成功",
+    "keyRevoked": "API 密钥已撤销",
+    "publicByDefault": "默认公开提示词",
+    "publicByDefaultDescription": "通过 MCP 保存提示词时，默认设为公开而非私有。",
+    "settingUpdated": "设置已更新"
   }
 }
