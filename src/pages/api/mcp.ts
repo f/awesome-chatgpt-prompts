@@ -398,6 +398,7 @@ function createServer(options: ServerOptions = {}) {
                         author: prompt.author.name || prompt.author.username,
                         category: prompt.category?.name || null,
                         tags: prompt.tags.map((t) => t.tag.name),
+                        link: `https://prompts.chat/prompts/${prompt.id}_${getPromptName(prompt)}`,
                       },
                       null,
                       2
@@ -418,6 +419,7 @@ function createServer(options: ServerOptions = {}) {
                         author: prompt.author.name || prompt.author.username,
                         category: prompt.category?.name || null,
                         tags: prompt.tags.map((t) => t.tag.name),
+                        link: `https://prompts.chat/prompts/${prompt.id}_${getPromptName(prompt)}`,
                       },
                       null,
                       2
@@ -439,6 +441,7 @@ function createServer(options: ServerOptions = {}) {
                       author: prompt.author.name || prompt.author.username,
                       category: prompt.category?.name || null,
                       tags: prompt.tags.map((t) => t.tag.name),
+                      link: `https://prompts.chat/prompts/${prompt.id}_${getPromptName(prompt)}`,
                     },
                     null,
                     2
@@ -459,6 +462,7 @@ function createServer(options: ServerOptions = {}) {
                   author: prompt.author.name || prompt.author.username,
                   category: prompt.category?.name || null,
                   tags: prompt.tags.map((t) => t.tag.name),
+                  link: `https://prompts.chat/prompts/${prompt.id}_${getPromptName(prompt)}`,
                 },
                 null,
                 2
