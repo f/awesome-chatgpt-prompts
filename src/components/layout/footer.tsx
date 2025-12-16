@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import DeepWikiIcon from "@/../public/deepwiki.svg";
 import { useBranding } from "@/components/providers/branding-provider";
 
 export function Footer() {
@@ -18,6 +19,10 @@ export function Footer() {
         <nav className="flex items-center gap-4">
           {!branding.useCloneBranding && (
             <>
+              <Link href="https://deepwiki.com/f/awesome-chatgpt-prompts" target="_blank" rel="noopener noreferrer" className="hover:text-foreground flex items-center gap-1">
+                <Image src={DeepWikiIcon} alt="" width={14} height={14} />
+                DeepWiki
+              </Link>
               <Link href="/docs/self-hosting" className="hover:text-foreground">Docs</Link>
               <Link href="/docs/api" className="hover:text-foreground">API</Link>
               <Link href="/privacy" className="hover:text-foreground">Privacy</Link>

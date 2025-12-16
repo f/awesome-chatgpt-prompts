@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { Server, Database, Key, Palette, Globe, Settings, HardDrive, Cpu } from "lucide-react";
+import Image from "next/image";
+import { Server, Database, Key, Palette, Globe, Settings, HardDrive, Cpu, BookOpen } from "lucide-react";
+import DeepWikiIcon from "@/../public/deepwiki.svg";
 import {
   Table,
   TableBody,
@@ -36,6 +38,31 @@ export default function SelfHostingPage() {
             <li>AI-powered semantic search and generation (optional)</li>
             <li>Multi-language support (11 locales)</li>
             <li>CC0 licensed - use freely for any purpose</li>
+          </ul>
+        </section>
+
+        {/* DeepWiki */}
+        <section className="space-y-4">
+          <h2 className="text-lg font-semibold flex items-center gap-2">
+            <Image src={DeepWikiIcon} alt="" width={20} height={20} />
+            DeepWiki
+          </h2>
+          <p className="text-muted-foreground">
+            <Link 
+              href="https://deepwiki.com/f/awesome-chatgpt-prompts" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="underline hover:text-foreground"
+            >
+              DeepWiki
+            </Link>
+            {" "}provides AI-powered documentation and insights for this repository. It automatically generates comprehensive documentation from the codebase, making it easier to understand the project structure, APIs, and implementation details.
+          </p>
+          <ul className="list-disc list-inside text-muted-foreground space-y-1">
+            <li>AI-generated documentation from source code</li>
+            <li>Interactive codebase exploration</li>
+            <li>Architecture diagrams and component relationships</li>
+            <li>Ask questions about the codebase</li>
           </ul>
         </section>
 
