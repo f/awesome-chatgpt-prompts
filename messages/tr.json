@@ -226,7 +226,11 @@
     "supportedFormat": "Desteklenen format",
     "or": "veya",
     "detectedVariables": "Değişkenler",
-    "clickToEdit": "Düzenlemek için tıklayın"
+    "clickToEdit": "Düzenlemek için tıklayın",
+    "translateToLanguage": "Dilinize çevirin",
+    "translated": "İçerik çevrildi",
+    "translationFailed": "Çeviri başarısız oldu",
+    "alreadyTranslated": "Zaten çevrildi"
   },
   "changeRequests": {
     "title": "Değişiklik İstekleri",

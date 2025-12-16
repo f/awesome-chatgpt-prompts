@@ -28,6 +28,31 @@ export async function isAIGenerationEnabled(): Promise<boolean> {
   return !!(config.features.aiGeneration && process.env.OPENAI_API_KEY);
 }
 
+export async function translateContent(content: string, targetLanguage: string): Promise<string> {
+  const client = getOpenAIClient();
+  
+  const systemPrompt = `You are a professional translator. Translate the following text to ${targetLanguage}.
+Rules:
+- Preserve all formatting, line breaks, and special characters
+- For variable placeholders like \${variablename} keep the variable name in English but translate any default value
+  Example: \${topic:technology} becomes \${topic:tecnología} in Spanish
+  Example: \${name} stays as \${name} (no default to translate)
+- Maintain the original tone and meaning
+- Return ONLY the translated text, no explanations or notes`;
+
+  const response = await client.chat.completions.create({
+    model: GENERATIVE_MODEL,
+    messages: [
+      { role: "system", content: systemPrompt },
+      { role: "user", content }
+    ],
+    temperature: 0.3,
+    max_tokens: 4000,
+  });
+  
+  return response.choices[0]?.message?.content?.trim() || "";
+}
+
 export async function generateSQL(prompt: string): Promise<string> {
   const config = await getConfig();
   if (!config.features.aiGeneration) {

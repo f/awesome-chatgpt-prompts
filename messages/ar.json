@@ -226,7 +226,11 @@
     "supportedFormat": "الصيغة المدعومة",
     "or": "أو",
     "detectedVariables": "المتغيرات",
-    "clickToEdit": "انقر للتعديل"
+    "clickToEdit": "انقر للتعديل",
+    "translateToLanguage": "ترجم إلى لغتك",
+    "translated": "تمت ترجمة المحتوى",
+    "translationFailed": "فشلت الترجمة",
+    "alreadyTranslated": "مترجم بالفعل"
   },
   "changeRequests": {
     "title": "طلبات التغيير",

@@ -382,9 +382,10 @@ export default async function PromptPage({ params }: PromptPageProps) {
                 isStructured={true}
                 structuredFormat={(prompt.structuredFormat?.toLowerCase() as "json" | "yaml") || "json"}
                 title={t("promptContent")}
+                isLoggedIn={!!session?.user}
               />
             ) : (
-              <InteractivePromptContent content={prompt.content} title={t("promptContent")} />
+              <InteractivePromptContent content={prompt.content} title={t("promptContent")} isLoggedIn={!!session?.user} />
             )}
           </div>
           {/* Report link */}

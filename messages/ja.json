@@ -226,7 +226,11 @@
     "supportedFormat": "対応形式",
     "or": "または",
     "detectedVariables": "変数",
-    "clickToEdit": "クリックして編集"
+    "clickToEdit": "クリックして編集",
+    "translateToLanguage": "あなたの言語に翻訳",
+    "translated": "コンテンツを翻訳しました",
+    "translationFailed": "翻訳に失敗しました",
+    "alreadyTranslated": "翻訳済み"
   },
   "changeRequests": {
     "title": "変更リクエスト",

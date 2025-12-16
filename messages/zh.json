@@ -226,7 +226,11 @@
     "supportedFormat": "支持的格式",
     "or": "或",
     "detectedVariables": "变量",
-    "clickToEdit": "点击编辑"
+    "clickToEdit": "点击编辑",
+    "translateToLanguage": "翻译成你的语言",
+    "translated": "内容已翻译",
+    "translationFailed": "翻译失败",
+    "alreadyTranslated": "已翻译"
   },
   "changeRequests": {
     "title": "变更请求",

@@ -226,7 +226,11 @@
     "supportedFormat": "Поддерживаемый формат",
     "or": "или",
     "detectedVariables": "Переменные",
-    "clickToEdit": "Нажмите для редактирования"
+    "clickToEdit": "Нажмите для редактирования",
+    "translateToLanguage": "Перевести на ваш язык",
+    "translated": "Контент переведён",
+    "translationFailed": "Ошибка перевода",
+    "alreadyTranslated": "Уже переведено"
   },
   "changeRequests": {
     "title": "Запросы на изменение",

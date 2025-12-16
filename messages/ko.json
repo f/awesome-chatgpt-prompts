@@ -226,7 +226,11 @@
     "supportedFormat": "지원 형식",
     "or": "또는",
     "detectedVariables": "변수",
-    "clickToEdit": "클릭하여 편집"
+    "clickToEdit": "클릭하여 편집",
+    "translateToLanguage": "내 언어로 번역",
+    "translated": "콘텐츠가 번역됨",
+    "translationFailed": "번역 실패",
+    "alreadyTranslated": "이미 번역됨"
   },
   "changeRequests": {
     "title": "변경 요청",

@@ -226,7 +226,11 @@
     "supportedFormat": "Supported format",
     "or": "or",
     "detectedVariables": "Variables",
-    "clickToEdit": "Click to edit"
+    "clickToEdit": "Click to edit",
+    "translateToLanguage": "Translate to your language",
+    "translated": "Content translated",
+    "translationFailed": "Translation failed",
+    "alreadyTranslated": "Already translated"
   },
   "changeRequests": {
     "title": "Change Requests",
