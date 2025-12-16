@@ -380,7 +380,12 @@
       "generateEmbeddings": "埋め込みを生成",
       "regenerateEmbeddings": "すべての埋め込みを再生成",
       "embeddingsSuccess": "{count} 件の埋め込みを生成しました",
-      "embeddingsResult": "成功: {success}, 失敗: {failed}"
+      "embeddingsResult": "成功: {success}, 失敗: {failed}",
+      "slugsTitle": "URLスラッグ",
+      "generateSlugs": "スラッグを生成",
+      "regenerateSlugs": "すべてのスラッグを再生成（タイトルを英語に翻訳）",
+      "slugsSuccess": "{count} 件のスラッグを生成しました",
+      "slugsResult": "成功: {success}, 失敗: {failed}"
     },
     "users": {
       "title": "ユーザー管理",

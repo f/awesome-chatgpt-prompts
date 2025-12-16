@@ -380,7 +380,12 @@
       "regenerateEmbeddings": "Пересоздать все эмбеддинги",
       "pending": "ожидают",
       "embeddingsSuccess": "{count} эмбеддингов создано",
-      "embeddingsResult": "Создано: {success}, Ошибок: {failed}"
+      "embeddingsResult": "Создано: {success}, Ошибок: {failed}",
+      "slugsTitle": "URL-слаги",
+      "generateSlugs": "Создать слаги",
+      "regenerateSlugs": "Пересоздать все слаги (перевод заголовков на английский)",
+      "slugsSuccess": "{count} слагов создано",
+      "slugsResult": "Создано: {success}, Ошибок: {failed}"
     },
     "users": {
       "title": "Управление пользователями",

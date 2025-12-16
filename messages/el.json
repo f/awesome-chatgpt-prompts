@@ -380,7 +380,12 @@
       "regenerateEmbeddings": "Αναδημιουργία όλων των embeddings",
       "pending": "εκκρεμής",
       "embeddingsSuccess": "{count} embeddings δημιουργήθηκαν",
-      "embeddingsResult": "Δημιουργήθηκαν: {success}, Απέτυχαν: {failed}"
+      "embeddingsResult": "Δημιουργήθηκαν: {success}, Απέτυχαν: {failed}",
+      "slugsTitle": "URL Slugs",
+      "generateSlugs": "Δημιουργία Slugs",
+      "regenerateSlugs": "Αναδημιουργία όλων των slugs (μετάφραση τίτλων στα Αγγλικά)",
+      "slugsSuccess": "{count} slugs δημιουργήθηκαν",
+      "slugsResult": "Δημιουργήθηκαν: {success}, Απέτυχαν: {failed}"
     },
     "users": {
       "title": "Διαχείριση χρηστών",

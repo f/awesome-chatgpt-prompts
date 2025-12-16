@@ -380,7 +380,12 @@
       "regenerateEmbeddings": "Tüm gömme vektörlerini yeniden oluştur",
       "pending": "bekliyor",
       "embeddingsSuccess": "{count} gömme vektörü oluşturuldu",
-      "embeddingsResult": "Oluşturulan: {success}, Başarısız: {failed}"
+      "embeddingsResult": "Oluşturulan: {success}, Başarısız: {failed}",
+      "slugsTitle": "URL Kısaltmaları",
+      "generateSlugs": "Kısaltma Oluştur",
+      "regenerateSlugs": "Tüm kısaltmaları yeniden oluştur (başlıkları İngilizce'ye çevirir)",
+      "slugsSuccess": "{count} kısaltma oluşturuldu",
+      "slugsResult": "Oluşturulan: {success}, Başarısız: {failed}"
     },
     "users": {
       "title": "Kullanıcı Yönetimi",

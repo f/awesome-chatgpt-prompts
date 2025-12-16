@@ -380,7 +380,12 @@
       "generateEmbeddings": "Generar Embeddings",
       "regenerateEmbeddings": "Regenerar todos los embeddings",
       "embeddingsSuccess": "{count} embeddings generados",
-      "embeddingsResult": "Éxito: {success}, Fallidos: {failed}"
+      "embeddingsResult": "Éxito: {success}, Fallidos: {failed}",
+      "slugsTitle": "Slugs de URL",
+      "generateSlugs": "Generar Slugs",
+      "regenerateSlugs": "Regenerar todos los slugs (traduce títulos al inglés)",
+      "slugsSuccess": "{count} slugs generados",
+      "slugsResult": "Generados: {success}, Fallidos: {failed}"
     },
     "users": {
       "title": "Gestión de Usuarios",

@@ -380,7 +380,12 @@
       "generateEmbeddings": "إنشاء التضمينات",
       "regenerateEmbeddings": "إعادة إنشاء جميع التضمينات",
       "embeddingsSuccess": "تم إنشاء {count} تضمين",
-      "embeddingsResult": "نجاح: {success}, فشل: {failed}"
+      "embeddingsResult": "نجاح: {success}, فشل: {failed}",
+      "slugsTitle": "روابط URL",
+      "generateSlugs": "إنشاء الروابط",
+      "regenerateSlugs": "إعادة إنشاء جميع الروابط (ترجمة العناوين إلى الإنجليزية)",
+      "slugsSuccess": "تم إنشاء {count} رابط",
+      "slugsResult": "نجاح: {success}, فشل: {failed}"
     },
     "users": {
       "title": "إدارة المستخدمين",

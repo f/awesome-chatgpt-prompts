@@ -380,7 +380,12 @@
       "generateEmbeddings": "生成嵌入",
       "regenerateEmbeddings": "重新生成所有嵌入",
       "embeddingsSuccess": "{count} 个嵌入生成成功",
-      "embeddingsResult": "成功: {success}, 失败: {failed}"
+      "embeddingsResult": "成功: {success}, 失败: {failed}",
+      "slugsTitle": "URL 别名",
+      "generateSlugs": "生成别名",
+      "regenerateSlugs": "重新生成所有别名（将标题翻译为英文）",
+      "slugsSuccess": "{count} 个别名生成成功",
+      "slugsResult": "成功: {success}, 失败: {failed}"
     },
     "users": {
       "title": "用户管理",

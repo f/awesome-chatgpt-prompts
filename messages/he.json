@@ -380,7 +380,12 @@
       "regenerateEmbeddings": "צור מחדש את כל ההטמעות",
       "pending": "ממתין",
       "embeddingsSuccess": "{count} הטמעות נוצרו",
-      "embeddingsResult": "נוצרו: {success}, נכשלו: {failed}"
+      "embeddingsResult": "נוצרו: {success}, נכשלו: {failed}",
+      "slugsTitle": "כתובות URL",
+      "generateSlugs": "צור כתובות",
+      "regenerateSlugs": "צור מחדש את כל הכתובות (תרגום כותרות לאנגלית)",
+      "slugsSuccess": "{count} כתובות נוצרו",
+      "slugsResult": "נוצרו: {success}, נכשלו: {failed}"
     },
     "users": {
       "title": "ניהול משתמשים",

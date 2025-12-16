@@ -380,7 +380,12 @@
       "regenerateEmbeddings": "Régénérer tous les embeddings",
       "pending": "en attente",
       "embeddingsSuccess": "{count} embeddings générés",
-      "embeddingsResult": "Générés : {success}, Échecs : {failed}"
+      "embeddingsResult": "Générés : {success}, Échecs : {failed}",
+      "slugsTitle": "Slugs d'URL",
+      "generateSlugs": "Générer les slugs",
+      "regenerateSlugs": "Régénérer tous les slugs (traduit les titres en anglais)",
+      "slugsSuccess": "{count} slugs générés",
+      "slugsResult": "Générés : {success}, Échecs : {failed}"
     },
     "users": {
       "title": "Gestion des Utilisateurs",

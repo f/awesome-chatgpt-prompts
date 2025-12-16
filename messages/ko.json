@@ -380,7 +380,12 @@
       "regenerateEmbeddings": "모든 임베딩 재생성",
       "pending": "대기 중",
       "embeddingsSuccess": "{count}개 임베딩 생성됨",
-      "embeddingsResult": "생성됨: {success}, 실패: {failed}"
+      "embeddingsResult": "생성됨: {success}, 실패: {failed}",
+      "slugsTitle": "URL 슬러그",
+      "generateSlugs": "슬러그 생성",
+      "regenerateSlugs": "모든 슬러그 재생성 (제목을 영어로 번역)",
+      "slugsSuccess": "{count}개 슬러그 생성됨",
+      "slugsResult": "생성됨: {success}, 실패: {failed}"
     },
     "users": {
       "title": "사용자 관리",
