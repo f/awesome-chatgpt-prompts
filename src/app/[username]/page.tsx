@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getTranslations, getLocale } from "next-intl/server";
 import { formatDistanceToNow } from "@/lib/date";
+import { getPromptUrl } from "@/lib/urls";
 import { Calendar, ArrowBigUp, FileText, Settings, GitPullRequest, Clock, Check, X, Pin, BadgeCheck, Users } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -220,6 +221,7 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
         prompt: {
           select: {
             id: true,
+            slug: true,
             title: true,
             author: {
               select: {
@@ -254,6 +256,7 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
         prompt: {
           select: {
             id: true,
+            slug: true,
             title: true,
             author: {
               select: {
@@ -468,7 +471,7 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
                 return (
                   <Link 
                     key={cr.id} 
-                    href={`/prompts/${cr.prompt.id}/changes/${cr.id}`}
+                    href={`${getPromptUrl(cr.prompt.id, cr.prompt.slug)}/changes/${cr.id}`}
                     className="flex items-center justify-between px-3 py-2 hover:bg-accent/50 transition-colors"
                   >
                     <div className="min-w-0 flex-1">

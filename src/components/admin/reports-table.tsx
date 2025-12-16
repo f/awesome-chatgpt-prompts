@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
 import { formatDistanceToNow } from "@/lib/date";
+import { getPromptUrl } from "@/lib/urls";
 import { MoreHorizontal, Check, X, Eye, ExternalLink } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -34,6 +35,7 @@ interface Report {
   createdAt: Date;
   prompt: {
     id: string;
+    slug?: string | null;
     title: string;
   };
   reporter: {
@@ -120,7 +122,7 @@ export function ReportsTable({ reports }: ReportsTableProps) {
                 <TableRow key={report.id}>
                   <TableCell>
                     <Link 
-                      href={`/prompts/${report.prompt.id}`}
+                      href={getPromptUrl(report.prompt.id, report.prompt.slug)}
                       className="font-medium hover:underline flex items-center gap-1"
                     >
                       {report.prompt.title}
@@ -170,7 +172,7 @@ export function ReportsTable({ reports }: ReportsTableProps) {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
                         <DropdownMenuItem asChild>
-                          <Link href={`/prompts/${report.prompt.id}`}>
+                          <Link href={getPromptUrl(report.prompt.id, report.prompt.slug)}>
                             <Eye className="h-4 w-4 mr-2" />
                             {t("viewPrompt")}
                           </Link>

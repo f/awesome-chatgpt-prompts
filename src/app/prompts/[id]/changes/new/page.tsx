@@ -11,6 +11,17 @@ interface NewChangeRequestPageProps {
   params: Promise<{ id: string }>;
 }
 
+/**
+ * Extracts the prompt ID from a URL parameter that may contain a slug
+ */
+function extractPromptId(idParam: string): string {
+  const underscoreIndex = idParam.indexOf("_");
+  if (underscoreIndex !== -1) {
+    return idParam.substring(0, underscoreIndex);
+  }
+  return idParam;
+}
+
 export default async function NewChangeRequestPage({ params }: NewChangeRequestPageProps) {
   const session = await auth();
   const t = await getTranslations("changeRequests");
@@ -19,7 +30,8 @@ export default async function NewChangeRequestPage({ params }: NewChangeRequestP
     redirect("/login");
   }
 
-  const { id } = await params;
+  const { id: idParam } = await params;
+  const id = extractPromptId(idParam);
 
   const prompt = await db.prompt.findUnique({
     where: { id },

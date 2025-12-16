@@ -10,13 +10,25 @@ interface EditPromptPageProps {
   params: Promise<{ id: string }>;
 }
 
+/**
+ * Extracts the prompt ID from a URL parameter that may contain a slug
+ */
+function extractPromptId(idParam: string): string {
+  const underscoreIndex = idParam.indexOf("_");
+  if (underscoreIndex !== -1) {
+    return idParam.substring(0, underscoreIndex);
+  }
+  return idParam;
+}
+
 export const metadata: Metadata = {
   title: "Edit Prompt",
   description: "Edit your prompt",
 };
 
 export default async function EditPromptPage({ params }: EditPromptPageProps) {
-  const { id } = await params;
+  const { id: idParam } = await params;
+  const id = extractPromptId(idParam);
   const session = await auth();
   const t = await getTranslations("prompts");
 

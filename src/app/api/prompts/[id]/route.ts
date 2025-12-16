@@ -3,6 +3,7 @@ import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { generatePromptEmbedding } from "@/lib/ai/embeddings";
+import { generatePromptSlug } from "@/lib/slug";
 
 const updatePromptSchema = z.object({
   title: z.string().min(1).max(200).optional(),
@@ -124,11 +125,19 @@ export async function PATCH(
       );
     }
 
-    const { tagIds, contributorIds, categoryId, mediaUrl, ...data } = parsed.data;
+    const { tagIds, contributorIds, categoryId, mediaUrl, title, ...data } = parsed.data;
+
+    // Regenerate slug if title changed
+    let newSlug: string | undefined;
+    if (title) {
+      newSlug = await generatePromptSlug(title);
+    }
 
     // Convert empty strings to null for optional foreign keys
     const cleanedData = {
       ...data,
+      ...(title && { title }),
+      ...(newSlug && { slug: newSlug }),
       ...(categoryId !== undefined && { categoryId: categoryId || null }),
       ...(mediaUrl !== undefined && { mediaUrl: mediaUrl || null }),
     };
@@ -187,7 +196,7 @@ export async function PATCH(
 
     // Regenerate embedding if content, title, or description changed (non-blocking)
     // Only for public prompts - the function checks if aiSearch is enabled
-    const contentChanged = data.content || data.title || data.description !== undefined;
+    const contentChanged = data.content || title || data.description !== undefined;
     if (contentChanged && !prompt.isPrivate) {
       generatePromptEmbedding(id).catch((err) =>
         console.error("Failed to regenerate embedding for prompt:", id, err)

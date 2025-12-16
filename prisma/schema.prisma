@@ -76,6 +76,7 @@ model VerificationToken {
 model Prompt {
   id                  String             @id @default(cuid())
   title               String
+  slug                String?
   description         String?
   content             String
   type                PromptType         @default(TEXT)

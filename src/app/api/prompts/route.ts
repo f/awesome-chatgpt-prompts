@@ -4,6 +4,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { triggerWebhooks } from "@/lib/webhook";
 import { generatePromptEmbedding } from "@/lib/ai/embeddings";
+import { generatePromptSlug } from "@/lib/slug";
 
 const promptSchema = z.object({
   title: z.string().min(1).max(200),
@@ -44,10 +45,14 @@ export async function POST(request: Request) {
 
     const { title, description, content, type, structuredFormat, categoryId, tagIds, contributorIds, isPrivate, mediaUrl, requiresMediaUpload, requiredMediaType, requiredMediaCount } = parsed.data;
 
+    // Generate slug from title (translated to English)
+    const slug = await generatePromptSlug(title);
+
     // Create prompt with tags
     const prompt = await db.prompt.create({
       data: {
         title,
+        slug,
         description: description || null,
         content,
         type,

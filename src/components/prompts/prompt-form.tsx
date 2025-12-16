@@ -37,6 +37,7 @@ import { CodeEditor, type CodeEditorHandle } from "@/components/ui/code-editor";
 import { toast } from "sonner";
 import { prettifyJson } from "@/lib/format";
 import { analyticsPrompt } from "@/lib/analytics";
+import { getPromptUrl } from "@/lib/urls";
 
 interface MediaFieldProps {
   form: ReturnType<typeof useForm<PromptFormValues>>;
@@ -403,7 +404,7 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
         analyticsPrompt.create(data.type);
       }
       toast.success(isEdit ? t("promptUpdated") : t("promptCreated"));
-      router.push(`/prompts/${result.id || promptId}`);
+      router.push(getPromptUrl(result.id || promptId, result.slug));
       router.refresh();
     } catch {
       toast.error(tCommon("somethingWentWrong"));

@@ -380,7 +380,12 @@
       "regenerateEmbeddings": "Regenerate all embeddings",
       "pending": "pending",
       "embeddingsSuccess": "{count} embeddings generated",
-      "embeddingsResult": "Generated: {success}, Failed: {failed}"
+      "embeddingsResult": "Generated: {success}, Failed: {failed}",
+      "slugsTitle": "URL Slugs",
+      "generateSlugs": "Generate Slugs",
+      "regenerateSlugs": "Regenerate all slugs (translates titles to English)",
+      "slugsSuccess": "{count} slugs generated",
+      "slugsResult": "Generated: {success}, Failed: {failed}"
     },
     "users": {
       "title": "User Management",

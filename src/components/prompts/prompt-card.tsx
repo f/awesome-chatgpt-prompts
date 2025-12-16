@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { formatDistanceToNow } from "@/lib/date";
+import { getPromptUrl } from "@/lib/urls";
 import { ArrowBigUp, Lock, Copy, ImageIcon, Play } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { CodeView } from "@/components/ui/code-view";
@@ -23,6 +24,7 @@ import {
 export interface PromptCardProps {
   prompt: {
     id: string;
+    slug?: string | null;
     title: string;
     description: string | null;
     content: string;
@@ -130,7 +132,7 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
         <div className="flex items-start justify-between gap-2 mb-2">
           <div className="flex items-center gap-1 flex-1 min-w-0">
             {prompt.isPrivate && <Lock className="h-3 w-3 text-muted-foreground shrink-0" />}
-            <Link href={`/prompts/${prompt.id}`} className="font-medium text-sm hover:underline line-clamp-1">
+            <Link href={getPromptUrl(prompt.id, prompt.slug)} className="font-medium text-sm hover:underline line-clamp-1">
               {prompt.title}
             </Link>
           </div>

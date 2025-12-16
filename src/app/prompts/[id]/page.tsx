@@ -27,8 +27,22 @@ interface PromptPageProps {
   params: Promise<{ id: string }>;
 }
 
+/**
+ * Extracts the prompt ID from a URL parameter that may contain a slug
+ * Supports formats: "abc123" or "abc123_some-slug"
+ */
+function extractPromptId(idParam: string): string {
+  // If the param contains an underscore, extract the ID (everything before first underscore)
+  const underscoreIndex = idParam.indexOf("_");
+  if (underscoreIndex !== -1) {
+    return idParam.substring(0, underscoreIndex);
+  }
+  return idParam;
+}
+
 export async function generateMetadata({ params }: PromptPageProps): Promise<Metadata> {
-  const { id } = await params;
+  const { id: idParam } = await params;
+  const id = extractPromptId(idParam);
   const prompt = await db.prompt.findUnique({
     where: { id },
     select: { title: true, description: true },
@@ -45,7 +59,8 @@ export async function generateMetadata({ params }: PromptPageProps): Promise<Met
 }
 
 export default async function PromptPage({ params }: PromptPageProps) {
-  const { id } = await params;
+  const { id: idParam } = await params;
+  const id = extractPromptId(idParam);
   const session = await auth();
   const t = await getTranslations("prompts");
   const locale = await getLocale();

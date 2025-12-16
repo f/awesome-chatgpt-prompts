@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import { getPromptUrl } from "@/lib/urls";
 
 interface MiniPromptCardProps {
   prompt: {
     id: string;
+    slug?: string | null;
     title: string;
     description?: string | null;
     contentPreview: string;
@@ -17,7 +19,7 @@ interface MiniPromptCardProps {
 export function MiniPromptCard({ prompt }: MiniPromptCardProps) {
   return (
     <Link
-      href={`/prompts/${prompt.id}`}
+      href={getPromptUrl(prompt.id, prompt.slug)}
       target="_blank"
       className="block p-2 border rounded-md hover:bg-accent/50 transition-colors text-xs"
     >

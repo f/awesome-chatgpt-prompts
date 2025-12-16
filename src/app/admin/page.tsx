@@ -59,6 +59,21 @@ export default async function AdminPage() {
     ]);
   }
 
+  // Count prompts without slugs
+  const [promptsWithoutSlugs, totalPrompts] = await Promise.all([
+    db.prompt.count({
+      where: {
+        slug: null,
+        deletedAt: null,
+      },
+    }),
+    db.prompt.count({
+      where: {
+        deletedAt: null,
+      },
+    }),
+  ]);
+
   // Fetch data for tables
   const [users, categories, tags, webhooks, reports] = await Promise.all([
     db.user.findMany({
@@ -115,6 +130,7 @@ export default async function AdminPage() {
         prompt: {
           select: {
             id: true,
+            slug: true,
             title: true,
           },
         },
@@ -232,6 +248,8 @@ export default async function AdminPage() {
             aiSearchEnabled={aiSearchEnabled} 
             promptsWithoutEmbeddings={promptsWithoutEmbeddings}
             totalPublicPrompts={totalPublicPrompts}
+            promptsWithoutSlugs={promptsWithoutSlugs}
+            totalPrompts={totalPrompts}
           />
         </TabsContent>
 
