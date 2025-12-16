@@ -183,7 +183,7 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
           {!config.homepage?.useCloneBranding && (
             <div className="flex items-center gap-2">
               <HFDataStudioDropdown aiGenerationEnabled={aiGenerationAvailable} />
-              <McpServerPopup />
+              {config.features.mcp !== false && <McpServerPopup />}
             </div>
           )}
           <Button size="sm" className="h-8 text-xs w-full sm:w-auto" asChild>

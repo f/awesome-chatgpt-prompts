@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import {
@@ -15,6 +16,8 @@ import {
   Globe,
   Moon,
   Sun,
+  Copy,
+  ExternalLink,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
@@ -66,10 +69,33 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
   const t = useTranslations();
   const { theme, setTheme } = useTheme();
   const branding = useBranding();
+  const router = useRouter();
 
   const user = session?.user;
   const isAdmin = user?.role === "ADMIN";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [logoMenuOpen, setLogoMenuOpen] = useState(false);
+  const [logoMenuPosition, setLogoMenuPosition] = useState({ x: 0, y: 0 });
+
+  const handleLogoContextMenu = (e: React.MouseEvent) => {
+    if (branding.useCloneBranding) return;
+    e.preventDefault();
+    setLogoMenuPosition({ x: e.clientX, y: e.clientY });
+    setLogoMenuOpen(true);
+  };
+
+  const handleCopyLogoSvg = async () => {
+    try {
+      const logoUrl = theme === "dark" ? (branding.logoDark || branding.logo) : branding.logo;
+      if (!logoUrl) return;
+      const response = await fetch(logoUrl);
+      const svgContent = await response.text();
+      await navigator.clipboard.writeText(svgContent);
+      setLogoMenuOpen(false);
+    } catch (error) {
+      console.error("Failed to copy logo:", error);
+    }
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -168,7 +194,7 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
         </Sheet>
 
         {/* Logo */}
-        <Link href="/" className="flex gap-2">
+        <Link href="/" className="flex gap-2" onContextMenu={handleLogoContextMenu}>
           {branding.logo && (
             <>
               <Image
@@ -189,6 +215,34 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
           )}
           <span className="font-semibold leading-none">{branding.name}</span>
         </Link>
+
+        {/* Logo context menu */}
+        {!branding.useCloneBranding && (
+          <DropdownMenu open={logoMenuOpen} onOpenChange={setLogoMenuOpen}>
+            <DropdownMenuTrigger asChild>
+              <span className="sr-only">Logo menu</span>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              style={{
+                position: "fixed",
+                left: logoMenuPosition.x,
+                top: logoMenuPosition.y,
+              }}
+            >
+              <DropdownMenuItem onClick={handleCopyLogoSvg}>
+                <Copy className="mr-2 h-4 w-4" />
+                Copy Logo SVG
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => {
+                router.push("/brand");
+                setLogoMenuOpen(false);
+              }}>
+                <ExternalLink className="mr-2 h-4 w-4" />
+                Brand Assets
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        )}
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-1 text-sm">

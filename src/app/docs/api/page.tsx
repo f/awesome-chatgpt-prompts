@@ -10,10 +10,11 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { McpConfigTabs } from "@/components/mcp/mcp-config-tabs";
+import config from "@/../prompts.config";
 
 export const metadata = {
   title: "API Documentation - prompts.chat",
-  description: "MCP-first API for searching and discovering AI prompts programmatically",
+  description: "API for searching and discovering AI prompts programmatically",
 };
 
 export default async function ApiDocsPage() {
@@ -25,83 +26,87 @@ export default async function ApiDocsPage() {
     <div className="container max-w-4xl py-10">
       <h1 className="text-2xl font-bold mb-2">API Documentation</h1>
       <p className="text-muted-foreground mb-8">
-        prompts.chat provides an MCP-first API for searching and discovering AI prompts programmatically.
-        Use the MCP endpoint directly with any MCP-compatible client, or make standard HTTP requests.
+        {config.features.mcp !== false 
+          ? "prompts.chat provides an MCP-first API for searching and discovering AI prompts programmatically. Use the MCP endpoint directly with any MCP-compatible client, or make standard HTTP requests."
+          : "prompts.chat provides an API for searching and discovering AI prompts programmatically."
+        }
       </p>
 
       <div className="prose prose-neutral dark:prose-invert max-w-none space-y-10">
-        {/* MCP Overview */}
-        <section className="space-y-4">
-          <h2 className="text-lg font-semibold flex items-center gap-2">
-            <Zap className="h-5 w-5" />
-            MCP-First API
-          </h2>
-          <p className="text-muted-foreground">
-            Our API is built on the{" "}
-            <Link
-              href="https://modelcontextprotocol.io"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:text-foreground"
-            >
-              Model Context Protocol (MCP)
-            </Link>
-            , enabling seamless integration with AI assistants, IDEs, and automation tools.
-            The same endpoint works for both MCP clients and traditional REST-style requests.
-          </p>
-          <div className="bg-muted rounded-lg p-4 font-mono text-sm">
-            <p className="text-muted-foreground"># MCP Endpoint</p>
-            <p>POST {baseUrl}/api/mcp</p>
-          </div>
-        </section>
-
-        {/* Using with MCP Clients */}
-        <section className="space-y-4">
-          <h2 className="text-lg font-semibold flex items-center gap-2">
-            <Terminal className="h-5 w-5" />
-            Using with MCP Clients
-          </h2>
-          <p className="text-muted-foreground">
-            Add prompts.chat to your MCP client configuration. Choose your client and connection type below:
-          </p>
-          <McpConfigTabs baseUrl={baseUrl} className="[&_button]:text-sm [&_button]:px-3 [&_button]:py-1.5 [&_pre]:text-sm [&_pre]:p-4" />
-          <p className="text-muted-foreground text-sm">
-            <strong>Remote</strong> connects directly to prompts.chat API. <strong>Local</strong> runs the MCP server locally via npx.
-          </p>
-        </section>
-
-        {/* Authentication */}
-        <section className="space-y-4">
-          <h2 className="text-lg font-semibold flex items-center gap-2">
-            <Key className="h-5 w-5" />
-            Authentication
-          </h2>
-          <p className="text-muted-foreground">
-            Most API features work without authentication. However, to save prompts via MCP or access your private prompts,
-            you need to authenticate using an API key.
-          </p>
-          
-          <div className="bg-muted/50 rounded-lg p-4 text-sm space-y-3">
-            <div>
-              <p className="font-medium">Generate an API Key</p>
+        {config.features.mcp !== false && (
+          <>
+            {/* MCP Overview */}
+            <section className="space-y-4">
+              <h2 className="text-lg font-semibold flex items-center gap-2">
+                <Zap className="h-5 w-5" />
+                MCP-First API
+              </h2>
               <p className="text-muted-foreground">
-                Go to{" "}
-                <Link href="/settings" className="underline hover:text-foreground">
-                  Settings
+                Our API is built on the{" "}
+                <Link
+                  href="https://modelcontextprotocol.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-foreground"
+                >
+                  Model Context Protocol (MCP)
                 </Link>
-                {" "}to generate your API key. Keys start with <code className="bg-muted px-1.5 py-0.5 rounded">pchat_</code>.
+                , enabling seamless integration with AI assistants, IDEs, and automation tools.
+                The same endpoint works for both MCP clients and traditional REST-style requests.
               </p>
-            </div>
-            <div>
-              <p className="font-medium">Using the API Key</p>
-              <p className="text-muted-foreground">
-                Pass your API key via the <code className="bg-muted px-1.5 py-0.5 rounded">PROMPTS_API_KEY</code> header.
-              </p>
-            </div>
-          </div>
+              <div className="bg-muted rounded-lg p-4 font-mono text-sm">
+                <p className="text-muted-foreground"># MCP Endpoint</p>
+                <p>POST {baseUrl}/api/mcp</p>
+              </div>
+            </section>
 
-          <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre>{`# Remote: HTTP transport with headers
+            {/* Using with MCP Clients */}
+            <section className="space-y-4">
+              <h2 className="text-lg font-semibold flex items-center gap-2">
+                <Terminal className="h-5 w-5" />
+                Using with MCP Clients
+              </h2>
+              <p className="text-muted-foreground">
+                Add prompts.chat to your MCP client configuration. Choose your client and connection type below:
+              </p>
+              <McpConfigTabs baseUrl={baseUrl} className="[&_button]:text-sm [&_button]:px-3 [&_button]:py-1.5 [&_pre]:text-sm [&_pre]:p-4" />
+              <p className="text-muted-foreground text-sm">
+                <strong>Remote</strong> connects directly to prompts.chat API. <strong>Local</strong> runs the MCP server locally via npx.
+              </p>
+            </section>
+
+            {/* Authentication */}
+            <section className="space-y-4">
+              <h2 className="text-lg font-semibold flex items-center gap-2">
+                <Key className="h-5 w-5" />
+                Authentication
+              </h2>
+              <p className="text-muted-foreground">
+                Most API features work without authentication. However, to save prompts via MCP or access your private prompts,
+                you need to authenticate using an API key.
+              </p>
+              
+              <div className="bg-muted/50 rounded-lg p-4 text-sm space-y-3">
+                <div>
+                  <p className="font-medium">Generate an API Key</p>
+                  <p className="text-muted-foreground">
+                    Go to{" "}
+                    <Link href="/settings" className="underline hover:text-foreground">
+                      Settings
+                    </Link>
+                    {" "}to generate your API key. Keys start with <code className="bg-muted px-1.5 py-0.5 rounded">pchat_</code>.
+                  </p>
+                </div>
+                <div>
+                  <p className="font-medium">Using the API Key</p>
+                  <p className="text-muted-foreground">
+                    Pass your API key via the <code className="bg-muted px-1.5 py-0.5 rounded">PROMPTS_API_KEY</code> header.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
+                <pre>{`# Remote: HTTP transport with headers
 "prompts-chat": {
   "url": "${baseUrl}/api/mcp",
   "headers": {
@@ -123,30 +128,30 @@ curl -X POST ${baseUrl}/api/mcp \\
   -H "Content-Type: application/json" \\
   -H "PROMPTS_API_KEY: pchat_your_api_key_here" \\
   -d '{"jsonrpc": "2.0", "id": 1, "method": "tools/list"}'`}</pre>
-          </div>
+              </div>
 
-          <p className="text-muted-foreground text-sm">
-            <strong>Remote (HTTP)</strong> sends requests to prompts.chat with the API key in headers. 
-            <strong> Local (stdio)</strong> runs the MCP server locally via npx with the API key as an environment variable.
-            With authentication, you can use the <code className="bg-muted px-1.5 py-0.5 rounded">save_prompt</code> tool 
-            and search results will include your private prompts.
-          </p>
-        </section>
+              <p className="text-muted-foreground text-sm">
+                <strong>Remote (HTTP)</strong> sends requests to prompts.chat with the API key in headers. 
+                <strong> Local (stdio)</strong> runs the MCP server locally via npx with the API key as an environment variable.
+                With authentication, you can use the <code className="bg-muted px-1.5 py-0.5 rounded">save_prompt</code> tool 
+                and search results will include your private prompts.
+              </p>
+            </section>
 
-        {/* MCP Prompts */}
-        <section className="space-y-4">
-          <h2 className="text-lg font-semibold flex items-center gap-2">
-            <Terminal className="h-5 w-5" />
-            MCP Prompts
-          </h2>
-          <p className="text-muted-foreground">
-            All public prompts are exposed as native MCP prompts. This allows MCP clients to list 
-            and use prompts directly via slash commands or prompt pickers. You can filter prompts 
-            by category or tag using URL query parameters.
-          </p>
-          
-          <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre>{`# Filter by users (one or more usernames)
+            {/* MCP Prompts */}
+            <section className="space-y-4">
+              <h2 className="text-lg font-semibold flex items-center gap-2">
+                <Terminal className="h-5 w-5" />
+                MCP Prompts
+              </h2>
+              <p className="text-muted-foreground">
+                All public prompts are exposed as native MCP prompts. This allows MCP clients to list 
+                and use prompts directly via slash commands or prompt pickers. You can filter prompts 
+                by category or tag using URL query parameters.
+              </p>
+              
+              <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
+                <pre>{`# Filter by users (one or more usernames)
 "prompts-chat": {
   "url": "${baseUrl}/api/mcp?users=f,torvalds"
 }
@@ -165,24 +170,24 @@ curl -X POST ${baseUrl}/api/mcp \\
 "prompts-chat": {
   "url": "${baseUrl}/api/mcp?users=f&categories=coding&tags=js"
 }`}</pre>
-          </div>
-          
-          <div className="bg-muted/50 rounded-lg p-4 text-sm space-y-3">
-            <div>
-              <p className="font-medium">prompts/list</p>
-              <p className="text-muted-foreground">Browse all available prompts with pagination support.</p>
-            </div>
-            <div>
-              <p className="font-medium">prompts/get</p>
-              <p className="text-muted-foreground">
-                Retrieve a prompt by ID. Variables ({"${name}"} or {"${name:default}"}) are automatically 
-                substituted with provided arguments.
-              </p>
-            </div>
-          </div>
+              </div>
+              
+              <div className="bg-muted/50 rounded-lg p-4 text-sm space-y-3">
+                <div>
+                  <p className="font-medium">prompts/list</p>
+                  <p className="text-muted-foreground">Browse all available prompts with pagination support.</p>
+                </div>
+                <div>
+                  <p className="font-medium">prompts/get</p>
+                  <p className="text-muted-foreground">
+                    Retrieve a prompt by ID. Variables ({"${name}"} or {"${name:default}"}) are automatically 
+                    substituted with provided arguments.
+                  </p>
+                </div>
+              </div>
 
-          <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre>{`# List prompts
+              <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
+                <pre>{`# List prompts
 curl -X POST ${baseUrl}/api/mcp \\
   -H "Content-Type: application/json" \\
   -H "Accept: application/json, text/event-stream" \\
@@ -201,15 +206,15 @@ curl -X POST ${baseUrl}/api/mcp \\
       "arguments": { "topic": "AI safety" }
     }
   }'`}</pre>
-          </div>
-        </section>
+              </div>
+            </section>
 
-        {/* Available Tools */}
-        <section className="space-y-6">
-          <h2 className="text-lg font-semibold flex items-center gap-2">
-            <Box className="h-5 w-5" />
-            Available Tools
-          </h2>
+            {/* Available Tools */}
+            <section className="space-y-6">
+              <h2 className="text-lg font-semibold flex items-center gap-2">
+                <Box className="h-5 w-5" />
+                Available Tools
+              </h2>
 
           {/* search_prompts Tool */}
           <div className="space-y-4">
@@ -408,17 +413,17 @@ curl -X POST ${baseUrl}/api/mcp \\
           </div>
         </section>
 
-        {/* MCP Protocol Example */}
-        <section className="space-y-4">
-          <h2 className="text-lg font-semibold flex items-center gap-2">
-            <Code className="h-5 w-5" />
-            MCP Protocol Examples
-          </h2>
+            {/* MCP Protocol Example */}
+            <section className="space-y-4">
+              <h2 className="text-lg font-semibold flex items-center gap-2">
+                <Code className="h-5 w-5" />
+                MCP Protocol Examples
+              </h2>
 
-          <div className="space-y-3">
-            <h3 className="font-medium">Initialize Connection</h3>
-            <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
-              <pre>{`curl -X POST ${baseUrl}/api/mcp \\
+              <div className="space-y-3">
+                <h3 className="font-medium">Initialize Connection</h3>
+                <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
+                  <pre>{`curl -X POST ${baseUrl}/api/mcp \\
   -H "Content-Type: application/json" \\
   -H "Accept: application/json, text/event-stream" \\
   -d '{
@@ -431,13 +436,13 @@ curl -X POST ${baseUrl}/api/mcp \\
       "clientInfo": { "name": "my-app", "version": "1.0.0" }
     }
   }'`}</pre>
-            </div>
-          </div>
+                </div>
+              </div>
 
-          <div className="space-y-3">
-            <h3 className="font-medium">List Available Tools</h3>
-            <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
-              <pre>{`curl -X POST ${baseUrl}/api/mcp \\
+              <div className="space-y-3">
+                <h3 className="font-medium">List Available Tools</h3>
+                <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
+                  <pre>{`curl -X POST ${baseUrl}/api/mcp \\
   -H "Content-Type: application/json" \\
   -H "Accept: application/json, text/event-stream" \\
   -d '{
@@ -445,13 +450,13 @@ curl -X POST ${baseUrl}/api/mcp \\
     "id": 2,
     "method": "tools/list"
   }'`}</pre>
-            </div>
-          </div>
+                </div>
+              </div>
 
-          <div className="space-y-3">
-            <h3 className="font-medium">Search Prompts</h3>
-            <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
-              <pre>{`curl -X POST ${baseUrl}/api/mcp \\
+              <div className="space-y-3">
+                <h3 className="font-medium">Search Prompts</h3>
+                <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
+                  <pre>{`curl -X POST ${baseUrl}/api/mcp \\
   -H "Content-Type: application/json" \\
   -H "Accept: application/json, text/event-stream" \\
   -d '{
@@ -466,18 +471,18 @@ curl -X POST ${baseUrl}/api/mcp \\
       }
     }
   }'`}</pre>
-            </div>
-          </div>
-        </section>
+                </div>
+              </div>
+            </section>
 
-        {/* Response Format */}
-        <section className="space-y-4">
-          <h2 className="text-lg font-semibold">Response Format</h2>
-          <p className="text-muted-foreground">
-            The <code className="bg-muted px-1.5 py-0.5 rounded text-sm">search_prompts</code> tool returns results in the following format:
-          </p>
-          <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
-            <pre>{`{
+            {/* Response Format */}
+            <section className="space-y-4">
+              <h2 className="text-lg font-semibold">Response Format</h2>
+              <p className="text-muted-foreground">
+                The <code className="bg-muted px-1.5 py-0.5 rounded text-sm">search_prompts</code> tool returns results in the following format:
+              </p>
+              <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
+                <pre>{`{
   "query": "code review",
   "count": 2,
   "prompts": [
@@ -495,14 +500,16 @@ curl -X POST ${baseUrl}/api/mcp \\
     }
   ]
 }`}</pre>
-          </div>
-        </section>
+              </div>
+            </section>
+          </>
+        )}
 
         {/* REST API Alternative */}
         <section className="space-y-4">
-          <h2 className="text-lg font-semibold">REST API Alternative</h2>
+          <h2 className="text-lg font-semibold">REST API</h2>
           <p className="text-muted-foreground">
-            For simpler integrations, you can also use the standard REST endpoint:
+            Use the standard REST endpoint to search and retrieve prompts:
           </p>
           <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
             <pre>{`# Search prompts via REST
@@ -510,17 +517,6 @@ curl "${baseUrl}/api/prompts?q=code+review&perPage=10"
 
 # Get prompt by ID
 curl "${baseUrl}/api/prompts/{id}"`}</pre>
-          </div>
-        </section>
-
-        {/* Server Info */}
-        <section className="space-y-4">
-          <h2 className="text-lg font-semibold">Server Information</h2>
-          <p className="text-muted-foreground">
-            Get MCP server information and available tools:
-          </p>
-          <div className="bg-muted rounded-lg p-4 font-mono text-sm">
-            <p>GET {baseUrl}/api/mcp</p>
           </div>
         </section>
 

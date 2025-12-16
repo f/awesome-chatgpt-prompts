@@ -62,6 +62,8 @@ export default defineConfig({
     aiSearch: true,
     // Enable AI-powered generation features (requires OPENAI_API_KEY)
     aiGeneration: true,
+    // Enable MCP (Model Context Protocol) features including API key generation
+    mcp: true,
   },
 
   // Homepage customization

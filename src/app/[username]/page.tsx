@@ -7,6 +7,7 @@ import { getPromptUrl } from "@/lib/urls";
 import { Calendar, ArrowBigUp, FileText, Settings, GitPullRequest, Clock, Check, X, Pin, BadgeCheck, Users, ShieldCheck } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import config from "@/../prompts.config";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -326,7 +327,7 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
           </div>
           {/* Actions - desktop only */}
           <div className="hidden md:flex items-center gap-2 shrink-0">
-            <McpServerPopup initialUsers={[user.username]} />
+            {config.features.mcp !== false && <McpServerPopup initialUsers={[user.username]} />}
             {isOwner && (
               <Button variant="outline" size="sm" asChild>
                 <Link href="/settings">
@@ -363,7 +364,7 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
 
         {/* Actions - mobile only */}
         <div className="md:hidden flex gap-2">
-          <McpServerPopup initialUsers={[user.username]} />
+          {config.features.mcp !== false && <McpServerPopup initialUsers={[user.username]} />}
           {isOwner && (
             <Button variant="outline" size="sm" asChild className="flex-1">
               <Link href="/settings">

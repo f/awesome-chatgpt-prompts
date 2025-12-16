@@ -45,6 +45,7 @@ export interface FeaturesConfig {
   tags: boolean;
   aiSearch?: boolean;
   aiGeneration?: boolean;
+  mcp?: boolean;
 }
 
 export interface Sponsor {

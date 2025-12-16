@@ -5,6 +5,7 @@ import { getTranslations } from "next-intl/server";
 import { ArrowLeft } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import config from "@/../prompts.config";
 import { Button } from "@/components/ui/button";
 import { PromptList } from "@/components/prompts/prompt-list";
 import { SubscribeButton } from "@/components/categories/subscribe-button";
@@ -139,7 +140,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               <span>{category._count.subscribers} subscribers</span>
             </div>
           </div>
-          <McpServerPopup initialCategories={[slug]} />
+          {config.features.mcp !== false && <McpServerPopup initialCategories={[slug]} />}
         </div>
       </div>
 
