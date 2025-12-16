@@ -34,11 +34,6 @@ export function TranslateButton({ content, onTranslate, isLoggedIn }: TranslateB
   const [isTranslating, setIsTranslating] = useState(false);
   const [isTranslated, setIsTranslated] = useState(false);
 
-  // Don't show for English locale since most prompts are in English
-  if (locale === "en") {
-    return null;
-  }
-
   // Don't show for non-logged-in users
   if (!isLoggedIn) {
     return null;
