@@ -20,6 +20,8 @@ const localeToLanguage: Record<string, string> = {
   ko: "Korean",
   it: "Italian",
   ru: "Russian",
+  he: "Hebrew",
+  el: "Greek",
 };
 
 interface TranslateButtonProps {
@@ -33,6 +35,11 @@ export function TranslateButton({ content, onTranslate, isLoggedIn }: TranslateB
   const locale = useLocale();
   const [isTranslating, setIsTranslating] = useState(false);
   const [isTranslated, setIsTranslated] = useState(false);
+
+  // Don't show for English locale since most prompts are in English
+  if (locale === "en") {
+    return null;
+  }
 
   // Don't show for non-logged-in users
   if (!isLoggedIn) {
