@@ -4,56 +4,23 @@
 
 ## Type of Change
 
-- [ ] New prompt(s)
 - [ ] Bug fix
 - [ ] Documentation update
 - [ ] Other (please describe):
 
 ---
 
-## Adding a New Prompt
+## ⚠️ Want to Add a New Prompt?
 
-If you're adding a new prompt, please ensure:
+**Please don't edit `prompts.csv` directly!**
 
-### 1. README.md Format
+Instead, visit **[prompts.chat](https://prompts.chat)** and:
 
-Add your prompt to `README.md` following this format:
+1. **Login with GitHub** - Click the login button and authenticate with your GitHub account
+2. **Create your prompt** - Use the prompt editor to add your new prompt
+3. **Submit** - Your prompt will be reviewed and a [GitHub Action](https://github.com/f/awesome-chatgpt-prompts/actions/workflows/update-contributors.yml) will automatically create a commit on your behalf
 
-```markdown
-## Act as a [Role Name]
-
-Contributed by: [@yourusername](https://github.com/yourusername)
-
-> Your prompt text here. Use blockquote format (lines starting with >).
-> Multi-line prompts should continue with > on each line.
-```
-
-### 2. Checklist for New Prompts
-
-- [ ] Prompt title starts with "Act as a" or "Act as an"
-- [ ] Contributor line includes your GitHub username with link
-- [ ] Prompt content is in blockquote format (using `>`)
-- [ ] Prompt is placed in alphabetical order (or at the end before Contributors section)
-- [ ] Prompt is original or properly attributed
-- [ ] Prompt has been tested and works as expected
-
-### 3. Multiple Contributors
-
-If multiple people contributed to a prompt, list them separated by commas:
-
-```markdown
-Contributed by: [@user1](https://github.com/user1), [@user2](https://github.com/user2)
-```
-
-### 4. Optional: Update prompts.csv
-
-If you'd like to also add your prompt to `prompts.csv`, use this format:
-
-```csv
-Role Name,"Your prompt text here",FALSE,TEXT,yourusername
-```
-
-Columns: `act`, `prompt`, `for_devs` (TRUE/FALSE), `type` (TEXT/JSON/YAML), `contributor`
+This ensures proper attribution, formatting, and keeps the repository in sync. You'll also appear on the [Contributors page](https://github.com/f/awesome-chatgpt-prompts/graphs/contributors)!
 
 ---
 
