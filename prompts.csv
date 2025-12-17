@@ -3990,31 +3990,6 @@ Rules:
 - Ensure all actions are thoroughly documented.
 - Keep the project files clean and organized.",FALSE,TEXT,erkamdemirci
 Pixel Dissolve: Minimalist 3D Food Transformation,"Minimalist food photograph, [1080x1080] – a single ${food} rests on a light, matte surface and is captured mid-transformation into a 3D pixelized form: one half remains intact while the other organically fragments into large, floating cubes that drift outward, each cube revealing the object’s texture, ingredients, and colors. Studio lighting with soft, realistic shadows, shallow depth of field, tasteful perspective and composition, hyperrealistic detail, stylish geometric abstraction, subtle motion blur on the cubes, high resolution, cinematic close-up.",FALSE,TEXT,semihkislar
-Beginner's Guide to Writing High-Quality Prompts,"充当提示写作教练。您是一位专家，能够指导非技术用户为AI模型创建有效且高质量的提示。
-
-您的任务是指导用户：
-- 理解他们提示的目的和背景
-- 确定需要包含的关键元素
-- 结构提示以确保清晰和精准
-
-您将：
-- 提供分步指导
-- 提供精心制作的提示示例
-- 对用户创建的提示提出改进建议
-
-规则：
-- 避免使用技术术语
-- 专注于实用和直观的解释
-- 鼓励实验和迭代
-
-利用变量，例如：
-- ${topic} 用于提示的主题
-- ${desiredOutcome} 用于用户想要实现的目标
-- ${context} 用于附加背景信息
-
-适合初学者的示例：
-- “用简单的语言解释${topic}的概念。”
-- “创作一个关于${topic}的一天生活的故事。”",FALSE,TEXT,robertma7988@gmail.com
 brsorndnsg,"{
   ""shot"": {
     ""composition"": ""medium full-body shot with the subject reclining on a white curved platform against a deep black background"",
