@@ -33,8 +33,16 @@ const CLIENT_LABELS: Record<Client, string> = {
 
 const NPM_PACKAGE = "@fkadev/prompts.chat-mcp";
 
-function getConfig(client: Client, mode: Mode, mcpUrl: string, apiKey?: string | null): string {
+function buildLocalEnv(apiKey?: string | null, queryParams?: string): Record<string, string> | undefined {
+  const env: Record<string, string> = {};
+  if (apiKey) env.PROMPTS_API_KEY = apiKey;
+  if (queryParams) env.PROMPTS_QUERY = queryParams;
+  return Object.keys(env).length > 0 ? env : undefined;
+}
+
+function getConfig(client: Client, mode: Mode, mcpUrl: string, apiKey?: string | null, queryParams?: string): string {
   const packageName = NPM_PACKAGE;
+  const localEnv = buildLocalEnv(apiKey, queryParams);
   
   switch (client) {
     case "cursor":
@@ -54,7 +62,7 @@ function getConfig(client: Client, mode: Mode, mcpUrl: string, apiKey?: string |
             "prompts.chat": {
               command: "npx",
               args: ["-y", packageName],
-              ...(apiKey && { env: { "PROMPTS_API_KEY": apiKey } }),
+              ...(localEnv && { env: localEnv }),
             },
           },
         };
@@ -68,10 +76,10 @@ function getConfig(client: Client, mode: Mode, mcpUrl: string, apiKey?: string |
         }
         return `claude mcp add --transport http prompts.chat ${mcpUrl}`;
       } else {
-        if (apiKey) {
-          return `PROMPTS_API_KEY=${apiKey} claude mcp add prompts.chat -- npx -y ${packageName}`;
-        }
-        return `claude mcp add prompts.chat -- npx -y ${packageName}`;
+        const envPrefix = localEnv 
+          ? Object.entries(localEnv).map(([k, v]) => `${k}="${v}"`).join(" ") + " "
+          : "";
+        return `${envPrefix}claude mcp add prompts.chat -- npx -y ${packageName}`;
       }
 
     case "vscode":
@@ -96,7 +104,7 @@ function getConfig(client: Client, mode: Mode, mcpUrl: string, apiKey?: string |
                 type: "stdio",
                 command: "npx",
                 args: ["-y", packageName],
-                ...(apiKey && { env: { "PROMPTS_API_KEY": apiKey } }),
+                ...(localEnv && { env: localEnv }),
               },
             },
           },
@@ -116,17 +124,16 @@ PROMPTS_API_KEY = "${apiKey}"`;
         return `[mcp_servers.prompts_chat]
 url = "${mcpUrl}"`;
       } else {
-        if (apiKey) {
-          return `[mcp_servers.prompts_chat]
-command = "npx"
-args = ["-y", "${packageName}"]
-
-[mcp_servers.prompts_chat.env]
-PROMPTS_API_KEY = "${apiKey}"`;
-        }
-        return `[mcp_servers.prompts_chat]
+        let config = `[mcp_servers.prompts_chat]
 command = "npx"
 args = ["-y", "${packageName}"]`;
+        if (localEnv) {
+          config += "\n\n[mcp_servers.prompts_chat.env]";
+          for (const [key, value] of Object.entries(localEnv)) {
+            config += `\n${key} = "${value}"`;
+          }
+        }
+        return config;
       }
 
     case "windsurf":
@@ -146,7 +153,7 @@ args = ["-y", "${packageName}"]`;
             "prompts.chat": {
               command: "npx",
               args: ["-y", packageName],
-              ...(apiKey && { env: { "PROMPTS_API_KEY": apiKey } }),
+              ...(localEnv && { env: localEnv }),
             },
           },
         };
@@ -160,10 +167,10 @@ args = ["-y", "${packageName}"]`;
         }
         return `gemini mcp add prompts.chat --transport sse ${mcpUrl}`;
       } else {
-        if (apiKey) {
-          return `PROMPTS_API_KEY=${apiKey} gemini mcp add prompts.chat -- npx -y ${packageName}`;
-        }
-        return `gemini mcp add prompts.chat -- npx -y ${packageName}`;
+        const envPrefix = localEnv 
+          ? Object.entries(localEnv).map(([k, v]) => `${k}="${v}"`).join(" ") + " "
+          : "";
+        return `${envPrefix}gemini mcp add prompts.chat -- npx -y ${packageName}`;
       }
 
     default:
@@ -190,13 +197,13 @@ export function McpConfigTabs({ baseUrl, queryParams, className, mode, onModeCha
   const mcpUrl = queryParams ? `${base}/api/mcp?${queryParams}` : `${base}/api/mcp`;
   
   // Full config with actual API key (for copying)
-  const config = getConfig(selectedClient, selectedMode, mcpUrl, apiKey);
+  const config = getConfig(selectedClient, selectedMode, mcpUrl, apiKey, queryParams);
   
-  // Display config: show full key if revealed, otherwise show placeholder
+  // Display config: show full key if revealed, otherwise show placeholder (queryParams always visible)
   const displayApiKey = apiKey 
     ? (showApiKey ? apiKey : "<click to reveal>")
     : null;
-  const displayConfig = getConfig(selectedClient, selectedMode, mcpUrl, displayApiKey);
+  const displayConfig = getConfig(selectedClient, selectedMode, mcpUrl, displayApiKey, queryParams);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(config);
