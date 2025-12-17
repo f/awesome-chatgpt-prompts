@@ -4570,3 +4570,131 @@ Variables:
 - ${language:chinese} - The language in which the paper will be written
 - ${length:medium} - Desired length of the paper sections
 - ${style:APA} - Formatting style to be used",FALSE,TEXT,ggdvbs
+Military Insignia JSON Structure,"{
+  ""imaj_analizi"": {
+    ""sahne_baglamı"": {
+      ""cevre_tipi"": ""Stüdyo / Soyut"",
+      ""mekan_tanimi"": ""Genellikle strateji video oyunlarında veya RPG karakter avatarlarında görülen, düz beyaz/şeffaf arka plana sahip bir karakter portresi."",
+      ""zaman_dilimi"": ""Belirsiz (Stüdyo ışıklandırması)""
+    },
+    ""teknik_ozellikler"": {
+      ""sanat_tarzi"": ""Piksel Sanatı (Pixel Art) / 16-bit retro estetik / Dijital İllüstrasyon"",
+      ""kamera_acisi"": ""Göz seviyesi, izleyicinin soluna doğru hafifçe 3/4 dönük"",
+      ""lens_efekti"": ""Portre odak uzaklığı (yaklaşık 85mm eşdeğeri), düz alan, özne üzerinde keskin odak"",
+      ""kadraj"": ""Orta plan çekim (bel/kalça üstünden itibaren)""
+    },
+    ""isiklandirma"": {
+      ""ozet"": ""Üniformanın dokusunu ve yüzdeki detayları vurgulamak için tasarlanmış yumuşak, yönlü stüdyo aydınlatması."",
+      ""isik_kaynaklari"": [
+        {
+          ""tip"": ""Ana Işık (Key Light)"",
+          ""yon"": ""Sol Üst (izleyiciye göre)"",
+          ""renk"": ""Soğuk Beyaz"",
+          ""siddet"": ""Orta-Yüksek"",
+          ""ozneye_etkisi"": ""Sağ omuzda (izleyicinin solu), altın apoletlerde ve alında belirgin parlamalar yaratır. Yüzün sol tarafında (izleyicinin sağı) ve sakalın altında gölgeler oluşturur.""
+        }
+      ]
+    },
+    ""ozne_analizi"": {
+      ""genel"": {
+        ""adet"": 1,
+        ""arketip"": ""Tarihi Amiral / Osmanlı Paşası / Deniz Komutanı (Barbaros Hayreddin Paşa'yı andıran)"",
+        ""cinsiyet"": ""Erkek"",
+        ""yas_grubu"": ""Orta yaş üstü - Yaşlı (50-60'lar)"",
+        ""kimlik_durumu"": ""Tarihi figür temsili"",
+        ""yonelim"": ""Gövde hafifçe sola dönük, yüz hafifçe sola dönük ve kameranın ötesine bakıyor""
+      },
+      ""duygu_durumu"": {
+        ""ifade"": ""Vakur, buyurgan, ciddi, ağırbaşlı"",
+        ""ruh_hali"": ""Otoriter"",
+        ""sehvet_durumu"": ""Yok/Nötr"",
+        ""durus_etkisi"": ""Dik duruş, özgüven ve disiplin ifade ediyor""
+      },
+      ""poz_ve_vucut"": {
+        ""genel_pozisyon"": ""Ayakta, dik duruş"",
+        ""gorunurluk"": ""Başın tepesinden belin alt kısmına/bileklere kadar görünür"",
+        ""eller"": {
+          ""gorunurluk"": ""Alt kenarda kısmen görünür"",
+          ""pozisyon"": ""Muhtemelen bir kılıç kabzası veya kemer üzerinde duruyor (büyük ölçüde kadraj dışı)""
+        },
+        ""ayaklar"": {
+          ""gorunurluk"": ""Görünmüyor""
+        }
+      },
+      ""bas_detaylari"": {
+        ""yapi"": ""Sağlam, sakal tarafından gizlenmiş kare çene yapısı"",
+        ""alin"": ""Geniş, kısmen başlık ile örtülü, açık ten rengi"",
+        ""kulaklar"": ""Sağ taraftaki kulak kısmen görünür, standart yapı"",
+        ""gozler"": {
+          ""renk"": ""Koyu/Kahverengi"",
+          ""bakis"": ""Direkt, odaklanmış, hafifçe kameranın soluna doğru"",
+          ""kaslar"": ""Kalın, koyu gri/siyah, ciddi bir kavisle çatılmış""
+        },
+        ""burun"": ""Belirgin, düz, kemerli (akvilin) yapı"",
+        ""agiz_bolgesi"": ""Kalın bıyık ve sakal ile tamamen örtülü"",
+        ""sac"": {
+          ""gorunurluk"": ""Büyük ölçüde başlık altında, favoriler görünür"",
+          ""renk"": ""Kırlaşmış (Gri/Beyaz)"",
+          ""tarz"": ""Kısa, bakımlı""
+        },
+        ""yuz_killari"": {
+          ""biyik"": {
+            ""var_mi"": ""Evet"",
+            ""tarz"": ""Geniş pala bıyık"",
+            ""renk"": ""Gri/Beyaz"",
+            ""doku"": ""Kalın, piksel dokulu""
+          },
+          ""sakal"": {
+            ""var_mi"": ""Evet"",
+            ""tarz"": ""Gür, kalın, göğse kadar uzanan kürek şeklinde sakal"",
+            ""renk"": ""Gri/Beyaz"",
+            ""doku"": ""Hacimli""
+          }
+        },
+        ""baslik"": {
+          ""tip"": ""Mecidiye Fes veya Sarık kombinasyonu (Kalyoncu başlığı tarzı)"",
+          ""renk"": ""Koyu Kırmızı / Bordo"",
+          ""tarz"": ""Sarmal kumaş dokulu, askeri tarz""
+        }
+      },
+      ""vucut_detaylari"": {
+        ""vucut_tipi"": ""Mezomorf / Geniş omuzlu / İri yapılı"",
+        ""ten_rengi"": ""Açık / Beyaz"",
+        ""boyun"": ""Kalın, yüksek yaka ve sakal tarafından gizlenmiş"",
+        ""omuzlar"": ""Geniş, büyük apoletlerle vurgulanmış"",
+        ""gogus"": ""Geniş, üniforma ve kayışlarla kaplı"",
+        ""karin"": ""Üniforma kalınlığı nedeniyle net değil ama fit/sağlam görünüyor"",
+        ""kalca"": ""Görünmüyor""
+      },
+      ""kiyafetler"": {
+        ""ust_giyim"": {
+          ""giysi"": ""Törensel Denizci/Askeri Ceketi"",
+          ""renk"": ""Koyu Lacivert"",
+          ""malzeme"": ""Yün veya ağır kumaş görünümü"",
+          ""detaylar"": [
+            ""Göğüste ağır altın sırma işlemeler"",
+            ""Omuzlarda büyük altın püsküllü apoletler"",
+            ""Kruvaze altın düğme düzeni"",
+            ""Manşetlerde süslü altın işlemeler"",
+            ""Göğüs ortasında kuru kafa veya amblem motifi taşıyan dekoratif gümüş/metalik bir toka""
+          ]
+        },
+        ""aksesuarlar"": {
+          ""pelerin_kusak"": ""Omuzlardan sarkan ve sırtta görünen koyu kırmızı bir pelerin veya kumaş"",
+          ""kemerler"": ""Altın detaylı çapraz vücut kayışları""
+        }
+      }
+    },
+    ""objeler"": {
+      ""nesneler"": [
+        {
+          ""isim"": ""Apoletler"",
+          ""tanim"": ""Altın, püsküllü omuz süsleri"",
+          ""konum"": ""Her iki omuzda"",
+          ""amac"": ""Rütbe sembolü / Askeri nişan""
+        }
+      ]
+    },
+    ""negatif_prompt"": ""fotogerçekçi, 3d render, modern giysiler, kadın, uzun saç, sinekkaydı traş, günlük kıyafetler, tişört, kot pantolon, arka plan manzarası, bulanık, düşük çözünürlük, bozuk yüz, kötü anatomi, eksik uzuvlar, fazla uzuvlar, metin, filigran, imza, çıplaklık, açık ağız, gülümseme.""
+  }
+}",FALSE,STRUCTURED,aligundogdu20@gmail.com
