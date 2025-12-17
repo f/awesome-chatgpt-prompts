@@ -797,6 +797,12 @@
     "tagPlaceholder": "Προσθέστε slug ετικέτας...",
     "generateApiKey": "Δημιουργήστε κλειδί API για αποθήκευση prompts μέσω MCP"
   },
+  "footer": {
+    "docs": "Τεκμηρίωση",
+    "api": "API",
+    "privacy": "Απόρρητο",
+    "terms": "Όροι"
+  },
   "apiKey": {
     "title": "Κλειδί API MCP",
     "description": "Δημιουργήστε ένα κλειδί API για αποθήκευση prompts μέσω MCP και πρόσβαση στα ιδιωτικά σας prompts.",

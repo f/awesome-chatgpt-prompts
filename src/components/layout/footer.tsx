@@ -2,11 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import DeepWikiIcon from "@/../public/deepwiki.svg";
 import { useBranding } from "@/components/providers/branding-provider";
 
 export function Footer() {
   const branding = useBranding();
+  const t = useTranslations("footer");
 
   return (
     <footer className="border-t">
@@ -23,10 +25,10 @@ export function Footer() {
                 <Image src={DeepWikiIcon} alt="" width={14} height={14} />
                 DeepWiki
               </Link>
-              <Link href="/docs/self-hosting" className="hover:text-foreground">Docs</Link>
-              <Link href="/docs/api" className="hover:text-foreground">API</Link>
-              <Link href="/privacy" className="hover:text-foreground">Privacy</Link>
-              <Link href="/terms" className="hover:text-foreground">Terms</Link>
+              <Link href="/docs/self-hosting" className="hover:text-foreground">{t("docs")}</Link>
+              <Link href="/docs/api" className="hover:text-foreground">{t("api")}</Link>
+              <Link href="/privacy" className="hover:text-foreground">{t("privacy")}</Link>
+              <Link href="/terms" className="hover:text-foreground">{t("terms")}</Link>
             </>
           )}
           <Link href="https://github.com/f/awesome-chatgpt-prompts" target="_blank" rel="noopener noreferrer" className="hover:text-foreground flex items-center gap-1">

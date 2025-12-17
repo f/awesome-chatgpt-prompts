@@ -797,6 +797,12 @@
     "tagPlaceholder": "Ajouter un slug de tag...",
     "generateApiKey": "Générez une clé API pour enregistrer des prompts via MCP"
   },
+  "footer": {
+    "docs": "Documentation",
+    "api": "API",
+    "privacy": "Confidentialité",
+    "terms": "Conditions"
+  },
   "apiKey": {
     "title": "Clé API MCP",
     "description": "Générez une clé API pour enregistrer des prompts via MCP et accéder à vos prompts privés.",

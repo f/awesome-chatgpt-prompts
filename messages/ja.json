@@ -797,6 +797,12 @@
     "tagPlaceholder": "タグスラッグを追加...",
     "generateApiKey": "MCP経由でプロンプトを保存するためのAPIキーを生成"
   },
+  "footer": {
+    "docs": "ドキュメント",
+    "api": "API",
+    "privacy": "プライバシー",
+    "terms": "利用規約"
+  },
   "apiKey": {
     "title": "MCP APIキー",
     "description": "MCP経由でプロンプトを保存し、プライベートプロンプトにアクセスするためのAPIキーを生成します。",

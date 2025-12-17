@@ -797,6 +797,12 @@
     "tagPlaceholder": "Tag-Slug hinzufügen...",
     "generateApiKey": "API-Schlüssel generieren, um Prompts über MCP zu speichern"
   },
+  "footer": {
+    "docs": "Dokumentation",
+    "api": "API",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen"
+  },
   "apiKey": {
     "title": "MCP API-Schlüssel",
     "description": "Generieren Sie einen API-Schlüssel, um Prompts über MCP zu speichern und auf Ihre privaten Prompts zuzugreifen.",

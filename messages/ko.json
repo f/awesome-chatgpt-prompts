@@ -797,6 +797,12 @@
     "tagPlaceholder": "태그 슬러그 추가...",
     "generateApiKey": "MCP를 통해 프롬프트를 저장하려면 API 키를 생성하세요"
   },
+  "footer": {
+    "docs": "문서",
+    "api": "API",
+    "privacy": "개인정보",
+    "terms": "이용약관"
+  },
   "apiKey": {
     "title": "MCP API 키",
     "description": "MCP를 통해 프롬프트를 저장하고 비공개 프롬프트에 접근하려면 API 키를 생성하세요.",

@@ -797,6 +797,12 @@
     "tagPlaceholder": "Add tag slug...",
     "generateApiKey": "Generate API key to save prompts via MCP"
   },
+  "footer": {
+    "docs": "Docs",
+    "api": "API",
+    "privacy": "Privacy",
+    "terms": "Terms"
+  },
   "apiKey": {
     "title": "MCP API Key",
     "description": "Generate an API key to save prompts via MCP and access your private prompts.",

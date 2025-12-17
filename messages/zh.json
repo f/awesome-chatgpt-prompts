@@ -797,6 +797,12 @@
     "tagPlaceholder": "添加标签标识...",
     "generateApiKey": "生成 API 密钥以通过 MCP 保存提示词"
   },
+  "footer": {
+    "docs": "文档",
+    "api": "API",
+    "privacy": "隐私",
+    "terms": "条款"
+  },
   "apiKey": {
     "title": "MCP API 密钥",
     "description": "生成 API 密钥以通过 MCP 保存提示词并访问您的私有提示词。",

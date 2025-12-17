@@ -797,6 +797,12 @@
     "tagPlaceholder": "إضافة رمز العلامة...",
     "generateApiKey": "أنشئ مفتاح API لحفظ الأوامر عبر MCP"
   },
+  "footer": {
+    "docs": "المستندات",
+    "api": "API",
+    "privacy": "الخصوصية",
+    "terms": "الشروط"
+  },
   "apiKey": {
     "title": "مفتاح API لـ MCP",
     "description": "أنشئ مفتاح API لحفظ الأوامر عبر MCP والوصول إلى أوامرك الخاصة.",

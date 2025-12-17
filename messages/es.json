@@ -797,6 +797,12 @@
     "tagPlaceholder": "Añadir slug de etiqueta...",
     "generateApiKey": "Genera una clave API para guardar prompts vía MCP"
   },
+  "footer": {
+    "docs": "Documentación",
+    "api": "API",
+    "privacy": "Privacidad",
+    "terms": "Términos"
+  },
   "apiKey": {
     "title": "Clave API MCP",
     "description": "Genera una clave API para guardar prompts vía MCP y acceder a tus prompts privados.",

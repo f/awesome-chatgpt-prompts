@@ -797,6 +797,12 @@
     "tagPlaceholder": "הוסף slug תגית...",
     "generateApiKey": "צור מפתח API לשמירת פרומפטים דרך MCP"
   },
+  "footer": {
+    "docs": "תיעוד",
+    "api": "API",
+    "privacy": "פרטיות",
+    "terms": "תנאים"
+  },
   "apiKey": {
     "title": "מפתח API ל-MCP",
     "description": "צור מפתח API לשמירת פרומפטים דרך MCP וגישה לפרומפטים הפרטיים שלך.",
