@@ -424,6 +424,29 @@
       "slugsSuccess": "تم إنشاء {count} رابط",
       "slugsResult": "نجاح: {success}, فشل: {failed}"
     },
+    "promptsList": {
+      "title": "جميع المطالبات",
+      "description": "تصفح وإدارة جميع المطالبات في النظام",
+      "noPrompts": "لم يتم العثور على مطالبات",
+      "private": "خاص",
+      "unlisted": "غير مدرج",
+      "views": "مشاهدات",
+      "votes": "أصوات",
+      "created": "تاريخ الإنشاء",
+      "showing": "عرض {from}-{to} من {total}",
+      "deleteConfirmTitle": "حذف المطالبة؟",
+      "deleteConfirmDescription": "هل أنت متأكد من حذف \"{title}\" نهائياً؟ لا يمكن التراجع عن هذا الإجراء وستتم إزالة جميع البيانات المرتبطة.",
+      "deleted": "تم حذف المطالبة بنجاح",
+      "filters": {
+        "all": "الكل",
+        "public": "عام",
+        "private": "خاص",
+        "unlisted": "غير مدرج",
+        "featured": "مميز",
+        "reported": "مُبلغ عنه",
+        "deleted": "محذوف"
+      }
+    },
     "users": {
       "title": "إدارة المستخدمين",
       "description": "عرض وإدارة حسابات المستخدمين",
@@ -446,7 +469,17 @@
       "unverified": "تم إلغاء توثيق المستخدم",
       "verifyFailed": "فشل تحديث التوثيق",
       "deleteConfirmTitle": "حذف المستخدم؟",
-      "deleteConfirmDescription": "هذا الإجراء لا يمكن التراجع عنه. سيتم حذف جميع بيانات المستخدم نهائياً."
+      "deleteConfirmDescription": "هذا الإجراء لا يمكن التراجع عنه. سيتم حذف جميع بيانات المستخدم نهائياً.",
+      "searchPlaceholder": "البحث عن مستخدمين...",
+      "noUsers": "لم يتم العثور على مستخدمين",
+      "showing": "عرض {from}-{to} من {total}",
+      "filters": {
+        "all": "الكل",
+        "admin": "المديرون",
+        "user": "المستخدمون",
+        "verified": "موثق",
+        "unverified": "غير موثق"
+      }
     },
     "categories": {
       "title": "إدارة التصنيفات",

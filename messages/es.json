@@ -424,6 +424,29 @@
       "slugsSuccess": "{count} slugs generados",
       "slugsResult": "Generados: {success}, Fallidos: {failed}"
     },
+    "promptsList": {
+      "title": "Todos los Prompts",
+      "description": "Explorar y gestionar todos los prompts del sistema",
+      "noPrompts": "No se encontraron prompts",
+      "private": "Privado",
+      "unlisted": "No listado",
+      "views": "vistas",
+      "votes": "votos",
+      "created": "Creado",
+      "showing": "Mostrando {from}-{to} de {total}",
+      "deleteConfirmTitle": "¿Eliminar Prompt?",
+      "deleteConfirmDescription": "¿Estás seguro de eliminar permanentemente \"{title}\"? Esta acción no se puede deshacer.",
+      "deleted": "Prompt eliminado correctamente",
+      "filters": {
+        "all": "Todos",
+        "public": "Públicos",
+        "private": "Privados",
+        "unlisted": "No listados",
+        "featured": "Destacados",
+        "reported": "Reportados",
+        "deleted": "Eliminados"
+      }
+    },
     "users": {
       "title": "Gestión de Usuarios",
       "description": "Ver y administrar cuentas de usuario",
@@ -446,7 +469,17 @@
       "unverified": "Usuario no verificado",
       "verifyFailed": "Error al actualizar verificación",
       "deleteConfirmTitle": "¿Eliminar Usuario?",
-      "deleteConfirmDescription": "Esta acción no se puede deshacer. Todos los datos del usuario serán eliminados permanentemente."
+      "deleteConfirmDescription": "Esta acción no se puede deshacer. Todos los datos del usuario serán eliminados permanentemente.",
+      "searchPlaceholder": "Buscar usuarios...",
+      "noUsers": "No se encontraron usuarios",
+      "showing": "Mostrando {from}-{to} de {total}",
+      "filters": {
+        "all": "Todos",
+        "admin": "Admins",
+        "user": "Usuarios",
+        "verified": "Verificados",
+        "unverified": "No verificados"
+      }
     },
     "categories": {
       "title": "Gestión de Categorías",

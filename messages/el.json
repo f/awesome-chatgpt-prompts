@@ -424,6 +424,29 @@
       "slugsSuccess": "{count} slugs δημιουργήθηκαν",
       "slugsResult": "Δημιουργήθηκαν: {success}, Απέτυχαν: {failed}"
     },
+    "promptsList": {
+      "title": "Όλα τα Prompts",
+      "description": "Περιήγηση και διαχείριση όλων των prompts στο σύστημα",
+      "noPrompts": "Δεν βρέθηκαν prompts",
+      "private": "Ιδιωτικό",
+      "unlisted": "Μη καταχωρημένο",
+      "views": "προβολές",
+      "votes": "ψήφοι",
+      "created": "Δημιουργήθηκε",
+      "showing": "Εμφάνιση {from}-{to} από {total}",
+      "deleteConfirmTitle": "Διαγραφή Prompt;",
+      "deleteConfirmDescription": "Είστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά το \"{title}\"; Αυτή η ενέργεια δεν μπορεί να αναιρεθεί.",
+      "deleted": "Το prompt διαγράφηκε επιτυχώς",
+      "filters": {
+        "all": "Όλα",
+        "public": "Δημόσια",
+        "private": "Ιδιωτικά",
+        "unlisted": "Μη καταχωρημένα",
+        "featured": "Προτεινόμενα",
+        "reported": "Αναφερθέντα",
+        "deleted": "Διαγραμμένα"
+      }
+    },
     "users": {
       "title": "Διαχείριση χρηστών",
       "description": "Προβολή και διαχείριση λογαριασμών χρηστών",
@@ -446,7 +469,17 @@
       "unverified": "Η επαλήθευση του χρήστη ακυρώθηκε",
       "verifyFailed": "Αποτυχία ενημέρωσης επαλήθευσης",
       "deleteConfirmTitle": "Διαγραφή χρήστη;",
-      "deleteConfirmDescription": "Αυτή η ενέργεια δεν μπορεί να αναιρεθεί. Όλα τα δεδομένα του χρήστη θα διαγραφούν μόνιμα."
+      "deleteConfirmDescription": "Αυτή η ενέργεια δεν μπορεί να αναιρεθεί. Όλα τα δεδομένα του χρήστη θα διαγραφούν οριστικά.",
+      "searchPlaceholder": "Αναζήτηση χρηστών...",
+      "noUsers": "Δεν βρέθηκαν χρήστες",
+      "showing": "Εμφάνιση {from}-{to} από {total}",
+      "filters": {
+        "all": "Όλοι",
+        "admin": "Διαχειριστές",
+        "user": "Χρήστες",
+        "verified": "Επαληθευμένοι",
+        "unverified": "Μη επαληθευμένοι"
+      }
     },
     "categories": {
       "title": "Διαχείριση κατηγοριών",

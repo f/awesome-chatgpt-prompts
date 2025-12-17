@@ -424,6 +424,29 @@
       "slugsSuccess": "{count} Slugs generiert",
       "slugsResult": "Generiert: {success}, Fehlgeschlagen: {failed}"
     },
+    "promptsList": {
+      "title": "Alle Prompts",
+      "description": "Alle Prompts im System durchsuchen und verwalten",
+      "noPrompts": "Keine Prompts gefunden",
+      "private": "Privat",
+      "unlisted": "Nicht gelistet",
+      "views": "Aufrufe",
+      "votes": "Stimmen",
+      "created": "Erstellt",
+      "showing": "Zeige {from}-{to} von {total}",
+      "deleteConfirmTitle": "Prompt löschen?",
+      "deleteConfirmDescription": "Möchten Sie \"{title}\" wirklich dauerhaft löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
+      "deleted": "Prompt erfolgreich gelöscht",
+      "filters": {
+        "all": "Alle",
+        "public": "Öffentlich",
+        "private": "Privat",
+        "unlisted": "Nicht gelistet",
+        "featured": "Hervorgehoben",
+        "reported": "Gemeldet",
+        "deleted": "Gelöscht"
+      }
+    },
     "users": {
       "title": "Benutzerverwaltung",
       "description": "Benutzerkonten anzeigen und verwalten",
@@ -446,7 +469,17 @@
       "unverified": "Verifizierung aufgehoben",
       "verifyFailed": "Aktualisierung der Verifizierung fehlgeschlagen",
       "deleteConfirmTitle": "Benutzer löschen?",
-      "deleteConfirmDescription": "Diese Aktion kann nicht rückgängig gemacht werden. Alle Benutzerdaten werden dauerhaft gelöscht."
+      "deleteConfirmDescription": "Diese Aktion kann nicht rückgängig gemacht werden. Alle Benutzerdaten werden dauerhaft gelöscht.",
+      "searchPlaceholder": "Benutzer suchen...",
+      "noUsers": "Keine Benutzer gefunden",
+      "showing": "Zeige {from}-{to} von {total}",
+      "filters": {
+        "all": "Alle",
+        "admin": "Admins",
+        "user": "Benutzer",
+        "verified": "Verifiziert",
+        "unverified": "Nicht verifiziert"
+      }
     },
     "categories": {
       "title": "Kategorieverwaltung",

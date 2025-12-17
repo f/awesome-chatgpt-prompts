@@ -424,6 +424,29 @@
       "slugsSuccess": "{count} 件のスラッグを生成しました",
       "slugsResult": "成功: {success}, 失敗: {failed}"
     },
+    "promptsList": {
+      "title": "すべてのプロンプト",
+      "description": "システム内のすべてのプロンプトを閲覧・管理",
+      "noPrompts": "プロンプトが見つかりません",
+      "private": "非公開",
+      "unlisted": "非掲載",
+      "views": "閲覧",
+      "votes": "投票",
+      "created": "作成日",
+      "showing": "{total}件中 {from}-{to}を表示",
+      "deleteConfirmTitle": "プロンプトを削除しますか？",
+      "deleteConfirmDescription": "「{title}」を完全に削除してもよろしいですか？この操作は取り消せません。",
+      "deleted": "プロンプトを削除しました",
+      "filters": {
+        "all": "すべて",
+        "public": "公開",
+        "private": "非公開",
+        "unlisted": "非掲載",
+        "featured": "注目",
+        "reported": "報告済み",
+        "deleted": "削除済み"
+      }
+    },
     "users": {
       "title": "ユーザー管理",
       "description": "ユーザーアカウントの表示と管理",
@@ -446,7 +469,17 @@
       "unverified": "ユーザーの認証を解除しました",
       "verifyFailed": "認証の更新に失敗しました",
       "deleteConfirmTitle": "ユーザーを削除しますか？",
-      "deleteConfirmDescription": "この操作は取り消せません。すべてのユーザーデータが完全に削除されます。"
+      "deleteConfirmDescription": "この操作は取り消せません。すべてのユーザーデータが完全に削除されます。",
+      "searchPlaceholder": "ユーザーを検索...",
+      "noUsers": "ユーザーが見つかりません",
+      "showing": "{total}件中 {from}-{to}を表示",
+      "filters": {
+        "all": "すべて",
+        "admin": "管理者",
+        "user": "ユーザー",
+        "verified": "認証済み",
+        "unverified": "未認証"
+      }
     },
     "categories": {
       "title": "カテゴリー管理",

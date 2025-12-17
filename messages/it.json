@@ -424,6 +424,29 @@
       "slugsSuccess": "{count} slug generati",
       "slugsResult": "Generati: {success}, Falliti: {failed}"
     },
+    "promptsList": {
+      "title": "Tutti i Prompt",
+      "description": "Sfoglia e gestisci tutti i prompt nel sistema",
+      "noPrompts": "Nessun prompt trovato",
+      "private": "Privato",
+      "unlisted": "Non elencato",
+      "views": "visualizzazioni",
+      "votes": "voti",
+      "created": "Creato",
+      "showing": "Mostrando {from}-{to} di {total}",
+      "deleteConfirmTitle": "Eliminare il Prompt?",
+      "deleteConfirmDescription": "Sei sicuro di voler eliminare permanentemente \"{title}\"? Questa azione non può essere annullata.",
+      "deleted": "Prompt eliminato con successo",
+      "filters": {
+        "all": "Tutti",
+        "public": "Pubblici",
+        "private": "Privati",
+        "unlisted": "Non elencati",
+        "featured": "In evidenza",
+        "reported": "Segnalati",
+        "deleted": "Eliminati"
+      }
+    },
     "users": {
       "title": "Gestione Utenti",
       "description": "Visualizza e gestisci gli account utente",
@@ -446,7 +469,17 @@
       "unverified": "Verifica utente rimossa",
       "verifyFailed": "Impossibile aggiornare la verifica",
       "deleteConfirmTitle": "Eliminare l'Utente?",
-      "deleteConfirmDescription": "Questa azione non può essere annullata. Tutti i dati dell'utente verranno eliminati permanentemente."
+      "deleteConfirmDescription": "Questa azione non può essere annullata. Tutti i dati dell'utente verranno eliminati permanentemente.",
+      "searchPlaceholder": "Cerca utenti...",
+      "noUsers": "Nessun utente trovato",
+      "showing": "Mostrando {from}-{to} di {total}",
+      "filters": {
+        "all": "Tutti",
+        "admin": "Admin",
+        "user": "Utenti",
+        "verified": "Verificati",
+        "unverified": "Non verificati"
+      }
     },
     "categories": {
       "title": "Gestione Categorie",

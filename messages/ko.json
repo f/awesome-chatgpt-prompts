@@ -424,6 +424,29 @@
       "slugsSuccess": "{count}개 슬러그 생성됨",
       "slugsResult": "생성됨: {success}, 실패: {failed}"
     },
+    "promptsList": {
+      "title": "모든 프롬프트",
+      "description": "시스템의 모든 프롬프트 탐색 및 관리",
+      "noPrompts": "프롬프트를 찾을 수 없습니다",
+      "private": "비공개",
+      "unlisted": "목록 제외",
+      "views": "조회",
+      "votes": "투표",
+      "created": "생성일",
+      "showing": "{total}개 중 {from}-{to} 표시",
+      "deleteConfirmTitle": "프롬프트를 삭제하시겠습니까?",
+      "deleteConfirmDescription": "\"{title}\"을(를) 영구적으로 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.",
+      "deleted": "프롬프트가 삭제되었습니다",
+      "filters": {
+        "all": "전체",
+        "public": "공개",
+        "private": "비공개",
+        "unlisted": "목록 제외",
+        "featured": "추천",
+        "reported": "신고됨",
+        "deleted": "삭제됨"
+      }
+    },
     "users": {
       "title": "사용자 관리",
       "description": "사용자 계정 조회 및 관리",
@@ -446,7 +469,17 @@
       "unverified": "인증 해제됨",
       "verifyFailed": "인증 업데이트 실패",
       "deleteConfirmTitle": "사용자를 삭제하시겠습니까?",
-      "deleteConfirmDescription": "이 작업은 취소할 수 없습니다. 모든 사용자 데이터가 영구적으로 삭제됩니다."
+      "deleteConfirmDescription": "이 작업은 취소할 수 없습니다. 모든 사용자 데이터가 영구적으로 삭제됩니다.",
+      "searchPlaceholder": "사용자 검색...",
+      "noUsers": "사용자를 찾을 수 없습니다",
+      "showing": "{total}명 중 {from}-{to} 표시",
+      "filters": {
+        "all": "전체",
+        "admin": "관리자",
+        "user": "사용자",
+        "verified": "인증됨",
+        "unverified": "미인증"
+      }
     },
     "categories": {
       "title": "카테고리 관리",

@@ -424,6 +424,29 @@
       "slugsSuccess": "{count} כתובות נוצרו",
       "slugsResult": "נוצרו: {success}, נכשלו: {failed}"
     },
+    "promptsList": {
+      "title": "כל הפרומפטים",
+      "description": "עיין ונהל את כל הפרומפטים במערכת",
+      "noPrompts": "לא נמצאו פרומפטים",
+      "private": "פרטי",
+      "unlisted": "לא רשום",
+      "views": "צפיות",
+      "votes": "הצבעות",
+      "created": "נוצר",
+      "showing": "מציג {from}-{to} מתוך {total}",
+      "deleteConfirmTitle": "למחוק פרומפט?",
+      "deleteConfirmDescription": "האם אתה בטוח שברצונך למחוק לצמיתות את \"{title}\"? לא ניתן לבטל פעולה זו.",
+      "deleted": "הפרומפט נמחק בהצלחה",
+      "filters": {
+        "all": "הכל",
+        "public": "ציבורי",
+        "private": "פרטי",
+        "unlisted": "לא רשום",
+        "featured": "מומלץ",
+        "reported": "דווח",
+        "deleted": "נמחק"
+      }
+    },
     "users": {
       "title": "ניהול משתמשים",
       "description": "צפה ונהל חשבונות משתמשים",
@@ -446,7 +469,17 @@
       "unverified": "אימות המשתמש בוטל",
       "verifyFailed": "עדכון האימות נכשל",
       "deleteConfirmTitle": "למחוק משתמש?",
-      "deleteConfirmDescription": "לא ניתן לבטל פעולה זו. כל נתוני המשתמש יימחקו לצמיתות."
+      "deleteConfirmDescription": "לא ניתן לבטל פעולה זו. כל נתוני המשתמש יימחקו לצמיתות.",
+      "searchPlaceholder": "חפש משתמשים...",
+      "noUsers": "לא נמצאו משתמשים",
+      "showing": "מציג {from}-{to} מתוך {total}",
+      "filters": {
+        "all": "הכל",
+        "admin": "מנהלים",
+        "user": "משתמשים",
+        "verified": "מאומתים",
+        "unverified": "לא מאומתים"
+      }
     },
     "categories": {
       "title": "ניהול קטגוריות",

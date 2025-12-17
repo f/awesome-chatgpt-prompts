@@ -424,6 +424,29 @@
       "slugsSuccess": "{count} 个别名生成成功",
       "slugsResult": "成功: {success}, 失败: {failed}"
     },
+    "promptsList": {
+      "title": "所有提示词",
+      "description": "浏览和管理系统中的所有提示词",
+      "noPrompts": "未找到提示词",
+      "private": "私密",
+      "unlisted": "未列出",
+      "views": "浏览",
+      "votes": "投票",
+      "created": "创建于",
+      "showing": "显示 {from}-{to}，共 {total} 条",
+      "deleteConfirmTitle": "删除提示词？",
+      "deleteConfirmDescription": "确定要永久删除\"{title}\"吗？此操作无法撤销。",
+      "deleted": "提示词已成功删除",
+      "filters": {
+        "all": "全部",
+        "public": "公开",
+        "private": "私密",
+        "unlisted": "未列出",
+        "featured": "精选",
+        "reported": "已举报",
+        "deleted": "已删除"
+      }
+    },
     "users": {
       "title": "用户管理",
       "description": "查看和管理用户账户",
@@ -446,7 +469,17 @@
       "unverified": "用户验证已取消",
       "verifyFailed": "更新验证失败",
       "deleteConfirmTitle": "删除用户？",
-      "deleteConfirmDescription": "此操作无法撤销。所有用户数据将被永久删除。"
+      "deleteConfirmDescription": "此操作无法撤销。所有用户数据将被永久删除。",
+      "searchPlaceholder": "搜索用户...",
+      "noUsers": "未找到用户",
+      "showing": "显示 {from}-{to}，共 {total} 名",
+      "filters": {
+        "all": "全部",
+        "admin": "管理员",
+        "user": "用户",
+        "verified": "已验证",
+        "unverified": "未验证"
+      }
     },
     "categories": {
       "title": "分类管理",

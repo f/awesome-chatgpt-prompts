@@ -642,8 +642,8 @@ export function PromptsManagement({ aiSearchEnabled, promptsWithoutEmbeddings, t
                     </p>
                   </div>
                   <div className="flex items-center gap-2 flex-shrink-0">
-                    {prompt.slug && (
-                      <Link href={`/prompts/${prompt.slug}`} target="_blank">
+                    {prompt.id && (
+                      <Link href={`/prompts/${prompt.id}`} target="_blank">
                         <Button size="icon" variant="ghost" className="h-8 w-8">
                           <ExternalLink className="h-4 w-4" />
                         </Button>
