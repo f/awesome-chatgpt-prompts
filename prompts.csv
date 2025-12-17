@@ -3660,7 +3660,7 @@ You will:
 
 Variables:
 - ${courseLevel:undergraduate} - Specify the course level you are teaching (undergraduate/graduate).
-- ${focusArea:design} - Specify the primary focus area of the course (design/analysis/fabrication).",FALSE,TEXT,Ibis919
+- ${focusArea:teach} - Specify the primary focus area of the course (design/analysis/fabrication).",FALSE,TEXT,Ibis919
 Meeting Room Booking Web App Development,"Act as a developer tasked with building a meeting room booking web app using PHP 7 and MySQL. Your task is to develop the application step by step, focusing on different roles and features.
 
 Your steps include:
