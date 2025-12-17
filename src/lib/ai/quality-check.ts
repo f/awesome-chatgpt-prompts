@@ -106,18 +106,13 @@ When in doubt, APPROVE the prompt. False positives are worse than false negative
 
 Evaluate the prompt for these issues:
 
-1. NOT_ENGLISH: The prompt is primarily in a language other than English.
-   - Allow prompts with some non-English words if the main instructions are in English
-   - Allow technical terms, code, or proper nouns in any language
-   - Only flag if >70% of the meaningful text is non-English
-
-2. LOW_QUALITY: The prompt is extremely low quality.
+1. LOW_QUALITY: The prompt is extremely low quality.
    - Random characters, keyboard mashing, or gibberish
    - Completely meaningless or incoherent text
    - NOT low quality: Simple prompts, informal language, or beginner-level prompts
 
-3. NOT_LLM_INSTRUCTION: The content is NOT an instruction for an LLM.
-   - This platform is for LLM prompts/instructions only
+2. NOT_LLM_INSTRUCTION: The content is NOT an instruction for an generative AI tool (LLM, image, video or sound generation text).
+   - This platform is for LLM, image, video or sound generation prompts/instructions only
    - Flag if it's clearly NOT a prompt (e.g., a recipe, personal note, random text, advertisement)
    - APPROVE if it could reasonably be used to instruct an AI, even if unusual
    - APPROVE roleplay scenarios, persona definitions, and creative prompts
