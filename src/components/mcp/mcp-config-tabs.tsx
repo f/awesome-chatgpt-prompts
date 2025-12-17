@@ -20,6 +20,8 @@ interface McpConfigTabsProps {
   hideModeToggle?: boolean;
   /** API key for authenticated access */
   apiKey?: string | null;
+  /** Show official prompts.chat branding (VS Code buttons, registry mention) */
+  showOfficialBranding?: boolean;
 }
 
 const CLIENT_LABELS: Record<Client, string> = {
@@ -178,7 +180,7 @@ args = ["-y", "${packageName}"]`;
   }
 }
 
-export function McpConfigTabs({ baseUrl, queryParams, className, mode, onModeChange, hideModeToggle, apiKey }: McpConfigTabsProps) {
+export function McpConfigTabs({ baseUrl, queryParams, className, mode, onModeChange, hideModeToggle, apiKey, showOfficialBranding = false }: McpConfigTabsProps) {
   const [selectedClient, setSelectedClient] = useState<Client>("vscode");
   const [internalMode, setInternalMode] = useState<Mode>("remote");
   const [copied, setCopied] = useState(false);
@@ -265,7 +267,10 @@ export function McpConfigTabs({ baseUrl, queryParams, className, mode, onModeCha
       <div className="relative">
         <div 
           dir="ltr" 
-          className="bg-muted rounded-md p-2 font-mono text-[11px] overflow-x-auto text-left"
+          className={cn(
+            "bg-muted rounded-md p-2 font-mono text-[11px] overflow-x-auto text-left",
+            showOfficialBranding && selectedClient === "vscode" && "max-h-24 overflow-y-auto"
+          )}
         >
           <pre className="whitespace-pre">
             {apiKey && !showApiKey ? (
@@ -302,6 +307,49 @@ export function McpConfigTabs({ baseUrl, queryParams, className, mode, onModeCha
           )}
         </Button>
       </div>
+
+      {/* VS Code Install Buttons - only for official branding */}
+      {showOfficialBranding && selectedClient === "vscode" && (
+        <div className="flex flex-col gap-2">
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              className="h-7 text-[11px] gap-1.5"
+              onClick={() => window.open("vscode:mcp/by-name/io.github.f/prompts.chat-mcp", "_self")}
+            >
+              <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="#007ACC" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
+              </svg>
+              VS Code
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="h-7 text-[11px] gap-1.5"
+              onClick={() => window.open("vscode-insiders:mcp/by-name/io.github.f/prompts.chat-mcp", "_self")}
+            >
+              <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="#24bfa5" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
+              </svg>
+              Insiders
+            </Button>
+          </div>
+          <p className="text-[10px] text-muted-foreground">
+            prompts.chat is in the official{" "}
+            <a
+              href="https://github.com/modelcontextprotocol/servers"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline"
+            >
+              GitHub MCP Registry
+            </a>
+          </p>
+        </div>
+      )}
     </div>
   );
 }

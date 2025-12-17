@@ -43,6 +43,8 @@ interface McpServerPopupProps {
   initialTags?: string[];
   /** Base URL override */
   baseUrl?: string;
+  /** Show official prompts.chat branding (VS Code buttons, registry mention) */
+  showOfficialBranding?: boolean;
 }
 
 export function McpServerPopup({
@@ -50,6 +52,7 @@ export function McpServerPopup({
   initialCategories = [],
   initialTags = [],
   baseUrl,
+  showOfficialBranding = false,
 }: McpServerPopupProps) {
   const t = useTranslations("mcp");
   const { data: session } = useSession();
@@ -172,7 +175,7 @@ export function McpServerPopup({
           </p>
 
           {/* Config Tabs */}
-          <McpConfigTabs baseUrl={baseUrl} queryParams={queryParams || undefined} mode={mcpMode} hideModeToggle apiKey={apiKey} />
+          <McpConfigTabs baseUrl={baseUrl} queryParams={queryParams || undefined} mode={mcpMode} hideModeToggle apiKey={apiKey} showOfficialBranding={showOfficialBranding} />
 
           {/* API Key Link */}
           {session?.user && !apiKey && (

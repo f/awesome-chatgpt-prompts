@@ -140,7 +140,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               <span>{category._count.subscribers} subscribers</span>
             </div>
           </div>
-          {config.features.mcp !== false && <McpServerPopup initialCategories={[slug]} />}
+          {config.features.mcp !== false && <McpServerPopup initialCategories={[slug]} showOfficialBranding={!config.homepage?.useCloneBranding} />}
         </div>
       </div>
 

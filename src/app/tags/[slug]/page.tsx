@@ -125,7 +125,7 @@ export default async function TagPage({ params, searchParams }: TagPageProps) {
               {total} {t("prompts")}
             </span>
           </div>
-          {config.features.mcp !== false && <McpServerPopup initialTags={[slug]} />}
+          {config.features.mcp !== false && <McpServerPopup initialTags={[slug]} showOfficialBranding={!config.homepage?.useCloneBranding} />}
         </div>
       </div>
 
