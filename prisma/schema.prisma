@@ -98,6 +98,7 @@ model Prompt {
   isFeatured          Boolean            @default(false)
   isUnlisted          Boolean            @default(false)
   unlistedAt          DateTime?
+  delistReason        DelistReason?
   deletedAt           DateTime?
   changeRequests      ChangeRequest[]
   pinnedBy            PinnedPrompt[]
@@ -313,4 +314,12 @@ enum WebhookEvent {
   PROMPT_CREATED
   PROMPT_UPDATED
   PROMPT_DELETED
+}
+
+enum DelistReason {
+  TOO_SHORT
+  NOT_ENGLISH
+  LOW_QUALITY
+  NOT_LLM_INSTRUCTION
+  MANUAL
 }

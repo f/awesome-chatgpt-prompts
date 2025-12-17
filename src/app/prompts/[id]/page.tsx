@@ -22,6 +22,7 @@ import { FeaturePromptButton } from "@/components/prompts/feature-prompt-button"
 import { UnlistPromptButton } from "@/components/prompts/unlist-prompt-button";
 import { MediaPreview } from "@/components/prompts/media-preview";
 import { ReportPromptDialog } from "@/components/prompts/report-prompt-dialog";
+import { DelistBanner } from "@/components/prompts/delist-banner";
 
 interface PromptPageProps {
   params: Promise<{ id: string }>;
@@ -175,8 +176,21 @@ export default async function PromptPage({ params }: PromptPageProps) {
     REJECTED: X,
   };
 
+  // Get delist reason (cast to expected type after Prisma migration)
+  const delistReason = (prompt as { delistReason?: string | null }).delistReason as
+    | "TOO_SHORT" | "NOT_ENGLISH" | "LOW_QUALITY" | "NOT_LLM_INSTRUCTION" | "MANUAL" | null;
+
   return (
     <div className="container max-w-4xl py-8">
+      {/* Delist Banner - shown to owner and admins when prompt is delisted */}
+      {prompt.isUnlisted && delistReason && (isOwner || isAdmin) && (
+        <DelistBanner
+          promptId={prompt.id}
+          delistReason={delistReason}
+          isOwner={isOwner}
+        />
+      )}
+
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
         <div className="space-y-1 min-w-0">

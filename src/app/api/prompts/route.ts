@@ -5,6 +5,7 @@ import { db } from "@/lib/db";
 import { triggerWebhooks } from "@/lib/webhook";
 import { generatePromptEmbedding } from "@/lib/ai/embeddings";
 import { generatePromptSlug } from "@/lib/slug";
+import { checkPromptQuality } from "@/lib/ai/quality-check";
 
 const promptSchema = z.object({
   title: z.string().min(1).max(200),
@@ -126,6 +127,31 @@ export async function POST(request: Request) {
       generatePromptEmbedding(prompt.id).catch((err) =>
         console.error("Failed to generate embedding for prompt:", prompt.id, err)
       );
+    }
+
+    // Run quality check for auto-delist (non-blocking for public prompts)
+    // This runs in the background and will delist the prompt if quality issues are found
+    if (!isPrivate) {
+      console.log(`[Quality Check] Starting check for prompt ${prompt.id}`);
+      checkPromptQuality(title, content, description).then(async (result) => {
+        console.log(`[Quality Check] Result for prompt ${prompt.id}:`, JSON.stringify(result));
+        if (result.shouldDelist && result.reason) {
+          console.log(`[Quality Check] Auto-delisting prompt ${prompt.id}: ${result.reason} - ${result.details}`);
+          await db.prompt.update({
+            where: { id: prompt.id },
+            data: {
+              isUnlisted: true,
+              unlistedAt: new Date(),
+              delistReason: result.reason,
+            },
+          });
+          console.log(`[Quality Check] Prompt ${prompt.id} delisted successfully`);
+        }
+      }).catch((err) => {
+        console.error("[Quality Check] Failed to run quality check for prompt:", prompt.id, err);
+      });
+    } else {
+      console.log(`[Quality Check] Skipped - prompt ${prompt.id} is private`);
     }
 
     return NextResponse.json(prompt);
