@@ -51,6 +51,6 @@ If you're contributing directly to `prompts.csv`, follow this format:
 
 Open an issue if you have questions about contributing. 
 
-**Important:** This repository is strictly for ChatGPT prompts. 
+**Important:** This repository is strictly for AI prompts. 
 - Do **not** post advertisements, third-party software support requests (e.g., Norton Antivirus, billing issues), or fake tech support phone numbers. 
 - Any off-topic issues will be closed immediately, and the posting user will be reported to GitHub for spam and malicious activity.
