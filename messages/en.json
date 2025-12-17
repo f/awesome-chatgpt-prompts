@@ -424,6 +424,29 @@
       "slugsSuccess": "{count} slugs generated",
       "slugsResult": "Generated: {success}, Failed: {failed}"
     },
+    "promptsList": {
+      "title": "All Prompts",
+      "description": "Browse and manage all prompts in the system",
+      "noPrompts": "No prompts found",
+      "private": "Private",
+      "unlisted": "Unlisted",
+      "views": "views",
+      "votes": "votes",
+      "created": "Created",
+      "showing": "Showing {from}-{to} of {total}",
+      "deleteConfirmTitle": "Delete Prompt?",
+      "deleteConfirmDescription": "Are you sure you want to permanently delete \"{title}\"? This action cannot be undone and will remove all associated data.",
+      "deleted": "Prompt deleted successfully",
+      "filters": {
+        "all": "All",
+        "public": "Public",
+        "private": "Private",
+        "unlisted": "Unlisted",
+        "featured": "Featured",
+        "reported": "Reported",
+        "deleted": "Deleted"
+      }
+    },
     "users": {
       "title": "User Management",
       "description": "View and manage user accounts",
@@ -446,7 +469,17 @@
       "unverified": "User unverified",
       "verifyFailed": "Failed to update verification",
       "deleteConfirmTitle": "Delete User?",
-      "deleteConfirmDescription": "This action cannot be undone. All user data will be permanently deleted."
+      "deleteConfirmDescription": "This action cannot be undone. All user data will be permanently deleted.",
+      "searchPlaceholder": "Search users...",
+      "noUsers": "No users found",
+      "showing": "Showing {from}-{to} of {total}",
+      "filters": {
+        "all": "All",
+        "admin": "Admins",
+        "user": "Users",
+        "verified": "Verified",
+        "unverified": "Unverified"
+      }
     },
     "categories": {
       "title": "Category Management",

@@ -424,6 +424,29 @@
       "slugsSuccess": "{count} kısaltma oluşturuldu",
       "slugsResult": "Oluşturulan: {success}, Başarısız: {failed}"
     },
+    "promptsList": {
+      "title": "Tüm Promptlar",
+      "description": "Sistemdeki tüm promptları görüntüle ve yönet",
+      "noPrompts": "Prompt bulunamadı",
+      "private": "Özel",
+      "unlisted": "Listelenmemiş",
+      "views": "görüntülenme",
+      "votes": "oy",
+      "created": "Oluşturulma",
+      "showing": "{from}-{to} arası gösteriliyor, toplam {total}",
+      "deleteConfirmTitle": "Prompt Silinsin mi?",
+      "deleteConfirmDescription": "\"{title}\" kalıcı olarak silinecek. Bu işlem geri alınamaz ve tüm ilişkili veriler kaldırılacaktır.",
+      "deleted": "Prompt başarıyla silindi",
+      "filters": {
+        "all": "Tümü",
+        "public": "Herkese Açık",
+        "private": "Özel",
+        "unlisted": "Listelenmemiş",
+        "featured": "Öne Çıkan",
+        "reported": "Şikayet Edilen",
+        "deleted": "Silinmiş"
+      }
+    },
     "users": {
       "title": "Kullanıcı Yönetimi",
       "description": "Kullanıcı hesaplarını görüntüle ve yönet",
@@ -446,7 +469,17 @@
       "unverified": "Kullanıcı doğrulaması kaldırıldı",
       "verifyFailed": "Doğrulama güncellenemedi",
       "deleteConfirmTitle": "Kullanıcı Silinsin mi?",
-      "deleteConfirmDescription": "Bu işlem geri alınamaz. Tüm kullanıcı verileri kalıcı olarak silinecektir."
+      "deleteConfirmDescription": "Bu işlem geri alınamaz. Tüm kullanıcı verileri kalıcı olarak silinecektir.",
+      "searchPlaceholder": "Kullanıcı ara...",
+      "noUsers": "Kullanıcı bulunamadı",
+      "showing": "{from}-{to} arası gösteriliyor, toplam {total}",
+      "filters": {
+        "all": "Tümü",
+        "admin": "Adminler",
+        "user": "Kullanıcılar",
+        "verified": "Doğrulanmış",
+        "unverified": "Doğrulanmamış"
+      }
     },
     "categories": {
       "title": "Kategori Yönetimi",
