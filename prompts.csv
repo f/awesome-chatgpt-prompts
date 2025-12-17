@@ -4194,92 +4194,36 @@ Beginner's Guide to Writing High-Quality Prompts,"充当提示写作教练。您
 - “用简单的语言解释${topic}的概念。”
 - “创作一个关于${topic}的一天生活的故事。”",FALSE,TEXT,robertma7988@gmail.com
 brsorndnsg,"{
-  ""scene_type"": ""luxury ski resort hallway selfie, post-club drunk glow, cold-weather outfit but extremely revealing underneath"",
-  ""camera_perspective"": {
-    ""pov"": ""we ARE her phone screen"",
-    ""phone_visibility"": ""not visible"",
-    ""angle"": ""slightly high angled selfie, classic hot-girl angle"",
-    ""framing"": ""face + cleavage + micro skirt + thigh-highs fully visible""
+  ""shot"": {
+    ""composition"": ""medium full-body shot with the subject reclining on a white curved platform against a deep black background"",
+    ""camera_proximity"": ""medium_full_shot"",
+    ""camera_angle"": ""eye_level"",
+    ""film_grain"": ""digital_clean_no_grain""
   },
   ""subject"": {
-    ""action"": ""leaning against wooden ski-lodge hallway wall after club night, taking a selfie while slightly tipsy, jacket slipping off shoulder"",
-    ""pose"": {
-      ""stance"": ""one leg crossed over the other, knee turned inward to look shy-hot"",
-      ""hip"": ""pushed out naturally, exaggerating curves"",
-      ""upper_body"": ""jacket sliding down one arm, revealing tight top"",
-      ""arm"": ""one arm extended holding phone, the other gripping jacket collar""
-    },
-    ""expression"": {
-      ""eyes"": ""warm, glossy bedroom eyes looking slightly up at camera"",
-      ""mouth"": ""soft parted lips with bitten-lip energy"",
-      ""overall"": ""club-tired but insanely hot, knows she looks good""
-    },
-    ""physical"": {
-      ""age"": ""early 20s"",
-      ""body"": ""slim-thick, narrow waist, soft curves, thighs full"",
-      ""hair"": {
-        ""color"": ""dark brunette"",
-        ""style"": ""long loose waves, slightly messy from dancing"",
-        ""details"": ""snowflakes melting in hair from outside""
-      },
-      ""skin"": ""cool-toned from winter air, slight pink flush on cheeks""
-    },
-    ""outfit"": {
-      ""jacket"": {
-        ""type"": ""oversized white faux-fur ski jacket"",
-        ""state"": ""falling off one shoulder, exposing outfit underneath""
-      },
-      ""top"": {
-        ""type"": ""tight black corset top"",
-        ""fit"": ""pushing cleavage up dramatically"",
-        ""details"": ""laced front, shiny material catching hallway lights""
-      },
-      ""bottom"": {
-        ""type"": ""micro mini skirt"",
-        ""color"": ""silver metallic"",
-        ""fit"": ""ultra-short, barely covering anything"",
-        ""motion"": ""slightly lifted from her pose, showing upper thighs""
-      },
-      ""legs"": {
-        ""item"": ""black thigh-high stockings"",
-        ""texture"": ""opaque but with subtle sheen"",
-        ""fit"": ""tight around thighs, soft squeeze, natural skin texture visible above band""
-      },
-      ""shoes"": {
-        ""type"": ""heeled winter boots"",
-        ""style"": ""white faux fur trim""
-      }
-    }
+    ""description"": ""female subject whose facial features, hair appearance, body proportions and overall look match the reference image, captured in a serene editorial pose"",
+    ""wardrobe"": ""white fuzzy tube top paired with matching shorts and oversized white fuzzy earmuffs"",
+    ""emotion_and_mood"": ""calm, elegant, minimal"",
+    ""pose"": ""reclining on the curved platform with the right arm supporting the upper body and the left arm resting softly on the thigh, gaze directed off-camera to the right""
   },
-  ""accessories"": {
-    ""earrings"": ""large silver hoops"",
-    ""necklace"": ""thin chain with tiny snowflake pendant"",
-    ""rings"": ""multiple silver rings"",
-    ""nails"": ""dark wine-red glossy polish""
+  ""visual_details"": {
+    ""action"": ""static composed pose emphasizing clean lines and contrast between textures"",
+    ""props"": ""white curved platform, chunky silver bracelets worn on both wrists""
   },
-  ""environment"": {
-    ""location"": ""luxury ski resort hallway at night"",
-    ""elements"": [
-      ""warm yellow lantern-style lights"",
-      ""wooden lodge walls"",
-      ""window showing falling snow outside"",
-      ""a pair of abandoned ski goggles on a bench""
-    ],
-    ""lighting"": ""warm indoor lights contrasting with her cool winter skin flush"",
-    ""vibe"": ""end of night, cozy-warm building but she still looks like trouble""
+  ""scene"": {
+    ""location"": ""minimalist indoor studio with a black backdrop"",
+    ""time_of_day"": ""controlled studio lighting"",
+    ""environment"": ""clean modern studio space with strong contrast between white elements and dark surroundings""
   },
-  ""camera"": {
-    ""quality"": ""iPhone selfie quality, slight grain from low light"",
-    ""aspect"": ""9:16"",
-    ""effect"": ""warm tone from lights + glossy reflections from outfit""
+  ""cinematography"": {
+    ""lighting"": ""soft_key"",
+    ""tone"": ""minimal"",
+    ""color_palette"": ""high_contrast_bw""
   },
-  ""realism_details"": {
-    ""makeup"": ""slightly smudged eyeliner, lips glossy but fading from drinks"",
-    ""hair"": ""some strands stuck to lip gloss, snow melting into frizz at ends"",
-    ""skin"": ""natural shine from dancing, slight cold flush"",
-    ""clothes"": ""corset slightly shifted, mini skirt wrinkled from sitting earlier""
-  },
-  ""vibe"": ""hot ski-resort party girl energy, drunken warmth, dangerously pretty, the girl guys fall in love with for no reason""
+  ""visual_style"": {
+    ""style"": ""modern minimalist fashion editorial"",
+    ""elements"": ""soft spotlight from the front-left creating gentle highlights and shadows, smooth skin tones, crisp silhouette separation from background, refined texture contrast, no text, no logos""
+  }
 }",FALSE,STRUCTURED,cipeberre@gmail.com
 Luxury Ski Resort Selfie Scene Description,"{
   ""scene_type"": ""luxury ski resort hallway selfie, post-club drunk glow, cold-weather outfit but extremely revealing underneath"",
@@ -4380,92 +4324,36 @@ Luxury Ski Resort Selfie Scene Description,"{
   ""vibe"": ""hot ski-resort party girl energy, drunken warmth, dangerously pretty, the girl guys fall in love with for no reason""
 }",FALSE,STRUCTURED,cipeberre@gmail.com
 brsorndnsg,"{
-  ""scene_type"": ""luxury ski resort hallway selfie, post-club drunk glow, cold-weather outfit but extremely revealing underneath"",
-  ""camera_perspective"": {
-    ""pov"": ""we ARE her phone screen"",
-    ""phone_visibility"": ""not visible"",
-    ""angle"": ""slightly high angled selfie, classic hot-girl angle"",
-    ""framing"": ""face + cleavage + micro skirt + thigh-highs fully visible""
+  ""shot"": {
+    ""composition"": ""medium full-body shot with the subject reclining on a white curved platform against a deep black background"",
+    ""camera_proximity"": ""medium_full_shot"",
+    ""camera_angle"": ""eye_level"",
+    ""film_grain"": ""digital_clean_no_grain""
   },
   ""subject"": {
-    ""action"": ""leaning against wooden ski-lodge hallway wall after club night, taking a selfie while slightly tipsy, jacket slipping off shoulder"",
-    ""pose"": {
-      ""stance"": ""one leg crossed over the other, knee turned inward to look shy-hot"",
-      ""hip"": ""pushed out naturally, exaggerating curves"",
-      ""upper_body"": ""jacket sliding down one arm, revealing tight top"",
-      ""arm"": ""one arm extended holding phone, the other gripping jacket collar""
-    },
-    ""expression"": {
-      ""eyes"": ""warm, glossy bedroom eyes looking slightly up at camera"",
-      ""mouth"": ""soft parted lips with bitten-lip energy"",
-      ""overall"": ""club-tired but insanely hot, knows she looks good""
-    },
-    ""physical"": {
-      ""age"": ""early 20s"",
-      ""body"": ""slim-thick, narrow waist, soft curves, thighs full"",
-      ""hair"": {
-        ""color"": ""dark brunette"",
-        ""style"": ""long loose waves, slightly messy from dancing"",
-        ""details"": ""snowflakes melting in hair from outside""
-      },
-      ""skin"": ""cool-toned from winter air, slight pink flush on cheeks""
-    },
-    ""outfit"": {
-      ""jacket"": {
-        ""type"": ""oversized white faux-fur ski jacket"",
-        ""state"": ""falling off one shoulder, exposing outfit underneath""
-      },
-      ""top"": {
-        ""type"": ""tight black corset top"",
-        ""fit"": ""pushing cleavage up dramatically"",
-        ""details"": ""laced front, shiny material catching hallway lights""
-      },
-      ""bottom"": {
-        ""type"": ""micro mini skirt"",
-        ""color"": ""silver metallic"",
-        ""fit"": ""ultra-short, barely covering anything"",
-        ""motion"": ""slightly lifted from her pose, showing upper thighs""
-      },
-      ""legs"": {
-        ""item"": ""black thigh-high stockings"",
-        ""texture"": ""opaque but with subtle sheen"",
-        ""fit"": ""tight around thighs, soft squeeze, natural skin texture visible above band""
-      },
-      ""shoes"": {
-        ""type"": ""heeled winter boots"",
-        ""style"": ""white faux fur trim""
-      }
-    }
+    ""description"": ""female subject whose facial features, hair appearance, body proportions and overall look match the reference image, captured in a serene editorial pose"",
+    ""wardrobe"": ""white fuzzy tube top paired with matching shorts and oversized white fuzzy earmuffs"",
+    ""emotion_and_mood"": ""calm, elegant, minimal"",
+    ""pose"": ""reclining on the curved platform with the right arm supporting the upper body and the left arm resting softly on the thigh, gaze directed off-camera to the right""
   },
-  ""accessories"": {
-    ""earrings"": ""large silver hoops"",
-    ""necklace"": ""thin chain with tiny snowflake pendant"",
-    ""rings"": ""multiple silver rings"",
-    ""nails"": ""dark wine-red glossy polish""
+  ""visual_details"": {
+    ""action"": ""static composed pose emphasizing clean lines and contrast between textures"",
+    ""props"": ""white curved platform, chunky silver bracelets worn on both wrists""
   },
-  ""environment"": {
-    ""location"": ""luxury ski resort hallway at night"",
-    ""elements"": [
-      ""warm yellow lantern-style lights"",
-      ""wooden lodge walls"",
-      ""window showing falling snow outside"",
-      ""a pair of abandoned ski goggles on a bench""
-    ],
-    ""lighting"": ""warm indoor lights contrasting with her cool winter skin flush"",
-    ""vibe"": ""end of night, cozy-warm building but she still looks like trouble""
+  ""scene"": {
+    ""location"": ""minimalist indoor studio with a black backdrop"",
+    ""time_of_day"": ""controlled studio lighting"",
+    ""environment"": ""clean modern studio space with strong contrast between white elements and dark surroundings""
   },
-  ""camera"": {
-    ""quality"": ""iPhone selfie quality, slight grain from low light"",
-    ""aspect"": ""9:16"",
-    ""effect"": ""warm tone from lights + glossy reflections from outfit""
+  ""cinematography"": {
+    ""lighting"": ""soft_key"",
+    ""tone"": ""minimal"",
+    ""color_palette"": ""high_contrast_bw""
   },
-  ""realism_details"": {
-    ""makeup"": ""slightly smudged eyeliner, lips glossy but fading from drinks"",
-    ""hair"": ""some strands stuck to lip gloss, snow melting into frizz at ends"",
-    ""skin"": ""natural shine from dancing, slight cold flush"",
-    ""clothes"": ""corset slightly shifted, mini skirt wrinkled from sitting earlier""
-  },
-  ""vibe"": ""hot ski-resort party girl energy, drunken warmth, dangerously pretty, the girl guys fall in love with for no reason""
+  ""visual_style"": {
+    ""style"": ""modern minimalist fashion editorial"",
+    ""elements"": ""soft spotlight from the front-left creating gentle highlights and shadows, smooth skin tones, crisp silhouette separation from background, refined texture contrast, no text, no logos""
+  }
 }",FALSE,STRUCTURED,cipeberre@gmail.com
 Internal Project Proposal for Hospital Collaboration,"Act as a Professional Business Development Manager. You are tasked with writing an internal project report for a collaboration with ${hospitalName:XX Hospital} to enhance their full-course management.
 
