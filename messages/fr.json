@@ -209,6 +209,9 @@
     "confirmDelete": "Êtes-vous sûr de vouloir supprimer ce prompt ?",
     "promptCreated": "Prompt créé",
     "promptUpdated": "Prompt mis à jour",
+    "rateLimitError": "Veuillez attendre 30 secondes avant de créer un autre prompt",
+    "duplicatePromptError": "Vous avez déjà un prompt avec le même titre ou contenu",
+    "contentExistsError": "Un prompt avec ce contenu existe déjà : \"{title}\" par {author}",
     "run": "Exécuter",
     "promptCopied": "Prompt copié",
     "promptCopiedDescription": "Le prompt a été copié dans le presse-papiers. Collez-le dans {platform} après l'ouverture.",
@@ -268,7 +271,8 @@
     "translateToLanguage": "Traduire dans votre langue",
     "translated": "Contenu traduit",
     "translationFailed": "Échec de la traduction",
-    "alreadyTranslated": "Déjà traduit"
+    "alreadyTranslated": "Déjà traduit",
+    "learnHowToWritePrompts": "Apprenez à écrire des prompts efficaces →"
   },
   "changeRequests": {
     "title": "Demandes de Modification",
@@ -874,6 +878,7 @@
     "generateApiKey": "Générez une clé API pour enregistrer des prompts via MCP"
   },
   "footer": {
+    "howTo": "Comment faire",
     "docs": "Documentation",
     "api": "API",
     "privacy": "Confidentialité",
@@ -898,5 +903,83 @@
     "publicByDefault": "Prompts publics par défaut",
     "publicByDefaultDescription": "Lors de l'enregistrement de prompts via MCP, les rendre publics par défaut au lieu de privés.",
     "settingUpdated": "Paramètre mis à jour"
+  },
+  "promptWritingGuide": {
+    "title": "Comment Écrire de Bons Prompts",
+    "subtitle": "Conseils, exemples et meilleures pratiques pour créer des prompts IA efficaces",
+    "generalTips": {
+      "title": "Conseils Généraux pour des Prompts Efficaces",
+      "beSpecific": {
+        "title": "Soyez Spécifique et Clair",
+        "description": "Les prompts vagues mènent à des réponses vagues. Spécifiez exactement ce que vous voulez, incluant le format, la longueur, le ton et toutes les contraintes."
+      },
+      "provideContext": {
+        "title": "Fournissez du Contexte",
+        "description": "Donnez des informations de fond qui aident l'IA à comprendre vos besoins. Incluez qui, quoi, pourquoi et pour qui."
+      },
+      "defineFormat": {
+        "title": "Définissez le Format de Sortie",
+        "description": "Spécifiez comment vous voulez que la réponse soit structurée : points de liste, paragraphes, blocs de code, tableaux, etc."
+      },
+      "setConstraints": {
+        "title": "Définissez des Contraintes",
+        "description": "Incluez des limitations comme le nombre de mots, le niveau de lecture, les choses à éviter ou les exigences spécifiques à suivre."
+      },
+      "includeExamples": {
+        "title": "Incluez des Exemples",
+        "description": "Montrez à l'IA à quoi ressemble une bonne sortie. Les exemples aident à calibrer le style et la qualité de la réponse."
+      }
+    },
+    "rolePlaying": {
+      "title": "Jeu de Rôle : Modèles \"Agis Comme\"",
+      "description": "L'une des techniques de prompting les plus puissantes est d'assigner à l'IA un rôle ou une personnalité spécifique. Cela aide à établir l'expertise, le ton et la perspective.",
+      "basicPattern": "Modèle de Rôle de Base",
+      "exampleExpert": "Exemple : Expert Technique",
+      "exampleCreative": "Exemple : Coach Créatif",
+      "popularRoles": "Catégories de Rôles Populaires"
+    },
+    "variables": {
+      "title": "Utiliser des Variables pour des Prompts Dynamiques",
+      "description": "Les variables rendent vos prompts réutilisables et personnalisables. Les utilisateurs peuvent remplir différentes valeurs à chaque utilisation de votre prompt.",
+      "syntax": "Syntaxe des Variables",
+      "requiredVar": "Variable requise (l'utilisateur doit remplir)",
+      "withDefault": "Variable avec valeur par défaut",
+      "simpleExample": "Exemple Simple",
+      "advancedExample": "Exemple Avancé avec Plusieurs Variables",
+      "bestPractices": "Meilleures Pratiques",
+      "tip1": "Utilisez des noms de variables descriptifs : '$'{sujet} est mieux que '$'{x}",
+      "tip2": "Fournissez des valeurs par défaut sensées pour les valeurs optionnelles",
+      "tip3": "Regroupez les variables liées ensemble dans votre prompt",
+      "tip4": "Utilisez des underscores pour les noms à plusieurs mots : '$'{public_cible}"
+    },
+    "structured": {
+      "title": "Prompts Structurés (JSON/YAML)",
+      "description": "Les prompts structurés utilisent le format JSON ou YAML pour organiser clairement des instructions complexes. Ils sont idéaux pour les workflows multi-étapes, les agents et les configurations détaillées.",
+      "whenToUse": "Quand Utiliser des Prompts Structurés",
+      "useCase1": "Workflows ou pipelines complexes multi-étapes",
+      "useCase2": "Configurations d'agents avec plusieurs paramètres",
+      "useCase3": "Prompts avec de nombreux paramètres interconnectés",
+      "useCase4": "Utilisation de prompts programmatique ou basée sur API",
+      "jsonExample": "Exemple JSON : Assistant d'Entretien",
+      "yamlExample": "Exemple YAML : Générateur de Contenu",
+      "agentWorkflow": "Exemple JSON : Workflow d'Agent",
+      "tips": "Conseils pour les Prompts Structurés",
+      "tip1": "Utilisez JSON pour l'usage programmatique ; YAML pour les configs lisibles",
+      "tip2": "Gardez l'imbrication peu profonde (max 2-3 niveaux) pour la lisibilité",
+      "tip3": "Incluez des commentaires en YAML pour expliquer les sections complexes",
+      "tip4": "Validez votre syntaxe JSON/YAML avant d'enregistrer"
+    },
+    "outputOptimization": {
+      "title": "Optimisation de la Sortie",
+      "description": "Guidez l'IA pour produire exactement le format et le style dont vous avez besoin en étant explicite sur vos exigences.",
+      "formatInstructions": "Modèle d'Instructions de Format",
+      "constraintExamples": "Types de Contraintes Courants",
+      "lengthConstraints": "Contraintes de longueur :",
+      "lengthExample": "\"Gardez la réponse sous 200 mots\" / \"Fournissez exactement 5 points\"",
+      "styleConstraints": "Contraintes de style :",
+      "styleExample": "\"Utilisez un langage simple adapté aux débutants\" / \"Soyez technique et précis\"",
+      "contentConstraints": "Contraintes de contenu :",
+      "contentExample": "\"N'incluez pas d'opinions personnelles\" / \"Concentrez-vous uniquement sur les informations factuelles\""
+    }
   }
 }

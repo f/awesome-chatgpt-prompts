@@ -209,6 +209,9 @@
     "confirmDelete": "Bu promptu silmek istediğinizden emin misiniz?",
     "promptCreated": "Prompt oluşturuldu",
     "promptUpdated": "Prompt güncellendi",
+    "rateLimitError": "Lütfen başka bir prompt oluşturmadan önce 30 saniye bekleyin",
+    "duplicatePromptError": "Aynı başlık veya içeriğe sahip bir promptunuz zaten var",
+    "contentExistsError": "Bu içeriğe sahip bir prompt zaten mevcut: \"{title}\" - {author}",
     "run": "Çalıştır",
     "promptCopied": "Prompt Kopyalandı",
     "promptCopiedDescription": "Prompt panoya kopyalandı. Açtıktan sonra {platform}'a yapıştırın.",
@@ -268,7 +271,8 @@
     "translateToLanguage": "Dilinize çevirin",
     "translated": "İçerik çevrildi",
     "translationFailed": "Çeviri başarısız oldu",
-    "alreadyTranslated": "Zaten çevrildi"
+    "alreadyTranslated": "Zaten çevrildi",
+    "learnHowToWritePrompts": "Etkili promptlar nasıl yazılır öğrenin →"
   },
   "changeRequests": {
     "title": "Değişiklik İstekleri",
@@ -874,7 +878,8 @@
     "generateApiKey": "MCP ile prompt kaydetmek için API anahtarı oluşturun"
   },
   "footer": {
-    "docs": "Belgeler",
+    "howTo": "Nasıl Yapılır",
+    "docs": "Dökümanlar",
     "api": "API",
     "privacy": "Gizlilik",
     "terms": "Şartlar"
@@ -898,5 +903,83 @@
     "publicByDefault": "Varsayılan olarak herkese açık promptlar",
     "publicByDefaultDescription": "MCP ile prompt kaydederken, varsayılan olarak özel yerine herkese açık yap.",
     "settingUpdated": "Ayar güncellendi"
+  },
+  "promptWritingGuide": {
+    "title": "Harika Promptlar Nasıl Yazılır",
+    "subtitle": "Etkili AI promptları oluşturmak için ipuçları, örnekler ve en iyi uygulamalar",
+    "generalTips": {
+      "title": "Etkili Promptlar İçin Genel İpuçları",
+      "beSpecific": {
+        "title": "Spesifik ve Net Olun",
+        "description": "Belirsiz promptlar belirsiz yanıtlara yol açar. Format, uzunluk, ton ve kısıtlamalar dahil tam olarak ne istediğinizi belirtin."
+      },
+      "provideContext": {
+        "title": "Bağlam Sağlayın",
+        "description": "AI'ın ihtiyaçlarınızı anlamasına yardımcı olacak arka plan bilgisi verin. Kim, ne, neden ve kimin için sorularını dahil edin."
+      },
+      "defineFormat": {
+        "title": "Çıktı Formatını Tanımlayın",
+        "description": "Yanıtın nasıl yapılandırılmasını istediğinizi belirtin: madde işaretleri, paragraflar, kod blokları, tablolar vb."
+      },
+      "setConstraints": {
+        "title": "Kısıtlamalar Belirleyin",
+        "description": "Kelime sayısı, okuma seviyesi, kaçınılacak şeyler veya uyulması gereken özel gereksinimler gibi sınırlamalar ekleyin."
+      },
+      "includeExamples": {
+        "title": "Örnekler Ekleyin",
+        "description": "AI'a iyi çıktının neye benzediğini gösterin. Örnekler, yanıt stilini ve kalitesini kalibre etmeye yardımcı olur."
+      }
+    },
+    "rolePlaying": {
+      "title": "Rol Yapma: \"Şu Rolde Davran\" Kalıpları",
+      "description": "En güçlü prompt tekniklerinden biri AI'a belirli bir rol veya kişilik atamaktır. Bu, uzmanlık, ton ve bakış açısı oluşturmaya yardımcı olur.",
+      "basicPattern": "Temel Rol Kalıbı",
+      "exampleExpert": "Örnek: Teknik Uzman",
+      "exampleCreative": "Örnek: Yaratıcı Koç",
+      "popularRoles": "Popüler Rol Kategorileri"
+    },
+    "variables": {
+      "title": "Dinamik Promptlar İçin Değişken Kullanımı",
+      "description": "Değişkenler promptlarınızı yeniden kullanılabilir ve özelleştirilebilir hale getirir. Kullanıcılar promptunuzu her kullandıklarında farklı değerler girebilir.",
+      "syntax": "Değişken Sözdizimi",
+      "requiredVar": "Zorunlu değişken (kullanıcı doldurmalı)",
+      "withDefault": "Varsayılan değerli değişken",
+      "simpleExample": "Basit Örnek",
+      "advancedExample": "Birden Fazla Değişkenli Gelişmiş Örnek",
+      "bestPractices": "En İyi Uygulamalar",
+      "tip1": "Açıklayıcı değişken adları kullanın: '$'{topic}, '$'{x}'den daha iyidir",
+      "tip2": "Opsiyonel değerler için mantıklı varsayılanlar sağlayın",
+      "tip3": "İlgili değişkenleri promptunuzda birlikte gruplandırın",
+      "tip4": "Çok kelimeli isimler için alt çizgi kullanın: '$'{hedef_kitle}"
+    },
+    "structured": {
+      "title": "Yapılandırılmış Promptlar (JSON/YAML)",
+      "description": "Yapılandırılmış promptlar, karmaşık talimatları net bir şekilde organize etmek için JSON veya YAML formatını kullanır. Çok adımlı iş akışları, ajanlar ve detaylı yapılandırmalar için idealdir.",
+      "whenToUse": "Yapılandırılmış Promptları Ne Zaman Kullanmalı",
+      "useCase1": "Karmaşık çok adımlı iş akışları veya pipeline'lar",
+      "useCase2": "Birden fazla parametreli ajan yapılandırmaları",
+      "useCase3": "Birbirine bağlı birçok ayara sahip promptlar",
+      "useCase4": "API odaklı veya programatik prompt kullanımı",
+      "jsonExample": "JSON Örneği: Mülakat Asistanı",
+      "yamlExample": "YAML Örneği: İçerik Oluşturucu",
+      "agentWorkflow": "JSON Örneği: Ajan İş Akışı",
+      "tips": "Yapılandırılmış Promptlar İçin İpuçları",
+      "tip1": "Programatik kullanım için JSON; okunabilir yapılandırmalar için YAML kullanın",
+      "tip2": "Okunabilirlik için iç içe geçmeyi sığ tutun (maks 2-3 seviye)",
+      "tip3": "Karmaşık bölümleri açıklamak için YAML'da yorumlar ekleyin",
+      "tip4": "Kaydetmeden önce JSON/YAML sözdizimini doğrulayın"
+    },
+    "outputOptimization": {
+      "title": "Çıktı Optimizasyonu",
+      "description": "Gereksinimleriniz konusunda açık olarak AI'ı tam olarak ihtiyacınız olan format ve stilde çıktı üretmeye yönlendirin.",
+      "formatInstructions": "Format Talimatları Şablonu",
+      "constraintExamples": "Yaygın Kısıtlama Türleri",
+      "lengthConstraints": "Uzunluk kısıtlamaları:",
+      "lengthExample": "\"Yanıtı 200 kelimenin altında tut\" / \"Tam olarak 5 madde işareti sağla\"",
+      "styleConstraints": "Stil kısıtlamaları:",
+      "styleExample": "\"Yeni başlayanlar için uygun basit dil kullan\" / \"Teknik ve kesin ol\"",
+      "contentConstraints": "İçerik kısıtlamaları:",
+      "contentExample": "\"Kişisel görüşler ekleme\" / \"Sadece olgusal bilgilere odaklan\""
+    }
   }
 }

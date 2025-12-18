@@ -223,6 +223,9 @@
     "confirmDelete": "このプロンプトを削除してもよろしいですか？",
     "promptCreated": "プロンプトを作成しました",
     "promptUpdated": "プロンプトを更新しました",
+    "rateLimitError": "次のプロンプトを作成するまで30秒お待ちください",
+    "duplicatePromptError": "同じタイトルまたは内容のプロンプトが既にあります",
+    "contentExistsError": "この内容のプロンプトは既に存在します：「{title}」（{author}作）",
     "run": "実行",
     "promptCopied": "プロンプトをコピーしました",
     "promptCopiedDescription": "プロンプトがクリップボードにコピーされました。{platform}を開いた後に貼り付けてください。",
@@ -268,7 +271,8 @@
     "translateToLanguage": "あなたの言語に翻訳",
     "translated": "コンテンツを翻訳しました",
     "translationFailed": "翻訳に失敗しました",
-    "alreadyTranslated": "翻訳済み"
+    "alreadyTranslated": "すでに翻訳済み",
+    "learnHowToWritePrompts": "効果的なプロンプトの書き方を学ぶ →"
   },
   "changeRequests": {
     "title": "変更リクエスト",
@@ -874,6 +878,7 @@
     "generateApiKey": "MCP経由でプロンプトを保存するためのAPIキーを生成"
   },
   "footer": {
+    "howTo": "使い方",
     "docs": "ドキュメント",
     "api": "API",
     "privacy": "プライバシー",
@@ -898,5 +903,83 @@
     "publicByDefault": "デフォルトで公開プロンプト",
     "publicByDefaultDescription": "MCP経由でプロンプトを保存する際、プライベートではなくデフォルトで公開にします。",
     "settingUpdated": "設定が更新されました"
+  },
+  "promptWritingGuide": {
+    "title": "優れたプロンプトの書き方",
+    "subtitle": "効果的なAIプロンプトを作成するためのヒント、例、ベストプラクティス",
+    "generalTips": {
+      "title": "効果的なプロンプトのための一般的なヒント",
+      "beSpecific": {
+        "title": "具体的かつ明確に",
+        "description": "曖昧なプロンプトは曖昧な回答につながります。フォーマット、長さ、トーン、制約など、正確に何が欲しいか指定してください。"
+      },
+      "provideContext": {
+        "title": "コンテキストを提供する",
+        "description": "AIがニーズを理解するのに役立つ背景情報を提供してください。誰が、何を、なぜ、誰のためにを含めてください。"
+      },
+      "defineFormat": {
+        "title": "出力フォーマットを定義する",
+        "description": "回答の構造をどのようにしたいか指定してください：箇条書き、段落、コードブロック、表など。"
+      },
+      "setConstraints": {
+        "title": "制約を設定する",
+        "description": "単語数、読解レベル、避けるべきこと、従うべき特定の要件などの制限を含めてください。"
+      },
+      "includeExamples": {
+        "title": "例を含める",
+        "description": "良い出力がどのようなものかAIに示してください。例は回答のスタイルと品質を調整するのに役立ちます。"
+      }
+    },
+    "rolePlaying": {
+      "title": "ロールプレイング：「～として振る舞う」パターン",
+      "description": "最も強力なプロンプト技術の1つは、AIに特定の役割やペルソナを割り当てることです。これは専門知識、トーン、視点を確立するのに役立ちます。",
+      "basicPattern": "基本的なロールパターン",
+      "exampleExpert": "例：技術専門家",
+      "exampleCreative": "例：クリエイティブコーチ",
+      "popularRoles": "人気のロールカテゴリ"
+    },
+    "variables": {
+      "title": "動的プロンプトのための変数の使用",
+      "description": "変数はプロンプトを再利用可能でカスタマイズ可能にします。ユーザーはプロンプトを使用するたびに異なる値を入力できます。",
+      "syntax": "変数の構文",
+      "requiredVar": "必須変数（ユーザーが入力必須）",
+      "withDefault": "デフォルト値付き変数",
+      "simpleExample": "シンプルな例",
+      "advancedExample": "複数変数を使用した高度な例",
+      "bestPractices": "ベストプラクティス",
+      "tip1": "説明的な変数名を使用: '$'{topic}は'$'{x}より良い",
+      "tip2": "オプション値には適切なデフォルトを提供",
+      "tip3": "関連する変数をプロンプト内でグループ化",
+      "tip4": "複数単語の名前にはアンダースコアを使用：'$'{target_audience}"
+    },
+    "structured": {
+      "title": "構造化プロンプト（JSON/YAML）",
+      "description": "構造化プロンプトは、複雑な指示を明確に整理するためにJSONまたはYAML形式を使用します。マルチステップワークフロー、エージェント、詳細な設定に最適です。",
+      "whenToUse": "構造化プロンプトを使用するタイミング",
+      "useCase1": "複雑なマルチステップワークフローまたはパイプライン",
+      "useCase2": "複数パラメータを持つエージェント設定",
+      "useCase3": "多くの相互接続された設定を持つプロンプト",
+      "useCase4": "APIドリブンまたはプログラマティックなプロンプト使用",
+      "jsonExample": "JSON例：面接アシスタント",
+      "yamlExample": "YAML例：コンテンツジェネレーター",
+      "agentWorkflow": "JSON例：エージェントワークフロー",
+      "tips": "構造化プロンプトのヒント",
+      "tip1": "プログラマティック使用にはJSON、人間が読める設定にはYAMLを使用",
+      "tip2": "可読性のためにネストを浅く保つ（最大2-3レベル）",
+      "tip3": "複雑なセクションを説明するためにYAMLにコメントを含める",
+      "tip4": "保存前にJSON/YAML構文を検証"
+    },
+    "outputOptimization": {
+      "title": "出力の最適化",
+      "description": "要件を明確にすることで、必要なフォーマットとスタイルを正確に出力するようAIを導きます。",
+      "formatInstructions": "フォーマット指示テンプレート",
+      "constraintExamples": "一般的な制約タイプ",
+      "lengthConstraints": "長さの制約：",
+      "lengthExample": "「回答を200語以内に」/「正確に5つの箇条書きを提供」",
+      "styleConstraints": "スタイルの制約：",
+      "styleExample": "「初心者向けのシンプルな言葉を使用」/「技術的で正確に」",
+      "contentConstraints": "内容の制約：",
+      "contentExample": "「個人的な意見を含めない」/「事実情報のみに焦点を当てる」"
+    }
   }
 }

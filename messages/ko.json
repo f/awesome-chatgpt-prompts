@@ -207,8 +207,11 @@
     "copyPrompt": "프롬프트 복사",
     "sharePrompt": "프롬프트 공유",
     "confirmDelete": "이 프롬프트를 삭제하시겠습니까?",
-    "promptCreated": "프롬프트 생성됨",
-    "promptUpdated": "프롬프트 업데이트됨",
+    "promptCreated": "프롬프트가 생성되었습니다",
+    "promptUpdated": "프롬프트가 업데이트되었습니다",
+    "rateLimitError": "다른 프롬프트를 생성하기 전에 30초 기다려주세요",
+    "duplicatePromptError": "동일한 제목 또는 내용의 프롬프트가 이미 있습니다",
+    "contentExistsError": "이 내용의 프롬프트가 이미 존재합니다: \"{title}\" - {author}",
     "run": "실행",
     "promptCopied": "프롬프트 복사됨",
     "promptCopiedDescription": "프롬프트가 클립보드에 복사되었습니다. {platform}을 연 후 붙여넣기 하세요.",
@@ -268,7 +271,8 @@
     "translateToLanguage": "내 언어로 번역",
     "translated": "콘텐츠가 번역됨",
     "translationFailed": "번역 실패",
-    "alreadyTranslated": "이미 번역됨"
+    "alreadyTranslated": "이미 번역됨",
+    "learnHowToWritePrompts": "효과적인 프롬프트 작성법 배우기 →"
   },
   "changeRequests": {
     "title": "변경 요청",
@@ -874,10 +878,11 @@
     "generateApiKey": "MCP를 통해 프롬프트를 저장하려면 API 키를 생성하세요"
   },
   "footer": {
+    "howTo": "사용법",
     "docs": "문서",
     "api": "API",
     "privacy": "개인정보",
-    "terms": "이용약관"
+    "terms": "약관"
   },
   "apiKey": {
     "title": "MCP API 키",
@@ -898,5 +903,83 @@
     "publicByDefault": "기본적으로 공개 프롬프트",
     "publicByDefaultDescription": "MCP를 통해 프롬프트를 저장할 때 비공개 대신 기본적으로 공개로 설정합니다.",
     "settingUpdated": "설정이 업데이트되었습니다"
+  },
+  "promptWritingGuide": {
+    "title": "좋은 프롬프트 작성법",
+    "subtitle": "효과적인 AI 프롬프트를 만들기 위한 팁, 예시, 모범 사례",
+    "generalTips": {
+      "title": "효과적인 프롬프트를 위한 일반 팁",
+      "beSpecific": {
+        "title": "구체적이고 명확하게",
+        "description": "모호한 프롬프트는 모호한 응답으로 이어집니다. 형식, 길이, 톤, 제약 조건 등 원하는 것을 정확히 지정하세요."
+      },
+      "provideContext": {
+        "title": "맥락 제공",
+        "description": "AI가 요구사항을 이해하는 데 도움이 되는 배경 정보를 제공하세요. 누가, 무엇을, 왜, 누구를 위해를 포함하세요."
+      },
+      "defineFormat": {
+        "title": "출력 형식 정의",
+        "description": "응답이 어떻게 구성되기를 원하는지 지정하세요: 글머리 기호, 단락, 코드 블록, 표 등."
+      },
+      "setConstraints": {
+        "title": "제약 조건 설정",
+        "description": "단어 수, 읽기 수준, 피해야 할 것, 따라야 할 특정 요구사항 등의 제한을 포함하세요."
+      },
+      "includeExamples": {
+        "title": "예시 포함",
+        "description": "좋은 출력이 어떤 것인지 AI에게 보여주세요. 예시는 응답 스타일과 품질을 조정하는 데 도움이 됩니다."
+      }
+    },
+    "rolePlaying": {
+      "title": "역할극: \"~로서 행동하라\" 패턴",
+      "description": "가장 강력한 프롬프트 기법 중 하나는 AI에게 특정 역할이나 페르소나를 할당하는 것입니다. 이는 전문성, 톤, 관점을 확립하는 데 도움이 됩니다.",
+      "basicPattern": "기본 역할 패턴",
+      "exampleExpert": "예시: 기술 전문가",
+      "exampleCreative": "예시: 창작 코치",
+      "popularRoles": "인기 역할 카테고리"
+    },
+    "variables": {
+      "title": "동적 프롬프트를 위한 변수 사용",
+      "description": "변수는 프롬프트를 재사용 가능하고 사용자 정의할 수 있게 만듭니다. 사용자는 프롬프트를 사용할 때마다 다른 값을 입력할 수 있습니다.",
+      "syntax": "변수 구문",
+      "requiredVar": "필수 변수 (사용자가 입력해야 함)",
+      "withDefault": "기본값이 있는 변수",
+      "simpleExample": "간단한 예시",
+      "advancedExample": "여러 변수를 사용한 고급 예시",
+      "bestPractices": "모범 사례",
+      "tip1": "설명적인 변수 이름 사용: '$'{topic}이 '$'{x}보다 좋음",
+      "tip2": "선택적 값에 합리적인 기본값 제공",
+      "tip3": "프롬프트에서 관련 변수를 함께 그룹화",
+      "tip4": "여러 단어 이름에 밑줄 사용: '$'{target_audience}"
+    },
+    "structured": {
+      "title": "구조화된 프롬프트 (JSON/YAML)",
+      "description": "구조화된 프롬프트는 복잡한 지시사항을 명확하게 정리하기 위해 JSON 또는 YAML 형식을 사용합니다. 다단계 워크플로우, 에이전트, 상세한 구성에 이상적입니다.",
+      "whenToUse": "구조화된 프롬프트를 사용할 때",
+      "useCase1": "복잡한 다단계 워크플로우 또는 파이프라인",
+      "useCase2": "여러 매개변수가 있는 에이전트 구성",
+      "useCase3": "많은 상호 연결된 설정이 있는 프롬프트",
+      "useCase4": "API 기반 또는 프로그래밍적 프롬프트 사용",
+      "jsonExample": "JSON 예시: 면접 어시스턴트",
+      "yamlExample": "YAML 예시: 콘텐츠 생성기",
+      "agentWorkflow": "JSON 예시: 에이전트 워크플로우",
+      "tips": "구조화된 프롬프트 팁",
+      "tip1": "프로그래밍적 사용에는 JSON, 읽기 쉬운 구성에는 YAML 사용",
+      "tip2": "가독성을 위해 중첩을 얕게 유지 (최대 2-3 레벨)",
+      "tip3": "복잡한 섹션을 설명하기 위해 YAML에 주석 포함",
+      "tip4": "저장하기 전에 JSON/YAML 구문 검증"
+    },
+    "outputOptimization": {
+      "title": "출력 최적화",
+      "description": "요구사항을 명확히 하여 AI가 필요한 형식과 스타일을 정확하게 생성하도록 안내합니다.",
+      "formatInstructions": "형식 지침 템플릿",
+      "constraintExamples": "일반적인 제약 유형",
+      "lengthConstraints": "길이 제약:",
+      "lengthExample": "\"응답을 200단어 이하로 유지\" / \"정확히 5개의 글머리 기호 제공\"",
+      "styleConstraints": "스타일 제약:",
+      "styleExample": "\"초보자에게 적합한 간단한 언어 사용\" / \"기술적이고 정확하게\"",
+      "contentConstraints": "내용 제약:",
+      "contentExample": "\"개인적인 의견 포함하지 않음\" / \"사실 정보에만 집중\""
+    }
   }
 }

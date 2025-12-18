@@ -209,6 +209,9 @@
     "confirmDelete": "Are you sure you want to delete this prompt?",
     "promptCreated": "Prompt created",
     "promptUpdated": "Prompt updated",
+    "rateLimitError": "Please wait 30 seconds before creating another prompt",
+    "duplicatePromptError": "You already have a prompt with the same title or content",
+    "contentExistsError": "A prompt with this content already exists: \"{title}\" by {author}",
     "run": "Run",
     "promptCopied": "Prompt Copied",
     "promptCopiedDescription": "The prompt has been copied to your clipboard. Paste it in {platform} after opening.",
@@ -268,7 +271,8 @@
     "translateToLanguage": "Translate to your language",
     "translated": "Content translated",
     "translationFailed": "Translation failed",
-    "alreadyTranslated": "Already translated"
+    "alreadyTranslated": "Already translated",
+    "learnHowToWritePrompts": "Learn how to write effective prompts →"
   },
   "changeRequests": {
     "title": "Change Requests",
@@ -874,6 +878,7 @@
     "generateApiKey": "Generate API key to save prompts via MCP"
   },
   "footer": {
+    "howTo": "How to...",
     "docs": "Docs",
     "api": "API",
     "privacy": "Privacy",
@@ -898,5 +903,83 @@
     "publicByDefault": "Public prompts by default",
     "publicByDefaultDescription": "When saving prompts via MCP, make them public by default instead of private.",
     "settingUpdated": "Setting updated"
+  },
+  "promptWritingGuide": {
+    "title": "How to Write Great Prompts",
+    "subtitle": "Tips, examples, and best practices for creating effective AI prompts",
+    "generalTips": {
+      "title": "General Tips for Effective Prompts",
+      "beSpecific": {
+        "title": "Be Specific and Clear",
+        "description": "Vague prompts lead to vague responses. Specify exactly what you want, including format, length, tone, and any constraints."
+      },
+      "provideContext": {
+        "title": "Provide Context",
+        "description": "Give background information that helps the AI understand your needs. Include who, what, why, and for whom."
+      },
+      "defineFormat": {
+        "title": "Define the Output Format",
+        "description": "Specify how you want the response structured: bullet points, paragraphs, code blocks, tables, etc."
+      },
+      "setConstraints": {
+        "title": "Set Constraints",
+        "description": "Include limitations like word count, reading level, things to avoid, or specific requirements to follow."
+      },
+      "includeExamples": {
+        "title": "Include Examples",
+        "description": "Show the AI what good output looks like. Examples help calibrate the response style and quality."
+      }
+    },
+    "rolePlaying": {
+      "title": "Role-Playing: \"Act As\" Patterns",
+      "description": "One of the most powerful prompting techniques is assigning the AI a specific role or persona. This helps establish expertise, tone, and perspective.",
+      "basicPattern": "Basic Role Pattern",
+      "exampleExpert": "Example: Technical Expert",
+      "exampleCreative": "Example: Creative Coach",
+      "popularRoles": "Popular Role Categories"
+    },
+    "variables": {
+      "title": "Using Variables for Dynamic Prompts",
+      "description": "Variables make your prompts reusable and customizable. Users can fill in different values each time they use your prompt.",
+      "syntax": "Variable Syntax",
+      "requiredVar": "Required variable (user must fill)",
+      "withDefault": "Variable with default value",
+      "simpleExample": "Simple Example",
+      "advancedExample": "Advanced Example with Multiple Variables",
+      "bestPractices": "Best Practices",
+      "tip1": "Use descriptive variable names: '$'{topic} is better than '$'{x}",
+      "tip2": "Provide sensible defaults for optional values",
+      "tip3": "Group related variables together in your prompt",
+      "tip4": "Use underscores for multi-word names: '$'{target_audience}"
+    },
+    "structured": {
+      "title": "Structured Prompts (JSON/YAML)",
+      "description": "Structured prompts use JSON or YAML format to organize complex instructions clearly. They're ideal for multi-step workflows, agents, and detailed configurations.",
+      "whenToUse": "When to Use Structured Prompts",
+      "useCase1": "Complex multi-step workflows or pipelines",
+      "useCase2": "Agent configurations with multiple parameters",
+      "useCase3": "Prompts with many interconnected settings",
+      "useCase4": "API-driven or programmatic prompt usage",
+      "jsonExample": "JSON Example: Interview Assistant",
+      "yamlExample": "YAML Example: Content Generator",
+      "agentWorkflow": "JSON Example: Agent Workflow",
+      "tips": "Tips for Structured Prompts",
+      "tip1": "Use JSON for programmatic use; YAML for human-readable configs",
+      "tip2": "Keep nesting shallow (2-3 levels max) for readability",
+      "tip3": "Include comments in YAML to explain complex sections",
+      "tip4": "Validate your JSON/YAML syntax before saving"
+    },
+    "outputOptimization": {
+      "title": "Output Optimization",
+      "description": "Guide the AI to produce exactly the format and style you need by being explicit about your requirements.",
+      "formatInstructions": "Format Instructions Template",
+      "constraintExamples": "Common Constraint Types",
+      "lengthConstraints": "Length constraints:",
+      "lengthExample": "\"Keep response under 200 words\" / \"Provide exactly 5 bullet points\"",
+      "styleConstraints": "Style constraints:",
+      "styleExample": "\"Use simple language suitable for beginners\" / \"Be technical and precise\"",
+      "contentConstraints": "Content constraints:",
+      "contentExample": "\"Do not include personal opinions\" / \"Focus only on factual information\""
+    }
   }
 }

@@ -209,6 +209,9 @@
     "confirmDelete": "Sei sicuro di voler eliminare questo prompt?",
     "promptCreated": "Prompt creato",
     "promptUpdated": "Prompt aggiornato",
+    "rateLimitError": "Attendi 30 secondi prima di creare un altro prompt",
+    "duplicatePromptError": "Hai già un prompt con lo stesso titolo o contenuto",
+    "contentExistsError": "Esiste già un prompt con questo contenuto: \"{title}\" di {author}",
     "run": "Esegui",
     "promptCopied": "Prompt copiato",
     "promptCopiedDescription": "Il prompt è stato copiato negli appunti. Incollalo in {platform} dopo l'apertura.",
@@ -268,7 +271,8 @@
     "translateToLanguage": "Traduci nella tua lingua",
     "translated": "Contenuto tradotto",
     "translationFailed": "Traduzione fallita",
-    "alreadyTranslated": "Già tradotto"
+    "alreadyTranslated": "Già tradotto",
+    "learnHowToWritePrompts": "Impara a scrivere prompt efficaci →"
   },
   "changeRequests": {
     "title": "Richieste di Modifica",
@@ -874,6 +878,7 @@
     "generateApiKey": "Genera una chiave API per salvare prompt tramite MCP"
   },
   "footer": {
+    "howTo": "Come funziona",
     "docs": "Documentazione",
     "api": "API",
     "privacy": "Privacy",
@@ -898,5 +903,83 @@
     "publicByDefault": "Prompt pubblici per impostazione predefinita",
     "publicByDefaultDescription": "Quando salvi prompt tramite MCP, rendili pubblici per impostazione predefinita invece che privati.",
     "settingUpdated": "Impostazione aggiornata"
+  },
+  "promptWritingGuide": {
+    "title": "Come Scrivere Buoni Prompt",
+    "subtitle": "Suggerimenti, esempi e best practice per creare prompt IA efficaci",
+    "generalTips": {
+      "title": "Suggerimenti Generali per Prompt Efficaci",
+      "beSpecific": {
+        "title": "Sii Specifico e Chiaro",
+        "description": "I prompt vaghi portano a risposte vaghe. Specifica esattamente cosa vuoi, incluso formato, lunghezza, tono e vincoli."
+      },
+      "provideContext": {
+        "title": "Fornisci Contesto",
+        "description": "Dai informazioni di background che aiutino l'IA a capire le tue esigenze. Includi chi, cosa, perché e per chi."
+      },
+      "defineFormat": {
+        "title": "Definisci il Formato di Output",
+        "description": "Specifica come vuoi che sia strutturata la risposta: elenchi puntati, paragrafi, blocchi di codice, tabelle, ecc."
+      },
+      "setConstraints": {
+        "title": "Imposta Vincoli",
+        "description": "Includi limitazioni come conteggio parole, livello di lettura, cose da evitare o requisiti specifici da seguire."
+      },
+      "includeExamples": {
+        "title": "Includi Esempi",
+        "description": "Mostra all'IA come appare un buon output. Gli esempi aiutano a calibrare lo stile e la qualità della risposta."
+      }
+    },
+    "rolePlaying": {
+      "title": "Gioco di Ruolo: Pattern \"Agisci Come\"",
+      "description": "Una delle tecniche di prompting più potenti è assegnare all'IA un ruolo o una persona specifica. Questo aiuta a stabilire competenza, tono e prospettiva.",
+      "basicPattern": "Pattern di Ruolo Base",
+      "exampleExpert": "Esempio: Esperto Tecnico",
+      "exampleCreative": "Esempio: Coach Creativo",
+      "popularRoles": "Categorie di Ruoli Popolari"
+    },
+    "variables": {
+      "title": "Usare Variabili per Prompt Dinamici",
+      "description": "Le variabili rendono i tuoi prompt riutilizzabili e personalizzabili. Gli utenti possono inserire valori diversi ogni volta che usano il tuo prompt.",
+      "syntax": "Sintassi delle Variabili",
+      "requiredVar": "Variabile richiesta (l'utente deve compilare)",
+      "withDefault": "Variabile con valore predefinito",
+      "simpleExample": "Esempio Semplice",
+      "advancedExample": "Esempio Avanzato con Variabili Multiple",
+      "bestPractices": "Best Practice",
+      "tip1": "Usa nomi di variabili descrittivi: '$'{argomento} è meglio di '$'{x}",
+      "tip2": "Fornisci valori predefiniti sensati per i valori opzionali",
+      "tip3": "Raggruppa le variabili correlate nel tuo prompt",
+      "tip4": "Usa underscore per nomi multi-parola: '$'{pubblico_target}"
+    },
+    "structured": {
+      "title": "Prompt Strutturati (JSON/YAML)",
+      "description": "I prompt strutturati usano il formato JSON o YAML per organizzare chiaramente istruzioni complesse. Sono ideali per workflow multi-step, agenti e configurazioni dettagliate.",
+      "whenToUse": "Quando Usare Prompt Strutturati",
+      "useCase1": "Workflow o pipeline complessi multi-step",
+      "useCase2": "Configurazioni di agenti con parametri multipli",
+      "useCase3": "Prompt con molte impostazioni interconnesse",
+      "useCase4": "Uso di prompt programmatico o basato su API",
+      "jsonExample": "Esempio JSON: Assistente per Colloqui",
+      "yamlExample": "Esempio YAML: Generatore di Contenuti",
+      "agentWorkflow": "Esempio JSON: Workflow Agente",
+      "tips": "Suggerimenti per Prompt Strutturati",
+      "tip1": "Usa JSON per uso programmatico; YAML per config leggibili",
+      "tip2": "Mantieni l'annidamento superficiale (max 2-3 livelli) per leggibilità",
+      "tip3": "Includi commenti in YAML per spiegare sezioni complesse",
+      "tip4": "Valida la sintassi JSON/YAML prima di salvare"
+    },
+    "outputOptimization": {
+      "title": "Ottimizzazione dell'Output",
+      "description": "Guida l'IA a produrre esattamente il formato e lo stile di cui hai bisogno essendo esplicito sui tuoi requisiti.",
+      "formatInstructions": "Modello di Istruzioni di Formato",
+      "constraintExamples": "Tipi Comuni di Vincoli",
+      "lengthConstraints": "Vincoli di lunghezza:",
+      "lengthExample": "\"Mantieni la risposta sotto 200 parole\" / \"Fornisci esattamente 5 punti elenco\"",
+      "styleConstraints": "Vincoli di stile:",
+      "styleExample": "\"Usa un linguaggio semplice adatto ai principianti\" / \"Sii tecnico e preciso\"",
+      "contentConstraints": "Vincoli di contenuto:",
+      "contentExample": "\"Non includere opinioni personali\" / \"Concentrati solo su informazioni fattuali\""
+    }
   }
 }

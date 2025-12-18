@@ -223,6 +223,9 @@
     "confirmDelete": "¿Estás seguro de que quieres eliminar este prompt?",
     "promptCreated": "Prompt creado",
     "promptUpdated": "Prompt actualizado",
+    "rateLimitError": "Por favor espera 30 segundos antes de crear otro prompt",
+    "duplicatePromptError": "Ya tienes un prompt con el mismo título o contenido",
+    "contentExistsError": "Ya existe un prompt con este contenido: \"{title}\" por {author}",
     "run": "Ejecutar",
     "promptCopied": "Prompt copiado",
     "promptCopiedDescription": "El prompt se ha copiado al portapapeles. Pégalo en {platform} después de abrirlo.",
@@ -268,7 +271,8 @@
     "translateToLanguage": "Traducir a tu idioma",
     "translated": "Contenido traducido",
     "translationFailed": "Error en la traducción",
-    "alreadyTranslated": "Ya traducido"
+    "alreadyTranslated": "Ya traducido",
+    "learnHowToWritePrompts": "Aprende a escribir prompts efectivos →"
   },
   "changeRequests": {
     "title": "Solicitudes de Cambio",
@@ -874,6 +878,7 @@
     "generateApiKey": "Genera una clave API para guardar prompts vía MCP"
   },
   "footer": {
+    "howTo": "Cómo hacerlo",
     "docs": "Documentación",
     "api": "API",
     "privacy": "Privacidad",
@@ -898,5 +903,83 @@
     "publicByDefault": "Prompts públicos por defecto",
     "publicByDefaultDescription": "Al guardar prompts vía MCP, hacerlos públicos por defecto en lugar de privados.",
     "settingUpdated": "Configuración actualizada"
+  },
+  "promptWritingGuide": {
+    "title": "Cómo Escribir Buenos Prompts",
+    "subtitle": "Consejos, ejemplos y mejores prácticas para crear prompts de IA efectivos",
+    "generalTips": {
+      "title": "Consejos Generales para Prompts Efectivos",
+      "beSpecific": {
+        "title": "Sé Específico y Claro",
+        "description": "Los prompts vagos generan respuestas vagas. Especifica exactamente lo que quieres, incluyendo formato, longitud, tono y cualquier restricción."
+      },
+      "provideContext": {
+        "title": "Proporciona Contexto",
+        "description": "Da información de fondo que ayude a la IA a entender tus necesidades. Incluye quién, qué, por qué y para quién."
+      },
+      "defineFormat": {
+        "title": "Define el Formato de Salida",
+        "description": "Especifica cómo quieres que se estructure la respuesta: viñetas, párrafos, bloques de código, tablas, etc."
+      },
+      "setConstraints": {
+        "title": "Establece Restricciones",
+        "description": "Incluye limitaciones como conteo de palabras, nivel de lectura, cosas a evitar o requisitos específicos a seguir."
+      },
+      "includeExamples": {
+        "title": "Incluye Ejemplos",
+        "description": "Muestra a la IA cómo se ve una buena salida. Los ejemplos ayudan a calibrar el estilo y calidad de la respuesta."
+      }
+    },
+    "rolePlaying": {
+      "title": "Juego de Roles: Patrones \"Actúa Como\"",
+      "description": "Una de las técnicas de prompting más poderosas es asignar a la IA un rol o persona específica. Esto ayuda a establecer experiencia, tono y perspectiva.",
+      "basicPattern": "Patrón de Rol Básico",
+      "exampleExpert": "Ejemplo: Experto Técnico",
+      "exampleCreative": "Ejemplo: Coach Creativo",
+      "popularRoles": "Categorías de Roles Populares"
+    },
+    "variables": {
+      "title": "Usando Variables para Prompts Dinámicos",
+      "description": "Las variables hacen tus prompts reutilizables y personalizables. Los usuarios pueden llenar diferentes valores cada vez que usan tu prompt.",
+      "syntax": "Sintaxis de Variables",
+      "requiredVar": "Variable requerida (el usuario debe llenar)",
+      "withDefault": "Variable con valor por defecto",
+      "simpleExample": "Ejemplo Simple",
+      "advancedExample": "Ejemplo Avanzado con Múltiples Variables",
+      "bestPractices": "Mejores Prácticas",
+      "tip1": "Usa nombres de variables descriptivos: '$'{tema} es mejor que '$'{x}",
+      "tip2": "Proporciona valores por defecto sensatos para valores opcionales",
+      "tip3": "Agrupa variables relacionadas juntas en tu prompt",
+      "tip4": "Usa guiones bajos para nombres de varias palabras: '$'{publico_objetivo}"
+    },
+    "structured": {
+      "title": "Prompts Estructurados (JSON/YAML)",
+      "description": "Los prompts estructurados usan formato JSON o YAML para organizar instrucciones complejas claramente. Son ideales para flujos de trabajo de múltiples pasos, agentes y configuraciones detalladas.",
+      "whenToUse": "Cuándo Usar Prompts Estructurados",
+      "useCase1": "Flujos de trabajo o pipelines complejos de múltiples pasos",
+      "useCase2": "Configuraciones de agentes con múltiples parámetros",
+      "useCase3": "Prompts con muchas configuraciones interconectadas",
+      "useCase4": "Uso de prompts programático o basado en API",
+      "jsonExample": "Ejemplo JSON: Asistente de Entrevistas",
+      "yamlExample": "Ejemplo YAML: Generador de Contenido",
+      "agentWorkflow": "Ejemplo JSON: Flujo de Trabajo de Agente",
+      "tips": "Consejos para Prompts Estructurados",
+      "tip1": "Usa JSON para uso programático; YAML para configs legibles por humanos",
+      "tip2": "Mantén el anidamiento superficial (máx 2-3 niveles) para legibilidad",
+      "tip3": "Incluye comentarios en YAML para explicar secciones complejas",
+      "tip4": "Valida tu sintaxis JSON/YAML antes de guardar"
+    },
+    "outputOptimization": {
+      "title": "Optimización de Salida",
+      "description": "Guía a la IA para producir exactamente el formato y estilo que necesitas siendo explícito sobre tus requisitos.",
+      "formatInstructions": "Plantilla de Instrucciones de Formato",
+      "constraintExamples": "Tipos Comunes de Restricciones",
+      "lengthConstraints": "Restricciones de longitud:",
+      "lengthExample": "\"Mantén la respuesta bajo 200 palabras\" / \"Proporciona exactamente 5 viñetas\"",
+      "styleConstraints": "Restricciones de estilo:",
+      "styleExample": "\"Usa lenguaje simple adecuado para principiantes\" / \"Sé técnico y preciso\"",
+      "contentConstraints": "Restricciones de contenido:",
+      "contentExample": "\"No incluyas opiniones personales\" / \"Enfócate solo en información factual\""
+    }
   }
 }

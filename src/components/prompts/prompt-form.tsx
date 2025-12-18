@@ -6,7 +6,8 @@ import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Loader2, Upload, X, ArrowDown, Play, Image as ImageIcon, Video, Volume2, Paperclip, Search, Sparkles } from "lucide-react";
+import { Loader2, Upload, X, ArrowDown, Play, Image as ImageIcon, Video, Volume2, Paperclip, Search, Sparkles, BookOpen, ExternalLink } from "lucide-react";
+import Link from "next/link";
 import { VariableToolbar } from "./variable-toolbar";
 import { VariableWarning } from "./variable-warning";
 import { VariableHint } from "./variable-hint";
@@ -393,11 +394,27 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
         }),
       });
 
+      const result = await response.json();
+
       if (!response.ok) {
+        // Handle specific error types
+        if (result.error === "rate_limit") {
+          toast.error(t("rateLimitError"));
+          return;
+        }
+        if (result.error === "duplicate_prompt") {
+          toast.error(t("duplicatePromptError"));
+          return;
+        }
+        if (result.error === "content_exists") {
+          toast.error(t("contentExistsError", { 
+            title: result.existingPromptTitle,
+            author: result.existingPromptAuthor 
+          }));
+          return;
+        }
         throw new Error("Failed to save prompt");
       }
-
-      const result = await response.json();
       if (isEdit) {
         analyticsPrompt.edit(promptId!);
       } else {
@@ -484,6 +501,17 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
               />
             </div>
           </div>
+
+        {/* ===== PROMPT WRITING GUIDE LINK ===== */}
+        <Link
+          href="/how_to_write_effective_prompts"
+          target="_blank"
+          className="flex items-center gap-2 p-3 rounded-lg border bg-muted/30 hover:bg-muted/50 transition-colors text-sm text-muted-foreground hover:text-foreground"
+        >
+          <BookOpen className="h-4 w-4 text-primary" />
+          <span>{t("learnHowToWritePrompts")}</span>
+          <ExternalLink className="h-3 w-3 ml-auto" />
+        </Link>
 
         {/* ===== METADATA SECTION ===== */}
         <div className="space-y-4 pb-6 border-b">

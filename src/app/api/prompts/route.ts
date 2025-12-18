@@ -6,6 +6,7 @@ import { triggerWebhooks } from "@/lib/webhook";
 import { generatePromptEmbedding } from "@/lib/ai/embeddings";
 import { generatePromptSlug } from "@/lib/slug";
 import { checkPromptQuality } from "@/lib/ai/quality-check";
+import { isSimilarContent, normalizeContent } from "@/lib/similarity";
 
 const promptSchema = z.object({
   title: z.string().min(1).max(200),
@@ -45,6 +46,89 @@ export async function POST(request: Request) {
     }
 
     const { title, description, content, type, structuredFormat, categoryId, tagIds, contributorIds, isPrivate, mediaUrl, requiresMediaUpload, requiredMediaType, requiredMediaCount } = parsed.data;
+
+    // Rate limit: Check if user created a prompt in the last 30 seconds
+    const thirtySecondsAgo = new Date(Date.now() - 30 * 1000);
+    const recentPrompt = await db.prompt.findFirst({
+      where: {
+        authorId: session.user.id,
+        createdAt: { gte: thirtySecondsAgo },
+      },
+      select: { id: true },
+    });
+
+    if (recentPrompt) {
+      return NextResponse.json(
+        { error: "rate_limit", message: "Please wait 30 seconds before creating another prompt" },
+        { status: 429 }
+      );
+    }
+
+    // Check for duplicate title or content from the same user
+    const userDuplicate = await db.prompt.findFirst({
+      where: {
+        authorId: session.user.id,
+        deletedAt: null,
+        OR: [
+          { title: { equals: title, mode: "insensitive" } },
+          { content: content },
+        ],
+      },
+      select: { id: true, slug: true, title: true },
+    });
+
+    if (userDuplicate) {
+      return NextResponse.json(
+        { 
+          error: "duplicate_prompt", 
+          message: "You already have a prompt with the same title or content",
+          existingPromptId: userDuplicate.id,
+          existingPromptSlug: userDuplicate.slug,
+        },
+        { status: 409 }
+      );
+    }
+
+    // Check for similar content system-wide (any user)
+    // First, get a batch of public prompts to check similarity against
+    const normalizedNewContent = normalizeContent(content);
+    
+    // Only check if normalized content has meaningful length
+    if (normalizedNewContent.length > 50) {
+      // Get recent public prompts to check for similarity (limit to avoid performance issues)
+      const publicPrompts = await db.prompt.findMany({
+        where: {
+          deletedAt: null,
+          isPrivate: false,
+        },
+        select: { 
+          id: true, 
+          slug: true, 
+          title: true, 
+          content: true,
+          author: { select: { username: true } } 
+        },
+        orderBy: { createdAt: "desc" },
+        take: 1000, // Check against last 1000 public prompts
+      });
+
+      // Find similar content using our similarity algorithm
+      const similarPrompt = publicPrompts.find(p => isSimilarContent(content, p.content));
+
+      if (similarPrompt) {
+        return NextResponse.json(
+          { 
+            error: "content_exists", 
+            message: "A prompt with similar content already exists",
+            existingPromptId: similarPrompt.id,
+            existingPromptSlug: similarPrompt.slug,
+            existingPromptTitle: similarPrompt.title,
+            existingPromptAuthor: similarPrompt.author.username,
+          },
+          { status: 409 }
+        );
+      }
+    }
 
     // Generate slug from title (translated to English)
     const slug = await generatePromptSlug(title);

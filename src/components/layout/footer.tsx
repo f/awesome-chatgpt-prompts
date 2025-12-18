@@ -25,6 +25,7 @@ export function Footer() {
                 <Image src={DeepWikiIcon} alt="" width={14} height={14} />
                 DeepWiki
               </Link>
+              <Link href="/how_to_write_effective_prompts" className="hover:text-foreground">{t("howTo")}</Link>
               <Link href="/docs/self-hosting" className="hover:text-foreground">{t("docs")}</Link>
               <Link href="/docs/api" className="hover:text-foreground">{t("api")}</Link>
               <Link href="/privacy" className="hover:text-foreground">{t("privacy")}</Link>

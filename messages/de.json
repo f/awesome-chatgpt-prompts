@@ -209,6 +209,9 @@
     "confirmDelete": "Sind Sie sicher, dass Sie diesen Prompt löschen möchten?",
     "promptCreated": "Prompt erstellt",
     "promptUpdated": "Prompt aktualisiert",
+    "rateLimitError": "Bitte warte 30 Sekunden bevor du einen weiteren Prompt erstellst",
+    "duplicatePromptError": "Du hast bereits einen Prompt mit dem gleichen Titel oder Inhalt",
+    "contentExistsError": "Ein Prompt mit diesem Inhalt existiert bereits: \"{title}\" von {author}",
     "run": "Ausführen",
     "promptCopied": "Prompt kopiert",
     "promptCopiedDescription": "Der Prompt wurde in die Zwischenablage kopiert. Fügen Sie ihn in {platform} nach dem Öffnen ein.",
@@ -268,7 +271,8 @@
     "translateToLanguage": "In Ihre Sprache übersetzen",
     "translated": "Inhalt übersetzt",
     "translationFailed": "Übersetzung fehlgeschlagen",
-    "alreadyTranslated": "Bereits übersetzt"
+    "alreadyTranslated": "Bereits übersetzt",
+    "learnHowToWritePrompts": "Lernen Sie, effektive Prompts zu schreiben →"
   },
   "changeRequests": {
     "title": "Änderungsanfragen",
@@ -874,6 +878,7 @@
     "generateApiKey": "API-Schlüssel generieren, um Prompts über MCP zu speichern"
   },
   "footer": {
+    "howTo": "Wie man es macht",
     "docs": "Dokumentation",
     "api": "API",
     "privacy": "Datenschutz",
@@ -898,5 +903,83 @@
     "publicByDefault": "Prompts standardmäßig öffentlich",
     "publicByDefaultDescription": "Beim Speichern von Prompts über MCP standardmäßig öffentlich statt privat machen.",
     "settingUpdated": "Einstellung aktualisiert"
+  },
+  "promptWritingGuide": {
+    "title": "Wie Man Gute Prompts Schreibt",
+    "subtitle": "Tipps, Beispiele und Best Practices für effektive KI-Prompts",
+    "generalTips": {
+      "title": "Allgemeine Tipps für Effektive Prompts",
+      "beSpecific": {
+        "title": "Sei Spezifisch und Klar",
+        "description": "Vage Prompts führen zu vagen Antworten. Gib genau an, was du willst, einschließlich Format, Länge, Ton und Einschränkungen."
+      },
+      "provideContext": {
+        "title": "Liefere Kontext",
+        "description": "Gib Hintergrundinformationen, die der KI helfen, deine Bedürfnisse zu verstehen. Beinhalte wer, was, warum und für wen."
+      },
+      "defineFormat": {
+        "title": "Definiere das Ausgabeformat",
+        "description": "Gib an, wie die Antwort strukturiert sein soll: Aufzählungspunkte, Absätze, Codeblöcke, Tabellen usw."
+      },
+      "setConstraints": {
+        "title": "Setze Einschränkungen",
+        "description": "Füge Begrenzungen wie Wortanzahl, Leseniveau, zu vermeidende Dinge oder spezifische Anforderungen hinzu."
+      },
+      "includeExamples": {
+        "title": "Füge Beispiele Hinzu",
+        "description": "Zeige der KI, wie eine gute Ausgabe aussieht. Beispiele helfen, den Antwortstil und die Qualität zu kalibrieren."
+      }
+    },
+    "rolePlaying": {
+      "title": "Rollenspiel: \"Agiere Als\" Muster",
+      "description": "Eine der mächtigsten Prompting-Techniken ist die Zuweisung einer spezifischen Rolle oder Persona an die KI. Dies hilft, Expertise, Ton und Perspektive zu etablieren.",
+      "basicPattern": "Grundlegendes Rollenmuster",
+      "exampleExpert": "Beispiel: Technischer Experte",
+      "exampleCreative": "Beispiel: Kreativer Coach",
+      "popularRoles": "Beliebte Rollenkategorien"
+    },
+    "variables": {
+      "title": "Variablen für Dynamische Prompts Nutzen",
+      "description": "Variablen machen deine Prompts wiederverwendbar und anpassbar. Benutzer können bei jeder Verwendung unterschiedliche Werte eingeben.",
+      "syntax": "Variablen-Syntax",
+      "requiredVar": "Erforderliche Variable (Benutzer muss ausfüllen)",
+      "withDefault": "Variable mit Standardwert",
+      "simpleExample": "Einfaches Beispiel",
+      "advancedExample": "Fortgeschrittenes Beispiel mit Mehreren Variablen",
+      "bestPractices": "Best Practices",
+      "tip1": "Verwenden Sie beschreibende Variablennamen: '$'{thema} ist besser als '$'{x}",
+      "tip2": "Biete sinnvolle Standardwerte für optionale Werte",
+      "tip3": "Gruppiere verwandte Variablen in deinem Prompt zusammen",
+      "tip4": "Verwende Unterstriche für mehrwörtige Namen: '$'{ziel_gruppe}"
+    },
+    "structured": {
+      "title": "Strukturierte Prompts (JSON/YAML)",
+      "description": "Strukturierte Prompts verwenden JSON- oder YAML-Format, um komplexe Anweisungen klar zu organisieren. Sie sind ideal für mehrstufige Workflows, Agenten und detaillierte Konfigurationen.",
+      "whenToUse": "Wann Strukturierte Prompts Verwenden",
+      "useCase1": "Komplexe mehrstufige Workflows oder Pipelines",
+      "useCase2": "Agentenkonfigurationen mit mehreren Parametern",
+      "useCase3": "Prompts mit vielen vernetzten Einstellungen",
+      "useCase4": "API-gesteuerte oder programmatische Prompt-Nutzung",
+      "jsonExample": "JSON-Beispiel: Interview-Assistent",
+      "yamlExample": "YAML-Beispiel: Content-Generator",
+      "agentWorkflow": "JSON-Beispiel: Agenten-Workflow",
+      "tips": "Tipps für Strukturierte Prompts",
+      "tip1": "Verwende JSON für programmatische Nutzung; YAML für lesbare Configs",
+      "tip2": "Halte die Verschachtelung flach (max 2-3 Ebenen) für Lesbarkeit",
+      "tip3": "Füge Kommentare in YAML hinzu, um komplexe Abschnitte zu erklären",
+      "tip4": "Validiere deine JSON/YAML-Syntax vor dem Speichern"
+    },
+    "outputOptimization": {
+      "title": "Ausgabeoptimierung",
+      "description": "Leite die KI an, genau das Format und den Stil zu produzieren, den du brauchst, indem du explizit deine Anforderungen angibst.",
+      "formatInstructions": "Format-Anweisungsvorlage",
+      "constraintExamples": "Häufige Einschränkungstypen",
+      "lengthConstraints": "Längenbeschränkungen:",
+      "lengthExample": "\"Halte die Antwort unter 200 Wörtern\" / \"Gib genau 5 Stichpunkte an\"",
+      "styleConstraints": "Stilbeschränkungen:",
+      "styleExample": "\"Verwende einfache Sprache für Anfänger\" / \"Sei technisch und präzise\"",
+      "contentConstraints": "Inhaltsbeschränkungen:",
+      "contentExample": "\"Keine persönlichen Meinungen einbeziehen\" / \"Nur auf faktische Informationen konzentrieren\""
+    }
   }
 }

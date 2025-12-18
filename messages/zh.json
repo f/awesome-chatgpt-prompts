@@ -209,6 +209,9 @@
     "confirmDelete": "确定要删除此提示词吗？",
     "promptCreated": "提示词已创建",
     "promptUpdated": "提示词已更新",
+    "rateLimitError": "请等待30秒后再创建下一个提示词",
+    "duplicatePromptError": "您已有相同标题或内容的提示词",
+    "contentExistsError": "此内容的提示词已存在：「{title}」作者：{author}",
     "run": "运行",
     "promptCopied": "提示词已复制",
     "promptCopiedDescription": "提示词已复制到剪贴板。打开 {platform} 后粘贴即可。",
@@ -268,7 +271,8 @@
     "translateToLanguage": "翻译成你的语言",
     "translated": "内容已翻译",
     "translationFailed": "翻译失败",
-    "alreadyTranslated": "已翻译"
+    "alreadyTranslated": "已翻译",
+    "learnHowToWritePrompts": "学习如何写出有效的提示词 →"
   },
   "changeRequests": {
     "title": "变更请求",
@@ -874,6 +878,7 @@
     "generateApiKey": "生成 API 密钥以通过 MCP 保存提示词"
   },
   "footer": {
+    "howTo": "指南",
     "docs": "文档",
     "api": "API",
     "privacy": "隐私",
@@ -898,5 +903,83 @@
     "publicByDefault": "默认公开提示词",
     "publicByDefaultDescription": "通过 MCP 保存提示词时，默认设为公开而非私有。",
     "settingUpdated": "设置已更新"
+  },
+  "promptWritingGuide": {
+    "title": "如何写出优秀的提示词",
+    "subtitle": "创建有效 AI 提示词的技巧、示例和最佳实践",
+    "generalTips": {
+      "title": "有效提示词的通用技巧",
+      "beSpecific": {
+        "title": "具体而明确",
+        "description": "模糊的提示词会导致模糊的回答。明确指定你想要什么，包括格式、长度、语气和任何限制。"
+      },
+      "provideContext": {
+        "title": "提供背景信息",
+        "description": "提供帮助 AI 理解你需求的背景信息。包括谁、什么、为什么以及为谁。"
+      },
+      "defineFormat": {
+        "title": "定义输出格式",
+        "description": "指定你希望回答如何结构化：项目符号、段落、代码块、表格等。"
+      },
+      "setConstraints": {
+        "title": "设置约束",
+        "description": "包括字数限制、阅读水平、需要避免的内容或需要遵循的特定要求等限制。"
+      },
+      "includeExamples": {
+        "title": "包含示例",
+        "description": "向 AI 展示优秀输出的样子。示例有助于校准回答的风格和质量。"
+      }
+    },
+    "rolePlaying": {
+      "title": "角色扮演：\"扮演...\"模式",
+      "description": "最强大的提示词技术之一是为 AI 分配特定的角色或人设。这有助于建立专业知识、语气和视角。",
+      "basicPattern": "基本角色模式",
+      "exampleExpert": "示例：技术专家",
+      "exampleCreative": "示例：创意教练",
+      "popularRoles": "热门角色类别"
+    },
+    "variables": {
+      "title": "使用变量创建动态提示词",
+      "description": "变量使你的提示词可重用和可定制。用户每次使用你的提示词时可以填入不同的值。",
+      "syntax": "变量语法",
+      "requiredVar": "必填变量（用户必须填写）",
+      "withDefault": "带默认值的变量",
+      "simpleExample": "简单示例",
+      "advancedExample": "包含多个变量的高级示例",
+      "bestPractices": "最佳实践",
+      "tip1": "使用描述性变量名：'$'{topic}比'$'{x}更好",
+      "tip2": "为可选值提供合理的默认值",
+      "tip3": "在提示词中将相关变量分组",
+      "tip4": "多词名称使用下划线：'$'{target_audience}"
+    },
+    "structured": {
+      "title": "结构化提示词（JSON/YAML）",
+      "description": "结构化提示词使用 JSON 或 YAML 格式清晰地组织复杂指令。非常适合多步骤工作流、代理和详细配置。",
+      "whenToUse": "何时使用结构化提示词",
+      "useCase1": "复杂的多步骤工作流或管道",
+      "useCase2": "具有多个参数的代理配置",
+      "useCase3": "具有许多相互关联设置的提示词",
+      "useCase4": "API 驱动或程序化提示词使用",
+      "jsonExample": "JSON 示例：面试助手",
+      "yamlExample": "YAML 示例：内容生成器",
+      "agentWorkflow": "JSON 示例：代理工作流",
+      "tips": "结构化提示词技巧",
+      "tip1": "程序化使用选择 JSON；人类可读配置选择 YAML",
+      "tip2": "保持嵌套层级较浅（最多 2-3 层）以提高可读性",
+      "tip3": "在 YAML 中添加注释以解释复杂部分",
+      "tip4": "保存前验证 JSON/YAML 语法"
+    },
+    "outputOptimization": {
+      "title": "输出优化",
+      "description": "通过明确你的需求，引导 AI 生成你需要的格式和风格。",
+      "formatInstructions": "格式指令模板",
+      "constraintExamples": "常见约束类型",
+      "lengthConstraints": "长度约束：",
+      "lengthExample": "\"保持回答在200字以内\" / \"提供正好5个要点\"",
+      "styleConstraints": "风格约束：",
+      "styleExample": "\"使用适合初学者的简单语言\" / \"技术性且精确\"",
+      "contentConstraints": "内容约束：",
+      "contentExample": "\"不包含个人观点\" / \"只关注事实信息\""
+    }
   }
 }
