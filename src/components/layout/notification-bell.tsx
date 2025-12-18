@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Bell, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -40,6 +40,7 @@ interface Notifications {
 export function NotificationBell() {
   const { data: session } = useSession();
   const t = useTranslations("notifications");
+  const locale = useLocale();
   const [notifications, setNotifications] = useState<Notifications>({ 
     pendingChangeRequests: 0,
     unreadComments: 0,
@@ -167,7 +168,7 @@ export function NotificationBell() {
                       </p>
                     )}
                     <p className="text-xs text-muted-foreground mt-0.5">
-                      {formatDistanceToNow(new Date(notification.createdAt), "en")}
+                      {formatDistanceToNow(new Date(notification.createdAt), locale)}
                     </p>
                   </div>
                   <MessageSquare className="h-4 w-4 text-muted-foreground shrink-0" />
