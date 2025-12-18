@@ -340,7 +340,7 @@ export function McpConfigTabs({ baseUrl, queryParams, className, mode, onModeCha
           <p className="text-[10px] text-muted-foreground">
             prompts.chat is in the official{" "}
             <a
-              href="https://github.com/modelcontextprotocol/servers"
+              href="https://github.com/mcp"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:underline"
