@@ -269,7 +269,7 @@ export function McpConfigTabs({ baseUrl, queryParams, className, mode, onModeCha
           dir="ltr" 
           className={cn(
             "bg-muted rounded-md p-2 font-mono text-[11px] overflow-x-auto text-left",
-            showOfficialBranding && selectedClient === "vscode" && "max-h-24 overflow-y-auto"
+            showOfficialBranding && (selectedClient === "vscode" || selectedClient === "cursor") && "max-h-24 overflow-y-auto"
           )}
         >
           <pre className="whitespace-pre">
@@ -307,6 +307,32 @@ export function McpConfigTabs({ baseUrl, queryParams, className, mode, onModeCha
           )}
         </Button>
       </div>
+
+      {/* Cursor Install Button - only for official branding */}
+      {showOfficialBranding && selectedClient === "cursor" && (
+        <div className="flex flex-col gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            className="h-7 text-[11px] gap-1.5 w-fit"
+            onClick={() => {
+              const cursorConfig: Record<string, unknown> = {
+                command: "npx",
+                args: ["-y", NPM_PACKAGE],
+              };
+              const localEnv = buildLocalEnv(apiKey, queryParams);
+              if (localEnv) cursorConfig.env = localEnv;
+              const configBase64 = btoa(JSON.stringify(cursorConfig));
+              window.open(`cursor://anysphere.cursor-deeplink/mcp/install?name=${encodeURIComponent("prompts.chat")}&config=${configBase64}`, "_self");
+            }}
+          >
+            <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L3 7v10l9 5 9-5V7l-9-5z" />
+            </svg>
+            Cursor
+          </Button>
+        </div>
+      )}
 
       {/* VS Code Install Buttons - only for official branding */}
       {showOfficialBranding && selectedClient === "vscode" && (
