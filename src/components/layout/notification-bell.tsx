@@ -45,10 +45,6 @@ export function NotificationBell() {
     };
 
     fetchNotifications();
-    
-    // Refresh every 60 seconds
-    const interval = setInterval(fetchNotifications, 60000);
-    return () => clearInterval(interval);
   }, [session?.user]);
 
   if (!session?.user || isLoading) {
