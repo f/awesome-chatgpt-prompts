@@ -55,9 +55,15 @@ export function InfinitePromptList({
   const [isLoading, setIsLoading] = useState(false);
   const [hasMore, setHasMore] = useState(initialPrompts.length < initialTotal);
   const loaderRef = useRef<HTMLDivElement>(null);
+  const abortControllerRef = useRef<AbortController | null>(null);
 
   // Reset when new data arrives from server
   useEffect(() => {
+    // Cancel any in-flight request when filters change
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+      abortControllerRef.current = null;
+    }
     setPrompts(initialPrompts);
     setPage(1);
     setHasMore(initialPrompts.length < initialTotal);
@@ -66,6 +72,14 @@ export function InfinitePromptList({
 
   const loadMore = useCallback(async () => {
     if (isLoading || !hasMore) return;
+
+    // Cancel any previous request
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+    
+    const controller = new AbortController();
+    abortControllerRef.current = controller;
 
     setIsLoading(true);
     try {
@@ -78,7 +92,9 @@ export function InfinitePromptList({
       if (filters.tag) params.set("tag", filters.tag);
       if (filters.sort) params.set("sort", filters.sort);
 
-      const response = await fetch(`/api/prompts?${params.toString()}`);
+      const response = await fetch(`/api/prompts?${params.toString()}`, {
+        signal: controller.signal,
+      });
       if (!response.ok) throw new Error("Failed to fetch");
 
       const data = await response.json();
@@ -87,16 +103,25 @@ export function InfinitePromptList({
       setPrompts((prev) => {
         const existingIds = new Set(prev.map((p) => p.id));
         const newPrompts = data.prompts.filter((p: { id: string }) => !existingIds.has(p.id));
+        // Calculate hasMore using updated length
+        const newTotal = prev.length + newPrompts.length;
+        setHasMore(data.prompts.length > 0 && newTotal < data.total);
         return [...prev, ...newPrompts];
       });
       setPage(nextPage);
-      setHasMore(data.prompts.length > 0 && prompts.length + data.prompts.length < data.total);
     } catch (error) {
+      // Ignore abort errors - they're expected when cancelling requests
+      if (error instanceof Error && error.name === "AbortError") {
+        return;
+      }
       console.error("Failed to load more prompts:", error);
     } finally {
-      setIsLoading(false);
+      // Only clear loading if this controller is still active
+      if (abortControllerRef.current === controller) {
+        setIsLoading(false);
+      }
     }
-  }, [isLoading, hasMore, page, filters, prompts.length]);
+  }, [isLoading, hasMore, page, filters]);
 
   // Intersection Observer for infinite scroll
   useEffect(() => {
@@ -115,6 +140,15 @@ export function InfinitePromptList({
 
     return () => observer.disconnect();
   }, [loadMore, hasMore, isLoading]);
+
+  // Cleanup abort controller on unmount
+  useEffect(() => {
+    return () => {
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+    };
+  }, []);
 
   // Show skeleton while filtering
   if (isFilterPending) {
