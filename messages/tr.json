@@ -737,7 +737,36 @@
   "notifications": {
     "title": "Bildirimler",
     "pendingChangeRequests": "Bekleyen değişiklik istekleri",
-    "noNotifications": "Bildirim yok"
+    "noNotifications": "Bildirim yok",
+    "markAllRead": "Tümünü okundu işaretle",
+    "commentedOnPrompt": "promptunuza yorum yaptı",
+    "repliedToComment": "yorumunuza yanıt verdi"
+  },
+  "comments": {
+    "comments": "Yorumlar",
+    "writeComment": "Bir yorum yazın...",
+    "postComment": "Yorum Yap",
+    "reply": "Yanıtla",
+    "replyTo": "@{username} kullanıcısına yanıt...",
+    "posting": "Gönderiliyor...",
+    "commentPosted": "Yorum gönderildi",
+    "commentDeleted": "Yorum silindi",
+    "commentFlagged": "Yorum işaretlendi",
+    "commentUnflagged": "Yorum işareti kaldırıldı",
+    "noComments": "Henüz yorum yok. İlk yorumu siz yapın!",
+    "loginToComment": "Yorum yapmak için giriş yapın.",
+    "loginToVote": "Yorumları oylamak için giriş yapın.",
+    "upvote": "Olumlu oy",
+    "downvote": "Olumsuz oy",
+    "flag": "İşaretle",
+    "unflag": "İşareti Kaldır",
+    "flagged": "İşaretlendi",
+    "admin": "Yönetici",
+    "deleteCommentTitle": "Yorum Silinsin mi?",
+    "deleteCommentDescription": "Bu işlem geri alınamaz. Yorum ve tüm yanıtları kalıcı olarak silinecektir.",
+    "deleting": "Siliniyor...",
+    "showReplies": "{count} yanıtı göster",
+    "hideReplies": "Yanıtları gizle"
   },
   "promptmasters": {
     "title": "Promptmasters",

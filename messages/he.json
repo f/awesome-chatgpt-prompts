@@ -737,7 +737,36 @@
   "notifications": {
     "title": "התראות",
     "pendingChangeRequests": "בקשות שינוי ממתינות",
-    "noNotifications": "אין התראות"
+    "noNotifications": "אין התראות",
+    "markAllRead": "סמן הכל כנקרא",
+    "commentedOnPrompt": "הגיב על הפרומפט שלך",
+    "repliedToComment": "הגיב לתגובה שלך"
+  },
+  "comments": {
+    "comments": "תגובות",
+    "writeComment": "כתוב תגובה...",
+    "postComment": "פרסם תגובה",
+    "reply": "השב",
+    "replyTo": "השב ל-@{username}...",
+    "posting": "מפרסם...",
+    "commentPosted": "התגובה פורסמה",
+    "commentDeleted": "התגובה נמחקה",
+    "commentFlagged": "התגובה סומנה",
+    "commentUnflagged": "הסימון הוסר",
+    "noComments": "אין עדיין תגובות. היה הראשון להגיב!",
+    "loginToComment": "התחבר כדי להגיב.",
+    "loginToVote": "התחבר כדי להצביע.",
+    "upvote": "הצבעה חיובית",
+    "downvote": "הצבעה שלילית",
+    "flag": "סמן",
+    "unflag": "הסר סימון",
+    "flagged": "מסומן",
+    "admin": "מנהל",
+    "deleteCommentTitle": "למחוק את התגובה?",
+    "deleteCommentDescription": "לא ניתן לבטל פעולה זו. התגובה וכל התשובות יימחקו לצמיתות.",
+    "deleting": "מוחק...",
+    "showReplies": "הצג {count} תשובות",
+    "hideReplies": "הסתר תשובות"
   },
   "promptmasters": {
     "title": "מאסטרי פרומפטים",

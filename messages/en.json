@@ -737,7 +737,10 @@
   "notifications": {
     "title": "Notifications",
     "pendingChangeRequests": "Pending change requests",
-    "noNotifications": "No notifications"
+    "noNotifications": "No notifications",
+    "markAllRead": "Mark all read",
+    "commentedOnPrompt": "commented on your prompt",
+    "repliedToComment": "replied to your comment"
   },
   "promptmasters": {
     "title": "Promptmasters",
@@ -806,6 +809,32 @@
     "editAction2": "Make variables better",
     "editAction3": "Use variables",
     "editAction4": "Convert to JSON prompt"
+  },
+  "comments": {
+    "comments": "Comments",
+    "writeComment": "Write a comment...",
+    "postComment": "Post Comment",
+    "reply": "Reply",
+    "replyTo": "Reply to @{username}...",
+    "posting": "Posting...",
+    "commentPosted": "Comment posted",
+    "commentDeleted": "Comment deleted",
+    "commentFlagged": "Comment flagged",
+    "commentUnflagged": "Comment unflagged",
+    "noComments": "No comments yet. Be the first to comment!",
+    "loginToComment": "Please login to post comments.",
+    "loginToVote": "Please login to vote on comments.",
+    "upvote": "Upvote",
+    "downvote": "Downvote",
+    "flag": "Flag",
+    "unflag": "Unflag",
+    "flagged": "Flagged",
+    "admin": "Admin",
+    "deleteCommentTitle": "Delete Comment?",
+    "deleteCommentDescription": "This action cannot be undone. The comment and all its replies will be permanently deleted.",
+    "deleting": "Deleting...",
+    "showReplies": "Show {count} {count, plural, one {reply} other {replies}}",
+    "hideReplies": "Hide replies"
   },
   "report": {
     "report": "Report",

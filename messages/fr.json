@@ -737,7 +737,36 @@
   "notifications": {
     "title": "Notifications",
     "pendingChangeRequests": "Demandes de modification en attente",
-    "noNotifications": "Aucune notification"
+    "noNotifications": "Aucune notification",
+    "markAllRead": "Tout marquer comme lu",
+    "commentedOnPrompt": "a commenté votre prompt",
+    "repliedToComment": "a répondu à votre commentaire"
+  },
+  "comments": {
+    "comments": "Commentaires",
+    "writeComment": "Écrire un commentaire...",
+    "postComment": "Publier",
+    "reply": "Répondre",
+    "replyTo": "Répondre à @{username}...",
+    "posting": "Publication...",
+    "commentPosted": "Commentaire publié",
+    "commentDeleted": "Commentaire supprimé",
+    "commentFlagged": "Commentaire signalé",
+    "commentUnflagged": "Signalement retiré",
+    "noComments": "Aucun commentaire. Soyez le premier !",
+    "loginToComment": "Connectez-vous pour commenter.",
+    "loginToVote": "Connectez-vous pour voter.",
+    "upvote": "Vote positif",
+    "downvote": "Vote négatif",
+    "flag": "Signaler",
+    "unflag": "Retirer le signalement",
+    "flagged": "Signalé",
+    "admin": "Admin",
+    "deleteCommentTitle": "Supprimer le commentaire ?",
+    "deleteCommentDescription": "Cette action est irréversible. Le commentaire et toutes ses réponses seront définitivement supprimés.",
+    "deleting": "Suppression...",
+    "showReplies": "Afficher {count} réponses",
+    "hideReplies": "Masquer les réponses"
   },
   "promptmasters": {
     "title": "Promptmasters",

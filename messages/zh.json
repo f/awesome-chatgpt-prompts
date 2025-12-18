@@ -737,7 +737,36 @@
   "notifications": {
     "title": "通知",
     "pendingChangeRequests": "待处理的变更请求",
-    "noNotifications": "暂无通知"
+    "noNotifications": "暂无通知",
+    "markAllRead": "全部标为已读",
+    "commentedOnPrompt": "评论了你的提示词",
+    "repliedToComment": "回复了你的评论"
+  },
+  "comments": {
+    "comments": "评论",
+    "writeComment": "写下评论...",
+    "postComment": "发布评论",
+    "reply": "回复",
+    "replyTo": "回复 @{username}...",
+    "posting": "发布中...",
+    "commentPosted": "评论已发布",
+    "commentDeleted": "评论已删除",
+    "commentFlagged": "评论已标记",
+    "commentUnflagged": "已取消标记",
+    "noComments": "暂无评论，成为第一个评论者！",
+    "loginToComment": "请登录后评论。",
+    "loginToVote": "请登录后投票。",
+    "upvote": "赞",
+    "downvote": "踩",
+    "flag": "标记",
+    "unflag": "取消标记",
+    "flagged": "已标记",
+    "admin": "管理员",
+    "deleteCommentTitle": "删除评论？",
+    "deleteCommentDescription": "此操作无法撤销。评论及其所有回复将被永久删除。",
+    "deleting": "删除中...",
+    "showReplies": "显示 {count} 条回复",
+    "hideReplies": "隐藏回复"
   },
   "promptmasters": {
     "title": "Promptmasters",

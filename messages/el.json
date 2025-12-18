@@ -737,7 +737,36 @@
   "notifications": {
     "title": "Ειδοποιήσεις",
     "pendingChangeRequests": "Εκκρεμείς αιτήσεις αλλαγής",
-    "noNotifications": "Δεν υπάρχουν ειδοποιήσεις"
+    "noNotifications": "Δεν υπάρχουν ειδοποιήσεις",
+    "markAllRead": "Σήμανση όλων ως αναγνωσμένα",
+    "commentedOnPrompt": "σχολίασε το prompt σας",
+    "repliedToComment": "απάντησε στο σχόλιό σας"
+  },
+  "comments": {
+    "comments": "Σχόλια",
+    "writeComment": "Γράψτε ένα σχόλιο...",
+    "postComment": "Δημοσίευση",
+    "reply": "Απάντηση",
+    "replyTo": "Απάντηση στον @{username}...",
+    "posting": "Δημοσίευση...",
+    "commentPosted": "Το σχόλιο δημοσιεύτηκε",
+    "commentDeleted": "Το σχόλιο διαγράφηκε",
+    "commentFlagged": "Το σχόλιο επισημάνθηκε",
+    "commentUnflagged": "Η επισήμανση αφαιρέθηκε",
+    "noComments": "Δεν υπάρχουν σχόλια ακόμα. Γίνετε ο πρώτος!",
+    "loginToComment": "Συνδεθείτε για να σχολιάσετε.",
+    "loginToVote": "Συνδεθείτε για να ψηφίσετε.",
+    "upvote": "Θετική ψήφος",
+    "downvote": "Αρνητική ψήφος",
+    "flag": "Επισήμανση",
+    "unflag": "Αφαίρεση επισήμανσης",
+    "flagged": "Επισημασμένο",
+    "admin": "Διαχειριστής",
+    "deleteCommentTitle": "Διαγραφή σχολίου;",
+    "deleteCommentDescription": "Αυτή η ενέργεια δεν μπορεί να αναιρεθεί. Το σχόλιο και όλες οι απαντήσεις θα διαγραφούν μόνιμα.",
+    "deleting": "Διαγραφή...",
+    "showReplies": "Εμφάνιση {count} απαντήσεων",
+    "hideReplies": "Απόκρυψη απαντήσεων"
   },
   "promptmasters": {
     "title": "Promptmasters",

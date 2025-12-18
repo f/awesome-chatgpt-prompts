@@ -737,7 +737,36 @@
   "notifications": {
     "title": "Notificações",
     "pendingChangeRequests": "Solicitações de alteração pendentes",
-    "noNotifications": "Sem notificações"
+    "noNotifications": "Sem notificações",
+    "markAllRead": "Marcar tudo como lido",
+    "commentedOnPrompt": "comentou no seu prompt",
+    "repliedToComment": "respondeu ao seu comentário"
+  },
+  "comments": {
+    "comments": "Comentários",
+    "writeComment": "Escreva um comentário...",
+    "postComment": "Publicar comentário",
+    "reply": "Responder",
+    "replyTo": "Responder a @{username}...",
+    "posting": "Publicando...",
+    "commentPosted": "Comentário publicado",
+    "commentDeleted": "Comentário excluído",
+    "commentFlagged": "Comentário denunciado",
+    "commentUnflagged": "Denúncia removida",
+    "noComments": "Ainda não há comentários. Seja o primeiro!",
+    "loginToComment": "Faça login para comentar.",
+    "loginToVote": "Faça login para votar.",
+    "upvote": "Voto positivo",
+    "downvote": "Voto negativo",
+    "flag": "Denunciar",
+    "unflag": "Remover denúncia",
+    "flagged": "Denunciado",
+    "admin": "Admin",
+    "deleteCommentTitle": "Excluir comentário?",
+    "deleteCommentDescription": "Esta ação não pode ser desfeita. O comentário e todas as respostas serão excluídos permanentemente.",
+    "deleting": "Excluindo...",
+    "showReplies": "Mostrar {count} respostas",
+    "hideReplies": "Ocultar respostas"
   },
   "promptmasters": {
     "title": "Promptmasters",

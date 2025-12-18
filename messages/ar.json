@@ -737,7 +737,36 @@
   "notifications": {
     "title": "الإشعارات",
     "pendingChangeRequests": "طلبات التغيير المعلقة",
-    "noNotifications": "لا توجد إشعارات"
+    "noNotifications": "لا توجد إشعارات",
+    "markAllRead": "تعليم الكل كمقروء",
+    "commentedOnPrompt": "علق على أمرك",
+    "repliedToComment": "رد على تعليقك"
+  },
+  "comments": {
+    "comments": "التعليقات",
+    "writeComment": "اكتب تعليقاً...",
+    "postComment": "نشر التعليق",
+    "reply": "رد",
+    "replyTo": "الرد على @{username}...",
+    "posting": "جاري النشر...",
+    "commentPosted": "تم نشر التعليق",
+    "commentDeleted": "تم حذف التعليق",
+    "commentFlagged": "تم الإبلاغ عن التعليق",
+    "commentUnflagged": "تم إلغاء الإبلاغ",
+    "noComments": "لا توجد تعليقات بعد. كن أول من يعلق!",
+    "loginToComment": "يرجى تسجيل الدخول للتعليق.",
+    "loginToVote": "يرجى تسجيل الدخول للتصويت.",
+    "upvote": "تصويت إيجابي",
+    "downvote": "تصويت سلبي",
+    "flag": "إبلاغ",
+    "unflag": "إلغاء الإبلاغ",
+    "flagged": "تم الإبلاغ",
+    "admin": "مشرف",
+    "deleteCommentTitle": "حذف التعليق؟",
+    "deleteCommentDescription": "لا يمكن التراجع عن هذا الإجراء. سيتم حذف التعليق وجميع الردود نهائياً.",
+    "deleting": "جاري الحذف...",
+    "showReplies": "عرض {count} ردود",
+    "hideReplies": "إخفاء الردود"
   },
   "promptmasters": {
     "title": "Promptmasters",

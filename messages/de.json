@@ -737,7 +737,36 @@
   "notifications": {
     "title": "Benachrichtigungen",
     "pendingChangeRequests": "Ausstehende Änderungsanfragen",
-    "noNotifications": "Keine Benachrichtigungen"
+    "noNotifications": "Keine Benachrichtigungen",
+    "markAllRead": "Alle als gelesen markieren",
+    "commentedOnPrompt": "hat Ihren Prompt kommentiert",
+    "repliedToComment": "hat auf Ihren Kommentar geantwortet"
+  },
+  "comments": {
+    "comments": "Kommentare",
+    "writeComment": "Schreiben Sie einen Kommentar...",
+    "postComment": "Kommentar posten",
+    "reply": "Antworten",
+    "replyTo": "Antwort an @{username}...",
+    "posting": "Wird gepostet...",
+    "commentPosted": "Kommentar gepostet",
+    "commentDeleted": "Kommentar gelöscht",
+    "commentFlagged": "Kommentar markiert",
+    "commentUnflagged": "Kommentar-Markierung entfernt",
+    "noComments": "Noch keine Kommentare. Seien Sie der Erste!",
+    "loginToComment": "Bitte anmelden, um zu kommentieren.",
+    "loginToVote": "Bitte anmelden, um abzustimmen.",
+    "upvote": "Positiv bewerten",
+    "downvote": "Negativ bewerten",
+    "flag": "Markieren",
+    "unflag": "Markierung entfernen",
+    "flagged": "Markiert",
+    "admin": "Admin",
+    "deleteCommentTitle": "Kommentar löschen?",
+    "deleteCommentDescription": "Diese Aktion kann nicht rückgängig gemacht werden. Der Kommentar und alle Antworten werden dauerhaft gelöscht.",
+    "deleting": "Wird gelöscht...",
+    "showReplies": "{count} Antworten anzeigen",
+    "hideReplies": "Antworten ausblenden"
   },
   "promptmasters": {
     "title": "Promptmasters",

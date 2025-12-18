@@ -737,7 +737,36 @@
   "notifications": {
     "title": "알림",
     "pendingChangeRequests": "대기 중인 변경 요청",
-    "noNotifications": "알림 없음"
+    "noNotifications": "알림 없음",
+    "markAllRead": "모두 읽음으로 표시",
+    "commentedOnPrompt": "님이 프롬프트에 댓글을 남겼습니다",
+    "repliedToComment": "님이 댓글에 답글을 남겼습니다"
+  },
+  "comments": {
+    "comments": "댓글",
+    "writeComment": "댓글을 작성하세요...",
+    "postComment": "댓글 작성",
+    "reply": "답글",
+    "replyTo": "@{username}님에게 답글...",
+    "posting": "게시 중...",
+    "commentPosted": "댓글이 게시되었습니다",
+    "commentDeleted": "댓글이 삭제되었습니다",
+    "commentFlagged": "댓글이 신고되었습니다",
+    "commentUnflagged": "신고가 취소되었습니다",
+    "noComments": "아직 댓글이 없습니다. 첫 댓글을 남겨보세요!",
+    "loginToComment": "댓글을 작성하려면 로그인하세요.",
+    "loginToVote": "투표하려면 로그인하세요.",
+    "upvote": "추천",
+    "downvote": "비추천",
+    "flag": "신고",
+    "unflag": "신고 취소",
+    "flagged": "신고됨",
+    "admin": "관리자",
+    "deleteCommentTitle": "댓글을 삭제하시겠습니까?",
+    "deleteCommentDescription": "이 작업은 취소할 수 없습니다. 댓글과 모든 답글이 영구적으로 삭제됩니다.",
+    "deleting": "삭제 중...",
+    "showReplies": "{count}개의 답글 보기",
+    "hideReplies": "답글 숨기기"
   },
   "promptmasters": {
     "title": "프롬프트마스터",

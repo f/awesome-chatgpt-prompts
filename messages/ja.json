@@ -737,7 +737,36 @@
   "notifications": {
     "title": "通知",
     "pendingChangeRequests": "保留中の変更リクエスト",
-    "noNotifications": "通知はありません"
+    "noNotifications": "通知はありません",
+    "markAllRead": "すべて既読にする",
+    "commentedOnPrompt": "があなたのプロンプトにコメントしました",
+    "repliedToComment": "があなたのコメントに返信しました"
+  },
+  "comments": {
+    "comments": "コメント",
+    "writeComment": "コメントを書く...",
+    "postComment": "コメントを投稿",
+    "reply": "返信",
+    "replyTo": "@{username}に返信...",
+    "posting": "投稿中...",
+    "commentPosted": "コメントを投稿しました",
+    "commentDeleted": "コメントを削除しました",
+    "commentFlagged": "コメントをフラグしました",
+    "commentUnflagged": "フラグを解除しました",
+    "noComments": "コメントはまだありません。最初のコメントを投稿しましょう！",
+    "loginToComment": "コメントするにはログインしてください。",
+    "loginToVote": "投票するにはログインしてください。",
+    "upvote": "賛成",
+    "downvote": "反対",
+    "flag": "フラグ",
+    "unflag": "フラグ解除",
+    "flagged": "フラグ済み",
+    "admin": "管理者",
+    "deleteCommentTitle": "コメントを削除しますか？",
+    "deleteCommentDescription": "この操作は取り消せません。コメントとすべての返信が完全に削除されます。",
+    "deleting": "削除中...",
+    "showReplies": "{count}件の返信を表示",
+    "hideReplies": "返信を非表示"
   },
   "promptmasters": {
     "title": "Promptmasters",

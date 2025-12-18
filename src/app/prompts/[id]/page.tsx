@@ -23,6 +23,7 @@ import { UnlistPromptButton } from "@/components/prompts/unlist-prompt-button";
 import { MediaPreview } from "@/components/prompts/media-preview";
 import { ReportPromptDialog } from "@/components/prompts/report-prompt-dialog";
 import { DelistBanner } from "@/components/prompts/delist-banner";
+import { CommentSection } from "@/components/comments";
 
 interface PromptPageProps {
   params: Promise<{ id: string }>;
@@ -569,6 +570,17 @@ export default async function PromptPage({ params }: PromptPageProps) {
           </TabsContent>
         )}
       </Tabs>
+
+      {/* Comments Section */}
+      {!prompt.isPrivate && (
+        <CommentSection
+          promptId={prompt.id}
+          currentUserId={session?.user?.id}
+          isAdmin={isAdmin}
+          isLoggedIn={!!session?.user}
+          locale={locale}
+        />
+      )}
 
       {/* Admin Area */}
       {isAdmin && (

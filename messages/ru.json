@@ -737,7 +737,36 @@
   "notifications": {
     "title": "Уведомления",
     "pendingChangeRequests": "Ожидающие запросы на изменение",
-    "noNotifications": "Нет уведомлений"
+    "noNotifications": "Нет уведомлений",
+    "markAllRead": "Отметить все как прочитанное",
+    "commentedOnPrompt": "прокомментировал ваш промпт",
+    "repliedToComment": "ответил на ваш комментарий"
+  },
+  "comments": {
+    "comments": "Комментарии",
+    "writeComment": "Написать комментарий...",
+    "postComment": "Опубликовать",
+    "reply": "Ответить",
+    "replyTo": "Ответить @{username}...",
+    "posting": "Публикация...",
+    "commentPosted": "Комментарий опубликован",
+    "commentDeleted": "Комментарий удален",
+    "commentFlagged": "Комментарий отмечен",
+    "commentUnflagged": "Отметка снята",
+    "noComments": "Пока нет комментариев. Будьте первым!",
+    "loginToComment": "Войдите, чтобы комментировать.",
+    "loginToVote": "Войдите, чтобы голосовать.",
+    "upvote": "За",
+    "downvote": "Против",
+    "flag": "Отметить",
+    "unflag": "Снять отметку",
+    "flagged": "Отмечено",
+    "admin": "Админ",
+    "deleteCommentTitle": "Удалить комментарий?",
+    "deleteCommentDescription": "Это действие нельзя отменить. Комментарий и все ответы будут удалены навсегда.",
+    "deleting": "Удаление...",
+    "showReplies": "Показать {count} ответов",
+    "hideReplies": "Скрыть ответы"
   },
   "promptmasters": {
     "title": "Мастера промптов",
