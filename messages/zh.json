@@ -150,7 +150,8 @@
     "deletePromptTitle": "删除此提示词？",
     "deletePromptDescription": "此操作无法撤销。提示词将被永久删除。",
     "deleteError": "删除提示词失败",
-    "noMorePrompts": "已到达末尾",
+    "noMorePrompts": "已经到底了",
+    "loadMore": "加载更多",
     "loading": "加载中...",
     "types": {
       "text": "文本",

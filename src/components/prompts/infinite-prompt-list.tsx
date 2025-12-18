@@ -3,8 +3,9 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { Loader2, SearchX } from "lucide-react";
+import { Loader2, SearchX, RefreshCw } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Button } from "@/components/ui/button";
 import { useFilterContext } from "./filter-context";
 import { PromptCard, type PromptCardProps } from "./prompt-card";
 
@@ -54,6 +55,7 @@ export function InfinitePromptList({
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [hasMore, setHasMore] = useState(initialPrompts.length < initialTotal);
+  const [hasError, setHasError] = useState(false);
   const loaderRef = useRef<HTMLDivElement>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
 
@@ -67,6 +69,7 @@ export function InfinitePromptList({
     setPrompts(initialPrompts);
     setPage(1);
     setHasMore(initialPrompts.length < initialTotal);
+    setHasError(false);
     setFilterPending(false);
   }, [initialPrompts, initialTotal, setFilterPending]);
 
@@ -82,6 +85,7 @@ export function InfinitePromptList({
     abortControllerRef.current = controller;
 
     setIsLoading(true);
+    setHasError(false);
     try {
       const nextPage = page + 1;
       const params = new URLSearchParams();
@@ -115,6 +119,7 @@ export function InfinitePromptList({
         return;
       }
       console.error("Failed to load more prompts:", error);
+      setHasError(true);
     } finally {
       // Only clear loading if this controller is still active
       if (abortControllerRef.current === controller) {
@@ -123,8 +128,10 @@ export function InfinitePromptList({
     }
   }, [isLoading, hasMore, page, filters]);
 
-  // Intersection Observer for infinite scroll
+  // Intersection Observer for infinite scroll (disabled if there was an error)
   useEffect(() => {
+    if (hasError) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && hasMore && !isLoading) {
@@ -139,7 +146,7 @@ export function InfinitePromptList({
     }
 
     return () => observer.disconnect();
-  }, [loadMore, hasMore, isLoading]);
+  }, [loadMore, hasMore, isLoading, hasError]);
 
   // Cleanup abort controller on unmount
   useEffect(() => {
@@ -183,13 +190,19 @@ export function InfinitePromptList({
         ))}
       </div>
 
-      {/* Loader / End indicator */}
+      {/* Loader / End indicator / Error state */}
       <div ref={loaderRef} className="flex items-center justify-center py-4">
         {isLoading && (
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Loader2 className="h-4 w-4 animate-spin" />
             {t("loading")}
           </div>
+        )}
+        {!isLoading && hasError && hasMore && (
+          <Button variant="outline" size="sm" onClick={loadMore}>
+            <RefreshCw className="h-4 w-4 mr-2" />
+            {t("loadMore")}
+          </Button>
         )}
         {!hasMore && prompts.length > 0 && (
           <p className="text-xs text-muted-foreground">{t("noMorePrompts")}</p>

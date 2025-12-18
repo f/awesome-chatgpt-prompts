@@ -150,7 +150,8 @@
     "deletePromptTitle": "このプロンプトを削除しますか？",
     "deletePromptDescription": "この操作は取り消せません。プロンプトは完全に削除されます。",
     "deleteError": "プロンプトの削除に失敗しました",
-    "noMorePrompts": "最後まで表示しました",
+    "noMorePrompts": "すべて表示しました",
+    "loadMore": "もっと読み込む",
     "loading": "読み込み中...",
     "types": {
       "text": "テキスト",
