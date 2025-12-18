@@ -16,6 +16,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { PromptList } from "@/components/prompts/prompt-list";
 import { PromptCard, type PromptCardProps } from "@/components/prompts/prompt-card";
 import { McpServerPopup } from "@/components/mcp/mcp-server-popup";
+import { PrivatePromptsNote } from "@/components/prompts/private-prompts-note";
 
 interface UserProfilePageProps {
   params: Promise<{ username: string }>;
@@ -131,7 +132,7 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
   };
 
   // Fetch prompts, pinned prompts, contributions, and counts
-  const [promptsRaw, total, totalUpvotes, pinnedPromptsRaw, contributionsRaw] = await Promise.all([
+  const [promptsRaw, total, totalUpvotes, pinnedPromptsRaw, contributionsRaw, privatePromptsCount] = await Promise.all([
     db.prompt.findMany({
       where,
       orderBy: { createdAt: "desc" },
@@ -171,6 +172,14 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
       take: 50,
       include: promptInclude,
     }),
+    // Count private prompts (only relevant for owner)
+    isOwner ? db.prompt.count({
+      where: {
+        authorId: user.id,
+        isPrivate: true,
+        deletedAt: null,
+      },
+    }) : Promise.resolve(0),
   ]);
 
   // Transform to include voteCount and contributorCount
@@ -410,6 +419,9 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
         </TabsList>
 
         <TabsContent value="prompts">
+          {/* Private Prompts MCP Note - only shown to owner with private prompts */}
+          {isOwner && <PrivatePromptsNote count={privatePromptsCount} />}
+
           {/* Pinned Prompts Section */}
           {pinnedPrompts.length > 0 && (
             <div className="mb-6 pb-6 border-b">

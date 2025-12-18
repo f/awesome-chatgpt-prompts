@@ -638,7 +638,8 @@
     "contributionsCount": "contribuições",
     "noContributions": "Nenhuma contribuição ainda",
     "noContributionsOwner": "Você ainda não contribuiu para nenhum prompt",
-    "contributedTo": "Contribuiu para o prompt de {author}"
+    "contributedTo": "Contribuiu para o prompt de {author}",
+    "privatePromptsNote": "Você tem {count} {count, plural, one {prompt privado} other {prompts privados}}. Acesse-os via MCP usando sua chave de API em clientes compatíveis."
   },
   "subscription": {
     "subscribe": "Inscrever-se",

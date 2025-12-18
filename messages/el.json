@@ -638,7 +638,8 @@
     "contributionsCount": "συνεισφορές",
     "noContributions": "Δεν υπάρχουν συνεισφορές ακόμα",
     "noContributionsOwner": "Δεν έχετε συνεισφέρει σε prompts ακόμα",
-    "contributedTo": "Συνεισφορά στο prompt του {author}"
+    "contributedTo": "Συνεισφορά στο prompt του {author}",
+    "privatePromptsNote": "Έχετε {count} ιδιωτικά {count, plural, one {prompt} other {prompts}}. Αποκτήστε πρόσβαση μέσω MCP χρησιμοποιώντας το κλειδί API σας σε υποστηριζόμενους clients."
   },
   "subscription": {
     "subscribe": "Εγγραφή",

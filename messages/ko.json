@@ -638,7 +638,8 @@
     "contributionsCount": "기여",
     "noContributions": "아직 기여가 없습니다",
     "noContributionsOwner": "아직 프롬프트에 기여하지 않았습니다",
-    "contributedTo": "{author}의 프롬프트에 기여함"
+    "contributedTo": "{author}의 프롬프트에 기여함",
+    "privatePromptsNote": "{count}개의 비공개 프롬프트가 있습니다. 지원되는 클라이언트에서 API 키를 사용하여 MCP를 통해 액세스할 수 있습니다."
   },
   "subscription": {
     "subscribe": "구독",

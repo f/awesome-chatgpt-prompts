@@ -638,7 +638,8 @@
     "contributionsCount": "contributions",
     "noContributions": "No contributions yet",
     "noContributionsOwner": "You haven't contributed to any prompts yet",
-    "contributedTo": "Contributed to {author}'s prompt"
+    "contributedTo": "Contributed to {author}'s prompt",
+    "privatePromptsNote": "You have {count} private {count, plural, one {prompt} other {prompts}}. Access them via MCP using your API key in supported clients."
   },
   "subscription": {
     "subscribe": "Subscribe",

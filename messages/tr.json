@@ -638,7 +638,8 @@
     "contributionsCount": "katkı",
     "noContributions": "Henüz katkı yok",
     "noContributionsOwner": "Henüz hiçbir prompta katkıda bulunmadınız",
-    "contributedTo": "{author} kullanıcısının promptuna katkıda bulunuldu"
+    "contributedTo": "{author} kullanıcısının promptuna katkıda bulunuldu",
+    "privatePromptsNote": "{count} özel {count, plural, one {prompt} other {prompt}}unuz var. Desteklenen istemcilerde API anahtarınızı kullanarak MCP üzerinden erişebilirsiniz."
   },
   "subscription": {
     "subscribe": "Abone Ol",

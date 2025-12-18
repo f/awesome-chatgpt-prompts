@@ -638,7 +638,8 @@
     "contributionsCount": "תרומות",
     "noContributions": "אין תרומות עדיין",
     "noContributionsOwner": "עדיין לא תרמת לפרומפטים",
-    "contributedTo": "תרם לפרומפט של {author}"
+    "contributedTo": "תרם לפרומפט של {author}",
+    "privatePromptsNote": "יש לך {count} {count, plural, one {פרומפט פרטי} other {פרומפטים פרטיים}}. גש אליהם דרך MCP באמצעות מפתח ה-API שלך בלקוחות נתמכים."
   },
   "subscription": {
     "subscribe": "הירשם",

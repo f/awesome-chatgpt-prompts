@@ -638,7 +638,8 @@
     "contributionsCount": "вкладов",
     "noContributions": "Вкладов пока нет",
     "noContributionsOwner": "Вы еще не внесли вклад ни в один промпт",
-    "contributedTo": "Внес вклад в промпт {author}"
+    "contributedTo": "Внес вклад в промпт {author}",
+    "privatePromptsNote": "У вас {count} {count, plural, one {приватный промпт} few {приватных промпта} other {приватных промптов}}. Получите доступ через MCP, используя ваш API-ключ в поддерживаемых клиентах."
   },
   "subscription": {
     "subscribe": "Подписаться",

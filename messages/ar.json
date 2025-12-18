@@ -638,7 +638,8 @@
     "contributionsCount": "مساهمات",
     "noContributions": "لا توجد مساهمات بعد",
     "noContributionsOwner": "لم تساهم في أي أوامر بعد",
-    "contributedTo": "ساهم في أمر {author}"
+    "contributedTo": "ساهم في أمر {author}",
+    "privatePromptsNote": "لديك {count} {count, plural, one {أمر خاص} other {أوامر خاصة}}. يمكنك الوصول إليها عبر MCP باستخدام مفتاح API الخاص بك في العملاء المدعومين."
   },
   "subscription": {
     "subscribe": "اشتراك",

@@ -638,7 +638,8 @@
     "contributionsCount": "コントリビューション",
     "noContributions": "コントリビューションはまだありません",
     "noContributionsOwner": "まだどのプロンプトにも貢献していません",
-    "contributedTo": "{author}のプロンプトに貢献"
+    "contributedTo": "{author}のプロンプトに貢献",
+    "privatePromptsNote": "{count}件のプライベートプロンプトがあります。対応クライアントでAPIキーを使用してMCP経由でアクセスできます。"
   },
   "subscription": {
     "subscribe": "購読",
