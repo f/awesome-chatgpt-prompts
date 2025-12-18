@@ -21,6 +21,7 @@ export function MiniPromptCard({ prompt }: MiniPromptCardProps) {
     <Link
       href={getPromptUrl(prompt.id, prompt.slug)}
       target="_blank"
+      prefetch={false}
       className="block p-2 border rounded-md hover:bg-accent/50 transition-colors text-xs"
     >
       <div className="flex items-start justify-between gap-2 mb-1">

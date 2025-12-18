@@ -352,23 +352,24 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
               <Link 
                 href="https://deepwiki.com/f/awesome-chatgpt-prompts" 
                 target="_blank" 
-                rel="noopener noreferrer" 
+                rel="noopener noreferrer"
+                prefetch={false}
                 className="hover:text-foreground flex items-center gap-1.5"
               >
                 <Image src={DeepWikiIcon} alt="" width={12} height={12} />
                 DeepWiki
                 <ExternalLink className="h-2.5 w-2.5 ml-auto opacity-50" />
               </Link>
-              <Link href="/docs/self-hosting" className="hover:text-foreground">
+              <Link href="/docs/self-hosting" prefetch={false} className="hover:text-foreground">
                 {t("footer.docs")}
               </Link>
-              <Link href="/docs/api" className="hover:text-foreground">
+              <Link href="/docs/api" prefetch={false} className="hover:text-foreground">
                 {t("footer.api")}
               </Link>
-              <Link href="/privacy" className="hover:text-foreground">
+              <Link href="/privacy" prefetch={false} className="hover:text-foreground">
                 {t("footer.privacy")}
               </Link>
-              <Link href="/terms" className="hover:text-foreground">
+              <Link href="/terms" prefetch={false} className="hover:text-foreground">
                 {t("footer.terms")}
               </Link>
             </>
@@ -376,7 +377,8 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
           <Link 
             href="https://github.com/f/awesome-chatgpt-prompts" 
             target="_blank" 
-            rel="noopener noreferrer" 
+            rel="noopener noreferrer"
+            prefetch={false}
             className="hover:text-foreground flex items-center gap-1.5"
           >
             <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">

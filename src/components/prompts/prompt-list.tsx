@@ -48,11 +48,11 @@ export function PromptList({ prompts, currentPage, totalPages, pinnedIds, showPi
       {totalPages > 1 && (
         <div className="flex items-center justify-center gap-2 pt-4">
           <Button variant="outline" size="sm" className="h-7 text-xs" disabled={currentPage <= 1} asChild={currentPage > 1}>
-            {currentPage > 1 ? <Link href={`?page=${currentPage - 1}`}>Previous</Link> : <span>Previous</span>}
+            {currentPage > 1 ? <Link href={`?page=${currentPage - 1}`} prefetch={false}>Previous</Link> : <span>Previous</span>}
           </Button>
           <span className="text-xs text-muted-foreground">{currentPage} / {totalPages}</span>
           <Button variant="outline" size="sm" className="h-7 text-xs" disabled={currentPage >= totalPages} asChild={currentPage < totalPages}>
-            {currentPage < totalPages ? <Link href={`?page=${currentPage + 1}`}>Next</Link> : <span>Next</span>}
+            {currentPage < totalPages ? <Link href={`?page=${currentPage + 1}`} prefetch={false}>Next</Link> : <span>Next</span>}
           </Button>
         </div>
       )}
