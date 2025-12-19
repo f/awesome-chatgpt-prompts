@@ -164,8 +164,9 @@
     },
     "inputType": "פרומפט משתמש",
     "outputType": "תגובת AI",
+    "afterAiProcessing": "לאחר עיבוד AI...",
     "inputTypeDescription": "איך הפרומפט שלך מעוצב",
-    "outputTypeDescription": "איזה סוג תגובה ה-AI יפיק",
+    "outputTypeDescription": "הראה לקהילה איך הפרומפט הזה מתפקד כשהוא רץ בכלי AI. אתה יכול ליצור את התוצרים בעצמך באמצעות אפליקציית ה-AI המועדפת עליך.",
     "outputTypeStructuredNote": "פרומפטים מובנים יכולים לייצר סוגי פלט שונים",
     "inputTypes": {
       "text": "פרומפט טקסט",

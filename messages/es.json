@@ -164,8 +164,9 @@
     },
     "inputType": "Prompt del Usuario",
     "outputType": "Respuesta de IA",
+    "afterAiProcessing": "Después del procesamiento de IA...",
     "inputTypeDescription": "Cómo está formateado tu prompt",
-    "outputTypeDescription": "Qué tipo de respuesta generará la IA",
+    "outputTypeDescription": "Muestra a la comunidad cómo funciona este prompt cuando se ejecuta en herramientas de IA. Puedes generar las salidas tú mismo usando tu aplicación de IA favorita.",
     "outputTypeStructuredNote": "Los prompts estructurados pueden producir varios tipos de salida",
     "inputTypes": {
       "text": "Prompt de Texto",

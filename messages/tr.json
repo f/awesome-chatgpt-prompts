@@ -164,8 +164,9 @@
     },
     "inputType": "Kullanıcı Promptu",
     "outputType": "AI Yanıtı",
-    "inputTypeDescription": "Promptunuz nasıl formatlanmış",
-    "outputTypeDescription": "AI'ın üreteceği yanıt türü",
+    "afterAiProcessing": "AI işlendikten sonra...",
+    "inputTypeDescription": "Promptunuzun formatı",
+    "outputTypeDescription": "Bu prompt AI araçlarında çalıştırıldığında nasıl performans gösterdiğini topluluğa gösterin. Çıktıları kendiniz favori AI uygulamanızı kullanarak oluşturabilirsiniz.",
     "outputTypeStructuredNote": "Yapılandırılmış promptlar çeşitli çıktı türleri üretebilir",
     "inputTypes": {
       "text": "Metin Promptu",

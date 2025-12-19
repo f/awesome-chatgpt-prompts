@@ -164,8 +164,9 @@
     },
     "inputType": "사용자 프롬프트",
     "outputType": "AI 응답",
+    "afterAiProcessing": "AI 처리 후...",
     "inputTypeDescription": "프롬프트 형식",
-    "outputTypeDescription": "AI가 생성할 응답 유형",
+    "outputTypeDescription": "이 프롬프트가 AI 도구에서 실행될 때 어떻게 작동하는지 커뮤니티에 보여주세요. 좋아하는 AI 앱을 사용하여 직접 출력을 생성할 수 있습니다.",
     "outputTypeStructuredNote": "구조화된 프롬프트는 다양한 출력 유형을 생성할 수 있습니다",
     "inputTypes": {
       "text": "텍스트 프롬프트",

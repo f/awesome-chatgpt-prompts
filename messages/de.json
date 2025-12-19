@@ -164,8 +164,9 @@
     },
     "inputType": "Benutzer-Prompt",
     "outputType": "KI-Antwort",
+    "afterAiProcessing": "Nach KI-Verarbeitung...",
     "inputTypeDescription": "Wie Ihr Prompt formatiert ist",
-    "outputTypeDescription": "Welche Art von Antwort die KI generieren wird",
+    "outputTypeDescription": "Zeigen Sie der Community, wie dieser Prompt funktioniert, wenn er mit KI-Tools ausgeführt wird. Sie können die Ausgaben selbst mit Ihrer bevorzugten KI-App generieren.",
     "outputTypeStructuredNote": "Strukturierte Prompts können verschiedene Ausgabetypen erzeugen",
     "inputTypes": {
       "text": "Text-Prompt",

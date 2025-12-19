@@ -164,8 +164,9 @@
     },
     "inputType": "User Prompt",
     "outputType": "AI Response",
+    "afterAiProcessing": "After AI processing...",
     "inputTypeDescription": "How your prompt is formatted",
-    "outputTypeDescription": "What type of response the AI will generate",
+    "outputTypeDescription": "Show the community how this prompt performs when run on AI tools. You can generate outputs yourself using your favorite AI app.",
     "outputTypeStructuredNote": "Structured prompts can produce various output types",
     "inputTypes": {
       "text": "Text Prompt",

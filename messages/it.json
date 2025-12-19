@@ -163,9 +163,10 @@
       "document": "Documento"
     },
     "inputType": "Prompt Utente",
-    "outputType": "Risposta IA",
+    "outputType": "Risposta AI",
+    "afterAiProcessing": "Dopo l'elaborazione AI...",
     "inputTypeDescription": "Come è formattato il tuo prompt",
-    "outputTypeDescription": "Tipo di risposta che l'IA genererà",
+    "outputTypeDescription": "Mostra alla community come funziona questo prompt quando viene eseguito su strumenti AI. Puoi generare gli output tu stesso usando la tua app AI preferita.",
     "outputTypeStructuredNote": "I prompt strutturati possono produrre vari tipi di output",
     "inputTypes": {
       "text": "Prompt Testuale",

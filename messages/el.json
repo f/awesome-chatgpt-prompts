@@ -164,8 +164,9 @@
     },
     "inputType": "Prompt χρήστη",
     "outputType": "Απάντηση AI",
-    "inputTypeDescription": "Πώς είναι διαμορφωμένο το prompt σας",
-    "outputTypeDescription": "Τι τύπο απάντησης θα παράγει το AI",
+    "afterAiProcessing": "Μετά την επεξεργασία AI...",
+    "inputTypeDescription": "Πώς είναι μορφοποιημένο το prompt σας",
+    "outputTypeDescription": "Δείξτε στην κοινότητα πώς αποδίδει αυτό το prompt όταν εκτελείται σε εργαλεία AI. Μπορείτε να δημιουργήσετε τα αποτελέσματα μόνοι σας χρησιμοποιώντας την αγαπημένη σας εφαρμογή AI.",
     "outputTypeStructuredNote": "Τα δομημένα prompts μπορούν να παράγουν διάφορους τύπους εξόδου",
     "inputTypes": {
       "text": "Prompt κειμένου",
