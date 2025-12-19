@@ -1,0 +1,64 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: prompts_db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "${DB_PORT}:5432"
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: prompts_app
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      NEXTAUTH_URL: ${NEXTAUTH_URL}
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+      HOSTNAME: 0.0.0.0
+      PORT: 3000
+      NODE_ENV: development
+    ports:
+      - "${APP_PORT}:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./:/app
+      - ./data:/data
+      - node_modules:/app/node_modules
+    command: >
+      sh -lc '
+        until pg_isready -h db -U ${POSTGRES_USER} -d ${POSTGRES_DB}; do sleep 1; done
+        npm install
+        npm run db:push
+        npm run dev
+      '
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: prompts_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      PGADMIN_CONFIG_SERVER_MODE: "True"
+    ports:
+      - "${PGADMIN_PORT}:80"
+    volumes:
+      - ./data/pgadmin:/var/lib/pgadmin
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  node_modules:
