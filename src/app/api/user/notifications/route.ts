@@ -79,6 +79,9 @@ export async function GET() {
     console.error("Get notifications error:", error);
     return NextResponse.json(DEFAULT_RESPONSE);
   }
+
+  // Fallback return (should never reach here)
+  return NextResponse.json(DEFAULT_RESPONSE);
 }
 
 // POST - Mark notifications as read
@@ -124,4 +127,7 @@ export async function POST(request: Request) {
     console.error("Mark notifications read error:", error);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
+
+  // Fallback return (should never reach here)
+  return NextResponse.json({ success: true });
 }
