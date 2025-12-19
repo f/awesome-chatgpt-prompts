@@ -283,7 +283,7 @@ export default async function HomePage() {
               <div className="flex flex-col md:flex-row items-center justify-center gap-1.5 mt-6 pt-7 border-t text-xs text-muted-foreground">
                 <span><b>prompts.chat</b> is built with</span>
                 <span className="inline-flex items-center gap-1.5">
-                  <Link href="https://windsurf.com/?utm_source=prompts.chat" target="_blank" rel="noopener noreferrer">
+                  <Link href="https://wind.surf/prompts-chat" target="_blank" rel="noopener noreferrer">
                     <Image
                       src="/sponsors/windsurf.svg"
                       alt="Windsurf"

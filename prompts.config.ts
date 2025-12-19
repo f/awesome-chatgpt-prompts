@@ -78,7 +78,7 @@ export default defineConfig({
       items: [
         // Add sponsors here
         { name: "Clemta", logo: '/sponsors/clemta.webp', url: "https://clemta.com/?utm_source=prompts.chat" },
-        { name: "Cognition", logo: "/sponsors/cognition.svg", url: "https://windsurf.com/?utm_source=prompts.chat" },
+        { name: "Cognition", logo: "/sponsors/cognition.svg", url: "https://wind.surf/prompts-chat" },
         { name: "warp.dev", className: 'p-2', logo: '/sponsors/warp.svg', url: "https://warp.dev/?utm_source=prompts.chat" },
       ],
     },
