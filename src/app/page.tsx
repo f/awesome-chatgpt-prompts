@@ -281,7 +281,7 @@ export default async function HomePage() {
             </div>
             {!useCloneBranding && (
               <div className="flex flex-col md:flex-row items-center justify-center gap-1.5 mt-6 pt-7 border-t text-xs text-muted-foreground">
-                <span><b>prompts.chat</b> is completely vibecoded via <b>Cognition</b> products:</span>
+                <span><b>prompts.chat</b> is vibecoded via <b>Cognition</b> products:</span>
                 <span className="inline-flex items-center gap-1.5">
                   <Link href="https://windsurf.com/?utm_source=prompts.chat" target="_blank" rel="noopener noreferrer">
                     <Image

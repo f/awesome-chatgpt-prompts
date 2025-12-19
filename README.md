@@ -27,7 +27,7 @@
   <a href="https://warp.dev/?utm_source=prompts.chat" align="center">
     <img align="center" height="30" alt="Warp logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/warp.svg">
   </a><br><br>
-  <sub>prompts.chat is completely vibecoded via Cognition products: Windsurf and Devin</sub>
+  <sub>prompts.chat is vibecoded via Cognition products: Windsurf and Devin</sub>
 <hr>
   <sub><a href="https://github.com/sponsors/f/sponsorships?sponsor=f&amp;tier_id=529895">Be my sponsor and your logo will be here!</a></sub>
 </div>
