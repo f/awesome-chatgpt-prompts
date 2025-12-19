@@ -20,15 +20,15 @@
 <div align="center">
 
   <a href="https://clemta.com/?utm_source=prompts.chat" align="center" target="_blank">
-    <img height="50" alt="Clemta logo" src="https://clemta.com/wp-content/uploads/2023/03/logo-clemta-com-1.png.webp">
+    <img height="50" alt="Clemta logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/clemta.webp">
   </a>
   &nbsp;&nbsp;&nbsp;
   <a href="https://windsurf.com/?utm_source=prompts.chat" align="center" target="_blank">
-    <img height="50" alt="Cognition logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/cognition.svg">
+    <img height="50" alt="Cognition logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/cognition.svg">
   </a>
   &nbsp;&nbsp;&nbsp;
   <a href="https://warp.dev/?utm_source=prompts.chat" align="center" target="_blank">
-    <img height="50" alt="Warp logo" src="https://warp.dev/warp-logo.svg">
+    <img height="50" alt="Warp logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/warp.svg">
   </a>
   <br><br>
   <sub>prompts.chat is completely vibecoded via Cognition products: Windsurf and Devin</sub>

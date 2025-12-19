@@ -285,7 +285,7 @@ export default async function HomePage() {
                 <span className="inline-flex items-center gap-1.5">
                   <Link href="https://windsurf.com/?utm_source=prompts.chat" target="_blank" rel="noopener noreferrer">
                     <Image
-                      src="/windsurf.svg"
+                      src="/sponsors/windsurf.svg"
                       alt="Windsurf"
                       width={80}
                       height={20}
@@ -295,14 +295,14 @@ export default async function HomePage() {
                   <span>and</span>
                   <Link href="https://devin.ai/?utm_source=prompts.chat" target="_blank" rel="noopener noreferrer">
                     <Image
-                      src="/devin.svg"
+                      src="/sponsors/devin.svg"
                       alt="Devin"
                       width={80}
                       height={20}
                       className="h-6 w-auto dark:hidden"
                     />
                     <Image
-                      src="/devin-dark.svg"
+                      src="/sponsors/devin-dark.svg"
                       alt="Devin"
                       width={80}
                       height={20}
