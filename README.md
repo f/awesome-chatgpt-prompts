@@ -19,11 +19,19 @@
 
 <div align="center">
 
-  <a href="https://clemta.com" align="center" target="_blank">
+  <a href="https://clemta.com/?utm_source=prompts.chat" align="center" target="_blank">
     <img height="50" alt="Clemta logo" src="https://clemta.com/wp-content/uploads/2023/03/logo-clemta-com-1.png.webp">
   </a>
-  <br>
-  <sub>With Clemta, you can run your company from the comfort of your home.</sub>
+  &nbsp;&nbsp;&nbsp;
+  <a href="https://windsurf.com/?utm_source=prompts.chat" align="center" target="_blank">
+    <img height="50" alt="Cognition logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/cognition.svg">
+  </a>
+  &nbsp;&nbsp;&nbsp;
+  <a href="https://warp.dev/?utm_source=prompts.chat" align="center" target="_blank">
+    <img height="50" alt="Warp logo" src="https://warp.dev/warp-logo.svg">
+  </a>
+  <br><br>
+  <sub>prompts.chat is completely vibecoded via Cognition products: Windsurf and Devin</sub>
 <hr>
   <sub><a href="https://github.com/sponsors/f/sponsorships?sponsor=f&amp;tier_id=529895">Be my sponsor and your logo will be here!</a></sub>
 </div>
