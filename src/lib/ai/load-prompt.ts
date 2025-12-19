@@ -16,7 +16,7 @@ export interface PromptFile {
   model?: string;
   modelParameters?: {
     temperature?: number;
-    max_tokens?: number;
+    maxTokens?: number;
   };
   messages: PromptMessage[];
   testData?: Array<Record<string, unknown>>;
