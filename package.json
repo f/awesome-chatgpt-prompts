@@ -57,6 +57,7 @@
     "sharp": "^0.33.5",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.4.0",
+    "yaml": "^2.8.2",
     "zod": "^4.1.13"
   },
   "prisma": {

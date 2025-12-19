@@ -1,5 +1,9 @@
 import OpenAI from "openai";
 import { getConfig } from "@/lib/config";
+import { loadPrompt, getSystemPrompt, interpolatePrompt } from "./load-prompt";
+
+const translatePrompt = loadPrompt("src/lib/ai/translate.prompt.yml");
+const sqlGenerationPrompt = loadPrompt("src/lib/ai/sql-generation.prompt.yml");
 
 let openai: OpenAI | null = null;
 
@@ -31,14 +35,10 @@ export async function isAIGenerationEnabled(): Promise<boolean> {
 export async function translateContent(content: string, targetLanguage: string): Promise<string> {
   const client = getOpenAIClient();
   
-  const systemPrompt = `You are a professional translator. Translate the following text to ${targetLanguage}.
-Rules:
-- Preserve all formatting, line breaks, and special characters
-- For variable placeholders like \${variablename} keep the variable name in English but translate any default value
-  Example: \${topic:technology} becomes \${topic:tecnología} in Spanish
-  Example: \${name} stays as \${name} (no default to translate)
-- Maintain the original tone and meaning
-- Return ONLY the translated text, no explanations or notes`;
+  const systemPrompt = interpolatePrompt(
+    getSystemPrompt(translatePrompt),
+    { targetLanguage }
+  );
 
   const response = await client.chat.completions.create({
     model: GENERATIVE_MODEL,
@@ -61,19 +61,7 @@ export async function generateSQL(prompt: string): Promise<string> {
 
   const client = getOpenAIClient();
   
-  const systemPrompt = `You are an SQL expert. Generate SQL queries for the Hugging Face datasets viewer.
-The dataset is "fka/awesome-chatgpt-prompts" with a "train" split.
-Available columns: act (prompt title), prompt (prompt content), for_devs (boolean), type (TEXT or STRUCTURED), contributor (author name).
-
-Rules:
-- Always use "train" as the table name
-- Return ONLY the SQL query, no explanations
-- Keep queries simple and efficient
-- Use proper SQL syntax for DuckDB
-- The generated SQL strings must be in English since all prompts are in English (e.g. if user searches for "çiçekçi" it's florist.)
-- Use multiple matchers like SELECT act, prompt FROM train WHERE LOWER(prompt) LIKE '%travel%' OR LOWER(act) LIKE '%travel%' OR LOWER(act) LIKE '%guide%' LIMIT 20;
-- Be generative and creative. e.g. if user wrote "joke", search for similar terms.
-- SQL must be formatted into lines.`;
+  const systemPrompt = getSystemPrompt(sqlGenerationPrompt);
 
   const response = await client.chat.completions.create({
     model: GENERATIVE_MODEL,

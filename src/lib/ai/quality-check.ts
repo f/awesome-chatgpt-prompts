@@ -1,4 +1,7 @@
 import OpenAI from "openai";
+import { loadPrompt, getSystemPrompt } from "./load-prompt";
+
+const qualityCheckPrompt = loadPrompt("src/lib/ai/quality-check.prompt.yml");
 
 // DelistReason enum values (matches Prisma schema)
 export type DelistReason = "TOO_SHORT" | "NOT_ENGLISH" | "LOW_QUALITY" | "NOT_LLM_INSTRUCTION" | "MANUAL";
@@ -98,40 +101,7 @@ export async function checkPromptQuality(
   try {
     const client = getOpenAIClient();
 
-    const systemPrompt = `You are a quality assurance system for an AI prompt sharing platform.
-Your job is to evaluate if a submitted prompt meets quality standards.
-
-IMPORTANT: You must be VERY conservative. Only flag prompts that are CLEARLY problematic.
-When in doubt, APPROVE the prompt. False positives are worse than false negatives.
-
-Evaluate the prompt for these issues:
-
-1. LOW_QUALITY: The prompt is extremely low quality.
-   - Random characters, keyboard mashing, or gibberish
-   - Completely meaningless or incoherent text
-   - NOT low quality: Simple prompts, informal language, or beginner-level prompts
-
-2. NOT_LLM_INSTRUCTION: The content is NOT an instruction for an generative AI tool (LLM, image, video or sound generation text).
-   - This platform is for LLM, image, video or sound generation prompts/instructions only
-   - Flag if it's clearly NOT a prompt (e.g., a recipe, personal note, random text, advertisement)
-   - APPROVE if it could reasonably be used to instruct an AI, even if unusual
-   - APPROVE roleplay scenarios, persona definitions, and creative prompts
-   - APPROVE technical, coding, or specialized domain prompts
-
-Respond with a JSON object:
-{
-  "shouldDelist": boolean,
-  "reason": "NOT_ENGLISH" | "LOW_QUALITY" | "NOT_LLM_INSTRUCTION" | null,
-  "confidence": number (0.0 to 1.0),
-  "details": "Brief explanation"
-}
-
-CRITICAL RULES:
-- Only set shouldDelist: true if confidence >= 0.85
-- When uncertain, set shouldDelist: false
-- Creative, roleplay, and unusual prompts are VALID
-- Short but clear prompts are VALID
-- Prompts in specialized domains are VALID`;
+    const systemPrompt = getSystemPrompt(qualityCheckPrompt);
 
     const userMessage = `Title: ${title}
 ${description ? `Description: ${description}\n` : ""}
