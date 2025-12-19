@@ -4,7 +4,7 @@ set dotenv-load := true
 # Use bash for recipe execution
 set shell:=["bash", "-eu", "-o", "pipefail", "-c"]
 
-project_name := "awesome-chatgpt-prompts"
+project_name := "prompts.chat"
 
 compose := "docker compose"
 
