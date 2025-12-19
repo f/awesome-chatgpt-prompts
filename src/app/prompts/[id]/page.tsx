@@ -31,16 +31,22 @@ interface PromptPageProps {
 
 /**
  * Extracts the prompt ID from a URL parameter that may contain a slug
- * Supports formats: "abc123" or "abc123_some-slug"
+ * Supports formats: "abc123", "abc123_some-slug", or "abc123_some-slug.prompt.md"
  */
 function extractPromptId(idParam: string): string {
-  // If the param contains an underscore, extract the ID (everything before first underscore)
-  const underscoreIndex = idParam.indexOf("_");
-  if (underscoreIndex !== -1) {
-    return idParam.substring(0, underscoreIndex);
+  let param = idParam;
+  // Strip .prompt.md suffix if present
+  if (param.endsWith(".prompt.md")) {
+    param = param.slice(0, -".prompt.md".length);
   }
-  return idParam;
+  // If the param contains an underscore, extract the ID (everything before first underscore)
+  const underscoreIndex = param.indexOf("_");
+  if (underscoreIndex !== -1) {
+    return param.substring(0, underscoreIndex);
+  }
+  return param;
 }
+
 
 export async function generateMetadata({ params }: PromptPageProps): Promise<Metadata> {
   const { id: idParam } = await params;
@@ -419,6 +425,8 @@ export default async function PromptPage({ params }: PromptPageProps) {
                 isLoggedIn={!!session?.user}
                 categoryName={prompt.category?.name}
                 parentCategoryName={prompt.category?.parent?.name}
+                promptId={prompt.id}
+                promptSlug={prompt.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}
               />
             ) : (
               <InteractivePromptContent 
@@ -427,6 +435,8 @@ export default async function PromptPage({ params }: PromptPageProps) {
                 isLoggedIn={!!session?.user}
                 categoryName={prompt.category?.name}
                 parentCategoryName={prompt.category?.parent?.name}
+                promptId={prompt.id}
+                promptSlug={prompt.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}
               />
             )}
           </div>

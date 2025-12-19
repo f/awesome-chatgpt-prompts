@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { RunPromptButton } from "./run-prompt-button";
 import { TranslateButton } from "./translate-button";
+import { DownloadPromptDropdown } from "./download-prompt-dropdown";
 import { CodeView } from "@/components/ui/code-view";
 import { prettifyJson } from "@/lib/format";
 
@@ -27,6 +28,8 @@ interface InteractivePromptContentProps {
   isLoggedIn?: boolean;
   categoryName?: string;
   parentCategoryName?: string;
+  promptId?: string;
+  promptSlug?: string;
 }
 
 // Parse ${variablename:defaultvalue} or ${variablename} patterns
@@ -143,7 +146,9 @@ export function InteractivePromptContent({
   title,
   isLoggedIn = false,
   categoryName,
-  parentCategoryName
+  parentCategoryName,
+  promptId,
+  promptSlug
 }: InteractivePromptContentProps) {
   const t = useTranslations("common");
   const [copied, setCopied] = useState(false);
@@ -264,6 +269,7 @@ export function InteractivePromptContent({
               />
             </div>
             <div className="flex items-center gap-2">
+              {promptId && <DownloadPromptDropdown promptId={promptId} promptSlug={promptSlug} />}
               <RunPromptButton 
                 content={displayContent}
                 unfilledVariables={unfilledVariables}
@@ -301,6 +307,7 @@ export function InteractivePromptContent({
             />
           </div>
           <div className="flex items-center gap-2">
+            {promptId && <DownloadPromptDropdown promptId={promptId} promptSlug={promptSlug} />}
             <RunPromptButton 
               content={displayedContent}
               unfilledVariables={unfilledVariables}
@@ -346,6 +353,7 @@ export function InteractivePromptContent({
                 {t("reset")}
               </Button>
             )}
+            {promptId && <DownloadPromptDropdown promptId={promptId} promptSlug={promptSlug} />}
             <RunPromptButton 
               content={getFinalContent()}
               unfilledVariables={unfilledVariables}
@@ -449,6 +457,7 @@ export function InteractivePromptContent({
               {t("reset")}
             </Button>
           )}
+          {promptId && <DownloadPromptDropdown promptId={promptId} promptSlug={promptSlug} />}
           <RunPromptButton 
             content={getFinalContent()}
             unfilledVariables={unfilledVariables}
