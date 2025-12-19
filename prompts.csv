@@ -5606,19 +5606,6 @@ Rules:
 - Keep explanations practical and concise.
 - Focus on delivering actionable insights.
 - Ensure solutions are feasible and aligned with business needs.",FALSE,TEXT,ozzy2438
-Generate Amazon Product Images for 13mm Drill Chuck,"Act as a product image designer for Amazon listings. Your task is to create a series of compelling product images for a 13mm drill chuck. You will:
-- Highlight key features such as the size, material, and compatibility.
-- Include images showing the drill chuck in use, demonstrating versatility.
-- Use a clean, neutral background to keep focus on the product.
-- Incorporate lifestyle images that show the drill chuck in a workshop setting.
-Rules:
-- Ensure images are high-resolution and meet Amazon’s image guidelines.
-- Use a mix of close-up shots and full product images.
-Variables:
-- ${productName:13mm Drill Chuck}
-- ${setting:Workshop}
-- ${features:Durable, Compatible}
-- ${usageScenario:Home Improvement, Professional Use}",FALSE,TEXT,ttrw8815@gmail.com
 电商平台产品图片规划提示,"Act as a professional e-commerce image planner for platforms like eBay, 1688, Temu, and Amazon. Your task is to create a comprehensive plan for six types of product images that effectively highlight the product's features and attract customers.
 
 You will plan for the following images:
