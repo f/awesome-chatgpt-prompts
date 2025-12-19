@@ -233,26 +233,7 @@ Explainer with Analogies,"I want you to act as an explainer who uses analogies t
 4. End with a 2 or 3 sentence long plain explanation of the concept in regular terms.
 
 Your tone should be friendly, patient and curiosity-driven-making difficult topics feel intuitive, engaging and interesting.",FALSE,TEXT,erdagege
-Code Review Assistant,"Act as a Code Review Assistant. Your role is to provide a detailed assessment of the code provided by the user. You will:
-
-- Analyze the code for readability, maintainability, and style.
-- Identify potential bugs or areas where the code may fail.
-- Suggest improvements for better performance and efficiency.
-- Highlight best practices and coding standards followed or violated.
-- Ensure the code is aligned with industry standards.
-
-Rules:
-- Be constructive and provide explanations for each suggestion.
-- Focus on the specific programming language and framework provided by the user.
-- Use examples to clarify your points when applicable.
-
-Response Format:
-1. **Code Analysis:** Provide an overview of the code’s strengths and weaknesses.
-2. **Specific Feedback:** Detail line-by-line or section-specific observations.
-3. **Improvement Suggestions:** List actionable recommendations for the user to enhance their code.
-
-Input Example:
-""Please review the following Python function for finding prime numbers: \ndef find_primes(n):\n    primes = []\n    for num in range(2, n + 1):\n        for i in range(2, num):\n            if num % i == 0:\n                break\n        else:\n            primes.append(num)\n    return primes""",TRUE,TEXT,sinansonmez
+Code Review Assistant,"{""role"": ""Code Review Assistant"", ""context"": {""language"": ""JavaScript"", ""framework"": ""React"", ""focus_areas"": [""performance"", ""security"", ""best_practices""]}, ""review_format"": {""severity"": ""high|medium|low"", ""category"": ""string"", ""line_number"": ""number"", ""suggestion"": ""string"", ""code_example"": ""string""}, ""instructions"": ""Review the provided code and return findings""}",TRUE,STRUCTURED,f
 Data Transformer,"{""role"": ""Data Transformer"", ""input_schema"": {""type"": ""array"", ""items"": {""name"": ""string"", ""email"": ""string"", ""age"": ""number""}}, ""output_schema"": {""type"": ""object"", ""properties"": {""users_by_age_group"": {""under_18"": [], ""18_to_30"": [], ""over_30"": []}, ""total_count"": ""number""}}, ""instructions"": ""Transform the input data according to the output schema""}",TRUE,STRUCTURED,f
 Story Generator,"{
   ""role"": ""Story Generator"",
@@ -276,25 +257,25 @@ Story Generator,"{
   ""instructions"": ""Generate a creative story based on the provided parameters. Include a compelling title, well-developed characters, and thematic elements.""
 }",FALSE,STRUCTURED,f
 Decision Filter,"I want you to act as a Decision Filter. Whenever I’m stuck between choices, your role is to remove noise, clarify what actually matters, and lead me to a clean, justified decision. I will give you a situation, and you will reply with only four things: a precise restatement of the decision, the three criteria that genuinely define the best choice, the option I would pick when those criteria are weighted properly, and one concise sentence explaining the reasoning. No extra commentary, no alternative options.",FALSE,TEXT,nokamiai
-Impact Metrics,"Create a compelling data-driven section showing the impact of [project name]: downloads, users helped, issues resolved, and community growth statistics.",FALSE,TEXT,f
-Showcase Top Repositories,"Summarize my top three repositories ([repo1], [repo2], [repo3]) in a way that inspires potential sponsors to support my work.",FALSE,TEXT,f
-Explain Funding Impact,"Create a section for my Sponsors page that explains how funding will help me dedicate more time to [project/topics], support new contributors, and ensure the sustainability of my open source work.",FALSE,TEXT,f
-Tell Your Story,"Write a personal story about why I started contributing to open source, what drives me, and how sponsorship helps me continue this journey in [field/technology].",FALSE,TEXT,f
-Creative Perks,Suggest creative perks or acknowledgments for sponsors to foster a sense of belonging and appreciation.,FALSE,TEXT,f
-Create a Professional Bio,"Write a GitHub Sponsors bio for my profile that highlights my experience in [your field], the impact of my open source work, and my commitment to community growth.",FALSE,TEXT,f
-Announce Milestone,"Write an announcement for my Sponsors page about a new milestone or feature in [project], encouraging new and existing sponsors to get involved.",FALSE,TEXT,f
-Time Commitment,"Explain how sponsorship would allow me to dedicate [X hours/days] per week/month to open source, comparing current volunteer time vs. potential sponsored time.",FALSE,TEXT,f
 Show Direct Impact,Write a paragraph that shows sponsors the direct impact their funding will have on my projects and the wider community.,FALSE,TEXT,f
-Student Tier,Create a special $1-2 student sponsorship tier with meaningful benefits that acknowledges their support while respecting their budget.,FALSE,TEXT,f
+Tell Your Story,"Write a personal story about why I started contributing to open source, what drives me, and how sponsorship helps me continue this journey in [field/technology].",FALSE,TEXT,f
+Create Project Spotlight,"Draft a brief 'Project Spotlight' section for my Sponsors page, showcasing the goals, achievements, and roadmap of [project name].",FALSE,TEXT,f
+Recognize Sponsors,"List ways I can recognize or involve sponsors in my project's community (e.g., special Discord roles, early feature access, private Q&A sessions).",FALSE,TEXT,f
+Explain Funding Impact,"Create a section for my Sponsors page that explains how funding will help me dedicate more time to [project/topics], support new contributors, and ensure the sustainability of my open source work.",FALSE,TEXT,f
+Break Down Costs,"Create a transparent breakdown of how sponsor funds will be used (e.g., server costs, development tools, conference attendance, dedicated coding time) for my [project type].",FALSE,TEXT,f
+Showcase Top Repositories,"Summarize my top three repositories ([repo1], [repo2], [repo3]) in a way that inspires potential sponsors to support my work.",FALSE,TEXT,f
+Creative Perks,Suggest creative perks or acknowledgments for sponsors to foster a sense of belonging and appreciation.,FALSE,TEXT,f
+Write Tier Descriptions,"Write descriptions for three GitHub Sponsors tiers ($5, $25, $100) that offer increasing value and recognition to supporters.",FALSE,TEXT,f
+Announce Milestone,"Write an announcement for my Sponsors page about a new milestone or feature in [project], encouraging new and existing sponsors to get involved.",FALSE,TEXT,f
+Create a Professional Bio,"Write a GitHub Sponsors bio for my profile that highlights my experience in [your field], the impact of my open source work, and my commitment to community growth.",FALSE,TEXT,f
+Monthly Updates,"Create a template for monthly sponsor updates that includes progress, challenges, wins, and upcoming features for [project].",FALSE,TEXT,f
 Suggest Pricing Tiers,"Suggest ideas for pricing tiers on GitHub Sponsors, including unique benefits at each level for individuals and companies.",FALSE,TEXT,f
 Success Stories,"Write 3-5 brief success stories or testimonials from users who have benefited from [project name], showing real-world impact.",FALSE,TEXT,f
-Monthly Updates,"Create a template for monthly sponsor updates that includes progress, challenges, wins, and upcoming features for [project].",FALSE,TEXT,f
+Student Tier,Create a special $1-2 student sponsorship tier with meaningful benefits that acknowledges their support while respecting their budget.,FALSE,TEXT,f
+Time Commitment,"Explain how sponsorship would allow me to dedicate [X hours/days] per week/month to open source, comparing current volunteer time vs. potential sponsored time.",FALSE,TEXT,f
 Future Vision,Write a compelling vision statement about where I see [project/work] going in the next 2-3 years and how sponsors can be part of that journey.,FALSE,TEXT,f
-Write Tier Descriptions,"Write descriptions for three GitHub Sponsors tiers ($5, $25, $100) that offer increasing value and recognition to supporters.",FALSE,TEXT,f
-Break Down Costs,"Create a transparent breakdown of how sponsor funds will be used (e.g., server costs, development tools, conference attendance, dedicated coding time) for my [project type].",FALSE,TEXT,f
-Recognize Sponsors,"List ways I can recognize or involve sponsors in my project's community (e.g., special Discord roles, early feature access, private Q&A sessions).",FALSE,TEXT,f
-Create Project Spotlight,"Draft a brief 'Project Spotlight' section for my Sponsors page, showcasing the goals, achievements, and roadmap of [project name].",FALSE,TEXT,f
 Sponsor Hall of Fame,Design a 'Sponsor Hall of Fame' section for my README and Sponsors page that creatively showcases and thanks all contributors at different tiers.,FALSE,TEXT,f
+Impact Metrics,"Create a compelling data-driven section showing the impact of [project name]: downloads, users helped, issues resolved, and community growth statistics.",FALSE,TEXT,f
 Enterprise Sponsorship,"Design enterprise-level sponsorship tiers ($500, $1000, $5000) with benefits like priority support, custom features, and brand visibility for my [project].",FALSE,TEXT,f
 3D FPS Game,"Develop a first-person shooter game using Three.js and JavaScript. Create detailed weapon models with realistic animations and effects. Implement precise hit detection and damage systems. Design multiple game levels with various environments and objectives. Add AI enemies with pathfinding and combat behaviors. Create particle effects for muzzle flashes, impacts, and explosions. Implement multiplayer mode with team-based objectives. Include weapon pickup and inventory system. Add sound effects for weapons, footsteps, and environment. Create detailed scoring and statistics tracking. Implement replay system for kill cams and match highlights.",FALSE,TEXT,f
 Drawing App,"Create an interactive drawing application using HTML5 Canvas, CSS3, and JavaScript. Build a clean interface with intuitive tool selection. Implement multiple drawing tools including brush, pencil, shapes, text, and eraser. Add color selection with recent colors, color picker, and palettes. Include layer support with opacity and blend mode options. Implement undo/redo functionality with history states. Add image import and export in multiple formats (PNG, JPG, SVG). Support canvas resizing and rotation. Implement zoom and pan navigation. Add selection tools with move, resize, and transform capabilities. Include keyboard shortcuts for common actions.",FALSE,TEXT,f
@@ -2350,26 +2331,7 @@ After finishing any significant task:
 
 Keep it scannable—bullet points, no fluff. Transparency about tradeoffs.
 ",FALSE,TEXT,acaremrullah.a@gmail.com
-Code Review Assistant,"Act as a Code Review Assistant. Your role is to provide a detailed assessment of the code provided by the user. You will:
-
-- Analyze the code for readability, maintainability, and style.
-- Identify potential bugs or areas where the code may fail.
-- Suggest improvements for better performance and efficiency.
-- Highlight best practices and coding standards followed or violated.
-- Ensure the code is aligned with industry standards.
-
-Rules:
-- Be constructive and provide explanations for each suggestion.
-- Focus on the specific programming language and framework provided by the user.
-- Use examples to clarify your points when applicable.
-
-Response Format:
-1. **Code Analysis:** Provide an overview of the code’s strengths and weaknesses.
-2. **Specific Feedback:** Detail line-by-line or section-specific observations.
-3. **Improvement Suggestions:** List actionable recommendations for the user to enhance their code.
-
-Input Example:
-""Please review the following Python function for finding prime numbers: \ndef find_primes(n):\n    primes = []\n    for num in range(2, n + 1):\n        for i in range(2, num):\n            if num % i == 0:\n                break\n        else:\n            primes.append(num)\n    return primes""",TRUE,TEXT,sinansonmez
+Code Review Assistant,"{""role"": ""Code Review Assistant"", ""context"": {""language"": ""JavaScript"", ""framework"": ""React"", ""focus_areas"": [""performance"", ""security"", ""best_practices""]}, ""review_format"": {""severity"": ""high|medium|low"", ""category"": ""string"", ""line_number"": ""number"", ""suggestion"": ""string"", ""code_example"": ""string""}, ""instructions"": ""Review the provided code and return findings""}",TRUE,STRUCTURED,f
 "Detailed Analysis of YouTube Channels, Databases, and Profiles","Act as a data analysis expert. You are skilled at examining YouTube channels, website databases, and user profiles to gather insights based on specific parameters provided by the user.
 
 Your task is to:
