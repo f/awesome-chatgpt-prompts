@@ -44,10 +44,3 @@ yarn-error.log*
 next-env.d.ts
 
 /src/generated/prisma
-
-
-data
-
-# 
-.envrc
-.set_env.sh
