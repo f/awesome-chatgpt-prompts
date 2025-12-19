@@ -54,6 +54,63 @@ npm run db:push
 npm run dev
 ```
 
+### Quickstart: Running with Docker
+
+**Requirements**
+- Docker & Docker Compose
+- [Just command runner](https://github.com/casey/just)
+
+```bash
+just build
+just up
+# wait until all containers are running
+just db-seed
+```
+
+**Access the services**
+
+- Application: http://localhost:23000/
+
+- pgAdmin (PostgreSQL Web UI): http://localhost:23050/
+
+
+**Configure pgAdmin (PostgreSQL)**
+
+Open pgAdmin in your browser.
+
+- Log in using the credentials defined in .env.
+
+- In the left sidebar, right-click Servers → Register → Server…
+
+- Use the following settings.
+
+
+**General tab**
+
+| Field | Value   |
+| ----- | ------- |
+| Name  | prompts |
+
+**Connection tab**
+
+| Field               | Value   |
+| ------------------- | ------- |
+| Host name / Address | db      |
+| Port                | 5432    |
+| Username            | prompts |
+| Password            | prompts |
+| Save password       | enabled |
+
+The database will now appear under Servers and its tables can be viewed via `Schemas → public → Tables`.
+
+| Configuration               | Value     |
+| --------------------------- | --------- |
+| General:name                | `prompts` |
+| Connection:Hostname/Address | `db`      |
+| Connection:Username         | `prompts` |
+| Connection:Password         | `prompts` |
+
+
 ### Private Clone Setup (Recommended for Teams)
 
 For private deployments, use our **interactive setup wizard** to configure your instance with custom branding, disable sponsorship sections, and set up authentication:

@@ -9,7 +9,9 @@ services:
     ports:
       - "${DB_PORT}:5432"
     volumes:
-      - ./data/postgres:/var/lib/postgresql/data
+      # - ./data/postgres:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
+
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
       interval: 5s
@@ -33,10 +35,13 @@ services:
     depends_on:
       db:
         condition: service_healthy
+
     volumes:
       - ./:/app
-      - ./data:/data
+      # - ./data:/data
+      - app_data:/data
       - node_modules:/app/node_modules
+
     command: >
       sh -lc '
         until pg_isready -h db -U ${POSTGRES_USER} -d ${POSTGRES_DB}; do sleep 1; done
@@ -55,10 +60,15 @@ services:
     ports:
       - "${PGADMIN_PORT}:80"
     volumes:
-      - ./data/pgadmin:/var/lib/pgadmin
+      # - ./data/pgadmin:/var/lib/pgadmin
+      - pgadmin_data:/var/lib/pgadmin
     depends_on:
       db:
         condition: service_healthy
 
 volumes:
   node_modules:
+  pgadmin_data:
+  postgres_data:
+  app_data:
+  
