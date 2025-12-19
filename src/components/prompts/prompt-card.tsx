@@ -51,6 +51,11 @@ export interface PromptCardProps {
       id: string;
       name: string;
       slug: string;
+      parent?: {
+        id: string;
+        name: string;
+        slug: string;
+      } | null;
     } | null;
     tags: Array<{
       tag: {
@@ -263,7 +268,9 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
                 content={prompt.content} 
                 size="icon" 
                 variant="ghost" 
-                className="h-6 w-6" 
+                className="h-6 w-6"
+                categoryName={prompt.category?.name}
+                parentCategoryName={prompt.category?.parent?.name}
               />
             )}
           </div>

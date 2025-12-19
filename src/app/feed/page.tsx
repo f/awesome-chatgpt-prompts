@@ -54,10 +54,10 @@ export default async function FeedPage() {
             },
           },
           category: {
-            select: {
-              id: true,
-              name: true,
-              slug: true,
+            include: {
+              parent: {
+                select: { id: true, name: true, slug: true },
+              },
             },
           },
           tags: {

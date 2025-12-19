@@ -82,10 +82,10 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         },
       },
       category: {
-        select: {
-          id: true,
-          name: true,
-          slug: true,
+        include: {
+          parent: {
+            select: { id: true, name: true, slug: true },
+          },
         },
       },
       tags: {

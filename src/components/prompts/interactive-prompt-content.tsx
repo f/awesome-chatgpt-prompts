@@ -25,6 +25,8 @@ interface InteractivePromptContentProps {
   structuredFormat?: "json" | "yaml";
   title?: string;
   isLoggedIn?: boolean;
+  categoryName?: string;
+  parentCategoryName?: string;
 }
 
 // Parse ${variablename:defaultvalue} or ${variablename} patterns
@@ -139,7 +141,9 @@ export function InteractivePromptContent({
   isStructured = false,
   structuredFormat = "json",
   title,
-  isLoggedIn = false
+  isLoggedIn = false,
+  categoryName,
+  parentCategoryName
 }: InteractivePromptContentProps) {
   const t = useTranslations("common");
   const [copied, setCopied] = useState(false);
@@ -265,6 +269,8 @@ export function InteractivePromptContent({
                 unfilledVariables={unfilledVariables}
                 onVariablesFilled={handleVariablesFilled}
                 getContentWithVariables={getContentWithVariables}
+                categoryName={categoryName}
+                parentCategoryName={parentCategoryName}
               />
               <Button variant="ghost" size="sm" onClick={copyToClipboard}>
                 {copied ? (
@@ -300,6 +306,8 @@ export function InteractivePromptContent({
               unfilledVariables={unfilledVariables}
               onVariablesFilled={handleVariablesFilled}
               getContentWithVariables={getContentWithVariables}
+              categoryName={categoryName}
+              parentCategoryName={parentCategoryName}
             />
             <Button variant="ghost" size="sm" onClick={copyToClipboard}>
               {copied ? (
@@ -343,6 +351,8 @@ export function InteractivePromptContent({
               unfilledVariables={unfilledVariables}
               onVariablesFilled={handleVariablesFilled}
               getContentWithVariables={getContentWithVariables}
+              categoryName={categoryName}
+              parentCategoryName={parentCategoryName}
             />
             <Button variant="ghost" size="sm" onClick={copyToClipboard}>
               {copied ? (
@@ -444,6 +454,8 @@ export function InteractivePromptContent({
             unfilledVariables={unfilledVariables}
             onVariablesFilled={handleVariablesFilled}
             getContentWithVariables={getContentWithVariables}
+            categoryName={categoryName}
+            parentCategoryName={parentCategoryName}
           />
           <Button variant="ghost" size="sm" onClick={copyToClipboard}>
             {copied ? (

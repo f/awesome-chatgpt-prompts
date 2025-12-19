@@ -20,7 +20,11 @@ export async function DiscoveryPrompts({ isHomepage = false }: DiscoveryPromptsP
       select: { id: true, name: true, username: true, avatar: true },
     },
     category: {
-      select: { id: true, name: true, slug: true },
+      include: {
+        parent: {
+          select: { id: true, name: true, slug: true },
+        },
+      },
     },
     tags: {
       include: { tag: true },

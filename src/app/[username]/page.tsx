@@ -115,10 +115,10 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
       },
     },
     category: {
-      select: {
-        id: true,
-        name: true,
-        slug: true,
+      include: {
+        parent: {
+          select: { id: true, name: true, slug: true },
+        },
       },
     },
     tags: {

@@ -169,7 +169,11 @@ export async function POST(request: Request) {
             avatar: true,
           },
         },
-        category: true,
+        category: {
+          include: {
+            parent: true,
+          },
+        },
         tags: {
           include: {
             tag: true,
@@ -314,10 +318,10 @@ export async function GET(request: Request) {
             },
           },
           category: {
-            select: {
-              id: true,
-              name: true,
-              slug: true,
+            include: {
+              parent: {
+                select: { id: true, name: true, slug: true },
+              },
             },
           },
           tags: {

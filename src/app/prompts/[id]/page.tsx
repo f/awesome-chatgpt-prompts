@@ -78,7 +78,11 @@ export default async function PromptPage({ params }: PromptPageProps) {
           avatar: true,
         },
       },
-      category: true,
+      category: {
+        include: {
+          parent: true,
+        },
+      },
       tags: {
         include: {
           tag: true,
@@ -413,9 +417,17 @@ export default async function PromptPage({ params }: PromptPageProps) {
                 structuredFormat={(prompt.structuredFormat?.toLowerCase() as "json" | "yaml") || "json"}
                 title={t("promptContent")}
                 isLoggedIn={!!session?.user}
+                categoryName={prompt.category?.name}
+                parentCategoryName={prompt.category?.parent?.name}
               />
             ) : (
-              <InteractivePromptContent content={prompt.content} title={t("promptContent")} isLoggedIn={!!session?.user} />
+              <InteractivePromptContent 
+                content={prompt.content} 
+                title={t("promptContent")} 
+                isLoggedIn={!!session?.user}
+                categoryName={prompt.category?.name}
+                parentCategoryName={prompt.category?.parent?.name}
+              />
             )}
           </div>
           {/* Report link */}

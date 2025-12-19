@@ -76,10 +76,10 @@ export default async function TagPage({ params, searchParams }: TagPageProps) {
           },
         },
         category: {
-          select: {
-            id: true,
-            name: true,
-            slug: true,
+          include: {
+            parent: {
+              select: { id: true, name: true, slug: true },
+            },
           },
         },
         tags: {
