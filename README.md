@@ -18,19 +18,15 @@
 <h2 align="center">Sponsors</h3>
 
 <div align="center">
-
-  <a href="https://clemta.com/?utm_source=prompts.chat" align="center" target="_blank">
-    <img height="50" alt="Clemta logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/clemta.webp">
-  </a>
-  &nbsp;&nbsp;&nbsp;
-  <a href="https://windsurf.com/?utm_source=prompts.chat" align="center" target="_blank">
-    <img height="50" alt="Cognition logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/cognition.svg">
-  </a>
-  &nbsp;&nbsp;&nbsp;
-  <a href="https://warp.dev/?utm_source=prompts.chat" align="center" target="_blank">
-    <img height="50" alt="Warp logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/warp.svg">
-  </a>
-  <br><br>
+  <a href="https://clemta.com/?utm_source=prompts.chat" align="center">
+    <img align="center" height="50" alt="Clemta logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/clemta.webp">
+  </a><br><br>
+  <a href="https://windsurf.com/?utm_source=prompts.chat" align="center">
+    <img align="center" height="40" alt="Cognition logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/cognition.svg">
+  </a><br><br>
+  <a href="https://warp.dev/?utm_source=prompts.chat" align="center">
+    <img align="center" height="30" alt="Warp logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/warp.svg">
+  </a><br><br>
   <sub>prompts.chat is completely vibecoded via Cognition products: Windsurf and Devin</sub>
 <hr>
   <sub><a href="https://github.com/sponsors/f/sponsorships?sponsor=f&amp;tier_id=529895">Be my sponsor and your logo will be here!</a></sub>
