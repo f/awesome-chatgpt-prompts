@@ -101,6 +101,7 @@
   "prompts": {
     "title": "Prompts",
     "create": "Créer un Prompt",
+    "createInfo": "Cette plateforme n'exécute pas les prompts — c'est une bibliothèque communautaire pour partager et découvrir des prompts IA. Créez votre prompt ici, et d'autres pourront le copier et l'utiliser dans leurs outils IA préférés comme ChatGPT, Claude, Gemini ou tout autre LLM. La communauté peut également commenter vos prompts et suggérer des améliorations via des demandes de modification.",
     "hfDataStudio": {
       "button": "HF Data Studio",
       "sqlQuery": "Requête SQL",

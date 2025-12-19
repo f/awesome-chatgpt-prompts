@@ -101,6 +101,7 @@
   "prompts": {
     "title": "Promptlar",
     "create": "Prompt Oluştur",
+    "createInfo": "Bu platform promptları çalıştırmaz — AI promptlarını paylaşmak ve keşfetmek için topluluk odaklı bir kütüphanedir. Promptunuzu burada oluşturun, diğerleri ChatGPT, Claude, Gemini veya başka herhangi bir LLM gibi tercih ettikleri AI araçlarında kopyalayıp kullanabilir. Topluluk ayrıca promptlarınıza yorum yapabilir ve değişiklik istekleri aracılığıyla iyileştirmeler önerebilir.",
     "hfDataStudio": {
       "button": "HF Veri Stüdyosu",
       "sqlQuery": "SQL Sorgusu",

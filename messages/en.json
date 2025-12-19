@@ -101,6 +101,7 @@
   "prompts": {
     "title": "Prompts",
     "create": "Create Prompt",
+    "createInfo": "This platform doesn't run or execute prompts — it's a community-driven library for sharing and discovering AI prompts. Create your prompt here, and others can copy and use it in their preferred AI tools like ChatGPT, Claude, Gemini, or any other LLM. The community can also comment on your prompts and suggest improvements through change requests.",
     "hfDataStudio": {
       "button": "HF Data Studio",
       "sqlQuery": "SQL Query",
