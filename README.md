@@ -66,6 +66,35 @@ just up
 # wait until all containers are running
 just db-seed
 ```
+**.env Variables**
+
+```env
+COMPOSE_PROJECT_NAME="prompts.chat"
+
+# App
+APP_PORT=23000
+
+# Database
+DB_PORT=23010
+
+# Database credentials (already used elsewhere)
+# Add connection_limit and pool_timeout for serverless/production environments:
+# Example: ?schema=public&connection_limit=5&pool_timeout=10
+#
+# Use for local postgres:
+#   DATABASE_URL="postgresql://postgres:postgres@localhost:5432/prompts_chat?schema=public"
+# Use for postgres in docker container:
+DATABASE_URL="postgresql://prompts:prompts@db:5432/prompts?schema=public"
+
+POSTGRES_USER=prompts
+POSTGRES_PASSWORD=prompts
+POSTGRES_DB=prompts
+
+# pgAdmin
+PGADMIN_PORT=23050
+PGADMIN_DEFAULT_EMAIL=admin@example.com
+PGADMIN_DEFAULT_PASSWORD="your-super-secret-key-change-in-production"
+```
 
 **Access the services**
 
