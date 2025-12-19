@@ -3,7 +3,7 @@ description: An expert prompt engineer agent that helps users build high-quality
 model: openai/gpt-4o-mini
 modelParameters:
   temperature: 0.7
-  max_tokens: 2000
+  maxTokens: 2000
 messages:
   - role: system
     content: |
@@ -107,7 +107,8 @@ messages:
 
       Act fast. Build immediately. For edits, preserve existing content.
   - role: user
-    content: "{{user_request}}"
+    content: |
+      {{user_request}}
 testData:
-  - user_request: "Create a prompt for a code reviewer"
-    expected: "Should search for examples first, then create a prompt with Act as format"
+  - user_request: Create a prompt for a code reviewer
+    expected: Should search for examples first, then create a prompt with Act as format

@@ -3,7 +3,7 @@ description: A quality assurance system that evaluates if submitted prompts meet
 model: openai/gpt-4o
 modelParameters:
   temperature: 0.1
-  max_tokens: 300
+  maxTokens: 300
 messages:
   - role: system
     content: |
@@ -44,14 +44,13 @@ messages:
   - role: user
     content: |
       Title: {{title}}
-      {{#description}}Description: {{description}}
-      {{/description}}
+      Description: {{description}}
       Content:
       {{content}}
 testData:
-  - title: "Code Helper"
-    content: "Act as a senior developer. Help me write clean code."
+  - title: Code Helper
+    content: Act as a senior developer. Help me write clean code.
     expected: '{"shouldDelist": false, "reason": null, "confidence": 0.95, "details": "Valid coding prompt"}'
-  - title: "Random"
-    content: "asdfghjkl qwerty zxcvbn"
+  - title: Random
+    content: asdfghjkl qwerty zxcvbn
     expected: '{"shouldDelist": true, "reason": "LOW_QUALITY", "confidence": 0.95, "details": "Gibberish text"}'

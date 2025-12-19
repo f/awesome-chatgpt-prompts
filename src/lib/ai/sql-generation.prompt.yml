@@ -3,7 +3,7 @@ description: Generates SQL queries for searching the Hugging Face datasets viewe
 model: openai/gpt-4o-mini
 modelParameters:
   temperature: 0.7
-  max_tokens: 500
+  maxTokens: 500
 messages:
   - role: system
     content: |
@@ -21,9 +21,10 @@ messages:
       - Be generative and creative. e.g. if user wrote "joke", search for similar terms.
       - SQL must be formatted into lines.
   - role: user
-    content: "{{query}}"
+    content: |
+      {{query}}
 testData:
-  - query: "Find prompts about coding"
+  - query: Find prompts about coding
     expected: |
       SELECT act, prompt
       FROM train
