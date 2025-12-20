@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidateTag } from "next/cache";
 import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -241,6 +242,11 @@ export async function POST(request: Request) {
     } else {
       console.log(`[Quality Check] Skipped - prompt ${prompt.id} is private`);
     }
+
+    // Revalidate caches (prompts, categories, tags counts change)
+    revalidateTag("prompts", "max");
+    revalidateTag("categories", "max");
+    revalidateTag("tags", "max");
 
     return NextResponse.json(prompt);
   } catch (error) {

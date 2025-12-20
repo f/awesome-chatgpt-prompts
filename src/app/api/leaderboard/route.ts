@@ -1,11 +1,10 @@
 import { NextResponse } from "next/server";
+import { unstable_cache } from "next/cache";
 import { db } from "@/lib/db";
 
-export async function GET(request: Request) {
-  try {
-    const { searchParams } = new URL(request.url);
-    const period = searchParams.get("period") || "all"; // all, month, week
-
+// Cache leaderboard data for 1 hour (3600 seconds)
+const getLeaderboard = unstable_cache(
+  async (period: string) => {
     // Calculate date filters
     const now = new Date();
     let dateFilter: Date | undefined;
@@ -142,10 +141,19 @@ export async function GET(request: Request) {
       leaderboard = [...leaderboard, ...additionalUsers];
     }
 
-    return NextResponse.json({
-      period,
-      leaderboard,
-    });
+    return { period, leaderboard };
+  },
+  ["leaderboard"],
+  { tags: ["leaderboard"], revalidate: 3600 } // Cache for 1 hour
+);
+
+export async function GET(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const period = searchParams.get("period") || "all"; // all, month, week
+
+    const result = await getLeaderboard(period);
+    return NextResponse.json(result);
   } catch (error) {
     console.error("Leaderboard error:", error);
     return NextResponse.json(

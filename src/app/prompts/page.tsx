@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
+import { unstable_cache } from "next/cache";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button"
 import { InfinitePromptList } from "@/components/prompts/infinite-prompt-list";
@@ -18,86 +19,103 @@ export const metadata: Metadata = {
   description: "Browse and discover AI prompts",
 };
 
-// Query for categories
-async function getCategories() {
-  return db.category.findMany({
-    orderBy: [{ order: "asc" }, { name: "asc" }],
-    select: {
-      id: true,
-      name: true,
-      slug: true,
-      parentId: true,
-    },
-  });
-}
+// Query for categories (cached)
+const getCategories = unstable_cache(
+  async () => {
+    return db.category.findMany({
+      orderBy: [{ order: "asc" }, { name: "asc" }],
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+        parentId: true,
+      },
+    });
+  },
+  ["categories"],
+  { tags: ["categories"] }
+);
 
-// Query for tags
-async function getTags() {
-  return db.tag.findMany({
-    orderBy: { name: "asc" },
-  });
-}
+// Query for tags (cached)
+const getTags = unstable_cache(
+  async () => {
+    return db.tag.findMany({
+      orderBy: { name: "asc" },
+    });
+  },
+  ["tags"],
+  { tags: ["tags"] }
+);
 
-// Query for prompts list
-async function getPrompts(
+// Query for prompts list (cached)
+function getCachedPrompts(
   where: Record<string, unknown>,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   orderBy: any,
   perPage: number
 ) {
-  const [promptsRaw, totalCount] = await Promise.all([
-    db.prompt.findMany({
-      where,
-      orderBy,
-      skip: 0,
-      take: perPage,
-      include: {
-        author: {
-          select: {
-            id: true,
-            name: true,
-            username: true,
-            avatar: true,
-          },
-        },
-        category: {
+  // Create a stable cache key from the query parameters
+  const cacheKey = JSON.stringify({ where, orderBy, perPage });
+  
+  return unstable_cache(
+    async () => {
+      const [promptsRaw, totalCount] = await Promise.all([
+        db.prompt.findMany({
+          where,
+          orderBy,
+          skip: 0,
+          take: perPage,
           include: {
-            parent: {
-              select: { id: true, name: true, slug: true },
+            author: {
+              select: {
+                id: true,
+                name: true,
+                username: true,
+                avatar: true,
+              },
+            },
+            category: {
+              include: {
+                parent: {
+                  select: { id: true, name: true, slug: true },
+                },
+              },
+            },
+            tags: {
+              include: {
+                tag: true,
+              },
+            },
+            contributors: {
+              select: {
+                id: true,
+                username: true,
+                name: true,
+                avatar: true,
+              },
+            },
+            _count: {
+              select: { votes: true, contributors: true },
             },
           },
-        },
-        tags: {
-          include: {
-            tag: true,
-          },
-        },
-        contributors: {
-          select: {
-            id: true,
-            username: true,
-            name: true,
-            avatar: true,
-          },
-        },
-        _count: {
-          select: { votes: true, contributors: true },
-        },
-      },
-    }),
-    db.prompt.count({ where }),
-  ]);
+        }),
+        db.prompt.count({ where }),
+      ]);
 
-  return {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    prompts: promptsRaw.map((p: any) => ({
-      ...p,
-      voteCount: p._count.votes,
-      contributorCount: p._count.contributors,
-      contributors: p.contributors,
-    })),
-    total: totalCount,
-  };
+      return {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        prompts: promptsRaw.map((p: any) => ({
+          ...p,
+          voteCount: p._count.votes,
+          contributorCount: p._count.contributors,
+          contributors: p.contributors,
+        })),
+        total: totalCount,
+      };
+    },
+    ["prompts", cacheKey],
+    { tags: ["prompts"] }
+  )();
 }
 
 interface PromptsPageProps {
@@ -186,8 +204,8 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
       orderBy = { votes: { _count: "desc" } };
     }
 
-    // Fetch initial prompts (first page)
-    const result = await getPrompts(where, orderBy, perPage);
+    // Fetch initial prompts (first page) - cached
+    const result = await getCachedPrompts(where, orderBy, perPage);
     prompts = result.prompts;
     total = result.total;
   }

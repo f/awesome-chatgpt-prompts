@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidateTag } from "next/cache";
 import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -239,6 +240,9 @@ export async function PATCH(
       });
     }
 
+    // Revalidate prompts cache
+    revalidateTag("prompts", "max");
+
     return NextResponse.json(prompt);
   } catch (error) {
     console.error("Update prompt error:", error);
@@ -316,6 +320,11 @@ export async function DELETE(
       where: { id },
       data: { deletedAt: new Date() },
     });
+
+    // Revalidate caches (prompts, categories, tags counts change)
+    revalidateTag("prompts", "max");
+    revalidateTag("categories", "max");
+    revalidateTag("tags", "max");
 
     return NextResponse.json({ 
       success: true, 
