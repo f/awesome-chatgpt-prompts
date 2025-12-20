@@ -828,6 +828,17 @@
     "categories": "カテゴリー",
     "createPrompt": "プロンプトを作成"
   },
+  "serverError": {
+    "title": "サーバーエラー",
+    "description": "問題が発生しました。後でもう一度お試しください。",
+    "tryAgain": "再試行",
+    "goHome": "ホームへ",
+    "goBack": "戻る",
+    "helpfulLinks": "お役立ちリンク：",
+    "browsePrompts": "プロンプトを見る",
+    "categories": "カテゴリー",
+    "createPrompt": "プロンプトを作成"
+  },
   "promptBuilder": {
     "title": "プロンプト構築エージェント",
     "openBuilder": "プロンプトエージェント",

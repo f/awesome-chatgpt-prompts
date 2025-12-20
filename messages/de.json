@@ -823,6 +823,17 @@
     "description": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
     "goHome": "Zur Startseite",
     "goBack": "Zurück",
+    "helpfulLinks": "Nützliche Links:",
+    "browsePrompts": "Prompts durchsuchen",
+    "categories": "Kategorien",
+    "createPrompt": "Prompt erstellen"
+  },
+  "serverError": {
+    "title": "Serverfehler",
+    "description": "Etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut.",
+    "tryAgain": "Erneut versuchen",
+    "goHome": "Zur Startseite",
+    "goBack": "Zurück",
     "helpfulLinks": "Hier sind einige hilfreiche Links:",
     "browsePrompts": "Prompts durchsuchen",
     "categories": "Kategorien",

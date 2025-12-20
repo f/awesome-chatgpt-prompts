@@ -809,6 +809,17 @@
     "description": "הדף שאתה מחפש לא קיים או הועבר.",
     "goHome": "לדף הבית",
     "goBack": "חזרה",
+    "helpfulLinks": "קישורים שימושיים:",
+    "browsePrompts": "עיין בפרומפטים",
+    "categories": "קטגוריות",
+    "createPrompt": "צור פרומפט"
+  },
+  "serverError": {
+    "title": "שגיאת שרת",
+    "description": "משהו השתבש. אנא נסה שוב מאוחר יותר.",
+    "tryAgain": "נסה שוב",
+    "goHome": "לדף הבית",
+    "goBack": "חזרה",
     "helpfulLinks": "הנה כמה קישורים שימושיים:",
     "browsePrompts": "עיין בפרומפטים",
     "categories": "קטגוריות",

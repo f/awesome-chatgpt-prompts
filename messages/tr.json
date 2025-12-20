@@ -823,6 +823,17 @@
     "description": "Aradığınız sayfa mevcut değil veya taşınmış olabilir.",
     "goHome": "Ana Sayfaya Git",
     "goBack": "Geri Dön",
+    "helpfulLinks": "Yararlı bağlantılar:",
+    "browsePrompts": "Promptları Gözat",
+    "categories": "Kategoriler",
+    "createPrompt": "Prompt Oluştur"
+  },
+  "serverError": {
+    "title": "Sunucu Hatası",
+    "description": "Bir şeyler ters gitti. Lütfen daha sonra tekrar deneyin.",
+    "tryAgain": "Tekrar Dene",
+    "goHome": "Ana Sayfaya Git",
+    "goBack": "Geri Dön",
     "helpfulLinks": "İşte bazı faydalı bağlantılar:",
     "browsePrompts": "Promptlara Göz At",
     "categories": "Kategoriler",

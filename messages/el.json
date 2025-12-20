@@ -809,6 +809,17 @@
     "description": "Η σελίδα που ψάχνετε δεν υπάρχει ή έχει μετακινηθεί.",
     "goHome": "Αρχική",
     "goBack": "Πίσω",
+    "helpfulLinks": "Χρήσιμοι σύνδεσμοι:",
+    "browsePrompts": "Περιήγηση Prompts",
+    "categories": "Κατηγορίες",
+    "createPrompt": "Δημιουργία Prompt"
+  },
+  "serverError": {
+    "title": "Σφάλμα Διακομιστή",
+    "description": "Κάτι πήγε στραβά. Παρακαλώ δοκιμάστε ξανά αργότερα.",
+    "tryAgain": "Δοκιμάστε Ξανά",
+    "goHome": "Αρχική",
+    "goBack": "Πίσω",
     "helpfulLinks": "Ορίστε μερικοί χρήσιμοι σύνδεσμοι:",
     "browsePrompts": "Περιήγηση Prompts",
     "categories": "Κατηγορίες",

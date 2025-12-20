@@ -810,6 +810,17 @@
     "goHome": "На главную",
     "goBack": "Назад",
     "helpfulLinks": "Полезные ссылки:",
+    "browsePrompts": "Просмотр промптов",
+    "categories": "Категории",
+    "createPrompt": "Создать промпт"
+  },
+  "serverError": {
+    "title": "Ошибка сервера",
+    "description": "Что-то пошло не так. Пожалуйста, попробуйте позже.",
+    "tryAgain": "Попробовать снова",
+    "goHome": "На главную",
+    "goBack": "Назад",
+    "helpfulLinks": "Полезные ссылки:",
     "browsePrompts": "Смотреть промпты",
     "categories": "Категории",
     "createPrompt": "Создать промпт"

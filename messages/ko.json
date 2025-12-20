@@ -828,6 +828,17 @@
     "categories": "카테고리",
     "createPrompt": "프롬프트 만들기"
   },
+  "serverError": {
+    "title": "서버 오류",
+    "description": "문제가 발생했습니다. 나중에 다시 시도해 주세요.",
+    "tryAgain": "다시 시도",
+    "goHome": "홈으로 이동",
+    "goBack": "뒤로 가기",
+    "helpfulLinks": "유용한 링크:",
+    "browsePrompts": "프롬프트 둘러보기",
+    "categories": "카테고리",
+    "createPrompt": "프롬프트 만들기"
+  },
   "promptBuilder": {
     "title": "프롬프트 빌딩 에이전트",
     "openBuilder": "프롬프트 에이전트",

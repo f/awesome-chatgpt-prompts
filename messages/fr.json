@@ -823,6 +823,17 @@
     "description": "La page que vous recherchez n'existe pas ou a été déplacée.",
     "goHome": "Aller à l'Accueil",
     "goBack": "Retour",
+    "helpfulLinks": "Liens utiles :",
+    "browsePrompts": "Parcourir les Prompts",
+    "categories": "Catégories",
+    "createPrompt": "Créer un Prompt"
+  },
+  "serverError": {
+    "title": "Erreur Serveur",
+    "description": "Une erreur s'est produite. Veuillez réessayer plus tard.",
+    "tryAgain": "Réessayer",
+    "goHome": "Aller à l'Accueil",
+    "goBack": "Retour",
     "helpfulLinks": "Voici quelques liens utiles :",
     "browsePrompts": "Parcourir les Prompts",
     "categories": "Catégories",

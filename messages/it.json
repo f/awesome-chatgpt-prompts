@@ -822,6 +822,17 @@
     "title": "Pagina Non Trovata",
     "description": "La pagina che stai cercando non esiste o è stata spostata.",
     "goHome": "Vai alla Home",
+    "goBack": "Indietro",
+    "helpfulLinks": "Link utili:",
+    "browsePrompts": "Sfoglia i Prompt",
+    "categories": "Categorie",
+    "createPrompt": "Crea Prompt"
+  },
+  "serverError": {
+    "title": "Errore del Server",
+    "description": "Qualcosa è andato storto. Per favore riprova più tardi.",
+    "tryAgain": "Riprova",
+    "goHome": "Vai alla Home",
     "goBack": "Torna Indietro",
     "helpfulLinks": "Ecco alcuni link utili:",
     "browsePrompts": "Sfoglia Prompt",

@@ -788,6 +788,17 @@
     "categories": "Categories",
     "createPrompt": "Create Prompt"
   },
+  "serverError": {
+    "title": "Server Error",
+    "description": "Something went wrong on our end. Please try again later.",
+    "tryAgain": "Try Again",
+    "goHome": "Go Home",
+    "goBack": "Go Back",
+    "helpfulLinks": "Here are some helpful links:",
+    "browsePrompts": "Browse Prompts",
+    "categories": "Categories",
+    "createPrompt": "Create Prompt"
+  },
   "heroPromptInput": {
     "placeholder": "Describe the prompt you want to build...",
     "ariaLabel": "Describe the prompt you want to build",

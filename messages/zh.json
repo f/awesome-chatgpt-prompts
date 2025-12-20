@@ -822,6 +822,17 @@
     "title": "页面未找到",
     "description": "您要查找的页面不存在或已被移动。",
     "goHome": "返回首页",
+    "goBack": "返回",
+    "helpfulLinks": "有用的链接：",
+    "browsePrompts": "浏览提示词",
+    "categories": "分类",
+    "createPrompt": "创建提示词"
+  },
+  "serverError": {
+    "title": "服务器错误",
+    "description": "出了点问题，请稍后再试。",
+    "tryAgain": "重试",
+    "goHome": "返回首页",
     "goBack": "返回上一页",
     "helpfulLinks": "以下是一些有用的链接：",
     "browsePrompts": "浏览提示词",

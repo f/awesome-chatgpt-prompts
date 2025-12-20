@@ -823,6 +823,17 @@
     "description": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
     "goHome": "الرئيسية",
     "goBack": "رجوع",
+    "helpfulLinks": "روابط مفيدة:",
+    "browsePrompts": "تصفح البرومبتات",
+    "categories": "الفئات",
+    "createPrompt": "إنشاء برومبت"
+  },
+  "serverError": {
+    "title": "خطأ في الخادم",
+    "description": "حدث خطأ ما. يرجى المحاولة مرة أخرى لاحقاً.",
+    "tryAgain": "حاول مرة أخرى",
+    "goHome": "الرئيسية",
+    "goBack": "رجوع",
     "helpfulLinks": "إليك بعض الروابط المفيدة:",
     "browsePrompts": "تصفح الأوامر",
     "categories": "التصنيفات",

@@ -823,6 +823,17 @@
     "description": "A página que você está procurando não existe ou foi movida.",
     "goHome": "Ir para Início",
     "goBack": "Voltar",
+    "helpfulLinks": "Links úteis:",
+    "browsePrompts": "Explorar Prompts",
+    "categories": "Categorias",
+    "createPrompt": "Criar Prompt"
+  },
+  "serverError": {
+    "title": "Erro do Servidor",
+    "description": "Algo deu errado do nosso lado. Por favor, tente novamente mais tarde.",
+    "tryAgain": "Tentar Novamente",
+    "goHome": "Ir para Início",
+    "goBack": "Voltar",
     "helpfulLinks": "Aqui estão alguns links úteis:",
     "browsePrompts": "Ver Prompts",
     "categories": "Categorias",
