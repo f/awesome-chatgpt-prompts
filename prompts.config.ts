@@ -65,7 +65,7 @@ export default defineConfig({
     // Enable MCP (Model Context Protocol) features including API key generation
     mcp: true,
     // Enable comments on prompts
-    comments: true,
+    comments: false,
   },
 
   // Homepage customization
