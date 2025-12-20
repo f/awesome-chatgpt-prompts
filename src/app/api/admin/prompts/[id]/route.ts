@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { revalidatePrompts } from "@/lib/cache";
 
 // DELETE - Hard delete a prompt (admin only)
 export async function DELETE(
@@ -53,6 +54,9 @@ export async function DELETE(
     await db.prompt.delete({
       where: { id },
     });
+
+    // Revalidate prompts cache
+    revalidatePrompts();
 
     return NextResponse.json({
       success: true,

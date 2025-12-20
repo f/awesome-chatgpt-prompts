@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { revalidatePrompts } from "@/lib/cache";
 import fs from "fs/promises";
 import path from "path";
 
@@ -246,6 +247,11 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    // Revalidate prompts cache after import
+    if (imported > 0) {
+      revalidatePrompts();
+    }
+
     return NextResponse.json({
       success: true,
       imported,
@@ -290,6 +296,11 @@ export async function DELETE(request: NextRequest) {
         email: { endsWith: "@unclaimed.prompts.chat" },
       },
     });
+
+    // Revalidate prompts cache after deletion
+    if (result.count > 0) {
+      revalidatePrompts();
+    }
 
     return NextResponse.json({
       success: true,

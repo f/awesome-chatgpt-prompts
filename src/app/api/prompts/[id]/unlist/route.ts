@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { revalidatePrompts } from "@/lib/cache";
 
 // Toggle unlist status (admin only)
 export async function POST(
@@ -49,6 +50,9 @@ export async function POST(
         unlistedAt: newUnlistedStatus ? new Date() : null,
       },
     });
+
+    // Revalidate prompts cache
+    revalidatePrompts();
 
     return NextResponse.json({ 
       success: true, 

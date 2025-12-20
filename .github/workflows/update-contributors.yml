@@ -2,8 +2,7 @@ name: Update Contributors
 
 on:
   schedule:
-    # Run every hour
-    - cron: '0 * * * *'
+    - cron: '0 3 * * *'
   workflow_dispatch: # Allow manual trigger
 
 jobs:
