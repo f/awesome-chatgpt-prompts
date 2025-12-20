@@ -46,6 +46,7 @@ export interface FeaturesConfig {
   aiSearch?: boolean;
   aiGeneration?: boolean;
   mcp?: boolean;
+  comments?: boolean;
 }
 
 export interface Sponsor {
@@ -128,6 +129,7 @@ export async function getConfig(): Promise<PromptsConfig> {
         tags: true,
         aiSearch: false,
         aiGeneration: false,
+        comments: true,
       },
     };
     return cachedConfig;

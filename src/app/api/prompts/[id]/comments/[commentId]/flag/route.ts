@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { getConfig } from "@/lib/config";
 
 // POST - Flag a comment (admin only)
 export async function POST(
@@ -8,6 +9,14 @@ export async function POST(
   { params }: { params: Promise<{ id: string; commentId: string }> }
 ) {
   try {
+    const config = await getConfig();
+    if (config.features.comments === false) {
+      return NextResponse.json(
+        { error: "feature_disabled", message: "Comments are disabled" },
+        { status: 403 }
+      );
+    }
+
     const session = await auth();
     if (!session?.user) {
       return NextResponse.json(

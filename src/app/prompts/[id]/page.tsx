@@ -24,6 +24,7 @@ import { MediaPreview } from "@/components/prompts/media-preview";
 import { ReportPromptDialog } from "@/components/prompts/report-prompt-dialog";
 import { DelistBanner } from "@/components/prompts/delist-banner";
 import { CommentSection } from "@/components/comments";
+import { getConfig } from "@/lib/config";
 
 interface PromptPageProps {
   params: Promise<{ id: string }>;
@@ -70,6 +71,7 @@ export default async function PromptPage({ params }: PromptPageProps) {
   const { id: idParam } = await params;
   const id = extractPromptId(idParam);
   const session = await auth();
+  const config = await getConfig();
   const t = await getTranslations("prompts");
   const locale = await getLocale();
 
@@ -594,7 +596,7 @@ export default async function PromptPage({ params }: PromptPageProps) {
       </Tabs>
 
       {/* Comments Section */}
-      {!prompt.isPrivate && (
+      {config.features.comments !== false && !prompt.isPrivate && (
         <CommentSection
           promptId={prompt.id}
           currentUserId={session?.user?.id}

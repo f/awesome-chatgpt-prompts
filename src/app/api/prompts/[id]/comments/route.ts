@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { getConfig } from "@/lib/config";
 import { z } from "zod";
 
 const createCommentSchema = z.object({
@@ -14,6 +15,14 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const config = await getConfig();
+    if (config.features.comments === false) {
+      return NextResponse.json(
+        { error: "feature_disabled", message: "Comments are disabled" },
+        { status: 403 }
+      );
+    }
+
     const { id: promptId } = await params;
     const session = await auth();
 
@@ -115,6 +124,14 @@ export async function POST(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const config = await getConfig();
+    if (config.features.comments === false) {
+      return NextResponse.json(
+        { error: "feature_disabled", message: "Comments are disabled" },
+        { status: 403 }
+      );
+    }
+
     const session = await auth();
     if (!session?.user) {
       return NextResponse.json(
