@@ -2,14 +2,10 @@ import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 
 function getUserIdentifier(user: {
-  email: string;
   username: string;
   githubUsername: string | null;
 }): string {
-  const isUnclaimedAccount = user.email.endsWith("@unclaimed.prompts.chat");
-  return (
-    user.githubUsername || (isUnclaimedAccount ? user.username : user.email)
-  );
+  return user.githubUsername || user.username;
 }
 
 export async function GET() {
@@ -50,7 +46,6 @@ export async function GET() {
             username: true,
             name: true,
             avatar: true,
-            email: true,
             githubUsername: true,
             verified: true,
           },
@@ -60,7 +55,6 @@ export async function GET() {
             username: true,
             name: true,
             avatar: true,
-            email: true,
             githubUsername: true,
             verified: true,
           },
