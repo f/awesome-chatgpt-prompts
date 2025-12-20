@@ -160,7 +160,8 @@
       "video": "Видео",
       "audio": "Аудио",
       "structured": "Структурированный",
-      "document": "Документ"
+      "document": "Документ",
+      "skill": "Навык"
     },
     "inputType": "Промпт пользователя",
     "outputType": "Ответ ИИ",
@@ -168,9 +169,11 @@
     "inputTypeDescription": "Как отформатирован ваш промпт",
     "outputTypeDescription": "Покажите сообществу, как работает этот промпт при запуске в инструментах ИИ. Вы можете сами сгенерировать результаты, используя ваше любимое ИИ-приложение.",
     "outputTypeStructuredNote": "Структурированные промпты могут создавать различные типы вывода",
+    "outputTypeSkillNote": "Навыки инструктируют агентов генерировать код. ИИ будет создавать код на основе ваших инструкций навыка.",
     "inputTypes": {
       "text": "Текстовый промпт",
-      "structured": "Структурированный (JSON/YAML)"
+      "structured": "Структурированный (JSON/YAML)",
+      "skill": "Навык (Agent Skills)"
     },
     "outputTypes": {
       "text": "Текст",
@@ -217,6 +220,7 @@
     "run": "Запустить",
     "downloadMarkdown": "Скачать MD",
     "downloadYaml": "Скачать YAML",
+    "downloadSkillMd": "Скачать SKILL.md",
     "copyMarkdownUrl": "Копировать ссылку MD",
     "copyYamlUrl": "Копировать ссылку YAML",
     "downloadStarted": "Загрузка началась",

@@ -11,6 +11,7 @@ import { RunPromptButton } from "./run-prompt-button";
 import { TranslateButton } from "./translate-button";
 import { DownloadPromptDropdown } from "./download-prompt-dropdown";
 import { CodeView } from "@/components/ui/code-view";
+import { CodeEditor } from "@/components/ui/code-editor";
 import { prettifyJson } from "@/lib/format";
 
 interface Variable {
@@ -30,6 +31,7 @@ interface InteractivePromptContentProps {
   parentCategoryName?: string;
   promptId?: string;
   promptSlug?: string;
+  promptType?: string;
 }
 
 // Parse ${variablename:defaultvalue} or ${variablename} patterns
@@ -149,7 +151,8 @@ export function InteractivePromptContent({
   categoryName,
   parentCategoryName,
   promptId,
-  promptSlug
+  promptSlug,
+  promptType
 }: InteractivePromptContentProps) {
   const t = useTranslations("common");
   const [copied, setCopied] = useState(false);
@@ -255,8 +258,46 @@ export function InteractivePromptContent({
     setTranslatedContent(translated);
   }, []);
 
+  // Check if this is a SKILL type prompt
+  const isSkill = promptType === "SKILL";
+
   // If no variables, render simple content
   if (variables.length === 0) {
+    if (isSkill) {
+      // SKILL type: render with Monaco editor (read-only markdown)
+      return (
+        <div className={className}>
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-1">
+              {title && <h3 className="text-base font-semibold">{title}</h3>}
+              <TranslateButton
+                content={content}
+                onTranslate={handleTranslate}
+                isLoggedIn={isLoggedIn}
+              />
+            </div>
+            <div className="flex items-center gap-2">
+              {promptId && <DownloadPromptDropdown promptId={promptId} promptSlug={promptSlug} promptType={promptType} />}
+              <Button variant="ghost" size="sm" onClick={copyToClipboard}>
+                {copied ? (
+                  <Check className="h-4 w-4 text-green-500" />
+                ) : (
+                  <Copy className="h-4 w-4" />
+                )}
+              </Button>
+            </div>
+          </div>
+          <CodeEditor
+            value={displayedContent}
+            onChange={() => {}}
+            language="markdown"
+            minHeight="400px"
+            className="text-sm"
+            readOnly={true}
+          />
+        </div>
+      );
+    }
     if (isStructured) {
       return (
         <div className={className}>
@@ -270,7 +311,7 @@ export function InteractivePromptContent({
               />
             </div>
             <div className="flex items-center gap-2">
-              {promptId && <DownloadPromptDropdown promptId={promptId} promptSlug={promptSlug} />}
+              {promptId && <DownloadPromptDropdown promptId={promptId} promptSlug={promptSlug} promptType={promptType} />}
               <RunPromptButton 
                 content={displayContent}
                 unfilledVariables={unfilledVariables}
@@ -308,7 +349,7 @@ export function InteractivePromptContent({
             />
           </div>
           <div className="flex items-center gap-2">
-            {promptId && <DownloadPromptDropdown promptId={promptId} promptSlug={promptSlug} />}
+            {promptId && <DownloadPromptDropdown promptId={promptId} promptSlug={promptSlug} promptType={promptType} />}
             <RunPromptButton 
               content={displayedContent}
               unfilledVariables={unfilledVariables}
@@ -354,7 +395,7 @@ export function InteractivePromptContent({
                 {t("reset")}
               </Button>
             )}
-            {promptId && <DownloadPromptDropdown promptId={promptId} promptSlug={promptSlug} />}
+            {promptId && <DownloadPromptDropdown promptId={promptId} promptSlug={promptSlug} promptType={promptType} />}
             <RunPromptButton 
               content={getFinalContent()}
               unfilledVariables={unfilledVariables}
@@ -458,7 +499,7 @@ export function InteractivePromptContent({
               {t("reset")}
             </Button>
           )}
-          {promptId && <DownloadPromptDropdown promptId={promptId} promptSlug={promptSlug} />}
+          {promptId && <DownloadPromptDropdown promptId={promptId} promptSlug={promptSlug} promptType={promptType} />}
           <RunPromptButton 
             content={getFinalContent()}
             unfilledVariables={unfilledVariables}

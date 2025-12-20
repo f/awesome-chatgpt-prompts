@@ -12,7 +12,7 @@ const promptSchema = z.object({
   title: z.string().min(1).max(200),
   description: z.string().max(500).optional(),
   content: z.string().min(1),
-  type: z.enum(["TEXT", "IMAGE", "VIDEO", "AUDIO"]), // Output type only
+  type: z.enum(["TEXT", "IMAGE", "VIDEO", "AUDIO", "SKILL"]), // Output type or SKILL
   structuredFormat: z.enum(["JSON", "YAML"]).nullish(), // Input type indicator
   categoryId: z.string().optional(),
   tagIds: z.array(z.string()),

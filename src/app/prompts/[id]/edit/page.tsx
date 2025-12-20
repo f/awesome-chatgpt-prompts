@@ -87,7 +87,7 @@ export default async function EditPromptPage({ params }: EditPromptPageProps) {
     title: prompt.title,
     description: prompt.description || "",
     content: prompt.content,
-    type: ((prompt.type === "IMAGE" || prompt.type === "VIDEO" || prompt.type === "AUDIO") ? prompt.type : "TEXT") as "TEXT" | "IMAGE" | "VIDEO" | "AUDIO",
+    type: ((prompt.type === "IMAGE" || prompt.type === "VIDEO" || prompt.type === "AUDIO" || prompt.type === "SKILL") ? prompt.type : "TEXT") as "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "SKILL",
     structuredFormat: prompt.structuredFormat ? (prompt.structuredFormat as "JSON" | "YAML") : undefined,
     categoryId: prompt.categoryId || undefined,
     tagIds: prompt.tags.map((t) => t.tagId),

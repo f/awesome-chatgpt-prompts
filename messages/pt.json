@@ -160,7 +160,8 @@
       "video": "Vídeo",
       "audio": "Áudio",
       "structured": "Estruturado",
-      "document": "Documento"
+      "document": "Documento",
+      "skill": "Habilidade"
     },
     "inputType": "Prompt do Usuário",
     "outputType": "Resposta da IA",
@@ -168,9 +169,11 @@
     "inputTypeDescription": "Como seu prompt está formatado",
     "outputTypeDescription": "Mostre à comunidade como este prompt funciona quando executado em ferramentas de IA. Você pode gerar as saídas você mesmo usando seu aplicativo de IA favorito.",
     "outputTypeStructuredNote": "Prompts estruturados podem produzir vários tipos de saída",
+    "outputTypeSkillNote": "Habilidades instruem agentes a gerar código. A IA produzirá código baseado nas instruções da sua habilidade.",
     "inputTypes": {
       "text": "Prompt de Texto",
-      "structured": "Estruturado (JSON/YAML)"
+      "structured": "Estruturado (JSON/YAML)",
+      "skill": "Habilidade (Agent Skills)"
     },
     "outputTypes": {
       "text": "Texto",
@@ -217,6 +220,7 @@
     "run": "Executar",
     "downloadMarkdown": "Baixar MD",
     "downloadYaml": "Baixar YAML",
+    "downloadSkillMd": "Baixar SKILL.md",
     "copyMarkdownUrl": "Copiar link MD",
     "copyYamlUrl": "Copiar link YAML",
     "downloadStarted": "Download iniciado",

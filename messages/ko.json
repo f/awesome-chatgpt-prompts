@@ -160,7 +160,8 @@
       "video": "비디오",
       "audio": "오디오",
       "structured": "구조화",
-      "document": "문서"
+      "document": "문서",
+      "skill": "스킬"
     },
     "inputType": "사용자 프롬프트",
     "outputType": "AI 응답",
@@ -168,9 +169,11 @@
     "inputTypeDescription": "프롬프트 형식",
     "outputTypeDescription": "이 프롬프트가 AI 도구에서 실행될 때 어떻게 작동하는지 커뮤니티에 보여주세요. 좋아하는 AI 앱을 사용하여 직접 출력을 생성할 수 있습니다.",
     "outputTypeStructuredNote": "구조화된 프롬프트는 다양한 출력 유형을 생성할 수 있습니다",
+    "outputTypeSkillNote": "스킬은 에이전트에게 코드를 생성하도록 지시합니다. AI는 스킬 지침에 따라 코드 출력을 생성합니다.",
     "inputTypes": {
       "text": "텍스트 프롬프트",
-      "structured": "구조화 (JSON/YAML)"
+      "structured": "구조화 (JSON/YAML)",
+      "skill": "스킬 (Agent Skills)"
     },
     "outputTypes": {
       "text": "텍스트",
@@ -217,6 +220,7 @@
     "run": "실행",
     "downloadMarkdown": "MD 다운로드",
     "downloadYaml": "YAML 다운로드",
+    "downloadSkillMd": "SKILL.md 다운로드",
     "copyMarkdownUrl": "MD 링크 복사",
     "copyYamlUrl": "YAML 링크 복사",
     "downloadStarted": "다운로드 시작",

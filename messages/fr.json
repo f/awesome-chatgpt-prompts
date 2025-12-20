@@ -160,7 +160,8 @@
       "video": "Vidéo",
       "audio": "Audio",
       "structured": "Structuré",
-      "document": "Document"
+      "document": "Document",
+      "skill": "Compétence"
     },
     "inputType": "Prompt Utilisateur",
     "outputType": "Réponse IA",
@@ -168,9 +169,11 @@
     "inputTypeDescription": "Comment votre prompt est formaté",
     "outputTypeDescription": "Montrez à la communauté comment ce prompt fonctionne lorsqu'il est exécuté sur des outils IA. Vous pouvez générer les résultats vous-même en utilisant votre application IA préférée.",
     "outputTypeStructuredNote": "Les prompts structurés peuvent produire divers types de sortie",
+    "outputTypeSkillNote": "Les compétences instruisent les agents à générer du code. L'IA produira du code basé sur vos instructions de compétence.",
     "inputTypes": {
       "text": "Prompt Texte",
-      "structured": "Structuré (JSON/YAML)"
+      "structured": "Structuré (JSON/YAML)",
+      "skill": "Compétence (Agent Skills)"
     },
     "outputTypes": {
       "text": "Texte",
@@ -217,6 +220,7 @@
     "run": "Exécuter",
     "downloadMarkdown": "Télécharger MD",
     "downloadYaml": "Télécharger YAML",
+    "downloadSkillMd": "Télécharger SKILL.md",
     "copyMarkdownUrl": "Copier le lien MD",
     "copyYamlUrl": "Copier le lien YAML",
     "downloadStarted": "Téléchargement démarré",

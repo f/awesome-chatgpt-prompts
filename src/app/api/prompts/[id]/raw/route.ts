@@ -2,16 +2,23 @@ import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
 
 type OutputFormat = "md" | "yml";
+type FileType = "prompt" | "skill";
 
 /**
- * Extracts the prompt ID and format from a URL parameter
+ * Extracts the prompt ID, format, and file type from a URL parameter
  * Supports formats: "abc123.prompt.md", "abc123_some-slug.prompt.md", "abc123.prompt.yml"
+ * Also supports: "abc123.SKILL.md", "abc123_some-slug.SKILL.md" (SKILL only has .md format)
  */
-function parseIdParam(idParam: string): { id: string; format: OutputFormat } {
+function parseIdParam(idParam: string): { id: string; format: OutputFormat; fileType: FileType } {
   let param = idParam;
   let format: OutputFormat = "md";
+  let fileType: FileType = "prompt";
 
-  if (param.endsWith(".prompt.yml")) {
+  if (param.endsWith(".SKILL.md")) {
+    format = "md";
+    fileType = "skill";
+    param = param.slice(0, -".SKILL.md".length);
+  } else if (param.endsWith(".prompt.yml")) {
     format = "yml";
     param = param.slice(0, -".prompt.yml".length);
   } else if (param.endsWith(".prompt.md")) {
@@ -25,7 +32,7 @@ function parseIdParam(idParam: string): { id: string; format: OutputFormat } {
     param = param.substring(0, underscoreIndex);
   }
 
-  return { id: param, format };
+  return { id: param, format, fileType };
 }
 
 /**
@@ -50,11 +57,11 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id: idParam } = await params;
-  const { id, format } = parseIdParam(idParam);
+  const { id, format, fileType } = parseIdParam(idParam);
 
   const prompt = await db.prompt.findFirst({
     where: { id, deletedAt: null, isPrivate: false, isUnlisted: false },
-    select: { title: true, description: true, content: true },
+    select: { title: true, description: true, content: true, type: true },
   });
 
   if (!prompt) {
@@ -64,8 +71,11 @@ export async function GET(
   let output: string;
   let contentType: string;
 
+  // Use skill format if requested via .SKILL.md URL or if prompt type is SKILL
+  const isSkill = fileType === "skill" || prompt.type === "SKILL";
+
   if (format === "yml") {
-    // Format as structured YAML with messages array
+    // YAML format (only for regular prompts, not skills)
     const lines = [
       `name: ${prompt.title}`,
     ];
@@ -83,14 +93,25 @@ export async function GET(
     output = lines.join("\n");
     contentType = "text/yaml; charset=utf-8";
   } else {
-    // Format as markdown with YAML frontmatter
-    const frontmatter = [
-      "---",
-      `name: ${prompt.title}`,
-      prompt.description ? `description: ${prompt.description}` : null,
-      "---",
-    ].filter(Boolean).join("\n");
-    output = `${frontmatter}\n${prompt.content}`;
+    if (isSkill) {
+      // Format as SKILL.md (Agent Skills specification)
+      const frontmatter = [
+        "---",
+        `name: ${prompt.title}`,
+        prompt.description ? `description: ${prompt.description}` : null,
+        "---",
+      ].filter(Boolean).join("\n");
+      output = `${frontmatter}\n\n${prompt.content}`;
+    } else {
+      // Format as markdown with YAML frontmatter
+      const frontmatter = [
+        "---",
+        `name: ${prompt.title}`,
+        prompt.description ? `description: ${prompt.description}` : null,
+        "---",
+      ].filter(Boolean).join("\n");
+      output = `${frontmatter}\n${prompt.content}`;
+    }
     contentType = "text/plain; charset=utf-8";
   }
 

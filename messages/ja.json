@@ -160,7 +160,8 @@
       "video": "動画",
       "audio": "音声",
       "structured": "構造化",
-      "document": "ドキュメント"
+      "document": "ドキュメント",
+      "skill": "スキル"
     },
     "inputType": "ユーザープロンプト",
     "outputType": "AI応答",
@@ -168,9 +169,11 @@
     "inputTypeDescription": "プロンプトの形式",
     "outputTypeDescription": "AIツールでこのプロンプトを実行したときの結果をコミュニティに示しましょう。お気に入りのAIアプリを使って自分で出力を生成できます。",
     "outputTypeStructuredNote": "構造化プロンプトは様々な出力タイプを生成できます",
+    "outputTypeSkillNote": "スキルはエージェントにコードを生成するよう指示します。AIはスキルの指示に基づいてコードを出力します。",
     "inputTypes": {
       "text": "テキストプロンプト",
-      "structured": "構造化 (JSON/YAML)"
+      "structured": "構造化 (JSON/YAML)",
+      "skill": "スキル (Agent Skills)"
     },
     "outputTypes": {
       "text": "テキスト",
@@ -231,6 +234,7 @@
     "run": "実行",
     "downloadMarkdown": "MDをダウンロード",
     "downloadYaml": "YAMLをダウンロード",
+    "downloadSkillMd": "SKILL.mdをダウンロード",
     "copyMarkdownUrl": "MDリンクをコピー",
     "copyYamlUrl": "YAMLリンクをコピー",
     "downloadStarted": "ダウンロード開始",

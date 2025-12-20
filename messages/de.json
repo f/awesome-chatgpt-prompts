@@ -160,7 +160,8 @@
       "video": "Video",
       "audio": "Audio",
       "structured": "Strukturiert",
-      "document": "Dokument"
+      "document": "Dokument",
+      "skill": "Skill"
     },
     "inputType": "Benutzer-Prompt",
     "outputType": "KI-Antwort",
@@ -168,9 +169,11 @@
     "inputTypeDescription": "Wie Ihr Prompt formatiert ist",
     "outputTypeDescription": "Zeigen Sie der Community, wie dieser Prompt funktioniert, wenn er mit KI-Tools ausgeführt wird. Sie können die Ausgaben selbst mit Ihrer bevorzugten KI-App generieren.",
     "outputTypeStructuredNote": "Strukturierte Prompts können verschiedene Ausgabetypen erzeugen",
+    "outputTypeSkillNote": "Skills weisen Agenten an, Code zu generieren. Die KI erzeugt Code-Ausgabe basierend auf Ihren Skill-Anweisungen.",
     "inputTypes": {
       "text": "Text-Prompt",
-      "structured": "Strukturiert (JSON/YAML)"
+      "structured": "Strukturiert (JSON/YAML)",
+      "skill": "Skill (Agent Skills)"
     },
     "outputTypes": {
       "text": "Text",
@@ -217,6 +220,7 @@
     "run": "Ausführen",
     "downloadMarkdown": "MD herunterladen",
     "downloadYaml": "YAML herunterladen",
+    "downloadSkillMd": "SKILL.md herunterladen",
     "copyMarkdownUrl": "MD-Link kopieren",
     "copyYamlUrl": "YAML-Link kopieren",
     "downloadStarted": "Download gestartet",

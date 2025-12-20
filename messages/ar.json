@@ -160,7 +160,8 @@
       "video": "فيديو",
       "audio": "صوت",
       "structured": "منظم",
-      "document": "مستند"
+      "document": "مستند",
+      "skill": "مهارة"
     },
     "inputType": "أمر المستخدم",
     "outputType": "استجابة الذكاء الاصطناعي",
@@ -168,9 +169,11 @@
     "inputTypeDescription": "كيف يتم تنسيق الأمر الخاص بك",
     "outputTypeDescription": "أظهر للمجتمع كيف يعمل هذا الأمر عند تشغيله على أدوات الذكاء الاصطناعي. يمكنك إنشاء المخرجات بنفسك باستخدام تطبيق الذكاء الاصطناعي المفضل لديك.",
     "outputTypeStructuredNote": "الأوامر المنظمة يمكن أن تنتج أنواع مختلفة من المخرجات",
+    "outputTypeSkillNote": "المهارات توجه الوكلاء لإنشاء الكود. سينتج الذكاء الاصطناعي مخرجات كود بناءً على تعليمات مهارتك.",
     "inputTypes": {
       "text": "أمر نصي",
-      "structured": "منظم (JSON/YAML)"
+      "structured": "منظم (JSON/YAML)",
+      "skill": "مهارة (مهارات الوكيل)"
     },
     "outputTypes": {
       "text": "نص",
@@ -231,6 +234,7 @@
     "run": "تشغيل",
     "downloadMarkdown": "تحميل MD",
     "downloadYaml": "تحميل YAML",
+    "downloadSkillMd": "تحميل SKILL.md",
     "copyMarkdownUrl": "نسخ رابط MD",
     "copyYamlUrl": "نسخ رابط YAML",
     "downloadStarted": "بدأ التحميل",

@@ -160,7 +160,8 @@
       "video": "וידאו",
       "audio": "אודיו",
       "structured": "מובנה",
-      "document": "מסמך"
+      "document": "מסמך",
+      "skill": "מיומנות"
     },
     "inputType": "פרומפט משתמש",
     "outputType": "תגובת AI",
@@ -168,9 +169,11 @@
     "inputTypeDescription": "איך הפרומפט שלך מעוצב",
     "outputTypeDescription": "הראה לקהילה איך הפרומפט הזה מתפקד כשהוא רץ בכלי AI. אתה יכול ליצור את התוצרים בעצמך באמצעות אפליקציית ה-AI המועדפת עליך.",
     "outputTypeStructuredNote": "פרומפטים מובנים יכולים לייצר סוגי פלט שונים",
+    "outputTypeSkillNote": "מיומנויות מנחות סוכנים ליצור קוד. הAI ייצר פלט קוד בהתאם להוראות המיומנות שלך.",
     "inputTypes": {
       "text": "פרומפט טקסט",
-      "structured": "מובנה (JSON/YAML)"
+      "structured": "מובנה (JSON/YAML)",
+      "skill": "מיומנות (Agent Skills)"
     },
     "outputTypes": {
       "text": "טקסט",
@@ -217,6 +220,7 @@
     "run": "הפעל",
     "downloadMarkdown": "הורד MD",
     "downloadYaml": "הורד YAML",
+    "downloadSkillMd": "הורד SKILL.md",
     "copyMarkdownUrl": "העתק קישור MD",
     "copyYamlUrl": "העתק קישור YAML",
     "downloadStarted": "ההורדה החלה",

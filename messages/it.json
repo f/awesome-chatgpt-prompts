@@ -160,7 +160,8 @@
       "video": "Video",
       "audio": "Audio",
       "structured": "Strutturato",
-      "document": "Documento"
+      "document": "Documento",
+      "skill": "Abilità"
     },
     "inputType": "Prompt Utente",
     "outputType": "Risposta AI",
@@ -168,9 +169,11 @@
     "inputTypeDescription": "Come è formattato il tuo prompt",
     "outputTypeDescription": "Mostra alla community come funziona questo prompt quando viene eseguito su strumenti AI. Puoi generare gli output tu stesso usando la tua app AI preferita.",
     "outputTypeStructuredNote": "I prompt strutturati possono produrre vari tipi di output",
+    "outputTypeSkillNote": "Le abilità istruiscono gli agenti a generare codice. L'IA produrrà codice basato sulle istruzioni della tua abilità.",
     "inputTypes": {
       "text": "Prompt Testuale",
-      "structured": "Strutturato (JSON/YAML)"
+      "structured": "Strutturato (JSON/YAML)",
+      "skill": "Abilità (Agent Skills)"
     },
     "outputTypes": {
       "text": "Testo",
@@ -217,6 +220,7 @@
     "run": "Esegui",
     "downloadMarkdown": "Scarica MD",
     "downloadYaml": "Scarica YAML",
+    "downloadSkillMd": "Scarica SKILL.md",
     "copyMarkdownUrl": "Copia link MD",
     "copyYamlUrl": "Copia link YAML",
     "downloadStarted": "Download avviato",

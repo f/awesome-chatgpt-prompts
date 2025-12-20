@@ -160,7 +160,8 @@
       "video": "Βίντεο",
       "audio": "Ήχος",
       "structured": "Δομημένο",
-      "document": "Έγγραφο"
+      "document": "Έγγραφο",
+      "skill": "Δεξιότητα"
     },
     "inputType": "Prompt χρήστη",
     "outputType": "Απάντηση AI",
@@ -168,9 +169,11 @@
     "inputTypeDescription": "Πώς είναι μορφοποιημένο το prompt σας",
     "outputTypeDescription": "Δείξτε στην κοινότητα πώς αποδίδει αυτό το prompt όταν εκτελείται σε εργαλεία AI. Μπορείτε να δημιουργήσετε τα αποτελέσματα μόνοι σας χρησιμοποιώντας την αγαπημένη σας εφαρμογή AI.",
     "outputTypeStructuredNote": "Τα δομημένα prompts μπορούν να παράγουν διάφορους τύπους εξόδου",
+    "outputTypeSkillNote": "Οι δεξιότητες καθοδηγούν τους agents να παράγουν κώδικα. Η AI θα παράγει κώδικα με βάση τις οδηγίες δεξιοτήτων σας.",
     "inputTypes": {
       "text": "Prompt κειμένου",
-      "structured": "Δομημένο (JSON/YAML)"
+      "structured": "Δομημένο (JSON/YAML)",
+      "skill": "Δεξιότητα (Agent Skills)"
     },
     "outputTypes": {
       "text": "Κείμενο",
@@ -217,6 +220,7 @@
     "run": "Εκτέλεση",
     "downloadMarkdown": "Λήψη MD",
     "downloadYaml": "Λήψη YAML",
+    "downloadSkillMd": "Λήψη SKILL.md",
     "copyMarkdownUrl": "Αντιγραφή συνδέσμου MD",
     "copyYamlUrl": "Αντιγραφή συνδέσμου YAML",
     "downloadStarted": "Η λήψη ξεκίνησε",

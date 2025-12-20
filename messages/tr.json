@@ -160,7 +160,8 @@
       "video": "Video",
       "audio": "Ses",
       "structured": "Yapılandırılmış",
-      "document": "Doküman"
+      "document": "Doküman",
+      "skill": "Yetenek"
     },
     "inputType": "Kullanıcı Promptu",
     "outputType": "AI Yanıtı",
@@ -168,9 +169,11 @@
     "inputTypeDescription": "Promptunuzun formatı",
     "outputTypeDescription": "Bu prompt AI araçlarında çalıştırıldığında nasıl performans gösterdiğini topluluğa gösterin. Çıktıları kendiniz favori AI uygulamanızı kullanarak oluşturabilirsiniz.",
     "outputTypeStructuredNote": "Yapılandırılmış promptlar çeşitli çıktı türleri üretebilir",
+    "outputTypeSkillNote": "Yetenekler, ajanları kod üretmeye yönlendirir. AI, yetenek talimatlarınıza göre kod çıktısı üretecektir.",
     "inputTypes": {
       "text": "Metin Promptu",
-      "structured": "Yapılandırılmış (JSON/YAML)"
+      "structured": "Yapılandırılmış (JSON/YAML)",
+      "skill": "Yetenek (Agent Skills)"
     },
     "outputTypes": {
       "text": "Metin",
@@ -217,6 +220,7 @@
     "run": "Çalıştır",
     "downloadMarkdown": "MD İndir",
     "downloadYaml": "YAML İndir",
+    "downloadSkillMd": "SKILL.md İndir",
     "copyMarkdownUrl": "MD Linkini Kopyala",
     "copyYamlUrl": "YAML Linkini Kopyala",
     "downloadStarted": "İndirme başladı",

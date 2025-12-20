@@ -429,6 +429,7 @@ export default async function PromptPage({ params }: PromptPageProps) {
                 parentCategoryName={prompt.category?.parent?.name}
                 promptId={prompt.id}
                 promptSlug={prompt.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}
+                promptType={prompt.type}
               />
             ) : (
               <InteractivePromptContent 
@@ -439,6 +440,7 @@ export default async function PromptPage({ params }: PromptPageProps) {
                 parentCategoryName={prompt.category?.parent?.name}
                 promptId={prompt.id}
                 promptSlug={prompt.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}
+                promptType={prompt.type}
               />
             )}
           </div>

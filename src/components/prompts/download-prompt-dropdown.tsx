@@ -16,21 +16,26 @@ import { toast } from "sonner";
 interface DownloadPromptDropdownProps {
   promptId: string;
   promptSlug?: string;
+  promptType?: string;
 }
 
-export function DownloadPromptDropdown({ promptId, promptSlug }: DownloadPromptDropdownProps) {
+export function DownloadPromptDropdown({ promptId, promptSlug, promptType }: DownloadPromptDropdownProps) {
   const t = useTranslations("prompts");
   const [copiedFormat, setCopiedFormat] = useState<"md" | "yml" | null>(null);
+  
+  const isSkill = promptType === "SKILL";
 
   const getFileName = (format: "md" | "yml") => {
     const base = promptSlug ? `${promptId}_${promptSlug}` : promptId;
-    return `${base}.prompt.${format}`;
+    const filePrefix = isSkill ? "SKILL" : "prompt";
+    return `${base}.${filePrefix}.${format}`;
   };
 
   const getFileUrl = (format: "md" | "yml") => {
     if (typeof window === "undefined") return "";
     const base = promptSlug ? `${promptId}_${promptSlug}` : promptId;
-    return `${window.location.origin}/prompts/${base}.prompt.${format}`;
+    const filePrefix = isSkill ? "SKILL" : "prompt";
+    return `${window.location.origin}/prompts/${base}.${filePrefix}.${format}`;
   };
 
   const handleDownload = async (format: "md" | "yml") => {
@@ -67,6 +72,16 @@ export function DownloadPromptDropdown({ promptId, promptSlug }: DownloadPromptD
       toast.error(t("failedToCopyUrl"));
     }
   };
+
+  // For SKILL type, show a simple button instead of dropdown
+  if (isSkill) {
+    return (
+      <Button variant="ghost" size="sm" onClick={() => handleDownload("md")}>
+        <Download className="h-4 w-4 mr-1" />
+        {t("downloadSkillMd")}
+      </Button>
+    );
+  }
 
   return (
     <DropdownMenu>

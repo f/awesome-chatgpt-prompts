@@ -343,6 +343,7 @@ enum PromptType {
   VIDEO
   AUDIO
   STRUCTURED
+  SKILL
 }
 
 enum StructuredFormat {

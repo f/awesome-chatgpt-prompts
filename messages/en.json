@@ -160,7 +160,8 @@
       "video": "Video",
       "audio": "Audio",
       "structured": "Structured",
-      "document": "Document"
+      "document": "Document",
+      "skill": "Skill"
     },
     "inputType": "User Prompt",
     "outputType": "AI Response",
@@ -168,9 +169,11 @@
     "inputTypeDescription": "How your prompt is formatted",
     "outputTypeDescription": "Show the community how this prompt performs when run on AI tools. You can generate outputs yourself using your favorite AI app.",
     "outputTypeStructuredNote": "Structured prompts can produce various output types",
+    "outputTypeSkillNote": "Skills instruct agents to generate code. The AI will produce code output based on your skill instructions.",
     "inputTypes": {
       "text": "Text Prompt",
-      "structured": "Structured (JSON/YAML)"
+      "structured": "Structured (JSON/YAML)",
+      "skill": "Skill (Agent Skills)"
     },
     "outputTypes": {
       "text": "Text",
@@ -217,6 +220,7 @@
     "run": "Run",
     "downloadMarkdown": "Download MD",
     "downloadYaml": "Download YAML",
+    "downloadSkillMd": "Download SKILL.md",
     "copyMarkdownUrl": "Copy MD Link",
     "copyYamlUrl": "Copy YAML Link",
     "downloadStarted": "Download started",
