@@ -78,10 +78,11 @@ function EditableSpan({
       if (!value && !document.activeElement?.isSameNode(spanRef.current)) {
         // Show placeholder when empty and not focused
         spanRef.current.textContent = placeholder;
-        setIsShowingPlaceholder(true);
+        // Sync state with DOM - intentional pattern
+        queueMicrotask(() => setIsShowingPlaceholder(true));
       } else if (value && spanRef.current.textContent !== value) {
         spanRef.current.textContent = value;
-        setIsShowingPlaceholder(false);
+        queueMicrotask(() => setIsShowingPlaceholder(false));
       }
     }
   }, [value, placeholder]);

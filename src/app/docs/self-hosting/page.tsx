@@ -564,7 +564,7 @@ export default function SelfHostingPage() {
             <li>Hide &quot;Clone on GitHub&quot; button</li>
           </ul>
           <div className="bg-muted rounded-lg p-4 font-mono text-sm">
-            <p className="text-muted-foreground">// prompts.config.ts</p>
+            <p className="text-muted-foreground">{"// prompts.config.ts"}</p>
             <p>const useCloneBranding = true;</p>
           </div>
           </div>

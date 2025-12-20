@@ -163,8 +163,8 @@ function CodeDiffContent({ wordDiff, language }: { wordDiff: WordDiff[]; languag
       let hasDeletion = false;
       
       // Check what diffs overlap with this line
-      let lineStart = charIndex;
-      let lineEnd = charIndex + lineText.length;
+      const lineStart = charIndex;
+      const lineEnd = charIndex + lineText.length;
       
       let pos = 0;
       for (const diff of wordDiff) {

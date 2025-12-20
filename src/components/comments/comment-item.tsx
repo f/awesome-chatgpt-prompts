@@ -103,7 +103,7 @@ export function CommentItem({
   isAdmin,
   isLoggedIn,
   locale,
-  replies,
+  replies: _replies,
   allComments,
   onCommentAdded,
   onCommentDeleted,

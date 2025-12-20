@@ -7,7 +7,7 @@ import { InfinitePromptList } from "@/components/prompts/infinite-prompt-list";
 import { PromptFilters } from "@/components/prompts/prompt-filters";
 import { FilterProvider } from "@/components/prompts/filter-context";
 import { HFDataStudioDropdown } from "@/components/prompts/hf-data-studio-dropdown";
-import { McpServerPopup, McpIcon } from "@/components/mcp/mcp-server-popup";
+import { McpServerPopup } from "@/components/mcp/mcp-server-popup";
 import { db } from "@/lib/db";
 import { isAISearchEnabled, semanticSearch } from "@/lib/ai/embeddings";
 import { isAIGenerationEnabled } from "@/lib/ai/generation";
@@ -122,6 +122,7 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
   const aiGenerationAvailable = await isAIGenerationEnabled();
   const useAISearch = aiSearchAvailable && params.ai === "1" && params.q;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let prompts: any[] = [];
   let total = 0;
 
@@ -176,6 +177,7 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
     
     // Build order by clause
     const isUpvoteSort = params.sort === "upvotes";
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let orderBy: any = { createdAt: "desc" };
     if (params.sort === "oldest") {
       orderBy = { createdAt: "asc" };

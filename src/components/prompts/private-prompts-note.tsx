@@ -17,7 +17,8 @@ export function PrivatePromptsNote({ count }: PrivatePromptsNoteProps) {
 
   useEffect(() => {
     const dismissed = localStorage.getItem(STORAGE_KEY) === "true";
-    setIsDismissed(dismissed);
+    // Read from localStorage on mount - use queueMicrotask to avoid sync setState
+    queueMicrotask(() => setIsDismissed(dismissed));
   }, []);
 
   const handleDismiss = () => {

@@ -739,6 +739,7 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
                 </SelectContent>
               </Select>
               {isStructuredInput && (
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 <Select value={structuredFormat || "JSON"} onValueChange={(v) => form.setValue("structuredFormat", v as any)}>
                   <SelectTrigger className="h-9 w-24">
                     <SelectValue />

@@ -49,7 +49,7 @@ export function InfinitePromptList({
   filters 
 }: InfinitePromptListProps) {
   const t = useTranslations("prompts");
-  const searchParams = useSearchParams();
+  const _searchParams = useSearchParams();
   const { isFilterPending, setFilterPending } = useFilterContext();
   const [prompts, setPrompts] = useState(initialPrompts);
   const [page, setPage] = useState(1);

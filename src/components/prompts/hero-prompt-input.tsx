@@ -56,8 +56,11 @@ export function HeroPromptInput() {
           setDisplayText((prev) => prev.slice(0, -1));
         }, DELETE_SPEED);
       } else {
-        setIsDeleting(false);
-        setCurrentPromptIndex((prev) => (prev + 1) % examplePrompts.length);
+        // Schedule state updates to avoid synchronous setState in effect
+        animationRef.current = setTimeout(() => {
+          setIsDeleting(false);
+          setCurrentPromptIndex((prev) => (prev + 1) % examplePrompts.length);
+        }, 0);
       }
     } else {
       if (displayText.length < currentPrompt.length) {

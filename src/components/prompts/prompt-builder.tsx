@@ -166,8 +166,8 @@ export const PromptBuilder = forwardRef<PromptBuilderHandle, PromptBuilderProps>
       }
 
       let fullContent = "";
-      let toolCalls: ToolCall[] = [];
-      let searchResults: Message["searchResults"] = [];
+      const toolCalls: ToolCall[] = [];
+      const searchResults: Message["searchResults"] = [];
       let newState: PromptBuilderState | null = null;
 
       while (true) {

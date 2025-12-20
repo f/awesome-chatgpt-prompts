@@ -340,8 +340,8 @@ export function RunPromptButton({
     );
   };
 
-  // Tab buttons component
-  const TabButtons = ({ size = "default" }: { size?: "default" | "small" }) => (
+  // Tab buttons render function
+  const renderTabButtons = (size: "default" | "small" = "default") => (
     <div className={`flex gap-1 ${size === "small" ? "p-1" : "p-1.5"} bg-muted rounded-md`}>
       <button
         onClick={() => setActiveTab("chat")}
@@ -382,7 +382,7 @@ export function RunPromptButton({
               <SheetTitle>{t("run")}</SheetTitle>
             </SheetHeader>
             <div className="py-2">
-              <TabButtons />
+              {renderTabButtons()}
             </div>
             <div className="overflow-y-auto flex-1 py-2">
               {activePlatforms.map(renderMobilePlatform)}
@@ -400,7 +400,7 @@ export function RunPromptButton({
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-52">
             <div className="p-1">
-              <TabButtons size="small" />
+              {renderTabButtons("small")}
             </div>
             <DropdownMenuSeparator />
             <div className="max-h-64 overflow-y-auto">

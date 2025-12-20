@@ -295,6 +295,7 @@ export async function GET(request: Request) {
     }
 
     // Build order by clause
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let orderBy: any = { createdAt: "desc" };
     if (sort === "oldest") {
       orderBy = { createdAt: "asc" };

@@ -43,7 +43,7 @@ import {
 import { NotificationBell } from "@/components/layout/notification-bell";
 import { setLocale } from "@/lib/i18n/client";
 import { useBranding } from "@/components/providers/branding-provider";
-import { analyticsAuth, analyticsNav, analyticsSettings } from "@/lib/analytics";
+import { analyticsAuth, analyticsSettings } from "@/lib/analytics";
 
 const languages = [
   { code: "en", name: "English" },
@@ -69,8 +69,6 @@ interface HeaderProps {
 
 export function Header({ authProvider = "credentials", allowRegistration = true }: HeaderProps) {
   const isOAuth = authProvider !== "credentials";
-  // Show register button for OAuth (with login text) or credentials with registration enabled
-  const showRegisterButton = isOAuth || (authProvider === "credentials" && allowRegistration);
   const { data: session } = useSession();
   const t = useTranslations();
   const { theme, setTheme } = useTheme();

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Download, FileText, FileCode, Copy, Check, Link } from "lucide-react";
+import { Download, FileText, FileCode, Check, Link } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
