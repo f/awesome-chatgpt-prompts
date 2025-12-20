@@ -6,7 +6,7 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 const nextConfig: NextConfig = {
   reactCompiler: true,
   // Enable standalone output for Docker
-  output: "standalone",
+  // output: "standalone",
   // Experimental features
   experimental: {
     // Enable server actions
