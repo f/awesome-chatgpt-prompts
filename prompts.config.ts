@@ -59,13 +59,13 @@ export default defineConfig({
     // Enable tags
     tags: true,
     // Enable AI-powered semantic search (requires OPENAI_API_KEY)
-    aiSearch: false,
+    aiSearch: true,
     // Enable AI-powered generation features (requires OPENAI_API_KEY)
-    aiGeneration: false,
+    aiGeneration: true,
     // Enable MCP (Model Context Protocol) features including API key generation
     mcp: true,
     // Enable comments on prompts
-    comments: false,
+    comments: true,
   },
 
   // Homepage customization
