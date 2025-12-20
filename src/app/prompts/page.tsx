@@ -2,8 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { Plus } from "lucide-react";
-import { unstable_cache } from "next/cache";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import { InfinitePromptList } from "@/components/prompts/infinite-prompt-list";
 import { PromptFilters } from "@/components/prompts/prompt-filters";
 import { FilterProvider } from "@/components/prompts/filter-context";
@@ -12,7 +11,6 @@ import { McpServerPopup, McpIcon } from "@/components/mcp/mcp-server-popup";
 import { db } from "@/lib/db";
 import { isAISearchEnabled, semanticSearch } from "@/lib/ai/embeddings";
 import { isAIGenerationEnabled } from "@/lib/ai/generation";
-import { CACHE_TAGS } from "@/lib/cache";
 import config from "@/../prompts.config";
 
 export const metadata: Metadata = {
@@ -20,99 +18,87 @@ export const metadata: Metadata = {
   description: "Browse and discover AI prompts",
 };
 
-// Cached query for categories
-const getCachedCategories = unstable_cache(
-  async () => {
-    return db.category.findMany({
-      orderBy: [{ order: "asc" }, { name: "asc" }],
-      select: {
-        id: true,
-        name: true,
-        slug: true,
-        parentId: true,
-      },
-    });
-  },
-  ["prompts-categories"],
-  { tags: [CACHE_TAGS.CATEGORIES, CACHE_TAGS.PROMPTS], revalidate: 3600 }
-);
+// Query for categories
+async function getCategories() {
+  return db.category.findMany({
+    orderBy: [{ order: "asc" }, { name: "asc" }],
+    select: {
+      id: true,
+      name: true,
+      slug: true,
+      parentId: true,
+    },
+  });
+}
 
-// Cached query for tags
-const getCachedTags = unstable_cache(
-  async () => {
-    return db.tag.findMany({
-      orderBy: { name: "asc" },
-    });
-  },
-  ["prompts-tags"],
-  { tags: [CACHE_TAGS.TAGS, CACHE_TAGS.PROMPTS], revalidate: 3600 }
-);
+// Query for tags
+async function getTags() {
+  return db.tag.findMany({
+    orderBy: { name: "asc" },
+  });
+}
 
-// Cached query for prompts list
-const getCachedPrompts = unstable_cache(
-  async (
-    where: Record<string, unknown>,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    orderBy: any,
-    perPage: number
-  ) => {
-    const [promptsRaw, totalCount] = await Promise.all([
-      db.prompt.findMany({
-        where,
-        orderBy,
-        skip: 0,
-        take: perPage,
-        include: {
-          author: {
-            select: {
-              id: true,
-              name: true,
-              username: true,
-              avatar: true,
-            },
-          },
-          category: {
-            include: {
-              parent: {
-                select: { id: true, name: true, slug: true },
-              },
-            },
-          },
-          tags: {
-            include: {
-              tag: true,
-            },
-          },
-          contributors: {
-            select: {
-              id: true,
-              username: true,
-              name: true,
-              avatar: true,
-            },
-          },
-          _count: {
-            select: { votes: true, contributors: true },
+// Query for prompts list
+async function getPrompts(
+  where: Record<string, unknown>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  orderBy: any,
+  perPage: number
+) {
+  const [promptsRaw, totalCount] = await Promise.all([
+    db.prompt.findMany({
+      where,
+      orderBy,
+      skip: 0,
+      take: perPage,
+      include: {
+        author: {
+          select: {
+            id: true,
+            name: true,
+            username: true,
+            avatar: true,
           },
         },
-      }),
-      db.prompt.count({ where }),
-    ]);
+        category: {
+          include: {
+            parent: {
+              select: { id: true, name: true, slug: true },
+            },
+          },
+        },
+        tags: {
+          include: {
+            tag: true,
+          },
+        },
+        contributors: {
+          select: {
+            id: true,
+            username: true,
+            name: true,
+            avatar: true,
+          },
+        },
+        _count: {
+          select: { votes: true, contributors: true },
+        },
+      },
+    }),
+    db.prompt.count({ where }),
+  ]);
 
-    return {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      prompts: promptsRaw.map((p: any) => ({
-        ...p,
-        voteCount: p._count.votes,
-        contributorCount: p._count.contributors,
-        contributors: p.contributors,
-      })),
-      total: totalCount,
-    };
-  },
-  ["prompts-list"],
-  { tags: [CACHE_TAGS.PROMPTS_LIST, CACHE_TAGS.PROMPTS], revalidate: 60 }
-);
+  return {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    prompts: promptsRaw.map((p: any) => ({
+      ...p,
+      voteCount: p._count.votes,
+      contributorCount: p._count.contributors,
+      contributors: p.contributors,
+    })),
+    total: totalCount,
+  };
+}
 
 interface PromptsPageProps {
   searchParams: Promise<{
@@ -198,16 +184,16 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
       orderBy = { votes: { _count: "desc" } };
     }
 
-    // Fetch initial prompts (first page) - using cached query
-    const result = await getCachedPrompts(where, orderBy, perPage);
+    // Fetch initial prompts (first page)
+    const result = await getPrompts(where, orderBy, perPage);
     prompts = result.prompts;
     total = result.total;
   }
 
-  // Fetch categories and tags for filter - using cached queries
+  // Fetch categories and tags for filter
   const [categories, tags] = await Promise.all([
-    getCachedCategories(),
-    getCachedTags(),
+    getCategories(),
+    getTags(),
   ]);
 
   return (

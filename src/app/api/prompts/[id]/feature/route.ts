@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { revalidatePrompts } from "@/lib/cache";
 
 // POST /api/prompts/[id]/feature - Toggle featured status (admin only)
 export async function POST(
@@ -45,9 +44,6 @@ export async function POST(
         featuredAt: !prompt.isFeatured ? new Date() : null,
       },
     });
-
-    // Revalidate prompts cache
-    revalidatePrompts();
 
     return NextResponse.json({
       success: true,

@@ -7,7 +7,6 @@ import { generatePromptEmbedding } from "@/lib/ai/embeddings";
 import { generatePromptSlug } from "@/lib/slug";
 import { checkPromptQuality } from "@/lib/ai/quality-check";
 import { isSimilarContent, normalizeContent } from "@/lib/similarity";
-import { revalidatePrompts } from "@/lib/cache";
 
 const promptSchema = z.object({
   title: z.string().min(1).max(200),
@@ -235,8 +234,6 @@ export async function POST(request: Request) {
             },
           });
           console.log(`[Quality Check] Prompt ${prompt.id} delisted successfully`);
-          // Revalidate cache after auto-delist
-          revalidatePrompts();
         }
       }).catch((err) => {
         console.error("[Quality Check] Failed to run quality check for prompt:", prompt.id, err);
@@ -244,9 +241,6 @@ export async function POST(request: Request) {
     } else {
       console.log(`[Quality Check] Skipped - prompt ${prompt.id} is private`);
     }
-
-    // Revalidate prompts cache
-    revalidatePrompts();
 
     return NextResponse.json(prompt);
   } catch (error) {

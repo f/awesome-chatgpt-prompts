@@ -5,7 +5,6 @@ import { db } from "@/lib/db";
 import { generatePromptEmbedding } from "@/lib/ai/embeddings";
 import { generatePromptSlug } from "@/lib/slug";
 import { checkPromptQuality } from "@/lib/ai/quality-check";
-import { revalidatePrompts } from "@/lib/cache";
 
 const updatePromptSchema = z.object({
   title: z.string().min(1).max(200).optional(),
@@ -234,16 +233,11 @@ export async function PATCH(
             },
           });
           console.log(`[Quality Check] Prompt ${id} delisted successfully`);
-          // Revalidate cache after auto-delist
-          revalidatePrompts();
         }
       }).catch((err) => {
         console.error("[Quality Check] Failed to run quality check for prompt:", id, err);
       });
     }
-
-    // Revalidate prompts cache
-    revalidatePrompts();
 
     return NextResponse.json(prompt);
   } catch (error) {
@@ -322,9 +316,6 @@ export async function DELETE(
       where: { id },
       data: { deletedAt: new Date() },
     });
-
-    // Revalidate prompts cache
-    revalidatePrompts();
 
     return NextResponse.json({ 
       success: true, 
