@@ -43,14 +43,16 @@ import { getPromptUrl } from "@/lib/urls";
 interface MediaFieldProps {
   form: ReturnType<typeof useForm<PromptFormValues>>;
   t: (key: string) => string;
+  promptType?: string;
 }
 
-function MediaField({ form, t }: MediaFieldProps) {
+function MediaField({ form, t, promptType }: MediaFieldProps) {
   const [storageMode, setStorageMode] = useState<string>("url");
   const [isUploading, setIsUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const mediaUrl = form.watch("mediaUrl");
+  const isVideoType = promptType === "VIDEO";
 
   useEffect(() => {
     fetch("/api/config/storage")
@@ -63,16 +65,19 @@ function MediaField({ form, t }: MediaFieldProps) {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // Validate file size (5MB)
-    if (file.size > 5 * 1024 * 1024) {
-      setUploadError(t("fileTooLarge"));
+    // Validate file size (5MB for images, 50MB for videos)
+    const maxSize = isVideoType ? 50 * 1024 * 1024 : 5 * 1024 * 1024;
+    if (file.size > maxSize) {
+      setUploadError(t(isVideoType ? "videoTooLarge" : "fileTooLarge"));
       return;
     }
 
     // Validate file type
-    const allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+    const allowedImageTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+    const allowedVideoTypes = ["video/mp4"];
+    const allowedTypes = isVideoType ? allowedVideoTypes : allowedImageTypes;
     if (!allowedTypes.includes(file.type)) {
-      setUploadError(t("invalidFileType"));
+      setUploadError(t(isVideoType ? "invalidVideoType" : "invalidFileType"));
       return;
     }
 
@@ -136,16 +141,24 @@ function MediaField({ form, t }: MediaFieldProps) {
       name="mediaUrl"
       render={() => (
         <FormItem>
-          <FormLabel>{t("mediaImage")}</FormLabel>
+          <FormLabel>{t(isVideoType ? "mediaVideo" : "mediaImage")}</FormLabel>
           <FormControl>
             <div className="space-y-2">
               {mediaUrl ? (
                 <div className="relative inline-block">
-                  <img
-                    src={mediaUrl}
-                    alt="Preview"
-                    className="max-h-40 rounded-md border"
-                  />
+                  {isVideoType ? (
+                    <video
+                      src={mediaUrl}
+                      controls
+                      className="max-h-40 rounded-md border"
+                    />
+                  ) : (
+                    <img
+                      src={mediaUrl}
+                      alt="Preview"
+                      className="max-h-40 rounded-md border"
+                    />
+                  )}
                   <Button
                     type="button"
                     variant="destructive"
@@ -167,17 +180,17 @@ function MediaField({ form, t }: MediaFieldProps) {
                     <Upload className="h-8 w-8 text-muted-foreground" />
                   )}
                   <p className="text-sm text-muted-foreground">
-                    {isUploading ? t("uploading") : t("clickToUpload")}
+                    {isUploading ? t("uploading") : t(isVideoType ? "clickToUploadVideo" : "clickToUpload")}
                   </p>
                   <p className="text-xs text-muted-foreground">
-                    {t("maxFileSize")}
+                    {t(isVideoType ? "maxVideoSize" : "maxFileSize")}
                   </p>
                 </div>
               )}
               <input
                 ref={fileInputRef}
                 type="file"
-                accept="image/jpeg,image/png,image/gif,image/webp"
+                accept={isVideoType ? "video/mp4" : "image/jpeg,image/png,image/gif,image/webp"}
                 className="hidden"
                 onChange={handleFileSelect}
                 disabled={isUploading}
@@ -972,12 +985,12 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
                 </div>
               )}
               {promptType === "VIDEO" && (
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 text-sm font-medium">
                     <Video className="h-4 w-4" />
                     <span>{t("outputPreview.videoUpload")}</span>
                   </div>
-                  <MediaField form={form} t={t} />
+                  <MediaField form={form} t={t} promptType={promptType} />
                 </div>
               )}
               {promptType === "AUDIO" && (

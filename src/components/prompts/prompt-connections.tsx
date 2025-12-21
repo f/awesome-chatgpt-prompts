@@ -133,12 +133,43 @@ export function PromptConnections({
       const isMobile = width < 500;
       const isTablet = width < 700;
       
-      const nodeWidth = isMobile ? width - 40 : isTablet ? Math.min(160, width * 0.35) : Math.min(180, width * 0.3);
-      const nodeHeight = isMobile ? 36 : 40;
+      const nodeWidth = isMobile ? width - 40 : isTablet ? Math.min(160, width * 0.35) : Math.min(200, width * 0.3);
+      const baseNodeHeight = isMobile ? 36 : 40;
+      const lineHeight = 14;
       const verticalGap = isMobile ? 50 : 100;
       const horizontalGap = isMobile ? 20 : isTablet ? 40 : 60;
       const fontSize = isMobile ? "10px" : "11px";
       const labelFontSize = isMobile ? "8px" : "9px";
+      
+      // Helper to wrap text and get line count
+      const getWrappedLines = (text: string, maxWidth: number): string[] => {
+        if (isMobile) return [text]; // No wrapping on mobile (full width)
+        const words = text.split(/\s+/);
+        const lines: string[] = [];
+        let currentLine = "";
+        const charWidth = 6; // Approximate char width for 11px font
+        
+        words.forEach(word => {
+          const testLine = currentLine ? `${currentLine} ${word}` : word;
+          if (testLine.length * charWidth > maxWidth - 20) {
+            if (currentLine) lines.push(currentLine);
+            currentLine = word;
+          } else {
+            currentLine = testLine;
+          }
+        });
+        if (currentLine) lines.push(currentLine);
+        return lines.length > 0 ? lines : [text];
+      };
+      
+      // Calculate node height based on text
+      const getNodeHeight = (title: string): number => {
+        const lines = getWrappedLines(title, nodeWidth);
+        return Math.max(baseNodeHeight, lines.length * lineHeight + 20);
+      };
+      
+      // Use base height for layout calculations
+      const nodeHeight = baseNodeHeight;
       
       // Calculate layout dimensions
       const incomingCount = incoming.length;
@@ -387,13 +418,13 @@ export function PromptConnections({
         }
       });
 
-    // Node backgrounds (rounded rectangles with better styling)
+    // Node backgrounds (rounded rectangles with dynamic height)
     nodeElements
       .append("rect")
       .attr("x", -nodeWidth / 2)
-      .attr("y", -nodeHeight / 2)
+      .attr("y", (d) => -getNodeHeight(d.title) / 2)
       .attr("width", nodeWidth)
-      .attr("height", nodeHeight)
+      .attr("height", (d) => getNodeHeight(d.title))
       .attr("rx", 10)
       .attr("fill", (d) =>
         d.type === "current" ? colors.primary : colors.card
@@ -404,17 +435,24 @@ export function PromptConnections({
       .attr("stroke-width", (d) => (d.type === "current" ? 0 : 1.5))
       .attr("filter", (d) => (d.type === "current" ? "url(#shadow)" : null));
 
-    // Node labels
-    nodeElements
-      .append("text")
-      .attr("text-anchor", "middle")
-      .attr("dy", "0.35em")
-      .attr("fill", (d) =>
-        d.type === "current" ? colors.primaryFg : colors.cardFg
-      )
-      .attr("font-size", fontSize)
-      .attr("font-weight", (d) => (d.type === "current" ? "700" : "500"))
-      .text((d) => d.title);
+    // Node labels with text wrapping
+    nodeElements.each(function(d) {
+      const g = d3.select(this);
+      const lines = getWrappedLines(d.title, nodeWidth);
+      const totalHeight = lines.length * lineHeight;
+      const startY = -totalHeight / 2 + lineHeight / 2;
+      
+      lines.forEach((line, i) => {
+        g.append("text")
+          .attr("text-anchor", "middle")
+          .attr("y", startY + i * lineHeight)
+          .attr("dy", "0.35em")
+          .attr("fill", d.type === "current" ? colors.primaryFg : colors.cardFg)
+          .attr("font-size", fontSize)
+          .attr("font-weight", d.type === "current" ? "700" : "500")
+          .text(line);
+      });
+    });
 
     // On mobile, add badge labels below each non-current node
     if (isMobile) {
@@ -429,11 +467,12 @@ export function PromptConnections({
             const badgeLabel = link.label;
             const badgeWidth = badgeLabel.length * 5 + 12;
             const g = d3.select(this);
+            const h = getNodeHeight(d.title);
             
             // Badge background (above the node)
             g.append("rect")
               .attr("x", -badgeWidth / 2)
-              .attr("y", -nodeHeight / 2 - 20)
+              .attr("y", -h / 2 - 20)
               .attr("width", badgeWidth)
               .attr("height", 16)
               .attr("rx", 8)
@@ -444,7 +483,7 @@ export function PromptConnections({
             // Badge text (above the node)
             g.append("text")
               .attr("text-anchor", "middle")
-              .attr("y", -nodeHeight / 2 - 12)
+              .attr("y", -h / 2 - 12)
               .attr("dy", "0.35em")
               .attr("fill", colors.mutedFg)
               .attr("font-size", "8px")
@@ -458,7 +497,7 @@ export function PromptConnections({
         .filter((d) => d.type !== "current")
         .append("text")
         .attr("text-anchor", "middle")
-        .attr("dy", (d) => d.type === "incoming" ? nodeHeight / 2 + 14 : -nodeHeight / 2 - 6)
+        .attr("dy", (d) => d.type === "incoming" ? getNodeHeight(d.title) / 2 + 14 : -getNodeHeight(d.title) / 2 - 6)
         .attr("fill", colors.mutedFg)
         .attr("font-size", "10px")
         .text((d) => (d.type === "incoming" ? "↓" : "↓"));
@@ -471,7 +510,7 @@ export function PromptConnections({
       outgoingNodes
         .append("circle")
         .attr("cx", nodeWidth / 2 - 8)
-        .attr("cy", -nodeHeight / 2 + 8)
+        .attr("cy", (d) => -getNodeHeight(d.title) / 2 + 8)
         .attr("r", 10)
         .attr("fill", colors.destructive)
         .attr("cursor", "pointer")
@@ -490,7 +529,7 @@ export function PromptConnections({
       outgoingNodes
         .append("text")
         .attr("x", nodeWidth / 2 - 8)
-        .attr("y", -nodeHeight / 2 + 12)
+        .attr("y", (d) => -getNodeHeight(d.title) / 2 + 12)
         .attr("text-anchor", "middle")
         .attr("fill", "white")
         .attr("font-size", "14px")
