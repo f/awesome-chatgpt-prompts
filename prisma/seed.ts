@@ -808,6 +808,113 @@ Provide specific, actionable feedback with:
 
   console.log("✅ Created", changeRequestsData.length, "change requests");
 
+  // Create prompt connections (chains)
+  const connectionPromptTitles = [
+    "Code Review Assistant",
+    "Code Refactoring Skill",
+    "Test Generator Skill",
+    "Documentation Writer Skill",
+    "Git Commit Message Skill",
+    "Code Review Skill",
+    "Debug Assistant",
+    "Content Pipeline Workflow",
+    "Blog Post Generator",
+  ];
+
+  const connectionPrompts = await prisma.prompt.findMany({
+    where: { title: { in: connectionPromptTitles } },
+  });
+
+  const getPromptByTitle = (title: string) => connectionPrompts.find(p => p.title === title);
+
+  const promptConnectionsData = [
+    // Code review workflow chain
+    {
+      sourceTitle: "Code Review Assistant",
+      targetTitle: "Code Refactoring Skill",
+      label: "needs refactoring",
+      order: 0,
+    },
+    {
+      sourceTitle: "Code Review Assistant",
+      targetTitle: "Test Generator Skill",
+      label: "needs tests",
+      order: 1,
+    },
+    {
+      sourceTitle: "Code Refactoring Skill",
+      targetTitle: "Code Review Skill",
+      label: "review changes",
+      order: 0,
+    },
+    {
+      sourceTitle: "Code Refactoring Skill",
+      targetTitle: "Documentation Writer Skill",
+      label: "update docs",
+      order: 1,
+    },
+    {
+      sourceTitle: "Test Generator Skill",
+      targetTitle: "Code Review Skill",
+      label: "review tests",
+      order: 0,
+    },
+    // After code review, commit
+    {
+      sourceTitle: "Code Review Skill",
+      targetTitle: "Git Commit Message Skill",
+      label: "ready to commit",
+      order: 0,
+    },
+    // Debug workflow
+    {
+      sourceTitle: "Debug Assistant",
+      targetTitle: "Code Refactoring Skill",
+      label: "fix identified",
+      order: 0,
+    },
+    {
+      sourceTitle: "Debug Assistant",
+      targetTitle: "Test Generator Skill",
+      label: "add regression test",
+      order: 1,
+    },
+    // Content workflow chain
+    {
+      sourceTitle: "Content Pipeline Workflow",
+      targetTitle: "Blog Post Generator",
+      label: "generate content",
+      order: 0,
+    },
+  ];
+
+  let connectionsCreated = 0;
+  for (const conn of promptConnectionsData) {
+    const source = getPromptByTitle(conn.sourceTitle);
+    const target = getPromptByTitle(conn.targetTitle);
+
+    if (source && target) {
+      await prisma.promptConnection.upsert({
+        where: {
+          sourceId_targetId: {
+            sourceId: source.id,
+            targetId: target.id,
+          },
+        },
+        update: {},
+        create: {
+          sourceId: source.id,
+          targetId: target.id,
+          label: conn.label,
+          order: conn.order,
+        },
+      });
+      connectionsCreated++;
+    }
+  }
+
+  console.log("✅ Created", connectionsCreated, "prompt connections");
+
   console.log("\n🎉 Seeding complete!");
   console.log("\n📋 Test credentials (all passwords: password123):");
   console.log("   Admin:   admin@prompts.chat");

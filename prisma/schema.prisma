@@ -114,6 +114,8 @@ model Prompt {
   author              User               @relation("PromptAuthor", fields: [authorId], references: [id], onDelete: Cascade)
   category            Category?          @relation(fields: [categoryId], references: [id])
   contributors        User[]             @relation("PromptContributors")
+  outgoingConnections PromptConnection[] @relation("ConnectionSource")
+  incomingConnections PromptConnection[] @relation("ConnectionTarget")
 
   @@index([authorId])
   @@index([categoryId])
@@ -325,6 +327,23 @@ model Notification {
   @@index([userId])
   @@index([userId, read])
   @@map("notifications")
+}
+
+model PromptConnection {
+  id            String   @id @default(cuid())
+  sourceId      String
+  targetId      String
+  label         String
+  order         Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  source        Prompt   @relation("ConnectionSource", fields: [sourceId], references: [id], onDelete: Cascade)
+  target        Prompt   @relation("ConnectionTarget", fields: [targetId], references: [id], onDelete: Cascade)
+
+  @@unique([sourceId, targetId])
+  @@index([sourceId])
+  @@index([targetId])
+  @@map("prompt_connections")
 }
 
 enum NotificationType {

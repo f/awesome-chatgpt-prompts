@@ -24,6 +24,7 @@ import { MediaPreview } from "@/components/prompts/media-preview";
 import { ReportPromptDialog } from "@/components/prompts/report-prompt-dialog";
 import { DelistBanner } from "@/components/prompts/delist-banner";
 import { CommentSection } from "@/components/comments";
+import { PromptConnections } from "@/components/prompts/prompt-connections";
 import { getConfig } from "@/lib/config";
 
 interface PromptPageProps {
@@ -596,6 +597,13 @@ export default async function PromptPage({ params }: PromptPageProps) {
           </TabsContent>
         )}
       </Tabs>
+
+      {/* Connected Prompts Section */}
+      <PromptConnections
+        promptId={prompt.id}
+        promptTitle={prompt.title}
+        canEdit={canEdit}
+      />
 
       {/* Comments Section */}
       {config.features.comments !== false && !prompt.isPrivate && (
