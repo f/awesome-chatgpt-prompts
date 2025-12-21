@@ -1,23 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { getStoragePlugin } from "@/lib/plugins/registry";
+import sharp from "sharp";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/gif", "image/webp"];
 
 async function compressToJpg(buffer: Buffer): Promise<Buffer> {
-  try {
-    // Dynamic import for optional sharp dependency
-    const sharpModule = await import(/* webpackIgnore: true */ "sharp");
-    const sharp = sharpModule.default;
-    return await sharp(buffer)
-      .jpeg({ quality: 90, mozjpeg: true })
-      .toBuffer();
-  } catch {
-    throw new Error(
-      "Image compression requires sharp. Install it with: npm install sharp"
-    );
-  }
+  return await sharp(buffer)
+    .jpeg({ quality: 90, mozjpeg: true })
+    .toBuffer();
 }
 
 export async function POST(request: NextRequest) {
