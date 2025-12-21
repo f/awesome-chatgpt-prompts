@@ -8,6 +8,7 @@ import * as d3 from "d3";
 import { Link2, ArrowUp, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AddConnectionDialog } from "./add-connection-dialog";
+import { getPromptUrl } from "@/lib/urls";
 
 interface PromptNode {
   id: string;
@@ -112,8 +113,8 @@ export function PromptConnections({
     fetchConnections();
   };
 
-  const getPromptUrl = (prompt: { slug: string | null; id: string }) => {
-    return prompt.slug ? `/prompts/${prompt.slug}` : `/prompts/${prompt.id}`;
+  const getPromptLink = (prompt: { slug: string | null; id: string }) => {
+    return getPromptUrl(prompt.id, prompt.slug);
   };
 
   // D3 Spider Visualization
@@ -404,7 +405,7 @@ export function PromptConnections({
       .attr("cursor", (d) => (d.type !== "current" ? "pointer" : "default"))
       .on("click", (event, d) => {
         if (d.type !== "current") {
-          router.push(getPromptUrl(d));
+          router.push(getPromptLink(d));
         }
       })
       .on("mouseover", function (event, d) {

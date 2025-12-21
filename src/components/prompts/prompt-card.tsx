@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
@@ -79,7 +79,22 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
   const [imageError, setImageError] = useState(false);
 
   const isStructuredInput = !!prompt.structuredFormat;
-  const hasMediaBackground = prompt.type === "IMAGE" || (isStructuredInput && !!prompt.mediaUrl);
+  const hasMediaBackground = prompt.type === "IMAGE" || prompt.type === "VIDEO" || (isStructuredInput && !!prompt.mediaUrl);
+  const isVideo = prompt.type === "VIDEO";
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleMouseEnter = () => {
+    if (isVideo && videoRef.current) {
+      videoRef.current.play();
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (isVideo && videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  };
   const contentHasVariables = hasVariables(prompt.content);
 
   const copyToClipboard = async (content: string) => {
@@ -104,19 +119,33 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
   return (
     <div 
       className={`group border rounded-[var(--radius)] overflow-hidden hover:border-foreground/20 transition-colors flex flex-col ${hasMediaBackground ? "" : "p-4"}`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {/* Image Background for IMAGE type or STRUCTURED with media */}
       {hasMediaBackground && (
         <div className="relative h-32 bg-muted">
           {prompt.mediaUrl && !imageError ? (
-            <Image
-              src={prompt.mediaUrl}
-              alt={prompt.title}
-              fill
-              className="object-cover"
-              unoptimized
-              onError={() => setImageError(true)}
-            />
+            isVideo ? (
+              <video
+                ref={videoRef}
+                src={prompt.mediaUrl}
+                className="absolute inset-0 w-full h-full object-cover"
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              />
+            ) : (
+              <Image
+                src={prompt.mediaUrl}
+                alt={prompt.title}
+                fill
+                className="object-cover"
+                unoptimized
+                onError={() => setImageError(true)}
+              />
+            )
           ) : (
             <div className="absolute inset-0 flex items-center justify-center">
               <ImageIcon className="h-8 w-8 text-muted-foreground/30" />
