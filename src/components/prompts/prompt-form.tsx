@@ -65,8 +65,8 @@ function MediaField({ form, t, promptType }: MediaFieldProps) {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // Validate file size (5MB for images, 50MB for videos)
-    const maxSize = isVideoType ? 50 * 1024 * 1024 : 5 * 1024 * 1024;
+    // Validate file size (4MB for both - Vercel serverless limit)
+    const maxSize = 4 * 1024 * 1024;
     if (file.size > maxSize) {
       setUploadError(t(isVideoType ? "videoTooLarge" : "fileTooLarge"));
       return;

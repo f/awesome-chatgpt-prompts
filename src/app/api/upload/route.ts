@@ -3,8 +3,8 @@ import { auth } from "@/lib/auth";
 import { getStoragePlugin } from "@/lib/plugins/registry";
 import sharp from "sharp";
 
-const MAX_IMAGE_SIZE = 5 * 1024 * 1024; // 5MB for images
-const MAX_VIDEO_SIZE = 50 * 1024 * 1024; // 50MB for videos
+const MAX_IMAGE_SIZE = 4 * 1024 * 1024; // 4MB for images
+const MAX_VIDEO_SIZE = 4 * 1024 * 1024; // 4MB for videos (Vercel serverless limit)
 const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/gif", "image/webp"];
 const ALLOWED_VIDEO_TYPES = ["video/mp4"];
 
@@ -70,7 +70,7 @@ export async function POST(request: NextRequest) {
     const maxSize = isVideo ? MAX_VIDEO_SIZE : MAX_IMAGE_SIZE;
     if (file.size > maxSize) {
       return NextResponse.json(
-        { error: `File too large. Maximum size is ${isVideo ? "50MB" : "5MB"}.` },
+        { error: `File too large. Maximum size is 4MB.` },
         { status: 400 }
       );
     }
