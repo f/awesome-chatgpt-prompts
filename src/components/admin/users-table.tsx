@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations, useLocale } from "next-intl";
 import { formatDistanceToNow } from "@/lib/date";
-import { MoreHorizontal, Shield, User, Trash2, BadgeCheck, Search, Loader2, ChevronLeft, ChevronRight, Filter } from "lucide-react";
+import { MoreHorizontal, Shield, User, Trash2, BadgeCheck, Search, Loader2, ChevronLeft, ChevronRight, Filter, Flag, AlertTriangle } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -51,6 +51,9 @@ interface UserData {
   avatar: string | null;
   role: "ADMIN" | "USER";
   verified: boolean;
+  flagged: boolean;
+  flaggedAt: string | null;
+  flaggedReason: string | null;
   createdAt: string;
   _count: {
     prompts: number;
@@ -148,9 +151,28 @@ export function UsersTable() {
       if (!res.ok) throw new Error("Failed to update verification");
 
       toast.success(verified ? t("verified") : t("unverified"));
+      fetchUsers(currentPage, searchQuery, userFilter);
       router.refresh();
     } catch {
       toast.error(t("verifyFailed"));
+    }
+  };
+
+  const handleFlagToggle = async (userId: string, flagged: boolean) => {
+    try {
+      const res = await fetch(`/api/admin/users/${userId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ flagged, flaggedReason: flagged ? "Unusual activity" : null }),
+      });
+
+      if (!res.ok) throw new Error("Failed to update flag status");
+
+      toast.success(flagged ? t("flagged") : t("unflagged"));
+      fetchUsers(currentPage, searchQuery, userFilter);
+      router.refresh();
+    } catch {
+      toast.error(t("flagFailed"));
     }
   };
 
@@ -195,6 +217,7 @@ export function UsersTable() {
               <SelectItem value="user">{t("filters.user")}</SelectItem>
               <SelectItem value="verified">{t("filters.verified")}</SelectItem>
               <SelectItem value="unverified">{t("filters.unverified")}</SelectItem>
+              <SelectItem value="flagged">{t("filters.flagged")}</SelectItem>
             </SelectContent>
           </Select>
           <div className="flex gap-2">
@@ -241,6 +264,7 @@ export function UsersTable() {
                       <div className="font-medium flex items-center gap-1 truncate">
                         {user.name || user.username}
                         {user.verified && <BadgeCheck className="h-4 w-4 text-blue-500 flex-shrink-0" />}
+                        {user.flagged && <AlertTriangle className="h-4 w-4 text-amber-500 flex-shrink-0" />}
                       </div>
                       <div className="text-xs text-muted-foreground">@{user.username}</div>
                     </div>
@@ -266,6 +290,10 @@ export function UsersTable() {
                       <DropdownMenuItem onClick={() => handleVerifyToggle(user.id, !user.verified)}>
                         <BadgeCheck className="h-4 w-4 mr-2" />
                         {user.verified ? t("unverify") : t("verify")}
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => handleFlagToggle(user.id, !user.flagged)}>
+                        <Flag className="h-4 w-4 mr-2" />
+                        {user.flagged ? t("unflag") : t("flag")}
                       </DropdownMenuItem>
                       <DropdownMenuSeparator />
                       <DropdownMenuItem
@@ -321,6 +349,7 @@ export function UsersTable() {
                       <div className="font-medium flex items-center gap-1">
                         {user.name || user.username}
                         {user.verified && <BadgeCheck className="h-4 w-4 text-blue-500" />}
+                        {user.flagged && <AlertTriangle className="h-4 w-4 text-amber-500" />}
                       </div>
                       <div className="text-xs text-muted-foreground">@{user.username}</div>
                     </div>
@@ -359,6 +388,10 @@ export function UsersTable() {
                       <DropdownMenuItem onClick={() => handleVerifyToggle(user.id, !user.verified)}>
                         <BadgeCheck className="h-4 w-4 mr-2" />
                         {user.verified ? t("unverify") : t("verify")}
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => handleFlagToggle(user.id, !user.flagged)}>
+                        <Flag className="h-4 w-4 mr-2" />
+                        {user.flagged ? t("unflag") : t("flag")}
                       </DropdownMenuItem>
                       <DropdownMenuSeparator />
                       <DropdownMenuItem

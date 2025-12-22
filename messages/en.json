@@ -502,8 +502,14 @@
         "admin": "Admins",
         "user": "Users",
         "verified": "Verified",
-        "unverified": "Unverified"
-      }
+        "unverified": "Unverified",
+        "flagged": "Flagged"
+      },
+      "flag": "Flag User",
+      "unflag": "Unflag User",
+      "flagged": "User flagged",
+      "unflagged": "User unflagged",
+      "flagFailed": "Failed to update flag status"
     },
     "categories": {
       "title": "Category Management",

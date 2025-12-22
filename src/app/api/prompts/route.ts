@@ -48,6 +48,13 @@ export async function POST(request: Request) {
 
     const { title, description, content, type, structuredFormat, categoryId, tagIds, contributorIds, isPrivate, mediaUrl, requiresMediaUpload, requiredMediaType, requiredMediaCount } = parsed.data;
 
+    // Check if user is flagged (for auto-delisting)
+    const currentUser = await db.user.findUnique({
+      where: { id: session.user.id },
+      select: { flagged: true },
+    });
+    const isUserFlagged = currentUser?.flagged ?? false;
+
     // Rate limit: Check if user created a prompt in the last 30 seconds
     const thirtySecondsAgo = new Date(Date.now() - 30 * 1000);
     const recentPrompt = await db.prompt.findFirst({
@@ -135,6 +142,7 @@ export async function POST(request: Request) {
     const slug = await generatePromptSlug(title);
 
     // Create prompt with tags
+    // Auto-delist if user is flagged
     const prompt = await db.prompt.create({
       data: {
         title,
@@ -150,6 +158,12 @@ export async function POST(request: Request) {
         requiredMediaCount: requiresMediaUpload ? requiredMediaCount : null,
         authorId: session.user.id,
         categoryId: categoryId || null,
+        // Auto-delist prompts from flagged users
+        ...(isUserFlagged && {
+          isUnlisted: true,
+          unlistedAt: new Date(),
+          delistReason: "UNUSUAL_ACTIVITY",
+        }),
         tags: {
           create: tagIds.map((tagId) => ({
             tagId,

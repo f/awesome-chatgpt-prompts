@@ -41,6 +41,7 @@ export async function GET(request: NextRequest) {
       OR?: Array<{ email?: { contains: string; mode: "insensitive" }; username?: { contains: string; mode: "insensitive" }; name?: { contains: string; mode: "insensitive" } }>;
       role?: "ADMIN" | "USER";
       verified?: boolean;
+      flagged?: boolean;
     };
 
     const filterConditions: WhereCondition = {};
@@ -57,6 +58,9 @@ export async function GET(request: NextRequest) {
         break;
       case "unverified":
         filterConditions.verified = false;
+        break;
+      case "flagged":
+        filterConditions.flagged = true;
         break;
       default:
         // "all" - no filter
@@ -95,6 +99,9 @@ export async function GET(request: NextRequest) {
           avatar: true,
           role: true,
           verified: true,
+          flagged: true,
+          flaggedAt: true,
+          flaggedReason: true,
           createdAt: true,
           _count: {
             select: {

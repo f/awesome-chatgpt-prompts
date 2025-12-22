@@ -23,6 +23,9 @@ model User {
   githubUsername            String?
   apiKey                    String?                @unique
   mcpPromptsPublicByDefault Boolean                @default(false)
+  flagged                   Boolean                @default(false)
+  flaggedAt                 DateTime?
+  flaggedReason             String?
   accounts                  Account[]
   subscriptions  CategorySubscription[]
   changeRequests ChangeRequest[]
@@ -408,4 +411,5 @@ enum DelistReason {
   LOW_QUALITY
   NOT_LLM_INSTRUCTION
   MANUAL
+  UNUSUAL_ACTIVITY
 }

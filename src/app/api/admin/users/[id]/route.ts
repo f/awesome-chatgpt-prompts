@@ -15,10 +15,16 @@ export async function PATCH(
 
     const { id } = await params;
     const body = await request.json();
-    const { role, verified } = body;
+    const { role, verified, flagged, flaggedReason } = body;
 
     // Build update data
-    const updateData: { role?: "ADMIN" | "USER"; verified?: boolean } = {};
+    const updateData: { 
+      role?: "ADMIN" | "USER"; 
+      verified?: boolean;
+      flagged?: boolean;
+      flaggedAt?: Date | null;
+      flaggedReason?: string | null;
+    } = {};
 
     if (role !== undefined) {
       if (!["ADMIN", "USER"].includes(role)) {
@@ -31,9 +37,33 @@ export async function PATCH(
       updateData.verified = verified;
     }
 
+    if (flagged !== undefined) {
+      updateData.flagged = flagged;
+      if (flagged) {
+        updateData.flaggedAt = new Date();
+        updateData.flaggedReason = flaggedReason || null;
+      } else {
+        updateData.flaggedAt = null;
+        updateData.flaggedReason = null;
+      }
+    }
+
     const user = await db.user.update({
       where: { id },
       data: updateData,
+      select: {
+        id: true,
+        email: true,
+        username: true,
+        name: true,
+        avatar: true,
+        role: true,
+        verified: true,
+        flagged: true,
+        flaggedAt: true,
+        flaggedReason: true,
+        createdAt: true,
+      },
     });
 
     return NextResponse.json(user);
