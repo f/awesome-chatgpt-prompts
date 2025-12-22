@@ -48,12 +48,32 @@ export async function POST(request: Request) {
 
     const { title, description, content, type, structuredFormat, categoryId, tagIds, contributorIds, isPrivate, mediaUrl, requiresMediaUpload, requiredMediaType, requiredMediaCount } = parsed.data;
 
-    // Check if user is flagged (for auto-delisting)
+    // Check if user is flagged (for auto-delisting and daily limit)
     const currentUser = await db.user.findUnique({
       where: { id: session.user.id },
       select: { flagged: true },
     });
     const isUserFlagged = currentUser?.flagged ?? false;
+
+    // Daily limit for flagged users: 5 prompts per day
+    if (isUserFlagged) {
+      const startOfDay = new Date();
+      startOfDay.setHours(0, 0, 0, 0);
+      
+      const todayPromptCount = await db.prompt.count({
+        where: {
+          authorId: session.user.id,
+          createdAt: { gte: startOfDay },
+        },
+      });
+
+      if (todayPromptCount >= 5) {
+        return NextResponse.json(
+          { error: "daily_limit", message: "You have reached the daily limit of 5 prompts" },
+          { status: 429 }
+        );
+      }
+    }
 
     // Rate limit: Check if user created a prompt in the last 30 seconds
     const thirtySecondsAgo = new Date(Date.now() - 30 * 1000);

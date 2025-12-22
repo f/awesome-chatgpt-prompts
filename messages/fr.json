@@ -215,6 +215,7 @@
     "promptCreated": "Prompt créé",
     "promptUpdated": "Prompt mis à jour",
     "rateLimitError": "Veuillez attendre 30 secondes avant de créer un autre prompt",
+    "dailyLimitError": "Vous avez atteint la limite quotidienne de 5 prompts",
     "duplicatePromptError": "Vous avez déjà un prompt avec le même titre ou contenu",
     "contentExistsError": "Un prompt avec ce contenu existe déjà : \"{title}\" par {author}",
     "run": "Exécuter",
@@ -255,7 +256,9 @@
     "maxFileSize": "Taille max: 4Mo (JPEG, PNG, GIF, WebP)",
     "maxVideoSize": "Taille max: 4Mo (MP4)",
     "fileTooLarge": "Fichier trop volumineux. La taille maximale est de 4Mo.",
+    "videoTooLarge": "Vidéo trop volumineuse. La taille maximale est de 4Mo.",
     "invalidFileType": "Type de fichier invalide. Seuls JPEG, PNG, GIF et WebP sont autorisés.",
+    "invalidVideoType": "Type de vidéo invalide. Seules les vidéos MP4 sont autorisées.",
     "privateDescription": "Les prompts privés ne sont visibles que par vous",
     "requiresMediaUpload": "Nécessite un Upload de Média",
     "attachedMediaType": "Type de Média Joint",
@@ -500,8 +503,14 @@
         "admin": "Admins",
         "user": "Utilisateurs",
         "verified": "Vérifiés",
-        "unverified": "Non vérifiés"
-      }
+        "unverified": "Non vérifiés",
+        "flagged": "Signalés"
+      },
+      "flag": "Signaler l'utilisateur",
+      "unflag": "Retirer le signalement",
+      "flagged": "Utilisateur signalé",
+      "unflagged": "Signalement retiré",
+      "flagFailed": "Échec de la mise à jour du statut de signalement"
     },
     "categories": {
       "title": "Gestion des Catégories",

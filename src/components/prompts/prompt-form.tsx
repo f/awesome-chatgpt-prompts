@@ -415,6 +415,10 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
           toast.error(t("rateLimitError"));
           return;
         }
+        if (result.error === "daily_limit") {
+          toast.error(t("dailyLimitError"));
+          return;
+        }
         if (result.error === "duplicate_prompt") {
           toast.error(t("duplicatePromptError"));
           return;

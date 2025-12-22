@@ -229,6 +229,7 @@
     "promptCreated": "プロンプトを作成しました",
     "promptUpdated": "プロンプトを更新しました",
     "rateLimitError": "次のプロンプトを作成するまで30秒お待ちください",
+    "dailyLimitError": "1日のプロンプト作成上限（5件）に達しました",
     "duplicatePromptError": "同じタイトルまたは内容のプロンプトが既にあります",
     "contentExistsError": "この内容のプロンプトは既に存在します：「{title}」（{author}作）",
     "run": "実行",
@@ -263,7 +264,9 @@
     "maxFileSize": "最大ファイルサイズ: 4MB (JPEG, PNG, GIF, WebP)",
     "maxVideoSize": "最大ファイルサイズ: 4MB (MP4)",
     "fileTooLarge": "ファイルが大きすぎます。最大サイズは4MBです。",
+    "videoTooLarge": "動画が大きすぎます。最大サイズは4MBです。",
     "invalidFileType": "無効なファイル形式です。JPEG、PNG、GIF、WebPのみ許可されています。",
+    "invalidVideoType": "無効な動画形式です。MP4動画のみ許可されています。",
     "privateDescription": "非公開プロンプトはあなただけに表示されます",
     "update": "更新",
     "createButton": "作成",
@@ -500,8 +503,14 @@
         "admin": "管理者",
         "user": "ユーザー",
         "verified": "認証済み",
-        "unverified": "未認証"
-      }
+        "unverified": "未認証",
+        "flagged": "フラグ付き"
+      },
+      "flag": "ユーザーにフラグを付ける",
+      "unflag": "フラグを解除",
+      "flagged": "ユーザーにフラグを付けました",
+      "unflagged": "フラグを解除しました",
+      "flagFailed": "フラグ状態の更新に失敗しました"
     },
     "categories": {
       "title": "カテゴリー管理",

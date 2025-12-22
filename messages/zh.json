@@ -215,6 +215,7 @@
     "promptCreated": "提示词已创建",
     "promptUpdated": "提示词已更新",
     "rateLimitError": "请等待30秒后再创建下一个提示词",
+    "dailyLimitError": "您已达到每日5个提示词的上限",
     "duplicatePromptError": "您已有相同标题或内容的提示词",
     "contentExistsError": "此内容的提示词已存在：「{title}」作者：{author}",
     "run": "运行",
@@ -255,7 +256,9 @@
     "maxFileSize": "最大文件大小：4MB（JPEG、PNG、GIF、WebP）",
     "maxVideoSize": "最大文件大小：4MB（MP4）",
     "fileTooLarge": "文件太大。最大大小为4MB。",
+    "videoTooLarge": "视频太大。最大大小为4MB。",
     "invalidFileType": "无效的文件类型。仅允许JPEG、PNG、GIF和WebP。",
+    "invalidVideoType": "无效的视频类型。仅允许MP4视频。",
     "privateDescription": "私有提示词仅对您可见",
     "requiresMediaUpload": "需要媒体上传",
     "attachedMediaType": "附加媒体类型",
@@ -500,8 +503,14 @@
         "admin": "管理员",
         "user": "用户",
         "verified": "已验证",
-        "unverified": "未验证"
-      }
+        "unverified": "未认证",
+        "flagged": "已标记"
+      },
+      "flag": "标记用户",
+      "unflag": "取消标记",
+      "flagged": "用户已标记",
+      "unflagged": "已取消标记",
+      "flagFailed": "更新标记状态失败"
     },
     "categories": {
       "title": "分类管理",

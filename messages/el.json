@@ -215,6 +215,7 @@
     "promptCreated": "Το Prompt δημιουργήθηκε",
     "promptUpdated": "Το Prompt ενημερώθηκε",
     "rateLimitError": "Παρακαλώ περιμένετε 30 δευτερόλεπτα πριν δημιουργήσετε άλλο prompt",
+    "dailyLimitError": "Έχετε φτάσει το ημερήσιο όριο των 5 prompts",
     "duplicatePromptError": "Έχετε ήδη prompt με τον ίδιο τίτλο ή περιεχόμενο",
     "contentExistsError": "Υπάρχει ήδη prompt με αυτό το περιεχόμενο: \"{title}\" από {author}",
     "run": "Εκτέλεση",
@@ -255,7 +256,9 @@
     "maxFileSize": "Μέγιστο μέγεθος αρχείου: 4MB (JPEG, PNG, GIF, WebP)",
     "maxVideoSize": "Μέγιστο μέγεθος αρχείου: 4MB (MP4)",
     "fileTooLarge": "Το αρχείο είναι πολύ μεγάλο. Μέγιστο μέγεθος 4MB.",
+    "videoTooLarge": "Το βίντεο είναι πολύ μεγάλο. Μέγιστο μέγεθος 4MB.",
     "invalidFileType": "Μη έγκυρος τύπος αρχείου. Επιτρέπονται μόνο JPEG, PNG, GIF και WebP.",
+    "invalidVideoType": "Μη έγκυρος τύπος βίντεο. Επιτρέπονται μόνο βίντεο MP4.",
     "privateDescription": "Τα ιδιωτικά prompts είναι ορατά μόνο σε εσάς",
     "requiresMediaUpload": "Απαιτεί ανέβασμα μέσου",
     "attachedMediaType": "Τύπος συνημμένου μέσου",
@@ -500,8 +503,14 @@
         "admin": "Διαχειριστές",
         "user": "Χρήστες",
         "verified": "Επαληθευμένοι",
-        "unverified": "Μη επαληθευμένοι"
-      }
+        "unverified": "Μη επαληθευμένοι",
+        "flagged": "Επισημασμένοι"
+      },
+      "flag": "Επισήμανση χρήστη",
+      "unflag": "Αφαίρεση επισήμανσης",
+      "flagged": "Ο χρήστης επισημάνθηκε",
+      "unflagged": "Η επισήμανση αφαιρέθηκε",
+      "flagFailed": "Αποτυχία ενημέρωσης κατάστασης επισήμανσης"
     },
     "categories": {
       "title": "Διαχείριση κατηγοριών",

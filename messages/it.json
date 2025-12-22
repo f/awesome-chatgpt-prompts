@@ -215,6 +215,7 @@
     "promptCreated": "Prompt creato",
     "promptUpdated": "Prompt aggiornato",
     "rateLimitError": "Attendi 30 secondi prima di creare un altro prompt",
+    "dailyLimitError": "Hai raggiunto il limite giornaliero di 5 prompt",
     "duplicatePromptError": "Hai già un prompt con lo stesso titolo o contenuto",
     "contentExistsError": "Esiste già un prompt con questo contenuto: \"{title}\" di {author}",
     "run": "Esegui",
@@ -255,7 +256,9 @@
     "maxFileSize": "Dimensione max: 4MB (JPEG, PNG, GIF, WebP)",
     "maxVideoSize": "Dimensione max: 4MB (MP4)",
     "fileTooLarge": "File troppo grande. La dimensione massima è 4MB.",
+    "videoTooLarge": "Video troppo grande. La dimensione massima è 4MB.",
     "invalidFileType": "Tipo di file non valido. Sono consentiti solo JPEG, PNG, GIF e WebP.",
+    "invalidVideoType": "Tipo di video non valido. Sono consentiti solo video MP4.",
     "privateDescription": "I prompt privati sono visibili solo a te",
     "requiresMediaUpload": "Richiede Caricamento Media",
     "attachedMediaType": "Tipo di Media Allegato",
@@ -500,8 +503,14 @@
         "admin": "Admin",
         "user": "Utenti",
         "verified": "Verificati",
-        "unverified": "Non verificati"
-      }
+        "unverified": "Non verificati",
+        "flagged": "Segnalati"
+      },
+      "flag": "Segnala utente",
+      "unflag": "Rimuovi segnalazione",
+      "flagged": "Utente segnalato",
+      "unflagged": "Segnalazione rimossa",
+      "flagFailed": "Impossibile aggiornare lo stato di segnalazione"
     },
     "categories": {
       "title": "Gestione Categorie",

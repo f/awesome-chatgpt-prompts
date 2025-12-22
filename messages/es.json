@@ -229,6 +229,7 @@
     "promptCreated": "Prompt creado",
     "promptUpdated": "Prompt actualizado",
     "rateLimitError": "Por favor espera 30 segundos antes de crear otro prompt",
+    "dailyLimitError": "Has alcanzado el límite diario de 5 prompts",
     "duplicatePromptError": "Ya tienes un prompt con el mismo título o contenido",
     "contentExistsError": "Ya existe un prompt con este contenido: \"{title}\" por {author}",
     "run": "Ejecutar",
@@ -263,7 +264,9 @@
     "maxFileSize": "Tamaño máximo: 4MB (JPEG, PNG, GIF, WebP)",
     "maxVideoSize": "Tamaño máximo: 4MB (MP4)",
     "fileTooLarge": "Archivo demasiado grande. El tamaño máximo es 4MB.",
+    "videoTooLarge": "Video demasiado grande. El tamaño máximo es 4MB.",
     "invalidFileType": "Tipo de archivo inválido. Solo se permiten JPEG, PNG, GIF y WebP.",
+    "invalidVideoType": "Tipo de video inválido. Solo se permiten videos MP4.",
     "privateDescription": "Los prompts privados solo son visibles para ti",
     "update": "Actualizar",
     "createButton": "Crear",
@@ -500,8 +503,14 @@
         "admin": "Admins",
         "user": "Usuarios",
         "verified": "Verificados",
-        "unverified": "No verificados"
-      }
+        "unverified": "No verificados",
+        "flagged": "Marcados"
+      },
+      "flag": "Marcar usuario",
+      "unflag": "Desmarcar usuario",
+      "flagged": "Usuario marcado",
+      "unflagged": "Usuario desmarcado",
+      "flagFailed": "Error al actualizar estado de marcado"
     },
     "categories": {
       "title": "Gestión de Categorías",

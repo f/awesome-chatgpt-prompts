@@ -215,6 +215,7 @@
     "promptCreated": "Prompt oluşturuldu",
     "promptUpdated": "Prompt güncellendi",
     "rateLimitError": "Lütfen başka bir prompt oluşturmadan önce 30 saniye bekleyin",
+    "dailyLimitError": "Günlük 5 prompt sınırına ulaştınız",
     "duplicatePromptError": "Aynı başlık veya içeriğe sahip bir promptunuz zaten var",
     "contentExistsError": "Bu içeriğe sahip bir prompt zaten mevcut: \"{title}\" - {author}",
     "run": "Çalıştır",
@@ -502,8 +503,14 @@
         "admin": "Adminler",
         "user": "Kullanıcılar",
         "verified": "Doğrulanmış",
-        "unverified": "Doğrulanmamış"
-      }
+        "unverified": "Doğrulanmamış",
+        "flagged": "İşaretli"
+      },
+      "flag": "Kullanıcıyı İşaretle",
+      "unflag": "İşareti Kaldır",
+      "flagged": "Kullanıcı işaretlendi",
+      "unflagged": "İşaret kaldırıldı",
+      "flagFailed": "İşaret durumu güncellenemedi"
     },
     "categories": {
       "title": "Kategori Yönetimi",

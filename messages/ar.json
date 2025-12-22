@@ -229,6 +229,7 @@
     "promptCreated": "تم إنشاء الأمر",
     "promptUpdated": "تم تحديث الأمر",
     "rateLimitError": "يرجى الانتظار 30 ثانية قبل إنشاء أمر آخر",
+    "dailyLimitError": "لقد وصلت إلى الحد اليومي من 5 أوامر",
     "duplicatePromptError": "لديك بالفعل أمر بنفس العنوان أو المحتوى",
     "contentExistsError": "يوجد أمر بهذا المحتوى بالفعل: \"{title}\" بواسطة {author}",
     "run": "تشغيل",
@@ -263,7 +264,9 @@
     "maxFileSize": "الحد الأقصى لحجم الملف: 4 ميجابايت (JPEG، PNG، GIF، WebP)",
     "maxVideoSize": "الحد الأقصى لحجم الملف: 4 ميجابايت (MP4)",
     "fileTooLarge": "الملف كبير جداً. الحد الأقصى للحجم هو 4 ميجابايت.",
+    "videoTooLarge": "الفيديو كبير جداً. الحد الأقصى للحجم هو 4 ميجابايت.",
     "invalidFileType": "نوع ملف غير صالح. يُسمح فقط بـ JPEG و PNG و GIF و WebP.",
+    "invalidVideoType": "نوع فيديو غير صالح. يُسمح فقط بفيديوهات MP4.",
     "privateDescription": "الأوامر الخاصة مرئية لك فقط",
     "update": "تحديث",
     "createButton": "إنشاء",
@@ -500,8 +503,14 @@
         "admin": "المديرون",
         "user": "المستخدمون",
         "verified": "موثق",
-        "unverified": "غير موثق"
-      }
+        "unverified": "غير موثق",
+        "flagged": "محظور"
+      },
+      "flag": "حظر المستخدم",
+      "unflag": "إلغاء الحظر",
+      "flagged": "تم حظر المستخدم",
+      "unflagged": "تم إلغاء حظر المستخدم",
+      "flagFailed": "فشل تحديث حالة الحظر"
     },
     "categories": {
       "title": "إدارة التصنيفات",

@@ -215,6 +215,7 @@
     "promptCreated": "Prompt criado",
     "promptUpdated": "Prompt atualizado",
     "rateLimitError": "Aguarde 30 segundos antes de criar outro prompt",
+    "dailyLimitError": "Você atingiu o limite diário de 5 prompts",
     "duplicatePromptError": "Você já tem um prompt com o mesmo título ou conteúdo",
     "contentExistsError": "Já existe um prompt com este conteúdo: \"{title}\" por {author}",
     "run": "Executar",
@@ -255,7 +256,9 @@
     "maxFileSize": "Tamanho máximo: 4MB (JPEG, PNG, GIF, WebP)",
     "maxVideoSize": "Tamanho máximo: 4MB (MP4)",
     "fileTooLarge": "Arquivo muito grande. O tamanho máximo é 4MB.",
+    "videoTooLarge": "Vídeo muito grande. O tamanho máximo é 4MB.",
     "invalidFileType": "Tipo de arquivo inválido. Apenas JPEG, PNG, GIF e WebP são permitidos.",
+    "invalidVideoType": "Tipo de vídeo inválido. Apenas vídeos MP4 são permitidos.",
     "privateDescription": "Prompts privados são visíveis apenas para você",
     "requiresMediaUpload": "Requer Upload de Mídia",
     "attachedMediaType": "Tipo de Mídia Anexada",
@@ -500,8 +503,14 @@
         "admin": "Admins",
         "user": "Usuários",
         "verified": "Verificados",
-        "unverified": "Não verificados"
-      }
+        "unverified": "Não verificados",
+        "flagged": "Sinalizados"
+      },
+      "flag": "Sinalizar usuário",
+      "unflag": "Remover sinalização",
+      "flagged": "Usuário sinalizado",
+      "unflagged": "Sinalização removida",
+      "flagFailed": "Falha ao atualizar status de sinalização"
     },
     "categories": {
       "title": "Gerenciamento de Categorias",

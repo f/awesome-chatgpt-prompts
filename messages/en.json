@@ -215,6 +215,7 @@
     "promptCreated": "Prompt created",
     "promptUpdated": "Prompt updated",
     "rateLimitError": "Please wait 30 seconds before creating another prompt",
+    "dailyLimitError": "You have reached the daily limit of 5 prompts",
     "duplicatePromptError": "You already have a prompt with the same title or content",
     "contentExistsError": "A prompt with this content already exists: \"{title}\" by {author}",
     "run": "Run",

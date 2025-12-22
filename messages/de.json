@@ -215,6 +215,7 @@
     "promptCreated": "Prompt erstellt",
     "promptUpdated": "Prompt aktualisiert",
     "rateLimitError": "Bitte warte 30 Sekunden bevor du einen weiteren Prompt erstellst",
+    "dailyLimitError": "Du hast das tägliche Limit von 5 Prompts erreicht",
     "duplicatePromptError": "Du hast bereits einen Prompt mit dem gleichen Titel oder Inhalt",
     "contentExistsError": "Ein Prompt mit diesem Inhalt existiert bereits: \"{title}\" von {author}",
     "run": "Ausführen",
@@ -255,7 +256,9 @@
     "maxFileSize": "Max. Dateigröße: 4MB (JPEG, PNG, GIF, WebP)",
     "maxVideoSize": "Max. Dateigröße: 4MB (MP4)",
     "fileTooLarge": "Datei zu groß. Maximale Größe ist 4MB.",
+    "videoTooLarge": "Video zu groß. Maximale Größe ist 4MB.",
     "invalidFileType": "Ungültiger Dateityp. Nur JPEG, PNG, GIF und WebP sind erlaubt.",
+    "invalidVideoType": "Ungültiger Videotyp. Nur MP4-Videos sind erlaubt.",
     "privateDescription": "Private Prompts sind nur für Sie sichtbar",
     "requiresMediaUpload": "Medien-Upload erforderlich",
     "attachedMediaType": "Angehängter Medientyp",
@@ -500,8 +503,14 @@
         "admin": "Admins",
         "user": "Benutzer",
         "verified": "Verifiziert",
-        "unverified": "Nicht verifiziert"
-      }
+        "unverified": "Nicht verifiziert",
+        "flagged": "Markiert"
+      },
+      "flag": "Benutzer markieren",
+      "unflag": "Markierung aufheben",
+      "flagged": "Benutzer markiert",
+      "unflagged": "Markierung aufgehoben",
+      "flagFailed": "Markierungsstatus konnte nicht aktualisiert werden"
     },
     "categories": {
       "title": "Kategorieverwaltung",

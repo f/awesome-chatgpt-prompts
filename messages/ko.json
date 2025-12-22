@@ -215,6 +215,7 @@
     "promptCreated": "프롬프트가 생성되었습니다",
     "promptUpdated": "프롬프트가 업데이트되었습니다",
     "rateLimitError": "다른 프롬프트를 생성하기 전에 30초 기다려주세요",
+    "dailyLimitError": "일일 프롬프트 생성 한도(5개)에 도달했습니다",
     "duplicatePromptError": "동일한 제목 또는 내용의 프롬프트가 이미 있습니다",
     "contentExistsError": "이 내용의 프롬프트가 이미 존재합니다: \"{title}\" - {author}",
     "run": "실행",
@@ -255,7 +256,9 @@
     "maxFileSize": "최대 파일 크기: 4MB (JPEG, PNG, GIF, WebP)",
     "maxVideoSize": "최대 파일 크기: 4MB (MP4)",
     "fileTooLarge": "파일이 너무 큽니다. 최대 크기는 4MB입니다.",
+    "videoTooLarge": "동영상이 너무 큽니다. 최대 크기는 4MB입니다.",
     "invalidFileType": "잘못된 파일 형식입니다. JPEG, PNG, GIF, WebP만 허용됩니다.",
+    "invalidVideoType": "잘못된 동영상 형식입니다. MP4 동영상만 허용됩니다.",
     "privateDescription": "비공개 프롬프트는 본인만 볼 수 있습니다",
     "requiresMediaUpload": "미디어 업로드 필요",
     "attachedMediaType": "첨부 미디어 유형",
@@ -500,8 +503,14 @@
         "admin": "관리자",
         "user": "사용자",
         "verified": "인증됨",
-        "unverified": "미인증"
-      }
+        "unverified": "미인증",
+        "flagged": "플래그됨"
+      },
+      "flag": "사용자 플래그",
+      "unflag": "플래그 해제",
+      "flagged": "사용자가 플래그되었습니다",
+      "unflagged": "플래그가 해제되었습니다",
+      "flagFailed": "플래그 상태 업데이트 실패"
     },
     "categories": {
       "title": "카테고리 관리",

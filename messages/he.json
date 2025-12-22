@@ -215,6 +215,7 @@
     "promptCreated": "הפרומפט נוצר",
     "promptUpdated": "הפרומפט עודכן",
     "rateLimitError": "אנא המתינו 30 שניות לפני יצירת פרומפט נוסף",
+    "dailyLimitError": "הגעת למגבלה היומית של 5 פרומפטים",
     "duplicatePromptError": "כבר יש לכם פרומפט עם אותו כותרת או תוכן",
     "contentExistsError": "כבר קיים פרומפט עם תוכן זה: \"{title}\" מאת {author}",
     "run": "הפעל",
@@ -255,7 +256,9 @@
     "maxFileSize": "גודל קובץ מקסימלי: 4MB (JPEG, PNG, GIF, WebP)",
     "maxVideoSize": "גודל קובץ מקסימלי: 4MB (MP4)",
     "fileTooLarge": "הקובץ גדול מדי. גודל מקסימלי הוא 4MB.",
+    "videoTooLarge": "הסרטון גדול מדי. גודל מקסימלי הוא 4MB.",
     "invalidFileType": "סוג קובץ לא חוקי. רק JPEG, PNG, GIF ו-WebP מותרים.",
+    "invalidVideoType": "סוג סרטון לא חוקי. רק סרטוני MP4 מותרים.",
     "privateDescription": "פרומפטים פרטיים גלויים רק לך",
     "requiresMediaUpload": "דורש העלאת מדיה",
     "attachedMediaType": "סוג מדיה מצורף",
@@ -500,8 +503,14 @@
         "admin": "מנהלים",
         "user": "משתמשים",
         "verified": "מאומתים",
-        "unverified": "לא מאומתים"
-      }
+        "unverified": "לא מאומתים",
+        "flagged": "מסומנים"
+      },
+      "flag": "סמן משתמש",
+      "unflag": "הסר סימון",
+      "flagged": "המשתמש סומן",
+      "unflagged": "הסימון הוסר",
+      "flagFailed": "עדכון מצב הסימון נכשל"
     },
     "categories": {
       "title": "ניהול קטגוריות",
