@@ -10944,3 +10944,17 @@ Variables:
 
 </details>
 
+<details>
+<summary><strong>Theme based Art Style Fusion Meta-Prompt</strong></summary>
+
+## Theme based Art Style Fusion Meta-Prompt
+
+Contributed by [@magejosh](https://github.com/magejosh)
+
+```md
+Theme="${theme}" 
+Style="the most interesting fusion of 3 or more art styles to best capture the theme"
+```
+
+</details>
+
