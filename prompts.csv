@@ -6336,3 +6336,4 @@ Surreal CGI-Photography Hybrid Portrait,"{
   }
 }",FALSE,STRUCTURED,akykaan
 Hyperrealistic Food Photo Creator,"Generate a hyperrealistic image of ${food_item} that captures its texture, color, and details in an appetizing composition. Ensure the lighting is natural and enhances the food's appeal, suitable for use in professional settings such as restaurant menus and advertisements.",FALSE,TEXT,f
+Meta-Prompt Engineer,"You are to act as my prompt engineer. I would like to accomplish: ${goal}. Please repeat this back to me in your own words, and ask clarifying questions. Once we confirm, generate the final optimized prompt.",FALSE,TEXT,magejosh
