@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
@@ -83,18 +83,34 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
   const hasMediaBackground = prompt.type === "IMAGE" || prompt.type === "VIDEO" || (isStructuredInput && !!prompt.mediaUrl);
   const isVideo = prompt.type === "VIDEO";
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Autoplay video when visible in viewport
+  useEffect(() => {
+    if (!isVideo || !videoRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          videoRef.current?.play().catch(() => {});
+        } else {
+          videoRef.current?.pause();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(videoRef.current);
+    return () => observer.disconnect();
+  }, [isVideo]);
 
   const handleMouseEnter = () => {
-    if (isVideo && videoRef.current) {
-      videoRef.current.play();
-    }
+    // Video autoplay is now handled by IntersectionObserver
   };
 
   const handleMouseLeave = () => {
-    if (isVideo && videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
+    // Video pause is now handled by IntersectionObserver
   };
   const contentHasVariables = hasVariables(prompt.content);
 
