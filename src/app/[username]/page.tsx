@@ -92,7 +92,7 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
   }
 
   const page = parseInt(pageParam || "1");
-  const perPage = 12;
+  const perPage = 24;
   const isOwner = session?.user?.id === user.id;
   const isUnclaimed = user.email?.endsWith("@unclaimed.prompts.chat") ?? false;
 
