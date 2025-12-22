@@ -264,7 +264,7 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const page = parseInt(searchParams.get("page") || "1");
-    const perPage = parseInt(searchParams.get("perPage") || "12");
+    const perPage = parseInt(searchParams.get("perPage") || "24");
     const type = searchParams.get("type");
     const categoryId = searchParams.get("category");
     const tag = searchParams.get("tag");
