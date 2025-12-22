@@ -168,6 +168,7 @@ export async function POST(request: Request) {
             name: true,
             username: true,
             avatar: true,
+            verified: true,
           },
         },
         category: {
@@ -322,6 +323,7 @@ export async function GET(request: Request) {
               name: true,
               username: true,
               avatar: true,
+              verified: true,
             },
           },
           category: {

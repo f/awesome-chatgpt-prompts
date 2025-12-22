@@ -51,6 +51,7 @@ export default async function FeedPage() {
               name: true,
               username: true,
               avatar: true,
+              verified: true,
             },
           },
           category: {

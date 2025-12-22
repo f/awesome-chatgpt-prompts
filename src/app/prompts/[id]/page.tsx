@@ -85,6 +85,7 @@ export default async function PromptPage({ params }: PromptPageProps) {
           name: true,
           username: true,
           avatar: true,
+          verified: true,
         },
       },
       category: {

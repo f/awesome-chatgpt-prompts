@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidateTag } from "next/cache";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 
@@ -49,6 +50,11 @@ export async function POST(
         unlistedAt: newUnlistedStatus ? new Date() : null,
       },
     });
+
+    // Revalidate caches
+    revalidateTag("prompts", "max");
+    revalidateTag("categories", "max");
+    revalidateTag("tags", "max");
 
     return NextResponse.json({ 
       success: true, 

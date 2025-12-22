@@ -79,6 +79,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           name: true,
           username: true,
           avatar: true,
+          verified: true,
         },
       },
       category: {

@@ -73,6 +73,7 @@ export default async function TagPage({ params, searchParams }: TagPageProps) {
             name: true,
             username: true,
             avatar: true,
+            verified: true,
           },
         },
         category: {

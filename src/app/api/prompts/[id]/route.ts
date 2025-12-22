@@ -41,6 +41,7 @@ export async function GET(
             name: true,
             username: true,
             avatar: true,
+            verified: true,
           },
         },
         category: {

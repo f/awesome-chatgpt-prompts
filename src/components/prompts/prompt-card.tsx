@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { formatDistanceToNow } from "@/lib/date";
 import { getPromptUrl } from "@/lib/urls";
-import { ArrowBigUp, Lock, Copy, ImageIcon, Play } from "lucide-react";
+import { ArrowBigUp, Lock, Copy, ImageIcon, Play, BadgeCheck } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { CodeView } from "@/components/ui/code-view";
 import { toast } from "sonner";
@@ -39,6 +39,7 @@ export interface PromptCardProps {
       name: string | null;
       username: string;
       avatar: string | null;
+      verified?: boolean;
     };
     contributorCount?: number;
     contributors?: Array<{
@@ -242,6 +243,7 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
                 <AvatarFallback className="text-[8px]">{prompt.author.username[0]?.toUpperCase()}</AvatarFallback>
               </Avatar>
               @{prompt.author.username}
+              {prompt.author.verified && <BadgeCheck className="h-3 w-3 mt-0.5 text-primary shrink-0" />}
             </Link>
             {prompt.contributors && prompt.contributors.length > 0 ? (
               <Tooltip>
