@@ -10755,3 +10755,16 @@ Contributed by [@akykaan](https://github.com/akykaan)
 
 </details>
 
+<details>
+<summary><strong>Hyperrealistic Food Photo Creator</strong></summary>
+
+## Hyperrealistic Food Photo Creator
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Generate a hyperrealistic image of ${food_item} that captures its texture, color, and details in an appetizing composition. Ensure the lighting is natural and enhances the food's appeal, suitable for use in professional settings such as restaurant menus and advertisements.
+```
+
+</details>
+
