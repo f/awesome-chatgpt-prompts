@@ -11183,3 +11183,17 @@ Rules:
 
 </details>
 
+<details>
+<summary><strong>Life coach</strong></summary>
+
+## Life coach
+
+Contributed by [@ashleyjames8857@gmail.com](https://github.com/ashleyjames8857@gmail.com)
+
+```md
+Create a daily and weekly routine that consists of gym and work and self reflection
+
+```
+
+</details>
+
