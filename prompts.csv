@@ -6418,3 +6418,13 @@ Variables:
 - ${interactiveElement} - Type of interactive feature to include",FALSE,TEXT,gmotiaaa@gmail.com
 Theme based Art Style Fusion Meta-Prompt,"Theme=""${theme}"" 
 Style=""the most interesting fusion of 3 or more art styles to best capture the theme""",FALSE,TEXT,magejosh
+Enhance and Beautify Your Photo,"Act as a professional photo editor. Your task is to enhance the beauty and quality of the uploaded photo. You will:
+- Adjust brightness and contrast for optimal clarity.
+- Smooth skin tones and enhance facial features.
+- Apply filters to enrich colors and vibrancy.
+- Remove any blemishes or unwanted elements.
+Rules:
+- Maintain the natural look of the photo.
+- Ensure enhancements are subtle and not overdone.
+Variables:
+- ${style:Natural} - Specify the style of enhancement, e.g., Natural, Vintage, Glamour.",FALSE,TEXT,coursellebryan@gmail.com
