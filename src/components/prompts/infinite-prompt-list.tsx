@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { Loader2, SearchX, RefreshCw } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
+import { Masonry } from "@/components/ui/masonry";
 import { useFilterContext } from "./filter-context";
 import { PromptCard, type PromptCardProps } from "./prompt-card";
 
@@ -184,11 +185,11 @@ export function InfinitePromptList({
 
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:auto-rows-fr">
+      <Masonry columnCount={{ default: 1, md: 2, lg: 3 }} gap={16}>
         {prompts.map((prompt) => (
           <PromptCard key={prompt.id} prompt={prompt} />
         ))}
-      </div>
+      </Masonry>
 
       {/* Loader / End indicator / Error state */}
       <div ref={loaderRef} className="flex items-center justify-center py-4">

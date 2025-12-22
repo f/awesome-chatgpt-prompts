@@ -125,34 +125,34 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
     >
       {/* Image Background for IMAGE type or STRUCTURED with media */}
       {hasMediaBackground && (
-        <div className="relative h-32 bg-muted">
+        <div className="relative bg-muted">
           {prompt.mediaUrl && !imageError ? (
             isVideo ? (
               <video
                 ref={videoRef}
                 src={prompt.mediaUrl}
-                className="absolute inset-0 w-full h-full object-cover"
+                className="w-full object-cover"
+                style={{ maxHeight: "400px" }}
                 muted
                 loop
                 playsInline
                 preload="metadata"
               />
             ) : (
-              <Image
+              <img
                 src={prompt.mediaUrl}
                 alt={prompt.title}
-                fill
-                className="object-cover"
-                unoptimized
+                className="w-full object-cover object-top"
+                style={{ maxHeight: "400px" }}
                 onError={() => setImageError(true)}
               />
             )
           ) : (
-            <div className="absolute inset-0 flex items-center justify-center">
+            <div className="h-32 flex items-center justify-center">
               <ImageIcon className="h-8 w-8 text-muted-foreground/30" />
             </div>
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent pointer-events-none" />
           {/* Badges overlay */}
           <div className="absolute top-2 right-2 flex items-center gap-1.5">
             <Badge variant="secondary" className="text-[10px] bg-background/80 backdrop-blur-sm">

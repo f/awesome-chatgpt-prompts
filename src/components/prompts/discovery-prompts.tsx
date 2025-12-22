@@ -17,7 +17,7 @@ export async function DiscoveryPrompts({ isHomepage = false }: DiscoveryPromptsP
 
   const promptInclude = {
     author: {
-      select: { id: true, name: true, username: true, avatar: true },
+      select: { id: true, name: true, username: true, avatar: true, verified: true },
     },
     category: {
       include: {
@@ -142,7 +142,7 @@ export async function DiscoveryPrompts({ isHomepage = false }: DiscoveryPromptsP
                 </Link>
               </Button>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-4">
               {featuredPrompts.map((prompt) => (
                 <PromptCard key={prompt.id} prompt={prompt} />
               ))}
@@ -167,7 +167,7 @@ export async function DiscoveryPrompts({ isHomepage = false }: DiscoveryPromptsP
                 </Link>
               </Button>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-4">
               {todaysMostUpvoted.map((prompt) => (
                 <PromptCard key={prompt.id} prompt={prompt} />
               ))}
@@ -192,7 +192,7 @@ export async function DiscoveryPrompts({ isHomepage = false }: DiscoveryPromptsP
                 </Link>
               </Button>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-4">
               {latestPrompts.map((prompt) => (
                 <PromptCard key={prompt.id} prompt={prompt} />
               ))}
@@ -217,7 +217,7 @@ export async function DiscoveryPrompts({ isHomepage = false }: DiscoveryPromptsP
                 </Link>
               </Button>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-4">
               {recentlyUpdated.map((prompt) => (
                 <PromptCard key={prompt.id} prompt={prompt} />
               ))}
@@ -242,7 +242,7 @@ export async function DiscoveryPrompts({ isHomepage = false }: DiscoveryPromptsP
                 </Link>
               </Button>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-4">
               {mostContributed.map((prompt) => (
                 <PromptCard key={prompt.id} prompt={prompt} />
               ))}
