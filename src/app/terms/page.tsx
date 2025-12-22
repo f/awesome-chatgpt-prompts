@@ -76,7 +76,26 @@ export default function TermsPage() {
             <li>Attempt to gain unauthorized access to the service</li>
             <li>Use the service to spam or harass others</li>
             <li>Submit content that infringes on others&apos; intellectual property rights</li>
+            <li>Abuse the platform by submitting low-quality, duplicate, or spam content</li>
+            <li>Use automated tools to mass-create prompts or manipulate the platform</li>
           </ul>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="text-lg font-semibold">Account Flagging & Restrictions</h2>
+          <p className="text-muted-foreground">
+            If we detect unusual activity or abuse on your account, we reserve the right to flag your account. Flagged accounts are subject to the following restrictions:
+          </p>
+          <ul className="list-disc list-inside text-muted-foreground space-y-1">
+            <li>Prompt creation is limited to 5 prompts per day</li>
+            <li>New prompts may be automatically unlisted from public discovery</li>
+            <li>Your account may be subject to additional review</li>
+          </ul>
+          <p className="text-muted-foreground mt-3">
+            Unusual activity includes but is not limited to: submitting a high volume of low-quality prompts, 
+            automated or bot-like behavior, spam, or any activity that negatively impacts the platform or other users. 
+            Account flags may be removed at our discretion after review.
+          </p>
         </section>
 
         <section className="space-y-3">

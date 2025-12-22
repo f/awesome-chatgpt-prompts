@@ -57,7 +57,26 @@ export default function PrivacyPage() {
             <li>Associate prompts with your account</li>
             <li>Enable discovery of prompts by other users</li>
             <li>Improve the platform based on usage patterns</li>
+            <li>Detect and prevent abuse, spam, and unusual activity</li>
           </ul>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="text-lg font-semibold">Account Monitoring & Flagging</h2>
+          <p className="text-muted-foreground">
+            We monitor account activity to maintain platform quality and prevent abuse. If unusual or abusive 
+            activity is detected, your account may be flagged. This information is stored internally and includes:
+          </p>
+          <ul className="list-disc list-inside text-muted-foreground space-y-1">
+            <li>Flag status (whether your account is flagged)</li>
+            <li>Date when the flag was applied</li>
+            <li>Reason for the flag</li>
+          </ul>
+          <p className="text-muted-foreground mt-3">
+            Flagged accounts are subject to restrictions including a daily limit of 5 prompts and automatic 
+            unlisting of new prompts. This data is only visible to administrators and is used solely for 
+            platform integrity purposes.
+          </p>
         </section>
 
         <section className="space-y-3">
