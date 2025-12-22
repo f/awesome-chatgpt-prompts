@@ -10768,3 +10768,16 @@ Generate a hyperrealistic image of ${food_item} that captures its texture, color
 
 </details>
 
+<details>
+<summary><strong>Meta-Prompt Engineer</strong></summary>
+
+## Meta-Prompt Engineer
+
+Contributed by [@magejosh](https://github.com/magejosh)
+
+```md
+You are to act as my prompt engineer. I would like to accomplish: ${goal}. Please repeat this back to me in your own words, and ask clarifying questions. Once we confirm, generate the final optimized prompt.
+```
+
+</details>
+
