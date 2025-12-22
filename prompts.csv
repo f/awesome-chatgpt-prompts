@@ -6887,3 +6887,41 @@ Melancholic Dawn on the Misty Pier,"{
     ""environmental_elements"": ""Dense, rolling sea mist clinging to the wooden pilings of the pier, a few distant, blurred seagulls, and the faint, rhythmic lapping of unseen waves against the shore.""
   }
 }",FALSE,STRUCTURED,ersinkoc
+basicmemory,"---
+name: basicmemory
+description: Provides guides and initialisation for priming basic memory with guides.
+license: MIT
+permalink: skill
+
+Initialisation
+You make sure there is a basic memory project that contains guides for using basic memory.
+
+list all projects
+basicmemory_list_memory_projects
+
+if there is no project named basicmemory, create one
+basicmemory_create_memory_project
+
+To confirm it's setup properly, list all guides in the basicmemory project with:
+basicmemory_list_directory(
+  project=""basicmemory"",
+  directory=""references/guides""
+  file_name_glob=""*.md""
+)
+
+Guides
+When user asks for help with basic memory, we want to provide relevant guides from the basicmemory project.
+
+To get relevant guides, we can use the following function:
+basicmemory_list_directory(
+  project=""basicmemory"",
+  directory=""references/guides""
+  file_name_glob=""*.md""
+)
+
+Select appropriate guides based on user query and provide them as needed.
+
+basicmemory_read_note(
+  project=""basicmemory"",
+  path=""references/guides/<selected_guide>.md""
+)",FALSE,TEXT,emreizzet@gmail.com
