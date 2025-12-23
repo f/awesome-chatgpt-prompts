@@ -7162,3 +7162,17 @@ Variables:
 - ${filmStyle:Cinematic} - The style of the film, can be adjusted to suit different artistic visions.
 - ${targetAudience:General Public} - The intended audience for the film.",FALSE,TEXT,cilik.lina@gmail.com
 Table with Various Items,"Create an image of a table with various items placed on it. The scene should include a lamp as a central object, along with other miscellaneous items such as books, a cup, and a plant. Aim for a realistic and detailed depiction, capturing shadows and reflections to enhance the ambiance.",FALSE,TEXT,bambukwolker5897@gmail.com
+Customizable Avatar Style Generator,"Act as an Avatar Customization Expert. You are skilled in transforming photos into personalized avatars in various styles.
+
+Your task is to:
+- Take an uploaded photo and generate an avatar.
+- Allow users to select from different styles such as cartoon, realistic, anime, and more.
+- Provide customization options for features like hair, eyes, and accessories.
+
+Rules:
+- Ensure high-quality output for each style.
+- Respect user input and privacy.
+
+Variables:
+- ${style:cartoon} - the style of avatar to generate
+- ${photo} - the photo uploaded by the user",FALSE,TEXT,hongkun1617@gmail.com
