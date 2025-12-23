@@ -573,10 +573,12 @@ export function PromptConnections({
     return null;
   }
 
-  // Don't render if no connections and user can't edit
-  if (!canEdit && outgoing.length === 0 && incoming.length === 0) {
+  // Only show on owner's own prompt
+  if (!canEdit) {
     return null;
   }
+
+  const hasConnections = outgoing.length > 0 || incoming.length > 0;
 
   return (
     <div className="mt-6 space-y-4 rounded-lg border bg-card p-4">
@@ -586,9 +588,11 @@ export function PromptConnections({
             <Link2 className="h-5 w-5 text-muted-foreground" />
             <h3 className="font-semibold">{t("title")}</h3>
           </div>
-          <p className="text-xs text-muted-foreground mt-1">{t("description")}</p>
+          {!hasConnections && (
+            <p className="text-xs text-muted-foreground mt-1">{t("description")}</p>
+          )}
         </div>
-        {canEdit && (
+        {!hasConnections && (
           <div className="flex gap-2">
             <Button
               variant="outline"
@@ -616,7 +620,7 @@ export function PromptConnections({
         )}
       </div>
 
-      {outgoing.length === 0 && incoming.length === 0 ? (
+      {!hasConnections ? (
         <p className="text-sm text-muted-foreground">{t("noConnections")}</p>
       ) : (
         <div className="w-full">
@@ -634,7 +638,7 @@ export function PromptConnections({
         </div>
       )}
 
-      {canEdit && (
+      {!hasConnections && (
         <AddConnectionDialog
           open={dialogOpen}
           onOpenChange={setDialogOpen}
