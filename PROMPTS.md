@@ -12138,3 +12138,16 @@ Variables:
 
 </details>
 
+<details>
+<summary><strong>Table with Various Items</strong></summary>
+
+## Table with Various Items
+
+Contributed by [@bambukwolker5897@gmail.com](https://github.com/bambukwolker5897@gmail.com)
+
+```md
+Create an image of a table with various items placed on it. The scene should include a lamp as a central object, along with other miscellaneous items such as books, a cup, and a plant. Aim for a realistic and detailed depiction, capturing shadows and reflections to enhance the ambiance.
+```
+
+</details>
+
