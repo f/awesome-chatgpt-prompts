@@ -6,6 +6,7 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const query = searchParams.get("q") || "";
   const limit = Math.min(parseInt(searchParams.get("limit") || "10"), 50);
+  const ownerOnly = searchParams.get("ownerOnly") === "true";
 
   if (query.length < 2) {
     return NextResponse.json({ prompts: [] });
@@ -18,10 +19,14 @@ export async function GET(request: NextRequest) {
       where: {
         deletedAt: null,
         isUnlisted: false,
-        OR: [
-          { isPrivate: false },
-          ...(session?.user ? [{ authorId: session.user.id }] : []),
-        ],
+        ...(ownerOnly && session?.user
+          ? { authorId: session.user.id }
+          : {
+              OR: [
+                { isPrivate: false },
+                ...(session?.user ? [{ authorId: session.user.id }] : []),
+              ],
+            }),
         title: {
           contains: query,
           mode: "insensitive",

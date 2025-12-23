@@ -588,36 +588,32 @@ export function PromptConnections({
             <Link2 className="h-5 w-5 text-muted-foreground" />
             <h3 className="font-semibold">{t("title")}</h3>
           </div>
-          {!hasConnections && (
-            <p className="text-xs text-muted-foreground mt-1">{t("description")}</p>
-          )}
+          <p className="text-xs text-muted-foreground mt-1">{t("description")}</p>
         </div>
-        {!hasConnections && (
-          <div className="flex gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => {
-                setConnectionType("previous");
-                setDialogOpen(true);
-              }}
-            >
-              <ArrowUp className="h-4 w-4 sm:mr-1" />
-              <span className="hidden sm:inline">{t("addPrevious")}</span>
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => {
-                setConnectionType("next");
-                setDialogOpen(true);
-              }}
-            >
-              <ArrowDown className="h-4 w-4 sm:mr-1" />
-              <span className="hidden sm:inline">{t("addNext")}</span>
-            </Button>
-          </div>
-        )}
+        <div className="flex gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => {
+              setConnectionType("previous");
+              setDialogOpen(true);
+            }}
+          >
+            <ArrowUp className="h-4 w-4 sm:mr-1" />
+            <span className="hidden sm:inline">{t("addPrevious")}</span>
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => {
+              setConnectionType("next");
+              setDialogOpen(true);
+            }}
+          >
+            <ArrowDown className="h-4 w-4 sm:mr-1" />
+            <span className="hidden sm:inline">{t("addNext")}</span>
+          </Button>
+        </div>
       </div>
 
       {!hasConnections ? (
@@ -638,15 +634,13 @@ export function PromptConnections({
         </div>
       )}
 
-      {!hasConnections && (
-        <AddConnectionDialog
-          open={dialogOpen}
-          onOpenChange={setDialogOpen}
-          promptId={promptId}
-          connectionType={connectionType}
-          onConnectionAdded={handleConnectionAdded}
-        />
-      )}
+      <AddConnectionDialog
+        open={dialogOpen}
+        onOpenChange={setDialogOpen}
+        promptId={promptId}
+        connectionType={connectionType}
+        onConnectionAdded={handleConnectionAdded}
+      />
     </div>
   );
 }

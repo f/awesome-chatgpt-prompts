@@ -59,7 +59,7 @@ export function AddConnectionDialog({
       setIsSearching(true);
       try {
         const res = await fetch(
-          `/api/prompts/search?q=${encodeURIComponent(debouncedQuery)}&limit=10`
+          `/api/prompts/search?q=${encodeURIComponent(debouncedQuery)}&limit=10&ownerOnly=true`
         );
         if (res.ok) {
           const data = await res.json();
