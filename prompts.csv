@@ -7357,3 +7357,4 @@ root{details,prompt:str}:
       subject_expression: ""An excited, joyful expression, mouth slightly open in awe.""
     year: ""Retro-Futuristic, 8-bit aesthetic""
   prompt: ""You will perform an image edit using the people from the provided photos as the main subjects. Preserve their core likeness. Imagine Subject 1 (male) and Subject 2 (female) as blocky, low-polygon explorers discovering a vibrant, floating voxel island in a vast digital void. Subject 1 is contemplative, while Subject 2 is eagerly pointing out a new discovery amidst the pixelated flora.""",FALSE,STRUCTURED,ersinkoc
+Childs Coloring Style,"A cartoon ${setting} scene with crayon colored ${detail1} and ${detail2} and ${detail3}, like that of a learning child.",FALSE,TEXT,magejosh
