@@ -12356,3 +12356,20 @@ Mirror selfie in an computer corner, blue color tone.
 
 </details>
 
+<details>
+<summary><strong>Black and white studio side-profile portrait prompt</strong></summary>
+
+## Black and white studio side-profile portrait prompt
+
+Contributed by [@torturer33](https://github.com/torturer33)
+
+```md
+{
+  "Use the attached image of the person as reference. Hyper-realistic black and white studio portrait of the young man in side profile, natural hair gently falling around his face. Strong rim light accentuating his jawline and nose, dark minimalist background. Expression thoughtful and serene, cinematic lighting creating dramatic contrast and fine photographic detail.",
+  "size": "{argument name="image size" default="1024x1024"}",
+  "n": {argument name="number of images" default="1"}
+}
+```
+
+</details>
+
