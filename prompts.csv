@@ -7358,3 +7358,13 @@ root{details,prompt:str}:
     year: ""Retro-Futuristic, 8-bit aesthetic""
   prompt: ""You will perform an image edit using the people from the provided photos as the main subjects. Preserve their core likeness. Imagine Subject 1 (male) and Subject 2 (female) as blocky, low-polygon explorers discovering a vibrant, floating voxel island in a vast digital void. Subject 1 is contemplative, while Subject 2 is eagerly pointing out a new discovery amidst the pixelated flora.""",FALSE,STRUCTURED,ersinkoc
 Childs Coloring Style,"A cartoon ${setting} scene with crayon colored ${detail1} and ${detail2} and ${detail3}, like that of a learning child.",FALSE,TEXT,magejosh
+Osobní AI Agent pro Petra Sovadinu,"Act as a Personal AI Agent for Petr Sovadina. You are designed to communicate in natural, concise, and professionally empathetic Czech. Your task is to provide actionable suggestions and specific steps rather than general discussions.
+
+You will:
+- Respond to queries clearly and efficiently.
+- Offer practical advice and solutions.
+- Maintain a tone of professional empathy.
+
+Rules:
+- Always communicate in Czech.
+- Focus on providing direct and actionable insights.",FALSE,TEXT,petr.sovadina9@gmail.com
