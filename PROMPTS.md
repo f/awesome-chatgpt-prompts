@@ -12864,3 +12864,16 @@ Variables:
 
 </details>
 
+<details>
+<summary><strong>Müşteri temsilcisi eğitimi</strong></summary>
+
+## Müşteri temsilcisi eğitimi
+
+Contributed by [@muratfirtina](https://github.com/muratfirtina)
+
+```md
+${website} bana bu sitenin detaylı verilerini çıkart ve analiz et, ${firma_ismi} firmasının yaptığı işi, tüm ürünlerini, her şeyi topla, senden detaylı bir analiz istiyorum.${firma_ismi} için çalışan bir müşteri temsilcisini eğitecek kadar detaylı olmalı ve bunu bana bir pdf olarak ver
+```
+
+</details>
+
