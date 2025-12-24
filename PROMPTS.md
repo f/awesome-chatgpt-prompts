@@ -14657,3 +14657,16 @@ Write an announcement for my Sponsors page about a new milestone or feature in [
 
 </details>
 
+<details>
+<summary><strong>Write Tier Descriptions</strong></summary>
+
+## Write Tier Descriptions
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Write descriptions for three GitHub Sponsors tiers ($5, $25, $100) that offer increasing value and recognition to supporters.
+```
+
+</details>
+
