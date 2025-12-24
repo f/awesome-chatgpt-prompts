@@ -14826,3 +14826,16 @@ Write a compelling vision statement about where I see [project/work] going in th
 
 </details>
 
+<details>
+<summary><strong>Tell Your Story</strong></summary>
+
+## Tell Your Story
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Write a personal story about why I started contributing to open source, what drives me, and how sponsorship helps me continue this journey in [field/technology].
+```
+
+</details>
+
