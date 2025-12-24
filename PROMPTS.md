@@ -15151,3 +15151,16 @@ Create a recipe finder application using HTML5, CSS3, JavaScript and a food API.
 
 </details>
 
+<details>
+<summary><strong>Secure Password Generator Tool</strong></summary>
+
+## Secure Password Generator Tool
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Create a comprehensive secure password generator using HTML5, CSS3 and JavaScript with cryptographically strong randomness. Build an intuitive interface with real-time password preview. Allow customization of password length with presets for different security levels. Include toggles for character types (uppercase, lowercase, numbers, symbols) with visual indicators. Implement an advanced strength meter showing entropy bits and estimated crack time. Add a one-click copy button with confirmation and automatic clipboard clearing. Create a password vault feature with encrypted localStorage storage. Generate multiple passwords simultaneously with batch options. Maintain a password history with generation timestamps. Calculate and display entropy using standard formulas. Offer memorable password generation options (phrase-based, pattern-based). Include export functionality with encryption options for password lists.
+```
+
+</details>
+
