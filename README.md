@@ -1,8 +1,10 @@
 ## ⚠️ Where are all the prompts gone?
 
-> **No worries They are still here.** But it become impossible to maintain a monster README file. So now it has its own system. Still free, still open-sourced.
+> **No worries! They're still here.** The README became too large to maintain, so prompts now live in [PROMPTS.md](PROMPTS.md). Your contributions to [prompts.chat](https://prompts.chat) automatically sync there. Still free, still open source.
 >
 > 🌐 **[View All Prompts on prompts.chat](https://prompts.chat/prompts)**
+> 
+> 📖 **[View All Prompts on GitHub (PROMPTS.md)](PROMPTS.md)**
 > 
 > 🔍 **[View All Prompts synced on GitHub (prompts.csv)](https://github.com/f/awesome-chatgpt-prompts/blob/main/prompts.csv)**
 > 
