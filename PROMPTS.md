@@ -14774,3 +14774,16 @@ Write a GitHub Sponsors bio for my profile that highlights my experience in [you
 
 </details>
 
+<details>
+<summary><strong>Time Commitment</strong></summary>
+
+## Time Commitment
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Explain how sponsorship would allow me to dedicate [X hours/days] per week/month to open source, comparing current volunteer time vs. potential sponsored time.
+```
+
+</details>
+
