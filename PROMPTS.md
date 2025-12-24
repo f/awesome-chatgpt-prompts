@@ -14644,3 +14644,16 @@ Design a 'Sponsor Hall of Fame' section for my README and Sponsors page that cre
 
 </details>
 
+<details>
+<summary><strong>Announce Milestone</strong></summary>
+
+## Announce Milestone
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Write an announcement for my Sponsors page about a new milestone or feature in [project], encouraging new and existing sponsors to get involved.
+```
+
+</details>
+
