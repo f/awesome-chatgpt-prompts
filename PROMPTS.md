@@ -15216,3 +15216,16 @@ Build a URL shortening service frontend using HTML5, CSS3, JavaScript and a back
 
 </details>
 
+<details>
+<summary><strong>Advanced Color Picker Tool</strong></summary>
+
+## Advanced Color Picker Tool
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Build a professional-grade color tool with HTML5, CSS3 and JavaScript for designers and developers. Create an intuitive interface with multiple selection methods including eyedropper, color wheel, sliders, and input fields. Implement real-time conversion between color formats (RGB, RGBA, HSL, HSLA, HEX, CMYK) with copy functionality. Add a color palette generator with options for complementary, analogous, triadic, tetradic, and monochromatic schemes. Include a favorites system with named collections and export options. Implement color harmony rules visualization with interactive adjustment. Create a gradient generator supporting linear, radial, and conic gradients with multiple color stops. Add an accessibility checker for WCAG compliance with contrast ratios and colorblindness simulation. Implement one-click copy for CSS, SCSS, and SVG code snippets. Include a color naming algorithm to suggest names for selected colors. Support exporting palettes to various formats (Adobe ASE, JSON, CSS variables, SCSS).
+```
+
+</details>
+
