@@ -14670,3 +14670,16 @@ Write descriptions for three GitHub Sponsors tiers ($5, $25, $100) that offer in
 
 </details>
 
+<details>
+<summary><strong>Impact Metrics</strong></summary>
+
+## Impact Metrics
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Create a compelling data-driven section showing the impact of [project name]: downloads, users helped, issues resolved, and community growth statistics.
+```
+
+</details>
+
