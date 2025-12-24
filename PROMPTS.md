@@ -14800,3 +14800,16 @@ Write a paragraph that shows sponsors the direct impact their funding will have 
 
 </details>
 
+<details>
+<summary><strong>Student Tier</strong></summary>
+
+## Student Tier
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Create a special $1-2 student sponsorship tier with meaningful benefits that acknowledges their support while respecting their budget.
+```
+
+</details>
+
