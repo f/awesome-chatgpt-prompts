@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
+import { db } from "@/lib/db";
 import {
   initializeMediaGenerators,
   getMediaGeneratorPlugin,
@@ -20,10 +21,25 @@ export async function GET() {
   const imageModels = getAvailableModels("image");
   const videoModels = getAvailableModels("video");
 
+  // Get user's credit info
+  const user = await db.user.findUnique({
+    where: { id: session.user.id },
+    select: {
+      generationCreditsRemaining: true,
+      dailyGenerationLimit: true,
+      flagged: true,
+    },
+  });
+
   return NextResponse.json({
     available,
     imageModels,
     videoModels,
+    credits: {
+      remaining: user?.generationCreditsRemaining ?? 0,
+      daily: user?.dailyGenerationLimit ?? 0,
+    },
+    canGenerate: !user?.flagged && (user?.generationCreditsRemaining ?? 0) > 0,
   });
 }
 
@@ -35,6 +51,35 @@ export async function POST(request: NextRequest) {
   }
 
   try {
+    // Check user's credits and flagged status
+    const user = await db.user.findUnique({
+      where: { id: session.user.id },
+      select: {
+        generationCreditsRemaining: true,
+        flagged: true,
+      },
+    });
+
+    if (!user) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
+    // Block flagged users
+    if (user.flagged) {
+      return NextResponse.json(
+        { error: "Your account has been flagged. Media generation is disabled." },
+        { status: 403 }
+      );
+    }
+
+    // Check credits
+    if (user.generationCreditsRemaining <= 0) {
+      return NextResponse.json(
+        { error: "No generation credits remaining. Credits reset daily." },
+        { status: 403 }
+      );
+    }
+
     const body = await request.json();
     const { prompt, model, provider, type, inputImageUrl, resolution, aspectRatio } = body;
 
@@ -70,6 +115,16 @@ export async function POST(request: NextRequest) {
       inputImageUrl,
       resolution,
       aspectRatio,
+    });
+
+    // Deduct one credit after successful generation start
+    await db.user.update({
+      where: { id: session.user.id },
+      data: {
+        generationCreditsRemaining: {
+          decrement: 1,
+        },
+      },
     });
 
     return NextResponse.json({

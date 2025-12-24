@@ -102,6 +102,8 @@ export async function GET(request: NextRequest) {
           flagged: true,
           flaggedAt: true,
           flaggedReason: true,
+          dailyGenerationLimit: true,
+          generationCreditsRemaining: true,
           createdAt: true,
           _count: {
             select: {

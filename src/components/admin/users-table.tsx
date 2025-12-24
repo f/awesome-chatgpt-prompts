@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations, useLocale } from "next-intl";
 import { formatDistanceToNow } from "@/lib/date";
-import { MoreHorizontal, Shield, User, Trash2, BadgeCheck, Search, Loader2, ChevronLeft, ChevronRight, Filter, Flag, AlertTriangle } from "lucide-react";
+import { MoreHorizontal, Shield, User, Trash2, BadgeCheck, Search, Loader2, ChevronLeft, ChevronRight, Filter, Flag, AlertTriangle, Sparkles } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -54,6 +54,8 @@ interface UserData {
   flagged: boolean;
   flaggedAt: string | null;
   flaggedReason: string | null;
+  dailyGenerationLimit: number;
+  generationCreditsRemaining: number;
   createdAt: string;
   _count: {
     prompts: number;
@@ -73,6 +75,8 @@ export function UsersTable() {
   const tCommon = useTranslations("common");
   const locale = useLocale();
   const [deleteUserId, setDeleteUserId] = useState<string | null>(null);
+  const [editCreditsUser, setEditCreditsUser] = useState<UserData | null>(null);
+  const [newCreditLimit, setNewCreditLimit] = useState("");
   const [loading, setLoading] = useState(false);
 
   // Pagination and search state
@@ -198,6 +202,35 @@ export function UsersTable() {
     }
   };
 
+  const handleEditCredits = (user: UserData) => {
+    setEditCreditsUser(user);
+    setNewCreditLimit(user.dailyGenerationLimit.toString());
+  };
+
+  const handleSaveCredits = async () => {
+    if (!editCreditsUser) return;
+
+    setLoading(true);
+    try {
+      const res = await fetch(`/api/admin/users/${editCreditsUser.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ dailyGenerationLimit: newCreditLimit }),
+      });
+
+      if (!res.ok) throw new Error("Failed to update credits");
+
+      toast.success(t("creditsUpdated"));
+      fetchUsers(currentPage, searchQuery, userFilter);
+      router.refresh();
+    } catch {
+      toast.error(t("creditsUpdateFailed"));
+    } finally {
+      setLoading(false);
+      setEditCreditsUser(null);
+    }
+  };
+
   return (
     <>
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
@@ -294,6 +327,10 @@ export function UsersTable() {
                       <DropdownMenuItem onClick={() => handleFlagToggle(user.id, !user.flagged)}>
                         <Flag className="h-4 w-4 mr-2" />
                         {user.flagged ? t("unflag") : t("flag")}
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => handleEditCredits(user)}>
+                        <Sparkles className="h-4 w-4 mr-2" />
+                        {t("editCredits")}
                       </DropdownMenuItem>
                       <DropdownMenuSeparator />
                       <DropdownMenuItem
@@ -393,6 +430,10 @@ export function UsersTable() {
                         <Flag className="h-4 w-4 mr-2" />
                         {user.flagged ? t("unflag") : t("flag")}
                       </DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => handleEditCredits(user)}>
+                        <Sparkles className="h-4 w-4 mr-2" />
+                        {t("editCredits")}
+                      </DropdownMenuItem>
                       <DropdownMenuSeparator />
                       <DropdownMenuItem
                         className="text-destructive"
@@ -462,6 +503,43 @@ export function UsersTable() {
               className="bg-destructive text-white hover:bg-destructive/90"
             >
               {t("delete")}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      {/* Edit Credits Dialog */}
+      <AlertDialog open={!!editCreditsUser} onOpenChange={() => setEditCreditsUser(null)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>{t("editCreditsTitle")}</AlertDialogTitle>
+            <AlertDialogDescription>
+              {t("editCreditsDescription", { username: editCreditsUser?.username || "" })}
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <div className="py-4">
+            <div className="space-y-2">
+              <label className="text-sm font-medium">{t("dailyLimit")}</label>
+              <Input
+                type="number"
+                min="0"
+                value={newCreditLimit}
+                onChange={(e) => setNewCreditLimit(e.target.value)}
+                placeholder="10"
+              />
+              <p className="text-xs text-muted-foreground">
+                {t("currentCredits", { 
+                  remaining: editCreditsUser?.generationCreditsRemaining ?? 0,
+                  limit: editCreditsUser?.dailyGenerationLimit ?? 0
+                })}
+              </p>
+            </div>
+          </div>
+          <AlertDialogFooter>
+            <AlertDialogCancel>{t("cancel")}</AlertDialogCancel>
+            <AlertDialogAction onClick={handleSaveCredits} disabled={loading}>
+              {loading ? <Loader2 className="h-4 w-4 animate-spin mr-2" /> : null}
+              {t("save")}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

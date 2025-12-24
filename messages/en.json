@@ -547,7 +547,15 @@
       "unflag": "Unflag User",
       "flagged": "User flagged",
       "unflagged": "User unflagged",
-      "flagFailed": "Failed to update flag status"
+      "flagFailed": "Failed to update flag status",
+      "editCredits": "Edit Credits",
+      "editCreditsTitle": "Edit Generation Credits",
+      "editCreditsDescription": "Set daily generation credit limit for @{username}",
+      "dailyLimit": "Daily Credit Limit",
+      "currentCredits": "Currently: {remaining}/{limit} credits remaining",
+      "creditsUpdated": "Credits updated successfully",
+      "creditsUpdateFailed": "Failed to update credits",
+      "save": "Save"
     },
     "categories": {
       "title": "Category Management",
