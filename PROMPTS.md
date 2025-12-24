@@ -14434,3 +14434,16 @@ Contributed by [@dengoz](https://github.com/dengoz)
 
 </details>
 
+<details>
+<summary><strong>Showcase Top Repositories</strong></summary>
+
+## Showcase Top Repositories
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Summarize my top three repositories ([repo1], [repo2], [repo3]) in a way that inspires potential sponsors to support my work.
+```
+
+</details>
+
