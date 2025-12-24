@@ -14735,3 +14735,16 @@ Design enterprise-level sponsorship tiers ($500, $1000, $5000) with benefits lik
 
 </details>
 
+<details>
+<summary><strong>Creative Perks</strong></summary>
+
+## Creative Perks
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Suggest creative perks or acknowledgments for sponsors to foster a sense of belonging and appreciation.
+```
+
+</details>
+
