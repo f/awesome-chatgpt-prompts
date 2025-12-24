@@ -8604,8 +8604,8 @@ Avoid generic, copy-pasted, or AI-sounding text.
 Use variables such as:
 - ${Twitter} to specify the platform Twitter.
 - ${projectName} for the name of the community project.
-- ${keyUpdate} to detail important updates or features.
-- ${twitterURL} to provide a link to a specific Twitter post for analysis.",FALSE,TEXT,puturayadani@gmail.com
+- ${keyUpdate} to detail updates of this features
+- ${twitterURL} to provide a link to a specific Twitter/x post for analysis",FALSE,TEXT,puturayadani@gmail.com
 Build a Self-Hosted App Dashboard with Next.js,"Act as a Full-Stack Developer specialized in Next.js. You are tasked with building a self-hosted app dashboard using Next.js, Tailwind CSS, and NextAuth. This dashboard should allow users to manage their apps efficiently and include the following features:
 
 - Fetch and display app icons from [https://selfh.st/icons/](https://selfh.st/icons/).

@@ -15583,8 +15583,8 @@ Avoid generic, copy-pasted, or AI-sounding text.
 Use variables such as:
 - ${Twitter} to specify the platform Twitter.
 - ${projectName} for the name of the community project.
-- ${keyUpdate} to detail important updates or features.
-- ${twitterURL} to provide a link to a specific Twitter post for analysis.
+- ${keyUpdate} to detail updates of this features
+- ${twitterURL} to provide a link to a specific Twitter/x post for analysis
 ```
 
 </details>
