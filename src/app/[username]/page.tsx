@@ -16,10 +16,11 @@ import { PromptList } from "@/components/prompts/prompt-list";
 import { PromptCard, type PromptCardProps } from "@/components/prompts/prompt-card";
 import { McpServerPopup } from "@/components/mcp/mcp-server-popup";
 import { PrivatePromptsNote } from "@/components/prompts/private-prompts-note";
+import { ActivityChartWrapper } from "@/components/user/activity-chart-wrapper";
 
 interface UserProfilePageProps {
   params: Promise<{ username: string }>;
-  searchParams: Promise<{ page?: string; tab?: string }>;
+  searchParams: Promise<{ page?: string; tab?: string; date?: string }>;
 }
 
 export async function generateMetadata({ params }: UserProfilePageProps): Promise<Metadata> {
@@ -50,7 +51,7 @@ export async function generateMetadata({ params }: UserProfilePageProps): Promis
 
 export default async function UserProfilePage({ params, searchParams }: UserProfilePageProps) {
   const { username: rawUsername } = await params;
-  const { page: pageParam, tab } = await searchParams;
+  const { page: pageParam, tab, date: dateFilter } = await searchParams;
   const session = await auth();
   const t = await getTranslations("user");
   const tChanges = await getTranslations("changeRequests");
@@ -96,11 +97,21 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
   const isOwner = session?.user?.id === user.id;
   const isUnclaimed = user.email?.endsWith("@unclaimed.prompts.chat") ?? false;
 
+  // Parse date filter for filtering prompts by day
+  const filterDateStart = dateFilter ? new Date(dateFilter + "T00:00:00") : null;
+  const filterDateEnd = dateFilter ? new Date(dateFilter + "T23:59:59") : null;
+
   // Build where clause - show private prompts only if owner (unlisted prompts are visible on profiles)
   const where = {
     authorId: user.id,
     deletedAt: null,
     ...(isOwner ? {} : { isPrivate: false }),
+    ...(filterDateStart && filterDateEnd ? {
+      createdAt: {
+        gte: filterDateStart,
+        lte: filterDateEnd,
+      },
+    } : {}),
   };
 
   // Common prompt include for both queries
@@ -131,8 +142,13 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
     },
   };
 
-  // Fetch prompts, pinned prompts, contributions, and counts
-  const [promptsRaw, total, totalUpvotes, pinnedPromptsRaw, contributionsRaw, privatePromptsCount] = await Promise.all([
+  // Calculate date range for activity (last 12 months)
+  const oneYearAgo = new Date();
+  oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+  oneYearAgo.setHours(0, 0, 0, 0);
+
+  // Fetch prompts, pinned prompts, contributions, counts, and activity data
+  const [promptsRaw, total, totalUpvotes, pinnedPromptsRaw, contributionsRaw, privatePromptsCount, activityPrompts, activityVotes, activityChangeRequests, activityComments] = await Promise.all([
     db.prompt.findMany({
       where,
       orderBy: { createdAt: "desc" },
@@ -180,6 +196,38 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
         deletedAt: null,
       },
     }) : Promise.resolve(0),
+    // Activity: prompts created in last year
+    db.prompt.findMany({
+      where: {
+        authorId: user.id,
+        createdAt: { gte: oneYearAgo },
+      },
+      select: { createdAt: true },
+    }),
+    // Activity: votes given in last year
+    db.promptVote.findMany({
+      where: {
+        userId: user.id,
+        createdAt: { gte: oneYearAgo },
+      },
+      select: { createdAt: true },
+    }),
+    // Activity: change requests in last year
+    db.changeRequest.findMany({
+      where: {
+        authorId: user.id,
+        createdAt: { gte: oneYearAgo },
+      },
+      select: { createdAt: true },
+    }),
+    // Activity: comments in last year
+    db.comment.findMany({
+      where: {
+        authorId: user.id,
+        createdAt: { gte: oneYearAgo },
+      },
+      select: { createdAt: true },
+    }),
   ]);
 
   // Transform to include voteCount and contributorCount
@@ -194,6 +242,25 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
     ...p,
     voteCount: p._count?.votes ?? 0,
     contributorCount: p._count?.contributors ?? 0,
+  }));
+
+  // Process activity data into daily counts
+  const activityMap = new Map<string, number>();
+  const allActivities = [
+    ...activityPrompts,
+    ...activityVotes,
+    ...activityChangeRequests,
+    ...activityComments,
+  ];
+  
+  allActivities.forEach((item) => {
+    const dateStr = item.createdAt.toISOString().split("T")[0];
+    activityMap.set(dateStr, (activityMap.get(dateStr) || 0) + 1);
+  });
+
+  const activityData = Array.from(activityMap.entries()).map(([date, count]) => ({
+    date,
+    count,
   }));
 
   // Transform pinned prompts - filter out private prompts for non-owners (unlisted are visible)
@@ -389,11 +456,17 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
             </Button>
           )}
         </div>
+
+        </div>
+
+      {/* Activity Chart - above tabs */}
+      <div className="mb-6">
+        <ActivityChartWrapper data={activityData} locale={locale} />
       </div>
 
       {/* Tabs for Prompts and Change Requests */}
       <Tabs defaultValue={defaultTab} className="w-full">
-        <TabsList className="mb-4">
+          <TabsList className="mb-4">
           <TabsTrigger value="prompts" className="gap-2">
             <FileText className="h-4 w-4" />
             {t("prompts")}
@@ -419,6 +492,22 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
         </TabsList>
 
         <TabsContent value="prompts">
+          {/* Date Filter Indicator */}
+          {dateFilter && (
+            <div className="flex items-center gap-2 mb-4 p-3 bg-primary/10 border border-primary/20 rounded-lg">
+              <Calendar className="h-4 w-4 text-primary" />
+              <span className="text-sm">
+                {t("filteringByDate", { date: new Date(dateFilter).toLocaleDateString(locale, { weekday: "long", year: "numeric", month: "long", day: "numeric" }) })}
+              </span>
+              <Link 
+                href={`/@${user.username}`} 
+                className="ml-auto text-xs text-primary hover:underline"
+              >
+                {t("clearFilter")}
+              </Link>
+            </div>
+          )}
+
           {/* Private Prompts MCP Note - only shown to owner with private prompts */}
           {isOwner && <PrivatePromptsNote count={privatePromptsCount} />}
 

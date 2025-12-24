@@ -670,7 +670,17 @@
     "noContributions": "No contributions yet",
     "noContributionsOwner": "You haven't contributed to any prompts yet",
     "contributedTo": "Contributed to {author}'s prompt",
-    "privatePromptsNote": "You have {count} private {count, plural, one {prompt} other {prompts}}. Access them via MCP using your API key in supported clients."
+    "privatePromptsNote": "You have {count} private {count, plural, one {prompt} other {prompts}}. Access them via MCP using your API key in supported clients.",
+    "activityInLastYear": "{count} contributions in the last year",
+    "contribution": "contribution",
+    "contributionsPlural": "contributions",
+    "inLastYear": "in the last year",
+    "inLast6Months": "in the last 6 months",
+    "less": "Less",
+    "more": "More",
+    "activity": "Activity",
+    "filteringByDate": "Showing prompts from {date}",
+    "clearFilter": "Clear filter"
   },
   "subscription": {
     "subscribe": "Subscribe",
