@@ -680,7 +680,10 @@
     "more": "أكثر",
     "activity": "النشاط",
     "filteringByDate": "عرض الأوامر من {date}",
-    "clearFilter": "مسح الفلتر"
+    "clearFilter": "مسح الفلتر",
+    "noPromptsOnDate": "لم يتم العثور على أوامر في هذا التاريخ.",
+    "noPromptsOnDateOwner": "ليس لديك أي أوامر في هذا التاريخ.",
+    "createForTomorrow": "أنشئ للغد"
   },
   "subscription": {
     "subscribe": "اشتراك",

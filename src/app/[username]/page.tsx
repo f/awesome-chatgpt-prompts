@@ -528,11 +528,26 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
 
           {prompts.length === 0 && pinnedPrompts.length === 0 ? (
             <div className="text-center py-12 border rounded-lg bg-muted/30">
-              <p className="text-muted-foreground">{isOwner ? t("noPromptsOwner") : t("noPrompts")}</p>
-              {isOwner && (
-                <Button asChild className="mt-4" size="sm">
-                  <Link href="/prompts/new">{t("createFirstPrompt")}</Link>
-                </Button>
+              {dateFilter ? (
+                <>
+                  <p className="text-muted-foreground">
+                    {isOwner ? t("noPromptsOnDateOwner") : t("noPromptsOnDate")}
+                  </p>
+                  {isOwner && (
+                    <Button asChild className="mt-4" size="sm">
+                      <Link href="/prompts/new">{t("createForTomorrow")}</Link>
+                    </Button>
+                  )}
+                </>
+              ) : (
+                <>
+                  <p className="text-muted-foreground">{isOwner ? t("noPromptsOwner") : t("noPrompts")}</p>
+                  {isOwner && (
+                    <Button asChild className="mt-4" size="sm">
+                      <Link href="/prompts/new">{t("createFirstPrompt")}</Link>
+                    </Button>
+                  )}
+                </>
               )}
             </div>
           ) : prompts.length > 0 ? (

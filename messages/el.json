@@ -680,7 +680,10 @@
     "more": "Περισσότερο",
     "activity": "Δραστηριότητα",
     "filteringByDate": "Εμφάνιση prompts από {date}",
-    "clearFilter": "Καθαρισμός φίλτρου"
+    "clearFilter": "Καθαρισμός φίλτρου",
+    "noPromptsOnDate": "Δεν βρέθηκαν prompts σε αυτή την ημερομηνία.",
+    "noPromptsOnDateOwner": "Δεν έχετε prompts σε αυτή την ημερομηνία.",
+    "createForTomorrow": "Δημιουργία για αύριο"
   },
   "subscription": {
     "subscribe": "Εγγραφή",

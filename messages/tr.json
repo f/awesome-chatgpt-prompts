@@ -680,7 +680,10 @@
     "more": "Çok",
     "activity": "Aktivite",
     "filteringByDate": "{date} tarihli promptlar gösteriliyor",
-    "clearFilter": "Filtreyi temizle"
+    "clearFilter": "Filtreyi temizle",
+    "noPromptsOnDate": "Bu tarihte prompt bulunamadı.",
+    "noPromptsOnDateOwner": "Bu tarihte promptunuz yok.",
+    "createForTomorrow": "Yarın için oluştur"
   },
   "subscription": {
     "subscribe": "Abone Ol",

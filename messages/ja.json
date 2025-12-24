@@ -680,7 +680,10 @@
     "more": "多",
     "activity": "アクティビティ",
     "filteringByDate": "{date}のプロンプトを表示中",
-    "clearFilter": "フィルターをクリア"
+    "clearFilter": "フィルターをクリア",
+    "noPromptsOnDate": "この日付にはプロンプトが見つかりませんでした。",
+    "noPromptsOnDateOwner": "この日付にはプロンプトがありません。",
+    "createForTomorrow": "明日用に作成"
   },
   "subscription": {
     "subscribe": "購読",

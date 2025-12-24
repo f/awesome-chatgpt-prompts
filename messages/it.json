@@ -680,7 +680,10 @@
     "more": "Più",
     "activity": "Attività",
     "filteringByDate": "Visualizzazione prompt dal {date}",
-    "clearFilter": "Cancella filtro"
+    "clearFilter": "Cancella filtro",
+    "noPromptsOnDate": "Nessun prompt trovato in questa data.",
+    "noPromptsOnDateOwner": "Non hai prompt in questa data.",
+    "createForTomorrow": "Crea per domani"
   },
   "subscription": {
     "subscribe": "Iscriviti",

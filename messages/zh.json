@@ -680,7 +680,10 @@
     "more": "多",
     "activity": "活动",
     "filteringByDate": "显示 {date} 的提示词",
-    "clearFilter": "清除筛选"
+    "clearFilter": "清除筛选",
+    "noPromptsOnDate": "此日期没有找到提示词。",
+    "noPromptsOnDateOwner": "您在此日期没有提示词。",
+    "createForTomorrow": "为明天创建"
   },
   "subscription": {
     "subscribe": "订阅",

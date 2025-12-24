@@ -680,7 +680,10 @@
     "more": "Más",
     "activity": "Actividad",
     "filteringByDate": "Mostrando prompts del {date}",
-    "clearFilter": "Limpiar filtro"
+    "clearFilter": "Limpiar filtro",
+    "noPromptsOnDate": "No se encontraron prompts en esta fecha.",
+    "noPromptsOnDateOwner": "No tienes prompts en esta fecha.",
+    "createForTomorrow": "Crear para mañana"
   },
   "subscription": {
     "subscribe": "Suscribirse",

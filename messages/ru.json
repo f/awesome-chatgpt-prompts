@@ -680,7 +680,10 @@
     "more": "Больше",
     "activity": "Активность",
     "filteringByDate": "Показаны промпты от {date}",
-    "clearFilter": "Сбросить фильтр"
+    "clearFilter": "Сбросить фильтр",
+    "noPromptsOnDate": "Промпты на эту дату не найдены.",
+    "noPromptsOnDateOwner": "У вас нет промптов на эту дату.",
+    "createForTomorrow": "Создать на завтра"
   },
   "subscription": {
     "subscribe": "Подписаться",
