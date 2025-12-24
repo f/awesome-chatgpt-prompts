@@ -14631,3 +14631,16 @@ Input Example:
 
 </details>
 
+<details>
+<summary><strong>Sponsor Hall of Fame</strong></summary>
+
+## Sponsor Hall of Fame
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Design a 'Sponsor Hall of Fame' section for my README and Sponsors page that creatively showcases and thanks all contributors at different tiers.
+```
+
+</details>
+
