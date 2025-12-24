@@ -14696,3 +14696,16 @@ Create a transparent breakdown of how sponsor funds will be used (e.g., server c
 
 </details>
 
+<details>
+<summary><strong>Recognize Sponsors</strong></summary>
+
+## Recognize Sponsors
+
+Contributed by [@f](https://github.com/f)
+
+```md
+List ways I can recognize or involve sponsors in my project's community (e.g., special Discord roles, early feature access, private Q&A sessions).
+```
+
+</details>
+
