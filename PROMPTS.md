@@ -15255,3 +15255,16 @@ Create a web-based PDF viewer using HTML5, CSS3, JavaScript and PDF.js. Build a 
 
 </details>
 
+<details>
+<summary><strong>Drawing App</strong></summary>
+
+## Drawing App
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Create an interactive drawing application using HTML5 Canvas, CSS3, and JavaScript. Build a clean interface with intuitive tool selection. Implement multiple drawing tools including brush, pencil, shapes, text, and eraser. Add color selection with recent colors, color picker, and palettes. Include layer support with opacity and blend mode options. Implement undo/redo functionality with history states. Add image import and export in multiple formats (PNG, JPG, SVG). Support canvas resizing and rotation. Implement zoom and pan navigation. Add selection tools with move, resize, and transform capabilities. Include keyboard shortcuts for common actions.
+```
+
+</details>
+
