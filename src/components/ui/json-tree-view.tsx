@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useMemo, useCallback } from "react";
-import { ChevronRight, ChevronDown } from "lucide-react";
+import { useState, useMemo, useCallback, useEffect } from "react";
+import type React from "react";
+import { ChevronRight, ChevronDown, ChevronsDown, ChevronsUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
@@ -18,9 +19,11 @@ interface JsonTreeViewProps {
   className?: string;
   fontSize?: "xs" | "sm" | "base";
   maxDepth?: number;
+  onExpandAll?: React.MutableRefObject<(() => void) | undefined>;
+  onCollapseAll?: React.MutableRefObject<(() => void) | undefined>;
 }
 
-function JsonTreeView({ data, className, fontSize = "xs", maxDepth = 10 }: JsonTreeViewProps) {
+function JsonTreeView({ data, className, fontSize = "xs", maxDepth = 10, onExpandAll, onCollapseAll }: JsonTreeViewProps) {
   const t = useTranslations("common");
   const [expandedPaths, setExpandedPaths] = useState<Set<string>>(new Set(["root"]));
 
@@ -234,48 +237,46 @@ function JsonTreeView({ data, className, fontSize = "xs", maxDepth = 10 }: JsonT
     path: "root",
   };
 
+  // Expose expand/collapse functions via useEffect
+  useEffect(() => {
+    if (onExpandAll) {
+      onExpandAll.current = expandAll;
+    }
+    if (onCollapseAll) {
+      onCollapseAll.current = collapseAll;
+    }
+  }, [expandAll, collapseAll, onExpandAll, onCollapseAll]);
+
   return (
-    <div className={cn("font-mono", className)}>
-      {/* Control buttons */}
-      {allExpandablePaths.length > 1 && (
-        <div className="flex justify-end gap-2 mb-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={expandAll}
-            className="h-7 px-2 text-xs"
-          >
-            {t("expandAll")}
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={collapseAll}
-            className="h-7 px-2 text-xs"
-          >
-            {t("collapseAll")}
-          </Button>
-        </div>
+    <div
+      className={cn(
+        "overflow-auto bg-muted rounded-lg p-4 font-mono",
+        {
+          "text-xs": fontSize === "xs",
+          "text-sm": fontSize === "sm",
+          "text-base": fontSize === "base",
+        },
+        className
       )}
-      
-      {/* Tree content */}
-      <div
-        className={cn(
-          "overflow-auto bg-muted rounded-lg p-4",
-          {
-            "text-xs": fontSize === "xs",
-            "text-sm": fontSize === "sm",
-            "text-base": fontSize === "base",
-          }
-        )}
-      >
-        {renderNode(rootNode)}
-      </div>
+    >
+      {renderNode(rootNode)}
     </div>
   );
 }
 
-export function JsonTreeViewWrapper({ content, className, fontSize = "xs" }: { content: string; className?: string; fontSize?: "xs" | "sm" | "base" }) {
+export function JsonTreeViewWrapper({ 
+  content, 
+  className, 
+  fontSize = "xs",
+  onExpandAll,
+  onCollapseAll
+}: { 
+  content: string; 
+  className?: string; 
+  fontSize?: "xs" | "sm" | "base";
+  onExpandAll?: React.MutableRefObject<(() => void) | undefined>;
+  onCollapseAll?: React.MutableRefObject<(() => void) | undefined>;
+}) {
   const parsedData = useMemo(() => {
     try {
       return JSON.parse(content);
@@ -292,5 +293,13 @@ export function JsonTreeViewWrapper({ content, className, fontSize = "xs" }: { c
     );
   }
 
-  return <JsonTreeView data={parsedData} className={className} fontSize={fontSize} />;
+  return (
+    <JsonTreeView 
+      data={parsedData} 
+      className={className} 
+      fontSize={fontSize}
+      onExpandAll={onExpandAll}
+      onCollapseAll={onCollapseAll}
+    />
+  );
 }

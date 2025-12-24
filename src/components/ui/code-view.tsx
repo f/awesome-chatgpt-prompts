@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { ChevronsDown, ChevronsUp } from "lucide-react";
 import { JsonTreeViewWrapper } from "./json-tree-view";
 
 interface CodeViewProps {
@@ -19,6 +20,9 @@ type ViewMode = "code" | "tree";
 export function CodeView({ content, language = "json", className, maxLines, fontSize = "xs" }: CodeViewProps) {
   const t = useTranslations("common");
   const [viewMode, setViewMode] = useState<ViewMode>("code");
+  const expandAllRef = useRef<(() => void) | undefined>(undefined);
+  const collapseAllRef = useRef<(() => void) | undefined>(undefined);
+  
   const isJson = language === "json";
   const showToggle = isJson && !maxLines; // Only show toggle for JSON when not truncated
 
@@ -37,30 +41,71 @@ export function CodeView({ content, language = "json", className, maxLines, font
   const displayLines = maxLines ? lines.slice(0, maxLines) : lines;
   const hasMore = maxLines && lines.length > maxLines;
 
+  const handleExpandAll = () => {
+    expandAllRef.current?.();
+  };
+
+  const handleCollapseAll = () => {
+    collapseAllRef.current?.();
+  };
+
   return (
     <div className={cn("relative", className)}>
       {showToggle && isValidJson && (
-        <div className="flex justify-end gap-1 mb-2">
-          <Button
-            variant={viewMode === "code" ? "default" : "outline"}
-            size="sm"
-            onClick={() => setViewMode("code")}
-            className="h-7 px-2 text-xs"
-          >
-            {t("codeView")}
-          </Button>
-          <Button
-            variant={viewMode === "tree" ? "default" : "outline"}
-            size="sm"
-            onClick={() => setViewMode("tree")}
-            className="h-7 px-2 text-xs"
-          >
-            {t("treeView")}
-          </Button>
+        <div className="flex items-center justify-between gap-2 mb-2">
+          {/* Code/Tree toggle buttons - left side */}
+          <div className="flex gap-1">
+            <Button
+              variant={viewMode === "code" ? "default" : "outline"}
+              size="sm"
+              onClick={() => setViewMode("code")}
+              className="h-7 px-2 text-xs"
+            >
+              {t("codeView")}
+            </Button>
+            <Button
+              variant={viewMode === "tree" ? "default" : "outline"}
+              size="sm"
+              onClick={() => setViewMode("tree")}
+              className="h-7 px-2 text-xs"
+            >
+              {t("treeView")}
+            </Button>
+          </div>
+          
+          {/* Expand/Collapse buttons - right side (only in tree view) */}
+          {viewMode === "tree" && (
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleExpandAll}
+                className="h-7 w-7 p-0"
+                title={t("expandAll")}
+              >
+                <ChevronsDown className="h-4 w-4" />
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleCollapseAll}
+                className="h-7 w-7 p-0"
+                title={t("collapseAll")}
+              >
+                <ChevronsUp className="h-4 w-4" />
+              </Button>
+            </div>
+          )}
         </div>
       )}
       {viewMode === "tree" && isValidJson ? (
-        <JsonTreeViewWrapper content={content} className={className} fontSize={fontSize} />
+        <JsonTreeViewWrapper 
+          content={content} 
+          className={className} 
+          fontSize={fontSize}
+          onExpandAll={expandAllRef}
+          onCollapseAll={collapseAllRef}
+        />
       ) : (
         <pre className={cn("font-mono overflow-hidden bg-muted rounded p-2", {
             "text-xs": fontSize === "xs",
