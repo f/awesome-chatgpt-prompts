@@ -15164,3 +15164,16 @@ Create a comprehensive secure password generator using HTML5, CSS3 and JavaScrip
 
 </details>
 
+<details>
+<summary><strong>HTTP Benchmarking Tool CLI</strong></summary>
+
+## HTTP Benchmarking Tool CLI
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Create a high-performance HTTP benchmarking tool in Go. Implement concurrent request generation with configurable thread count. Add detailed statistics including latency, throughput, and error rates. Include support for HTTP/1.1, HTTP/2, and HTTP/3. Implement custom header and cookie management. Add request templating for dynamic content. Include response validation with regex and status code checking. Implement TLS configuration with certificate validation options. Add load profile configuration with ramp-up and steady-state phases. Include detailed reporting with percentiles and histograms. Implement distributed testing mode for high-load scenarios.
+```
+
+</details>
+
