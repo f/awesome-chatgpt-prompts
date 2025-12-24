@@ -14722,3 +14722,16 @@ Draft a brief 'Project Spotlight' section for my Sponsors page, showcasing the g
 
 </details>
 
+<details>
+<summary><strong>Enterprise Sponsorship</strong></summary>
+
+## Enterprise Sponsorship
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Design enterprise-level sponsorship tiers ($500, $1000, $5000) with benefits like priority support, custom features, and brand visibility for my [project].
+```
+
+</details>
+
