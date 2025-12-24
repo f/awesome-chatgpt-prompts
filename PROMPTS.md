@@ -14761,3 +14761,16 @@ Create a template for monthly sponsor updates that includes progress, challenges
 
 </details>
 
+<details>
+<summary><strong>Create a Professional Bio</strong></summary>
+
+## Create a Professional Bio
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Write a GitHub Sponsors bio for my profile that highlights my experience in [your field], the impact of my open source work, and my commitment to community growth.
+```
+
+</details>
+
