@@ -15190,3 +15190,16 @@ Develop a web-based music player using HTML5, CSS3, and JavaScript with the Web 
 
 </details>
 
+<details>
+<summary><strong>Network Packet Analyzer CLI</strong></summary>
+
+## Network Packet Analyzer CLI
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Create a command-line network packet analyzer in C using libpcap. Implement packet capture from network interfaces with filtering options. Add protocol analysis for common protocols (TCP, UDP, HTTP, DNS, etc.). Include traffic statistics with bandwidth usage and connection counts. Implement packet decoding with detailed header information. Add export functionality in PCAP and CSV formats. Include alert system for suspicious traffic patterns. Implement connection tracking with state information. Add geolocation lookup for IP addresses. Include command-line arguments for all options with sensible defaults. Implement color-coded output for better readability.
+```
+
+</details>
+
