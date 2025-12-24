@@ -15320,3 +15320,16 @@ Develop a comprehensive interactive quiz application with HTML5, CSS3 and JavaSc
 
 </details>
 
+<details>
+<summary><strong>Gemini</strong></summary>
+
+## Gemini
+
+Contributed by [@boii260304@gmail.com](https://github.com/boii260304@gmail.com)
+
+```md
+I want my Gemini to make make smarter, it should use bold text for headings and emojis. When I start for explanation it should also include real life example for easy digestion 
+```
+
+</details>
+
