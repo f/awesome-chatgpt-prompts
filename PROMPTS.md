@@ -14917,3 +14917,16 @@ Develop a comprehensive budget tracking application using HTML5, CSS3, and JavaS
 
 </details>
 
+<details>
+<summary><strong>Flashcard Study System</strong></summary>
+
+## Flashcard Study System
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Develop a comprehensive flashcard study system using HTML5, CSS3, and JavaScript. Create an intuitive interface for card creation and review. Implement spaced repetition algorithm for optimized learning. Add support for text, images, and audio on cards. Include card categorization with decks and tags. Implement study sessions with performance tracking. Add self-assessment with confidence levels. Create statistics dashboard showing learning progress. Support import/export of card decks in standard formats. Implement keyboard shortcuts for efficient review. Add dark mode and customizable themes.
+```
+
+</details>
+
