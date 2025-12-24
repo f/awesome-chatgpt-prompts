@@ -14787,3 +14787,16 @@ Explain how sponsorship would allow me to dedicate [X hours/days] per week/month
 
 </details>
 
+<details>
+<summary><strong>Show Direct Impact</strong></summary>
+
+## Show Direct Impact
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Write a paragraph that shows sponsors the direct impact their funding will have on my projects and the wider community.
+```
+
+</details>
+
