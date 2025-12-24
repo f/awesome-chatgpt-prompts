@@ -15138,3 +15138,16 @@ Develop a first-person shooter game using Three.js and JavaScript. Create detail
 
 </details>
 
+<details>
+<summary><strong>Recipe Finder</strong></summary>
+
+## Recipe Finder
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Create a recipe finder application using HTML5, CSS3, JavaScript and a food API. Build a visually appealing interface with food photography and intuitive navigation. Implement advanced search with filtering by ingredients, cuisine, diet restrictions, and preparation time. Add user ratings and reviews with star system. Include detailed nutritional information with visual indicators for calories, macros, and allergens. Support recipe saving and categorization into collections. Implement a meal planning calendar with drag-and-drop functionality. Add automatic serving size adjustment with quantity recalculation. Include cooking mode with step-by-step instructions and timers. Support offline access to saved recipes. Add social sharing functionality for favorite recipes.
+```
+
+</details>
+
