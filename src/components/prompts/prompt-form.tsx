@@ -13,6 +13,7 @@ import { VariableWarning } from "./variable-warning";
 import { VariableHint } from "./variable-hint";
 import { ContributorSearch } from "./contributor-search";
 import { PromptBuilder, type PromptBuilderHandle } from "./prompt-builder";
+import { MediaGenerator } from "./media-generator";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -44,15 +45,18 @@ interface MediaFieldProps {
   form: ReturnType<typeof useForm<PromptFormValues>>;
   t: (key: string) => string;
   promptType?: string;
+  promptContent?: string;
 }
 
-function MediaField({ form, t, promptType }: MediaFieldProps) {
+function MediaField({ form, t, promptType, promptContent }: MediaFieldProps) {
   const [storageMode, setStorageMode] = useState<string>("url");
   const [isUploading, setIsUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
+  const [showUpload, setShowUpload] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const mediaUrl = form.watch("mediaUrl");
   const isVideoType = promptType === "VIDEO";
+  const mediaType = isVideoType ? "VIDEO" : "IMAGE";
 
   useEffect(() => {
     fetch("/api/config/storage")
@@ -115,7 +119,20 @@ function MediaField({ form, t, promptType }: MediaFieldProps) {
     setUploadError(null);
   };
 
-  // URL mode: show text input
+  const handleMediaGenerated = (url: string) => {
+    form.setValue("mediaUrl", url);
+    setShowUpload(false);
+  };
+
+  const handleUploadClick = () => {
+    if (storageMode === "url") {
+      setShowUpload(true);
+    } else {
+      fileInputRef.current?.click();
+    }
+  };
+
+  // URL mode with generator option
   if (storageMode === "url") {
     return (
       <FormField
@@ -124,9 +141,42 @@ function MediaField({ form, t, promptType }: MediaFieldProps) {
         render={({ field }) => (
           <FormItem>
             <FormLabel>{t("mediaUrl")}</FormLabel>
-            <FormControl>
-              <Input placeholder={t("mediaUrlPlaceholder")} {...field} />
-            </FormControl>
+            <div className="space-y-3">
+              {mediaUrl ? (
+                <div className="space-y-2">
+                  <div className="relative inline-block">
+                    {isVideoType ? (
+                      <video src={mediaUrl} controls className="max-h-40 rounded-md border" />
+                    ) : (
+                      <img src={mediaUrl} alt="Preview" className="max-h-40 rounded-md border" />
+                    )}
+                    <Button
+                      type="button"
+                      variant="destructive"
+                      size="icon"
+                      className="absolute -top-2 -right-2 h-6 w-6"
+                      onClick={clearMedia}
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  <MediaGenerator
+                    prompt={promptContent || ""}
+                    mediaType={mediaType as "IMAGE" | "VIDEO"}
+                    onMediaGenerated={handleMediaGenerated}
+                    onUploadClick={handleUploadClick}
+                  />
+                  {showUpload && (
+                    <FormControl>
+                      <Input placeholder={t("mediaUrlPlaceholder")} {...field} />
+                    </FormControl>
+                  )}
+                </div>
+              )}
+            </div>
             <FormMessage />
           </FormItem>
         )}
@@ -134,7 +184,7 @@ function MediaField({ form, t, promptType }: MediaFieldProps) {
     );
   }
 
-  // Upload mode: show file upload
+  // Upload mode: show file upload with generator option
   return (
     <FormField
       control={form.control}
@@ -143,7 +193,7 @@ function MediaField({ form, t, promptType }: MediaFieldProps) {
         <FormItem>
           <FormLabel>{t(isVideoType ? "mediaVideo" : "mediaImage")}</FormLabel>
           <FormControl>
-            <div className="space-y-2">
+            <div className="space-y-3">
               {mediaUrl ? (
                 <div className="relative inline-block">
                   {isVideoType ? (
@@ -170,22 +220,32 @@ function MediaField({ form, t, promptType }: MediaFieldProps) {
                   </Button>
                 </div>
               ) : (
-                <div
-                  className="flex flex-col items-center justify-center gap-2 p-6 border-2 border-dashed rounded-md cursor-pointer hover:border-primary/50 transition-colors"
-                  onClick={() => fileInputRef.current?.click()}
-                >
-                  {isUploading ? (
-                    <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
-                  ) : (
-                    <Upload className="h-8 w-8 text-muted-foreground" />
+                <>
+                  <MediaGenerator
+                    prompt={promptContent || ""}
+                    mediaType={mediaType as "IMAGE" | "VIDEO"}
+                    onMediaGenerated={handleMediaGenerated}
+                    onUploadClick={handleUploadClick}
+                  />
+                  {showUpload && (
+                    <div
+                      className="flex flex-col items-center justify-center gap-2 p-6 border-2 border-dashed rounded-md cursor-pointer hover:border-primary/50 transition-colors"
+                      onClick={() => fileInputRef.current?.click()}
+                    >
+                      {isUploading ? (
+                        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+                      ) : (
+                        <Upload className="h-8 w-8 text-muted-foreground" />
+                      )}
+                      <p className="text-sm text-muted-foreground">
+                        {isUploading ? t("uploading") : t(isVideoType ? "clickToUploadVideo" : "clickToUpload")}
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        {t(isVideoType ? "maxVideoSize" : "maxFileSize")}
+                      </p>
+                    </div>
                   )}
-                  <p className="text-sm text-muted-foreground">
-                    {isUploading ? t("uploading") : t(isVideoType ? "clickToUploadVideo" : "clickToUpload")}
-                  </p>
-                  <p className="text-xs text-muted-foreground">
-                    {t(isVideoType ? "maxVideoSize" : "maxFileSize")}
-                  </p>
-                </div>
+                </>
               )}
               <input
                 ref={fileInputRef}
@@ -981,20 +1041,20 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
               )}
               {promptType === "IMAGE" && (
                 <div className="space-y-3">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2 text-sm font-medium">
                     <ImageIcon className="h-4 w-4" />
                     <span>{t("outputPreview.imageUpload")}</span>
                   </div>
-                  <MediaField form={form} t={t} />
+                  <MediaField form={form} t={t} promptContent={promptContent} />
                 </div>
               )}
               {promptType === "VIDEO" && (
-                <div className="space-y-2">
+                <div className="space-y-3">
                   <div className="flex items-center gap-2 text-sm font-medium">
                     <Video className="h-4 w-4" />
                     <span>{t("outputPreview.videoUpload")}</span>
                   </div>
-                  <MediaField form={form} t={t} promptType={promptType} />
+                  <MediaField form={form} t={t} promptType={promptType} promptContent={promptContent} />
                 </div>
               )}
               {promptType === "AUDIO" && (
