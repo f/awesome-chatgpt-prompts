@@ -14839,3 +14839,16 @@ Write a personal story about why I started contributing to open source, what dri
 
 </details>
 
+<details>
+<summary><strong>Explain Funding Impact</strong></summary>
+
+## Explain Funding Impact
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Create a section for my Sponsors page that explains how funding will help me dedicate more time to [project/topics], support new contributors, and ensure the sustainability of my open source work.
+```
+
+</details>
+
