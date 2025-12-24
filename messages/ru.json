@@ -670,7 +670,17 @@
     "noContributions": "Вкладов пока нет",
     "noContributionsOwner": "Вы еще не внесли вклад ни в один промпт",
     "contributedTo": "Внес вклад в промпт {author}",
-    "privatePromptsNote": "У вас {count} {count, plural, one {приватный промпт} few {приватных промпта} other {приватных промптов}}. Получите доступ через MCP, используя ваш API-ключ в поддерживаемых клиентах."
+    "privatePromptsNote": "У вас {count} {count, plural, one {приватный промпт} few {приватных промпта} other {приватных промптов}}. Получите доступ через MCP, используя ваш API-ключ в поддерживаемых клиентах.",
+    "activityInLastYear": "{count} вкладов за последний год",
+    "contribution": "вклад",
+    "contributionsPlural": "вкладов",
+    "inLastYear": "за последний год",
+    "inLast6Months": "за последние 6 месяцев",
+    "less": "Меньше",
+    "more": "Больше",
+    "activity": "Активность",
+    "filteringByDate": "Показаны промпты от {date}",
+    "clearFilter": "Сбросить фильтр"
   },
   "subscription": {
     "subscribe": "Подписаться",

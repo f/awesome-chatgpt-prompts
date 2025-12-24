@@ -670,7 +670,17 @@
     "noContributions": "Aucune contribution pour l'instant",
     "noContributionsOwner": "Vous n'avez pas encore contribué à des prompts",
     "contributedTo": "A contribué au prompt de {author}",
-    "privatePromptsNote": "Vous avez {count} {count, plural, one {prompt privé} other {prompts privés}}. Accédez-y via MCP en utilisant votre clé API dans les clients pris en charge."
+    "privatePromptsNote": "Vous avez {count} {count, plural, one {prompt privé} other {prompts privés}}. Accédez-y via MCP en utilisant votre clé API dans les clients pris en charge.",
+    "activityInLastYear": "{count} contributions l'année dernière",
+    "contribution": "contribution",
+    "contributionsPlural": "contributions",
+    "inLastYear": "l'année dernière",
+    "inLast6Months": "les 6 derniers mois",
+    "less": "Moins",
+    "more": "Plus",
+    "activity": "Activité",
+    "filteringByDate": "Affichage des prompts du {date}",
+    "clearFilter": "Effacer le filtre"
   },
   "subscription": {
     "subscribe": "S'abonner",

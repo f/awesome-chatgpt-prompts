@@ -670,7 +670,17 @@
     "noContributions": "Noch keine Beiträge",
     "noContributionsOwner": "Sie haben noch zu keinen Prompts beigetragen",
     "contributedTo": "Hat zum Prompt von {author} beigetragen",
-    "privatePromptsNote": "Sie haben {count} private {count, plural, one {Prompt} other {Prompts}}. Greifen Sie über MCP mit Ihrem API-Schlüssel in unterstützten Clients darauf zu."
+    "privatePromptsNote": "Sie haben {count} private {count, plural, one {Prompt} other {Prompts}}. Greifen Sie über MCP mit Ihrem API-Schlüssel in unterstützten Clients darauf zu.",
+    "activityInLastYear": "{count} Beiträge im letzten Jahr",
+    "contribution": "Beitrag",
+    "contributionsPlural": "Beiträge",
+    "inLastYear": "im letzten Jahr",
+    "inLast6Months": "in den letzten 6 Monaten",
+    "less": "Weniger",
+    "more": "Mehr",
+    "activity": "Aktivität",
+    "filteringByDate": "Zeige Prompts vom {date}",
+    "clearFilter": "Filter löschen"
   },
   "subscription": {
     "subscribe": "Abonnieren",

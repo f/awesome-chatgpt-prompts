@@ -670,7 +670,17 @@
     "noContributions": "コントリビューションはまだありません",
     "noContributionsOwner": "まだどのプロンプトにも貢献していません",
     "contributedTo": "{author}のプロンプトに貢献",
-    "privatePromptsNote": "{count}件のプライベートプロンプトがあります。対応クライアントでAPIキーを使用してMCP経由でアクセスできます。"
+    "privatePromptsNote": "{count}件のプライベートプロンプトがあります。対応クライアントでAPIキーを使用してMCP経由でアクセスできます。",
+    "activityInLastYear": "過去1年間で{count}件の貢献",
+    "contribution": "貢献",
+    "contributionsPlural": "貢献",
+    "inLastYear": "過去1年間",
+    "inLast6Months": "過去6ヶ月間",
+    "less": "少",
+    "more": "多",
+    "activity": "アクティビティ",
+    "filteringByDate": "{date}のプロンプトを表示中",
+    "clearFilter": "フィルターをクリア"
   },
   "subscription": {
     "subscribe": "購読",

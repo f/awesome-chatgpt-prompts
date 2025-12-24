@@ -670,7 +670,17 @@
     "noContributions": "Δεν υπάρχουν συνεισφορές ακόμα",
     "noContributionsOwner": "Δεν έχετε συνεισφέρει σε prompts ακόμα",
     "contributedTo": "Συνεισφορά στο prompt του {author}",
-    "privatePromptsNote": "Έχετε {count} ιδιωτικά {count, plural, one {prompt} other {prompts}}. Αποκτήστε πρόσβαση μέσω MCP χρησιμοποιώντας το κλειδί API σας σε υποστηριζόμενους clients."
+    "privatePromptsNote": "Έχετε {count} ιδιωτικά {count, plural, one {prompt} other {prompts}}. Αποκτήστε πρόσβαση μέσω MCP χρησιμοποιώντας το κλειδί API σας σε υποστηριζόμενους clients.",
+    "activityInLastYear": "{count} συνεισφορές τον τελευταίο χρόνο",
+    "contribution": "συνεισφορά",
+    "contributionsPlural": "συνεισφορές",
+    "inLastYear": "τον τελευταίο χρόνο",
+    "inLast6Months": "τους τελευταίους 6 μήνες",
+    "less": "Λιγότερο",
+    "more": "Περισσότερο",
+    "activity": "Δραστηριότητα",
+    "filteringByDate": "Εμφάνιση prompts από {date}",
+    "clearFilter": "Καθαρισμός φίλτρου"
   },
   "subscription": {
     "subscribe": "Εγγραφή",

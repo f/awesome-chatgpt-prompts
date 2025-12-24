@@ -670,7 +670,17 @@
     "noContributions": "لا توجد مساهمات بعد",
     "noContributionsOwner": "لم تساهم في أي أوامر بعد",
     "contributedTo": "ساهم في أمر {author}",
-    "privatePromptsNote": "لديك {count} {count, plural, one {أمر خاص} other {أوامر خاصة}}. يمكنك الوصول إليها عبر MCP باستخدام مفتاح API الخاص بك في العملاء المدعومين."
+    "privatePromptsNote": "لديك {count} {count, plural, one {أمر خاص} other {أوامر خاصة}}. يمكنك الوصول إليها عبر MCP باستخدام مفتاح API الخاص بك في العملاء المدعومين.",
+    "activityInLastYear": "{count} مساهمة في العام الماضي",
+    "contribution": "مساهمة",
+    "contributionsPlural": "مساهمات",
+    "inLastYear": "في العام الماضي",
+    "inLast6Months": "في آخر 6 أشهر",
+    "less": "أقل",
+    "more": "أكثر",
+    "activity": "النشاط",
+    "filteringByDate": "عرض الأوامر من {date}",
+    "clearFilter": "مسح الفلتر"
   },
   "subscription": {
     "subscribe": "اشتراك",

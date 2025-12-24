@@ -670,7 +670,17 @@
     "noContributions": "Henüz katkı yok",
     "noContributionsOwner": "Henüz hiçbir prompta katkıda bulunmadınız",
     "contributedTo": "{author} kullanıcısının promptuna katkıda bulunuldu",
-    "privatePromptsNote": "{count} özel {count, plural, one {prompt} other {prompt}}unuz var. Desteklenen istemcilerde API anahtarınızı kullanarak MCP üzerinden erişebilirsiniz."
+    "privatePromptsNote": "{count} özel {count, plural, one {prompt} other {prompt}}unuz var. Desteklenen istemcilerde API anahtarınızı kullanarak MCP üzerinden erişebilirsiniz.",
+    "activityInLastYear": "son bir yılda {count} katkı",
+    "contribution": "katkı",
+    "contributionsPlural": "katkı",
+    "inLastYear": "son bir yılda",
+    "inLast6Months": "son 6 ayda",
+    "less": "Az",
+    "more": "Çok",
+    "activity": "Aktivite",
+    "filteringByDate": "{date} tarihli promptlar gösteriliyor",
+    "clearFilter": "Filtreyi temizle"
   },
   "subscription": {
     "subscribe": "Abone Ol",

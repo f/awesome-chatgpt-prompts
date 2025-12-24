@@ -670,7 +670,17 @@
     "noContributions": "אין תרומות עדיין",
     "noContributionsOwner": "עדיין לא תרמת לפרומפטים",
     "contributedTo": "תרם לפרומפט של {author}",
-    "privatePromptsNote": "יש לך {count} {count, plural, one {פרומפט פרטי} other {פרומפטים פרטיים}}. גש אליהם דרך MCP באמצעות מפתח ה-API שלך בלקוחות נתמכים."
+    "privatePromptsNote": "יש לך {count} {count, plural, one {פרומפט פרטי} other {פרומפטים פרטיים}}. גש אליהם דרך MCP באמצעות מפתח ה-API שלך בלקוחות נתמכים.",
+    "activityInLastYear": "{count} תרומות בשנה האחרונה",
+    "contribution": "תרומה",
+    "contributionsPlural": "תרומות",
+    "inLastYear": "בשנה האחרונה",
+    "inLast6Months": "ב-6 החודשים האחרונים",
+    "less": "פחות",
+    "more": "יותר",
+    "activity": "פעילות",
+    "filteringByDate": "מציג פרומפטים מ-{date}",
+    "clearFilter": "נקה מסנן"
   },
   "subscription": {
     "subscribe": "הירשם",

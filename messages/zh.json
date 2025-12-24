@@ -670,7 +670,17 @@
     "noContributions": "暂无贡献",
     "noContributionsOwner": "您还没有对任何提示词做出贡献",
     "contributedTo": "贡献给 {author} 的提示词",
-    "privatePromptsNote": "您有 {count} 个私有提示词。可以在支持的客户端中使用您的 API 密钥通过 MCP 访问它们。"
+    "privatePromptsNote": "您有 {count} 个私有提示词。可以在支持的客户端中使用您的 API 密钥通过 MCP 访问它们。",
+    "activityInLastYear": "过去一年 {count} 次贡献",
+    "contribution": "贡献",
+    "contributionsPlural": "贡献",
+    "inLastYear": "过去一年",
+    "inLast6Months": "过去6个月",
+    "less": "少",
+    "more": "多",
+    "activity": "活动",
+    "filteringByDate": "显示 {date} 的提示词",
+    "clearFilter": "清除筛选"
   },
   "subscription": {
     "subscribe": "订阅",
