@@ -15177,3 +15177,16 @@ Create a high-performance HTTP benchmarking tool in Go. Implement concurrent req
 
 </details>
 
+<details>
+<summary><strong>Music Player</strong></summary>
+
+## Music Player
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Develop a web-based music player using HTML5, CSS3, and JavaScript with the Web Audio API. Create a modern interface with album art display and visualizations. Implement playlist management with drag-and-drop reordering. Add audio controls including play/pause, skip, seek, volume, and playback speed. Include shuffle and repeat modes with visual indicators. Support multiple audio formats with fallbacks. Implement a 10-band equalizer with presets. Add metadata extraction and display from audio files. Create a responsive design that works on all devices. Include keyboard shortcuts for playback control. Support background playback with media session API integration.
+```
+
+</details>
+
