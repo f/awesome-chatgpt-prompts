@@ -14813,3 +14813,16 @@ Create a special $1-2 student sponsorship tier with meaningful benefits that ack
 
 </details>
 
+<details>
+<summary><strong>Future Vision</strong></summary>
+
+## Future Vision
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Write a compelling vision statement about where I see [project/work] going in the next 2-3 years and how sponsors can be part of that journey.
+```
+
+</details>
+
