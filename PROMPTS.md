@@ -14683,3 +14683,16 @@ Create a compelling data-driven section showing the impact of [project name]: do
 
 </details>
 
+<details>
+<summary><strong>Break Down Costs</strong></summary>
+
+## Break Down Costs
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Create a transparent breakdown of how sponsor funds will be used (e.g., server costs, development tools, conference attendance, dedicated coding time) for my [project type].
+```
+
+</details>
+
