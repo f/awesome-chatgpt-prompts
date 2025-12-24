@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import { Inter, Noto_Sans_Arabic } from "next/font/google";
 import { getMessages, getLocale } from "next-intl/server";
 import { Providers } from "@/components/providers";
@@ -131,6 +132,7 @@ export default async function RootLayout({
             <Footer />
           </div>
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
