@@ -13156,3 +13156,16 @@ Write 3-5 brief success stories or testimonials from users who have benefited fr
 
 </details>
 
+<details>
+<summary><strong>Suggest Pricing Tiers</strong></summary>
+
+## Suggest Pricing Tiers
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Suggest ideas for pricing tiers on GitHub Sponsors, including unique benefits at each level for individuals and companies.
+```
+
+</details>
+
