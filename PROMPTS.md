@@ -14709,3 +14709,16 @@ List ways I can recognize or involve sponsors in my project's community (e.g., s
 
 </details>
 
+<details>
+<summary><strong>Create Project Spotlight</strong></summary>
+
+## Create Project Spotlight
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Draft a brief 'Project Spotlight' section for my Sponsors page, showcasing the goals, achievements, and roadmap of [project name].
+```
+
+</details>
+
