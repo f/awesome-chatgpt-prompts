@@ -112,39 +112,90 @@ print(f"Found {len(new_prompts)} new prompts to add")
 print(f"Found {len(updated_prompts)} updated prompts to modify")
 print(f"Found {len(deleted_prompts)} prompts to remove (unlisted/deleted)")
 
+# Helper function to parse contributors (supports "user1,user2,user3" format)
+def parse_contributors(contributor_field):
+    """Parse contributor field, returns (primary_author, co_authors_list)"""
+    if not contributor_field:
+        return 'anonymous', []
+    
+    # Split by comma and clean up
+    contributors = [c.strip() for c in contributor_field.split(',') if c.strip()]
+    
+    if not contributors:
+        return 'anonymous', []
+    
+    primary = contributors[0]
+    co_authors = contributors[1:] if len(contributors) > 1 else []
+    return primary, co_authors
+
+def build_commit_message(action, act, co_authors):
+    """Build commit message with optional co-author trailers"""
+    msg = f'{action} prompt: {act}'
+    
+    if co_authors:
+        msg += '\n\n'
+        for co_author in co_authors:
+            co_email = f"{co_author}@users.noreply.github.com"
+            msg += f'Co-authored-by: {co_author} <{co_email}>\n'
+    
+    return msg
+
+def format_contributor_links(contributor_field):
+    """Format contributors as GitHub profile links"""
+    if not contributor_field:
+        return '@anonymous'
+    
+    contributors = [c.strip() for c in contributor_field.split(',') if c.strip()]
+    if not contributors:
+        return '@anonymous'
+    
+    return ', '.join([f'[@{c}](https://github.com/{c})' for c in contributors])
+
+def generate_prompts_md(prompts_dict, prompts_order, prompts_md_path):
+    """Generate PROMPTS.md from current prompts dictionary"""
+    with open(prompts_md_path, 'w', encoding='utf-8') as f:
+        f.write('# Awesome ChatGPT Prompts\n\n')
+        f.write('> A curated list of prompts for ChatGPT and other AI models.\n\n')
+        f.write('---\n\n')
+        
+        # Write prompts in order
+        for act in prompts_order:
+            if act not in prompts_dict:
+                continue
+            row = prompts_dict[act]
+            prompt = row.get('prompt', '')
+            contributor = row.get('contributor', '')
+            prompt_type = row.get('type', 'TEXT').upper()
+            
+            # Determine code block language based on type
+            if prompt_type == 'TEXT':
+                lang = 'md'
+            elif prompt_type == 'JSON':
+                lang = 'json'
+            elif prompt_type == 'YAML':
+                lang = 'yaml'
+            else:
+                lang = 'md'
+            
+            contributor_links = format_contributor_links(contributor)
+            
+            f.write(f'<details>\n')
+            f.write(f'<summary><strong>{act}</strong></summary>\n\n')
+            f.write(f'## {act}\n\n')
+            f.write(f'Contributed by {contributor_links}\n\n')
+            f.write(f'```{lang}\n')
+            f.write(f'{prompt}\n')
+            f.write(f'```\n\n')
+            f.write(f'</details>\n\n')
+
+prompts_md_path = os.path.join(project_dir, 'PROMPTS.md')
+
+# Build prompts order from remote (for consistent ordering)
+prompts_order = [row.get('act', '').strip() for row in remote_prompts if row.get('act', '').strip()]
+
 if not new_prompts and not updated_prompts and not deleted_prompts:
-    print("\nNo changes detected. Already up to date!")
-    import sys
-    sys.exit(2)  # Exit code 2 = no changes
+    print("\nNo CSV changes detected. Already up to date!")
 else:
-    # Helper function to parse contributors (supports "user1,user2,user3" format)
-    def parse_contributors(contributor_field):
-        """Parse contributor field, returns (primary_author, co_authors_list)"""
-        if not contributor_field:
-            return 'anonymous', []
-        
-        # Split by comma and clean up
-        contributors = [c.strip() for c in contributor_field.split(',') if c.strip()]
-        
-        if not contributors:
-            return 'anonymous', []
-        
-        primary = contributors[0]
-        co_authors = contributors[1:] if len(contributors) > 1 else []
-        return primary, co_authors
-    
-    def build_commit_message(action, act, co_authors):
-        """Build commit message with optional co-author trailers"""
-        msg = f'{action} prompt: {act}'
-        
-        if co_authors:
-            msg += '\n\n'
-            for co_author in co_authors:
-                co_email = f"{co_author}@users.noreply.github.com"
-                msg += f'Co-authored-by: {co_author} <{co_email}>\n'
-        
-        return msg
-    
     # Process updates one at a time (apply and commit each update separately)
     if updated_prompts:
         print("\nApplying updates to existing prompts...")
@@ -166,10 +217,13 @@ else:
                     if row_act in local_prompts:
                         writer.writerow(local_prompts[row_act])
             
+            # Regenerate PROMPTS.md with this update
+            generate_prompts_md(local_prompts, prompts_order, prompts_md_path)
+            
             primary_author, co_authors = parse_contributors(contributor_field)
             email = f"{primary_author}@users.noreply.github.com"
             
-            subprocess.run(['git', 'add', csv_file], check=True)
+            subprocess.run(['git', 'add', csv_file, prompts_md_path], check=True)
             
             # Check if there are actual changes to commit
             diff_result = subprocess.run(['git', 'diff', '--cached', '--quiet'], capture_output=True)
@@ -211,8 +265,14 @@ else:
                 writer = csv.DictWriter(f, fieldnames=fieldnames)
                 writer.writerow(row)
             
+            # Track in local_prompts for PROMPTS.md generation
+            local_prompts[act] = row
+            
+            # Regenerate PROMPTS.md with this new prompt
+            generate_prompts_md(local_prompts, prompts_order, prompts_md_path)
+            
             # Stage and commit
-            subprocess.run(['git', 'add', csv_file], check=True)
+            subprocess.run(['git', 'add', csv_file, prompts_md_path], check=True)
             
             # Check if there are actual changes to commit
             diff_result = subprocess.run(['git', 'diff', '--cached', '--quiet'], capture_output=True)
@@ -259,8 +319,11 @@ else:
                 for remaining_act, remaining_row in local_prompts.items():
                     writer.writerow(remaining_row)
             
+            # Regenerate PROMPTS.md without this prompt
+            generate_prompts_md(local_prompts, prompts_order, prompts_md_path)
+            
             # Stage and commit
-            subprocess.run(['git', 'add', csv_file], check=True)
+            subprocess.run(['git', 'add', csv_file, prompts_md_path], check=True)
             
             # Check if there are actual changes to commit
             diff_result = subprocess.run(['git', 'diff', '--cached', '--quiet'], capture_output=True)
@@ -294,13 +357,6 @@ set -e  # Re-enable exit on error
 # Clean up
 rm -f "$REMOTE_CSV"
 
-# Exit early if no changes (Python exited with code 2)
-if [ $PYTHON_EXIT -eq 2 ]; then
-    echo ""
-    echo "Nothing to commit or push."
-    exit 0
-fi
-
 # Check for actual Python errors
 if [ $PYTHON_EXIT -ne 0 ]; then
     echo "Error: Script failed with exit code $PYTHON_EXIT"
@@ -308,6 +364,6 @@ if [ $PYTHON_EXIT -ne 0 ]; then
 fi
 
 echo ""
-echo "Review with: git log --oneline prompts.csv"
+echo "Review with: git log --oneline prompts.csv PROMPTS.md"
 echo ""
 echo "To push: git push origin main"
