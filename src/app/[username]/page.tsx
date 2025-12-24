@@ -535,7 +535,7 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
                   </p>
                   {isOwner && (
                     <Button asChild className="mt-4" size="sm">
-                      <Link href="/prompts/new">{t("createForTomorrow")}</Link>
+                      <Link href="/prompts/new">{t("createForToday")}</Link>
                     </Button>
                   )}
                 </>
