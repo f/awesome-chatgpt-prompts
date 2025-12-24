@@ -14748,3 +14748,16 @@ Suggest creative perks or acknowledgments for sponsors to foster a sense of belo
 
 </details>
 
+<details>
+<summary><strong>Monthly Updates</strong></summary>
+
+## Monthly Updates
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Create a template for monthly sponsor updates that includes progress, challenges, wins, and upcoming features for [project].
+```
+
+</details>
+
