@@ -547,7 +547,15 @@
       "unflag": "Снять пометку",
       "flagged": "Пользователь помечен",
       "unflagged": "Пометка снята",
-      "flagFailed": "Не удалось обновить статус пометки"
+      "flagFailed": "Не удалось обновить статус пометки",
+      "editCredits": "Редактировать кредиты",
+      "editCreditsTitle": "Редактировать кредиты генерации",
+      "editCreditsDescription": "Установить дневной лимит кредитов для @{username}",
+      "dailyLimit": "Дневной лимит кредитов",
+      "currentCredits": "Сейчас: {remaining}/{limit} кредитов осталось",
+      "creditsUpdated": "Кредиты успешно обновлены",
+      "creditsUpdateFailed": "Не удалось обновить кредиты",
+      "save": "Сохранить"
     },
     "categories": {
       "title": "Управление категориями",

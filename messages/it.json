@@ -547,7 +547,15 @@
       "unflag": "Rimuovi segnalazione",
       "flagged": "Utente segnalato",
       "unflagged": "Segnalazione rimossa",
-      "flagFailed": "Impossibile aggiornare lo stato di segnalazione"
+      "flagFailed": "Impossibile aggiornare lo stato di segnalazione",
+      "editCredits": "Modifica crediti",
+      "editCreditsTitle": "Modifica crediti di generazione",
+      "editCreditsDescription": "Imposta il limite giornaliero di crediti per @{username}",
+      "dailyLimit": "Limite giornaliero crediti",
+      "currentCredits": "Attualmente: {remaining}/{limit} crediti rimanenti",
+      "creditsUpdated": "Crediti aggiornati con successo",
+      "creditsUpdateFailed": "Impossibile aggiornare i crediti",
+      "save": "Salva"
     },
     "categories": {
       "title": "Gestione Categorie",

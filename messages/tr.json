@@ -547,7 +547,15 @@
       "unflag": "İşareti Kaldır",
       "flagged": "Kullanıcı işaretlendi",
       "unflagged": "İşaret kaldırıldı",
-      "flagFailed": "İşaret durumu güncellenemedi"
+      "flagFailed": "İşaret durumu güncellenemedi",
+      "editCredits": "Kredileri Düzenle",
+      "editCreditsTitle": "Üretim Kredilerini Düzenle",
+      "editCreditsDescription": "@{username} için günlük kredi limitini ayarla",
+      "dailyLimit": "Günlük Kredi Limiti",
+      "currentCredits": "Şu an: {remaining}/{limit} kredi kaldı",
+      "creditsUpdated": "Krediler başarıyla güncellendi",
+      "creditsUpdateFailed": "Krediler güncellenemedi",
+      "save": "Kaydet"
     },
     "categories": {
       "title": "Kategori Yönetimi",

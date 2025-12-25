@@ -547,7 +547,15 @@
       "unflag": "Retirer le signalement",
       "flagged": "Utilisateur signalé",
       "unflagged": "Signalement retiré",
-      "flagFailed": "Échec de la mise à jour du statut de signalement"
+      "flagFailed": "Échec de la mise à jour du statut de signalement",
+      "editCredits": "Modifier les crédits",
+      "editCreditsTitle": "Modifier les crédits de génération",
+      "editCreditsDescription": "Définir la limite de crédits quotidiens pour @{username}",
+      "dailyLimit": "Limite de crédits quotidiens",
+      "currentCredits": "Actuellement: {remaining}/{limit} crédits restants",
+      "creditsUpdated": "Crédits mis à jour avec succès",
+      "creditsUpdateFailed": "Échec de la mise à jour des crédits",
+      "save": "Enregistrer"
     },
     "categories": {
       "title": "Gestion des Catégories",

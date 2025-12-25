@@ -547,7 +547,15 @@
       "unflag": "הסר סימון",
       "flagged": "המשתמש סומן",
       "unflagged": "הסימון הוסר",
-      "flagFailed": "עדכון מצב הסימון נכשל"
+      "flagFailed": "עדכון מצב הסימון נכשל",
+      "editCredits": "עריכת קרדיטים",
+      "editCreditsTitle": "עריכת קרדיטי יצירה",
+      "editCreditsDescription": "הגדר מגבלת קרדיטים יומית עבור @{username}",
+      "dailyLimit": "מגבלת קרדיטים יומית",
+      "currentCredits": "כרגע: {remaining}/{limit} קרדיטים נותרו",
+      "creditsUpdated": "הקרדיטים עודכנו בהצלחה",
+      "creditsUpdateFailed": "עדכון הקרדיטים נכשל",
+      "save": "שמור"
     },
     "categories": {
       "title": "ניהול קטגוריות",

@@ -547,7 +547,15 @@
       "unflag": "플래그 해제",
       "flagged": "사용자가 플래그되었습니다",
       "unflagged": "플래그가 해제되었습니다",
-      "flagFailed": "플래그 상태 업데이트 실패"
+      "flagFailed": "플래그 상태 업데이트 실패",
+      "editCredits": "크레딧 수정",
+      "editCreditsTitle": "생성 크레딧 수정",
+      "editCreditsDescription": "@{username}의 일일 크레딧 한도 설정",
+      "dailyLimit": "일일 크레딧 한도",
+      "currentCredits": "현재: {remaining}/{limit} 크레딧 남음",
+      "creditsUpdated": "크레딧이 성공적으로 업데이트되었습니다",
+      "creditsUpdateFailed": "크레딧 업데이트 실패",
+      "save": "저장"
     },
     "categories": {
       "title": "카테고리 관리",

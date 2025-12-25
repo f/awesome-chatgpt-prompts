@@ -547,7 +547,15 @@
       "unflag": "フラグを解除",
       "flagged": "ユーザーにフラグを付けました",
       "unflagged": "フラグを解除しました",
-      "flagFailed": "フラグ状態の更新に失敗しました"
+      "flagFailed": "フラグ状態の更新に失敗しました",
+      "editCredits": "クレジットを編集",
+      "editCreditsTitle": "生成クレジットを編集",
+      "editCreditsDescription": "@{username}の1日のクレジット上限を設定",
+      "dailyLimit": "1日のクレジット上限",
+      "currentCredits": "現在: {remaining}/{limit} クレジット残り",
+      "creditsUpdated": "クレジットが正常に更新されました",
+      "creditsUpdateFailed": "クレジットの更新に失敗しました",
+      "save": "保存"
     },
     "categories": {
       "title": "カテゴリー管理",

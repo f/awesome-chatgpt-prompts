@@ -547,7 +547,15 @@
       "unflag": "إلغاء الحظر",
       "flagged": "تم حظر المستخدم",
       "unflagged": "تم إلغاء حظر المستخدم",
-      "flagFailed": "فشل تحديث حالة الحظر"
+      "flagFailed": "فشل تحديث حالة الحظر",
+      "editCredits": "تعديل الرصيد",
+      "editCreditsTitle": "تعديل رصيد التوليد",
+      "editCreditsDescription": "تعيين حد الرصيد اليومي للمستخدم @{username}",
+      "dailyLimit": "الحد اليومي للرصيد",
+      "currentCredits": "حالياً: {remaining}/{limit} رصيد متبقي",
+      "creditsUpdated": "تم تحديث الرصيد بنجاح",
+      "creditsUpdateFailed": "فشل تحديث الرصيد",
+      "save": "حفظ"
     },
     "categories": {
       "title": "إدارة التصنيفات",

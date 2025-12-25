@@ -67,6 +67,15 @@ type GenerationStatus =
   | "completed"
   | "error";
 
+// Replace prompt variables with default values or placeholder text
+function fillPromptVariables(prompt: string): string {
+  // Match ${variable} or ${variable:default}
+  return prompt.replace(/\$\{([^}:]+)(?::([^}]*))?\}/g, (match, varName, defaultValue) => {
+    // Use default value if provided, otherwise use placeholder
+    return defaultValue || `(example ${varName})`;
+  });
+}
+
 // Get WebSocket handler for a provider
 function getProviderHandler(provider: string): WebSocketHandler {
   switch (provider) {
@@ -145,7 +154,7 @@ export function MediaGenerator({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          prompt,
+          prompt: fillPromptVariables(prompt),
           model: selectedModel.id,
           provider: selectedModel.provider,
           type: selectedModel.type,

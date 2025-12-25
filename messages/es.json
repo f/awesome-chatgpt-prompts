@@ -547,7 +547,15 @@
       "unflag": "Desmarcar usuario",
       "flagged": "Usuario marcado",
       "unflagged": "Usuario desmarcado",
-      "flagFailed": "Error al actualizar estado de marcado"
+      "flagFailed": "Error al actualizar estado de marcado",
+      "editCredits": "Editar créditos",
+      "editCreditsTitle": "Editar créditos de generación",
+      "editCreditsDescription": "Establecer límite de créditos diarios para @{username}",
+      "dailyLimit": "Límite diario de créditos",
+      "currentCredits": "Actualmente: {remaining}/{limit} créditos restantes",
+      "creditsUpdated": "Créditos actualizados correctamente",
+      "creditsUpdateFailed": "Error al actualizar créditos",
+      "save": "Guardar"
     },
     "categories": {
       "title": "Gestión de Categorías",

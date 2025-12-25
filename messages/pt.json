@@ -547,7 +547,15 @@
       "unflag": "Remover sinalização",
       "flagged": "Usuário sinalizado",
       "unflagged": "Sinalização removida",
-      "flagFailed": "Falha ao atualizar status de sinalização"
+      "flagFailed": "Falha ao atualizar status de sinalização",
+      "editCredits": "Editar créditos",
+      "editCreditsTitle": "Editar créditos de geração",
+      "editCreditsDescription": "Definir limite de créditos diários para @{username}",
+      "dailyLimit": "Limite diário de créditos",
+      "currentCredits": "Atualmente: {remaining}/{limit} créditos restantes",
+      "creditsUpdated": "Créditos atualizados com sucesso",
+      "creditsUpdateFailed": "Falha ao atualizar créditos",
+      "save": "Salvar"
     },
     "categories": {
       "title": "Gerenciamento de Categorias",

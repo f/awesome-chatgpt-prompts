@@ -547,7 +547,15 @@
       "unflag": "取消标记",
       "flagged": "用户已标记",
       "unflagged": "已取消标记",
-      "flagFailed": "更新标记状态失败"
+      "flagFailed": "更新标记状态失败",
+      "editCredits": "编辑额度",
+      "editCreditsTitle": "编辑生成额度",
+      "editCreditsDescription": "设置 @{username} 的每日额度限制",
+      "dailyLimit": "每日额度限制",
+      "currentCredits": "当前: 剩余 {remaining}/{limit} 额度",
+      "creditsUpdated": "额度更新成功",
+      "creditsUpdateFailed": "额度更新失败",
+      "save": "保存"
     },
     "categories": {
       "title": "分类管理",

@@ -547,7 +547,15 @@
       "unflag": "Markierung aufheben",
       "flagged": "Benutzer markiert",
       "unflagged": "Markierung aufgehoben",
-      "flagFailed": "Markierungsstatus konnte nicht aktualisiert werden"
+      "flagFailed": "Markierungsstatus konnte nicht aktualisiert werden",
+      "editCredits": "Guthaben bearbeiten",
+      "editCreditsTitle": "Generierungsguthaben bearbeiten",
+      "editCreditsDescription": "Tägliches Guthabenlimit für @{username} festlegen",
+      "dailyLimit": "Tägliches Guthabenlimit",
+      "currentCredits": "Aktuell: {remaining}/{limit} Guthaben verbleibend",
+      "creditsUpdated": "Guthaben erfolgreich aktualisiert",
+      "creditsUpdateFailed": "Guthaben konnte nicht aktualisiert werden",
+      "save": "Speichern"
     },
     "categories": {
       "title": "Kategorieverwaltung",
