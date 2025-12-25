@@ -285,6 +285,12 @@
     "mediaAddedToPrompt": "メディアがプロンプトに追加されました。",
     "mediaGenerated": "メディアが正常に生成されました！",
     "orGenerateMedia": "またはAIで生成",
+    "aiGenerationAvailable": "✨ AI生成が利用可能",
+    "generateWith": "AIで生成",
+    "generateImage": "画像を生成",
+    "generateVideo": "動画を生成",
+    "generateImageDescription": "AIを使ってプロンプト用のユニークな画像を生成 — コミュニティにプロンプトを紹介するのに最適。",
+    "generateVideoDescription": "AIを使ってプロンプト用のユニークな動画を生成 — コミュニティにプロンプトを紹介するのに最適。",
     "close": "閉じる",
     "mediaGeneration": {
       "connecting": "サーバーに接続中...",

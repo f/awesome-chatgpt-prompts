@@ -277,6 +277,12 @@
     "mediaAddedToPrompt": "Το μέσο προστέθηκε στο prompt σας.",
     "mediaGenerated": "Το μέσο δημιουργήθηκε επιτυχώς!",
     "orGenerateMedia": "Ή δημιουργία με AI",
+    "aiGenerationAvailable": "✨ Δημιουργία AI Διαθέσιμη",
+    "generateWith": "Δημιουργία με AI",
+    "generateImage": "Δημιουργία Εικόνας",
+    "generateVideo": "Δημιουργία Βίντεο",
+    "generateImageDescription": "Δημιουργήστε μια μοναδική εικόνα για το prompt σας με AI — ιδανικό για να παρουσιάσετε το prompt σας στην κοινότητα.",
+    "generateVideoDescription": "Δημιουργήστε ένα μοναδικό βίντεο για το prompt σας με AI — ιδανικό για να παρουσιάσετε το prompt σας στην κοινότητα.",
     "close": "Κλείσιμο",
     "mediaGeneration": {
       "connecting": "Σύνδεση στον διακομιστή...",

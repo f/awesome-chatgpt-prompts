@@ -1080,7 +1080,7 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
                         className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors cursor-pointer"
                       >
                         <Sparkles className="h-3 w-3" />
-                        {t("generateWith", { providers: availableGenerators.join(" & ") })}
+                        {t("generateWith")}
                         <ChevronDown className="h-3 w-3" />
                       </button>
                     </DropdownMenuTrigger>

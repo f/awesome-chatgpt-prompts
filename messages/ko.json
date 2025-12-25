@@ -277,6 +277,12 @@
     "mediaAddedToPrompt": "미디어가 프롬프트에 추가되었습니다.",
     "mediaGenerated": "미디어가 성공적으로 생성되었습니다!",
     "orGenerateMedia": "또는 AI로 생성",
+    "aiGenerationAvailable": "✨ AI 생성 가능",
+    "generateWith": "AI로 생성",
+    "generateImage": "이미지 생성",
+    "generateVideo": "비디오 생성",
+    "generateImageDescription": "AI를 사용하여 프롬프트용 고유한 이미지 생성 — 커뮤니티에 프롬프트를 선보이기에 완벽합니다.",
+    "generateVideoDescription": "AI를 사용하여 프롬프트용 고유한 비디오 생성 — 커뮤니티에 프롬프트를 선보이기에 완벽합니다.",
     "close": "닫기",
     "mediaGeneration": {
       "connecting": "서버에 연결 중...",

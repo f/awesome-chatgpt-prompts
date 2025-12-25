@@ -277,6 +277,12 @@
     "mediaAddedToPrompt": "Il media è stato aggiunto al tuo prompt.",
     "mediaGenerated": "Media generato con successo!",
     "orGenerateMedia": "O genera con IA",
+    "aiGenerationAvailable": "✨ Generazione AI Disponibile",
+    "generateWith": "Genera con AI",
+    "generateImage": "Genera Immagine",
+    "generateVideo": "Genera Video",
+    "generateImageDescription": "Genera un'immagine unica per il tuo prompt usando l'IA — perfetto per mostrare il tuo prompt alla community.",
+    "generateVideoDescription": "Genera un video unico per il tuo prompt usando l'IA — perfetto per mostrare il tuo prompt alla community.",
     "close": "Chiudi",
     "mediaGeneration": {
       "connecting": "Connessione al server...",
