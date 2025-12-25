@@ -44,7 +44,8 @@
     "profile": "프로필",
     "login": "로그인",
     "register": "회원가입",
-    "logout": "로그아웃"
+    "logout": "로그아웃",
+    "ide": "타입 프롬프트"
   },
   "brand": {
     "copyLogoSvg": "로고 SVG 복사",
@@ -1112,5 +1113,15 @@
       "contentConstraints": "내용 제약:",
       "contentExample": "\"개인적인 의견 포함하지 않음\" / \"사실 정보에만 집중\""
     }
+  },
+  "ide": {
+    "title": "타입 프롬프트",
+    "subtitle": "타입 안전하고 구조화된 프롬프트 엔지니어링",
+    "editor": "에디터",
+    "preview": "미리보기",
+    "run": "실행",
+    "reset": "재설정",
+    "copied": "클립보드에 복사됨",
+    "runToPreview": "실행을 클릭하여 프롬프트 미리보기 표시"
   }
 }

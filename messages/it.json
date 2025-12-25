@@ -44,7 +44,8 @@
     "profile": "Profilo",
     "login": "Accedi",
     "register": "Registrati",
-    "logout": "Esci"
+    "logout": "Esci",
+    "ide": "Prompt Tipizzati"
   },
   "brand": {
     "copyLogoSvg": "Copia Logo SVG",
@@ -1112,5 +1113,15 @@
       "contentConstraints": "Vincoli di contenuto:",
       "contentExample": "\"Non includere opinioni personali\" / \"Concentrati solo su informazioni fattuali\""
     }
+  },
+  "ide": {
+    "title": "Prompt Tipizzati",
+    "subtitle": "Ingegneria di prompt strutturata e type-safe",
+    "editor": "Editor",
+    "preview": "Anteprima",
+    "run": "Esegui",
+    "reset": "Ripristina",
+    "copied": "Copiato negli appunti",
+    "runToPreview": "Clicca su Esegui per vedere l'anteprima del prompt"
   }
 }

@@ -44,7 +44,8 @@
     "profile": "Perfil",
     "login": "Iniciar sesión",
     "register": "Registrarse",
-    "logout": "Cerrar sesión"
+    "logout": "Cerrar sesión",
+    "ide": "Prompts Tipados"
   },
   "brand": {
     "copyLogoSvg": "Copiar Logo SVG",
@@ -1112,5 +1113,15 @@
       "contentConstraints": "Restricciones de contenido:",
       "contentExample": "\"No incluyas opiniones personales\" / \"Enfócate solo en información factual\""
     }
+  },
+  "ide": {
+    "title": "Prompts Tipados",
+    "subtitle": "Ingeniería de prompts estructurada y con tipado seguro",
+    "editor": "Editor",
+    "preview": "Vista previa",
+    "run": "Ejecutar",
+    "reset": "Restablecer",
+    "copied": "Copiado al portapapeles",
+    "runToPreview": "Haz clic en Ejecutar para ver la vista previa del prompt"
   }
 }

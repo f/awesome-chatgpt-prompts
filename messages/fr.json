@@ -44,7 +44,8 @@
     "profile": "Profil",
     "login": "Connexion",
     "register": "Inscription",
-    "logout": "Déconnexion"
+    "logout": "Déconnexion",
+    "ide": "Prompts Typés"
   },
   "brand": {
     "copyLogoSvg": "Copier le logo SVG",
@@ -1112,5 +1113,15 @@
       "contentConstraints": "Contraintes de contenu :",
       "contentExample": "\"N'incluez pas d'opinions personnelles\" / \"Concentrez-vous uniquement sur les informations factuelles\""
     }
+  },
+  "ide": {
+    "title": "Prompts Typés",
+    "subtitle": "Ingénierie de prompts structurée et typée",
+    "editor": "Éditeur",
+    "preview": "Aperçu",
+    "run": "Exécuter",
+    "reset": "Réinitialiser",
+    "copied": "Copié dans le presse-papiers",
+    "runToPreview": "Cliquez sur Exécuter pour voir l'aperçu du prompt"
   }
 }

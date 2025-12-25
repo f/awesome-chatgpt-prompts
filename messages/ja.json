@@ -44,7 +44,8 @@
     "profile": "プロフィール",
     "login": "ログイン",
     "register": "登録",
-    "logout": "ログアウト"
+    "logout": "ログアウト",
+    "ide": "型付きプロンプト"
   },
   "brand": {
     "copyLogoSvg": "ロゴSVGをコピー",
@@ -1112,5 +1113,15 @@
       "contentConstraints": "内容の制約：",
       "contentExample": "「個人的な意見を含めない」/「事実情報のみに焦点を当てる」"
     }
+  },
+  "ide": {
+    "title": "型付きプロンプト",
+    "subtitle": "型安全で構造化されたプロンプトエンジニアリング",
+    "editor": "エディタ",
+    "preview": "プレビュー",
+    "run": "実行",
+    "reset": "リセット",
+    "copied": "クリップボードにコピーしました",
+    "runToPreview": "実行をクリックしてプロンプトのプレビューを表示"
   }
 }

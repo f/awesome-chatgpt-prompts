@@ -44,7 +44,8 @@
     "profile": "Profil",
     "login": "Giriş Yap",
     "register": "Kayıt Ol",
-    "logout": "Çıkış Yap"
+    "logout": "Çıkış Yap",
+    "ide": "Tipli Promptlar"
   },
   "brand": {
     "copyLogoSvg": "Logo SVG'sini Kopyala",
@@ -1112,5 +1113,15 @@
       "contentConstraints": "İçerik kısıtlamaları:",
       "contentExample": "\"Kişisel görüşler ekleme\" / \"Sadece olgusal bilgilere odaklan\""
     }
+  },
+  "ide": {
+    "title": "Tipli Promptlar",
+    "subtitle": "Tip güvenli, yapılandırılmış prompt mühendisliği",
+    "editor": "Editör",
+    "preview": "Önizleme",
+    "run": "Çalıştır",
+    "reset": "Sıfırla",
+    "copied": "Panoya kopyalandı",
+    "runToPreview": "Prompt önizlemesini görmek için Çalıştır'a tıklayın"
   }
 }

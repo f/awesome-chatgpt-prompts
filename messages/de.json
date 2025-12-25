@@ -44,7 +44,8 @@
     "profile": "Profil",
     "login": "Anmelden",
     "register": "Registrieren",
-    "logout": "Abmelden"
+    "logout": "Abmelden",
+    "ide": "Typisierte Prompts"
   },
   "brand": {
     "copyLogoSvg": "Logo SVG kopieren",
@@ -1112,5 +1113,15 @@
       "contentConstraints": "Inhaltsbeschränkungen:",
       "contentExample": "\"Keine persönlichen Meinungen einbeziehen\" / \"Nur auf faktische Informationen konzentrieren\""
     }
+  },
+  "ide": {
+    "title": "Typisierte Prompts",
+    "subtitle": "Typsichere, strukturierte Prompt-Entwicklung",
+    "editor": "Editor",
+    "preview": "Vorschau",
+    "run": "Ausführen",
+    "reset": "Zurücksetzen",
+    "copied": "In die Zwischenablage kopiert",
+    "runToPreview": "Klicken Sie auf Ausführen, um die Prompt-Vorschau anzuzeigen"
   }
 }

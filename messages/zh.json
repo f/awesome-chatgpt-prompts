@@ -44,7 +44,8 @@
     "profile": "个人资料",
     "login": "登录",
     "register": "注册",
-    "logout": "退出登录"
+    "logout": "退出登录",
+    "ide": "类型化提示词"
   },
   "brand": {
     "copyLogoSvg": "复制Logo SVG",
@@ -1112,5 +1113,15 @@
       "contentConstraints": "内容约束：",
       "contentExample": "\"不包含个人观点\" / \"只关注事实信息\""
     }
+  },
+  "ide": {
+    "title": "类型化提示词",
+    "subtitle": "类型安全的结构化提示词工程",
+    "editor": "编辑器",
+    "preview": "预览",
+    "run": "运行",
+    "reset": "重置",
+    "copied": "已复制到剪贴板",
+    "runToPreview": "点击运行查看提示词预览"
   }
 }

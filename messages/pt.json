@@ -44,7 +44,8 @@
     "profile": "Perfil",
     "login": "Entrar",
     "register": "Cadastrar",
-    "logout": "Sair"
+    "logout": "Sair",
+    "ide": "Prompts Tipados"
   },
   "brand": {
     "copyLogoSvg": "Copiar Logo SVG",
@@ -1112,5 +1113,15 @@
       "contentConstraints": "Restrições de conteúdo:",
       "contentExample": "\"Não inclua opiniões pessoais\" / \"Foque apenas em informações factuais\""
     }
+  },
+  "ide": {
+    "title": "Prompts Tipados",
+    "subtitle": "Engenharia de prompts estruturada e type-safe",
+    "editor": "Editor",
+    "preview": "Pré-visualização",
+    "run": "Executar",
+    "reset": "Redefinir",
+    "copied": "Copiado para a área de transferência",
+    "runToPreview": "Clique em Executar para ver a pré-visualização do prompt"
   }
 }

@@ -44,7 +44,8 @@
     "profile": "פרופיל",
     "login": "התחברות",
     "register": "הרשמה",
-    "logout": "התנתקות"
+    "logout": "התנתקות",
+    "ide": "פרומפטים מוקלדים"
   },
   "brand": {
     "copyLogoSvg": "העתק לוגו SVG",
@@ -1110,7 +1111,17 @@
       "styleConstraints": "מגבלות סגנון:",
       "styleExample": "\"השתמש בשפה פשוטה המתאימה למתחילים\" / \"היה טכני ומדויק\"",
       "contentConstraints": "מגבלות תוכן:",
-      "contentExample": "\"אל תכלול דעות אישיות\" / \"התמקד רק במידע עובדתי\""
+      "contentExample": "\"\u05d0\u05dc \u05ea\u05db\u05dc\u05d5\u05dc \u05d3\u05e2\u05d5\u05ea \u05d0\u05d9\u05e9\u05d9\u05d5\u05ea\" / \"\u05d4\u05ea\u05de\u05e7\u05d3 \u05e8\u05e7 \u05d1\u05de\u05d9\u05d3\u05e2 \u05e2\u05d5\u05d1\u05d3\u05ea\u05d9\""
     }
+  },
+  "ide": {
+    "title": "פרומפטים מוקלדים",
+    "subtitle": "הנדסת פרומפטים מובנית ובטוחת טיפוסים",
+    "editor": "עורך",
+    "preview": "תצוגה מקדימה",
+    "run": "הפעל",
+    "reset": "איפוס",
+    "copied": "הועתק ללוח",
+    "runToPreview": "לחץ על הפעל כדי לראות תצוגה מקדימה"
   }
 }
