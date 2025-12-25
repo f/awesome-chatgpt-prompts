@@ -67,6 +67,7 @@
     "seed": "npx tsx prisma/seed.ts"
   },
   "devDependencies": {
+    "@clack/prompts": "^0.11.0",
     "@tailwindcss/postcss": "^4",
     "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
@@ -75,6 +76,7 @@
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.0.7",
+    "picocolors": "^1.1.1",
     "prisma": "^6.19.0",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",

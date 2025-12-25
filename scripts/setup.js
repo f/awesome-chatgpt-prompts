@@ -10,74 +10,10 @@
 
 const fs = require('fs');
 const path = require('path');
-const readline = require('readline');
+const p = require('@clack/prompts');
+const color = require('picocolors');
 
 const CONFIG_FILE = path.join(__dirname, '..', 'prompts.config.ts');
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
-function question(prompt, defaultValue = '') {
-  const defaultText = defaultValue ? ` (${defaultValue})` : '';
-  return new Promise((resolve) => {
-    rl.question(`${prompt}${defaultText}: `, (answer) => {
-      resolve(answer.trim() || defaultValue);
-    });
-  });
-}
-
-function confirm(prompt, defaultValue = true) {
-  const hint = defaultValue ? '[Y/n]' : '[y/N]';
-  return new Promise((resolve) => {
-    rl.question(`${prompt} ${hint}: `, (answer) => {
-      if (!answer.trim()) {
-        resolve(defaultValue);
-      } else {
-        resolve(answer.toLowerCase().startsWith('y'));
-      }
-    });
-  });
-}
-
-function select(prompt, options, defaultIndex = 0) {
-  console.log(`\n${prompt}`);
-  options.forEach((opt, i) => {
-    const marker = i === defaultIndex ? '>' : ' ';
-    console.log(`  ${marker} ${i + 1}. ${opt.label}`);
-  });
-  return new Promise((resolve) => {
-    rl.question(`Enter choice (1-${options.length}) [${defaultIndex + 1}]: `, (answer) => {
-      const index = answer.trim() ? parseInt(answer) - 1 : defaultIndex;
-      if (index >= 0 && index < options.length) {
-        resolve(options[index].value);
-      } else {
-        resolve(options[defaultIndex].value);
-      }
-    });
-  });
-}
-
-function multiSelect(prompt, options) {
-  console.log(`\n${prompt}`);
-  options.forEach((opt, i) => {
-    console.log(`  ${i + 1}. ${opt.label}`);
-  });
-  return new Promise((resolve) => {
-    rl.question(`Enter choices (comma-separated, e.g., 1,2): `, (answer) => {
-      if (!answer.trim()) {
-        resolve([]);
-        return;
-      }
-      const indices = answer.split(',').map(s => parseInt(s.trim()) - 1);
-      const selected = indices
-        .filter(i => i >= 0 && i < options.length)
-        .map(i => options[i].value);
-      resolve(selected);
-    });
-  });
-}
 
 function generateConfig(config) {
   const sponsorsSection = config.sponsors.length > 0 
@@ -113,13 +49,8 @@ export default defineConfig({
 
   // Authentication plugins
   auth: {
-    providers: [${config.auth.providers.map(p => `"${p}"`).join(', ')}],
+    providers: [${config.auth.providers.map(provider => `"${provider}"`).join(', ')}],
     allowRegistration: ${config.auth.allowRegistration},
-  },
-
-  // Storage plugin for media uploads
-  storage: {
-    provider: "${config.storage.provider}",
   },
 
   // Internationalization
@@ -152,235 +83,333 @@ export default defineConfig({
 `;
 }
 
+function handleCancel() {
+  p.cancel('Setup cancelled.');
+  process.exit(0);
+}
+
 async function main() {
-  console.log('\n╔═══════════════════════════════════════════════════════════╗');
-  console.log('║         prompts.chat - Private Clone Setup                ║');
-  console.log('╠═══════════════════════════════════════════════════════════╣');
-  console.log('║  This wizard will help you configure your private         ║');
-  console.log('║  prompt library with your own branding and settings.      ║');
-  console.log('╚═══════════════════════════════════════════════════════════╝\n');
+  console.clear();
+  
+  p.intro(color.bgCyan(color.black(' prompts.chat - Private Clone Setup ')));
 
   const config = {
     branding: {},
     theme: {},
     auth: {},
-    storage: {},
     i18n: {},
     features: {},
     sponsors: []
   };
 
   // === BRANDING ===
-  console.log('\n─── BRANDING ───────────────────────────────────────────────\n');
+  p.log.step(color.cyan('Branding'));
   
-  config.branding.name = await question('Organization/App name', 'My Prompt Library');
-  config.branding.description = await question('Description', 'Collect, organize, and share AI prompts');
-  config.branding.logo = await question('Logo path (public folder)', '/logo.svg');
-  config.branding.logoDark = await question('Dark mode logo path', config.branding.logo);
-  config.branding.favicon = await question('Favicon path', '/logo.svg');
+  const branding = await p.group({
+    name: () => p.text({
+      message: 'Organization/App name',
+      placeholder: 'My Prompt Library',
+      defaultValue: 'My Prompt Library',
+    }),
+    description: () => p.text({
+      message: 'Description',
+      placeholder: 'Collect, organize, and share AI prompts',
+      defaultValue: 'Collect, organize, and share AI prompts',
+    }),
+    logo: () => p.text({
+      message: 'Logo path (public folder)',
+      placeholder: '/logo.svg',
+      defaultValue: '/logo.svg',
+    }),
+    logoDark: ({ results }) => p.text({
+      message: 'Dark mode logo path',
+      placeholder: results.logo || '/logo.svg',
+      defaultValue: results.logo || '/logo.svg',
+    }),
+    favicon: () => p.text({
+      message: 'Favicon path',
+      placeholder: '/logo.svg',
+      defaultValue: '/logo.svg',
+    }),
+  }, { onCancel: handleCancel });
+  
+  config.branding = branding;
 
   // === THEME ===
-  console.log('\n─── THEME ──────────────────────────────────────────────────\n');
+  p.log.step(color.cyan('Theme'));
 
-  config.theme.primaryColor = await question('Primary color (hex)', '#6366f1');
+  const theme = await p.group({
+    primaryColor: () => p.text({
+      message: 'Primary color (hex)',
+      placeholder: '#6366f1',
+      defaultValue: '#6366f1',
+      validate: (value) => {
+        if (!/^#[0-9A-Fa-f]{6}$/.test(value)) {
+          return 'Please enter a valid hex color (e.g., #6366f1)';
+        }
+      },
+    }),
+    radius: () => p.select({
+      message: 'Border radius style',
+      initialValue: 'sm',
+      options: [
+        { value: 'none', label: 'None', hint: 'Sharp corners' },
+        { value: 'sm', label: 'Small', hint: 'Subtle rounding' },
+        { value: 'md', label: 'Medium', hint: 'Moderate rounding' },
+        { value: 'lg', label: 'Large', hint: 'Very rounded' },
+      ],
+    }),
+    variant: () => p.select({
+      message: 'UI variant',
+      initialValue: 'default',
+      options: [
+        { value: 'default', label: 'Default', hint: 'Standard modern look' },
+        { value: 'flat', label: 'Flat', hint: 'Minimal shadows' },
+        { value: 'brutal', label: 'Brutal', hint: 'Bold neo-brutalist style' },
+      ],
+    }),
+    density: () => p.select({
+      message: 'Spacing density',
+      initialValue: 'default',
+      options: [
+        { value: 'compact', label: 'Compact', hint: 'Tighter spacing' },
+        { value: 'default', label: 'Default', hint: 'Balanced spacing' },
+        { value: 'comfortable', label: 'Comfortable', hint: 'More breathing room' },
+      ],
+    }),
+  }, { onCancel: handleCancel });
   
-  config.theme.radius = await select('Border radius style:', [
-    { label: 'None - Sharp corners', value: 'none' },
-    { label: 'Small - Subtle rounding', value: 'sm' },
-    { label: 'Medium - Moderate rounding', value: 'md' },
-    { label: 'Large - Very rounded', value: 'lg' }
-  ], 1);
-
-  config.theme.variant = await select('UI variant:', [
-    { label: 'Default - Standard modern look', value: 'default' },
-    { label: 'Flat - Minimal shadows', value: 'flat' },
-    { label: 'Brutal - Bold neo-brutalist style', value: 'brutal' }
-  ], 0);
-
-  config.theme.density = await select('Spacing density:', [
-    { label: 'Compact - Tighter spacing', value: 'compact' },
-    { label: 'Default - Balanced spacing', value: 'default' },
-    { label: 'Comfortable - More breathing room', value: 'comfortable' }
-  ], 1);
+  config.theme = theme;
 
   // === AUTHENTICATION ===
-  console.log('\n─── AUTHENTICATION ─────────────────────────────────────────\n');
+  p.log.step(color.cyan('Authentication'));
 
-  config.auth.providers = await multiSelect('Select authentication providers:', [
-    { label: 'GitHub OAuth', value: 'github' },
-    { label: 'Google OAuth', value: 'google' },
-    { label: 'Microsoft Azure AD', value: 'azure' },
-    { label: 'Email/Password (Credentials)', value: 'credentials' }
-  ]);
+  const authProviders = await p.multiselect({
+    message: 'Select authentication providers',
+    options: [
+      { value: 'github', label: 'GitHub OAuth', hint: 'Most popular for developers' },
+      { value: 'google', label: 'Google OAuth', hint: 'Widely used' },
+      { value: 'azure', label: 'Microsoft Azure AD', hint: 'Enterprise SSO' },
+      { value: 'credentials', label: 'Email/Password', hint: 'Traditional auth' },
+    ],
+    required: false,
+  });
 
+  if (p.isCancel(authProviders)) handleCancel();
+
+  config.auth.providers = authProviders.length > 0 ? authProviders : ['credentials'];
+  
   if (config.auth.providers.length === 0) {
-    console.log('  ⚠️  No providers selected, defaulting to credentials');
+    p.log.warn('No providers selected, defaulting to credentials');
     config.auth.providers = ['credentials'];
   }
 
   if (config.auth.providers.includes('credentials')) {
-    config.auth.allowRegistration = await confirm('Allow public registration?', true);
+    const allowReg = await p.confirm({
+      message: 'Allow public registration?',
+      initialValue: true,
+    });
+    if (p.isCancel(allowReg)) handleCancel();
+    config.auth.allowRegistration = allowReg;
   } else {
     config.auth.allowRegistration = false;
   }
 
-  // === STORAGE ===
-  console.log('\n─── STORAGE ────────────────────────────────────────────────\n');
-
-  config.storage.provider = await select('Media storage provider:', [
-    { label: 'URL-based (external links)', value: 'url' },
-    { label: 'AWS S3 (requires configuration)', value: 's3' }
-  ], 0);
-
   // === INTERNATIONALIZATION ===
-  console.log('\n─── INTERNATIONALIZATION ───────────────────────────────────\n');
+  p.log.step(color.cyan('Internationalization'));
 
-  const selectedLocales = await multiSelect('Select supported languages:', [
-    { label: 'English', value: 'en' },
-    { label: 'Spanish', value: 'es' },
-    { label: 'French', value: 'fr' },
-    { label: 'German', value: 'de' },
-    { label: 'Italian', value: 'it' },
-    { label: 'Portuguese', value: 'pt' },
-    { label: 'Turkish', value: 'tr' },
-    { label: 'Japanese', value: 'ja' },
-    { label: 'Korean', value: 'ko' },
-    { label: 'Chinese', value: 'zh' },
-    { label: 'Arabic', value: 'ar' }
-  ]);
+  const selectedLocales = await p.multiselect({
+    message: 'Select supported languages',
+    options: [
+      { value: 'en', label: 'English', hint: 'Default' },
+      { value: 'es', label: 'Spanish' },
+      { value: 'fr', label: 'French' },
+      { value: 'de', label: 'German' },
+      { value: 'it', label: 'Italian' },
+      { value: 'pt', label: 'Portuguese' },
+      { value: 'tr', label: 'Turkish' },
+      { value: 'ja', label: 'Japanese' },
+      { value: 'ko', label: 'Korean' },
+      { value: 'zh', label: 'Chinese' },
+      { value: 'ru', label: 'Russian' },
+      { value: 'ar', label: 'Arabic', hint: 'RTL' },
+      { value: 'he', label: 'Hebrew', hint: 'RTL' },
+      { value: 'el', label: 'Greek' },
+    ],
+    required: false,
+  });
+
+  if (p.isCancel(selectedLocales)) handleCancel();
 
   config.i18n.locales = selectedLocales.length > 0 ? selectedLocales : ['en'];
   
   if (config.i18n.locales.length > 1) {
-    console.log(`\nSelected locales: ${config.i18n.locales.join(', ')}`);
-    config.i18n.defaultLocale = await question('Default locale', config.i18n.locales[0]);
+    const defaultLocale = await p.select({
+      message: 'Default locale',
+      options: config.i18n.locales.map(l => ({ value: l, label: l })),
+    });
+    if (p.isCancel(defaultLocale)) handleCancel();
+    config.i18n.defaultLocale = defaultLocale;
   } else {
     config.i18n.defaultLocale = config.i18n.locales[0];
   }
 
   // === FEATURES ===
-  console.log('\n─── FEATURES ───────────────────────────────────────────────\n');
+  p.log.step(color.cyan('Features'));
 
-  config.features.privatePrompts = await confirm('Enable private prompts?', true);
-  config.features.changeRequests = await confirm('Enable change request system (versioning)?', true);
-  config.features.categories = await confirm('Enable categories?', true);
-  config.features.tags = await confirm('Enable tags?', true);
-  config.features.aiSearch = await confirm('Enable AI-powered search? (requires OPENAI_API_KEY)', false);
+  const features = await p.multiselect({
+    message: 'Enable features',
+    options: [
+      { value: 'privatePrompts', label: 'Private Prompts', hint: 'Users can create private prompts' },
+      { value: 'changeRequests', label: 'Change Requests', hint: 'Version control system' },
+      { value: 'categories', label: 'Categories', hint: 'Organize prompts by category' },
+      { value: 'tags', label: 'Tags', hint: 'Tag-based organization' },
+      { value: 'aiSearch', label: 'AI Search', hint: 'Requires OPENAI_API_KEY' },
+    ],
+    initialValues: ['privatePrompts', 'changeRequests', 'categories', 'tags'],
+    required: false,
+  });
+
+  if (p.isCancel(features)) handleCancel();
+
+  config.features = {
+    privatePrompts: features.includes('privatePrompts'),
+    changeRequests: features.includes('changeRequests'),
+    categories: features.includes('categories'),
+    tags: features.includes('tags'),
+    aiSearch: features.includes('aiSearch'),
+  };
 
   // === SPONSORS ===
-  console.log('\n─── SPONSORS (Optional) ────────────────────────────────────\n');
+  p.log.step(color.cyan('Sponsors (Optional)'));
 
-  const addSponsors = await confirm('Add sponsor logos to homepage?', false);
+  const addSponsors = await p.confirm({
+    message: 'Add sponsor logos to homepage?',
+    initialValue: false,
+  });
+
+  if (p.isCancel(addSponsors)) handleCancel();
   
   if (addSponsors) {
     let addMore = true;
     while (addMore) {
-      console.log('\n  Adding sponsor:');
-      const name = await question('    Sponsor name');
-      const logo = await question('    Logo URL');
-      const url = await question('    Website URL');
+      const sponsor = await p.group({
+        name: () => p.text({ message: 'Sponsor name', placeholder: 'Acme Inc' }),
+        logo: () => p.text({ message: 'Logo URL', placeholder: '/sponsors/acme.svg' }),
+        url: () => p.text({ message: 'Website URL', placeholder: 'https://acme.com' }),
+      }, { onCancel: handleCancel });
       
-      if (name && logo && url) {
-        config.sponsors.push({ name, logo, url });
-        console.log(`  ✓ Added ${name}`);
+      if (sponsor.name && sponsor.logo && sponsor.url) {
+        config.sponsors.push(sponsor);
+        p.log.success(`Added ${sponsor.name}`);
       }
       
-      addMore = await confirm('  Add another sponsor?', false);
+      const another = await p.confirm({
+        message: 'Add another sponsor?',
+        initialValue: false,
+      });
+      if (p.isCancel(another)) handleCancel();
+      addMore = another;
     }
   }
 
   // === SUMMARY ===
-  console.log('\n─── CONFIGURATION SUMMARY ──────────────────────────────────\n');
-  console.log(`  Name:           ${config.branding.name}`);
-  console.log(`  Description:    ${config.branding.description}`);
-  console.log(`  Primary Color:  ${config.theme.primaryColor}`);
-  console.log(`  UI Style:       ${config.theme.variant} / ${config.theme.radius} radius`);
-  console.log(`  Auth:           ${config.auth.providers.join(', ')}`);
-  console.log(`  Storage:        ${config.storage.provider}`);
-  console.log(`  Languages:      ${config.i18n.locales.join(', ')}`);
-  console.log(`  Features:       ${Object.entries(config.features).filter(([,v]) => v).map(([k]) => k).join(', ')}`);
+  p.log.step(color.cyan('Configuration Summary'));
+  
+  const summaryLines = [
+    `${color.dim('Name:')}           ${config.branding.name}`,
+    `${color.dim('Description:')}    ${config.branding.description}`,
+    `${color.dim('Primary Color:')}  ${config.theme.primaryColor}`,
+    `${color.dim('UI Style:')}       ${config.theme.variant} / ${config.theme.radius} radius`,
+    `${color.dim('Auth:')}           ${config.auth.providers.join(', ')}`,
+    `${color.dim('Languages:')}      ${config.i18n.locales.join(', ')}`,
+    `${color.dim('Features:')}       ${Object.entries(config.features).filter(([,v]) => v).map(([k]) => k).join(', ')}`,
+  ];
+  
   if (config.sponsors.length > 0) {
-    console.log(`  Sponsors:       ${config.sponsors.map(s => s.name).join(', ')}`);
+    summaryLines.push(`${color.dim('Sponsors:')}       ${config.sponsors.map(s => s.name).join(', ')}`);
   }
-  console.log('');
+  
+  p.note(summaryLines.join('\n'), 'Review your configuration');
 
-  const proceed = await confirm('Generate configuration file?', true);
+  const proceed = await p.confirm({
+    message: 'Generate configuration file?',
+    initialValue: true,
+  });
 
-  if (!proceed) {
-    console.log('\n❌ Setup cancelled.\n');
-    rl.close();
+  if (p.isCancel(proceed) || !proceed) {
+    p.cancel('Setup cancelled.');
     process.exit(0);
   }
 
   // === GENERATE CONFIG ===
-  const configContent = generateConfig(config);
+  const s = p.spinner();
+  s.start('Generating configuration...');
   
   // Backup existing config if it exists
   if (fs.existsSync(CONFIG_FILE)) {
     const backupPath = CONFIG_FILE + '.backup';
     fs.copyFileSync(CONFIG_FILE, backupPath);
-    console.log(`\n📦 Backed up existing config to prompts.config.ts.backup`);
   }
 
+  const configContent = generateConfig(config);
   fs.writeFileSync(CONFIG_FILE, configContent);
-  console.log('✅ Generated prompts.config.ts');
+  
+  s.stop('Generated prompts.config.ts');
 
   // === ENV FILE ===
-  console.log('\n─── ENVIRONMENT VARIABLES ──────────────────────────────────\n');
-  
   const envExample = path.join(__dirname, '..', '.env.example');
   const envFile = path.join(__dirname, '..', '.env');
 
   if (!fs.existsSync(envFile) && fs.existsSync(envExample)) {
-    const createEnv = await confirm('Create .env file from .env.example?', true);
-    if (createEnv) {
+    const createEnv = await p.confirm({
+      message: 'Create .env file from .env.example?',
+      initialValue: true,
+    });
+    if (!p.isCancel(createEnv) && createEnv) {
       fs.copyFileSync(envExample, envFile);
-      console.log('✅ Created .env file');
+      p.log.success('Created .env file');
     }
   }
 
-  console.log('\n📋 Required environment variables:');
-  console.log('   DATABASE_URL       - PostgreSQL connection string');
-  console.log('   AUTH_SECRET        - NextAuth secret (generate with: openssl rand -base64 32)');
+  // === REQUIRED ENV VARS ===
+  const envVars = [
+    'DATABASE_URL       - PostgreSQL connection string',
+    'AUTH_SECRET        - NextAuth secret (openssl rand -base64 32)',
+  ];
   
   if (config.auth.providers.includes('github')) {
-    console.log('   AUTH_GITHUB_ID     - GitHub OAuth client ID');
-    console.log('   AUTH_GITHUB_SECRET - GitHub OAuth client secret');
+    envVars.push('AUTH_GITHUB_ID     - GitHub OAuth client ID');
+    envVars.push('AUTH_GITHUB_SECRET - GitHub OAuth client secret');
   }
   if (config.auth.providers.includes('google')) {
-    console.log('   AUTH_GOOGLE_ID     - Google OAuth client ID');
-    console.log('   AUTH_GOOGLE_SECRET - Google OAuth client secret');
+    envVars.push('AUTH_GOOGLE_ID     - Google OAuth client ID');
+    envVars.push('AUTH_GOOGLE_SECRET - Google OAuth client secret');
   }
   if (config.auth.providers.includes('azure')) {
-    console.log('   AUTH_AZURE_AD_CLIENT_ID     - Azure AD client ID');
-    console.log('   AUTH_AZURE_AD_CLIENT_SECRET - Azure AD client secret');
-    console.log('   AUTH_AZURE_AD_ISSUER        - Azure AD issuer URL');
+    envVars.push('AUTH_AZURE_AD_CLIENT_ID     - Azure AD client ID');
+    envVars.push('AUTH_AZURE_AD_CLIENT_SECRET - Azure AD client secret');
+    envVars.push('AUTH_AZURE_AD_ISSUER        - Azure AD issuer URL');
   }
   if (config.features.aiSearch) {
-    console.log('   OPENAI_API_KEY     - OpenAI API key for semantic search');
+    envVars.push('OPENAI_API_KEY     - OpenAI API key for semantic search');
   }
-  if (config.storage.provider === 's3') {
-    console.log('   AWS_ACCESS_KEY_ID     - AWS access key');
-    console.log('   AWS_SECRET_ACCESS_KEY - AWS secret key');
-    console.log('   AWS_S3_BUCKET         - S3 bucket name');
-    console.log('   AWS_S3_REGION         - S3 region');
-  }
+
+  p.note(envVars.join('\n'), 'Required environment variables');
 
   // === NEXT STEPS ===
-  console.log('\n─── NEXT STEPS ─────────────────────────────────────────────\n');
-  console.log('  1. Edit .env with your database and auth credentials');
-  console.log('  2. Add your logo files to the public/ folder');
-  console.log('  3. Run: npm run db:push');
-  console.log('  4. Run: npm run dev');
-  console.log('');
-  console.log('📖 For more details, see SELF-HOSTING.md');
-  console.log('\n═══════════════════════════════════════════════════════════════\n');
+  p.note(
+    `1. Edit ${color.cyan('.env')} with your database and auth credentials\n` +
+    `2. Add your logo files to the ${color.cyan('public/')} folder\n` +
+    `3. Run: ${color.cyan('npm run db:push')}\n` +
+    `4. Run: ${color.cyan('npm run dev')}`,
+    'Next steps'
+  );
 
-  rl.close();
+  p.outro(color.green('Setup complete! See SELF-HOSTING.md for more details.'));
 }
 
 main().catch((err) => {
-  console.error('Setup failed:', err);
-  rl.close();
+  p.log.error('Setup failed: ' + err.message);
   process.exit(1);
 });

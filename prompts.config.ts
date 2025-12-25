@@ -36,12 +36,6 @@ export default defineConfig({
     allowRegistration: false,
   },
 
-  // Storage plugin for media uploads
-  storage: {
-    // Available: "url" | "s3" | custom
-    provider: "url",
-  },
-
   // Internationalization
   i18n: {
     locales: ["en", "tr", "es", "zh", "ja", "ar", "pt", "fr", "it", "de", "ko", "ru", "he", "el"],

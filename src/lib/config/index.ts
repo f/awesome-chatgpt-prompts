@@ -29,10 +29,6 @@ export interface AuthConfig {
   allowRegistration: boolean;
 }
 
-export interface StorageConfig {
-  provider: "url" | "s3" | string;
-}
-
 export interface I18nConfig {
   locales: string[];
   defaultLocale: string;
@@ -72,7 +68,6 @@ export interface PromptsConfig {
   branding: BrandingConfig;
   theme: ThemeConfig;
   auth: AuthConfig;
-  storage: StorageConfig;
   i18n: I18nConfig;
   features: FeaturesConfig;
   homepage?: HomepageConfig;
@@ -114,9 +109,6 @@ export async function getConfig(): Promise<PromptsConfig> {
       auth: {
         providers: ["credentials"],
         allowRegistration: true,
-      },
-      storage: {
-        provider: "url",
       },
       i18n: {
         locales: ["en"],
