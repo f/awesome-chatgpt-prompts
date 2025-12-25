@@ -1,6 +1,20 @@
-# prompts.chat
+# prompts.chat Typed Prompts
 
-The **D3.js of prompt engineering** — a comprehensive developer toolkit for building, validating, and parsing AI prompts. Create structured prompts for chat models, image generators, video AI, and music generation with fluent, type-safe APIs.
+A comprehensive developer toolkit for building, validating, and parsing AI prompts. Create structured prompts for chat models, image generators, video AI, and music generation with fluent, type-safe APIs.
+
+[![Playground](https://img.shields.io/badge/Playground-prompts.chat%2Ftyped--prompts--editor-blue)](https://prompts.chat/typed-prompts-editor)
+
+## Reason
+
+Building effective AI prompts is challenging. Developers often struggle with:
+
+- **Inconsistent prompt structure** — Different team members write prompts differently, leading to unpredictable AI responses
+- **No type safety** — Typos and missing fields go unnoticed until runtime
+- **Repetitive boilerplate** — Writing the same patterns over and over for common use cases
+- **Hard to maintain** — Prompts scattered across codebases without standardization
+- **Multi-modal complexity** — Each AI platform (chat, image, video, audio) has different requirements
+
+`prompts.chat` solves these problems by providing a fluent, type-safe API that guides you through prompt construction with autocomplete, validation, and pre-built templates for common patterns.
 
 ## Installation
 
