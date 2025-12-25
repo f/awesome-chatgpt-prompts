@@ -26,7 +26,7 @@ import {
   similarity,
   quality,
   parser,
-} from "../../../packages/prompts.chat";
+} from "@/../packages/prompts.chat";
 
 type OutputFormat = "json" | "yaml" | "markdown";
 
