@@ -17,7 +17,7 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
-    "prompts.chat": "file:./packages/prompts.chat",
+    "prompts.chat": "0.0.4",
     "@auth/prisma-adapter": "^2.11.1",
     "@aws-sdk/client-s3": "^3.948.0",
     "@hookform/resolvers": "^5.2.2",
