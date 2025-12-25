@@ -165,7 +165,7 @@
     },
     "inputType": "用户提示词",
     "outputType": "AI 响应",
-    "afterAiProcessing": "AI处理后...",
+    "afterAiProcessing": "您的提示词将产生什么？",
     "inputTypeDescription": "您的提示词格式",
     "outputTypeDescription": "向社区展示此提示词在AI工具上运行时的表现。您可以使用您喜欢的AI应用自行生成输出。",
     "outputTypeStructuredNote": "结构化提示词可以产生多种输出类型",

@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Loader2, Upload, X, ArrowDown, Play, Image as ImageIcon, Video, Volume2, Paperclip, Search, Sparkles, BookOpen, ExternalLink } from "lucide-react";
+import { Loader2, Upload, X, ArrowDown, Play, Image as ImageIcon, Video, Volume2, Paperclip, Search, Sparkles, BookOpen, ExternalLink, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { VariableToolbar } from "./variable-toolbar";
 import { VariableWarning } from "./variable-warning";
@@ -34,6 +34,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Badge } from "@/components/ui/badge";
 import { CodeEditor, type CodeEditorHandle } from "@/components/ui/code-editor";
 import { toast } from "sonner";
@@ -53,6 +59,7 @@ function MediaField({ form, t, promptType, promptContent }: MediaFieldProps) {
   const [isUploading, setIsUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [showUpload, setShowUpload] = useState(false);
+  const [hasGenerators, setHasGenerators] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const mediaUrl = form.watch("mediaUrl");
   const isVideoType = promptType === "VIDEO";
@@ -64,6 +71,17 @@ function MediaField({ form, t, promptType, promptContent }: MediaFieldProps) {
       .then((data) => setStorageMode(data.mode))
       .catch(() => setStorageMode("url"));
   }, []);
+
+  // Check if media generation is available
+  useEffect(() => {
+    fetch("/api/media-generate")
+      .then((res) => res.json())
+      .then((data) => {
+        const models = isVideoType ? data.videoModels : data.imageModels;
+        setHasGenerators(models && models.length > 0);
+      })
+      .catch(() => setHasGenerators(false));
+  }, [isVideoType]);
 
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -163,12 +181,30 @@ function MediaField({ form, t, promptType, promptContent }: MediaFieldProps) {
                 </div>
               ) : (
                 <div className="space-y-3">
-                  <MediaGenerator
-                    prompt={promptContent || ""}
-                    mediaType={mediaType as "IMAGE" | "VIDEO"}
-                    onMediaGenerated={handleMediaGenerated}
-                    onUploadClick={handleUploadClick}
-                  />
+                  {hasGenerators && !showUpload ? (
+                    <div className="rounded-lg border-2 border-dashed border-primary/30 bg-gradient-to-br from-primary/5 to-primary/10 p-4 space-y-3">
+                      <div className="flex items-center gap-2 text-primary">
+                        <Sparkles className="h-5 w-5" />
+                        <span className="font-medium">{t("aiGenerationAvailable")}</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        {t(isVideoType ? "generateVideoDescription" : "generateImageDescription")}
+                      </p>
+                      <MediaGenerator
+                        prompt={promptContent || ""}
+                        mediaType={mediaType as "IMAGE" | "VIDEO"}
+                        onMediaGenerated={handleMediaGenerated}
+                        onUploadClick={handleUploadClick}
+                      />
+                    </div>
+                  ) : (
+                    <MediaGenerator
+                      prompt={promptContent || ""}
+                      mediaType={mediaType as "IMAGE" | "VIDEO"}
+                      onMediaGenerated={handleMediaGenerated}
+                      onUploadClick={handleUploadClick}
+                    />
+                  )}
                   {showUpload && (
                     <FormControl>
                       <Input placeholder={t("mediaUrlPlaceholder")} {...field} />
@@ -221,12 +257,30 @@ function MediaField({ form, t, promptType, promptContent }: MediaFieldProps) {
                 </div>
               ) : (
                 <>
-                  <MediaGenerator
-                    prompt={promptContent || ""}
-                    mediaType={mediaType as "IMAGE" | "VIDEO"}
-                    onMediaGenerated={handleMediaGenerated}
-                    onUploadClick={handleUploadClick}
-                  />
+                  {hasGenerators && !showUpload ? (
+                    <div className="rounded-lg border-2 border-dashed border-primary/30 bg-gradient-to-br from-primary/5 to-primary/10 p-4 space-y-3">
+                      <div className="flex items-center gap-2 text-primary">
+                        <Sparkles className="h-5 w-5" />
+                        <span className="font-medium">{t("aiGenerationAvailable")}</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        {t(isVideoType ? "generateVideoDescription" : "generateImageDescription")}
+                      </p>
+                      <MediaGenerator
+                        prompt={promptContent || ""}
+                        mediaType={mediaType as "IMAGE" | "VIDEO"}
+                        onMediaGenerated={handleMediaGenerated}
+                        onUploadClick={handleUploadClick}
+                      />
+                    </div>
+                  ) : (
+                    <MediaGenerator
+                      prompt={promptContent || ""}
+                      mediaType={mediaType as "IMAGE" | "VIDEO"}
+                      onMediaGenerated={handleMediaGenerated}
+                      onUploadClick={handleUploadClick}
+                    />
+                  )}
                   {showUpload && (
                     <div
                       className="flex flex-col items-center justify-center gap-2 p-6 border-2 border-dashed rounded-md cursor-pointer hover:border-primary/50 transition-colors"
@@ -321,6 +375,7 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
   const [contributors, setContributors] = useState<Contributor[]>(initialContributors);
   const [usedAiButtons, setUsedAiButtons] = useState<Set<string>>(new Set());
   const builderRef = useRef<PromptBuilderHandle>(null);
+  const [availableGenerators, setAvailableGenerators] = useState<string[]>([]);
 
   const promptSchema = createPromptSchema(t);
   const form = useForm<PromptFormValues>({
@@ -368,6 +423,23 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
     window.addEventListener("beforeunload", handleBeforeUnload);
     return () => window.removeEventListener("beforeunload", handleBeforeUnload);
   }, [isDirty]);
+
+  // Fetch available media generator names
+  useEffect(() => {
+    fetch("/api/media-generate")
+      .then((res) => res.json())
+      .then((data) => {
+        const providers = new Set<string>();
+        if (data.imageModels?.length > 0 || data.videoModels?.length > 0) {
+          const allModels = [...(data.imageModels || []), ...(data.videoModels || [])];
+          allModels.forEach((model: { providerName: string }) => {
+            if (model.providerName) providers.add(model.providerName);
+          });
+        }
+        setAvailableGenerators(Array.from(providers));
+      })
+      .catch(() => setAvailableGenerators([]));
+  }, []);
 
   // Handler for AI builder state changes
   const handleBuilderStateChange = (newState: {
@@ -998,7 +1070,33 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
         ) : (
           <div className="space-y-4 py-6 border-t">
             <div className="space-y-1">
-              <h2 className="text-base font-semibold">{t("outputType")}</h2>
+              <div className="flex items-center justify-between gap-2">
+                <h2 className="text-base font-semibold">{t("outputType")}</h2>
+                {availableGenerators.length > 0 && (
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <button
+                        type="button"
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors cursor-pointer"
+                      >
+                        <Sparkles className="h-3 w-3" />
+                        {t("generateWith", { providers: availableGenerators.join(" & ") })}
+                        <ChevronDown className="h-3 w-3" />
+                      </button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuItem onClick={() => form.setValue("type", "IMAGE")}>
+                        <ImageIcon className="h-4 w-4 mr-2" />
+                        {t("generateImage")}
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => form.setValue("type", "VIDEO")}>
+                        <Video className="h-4 w-4 mr-2" />
+                        {t("generateVideo")}
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                )}
+              </div>
               <p className="text-sm text-muted-foreground">{t("outputTypeDescription")}</p>
             </div>
             

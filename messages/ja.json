@@ -165,7 +165,7 @@
     },
     "inputType": "ユーザープロンプト",
     "outputType": "AI応答",
-    "afterAiProcessing": "AI処理後...",
+    "afterAiProcessing": "プロンプトは何を生成しますか？",
     "inputTypeDescription": "プロンプトの形式",
     "outputTypeDescription": "AIツールでこのプロンプトを実行したときの結果をコミュニティに示しましょう。お気に入りのAIアプリを使って自分で出力を生成できます。",
     "outputTypeStructuredNote": "構造化プロンプトは様々な出力タイプを生成できます",

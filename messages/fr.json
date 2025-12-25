@@ -165,7 +165,7 @@
     },
     "inputType": "Prompt Utilisateur",
     "outputType": "Réponse IA",
-    "afterAiProcessing": "Après traitement IA...",
+    "afterAiProcessing": "Que produira votre prompt ?",
     "inputTypeDescription": "Comment votre prompt est formaté",
     "outputTypeDescription": "Montrez à la communauté comment ce prompt fonctionne lorsqu'il est exécuté sur des outils IA. Vous pouvez générer les résultats vous-même en utilisant votre application IA préférée.",
     "outputTypeStructuredNote": "Les prompts structurés peuvent produire divers types de sortie",
