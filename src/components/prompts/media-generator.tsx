@@ -40,14 +40,14 @@ const ASPECT_RATIOS: { value: AspectRatio; label: string }[] = [
   { value: "3:2", label: "3:2 (Photo)" },
   { value: "2:3", label: "2:3 (Portrait)" },
 ];
-import { wiroGeneratorPlugin } from "@/lib/plugins/media-generators/wiro";
-import { falGeneratorPlugin } from "@/lib/plugins/media-generators/fal";
+import { getProviderWebSocketHandler } from "@/lib/plugins/media-generators";
 
 interface MediaGeneratorModel {
   id: string;
   name: string;
   type: "image" | "video";
   provider: string;
+  providerName: string;
 }
 
 interface MediaGeneratorProps {
@@ -76,17 +76,6 @@ function fillPromptVariables(prompt: string): string {
   });
 }
 
-// Get WebSocket handler for a provider
-function getProviderHandler(provider: string): WebSocketHandler {
-  switch (provider) {
-    case "wiro":
-      return wiroGeneratorPlugin.webSocketHandler;
-    case "fal":
-      return falGeneratorPlugin.webSocketHandler;
-    default:
-      throw new Error(`Unknown provider: ${provider}`);
-  }
-}
 
 export function MediaGenerator({
   prompt,
@@ -172,7 +161,7 @@ export function MediaGenerator({
       const { socketAccessToken, webSocketUrl, provider } = await response.json();
 
       // Get provider-specific handler
-      const handler = getProviderHandler(provider);
+      const handler = getProviderWebSocketHandler(provider);
 
       // Connect to WebSocket for progress tracking
       setStatus("queued");
@@ -271,10 +260,7 @@ export function MediaGenerator({
     return acc;
   }, {} as Record<string, MediaGeneratorModel[]>);
 
-  const providerNames: Record<string, string> = {
-    wiro: "Wiro.ai",
-    fal: "Fal.ai",
-  };
+  const providerDisplayName = selectedModel?.providerName || selectedModel?.provider || "";
 
   return (
     <>
@@ -300,7 +286,7 @@ export function MediaGenerator({
             {Object.entries(modelsByProvider).map(([provider, providerModels]) => (
               <div key={provider}>
                 <DropdownMenuLabel className="text-xs text-muted-foreground">
-                  {providerNames[provider] || provider}
+                  {providerModels[0]?.providerName || provider}
                 </DropdownMenuLabel>
                 {providerModels.map((model) => (
                   <DropdownMenuItem
@@ -340,7 +326,7 @@ export function MediaGenerator({
             <DialogTitle>{t("confirmGeneration")}</DialogTitle>
             <DialogDescription>
               {t("confirmGenerationDescription", { 
-                provider: providerNames[selectedModel?.provider || ""] || selectedModel?.provider || "",
+                provider: providerDisplayName,
                 model: selectedModel?.name || ""
               })}
             </DialogDescription>
@@ -403,7 +389,7 @@ export function MediaGenerator({
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <Loader2 className="h-5 w-5 animate-spin" />
-              {t("generatingMedia", { provider: selectedModel?.provider || "" })}
+              {t("generatingMedia", { provider: providerDisplayName })}
             </DialogTitle>
             <DialogDescription>
               {t("doNotCloseWindow")}

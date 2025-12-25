@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import {
-  initializeMediaGenerators,
   getMediaGeneratorPlugin,
   getAvailableModels,
   isMediaGenerationAvailable,
@@ -14,8 +13,6 @@ export async function GET() {
   if (!session?.user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-
-  initializeMediaGenerators();
 
   const available = isMediaGenerationAvailable();
   const imageModels = getAvailableModels("image");
@@ -89,8 +86,6 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
-
-    initializeMediaGenerators();
 
     const plugin = getMediaGeneratorPlugin(provider);
 
