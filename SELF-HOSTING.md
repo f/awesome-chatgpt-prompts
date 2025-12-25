@@ -73,28 +73,39 @@ OPENAI_API_KEY="your-openai-api-key"
    npm install
    ```
 
-3. **Configure your environment**
+3. **Run the interactive setup wizard**
+   ```bash
+   npm run setup
+   ```
+   This will guide you through configuring:
+   - **Branding** — App name, logo, description
+   - **Theme** — Primary color, border radius, UI variant
+   - **Authentication** — GitHub, Google, Azure AD, or email/password
+   - **Languages** — Select from 14 supported locales
+   - **Features** — Private prompts, categories, tags, AI search
+
+4. **Configure environment variables**
    ```bash
    cp .env.example .env
    # Edit .env with your database and auth credentials
    ```
 
-4. **Run database migrations**
+5. **Run database migrations**
    ```bash
    npm run db:migrate
    ```
 
-5. **Seed initial data** (optional)
+6. **Seed initial data** (optional)
    ```bash
    npm run db:seed
    ```
 
-6. **Start the development server**
+7. **Start the development server**
    ```bash
    npm run dev
    ```
 
-7. **Build for production**
+8. **Build for production**
    ```bash
    npm run build
    npm run start
@@ -102,7 +113,7 @@ OPENAI_API_KEY="your-openai-api-key"
 
 ## Configuration
 
-Customize your instance by editing `prompts.config.ts`:
+The setup wizard (`npm run setup`) generates `prompts.config.ts` automatically. You can also manually edit it:
 
 ```typescript
 // Set to true to use your own branding instead of prompts.chat branding
@@ -167,15 +178,11 @@ When `useCloneBranding` is set to `true`, the homepage will:
 - Display your **branding name** as the hero title
 - Show your **branding description** below the title
 - Use your **logo** as a watermark background instead of the video
-- Hide the "Clone on GitHub" button
+- Hide the "Deploy Your Private Server" button
 - Hide the achievements section (Forbes, GitHub stars, etc.)
 - Hide the sponsor links and "Become a Sponsor" CTA
 
 This is ideal for organizations that want to deploy their own white-labeled prompt library without prompts.chat branding.
-
-## Docker Deployment
-
-Coming soon.
 
 ## Support
 
