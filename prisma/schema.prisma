@@ -26,8 +26,8 @@ model User {
   flagged                   Boolean                @default(false)
   flaggedAt                 DateTime?
   flaggedReason             String?
-  dailyGenerationLimit      Int                    @default(10)
-  generationCreditsRemaining Int                   @default(10)
+  dailyGenerationLimit      Int                    @default(3)
+  generationCreditsRemaining Int                   @default(3)
   generationCreditsResetAt  DateTime?
   accounts                  Account[]
   subscriptions  CategorySubscription[]
