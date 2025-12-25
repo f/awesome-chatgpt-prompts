@@ -16747,3 +16747,16 @@ Photorealistic, editorial quality, 8K, premium commercial fashion photography.
 
 </details>
 
+<details>
+<summary><strong>Sunny Beach</strong></summary>
+
+## Sunny Beach
+
+Contributed by [@sakurapediatri@gmail.com](https://github.com/sakurapediatri@gmail.com)
+
+```md
+Generate an image of people sunbathing on a sunny beach. Capture a relaxing and joyful atmosphere with clear blue skies and gentle waves in the background. Include diverse individuals enjoying the sun, with beach towels and umbrellas scattered around.
+```
+
+</details>
+
