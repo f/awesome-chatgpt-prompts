@@ -40,6 +40,18 @@ export interface GenerationResult {
   error?: string;
 }
 
+/**
+ * Result from polling-based status check
+ */
+export interface PollStatusResult {
+  status: "in_queue" | "in_progress" | "completed" | "failed";
+  statusKey: GenerationStatusKey;
+  progress: number;
+  queuePosition?: number;
+  outputUrls: string[];
+  error?: string;
+}
+
 // WebSocket handler types (client-side)
 export interface WebSocketCallbacks {
   setProgress: (value: number | ((prev: number) => number)) => void;
@@ -97,11 +109,16 @@ export interface MediaGeneratorPlugin {
    */
   startGeneration: (request: GenerationRequest) => Promise<GenerationTask>;
   /**
-   * Get WebSocket URL for tracking progress
+   * Get WebSocket URL for tracking progress (empty string = uses polling)
    */
   getWebSocketUrl: () => string;
   /**
    * Get client-side WebSocket handler for this provider
    */
   webSocketHandler: WebSocketHandler;
+  /**
+   * Check status of a generation task (for polling-based providers)
+   * Returns null if provider uses WebSocket instead of polling
+   */
+  checkStatus?: (socketAccessToken: string) => Promise<PollStatusResult>;
 }

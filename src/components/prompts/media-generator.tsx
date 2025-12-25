@@ -160,64 +160,120 @@ export function MediaGenerator({
 
       const { socketAccessToken, webSocketUrl, provider } = await response.json();
 
-      // Get provider-specific handler
-      const handler = getProviderWebSocketHandler(provider);
+      // Create callbacks for completion handling
+      const handleComplete = (urls: string[]) => {
+        if (urls.length > 0) {
+          onMediaGenerated(urls[0]);
+          toast.success(t("mediaGenerated"));
+        }
+        // Reset after a delay
+        setTimeout(() => {
+          setStatus("idle");
+          setProgress(0);
+          setStatusKey(null);
+          setSelectedModel(null);
+        }, 2000);
+      };
 
-      // Connect to WebSocket for progress tracking
-      setStatus("queued");
-      setProgress(20);
-      setStatusKey("connecting");
+      // Check if provider uses polling (empty webSocketUrl) or WebSocket
+      if (!webSocketUrl) {
+        // Polling mode (for Fal.ai)
+        setStatus("queued");
+        setProgress(20);
+        setStatusKey("queued");
 
-      const ws = new WebSocket(webSocketUrl);
-      wsRef.current = ws;
+        const pollStatus = async () => {
+          try {
+            const statusResponse = await fetch(
+              `/api/media-generate/status?provider=${provider}&token=${encodeURIComponent(socketAccessToken)}`
+            );
+            
+            if (!statusResponse.ok) {
+              const data = await statusResponse.json();
+              throw new Error(data.error || "Status check failed");
+            }
 
-      // Create callbacks for the handler
-      const callbacks: WebSocketCallbacks = {
-        setProgress,
-        setStatus,
-        setStatusMessage: setStatusKey,
-        setError,
-        onComplete: (urls: string[]) => {
-          if (urls.length > 0) {
-            onMediaGenerated(urls[0]);
-            toast.success(t("mediaGenerated"));
+            const statusData = await statusResponse.json();
+            
+            setProgress(statusData.progress);
+            if (statusData.statusKey) {
+              setStatusKey(statusData.statusKey);
+            }
+
+            if (statusData.status === "completed") {
+              setStatus("completed");
+              if (statusData.outputUrls && statusData.outputUrls.length > 0) {
+                handleComplete(statusData.outputUrls);
+              }
+              return; // Stop polling
+            }
+
+            if (statusData.status === "failed") {
+              setStatus("error");
+              setError("Generation failed");
+              return; // Stop polling
+            }
+
+            // Continue polling
+            if (statusData.status === "in_queue" || statusData.status === "in_progress") {
+              setStatus("processing");
+              setTimeout(pollStatus, 2000); // Poll every 2 seconds
+            }
+          } catch (err) {
+            setStatus("error");
+            setError(err instanceof Error ? err.message : "Polling failed");
           }
-          // Reset after a delay
-          setTimeout(() => {
-            setStatus("idle");
-            setProgress(0);
-            setStatusKey(null);
-            setSelectedModel(null);
-          }, 2000);
-        },
-        onCleanup: cleanupWebSocket,
-      };
+        };
 
-      ws.onopen = () => {
-        const initMessage = handler.getInitMessage(socketAccessToken);
-        if (initMessage) {
-          ws.send(initMessage);
-        }
-        setStatusKey("connected");
-      };
+        // Start polling
+        pollStatus();
+      } else {
+        // WebSocket mode (for Wiro.ai and others)
+        const handler = getProviderWebSocketHandler(provider);
 
-      ws.onmessage = (event) => {
-        handler.handleMessage(event, callbacks);
-      };
+        setStatus("queued");
+        setProgress(20);
+        setStatusKey("connecting");
 
-      ws.onerror = () => {
-        setStatus("error");
-        setError("WebSocket connection error");
-        cleanupWebSocket();
-      };
+        const ws = new WebSocket(webSocketUrl);
+        wsRef.current = ws;
 
-      ws.onclose = () => {
-        if (status !== "completed" && status !== "error" && status !== "idle") {
-          // Unexpected close
+        // Create callbacks for the handler
+        const callbacks: WebSocketCallbacks = {
+          setProgress,
+          setStatus,
+          setStatusMessage: setStatusKey,
+          setError,
+          onComplete: handleComplete,
+          onCleanup: cleanupWebSocket,
+        };
+
+        ws.onopen = () => {
+          const initMessage = handler.getInitMessage(socketAccessToken);
+          if (initMessage) {
+            ws.send(initMessage);
+          }
+          setStatusKey("connected");
+        };
+
+        ws.onmessage = (event) => {
+          handler.handleMessage(event, callbacks);
+        };
+
+        ws.onerror = () => {
           setStatus("error");
-          setError("Connection closed unexpectedly");
-        }
-      };
+          setError("WebSocket connection error");
+          cleanupWebSocket();
+        };
+
+        ws.onclose = () => {
+          if (status !== "completed" && status !== "error" && status !== "idle") {
+            // Unexpected close
+            setStatus("error");
+            setError("Connection closed unexpectedly");
+          }
+        };
+      }
 
     } catch (err) {
       setStatus("error");
