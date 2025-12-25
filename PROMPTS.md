@@ -16696,3 +16696,24 @@ Example:
 
 </details>
 
+<details>
+<summary><strong>Secteur Bancaire - Email Professionnel</strong></summary>
+
+## Secteur Bancaire - Email Professionnel
+
+Contributed by [@elmehdibenyoussef@gmail.com](https://github.com/elmehdibenyoussef@gmail.com)
+
+```md
+Rédige un e‑mail professionnel destiné à ${type de client} pour lui présenter ${object du mail}.
+Le ton doit être courtois, précis et concis.
+
+Voici les éléments à intégrer :
+– Thème principal : ${theme}
+– Points clés à mentionner : ${points clés}
+– Action attendue : ${action attendue}
+
+Termine par une phrase de conclusion professionnelle adaptée au contexte bancaire.
+```
+
+</details>
+
