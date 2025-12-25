@@ -174,6 +174,13 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
                   >
                     {t("nav.promptmasters")}
                   </Link>
+                  <Link 
+                    href="/typed-prompts-editor" 
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+                  >
+                    {t("nav.ide")}
+                  </Link>
                 </div>
               </nav>
 
@@ -281,6 +288,12 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
             className="px-3 py-1.5 rounded-md text-muted-foreground transition-colors hover:text-foreground hover:bg-accent"
           >
             {t("nav.promptmasters")}
+          </Link>
+          <Link
+            href="/typed-prompts-editor"
+            className="px-3 py-1.5 rounded-md text-muted-foreground transition-colors hover:text-foreground hover:bg-accent"
+          >
+            {t("nav.ide")}
           </Link>
         </nav>
 

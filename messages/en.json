@@ -44,7 +44,8 @@
     "profile": "Profile",
     "login": "Login",
     "register": "Register",
-    "logout": "Logout"
+    "logout": "Logout",
+    "ide": "Typed Prompts"
   },
   "brand": {
     "copyLogoSvg": "Copy Logo SVG",
@@ -1112,5 +1113,15 @@
       "contentConstraints": "Content constraints:",
       "contentExample": "\"Do not include personal opinions\" / \"Focus only on factual information\""
     }
+  },
+  "ide": {
+    "title": "Typed Prompts",
+    "subtitle": "Type-safe, structured prompt engineering",
+    "editor": "Editor",
+    "preview": "Preview",
+    "run": "Run",
+    "reset": "Reset",
+    "copied": "Copied to clipboard",
+    "runToPreview": "Click Run to see the prompt preview"
   }
 }
