@@ -278,7 +278,7 @@
     "inputImage": "صورة الإدخال",
     "aspectRatio": "نسبة العرض إلى الارتفاع",
     "startGeneration": "بدء الإنشاء",
-    "generatingMedia": "جارٍ إنشاء الوسائط",
+    "generatingMedia": "جارٍ إنشاء الوسائط باستخدام {provider}",
     "doNotCloseWindow": "يرجى عدم إغلاق هذه النافذة أثناء الإنشاء.",
     "generationComplete": "اكتمل الإنشاء",
     "generationFailed": "فشل الإنشاء",

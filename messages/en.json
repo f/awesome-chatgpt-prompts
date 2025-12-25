@@ -270,7 +270,7 @@
     "inputImage": "Input image",
     "aspectRatio": "Aspect Ratio",
     "startGeneration": "Start Generation",
-    "generatingMedia": "Generating Media",
+    "generatingMedia": "Generating Media with {provider}",
     "doNotCloseWindow": "Please do not close this window while generation is in progress.",
     "generationComplete": "Generation Complete",
     "generationFailed": "Generation Failed",

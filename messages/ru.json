@@ -270,7 +270,7 @@
     "inputImage": "Входное изображение",
     "aspectRatio": "Соотношение сторон",
     "startGeneration": "Начать генерацию",
-    "generatingMedia": "Генерация медиа",
+    "generatingMedia": "Генерация медиа с {provider}",
     "doNotCloseWindow": "Пожалуйста, не закрывайте это окно во время генерации.",
     "generationComplete": "Генерация завершена",
     "generationFailed": "Генерация не удалась",

@@ -270,7 +270,7 @@
     "inputImage": "Girdi görseli",
     "aspectRatio": "En-Boy Oranı",
     "startGeneration": "Oluşturmayı Başlat",
-    "generatingMedia": "Medya Oluşturuluyor",
+    "generatingMedia": "{provider} ile Medya Oluşturuluyor",
     "doNotCloseWindow": "Oluşturma devam ederken lütfen bu pencereyi kapatmayın.",
     "generationComplete": "Oluşturma Tamamlandı",
     "generationFailed": "Oluşturma Başarısız",

@@ -278,7 +278,7 @@
     "inputImage": "Imagen de entrada",
     "aspectRatio": "Relación de Aspecto",
     "startGeneration": "Iniciar Generación",
-    "generatingMedia": "Generando Multimedia",
+    "generatingMedia": "Generando Multimedia con {provider}",
     "doNotCloseWindow": "Por favor no cierre esta ventana mientras se genera.",
     "generationComplete": "Generación Completada",
     "generationFailed": "Generación Fallida",

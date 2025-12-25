@@ -270,7 +270,7 @@
     "inputImage": "Eingabebild",
     "aspectRatio": "Seitenverhältnis",
     "startGeneration": "Generierung starten",
-    "generatingMedia": "Medien werden generiert",
+    "generatingMedia": "Medien werden mit {provider} generiert",
     "doNotCloseWindow": "Bitte schließen Sie dieses Fenster nicht während der Generierung.",
     "generationComplete": "Generierung abgeschlossen",
     "generationFailed": "Generierung fehlgeschlagen",

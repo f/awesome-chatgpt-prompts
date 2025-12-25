@@ -270,7 +270,7 @@
     "inputImage": "תמונת קלט",
     "aspectRatio": "יחס גובה-רוחב",
     "startGeneration": "התחל יצירה",
-    "generatingMedia": "יוצר מדיה",
+    "generatingMedia": "יוצר מדיה עם {provider}",
     "doNotCloseWindow": "אנא אל תסגור חלון זה בזמן היצירה.",
     "generationComplete": "היצירה הושלמה",
     "generationFailed": "היצירה נכשלה",

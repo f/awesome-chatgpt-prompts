@@ -270,7 +270,7 @@
     "inputImage": "输入图片",
     "aspectRatio": "宽高比",
     "startGeneration": "开始生成",
-    "generatingMedia": "正在生成媒体",
+    "generatingMedia": "正在使用 {provider} 生成媒体",
     "doNotCloseWindow": "生成过程中请勿关闭此窗口。",
     "generationComplete": "生成完成",
     "generationFailed": "生成失败",

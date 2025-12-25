@@ -278,7 +278,7 @@
     "inputImage": "入力画像",
     "aspectRatio": "アスペクト比",
     "startGeneration": "生成を開始",
-    "generatingMedia": "メディア生成中",
+    "generatingMedia": "{provider}でメディア生成中",
     "doNotCloseWindow": "生成中はこのウィンドウを閉じないでください。",
     "generationComplete": "生成完了",
     "generationFailed": "生成失敗",

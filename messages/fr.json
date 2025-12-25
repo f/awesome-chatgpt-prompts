@@ -270,7 +270,7 @@
     "inputImage": "Image d'entrée",
     "aspectRatio": "Ratio d'aspect",
     "startGeneration": "Démarrer la génération",
-    "generatingMedia": "Génération du média",
+    "generatingMedia": "Génération du média avec {provider}",
     "doNotCloseWindow": "Veuillez ne pas fermer cette fenêtre pendant la génération.",
     "generationComplete": "Génération terminée",
     "generationFailed": "Échec de la génération",

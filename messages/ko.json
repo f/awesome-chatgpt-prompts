@@ -270,7 +270,7 @@
     "inputImage": "입력 이미지",
     "aspectRatio": "화면 비율",
     "startGeneration": "생성 시작",
-    "generatingMedia": "미디어 생성 중",
+    "generatingMedia": "{provider}로 미디어 생성 중",
     "doNotCloseWindow": "생성 중에는 이 창을 닫지 마세요.",
     "generationComplete": "생성 완료",
     "generationFailed": "생성 실패",
