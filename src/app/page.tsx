@@ -140,7 +140,7 @@ export default async function HomePage() {
                 </Button>
                 {!useCloneBranding && (
                   <Button variant="outline" size="lg" asChild>
-                    <Link href="https://github.com/f/awesome-chatgpt-prompts#self-hosting" target="_blank" rel="noopener noreferrer">
+                    <Link href="https://github.com/f/awesome-chatgpt-prompts/blob/main/SELF-HOSTING.md" target="_blank" rel="noopener noreferrer">
                       <Github className="mr-1.5 h-4 w-4" />
                       {tHomepage("setupPrivateServer")}
                     </Link>
