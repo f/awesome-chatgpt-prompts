@@ -17331,3 +17331,23 @@ A vintage patent document for ${invention}, styled after late 1800s United State
 
 </details>
 
+<details>
+<summary><strong>السعوديه </strong></summary>
+
+## السعوديه 
+
+Contributed by [@S13321](https://github.com/S13321)
+
+```md
+# My Skill
+
+Describe what this skill does and how the agent should use it.
+
+## Instructions
+${${variable}}
+- Step 1: ...قم بعمل صوره للامام محمد بن سعود ال سعود يبدو عليها الفخر والاعتزاز 
+- Step 2: ...قم بوضع العلم والتاريخ ومعالم من السعوديه 
+```
+
+</details>
+
