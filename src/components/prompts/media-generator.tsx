@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { Loader2, Wand2, Upload, ChevronDown, AlertCircle, CheckCircle2 } from "lucide-react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -45,14 +46,16 @@ import { getProviderWebSocketHandler } from "@/lib/plugins/media-generators";
 interface MediaGeneratorModel {
   id: string;
   name: string;
-  type: "image" | "video";
+  type: "image" | "video" | "audio";
   provider: string;
   providerName: string;
+  providerLogo?: string;
+  providerLogoDark?: string;
 }
 
 interface MediaGeneratorProps {
   prompt: string;
-  mediaType: "IMAGE" | "VIDEO";
+  mediaType: "IMAGE" | "VIDEO" | "AUDIO";
   onMediaGenerated: (url: string) => void;
   onUploadClick: () => void;
   inputImageUrl?: string;
@@ -105,7 +108,11 @@ export function MediaGenerator({
         const response = await fetch("/api/media-generate");
         if (response.ok) {
           const data = await response.json();
-          const relevantModels = mediaType === "IMAGE" ? data.imageModels : data.videoModels;
+          const relevantModels = mediaType === "IMAGE" 
+            ? data.imageModels 
+            : mediaType === "VIDEO" 
+              ? data.videoModels 
+              : data.audioModels;
           setModels(relevantModels || []);
         }
       } catch (err) {
@@ -341,8 +348,36 @@ export function MediaGenerator({
             
             {Object.entries(modelsByProvider).map(([provider, providerModels]) => (
               <div key={provider}>
-                <DropdownMenuLabel className="text-xs text-muted-foreground">
-                  {providerModels[0]?.providerName || provider}
+                <DropdownMenuLabel className="text-xs text-muted-foreground flex items-center justify-between">
+                  <span>{providerModels[0]?.providerName || provider}</span>
+                  {providerModels[0]?.providerLogo && (
+                    providerModels[0]?.providerLogoDark ? (
+                      <>
+                        <Image
+                          src={providerModels[0].providerLogo}
+                          alt={providerModels[0].providerName}
+                          width={36}
+                          height={12}
+                          className="h-3 w-auto dark:hidden"
+                        />
+                        <Image
+                          src={providerModels[0].providerLogoDark}
+                          alt={providerModels[0].providerName}
+                          width={36}
+                          height={12}
+                          className="h-3 w-auto hidden dark:block"
+                        />
+                      </>
+                    ) : (
+                      <Image
+                        src={providerModels[0].providerLogo}
+                        alt={providerModels[0].providerName}
+                        width={36}
+                        height={12}
+                        className="h-3 w-auto dark:invert"
+                      />
+                    )
+                  )}
                 </DropdownMenuLabel>
                 {providerModels.map((model) => (
                   <DropdownMenuItem
@@ -407,8 +442,8 @@ export function MediaGenerator({
               </div>
             )}
 
-            {/* Aspect Ratio selector for image and video generation */}
-            {selectedModel && (
+            {/* Aspect Ratio selector for image and video generation (not for audio) */}
+            {selectedModel && selectedModel.type !== "audio" && (
               <div className="text-sm">
                 <span className="font-medium">{t("aspectRatio")}:</span>
                 <Select value={aspectRatio} onValueChange={(v) => setAspectRatio(v as AspectRatio)}>

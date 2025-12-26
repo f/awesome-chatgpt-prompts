@@ -4,7 +4,7 @@
  * Interface definitions for AI-powered media generation plugins.
  */
 
-export type MediaType = "image" | "video";
+export type MediaType = "image" | "video" | "audio";
 
 export interface MediaGeneratorModel {
   id: string;
@@ -92,6 +92,8 @@ export interface WebSocketHandler {
 export interface MediaGeneratorPlugin {
   id: string;
   name: string;
+  logo?: string;
+  logoDark?: string;
   /**
    * Check if the plugin is properly configured
    */

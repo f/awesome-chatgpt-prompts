@@ -8,6 +8,7 @@
  * - FAL_API_KEY
  * - FAL_VIDEO_MODELS (comma-separated, e.g., "fal-ai/veo3,fal-ai/kling-video/v2/master/image-to-video")
  * - FAL_IMAGE_MODELS (comma-separated, e.g., "fal-ai/flux-pro/v1.1-ultra,fal-ai/flux/dev")
+ * - FAL_AUDIO_MODELS (comma-separated, e.g., "fal-ai/stable-audio")
  */
 
 import type {
@@ -23,7 +24,7 @@ import type {
 
 const FAL_QUEUE_BASE = "https://queue.fal.run";
 
-function parseModels(envVar: string | undefined, type: "image" | "video"): MediaGeneratorModel[] {
+function parseModels(envVar: string | undefined, type: "image" | "video" | "audio"): MediaGeneratorModel[] {
   if (!envVar) return [];
   return envVar
     .split(",")
@@ -69,6 +70,11 @@ export interface FalImageOutput {
 export interface FalVideoOutput {
   video?: { url: string };
   videos?: Array<{ url: string }>;
+}
+
+export interface FalAudioOutput {
+  audio_file?: { url: string };
+  audio?: { url: string };
 }
 
 /**
@@ -129,7 +135,7 @@ export async function getFalRequestStatus(
  */
 export async function getFalRequestResult(
   responseUrl: string
-): Promise<FalImageOutput | FalVideoOutput> {
+): Promise<FalImageOutput | FalVideoOutput | FalAudioOutput> {
   const apiKey = process.env.FAL_API_KEY;
   if (!apiKey) throw new Error("FAL_API_KEY is not configured");
 
@@ -184,11 +190,13 @@ const falWebSocketHandler: WebSocketHandler = {
 export const falGeneratorPlugin: MediaGeneratorPlugin = {
   id: "fal",
   name: "Fal.ai",
+  logo: "/sponsors/fal.svg",
+  logoDark: "/sponsors/fal-dark.svg",
 
   isConfigured: () => {
     return !!(
       process.env.FAL_API_KEY &&
-      (process.env.FAL_VIDEO_MODELS || process.env.FAL_IMAGE_MODELS)
+      (process.env.FAL_VIDEO_MODELS || process.env.FAL_IMAGE_MODELS || process.env.FAL_AUDIO_MODELS)
     );
   },
 
@@ -202,7 +210,8 @@ export const falGeneratorPlugin: MediaGeneratorPlugin = {
     }
     const imageModels = parseModels(process.env.FAL_IMAGE_MODELS, "image");
     const videoModels = parseModels(process.env.FAL_VIDEO_MODELS, "video");
-    return [...imageModels, ...videoModels];
+    const audioModels = parseModels(process.env.FAL_AUDIO_MODELS, "audio");
+    return [...imageModels, ...videoModels, ...audioModels];
   },
 
   async startGeneration(request: GenerationRequest): Promise<GenerationTask> {
@@ -224,6 +233,10 @@ export const falGeneratorPlugin: MediaGeneratorPlugin = {
       if (request.inputImageUrl) {
         input.image_url = request.inputImageUrl;
       }
+    } else if (request.type === "audio") {
+      // Audio generation parameters
+      input.duration_seconds = 30;
+      input.duration = 30;
     } else {
       // Image generation parameters
       input.image_size = mapAspectRatioToImageSize(request.aspectRatio);
@@ -300,7 +313,7 @@ export const falGeneratorPlugin: MediaGeneratorPlugin = {
 /**
  * Extract output URLs from Fal.ai result
  */
-function extractOutputUrls(result: FalImageOutput | FalVideoOutput): string[] {
+function extractOutputUrls(result: FalImageOutput | FalVideoOutput | FalAudioOutput): string[] {
   const urls: string[] = [];
 
   // Image outputs
@@ -317,6 +330,14 @@ function extractOutputUrls(result: FalImageOutput | FalVideoOutput): string[] {
   }
   if ("video" in result && result.video) {
     urls.push(result.video.url);
+  }
+
+  // Audio outputs
+  if ("audio_file" in result && result.audio_file) {
+    urls.push(result.audio_file.url);
+  }
+  if ("audio" in result && result.audio) {
+    urls.push(result.audio.url);
   }
 
   return urls;

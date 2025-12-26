@@ -63,7 +63,8 @@ function MediaField({ form, t, promptType, promptContent }: MediaFieldProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const mediaUrl = form.watch("mediaUrl");
   const isVideoType = promptType === "VIDEO";
-  const mediaType = isVideoType ? "VIDEO" : "IMAGE";
+  const isAudioType = promptType === "AUDIO";
+  const mediaType = isVideoType ? "VIDEO" : isAudioType ? "AUDIO" : "IMAGE";
 
   useEffect(() => {
     fetch("/api/config/storage")
@@ -77,11 +78,11 @@ function MediaField({ form, t, promptType, promptContent }: MediaFieldProps) {
     fetch("/api/media-generate")
       .then((res) => res.json())
       .then((data) => {
-        const models = isVideoType ? data.videoModels : data.imageModels;
+        const models = isVideoType ? data.videoModels : isAudioType ? data.audioModels : data.imageModels;
         setHasGenerators(models && models.length > 0);
       })
       .catch(() => setHasGenerators(false));
-  }, [isVideoType]);
+  }, [isVideoType, isAudioType]);
 
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -97,9 +98,10 @@ function MediaField({ form, t, promptType, promptContent }: MediaFieldProps) {
     // Validate file type
     const allowedImageTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
     const allowedVideoTypes = ["video/mp4"];
-    const allowedTypes = isVideoType ? allowedVideoTypes : allowedImageTypes;
+    const allowedAudioTypes = ["audio/mpeg", "audio/mp3", "audio/wav", "audio/ogg"];
+    const allowedTypes = isVideoType ? allowedVideoTypes : isAudioType ? allowedAudioTypes : allowedImageTypes;
     if (!allowedTypes.includes(file.type)) {
-      setUploadError(t(isVideoType ? "invalidVideoType" : "invalidFileType"));
+      setUploadError(t(isVideoType ? "invalidVideoType" : isAudioType ? "invalidAudioType" : "invalidFileType"));
       return;
     }
 
@@ -165,6 +167,8 @@ function MediaField({ form, t, promptType, promptContent }: MediaFieldProps) {
                   <div className="relative inline-block">
                     {isVideoType ? (
                       <video src={mediaUrl} controls className="max-h-40 rounded-md border" />
+                    ) : isAudioType ? (
+                      <audio src={mediaUrl} controls className="w-full max-w-md" />
                     ) : (
                       <img src={mediaUrl} alt="Preview" className="max-h-40 rounded-md border" />
                     )}
@@ -188,11 +192,11 @@ function MediaField({ form, t, promptType, promptContent }: MediaFieldProps) {
                         <span className="font-medium">{t("aiGenerationAvailable")}</span>
                       </div>
                       <p className="text-sm text-muted-foreground">
-                        {t(isVideoType ? "generateVideoDescription" : "generateImageDescription")}
+                        {t(isVideoType ? "generateVideoDescription" : isAudioType ? "generateAudioDescription" : "generateImageDescription")}
                       </p>
                       <MediaGenerator
                         prompt={promptContent || ""}
-                        mediaType={mediaType as "IMAGE" | "VIDEO"}
+                        mediaType={mediaType as "IMAGE" | "VIDEO" | "AUDIO"}
                         onMediaGenerated={handleMediaGenerated}
                         onUploadClick={handleUploadClick}
                       />
@@ -200,7 +204,7 @@ function MediaField({ form, t, promptType, promptContent }: MediaFieldProps) {
                   ) : (
                     <MediaGenerator
                       prompt={promptContent || ""}
-                      mediaType={mediaType as "IMAGE" | "VIDEO"}
+                      mediaType={mediaType as "IMAGE" | "VIDEO" | "AUDIO"}
                       onMediaGenerated={handleMediaGenerated}
                       onUploadClick={handleUploadClick}
                     />
@@ -227,7 +231,7 @@ function MediaField({ form, t, promptType, promptContent }: MediaFieldProps) {
       name="mediaUrl"
       render={() => (
         <FormItem>
-          <FormLabel>{t(isVideoType ? "mediaVideo" : "mediaImage")}</FormLabel>
+          <FormLabel>{t(isVideoType ? "mediaVideo" : isAudioType ? "mediaAudio" : "mediaImage")}</FormLabel>
           <FormControl>
             <div className="space-y-3">
               {mediaUrl ? (
@@ -237,6 +241,12 @@ function MediaField({ form, t, promptType, promptContent }: MediaFieldProps) {
                       src={mediaUrl}
                       controls
                       className="max-h-40 rounded-md border"
+                    />
+                  ) : isAudioType ? (
+                    <audio
+                      src={mediaUrl}
+                      controls
+                      className="w-full max-w-md"
                     />
                   ) : (
                     <img
@@ -264,11 +274,11 @@ function MediaField({ form, t, promptType, promptContent }: MediaFieldProps) {
                         <span className="font-medium">{t("aiGenerationAvailable")}</span>
                       </div>
                       <p className="text-sm text-muted-foreground">
-                        {t(isVideoType ? "generateVideoDescription" : "generateImageDescription")}
+                        {t(isVideoType ? "generateVideoDescription" : isAudioType ? "generateAudioDescription" : "generateImageDescription")}
                       </p>
                       <MediaGenerator
                         prompt={promptContent || ""}
-                        mediaType={mediaType as "IMAGE" | "VIDEO"}
+                        mediaType={mediaType as "IMAGE" | "VIDEO" | "AUDIO"}
                         onMediaGenerated={handleMediaGenerated}
                         onUploadClick={handleUploadClick}
                       />
@@ -276,7 +286,7 @@ function MediaField({ form, t, promptType, promptContent }: MediaFieldProps) {
                   ) : (
                     <MediaGenerator
                       prompt={promptContent || ""}
-                      mediaType={mediaType as "IMAGE" | "VIDEO"}
+                      mediaType={mediaType as "IMAGE" | "VIDEO" | "AUDIO"}
                       onMediaGenerated={handleMediaGenerated}
                       onUploadClick={handleUploadClick}
                     />
@@ -292,10 +302,10 @@ function MediaField({ form, t, promptType, promptContent }: MediaFieldProps) {
                         <Upload className="h-8 w-8 text-muted-foreground" />
                       )}
                       <p className="text-sm text-muted-foreground">
-                        {isUploading ? t("uploading") : t(isVideoType ? "clickToUploadVideo" : "clickToUpload")}
+                        {isUploading ? t("uploading") : t(isVideoType ? "clickToUploadVideo" : isAudioType ? "clickToUploadAudio" : "clickToUpload")}
                       </p>
                       <p className="text-xs text-muted-foreground">
-                        {t(isVideoType ? "maxVideoSize" : "maxFileSize")}
+                        {t(isVideoType ? "maxVideoSize" : isAudioType ? "maxAudioSize" : "maxFileSize")}
                       </p>
                     </div>
                   )}
@@ -304,7 +314,7 @@ function MediaField({ form, t, promptType, promptContent }: MediaFieldProps) {
               <input
                 ref={fileInputRef}
                 type="file"
-                accept={isVideoType ? "video/mp4" : "image/jpeg,image/png,image/gif,image/webp"}
+                accept={isVideoType ? "video/mp4" : isAudioType ? "audio/mpeg,audio/mp3,audio/wav,audio/ogg" : "image/jpeg,image/png,image/gif,image/webp"}
                 className="hidden"
                 onChange={handleFileSelect}
                 disabled={isUploading}
@@ -1093,6 +1103,10 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
                         <Video className="h-4 w-4 mr-2" />
                         {t("generateVideo")}
                       </DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => form.setValue("type", "AUDIO")}>
+                        <Volume2 className="h-4 w-4 mr-2" />
+                        {t("generateAudio")}
+                      </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 )}
@@ -1156,21 +1170,12 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
                 </div>
               )}
               {promptType === "AUDIO" && (
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2 text-sm font-medium">
                     <Volume2 className="h-4 w-4" />
-                    <span>{t("outputPreview.audio")}</span>
+                    <span>{t("outputPreview.audioUpload")}</span>
                   </div>
-                  {/* Fake audio player bar */}
-                  <div className="flex items-center gap-3 p-3 rounded-md bg-muted/50">
-                    <button type="button" className="h-8 w-8 rounded-full bg-muted flex items-center justify-center cursor-not-allowed" disabled>
-                      <Play className="h-4 w-4 text-muted-foreground/50" />
-                    </button>
-                    <div className="flex-1 h-1.5 bg-muted-foreground/20 rounded-full">
-                      <div className="h-full w-0 bg-muted-foreground/30 rounded-full" />
-                    </div>
-                    <span className="text-xs text-muted-foreground/50">0:00</span>
-                  </div>
+                  <MediaField form={form} t={t} promptType={promptType} promptContent={promptContent} />
                 </div>
               )}
             </div>

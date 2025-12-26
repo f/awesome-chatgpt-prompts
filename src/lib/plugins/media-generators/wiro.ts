@@ -7,6 +7,7 @@
  * - WIRO_API_KEY
  * - WIRO_VIDEO_MODELS (comma-separated, e.g., "google/veo3.1-fast")
  * - WIRO_IMAGE_MODELS (comma-separated, e.g., "google/nano-banana-pro,google/nano-banana")
+ * - WIRO_AUDIO_MODELS (comma-separated, e.g., "elevenlabs/sound-effects")
  */
 
 import type {
@@ -22,7 +23,7 @@ import type {
 const WIRO_API_BASE = "https://api.wiro.ai/v1";
 const WIRO_SOCKET_URL = "wss://socket.wiro.ai/v1";
 
-function parseModels(envVar: string | undefined, type: "image" | "video"): MediaGeneratorModel[] {
+function parseModels(envVar: string | undefined, type: "image" | "video" | "audio"): MediaGeneratorModel[] {
   if (!envVar) return [];
   return envVar
     .split(",")
@@ -128,11 +129,13 @@ const wiroWebSocketHandler: WebSocketHandler = {
 export const wiroGeneratorPlugin: MediaGeneratorPlugin = {
   id: "wiro",
   name: "Wiro.ai",
+  logo: "/sponsors/wiro.png",
+  logoDark: "/sponsors/wiro.png",
 
   isConfigured: () => {
     return !!(
       process.env.WIRO_API_KEY &&
-      (process.env.WIRO_VIDEO_MODELS || process.env.WIRO_IMAGE_MODELS)
+      (process.env.WIRO_VIDEO_MODELS || process.env.WIRO_IMAGE_MODELS || process.env.WIRO_AUDIO_MODELS)
     );
   },
 
@@ -143,7 +146,8 @@ export const wiroGeneratorPlugin: MediaGeneratorPlugin = {
   getModels: () => {
     const imageModels = parseModels(process.env.WIRO_IMAGE_MODELS, "image");
     const videoModels = parseModels(process.env.WIRO_VIDEO_MODELS, "video");
-    return [...imageModels, ...videoModels];
+    const audioModels = parseModels(process.env.WIRO_AUDIO_MODELS, "audio");
+    return [...imageModels, ...videoModels, ...audioModels];
   },
 
   async startGeneration(request: GenerationRequest): Promise<GenerationTask> {
@@ -169,6 +173,9 @@ export const wiroGeneratorPlugin: MediaGeneratorPlugin = {
       if (request.aspectRatio) {
         formData.append("aspectRatio", request.aspectRatio);
       }
+    } else if (request.type === "audio") {
+      // Audio-specific parameters
+      formData.append("durationSeconds", "30");
     } else {
       // Image-specific parameters
       formData.append("resolution", request.resolution || "1K");

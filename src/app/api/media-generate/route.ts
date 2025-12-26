@@ -17,6 +17,7 @@ export async function GET() {
   const available = isMediaGenerationAvailable();
   const imageModels = getAvailableModels("image");
   const videoModels = getAvailableModels("video");
+  const audioModels = getAvailableModels("audio");
 
   // Get user's credit info
   const user = await db.user.findUnique({
@@ -32,6 +33,7 @@ export async function GET() {
     available,
     imageModels,
     videoModels,
+    audioModels,
     credits: {
       remaining: user?.generationCreditsRemaining ?? 0,
       daily: user?.dailyGenerationLimit ?? 0,

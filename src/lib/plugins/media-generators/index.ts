@@ -51,10 +51,10 @@ export function getEnabledMediaGeneratorPlugins(): MediaGeneratorPlugin[] {
 /**
  * Get all available models from enabled generators
  */
-export function getAvailableModels(type?: MediaType): Array<MediaGeneratorModel & { provider: string; providerName: string }> {
+export function getAvailableModels(type?: MediaType): Array<MediaGeneratorModel & { provider: string; providerName: string; providerLogo?: string; providerLogoDark?: string }> {
   initializeMediaGenerators();
 
-  const models: Array<MediaGeneratorModel & { provider: string; providerName: string }> = [];
+  const models: Array<MediaGeneratorModel & { provider: string; providerName: string; providerLogo?: string; providerLogoDark?: string }> = [];
 
   for (const plugin of getEnabledMediaGeneratorPlugins()) {
     const pluginModels = plugin.getModels();
@@ -64,6 +64,8 @@ export function getAvailableModels(type?: MediaType): Array<MediaGeneratorModel 
           ...model,
           provider: plugin.id,
           providerName: plugin.name,
+          providerLogo: plugin.logo,
+          providerLogoDark: plugin.logoDark,
         });
       }
     }
