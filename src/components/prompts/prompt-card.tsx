@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { formatDistanceToNow } from "@/lib/date";
 import { getPromptUrl } from "@/lib/urls";
-import { ArrowBigUp, Lock, Copy, ImageIcon, Play, BadgeCheck } from "lucide-react";
+import { ArrowBigUp, Lock, Copy, ImageIcon, Play, BadgeCheck, Volume2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { CodeView } from "@/components/ui/code-view";
 import { toast } from "sonner";
@@ -15,6 +15,7 @@ import { PinButton } from "@/components/prompts/pin-button";
 import { RunPromptButton } from "@/components/prompts/run-prompt-button";
 import { VariableFillModal, hasVariables, renderContentWithVariables } from "@/components/prompts/variable-fill-modal";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { AudioPlayer } from "@/components/prompts/audio-player";
 import {
   Tooltip,
   TooltipContent,
@@ -80,8 +81,9 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
   const [imageError, setImageError] = useState(false);
 
   const isStructuredInput = !!prompt.structuredFormat;
-  const hasMediaBackground = prompt.type === "IMAGE" || prompt.type === "VIDEO" || (isStructuredInput && !!prompt.mediaUrl);
+  const isAudio = prompt.type === "AUDIO";
   const isVideo = prompt.type === "VIDEO";
+  const hasMediaBackground = prompt.type === "IMAGE" || isVideo || (isStructuredInput && !!prompt.mediaUrl && !isAudio);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -135,11 +137,11 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
 
   return (
     <div 
-      className={`group border rounded-[var(--radius)] overflow-hidden hover:border-foreground/20 transition-colors flex flex-col ${hasMediaBackground ? "" : "p-4"}`}
+      className={`group border rounded-[var(--radius)] overflow-hidden hover:border-foreground/20 transition-colors flex flex-col ${hasMediaBackground || isAudio ? "" : "p-4"}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Image Background for IMAGE type or STRUCTURED with media */}
+      {/* Image/Video Background for IMAGE/VIDEO type or STRUCTURED with media */}
       {hasMediaBackground && (
         <div className="relative bg-muted">
           {prompt.mediaUrl && !imageError ? (
@@ -178,7 +180,20 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
         </div>
       )}
 
-      <div className={hasMediaBackground ? "p-3 flex-1 flex flex-col" : "flex-1 flex flex-col"}>
+      {/* Audio Player for AUDIO type */}
+      {isAudio && (
+        <div className="p-3 pb-0">
+          {prompt.mediaUrl ? (
+            <AudioPlayer src={prompt.mediaUrl} compact />
+          ) : (
+            <div className="h-12 flex items-center justify-center bg-muted rounded-lg">
+              <Volume2 className="h-5 w-5 text-muted-foreground/30" />
+            </div>
+          )}
+        </div>
+      )}
+
+      <div className={hasMediaBackground || isAudio ? "p-3 flex-1 flex flex-col" : "flex-1 flex flex-col"}>
         {/* Header */}
         <div className="flex items-start justify-between gap-2 mb-2">
           <div className="flex items-center gap-1 flex-1 min-w-0">
@@ -187,7 +202,7 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
               {prompt.title}
             </Link>
           </div>
-          {!hasMediaBackground && (
+          {(!hasMediaBackground || isAudio) && (
             <Badge variant="outline" className="text-[10px] shrink-0">
               {t(`types.${prompt.type.toLowerCase()}`)}
             </Badge>

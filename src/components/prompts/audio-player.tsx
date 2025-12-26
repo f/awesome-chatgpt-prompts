@@ -8,11 +8,12 @@ interface AudioPlayerProps {
   src: string;
   onError?: () => void;
   className?: string;
+  compact?: boolean;
 }
 
 const BARS = 32;
 
-export function AudioPlayer({ src, onError, className }: AudioPlayerProps) {
+export function AudioPlayer({ src, onError, className, compact = false }: AudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const animationRef = useRef<number | null>(null);
   
@@ -185,22 +186,26 @@ export function AudioPlayer({ src, onError, className }: AudioPlayerProps) {
       </div>
 
       {/* Countdown timer */}
-      <span className="text-xs text-muted-foreground tabular-nums shrink-0">
-        {formatTime(Math.max(0, duration - currentTime))}
-      </span>
+      {!compact && (
+        <span className="text-xs text-muted-foreground tabular-nums shrink-0">
+          {formatTime(Math.max(0, duration - currentTime))}
+        </span>
+      )}
 
       {/* Mute button */}
-      <button
-        type="button"
-        onClick={toggleMute}
-        className="h-7 w-7 shrink-0 rounded-full hover:bg-muted flex items-center justify-center transition-colors"
-      >
-        {isMuted ? (
-          <VolumeX className="h-3.5 w-3.5 text-muted-foreground" />
-        ) : (
-          <Volume2 className="h-3.5 w-3.5 text-muted-foreground" />
-        )}
-      </button>
+      {!compact && (
+        <button
+          type="button"
+          onClick={toggleMute}
+          className="h-7 w-7 shrink-0 rounded-full hover:bg-muted flex items-center justify-center transition-colors"
+        >
+          {isMuted ? (
+            <VolumeX className="h-3.5 w-3.5 text-muted-foreground" />
+          ) : (
+            <Volume2 className="h-3.5 w-3.5 text-muted-foreground" />
+          )}
+        </button>
+      )}
     </div>
   );
 }

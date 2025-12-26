@@ -74,7 +74,7 @@ export interface FalVideoOutput {
 
 export interface FalAudioOutput {
   audio_file?: { url: string };
-  audio?: { url: string };
+  audio?: Array<{ url: string }> | { url: string };
 }
 
 /**
@@ -337,7 +337,11 @@ function extractOutputUrls(result: FalImageOutput | FalVideoOutput | FalAudioOut
     urls.push(result.audio_file.url);
   }
   if ("audio" in result && result.audio) {
-    urls.push(result.audio.url);
+    if (Array.isArray(result.audio)) {
+      urls.push(...result.audio.map((a) => a.url));
+    } else {
+      urls.push(result.audio.url);
+    }
   }
 
   return urls;
