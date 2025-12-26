@@ -23,6 +23,9 @@
   <a href="https://clemta.com/?utm_source=prompts.chat" align="center">
     <img align="center" height="50" alt="Clemta logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/clemta.webp">
   </a><br><br>
+  <a href="https://wiro.ai/?utm_source=prompts.chat" align="center">
+    <img align="center" height="30" alt="Cognition logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/wiro.png">
+  </a><br><br>
   <a href="https://wind.surf/prompts-chat" align="center">
     <img align="center" height="40" alt="Cognition logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/cognition.svg">
   </a><br><br>
