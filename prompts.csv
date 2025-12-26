@@ -10215,3 +10215,102 @@ C) Edge function file structure + key code blocks
 D) Expo integration notes + key code blocks
 E) Worker outline + pseudo-code
 ",FALSE,TEXT,Ted2xmen
+Blonde,"Prompt ⤵️
+{
+  ""lighting"": {
+    ""type"": ""natural daylight"",
+    ""source"": ""sunlight, likely from the right"",
+    ""shadows"": ""soft, subtle shadows cast on the car and wall"",
+    ""direction"": ""side-lit"",
+    ""intensity"": ""bright but diffused""
+  },
+  ""background"": {
+    ""type"": ""outdoor, urban setting"",
+    ""details"": ""the concrete wall has visible formwork lines, the bush is dense and green"",
+    ""distance"": ""close to the subject"",
+    ""elements"": [
+      ""textured grey concrete wall"",
+      ""green leafy bush"",
+      ""paved ground with grey interlocking blocks"",
+      ""silver Range Rover vehicle""
+    ]
+  },
+  ""typography"": {
+    ""font_size"": ""small to medium"",
+    ""placement"": ""on the hood of the car, on the front grille badge"",
+    ""font_color"": ""black"",
+    ""font_style"": ""sans-serif"",
+    ""text_content"": [
+      ""REB"",
+      ""LAND ROVER""
+    ]
+  },
+  ""composition"": {
+    ""type"": ""medium shot, portrait"",
+    ""focus"": ""sharp focus on the subject, slightly blurred background"",
+    ""framing"": ""subject is centered, leaning against a vehicle"",
+    ""perspective"": ""eye-level"",
+    ""aspect_ratio"": ""2:3""
+  },
+  ""color_profile"": {
+    ""contrast"": ""medium"",
+    ""saturation"": ""moderate"",
+    ""color_grading"": ""natural, slightly warm daylight"",
+    ""primary_colors"": [
+      ""#6b9ce4"",
+      ""#ffffff"",
+      ""#c0c0c0""
+    ],
+    ""secondary_colors"": [
+      ""#8a9a8a"",
+      ""#7c7c7c"",
+      ""#d4a88b""
+    ]
+  },
+  ""technical_specs"": {
+    ""iso"": ""100"",
+    ""aperture"": ""f/2.8"",
+    ""lens_type"": ""standard lens"",
+    ""resolution"": ""1000x1500"",
+    ""camera_type"": ""digital camera or high-end smartphone"",
+    ""shutter_speed"": ""1/250""
+  },
+  ""subject_analysis"": {
+    ""hair"": {
+      ""color"": ""blonde"",
+      ""style"": ""long, wavy, parted in the middle"",
+      ""texture"": ""fine, smooth""
+    },
+    ""pose"": ""leaning against the front of a car, right arm resting on the hood, left arm hanging by her side, body angled slightly"",
+    ""gender"": ""female"",
+    ""clothing"": {
+      ""top"": ""light blue button-up shirt, unbuttoned at the top, long sleeves"",
+      ""bottom"": ""white mini-skirt"",
+      ""accessories"": [
+        ""brown leather handbag strap visible over the shoulder""
+      ]
+    },
+    ""age_range"": ""young adult (20s)"",
+    ""subject_type"": ""person"",
+    ""hands_gestures"": ""right hand resting on the car's hood, left hand relaxed by her side"",
+    ""facial_features"": {
+      ""eyes"": ""brown, looking at the camera"",
+      ""lips"": ""full, pink"",
+      ""expression"": ""neutral, slightly posed, calm""
+    }
+  },
+  ""artistic_elements"": {
+    ""mood"": ""relaxed, stylish, confident"",
+    ""style"": ""candid fashion photograph, social media aesthetic"",
+    ""texture"": ""smooth car paint, textured concrete wall, soft fabric of the shirt"",
+    ""compositional_balance"": ""asymmetrical balance with the subject on the left and the bush on the right""
+  },
+  ""generation_parameters"": {
+    ""seed"": ""452319875"",
+    ""model"": ""stable-diffusion-xl-base-1.0"",
+    ""steps"": ""50"",
+    ""prompt"": ""A medium shot candid photo of a young blonde woman with long wavy hair, wearing an unbuttoned light blue shirt and a white mini-skirt, leaning casually against a silver Range Rover. She is looking at the camera with a neutral expression. The background is a textured grey concrete wall and a green bush. The lighting is bright natural daylight. The photo has a social media aesthetic."",
+    ""cfg_scale"": ""7.5"",
+    ""negative_prompt"": ""studio lighting, blurred, out of focus, dark, night, indoor, multiple people, excessive makeup, unnatural pose""
+  }
+}",FALSE,TEXT,umutcanbostancii@gmail.com
