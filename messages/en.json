@@ -45,7 +45,7 @@
     "login": "Login",
     "register": "Register",
     "logout": "Logout",
-    "ide": "Typed Prompts"
+    "ide": "Prompt Builder"
   },
   "brand": {
     "copyLogoSvg": "Copy Logo SVG",
@@ -1164,7 +1164,7 @@
     }
   },
   "ide": {
-    "title": "Typed Prompts",
+    "title": "Prompt Builder",
     "subtitle": "Type-safe, structured prompt building",
     "editor": "Editor",
     "preview": "Preview",
@@ -1173,7 +1173,7 @@
     "copied": "Copied to clipboard",
     "runToPreview": "Click Run to see the prompt preview",
     "desktopOnly": "Desktop Only",
-    "desktopOnlyDescription": "The Typed Prompts editor requires a larger screen to work properly. Please open this page on a desktop or laptop computer.",
+    "desktopOnlyDescription": "The Prompt Builder requires a larger screen to work properly. Please open this page on a desktop or laptop computer.",
     "browsePrompts": "Browse Prompts"
   }
 }

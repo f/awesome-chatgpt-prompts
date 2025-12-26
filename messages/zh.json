@@ -45,7 +45,7 @@
     "login": "登录",
     "register": "注册",
     "logout": "退出登录",
-    "ide": "类型化提示词"
+    "ide": "Prompt Builder"
   },
   "brand": {
     "copyLogoSvg": "复制Logo SVG",
@@ -1164,7 +1164,7 @@
     }
   },
   "ide": {
-    "title": "类型化提示词",
+    "title": "Prompt Builder",
     "subtitle": "类型安全的结构化提示词构建",
     "editor": "编辑器",
     "preview": "预览",
@@ -1173,7 +1173,7 @@
     "copied": "已复制到剪贴板",
     "runToPreview": "点击运行查看提示词预览",
     "desktopOnly": "仅限桌面端",
-    "desktopOnlyDescription": "类型化提示词编辑器需要更大的屏幕才能正常工作。请在台式电脑或笔记本电脑上打开此页面。",
+    "desktopOnlyDescription": "提示词构建器需要更大的屏幕才能正常工作。请在台式电脑或笔记本电脑上打开此页面。",
     "browsePrompts": "浏览提示词"
   }
 }

@@ -45,7 +45,7 @@
     "login": "Entrar",
     "register": "Cadastrar",
     "logout": "Sair",
-    "ide": "Prompts Tipados"
+    "ide": "Prompt Builder"
   },
   "brand": {
     "copyLogoSvg": "Copiar Logo SVG",
@@ -1164,7 +1164,7 @@
     }
   },
   "ide": {
-    "title": "Prompts Tipados",
+    "title": "Prompt Builder",
     "subtitle": "Construção de prompts estruturada e type-safe",
     "editor": "Editor",
     "preview": "Pré-visualização",
@@ -1173,7 +1173,7 @@
     "copied": "Copiado para a área de transferência",
     "runToPreview": "Clique em Executar para ver a pré-visualização do prompt",
     "desktopOnly": "Apenas Desktop",
-    "desktopOnlyDescription": "O editor de Prompts Tipados requer uma tela maior para funcionar corretamente. Por favor, abra esta página em um computador desktop ou laptop.",
+    "desktopOnlyDescription": "O Prompt Builder requer uma tela maior para funcionar corretamente. Por favor, abra esta página em um computador desktop ou laptop.",
     "browsePrompts": "Explorar Prompts"
   }
 }

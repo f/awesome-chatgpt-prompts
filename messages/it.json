@@ -45,7 +45,7 @@
     "login": "Accedi",
     "register": "Registrati",
     "logout": "Esci",
-    "ide": "Prompt Tipizzati"
+    "ide": "Prompt Builder"
   },
   "brand": {
     "copyLogoSvg": "Copia Logo SVG",
@@ -1164,7 +1164,7 @@
     }
   },
   "ide": {
-    "title": "Prompt Tipizzati",
+    "title": "Prompt Builder",
     "subtitle": "Costruzione di prompt strutturata e type-safe",
     "editor": "Editor",
     "preview": "Anteprima",
@@ -1173,7 +1173,7 @@
     "copied": "Copiato negli appunti",
     "runToPreview": "Clicca su Esegui per vedere l'anteprima del prompt",
     "desktopOnly": "Solo Desktop",
-    "desktopOnlyDescription": "L'editor di Prompt Tipizzati richiede uno schermo più grande per funzionare correttamente. Si prega di aprire questa pagina su un computer desktop o laptop.",
+    "desktopOnlyDescription": "Il Prompt Builder richiede uno schermo più grande per funzionare correttamente. Si prega di aprire questa pagina su un computer desktop o laptop.",
     "browsePrompts": "Esplora Prompt"
   }
 }

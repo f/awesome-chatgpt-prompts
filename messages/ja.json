@@ -45,7 +45,7 @@
     "login": "ログイン",
     "register": "登録",
     "logout": "ログアウト",
-    "ide": "型付きプロンプト"
+    "ide": "Prompt Builder"
   },
   "brand": {
     "copyLogoSvg": "ロゴSVGをコピー",
@@ -1164,7 +1164,7 @@
     }
   },
   "ide": {
-    "title": "型付きプロンプト",
+    "title": "Prompt Builder",
     "subtitle": "型安全で構造化されたプロンプト構築",
     "editor": "エディタ",
     "preview": "プレビュー",
@@ -1173,7 +1173,7 @@
     "copied": "クリップボードにコピーしました",
     "runToPreview": "実行をクリックしてプロンプトのプレビューを表示",
     "desktopOnly": "デスクトップ専用",
-    "desktopOnlyDescription": "型付きプロンプトエディタは、正常に動作するために大きな画面が必要です。デスクトップまたはラップトップコンピュータでこのページを開いてください。",
+    "desktopOnlyDescription": "プロンプトビルダーは、正常に動作するために大きな画面が必要です。デスクトップまたはラップトップコンピュータでこのページを開いてください。",
     "browsePrompts": "プロンプトを閲覧"
   }
 }

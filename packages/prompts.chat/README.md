@@ -1,4 +1,4 @@
-# prompts.chat Typed Prompts
+# prompts.chat Prompt Builder
 
 A comprehensive developer toolkit for building, validating, and parsing AI prompts. Create structured prompts for chat models, image generators, video AI, and music generation with fluent, type-safe APIs.
 

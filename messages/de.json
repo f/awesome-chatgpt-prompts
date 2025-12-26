@@ -45,7 +45,7 @@
     "login": "Anmelden",
     "register": "Registrieren",
     "logout": "Abmelden",
-    "ide": "Typisierte Prompts"
+    "ide": "Prompt Builder"
   },
   "brand": {
     "copyLogoSvg": "Logo SVG kopieren",
@@ -1164,7 +1164,7 @@
     }
   },
   "ide": {
-    "title": "Typisierte Prompts",
+    "title": "Prompt Builder",
     "subtitle": "Typsichere, strukturierte Prompt-Erstellung",
     "editor": "Editor",
     "preview": "Vorschau",
@@ -1173,7 +1173,7 @@
     "copied": "In die Zwischenablage kopiert",
     "runToPreview": "Klicken Sie auf Ausführen, um die Prompt-Vorschau anzuzeigen",
     "desktopOnly": "Nur für Desktop",
-    "desktopOnlyDescription": "Der Editor für Typisierte Prompts benötigt einen größeren Bildschirm. Bitte öffnen Sie diese Seite auf einem Desktop- oder Laptop-Computer.",
+    "desktopOnlyDescription": "Der Prompt Builder benötigt einen größeren Bildschirm. Bitte öffnen Sie diese Seite auf einem Desktop- oder Laptop-Computer.",
     "browsePrompts": "Prompts durchsuchen"
   }
 }

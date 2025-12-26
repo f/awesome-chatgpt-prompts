@@ -45,7 +45,7 @@
     "login": "Giriş Yap",
     "register": "Kayıt Ol",
     "logout": "Çıkış Yap",
-    "ide": "Tipli Promptlar"
+    "ide": "Prompt Builder"
   },
   "brand": {
     "copyLogoSvg": "Logo SVG'sini Kopyala",
@@ -1164,7 +1164,7 @@
     }
   },
   "ide": {
-    "title": "Tipli Promptlar",
+    "title": "Prompt Builder",
     "subtitle": "Tip güvenli, yapılandırılmış prompt oluşturma",
     "editor": "Editör",
     "preview": "Önizleme",
@@ -1173,7 +1173,7 @@
     "copied": "Panoya kopyalandı",
     "runToPreview": "Prompt önizlemesini görmek için Çalıştır'a tıklayın",
     "desktopOnly": "Yalnızca Masaüstü",
-    "desktopOnlyDescription": "Tipli Promptlar editörü düzgün çalışması için daha büyük bir ekran gerektirir. Lütfen bu sayfayı bir masaüstü veya dizüstü bilgisayarda açın.",
+    "desktopOnlyDescription": "Prompt Oluşturucu düzgün çalışması için daha büyük bir ekran gerektirir. Lütfen bu sayfayı bir masaüstü veya dizüstü bilgisayarda açın.",
     "browsePrompts": "Promptlara Göz At"
   }
 }

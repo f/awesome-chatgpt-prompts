@@ -71,7 +71,9 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "docs": "npx ts-node scripts/generate-docs.ts",
+    "docs:generate": "npx tsx scripts/generate-docs.ts"
   },
   "devDependencies": {
     "@types/node": "^20",

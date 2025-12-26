@@ -45,7 +45,7 @@
     "login": "Connexion",
     "register": "Inscription",
     "logout": "Déconnexion",
-    "ide": "Prompts Typés"
+    "ide": "Prompt Builder"
   },
   "brand": {
     "copyLogoSvg": "Copier le logo SVG",
@@ -1164,7 +1164,7 @@
     }
   },
   "ide": {
-    "title": "Prompts Typés",
+    "title": "Prompt Builder",
     "subtitle": "Construction de prompts structurée et typée",
     "editor": "Éditeur",
     "preview": "Aperçu",
@@ -1173,7 +1173,7 @@
     "copied": "Copié dans le presse-papiers",
     "runToPreview": "Cliquez sur Exécuter pour voir l'aperçu du prompt",
     "desktopOnly": "Bureau uniquement",
-    "desktopOnlyDescription": "L'éditeur de Prompts Typés nécessite un écran plus grand pour fonctionner correctement. Veuillez ouvrir cette page sur un ordinateur de bureau ou portable.",
+    "desktopOnlyDescription": "Le Prompt Builder nécessite un écran plus grand pour fonctionner correctement. Veuillez ouvrir cette page sur un ordinateur de bureau ou portable.",
     "browsePrompts": "Parcourir les Prompts"
   }
 }
