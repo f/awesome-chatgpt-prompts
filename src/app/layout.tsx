@@ -34,13 +34,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "prompts.chat",
     description: "Collect, organize, and share AI prompts",
-    images: [{ url: "/og.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "prompts.chat",
     description: "Collect, organize, and share AI prompts",
-    images: ["/og.png"],
   },
 };
 
