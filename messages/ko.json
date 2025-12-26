@@ -1122,6 +1122,9 @@
     "run": "실행",
     "reset": "재설정",
     "copied": "클립보드에 복사됨",
-    "runToPreview": "실행을 클릭하여 프롬프트 미리보기 표시"
+    "runToPreview": "실행을 클릭하여 프롬프트 미리보기 표시",
+    "desktopOnly": "데스크톱 전용",
+    "desktopOnlyDescription": "타입 프롬프트 에디터는 제대로 작동하려면 더 큰 화면이 필요합니다. 데스크톱이나 노트북 컴퓨터에서 이 페이지를 열어주세요.",
+    "browsePrompts": "프롬프트 둘러보기"
   }
 }

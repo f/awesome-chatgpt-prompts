@@ -1122,6 +1122,9 @@
     "run": "Exécuter",
     "reset": "Réinitialiser",
     "copied": "Copié dans le presse-papiers",
-    "runToPreview": "Cliquez sur Exécuter pour voir l'aperçu du prompt"
+    "runToPreview": "Cliquez sur Exécuter pour voir l'aperçu du prompt",
+    "desktopOnly": "Bureau uniquement",
+    "desktopOnlyDescription": "L'éditeur de Prompts Typés nécessite un écran plus grand pour fonctionner correctement. Veuillez ouvrir cette page sur un ordinateur de bureau ou portable.",
+    "browsePrompts": "Parcourir les Prompts"
   }
 }

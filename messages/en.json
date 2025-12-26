@@ -1122,6 +1122,9 @@
     "run": "Run",
     "reset": "Reset",
     "copied": "Copied to clipboard",
-    "runToPreview": "Click Run to see the prompt preview"
+    "runToPreview": "Click Run to see the prompt preview",
+    "desktopOnly": "Desktop Only",
+    "desktopOnlyDescription": "The Typed Prompts editor requires a larger screen to work properly. Please open this page on a desktop or laptop computer.",
+    "browsePrompts": "Browse Prompts"
   }
 }

@@ -1122,6 +1122,9 @@
     "run": "Ejecutar",
     "reset": "Restablecer",
     "copied": "Copiado al portapapeles",
-    "runToPreview": "Haz clic en Ejecutar para ver la vista previa del prompt"
+    "runToPreview": "Haz clic en Ejecutar para ver la vista previa del prompt",
+    "desktopOnly": "Solo escritorio",
+    "desktopOnlyDescription": "El editor de Prompts Tipados requiere una pantalla más grande para funcionar correctamente. Por favor, abre esta página en una computadora de escritorio o portátil.",
+    "browsePrompts": "Explorar Prompts"
   }
 }

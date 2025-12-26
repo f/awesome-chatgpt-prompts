@@ -1122,6 +1122,9 @@
     "run": "Ausführen",
     "reset": "Zurücksetzen",
     "copied": "In die Zwischenablage kopiert",
-    "runToPreview": "Klicken Sie auf Ausführen, um die Prompt-Vorschau anzuzeigen"
+    "runToPreview": "Klicken Sie auf Ausführen, um die Prompt-Vorschau anzuzeigen",
+    "desktopOnly": "Nur für Desktop",
+    "desktopOnlyDescription": "Der Editor für Typisierte Prompts benötigt einen größeren Bildschirm. Bitte öffnen Sie diese Seite auf einem Desktop- oder Laptop-Computer.",
+    "browsePrompts": "Prompts durchsuchen"
   }
 }

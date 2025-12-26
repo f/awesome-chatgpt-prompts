@@ -1122,6 +1122,9 @@
     "run": "Esegui",
     "reset": "Ripristina",
     "copied": "Copiato negli appunti",
-    "runToPreview": "Clicca su Esegui per vedere l'anteprima del prompt"
+    "runToPreview": "Clicca su Esegui per vedere l'anteprima del prompt",
+    "desktopOnly": "Solo Desktop",
+    "desktopOnlyDescription": "L'editor di Prompt Tipizzati richiede uno schermo più grande per funzionare correttamente. Si prega di aprire questa pagina su un computer desktop o laptop.",
+    "browsePrompts": "Esplora Prompt"
   }
 }

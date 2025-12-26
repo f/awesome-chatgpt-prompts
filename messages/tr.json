@@ -1122,6 +1122,9 @@
     "run": "Çalıştır",
     "reset": "Sıfırla",
     "copied": "Panoya kopyalandı",
-    "runToPreview": "Prompt önizlemesini görmek için Çalıştır'a tıklayın"
+    "runToPreview": "Prompt önizlemesini görmek için Çalıştır'a tıklayın",
+    "desktopOnly": "Yalnızca Masaüstü",
+    "desktopOnlyDescription": "Tipli Promptlar editörü düzgün çalışması için daha büyük bir ekran gerektirir. Lütfen bu sayfayı bir masaüstü veya dizüstü bilgisayarda açın.",
+    "browsePrompts": "Promptlara Göz At"
   }
 }
