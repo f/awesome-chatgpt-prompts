@@ -30,6 +30,7 @@ export function Footer() {
               <Link href="/docs/api" className="hover:text-foreground">{t("api")}</Link>
               <Link href="/privacy" className="hover:text-foreground">{t("privacy")}</Link>
               <Link href="/terms" className="hover:text-foreground">{t("terms")}</Link>
+              <Link href="/support" className="hover:text-foreground">{t("support")}</Link>
             </>
           )}
           <Link href="https://github.com/f/awesome-chatgpt-prompts" target="_blank" rel="noopener noreferrer" className="hover:text-foreground flex items-center gap-1">

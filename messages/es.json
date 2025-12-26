@@ -984,7 +984,50 @@
     "docs": "Documentación",
     "api": "API",
     "privacy": "Privacidad",
-    "terms": "Términos"
+    "terms": "Términos",
+    "support": "Soporte"
+  },
+  "support": {
+    "title": "Soporte",
+    "description": "Encuentra respuestas a preguntas frecuentes u obtén ayuda de nuestra comunidad.",
+    "faq": {
+      "title": "Preguntas Frecuentes",
+      "whatIsPrompt": {
+        "question": "¿Qué es un prompt?",
+        "answer": "Un prompt es una instrucción o entrada que le das a un modelo de IA (como ChatGPT, Claude, Gemini, etc.) para guiar su respuesta. Es esencialmente cómo comunicas lo que quieres que haga la IA. Los prompts bien elaborados conducen a mejores y más útiles salidas de los sistemas de IA."
+      },
+      "whyPromptsMatter": {
+        "question": "¿Por qué importan los prompts? ¿No puedo simplemente preguntarle cualquier cosa a la IA?",
+        "answer": "Aunque los modelos de IA avanzados pueden manejar preguntas casuales bien, los prompts se vuelven críticos cuando:\n\n• Usas IA vía API en aplicaciones — a menudo solo tienes una oportunidad (\"one-shot prompting\"), sin diálogo de ida y vuelta\n• Trabajas con modelos más pequeños y económicos que necesitan instrucciones más precisas\n• Construyes sistemas de producción donde la consistencia y confiabilidad importan\n\nLos prompts optimizados te ayudan a obtener mejores resultados, ahorrar tokens (y dinero), y crear aplicaciones más confiables impulsadas por IA."
+      },
+      "whatIsPromptschat": {
+        "question": "¿Qué es prompts.chat?",
+        "answer": "prompts.chat es una plataforma impulsada por la comunidad donde las personas comparten, descubren y recopilan prompts de IA. Durante más de 4 años, los usuarios han compartido sus técnicas de optimización de prompts aquí. La comunidad se ayuda mutuamente a mejorar sus prompts y aprender nuevos enfoques para trabajar con sistemas de IA."
+      },
+      "howToUse": {
+        "question": "¿Cómo uso los prompts de esta plataforma?",
+        "answer": "Simplemente navega por los prompts, encuentra uno que te guste y cópialo. Luego puedes pegarlo en tu herramienta de IA preferida (ChatGPT, Claude, Gemini, etc.) o usarlo en tus aplicaciones vía API. Muchos prompts incluyen variables que puedes personalizar antes de copiar."
+      },
+      "license": {
+        "question": "¿Puedo usar estos prompts comercialmente?",
+        "answer": "¡Sí! Todos los prompts en prompts.chat están liberados bajo la licencia CC0 (Creative Commons Zero), lo que significa que son de dominio público. Puedes usarlos, modificarlos y distribuirlos libremente para cualquier propósito, incluyendo uso comercial, sin atribución."
+      },
+      "selfHost": {
+        "question": "¿Puedo auto-hospedar esta plataforma?",
+        "answer": "¡Absolutamente! prompts.chat es completamente de código abierto. Puedes desplegar tu propia instancia privada para tu equipo u organización. Consulta nuestra documentación de auto-hospedaje para instrucciones de configuración."
+      }
+    },
+    "contact": {
+      "title": "¿Necesitas Más Ayuda?",
+      "description": "Si no pudiste encontrar una respuesta a tu pregunta, completa el formulario a continuación y te ayudaremos en GitHub.",
+      "form": {
+        "title": "Título del Issue",
+        "titlePlaceholder": "Breve resumen de tu problema o pregunta",
+        "description": "Descripción",
+        "descriptionPlaceholder": "Por favor describe tu problema o pregunta en detalle..."
+      },
+      "openIssue": "Abrir Issue en GitHub"
+    }
   },
   "apiKey": {
     "title": "Clave API MCP",

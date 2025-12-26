@@ -984,7 +984,50 @@
     "docs": "文档",
     "api": "API",
     "privacy": "隐私",
-    "terms": "条款"
+    "terms": "条款",
+    "support": "支持"
+  },
+  "support": {
+    "title": "支持",
+    "description": "查找常见问题的答案或从我们的社区获得帮助。",
+    "faq": {
+      "title": "常见问题",
+      "whatIsPrompt": {
+        "question": "什么是提示词？",
+        "answer": "提示词是您向AI模型（如ChatGPT、Claude、Gemini等）提供的指令或输入，用于引导其响应。这本质上是您与AI沟通您想要它做什么的方式。精心设计的提示词能够从AI系统获得更好、更有用的输出。"
+      },
+      "whyPromptsMatter": {
+        "question": "为什么提示词很重要？我不能随便问AI任何问题吗？",
+        "answer": "虽然高级AI模型可以很好地处理随意的问题，但在以下情况下提示词变得至关重要：\n\n• 在应用程序中通过API使用AI时——通常只有一次机会（\"一次性提示\"），没有来回对话\n• 使用需要更精确指令的较小、经济型模型时\n• 构建一致性和可靠性很重要的生产系统时\n\n优化的提示词帮助您获得更好的结果，节省令牌（和金钱），并创建更可靠的AI驱动应用程序。"
+      },
+      "whatIsPromptschat": {
+        "question": "prompts.chat是什么？",
+        "answer": "prompts.chat是一个社区驱动的平台，人们在这里分享、发现和收集AI提示词。四年多来，用户一直在这里分享他们的提示词优化技术。社区互相帮助改进提示词，学习与AI系统协作的新方法。"
+      },
+      "howToUse": {
+        "question": "如何使用这个平台的提示词？",
+        "answer": "只需浏览提示词，找到您喜欢的，然后复制它。然后您可以将它粘贴到您喜欢的AI工具（ChatGPT、Claude、Gemini等）中，或通过API在您的应用程序中使用它。许多提示词包含您可以在复制前自定义的变量。"
+      },
+      "license": {
+        "question": "我可以商业使用这些提示词吗？",
+        "answer": "是的！prompts.chat上的所有提示词都在CC0（Creative Commons Zero）许可证下发布，这意味着它们属于公共领域。您可以自由使用、修改和分发它们用于任何目的，包括商业用途，无需注明出处。"
+      },
+      "selfHost": {
+        "question": "我可以自托管这个平台吗？",
+        "answer": "当然可以！prompts.chat是完全开源的。您可以为您的团队或组织部署自己的私有实例。请查看我们的自托管文档了解设置说明。"
+      }
+    },
+    "contact": {
+      "title": "需要更多帮助？",
+      "description": "如果您没有找到问题的答案，请填写下面的表单，我们将在GitHub上为您提供帮助。",
+      "form": {
+        "title": "Issue标题",
+        "titlePlaceholder": "简要描述您的问题",
+        "description": "描述",
+        "descriptionPlaceholder": "请详细描述您的问题..."
+      },
+      "openIssue": "在GitHub上开Issue"
+    }
   },
   "apiKey": {
     "title": "MCP API 密钥",

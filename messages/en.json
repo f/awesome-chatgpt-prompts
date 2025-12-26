@@ -984,7 +984,50 @@
     "docs": "Docs",
     "api": "API",
     "privacy": "Privacy",
-    "terms": "Terms"
+    "terms": "Terms",
+    "support": "Support"
+  },
+  "support": {
+    "title": "Support",
+    "description": "Find answers to common questions or get help from our community.",
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "whatIsPrompt": {
+        "question": "What is a prompt?",
+        "answer": "A prompt is an instruction or input you give to an AI model (like ChatGPT, Claude, Gemini, etc.) to guide its response. It's essentially how you communicate what you want the AI to do. Well-crafted prompts lead to better, more useful outputs from AI systems."
+      },
+      "whyPromptsMatter": {
+        "question": "Why do prompts matter? Can't I just ask the AI anything?",
+        "answer": "While advanced AI models can handle casual questions well, prompts become critical when:\n\n• Using AI via API in applications — you often get only one chance to get it right (\"one-shot prompting\"), with no back-and-forth dialogue\n• Working with smaller, cost-effective models that need more precise instructions\n• Building production systems where consistency and reliability matter\n\nOptimized prompts help you get better results, save tokens (and money), and create more reliable AI-powered applications."
+      },
+      "whatIsPromptschat": {
+        "question": "What is prompts.chat?",
+        "answer": "prompts.chat is a community-driven platform where people share, discover, and collect AI prompts. For over 4 years, users have been sharing their prompt optimization techniques here. The community helps each other improve their prompts and learn new approaches to working with AI systems."
+      },
+      "howToUse": {
+        "question": "How do I use prompts from this platform?",
+        "answer": "Simply browse the prompts, find one you like, and copy it. You can then paste it into your preferred AI tool (ChatGPT, Claude, Gemini, etc.) or use it in your applications via API. Many prompts include variables you can customize before copying."
+      },
+      "license": {
+        "question": "Can I use these prompts commercially?",
+        "answer": "Yes! All prompts on prompts.chat are released under the CC0 (Creative Commons Zero) license, which means they are in the public domain. You can use, modify, and distribute them freely for any purpose, including commercial use, without attribution."
+      },
+      "selfHost": {
+        "question": "Can I self-host this platform?",
+        "answer": "Absolutely! prompts.chat is fully open source. You can deploy your own private instance for your team or organization. Check out our self-hosting documentation for setup instructions."
+      }
+    },
+    "contact": {
+      "title": "Need More Help?",
+      "description": "If you couldn't find an answer to your question, fill out the form below and we'll help you on GitHub.",
+      "form": {
+        "title": "Issue Title",
+        "titlePlaceholder": "Brief summary of your issue or question",
+        "description": "Description",
+        "descriptionPlaceholder": "Please describe your issue or question in detail..."
+      },
+      "openIssue": "Open GitHub Issue"
+    }
   },
   "apiKey": {
     "title": "MCP API Key",

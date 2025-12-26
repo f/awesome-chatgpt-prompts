@@ -984,7 +984,50 @@
     "docs": "Dökümanlar",
     "api": "API",
     "privacy": "Gizlilik",
-    "terms": "Şartlar"
+    "terms": "Şartlar",
+    "support": "Destek"
+  },
+  "support": {
+    "title": "Destek",
+    "description": "Sık sorulan sorulara cevap bulun veya topluluğumuzdan yardım alın.",
+    "faq": {
+      "title": "Sık Sorulan Sorular",
+      "whatIsPrompt": {
+        "question": "Prompt nedir?",
+        "answer": "Prompt, bir yapay zeka modeline (ChatGPT, Claude, Gemini vb.) verdiğiniz talimat veya girdidir. Yapay zekanın ne yapmasını istediğinizi iletmenin yoludur. İyi hazırlanmış promptlar, yapay zeka sistemlerinden daha iyi ve daha kullanışlı çıktılar almanızı sağlar."
+      },
+      "whyPromptsMatter": {
+        "question": "Promptlar neden önemli? Yapay zekaya istediğimi soramaz mıyım?",
+        "answer": "Gelişmiş yapay zeka modelleri günlük soruları iyi karşılayabilirken, promptlar şu durumlarda kritik hale gelir:\n\n• Uygulamalarda API üzerinden yapay zeka kullanırken — genellikle tek şansınız vardır (\"one-shot prompting\"), karşılıklı diyalog yoktur\n• Daha hassas talimatlar gerektiren küçük, ekonomik modellerle çalışırken\n• Tutarlılık ve güvenilirliğin önemli olduğu üretim sistemleri oluştururken\n\nOptimize edilmiş promptlar daha iyi sonuçlar almanıza, token (ve para) tasarrufu yapmanıza ve daha güvenilir yapay zeka destekli uygulamalar oluşturmanıza yardımcı olur."
+      },
+      "whatIsPromptschat": {
+        "question": "prompts.chat nedir?",
+        "answer": "prompts.chat, insanların yapay zeka promptlarını paylaştığı, keşfettiği ve topladığı topluluk odaklı bir platformdur. 4 yılı aşkın süredir kullanıcılar prompt optimizasyon tekniklerini burada paylaşmaktadır. Topluluk, promptlarını geliştirmek ve yapay zeka sistemleriyle çalışmanın yeni yaklaşımlarını öğrenmek için birbirine yardımcı olur."
+      },
+      "howToUse": {
+        "question": "Bu platformdaki promptları nasıl kullanırım?",
+        "answer": "Promptlara göz atın, beğendiğinizi bulun ve kopyalayın. Ardından tercih ettiğiniz yapay zeka aracına (ChatGPT, Claude, Gemini vb.) yapıştırabilir veya API aracılığıyla uygulamalarınızda kullanabilirsiniz. Birçok prompt, kopyalamadan önce özelleştirebileceğiniz değişkenler içerir."
+      },
+      "license": {
+        "question": "Bu promptları ticari olarak kullanabilir miyim?",
+        "answer": "Evet! prompts.chat'teki tüm promptlar CC0 (Creative Commons Zero) lisansı altında yayınlanmıştır, yani kamu malıdır. Ticari kullanım dahil herhangi bir amaç için atıf yapmadan özgürce kullanabilir, değiştirebilir ve dağıtabilirsiniz."
+      },
+      "selfHost": {
+        "question": "Bu platformu kendi sunucumda barındırabilir miyim?",
+        "answer": "Kesinlikle! prompts.chat tamamen açık kaynaklıdır. Ekibiniz veya kuruluşunuz için kendi özel örneğinizi dağıtabilirsiniz. Kurulum talimatları için self-hosting dokümantasyonumuza göz atın."
+      }
+    },
+    "contact": {
+      "title": "Daha Fazla Yardıma mı İhtiyacınız Var?",
+      "description": "Sorunuza cevap bulamadıysanız, aşağıdaki formu doldurun, GitHub üzerinden size yardımcı olalım.",
+      "form": {
+        "title": "Issue Başlığı",
+        "titlePlaceholder": "Sorunuzun veya probleminizin kısa özeti",
+        "description": "Açıklama",
+        "descriptionPlaceholder": "Lütfen sorunuzu veya probleminizi detaylı olarak açıklayın..."
+      },
+      "openIssue": "GitHub Issue Aç"
+    }
   },
   "apiKey": {
     "title": "MCP API Anahtarı",

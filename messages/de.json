@@ -984,7 +984,50 @@
     "docs": "Dokumentation",
     "api": "API",
     "privacy": "Datenschutz",
-    "terms": "Nutzungsbedingungen"
+    "terms": "Nutzungsbedingungen",
+    "support": "Support"
+  },
+  "support": {
+    "title": "Support",
+    "description": "Finden Sie Antworten auf häufige Fragen oder erhalten Sie Hilfe von unserer Community.",
+    "faq": {
+      "title": "Häufig Gestellte Fragen",
+      "whatIsPrompt": {
+        "question": "Was ist ein Prompt?",
+        "answer": "Ein Prompt ist eine Anweisung oder Eingabe, die Sie einem KI-Modell (wie ChatGPT, Claude, Gemini usw.) geben, um dessen Antwort zu steuern. Es ist im Wesentlichen die Art, wie Sie kommunizieren, was die KI tun soll. Gut gestaltete Prompts führen zu besseren, nützlicheren Ausgaben von KI-Systemen."
+      },
+      "whyPromptsMatter": {
+        "question": "Warum sind Prompts wichtig? Kann ich die KI nicht einfach alles fragen?",
+        "answer": "Während fortgeschrittene KI-Modelle lockere Fragen gut handhaben können, werden Prompts kritisch, wenn:\n\n• Sie KI über API in Anwendungen verwenden — Sie haben oft nur eine Chance (\"one-shot prompting\"), ohne hin- und hergehenden Dialog\n• Sie mit kleineren, kostengünstigen Modellen arbeiten, die präzisere Anweisungen benötigen\n• Sie Produktionssysteme bauen, bei denen Konsistenz und Zuverlässigkeit wichtig sind\n\nOptimierte Prompts helfen Ihnen, bessere Ergebnisse zu erzielen, Token (und Geld) zu sparen und zuverlässigere KI-gestützte Anwendungen zu erstellen."
+      },
+      "whatIsPromptschat": {
+        "question": "Was ist prompts.chat?",
+        "answer": "prompts.chat ist eine Community-getriebene Plattform, auf der Menschen KI-Prompts teilen, entdecken und sammeln. Seit über 4 Jahren teilen Benutzer hier ihre Prompt-Optimierungstechniken. Die Community hilft sich gegenseitig, ihre Prompts zu verbessern und neue Ansätze für die Arbeit mit KI-Systemen zu lernen."
+      },
+      "howToUse": {
+        "question": "Wie verwende ich Prompts von dieser Plattform?",
+        "answer": "Durchsuchen Sie einfach die Prompts, finden Sie einen, der Ihnen gefällt, und kopieren Sie ihn. Sie können ihn dann in Ihr bevorzugtes KI-Tool (ChatGPT, Claude, Gemini usw.) einfügen oder in Ihren Anwendungen über API verwenden. Viele Prompts enthalten Variablen, die Sie vor dem Kopieren anpassen können."
+      },
+      "license": {
+        "question": "Kann ich diese Prompts kommerziell nutzen?",
+        "answer": "Ja! Alle Prompts auf prompts.chat sind unter der CC0-Lizenz (Creative Commons Zero) veröffentlicht, was bedeutet, dass sie gemeinfrei sind. Sie können sie frei für jeden Zweck nutzen, modifizieren und verteilen, einschließlich kommerzieller Nutzung, ohne Namensnennung."
+      },
+      "selfHost": {
+        "question": "Kann ich diese Plattform selbst hosten?",
+        "answer": "Auf jeden Fall! prompts.chat ist vollständig Open Source. Sie können Ihre eigene private Instanz für Ihr Team oder Ihre Organisation bereitstellen. Schauen Sie sich unsere Self-Hosting-Dokumentation für Einrichtungsanweisungen an."
+      }
+    },
+    "contact": {
+      "title": "Brauchen Sie Mehr Hilfe?",
+      "description": "Wenn Sie keine Antwort auf Ihre Frage finden konnten, füllen Sie das Formular unten aus und wir helfen Ihnen auf GitHub.",
+      "form": {
+        "title": "Issue-Titel",
+        "titlePlaceholder": "Kurze Zusammenfassung Ihres Problems oder Ihrer Frage",
+        "description": "Beschreibung",
+        "descriptionPlaceholder": "Bitte beschreiben Sie Ihr Problem oder Ihre Frage im Detail..."
+      },
+      "openIssue": "GitHub Issue Öffnen"
+    }
   },
   "apiKey": {
     "title": "MCP API-Schlüssel",
