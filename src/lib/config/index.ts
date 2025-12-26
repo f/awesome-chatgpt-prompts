@@ -48,6 +48,7 @@ export interface FeaturesConfig {
 export interface Sponsor {
   name: string;
   logo: string;
+  darkLogo?: string;
   url: string;
   className?: string;
 }

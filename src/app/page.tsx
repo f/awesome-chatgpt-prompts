@@ -269,13 +269,32 @@ export default async function HomePage() {
                   rel="noopener noreferrer"
                   className="opacity-60 hover:opacity-100 transition-opacity"
                 >
-                  <Image
-                    src={sponsor.logo}
-                    alt={sponsor.name}
-                    width={120}
-                    height={40}
-                    className={`h-9 w-auto dark:invert ${sponsor.className || ''}`}
-                  />
+                  {sponsor.darkLogo ? (
+                    <>
+                      <Image
+                        src={sponsor.logo}
+                        alt={sponsor.name}
+                        width={120}
+                        height={40}
+                        className={`h-9 w-auto dark:hidden ${sponsor.className || ''}`}
+                      />
+                      <Image
+                        src={sponsor.darkLogo}
+                        alt={sponsor.name}
+                        width={120}
+                        height={40}
+                        className={`h-9 w-auto hidden dark:block ${sponsor.className || ''}`}
+                      />
+                    </>
+                  ) : (
+                    <Image
+                      src={sponsor.logo}
+                      alt={sponsor.name}
+                      width={120}
+                      height={40}
+                      className={`h-9 w-auto dark:invert ${sponsor.className || ''}`}
+                    />
+                  )}
                 </Link>
               ))}
             </div>
