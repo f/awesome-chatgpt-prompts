@@ -31,7 +31,7 @@ function parseModels(envVar: string | undefined, type: "image" | "video"): Media
     .filter(Boolean)
     .map((id) => ({
       id,
-      name: id.split("/").pop() || id,
+      name: id,
       type,
     }));
 }
