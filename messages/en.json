@@ -1172,6 +1172,8 @@
     "reset": "Reset",
     "copied": "Copied to clipboard",
     "runToPreview": "Click Run to see the prompt preview",
+    "cannotEvaluate": "This code cannot be evaluated.",
+    "onlyPromptsChat": "Only {library} imports are supported.",
     "desktopOnly": "Desktop Only",
     "desktopOnlyDescription": "The Prompt Builder requires a larger screen to work properly. Please open this page on a desktop or laptop computer.",
     "browsePrompts": "Browse Prompts"

@@ -6,7 +6,7 @@ import Editor from "@monaco-editor/react";
 import { useTheme } from "next-themes";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { Copy, Play, RotateCcw, Code2, FileJson, FileText, Video, Music, Image as ImageIcon, MessageSquare } from "lucide-react";
+import { Copy, Play, RotateCcw, Code2, FileJson, FileText, Video, Music, Image as ImageIcon, MessageSquare, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 
 // Import the actual prompts.chat library
@@ -42,6 +42,7 @@ import {
   EXAMPLE_AUDIO,
   EXAMPLE_IMAGE,
   EXAMPLE_CHAT,
+  EXAMPLE_OPENAI_CHAT,
   DEFAULT_CODE,
 } from "./examples";
 
@@ -54,6 +55,21 @@ export function PromptIde() {
   const [error, setError] = useState<string | null>(null);
   const [isRunning, setIsRunning] = useState(false);
   const [selectedApiItem, setSelectedApiItem] = useState<ApiItem | null>(null);
+
+  // Check if code has imports other than 'prompts.chat'
+  const hasExternalImports = useCallback(() => {
+    const importRegex = /^import\s+.*?from\s+['"](.+?)['"];?\s*$/gm;
+    let match;
+    while ((match = importRegex.exec(code)) !== null) {
+      const importPath = match[1];
+      if (!importPath.startsWith('prompts.chat')) {
+        return true;
+      }
+    }
+    return false;
+  }, [code]);
+
+  const cannotEvaluate = hasExternalImports();
 
   const runCode = useCallback(() => {
     setIsRunning(true);
@@ -292,7 +308,7 @@ export function PromptIde() {
           <Button
             size="sm"
             onClick={runCode}
-            disabled={isRunning}
+            disabled={isRunning || cannotEvaluate}
             className="gap-2"
           >
             <Play className="h-4 w-4" />
@@ -351,6 +367,15 @@ export function PromptIde() {
               >
                 <MessageSquare className="h-3 w-3" />
                 Chat
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="h-6 text-xs gap-1 px-2"
+                onClick={() => setCode(EXAMPLE_OPENAI_CHAT)}
+              >
+                <Sparkles className="h-3 w-3" />
+                OpenAI
               </Button>
             </div>
           </div>
@@ -439,8 +464,17 @@ export function PromptIde() {
               />
             ) : (
               <div className="flex flex-col items-center justify-center h-full text-muted-foreground">
-                <Play className="h-12 w-12 mb-4 opacity-20" />
-                <p className="text-sm">{t("runToPreview")}</p>
+                {cannotEvaluate ? (
+                  <>
+                    <Code2 className="h-12 w-12 mb-4 opacity-20" />
+                    <p className="text-sm text-center px-4">{t("cannotEvaluate")}<br />{t("onlyPromptsChat", { library: "prompts.chat" })}</p>
+                  </>
+                ) : (
+                  <>
+                    <Play className="h-12 w-12 mb-4 opacity-20" />
+                    <p className="text-sm">{t("runToPreview")}</p>
+                  </>
+                )}
               </div>
             )}
           </div>

@@ -1171,7 +1171,9 @@
     "run": "Exécuter",
     "reset": "Réinitialiser",
     "copied": "Copié dans le presse-papiers",
-    "runToPreview": "Cliquez sur Exécuter pour voir l'aperçu du prompt",
+    "runToPreview": "Cliquez sur Exécuter pour voir l'aperçu",
+    "cannotEvaluate": "Ce code ne peut pas être évalué.",
+    "onlyPromptsChat": "Seuls les imports {library} sont pris en charge.",
     "desktopOnly": "Bureau uniquement",
     "desktopOnlyDescription": "Le Prompt Builder nécessite un écran plus grand pour fonctionner correctement. Veuillez ouvrir cette page sur un ordinateur de bureau ou portable.",
     "browsePrompts": "Parcourir les Prompts"

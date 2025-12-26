@@ -1172,6 +1172,8 @@
     "reset": "重置",
     "copied": "已复制到剪贴板",
     "runToPreview": "点击运行查看提示词预览",
+    "cannotEvaluate": "此代码无法评估。",
+    "onlyPromptsChat": "仅支持 {library} 导入。",
     "desktopOnly": "仅限桌面端",
     "desktopOnlyDescription": "提示词构建器需要更大的屏幕才能正常工作。请在台式电脑或笔记本电脑上打开此页面。",
     "browsePrompts": "浏览提示词"

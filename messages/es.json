@@ -1171,7 +1171,9 @@
     "run": "Ejecutar",
     "reset": "Restablecer",
     "copied": "Copiado al portapapeles",
-    "runToPreview": "Haz clic en Ejecutar para ver la vista previa del prompt",
+    "runToPreview": "Haz clic en Ejecutar para ver la vista previa",
+    "cannotEvaluate": "Este código no puede ser evaluado.",
+    "onlyPromptsChat": "Solo se admiten importaciones de {library}.",
     "desktopOnly": "Solo escritorio",
     "desktopOnlyDescription": "El Constructor de Prompts requiere una pantalla más grande para funcionar correctamente. Por favor, abre esta página en una computadora de escritorio o portátil.",
     "browsePrompts": "Explorar Prompts"

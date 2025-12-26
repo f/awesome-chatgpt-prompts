@@ -9,6 +9,7 @@ const examples = [
   { file: 'audio.ts', export: 'EXAMPLE_AUDIO' },
   { file: 'image.ts', export: 'EXAMPLE_IMAGE' },
   { file: 'chat.ts', export: 'EXAMPLE_CHAT' },
+  { file: 'openai-chat.ts', export: 'EXAMPLE_OPENAI_CHAT' },
   { file: 'default.ts', export: 'DEFAULT_CODE' },
 ];
 

@@ -1172,6 +1172,8 @@
     "reset": "リセット",
     "copied": "クリップボードにコピーしました",
     "runToPreview": "実行をクリックしてプロンプトのプレビューを表示",
+    "cannotEvaluate": "このコードは評価できません。",
+    "onlyPromptsChat": "{library}のインポートのみがサポートされています。",
     "desktopOnly": "デスクトップ専用",
     "desktopOnlyDescription": "プロンプトビルダーは、正常に動作するために大きな画面が必要です。デスクトップまたはラップトップコンピュータでこのページを開いてください。",
     "browsePrompts": "プロンプトを閲覧"

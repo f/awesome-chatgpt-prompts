@@ -1172,6 +1172,8 @@
     "reset": "איפוס",
     "copied": "הועתק ללוח",
     "runToPreview": "לחץ על הפעל כדי לראות תצוגה מקדימה",
+    "cannotEvaluate": "לא ניתן להעריך קוד זה.",
+    "onlyPromptsChat": "נתמכים רק ייבואים של {library}.",
     "desktopOnly": "למחשב בלבד",
     "desktopOnlyDescription": "בונה הפרומפטים דורש מסך גדול יותר כדי לפעול כראוי. אנא פתח דף זה במחשב שולחני או נייד.",
     "browsePrompts": "עיין בפרומפטים"

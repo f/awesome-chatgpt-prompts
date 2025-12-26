@@ -1172,6 +1172,8 @@
     "reset": "Ripristina",
     "copied": "Copiato negli appunti",
     "runToPreview": "Clicca su Esegui per vedere l'anteprima del prompt",
+    "cannotEvaluate": "Questo codice non può essere valutato.",
+    "onlyPromptsChat": "Sono supportate solo le importazioni di {library}.",
     "desktopOnly": "Solo Desktop",
     "desktopOnlyDescription": "Il Prompt Builder richiede uno schermo più grande per funzionare correttamente. Si prega di aprire questa pagina su un computer desktop o laptop.",
     "browsePrompts": "Esplora Prompt"
