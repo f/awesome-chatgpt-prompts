@@ -16755,3 +16755,18 @@ Rules:
 
 </details>
 
+<details>
+<summary><strong>Giant Object in City</strong></summary>
+
+## Giant Object in City
+
+Contributed by [@iuzn](https://github.com/iuzn)
+
+```md
+You're in a ${location} crowd looking up at a giant monumental concrete ${object}, weathered with rust, moss and light ivy yet silver gleams break through where harsh sunlight strikes, an iconic cinematic moment frozen in time. People are taking care of their own needs in ${date}.
+
+
+```
+
+</details>
+
