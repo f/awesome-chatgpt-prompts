@@ -64,6 +64,7 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
   }, [tags, tagSearch]);
 
   const updateFilter = (key: string, value: string | null) => {
+    setFilterPending(true);
     const params = new URLSearchParams(searchParams?.toString() || "");
     if (value) {
       params.set(key, value);
@@ -75,6 +76,7 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
   };
 
   const clearFilters = () => {
+    setFilterPending(true);
     analyticsSearch.clearFilters();
     router.push("/prompts");
   };
