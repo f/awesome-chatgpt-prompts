@@ -210,7 +210,7 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
                     />
                   </>
                 )}
-                <span className="font-semibold leading-none">{branding.name}</span>
+                <span className="font-semibold leading-none mt-[2px]">{branding.name}</span>
               </Link>
             </ContextMenuTrigger>
             <ContextMenuContent>
@@ -244,7 +244,7 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
                 />
               </>
             )}
-            <span className="font-semibold leading-none">{branding.name}</span>
+            <span className="font-semibold leading-none mt-[2px]">{branding.name}</span>
           </Link>
         )}
 
