@@ -18800,3 +18800,16 @@ Analyze this text and evaluate it brutally and honestly. Don't be gentle. Pinpoi
 
 </details>
 
+<details>
+<summary><strong>Cinematic Realism</strong></summary>
+
+## Cinematic Realism
+
+Contributed by [@magejosh](https://github.com/magejosh)
+
+```md
+${subject} portrayed in a high-end cinematic realism masterpiece, physically accurate PBR lighting and shading workflow, volumetric fog layers interacting dynamically with rim light and key light, extreme clarity micro-surface details with tactile realism, cinematic depth of field emphasizing subject presence, smooth organic bokeh bloom in background highlights, controlled motion blur simulating real shutter behavior, subtle analog film grain texture, realistic lens artifacts from professional cinema optics, ray-traced reflections and refractions enhancing depth and realism, atmospheric dust and particles suspended in the air, dramatic chiaroscuro lighting composition, HDR filmic exposure with rich shadow detail, premium film camera style capture
+```
+
+</details>
+
