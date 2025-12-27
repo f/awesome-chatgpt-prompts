@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PromptList } from "@/components/prompts/prompt-list";
 import { PromptCard, type PromptCardProps } from "@/components/prompts/prompt-card";
+import { Masonry } from "@/components/ui/masonry";
 import { McpServerPopup } from "@/components/mcp/mcp-server-popup";
 import { PrivatePromptsNote } from "@/components/prompts/private-prompts-note";
 import { ActivityChartWrapper } from "@/components/user/activity-chart-wrapper";
@@ -617,11 +618,11 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
               <p className="text-muted-foreground">{isOwner ? t("noLikesOwner") : t("noLikes")}</p>
             </div>
           ) : (
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <Masonry columnCount={{ default: 1, md: 2, lg: 3 }} gap={16}>
               {likedPrompts.map((prompt: PromptCardProps["prompt"]) => (
                 <PromptCard key={prompt.id} prompt={prompt} />
               ))}
-            </div>
+            </Masonry>
           )}
         </TabsContent>
 
