@@ -7938,8 +7938,7 @@ Your task is to:
    - Target university students for academic reinforcement and exam practice.
 
 Ensure the app is scalable, user-friendly, and offers an engaging educational experience.",FALSE,TEXT,mericarac@gmail.com
-A three-panel monochromatic image,"```json
-{
+A three-panel monochromatic image,"{
   ""subject"": {
     ""description"": ""A three-panel monochromatic image. Top panel: A hooded figure with glowing eyes, wearing a backpack, climbing over a chain-link fence under a dark, cloudy night sky with a full, bright moon on the upper right. Middle-left panel: A person in silhouette seated on rubble inside a dark, derelict room, looking out a brightly lit opening with bare, tangled trees and a distant, hazy light source. Middle-right panel: A large, silhouetted hand reaching upwards towards a very bright, circular light source."",
     ""count"": ""three distinct scenes within a single image"",
@@ -8070,8 +8069,7 @@ A three-panel monochromatic image,"```json
     ""cartoon"",
     ""comic book (unless specifically for stipple effect)""
   ]
-}
-```",FALSE,STRUCTURED,senoldak
+}",FALSE,STRUCTURED,senoldak
 Interactive Quiz Application for TV Shows and Movies,"Act as a Full-Stack Developer. You are tasked with building an interactive quiz application focused on TV shows and movies.
 
 Your task is to:

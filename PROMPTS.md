@@ -13447,7 +13447,6 @@ Ensure the app is scalable, user-friendly, and offers an engaging educational ex
 Contributed by [@senoldak](https://github.com/senoldak)
 
 ```md
-```json
 {
   "subject": {
     "description": "A three-panel monochromatic image. Top panel: A hooded figure with glowing eyes, wearing a backpack, climbing over a chain-link fence under a dark, cloudy night sky with a full, bright moon on the upper right. Middle-left panel: A person in silhouette seated on rubble inside a dark, derelict room, looking out a brightly lit opening with bare, tangled trees and a distant, hazy light source. Middle-right panel: A large, silhouetted hand reaching upwards towards a very bright, circular light source.",
@@ -13580,7 +13579,6 @@ Contributed by [@senoldak](https://github.com/senoldak)
     "comic book (unless specifically for stipple effect)"
   ]
 }
-```
 ```
 
 </details>
