@@ -3,6 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
+import { useFilterContext } from "@/components/prompts/filter-context";
 
 interface PinnedCategory {
   id: string;
@@ -20,12 +21,14 @@ export function PinnedCategories({ categories, currentCategoryId }: PinnedCatego
   const router = useRouter();
   const searchParams = useSearchParams();
   const t = useTranslations("categories");
+  const { setFilterPending } = useFilterContext();
 
   if (categories.length === 0) {
     return null;
   }
 
   const handleCategoryClick = (categoryId: string) => {
+    setFilterPending(true);
     const params = new URLSearchParams(searchParams?.toString() ?? "");
     
     if (currentCategoryId === categoryId) {
@@ -40,6 +43,7 @@ export function PinnedCategories({ categories, currentCategoryId }: PinnedCatego
   };
 
   const handleClearFilter = () => {
+    setFilterPending(true);
     const params = new URLSearchParams(searchParams?.toString() ?? "");
     params.delete("category");
     params.delete("page");

@@ -261,16 +261,15 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
         </div>
       </div>
       
-      <Suspense fallback={null}>
-        <div className="mb-4">
-          <PinnedCategories 
-            categories={pinnedCategories} 
-            currentCategoryId={params.category} 
-          />
-        </div>
-      </Suspense>
-
       <FilterProvider>
+        <Suspense fallback={null}>
+          <div className="mb-4">
+            <PinnedCategories 
+              categories={pinnedCategories} 
+              currentCategoryId={params.category} 
+            />
+          </div>
+        </Suspense>
         <div className="flex flex-col lg:flex-row gap-6">
           <aside className="w-full lg:w-56 shrink-0 lg:sticky lg:top-16 lg:self-start lg:max-h-[calc(100vh-5rem)] lg:overflow-y-auto">
             <PromptFilters
