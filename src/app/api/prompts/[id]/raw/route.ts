@@ -59,8 +59,9 @@ export async function GET(
   const { id: idParam } = await params;
   const { id, format, fileType } = parseIdParam(idParam);
 
+  // Unlisted prompts are accessible via direct link (like YouTube unlisted videos)
   const prompt = await db.prompt.findFirst({
-    where: { id, deletedAt: null, isPrivate: false, isUnlisted: false },
+    where: { id, deletedAt: null, isPrivate: false },
     select: { title: true, description: true, content: true, type: true },
   });
 

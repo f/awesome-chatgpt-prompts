@@ -149,10 +149,8 @@ export default async function PromptPage({ params }: PromptPageProps) {
     notFound();
   }
 
-  // Check if user can view unlisted prompt (only owner and admins can see)
-  if (prompt.isUnlisted && prompt.authorId !== session?.user?.id && session?.user?.role !== "ADMIN") {
-    notFound();
-  }
+  // Unlisted prompts are accessible via direct link (like YouTube unlisted videos)
+  // They just don't appear in public listings, search results, or feeds
 
   const isOwner = session?.user?.id === prompt.authorId;
   const isAdmin = session?.user?.role === "ADMIN";
