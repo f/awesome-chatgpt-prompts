@@ -226,12 +226,6 @@ export default async function PromptPage({ params }: PromptPageProps) {
               )}
             </div>
             <div className="flex items-center gap-2 shrink-0">
-              {prompt.contributors.length > 0 && (
-                <div className="hidden sm:flex items-center gap-1.5 text-sm text-muted-foreground">
-                  <Users className="h-4 w-4" />
-                  <span>{prompt.contributors.length + 1} {t("contributors")}</span>
-                </div>
-              )}
               {isOwner && (
                 <>
                   <Button variant="outline" size="icon" asChild className="sm:hidden">
@@ -309,6 +303,12 @@ export default async function PromptPage({ params }: PromptPageProps) {
             <Link href={`/@${prompt.author.username}`} className="hover:underline">@{prompt.author.username}</Link>
           )}
         </div>
+        {prompt.contributors.length > 0 && (
+          <div className="flex items-center gap-1.5">
+            <Users className="h-4 w-4" />
+            <span>{prompt.contributors.length + 1} {t("contributors")}</span>
+          </div>
+        )}
         <AnimatedDate 
           date={prompt.createdAt} 
           relativeText={formatDistanceToNow(prompt.createdAt, locale)} 
