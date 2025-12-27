@@ -602,7 +602,13 @@
       "noParent": "Yok (Ana Kategori)",
       "parentHelp": "Ana kategori oluşturmak için boş bırakın veya alt kategori oluşturmak için bir üst kategori seçin",
       "rootCategory": "Ana",
-      "subcategories": "alt kategori"
+      "subcategories": "alt kategori",
+      "pin": "Promptlar Sayfasına Sabitle",
+      "unpin": "Promptlar Sayfasından Kaldır",
+      "pinned": "Kategori sabitlendi",
+      "unpinned": "Kategori sabitlemesi kaldırıldı",
+      "pinnedBadge": "Sabitlenmiş",
+      "pinnedLabel": "Promptlar sayfasına sabitle (hızlı filtre olarak göster)"
     },
     "tags": {
       "title": "Etiket Yönetimi",

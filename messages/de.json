@@ -602,7 +602,13 @@
       "noParent": "Keine (Stammkategorie)",
       "parentHelp": "Leer lassen, um eine Stammkategorie zu erstellen, oder ein Elternteil auswählen, um eine Unterkategorie zu erstellen",
       "rootCategory": "Stamm",
-      "subcategories": "Unterkategorien"
+      "subcategories": "Unterkategorien",
+      "pin": "An Prompts-Seite anheften",
+      "unpin": "Von Prompts-Seite lösen",
+      "pinned": "Kategorie angeheftet",
+      "unpinned": "Kategorie gelöst",
+      "pinnedBadge": "Angeheftet",
+      "pinnedLabel": "An Prompts-Seite anheften (als Schnellfilter anzeigen)"
     },
     "tags": {
       "title": "Tag-Verwaltung",

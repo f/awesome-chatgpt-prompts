@@ -602,7 +602,13 @@
       "noParent": "없음 (루트 카테고리)",
       "parentHelp": "루트 카테고리를 만들려면 비워두고, 하위 카테고리를 만들려면 상위를 선택하세요",
       "rootCategory": "루트",
-      "subcategories": "하위 카테고리"
+      "subcategories": "하위 카테고리",
+      "pin": "프롬프트 페이지에 고정",
+      "unpin": "프롬프트 페이지에서 고정 해제",
+      "pinned": "카테고리 고정됨",
+      "unpinned": "카테고리 고정 해제됨",
+      "pinnedBadge": "고정됨",
+      "pinnedLabel": "프롬프트 페이지에 고정 (빠른 필터로 표시)"
     },
     "tags": {
       "title": "태그 관리",

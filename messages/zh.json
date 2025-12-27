@@ -602,7 +602,13 @@
       "noParent": "无（根分类）",
       "parentHelp": "留空以创建根分类，或选择父级以创建子分类",
       "rootCategory": "根",
-      "subcategories": "个子分类"
+      "subcategories": "个子分类",
+      "pin": "固定到提示词页面",
+      "unpin": "从提示词页面取消固定",
+      "pinned": "分类已固定",
+      "unpinned": "分类已取消固定",
+      "pinnedBadge": "已固定",
+      "pinnedLabel": "固定到提示词页面（显示为快速筛选）"
     },
     "tags": {
       "title": "标签管理",

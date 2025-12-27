@@ -602,7 +602,13 @@
       "noParent": "Ninguna (Categoría Raíz)",
       "parentHelp": "Deja vacío para crear una categoría raíz, o selecciona un padre para crear una subcategoría",
       "rootCategory": "Raíz",
-      "subcategories": "subcategorías"
+      "subcategories": "subcategorías",
+      "pin": "Fijar en Página de Prompts",
+      "unpin": "Desfijar de Página de Prompts",
+      "pinned": "Categoría fijada",
+      "unpinned": "Categoría desfijada",
+      "pinnedBadge": "Fijado",
+      "pinnedLabel": "Fijar en página de prompts (mostrar como filtro rápido)"
     },
     "tags": {
       "title": "Gestión de Etiquetas",

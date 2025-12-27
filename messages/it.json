@@ -602,7 +602,13 @@
       "noParent": "Nessuna (Categoria Principale)",
       "parentHelp": "Lascia vuoto per creare una categoria principale, o seleziona un genitore per creare una sottocategoria",
       "rootCategory": "Principale",
-      "subcategories": "sottocategorie"
+      "subcategories": "sottocategorie",
+      "pin": "Fissa alla Pagina Prompts",
+      "unpin": "Rimuovi dalla Pagina Prompts",
+      "pinned": "Categoria fissata",
+      "unpinned": "Categoria rimossa",
+      "pinnedBadge": "Fissato",
+      "pinnedLabel": "Fissa alla pagina prompts (mostra come filtro rapido)"
     },
     "tags": {
       "title": "Gestione Tag",

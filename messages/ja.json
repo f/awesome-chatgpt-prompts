@@ -602,7 +602,13 @@
       "noParent": "なし（ルートカテゴリー）",
       "parentHelp": "空のままでルートカテゴリーを作成、または親を選択してサブカテゴリーを作成",
       "rootCategory": "ルート",
-      "subcategories": "サブカテゴリー"
+      "subcategories": "サブカテゴリー",
+      "pin": "プロンプトページに固定",
+      "unpin": "プロンプトページから固定解除",
+      "pinned": "カテゴリーを固定しました",
+      "unpinned": "カテゴリーの固定を解除しました",
+      "pinnedBadge": "固定",
+      "pinnedLabel": "プロンプトページに固定（クイックフィルターとして表示）"
     },
     "tags": {
       "title": "タグ管理",

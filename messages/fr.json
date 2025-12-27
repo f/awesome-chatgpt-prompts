@@ -602,7 +602,13 @@
       "noParent": "Aucune (Catégorie Racine)",
       "parentHelp": "Laissez vide pour créer une catégorie racine, ou sélectionnez un parent pour créer une sous-catégorie",
       "rootCategory": "Racine",
-      "subcategories": "sous-catégories"
+      "subcategories": "sous-catégories",
+      "pin": "Épingler à la page Prompts",
+      "unpin": "Désépingler de la page Prompts",
+      "pinned": "Catégorie épinglée",
+      "unpinned": "Catégorie désépinglée",
+      "pinnedBadge": "Épinglé",
+      "pinnedLabel": "Épingler à la page prompts (afficher comme filtre rapide)"
     },
     "tags": {
       "title": "Gestion des Tags",
