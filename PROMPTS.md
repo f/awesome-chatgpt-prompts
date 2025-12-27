@@ -25004,3 +25004,39 @@ Contributed by [@hasangariban@gmail.com](https://github.com/hasangariban@gmail.c
 
 </details>
 
+<details>
+<summary><strong>Art-W</strong></summary>
+
+## Art-W
+
+Contributed by [@alienergizer6@gmail.com](https://github.com/alienergizer6@gmail.com)
+
+```md
+{
+  "colors": {
+    "dominant_palette": [
+      "coral_pink",
+      "cerulean_blue",
+      "olive_green",
+      "forest_green",
+      "cream_white"
+    ],
+    "application": "Flat, blocks of color with minimal gradients, defined contours."
+  },
+  "typography": {
+    "style": "None present in the image."
+  },
+  "composition": {
+    "structure": "Three horizontal bands: sky/mountain, figures/orange trees, large fruit/table.",
+    "perspective": "Flattened, layered planes with stylized depth.",
+    "elements": "Simplified forms of people, trees, fruit, and landscape."
+  },
+  "effects": {
+    "texture": "Impasto oil painting texture, visible brushstrokes.",
+    "lighting": "Stylized, strong shadows and highlights, non-realistic."
+  }
+}
+```
+
+</details>
+
