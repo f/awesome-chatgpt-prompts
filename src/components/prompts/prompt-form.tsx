@@ -11,6 +11,7 @@ import Link from "next/link";
 import { VariableToolbar } from "./variable-toolbar";
 import { VariableWarning } from "./variable-warning";
 import { VariableHint } from "./variable-hint";
+import { StructuredFormatWarning } from "./structured-format-warning";
 import { ContributorSearch } from "./contributor-search";
 import { PromptBuilder, type PromptBuilderHandle } from "./prompt-builder";
 import { MediaGenerator } from "./media-generator";
@@ -1033,6 +1034,16 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
           <VariableWarning
             content={promptContent}
             onConvert={(converted) => form.setValue("content", converted)}
+          />
+
+          {/* Structured format detection warning */}
+          <StructuredFormatWarning
+            content={promptContent}
+            isStructuredInput={isStructuredInput}
+            onSwitchToStructured={(format) => {
+              form.setValue("structuredFormat", format);
+              form.setValue("type", "TEXT");
+            }}
           />
         </div>
 

@@ -342,7 +342,10 @@
     "translated": "تمت ترجمة المحتوى",
     "translationFailed": "فشلت الترجمة",
     "alreadyTranslated": "تمت الترجمة بالفعل",
-    "learnHowToWritePrompts": "تعلم كيفية كتابة أوامر فعالة ←"
+    "learnHowToWritePrompts": "تعلم كيفية كتابة أوامر فعالة ←",
+    "structuredFormatDetected": "تم اكتشاف تنسيق {format}",
+    "structuredFormatWarningDescription": "يبدو أن محتوى الأمر الخاص بك يشبه بيانات منظمة. فكر في التبديل إلى الوضع المنظم للحصول على تمييز بنائي وتحقق أفضل.",
+    "switchToStructured": "التبديل إلى {format}"
   },
   "changeRequests": {
     "title": "طلبات التغيير",

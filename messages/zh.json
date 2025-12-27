@@ -342,7 +342,10 @@
     "translated": "内容已翻译",
     "translationFailed": "翻译失败",
     "alreadyTranslated": "已翻译",
-    "learnHowToWritePrompts": "学习如何写出有效的提示词 →"
+    "learnHowToWritePrompts": "学习如何写出有效的提示词 →",
+    "structuredFormatDetected": "检测到 {format} 格式",
+    "structuredFormatWarningDescription": "您的提示词内容看起来像结构化数据。考虑切换到结构化模式以获得更好的语法高亮和验证。",
+    "switchToStructured": "切换到 {format}"
   },
   "changeRequests": {
     "title": "变更请求",

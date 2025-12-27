@@ -342,7 +342,10 @@
     "translated": "İçerik çevrildi",
     "translationFailed": "Çeviri başarısız oldu",
     "alreadyTranslated": "Zaten çevrildi",
-    "learnHowToWritePrompts": "Etkili promptlar nasıl yazılır öğrenin →"
+    "learnHowToWritePrompts": "Etkili promptlar nasıl yazılır öğrenin →",
+    "structuredFormatDetected": "{format} formatı algılandı",
+    "structuredFormatWarningDescription": "Prompt içeriğiniz yapılandırılmış veriye benziyor. Daha iyi sözdizimi vurgulama ve doğrulama için yapılandırılmış moda geçmeyi düşünün.",
+    "switchToStructured": "{format}'a geç"
   },
   "changeRequests": {
     "title": "Değişiklik İstekleri",

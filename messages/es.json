@@ -342,7 +342,10 @@
     "translated": "Contenido traducido",
     "translationFailed": "Error en la traducción",
     "alreadyTranslated": "Ya traducido",
-    "learnHowToWritePrompts": "Aprende a escribir prompts efectivos →"
+    "learnHowToWritePrompts": "Aprende a escribir prompts efectivos →",
+    "structuredFormatDetected": "Formato {format} detectado",
+    "structuredFormatWarningDescription": "El contenido de tu prompt parece ser datos estructurados. Considera cambiar al modo estructurado para mejor resaltado de sintaxis y validación.",
+    "switchToStructured": "Cambiar a {format}"
   },
   "changeRequests": {
     "title": "Solicitudes de Cambio",

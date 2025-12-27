@@ -342,7 +342,10 @@
     "translated": "התוכן תורגם",
     "translationFailed": "התרגום נכשל",
     "alreadyTranslated": "כבר תורגם",
-    "learnHowToWritePrompts": "למדו איך לכתוב פרומפטים יעילים ←"
+    "learnHowToWritePrompts": "למדו איך לכתוב פרומפטים יעילים ←",
+    "structuredFormatDetected": "זוהה פורמט {format}",
+    "structuredFormatWarningDescription": "תוכן הפרומפט שלך נראה כמו נתונים מובנים. שקול לעבור למצב מובנה להדגשת תחביר ואימות טובים יותר.",
+    "switchToStructured": "לעבור ל-{format}"
   },
   "changeRequests": {
     "title": "בקשות שינוי",

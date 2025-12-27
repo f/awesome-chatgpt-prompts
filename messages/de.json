@@ -342,7 +342,10 @@
     "translated": "Inhalt übersetzt",
     "translationFailed": "Übersetzung fehlgeschlagen",
     "alreadyTranslated": "Bereits übersetzt",
-    "learnHowToWritePrompts": "Lernen Sie, effektive Prompts zu schreiben →"
+    "learnHowToWritePrompts": "Lernen Sie, effektive Prompts zu schreiben →",
+    "structuredFormatDetected": "{format}-Format erkannt",
+    "structuredFormatWarningDescription": "Ihr Prompt-Inhalt sieht nach strukturierten Daten aus. Erwägen Sie den Wechsel in den strukturierten Modus für bessere Syntaxhervorhebung und Validierung.",
+    "switchToStructured": "Zu {format} wechseln"
   },
   "changeRequests": {
     "title": "Änderungsanfragen",
