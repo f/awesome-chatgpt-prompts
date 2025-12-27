@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { Calendar } from "lucide-react";
 
 interface AnimatedDateProps {
@@ -20,19 +20,11 @@ export function AnimatedDate({ date, relativeText, locale = "en" }: AnimatedDate
     minute: "2-digit",
   }).format(date);
 
-  const handleClick = useCallback(() => {
-    if (showExact) return;
-    
-    setShowExact(true);
-    setTimeout(() => {
-      setShowExact(false);
-    }, 2000);
-  }, [showExact]);
-
   return (
-    <button
-      onClick={handleClick}
-      className="flex items-center gap-1 hover:text-foreground transition-colors cursor-pointer"
+    <div
+      onMouseEnter={() => setShowExact(true)}
+      onMouseLeave={() => setShowExact(false)}
+      className="flex items-center gap-1 cursor-default"
     >
       <Calendar className="h-4 w-4" />
       <span className="relative overflow-hidden h-5 text-left">
@@ -51,6 +43,6 @@ export function AnimatedDate({ date, relativeText, locale = "en" }: AnimatedDate
           {exactDate}
         </span>
       </span>
-    </button>
+    </div>
   );
 }
