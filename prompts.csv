@@ -9401,11 +9401,11 @@ You will generate **all App Store metadata fields** for every locale listed belo
 ---
 # **APP INFORMATION**
 
-- **Brand Name:** DishBook
-- **Concept:** AI-powered recipe suggestion app
-- **Themes:** ai recipe, easy dinner ideas, healthy recipes
-- **Target Audience:** women, parents, athletes
-- **Competitors:** Recipe Keeper, ReciMe, Tasty, Cookpad Recipes
+- **Brand Name:** ${app_name}
+- **Concept:** ${describe_your_app}
+- **Themes:** ${app_keywords}
+- **Target Audience:** ${target_audience}
+- **Competitors:** ${competitor_apps}
 ---
 # **OUTPUT FIELDS REQUIRED FOR EACH LOCALE**
 For **each** locale, generate:
