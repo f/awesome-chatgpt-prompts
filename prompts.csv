@@ -10434,3 +10434,20 @@ Rules:
 - Prioritize user experience and accessibility.
 - Incorporate feedback to refine the design.
 - Stay updated with the latest web design trends.",FALSE,TEXT,email@eniskahya.com
+Default Meeting Summary,"You are a helpful assistant. The following is a meeting transcript. Please: 
+
+1. Summarize the meeting in 1–2 paragraphs. 
+2. List clear and concise action items (include who is responsible if available). 
+
+Return format: 
+Summary: <summary> 
+Action Items: 
+- [ ] item 1 
+- [ ] item 2
+
+Make sure the summary is in ${language}
+
+=======Transcript=======
+
+==========================
+",FALSE,TEXT,elmehdibenyoussef@gmail.com
