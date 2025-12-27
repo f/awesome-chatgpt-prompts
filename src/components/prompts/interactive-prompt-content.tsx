@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import { RunPromptButton } from "./run-prompt-button";
 import { TranslateButton } from "./translate-button";
 import { DownloadPromptDropdown } from "./download-prompt-dropdown";
+import { ShareDropdown } from "./share-dropdown";
 import { CodeView } from "@/components/ui/code-view";
 import { CodeEditor } from "@/components/ui/code-editor";
 import { prettifyJson } from "@/lib/format";
@@ -32,6 +33,7 @@ interface InteractivePromptContentProps {
   promptId?: string;
   promptSlug?: string;
   promptType?: string;
+  shareTitle?: string;
 }
 
 // Parse ${variablename:defaultvalue} or ${variablename} patterns
@@ -152,7 +154,8 @@ export function InteractivePromptContent({
   parentCategoryName,
   promptId,
   promptSlug,
-  promptType
+  promptType,
+  shareTitle
 }: InteractivePromptContentProps) {
   const t = useTranslations("common");
   const [copied, setCopied] = useState(false);
@@ -278,6 +281,7 @@ export function InteractivePromptContent({
             </div>
             <div className="flex items-center gap-2">
               {promptId && <DownloadPromptDropdown promptId={promptId} promptSlug={promptSlug} promptType={promptType} />}
+              {shareTitle && <ShareDropdown title={shareTitle} />}
               <Button variant="ghost" size="sm" onClick={copyToClipboard}>
                 {copied ? (
                   <Check className="h-4 w-4 text-green-500" />
@@ -312,14 +316,7 @@ export function InteractivePromptContent({
             </div>
             <div className="flex items-center gap-2">
               {promptId && <DownloadPromptDropdown promptId={promptId} promptSlug={promptSlug} promptType={promptType} />}
-              <RunPromptButton 
-                content={displayContent}
-                unfilledVariables={unfilledVariables}
-                onVariablesFilled={handleVariablesFilled}
-                getContentWithVariables={getContentWithVariables}
-                categoryName={categoryName}
-                parentCategoryName={parentCategoryName}
-              />
+              {shareTitle && <ShareDropdown title={shareTitle} />}
               <Button variant="ghost" size="sm" onClick={copyToClipboard}>
                 {copied ? (
                   <Check className="h-4 w-4 text-green-500" />
@@ -327,6 +324,15 @@ export function InteractivePromptContent({
                   <Copy className="h-4 w-4" />
                 )}
               </Button>
+              <RunPromptButton 
+                content={displayContent}
+                unfilledVariables={unfilledVariables}
+                onVariablesFilled={handleVariablesFilled}
+                getContentWithVariables={getContentWithVariables}
+                categoryName={categoryName}
+                parentCategoryName={parentCategoryName}
+                emphasized
+              />
             </div>
           </div>
           <CodeView 
@@ -350,14 +356,7 @@ export function InteractivePromptContent({
           </div>
           <div className="flex items-center gap-2">
             {promptId && <DownloadPromptDropdown promptId={promptId} promptSlug={promptSlug} promptType={promptType} />}
-            <RunPromptButton 
-              content={displayedContent}
-              unfilledVariables={unfilledVariables}
-              onVariablesFilled={handleVariablesFilled}
-              getContentWithVariables={getContentWithVariables}
-              categoryName={categoryName}
-              parentCategoryName={parentCategoryName}
-            />
+            {shareTitle && <ShareDropdown title={shareTitle} />}
             <Button variant="ghost" size="sm" onClick={copyToClipboard}>
               {copied ? (
                 <Check className="h-4 w-4 text-green-500" />
@@ -365,6 +364,15 @@ export function InteractivePromptContent({
                 <Copy className="h-4 w-4" />
               )}
             </Button>
+            <RunPromptButton 
+              content={displayedContent}
+              unfilledVariables={unfilledVariables}
+              onVariablesFilled={handleVariablesFilled}
+              getContentWithVariables={getContentWithVariables}
+              categoryName={categoryName}
+              parentCategoryName={parentCategoryName}
+              emphasized
+            />
           </div>
         </div>
         <pre className="whitespace-pre-wrap text-sm bg-muted p-4 rounded-lg font-mono border">
@@ -396,14 +404,7 @@ export function InteractivePromptContent({
               </Button>
             )}
             {promptId && <DownloadPromptDropdown promptId={promptId} promptSlug={promptSlug} promptType={promptType} />}
-            <RunPromptButton 
-              content={getFinalContent()}
-              unfilledVariables={unfilledVariables}
-              onVariablesFilled={handleVariablesFilled}
-              getContentWithVariables={getContentWithVariables}
-              categoryName={categoryName}
-              parentCategoryName={parentCategoryName}
-            />
+            {shareTitle && <ShareDropdown title={shareTitle} />}
             <Button variant="ghost" size="sm" onClick={copyToClipboard}>
               {copied ? (
                 <Check className="h-4 w-4 text-green-500" />
@@ -411,6 +412,15 @@ export function InteractivePromptContent({
                 <Copy className="h-4 w-4" />
               )}
             </Button>
+            <RunPromptButton 
+              content={getFinalContent()}
+              unfilledVariables={unfilledVariables}
+              onVariablesFilled={handleVariablesFilled}
+              getContentWithVariables={getContentWithVariables}
+              categoryName={categoryName}
+              parentCategoryName={parentCategoryName}
+              emphasized
+            />
           </div>
         </div>
         {/* Variable form */}
@@ -500,14 +510,7 @@ export function InteractivePromptContent({
             </Button>
           )}
           {promptId && <DownloadPromptDropdown promptId={promptId} promptSlug={promptSlug} promptType={promptType} />}
-          <RunPromptButton 
-            content={getFinalContent()}
-            unfilledVariables={unfilledVariables}
-            onVariablesFilled={handleVariablesFilled}
-            getContentWithVariables={getContentWithVariables}
-            categoryName={categoryName}
-            parentCategoryName={parentCategoryName}
-          />
+          {shareTitle && <ShareDropdown title={shareTitle} />}
           <Button variant="ghost" size="sm" onClick={copyToClipboard}>
             {copied ? (
               <Check className="h-4 w-4 text-green-500" />
@@ -515,6 +518,15 @@ export function InteractivePromptContent({
               <Copy className="h-4 w-4" />
             )}
           </Button>
+          <RunPromptButton 
+            content={getFinalContent()}
+            unfilledVariables={unfilledVariables}
+            onVariablesFilled={handleVariablesFilled}
+            getContentWithVariables={getContentWithVariables}
+            categoryName={categoryName}
+            parentCategoryName={parentCategoryName}
+            emphasized
+          />
         </div>
       </div>
       {/* Variable form for text prompts */}

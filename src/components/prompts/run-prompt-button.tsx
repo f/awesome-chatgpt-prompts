@@ -153,6 +153,7 @@ interface RunPromptButtonProps {
   promptId?: string;
   categoryName?: string;
   parentCategoryName?: string;
+  emphasized?: boolean;
 }
 
 // Check if category or parent category suggests code-related content
@@ -179,7 +180,8 @@ export function RunPromptButton({
   getContentWithVariables,
   promptId,
   categoryName,
-  parentCategoryName
+  parentCategoryName,
+  emphasized = false
 }: RunPromptButtonProps) {
   const t = useTranslations("prompts");
   const tCommon = useTranslations("common");
@@ -372,7 +374,7 @@ export function RunPromptButton({
       {isMobile ? (
         <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
           <SheetTrigger asChild>
-            <Button variant={variant} size={size} className={className}>
+            <Button variant={emphasized ? undefined : variant} size={size} className={emphasized ? `bg-green-600 hover:bg-green-700 text-white ${className || ""}` : className}>
               <Play className="h-4 w-4" />
               {size !== "icon" && <span className="ml-1.5">{t("run")}</span>}
             </Button>
@@ -393,7 +395,7 @@ export function RunPromptButton({
         /* Desktop: Dropdown */
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant={variant} size={size} className={className}>
+            <Button variant={emphasized ? undefined : variant} size={size} className={emphasized ? `bg-green-600 hover:bg-green-700 text-white ${className || ""}` : className}>
               <Play className="h-4 w-4" />
               {size !== "icon" && <span className="ml-1.5">{t("run")}</span>}
             </Button>
