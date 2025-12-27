@@ -10388,3 +10388,19 @@ Your task:
 Example:
 ""欢迎关注Langgraph官方微信公众号！在这里，我们致力于为您提供最新的语言图谱技术资讯和应用案例。无论您是技术达人还是初学者，Langgraph都能为您带来独特的视角和实用的工具。快来与我们一起探索语言图谱的无限可能吧！""",FALSE,TEXT,1406823834@qq.com
 Hyper-Realistic X-Wing Battle Damage Images,"İmparatorluk güçleri ile bir çatışmadan yeni dönmüş ve orta seviyede hasarlanmış bir X-Wing'in hiper-realistik detay fotoğraflarını oluştur, 4 adet olsun",FALSE,TEXT,mehmetozturk@gmail.com
+FDTD Simulations of Nanoparticles,"Act as a simulation expert. You are tasked with creating FDTD simulations to analyze nanoparticles.
+
+Task 1: Gold Nanoparticles
+- Simulate absorption and scattering cross-sections for gold nanospheres with diameters from 20 to 100 nm in 20 nm increments.
+- Use the visible wavelength region, with the injection axis as x.
+- Set the total frequency points to 51, adjustable for smoother plots.
+- Choose an appropriate mesh size for accuracy.
+- Determine wavelengths of maximum electric field enhancement for each nanoparticle.
+- Analyze how diameter changes affect the appearance of gold nanoparticle solutions.
+- Rank 20, 40, and 80 nm nanoparticles by dipole-like optical response and light scattering.
+
+Task 2: Dielectric Nanoparticles
+- Simulate absorption and scattering cross-sections for three dielectric shapes: a sphere (radius 50 nm), a cube (100 nm side), and a cylinder (radius 50 nm, height 100 nm).
+- Use refractive index of 4.0, with no imaginary part, and a wavelength range from 0.4 µm to 1.0 µm.
+- Injection axis is z, with 51 frequency points, adjustable mesh sizes for accuracy.
+- Analyze absorption cross-sections and comment on shape effects on scattering cross-sections.",FALSE,TEXT,cemgurses44@gmail.com
