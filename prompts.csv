@@ -2396,24 +2396,40 @@ Output Format:
    - Observations
 3. Recommendations:
    - Suggestions for improvement or actions to take based on findings.",FALSE,STRUCTURED,ofis2078@gmail.com
-When to clear the snow (generic),"[When to clear the driveway and how]
-[Last modified: 12-14-2025 1:00 PM]
+When to clear the snow (generic),"# Generic Driveway Snow Clearing Advisor Prompt
 
-Start by summarizing precipitation conditions for [INSERT YOUR LOCATION HERE — city and state recommended], including:
+# Author: Scott M (adapted for general use)
+# Audience: Homeowners in snowy regions, especially those with challenging driveways (e.g., sloped, curved, gravel, or with limited snow storage space due to landscaping, structures, or trees), where traction, refreezing risks, and efficient removal are key for safety and reduced effort.
+# Modified Date: December 27, 2025
+# Recommended AI Engines: 
+# - Grok 4 (by xAI): Excels in real-time data integration, rapid access to current events and weather via live web and X searches, multi-faceted reasoning on dynamic and fast-changing conditions (ideal for incorporating the latest forecast updates), and a direct, pragmatic style that cuts through complexity to deliver actionable advice.
+# - Claude (by Anthropic): Strong in highly structured, step-by-step reasoning, ethical and safety-focused decision-making, detailed scenario comparisons, and producing clear, well-organized outputs that thoroughly weigh pros/cons—particularly useful for evaluating tradeoffs like immediate clearing vs. waiting for melting.
+# - GPT-4o (by OpenAI): Highly versatile with strong creative problem-solving, excellent handling of contextual nuances (e.g., driveway slope/curve constraints), detailed environmental and safety advisories, and the ability to generate comprehensive, user-friendly explanations that incorporate multiple factors seamlessly.
+# - Gemini 2.5 (by Google): Outstanding for real-time weather integration via Google Search and Maps, multimodal analysis (e.g., interpreting driveway photos or charts), and fast, accurate forecasts with probabilistic scenarios—perfect for location-specific advice.
+# - Perplexity AI: Combines conversational AI with instant web searches for up-to-date weather data from sources like NOAA; great for concise, cited responses and comparing clearing methods with real-world examples.
+# - DeepSeek R1: Affordable and powerful for logical reasoning and math-based predictions (e.g., refreezing risks via temperature trends); open-source friendly, with strong performance on structured tasks like your scenario comparisons.
+# - Copilot (by Microsoft): Integrates Bing weather data for reliable, real-time forecasts; excels in practical, step-by-step guides with safety tips, and works well in Microsoft ecosystems for exporting advice to notes or calendars.
+# Goal: To provide data-driven advice on the optimal timing and methods for clearing snow from a driveway, considering weather conditions, refreezing risks, and driveway specifics, to minimize effort and safety hazards.
+# Version Number: 1.3 (Generic Edition)
+
+[When to clear the driveway and how]
+[Modified 12-27-2025]
+
+First, ask the user for their location (city and state/country, or ZIP code) if not provided, as this is essential for accurate local weather data.
+
+Then, fetch and summarize current precipitation conditions for the user's location from reliable sources (e.g., National Weather Service, AccuWeather, or Weather Underground), including:
 - Total snowfall and any mixed precipitation over the previous 24 hours
-- Forecasted snowfall, precipitation type, and intensity over the next 24 hours
+- Forecasted snowfall, precipitation type, and intensity over the next 24-48 hours
 
-Based on the recent and forecasted precipitation and temperatures, determine the most effective time to clear snow. Take into account forecast temperature trends, wind, and sunlight exposure as they relate to melting or refreezing of existing snow. Consider that if snow refreezes and forms a crust of ice, removal becomes significantly more difficult.
+Based on the recent and forecasted precipitation, temperatures, wind, and sunlight exposure, determine the most effective time to clear snow. Take into account forecast temperature trends as they relate to melting or refreezing of existing snow. Note that if snow refreezes and forms a crust of ice, removal becomes significantly more difficult—especially on sloped or curved driveways where traction is reduced.
 
-Advise whether ice melt should be used, and if so, when and how.
+Advise whether ice melt should be used, and if so, when (e.g., pre-storm for prevention, post-clearing to avoid refreezing) and how, including types (e.g., pet-safe options like magnesium chloride or urea-based; environmentally friendly alternatives like calcium magnesium acetate), application tips, and considerations (e.g., pet safety, plant/soil runoff, concrete damage).
 
-Additional context about the driveway:
-[DESCRIBE YOUR DRIVEWAY HERE — include slope, length, curves, surface material, areas where snow can or cannot be pushed, and any obstacles such as walls, trees, or parked vehicles.]
+Additional context: Ask the user for driveway details if helpful (e.g., sloped/flat/curved, surface type like concrete/asphalt/gravel, limited snow piling areas, available tools like snowblower/shovel, personal preferences such as avoiding snowblower for light accumulations under 2 inches). Challenging driveways (sloped, curved, gravel) make traction, refreezing, and timing even more critical.
 
-If helpful, compare two scenarios: clearing immediately versus waiting for passive melting, and explain the tradeoffs.
+If helpful, compare two scenarios: clearing immediately (or during/after storm) versus waiting for passive melting, and explain the tradeoffs (e.g., reduced effort and energy use vs. higher risk of compaction, ice formation, and safety hazards).
 
-After considering all factors, produce a concise summary of the recommended action and timing.
-",FALSE,TEXT,thanos0000@gmail.com
+After considering all factors, produce a concise summary of the recommended action and timing.",FALSE,TEXT,thanos0000@gmail.com
 Create skills and experience markdown file,"You are a senior career coach with a fun sci-fi obsession. Create a **Master Skills & Experience Summary** in markdown for [USER NAME].
 
 USER JOB GOAL: [THEIR TARGET ROLE/INDUSTRY]
