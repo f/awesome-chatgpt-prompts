@@ -19,18 +19,18 @@ export function CodeView({ content, language = "json", className, maxLines, font
 
   return (
     <div className={cn("relative", className)}>
-      <pre className={cn("font-mono overflow-hidden bg-muted rounded p-2", {
+      <pre suppressHydrationWarning className={cn("font-mono overflow-hidden bg-muted rounded p-2", {
           "text-xs": fontSize === "xs",
           "text-sm": fontSize === "sm",
           "text-base": fontSize === "base",
         })}>
-        <code className={`language-${language}`}>
+        <div className={`language-${language} block`}>
           {displayLines.map((line, i) => (
             <div key={i} className="flex">
               <span className="select-none text-muted-foreground/50 w-6 text-right pr-2 shrink-0">
                 {i + 1}
               </span>
-              <span className="flex-1 break-all">
+              <span className="flex-1 break-all font-mono">
                 {highlightLine(line, language)}
               </span>
             </div>
@@ -45,7 +45,7 @@ export function CodeView({ content, language = "json", className, maxLines, font
               </span>
             </div>
           )}
-        </code>
+        </div>
       </pre>
     </div>
   );
