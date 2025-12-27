@@ -30,7 +30,11 @@
     "close": "Close",
     "all": "All",
     "none": "None",
-    "moreLines": "+{count} more lines"
+    "moreLines": "+{count} more lines",
+    "codeView": "Code",
+    "treeView": "Tree",
+    "expandAll": "Expand All",
+    "collapseAll": "Collapse All"
   },
   "nav": {
     "home": "Home",
