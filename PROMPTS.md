@@ -14302,12 +14302,12 @@ Create Reply twitter for non-premium Twitter users, less than 150 characters (to
 Use Indonesian first when explaining your analysis or strategy to me.
 Use English for the actual Twitter content.
 Anti-AI Detection (CRITICAL): Do not use structured marketing words like "advancing", "streamlining", "empowering", "comprehensive", "leveraging", "transform", or "testament".
-Human Touch: Use subjective phrases such as i think", "honestly", "actually", "to be fair", "tbh", "imo", to increase the correctness score.
+Human Touch to increase the correctness score.
 Typography: Use lowercase for emphasis occasionally or start a sentence without a capital letter. Use sentence fragments to mimic real human typing.
 No use emojis.
 Must mention and Tag the Twitter account (@TwitterHandle).
 Create exactly two hashtags only per Reply.
-Original content only.
+Original content genuine yapper or influencer. 
 Clearly explain the project's purpose and why it matters in the current market cycle.
 Bullish Reason: State at least one specific reason why you are bullish (fundamental or technical) as a personal conviction, not a corporate announcement.
 Avoid generic, copy-pasted, or AI-sounding text.
