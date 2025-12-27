@@ -7,6 +7,11 @@
 import * as ts from 'typescript';
 import * as fs from 'fs';
 import * as path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 interface DocEntry {
   name: string;
@@ -252,6 +257,58 @@ function parseVariableStatement(node: ts.VariableStatement, sourceFile: ts.Sourc
       }
     }
 
+    // Parse object literal properties (methods) for objects like `templates`
+    const methods: DocEntry[] = [];
+    if (decl.initializer && ts.isObjectLiteralExpression(decl.initializer)) {
+      for (const prop of decl.initializer.properties) {
+        if (ts.isPropertyAssignment(prop) && prop.name) {
+          const propName = prop.name.getText(sourceFile);
+          const { description: propDesc, tags: propTags, examples: propExamples } = getJSDocComment(prop, sourceFile);
+          
+          // Handle arrow functions and function expressions
+          if (ts.isArrowFunction(prop.initializer) || ts.isFunctionExpression(prop.initializer)) {
+            const fn = prop.initializer;
+            const params: Array<{ name: string; type: string; description?: string; optional?: boolean; defaultValue?: string }> = [];
+            
+            for (const param of fn.parameters) {
+              const paramName = param.name.getText(sourceFile);
+              const paramType = getTypeString(param.type, sourceFile);
+              const optional = !!param.questionToken || !!param.initializer;
+              const defaultValue = param.initializer?.getText(sourceFile);
+              
+              params.push({
+                name: paramName,
+                type: paramType,
+                description: propTags[`param:${paramName}`],
+                optional,
+                defaultValue,
+              });
+            }
+            
+            const returnType = getTypeString(fn.type, sourceFile);
+            const paramSignature = params
+              .map(p => `${p.name}${p.optional ? '?' : ''}: ${p.type}`)
+              .join(', ');
+            const methodSignature = `${propName}(${paramSignature}): ${returnType}`;
+            
+            methods.push({
+              name: propName,
+              kind: 'method',
+              description: propDesc,
+              signature: methodSignature,
+              parameters: params,
+              returnType,
+              examples: propExamples,
+              tags: propTags,
+            });
+          }
+        } else if (ts.isMethodDeclaration(prop) && prop.name) {
+          const methodDoc = parseFunction(prop, sourceFile, checker);
+          methods.push(methodDoc);
+        }
+      }
+    }
+
     entries.push({
       name,
       kind: 'variable',
@@ -259,6 +316,7 @@ function parseVariableStatement(node: ts.VariableStatement, sourceFile: ts.Sourc
       signature,
       examples,
       tags,
+      methods: methods.length > 0 ? methods : undefined,
     });
   }
 
@@ -657,6 +715,26 @@ function generateSidebarTS(modules: ModuleDoc[]): string {
       signature: ${JSON.stringify(v.signature || '')},
       description: ${JSON.stringify(v.description || '')},
     }`);
+        
+        // Add methods from object literals (like templates)
+        if (v.methods) {
+          for (const method of v.methods) {
+            const params = method.parameters?.map(p => ({
+              name: p.name,
+              type: p.type,
+              description: p.description || undefined,
+            })) || [];
+            
+            items.push(`    {
+      name: "${v.name}.${method.name}()",
+      type: "method",
+      signature: ${JSON.stringify(method.signature || method.name)},
+      description: ${JSON.stringify(method.description || '')},
+      returns: ${JSON.stringify(method.returnType || '')},
+      params: ${JSON.stringify(params)},
+    }`);
+          }
+        }
       }
     }
 
@@ -798,6 +876,28 @@ function generateTypeDefinitions(modules: ModuleDoc[]): string {
   processModule(videoModule, 'VIDEO BUILDER TYPES');
   processModule(mediaModule, 'IMAGE BUILDER TYPES');
   
+  // Generate templates namespace from object literal methods
+  if (builderModule) {
+    const templatesVar = builderModule.exports.find(e => e.kind === 'variable' && e.name === 'templates');
+    if (templatesVar && templatesVar.methods && templatesVar.methods.length > 0) {
+      lines.push('');
+      lines.push('  // TEMPLATES - Pre-built prompt templates');
+      lines.push('  export const templates: {');
+      for (const method of templatesVar.methods) {
+        const sig = method.signature || `${method.name}(): PromptBuilder`;
+        // Extract just the function signature part
+        const funcMatch = sig.match(/^(\w+)\((.*?)\):\s*(.+)$/);
+        if (funcMatch) {
+          const [, name, params, returnType] = funcMatch;
+          // Default to PromptBuilder for templates if return type is 'any'
+          const actualReturnType = returnType === 'any' ? 'PromptBuilder' : returnType;
+          lines.push(`    ${name}: (${params}) => ${actualReturnType};`);
+        }
+      }
+      lines.push('  };');
+    }
+  }
+
   // Utility namespaces
   if (variablesModule) {
     lines.push('');

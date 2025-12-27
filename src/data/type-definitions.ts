@@ -894,6 +894,26 @@ declare module 'prompts.chat' {
   }
   export function image(): ImagePromptBuilder;
 
+  // TEMPLATES - Pre-built prompt templates
+  export const templates: {
+    codeReview: (options?: { language?: string; focus?: string[] }) => PromptBuilder;
+    translation: (from: string, to: string) => PromptBuilder;
+    summarize: (options?: { maxLength?: number; style?: 'bullet' | 'paragraph' }) => PromptBuilder;
+    qa: (context?: string) => PromptBuilder;
+    debug: (options?: { language?: string; errorType?: string }) => PromptBuilder;
+    write: (options?: { type?: 'blog' | 'email' | 'essay' | 'story' | 'documentation'; tone?: string }) => PromptBuilder;
+    explain: (options?: { level?: 'beginner' | 'intermediate' | 'expert'; useAnalogies?: boolean }) => PromptBuilder;
+    extract: (options?: { format?: 'json' | 'csv' | 'table'; fields?: string[] }) => PromptBuilder;
+    brainstorm: (options?: { count?: number; creative?: boolean }) => PromptBuilder;
+    refactor: (options?: { goal?: 'readability' | 'performance' | 'maintainability' | 'all'; language?: string }) => PromptBuilder;
+    apiDocs: (options?: { style?: 'openapi' | 'markdown' | 'jsdoc'; includeExamples?: boolean }) => PromptBuilder;
+    unitTest: (options?: { framework?: string; coverage?: 'basic' | 'comprehensive' }) => PromptBuilder;
+    commitMessage: (options?: { style?: 'conventional' | 'simple'; includeBody?: boolean }) => PromptBuilder;
+    reviewComment: (options?: { tone?: 'constructive' | 'direct'; severity?: boolean }) => PromptBuilder;
+    regex: (options?: { flavor?: 'javascript' | 'python' | 'pcre' }) => PromptBuilder;
+    sql: (options?: { dialect?: 'postgresql' | 'mysql' | 'sqlite' | 'mssql'; optimize?: boolean }) => PromptBuilder;
+  };
+
   // UTILITY MODULES
   export namespace variables {
     export function detectVariables(text: string): DetectedVariable[];
