@@ -445,6 +445,24 @@ export default async function PromptPage({ params }: PromptPageProps) {
               <ReportPromptDialog promptId={prompt.id} isLoggedIn={!!session?.user} />
             </div>
           )}
+
+          {/* Connected Prompts Section */}
+          <PromptConnections
+            promptId={prompt.id}
+            promptTitle={prompt.title}
+            canEdit={canEdit}
+          />
+
+          {/* Comments Section */}
+          {config.features.comments !== false && !prompt.isPrivate && (
+            <CommentSection
+              promptId={prompt.id}
+              currentUserId={session?.user?.id}
+              isAdmin={isAdmin}
+              isLoggedIn={!!session?.user}
+              locale={locale}
+            />
+          )}
         </TabsContent>
 
         <TabsContent value="versions" className="mt-0">
@@ -591,24 +609,6 @@ export default async function PromptPage({ params }: PromptPageProps) {
           </TabsContent>
         )}
       </Tabs>
-
-      {/* Connected Prompts Section */}
-      <PromptConnections
-        promptId={prompt.id}
-        promptTitle={prompt.title}
-        canEdit={canEdit}
-      />
-
-      {/* Comments Section */}
-      {config.features.comments !== false && !prompt.isPrivate && (
-        <CommentSection
-          promptId={prompt.id}
-          currentUserId={session?.user?.id}
-          isAdmin={isAdmin}
-          isLoggedIn={!!session?.user}
-          locale={locale}
-        />
-      )}
 
       {/* Admin Area */}
       {isAdmin && (

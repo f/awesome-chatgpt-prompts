@@ -136,9 +136,9 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               </p>
             )}
             <div className="flex items-center gap-3 mt-2 text-sm text-muted-foreground">
-              <span>{category._count.prompts} prompts</span>
+              <span>{t("categories.promptCount", { count: category._count.prompts })}</span>
               <span>•</span>
-              <span>{category._count.subscribers} subscribers</span>
+              <span>{t("categories.subscriberCount", { count: category._count.subscribers })}</span>
             </div>
           </div>
           {config.features.mcp !== false && <McpServerPopup initialCategories={[slug]} showOfficialBranding={!config.homepage?.useCloneBranding} />}
