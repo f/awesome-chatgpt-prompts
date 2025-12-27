@@ -4,7 +4,7 @@ import Link from "next/link";
 import { getTranslations, getLocale } from "next-intl/server";
 import { formatDistanceToNow } from "@/lib/date";
 import { getPromptUrl } from "@/lib/urls";
-import { Calendar, ArrowBigUp, FileText, Settings, GitPullRequest, Clock, Check, X, Pin, BadgeCheck, Users, ShieldCheck } from "lucide-react";
+import { Calendar, ArrowBigUp, FileText, Settings, GitPullRequest, Clock, Check, X, Pin, BadgeCheck, Users, ShieldCheck, Heart } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import config from "@/../prompts.config";
@@ -147,8 +147,8 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
   oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
   oneYearAgo.setHours(0, 0, 0, 0);
 
-  // Fetch prompts, pinned prompts, contributions, counts, and activity data
-  const [promptsRaw, total, totalUpvotes, pinnedPromptsRaw, contributionsRaw, privatePromptsCount, activityPrompts, activityVotes, activityChangeRequests, activityComments] = await Promise.all([
+  // Fetch prompts, pinned prompts, contributions, liked prompts, counts, and activity data
+  const [promptsRaw, total, totalUpvotes, pinnedPromptsRaw, contributionsRaw, likedPromptsRaw, privatePromptsCount, activityPrompts, activityVotes, activityChangeRequests, activityComments] = await Promise.all([
     db.prompt.findMany({
       where,
       orderBy: { createdAt: "desc" },
@@ -185,6 +185,19 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
         deletedAt: null,
       },
       orderBy: { updatedAt: "desc" },
+      take: 50,
+      include: promptInclude,
+    }),
+    // Fetch liked prompts (prompts user has voted for)
+    db.prompt.findMany({
+      where: {
+        votes: {
+          some: { userId: user.id },
+        },
+        isPrivate: false,
+        deletedAt: null,
+      },
+      orderBy: { createdAt: "desc" },
       take: 50,
       include: promptInclude,
     }),
@@ -239,6 +252,13 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
 
   // Transform contributions
   const contributions = contributionsRaw.map((p) => ({
+    ...p,
+    voteCount: p._count?.votes ?? 0,
+    contributorCount: p._count?.contributors ?? 0,
+  }));
+
+  // Transform liked prompts
+  const likedPrompts = likedPromptsRaw.map((p) => ({
     ...p,
     voteCount: p._count?.votes ?? 0,
     contributorCount: p._count?.contributors ?? 0,
@@ -362,7 +382,7 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
 
   const pendingCount = submittedChangeRequests.filter((cr) => cr.status === "PENDING").length +
     receivedChangeRequests.filter((cr) => cr.status === "PENDING").length;
-  const defaultTab = tab === "changes" ? "changes" : tab === "contributions" ? "contributions" : "prompts";
+  const defaultTab = tab === "changes" ? "changes" : tab === "contributions" ? "contributions" : tab === "likes" ? "likes" : "prompts";
 
   const statusColors = {
     PENDING: "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border-yellow-500/20",
@@ -480,6 +500,15 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
               </Badge>
             )}
           </TabsTrigger>
+          <TabsTrigger value="likes" className="gap-2">
+            <Heart className="h-4 w-4" />
+            {t("likes")}
+            {likedPrompts.length > 0 && (
+              <Badge variant="secondary" className="ml-1 h-5 min-w-5 px-1 text-xs">
+                {likedPrompts.length}
+              </Badge>
+            )}
+          </TabsTrigger>
           <TabsTrigger value="changes" className="gap-2">
             <GitPullRequest className="h-4 w-4" />
             {tChanges("title")}
@@ -575,6 +604,21 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
           ) : (
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {contributions.map((prompt: PromptCardProps["prompt"]) => (
+                <PromptCard key={prompt.id} prompt={prompt} />
+              ))}
+            </div>
+          )}
+        </TabsContent>
+
+        <TabsContent value="likes">
+          {likedPrompts.length === 0 ? (
+            <div className="text-center py-12 border rounded-lg bg-muted/30">
+              <Heart className="h-10 w-10 text-muted-foreground mx-auto mb-3" />
+              <p className="text-muted-foreground">{isOwner ? t("noLikesOwner") : t("noLikes")}</p>
+            </div>
+          ) : (
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {likedPrompts.map((prompt: PromptCardProps["prompt"]) => (
                 <PromptCard key={prompt.id} prompt={prompt} />
               ))}
             </div>

@@ -750,7 +750,10 @@
     "clearFilter": "フィルターをクリア",
     "noPromptsOnDate": "この日付にはプロンプトが見つかりませんでした。",
     "noPromptsOnDateOwner": "この日付にはプロンプトがありません。",
-    "createForToday": "今日用に作成"
+    "createForToday": "今日用に作成",
+    "likes": "いいね",
+    "noLikes": "いいねしたプロンプトはまだありません",
+    "noLikesOwner": "まだプロンプトにいいねしていません"
   },
   "subscription": {
     "subscribe": "購読",

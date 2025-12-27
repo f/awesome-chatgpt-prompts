@@ -750,7 +750,10 @@
     "clearFilter": "Filter löschen",
     "noPromptsOnDate": "Keine Prompts an diesem Datum gefunden.",
     "noPromptsOnDateOwner": "Sie haben keine Prompts an diesem Datum.",
-    "createForToday": "Für heute erstellen"
+    "createForToday": "Für heute erstellen",
+    "likes": "Gefällt mir",
+    "noLikes": "Noch keine gelikten Prompts",
+    "noLikesOwner": "Sie haben noch keine Prompts geliket"
   },
   "subscription": {
     "subscribe": "Abonnieren",

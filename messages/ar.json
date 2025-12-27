@@ -750,7 +750,10 @@
     "clearFilter": "مسح الفلتر",
     "noPromptsOnDate": "لم يتم العثور على أوامر في هذا التاريخ.",
     "noPromptsOnDateOwner": "ليس لديك أي أوامر في هذا التاريخ.",
-    "createForToday": "أنشئ لليوم"
+    "createForToday": "أنشئ لليوم",
+    "likes": "الإعجابات",
+    "noLikes": "لا توجد أوامر معجب بها بعد",
+    "noLikesOwner": "لم تعجب بأي أوامر بعد"
   },
   "subscription": {
     "subscribe": "اشتراك",

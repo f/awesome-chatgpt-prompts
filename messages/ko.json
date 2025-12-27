@@ -750,7 +750,10 @@
     "clearFilter": "필터 지우기",
     "noPromptsOnDate": "이 날짜에 프롬프트가 없습니다.",
     "noPromptsOnDateOwner": "이 날짜에 프롬프트가 없습니다.",
-    "createForToday": "오늘을 위해 만들기"
+    "createForToday": "오늘을 위해 만들기",
+    "likes": "좋아요",
+    "noLikes": "아직 좋아요한 프롬프트가 없습니다",
+    "noLikesOwner": "아직 프롬프트에 좋아요를 하지 않았습니다"
   },
   "subscription": {
     "subscribe": "구독",

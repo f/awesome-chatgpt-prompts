@@ -750,7 +750,10 @@
     "clearFilter": "Cancella filtro",
     "noPromptsOnDate": "Nessun prompt trovato in questa data.",
     "noPromptsOnDateOwner": "Non hai prompt in questa data.",
-    "createForToday": "Crea per oggi"
+    "createForToday": "Crea per oggi",
+    "likes": "Mi piace",
+    "noLikes": "Nessun prompt piaciuto ancora",
+    "noLikesOwner": "Non hai ancora messo mi piace a nessun prompt"
   },
   "subscription": {
     "subscribe": "Iscriviti",

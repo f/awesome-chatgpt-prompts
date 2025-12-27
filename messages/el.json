@@ -750,7 +750,10 @@
     "clearFilter": "Καθαρισμός φίλτρου",
     "noPromptsOnDate": "Δεν βρέθηκαν prompts σε αυτή την ημερομηνία.",
     "noPromptsOnDateOwner": "Δεν έχετε prompts σε αυτή την ημερομηνία.",
-    "createForToday": "Δημιουργία για σήμερα"
+    "createForToday": "Δημιουργία για σήμερα",
+    "likes": "Μου αρέσει",
+    "noLikes": "Δεν υπάρχουν αγαπημένα prompts ακόμα",
+    "noLikesOwner": "Δεν έχετε κάνει like σε κανένα prompt ακόμα"
   },
   "subscription": {
     "subscribe": "Εγγραφή",

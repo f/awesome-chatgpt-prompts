@@ -750,7 +750,10 @@
     "clearFilter": "清除筛选",
     "noPromptsOnDate": "此日期没有找到提示词。",
     "noPromptsOnDateOwner": "您在此日期没有提示词。",
-    "createForToday": "为今天创建"
+    "createForToday": "为今天创建",
+    "likes": "喜欢",
+    "noLikes": "还没有喜欢的提示词",
+    "noLikesOwner": "您还没有喜欢任何提示词"
   },
   "subscription": {
     "subscribe": "订阅",

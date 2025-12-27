@@ -750,7 +750,10 @@
     "clearFilter": "Сбросить фильтр",
     "noPromptsOnDate": "Промпты на эту дату не найдены.",
     "noPromptsOnDateOwner": "У вас нет промптов на эту дату.",
-    "createForToday": "Создать на сегодня"
+    "createForToday": "Создать на сегодня",
+    "likes": "Понравившиеся",
+    "noLikes": "Пока нет понравившихся промптов",
+    "noLikesOwner": "Вы ещё не отметили ни одного промпта"
   },
   "subscription": {
     "subscribe": "Подписаться",
