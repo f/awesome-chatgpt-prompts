@@ -10313,3 +10313,68 @@ Key Requirements:
   - The image must appear highly natural, ultra-realistic, and convincingly genuine.
   - The white sheet must be shown as three different physical notes resting on a surface with bold handwriting in human form.",FALSE,TEXT,Beatrix9
 Develop a Notion Clone Application,"Act as a Software Developer tasked with creating a Notion clone application. Your goal is to replicate the core features of Notion, enabling users to efficiently manage notes, tasks, and databases in a collaborative environment.\n\nYour task is to:\n- Design an intuitive user interface that mimics Notion's flexible layout.\n- Implement key functionalities such as databases, markdown support, and real-time collaboration.\n- Ensure a seamless experience across web and mobile platforms.\n- Incorporate integrations with other productivity tools.\n\nRules:\n- Use modern web technologies such as React or Vue.js for the frontend.\n- Implement a robust backend using Node.js or Django.\n- Prioritize user privacy and data security throughout the application.\n- Make the application scalable to handle a large number of users.\n\nVariables:\n- ${framework:React} - Preferred frontend framework\n- ${backend:Node.js} - Preferred backend technology",FALSE,TEXT,oornnery
+The Aether Prince at the Crystal Gala,"{
+  ""title"": ""The Aether Prince at the Crystal Gala"",
+  ""description"": ""A breathtaking cinematic shot of a regal nobleman standing on the balcony of a translucent palace hovering above the clouds."",
+  ""prompt"": ""You will perform an image edit using the person from the provided photo as the main subject. Preserve his core likeness. Transform Subject 1 (male) into a high-society aristocrat attending a royal ball inside a floating crystal palace. He stands near a transparent balustrade, with the grand ballroom behind him and a sea of clouds stretching out to the horizon. The image must be ultra-photorealistic, utilizing cinematic lighting to capture the refraction of light through the crystal structures. The scene is highly detailed, shot on Arri Alexa, featuring a shallow depth of field that blurs the dancing guests in the background while keeping the subject sharpness pristine."",
+  ""details"": {
+    ""year"": ""Timeless Fantasy Era"",
+    ""genre"": ""Cinematic Photorealism"",
+    ""location"": ""A grand ballroom constructed entirely of diamond and glass, floating high in the stratosphere at sunset."",
+    ""lighting"": [
+      ""Golden hour sunlight refracting through crystal prisms"",
+      ""Soft volumetric glow"",
+      ""Caustic reflections""
+    ],
+    ""camera_angle"": ""Medium shot at eye level, capturing the subject against the vast sky."",
+    ""emotion"": [
+      ""Regal"",
+      ""Contemplative"",
+      ""Serene""
+    ],
+    ""color_palette"": [
+      ""Champagne gold"",
+      ""prismatic white"",
+      ""sky blue"",
+      ""sunset orange""
+    ],
+    ""atmosphere"": [
+      ""Opulent"",
+      ""Ethereal"",
+      ""Majestic"",
+      ""Airy""
+    ],
+    ""environmental_elements"": ""Floating anti-gravity chandeliers, clouds drifting past open arches, blurred silhouettes of dancers in formal wear."",
+    ""subject1"": {
+      ""costume"": ""A futuristic formal white tuxedo with intricate gold filigree embroidery and a silk sash."",
+      ""subject_expression"": ""A calm, confident gaze with a hint of aristocratic detachment."",
+      ""subject_action"": ""Resting one hand elegantly on the crystal railing, holding a flute of sparkling nectar.""
+    },
+    ""negative_prompt"": {
+      ""exclude_visuals"": [
+        ""darkness"",
+        ""dirt"",
+        ""grime"",
+        ""industrial machinery"",
+        ""ground level terrain""
+      ],
+      ""exclude_styles"": [
+        ""cartoon"",
+        ""sketch"",
+        ""oil painting"",
+        ""anime"",
+        ""CGI 3D render look""
+      ],
+      ""exclude_colors"": [
+        ""neon green"",
+        ""muddy brown"",
+        ""pitch black""
+      ],
+      ""exclude_objects"": [
+        ""cars"",
+        ""modern streetlights"",
+        ""weapons""
+      ]
+    }
+  }
+}",FALSE,STRUCTURED,ersinkoc
