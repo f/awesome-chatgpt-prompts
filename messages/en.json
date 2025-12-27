@@ -602,7 +602,13 @@
       "noParent": "None (Root Category)",
       "parentHelp": "Leave empty to create a root category, or select a parent to create a subcategory",
       "rootCategory": "Root",
-      "subcategories": "subcategories"
+      "subcategories": "subcategories",
+      "pin": "Pin to Prompts Page",
+      "unpin": "Unpin from Prompts Page",
+      "pinned": "Category pinned",
+      "unpinned": "Category unpinned",
+      "pinnedBadge": "Pinned",
+      "pinnedLabel": "Pin to prompts page (show as quick filter)"
     },
     "tags": {
       "title": "Tag Management",

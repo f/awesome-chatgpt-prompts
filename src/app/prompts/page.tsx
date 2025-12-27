@@ -2,11 +2,13 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { unstable_cache } from "next/cache";
+import { Suspense } from "react";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button"
 import { InfinitePromptList } from "@/components/prompts/infinite-prompt-list";
 import { PromptFilters } from "@/components/prompts/prompt-filters";
 import { FilterProvider } from "@/components/prompts/filter-context";
+import { PinnedCategories } from "@/components/categories/pinned-categories";
 import { HFDataStudioDropdown } from "@/components/prompts/hf-data-studio-dropdown";
 import { McpServerPopup } from "@/components/mcp/mcp-server-popup";
 import { db } from "@/lib/db";
@@ -33,6 +35,24 @@ const getCategories = unstable_cache(
     });
   },
   ["categories"],
+  { tags: ["categories"] }
+);
+
+// Query for pinned categories (cached)
+const getPinnedCategories = unstable_cache(
+  async () => {
+    return db.category.findMany({
+      where: { pinned: true },
+      orderBy: [{ order: "asc" }, { name: "asc" }],
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+        icon: true,
+      },
+    });
+  },
+  ["pinned-categories"],
   { tags: ["categories"] }
 );
 
@@ -211,9 +231,10 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
     total = result.total;
   }
 
-  // Fetch categories and tags for filter
-  const [categories, tags] = await Promise.all([
+  // Fetch categories, pinned categories, and tags for filter
+  const [categories, pinnedCategories, tags] = await Promise.all([
     getCategories(),
+    getPinnedCategories(),
     getTags(),
   ]);
 
@@ -239,6 +260,15 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
           </Button>
         </div>
       </div>
+      
+      <Suspense fallback={null}>
+        <div className="mb-4">
+          <PinnedCategories 
+            categories={pinnedCategories} 
+            currentCategoryId={params.category} 
+          />
+        </div>
+      </Suspense>
 
       <FilterProvider>
         <div className="flex flex-col lg:flex-row gap-6">

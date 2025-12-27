@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { MoreHorizontal, Plus, Pencil, Trash2, ChevronRight } from "lucide-react";
+import { MoreHorizontal, Plus, Pencil, Trash2, ChevronRight, Pin, PinOff } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -56,6 +56,7 @@ interface Category {
   description: string | null;
   icon: string | null;
   order: number;
+  pinned: boolean;
   parentId: string | null;
   parent: { id: string; name: string } | null;
   children?: Category[];
@@ -76,7 +77,7 @@ export function CategoriesTable({ categories }: CategoriesTableProps) {
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [isCreating, setIsCreating] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [formData, setFormData] = useState({ name: "", slug: "", description: "", icon: "", parentId: "" });
+  const [formData, setFormData] = useState({ name: "", slug: "", description: "", icon: "", parentId: "", pinned: false });
 
   // Get only root categories (no parent) for parent selection
   const rootCategories = useMemo(() => 
@@ -101,7 +102,7 @@ export function CategoriesTable({ categories }: CategoriesTableProps) {
   }, [categories, rootCategories]);
 
   const openCreateDialog = () => {
-    setFormData({ name: "", slug: "", description: "", icon: "", parentId: "" });
+    setFormData({ name: "", slug: "", description: "", icon: "", parentId: "", pinned: false });
     setIsCreating(true);
   };
 
@@ -112,8 +113,29 @@ export function CategoriesTable({ categories }: CategoriesTableProps) {
       description: category.description || "",
       icon: category.icon || "",
       parentId: category.parentId || "",
+      pinned: category.pinned,
     });
     setEditCategory(category);
+  };
+
+  const handleTogglePin = async (category: Category) => {
+    setLoading(true);
+    try {
+      const res = await fetch(`/api/admin/categories/${category.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ pinned: !category.pinned }),
+      });
+
+      if (!res.ok) throw new Error("Failed to update");
+
+      toast.success(category.pinned ? t("unpinned") : t("pinned"));
+      router.refresh();
+    } catch {
+      toast.error(t("saveFailed"));
+    } finally {
+      setLoading(false);
+    }
   };
 
   // Filter out invalid parent options (can't be own parent or child of self)
@@ -224,6 +246,12 @@ export function CategoriesTable({ categories }: CategoriesTableProps) {
                           {category._count.children} {t("subcategories")}
                         </Badge>
                       )}
+                      {category.pinned && (
+                        <Badge variant="default" className="text-xs">
+                          <Pin className="h-3 w-3 mr-1" />
+                          {t("pinnedBadge")}
+                        </Badge>
+                      )}
                     </div>
                   </TableCell>
                   <TableCell className="text-sm text-muted-foreground">{category.slug}</TableCell>
@@ -248,6 +276,13 @@ export function CategoriesTable({ categories }: CategoriesTableProps) {
                         <DropdownMenuItem onClick={() => openEditDialog(category)}>
                           <Pencil className="h-4 w-4 mr-2" />
                           {t("edit")}
+                        </DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => handleTogglePin(category)} disabled={loading}>
+                          {category.pinned ? (
+                            <><PinOff className="h-4 w-4 mr-2" />{t("unpin")}</>
+                          ) : (
+                            <><Pin className="h-4 w-4 mr-2" />{t("pin")}</>
+                          )}
                         </DropdownMenuItem>
                         <DropdownMenuItem
                           className="text-destructive"
@@ -327,6 +362,18 @@ export function CategoriesTable({ categories }: CategoriesTableProps) {
                 onChange={(e) => setFormData({ ...formData, icon: e.target.value })}
                 placeholder="📁"
               />
+            </div>
+            <div className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                id="pinned"
+                checked={formData.pinned}
+                onChange={(e) => setFormData({ ...formData, pinned: e.target.checked })}
+                className="h-4 w-4 rounded border-gray-300"
+              />
+              <Label htmlFor="pinned" className="text-sm font-normal cursor-pointer">
+                {t("pinnedLabel")}
+              </Label>
             </div>
           </div>
           <DialogFooter>

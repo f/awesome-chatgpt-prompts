@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidateTag } from "next/cache";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 
@@ -15,7 +16,7 @@ export async function PATCH(
 
     const { id } = await params;
     const body = await request.json();
-    const { name, slug, description, icon, parentId } = body;
+    const { name, slug, description, icon, parentId, pinned } = body;
 
     const category = await db.category.update({
       where: { id },
@@ -25,8 +26,11 @@ export async function PATCH(
         description: description ?? undefined,
         icon: icon ?? undefined,
         parentId: parentId === null ? null : (parentId || undefined),
+        ...(typeof pinned === "boolean" && { pinned }),
       },
     });
+
+    revalidateTag("categories", "max");
 
     return NextResponse.json(category);
   } catch (error) {
@@ -51,6 +55,8 @@ export async function DELETE(
     await db.category.delete({
       where: { id },
     });
+
+    revalidateTag("categories", "max");
 
     return NextResponse.json({ success: true });
   } catch (error) {

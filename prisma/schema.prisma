@@ -177,6 +177,7 @@ model Category {
   description String?
   icon        String?
   order       Int                    @default(0)
+  pinned      Boolean                @default(false)
   parentId    String?
   parent      Category?              @relation("CategoryHierarchy", fields: [parentId], references: [id])
   children    Category[]             @relation("CategoryHierarchy")
@@ -184,6 +185,7 @@ model Category {
   prompts     Prompt[]
 
   @@index([parentId])
+  @@index([pinned])
   @@map("categories")
 }
 
