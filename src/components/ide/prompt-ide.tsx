@@ -606,7 +606,7 @@ export function PromptIde() {
         </div>
 
         {/* Editor panel */}
-        <div className="flex-1 flex flex-col border-r">
+        <div className="flex-1 flex flex-col border-r min-w-0">
           <div className="h-10 px-4 border-b bg-muted/30 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="text-sm font-medium text-muted-foreground">{t("editor")}</span>
@@ -683,7 +683,7 @@ export function PromptIde() {
         </div>
 
         {/* Preview panel */}
-        <div className="flex-1 flex flex-col">
+        <div className="flex-1 flex flex-col min-w-0">
           <div className="h-10 px-4 border-b bg-muted/30 flex items-center justify-between">
             <span className="text-sm font-medium text-muted-foreground">{t("preview")}</span>
             <div className="flex items-center gap-2">
