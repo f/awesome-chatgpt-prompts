@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💡 Submit a New Prompt
+    url: https://prompts.chat/prompts/new
+    about: Please submit new prompts via our website automation.
+  - name: 🐛 Report a Bug / Spam
+    url: https://github.com/f/awesome-chatgpt-prompts/issues/new?title=Report:%20
+    about: Report spam or issues with the repository.

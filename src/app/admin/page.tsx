@@ -5,7 +5,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Prisma } from "@prisma/client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, FolderTree, Tags, FileText, Webhook, Flag } from "lucide-react";
 import { UsersTable } from "@/components/admin/users-table";
 import { CategoriesTable } from "@/components/admin/categories-table";
@@ -74,26 +74,8 @@ export default async function AdminPage() {
     }),
   ]);
 
-  // Fetch data for tables
-  const [users, categories, tags, webhooks, reports] = await Promise.all([
-    db.user.findMany({
-      orderBy: { createdAt: "desc" },
-      select: {
-        id: true,
-        email: true,
-        username: true,
-        name: true,
-        avatar: true,
-        role: true,
-        verified: true,
-        createdAt: true,
-        _count: {
-          select: {
-            prompts: true,
-          },
-        },
-      },
-    }),
+  // Fetch data for tables (users are fetched client-side with pagination)
+  const [categories, tags, webhooks, reports] = await Promise.all([
     db.category.findMany({
       orderBy: [{ parentId: "asc" }, { order: "asc" }],
       include: {
@@ -195,40 +177,42 @@ export default async function AdminPage() {
 
       {/* Management Tabs */}
       <Tabs defaultValue="users" className="space-y-4">
-        <TabsList>
-          <TabsTrigger value="users" className="gap-2">
-            <Users className="h-4 w-4" />
-            {t("tabs.users")}
-          </TabsTrigger>
-          <TabsTrigger value="categories" className="gap-2">
-            <FolderTree className="h-4 w-4" />
-            {t("tabs.categories")}
-          </TabsTrigger>
-          <TabsTrigger value="tags" className="gap-2">
-            <Tags className="h-4 w-4" />
-            {t("tabs.tags")}
-          </TabsTrigger>
-          <TabsTrigger value="webhooks" className="gap-2">
-            <Webhook className="h-4 w-4" />
-            {t("tabs.webhooks")}
-          </TabsTrigger>
-          <TabsTrigger value="prompts" className="gap-2">
-            <FileText className="h-4 w-4" />
-            {t("tabs.prompts")}
-          </TabsTrigger>
-          <TabsTrigger value="reports" className="gap-2">
-            <Flag className="h-4 w-4" />
-            {t("tabs.reports")}
-            {reports.filter(r => r.status === "PENDING").length > 0 && (
-              <span className="ml-1 px-1.5 py-0.5 text-xs bg-destructive text-white rounded-full">
-                {reports.filter(r => r.status === "PENDING").length}
-              </span>
-            )}
-          </TabsTrigger>
-        </TabsList>
+        <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+          <TabsList className="w-max sm:w-auto">
+            <TabsTrigger value="users" className="gap-1.5 sm:gap-2 px-2.5 sm:px-3">
+              <Users className="h-4 w-4" />
+              <span className="hidden sm:inline">{t("tabs.users")}</span>
+            </TabsTrigger>
+            <TabsTrigger value="categories" className="gap-1.5 sm:gap-2 px-2.5 sm:px-3">
+              <FolderTree className="h-4 w-4" />
+              <span className="hidden sm:inline">{t("tabs.categories")}</span>
+            </TabsTrigger>
+            <TabsTrigger value="tags" className="gap-1.5 sm:gap-2 px-2.5 sm:px-3">
+              <Tags className="h-4 w-4" />
+              <span className="hidden sm:inline">{t("tabs.tags")}</span>
+            </TabsTrigger>
+            <TabsTrigger value="webhooks" className="gap-1.5 sm:gap-2 px-2.5 sm:px-3">
+              <Webhook className="h-4 w-4" />
+              <span className="hidden sm:inline">{t("tabs.webhooks")}</span>
+            </TabsTrigger>
+            <TabsTrigger value="prompts" className="gap-1.5 sm:gap-2 px-2.5 sm:px-3">
+              <FileText className="h-4 w-4" />
+              <span className="hidden sm:inline">{t("tabs.prompts")}</span>
+            </TabsTrigger>
+            <TabsTrigger value="reports" className="gap-1.5 sm:gap-2 px-2.5 sm:px-3">
+              <Flag className="h-4 w-4" />
+              <span className="hidden sm:inline">{t("tabs.reports")}</span>
+              {reports.filter(r => r.status === "PENDING").length > 0 && (
+                <span className="ml-1 px-1.5 py-0.5 text-xs bg-destructive text-white rounded-full">
+                  {reports.filter(r => r.status === "PENDING").length}
+                </span>
+              )}
+            </TabsTrigger>
+          </TabsList>
+        </div>
 
         <TabsContent value="users">
-          <UsersTable users={users} />
+          <UsersTable />
         </TabsContent>
 
         <TabsContent value="categories">

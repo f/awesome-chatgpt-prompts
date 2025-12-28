@@ -1,23 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { getStoragePlugin } from "@/lib/plugins/registry";
+import sharp from "sharp";
 
-const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
-const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+const MAX_IMAGE_SIZE = 4 * 1024 * 1024; // 4MB for images
+const MAX_VIDEO_SIZE = 4 * 1024 * 1024; // 4MB for videos (Vercel serverless limit)
+const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+const ALLOWED_VIDEO_TYPES = ["video/mp4"];
 
 async function compressToJpg(buffer: Buffer): Promise<Buffer> {
-  try {
-    // Dynamic import for optional sharp dependency
-    const sharpModule = await import(/* webpackIgnore: true */ "sharp");
-    const sharp = sharpModule.default;
-    return await sharp(buffer)
-      .jpeg({ quality: 90, mozjpeg: true })
-      .toBuffer();
-  } catch {
-    throw new Error(
-      "Image compression requires sharp. Install it with: npm install sharp"
-    );
-  }
+  return await sharp(buffer)
+    .jpeg({ quality: 90, mozjpeg: true })
+    .toBuffer();
 }
 
 export async function POST(request: NextRequest) {
@@ -60,18 +54,23 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "No file provided" }, { status: 400 });
     }
 
+    // Determine if file is image or video
+    const isImage = ALLOWED_IMAGE_TYPES.includes(file.type);
+    const isVideo = ALLOWED_VIDEO_TYPES.includes(file.type);
+
     // Validate file type
-    if (!ALLOWED_TYPES.includes(file.type)) {
+    if (!isImage && !isVideo) {
       return NextResponse.json(
-        { error: "Invalid file type. Only JPEG, PNG, GIF, and WebP are allowed." },
+        { error: "Invalid file type. Only JPEG, PNG, GIF, WebP images and MP4 videos are allowed." },
         { status: 400 }
       );
     }
 
-    // Validate file size
-    if (file.size > MAX_FILE_SIZE) {
+    // Validate file size based on type
+    const maxSize = isVideo ? MAX_VIDEO_SIZE : MAX_IMAGE_SIZE;
+    if (file.size > maxSize) {
       return NextResponse.json(
-        { error: "File too large. Maximum size is 5MB." },
+        { error: `File too large. Maximum size is 4MB.` },
         { status: 400 }
       );
     }
@@ -80,18 +79,30 @@ export async function POST(request: NextRequest) {
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
-    // Compress to JPG
-    const compressedBuffer = await compressToJpg(buffer);
-
     // Generate filename
     const timestamp = Date.now();
     const randomId = Math.random().toString(36).substring(2, 8);
-    const filename = `prompt-media-${timestamp}-${randomId}.jpg`;
+    
+    let uploadBuffer: Buffer;
+    let filename: string;
+    let mimeType: string;
+
+    if (isVideo) {
+      // For videos, upload as-is without compression
+      uploadBuffer = buffer;
+      filename = `prompt-media-${timestamp}-${randomId}.mp4`;
+      mimeType = "video/mp4";
+    } else {
+      // For images, compress to JPG
+      uploadBuffer = await compressToJpg(buffer);
+      filename = `prompt-media-${timestamp}-${randomId}.jpg`;
+      mimeType = "image/jpeg";
+    }
 
     // Upload to storage
-    const result = await storagePlugin.upload(compressedBuffer, {
+    const result = await storagePlugin.upload(uploadBuffer, {
       filename,
-      mimeType: "image/jpeg",
+      mimeType,
       folder: "prompt-media",
     });
 

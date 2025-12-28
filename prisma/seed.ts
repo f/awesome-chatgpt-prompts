@@ -255,6 +255,16 @@ async function main() {
       update: {},
       create: { name: "Agent", slug: "agent", color: "#14B8A6" },
     }),
+    prisma.tag.upsert({
+      where: { slug: "skill" },
+      update: {},
+      create: { name: "Skill", slug: "skill", color: "#8B5CF6" },
+    }),
+    prisma.tag.upsert({
+      where: { slug: "copilot" },
+      update: {},
+      create: { name: "Copilot", slug: "copilot", color: "#000000" },
+    }),
   ]);
   console.log("✅ Created", tags.length, "tags");
 
@@ -510,6 +520,207 @@ variables:
       tagSlugs: ["workflow", "claude", "advanced"], 
       authorId: bob.id 
     },
+    
+    // SKILL type prompts (Agent Skills)
+    {
+      title: "Code Refactoring Skill",
+      description: "An agent skill for refactoring code to improve quality and maintainability",
+      content: `# Code Refactoring Skill
+
+This skill helps refactor code to improve readability, maintainability, and performance.
+
+## Instructions
+
+When asked to refactor code:
+
+1. **Analyze the code structure** - Identify code smells, duplications, and areas for improvement
+2. **Apply refactoring patterns** - Use appropriate design patterns and best practices
+3. **Preserve functionality** - Ensure all existing behavior is maintained
+4. **Add documentation** - Include clear comments explaining complex logic
+5. **Optimize performance** - Look for opportunities to improve efficiency
+
+## Guidelines
+
+- Follow the language's style guide and conventions
+- Break large functions into smaller, focused ones
+- Use meaningful variable and function names
+- Remove dead code and unused imports
+- Add type annotations where applicable
+
+## Output Format
+
+Provide the refactored code with explanations of changes made.`,
+      type: "SKILL",
+      categorySlug: "coding",
+      tagSlugs: ["skill", "copilot", "advanced"],
+      authorId: admin.id
+    },
+    {
+      title: "Test Generator Skill",
+      description: "An agent skill for generating comprehensive unit tests",
+      content: `# Test Generator Skill
+
+This skill generates comprehensive unit tests for code.
+
+## Instructions
+
+When generating tests:
+
+1. **Identify testable units** - Find functions, methods, and classes to test
+2. **Cover edge cases** - Include tests for boundary conditions and error states
+3. **Use appropriate assertions** - Match assertions to expected outcomes
+4. **Mock dependencies** - Isolate units from external dependencies
+5. **Follow naming conventions** - Use descriptive test names
+
+## Test Categories
+
+- **Happy path tests** - Normal expected behavior
+- **Edge case tests** - Boundary conditions
+- **Error handling tests** - Exception and error scenarios
+- **Integration tests** - Component interactions
+
+## Framework Guidelines
+
+- Use the project's existing test framework
+- Follow AAA pattern (Arrange, Act, Assert)
+- Keep tests independent and isolated
+- Aim for high code coverage`,
+      type: "SKILL",
+      categorySlug: "coding",
+      tagSlugs: ["skill", "copilot", "beginner"],
+      authorId: demo.id
+    },
+    {
+      title: "Documentation Writer Skill",
+      description: "An agent skill for generating comprehensive documentation",
+      content: `# Documentation Writer Skill
+
+This skill creates clear, comprehensive documentation for code and APIs.
+
+## Instructions
+
+When writing documentation:
+
+1. **Understand the code** - Analyze functionality and purpose
+2. **Write clear descriptions** - Explain what the code does in plain language
+3. **Document parameters** - List all inputs with types and descriptions
+4. **Include examples** - Provide usage examples for common scenarios
+5. **Note edge cases** - Document any limitations or special behaviors
+
+## Documentation Types
+
+### Function/Method Documentation
+- Purpose and description
+- Parameters with types
+- Return values
+- Exceptions thrown
+- Usage examples
+
+### API Documentation
+- Endpoint descriptions
+- Request/response formats
+- Authentication requirements
+- Rate limits and errors
+
+### README Documentation
+- Project overview
+- Installation instructions
+- Quick start guide
+- Configuration options`,
+      type: "SKILL",
+      categorySlug: "technical-writing",
+      tagSlugs: ["skill", "copilot", "beginner"],
+      authorId: alice.id
+    },
+    {
+      title: "Git Commit Message Skill",
+      description: "An agent skill for writing clear, conventional commit messages",
+      content: `# Git Commit Message Skill
+
+This skill writes clear, conventional commit messages following best practices.
+
+## Instructions
+
+When writing commit messages:
+
+1. **Use conventional commit format** - type(scope): description
+2. **Be concise but descriptive** - Summarize changes clearly
+3. **Use imperative mood** - "Add feature" not "Added feature"
+4. **Reference issues** - Link to relevant tickets or issues
+5. **Separate concerns** - One logical change per commit
+
+## Commit Types
+
+- **feat**: New feature
+- **fix**: Bug fix
+- **docs**: Documentation changes
+- **style**: Code style changes (formatting, etc.)
+- **refactor**: Code refactoring
+- **test**: Adding or updating tests
+- **chore**: Maintenance tasks
+
+## Format
+
+\`\`\`
+type(scope): short description
+
+Longer description if needed. Explain what and why,
+not how.
+
+Refs: #issue-number
+\`\`\``,
+      type: "SKILL",
+      categorySlug: "devops",
+      tagSlugs: ["skill", "copilot", "beginner"],
+      authorId: bob.id
+    },
+    {
+      title: "Code Review Skill",
+      description: "An agent skill for performing thorough code reviews",
+      content: `# Code Review Skill
+
+This skill performs comprehensive code reviews with actionable feedback.
+
+## Instructions
+
+When reviewing code:
+
+1. **Check correctness** - Verify logic and functionality
+2. **Review code style** - Ensure consistency with project standards
+3. **Identify security issues** - Look for vulnerabilities
+4. **Assess performance** - Find potential bottlenecks
+5. **Evaluate maintainability** - Consider future maintenance
+
+## Review Checklist
+
+### Functionality
+- [ ] Code works as intended
+- [ ] Edge cases are handled
+- [ ] Error handling is appropriate
+
+### Code Quality
+- [ ] Code is readable and well-organized
+- [ ] Functions are focused and not too long
+- [ ] No code duplication
+- [ ] Variable names are descriptive
+
+### Security
+- [ ] Input validation is present
+- [ ] No hardcoded secrets
+- [ ] SQL injection prevention
+- [ ] XSS prevention
+
+## Feedback Format
+
+Provide specific, actionable feedback with:
+- Line references
+- Suggested improvements
+- Code examples when helpful`,
+      type: "SKILL",
+      categorySlug: "coding",
+      tagSlugs: ["skill", "copilot", "advanced"],
+      authorId: charlie.id
+    },
   ];
 
   for (const promptData of prompts) {
@@ -526,7 +737,7 @@ variables:
           title: promptData.title,
           description: promptData.description,
           content: promptData.content,
-          type: promptData.type as "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "STRUCTURED",
+          type: promptData.type as "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "STRUCTURED" | "SKILL",
           structuredFormat: (promptData as { structuredFormat?: "JSON" | "YAML" }).structuredFormat,
           authorId: promptData.authorId,
           categoryId: category?.id,
@@ -596,6 +807,113 @@ variables:
   }
 
   console.log("✅ Created", changeRequestsData.length, "change requests");
+
+  // Create prompt connections (chains)
+  const connectionPromptTitles = [
+    "Code Review Assistant",
+    "Code Refactoring Skill",
+    "Test Generator Skill",
+    "Documentation Writer Skill",
+    "Git Commit Message Skill",
+    "Code Review Skill",
+    "Debug Assistant",
+    "Content Pipeline Workflow",
+    "Blog Post Generator",
+  ];
+
+  const connectionPrompts = await prisma.prompt.findMany({
+    where: { title: { in: connectionPromptTitles } },
+  });
+
+  const getPromptByTitle = (title: string) => connectionPrompts.find(p => p.title === title);
+
+  const promptConnectionsData = [
+    // Code review workflow chain
+    {
+      sourceTitle: "Code Review Assistant",
+      targetTitle: "Code Refactoring Skill",
+      label: "needs refactoring",
+      order: 0,
+    },
+    {
+      sourceTitle: "Code Review Assistant",
+      targetTitle: "Test Generator Skill",
+      label: "needs tests",
+      order: 1,
+    },
+    {
+      sourceTitle: "Code Refactoring Skill",
+      targetTitle: "Code Review Skill",
+      label: "review changes",
+      order: 0,
+    },
+    {
+      sourceTitle: "Code Refactoring Skill",
+      targetTitle: "Documentation Writer Skill",
+      label: "update docs",
+      order: 1,
+    },
+    {
+      sourceTitle: "Test Generator Skill",
+      targetTitle: "Code Review Skill",
+      label: "review tests",
+      order: 0,
+    },
+    // After code review, commit
+    {
+      sourceTitle: "Code Review Skill",
+      targetTitle: "Git Commit Message Skill",
+      label: "ready to commit",
+      order: 0,
+    },
+    // Debug workflow
+    {
+      sourceTitle: "Debug Assistant",
+      targetTitle: "Code Refactoring Skill",
+      label: "fix identified",
+      order: 0,
+    },
+    {
+      sourceTitle: "Debug Assistant",
+      targetTitle: "Test Generator Skill",
+      label: "add regression test",
+      order: 1,
+    },
+    // Content workflow chain
+    {
+      sourceTitle: "Content Pipeline Workflow",
+      targetTitle: "Blog Post Generator",
+      label: "generate content",
+      order: 0,
+    },
+  ];
+
+  let connectionsCreated = 0;
+  for (const conn of promptConnectionsData) {
+    const source = getPromptByTitle(conn.sourceTitle);
+    const target = getPromptByTitle(conn.targetTitle);
+
+    if (source && target) {
+      await prisma.promptConnection.upsert({
+        where: {
+          sourceId_targetId: {
+            sourceId: source.id,
+            targetId: target.id,
+          },
+        },
+        update: {},
+        create: {
+          sourceId: source.id,
+          targetId: target.id,
+          label: conn.label,
+          order: conn.order,
+        },
+      });
+      connectionsCreated++;
+    }
+  }
+
+  console.log("✅ Created", connectionsCreated, "prompt connections");
 
   console.log("\n🎉 Seeding complete!");
   console.log("\n📋 Test credentials (all passwords: password123):");

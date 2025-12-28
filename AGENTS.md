@@ -81,6 +81,9 @@ npm run db:seed          # Seed database with initial data
 
 # Type checking
 npx tsc --noEmit         # Check TypeScript types without emitting
+
+# Translations
+node scripts/check-translations.js  # Check for missing translations across locales
 ```
 
 ## Code Style Guidelines

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { getTranslations, getLocale } from "next-intl/server";
 import { formatDistanceToNow } from "@/lib/date";
 import { getPromptUrl } from "@/lib/urls";
-import { Calendar, ArrowBigUp, FileText, Settings, GitPullRequest, Clock, Check, X, Pin, BadgeCheck, Users, ShieldCheck } from "lucide-react";
+import { Calendar, ArrowBigUp, FileText, Settings, GitPullRequest, Clock, Check, X, Pin, BadgeCheck, Users, ShieldCheck, Heart } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import config from "@/../prompts.config";
@@ -12,14 +12,16 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent } from "@/components/ui/card";
 import { PromptList } from "@/components/prompts/prompt-list";
 import { PromptCard, type PromptCardProps } from "@/components/prompts/prompt-card";
+import { Masonry } from "@/components/ui/masonry";
 import { McpServerPopup } from "@/components/mcp/mcp-server-popup";
+import { PrivatePromptsNote } from "@/components/prompts/private-prompts-note";
+import { ActivityChartWrapper } from "@/components/user/activity-chart-wrapper";
 
 interface UserProfilePageProps {
   params: Promise<{ username: string }>;
-  searchParams: Promise<{ page?: string; tab?: string }>;
+  searchParams: Promise<{ page?: string; tab?: string; date?: string }>;
 }
 
 export async function generateMetadata({ params }: UserProfilePageProps): Promise<Metadata> {
@@ -50,7 +52,7 @@ export async function generateMetadata({ params }: UserProfilePageProps): Promis
 
 export default async function UserProfilePage({ params, searchParams }: UserProfilePageProps) {
   const { username: rawUsername } = await params;
-  const { page: pageParam, tab } = await searchParams;
+  const { page: pageParam, tab, date: dateFilter } = await searchParams;
   const session = await auth();
   const t = await getTranslations("user");
   const tChanges = await getTranslations("changeRequests");
@@ -92,15 +94,25 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
   }
 
   const page = parseInt(pageParam || "1");
-  const perPage = 12;
+  const perPage = 24;
   const isOwner = session?.user?.id === user.id;
   const isUnclaimed = user.email?.endsWith("@unclaimed.prompts.chat") ?? false;
+
+  // Parse date filter for filtering prompts by day
+  const filterDateStart = dateFilter ? new Date(dateFilter + "T00:00:00") : null;
+  const filterDateEnd = dateFilter ? new Date(dateFilter + "T23:59:59") : null;
 
   // Build where clause - show private prompts only if owner (unlisted prompts are visible on profiles)
   const where = {
     authorId: user.id,
     deletedAt: null,
     ...(isOwner ? {} : { isPrivate: false }),
+    ...(filterDateStart && filterDateEnd ? {
+      createdAt: {
+        gte: filterDateStart,
+        lte: filterDateEnd,
+      },
+    } : {}),
   };
 
   // Common prompt include for both queries
@@ -111,13 +123,14 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
         name: true,
         username: true,
         avatar: true,
+        verified: true,
       },
     },
     category: {
-      select: {
-        id: true,
-        name: true,
-        slug: true,
+      include: {
+        parent: {
+          select: { id: true, name: true, slug: true },
+        },
       },
     },
     tags: {
@@ -130,8 +143,13 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
     },
   };
 
-  // Fetch prompts, pinned prompts, contributions, and counts
-  const [promptsRaw, total, totalUpvotes, pinnedPromptsRaw, contributionsRaw] = await Promise.all([
+  // Calculate date range for activity (last 12 months)
+  const oneYearAgo = new Date();
+  oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+  oneYearAgo.setHours(0, 0, 0, 0);
+
+  // Fetch prompts, pinned prompts, contributions, liked prompts, counts, and activity data
+  const [promptsRaw, total, totalUpvotes, pinnedPromptsRaw, contributionsRaw, likedPromptsRaw, privatePromptsCount, activityPrompts, activityVotes, activityChangeRequests, activityComments] = await Promise.all([
     db.prompt.findMany({
       where,
       orderBy: { createdAt: "desc" },
@@ -157,6 +175,7 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
       },
     }),
     // Fetch contributions (prompts where user is contributor but not author)
+    // Limited to 50 to prevent memory issues
     db.prompt.findMany({
       where: {
         contributors: {
@@ -164,9 +183,64 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
         },
         authorId: { not: user.id },
         isPrivate: false,
+        deletedAt: null,
       },
       orderBy: { updatedAt: "desc" },
+      take: 50,
       include: promptInclude,
+    }),
+    // Fetch liked prompts (prompts user has voted for)
+    db.prompt.findMany({
+      where: {
+        votes: {
+          some: { userId: user.id },
+        },
+        isPrivate: false,
+        deletedAt: null,
+      },
+      orderBy: { createdAt: "desc" },
+      take: 50,
+      include: promptInclude,
+    }),
+    // Count private prompts (only relevant for owner)
+    isOwner ? db.prompt.count({
+      where: {
+        authorId: user.id,
+        isPrivate: true,
+        deletedAt: null,
+      },
+    }) : Promise.resolve(0),
+    // Activity: prompts created in last year
+    db.prompt.findMany({
+      where: {
+        authorId: user.id,
+        createdAt: { gte: oneYearAgo },
+      },
+      select: { createdAt: true },
+    }),
+    // Activity: votes given in last year
+    db.promptVote.findMany({
+      where: {
+        userId: user.id,
+        createdAt: { gte: oneYearAgo },
+      },
+      select: { createdAt: true },
+    }),
+    // Activity: change requests in last year
+    db.changeRequest.findMany({
+      where: {
+        authorId: user.id,
+        createdAt: { gte: oneYearAgo },
+      },
+      select: { createdAt: true },
+    }),
+    // Activity: comments in last year
+    db.comment.findMany({
+      where: {
+        authorId: user.id,
+        createdAt: { gte: oneYearAgo },
+      },
+      select: { createdAt: true },
     }),
   ]);
 
@@ -182,6 +256,32 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
     ...p,
     voteCount: p._count?.votes ?? 0,
     contributorCount: p._count?.contributors ?? 0,
+  }));
+
+  // Transform liked prompts
+  const likedPrompts = likedPromptsRaw.map((p) => ({
+    ...p,
+    voteCount: p._count?.votes ?? 0,
+    contributorCount: p._count?.contributors ?? 0,
+  }));
+
+  // Process activity data into daily counts
+  const activityMap = new Map<string, number>();
+  const allActivities = [
+    ...activityPrompts,
+    ...activityVotes,
+    ...activityChangeRequests,
+    ...activityComments,
+  ];
+  
+  allActivities.forEach((item) => {
+    const dateStr = item.createdAt.toISOString().split("T")[0];
+    activityMap.set(dateStr, (activityMap.get(dateStr) || 0) + 1);
+  });
+
+  const activityData = Array.from(activityMap.entries()).map(([date, count]) => ({
+    date,
+    count,
   }));
 
   // Transform pinned prompts - filter out private prompts for non-owners (unlisted are visible)
@@ -201,6 +301,7 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
   // Fetch change requests for this user
   // 1. Change requests the user submitted (all statuses for owner, approved only for others)
   // 2. Change requests received on user's prompts (approved ones)
+  // Limited to 100 each to prevent memory issues
   const [submittedChangeRequests, receivedChangeRequests] = await Promise.all([
     // CRs user submitted
     db.changeRequest.findMany({
@@ -210,6 +311,7 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
         ...(isOwner ? {} : { status: "APPROVED" }),
       },
       orderBy: { createdAt: "desc" },
+      take: 100,
       include: {
         author: {
           select: {
@@ -245,6 +347,7 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
         authorId: { not: user.id }, // Exclude self-submitted
       },
       orderBy: { createdAt: "desc" },
+      take: 100,
       include: {
         author: {
           select: {
@@ -280,7 +383,7 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
 
   const pendingCount = submittedChangeRequests.filter((cr) => cr.status === "PENDING").length +
     receivedChangeRequests.filter((cr) => cr.status === "PENDING").length;
-  const defaultTab = tab === "changes" ? "changes" : tab === "contributions" ? "contributions" : "prompts";
+  const defaultTab = tab === "changes" ? "changes" : tab === "contributions" ? "contributions" : tab === "likes" ? "likes" : "prompts";
 
   const statusColors = {
     PENDING: "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border-yellow-500/20",
@@ -327,7 +430,7 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
           </div>
           {/* Actions - desktop only */}
           <div className="hidden md:flex items-center gap-2 shrink-0">
-            {config.features.mcp !== false && <McpServerPopup initialUsers={[user.username]} />}
+            {config.features.mcp !== false && <McpServerPopup initialUsers={[user.username]} showOfficialBranding={!config.homepage?.useCloneBranding} />}
             {isOwner && (
               <Button variant="outline" size="sm" asChild>
                 <Link href="/settings">
@@ -364,7 +467,7 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
 
         {/* Actions - mobile only */}
         <div className="md:hidden flex gap-2">
-          {config.features.mcp !== false && <McpServerPopup initialUsers={[user.username]} />}
+          {config.features.mcp !== false && <McpServerPopup initialUsers={[user.username]} showOfficialBranding={!config.homepage?.useCloneBranding} />}
           {isOwner && (
             <Button variant="outline" size="sm" asChild className="flex-1">
               <Link href="/settings">
@@ -374,11 +477,17 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
             </Button>
           )}
         </div>
+
+        </div>
+
+      {/* Activity Chart - above tabs */}
+      <div className="mb-6">
+        <ActivityChartWrapper data={activityData} locale={locale} />
       </div>
 
       {/* Tabs for Prompts and Change Requests */}
       <Tabs defaultValue={defaultTab} className="w-full">
-        <TabsList className="mb-4">
+          <TabsList className="mb-4">
           <TabsTrigger value="prompts" className="gap-2">
             <FileText className="h-4 w-4" />
             {t("prompts")}
@@ -389,6 +498,15 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
             {contributions.length > 0 && (
               <Badge variant="secondary" className="ml-1 h-5 min-w-5 px-1 text-xs">
                 {contributions.length}
+              </Badge>
+            )}
+          </TabsTrigger>
+          <TabsTrigger value="likes" className="gap-2">
+            <Heart className="h-4 w-4" />
+            {t("likes")}
+            {likedPrompts.length > 0 && (
+              <Badge variant="secondary" className="ml-1 h-5 min-w-5 px-1 text-xs">
+                {likedPrompts.length}
               </Badge>
             )}
           </TabsTrigger>
@@ -404,6 +522,25 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
         </TabsList>
 
         <TabsContent value="prompts">
+          {/* Date Filter Indicator */}
+          {dateFilter && (
+            <div className="flex items-center gap-2 mb-4 p-3 bg-primary/10 border border-primary/20 rounded-lg">
+              <Calendar className="h-4 w-4 text-primary" />
+              <span className="text-sm">
+                {t("filteringByDate", { date: new Date(dateFilter).toLocaleDateString(locale, { weekday: "long", year: "numeric", month: "long", day: "numeric" }) })}
+              </span>
+              <Link 
+                href={`/@${user.username}`} 
+                className="ml-auto text-xs text-primary hover:underline"
+              >
+                {t("clearFilter")}
+              </Link>
+            </div>
+          )}
+
+          {/* Private Prompts MCP Note - only shown to owner with private prompts */}
+          {isOwner && <PrivatePromptsNote count={privatePromptsCount} />}
+
           {/* Pinned Prompts Section */}
           {pinnedPrompts.length > 0 && (
             <div className="mb-6 pb-6 border-b">
@@ -421,11 +558,26 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
 
           {prompts.length === 0 && pinnedPrompts.length === 0 ? (
             <div className="text-center py-12 border rounded-lg bg-muted/30">
-              <p className="text-muted-foreground">{isOwner ? t("noPromptsOwner") : t("noPrompts")}</p>
-              {isOwner && (
-                <Button asChild className="mt-4" size="sm">
-                  <Link href="/prompts/new">{t("createFirstPrompt")}</Link>
-                </Button>
+              {dateFilter ? (
+                <>
+                  <p className="text-muted-foreground">
+                    {isOwner ? t("noPromptsOnDateOwner") : t("noPromptsOnDate")}
+                  </p>
+                  {isOwner && (
+                    <Button asChild className="mt-4" size="sm">
+                      <Link href="/prompts/new">{t("createForToday")}</Link>
+                    </Button>
+                  )}
+                </>
+              ) : (
+                <>
+                  <p className="text-muted-foreground">{isOwner ? t("noPromptsOwner") : t("noPrompts")}</p>
+                  {isOwner && (
+                    <Button asChild className="mt-4" size="sm">
+                      <Link href="/prompts/new">{t("createFirstPrompt")}</Link>
+                    </Button>
+                  )}
+                </>
               )}
             </div>
           ) : prompts.length > 0 ? (
@@ -456,6 +608,21 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
                 <PromptCard key={prompt.id} prompt={prompt} />
               ))}
             </div>
+          )}
+        </TabsContent>
+
+        <TabsContent value="likes">
+          {likedPrompts.length === 0 ? (
+            <div className="text-center py-12 border rounded-lg bg-muted/30">
+              <Heart className="h-10 w-10 text-muted-foreground mx-auto mb-3" />
+              <p className="text-muted-foreground">{isOwner ? t("noLikesOwner") : t("noLikes")}</p>
+            </div>
+          ) : (
+            <Masonry columnCount={{ default: 1, md: 2, lg: 3 }} gap={16}>
+              {likedPrompts.map((prompt: PromptCardProps["prompt"]) => (
+                <PromptCard key={prompt.id} prompt={prompt} />
+              ))}
+            </Masonry>
           )}
         </TabsContent>
 

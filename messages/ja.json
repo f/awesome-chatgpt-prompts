@@ -44,7 +44,8 @@
     "profile": "プロフィール",
     "login": "ログイン",
     "register": "登録",
-    "logout": "ログアウト"
+    "logout": "ログアウト",
+    "ide": "Prompt Builder"
   },
   "brand": {
     "copyLogoSvg": "ロゴSVGをコピー",
@@ -101,6 +102,7 @@
   "prompts": {
     "title": "プロンプト",
     "create": "プロンプトを作成",
+    "createInfo": "このプラットフォームはプロンプトを実行しません — AIプロンプトを共有・発見するためのコミュニティライブラリです。ここでプロンプトを作成すると、他のユーザーがChatGPT、Claude、Geminiなどのお気に入りのAIツールでコピーして使用できます。コミュニティはあなたのプロンプトにコメントしたり、変更リクエストを通じて改善を提案することもできます。",
     "hfDataStudio": {
       "button": "HF Data Studio",
       "sqlQuery": "SQLクエリ",
@@ -150,7 +152,8 @@
     "deletePromptTitle": "このプロンプトを削除しますか？",
     "deletePromptDescription": "この操作は取り消せません。プロンプトは完全に削除されます。",
     "deleteError": "プロンプトの削除に失敗しました",
-    "noMorePrompts": "最後まで表示しました",
+    "noMorePrompts": "すべて表示しました",
+    "loadMore": "もっと読み込む",
     "loading": "読み込み中...",
     "types": {
       "text": "テキスト",
@@ -158,16 +161,20 @@
       "video": "動画",
       "audio": "音声",
       "structured": "構造化",
-      "document": "ドキュメント"
+      "document": "ドキュメント",
+      "skill": "スキル"
     },
     "inputType": "ユーザープロンプト",
-    "outputType": "AI レスポンス",
-    "inputTypeDescription": "プロンプトのフォーマット",
-    "outputTypeDescription": "AIが生成するレスポンスの種類",
+    "outputType": "AI応答",
+    "afterAiProcessing": "プロンプトは何を生成しますか？",
+    "inputTypeDescription": "プロンプトの形式",
+    "outputTypeDescription": "AIツールでこのプロンプトを実行したときの結果をコミュニティに示しましょう。お気に入りのAIアプリを使って自分で出力を生成できます。",
     "outputTypeStructuredNote": "構造化プロンプトは様々な出力タイプを生成できます",
+    "outputTypeSkillNote": "スキルはエージェントにコードを生成するよう指示します。AIはスキルの指示に基づいてコードを出力します。",
     "inputTypes": {
       "text": "テキストプロンプト",
-      "structured": "構造化 (JSON/YAML)"
+      "structured": "構造化 (JSON/YAML)",
+      "skill": "スキル (Agent Skills)"
     },
     "outputTypes": {
       "text": "テキスト",
@@ -179,7 +186,7 @@
       "text": "✨ ここで魔法が起こります... AIが素晴らしいものを書きます！",
       "imageUpload": "サンプル画像をアップロード",
       "videoUpload": "サンプル動画/GIFをアップロード",
-      "audio": "音声出力プレビュー"
+      "audioUpload": "サンプルオーディオをアップロード"
     },
     "insertVariable": "変数を挿入",
     "variableName": "変数名",
@@ -222,7 +229,20 @@
     "confirmDelete": "このプロンプトを削除してもよろしいですか？",
     "promptCreated": "プロンプトを作成しました",
     "promptUpdated": "プロンプトを更新しました",
+    "rateLimitError": "次のプロンプトを作成するまで30秒お待ちください",
+    "dailyLimitError": "1日のプロンプト作成上限（5件）に達しました",
+    "duplicatePromptError": "同じタイトルまたは内容のプロンプトが既にあります",
+    "contentExistsError": "この内容のプロンプトは既に存在します：「{title}」（{author}作）",
     "run": "実行",
+    "downloadMarkdown": "MDをダウンロード",
+    "downloadYaml": "YAMLをダウンロード",
+    "downloadSkillMd": "SKILL.mdをダウンロード",
+    "copyMarkdownUrl": "MDリンクをコピー",
+    "copyYamlUrl": "YAMLリンクをコピー",
+    "downloadStarted": "ダウンロード開始",
+    "downloadFailed": "ダウンロード失敗",
+    "urlCopied": "リンクをコピーしました",
+    "failedToCopyUrl": "リンクのコピーに失敗",
     "promptCopied": "プロンプトをコピーしました",
     "promptCopiedDescription": "プロンプトがクリップボードにコピーされました。{platform}を開いた後に貼り付けてください。",
     "openPlatform": "{platform}を開く",
@@ -238,11 +258,65 @@
     "mediaUrlPlaceholder": "https://...",
     "mediaUrlDescription": "このプロンプトのメディアファイルURLを入力",
     "mediaImage": "メディア画像",
+    "mediaVideo": "メディア動画",
+    "mediaAudio": "メディアオーディオ",
     "clickToUpload": "クリックして画像をアップロード",
+    "clickToUploadVideo": "クリックして動画をアップロード",
+    "clickToUploadAudio": "クリックしてオーディオファイルをアップロード",
     "uploading": "アップロード中...",
-    "maxFileSize": "最大ファイルサイズ: 5MB (JPEG, PNG, GIF, WebP)",
-    "fileTooLarge": "ファイルが大きすぎます。最大サイズは5MBです。",
+    "maxFileSize": "最大ファイルサイズ: 4MB (JPEG, PNG, GIF, WebP)",
+    "maxVideoSize": "最大ファイルサイズ: 4MB (MP4)",
+    "maxAudioSize": "最大ファイルサイズ: 4MB (MP3, WAV, OGG)",
+    "fileTooLarge": "ファイルが大きすぎます。最大サイズは4MBです。",
+    "videoTooLarge": "動画が大きすぎます。最大サイズは4MBです。",
     "invalidFileType": "無効なファイル形式です。JPEG、PNG、GIF、WebPのみ許可されています。",
+    "invalidVideoType": "無効な動画形式です。MP4動画のみ許可されています。",
+    "invalidAudioType": "無効なオーディオタイプです。MP3、WAV、OGGファイルのみ許可されています。",
+    "uploadMedia": "メディアをアップロード",
+    "generateMedia": "生成",
+    "chooseGenerator": "生成ツールを選択",
+    "uploadInstead": "代わりにアップロード",
+    "confirmGeneration": "生成を確認",
+    "confirmGenerationDescription": "{provider}で{model}モデルを使用してメディアを生成しますか？",
+    "promptPreview": "プロンプトプレビュー",
+    "noPromptProvided": "プロンプトが入力されていません",
+    "inputImage": "入力画像",
+    "aspectRatio": "アスペクト比",
+    "startGeneration": "生成を開始",
+    "generatingMedia": "{provider}でメディア生成中",
+    "doNotCloseWindow": "生成中はこのウィンドウを閉じないでください。",
+    "generationComplete": "生成完了",
+    "generationFailed": "生成失敗",
+    "mediaAddedToPrompt": "メディアがプロンプトに追加されました。",
+    "mediaGenerated": "メディアが正常に生成されました！",
+    "orGenerateMedia": "またはAIで生成",
+    "aiGenerationAvailable": "✨ AI生成が利用可能",
+    "generateWith": "AIで生成",
+    "generateImage": "画像を生成",
+    "generateVideo": "動画を生成",
+    "generateAudio": "オーディオを生成",
+    "generateImageDescription": "AIを使ってプロンプト用のユニークな画像を生成 — コミュニティにプロンプトを紹介するのに最適。",
+    "generateVideoDescription": "AIを使ってプロンプト用のユニークな動画を生成 — コミュニティにプロンプトを紹介するのに最適。",
+    "generateAudioDescription": "AIを使用してプロンプト用のユニークなオーディオ/音楽を生成 — コミュニティにプロンプトを紹介するのに最適です。",
+    "close": "閉じる",
+    "mediaGeneration": {
+      "connecting": "サーバーに接続中...",
+      "connected": "接続完了、キューで待機中...",
+      "queued": "キューで待機中...",
+      "accepted": "タスクが受理されました...",
+      "preprocessStart": "前処理中...",
+      "preprocessEnd": "前処理完了",
+      "gpuAssigned": "GPUが割り当てられました、キューで待機中...",
+      "started": "生成開始...",
+      "generating": "生成中...",
+      "processingOutput": "出力を処理中...",
+      "ending": "生成完了",
+      "postprocessStart": "後処理中...",
+      "postprocessEnd": "最終処理中...",
+      "complete": "完了！",
+      "error": "エラーが発生しました",
+      "errorProcessing": "処理エラー..."
+    },
     "privateDescription": "非公開プロンプトはあなただけに表示されます",
     "update": "更新",
     "createButton": "作成",
@@ -267,7 +341,11 @@
     "translateToLanguage": "あなたの言語に翻訳",
     "translated": "コンテンツを翻訳しました",
     "translationFailed": "翻訳に失敗しました",
-    "alreadyTranslated": "翻訳済み"
+    "alreadyTranslated": "すでに翻訳済み",
+    "learnHowToWritePrompts": "効果的なプロンプトの書き方を学ぶ →",
+    "structuredFormatDetected": "{format}形式が検出されました",
+    "structuredFormatWarningDescription": "プロンプトの内容が構造化データのようです。より良い構文ハイライトと検証のために構造化モードへの切り替えを検討してください。",
+    "switchToStructured": "{format}に切り替え"
   },
   "changeRequests": {
     "title": "変更リクエスト",
@@ -326,6 +404,9 @@
     "noCategories": "カテゴリーが見つかりません",
     "noSubcategories": "このカテゴリーにはまだサブカテゴリーがありません",
     "prompts": "件のプロンプト",
+    "subscribers": "人の購読者",
+    "promptCount": "{count}件のプロンプト",
+    "subscriberCount": "{count}人の購読者",
     "confirmDelete": "このカテゴリーを削除してもよろしいですか？"
   },
   "tags": {
@@ -424,6 +505,29 @@
       "slugsSuccess": "{count} 件のスラッグを生成しました",
       "slugsResult": "成功: {success}, 失敗: {failed}"
     },
+    "promptsList": {
+      "title": "すべてのプロンプト",
+      "description": "システム内のすべてのプロンプトを閲覧・管理",
+      "noPrompts": "プロンプトが見つかりません",
+      "private": "非公開",
+      "unlisted": "非掲載",
+      "views": "閲覧",
+      "votes": "投票",
+      "created": "作成日",
+      "showing": "{total}件中 {from}-{to}を表示",
+      "deleteConfirmTitle": "プロンプトを削除しますか？",
+      "deleteConfirmDescription": "「{title}」を完全に削除してもよろしいですか？この操作は取り消せません。",
+      "deleted": "プロンプトを削除しました",
+      "filters": {
+        "all": "すべて",
+        "public": "公開",
+        "private": "非公開",
+        "unlisted": "非掲載",
+        "featured": "注目",
+        "reported": "報告済み",
+        "deleted": "削除済み"
+      }
+    },
     "users": {
       "title": "ユーザー管理",
       "description": "ユーザーアカウントの表示と管理",
@@ -446,7 +550,31 @@
       "unverified": "ユーザーの認証を解除しました",
       "verifyFailed": "認証の更新に失敗しました",
       "deleteConfirmTitle": "ユーザーを削除しますか？",
-      "deleteConfirmDescription": "この操作は取り消せません。すべてのユーザーデータが完全に削除されます。"
+      "deleteConfirmDescription": "この操作は取り消せません。すべてのユーザーデータが完全に削除されます。",
+      "searchPlaceholder": "ユーザーを検索...",
+      "noUsers": "ユーザーが見つかりません",
+      "showing": "{total}件中 {from}-{to}を表示",
+      "filters": {
+        "all": "すべて",
+        "admin": "管理者",
+        "user": "ユーザー",
+        "verified": "認証済み",
+        "unverified": "未認証",
+        "flagged": "フラグ付き"
+      },
+      "flag": "ユーザーにフラグを付ける",
+      "unflag": "フラグを解除",
+      "flagged": "ユーザーにフラグを付けました",
+      "unflagged": "フラグを解除しました",
+      "flagFailed": "フラグ状態の更新に失敗しました",
+      "editCredits": "クレジットを編集",
+      "editCreditsTitle": "生成クレジットを編集",
+      "editCreditsDescription": "@{username}の1日のクレジット上限を設定",
+      "dailyLimit": "1日のクレジット上限",
+      "currentCredits": "現在: {remaining}/{limit} クレジット残り",
+      "creditsUpdated": "クレジットが正常に更新されました",
+      "creditsUpdateFailed": "クレジットの更新に失敗しました",
+      "save": "保存"
     },
     "categories": {
       "title": "カテゴリー管理",
@@ -480,7 +608,13 @@
       "noParent": "なし（ルートカテゴリー）",
       "parentHelp": "空のままでルートカテゴリーを作成、または親を選択してサブカテゴリーを作成",
       "rootCategory": "ルート",
-      "subcategories": "サブカテゴリー"
+      "subcategories": "サブカテゴリー",
+      "pin": "プロンプトページに固定",
+      "unpin": "プロンプトページから固定解除",
+      "pinned": "カテゴリーを固定しました",
+      "unpinned": "カテゴリーの固定を解除しました",
+      "pinnedBadge": "固定",
+      "pinnedLabel": "プロンプトページに固定（クイックフィルターとして表示）"
     },
     "tags": {
       "title": "タグ管理",
@@ -605,7 +739,24 @@
     "contributionsCount": "コントリビューション",
     "noContributions": "コントリビューションはまだありません",
     "noContributionsOwner": "まだどのプロンプトにも貢献していません",
-    "contributedTo": "{author}のプロンプトに貢献"
+    "contributedTo": "{author}のプロンプトに貢献",
+    "privatePromptsNote": "{count}件のプライベートプロンプトがあります。対応クライアントでAPIキーを使用してMCP経由でアクセスできます。",
+    "activityInLastYear": "過去1年間で{count}件の貢献",
+    "contribution": "貢献",
+    "contributionsPlural": "貢献",
+    "inLastYear": "過去1年間",
+    "inLast6Months": "過去6ヶ月間",
+    "less": "少",
+    "more": "多",
+    "activity": "アクティビティ",
+    "filteringByDate": "{date}のプロンプトを表示中",
+    "clearFilter": "フィルターをクリア",
+    "noPromptsOnDate": "この日付にはプロンプトが見つかりませんでした。",
+    "noPromptsOnDateOwner": "この日付にはプロンプトがありません。",
+    "createForToday": "今日用に作成",
+    "likes": "いいね",
+    "noLikes": "いいねしたプロンプトはまだありません",
+    "noLikesOwner": "まだプロンプトにいいねしていません"
   },
   "subscription": {
     "subscribe": "購読",
@@ -675,7 +826,7 @@
     "heroFeature1": "無料 & オープンソース",
     "heroFeature2": "プライバシーのためセルフホスト",
     "heroFeature3": "チーム & 組織向け",
-    "cloneOnGithub": "GitHubでクローン",
+    "setupPrivateServer": "プライベートサーバーを構築",
     "beStargazer": "GitHubで{count}番目のスターになる",
     "browsePrompts": "プロンプトを見る",
     "viewFeed": "フィードを見る",
@@ -702,7 +853,36 @@
   "notifications": {
     "title": "通知",
     "pendingChangeRequests": "保留中の変更リクエスト",
-    "noNotifications": "通知はありません"
+    "noNotifications": "通知はありません",
+    "markAllRead": "すべて既読にする",
+    "commentedOnPrompt": "があなたのプロンプトにコメントしました",
+    "repliedToComment": "があなたのコメントに返信しました"
+  },
+  "comments": {
+    "comments": "コメント",
+    "writeComment": "コメントを書く...",
+    "postComment": "コメントを投稿",
+    "reply": "返信",
+    "replyTo": "@{username}に返信...",
+    "posting": "投稿中...",
+    "commentPosted": "コメントを投稿しました",
+    "commentDeleted": "コメントを削除しました",
+    "commentFlagged": "コメントをフラグしました",
+    "commentUnflagged": "フラグを解除しました",
+    "noComments": "コメントはまだありません。最初のコメントを投稿しましょう！",
+    "loginToComment": "コメントするにはログインしてください。",
+    "loginToVote": "投票するにはログインしてください。",
+    "upvote": "賛成",
+    "downvote": "反対",
+    "flag": "フラグ",
+    "unflag": "フラグ解除",
+    "flagged": "フラグ済み",
+    "admin": "管理者",
+    "deleteCommentTitle": "コメントを削除しますか？",
+    "deleteCommentDescription": "この操作は取り消せません。コメントとすべての返信が完全に削除されます。",
+    "deleting": "削除中...",
+    "showReplies": "{count}件の返信を表示",
+    "hideReplies": "返信を非表示"
   },
   "promptmasters": {
     "title": "Promptmasters",
@@ -743,6 +923,17 @@
   "notFound": {
     "title": "ページが見つかりません",
     "description": "お探しのページは存在しないか、移動された可能性があります。",
+    "goHome": "ホームへ",
+    "goBack": "戻る",
+    "helpfulLinks": "お役立ちリンク：",
+    "browsePrompts": "プロンプトを見る",
+    "categories": "カテゴリー",
+    "createPrompt": "プロンプトを作成"
+  },
+  "serverError": {
+    "title": "サーバーエラー",
+    "description": "問題が発生しました。後でもう一度お試しください。",
+    "tryAgain": "再試行",
     "goHome": "ホームへ",
     "goBack": "戻る",
     "helpfulLinks": "お役立ちリンク：",
@@ -810,10 +1001,54 @@
     "generateApiKey": "MCP経由でプロンプトを保存するためのAPIキーを生成"
   },
   "footer": {
+    "howTo": "使い方",
     "docs": "ドキュメント",
     "api": "API",
     "privacy": "プライバシー",
-    "terms": "利用規約"
+    "terms": "利用規約",
+    "support": "サポート"
+  },
+  "support": {
+    "title": "サポート",
+    "description": "よくある質問への回答を見つけるか、コミュニティからサポートを受けてください。",
+    "faq": {
+      "title": "よくある質問",
+      "whatIsPrompt": {
+        "question": "プロンプトとは何ですか？",
+        "answer": "プロンプトとは、AIモデル（ChatGPT、Claude、Geminiなど）に与える指示または入力のことです。AIに何をしてほしいかを伝える方法です。適切に作成されたプロンプトは、AIシステムからより良く、より有用な出力を得ることができます。"
+      },
+      "whyPromptsMatter": {
+        "question": "なぜプロンプトが重要なのですか？AIに何でも聞けばいいのでは？",
+        "answer": "高度なAIモデルはカジュアルな質問をうまく処理できますが、プロンプトは以下の場合に重要になります：\n\n• アプリケーションでAPIを介してAIを使用する場合 — 多くの場合、一発勝負（「ワンショットプロンプティング」）で、やり取りの対話がない\n• より正確な指示が必要な小型で経済的なモデルで作業する場合\n• 一貫性と信頼性が重要な本番システムを構築する場合\n\n最適化されたプロンプトは、より良い結果を得て、トークン（とお金）を節約し、より信頼性の高いAI搭載アプリケーションを作成するのに役立ちます。"
+      },
+      "whatIsPromptschat": {
+        "question": "prompts.chatとは何ですか？",
+        "answer": "prompts.chatは、人々がAIプロンプトを共有、発見、収集するコミュニティ主導のプラットフォームです。4年以上にわたり、ユーザーはここでプロンプト最適化のテクニックを共有してきました。コミュニティはお互いにプロンプトを改善し、AIシステムとの作業の新しいアプローチを学ぶのを助け合っています。"
+      },
+      "howToUse": {
+        "question": "このプラットフォームのプロンプトをどのように使用しますか？",
+        "answer": "プロンプトを閲覧し、気に入ったものを見つけてコピーするだけです。その後、お好みのAIツール（ChatGPT、Claude、Geminiなど）に貼り付けるか、APIを介してアプリケーションで使用できます。多くのプロンプトには、コピーする前にカスタマイズできる変数が含まれています。"
+      },
+      "license": {
+        "question": "これらのプロンプトを商用利用できますか？",
+        "answer": "はい！prompts.chat上のすべてのプロンプトはCC0（Creative Commons Zero）ライセンスの下でリリースされており、パブリックドメインに属します。帰属表示なしで、商用利用を含むあらゆる目的で自由に使用、変更、配布できます。"
+      },
+      "selfHost": {
+        "question": "このプラットフォームをセルフホストできますか？",
+        "answer": "もちろんです！prompts.chatは完全にオープンソースです。チームや組織のために独自のプライベートインスタンスをデプロイできます。セットアップ手順については、セルフホスティングのドキュメントをご確認ください。"
+      }
+    },
+    "contact": {
+      "title": "さらにサポートが必要ですか？",
+      "description": "質問への回答が見つからなかった場合は、以下のフォームに記入してください。GitHubでお手伝いします。",
+      "form": {
+        "title": "イシューのタイトル",
+        "titlePlaceholder": "問題や質問の簡単な概要",
+        "description": "説明",
+        "descriptionPlaceholder": "問題や質問を詳しく説明してください..."
+      },
+      "openIssue": "GitHubでイシューを開く"
+    }
   },
   "apiKey": {
     "title": "MCP APIキー",
@@ -834,5 +1069,128 @@
     "publicByDefault": "デフォルトで公開プロンプト",
     "publicByDefaultDescription": "MCP経由でプロンプトを保存する際、プライベートではなくデフォルトで公開にします。",
     "settingUpdated": "設定が更新されました"
+  },
+  "connectedPrompts": {
+    "title": "プロンプトフロー",
+    "description": "一部のプロンプトは複数ステップのワークフローとして機能します。プロンプトを接続してシーケンスを作成しましょう。",
+    "addConnection": "接続を追加",
+    "addPrevious": "前を追加",
+    "addNext": "次を追加",
+    "addConnectionTitle": "接続を追加",
+    "addPreviousTitle": "前のプロンプトを追加",
+    "addNextTitle": "次のプロンプトを追加",
+    "addConnectionDescription": "このプロンプトを条件ラベル付きで別のプロンプトにリンクします。",
+    "addPreviousDescription": "ワークフローでこれより前に来るプロンプトを選択してください。",
+    "addNextDescription": "ワークフローでこれより後に来るプロンプトを選択してください。",
+    "noConnections": "接続されたプロンプトはまだありません。プロンプトチェーンを作成するには接続を追加してください。",
+    "previousSteps": "前のステップ",
+    "nextSteps": "次のステップ",
+    "searchPrompt": "プロンプトを検索",
+    "searchPlaceholder": "タイトルで検索...",
+    "selectedPrompt": "選択したプロンプト",
+    "connectionLabel": "接続ラベル",
+    "labelPlaceholder": "例：最初のフレーム、次のステップ、処理後...",
+    "labelHint": "プロンプト間の条件または遷移を説明してください",
+    "change": "変更",
+    "cancel": "キャンセル",
+    "fillAllFields": "プロンプトを選択してラベルを入力してください",
+    "connectionFailed": "接続の作成に失敗しました",
+    "connectionAdded": "接続が正常に追加されました",
+    "connectionDeleted": "接続が削除されました",
+    "deleteFailed": "接続の削除に失敗しました",
+    "noResults": "プロンプトが見つかりません"
+  },
+  "promptWritingGuide": {
+    "title": "優れたプロンプトの書き方",
+    "subtitle": "効果的なAIプロンプトを作成するためのヒント、例、ベストプラクティス",
+    "generalTips": {
+      "title": "効果的なプロンプトのための一般的なヒント",
+      "beSpecific": {
+        "title": "具体的かつ明確に",
+        "description": "曖昧なプロンプトは曖昧な回答につながります。フォーマット、長さ、トーン、制約など、正確に何が欲しいか指定してください。"
+      },
+      "provideContext": {
+        "title": "コンテキストを提供する",
+        "description": "AIがニーズを理解するのに役立つ背景情報を提供してください。誰が、何を、なぜ、誰のためにを含めてください。"
+      },
+      "defineFormat": {
+        "title": "出力フォーマットを定義する",
+        "description": "回答の構造をどのようにしたいか指定してください：箇条書き、段落、コードブロック、表など。"
+      },
+      "setConstraints": {
+        "title": "制約を設定する",
+        "description": "単語数、読解レベル、避けるべきこと、従うべき特定の要件などの制限を含めてください。"
+      },
+      "includeExamples": {
+        "title": "例を含める",
+        "description": "良い出力がどのようなものかAIに示してください。例は回答のスタイルと品質を調整するのに役立ちます。"
+      }
+    },
+    "rolePlaying": {
+      "title": "ロールプレイング：「～として振る舞う」パターン",
+      "description": "最も強力なプロンプト技術の1つは、AIに特定の役割やペルソナを割り当てることです。これは専門知識、トーン、視点を確立するのに役立ちます。",
+      "basicPattern": "基本的なロールパターン",
+      "exampleExpert": "例：技術専門家",
+      "exampleCreative": "例：クリエイティブコーチ",
+      "popularRoles": "人気のロールカテゴリ"
+    },
+    "variables": {
+      "title": "動的プロンプトのための変数の使用",
+      "description": "変数はプロンプトを再利用可能でカスタマイズ可能にします。ユーザーはプロンプトを使用するたびに異なる値を入力できます。",
+      "syntax": "変数の構文",
+      "requiredVar": "必須変数（ユーザーが入力必須）",
+      "withDefault": "デフォルト値付き変数",
+      "simpleExample": "シンプルな例",
+      "advancedExample": "複数変数を使用した高度な例",
+      "bestPractices": "ベストプラクティス",
+      "tip1": "説明的な変数名を使用: '$'{topic}は'$'{x}より良い",
+      "tip2": "オプション値には適切なデフォルトを提供",
+      "tip3": "関連する変数をプロンプト内でグループ化",
+      "tip4": "複数単語の名前にはアンダースコアを使用：'$'{target_audience}"
+    },
+    "structured": {
+      "title": "構造化プロンプト（JSON/YAML）",
+      "description": "構造化プロンプトは、複雑な指示を明確に整理するためにJSONまたはYAML形式を使用します。マルチステップワークフロー、エージェント、詳細な設定に最適です。",
+      "whenToUse": "構造化プロンプトを使用するタイミング",
+      "useCase1": "複雑なマルチステップワークフローまたはパイプライン",
+      "useCase2": "複数パラメータを持つエージェント設定",
+      "useCase3": "多くの相互接続された設定を持つプロンプト",
+      "useCase4": "APIドリブンまたはプログラマティックなプロンプト使用",
+      "jsonExample": "JSON例：面接アシスタント",
+      "yamlExample": "YAML例：コンテンツジェネレーター",
+      "agentWorkflow": "JSON例：エージェントワークフロー",
+      "tips": "構造化プロンプトのヒント",
+      "tip1": "プログラマティック使用にはJSON、人間が読める設定にはYAMLを使用",
+      "tip2": "可読性のためにネストを浅く保つ（最大2-3レベル）",
+      "tip3": "複雑なセクションを説明するためにYAMLにコメントを含める",
+      "tip4": "保存前にJSON/YAML構文を検証"
+    },
+    "outputOptimization": {
+      "title": "出力の最適化",
+      "description": "要件を明確にすることで、必要なフォーマットとスタイルを正確に出力するようAIを導きます。",
+      "formatInstructions": "フォーマット指示テンプレート",
+      "constraintExamples": "一般的な制約タイプ",
+      "lengthConstraints": "長さの制約：",
+      "lengthExample": "「回答を200語以内に」/「正確に5つの箇条書きを提供」",
+      "styleConstraints": "スタイルの制約：",
+      "styleExample": "「初心者向けのシンプルな言葉を使用」/「技術的で正確に」",
+      "contentConstraints": "内容の制約：",
+      "contentExample": "「個人的な意見を含めない」/「事実情報のみに焦点を当てる」"
+    }
+  },
+  "ide": {
+    "title": "Prompt Builder",
+    "subtitle": "型安全で構造化されたプロンプト構築",
+    "editor": "エディタ",
+    "preview": "プレビュー",
+    "run": "実行",
+    "reset": "リセット",
+    "copied": "クリップボードにコピーしました",
+    "runToPreview": "実行をクリックしてプロンプトのプレビューを表示",
+    "cannotEvaluate": "このコードは評価できません。",
+    "onlyPromptsChat": "{library}のインポートのみがサポートされています。",
+    "desktopOnly": "デスクトップ専用",
+    "desktopOnlyDescription": "プロンプトビルダーは、正常に動作するために大きな画面が必要です。デスクトップまたはラップトップコンピュータでこのページを開いてください。",
+    "browsePrompts": "プロンプトを閲覧"
   }
 }

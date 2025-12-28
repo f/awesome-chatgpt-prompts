@@ -1,0 +1,148 @@
+"use client";
+
+import { useEffect, useRef, useState, useCallback, ReactNode } from "react";
+
+interface MasonryProps {
+  children: ReactNode[];
+  columnCount?: {
+    default: number;
+    md?: number;
+    lg?: number;
+  };
+  gap?: number;
+  className?: string;
+}
+
+export function Masonry({ 
+  children, 
+  columnCount = { default: 1, md: 2, lg: 3 },
+  gap = 16,
+  className = ""
+}: MasonryProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [columns, setColumns] = useState(columnCount.default);
+  const [containerHeight, setContainerHeight] = useState(0);
+  const itemRefs = useRef<Map<number, HTMLDivElement>>(new Map());
+  const positionsRef = useRef<Map<number, { x: number; y: number }>>(new Map());
+  const [, forceUpdate] = useState(0);
+  const prevChildrenLengthRef = useRef(0);
+
+  // Determine column count based on screen size
+  useEffect(() => {
+    const updateColumns = () => {
+      const width = window.innerWidth;
+      if (width >= 1024 && columnCount.lg) {
+        setColumns(columnCount.lg);
+      } else if (width >= 768 && columnCount.md) {
+        setColumns(columnCount.md);
+      } else {
+        setColumns(columnCount.default);
+      }
+    };
+
+    updateColumns();
+    window.addEventListener("resize", updateColumns);
+    return () => window.removeEventListener("resize", updateColumns);
+  }, [columnCount]);
+
+  // Calculate positions for all items
+  const calculatePositions = useCallback(() => {
+    if (!containerRef.current) return;
+
+    const containerWidth = containerRef.current.offsetWidth;
+    const columnWidth = (containerWidth - gap * (columns - 1)) / columns;
+    const columnHeights = new Array(columns).fill(0);
+
+    children.forEach((_, index) => {
+      const itemEl = itemRefs.current.get(index);
+      if (!itemEl) return;
+
+      // Find the shortest column
+      const shortestColumn = columnHeights.indexOf(Math.min(...columnHeights));
+      const x = shortestColumn * (columnWidth + gap);
+      const y = columnHeights[shortestColumn];
+
+      positionsRef.current.set(index, { x, y });
+
+      // Update column height
+      const itemHeight = itemEl.offsetHeight;
+      columnHeights[shortestColumn] += itemHeight + gap;
+    });
+
+    const newHeight = Math.max(...columnHeights) - gap;
+    if (newHeight > 0) {
+      setContainerHeight(newHeight);
+    }
+    forceUpdate(n => n + 1);
+  }, [children, columns, gap]);
+
+  // Recalculate when new children are added
+  useEffect(() => {
+    const currentLength = children.length;
+    const prevLength = prevChildrenLengthRef.current;
+    
+    // Calculate positions after a brief delay for new items to render
+    const timer = setTimeout(calculatePositions, 10);
+    prevChildrenLengthRef.current = currentLength;
+
+    return () => clearTimeout(timer);
+  }, [children.length, calculatePositions]);
+
+  // Recalculate on column count change (resize)
+  useEffect(() => {
+    calculatePositions();
+  }, [columns, calculatePositions]);
+
+  // Use ResizeObserver for image loading
+  useEffect(() => {
+    const observer = new ResizeObserver(() => {
+      calculatePositions();
+    });
+
+    itemRefs.current.forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [calculatePositions, children.length]);
+
+  const containerWidth = containerRef.current?.offsetWidth || 0;
+  const columnWidth = containerWidth > 0 
+    ? (containerWidth - gap * (columns - 1)) / columns 
+    : 0;
+
+  return (
+    <div 
+      ref={containerRef} 
+      className={`relative ${className}`}
+      style={{ height: containerHeight > 0 ? containerHeight : "auto" }}
+    >
+      {children.map((child, index) => {
+        const position = positionsRef.current.get(index);
+        const hasPosition = position !== undefined;
+        return (
+          <div
+            key={index}
+            ref={(el) => {
+              if (el) {
+                itemRefs.current.set(index, el);
+              } else {
+                itemRefs.current.delete(index);
+              }
+            }}
+            className="absolute"
+            style={{
+              width: columnWidth > 0 ? columnWidth : "100%",
+              transform: hasPosition 
+                ? `translate3d(${position.x}px, ${position.y}px, 0)` 
+                : "translate3d(-9999px, 0, 0)",
+              visibility: hasPosition ? "visible" : "hidden",
+            }}
+          >
+            {child}
+          </div>
+        );
+      })}
+    </div>
+  );
+}

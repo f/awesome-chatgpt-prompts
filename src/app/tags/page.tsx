@@ -1,24 +1,34 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
+import { unstable_cache } from "next/cache";
 import { Tag } from "lucide-react";
 import { db } from "@/lib/db";
+
+// Cached tags query
+const getTags = unstable_cache(
+  async () => {
+    return db.tag.findMany({
+      include: {
+        _count: {
+          select: { prompts: true },
+        },
+      },
+      orderBy: {
+        prompts: {
+          _count: "desc",
+        },
+      },
+    });
+  },
+  ["tags-page"],
+  { tags: ["tags"] }
+);
 
 export default async function TagsPage() {
   const t = await getTranslations("tags");
 
-  // Fetch all tags with prompt counts, ordered by popularity
-  const tags = await db.tag.findMany({
-    include: {
-      _count: {
-        select: { prompts: true },
-      },
-    },
-    orderBy: {
-      prompts: {
-        _count: "desc",
-      },
-    },
-  });
+  // Fetch all tags with prompt counts, ordered by popularity (cached)
+  const tags = await getTags();
 
   return (
     <div className="container py-6">
@@ -38,6 +48,7 @@ export default async function TagsPage() {
             <Link
               key={tag.id}
               href={`/tags/${tag.slug}`}
+              prefetch={false}
               className="group inline-flex items-center gap-2 px-3 py-1.5 rounded-full border transition-colors hover:border-foreground/30"
               style={{ 
                 backgroundColor: tag.color + "10",

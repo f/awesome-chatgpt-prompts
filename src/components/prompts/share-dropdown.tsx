@@ -56,7 +56,7 @@ export function ShareDropdown({ title, url, promptId }: ShareDropdownProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="sm">
+        <Button variant="ghost" size="sm">
           <Share2 className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>

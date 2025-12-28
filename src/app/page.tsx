@@ -79,7 +79,7 @@ export default async function HomePage() {
                 playsInline
                 className="absolute top-1/2 -translate-y-1/2 end-0 w-full h-auto opacity-30 dark:opacity-15 dark:invert"
               >
-                <source src="/animation.mp4" type="video/mp4" />
+                <source src="/animation_compressed.mp4" type="video/mp4" />
               </video>
             </div>
             {/* Animated input overlay - only show if AI generation is enabled */}
@@ -140,9 +140,9 @@ export default async function HomePage() {
                 </Button>
                 {!useCloneBranding && (
                   <Button variant="outline" size="lg" asChild>
-                    <Link href="https://github.com/f/awesome-chatgpt-prompts" target="_blank" rel="noopener noreferrer">
+                    <Link href="https://github.com/f/awesome-chatgpt-prompts/blob/main/SELF-HOSTING.md" target="_blank" rel="noopener noreferrer">
                       <Github className="mr-1.5 h-4 w-4" />
-                      {tHomepage("cloneOnGithub")}
+                      {tHomepage("setupPrivateServer")}
                     </Link>
                   </Button>
                 )}
@@ -260,7 +260,7 @@ export default async function HomePage() {
                 </Link>
               </div>
             )}
-            <div className="flex flex-wrap items-center justify-center gap-8">
+            <div className="flex flex-col md:flex-row flex-wrap items-center justify-center gap-4 md:gap-8">
               {config.homepage.sponsors.items.map((sponsor) => (
                 <Link
                   key={sponsor.name}
@@ -269,16 +269,69 @@ export default async function HomePage() {
                   rel="noopener noreferrer"
                   className="opacity-60 hover:opacity-100 transition-opacity"
                 >
-                  <Image
-                    src={sponsor.logo}
-                    alt={sponsor.name}
-                    width={120}
-                    height={40}
-                    className={`h-9 w-auto dark:invert ${sponsor.className || ''}`}
-                  />
+                  {sponsor.darkLogo ? (
+                    <>
+                      <Image
+                        src={sponsor.logo}
+                        alt={sponsor.name}
+                        width={120}
+                        height={40}
+                        className={`h-9 w-auto dark:hidden ${sponsor.className || ''}`}
+                      />
+                      <Image
+                        src={sponsor.darkLogo}
+                        alt={sponsor.name}
+                        width={120}
+                        height={40}
+                        className={`h-9 w-auto hidden dark:block ${sponsor.className || ''}`}
+                      />
+                    </>
+                  ) : (
+                    <Image
+                      src={sponsor.logo}
+                      alt={sponsor.name}
+                      width={120}
+                      height={40}
+                      className={`h-9 w-auto dark:invert ${sponsor.className || ''}`}
+                    />
+                  )}
                 </Link>
               ))}
             </div>
+            {!useCloneBranding && (
+              <div className="flex flex-col md:flex-row items-center justify-center gap-1.5 mt-6 pt-7 border-t text-xs text-muted-foreground">
+                <span><b>prompts.chat</b> is built with</span>
+                <span className="inline-flex items-center gap-1.5">
+                  <Link href="https://wind.surf/prompts-chat" target="_blank" rel="noopener noreferrer">
+                    <Image
+                      src="/sponsors/windsurf.svg"
+                      alt="Windsurf"
+                      width={80}
+                      height={20}
+                      className="h-3 w-auto dark:invert"
+                    />
+                  </Link>
+                  <span>and</span>
+                  <Link href="https://devin.ai/?utm_source=prompts.chat" target="_blank" rel="noopener noreferrer">
+                    <Image
+                      src="/sponsors/devin.svg"
+                      alt="Devin"
+                      width={80}
+                      height={20}
+                      className="h-6 w-auto dark:hidden"
+                    />
+                    <Image
+                      src="/sponsors/devin-dark.svg"
+                      alt="Devin"
+                      width={80}
+                      height={20}
+                      className="h-6 w-auto hidden dark:block"
+                    />
+                  </Link>
+                  <span>by Cognition</span>
+                </span>
+              </div>
+            )}
           </div>
         </section>
       )}

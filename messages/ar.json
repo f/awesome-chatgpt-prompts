@@ -44,7 +44,8 @@
     "profile": "الملف الشخصي",
     "login": "تسجيل الدخول",
     "register": "إنشاء حساب",
-    "logout": "تسجيل الخروج"
+    "logout": "تسجيل الخروج",
+    "ide": "Prompt Builder"
   },
   "brand": {
     "copyLogoSvg": "نسخ شعار SVG",
@@ -101,6 +102,7 @@
   "prompts": {
     "title": "الأوامر",
     "create": "إنشاء أمر",
+    "createInfo": "هذه المنصة لا تقوم بتشغيل أو تنفيذ الأوامر — إنها مكتبة مجتمعية لمشاركة واكتشاف أوامر الذكاء الاصطناعي. أنشئ أمرك هنا، ويمكن للآخرين نسخه واستخدامه في أدوات الذكاء الاصطناعي المفضلة لديهم مثل ChatGPT و Claude و Gemini أو أي نموذج لغوي آخر. يمكن للمجتمع أيضاً التعليق على أوامرك واقتراح تحسينات من خلال طلبات التغيير.",
     "hfDataStudio": {
       "button": "استوديو بيانات HF",
       "sqlQuery": "استعلام SQL",
@@ -119,7 +121,8 @@
     "privatePrompts": "الأوامر الخاصة",
     "noPrompts": "لم يتم العثور على أوامر",
     "noPromptsDescription": "حاول تعديل معايير البحث أو التصفية للعثور على ما تبحث عنه.",
-    "noMorePrompts": "وصلت إلى النهاية",
+    "noMorePrompts": "لقد وصلت إلى النهاية",
+    "loadMore": "تحميل المزيد",
     "loading": "جاري التحميل...",
     "promptTitle": "العنوان",
     "promptContent": "المحتوى",
@@ -158,16 +161,20 @@
       "video": "فيديو",
       "audio": "صوت",
       "structured": "منظم",
-      "document": "مستند"
+      "document": "مستند",
+      "skill": "مهارة"
     },
     "inputType": "أمر المستخدم",
     "outputType": "استجابة الذكاء الاصطناعي",
+    "afterAiProcessing": "ماذا سينتج أمرك؟",
     "inputTypeDescription": "كيف يتم تنسيق الأمر الخاص بك",
-    "outputTypeDescription": "نوع الاستجابة التي سيولدها الذكاء الاصطناعي",
+    "outputTypeDescription": "أظهر للمجتمع كيف يعمل هذا الأمر عند تشغيله على أدوات الذكاء الاصطناعي. يمكنك إنشاء المخرجات بنفسك باستخدام تطبيق الذكاء الاصطناعي المفضل لديك.",
     "outputTypeStructuredNote": "الأوامر المنظمة يمكن أن تنتج أنواع مختلفة من المخرجات",
+    "outputTypeSkillNote": "المهارات توجه الوكلاء لإنشاء الكود. سينتج الذكاء الاصطناعي مخرجات كود بناءً على تعليمات مهارتك.",
     "inputTypes": {
       "text": "أمر نصي",
-      "structured": "منظم (JSON/YAML)"
+      "structured": "منظم (JSON/YAML)",
+      "skill": "مهارة (مهارات الوكيل)"
     },
     "outputTypes": {
       "text": "نص",
@@ -179,7 +186,7 @@
       "text": "✨ السحر يحدث هنا... الذكاء الاصطناعي سيكتب شيئاً رائعاً!",
       "imageUpload": "ارفع صورة مثال",
       "videoUpload": "ارفع فيديو/GIF مثال",
-      "audio": "معاينة الإخراج الصوتي"
+      "audioUpload": "ارفع ملف صوتي مثال"
     },
     "insertVariable": "إدراج متغير",
     "variableName": "اسم المتغير",
@@ -222,7 +229,20 @@
     "confirmDelete": "هل أنت متأكد من حذف هذا الأمر؟",
     "promptCreated": "تم إنشاء الأمر",
     "promptUpdated": "تم تحديث الأمر",
+    "rateLimitError": "يرجى الانتظار 30 ثانية قبل إنشاء أمر آخر",
+    "dailyLimitError": "لقد وصلت إلى الحد اليومي من 5 أوامر",
+    "duplicatePromptError": "لديك بالفعل أمر بنفس العنوان أو المحتوى",
+    "contentExistsError": "يوجد أمر بهذا المحتوى بالفعل: \"{title}\" بواسطة {author}",
     "run": "تشغيل",
+    "downloadMarkdown": "تحميل MD",
+    "downloadYaml": "تحميل YAML",
+    "downloadSkillMd": "تحميل SKILL.md",
+    "copyMarkdownUrl": "نسخ رابط MD",
+    "copyYamlUrl": "نسخ رابط YAML",
+    "downloadStarted": "بدأ التحميل",
+    "downloadFailed": "فشل التحميل",
+    "urlCopied": "تم نسخ الرابط",
+    "failedToCopyUrl": "فشل نسخ الرابط",
     "promptCopied": "تم نسخ الأمر",
     "promptCopiedDescription": "تم نسخ الأمر إلى الحافظة. الصقه في {platform} بعد فتحه.",
     "openPlatform": "فتح {platform}",
@@ -238,11 +258,65 @@
     "mediaUrlPlaceholder": "https://...",
     "mediaUrlDescription": "أدخل رابط ملف الوسائط لهذا الأمر",
     "mediaImage": "صورة الوسائط",
+    "mediaVideo": "فيديو الوسائط",
+    "mediaAudio": "صوت الوسائط",
     "clickToUpload": "انقر لرفع صورة",
+    "clickToUploadVideo": "انقر لرفع فيديو",
+    "clickToUploadAudio": "انقر لرفع ملف صوتي",
     "uploading": "جارٍ الرفع...",
-    "maxFileSize": "الحد الأقصى لحجم الملف: 5 ميجابايت (JPEG، PNG، GIF، WebP)",
-    "fileTooLarge": "الملف كبير جداً. الحد الأقصى للحجم هو 5 ميجابايت.",
+    "maxFileSize": "الحد الأقصى لحجم الملف: 4 ميجابايت (JPEG، PNG، GIF، WebP)",
+    "maxVideoSize": "الحد الأقصى لحجم الملف: 4 ميجابايت (MP4)",
+    "maxAudioSize": "الحد الأقصى لحجم الملف: 4 ميجابايت (MP3، WAV، OGG)",
+    "fileTooLarge": "الملف كبير جداً. الحد الأقصى للحجم هو 4 ميجابايت.",
+    "videoTooLarge": "الفيديو كبير جداً. الحد الأقصى للحجم هو 4 ميجابايت.",
     "invalidFileType": "نوع ملف غير صالح. يُسمح فقط بـ JPEG و PNG و GIF و WebP.",
+    "invalidVideoType": "نوع فيديو غير صالح. يُسمح فقط بفيديوهات MP4.",
+    "invalidAudioType": "نوع صوت غير صالح. يُسمح فقط بملفات MP3 و WAV و OGG.",
+    "uploadMedia": "رفع الوسائط",
+    "generateMedia": "إنشاء",
+    "chooseGenerator": "اختر المولد",
+    "uploadInstead": "الرفع بدلاً من ذلك",
+    "confirmGeneration": "تأكيد الإنشاء",
+    "confirmGenerationDescription": "إنشاء وسائط باستخدام {provider} مع نموذج {model}؟",
+    "promptPreview": "معاينة الأمر",
+    "noPromptProvided": "لم يتم تقديم أمر",
+    "inputImage": "صورة الإدخال",
+    "aspectRatio": "نسبة العرض إلى الارتفاع",
+    "startGeneration": "بدء الإنشاء",
+    "generatingMedia": "جارٍ إنشاء الوسائط باستخدام {provider}",
+    "doNotCloseWindow": "يرجى عدم إغلاق هذه النافذة أثناء الإنشاء.",
+    "aiGenerationAvailable": "✨ التوليد بالذكاء الاصطناعي متاح",
+    "generateWith": "التوليد بالذكاء الاصطناعي",
+    "generateImage": "توليد صورة",
+    "generateVideo": "توليد فيديو",
+    "generateAudio": "توليد صوت",
+    "generateImageDescription": "أنشئ صورة فريدة لأمرك باستخدام الذكاء الاصطناعي — مثالي لعرض أمرك للمجتمع.",
+    "generateVideoDescription": "أنشئ فيديو فريد لأمرك باستخدام الذكاء الاصطناعي — مثالي لعرض أمرك للمجتمع.",
+    "generateAudioDescription": "أنشئ صوت/موسيقى فريدة لأمرك باستخدام الذكاء الاصطناعي — مثالي لعرض أمرك للمجتمع.",
+    "generationComplete": "اكتملت العملية",
+    "generationFailed": "فشلت العملية",
+    "mediaAddedToPrompt": "تمت إضافة الوسائط إلى أمرك.",
+    "mediaGenerated": "تم إنشاء الوسائط بنجاح!",
+    "orGenerateMedia": "أو الإنشاء بالذكاء الاصطناعي",
+    "close": "إغلاق",
+    "mediaGeneration": {
+      "connecting": "جارٍ الاتصال بالخادم...",
+      "connected": "متصل، في انتظار الدور...",
+      "queued": "في انتظار الدور...",
+      "accepted": "تم قبول المهمة...",
+      "preprocessStart": "جارٍ المعالجة المسبقة...",
+      "preprocessEnd": "اكتملت المعالجة المسبقة",
+      "gpuAssigned": "تم تعيين GPU، في انتظار الدور...",
+      "started": "بدأ الإنشاء...",
+      "generating": "جارٍ الإنشاء...",
+      "processingOutput": "جارٍ معالجة المخرجات...",
+      "ending": "اكتمل الإنشاء",
+      "postprocessStart": "جارٍ المعالجة اللاحقة...",
+      "postprocessEnd": "جارٍ الإنهاء...",
+      "complete": "اكتمل!",
+      "error": "حدث خطأ",
+      "errorProcessing": "خطأ في المعالجة..."
+    },
     "privateDescription": "الأوامر الخاصة مرئية لك فقط",
     "update": "تحديث",
     "createButton": "إنشاء",
@@ -267,7 +341,11 @@
     "translateToLanguage": "ترجم إلى لغتك",
     "translated": "تمت ترجمة المحتوى",
     "translationFailed": "فشلت الترجمة",
-    "alreadyTranslated": "مترجم بالفعل"
+    "alreadyTranslated": "تمت الترجمة بالفعل",
+    "learnHowToWritePrompts": "تعلم كيفية كتابة أوامر فعالة ←",
+    "structuredFormatDetected": "تم اكتشاف تنسيق {format}",
+    "structuredFormatWarningDescription": "يبدو أن محتوى الأمر الخاص بك يشبه بيانات منظمة. فكر في التبديل إلى الوضع المنظم للحصول على تمييز بنائي وتحقق أفضل.",
+    "switchToStructured": "التبديل إلى {format}"
   },
   "changeRequests": {
     "title": "طلبات التغيير",
@@ -326,6 +404,9 @@
     "noCategories": "لم يتم العثور على تصنيفات",
     "noSubcategories": "لا توجد تصنيفات فرعية في هذا التصنيف بعد",
     "prompts": "أوامر",
+    "subscribers": "مشتركين",
+    "promptCount": "{count} أوامر",
+    "subscriberCount": "{count} مشتركين",
     "confirmDelete": "هل أنت متأكد من حذف هذا التصنيف؟"
   },
   "tags": {
@@ -424,6 +505,29 @@
       "slugsSuccess": "تم إنشاء {count} رابط",
       "slugsResult": "نجاح: {success}, فشل: {failed}"
     },
+    "promptsList": {
+      "title": "جميع المطالبات",
+      "description": "تصفح وإدارة جميع المطالبات في النظام",
+      "noPrompts": "لم يتم العثور على مطالبات",
+      "private": "خاص",
+      "unlisted": "غير مدرج",
+      "views": "مشاهدات",
+      "votes": "أصوات",
+      "created": "تاريخ الإنشاء",
+      "showing": "عرض {from}-{to} من {total}",
+      "deleteConfirmTitle": "حذف المطالبة؟",
+      "deleteConfirmDescription": "هل أنت متأكد من حذف \"{title}\" نهائياً؟ لا يمكن التراجع عن هذا الإجراء وستتم إزالة جميع البيانات المرتبطة.",
+      "deleted": "تم حذف المطالبة بنجاح",
+      "filters": {
+        "all": "الكل",
+        "public": "عام",
+        "private": "خاص",
+        "unlisted": "غير مدرج",
+        "featured": "مميز",
+        "reported": "مُبلغ عنه",
+        "deleted": "محذوف"
+      }
+    },
     "users": {
       "title": "إدارة المستخدمين",
       "description": "عرض وإدارة حسابات المستخدمين",
@@ -446,7 +550,31 @@
       "unverified": "تم إلغاء توثيق المستخدم",
       "verifyFailed": "فشل تحديث التوثيق",
       "deleteConfirmTitle": "حذف المستخدم؟",
-      "deleteConfirmDescription": "هذا الإجراء لا يمكن التراجع عنه. سيتم حذف جميع بيانات المستخدم نهائياً."
+      "deleteConfirmDescription": "هذا الإجراء لا يمكن التراجع عنه. سيتم حذف جميع بيانات المستخدم نهائياً.",
+      "searchPlaceholder": "البحث عن مستخدمين...",
+      "noUsers": "لم يتم العثور على مستخدمين",
+      "showing": "عرض {from}-{to} من {total}",
+      "filters": {
+        "all": "الكل",
+        "admin": "المديرون",
+        "user": "المستخدمون",
+        "verified": "موثق",
+        "unverified": "غير موثق",
+        "flagged": "محظور"
+      },
+      "flag": "حظر المستخدم",
+      "unflag": "إلغاء الحظر",
+      "flagged": "تم حظر المستخدم",
+      "unflagged": "تم إلغاء حظر المستخدم",
+      "flagFailed": "فشل تحديث حالة الحظر",
+      "editCredits": "تعديل الرصيد",
+      "editCreditsTitle": "تعديل رصيد التوليد",
+      "editCreditsDescription": "تعيين حد الرصيد اليومي للمستخدم @{username}",
+      "dailyLimit": "الحد اليومي للرصيد",
+      "currentCredits": "حالياً: {remaining}/{limit} رصيد متبقي",
+      "creditsUpdated": "تم تحديث الرصيد بنجاح",
+      "creditsUpdateFailed": "فشل تحديث الرصيد",
+      "save": "حفظ"
     },
     "categories": {
       "title": "إدارة التصنيفات",
@@ -480,7 +608,13 @@
       "noParent": "بدون (تصنيف رئيسي)",
       "parentHelp": "اتركه فارغاً لإنشاء تصنيف رئيسي، أو اختر تصنيف أب لإنشاء تصنيف فرعي",
       "rootCategory": "رئيسي",
-      "subcategories": "تصنيفات فرعية"
+      "subcategories": "تصنيفات فرعية",
+      "pin": "تثبيت في صفحة الأوامر",
+      "unpin": "إلغاء التثبيت من صفحة الأوامر",
+      "pinned": "تم تثبيت التصنيف",
+      "unpinned": "تم إلغاء تثبيت التصنيف",
+      "pinnedBadge": "مثبت",
+      "pinnedLabel": "تثبيت في صفحة الأوامر (عرض كفلتر سريع)"
     },
     "tags": {
       "title": "إدارة الوسوم",
@@ -605,7 +739,24 @@
     "contributionsCount": "مساهمات",
     "noContributions": "لا توجد مساهمات بعد",
     "noContributionsOwner": "لم تساهم في أي أوامر بعد",
-    "contributedTo": "ساهم في أمر {author}"
+    "contributedTo": "ساهم في أمر {author}",
+    "privatePromptsNote": "لديك {count} {count, plural, one {أمر خاص} other {أوامر خاصة}}. يمكنك الوصول إليها عبر MCP باستخدام مفتاح API الخاص بك في العملاء المدعومين.",
+    "activityInLastYear": "{count} مساهمة في العام الماضي",
+    "contribution": "مساهمة",
+    "contributionsPlural": "مساهمات",
+    "inLastYear": "في العام الماضي",
+    "inLast6Months": "في آخر 6 أشهر",
+    "less": "أقل",
+    "more": "أكثر",
+    "activity": "النشاط",
+    "filteringByDate": "عرض الأوامر من {date}",
+    "clearFilter": "مسح الفلتر",
+    "noPromptsOnDate": "لم يتم العثور على أوامر في هذا التاريخ.",
+    "noPromptsOnDateOwner": "ليس لديك أي أوامر في هذا التاريخ.",
+    "createForToday": "أنشئ لليوم",
+    "likes": "الإعجابات",
+    "noLikes": "لا توجد أوامر معجب بها بعد",
+    "noLikesOwner": "لم تعجب بأي أوامر بعد"
   },
   "subscription": {
     "subscribe": "اشتراك",
@@ -675,7 +826,7 @@
     "heroFeature1": "مجاني ومفتوح المصدر",
     "heroFeature2": "استضافة ذاتية للخصوصية",
     "heroFeature3": "للفرق والمؤسسات",
-    "cloneOnGithub": "استنساخ على GitHub",
+    "setupPrivateServer": "انشر خادمك الخاص",
     "beStargazer": "كن النجمة رقم {count} على GitHub",
     "browsePrompts": "تصفح الأوامر",
     "viewFeed": "عرض الموجز",
@@ -702,7 +853,36 @@
   "notifications": {
     "title": "الإشعارات",
     "pendingChangeRequests": "طلبات التغيير المعلقة",
-    "noNotifications": "لا توجد إشعارات"
+    "noNotifications": "لا توجد إشعارات",
+    "markAllRead": "تعليم الكل كمقروء",
+    "commentedOnPrompt": "علق على أمرك",
+    "repliedToComment": "رد على تعليقك"
+  },
+  "comments": {
+    "comments": "التعليقات",
+    "writeComment": "اكتب تعليقاً...",
+    "postComment": "نشر التعليق",
+    "reply": "رد",
+    "replyTo": "الرد على @{username}...",
+    "posting": "جاري النشر...",
+    "commentPosted": "تم نشر التعليق",
+    "commentDeleted": "تم حذف التعليق",
+    "commentFlagged": "تم الإبلاغ عن التعليق",
+    "commentUnflagged": "تم إلغاء الإبلاغ",
+    "noComments": "لا توجد تعليقات بعد. كن أول من يعلق!",
+    "loginToComment": "يرجى تسجيل الدخول للتعليق.",
+    "loginToVote": "يرجى تسجيل الدخول للتصويت.",
+    "upvote": "تصويت إيجابي",
+    "downvote": "تصويت سلبي",
+    "flag": "إبلاغ",
+    "unflag": "إلغاء الإبلاغ",
+    "flagged": "تم الإبلاغ",
+    "admin": "مشرف",
+    "deleteCommentTitle": "حذف التعليق؟",
+    "deleteCommentDescription": "لا يمكن التراجع عن هذا الإجراء. سيتم حذف التعليق وجميع الردود نهائياً.",
+    "deleting": "جاري الحذف...",
+    "showReplies": "عرض {count} ردود",
+    "hideReplies": "إخفاء الردود"
   },
   "promptmasters": {
     "title": "Promptmasters",
@@ -743,6 +923,17 @@
   "notFound": {
     "title": "الصفحة غير موجودة",
     "description": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
+    "goHome": "الرئيسية",
+    "goBack": "رجوع",
+    "helpfulLinks": "روابط مفيدة:",
+    "browsePrompts": "تصفح البرومبتات",
+    "categories": "الفئات",
+    "createPrompt": "إنشاء برومبت"
+  },
+  "serverError": {
+    "title": "خطأ في الخادم",
+    "description": "حدث خطأ ما. يرجى المحاولة مرة أخرى لاحقاً.",
+    "tryAgain": "حاول مرة أخرى",
     "goHome": "الرئيسية",
     "goBack": "رجوع",
     "helpfulLinks": "إليك بعض الروابط المفيدة:",
@@ -810,10 +1001,54 @@
     "generateApiKey": "أنشئ مفتاح API لحفظ الأوامر عبر MCP"
   },
   "footer": {
+    "howTo": "كيفية...",
     "docs": "المستندات",
     "api": "API",
     "privacy": "الخصوصية",
-    "terms": "الشروط"
+    "terms": "الشروط",
+    "support": "الدعم"
+  },
+  "support": {
+    "title": "الدعم",
+    "description": "ابحث عن إجابات للأسئلة الشائعة أو احصل على مساعدة من مجتمعنا.",
+    "faq": {
+      "title": "الأسئلة الشائعة",
+      "whatIsPrompt": {
+        "question": "ما هو البرومبت؟",
+        "answer": "البرومبت هو تعليمة أو مدخل تعطيه لنموذج ذكاء اصطناعي (مثل ChatGPT أو Claude أو Gemini وغيرها) لتوجيه استجابته. هو في الأساس طريقة للتواصل مع الذكاء الاصطناعي لإخباره بما تريده أن يفعل. البرومبتات المصاغة جيداً تؤدي إلى مخرجات أفضل وأكثر فائدة من أنظمة الذكاء الاصطناعي."
+      },
+      "whyPromptsMatter": {
+        "question": "لماذا البرومبتات مهمة؟ ألا يمكنني سؤال الذكاء الاصطناعي أي شيء؟",
+        "answer": "بينما يمكن لنماذج الذكاء الاصطناعي المتقدمة التعامل مع الأسئلة العادية بشكل جيد، تصبح البرومبتات حاسمة عندما:\n\n• تستخدم الذكاء الاصطناعي عبر API في التطبيقات — غالباً ما تحصل على فرصة واحدة فقط (\"one-shot prompting\")، بدون حوار متبادل\n• تعمل مع نماذج أصغر وأقل تكلفة تحتاج إلى تعليمات أكثر دقة\n• تبني أنظمة إنتاج حيث الاتساق والموثوقية مهمان\n\nالبرومبتات المحسنة تساعدك في الحصول على نتائج أفضل، وتوفير الرموز (والمال)، وإنشاء تطبيقات ذكاء اصطناعي أكثر موثوقية."
+      },
+      "whatIsPromptschat": {
+        "question": "ما هو prompts.chat؟",
+        "answer": "prompts.chat هو منصة يقودها المجتمع حيث يشارك الناس ويكتشفون ويجمعون برومبتات الذكاء الاصطناعي. لأكثر من 4 سنوات، يشارك المستخدمون تقنيات تحسين البرومبتات هنا. يساعد المجتمع بعضهم البعض على تحسين برومبتاتهم وتعلم مناهج جديدة للعمل مع أنظمة الذكاء الاصطناعي."
+      },
+      "howToUse": {
+        "question": "كيف أستخدم البرومبتات من هذه المنصة؟",
+        "answer": "ببساطة تصفح البرومبتات، اعثر على واحد يعجبك وانسخه. يمكنك بعد ذلك لصقه في أداة الذكاء الاصطناعي المفضلة لديك (ChatGPT، Claude، Gemini، إلخ) أو استخدامه في تطبيقاتك عبر API. تتضمن العديد من البرومبتات متغيرات يمكنك تخصيصها قبل النسخ."
+      },
+      "license": {
+        "question": "هل يمكنني استخدام هذه البرومبتات تجارياً؟",
+        "answer": "نعم! جميع البرومبتات على prompts.chat مُصدرة تحت رخصة CC0 (Creative Commons Zero)، مما يعني أنها في الملكية العامة. يمكنك استخدامها وتعديلها وتوزيعها بحرية لأي غرض، بما في ذلك الاستخدام التجاري، دون نسب."
+      },
+      "selfHost": {
+        "question": "هل يمكنني استضافة هذه المنصة بنفسي؟",
+        "answer": "بالتأكيد! prompts.chat مفتوح المصدر بالكامل. يمكنك نشر نسختك الخاصة لفريقك أو مؤسستك. راجع وثائق الاستضافة الذاتية للحصول على تعليمات الإعداد."
+      }
+    },
+    "contact": {
+      "title": "هل تحتاج المزيد من المساعدة؟",
+      "description": "إذا لم تجد إجابة لسؤالك، املأ النموذج أدناه وسنساعدك على GitHub.",
+      "form": {
+        "title": "عنوان المشكلة",
+        "titlePlaceholder": "ملخص موجز لمشكلتك أو سؤالك",
+        "description": "الوصف",
+        "descriptionPlaceholder": "يرجى وصف مشكلتك أو سؤالك بالتفصيل..."
+      },
+      "openIssue": "افتح Issue على GitHub"
+    }
   },
   "apiKey": {
     "title": "مفتاح API لـ MCP",
@@ -834,5 +1069,128 @@
     "publicByDefault": "أوامر عامة افتراضياً",
     "publicByDefaultDescription": "عند حفظ الأوامر عبر MCP، اجعلها عامة افتراضياً بدلاً من خاصة.",
     "settingUpdated": "تم تحديث الإعداد"
+  },
+  "connectedPrompts": {
+    "title": "تدفق الأوامر",
+    "description": "بعض الأوامر تعمل كسير عمل متعدد الخطوات. قم بربط أوامرك لإنشاء تسلسل.",
+    "addConnection": "إضافة اتصال",
+    "addPrevious": "إضافة سابق",
+    "addNext": "إضافة تالي",
+    "addConnectionTitle": "إضافة اتصال",
+    "addPreviousTitle": "إضافة أمر سابق",
+    "addNextTitle": "إضافة أمر تالي",
+    "addConnectionDescription": "ربط هذا الأمر بأمر آخر مع تسمية شرط.",
+    "addPreviousDescription": "اختر أمراً يأتي قبل هذا في سير العمل.",
+    "addNextDescription": "اختر أمراً يأتي بعد هذا في سير العمل.",
+    "noConnections": "لا توجد أوامر متصلة بعد. أضف اتصالات لإنشاء سلسلة أوامر.",
+    "previousSteps": "الخطوات السابقة",
+    "nextSteps": "الخطوات التالية",
+    "searchPrompt": "بحث عن أمر",
+    "searchPlaceholder": "البحث بالعنوان...",
+    "selectedPrompt": "الأمر المحدد",
+    "connectionLabel": "تسمية الاتصال",
+    "labelPlaceholder": "مثال: الإطار الأول، الخطوة التالية، بعد المعالجة...",
+    "labelHint": "صف الشرط أو الانتقال بين الأوامر",
+    "change": "تغيير",
+    "cancel": "إلغاء",
+    "fillAllFields": "يرجى اختيار أمر وإدخال تسمية",
+    "connectionFailed": "فشل إنشاء الاتصال",
+    "connectionAdded": "تمت إضافة الاتصال بنجاح",
+    "connectionDeleted": "تم حذف الاتصال",
+    "deleteFailed": "فشل حذف الاتصال",
+    "noResults": "لم يتم العثور على أوامر"
+  },
+  "promptWritingGuide": {
+    "title": "كيفية كتابة أوامر رائعة",
+    "subtitle": "نصائح وأمثلة وأفضل الممارسات لإنشاء أوامر ذكاء اصطناعي فعالة",
+    "generalTips": {
+      "title": "نصائح عامة للأوامر الفعالة",
+      "beSpecific": {
+        "title": "كن محدداً وواضحاً",
+        "description": "الأوامر الغامضة تؤدي إلى استجابات غامضة. حدد بالضبط ما تريده، بما في ذلك التنسيق والطول والنبرة وأي قيود."
+      },
+      "provideContext": {
+        "title": "قدم السياق",
+        "description": "أعطِ معلومات خلفية تساعد الذكاء الاصطناعي على فهم احتياجاتك. تضمن من، ماذا، لماذا، ولمن."
+      },
+      "defineFormat": {
+        "title": "حدد تنسيق المخرجات",
+        "description": "حدد كيف تريد هيكلة الاستجابة: نقاط، فقرات، كتل برمجية، جداول، إلخ."
+      },
+      "setConstraints": {
+        "title": "ضع القيود",
+        "description": "تضمن قيوداً مثل عدد الكلمات، مستوى القراءة، الأشياء التي يجب تجنبها، أو متطلبات محددة يجب اتباعها."
+      },
+      "includeExamples": {
+        "title": "أضف أمثلة",
+        "description": "أظهر للذكاء الاصطناعي كيف يبدو المخرج الجيد. الأمثلة تساعد في معايرة نمط وجودة الاستجابة."
+      }
+    },
+    "rolePlaying": {
+      "title": "لعب الأدوار: أنماط \"تصرف كـ\"",
+      "description": "إحدى أقوى تقنيات الأوامر هي تعيين دور أو شخصية محددة للذكاء الاصطناعي. هذا يساعد في تأسيس الخبرة والنبرة والمنظور.",
+      "basicPattern": "نمط الدور الأساسي",
+      "exampleExpert": "مثال: خبير تقني",
+      "exampleCreative": "مثال: مدرب إبداعي",
+      "popularRoles": "فئات الأدوار الشائعة"
+    },
+    "variables": {
+      "title": "استخدام المتغيرات للأوامر الديناميكية",
+      "description": "المتغيرات تجعل أوامرك قابلة لإعادة الاستخدام والتخصيص. يمكن للمستخدمين إدخال قيم مختلفة في كل مرة يستخدمون فيها أمرك.",
+      "syntax": "صيغة المتغيرات",
+      "requiredVar": "متغير مطلوب (يجب على المستخدم ملؤه)",
+      "withDefault": "متغير بقيمة افتراضية",
+      "simpleExample": "مثال بسيط",
+      "advancedExample": "مثال متقدم مع متغيرات متعددة",
+      "bestPractices": "أفضل الممارسات",
+      "tip1": "استخدم أسماء متغيرات وصفية: '$'{topic} أفضل من '$'{x}",
+      "tip2": "قدم قيم افتراضية معقولة للقيم الاختيارية",
+      "tip3": "جمّع المتغيرات المرتبطة معاً في أمرك",
+      "tip4": "استخدم الشرطات السفلية للأسماء متعددة الكلمات: '$'{target_audience}"
+    },
+    "structured": {
+      "title": "الأوامر المهيكلة (JSON/YAML)",
+      "description": "الأوامر المهيكلة تستخدم تنسيق JSON أو YAML لتنظيم التعليمات المعقدة بوضوح. مثالية لسير العمل متعدد الخطوات والوكلاء والتكوينات التفصيلية.",
+      "whenToUse": "متى تستخدم الأوامر المهيكلة",
+      "useCase1": "سير عمل أو خطوط أنابيب معقدة متعددة الخطوات",
+      "useCase2": "تكوينات الوكلاء مع معلمات متعددة",
+      "useCase3": "أوامر ذات إعدادات مترابطة كثيرة",
+      "useCase4": "استخدام الأوامر المدفوع بـ API أو البرمجي",
+      "jsonExample": "مثال JSON: مساعد المقابلات",
+      "yamlExample": "مثال YAML: مولد المحتوى",
+      "agentWorkflow": "مثال JSON: سير عمل الوكيل",
+      "tips": "نصائح للأوامر المهيكلة",
+      "tip1": "استخدم JSON للاستخدام البرمجي؛ YAML للتكوينات القابلة للقراءة",
+      "tip2": "حافظ على التداخل ضحلاً (2-3 مستويات كحد أقصى) للقراءة",
+      "tip3": "أضف تعليقات في YAML لشرح الأقسام المعقدة",
+      "tip4": "تحقق من صحة صيغة JSON/YAML قبل الحفظ"
+    },
+    "outputOptimization": {
+      "title": "تحسين المخرجات",
+      "description": "وجّه الذكاء الاصطناعي لإنتاج التنسيق والأسلوب الذي تحتاجه بالضبط من خلال كونك صريحًا بشأن متطلباتك.",
+      "formatInstructions": "قالب تعليمات التنسيق",
+      "constraintExamples": "أنواع القيود الشائعة",
+      "lengthConstraints": "قيود الطول:",
+      "lengthExample": "\"اجعل الرد أقل من 200 كلمة\" / \"قدم 5 نقاط بالضبط\"",
+      "styleConstraints": "قيود الأسلوب:",
+      "styleExample": "\"استخدم لغة بسيطة مناسبة للمبتدئين\" / \"كن تقنيًا ودقيقًا\"",
+      "contentConstraints": "قيود المحتوى:",
+      "contentExample": "\"لا تضمن آراء شخصية\" / \"ركز فقط على المعلومات الواقعية\""
+    }
+  },
+  "ide": {
+    "title": "Prompt Builder",
+    "subtitle": "بناء أوامر منظمة وآمنة النوع",
+    "editor": "المحرر",
+    "preview": "معاينة",
+    "run": "تشغيل",
+    "reset": "إعادة تعيين",
+    "copied": "تم النسخ إلى الحافظة",
+    "runToPreview": "انقر على تشغيل لمشاهدة معاينة الأمر",
+    "cannotEvaluate": "لا يمكن تقييم هذا الكود.",
+    "onlyPromptsChat": "يتم دعم استيراد {library} فقط.",
+    "desktopOnly": "للحاسوب فقط",
+    "desktopOnlyDescription": "يتطلب منشئ الأوامر شاشة أكبر ليعمل بشكل صحيح. يرجى فتح هذه الصفحة على جهاز كمبيوتر مكتبي أو محمول.",
+    "browsePrompts": "تصفح الأوامر"
   }
 }

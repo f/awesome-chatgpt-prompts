@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Server, Database, Key, Palette, Globe, Settings, HardDrive, Cpu, BookOpen } from "lucide-react";
+import { Server, Database, Key, Palette, Globe, Settings, Cpu } from "lucide-react";
 import DeepWikiIcon from "@/../public/deepwiki.svg";
 import Context7Icon from "@/../public/context7.svg";
 import {
@@ -438,32 +438,6 @@ export default function SelfHostingPage() {
             </div>
           </div>
 
-          {/* Storage */}
-          <div className="space-y-3">
-            <h3 className="font-medium flex items-center gap-2">
-              <HardDrive className="h-4 w-4" />
-              Storage
-            </h3>
-            <div className="border rounded-lg overflow-hidden">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead className="w-[160px]">Option</TableHead>
-                    <TableHead className="w-[200px]">Values</TableHead>
-                    <TableHead>Description</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  <TableRow>
-                    <TableCell className="font-mono text-xs">provider</TableCell>
-                    <TableCell className="text-muted-foreground text-xs"><code>url</code> | <code>s3</code></TableCell>
-                    <TableCell className="text-muted-foreground text-sm">Storage provider for media uploads</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </div>
-          </div>
-
           {/* i18n */}
           <div className="space-y-3">
             <h3 className="font-medium flex items-center gap-2">
@@ -564,7 +538,7 @@ export default function SelfHostingPage() {
             <li>Hide &quot;Clone on GitHub&quot; button</li>
           </ul>
           <div className="bg-muted rounded-lg p-4 font-mono text-sm">
-            <p className="text-muted-foreground">// prompts.config.ts</p>
+            <p className="text-muted-foreground">{"// prompts.config.ts"}</p>
             <p>const useCloneBranding = true;</p>
           </div>
           </div>

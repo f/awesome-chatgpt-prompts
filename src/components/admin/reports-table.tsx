@@ -123,6 +123,7 @@ export function ReportsTable({ reports }: ReportsTableProps) {
                   <TableCell>
                     <Link 
                       href={getPromptUrl(report.prompt.id, report.prompt.slug)}
+                      prefetch={false}
                       className="font-medium hover:underline flex items-center gap-1"
                     >
                       {report.prompt.title}
@@ -172,7 +173,7 @@ export function ReportsTable({ reports }: ReportsTableProps) {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
                         <DropdownMenuItem asChild>
-                          <Link href={getPromptUrl(report.prompt.id, report.prompt.slug)}>
+                          <Link href={getPromptUrl(report.prompt.id, report.prompt.slug)} prefetch={false}>
                             <Eye className="h-4 w-4 mr-2" />
                             {t("viewPrompt")}
                           </Link>

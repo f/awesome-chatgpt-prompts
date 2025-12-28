@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidateTag } from "next/cache";
 import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -10,7 +11,7 @@ const updatePromptSchema = z.object({
   title: z.string().min(1).max(200).optional(),
   description: z.string().max(500).optional(),
   content: z.string().min(1).optional(),
-  type: z.enum(["TEXT", "IMAGE", "VIDEO", "AUDIO"]).optional(), // Output type only
+  type: z.enum(["TEXT", "IMAGE", "VIDEO", "AUDIO", "SKILL"]).optional(), // Output type or SKILL
   structuredFormat: z.enum(["JSON", "YAML"]).optional().nullable(),
   categoryId: z.string().optional().nullable(),
   tagIds: z.array(z.string()).optional(),
@@ -40,9 +41,14 @@ export async function GET(
             name: true,
             username: true,
             avatar: true,
+            verified: true,
           },
         },
-        category: true,
+        category: {
+          include: {
+            parent: true,
+          },
+        },
         tags: {
           include: {
             tag: true,
@@ -168,7 +174,11 @@ export async function PATCH(
             username: true,
           },
         },
-        category: true,
+        category: {
+          include: {
+            parent: true,
+          },
+        },
         tags: {
           include: {
             tag: true,
@@ -230,6 +240,9 @@ export async function PATCH(
         console.error("[Quality Check] Failed to run quality check for prompt:", id, err);
       });
     }
+
+    // Revalidate prompts cache
+    revalidateTag("prompts", "max");
 
     return NextResponse.json(prompt);
   } catch (error) {
@@ -308,6 +321,11 @@ export async function DELETE(
       where: { id },
       data: { deletedAt: new Date() },
     });
+
+    // Revalidate caches (prompts, categories, tags counts change)
+    revalidateTag("prompts", "max");
+    revalidateTag("categories", "max");
+    revalidateTag("tags", "max");
 
     return NextResponse.json({ 
       success: true, 

@@ -48,7 +48,8 @@
     "profile": "Profile",
     "login": "Login",
     "register": "Register",
-    "logout": "Logout"
+    "logout": "Logout",
+    "ide": "Prompt Builder"
   },
   "brand": {
     "copyLogoSvg": "Copy Logo SVG",
@@ -105,6 +106,7 @@
   "prompts": {
     "title": "Prompts",
     "create": "Create Prompt",
+    "createInfo": "This platform doesn't run or execute prompts — it's a community-driven library for sharing and discovering AI prompts. Create your prompt here, and others can copy and use it in their preferred AI tools like ChatGPT, Claude, Gemini, or any other LLM. The community can also comment on your prompts and suggest improvements through change requests.",
     "hfDataStudio": {
       "button": "HF Data Studio",
       "sqlQuery": "SQL Query",
@@ -124,6 +126,7 @@
     "noPrompts": "No prompts found",
     "noPromptsDescription": "Try adjusting your search or filter criteria to find what you're looking for.",
     "noMorePrompts": "You've reached the end",
+    "loadMore": "Load More",
     "loading": "Loading...",
     "promptTitle": "Title",
     "promptContent": "Content",
@@ -162,16 +165,20 @@
       "video": "Video",
       "audio": "Audio",
       "structured": "Structured",
-      "document": "Document"
+      "document": "Document",
+      "skill": "Skill"
     },
     "inputType": "User Prompt",
     "outputType": "AI Response",
+    "afterAiProcessing": "What your prompt will produce?",
     "inputTypeDescription": "How your prompt is formatted",
-    "outputTypeDescription": "What type of response the AI will generate",
+    "outputTypeDescription": "Show the community how this prompt performs when run on AI tools. You can generate outputs yourself using your favorite AI app.",
     "outputTypeStructuredNote": "Structured prompts can produce various output types",
+    "outputTypeSkillNote": "Skills instruct agents to generate code. The AI will produce code output based on your skill instructions.",
     "inputTypes": {
       "text": "Text Prompt",
-      "structured": "Structured (JSON/YAML)"
+      "structured": "Structured (JSON/YAML)",
+      "skill": "Skill (Agent Skills)"
     },
     "outputTypes": {
       "text": "Text",
@@ -183,7 +190,7 @@
       "text": "✨ Magic happens here... your AI will write something brilliant!",
       "imageUpload": "Upload an example image output",
       "videoUpload": "Upload an example video/GIF output",
-      "audio": "Audio output preview"
+      "audioUpload": "Upload an example audio output"
     },
     "structuredFormat": "Format",
     "structuredFormatDescription": "Select the format for your structured prompt",
@@ -212,7 +219,20 @@
     "confirmDelete": "Are you sure you want to delete this prompt?",
     "promptCreated": "Prompt created",
     "promptUpdated": "Prompt updated",
+    "rateLimitError": "Please wait 30 seconds before creating another prompt",
+    "dailyLimitError": "You have reached the daily limit of 5 prompts",
+    "duplicatePromptError": "You already have a prompt with the same title or content",
+    "contentExistsError": "A prompt with this content already exists: \"{title}\" by {author}",
     "run": "Run",
+    "downloadMarkdown": "Download MD",
+    "downloadYaml": "Download YAML",
+    "downloadSkillMd": "Download SKILL.md",
+    "copyMarkdownUrl": "Copy MD Link",
+    "copyYamlUrl": "Copy YAML Link",
+    "downloadStarted": "Download started",
+    "downloadFailed": "Download failed",
+    "urlCopied": "Link copied to clipboard",
+    "failedToCopyUrl": "Failed to copy link",
     "promptCopied": "Prompt Copied",
     "promptCopiedDescription": "The prompt has been copied to your clipboard. Paste it in {platform} after opening.",
     "openPlatform": "Open {platform}",
@@ -234,11 +254,65 @@
     "mediaUrlPlaceholder": "https://...",
     "mediaUrlDescription": "Enter a URL to the media file for this prompt",
     "mediaImage": "Example Media Image",
+    "mediaVideo": "Example Media Video",
+    "mediaAudio": "Example Media Audio",
     "clickToUpload": "Click to upload an image",
+    "clickToUploadVideo": "Click to upload a video",
+    "clickToUploadAudio": "Click to upload an audio file",
     "uploading": "Uploading...",
-    "maxFileSize": "Max file size: 5MB (JPEG, PNG, GIF, WebP)",
-    "fileTooLarge": "File too large. Maximum size is 5MB.",
+    "maxFileSize": "Max file size: 4MB (JPEG, PNG, GIF, WebP)",
+    "maxVideoSize": "Max file size: 4MB (MP4)",
+    "maxAudioSize": "Max file size: 4MB (MP3, WAV, OGG)",
+    "fileTooLarge": "File too large. Maximum size is 4MB.",
+    "videoTooLarge": "Video too large. Maximum size is 4MB.",
     "invalidFileType": "Invalid file type. Only JPEG, PNG, GIF, and WebP are allowed.",
+    "invalidVideoType": "Invalid video type. Only MP4 videos are allowed.",
+    "invalidAudioType": "Invalid audio type. Only MP3, WAV, and OGG files are allowed.",
+    "uploadMedia": "Upload Media",
+    "generateMedia": "Generate",
+    "chooseGenerator": "Choose Generator",
+    "uploadInstead": "Upload Instead",
+    "confirmGeneration": "Confirm Generation",
+    "confirmGenerationDescription": "Generate media using {provider} with model {model}?",
+    "promptPreview": "Prompt preview",
+    "noPromptProvided": "No prompt provided",
+    "inputImage": "Input image",
+    "aspectRatio": "Aspect Ratio",
+    "startGeneration": "Start Generation",
+    "generatingMedia": "Generating Media with {provider}",
+    "doNotCloseWindow": "Please do not close this window while generation is in progress.",
+    "generationComplete": "Generation Complete",
+    "generationFailed": "Generation Failed",
+    "mediaAddedToPrompt": "Media has been added to your prompt.",
+    "mediaGenerated": "Media generated successfully!",
+    "orGenerateMedia": "Or generate with AI",
+    "aiGenerationAvailable": "✨ AI Generation Available",
+    "generateWith": "Generate with AI",
+    "generateImage": "Generate Image",
+    "generateVideo": "Generate Video",
+    "generateAudio": "Generate Audio",
+    "generateImageDescription": "Generate a unique image for your prompt using AI — perfect for showcasing your prompt to the community.",
+    "generateVideoDescription": "Generate a unique video for your prompt using AI — perfect for showcasing your prompt to the community.",
+    "generateAudioDescription": "Generate unique audio/music for your prompt using AI — perfect for showcasing your prompt to the community.",
+    "close": "Close",
+    "mediaGeneration": {
+      "connecting": "Connecting to server...",
+      "connected": "Connected, waiting in queue...",
+      "queued": "Waiting in queue...",
+      "accepted": "Task accepted...",
+      "preprocessStart": "Preprocessing...",
+      "preprocessEnd": "Preprocessing complete",
+      "gpuAssigned": "GPU assigned, waiting in queue...",
+      "started": "Generation started...",
+      "generating": "Generating...",
+      "processingOutput": "Processing output...",
+      "ending": "Generation complete",
+      "postprocessStart": "Post-processing...",
+      "postprocessEnd": "Finalizing...",
+      "complete": "Complete!",
+      "error": "Error occurred",
+      "errorProcessing": "Error processing..."
+    },
     "privateDescription": "Private prompts are only visible to you",
     "requiresMediaUpload": "Requires Media Upload",
     "attachedMediaType": "Attached Media Type",
@@ -271,7 +345,11 @@
     "translateToLanguage": "Translate to your language",
     "translated": "Content translated",
     "translationFailed": "Translation failed",
-    "alreadyTranslated": "Already translated"
+    "alreadyTranslated": "Already translated",
+    "learnHowToWritePrompts": "Learn how to write effective prompts →",
+    "structuredFormatDetected": "{format} format detected",
+    "structuredFormatWarningDescription": "Your prompt content looks like structured data. Consider switching to structured mode for better syntax highlighting and validation.",
+    "switchToStructured": "Switch to {format}"
   },
   "changeRequests": {
     "title": "Change Requests",
@@ -330,6 +408,9 @@
     "noCategories": "No categories found",
     "noSubcategories": "No subcategories in this category yet",
     "prompts": "prompts",
+    "subscribers": "subscribers",
+    "promptCount": "{count} prompts",
+    "subscriberCount": "{count} subscribers",
     "confirmDelete": "Are you sure you want to delete this category?"
   },
   "tags": {
@@ -428,6 +509,29 @@
       "slugsSuccess": "{count} slugs generated",
       "slugsResult": "Generated: {success}, Failed: {failed}"
     },
+    "promptsList": {
+      "title": "All Prompts",
+      "description": "Browse and manage all prompts in the system",
+      "noPrompts": "No prompts found",
+      "private": "Private",
+      "unlisted": "Unlisted",
+      "views": "views",
+      "votes": "votes",
+      "created": "Created",
+      "showing": "Showing {from}-{to} of {total}",
+      "deleteConfirmTitle": "Delete Prompt?",
+      "deleteConfirmDescription": "Are you sure you want to permanently delete \"{title}\"? This action cannot be undone and will remove all associated data.",
+      "deleted": "Prompt deleted successfully",
+      "filters": {
+        "all": "All",
+        "public": "Public",
+        "private": "Private",
+        "unlisted": "Unlisted",
+        "featured": "Featured",
+        "reported": "Reported",
+        "deleted": "Deleted"
+      }
+    },
     "users": {
       "title": "User Management",
       "description": "View and manage user accounts",
@@ -450,7 +554,31 @@
       "unverified": "User unverified",
       "verifyFailed": "Failed to update verification",
       "deleteConfirmTitle": "Delete User?",
-      "deleteConfirmDescription": "This action cannot be undone. All user data will be permanently deleted."
+      "deleteConfirmDescription": "This action cannot be undone. All user data will be permanently deleted.",
+      "searchPlaceholder": "Search users...",
+      "noUsers": "No users found",
+      "showing": "Showing {from}-{to} of {total}",
+      "filters": {
+        "all": "All",
+        "admin": "Admins",
+        "user": "Users",
+        "verified": "Verified",
+        "unverified": "Unverified",
+        "flagged": "Flagged"
+      },
+      "flag": "Flag User",
+      "unflag": "Unflag User",
+      "flagged": "User flagged",
+      "unflagged": "User unflagged",
+      "flagFailed": "Failed to update flag status",
+      "editCredits": "Edit Credits",
+      "editCreditsTitle": "Edit Generation Credits",
+      "editCreditsDescription": "Set daily generation credit limit for @{username}",
+      "dailyLimit": "Daily Credit Limit",
+      "currentCredits": "Currently: {remaining}/{limit} credits remaining",
+      "creditsUpdated": "Credits updated successfully",
+      "creditsUpdateFailed": "Failed to update credits",
+      "save": "Save"
     },
     "categories": {
       "title": "Category Management",
@@ -484,7 +612,13 @@
       "noParent": "None (Root Category)",
       "parentHelp": "Leave empty to create a root category, or select a parent to create a subcategory",
       "rootCategory": "Root",
-      "subcategories": "subcategories"
+      "subcategories": "subcategories",
+      "pin": "Pin to Prompts Page",
+      "unpin": "Unpin from Prompts Page",
+      "pinned": "Category pinned",
+      "unpinned": "Category unpinned",
+      "pinnedBadge": "Pinned",
+      "pinnedLabel": "Pin to prompts page (show as quick filter)"
     },
     "tags": {
       "title": "Tag Management",
@@ -609,7 +743,24 @@
     "contributionsCount": "contributions",
     "noContributions": "No contributions yet",
     "noContributionsOwner": "You haven't contributed to any prompts yet",
-    "contributedTo": "Contributed to {author}'s prompt"
+    "contributedTo": "Contributed to {author}'s prompt",
+    "privatePromptsNote": "You have {count} private {count, plural, one {prompt} other {prompts}}. Access them via MCP using your API key in supported clients.",
+    "activityInLastYear": "{count} contributions in the last year",
+    "contribution": "contribution",
+    "contributionsPlural": "contributions",
+    "inLastYear": "in the last year",
+    "inLast6Months": "in the last 6 months",
+    "less": "Less",
+    "more": "More",
+    "activity": "Activity",
+    "filteringByDate": "Showing prompts from {date}",
+    "clearFilter": "Clear filter",
+    "noPromptsOnDate": "No prompts found on this date.",
+    "noPromptsOnDateOwner": "You don't have any prompts on this date.",
+    "createForToday": "Create for today",
+    "likes": "Likes",
+    "noLikes": "No liked prompts yet",
+    "noLikesOwner": "You haven't liked any prompts yet"
   },
   "subscription": {
     "subscribe": "Subscribe",
@@ -679,7 +830,7 @@
     "heroFeature1": "Free & Open Source",
     "heroFeature2": "Self-host for Privacy",
     "heroFeature3": "For Teams & Organizations",
-    "cloneOnGithub": "Clone on GitHub",
+    "setupPrivateServer": "Deploy Your Private Server",
     "beStargazer": "Be the {count}{ordinal} stargazer on GitHub",
     "browsePrompts": "Browse Prompts",
     "viewFeed": "View Feed",
@@ -706,7 +857,10 @@
   "notifications": {
     "title": "Notifications",
     "pendingChangeRequests": "Pending change requests",
-    "noNotifications": "No notifications"
+    "noNotifications": "No notifications",
+    "markAllRead": "Mark all read",
+    "commentedOnPrompt": "commented on your prompt",
+    "repliedToComment": "replied to your comment"
   },
   "promptmasters": {
     "title": "Promptmasters",
@@ -733,6 +887,17 @@
   "notFound": {
     "title": "Page Not Found",
     "description": "The page you're looking for doesn't exist or has been moved.",
+    "goHome": "Go Home",
+    "goBack": "Go Back",
+    "helpfulLinks": "Here are some helpful links:",
+    "browsePrompts": "Browse Prompts",
+    "categories": "Categories",
+    "createPrompt": "Create Prompt"
+  },
+  "serverError": {
+    "title": "Server Error",
+    "description": "Something went wrong on our end. Please try again later.",
+    "tryAgain": "Try Again",
     "goHome": "Go Home",
     "goBack": "Go Back",
     "helpfulLinks": "Here are some helpful links:",
@@ -776,6 +941,32 @@
     "editAction3": "Use variables",
     "editAction4": "Convert to JSON prompt"
   },
+  "comments": {
+    "comments": "Comments",
+    "writeComment": "Write a comment...",
+    "postComment": "Post Comment",
+    "reply": "Reply",
+    "replyTo": "Reply to @{username}...",
+    "posting": "Posting...",
+    "commentPosted": "Comment posted",
+    "commentDeleted": "Comment deleted",
+    "commentFlagged": "Comment flagged",
+    "commentUnflagged": "Comment unflagged",
+    "noComments": "No comments yet. Be the first to comment!",
+    "loginToComment": "Please login to post comments.",
+    "loginToVote": "Please login to vote on comments.",
+    "upvote": "Upvote",
+    "downvote": "Downvote",
+    "flag": "Flag",
+    "unflag": "Unflag",
+    "flagged": "Flagged",
+    "admin": "Admin",
+    "deleteCommentTitle": "Delete Comment?",
+    "deleteCommentDescription": "This action cannot be undone. The comment and all its replies will be permanently deleted.",
+    "deleting": "Deleting...",
+    "showReplies": "Show {count} {count, plural, one {reply} other {replies}}",
+    "hideReplies": "Hide replies"
+  },
   "report": {
     "report": "Report",
     "reportPrompt": "Report Prompt",
@@ -814,10 +1005,54 @@
     "generateApiKey": "Generate API key to save prompts via MCP"
   },
   "footer": {
+    "howTo": "How to...",
     "docs": "Docs",
     "api": "API",
     "privacy": "Privacy",
-    "terms": "Terms"
+    "terms": "Terms",
+    "support": "Support"
+  },
+  "support": {
+    "title": "Support",
+    "description": "Find answers to common questions or get help from our community.",
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "whatIsPrompt": {
+        "question": "What is a prompt?",
+        "answer": "A prompt is an instruction or input you give to an AI model (like ChatGPT, Claude, Gemini, etc.) to guide its response. It's essentially how you communicate what you want the AI to do. Well-crafted prompts lead to better, more useful outputs from AI systems."
+      },
+      "whyPromptsMatter": {
+        "question": "Why do prompts matter? Can't I just ask the AI anything?",
+        "answer": "While advanced AI models can handle casual questions well, prompts become critical when:\n\n• Using AI via API in applications — you often get only one chance to get it right (\"one-shot prompting\"), with no back-and-forth dialogue\n• Working with smaller, cost-effective models that need more precise instructions\n• Building production systems where consistency and reliability matter\n\nOptimized prompts help you get better results, save tokens (and money), and create more reliable AI-powered applications."
+      },
+      "whatIsPromptschat": {
+        "question": "What is prompts.chat?",
+        "answer": "prompts.chat is a community-driven platform where people share, discover, and collect AI prompts. For over 4 years, users have been sharing their prompt optimization techniques here. The community helps each other improve their prompts and learn new approaches to working with AI systems."
+      },
+      "howToUse": {
+        "question": "How do I use prompts from this platform?",
+        "answer": "Simply browse the prompts, find one you like, and copy it. You can then paste it into your preferred AI tool (ChatGPT, Claude, Gemini, etc.) or use it in your applications via API. Many prompts include variables you can customize before copying."
+      },
+      "license": {
+        "question": "Can I use these prompts commercially?",
+        "answer": "Yes! All prompts on prompts.chat are released under the CC0 (Creative Commons Zero) license, which means they are in the public domain. You can use, modify, and distribute them freely for any purpose, including commercial use, without attribution."
+      },
+      "selfHost": {
+        "question": "Can I self-host this platform?",
+        "answer": "Absolutely! prompts.chat is fully open source. You can deploy your own private instance for your team or organization. Check out our self-hosting documentation for setup instructions."
+      }
+    },
+    "contact": {
+      "title": "Need More Help?",
+      "description": "If you couldn't find an answer to your question, fill out the form below and we'll help you on GitHub.",
+      "form": {
+        "title": "Issue Title",
+        "titlePlaceholder": "Brief summary of your issue or question",
+        "description": "Description",
+        "descriptionPlaceholder": "Please describe your issue or question in detail..."
+      },
+      "openIssue": "Open GitHub Issue"
+    }
   },
   "apiKey": {
     "title": "MCP API Key",
@@ -838,5 +1073,128 @@
     "publicByDefault": "Public prompts by default",
     "publicByDefaultDescription": "When saving prompts via MCP, make them public by default instead of private.",
     "settingUpdated": "Setting updated"
+  },
+  "connectedPrompts": {
+    "title": "Prompt Flow",
+    "description": "Some prompts work as multi-step workflows. Connect your prompts to create a sequence.",
+    "addConnection": "Add Connection",
+    "addPrevious": "Add Previous",
+    "addNext": "Add Next",
+    "addConnectionTitle": "Add Connection",
+    "addPreviousTitle": "Add Previous Prompt",
+    "addNextTitle": "Add Next Prompt",
+    "addConnectionDescription": "Link this prompt to another prompt with a condition label.",
+    "addPreviousDescription": "Select a prompt that comes before this one in the workflow.",
+    "addNextDescription": "Select a prompt that comes after this one in the workflow.",
+    "noConnections": "No connected prompts yet. Add connections to create a prompt chain.",
+    "previousSteps": "Previous steps",
+    "nextSteps": "Next steps",
+    "searchPrompt": "Search Prompt",
+    "searchPlaceholder": "Search by title...",
+    "selectedPrompt": "Selected Prompt",
+    "connectionLabel": "Connection Label",
+    "labelPlaceholder": "e.g., first frame, next step, after processing...",
+    "labelHint": "Describe the condition or transition between prompts",
+    "change": "Change",
+    "cancel": "Cancel",
+    "fillAllFields": "Please select a prompt and enter a label",
+    "connectionFailed": "Failed to create connection",
+    "connectionAdded": "Connection added successfully",
+    "connectionDeleted": "Connection deleted",
+    "deleteFailed": "Failed to delete connection",
+    "noResults": "No prompts found"
+  },
+  "promptWritingGuide": {
+    "title": "How to Write Great Prompts",
+    "subtitle": "Tips, examples, and best practices for creating effective AI prompts",
+    "generalTips": {
+      "title": "General Tips for Effective Prompts",
+      "beSpecific": {
+        "title": "Be Specific and Clear",
+        "description": "Vague prompts lead to vague responses. Specify exactly what you want, including format, length, tone, and any constraints."
+      },
+      "provideContext": {
+        "title": "Provide Context",
+        "description": "Give background information that helps the AI understand your needs. Include who, what, why, and for whom."
+      },
+      "defineFormat": {
+        "title": "Define the Output Format",
+        "description": "Specify how you want the response structured: bullet points, paragraphs, code blocks, tables, etc."
+      },
+      "setConstraints": {
+        "title": "Set Constraints",
+        "description": "Include limitations like word count, reading level, things to avoid, or specific requirements to follow."
+      },
+      "includeExamples": {
+        "title": "Include Examples",
+        "description": "Show the AI what good output looks like. Examples help calibrate the response style and quality."
+      }
+    },
+    "rolePlaying": {
+      "title": "Role-Playing: \"Act As\" Patterns",
+      "description": "One of the most powerful prompting techniques is assigning the AI a specific role or persona. This helps establish expertise, tone, and perspective.",
+      "basicPattern": "Basic Role Pattern",
+      "exampleExpert": "Example: Technical Expert",
+      "exampleCreative": "Example: Creative Coach",
+      "popularRoles": "Popular Role Categories"
+    },
+    "variables": {
+      "title": "Using Variables for Dynamic Prompts",
+      "description": "Variables make your prompts reusable and customizable. Users can fill in different values each time they use your prompt.",
+      "syntax": "Variable Syntax",
+      "requiredVar": "Required variable (user must fill)",
+      "withDefault": "Variable with default value",
+      "simpleExample": "Simple Example",
+      "advancedExample": "Advanced Example with Multiple Variables",
+      "bestPractices": "Best Practices",
+      "tip1": "Use descriptive variable names: '$'{topic} is better than '$'{x}",
+      "tip2": "Provide sensible defaults for optional values",
+      "tip3": "Group related variables together in your prompt",
+      "tip4": "Use underscores for multi-word names: '$'{target_audience}"
+    },
+    "structured": {
+      "title": "Structured Prompts (JSON/YAML)",
+      "description": "Structured prompts use JSON or YAML format to organize complex instructions clearly. They're ideal for multi-step workflows, agents, and detailed configurations.",
+      "whenToUse": "When to Use Structured Prompts",
+      "useCase1": "Complex multi-step workflows or pipelines",
+      "useCase2": "Agent configurations with multiple parameters",
+      "useCase3": "Prompts with many interconnected settings",
+      "useCase4": "API-driven or programmatic prompt usage",
+      "jsonExample": "JSON Example: Interview Assistant",
+      "yamlExample": "YAML Example: Content Generator",
+      "agentWorkflow": "JSON Example: Agent Workflow",
+      "tips": "Tips for Structured Prompts",
+      "tip1": "Use JSON for programmatic use; YAML for human-readable configs",
+      "tip2": "Keep nesting shallow (2-3 levels max) for readability",
+      "tip3": "Include comments in YAML to explain complex sections",
+      "tip4": "Validate your JSON/YAML syntax before saving"
+    },
+    "outputOptimization": {
+      "title": "Output Optimization",
+      "description": "Guide the AI to produce exactly the format and style you need by being explicit about your requirements.",
+      "formatInstructions": "Format Instructions Template",
+      "constraintExamples": "Common Constraint Types",
+      "lengthConstraints": "Length constraints:",
+      "lengthExample": "\"Keep response under 200 words\" / \"Provide exactly 5 bullet points\"",
+      "styleConstraints": "Style constraints:",
+      "styleExample": "\"Use simple language suitable for beginners\" / \"Be technical and precise\"",
+      "contentConstraints": "Content constraints:",
+      "contentExample": "\"Do not include personal opinions\" / \"Focus only on factual information\""
+    }
+  },
+  "ide": {
+    "title": "Prompt Builder",
+    "subtitle": "Type-safe, structured prompt building",
+    "editor": "Editor",
+    "preview": "Preview",
+    "run": "Run",
+    "reset": "Reset",
+    "copied": "Copied to clipboard",
+    "runToPreview": "Click Run to see the prompt preview",
+    "cannotEvaluate": "This code cannot be evaluated.",
+    "onlyPromptsChat": "Only {library} imports are supported.",
+    "desktopOnly": "Desktop Only",
+    "desktopOnlyDescription": "The Prompt Builder requires a larger screen to work properly. Please open this page on a desktop or laptop computer.",
+    "browsePrompts": "Browse Prompts"
   }
 }

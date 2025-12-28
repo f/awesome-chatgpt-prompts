@@ -44,7 +44,8 @@
     "profile": "Profil",
     "login": "Anmelden",
     "register": "Registrieren",
-    "logout": "Abmelden"
+    "logout": "Abmelden",
+    "ide": "Prompt Builder"
   },
   "brand": {
     "copyLogoSvg": "Logo SVG kopieren",
@@ -101,6 +102,7 @@
   "prompts": {
     "title": "Prompts",
     "create": "Prompt erstellen",
+    "createInfo": "Diese Plattform führt keine Prompts aus — sie ist eine community-gesteuerte Bibliothek zum Teilen und Entdecken von KI-Prompts. Erstellen Sie hier Ihren Prompt, und andere können ihn kopieren und in ihren bevorzugten KI-Tools wie ChatGPT, Claude, Gemini oder anderen LLMs verwenden. Die Community kann auch Ihre Prompts kommentieren und Verbesserungen durch Änderungsanfragen vorschlagen.",
     "hfDataStudio": {
       "button": "HF Data Studio",
       "sqlQuery": "SQL-Abfrage",
@@ -120,6 +122,7 @@
     "noPrompts": "Keine Prompts gefunden",
     "noPromptsDescription": "Versuchen Sie, Ihre Such- oder Filterkriterien anzupassen, um das Gesuchte zu finden.",
     "noMorePrompts": "Sie haben das Ende erreicht",
+    "loadMore": "Mehr laden",
     "loading": "Laden...",
     "promptTitle": "Titel",
     "promptContent": "Inhalt",
@@ -158,16 +161,20 @@
       "video": "Video",
       "audio": "Audio",
       "structured": "Strukturiert",
-      "document": "Dokument"
+      "document": "Dokument",
+      "skill": "Skill"
     },
     "inputType": "Benutzer-Prompt",
     "outputType": "KI-Antwort",
+    "afterAiProcessing": "Was wird Ihr Prompt produzieren?",
     "inputTypeDescription": "Wie Ihr Prompt formatiert ist",
-    "outputTypeDescription": "Welche Art von Antwort die KI generieren wird",
+    "outputTypeDescription": "Zeigen Sie der Community, wie dieser Prompt funktioniert, wenn er mit KI-Tools ausgeführt wird. Sie können die Ausgaben selbst mit Ihrer bevorzugten KI-App generieren.",
     "outputTypeStructuredNote": "Strukturierte Prompts können verschiedene Ausgabetypen erzeugen",
+    "outputTypeSkillNote": "Skills weisen Agenten an, Code zu generieren. Die KI erzeugt Code-Ausgabe basierend auf Ihren Skill-Anweisungen.",
     "inputTypes": {
       "text": "Text-Prompt",
-      "structured": "Strukturiert (JSON/YAML)"
+      "structured": "Strukturiert (JSON/YAML)",
+      "skill": "Skill (Agent Skills)"
     },
     "outputTypes": {
       "text": "Text",
@@ -179,7 +186,7 @@
       "text": "✨ Hier passiert die Magie... Ihre KI wird etwas Brillantes schreiben!",
       "imageUpload": "Beispielbild hochladen",
       "videoUpload": "Beispielvideo/GIF hochladen",
-      "audio": "Audio-Vorschau"
+      "audioUpload": "Beispiel-Audio hochladen"
     },
     "structuredFormat": "Format",
     "structuredFormatDescription": "Wählen Sie das Format für Ihren strukturierten Prompt",
@@ -208,7 +215,20 @@
     "confirmDelete": "Sind Sie sicher, dass Sie diesen Prompt löschen möchten?",
     "promptCreated": "Prompt erstellt",
     "promptUpdated": "Prompt aktualisiert",
+    "rateLimitError": "Bitte warte 30 Sekunden bevor du einen weiteren Prompt erstellst",
+    "dailyLimitError": "Du hast das tägliche Limit von 5 Prompts erreicht",
+    "duplicatePromptError": "Du hast bereits einen Prompt mit dem gleichen Titel oder Inhalt",
+    "contentExistsError": "Ein Prompt mit diesem Inhalt existiert bereits: \"{title}\" von {author}",
     "run": "Ausführen",
+    "downloadMarkdown": "MD herunterladen",
+    "downloadYaml": "YAML herunterladen",
+    "downloadSkillMd": "SKILL.md herunterladen",
+    "copyMarkdownUrl": "MD-Link kopieren",
+    "copyYamlUrl": "YAML-Link kopieren",
+    "downloadStarted": "Download gestartet",
+    "downloadFailed": "Download fehlgeschlagen",
+    "urlCopied": "Link kopiert",
+    "failedToCopyUrl": "Link konnte nicht kopiert werden",
     "promptCopied": "Prompt kopiert",
     "promptCopiedDescription": "Der Prompt wurde in die Zwischenablage kopiert. Fügen Sie ihn in {platform} nach dem Öffnen ein.",
     "openPlatform": "{platform} öffnen",
@@ -230,11 +250,65 @@
     "mediaUrlPlaceholder": "https://...",
     "mediaUrlDescription": "Geben Sie die URL zur Mediendatei für diesen Prompt ein",
     "mediaImage": "Medienbild",
+    "mediaVideo": "Medienvideo",
+    "mediaAudio": "Medien-Audio",
     "clickToUpload": "Klicken Sie, um ein Bild hochzuladen",
+    "clickToUploadVideo": "Klicken Sie, um ein Video hochzuladen",
+    "clickToUploadAudio": "Klicken zum Hochladen einer Audiodatei",
     "uploading": "Wird hochgeladen...",
-    "maxFileSize": "Max. Dateigröße: 5MB (JPEG, PNG, GIF, WebP)",
-    "fileTooLarge": "Datei zu groß. Maximale Größe ist 5MB.",
+    "maxFileSize": "Max. Dateigröße: 4MB (JPEG, PNG, GIF, WebP)",
+    "maxVideoSize": "Max. Dateigröße: 4MB (MP4)",
+    "maxAudioSize": "Max. Dateigröße: 4MB (MP3, WAV, OGG)",
+    "fileTooLarge": "Datei zu groß. Maximale Größe ist 4MB.",
+    "videoTooLarge": "Video zu groß. Maximale Größe ist 4MB.",
     "invalidFileType": "Ungültiger Dateityp. Nur JPEG, PNG, GIF und WebP sind erlaubt.",
+    "invalidVideoType": "Ungültiger Videotyp. Nur MP4-Videos sind erlaubt.",
+    "invalidAudioType": "Ungültiger Audiotyp. Nur MP3-, WAV- und OGG-Dateien sind erlaubt.",
+    "uploadMedia": "Medien hochladen",
+    "generateMedia": "Generieren",
+    "chooseGenerator": "Generator wählen",
+    "uploadInstead": "Stattdessen hochladen",
+    "confirmGeneration": "Generierung bestätigen",
+    "confirmGenerationDescription": "Medien mit {provider} und Modell {model} generieren?",
+    "promptPreview": "Prompt-Vorschau",
+    "noPromptProvided": "Kein Prompt angegeben",
+    "inputImage": "Eingabebild",
+    "aspectRatio": "Seitenverhältnis",
+    "startGeneration": "Generierung starten",
+    "generatingMedia": "Medien werden mit {provider} generiert",
+    "doNotCloseWindow": "Bitte schließen Sie dieses Fenster nicht während der Generierung.",
+    "generationComplete": "Generierung abgeschlossen",
+    "generationFailed": "Generierung fehlgeschlagen",
+    "mediaAddedToPrompt": "Medien wurden Ihrem Prompt hinzugefügt.",
+    "mediaGenerated": "Medien erfolgreich generiert!",
+    "orGenerateMedia": "Oder mit KI generieren",
+    "aiGenerationAvailable": "✨ KI-Generierung Verfügbar",
+    "generateWith": "Mit KI generieren",
+    "generateImage": "Bild generieren",
+    "generateVideo": "Video generieren",
+    "generateAudio": "Audio generieren",
+    "generateImageDescription": "Generieren Sie ein einzigartiges Bild für Ihren Prompt mit KI — perfekt, um Ihren Prompt der Community zu präsentieren.",
+    "generateVideoDescription": "Generieren Sie ein einzigartiges Video für Ihren Prompt mit KI — perfekt, um Ihren Prompt der Community zu präsentieren.",
+    "generateAudioDescription": "Generieren Sie einzigartiges Audio/Musik für Ihren Prompt mit KI — perfekt, um Ihren Prompt der Community zu präsentieren.",
+    "close": "Schließen",
+    "mediaGeneration": {
+      "connecting": "Verbindung zum Server...",
+      "connected": "Verbunden, warte in Warteschlange...",
+      "queued": "In Warteschlange...",
+      "accepted": "Aufgabe akzeptiert...",
+      "preprocessStart": "Vorverarbeitung...",
+      "preprocessEnd": "Vorverarbeitung abgeschlossen",
+      "gpuAssigned": "GPU zugewiesen, warte in Warteschlange...",
+      "started": "Generierung gestartet...",
+      "generating": "Generiere...",
+      "processingOutput": "Ausgabe wird verarbeitet...",
+      "ending": "Generierung abgeschlossen",
+      "postprocessStart": "Nachbearbeitung...",
+      "postprocessEnd": "Finalisierung...",
+      "complete": "Fertig!",
+      "error": "Fehler aufgetreten",
+      "errorProcessing": "Verarbeitungsfehler..."
+    },
     "privateDescription": "Private Prompts sind nur für Sie sichtbar",
     "requiresMediaUpload": "Medien-Upload erforderlich",
     "attachedMediaType": "Angehängter Medientyp",
@@ -267,7 +341,11 @@
     "translateToLanguage": "In Ihre Sprache übersetzen",
     "translated": "Inhalt übersetzt",
     "translationFailed": "Übersetzung fehlgeschlagen",
-    "alreadyTranslated": "Bereits übersetzt"
+    "alreadyTranslated": "Bereits übersetzt",
+    "learnHowToWritePrompts": "Lernen Sie, effektive Prompts zu schreiben →",
+    "structuredFormatDetected": "{format}-Format erkannt",
+    "structuredFormatWarningDescription": "Ihr Prompt-Inhalt sieht nach strukturierten Daten aus. Erwägen Sie den Wechsel in den strukturierten Modus für bessere Syntaxhervorhebung und Validierung.",
+    "switchToStructured": "Zu {format} wechseln"
   },
   "changeRequests": {
     "title": "Änderungsanfragen",
@@ -326,6 +404,9 @@
     "noCategories": "Keine Kategorien gefunden",
     "noSubcategories": "Noch keine Unterkategorien in dieser Kategorie",
     "prompts": "Prompts",
+    "subscribers": "Abonnenten",
+    "promptCount": "{count} Prompts",
+    "subscriberCount": "{count} Abonnenten",
     "confirmDelete": "Sind Sie sicher, dass Sie diese Kategorie löschen möchten?"
   },
   "tags": {
@@ -424,6 +505,29 @@
       "slugsSuccess": "{count} Slugs generiert",
       "slugsResult": "Generiert: {success}, Fehlgeschlagen: {failed}"
     },
+    "promptsList": {
+      "title": "Alle Prompts",
+      "description": "Alle Prompts im System durchsuchen und verwalten",
+      "noPrompts": "Keine Prompts gefunden",
+      "private": "Privat",
+      "unlisted": "Nicht gelistet",
+      "views": "Aufrufe",
+      "votes": "Stimmen",
+      "created": "Erstellt",
+      "showing": "Zeige {from}-{to} von {total}",
+      "deleteConfirmTitle": "Prompt löschen?",
+      "deleteConfirmDescription": "Möchten Sie \"{title}\" wirklich dauerhaft löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
+      "deleted": "Prompt erfolgreich gelöscht",
+      "filters": {
+        "all": "Alle",
+        "public": "Öffentlich",
+        "private": "Privat",
+        "unlisted": "Nicht gelistet",
+        "featured": "Hervorgehoben",
+        "reported": "Gemeldet",
+        "deleted": "Gelöscht"
+      }
+    },
     "users": {
       "title": "Benutzerverwaltung",
       "description": "Benutzerkonten anzeigen und verwalten",
@@ -446,7 +550,31 @@
       "unverified": "Verifizierung aufgehoben",
       "verifyFailed": "Aktualisierung der Verifizierung fehlgeschlagen",
       "deleteConfirmTitle": "Benutzer löschen?",
-      "deleteConfirmDescription": "Diese Aktion kann nicht rückgängig gemacht werden. Alle Benutzerdaten werden dauerhaft gelöscht."
+      "deleteConfirmDescription": "Diese Aktion kann nicht rückgängig gemacht werden. Alle Benutzerdaten werden dauerhaft gelöscht.",
+      "searchPlaceholder": "Benutzer suchen...",
+      "noUsers": "Keine Benutzer gefunden",
+      "showing": "Zeige {from}-{to} von {total}",
+      "filters": {
+        "all": "Alle",
+        "admin": "Admins",
+        "user": "Benutzer",
+        "verified": "Verifiziert",
+        "unverified": "Nicht verifiziert",
+        "flagged": "Markiert"
+      },
+      "flag": "Benutzer markieren",
+      "unflag": "Markierung aufheben",
+      "flagged": "Benutzer markiert",
+      "unflagged": "Markierung aufgehoben",
+      "flagFailed": "Markierungsstatus konnte nicht aktualisiert werden",
+      "editCredits": "Guthaben bearbeiten",
+      "editCreditsTitle": "Generierungsguthaben bearbeiten",
+      "editCreditsDescription": "Tägliches Guthabenlimit für @{username} festlegen",
+      "dailyLimit": "Tägliches Guthabenlimit",
+      "currentCredits": "Aktuell: {remaining}/{limit} Guthaben verbleibend",
+      "creditsUpdated": "Guthaben erfolgreich aktualisiert",
+      "creditsUpdateFailed": "Guthaben konnte nicht aktualisiert werden",
+      "save": "Speichern"
     },
     "categories": {
       "title": "Kategorieverwaltung",
@@ -480,7 +608,13 @@
       "noParent": "Keine (Stammkategorie)",
       "parentHelp": "Leer lassen, um eine Stammkategorie zu erstellen, oder ein Elternteil auswählen, um eine Unterkategorie zu erstellen",
       "rootCategory": "Stamm",
-      "subcategories": "Unterkategorien"
+      "subcategories": "Unterkategorien",
+      "pin": "An Prompts-Seite anheften",
+      "unpin": "Von Prompts-Seite lösen",
+      "pinned": "Kategorie angeheftet",
+      "unpinned": "Kategorie gelöst",
+      "pinnedBadge": "Angeheftet",
+      "pinnedLabel": "An Prompts-Seite anheften (als Schnellfilter anzeigen)"
     },
     "tags": {
       "title": "Tag-Verwaltung",
@@ -605,7 +739,24 @@
     "contributionsCount": "Beiträge",
     "noContributions": "Noch keine Beiträge",
     "noContributionsOwner": "Sie haben noch zu keinen Prompts beigetragen",
-    "contributedTo": "Hat zum Prompt von {author} beigetragen"
+    "contributedTo": "Hat zum Prompt von {author} beigetragen",
+    "privatePromptsNote": "Sie haben {count} private {count, plural, one {Prompt} other {Prompts}}. Greifen Sie über MCP mit Ihrem API-Schlüssel in unterstützten Clients darauf zu.",
+    "activityInLastYear": "{count} Beiträge im letzten Jahr",
+    "contribution": "Beitrag",
+    "contributionsPlural": "Beiträge",
+    "inLastYear": "im letzten Jahr",
+    "inLast6Months": "in den letzten 6 Monaten",
+    "less": "Weniger",
+    "more": "Mehr",
+    "activity": "Aktivität",
+    "filteringByDate": "Zeige Prompts vom {date}",
+    "clearFilter": "Filter löschen",
+    "noPromptsOnDate": "Keine Prompts an diesem Datum gefunden.",
+    "noPromptsOnDateOwner": "Sie haben keine Prompts an diesem Datum.",
+    "createForToday": "Für heute erstellen",
+    "likes": "Gefällt mir",
+    "noLikes": "Noch keine gelikten Prompts",
+    "noLikesOwner": "Sie haben noch keine Prompts geliket"
   },
   "subscription": {
     "subscribe": "Abonnieren",
@@ -675,7 +826,7 @@
     "heroFeature1": "Kostenlos & Open Source",
     "heroFeature2": "Selbst hosten für Privatsphäre",
     "heroFeature3": "Für Teams & Organisationen",
-    "cloneOnGithub": "Auf GitHub klonen",
+    "setupPrivateServer": "Eigenen Server Einrichten",
     "beStargazer": "Werden Sie der {count}. Stargazer auf GitHub",
     "browsePrompts": "Prompts durchsuchen",
     "viewFeed": "Feed anzeigen",
@@ -702,7 +853,36 @@
   "notifications": {
     "title": "Benachrichtigungen",
     "pendingChangeRequests": "Ausstehende Änderungsanfragen",
-    "noNotifications": "Keine Benachrichtigungen"
+    "noNotifications": "Keine Benachrichtigungen",
+    "markAllRead": "Alle als gelesen markieren",
+    "commentedOnPrompt": "hat Ihren Prompt kommentiert",
+    "repliedToComment": "hat auf Ihren Kommentar geantwortet"
+  },
+  "comments": {
+    "comments": "Kommentare",
+    "writeComment": "Schreiben Sie einen Kommentar...",
+    "postComment": "Kommentar posten",
+    "reply": "Antworten",
+    "replyTo": "Antwort an @{username}...",
+    "posting": "Wird gepostet...",
+    "commentPosted": "Kommentar gepostet",
+    "commentDeleted": "Kommentar gelöscht",
+    "commentFlagged": "Kommentar markiert",
+    "commentUnflagged": "Kommentar-Markierung entfernt",
+    "noComments": "Noch keine Kommentare. Seien Sie der Erste!",
+    "loginToComment": "Bitte anmelden, um zu kommentieren.",
+    "loginToVote": "Bitte anmelden, um abzustimmen.",
+    "upvote": "Positiv bewerten",
+    "downvote": "Negativ bewerten",
+    "flag": "Markieren",
+    "unflag": "Markierung entfernen",
+    "flagged": "Markiert",
+    "admin": "Admin",
+    "deleteCommentTitle": "Kommentar löschen?",
+    "deleteCommentDescription": "Diese Aktion kann nicht rückgängig gemacht werden. Der Kommentar und alle Antworten werden dauerhaft gelöscht.",
+    "deleting": "Wird gelöscht...",
+    "showReplies": "{count} Antworten anzeigen",
+    "hideReplies": "Antworten ausblenden"
   },
   "promptmasters": {
     "title": "Promptmasters",
@@ -743,6 +923,17 @@
   "notFound": {
     "title": "Seite nicht gefunden",
     "description": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+    "goHome": "Zur Startseite",
+    "goBack": "Zurück",
+    "helpfulLinks": "Nützliche Links:",
+    "browsePrompts": "Prompts durchsuchen",
+    "categories": "Kategorien",
+    "createPrompt": "Prompt erstellen"
+  },
+  "serverError": {
+    "title": "Serverfehler",
+    "description": "Etwas ist schiefgelaufen. Bitte versuchen Sie es später erneut.",
+    "tryAgain": "Erneut versuchen",
     "goHome": "Zur Startseite",
     "goBack": "Zurück",
     "helpfulLinks": "Hier sind einige hilfreiche Links:",
@@ -810,10 +1001,54 @@
     "generateApiKey": "API-Schlüssel generieren, um Prompts über MCP zu speichern"
   },
   "footer": {
+    "howTo": "Wie man es macht",
     "docs": "Dokumentation",
     "api": "API",
     "privacy": "Datenschutz",
-    "terms": "Nutzungsbedingungen"
+    "terms": "Nutzungsbedingungen",
+    "support": "Support"
+  },
+  "support": {
+    "title": "Support",
+    "description": "Finden Sie Antworten auf häufige Fragen oder erhalten Sie Hilfe von unserer Community.",
+    "faq": {
+      "title": "Häufig Gestellte Fragen",
+      "whatIsPrompt": {
+        "question": "Was ist ein Prompt?",
+        "answer": "Ein Prompt ist eine Anweisung oder Eingabe, die Sie einem KI-Modell (wie ChatGPT, Claude, Gemini usw.) geben, um dessen Antwort zu steuern. Es ist im Wesentlichen die Art, wie Sie kommunizieren, was die KI tun soll. Gut gestaltete Prompts führen zu besseren, nützlicheren Ausgaben von KI-Systemen."
+      },
+      "whyPromptsMatter": {
+        "question": "Warum sind Prompts wichtig? Kann ich die KI nicht einfach alles fragen?",
+        "answer": "Während fortgeschrittene KI-Modelle lockere Fragen gut handhaben können, werden Prompts kritisch, wenn:\n\n• Sie KI über API in Anwendungen verwenden — Sie haben oft nur eine Chance (\"one-shot prompting\"), ohne hin- und hergehenden Dialog\n• Sie mit kleineren, kostengünstigen Modellen arbeiten, die präzisere Anweisungen benötigen\n• Sie Produktionssysteme bauen, bei denen Konsistenz und Zuverlässigkeit wichtig sind\n\nOptimierte Prompts helfen Ihnen, bessere Ergebnisse zu erzielen, Token (und Geld) zu sparen und zuverlässigere KI-gestützte Anwendungen zu erstellen."
+      },
+      "whatIsPromptschat": {
+        "question": "Was ist prompts.chat?",
+        "answer": "prompts.chat ist eine Community-getriebene Plattform, auf der Menschen KI-Prompts teilen, entdecken und sammeln. Seit über 4 Jahren teilen Benutzer hier ihre Prompt-Optimierungstechniken. Die Community hilft sich gegenseitig, ihre Prompts zu verbessern und neue Ansätze für die Arbeit mit KI-Systemen zu lernen."
+      },
+      "howToUse": {
+        "question": "Wie verwende ich Prompts von dieser Plattform?",
+        "answer": "Durchsuchen Sie einfach die Prompts, finden Sie einen, der Ihnen gefällt, und kopieren Sie ihn. Sie können ihn dann in Ihr bevorzugtes KI-Tool (ChatGPT, Claude, Gemini usw.) einfügen oder in Ihren Anwendungen über API verwenden. Viele Prompts enthalten Variablen, die Sie vor dem Kopieren anpassen können."
+      },
+      "license": {
+        "question": "Kann ich diese Prompts kommerziell nutzen?",
+        "answer": "Ja! Alle Prompts auf prompts.chat sind unter der CC0-Lizenz (Creative Commons Zero) veröffentlicht, was bedeutet, dass sie gemeinfrei sind. Sie können sie frei für jeden Zweck nutzen, modifizieren und verteilen, einschließlich kommerzieller Nutzung, ohne Namensnennung."
+      },
+      "selfHost": {
+        "question": "Kann ich diese Plattform selbst hosten?",
+        "answer": "Auf jeden Fall! prompts.chat ist vollständig Open Source. Sie können Ihre eigene private Instanz für Ihr Team oder Ihre Organisation bereitstellen. Schauen Sie sich unsere Self-Hosting-Dokumentation für Einrichtungsanweisungen an."
+      }
+    },
+    "contact": {
+      "title": "Brauchen Sie Mehr Hilfe?",
+      "description": "Wenn Sie keine Antwort auf Ihre Frage finden konnten, füllen Sie das Formular unten aus und wir helfen Ihnen auf GitHub.",
+      "form": {
+        "title": "Issue-Titel",
+        "titlePlaceholder": "Kurze Zusammenfassung Ihres Problems oder Ihrer Frage",
+        "description": "Beschreibung",
+        "descriptionPlaceholder": "Bitte beschreiben Sie Ihr Problem oder Ihre Frage im Detail..."
+      },
+      "openIssue": "GitHub Issue Öffnen"
+    }
   },
   "apiKey": {
     "title": "MCP API-Schlüssel",
@@ -834,5 +1069,128 @@
     "publicByDefault": "Prompts standardmäßig öffentlich",
     "publicByDefaultDescription": "Beim Speichern von Prompts über MCP standardmäßig öffentlich statt privat machen.",
     "settingUpdated": "Einstellung aktualisiert"
+  },
+  "connectedPrompts": {
+    "title": "Prompt-Ablauf",
+    "description": "Einige Prompts funktionieren als mehrstufige Workflows. Verbinden Sie Ihre Prompts, um eine Sequenz zu erstellen.",
+    "addConnection": "Verbindung hinzufügen",
+    "addPrevious": "Vorherigen hinzufügen",
+    "addNext": "Nächsten hinzufügen",
+    "addConnectionTitle": "Verbindung hinzufügen",
+    "addPreviousTitle": "Vorherigen Prompt hinzufügen",
+    "addNextTitle": "Nächsten Prompt hinzufügen",
+    "addConnectionDescription": "Verknüpfen Sie diesen Prompt mit einem anderen Prompt mit einer Bedingungsbezeichnung.",
+    "addPreviousDescription": "Wählen Sie einen Prompt, der vor diesem im Workflow kommt.",
+    "addNextDescription": "Wählen Sie einen Prompt, der nach diesem im Workflow kommt.",
+    "noConnections": "Noch keine verbundenen Prompts. Fügen Sie Verbindungen hinzu, um eine Prompt-Kette zu erstellen.",
+    "previousSteps": "Vorherige Schritte",
+    "nextSteps": "Nächste Schritte",
+    "searchPrompt": "Prompt suchen",
+    "searchPlaceholder": "Nach Titel suchen...",
+    "selectedPrompt": "Ausgewählter Prompt",
+    "connectionLabel": "Verbindungsbezeichnung",
+    "labelPlaceholder": "z.B. erster Rahmen, nächster Schritt, nach Verarbeitung...",
+    "labelHint": "Beschreiben Sie die Bedingung oder den Übergang zwischen Prompts",
+    "change": "Ändern",
+    "cancel": "Abbrechen",
+    "fillAllFields": "Bitte wählen Sie einen Prompt und geben Sie eine Bezeichnung ein",
+    "connectionFailed": "Verbindung konnte nicht erstellt werden",
+    "connectionAdded": "Verbindung erfolgreich hinzugefügt",
+    "connectionDeleted": "Verbindung gelöscht",
+    "deleteFailed": "Verbindung konnte nicht gelöscht werden",
+    "noResults": "Keine Prompts gefunden"
+  },
+  "promptWritingGuide": {
+    "title": "Wie Man Gute Prompts Schreibt",
+    "subtitle": "Tipps, Beispiele und Best Practices für effektive KI-Prompts",
+    "generalTips": {
+      "title": "Allgemeine Tipps für Effektive Prompts",
+      "beSpecific": {
+        "title": "Sei Spezifisch und Klar",
+        "description": "Vage Prompts führen zu vagen Antworten. Gib genau an, was du willst, einschließlich Format, Länge, Ton und Einschränkungen."
+      },
+      "provideContext": {
+        "title": "Liefere Kontext",
+        "description": "Gib Hintergrundinformationen, die der KI helfen, deine Bedürfnisse zu verstehen. Beinhalte wer, was, warum und für wen."
+      },
+      "defineFormat": {
+        "title": "Definiere das Ausgabeformat",
+        "description": "Gib an, wie die Antwort strukturiert sein soll: Aufzählungspunkte, Absätze, Codeblöcke, Tabellen usw."
+      },
+      "setConstraints": {
+        "title": "Setze Einschränkungen",
+        "description": "Füge Begrenzungen wie Wortanzahl, Leseniveau, zu vermeidende Dinge oder spezifische Anforderungen hinzu."
+      },
+      "includeExamples": {
+        "title": "Füge Beispiele Hinzu",
+        "description": "Zeige der KI, wie eine gute Ausgabe aussieht. Beispiele helfen, den Antwortstil und die Qualität zu kalibrieren."
+      }
+    },
+    "rolePlaying": {
+      "title": "Rollenspiel: \"Agiere Als\" Muster",
+      "description": "Eine der mächtigsten Prompting-Techniken ist die Zuweisung einer spezifischen Rolle oder Persona an die KI. Dies hilft, Expertise, Ton und Perspektive zu etablieren.",
+      "basicPattern": "Grundlegendes Rollenmuster",
+      "exampleExpert": "Beispiel: Technischer Experte",
+      "exampleCreative": "Beispiel: Kreativer Coach",
+      "popularRoles": "Beliebte Rollenkategorien"
+    },
+    "variables": {
+      "title": "Variablen für Dynamische Prompts Nutzen",
+      "description": "Variablen machen deine Prompts wiederverwendbar und anpassbar. Benutzer können bei jeder Verwendung unterschiedliche Werte eingeben.",
+      "syntax": "Variablen-Syntax",
+      "requiredVar": "Erforderliche Variable (Benutzer muss ausfüllen)",
+      "withDefault": "Variable mit Standardwert",
+      "simpleExample": "Einfaches Beispiel",
+      "advancedExample": "Fortgeschrittenes Beispiel mit Mehreren Variablen",
+      "bestPractices": "Best Practices",
+      "tip1": "Verwenden Sie beschreibende Variablennamen: '$'{thema} ist besser als '$'{x}",
+      "tip2": "Biete sinnvolle Standardwerte für optionale Werte",
+      "tip3": "Gruppiere verwandte Variablen in deinem Prompt zusammen",
+      "tip4": "Verwende Unterstriche für mehrwörtige Namen: '$'{ziel_gruppe}"
+    },
+    "structured": {
+      "title": "Strukturierte Prompts (JSON/YAML)",
+      "description": "Strukturierte Prompts verwenden JSON- oder YAML-Format, um komplexe Anweisungen klar zu organisieren. Sie sind ideal für mehrstufige Workflows, Agenten und detaillierte Konfigurationen.",
+      "whenToUse": "Wann Strukturierte Prompts Verwenden",
+      "useCase1": "Komplexe mehrstufige Workflows oder Pipelines",
+      "useCase2": "Agentenkonfigurationen mit mehreren Parametern",
+      "useCase3": "Prompts mit vielen vernetzten Einstellungen",
+      "useCase4": "API-gesteuerte oder programmatische Prompt-Nutzung",
+      "jsonExample": "JSON-Beispiel: Interview-Assistent",
+      "yamlExample": "YAML-Beispiel: Content-Generator",
+      "agentWorkflow": "JSON-Beispiel: Agenten-Workflow",
+      "tips": "Tipps für Strukturierte Prompts",
+      "tip1": "Verwende JSON für programmatische Nutzung; YAML für lesbare Configs",
+      "tip2": "Halte die Verschachtelung flach (max 2-3 Ebenen) für Lesbarkeit",
+      "tip3": "Füge Kommentare in YAML hinzu, um komplexe Abschnitte zu erklären",
+      "tip4": "Validiere deine JSON/YAML-Syntax vor dem Speichern"
+    },
+    "outputOptimization": {
+      "title": "Ausgabeoptimierung",
+      "description": "Leite die KI an, genau das Format und den Stil zu produzieren, den du brauchst, indem du explizit deine Anforderungen angibst.",
+      "formatInstructions": "Format-Anweisungsvorlage",
+      "constraintExamples": "Häufige Einschränkungstypen",
+      "lengthConstraints": "Längenbeschränkungen:",
+      "lengthExample": "\"Halte die Antwort unter 200 Wörtern\" / \"Gib genau 5 Stichpunkte an\"",
+      "styleConstraints": "Stilbeschränkungen:",
+      "styleExample": "\"Verwende einfache Sprache für Anfänger\" / \"Sei technisch und präzise\"",
+      "contentConstraints": "Inhaltsbeschränkungen:",
+      "contentExample": "\"Keine persönlichen Meinungen einbeziehen\" / \"Nur auf faktische Informationen konzentrieren\""
+    }
+  },
+  "ide": {
+    "title": "Prompt Builder",
+    "subtitle": "Typsichere, strukturierte Prompt-Erstellung",
+    "editor": "Editor",
+    "preview": "Vorschau",
+    "run": "Ausführen",
+    "reset": "Zurücksetzen",
+    "copied": "In die Zwischenablage kopiert",
+    "runToPreview": "Klicken Sie auf Ausführen, um die Vorschau zu sehen",
+    "cannotEvaluate": "Dieser Code kann nicht ausgewertet werden.",
+    "onlyPromptsChat": "Nur {library}-Importe werden unterstützt.",
+    "desktopOnly": "Nur für Desktop",
+    "desktopOnlyDescription": "Der Prompt Builder benötigt einen größeren Bildschirm. Bitte öffnen Sie diese Seite auf einem Desktop- oder Laptop-Computer.",
+    "browsePrompts": "Prompts durchsuchen"
   }
 }

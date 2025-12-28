@@ -29,10 +29,6 @@ export interface AuthConfig {
   allowRegistration: boolean;
 }
 
-export interface StorageConfig {
-  provider: "url" | "s3" | string;
-}
-
 export interface I18nConfig {
   locales: string[];
   defaultLocale: string;
@@ -46,11 +42,13 @@ export interface FeaturesConfig {
   aiSearch?: boolean;
   aiGeneration?: boolean;
   mcp?: boolean;
+  comments?: boolean;
 }
 
 export interface Sponsor {
   name: string;
   logo: string;
+  darkLogo?: string;
   url: string;
   className?: string;
 }
@@ -71,7 +69,6 @@ export interface PromptsConfig {
   branding: BrandingConfig;
   theme: ThemeConfig;
   auth: AuthConfig;
-  storage: StorageConfig;
   i18n: I18nConfig;
   features: FeaturesConfig;
   homepage?: HomepageConfig;
@@ -114,9 +111,6 @@ export async function getConfig(): Promise<PromptsConfig> {
         providers: ["credentials"],
         allowRegistration: true,
       },
-      storage: {
-        provider: "url",
-      },
       i18n: {
         locales: ["en"],
         defaultLocale: "en",
@@ -128,6 +122,7 @@ export async function getConfig(): Promise<PromptsConfig> {
         tags: true,
         aiSearch: false,
         aiGeneration: false,
+        comments: true,
       },
     };
     return cachedConfig;

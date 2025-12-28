@@ -1,11 +1,10 @@
 import { NextResponse } from "next/server";
+import { unstable_cache } from "next/cache";
 import { db } from "@/lib/db";
 
-export async function GET(request: Request) {
-  try {
-    const { searchParams } = new URL(request.url);
-    const period = searchParams.get("period") || "all"; // all, month, week
-
+// Cache leaderboard data for 1 hour (3600 seconds)
+const getLeaderboard = unstable_cache(
+  async (period: string) => {
     // Calculate date filters
     const now = new Date();
     let dateFilter: Date | undefined;
@@ -16,71 +15,53 @@ export async function GET(request: Request) {
       dateFilter = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
     }
 
-    // Get prompts with vote counts and author info
-    const prompts = await db.prompt.findMany({
+    // Use database aggregation instead of loading all data into memory
+    // Group votes by prompt author to get total upvotes per user
+    const votesByAuthor = await db.promptVote.groupBy({
+      by: ["promptId"],
+      where: dateFilter ? { createdAt: { gte: dateFilter } } : undefined,
+      _count: { promptId: true },
+    });
+
+    // Get prompt author mapping for voted prompts only
+    const votedPromptIds = votesByAuthor.map((v) => v.promptId);
+    const promptAuthors = await db.prompt.findMany({
       where: {
+        id: { in: votedPromptIds },
         isPrivate: false,
         deletedAt: null,
       },
       select: {
         id: true,
-        author: {
-          select: {
-            id: true,
-            name: true,
-            username: true,
-            avatar: true,
-          },
-        },
-        votes: dateFilter
-          ? {
-              where: {
-                createdAt: { gte: dateFilter },
-              },
-              select: { promptId: true },
-            }
-          : {
-              select: { promptId: true },
-            },
+        authorId: true,
       },
     });
 
-    // Aggregate votes by user
-    const userVotes = new Map<string, {
-      id: string;
-      name: string | null;
-      username: string;
-      avatar: string | null;
-      totalUpvotes: number;
-    }>();
+    const promptToAuthor = new Map(promptAuthors.map((p) => [p.id, p.authorId]));
 
-    for (const prompt of prompts) {
-      const author = prompt.author;
-      const voteCount = prompt.votes.length;
-      
-      if (voteCount === 0) continue;
-      
-      const existing = userVotes.get(author.id);
-      
-      if (existing) {
-        existing.totalUpvotes += voteCount;
-      } else {
-        userVotes.set(author.id, {
-          id: author.id,
-          name: author.name,
-          username: author.username,
-          avatar: author.avatar,
-          totalUpvotes: voteCount,
-        });
+    // Aggregate votes by author
+    const authorVoteCounts = new Map<string, number>();
+    for (const vote of votesByAuthor) {
+      const authorId = promptToAuthor.get(vote.promptId);
+      if (authorId) {
+        authorVoteCounts.set(authorId, (authorVoteCounts.get(authorId) || 0) + vote._count.promptId);
       }
     }
 
-    // Get total prompt counts for users with upvotes
-    const userIds = Array.from(userVotes.keys());
-    const promptCounts = await db.user.findMany({
-      where: { id: { in: userIds } },
+    // Get top 50 users by vote count
+    const topAuthorIds = Array.from(authorVoteCounts.entries())
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 50)
+      .map(([id]) => id);
+
+    // Fetch user details and prompt counts for top users
+    const topUsers = await db.user.findMany({
+      where: { id: { in: topAuthorIds } },
       select: {
         id: true,
+        name: true,
+        username: true,
+        avatar: true,
         _count: {
           select: {
             prompts: {
@@ -94,16 +75,17 @@ export async function GET(request: Request) {
       },
     });
 
-    const promptCountMap = new Map(promptCounts.map((u) => [u.id, u._count.prompts]));
-
-    // Convert to array and sort by upvotes
-    let leaderboard = Array.from(userVotes.values())
+    // Build leaderboard with vote counts
+    let leaderboard = topUsers
       .map((user) => ({
-        ...user,
-        promptCount: promptCountMap.get(user.id) || 0,
+        id: user.id,
+        name: user.name,
+        username: user.username,
+        avatar: user.avatar,
+        totalUpvotes: authorVoteCounts.get(user.id) || 0,
+        promptCount: user._count.prompts,
       }))
-      .sort((a, b) => b.totalUpvotes - a.totalUpvotes)
-      .slice(0, 50);
+      .sort((a, b) => b.totalUpvotes - a.totalUpvotes);
 
     const MIN_USERS = 10;
 
@@ -159,10 +141,19 @@ export async function GET(request: Request) {
       leaderboard = [...leaderboard, ...additionalUsers];
     }
 
-    return NextResponse.json({
-      period,
-      leaderboard,
-    });
+    return { period, leaderboard };
+  },
+  ["leaderboard"],
+  { tags: ["leaderboard"], revalidate: 3600 } // Cache for 1 hour
+);
+
+export async function GET(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const period = searchParams.get("period") || "all"; // all, month, week
+
+    const result = await getLeaderboard(period);
+    return NextResponse.json(result);
   } catch (error) {
     console.error("Leaderboard error:", error);
     return NextResponse.json(

@@ -23,6 +23,12 @@ model User {
   githubUsername            String?
   apiKey                    String?                @unique
   mcpPromptsPublicByDefault Boolean                @default(false)
+  flagged                   Boolean                @default(false)
+  flaggedAt                 DateTime?
+  flaggedReason             String?
+  dailyGenerationLimit      Int                    @default(3)
+  generationCreditsRemaining Int                   @default(3)
+  generationCreditsResetAt  DateTime?
   accounts                  Account[]
   subscriptions  CategorySubscription[]
   changeRequests ChangeRequest[]
@@ -33,6 +39,10 @@ model User {
   prompts        Prompt[]               @relation("PromptAuthor")
   sessions       Session[]
   contributions  Prompt[]               @relation("PromptContributors")
+  comments              Comment[]              @relation("CommentAuthor")
+  commentVotes          CommentVote[]
+  notifications         Notification[]         @relation("NotificationRecipient")
+  notificationsActed    Notification[]         @relation("NotificationActor")
 
   @@map("users")
 }
@@ -106,9 +116,12 @@ model Prompt {
   tags                PromptTag[]
   versions            PromptVersion[]
   votes               PromptVote[]
+  comments            Comment[]
   author              User               @relation("PromptAuthor", fields: [authorId], references: [id], onDelete: Cascade)
   category            Category?          @relation(fields: [categoryId], references: [id])
   contributors        User[]             @relation("PromptContributors")
+  outgoingConnections PromptConnection[] @relation("ConnectionSource")
+  incomingConnections PromptConnection[] @relation("ConnectionTarget")
 
   @@index([authorId])
   @@index([categoryId])
@@ -164,6 +177,7 @@ model Category {
   description String?
   icon        String?
   order       Int                    @default(0)
+  pinned      Boolean                @default(false)
   parentId    String?
   parent      Category?              @relation("CategoryHierarchy", fields: [parentId], references: [id])
   children    Category[]             @relation("CategoryHierarchy")
@@ -171,6 +185,7 @@ model Category {
   prompts     Prompt[]
 
   @@index([parentId])
+  @@index([pinned])
   @@map("categories")
 }
 
@@ -266,6 +281,84 @@ model WebhookConfig {
   @@map("webhook_configs")
 }
 
+model Comment {
+  id        String        @id @default(cuid())
+  content   String
+  score     Int           @default(0)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  promptId  String
+  authorId  String
+  parentId  String?
+  flagged   Boolean       @default(false)
+  flaggedAt DateTime?
+  flaggedBy String?
+  deletedAt DateTime?
+  prompt    Prompt        @relation(fields: [promptId], references: [id], onDelete: Cascade)
+  author    User          @relation("CommentAuthor", fields: [authorId], references: [id], onDelete: Cascade)
+  parent    Comment?      @relation("CommentReplies", fields: [parentId], references: [id], onDelete: Cascade)
+  replies   Comment[]     @relation("CommentReplies")
+  votes     CommentVote[]
+
+  @@index([promptId])
+  @@index([authorId])
+  @@index([parentId])
+  @@map("comments")
+}
+
+model CommentVote {
+  userId    String
+  commentId String
+  value     Int        // 1 for upvote, -1 for downvote
+  createdAt DateTime   @default(now())
+  comment   Comment    @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, commentId])
+  @@index([userId])
+  @@index([commentId])
+  @@map("comment_votes")
+}
+
+model Notification {
+  id        String           @id @default(cuid())
+  type      NotificationType
+  read      Boolean          @default(false)
+  createdAt DateTime         @default(now())
+  userId    String
+  actorId   String?
+  promptId  String?
+  commentId String?
+  user      User             @relation("NotificationRecipient", fields: [userId], references: [id], onDelete: Cascade)
+  actor     User?            @relation("NotificationActor", fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([userId, read])
+  @@map("notifications")
+}
+
+model PromptConnection {
+  id            String   @id @default(cuid())
+  sourceId      String
+  targetId      String
+  label         String
+  order         Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  source        Prompt   @relation("ConnectionSource", fields: [sourceId], references: [id], onDelete: Cascade)
+  target        Prompt   @relation("ConnectionTarget", fields: [targetId], references: [id], onDelete: Cascade)
+
+  @@unique([sourceId, targetId])
+  @@index([sourceId])
+  @@index([targetId])
+  @@map("prompt_connections")
+}
+
+enum NotificationType {
+  COMMENT
+  REPLY
+}
+
 enum UserRole {
   ADMIN
   USER
@@ -277,6 +370,7 @@ enum PromptType {
   VIDEO
   AUDIO
   STRUCTURED
+  SKILL
 }
 
 enum StructuredFormat {
@@ -322,4 +416,5 @@ enum DelistReason {
   LOW_QUALITY
   NOT_LLM_INSTRUCTION
   MANUAL
+  UNUSUAL_ACTIVITY
 }

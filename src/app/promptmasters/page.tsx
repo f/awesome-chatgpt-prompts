@@ -72,6 +72,7 @@ function LeaderboardList({ users }: { users: LeaderboardUser[] }) {
         <Link
           key={user.id}
           href={`/@${user.username}`}
+          prefetch={false}
           className="flex items-center gap-4 p-3 hover:bg-muted/50 transition-colors"
         >
           <div className="w-8 flex justify-center">

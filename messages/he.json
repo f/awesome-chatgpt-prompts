@@ -44,7 +44,8 @@
     "profile": "פרופיל",
     "login": "התחברות",
     "register": "הרשמה",
-    "logout": "התנתקות"
+    "logout": "התנתקות",
+    "ide": "Prompt Builder"
   },
   "brand": {
     "copyLogoSvg": "העתק לוגו SVG",
@@ -101,6 +102,7 @@
   "prompts": {
     "title": "פרומפטים",
     "create": "צור פרומפט",
+    "createInfo": "פלטפורמה זו לא מריצה פרומפטים — היא ספרייה קהילתית לשיתוף וגילוי פרומפטים של AI. צור את הפרומפט שלך כאן, ואחרים יוכלו להעתיק ולהשתמש בו בכלי ה-AI המועדפים עליהם כמו ChatGPT, Claude, Gemini או כל LLM אחר. הקהילה יכולה גם להגיב על הפרומפטים שלך ולהציע שיפורים דרך בקשות שינוי.",
     "hfDataStudio": {
       "button": "HF Data Studio",
       "sqlQuery": "שאילתת SQL",
@@ -120,6 +122,7 @@
     "noPrompts": "לא נמצאו פרומפטים",
     "noPromptsDescription": "נסה להתאים את החיפוש או הסינון שלך.",
     "noMorePrompts": "הגעת לסוף",
+    "loadMore": "טען עוד",
     "loading": "טוען...",
     "promptTitle": "כותרת",
     "promptContent": "תוכן",
@@ -158,16 +161,20 @@
       "video": "וידאו",
       "audio": "אודיו",
       "structured": "מובנה",
-      "document": "מסמך"
+      "document": "מסמך",
+      "skill": "מיומנות"
     },
     "inputType": "פרומפט משתמש",
     "outputType": "תגובת AI",
+    "afterAiProcessing": "מה הפרומפט שלך ייצור?",
     "inputTypeDescription": "איך הפרומפט שלך מעוצב",
-    "outputTypeDescription": "איזה סוג תגובה ה-AI יפיק",
+    "outputTypeDescription": "הראה לקהילה איך הפרומפט הזה מתפקד כשהוא רץ בכלי AI. אתה יכול ליצור את התוצרים בעצמך באמצעות אפליקציית ה-AI המועדפת עליך.",
     "outputTypeStructuredNote": "פרומפטים מובנים יכולים לייצר סוגי פלט שונים",
+    "outputTypeSkillNote": "מיומנויות מנחות סוכנים ליצור קוד. הAI ייצר פלט קוד בהתאם להוראות המיומנות שלך.",
     "inputTypes": {
       "text": "פרומפט טקסט",
-      "structured": "מובנה (JSON/YAML)"
+      "structured": "מובנה (JSON/YAML)",
+      "skill": "מיומנות (Agent Skills)"
     },
     "outputTypes": {
       "text": "טקסט",
@@ -179,7 +186,7 @@
       "text": "✨ הקסם קורה כאן... ה-AI שלך יכתוב משהו מבריק!",
       "imageUpload": "העלה תמונת פלט לדוגמה",
       "videoUpload": "העלה וידאו/GIF פלט לדוגמה",
-      "audio": "תצוגה מקדימה של פלט אודיו"
+      "audioUpload": "העלה דוגמת אודיו"
     },
     "structuredFormat": "פורמט",
     "structuredFormatDescription": "בחר את הפורמט לפרומפט המובנה שלך",
@@ -208,7 +215,20 @@
     "confirmDelete": "האם אתה בטוח שברצונך למחוק את הפרומפט הזה?",
     "promptCreated": "הפרומפט נוצר",
     "promptUpdated": "הפרומפט עודכן",
+    "rateLimitError": "אנא המתינו 30 שניות לפני יצירת פרומפט נוסף",
+    "dailyLimitError": "הגעת למגבלה היומית של 5 פרומפטים",
+    "duplicatePromptError": "כבר יש לכם פרומפט עם אותו כותרת או תוכן",
+    "contentExistsError": "כבר קיים פרומפט עם תוכן זה: \"{title}\" מאת {author}",
     "run": "הפעל",
+    "downloadMarkdown": "הורד MD",
+    "downloadYaml": "הורד YAML",
+    "downloadSkillMd": "הורד SKILL.md",
+    "copyMarkdownUrl": "העתק קישור MD",
+    "copyYamlUrl": "העתק קישור YAML",
+    "downloadStarted": "ההורדה החלה",
+    "downloadFailed": "ההורדה נכשלה",
+    "urlCopied": "הקישור הועתק",
+    "failedToCopyUrl": "העתקת הקישור נכשלה",
     "promptCopied": "הפרומפט הועתק",
     "promptCopiedDescription": "הפרומפט הועתק ללוח שלך. הדבק אותו ב-{platform} לאחר הפתיחה.",
     "openPlatform": "פתח {platform}",
@@ -230,11 +250,65 @@
     "mediaUrlPlaceholder": "https://...",
     "mediaUrlDescription": "הזן כתובת לקובץ המדיה של הפרומפט הזה",
     "mediaImage": "תמונת מדיה לדוגמה",
+    "mediaVideo": "סרטון מדיה לדוגמה",
+    "mediaAudio": "אודיו מדיה",
     "clickToUpload": "לחץ להעלאת תמונה",
+    "clickToUploadVideo": "לחץ להעלאת סרטון",
+    "clickToUploadAudio": "לחץ להעלאת קובץ אודיו",
     "uploading": "מעלה...",
-    "maxFileSize": "גודל קובץ מקסימלי: 5MB (JPEG, PNG, GIF, WebP)",
-    "fileTooLarge": "הקובץ גדול מדי. גודל מקסימלי הוא 5MB.",
+    "maxFileSize": "גודל קובץ מקסימלי: 4MB (JPEG, PNG, GIF, WebP)",
+    "maxVideoSize": "גודל קובץ מקסימלי: 4MB (MP4)",
+    "maxAudioSize": "גודל מקסימלי: 4MB (MP3, WAV, OGG)",
+    "fileTooLarge": "הקובץ גדול מדי. גודל מקסימלי הוא 4MB.",
+    "videoTooLarge": "הסרטון גדול מדי. גודל מקסימלי הוא 4MB.",
     "invalidFileType": "סוג קובץ לא חוקי. רק JPEG, PNG, GIF ו-WebP מותרים.",
+    "invalidVideoType": "סוג סרטון לא חוקי. רק סרטוני MP4 מותרים.",
+    "invalidAudioType": "סוג אודיו לא חוקי. רק קבצי MP3, WAV ו-OGG מותרים.",
+    "uploadMedia": "העלאת מדיה",
+    "generateMedia": "יצירה",
+    "chooseGenerator": "בחר מחולל",
+    "uploadInstead": "העלאה במקום זאת",
+    "confirmGeneration": "אישור יצירה",
+    "confirmGenerationDescription": "ליצור מדיה עם {provider} באמצעות מודל {model}?",
+    "promptPreview": "תצוגה מקדימה של פרומפט",
+    "noPromptProvided": "לא סופק פרומפט",
+    "inputImage": "תמונת קלט",
+    "aspectRatio": "יחס גובה-רוחב",
+    "startGeneration": "התחל יצירה",
+    "generatingMedia": "יוצר מדיה עם {provider}",
+    "doNotCloseWindow": "אנא אל תסגור חלון זה בזמן היצירה.",
+    "generationComplete": "היצירה הושלמה",
+    "generationFailed": "היצירה נכשלה",
+    "mediaAddedToPrompt": "המדיה נוספה לפרומפט שלך.",
+    "mediaGenerated": "המדיה נוצרה בהצלחה!",
+    "orGenerateMedia": "או יצירה עם AI",
+    "aiGenerationAvailable": "✨ יצירת AI זמינה",
+    "generateWith": "יצירה עם AI",
+    "generateImage": "יצירת תמונה",
+    "generateVideo": "יצירת וידאו",
+    "generateAudio": "יצירת אודיו",
+    "generateImageDescription": "צור תמונה ייחודית לפרומפט שלך באמצעות AI — מושלם להצגת הפרומפט שלך לקהילה.",
+    "generateVideoDescription": "צור וידאו ייחודי לפרומפט שלך באמצעות AI — מושלם להצגת הפרומפט שלך לקהילה.",
+    "generateAudioDescription": "צור אודיו/מוזיקה ייחודיים לפרומפט שלך באמצעות AI — מושלם להצגת הפרומפט שלך לקהילה.",
+    "close": "סגור",
+    "mediaGeneration": {
+      "connecting": "מתחבר לשרת...",
+      "connected": "מחובר, ממתין בתור...",
+      "queued": "ממתין בתור...",
+      "accepted": "המשימה התקבלה...",
+      "preprocessStart": "עיבוד מקדים...",
+      "preprocessEnd": "העיבוד המקדים הושלם",
+      "gpuAssigned": "GPU הוקצה, ממתין בתור...",
+      "started": "היצירה החלה...",
+      "generating": "יוצר...",
+      "processingOutput": "מעבד פלט...",
+      "ending": "היצירה הושלמה",
+      "postprocessStart": "עיבוד לאחר...",
+      "postprocessEnd": "מסיים...",
+      "complete": "הושלם!",
+      "error": "אירעה שגיאה",
+      "errorProcessing": "שגיאת עיבוד..."
+    },
     "privateDescription": "פרומפטים פרטיים גלויים רק לך",
     "requiresMediaUpload": "דורש העלאת מדיה",
     "attachedMediaType": "סוג מדיה מצורף",
@@ -267,7 +341,11 @@
     "translateToLanguage": "תרגם לשפה שלך",
     "translated": "התוכן תורגם",
     "translationFailed": "התרגום נכשל",
-    "alreadyTranslated": "כבר תורגם"
+    "alreadyTranslated": "כבר תורגם",
+    "learnHowToWritePrompts": "למדו איך לכתוב פרומפטים יעילים ←",
+    "structuredFormatDetected": "זוהה פורמט {format}",
+    "structuredFormatWarningDescription": "תוכן הפרומפט שלך נראה כמו נתונים מובנים. שקול לעבור למצב מובנה להדגשת תחביר ואימות טובים יותר.",
+    "switchToStructured": "לעבור ל-{format}"
   },
   "changeRequests": {
     "title": "בקשות שינוי",
@@ -326,6 +404,9 @@
     "noCategories": "לא נמצאו קטגוריות",
     "noSubcategories": "אין תת-קטגוריות בקטגוריה זו עדיין",
     "prompts": "פרומפטים",
+    "subscribers": "מנויים",
+    "promptCount": "{count} פרומפטים",
+    "subscriberCount": "{count} מנויים",
     "confirmDelete": "האם אתה בטוח שברצונך למחוק קטגוריה זו?"
   },
   "tags": {
@@ -424,6 +505,29 @@
       "slugsSuccess": "{count} כתובות נוצרו",
       "slugsResult": "נוצרו: {success}, נכשלו: {failed}"
     },
+    "promptsList": {
+      "title": "כל הפרומפטים",
+      "description": "עיין ונהל את כל הפרומפטים במערכת",
+      "noPrompts": "לא נמצאו פרומפטים",
+      "private": "פרטי",
+      "unlisted": "לא רשום",
+      "views": "צפיות",
+      "votes": "הצבעות",
+      "created": "נוצר",
+      "showing": "מציג {from}-{to} מתוך {total}",
+      "deleteConfirmTitle": "למחוק פרומפט?",
+      "deleteConfirmDescription": "האם אתה בטוח שברצונך למחוק לצמיתות את \"{title}\"? לא ניתן לבטל פעולה זו.",
+      "deleted": "הפרומפט נמחק בהצלחה",
+      "filters": {
+        "all": "הכל",
+        "public": "ציבורי",
+        "private": "פרטי",
+        "unlisted": "לא רשום",
+        "featured": "מומלץ",
+        "reported": "דווח",
+        "deleted": "נמחק"
+      }
+    },
     "users": {
       "title": "ניהול משתמשים",
       "description": "צפה ונהל חשבונות משתמשים",
@@ -446,7 +550,31 @@
       "unverified": "אימות המשתמש בוטל",
       "verifyFailed": "עדכון האימות נכשל",
       "deleteConfirmTitle": "למחוק משתמש?",
-      "deleteConfirmDescription": "לא ניתן לבטל פעולה זו. כל נתוני המשתמש יימחקו לצמיתות."
+      "deleteConfirmDescription": "לא ניתן לבטל פעולה זו. כל נתוני המשתמש יימחקו לצמיתות.",
+      "searchPlaceholder": "חפש משתמשים...",
+      "noUsers": "לא נמצאו משתמשים",
+      "showing": "מציג {from}-{to} מתוך {total}",
+      "filters": {
+        "all": "הכל",
+        "admin": "מנהלים",
+        "user": "משתמשים",
+        "verified": "מאומתים",
+        "unverified": "לא מאומתים",
+        "flagged": "מסומנים"
+      },
+      "flag": "סמן משתמש",
+      "unflag": "הסר סימון",
+      "flagged": "המשתמש סומן",
+      "unflagged": "הסימון הוסר",
+      "flagFailed": "עדכון מצב הסימון נכשל",
+      "editCredits": "עריכת קרדיטים",
+      "editCreditsTitle": "עריכת קרדיטי יצירה",
+      "editCreditsDescription": "הגדר מגבלת קרדיטים יומית עבור @{username}",
+      "dailyLimit": "מגבלת קרדיטים יומית",
+      "currentCredits": "כרגע: {remaining}/{limit} קרדיטים נותרו",
+      "creditsUpdated": "הקרדיטים עודכנו בהצלחה",
+      "creditsUpdateFailed": "עדכון הקרדיטים נכשל",
+      "save": "שמור"
     },
     "categories": {
       "title": "ניהול קטגוריות",
@@ -480,7 +608,13 @@
       "noParent": "ללא (קטגוריית שורש)",
       "parentHelp": "השאר ריק ליצירת קטגוריית שורש, או בחר אב ליצירת תת-קטגוריה",
       "rootCategory": "שורש",
-      "subcategories": "תת-קטגוריות"
+      "subcategories": "תת-קטגוריות",
+      "pin": "הצמד לדף הפרומפטים",
+      "unpin": "בטל הצמדה מדף הפרומפטים",
+      "pinned": "הקטגוריה הוצמדה",
+      "unpinned": "הקטגוריה בוטלה הצמדתה",
+      "pinnedBadge": "מוצמד",
+      "pinnedLabel": "הצמד לדף פרומפטים (הצג כמסנן מהיר)"
     },
     "tags": {
       "title": "ניהול תגיות",
@@ -605,7 +739,24 @@
     "contributionsCount": "תרומות",
     "noContributions": "אין תרומות עדיין",
     "noContributionsOwner": "עדיין לא תרמת לפרומפטים",
-    "contributedTo": "תרם לפרומפט של {author}"
+    "contributedTo": "תרם לפרומפט של {author}",
+    "privatePromptsNote": "יש לך {count} {count, plural, one {פרומפט פרטי} other {פרומפטים פרטיים}}. גש אליהם דרך MCP באמצעות מפתח ה-API שלך בלקוחות נתמכים.",
+    "activityInLastYear": "{count} תרומות בשנה האחרונה",
+    "contribution": "תרומה",
+    "contributionsPlural": "תרומות",
+    "inLastYear": "בשנה האחרונה",
+    "inLast6Months": "ב-6 החודשים האחרונים",
+    "less": "פחות",
+    "more": "יותר",
+    "activity": "פעילות",
+    "filteringByDate": "מציג פרומפטים מ-{date}",
+    "clearFilter": "נקה מסנן",
+    "noPromptsOnDate": "לא נמצאו פרומפטים בתאריך זה.",
+    "noPromptsOnDateOwner": "אין לך פרומפטים בתאריך זה.",
+    "createForToday": "צור להיום",
+    "likes": "לייקים",
+    "noLikes": "עדיין אין פרומפטים שאהבת",
+    "noLikesOwner": "עדיין לא אהבת אף פרומפט"
   },
   "subscription": {
     "subscribe": "הירשם",
@@ -675,7 +826,7 @@
     "heroFeature1": "חינם וקוד פתוח",
     "heroFeature2": "ארח בשרתים שלך לפרטיות",
     "heroFeature3": "לצוותים וארגונים",
-    "cloneOnGithub": "שכפל ב-GitHub",
+    "setupPrivateServer": "הקם שרת פרטי משלך",
     "beStargazer": "היה הכוכב ה-{count}{ordinal} ב-GitHub",
     "browsePrompts": "עיין בפרומפטים",
     "viewFeed": "צפה בפיד",
@@ -702,7 +853,36 @@
   "notifications": {
     "title": "התראות",
     "pendingChangeRequests": "בקשות שינוי ממתינות",
-    "noNotifications": "אין התראות"
+    "noNotifications": "אין התראות",
+    "markAllRead": "סמן הכל כנקרא",
+    "commentedOnPrompt": "הגיב על הפרומפט שלך",
+    "repliedToComment": "הגיב לתגובה שלך"
+  },
+  "comments": {
+    "comments": "תגובות",
+    "writeComment": "כתוב תגובה...",
+    "postComment": "פרסם תגובה",
+    "reply": "השב",
+    "replyTo": "השב ל-@{username}...",
+    "posting": "מפרסם...",
+    "commentPosted": "התגובה פורסמה",
+    "commentDeleted": "התגובה נמחקה",
+    "commentFlagged": "התגובה סומנה",
+    "commentUnflagged": "הסימון הוסר",
+    "noComments": "אין עדיין תגובות. היה הראשון להגיב!",
+    "loginToComment": "התחבר כדי להגיב.",
+    "loginToVote": "התחבר כדי להצביע.",
+    "upvote": "הצבעה חיובית",
+    "downvote": "הצבעה שלילית",
+    "flag": "סמן",
+    "unflag": "הסר סימון",
+    "flagged": "מסומן",
+    "admin": "מנהל",
+    "deleteCommentTitle": "למחוק את התגובה?",
+    "deleteCommentDescription": "לא ניתן לבטל פעולה זו. התגובה וכל התשובות יימחקו לצמיתות.",
+    "deleting": "מוחק...",
+    "showReplies": "הצג {count} תשובות",
+    "hideReplies": "הסתר תשובות"
   },
   "promptmasters": {
     "title": "מאסטרי פרומפטים",
@@ -729,6 +909,17 @@
   "notFound": {
     "title": "הדף לא נמצא",
     "description": "הדף שאתה מחפש לא קיים או הועבר.",
+    "goHome": "לדף הבית",
+    "goBack": "חזרה",
+    "helpfulLinks": "קישורים שימושיים:",
+    "browsePrompts": "עיין בפרומפטים",
+    "categories": "קטגוריות",
+    "createPrompt": "צור פרומפט"
+  },
+  "serverError": {
+    "title": "שגיאת שרת",
+    "description": "משהו השתבש. אנא נסה שוב מאוחר יותר.",
+    "tryAgain": "נסה שוב",
     "goHome": "לדף הבית",
     "goBack": "חזרה",
     "helpfulLinks": "הנה כמה קישורים שימושיים:",
@@ -810,10 +1001,54 @@
     "generateApiKey": "צור מפתח API לשמירת פרומפטים דרך MCP"
   },
   "footer": {
-    "docs": "תיעוד",
+    "howTo": "איך להשתמש",
+    "docs": "מסמכים",
     "api": "API",
     "privacy": "פרטיות",
-    "terms": "תנאים"
+    "terms": "תנאים",
+    "support": "תמיכה"
+  },
+  "support": {
+    "title": "תמיכה",
+    "description": "מצאו תשובות לשאלות נפוצות או קבלו עזרה מהקהילה שלנו.",
+    "faq": {
+      "title": "שאלות נפוצות",
+      "whatIsPrompt": {
+        "question": "מהו פרומפט?",
+        "answer": "פרומפט הוא הוראה או קלט שאתם נותנים למודל בינה מלאכותית (כמו ChatGPT, Claude, Gemini וכו') כדי להנחות את תגובתו. זה בעצם הדרך שבה אתם מתקשרים עם ה-AI לגבי מה שאתם רוצים שיעשה. פרומפטים מנוסחים היטב מובילים לתוצאות טובות ושימושיות יותר ממערכות AI."
+      },
+      "whyPromptsMatter": {
+        "question": "למה פרומפטים חשובים? אני לא יכול פשוט לשאול את ה-AI כל דבר?",
+        "answer": "בעוד שמודלים מתקדמים של AI יכולים להתמודד היטב עם שאלות יומיומיות, פרומפטים הופכים קריטיים כאשר:\n\n• משתמשים ב-AI דרך API באפליקציות — לעתים קרובות יש רק הזדמנות אחת (\"one-shot prompting\"), ללא דו-שיח הלוך ושוב\n• עובדים עם מודלים קטנים וחסכוניים שזקוקים להוראות מדויקות יותר\n• בונים מערכות ייצור שבהן עקביות ואמינות חשובות\n\nפרומפטים מותאמים עוזרים לכם לקבל תוצאות טובות יותר, לחסוך טוקנים (וכסף), וליצור אפליקציות AI אמינות יותר."
+      },
+      "whatIsPromptschat": {
+        "question": "מהו prompts.chat?",
+        "answer": "prompts.chat היא פלטפורמה מונעת קהילה שבה אנשים משתפים, מגלים ואוספים פרומפטים ל-AI. כבר יותר מ-4 שנים משתמשים משתפים כאן את טכניקות האופטימיזציה שלהם לפרומפטים. הקהילה עוזרת אחד לשני לשפר את הפרומפטים שלהם וללמוד גישות חדשות לעבודה עם מערכות AI."
+      },
+      "howToUse": {
+        "question": "איך אני משתמש בפרומפטים מהפלטפורמה הזו?",
+        "answer": "פשוט דפדפו בפרומפטים, מצאו אחד שאתם אוהבים והעתיקו אותו. אחר כך תוכלו להדביק אותו בכלי ה-AI המועדף עליכם (ChatGPT, Claude, Gemini וכו') או להשתמש בו באפליקציות שלכם דרך API. פרומפטים רבים כוללים משתנים שתוכלו להתאים אישית לפני ההעתקה."
+      },
+      "license": {
+        "question": "האם אני יכול להשתמש בפרומפטים האלה מסחרית?",
+        "answer": "כן! כל הפרומפטים ב-prompts.chat מפורסמים תחת רישיון CC0 (Creative Commons Zero), מה שאומר שהם נחלת הכלל. אתם יכולים להשתמש בהם, לשנות אותם ולהפיץ אותם בחופשיות לכל מטרה, כולל שימוש מסחרי, ללא ייחוס."
+      },
+      "selfHost": {
+        "question": "האם אני יכול לארח את הפלטפורמה הזו בעצמי?",
+        "answer": "בהחלט! prompts.chat הוא קוד פתוח לחלוטין. אתם יכולים לפרוס מופע פרטי משלכם עבור הצוות או הארגון שלכם. עיינו בתיעוד האירוח העצמי להוראות ההגדרה."
+      }
+    },
+    "contact": {
+      "title": "צריכים עוד עזרה?",
+      "description": "אם לא מצאתם תשובה לשאלתכם, מלאו את הטופס למטה ונעזור לכם ב-GitHub.",
+      "form": {
+        "title": "כותרת Issue",
+        "titlePlaceholder": "תיאור קצר של הבעיה או השאלה שלכם",
+        "description": "תיאור",
+        "descriptionPlaceholder": "אנא תארו את הבעיה או השאלה שלכם בפירוט..."
+      },
+      "openIssue": "פתח Issue ב-GitHub"
+    }
   },
   "apiKey": {
     "title": "מפתח API ל-MCP",
@@ -834,5 +1069,128 @@
     "publicByDefault": "פרומפטים ציבוריים כברירת מחדל",
     "publicByDefaultDescription": "בעת שמירת פרומפטים דרך MCP, הפוך אותם לציבוריים כברירת מחדל במקום פרטיים.",
     "settingUpdated": "ההגדרה עודכנה"
+  },
+  "connectedPrompts": {
+    "title": "זרימת פרומפטים",
+    "description": "חלק מהפרומפטים עובדים כתהליכי עבודה מרובי שלבים. חבר את הפרומפטים שלך ליצירת רצף.",
+    "addConnection": "הוסף קישור",
+    "addPrevious": "הוסף קודם",
+    "addNext": "הוסף הבא",
+    "addConnectionTitle": "הוסף קישור",
+    "addPreviousTitle": "הוסף פרומפט קודם",
+    "addNextTitle": "הוסף פרומפט הבא",
+    "addConnectionDescription": "קשר פרומפט זה לפרומפט אחר עם תווית תנאי.",
+    "addPreviousDescription": "בחר פרומפט שבא לפני זה בתהליך העבודה.",
+    "addNextDescription": "בחר פרומפט שבא אחרי זה בתהליך העבודה.",
+    "noConnections": "אין עדיין פרומפטים מקושרים. הוסף קישורים ליצירת שרשרת פרומפטים.",
+    "previousSteps": "שלבים קודמים",
+    "nextSteps": "שלבים הבאים",
+    "searchPrompt": "חפש פרומפט",
+    "searchPlaceholder": "חפש לפי כותרת...",
+    "selectedPrompt": "פרומפט נבחר",
+    "connectionLabel": "תווית קישור",
+    "labelPlaceholder": "לדוגמה: פריים ראשון, שלב הבא, לאחר עיבוד...",
+    "labelHint": "תאר את התנאי או המעבר בין הפרומפטים",
+    "change": "שנה",
+    "cancel": "ביטול",
+    "fillAllFields": "אנא בחר פרומפט והזן תווית",
+    "connectionFailed": "יצירת הקישור נכשלה",
+    "connectionAdded": "הקישור נוסף בהצלחה",
+    "connectionDeleted": "הקישור נמחק",
+    "deleteFailed": "מחיקת הקישור נכשלה",
+    "noResults": "לא נמצאו פרומפטים"
+  },
+  "promptWritingGuide": {
+    "title": "איך לכתוב פרומפטים מעולים",
+    "subtitle": "טיפים, דוגמאות ושיטות עבודה מומלצות ליצירת פרומפטים יעילים לבינה מלאכותית",
+    "generalTips": {
+      "title": "טיפים כלליים לפרומפטים יעילים",
+      "beSpecific": {
+        "title": "היו ספציפיים וברורים",
+        "description": "פרומפטים מעורפלים מובילים לתשובות מעורפלות. ציינו בדיוק מה אתם רוצים, כולל פורמט, אורך, טון וכל מגבלה."
+      },
+      "provideContext": {
+        "title": "ספקו הקשר",
+        "description": "תנו מידע רקע שיעזור לבינה המלאכותית להבין את הצרכים שלכם. כללו מי, מה, למה ולמי."
+      },
+      "defineFormat": {
+        "title": "הגדירו את פורמט הפלט",
+        "description": "ציינו איך אתם רוצים שהתשובה תהיה מובנית: נקודות, פסקאות, בלוקי קוד, טבלאות וכו'."
+      },
+      "setConstraints": {
+        "title": "קבעו מגבלות",
+        "description": "כללו הגבלות כמו מספר מילים, רמת קריאה, דברים להימנע מהם או דרישות ספציפיות לעקוב אחריהן."
+      },
+      "includeExamples": {
+        "title": "כללו דוגמאות",
+        "description": "הראו לבינה המלאכותית איך נראה פלט טוב. דוגמאות עוזרות לכייל את סגנון ואיכות התשובה."
+      }
+    },
+    "rolePlaying": {
+      "title": "משחק תפקידים: דפוסי \"התנהג כ\"",
+      "description": "אחת הטכניקות החזקות ביותר היא להקצות לבינה המלאכותית תפקיד או פרסונה ספציפיים. זה עוזר לבסס מומחיות, טון ופרספקטיבה.",
+      "basicPattern": "דפוס תפקיד בסיסי",
+      "exampleExpert": "דוגמה: מומחה טכני",
+      "exampleCreative": "דוגמה: מאמן יצירתי",
+      "popularRoles": "קטגוריות תפקידים פופולריות"
+    },
+    "variables": {
+      "title": "שימוש במשתנים לפרומפטים דינמיים",
+      "description": "משתנים הופכים את הפרומפטים שלכם לשימושיים מחדש וניתנים להתאמה אישית. משתמשים יכולים למלא ערכים שונים בכל שימוש.",
+      "syntax": "תחביר משתנים",
+      "requiredVar": "משתנה נדרש (המשתמש חייב למלא)",
+      "withDefault": "משתנה עם ערך ברירת מחדל",
+      "simpleExample": "דוגמה פשוטה",
+      "advancedExample": "דוגמה מתקדמת עם מספר משתנים",
+      "bestPractices": "שיטות עבודה מומלצות",
+      "tip1": "השתמשו בשמות משתנים תיאוריים: '$'{topic} טוב יותר מ-'$'{x}",
+      "tip2": "ספקו ברירות מחדל הגיוניות לערכים אופציונליים",
+      "tip3": "קבצו משתנים קשורים יחד בפרומפט שלכם",
+      "tip4": "השתמשו בקווים תחתונים לשמות מרובי מילים: '$'{target_audience}"
+    },
+    "structured": {
+      "title": "פרומפטים מובנים (JSON/YAML)",
+      "description": "פרומפטים מובנים משתמשים בפורמט JSON או YAML לארגון ברור של הוראות מורכבות. אידיאליים לזרימות עבודה מרובות שלבים, סוכנים והגדרות מפורטות.",
+      "whenToUse": "מתי להשתמש בפרומפטים מובנים",
+      "useCase1": "זרימות עבודה או צינורות מורכבים מרובי שלבים",
+      "useCase2": "הגדרות סוכנים עם מספר פרמטרים",
+      "useCase3": "פרומפטים עם הרבה הגדרות מקושרות",
+      "useCase4": "שימוש בפרומפטים מונע API או תכנותי",
+      "jsonExample": "דוגמת JSON: עוזר ראיונות",
+      "yamlExample": "דוגמת YAML: מחולל תוכן",
+      "agentWorkflow": "דוגמת JSON: זרימת עבודה של סוכן",
+      "tips": "טיפים לפרומפטים מובנים",
+      "tip1": "JSON לשימוש תכנותי; YAML להגדרות קריאות",
+      "tip2": "שמרו על קינון רדוד (מקסימום 2-3 רמות) לקריאות",
+      "tip3": "הוסיפו הערות ב-YAML להסבר חלקים מורכבים",
+      "tip4": "אמתו את תחביר ה-JSON/YAML לפני שמירה"
+    },
+    "outputOptimization": {
+      "title": "אופטימיזציית פלט",
+      "description": "הנחו את הבינה המלאכותית לייצר בדיוק את הפורמט והסגנון שאתם צריכים על ידי היותכם מפורשים לגבי הדרישות שלכם.",
+      "formatInstructions": "תבנית הוראות פורמט",
+      "constraintExamples": "סוגי מגבלות נפוצים",
+      "lengthConstraints": "מגבלות אורך:",
+      "lengthExample": "\"שמור על התשובה מתחת ל-200 מילים\" / \"ספק בדיוק 5 נקודות\"",
+      "styleConstraints": "מגבלות סגנון:",
+      "styleExample": "\"השתמש בשפה פשוטה המתאימה למתחילים\" / \"היה טכני ומדויק\"",
+      "contentConstraints": "מגבלות תוכן:",
+      "contentExample": "\"\u05d0\u05dc \u05ea\u05db\u05dc\u05d5\u05dc \u05d3\u05e2\u05d5\u05ea \u05d0\u05d9\u05e9\u05d9\u05d5\u05ea\" / \"\u05d4\u05ea\u05de\u05e7\u05d3 \u05e8\u05e7 \u05d1\u05de\u05d9\u05d3\u05e2 \u05e2\u05d5\u05d1\u05d3\u05ea\u05d9\""
+    }
+  },
+  "ide": {
+    "title": "Prompt Builder",
+    "subtitle": "בניית פרומפטים מובנית ובטוחת טיפוסים",
+    "editor": "עורך",
+    "preview": "תצוגה מקדימה",
+    "run": "הפעל",
+    "reset": "איפוס",
+    "copied": "הועתק ללוח",
+    "runToPreview": "לחץ על הפעל כדי לראות תצוגה מקדימה",
+    "cannotEvaluate": "לא ניתן להעריך קוד זה.",
+    "onlyPromptsChat": "נתמכים רק ייבואים של {library}.",
+    "desktopOnly": "למחשב בלבד",
+    "desktopOnlyDescription": "בונה הפרומפטים דורש מסך גדול יותר כדי לפעול כראוי. אנא פתח דף זה במחשב שולחני או נייד.",
+    "browsePrompts": "עיין בפרומפטים"
   }
 }

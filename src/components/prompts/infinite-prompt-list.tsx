@@ -3,8 +3,10 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { Loader2, SearchX } from "lucide-react";
+import { Loader2, SearchX, RefreshCw } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Button } from "@/components/ui/button";
+import { Masonry } from "@/components/ui/masonry";
 import { useFilterContext } from "./filter-context";
 import { PromptCard, type PromptCardProps } from "./prompt-card";
 
@@ -48,26 +50,43 @@ export function InfinitePromptList({
   filters 
 }: InfinitePromptListProps) {
   const t = useTranslations("prompts");
-  const searchParams = useSearchParams();
+  const _searchParams = useSearchParams();
   const { isFilterPending, setFilterPending } = useFilterContext();
   const [prompts, setPrompts] = useState(initialPrompts);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [hasMore, setHasMore] = useState(initialPrompts.length < initialTotal);
+  const [hasError, setHasError] = useState(false);
   const loaderRef = useRef<HTMLDivElement>(null);
+  const abortControllerRef = useRef<AbortController | null>(null);
 
   // Reset when new data arrives from server
   useEffect(() => {
+    // Cancel any in-flight request when filters change
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+      abortControllerRef.current = null;
+    }
     setPrompts(initialPrompts);
     setPage(1);
     setHasMore(initialPrompts.length < initialTotal);
+    setHasError(false);
     setFilterPending(false);
   }, [initialPrompts, initialTotal, setFilterPending]);
 
   const loadMore = useCallback(async () => {
     if (isLoading || !hasMore) return;
 
+    // Cancel any previous request
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+    
+    const controller = new AbortController();
+    abortControllerRef.current = controller;
+
     setIsLoading(true);
+    setHasError(false);
     try {
       const nextPage = page + 1;
       const params = new URLSearchParams();
@@ -78,7 +97,9 @@ export function InfinitePromptList({
       if (filters.tag) params.set("tag", filters.tag);
       if (filters.sort) params.set("sort", filters.sort);
 
-      const response = await fetch(`/api/prompts?${params.toString()}`);
+      const response = await fetch(`/api/prompts?${params.toString()}`, {
+        signal: controller.signal,
+      });
       if (!response.ok) throw new Error("Failed to fetch");
 
       const data = await response.json();
@@ -87,19 +108,31 @@ export function InfinitePromptList({
       setPrompts((prev) => {
         const existingIds = new Set(prev.map((p) => p.id));
         const newPrompts = data.prompts.filter((p: { id: string }) => !existingIds.has(p.id));
+        // Calculate hasMore using updated length
+        const newTotal = prev.length + newPrompts.length;
+        setHasMore(data.prompts.length > 0 && newTotal < data.total);
         return [...prev, ...newPrompts];
       });
       setPage(nextPage);
-      setHasMore(data.prompts.length > 0 && prompts.length + data.prompts.length < data.total);
     } catch (error) {
+      // Ignore abort errors - they're expected when cancelling requests
+      if (error instanceof Error && error.name === "AbortError") {
+        return;
+      }
       console.error("Failed to load more prompts:", error);
+      setHasError(true);
     } finally {
-      setIsLoading(false);
+      // Only clear loading if this controller is still active
+      if (abortControllerRef.current === controller) {
+        setIsLoading(false);
+      }
     }
-  }, [isLoading, hasMore, page, filters, prompts.length]);
+  }, [isLoading, hasMore, page, filters]);
 
-  // Intersection Observer for infinite scroll
+  // Intersection Observer for infinite scroll (disabled if there was an error)
   useEffect(() => {
+    if (hasError) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && hasMore && !isLoading) {
@@ -114,7 +147,16 @@ export function InfinitePromptList({
     }
 
     return () => observer.disconnect();
-  }, [loadMore, hasMore, isLoading]);
+  }, [loadMore, hasMore, isLoading, hasError]);
+
+  // Cleanup abort controller on unmount
+  useEffect(() => {
+    return () => {
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+    };
+  }, []);
 
   // Show skeleton while filtering
   if (isFilterPending) {
@@ -143,19 +185,25 @@ export function InfinitePromptList({
 
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:auto-rows-fr">
+      <Masonry columnCount={{ default: 1, md: 2, lg: 3 }} gap={16}>
         {prompts.map((prompt) => (
           <PromptCard key={prompt.id} prompt={prompt} />
         ))}
-      </div>
+      </Masonry>
 
-      {/* Loader / End indicator */}
+      {/* Loader / End indicator / Error state */}
       <div ref={loaderRef} className="flex items-center justify-center py-4">
         {isLoading && (
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Loader2 className="h-4 w-4 animate-spin" />
             {t("loading")}
           </div>
+        )}
+        {!isLoading && hasError && hasMore && (
+          <Button variant="outline" size="sm" onClick={loadMore}>
+            <RefreshCw className="h-4 w-4 mr-2" />
+            {t("loadMore")}
+          </Button>
         )}
         {!hasMore && prompts.length > 0 && (
           <p className="text-xs text-muted-foreground">{t("noMorePrompts")}</p>

@@ -31,7 +31,8 @@ export function VariableToolbar({ onInsert, getSelectedText }: VariableToolbarPr
         // Sanitize: lowercase, replace spaces with underscores, remove invalid chars
         const sanitized = selected.trim().toLowerCase().replace(/\s+/g, "_").replace(/[^a-z0-9_]/g, "");
         if (sanitized) {
-          setName(sanitized);
+          // Use queueMicrotask to avoid sync setState in effect
+          queueMicrotask(() => setName(sanitized));
         }
       }
     }

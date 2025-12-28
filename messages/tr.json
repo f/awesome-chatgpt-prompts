@@ -44,7 +44,8 @@
     "profile": "Profil",
     "login": "Giriş Yap",
     "register": "Kayıt Ol",
-    "logout": "Çıkış Yap"
+    "logout": "Çıkış Yap",
+    "ide": "Prompt Builder"
   },
   "brand": {
     "copyLogoSvg": "Logo SVG'sini Kopyala",
@@ -101,6 +102,7 @@
   "prompts": {
     "title": "Promptlar",
     "create": "Prompt Oluştur",
+    "createInfo": "Bu platform promptları çalıştırmaz — AI promptlarını paylaşmak ve keşfetmek için topluluk odaklı bir kütüphanedir. Promptunuzu burada oluşturun, diğerleri ChatGPT, Claude, Gemini veya başka herhangi bir LLM gibi tercih ettikleri AI araçlarında kopyalayıp kullanabilir. Topluluk ayrıca promptlarınıza yorum yapabilir ve değişiklik istekleri aracılığıyla iyileştirmeler önerebilir.",
     "hfDataStudio": {
       "button": "HF Veri Stüdyosu",
       "sqlQuery": "SQL Sorgusu",
@@ -120,6 +122,7 @@
     "noPrompts": "Prompt bulunamadı",
     "noPromptsDescription": "Aradığınızı bulmak için arama veya filtre kriterlerinizi değiştirmeyi deneyin.",
     "noMorePrompts": "Sona ulaştınız",
+    "loadMore": "Daha Fazla Yükle",
     "loading": "Yükleniyor...",
     "promptTitle": "Başlık",
     "promptContent": "İçerik",
@@ -158,16 +161,20 @@
       "video": "Video",
       "audio": "Ses",
       "structured": "Yapılandırılmış",
-      "document": "Doküman"
+      "document": "Doküman",
+      "skill": "Yetenek"
     },
     "inputType": "Kullanıcı Promptu",
     "outputType": "AI Yanıtı",
-    "inputTypeDescription": "Promptunuz nasıl formatlanmış",
-    "outputTypeDescription": "AI'ın üreteceği yanıt türü",
+    "afterAiProcessing": "Promptunuz ne üretecek?",
+    "inputTypeDescription": "Promptunuzun formatı",
+    "outputTypeDescription": "Bu prompt AI araçlarında çalıştırıldığında nasıl performans gösterdiğini topluluğa gösterin. Çıktıları kendiniz favori AI uygulamanızı kullanarak oluşturabilirsiniz.",
     "outputTypeStructuredNote": "Yapılandırılmış promptlar çeşitli çıktı türleri üretebilir",
+    "outputTypeSkillNote": "Yetenekler, ajanları kod üretmeye yönlendirir. AI, yetenek talimatlarınıza göre kod çıktısı üretecektir.",
     "inputTypes": {
       "text": "Metin Promptu",
-      "structured": "Yapılandırılmış (JSON/YAML)"
+      "structured": "Yapılandırılmış (JSON/YAML)",
+      "skill": "Yetenek (Agent Skills)"
     },
     "outputTypes": {
       "text": "Metin",
@@ -179,7 +186,7 @@
       "text": "AI bu prompt'u kullanarak metin yanıtı üretecek",
       "imageUpload": "Örnek görsel çıktısı yükle",
       "videoUpload": "Örnek video/GIF çıktısı yükle",
-      "audio": "Ses çıktısı önizlemesi"
+      "audioUpload": "Örnek ses çıktısı yükle"
     },
     "structuredFormat": "Format",
     "structuredFormatDescription": "Yapılandırılmış promptunuz için format seçin",
@@ -208,7 +215,20 @@
     "confirmDelete": "Bu promptu silmek istediğinizden emin misiniz?",
     "promptCreated": "Prompt oluşturuldu",
     "promptUpdated": "Prompt güncellendi",
+    "rateLimitError": "Lütfen başka bir prompt oluşturmadan önce 30 saniye bekleyin",
+    "dailyLimitError": "Günlük 5 prompt sınırına ulaştınız",
+    "duplicatePromptError": "Aynı başlık veya içeriğe sahip bir promptunuz zaten var",
+    "contentExistsError": "Bu içeriğe sahip bir prompt zaten mevcut: \"{title}\" - {author}",
     "run": "Çalıştır",
+    "downloadMarkdown": "MD İndir",
+    "downloadYaml": "YAML İndir",
+    "downloadSkillMd": "SKILL.md İndir",
+    "copyMarkdownUrl": "MD Linkini Kopyala",
+    "copyYamlUrl": "YAML Linkini Kopyala",
+    "downloadStarted": "İndirme başladı",
+    "downloadFailed": "İndirme başarısız",
+    "urlCopied": "Link kopyalandı",
+    "failedToCopyUrl": "Link kopyalanamadı",
     "promptCopied": "Prompt Kopyalandı",
     "promptCopiedDescription": "Prompt panoya kopyalandı. Açtıktan sonra {platform}'a yapıştırın.",
     "openPlatform": "{platform}'u Aç",
@@ -230,11 +250,65 @@
     "mediaUrlPlaceholder": "https://...",
     "mediaUrlDescription": "Bu prompt için medya dosyasının URL'sini girin",
     "mediaImage": "Medya Görseli",
+    "mediaVideo": "Medya Videosu",
+    "mediaAudio": "Medya Sesi",
     "clickToUpload": "Görsel yüklemek için tıklayın",
+    "clickToUploadVideo": "Video yüklemek için tıklayın",
+    "clickToUploadAudio": "Ses dosyası yüklemek için tıklayın",
     "uploading": "Yükleniyor...",
-    "maxFileSize": "Maksimum dosya boyutu: 5MB (JPEG, PNG, GIF, WebP)",
-    "fileTooLarge": "Dosya çok büyük. Maksimum boyut 5MB'dir.",
+    "maxFileSize": "Maksimum dosya boyutu: 4MB (JPEG, PNG, GIF, WebP)",
+    "maxVideoSize": "Maksimum dosya boyutu: 4MB (MP4)",
+    "maxAudioSize": "Maksimum dosya boyutu: 4MB (MP3, WAV, OGG)",
+    "fileTooLarge": "Dosya çok büyük. Maksimum boyut 4MB'dir.",
+    "videoTooLarge": "Video çok büyük. Maksimum boyut 4MB'dir.",
     "invalidFileType": "Geçersiz dosya türü. Yalnızca JPEG, PNG, GIF ve WebP'ye izin verilir.",
+    "invalidVideoType": "Geçersiz video tipi. Sadece MP4 videoları kabul edilir.",
+    "invalidAudioType": "Geçersiz ses tipi. Sadece MP3, WAV ve OGG dosyaları kabul edilir.",
+    "uploadMedia": "Medya Yükle",
+    "generateMedia": "Oluştur",
+    "chooseGenerator": "Oluşturucu Seç",
+    "uploadInstead": "Bunun Yerine Yükle",
+    "confirmGeneration": "Oluşturmayı Onayla",
+    "confirmGenerationDescription": "{provider} ile {model} modeli kullanarak medya oluşturulsun mu?",
+    "promptPreview": "Prompt önizlemesi",
+    "noPromptProvided": "Prompt sağlanmadı",
+    "inputImage": "Girdi görseli",
+    "aspectRatio": "En-Boy Oranı",
+    "startGeneration": "Oluşturmayı Başlat",
+    "generatingMedia": "{provider} ile Medya Oluşturuluyor",
+    "doNotCloseWindow": "Oluşturma devam ederken lütfen bu pencereyi kapatmayın.",
+    "generationComplete": "Oluşturma Tamamlandı",
+    "generationFailed": "Oluşturma Başarısız",
+    "mediaAddedToPrompt": "Medya promptunuza eklendi.",
+    "mediaGenerated": "Medya başarıyla oluşturuldu!",
+    "orGenerateMedia": "Veya AI ile oluştur",
+    "aiGenerationAvailable": "✨ AI ile Oluşturma Mevcut",
+    "generateWith": "AI ile oluştur",
+    "generateImage": "Görsel Oluştur",
+    "generateVideo": "Video Oluştur",
+    "generateAudio": "Ses Oluştur",
+    "generateImageDescription": "Promptunuz için AI kullanarak benzersiz bir görsel oluşturun — topluluğa promptunuzu sergilemek için mükemmel.",
+    "generateVideoDescription": "Promptunuz için AI kullanarak benzersiz bir video oluşturun — topluluğa promptunuzu sergilemek için mükemmel.",
+    "generateAudioDescription": "Promptunuz için AI kullanarak benzersiz ses/müzik oluşturun — topluluğa promptunuzu sergilemek için mükemmel.",
+    "close": "Kapat",
+    "mediaGeneration": {
+      "connecting": "Sunucuya bağlanılıyor...",
+      "connected": "Bağlandı, kuyrukta bekleniyor...",
+      "queued": "Kuyrukta bekleniyor...",
+      "accepted": "Görev kabul edildi...",
+      "preprocessStart": "Ön işleme başlıyor...",
+      "preprocessEnd": "Ön işleme tamamlandı",
+      "gpuAssigned": "GPU atandı, kuyrukta bekleniyor...",
+      "started": "Oluşturma başladı...",
+      "generating": "Oluşturuluyor...",
+      "processingOutput": "Çıktı işleniyor...",
+      "ending": "Oluşturma tamamlandı",
+      "postprocessStart": "Son işleme başlıyor...",
+      "postprocessEnd": "Sonlandırılıyor...",
+      "complete": "Tamamlandı!",
+      "error": "Hata oluştu",
+      "errorProcessing": "İşleme hatası..."
+    },
     "privateDescription": "Özel promptlar yalnızca size görünür",
     "requiresMediaUpload": "Medya Yüklemesi Gerekli",
     "attachedMediaType": "Ekli Medya Türü",
@@ -267,7 +341,11 @@
     "translateToLanguage": "Dilinize çevirin",
     "translated": "İçerik çevrildi",
     "translationFailed": "Çeviri başarısız oldu",
-    "alreadyTranslated": "Zaten çevrildi"
+    "alreadyTranslated": "Zaten çevrildi",
+    "learnHowToWritePrompts": "Etkili promptlar nasıl yazılır öğrenin →",
+    "structuredFormatDetected": "{format} formatı algılandı",
+    "structuredFormatWarningDescription": "Prompt içeriğiniz yapılandırılmış veriye benziyor. Daha iyi sözdizimi vurgulama ve doğrulama için yapılandırılmış moda geçmeyi düşünün.",
+    "switchToStructured": "{format}'a geç"
   },
   "changeRequests": {
     "title": "Değişiklik İstekleri",
@@ -326,6 +404,9 @@
     "noCategories": "Kategori bulunamadı",
     "noSubcategories": "Bu kategoride henüz alt kategori yok",
     "prompts": "prompt",
+    "subscribers": "abone",
+    "promptCount": "{count} prompt",
+    "subscriberCount": "{count} abone",
     "confirmDelete": "Bu kategoriyi silmek istediğinizden emin misiniz?"
   },
   "tags": {
@@ -424,6 +505,29 @@
       "slugsSuccess": "{count} kısaltma oluşturuldu",
       "slugsResult": "Oluşturulan: {success}, Başarısız: {failed}"
     },
+    "promptsList": {
+      "title": "Tüm Promptlar",
+      "description": "Sistemdeki tüm promptları görüntüle ve yönet",
+      "noPrompts": "Prompt bulunamadı",
+      "private": "Özel",
+      "unlisted": "Listelenmemiş",
+      "views": "görüntülenme",
+      "votes": "oy",
+      "created": "Oluşturulma",
+      "showing": "{from}-{to} arası gösteriliyor, toplam {total}",
+      "deleteConfirmTitle": "Prompt Silinsin mi?",
+      "deleteConfirmDescription": "\"{title}\" kalıcı olarak silinecek. Bu işlem geri alınamaz ve tüm ilişkili veriler kaldırılacaktır.",
+      "deleted": "Prompt başarıyla silindi",
+      "filters": {
+        "all": "Tümü",
+        "public": "Herkese Açık",
+        "private": "Özel",
+        "unlisted": "Listelenmemiş",
+        "featured": "Öne Çıkan",
+        "reported": "Şikayet Edilen",
+        "deleted": "Silinmiş"
+      }
+    },
     "users": {
       "title": "Kullanıcı Yönetimi",
       "description": "Kullanıcı hesaplarını görüntüle ve yönet",
@@ -446,7 +550,31 @@
       "unverified": "Kullanıcı doğrulaması kaldırıldı",
       "verifyFailed": "Doğrulama güncellenemedi",
       "deleteConfirmTitle": "Kullanıcı Silinsin mi?",
-      "deleteConfirmDescription": "Bu işlem geri alınamaz. Tüm kullanıcı verileri kalıcı olarak silinecektir."
+      "deleteConfirmDescription": "Bu işlem geri alınamaz. Tüm kullanıcı verileri kalıcı olarak silinecektir.",
+      "searchPlaceholder": "Kullanıcı ara...",
+      "noUsers": "Kullanıcı bulunamadı",
+      "showing": "{from}-{to} arası gösteriliyor, toplam {total}",
+      "filters": {
+        "all": "Tümü",
+        "admin": "Adminler",
+        "user": "Kullanıcılar",
+        "verified": "Doğrulanmış",
+        "unverified": "Doğrulanmamış",
+        "flagged": "İşaretli"
+      },
+      "flag": "Kullanıcıyı İşaretle",
+      "unflag": "İşareti Kaldır",
+      "flagged": "Kullanıcı işaretlendi",
+      "unflagged": "İşaret kaldırıldı",
+      "flagFailed": "İşaret durumu güncellenemedi",
+      "editCredits": "Kredileri Düzenle",
+      "editCreditsTitle": "Üretim Kredilerini Düzenle",
+      "editCreditsDescription": "@{username} için günlük kredi limitini ayarla",
+      "dailyLimit": "Günlük Kredi Limiti",
+      "currentCredits": "Şu an: {remaining}/{limit} kredi kaldı",
+      "creditsUpdated": "Krediler başarıyla güncellendi",
+      "creditsUpdateFailed": "Krediler güncellenemedi",
+      "save": "Kaydet"
     },
     "categories": {
       "title": "Kategori Yönetimi",
@@ -480,7 +608,13 @@
       "noParent": "Yok (Ana Kategori)",
       "parentHelp": "Ana kategori oluşturmak için boş bırakın veya alt kategori oluşturmak için bir üst kategori seçin",
       "rootCategory": "Ana",
-      "subcategories": "alt kategori"
+      "subcategories": "alt kategori",
+      "pin": "Promptlar Sayfasına Sabitle",
+      "unpin": "Promptlar Sayfasından Kaldır",
+      "pinned": "Kategori sabitlendi",
+      "unpinned": "Kategori sabitlemesi kaldırıldı",
+      "pinnedBadge": "Sabitlenmiş",
+      "pinnedLabel": "Promptlar sayfasına sabitle (hızlı filtre olarak göster)"
     },
     "tags": {
       "title": "Etiket Yönetimi",
@@ -605,7 +739,24 @@
     "contributionsCount": "katkı",
     "noContributions": "Henüz katkı yok",
     "noContributionsOwner": "Henüz hiçbir prompta katkıda bulunmadınız",
-    "contributedTo": "{author} kullanıcısının promptuna katkıda bulunuldu"
+    "contributedTo": "{author} kullanıcısının promptuna katkıda bulunuldu",
+    "privatePromptsNote": "{count} özel {count, plural, one {prompt} other {prompt}}unuz var. Desteklenen istemcilerde API anahtarınızı kullanarak MCP üzerinden erişebilirsiniz.",
+    "activityInLastYear": "son bir yılda {count} katkı",
+    "contribution": "katkı",
+    "contributionsPlural": "katkı",
+    "inLastYear": "son bir yılda",
+    "inLast6Months": "son 6 ayda",
+    "less": "Az",
+    "more": "Çok",
+    "activity": "Aktivite",
+    "filteringByDate": "{date} tarihli promptlar gösteriliyor",
+    "clearFilter": "Filtreyi temizle",
+    "noPromptsOnDate": "Bu tarihte prompt bulunamadı.",
+    "noPromptsOnDateOwner": "Bu tarihte promptunuz yok.",
+    "createForToday": "Bugün için oluştur",
+    "likes": "Beğeniler",
+    "noLikes": "Henüz beğenilen prompt yok",
+    "noLikesOwner": "Henüz hiçbir promptu beğenmediniz"
   },
   "subscription": {
     "subscribe": "Abone Ol",
@@ -675,7 +826,7 @@
     "heroFeature1": "Özgür & Açık Kaynak",
     "heroFeature2": "Gizlilik için Self-host",
     "heroFeature3": "Ekipler & Organizasyonlar için",
-    "cloneOnGithub": "GitHub'dan Klonla",
+    "setupPrivateServer": "Kendi Sunucunu Kur",
     "beStargazer": "GitHub'da {count}. yıldız veren ol",
     "browsePrompts": "Promptlara Göz At",
     "viewFeed": "Akışı Görüntüle",
@@ -702,7 +853,36 @@
   "notifications": {
     "title": "Bildirimler",
     "pendingChangeRequests": "Bekleyen değişiklik istekleri",
-    "noNotifications": "Bildirim yok"
+    "noNotifications": "Bildirim yok",
+    "markAllRead": "Tümünü okundu işaretle",
+    "commentedOnPrompt": "promptunuza yorum yaptı",
+    "repliedToComment": "yorumunuza yanıt verdi"
+  },
+  "comments": {
+    "comments": "Yorumlar",
+    "writeComment": "Bir yorum yazın...",
+    "postComment": "Yorum Yap",
+    "reply": "Yanıtla",
+    "replyTo": "@{username} kullanıcısına yanıt...",
+    "posting": "Gönderiliyor...",
+    "commentPosted": "Yorum gönderildi",
+    "commentDeleted": "Yorum silindi",
+    "commentFlagged": "Yorum işaretlendi",
+    "commentUnflagged": "Yorum işareti kaldırıldı",
+    "noComments": "Henüz yorum yok. İlk yorumu siz yapın!",
+    "loginToComment": "Yorum yapmak için giriş yapın.",
+    "loginToVote": "Yorumları oylamak için giriş yapın.",
+    "upvote": "Olumlu oy",
+    "downvote": "Olumsuz oy",
+    "flag": "İşaretle",
+    "unflag": "İşareti Kaldır",
+    "flagged": "İşaretlendi",
+    "admin": "Yönetici",
+    "deleteCommentTitle": "Yorum Silinsin mi?",
+    "deleteCommentDescription": "Bu işlem geri alınamaz. Yorum ve tüm yanıtları kalıcı olarak silinecektir.",
+    "deleting": "Siliniyor...",
+    "showReplies": "{count} yanıtı göster",
+    "hideReplies": "Yanıtları gizle"
   },
   "promptmasters": {
     "title": "Promptmasters",
@@ -743,6 +923,17 @@
   "notFound": {
     "title": "Sayfa Bulunamadı",
     "description": "Aradığınız sayfa mevcut değil veya taşınmış olabilir.",
+    "goHome": "Ana Sayfaya Git",
+    "goBack": "Geri Dön",
+    "helpfulLinks": "Yararlı bağlantılar:",
+    "browsePrompts": "Promptları Gözat",
+    "categories": "Kategoriler",
+    "createPrompt": "Prompt Oluştur"
+  },
+  "serverError": {
+    "title": "Sunucu Hatası",
+    "description": "Bir şeyler ters gitti. Lütfen daha sonra tekrar deneyin.",
+    "tryAgain": "Tekrar Dene",
     "goHome": "Ana Sayfaya Git",
     "goBack": "Geri Dön",
     "helpfulLinks": "İşte bazı faydalı bağlantılar:",
@@ -810,10 +1001,54 @@
     "generateApiKey": "MCP ile prompt kaydetmek için API anahtarı oluşturun"
   },
   "footer": {
-    "docs": "Belgeler",
+    "howTo": "Nasıl Yapılır",
+    "docs": "Dökümanlar",
     "api": "API",
     "privacy": "Gizlilik",
-    "terms": "Şartlar"
+    "terms": "Şartlar",
+    "support": "Destek"
+  },
+  "support": {
+    "title": "Destek",
+    "description": "Sık sorulan sorulara cevap bulun veya topluluğumuzdan yardım alın.",
+    "faq": {
+      "title": "Sık Sorulan Sorular",
+      "whatIsPrompt": {
+        "question": "Prompt nedir?",
+        "answer": "Prompt, bir yapay zeka modeline (ChatGPT, Claude, Gemini vb.) verdiğiniz talimat veya girdidir. Yapay zekanın ne yapmasını istediğinizi iletmenin yoludur. İyi hazırlanmış promptlar, yapay zeka sistemlerinden daha iyi ve daha kullanışlı çıktılar almanızı sağlar."
+      },
+      "whyPromptsMatter": {
+        "question": "Promptlar neden önemli? Yapay zekaya istediğimi soramaz mıyım?",
+        "answer": "Gelişmiş yapay zeka modelleri günlük soruları iyi karşılayabilirken, promptlar şu durumlarda kritik hale gelir:\n\n• Uygulamalarda API üzerinden yapay zeka kullanırken — genellikle tek şansınız vardır (\"one-shot prompting\"), karşılıklı diyalog yoktur\n• Daha hassas talimatlar gerektiren küçük, ekonomik modellerle çalışırken\n• Tutarlılık ve güvenilirliğin önemli olduğu üretim sistemleri oluştururken\n\nOptimize edilmiş promptlar daha iyi sonuçlar almanıza, token (ve para) tasarrufu yapmanıza ve daha güvenilir yapay zeka destekli uygulamalar oluşturmanıza yardımcı olur."
+      },
+      "whatIsPromptschat": {
+        "question": "prompts.chat nedir?",
+        "answer": "prompts.chat, insanların yapay zeka promptlarını paylaştığı, keşfettiği ve topladığı topluluk odaklı bir platformdur. 4 yılı aşkın süredir kullanıcılar prompt optimizasyon tekniklerini burada paylaşmaktadır. Topluluk, promptlarını geliştirmek ve yapay zeka sistemleriyle çalışmanın yeni yaklaşımlarını öğrenmek için birbirine yardımcı olur."
+      },
+      "howToUse": {
+        "question": "Bu platformdaki promptları nasıl kullanırım?",
+        "answer": "Promptlara göz atın, beğendiğinizi bulun ve kopyalayın. Ardından tercih ettiğiniz yapay zeka aracına (ChatGPT, Claude, Gemini vb.) yapıştırabilir veya API aracılığıyla uygulamalarınızda kullanabilirsiniz. Birçok prompt, kopyalamadan önce özelleştirebileceğiniz değişkenler içerir."
+      },
+      "license": {
+        "question": "Bu promptları ticari olarak kullanabilir miyim?",
+        "answer": "Evet! prompts.chat'teki tüm promptlar CC0 (Creative Commons Zero) lisansı altında yayınlanmıştır, yani kamu malıdır. Ticari kullanım dahil herhangi bir amaç için atıf yapmadan özgürce kullanabilir, değiştirebilir ve dağıtabilirsiniz."
+      },
+      "selfHost": {
+        "question": "Bu platformu kendi sunucumda barındırabilir miyim?",
+        "answer": "Kesinlikle! prompts.chat tamamen açık kaynaklıdır. Ekibiniz veya kuruluşunuz için kendi özel örneğinizi dağıtabilirsiniz. Kurulum talimatları için self-hosting dokümantasyonumuza göz atın."
+      }
+    },
+    "contact": {
+      "title": "Daha Fazla Yardıma mı İhtiyacınız Var?",
+      "description": "Sorunuza cevap bulamadıysanız, aşağıdaki formu doldurun, GitHub üzerinden size yardımcı olalım.",
+      "form": {
+        "title": "Issue Başlığı",
+        "titlePlaceholder": "Sorunuzun veya probleminizin kısa özeti",
+        "description": "Açıklama",
+        "descriptionPlaceholder": "Lütfen sorunuzu veya probleminizi detaylı olarak açıklayın..."
+      },
+      "openIssue": "GitHub Issue Aç"
+    }
   },
   "apiKey": {
     "title": "MCP API Anahtarı",
@@ -834,5 +1069,128 @@
     "publicByDefault": "Varsayılan olarak herkese açık promptlar",
     "publicByDefaultDescription": "MCP ile prompt kaydederken, varsayılan olarak özel yerine herkese açık yap.",
     "settingUpdated": "Ayar güncellendi"
+  },
+  "connectedPrompts": {
+    "title": "Prompt Akışı",
+    "description": "Bazı promptlar çok adımlı iş akışları olarak çalışır. Bir sıra oluşturmak için promptlarınızı bağlayın.",
+    "addConnection": "Bağlantı Ekle",
+    "addPrevious": "Önceki Ekle",
+    "addNext": "Sonraki Ekle",
+    "addConnectionTitle": "Bağlantı Ekle",
+    "addPreviousTitle": "Önceki Prompt Ekle",
+    "addNextTitle": "Sonraki Prompt Ekle",
+    "addConnectionDescription": "Bu promptu bir koşul etiketi ile başka bir prompta bağlayın.",
+    "addPreviousDescription": "İş akışında bundan önce gelen bir prompt seçin.",
+    "addNextDescription": "İş akışında bundan sonra gelen bir prompt seçin.",
+    "noConnections": "Henüz bağlı prompt yok. Prompt zinciri oluşturmak için bağlantılar ekleyin.",
+    "previousSteps": "Önceki adımlar",
+    "nextSteps": "Sonraki adımlar",
+    "searchPrompt": "Prompt Ara",
+    "searchPlaceholder": "Başlığa göre ara...",
+    "selectedPrompt": "Seçili Prompt",
+    "connectionLabel": "Bağlantı Etiketi",
+    "labelPlaceholder": "örn. ilk kare, sonraki adım, işlemden sonra...",
+    "labelHint": "Promptlar arasındaki koşulu veya geçişi açıklayın",
+    "change": "Değiştir",
+    "cancel": "İptal",
+    "fillAllFields": "Lütfen bir prompt seçin ve etiket girin",
+    "connectionFailed": "Bağlantı oluşturulamadı",
+    "connectionAdded": "Bağlantı başarıyla eklendi",
+    "connectionDeleted": "Bağlantı silindi",
+    "deleteFailed": "Bağlantı silinemedi",
+    "noResults": "Prompt bulunamadı"
+  },
+  "promptWritingGuide": {
+    "title": "Harika Promptlar Nasıl Yazılır",
+    "subtitle": "Etkili AI promptları oluşturmak için ipuçları, örnekler ve en iyi uygulamalar",
+    "generalTips": {
+      "title": "Etkili Promptlar İçin Genel İpuçları",
+      "beSpecific": {
+        "title": "Spesifik ve Net Olun",
+        "description": "Belirsiz promptlar belirsiz yanıtlara yol açar. Format, uzunluk, ton ve kısıtlamalar dahil tam olarak ne istediğinizi belirtin."
+      },
+      "provideContext": {
+        "title": "Bağlam Sağlayın",
+        "description": "AI'ın ihtiyaçlarınızı anlamasına yardımcı olacak arka plan bilgisi verin. Kim, ne, neden ve kimin için sorularını dahil edin."
+      },
+      "defineFormat": {
+        "title": "Çıktı Formatını Tanımlayın",
+        "description": "Yanıtın nasıl yapılandırılmasını istediğinizi belirtin: madde işaretleri, paragraflar, kod blokları, tablolar vb."
+      },
+      "setConstraints": {
+        "title": "Kısıtlamalar Belirleyin",
+        "description": "Kelime sayısı, okuma seviyesi, kaçınılacak şeyler veya uyulması gereken özel gereksinimler gibi sınırlamalar ekleyin."
+      },
+      "includeExamples": {
+        "title": "Örnekler Ekleyin",
+        "description": "AI'a iyi çıktının neye benzediğini gösterin. Örnekler, yanıt stilini ve kalitesini kalibre etmeye yardımcı olur."
+      }
+    },
+    "rolePlaying": {
+      "title": "Rol Yapma: \"Şu Rolde Davran\" Kalıpları",
+      "description": "En güçlü prompt tekniklerinden biri AI'a belirli bir rol veya kişilik atamaktır. Bu, uzmanlık, ton ve bakış açısı oluşturmaya yardımcı olur.",
+      "basicPattern": "Temel Rol Kalıbı",
+      "exampleExpert": "Örnek: Teknik Uzman",
+      "exampleCreative": "Örnek: Yaratıcı Koç",
+      "popularRoles": "Popüler Rol Kategorileri"
+    },
+    "variables": {
+      "title": "Dinamik Promptlar İçin Değişken Kullanımı",
+      "description": "Değişkenler promptlarınızı yeniden kullanılabilir ve özelleştirilebilir hale getirir. Kullanıcılar promptunuzu her kullandıklarında farklı değerler girebilir.",
+      "syntax": "Değişken Sözdizimi",
+      "requiredVar": "Zorunlu değişken (kullanıcı doldurmalı)",
+      "withDefault": "Varsayılan değerli değişken",
+      "simpleExample": "Basit Örnek",
+      "advancedExample": "Birden Fazla Değişkenli Gelişmiş Örnek",
+      "bestPractices": "En İyi Uygulamalar",
+      "tip1": "Açıklayıcı değişken adları kullanın: '$'{topic}, '$'{x}'den daha iyidir",
+      "tip2": "Opsiyonel değerler için mantıklı varsayılanlar sağlayın",
+      "tip3": "İlgili değişkenleri promptunuzda birlikte gruplandırın",
+      "tip4": "Çok kelimeli isimler için alt çizgi kullanın: '$'{hedef_kitle}"
+    },
+    "structured": {
+      "title": "Yapılandırılmış Promptlar (JSON/YAML)",
+      "description": "Yapılandırılmış promptlar, karmaşık talimatları net bir şekilde organize etmek için JSON veya YAML formatını kullanır. Çok adımlı iş akışları, ajanlar ve detaylı yapılandırmalar için idealdir.",
+      "whenToUse": "Yapılandırılmış Promptları Ne Zaman Kullanmalı",
+      "useCase1": "Karmaşık çok adımlı iş akışları veya pipeline'lar",
+      "useCase2": "Birden fazla parametreli ajan yapılandırmaları",
+      "useCase3": "Birbirine bağlı birçok ayara sahip promptlar",
+      "useCase4": "API odaklı veya programatik prompt kullanımı",
+      "jsonExample": "JSON Örneği: Mülakat Asistanı",
+      "yamlExample": "YAML Örneği: İçerik Oluşturucu",
+      "agentWorkflow": "JSON Örneği: Ajan İş Akışı",
+      "tips": "Yapılandırılmış Promptlar İçin İpuçları",
+      "tip1": "Programatik kullanım için JSON; okunabilir yapılandırmalar için YAML kullanın",
+      "tip2": "Okunabilirlik için iç içe geçmeyi sığ tutun (maks 2-3 seviye)",
+      "tip3": "Karmaşık bölümleri açıklamak için YAML'da yorumlar ekleyin",
+      "tip4": "Kaydetmeden önce JSON/YAML sözdizimini doğrulayın"
+    },
+    "outputOptimization": {
+      "title": "Çıktı Optimizasyonu",
+      "description": "Gereksinimleriniz konusunda açık olarak AI'ı tam olarak ihtiyacınız olan format ve stilde çıktı üretmeye yönlendirin.",
+      "formatInstructions": "Format Talimatları Şablonu",
+      "constraintExamples": "Yaygın Kısıtlama Türleri",
+      "lengthConstraints": "Uzunluk kısıtlamaları:",
+      "lengthExample": "\"Yanıtı 200 kelimenin altında tut\" / \"Tam olarak 5 madde işareti sağla\"",
+      "styleConstraints": "Stil kısıtlamaları:",
+      "styleExample": "\"Yeni başlayanlar için uygun basit dil kullan\" / \"Teknik ve kesin ol\"",
+      "contentConstraints": "İçerik kısıtlamaları:",
+      "contentExample": "\"Kişisel görüşler ekleme\" / \"Sadece olgusal bilgilere odaklan\""
+    }
+  },
+  "ide": {
+    "title": "Prompt Builder",
+    "subtitle": "Tip güvenli, yapılandırılmış prompt oluşturma",
+    "editor": "Editör",
+    "preview": "Önizleme",
+    "run": "Çalıştır",
+    "reset": "Sıfırla",
+    "copied": "Panoya kopyalandı",
+    "runToPreview": "Önizleme için Çalıştır'a tıklayın",
+    "cannotEvaluate": "Bu kod değerlendirilemiyor.",
+    "onlyPromptsChat": "Sadece {library} importları destekleniyor.",
+    "desktopOnly": "Yalnızca Masaüstü",
+    "desktopOnlyDescription": "Prompt Oluşturucu düzgün çalışması için daha büyük bir ekran gerektirir. Lütfen bu sayfayı bir masaüstü veya dizüstü bilgisayarda açın.",
+    "browsePrompts": "Promptlara Göz At"
   }
 }

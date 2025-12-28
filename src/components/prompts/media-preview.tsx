@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { ImageIcon, AlertTriangle } from "lucide-react";
+import { AudioPlayer } from "./audio-player";
 
 interface MediaPreviewProps {
   mediaUrl: string;
@@ -38,6 +39,11 @@ export function MediaPreview({ mediaUrl, title, type }: MediaPreviewProps) {
           src={mediaUrl}
           controls
           className="w-full max-h-[500px] object-contain block"
+          onError={() => setHasError(true)}
+        />
+      ) : type === "AUDIO" ? (
+        <AudioPlayer
+          src={mediaUrl}
           onError={() => setHasError(true)}
         />
       ) : (

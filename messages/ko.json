@@ -44,7 +44,8 @@
     "profile": "프로필",
     "login": "로그인",
     "register": "회원가입",
-    "logout": "로그아웃"
+    "logout": "로그아웃",
+    "ide": "Prompt Builder"
   },
   "brand": {
     "copyLogoSvg": "로고 SVG 복사",
@@ -101,6 +102,7 @@
   "prompts": {
     "title": "프롬프트",
     "create": "프롬프트 생성",
+    "createInfo": "이 플랫폼은 프롬프트를 실행하지 않습니다 — AI 프롬프트를 공유하고 발견하는 커뮤니티 라이브러리입니다. 여기서 프롬프트를 만들면 다른 사용자들이 ChatGPT, Claude, Gemini 등 선호하는 AI 도구에서 복사하여 사용할 수 있습니다. 커뮤니티는 프롬프트에 댓글을 달고 변경 요청을 통해 개선 사항을 제안할 수도 있습니다.",
     "hfDataStudio": {
       "button": "HF 데이터 스튜디오",
       "sqlQuery": "SQL 쿼리",
@@ -119,7 +121,8 @@
     "privatePrompts": "비공개 프롬프트",
     "noPrompts": "프롬프트가 없습니다",
     "noPromptsDescription": "원하는 것을 찾으려면 검색 또는 필터 조건을 조정해 보세요.",
-    "noMorePrompts": "마지막까지 확인했습니다",
+    "noMorePrompts": "끝에 도달했습니다",
+    "loadMore": "더 보기",
     "loading": "로딩 중...",
     "promptTitle": "제목",
     "promptContent": "내용",
@@ -158,16 +161,20 @@
       "video": "비디오",
       "audio": "오디오",
       "structured": "구조화",
-      "document": "문서"
+      "document": "문서",
+      "skill": "스킬"
     },
     "inputType": "사용자 프롬프트",
     "outputType": "AI 응답",
+    "afterAiProcessing": "프롬프트가 무엇을 생성할까요?",
     "inputTypeDescription": "프롬프트 형식",
-    "outputTypeDescription": "AI가 생성할 응답 유형",
+    "outputTypeDescription": "이 프롬프트가 AI 도구에서 실행될 때 어떻게 작동하는지 커뮤니티에 보여주세요. 좋아하는 AI 앱을 사용하여 직접 출력을 생성할 수 있습니다.",
     "outputTypeStructuredNote": "구조화된 프롬프트는 다양한 출력 유형을 생성할 수 있습니다",
+    "outputTypeSkillNote": "스킬은 에이전트에게 코드를 생성하도록 지시합니다. AI는 스킬 지침에 따라 코드 출력을 생성합니다.",
     "inputTypes": {
       "text": "텍스트 프롬프트",
-      "structured": "구조화 (JSON/YAML)"
+      "structured": "구조화 (JSON/YAML)",
+      "skill": "스킬 (Agent Skills)"
     },
     "outputTypes": {
       "text": "텍스트",
@@ -179,7 +186,7 @@
       "text": "✨ 마법이 일어나는 곳... AI가 멋진 것을 작성할 거예요!",
       "imageUpload": "예시 이미지 업로드",
       "videoUpload": "예시 비디오/GIF 업로드",
-      "audio": "오디오 출력 미리보기"
+      "audioUpload": "예시 오디오 업로드"
     },
     "structuredFormat": "형식",
     "structuredFormatDescription": "구조화된 프롬프트의 형식을 선택하세요",
@@ -206,9 +213,22 @@
     "copyPrompt": "프롬프트 복사",
     "sharePrompt": "프롬프트 공유",
     "confirmDelete": "이 프롬프트를 삭제하시겠습니까?",
-    "promptCreated": "프롬프트 생성됨",
-    "promptUpdated": "프롬프트 업데이트됨",
+    "promptCreated": "프롬프트가 생성되었습니다",
+    "promptUpdated": "프롬프트가 업데이트되었습니다",
+    "rateLimitError": "다른 프롬프트를 생성하기 전에 30초 기다려주세요",
+    "dailyLimitError": "일일 프롬프트 생성 한도(5개)에 도달했습니다",
+    "duplicatePromptError": "동일한 제목 또는 내용의 프롬프트가 이미 있습니다",
+    "contentExistsError": "이 내용의 프롬프트가 이미 존재합니다: \"{title}\" - {author}",
     "run": "실행",
+    "downloadMarkdown": "MD 다운로드",
+    "downloadYaml": "YAML 다운로드",
+    "downloadSkillMd": "SKILL.md 다운로드",
+    "copyMarkdownUrl": "MD 링크 복사",
+    "copyYamlUrl": "YAML 링크 복사",
+    "downloadStarted": "다운로드 시작",
+    "downloadFailed": "다운로드 실패",
+    "urlCopied": "링크 복사됨",
+    "failedToCopyUrl": "링크 복사 실패",
     "promptCopied": "프롬프트 복사됨",
     "promptCopiedDescription": "프롬프트가 클립보드에 복사되었습니다. {platform}을 연 후 붙여넣기 하세요.",
     "openPlatform": "{platform} 열기",
@@ -230,11 +250,65 @@
     "mediaUrlPlaceholder": "https://...",
     "mediaUrlDescription": "이 프롬프트의 미디어 파일 URL을 입력하세요",
     "mediaImage": "미디어 이미지",
+    "mediaVideo": "미디어 비디오",
+    "mediaAudio": "미디어 오디오",
     "clickToUpload": "클릭하여 이미지 업로드",
+    "clickToUploadVideo": "클릭하여 비디오 업로드",
+    "clickToUploadAudio": "오디오 파일을 업로드하려면 클릭",
     "uploading": "업로드 중...",
-    "maxFileSize": "최대 파일 크기: 5MB (JPEG, PNG, GIF, WebP)",
-    "fileTooLarge": "파일이 너무 큽니다. 최대 크기는 5MB입니다.",
+    "maxFileSize": "최대 파일 크기: 4MB (JPEG, PNG, GIF, WebP)",
+    "maxVideoSize": "최대 파일 크기: 4MB (MP4)",
+    "maxAudioSize": "최대 파일 크기: 4MB (MP3, WAV, OGG)",
+    "fileTooLarge": "파일이 너무 큽니다. 최대 크기는 4MB입니다.",
+    "videoTooLarge": "동영상이 너무 큽니다. 최대 크기는 4MB입니다.",
     "invalidFileType": "잘못된 파일 형식입니다. JPEG, PNG, GIF, WebP만 허용됩니다.",
+    "invalidVideoType": "잘못된 동영상 형식입니다. MP4 동영상만 허용됩니다.",
+    "invalidAudioType": "잘못된 오디오 형식입니다. MP3, WAV, OGG 파일만 허용됩니다.",
+    "uploadMedia": "미디어 업로드",
+    "generateMedia": "생성",
+    "chooseGenerator": "생성기 선택",
+    "uploadInstead": "대신 업로드",
+    "confirmGeneration": "생성 확인",
+    "confirmGenerationDescription": "{provider}에서 {model} 모델을 사용하여 미디어를 생성하시겠습니까?",
+    "promptPreview": "프롬프트 미리보기",
+    "noPromptProvided": "프롬프트가 제공되지 않음",
+    "inputImage": "입력 이미지",
+    "aspectRatio": "화면 비율",
+    "startGeneration": "생성 시작",
+    "generatingMedia": "{provider}로 미디어 생성 중",
+    "doNotCloseWindow": "생성 중에는 이 창을 닫지 마세요.",
+    "generationComplete": "생성 완료",
+    "generationFailed": "생성 실패",
+    "mediaAddedToPrompt": "미디어가 프롬프트에 추가되었습니다.",
+    "mediaGenerated": "미디어가 성공적으로 생성되었습니다!",
+    "orGenerateMedia": "또는 AI로 생성",
+    "aiGenerationAvailable": "✨ AI 생성 가능",
+    "generateWith": "AI로 생성",
+    "generateImage": "이미지 생성",
+    "generateVideo": "비디오 생성",
+    "generateAudio": "오디오 생성",
+    "generateImageDescription": "AI를 사용하여 프롬프트용 고유한 이미지 생성 — 커뮤니티에 프롬프트를 선보이기에 완벽합니다.",
+    "generateVideoDescription": "AI를 사용하여 프롬프트용 고유한 비디오 생성 — 커뮤니티에 프롬프트를 선보이기에 완벽합니다.",
+    "generateAudioDescription": "AI를 사용하여 프롬프트에 맞는 고유한 오디오/음악을 생성하세요 — 커뮤니티에 프롬프트를 선보이기에 완벽합니다.",
+    "close": "닫기",
+    "mediaGeneration": {
+      "connecting": "서버에 연결 중...",
+      "connected": "연결됨, 대기열에서 대기 중...",
+      "queued": "대기열에서 대기 중...",
+      "accepted": "작업이 수락되었습니다...",
+      "preprocessStart": "전처리 중...",
+      "preprocessEnd": "전처리 완료",
+      "gpuAssigned": "GPU 할당됨, 대기열에서 대기 중...",
+      "started": "생성 시작...",
+      "generating": "생성 중...",
+      "processingOutput": "출력 처리 중...",
+      "ending": "생성 완료",
+      "postprocessStart": "후처리 중...",
+      "postprocessEnd": "마무리 중...",
+      "complete": "완료!",
+      "error": "오류가 발생했습니다",
+      "errorProcessing": "처리 오류..."
+    },
     "privateDescription": "비공개 프롬프트는 본인만 볼 수 있습니다",
     "requiresMediaUpload": "미디어 업로드 필요",
     "attachedMediaType": "첨부 미디어 유형",
@@ -267,7 +341,11 @@
     "translateToLanguage": "내 언어로 번역",
     "translated": "콘텐츠가 번역됨",
     "translationFailed": "번역 실패",
-    "alreadyTranslated": "이미 번역됨"
+    "alreadyTranslated": "이미 번역됨",
+    "learnHowToWritePrompts": "효과적인 프롬프트 작성법 배우기 →",
+    "structuredFormatDetected": "{format} 형식 감지됨",
+    "structuredFormatWarningDescription": "프롬프트 내용이 구조화된 데이터처럼 보입니다. 더 나은 구문 강조 표시 및 유효성 검사를 위해 구조화 모드로 전환하는 것을 고려해 보세요.",
+    "switchToStructured": "{format}으로 전환"
   },
   "changeRequests": {
     "title": "변경 요청",
@@ -326,6 +404,9 @@
     "noCategories": "카테고리가 없습니다",
     "noSubcategories": "이 카테고리에는 아직 하위 카테고리가 없습니다",
     "prompts": "프롬프트",
+    "subscribers": "구독자",
+    "promptCount": "{count}개 프롬프트",
+    "subscriberCount": "{count}명 구독자",
     "confirmDelete": "이 카테고리를 삭제하시겠습니까?"
   },
   "tags": {
@@ -424,6 +505,29 @@
       "slugsSuccess": "{count}개 슬러그 생성됨",
       "slugsResult": "생성됨: {success}, 실패: {failed}"
     },
+    "promptsList": {
+      "title": "모든 프롬프트",
+      "description": "시스템의 모든 프롬프트 탐색 및 관리",
+      "noPrompts": "프롬프트를 찾을 수 없습니다",
+      "private": "비공개",
+      "unlisted": "목록 제외",
+      "views": "조회",
+      "votes": "투표",
+      "created": "생성일",
+      "showing": "{total}개 중 {from}-{to} 표시",
+      "deleteConfirmTitle": "프롬프트를 삭제하시겠습니까?",
+      "deleteConfirmDescription": "\"{title}\"을(를) 영구적으로 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.",
+      "deleted": "프롬프트가 삭제되었습니다",
+      "filters": {
+        "all": "전체",
+        "public": "공개",
+        "private": "비공개",
+        "unlisted": "목록 제외",
+        "featured": "추천",
+        "reported": "신고됨",
+        "deleted": "삭제됨"
+      }
+    },
     "users": {
       "title": "사용자 관리",
       "description": "사용자 계정 조회 및 관리",
@@ -446,7 +550,31 @@
       "unverified": "인증 해제됨",
       "verifyFailed": "인증 업데이트 실패",
       "deleteConfirmTitle": "사용자를 삭제하시겠습니까?",
-      "deleteConfirmDescription": "이 작업은 취소할 수 없습니다. 모든 사용자 데이터가 영구적으로 삭제됩니다."
+      "deleteConfirmDescription": "이 작업은 취소할 수 없습니다. 모든 사용자 데이터가 영구적으로 삭제됩니다.",
+      "searchPlaceholder": "사용자 검색...",
+      "noUsers": "사용자를 찾을 수 없습니다",
+      "showing": "{total}명 중 {from}-{to} 표시",
+      "filters": {
+        "all": "전체",
+        "admin": "관리자",
+        "user": "사용자",
+        "verified": "인증됨",
+        "unverified": "미인증",
+        "flagged": "플래그됨"
+      },
+      "flag": "사용자 플래그",
+      "unflag": "플래그 해제",
+      "flagged": "사용자가 플래그되었습니다",
+      "unflagged": "플래그가 해제되었습니다",
+      "flagFailed": "플래그 상태 업데이트 실패",
+      "editCredits": "크레딧 수정",
+      "editCreditsTitle": "생성 크레딧 수정",
+      "editCreditsDescription": "@{username}의 일일 크레딧 한도 설정",
+      "dailyLimit": "일일 크레딧 한도",
+      "currentCredits": "현재: {remaining}/{limit} 크레딧 남음",
+      "creditsUpdated": "크레딧이 성공적으로 업데이트되었습니다",
+      "creditsUpdateFailed": "크레딧 업데이트 실패",
+      "save": "저장"
     },
     "categories": {
       "title": "카테고리 관리",
@@ -480,7 +608,13 @@
       "noParent": "없음 (루트 카테고리)",
       "parentHelp": "루트 카테고리를 만들려면 비워두고, 하위 카테고리를 만들려면 상위를 선택하세요",
       "rootCategory": "루트",
-      "subcategories": "하위 카테고리"
+      "subcategories": "하위 카테고리",
+      "pin": "프롬프트 페이지에 고정",
+      "unpin": "프롬프트 페이지에서 고정 해제",
+      "pinned": "카테고리 고정됨",
+      "unpinned": "카테고리 고정 해제됨",
+      "pinnedBadge": "고정됨",
+      "pinnedLabel": "프롬프트 페이지에 고정 (빠른 필터로 표시)"
     },
     "tags": {
       "title": "태그 관리",
@@ -605,7 +739,24 @@
     "contributionsCount": "기여",
     "noContributions": "아직 기여가 없습니다",
     "noContributionsOwner": "아직 프롬프트에 기여하지 않았습니다",
-    "contributedTo": "{author}의 프롬프트에 기여함"
+    "contributedTo": "{author}의 프롬프트에 기여함",
+    "privatePromptsNote": "{count}개의 비공개 프롬프트가 있습니다. 지원되는 클라이언트에서 API 키를 사용하여 MCP를 통해 액세스할 수 있습니다.",
+    "activityInLastYear": "지난 1년간 {count}개의 기여",
+    "contribution": "기여",
+    "contributionsPlural": "기여",
+    "inLastYear": "지난 1년",
+    "inLast6Months": "지난 6개월",
+    "less": "적음",
+    "more": "많음",
+    "activity": "활동",
+    "filteringByDate": "{date}의 프롬프트 표시 중",
+    "clearFilter": "필터 지우기",
+    "noPromptsOnDate": "이 날짜에 프롬프트가 없습니다.",
+    "noPromptsOnDateOwner": "이 날짜에 프롬프트가 없습니다.",
+    "createForToday": "오늘을 위해 만들기",
+    "likes": "좋아요",
+    "noLikes": "아직 좋아요한 프롬프트가 없습니다",
+    "noLikesOwner": "아직 프롬프트에 좋아요를 하지 않았습니다"
   },
   "subscription": {
     "subscribe": "구독",
@@ -675,7 +826,7 @@
     "heroFeature1": "무료 & 오픈 소스",
     "heroFeature2": "프라이버시를 위한 자체 호스팅",
     "heroFeature3": "팀 & 조직용",
-    "cloneOnGithub": "GitHub에서 클론",
+    "setupPrivateServer": "프라이빗 서버 구축하기",
     "beStargazer": "GitHub에서 {count}번째 스타가 되세요",
     "browsePrompts": "프롬프트 둘러보기",
     "viewFeed": "피드 보기",
@@ -702,7 +853,36 @@
   "notifications": {
     "title": "알림",
     "pendingChangeRequests": "대기 중인 변경 요청",
-    "noNotifications": "알림 없음"
+    "noNotifications": "알림 없음",
+    "markAllRead": "모두 읽음으로 표시",
+    "commentedOnPrompt": "님이 프롬프트에 댓글을 남겼습니다",
+    "repliedToComment": "님이 댓글에 답글을 남겼습니다"
+  },
+  "comments": {
+    "comments": "댓글",
+    "writeComment": "댓글을 작성하세요...",
+    "postComment": "댓글 작성",
+    "reply": "답글",
+    "replyTo": "@{username}님에게 답글...",
+    "posting": "게시 중...",
+    "commentPosted": "댓글이 게시되었습니다",
+    "commentDeleted": "댓글이 삭제되었습니다",
+    "commentFlagged": "댓글이 신고되었습니다",
+    "commentUnflagged": "신고가 취소되었습니다",
+    "noComments": "아직 댓글이 없습니다. 첫 댓글을 남겨보세요!",
+    "loginToComment": "댓글을 작성하려면 로그인하세요.",
+    "loginToVote": "투표하려면 로그인하세요.",
+    "upvote": "추천",
+    "downvote": "비추천",
+    "flag": "신고",
+    "unflag": "신고 취소",
+    "flagged": "신고됨",
+    "admin": "관리자",
+    "deleteCommentTitle": "댓글을 삭제하시겠습니까?",
+    "deleteCommentDescription": "이 작업은 취소할 수 없습니다. 댓글과 모든 답글이 영구적으로 삭제됩니다.",
+    "deleting": "삭제 중...",
+    "showReplies": "{count}개의 답글 보기",
+    "hideReplies": "답글 숨기기"
   },
   "promptmasters": {
     "title": "프롬프트마스터",
@@ -743,6 +923,17 @@
   "notFound": {
     "title": "페이지를 찾을 수 없습니다",
     "description": "찾고 계신 페이지가 존재하지 않거나 이동되었습니다.",
+    "goHome": "홈으로 이동",
+    "goBack": "뒤로 가기",
+    "helpfulLinks": "유용한 링크:",
+    "browsePrompts": "프롬프트 둘러보기",
+    "categories": "카테고리",
+    "createPrompt": "프롬프트 만들기"
+  },
+  "serverError": {
+    "title": "서버 오류",
+    "description": "문제가 발생했습니다. 나중에 다시 시도해 주세요.",
+    "tryAgain": "다시 시도",
     "goHome": "홈으로 이동",
     "goBack": "뒤로 가기",
     "helpfulLinks": "유용한 링크:",
@@ -810,10 +1001,54 @@
     "generateApiKey": "MCP를 통해 프롬프트를 저장하려면 API 키를 생성하세요"
   },
   "footer": {
+    "howTo": "사용법",
     "docs": "문서",
     "api": "API",
     "privacy": "개인정보",
-    "terms": "이용약관"
+    "terms": "약관",
+    "support": "지원"
+  },
+  "support": {
+    "title": "지원",
+    "description": "자주 묻는 질문에 대한 답변을 찾거나 커뮤니티의 도움을 받으세요.",
+    "faq": {
+      "title": "자주 묻는 질문",
+      "whatIsPrompt": {
+        "question": "프롬프트란 무엇인가요?",
+        "answer": "프롬프트는 AI 모델(ChatGPT, Claude, Gemini 등)에게 주는 지시나 입력으로, 응답을 안내합니다. 본질적으로 AI에게 원하는 것을 전달하는 방법입니다. 잘 작성된 프롬프트는 AI 시스템에서 더 좋고 유용한 출력을 이끌어냅니다."
+      },
+      "whyPromptsMatter": {
+        "question": "프롬프트가 왜 중요한가요? AI에게 아무거나 물어보면 안 되나요?",
+        "answer": "고급 AI 모델은 일상적인 질문을 잘 처리할 수 있지만, 다음과 같은 경우 프롬프트가 중요해집니다:\n\n• 애플리케이션에서 API를 통해 AI를 사용할 때 — 종종 한 번의 기회만 있고(\"원샷 프롬프팅\"), 주고받는 대화가 없습니다\n• 더 정확한 지시가 필요한 소형 경제적 모델로 작업할 때\n• 일관성과 신뢰성이 중요한 프로덕션 시스템을 구축할 때\n\n최적화된 프롬프트는 더 나은 결과를 얻고, 토큰(과 비용)을 절약하며, 더 신뢰할 수 있는 AI 기반 애플리케이션을 만드는 데 도움이 됩니다."
+      },
+      "whatIsPromptschat": {
+        "question": "prompts.chat은 무엇인가요?",
+        "answer": "prompts.chat은 사람들이 AI 프롬프트를 공유하고, 발견하고, 수집하는 커뮤니티 중심 플랫폼입니다. 4년 이상 사용자들이 여기서 프롬프트 최적화 기법을 공유해 왔습니다. 커뮤니티는 서로의 프롬프트를 개선하고 AI 시스템과 작업하는 새로운 접근 방식을 배우도록 돕습니다."
+      },
+      "howToUse": {
+        "question": "이 플랫폼의 프롬프트를 어떻게 사용하나요?",
+        "answer": "프롬프트를 둘러보고, 마음에 드는 것을 찾아 복사하세요. 그런 다음 선호하는 AI 도구(ChatGPT, Claude, Gemini 등)에 붙여넣거나 API를 통해 애플리케이션에서 사용할 수 있습니다. 많은 프롬프트에는 복사하기 전에 사용자 정의할 수 있는 변수가 포함되어 있습니다."
+      },
+      "license": {
+        "question": "이 프롬프트를 상업적으로 사용할 수 있나요?",
+        "answer": "네! prompts.chat의 모든 프롬프트는 CC0(Creative Commons Zero) 라이선스로 출시되어 퍼블릭 도메인에 속합니다. 저작자 표시 없이 상업적 용도를 포함한 모든 목적으로 자유롭게 사용, 수정, 배포할 수 있습니다."
+      },
+      "selfHost": {
+        "question": "이 플랫폼을 셀프 호스팅할 수 있나요?",
+        "answer": "물론입니다! prompts.chat은 완전히 오픈 소스입니다. 팀이나 조직을 위해 자체 프라이빗 인스턴스를 배포할 수 있습니다. 설정 지침은 셀프 호스팅 문서를 확인하세요."
+      }
+    },
+    "contact": {
+      "title": "더 많은 도움이 필요하신가요?",
+      "description": "질문에 대한 답변을 찾지 못했다면 아래 양식을 작성해 주세요. GitHub에서 도움을 드리겠습니다.",
+      "form": {
+        "title": "이슈 제목",
+        "titlePlaceholder": "문제나 질문의 간략한 요약",
+        "description": "설명",
+        "descriptionPlaceholder": "문제나 질문을 자세히 설명해 주세요..."
+      },
+      "openIssue": "GitHub 이슈 열기"
+    }
   },
   "apiKey": {
     "title": "MCP API 키",
@@ -834,5 +1069,128 @@
     "publicByDefault": "기본적으로 공개 프롬프트",
     "publicByDefaultDescription": "MCP를 통해 프롬프트를 저장할 때 비공개 대신 기본적으로 공개로 설정합니다.",
     "settingUpdated": "설정이 업데이트되었습니다"
+  },
+  "connectedPrompts": {
+    "title": "프롬프트 흐름",
+    "description": "일부 프롬프트는 다단계 워크플로로 작동합니다. 프롬프트를 연결하여 시퀀스를 만드세요.",
+    "addConnection": "연결 추가",
+    "addPrevious": "이전 추가",
+    "addNext": "다음 추가",
+    "addConnectionTitle": "연결 추가",
+    "addPreviousTitle": "이전 프롬프트 추가",
+    "addNextTitle": "다음 프롬프트 추가",
+    "addConnectionDescription": "이 프롬프트를 조건 레이블과 함께 다른 프롬프트에 연결합니다.",
+    "addPreviousDescription": "워크플로에서 이것보다 먼저 오는 프롬프트를 선택하세요.",
+    "addNextDescription": "워크플로에서 이것 다음에 오는 프롬프트를 선택하세요.",
+    "noConnections": "아직 연결된 프롬프트가 없습니다. 프롬프트 체인을 만들려면 연결을 추가하세요.",
+    "previousSteps": "이전 단계",
+    "nextSteps": "다음 단계",
+    "searchPrompt": "프롬프트 검색",
+    "searchPlaceholder": "제목으로 검색...",
+    "selectedPrompt": "선택된 프롬프트",
+    "connectionLabel": "연결 레이블",
+    "labelPlaceholder": "예: 첫 번째 프레임, 다음 단계, 처리 후...",
+    "labelHint": "프롬프트 간의 조건 또는 전환을 설명하세요",
+    "change": "변경",
+    "cancel": "취소",
+    "fillAllFields": "프롬프트를 선택하고 레이블을 입력하세요",
+    "connectionFailed": "연결 생성에 실패했습니다",
+    "connectionAdded": "연결이 성공적으로 추가되었습니다",
+    "connectionDeleted": "연결이 삭제되었습니다",
+    "deleteFailed": "연결 삭제에 실패했습니다",
+    "noResults": "프롬프트를 찾을 수 없습니다"
+  },
+  "promptWritingGuide": {
+    "title": "좋은 프롬프트 작성법",
+    "subtitle": "효과적인 AI 프롬프트를 만들기 위한 팁, 예시, 모범 사례",
+    "generalTips": {
+      "title": "효과적인 프롬프트를 위한 일반 팁",
+      "beSpecific": {
+        "title": "구체적이고 명확하게",
+        "description": "모호한 프롬프트는 모호한 응답으로 이어집니다. 형식, 길이, 톤, 제약 조건 등 원하는 것을 정확히 지정하세요."
+      },
+      "provideContext": {
+        "title": "맥락 제공",
+        "description": "AI가 요구사항을 이해하는 데 도움이 되는 배경 정보를 제공하세요. 누가, 무엇을, 왜, 누구를 위해를 포함하세요."
+      },
+      "defineFormat": {
+        "title": "출력 형식 정의",
+        "description": "응답이 어떻게 구성되기를 원하는지 지정하세요: 글머리 기호, 단락, 코드 블록, 표 등."
+      },
+      "setConstraints": {
+        "title": "제약 조건 설정",
+        "description": "단어 수, 읽기 수준, 피해야 할 것, 따라야 할 특정 요구사항 등의 제한을 포함하세요."
+      },
+      "includeExamples": {
+        "title": "예시 포함",
+        "description": "좋은 출력이 어떤 것인지 AI에게 보여주세요. 예시는 응답 스타일과 품질을 조정하는 데 도움이 됩니다."
+      }
+    },
+    "rolePlaying": {
+      "title": "역할극: \"~로서 행동하라\" 패턴",
+      "description": "가장 강력한 프롬프트 기법 중 하나는 AI에게 특정 역할이나 페르소나를 할당하는 것입니다. 이는 전문성, 톤, 관점을 확립하는 데 도움이 됩니다.",
+      "basicPattern": "기본 역할 패턴",
+      "exampleExpert": "예시: 기술 전문가",
+      "exampleCreative": "예시: 창작 코치",
+      "popularRoles": "인기 역할 카테고리"
+    },
+    "variables": {
+      "title": "동적 프롬프트를 위한 변수 사용",
+      "description": "변수는 프롬프트를 재사용 가능하고 사용자 정의할 수 있게 만듭니다. 사용자는 프롬프트를 사용할 때마다 다른 값을 입력할 수 있습니다.",
+      "syntax": "변수 구문",
+      "requiredVar": "필수 변수 (사용자가 입력해야 함)",
+      "withDefault": "기본값이 있는 변수",
+      "simpleExample": "간단한 예시",
+      "advancedExample": "여러 변수를 사용한 고급 예시",
+      "bestPractices": "모범 사례",
+      "tip1": "설명적인 변수 이름 사용: '$'{topic}이 '$'{x}보다 좋음",
+      "tip2": "선택적 값에 합리적인 기본값 제공",
+      "tip3": "프롬프트에서 관련 변수를 함께 그룹화",
+      "tip4": "여러 단어 이름에 밑줄 사용: '$'{target_audience}"
+    },
+    "structured": {
+      "title": "구조화된 프롬프트 (JSON/YAML)",
+      "description": "구조화된 프롬프트는 복잡한 지시사항을 명확하게 정리하기 위해 JSON 또는 YAML 형식을 사용합니다. 다단계 워크플로우, 에이전트, 상세한 구성에 이상적입니다.",
+      "whenToUse": "구조화된 프롬프트를 사용할 때",
+      "useCase1": "복잡한 다단계 워크플로우 또는 파이프라인",
+      "useCase2": "여러 매개변수가 있는 에이전트 구성",
+      "useCase3": "많은 상호 연결된 설정이 있는 프롬프트",
+      "useCase4": "API 기반 또는 프로그래밍적 프롬프트 사용",
+      "jsonExample": "JSON 예시: 면접 어시스턴트",
+      "yamlExample": "YAML 예시: 콘텐츠 생성기",
+      "agentWorkflow": "JSON 예시: 에이전트 워크플로우",
+      "tips": "구조화된 프롬프트 팁",
+      "tip1": "프로그래밍적 사용에는 JSON, 읽기 쉬운 구성에는 YAML 사용",
+      "tip2": "가독성을 위해 중첩을 얕게 유지 (최대 2-3 레벨)",
+      "tip3": "복잡한 섹션을 설명하기 위해 YAML에 주석 포함",
+      "tip4": "저장하기 전에 JSON/YAML 구문 검증"
+    },
+    "outputOptimization": {
+      "title": "출력 최적화",
+      "description": "요구사항을 명확히 하여 AI가 필요한 형식과 스타일을 정확하게 생성하도록 안내합니다.",
+      "formatInstructions": "형식 지침 템플릿",
+      "constraintExamples": "일반적인 제약 유형",
+      "lengthConstraints": "길이 제약:",
+      "lengthExample": "\"응답을 200단어 이하로 유지\" / \"정확히 5개의 글머리 기호 제공\"",
+      "styleConstraints": "스타일 제약:",
+      "styleExample": "\"초보자에게 적합한 간단한 언어 사용\" / \"기술적이고 정확하게\"",
+      "contentConstraints": "내용 제약:",
+      "contentExample": "\"개인적인 의견 포함하지 않음\" / \"사실 정보에만 집중\""
+    }
+  },
+  "ide": {
+    "title": "Prompt Builder",
+    "subtitle": "타입 안전하고 구조화된 프롬프트 빌딩",
+    "editor": "에디터",
+    "preview": "미리보기",
+    "run": "실행",
+    "reset": "재설정",
+    "copied": "클립보드에 복사됨",
+    "runToPreview": "실행을 클릭하여 프롬프트 미리보기 표시",
+    "cannotEvaluate": "이 코드는 평가할 수 없습니다.",
+    "onlyPromptsChat": "{library} 가져오기만 지원됩니다.",
+    "desktopOnly": "데스크톱 전용",
+    "desktopOnlyDescription": "프롬프트 빌더는 제대로 작동하려면 더 큰 화면이 필요합니다. 데스크톱이나 노트북 컴퓨터에서 이 페이지를 열어주세요.",
+    "browsePrompts": "프롬프트 둘러보기"
   }
 }

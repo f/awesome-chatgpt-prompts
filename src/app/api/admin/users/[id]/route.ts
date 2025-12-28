@@ -15,10 +15,18 @@ export async function PATCH(
 
     const { id } = await params;
     const body = await request.json();
-    const { role, verified } = body;
+    const { role, verified, flagged, flaggedReason, dailyGenerationLimit } = body;
 
     // Build update data
-    const updateData: { role?: "ADMIN" | "USER"; verified?: boolean } = {};
+    const updateData: { 
+      role?: "ADMIN" | "USER"; 
+      verified?: boolean;
+      flagged?: boolean;
+      flaggedAt?: Date | null;
+      flaggedReason?: string | null;
+      dailyGenerationLimit?: number;
+      generationCreditsRemaining?: number;
+    } = {};
 
     if (role !== undefined) {
       if (!["ADMIN", "USER"].includes(role)) {
@@ -31,9 +39,45 @@ export async function PATCH(
       updateData.verified = verified;
     }
 
+    if (flagged !== undefined) {
+      updateData.flagged = flagged;
+      if (flagged) {
+        updateData.flaggedAt = new Date();
+        updateData.flaggedReason = flaggedReason || null;
+      } else {
+        updateData.flaggedAt = null;
+        updateData.flaggedReason = null;
+      }
+    }
+
+    if (dailyGenerationLimit !== undefined) {
+      const limit = parseInt(dailyGenerationLimit, 10);
+      if (isNaN(limit) || limit < 0) {
+        return NextResponse.json({ error: "Invalid daily generation limit" }, { status: 400 });
+      }
+      updateData.dailyGenerationLimit = limit;
+      // Also reset remaining credits to the new limit
+      updateData.generationCreditsRemaining = limit;
+    }
+
     const user = await db.user.update({
       where: { id },
       data: updateData,
+      select: {
+        id: true,
+        email: true,
+        username: true,
+        name: true,
+        avatar: true,
+        role: true,
+        verified: true,
+        flagged: true,
+        flaggedAt: true,
+        flaggedReason: true,
+        dailyGenerationLimit: true,
+        generationCreditsRemaining: true,
+        createdAt: true,
+      },
     });
 
     return NextResponse.json(user);

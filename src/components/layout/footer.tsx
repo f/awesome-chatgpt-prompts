@@ -25,10 +25,12 @@ export function Footer() {
                 <Image src={DeepWikiIcon} alt="" width={14} height={14} />
                 DeepWiki
               </Link>
+              <Link href="/how_to_write_effective_prompts" className="hover:text-foreground">{t("howTo")}</Link>
               <Link href="/docs/self-hosting" className="hover:text-foreground">{t("docs")}</Link>
               <Link href="/docs/api" className="hover:text-foreground">{t("api")}</Link>
               <Link href="/privacy" className="hover:text-foreground">{t("privacy")}</Link>
               <Link href="/terms" className="hover:text-foreground">{t("terms")}</Link>
+              <Link href="/support" className="hover:text-foreground">{t("support")}</Link>
             </>
           )}
           <Link href="https://github.com/f/awesome-chatgpt-prompts" target="_blank" rel="noopener noreferrer" className="hover:text-foreground flex items-center gap-1">

@@ -14,7 +14,7 @@ interface PromptBuilderState {
   title: string;
   description: string;
   content: string;
-  type: "TEXT" | "IMAGE" | "VIDEO" | "AUDIO"; // Output type only
+  type: "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "SKILL"; // Output type or SKILL
   structuredFormat?: "JSON" | "YAML"; // Input type indicator
   categoryId?: string;
   tagIds: string[];
@@ -166,8 +166,8 @@ export const PromptBuilder = forwardRef<PromptBuilderHandle, PromptBuilderProps>
       }
 
       let fullContent = "";
-      let toolCalls: ToolCall[] = [];
-      let searchResults: Message["searchResults"] = [];
+      const toolCalls: ToolCall[] = [];
+      const searchResults: Message["searchResults"] = [];
       let newState: PromptBuilderState | null = null;
 
       while (true) {

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidateTag } from "next/cache";
 import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -6,12 +7,13 @@ import { triggerWebhooks } from "@/lib/webhook";
 import { generatePromptEmbedding } from "@/lib/ai/embeddings";
 import { generatePromptSlug } from "@/lib/slug";
 import { checkPromptQuality } from "@/lib/ai/quality-check";
+import { isSimilarContent, normalizeContent } from "@/lib/similarity";
 
 const promptSchema = z.object({
   title: z.string().min(1).max(200),
   description: z.string().max(500).optional(),
   content: z.string().min(1),
-  type: z.enum(["TEXT", "IMAGE", "VIDEO", "AUDIO"]), // Output type only
+  type: z.enum(["TEXT", "IMAGE", "VIDEO", "AUDIO", "SKILL"]), // Output type or SKILL
   structuredFormat: z.enum(["JSON", "YAML"]).nullish(), // Input type indicator
   categoryId: z.string().optional(),
   tagIds: z.array(z.string()),
@@ -46,10 +48,121 @@ export async function POST(request: Request) {
 
     const { title, description, content, type, structuredFormat, categoryId, tagIds, contributorIds, isPrivate, mediaUrl, requiresMediaUpload, requiredMediaType, requiredMediaCount } = parsed.data;
 
+    // Check if user is flagged (for auto-delisting and daily limit)
+    const currentUser = await db.user.findUnique({
+      where: { id: session.user.id },
+      select: { flagged: true },
+    });
+    const isUserFlagged = currentUser?.flagged ?? false;
+
+    // Daily limit for flagged users: 5 prompts per day
+    if (isUserFlagged) {
+      const startOfDay = new Date();
+      startOfDay.setHours(0, 0, 0, 0);
+      
+      const todayPromptCount = await db.prompt.count({
+        where: {
+          authorId: session.user.id,
+          createdAt: { gte: startOfDay },
+        },
+      });
+
+      if (todayPromptCount >= 5) {
+        return NextResponse.json(
+          { error: "daily_limit", message: "You have reached the daily limit of 5 prompts" },
+          { status: 429 }
+        );
+      }
+    }
+
+    // Rate limit: Check if user created a prompt in the last 30 seconds
+    const thirtySecondsAgo = new Date(Date.now() - 30 * 1000);
+    const recentPrompt = await db.prompt.findFirst({
+      where: {
+        authorId: session.user.id,
+        createdAt: { gte: thirtySecondsAgo },
+      },
+      select: { id: true },
+    });
+
+    if (recentPrompt) {
+      return NextResponse.json(
+        { error: "rate_limit", message: "Please wait 30 seconds before creating another prompt" },
+        { status: 429 }
+      );
+    }
+
+    // Check for duplicate title or content from the same user
+    const userDuplicate = await db.prompt.findFirst({
+      where: {
+        authorId: session.user.id,
+        deletedAt: null,
+        OR: [
+          { title: { equals: title, mode: "insensitive" } },
+          { content: content },
+        ],
+      },
+      select: { id: true, slug: true, title: true },
+    });
+
+    if (userDuplicate) {
+      return NextResponse.json(
+        { 
+          error: "duplicate_prompt", 
+          message: "You already have a prompt with the same title or content",
+          existingPromptId: userDuplicate.id,
+          existingPromptSlug: userDuplicate.slug,
+        },
+        { status: 409 }
+      );
+    }
+
+    // Check for similar content system-wide (any user)
+    // First, get a batch of public prompts to check similarity against
+    const normalizedNewContent = normalizeContent(content);
+    
+    // Only check if normalized content has meaningful length
+    if (normalizedNewContent.length > 50) {
+      // Get recent public prompts to check for similarity (limit to avoid performance issues)
+      const publicPrompts = await db.prompt.findMany({
+        where: {
+          deletedAt: null,
+          isPrivate: false,
+        },
+        select: { 
+          id: true, 
+          slug: true, 
+          title: true, 
+          content: true,
+          author: { select: { username: true } } 
+        },
+        orderBy: { createdAt: "desc" },
+        take: 1000, // Check against last 1000 public prompts
+      });
+
+      // Find similar content using our similarity algorithm
+      const similarPrompt = publicPrompts.find(p => isSimilarContent(content, p.content));
+
+      if (similarPrompt) {
+        return NextResponse.json(
+          { 
+            error: "content_exists", 
+            message: "A prompt with similar content already exists",
+            existingPromptId: similarPrompt.id,
+            existingPromptSlug: similarPrompt.slug,
+            existingPromptTitle: similarPrompt.title,
+            existingPromptAuthor: similarPrompt.author.username,
+          },
+          { status: 409 }
+        );
+      }
+    }
+
     // Generate slug from title (translated to English)
     const slug = await generatePromptSlug(title);
 
     // Create prompt with tags
+    // Auto-delist if user is flagged
     const prompt = await db.prompt.create({
       data: {
         title,
@@ -65,6 +178,12 @@ export async function POST(request: Request) {
         requiredMediaCount: requiresMediaUpload ? requiredMediaCount : null,
         authorId: session.user.id,
         categoryId: categoryId || null,
+        // Auto-delist prompts from flagged users
+        ...(isUserFlagged && {
+          isUnlisted: true,
+          unlistedAt: new Date(),
+          delistReason: "UNUSUAL_ACTIVITY",
+        }),
         tags: {
           create: tagIds.map((tagId) => ({
             tagId,
@@ -83,9 +202,14 @@ export async function POST(request: Request) {
             name: true,
             username: true,
             avatar: true,
+            verified: true,
           },
         },
-        category: true,
+        category: {
+          include: {
+            parent: true,
+          },
+        },
         tags: {
           include: {
             tag: true,
@@ -154,6 +278,11 @@ export async function POST(request: Request) {
       console.log(`[Quality Check] Skipped - prompt ${prompt.id} is private`);
     }
 
+    // Revalidate caches (prompts, categories, tags counts change)
+    revalidateTag("prompts", "max");
+    revalidateTag("categories", "max");
+    revalidateTag("tags", "max");
+
     return NextResponse.json(prompt);
   } catch (error) {
     console.error("Create prompt error:", error);
@@ -169,7 +298,7 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const page = parseInt(searchParams.get("page") || "1");
-    const perPage = parseInt(searchParams.get("perPage") || "12");
+    const perPage = parseInt(searchParams.get("perPage") || "24");
     const type = searchParams.get("type");
     const categoryId = searchParams.get("category");
     const tag = searchParams.get("tag");
@@ -207,6 +336,7 @@ export async function GET(request: Request) {
     }
 
     // Build order by clause
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let orderBy: any = { createdAt: "desc" };
     if (sort === "oldest") {
       orderBy = { createdAt: "asc" };
@@ -227,13 +357,14 @@ export async function GET(request: Request) {
               name: true,
               username: true,
               avatar: true,
+              verified: true,
             },
           },
           category: {
-            select: {
-              id: true,
-              name: true,
-              slug: true,
+            include: {
+              parent: {
+                select: { id: true, name: true, slug: true },
+              },
             },
           },
           tags: {

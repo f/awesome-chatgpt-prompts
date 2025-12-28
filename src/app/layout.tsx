@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Inter, Noto_Sans_Arabic } from "next/font/google";
+import { Inter, Noto_Sans_Arabic, Geist_Mono } from "next/font/google";
 import { getMessages, getLocale } from "next-intl/server";
 import { Providers } from "@/components/providers";
 import { Header } from "@/components/layout/header";
@@ -12,13 +12,18 @@ import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-inter",
 });
 
 const notoSansArabic = Noto_Sans_Arabic({
   subsets: ["arabic"],
   variable: "--font-arabic",
   weight: ["400", "500", "600", "700"],
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
 });
 
 export const metadata: Metadata = {
@@ -34,13 +39,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "prompts.chat",
     description: "Collect, organize, and share AI prompts",
-    images: [{ url: "/og.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "prompts.chat",
     description: "Collect, organize, and share AI prompts",
-    images: ["/og.png"],
   },
 };
 
@@ -101,8 +104,8 @@ export default async function RootLayout({
   } as React.CSSProperties;
 
   const fontClasses = isRtl 
-    ? `${inter.variable} ${notoSansArabic.variable} font-arabic` 
-    : `${inter.variable} font-sans`;
+    ? `${inter.variable} ${notoSansArabic.variable} ${geistMono.variable} font-arabic` 
+    : `${inter.variable} ${geistMono.variable} font-sans`;
 
   return (
     <html lang={locale} dir={isRtl ? "rtl" : "ltr"} suppressHydrationWarning className={themeClasses} style={themeStyles}>

@@ -3,6 +3,8 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { generateApiKey } from "@/lib/api-key";
 
+export const runtime = "nodejs";
+
 export async function GET() {
   const session = await auth();
 

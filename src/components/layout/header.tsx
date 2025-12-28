@@ -43,7 +43,7 @@ import {
 import { NotificationBell } from "@/components/layout/notification-bell";
 import { setLocale } from "@/lib/i18n/client";
 import { useBranding } from "@/components/providers/branding-provider";
-import { analyticsAuth, analyticsNav, analyticsSettings } from "@/lib/analytics";
+import { analyticsAuth, analyticsSettings } from "@/lib/analytics";
 
 const languages = [
   { code: "en", name: "English" },
@@ -69,8 +69,6 @@ interface HeaderProps {
 
 export function Header({ authProvider = "credentials", allowRegistration = true }: HeaderProps) {
   const isOAuth = authProvider !== "credentials";
-  // Show register button for OAuth (with login text) or credentials with registration enabled
-  const showRegisterButton = isOAuth || (authProvider === "credentials" && allowRegistration);
   const { data: session } = useSession();
   const t = useTranslations();
   const { theme, setTheme } = useTheme();
@@ -126,7 +124,7 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
                     />
                   </>
                 )}
-                <span className="text-lg font-semibold">{branding.name}</span>
+                <span className="text-lg font-semibold mt-2">{branding.name}</span>
               </div>
 
               {/* Navigation */}
@@ -212,7 +210,7 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
                     />
                   </>
                 )}
-                <span className="font-semibold leading-none">{branding.name}</span>
+                <span className="font-semibold leading-none mt-[2px]">{branding.name}</span>
               </Link>
             </ContextMenuTrigger>
             <ContextMenuContent>
@@ -246,7 +244,7 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
                 />
               </>
             )}
-            <span className="font-semibold leading-none">{branding.name}</span>
+            <span className="font-semibold leading-none mt-[2px]">{branding.name}</span>
           </Link>
         )}
 
@@ -283,6 +281,12 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
             className="px-3 py-1.5 rounded-md text-muted-foreground transition-colors hover:text-foreground hover:bg-accent"
           >
             {t("nav.promptmasters")}
+          </Link>
+          <Link
+            href="/builder"
+            className="px-3 py-1.5 rounded-md text-muted-foreground transition-colors hover:text-foreground hover:bg-accent"
+          >
+            {t("nav.ide")}
           </Link>
         </nav>
 

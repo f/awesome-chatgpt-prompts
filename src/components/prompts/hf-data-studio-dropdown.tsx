@@ -6,7 +6,6 @@ import { useTheme } from "next-themes";
 import { ChevronDown, Play, ExternalLink, Sparkles, Loader2 } from "lucide-react";
 import Editor from "@monaco-editor/react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
   Popover,
   PopoverContent,

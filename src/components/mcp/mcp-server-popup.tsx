@@ -43,6 +43,8 @@ interface McpServerPopupProps {
   initialTags?: string[];
   /** Base URL override */
   baseUrl?: string;
+  /** Show official prompts.chat branding (VS Code buttons, registry mention) */
+  showOfficialBranding?: boolean;
 }
 
 export function McpServerPopup({
@@ -50,9 +52,11 @@ export function McpServerPopup({
   initialCategories = [],
   initialTags = [],
   baseUrl,
+  showOfficialBranding = false,
 }: McpServerPopupProps) {
   const t = useTranslations("mcp");
   const { data: session } = useSession();
+  const [isOpen, setIsOpen] = useState(false);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [mcpMode, setMcpMode] = useState<"remote" | "local">("remote");
   const [users, setUsers] = useState<string[]>(initialUsers);
@@ -63,9 +67,9 @@ export function McpServerPopup({
   const [tagInput, setTagInput] = useState("");
   const [apiKey, setApiKey] = useState<string | null>(null);
 
-  // Fetch API key when user is logged in
+  // Fetch API key only when popup is opened and user is logged in
   useEffect(() => {
-    if (session?.user) {
+    if (isOpen && session?.user && !apiKey) {
       fetch("/api/user/api-key")
         .then((res) => res.json())
         .then((data) => {
@@ -77,7 +81,7 @@ export function McpServerPopup({
           // Ignore errors
         });
     }
-  }, [session?.user]);
+  }, [isOpen, session?.user, apiKey]);
 
   // Build query params for MCP URL
   const queryParams = useMemo(() => {
@@ -125,7 +129,7 @@ export function McpServerPopup({
   const removeTag = (tag: string) => setTags(tags.filter((t) => t !== tag));
 
   return (
-    <Popover modal>
+    <Popover modal open={isOpen} onOpenChange={setIsOpen}>
       <PopoverTrigger asChild>
         <Button variant="outline" size="sm" className="h-8 gap-1.5">
           <McpIcon className="h-4 w-4" />
@@ -172,7 +176,7 @@ export function McpServerPopup({
           </p>
 
           {/* Config Tabs */}
-          <McpConfigTabs baseUrl={baseUrl} queryParams={queryParams || undefined} mode={mcpMode} hideModeToggle apiKey={apiKey} />
+          <McpConfigTabs baseUrl={baseUrl} queryParams={queryParams || undefined} mode={mcpMode} hideModeToggle apiKey={apiKey} showOfficialBranding={showOfficialBranding} />
 
           {/* API Key Link */}
           {session?.user && !apiKey && (

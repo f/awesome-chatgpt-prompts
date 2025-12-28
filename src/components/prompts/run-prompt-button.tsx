@@ -16,30 +16,60 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { analyticsPrompt } from "@/lib/analytics";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface Platform {
   id: string;
   name: string;
   baseUrl: string;
   supportsQuerystring?: boolean;
+  isDeeplink?: boolean;
   subOptions?: { name: string; baseUrl: string }[];
 }
 
-const platforms: Platform[] = [
+// Code platforms (IDEs + code generation tools)
+const codePlatforms: Platform[] = [
+  { id: "windsurf", name: "Windsurf", baseUrl: "windsurf://", isDeeplink: true, supportsQuerystring: false },
+  { id: "vscode", name: "VS Code", baseUrl: "vscode://", isDeeplink: true, supportsQuerystring: false },
+  { id: "vscode-insiders", name: "VS Code Insiders", baseUrl: "vscode-insiders://", isDeeplink: true, supportsQuerystring: false },
+  { id: "cursor", name: "Cursor", baseUrl: "cursor://anysphere.cursor-deeplink/prompt", isDeeplink: true },
+    {
+    id: "github-copilot",
+    name: "GitHub Copilot",
+    baseUrl: "https://github.com/copilot",
+    subOptions: [
+      { name: "Copilot Chat", baseUrl: "https://github.com/copilot" },
+      { name: "Copilot Agents", baseUrl: "https://github.com/copilot/agents" },
+    ],
+  },
+  { id: "bolt", name: "Bolt", baseUrl: "https://bolt.new" },
+  { id: "lovable", name: "Lovable", baseUrl: "https://lovable.dev" },
+  { id: "v0", name: "v0", baseUrl: "https://v0.dev/chat" },
   { id: "ai2sql", name: "AI2SQL", baseUrl: "https://builder.ai2sql.io/dashboard/builder-all-lp?tab=generate" },
+];
+
+// Chat platforms (AI assistants)
+const chatPlatforms: Platform[] = [
   { id: "chatgpt", name: "ChatGPT", baseUrl: "https://chatgpt.com" },
   { id: "claude", name: "Claude", baseUrl: "https://claude.ai/new" },
-  { id: "copilot", name: "Copilot", baseUrl: "https://copilot.microsoft.com", supportsQuerystring: false },
+  { id: "copilot", name: "Microsoft Copilot", baseUrl: "https://copilot.microsoft.com", supportsQuerystring: false },
   { id: "deepseek", name: "DeepSeek", baseUrl: "https://chat.deepseek.com", supportsQuerystring: false },
-  { id: "fal", name: "fal Sandbox", baseUrl: "https://fal.ai/sandbox" },
+  { id: "fal", name: "fal.ai Sandbox", baseUrl: "https://fal.ai/sandbox" },
   { id: "gemini", name: "Gemini", baseUrl: "https://gemini.google.com/app", supportsQuerystring: false },
-  { id: "github-copilot", name: "GitHub Copilot", baseUrl: "https://github.com/copilot" },
   {
     id: "grok",
     name: "Grok",
@@ -64,8 +94,14 @@ function buildUrl(platformId: string, baseUrl: string, promptText: string): stri
   const encoded = encodeURIComponent(promptText);
   
   switch (platformId) {
+    // IDE deeplinks
+    case "cursor":
+      return `${baseUrl}?text=${encoded}`;
+    // Web platforms
     case "ai2sql":
       return `${baseUrl}&prompt=${encoded}`;
+    case "bolt":
+      return `${baseUrl}?prompt=${encoded}`;
     case "chatgpt":
       return `${baseUrl}/?q=${encoded}`;
     case "claude":
@@ -82,6 +118,8 @@ function buildUrl(platformId: string, baseUrl: string, promptText: string): stri
       return `${baseUrl}?prompt=${encoded}`;
     case "huggingface":
       return `${baseUrl}/?prompt=${encoded}`;
+    case "lovable":
+      return `${baseUrl}/?autosubmit=true#prompt=${encoded}`;
     case "mistral":
       return `${baseUrl}?q=${encoded}`;
     case "perplexity":
@@ -90,6 +128,8 @@ function buildUrl(platformId: string, baseUrl: string, promptText: string): stri
       return `${baseUrl}/search?q=${encoded}`;
     case "poe":
       return `${baseUrl}/?q=${encoded}`;
+    case "v0":
+      return `${baseUrl}?q=${encoded}`;
     case "you":
       return `${baseUrl}/search?q=${encoded}`;
     default:
@@ -111,6 +151,23 @@ interface RunPromptButtonProps {
   onVariablesFilled?: (values: Record<string, string>) => void;
   getContentWithVariables?: (values: Record<string, string>) => string;
   promptId?: string;
+  categoryName?: string;
+  parentCategoryName?: string;
+  emphasized?: boolean;
+}
+
+// Check if category or parent category suggests code-related content
+function isCodeCategory(name?: string): boolean {
+  if (!name) return false;
+  const lower = name.toLowerCase();
+  return lower.includes("code") || lower.includes("coding") || lower.includes("vibe");
+}
+
+function getDefaultTab(categoryName?: string, parentCategoryName?: string): "chat" | "code" {
+  if (isCodeCategory(categoryName) || isCodeCategory(parentCategoryName)) {
+    return "code";
+  }
+  return "chat";
 }
 
 export function RunPromptButton({ 
@@ -121,12 +178,18 @@ export function RunPromptButton({
   unfilledVariables = [],
   onVariablesFilled,
   getContentWithVariables,
-  promptId
+  promptId,
+  categoryName,
+  parentCategoryName,
+  emphasized = false
 }: RunPromptButtonProps) {
   const t = useTranslations("prompts");
   const tCommon = useTranslations("common");
+  const isMobile = useIsMobile();
   const [dialogOpen, setDialogOpen] = useState(false);
   const [variableDialogOpen, setVariableDialogOpen] = useState(false);
+  const [sheetOpen, setSheetOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<"chat" | "code">(() => getDefaultTab(categoryName, parentCategoryName));
   const [pendingPlatform, setPendingPlatform] = useState<{ id: string; name: string; baseUrl: string; supportsQuerystring?: boolean } | null>(null);
   const [variableValues, setVariableValues] = useState<Record<string, string>>({});
 
@@ -194,51 +257,160 @@ export function RunPromptButton({
     }
   };
 
+  const handleRunAndClose = (platform: Platform, baseUrl: string) => {
+    setSheetOpen(false);
+    handleRun(platform, baseUrl);
+  };
+
+  // Get platforms based on active tab
+  const activePlatforms = activeTab === "code" ? codePlatforms : chatPlatforms;
+
+  // Render platform item for mobile
+  const renderMobilePlatform = (platform: Platform) => {
+    if (platform.subOptions) {
+      return (
+        <div key={platform.id} className="space-y-1">
+          <div className="flex items-center gap-3 px-3 py-2 text-base text-muted-foreground">
+            <Zap className="h-4 w-4 text-green-500" />
+            {platform.name}
+          </div>
+          <div className="pl-6 space-y-1">
+            {platform.subOptions.map((option) => (
+              <button
+                key={option.baseUrl}
+                onClick={() => handleRunAndClose(platform, option.baseUrl)}
+                className="flex items-center gap-3 w-full px-3 py-3 text-base hover:bg-accent rounded-md text-left"
+              >
+                {option.name}
+              </button>
+            ))}
+          </div>
+        </div>
+      );
+    }
+    return (
+      <button
+        key={platform.id}
+        onClick={() => handleRunAndClose(platform, platform.baseUrl)}
+        className="flex items-center gap-3 w-full px-3 py-3 text-base hover:bg-accent rounded-md text-left"
+      >
+        {platform.supportsQuerystring === false ? (
+          <Clipboard className="h-4 w-4 text-muted-foreground" />
+        ) : (
+          <Zap className="h-4 w-4 text-green-500" />
+        )}
+        {platform.name}
+      </button>
+    );
+  };
+
+  // Render platform item for desktop dropdown
+  const renderDropdownPlatform = (platform: Platform) => {
+    if (platform.subOptions) {
+      return (
+        <DropdownMenuSub key={platform.id}>
+          <DropdownMenuSubTrigger className="flex items-center gap-2">
+            <Zap className="h-3 w-3 text-green-500" />
+            {platform.name}
+          </DropdownMenuSubTrigger>
+          <DropdownMenuSubContent>
+            {platform.subOptions.map((option) => (
+              <DropdownMenuItem
+                key={option.baseUrl}
+                onClick={() => handleRun(platform, option.baseUrl)}
+              >
+                {option.name}
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuSubContent>
+        </DropdownMenuSub>
+      );
+    }
+    return (
+      <DropdownMenuItem
+        key={platform.id}
+        onClick={() => handleRun(platform, platform.baseUrl)}
+        className="flex items-center gap-2"
+      >
+        {platform.supportsQuerystring === false ? (
+          <Clipboard className="h-3 w-3 text-muted-foreground" />
+        ) : (
+          <Zap className="h-3 w-3 text-green-500" />
+        )}
+        {platform.name}
+      </DropdownMenuItem>
+    );
+  };
+
+  // Tab buttons render function
+  const renderTabButtons = (size: "default" | "small" = "default") => (
+    <div className={`flex gap-1 ${size === "small" ? "p-1" : "p-1.5"} bg-muted rounded-md`}>
+      <button
+        onClick={() => setActiveTab("chat")}
+        className={`flex-1 ${size === "small" ? "px-2 py-1 text-xs" : "px-3 py-1.5 text-sm"} font-medium rounded transition-colors ${
+          activeTab === "chat"
+            ? "bg-background text-foreground shadow-sm"
+            : "text-muted-foreground hover:text-foreground"
+        }`}
+      >
+        Chat
+      </button>
+      <button
+        onClick={() => setActiveTab("code")}
+        className={`flex-1 ${size === "small" ? "px-2 py-1 text-xs" : "px-3 py-1.5 text-sm"} font-medium rounded transition-colors ${
+          activeTab === "code"
+            ? "bg-background text-foreground shadow-sm"
+            : "text-muted-foreground hover:text-foreground"
+        }`}
+      >
+        Code
+      </button>
+    </div>
+  );
+
   return (
     <>
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant={variant} size={size} className={className}>
-            <Play className="h-4 w-4" />
-            {size !== "icon" && <span className="ml-1.5">{t("run")}</span>}
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-48">
-          {platforms.map((platform) =>
-            platform.subOptions ? (
-              <DropdownMenuSub key={platform.id}>
-                <DropdownMenuSubTrigger className="flex items-center gap-2">
-                  <Zap className="h-3 w-3 text-green-500" />
-                  {platform.name}
-                </DropdownMenuSubTrigger>
-                <DropdownMenuSubContent>
-                  {platform.subOptions.map((option) => (
-                    <DropdownMenuItem
-                      key={option.baseUrl}
-                      onClick={() => handleRun(platform, option.baseUrl)}
-                    >
-                      {option.name}
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuSubContent>
-              </DropdownMenuSub>
-            ) : (
-              <DropdownMenuItem
-                key={platform.id}
-                onClick={() => handleRun(platform, platform.baseUrl)}
-                className="flex items-center gap-2"
-              >
-                {platform.supportsQuerystring === false ? (
-                  <Clipboard className="h-3 w-3 text-muted-foreground" />
-                ) : (
-                  <Zap className="h-3 w-3 text-green-500" />
-                )}
-                {platform.name}
-              </DropdownMenuItem>
-            )
-          )}
-        </DropdownMenuContent>
-      </DropdownMenu>
+      {/* Mobile: Bottom Sheet */}
+      {isMobile ? (
+        <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
+          <SheetTrigger asChild>
+            <Button variant={emphasized ? undefined : variant} size={size} className={emphasized ? `bg-green-600 hover:bg-green-700 text-white ${className || ""}` : className}>
+              <Play className="h-4 w-4" />
+              {size !== "icon" && <span className="ml-1.5">{t("run")}</span>}
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="bottom" className="max-h-[70vh]">
+            <SheetHeader>
+              <SheetTitle>{t("run")}</SheetTitle>
+            </SheetHeader>
+            <div className="py-2">
+              {renderTabButtons()}
+            </div>
+            <div className="overflow-y-auto flex-1 py-2">
+              {activePlatforms.map(renderMobilePlatform)}
+            </div>
+          </SheetContent>
+        </Sheet>
+      ) : (
+        /* Desktop: Dropdown */
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant={emphasized ? undefined : variant} size={size} className={emphasized ? `bg-green-600 hover:bg-green-700 text-white ${className || ""}` : className}>
+              <Play className="h-4 w-4" />
+              {size !== "icon" && <span className="ml-1.5">{t("run")}</span>}
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-52">
+            <div className="p-1">
+              {renderTabButtons("small")}
+            </div>
+            <DropdownMenuSeparator />
+            <div className="max-h-64 overflow-y-auto">
+              {activePlatforms.map(renderDropdownPlatform)}
+            </div>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      )}
 
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent>

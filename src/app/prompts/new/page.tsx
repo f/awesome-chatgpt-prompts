@@ -1,10 +1,12 @@
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
+import { Info } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { PromptForm } from "@/components/prompts/prompt-form";
 import { db } from "@/lib/db";
 import { isAIGenerationEnabled, getAIModelName } from "@/lib/ai/generation";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 export const metadata: Metadata = {
   title: "Create Prompt",
@@ -46,6 +48,12 @@ export default async function NewPromptPage({ searchParams }: PageProps) {
 
   return (
     <div className="container max-w-3xl py-8">
+      <Alert className="mb-6">
+        <Info className="h-4 w-4" />
+        <AlertDescription>
+          {t("createInfo")}
+        </AlertDescription>
+      </Alert>
       <PromptForm 
         categories={categories} 
         tags={tags} 

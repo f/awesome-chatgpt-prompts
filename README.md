@@ -1,8 +1,10 @@
 ## ⚠️ Where are all the prompts gone?
 
-> **No worries They are still here.** But it become impossible to maintain a monster README file. So now it has its own system. Still free, still open-sourced.
+> **No worries! They're still here.** The README became too large to maintain, so prompts now live in [PROMPTS.md](PROMPTS.md). Your contributions to [prompts.chat](https://prompts.chat) automatically sync there. Still free, still open source.
 >
 > 🌐 **[View All Prompts on prompts.chat](https://prompts.chat/prompts)**
+> 
+> 📖 **[View All Prompts on GitHub (PROMPTS.md)](PROMPTS.md)**
 > 
 > 🔍 **[View All Prompts synced on GitHub (prompts.csv)](https://github.com/f/awesome-chatgpt-prompts/blob/main/prompts.csv)**
 > 
@@ -18,12 +20,19 @@
 <h2 align="center">Sponsors</h3>
 
 <div align="center">
-
-  <a href="https://clemta.com" align="center" target="_blank">
-    <img height="50" alt="Clemta logo" src="https://clemta.com/wp-content/uploads/2023/03/logo-clemta-com-1.png.webp">
-  </a>
-  <br>
-  <sub>With Clemta, you can run your company from the comfort of your home.</sub>
+  <a href="https://clemta.com/?utm_source=prompts.chat" align="center">
+    <img align="center" height="50" alt="Clemta logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/clemta.webp">
+  </a><br><br>
+  <a href="https://wiro.ai/?utm_source=prompts.chat" align="center">
+    <img align="center" height="30" alt="Cognition logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/wiro.png">
+  </a><br><br>
+  <a href="https://wind.surf/prompts-chat" align="center">
+    <img align="center" height="40" alt="Cognition logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/cognition.svg">
+  </a><br><br>
+  <a href="https://warp.dev/?utm_source=prompts.chat" align="center">
+    <img align="center" height="30" alt="Warp logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/warp.svg">
+  </a><br><br>
+  <sub>prompts.chat is built with Windsurf and Devin by Cognition</sub>
 <hr>
   <sub><a href="https://github.com/sponsors/f/sponsorships?sponsor=f&amp;tier_id=529895">Be my sponsor and your logo will be here!</a></sub>
 </div>

@@ -1,0 +1,27 @@
+name: Translate Content
+description: Translates text to a target language while preserving formatting, variable placeholders, and original meaning.
+model: openai/gpt-4o-mini
+modelParameters:
+  temperature: 0.3
+  maxTokens: 4000
+messages:
+  - role: system
+    content: |
+      You are a professional translator. Translate the following text to {{targetLanguage}}.
+      Rules:
+      - Preserve all formatting, line breaks, and special characters
+      - For variable placeholders like ${variablename} keep the variable name in English but translate any default value
+        Example: ${topic:technology} becomes ${topic:tecnología} in Spanish
+        Example: ${name} stays as ${name} (no default to translate)
+      - Maintain the original tone and meaning
+      - Return ONLY the translated text, no explanations or notes
+  - role: user
+    content: |
+      {{content}}
+testData:
+  - targetLanguage: Spanish
+    content: Hello, how are you?
+    expected: Hola, ¿cómo estás?
+  - targetLanguage: French
+    content: Write about ${topic:technology}
+    expected: Écrire sur ${topic:technologie}

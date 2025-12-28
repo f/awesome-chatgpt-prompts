@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { SearchX } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Masonry } from "@/components/ui/masonry";
 import { PromptCard, type PromptCardProps } from "@/components/prompts/prompt-card";
 
 export interface PromptListProps {
@@ -33,7 +34,7 @@ export function PromptList({ prompts, currentPage, totalPages, pinnedIds, showPi
 
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:auto-rows-fr">
+      <Masonry columnCount={{ default: 1, md: 2, lg: 3 }} gap={16}>
         {prompts.map((prompt) => (
           <PromptCard 
             key={prompt.id} 
@@ -42,17 +43,17 @@ export function PromptList({ prompts, currentPage, totalPages, pinnedIds, showPi
             isPinned={pinnedIds?.has(prompt.id) ?? false}
           />
         ))}
-      </div>
+      </Masonry>
 
       {/* Pagination */}
       {totalPages > 1 && (
         <div className="flex items-center justify-center gap-2 pt-4">
           <Button variant="outline" size="sm" className="h-7 text-xs" disabled={currentPage <= 1} asChild={currentPage > 1}>
-            {currentPage > 1 ? <Link href={`?page=${currentPage - 1}`}>Previous</Link> : <span>Previous</span>}
+            {currentPage > 1 ? <Link href={`?page=${currentPage - 1}`} prefetch={false}>Previous</Link> : <span>Previous</span>}
           </Button>
           <span className="text-xs text-muted-foreground">{currentPage} / {totalPages}</span>
           <Button variant="outline" size="sm" className="h-7 text-xs" disabled={currentPage >= totalPages} asChild={currentPage < totalPages}>
-            {currentPage < totalPages ? <Link href={`?page=${currentPage + 1}`}>Next</Link> : <span>Next</span>}
+            {currentPage < totalPages ? <Link href={`?page=${currentPage + 1}`} prefetch={false}>Next</Link> : <span>Next</span>}
           </Button>
         </div>
       )}

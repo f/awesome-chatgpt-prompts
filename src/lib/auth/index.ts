@@ -43,7 +43,9 @@ function CustomPrismaAdapter(): Adapter {
     ...prismaAdapter,
     async createUser(data: AdapterUser & { username?: string; githubUsername?: string }) {
       // Use GitHub username if provided, otherwise generate one
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let username = (data as any).username;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const githubUsername = (data as any).githubUsername; // Immutable GitHub username
       
       if (!username) {
@@ -152,6 +154,7 @@ async function buildAuthConfig() {
       error: "/login",
     },
     callbacks: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       async jwt({ token, user, trigger }: { token: any; user?: any; trigger?: string }) {
         // On sign in, look up the actual database user by email to ensure correct ID
         if (user && user.email) {
@@ -194,6 +197,7 @@ async function buildAuthConfig() {
 
         return token;
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       async session({ session, token }: { session: any; token: any }) {
         // If token is null/invalid, return empty session
         if (!token) {

@@ -47,6 +47,10 @@ If you're contributing directly to `prompts.csv`, follow this format:
 - No spaces after commas inside quoted fields
 - Use your GitHub username exactly as it appears
 
-## Questions?
+## Questions & Issue Policy
 
-Open an issue if you have questions about contributing.
+Open an issue if you have questions about contributing. 
+
+**Important:** This repository is strictly for AI prompts. 
+- Do **not** post advertisements, third-party software support requests (e.g., Norton Antivirus, billing issues), or fake tech support phone numbers. 
+- Any off-topic issues will be closed immediately, and the posting user will be reported to GitHub for spam and malicious activity.

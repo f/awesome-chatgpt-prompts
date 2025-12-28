@@ -1,0 +1,30 @@
+name: Reset Daily Generation Credits
+
+on:
+  schedule:
+    # Run at midnight UTC every day
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  reset-credits:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Reset daily generation credits
+        run: |
+          response=$(curl -s -w "\n%{http_code}" -X POST \
+            "https://prompts.chat/api/cron/reset-credits" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}")
+          
+          http_code=$(echo "$response" | tail -n1)
+          body=$(echo "$response" | sed '$d')
+          
+          echo "Response: $body"
+          echo "HTTP Code: $http_code"
+          
+          if [ "$http_code" != "200" ]; then
+            echo "Failed to reset credits"
+            exit 1
+          fi
+          
+          echo "Credits reset successfully"

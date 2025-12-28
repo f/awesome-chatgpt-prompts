@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getTranslations, getLocale } from "next-intl/server";
 import { formatDistanceToNow } from "@/lib/date";
-import { Calendar, Clock, Copy, Share2, Edit, History, GitPullRequest, Check, X, Users, ImageIcon, Video, FileText, Shield } from "lucide-react";
+import { Clock, Edit, History, GitPullRequest, Check, X, Users, ImageIcon, Video, FileText, Shield } from "lucide-react";
+import { AnimatedDate } from "@/components/ui/animated-date";
 import { ShareDropdown } from "@/components/prompts/share-dropdown";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -23,6 +24,9 @@ import { UnlistPromptButton } from "@/components/prompts/unlist-prompt-button";
 import { MediaPreview } from "@/components/prompts/media-preview";
 import { ReportPromptDialog } from "@/components/prompts/report-prompt-dialog";
 import { DelistBanner } from "@/components/prompts/delist-banner";
+import { CommentSection } from "@/components/comments";
+import { PromptConnections } from "@/components/prompts/prompt-connections";
+import { getConfig } from "@/lib/config";
 
 interface PromptPageProps {
   params: Promise<{ id: string }>;
@@ -30,16 +34,22 @@ interface PromptPageProps {
 
 /**
  * Extracts the prompt ID from a URL parameter that may contain a slug
- * Supports formats: "abc123" or "abc123_some-slug"
+ * Supports formats: "abc123", "abc123_some-slug", or "abc123_some-slug.prompt.md"
  */
 function extractPromptId(idParam: string): string {
-  // If the param contains an underscore, extract the ID (everything before first underscore)
-  const underscoreIndex = idParam.indexOf("_");
-  if (underscoreIndex !== -1) {
-    return idParam.substring(0, underscoreIndex);
+  let param = idParam;
+  // Strip .prompt.md suffix if present
+  if (param.endsWith(".prompt.md")) {
+    param = param.slice(0, -".prompt.md".length);
   }
-  return idParam;
+  // If the param contains an underscore, extract the ID (everything before first underscore)
+  const underscoreIndex = param.indexOf("_");
+  if (underscoreIndex !== -1) {
+    return param.substring(0, underscoreIndex);
+  }
+  return param;
 }
+
 
 export async function generateMetadata({ params }: PromptPageProps): Promise<Metadata> {
   const { id: idParam } = await params;
@@ -63,6 +73,7 @@ export default async function PromptPage({ params }: PromptPageProps) {
   const { id: idParam } = await params;
   const id = extractPromptId(idParam);
   const session = await auth();
+  const config = await getConfig();
   const t = await getTranslations("prompts");
   const locale = await getLocale();
 
@@ -75,9 +86,14 @@ export default async function PromptPage({ params }: PromptPageProps) {
           name: true,
           username: true,
           avatar: true,
+          verified: true,
         },
       },
-      category: true,
+      category: {
+        include: {
+          parent: true,
+        },
+      },
       tags: {
         include: {
           tag: true,
@@ -134,10 +150,8 @@ export default async function PromptPage({ params }: PromptPageProps) {
     notFound();
   }
 
-  // Check if user can view unlisted prompt (only owner and admins can see)
-  if (prompt.isUnlisted && prompt.authorId !== session?.user?.id && session?.user?.role !== "ADMIN") {
-    notFound();
-  }
+  // Unlisted prompts are accessible via direct link (like YouTube unlisted videos)
+  // They just don't appear in public listings, search results, or feeds
 
   const isOwner = session?.user?.id === prompt.authorId;
   const isAdmin = session?.user?.role === "ADMIN";
@@ -192,67 +206,49 @@ export default async function PromptPage({ params }: PromptPageProps) {
       )}
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
-        <div className="space-y-1 min-w-0">
-          <div className="flex items-center gap-2 flex-wrap">
-            <h1 className="text-3xl font-bold">{prompt.title}</h1>
-            {prompt.isPrivate && (
-              <Badge variant="secondary">{t("promptPrivate")}</Badge>
-            )}
+      <div className="mb-6">
+        {/* Title row with upvote button */}
+        <div className="flex items-center gap-4 mb-2">
+          <div className="shrink-0">
+            <UpvoteButton
+              promptId={prompt.id}
+              initialVoted={hasVoted}
+              initialCount={voteCount}
+              isLoggedIn={!!session?.user}
+              size="circular"
+            />
           </div>
-          {prompt.description && (
-            <p className="text-muted-foreground">{prompt.description}</p>
-          )}
-        </div>
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 w-full sm:w-auto sm:shrink-0">
-          <div className="flex items-center gap-3 text-sm text-muted-foreground">
-            <div className="flex items-center gap-1.5">
-              <History className="h-4 w-4" />
-              <span>{prompt.versions.length > 0 ? prompt.versions[0].version : 1} {prompt.versions.length === 1 ? t("version") : t("versionsCount")}</span>
+          <div className="flex-1 flex items-center justify-between gap-4 min-w-0">
+            <div className="flex items-center gap-2 flex-wrap min-w-0">
+              <h1 className="text-3xl font-bold">{prompt.title}</h1>
+              {prompt.isPrivate && (
+                <Badge variant="secondary">{t("promptPrivate")}</Badge>
+              )}
             </div>
-            {prompt.contributors.length > 0 && (
-              <div className="flex items-center gap-1.5">
-                <Users className="h-4 w-4" />
-                <span>{prompt.contributors.length + 1} {t("contributors")}</span>
-              </div>
-            )}
-          </div>
-          <div className="flex items-center gap-2 sm:hidden">
-            <UpvoteButton
-              promptId={prompt.id}
-              initialVoted={hasVoted}
-              initialCount={voteCount}
-              isLoggedIn={!!session?.user}
-              showLabel
-            />
-            <ShareDropdown title={prompt.title} />
-            {isOwner && (
-              <Button variant="outline" size="icon" asChild>
-                <Link href={`/prompts/${id}/edit`}>
-                  <Edit className="h-4 w-4" />
-                </Link>
-              </Button>
-            )}
-          </div>
-          <div className="hidden sm:flex items-center gap-2">
-            <UpvoteButton
-              promptId={prompt.id}
-              initialVoted={hasVoted}
-              initialCount={voteCount}
-              isLoggedIn={!!session?.user}
-              showLabel
-            />
-            <ShareDropdown title={prompt.title} />
-            {isOwner && (
-              <Button variant="outline" asChild>
-                <Link href={`/prompts/${id}/edit`}>
-                  <Edit className="h-4 w-4 mr-2" />
-                  {t("edit")}
-                </Link>
-              </Button>
-            )}
+            <div className="flex items-center gap-2 shrink-0">
+              {isOwner && (
+                <>
+                  <Button variant="outline" size="icon" asChild className="sm:hidden">
+                    <Link href={`/prompts/${id}/edit`}>
+                      <Edit className="h-4 w-4" />
+                    </Link>
+                  </Button>
+                  <Button variant="outline" asChild className="hidden sm:flex">
+                    <Link href={`/prompts/${id}/edit`}>
+                      <Edit className="h-4 w-4 mr-2" />
+                      {t("edit")}
+                    </Link>
+                  </Button>
+                </>
+              )}
+            </div>
           </div>
         </div>
+        
+        {/* Description */}
+        {prompt.description && (
+          <p className="text-muted-foreground">{prompt.description}</p>
+        )}
       </div>
       <div className="border-b mb-6 sm:hidden" />
 
@@ -279,7 +275,7 @@ export default async function PromptPage({ params }: PromptPageProps) {
             <Tooltip>
               <TooltipTrigger asChild>
                 <span className="cursor-default">
-                  @{prompt.author.username} +{prompt.contributors.length}
+                  <Link href={`/@${prompt.author.username}`} className="hover:underline">@{prompt.author.username}</Link> +{prompt.contributors.length}
                 </span>
               </TooltipTrigger>
               <TooltipContent side="bottom" className="p-2">
@@ -304,13 +300,20 @@ export default async function PromptPage({ params }: PromptPageProps) {
               </TooltipContent>
             </Tooltip>
           ) : (
-            <span>@{prompt.author.username}</span>
+            <Link href={`/@${prompt.author.username}`} className="hover:underline">@{prompt.author.username}</Link>
           )}
         </div>
-        <div className="flex items-center gap-1">
-          <Calendar className="h-4 w-4" />
-          <span>{formatDistanceToNow(prompt.createdAt, locale)}</span>
-        </div>
+        {prompt.contributors.length > 0 && (
+          <div className="flex items-center gap-1.5">
+            <Users className="h-4 w-4" />
+            <span>{prompt.contributors.length + 1} {t("contributors")}</span>
+          </div>
+        )}
+        <AnimatedDate 
+          date={prompt.createdAt} 
+          relativeText={formatDistanceToNow(prompt.createdAt, locale)} 
+          locale={locale}
+        />
         {prompt.category && (
           <Link href={`/categories/${prompt.category.slug}`}>
             <Badge variant="outline">{prompt.category.name}</Badge>
@@ -351,9 +354,12 @@ export default async function PromptPage({ params }: PromptPageProps) {
           <div className="flex items-center justify-between">
             <TabsList>
               <TabsTrigger value="content">{t("promptContent")}</TabsTrigger>
-              <TabsTrigger value="versions">
-                <History className="h-4 w-4 mr-1" />
+              <TabsTrigger value="versions" className="gap-1">
+                <History className="h-4 w-4" />
                 {t("versions")}
+                <Badge variant="secondary" className="ml-1 h-5 min-w-5 px-1 text-xs">
+                  {prompt.versions.length > 0 ? prompt.versions[0].version : 1}
+                </Badge>
               </TabsTrigger>
               {changeRequests.length > 0 && (
                 <TabsTrigger value="changes" className="gap-1">
@@ -412,9 +418,25 @@ export default async function PromptPage({ params }: PromptPageProps) {
                 structuredFormat={(prompt.structuredFormat?.toLowerCase() as "json" | "yaml") || "json"}
                 title={t("promptContent")}
                 isLoggedIn={!!session?.user}
+                categoryName={prompt.category?.name}
+                parentCategoryName={prompt.category?.parent?.name}
+                promptId={prompt.id}
+                promptSlug={prompt.slug ?? undefined}
+                promptType={prompt.type}
+                shareTitle={prompt.title}
               />
             ) : (
-              <InteractivePromptContent content={prompt.content} title={t("promptContent")} isLoggedIn={!!session?.user} />
+              <InteractivePromptContent 
+                content={prompt.content} 
+                title={t("promptContent")} 
+                isLoggedIn={!!session?.user}
+                categoryName={prompt.category?.name}
+                parentCategoryName={prompt.category?.parent?.name}
+                promptId={prompt.id}
+                promptSlug={prompt.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}
+                promptType={prompt.type}
+                shareTitle={prompt.title}
+              />
             )}
           </div>
           {/* Report link */}
@@ -422,6 +444,24 @@ export default async function PromptPage({ params }: PromptPageProps) {
             <div className="flex justify-end pt-2">
               <ReportPromptDialog promptId={prompt.id} isLoggedIn={!!session?.user} />
             </div>
+          )}
+
+          {/* Connected Prompts Section */}
+          <PromptConnections
+            promptId={prompt.id}
+            promptTitle={prompt.title}
+            canEdit={canEdit}
+          />
+
+          {/* Comments Section */}
+          {config.features.comments !== false && !prompt.isPrivate && (
+            <CommentSection
+              promptId={prompt.id}
+              currentUserId={session?.user?.id}
+              isAdmin={isAdmin}
+              isLoggedIn={!!session?.user}
+              locale={locale}
+            />
           )}
         </TabsContent>
 

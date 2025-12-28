@@ -1,13 +1,16 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
+import { unstable_cache } from "next/cache";
+import { Suspense } from "react";
 import { Plus } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import { InfinitePromptList } from "@/components/prompts/infinite-prompt-list";
 import { PromptFilters } from "@/components/prompts/prompt-filters";
 import { FilterProvider } from "@/components/prompts/filter-context";
+import { PinnedCategories } from "@/components/categories/pinned-categories";
 import { HFDataStudioDropdown } from "@/components/prompts/hf-data-studio-dropdown";
-import { McpServerPopup, McpIcon } from "@/components/mcp/mcp-server-popup";
+import { McpServerPopup } from "@/components/mcp/mcp-server-popup";
 import { db } from "@/lib/db";
 import { isAISearchEnabled, semanticSearch } from "@/lib/ai/embeddings";
 import { isAIGenerationEnabled } from "@/lib/ai/generation";
@@ -17,6 +20,124 @@ export const metadata: Metadata = {
   title: "Prompts",
   description: "Browse and discover AI prompts",
 };
+
+// Query for categories (cached)
+const getCategories = unstable_cache(
+  async () => {
+    return db.category.findMany({
+      orderBy: [{ order: "asc" }, { name: "asc" }],
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+        parentId: true,
+      },
+    });
+  },
+  ["categories"],
+  { tags: ["categories"] }
+);
+
+// Query for pinned categories (cached)
+const getPinnedCategories = unstable_cache(
+  async () => {
+    return db.category.findMany({
+      where: { pinned: true },
+      orderBy: [{ order: "asc" }, { name: "asc" }],
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+        icon: true,
+      },
+    });
+  },
+  ["pinned-categories"],
+  { tags: ["categories"] }
+);
+
+// Query for tags (cached)
+const getTags = unstable_cache(
+  async () => {
+    return db.tag.findMany({
+      orderBy: { name: "asc" },
+    });
+  },
+  ["tags"],
+  { tags: ["tags"] }
+);
+
+// Query for prompts list (cached)
+function getCachedPrompts(
+  where: Record<string, unknown>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  orderBy: any,
+  perPage: number
+) {
+  // Create a stable cache key from the query parameters
+  const cacheKey = JSON.stringify({ where, orderBy, perPage });
+  
+  return unstable_cache(
+    async () => {
+      const [promptsRaw, totalCount] = await Promise.all([
+        db.prompt.findMany({
+          where,
+          orderBy,
+          skip: 0,
+          take: perPage,
+          include: {
+            author: {
+              select: {
+                id: true,
+                name: true,
+                username: true,
+                avatar: true,
+                verified: true,
+              },
+            },
+            category: {
+              include: {
+                parent: {
+                  select: { id: true, name: true, slug: true },
+                },
+              },
+            },
+            tags: {
+              include: {
+                tag: true,
+              },
+            },
+            contributors: {
+              select: {
+                id: true,
+                username: true,
+                name: true,
+                avatar: true,
+              },
+            },
+            _count: {
+              select: { votes: true, contributors: true },
+            },
+          },
+        }),
+        db.prompt.count({ where }),
+      ]);
+
+      return {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        prompts: promptsRaw.map((p: any) => ({
+          ...p,
+          voteCount: p._count.votes,
+          contributorCount: p._count.contributors,
+          contributors: p.contributors,
+        })),
+        total: totalCount,
+      };
+    },
+    ["prompts", cacheKey],
+    { tags: ["prompts"] }
+  )();
+}
 
 interface PromptsPageProps {
   searchParams: Promise<{
@@ -35,11 +156,12 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
   const tSearch = await getTranslations("search");
   const params = await searchParams;
   
-  const perPage = 12;
+  const perPage = 24;
   const aiSearchAvailable = await isAISearchEnabled();
   const aiGenerationAvailable = await isAIGenerationEnabled();
   const useAISearch = aiSearchAvailable && params.ai === "1" && params.q;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let prompts: any[] = [];
   let total = 0;
 
@@ -94,6 +216,7 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
     
     // Build order by clause
     const isUpvoteSort = params.sort === "upvotes";
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let orderBy: any = { createdAt: "desc" };
     if (params.sort === "oldest") {
       orderBy = { createdAt: "asc" };
@@ -102,75 +225,18 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
       orderBy = { votes: { _count: "desc" } };
     }
 
-    // Fetch initial prompts (first page)
-    const [promptsRaw, totalCount] = await Promise.all([
-      db.prompt.findMany({
-        where,
-        orderBy,
-        skip: 0,
-        take: perPage,
-        include: {
-          author: {
-            select: {
-              id: true,
-              name: true,
-              username: true,
-              avatar: true,
-            },
-          },
-          category: {
-            select: {
-              id: true,
-              name: true,
-              slug: true,
-            },
-          },
-          tags: {
-            include: {
-              tag: true,
-            },
-          },
-          contributors: {
-            select: {
-              id: true,
-              username: true,
-              name: true,
-              avatar: true,
-            },
-          },
-          _count: {
-            select: { votes: true, contributors: true },
-          },
-        },
-      }),
-      db.prompt.count({ where }),
-    ]);
-
-    // Transform to include voteCount and contributorCount
-    prompts = promptsRaw.map((p) => ({
-      ...p,
-      voteCount: p._count.votes,
-      contributorCount: p._count.contributors,
-      contributors: p.contributors,
-    }));
-    total = totalCount;
+    // Fetch initial prompts (first page) - cached
+    const result = await getCachedPrompts(where, orderBy, perPage);
+    prompts = result.prompts;
+    total = result.total;
   }
 
-  // Fetch categories for filter (with parent info for nesting)
-  const categories = await db.category.findMany({
-    orderBy: [{ order: "asc" }, { name: "asc" }],
-    select: {
-      id: true,
-      name: true,
-      slug: true,
-      parentId: true,
-    },
-  });
-
-  // Fetch tags for filter
-  const tags = await db.tag.findMany({
-    orderBy: { name: "asc" },
-  });
+  // Fetch categories, pinned categories, and tags for filter
+  const [categories, pinnedCategories, tags] = await Promise.all([
+    getCategories(),
+    getPinnedCategories(),
+    getTags(),
+  ]);
 
   return (
     <div className="container py-6">
@@ -183,7 +249,7 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
           {!config.homepage?.useCloneBranding && (
             <div className="flex items-center gap-2">
               <HFDataStudioDropdown aiGenerationEnabled={aiGenerationAvailable} />
-              {config.features.mcp !== false && <McpServerPopup />}
+              {config.features.mcp !== false && <McpServerPopup showOfficialBranding />}
             </div>
           )}
           <Button size="sm" className="h-8 text-xs w-full sm:w-auto" asChild>
@@ -194,8 +260,16 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
           </Button>
         </div>
       </div>
-
+      
       <FilterProvider>
+        <Suspense fallback={null}>
+          <div className="mb-4">
+            <PinnedCategories 
+              categories={pinnedCategories} 
+              currentCategoryId={params.category} 
+            />
+          </div>
+        </Suspense>
         <div className="flex flex-col lg:flex-row gap-6">
           <aside className="w-full lg:w-56 shrink-0 lg:sticky lg:top-16 lg:self-start lg:max-h-[calc(100vh-5rem)] lg:overflow-y-auto">
             <PromptFilters

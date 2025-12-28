@@ -6,12 +6,15 @@ import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Loader2, Upload, X, ArrowDown, Play, Image as ImageIcon, Video, Volume2, Paperclip, Search, Sparkles } from "lucide-react";
+import { Loader2, Upload, X, ArrowDown, Play, Image as ImageIcon, Video, Volume2, Paperclip, Search, Sparkles, BookOpen, ExternalLink, ChevronDown } from "lucide-react";
+import Link from "next/link";
 import { VariableToolbar } from "./variable-toolbar";
 import { VariableWarning } from "./variable-warning";
 import { VariableHint } from "./variable-hint";
+import { StructuredFormatWarning } from "./structured-format-warning";
 import { ContributorSearch } from "./contributor-search";
 import { PromptBuilder, type PromptBuilderHandle } from "./prompt-builder";
+import { MediaGenerator } from "./media-generator";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -32,6 +35,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Badge } from "@/components/ui/badge";
 import { CodeEditor, type CodeEditorHandle } from "@/components/ui/code-editor";
 import { toast } from "sonner";
@@ -42,14 +51,21 @@ import { getPromptUrl } from "@/lib/urls";
 interface MediaFieldProps {
   form: ReturnType<typeof useForm<PromptFormValues>>;
   t: (key: string) => string;
+  promptType?: string;
+  promptContent?: string;
 }
 
-function MediaField({ form, t }: MediaFieldProps) {
+function MediaField({ form, t, promptType, promptContent }: MediaFieldProps) {
   const [storageMode, setStorageMode] = useState<string>("url");
   const [isUploading, setIsUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
+  const [showUpload, setShowUpload] = useState(false);
+  const [hasGenerators, setHasGenerators] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const mediaUrl = form.watch("mediaUrl");
+  const isVideoType = promptType === "VIDEO";
+  const isAudioType = promptType === "AUDIO";
+  const mediaType = isVideoType ? "VIDEO" : isAudioType ? "AUDIO" : "IMAGE";
 
   useEffect(() => {
     fetch("/api/config/storage")
@@ -58,20 +74,35 @@ function MediaField({ form, t }: MediaFieldProps) {
       .catch(() => setStorageMode("url"));
   }, []);
 
+  // Check if media generation is available
+  useEffect(() => {
+    fetch("/api/media-generate")
+      .then((res) => res.json())
+      .then((data) => {
+        const models = isVideoType ? data.videoModels : isAudioType ? data.audioModels : data.imageModels;
+        setHasGenerators(models && models.length > 0);
+      })
+      .catch(() => setHasGenerators(false));
+  }, [isVideoType, isAudioType]);
+
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // Validate file size (5MB)
-    if (file.size > 5 * 1024 * 1024) {
-      setUploadError(t("fileTooLarge"));
+    // Validate file size (4MB for both - Vercel serverless limit)
+    const maxSize = 4 * 1024 * 1024;
+    if (file.size > maxSize) {
+      setUploadError(t(isVideoType ? "videoTooLarge" : "fileTooLarge"));
       return;
     }
 
     // Validate file type
-    const allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+    const allowedImageTypes = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+    const allowedVideoTypes = ["video/mp4"];
+    const allowedAudioTypes = ["audio/mpeg", "audio/mp3", "audio/wav", "audio/ogg"];
+    const allowedTypes = isVideoType ? allowedVideoTypes : isAudioType ? allowedAudioTypes : allowedImageTypes;
     if (!allowedTypes.includes(file.type)) {
-      setUploadError(t("invalidFileType"));
+      setUploadError(t(isVideoType ? "invalidVideoType" : isAudioType ? "invalidAudioType" : "invalidFileType"));
       return;
     }
 
@@ -109,7 +140,20 @@ function MediaField({ form, t }: MediaFieldProps) {
     setUploadError(null);
   };
 
-  // URL mode: show text input
+  const handleMediaGenerated = (url: string) => {
+    form.setValue("mediaUrl", url);
+    setShowUpload(false);
+  };
+
+  const handleUploadClick = () => {
+    if (storageMode === "url") {
+      setShowUpload(true);
+    } else {
+      fileInputRef.current?.click();
+    }
+  };
+
+  // URL mode with generator option
   if (storageMode === "url") {
     return (
       <FormField
@@ -118,9 +162,62 @@ function MediaField({ form, t }: MediaFieldProps) {
         render={({ field }) => (
           <FormItem>
             <FormLabel>{t("mediaUrl")}</FormLabel>
-            <FormControl>
-              <Input placeholder={t("mediaUrlPlaceholder")} {...field} />
-            </FormControl>
+            <div className="space-y-3">
+              {mediaUrl ? (
+                <div className="space-y-2">
+                  <div className="relative inline-block">
+                    {isVideoType ? (
+                      <video src={mediaUrl} controls className="max-h-40 rounded-md border" />
+                    ) : isAudioType ? (
+                      <audio src={mediaUrl} controls className="w-full max-w-md" />
+                    ) : (
+                      <img src={mediaUrl} alt="Preview" className="max-h-40 rounded-md border" />
+                    )}
+                    <Button
+                      type="button"
+                      variant="destructive"
+                      size="icon"
+                      className="absolute -top-2 -right-2 h-6 w-6"
+                      onClick={clearMedia}
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {hasGenerators && !showUpload ? (
+                    <div className="rounded-lg border-2 border-dashed border-primary/30 bg-gradient-to-br from-primary/5 to-primary/10 p-4 space-y-3">
+                      <div className="flex items-center gap-2 text-primary">
+                        <Sparkles className="h-5 w-5" />
+                        <span className="font-medium">{t("aiGenerationAvailable")}</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        {t(isVideoType ? "generateVideoDescription" : isAudioType ? "generateAudioDescription" : "generateImageDescription")}
+                      </p>
+                      <MediaGenerator
+                        prompt={promptContent || ""}
+                        mediaType={mediaType as "IMAGE" | "VIDEO" | "AUDIO"}
+                        onMediaGenerated={handleMediaGenerated}
+                        onUploadClick={handleUploadClick}
+                      />
+                    </div>
+                  ) : (
+                    <MediaGenerator
+                      prompt={promptContent || ""}
+                      mediaType={mediaType as "IMAGE" | "VIDEO" | "AUDIO"}
+                      onMediaGenerated={handleMediaGenerated}
+                      onUploadClick={handleUploadClick}
+                    />
+                  )}
+                  {showUpload && (
+                    <FormControl>
+                      <Input placeholder={t("mediaUrlPlaceholder")} {...field} />
+                    </FormControl>
+                  )}
+                </div>
+              )}
+            </div>
             <FormMessage />
           </FormItem>
         )}
@@ -128,23 +225,37 @@ function MediaField({ form, t }: MediaFieldProps) {
     );
   }
 
-  // Upload mode: show file upload
+  // Upload mode: show file upload with generator option
   return (
     <FormField
       control={form.control}
       name="mediaUrl"
       render={() => (
         <FormItem>
-          <FormLabel>{t("mediaImage")}</FormLabel>
+          <FormLabel>{t(isVideoType ? "mediaVideo" : isAudioType ? "mediaAudio" : "mediaImage")}</FormLabel>
           <FormControl>
-            <div className="space-y-2">
+            <div className="space-y-3">
               {mediaUrl ? (
                 <div className="relative inline-block">
-                  <img
-                    src={mediaUrl}
-                    alt="Preview"
-                    className="max-h-40 rounded-md border"
-                  />
+                  {isVideoType ? (
+                    <video
+                      src={mediaUrl}
+                      controls
+                      className="max-h-40 rounded-md border"
+                    />
+                  ) : isAudioType ? (
+                    <audio
+                      src={mediaUrl}
+                      controls
+                      className="w-full max-w-md"
+                    />
+                  ) : (
+                    <img
+                      src={mediaUrl}
+                      alt="Preview"
+                      className="max-h-40 rounded-md border"
+                    />
+                  )}
                   <Button
                     type="button"
                     variant="destructive"
@@ -156,27 +267,55 @@ function MediaField({ form, t }: MediaFieldProps) {
                   </Button>
                 </div>
               ) : (
-                <div
-                  className="flex flex-col items-center justify-center gap-2 p-6 border-2 border-dashed rounded-md cursor-pointer hover:border-primary/50 transition-colors"
-                  onClick={() => fileInputRef.current?.click()}
-                >
-                  {isUploading ? (
-                    <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+                <>
+                  {hasGenerators && !showUpload ? (
+                    <div className="rounded-lg border-2 border-dashed border-primary/30 bg-gradient-to-br from-primary/5 to-primary/10 p-4 space-y-3">
+                      <div className="flex items-center gap-2 text-primary">
+                        <Sparkles className="h-5 w-5" />
+                        <span className="font-medium">{t("aiGenerationAvailable")}</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        {t(isVideoType ? "generateVideoDescription" : isAudioType ? "generateAudioDescription" : "generateImageDescription")}
+                      </p>
+                      <MediaGenerator
+                        prompt={promptContent || ""}
+                        mediaType={mediaType as "IMAGE" | "VIDEO" | "AUDIO"}
+                        onMediaGenerated={handleMediaGenerated}
+                        onUploadClick={handleUploadClick}
+                      />
+                    </div>
                   ) : (
-                    <Upload className="h-8 w-8 text-muted-foreground" />
+                    <MediaGenerator
+                      prompt={promptContent || ""}
+                      mediaType={mediaType as "IMAGE" | "VIDEO" | "AUDIO"}
+                      onMediaGenerated={handleMediaGenerated}
+                      onUploadClick={handleUploadClick}
+                    />
                   )}
-                  <p className="text-sm text-muted-foreground">
-                    {isUploading ? t("uploading") : t("clickToUpload")}
-                  </p>
-                  <p className="text-xs text-muted-foreground">
-                    {t("maxFileSize")}
-                  </p>
-                </div>
+                  {showUpload && (
+                    <div
+                      className="flex flex-col items-center justify-center gap-2 p-6 border-2 border-dashed rounded-md cursor-pointer hover:border-primary/50 transition-colors"
+                      onClick={() => fileInputRef.current?.click()}
+                    >
+                      {isUploading ? (
+                        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+                      ) : (
+                        <Upload className="h-8 w-8 text-muted-foreground" />
+                      )}
+                      <p className="text-sm text-muted-foreground">
+                        {isUploading ? t("uploading") : t(isVideoType ? "clickToUploadVideo" : isAudioType ? "clickToUploadAudio" : "clickToUpload")}
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        {t(isVideoType ? "maxVideoSize" : isAudioType ? "maxAudioSize" : "maxFileSize")}
+                      </p>
+                    </div>
+                  )}
+                </>
               )}
               <input
                 ref={fileInputRef}
                 type="file"
-                accept="image/jpeg,image/png,image/gif,image/webp"
+                accept={isVideoType ? "video/mp4" : isAudioType ? "audio/mpeg,audio/mp3,audio/wav,audio/ogg" : "image/jpeg,image/png,image/gif,image/webp"}
                 className="hidden"
                 onChange={handleFileSelect}
                 disabled={isUploading}
@@ -197,7 +336,7 @@ const createPromptSchema = (t: (key: string) => string) => z.object({
   title: z.string().min(1, t("titleRequired")).max(200),
   description: z.string().max(500).optional(),
   content: z.string().min(1, t("contentRequired")),
-  type: z.enum(["TEXT", "IMAGE", "VIDEO", "AUDIO"]), // Output type only
+  type: z.enum(["TEXT", "IMAGE", "VIDEO", "AUDIO", "SKILL"]), // Output type or SKILL
   structuredFormat: z.enum(["JSON", "YAML"]).optional(),
   categoryId: z.string().optional(),
   tagIds: z.array(z.string()),
@@ -247,6 +386,7 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
   const [contributors, setContributors] = useState<Contributor[]>(initialContributors);
   const [usedAiButtons, setUsedAiButtons] = useState<Set<string>>(new Set());
   const builderRef = useRef<PromptBuilderHandle>(null);
+  const [availableGenerators, setAvailableGenerators] = useState<string[]>([]);
 
   const promptSchema = createPromptSchema(t);
   const form = useForm<PromptFormValues>({
@@ -295,12 +435,29 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
     return () => window.removeEventListener("beforeunload", handleBeforeUnload);
   }, [isDirty]);
 
+  // Fetch available media generator names
+  useEffect(() => {
+    fetch("/api/media-generate")
+      .then((res) => res.json())
+      .then((data) => {
+        const providers = new Set<string>();
+        if (data.imageModels?.length > 0 || data.videoModels?.length > 0) {
+          const allModels = [...(data.imageModels || []), ...(data.videoModels || [])];
+          allModels.forEach((model: { providerName: string }) => {
+            if (model.providerName) providers.add(model.providerName);
+          });
+        }
+        setAvailableGenerators(Array.from(providers));
+      })
+      .catch(() => setAvailableGenerators([]));
+  }, []);
+
   // Handler for AI builder state changes
   const handleBuilderStateChange = (newState: {
     title: string;
     description: string;
     content: string;
-    type: "TEXT" | "IMAGE" | "VIDEO" | "AUDIO";
+    type: "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "SKILL";
     structuredFormat?: "JSON" | "YAML";
     categoryId?: string;
     tagIds: string[];
@@ -393,11 +550,31 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
         }),
       });
 
+      const result = await response.json();
+
       if (!response.ok) {
+        // Handle specific error types
+        if (result.error === "rate_limit") {
+          toast.error(t("rateLimitError"));
+          return;
+        }
+        if (result.error === "daily_limit") {
+          toast.error(t("dailyLimitError"));
+          return;
+        }
+        if (result.error === "duplicate_prompt") {
+          toast.error(t("duplicatePromptError"));
+          return;
+        }
+        if (result.error === "content_exists") {
+          toast.error(t("contentExistsError", { 
+            title: result.existingPromptTitle,
+            author: result.existingPromptAuthor 
+          }));
+          return;
+        }
         throw new Error("Failed to save prompt");
       }
-
-      const result = await response.json();
       if (isEdit) {
         analyticsPrompt.edit(promptId!);
       } else {
@@ -484,6 +661,17 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
               />
             </div>
           </div>
+
+        {/* ===== PROMPT WRITING GUIDE LINK ===== */}
+        <Link
+          href="/how_to_write_effective_prompts"
+          target="_blank"
+          className="flex items-center gap-2 p-3 rounded-lg border bg-muted/30 hover:bg-muted/50 transition-colors text-sm text-muted-foreground hover:text-foreground"
+        >
+          <BookOpen className="h-4 w-4 text-primary" />
+          <span>{t("learnHowToWritePrompts")}</span>
+          <ExternalLink className="h-3 w-3 ml-auto" />
+        </Link>
 
         {/* ===== METADATA SECTION ===== */}
         <div className="space-y-4 pb-6 border-b">
@@ -693,12 +881,17 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
           <div className="flex flex-col sm:flex-row sm:items-center gap-3">
             <div className="flex items-center gap-3">
               <Select 
-                value={isStructuredInput ? "STRUCTURED" : "TEXT"} 
+                value={promptType === "SKILL" ? "SKILL" : (isStructuredInput ? "STRUCTURED" : "TEXT")} 
                 onValueChange={(v) => {
                   if (v === "STRUCTURED") {
                     form.setValue("structuredFormat", "JSON");
+                    form.setValue("type", "TEXT");
+                  } else if (v === "SKILL") {
+                    form.setValue("structuredFormat", undefined);
+                    form.setValue("type", "SKILL");
                   } else {
                     form.setValue("structuredFormat", undefined);
+                    form.setValue("type", "TEXT");
                   }
                 }}
               >
@@ -708,9 +901,11 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
                 <SelectContent>
                   <SelectItem value="TEXT">{t("inputTypes.text")}</SelectItem>
                   <SelectItem value="STRUCTURED">{t("inputTypes.structured")}</SelectItem>
+                  <SelectItem value="SKILL">{t("inputTypes.skill")}</SelectItem>
                 </SelectContent>
               </Select>
               {isStructuredInput && (
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 <Select value={structuredFormat || "JSON"} onValueChange={(v) => form.setValue("structuredFormat", v as any)}>
                   <SelectTrigger className="h-9 w-24">
                     <SelectValue />
@@ -781,7 +976,20 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  {isStructuredInput ? (
+                  {promptType === "SKILL" ? (
+                    <div className="rounded-md border overflow-hidden">
+                      <VariableToolbar onInsert={insertVariable} getSelectedText={getSelectedText} />
+                      <CodeEditor
+                        ref={codeEditorRef}
+                        value={field.value}
+                        onChange={field.onChange}
+                        language="markdown"
+                        placeholder={`# My Skill\n\nDescribe what this skill does and how the agent should use it.\n\n## Instructions\n\n- Step 1: ...\n- Step 2: ...`}
+                        minHeight="400px"
+                        className="border-0 rounded-none"
+                      />
+                    </div>
+                  ) : isStructuredInput ? (
                     <div className="rounded-md border overflow-hidden">
                       <VariableToolbar onInsert={insertVariable} getSelectedText={getSelectedText} />
                       <CodeEditor
@@ -827,6 +1035,16 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
             content={promptContent}
             onConvert={(converted) => form.setValue("content", converted)}
           />
+
+          {/* Structured format detection warning */}
+          <StructuredFormatWarning
+            content={promptContent}
+            isStructuredInput={isStructuredInput}
+            onSwitchToStructured={(format) => {
+              form.setValue("structuredFormat", format);
+              form.setValue("type", "TEXT");
+            }}
+          />
         </div>
 
         {/* ===== LLM PROCESSING ARROW ===== */}
@@ -835,93 +1053,145 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
             <div className="h-px w-16 bg-border" />
             <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted text-xs font-medium">
               <ArrowDown className="h-3.5 w-3.5" />
-              <span>After AI processing...</span>
+              <span>{t("afterAiProcessing")}</span>
             </div>
             <div className="h-px w-16 bg-border" />
           </div>
         </div>
 
         {/* ===== OUTPUT SECTION ===== */}
-        <div className="space-y-4 py-6 border-t">
-          <div className="flex items-center gap-2">
-            <h2 className="text-base font-semibold">{t("outputType")}</h2>
+        {promptType === "SKILL" ? (
+          /* SKILL type shows a code output preview - code generated BY the skill */
+          <div className="space-y-4 py-6 border-t">
+            <div className="space-y-1">
+              <h2 className="text-base font-semibold">{t("outputType")}</h2>
+              <p className="text-sm text-muted-foreground">{t("outputTypeSkillNote")}</p>
+            </div>
+            
+            {/* Code output preview - what the agent generates */}
+            <div className="rounded-lg border bg-[#1e1e1e] overflow-hidden">
+              {/* Editor title bar */}
+              <div className="flex items-center gap-2 px-3 py-2 bg-[#2d2d2d] border-b border-[#3d3d3d]">
+                <div className="flex gap-1.5">
+                  <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+                  <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
+                  <div className="w-3 h-3 rounded-full bg-[#28c840]" />
+                </div>
+                <span className="text-xs text-[#808080] ml-2 font-mono">generated-code.ts</span>
+              </div>
+              {/* Code output content */}
+              <div className="p-4 text-xs space-y-1" style={{ fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace' }}>
+                <div><span className="text-[#6a9955]">// Code generated by skill...</span></div>
+                <div><span className="text-[#c586c0]">export</span> <span className="text-[#569cd6]">function</span> <span className="text-[#dcdcaa]">handler</span><span className="text-[#d4d4d4]">()</span> <span className="text-[#d4d4d4]">{'{'}</span></div>
+                <div><span className="text-[#d4d4d4]">  </span><span className="text-[#c586c0]">return</span> <span className="text-[#ce9178]">&quot;...&quot;</span><span className="text-[#d4d4d4]">;</span></div>
+                <div><span className="text-[#d4d4d4]">{'}'}</span></div>
+              </div>
+            </div>
           </div>
-          
-          {/* Output Type selector as grouped buttons */}
-          <div className="grid grid-cols-2 sm:inline-flex rounded-md border sm:divide-x">
-            {(["TEXT", "IMAGE", "VIDEO", "AUDIO"] as const).map((type, index) => (
-              <button
-                key={type}
-                type="button"
-                onClick={() => form.setValue("type", type)}
-                className={`px-4 py-2 text-sm font-medium transition-colors flex items-center justify-center gap-2 ${
-                  index === 0 ? "rounded-tl-md sm:rounded-l-md sm:rounded-tr-none" : ""
-                } ${
-                  index === 1 ? "rounded-tr-md sm:rounded-none border-l sm:border-l-0" : ""
-                } ${
-                  index === 2 ? "rounded-bl-md sm:rounded-none border-t sm:border-t-0" : ""
-                } ${
-                  index === 3 ? "rounded-br-md sm:rounded-r-md sm:rounded-bl-none border-t border-l sm:border-t-0 sm:border-l-0" : ""
-                } ${
-                  promptType === type
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-background hover:bg-muted"
-                }`}
-              >
-                {type === "TEXT" && <span className="text-xs">Aa</span>}
-                {type === "IMAGE" && <ImageIcon className="h-4 w-4" />}
-                {type === "VIDEO" && <Video className="h-4 w-4" />}
-                {type === "AUDIO" && <Volume2 className="h-4 w-4" />}
-                {t(`outputTypes.${type.toLowerCase()}`)}
-              </button>
-            ))}
-          </div>
+        ) : (
+          <div className="space-y-4 py-6 border-t">
+            <div className="space-y-1">
+              <div className="flex items-center justify-between gap-2">
+                <h2 className="text-base font-semibold">{t("outputType")}</h2>
+                {availableGenerators.length > 0 && (
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <button
+                        type="button"
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors cursor-pointer"
+                      >
+                        <Sparkles className="h-3 w-3" />
+                        {t("generateWith")}
+                        <ChevronDown className="h-3 w-3" />
+                      </button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuItem onClick={() => form.setValue("type", "IMAGE")}>
+                        <ImageIcon className="h-4 w-4 mr-2" />
+                        {t("generateImage")}
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => form.setValue("type", "VIDEO")}>
+                        <Video className="h-4 w-4 mr-2" />
+                        {t("generateVideo")}
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => form.setValue("type", "AUDIO")}>
+                        <Volume2 className="h-4 w-4 mr-2" />
+                        {t("generateAudio")}
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                )}
+              </div>
+              <p className="text-sm text-muted-foreground">{t("outputTypeDescription")}</p>
+            </div>
+            
+            {/* Output Type selector as grouped buttons */}
+            <div className="grid grid-cols-2 sm:inline-flex rounded-md border sm:divide-x">
+              {(["TEXT", "IMAGE", "VIDEO", "AUDIO"] as const).map((type, index) => (
+                <button
+                  key={type}
+                  type="button"
+                  onClick={() => form.setValue("type", type)}
+                  className={`px-4 py-2 text-sm font-medium transition-colors flex items-center justify-center gap-2 ${
+                    index === 0 ? "rounded-tl-md sm:rounded-l-md sm:rounded-tr-none" : ""
+                  } ${
+                    index === 1 ? "rounded-tr-md sm:rounded-none border-l sm:border-l-0" : ""
+                  } ${
+                    index === 2 ? "rounded-bl-md sm:rounded-none border-t sm:border-t-0" : ""
+                  } ${
+                    index === 3 ? "rounded-br-md sm:rounded-r-md sm:rounded-bl-none border-t border-l sm:border-t-0 sm:border-l-0" : ""
+                  } ${
+                    promptType === type
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-background hover:bg-muted"
+                  }`}
+                >
+                  {type === "TEXT" && <span className="text-xs">Aa</span>}
+                  {type === "IMAGE" && <ImageIcon className="h-4 w-4" />}
+                  {type === "VIDEO" && <Video className="h-4 w-4" />}
+                  {type === "AUDIO" && <Volume2 className="h-4 w-4" />}
+                  {t(`outputTypes.${type.toLowerCase()}`)}
+                </button>
+              ))}
+            </div>
 
-          {/* Output Preview based on type */}
-          <div className="rounded-lg border bg-muted/20 p-4">
-            {promptType === "TEXT" && (
-              <div className="text-muted-foreground/50 italic text-sm">
-                {t("outputPreview.text")}
-              </div>
-            )}
-            {promptType === "IMAGE" && (
-              <div className="space-y-3">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <ImageIcon className="h-4 w-4" />
-                  <span>{t("outputPreview.imageUpload")}</span>
+            {/* Output Preview based on type */}
+            <div className="rounded-lg border bg-muted/20 p-4">
+              {promptType === "TEXT" && (
+                <div className="text-muted-foreground/50 italic text-sm">
+                  {t("outputPreview.text")}
                 </div>
-                <MediaField form={form} t={t} />
-              </div>
-            )}
-            {promptType === "VIDEO" && (
-              <div className="space-y-3">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Video className="h-4 w-4" />
-                  <span>{t("outputPreview.videoUpload")}</span>
-                </div>
-                <MediaField form={form} t={t} />
-              </div>
-            )}
-            {promptType === "AUDIO" && (
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Volume2 className="h-4 w-4" />
-                  <span>{t("outputPreview.audio")}</span>
-                </div>
-                {/* Fake audio player bar */}
-                <div className="flex items-center gap-3 p-3 rounded-md bg-muted/50">
-                  <button type="button" className="h-8 w-8 rounded-full bg-muted flex items-center justify-center cursor-not-allowed" disabled>
-                    <Play className="h-4 w-4 text-muted-foreground/50" />
-                  </button>
-                  <div className="flex-1 h-1.5 bg-muted-foreground/20 rounded-full">
-                    <div className="h-full w-0 bg-muted-foreground/30 rounded-full" />
+              )}
+              {promptType === "IMAGE" && (
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2 text-sm font-medium">
+                    <ImageIcon className="h-4 w-4" />
+                    <span>{t("outputPreview.imageUpload")}</span>
                   </div>
-                  <span className="text-xs text-muted-foreground/50">0:00</span>
+                  <MediaField form={form} t={t} promptContent={promptContent} />
                 </div>
-              </div>
-            )}
+              )}
+              {promptType === "VIDEO" && (
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2 text-sm font-medium">
+                    <Video className="h-4 w-4" />
+                    <span>{t("outputPreview.videoUpload")}</span>
+                  </div>
+                  <MediaField form={form} t={t} promptType={promptType} promptContent={promptContent} />
+                </div>
+              )}
+              {promptType === "AUDIO" && (
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2 text-sm font-medium">
+                    <Volume2 className="h-4 w-4" />
+                    <span>{t("outputPreview.audioUpload")}</span>
+                  </div>
+                  <MediaField form={form} t={t} promptType={promptType} promptContent={promptContent} />
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        )}
 
         <div className="flex justify-end gap-4 pt-2">
           <Button type="button" variant="outline" onClick={() => router.back()}>

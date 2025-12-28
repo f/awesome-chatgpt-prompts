@@ -247,7 +247,7 @@ export async function executeToolCall(
   availableTags: Array<{ id: string; name: string; slug: string; color: string }>,
   availableCategories: Array<{ id: string; name: string; slug: string; parentId: string | null }>
 ): Promise<{ result: ToolResult; newState: PromptBuilderState }> {
-  let newState = { ...currentState };
+  const newState = { ...currentState };
 
   switch (toolName) {
     case "search_prompts": {

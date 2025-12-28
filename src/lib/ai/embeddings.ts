@@ -137,6 +137,7 @@ export interface SemanticSearchResult {
     name: string | null;
     username: string;
     avatar: string | null;
+    verified?: boolean;
   };
   category: {
     id: string;
@@ -195,6 +196,7 @@ export async function semanticSearch(
           name: true,
           username: true,
           avatar: true,
+          verified: true,
         },
       },
       category: {

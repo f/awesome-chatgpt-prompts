@@ -1,33 +1,42 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
+import { unstable_cache } from "next/cache";
 import { FolderOpen, ChevronRight } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { SubscribeButton } from "@/components/categories/subscribe-button";
 
+// Cached categories query
+const getCategories = unstable_cache(
+  async () => {
+    return db.category.findMany({
+      where: { parentId: null },
+      orderBy: { order: "asc" },
+      include: {
+        _count: {
+          select: { prompts: true },
+        },
+        children: {
+          orderBy: { order: "asc" },
+          include: {
+            _count: {
+              select: { prompts: true },
+            },
+          },
+        },
+      },
+    });
+  },
+  ["categories-page"],
+  { tags: ["categories"] }
+);
+
 export default async function CategoriesPage() {
   const t = await getTranslations("categories");
   const session = await auth();
 
-  // Fetch root categories (no parent) with their children
-  const rootCategories = await db.category.findMany({
-    where: { parentId: null },
-    orderBy: { order: "asc" },
-    include: {
-      _count: {
-        select: { prompts: true },
-      },
-      children: {
-        orderBy: { order: "asc" },
-        include: {
-          _count: {
-            select: { prompts: true },
-          },
-        },
-      },
-      // Include parent's direct prompts count
-    },
-  });
+  // Fetch root categories (no parent) with their children (cached)
+  const rootCategories = await getCategories();
 
   // Get user's subscriptions if logged in
   const subscriptions = session?.user

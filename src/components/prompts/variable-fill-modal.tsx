@@ -28,6 +28,8 @@ interface VariableFillModalProps {
   onOpenChange: (open: boolean) => void;
   mode: "copy" | "run";
   promptId?: string;
+  categoryName?: string;
+  parentCategoryName?: string;
 }
 
 // Parse ${variablename:defaultvalue} or ${variablename} patterns
@@ -63,7 +65,9 @@ export function VariableFillModal({
   open, 
   onOpenChange, 
   mode,
-  promptId
+  promptId,
+  categoryName,
+  parentCategoryName
 }: VariableFillModalProps) {
   const t = useTranslations("common");
 
@@ -139,7 +143,7 @@ export function VariableFillModal({
               {t("copy")}
             </Button>
           ) : (
-            <RunPromptButton content={finalContent} size="sm" />
+            <RunPromptButton content={finalContent} size="sm" categoryName={categoryName} parentCategoryName={parentCategoryName} />
           )}
         </div>
       </DialogContent>

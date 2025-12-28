@@ -14,6 +14,7 @@
     "db:studio": "prisma studio",
     "db:seed": "prisma db seed",
     "setup": "node scripts/setup.js",
+    "generate:examples": "npx tsx scripts/generate-examples.ts",
     "postinstall": "prisma generate"
   },
   "dependencies": {
@@ -39,10 +40,12 @@
     "@radix-ui/react-switch": "^1.2.6",
     "@radix-ui/react-tabs": "^1.1.13",
     "@radix-ui/react-tooltip": "^1.2.8",
+    "@types/d3": "^7.4.3",
     "bcryptjs": "^3.0.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
+    "d3": "^7.9.0",
     "date-fns": "^4.1.0",
     "lucide-react": "^0.556.0",
     "next": "^16.0.10",
@@ -50,6 +53,8 @@
     "next-intl": "^4.5.8",
     "next-themes": "^0.4.6",
     "openai": "^6.10.0",
+    "pino": "^10.1.0",
+    "prompts.chat": "^0.0.7",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-hook-form": "^7.68.0",
@@ -57,12 +62,14 @@
     "sharp": "^0.33.5",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.4.0",
+    "yaml": "^2.8.2",
     "zod": "^4.1.13"
   },
   "prisma": {
     "seed": "npx tsx prisma/seed.ts"
   },
   "devDependencies": {
+    "@clack/prompts": "^0.11.0",
     "@tailwindcss/postcss": "^4",
     "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
@@ -71,10 +78,14 @@
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.0.7",
+    "picocolors": "^1.1.1",
     "prisma": "^6.19.0",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
     "tw-animate-css": "^1.4.0",
     "typescript": "^5"
+  },
+  "engines": {
+    "node": "24.x"
   }
 }

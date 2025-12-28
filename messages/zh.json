@@ -44,7 +44,8 @@
     "profile": "个人资料",
     "login": "登录",
     "register": "注册",
-    "logout": "退出登录"
+    "logout": "退出登录",
+    "ide": "Prompt Builder"
   },
   "brand": {
     "copyLogoSvg": "复制Logo SVG",
@@ -101,6 +102,7 @@
   "prompts": {
     "title": "提示词",
     "create": "创建提示词",
+    "createInfo": "本平台不运行或执行提示词——这是一个社区驱动的AI提示词分享和发现库。在这里创建您的提示词，其他人可以复制并在他们喜欢的AI工具中使用，如ChatGPT、Claude、Gemini或任何其他LLM。社区还可以评论您的提示词，并通过变更请求提出改进建议。",
     "hfDataStudio": {
       "button": "HF 数据工作室",
       "sqlQuery": "SQL 查询",
@@ -150,7 +152,8 @@
     "deletePromptTitle": "删除此提示词？",
     "deletePromptDescription": "此操作无法撤销。提示词将被永久删除。",
     "deleteError": "删除提示词失败",
-    "noMorePrompts": "已到达末尾",
+    "noMorePrompts": "已经到底了",
+    "loadMore": "加载更多",
     "loading": "加载中...",
     "types": {
       "text": "文本",
@@ -158,16 +161,20 @@
       "video": "视频",
       "audio": "音频",
       "structured": "结构化",
-      "document": "文档"
+      "document": "文档",
+      "skill": "技能"
     },
     "inputType": "用户提示词",
     "outputType": "AI 响应",
-    "inputTypeDescription": "你的提示词格式",
-    "outputTypeDescription": "AI 将生成的响应类型",
+    "afterAiProcessing": "您的提示词将产生什么？",
+    "inputTypeDescription": "您的提示词格式",
+    "outputTypeDescription": "向社区展示此提示词在AI工具上运行时的表现。您可以使用您喜欢的AI应用自行生成输出。",
     "outputTypeStructuredNote": "结构化提示词可以产生多种输出类型",
+    "outputTypeSkillNote": "技能指导代理生成代码。AI将根据您的技能指令产生代码输出。",
     "inputTypes": {
       "text": "文本提示词",
-      "structured": "结构化 (JSON/YAML)"
+      "structured": "结构化 (JSON/YAML)",
+      "skill": "技能 (Agent Skills)"
     },
     "outputTypes": {
       "text": "文本",
@@ -179,7 +186,7 @@
       "text": "✨ 魔法在这里发生... 你的 AI 将写出精彩的内容！",
       "imageUpload": "上传示例图片",
       "videoUpload": "上传示例视频/GIF",
-      "audio": "音频输出预览"
+      "audioUpload": "上传示例音频"
     },
     "structuredFormat": "格式",
     "structuredFormatDescription": "选择结构化提示词的格式",
@@ -208,7 +215,20 @@
     "confirmDelete": "确定要删除此提示词吗？",
     "promptCreated": "提示词已创建",
     "promptUpdated": "提示词已更新",
+    "rateLimitError": "请等待30秒后再创建下一个提示词",
+    "dailyLimitError": "您已达到每日5个提示词的上限",
+    "duplicatePromptError": "您已有相同标题或内容的提示词",
+    "contentExistsError": "此内容的提示词已存在：「{title}」作者：{author}",
     "run": "运行",
+    "downloadMarkdown": "下载 MD",
+    "downloadYaml": "下载 YAML",
+    "downloadSkillMd": "下载 SKILL.md",
+    "copyMarkdownUrl": "复制 MD 链接",
+    "copyYamlUrl": "复制 YAML 链接",
+    "downloadStarted": "开始下载",
+    "downloadFailed": "下载失败",
+    "urlCopied": "链接已复制",
+    "failedToCopyUrl": "复制链接失败",
     "promptCopied": "提示词已复制",
     "promptCopiedDescription": "提示词已复制到剪贴板。打开 {platform} 后粘贴即可。",
     "openPlatform": "打开 {platform}",
@@ -230,11 +250,65 @@
     "mediaUrlPlaceholder": "https://...",
     "mediaUrlDescription": "输入此提示词的媒体文件链接",
     "mediaImage": "媒体图片",
+    "mediaVideo": "媒体视频",
+    "mediaAudio": "媒体音频",
     "clickToUpload": "点击上传图片",
+    "clickToUploadVideo": "点击上传视频",
+    "clickToUploadAudio": "点击上传音频文件",
     "uploading": "上传中...",
-    "maxFileSize": "最大文件大小：5MB（JPEG、PNG、GIF、WebP）",
-    "fileTooLarge": "文件太大。最大大小为5MB。",
+    "maxFileSize": "最大文件大小：4MB（JPEG、PNG、GIF、WebP）",
+    "maxVideoSize": "最大文件大小：4MB（MP4）",
+    "maxAudioSize": "最大文件大小：4MB（MP3、WAV、OGG）",
+    "fileTooLarge": "文件太大。最大大小为4MB。",
+    "videoTooLarge": "视频太大。最大大小为4MB。",
     "invalidFileType": "无效的文件类型。仅允许JPEG、PNG、GIF和WebP。",
+    "invalidVideoType": "无效的视频类型。仅允许MP4视频。",
+    "invalidAudioType": "无效的音频类型。仅允许 MP3、WAV 和 OGG 文件。",
+    "uploadMedia": "上传媒体",
+    "generateMedia": "生成",
+    "chooseGenerator": "选择生成器",
+    "uploadInstead": "改为上传",
+    "confirmGeneration": "确认生成",
+    "confirmGenerationDescription": "使用 {provider} 的 {model} 模型生成媒体？",
+    "promptPreview": "提示词预览",
+    "noPromptProvided": "未提供提示词",
+    "inputImage": "输入图片",
+    "aspectRatio": "宽高比",
+    "startGeneration": "开始生成",
+    "generatingMedia": "正在使用 {provider} 生成媒体",
+    "doNotCloseWindow": "生成过程中请勿关闭此窗口。",
+    "generationComplete": "生成完成",
+    "generationFailed": "生成失败",
+    "mediaAddedToPrompt": "媒体已添加到您的提示词。",
+    "mediaGenerated": "媒体生成成功！",
+    "orGenerateMedia": "或使用AI生成",
+    "aiGenerationAvailable": "✨ AI生成可用",
+    "generateWith": "使用AI生成",
+    "generateImage": "生成图片",
+    "generateVideo": "生成视频",
+    "generateAudio": "生成音频",
+    "generateImageDescription": "使用AI为您的提示词生成独特的图片 — 完美展示您的提示词给社区。",
+    "generateVideoDescription": "使用AI为您的提示词生成独特的视频 — 完美展示您的提示词给社区。",
+    "generateAudioDescription": "使用 AI 为您的提示词生成独特的音频/音乐 — 非常适合向社区展示您的提示词。",
+    "close": "关闭",
+    "mediaGeneration": {
+      "connecting": "正在连接服务器...",
+      "connected": "已连接，正在排队等待...",
+      "queued": "正在排队等待...",
+      "accepted": "任务已接受...",
+      "preprocessStart": "正在预处理...",
+      "preprocessEnd": "预处理完成",
+      "gpuAssigned": "GPU已分配，正在排队等待...",
+      "started": "生成已开始...",
+      "generating": "正在生成...",
+      "processingOutput": "正在处理输出...",
+      "ending": "生成完成",
+      "postprocessStart": "正在后处理...",
+      "postprocessEnd": "正在完成...",
+      "complete": "完成！",
+      "error": "发生错误",
+      "errorProcessing": "处理错误..."
+    },
     "privateDescription": "私有提示词仅对您可见",
     "requiresMediaUpload": "需要媒体上传",
     "attachedMediaType": "附加媒体类型",
@@ -267,7 +341,11 @@
     "translateToLanguage": "翻译成你的语言",
     "translated": "内容已翻译",
     "translationFailed": "翻译失败",
-    "alreadyTranslated": "已翻译"
+    "alreadyTranslated": "已翻译",
+    "learnHowToWritePrompts": "学习如何写出有效的提示词 →",
+    "structuredFormatDetected": "检测到 {format} 格式",
+    "structuredFormatWarningDescription": "您的提示词内容看起来像结构化数据。考虑切换到结构化模式以获得更好的语法高亮和验证。",
+    "switchToStructured": "切换到 {format}"
   },
   "changeRequests": {
     "title": "变更请求",
@@ -326,6 +404,9 @@
     "noCategories": "未找到分类",
     "noSubcategories": "此分类下暂无子分类",
     "prompts": "个提示词",
+    "subscribers": "订阅者",
+    "promptCount": "{count} 个提示词",
+    "subscriberCount": "{count} 订阅者",
     "confirmDelete": "确定要删除此分类吗？"
   },
   "tags": {
@@ -424,6 +505,29 @@
       "slugsSuccess": "{count} 个别名生成成功",
       "slugsResult": "成功: {success}, 失败: {failed}"
     },
+    "promptsList": {
+      "title": "所有提示词",
+      "description": "浏览和管理系统中的所有提示词",
+      "noPrompts": "未找到提示词",
+      "private": "私密",
+      "unlisted": "未列出",
+      "views": "浏览",
+      "votes": "投票",
+      "created": "创建于",
+      "showing": "显示 {from}-{to}，共 {total} 条",
+      "deleteConfirmTitle": "删除提示词？",
+      "deleteConfirmDescription": "确定要永久删除\"{title}\"吗？此操作无法撤销。",
+      "deleted": "提示词已成功删除",
+      "filters": {
+        "all": "全部",
+        "public": "公开",
+        "private": "私密",
+        "unlisted": "未列出",
+        "featured": "精选",
+        "reported": "已举报",
+        "deleted": "已删除"
+      }
+    },
     "users": {
       "title": "用户管理",
       "description": "查看和管理用户账户",
@@ -446,7 +550,31 @@
       "unverified": "用户验证已取消",
       "verifyFailed": "更新验证失败",
       "deleteConfirmTitle": "删除用户？",
-      "deleteConfirmDescription": "此操作无法撤销。所有用户数据将被永久删除。"
+      "deleteConfirmDescription": "此操作无法撤销。所有用户数据将被永久删除。",
+      "searchPlaceholder": "搜索用户...",
+      "noUsers": "未找到用户",
+      "showing": "显示 {from}-{to}，共 {total} 名",
+      "filters": {
+        "all": "全部",
+        "admin": "管理员",
+        "user": "用户",
+        "verified": "已验证",
+        "unverified": "未认证",
+        "flagged": "已标记"
+      },
+      "flag": "标记用户",
+      "unflag": "取消标记",
+      "flagged": "用户已标记",
+      "unflagged": "已取消标记",
+      "flagFailed": "更新标记状态失败",
+      "editCredits": "编辑额度",
+      "editCreditsTitle": "编辑生成额度",
+      "editCreditsDescription": "设置 @{username} 的每日额度限制",
+      "dailyLimit": "每日额度限制",
+      "currentCredits": "当前: 剩余 {remaining}/{limit} 额度",
+      "creditsUpdated": "额度更新成功",
+      "creditsUpdateFailed": "额度更新失败",
+      "save": "保存"
     },
     "categories": {
       "title": "分类管理",
@@ -480,7 +608,13 @@
       "noParent": "无（根分类）",
       "parentHelp": "留空以创建根分类，或选择父级以创建子分类",
       "rootCategory": "根",
-      "subcategories": "个子分类"
+      "subcategories": "个子分类",
+      "pin": "固定到提示词页面",
+      "unpin": "从提示词页面取消固定",
+      "pinned": "分类已固定",
+      "unpinned": "分类已取消固定",
+      "pinnedBadge": "已固定",
+      "pinnedLabel": "固定到提示词页面（显示为快速筛选）"
     },
     "tags": {
       "title": "标签管理",
@@ -605,7 +739,24 @@
     "contributionsCount": "贡献",
     "noContributions": "暂无贡献",
     "noContributionsOwner": "您还没有对任何提示词做出贡献",
-    "contributedTo": "贡献给 {author} 的提示词"
+    "contributedTo": "贡献给 {author} 的提示词",
+    "privatePromptsNote": "您有 {count} 个私有提示词。可以在支持的客户端中使用您的 API 密钥通过 MCP 访问它们。",
+    "activityInLastYear": "过去一年 {count} 次贡献",
+    "contribution": "贡献",
+    "contributionsPlural": "贡献",
+    "inLastYear": "过去一年",
+    "inLast6Months": "过去6个月",
+    "less": "少",
+    "more": "多",
+    "activity": "活动",
+    "filteringByDate": "显示 {date} 的提示词",
+    "clearFilter": "清除筛选",
+    "noPromptsOnDate": "此日期没有找到提示词。",
+    "noPromptsOnDateOwner": "您在此日期没有提示词。",
+    "createForToday": "为今天创建",
+    "likes": "喜欢",
+    "noLikes": "还没有喜欢的提示词",
+    "noLikesOwner": "您还没有喜欢任何提示词"
   },
   "subscription": {
     "subscribe": "订阅",
@@ -675,7 +826,7 @@
     "heroFeature1": "免费 & 开源",
     "heroFeature2": "自托管保护隐私",
     "heroFeature3": "适用于团队和组织",
-    "cloneOnGithub": "在 GitHub 上克隆",
+    "setupPrivateServer": "部署私有服务器",
     "beStargazer": "成为 GitHub 上第 {count} 位 Star 用户",
     "browsePrompts": "浏览提示词",
     "viewFeed": "查看动态",
@@ -702,7 +853,36 @@
   "notifications": {
     "title": "通知",
     "pendingChangeRequests": "待处理的变更请求",
-    "noNotifications": "暂无通知"
+    "noNotifications": "暂无通知",
+    "markAllRead": "全部标为已读",
+    "commentedOnPrompt": "评论了你的提示词",
+    "repliedToComment": "回复了你的评论"
+  },
+  "comments": {
+    "comments": "评论",
+    "writeComment": "写下评论...",
+    "postComment": "发布评论",
+    "reply": "回复",
+    "replyTo": "回复 @{username}...",
+    "posting": "发布中...",
+    "commentPosted": "评论已发布",
+    "commentDeleted": "评论已删除",
+    "commentFlagged": "评论已标记",
+    "commentUnflagged": "已取消标记",
+    "noComments": "暂无评论，成为第一个评论者！",
+    "loginToComment": "请登录后评论。",
+    "loginToVote": "请登录后投票。",
+    "upvote": "赞",
+    "downvote": "踩",
+    "flag": "标记",
+    "unflag": "取消标记",
+    "flagged": "已标记",
+    "admin": "管理员",
+    "deleteCommentTitle": "删除评论？",
+    "deleteCommentDescription": "此操作无法撤销。评论及其所有回复将被永久删除。",
+    "deleting": "删除中...",
+    "showReplies": "显示 {count} 条回复",
+    "hideReplies": "隐藏回复"
   },
   "promptmasters": {
     "title": "Promptmasters",
@@ -743,6 +923,17 @@
   "notFound": {
     "title": "页面未找到",
     "description": "您要查找的页面不存在或已被移动。",
+    "goHome": "返回首页",
+    "goBack": "返回",
+    "helpfulLinks": "有用的链接：",
+    "browsePrompts": "浏览提示词",
+    "categories": "分类",
+    "createPrompt": "创建提示词"
+  },
+  "serverError": {
+    "title": "服务器错误",
+    "description": "出了点问题，请稍后再试。",
+    "tryAgain": "重试",
     "goHome": "返回首页",
     "goBack": "返回上一页",
     "helpfulLinks": "以下是一些有用的链接：",
@@ -810,17 +1001,61 @@
     "generateApiKey": "生成 API 密钥以通过 MCP 保存提示词"
   },
   "footer": {
+    "howTo": "指南",
     "docs": "文档",
     "api": "API",
     "privacy": "隐私",
-    "terms": "条款"
+    "terms": "条款",
+    "support": "支持"
+  },
+  "support": {
+    "title": "支持",
+    "description": "查找常见问题的答案或从我们的社区获得帮助。",
+    "faq": {
+      "title": "常见问题",
+      "whatIsPrompt": {
+        "question": "什么是提示词？",
+        "answer": "提示词是您向AI模型（如ChatGPT、Claude、Gemini等）提供的指令或输入，用于引导其响应。这本质上是您与AI沟通您想要它做什么的方式。精心设计的提示词能够从AI系统获得更好、更有用的输出。"
+      },
+      "whyPromptsMatter": {
+        "question": "为什么提示词很重要？我不能随便问AI任何问题吗？",
+        "answer": "虽然高级AI模型可以很好地处理随意的问题，但在以下情况下提示词变得至关重要：\n\n• 在应用程序中通过API使用AI时——通常只有一次机会（\"一次性提示\"），没有来回对话\n• 使用需要更精确指令的较小、经济型模型时\n• 构建一致性和可靠性很重要的生产系统时\n\n优化的提示词帮助您获得更好的结果，节省令牌（和金钱），并创建更可靠的AI驱动应用程序。"
+      },
+      "whatIsPromptschat": {
+        "question": "prompts.chat是什么？",
+        "answer": "prompts.chat是一个社区驱动的平台，人们在这里分享、发现和收集AI提示词。四年多来，用户一直在这里分享他们的提示词优化技术。社区互相帮助改进提示词，学习与AI系统协作的新方法。"
+      },
+      "howToUse": {
+        "question": "如何使用这个平台的提示词？",
+        "answer": "只需浏览提示词，找到您喜欢的，然后复制它。然后您可以将它粘贴到您喜欢的AI工具（ChatGPT、Claude、Gemini等）中，或通过API在您的应用程序中使用它。许多提示词包含您可以在复制前自定义的变量。"
+      },
+      "license": {
+        "question": "我可以商业使用这些提示词吗？",
+        "answer": "是的！prompts.chat上的所有提示词都在CC0（Creative Commons Zero）许可证下发布，这意味着它们属于公共领域。您可以自由使用、修改和分发它们用于任何目的，包括商业用途，无需注明出处。"
+      },
+      "selfHost": {
+        "question": "我可以自托管这个平台吗？",
+        "answer": "当然可以！prompts.chat是完全开源的。您可以为您的团队或组织部署自己的私有实例。请查看我们的自托管文档了解设置说明。"
+      }
+    },
+    "contact": {
+      "title": "需要更多帮助？",
+      "description": "如果您没有找到问题的答案，请填写下面的表单，我们将在GitHub上为您提供帮助。",
+      "form": {
+        "title": "Issue标题",
+        "titlePlaceholder": "简要描述您的问题",
+        "description": "描述",
+        "descriptionPlaceholder": "请详细描述您的问题..."
+      },
+      "openIssue": "在GitHub上开Issue"
+    }
   },
   "apiKey": {
     "title": "MCP API 密钥",
     "description": "生成 API 密钥以通过 MCP 保存提示词并访问您的私有提示词。",
     "yourApiKey": "您的 API 密钥",
     "keyWarning": "请保密此密钥。任何拥有此密钥的人都可以访问您的私有提示词并以您的名义创建提示词。",
-    "noApiKey": "您尚未生成 API 密钥。",
+    "noApiKey": "您还没有生成 API 密钥。",
     "generate": "生成 API 密钥",
     "regenerate": "重新生成",
     "revoke": "撤销",
@@ -834,5 +1069,128 @@
     "publicByDefault": "默认公开提示词",
     "publicByDefaultDescription": "通过 MCP 保存提示词时，默认设为公开而非私有。",
     "settingUpdated": "设置已更新"
+  },
+  "connectedPrompts": {
+    "title": "提示词流程",
+    "description": "某些提示词作为多步骤工作流运行。连接您的提示词以创建序列。",
+    "addConnection": "添加关联",
+    "addPrevious": "添加上一个",
+    "addNext": "添加下一个",
+    "addConnectionTitle": "添加关联",
+    "addPreviousTitle": "添加上一个提示词",
+    "addNextTitle": "添加下一个提示词",
+    "addConnectionDescription": "使用条件标签将此提示词链接到另一个提示词。",
+    "addPreviousDescription": "选择工作流中在此之前的提示词。",
+    "addNextDescription": "选择工作流中在此之后的提示词。",
+    "noConnections": "尚无关联提示词。添加关联以创建提示词链。",
+    "previousSteps": "上一步",
+    "nextSteps": "下一步",
+    "searchPrompt": "搜索提示词",
+    "searchPlaceholder": "按标题搜索...",
+    "selectedPrompt": "已选提示词",
+    "connectionLabel": "关联标签",
+    "labelPlaceholder": "例如：第一帧、下一步、处理后...",
+    "labelHint": "描述提示词之间的条件或转换",
+    "change": "更改",
+    "cancel": "取消",
+    "fillAllFields": "请选择提示词并输入标签",
+    "connectionFailed": "创建关联失败",
+    "connectionAdded": "关联添加成功",
+    "connectionDeleted": "关联已删除",
+    "deleteFailed": "删除关联失败",
+    "noResults": "未找到提示词"
+  },
+  "promptWritingGuide": {
+    "title": "如何写出优秀的提示词",
+    "subtitle": "创建有效 AI 提示词的技巧、示例和最佳实践",
+    "generalTips": {
+      "title": "有效提示词的通用技巧",
+      "beSpecific": {
+        "title": "具体而明确",
+        "description": "模糊的提示词会导致模糊的回答。明确指定你想要什么，包括格式、长度、语气和任何限制。"
+      },
+      "provideContext": {
+        "title": "提供背景信息",
+        "description": "提供帮助 AI 理解你需求的背景信息。包括谁、什么、为什么以及为谁。"
+      },
+      "defineFormat": {
+        "title": "定义输出格式",
+        "description": "指定你希望回答如何结构化：项目符号、段落、代码块、表格等。"
+      },
+      "setConstraints": {
+        "title": "设置约束",
+        "description": "包括字数限制、阅读水平、需要避免的内容或需要遵循的特定要求等限制。"
+      },
+      "includeExamples": {
+        "title": "包含示例",
+        "description": "向 AI 展示优秀输出的样子。示例有助于校准回答的风格和质量。"
+      }
+    },
+    "rolePlaying": {
+      "title": "角色扮演：\"扮演...\"模式",
+      "description": "最强大的提示词技术之一是为 AI 分配特定的角色或人设。这有助于建立专业知识、语气和视角。",
+      "basicPattern": "基本角色模式",
+      "exampleExpert": "示例：技术专家",
+      "exampleCreative": "示例：创意教练",
+      "popularRoles": "热门角色类别"
+    },
+    "variables": {
+      "title": "使用变量创建动态提示词",
+      "description": "变量使你的提示词可重用和可定制。用户每次使用你的提示词时可以填入不同的值。",
+      "syntax": "变量语法",
+      "requiredVar": "必填变量（用户必须填写）",
+      "withDefault": "带默认值的变量",
+      "simpleExample": "简单示例",
+      "advancedExample": "包含多个变量的高级示例",
+      "bestPractices": "最佳实践",
+      "tip1": "使用描述性变量名：'$'{topic}比'$'{x}更好",
+      "tip2": "为可选值提供合理的默认值",
+      "tip3": "在提示词中将相关变量分组",
+      "tip4": "多词名称使用下划线：'$'{target_audience}"
+    },
+    "structured": {
+      "title": "结构化提示词（JSON/YAML）",
+      "description": "结构化提示词使用 JSON 或 YAML 格式清晰地组织复杂指令。非常适合多步骤工作流、代理和详细配置。",
+      "whenToUse": "何时使用结构化提示词",
+      "useCase1": "复杂的多步骤工作流或管道",
+      "useCase2": "具有多个参数的代理配置",
+      "useCase3": "具有许多相互关联设置的提示词",
+      "useCase4": "API 驱动或程序化提示词使用",
+      "jsonExample": "JSON 示例：面试助手",
+      "yamlExample": "YAML 示例：内容生成器",
+      "agentWorkflow": "JSON 示例：代理工作流",
+      "tips": "结构化提示词技巧",
+      "tip1": "程序化使用选择 JSON；人类可读配置选择 YAML",
+      "tip2": "保持嵌套层级较浅（最多 2-3 层）以提高可读性",
+      "tip3": "在 YAML 中添加注释以解释复杂部分",
+      "tip4": "保存前验证 JSON/YAML 语法"
+    },
+    "outputOptimization": {
+      "title": "输出优化",
+      "description": "通过明确你的需求，引导 AI 生成你需要的格式和风格。",
+      "formatInstructions": "格式指令模板",
+      "constraintExamples": "常见约束类型",
+      "lengthConstraints": "长度约束：",
+      "lengthExample": "\"保持回答在200字以内\" / \"提供正好5个要点\"",
+      "styleConstraints": "风格约束：",
+      "styleExample": "\"使用适合初学者的简单语言\" / \"技术性且精确\"",
+      "contentConstraints": "内容约束：",
+      "contentExample": "\"不包含个人观点\" / \"只关注事实信息\""
+    }
+  },
+  "ide": {
+    "title": "Prompt Builder",
+    "subtitle": "类型安全的结构化提示词构建",
+    "editor": "编辑器",
+    "preview": "预览",
+    "run": "运行",
+    "reset": "重置",
+    "copied": "已复制到剪贴板",
+    "runToPreview": "点击运行查看提示词预览",
+    "cannotEvaluate": "此代码无法评估。",
+    "onlyPromptsChat": "仅支持 {library} 导入。",
+    "desktopOnly": "仅限桌面端",
+    "desktopOnlyDescription": "提示词构建器需要更大的屏幕才能正常工作。请在台式电脑或笔记本电脑上打开此页面。",
+    "browsePrompts": "浏览提示词"
   }
 }

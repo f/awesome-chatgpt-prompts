@@ -44,7 +44,8 @@
     "profile": "Perfil",
     "login": "Entrar",
     "register": "Cadastrar",
-    "logout": "Sair"
+    "logout": "Sair",
+    "ide": "Prompt Builder"
   },
   "brand": {
     "copyLogoSvg": "Copiar Logo SVG",
@@ -101,6 +102,7 @@
   "prompts": {
     "title": "Prompts",
     "create": "Criar Prompt",
+    "createInfo": "Esta plataforma não executa prompts — é uma biblioteca comunitária para compartilhar e descobrir prompts de IA. Crie seu prompt aqui, e outros poderão copiá-lo e usá-lo em suas ferramentas de IA favoritas como ChatGPT, Claude, Gemini ou qualquer outro LLM. A comunidade também pode comentar seus prompts e sugerir melhorias através de solicitações de alteração.",
     "hfDataStudio": {
       "button": "HF Data Studio",
       "sqlQuery": "Consulta SQL",
@@ -120,6 +122,7 @@
     "noPrompts": "Nenhum prompt encontrado",
     "noPromptsDescription": "Tente ajustar sua busca ou critérios de filtro para encontrar o que procura.",
     "noMorePrompts": "Você chegou ao fim",
+    "loadMore": "Carregar mais",
     "loading": "Carregando...",
     "promptTitle": "Título",
     "promptContent": "Conteúdo",
@@ -158,16 +161,20 @@
       "video": "Vídeo",
       "audio": "Áudio",
       "structured": "Estruturado",
-      "document": "Documento"
+      "document": "Documento",
+      "skill": "Habilidade"
     },
     "inputType": "Prompt do Usuário",
     "outputType": "Resposta da IA",
+    "afterAiProcessing": "O que seu prompt produzirá?",
     "inputTypeDescription": "Como seu prompt está formatado",
-    "outputTypeDescription": "Tipo de resposta que a IA irá gerar",
+    "outputTypeDescription": "Mostre à comunidade como este prompt funciona quando executado em ferramentas de IA. Você pode gerar as saídas você mesmo usando seu aplicativo de IA favorito.",
     "outputTypeStructuredNote": "Prompts estruturados podem produzir vários tipos de saída",
+    "outputTypeSkillNote": "Habilidades instruem agentes a gerar código. A IA produzirá código baseado nas instruções da sua habilidade.",
     "inputTypes": {
       "text": "Prompt de Texto",
-      "structured": "Estruturado (JSON/YAML)"
+      "structured": "Estruturado (JSON/YAML)",
+      "skill": "Habilidade (Agent Skills)"
     },
     "outputTypes": {
       "text": "Texto",
@@ -179,7 +186,7 @@
       "text": "✨ A magia acontece aqui... sua IA escreverá algo brilhante!",
       "imageUpload": "Envie uma imagem de exemplo",
       "videoUpload": "Envie um vídeo/GIF de exemplo",
-      "audio": "Prévia de áudio"
+      "audioUpload": "Carregar exemplo de áudio"
     },
     "structuredFormat": "Formato",
     "structuredFormatDescription": "Selecione o formato para seu prompt estruturado",
@@ -208,7 +215,20 @@
     "confirmDelete": "Tem certeza que deseja excluir este prompt?",
     "promptCreated": "Prompt criado",
     "promptUpdated": "Prompt atualizado",
+    "rateLimitError": "Aguarde 30 segundos antes de criar outro prompt",
+    "dailyLimitError": "Você atingiu o limite diário de 5 prompts",
+    "duplicatePromptError": "Você já tem um prompt com o mesmo título ou conteúdo",
+    "contentExistsError": "Já existe um prompt com este conteúdo: \"{title}\" por {author}",
     "run": "Executar",
+    "downloadMarkdown": "Baixar MD",
+    "downloadYaml": "Baixar YAML",
+    "downloadSkillMd": "Baixar SKILL.md",
+    "copyMarkdownUrl": "Copiar link MD",
+    "copyYamlUrl": "Copiar link YAML",
+    "downloadStarted": "Download iniciado",
+    "downloadFailed": "Falha no download",
+    "urlCopied": "Link copiado",
+    "failedToCopyUrl": "Falha ao copiar link",
     "promptCopied": "Prompt copiado",
     "promptCopiedDescription": "O prompt foi copiado para a área de transferência. Cole-o no {platform} após abrir.",
     "openPlatform": "Abrir {platform}",
@@ -230,11 +250,65 @@
     "mediaUrlPlaceholder": "https://...",
     "mediaUrlDescription": "Digite a URL do arquivo de mídia para este prompt",
     "mediaImage": "Imagem de Mídia",
+    "mediaVideo": "Vídeo de Mídia",
+    "mediaAudio": "Áudio de Mídia",
     "clickToUpload": "Clique para enviar uma imagem",
+    "clickToUploadVideo": "Clique para enviar um vídeo",
+    "clickToUploadAudio": "Clique para carregar um arquivo de áudio",
     "uploading": "Enviando...",
-    "maxFileSize": "Tamanho máximo: 5MB (JPEG, PNG, GIF, WebP)",
-    "fileTooLarge": "Arquivo muito grande. O tamanho máximo é 5MB.",
+    "maxFileSize": "Tamanho máximo: 4MB (JPEG, PNG, GIF, WebP)",
+    "maxVideoSize": "Tamanho máximo: 4MB (MP4)",
+    "maxAudioSize": "Tamanho máx.: 4MB (MP3, WAV, OGG)",
+    "fileTooLarge": "Arquivo muito grande. O tamanho máximo é 4MB.",
+    "videoTooLarge": "Vídeo muito grande. O tamanho máximo é 4MB.",
     "invalidFileType": "Tipo de arquivo inválido. Apenas JPEG, PNG, GIF e WebP são permitidos.",
+    "invalidVideoType": "Tipo de vídeo inválido. Apenas vídeos MP4 são permitidos.",
+    "invalidAudioType": "Tipo de áudio inválido. Apenas arquivos MP3, WAV e OGG são permitidos.",
+    "uploadMedia": "Enviar Mídia",
+    "generateMedia": "Gerar",
+    "chooseGenerator": "Escolher Gerador",
+    "uploadInstead": "Enviar em vez disso",
+    "confirmGeneration": "Confirmar Geração",
+    "confirmGenerationDescription": "Gerar mídia com {provider} usando o modelo {model}?",
+    "promptPreview": "Prévia do prompt",
+    "noPromptProvided": "Nenhum prompt fornecido",
+    "inputImage": "Imagem de entrada",
+    "aspectRatio": "Proporção",
+    "startGeneration": "Iniciar Geração",
+    "generatingMedia": "Gerando Mídia com {provider}",
+    "doNotCloseWindow": "Por favor não feche esta janela durante a geração.",
+    "generationComplete": "Geração Concluída",
+    "generationFailed": "Geração Falhou",
+    "mediaAddedToPrompt": "A mídia foi adicionada ao seu prompt.",
+    "mediaGenerated": "Mídia gerada com sucesso!",
+    "orGenerateMedia": "Ou gerar com IA",
+    "aiGenerationAvailable": "✨ Geração com IA Disponível",
+    "generateWith": "Gerar com IA",
+    "generateImage": "Gerar Imagem",
+    "generateVideo": "Gerar Vídeo",
+    "generateAudio": "Gerar Áudio",
+    "generateImageDescription": "Gere uma imagem única para seu prompt usando IA — perfeito para mostrar seu prompt à comunidade.",
+    "generateVideoDescription": "Gere um vídeo único para seu prompt usando IA — perfeito para mostrar seu prompt à comunidade.",
+    "generateAudioDescription": "Gere áudio/música únicos para seu prompt usando IA — perfeito para apresentar seu prompt à comunidade.",
+    "close": "Fechar",
+    "mediaGeneration": {
+      "connecting": "Conectando ao servidor...",
+      "connected": "Conectado, aguardando na fila...",
+      "queued": "Aguardando na fila...",
+      "accepted": "Tarefa aceita...",
+      "preprocessStart": "Pré-processando...",
+      "preprocessEnd": "Pré-processamento concluído",
+      "gpuAssigned": "GPU atribuída, aguardando na fila...",
+      "started": "Geração iniciada...",
+      "generating": "Gerando...",
+      "processingOutput": "Processando saída...",
+      "ending": "Geração concluída",
+      "postprocessStart": "Pós-processando...",
+      "postprocessEnd": "Finalizando...",
+      "complete": "Concluído!",
+      "error": "Ocorreu um erro",
+      "errorProcessing": "Erro de processamento..."
+    },
     "privateDescription": "Prompts privados são visíveis apenas para você",
     "requiresMediaUpload": "Requer Upload de Mídia",
     "attachedMediaType": "Tipo de Mídia Anexada",
@@ -267,7 +341,11 @@
     "translateToLanguage": "Traduzir para o seu idioma",
     "translated": "Conteúdo traduzido",
     "translationFailed": "Falha na tradução",
-    "alreadyTranslated": "Já traduzido"
+    "alreadyTranslated": "Já traduzido",
+    "learnHowToWritePrompts": "Aprenda a escrever prompts eficazes →",
+    "structuredFormatDetected": "Formato {format} detectado",
+    "structuredFormatWarningDescription": "O conteúdo do seu prompt parece ser dados estruturados. Considere mudar para o modo estruturado para melhor destaque de sintaxe e validação.",
+    "switchToStructured": "Mudar para {format}"
   },
   "changeRequests": {
     "title": "Solicitações de Alteração",
@@ -326,6 +404,9 @@
     "noCategories": "Nenhuma categoria encontrada",
     "noSubcategories": "Sem subcategorias nesta categoria ainda",
     "prompts": "prompts",
+    "subscribers": "assinantes",
+    "promptCount": "{count} prompts",
+    "subscriberCount": "{count} assinantes",
     "confirmDelete": "Tem certeza que deseja excluir esta categoria?"
   },
   "tags": {
@@ -424,6 +505,29 @@
       "slugsSuccess": "{count} slugs gerados",
       "slugsResult": "Gerados: {success}, Falhas: {failed}"
     },
+    "promptsList": {
+      "title": "Todos os Prompts",
+      "description": "Navegar e gerenciar todos os prompts do sistema",
+      "noPrompts": "Nenhum prompt encontrado",
+      "private": "Privado",
+      "unlisted": "Não listado",
+      "views": "visualizações",
+      "votes": "votos",
+      "created": "Criado",
+      "showing": "Mostrando {from}-{to} de {total}",
+      "deleteConfirmTitle": "Excluir Prompt?",
+      "deleteConfirmDescription": "Tem certeza que deseja excluir permanentemente \"{title}\"? Esta ação não pode ser desfeita.",
+      "deleted": "Prompt excluído com sucesso",
+      "filters": {
+        "all": "Todos",
+        "public": "Públicos",
+        "private": "Privados",
+        "unlisted": "Não listados",
+        "featured": "Destaques",
+        "reported": "Denunciados",
+        "deleted": "Excluídos"
+      }
+    },
     "users": {
       "title": "Gerenciamento de Usuários",
       "description": "Visualize e gerencie contas de usuários",
@@ -446,7 +550,31 @@
       "unverified": "Verificação removida",
       "verifyFailed": "Falha ao atualizar verificação",
       "deleteConfirmTitle": "Excluir Usuário?",
-      "deleteConfirmDescription": "Esta ação não pode ser desfeita. Todos os dados do usuário serão permanentemente excluídos."
+      "deleteConfirmDescription": "Esta ação não pode ser desfeita. Todos os dados do usuário serão excluídos permanentemente.",
+      "searchPlaceholder": "Buscar usuários...",
+      "noUsers": "Nenhum usuário encontrado",
+      "showing": "Mostrando {from}-{to} de {total}",
+      "filters": {
+        "all": "Todos",
+        "admin": "Admins",
+        "user": "Usuários",
+        "verified": "Verificados",
+        "unverified": "Não verificados",
+        "flagged": "Sinalizados"
+      },
+      "flag": "Sinalizar usuário",
+      "unflag": "Remover sinalização",
+      "flagged": "Usuário sinalizado",
+      "unflagged": "Sinalização removida",
+      "flagFailed": "Falha ao atualizar status de sinalização",
+      "editCredits": "Editar créditos",
+      "editCreditsTitle": "Editar créditos de geração",
+      "editCreditsDescription": "Definir limite de créditos diários para @{username}",
+      "dailyLimit": "Limite diário de créditos",
+      "currentCredits": "Atualmente: {remaining}/{limit} créditos restantes",
+      "creditsUpdated": "Créditos atualizados com sucesso",
+      "creditsUpdateFailed": "Falha ao atualizar créditos",
+      "save": "Salvar"
     },
     "categories": {
       "title": "Gerenciamento de Categorias",
@@ -480,7 +608,13 @@
       "noParent": "Nenhuma (Categoria Raiz)",
       "parentHelp": "Deixe vazio para criar uma categoria raiz, ou selecione um pai para criar uma subcategoria",
       "rootCategory": "Raiz",
-      "subcategories": "subcategorias"
+      "subcategories": "subcategorias",
+      "pin": "Fixar na Página de Prompts",
+      "unpin": "Desafixar da Página de Prompts",
+      "pinned": "Categoria fixada",
+      "unpinned": "Categoria desafixada",
+      "pinnedBadge": "Fixado",
+      "pinnedLabel": "Fixar na página de prompts (mostrar como filtro rápido)"
     },
     "tags": {
       "title": "Gerenciamento de Tags",
@@ -605,7 +739,24 @@
     "contributionsCount": "contribuições",
     "noContributions": "Nenhuma contribuição ainda",
     "noContributionsOwner": "Você ainda não contribuiu para nenhum prompt",
-    "contributedTo": "Contribuiu para o prompt de {author}"
+    "contributedTo": "Contribuiu para o prompt de {author}",
+    "privatePromptsNote": "Você tem {count} {count, plural, one {prompt privado} other {prompts privados}}. Acesse-os via MCP usando sua chave de API em clientes compatíveis.",
+    "activityInLastYear": "{count} contribuições no último ano",
+    "contribution": "contribuição",
+    "contributionsPlural": "contribuições",
+    "inLastYear": "no último ano",
+    "inLast6Months": "nos últimos 6 meses",
+    "less": "Menos",
+    "more": "Mais",
+    "activity": "Atividade",
+    "filteringByDate": "Mostrando prompts de {date}",
+    "clearFilter": "Limpar filtro",
+    "noPromptsOnDate": "Nenhum prompt encontrado nesta data.",
+    "noPromptsOnDateOwner": "Você não tem prompts nesta data.",
+    "createForToday": "Criar para hoje",
+    "likes": "Curtidas",
+    "noLikes": "Nenhum prompt curtido ainda",
+    "noLikesOwner": "Você ainda não curtiu nenhum prompt"
   },
   "subscription": {
     "subscribe": "Inscrever-se",
@@ -675,7 +826,7 @@
     "heroFeature1": "Gratuito & Open Source",
     "heroFeature2": "Auto-hospede para Privacidade",
     "heroFeature3": "Para Equipes & Organizações",
-    "cloneOnGithub": "Clone no GitHub",
+    "setupPrivateServer": "Implante Seu Servidor Privado",
     "beStargazer": "Seja o {count}º stargazer no GitHub",
     "browsePrompts": "Ver Prompts",
     "viewFeed": "Ver Feed",
@@ -702,7 +853,36 @@
   "notifications": {
     "title": "Notificações",
     "pendingChangeRequests": "Solicitações de alteração pendentes",
-    "noNotifications": "Sem notificações"
+    "noNotifications": "Sem notificações",
+    "markAllRead": "Marcar tudo como lido",
+    "commentedOnPrompt": "comentou no seu prompt",
+    "repliedToComment": "respondeu ao seu comentário"
+  },
+  "comments": {
+    "comments": "Comentários",
+    "writeComment": "Escreva um comentário...",
+    "postComment": "Publicar comentário",
+    "reply": "Responder",
+    "replyTo": "Responder a @{username}...",
+    "posting": "Publicando...",
+    "commentPosted": "Comentário publicado",
+    "commentDeleted": "Comentário excluído",
+    "commentFlagged": "Comentário denunciado",
+    "commentUnflagged": "Denúncia removida",
+    "noComments": "Ainda não há comentários. Seja o primeiro!",
+    "loginToComment": "Faça login para comentar.",
+    "loginToVote": "Faça login para votar.",
+    "upvote": "Voto positivo",
+    "downvote": "Voto negativo",
+    "flag": "Denunciar",
+    "unflag": "Remover denúncia",
+    "flagged": "Denunciado",
+    "admin": "Admin",
+    "deleteCommentTitle": "Excluir comentário?",
+    "deleteCommentDescription": "Esta ação não pode ser desfeita. O comentário e todas as respostas serão excluídos permanentemente.",
+    "deleting": "Excluindo...",
+    "showReplies": "Mostrar {count} respostas",
+    "hideReplies": "Ocultar respostas"
   },
   "promptmasters": {
     "title": "Promptmasters",
@@ -743,6 +923,17 @@
   "notFound": {
     "title": "Página Não Encontrada",
     "description": "A página que você está procurando não existe ou foi movida.",
+    "goHome": "Ir para Início",
+    "goBack": "Voltar",
+    "helpfulLinks": "Links úteis:",
+    "browsePrompts": "Explorar Prompts",
+    "categories": "Categorias",
+    "createPrompt": "Criar Prompt"
+  },
+  "serverError": {
+    "title": "Erro do Servidor",
+    "description": "Algo deu errado do nosso lado. Por favor, tente novamente mais tarde.",
+    "tryAgain": "Tentar Novamente",
     "goHome": "Ir para Início",
     "goBack": "Voltar",
     "helpfulLinks": "Aqui estão alguns links úteis:",
@@ -810,10 +1001,54 @@
     "generateApiKey": "Gere uma chave API para salvar prompts via MCP"
   },
   "footer": {
+    "howTo": "Como fazer",
     "docs": "Documentação",
     "api": "API",
     "privacy": "Privacidade",
-    "terms": "Termos"
+    "terms": "Termos",
+    "support": "Suporte"
+  },
+  "support": {
+    "title": "Suporte",
+    "description": "Encontre respostas para perguntas frequentes ou obtenha ajuda da nossa comunidade.",
+    "faq": {
+      "title": "Perguntas Frequentes",
+      "whatIsPrompt": {
+        "question": "O que é um prompt?",
+        "answer": "Um prompt é uma instrução ou entrada que você dá a um modelo de IA (como ChatGPT, Claude, Gemini, etc.) para guiar sua resposta. É essencialmente como você comunica o que quer que a IA faça. Prompts bem elaborados levam a melhores e mais úteis saídas dos sistemas de IA."
+      },
+      "whyPromptsMatter": {
+        "question": "Por que os prompts importam? Não posso simplesmente perguntar qualquer coisa à IA?",
+        "answer": "Embora modelos de IA avançados possam lidar bem com perguntas casuais, os prompts se tornam críticos quando:\n\n• Você usa IA via API em aplicações — muitas vezes você só tem uma chance (\"one-shot prompting\"), sem diálogo de ida e volta\n• Você trabalha com modelos menores e econômicos que precisam de instruções mais precisas\n• Você constrói sistemas de produção onde consistência e confiabilidade importam\n\nPrompts otimizados ajudam você a obter melhores resultados, economizar tokens (e dinheiro), e criar aplicações mais confiáveis alimentadas por IA."
+      },
+      "whatIsPromptschat": {
+        "question": "O que é prompts.chat?",
+        "answer": "prompts.chat é uma plataforma impulsionada pela comunidade onde as pessoas compartilham, descobrem e colecionam prompts de IA. Por mais de 4 anos, usuários têm compartilhado suas técnicas de otimização de prompts aqui. A comunidade ajuda uns aos outros a melhorar seus prompts e aprender novas abordagens para trabalhar com sistemas de IA."
+      },
+      "howToUse": {
+        "question": "Como uso os prompts desta plataforma?",
+        "answer": "Simplesmente navegue pelos prompts, encontre um que você goste e copie-o. Você pode então colá-lo na sua ferramenta de IA preferida (ChatGPT, Claude, Gemini, etc.) ou usá-lo em suas aplicações via API. Muitos prompts incluem variáveis que você pode personalizar antes de copiar."
+      },
+      "license": {
+        "question": "Posso usar esses prompts comercialmente?",
+        "answer": "Sim! Todos os prompts no prompts.chat são liberados sob a licença CC0 (Creative Commons Zero), o que significa que são de domínio público. Você pode usá-los, modificá-los e distribuí-los livremente para qualquer propósito, incluindo uso comercial, sem atribuição."
+      },
+      "selfHost": {
+        "question": "Posso hospedar esta plataforma por conta própria?",
+        "answer": "Absolutamente! prompts.chat é totalmente código aberto. Você pode implantar sua própria instância privada para sua equipe ou organização. Confira nossa documentação de auto-hospedagem para instruções de configuração."
+      }
+    },
+    "contact": {
+      "title": "Precisa de Mais Ajuda?",
+      "description": "Se você não encontrou uma resposta para sua pergunta, preencha o formulário abaixo e nós ajudaremos você no GitHub.",
+      "form": {
+        "title": "Título da Issue",
+        "titlePlaceholder": "Breve resumo do seu problema ou pergunta",
+        "description": "Descrição",
+        "descriptionPlaceholder": "Por favor descreva seu problema ou pergunta em detalhes..."
+      },
+      "openIssue": "Abrir Issue no GitHub"
+    }
   },
   "apiKey": {
     "title": "Chave API MCP",
@@ -834,5 +1069,128 @@
     "publicByDefault": "Prompts públicos por padrão",
     "publicByDefaultDescription": "Ao salvar prompts via MCP, torná-los públicos por padrão em vez de privados.",
     "settingUpdated": "Configuração atualizada"
+  },
+  "connectedPrompts": {
+    "title": "Fluxo de Prompts",
+    "description": "Alguns prompts funcionam como fluxos de trabalho de várias etapas. Conecte seus prompts para criar uma sequência.",
+    "addConnection": "Adicionar Conexão",
+    "addPrevious": "Adicionar Anterior",
+    "addNext": "Adicionar Próximo",
+    "addConnectionTitle": "Adicionar Conexão",
+    "addPreviousTitle": "Adicionar Prompt Anterior",
+    "addNextTitle": "Adicionar Próximo Prompt",
+    "addConnectionDescription": "Vincule este prompt a outro prompt com um rótulo de condição.",
+    "addPreviousDescription": "Selecione um prompt que vem antes deste no fluxo de trabalho.",
+    "addNextDescription": "Selecione um prompt que vem depois deste no fluxo de trabalho.",
+    "noConnections": "Ainda não há prompts conectados. Adicione conexões para criar uma cadeia de prompts.",
+    "previousSteps": "Etapas anteriores",
+    "nextSteps": "Próximas etapas",
+    "searchPrompt": "Pesquisar Prompt",
+    "searchPlaceholder": "Pesquisar por título...",
+    "selectedPrompt": "Prompt Selecionado",
+    "connectionLabel": "Rótulo da Conexão",
+    "labelPlaceholder": "ex. primeiro quadro, próxima etapa, após processamento...",
+    "labelHint": "Descreva a condição ou transição entre prompts",
+    "change": "Alterar",
+    "cancel": "Cancelar",
+    "fillAllFields": "Por favor, selecione um prompt e insira um rótulo",
+    "connectionFailed": "Falha ao criar conexão",
+    "connectionAdded": "Conexão adicionada com sucesso",
+    "connectionDeleted": "Conexão excluída",
+    "deleteFailed": "Falha ao excluir conexão",
+    "noResults": "Nenhum prompt encontrado"
+  },
+  "promptWritingGuide": {
+    "title": "Como Escrever Bons Prompts",
+    "subtitle": "Dicas, exemplos e melhores práticas para criar prompts de IA eficazes",
+    "generalTips": {
+      "title": "Dicas Gerais para Prompts Eficazes",
+      "beSpecific": {
+        "title": "Seja Específico e Claro",
+        "description": "Prompts vagos levam a respostas vagas. Especifique exatamente o que você quer, incluindo formato, comprimento, tom e restrições."
+      },
+      "provideContext": {
+        "title": "Forneça Contexto",
+        "description": "Dê informações de fundo que ajudem a IA a entender suas necessidades. Inclua quem, o quê, por quê e para quem."
+      },
+      "defineFormat": {
+        "title": "Defina o Formato de Saída",
+        "description": "Especifique como você quer que a resposta seja estruturada: bullet points, parágrafos, blocos de código, tabelas, etc."
+      },
+      "setConstraints": {
+        "title": "Defina Restrições",
+        "description": "Inclua limitações como contagem de palavras, nível de leitura, coisas a evitar ou requisitos específicos a seguir."
+      },
+      "includeExamples": {
+        "title": "Inclua Exemplos",
+        "description": "Mostre à IA como é uma boa saída. Exemplos ajudam a calibrar o estilo e a qualidade da resposta."
+      }
+    },
+    "rolePlaying": {
+      "title": "Role-Playing: Padrões \"Aja Como\"",
+      "description": "Uma das técnicas de prompting mais poderosas é atribuir à IA um papel ou persona específica. Isso ajuda a estabelecer expertise, tom e perspectiva.",
+      "basicPattern": "Padrão de Papel Básico",
+      "exampleExpert": "Exemplo: Especialista Técnico",
+      "exampleCreative": "Exemplo: Coach Criativo",
+      "popularRoles": "Categorias de Papéis Populares"
+    },
+    "variables": {
+      "title": "Usando Variáveis para Prompts Dinâmicos",
+      "description": "Variáveis tornam seus prompts reutilizáveis e personalizáveis. Usuários podem preencher valores diferentes cada vez que usam seu prompt.",
+      "syntax": "Sintaxe de Variáveis",
+      "requiredVar": "Variável obrigatória (usuário deve preencher)",
+      "withDefault": "Variável com valor padrão",
+      "simpleExample": "Exemplo Simples",
+      "advancedExample": "Exemplo Avançado com Múltiplas Variáveis",
+      "bestPractices": "Melhores Práticas",
+      "tip1": "Use nomes de variáveis descritivos: '$'{topico} é melhor que '$'{x}",
+      "tip2": "Forneça valores padrão sensatos para valores opcionais",
+      "tip3": "Agrupe variáveis relacionadas juntas no seu prompt",
+      "tip4": "Use underscores para nomes com múltiplas palavras: '$'{publico_alvo}"
+    },
+    "structured": {
+      "title": "Prompts Estruturados (JSON/YAML)",
+      "description": "Prompts estruturados usam formato JSON ou YAML para organizar instruções complexas claramente. São ideais para workflows multi-etapas, agentes e configurações detalhadas.",
+      "whenToUse": "Quando Usar Prompts Estruturados",
+      "useCase1": "Workflows ou pipelines complexos multi-etapas",
+      "useCase2": "Configurações de agentes com múltiplos parâmetros",
+      "useCase3": "Prompts com muitas configurações interconectadas",
+      "useCase4": "Uso de prompts programático ou baseado em API",
+      "jsonExample": "Exemplo JSON: Assistente de Entrevistas",
+      "yamlExample": "Exemplo YAML: Gerador de Conteúdo",
+      "agentWorkflow": "Exemplo JSON: Workflow de Agente",
+      "tips": "Dicas para Prompts Estruturados",
+      "tip1": "Use JSON para uso programático; YAML para configs legíveis",
+      "tip2": "Mantenha o aninhamento raso (máx 2-3 níveis) para legibilidade",
+      "tip3": "Inclua comentários em YAML para explicar seções complexas",
+      "tip4": "Valide sua sintaxe JSON/YAML antes de salvar"
+    },
+    "outputOptimization": {
+      "title": "Otimização de Saída",
+      "description": "Guie a IA para produzir exatamente o formato e estilo que você precisa sendo explícito sobre seus requisitos.",
+      "formatInstructions": "Modelo de Instruções de Formato",
+      "constraintExamples": "Tipos Comuns de Restrições",
+      "lengthConstraints": "Restrições de tamanho:",
+      "lengthExample": "\"Mantenha a resposta abaixo de 200 palavras\" / \"Forneça exatamente 5 itens\"",
+      "styleConstraints": "Restrições de estilo:",
+      "styleExample": "\"Use linguagem simples adequada para iniciantes\" / \"Seja técnico e preciso\"",
+      "contentConstraints": "Restrições de conteúdo:",
+      "contentExample": "\"Não inclua opiniões pessoais\" / \"Foque apenas em informações factuais\""
+    }
+  },
+  "ide": {
+    "title": "Prompt Builder",
+    "subtitle": "Construção de prompts estruturada e type-safe",
+    "editor": "Editor",
+    "preview": "Pré-visualização",
+    "run": "Executar",
+    "reset": "Redefinir",
+    "copied": "Copiado para a área de transferência",
+    "runToPreview": "Clique em Executar para ver a pré-visualização do prompt",
+    "cannotEvaluate": "Este código não pode ser avaliado.",
+    "onlyPromptsChat": "Apenas importações de {library} são suportadas.",
+    "desktopOnly": "Apenas Desktop",
+    "desktopOnlyDescription": "O Prompt Builder requer uma tela maior para funcionar corretamente. Por favor, abra esta página em um computador desktop ou laptop.",
+    "browsePrompts": "Explorar Prompts"
   }
 }
