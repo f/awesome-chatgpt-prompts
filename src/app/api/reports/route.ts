@@ -5,7 +5,7 @@ import { db } from "@/lib/db";
 
 const reportSchema = z.object({
   promptId: z.string().min(1),
-  reason: z.enum(["SPAM", "INAPPROPRIATE", "COPYRIGHT", "MISLEADING", "OTHER"]),
+  reason: z.enum(["SPAM", "INAPPROPRIATE", "COPYRIGHT", "MISLEADING", "RELIST_REQUEST", "OTHER"]),
   details: z.string().optional(),
 });
 
@@ -29,8 +29,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Prompt not found" }, { status: 404 });
     }
 
-    // Prevent self-reporting
-    if (prompt.authorId === session.user.id) {
+    // Prevent self-reporting (except for relist requests)
+    if (prompt.authorId === session.user.id && reason !== "RELIST_REQUEST") {
       return NextResponse.json(
         { error: "You cannot report your own prompt" },
         { status: 400 }

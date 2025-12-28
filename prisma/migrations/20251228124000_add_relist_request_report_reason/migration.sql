@@ -1,0 +1,2 @@
+-- AlterEnum
+ALTER TYPE "ReportReason" ADD VALUE 'RELIST_REQUEST';

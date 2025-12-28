@@ -29,7 +29,7 @@ import { toast } from "sonner";
 
 interface Report {
   id: string;
-  reason: "SPAM" | "INAPPROPRIATE" | "COPYRIGHT" | "MISLEADING" | "OTHER";
+  reason: "SPAM" | "INAPPROPRIATE" | "COPYRIGHT" | "MISLEADING" | "RELIST_REQUEST" | "OTHER";
   details: string | null;
   status: "PENDING" | "REVIEWED" | "DISMISSED";
   createdAt: Date;
@@ -88,6 +88,7 @@ export function ReportsTable({ reports }: ReportsTableProps) {
     INAPPROPRIATE: tReport("reasons.inappropriate"),
     COPYRIGHT: tReport("reasons.copyright"),
     MISLEADING: tReport("reasons.misleading"),
+    RELIST_REQUEST: tReport("reasons.relistRequest"),
     OTHER: tReport("reasons.other"),
   };
 
