@@ -30,7 +30,11 @@
     "close": "閉じる",
     "all": "すべて",
     "none": "なし",
-    "moreLines": "+{count}行"
+    "moreLines": "+{count}行",
+    "codeView": "コード",
+    "treeView": "ツリー",
+    "expandAll": "すべて展開",
+    "collapseAll": "すべて折りたたむ"
   },
   "nav": {
     "home": "ホーム",

@@ -30,7 +30,11 @@
     "close": "Schließen",
     "all": "Alle",
     "none": "Keine",
-    "moreLines": "+{count} weitere Zeilen"
+    "moreLines": "+{count} weitere Zeilen",
+    "codeView": "Code",
+    "treeView": "Baumansicht",
+    "expandAll": "Alle erweitern",
+    "collapseAll": "Alle einklappen"
   },
   "nav": {
     "home": "Startseite",

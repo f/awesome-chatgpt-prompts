@@ -30,7 +30,11 @@
     "close": "Κλείσιμο",
     "all": "Όλα",
     "none": "Κανένα",
-    "moreLines": "+{count} επιπλέον γραμμές"
+    "moreLines": "+{count} επιπλέον γραμμές",
+    "codeView": "Κώδικας",
+    "treeView": "Δέντρο",
+    "expandAll": "Ανάπτυξη όλων",
+    "collapseAll": "Σύμπτυξη όλων"
   },
   "nav": {
     "home": "Αρχική",

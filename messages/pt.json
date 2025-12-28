@@ -30,7 +30,11 @@
     "close": "Fechar",
     "all": "Todos",
     "none": "Nenhum",
-    "moreLines": "+{count} mais linhas"
+    "moreLines": "+{count} mais linhas",
+    "codeView": "Código",
+    "treeView": "Árvore",
+    "expandAll": "Expandir Tudo",
+    "collapseAll": "Recolher Tudo"
   },
   "nav": {
     "home": "Início",

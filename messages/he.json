@@ -30,7 +30,11 @@
     "close": "סגור",
     "all": "הכל",
     "none": "ללא",
-    "moreLines": "+{count} שורות נוספות"
+    "moreLines": "+{count} שורות נוספות",
+    "codeView": "קוד",
+    "treeView": "עץ",
+    "expandAll": "הרחב הכל",
+    "collapseAll": "כווץ הכל"
   },
   "nav": {
     "home": "בית",

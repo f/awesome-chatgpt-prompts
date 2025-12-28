@@ -30,7 +30,11 @@
     "close": "Закрыть",
     "all": "Все",
     "none": "Нет",
-    "moreLines": "+{count} строк"
+    "moreLines": "+{count} строк",
+    "codeView": "Код",
+    "treeView": "Дерево",
+    "expandAll": "Развернуть все",
+    "collapseAll": "Свернуть все"
   },
   "nav": {
     "home": "Главная",

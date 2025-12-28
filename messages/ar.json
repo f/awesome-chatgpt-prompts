@@ -30,7 +30,11 @@
     "close": "إغلاق",
     "all": "الكل",
     "none": "لا شيء",
-    "moreLines": "+{count} سطر إضافي"
+    "moreLines": "+{count} سطر إضافي",
+    "codeView": "كود",
+    "treeView": "شجرة",
+    "expandAll": "توسيع الكل",
+    "collapseAll": "طي الكل"
   },
   "nav": {
     "home": "الرئيسية",

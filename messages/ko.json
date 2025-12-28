@@ -30,7 +30,11 @@
     "close": "닫기",
     "all": "전체",
     "none": "없음",
-    "moreLines": "+{count}줄 더"
+    "moreLines": "+{count}줄 더",
+    "codeView": "코드",
+    "treeView": "트리",
+    "expandAll": "모두 펼치기",
+    "collapseAll": "모두 접기"
   },
   "nav": {
     "home": "홈",

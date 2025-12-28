@@ -30,7 +30,11 @@
     "close": "Kapat",
     "all": "Tümü",
     "none": "Hiçbiri",
-    "moreLines": "+{count} satır daha"
+    "moreLines": "+{count} satır daha",
+    "codeView": "Kod",
+    "treeView": "Ağaç",
+    "expandAll": "Tümünü Genişlet",
+    "collapseAll": "Tümünü Daralt"
   },
   "nav": {
     "home": "Ana Sayfa",
