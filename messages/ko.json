@@ -147,6 +147,8 @@
     "unlist": "숨기기",
     "relist": "다시 표시",
     "adminArea": "관리자 영역",
+    "promptDeleted": "이 프롬프트가 삭제되었습니다",
+    "promptDeletedDescription": "이 프롬프트는 삭제되었으며 관리자만 볼 수 있습니다. 검색 결과나 공개 목록에 표시되지 않습니다.",
     "promptDelisted": "이 프롬프트가 목록에서 제거되었습니다",
     "delistReasonTooShort": "이 프롬프트는 내용이 너무 짧아 자동으로 목록에서 제거되었습니다. 프로필에는 계속 표시되지만 GitHub로 내보내지거나 검색에 표시되지 않습니다.",
     "delistReasonNotEnglish": "이 프롬프트는 주로 영어가 아니어서 자동으로 목록에서 제거되었습니다. 프로필에는 계속 표시되지만 GitHub로 내보내지거나 검색에 표시되지 않습니다.",

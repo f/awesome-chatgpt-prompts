@@ -147,6 +147,8 @@
     "unlist": "Listeden Kaldır",
     "relist": "Listeye Ekle",
     "adminArea": "Yönetici Alanı",
+    "promptDeleted": "Bu prompt silindi",
+    "promptDeletedDescription": "Bu prompt silindi ve yalnızca yöneticiler tarafından görülebilir. Aramalarda veya herkese açık listelerde görünmeyecek.",
     "promptDelisted": "Bu prompt listeden kaldırıldı",
     "delistReasonTooShort": "Bu prompt içerik çok kısa olduğu için otomatik olarak listeden kaldırıldı fakat profilinizde görünecek, yalnızca GitHub'a aktarılmayacak ve aramalarda görünmeyecek.",
     "delistReasonNotEnglish": "Bu prompt ağırlıklı olarak İngilizce olmadığı için otomatik olarak listeden kaldırıldı fakat profilinizde görünecek, yalnızca GitHub'a aktarılmayacak ve aramalarda görünmeyecek.",

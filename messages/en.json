@@ -147,6 +147,8 @@
     "unlist": "Unlist",
     "relist": "Relist",
     "adminArea": "Admin Area",
+    "promptDeleted": "This prompt has been deleted",
+    "promptDeletedDescription": "This prompt was deleted and is only visible to administrators. It will not appear in searches or public listings.",
     "promptDelisted": "This prompt has been delisted",
     "delistReasonTooShort": "This prompt was automatically delisted because the content is too short. It will still appear on your profile, but won't be exported to GitHub and won't appear in searches.",
     "delistReasonNotEnglish": "This prompt was automatically delisted because it's not primarily in English. It will still appear on your profile, but won't be exported to GitHub and won't appear in searches.",

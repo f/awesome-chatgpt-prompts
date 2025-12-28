@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getTranslations, getLocale } from "next-intl/server";
 import { formatDistanceToNow } from "@/lib/date";
-import { Clock, Edit, History, GitPullRequest, Check, X, Users, ImageIcon, Video, FileText, Shield } from "lucide-react";
+import { Clock, Edit, History, GitPullRequest, Check, X, Users, ImageIcon, Video, FileText, Shield, Trash2 } from "lucide-react";
 import { AnimatedDate } from "@/components/ui/animated-date";
 import { ShareDropdown } from "@/components/prompts/share-dropdown";
 import { auth } from "@/lib/auth";
@@ -77,8 +77,11 @@ export default async function PromptPage({ params }: PromptPageProps) {
   const t = await getTranslations("prompts");
   const locale = await getLocale();
 
+  const isAdmin = session?.user?.role === "ADMIN";
+  
+  // Admins can view deleted prompts, others cannot
   const prompt = await db.prompt.findFirst({
-    where: { id, deletedAt: null },
+    where: { id, ...(isAdmin ? {} : { deletedAt: null }) },
     include: {
       author: {
         select: {
@@ -154,7 +157,6 @@ export default async function PromptPage({ params }: PromptPageProps) {
   // They just don't appear in public listings, search results, or feeds
 
   const isOwner = session?.user?.id === prompt.authorId;
-  const isAdmin = session?.user?.role === "ADMIN";
   const canEdit = isOwner || isAdmin;
   const voteCount = prompt._count?.votes ?? 0;
   const hasVoted = !!userVote;
@@ -196,6 +198,23 @@ export default async function PromptPage({ params }: PromptPageProps) {
 
   return (
     <div className="container max-w-4xl py-8">
+      {/* Deleted Banner - shown to admins when prompt is deleted */}
+      {prompt.deletedAt && isAdmin && (
+        <div className="mb-6 p-4 rounded-lg border border-red-500/30 bg-red-500/5">
+          <div className="flex items-start gap-3">
+            <Trash2 className="h-5 w-5 text-red-500 shrink-0 mt-0.5" />
+            <div className="space-y-1">
+              <h3 className="text-sm font-semibold text-red-700 dark:text-red-400">
+                {t("promptDeleted")}
+              </h3>
+              <p className="text-sm text-red-600 dark:text-red-500">
+                {t("promptDeletedDescription")}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Delist Banner - shown to owner and admins when prompt is delisted */}
       {prompt.isUnlisted && delistReason && (isOwner || isAdmin) && (
         <DelistBanner

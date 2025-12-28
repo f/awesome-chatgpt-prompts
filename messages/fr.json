@@ -147,6 +147,8 @@
     "unlist": "Retirer",
     "relist": "Remettre",
     "adminArea": "Zone Admin",
+    "promptDeleted": "Ce prompt a été supprimé",
+    "promptDeletedDescription": "Ce prompt a été supprimé et n'est visible que par les administrateurs. Il n'apparaîtra pas dans les recherches ni les listes publiques.",
     "promptDelisted": "Ce prompt a été retiré de la liste",
     "delistReasonTooShort": "Ce prompt a été retiré automatiquement car le contenu est trop court. Il apparaîtra toujours sur votre profil, mais ne sera pas exporté vers GitHub et n'apparaîtra pas dans les recherches.",
     "delistReasonNotEnglish": "Ce prompt a été retiré automatiquement car il n'est pas principalement en anglais. Il apparaîtra toujours sur votre profil, mais ne sera pas exporté vers GitHub et n'apparaîtra pas dans les recherches.",

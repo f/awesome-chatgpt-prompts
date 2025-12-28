@@ -147,6 +147,8 @@
     "unlist": "Ausblenden",
     "relist": "Wieder einblenden",
     "adminArea": "Admin-Bereich",
+    "promptDeleted": "Dieser Prompt wurde gelöscht",
+    "promptDeletedDescription": "Dieser Prompt wurde gelöscht und ist nur für Administratoren sichtbar. Er erscheint nicht in Suchergebnissen oder öffentlichen Listen.",
     "promptDelisted": "Dieser Prompt wurde von der Liste entfernt",
     "delistReasonTooShort": "Dieser Prompt wurde automatisch entfernt, weil der Inhalt zu kurz ist. Er wird weiterhin in Ihrem Profil angezeigt, aber nicht nach GitHub exportiert und erscheint nicht in Suchergebnissen.",
     "delistReasonNotEnglish": "Dieser Prompt wurde automatisch entfernt, weil er nicht hauptsächlich auf Englisch ist. Er wird weiterhin in Ihrem Profil angezeigt, aber nicht nach GitHub exportiert und erscheint nicht in Suchergebnissen.",

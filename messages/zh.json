@@ -144,6 +144,8 @@
     "unlist": "取消列出",
     "relist": "重新列出",
     "adminArea": "管理员区域",
+    "promptDeleted": "此提示词已被删除",
+    "promptDeletedDescription": "此提示词已被删除，仅管理员可见。它不会出现在搜索结果或公开列表中。",
     "promptDelisted": "此提示词已被下架",
     "delistReasonTooShort": "此提示词因内容过短而被自动下架。它仍会显示在您的个人资料中，但不会导出到GitHub，也不会出现在搜索结果中。",
     "delistReasonNotEnglish": "此提示词因非英语内容为主而被自动下架。它仍会显示在您的个人资料中，但不会导出到GitHub，也不会出现在搜索结果中。",

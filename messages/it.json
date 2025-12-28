@@ -147,6 +147,8 @@
     "unlist": "Nascondi",
     "relist": "Mostra",
     "adminArea": "Area Admin",
+    "promptDeleted": "Questo prompt è stato eliminato",
+    "promptDeletedDescription": "Questo prompt è stato eliminato ed è visibile solo agli amministratori. Non apparirà nelle ricerche o negli elenchi pubblici.",
     "promptDelisted": "Questo prompt è stato rimosso dalla lista",
     "delistReasonTooShort": "Questo prompt è stato rimosso automaticamente perché il contenuto è troppo breve. Apparirà ancora sul tuo profilo, ma non verrà esportato su GitHub e non apparirà nelle ricerche.",
     "delistReasonNotEnglish": "Questo prompt è stato rimosso automaticamente perché non è principalmente in inglese. Apparirà ancora sul tuo profilo, ma non verrà esportato su GitHub e non apparirà nelle ricerche.",

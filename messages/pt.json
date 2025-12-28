@@ -147,6 +147,8 @@
     "unlist": "Ocultar",
     "relist": "Mostrar",
     "adminArea": "Área Admin",
+    "promptDeleted": "Este prompt foi excluído",
+    "promptDeletedDescription": "Este prompt foi excluído e só é visível para administradores. Não aparecerá em buscas ou listagens públicas.",
     "promptDelisted": "Este prompt foi removido da lista",
     "delistReasonTooShort": "Este prompt foi removido automaticamente porque o conteúdo é muito curto. Ele ainda aparecerá no seu perfil, mas não será exportado para o GitHub e não aparecerá nas buscas.",
     "delistReasonNotEnglish": "Este prompt foi removido automaticamente porque não está principalmente em inglês. Ele ainda aparecerá no seu perfil, mas não será exportado para o GitHub e não aparecerá nas buscas.",
