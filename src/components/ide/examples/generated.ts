@@ -259,8 +259,8 @@ const prompt = chat()
   .build();
 
 export default {
-  json: prompt.structure,
-  yaml: prompt.structure,
+  json: prompt.messages,
+  yaml: prompt.messages,
   markdown: prompt.systemPrompt,
 };
 `;
