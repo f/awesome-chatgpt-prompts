@@ -21,4 +21,8 @@ const prompt = chat()
   
   .build();
 
-prompt;
+export default {
+  json: prompt.messages,
+  yaml: prompt.messages,
+  markdown: prompt.systemPrompt,
+};

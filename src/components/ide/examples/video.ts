@@ -69,4 +69,8 @@ const prompt = video()
   
   .build();
 
-prompt;
+export default {
+  json: prompt.structure,
+  yaml: prompt.structure,
+  markdown: prompt.prompt,
+};

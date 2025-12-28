@@ -17,5 +17,8 @@ const prompt = builder()
 // Or use pre-built templates
 const translatePrompt = templates.translation("English", "Spanish").build();
 
-// Export the main prompt
-prompt;
+export default {
+  json: prompt,
+  yaml: prompt,
+  markdown: prompt.content,
+};
