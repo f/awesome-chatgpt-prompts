@@ -1224,6 +1224,12 @@
     "onlyPromptsChat": "Nur {library}-Importe werden unterstützt.",
     "desktopOnly": "Nur für Desktop",
     "desktopOnlyDescription": "Der Prompt Builder benötigt einen größeren Bildschirm. Bitte öffnen Sie diese Seite auf einem Desktop- oder Laptop-Computer.",
-    "browsePrompts": "Prompts durchsuchen"
+    "browsePrompts": "Prompts durchsuchen",
+    "random": "Zufällig",
+    "generateRandom": "Zufälliges Beispiel mit KI generieren",
+    "loginToGenerate": "Bitte anmelden, um Beispiele zu generieren",
+    "rateLimitExceeded": "Bitte warten Sie {seconds} Sekunden, bevor Sie erneut generieren",
+    "generateFailed": "Beispiel konnte nicht generiert werden",
+    "exampleGenerated": "Neues Beispiel generiert!"
   }
 }

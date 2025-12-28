@@ -1224,6 +1224,12 @@
     "onlyPromptsChat": "Seuls les imports {library} sont pris en charge.",
     "desktopOnly": "Bureau uniquement",
     "desktopOnlyDescription": "Le Prompt Builder nécessite un écran plus grand pour fonctionner correctement. Veuillez ouvrir cette page sur un ordinateur de bureau ou portable.",
-    "browsePrompts": "Parcourir les Prompts"
+    "browsePrompts": "Parcourir les Prompts",
+    "random": "Aléatoire",
+    "generateRandom": "Générer un exemple aléatoire avec l'IA",
+    "loginToGenerate": "Veuillez vous connecter pour générer des exemples",
+    "rateLimitExceeded": "Veuillez attendre {seconds} secondes avant de générer à nouveau",
+    "generateFailed": "Échec de la génération de l'exemple",
+    "exampleGenerated": "Nouvel exemple généré !"
   }
 }

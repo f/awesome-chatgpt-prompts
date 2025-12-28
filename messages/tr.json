@@ -1224,6 +1224,12 @@
     "onlyPromptsChat": "Sadece {library} importları destekleniyor.",
     "desktopOnly": "Yalnızca Masaüstü",
     "desktopOnlyDescription": "Prompt Oluşturucu düzgün çalışması için daha büyük bir ekran gerektirir. Lütfen bu sayfayı bir masaüstü veya dizüstü bilgisayarda açın.",
-    "browsePrompts": "Promptlara Göz At"
+    "browsePrompts": "Promptlara Göz At",
+    "random": "Rastgele",
+    "generateRandom": "AI ile rastgele örnek oluştur",
+    "loginToGenerate": "Örnek oluşturmak için giriş yapın",
+    "rateLimitExceeded": "Tekrar oluşturmak için {seconds} saniye bekleyin",
+    "generateFailed": "Örnek oluşturulamadı",
+    "exampleGenerated": "Yeni örnek oluşturuldu!"
   }
 }

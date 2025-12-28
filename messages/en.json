@@ -1224,6 +1224,12 @@
     "onlyPromptsChat": "Only {library} imports are supported.",
     "desktopOnly": "Desktop Only",
     "desktopOnlyDescription": "The Prompt Builder requires a larger screen to work properly. Please open this page on a desktop or laptop computer.",
-    "browsePrompts": "Browse Prompts"
+    "browsePrompts": "Browse Prompts",
+    "random": "Random",
+    "generateRandom": "Generate a random example with AI",
+    "loginToGenerate": "Please log in to generate examples",
+    "rateLimitExceeded": "Please wait {seconds} seconds before generating again",
+    "generateFailed": "Failed to generate example",
+    "exampleGenerated": "New example generated!"
   }
 }

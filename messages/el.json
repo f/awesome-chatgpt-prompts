@@ -1224,6 +1224,12 @@
     "onlyPromptsChat": "Υποστηρίζονται μόνο εισαγωγές {library}.",
     "desktopOnly": "Μόνο για υπολογιστή",
     "desktopOnlyDescription": "Ο Prompt Builder απαιτεί μεγαλύτερη οθόνη για να λειτουργήσει σωστά. Παρακαλώ ανοίξτε αυτή τη σελίδα σε επιτραπέζιο ή φορητό υπολογιστή.",
-    "browsePrompts": "Περιήγηση Prompts"
+    "browsePrompts": "Περιήγηση Prompts",
+    "random": "Τυχαίο",
+    "generateRandom": "Δημιουργία τυχαίου παραδείγματος με AI",
+    "loginToGenerate": "Συνδεθείτε για να δημιουργήσετε παραδείγματα",
+    "rateLimitExceeded": "Περιμένετε {seconds} δευτερόλεπτα πριν δημιουργήσετε ξανά",
+    "generateFailed": "Αποτυχία δημιουργίας παραδείγματος",
+    "exampleGenerated": "Δημιουργήθηκε νέο παράδειγμα!"
   }
 }

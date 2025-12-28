@@ -1224,6 +1224,12 @@
     "onlyPromptsChat": "Solo se admiten importaciones de {library}.",
     "desktopOnly": "Solo escritorio",
     "desktopOnlyDescription": "El Constructor de Prompts requiere una pantalla más grande para funcionar correctamente. Por favor, abre esta página en una computadora de escritorio o portátil.",
-    "browsePrompts": "Explorar Prompts"
+    "browsePrompts": "Explorar Prompts",
+    "random": "Aleatorio",
+    "generateRandom": "Generar ejemplo aleatorio con IA",
+    "loginToGenerate": "Inicia sesión para generar ejemplos",
+    "rateLimitExceeded": "Espera {seconds} segundos antes de generar de nuevo",
+    "generateFailed": "Error al generar ejemplo",
+    "exampleGenerated": "¡Nuevo ejemplo generado!"
   }
 }

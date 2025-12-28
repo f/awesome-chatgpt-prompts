@@ -6,7 +6,8 @@ import Editor from "@monaco-editor/react";
 import { useTheme } from "next-themes";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { Copy, Play, RotateCcw, Code2, FileJson, FileText, Video, Music, Image as ImageIcon, MessageSquare, Sparkles, Terminal, AlertCircle, XCircle, ChevronDown, ChevronUp, ChevronRight } from "lucide-react";
+import { Copy, Play, RotateCcw, Code2, FileJson, FileText, Video, Music, Image as ImageIcon, MessageSquare, Sparkles, Terminal, AlertCircle, XCircle, ChevronDown, ChevronUp, ChevronRight, Dices, Loader2 } from "lucide-react";
+import { useSession } from "next-auth/react";
 import { toast } from "sonner";
 import { RunPromptButton } from "@/components/prompts/run-prompt-button";
 
@@ -50,7 +51,9 @@ import {
 export function PromptIde() {
   const t = useTranslations("ide");
   const { theme } = useTheme();
+  const { data: session } = useSession();
   const [code, setCode] = useState(EXAMPLE_IMAGE);
+  const [isGenerating, setIsGenerating] = useState(false);
   const [output, setOutput] = useState<string>("");
   const [outputFormat, setOutputFormat] = useState<OutputFormat>("markdown");
   const [error, setError] = useState<string | null>(null);
@@ -521,6 +524,41 @@ export function PromptIde() {
     setError(null);
   }, []);
 
+  const generateExample = useCallback(async () => {
+    if (!session?.user) {
+      toast.error(t("loginToGenerate"));
+      return;
+    }
+    
+    setIsGenerating(true);
+    try {
+      const response = await fetch("/api/prompt-builder/generate-example", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+      
+      const data = await response.json();
+      
+      if (!response.ok) {
+        if (response.status === 429) {
+          toast.error(t("rateLimitExceeded", { seconds: data.resetIn }));
+        } else {
+          toast.error(data.error || t("generateFailed"));
+        }
+        return;
+      }
+      
+      if (data.code) {
+        setCode(data.code);
+        toast.success(t("exampleGenerated"));
+      }
+    } catch {
+      toast.error(t("generateFailed"));
+    } finally {
+      setIsGenerating(false);
+    }
+  }, [session, t]);
+
   // Console resize handlers
   const handleResizeStart = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
@@ -657,6 +695,21 @@ export function PromptIde() {
               >
                 <Sparkles className="h-3 w-3" />
                 OpenAI
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="h-6 text-xs gap-1 px-2"
+                onClick={generateExample}
+                disabled={isGenerating || !session?.user}
+                title={!session?.user ? t("loginToGenerate") : t("generateRandom")}
+              >
+                {isGenerating ? (
+                  <Loader2 className="h-3 w-3 animate-spin" />
+                ) : (
+                  <Dices className="h-3 w-3" />
+                )}
+                {t("random")}
               </Button>
             </div>
           </div>
