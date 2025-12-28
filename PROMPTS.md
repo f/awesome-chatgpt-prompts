@@ -25001,3 +25001,84 @@ Contributed by [@zorttiri431@gmail.com](https://github.com/zorttiri431@gmail.com
 
 </details>
 
+<details>
+<summary><strong>Cinematic Urban Night Portrait - Moody Streetwear Aesthetic</strong></summary>
+
+## Cinematic Urban Night Portrait - Moody Streetwear Aesthetic
+
+Contributed by [@kocosm@hotmail.com](https://github.com/kocosm@hotmail.com)
+
+```md
+{
+  "scene_setup": {
+    "subject": {
+      "clothing": "wearing a black oversized hoodie, black backwards baseball cap, silver chain necklace",
+      "appearance": "male model, beard, intense serious gaze, masculine features",
+      "pose": "sitting or leaning forward, looking down at camera, authoritative stance"
+    },
+    "camera_angle": {
+      "type": "Low angle shot",
+      "focus": "Sharp focus on face, shallow depth of field (bokeh background)",
+      "framing": "Medium close-up portrait"
+    },
+    "environment": {
+      "location": "Urban street at night, under a concrete bridge or overpass",
+      "background_elements": "blurred city lights, bokeh skyscrapers, a car with headlights on in the background",
+      "ground": "wet asphalt, rain reflections"
+    },
+    "lighting_and_fx": {
+      "style": "Cinematic moody lighting, high contrast",
+      "colors": "Teal and orange color grading, warm street lights vs dark blue sky",
+      "effects": "Smoke or steam rising in the foreground, volumetric lighting"
+    },
+    "technical": {
+      "quality": "Photorealistic, 8k resolution, raw photo style, highly detailed texture",
+      "engine": "Unreal Engine 5 render style or high-end photography"
+    }
+  }
+}
+
+```
+
+</details>
+
+<details>
+<summary><strong>Quiet Glow</strong></summary>
+
+## Quiet Glow
+
+Contributed by [@ruthfabregat28@gmail.com](https://github.com/ruthfabregat28@gmail.com)
+
+```md
+Striking young woman in her early 20s, wet tousled shoulder-length golden blonde hair.
+Sun-kissed fair skin with warm undertones, fine water droplets glistening across her collarbones and shoulders.
+
+Wearing a dark, minimalist string bikini top.
+Partially submerged in shallow, translucent coastal water.
+
+She looks directly at the camera with an intense yet soft, introspective gaze.
+Lips gently parted. Damp strands of hair resting naturally on her cheeks.
+
+Set in a tranquil coastal inlet at golden hour.
+Warm amber sunlight reflects off gentle ripples, creating subtle caustic light patterns on her glowing skin.
+
+Emotionally quiet, intimate summer atmosphere.
+Evokes nostalgia, calm, and vulnerability.
+
+Ultra close-up portrait, eye-level angle.
+Cinematic depth of field isolating facial features.
+Soft lens flare and warm rim light outlining her silhouette.
+
+Golden hour natural lighting.
+Creamy highlights, gentle shadows.
+Photorealistic cinematic photography.
+Professional DSLR look.
+High-end magazine editorial style.
+Ultra-detailed skin texture.
+8K UHD quality.
+
+natural imperfections, realistic skin pores, subtle asymmetry
+```
+
+</details>
+
