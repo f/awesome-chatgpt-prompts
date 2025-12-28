@@ -359,7 +359,11 @@
     "learnHowToWritePrompts": "تعلم كيفية كتابة أوامر فعالة ←",
     "structuredFormatDetected": "تم اكتشاف تنسيق {format}",
     "structuredFormatWarningDescription": "يبدو أن محتوى الأمر الخاص بك يشبه بيانات منظمة. فكر في التبديل إلى الوضع المنظم للحصول على تمييز بنائي وتحقق أفضل.",
-    "switchToStructured": "التبديل إلى {format}"
+    "switchToStructured": "التبديل إلى {format}",
+    "jsonFormatWarningTitle": "تم اكتشاف تنسيق JSON",
+    "jsonFormatWarningDescription": "يبدو أن محتوى الأمر الخاص بك بتنسيق JSON، لكنك اخترت نوع النص. هل تريد التبديل إلى التنسيق المنظم للحصول على تمييز بنائي وتحقق أفضل؟",
+    "continueAnyway": "المتابعة على أي حال",
+    "switchToStructuredFormat": "التبديل إلى التنسيق المنظم"
   },
   "changeRequests": {
     "title": "طلبات التغيير",

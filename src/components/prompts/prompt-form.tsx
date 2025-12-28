@@ -43,8 +43,18 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Badge } from "@/components/ui/badge";
 import { CodeEditor, type CodeEditorHandle } from "@/components/ui/code-editor";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
-import { prettifyJson } from "@/lib/format";
+import { prettifyJson, looksLikeJson } from "@/lib/format";
 import { analyticsPrompt } from "@/lib/analytics";
 import { getPromptUrl } from "@/lib/urls";
 
@@ -387,6 +397,8 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
   const [usedAiButtons, setUsedAiButtons] = useState<Set<string>>(new Set());
   const builderRef = useRef<PromptBuilderHandle>(null);
   const [availableGenerators, setAvailableGenerators] = useState<string[]>([]);
+  const [showJsonWarningDialog, setShowJsonWarningDialog] = useState(false);
+  const [pendingSubmitData, setPendingSubmitData] = useState<PromptFormValues | null>(null);
 
   const promptSchema = createPromptSchema(t);
   const form = useForm<PromptFormValues>({
@@ -533,6 +545,22 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
   };
 
   async function onSubmit(data: PromptFormValues) {
+    // Check if content looks like JSON but type is TEXT (not STRUCTURED)
+    const isTextType = !data.structuredFormat && data.type !== "SKILL";
+    const contentLooksLikeJson = looksLikeJson(data.content);
+    
+    if (isTextType && contentLooksLikeJson) {
+      // Store the data and show warning dialog
+      setPendingSubmitData(data);
+      setShowJsonWarningDialog(true);
+      return;
+    }
+
+    // Proceed with normal submission
+    await submitPrompt(data);
+  }
+
+  async function submitPrompt(data: PromptFormValues) {
     setIsLoading(true);
 
     try {
@@ -589,6 +617,29 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
       setIsLoading(false);
     }
   }
+
+  const handleContinueAnyway = () => {
+    if (pendingSubmitData) {
+      setShowJsonWarningDialog(false);
+      submitPrompt(pendingSubmitData);
+      setPendingSubmitData(null);
+    }
+  };
+
+  const handleSwitchToStructured = () => {
+    if (pendingSubmitData) {
+      // Switch to structured format
+      form.setValue("structuredFormat", "JSON");
+      form.setValue("type", "TEXT");
+      setShowJsonWarningDialog(false);
+      setPendingSubmitData(null);
+    }
+  };
+
+  const handleCancelDialog = () => {
+    setShowJsonWarningDialog(false);
+    setPendingSubmitData(null);
+  };
 
   const toggleTag = (tagId: string) => {
     const current = form.getValues("tagIds");
@@ -1204,6 +1255,33 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
         </div>
         </form>
       </Form>
+
+      {/* JSON Format Warning Dialog */}
+      <AlertDialog open={showJsonWarningDialog} onOpenChange={setShowJsonWarningDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>{t("jsonFormatWarningTitle")}</AlertDialogTitle>
+            <AlertDialogDescription>
+              {t("jsonFormatWarningDescription")}
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter className="flex-col sm:flex-row gap-2">
+            <AlertDialogCancel onClick={handleCancelDialog}>
+              {tCommon("cancel")}
+            </AlertDialogCancel>
+            <Button
+              variant="outline"
+              onClick={handleSwitchToStructured}
+              className="sm:mr-auto"
+            >
+              {t("switchToStructuredFormat")}
+            </Button>
+            <AlertDialogAction onClick={handleContinueAnyway}>
+              {t("continueAnyway")}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </>
   );
 }

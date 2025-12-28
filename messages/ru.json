@@ -359,7 +359,11 @@
     "learnHowToWritePrompts": "Узнайте, как писать эффективные промпты →",
     "structuredFormatDetected": "Обнаружен формат {format}",
     "structuredFormatWarningDescription": "Содержимое вашего промпта похоже на структурированные данные. Рассмотрите переключение в структурированный режим для лучшей подсветки синтаксиса и валидации.",
-    "switchToStructured": "Переключить на {format}"
+    "switchToStructured": "Переключить на {format}",
+    "jsonFormatWarningTitle": "Обнаружен формат JSON",
+    "jsonFormatWarningDescription": "Содержимое вашего промпта, похоже, в формате JSON, но вы выбрали тип Текст. Хотите переключиться на структурированный формат для лучшей подсветки синтаксиса и валидации?",
+    "continueAnyway": "Все равно продолжить",
+    "switchToStructuredFormat": "Переключить на структурированный формат"
   },
   "changeRequests": {
     "title": "Запросы на изменение",

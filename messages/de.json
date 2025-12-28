@@ -359,7 +359,11 @@
     "learnHowToWritePrompts": "Lernen Sie, effektive Prompts zu schreiben →",
     "structuredFormatDetected": "{format}-Format erkannt",
     "structuredFormatWarningDescription": "Ihr Prompt-Inhalt sieht nach strukturierten Daten aus. Erwägen Sie den Wechsel in den strukturierten Modus für bessere Syntaxhervorhebung und Validierung.",
-    "switchToStructured": "Zu {format} wechseln"
+    "switchToStructured": "Zu {format} wechseln",
+    "jsonFormatWarningTitle": "JSON-Format Erkannt",
+    "jsonFormatWarningDescription": "Ihr Prompt-Inhalt scheint im JSON-Format zu sein, aber Sie haben den Typ Text ausgewählt. Möchten Sie zum Strukturierten Format wechseln, um eine bessere Syntaxhervorhebung und Validierung zu erhalten?",
+    "continueAnyway": "Trotzdem Fortfahren",
+    "switchToStructuredFormat": "Zum Strukturierten Format Wechseln"
   },
   "changeRequests": {
     "title": "Änderungsanfragen",

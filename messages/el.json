@@ -359,7 +359,11 @@
     "learnHowToWritePrompts": "Μάθετε πώς να γράφετε αποτελεσματικά prompts →",
     "structuredFormatDetected": "Εντοπίστηκε μορφή {format}",
     "structuredFormatWarningDescription": "Το περιεχόμενο του prompt σας μοιάζει με δομημένα δεδομένα. Σκεφτείτε να αλλάξετε σε δομημένη λειτουργία για καλύτερη επισήμανση σύνταξης και επικύρωση.",
-    "switchToStructured": "Αλλαγή σε {format}"
+    "switchToStructured": "Αλλαγή σε {format}",
+    "jsonFormatWarningTitle": "Εντοπίστηκε Μορφή JSON",
+    "jsonFormatWarningDescription": "Το περιεχόμενο του prompt σας φαίνεται να είναι σε μορφή JSON, αλλά έχετε επιλέξει τον τύπο Κείμενο. Θα θέλατε να αλλάξετε σε δομημένη μορφή για καλύτερη επισήμανση σύνταξης και επικύρωση;",
+    "continueAnyway": "Συνέχεια Ούτως ή Άλλως",
+    "switchToStructuredFormat": "Αλλαγή σε Δομημένη Μορφή"
   },
   "changeRequests": {
     "title": "Αιτήσεις αλλαγής",

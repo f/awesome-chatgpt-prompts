@@ -359,7 +359,11 @@
     "learnHowToWritePrompts": "Learn how to write effective prompts →",
     "structuredFormatDetected": "{format} format detected",
     "structuredFormatWarningDescription": "Your prompt content looks like structured data. Consider switching to structured mode for better syntax highlighting and validation.",
-    "switchToStructured": "Switch to {format}"
+    "switchToStructured": "Switch to {format}",
+    "jsonFormatWarningTitle": "JSON Format Detected",
+    "jsonFormatWarningDescription": "Your prompt content appears to be in JSON format, but you've selected Text type. Would you like to switch to Structured format for better syntax highlighting and validation?",
+    "continueAnyway": "Continue Anyway",
+    "switchToStructuredFormat": "Switch to Structured Format"
   },
   "changeRequests": {
     "title": "Change Requests",

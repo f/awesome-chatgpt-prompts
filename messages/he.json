@@ -359,7 +359,11 @@
     "learnHowToWritePrompts": "למדו איך לכתוב פרומפטים יעילים ←",
     "structuredFormatDetected": "זוהה פורמט {format}",
     "structuredFormatWarningDescription": "תוכן הפרומפט שלך נראה כמו נתונים מובנים. שקול לעבור למצב מובנה להדגשת תחביר ואימות טובים יותר.",
-    "switchToStructured": "לעבור ל-{format}"
+    "switchToStructured": "לעבור ל-{format}",
+    "jsonFormatWarningTitle": "זוהה פורמט JSON",
+    "jsonFormatWarningDescription": "תוכן הפרומפט שלך נראה בפורמט JSON, אבל בחרת בסוג טקסט. האם תרצה לעבור לפורמט מובנה להדגשת תחביר ואימות טובים יותר?",
+    "continueAnyway": "להמשיך בכל מקרה",
+    "switchToStructuredFormat": "לעבור לפורמט מובנה"
   },
   "changeRequests": {
     "title": "בקשות שינוי",

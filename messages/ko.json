@@ -359,7 +359,11 @@
     "learnHowToWritePrompts": "효과적인 프롬프트 작성법 배우기 →",
     "structuredFormatDetected": "{format} 형식 감지됨",
     "structuredFormatWarningDescription": "프롬프트 내용이 구조화된 데이터처럼 보입니다. 더 나은 구문 강조 표시 및 유효성 검사를 위해 구조화 모드로 전환하는 것을 고려해 보세요.",
-    "switchToStructured": "{format}으로 전환"
+    "switchToStructured": "{format}으로 전환",
+    "jsonFormatWarningTitle": "JSON 형식 감지됨",
+    "jsonFormatWarningDescription": "프롬프트 내용이 JSON 형식인 것 같지만 텍스트 유형을 선택했습니다. 더 나은 구문 강조 표시 및 유효성 검사를 위해 구조화 형식으로 전환하시겠습니까?",
+    "continueAnyway": "그래도 계속",
+    "switchToStructuredFormat": "구조화 형식으로 전환"
   },
   "changeRequests": {
     "title": "변경 요청",
