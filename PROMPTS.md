@@ -2726,7 +2726,7 @@ I want you to act as a virtual event planner, responsible for organizing and exe
 <details>
 <summary><strong>Linkedin Ghostwriter</strong></summary>
 
-## Linkedin Ghostwriter
+## Technical Architecture
 
 Contributed by [@awesomesolution](https://github.com/awesomesolution)
 
