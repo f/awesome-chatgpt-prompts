@@ -1040,6 +1040,18 @@
       "selfHost": {
         "question": "Can I self-host this platform?",
         "answer": "Absolutely! prompts.chat is fully open source. You can deploy your own private instance for your team or organization. Check out our self-hosting documentation for setup instructions."
+      },
+      "verification": {
+        "question": "How can I become a verified user?",
+        "answer": "Verification is granted by administrators to users who consistently share quality prompts. There are no strict rules — if you contribute valuable prompts to the community, an admin may select you as verified. Focus on creating helpful, well-crafted prompts and the recognition will follow."
+      },
+      "aiCredits": {
+        "question": "How do AI preview generation credits work?",
+        "answer": "Each user receives 3 AI generation credits per day by default. These credits allow you to generate preview images, videos, or audio for your prompts using AI. Administrators can adjust the daily credit limit for individual users if needed."
+      },
+      "attribution": {
+        "question": "What if the attribution on a prompt is wrong?",
+        "answer": "If you notice incorrect attribution on a prompt (for example, if you're the original author but not credited), please open an issue on our GitHub repository. You can use the form below to submit your issue, and we'll review and correct it as soon as possible."
       }
     },
     "contact": {

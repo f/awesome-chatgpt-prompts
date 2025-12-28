@@ -362,6 +362,9 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
                 DeepWiki
                 <ExternalLink className="h-2.5 w-2.5 ml-auto opacity-50" />
               </Link>
+              <Link href="/how_to_write_effective_prompts" prefetch={false} className="hover:text-foreground">
+                {t("footer.howTo")}
+              </Link>
               <Link href="/docs/self-hosting" prefetch={false} className="hover:text-foreground">
                 {t("footer.docs")}
               </Link>
@@ -373,6 +376,9 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
               </Link>
               <Link href="/terms" prefetch={false} className="hover:text-foreground">
                 {t("footer.terms")}
+              </Link>
+              <Link href="/support" prefetch={false} className="hover:text-foreground">
+                {t("footer.support")}
               </Link>
             </>
           )}

@@ -112,6 +112,9 @@ export default function SupportPage() {
     { question: t("faq.howToUse.question"), answer: t("faq.howToUse.answer") },
     { question: t("faq.license.question"), answer: t("faq.license.answer") },
     { question: t("faq.selfHost.question"), answer: t("faq.selfHost.answer") },
+    { question: t("faq.verification.question"), answer: t("faq.verification.answer") },
+    { question: t("faq.aiCredits.question"), answer: t("faq.aiCredits.answer") },
+    { question: t("faq.attribution.question"), answer: t("faq.attribution.answer") },
   ];
 
   return (

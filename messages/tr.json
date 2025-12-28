@@ -1040,6 +1040,18 @@
       "selfHost": {
         "question": "Bu platformu kendi sunucumda barındırabilir miyim?",
         "answer": "Kesinlikle! prompts.chat tamamen açık kaynaklıdır. Ekibiniz veya kuruluşunuz için kendi özel örneğinizi dağıtabilirsiniz. Kurulum talimatları için self-hosting dokümantasyonumuza göz atın."
+      },
+      "verification": {
+        "question": "Doğrulanmış kullanıcı nasıl olabilirim?",
+        "answer": "Doğrulama, sürekli olarak kaliteli promptlar paylaşan kullanıcılara yöneticiler tarafından verilir. Katı kurallar yoktur — topluluğa değerli promptlar katkıda bulunursanız, bir yönetici sizi doğrulanmış olarak seçebilir. Faydalı, iyi hazırlanmış promptlar oluşturmaya odaklanın ve takdir gelecektir."
+      },
+      "aiCredits": {
+        "question": "AI önizleme oluşturma kredileri nasıl çalışır?",
+        "answer": "Her kullanıcı varsayılan olarak günde 3 AI oluşturma kredisi alır. Bu krediler, AI kullanarak promptlarınız için önizleme görselleri, videolar veya ses dosyaları oluşturmanıza olanak tanır. Yöneticiler, gerektiğinde bireysel kullanıcılar için günlük kredi limitini ayarlayabilir."
+      },
+      "attribution": {
+        "question": "Bir prompttaki atıf yanlışsa ne yapmalıyım?",
+        "answer": "Bir promptta yanlış atıf fark ederseniz (örneğin, orijinal yazar sizseniz ancak kredi verilmemişse), lütfen GitHub deposunda bir issue açın. Sorununuzu göndermek için aşağıdaki formu kullanabilirsiniz, en kısa sürede inceleyip düzelteceğiz."
       }
     },
     "contact": {

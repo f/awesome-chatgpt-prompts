@@ -117,6 +117,75 @@ export default function TermsPage() {
         </section>
 
         <section className="space-y-3">
+          <h2 className="text-lg font-semibold">Explicit Content Policy</h2>
+          <p className="text-muted-foreground">
+            We maintain a strict policy against explicit, adult, or inappropriate content. This applies to all media 
+            uploaded to the platform, including preview images, videos, and audio files.
+          </p>
+          <ul className="list-disc list-inside text-muted-foreground space-y-1">
+            <li>Media containing explicit, pornographic, or sexually suggestive content is strictly prohibited</li>
+            <li>Content depicting violence, gore, or disturbing imagery is not allowed</li>
+            <li>Any media that violates these guidelines may be delisted or permanently deleted without prior warning</li>
+          </ul>
+          <p className="text-muted-foreground mt-3">
+            <strong>Repeated violations:</strong> Users who repeatedly upload explicit or inappropriate content will face 
+            escalating consequences, including account flagging, restrictions, or permanent ban from the platform. 
+            We reserve the right to take immediate action to protect the community.
+          </p>
+          <p className="text-muted-foreground mt-3">
+            <strong>Self-hosting option:</strong> If you require the ability to host content that does not comply with 
+            our public platform policies, you are welcome to{" "}
+            <Link href="/docs/self-hosting" className="underline hover:text-foreground">
+              deploy your own private instance
+            </Link>{" "}
+            of prompts.chat. Self-hosted instances operate independently and are not subject to our content moderation policies.
+          </p>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="text-lg font-semibold">User Verification</h2>
+          <p className="text-muted-foreground">
+            Users may receive a &quot;verified&quot; status on their profile. Verification is granted at the sole discretion 
+            of administrators to users who consistently contribute quality prompts to the platform. There are no strict 
+            criteria or requirements for verification — it is an informal recognition of valuable community members.
+          </p>
+          <p className="text-muted-foreground mt-3">
+            Verified status may be revoked at any time if a user&apos;s contributions no longer meet quality expectations 
+            or if they violate these terms.
+          </p>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="text-lg font-semibold">AI Preview Generation Credits</h2>
+          <p className="text-muted-foreground">
+            The platform provides AI-powered media generation features to create preview images, videos, or audio for prompts. 
+            By default, each user receives 3 generation credits per day. Credits reset daily.
+          </p>
+          <ul className="list-disc list-inside text-muted-foreground space-y-1">
+            <li>Administrators may adjust individual user credit limits at their discretion</li>
+            <li>Unused credits do not roll over to subsequent days</li>
+            <li>Generated media is subject to the same CC0 license as prompts</li>
+            <li>We reserve the right to modify the default credit allocation at any time</li>
+          </ul>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="text-lg font-semibold">Attribution & Corrections</h2>
+          <p className="text-muted-foreground">
+            While all content is released under CC0 (public domain), we strive to maintain accurate attribution for prompts. 
+            If you believe the attribution on a prompt is incorrect (for example, if you are the original author but not credited), 
+            please open an issue on our{" "}
+            <Link href="https://github.com/f/awesome-chatgpt-prompts/issues" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">
+              GitHub repository
+            </Link>{" "}
+            or use the form on our{" "}
+            <Link href="/support" className="underline hover:text-foreground">
+              Support page
+            </Link>.
+          </p>
+        </section>
+
+        <section className="space-y-3">
           <h2 className="text-lg font-semibold">Disclaimer of Warranties</h2>
           <p className="text-muted-foreground">
             The service is provided &quot;as is&quot; without warranties of any kind. We do not guarantee 

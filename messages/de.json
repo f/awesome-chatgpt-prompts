@@ -1039,7 +1039,19 @@
       },
       "selfHost": {
         "question": "Kann ich diese Plattform selbst hosten?",
-        "answer": "Auf jeden Fall! prompts.chat ist vollständig Open Source. Sie können Ihre eigene private Instanz für Ihr Team oder Ihre Organisation bereitstellen. Schauen Sie sich unsere Self-Hosting-Dokumentation für Einrichtungsanweisungen an."
+        "answer": "Absolut! prompts.chat ist vollständig Open Source. Sie können Ihre eigene private Instanz für Ihr Team oder Ihre Organisation bereitstellen. Schauen Sie sich unsere Self-Hosting-Dokumentation für Einrichtungsanweisungen an."
+      },
+      "verification": {
+        "question": "Wie kann ich ein verifizierter Benutzer werden?",
+        "answer": "Die Verifizierung wird von Administratoren an Benutzer vergeben, die regelmäßig qualitativ hochwertige Prompts teilen. Es gibt keine strengen Regeln — wenn Sie wertvolle Prompts zur Community beitragen, kann ein Administrator Sie als verifiziert auswählen. Konzentrieren Sie sich auf hilfreiche, gut gestaltete Prompts und die Anerkennung wird folgen."
+      },
+      "aiCredits": {
+        "question": "Wie funktionieren die KI-Vorschau-Generierungsguthaben?",
+        "answer": "Jeder Benutzer erhält standardmäßig 3 KI-Generierungsguthaben pro Tag. Diese Guthaben ermöglichen es Ihnen, Vorschaubilder, Videos oder Audio für Ihre Prompts mit KI zu generieren. Administratoren können das tägliche Guthabenlimit für einzelne Benutzer bei Bedarf anpassen."
+      },
+      "attribution": {
+        "question": "Was ist, wenn die Zuschreibung bei einem Prompt falsch ist?",
+        "answer": "Wenn Sie eine falsche Zuschreibung bei einem Prompt bemerken (zum Beispiel, wenn Sie der ursprüngliche Autor sind, aber nicht genannt werden), eröffnen Sie bitte ein Issue in unserem GitHub-Repository. Sie können das untenstehende Formular verwenden, um Ihr Anliegen einzureichen, und wir werden es so schnell wie möglich prüfen und korrigieren."
       }
     },
     "contact": {

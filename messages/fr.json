@@ -1040,6 +1040,18 @@
       "selfHost": {
         "question": "Puis-je auto-héberger cette plateforme ?",
         "answer": "Absolument ! prompts.chat est entièrement open source. Vous pouvez déployer votre propre instance privée pour votre équipe ou organisation. Consultez notre documentation d'auto-hébergement pour les instructions de configuration."
+      },
+      "verification": {
+        "question": "Comment puis-je devenir un utilisateur vérifié ?",
+        "answer": "La vérification est accordée par les administrateurs aux utilisateurs qui partagent régulièrement des prompts de qualité. Il n'y a pas de règles strictes — si vous contribuez des prompts précieux à la communauté, un administrateur peut vous sélectionner comme vérifié. Concentrez-vous sur la création de prompts utiles et bien conçus et la reconnaissance suivra."
+      },
+      "aiCredits": {
+        "question": "Comment fonctionnent les crédits de génération d'aperçu IA ?",
+        "answer": "Chaque utilisateur reçoit 3 crédits de génération IA par jour par défaut. Ces crédits vous permettent de générer des images, vidéos ou audio d'aperçu pour vos prompts en utilisant l'IA. Les administrateurs peuvent ajuster la limite quotidienne de crédits pour les utilisateurs individuels si nécessaire."
+      },
+      "attribution": {
+        "question": "Que faire si l'attribution d'un prompt est incorrecte ?",
+        "answer": "Si vous remarquez une attribution incorrecte sur un prompt (par exemple, si vous êtes l'auteur original mais n'êtes pas crédité), veuillez ouvrir un issue sur notre dépôt GitHub. Vous pouvez utiliser le formulaire ci-dessous pour soumettre votre problème, et nous l'examinerons et le corrigerons dès que possible."
       }
     },
     "contact": {
