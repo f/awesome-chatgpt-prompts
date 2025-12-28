@@ -72,7 +72,11 @@ const prompt = video()
   
   .build();
 
-prompt;
+export default {
+  json: prompt.structure,
+  yaml: prompt.structure,
+  markdown: prompt.prompt,
+};
 `;
 
 export const EXAMPLE_AUDIO = `import { audio } from 'prompts.chat';
@@ -138,7 +142,11 @@ const prompt = audio()
   
   .build();
 
-prompt;
+export default {
+  json: prompt.structure,
+  yaml: prompt.structure,
+  markdown: prompt.prompt,
+};
 `;
 
 export const EXAMPLE_IMAGE = `import { image } from 'prompts.chat';
@@ -220,7 +228,11 @@ const prompt = image()
   
   .build();
 
-prompt;
+export default {
+  json: prompt.structure,
+  yaml: prompt.structure,
+  markdown: prompt.prompt,
+};
 `;
 
 export const EXAMPLE_CHAT = `import { chat } from 'prompts.chat';
@@ -246,7 +258,11 @@ const prompt = chat()
   
   .build();
 
-prompt;
+export default {
+  json: prompt.structure,
+  yaml: prompt.structure,
+  markdown: prompt.systemPrompt,
+};
 `;
 
 export const EXAMPLE_OPENAI_CHAT = `import OpenAI from 'openai';
@@ -334,6 +350,9 @@ const prompt = builder()
 // Or use pre-built templates
 const translatePrompt = templates.translation("English", "Spanish").build();
 
-// Export the main prompt
-prompt;
+export default {
+  json: prompt.structure,
+  yaml: prompt.structure,
+  markdown: prompt.systemPrompt,
+};
 `;

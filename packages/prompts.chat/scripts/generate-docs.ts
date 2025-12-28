@@ -949,7 +949,7 @@ function generateTypeDefinitions(modules: ModuleDoc[]): string {
 }
 
 // Extract string literal options from type aliases and method parameters
-function extractStringLiteralOptions(program: ts.Program, files: string[]): Record<string, string[]> {
+function extractStringLiteralOptions(program: ts.Program, files: string[]): { methodOptions: Record<string, string[]>; typeAliases: Record<string, string[]> } {
   // Phase 1: Collect all type aliases and interface properties
   const typeAliases: Record<string, string[]> = {};
   const interfaceProps: Record<string, Record<string, string[]>> = {}; // InterfaceName -> { propName -> literals }
@@ -1084,7 +1084,29 @@ function extractStringLiteralOptions(program: ts.Program, files: string[]): Reco
     extractMethods(sourceFile);
   }
 
-  return methodOptions;
+  return { methodOptions, typeAliases };
+}
+
+// Generate type options mapping (TypeName -> valid values) for error messages
+function generateTypeOptions(typeAliases: Record<string, string[]>): string {
+  const lines: string[] = [];
+  
+  lines.push('');
+  lines.push('// Type name to valid options mapping for enhanced error messages');
+  lines.push('export const TYPE_OPTIONS: Record<string, string[]> = {');
+  
+  // Sort keys for consistent output
+  const sortedKeys = Object.keys(typeAliases).sort();
+  
+  for (const key of sortedKeys) {
+    if (typeAliases[key].length > 0) {
+      lines.push(`  ${JSON.stringify(key)}: ${JSON.stringify(typeAliases[key])},`);
+    }
+  }
+  
+  lines.push('};');
+  
+  return lines.join('\n');
 }
 
 // Generate method options file for Monaco autocomplete
@@ -1226,8 +1248,8 @@ const typeDefs = generateTypeDefinitions(modules);
 fs.writeFileSync(typeDefsOutputPath, typeDefs, 'utf-8');
 
 // Extract string literal options and generate method options file
-const stringLiteralOptions = extractStringLiteralOptions(program, existingFiles);
-const methodOptionsContent = generateMethodOptions(stringLiteralOptions);
+const { methodOptions, typeAliases } = extractStringLiteralOptions(program, existingFiles);
+const methodOptionsContent = generateMethodOptions(methodOptions) + generateTypeOptions(typeAliases);
 fs.writeFileSync(methodOptionsOutputPath, methodOptionsContent, 'utf-8');
 
 console.log(`✅ Generated API documentation: ${outputPath}`);
@@ -1235,4 +1257,4 @@ console.log(`✅ Generated sidebar TypeScript: ${sidebarOutputPath}`);
 console.log(`✅ Generated type definitions: ${typeDefsOutputPath}`);
 console.log(`✅ Generated method options: ${methodOptionsOutputPath}`);
 console.log(`   Parsed ${modules.length} modules with ${modules.reduce((acc, m) => acc + m.exports.length, 0)} exports`);
-console.log(`   Extracted ${Object.keys(stringLiteralOptions).length} string literal types`);
+console.log(`   Extracted ${Object.keys(methodOptions).length} method options and ${Object.keys(typeAliases).length} type aliases`);
