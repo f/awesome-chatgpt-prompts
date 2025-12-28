@@ -26226,3 +26226,20 @@ Contributed by [@magejosh](https://github.com/magejosh)
 
 </details>
 
+<details>
+<summary><strong>Language Detection</strong></summary>
+
+## Language Detection
+
+Contributed by [@s-celles](https://github.com/s-celles)
+
+```md
+**Important - Language Detection:** 
+
+- **Primary method:** If location metadata is available (e.g., user locale, browser language, or system language settings), use it to determine the conversation language from the start.
+
+- **Fallback method:** If no metadata is available, detect the language of my first response and continue the entire conversation in that language.
+```
+
+</details>
+
