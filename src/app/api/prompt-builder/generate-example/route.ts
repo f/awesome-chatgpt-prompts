@@ -1,4 +1,3 @@
-import { NextRequest } from "next/server";
 import OpenAI from "openai";
 import { auth } from "@/lib/auth";
 import { getConfig } from "@/lib/config";
@@ -15,6 +14,108 @@ import {
 const generateExamplePrompt = loadPrompt("src/lib/ai/generate-example.prompt.yml");
 
 const GENERATIVE_MODEL = process.env.OPENAI_GENERATIVE_MODEL || "gpt-4o";
+
+// Extract valid method names from TYPE_DEFINITIONS for each builder type
+function extractValidMethods(): Map<string, Set<string>> {
+  const builderMethods = new Map<string, Set<string>>();
+  
+  // Match class methods: methodName(params): ReturnType
+  const classPatterns = [
+    { name: 'video', regex: /export class VideoPromptBuilder \{([\s\S]*?)^\s*\}/m },
+    { name: 'audio', regex: /export class AudioPromptBuilder \{([\s\S]*?)^\s*\}/m },
+    { name: 'image', regex: /export class ImagePromptBuilder \{([\s\S]*?)^\s*\}/m },
+    { name: 'chat', regex: /export class ChatPromptBuilder \{([\s\S]*?)^\s*\}/m },
+    { name: 'builder', regex: /export class PromptBuilder \{([\s\S]*?)^\s*\}/m },
+  ];
+  
+  for (const { name, regex } of classPatterns) {
+    const match = TYPE_DEFINITIONS.match(regex);
+    if (match) {
+      const methods = new Set<string>();
+      // Match method names: methodName( or methodName<
+      const methodMatches = match[1].matchAll(/^\s*(\w+)\s*[(<]/gm);
+      for (const m of methodMatches) {
+        methods.add(m[1]);
+      }
+      builderMethods.set(name, methods);
+    }
+  }
+  
+  return builderMethods;
+}
+
+// Detect which builder type is being used in the code
+function detectBuilderType(code: string): string | null {
+  if (code.includes("video()")) return "video";
+  if (code.includes("audio()")) return "audio";
+  if (code.includes("image()")) return "image";
+  if (code.includes("chat()")) return "chat";
+  if (code.includes("builder()")) return "builder";
+  return null;
+}
+
+// Remove invalid method calls from the generated code
+function removeInvalidMethods(code: string, validMethods: Set<string>): string {
+  // Match chained method calls: .methodName( or .methodName({ or .methodName([
+  // We need to remove entire method calls including their arguments
+  const lines = code.split('\n');
+  const cleanedLines: string[] = [];
+  
+  let i = 0;
+  while (i < lines.length) {
+    const line = lines[i];
+    
+    // Check if line contains a method call
+    const methodMatch = line.match(/^\s*\.(\w+)\s*\(/);
+    if (methodMatch) {
+      const methodName = methodMatch[1];
+      if (!validMethods.has(methodName)) {
+        // Skip this method call - need to find where it ends
+        let bracketCount = 0;
+        let foundOpen = false;
+        let skipUntil = i;
+        
+        for (let j = i; j < lines.length; j++) {
+          const checkLine = lines[j];
+          for (const char of checkLine) {
+            if (char === '(' || char === '{' || char === '[') {
+              bracketCount++;
+              foundOpen = true;
+            } else if (char === ')' || char === '}' || char === ']') {
+              bracketCount--;
+            }
+          }
+          skipUntil = j;
+          if (foundOpen && bracketCount === 0) break;
+        }
+        
+        i = skipUntil + 1;
+        continue;
+      }
+    }
+    
+    cleanedLines.push(line);
+    i++;
+  }
+  
+  return cleanedLines.join('\n');
+}
+
+// Validate and clean generated code
+function validateAndCleanCode(code: string): string {
+  const validMethodsMap = extractValidMethods();
+  const builderType = detectBuilderType(code);
+  
+  if (!builderType) return code;
+  
+  const validMethods = validMethodsMap.get(builderType);
+  if (!validMethods || validMethods.size === 0) return code;
+  
+  // Add common methods that are valid for all builders
+  validMethods.add('build');
+  
+  return removeInvalidMethods(code, validMethods);
+}
 
 // Rate limiting: 1 request per minute per user
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
@@ -39,7 +140,7 @@ function checkRateLimit(userId: string): { allowed: boolean; remaining: number; 
   return { allowed: true, remaining: RATE_LIMIT_MAX_REQUESTS - userLimit.count, resetIn: userLimit.resetAt - now };
 }
 
-export async function POST(request: NextRequest) {
+export async function POST() {
   const session = await auth();
   if (!session?.user) {
     return new Response(JSON.stringify({ error: "Unauthorized. Please log in to generate examples." }), {
@@ -140,6 +241,9 @@ ${DEFAULT_CODE}
     } else if (cleanCode.startsWith("```")) {
       cleanCode = cleanCode.replace(/^```\n?/, "").replace(/\n?```$/, "");
     }
+
+    // Validate and remove invalid method calls based on TYPE_DEFINITIONS
+    cleanCode = validateAndCleanCode(cleanCode.trim());
 
     return new Response(JSON.stringify({ code: cleanCode.trim() }), {
       status: 200,

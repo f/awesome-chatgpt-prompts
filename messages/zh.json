@@ -1219,17 +1219,19 @@
     "run": "运行",
     "reset": "重置",
     "copied": "已复制到剪贴板",
-    "runToPreview": "点击运行查看提示词预览",
+    "runToPreview": "编写代码查看预览",
     "cannotEvaluate": "此代码无法评估。",
     "onlyPromptsChat": "仅支持 {library} 导入。",
     "desktopOnly": "仅限桌面端",
     "desktopOnlyDescription": "提示词构建器需要更大的屏幕才能正常工作。请在台式电脑或笔记本电脑上打开此页面。",
     "browsePrompts": "浏览提示词",
+    "createPrompt": "创建提示词",
     "random": "随机",
     "generateRandom": "使用AI生成随机示例",
     "loginToGenerate": "请登录以生成示例",
     "rateLimitExceeded": "请等待{seconds}秒后再生成",
     "generateFailed": "生成示例失败",
-    "exampleGenerated": "新示例已生成！"
+    "exampleGenerated": "新示例已生成！",
+    "ignoreTypeErrors": "忽略类型错误"
   }
 }

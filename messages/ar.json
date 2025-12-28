@@ -1219,17 +1219,19 @@
     "run": "تشغيل",
     "reset": "إعادة تعيين",
     "copied": "تم النسخ إلى الحافظة",
-    "runToPreview": "انقر على تشغيل لمشاهدة معاينة الأمر",
+    "runToPreview": "اكتب الكود لمشاهدة معاينة البرومبت",
     "cannotEvaluate": "لا يمكن تقييم هذا الكود.",
     "onlyPromptsChat": "يتم دعم استيراد {library} فقط.",
     "desktopOnly": "للحاسوب فقط",
     "desktopOnlyDescription": "يتطلب منشئ الأوامر شاشة أكبر ليعمل بشكل صحيح. يرجى فتح هذه الصفحة على جهاز كمبيوتر مكتبي أو محمول.",
-    "browsePrompts": "تصفح الأوامر",
+    "browsePrompts": "تصفح البرومبتات",
+    "createPrompt": "إنشاء برومبت",
     "random": "عشوائي",
     "generateRandom": "إنشاء مثال عشوائي بالذكاء الاصطناعي",
     "loginToGenerate": "يرجى تسجيل الدخول لإنشاء الأمثلة",
     "rateLimitExceeded": "يرجى الانتظار {seconds} ثانية قبل الإنشاء مرة أخرى",
     "generateFailed": "فشل في إنشاء المثال",
-    "exampleGenerated": "تم إنشاء مثال جديد!"
+    "exampleGenerated": "تم إنشاء مثال جديد!",
+    "ignoreTypeErrors": "تجاهل أخطاء النوع"
   }
 }

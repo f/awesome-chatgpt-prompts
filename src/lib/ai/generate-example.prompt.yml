@@ -24,9 +24,8 @@ messages:
       3. Use the fluent chainable API extensively to showcase its power
       4. Add helpful comments explaining each section
       5. Include the export default block with appropriate output properties:
-         - For video/audio/image: use `prompt.structure` for json/yaml, `prompt.prompt` for markdown
-         - For chat: use `prompt.messages` for json/yaml, `prompt.systemPrompt` for markdown
-         - For builder: use `prompt` for json/yaml, `prompt.content` for markdown
+         - MUST: For video/audio/image: use `prompt.structure` for json/yaml, `prompt.prompt` for markdown
+         - MUST: For chat: use `prompt.messages` for json/yaml, `prompt.systemPrompt` for markdown
       
       ## Creative Theme Ideas (pick something NOT in these lists)
       - Sci-fi, fantasy, horror, romance, mystery genres

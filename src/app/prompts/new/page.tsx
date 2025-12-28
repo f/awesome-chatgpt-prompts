@@ -14,13 +14,19 @@ export const metadata: Metadata = {
 };
 
 interface PageProps {
-  searchParams: Promise<{ prompt?: string }>;
+  searchParams: Promise<{ 
+    prompt?: string; 
+    title?: string; 
+    content?: string;
+    type?: "TEXT" | "IMAGE" | "VIDEO" | "AUDIO";
+    format?: "JSON" | "YAML";
+  }>;
 }
 
 export default async function NewPromptPage({ searchParams }: PageProps) {
   const session = await auth();
   const t = await getTranslations("prompts");
-  const { prompt: initialPromptRequest } = await searchParams;
+  const { prompt: initialPromptRequest, title, content, type, format } = await searchParams;
 
   if (!session?.user) {
     redirect("/login");
@@ -60,6 +66,12 @@ export default async function NewPromptPage({ searchParams }: PageProps) {
         aiGenerationEnabled={aiGenerationEnabled}
         aiModelName={aiModelName}
         initialPromptRequest={initialPromptRequest}
+        initialData={(title || content || type || format) ? { 
+          title: title || "", 
+          content: content || "",
+          type: type || "TEXT",
+          structuredFormat: format || undefined,
+        } : undefined}
       />
     </div>
   );

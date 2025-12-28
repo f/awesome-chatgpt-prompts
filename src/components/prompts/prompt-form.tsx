@@ -378,6 +378,23 @@ interface PromptFormProps {
   initialPromptRequest?: string;
 }
 
+// Read builder data from sessionStorage before form initialization
+function getBuilderData(): { content?: string; type?: string; format?: string } | null {
+  if (typeof window === 'undefined') return null;
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get("from") !== "builder") return null;
+  
+  const storedData = sessionStorage.getItem("promptBuilderData");
+  if (!storedData) return null;
+  
+  sessionStorage.removeItem("promptBuilderData");
+  try {
+    return JSON.parse(storedData);
+  } catch {
+    return null;
+  }
+}
+
 export function PromptForm({ categories, tags, initialData, initialContributors = [], promptId, mode = "create", aiGenerationEnabled = false, aiModelName, initialPromptRequest }: PromptFormProps) {
   const router = useRouter();
   const t = useTranslations("prompts");
@@ -388,17 +405,20 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
   const builderRef = useRef<PromptBuilderHandle>(null);
   const [availableGenerators, setAvailableGenerators] = useState<string[]>([]);
 
+  // Get builder data on first render
+  const [builderData] = useState(() => getBuilderData());
+
   const promptSchema = createPromptSchema(t);
   const form = useForm<PromptFormValues>({
     resolver: zodResolver(promptSchema) as never,
     defaultValues: {
       title: initialData?.title || "",
       description: initialData?.description || "",
-      content: initialData?.content && initialData?.structuredFormat === "JSON" 
+      content: builderData?.content || (initialData?.content && initialData?.structuredFormat === "JSON" 
         ? prettifyJson(initialData.content) 
-        : (initialData?.content || ""),
-      type: initialData?.type || "TEXT",
-      structuredFormat: initialData?.structuredFormat || undefined,
+        : (initialData?.content || "")),
+      type: builderData?.format ? "TEXT" : (builderData?.type as "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" || initialData?.type || "TEXT"),
+      structuredFormat: (builderData?.format as "JSON" | "YAML") || initialData?.structuredFormat || undefined,
       categoryId: initialData?.categoryId || "",
       tagIds: initialData?.tagIds || [],
       isPrivate: initialData?.isPrivate || false,

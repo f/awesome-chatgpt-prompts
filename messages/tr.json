@@ -1219,17 +1219,19 @@
     "run": "Çalıştır",
     "reset": "Sıfırla",
     "copied": "Panoya kopyalandı",
-    "runToPreview": "Önizleme için Çalıştır'a tıklayın",
+    "runToPreview": "Önizleme için kod yazın",
     "cannotEvaluate": "Bu kod değerlendirilemiyor.",
     "onlyPromptsChat": "Sadece {library} importları destekleniyor.",
     "desktopOnly": "Yalnızca Masaüstü",
     "desktopOnlyDescription": "Prompt Oluşturucu düzgün çalışması için daha büyük bir ekran gerektirir. Lütfen bu sayfayı bir masaüstü veya dizüstü bilgisayarda açın.",
     "browsePrompts": "Promptlara Göz At",
+    "createPrompt": "Prompt Oluştur",
     "random": "Rastgele",
     "generateRandom": "AI ile rastgele örnek oluştur",
     "loginToGenerate": "Örnek oluşturmak için giriş yapın",
     "rateLimitExceeded": "Tekrar oluşturmak için {seconds} saniye bekleyin",
     "generateFailed": "Örnek oluşturulamadı",
-    "exampleGenerated": "Yeni örnek oluşturuldu!"
+    "exampleGenerated": "Yeni örnek oluşturuldu!",
+    "ignoreTypeErrors": "Tip Hatalarını Yoksay"
   }
 }

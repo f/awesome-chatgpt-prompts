@@ -1219,17 +1219,19 @@
     "run": "Esegui",
     "reset": "Ripristina",
     "copied": "Copiato negli appunti",
-    "runToPreview": "Clicca su Esegui per vedere l'anteprima del prompt",
+    "runToPreview": "Scrivi codice per vedere l'anteprima",
     "cannotEvaluate": "Questo codice non può essere valutato.",
     "onlyPromptsChat": "Sono supportate solo le importazioni di {library}.",
     "desktopOnly": "Solo Desktop",
     "desktopOnlyDescription": "Il Prompt Builder richiede uno schermo più grande per funzionare correttamente. Si prega di aprire questa pagina su un computer desktop o laptop.",
     "browsePrompts": "Esplora Prompt",
+    "createPrompt": "Crea Prompt",
     "random": "Casuale",
     "generateRandom": "Genera esempio casuale con AI",
     "loginToGenerate": "Accedi per generare esempi",
     "rateLimitExceeded": "Attendi {seconds} secondi prima di generare di nuovo",
     "generateFailed": "Generazione esempio fallita",
-    "exampleGenerated": "Nuovo esempio generato!"
+    "exampleGenerated": "Nuovo esempio generato!",
+    "ignoreTypeErrors": "Ignora Errori di Tipo"
   }
 }

@@ -1219,17 +1219,19 @@
     "run": "Ejecutar",
     "reset": "Restablecer",
     "copied": "Copiado al portapapeles",
-    "runToPreview": "Haz clic en Ejecutar para ver la vista previa",
+    "runToPreview": "Escribe código para ver la vista previa",
     "cannotEvaluate": "Este código no puede ser evaluado.",
     "onlyPromptsChat": "Solo se admiten importaciones de {library}.",
     "desktopOnly": "Solo escritorio",
     "desktopOnlyDescription": "El Constructor de Prompts requiere una pantalla más grande para funcionar correctamente. Por favor, abre esta página en una computadora de escritorio o portátil.",
     "browsePrompts": "Explorar Prompts",
+    "createPrompt": "Crear Prompt",
     "random": "Aleatorio",
     "generateRandom": "Generar ejemplo aleatorio con IA",
     "loginToGenerate": "Inicia sesión para generar ejemplos",
     "rateLimitExceeded": "Espera {seconds} segundos antes de generar de nuevo",
     "generateFailed": "Error al generar ejemplo",
-    "exampleGenerated": "¡Nuevo ejemplo generado!"
+    "exampleGenerated": "¡Nuevo ejemplo generado!",
+    "ignoreTypeErrors": "Ignorar Errores de Tipo"
   }
 }

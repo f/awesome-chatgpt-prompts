@@ -6,7 +6,7 @@ import Editor from "@monaco-editor/react";
 import { useTheme } from "next-themes";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { Copy, Play, RotateCcw, Code2, FileJson, FileText, Video, Music, Image as ImageIcon, MessageSquare, Sparkles, Terminal, AlertCircle, XCircle, ChevronDown, ChevronUp, ChevronRight, Dices, Loader2 } from "lucide-react";
+import { Copy, Play, Code2, FileJson, FileText, Video, Music, Image as ImageIcon, MessageSquare, Terminal, AlertCircle, XCircle, ChevronDown, ChevronUp, ChevronRight, Dices, Loader2, Plus } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { toast } from "sonner";
 import { RunPromptButton } from "@/components/prompts/run-prompt-button";
@@ -38,21 +38,29 @@ import { ApiDetailsPopup } from "./api-details-popup";
 import { toYaml } from "./utils";
 import { type OutputFormat } from "./types";
 
+import { useRouter } from "next/navigation";
+
 // Import examples as raw text
 import {
   EXAMPLE_VIDEO,
   EXAMPLE_AUDIO,
   EXAMPLE_IMAGE,
   EXAMPLE_CHAT,
-  EXAMPLE_OPENAI_CHAT,
-  DEFAULT_CODE,
 } from "./examples";
 
 export function PromptIde() {
   const t = useTranslations("ide");
   const { theme } = useTheme();
   const { data: session } = useSession();
-  const [code, setCode] = useState(EXAMPLE_IMAGE);
+  
+  // Load saved code from localStorage or use default
+  const [code, setCode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('promptBuilderCode');
+      if (saved) return saved;
+    }
+    return EXAMPLE_IMAGE;
+  });
   const [isGenerating, setIsGenerating] = useState(false);
   const [output, setOutput] = useState<string>("");
   const [outputFormat, setOutputFormat] = useState<OutputFormat>("markdown");
@@ -368,6 +376,11 @@ export function PromptIde() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [outputFormat]);
 
+  // Save code to localStorage on change
+  useEffect(() => {
+    localStorage.setItem('promptBuilderCode', code);
+  }, [code]);
+
   const handleEditorMount = useCallback((_editor: unknown, monaco: unknown) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const m = monaco as any;
@@ -518,12 +531,77 @@ export function PromptIde() {
     toast.success(t("copied"));
   }, [output, t]);
 
-  const resetCode = useCallback(() => {
-    setCode(DEFAULT_CODE);
-    setOutput("");
-    setError(null);
-  }, []);
+  const router = useRouter();
 
+  const createPrompt = useCallback(() => {
+    const promptContent = output || lastValidOutput;
+    if (!promptContent) {
+      toast.error("Run the code first to generate a prompt");
+      return;
+    }
+    
+    // Detect output type based on the code's import
+    let promptType: "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" = "TEXT";
+    if (code.includes("video()")) promptType = "VIDEO";
+    else if (code.includes("audio()")) promptType = "AUDIO";
+    else if (code.includes("image()")) promptType = "IMAGE";
+    
+    // Detect format based on current outputFormat
+    let format: "JSON" | "YAML" | undefined;
+    if (outputFormat === "json") format = "JSON";
+    else if (outputFormat === "yaml") format = "YAML";
+    
+    // Store data in sessionStorage to avoid query string size limits
+    const builderData = {
+      content: promptContent,
+      type: promptType,
+      format,
+    };
+    sessionStorage.setItem("promptBuilderData", JSON.stringify(builderData));
+    
+    router.push("/prompts/new?from=builder");
+  }, [output, lastValidOutput, router, code, outputFormat]);
+
+  // Add @ts-ignore comments before lines with type errors
+  const ignoreTypeErrors = useCallback(() => {
+    if (!monacoRef.current || !editorRef.current) return;
+    
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const monaco = monacoRef.current as any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const editor = editorRef.current as any;
+    const model = editor.getModel();
+    if (!model) return;
+    
+    const markers = monaco.editor.getModelMarkers({ resource: model.uri });
+    const typeErrors = markers.filter((m: { severity: number; message: string }) => 
+      m.severity >= 4 && m.message.includes("is not assignable to")
+    );
+    
+    if (typeErrors.length === 0) return;
+    
+    const lines = code.split('\n');
+    
+    // Get unique error line numbers, sorted from bottom to top
+    const errorLineNums: number[] = typeErrors.map((e: { startLineNumber: number }) => e.startLineNumber);
+    const uniqueLines = [...new Set(errorLineNums)].sort((a, b) => b - a);
+    
+    // Insert @ts-ignore before each error line (from bottom to preserve line numbers)
+    for (const lineNum of uniqueLines) {
+      const lineIndex = lineNum - 1;
+      if (lineIndex >= 0 && lineIndex < lines.length) {
+        // Check if previous line already has @ts-ignore
+        if (lineIndex > 0 && lines[lineIndex - 1].includes('@ts-ignore')) continue;
+        
+        // Get indentation of the error line
+        const indent = lines[lineIndex].match(/^(\s*)/)?.[1] || '';
+        lines.splice(lineIndex, 0, `${indent}// @ts-ignore`);
+      }
+    }
+    
+    setCode(lines.join('\n'));
+  }, [code]);
+  
   const generateExample = useCallback(async () => {
     if (!session?.user) {
       toast.error(t("loginToGenerate"));
@@ -619,11 +697,11 @@ export function PromptIde() {
           <Button
             variant="outline"
             size="sm"
-            onClick={resetCode}
+            onClick={createPrompt}
             className="gap-2"
           >
-            <RotateCcw className="h-4 w-4" />
-            {t("reset")}
+            <Plus className="h-4 w-4" />
+            {t("createPrompt")}
           </Button>
           <RunPromptButton
             content={output || lastValidOutput}
@@ -687,15 +765,7 @@ export function PromptIde() {
                 <MessageSquare className="h-3 w-3" />
                 Chat
               </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="h-6 text-xs gap-1 px-2"
-                onClick={() => setCode(EXAMPLE_OPENAI_CHAT)}
-              >
-                <Sparkles className="h-3 w-3" />
-                OpenAI
-              </Button>
+              <div className="w-px h-4 bg-border mx-1" />
               <Button
                 variant="ghost"
                 size="sm"
@@ -929,11 +999,11 @@ export function PromptIde() {
                 className="h-1 cursor-ns-resize hover:bg-primary/50 transition-colors"
               />
             )}
-            <button
-              onClick={() => setIsConsoleOpen(!isConsoleOpen)}
-              className="w-full h-8 px-4 flex items-center justify-between hover:bg-muted/50 transition-colors"
-            >
-              <div className="flex items-center gap-2">
+            <div className="h-8 px-4 flex items-center justify-between">
+              <button
+                onClick={() => setIsConsoleOpen(!isConsoleOpen)}
+                className="flex items-center gap-2 hover:bg-muted/50 transition-colors rounded px-1 -ml-1"
+              >
                 <Terminal className="h-4 w-4 text-muted-foreground" />
                 <span className="text-xs font-medium text-muted-foreground">Console</span>
                 {consoleErrors.length > 0 && (
@@ -945,13 +1015,23 @@ export function PromptIde() {
                     {consoleErrors.length}
                   </span>
                 )}
-              </div>
-              {isConsoleOpen ? (
-                <ChevronDown className="h-4 w-4 text-muted-foreground" />
-              ) : (
-                <ChevronUp className="h-4 w-4 text-muted-foreground" />
+                {isConsoleOpen ? (
+                  <ChevronDown className="h-4 w-4 text-muted-foreground" />
+                ) : (
+                  <ChevronUp className="h-4 w-4 text-muted-foreground" />
+                )}
+              </button>
+              {consoleErrors.some(e => e.type === 'error' && e.line) && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-5 text-xs px-2"
+                  onClick={ignoreTypeErrors}
+                >
+                  {t("ignoreTypeErrors")}
+                </Button>
               )}
-            </button>
+            </div>
             {isConsoleOpen && (
               <div style={{ height: consoleHeight }} className="overflow-auto bg-muted/50 dark:bg-zinc-900 font-mono text-xs">
                 {consoleErrors.length === 0 ? (

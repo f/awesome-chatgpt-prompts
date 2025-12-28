@@ -1219,17 +1219,19 @@
     "run": "実行",
     "reset": "リセット",
     "copied": "クリップボードにコピーしました",
-    "runToPreview": "実行をクリックしてプロンプトのプレビューを表示",
+    "runToPreview": "コードを書いてプレビューを表示",
     "cannotEvaluate": "このコードは評価できません。",
     "onlyPromptsChat": "{library}のインポートのみがサポートされています。",
     "desktopOnly": "デスクトップ専用",
     "desktopOnlyDescription": "プロンプトビルダーは、正常に動作するために大きな画面が必要です。デスクトップまたはラップトップコンピュータでこのページを開いてください。",
     "browsePrompts": "プロンプトを閲覧",
+    "createPrompt": "プロンプトを作成",
     "random": "ランダム",
     "generateRandom": "AIでランダムな例を生成",
     "loginToGenerate": "例を生成するにはログインしてください",
     "rateLimitExceeded": "再生成まで{seconds}秒お待ちください",
     "generateFailed": "例の生成に失敗しました",
-    "exampleGenerated": "新しい例が生成されました！"
+    "exampleGenerated": "新しい例が生成されました！",
+    "ignoreTypeErrors": "型エラーを無視"
   }
 }

@@ -1219,17 +1219,19 @@
     "run": "실행",
     "reset": "재설정",
     "copied": "클립보드에 복사됨",
-    "runToPreview": "실행을 클릭하여 프롬프트 미리보기 표시",
+    "runToPreview": "코드를 작성하여 미리보기 표시",
     "cannotEvaluate": "이 코드는 평가할 수 없습니다.",
     "onlyPromptsChat": "{library} 가져오기만 지원됩니다.",
     "desktopOnly": "데스크톱 전용",
     "desktopOnlyDescription": "프롬프트 빌더는 제대로 작동하려면 더 큰 화면이 필요합니다. 데스크톱이나 노트북 컴퓨터에서 이 페이지를 열어주세요.",
     "browsePrompts": "프롬프트 둘러보기",
+    "createPrompt": "프롬프트 만들기",
     "random": "랜덤",
     "generateRandom": "AI로 랜덤 예제 생성",
     "loginToGenerate": "예제를 생성하려면 로그인하세요",
     "rateLimitExceeded": "다시 생성하려면 {seconds}초 기다려주세요",
     "generateFailed": "예제 생성 실패",
-    "exampleGenerated": "새 예제가 생성되었습니다!"
+    "exampleGenerated": "새 예제가 생성되었습니다!",
+    "ignoreTypeErrors": "타입 오류 무시"
   }
 }

@@ -1219,17 +1219,19 @@
     "run": "Ausführen",
     "reset": "Zurücksetzen",
     "copied": "In die Zwischenablage kopiert",
-    "runToPreview": "Klicken Sie auf Ausführen, um die Vorschau zu sehen",
+    "runToPreview": "Code schreiben, um die Vorschau zu sehen",
     "cannotEvaluate": "Dieser Code kann nicht ausgewertet werden.",
     "onlyPromptsChat": "Nur {library}-Importe werden unterstützt.",
     "desktopOnly": "Nur für Desktop",
     "desktopOnlyDescription": "Der Prompt Builder benötigt einen größeren Bildschirm. Bitte öffnen Sie diese Seite auf einem Desktop- oder Laptop-Computer.",
     "browsePrompts": "Prompts durchsuchen",
+    "createPrompt": "Prompt erstellen",
     "random": "Zufällig",
     "generateRandom": "Zufälliges Beispiel mit KI generieren",
     "loginToGenerate": "Bitte anmelden, um Beispiele zu generieren",
     "rateLimitExceeded": "Bitte warten Sie {seconds} Sekunden, bevor Sie erneut generieren",
     "generateFailed": "Beispiel konnte nicht generiert werden",
-    "exampleGenerated": "Neues Beispiel generiert!"
+    "exampleGenerated": "Neues Beispiel generiert!",
+    "ignoreTypeErrors": "Typfehler ignorieren"
   }
 }
