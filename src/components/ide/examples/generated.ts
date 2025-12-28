@@ -351,8 +351,8 @@ const prompt = builder()
 const translatePrompt = templates.translation("English", "Spanish").build();
 
 export default {
-  json: prompt.structure,
-  yaml: prompt.structure,
-  markdown: prompt.systemPrompt,
+  json: prompt,
+  yaml: prompt,
+  markdown: prompt.content,
 };
 `;
