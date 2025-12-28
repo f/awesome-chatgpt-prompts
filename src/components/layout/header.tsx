@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { useTranslations } from "next-intl";
 import {
@@ -74,6 +74,7 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
   const { theme, setTheme } = useTheme();
   const branding = useBranding();
   const router = useRouter();
+  const pathname = usePathname();
 
   const user = session?.user;
   const isAdmin = user?.role === "ADMIN";
@@ -93,7 +94,7 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-12 items-center gap-4">
+      <div className={`flex h-12 items-center gap-4 ${pathname === "/builder" ? "px-4" : "container"}`}>
         {/* Mobile menu */}
         <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
           <SheetTrigger asChild className="md:hidden">

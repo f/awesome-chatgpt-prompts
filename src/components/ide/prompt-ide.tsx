@@ -8,6 +8,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Copy, Play, RotateCcw, Code2, FileJson, FileText, Video, Music, Image as ImageIcon, MessageSquare, Sparkles, Terminal, AlertCircle, XCircle, ChevronDown, ChevronUp, ChevronRight } from "lucide-react";
 import { toast } from "sonner";
+import { RunPromptButton } from "@/components/prompts/run-prompt-button";
 
 // Import the actual prompts.chat library
 import {
@@ -586,15 +587,11 @@ export function PromptIde() {
             <RotateCcw className="h-4 w-4" />
             {t("reset")}
           </Button>
-          <Button
+          <RunPromptButton
+            content={output || lastValidOutput}
             size="sm"
-            onClick={() => runCode()}
-            disabled={isRunning || cannotEvaluate}
-            className="gap-2"
-          >
-            <Play className="h-4 w-4" />
-            {t("run")}
-          </Button>
+            variant="default"
+          />
         </div>
       </div>
 
