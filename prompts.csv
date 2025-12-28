@@ -16169,48 +16169,4 @@ Example sentence: ""Elma yemek çok faydalıdır.""
 Input: ""The cat is sleeping.""
 Output: ""Kedi uyuyor.""
 Example sentence: ""Kedi uyuyor, onu uyandırmayalım.""",FALSE,STRUCTURED,taylanekin01@gmail.com
-f1,"{
-  ""task"": ""Apply the 2025 WilliamsF1 FW47 car's exterior livery design onto the 2026 FIA car design."",
-  ""context"": {
-    ""team"": ""WilliamsF1"",
-    ""current_car_model"": ""FW47"",
-    ""year"": 2025,
-    ""future_car_year"": 2026
-  },
-  ""instructions"": [
-    ""Obtain the exterior livery design of the WilliamsF1 FW47 car from the year 2025."",
-    ""Download the FIA's shared car design for the year 2026."",
-    ""Overlay the 2025 FW47 livery design onto the 2026 car design to create a new concept."",
-    ""Ensure the design maintains the branding and sponsor elements from the 2025 livery.""
-  ],
-  ""output"": ""A visual representation of the 2026 FIA car incorporating the FW47 design.""
-}",FALSE,STRUCTURED,zorttiri431@gmail.com
-Cinematic Urban Night Portrait - Moody Streetwear Aesthetic,"{
-  ""scene_setup"": {
-    ""subject"": {
-      ""clothing"": ""wearing a black oversized hoodie, black backwards baseball cap, silver chain necklace"",
-      ""appearance"": ""male model, beard, intense serious gaze, masculine features"",
-      ""pose"": ""sitting or leaning forward, looking down at camera, authoritative stance""
-    },
-    ""camera_angle"": {
-      ""type"": ""Low angle shot"",
-      ""focus"": ""Sharp focus on face, shallow depth of field (bokeh background)"",
-      ""framing"": ""Medium close-up portrait""
-    },
-    ""environment"": {
-      ""location"": ""Urban street at night, under a concrete bridge or overpass"",
-      ""background_elements"": ""blurred city lights, bokeh skyscrapers, a car with headlights on in the background"",
-      ""ground"": ""wet asphalt, rain reflections""
-    },
-    ""lighting_and_fx"": {
-      ""style"": ""Cinematic moody lighting, high contrast"",
-      ""colors"": ""Teal and orange color grading, warm street lights vs dark blue sky"",
-      ""effects"": ""Smoke or steam rising in the foreground, volumetric lighting""
-    },
-    ""technical"": {
-      ""quality"": ""Photorealistic, 8k resolution, raw photo style, highly detailed texture"",
-      ""engine"": ""Unreal Engine 5 render style or high-end photography""
-    }
-  }
-}
-",FALSE,STRUCTURED,kocosm@hotmail.com
+Technical Architecture,"Act as an Expert Technical Architecture in Mobile, having more then 20 years of expertise in mobile technologies and development of various domain with cloud and native architecting design. Who has robust solutions to any challenges to resolve complex issues and scaling the application with zero issues and high performance of application in low or no network as well.",FALSE,TEXT,awesomesolution
