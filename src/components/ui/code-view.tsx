@@ -1,7 +1,11 @@
 "use client";
 
+import { useState, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { ChevronsDown, ChevronsUp } from "lucide-react";
+import { JsonTreeViewWrapper } from "./json-tree-view";
 
 interface CodeViewProps {
   content: string;
@@ -11,42 +15,127 @@ interface CodeViewProps {
   fontSize?: "xs" | "sm" | "base";
 }
 
+type ViewMode = "code" | "tree";
+
 export function CodeView({ content, language = "json", className, maxLines, fontSize = "xs" }: CodeViewProps) {
   const t = useTranslations("common");
+  const [viewMode, setViewMode] = useState<ViewMode>("code");
+  const expandAllRef = useRef<(() => void) | undefined>(undefined);
+  const collapseAllRef = useRef<(() => void) | undefined>(undefined);
+  
+  const isJson = language === "json";
+  const showToggle = isJson && !maxLines; // Only show toggle for JSON when not truncated
+
+  // Try to parse JSON to validate it's valid for tree view
+  let isValidJson = false;
+  if (isJson) {
+    try {
+      JSON.parse(content);
+      isValidJson = true;
+    } catch {
+      isValidJson = false;
+    }
+  }
+
   const lines = content.split("\n");
   const displayLines = maxLines ? lines.slice(0, maxLines) : lines;
   const hasMore = maxLines && lines.length > maxLines;
 
+  const handleExpandAll = () => {
+    expandAllRef.current?.();
+  };
+
+  const handleCollapseAll = () => {
+    collapseAllRef.current?.();
+  };
+
   return (
     <div className={cn("relative", className)}>
-      <pre suppressHydrationWarning className={cn("font-mono overflow-hidden bg-muted rounded p-2", {
-          "text-xs": fontSize === "xs",
-          "text-sm": fontSize === "sm",
-          "text-base": fontSize === "base",
-        })}>
-        <div className={`language-${language} block`}>
-          {displayLines.map((line, i) => (
-            <div key={i} className="flex">
-              <span className="select-none text-muted-foreground/50 w-6 text-right pr-2 shrink-0">
-                {i + 1}
-              </span>
-              <span className="flex-1 break-all font-mono">
-                {highlightLine(line, language)}
-              </span>
-            </div>
-          ))}
-          {hasMore && (
-            <div className="flex">
-              <span className="select-none text-muted-foreground/50 w-6 text-right pr-2 shrink-0">
-                ...
-              </span>
-              <span className="text-muted-foreground">
-                {t("moreLines", { count: lines.length - (maxLines || 0) })}
-              </span>
+      {showToggle && isValidJson && (
+        <div className="flex items-center justify-between gap-2 mb-2">
+          {/* Code/Tree toggle buttons - left side */}
+          <div className="flex gap-1">
+            <Button
+              variant={viewMode === "code" ? "default" : "outline"}
+              size="sm"
+              onClick={() => setViewMode("code")}
+              className="h-7 px-2 text-xs"
+            >
+              {t("codeView")}
+            </Button>
+            <Button
+              variant={viewMode === "tree" ? "default" : "outline"}
+              size="sm"
+              onClick={() => setViewMode("tree")}
+              className="h-7 px-2 text-xs"
+            >
+              {t("treeView")}
+            </Button>
+          </div>
+          
+          {/* Expand/Collapse buttons - right side (only in tree view) */}
+          {viewMode === "tree" && (
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleExpandAll}
+                className="h-7 w-7 p-0"
+                title={t("expandAll")}
+              >
+                <ChevronsDown className="h-4 w-4" />
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleCollapseAll}
+                className="h-7 w-7 p-0"
+                title={t("collapseAll")}
+              >
+                <ChevronsUp className="h-4 w-4" />
+              </Button>
             </div>
           )}
         </div>
-      </pre>
+      )}
+      {viewMode === "tree" && isValidJson ? (
+        <JsonTreeViewWrapper 
+          content={content} 
+          className={className} 
+          fontSize={fontSize}
+          onExpandAll={expandAllRef}
+          onCollapseAll={collapseAllRef}
+        />
+      ) : (
+        <pre suppressHydrationWarning className={cn("font-mono overflow-hidden bg-muted rounded p-2", {
+            "text-xs": fontSize === "xs",
+            "text-sm": fontSize === "sm",
+            "text-base": fontSize === "base",
+          })}>
+          <div className={`language-${language} block`}>
+            {displayLines.map((line, i) => (
+              <div key={i} className="flex">
+                <span className="select-none text-muted-foreground/50 w-6 text-right pr-2 shrink-0">
+                  {i + 1}
+                </span>
+                <span className="flex-1 break-all font-mono">
+                  {highlightLine(line, language)}
+                </span>
+              </div>
+            ))}
+            {hasMore && (
+              <div className="flex">
+                <span className="select-none text-muted-foreground/50 w-6 text-right pr-2 shrink-0">
+                  ...
+                </span>
+                <span className="text-muted-foreground">
+                  {t("moreLines", { count: lines.length - (maxLines || 0) })}
+                </span>
+              </div>
+            )}
+          </div>
+        </pre>
+      )}
     </div>
   );
 }
