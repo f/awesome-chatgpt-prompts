@@ -24,9 +24,10 @@ interface DelistBannerProps {
   promptId: string;
   delistReason: DelistReason | null;
   isOwner: boolean;
+  isDeleted?: boolean;
 }
 
-export function DelistBanner({ promptId, delistReason, isOwner }: DelistBannerProps) {
+export function DelistBanner({ promptId, delistReason, isOwner, isDeleted = false }: DelistBannerProps) {
   const t = useTranslations("prompts");
   const router = useRouter();
   const [isDeleting, setIsDeleting] = useState(false);
@@ -127,7 +128,7 @@ export function DelistBanner({ promptId, delistReason, isOwner }: DelistBannerPr
         </div>
       </div>
       
-      {isOwner && delistReason && delistReason !== "MANUAL" && (
+      {isOwner && delistReason && delistReason !== "MANUAL" && !isDeleted && (
         <div className="flex justify-end gap-2 mt-4">
           <Button 
             variant="outline" 

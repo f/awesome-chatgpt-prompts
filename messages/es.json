@@ -163,6 +163,9 @@
     "deletePromptTitle": "¿Eliminar este prompt?",
     "deletePromptDescription": "Esta acción no se puede deshacer. El prompt será eliminado permanentemente.",
     "deleteError": "Error al eliminar el prompt",
+    "restorePrompt": "Restaurar Prompt",
+    "promptRestored": "Prompt restaurado exitosamente",
+    "restoreError": "Error al restaurar prompt",
     "noMorePrompts": "Has llegado al final",
     "loadMore": "Cargar más",
     "loading": "Cargando...",
@@ -485,7 +488,13 @@
         "pending": "Pendiente",
         "reviewed": "Revisado",
         "dismissed": "Descartado"
-      }
+      },
+      "relistPrompt": "Re-listar Prompt",
+      "restorePrompt": "Restaurar Prompt",
+      "promptRelisted": "Prompt re-listado exitosamente",
+      "promptRestored": "Prompt restaurado exitosamente",
+      "relistFailed": "Error al re-listar prompt",
+      "restoreFailed": "Error al restaurar prompt"
     },
     "prompts": {
       "title": "Gestión de Prompts",

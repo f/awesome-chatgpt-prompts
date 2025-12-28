@@ -166,6 +166,9 @@
     "deletePromptTitle": "Diesen Prompt löschen?",
     "deletePromptDescription": "Diese Aktion kann nicht rückgängig gemacht werden. Der Prompt wird dauerhaft gelöscht.",
     "deleteError": "Prompt konnte nicht gelöscht werden",
+    "restorePrompt": "Prompt Wiederherstellen",
+    "promptRestored": "Prompt erfolgreich wiederhergestellt",
+    "restoreError": "Wiederherstellung fehlgeschlagen",
     "types": {
       "text": "Text",
       "image": "Bild",
@@ -485,7 +488,13 @@
         "pending": "Ausstehend",
         "reviewed": "Überprüft",
         "dismissed": "Abgelehnt"
-      }
+      },
+      "relistPrompt": "Prompt Wiederlisten",
+      "restorePrompt": "Prompt Wiederherstellen",
+      "promptRelisted": "Prompt erfolgreich wiedergelistet",
+      "promptRestored": "Prompt erfolgreich wiederhergestellt",
+      "relistFailed": "Wiederlisten fehlgeschlagen",
+      "restoreFailed": "Wiederherstellung fehlgeschlagen"
     },
     "prompts": {
       "title": "Prompt-Verwaltung",

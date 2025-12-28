@@ -166,6 +166,9 @@
     "deletePromptTitle": "Eliminare questo prompt?",
     "deletePromptDescription": "Questa azione non può essere annullata. Il prompt verrà eliminato definitivamente.",
     "deleteError": "Impossibile eliminare il prompt",
+    "restorePrompt": "Ripristina Prompt",
+    "promptRestored": "Prompt ripristinato con successo",
+    "restoreError": "Impossibile ripristinare il prompt",
     "types": {
       "text": "Testo",
       "image": "Immagine",
@@ -485,7 +488,13 @@
         "pending": "In attesa",
         "reviewed": "Revisionato",
         "dismissed": "Archiviato"
-      }
+      },
+      "relistPrompt": "Ri-inserisci Prompt",
+      "restorePrompt": "Ripristina Prompt",
+      "promptRelisted": "Prompt ri-inserito con successo",
+      "promptRestored": "Prompt ripristinato con successo",
+      "relistFailed": "Impossibile ri-inserire il prompt",
+      "restoreFailed": "Impossibile ripristinare il prompt"
     },
     "prompts": {
       "title": "Gestione Prompt",

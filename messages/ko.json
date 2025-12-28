@@ -166,6 +166,9 @@
     "deletePromptTitle": "이 프롬프트를 삭제하시겠습니까?",
     "deletePromptDescription": "이 작업은 취소할 수 없습니다. 프롬프트가 영구적으로 삭제됩니다.",
     "deleteError": "프롬프트 삭제 실패",
+    "restorePrompt": "프롬프트 복원",
+    "promptRestored": "프롬프트가 복원되었습니다",
+    "restoreError": "복원에 실패했습니다",
     "types": {
       "text": "텍스트",
       "image": "이미지",
@@ -485,7 +488,13 @@
         "pending": "대기 중",
         "reviewed": "검토 완료",
         "dismissed": "기각됨"
-      }
+      },
+      "relistPrompt": "프롬프트 재등재",
+      "restorePrompt": "프롬프트 복원",
+      "promptRelisted": "프롬프트가 재등재되었습니다",
+      "promptRestored": "프롬프트가 복원되었습니다",
+      "relistFailed": "재등재에 실패했습니다",
+      "restoreFailed": "복원에 실패했습니다"
     },
     "prompts": {
       "title": "프롬프트 관리",

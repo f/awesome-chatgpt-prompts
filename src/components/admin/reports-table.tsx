@@ -6,7 +6,7 @@ import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
 import { formatDistanceToNow } from "@/lib/date";
 import { getPromptUrl } from "@/lib/urls";
-import { MoreHorizontal, Check, X, Eye, ExternalLink } from "lucide-react";
+import { MoreHorizontal, Check, X, Eye, ExternalLink, RotateCcw, ListPlus } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -37,6 +37,8 @@ interface Report {
     id: string;
     slug?: string | null;
     title: string;
+    isUnlisted?: boolean;
+    deletedAt?: Date | null;
   };
   reporter: {
     id: string;
@@ -72,6 +74,44 @@ export function ReportsTable({ reports }: ReportsTableProps) {
       router.refresh();
     } catch {
       toast.error(t("updateFailed"));
+    } finally {
+      setLoading(null);
+    }
+  };
+
+  const handleRelistPrompt = async (promptId: string) => {
+    setLoading(promptId);
+    try {
+      const res = await fetch(`/api/prompts/${promptId}/unlist`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ unlist: false }),
+      });
+
+      if (!res.ok) throw new Error("Failed to relist prompt");
+
+      toast.success(t("promptRelisted"));
+      router.refresh();
+    } catch {
+      toast.error(t("relistFailed"));
+    } finally {
+      setLoading(null);
+    }
+  };
+
+  const handleRestorePrompt = async (promptId: string) => {
+    setLoading(promptId);
+    try {
+      const res = await fetch(`/api/prompts/${promptId}/restore`, {
+        method: "POST",
+      });
+
+      if (!res.ok) throw new Error("Failed to restore prompt");
+
+      toast.success(t("promptRestored"));
+      router.refresh();
+    } catch {
+      toast.error(t("restoreFailed"));
     } finally {
       setLoading(null);
     }
@@ -200,6 +240,24 @@ export function ReportsTable({ reports }: ReportsTableProps) {
                             <Check className="h-4 w-4 mr-2" />
                             {t("markReviewed")}
                           </DropdownMenuItem>
+                        )}
+                        {report.reason === "RELIST_REQUEST" && report.prompt.isUnlisted && (
+                          <>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem onClick={() => handleRelistPrompt(report.prompt.id)}>
+                              <ListPlus className="h-4 w-4 mr-2" />
+                              {t("relistPrompt")}
+                            </DropdownMenuItem>
+                          </>
+                        )}
+                        {report.prompt.deletedAt && (
+                          <>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem onClick={() => handleRestorePrompt(report.prompt.id)}>
+                              <RotateCcw className="h-4 w-4 mr-2" />
+                              {t("restorePrompt")}
+                            </DropdownMenuItem>
+                          </>
                         )}
                       </DropdownMenuContent>
                     </DropdownMenu>

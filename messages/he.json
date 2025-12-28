@@ -166,6 +166,9 @@
     "deletePromptTitle": "למחוק את הפרומפט הזה?",
     "deletePromptDescription": "לא ניתן לבטל פעולה זו. הפרומפט יימחק לצמיתות.",
     "deleteError": "מחיקת הפרומפט נכשלה",
+    "restorePrompt": "שחזר פרומפט",
+    "promptRestored": "הפרומפט שוחזר בהצלחה",
+    "restoreError": "השחזור נכשל",
     "types": {
       "text": "טקסט",
       "image": "תמונה",
@@ -485,7 +488,13 @@
         "pending": "ממתין",
         "reviewed": "נסקר",
         "dismissed": "בוטל"
-      }
+      },
+      "relistPrompt": "רשום מחדש פרומפט",
+      "restorePrompt": "שחזר פרומפט",
+      "promptRelisted": "הפרומפט נרשם מחדש בהצלחה",
+      "promptRestored": "הפרומפט שוחזר בהצלחה",
+      "relistFailed": "הרישום מחדש נכשל",
+      "restoreFailed": "השחזור נכשל"
     },
     "prompts": {
       "title": "ניהול פרומפטים",

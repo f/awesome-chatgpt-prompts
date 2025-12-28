@@ -166,6 +166,9 @@
     "deletePromptTitle": "Διαγραφή αυτού του prompt;",
     "deletePromptDescription": "Αυτή η ενέργεια δεν μπορεί να αναιρεθεί. Το prompt θα διαγραφεί οριστικά.",
     "deleteError": "Αποτυχία διαγραφής του prompt",
+    "restorePrompt": "Επαναφορά Prompt",
+    "promptRestored": "Το prompt επαναφέρθηκε επιτυχώς",
+    "restoreError": "Αποτυχία επαναφοράς",
     "types": {
       "text": "Κείμενο",
       "image": "Εικόνα",
@@ -485,7 +488,13 @@
         "pending": "Εκκρεμής",
         "reviewed": "Αξιολογημένη",
         "dismissed": "Απορρίφθηκε"
-      }
+      },
+      "relistPrompt": "Επανακαταχώρηση Prompt",
+      "restorePrompt": "Επαναφορά Prompt",
+      "promptRelisted": "Το prompt επανακαταχωρήθηκε επιτυχώς",
+      "promptRestored": "Το prompt επαναφέρθηκε επιτυχώς",
+      "relistFailed": "Αποτυχία επανακαταχώρησης",
+      "restoreFailed": "Αποτυχία επαναφοράς"
     },
     "prompts": {
       "title": "Διαχείριση Prompts",

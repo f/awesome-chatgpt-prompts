@@ -166,6 +166,9 @@
     "deletePromptTitle": "Delete this prompt?",
     "deletePromptDescription": "This action cannot be undone. The prompt will be permanently removed.",
     "deleteError": "Failed to delete prompt",
+    "restorePrompt": "Restore Prompt",
+    "promptRestored": "Prompt restored successfully",
+    "restoreError": "Failed to restore prompt",
     "types": {
       "text": "Text",
       "image": "Image",
@@ -485,7 +488,13 @@
         "pending": "Pending",
         "reviewed": "Reviewed",
         "dismissed": "Dismissed"
-      }
+      },
+      "relistPrompt": "Relist Prompt",
+      "restorePrompt": "Restore Prompt",
+      "promptRelisted": "Prompt relisted successfully",
+      "promptRestored": "Prompt restored successfully",
+      "relistFailed": "Failed to relist prompt",
+      "restoreFailed": "Failed to restore prompt"
     },
     "prompts": {
       "title": "Prompts Management",

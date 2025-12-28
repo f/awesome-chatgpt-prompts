@@ -163,6 +163,9 @@
     "deletePromptTitle": "このプロンプトを削除しますか？",
     "deletePromptDescription": "この操作は取り消せません。プロンプトは完全に削除されます。",
     "deleteError": "プロンプトの削除に失敗しました",
+    "restorePrompt": "プロンプトを復元",
+    "promptRestored": "プロンプトが復元されました",
+    "restoreError": "復元に失敗しました",
     "noMorePrompts": "すべて表示しました",
     "loadMore": "もっと読み込む",
     "loading": "読み込み中...",
@@ -485,7 +488,13 @@
         "pending": "保留中",
         "reviewed": "確認済み",
         "dismissed": "却下済み"
-      }
+      },
+      "relistPrompt": "プロンプトを再公開",
+      "restorePrompt": "プロンプトを復元",
+      "promptRelisted": "プロンプトが再公開されました",
+      "promptRestored": "プロンプトが復元されました",
+      "relistFailed": "再公開に失敗しました",
+      "restoreFailed": "復元に失敗しました"
     },
     "prompts": {
       "title": "プロンプト管理",

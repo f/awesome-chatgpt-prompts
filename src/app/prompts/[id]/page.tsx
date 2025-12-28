@@ -24,6 +24,7 @@ import { UnlistPromptButton } from "@/components/prompts/unlist-prompt-button";
 import { MediaPreview } from "@/components/prompts/media-preview";
 import { ReportPromptDialog } from "@/components/prompts/report-prompt-dialog";
 import { DelistBanner } from "@/components/prompts/delist-banner";
+import { RestorePromptButton } from "@/components/prompts/restore-prompt-button";
 import { CommentSection } from "@/components/comments";
 import { PromptConnections } from "@/components/prompts/prompt-connections";
 import { getConfig } from "@/lib/config";
@@ -203,7 +204,7 @@ export default async function PromptPage({ params }: PromptPageProps) {
         <div className="mb-6 p-4 rounded-lg border border-red-500/30 bg-red-500/5">
           <div className="flex items-start gap-3">
             <Trash2 className="h-5 w-5 text-red-500 shrink-0 mt-0.5" />
-            <div className="space-y-1">
+            <div className="space-y-1 flex-1">
               <h3 className="text-sm font-semibold text-red-700 dark:text-red-400">
                 {t("promptDeleted")}
               </h3>
@@ -211,6 +212,9 @@ export default async function PromptPage({ params }: PromptPageProps) {
                 {t("promptDeletedDescription")}
               </p>
             </div>
+          </div>
+          <div className="flex justify-end mt-4">
+            <RestorePromptButton promptId={prompt.id} />
           </div>
         </div>
       )}
@@ -221,6 +225,7 @@ export default async function PromptPage({ params }: PromptPageProps) {
           promptId={prompt.id}
           delistReason={delistReason}
           isOwner={isOwner}
+          isDeleted={!!prompt.deletedAt}
         />
       )}
 

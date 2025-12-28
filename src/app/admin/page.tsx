@@ -114,6 +114,8 @@ export default async function AdminPage() {
             id: true,
             slug: true,
             title: true,
+            isUnlisted: true,
+            deletedAt: true,
           },
         },
         reporter: {

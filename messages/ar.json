@@ -166,6 +166,9 @@
     "deletePromptTitle": "حذف هذا البرومبت؟",
     "deletePromptDescription": "لا يمكن التراجع عن هذا الإجراء. سيتم حذف البرومبت نهائياً.",
     "deleteError": "فشل في حذف البرومبت",
+    "restorePrompt": "استعادة البرومبت",
+    "promptRestored": "تم استعادة البرومبت بنجاح",
+    "restoreError": "فشل في استعادة البرومبت",
     "types": {
       "text": "نص",
       "image": "صورة",
@@ -485,7 +488,13 @@
         "pending": "قيد الانتظار",
         "reviewed": "تمت المراجعة",
         "dismissed": "مرفوض"
-      }
+      },
+      "relistPrompt": "إعادة إدراج البرومبت",
+      "restorePrompt": "استعادة البرومبت",
+      "promptRelisted": "تم إعادة إدراج البرومبت بنجاح",
+      "promptRestored": "تم استعادة البرومبت بنجاح",
+      "relistFailed": "فشل في إعادة إدراج البرومبت",
+      "restoreFailed": "فشل في استعادة البرومبت"
     },
     "prompts": {
       "title": "إدارة الأوامر",

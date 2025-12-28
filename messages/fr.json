@@ -166,6 +166,9 @@
     "deletePromptTitle": "Supprimer ce prompt ?",
     "deletePromptDescription": "Cette action est irréversible. Le prompt sera définitivement supprimé.",
     "deleteError": "Échec de la suppression du prompt",
+    "restorePrompt": "Restaurer le Prompt",
+    "promptRestored": "Prompt restauré avec succès",
+    "restoreError": "Échec de la restauration",
     "types": {
       "text": "Texte",
       "image": "Image",
@@ -485,7 +488,13 @@
         "pending": "En attente",
         "reviewed": "Examiné",
         "dismissed": "Rejeté"
-      }
+      },
+      "relistPrompt": "Re-lister le Prompt",
+      "restorePrompt": "Restaurer le Prompt",
+      "promptRelisted": "Prompt re-listé avec succès",
+      "promptRestored": "Prompt restauré avec succès",
+      "relistFailed": "Échec du re-listage",
+      "restoreFailed": "Échec de la restauration"
     },
     "prompts": {
       "title": "Gestion des Prompts",

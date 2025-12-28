@@ -166,6 +166,9 @@
     "deletePromptTitle": "Bu promptu silmek istiyor musunuz?",
     "deletePromptDescription": "Bu işlem geri alınamaz. Prompt kalıcı olarak silinecektir.",
     "deleteError": "Prompt silinemedi",
+    "restorePrompt": "Promptu Geri Yükle",
+    "promptRestored": "Prompt başarıyla geri yüklendi",
+    "restoreError": "Geri yükleme başarısız",
     "types": {
       "text": "Metin",
       "image": "Görsel",
@@ -485,7 +488,13 @@
         "pending": "Beklemede",
         "reviewed": "İncelendi",
         "dismissed": "Reddedildi"
-      }
+      },
+      "relistPrompt": "Promptu Yeniden Listele",
+      "restorePrompt": "Promptu Geri Yükle",
+      "promptRelisted": "Prompt başarıyla yeniden listelendi",
+      "promptRestored": "Prompt başarıyla geri yüklendi",
+      "relistFailed": "Yeniden listeleme başarısız",
+      "restoreFailed": "Geri yükleme başarısız"
     },
     "prompts": {
       "title": "Prompt Yönetimi",

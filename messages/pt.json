@@ -166,6 +166,9 @@
     "deletePromptTitle": "Excluir este prompt?",
     "deletePromptDescription": "Esta ação não pode ser desfeita. O prompt será excluído permanentemente.",
     "deleteError": "Falha ao excluir o prompt",
+    "restorePrompt": "Restaurar Prompt",
+    "promptRestored": "Prompt restaurado com sucesso",
+    "restoreError": "Falha ao restaurar prompt",
     "types": {
       "text": "Texto",
       "image": "Imagem",
@@ -485,7 +488,13 @@
         "pending": "Pendente",
         "reviewed": "Revisado",
         "dismissed": "Descartado"
-      }
+      },
+      "relistPrompt": "Re-listar Prompt",
+      "restorePrompt": "Restaurar Prompt",
+      "promptRelisted": "Prompt re-listado com sucesso",
+      "promptRestored": "Prompt restaurado com sucesso",
+      "relistFailed": "Falha ao re-listar prompt",
+      "restoreFailed": "Falha ao restaurar prompt"
     },
     "prompts": {
       "title": "Gerenciamento de Prompts",

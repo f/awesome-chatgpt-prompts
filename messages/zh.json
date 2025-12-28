@@ -163,6 +163,9 @@
     "deletePromptTitle": "删除此提示词？",
     "deletePromptDescription": "此操作无法撤销。提示词将被永久删除。",
     "deleteError": "删除提示词失败",
+    "restorePrompt": "恢复提示词",
+    "promptRestored": "提示词已成功恢复",
+    "restoreError": "恢复失败",
     "noMorePrompts": "已经到底了",
     "loadMore": "加载更多",
     "loading": "加载中...",
@@ -485,7 +488,13 @@
         "pending": "待处理",
         "reviewed": "已审核",
         "dismissed": "已驳回"
-      }
+      },
+      "relistPrompt": "重新上架",
+      "restorePrompt": "恢复提示词",
+      "promptRelisted": "提示词已成功重新上架",
+      "promptRestored": "提示词已成功恢复",
+      "relistFailed": "重新上架失败",
+      "restoreFailed": "恢复失败"
     },
     "prompts": {
       "title": "提示词管理",
