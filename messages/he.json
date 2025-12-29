@@ -1233,5 +1233,11 @@
     "generateFailed": "יצירת הדוגמה נכשלה",
     "exampleGenerated": "דוגמה חדשה נוצרה!",
     "ignoreTypeErrors": "התעלם משגיאות טיפוס"
+  },
+  "appBanner": {
+    "message": "הורד את אפליקציית prompts.chat ל-iPhone, iPad ו-Mac",
+    "messageShort": "הורד את האפליקציה למכשירי Apple",
+    "download": "הורדה",
+    "dismiss": "סגור"
   }
 }

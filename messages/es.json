@@ -1233,5 +1233,11 @@
     "generateFailed": "Error al generar ejemplo",
     "exampleGenerated": "¡Nuevo ejemplo generado!",
     "ignoreTypeErrors": "Ignorar Errores de Tipo"
+  },
+  "appBanner": {
+    "message": "Obtén la app prompts.chat para iPhone, iPad y Mac",
+    "messageShort": "Obtén la app para dispositivos Apple",
+    "download": "Descargar",
+    "dismiss": "Cerrar"
   }
 }

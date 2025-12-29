@@ -1233,5 +1233,11 @@
     "generateFailed": "例の生成に失敗しました",
     "exampleGenerated": "新しい例が生成されました！",
     "ignoreTypeErrors": "型エラーを無視"
+  },
+  "appBanner": {
+    "message": "iPhone、iPad、Mac用のprompts.chatアプリを入手",
+    "messageShort": "Appleデバイス用アプリを入手",
+    "download": "ダウンロード",
+    "dismiss": "閉じる"
   }
 }

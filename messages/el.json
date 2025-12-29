@@ -1233,5 +1233,11 @@
     "generateFailed": "Αποτυχία δημιουργίας παραδείγματος",
     "exampleGenerated": "Δημιουργήθηκε νέο παράδειγμα!",
     "ignoreTypeErrors": "Αγνόηση Σφαλμάτων Τύπου"
+  },
+  "appBanner": {
+    "message": "Κατεβάστε την εφαρμογή prompts.chat για iPhone, iPad και Mac",
+    "messageShort": "Κατεβάστε την εφαρμογή για συσκευές Apple",
+    "download": "Λήψη",
+    "dismiss": "Κλείσιμο"
   }
 }

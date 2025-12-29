@@ -1233,5 +1233,11 @@
     "generateFailed": "예제 생성 실패",
     "exampleGenerated": "새 예제가 생성되었습니다!",
     "ignoreTypeErrors": "타입 오류 무시"
+  },
+  "appBanner": {
+    "message": "iPhone, iPad, Mac용 prompts.chat 앱 다운로드",
+    "messageShort": "Apple 기기용 앱 다운로드",
+    "download": "다운로드",
+    "dismiss": "닫기"
   }
 }

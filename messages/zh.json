@@ -1233,5 +1233,11 @@
     "generateFailed": "生成示例失败",
     "exampleGenerated": "新示例已生成！",
     "ignoreTypeErrors": "忽略类型错误"
+  },
+  "appBanner": {
+    "message": "下载适用于 iPhone、iPad 和 Mac 的 prompts.chat 应用",
+    "messageShort": "下载 Apple 设备应用",
+    "download": "下载",
+    "dismiss": "关闭"
   }
 }

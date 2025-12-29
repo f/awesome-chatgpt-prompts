@@ -1233,5 +1233,11 @@
     "generateFailed": "Örnek oluşturulamadı",
     "exampleGenerated": "Yeni örnek oluşturuldu!",
     "ignoreTypeErrors": "Tip Hatalarını Yoksay"
+  },
+  "appBanner": {
+    "message": "iPhone, iPad ve Mac için prompts.chat uygulamasını indirin",
+    "messageShort": "Apple cihazlar için uygulamayı indirin",
+    "download": "İndir",
+    "dismiss": "Kapat"
   }
 }

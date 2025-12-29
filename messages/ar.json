@@ -1233,5 +1233,11 @@
     "generateFailed": "فشل في إنشاء المثال",
     "exampleGenerated": "تم إنشاء مثال جديد!",
     "ignoreTypeErrors": "تجاهل أخطاء النوع"
+  },
+  "appBanner": {
+    "message": "احصل على تطبيق prompts.chat لأجهزة iPhone وiPad وMac",
+    "messageShort": "احصل على التطبيق لأجهزة Apple",
+    "download": "تحميل",
+    "dismiss": "إغلاق"
   }
 }
