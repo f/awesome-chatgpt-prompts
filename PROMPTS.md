@@ -26976,35 +26976,6 @@ Contributed by [@senoldak](https://github.com/senoldak)
 </details>
 
 <details>
-<summary><strong>parfüm</strong></summary>
-
-## parfüm
-
-Contributed by [@gamebase48@gmail.com](https://github.com/gamebase48@gmail.com)
-
-```md
-A minimalist elegant perfume Instagram post, 1080x1080.
-
-Center: MBS Parfums bottle from reference image, positioned prominently but not oversized. Bottle should be proportional and natural-looking.
-
-Background: Warm brown to beige gradient, soft and elegant. Minimal decoration.
-
-Around bottle: A few subtle dried flower petals scattered naturally on surface, NOT covering the bottle. Very minimal, elegant aesthetic.
-
-Text layout:
-Top: "MBS Parfums" in white
-Center-top: "PARFÜM" in large elegant serif font
-Below bottle: "Lüks koku, uygun fiyat" in white
-Bottom: "@mbsparfums"
-
-Lighting: Soft natural product photography lighting. Subtle shadows. Professional but simple composition.
-
-Style: Clean, minimal, elegant. Instagram-ready. Professional product photography. Not cluttered. Bottle as hero element but natural sized.
-```
-
-</details>
-
-<details>
 <summary><strong>Bathroom Flash Selfie (IG-candid, non-explicit)</strong></summary>
 
 ## Bathroom Flash Selfie (IG-candid, non-explicit)
