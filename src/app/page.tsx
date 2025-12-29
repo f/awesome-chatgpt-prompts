@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { ArrowRight, Star, Heart, Trophy, Users, HeartHandshake, Code, Lock, Building2, Github, GraduationCap } from "lucide-react";
+import { ArrowRight, Star, Heart, Trophy, Users, HeartHandshake, Code, Lock, Building2, Github, GraduationCap, LogIn } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { getConfig } from "@/lib/config";
 import { Button } from "@/components/ui/button";
@@ -149,6 +149,7 @@ export default async function HomePage() {
                 {showRegisterButton && (
                   <Button variant="outline" size="lg" asChild>
                     <Link href={isOAuth ? "/login" : "/register"}>
+                      <LogIn className="mr-1.5 h-4 w-4" />
                       {isOAuth ? tNav("login") : tNav("register")}
                     </Link>
                   </Button>
