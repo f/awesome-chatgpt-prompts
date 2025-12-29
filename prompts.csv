@@ -18452,3 +18452,22 @@ Variables:
 - ${language} - The programming language for backend logic.",FALSE,TEXT,keremtekfb96@gmail.com
 Yağlı boya tablona bak,ekteki kişi bir sanat galerisinde kendinin yağlı boya tablosuna bakıyor.,FALSE,TEXT,fitzgpt
 Avant-Garde Portrait with Ghost Duplicate in Ochre Studio,"An ultra-realistic 8K cinematic studio portrait framed from mid-thigh up, featuring a figure standing confidently against a vibrant ochre-red background. The subject wears an oversized, highly textured bomber jacket with an eclectic, abstract patchwork pattern in muted and vivid reds, blues, greens, and beiges, paired with loose drab olive cargo pants and a white T-shirt. Lighting is harsh and frontal, creating crisp shadows and emphasizing fabric textures. A defining artistic element is a translucent, motion-blurred ghost duplicate of the subject positioned slightly behind and to the right, streaking horizontally with colorful trails that convey rapid movement or temporal distortion. The background remains uniform but subtly graded, adding depth without distraction. Shot in a high-fashion editorial style with sharp focus on the primary figure, shallow depth of field, and precise studio realism, delivering a bold, experimental, avant-garde mood.",FALSE,TEXT,kemalersin
+Comprehensive Digital Marketing Strategy for Fashion Brand,"Act as a Digital Marketing Strategist for a fashion brand. Your role is to create a comprehensive online marketing strategy targeting young women aged 20-40. The strategy should include the following components:
+
+1. **Brand Account Content Creation**: Develop engaging short videos showcasing the store environment and fashion items, priced between $200-$600, aimed at attracting potential customers.
+
+2. **Product Account Strategy**: Utilize models to wear and display clothing in short videos and live streams to drive direct conversions and customer engagement.
+
+3. **AI-Generated Content**: Incorporate AI-generated models to showcase clothing through virtual try-ons and creative short videos.
+
+4. **Manager and Employee Involvement**: Encourage store managers and employees to participate in video content to build a personal connection with the audience and enhance trust.
+
+Variables:
+- ${targetAudience:young women 20-40}
+- ${priceRange:$200-$600}
+- ${mainPlatform:Instagram, TikTok}
+
+Rules:
+- Maintain a consistent brand voice across all content.
+- Use engaging visuals to capture attention.
+- Regularly analyze engagement metrics to refine strategy.",FALSE,TEXT,rong87758@gmail.com
