@@ -101,7 +101,8 @@
     "usernameTaken": "该用户名已被使用",
     "passwordMismatch": "密码不匹配",
     "passwordTooShort": "密码至少需要6个字符",
-    "registrationFailed": "注册失败"
+    "registrationFailed": "注册失败",
+    "githubAttributionHint": "使用 GitHub 登录，将您的贡献与开源社区关联"
   },
   "prompts": {
     "title": "提示词",

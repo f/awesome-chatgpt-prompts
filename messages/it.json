@@ -101,7 +101,8 @@
     "usernameTaken": "Nome utente già in uso",
     "passwordMismatch": "Le password non corrispondono",
     "passwordTooShort": "La password deve essere di almeno 6 caratteri",
-    "registrationFailed": "Registrazione fallita"
+    "registrationFailed": "Registrazione fallita",
+    "githubAttributionHint": "Accedi con GitHub per collegare i tuoi contributi alla comunità Open Source"
   },
   "prompts": {
     "title": "Prompt",

@@ -101,7 +101,8 @@
     "usernameTaken": "이미 사용 중인 사용자명입니다",
     "passwordMismatch": "비밀번호가 일치하지 않습니다",
     "passwordTooShort": "비밀번호는 최소 6자 이상이어야 합니다",
-    "registrationFailed": "회원가입 실패"
+    "registrationFailed": "회원가입 실패",
+    "githubAttributionHint": "GitHub으로 로그인하여 오픈소스 커뮤니티에 기여를 연결하세요"
   },
   "prompts": {
     "title": "프롬프트",

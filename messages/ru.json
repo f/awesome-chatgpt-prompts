@@ -101,7 +101,8 @@
     "usernameTaken": "Имя пользователя уже занято",
     "passwordMismatch": "Пароли не совпадают",
     "passwordTooShort": "Пароль должен быть не менее 6 символов",
-    "registrationFailed": "Ошибка регистрации"
+    "registrationFailed": "Ошибка регистрации",
+    "githubAttributionHint": "Войдите через GitHub, чтобы связать ваш вклад с сообществом Open Source"
   },
   "prompts": {
     "title": "Промпты",

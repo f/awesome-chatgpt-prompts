@@ -101,7 +101,8 @@
     "usernameTaken": "このユーザー名は既に使用されています",
     "passwordMismatch": "パスワードが一致しません",
     "passwordTooShort": "パスワードは6文字以上必要です",
-    "registrationFailed": "登録に失敗しました"
+    "registrationFailed": "登録に失敗しました",
+    "githubAttributionHint": "GitHubでサインインして、オープンソースコミュニティへの貢献をリンクしましょう"
   },
   "prompts": {
     "title": "プロンプト",

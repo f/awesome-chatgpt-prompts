@@ -101,7 +101,8 @@
     "usernameTaken": "Το όνομα χρήστη χρησιμοποιείται ήδη",
     "passwordMismatch": "Οι κωδικοί δεν ταιριάζουν",
     "passwordTooShort": "Ο κωδικός πρέπει να έχει τουλάχιστον 6 χαρακτήρες",
-    "registrationFailed": "Η εγγραφή απέτυχε"
+    "registrationFailed": "Η εγγραφή απέτυχε",
+    "githubAttributionHint": "Συνδεθείτε με GitHub για να συνδέσετε τις συνεισφορές σας με την κοινότητα Ανοιχτού Κώδικα"
   },
   "prompts": {
     "title": "Prompts",

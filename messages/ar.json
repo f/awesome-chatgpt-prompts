@@ -101,7 +101,8 @@
     "usernameTaken": "اسم المستخدم مستخدم بالفعل",
     "passwordMismatch": "كلمات المرور غير متطابقة",
     "passwordTooShort": "يجب أن تكون كلمة المرور 6 أحرف على الأقل",
-    "registrationFailed": "فشل إنشاء الحساب"
+    "registrationFailed": "فشل إنشاء الحساب",
+    "githubAttributionHint": "سجّل الدخول باستخدام GitHub لربط مساهماتك بمجتمع المصادر المفتوحة"
   },
   "prompts": {
     "title": "الأوامر",

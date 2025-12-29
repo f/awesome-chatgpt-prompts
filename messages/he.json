@@ -101,7 +101,8 @@
     "usernameTaken": "שם המשתמש כבר בשימוש",
     "passwordMismatch": "הסיסמאות אינן תואמות",
     "passwordTooShort": "הסיסמה חייבת להכיל לפחות 6 תווים",
-    "registrationFailed": "ההרשמה נכשלה"
+    "registrationFailed": "ההרשמה נכשלה",
+    "githubAttributionHint": "התחבר עם GitHub כדי לקשר את התרומות שלך לקהילת הקוד הפתוח"
   },
   "prompts": {
     "title": "פרומפטים",

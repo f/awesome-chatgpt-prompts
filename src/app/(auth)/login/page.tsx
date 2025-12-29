@@ -26,6 +26,7 @@ export default async function LoginPage() {
   const providers = getProviders(config);
   const hasCredentials = providers.includes("credentials");
   const hasOnlyCredentials = providers.length === 1 && hasCredentials;
+  const useCloneBranding = config.homepage?.useCloneBranding ?? false;
 
   return (
     <div className="container flex min-h-[calc(100vh-6rem)] flex-col items-center justify-center py-8">
@@ -37,7 +38,7 @@ export default async function LoginPage() {
           </p>
         </div>
         <div className="border rounded-lg p-4">
-          <AuthContent providers={providers} mode="login" />
+          <AuthContent providers={providers} mode="login" useCloneBranding={useCloneBranding} />
         </div>
         {hasCredentials && (
           <p className="text-center text-xs text-muted-foreground">
