@@ -14,7 +14,7 @@ export async function DiscoveryPrompts({ isHomepage = false }: DiscoveryPromptsP
   const t = await getTranslations("feed");
   const tDiscovery = await getTranslations("discovery");
 
-  const limit = isHomepage ? 6 : 15;
+  const limit = isHomepage ? 9 : 15;
 
   const promptInclude = {
     author: {
