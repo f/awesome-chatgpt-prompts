@@ -58,6 +58,9 @@ export async function GET(
           orderBy: { version: "desc" },
           take: 10,
         },
+        _count: {
+          select: { votes: true },
+        },
       },
     });
 
@@ -76,7 +79,28 @@ export async function GET(
       );
     }
 
-    return NextResponse.json(prompt);
+    // Check if logged-in user has voted
+    let hasVoted = false;
+    if (session?.user?.id) {
+      const vote = await db.promptVote.findUnique({
+        where: {
+          userId_promptId: {
+            userId: session.user.id,
+            promptId: id,
+          },
+        },
+      });
+      hasVoted = !!vote;
+    }
+
+    // Omit embedding from response (it's large binary data)
+    const { embedding: _embedding, ...promptWithoutEmbedding } = prompt;
+
+    return NextResponse.json({
+      ...promptWithoutEmbedding,
+      voteCount: prompt._count.votes,
+      hasVoted,
+    });
   } catch (error) {
     console.error("Get prompt error:", error);
     return NextResponse.json(
