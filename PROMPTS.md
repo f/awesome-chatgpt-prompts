@@ -24985,34 +24985,6 @@ Act as an Expert Technical Architecture in Mobile, having more then 20 years of 
 </details>
 
 <details>
-<summary><strong>f1</strong></summary>
-
-## f1
-
-Contributed by [@zorttiri431@gmail.com](https://github.com/zorttiri431@gmail.com)
-
-```md
-{
-  "task": "Apply the 2025 WilliamsF1 FW47 car's exterior livery design onto the 2026 FIA car design.",
-  "context": {
-    "team": "WilliamsF1",
-    "current_car_model": "FW47",
-    "year": 2025,
-    "future_car_year": 2026
-  },
-  "instructions": [
-    "Obtain the exterior livery design of the WilliamsF1 FW47 car from the year 2025.",
-    "Download the FIA's shared car design for the year 2026.",
-    "Overlay the 2025 FW47 livery design onto the 2026 car design to create a new concept.",
-    "Ensure the design maintains the branding and sponsor elements from the 2025 livery."
-  ],
-  "output": "A visual representation of the 2026 FIA car incorporating the FW47 design."
-}
-```
-
-</details>
-
-<details>
 <summary><strong>Cinematic Urban Night Portrait - Moody Streetwear Aesthetic</strong></summary>
 
 ## Cinematic Urban Night Portrait - Moody Streetwear Aesthetic
