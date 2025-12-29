@@ -13,6 +13,7 @@ const providerNames: Record<string, string> = {
   github: "GitHub",
   google: "Google",
   azure: "Microsoft",
+  apple: "Apple",
   credentials: "Email",
 };
 

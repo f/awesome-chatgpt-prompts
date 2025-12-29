@@ -29,9 +29,9 @@ export default defineConfig({
 
   // Authentication plugins
   auth: {
-    // Available: "credentials" | "google" | "azure" | "github" | custom
+    // Available: "credentials" | "google" | "azure" | "github" | "apple" | custom
     // Use `providers` array to enable multiple auth providers
-    providers: ["github", "google"],
+    providers: ["github", "google", "apple"],
     // Allow public registration (only applies to credentials provider)
     allowRegistration: false,
   },

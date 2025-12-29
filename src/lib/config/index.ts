@@ -19,7 +19,7 @@ export interface ThemeConfig {
   };
 }
 
-export type AuthProvider = "credentials" | "google" | "azure" | "github" | string;
+export type AuthProvider = "credentials" | "google" | "azure" | "github" | "apple" | string;
 
 export interface AuthConfig {
   /** @deprecated Use `providers` array instead */
