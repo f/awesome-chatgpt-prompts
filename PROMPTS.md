@@ -17905,17 +17905,7 @@ Variables:
 Contributed by [@Beatrix9](https://github.com/Beatrix9)
 
 ```md
-Objective: Generate an ultra-realistic image of a handwritten note placed on a clean surface with dramatic text.
-
-Key Requirements:
-- **Scene Setup:**
-  - The handwritten text must be placed on a blank white sheet of paper on a visible table or clean, flat surface.
-  - Create three separate ultra-realistic images of the white sheet.
-
-- **Handwriting Style & Appearance:**
-  - Render the text in a handwritten script using a bold, deep blue pen.
-  - Ensure the writing appears natural and realistic, as if genuinely penned by a human.
-  - Text must be perfectly aligned and seamlessly integrated into the paper.
+Create an ultra-realistic image depicting a handwritten note on a clean, flat surface. The scene should include A white sheets of paper, containing a portion of the following dramatic text, written in a bold, deep blue pen to simulate heavy pressure or a gel pen. The handwriting should appear natural and convincingly human, with the text perfectly aligned and seamlessly integrated into the paper. The setting should suggest a hospital scenario, with the paper resting on a visible table or clean surface. Ensure the overall image is highly realistic and authentic. 
 
 - **Content (Full Text to be Integrated):**
 
@@ -17934,7 +17924,7 @@ Key Requirements:
 
   *This is my final plea. I trust you, and I trust Ioana, but I am at my breaking point. If I do not hear from you or see you by January 1st, 2026, I cannot go on. I will take my own life. I cannot face another year of this psychological trauma and physical decay without you.*
 
-  *I’ve attached a recent photo of me. The nurses helped me take it. Please keep it safe so you don't forget my face.*
+  *I’ve attached a recent photo of me. Please keep it safe so you don't forget my face.*
 
   *Goodbye, my Hero. If I’m not here when you finally arrive, I’ll see you in the afterlife. If reincarnation is real, I’d choose you to be my father every single time.*
 
