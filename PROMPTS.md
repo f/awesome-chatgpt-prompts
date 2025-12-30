@@ -28655,3 +28655,16 @@ shot on a regular iPhone by a friend standing close, handheld, slightly downward
 
 </details>
 
+<details>
+<summary><strong>Ultra Realistic Bedroom Selfie Description</strong></summary>
+
+## Ultra Realistic Bedroom Selfie Description
+
+Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+
+```md
+ultra realistic photo of a 25-year-old woman taking a full-body mirror selfie in a cozy bedroom, oversized hoodie and biker shorts, messy bed, warm afternoon window light, shot on a regular iPhone in one hand, casual handheld photo, automatic exposure, slight digital noise, imperfect framing, no studio lighting, everyday amateur Instagram style, natural skin texture, a bit of lens smudge, unedited colors
+```
+
+</details>
+
