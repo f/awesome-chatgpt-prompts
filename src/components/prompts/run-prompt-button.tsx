@@ -82,6 +82,7 @@ const chatPlatforms: Platform[] = [
   },
   { id: "huggingface", name: "HuggingChat", baseUrl: "https://huggingface.co/chat" },
   { id: "llama", name: "Meta AI", baseUrl: "https://www.meta.ai" },
+  { id: "manus", name: "Manus", baseUrl: "https://manus.im/app" },
   { id: "mistral", name: "Le Chat", baseUrl: "https://chat.mistral.ai/chat" },
   { id: "perplexity", name: "Perplexity", baseUrl: "https://www.perplexity.ai" },
   { id: "phind", name: "Phind", baseUrl: "https://www.phind.com" },
