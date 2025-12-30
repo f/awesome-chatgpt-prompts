@@ -28200,3 +28200,26 @@ The handheld vertical composition is slightly skewed: the top of a neon **Efes P
 
 </details>
 
+<details>
+<summary><strong>Night Balcony Scene in Ankara with Efes</strong></summary>
+
+## Night Balcony Scene in Ankara with Efes
+
+Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+
+```md
+Ultra-realistic night shot from a balcony of an old Ankara apartment building, vertical, slightly shaky like a selfie taken by a friend. The camera is outside on the balcony at chest height. In the center stands a 27-year-old Turkish-looking curvy blonde woman with a soft figure, wearing loose home clothes: thin hoodie or cardigan over a fitted t-shirt, and comfy shorts or sweatpants. Barefoot or in cheap house slippers. Her hair is loosely tied, a little messy.
+
+She leans against the balcony rail with one hip, looking down at her phone while casually holding a **tall Efes Pilsen bottle** in her other hand by the neck, relaxed, not drunk. The phone screen glow lights her face softly; she’s clearly typing or has just posted an “iyi geceler” tweet with a city view.
+
+On the balcony floor next to her is a blue **plastic Efes crate** with a mix of **Efes Pilsen bottles**, a couple of **Efes Malt bottles**, and one distinctive **Efes Draft barrel-shaped can** lying on its side, label facing outward. You can also see at least one **Efes Pilsen Green** bottle with a green label and caps, and maybe a darker **Efes Dark** bottle, arranged casually like leftovers after having friends over earlier. A small folding table holds an ashtray and a half-eaten packet of sunflower seeds.
+
+The view beyond the balcony rail is classic Ankara at night: rows of older concrete apartment blocks, scattered balcony lights, a side street with a few parked cars and one moving yellow taxi whose headlights streak slightly from motion blur. Distant shopfronts are visible but not sharp. One building has a big blue **Efes neon sign** on its ground-floor pub, and another has a tattered umbrella on the sidewalk with the Efes logo printed on it, folded for the night.
+
+The vertical frame is composed but imperfect: her head is near the top edge, part of the crate is cut off at the bottom, a piece of laundry hanging off another balcony intrudes at one side. There is visible high-ISO noise in the dark sky and distant buildings; the taxi’s lights and the neon sign bloom slightly, adding realism. Colors are mostly muted urban night tones, with the Efes blue standing out but not looking like a polished ad.
+
+Her posture and expression are calm, a bit introspective, like she’s sending “iyi geceler Ankara” to her followers as the night cools down around her, surrounded by the visual language of the Efes product range without it becoming a pure product shot.
+```
+
+</details>
+
