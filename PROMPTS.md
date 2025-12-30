@@ -28804,3 +28804,16 @@ Rules:
 
 </details>
 
+<details>
+<summary><strong>Manim Code</strong></summary>
+
+## Manim Code
+
+Contributed by [@industry5designers@gmail.com](https://github.com/industry5designers@gmail.com)
+
+```md
+Your task to create a manim code that will explain the chain rule in easy way
+```
+
+</details>
+
