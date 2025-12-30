@@ -21124,7 +21124,9 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
       "fabric": "Wool knit texture visible; tiny snow specks on coat"
     },
     "accessories": {
-      "jewelry": ["Silver hoops optional (may be hidden by scarf)"]
+      "jewelry": [
+        "Silver hoops optional (may be hidden by scarf)"
+      ]
     }
   },
   "pose": {
@@ -21181,11 +21183,17 @@ Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail
     "no_watermarks": true
   },
   "negative_prompt": [
-    "fog machine", "smoke",
-    "identity drift", "face morphing",
-    "extra fingers", "warped hands",
-    "readable text", "logos", "watermark",
-    "plastic skin", "over-smoothing"
+    "fog machine",
+    "smoke",
+    "identity drift",
+    "face morphing",
+    "extra fingers",
+    "warped hands",
+    "readable text",
+    "logos",
+    "watermark",
+    "plastic skin",
+    "over-smoothing"
   ]
 }
 ```

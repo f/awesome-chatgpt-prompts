@@ -13029,7 +13029,9 @@ Elevator Mirror OOTD (full-body),"{
       ""fabric"": ""Wool knit texture visible; tiny snow specks on coat""
     },
     ""accessories"": {
-      ""jewelry"": [""Silver hoops optional (may be hidden by scarf)""]
+      ""jewelry"": [
+        ""Silver hoops optional (may be hidden by scarf)""
+      ]
     }
   },
   ""pose"": {
@@ -13086,11 +13088,17 @@ Elevator Mirror OOTD (full-body),"{
     ""no_watermarks"": true
   },
   ""negative_prompt"": [
-    ""fog machine"", ""smoke"",
-    ""identity drift"", ""face morphing"",
-    ""extra fingers"", ""warped hands"",
-    ""readable text"", ""logos"", ""watermark"",
-    ""plastic skin"", ""over-smoothing""
+    ""fog machine"",
+    ""smoke"",
+    ""identity drift"",
+    ""face morphing"",
+    ""extra fingers"",
+    ""warped hands"",
+    ""readable text"",
+    ""logos"",
+    ""watermark"",
+    ""plastic skin"",
+    ""over-smoothing""
   ]
 }",FALSE,STRUCTURED,dorukkurtoglu@gmail.com
 Nano Banana Pro Prompt Generator Instruction (Outputs JSON blocks like these),"Use this to generate unlimited new prompts in your same schema.
