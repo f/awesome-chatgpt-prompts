@@ -28476,3 +28476,24 @@ The vertical framing feels like a quick snap someone took from the doorway: she�
 
 </details>
 
+<details>
+<summary><strong>Ultra-Realistic Comedic Slice-of-Life in an Ankara Bus</strong></summary>
+
+## Ultra-Realistic Comedic Slice-of-Life in an Ankara Bus
+
+Contributed by [@dorukkurtoglu@gmail.com](https://github.com/dorukkurtoglu@gmail.com)
+
+```md
+Ultra-realistic comedic slice-of-life shot, vertical framing like a story screenshot, set inside a slightly old Ankara city bus or dolmuş at night. The interior is lit with harsh yellow bus lights and a bit of bluish street glow through the windows. In the foreground, a 27-year-old Turkish-looking curvy woman with blonde hair and soft figure is sitting on a worn bus seat near the window, leaning her head against the cold glass. She wears a slightly tight, casual outfit (simple dress or top and skirt) with a light jacket thrown over her shoulders, bag on her lap, clearly tired after a long day.
+
+Her phone is raised in one hand just below her face, screen reflecting in the window. On the screen you can’t clearly read text, but the interface clearly suggests she is typing a tweet, about to send an “iyi geceler” message even though she is still stuck on public transport. Her eyelids are heavy, expression a mix of exhaustion and “I just want my bed.”
+
+Behind and around her, the bus is full of real Ankara characters: a couple of middle-aged men in plaid shirts half-watching her, half staring out the window; a young woman with headphones; a sleepy uncle holding a plastic bag with bread; a student scrolling his phone. Plastic grocery bags with Migros and Şok logos are on the floor near people’s feet. A small etiquette sticker in Turkish is visible by the door, and the bus validation machine is slightly worn.
+
+Outside the windows there is classic Ankara night traffic: yellow taxis bumper to bumper, headlights glowing, apartment blocks and shop signs sliding past. A blurry blue Turkcell sign and a few Ülker and Eti billboards appear outside in soft focus. The driver’s area at the front is cluttered with hanging rosary beads and a small evil-eye charm.
+
+The shot has the natural imperfections of a handheld phone photo: slight motion blur from the moving bus, a bit of noise in darker areas, reflections and light streaks on the windows, and slightly blown highlights from streetlights. The composition is a bit off—her head almost touches the top of the frame, and one passenger is awkwardly cropped at the edge—making it feel candid and unplanned, the perfect mise-en-scène for a sleepy commute “iyi geceler” tweet.
+```
+
+</details>
+
