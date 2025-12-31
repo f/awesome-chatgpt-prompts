@@ -448,6 +448,8 @@ export default async function PromptPage({ params }: PromptPageProps) {
                 promptSlug={prompt.slug ?? undefined}
                 promptType={prompt.type}
                 shareTitle={prompt.title}
+                promptTitle={prompt.title}
+                promptDescription={prompt.description ?? undefined}
               />
             ) : (
               <InteractivePromptContent 
@@ -460,6 +462,8 @@ export default async function PromptPage({ params }: PromptPageProps) {
                 promptSlug={prompt.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}
                 promptType={prompt.type}
                 shareTitle={prompt.title}
+                promptTitle={prompt.title}
+                promptDescription={prompt.description ?? undefined}
               />
             )}
           </div>
