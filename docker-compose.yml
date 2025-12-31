@@ -23,7 +23,10 @@ services:
       retries: 5
 
   app:
-    build: .
+    build:
+      context: .
+      args:
+        - NEXT_PUBLIC_APP_URL=${NEXTAUTH_URL:-http://localhost:3000}
     container_name: prompts-app
     restart: unless-stopped
     depends_on:
@@ -31,6 +34,9 @@ services:
         condition: service_healthy
     ports:
       - "${PORT:-3000}:3000"
+    volumes:
+      # Custom assets: put logos in ./assets/, access as /assets/logo.svg
+      - ./assets:/app/public/assets:ro
     env_file:
       - .env
     environment:

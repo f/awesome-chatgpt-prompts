@@ -32,6 +32,12 @@ ENV DATABASE_URL="postgresql://dummy:dummy@localhost:5432/dummy"
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# Override config if prompts.config.custom.ts exists
+RUN if [ -f prompts.config.custom.ts ]; then \
+      echo "Using custom config: prompts.config.custom.ts"; \
+      cp prompts.config.custom.ts prompts.config.ts; \
+    fi
+
 RUN npx prisma generate
 
 ARG NEXT_PUBLIC_APP_URL

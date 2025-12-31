@@ -40,6 +40,32 @@ docker compose up -d
 
 Access at http://localhost:3000. See `Makefile` for more commands (`make update`, `make logs`, etc.).
 
+### Custom Branding (Docker)
+
+1. **Create custom config** from the example:
+   ```bash
+   cp prompts.config.custom.example.ts prompts.config.custom.ts
+   ```
+
+2. **Add custom assets** (optional):
+   ```bash
+   mkdir -p assets
+   cp your-logo.svg assets/logo.svg
+   ```
+
+3. **Edit `prompts.config.custom.ts`:**
+   ```typescript
+   branding: {
+     name: "My Prompt Library",
+     logo: "/assets/logo.svg",  // Maps to ./data/assets/logo.svg
+   },
+   ```
+
+4. **Build and run:**
+   ```bash
+   docker compose build && docker compose up -d
+   ```
+
 ---
 
 ## Manual Installation
