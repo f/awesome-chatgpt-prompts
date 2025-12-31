@@ -362,7 +362,7 @@ export default async function HomePage() {
                         />
                         <div>
                           <p className="text-sm font-medium">Greg Brockman</p>
-                          <p className="text-xs text-muted-foreground">President & Co-Founder at OpenAI</p>
+                          <p className="text-xs text-muted-foreground">President & Co-Founder at OpenAI · Dec 12, 2022</p>
                         </div>
                       </div>
                     </div>
@@ -387,7 +387,7 @@ export default async function HomePage() {
                         />
                         <div>
                           <p className="text-sm font-medium">Wojciech Zaremba</p>
-                          <p className="text-xs text-muted-foreground">Co-Founder at OpenAI</p>
+                          <p className="text-xs text-muted-foreground">Co-Founder at OpenAI · Dec 10, 2022</p>
                         </div>
                       </div>
                     </div>
