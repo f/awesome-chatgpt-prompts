@@ -20,8 +20,7 @@ export async function GET() {
         timestamp: new Date().toISOString(),
         uptime: process.uptime(),
         responseTime: `${responseTime}ms`,
-        database: "connected",
-        version: process.env.npm_package_version || "unknown",
+        database: "connected"
       },
       { status: 200 }
     );
