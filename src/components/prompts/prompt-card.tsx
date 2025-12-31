@@ -327,7 +327,9 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
               </button>
             ) : (
               <RunPromptButton 
-                content={prompt.content} 
+                content={prompt.content}
+                title={prompt.title}
+                description={prompt.description || undefined}
                 size="icon" 
                 variant="ghost" 
                 className="h-6 w-6"

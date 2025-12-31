@@ -27,6 +27,7 @@ interface InteractivePromptContentProps {
   isStructured?: boolean;
   structuredFormat?: "json" | "yaml";
   title?: string;
+  description?: string;
   isLoggedIn?: boolean;
   categoryName?: string;
   parentCategoryName?: string;
@@ -149,6 +150,7 @@ export function InteractivePromptContent({
   isStructured = false,
   structuredFormat = "json",
   title,
+  description,
   isLoggedIn = false,
   categoryName,
   parentCategoryName,
@@ -326,6 +328,8 @@ export function InteractivePromptContent({
               </Button>
               <RunPromptButton 
                 content={displayContent}
+                title={title}
+                description={description}
                 unfilledVariables={unfilledVariables}
                 onVariablesFilled={handleVariablesFilled}
                 getContentWithVariables={getContentWithVariables}
@@ -366,6 +370,8 @@ export function InteractivePromptContent({
             </Button>
             <RunPromptButton 
               content={displayedContent}
+              title={title}
+              description={description}
               unfilledVariables={unfilledVariables}
               onVariablesFilled={handleVariablesFilled}
               getContentWithVariables={getContentWithVariables}
@@ -414,6 +420,8 @@ export function InteractivePromptContent({
             </Button>
             <RunPromptButton 
               content={getFinalContent()}
+              title={title}
+              description={description}
               unfilledVariables={unfilledVariables}
               onVariablesFilled={handleVariablesFilled}
               getContentWithVariables={getContentWithVariables}
@@ -520,6 +528,8 @@ export function InteractivePromptContent({
           </Button>
           <RunPromptButton 
             content={getFinalContent()}
+            title={title}
+            description={description}
             unfilledVariables={unfilledVariables}
             onVariablesFilled={handleVariablesFilled}
             getContentWithVariables={getContentWithVariables}

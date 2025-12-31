@@ -47,6 +47,7 @@ const codePlatforms: Platform[] = [
   { id: "vscode", name: "VS Code", baseUrl: "vscode://", isDeeplink: true, supportsQuerystring: false },
   { id: "vscode-insiders", name: "VS Code Insiders", baseUrl: "vscode-insiders://", isDeeplink: true, supportsQuerystring: false },
   { id: "cursor", name: "Cursor", baseUrl: "cursor://anysphere.cursor-deeplink/prompt", isDeeplink: true },
+  { id: "goose", name: "Goose", baseUrl: "goose://recipe", isDeeplink: true },
     {
     id: "github-copilot",
     name: "GitHub Copilot",
@@ -70,6 +71,7 @@ const chatPlatforms: Platform[] = [
   { id: "deepseek", name: "DeepSeek", baseUrl: "https://chat.deepseek.com", supportsQuerystring: false },
   { id: "fal", name: "fal.ai Sandbox", baseUrl: "https://fal.ai/sandbox" },
   { id: "gemini", name: "Gemini", baseUrl: "https://gemini.google.com/app", supportsQuerystring: false },
+  { id: "goose", name: "Goose", baseUrl: "goose://recipe", isDeeplink: true },
   {
     id: "grok",
     name: "Grok",
@@ -91,13 +93,29 @@ const chatPlatforms: Platform[] = [
   { id: "you", name: "You.com", baseUrl: "https://you.com" },
 ];
 
-function buildUrl(platformId: string, baseUrl: string, promptText: string): string {
+function buildUrl(platformId: string, baseUrl: string, promptText: string, promptTitle?: string, promptDescription?: string): string {
   const encoded = encodeURIComponent(promptText);
   
   switch (platformId) {
     // IDE deeplinks
     case "cursor":
       return `${baseUrl}?text=${encoded}`;
+    case "goose": {
+      const config = JSON.stringify({
+        version: "1.0.0",
+        title: promptTitle || "Prompt",
+        description: promptDescription || "",
+        instructions: promptText,
+        prompt: "Write your instructions here to run this prompt.",
+        activities: [
+          "message:This prompt was imported from [**prompts.chat**](https://prompts.chat). Follow the instructions below to complete the task.",
+          "Test this prompt",
+          "Learn more about the prompt"
+        ]
+      });
+      const base64Config = btoa(config);
+      return `${baseUrl}?config=${base64Config}`;
+    }
     // Web platforms
     case "ai2sql":
       return `${baseUrl}&prompt=${encoded}`;
@@ -145,6 +163,8 @@ interface UnfilledVariable {
 
 interface RunPromptButtonProps {
   content: string;
+  title?: string;
+  description?: string;
   variant?: "default" | "ghost" | "outline";
   size?: "default" | "sm" | "icon";
   className?: string;
@@ -173,6 +193,8 @@ function getDefaultTab(categoryName?: string, parentCategoryName?: string): "cha
 
 export function RunPromptButton({ 
   content, 
+  title,
+  description,
   variant = "outline", 
   size = "sm",
   className,
@@ -220,8 +242,13 @@ export function RunPromptButton({
         navigator.clipboard.writeText(finalContent);
         setDialogOpen(true);
       } else {
-        const url = buildUrl(pendingPlatform.id, pendingPlatform.baseUrl, finalContent);
-        window.open(url, "_blank");
+        const url = buildUrl(pendingPlatform.id, pendingPlatform.baseUrl, finalContent, title, description);
+        // Only open in new tab for http/https URLs
+        if (url.startsWith("http://") || url.startsWith("https://")) {
+          window.open(url, "_blank");
+        } else {
+          window.location.href = url;
+        }
         setPendingPlatform(null);
       }
       analyticsPrompt.run(promptId, pendingPlatform.name);
@@ -244,8 +271,13 @@ export function RunPromptButton({
       setDialogOpen(true);
       analyticsPrompt.run(promptId, platform.name);
     } else {
-      const url = buildUrl(platform.id, baseUrl, content);
-      window.open(url, "_blank");
+      const url = buildUrl(platform.id, baseUrl, content, title, description);
+      // Only open in new tab for http/https URLs
+      if (url.startsWith("http://") || url.startsWith("https://")) {
+        window.open(url, "_blank");
+      } else {
+        window.location.href = url;
+      }
       analyticsPrompt.run(promptId, platform.name);
     }
   };
