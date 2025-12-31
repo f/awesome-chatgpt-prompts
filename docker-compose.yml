@@ -1,0 +1,43 @@
+# prompts.chat Docker Compose
+#
+# Quick Start:
+#   1. cp .env.example .env
+#   2. Edit .env
+#   3. docker compose up -d
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: prompts-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-prompts}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-prompts}
+      POSTGRES_DB: ${POSTGRES_DB:-prompts}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-prompts}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: prompts-app
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${PORT:-3000}:3000"
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-prompts}:${POSTGRES_PASSWORD:-prompts}@db:5432/${POSTGRES_DB:-prompts}
+      AUTH_TRUST_HOST: "true"
+      NODE_ENV: production
+      SEED_DATABASE: ${SEED_DATABASE:-false}
+
+volumes:
+  postgres_data:

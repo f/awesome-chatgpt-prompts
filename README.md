@@ -61,7 +61,16 @@ npm run dev
 
 ### Private Clone Setup (Recommended for Teams)
 
-For private deployments, use our **interactive setup wizard** to configure your instance with custom branding, disable sponsorship sections, and set up authentication:
+**With Docker (recommended):**
+
+```bash
+git clone https://github.com/f/awesome-chatgpt-prompts.git
+cd awesome-chatgpt-prompts
+cp .env.example .env && nano .env
+docker compose up -d
+```
+
+**Manual setup** with our interactive setup wizard:
 
 ```bash
 git clone https://github.com/f/awesome-chatgpt-prompts.git

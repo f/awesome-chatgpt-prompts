@@ -28,6 +28,22 @@
 
 ---
 
+## Quick Start with Docker
+
+```bash
+git clone https://github.com/f/awesome-chatgpt-prompts.git
+cd awesome-chatgpt-prompts
+cp .env.example .env
+# Edit .env with your credentials
+docker compose up -d
+```
+
+Access at http://localhost:3000. See `Makefile` for more commands (`make update`, `make logs`, etc.).
+
+---
+
+## Manual Installation
+
 This guide explains how to deploy **prompts.chat** on your own private server for enhanced privacy and customization.
 
 ## Prerequisites
