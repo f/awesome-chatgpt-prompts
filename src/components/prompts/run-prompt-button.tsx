@@ -105,12 +105,12 @@ function buildUrl(platformId: string, baseUrl: string, promptText: string, promp
         version: "1.0.0",
         title: promptTitle || "Prompt",
         description: promptDescription || "",
-        instructions: promptText,
-        prompt: "Write your instructions here to run this prompt.",
+        instructions: "This is a prompt imported from [**prompts.chat**](https://prompts.chat). Follow the instructions below to complete the task.",
+        prompt: promptText,
         activities: [
           "message:This prompt was imported from [**prompts.chat**](https://prompts.chat). Follow the instructions below to complete the task.",
-          "Test this prompt",
-          "Learn more about the prompt"
+          "Do it now",
+          "Learn more about the instructions"
         ]
       });
       const base64Config = btoa(config);

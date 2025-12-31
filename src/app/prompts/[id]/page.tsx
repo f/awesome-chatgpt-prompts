@@ -338,16 +338,19 @@ export default async function PromptPage({ params }: PromptPageProps) {
           relativeText={formatDistanceToNow(prompt.createdAt, locale)} 
           locale={locale}
         />
-        {prompt.category && (
-          <Link href={`/categories/${prompt.category.slug}`}>
-            <Badge variant="outline">{prompt.category.name}</Badge>
-          </Link>
-        )}
       </div>
 
-      {/* Tags */}
-      {prompt.tags.length > 0 && (
-        <div className="flex flex-wrap gap-2 mb-6">
+      {/* Category and Tags */}
+      {(prompt.category || prompt.tags.length > 0) && (
+        <div className="flex flex-wrap items-center gap-2 mb-6">
+          {prompt.category && (
+            <Link href={`/categories/${prompt.category.slug}`}>
+              <Badge variant="outline">{prompt.category.name}</Badge>
+            </Link>
+          )}
+          {prompt.category && prompt.tags.length > 0 && (
+            <span className="text-muted-foreground">•</span>
+          )}
           {prompt.tags.map(({ tag }) => (
             <Link key={tag.id} href={`/tags/${tag.slug}`}>
               <Badge
