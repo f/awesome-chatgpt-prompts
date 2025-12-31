@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { ArrowRight, Star, Heart, Trophy, Users, HeartHandshake, Code, Lock, Building2, Github, GraduationCap, LogIn } from "lucide-react";
+import { ArrowRight, Star, Heart, Trophy, Users, HeartHandshake, Code, Lock, Building2, Github, GraduationCap, LogIn, Rocket, Quote } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { getConfig } from "@/lib/config";
 import { Button } from "@/components/ui/button";
@@ -238,6 +238,10 @@ export default async function HomePage() {
                 <Code className="h-4 w-4 text-blue-500" />
                 <span>{tHomepage("achievements.fullyOpenSource")}</span>
               </span>
+              <span className="flex items-center gap-2 text-muted-foreground">
+                <Rocket className="h-4 w-4 text-orange-500" />
+                <span><strong>{tHomepage("achievements.firstEver")}</strong> · {tHomepage("achievements.releasedOn")}</span>
+              </span>
             </div>
           </div>
         </section>
@@ -331,6 +335,64 @@ export default async function HomePage() {
                   </Link>
                   <span>by Cognition</span>
                 </span>
+              </div>
+            )}
+            {/* Testimonials */}
+            {!useCloneBranding && (
+              <div className="mt-8 pt-8 border-t">
+                <p className="text-center text-xs text-muted-foreground mb-6">{tHomepage("achievements.lovedByOpenAI")}</p>
+                <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+                  {/* Greg Brockman */}
+                  <Link
+                    href="https://x.com/gdb/status/1602072566671110144"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative p-5 rounded-lg border bg-muted/30 overflow-hidden hover:border-primary/50 transition-colors"
+                  >
+                    <Quote className="absolute top-3 right-3 h-16 w-16 text-muted-foreground/10 -rotate-12" />
+                    <div className="relative z-10 flex flex-col gap-3">
+                      <p className="text-sm text-muted-foreground italic leading-relaxed">&ldquo;Love the community explorations of ChatGPT, from capabilities (https://github.com/f/awesome-chatgpt-prompts) to limitations (...). No substitute for the collective power of the internet when it comes to plumbing the uncharted depths of a new deep learning model.&rdquo;</p>
+                      <div className="flex items-center gap-3 mt-auto">
+                        <Image
+                          src="/sponsors/gdb.jpg"
+                          alt="Greg Brockman"
+                          width={40}
+                          height={40}
+                          className="rounded-full"
+                        />
+                        <div>
+                          <p className="text-sm font-medium">Greg Brockman</p>
+                          <p className="text-xs text-muted-foreground">President & Co-Founder at OpenAI</p>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                  {/* Wojciech Zaremba */}
+                  <Link
+                    href="https://x.com/woj_zaremba/status/1601362952841760769"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative p-5 rounded-lg border bg-muted/30 overflow-hidden hover:border-primary/50 transition-colors"
+                  >
+                    <Quote className="absolute top-3 right-3 h-16 w-16 text-muted-foreground/10 -rotate-12" />
+                    <div className="relative z-10 flex flex-col gap-3 h-full">
+                      <p className="text-sm text-muted-foreground italic leading-relaxed">&ldquo;I love it! https://github.com/f/awesome-chatgpt-prompts&rdquo;</p>
+                      <div className="flex items-center gap-3 mt-auto">
+                        <Image
+                          src="/sponsors/woj.jpg"
+                          alt="Wojciech Zaremba"
+                          width={40}
+                          height={40}
+                          className="rounded-full"
+                        />
+                        <div>
+                          <p className="text-sm font-medium">Wojciech Zaremba</p>
+                          <p className="text-xs text-muted-foreground">Co-Founder at OpenAI</p>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
               </div>
             )}
           </div>
