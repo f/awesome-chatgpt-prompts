@@ -30007,3 +30007,16 @@ Variables:
 
 </details>
 
+<details>
+<summary><strong>古风中式村落微缩模型</strong></summary>
+
+## 古风中式村落微缩模型
+
+Contributed by [@shiruissr@gmail.com](https://github.com/shiruissr@gmail.com)
+
+```md
+Design a miniature scene capturing the essence of an ancient Chinese village. Incorporate traditional architectural details and vivid depictions of daily life with clay figures engaging in activities like cooking, working, and resting. The scene should be set against a backdrop of trees, and illuminated with warm, comforting light to evoke a sense of healing and tranquility. Use high detail and a realistic style to bring the miniature model photography to life.
+```
+
+</details>
+
