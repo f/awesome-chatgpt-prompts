@@ -46,6 +46,7 @@ export async function StructuredData({ type, data }: StructuredDataProps) {
       sameAs: [
         "https://github.com/f/awesome-chatgpt-prompts",
         "https://x.com/promptschat",
+        "https://x.com/fkadev",
       ],
     },
     website: {
