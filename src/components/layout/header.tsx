@@ -55,11 +55,13 @@ const languages = [
   { code: "it", name: "Italiano" },
   { code: "ja", name: "日本語" },
   { code: "tr", name: "Türkçe" },
+  { code: "az", name: "Azərbaycan dili" },
+  { code: "fa", name: "فارسی" },
   { code: "ko", name: "한국어" },
   { code: "ar", name: "العربية" },
   { code: "ru", name: "Русский" },
   { code: "he", name: "עברית" },
-  { code: "el", name: "Ελληνικά" },
+  { code: "el", name: "Ελληνικά" }
 ];
 
 interface HeaderProps {
