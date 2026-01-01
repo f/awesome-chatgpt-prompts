@@ -52,10 +52,16 @@ export const metadata: Metadata = {
   publisher: "prompts.chat",
   icons: {
     icon: [
-      { url: "/logo.svg", media: "(prefers-color-scheme: light)" },
-      { url: "/logo-dark.svg", media: "(prefers-color-scheme: dark)" },
+      { url: "/favicon/favicon.ico", sizes: "48x48" },
+      { url: "/favicon/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/favicon/favicon.svg", type: "image/svg+xml" },
     ],
-    apple: "/logo.svg",
+    apple: "/favicon/apple-touch-icon.png",
+    shortcut: "/favicon/favicon.ico",
+  },
+  manifest: "/favicon/site.webmanifest",
+  other: {
+    "apple-mobile-web-app-title": "prompts.chat",
   },
   openGraph: {
     type: "website",
