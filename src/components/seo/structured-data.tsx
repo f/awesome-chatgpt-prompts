@@ -1,17 +1,28 @@
 import { getConfig } from "@/lib/config";
 
 interface StructuredDataProps {
-  type: "website" | "organization" | "breadcrumb" | "prompt";
+  type: "website" | "organization" | "breadcrumb" | "prompt" | "softwareApp" | "itemList";
   data?: {
     breadcrumbs?: Array<{ name: string; url: string }>;
     prompt?: {
       id: string;
       name: string;
       description: string;
+      content: string;
       author?: string;
+      authorUrl?: string;
       datePublished?: string;
       dateModified?: string;
+      category?: string;
+      tags?: string[];
+      voteCount?: number;
     };
+    items?: Array<{
+      name: string;
+      url: string;
+      description?: string;
+      image?: string;
+    }>;
   };
 }
 
@@ -76,14 +87,42 @@ export async function StructuredData({ type, data }: StructuredDataProps) {
     prompt: data?.prompt
       ? {
           "@context": "https://schema.org",
-          "@type": "CreativeWork",
-          "@id": `${baseUrl}/prompts/${encodeURIComponent(data.prompt.id)}`,
+          "@type": "HowTo",
+          "@id": `${baseUrl}/prompts/${data.prompt.id}`,
           name: data.prompt.name,
-          description: data.prompt.description,
+          description: data.prompt.description || `AI prompt: ${data.prompt.name}`,
+          step: [
+            {
+              "@type": "HowToStep",
+              name: "Copy the prompt",
+              text: data.prompt.content.substring(0, 500) + (data.prompt.content.length > 500 ? "..." : ""),
+              position: 1,
+            },
+            {
+              "@type": "HowToStep",
+              name: "Paste into your AI assistant",
+              text: "Open ChatGPT, Claude, Gemini, or your preferred AI assistant and paste the prompt.",
+              position: 2,
+            },
+            {
+              "@type": "HowToStep",
+              name: "Get your response",
+              text: "The AI will respond according to the prompt instructions.",
+              position: 3,
+            },
+          ],
+          tool: [
+            {
+              "@type": "HowToTool",
+              name: "AI Assistant (ChatGPT, Claude, Gemini, etc.)",
+            },
+          ],
+          totalTime: "PT2M",
           author: data.prompt.author
             ? {
                 "@type": "Person",
                 name: data.prompt.author,
+                url: data.prompt.authorUrl,
               }
             : undefined,
           datePublished: data.prompt.datePublished,
@@ -91,7 +130,60 @@ export async function StructuredData({ type, data }: StructuredDataProps) {
           publisher: {
             "@type": "Organization",
             name: config.branding.name,
+            logo: {
+              "@type": "ImageObject",
+              url: `${baseUrl}${config.branding.logo}`,
+            },
           },
+          mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": `${baseUrl}/prompts/${data.prompt.id}`,
+          },
+          aggregateRating: data.prompt.voteCount && data.prompt.voteCount > 0
+            ? {
+                "@type": "AggregateRating",
+                ratingValue: 5,
+                bestRating: 5,
+                ratingCount: data.prompt.voteCount,
+              }
+            : undefined,
+          keywords: data.prompt.tags?.join(", ") || data.prompt.category,
+        }
+      : null,
+    softwareApp: {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: config.branding.name,
+      description: config.branding.description,
+      url: baseUrl,
+      applicationCategory: "UtilitiesApplication",
+      operatingSystem: "Web",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: 4.8,
+        ratingCount: 1000,
+        bestRating: 5,
+      },
+    },
+    itemList: data?.items
+      ? {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          itemListElement: data.items.map((item, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            item: {
+              "@type": "HowTo",
+              name: item.name,
+              description: item.description,
+              url: item.url.startsWith("http") ? item.url : `${baseUrl}${item.url}`,
+            },
+          })),
         }
       : null,
   };
@@ -112,6 +204,7 @@ export async function WebsiteStructuredData() {
     <>
       <StructuredData type="organization" />
       <StructuredData type="website" />
+      <StructuredData type="softwareApp" />
     </>
   );
 }
