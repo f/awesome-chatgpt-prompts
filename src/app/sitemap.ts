@@ -47,13 +47,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Dynamic pages - Public Prompts (limit to recent 1000 for performance)
   const prompts = await db.prompt.findMany({
     where: { isPrivate: false, deletedAt: null, isUnlisted: false },
-    select: { slug: true, updatedAt: true },
+    select: { id: true, slug: true, updatedAt: true },
     orderBy: { updatedAt: "desc" },
     take: 1000,
   });
 
   const promptPages: MetadataRoute.Sitemap = prompts.map((prompt) => ({
-    url: `${baseUrl}/prompts/${prompt.slug}`,
+    url: `${baseUrl}/prompts/${prompt.id}_${prompt.slug}`,
     lastModified: prompt.updatedAt,
     changeFrequency: "weekly",
     priority: 0.6,
