@@ -5,6 +5,7 @@ import { getMessages, getLocale } from "next-intl/server";
 import { Providers } from "@/components/providers";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { WebsiteStructuredData } from "@/components/seo/structured-data";
 import { AppBanner } from "@/components/layout/app-banner";
 import { LocaleDetector } from "@/components/providers/locale-detector";
 import { getConfig } from "@/lib/config";
@@ -29,22 +30,70 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXTAUTH_URL || "http://localhost:3000"),
-  title: "prompts.chat",
-  description: "Collect, organize, and share AI prompts",
+  title: {
+    default: "prompts.chat - AI Prompts Community",
+    template: "%s | prompts.chat",
+  },
+  description:
+    "Discover, collect, and share the best AI prompts for ChatGPT, Claude, Gemini, and more. Join the largest community of AI prompt engineers and creators.",
+  keywords: [
+    "AI prompts",
+    "ChatGPT prompts",
+    "Claude prompts",
+    "prompt engineering",
+    "AI tools",
+    "prompt library",
+    "GPT prompts",
+    "AI assistant",
+    "prompt templates",
+  ],
+  authors: [{ name: "prompts.chat community" }],
+  creator: "prompts.chat",
+  publisher: "prompts.chat",
   icons: {
     icon: [
       { url: "/logo.svg", media: "(prefers-color-scheme: light)" },
       { url: "/logo-dark.svg", media: "(prefers-color-scheme: dark)" },
     ],
+    apple: "/logo.svg",
   },
   openGraph: {
-    title: "prompts.chat",
-    description: "Collect, organize, and share AI prompts",
+    type: "website",
+    locale: "en_US",
+    siteName: "prompts.chat",
+    title: "prompts.chat - AI Prompts Community",
+    description:
+      "Discover, collect, and share the best AI prompts for ChatGPT, Claude, Gemini, and more. Join the largest community of AI prompt engineers.",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "prompts.chat - AI Prompts Community",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "prompts.chat",
-    description: "Collect, organize, and share AI prompts",
+    title: "prompts.chat - AI Prompts Community",
+    description:
+      "Discover, collect, and share the best AI prompts for ChatGPT, Claude, Gemini, and more.",
+    images: ["/og.png"],
+    creator: "@promptschat",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: process.env.NEXTAUTH_URL || "https://prompts.chat",
   },
 };
 
@@ -110,6 +159,9 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={isRtl ? "rtl" : "ltr"} suppressHydrationWarning className={themeClasses} style={themeStyles}>
+      <head>
+        <WebsiteStructuredData />
+      </head>
       <body className={`${fontClasses} antialiased`}>
         {process.env.GOOGLE_ANALYTICS_ID && (
           <>
