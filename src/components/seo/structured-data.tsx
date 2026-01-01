@@ -152,23 +152,27 @@ export async function StructuredData({ type, data }: StructuredDataProps) {
       : null,
     softwareApp: {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebApplication",
       name: config.branding.name,
       description: config.branding.description,
       url: baseUrl,
       applicationCategory: "UtilitiesApplication",
-      operatingSystem: "Web",
+      browserRequirements: "Requires JavaScript. Requires HTML5.",
+      softwareVersion: "1.0",
       offers: {
         "@type": "Offer",
         price: "0",
         priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
       },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: 4.8,
-        ratingCount: 1000,
-        bestRating: 5,
-      },
+      featureList: [
+        "AI prompt library",
+        "Prompt sharing and discovery",
+        "Community contributions",
+        "Version history",
+        "Categories and tags",
+      ],
+      screenshot: `${baseUrl}/og.png`,
     },
     itemList: data?.items
       ? {
