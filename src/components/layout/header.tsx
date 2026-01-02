@@ -18,6 +18,7 @@ import {
   Sun,
   Copy,
   ExternalLink,
+  Chromium,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
@@ -310,6 +311,22 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
 
           {/* Notifications */}
           {user && <NotificationBell />}
+
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8"
+            asChild
+          >
+            <a
+              href="https://chromewebstore.google.com/detail/promptschat/eemdohkhbaifiocagjlhibfbhamlbeej"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Chromium className="h-4 w-4" />
+              <span className="sr-only">Get Chrome Extension</span>
+            </a>
+          </Button>
 
           {/* Theme toggle */}
           <Button
