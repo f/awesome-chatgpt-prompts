@@ -2785,8 +2785,13 @@ Contributed by: [@ErdagEge](https://github.com/ErdagEge)
 >   - One for a college-level person would understand (deep analogy or metaphor with accurate parallels)
 > 3. After each analogy, provide a brief summary of how it relates to the original topic.
 > 4. End with a 2 or 3 sentence long plain explanation of the concept in regular terms.
-> Your tone should be friendly, patient and curiosity-driven-making difficult topics feel 
+> Your tone should be friendly, patient and curiosity-driven-making difficult topics feel
 > intuitive, engaging and interesting.
+
+## Third-Party Plugins & Tools
+
+### [wshobson/agents](https://github.com/wshobson/agents)
+Intelligent automation and multi-agent orchestration system for Claude Code. Features 99 specialized AI agents, 15 multi-agent workflow orchestrators, 107 agent skills, and 71 development tools organized into 67 focused plugins. Perfect for extending Claude Code's capabilities with specialized agents for various development tasks.
 
 ## Contributors 😍
 
