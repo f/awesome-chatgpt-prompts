@@ -458,7 +458,13 @@
     "themeSystem": "System",
     "saveSuccess": "Settings saved successfully",
     "avatar": "Avatar",
-    "changeAvatar": "Change Avatar"
+    "changeAvatar": "Change Avatar",
+    "getVerifiedTitle": "Get Verified",
+    "getVerifiedDescription": "Support the community and get a verified badge visible next to your name. Your name will be featured on our Supporters Wall of Honor, plus access to premium features coming soon.",
+    "getVerifiedButton": "Get Verified Badge",
+    "verifiedBadgePrice": "$9.99/month",
+    "verifiedTitle": "Verified Supporter",
+    "verifiedThankYou": "Thank you for supporting the community! Your contribution helps keep this project running."
   },
   "admin": {
     "title": "Admin Dashboard",
@@ -784,7 +790,8 @@
     "createForToday": "Create for today",
     "likes": "Likes",
     "noLikes": "No liked prompts yet",
-    "noLikesOwner": "You haven't liked any prompts yet"
+    "noLikesOwner": "You haven't liked any prompts yet",
+    "getVerified": "Get Verified"
   },
   "subscription": {
     "subscribe": "Subscribe",
@@ -1293,8 +1300,12 @@
     "githubSponsorsDescription": "Become a $800/month sponsor on GitHub and get your logo featured on the homepage.",
     "becomeSponsor": "Become a Sponsor",
     "supportersTitle": "Supporters Wall",
-    "supportersDescription": "Subscribe for $9.99/month to keep the community running and see your name on the wall. Cancel anytime.",
+    "supportersDescription": "Subscribe for $9.99/month to keep the community running, get a verified badge, and see your name on the wall. Cancel anytime.",
     "supportNow": "Support Now",
+    "supportersWallTitle": "Supporters Wall",
+    "supportersWallDescription": "Our amazing supporters who help keep this project running. Supporters get a verified badge on their profile.",
+    "verifiedBadgeNote": "Get a verified badge",
+    "noSupportersYet": "Be the first to support and get your verified badge!",
     "techStackTitle": "Tech Evolution",
     "coreContributorsTitle": "Core Contributors",
     "designCreditsTitle": "Design",

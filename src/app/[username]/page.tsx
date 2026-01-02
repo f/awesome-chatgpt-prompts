@@ -415,6 +415,17 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
               {user.verified && (
                 <BadgeCheck className="h-5 w-5 text-blue-500 shrink-0" />
               )}
+              {!user.verified && isOwner && !config.homepage?.useCloneBranding && (
+                <Link
+                  href="https://donate.stripe.com/aFa9AS5RJeAR23nej0dMI03"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium rounded-full bg-gradient-to-r from-amber-500/20 to-yellow-500/20 border border-amber-500/50 text-amber-600 dark:text-amber-400 hover:from-amber-500/30 hover:to-yellow-500/30 transition-colors"
+                >
+                  <BadgeCheck className="h-3 w-3" />
+                  {t("getVerified")}
+                </Link>
+              )}
               {user.role === "ADMIN" && (
                 <ShieldCheck className="h-5 w-5 text-primary shrink-0" />
               )}
