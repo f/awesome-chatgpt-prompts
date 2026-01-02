@@ -40,6 +40,11 @@ docker compose up -d
 
 Access at http://localhost:3000. See `Makefile` for more commands (`make update`, `make logs`, etc.).
 
+**Custom port:** Set `HOST_PORT` in `.env` to change the external port:
+```bash
+HOST_PORT=8080  # Access at http://localhost:8080
+```
+
 ### Custom Branding (Docker)
 
 1. **Create custom config** from the example:

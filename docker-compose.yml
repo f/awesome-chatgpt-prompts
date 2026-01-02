@@ -33,7 +33,7 @@ services:
       db:
         condition: service_healthy
     ports:
-      - "${PORT:-3000}:3000"
+      - "${HOST_PORT:-3000}:3000"
     volumes:
       # Custom assets: put logos in ./assets/, access as /assets/logo.svg
       - ./assets:/app/public/assets:ro
@@ -44,6 +44,7 @@ services:
       AUTH_TRUST_HOST: "true"
       NODE_ENV: production
       SEED_DATABASE: ${SEED_DATABASE:-false}
+      PORT: 3000  # Always use port 3000 inside container
 
 volumes:
   postgres_data:
