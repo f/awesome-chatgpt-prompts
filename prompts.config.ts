@@ -11,6 +11,8 @@ export default defineConfig({
     logoDark: "/logo-dark.svg",
     favicon: "/logo.svg",
     description: "Collect, organize, and share AI prompts",
+
+    // Delete this if useCloneBranding is true
     appStoreUrl: "https://apps.apple.com/tr/app/prompts-chat/id6756895736",
     chromeExtensionUrl: "https://chromewebstore.google.com/detail/promptschat/eemdohkhbaifiocagjlhibfbhamlbeej",
   },

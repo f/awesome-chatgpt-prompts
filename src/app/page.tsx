@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { ArrowRight, Star, Heart, Trophy, Users, HeartHandshake, Code, Lock, Building2, Github, GraduationCap, LogIn, Rocket, Quote, FileText } from "lucide-react";
+import { ArrowRight, Star, Heart, Trophy, Users, HeartHandshake, Code, Lock, Building2, Github, GraduationCap, LogIn, Rocket, Quote, FileText, History } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { getConfig } from "@/lib/config";
 import { Button } from "@/components/ui/button";
@@ -179,15 +179,24 @@ export default async function HomePage() {
                 )}
               </div>
               {!useCloneBranding && (
-                <Link 
-                  href="https://github.com/f/awesome-chatgpt-prompts/stargazers" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <Star className="h-4 w-4 text-amber-500" />
-                  <span>{tHomepage("beStargazer", { count: (githubStars + 1).toLocaleString(), ordinal: getOrdinalSuffix(githubStars + 1) })}</span>
-                </Link>
+                <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+                  <Link 
+                    href="https://github.com/f/awesome-chatgpt-prompts/stargazers" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    <Star className="h-4 w-4 text-amber-500" />
+                    <span>{tHomepage("beStargazer", { count: (githubStars + 1).toLocaleString(), ordinal: getOrdinalSuffix(githubStars + 1) })}</span>
+                  </Link>
+                  <Link 
+                    href="/about" 
+                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    <History className="h-4 w-4" />
+                    {tHomepage("ourHistory")}
+                  </Link>
+                </div>
               )}
             </div>
           </div>
