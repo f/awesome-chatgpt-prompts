@@ -13,7 +13,10 @@ import { McpServerPopup } from "@/components/mcp/mcp-server-popup";
 
 interface CategoryPageProps {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ page?: string }>;
 }
+
+const PROMPTS_PER_PAGE = 30;
 
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
   const { slug } = await params;
@@ -32,8 +35,10 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   };
 }
 
-export default async function CategoryPage({ params }: CategoryPageProps) {
+export default async function CategoryPage({ params, searchParams }: CategoryPageProps) {
   const { slug } = await params;
+  const { page } = await searchParams;
+  const currentPage = Math.max(1, parseInt(page || "1", 10) || 1);
   const session = await auth();
   const t = await getTranslations();
 
@@ -62,6 +67,17 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       })
     : null;
 
+  // Count total prompts for pagination
+  const totalPrompts = await db.prompt.count({
+    where: {
+      categoryId: category.id,
+      isPrivate: false,
+      isUnlisted: false,
+      deletedAt: null,
+    },
+  });
+  const totalPages = Math.ceil(totalPrompts / PROMPTS_PER_PAGE);
+
   // Fetch prompts in this category
   const promptsRaw = await db.prompt.findMany({
     where: {
@@ -71,7 +87,8 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       deletedAt: null,
     },
     orderBy: { createdAt: "desc" },
-    take: 30,
+    skip: (currentPage - 1) * PROMPTS_PER_PAGE,
+    take: PROMPTS_PER_PAGE,
     include: {
       author: {
         select: {
@@ -136,7 +153,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               </p>
             )}
             <div className="flex items-center gap-3 mt-2 text-sm text-muted-foreground">
-              <span>{t("categories.promptCount", { count: category._count.prompts })}</span>
+              <span>{t("categories.promptCount", { count: totalPrompts })}</span>
               <span>•</span>
               <span>{t("categories.subscriberCount", { count: category._count.subscribers })}</span>
             </div>
@@ -146,7 +163,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       </div>
 
       {/* Prompts */}
-      <PromptList prompts={prompts} currentPage={1} totalPages={1} />
+      <PromptList prompts={prompts} currentPage={currentPage} totalPages={totalPages} />
     </div>
   );
 }
