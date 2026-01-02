@@ -422,7 +422,14 @@
     "subscribers": "מנויים",
     "promptCount": "{count} פרומפטים",
     "subscriberCount": "{count} מנויים",
-    "confirmDelete": "האם אתה בטוח שברצונך למחוק קטגוריה זו?"
+    "confirmDelete": "האם אתה בטוח שברצונך למחוק קטגוריה זו?",
+    "searchPlaceholder": "חיפוש פרומפטים...",
+    "sort": {
+      "newest": "החדשים ביותר",
+      "oldest": "הישנים ביותר",
+      "most_upvoted": "הכי מדורגים",
+      "most_contributors": "הכי הרבה תורמים"
+    }
   },
   "tags": {
     "title": "תגיות",

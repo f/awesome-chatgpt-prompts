@@ -422,7 +422,14 @@
     "subscribers": "人の購読者",
     "promptCount": "{count}件のプロンプト",
     "subscriberCount": "{count}人の購読者",
-    "confirmDelete": "このカテゴリーを削除してもよろしいですか？"
+    "confirmDelete": "このカテゴリーを削除してもよろしいですか？",
+    "searchPlaceholder": "プロンプトを検索...",
+    "sort": {
+      "newest": "新しい順",
+      "oldest": "古い順",
+      "most_upvoted": "投票数順",
+      "most_contributors": "貢献者数順"
+    }
   },
   "tags": {
     "title": "タグ",

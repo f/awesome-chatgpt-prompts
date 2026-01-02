@@ -422,7 +422,14 @@
     "subscribers": "구독자",
     "promptCount": "{count}개 프롬프트",
     "subscriberCount": "{count}명 구독자",
-    "confirmDelete": "이 카테고리를 삭제하시겠습니까?"
+    "confirmDelete": "이 카테고리를 삭제하시겠습니까?",
+    "searchPlaceholder": "프롬프트 검색...",
+    "sort": {
+      "newest": "최신순",
+      "oldest": "오래된순",
+      "most_upvoted": "추천순",
+      "most_contributors": "기여자순"
+    }
   },
   "tags": {
     "title": "태그",

@@ -422,7 +422,14 @@
     "subscribers": "подписчиков",
     "promptCount": "{count} промптов",
     "subscriberCount": "{count} подписчиков",
-    "confirmDelete": "Вы уверены, что хотите удалить эту категорию?"
+    "confirmDelete": "Вы уверены, что хотите удалить эту категорию?",
+    "searchPlaceholder": "Поиск промптов...",
+    "sort": {
+      "newest": "Новые",
+      "oldest": "Старые",
+      "most_upvoted": "По голосам",
+      "most_contributors": "По участникам"
+    }
   },
   "tags": {
     "title": "Теги",

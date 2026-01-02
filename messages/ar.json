@@ -422,7 +422,14 @@
     "subscribers": "مشتركين",
     "promptCount": "{count} أوامر",
     "subscriberCount": "{count} مشتركين",
-    "confirmDelete": "هل أنت متأكد من حذف هذا التصنيف؟"
+    "confirmDelete": "هل أنت متأكد من حذف هذا التصنيف؟",
+    "searchPlaceholder": "البحث في الأوامر...",
+    "sort": {
+      "newest": "الأحدث",
+      "oldest": "الأقدم",
+      "most_upvoted": "الأكثر تصويتاً",
+      "most_contributors": "الأكثر مساهمة"
+    }
   },
   "tags": {
     "title": "الوسوم",

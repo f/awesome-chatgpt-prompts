@@ -422,7 +422,14 @@
     "subscribers": "assinantes",
     "promptCount": "{count} prompts",
     "subscriberCount": "{count} assinantes",
-    "confirmDelete": "Tem certeza que deseja excluir esta categoria?"
+    "confirmDelete": "Tem certeza que deseja excluir esta categoria?",
+    "searchPlaceholder": "Buscar prompts...",
+    "sort": {
+      "newest": "Mais recentes",
+      "oldest": "Mais antigos",
+      "most_upvoted": "Mais votados",
+      "most_contributors": "Mais contribuidores"
+    }
   },
   "tags": {
     "title": "Tags",

@@ -9,11 +9,12 @@ import config from "@/../prompts.config";
 import { Button } from "@/components/ui/button";
 import { PromptList } from "@/components/prompts/prompt-list";
 import { SubscribeButton } from "@/components/categories/subscribe-button";
+import { CategoryFilters } from "@/components/categories/category-filters";
 import { McpServerPopup } from "@/components/mcp/mcp-server-popup";
 
 interface CategoryPageProps {
   params: Promise<{ slug: string }>;
-  searchParams: Promise<{ page?: string }>;
+  searchParams: Promise<{ page?: string; sort?: string; q?: string }>;
 }
 
 const PROMPTS_PER_PAGE = 30;
@@ -37,8 +38,9 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
 
 export default async function CategoryPage({ params, searchParams }: CategoryPageProps) {
   const { slug } = await params;
-  const { page } = await searchParams;
+  const { page, sort, q } = await searchParams;
   const currentPage = Math.max(1, parseInt(page || "1", 10) || 1);
+  const sortOption = sort || "newest";
   const session = await auth();
   const t = await getTranslations();
 
@@ -67,26 +69,42 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       })
     : null;
 
+  // Build where clause with optional search
+  const whereClause = {
+    categoryId: category.id,
+    isPrivate: false,
+    isUnlisted: false,
+    deletedAt: null,
+    ...(q && {
+      OR: [
+        { title: { contains: q, mode: "insensitive" as const } },
+        { content: { contains: q, mode: "insensitive" as const } },
+      ],
+    }),
+  };
+
+  // Build orderBy based on sort option
+  const getOrderBy = () => {
+    switch (sortOption) {
+      case "oldest":
+        return { createdAt: "asc" as const };
+      case "most_upvoted":
+        return { votes: { _count: "desc" as const } };
+      case "most_contributors":
+        return { contributors: { _count: "desc" as const } };
+      default:
+        return { createdAt: "desc" as const };
+    }
+  };
+
   // Count total prompts for pagination
-  const totalPrompts = await db.prompt.count({
-    where: {
-      categoryId: category.id,
-      isPrivate: false,
-      isUnlisted: false,
-      deletedAt: null,
-    },
-  });
+  const totalPrompts = await db.prompt.count({ where: whereClause });
   const totalPages = Math.ceil(totalPrompts / PROMPTS_PER_PAGE);
 
   // Fetch prompts in this category
   const promptsRaw = await db.prompt.findMany({
-    where: {
-      categoryId: category.id,
-      isPrivate: false,
-      isUnlisted: false,
-      deletedAt: null,
-    },
-    orderBy: { createdAt: "desc" },
+    where: whereClause,
+    orderBy: getOrderBy(),
     skip: (currentPage - 1) * PROMPTS_PER_PAGE,
     take: PROMPTS_PER_PAGE,
     include: {
@@ -158,6 +176,15 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               <span>{t("categories.subscriberCount", { count: category._count.subscribers })}</span>
             </div>
           </div>
+          <div className="hidden md:flex items-center gap-2">
+            <CategoryFilters categorySlug={slug} />
+            {config.features.mcp !== false && <McpServerPopup initialCategories={[slug]} showOfficialBranding={!config.homepage?.useCloneBranding} />}
+          </div>
+        </div>
+
+        {/* Mobile filters */}
+        <div className="flex md:hidden items-center gap-2 mt-4">
+          <CategoryFilters categorySlug={slug} />
           {config.features.mcp !== false && <McpServerPopup initialCategories={[slug]} showOfficialBranding={!config.homepage?.useCloneBranding} />}
         </div>
       </div>

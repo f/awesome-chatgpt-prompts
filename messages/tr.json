@@ -422,7 +422,14 @@
     "subscribers": "abone",
     "promptCount": "{count} prompt",
     "subscriberCount": "{count} abone",
-    "confirmDelete": "Bu kategoriyi silmek istediğinizden emin misiniz?"
+    "confirmDelete": "Bu kategoriyi silmek istediğinizden emin misiniz?",
+    "searchPlaceholder": "Prompt ara...",
+    "sort": {
+      "newest": "En yeni",
+      "oldest": "En eski",
+      "most_upvoted": "En çok oylanan",
+      "most_contributors": "En çok katkıda bulunan"
+    }
   },
   "tags": {
     "title": "Etiketler",

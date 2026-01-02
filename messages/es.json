@@ -422,7 +422,14 @@
     "subscribers": "suscriptores",
     "promptCount": "{count} prompts",
     "subscriberCount": "{count} suscriptores",
-    "confirmDelete": "¿Estás seguro de que quieres eliminar esta categoría?"
+    "confirmDelete": "¿Estás seguro de que quieres eliminar esta categoría?",
+    "searchPlaceholder": "Buscar prompts...",
+    "sort": {
+      "newest": "Más recientes",
+      "oldest": "Más antiguos",
+      "most_upvoted": "Más votados",
+      "most_contributors": "Más contribuidores"
+    }
   },
   "tags": {
     "title": "Etiquetas",

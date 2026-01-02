@@ -422,7 +422,14 @@
     "subscribers": "abunəçi",
     "promptCount": "{count} prompt",
     "subscriberCount": "{count} abunəçi",
-    "confirmDelete": "Bu kateqoriyanı silmək istədiyinizə əminsiniz?"
+    "confirmDelete": "Bu kateqoriyanı silmək istədiyinizə əminsiniz?",
+    "searchPlaceholder": "Promptları axtar...",
+    "sort": {
+      "newest": "Ən yeni",
+      "oldest": "Ən köhnə",
+      "most_upvoted": "Ən çox səs alan",
+      "most_contributors": "Ən çox töhfə verən"
+    }
   },
   "tags": {
     "title": "Etiketlər",

@@ -422,7 +422,14 @@
     "subscribers": "συνδρομητές",
     "promptCount": "{count} prompts",
     "subscriberCount": "{count} συνδρομητές",
-    "confirmDelete": "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτή την κατηγορία;"
+    "confirmDelete": "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτή την κατηγορία;",
+    "searchPlaceholder": "Αναζήτηση prompts...",
+    "sort": {
+      "newest": "Νεότερα",
+      "oldest": "Παλαιότερα",
+      "most_upvoted": "Περισσότερες ψήφοι",
+      "most_contributors": "Περισσότεροι συνεισφέροντες"
+    }
   },
   "tags": {
     "title": "Ετικέτες",

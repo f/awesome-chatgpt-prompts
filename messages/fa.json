@@ -422,7 +422,14 @@
     "subscribers": "دنبال‌کننده",
     "promptCount": "{count} پرامپت",
     "subscriberCount": "{count} دنبال‌کننده",
-    "confirmDelete": "آیا مطمئن هستید که می‌خواهید این دسته‌بندی را حذف کنید؟"
+    "confirmDelete": "آیا مطمئن هستید که می‌خواهید این دسته‌بندی را حذف کنید؟",
+    "searchPlaceholder": "جستجوی پرامپت‌ها...",
+    "sort": {
+      "newest": "جدیدترین",
+      "oldest": "قدیمی‌ترین",
+      "most_upvoted": "بیشترین رای",
+      "most_contributors": "بیشترین مشارکت‌کننده"
+    }
   },
   "tags": {
     "title": "برچسب‌ها",

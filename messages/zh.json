@@ -422,7 +422,14 @@
     "subscribers": "订阅者",
     "promptCount": "{count} 个提示词",
     "subscriberCount": "{count} 订阅者",
-    "confirmDelete": "确定要删除此分类吗？"
+    "confirmDelete": "确定要删除此分类吗？",
+    "searchPlaceholder": "搜索提示词...",
+    "sort": {
+      "newest": "最新",
+      "oldest": "最早",
+      "most_upvoted": "最多投票",
+      "most_contributors": "最多贡献者"
+    }
   },
   "tags": {
     "title": "标签",

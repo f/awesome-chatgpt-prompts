@@ -422,7 +422,14 @@
     "subscribers": "abonnés",
     "promptCount": "{count} prompts",
     "subscriberCount": "{count} abonnés",
-    "confirmDelete": "Êtes-vous sûr de vouloir supprimer cette catégorie ?"
+    "confirmDelete": "Êtes-vous sûr de vouloir supprimer cette catégorie ?",
+    "searchPlaceholder": "Rechercher des prompts...",
+    "sort": {
+      "newest": "Plus récents",
+      "oldest": "Plus anciens",
+      "most_upvoted": "Plus votés",
+      "most_contributors": "Plus de contributeurs"
+    }
   },
   "tags": {
     "title": "Tags",
