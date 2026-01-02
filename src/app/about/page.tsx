@@ -8,6 +8,9 @@ import { db } from "@/lib/db";
 import { ContributorAvatar } from "./contributor-avatar";
 import config from "@/../prompts.config";
 
+// Revalidate the page once per day (86400 seconds)
+export const revalidate = 86400;
+
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("about");
   return {
