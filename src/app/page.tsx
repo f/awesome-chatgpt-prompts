@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { DiscoveryPrompts } from "@/components/prompts/discovery-prompts";
 import { HeroPromptInput } from "@/components/prompts/hero-prompt-input";
 import { CliCommand } from "@/components/layout/cli-command";
+import { ExtensionLink } from "@/components/layout/extension-link";
 
 function getOrdinalSuffix(n: number): string {
   const s = ["th", "st", "nd", "rd"];
@@ -103,6 +104,9 @@ export default async function HomePage() {
                     </svg>
                     <span className="text-sm font-medium text-zinc-100">App Store</span>
                   </Link>
+                  )}
+                  {config.branding.chromeExtensionUrl && (
+                    <ExtensionLink url={config.branding.chromeExtensionUrl} />
                   )}
                 </div>
               </div>

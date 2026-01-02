@@ -5,6 +5,7 @@ export interface BrandingConfig {
   favicon: string;
   description: string;
   appStoreUrl?: string;
+  chromeExtensionUrl?: string;
 }
 
 export interface ThemeConfig {
