@@ -17,6 +17,12 @@
   <small>a.k.a. Awesome ChatGPT Prompts</small>
 </p>
 
+<p align="center">
+  <a href="#cli">
+    <img src="https://img.shields.io/badge/Run_in_Terminal-npx_prompts.chat-black?style=for-the-badge&logo=npm&logoColor=white" alt="npx prompts.chat">
+  </a>
+</p>
+
 <h2 align="center">Sponsors</h3>
 
 <div align="center">

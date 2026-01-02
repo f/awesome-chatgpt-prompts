@@ -11,6 +11,7 @@ export default defineConfig({
     logoDark: "/logo-dark.svg",
     favicon: "/logo.svg",
     description: "Collect, organize, and share AI prompts",
+    appStoreUrl: "https://apps.apple.com/tr/app/prompts-chat/id6756895736",
   },
 
   // Theme - design system configuration
