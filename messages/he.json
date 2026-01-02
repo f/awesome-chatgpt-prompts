@@ -458,7 +458,13 @@
     "themeSystem": "מערכת",
     "saveSuccess": "ההגדרות נשמרו בהצלחה",
     "avatar": "אווטאר",
-    "changeAvatar": "שנה אווטאר"
+    "changeAvatar": "שנה אווטאר",
+    "getVerifiedTitle": "התאמתות",
+    "getVerifiedDescription": "תמכו בקהילה וקבלו תג מאומת ליד השם שלכם. השם שלכם יוצג בקיר הכבוד של התומכים, בתוספת תכונות פרמיום בקרוב.",
+    "getVerifiedButton": "קבל תג מאומת",
+    "verifiedBadgePrice": "$9.99/חודש",
+    "verifiedTitle": "תומך מאומת",
+    "verifiedThankYou": "תודה על תמיכתך בקהילה! התרומה שלך עוזרת לשמור על הפרויקט הזה."
   },
   "admin": {
     "title": "לוח בקרה",
@@ -784,7 +790,8 @@
     "createForToday": "צור להיום",
     "likes": "לייקים",
     "noLikes": "עדיין אין פרומפטים שאהבת",
-    "noLikesOwner": "עדיין לא אהבת אף פרומפט"
+    "noLikesOwner": "עדיין לא אהבת אף פרומפט",
+    "getVerified": "התאמתות"
   },
   "subscription": {
     "subscribe": "הירשם",
@@ -1299,6 +1306,10 @@
     "coreContributorsTitle": "תורמים מרכזיים",
     "designCreditsTitle": "עיצוב",
     "communityContributorsTitle": "תורמי קהילה",
-    "viewAllContributors": "צפה בכל התורמים ב"
+    "viewAllContributors": "צפה בכל התורמים ב",
+    "supportersWallTitle": "קיר התומכים",
+    "supportersWallDescription": "התומכים המדהימים שלנו שעוזרים לשמור על הפרויקט הזה. התומכים מקבלים תג מאומת בפרופיל שלהם.",
+    "verifiedBadgeNote": "קבל תג מאומת",
+    "noSupportersYet": "היה התומך הראשון וקבל את התג שלך!"
   }
 }

@@ -458,7 +458,13 @@
     "themeSystem": "سیستم",
     "saveSuccess": "تنظیمات با موفقیت ذخیره شد",
     "avatar": "آواتار",
-    "changeAvatar": "تغییر آواتار"
+    "changeAvatar": "تغییر آواتار",
+    "getVerifiedTitle": "تأیید شوید",
+    "getVerifiedDescription": "از جامعه حمایت کنید و نشان تأیید کنار نام خود دریافت کنید. نام شما در دیوار افتخار حامیان نمایش داده می‌شود، به علاوه ویژگی‌های ویژه به زودی.",
+    "getVerifiedButton": "دریافت نشان تأیید",
+    "verifiedBadgePrice": "$9.99/ماه",
+    "verifiedTitle": "حامی تأیید شده",
+    "verifiedThankYou": "از حمایت شما از جامعه متشکریم! کمک شما به ادامه این پروژه کمک می‌کند."
   },
   "admin": {
     "title": "داشبورد مدیریت",
@@ -784,7 +790,8 @@
     "createForToday": "ایجاد برای امروز",
     "likes": "لایک‌ها",
     "noLikes": "هنوز پرامپتی لایک نشده",
-    "noLikesOwner": "هنوز هیچ پرامپتی را لایک نکرده‌اید"
+    "noLikesOwner": "هنوز هیچ پرامپتی را لایک نکرده‌اید",
+    "getVerified": "تأیید شوید"
   },
   "subscription": {
     "subscribe": "دنبال کردن",
@@ -1299,6 +1306,10 @@
     "coreContributorsTitle": "مشارکت‌کنندگان اصلی",
     "designCreditsTitle": "طراحی",
     "communityContributorsTitle": "مشارکت‌کنندگان جامعه",
-    "viewAllContributors": "مشاهده همه مشارکت‌کنندگان در"
+    "viewAllContributors": "مشاهده همه مشارکت‌کنندگان در",
+    "supportersWallTitle": "دیوار حامیان",
+    "supportersWallDescription": "حامیان فوق‌العاده ما که به ادامه این پروژه کمک می‌کنند. حامیان نشان تأیید در پروفایل خود دریافت می‌کنند.",
+    "verifiedBadgeNote": "دریافت نشان تأیید",
+    "noSupportersYet": "اولین حامی باشید و نشان تأیید خود را دریافت کنید!"
   }
 }

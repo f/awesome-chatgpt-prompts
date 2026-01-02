@@ -458,7 +458,13 @@
     "themeSystem": "Sistem",
     "saveSuccess": "Parametrlər uğurla saxlanıldı",
     "avatar": "Avatar",
-    "changeAvatar": "Avatarı Dəyiş"
+    "changeAvatar": "Avatarı Dəyiş",
+    "getVerifiedTitle": "Təsdiqlənin",
+    "getVerifiedDescription": "İcmanı dəstəkləyin və adınızın yanında təsdiq nişanı alın. Adınız Dəstəkçilər Şərəf Divarında göstəriləcək, üstəlik tezliklə premium xüsusiyyətlər.",
+    "getVerifiedButton": "Təsdiq Nişanı Alın",
+    "verifiedBadgePrice": "$9.99/ay",
+    "verifiedTitle": "Təsdiqlənmiş Dəstəkçi",
+    "verifiedThankYou": "İcmanı dəstəklədiyiniz üçün təşəkkür edirik! Töhfəniz bu layihənin davam etməsinə kömək edir."
   },
   "admin": {
     "title": "Admin Paneli",
@@ -784,7 +790,8 @@
     "createForToday": "Bu gün üçün yarat",
     "likes": "Bəyənmələr",
     "noLikes": "No liked prompts yet",
-    "noLikesOwner": "Hələ heç bir promptu bəyənməmisiniz"
+    "noLikesOwner": "Hələ heç bir promptu bəyənməmisiniz",
+    "getVerified": "Təsdiqlənin"
   },
   "subscription": {
     "subscribe": "Abunə ol",
@@ -1299,6 +1306,10 @@
     "coreContributorsTitle": "Əsas Töhfəçilər",
     "designCreditsTitle": "Dizayn",
     "communityContributorsTitle": "İcma Töhfəçiləri",
-    "viewAllContributors": "Bütün töhfəçilərə baxın"
+    "viewAllContributors": "Bütün töhfəçilərə baxın",
+    "supportersWallTitle": "Dəstəkçilər Divarı",
+    "supportersWallDescription": "Bu layihənin davam etməsinə kömək edən möhtəşəm dəstəkçilərimiz. Dəstəkçilər profillərində təsdiq nişanı alırlar.",
+    "verifiedBadgeNote": "Təsdiq nişanı alın",
+    "noSupportersYet": "İlk dəstəkçi olun və təsdiq nişanınızı alın!"
   }
 }

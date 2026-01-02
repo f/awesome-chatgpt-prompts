@@ -458,7 +458,13 @@
     "themeSystem": "Σύστημα",
     "saveSuccess": "Οι ρυθμίσεις αποθηκεύτηκαν επιτυχώς",
     "avatar": "Avatar",
-    "changeAvatar": "Αλλαγή Avatar"
+    "changeAvatar": "Αλλαγή Avatar",
+    "getVerifiedTitle": "Επαλήθευση",
+    "getVerifiedDescription": "Υποστηρίξτε την κοινότητα και αποκτήστε σήμα επαλήθευσης δίπλα στο όνομά σας. Το όνομά σας θα εμφανίζεται στον Τοίχο Τιμής Υποστηρικτών, συν premium λειτουργίες σύντομα.",
+    "getVerifiedButton": "Απόκτηση Σήματος",
+    "verifiedBadgePrice": "$9.99/μήνα",
+    "verifiedTitle": "Επαληθευμένος Υποστηρικτής",
+    "verifiedThankYou": "Ευχαριστούμε που υποστηρίζετε την κοινότητα! Η συνεισφορά σας βοηθά στη συνέχιση αυτού του έργου."
   },
   "admin": {
     "title": "Πίνακας ελέγχου",
@@ -784,7 +790,8 @@
     "createForToday": "Δημιουργία για σήμερα",
     "likes": "Μου αρέσει",
     "noLikes": "Δεν υπάρχουν αγαπημένα prompts ακόμα",
-    "noLikesOwner": "Δεν έχετε κάνει like σε κανένα prompt ακόμα"
+    "noLikesOwner": "Δεν έχετε κάνει like σε κανένα prompt ακόμα",
+    "getVerified": "Επαλήθευση"
   },
   "subscription": {
     "subscribe": "Εγγραφή",
@@ -1299,6 +1306,10 @@
     "coreContributorsTitle": "Κύριοι Συνεισφέροντες",
     "designCreditsTitle": "Σχεδιασμός",
     "communityContributorsTitle": "Συνεισφέροντες Κοινότητας",
-    "viewAllContributors": "Δείτε όλους τους συνεισφέροντες στο"
+    "viewAllContributors": "Δείτε όλους τους συνεισφέροντες στο",
+    "supportersWallTitle": "Τοίχος Υποστηρικτών",
+    "supportersWallDescription": "Οι εξαιρετικοί υποστηρικτές μας που βοηθούν στη συνέχιση αυτού του έργου. Οι υποστηρικτές λαμβάνουν σήμα επαλήθευσης στο προφίλ τους.",
+    "verifiedBadgeNote": "Αποκτήστε σήμα επαλήθευσης",
+    "noSupportersYet": "Γίνετε ο πρώτος υποστηρικτής και αποκτήστε το σήμα σας!"
   }
 }

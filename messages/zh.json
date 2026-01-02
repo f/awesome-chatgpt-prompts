@@ -458,7 +458,13 @@
     "themeSystem": "跟随系统",
     "saveSuccess": "设置保存成功",
     "avatar": "头像",
-    "changeAvatar": "更换头像"
+    "changeAvatar": "更换头像",
+    "getVerifiedTitle": "获取认证",
+    "getVerifiedDescription": "支持社区并在您的名字旁边获取认证徽章。您的名字将显示在支持者荣誉墙上，还有高级功能即将推出。",
+    "getVerifiedButton": "获取认证徽章",
+    "verifiedBadgePrice": "$9.99/月",
+    "verifiedTitle": "认证支持者",
+    "verifiedThankYou": "感谢您对社区的支持！您的贡献有助于维持这个项目。"
   },
   "admin": {
     "title": "管理面板",
@@ -784,7 +790,8 @@
     "createForToday": "为今天创建",
     "likes": "喜欢",
     "noLikes": "还没有喜欢的提示词",
-    "noLikesOwner": "您还没有喜欢任何提示词"
+    "noLikesOwner": "您还没有喜欢任何提示词",
+    "getVerified": "获取认证"
   },
   "subscription": {
     "subscribe": "订阅",
@@ -1299,6 +1306,10 @@
     "coreContributorsTitle": "核心贡献者",
     "designCreditsTitle": "设计",
     "communityContributorsTitle": "社区贡献者",
-    "viewAllContributors": "在此查看所有贡献者"
+    "viewAllContributors": "在此查看所有贡献者",
+    "supportersWallTitle": "支持者墙",
+    "supportersWallDescription": "我们出色的支持者们帮助维持这个项目。支持者将在个人资料上获得认证徽章。",
+    "verifiedBadgeNote": "获取认证徽章",
+    "noSupportersYet": "成为第一个支持者并获取您的认证徽章！"
   }
 }

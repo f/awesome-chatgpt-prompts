@@ -481,8 +481,40 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      {/* Support Us */}
+      {/* Community Contributors */}
       <section className="mb-10">
+        <h2 className="text-lg font-semibold mb-4">{t("communityContributorsTitle")}</h2>
+        <div className="flex flex-wrap gap-1.5">
+          {contributors.map((user) => (
+            <ContributorAvatar 
+              key={user.id} 
+              username={user.githubUsername || user.username} 
+            />
+          ))}
+          <Link
+            href="https://github.com/f/awesome-chatgpt-prompts/graphs/contributors"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center w-8 h-8 rounded-full border border-dashed text-muted-foreground hover:text-primary hover:border-primary transition-colors text-xs"
+          >
+            +
+          </Link>
+        </div>
+        <p className="text-sm text-muted-foreground mt-3">
+          {t("viewAllContributors")}{" "}
+          <Link
+            href="https://github.com/f/awesome-chatgpt-prompts/graphs/contributors"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-foreground"
+          >
+            GitHub
+          </Link>
+        </p>
+      </section>
+
+      {/* Support Us */}
+      <section>
         <h2 className="text-lg font-semibold mb-2">{t("supportUsTitle")}</h2>
         <p className="text-sm text-muted-foreground mb-4">{t("supportUsIntro")}</p>
         <div className="grid gap-4 sm:grid-cols-2">
@@ -517,38 +549,6 @@ export default async function AboutPage() {
             </Link>
           </div>
         </div>
-      </section>
-
-      {/* Community Contributors */}
-      <section>
-        <h2 className="text-lg font-semibold mb-4">{t("communityContributorsTitle")}</h2>
-        <div className="flex flex-wrap gap-1.5">
-          {contributors.map((user) => (
-            <ContributorAvatar 
-              key={user.id} 
-              username={user.githubUsername || user.username} 
-            />
-          ))}
-          <Link
-            href="https://github.com/f/awesome-chatgpt-prompts/graphs/contributors"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center w-8 h-8 rounded-full border border-dashed text-muted-foreground hover:text-primary hover:border-primary transition-colors text-xs"
-          >
-            +
-          </Link>
-        </div>
-        <p className="text-sm text-muted-foreground mt-3">
-          {t("viewAllContributors")}{" "}
-          <Link
-            href="https://github.com/f/awesome-chatgpt-prompts/graphs/contributors"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-foreground"
-          >
-            GitHub
-          </Link>
-        </p>
       </section>
     </div>
   );

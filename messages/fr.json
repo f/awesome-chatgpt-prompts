@@ -458,7 +458,13 @@
     "themeSystem": "Système",
     "saveSuccess": "Paramètres enregistrés avec succès",
     "avatar": "Avatar",
-    "changeAvatar": "Changer d'Avatar"
+    "changeAvatar": "Changer l'Avatar",
+    "getVerifiedTitle": "Se faire vérifier",
+    "getVerifiedDescription": "Soutenez la communauté et obtenez un badge vérifié à côté de votre nom. Votre nom sera affiché sur notre Mur d'Honneur des Supporters, plus accès aux fonctionnalités premium bientôt.",
+    "getVerifiedButton": "Obtenir le Badge Vérifié",
+    "verifiedBadgePrice": "$9.99/mois",
+    "verifiedTitle": "Supporter Vérifié",
+    "verifiedThankYou": "Merci de soutenir la communauté ! Votre contribution aide à maintenir ce projet."
   },
   "admin": {
     "title": "Tableau de Bord Admin",
@@ -784,7 +790,8 @@
     "createForToday": "Créer pour aujourd'hui",
     "likes": "J'aime",
     "noLikes": "Pas encore de prompts aimés",
-    "noLikesOwner": "Vous n'avez encore aimé aucun prompt"
+    "noLikesOwner": "Vous n'avez encore aimé aucun prompt",
+    "getVerified": "Se faire vérifier"
   },
   "subscription": {
     "subscribe": "S'abonner",
@@ -1299,6 +1306,10 @@
     "coreContributorsTitle": "Contributeurs Principaux",
     "designCreditsTitle": "Design",
     "communityContributorsTitle": "Contributeurs de la Communauté",
-    "viewAllContributors": "Voir tous les contributeurs sur"
+    "viewAllContributors": "Voir tous les contributeurs sur",
+    "supportersWallTitle": "Mur des Supporters",
+    "supportersWallDescription": "Nos incroyables supporters qui aident à maintenir ce projet. Les supporters reçoivent un badge vérifié sur leur profil.",
+    "verifiedBadgeNote": "Obtenir un badge vérifié",
+    "noSupportersYet": "Soyez le premier à soutenir et obtenez votre badge vérifié !"
   }
 }

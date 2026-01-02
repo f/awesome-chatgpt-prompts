@@ -458,7 +458,13 @@
     "themeSystem": "システム",
     "saveSuccess": "設定を保存しました",
     "avatar": "アバター",
-    "changeAvatar": "アバターを変更"
+    "changeAvatar": "アバターを変更",
+    "getVerifiedTitle": "認証を取得",
+    "getVerifiedDescription": "コミュニティをサポートして、名前の横に認証バッジを取得しましょう。あなたの名前はサポーターの名誉の壁に表示され、さらにプレミアム機能も近日公開。",
+    "getVerifiedButton": "認証バッジを取得",
+    "verifiedBadgePrice": "月額$9.99",
+    "verifiedTitle": "認証済みサポーター",
+    "verifiedThankYou": "コミュニティをサポートしていただきありがとうございます！あなたの貢献はこのプロジェクトの維持に役立っています。"
   },
   "admin": {
     "title": "管理ダッシュボード",
@@ -784,7 +790,8 @@
     "createForToday": "今日用に作成",
     "likes": "いいね",
     "noLikes": "いいねしたプロンプトはまだありません",
-    "noLikesOwner": "まだプロンプトにいいねしていません"
+    "noLikesOwner": "まだプロンプトにいいねしていません",
+    "getVerified": "認証を取得"
   },
   "subscription": {
     "subscribe": "購読",
@@ -1299,6 +1306,10 @@
     "coreContributorsTitle": "コアコントリビューター",
     "designCreditsTitle": "デザイン",
     "communityContributorsTitle": "コミュニティコントリビューター",
-    "viewAllContributors": "すべてのコントリビューターを見る"
+    "viewAllContributors": "すべてのコントリビューターを見る",
+    "supportersWallTitle": "サポーターの壁",
+    "supportersWallDescription": "このプロジェクトの維持に貢献してくださっている素晴らしいサポーターの皆様。サポーターはプロフィールに認証バッジが付与されます。",
+    "verifiedBadgeNote": "認証バッジを取得",
+    "noSupportersYet": "最初のサポーターになって認証バッジを取得しましょう！"
   }
 }

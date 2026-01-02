@@ -458,7 +458,13 @@
     "themeSystem": "System",
     "saveSuccess": "Einstellungen erfolgreich gespeichert",
     "avatar": "Avatar",
-    "changeAvatar": "Avatar ändern"
+    "changeAvatar": "Avatar ändern",
+    "getVerifiedTitle": "Verifizieren lassen",
+    "getVerifiedDescription": "Unterstütze die Community und erhalte ein Verifizierungsabzeichen neben deinem Namen. Dein Name wird auf unserer Unterstützer-Ehrenwand angezeigt, plus Zugang zu Premium-Funktionen bald.",
+    "getVerifiedButton": "Verifizierungsabzeichen erhalten",
+    "verifiedBadgePrice": "$9.99/Monat",
+    "verifiedTitle": "Verifizierter Unterstützer",
+    "verifiedThankYou": "Danke für deine Unterstützung der Community! Dein Beitrag hilft, dieses Projekt am Laufen zu halten."
   },
   "admin": {
     "title": "Admin-Dashboard",
@@ -784,7 +790,8 @@
     "createForToday": "Für heute erstellen",
     "likes": "Gefällt mir",
     "noLikes": "Noch keine gelikten Prompts",
-    "noLikesOwner": "Sie haben noch keine Prompts geliket"
+    "noLikesOwner": "Du hast noch keine Prompts geliked",
+    "getVerified": "Verifizieren lassen"
   },
   "subscription": {
     "subscribe": "Abonnieren",
@@ -1299,6 +1306,10 @@
     "coreContributorsTitle": "Kern-Mitwirkende",
     "designCreditsTitle": "Design",
     "communityContributorsTitle": "Community-Mitwirkende",
-    "viewAllContributors": "Alle Mitwirkenden ansehen auf"
+    "viewAllContributors": "Alle Mitwirkenden ansehen auf",
+    "supportersWallTitle": "Unterstützer-Wand",
+    "supportersWallDescription": "Unsere großartigen Unterstützer, die dieses Projekt am Laufen halten. Unterstützer erhalten ein Verifizierungsabzeichen auf ihrem Profil.",
+    "verifiedBadgeNote": "Verifizierungsabzeichen erhalten",
+    "noSupportersYet": "Sei der Erste, der unterstützt und dein Verifizierungsabzeichen erhält!"
   }
 }

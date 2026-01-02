@@ -458,7 +458,13 @@
     "themeSystem": "Sistema",
     "saveSuccess": "Impostazioni salvate con successo",
     "avatar": "Avatar",
-    "changeAvatar": "Cambia Avatar"
+    "changeAvatar": "Cambia Avatar",
+    "getVerifiedTitle": "Ottieni la Verifica",
+    "getVerifiedDescription": "Sostieni la community e ottieni un badge verificato accanto al tuo nome. Il tuo nome apparirà nel nostro Muro d'Onore dei Sostenitori, più accesso alle funzionalità premium in arrivo.",
+    "getVerifiedButton": "Ottieni Badge Verificato",
+    "verifiedBadgePrice": "$9.99/mese",
+    "verifiedTitle": "Sostenitore Verificato",
+    "verifiedThankYou": "Grazie per sostenere la community! Il tuo contributo aiuta a mantenere questo progetto."
   },
   "admin": {
     "title": "Dashboard Admin",
@@ -784,7 +790,8 @@
     "createForToday": "Crea per oggi",
     "likes": "Mi piace",
     "noLikes": "Nessun prompt piaciuto ancora",
-    "noLikesOwner": "Non hai ancora messo mi piace a nessun prompt"
+    "noLikesOwner": "Non hai ancora messo like a nessun prompt",
+    "getVerified": "Ottieni la Verifica"
   },
   "subscription": {
     "subscribe": "Iscriviti",
@@ -1299,6 +1306,10 @@
     "coreContributorsTitle": "Contributori Principali",
     "designCreditsTitle": "Design",
     "communityContributorsTitle": "Contributori della Community",
-    "viewAllContributors": "Vedi tutti i contributori su"
+    "viewAllContributors": "Vedi tutti i contributori su",
+    "supportersWallTitle": "Muro dei Sostenitori",
+    "supportersWallDescription": "I nostri fantastici sostenitori che aiutano a mantenere questo progetto. I sostenitori ricevono un badge verificato sul loro profilo.",
+    "verifiedBadgeNote": "Ottieni un badge verificato",
+    "noSupportersYet": "Sii il primo a sostenere e ottieni il tuo badge verificato!"
   }
 }

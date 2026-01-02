@@ -458,7 +458,13 @@
     "themeSystem": "시스템",
     "saveSuccess": "설정이 성공적으로 저장되었습니다",
     "avatar": "아바타",
-    "changeAvatar": "아바타 변경"
+    "changeAvatar": "아바타 변경",
+    "getVerifiedTitle": "인증 받기",
+    "getVerifiedDescription": "커뮤니티를 지원하고 이름 옆에 인증 배지를 받으세요. 귀하의 이름이 후원자 명예의 벽에 표시되며, 프리미엄 기능도 곧 출시됩니다.",
+    "getVerifiedButton": "인증 배지 받기",
+    "verifiedBadgePrice": "월 $9.99",
+    "verifiedTitle": "인증된 후원자",
+    "verifiedThankYou": "커뮤니티를 지원해 주셔서 감사합니다! 귀하의 기여가 이 프로젝트 유지에 도움이 됩니다."
   },
   "admin": {
     "title": "관리자 대시보드",
@@ -784,7 +790,8 @@
     "createForToday": "오늘을 위해 만들기",
     "likes": "좋아요",
     "noLikes": "아직 좋아요한 프롬프트가 없습니다",
-    "noLikesOwner": "아직 프롬프트에 좋아요를 하지 않았습니다"
+    "noLikesOwner": "아직 프롬프트에 좋아요를 하지 않았습니다",
+    "getVerified": "인증 받기"
   },
   "subscription": {
     "subscribe": "구독",
@@ -1299,6 +1306,10 @@
     "coreContributorsTitle": "핵심 기여자",
     "designCreditsTitle": "디자인",
     "communityContributorsTitle": "커뮤니티 기여자",
-    "viewAllContributors": "모든 기여자 보기"
+    "viewAllContributors": "모든 기여자 보기",
+    "supportersWallTitle": "후원자 벽",
+    "supportersWallDescription": "이 프로젝트 유지에 도움을 주시는 멋진 후원자들입니다. 후원자는 프로필에 인증 배지를 받습니다.",
+    "verifiedBadgeNote": "인증 배지 받기",
+    "noSupportersYet": "첫 번째 후원자가 되어 인증 배지를 받으세요!"
   }
 }

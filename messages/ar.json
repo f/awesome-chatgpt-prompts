@@ -458,7 +458,13 @@
     "themeSystem": "النظام",
     "saveSuccess": "تم حفظ الإعدادات بنجاح",
     "avatar": "الصورة الرمزية",
-    "changeAvatar": "تغيير الصورة الرمزية"
+    "changeAvatar": "تغيير الصورة الرمزية",
+    "getVerifiedTitle": "احصل على التحقق",
+    "getVerifiedDescription": "ادعم المجتمع واحصل على شارة التحقق بجانب اسمك. سيظهر اسمك في جدار الشرف للداعمين، بالإضافة إلى ميزات مميزة قريباً.",
+    "getVerifiedButton": "احصل على شارة التحقق",
+    "verifiedBadgePrice": "$9.99/شهرياً",
+    "verifiedTitle": "داعم موثق",
+    "verifiedThankYou": "شكراً لدعمك للمجتمع! مساهمتك تساعد في استمرار هذا المشروع."
   },
   "admin": {
     "title": "لوحة الإدارة",
@@ -784,7 +790,8 @@
     "createForToday": "أنشئ لليوم",
     "likes": "الإعجابات",
     "noLikes": "لا توجد أوامر معجب بها بعد",
-    "noLikesOwner": "لم تعجب بأي أوامر بعد"
+    "noLikesOwner": "لم تعجب بأي أوامر بعد",
+    "getVerified": "احصل على التحقق"
   },
   "subscription": {
     "subscribe": "اشتراك",
@@ -1299,6 +1306,10 @@
     "coreContributorsTitle": "المساهمون الأساسيون",
     "designCreditsTitle": "التصميم",
     "communityContributorsTitle": "مساهمو المجتمع",
-    "viewAllContributors": "عرض جميع المساهمين على"
+    "viewAllContributors": "عرض جميع المساهمين على",
+    "supportersWallTitle": "جدار الداعمين",
+    "supportersWallDescription": "داعمونا الرائعون الذين يساعدون في استمرار هذا المشروع. يحصل الداعمون على شارة التحقق على ملفهم الشخصي.",
+    "verifiedBadgeNote": "احصل على شارة التحقق",
+    "noSupportersYet": "كن أول داعم واحصل على شارة التحقق!"
   }
 }

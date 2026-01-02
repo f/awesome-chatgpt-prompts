@@ -458,7 +458,13 @@
     "themeSystem": "Sistema",
     "saveSuccess": "Configuración guardada exitosamente",
     "avatar": "Avatar",
-    "changeAvatar": "Cambiar Avatar"
+    "changeAvatar": "Cambiar Avatar",
+    "getVerifiedTitle": "Verificarse",
+    "getVerifiedDescription": "Apoya a la comunidad y obtén una insignia de verificación junto a tu nombre. Tu nombre aparecerá en nuestro Muro de Honor de Patrocinadores, más acceso a funciones premium próximamente.",
+    "getVerifiedButton": "Obtener Insignia Verificada",
+    "verifiedBadgePrice": "$9.99/mes",
+    "verifiedTitle": "Patrocinador Verificado",
+    "verifiedThankYou": "¡Gracias por apoyar a la comunidad! Tu contribución ayuda a mantener este proyecto."
   },
   "admin": {
     "title": "Panel de Administración",
@@ -784,7 +790,8 @@
     "createForToday": "Crear para hoy",
     "likes": "Me gusta",
     "noLikes": "Aún no hay prompts que te gusten",
-    "noLikesOwner": "Aún no te ha gustado ningún prompt"
+    "noLikesOwner": "Aún no te ha gustado ningún prompt",
+    "getVerified": "Verificarse"
   },
   "subscription": {
     "subscribe": "Suscribirse",
@@ -1299,6 +1306,10 @@
     "coreContributorsTitle": "Contribuidores Principales",
     "designCreditsTitle": "Diseño",
     "communityContributorsTitle": "Contribuidores de la Comunidad",
-    "viewAllContributors": "Ver todos los contribuidores en"
+    "viewAllContributors": "Ver todos los contribuidores en",
+    "supportersWallTitle": "Muro de Patrocinadores",
+    "supportersWallDescription": "Nuestros increíbles patrocinadores que ayudan a mantener este proyecto. Los patrocinadores obtienen una insignia verificada en su perfil.",
+    "verifiedBadgeNote": "Obtener insignia verificada",
+    "noSupportersYet": "¡Sé el primero en apoyar y obtener tu insignia verificada!"
   }
 }

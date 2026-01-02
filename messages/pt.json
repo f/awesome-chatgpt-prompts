@@ -458,7 +458,13 @@
     "themeSystem": "Sistema",
     "saveSuccess": "Configurações salvas com sucesso",
     "avatar": "Avatar",
-    "changeAvatar": "Alterar Avatar"
+    "changeAvatar": "Alterar Avatar",
+    "getVerifiedTitle": "Obter Verificação",
+    "getVerifiedDescription": "Apoie a comunidade e obtenha um selo verificado ao lado do seu nome. Seu nome aparecerá em nosso Mural de Honra dos Apoiadores, além de acesso a recursos premium em breve.",
+    "getVerifiedButton": "Obter Selo Verificado",
+    "verifiedBadgePrice": "$9.99/mês",
+    "verifiedTitle": "Apoiador Verificado",
+    "verifiedThankYou": "Obrigado por apoiar a comunidade! Sua contribuição ajuda a manter este projeto."
   },
   "admin": {
     "title": "Painel Admin",
@@ -784,7 +790,8 @@
     "createForToday": "Criar para hoje",
     "likes": "Curtidas",
     "noLikes": "Nenhum prompt curtido ainda",
-    "noLikesOwner": "Você ainda não curtiu nenhum prompt"
+    "noLikesOwner": "Você ainda não curtiu nenhum prompt",
+    "getVerified": "Obter Verificação"
   },
   "subscription": {
     "subscribe": "Inscrever-se",
@@ -1299,6 +1306,10 @@
     "coreContributorsTitle": "Contribuidores Principais",
     "designCreditsTitle": "Design",
     "communityContributorsTitle": "Contribuidores da Comunidade",
-    "viewAllContributors": "Ver todos os contribuidores em"
+    "viewAllContributors": "Ver todos os contribuidores em",
+    "supportersWallTitle": "Mural dos Apoiadores",
+    "supportersWallDescription": "Nossos incríveis apoiadores que ajudam a manter este projeto. Os apoiadores recebem um selo verificado em seu perfil.",
+    "verifiedBadgeNote": "Obter selo verificado",
+    "noSupportersYet": "Seja o primeiro a apoiar e obtenha seu selo verificado!"
   }
 }

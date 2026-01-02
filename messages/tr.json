@@ -458,7 +458,13 @@
     "themeSystem": "Sistem",
     "saveSuccess": "Ayarlar başarıyla kaydedildi",
     "avatar": "Avatar",
-    "changeAvatar": "Avatar Değiştir"
+    "changeAvatar": "Avatarı Değiştir",
+    "getVerifiedTitle": "Doğrulanmış Ol",
+    "getVerifiedDescription": "Topluluğu destekleyin ve adınızın yanında doğrulama rozeti alın. Adınız Destekleyenler Onur Duvarı'nda gösterilecek, ayrıca premium özellikler yakında.",
+    "getVerifiedButton": "Doğrulama Rozeti Al",
+    "verifiedBadgePrice": "$9.99/ay",
+    "verifiedTitle": "Doğrulanmış Destekçi",
+    "verifiedThankYou": "Topluluğu desteklediğiniz için teşekkürler! Katkınız bu projenin devam etmesine yardımcı oluyor."
   },
   "admin": {
     "title": "Yönetim Paneli",
@@ -784,7 +790,8 @@
     "createForToday": "Bugün için oluştur",
     "likes": "Beğeniler",
     "noLikes": "Henüz beğenilen prompt yok",
-    "noLikesOwner": "Henüz hiçbir promptu beğenmediniz"
+    "noLikesOwner": "Henüz hiçbir promptu beğenmediniz",
+    "getVerified": "Doğrulanmış Ol"
   },
   "subscription": {
     "subscribe": "Abone Ol",
@@ -1262,7 +1269,7 @@
   },
   "about": {
     "title": "prompts.chat Hakkında",
-    "description": "ChatGPT duyurulduktan 2 hafta sonra oluşturulan ilk yapay zeka prompt kütüphanesinin hikayesi.",
+    "description": "ChatGPT duyurulduktan 2 haftada sonra oluşturulan ilk yapay zeka prompt kütüphanesinin hikayesi.",
     "releasedOn": "5 Aralık 2022",
     "storyTitle": "Hikayemiz",
     "goalTitle": "Hedefimiz",
@@ -1299,6 +1306,10 @@
     "coreContributorsTitle": "Çekirdek Katkıda Bulunanlar",
     "designCreditsTitle": "Tasarım",
     "communityContributorsTitle": "Topluluk Katkıda Bulunanları",
-    "viewAllContributors": "Tüm katkıda bulunanları görüntüle:"
+    "viewAllContributors": "Tüm katkıda bulunanları görüntüle:",
+    "supportersWallTitle": "Destekleyenler Duvarı",
+    "supportersWallDescription": "Bu projenin devam etmesine yardımcı olan harika destekçilerimiz. Destekçiler profillerinde doğrulama rozeti alırlar.",
+    "verifiedBadgeNote": "Doğrulama rozeti al",
+    "noSupportersYet": "İlk destekleyici olun ve doğrulama rozetinizi alın!"
   }
 }
