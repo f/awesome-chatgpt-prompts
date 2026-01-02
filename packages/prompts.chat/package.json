@@ -1,10 +1,15 @@
 {
   "name": "prompts.chat",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Developer toolkit for AI prompts - build, validate, parse, and connect to prompts.chat",
+  "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "bin": {
+    "prompts-chat": "./bin/cli.js",
+    "prompts.chat": "./bin/cli.js"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -75,8 +80,20 @@
     "docs": "npx ts-node scripts/generate-docs.ts",
     "docs:generate": "npx tsx scripts/generate-docs.ts"
   },
+  "dependencies": {
+    "ink": "^5.1.0",
+    "ink-text-input": "^6.0.0",
+    "ink-spinner": "^5.0.0",
+    "ink-select-input": "^6.0.0",
+    "react": "^18.3.1",
+    "clipboardy": "^4.0.0",
+    "meow": "^13.2.0",
+    "open": "^10.1.0",
+    "terminal-image": "^3.0.0"
+  },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/react": "^18.3.0",
     "tsup": "^8.0.0",
     "typescript": "^5",
     "vitest": "^4.0.16"
