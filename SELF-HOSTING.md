@@ -13,7 +13,7 @@
 
 ## Benefits
 
-- **Unlock AI Potential:** Stop struggling with prompt engineering — use battle-tested prompts from 139k+ GitHub stars community
+- **Unlock AI Potential:** Stop struggling with prompt engineering — use battle-tested prompts from 141k+ GitHub stars community
 - **Save Time:** Copy prompts with one click, customize variables inline, and use them instantly in any AI chat
 - **Community-Driven Quality:** Every prompt is curated and refined by the community through change requests and voting
 - **Self-Hostable:** Deploy your own white-labeled prompt library for your team or organization with customizable branding, themes, and authentication
