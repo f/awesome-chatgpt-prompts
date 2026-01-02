@@ -121,7 +121,7 @@ const coreContributors = [
   {
     username: "fatihsolhan",
     role: "Chrome Extension Maintainer",
-    x: "fatihsolhan",
+    x: "fatihsolhann",
   },
 ];
 
@@ -133,7 +133,15 @@ const designCredits = [
   },
 ];
 
-const excludedFromCommunity = ["f", "fatihsolhan", "iuzn"];
+const ideationCredits = [
+  {
+    username: "semihkislar",
+    role: "Product Ideas, Feedbacks",
+    x: "semihdev",
+  },
+];
+
+const excludedFromCommunity = ["f", "fatihsolhan", "iuzn", "semihkislar"];
 
 function BrandIcon({ name }: { name: string }) {
   switch (name) {
@@ -398,6 +406,51 @@ export default async function AboutPage() {
         <h2 className="text-lg font-semibold mb-4">{t("coreContributorsTitle")}</h2>
         <div className="grid gap-3 sm:grid-cols-2">
           {coreContributors.map((contributor) => (
+            <div
+              key={contributor.username}
+              className="flex items-center gap-3 p-3 border rounded-lg"
+            >
+              <Image
+                src={`https://github.com/${contributor.username}.png`}
+                alt=""
+                width={40}
+                height={40}
+                className="rounded-full shrink-0"
+              />
+              <div className="flex-1 min-w-0">
+                <div className="font-medium text-sm">@{contributor.username}</div>
+                <div className="text-xs text-muted-foreground">{contributor.role}</div>
+              </div>
+              <div className="flex items-center gap-2">
+                <Link
+                  href={`https://github.com/${contributor.username}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-1.5 rounded-md hover:bg-muted transition-colors"
+                  title="GitHub"
+                >
+                  <BrandIcon name="github" />
+                </Link>
+                <Link
+                  href={`https://x.com/${contributor.x}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-1.5 rounded-md hover:bg-muted transition-colors"
+                  title="X"
+                >
+                  <BrandIcon name="x" />
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Ideation */}
+      <section className="mb-10">
+        <h2 className="text-lg font-semibold mb-4">{t("ideationTitle")}</h2>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {ideationCredits.map((contributor) => (
             <div
               key={contributor.username}
               className="flex items-center gap-3 p-3 border rounded-lg"
