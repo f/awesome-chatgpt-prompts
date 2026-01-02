@@ -103,8 +103,10 @@ const techStack = [
   {
     era: "iOS",
     title: "Native App",
-    description: "Native iOS app built with SwiftUI.",
+    description: "Native iOS app built with Windsurf, Claude Opus 4.5 and SwiftUI.",
     tools: [
+      { name: "Windsurf", icon: "windsurf" },
+      { name: "Claude Opus 4.5", icon: "anthropic" },
       { name: "SwiftUI", icon: "swift" },
     ],
   },
