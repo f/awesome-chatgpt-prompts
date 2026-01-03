@@ -4,19 +4,20 @@ import { useEffect, useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { PromptIde } from "@/components/ide/prompt-ide";
 import { PromptEnhancer } from "@/components/developers/prompt-enhancer";
-import { Monitor, Code2, Sparkles } from "lucide-react";
+import { EmbedDesigner } from "@/components/developers/embed-designer";
+import { Monitor, Code2, Sparkles, Frame } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-const VALID_TABS = ["builder", "enhancer"] as const;
+const VALID_TABS = ["enhancer", "builder", "embed"] as const;
 type TabValue = (typeof VALID_TABS)[number];
 
 export default function DevelopersPage() {
   const t = useTranslations("developers");
   const [isMobile, setIsMobile] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [activeTab, setActiveTab] = useState<TabValue>("builder");
+  const [activeTab, setActiveTab] = useState<TabValue>("enhancer");
 
   // Read hash from URL on mount and hash changes
   const updateTabFromHash = useCallback(() => {
@@ -79,6 +80,13 @@ export default function DevelopersPage() {
         <div className="h-10 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 shrink-0 flex items-center">
           <TabsList className="h-9 bg-transparent border-0 p-0 gap-2">
             <TabsTrigger 
+              value="enhancer" 
+              className="h-9 border-0 border-b-2 border-b-transparent data-[state=active]:border-b-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 focus:outline-none rounded-none px-3 py-2 gap-1.5 text-sm"
+            >
+              <Sparkles className="h-3.5 w-3.5" />
+              {t("promptEnhancer")}
+            </TabsTrigger>
+            <TabsTrigger 
               value="builder" 
               className="h-9 border-0 border-b-2 border-b-transparent data-[state=active]:border-b-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 focus:outline-none rounded-none px-3 py-2 gap-1.5 text-sm"
             >
@@ -86,21 +94,25 @@ export default function DevelopersPage() {
               {t("promptBuilder")}
             </TabsTrigger>
             <TabsTrigger 
-              value="enhancer" 
+              value="embed" 
               className="h-9 border-0 border-b-2 border-b-transparent data-[state=active]:border-b-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 focus:outline-none rounded-none px-3 py-2 gap-1.5 text-sm"
             >
-              <Sparkles className="h-3.5 w-3.5" />
-              {t("promptEnhancer")}
+              <Frame className="h-3.5 w-3.5" />
+              {t("embedDesigner")}
             </TabsTrigger>
           </TabsList>
         </div>
+        
+        <TabsContent value="enhancer" className="flex-1 mt-0 min-h-0 overflow-hidden data-[state=inactive]:hidden">
+          <PromptEnhancer />
+        </TabsContent>
         
         <TabsContent value="builder" className="flex-1 mt-0 min-h-0 overflow-hidden data-[state=inactive]:hidden">
           <PromptIde />
         </TabsContent>
         
-        <TabsContent value="enhancer" className="flex-1 mt-0 min-h-0 overflow-hidden data-[state=inactive]:hidden">
-          <PromptEnhancer />
+        <TabsContent value="embed" className="flex-1 mt-0 min-h-0 overflow-hidden data-[state=inactive]:hidden">
+          <EmbedDesigner />
         </TabsContent>
       </Tabs>
     </div>

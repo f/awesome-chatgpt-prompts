@@ -1286,7 +1286,18 @@
     "loginRequired": "Please log in to use the Prompt Enhancer",
     "history": "History",
     "storedOnDevice": "Stored on your device",
-    "noHistory": "No history yet"
+    "noHistory": "No history yet",
+    "embedDesigner": "Embed Designer",
+    "embedSettings": "Settings",
+    "loadExample": "Load Example",
+    "chooseExample": "Choose an example...",
+    "preview": "Preview",
+    "openInNewTab": "Open",
+    "copyEmbedCode": "Copy Embed Code",
+    "embedCode": "Embed Code",
+    "embedCopied": "Embed code copied!",
+    "settingsCleared": "Settings cleared",
+    "reset": "Reset"
   },
   "appBanner": {
     "message": "Get the prompts.chat app for iPhone, iPad, and Mac",

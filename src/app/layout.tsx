@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Inter, Noto_Sans_Arabic, Geist_Mono } from "next/font/google";
+import { headers } from "next/headers";
 import { getMessages, getLocale } from "next-intl/server";
 import { Providers } from "@/components/providers";
 import { Header } from "@/components/layout/header";
@@ -139,6 +140,10 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headersList = await headers();
+  const pathname = headersList.get("x-pathname") || headersList.get("x-invoke-path") || "";
+  const isEmbedRoute = pathname.startsWith("/embed");
+  
   const locale = await getLocale();
   const messages = await getMessages();
   const config = await getConfig();
@@ -186,12 +191,18 @@ export default async function RootLayout({
           </>
         )}
         <Providers locale={locale} messages={messages} theme={config.theme} branding={{ ...config.branding, useCloneBranding: config.homepage?.useCloneBranding }}>
-          <LocaleDetector />
-          <div className="relative min-h-screen flex flex-col">
-            <Header authProvider={config.auth.provider} allowRegistration={config.auth.allowRegistration} />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
+          {isEmbedRoute ? (
+            children
+          ) : (
+            <>
+              <LocaleDetector />
+              <div className="relative min-h-screen flex flex-col">
+                <Header authProvider={config.auth.provider} allowRegistration={config.auth.allowRegistration} />
+                <main className="flex-1">{children}</main>
+                <Footer />
+              </div>
+            </>
+          )}
         </Providers>
       </body>
     </html>

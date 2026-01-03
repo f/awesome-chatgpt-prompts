@@ -1286,7 +1286,18 @@
     "loginRequired": "Prompt Geliştirici'yi kullanmak için giriş yapın",
     "history": "Geçmiş",
     "storedOnDevice": "Cihazınızda saklanıyor",
-    "noHistory": "Henüz geçmiş yok"
+    "noHistory": "Henüz geçmiş yok",
+    "embedDesigner": "Gömme Tasarımcısı",
+    "embedSettings": "Ayarlar",
+    "loadExample": "Örnek Yükle",
+    "chooseExample": "Bir örnek seçin...",
+    "preview": "Önizleme",
+    "openInNewTab": "Aç",
+    "copyEmbedCode": "Gömme Kodunu Kopyala",
+    "embedCode": "Gömme Kodu",
+    "embedCopied": "Gömme kodu kopyalandı!",
+    "settingsCleared": "Ayarlar temizlendi",
+    "reset": "Sıfırla"
   },
   "appBanner": {
     "message": "iPhone, iPad ve Mac için prompts.chat uygulamasını indirin",
