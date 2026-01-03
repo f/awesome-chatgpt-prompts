@@ -1297,7 +1297,26 @@
     "embedCode": "嵌入代码",
     "embedCopied": "嵌入代码已复制！",
     "settingsCleared": "设置已清除",
-    "reset": "重置"
+    "reset": "重置",
+    "promptTokenizer": "分词器",
+    "tokenizer": {
+      "inputText": "输入文本",
+      "placeholder": "在此粘贴您的提示词或文本以分析 token...",
+      "analysis": "Token 分析",
+      "tokens": "Token",
+      "contextUsage": "上下文窗口使用率",
+      "nearLimit": "接近上限！",
+      "estimatedCost": "预估成本",
+      "textStats": "文本统计",
+      "saved": "分析已保存到历史记录",
+      "saveToHistory": "保存",
+      "estimationNote": "Token 数量为估算值。实际数量可能因模型的分词器而异。",
+      "settings": "设置",
+      "contextWindowSize": "上下文窗口大小",
+      "inputPricePerMillion": "输入 $/百万 token",
+      "outputPricePerMillion": "输出 $/百万 token",
+      "highlightTokens": "高亮 Token"
+    }
   },
   "appBanner": {
     "message": "下载适用于 iPhone、iPad 和 Mac 的 prompts.chat 应用",

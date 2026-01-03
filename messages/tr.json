@@ -1297,7 +1297,26 @@
     "embedCode": "Gömme Kodu",
     "embedCopied": "Gömme kodu kopyalandı!",
     "settingsCleared": "Ayarlar temizlendi",
-    "reset": "Sıfırla"
+    "reset": "Sıfırla",
+    "promptTokenizer": "Tokenizer",
+    "tokenizer": {
+      "inputText": "Giriş Metni",
+      "placeholder": "Tokenleri analiz etmek için prompt veya metninizi buraya yapıştırın...",
+      "analysis": "Token Analizi",
+      "tokens": "Tokenler",
+      "contextUsage": "Bağlam Penceresi Kullanımı",
+      "nearLimit": "Limite yaklaşılıyor!",
+      "estimatedCost": "Tahmini Maliyet",
+      "textStats": "Metin İstatistikleri",
+      "saved": "Analiz geçmişe kaydedildi",
+      "saveToHistory": "Kaydet",
+      "estimationNote": "Token sayıları tahmindir. Gerçek değerler modelin tokenizer'ına göre değişebilir.",
+      "settings": "Ayarlar",
+      "contextWindowSize": "Bağlam Penceresi Boyutu",
+      "inputPricePerMillion": "Giriş $/1M token",
+      "outputPricePerMillion": "Çıkış $/1M token",
+      "highlightTokens": "Tokenleri Vurgula"
+    }
   },
   "appBanner": {
     "message": "iPhone, iPad ve Mac için prompts.chat uygulamasını indirin",

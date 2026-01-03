@@ -1297,7 +1297,26 @@
     "embedCode": "임베드 코드",
     "embedCopied": "임베드 코드가 복사되었습니다!",
     "settingsCleared": "설정이 초기화되었습니다",
-    "reset": "초기화"
+    "reset": "초기화",
+    "promptTokenizer": "토크나이저",
+    "tokenizer": {
+      "inputText": "입력 텍스트",
+      "placeholder": "토큰을 분석하려면 프롬프트 또는 텍스트를 붙여넣으세요...",
+      "analysis": "토큰 분석",
+      "tokens": "토큰",
+      "contextUsage": "컨텍스트 창 사용량",
+      "nearLimit": "한도에 가까워지고 있습니다!",
+      "estimatedCost": "예상 비용",
+      "textStats": "텍스트 통계",
+      "saved": "분석이 기록에 저장되었습니다",
+      "saveToHistory": "저장",
+      "estimationNote": "토큰 수는 추정치입니다. 실제 수는 모델의 토크나이저에 따라 다를 수 있습니다.",
+      "settings": "설정",
+      "contextWindowSize": "컨텍스트 창 크기",
+      "inputPricePerMillion": "입력 $/100만 토큰",
+      "outputPricePerMillion": "출력 $/100만 토큰",
+      "highlightTokens": "토큰 하이라이트"
+    }
   },
   "appBanner": {
     "message": "iPhone, iPad, Mac용 prompts.chat 앱 다운로드",

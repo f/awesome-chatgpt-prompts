@@ -1297,7 +1297,26 @@
     "embedCode": "Código de Embed",
     "embedCopied": "¡Código de embed copiado!",
     "settingsCleared": "Configuración borrada",
-    "reset": "Restablecer"
+    "reset": "Restablecer",
+    "promptTokenizer": "Tokenizador",
+    "tokenizer": {
+      "inputText": "Texto de Entrada",
+      "placeholder": "Pega tu prompt o texto aquí para analizar tokens...",
+      "analysis": "Análisis de Tokens",
+      "tokens": "Tokens",
+      "contextUsage": "Uso de Ventana de Contexto",
+      "nearLimit": "¡Acercándose al límite!",
+      "estimatedCost": "Costo Estimado",
+      "textStats": "Estadísticas de Texto",
+      "saved": "Análisis guardado en historial",
+      "saveToHistory": "Guardar",
+      "estimationNote": "Los conteos de tokens son estimaciones. Los conteos reales pueden variar según el tokenizador del modelo.",
+      "settings": "Configuración",
+      "contextWindowSize": "Tamaño de Ventana de Contexto",
+      "inputPricePerMillion": "Entrada $/1M tokens",
+      "outputPricePerMillion": "Salida $/1M tokens",
+      "highlightTokens": "Resaltar Tokens"
+    }
   },
   "appBanner": {
     "message": "Obtén la app prompts.chat para iPhone, iPad y Mac",

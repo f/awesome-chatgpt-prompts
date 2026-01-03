@@ -1297,7 +1297,26 @@
     "embedCode": "埋め込みコード",
     "embedCopied": "埋め込みコードをコピーしました！",
     "settingsCleared": "設定をクリアしました",
-    "reset": "リセット"
+    "reset": "リセット",
+    "promptTokenizer": "トークナイザー",
+    "tokenizer": {
+      "inputText": "入力テキスト",
+      "placeholder": "トークンを分析するためにプロンプトまたはテキストを貼り付けてください...",
+      "analysis": "トークン分析",
+      "tokens": "トークン",
+      "contextUsage": "コンテキストウィンドウ使用率",
+      "nearLimit": "制限に近づいています！",
+      "estimatedCost": "推定コスト",
+      "textStats": "テキスト統計",
+      "saved": "分析を履歴に保存しました",
+      "saveToHistory": "保存",
+      "estimationNote": "トークン数は推定値です。実際の値はモデルのトークナイザーによって異なる場合があります。",
+      "settings": "設定",
+      "contextWindowSize": "コンテキストウィンドウサイズ",
+      "inputPricePerMillion": "入力 $/100万トークン",
+      "outputPricePerMillion": "出力 $/100万トークン",
+      "highlightTokens": "トークンをハイライト"
+    }
   },
   "appBanner": {
     "message": "iPhone、iPad、Mac用のprompts.chatアプリを入手",

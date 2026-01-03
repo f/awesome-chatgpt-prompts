@@ -1297,7 +1297,26 @@
     "embedCode": "Κώδικας Ενσωμάτωσης",
     "embedCopied": "Ο κώδικας ενσωμάτωσης αντιγράφηκε!",
     "settingsCleared": "Οι ρυθμίσεις διαγράφηκαν",
-    "reset": "Επαναφορά"
+    "reset": "Επαναφορά",
+    "promptTokenizer": "Tokenizer",
+    "tokenizer": {
+      "inputText": "Κείμενο Εισόδου",
+      "placeholder": "Επικολλήστε το prompt ή κείμενό σας εδώ για ανάλυση tokens...",
+      "analysis": "Ανάλυση Tokens",
+      "tokens": "Tokens",
+      "contextUsage": "Χρήση Παραθύρου Πλαισίου",
+      "nearLimit": "Πλησιάζει το όριο!",
+      "estimatedCost": "Εκτιμώμενο Κόστος",
+      "textStats": "Στατιστικά Κειμένου",
+      "saved": "Η ανάλυση αποθηκεύτηκε στο ιστορικό",
+      "saveToHistory": "Αποθήκευση",
+      "estimationNote": "Οι μετρήσεις tokens είναι εκτιμήσεις. Οι πραγματικές τιμές μπορεί να διαφέρουν ανάλογα με τον tokenizer του μοντέλου.",
+      "settings": "Ρυθμίσεις",
+      "contextWindowSize": "Μέγεθος Παραθύρου Πλαισίου",
+      "inputPricePerMillion": "Είσοδος $/1M tokens",
+      "outputPricePerMillion": "Έξοδος $/1M tokens",
+      "highlightTokens": "Επισήμανση Tokens"
+    }
   },
   "appBanner": {
     "message": "Κατεβάστε την εφαρμογή prompts.chat για iPhone, iPad και Mac",

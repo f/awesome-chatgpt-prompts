@@ -1297,7 +1297,26 @@
     "embedCode": "کد جاسازی",
     "embedCopied": "کد جاسازی کپی شد!",
     "settingsCleared": "تنظیمات پاک شد",
-    "reset": "بازنشانی"
+    "reset": "بازنشانی",
+    "promptTokenizer": "توکنایزر",
+    "tokenizer": {
+      "inputText": "متن ورودی",
+      "placeholder": "پرامپت یا متن خود را برای تحلیل توکن‌ها اینجا بچسبانید...",
+      "analysis": "تحلیل توکن",
+      "tokens": "توکن‌ها",
+      "contextUsage": "استفاده از پنجره متن",
+      "nearLimit": "نزدیک به محدودیت!",
+      "estimatedCost": "هزینه تخمینی",
+      "textStats": "آمار متن",
+      "saved": "تحلیل در تاریخچه ذخیره شد",
+      "saveToHistory": "ذخیره",
+      "estimationNote": "تعداد توکن‌ها تخمینی است. مقادیر واقعی ممکن است بسته به توکنایزر مدل متفاوت باشد.",
+      "settings": "تنظیمات",
+      "contextWindowSize": "اندازه پنجره متن",
+      "inputPricePerMillion": "ورودی $/میلیون توکن",
+      "outputPricePerMillion": "خروجی $/میلیون توکن",
+      "highlightTokens": "برجسته‌سازی توکن‌ها"
+    }
   },
   "appBanner": {
     "message": "اپلیکیشن prompts.chat را برای iPhone، iPad و Mac دریافت کنید",

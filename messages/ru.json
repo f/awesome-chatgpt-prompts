@@ -1297,7 +1297,26 @@
     "embedCode": "Код встраивания",
     "embedCopied": "Код встраивания скопирован!",
     "settingsCleared": "Настройки сброшены",
-    "reset": "Сбросить"
+    "reset": "Сбросить",
+    "promptTokenizer": "Токенизатор",
+    "tokenizer": {
+      "inputText": "Входной текст",
+      "placeholder": "Вставьте промпт или текст для анализа токенов...",
+      "analysis": "Анализ токенов",
+      "tokens": "Токены",
+      "contextUsage": "Использование контекстного окна",
+      "nearLimit": "Приближение к лимиту!",
+      "estimatedCost": "Примерная стоимость",
+      "textStats": "Статистика текста",
+      "saved": "Анализ сохранён в историю",
+      "saveToHistory": "Сохранить",
+      "estimationNote": "Количество токенов является оценкой. Фактические значения могут отличаться в зависимости от токенизатора модели.",
+      "settings": "Настройки",
+      "contextWindowSize": "Размер контекстного окна",
+      "inputPricePerMillion": "Вход $/1М токенов",
+      "outputPricePerMillion": "Выход $/1М токенов",
+      "highlightTokens": "Подсветить токены"
+    }
   },
   "appBanner": {
     "message": "Скачайте приложение prompts.chat для iPhone, iPad и Mac",

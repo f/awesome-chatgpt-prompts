@@ -1297,7 +1297,26 @@
     "embedCode": "קוד הטמעה",
     "embedCopied": "קוד ההטמעה הועתק!",
     "settingsCleared": "ההגדרות נמחקו",
-    "reset": "אפס"
+    "reset": "אפס",
+    "promptTokenizer": "טוקנייזר",
+    "tokenizer": {
+      "inputText": "טקסט קלט",
+      "placeholder": "הדבק את הפרומפט או הטקסט שלך כאן לניתוח טוקנים...",
+      "analysis": "ניתוח טוקנים",
+      "tokens": "טוקנים",
+      "contextUsage": "שימוש בחלון הקשר",
+      "nearLimit": "מתקרב לגבול!",
+      "estimatedCost": "עלות משוערת",
+      "textStats": "סטטיסטיקות טקסט",
+      "saved": "הניתוח נשמר בהיסטוריה",
+      "saveToHistory": "שמור",
+      "estimationNote": "ספירות הטוקנים הן הערכות. ערכים בפועל עשויים להשתנות בהתאם לטוקנייזר של המודל.",
+      "settings": "הגדרות",
+      "contextWindowSize": "גודל חלון הקשר",
+      "inputPricePerMillion": "קלט $/מיליון טוקנים",
+      "outputPricePerMillion": "פלט $/מיליון טוקנים",
+      "highlightTokens": "הדגש טוקנים"
+    }
   },
   "appBanner": {
     "message": "הורד את אפליקציית prompts.chat ל-iPhone, iPad ו-Mac",

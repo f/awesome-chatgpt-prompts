@@ -1297,7 +1297,26 @@
     "embedCode": "كود التضمين",
     "embedCopied": "تم نسخ كود التضمين!",
     "settingsCleared": "تم مسح الإعدادات",
-    "reset": "إعادة تعيين"
+    "reset": "إعادة تعيين",
+    "promptTokenizer": "محلل الرموز",
+    "tokenizer": {
+      "inputText": "نص الإدخال",
+      "placeholder": "الصق النص أو الأمر هنا لتحليل الرموز...",
+      "analysis": "تحليل الرموز",
+      "tokens": "الرموز",
+      "contextUsage": "استخدام نافذة السياق",
+      "nearLimit": "اقتراب من الحد الأقصى!",
+      "estimatedCost": "التكلفة المقدرة",
+      "textStats": "إحصائيات النص",
+      "saved": "تم حفظ التحليل في السجل",
+      "saveToHistory": "حفظ",
+      "estimationNote": "أعداد الرموز تقديرية. قد تختلف الأعداد الفعلية حسب المحلل المستخدم.",
+      "settings": "الإعدادات",
+      "contextWindowSize": "حجم نافذة السياق",
+      "inputPricePerMillion": "سعر الإدخال $/مليون",
+      "outputPricePerMillion": "سعر الإخراج $/مليون",
+      "highlightTokens": "تمييز الرموز"
+    }
   },
   "appBanner": {
     "message": "احصل على تطبيق prompts.chat لأجهزة iPhone وiPad وMac",

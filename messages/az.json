@@ -1297,7 +1297,26 @@
     "embedCode": "Yerləşdirmə Kodu",
     "embedCopied": "Yerləşdirmə kodu kopyalandı!",
     "settingsCleared": "Parametrlər silindi",
-    "reset": "Sıfırla"
+    "reset": "Sıfırla",
+    "promptTokenizer": "Tokenizer",
+    "tokenizer": {
+      "inputText": "Giriş Mətni",
+      "placeholder": "Tokenləri analiz etmək üçün prompt və ya mətninizi bura yapışdırın...",
+      "analysis": "Token Analizi",
+      "tokens": "Tokenlər",
+      "contextUsage": "Kontekst Pəncərəsi İstifadəsi",
+      "nearLimit": "Limitə yaxınlaşır!",
+      "estimatedCost": "Təxmini Xərc",
+      "textStats": "Mətn Statistikası",
+      "saved": "Analiz tarixçəyə saxlanıldı",
+      "saveToHistory": "Saxla",
+      "estimationNote": "Token sayları təxminidir. Həqiqi dəyərlər modelin tokenizer-inə görə dəyişə bilər.",
+      "settings": "Parametrlər",
+      "contextWindowSize": "Kontekst Pəncərəsi Ölçüsü",
+      "inputPricePerMillion": "Giriş $/1M token",
+      "outputPricePerMillion": "Çıxış $/1M token",
+      "highlightTokens": "Tokenləri Vurğula"
+    }
   },
   "appBanner": {
     "message": "iPhone, iPad və Mac üçün prompts.chat tətbiqini yükləyin",
