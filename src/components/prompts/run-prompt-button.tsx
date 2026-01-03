@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { Play, ExternalLink, Zap, Clipboard } from "lucide-react";
+import { Play, ExternalLink, Zap, Clipboard, Heart } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import {
@@ -31,6 +31,7 @@ import {
 } from "@/components/ui/sheet";
 import { analyticsPrompt } from "@/lib/analytics";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useBranding } from "@/components/providers/branding-provider";
 
 interface Platform {
   id: string;
@@ -39,7 +40,37 @@ interface Platform {
   supportsQuerystring?: boolean;
   isDeeplink?: boolean;
   subOptions?: { name: string; baseUrl: string }[];
+  sponsor?: boolean;
 }
+
+// Image generation platforms (MitteAI)
+const imagePlatforms: Platform[] = [
+  {
+    id: "mitte-image",
+    name: "MitteAI",
+    baseUrl: "https://mitte.ai",
+    sponsor: true,
+    subOptions: [
+      { name: "Nano Banana Pro", baseUrl: "https://mitte.ai?model=nano-banana-pro" },
+      { name: "GPT Image 1.5", baseUrl: "https://mitte.ai?model=gpt-image-15" },
+    ],
+  },
+];
+
+// Video generation platforms (MitteAI)
+const videoPlatforms: Platform[] = [
+  {
+    id: "mitte-video",
+    name: "MitteAI",
+    baseUrl: "https://mitte.ai",
+    sponsor: true,
+    subOptions: [
+      { name: "Veo 3.1", baseUrl: "https://mitte.ai?model=veo-31" },
+      { name: "Kling 2.6", baseUrl: "https://mitte.ai?model=kling-26" },
+      { name: "Sora 2", baseUrl: "https://mitte.ai?model=sora-2" },
+    ],
+  },
+];
 
 // Code platforms (IDEs + code generation tools)
 const codePlatforms: Platform[] = [
@@ -151,6 +182,9 @@ function buildUrl(platformId: string, baseUrl: string, promptText: string, promp
       return `${baseUrl}?q=${encoded}`;
     case "you":
       return `${baseUrl}/search?q=${encoded}`;
+    case "mitte-image":
+    case "mitte-video":
+      return `${baseUrl}&prompt=${encoded}`;
     default:
       return `${baseUrl}?q=${encoded}`;
   }
@@ -175,6 +209,7 @@ interface RunPromptButtonProps {
   categoryName?: string;
   parentCategoryName?: string;
   emphasized?: boolean;
+  promptType?: "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "STRUCTURED" | "SKILL";
 }
 
 // Check if category or parent category suggests code-related content
@@ -204,11 +239,13 @@ export function RunPromptButton({
   promptId,
   categoryName,
   parentCategoryName,
-  emphasized = false
+  emphasized = false,
+  promptType = "TEXT"
 }: RunPromptButtonProps) {
   const t = useTranslations("prompts");
   const tCommon = useTranslations("common");
   const isMobile = useIsMobile();
+  const { useCloneBranding } = useBranding();
   const [dialogOpen, setDialogOpen] = useState(false);
   const [variableDialogOpen, setVariableDialogOpen] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);
@@ -295,8 +332,19 @@ export function RunPromptButton({
     handleRun(platform, baseUrl);
   };
 
-  // Get platforms based on active tab
-  const activePlatforms = activeTab === "code" ? codePlatforms : chatPlatforms;
+  // Get media platforms based on prompt type (only if not using clone branding)
+  const mediaPlatforms = useCloneBranding ? [] : (promptType === "IMAGE" ? imagePlatforms : promptType === "VIDEO" ? videoPlatforms : imagePlatforms);
+  const isMediaPrompt = promptType === "IMAGE" || promptType === "VIDEO";
+
+  // Get platforms based on active tab, merge with media platforms
+  // For image/video prompts: media platforms at top, then rest sorted alphabetically
+  // For other prompts: all platforms sorted alphabetically including MitteAI
+  const basePlatforms = activeTab === "code" ? codePlatforms : chatPlatforms;
+  const sortedBasePlatforms = [...basePlatforms].sort((a, b) => a.name.localeCompare(b.name));
+  
+  const activePlatforms = isMediaPrompt
+    ? [...mediaPlatforms, ...sortedBasePlatforms]
+    : [...sortedBasePlatforms, ...mediaPlatforms].sort((a, b) => a.name.localeCompare(b.name));
 
   // Render platform item for mobile
   const renderMobilePlatform = (platform: Platform) => {
@@ -304,7 +352,11 @@ export function RunPromptButton({
       return (
         <div key={platform.id} className="space-y-1">
           <div className="flex items-center gap-3 px-3 py-2 text-base text-muted-foreground">
-            <Zap className="h-4 w-4 text-green-500" />
+            {platform.sponsor ? (
+              <Heart className="h-4 w-4 text-pink-500 fill-pink-500" />
+            ) : (
+              <Zap className="h-4 w-4 text-green-500" />
+            )}
             {platform.name}
           </div>
           <div className="pl-6 space-y-1">
@@ -343,7 +395,11 @@ export function RunPromptButton({
       return (
         <DropdownMenuSub key={platform.id}>
           <DropdownMenuSubTrigger className="flex items-center gap-2">
-            <Zap className="h-3 w-3 text-green-500" />
+            {platform.sponsor ? (
+              <Heart className="h-3 w-3 text-pink-500 fill-pink-500" />
+            ) : (
+              <Zap className="h-3 w-3 text-green-500" />
+            )}
             {platform.name}
           </DropdownMenuSubTrigger>
           <DropdownMenuSubContent>

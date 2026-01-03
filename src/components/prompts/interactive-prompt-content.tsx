@@ -339,6 +339,7 @@ export function InteractivePromptContent({
                 getContentWithVariables={getContentWithVariables}
                 categoryName={categoryName}
                 parentCategoryName={parentCategoryName}
+                promptType={promptType as "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "STRUCTURED" | "SKILL"}
                 emphasized
               />
             </div>
@@ -381,6 +382,7 @@ export function InteractivePromptContent({
               getContentWithVariables={getContentWithVariables}
               categoryName={categoryName}
               parentCategoryName={parentCategoryName}
+              promptType={promptType as "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "STRUCTURED" | "SKILL"}
               emphasized
             />
           </div>
@@ -431,6 +433,7 @@ export function InteractivePromptContent({
               getContentWithVariables={getContentWithVariables}
               categoryName={categoryName}
               parentCategoryName={parentCategoryName}
+              promptType={promptType as "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "STRUCTURED" | "SKILL"}
               emphasized
             />
           </div>
@@ -539,6 +542,7 @@ export function InteractivePromptContent({
             getContentWithVariables={getContentWithVariables}
             categoryName={categoryName}
             parentCategoryName={parentCategoryName}
+            promptType={promptType as "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "STRUCTURED" | "SKILL"}
             emphasized
           />
         </div>

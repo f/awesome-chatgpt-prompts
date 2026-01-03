@@ -335,6 +335,7 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
                 className="h-6 w-6"
                 categoryName={prompt.category?.name}
                 parentCategoryName={prompt.category?.parent?.name}
+                promptType={prompt.type as "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "STRUCTURED" | "SKILL"}
               />
             )}
           </div>
