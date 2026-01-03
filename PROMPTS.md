@@ -32172,3 +32172,16 @@ Consider using additional libraries and tools specific to React Native to enhanc
 
 </details>
 
+<details>
+<summary><strong>ramones</strong></summary>
+
+## ramones
+
+Contributed by [@saguntoturismo@gmail.com](https://github.com/saguntoturismo@gmail.com)
+
+```md
+quiero mejorar este montaje fotográfico para que parezca realista. Me he integrado en el margen izquierdo, pero necesito que se me vea vestido con una chupa de cuero y con el mismo tono, saturación etc que el resto de la imagen
+```
+
+</details>
+
