@@ -44,6 +44,11 @@ const nextConfig: NextConfig = {
         destination: "/categories/sponsors",
         permanent: true,
       },
+      {
+        source: "/embed-preview",
+        destination: "/embed",
+        permanent: true,
+      },
     ];
   },
 };
