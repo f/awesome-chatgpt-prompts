@@ -339,14 +339,26 @@ export function RunPromptButton({
   const isMediaPrompt = promptType === "IMAGE" || promptType === "VIDEO";
 
   // Get platforms based on active tab, merge with media platforms
-  // For image/video prompts: media platforms at top, then rest sorted alphabetically
-  // For other prompts: all platforms sorted alphabetically including Mitte.ai
+  // Sponsors go to top, then rest sorted alphabetically
   const basePlatforms = activeTab === "code" ? codePlatforms : chatPlatforms;
-  const sortedBasePlatforms = [...basePlatforms].sort((a, b) => a.name.localeCompare(b.name));
+  const sortedBasePlatforms = [...basePlatforms].sort((a, b) => {
+    // Sponsors first (unless useCloneBranding is true)
+    if (!useCloneBranding) {
+      if (a.sponsor && !b.sponsor) return -1;
+      if (!a.sponsor && b.sponsor) return 1;
+    }
+    return a.name.localeCompare(b.name);
+  });
   
   const activePlatforms = isMediaPrompt
     ? [...mediaPlatforms, ...sortedBasePlatforms]
-    : [...sortedBasePlatforms, ...mediaPlatforms].sort((a, b) => a.name.localeCompare(b.name));
+    : [...sortedBasePlatforms, ...mediaPlatforms].sort((a, b) => {
+        if (!useCloneBranding) {
+          if (a.sponsor && !b.sponsor) return -1;
+          if (!a.sponsor && b.sponsor) return 1;
+        }
+        return a.name.localeCompare(b.name);
+      });
 
   // Render platform item for mobile
   const renderMobilePlatform = (platform: Platform) => {
@@ -354,7 +366,7 @@ export function RunPromptButton({
       return (
         <div key={platform.id} className="space-y-1">
           <div className="flex items-center gap-3 px-3 py-2 text-base text-muted-foreground">
-            {platform.sponsor ? (
+            {platform.sponsor && !useCloneBranding ? (
               <Heart className="h-4 w-4 text-pink-500 fill-pink-500" />
             ) : (
               <Zap className="h-4 w-4 text-green-500" />
@@ -381,7 +393,9 @@ export function RunPromptButton({
         onClick={() => handleRunAndClose(platform, platform.baseUrl)}
         className="flex items-center gap-3 w-full px-3 py-3 text-base hover:bg-accent rounded-md text-left"
       >
-        {platform.supportsQuerystring === false ? (
+        {platform.sponsor && !useCloneBranding ? (
+          <Heart className="h-4 w-4 text-pink-500 fill-pink-500" />
+        ) : platform.supportsQuerystring === false ? (
           <Clipboard className="h-4 w-4 text-muted-foreground" />
         ) : (
           <Zap className="h-4 w-4 text-green-500" />
@@ -397,7 +411,7 @@ export function RunPromptButton({
       return (
         <DropdownMenuSub key={platform.id}>
           <DropdownMenuSubTrigger className="flex items-center gap-2">
-            {platform.sponsor ? (
+            {platform.sponsor && !useCloneBranding ? (
               <Heart className="h-3 w-3 text-pink-500 fill-pink-500" />
             ) : (
               <Zap className="h-3 w-3 text-green-500" />
@@ -423,7 +437,9 @@ export function RunPromptButton({
         onClick={() => handleRun(platform, platform.baseUrl)}
         className="flex items-center gap-2"
       >
-        {platform.supportsQuerystring === false ? (
+        {platform.sponsor && !useCloneBranding ? (
+          <Heart className="h-3 w-3 text-pink-500 fill-pink-500" />
+        ) : platform.supportsQuerystring === false ? (
           <Clipboard className="h-3 w-3 text-muted-foreground" />
         ) : (
           <Zap className="h-3 w-3 text-green-500" />

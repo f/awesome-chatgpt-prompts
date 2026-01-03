@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Text, useInput, useStdout } from 'ink';
-import { chatPlatforms, codePlatforms, buildUrl, type Platform } from '../platforms.js';
+import { chatPlatforms, codePlatforms, imagePlatforms, videoPlatforms, buildUrl, type Platform } from '../platforms.js';
 
 interface RunPromptProps {
   content: string;
@@ -22,7 +22,16 @@ export function RunPrompt({ content, title, description, promptType, mediaUrl, o
 
   const terminalHeight = stdout?.rows || 24;
   const terminalWidth = stdout?.columns || 80;
-  const platforms = tab === 'chat' ? chatPlatforms : codePlatforms;
+  // Get platforms based on tab, include media platforms for image/video prompts
+  const basePlatforms = tab === 'chat' ? chatPlatforms : codePlatforms;
+  const mediaPlatforms = promptType === 'IMAGE' ? imagePlatforms : promptType === 'VIDEO' ? videoPlatforms : [];
+  
+  // Sort: sponsors first, then alphabetically
+  const platforms = [...mediaPlatforms, ...basePlatforms].sort((a, b) => {
+    if (a.sponsor && !b.sponsor) return -1;
+    if (!a.sponsor && b.sponsor) return 1;
+    return a.name.localeCompare(b.name);
+  });
   const previewLength = terminalWidth - 6;
   const contentPreview = content.replace(/\n/g, ' ').slice(0, previewLength);
   const isMediaType = promptType === 'IMAGE' || promptType === 'VIDEO' || promptType === 'AUDIO';
@@ -101,7 +110,9 @@ export function RunPrompt({ content, title, description, promptType, mediaUrl, o
             <Text color={index === selectedIndex ? 'cyan' : undefined}>
               {index === selectedIndex ? '❯ ' : '  '}
             </Text>
-            {platform.supportsQuerystring === false ? (
+            {platform.sponsor ? (
+              <Text color="magenta">♥ </Text>
+            ) : platform.supportsQuerystring === false ? (
               <Text color="yellow">◐ </Text>
             ) : (
               <Text color="green">⚡ </Text>
@@ -125,7 +136,7 @@ export function RunPrompt({ content, title, description, promptType, mediaUrl, o
           j/k select · Enter run · h/l tab · b back
         </Text>
         <Text dimColor>
-          ⚡ direct · ◐ copy+open
+          ♥ sponsor · ⚡ direct · ◐ copy+open
         </Text>
       </Box>
     </Box>

@@ -4,10 +4,26 @@ export interface Platform {
   baseUrl: string;
   supportsQuerystring?: boolean;
   isDeeplink?: boolean;
+  sponsor?: boolean;
 }
 
+// Image generation platforms (Mitte.ai)
+export const imagePlatforms: Platform[] = [
+  { id: "mitte-nano-banana", name: "Mitte.ai - Nano Banana", baseUrl: "https://mitte.ai?model=nano-banana", sponsor: true },
+  { id: "mitte-nano-banana-pro", name: "Mitte.ai - Nano Banana Pro", baseUrl: "https://mitte.ai?model=nano-banana-pro", sponsor: true },
+  { id: "mitte-flux-2-flex", name: "Mitte.ai - Flux 2 Flex", baseUrl: "https://mitte.ai?model=flux-2-flex", sponsor: true },
+  { id: "mitte-flux-2", name: "Mitte.ai - Flux 2", baseUrl: "https://mitte.ai?model=flux-2", sponsor: true },
+];
+
+// Video generation platforms (Mitte.ai)
+export const videoPlatforms: Platform[] = [
+  { id: "mitte-veo-31", name: "Mitte.ai - Veo 3.1", baseUrl: "https://mitte.ai?model=veo-31", sponsor: true },
+  { id: "mitte-kling-26", name: "Mitte.ai - Kling 2.6", baseUrl: "https://mitte.ai?model=kling-26", sponsor: true },
+  { id: "mitte-sora-2", name: "Mitte.ai - Sora 2", baseUrl: "https://mitte.ai?model=sora-2", sponsor: true },
+];
+
 export const codePlatforms: Platform[] = [
-  { id: "windsurf", name: "Windsurf", baseUrl: "windsurf://", isDeeplink: true, supportsQuerystring: false },
+  { id: "windsurf", name: "Windsurf", baseUrl: "windsurf://", isDeeplink: true, supportsQuerystring: false, sponsor: true },
   { id: "vscode", name: "VS Code", baseUrl: "vscode://", isDeeplink: true, supportsQuerystring: false },
   { id: "vscode-insiders", name: "VS Code Insiders", baseUrl: "vscode-insiders://", isDeeplink: true, supportsQuerystring: false },
   { id: "cursor", name: "Cursor", baseUrl: "cursor://anysphere.cursor-deeplink/prompt", isDeeplink: true },
@@ -96,6 +112,14 @@ export function buildUrl(
       return `${baseUrl}?q=${encoded}`;
     case "you":
       return `${baseUrl}/search?q=${encoded}`;
+    case "mitte-nano-banana":
+    case "mitte-nano-banana-pro":
+    case "mitte-flux-2-flex":
+    case "mitte-flux-2":
+    case "mitte-veo-31":
+    case "mitte-kling-26":
+    case "mitte-sora-2":
+      return `${baseUrl}&prompt=${encoded}`;
     default:
       return `${baseUrl}?q=${encoded}`;
   }
