@@ -161,7 +161,7 @@ const designCredits = [
   },
   {
     username: "claude-opus-4.5-design",
-    displayName: "Claude Opus 4.5 Design",
+    displayName: "Claude Opus 4.5",
     role: "App Design and Layout, Colors",
     isAI: true,
     icon: "anthropic",
