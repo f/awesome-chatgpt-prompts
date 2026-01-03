@@ -123,6 +123,24 @@ const coreContributors = [
     role: "Chrome Extension Maintainer",
     x: "fatihsolhann",
   },
+  {
+    username: "claude-opus-4.5",
+    role: "Core Coder, DevOps, Frontend, Backend, DB",
+    isAI: true,
+    icon: "anthropic",
+  },
+  {
+    username: "devin-ai",
+    role: "Feature Development",
+    isAI: true,
+    icon: "devin",
+  },
+  {
+    username: "github-copilot",
+    role: "PR checks, Feature Development",
+    isAI: true,
+    icon: "github-copilot",
+  },
 ];
 
 const designCredits = [
@@ -130,6 +148,18 @@ const designCredits = [
     username: "iuzn",
     role: "Logo Animation",
     x: "ibrahimuzn",
+  },
+  {
+    username: "gemini-nano-banana",
+    role: "Logo Design",
+    isAI: true,
+    icon: "gemini",
+  },
+  {
+    username: "claude-opus-4.5-design",
+    role: "App Design and Layout, Colors",
+    isAI: true,
+    icon: "anthropic",
   },
 ];
 
@@ -139,9 +169,19 @@ const ideationCredits = [
     role: "Product Ideas, Feedbacks",
     x: "semihdev",
   },
+  {
+    username: "chatgpt",
+    role: "The core idea of the app",
+    isAI: true,
+    icon: "openai",
+  },
 ];
 
 const excludedFromCommunity = ["f", "fatihsolhan", "iuzn", "semihkislar"];
+
+function formatAIName(username: string): string {
+  return username.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+}
 
 function BrandIcon({ name }: { name: string }) {
   switch (name) {
@@ -191,6 +231,30 @@ function BrandIcon({ name }: { name: string }) {
       return (
         <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
           <path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z" />
+        </svg>
+      );
+    case "openai":
+      return (
+        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855-5.833-3.387L15.119 7.2a.076.076 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667zm2.01-3.023-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08-4.778 2.758a.795.795 0 0 0-.393.681zm1.097-2.365 2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z" />
+        </svg>
+      );
+    case "gemini":
+      return (
+        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93-2.19-.96-3.81-2.58T12.96 4.68Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81T4.68 10.98Q2.49 12 0 12q2.49 0 4.68.93 2.19.96 3.81 2.61t2.61 3.78Z" />
+        </svg>
+      );
+    case "devin":
+      return (
+        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 3a7 7 0 1 0 0 14 7 7 0 0 0 0-14zm0 2a5 5 0 1 1 0 10 5 5 0 0 1 0-10z" />
+        </svg>
+      );
+    case "github-copilot":
+      return (
+        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
         </svg>
       );
     default:
@@ -410,37 +474,47 @@ export default async function AboutPage() {
               key={contributor.username}
               className="flex items-center gap-3 p-3 border rounded-lg"
             >
-              <Image
-                src={`https://github.com/${contributor.username}.png`}
-                alt=""
-                width={40}
-                height={40}
-                className="rounded-full shrink-0"
-              />
+              {contributor.isAI ? (
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-muted shrink-0">
+                  <BrandIcon name={contributor.icon} />
+                </div>
+              ) : (
+                <Image
+                  src={`https://github.com/${contributor.username}.png`}
+                  alt=""
+                  width={40}
+                  height={40}
+                  className="rounded-full shrink-0"
+                />
+              )}
               <div className="flex-1 min-w-0">
-                <div className="font-medium text-sm">@{contributor.username}</div>
+                <div className="font-medium text-sm">
+                  {contributor.isAI ? formatAIName(contributor.username) : `@${contributor.username}`}
+                </div>
                 <div className="text-xs text-muted-foreground">{contributor.role}</div>
               </div>
-              <div className="flex items-center gap-2">
-                <Link
-                  href={`https://github.com/${contributor.username}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-1.5 rounded-md hover:bg-muted transition-colors"
-                  title="GitHub"
-                >
-                  <BrandIcon name="github" />
-                </Link>
-                <Link
-                  href={`https://x.com/${contributor.x}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-1.5 rounded-md hover:bg-muted transition-colors"
-                  title="X"
-                >
-                  <BrandIcon name="x" />
-                </Link>
-              </div>
+              {!contributor.isAI && (
+                <div className="flex items-center gap-2">
+                  <Link
+                    href={`https://github.com/${contributor.username}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-1.5 rounded-md hover:bg-muted transition-colors"
+                    title="GitHub"
+                  >
+                    <BrandIcon name="github" />
+                  </Link>
+                  <Link
+                    href={`https://x.com/${contributor.x}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-1.5 rounded-md hover:bg-muted transition-colors"
+                    title="X"
+                  >
+                    <BrandIcon name="x" />
+                  </Link>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -455,37 +529,47 @@ export default async function AboutPage() {
               key={contributor.username}
               className="flex items-center gap-3 p-3 border rounded-lg"
             >
-              <Image
-                src={`https://github.com/${contributor.username}.png`}
-                alt=""
-                width={40}
-                height={40}
-                className="rounded-full shrink-0"
-              />
+              {contributor.isAI ? (
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-muted shrink-0">
+                  <BrandIcon name={contributor.icon} />
+                </div>
+              ) : (
+                <Image
+                  src={`https://github.com/${contributor.username}.png`}
+                  alt=""
+                  width={40}
+                  height={40}
+                  className="rounded-full shrink-0"
+                />
+              )}
               <div className="flex-1 min-w-0">
-                <div className="font-medium text-sm">@{contributor.username}</div>
+                <div className="font-medium text-sm">
+                  {contributor.isAI ? formatAIName(contributor.username) : `@${contributor.username}`}
+                </div>
                 <div className="text-xs text-muted-foreground">{contributor.role}</div>
               </div>
-              <div className="flex items-center gap-2">
-                <Link
-                  href={`https://github.com/${contributor.username}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-1.5 rounded-md hover:bg-muted transition-colors"
-                  title="GitHub"
-                >
-                  <BrandIcon name="github" />
-                </Link>
-                <Link
-                  href={`https://x.com/${contributor.x}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-1.5 rounded-md hover:bg-muted transition-colors"
-                  title="X"
-                >
-                  <BrandIcon name="x" />
-                </Link>
-              </div>
+              {!contributor.isAI && (
+                <div className="flex items-center gap-2">
+                  <Link
+                    href={`https://github.com/${contributor.username}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-1.5 rounded-md hover:bg-muted transition-colors"
+                    title="GitHub"
+                  >
+                    <BrandIcon name="github" />
+                  </Link>
+                  <Link
+                    href={`https://x.com/${contributor.x}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-1.5 rounded-md hover:bg-muted transition-colors"
+                    title="X"
+                  >
+                    <BrandIcon name="x" />
+                  </Link>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -500,37 +584,47 @@ export default async function AboutPage() {
               key={contributor.username}
               className="flex items-center gap-3 p-3 border rounded-lg"
             >
-              <Image
-                src={`https://github.com/${contributor.username}.png`}
-                alt=""
-                width={40}
-                height={40}
-                className="rounded-full shrink-0"
-              />
+              {contributor.isAI ? (
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-muted shrink-0">
+                  <BrandIcon name={contributor.icon} />
+                </div>
+              ) : (
+                <Image
+                  src={`https://github.com/${contributor.username}.png`}
+                  alt=""
+                  width={40}
+                  height={40}
+                  className="rounded-full shrink-0"
+                />
+              )}
               <div className="flex-1 min-w-0">
-                <div className="font-medium text-sm">@{contributor.username}</div>
+                <div className="font-medium text-sm">
+                  {contributor.isAI ? formatAIName(contributor.username) : `@${contributor.username}`}
+                </div>
                 <div className="text-xs text-muted-foreground">{contributor.role}</div>
               </div>
-              <div className="flex items-center gap-2">
-                <Link
-                  href={`https://github.com/${contributor.username}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-1.5 rounded-md hover:bg-muted transition-colors"
-                  title="GitHub"
-                >
-                  <BrandIcon name="github" />
-                </Link>
-                <Link
-                  href={`https://x.com/${contributor.x}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-1.5 rounded-md hover:bg-muted transition-colors"
-                  title="X"
-                >
-                  <BrandIcon name="x" />
-                </Link>
-              </div>
+              {!contributor.isAI && (
+                <div className="flex items-center gap-2">
+                  <Link
+                    href={`https://github.com/${contributor.username}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-1.5 rounded-md hover:bg-muted transition-colors"
+                    title="GitHub"
+                  >
+                    <BrandIcon name="github" />
+                  </Link>
+                  <Link
+                    href={`https://x.com/${contributor.x}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-1.5 rounded-md hover:bg-muted transition-colors"
+                    title="X"
+                  >
+                    <BrandIcon name="x" />
+                  </Link>
+                </div>
+              )}
             </div>
           ))}
         </div>
