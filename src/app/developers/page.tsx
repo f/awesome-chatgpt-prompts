@@ -5,12 +5,13 @@ import { useTranslations } from "next-intl";
 import { PromptIde } from "@/components/ide/prompt-ide";
 import { PromptEnhancer } from "@/components/developers/prompt-enhancer";
 import { EmbedDesigner } from "@/components/developers/embed-designer";
-import { Monitor, Code2, Sparkles, Frame } from "lucide-react";
+import { PromptTokenizer } from "@/components/developers/prompt-tokenizer";
+import { Monitor, Code2, Sparkles, Frame, Hash } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-const VALID_TABS = ["enhancer", "builder", "embed"] as const;
+const VALID_TABS = ["enhancer", "tokenizer", "builder", "embed"] as const;
 type TabValue = (typeof VALID_TABS)[number];
 
 export default function DevelopersPage() {
@@ -87,6 +88,13 @@ export default function DevelopersPage() {
               {t("promptEnhancer")}
             </TabsTrigger>
             <TabsTrigger 
+              value="tokenizer" 
+              className="h-9 border-0 border-b-2 border-b-transparent data-[state=active]:border-b-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 focus:outline-none rounded-none px-3 py-2 gap-1.5 text-sm"
+            >
+              <Hash className="h-3.5 w-3.5" />
+              {t("promptTokenizer")}
+            </TabsTrigger>
+            <TabsTrigger 
               value="builder" 
               className="h-9 border-0 border-b-2 border-b-transparent data-[state=active]:border-b-primary data-[state=active]:bg-transparent data-[state=active]:shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 focus:outline-none rounded-none px-3 py-2 gap-1.5 text-sm"
             >
@@ -105,6 +113,10 @@ export default function DevelopersPage() {
         
         <TabsContent value="enhancer" className="flex-1 mt-0 min-h-0 overflow-hidden data-[state=inactive]:hidden">
           <PromptEnhancer />
+        </TabsContent>
+        
+        <TabsContent value="tokenizer" className="flex-1 mt-0 min-h-0 overflow-hidden data-[state=inactive]:hidden">
+          <PromptTokenizer />
         </TabsContent>
         
         <TabsContent value="builder" className="flex-1 mt-0 min-h-0 overflow-hidden data-[state=inactive]:hidden">

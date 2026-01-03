@@ -1297,7 +1297,26 @@
     "embedCode": "Embed Code",
     "embedCopied": "Embed code copied!",
     "settingsCleared": "Settings cleared",
-    "reset": "Reset"
+    "reset": "Reset",
+    "promptTokenizer": "Tokenizer",
+    "tokenizer": {
+      "inputText": "Input Text",
+      "placeholder": "Paste your prompt or text here to analyze tokens...",
+      "analysis": "Token Analysis",
+      "tokens": "Tokens",
+      "contextUsage": "Context Window Usage",
+      "nearLimit": "Approaching context limit!",
+      "estimatedCost": "Estimated Cost",
+      "textStats": "Text Statistics",
+      "saved": "Analysis saved to history",
+      "saveToHistory": "Save",
+      "estimationNote": "Token counts are estimates. Actual counts may vary slightly depending on the model's tokenizer.",
+      "settings": "Settings",
+      "contextWindowSize": "Context Window Size",
+      "inputPricePerMillion": "Input $/1M tokens",
+      "outputPricePerMillion": "Output $/1M tokens",
+      "highlightTokens": "Highlight Tokens"
+    }
   },
   "appBanner": {
     "message": "Get the prompts.chat app for iPhone, iPad, and Mac",
