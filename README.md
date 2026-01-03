@@ -35,6 +35,9 @@
   <a href="https://wind.surf/prompts-chat" align="center">
     <img align="center" height="40" alt="Cognition logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/cognition.svg">
   </a><br><br>
+  <a href="https://mitte.ai/?utm_source=prompts.chat" align="center">
+    <img align="center" height="40" alt="MitteAI logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/mitte.svg">
+  </a><br><br>
   <a href="https://warp.dev/?utm_source=prompts.chat" align="center">
     <img align="center" height="30" alt="Warp logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/warp.svg">
   </a><br><br>
