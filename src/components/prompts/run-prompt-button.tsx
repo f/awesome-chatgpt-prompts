@@ -43,11 +43,11 @@ interface Platform {
   sponsor?: boolean;
 }
 
-// Image generation platforms (MitteAI)
+// Image generation platforms (Mitte.ai)
 const imagePlatforms: Platform[] = [
   {
     id: "mitte-image",
-    name: "MitteAI",
+    name: "Mitte.ai",
     baseUrl: "https://mitte.ai",
     sponsor: true,
     subOptions: [
@@ -59,11 +59,11 @@ const imagePlatforms: Platform[] = [
   },
 ];
 
-// Video generation platforms (MitteAI)
+// Video generation platforms (Mitte.ai)
 const videoPlatforms: Platform[] = [
   {
     id: "mitte-video",
-    name: "MitteAI",
+    name: "Mitte.ai",
     baseUrl: "https://mitte.ai",
     sponsor: true,
     subOptions: [
@@ -76,7 +76,7 @@ const videoPlatforms: Platform[] = [
 
 // Code platforms (IDEs + code generation tools)
 const codePlatforms: Platform[] = [
-  { id: "windsurf", name: "Windsurf", baseUrl: "windsurf://", isDeeplink: true, supportsQuerystring: false },
+  { id: "windsurf", name: "Windsurf", baseUrl: "windsurf://", isDeeplink: true, supportsQuerystring: false, sponsor: true },
   { id: "vscode", name: "VS Code", baseUrl: "vscode://", isDeeplink: true, supportsQuerystring: false },
   { id: "vscode-insiders", name: "VS Code Insiders", baseUrl: "vscode-insiders://", isDeeplink: true, supportsQuerystring: false },
   { id: "cursor", name: "Cursor", baseUrl: "cursor://anysphere.cursor-deeplink/prompt", isDeeplink: true },
@@ -340,7 +340,7 @@ export function RunPromptButton({
 
   // Get platforms based on active tab, merge with media platforms
   // For image/video prompts: media platforms at top, then rest sorted alphabetically
-  // For other prompts: all platforms sorted alphabetically including MitteAI
+  // For other prompts: all platforms sorted alphabetically including Mitte.ai
   const basePlatforms = activeTab === "code" ? codePlatforms : chatPlatforms;
   const sortedBasePlatforms = [...basePlatforms].sort((a, b) => a.name.localeCompare(b.name));
   
