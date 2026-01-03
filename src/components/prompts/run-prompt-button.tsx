@@ -52,6 +52,7 @@ const imagePlatforms: Platform[] = [
     sponsor: true,
     subOptions: [
       { name: "Nano Banana", baseUrl: "https://mitte.ai?model=nano-banana" },
+      { name: "Nano Banana Pro", baseUrl: "https://mitte.ai?model=nano-banana-pro" },
       { name: "Flux 2 Flex", baseUrl: "https://mitte.ai?model=flux-2-flex" },
       { name: "Flux 2", baseUrl: "https://mitte.ai?model=flux-2" },
     ],
