@@ -1286,7 +1286,18 @@
     "loginRequired": "请登录以使用提示词优化器",
     "history": "历史记录",
     "storedOnDevice": "存储在您的设备上",
-    "noHistory": "暂无历史记录"
+    "noHistory": "暂无历史记录",
+    "embedDesigner": "嵌入设计器",
+    "embedSettings": "设置",
+    "loadExample": "加载示例",
+    "chooseExample": "选择示例...",
+    "preview": "预览",
+    "openInNewTab": "打开",
+    "copyEmbedCode": "复制嵌入代码",
+    "embedCode": "嵌入代码",
+    "embedCopied": "嵌入代码已复制！",
+    "settingsCleared": "设置已清除",
+    "reset": "重置"
   },
   "appBanner": {
     "message": "下载适用于 iPhone、iPad 和 Mac 的 prompts.chat 应用",

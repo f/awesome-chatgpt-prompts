@@ -1286,7 +1286,18 @@
     "loginRequired": "プロンプト改善ツールを使用するにはログインしてください",
     "history": "履歴",
     "storedOnDevice": "お使いのデバイスに保存",
-    "noHistory": "履歴はまだありません"
+    "noHistory": "履歴はまだありません",
+    "embedDesigner": "埋め込みデザイナー",
+    "embedSettings": "設定",
+    "loadExample": "例を読み込む",
+    "chooseExample": "例を選択...",
+    "preview": "プレビュー",
+    "openInNewTab": "開く",
+    "copyEmbedCode": "埋め込みコードをコピー",
+    "embedCode": "埋め込みコード",
+    "embedCopied": "埋め込みコードをコピーしました！",
+    "settingsCleared": "設定をクリアしました",
+    "reset": "リセット"
   },
   "appBanner": {
     "message": "iPhone、iPad、Mac用のprompts.chatアプリを入手",

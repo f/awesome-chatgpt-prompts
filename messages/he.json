@@ -1286,7 +1286,18 @@
     "loginRequired": "התחבר כדי להשתמש במשפר ההנחיות",
     "history": "היסטוריה",
     "storedOnDevice": "מאוחסן במכשיר שלך",
-    "noHistory": "אין היסטוריה עדיין"
+    "noHistory": "אין היסטוריה עדיין",
+    "embedDesigner": "מעצב הטמעה",
+    "embedSettings": "הגדרות",
+    "loadExample": "טען דוגמה",
+    "chooseExample": "בחר דוגמה...",
+    "preview": "תצוגה מקדימה",
+    "openInNewTab": "פתח",
+    "copyEmbedCode": "העתק קוד הטמעה",
+    "embedCode": "קוד הטמעה",
+    "embedCopied": "קוד ההטמעה הועתק!",
+    "settingsCleared": "ההגדרות נמחקו",
+    "reset": "אפס"
   },
   "appBanner": {
     "message": "הורד את אפליקציית prompts.chat ל-iPhone, iPad ו-Mac",

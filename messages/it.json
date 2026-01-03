@@ -1286,7 +1286,18 @@
     "loginRequired": "Accedi per usare il Miglioratore di Prompt",
     "history": "Cronologia",
     "storedOnDevice": "Salvato sul tuo dispositivo",
-    "noHistory": "Nessuna cronologia"
+    "noHistory": "Nessuna cronologia",
+    "embedDesigner": "Designer Embed",
+    "embedSettings": "Impostazioni",
+    "loadExample": "Carica Esempio",
+    "chooseExample": "Scegli un esempio...",
+    "preview": "Anteprima",
+    "openInNewTab": "Apri",
+    "copyEmbedCode": "Copia Codice Embed",
+    "embedCode": "Codice Embed",
+    "embedCopied": "Codice embed copiato!",
+    "settingsCleared": "Impostazioni cancellate",
+    "reset": "Reimposta"
   },
   "appBanner": {
     "message": "Scarica l'app prompts.chat per iPhone, iPad e Mac",

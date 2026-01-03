@@ -1286,7 +1286,18 @@
     "loginRequired": "Prompt Təkmilləşdirici istifadə etmək üçün daxil olun",
     "history": "Tarixçə",
     "storedOnDevice": "Cihazınızda saxlanılır",
-    "noHistory": "Hələ tarixçə yoxdur"
+    "noHistory": "Hələ tarixçə yoxdur",
+    "embedDesigner": "Yerləşdirmə Dizayneri",
+    "embedSettings": "Parametrlər",
+    "loadExample": "Nümunə Yüklə",
+    "chooseExample": "Nümunə seçin...",
+    "preview": "Önizləmə",
+    "openInNewTab": "Aç",
+    "copyEmbedCode": "Yerləşdirmə Kodunu Kopyala",
+    "embedCode": "Yerləşdirmə Kodu",
+    "embedCopied": "Yerləşdirmə kodu kopyalandı!",
+    "settingsCleared": "Parametrlər silindi",
+    "reset": "Sıfırla"
   },
   "appBanner": {
     "message": "iPhone, iPad və Mac üçün prompts.chat tətbiqini yükləyin",

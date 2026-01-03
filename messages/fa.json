@@ -1286,7 +1286,18 @@
     "loginRequired": "برای استفاده از بهبود دهنده پرامپت وارد شوید",
     "history": "تاریخچه",
     "storedOnDevice": "در دستگاه شما ذخیره شده",
-    "noHistory": "هنوز تاریخچه‌ای نیست"
+    "noHistory": "هنوز تاریخچه‌ای نیست",
+    "embedDesigner": "طراح جاسازی",
+    "embedSettings": "تنظیمات",
+    "loadExample": "بارگذاری نمونه",
+    "chooseExample": "یک نمونه انتخاب کنید...",
+    "preview": "پیش‌نمایش",
+    "openInNewTab": "باز کردن",
+    "copyEmbedCode": "کپی کد جاسازی",
+    "embedCode": "کد جاسازی",
+    "embedCopied": "کد جاسازی کپی شد!",
+    "settingsCleared": "تنظیمات پاک شد",
+    "reset": "بازنشانی"
   },
   "appBanner": {
     "message": "اپلیکیشن prompts.chat را برای iPhone، iPad و Mac دریافت کنید",

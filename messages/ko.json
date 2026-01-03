@@ -1286,7 +1286,18 @@
     "loginRequired": "프롬프트 개선기를 사용하려면 로그인하세요",
     "history": "기록",
     "storedOnDevice": "기기에 저장됨",
-    "noHistory": "기록 없음"
+    "noHistory": "기록 없음",
+    "embedDesigner": "임베드 디자이너",
+    "embedSettings": "설정",
+    "loadExample": "예제 불러오기",
+    "chooseExample": "예제 선택...",
+    "preview": "미리보기",
+    "openInNewTab": "열기",
+    "copyEmbedCode": "임베드 코드 복사",
+    "embedCode": "임베드 코드",
+    "embedCopied": "임베드 코드가 복사되었습니다!",
+    "settingsCleared": "설정이 초기화되었습니다",
+    "reset": "초기화"
   },
   "appBanner": {
     "message": "iPhone, iPad, Mac용 prompts.chat 앱 다운로드",

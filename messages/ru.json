@@ -1286,7 +1286,18 @@
     "loginRequired": "Войдите, чтобы использовать Улучшатель промптов",
     "history": "История",
     "storedOnDevice": "Сохранено на вашем устройстве",
-    "noHistory": "История пуста"
+    "noHistory": "История пуста",
+    "embedDesigner": "Дизайнер встраивания",
+    "embedSettings": "Настройки",
+    "loadExample": "Загрузить пример",
+    "chooseExample": "Выберите пример...",
+    "preview": "Предпросмотр",
+    "openInNewTab": "Открыть",
+    "copyEmbedCode": "Скопировать код встраивания",
+    "embedCode": "Код встраивания",
+    "embedCopied": "Код встраивания скопирован!",
+    "settingsCleared": "Настройки сброшены",
+    "reset": "Сбросить"
   },
   "appBanner": {
     "message": "Скачайте приложение prompts.chat для iPhone, iPad и Mac",

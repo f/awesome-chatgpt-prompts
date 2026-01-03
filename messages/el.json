@@ -1286,7 +1286,18 @@
     "loginRequired": "Συνδεθείτε για να χρησιμοποιήσετε τον Βελτιωτή Προτροπών",
     "history": "Ιστορικό",
     "storedOnDevice": "Αποθηκευμένο στη συσκευή σας",
-    "noHistory": "Δεν υπάρχει ιστορικό ακόμα"
+    "noHistory": "Δεν υπάρχει ιστορικό ακόμα",
+    "embedDesigner": "Σχεδιαστής Ενσωμάτωσης",
+    "embedSettings": "Ρυθμίσεις",
+    "loadExample": "Φόρτωση Παραδείγματος",
+    "chooseExample": "Επιλέξτε παράδειγμα...",
+    "preview": "Προεπισκόπηση",
+    "openInNewTab": "Άνοιγμα",
+    "copyEmbedCode": "Αντιγραφή Κώδικα Ενσωμάτωσης",
+    "embedCode": "Κώδικας Ενσωμάτωσης",
+    "embedCopied": "Ο κώδικας ενσωμάτωσης αντιγράφηκε!",
+    "settingsCleared": "Οι ρυθμίσεις διαγράφηκαν",
+    "reset": "Επαναφορά"
   },
   "appBanner": {
     "message": "Κατεβάστε την εφαρμογή prompts.chat για iPhone, iPad και Mac",

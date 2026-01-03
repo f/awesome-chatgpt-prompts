@@ -1286,7 +1286,18 @@
     "loginRequired": "يرجى تسجيل الدخول لاستخدام محسّن الأوامر",
     "history": "السجل",
     "storedOnDevice": "مخزن على جهازك",
-    "noHistory": "لا يوجد سجل بعد"
+    "noHistory": "لا يوجد سجل بعد",
+    "embedDesigner": "مصمم التضمين",
+    "embedSettings": "الإعدادات",
+    "loadExample": "تحميل مثال",
+    "chooseExample": "اختر مثالاً...",
+    "preview": "معاينة",
+    "openInNewTab": "فتح",
+    "copyEmbedCode": "نسخ كود التضمين",
+    "embedCode": "كود التضمين",
+    "embedCopied": "تم نسخ كود التضمين!",
+    "settingsCleared": "تم مسح الإعدادات",
+    "reset": "إعادة تعيين"
   },
   "appBanner": {
     "message": "احصل على تطبيق prompts.chat لأجهزة iPhone وiPad وMac",
