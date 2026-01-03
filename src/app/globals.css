@@ -228,3 +228,18 @@
 .density-comfortable h1 { font-size: 2.5rem; }
 .density-comfortable h2 { font-size: 2rem; }
 .density-comfortable h3 { font-size: 1.5rem; }
+/* Floating CTA animations */
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
