@@ -125,18 +125,21 @@ const coreContributors = [
   },
   {
     username: "claude-opus-4.5",
+    displayName: "Claude Opus 4.5",
     role: "Core Coder, DevOps, Frontend, Backend, DB",
     isAI: true,
     icon: "anthropic",
   },
   {
     username: "devin-ai",
+    displayName: "Devin AI",
     role: "Feature Development",
     isAI: true,
-    icon: "devin",
+    icon: "cognition",
   },
   {
     username: "github-copilot",
+    displayName: "GitHub Copilot",
     role: "PR checks, Feature Development",
     isAI: true,
     icon: "github-copilot",
@@ -151,12 +154,14 @@ const designCredits = [
   },
   {
     username: "gemini-nano-banana",
+    displayName: "Gemini Nano Banana",
     role: "Logo Design",
     isAI: true,
     icon: "gemini",
   },
   {
     username: "claude-opus-4.5-design",
+    displayName: "Claude Opus 4.5",
     role: "App Design and Layout, Colors",
     isAI: true,
     icon: "anthropic",
@@ -171,6 +176,7 @@ const ideationCredits = [
   },
   {
     username: "chatgpt",
+    displayName: "ChatGPT",
     role: "The core idea of the app",
     isAI: true,
     icon: "openai",
@@ -178,10 +184,6 @@ const ideationCredits = [
 ];
 
 const excludedFromCommunity = ["f", "fatihsolhan", "iuzn", "semihkislar"];
-
-function formatAIName(username: string): string {
-  return username.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-}
 
 function BrandIcon({ name }: { name: string }) {
   switch (name) {
@@ -245,10 +247,10 @@ function BrandIcon({ name }: { name: string }) {
           <path d="M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93-2.19-.96-3.81-2.58T12.96 4.68Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81T4.68 10.98Q2.49 12 0 12q2.49 0 4.68.93 2.19.96 3.81 2.61t2.61 3.78Z" />
         </svg>
       );
-    case "devin":
+    case "cognition":
       return (
         <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 3a7 7 0 1 0 0 14 7 7 0 0 0 0-14zm0 2a5 5 0 1 1 0 10 5 5 0 0 1 0-10z" />
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
         </svg>
       );
     case "github-copilot":
@@ -489,7 +491,7 @@ export default async function AboutPage() {
               )}
               <div className="flex-1 min-w-0">
                 <div className="font-medium text-sm">
-                  {contributor.isAI ? formatAIName(contributor.username) : `@${contributor.username}`}
+                  {contributor.isAI ? contributor.displayName : `@${contributor.username}`}
                 </div>
                 <div className="text-xs text-muted-foreground">{contributor.role}</div>
               </div>
@@ -544,7 +546,7 @@ export default async function AboutPage() {
               )}
               <div className="flex-1 min-w-0">
                 <div className="font-medium text-sm">
-                  {contributor.isAI ? formatAIName(contributor.username) : `@${contributor.username}`}
+                  {contributor.isAI ? contributor.displayName : `@${contributor.username}`}
                 </div>
                 <div className="text-xs text-muted-foreground">{contributor.role}</div>
               </div>
@@ -599,7 +601,7 @@ export default async function AboutPage() {
               )}
               <div className="flex-1 min-w-0">
                 <div className="font-medium text-sm">
-                  {contributor.isAI ? formatAIName(contributor.username) : `@${contributor.username}`}
+                  {contributor.isAI ? contributor.displayName : `@${contributor.username}`}
                 </div>
                 <div className="text-xs text-muted-foreground">{contributor.role}</div>
               </div>
