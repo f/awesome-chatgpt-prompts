@@ -179,6 +179,10 @@ const ideationCredits = [
 
 const excludedFromCommunity = ["f", "fatihsolhan", "iuzn", "semihkislar"];
 
+function formatAIName(username: string): string {
+  return username.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+}
+
 function BrandIcon({ name }: { name: string }) {
   switch (name) {
     case "github":
@@ -485,7 +489,7 @@ export default async function AboutPage() {
               )}
               <div className="flex-1 min-w-0">
                 <div className="font-medium text-sm">
-                  {contributor.isAI ? contributor.username.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') : `@${contributor.username}`}
+                  {contributor.isAI ? formatAIName(contributor.username) : `@${contributor.username}`}
                 </div>
                 <div className="text-xs text-muted-foreground">{contributor.role}</div>
               </div>
@@ -540,7 +544,7 @@ export default async function AboutPage() {
               )}
               <div className="flex-1 min-w-0">
                 <div className="font-medium text-sm">
-                  {contributor.isAI ? contributor.username.charAt(0).toUpperCase() + contributor.username.slice(1) : `@${contributor.username}`}
+                  {contributor.isAI ? formatAIName(contributor.username) : `@${contributor.username}`}
                 </div>
                 <div className="text-xs text-muted-foreground">{contributor.role}</div>
               </div>
@@ -595,7 +599,7 @@ export default async function AboutPage() {
               )}
               <div className="flex-1 min-w-0">
                 <div className="font-medium text-sm">
-                  {contributor.isAI ? contributor.username.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') : `@${contributor.username}`}
+                  {contributor.isAI ? formatAIName(contributor.username) : `@${contributor.username}`}
                 </div>
                 <div className="text-xs text-muted-foreground">{contributor.role}</div>
               </div>
