@@ -49,7 +49,8 @@
     "login": "Σύνδεση",
     "register": "Εγγραφή",
     "logout": "Αποσύνδεση",
-    "ide": "Prompt Builder"
+    "ide": "Typed-Prompts IDE",
+    "developers": "Προγραμματιστές"
   },
   "brand": {
     "copyLogoSvg": "Αντιγραφή Logo SVG",
@@ -1260,6 +1261,32 @@
     "generateFailed": "Αποτυχία δημιουργίας παραδείγματος",
     "exampleGenerated": "Δημιουργήθηκε νέο παράδειγμα!",
     "ignoreTypeErrors": "Αγνόηση Σφαλμάτων Τύπου"
+  },
+  "developers": {
+    "title": "Προγραμματιστές",
+    "promptBuilder": "Typed-Prompts IDE",
+    "promptEnhancer": "Βελτιωτής Προτροπών",
+    "desktopOnly": "Μόνο για Υπολογιστές",
+    "desktopOnlyDescription": "Τα εργαλεία προγραμματιστή απαιτούν μεγαλύτερη οθόνη. Ανοίξτε αυτή τη σελίδα σε επιτραπέζιο ή φορητό υπολογιστή.",
+    "browsePrompts": "Περιήγηση Προτροπών",
+    "inputPrompt": "Προτροπή Εισόδου",
+    "inputPlaceholder": "Εισάγετε μια βασική προτροπή για βελτίωση...\n\nΠαράδειγμα: γράψε ένα άρθρο για την AI",
+    "outputType": "Τύπος",
+    "outputFormat": "Μορφή",
+    "enhance": "Βελτίωση",
+    "enhancing": "Βελτίωση...",
+    "enhanceSuccess": "Η προτροπή βελτιώθηκε επιτυχώς!",
+    "enhanceFailed": "Αποτυχία βελτίωσης προτροπής",
+    "enterPrompt": "Εισάγετε μια προτροπή για βελτίωση",
+    "enhancedPrompt": "Βελτιωμένη Προτροπή",
+    "copy": "Αντιγραφή",
+    "copied": "Αντιγράφηκε στο πρόχειρο",
+    "inspiredBy": "Εμπνευσμένο από",
+    "enhanceToSeeResult": "Εισάγετε μια προτροπή και πατήστε Βελτίωση για να δείτε το αποτέλεσμα",
+    "loginRequired": "Συνδεθείτε για να χρησιμοποιήσετε τον Βελτιωτή Προτροπών",
+    "history": "Ιστορικό",
+    "storedOnDevice": "Αποθηκευμένο στη συσκευή σας",
+    "noHistory": "Δεν υπάρχει ιστορικό ακόμα"
   },
   "appBanner": {
     "message": "Κατεβάστε την εφαρμογή prompts.chat για iPhone, iPad και Mac",

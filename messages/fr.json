@@ -49,7 +49,8 @@
     "login": "Connexion",
     "register": "Inscription",
     "logout": "Déconnexion",
-    "ide": "Prompt Builder"
+    "ide": "Typed-Prompts IDE",
+    "developers": "Développeurs"
   },
   "brand": {
     "copyLogoSvg": "Copier le logo SVG",
@@ -1260,6 +1261,32 @@
     "generateFailed": "Échec de la génération de l'exemple",
     "exampleGenerated": "Nouvel exemple généré !",
     "ignoreTypeErrors": "Ignorer les erreurs de type"
+  },
+  "developers": {
+    "title": "Développeurs",
+    "promptBuilder": "Typed-Prompts IDE",
+    "promptEnhancer": "Améliorateur de Prompts",
+    "desktopOnly": "Bureau uniquement",
+    "desktopOnlyDescription": "Les outils de développement nécessitent un écran plus grand. Veuillez ouvrir cette page sur un ordinateur de bureau ou portable.",
+    "browsePrompts": "Parcourir les Prompts",
+    "inputPrompt": "Prompt d'entrée",
+    "inputPlaceholder": "Entrez un prompt basique à améliorer...\n\nExemple : écris un article de blog sur l'IA",
+    "outputType": "Type",
+    "outputFormat": "Format",
+    "enhance": "Améliorer",
+    "enhancing": "Amélioration...",
+    "enhanceSuccess": "Prompt amélioré avec succès !",
+    "enhanceFailed": "Échec de l'amélioration du prompt",
+    "enterPrompt": "Veuillez entrer un prompt à améliorer",
+    "enhancedPrompt": "Prompt Amélioré",
+    "copy": "Copier",
+    "copied": "Copié dans le presse-papiers",
+    "inspiredBy": "Inspiré par",
+    "enhanceToSeeResult": "Entrez un prompt et cliquez sur Améliorer pour voir le résultat",
+    "loginRequired": "Veuillez vous connecter pour utiliser l'Améliorateur de Prompts",
+    "history": "Historique",
+    "storedOnDevice": "Stocké sur votre appareil",
+    "noHistory": "Pas encore d'historique"
   },
   "appBanner": {
     "message": "Téléchargez l'app prompts.chat pour iPhone, iPad et Mac",

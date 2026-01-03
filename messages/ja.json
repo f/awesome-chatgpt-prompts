@@ -49,7 +49,8 @@
     "login": "ログイン",
     "register": "登録",
     "logout": "ログアウト",
-    "ide": "Prompt Builder"
+    "ide": "Typed-Prompts IDE",
+    "developers": "開発者"
   },
   "brand": {
     "copyLogoSvg": "ロゴSVGをコピー",
@@ -1260,6 +1261,32 @@
     "generateFailed": "例の生成に失敗しました",
     "exampleGenerated": "新しい例が生成されました！",
     "ignoreTypeErrors": "型エラーを無視"
+  },
+  "developers": {
+    "title": "開発者",
+    "promptBuilder": "Typed-Prompts IDE",
+    "promptEnhancer": "プロンプト改善ツール",
+    "desktopOnly": "デスクトップのみ",
+    "desktopOnlyDescription": "開発者ツールにはより大きな画面が必要です。デスクトップまたはノートパソコンでこのページを開いてください。",
+    "browsePrompts": "プロンプトを閲覧",
+    "inputPrompt": "入力プロンプト",
+    "inputPlaceholder": "改善するプロンプトを入力してください...\n\n例：AIについてのブログ記事を書く",
+    "outputType": "タイプ",
+    "outputFormat": "フォーマット",
+    "enhance": "改善",
+    "enhancing": "改善中...",
+    "enhanceSuccess": "プロンプトが正常に改善されました！",
+    "enhanceFailed": "プロンプトの改善に失敗しました",
+    "enterPrompt": "改善するプロンプトを入力してください",
+    "enhancedPrompt": "改善されたプロンプト",
+    "copy": "コピー",
+    "copied": "クリップボードにコピーしました",
+    "inspiredBy": "インスピレーション",
+    "enhanceToSeeResult": "プロンプトを入力して改善をクリックすると結果が表示されます",
+    "loginRequired": "プロンプト改善ツールを使用するにはログインしてください",
+    "history": "履歴",
+    "storedOnDevice": "お使いのデバイスに保存",
+    "noHistory": "履歴はまだありません"
   },
   "appBanner": {
     "message": "iPhone、iPad、Mac用のprompts.chatアプリを入手",

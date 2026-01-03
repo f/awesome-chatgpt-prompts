@@ -37,7 +37,7 @@ export interface ImprovePromptResult {
   improved: string;
   outputType: OutputType;
   outputFormat: OutputFormat;
-  inspirations: Array<{ title: string; similarity: number }>;
+  inspirations: Array<{ id: string; slug: string | null; title: string; similarity: number }>;
   model: string;
 }
 
@@ -68,7 +68,7 @@ async function findSimilarPrompts(
   query: string,
   outputType: OutputType,
   limit: number = 3
-): Promise<Array<{ title: string; content: string; similarity: number }>> {
+): Promise<Array<{ id: string; slug: string | null; title: string; content: string; similarity: number }>> {
   const aiSearchEnabled = await isAISearchEnabled();
   if (!aiSearchEnabled) {
     console.log("[improve-prompt] AI search is not enabled");
@@ -87,6 +87,8 @@ async function findSimilarPrompts(
         ...(dbType ? { type: dbType } : {}),
       },
       select: {
+        id: true,
+        slug: true,
         title: true,
         content: true,
         embedding: true,
@@ -103,6 +105,8 @@ async function findSimilarPrompts(
         const embedding = prompt.embedding as number[];
         const similarity = cosineSimilarity(queryEmbedding, embedding);
         return {
+          id: prompt.id,
+          slug: prompt.slug,
           title: prompt.title,
           content: prompt.content,
           similarity,
@@ -184,6 +188,8 @@ export async function improvePrompt(input: ImprovePromptInput): Promise<ImproveP
     outputType,
     outputFormat,
     inspirations: similarPrompts.map((p) => ({
+      id: p.id,
+      slug: p.slug,
       title: p.title,
       similarity: Math.round(p.similarity * 100),
     })),

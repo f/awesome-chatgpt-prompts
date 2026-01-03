@@ -11,7 +11,7 @@ export function Footer() {
   const t = useTranslations("footer");
 
   return (
-    <footer className="border-t">
+    <footer className="border-t shrink-0">
       <div className="container flex flex-col items-center gap-3 py-4 text-xs text-muted-foreground sm:flex-row sm:justify-between sm:h-10 sm:py-0 sm:gap-4">
         <span className="flex items-center gap-1.5">
           <Image src="/logo.svg" alt="" width={14} height={14} className="dark:invert" />

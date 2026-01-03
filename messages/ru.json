@@ -49,7 +49,8 @@
     "login": "Войти",
     "register": "Регистрация",
     "logout": "Выйти",
-    "ide": "Prompt Builder"
+    "ide": "Typed-Prompts IDE",
+    "developers": "Разработчикам"
   },
   "brand": {
     "copyLogoSvg": "Скопировать логотип SVG",
@@ -1260,6 +1261,32 @@
     "generateFailed": "Не удалось сгенерировать пример",
     "exampleGenerated": "Новый пример сгенерирован!",
     "ignoreTypeErrors": "Игнорировать ошибки типов"
+  },
+  "developers": {
+    "title": "Разработчикам",
+    "promptBuilder": "Typed-Prompts IDE",
+    "promptEnhancer": "Улучшатель промптов",
+    "desktopOnly": "Только для ПК",
+    "desktopOnlyDescription": "Инструменты разработчика требуют большего экрана. Откройте эту страницу на настольном компьютере или ноутбуке.",
+    "browsePrompts": "Просмотр промптов",
+    "inputPrompt": "Входной промпт",
+    "inputPlaceholder": "Введите базовый промпт для улучшения...\n\nПример: напиши пост в блог об ИИ",
+    "outputType": "Тип",
+    "outputFormat": "Формат",
+    "enhance": "Улучшить",
+    "enhancing": "Улучшение...",
+    "enhanceSuccess": "Промпт успешно улучшен!",
+    "enhanceFailed": "Не удалось улучшить промпт",
+    "enterPrompt": "Введите промпт для улучшения",
+    "enhancedPrompt": "Улучшенный промпт",
+    "copy": "Копировать",
+    "copied": "Скопировано в буфер обмена",
+    "inspiredBy": "Вдохновлено",
+    "enhanceToSeeResult": "Введите промпт и нажмите Улучшить для просмотра результата",
+    "loginRequired": "Войдите, чтобы использовать Улучшатель промптов",
+    "history": "История",
+    "storedOnDevice": "Сохранено на вашем устройстве",
+    "noHistory": "История пуста"
   },
   "appBanner": {
     "message": "Скачайте приложение prompts.chat для iPhone, iPad и Mac",

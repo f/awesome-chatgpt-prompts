@@ -103,7 +103,7 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className={`flex h-12 items-center gap-4 ${pathname === "/builder" ? "px-4" : "container"}`}>
+      <div className={`flex h-12 items-center gap-4 ${pathname === "/developers" ? "px-4" : "container"}`}>
         {/* Mobile menu */}
         <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
           <SheetTrigger asChild className="md:hidden">
@@ -293,10 +293,10 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
             {t("nav.promptmasters")}
           </Link>
           <Link
-            href="/builder"
+            href="/developers"
             className="hidden lg:block px-3 py-1.5 rounded-md text-muted-foreground transition-colors hover:text-foreground hover:bg-accent"
           >
-            {t("nav.ide")}
+            {t("nav.developers")}
           </Link>
         </nav>
 

@@ -49,7 +49,8 @@
     "login": "登录",
     "register": "注册",
     "logout": "退出登录",
-    "ide": "Prompt Builder"
+    "ide": "Typed-Prompts IDE",
+    "developers": "开发者"
   },
   "brand": {
     "copyLogoSvg": "复制Logo SVG",
@@ -1260,6 +1261,32 @@
     "generateFailed": "生成示例失败",
     "exampleGenerated": "新示例已生成！",
     "ignoreTypeErrors": "忽略类型错误"
+  },
+  "developers": {
+    "title": "开发者",
+    "promptBuilder": "Typed-Prompts IDE",
+    "promptEnhancer": "提示词优化器",
+    "desktopOnly": "仅限桌面端",
+    "desktopOnlyDescription": "开发者工具需要更大的屏幕。请在台式机或笔记本电脑上打开此页面。",
+    "browsePrompts": "浏览提示词",
+    "inputPrompt": "输入提示词",
+    "inputPlaceholder": "输入一个基础提示词进行优化...\n\n示例：写一篇关于人工智能的博客文章",
+    "outputType": "类型",
+    "outputFormat": "格式",
+    "enhance": "优化",
+    "enhancing": "优化中...",
+    "enhanceSuccess": "提示词优化成功！",
+    "enhanceFailed": "提示词优化失败",
+    "enterPrompt": "请输入要优化的提示词",
+    "enhancedPrompt": "优化后的提示词",
+    "copy": "复制",
+    "copied": "已复制到剪贴板",
+    "inspiredBy": "灵感来源",
+    "enhanceToSeeResult": "输入提示词并点击优化以查看结果",
+    "loginRequired": "请登录以使用提示词优化器",
+    "history": "历史记录",
+    "storedOnDevice": "存储在您的设备上",
+    "noHistory": "暂无历史记录"
   },
   "appBanner": {
     "message": "下载适用于 iPhone、iPad 和 Mac 的 prompts.chat 应用",

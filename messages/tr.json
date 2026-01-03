@@ -49,7 +49,8 @@
     "login": "Giriş Yap",
     "register": "Kayıt Ol",
     "logout": "Çıkış Yap",
-    "ide": "Prompt Builder"
+    "ide": "Typed-Prompts IDE",
+    "developers": "Geliştiriciler"
   },
   "brand": {
     "copyLogoSvg": "Logo SVG'sini Kopyala",
@@ -1260,6 +1261,32 @@
     "generateFailed": "Örnek oluşturulamadı",
     "exampleGenerated": "Yeni örnek oluşturuldu!",
     "ignoreTypeErrors": "Tip Hatalarını Yoksay"
+  },
+  "developers": {
+    "title": "Geliştiriciler",
+    "promptBuilder": "Typed-Prompts IDE",
+    "promptEnhancer": "Prompt Geliştirici",
+    "desktopOnly": "Sadece Masaüstü",
+    "desktopOnlyDescription": "Geliştirici araçları daha büyük bir ekran gerektirir. Lütfen bu sayfayı masaüstü veya dizüstü bilgisayarda açın.",
+    "browsePrompts": "Promptlara Göz At",
+    "inputPrompt": "Geliştirilecek Prompt",
+    "inputPlaceholder": "Geliştirilecek bir prompt girin...\n\nÖrnek: yapay zeka hakkında bir blog yazısı yaz",
+    "outputType": "Tür",
+    "outputFormat": "Format",
+    "enhance": "Geliştir",
+    "enhancing": "Geliştiriliyor...",
+    "enhanceSuccess": "Prompt başarıyla geliştirildi!",
+    "enhanceFailed": "Prompt geliştirilemedi",
+    "enterPrompt": "Lütfen geliştirilecek bir prompt girin",
+    "enhancedPrompt": "Geliştirilmiş Prompt",
+    "copy": "Kopyala",
+    "copied": "Panoya kopyalandı",
+    "inspiredBy": "İlham kaynağı",
+    "enhanceToSeeResult": "Sonucu görmek için bir prompt girin ve Geliştir'e tıklayın",
+    "loginRequired": "Prompt Geliştirici'yi kullanmak için giriş yapın",
+    "history": "Geçmiş",
+    "storedOnDevice": "Cihazınızda saklanıyor",
+    "noHistory": "Henüz geçmiş yok"
   },
   "appBanner": {
     "message": "iPhone, iPad ve Mac için prompts.chat uygulamasını indirin",

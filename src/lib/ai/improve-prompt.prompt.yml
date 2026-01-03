@@ -56,6 +56,8 @@ messages:
       - Keep improvements practical and actionable
       - Use clear, professional language
       - For media prompts (IMAGE/VIDEO/AUDIO), include relevant technical specifications
+      - For text prompts, use "Act as" role-playing format: "Act as a [role]. You are [description]..."
+      - For media prompts (IMAGE/VIDEO/AUDIO), NEVER use Role Playing format
 
       ## Response Rules
       - Output ONLY the improved prompt content

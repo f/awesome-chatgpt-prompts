@@ -49,7 +49,8 @@
     "login": "로그인",
     "register": "회원가입",
     "logout": "로그아웃",
-    "ide": "Prompt Builder"
+    "ide": "Typed-Prompts IDE",
+    "developers": "개발자"
   },
   "brand": {
     "copyLogoSvg": "로고 SVG 복사",
@@ -1260,6 +1261,32 @@
     "generateFailed": "예제 생성 실패",
     "exampleGenerated": "새 예제가 생성되었습니다!",
     "ignoreTypeErrors": "타입 오류 무시"
+  },
+  "developers": {
+    "title": "개발자",
+    "promptBuilder": "Typed-Prompts IDE",
+    "promptEnhancer": "프롬프트 개선기",
+    "desktopOnly": "데스크톱 전용",
+    "desktopOnlyDescription": "개발자 도구는 더 큰 화면이 필요합니다. 데스크톱 또는 노트북에서 이 페이지를 열어주세요.",
+    "browsePrompts": "프롬프트 찾아보기",
+    "inputPrompt": "입력 프롬프트",
+    "inputPlaceholder": "개선할 기본 프롬프트를 입력하세요...\n\n예: AI에 대한 블로그 글 작성",
+    "outputType": "유형",
+    "outputFormat": "형식",
+    "enhance": "개선",
+    "enhancing": "개선 중...",
+    "enhanceSuccess": "프롬프트가 성공적으로 개선되었습니다!",
+    "enhanceFailed": "프롬프트 개선 실패",
+    "enterPrompt": "개선할 프롬프트를 입력해주세요",
+    "enhancedPrompt": "개선된 프롬프트",
+    "copy": "복사",
+    "copied": "클립보드에 복사됨",
+    "inspiredBy": "영감",
+    "enhanceToSeeResult": "프롬프트를 입력하고 개선을 클릭하여 결과 확인",
+    "loginRequired": "프롬프트 개선기를 사용하려면 로그인하세요",
+    "history": "기록",
+    "storedOnDevice": "기기에 저장됨",
+    "noHistory": "기록 없음"
   },
   "appBanner": {
     "message": "iPhone, iPad, Mac용 prompts.chat 앱 다운로드",

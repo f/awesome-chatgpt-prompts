@@ -49,7 +49,8 @@
     "login": "Daxil ol",
     "register": "Qeydiyyat",
     "logout": "Çıxış",
-    "ide": "Prompt Qurucusu"
+    "ide": "Typed-Prompts IDE",
+    "developers": "Tərtibatçılar"
   },
   "brand": {
     "copyLogoSvg": "Logo SVG-ni Kopyala",
@@ -1260,6 +1261,32 @@
     "generateFailed": "Nümunə yaradılmadı",
     "exampleGenerated": "Yeni nümunə yaradıldı!",
     "ignoreTypeErrors": "Tip Xətalarını İgnor et"
+  },
+  "developers": {
+    "title": "Tərtibatçılar",
+    "promptBuilder": "Typed-Prompts IDE",
+    "promptEnhancer": "Prompt Təkmilləşdirici",
+    "desktopOnly": "Yalnız Masaüstü",
+    "desktopOnlyDescription": "Tərtibatçı alətləri daha böyük ekran tələb edir. Bu səhifəni masaüstü və ya noutbukda açın.",
+    "browsePrompts": "Promptlara Bax",
+    "inputPrompt": "Giriş Promptu",
+    "inputPlaceholder": "Təkmilləşdirmək üçün əsas prompt daxil edin...\n\nNümunə: süni intellekt haqqında bloq yazısı yaz",
+    "outputType": "Tip",
+    "outputFormat": "Format",
+    "enhance": "Təkmilləşdir",
+    "enhancing": "Təkmilləşdirilir...",
+    "enhanceSuccess": "Prompt uğurla təkmilləşdirildi!",
+    "enhanceFailed": "Prompt təkmilləşdirilə bilmədi",
+    "enterPrompt": "Təkmilləşdirmək üçün prompt daxil edin",
+    "enhancedPrompt": "Təkmilləşdirilmiş Prompt",
+    "copy": "Kopyala",
+    "copied": "Buferə kopyalandı",
+    "inspiredBy": "İlham mənbəyi",
+    "enhanceToSeeResult": "Nəticəni görmək üçün prompt daxil edin və Təkmilləşdir düyməsinə basın",
+    "loginRequired": "Prompt Təkmilləşdirici istifadə etmək üçün daxil olun",
+    "history": "Tarixçə",
+    "storedOnDevice": "Cihazınızda saxlanılır",
+    "noHistory": "Hələ tarixçə yoxdur"
   },
   "appBanner": {
     "message": "iPhone, iPad və Mac üçün prompts.chat tətbiqini yükləyin",

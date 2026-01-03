@@ -3,6 +3,7 @@ import { z } from "zod";
 import { improvePrompt } from "@/lib/ai/improve-prompt";
 import { db } from "@/lib/db";
 import { isValidApiKeyFormat } from "@/lib/api-key";
+import { auth } from "@/lib/auth";
 
 const requestSchema = z.object({
   prompt: z.string().min(1, "Prompt is required").max(10000, "Prompt too long"),
@@ -11,7 +12,13 @@ const requestSchema = z.object({
 });
 
 async function authenticateRequest(request: NextRequest) {
-  // Check for API key in headers
+  // First check session auth
+  const session = await auth();
+  if (session?.user?.id) {
+    return { id: session.user.id, username: session.user.name || "user" };
+  }
+
+  // Fall back to API key auth
   const apiKey = request.headers.get("x-api-key") || 
                  request.headers.get("authorization")?.replace("Bearer ", "") ||
                  request.headers.get("prompts-api-key");
@@ -30,11 +37,11 @@ async function authenticateRequest(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    // Authenticate request
+    // Authenticate request (session or API key)
     const user = await authenticateRequest(request);
     if (!user) {
       return NextResponse.json(
-        { error: "Authentication required. Please provide a valid API key." },
+        { error: "Authentication required. Please log in or provide a valid API key." },
         { status: 401 }
       );
     }

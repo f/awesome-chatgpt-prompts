@@ -49,7 +49,8 @@
     "login": "تسجيل الدخول",
     "register": "إنشاء حساب",
     "logout": "تسجيل الخروج",
-    "ide": "Prompt Builder"
+    "ide": "Typed-Prompts IDE",
+    "developers": "المطورون"
   },
   "brand": {
     "copyLogoSvg": "نسخ شعار SVG",
@@ -1260,6 +1261,32 @@
     "generateFailed": "فشل في إنشاء المثال",
     "exampleGenerated": "تم إنشاء مثال جديد!",
     "ignoreTypeErrors": "تجاهل أخطاء النوع"
+  },
+  "developers": {
+    "title": "المطورون",
+    "promptBuilder": "Typed-Prompts IDE",
+    "promptEnhancer": "محسّن الأوامر",
+    "desktopOnly": "للحاسوب فقط",
+    "desktopOnlyDescription": "أدوات المطورين تتطلب شاشة أكبر. يرجى فتح هذه الصفحة على حاسوب مكتبي أو محمول.",
+    "browsePrompts": "تصفح الأوامر",
+    "inputPrompt": "أمر الإدخال",
+    "inputPlaceholder": "أدخل أمراً أساسياً لتحسينه...\n\nمثال: اكتب مقالة مدونة عن الذكاء الاصطناعي",
+    "outputType": "النوع",
+    "outputFormat": "التنسيق",
+    "enhance": "تحسين",
+    "enhancing": "جاري التحسين...",
+    "enhanceSuccess": "تم تحسين الأمر بنجاح!",
+    "enhanceFailed": "فشل في تحسين الأمر",
+    "enterPrompt": "يرجى إدخال أمر للتحسين",
+    "enhancedPrompt": "الأمر المحسّن",
+    "copy": "نسخ",
+    "copied": "تم النسخ إلى الحافظة",
+    "inspiredBy": "مستوحى من",
+    "enhanceToSeeResult": "أدخل أمراً وانقر تحسين لرؤية النتيجة",
+    "loginRequired": "يرجى تسجيل الدخول لاستخدام محسّن الأوامر",
+    "history": "السجل",
+    "storedOnDevice": "مخزن على جهازك",
+    "noHistory": "لا يوجد سجل بعد"
   },
   "appBanner": {
     "message": "احصل على تطبيق prompts.chat لأجهزة iPhone وiPad وMac",

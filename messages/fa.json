@@ -49,7 +49,8 @@
     "login": "ورود",
     "register": "ثبت‌نام",
     "logout": "خروج",
-    "ide": "سازنده پرامپت"
+    "ide": "Typed-Prompts IDE",
+    "developers": "توسعه‌دهندگان"
   },
   "brand": {
     "copyLogoSvg": "کپی SVG لوگو",
@@ -1260,6 +1261,32 @@
     "generateFailed": "تولید مثال ناموفق بود",
     "exampleGenerated": "مثال جدید تولید شد!",
     "ignoreTypeErrors": "نادیده گرفتن خطاهای نوع"
+  },
+  "developers": {
+    "title": "توسعه‌دهندگان",
+    "promptBuilder": "Typed-Prompts IDE",
+    "promptEnhancer": "بهبود دهنده پرامپت",
+    "desktopOnly": "فقط دسکتاپ",
+    "desktopOnlyDescription": "ابزارهای توسعه‌دهنده به صفحه نمایش بزرگتری نیاز دارند. لطفاً این صفحه را در کامپیوتر رومیزی یا لپ‌تاپ باز کنید.",
+    "browsePrompts": "مرور پرامپت‌ها",
+    "inputPrompt": "پرامپت ورودی",
+    "inputPlaceholder": "یک پرامپت ساده برای بهبود وارد کنید...\n\nمثال: یک پست وبلاگ درباره هوش مصنوعی بنویس",
+    "outputType": "نوع",
+    "outputFormat": "قالب",
+    "enhance": "بهبود",
+    "enhancing": "در حال بهبود...",
+    "enhanceSuccess": "پرامپت با موفقیت بهبود یافت!",
+    "enhanceFailed": "بهبود پرامپت ناموفق بود",
+    "enterPrompt": "لطفاً یک پرامپت برای بهبود وارد کنید",
+    "enhancedPrompt": "پرامپت بهبود یافته",
+    "copy": "کپی",
+    "copied": "در کلیپ‌بورد کپی شد",
+    "inspiredBy": "الهام گرفته از",
+    "enhanceToSeeResult": "پرامپت وارد کنید و بهبود را کلیک کنید تا نتیجه را ببینید",
+    "loginRequired": "برای استفاده از بهبود دهنده پرامپت وارد شوید",
+    "history": "تاریخچه",
+    "storedOnDevice": "در دستگاه شما ذخیره شده",
+    "noHistory": "هنوز تاریخچه‌ای نیست"
   },
   "appBanner": {
     "message": "اپلیکیشن prompts.chat را برای iPhone، iPad و Mac دریافت کنید",

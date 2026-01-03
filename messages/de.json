@@ -49,7 +49,8 @@
     "login": "Anmelden",
     "register": "Registrieren",
     "logout": "Abmelden",
-    "ide": "Prompt Builder"
+    "ide": "Typed-Prompts IDE",
+    "developers": "Entwickler"
   },
   "brand": {
     "copyLogoSvg": "Logo SVG kopieren",
@@ -1260,6 +1261,32 @@
     "generateFailed": "Beispiel konnte nicht generiert werden",
     "exampleGenerated": "Neues Beispiel generiert!",
     "ignoreTypeErrors": "Typfehler ignorieren"
+  },
+  "developers": {
+    "title": "Entwickler",
+    "promptBuilder": "Typed-Prompts IDE",
+    "promptEnhancer": "Prompt-Verbesserer",
+    "desktopOnly": "Nur Desktop",
+    "desktopOnlyDescription": "Entwicklertools erfordern einen größeren Bildschirm. Bitte öffnen Sie diese Seite auf einem Desktop- oder Laptop-Computer.",
+    "browsePrompts": "Prompts durchsuchen",
+    "inputPrompt": "Eingabe-Prompt",
+    "inputPlaceholder": "Geben Sie einen einfachen Prompt zum Verbessern ein...\n\nBeispiel: Schreibe einen Blogbeitrag über KI",
+    "outputType": "Typ",
+    "outputFormat": "Format",
+    "enhance": "Verbessern",
+    "enhancing": "Wird verbessert...",
+    "enhanceSuccess": "Prompt erfolgreich verbessert!",
+    "enhanceFailed": "Prompt konnte nicht verbessert werden",
+    "enterPrompt": "Bitte geben Sie einen Prompt zum Verbessern ein",
+    "enhancedPrompt": "Verbesserter Prompt",
+    "copy": "Kopieren",
+    "copied": "In Zwischenablage kopiert",
+    "inspiredBy": "Inspiriert von",
+    "enhanceToSeeResult": "Geben Sie einen Prompt ein und klicken Sie auf Verbessern",
+    "loginRequired": "Bitte melden Sie sich an, um den Prompt-Verbesserer zu nutzen",
+    "history": "Verlauf",
+    "storedOnDevice": "Auf Ihrem Gerät gespeichert",
+    "noHistory": "Noch kein Verlauf"
   },
   "appBanner": {
     "message": "Hol dir die prompts.chat App für iPhone, iPad und Mac",

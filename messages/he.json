@@ -49,7 +49,8 @@
     "login": "התחברות",
     "register": "הרשמה",
     "logout": "התנתקות",
-    "ide": "Prompt Builder"
+    "ide": "Typed-Prompts IDE",
+    "developers": "מפתחים"
   },
   "brand": {
     "copyLogoSvg": "העתק לוגו SVG",
@@ -1260,6 +1261,32 @@
     "generateFailed": "יצירת הדוגמה נכשלה",
     "exampleGenerated": "דוגמה חדשה נוצרה!",
     "ignoreTypeErrors": "התעלם משגיאות טיפוס"
+  },
+  "developers": {
+    "title": "מפתחים",
+    "promptBuilder": "Typed-Prompts IDE",
+    "promptEnhancer": "משפר הנחיות",
+    "desktopOnly": "למחשב בלבד",
+    "desktopOnlyDescription": "כלי המפתחים דורשים מסך גדול יותר. אנא פתח דף זה במחשב שולחני או נייד.",
+    "browsePrompts": "עיין בהנחיות",
+    "inputPrompt": "הנחיית קלט",
+    "inputPlaceholder": "הכנס הנחיה בסיסית לשיפור...\n\nדוגמה: כתוב פוסט בלוג על בינה מלאכותית",
+    "outputType": "סוג",
+    "outputFormat": "פורמט",
+    "enhance": "שפר",
+    "enhancing": "משפר...",
+    "enhanceSuccess": "ההנחיה שופרה בהצלחה!",
+    "enhanceFailed": "שיפור ההנחיה נכשל",
+    "enterPrompt": "אנא הכנס הנחיה לשיפור",
+    "enhancedPrompt": "הנחיה משופרת",
+    "copy": "העתק",
+    "copied": "הועתק ללוח",
+    "inspiredBy": "בהשראת",
+    "enhanceToSeeResult": "הכנס הנחיה ולחץ שפר כדי לראות את התוצאה",
+    "loginRequired": "התחבר כדי להשתמש במשפר ההנחיות",
+    "history": "היסטוריה",
+    "storedOnDevice": "מאוחסן במכשיר שלך",
+    "noHistory": "אין היסטוריה עדיין"
   },
   "appBanner": {
     "message": "הורד את אפליקציית prompts.chat ל-iPhone, iPad ו-Mac",

@@ -49,7 +49,8 @@
     "login": "Login",
     "register": "Register",
     "logout": "Logout",
-    "ide": "Prompt Builder"
+    "ide": "Typed-Prompts IDE",
+    "developers": "Developers"
   },
   "brand": {
     "copyLogoSvg": "Copy Logo SVG",
@@ -1260,6 +1261,32 @@
     "generateFailed": "Failed to generate example",
     "exampleGenerated": "New example generated!",
     "ignoreTypeErrors": "Ignore Type Errors"
+  },
+  "developers": {
+    "title": "Developers",
+    "promptBuilder": "Typed-Prompts IDE",
+    "promptEnhancer": "Prompt Enhancer",
+    "desktopOnly": "Desktop Only",
+    "desktopOnlyDescription": "Developer tools require a larger screen. Please open this page on a desktop or laptop computer.",
+    "browsePrompts": "Browse Prompts",
+    "inputPrompt": "Input Prompt",
+    "inputPlaceholder": "Enter a basic prompt to enhance...\n\nExample: write a blog post about AI",
+    "outputType": "Type",
+    "outputFormat": "Format",
+    "enhance": "Enhance",
+    "enhancing": "Enhancing...",
+    "enhanceSuccess": "Prompt enhanced successfully!",
+    "enhanceFailed": "Failed to enhance prompt",
+    "enterPrompt": "Please enter a prompt to enhance",
+    "enhancedPrompt": "Enhanced Prompt",
+    "copy": "Copy",
+    "copied": "Copied to clipboard",
+    "inspiredBy": "Inspired by",
+    "enhanceToSeeResult": "Enter a prompt and click Enhance to see the result",
+    "loginRequired": "Please log in to use the Prompt Enhancer",
+    "history": "History",
+    "storedOnDevice": "Stored on your device",
+    "noHistory": "No history yet"
   },
   "appBanner": {
     "message": "Get the prompts.chat app for iPhone, iPad, and Mac",
