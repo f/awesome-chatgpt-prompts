@@ -166,22 +166,13 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
   let total = 0;
 
   if (useAISearch && params.q) {
-    // Use AI semantic search - combine results from all keywords
+    // Use AI semantic search - combine keywords into a single search query
     try {
-      const keywords = params.q.split(",").map(k => k.trim()).filter(Boolean);
-      const allResults = await Promise.all(
-        keywords.map(keyword => semanticSearch(keyword, Math.ceil(perPage / keywords.length)))
-      );
+      // Join comma-separated keywords with spaces for a single semantic search
+      const searchQuery = params.q.split(",").map(k => k.trim()).filter(Boolean).join(" ");
+      const aiResults = await semanticSearch(searchQuery, perPage);
       
-      // Deduplicate results by ID
-      const seenIds = new Set<string>();
-      const combinedResults = allResults.flat().filter(p => {
-        if (seenIds.has(p.id)) return false;
-        seenIds.add(p.id);
-        return true;
-      });
-      
-      prompts = combinedResults.slice(0, perPage).map((p) => ({
+      prompts = aiResults.map((p) => ({
         ...p,
         contributorCount: 0,
       }));
