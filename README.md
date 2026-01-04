@@ -39,8 +39,8 @@
   <a href="https://wind.surf/prompts-chat" align="center">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/windsurf-dark.svg">
-      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/cognition.svg">
-      <img align="center" height="40" alt="Cognition logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/cognition.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/windsurf.svg">
+      <img align="center" height="40" alt="Windsurf logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/windsurf.svg">
     </picture>
   </a><br><br>
   <a href="https://mitte.ai/?utm_source=prompts.chat" align="center">
@@ -51,7 +51,11 @@
     </picture>
   </a><br><br>
   <a href="https://warp.dev/?utm_source=prompts.chat" align="center">
-    <img align="center" height="40" alt="Warp logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/warp.svg">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/warp-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/warp.svg">
+      <img align="center" height="40" alt="Warp logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/warp.svg">
+    </picture>
   </a><br><br>
   <sub>prompts.chat is built with Windsurf and Devin by Cognition</sub>
 <hr>
