@@ -854,6 +854,18 @@
     "subscribeToCategories": "订阅分类以在此查看提示词",
     "viewAllCategories": "查看所有分类"
   },
+  "collection": {
+    "title": "我的收藏",
+    "description": "您保存的提示词",
+    "browsePrompts": "浏览提示词",
+    "discover": "发现",
+    "emptyTitle": "收藏夹为空",
+    "emptyDescription": "将提示词添加到收藏夹以便快速访问",
+    "addToCollection": "添加到收藏",
+    "inCollection": "已收藏",
+    "added": "已添加到收藏",
+    "removed": "已从收藏中移除"
+  },
   "discovery": {
     "featuredPrompts": "精选提示词",
     "todaysMostUpvoted": "今日最热",

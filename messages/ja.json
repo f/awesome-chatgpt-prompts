@@ -851,6 +851,24 @@
     "browseAll": "すべて見る",
     "discover": "発見",
     "noPromptsInFeed": "フィードにプロンプトがありません",
+    "subscribeToCategories": "カテゴリーを購読してプロンプトを表示",
+    "viewAllCategories": "すべてのカテゴリーを見る"
+  },
+  "collection": {
+    "title": "マイコレクション",
+    "description": "保存したプロンプト",
+    "browsePrompts": "プロンプトを見る",
+    "discover": "発見",
+    "emptyTitle": "コレクションは空です",
+    "emptyDescription": "プロンプトをコレクションに保存して素早くアクセス",
+    "addToCollection": "コレクションに追加",
+    "inCollection": "コレクション済み",
+    "added": "コレクションに追加しました",
+    "removed": "コレクションから削除しました"
+  },
+  "discovery": {
+    "discover": "発見",
+    "noPromptsInFeed": "フィードにプロンプトがありません",
     "subscribeToCategories": "カテゴリーを購読してここにプロンプトを表示",
     "viewAllCategories": "すべてのカテゴリーを見る"
   },
