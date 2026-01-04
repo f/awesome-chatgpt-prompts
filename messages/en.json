@@ -153,7 +153,7 @@
     "promptDeletedDescription": "This prompt was deleted and is only visible to administrators. It will not appear in searches or public listings.",
     "promptDelisted": "This prompt has been delisted",
     "delistReasonTooShort": "This prompt was automatically delisted because the content is too short. It will still appear on your profile, but won't be exported to GitHub and won't appear in searches.",
-    "delistReasonNotEnglish": "This prompt was automatically delisted because it's not primarily in English. It will still appear on your profile, but won't be exported to GitHub and won't appear in searches.",
+    "delistReasonNotEnglish": "This prompt was automatically delisted because it's not in English. We only list English prompts to make them globally useful. It will still appear on your profile, but won't be exported to GitHub and won't appear in searches.",
     "delistReasonLowQuality": "This prompt was automatically delisted due to quality issues. It will still appear on your profile, but won't be exported to GitHub and won't appear in searches.",
     "delistReasonNotInstruction": "This prompt was automatically delisted because it doesn't appear to be an LLM instruction. It will still appear on your profile, but won't be exported to GitHub and won't appear in searches.",
     "delistReasonManual": "This prompt was manually delisted by an administrator. It will still appear on your profile, but won't be exported to GitHub and won't appear in searches.",
@@ -164,6 +164,7 @@
     "relistRequestSent": "Your relist request has been submitted. An admin will review it soon.",
     "relistRequestAlreadySent": "You have already submitted a relist request for this prompt.",
     "relistRequestError": "Failed to submit relist request. Please try again.",
+    "relatedPrompts": "Related Prompts",
     "deletePrompt": "Delete Prompt",
     "deletePromptTitle": "Delete this prompt?",
     "deletePromptDescription": "This action cannot be undone. The prompt will be permanently removed.",
@@ -538,7 +539,11 @@
       "generateSlugs": "Generate Slugs",
       "regenerateSlugs": "Regenerate all slugs (translates titles to English)",
       "slugsSuccess": "{count} slugs generated",
-      "slugsResult": "Generated: {success}, Failed: {failed}"
+      "slugsResult": "Generated: {success}, Failed: {failed}",
+      "relatedTitle": "Regenerate related prompts for all public prompts",
+      "regenerateRelated": "Regenerate Related",
+      "relatedSuccess": "{count} related prompts generated",
+      "relatedResult": "Generated: {success}, Failed: {failed}"
     },
     "promptsList": {
       "title": "All Prompts",
@@ -1134,6 +1139,7 @@
   "connectedPrompts": {
     "title": "Prompt Flow",
     "description": "Some prompts work as multi-step workflows. Connect your prompts to create a sequence.",
+    "addPromptFlow": "This prompt has a next step",
     "addConnection": "Add Connection",
     "addPrevious": "Add Previous",
     "addNext": "Add Next",

@@ -242,3 +242,71 @@ export async function isAISearchEnabled(): Promise<boolean> {
   const config = await getConfig();
   return config.features.aiSearch === true && !!process.env.OPENAI_API_KEY;
 }
+
+/**
+ * Find and save 4 related prompts based on embedding similarity
+ * Uses PromptConnection with label "related" to store relationships
+ */
+export async function findAndSaveRelatedPrompts(promptId: string): Promise<void> {
+  const config = await getConfig();
+  if (!config.features.aiSearch) return;
+
+  const prompt = await db.prompt.findUnique({
+    where: { id: promptId },
+    select: { embedding: true, isPrivate: true, authorId: true, type: true },
+  });
+
+  if (!prompt || !prompt.embedding || prompt.isPrivate) return;
+
+  const promptEmbedding = prompt.embedding as number[];
+
+  // Fetch all public prompts with embeddings (excluding this prompt and soft-deleted)
+  // Only match prompts of the same type
+  const candidates = await db.prompt.findMany({
+    where: {
+      id: { not: promptId },
+      isPrivate: false,
+      isUnlisted: false,
+      deletedAt: null,
+      embedding: { not: Prisma.DbNull },
+      type: prompt.type, // Must match the same type
+    },
+    select: {
+      id: true,
+      embedding: true,
+    },
+  });
+
+  // Calculate similarity scores
+  const SIMILARITY_THRESHOLD = 0.5;
+  
+  const scoredPrompts = candidates
+    .map((p) => ({
+      id: p.id,
+      similarity: cosineSimilarity(promptEmbedding, p.embedding as number[]),
+    }))
+    .filter((p) => p.similarity >= SIMILARITY_THRESHOLD)
+    .sort((a, b) => b.similarity - a.similarity)
+    .slice(0, 4);
+
+  if (scoredPrompts.length === 0) return;
+
+  // Delete existing related connections for this prompt
+  await db.promptConnection.deleteMany({
+    where: {
+      sourceId: promptId,
+      label: "related",
+    },
+  });
+
+  // Create new related connections
+  await db.promptConnection.createMany({
+    data: scoredPrompts.map((p, index) => ({
+      sourceId: promptId,
+      targetId: p.id,
+      label: "related",
+      order: index,
+    })),
+    skipDuplicates: true,
+  });
+}

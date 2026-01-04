@@ -22,11 +22,11 @@ import { VersionCompareButton } from "@/components/prompts/version-compare-butto
 import { FeaturePromptButton } from "@/components/prompts/feature-prompt-button";
 import { UnlistPromptButton } from "@/components/prompts/unlist-prompt-button";
 import { MediaPreview } from "@/components/prompts/media-preview";
-import { ReportPromptDialog } from "@/components/prompts/report-prompt-dialog";
 import { DelistBanner } from "@/components/prompts/delist-banner";
 import { RestorePromptButton } from "@/components/prompts/restore-prompt-button";
 import { CommentSection } from "@/components/comments";
-import { PromptConnections } from "@/components/prompts/prompt-connections";
+import { PromptFlowSection } from "@/components/prompts/prompt-flow-section";
+import { RelatedPrompts } from "@/components/prompts/related-prompts";
 import { getConfig } from "@/lib/config";
 import { StructuredData } from "@/components/seo/structured-data";
 
@@ -145,6 +145,52 @@ export default async function PromptPage({ params }: PromptPageProps) {
         },
       })
     : null;
+
+  // Fetch related prompts (via PromptConnection with label "related")
+  const relatedConnections = await db.promptConnection.findMany({
+    where: {
+      sourceId: id,
+      label: "related",
+    },
+    orderBy: { order: "asc" },
+    include: {
+      target: {
+        select: {
+          id: true,
+          title: true,
+          slug: true,
+          description: true,
+          type: true,
+          isPrivate: true,
+          isUnlisted: true,
+          deletedAt: true,
+          author: {
+            select: {
+              id: true,
+              name: true,
+              username: true,
+              avatar: true,
+            },
+          },
+          category: {
+            select: {
+              id: true,
+              name: true,
+              slug: true,
+            },
+          },
+          _count: {
+            select: { votes: true },
+          },
+        },
+      },
+    },
+  });
+
+  // Filter out private, unlisted, or deleted related prompts
+  const relatedPrompts = relatedConnections
+    .map((conn) => conn.target)
+    .filter((p) => !p.isPrivate && !p.isUnlisted && !p.deletedAt);
 
   if (!prompt) {
     notFound();
@@ -502,19 +548,19 @@ export default async function PromptPage({ params }: PromptPageProps) {
               />
             )}
           </div>
-          {/* Report link */}
-          {!isOwner && (
-            <div className="flex justify-end pt-2">
-              <ReportPromptDialog promptId={prompt.id} isLoggedIn={!!session?.user} />
-            </div>
-          )}
-
-          {/* Connected Prompts Section */}
-          <PromptConnections
+          {/* Report & Prompt Flow */}
+          <PromptFlowSection
             promptId={prompt.id}
             promptTitle={prompt.title}
             canEdit={canEdit}
+            isOwner={isOwner}
+            isLoggedIn={!!session?.user}
           />
+
+          {/* Related Prompts */}
+          {relatedPrompts.length > 0 && (
+            <RelatedPrompts prompts={relatedPrompts} />
+          )}
 
           {/* Comments Section */}
           {config.features.comments !== false && !prompt.isPrivate && (

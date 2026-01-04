@@ -222,6 +222,7 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
               language={(prompt.structuredFormat?.toLowerCase() as "json" | "yaml") || "json"}
               maxLines={hasMediaBackground ? 3 : 10}
               fontSize="xs"
+              preview
             />
           ) : (
             <pre className={`text-xs text-muted-foreground bg-muted p-2 rounded overflow-hidden font-mono h-full whitespace-pre-wrap break-words ${hasMediaBackground ? "line-clamp-2" : "line-clamp-4"}`}>

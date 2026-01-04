@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -57,6 +58,9 @@ export async function DELETE(request: NextRequest, { params }: RouteParams) {
     await db.promptConnection.delete({
       where: { id: connectionId },
     });
+
+    // Revalidate the prompt page cache
+    revalidatePath(`/prompts/${id}`);
 
     return NextResponse.json({ success: true });
   } catch (error) {
