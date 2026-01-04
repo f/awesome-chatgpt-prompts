@@ -6,7 +6,7 @@ import { auth } from "@/lib/auth";
 import { getConfig } from "@/lib/config";
 import { Button } from "@/components/ui/button";
 import { DiscoveryPrompts } from "@/components/prompts/discovery-prompts";
-import { HeroPromptInput } from "@/components/prompts/hero-prompt-input";
+import { HeroCategories } from "@/components/prompts/hero-categories";
 import { CliCommand } from "@/components/layout/cli-command";
 import { ExtensionLink } from "@/components/layout/extension-link";
 
@@ -86,7 +86,7 @@ export default async function HomePage() {
             </div>
             {/* Animated input overlay and clients */}
             <div className="absolute inset-0 hidden lg:flex flex-col items-center justify-center z-30 pe-8 pointer-events-auto gap-6">
-              {aiGenerationEnabled && <HeroPromptInput />}
+              <HeroCategories />
               {/* Clients Section */}
               <div className="flex flex-col items-center gap-3">
                 <span className="text-xs text-muted-foreground uppercase tracking-wider">{tHomepage("clients")}</span>

@@ -166,14 +166,26 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
   let total = 0;
 
   if (useAISearch && params.q) {
-    // Use AI semantic search
+    // Use AI semantic search - combine results from all keywords
     try {
-      const aiResults = await semanticSearch(params.q, perPage);
-      prompts = aiResults.map((p) => ({
+      const keywords = params.q.split(",").map(k => k.trim()).filter(Boolean);
+      const allResults = await Promise.all(
+        keywords.map(keyword => semanticSearch(keyword, Math.ceil(perPage / keywords.length)))
+      );
+      
+      // Deduplicate results by ID
+      const seenIds = new Set<string>();
+      const combinedResults = allResults.flat().filter(p => {
+        if (seenIds.has(p.id)) return false;
+        seenIds.add(p.id);
+        return true;
+      });
+      
+      prompts = combinedResults.slice(0, perPage).map((p) => ({
         ...p,
         contributorCount: 0,
       }));
-      total = aiResults.length;
+      total = prompts.length;
     } catch {
       // Fallback to regular search on error
     }
@@ -189,11 +201,23 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
     };
     
     if (params.q) {
-      where.OR = [
-        { title: { contains: params.q, mode: "insensitive" } },
-        { content: { contains: params.q, mode: "insensitive" } },
-        { description: { contains: params.q, mode: "insensitive" } },
-      ];
+      // Handle comma-separated keywords
+      const keywords = params.q.split(",").map(k => k.trim()).filter(Boolean);
+      if (keywords.length > 1) {
+        // Multiple keywords - match any of them
+        where.OR = keywords.flatMap(keyword => [
+          { title: { contains: keyword, mode: "insensitive" } },
+          { content: { contains: keyword, mode: "insensitive" } },
+          { description: { contains: keyword, mode: "insensitive" } },
+        ]);
+      } else {
+        // Single keyword
+        where.OR = [
+          { title: { contains: params.q, mode: "insensitive" } },
+          { content: { contains: params.q, mode: "insensitive" } },
+          { description: { contains: params.q, mode: "insensitive" } },
+        ];
+      }
     }
     
     if (params.type) {

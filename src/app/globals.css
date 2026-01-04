@@ -228,3 +228,74 @@
 .density-comfortable h1 { font-size: 2.5rem; }
 .density-comfortable h2 { font-size: 2rem; }
 .density-comfortable h3 { font-size: 1.5rem; }
+
+/* Hero floating animation - smooth multi-directional */
+@keyframes float {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(4px, -8px);
+  }
+  50% {
+    transform: translate(-3px, -4px);
+  }
+  75% {
+    transform: translate(-5px, -10px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Hero bubble enter animation */
+@keyframes bubble-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Hero bubble exit animation */
+@keyframes bubble-exit {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.8);
+  }
+}
+
+.animate-bubble-enter {
+  animation: bubble-enter 0.5s ease-out forwards;
+}
+
+.animate-bubble-exit {
+  animation: bubble-exit 0.5s ease-in forwards;
+}
+
+/* Flash animation for changed cells */
+@keyframes flash {
+  0%, 30% {
+    background-color: hsl(var(--primary) / 0.25) !important;
+    box-shadow: 0 0 12px hsl(var(--primary) / 0.4);
+  }
+  100% {
+    background-color: transparent !important;
+    box-shadow: none;
+  }
+}
+
+.animate-flash {
+  animation: flash 0.8s ease-out !important;
+}

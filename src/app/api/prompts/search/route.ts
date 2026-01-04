@@ -15,6 +15,12 @@ export async function GET(request: NextRequest) {
   const session = await auth();
 
   try {
+    // Handle comma-separated keywords
+    const keywords = query.split(",").map(k => k.trim()).filter(Boolean);
+    const titleConditions = keywords.length > 1
+      ? keywords.map(keyword => ({ title: { contains: keyword, mode: "insensitive" as const } }))
+      : [{ title: { contains: query, mode: "insensitive" as const } }];
+
     const prompts = await db.prompt.findMany({
       where: {
         deletedAt: null,
@@ -27,10 +33,7 @@ export async function GET(request: NextRequest) {
                 ...(session?.user ? [{ authorId: session.user.id }] : []),
               ],
             }),
-        title: {
-          contains: query,
-          mode: "insensitive",
-        },
+        OR: titleConditions,
       },
       select: {
         id: true,
