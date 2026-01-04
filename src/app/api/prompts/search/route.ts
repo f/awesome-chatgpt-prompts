@@ -25,15 +25,19 @@ export async function GET(request: NextRequest) {
       where: {
         deletedAt: null,
         isUnlisted: false,
-        ...(ownerOnly && session?.user
-          ? { authorId: session.user.id }
-          : {
-              OR: [
-                { isPrivate: false },
-                ...(session?.user ? [{ authorId: session.user.id }] : []),
-              ],
-            }),
-        OR: titleConditions,
+        AND: [
+          // Visibility filter
+          ownerOnly && session?.user
+            ? { authorId: session.user.id }
+            : {
+                OR: [
+                  { isPrivate: false },
+                  ...(session?.user ? [{ authorId: session.user.id }] : []),
+                ],
+              },
+          // Search filter
+          { OR: titleConditions },
+        ],
       },
       select: {
         id: true,
