@@ -38,6 +38,7 @@
   },
   "nav": {
     "home": "Ana Sayfa",
+    "collection": "Koleksiyonum",
     "feed": "Akış",
     "promptmasters": "Promptmasters",
     "prompts": "Promptlar",
@@ -852,6 +853,18 @@
     "noPromptsInFeed": "Akışınızda prompt yok",
     "subscribeToCategories": "Burada promptları görmek için kategorilere abone olun",
     "viewAllCategories": "Tüm Kategorileri Gör"
+  },
+  "collection": {
+    "title": "Koleksiyonum",
+    "description": "Sonra için kaydettiğiniz promptlar",
+    "browsePrompts": "Promptlara Göz At",
+    "discover": "Keşfet",
+    "emptyTitle": "Koleksiyonunuz boş",
+    "emptyDescription": "Hızlı erişim için promptları koleksiyonunuza kaydedin",
+    "addToCollection": "Koleksiyona Ekle",
+    "inCollection": "Koleksiyonda",
+    "added": "Koleksiyona eklendi",
+    "removed": "Koleksiyondan kaldırıldı"
   },
   "discovery": {
     "featuredPrompts": "Öne Çıkan Promptlar",

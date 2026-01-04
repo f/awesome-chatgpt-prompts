@@ -38,6 +38,7 @@
   },
   "nav": {
     "home": "Accueil",
+    "collection": "Ma Collection",
     "feed": "Flux",
     "promptmasters": "Promptmasters",
     "prompts": "Prompts",
@@ -852,6 +853,18 @@
     "noPromptsInFeed": "Aucun prompt dans votre flux",
     "subscribeToCategories": "Abonnez-vous à des catégories pour voir des prompts ici",
     "viewAllCategories": "Voir Toutes les Catégories"
+  },
+  "collection": {
+    "title": "Ma Collection",
+    "description": "Prompts que vous avez sauvegardés pour plus tard",
+    "browsePrompts": "Parcourir les Prompts",
+    "discover": "Découvrir",
+    "emptyTitle": "Votre collection est vide",
+    "emptyDescription": "Sauvegardez des prompts dans votre collection pour y accéder rapidement",
+    "addToCollection": "Ajouter à la Collection",
+    "inCollection": "Dans la Collection",
+    "added": "Ajouté à la collection",
+    "removed": "Retiré de la collection"
   },
   "discovery": {
     "featuredPrompts": "Prompts en Vedette",

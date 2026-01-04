@@ -27,6 +27,7 @@ import { RestorePromptButton } from "@/components/prompts/restore-prompt-button"
 import { CommentSection } from "@/components/comments";
 import { PromptFlowSection } from "@/components/prompts/prompt-flow-section";
 import { RelatedPrompts } from "@/components/prompts/related-prompts";
+import { AddToCollectionButton } from "@/components/prompts/add-to-collection-button";
 import { getConfig } from "@/lib/config";
 import { StructuredData } from "@/components/seo/structured-data";
 
@@ -146,6 +147,18 @@ export default async function PromptPage({ params }: PromptPageProps) {
       })
     : null;
 
+  // Check if user has this prompt in their collection
+  const userCollection = session?.user
+    ? await db.collection.findUnique({
+        where: {
+          userId_promptId: {
+            userId: session.user.id,
+            promptId: id,
+          },
+        },
+      })
+    : null;
+
   // Fetch related prompts (via PromptConnection with label "related")
   const relatedConnections = await db.promptConnection.findMany({
     where: {
@@ -208,6 +221,7 @@ export default async function PromptPage({ params }: PromptPageProps) {
   const canEdit = isOwner || isAdmin;
   const voteCount = prompt._count?.votes ?? 0;
   const hasVoted = !!userVote;
+  const inCollection = !!userCollection;
 
   // Fetch change requests for this prompt
   const changeRequests = await db.changeRequest.findMany({
@@ -327,23 +341,6 @@ export default async function PromptPage({ params }: PromptPageProps) {
                 <Badge variant="secondary">{t("promptPrivate")}</Badge>
               )}
             </div>
-            <div className="flex items-center gap-2 shrink-0">
-              {isOwner && (
-                <>
-                  <Button variant="outline" size="icon" asChild className="sm:hidden">
-                    <Link href={`/prompts/${id}/edit`}>
-                      <Edit className="h-4 w-4" />
-                    </Link>
-                  </Button>
-                  <Button variant="outline" asChild className="hidden sm:flex">
-                    <Link href={`/prompts/${id}/edit`}>
-                      <Edit className="h-4 w-4 mr-2" />
-                      {t("edit")}
-                    </Link>
-                  </Button>
-                </>
-              )}
-            </div>
           </div>
         </div>
         
@@ -445,17 +442,32 @@ export default async function PromptPage({ params }: PromptPageProps) {
       {/* Content Tabs */}
       <Tabs defaultValue="content">
         <div className="flex flex-col gap-3 mb-4">
-          {/* Propose changes button - on top on mobile */}
-          {!isOwner && session?.user && (
-            <div className="md:hidden">
-              <Button asChild size="sm" className="w-full">
-                <Link href={`/prompts/${id}/changes/new`}>
-                  <GitPullRequest className="h-4 w-4 mr-1.5" />
-                  {t("createChangeRequest")}
-                </Link>
-              </Button>
+          {/* Action buttons - on top on mobile */}
+          <div className="flex items-center justify-between gap-2 md:hidden">
+            <AddToCollectionButton
+              promptId={prompt.id}
+              initialInCollection={inCollection}
+              isLoggedIn={!!session?.user}
+            />
+            <div className="flex gap-2">
+              {!isOwner && session?.user && (
+                <Button asChild size="sm">
+                  <Link href={`/prompts/${id}/changes/new`}>
+                    <GitPullRequest className="h-4 w-4 mr-1.5" />
+                    {t("createChangeRequest")}
+                  </Link>
+                </Button>
+              )}
+              {isOwner && (
+                <Button variant="outline" size="sm" asChild>
+                  <Link href={`/prompts/${id}/edit`}>
+                    <Edit className="h-4 w-4 mr-1.5" />
+                    {t("edit")}
+                  </Link>
+                </Button>
+              )}
             </div>
-          )}
+          </div>
           <div className="flex items-center justify-between">
             <TabsList>
               <TabsTrigger value="content">{t("promptContent")}</TabsTrigger>
@@ -478,15 +490,30 @@ export default async function PromptPage({ params }: PromptPageProps) {
                 </TabsTrigger>
               )}
             </TabsList>
-            {/* Propose changes button - inline on desktop */}
-            {!isOwner && session?.user && (
-              <Button asChild size="sm" className="hidden md:inline-flex">
-                <Link href={`/prompts/${id}/changes/new`}>
-                  <GitPullRequest className="h-4 w-4 mr-1.5" />
-                  {t("createChangeRequest")}
-                </Link>
-              </Button>
-            )}
+            {/* Action buttons - inline on desktop */}
+            <div className="hidden md:flex items-center gap-2">
+              <AddToCollectionButton
+                promptId={prompt.id}
+                initialInCollection={inCollection}
+                isLoggedIn={!!session?.user}
+              />
+              {!isOwner && session?.user && (
+                <Button asChild size="sm">
+                  <Link href={`/prompts/${id}/changes/new`}>
+                    <GitPullRequest className="h-4 w-4 mr-1.5" />
+                    {t("createChangeRequest")}
+                  </Link>
+                </Button>
+              )}
+              {isOwner && (
+                <Button variant="outline" size="sm" asChild>
+                  <Link href={`/prompts/${id}/edit`}>
+                    <Edit className="h-4 w-4 mr-1.5" />
+                    {t("edit")}
+                  </Link>
+                </Button>
+              )}
+            </div>
           </div>
         </div>
 

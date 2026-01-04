@@ -38,6 +38,7 @@
   },
   "nav": {
     "home": "الرئيسية",
+    "collection": "مجموعتي",
     "feed": "الخلاصة",
     "promptmasters": "Promptmasters",
     "prompts": "الأوامر",
@@ -852,6 +853,18 @@
     "noPromptsInFeed": "لا توجد أوامر في خلاصتك",
     "subscribeToCategories": "اشترك في التصنيفات لرؤية الأوامر هنا",
     "viewAllCategories": "عرض جميع التصنيفات"
+  },
+  "collection": {
+    "title": "مجموعتي",
+    "description": "الأوامر التي حفظتها لوقت لاحق",
+    "browsePrompts": "تصفح الأوامر",
+    "discover": "اكتشف",
+    "emptyTitle": "مجموعتك فارغة",
+    "emptyDescription": "احفظ الأوامر في مجموعتك للوصول إليها بسرعة",
+    "addToCollection": "أضف للمجموعة",
+    "inCollection": "في المجموعة",
+    "added": "تمت الإضافة للمجموعة",
+    "removed": "تمت الإزالة من المجموعة"
   },
   "discovery": {
     "featuredPrompts": "الأوامر المميزة",
