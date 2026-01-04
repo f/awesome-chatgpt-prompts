@@ -9,6 +9,7 @@ import { DiscoveryPrompts } from "@/components/prompts/discovery-prompts";
 import { HeroPromptInput } from "@/components/prompts/hero-prompt-input";
 import { CliCommand } from "@/components/layout/cli-command";
 import { ExtensionLink } from "@/components/layout/extension-link";
+import { FloatingCTA } from "@/components/layout/floating-cta";
 
 function getOrdinalSuffix(n: number): string {
   const s = ["th", "st", "nd", "rd"];
@@ -49,7 +50,7 @@ export default async function HomePage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative py-12 md:py-16 border-b overflow-hidden">
+      <section data-hero-section className="relative py-12 md:py-16 border-b overflow-hidden">
         {/* Background - Right Side */}
         {useCloneBranding ? (
           <div className="absolute top-0 end-0 bottom-0 w-1/2 hidden md:block pointer-events-none overflow-hidden">
@@ -465,7 +466,7 @@ export default async function HomePage() {
       {!useCloneBranding && (
         <section className="py-12">
           <div className="container">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-6 rounded-lg border bg-muted/30">
+            <div data-bottom-cta className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-6 rounded-lg border bg-muted/30">
               <div className="flex items-center gap-4">
                 <Image
                   src={config.branding.logo}
@@ -497,6 +498,15 @@ export default async function HomePage() {
           </div>
         </section>
       )}
+
+      {/* Floating CTA */}
+      <FloatingCTA 
+        isOAuth={isOAuth} 
+        showRegisterButton={showRegisterButton}
+        logo={config.branding.logo}
+        logoDark={config.branding.logoDark}
+        brandName={config.branding.name}
+      />
     </div>
   );
 }
