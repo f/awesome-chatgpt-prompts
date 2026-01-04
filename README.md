@@ -27,19 +27,31 @@
 
 <div align="center">
   <a href="https://clemta.com/?utm_source=prompts.chat" align="center">
-    <img align="center" height="50" alt="Clemta logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/clemta.webp">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/clemta-dark.webp">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/clemta.webp">
+      <img align="center" height="40" alt="Clemta logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/clemta.webp">
+    </picture>
   </a><br><br>
   <a href="https://wiro.ai/?utm_source=prompts.chat" align="center">
-    <img align="center" height="30" alt="Cognition logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/wiro.png">
+    <img align="center" height="40" alt="Wiro logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/wiro.png">
   </a><br><br>
   <a href="https://wind.surf/prompts-chat" align="center">
-    <img align="center" height="40" alt="Cognition logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/cognition.svg">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/windsurf-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/cognition.svg">
+      <img align="center" height="40" alt="Cognition logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/cognition.svg">
+    </picture>
   </a><br><br>
   <a href="https://mitte.ai/?utm_source=prompts.chat" align="center">
-    <img align="center" height="40" alt="MitteAI logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/mitte.svg">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/mitte-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/mitte.svg">
+      <img align="center" height="40" alt="MitteAI logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/mitte.svg">
+    </picture>
   </a><br><br>
   <a href="https://warp.dev/?utm_source=prompts.chat" align="center">
-    <img align="center" height="30" alt="Warp logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/warp.svg">
+    <img align="center" height="40" alt="Warp logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/warp.svg">
   </a><br><br>
   <sub>prompts.chat is built with Windsurf and Devin by Cognition</sub>
 <hr>
