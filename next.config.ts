@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
     return config;
   },
   // Enable standalone output for Docker
-  // output: "standalone",
+  output: "standalone",
   // Experimental features
   experimental: {
     // Enable server actions

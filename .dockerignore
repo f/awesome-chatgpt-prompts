@@ -1,0 +1,46 @@
+# Dependencies
+node_modules
+npm-debug.log*
+
+# Build output
+.next
+out
+
+# Environment
+.env
+.env.*
+
+# IDE
+.idea
+.vscode
+*.swp
+
+# OS
+.DS_Store
+
+# Git
+.git
+
+# Docker
+docker-compose*.yml
+Dockerfile
+Makefile
+
+# Docs
+*.md
+LICENSE
+
+# Tests
+__tests__
+*.test.*
+*.spec.*
+coverage
+
+# Dev files
+.eslintcache
+.turbo
+tsconfig.tsbuildinfo
+
+# Not needed
+scripts/
+packages/
