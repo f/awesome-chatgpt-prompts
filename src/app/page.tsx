@@ -203,109 +203,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Achievements Section - only show if not using clone branding */}
-      {config.homepage?.achievements?.enabled !== false && (
-        <section className="py-8 border-b bg-muted/30">
-          <div className="container">
-            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12 text-sm">
-              <Link 
-                href="https://www.forbes.com/sites/tjmccue/2023/01/19/chatgpt-success-completely-depends-on-your-prompt/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Trophy className="h-4 w-4 text-amber-500" />
-                <span>{tHomepage("achievements.featuredIn")} <strong>{tHomepage("achievements.forbes")}</strong></span>
-              </Link>
-              <Link 
-                href="https://www.huit.harvard.edu/news/ai-prompts" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <GraduationCap className="h-4 w-4 text-[#A51C30]" />
-                <span>{tHomepage("achievements.referencedBy")} <strong>{tHomepage("achievements.harvardUniversity")}</strong></span>
-              </Link>
-              <Link 
-                href="https://etc.cuit.columbia.edu/news/columbia-prompt-library-effective-academic-ai-use" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <GraduationCap className="h-4 w-4 text-[#B9D9EB]" />
-                <span>{tHomepage("achievements.referencedBy")} <strong>{tHomepage("achievements.columbiaUniversity")}</strong></span>
-              </Link>
-              <Link 
-                href="https://libguides.olympic.edu/UsingAI/Prompts" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <GraduationCap className="h-4 w-4 text-[#003366]" />
-                <span>{tHomepage("achievements.referencedBy")} <strong>{tHomepage("achievements.olympicCollege")}</strong></span>
-              </Link>
-              <Link 
-                href="https://arxiv.org/pdf/2502.04484" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <FileText className="h-4 w-4 text-[#B31B1B]" />
-                <span>{tHomepage("achievements.citedIn")} <strong>{tHomepage("achievements.arxivPaper")}</strong></span>
-              </Link>
-              <Link 
-                href="https://huggingface.co/datasets/fka/awesome-chatgpt-prompts" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Heart className="h-4 w-4 text-red-500" />
-                <span>{tHomepage("achievements.mostLikedDataset")}</span>
-              </Link>
-              <Link 
-                href="https://github.com/f/awesome-chatgpt-prompts" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Star className="h-4 w-4 text-yellow-500" />
-                <span><strong>{(githubStars / 1000).toFixed(0)}k</strong> {tHomepage("achievements.githubStars")}</span>
-              </Link>
-              <Link 
-                href="https://github.com/f/awesome-chatgpt-prompts" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Trophy className="h-4 w-4 text-purple-500" />
-                <span>{tHomepage("achievements.mostStarredRepo")}</span>
-              </Link>
-              <span className="flex items-center gap-2 text-muted-foreground">
-                <Users className="h-4 w-4 text-green-500" />
-                <span>{tHomepage("achievements.usedByThousands")}</span>
-              </span>
-              <Link 
-                href="https://spotlights-feed.github.com/spotlights/prompts-chat/index/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Github className="h-4 w-4 text-purple-600" />
-                <span>{tHomepage("achievements.githubStaffPick")}</span>
-              </Link>
-              <span className="flex items-center gap-2 text-muted-foreground">
-                <Code className="h-4 w-4 text-blue-500" />
-                <span>{tHomepage("achievements.fullyOpenSource")}</span>
-              </span>
-              <span className="flex items-center gap-2 text-muted-foreground">
-                <Rocket className="h-4 w-4 text-orange-500" />
-                <span><strong>{tHomepage("achievements.firstEver")}</strong> · {tHomepage("achievements.releasedOn")}</span>
-              </span>
-            </div>
-          </div>
-        </section>
-      )}
-
       {/* Sponsors Section */}
       {config.homepage?.sponsors?.enabled && config.homepage.sponsors.items.length > 0 && (
         <section className="py-8 border-b">
@@ -317,7 +214,7 @@ export default async function HomePage() {
                   href="https://github.com/sponsors/f/sponsorships?sponsor=f&tier_id=558224&preview=false"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 px-2 py-0.5 text-xs text-muted-foreground bg-muted hover:bg-muted/80 rounded-full transition-colors"
+                  className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium text-pink-700 dark:text-pink-300 bg-pink-100 dark:bg-pink-900/30 hover:bg-pink-200 dark:hover:bg-pink-900/50 rounded-full transition-colors border border-pink-200 dark:border-pink-800"
                 >
                   <HeartHandshake className="h-3 w-3" />
                   {tHomepage("achievements.becomeSponsor")}
@@ -363,7 +260,7 @@ export default async function HomePage() {
               ))}
             </div>
             {!useCloneBranding && (
-              <div className="flex flex-col md:flex-row items-center justify-center gap-1.5 mt-6 pt-7 border-t text-xs text-muted-foreground">
+              <div className="flex flex-col md:flex-row items-center justify-center gap-1.5 mt-4 pt-4 border-t text-xs text-muted-foreground">
                 <span><b>prompts.chat</b> is built with</span>
                 <span className="inline-flex items-center gap-1.5">
                   <Link href="https://wind.surf/prompts-chat" target="_blank" rel="noopener noreferrer">
@@ -396,9 +293,64 @@ export default async function HomePage() {
                 </span>
               </div>
             )}
+            {/* Achievements */}
+            {config.homepage?.achievements?.enabled !== false && (
+              <div className="mt-6 pt-6 border-t">
+                <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 md:gap-x-10 md:gap-y-2 text-sm">
+                  <Link href="https://www.forbes.com/sites/tjmccue/2023/01/19/chatgpt-success-completely-depends-on-your-prompt/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+                    <Trophy className="h-4 w-4 text-amber-500" />
+                    <span>{tHomepage("achievements.featuredIn")} <strong>{tHomepage("achievements.forbes")}</strong></span>
+                  </Link>
+                  <Link href="https://www.huit.harvard.edu/news/ai-prompts" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+                    <GraduationCap className="h-4 w-4 text-[#A51C30]" />
+                    <span>{tHomepage("achievements.referencedBy")} <strong>{tHomepage("achievements.harvardUniversity")}</strong></span>
+                  </Link>
+                  <Link href="https://etc.cuit.columbia.edu/news/columbia-prompt-library-effective-academic-ai-use" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+                    <GraduationCap className="h-4 w-4 text-[#B9D9EB]" />
+                    <span>{tHomepage("achievements.referencedBy")} <strong>{tHomepage("achievements.columbiaUniversity")}</strong></span>
+                  </Link>
+                  <Link href="https://libguides.olympic.edu/UsingAI/Prompts" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+                    <GraduationCap className="h-4 w-4 text-[#003366]" />
+                    <span>{tHomepage("achievements.referencedBy")} <strong>{tHomepage("achievements.olympicCollege")}</strong></span>
+                  </Link>
+                  <Link href="https://arxiv.org/pdf/2502.04484" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+                    <FileText className="h-4 w-4 text-[#B31B1B]" />
+                    <span>{tHomepage("achievements.citedIn")} <strong>{tHomepage("achievements.arxivPaper")}</strong></span>
+                  </Link>
+                  <Link href="https://huggingface.co/datasets/fka/awesome-chatgpt-prompts" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+                    <Heart className="h-4 w-4 text-red-500" />
+                    <span>{tHomepage("achievements.mostLikedDataset")}</span>
+                  </Link>
+                  <Link href="https://github.com/f/awesome-chatgpt-prompts" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+                    <Star className="h-4 w-4 text-yellow-500" />
+                    <span><strong>{(githubStars / 1000).toFixed(0)}k</strong> {tHomepage("achievements.githubStars")}</span>
+                  </Link>
+                  <Link href="https://github.com/f/awesome-chatgpt-prompts" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+                    <Trophy className="h-4 w-4 text-purple-500" />
+                    <span>{tHomepage("achievements.mostStarredRepo")}</span>
+                  </Link>
+                  <span className="flex items-center gap-2 text-muted-foreground">
+                    <Users className="h-4 w-4 text-green-500" />
+                    <span>{tHomepage("achievements.usedByThousands")}</span>
+                  </span>
+                  <Link href="https://spotlights-feed.github.com/spotlights/prompts-chat/index/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+                    <Github className="h-4 w-4 text-purple-600" />
+                    <span>{tHomepage("achievements.githubStaffPick")}</span>
+                  </Link>
+                  <span className="flex items-center gap-2 text-muted-foreground">
+                    <Code className="h-4 w-4 text-blue-500" />
+                    <span>{tHomepage("achievements.fullyOpenSource")}</span>
+                  </span>
+                  <span className="flex items-center gap-2 text-muted-foreground">
+                    <Rocket className="h-4 w-4 text-orange-500" />
+                    <span><strong>{tHomepage("achievements.firstEver")}</strong> · {tHomepage("achievements.releasedOn")}</span>
+                  </span>
+                </div>
+              </div>
+            )}
             {/* Testimonials */}
             {!useCloneBranding && (
-              <div className="mt-8 pt-8 border-t">
+              <div className="mt-6 pt-6 border-t">
                 <p className="text-center text-xs text-muted-foreground mb-6">{tHomepage("achievements.lovedByOpenAI")}</p>
                 <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
                   {/* Greg Brockman */}
