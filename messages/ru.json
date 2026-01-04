@@ -539,7 +539,11 @@
       "generateSlugs": "Создать слаги",
       "regenerateSlugs": "Пересоздать все слаги (перевод заголовков на английский)",
       "slugsSuccess": "{count} слагов создано",
-      "slugsResult": "Создано: {success}, Ошибок: {failed}"
+      "slugsResult": "Создано: {success}, Ошибок: {failed}",
+      "relatedTitle": "Пересоздать связанные промпты для всех публичных промптов",
+      "regenerateRelated": "Пересоздать связанные",
+      "relatedSuccess": "{count} связанных промптов создано",
+      "relatedResult": "Создано: {success}, Ошибок: {failed}"
     },
     "promptsList": {
       "title": "Все промпты",

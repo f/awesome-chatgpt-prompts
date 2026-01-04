@@ -539,7 +539,11 @@
       "generateSlugs": "Gerar Slugs",
       "regenerateSlugs": "Regenerar todos os slugs (traduz títulos para inglês)",
       "slugsSuccess": "{count} slugs gerados",
-      "slugsResult": "Gerados: {success}, Falhas: {failed}"
+      "slugsResult": "Gerados: {success}, Falhas: {failed}",
+      "relatedTitle": "Regenerar prompts relacionados para todos os prompts públicos",
+      "regenerateRelated": "Regenerar Relacionados",
+      "relatedSuccess": "{count} prompts relacionados gerados",
+      "relatedResult": "Gerados: {success}, Falhas: {failed}"
     },
     "promptsList": {
       "title": "Todos os Prompts",

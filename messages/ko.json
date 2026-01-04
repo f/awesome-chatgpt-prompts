@@ -539,7 +539,11 @@
       "generateSlugs": "슬러그 생성",
       "regenerateSlugs": "모든 슬러그 재생성 (제목을 영어로 번역)",
       "slugsSuccess": "{count}개 슬러그 생성됨",
-      "slugsResult": "생성됨: {success}, 실패: {failed}"
+      "slugsResult": "생성됨: {success}, 실패: {failed}",
+      "relatedTitle": "모든 공개 프롬프트의 관련 프롬프트 재생성",
+      "regenerateRelated": "관련 재생성",
+      "relatedSuccess": "{count}개 관련 프롬프트 생성됨",
+      "relatedResult": "생성됨: {success}, 실패: {failed}"
     },
     "promptsList": {
       "title": "모든 프롬프트",

@@ -539,7 +539,11 @@
       "generateSlugs": "Δημιουργία Slugs",
       "regenerateSlugs": "Αναδημιουργία όλων των slugs (μετάφραση τίτλων στα Αγγλικά)",
       "slugsSuccess": "{count} slugs δημιουργήθηκαν",
-      "slugsResult": "Δημιουργήθηκαν: {success}, Απέτυχαν: {failed}"
+      "slugsResult": "Δημιουργήθηκαν: {success}, Απέτυχαν: {failed}",
+      "relatedTitle": "Αναδημιουργία σχετικών prompts για όλα τα δημόσια prompts",
+      "regenerateRelated": "Αναδημιουργία Σχετικών",
+      "relatedSuccess": "{count} σχετικά prompts δημιουργήθηκαν",
+      "relatedResult": "Δημιουργήθηκαν: {success}, Απέτυχαν: {failed}"
     },
     "promptsList": {
       "title": "Όλα τα Prompts",

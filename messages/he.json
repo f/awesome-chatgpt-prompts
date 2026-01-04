@@ -539,7 +539,11 @@
       "generateSlugs": "צור כתובות",
       "regenerateSlugs": "צור מחדש את כל הכתובות (תרגום כותרות לאנגלית)",
       "slugsSuccess": "{count} כתובות נוצרו",
-      "slugsResult": "נוצרו: {success}, נכשלו: {failed}"
+      "slugsResult": "נוצרו: {success}, נכשלו: {failed}",
+      "relatedTitle": "צור מחדש פרומפטים קשורים לכל הפרומפטים הציבוריים",
+      "regenerateRelated": "צור מחדש קשורים",
+      "relatedSuccess": "{count} פרומפטים קשורים נוצרו",
+      "relatedResult": "נוצרו: {success}, נכשלו: {failed}"
     },
     "promptsList": {
       "title": "כל הפרומפטים",

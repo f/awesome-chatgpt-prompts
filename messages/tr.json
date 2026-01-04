@@ -539,7 +539,11 @@
       "generateSlugs": "Kısaltma Oluştur",
       "regenerateSlugs": "Tüm kısaltmaları yeniden oluştur (başlıkları İngilizce'ye çevirir)",
       "slugsSuccess": "{count} kısaltma oluşturuldu",
-      "slugsResult": "Oluşturulan: {success}, Başarısız: {failed}"
+      "slugsResult": "Oluşturulan: {success}, Başarısız: {failed}",
+      "relatedTitle": "Tüm açık promptlar için ilgili promptları yeniden oluştur",
+      "regenerateRelated": "İlgilileri Yeniden Oluştur",
+      "relatedSuccess": "{count} ilgili prompt oluşturuldu",
+      "relatedResult": "Oluşturulan: {success}, Başarısız: {failed}"
     },
     "promptsList": {
       "title": "Tüm Promptlar",

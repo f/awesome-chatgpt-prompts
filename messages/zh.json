@@ -539,7 +539,11 @@
       "generateSlugs": "生成别名",
       "regenerateSlugs": "重新生成所有别名（将标题翻译为英文）",
       "slugsSuccess": "{count} 个别名生成成功",
-      "slugsResult": "成功: {success}, 失败: {failed}"
+      "slugsResult": "成功: {success}, 失败: {failed}",
+      "relatedTitle": "为所有公开提示词重新生成相关提示词",
+      "regenerateRelated": "重新生成相关",
+      "relatedSuccess": "{count} 个相关提示词已生成",
+      "relatedResult": "成功: {success}, 失败: {failed}"
     },
     "promptsList": {
       "title": "所有提示词",

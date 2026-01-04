@@ -539,7 +539,11 @@
       "generateSlugs": "スラッグを生成",
       "regenerateSlugs": "すべてのスラッグを再生成（タイトルを英語に翻訳）",
       "slugsSuccess": "{count} 件のスラッグを生成しました",
-      "slugsResult": "成功: {success}, 失敗: {failed}"
+      "slugsResult": "成功: {success}, 失敗: {failed}",
+      "relatedTitle": "すべての公開プロンプトの関連プロンプトを再生成",
+      "regenerateRelated": "関連を再生成",
+      "relatedSuccess": "{count} 件の関連プロンプトを生成しました",
+      "relatedResult": "成功: {success}, 失敗: {failed}"
     },
     "promptsList": {
       "title": "すべてのプロンプト",

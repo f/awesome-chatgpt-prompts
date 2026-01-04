@@ -539,7 +539,11 @@
       "generateSlugs": "تولید اسلاگ‌ها",
       "regenerateSlugs": "تولید مجدد همه اسلاگ‌ها (عناوین را به انگلیسی ترجمه می‌کند)",
       "slugsSuccess": "{count} اسلاگ تولید شد",
-      "slugsResult": "تولید شده: {success}، ناموفق: {failed}"
+      "slugsResult": "تولید شده: {success}، ناموفق: {failed}",
+      "relatedTitle": "تولید مجدد پرامپت‌های مرتبط برای همه پرامپت‌های عمومی",
+      "regenerateRelated": "تولید مجدد مرتبط‌ها",
+      "relatedSuccess": "{count} پرامپت مرتبط تولید شد",
+      "relatedResult": "تولید شده: {success}، ناموفق: {failed}"
     },
     "promptsList": {
       "title": "همه پرامپت‌ها",

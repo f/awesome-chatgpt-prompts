@@ -539,7 +539,11 @@
       "generateSlugs": "Sluglar Yarat",
       "regenerateSlugs": "Bütün slugları yenidən yarat (başlıqları ingiliscəyə tərcümə edir)",
       "slugsSuccess": "{count} slug yaradıldı",
-      "slugsResult": "Yaradıldı: {success}, Uğursuz: {failed}"
+      "slugsResult": "Yaradıldı: {success}, Uğursuz: {failed}",
+      "relatedTitle": "Bütün açıq promptlar üçün əlaqəli promptları yenidən yarat",
+      "regenerateRelated": "Əlaqəliləri Yenidən Yarat",
+      "relatedSuccess": "{count} əlaqəli prompt yaradıldı",
+      "relatedResult": "Yaradıldı: {success}, Uğursuz: {failed}"
     },
     "promptsList": {
       "title": "Bütün Promptlar",

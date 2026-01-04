@@ -539,7 +539,11 @@
       "generateSlugs": "إنشاء الروابط",
       "regenerateSlugs": "إعادة إنشاء جميع الروابط (ترجمة العناوين إلى الإنجليزية)",
       "slugsSuccess": "تم إنشاء {count} رابط",
-      "slugsResult": "نجاح: {success}, فشل: {failed}"
+      "slugsResult": "نجاح: {success}, فشل: {failed}",
+      "relatedTitle": "إعادة إنشاء المطالبات المرتبطة لجميع المطالبات العامة",
+      "regenerateRelated": "إعادة إنشاء المرتبطة",
+      "relatedSuccess": "تم إنشاء {count} مطالبة مرتبطة",
+      "relatedResult": "نجاح: {success}, فشل: {failed}"
     },
     "promptsList": {
       "title": "جميع المطالبات",

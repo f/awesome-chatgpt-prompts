@@ -74,7 +74,7 @@ export function RelatedPrompts({ prompts }: RelatedPromptsProps) {
                     {prompt.author.name?.[0] || prompt.author.username[0]}
                   </AvatarFallback>
                 </Avatar>
-                <span className="truncate max-w-[80px]">
+                <span className="shrink-0">
                   @{prompt.author.username}
                 </span>
               </div>
