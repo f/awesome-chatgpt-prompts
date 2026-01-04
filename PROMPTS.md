@@ -34051,3 +34051,24 @@ Contributed by [@senoldak](https://github.com/senoldak)
 
 </details>
 
+<details>
+<summary><strong>Minimalist Editorial Beauty Analysis with Turkish Model</strong></summary>
+
+## Minimalist Editorial Beauty Analysis with Turkish Model
+
+Contributed by [@senoldak](https://github.com/senoldak)
+
+```md
+{
+  "prompt": "A minimalist editorial beauty analysis board featuring a Turkish female model with a balanced oval-to-heart face shape and softly defined jawline. Subtle Mediterranean–Anatolian facial characteristics. Neutral gray background, clean studio lighting, high realism.\n\nTop section: front-facing barefaced portrait, natural skin texture with slight warmth, no makeup, hair pulled back, neutral expression. A thin blue outline tracing the face shape.\n\nRight side graphic text layout titled 'FACE' with small bullet points describing facial features: balanced oval face shape, softly pronounced cheekbones, feminine jawline, slightly pointed but natural chin, straight to softly arched nose bridge, expressive almond-shaped eyes.\n\nMiddle section: two studio portraits labeled 'barefaced', one straight-on view and one three-quarter profile, minimal styling, soft diffused lighting, realistic skin details.\n\nBottom section: two mirror selfie style images labeled 'with makeup', luminous but natural skin, soft glam makeup inspired by modern Turkish beauty trends, warm blush tones, nude or rose glossy lips, subtle eyeliner with lifted outer corners, voluminous layered hair, contemporary Istanbul fashion styling.\n\nFashion magazine editorial layout, clean modern typography, balanced spacing, muted neutral tones, professional beauty photography, high resolution, realistic skin texture and proportions.",
+  "negative_prompt": "exaggerated makeup, heavy contour, harsh shadows, cartoon style, anime, distorted facial proportions, overly sharp jawline, low resolution, oversaturated colors, messy layout, watermark, logo, text artifacts, duplicated faces, extra limbs",
+  "style": "editorial beauty photography",
+  "quality": "high",
+  "lighting": "soft studio lighting",
+  "background": "neutral gray"
+}
+
+```
+
+</details>
+
