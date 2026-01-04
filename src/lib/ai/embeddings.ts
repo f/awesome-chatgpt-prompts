@@ -2,6 +2,9 @@ import OpenAI from "openai";
 import { Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
 import { getConfig } from "@/lib/config";
+import { loadPrompt, getSystemPrompt } from "./load-prompt";
+
+const queryTranslatorPrompt = loadPrompt("src/lib/ai/query-translator.prompt.yml");
 
 let openai: OpenAI | null = null;
 
@@ -20,6 +23,49 @@ function getOpenAIClient(): OpenAI {
 }
 
 const EMBEDDING_MODEL = process.env.OPENAI_EMBEDDING_MODEL || "text-embedding-3-small";
+const TRANSLATION_MODEL = process.env.OPENAI_TRANSLATION_MODEL || "gpt-4o-mini";
+
+/**
+ * Translate a non-English search query to English keywords for better semantic search.
+ * Uses a cheap model to extract and translate keywords.
+ */
+export async function translateQueryToEnglish(query: string): Promise<string> {
+  const client = getOpenAIClient();
+  
+  try {
+    const response = await client.chat.completions.create({
+      model: TRANSLATION_MODEL,
+      messages: [
+        {
+          role: "system",
+          content: getSystemPrompt(queryTranslatorPrompt)
+        },
+        {
+          role: "user",
+          content: query
+        }
+      ],
+      max_tokens: queryTranslatorPrompt.modelParameters?.maxTokens || 100,
+      temperature: queryTranslatorPrompt.modelParameters?.temperature || 0,
+    });
+    
+    const translatedQuery = response.choices[0]?.message?.content?.trim();
+    return translatedQuery || query;
+  } catch (error) {
+    // If translation fails, return original query
+    console.error("Query translation failed:", error);
+    return query;
+  }
+}
+
+/**
+ * Check if a string contains non-ASCII characters (likely non-English)
+ */
+function containsNonEnglish(text: string): boolean {
+  // Check for characters outside basic ASCII range (excluding common punctuation)
+  // This catches Chinese, Arabic, Japanese, Korean, Cyrillic, etc.
+  return /[^\x00-\x7F]/.test(text);
+}
 
 export async function generateEmbedding(text: string): Promise<number[]> {
   const client = getOpenAIClient();
@@ -169,8 +215,14 @@ export async function semanticSearch(
     throw new Error("AI Search is not enabled");
   }
 
+  // Translate non-English queries to English for better semantic matching
+  let searchQuery = query;
+  if (containsNonEnglish(query)) {
+    searchQuery = await translateQueryToEnglish(query);
+  }
+
   // Generate embedding for the query
-  const queryEmbedding = await generateEmbedding(query);
+  const queryEmbedding = await generateEmbedding(searchQuery);
 
   // Fetch all public prompts with embeddings (excluding soft-deleted)
   const prompts = await db.prompt.findMany({
