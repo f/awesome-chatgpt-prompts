@@ -973,8 +973,9 @@
     }
   },
   "heroIndustries": {
-    "prefix": "프롬프트 찾기:",
+    "prefix": "또는 업종별 탐색",
     "clickToExplore": "클릭하여 탐색",
+    "searchPlaceholder": "프롬프트 검색...",
     "teachers": "교사",
     "developers": "개발자",
     "marketers": "마케터",

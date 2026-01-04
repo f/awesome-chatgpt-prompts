@@ -973,8 +973,9 @@
     }
   },
   "heroIndustries": {
-    "prefix": "Trova prompt per",
+    "prefix": "o esplora per settore",
     "clickToExplore": "Clicca per esplorare",
+    "searchPlaceholder": "Cerca prompt...",
     "teachers": "Insegnanti",
     "developers": "Sviluppatori",
     "marketers": "Marketer",

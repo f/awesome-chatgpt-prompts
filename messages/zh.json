@@ -973,8 +973,9 @@
     }
   },
   "heroIndustries": {
-    "prefix": "查找提示词：",
+    "prefix": "或按行业探索",
     "clickToExplore": "点击探索",
+    "searchPlaceholder": "搜索提示词...",
     "teachers": "教师",
     "developers": "开发者",
     "marketers": "营销人员",

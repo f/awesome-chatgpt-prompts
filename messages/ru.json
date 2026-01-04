@@ -994,8 +994,9 @@
     }
   },
   "heroIndustries": {
-    "prefix": "Найти промпты для",
+    "prefix": "или исследуйте по отрасли",
     "clickToExplore": "Нажмите для изучения",
+    "searchPlaceholder": "Поиск промптов...",
     "teachers": "Учителей",
     "developers": "Разработчиков",
     "marketers": "Маркетологов",

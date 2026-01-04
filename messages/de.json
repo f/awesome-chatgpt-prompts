@@ -973,8 +973,9 @@
     }
   },
   "heroIndustries": {
-    "prefix": "Finde Prompts für",
+    "prefix": "oder nach Branche erkunden",
     "clickToExplore": "Klicke zum Erkunden",
+    "searchPlaceholder": "Prompts suchen...",
     "teachers": "Lehrer",
     "developers": "Entwickler",
     "marketers": "Marketer",

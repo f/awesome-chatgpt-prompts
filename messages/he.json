@@ -994,8 +994,9 @@
     }
   },
   "heroIndustries": {
-    "prefix": "מצא פרומפטים עבור",
+    "prefix": "או חקור לפי תעשייה",
     "clickToExplore": "לחץ לחקירה",
+    "searchPlaceholder": "חפש פרומפטים...",
     "teachers": "מורים",
     "developers": "מפתחים",
     "marketers": "משווקים",

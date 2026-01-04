@@ -3,7 +3,9 @@
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Input } from "@/components/ui/input";
 
 const INDUSTRIES = [
   "teachers",
@@ -99,6 +101,14 @@ export function HeroCategories() {
   const [changingIdx, setChangingIdx] = useState<number | null>(null);
   const [isFlashing, setIsFlashing] = useState(false);
   const [lastChangedIdx, setLastChangedIdx] = useState<number | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/prompts?q=${encodeURIComponent(searchQuery.trim())}&ai=1`);
+    }
+  };
 
   const getRandomItems = useCallback(() => {
     return shuffleArray(INDUSTRIES).slice(0, 9);
@@ -153,15 +163,30 @@ export function HeroCategories() {
 
   return (
     <div className="flex flex-col items-center gap-4 w-full">
-      <p className="text-lg text-muted-foreground">{t("prefix")}</p>
+      <form onSubmit={handleSearch} className="w-full max-w-lg">
+        <div className="relative">
+          <div className="absolute left-4 top-1/2 -translate-y-1/2 z-10 pointer-events-none">
+            <Search className="h-5 w-5 text-muted-foreground" />
+          </div>
+          <Input
+            type="text"
+            placeholder={t("searchPlaceholder")}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full pl-12 pr-4 h-12 text-base bg-background/80 backdrop-blur-md border-2 border-primary/30 rounded-xl shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/20"
+          />
+        </div>
+      </form>
       
-      <div className="grid grid-cols-3 border border-border/50 rounded-lg overflow-hidden backdrop-blur-md bg-background/50">
+      <p className="text-sm text-muted-foreground">{t("prefix")}</p>
+      
+      <div className="grid grid-cols-3 border border-border/50 rounded-lg overflow-hidden backdrop-blur-md bg-background/50 w-full max-w-md">
         {visibleItems.map((industry, idx) => (
           <button
             key={idx}
             onClick={() => handleClick(industry)}
             className={cn(
-              "w-40 px-4 py-3 text-sm font-medium whitespace-nowrap truncate",
+              "px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm font-medium whitespace-nowrap truncate",
               "hover:bg-primary hover:text-primary-foreground",
               "cursor-pointer transition-all duration-200",
               "border-r border-b border-border",

@@ -973,8 +973,9 @@
     }
   },
   "heroIndustries": {
-    "prefix": "Şunlar için prompt bul:",
+    "prefix": "veya sektöre göre keşfet",
     "clickToExplore": "Keşfetmek için tıkla",
+    "searchPlaceholder": "Prompt ara...",
     "teachers": "Öğretmenler",
     "developers": "Geliştiriciler",
     "marketers": "Pazarlamacılar",

@@ -973,8 +973,9 @@
     }
   },
   "heroIndustries": {
-    "prefix": "プロンプトを探す：",
+    "prefix": "または業種で探す",
     "clickToExplore": "クリックして探索",
+    "searchPlaceholder": "プロンプトを検索...",
     "teachers": "教師",
     "developers": "開発者",
     "marketers": "マーケター",

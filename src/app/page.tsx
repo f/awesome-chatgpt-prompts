@@ -179,7 +179,7 @@ export default async function HomePage() {
                 )}
               </div>
               {!useCloneBranding && (
-                <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
                   <Link 
                     href="https://github.com/f/awesome-chatgpt-prompts/stargazers" 
                     target="_blank" 
@@ -198,6 +198,11 @@ export default async function HomePage() {
                   </Link>
                 </div>
               )}
+            </div>
+            
+            {/* Mobile Hero Categories */}
+            <div className="mt-8 lg:hidden">
+              <HeroCategories />
             </div>
           </div>
         </div>

@@ -968,8 +968,9 @@
     }
   },
   "heroIndustries": {
-    "prefix": "Find prompts for",
+    "prefix": "or explore by industry",
     "clickToExplore": "Click to explore",
+    "searchPlaceholder": "Search prompts...",
     "teachers": "Teachers",
     "developers": "Developers",
     "marketers": "Marketers",

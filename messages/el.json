@@ -994,8 +994,9 @@
     }
   },
   "heroIndustries": {
-    "prefix": "Βρείτε prompts για",
+    "prefix": "ή εξερευνήστε ανά κλάδο",
     "clickToExplore": "Κάντε κλικ για εξερεύνηση",
+    "searchPlaceholder": "Αναζήτηση prompts...",
     "teachers": "Εκπαιδευτικούς",
     "developers": "Προγραμματιστές",
     "marketers": "Μάρκετερ",
