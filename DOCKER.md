@@ -7,7 +7,7 @@ Run your own prompts.chat instance with a single command.
 ```bash
 docker run -d \
   --name prompts \
-  -p 80:80 \
+  -p 4444:3000 \
   -v prompts-data:/data \
   ghcr.io/f/prompts.chat
 ```
@@ -15,7 +15,7 @@ docker run -d \
 **First run:** The container will clone the repository and build the app (~3-5 minutes).  
 **Subsequent runs:** Starts immediately using the cached build.
 
-Open http://localhost in your browser.
+Open http://localhost:4444 in your browser.
 
 ## Custom Branding
 
@@ -24,7 +24,7 @@ Customize your instance with environment variables:
 ```bash
 docker run -d \
   --name my-prompts \
-  -p 80:80 \
+  -p 4444:3000 \
   -v prompts-data:/data \
   -e PCHAT_NAME="Acme Prompts" \
   -e PCHAT_DESCRIPTION="Our team's AI prompt library" \
@@ -96,7 +96,7 @@ All variables are prefixed with `PCHAT_` to avoid conflicts.
 | Variable | Description | Default |
 |----------|-------------|---------|
 | `AUTH_SECRET` | Secret for authentication tokens | Auto-generated |
-| `PORT` | Port to run the app on | `80` |
+| `PORT` | Internal container port | `3000` |
 | `DATABASE_URL` | PostgreSQL connection string | Internal DB |
 
 ## Production Setup
@@ -106,7 +106,7 @@ For production, set `AUTH_SECRET` explicitly:
 ```bash
 docker run -d \
   --name prompts \
-  -p 80:80 \
+  -p 4444:3000 \
   -v prompts-data:/data \
   -e AUTH_SECRET="$(openssl rand -base64 32)" \
   -e PCHAT_NAME="My Company Prompts" \
@@ -118,7 +118,7 @@ docker run -d \
 ```bash
 docker run -d \
   --name prompts \
-  -p 80:80 \
+  -p 4444:3000 \
   -v prompts-data:/data \
   -e AUTH_SECRET="your-secret-key" \
   -e PCHAT_AUTH_PROVIDERS="github,google" \
@@ -134,7 +134,7 @@ docker run -d \
 ```bash
 docker run -d \
   --name prompts \
-  -p 80:80 \
+  -p 4444:3000 \
   -v prompts-data:/data \
   -e PCHAT_FEATURE_AI_SEARCH="true" \
   -e OPENAI_API_KEY="sk-..." \
@@ -148,7 +148,7 @@ Mount your logo file:
 ```bash
 docker run -d \
   --name prompts \
-  -p 80:80 \
+  -p 4444:3000 \
   -v prompts-data:/data \
   -v ./my-logo.svg:/data/app/public/logo.svg \
   -e PCHAT_NAME="My App" \
@@ -186,7 +186,7 @@ Build and run locally:
 
 ```bash
 docker build -f docker/Dockerfile -t prompts.chat .
-docker run -p 80:80 -v prompts-data:/data prompts.chat
+docker run -p 4444:3000 -v prompts-data:/data prompts.chat
 ```
 
 ## Health Check
@@ -194,7 +194,7 @@ docker run -p 80:80 -v prompts-data:/data prompts.chat
 The container includes a health check endpoint:
 
 ```bash
-curl http://localhost/api/health
+curl http://localhost:4444/api/health
 ```
 
 Response:
@@ -244,7 +244,7 @@ docker exec -it prompts bash
 
 **Container won't start:**
 - Check logs: `docker logs prompts`
-- Ensure port 80 is available: `lsof -i :80`
+- Ensure port 4444 is available: `lsof -i :4444`
 
 **Database connection errors:**
 - Wait for PostgreSQL to initialize (can take 30-60 seconds on first run)
@@ -278,7 +278,7 @@ docker stop prompts && docker rm prompts
 # Start new container (data persists in volume)
 docker run -d \
   --name prompts \
-  -p 80:80 \
+  -p 4444:3000 \
   -v prompts-data:/data \
   -e AUTH_SECRET="your-secret-key" \
   ghcr.io/f/prompts.chat
@@ -303,7 +303,7 @@ server {
     ssl_certificate_key /etc/letsencrypt/live/prompts.example.com/privkey.pem;
 
     location / {
-        proxy_pass http://localhost:80;
+        proxy_pass http://localhost:4444;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';

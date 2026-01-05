@@ -2,8 +2,8 @@
 # Lightweight image that clones and builds on first run
 #
 # Usage:
-#   docker run -p 80:80 -v prompts-data:/data ghcr.io/f/prompts.chat
-#   docker run -p 80:80 -v prompts-data:/data -e PCHAT_NAME="My App" ghcr.io/f/prompts.chat
+#   docker run -p 4444:3000 -v prompts-data:/data ghcr.io/f/prompts.chat
+#   docker run -p 4444:3000 -v prompts-data:/data -e PCHAT_NAME="My App" ghcr.io/f/prompts.chat
 
 FROM node:24-bookworm-slim
 
@@ -35,14 +35,14 @@ RUN chmod +x /bootstrap.sh
 
 # Environment defaults
 ENV NODE_ENV=production
-ENV PORT=80
+ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 ENV DATABASE_URL="postgresql://prompts:prompts@localhost:5432/prompts?schema=public"
 ENV REPO_URL="https://github.com/f/awesome-chatgpt-prompts.git"
 
-EXPOSE 80
+EXPOSE 3000
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=180s --retries=3 \
-    CMD curl -f http://localhost:80/api/health || exit 1
+    CMD curl -f http://localhost:3000/api/health || exit 1
 
 ENTRYPOINT ["/bootstrap.sh"]

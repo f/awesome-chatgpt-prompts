@@ -127,12 +127,16 @@ echo "▶ Running database migrations..."
 npx prisma migrate deploy
 echo "✓ Migrations complete"
 
-# Seed if empty
-PROMPT_COUNT=$(su postgres -c "$PGBIN/psql -h localhost -U prompts -d prompts -t -c \"SELECT COUNT(*) FROM \\\"Prompt\\\"\"" 2>/dev/null | tr -d ' ' || echo "0")
-if [ "$PROMPT_COUNT" = "0" ] || [ -z "$PROMPT_COUNT" ]; then
+# Seed on first run only
+SEED_MARKER="/data/.seeded"
+if [ ! -f "$SEED_MARKER" ]; then
     echo "▶ Seeding database..."
-    npx tsx prisma/seed.ts 2>/dev/null || echo "⚠ Seeding skipped"
-    echo "✓ Database ready"
+    if npx tsx prisma/seed.ts 2>/dev/null; then
+        touch "$SEED_MARKER"
+        echo "✓ Database seeded"
+    else
+        echo "⚠ Seeding skipped"
+    fi
 fi
 
 echo ""
