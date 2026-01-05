@@ -65,7 +65,10 @@ export default defineConfig({
     changeRequests: ${config.features.changeRequests},
     categories: ${config.features.categories},
     tags: ${config.features.tags},
+    comments: ${config.features.comments},
     aiSearch: ${config.features.aiSearch},
+    aiGeneration: ${config.features.aiGeneration},
+    mcp: ${config.features.mcp},
   },
 
   // Homepage customization (clone branding mode)
@@ -189,6 +192,7 @@ async function main() {
     options: [
       { value: 'github', label: 'GitHub OAuth', hint: 'Most popular for developers' },
       { value: 'google', label: 'Google OAuth', hint: 'Widely used' },
+      { value: 'apple', label: 'Apple Sign In', hint: 'Sign in with Apple' },
       { value: 'azure', label: 'Microsoft Azure AD', hint: 'Enterprise SSO' },
       { value: 'credentials', label: 'Email/Password', hint: 'Traditional auth' },
     ],
@@ -266,9 +270,12 @@ async function main() {
       { value: 'changeRequests', label: 'Change Requests', hint: 'Version control system' },
       { value: 'categories', label: 'Categories', hint: 'Organize prompts by category' },
       { value: 'tags', label: 'Tags', hint: 'Tag-based organization' },
+      { value: 'comments', label: 'Comments', hint: 'Allow comments on prompts' },
       { value: 'aiSearch', label: 'AI Search', hint: 'Requires OPENAI_API_KEY' },
+      { value: 'aiGeneration', label: 'AI Generation', hint: 'AI-powered prompt generation (requires OPENAI_API_KEY)' },
+      { value: 'mcp', label: 'MCP Support', hint: 'Model Context Protocol features & API keys' },
     ],
-    initialValues: ['privatePrompts', 'changeRequests', 'categories', 'tags'],
+    initialValues: ['privatePrompts', 'changeRequests', 'categories', 'tags', 'comments'],
     required: false,
   });
 
@@ -279,7 +286,10 @@ async function main() {
     changeRequests: features.includes('changeRequests'),
     categories: features.includes('categories'),
     tags: features.includes('tags'),
+    comments: features.includes('comments'),
     aiSearch: features.includes('aiSearch'),
+    aiGeneration: features.includes('aiGeneration'),
+    mcp: features.includes('mcp'),
   };
 
   // === SPONSORS ===
@@ -393,8 +403,12 @@ async function main() {
     envVars.push('AUTH_AZURE_AD_CLIENT_SECRET - Azure AD client secret');
     envVars.push('AUTH_AZURE_AD_ISSUER        - Azure AD issuer URL');
   }
-  if (config.features.aiSearch) {
-    envVars.push('OPENAI_API_KEY     - OpenAI API key for semantic search');
+  if (config.auth.providers.includes('apple')) {
+    envVars.push('AUTH_APPLE_ID              - Apple Services ID');
+    envVars.push('AUTH_APPLE_SECRET          - Apple secret key');
+  }
+  if (config.features.aiSearch || config.features.aiGeneration) {
+    envVars.push('OPENAI_API_KEY     - OpenAI API key for AI features');
   }
 
   p.note(envVars.join('\n'), 'Required environment variables');

@@ -1,6 +1,6 @@
 {
   "name": "prompts.chat",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "Developer toolkit for AI prompts - build, validate, parse, and connect to prompts.chat",
   "type": "module",
   "main": "./dist/index.js",
