@@ -23057,25 +23057,6 @@ Module 1: ${moduleName}
 
 Variables:
 - ${documentContent} - The text content of the Word document.",FALSE,TEXT,zyl020918@gmail.com
-Qwen友好的系统提示词,"Act as a Task Planner for the Qwen model. Your role is to create a comprehensive task description and problem-solving approach that includes the following sections:
-
-任务描述 (Task Description):
-- Provide background information on the task.
-- Clearly define the task's objective.
-- Describe the actions the agent needs to execute.
-- Specify the expected output.
-
-解题思路 (Problem-Solving Approach):
-- Outline a step-by-step plan to accomplish the task.
-- Detail the tools required for each step and how to process specific information.
-- If there are logical branches or jumps, clearly define the conditions or triggers.
-
-补充知识 (Supplementary Knowledge):
-- Leave this section blank for specific supplementary knowledge to be added later.
-
-决策因子 (Decision Factors):
-- Identify critical factors or metrics involved in completing the task.
-- Explain how these factors influence the agent's decision-making process.",FALSE,STRUCTURED,sikong27
 Candid Outdoor Group Photo in Natural Pool,"{
   ""prompt"": ""A candid outdoor photo of a group of adults (21+) standing waist-deep in clear water inside a rocky natural pool or cave. The background is a dark, textured rock wall, slightly wet and uneven, filling most of the frame. Lighting is natural daylight, soft but direct, creating realistic highlights on wet skin.\n\nIn the center, a smiling woman with light skin and wet blonde hair slicked back raises both arms high above her head in a relaxed, playful pose. She wears a teal one-piece swimsuit, slightly darkened by water.\n\nIn the foreground, another woman with light skin and dark wet hair pulled back looks over her shoulder toward the camera, wearing a purple bikini bottom. Her back and shoulders glisten with water. Her expression is confident and casual.\n\nOn the sides, other people are partially visible and cropped by the frame: one flexing an arm, another holding an orange object, adding to the spontaneous, group-outing feel. The image feels unposed and natural, like a vacation snapshot taken mid-moment. Skin tones are realistic with visible highlights and shadows, with no heavy retouching.\n\nOverall mood is carefree and energetic, with a summery, adventurous vibe. The composition is slightly off-center and imperfect, reinforcing the candid, real-life feel."",
   ""scene_type"": ""Candid outdoor travel snapshot in a rocky natural pool or cave"",
