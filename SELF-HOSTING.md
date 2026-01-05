@@ -28,6 +28,53 @@
 
 ---
 
+## Quick Start with Docker
+
+```bash
+git clone https://github.com/f/awesome-chatgpt-prompts.git
+cd awesome-chatgpt-prompts
+cp .env.example .env
+# Edit .env with your credentials
+docker compose up -d
+```
+
+Access at http://localhost:3000. See `Makefile` for more commands (`make update`, `make logs`, etc.).
+
+**Custom port:** Set `HOST_PORT` in `.env` to change the external port:
+```bash
+HOST_PORT=8080  # Access at http://localhost:8080
+```
+
+### Custom Branding (Docker)
+
+1. **Create custom config** from the example:
+   ```bash
+   cp prompts.config.custom.example.ts prompts.config.custom.ts
+   ```
+
+2. **Add custom assets** (optional):
+   ```bash
+   mkdir -p assets
+   cp your-logo.svg assets/logo.svg
+   ```
+
+3. **Edit `prompts.config.custom.ts`:**
+   ```typescript
+   branding: {
+     name: "My Prompt Library",
+     logo: "/assets/logo.svg",  // Maps to ./data/assets/logo.svg
+   },
+   ```
+
+4. **Build and run:**
+   ```bash
+   docker compose build && docker compose up -d
+   ```
+
+---
+
+## Manual Installation
+
 This guide explains how to deploy **prompts.chat** on your own private server for enhanced privacy and customization.
 
 ## Prerequisites
