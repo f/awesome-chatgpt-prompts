@@ -72,9 +72,9 @@ if [ ! -f "$BUILD_MARKER" ]; then
     # Clean up unnecessary files
     rm -rf .github .claude packages .git
     
-    # Install dependencies
+    # Install dependencies (including devDependencies needed for build)
     echo "▶ Installing dependencies..."
-    npm ci
+    NODE_ENV=development npm ci
     echo "✓ Dependencies installed"
     
     # Run docker-setup.js to generate config with branding
