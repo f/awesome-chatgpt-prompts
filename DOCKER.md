@@ -1,10 +1,8 @@
 # Docker Deployment Guide
 
-Run prompts.chat with a single command using Docker.
+Run your own prompts.chat instance with a single command.
 
-## Quick Start (All-in-One Image)
-
-The easiest way to run prompts.chat - a single container with Node.js and PostgreSQL:
+## Quick Start
 
 ```bash
 docker run -d \
@@ -14,73 +12,86 @@ docker run -d \
   ghcr.io/f/prompts.chat
 ```
 
+**First run:** The container will clone the repository and build the app (~3-5 minutes).  
+**Subsequent runs:** Starts immediately using the cached build.
+
 Open http://localhost in your browser.
 
-## Whitelabel / Custom Branding
+## Custom Branding
 
-Build your own branded image with custom name, logo, and colors:
-
-```bash
-docker build \
-  --build-arg BRAND_NAME="My Prompt Library" \
-  --build-arg BRAND_DESCRIPTION="Our team's AI prompts" \
-  --build-arg BRAND_COLOR="#ff6600" \
-  --build-arg AUTH_PROVIDERS="github,google" \
-  --build-arg LOCALES="en,es,fr" \
-  -f docker/Dockerfile \
-  -t my-prompts .
-
-docker run -p 80:80 -v prompts-data:/data my-prompts
-```
-
-### Build Arguments
-
-| Argument | Description | Default |
-|----------|-------------|---------|
-| `BRAND_NAME` | App name shown in UI | `My Prompt Library` |
-| `BRAND_DESCRIPTION` | App description | `Collect, organize, and share AI prompts` |
-| `BRAND_LOGO` | Logo path (in public/) | `/logo.svg` |
-| `BRAND_LOGO_DARK` | Dark mode logo | Same as `BRAND_LOGO` |
-| `BRAND_FAVICON` | Favicon path | `/logo.svg` |
-| `BRAND_COLOR` | Primary color (hex) | `#6366f1` |
-| `THEME_RADIUS` | Border radius: `none\|sm\|md\|lg` | `sm` |
-| `THEME_VARIANT` | UI style: `default\|flat\|brutal` | `default` |
-| `THEME_DENSITY` | Spacing: `compact\|default\|comfortable` | `default` |
-| `AUTH_PROVIDERS` | Auth providers (comma-separated) | `credentials` |
-| `ALLOW_REGISTRATION` | Allow public signup | `true` |
-| `LOCALES` | Supported locales (comma-separated) | `en` |
-| `DEFAULT_LOCALE` | Default locale | `en` |
-| `FEATURE_PRIVATE_PROMPTS` | Enable private prompts | `true` |
-| `FEATURE_CHANGE_REQUESTS` | Enable versioning | `true` |
-| `FEATURE_CATEGORIES` | Enable categories | `true` |
-| `FEATURE_TAGS` | Enable tags | `true` |
-| `FEATURE_COMMENTS` | Enable comments | `true` |
-| `FEATURE_AI_SEARCH` | Enable AI search | `false` |
-| `FEATURE_AI_GENERATION` | Enable AI generation | `false` |
-| `FEATURE_MCP` | Enable MCP features | `false` |
-
-### Adding Custom Logo
-
-1. Create your logo file (SVG recommended)
-2. Mount it when running:
+Customize your instance with environment variables:
 
 ```bash
-docker run -p 80:80 \
-  -v ./my-logo.svg:/app/public/logo.svg \
+docker run -d \
+  --name my-prompts \
+  -p 80:80 \
   -v prompts-data:/data \
-  my-prompts
+  -e PCHAT_NAME="Acme Prompts" \
+  -e PCHAT_DESCRIPTION="Our team's AI prompt library" \
+  -e PCHAT_COLOR="#ff6600" \
+  -e PCHAT_AUTH_PROVIDERS="github,google" \
+  -e PCHAT_LOCALES="en,es,fr" \
+  ghcr.io/f/prompts.chat
 ```
 
-Or include it in your own Dockerfile:
+> **Note:** Branding is applied during the first build. To change branding later, delete the volume and re-run:
+> ```bash
+> docker rm -f my-prompts
+> docker volume rm prompts-data
+> docker run ... # with new env vars
+> ```
 
-```dockerfile
-FROM ghcr.io/f/prompts.chat
-COPY my-logo.svg /app/public/logo.svg
-```
+## Configuration Variables
 
-## Configuration
+All variables are prefixed with `PCHAT_` to avoid conflicts.
 
-### Environment Variables
+#### Branding (`branding.*` in prompts.config.ts)
+
+| Env Variable | Config Path | Description | Default |
+|--------------|-------------|-------------|---------|
+| `PCHAT_NAME` | `branding.name` | App name shown in UI | `My Prompt Library` |
+| `PCHAT_DESCRIPTION` | `branding.description` | App description | `Collect, organize...` |
+| `PCHAT_LOGO` | `branding.logo` | Logo path (in public/) | `/logo.svg` |
+| `PCHAT_LOGO_DARK` | `branding.logoDark` | Dark mode logo | Same as `PCHAT_LOGO` |
+| `PCHAT_FAVICON` | `branding.favicon` | Favicon path | `/logo.svg` |
+
+#### Theme (`theme.*` in prompts.config.ts)
+
+| Env Variable | Config Path | Description | Default |
+|--------------|-------------|-------------|---------|
+| `PCHAT_COLOR` | `theme.colors.primary` | Primary color (hex) | `#6366f1` |
+| `PCHAT_THEME_RADIUS` | `theme.radius` | Border radius: `none\|sm\|md\|lg` | `sm` |
+| `PCHAT_THEME_VARIANT` | `theme.variant` | UI style: `default\|flat\|brutal` | `default` |
+| `PCHAT_THEME_DENSITY` | `theme.density` | Spacing: `compact\|default\|comfortable` | `default` |
+
+#### Authentication (`auth.*` in prompts.config.ts)
+
+| Env Variable | Config Path | Description | Default |
+|--------------|-------------|-------------|---------|
+| `PCHAT_AUTH_PROVIDERS` | `auth.providers` | Providers: `github,google,credentials` | `credentials` |
+| `PCHAT_ALLOW_REGISTRATION` | `auth.allowRegistration` | Allow public signup | `true` |
+
+#### Internationalization (`i18n.*` in prompts.config.ts)
+
+| Env Variable | Config Path | Description | Default |
+|--------------|-------------|-------------|---------|
+| `PCHAT_LOCALES` | `i18n.locales` | Supported locales (comma-separated) | `en` |
+| `PCHAT_DEFAULT_LOCALE` | `i18n.defaultLocale` | Default locale | `en` |
+
+#### Features (`features.*` in prompts.config.ts)
+
+| Env Variable | Config Path | Description | Default |
+|--------------|-------------|-------------|---------|
+| `PCHAT_FEATURE_PRIVATE_PROMPTS` | `features.privatePrompts` | Enable private prompts | `true` |
+| `PCHAT_FEATURE_CHANGE_REQUESTS` | `features.changeRequests` | Enable versioning | `true` |
+| `PCHAT_FEATURE_CATEGORIES` | `features.categories` | Enable categories | `true` |
+| `PCHAT_FEATURE_TAGS` | `features.tags` | Enable tags | `true` |
+| `PCHAT_FEATURE_COMMENTS` | `features.comments` | Enable comments | `true` |
+| `PCHAT_FEATURE_AI_SEARCH` | `features.aiSearch` | Enable AI search | `false` |
+| `PCHAT_FEATURE_AI_GENERATION` | `features.aiGeneration` | Enable AI generation | `false` |
+| `PCHAT_FEATURE_MCP` | `features.mcp` | Enable MCP features | `false` |
+
+## System Environment Variables
 
 | Variable | Description | Default |
 |----------|-------------|---------|
@@ -88,27 +99,21 @@ COPY my-logo.svg /app/public/logo.svg
 | `PORT` | Port to run the app on | `80` |
 | `DATABASE_URL` | PostgreSQL connection string | Internal DB |
 
-### Production Setup
+## Production Setup
 
-For production, always set `AUTH_SECRET`:
+For production, set `AUTH_SECRET` explicitly:
 
 ```bash
 docker run -d \
   --name prompts \
   -p 80:80 \
   -v prompts-data:/data \
-  -e AUTH_SECRET="your-secret-key-min-32-chars-long" \
+  -e AUTH_SECRET="$(openssl rand -base64 32)" \
+  -e PCHAT_NAME="My Company Prompts" \
   ghcr.io/f/prompts.chat
 ```
 
-Generate a secure secret:
-```bash
-openssl rand -base64 32
-```
-
 ### With OAuth Providers
-
-Enable GitHub/Google authentication:
 
 ```bash
 docker run -d \
@@ -116,6 +121,7 @@ docker run -d \
   -p 80:80 \
   -v prompts-data:/data \
   -e AUTH_SECRET="your-secret-key" \
+  -e PCHAT_AUTH_PROVIDERS="github,google" \
   -e AUTH_GITHUB_ID="your-github-client-id" \
   -e AUTH_GITHUB_SECRET="your-github-client-secret" \
   -e AUTH_GOOGLE_ID="your-google-client-id" \
@@ -123,69 +129,30 @@ docker run -d \
   ghcr.io/f/prompts.chat
 ```
 
-### With AI Search (OpenAI)
-
-Enable semantic search with OpenAI embeddings:
+### With AI Features (OpenAI)
 
 ```bash
 docker run -d \
   --name prompts \
   -p 80:80 \
   -v prompts-data:/data \
-  -e AUTH_SECRET="your-secret-key" \
+  -e PCHAT_FEATURE_AI_SEARCH="true" \
   -e OPENAI_API_KEY="sk-..." \
   ghcr.io/f/prompts.chat
 ```
 
-## Docker Compose (Separate Containers)
+## Custom Logo
 
-For more control, use Docker Compose with separate app and database containers:
+Mount your logo file:
 
 ```bash
-# Clone the repository
-git clone https://github.com/f/awesome-chatgpt-prompts.git
-cd awesome-chatgpt-prompts
-
-# Create .env file
-echo "AUTH_SECRET=$(openssl rand -base64 32)" > .env
-
-# Start services
-docker compose up -d
-```
-
-### docker-compose.yml
-
-```yaml
-services:
-  app:
-    build:
-      context: .
-      dockerfile: docker/Dockerfile.app
-    ports:
-      - "80:3000"
-    environment:
-      - DATABASE_URL=postgresql://prompts:prompts@db:5432/prompts
-      - AUTH_SECRET=${AUTH_SECRET}
-    depends_on:
-      db:
-        condition: service_healthy
-
-  db:
-    image: postgres:16-alpine
-    environment:
-      - POSTGRES_USER=prompts
-      - POSTGRES_PASSWORD=prompts
-      - POSTGRES_DB=prompts
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U prompts"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
-volumes:
-  postgres_data:
+docker run -d \
+  --name prompts \
+  -p 80:80 \
+  -v prompts-data:/data \
+  -v ./my-logo.svg:/data/app/public/logo.svg \
+  -e PCHAT_NAME="My App" \
+  ghcr.io/f/prompts.chat
 ```
 
 ## Data Persistence
@@ -215,17 +182,11 @@ docker exec -i prompts psql -U prompts prompts < backup.sql
 
 ## Building Locally
 
-Build the all-in-one image:
+Build and run locally:
 
 ```bash
 docker build -f docker/Dockerfile -t prompts.chat .
-docker run -p 80:80 prompts.chat
-```
-
-Build the app-only image (for docker-compose):
-
-```bash
-docker build -f docker/Dockerfile.app -t prompts.chat-app .
+docker run -p 80:80 -v prompts-data:/data prompts.chat
 ```
 
 ## Health Check
