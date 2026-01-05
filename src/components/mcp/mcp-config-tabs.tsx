@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Check, Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { analyticsMcp } from "@/lib/analytics";
 
 type Client = "cursor" | "claude-code" | "vscode" | "codex" | "windsurf" | "gemini";
 type Mode = "remote" | "local";
@@ -209,6 +210,7 @@ export function McpConfigTabs({ baseUrl, queryParams, className, mode, onModeCha
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(config);
+    analyticsMcp.copyCommand(`${selectedClient}-${selectedMode}`);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };

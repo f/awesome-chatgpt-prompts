@@ -45,7 +45,7 @@ import {
 import { NotificationBell } from "@/components/layout/notification-bell";
 import { setLocale } from "@/lib/i18n/client";
 import { useBranding } from "@/components/providers/branding-provider";
-import { analyticsAuth, analyticsSettings } from "@/lib/analytics";
+import { analyticsAuth, analyticsSettings, analyticsExternal } from "@/lib/analytics";
 import { isChromeBrowser } from "@/lib/utils";
 
 const languages = [
@@ -349,6 +349,7 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
                 href={branding.chromeExtensionUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => analyticsExternal.clickChromeExtension()}
               >
                 <Chromium className="h-4 w-4" />
                 <span className="sr-only">Get Chrome Extension</span>

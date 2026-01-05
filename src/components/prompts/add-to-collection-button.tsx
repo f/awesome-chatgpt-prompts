@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Bookmark, Check, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { analyticsCollection } from "@/lib/analytics";
 
 interface AddToCollectionButtonProps {
   promptId: string;
@@ -38,6 +39,7 @@ export function AddToCollectionButton({
 
         if (res.ok) {
           setInCollection(false);
+          analyticsCollection.remove(promptId);
           setShowTooltip(true);
           setTimeout(() => setShowTooltip(false), 2000);
         }
@@ -50,6 +52,7 @@ export function AddToCollectionButton({
 
         if (res.ok) {
           setInCollection(true);
+          analyticsCollection.add(promptId);
           setShowTooltip(true);
           setTimeout(() => setShowTooltip(false), 2000);
         }
