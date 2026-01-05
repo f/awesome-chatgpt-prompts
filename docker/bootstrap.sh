@@ -92,6 +92,12 @@ if [ ! -f "$BUILD_MARKER" ]; then
     npm run build
     echo "✓ Build complete"
     
+    # Copy static files for standalone mode
+    echo "▶ Copying static assets..."
+    cp -r .next/static .next/standalone/.next/
+    cp -r public .next/standalone/
+    echo "✓ Static assets copied"
+    
     # Mark as built
     touch "$BUILD_MARKER"
     
