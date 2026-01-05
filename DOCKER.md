@@ -16,6 +16,68 @@ docker run -d \
 
 Open http://localhost in your browser.
 
+## Whitelabel / Custom Branding
+
+Build your own branded image with custom name, logo, and colors:
+
+```bash
+docker build \
+  --build-arg BRAND_NAME="My Prompt Library" \
+  --build-arg BRAND_DESCRIPTION="Our team's AI prompts" \
+  --build-arg BRAND_COLOR="#ff6600" \
+  --build-arg AUTH_PROVIDERS="github,google" \
+  --build-arg LOCALES="en,es,fr" \
+  -f docker/Dockerfile \
+  -t my-prompts .
+
+docker run -p 80:80 -v prompts-data:/data my-prompts
+```
+
+### Build Arguments
+
+| Argument | Description | Default |
+|----------|-------------|---------|
+| `BRAND_NAME` | App name shown in UI | `My Prompt Library` |
+| `BRAND_DESCRIPTION` | App description | `Collect, organize, and share AI prompts` |
+| `BRAND_LOGO` | Logo path (in public/) | `/logo.svg` |
+| `BRAND_LOGO_DARK` | Dark mode logo | Same as `BRAND_LOGO` |
+| `BRAND_FAVICON` | Favicon path | `/logo.svg` |
+| `BRAND_COLOR` | Primary color (hex) | `#6366f1` |
+| `THEME_RADIUS` | Border radius: `none\|sm\|md\|lg` | `sm` |
+| `THEME_VARIANT` | UI style: `default\|flat\|brutal` | `default` |
+| `THEME_DENSITY` | Spacing: `compact\|default\|comfortable` | `default` |
+| `AUTH_PROVIDERS` | Auth providers (comma-separated) | `credentials` |
+| `ALLOW_REGISTRATION` | Allow public signup | `true` |
+| `LOCALES` | Supported locales (comma-separated) | `en` |
+| `DEFAULT_LOCALE` | Default locale | `en` |
+| `FEATURE_PRIVATE_PROMPTS` | Enable private prompts | `true` |
+| `FEATURE_CHANGE_REQUESTS` | Enable versioning | `true` |
+| `FEATURE_CATEGORIES` | Enable categories | `true` |
+| `FEATURE_TAGS` | Enable tags | `true` |
+| `FEATURE_COMMENTS` | Enable comments | `true` |
+| `FEATURE_AI_SEARCH` | Enable AI search | `false` |
+| `FEATURE_AI_GENERATION` | Enable AI generation | `false` |
+| `FEATURE_MCP` | Enable MCP features | `false` |
+
+### Adding Custom Logo
+
+1. Create your logo file (SVG recommended)
+2. Mount it when running:
+
+```bash
+docker run -p 80:80 \
+  -v ./my-logo.svg:/app/public/logo.svg \
+  -v prompts-data:/data \
+  my-prompts
+```
+
+Or include it in your own Dockerfile:
+
+```dockerfile
+FROM ghcr.io/f/prompts.chat
+COPY my-logo.svg /app/public/logo.svg
+```
+
 ## Configuration
 
 ### Environment Variables

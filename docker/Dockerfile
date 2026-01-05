@@ -2,11 +2,39 @@
 # Contains Node.js + PostgreSQL for single-container deployment
 #
 # Usage:
-#   docker run -p 80:80 ghcr.io/f/prompts.chat
-#   docker run -p 80:80 -e AUTH_SECRET=xxx ghcr.io/f/prompts.chat
-#   docker run -p 80:80 --name my-prompts ghcr.io/f/prompts.chat
+#   docker build -t my-prompts .
+#   docker build --build-arg BRAND_NAME="My App" --build-arg BRAND_COLOR="#ff0000" -t my-prompts .
+#   docker run -p 80:80 my-prompts
+#
+# Build Arguments (all optional):
+#   BRAND_NAME, BRAND_DESCRIPTION, BRAND_LOGO, BRAND_COLOR
+#   AUTH_PROVIDERS (comma-separated: github,google,credentials)
+#   LOCALES (comma-separated: en,es,fr)
 
 FROM node:24-bookworm-slim AS builder
+
+# Build arguments for whitelabel branding
+ARG BRAND_NAME="My Prompt Library"
+ARG BRAND_DESCRIPTION="Collect, organize, and share AI prompts"
+ARG BRAND_LOGO="/logo.svg"
+ARG BRAND_LOGO_DARK=""
+ARG BRAND_FAVICON="/logo.svg"
+ARG BRAND_COLOR="#6366f1"
+ARG THEME_RADIUS="sm"
+ARG THEME_VARIANT="default"
+ARG THEME_DENSITY="default"
+ARG AUTH_PROVIDERS="credentials"
+ARG ALLOW_REGISTRATION="true"
+ARG LOCALES="en"
+ARG DEFAULT_LOCALE="en"
+ARG FEATURE_PRIVATE_PROMPTS="true"
+ARG FEATURE_CHANGE_REQUESTS="true"
+ARG FEATURE_CATEGORIES="true"
+ARG FEATURE_TAGS="true"
+ARG FEATURE_COMMENTS="true"
+ARG FEATURE_AI_SEARCH="false"
+ARG FEATURE_AI_GENERATION="false"
+ARG FEATURE_MCP="false"
 
 WORKDIR /app
 
@@ -22,6 +50,31 @@ COPY . .
 
 # Remove unnecessary files
 RUN rm -rf .github .claude packages .git
+
+# Run docker-setup.js to generate prompts.config.ts with branding
+ENV BRAND_NAME=${BRAND_NAME}
+ENV BRAND_DESCRIPTION=${BRAND_DESCRIPTION}
+ENV BRAND_LOGO=${BRAND_LOGO}
+ENV BRAND_LOGO_DARK=${BRAND_LOGO_DARK}
+ENV BRAND_FAVICON=${BRAND_FAVICON}
+ENV BRAND_COLOR=${BRAND_COLOR}
+ENV THEME_RADIUS=${THEME_RADIUS}
+ENV THEME_VARIANT=${THEME_VARIANT}
+ENV THEME_DENSITY=${THEME_DENSITY}
+ENV AUTH_PROVIDERS=${AUTH_PROVIDERS}
+ENV ALLOW_REGISTRATION=${ALLOW_REGISTRATION}
+ENV LOCALES=${LOCALES}
+ENV DEFAULT_LOCALE=${DEFAULT_LOCALE}
+ENV FEATURE_PRIVATE_PROMPTS=${FEATURE_PRIVATE_PROMPTS}
+ENV FEATURE_CHANGE_REQUESTS=${FEATURE_CHANGE_REQUESTS}
+ENV FEATURE_CATEGORIES=${FEATURE_CATEGORIES}
+ENV FEATURE_TAGS=${FEATURE_TAGS}
+ENV FEATURE_COMMENTS=${FEATURE_COMMENTS}
+ENV FEATURE_AI_SEARCH=${FEATURE_AI_SEARCH}
+ENV FEATURE_AI_GENERATION=${FEATURE_AI_GENERATION}
+ENV FEATURE_MCP=${FEATURE_MCP}
+
+RUN node scripts/docker-setup.js
 
 # Generate Prisma client and build
 # DATABASE_URL is needed at build time for Prisma, but not used
