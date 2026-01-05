@@ -74,19 +74,18 @@ In this repository, you will find a variety of [prompts](prompts.csv) that can b
 
 Check out our [Self-Hosting Guide](SELF-HOSTING.md) for instructions on setting up your own instance with **customizable branding, themes, and authentication**.
 
-### Quickstart
+### Quick Start (Recommended)
+
+Create a new prompts.chat instance with a single command:
 
 ```bash
-git clone https://github.com/f/awesome-chatgpt-prompts.git
-cd awesome-chatgpt-prompts
-npm install
-npm run db:push
-npm run dev
+npx prompts.chat new my-prompt-library
+cd my-prompt-library
 ```
 
-### Private Clone Setup (Recommended for Teams)
+This will clone a clean copy, install dependencies, and launch the interactive setup wizard.
 
-For private deployments, use our **interactive setup wizard** to configure your instance with custom branding, disable sponsorship sections, and set up authentication:
+### Manual Setup
 
 ```bash
 git clone https://github.com/f/awesome-chatgpt-prompts.git
@@ -98,8 +97,8 @@ npm run setup
 The setup wizard will guide you through:
 - **Branding** — Set your organization name, logo, and description
 - **Theme** — Choose colors, border radius, and UI style
-- **Authentication** — Configure GitHub, Google, Azure AD, or email/password login
-- **Features** — Enable/disable private prompts, categories, tags, AI search
+- **Authentication** — Configure GitHub, Google, Apple, Azure AD, or email/password login
+- **Features** — Enable/disable private prompts, categories, tags, comments, AI search, AI generation, MCP
 - **Languages** — Select supported locales
 - **Sponsors** — Optionally add your own sponsor logos (prompts.chat sponsors are disabled)
 

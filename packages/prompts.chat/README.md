@@ -22,6 +22,43 @@ Building effective AI prompts is challenging. Developers often struggle with:
 npm install prompts.chat
 ```
 
+## CLI
+
+### Create a New Instance
+
+Scaffold a new prompts.chat deployment with a single command:
+
+```bash
+npx prompts.chat new my-prompt-library
+```
+
+This will:
+1. Clone a clean copy of the repository (removes `.github`, `.claude`, `packages/`, dev scripts)
+2. Install dependencies
+3. Launch the interactive setup wizard to configure branding, theme, auth, and features
+
+### Interactive Prompt Browser
+
+Browse and search prompts from your terminal:
+
+```bash
+npx prompts.chat
+```
+
+**Navigation:**
+- `↑/↓` or `j/k` — Navigate list
+- `Enter` — Select prompt
+- `/` — Search prompts
+- `n/p` — Next/Previous page
+- `r` — Run prompt (open in ChatGPT, Claude, etc.)
+- `c` — Copy prompt (with variable filling)
+- `C` — Copy raw prompt
+- `o` — Open in browser
+- `b` — Go back
+- `q` — Quit
+
+---
+
 ## Quick Start
 
 ```typescript

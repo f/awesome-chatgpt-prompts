@@ -62,6 +62,22 @@ OPENAI_API_KEY="your-openai-api-key"
 
 ## Installation
 
+### Quick Start (Recommended)
+
+The fastest way to create a new prompts.chat instance:
+
+```bash
+npx prompts.chat new my-prompt-library
+cd my-prompt-library
+```
+
+This will:
+1. Clone a clean copy of the repository (without development files)
+2. Install dependencies
+3. Launch the interactive setup wizard
+
+### Manual Installation
+
 1. **Clone the repository**
    ```bash
    git clone https://github.com/f/awesome-chatgpt-prompts.git
@@ -80,9 +96,9 @@ OPENAI_API_KEY="your-openai-api-key"
    This will guide you through configuring:
    - **Branding** — App name, logo, description
    - **Theme** — Primary color, border radius, UI variant
-   - **Authentication** — GitHub, Google, Azure AD, or email/password
-   - **Languages** — Select from 14 supported locales
-   - **Features** — Private prompts, categories, tags, AI search
+   - **Authentication** — GitHub, Google, Apple, Azure AD, or email/password
+   - **Languages** — Select from 16 supported locales
+   - **Features** — Private prompts, categories, tags, comments, AI search, AI generation, MCP support
 
 4. **Configure environment variables**
    ```bash
