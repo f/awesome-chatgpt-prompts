@@ -24,7 +24,9 @@ COPY . .
 RUN rm -rf .github .claude packages .git
 
 # Generate Prisma client and build
+# DATABASE_URL is needed at build time for Prisma, but not used
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV DATABASE_URL="postgresql://dummy:dummy@localhost:5432/dummy"
 RUN npx prisma generate && npm run build
 
 # Production image
