@@ -9,6 +9,7 @@
   --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
   --font-arabic: var(--font-arabic);
+  --font-display: var(--font-playfair);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -130,6 +131,23 @@
   /* Dense text utilities */
   .text-balance {
     text-wrap: balance;
+  }
+  
+  /* Gradient text animation */
+  .animate-gradient-text {
+    animation: gradient-flow 20s ease infinite;
+  }
+}
+
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
@@ -299,3 +317,4 @@
 .animate-flash {
   animation: flash 0.8s ease-out !important;
 }
+

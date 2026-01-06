@@ -9,6 +9,7 @@ import { DiscoveryPrompts } from "@/components/prompts/discovery-prompts";
 import { HeroCategories } from "@/components/prompts/hero-categories";
 import { CliCommand } from "@/components/layout/cli-command";
 import { ExtensionLink } from "@/components/layout/extension-link";
+import { AnimatedText } from "@/components/layout/animated-text";
 
 function getOrdinalSuffix(n: number): string {
   const s = ["th", "st", "nd", "rd"];
@@ -127,9 +128,9 @@ export default async function HomePage() {
               </>
             ) : (
               <>
-                <h1 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl lg:text-5xl !text-2xl sm:!text-3xl md:!text-4xl lg:!text-5xl">
-                  {tHomepage("heroTitle")}
-                  <span className="block text-primary">{tHomepage("heroSubtitle")}</span>
+                <h1 className="space-y-0 overflow-visible">
+                  <AnimatedText className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-none">{tHomepage("heroTitle")}</AnimatedText>
+                  <AnimatedText className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl italic font-display tracking-tight leading-none">{tHomepage("heroSubtitle")}</AnimatedText>
                 </h1>
                 <p className="mt-6 text-muted-foreground text-lg max-w-xl">
                   {tHomepage("heroDescription")}
