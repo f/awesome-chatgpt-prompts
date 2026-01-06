@@ -11,6 +11,7 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const { execSync, spawn } = require('child_process');
 const p = require('@clack/prompts');
 const color = require('picocolors');
 
@@ -501,6 +502,46 @@ async function main() {
   fs.writeFileSync(ENV_FILE, envContent);
   
   s.stop('Created .env file');
+
+  // === DATABASE SETUP ===
+  const setupDb = await p.confirm({
+    message: 'Create database and run migrations now?',
+    initialValue: true,
+  });
+
+  if (!p.isCancel(setupDb) && setupDb) {
+    // Create database
+    s.start(`Creating database "${config.env.database.database}"...`);
+    try {
+      const createDbCmd = `createdb -h ${config.env.database.host} -p ${config.env.database.port} -U ${config.env.database.username} ${config.env.database.database}`;
+      execSync(createDbCmd, { 
+        stdio: 'pipe',
+        env: { ...process.env, PGPASSWORD: config.env.database.password }
+      });
+      s.stop(`Created database "${config.env.database.database}"`);
+    } catch (err) {
+      if (err.message.includes('already exists')) {
+        s.stop(`Database "${config.env.database.database}" already exists`);
+      } else {
+        s.stop(color.yellow(`Could not create database (may already exist or createdb not available)`));
+        p.log.warn(`You may need to create the database manually: createdb ${config.env.database.database}`);
+      }
+    }
+
+    // Run db:setup (generate + migrate + seed)
+    s.start('Running database setup (prisma generate + migrate)...');
+    try {
+      execSync('npm run db:setup', { 
+        stdio: 'inherit',
+        cwd: path.join(__dirname, '..'),
+        env: { ...process.env, DATABASE_URL: config.env.databaseUrl }
+      });
+      s.stop('Database setup complete');
+    } catch (err) {
+      s.stop(color.red('Database setup failed'));
+      p.log.error('Run manually: npm run db:setup');
+    }
+  }
 
   // === ADDITIONAL ENV VARS NEEDED ===
   const additionalEnvVars = [];
