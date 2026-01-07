@@ -588,12 +588,12 @@ export function PromptConnections({
     return null;
   }
 
-  // Only show on owner's own prompt
-  if (!canEdit) {
+  const hasConnections = outgoing.length > 0 || incoming.length > 0;
+
+  // Show to everyone if there are connections, otherwise only show to owners/admins
+  if (!canEdit && !hasConnections) {
     return null;
   }
-
-  const hasConnections = outgoing.length > 0 || incoming.length > 0;
   // Use controlled state if provided, otherwise use internal state
   const isCurrentlyExpanded = controlledExpanded !== undefined ? controlledExpanded : isExpanded;
   const showExpanded = hasConnections || isCurrentlyExpanded;
@@ -607,8 +607,9 @@ export function PromptConnections({
   };
 
   // buttonOnly mode: only show the collapsed button (for button row)
+  // Only owners/admins can add new connections
   if (buttonOnly) {
-    if (showExpanded) return null; // Don't show button if expanded
+    if (showExpanded || !canEdit) return null; // Don't show button if expanded or not owner
     return (
       <Button
         variant="ghost"
@@ -624,7 +625,11 @@ export function PromptConnections({
 
   // sectionOnly mode: only show the expanded section (for below buttons)
   if (sectionOnly) {
-    if (!showExpanded) return null; // Don't show section if collapsed
+    // For non-owners: only show if there are connections
+    // For owners: show if expanded or has connections
+    if (!canEdit && !hasConnections) return null;
+    if (canEdit && !showExpanded) return null;
+    
     return (
       <div className="w-full mt-4 space-y-4 rounded-lg border bg-card p-4">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -635,84 +640,7 @@ export function PromptConnections({
             </div>
             <p className="text-xs text-muted-foreground mt-1">{t("description")}</p>
           </div>
-          <div className="flex gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => {
-                setConnectionType("previous");
-                setDialogOpen(true);
-              }}
-            >
-              <ArrowUp className="h-4 w-4 sm:mr-1" />
-              <span className="hidden sm:inline">{t("addPrevious")}</span>
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => {
-                setConnectionType("next");
-                setDialogOpen(true);
-              }}
-            >
-              <ArrowDown className="h-4 w-4 sm:mr-1" />
-              <span className="hidden sm:inline">{t("addNext")}</span>
-            </Button>
-          </div>
-        </div>
-
-        {!hasConnections ? (
-          <p className="text-sm text-muted-foreground">{t("noConnections")}</p>
-        ) : (
-          <div className="w-full">
-            {incoming.length > 0 && (
-              <p className="text-xs text-muted-foreground mb-2 text-center">{t("previousSteps")}</p>
-            )}
-            <div className="w-full">
-              <svg ref={svgRef} className="w-full" />
-            </div>
-            {outgoing.length > 0 && (
-              <p className="text-xs text-muted-foreground mt-2 text-center">{t("nextSteps")}</p>
-            )}
-          </div>
-        )}
-
-        <AddConnectionDialog
-          open={dialogOpen}
-          onOpenChange={setDialogOpen}
-          promptId={promptId}
-          connectionType={connectionType}
-          onConnectionAdded={handleConnectionAdded}
-        />
-      </div>
-    );
-  }
-
-  // Default: render both (for backwards compatibility)
-  return (
-    <>
-      {!showExpanded && (
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => setIsExpanded(true)}
-        >
-          <Link2 className="h-4 w-4 mr-2" />
-          {t("addPromptFlow")}
-          <ChevronRight className="h-4 w-4 ml-1" />
-        </Button>
-      )}
-
-      {showExpanded && (
-        <div className="w-full mt-4 space-y-4 rounded-lg border bg-card p-4">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <div className="flex items-center gap-2">
-                <Link2 className="h-5 w-5 text-muted-foreground" />
-                <h3 className="font-semibold">{t("title")}</h3>
-              </div>
-              <p className="text-xs text-muted-foreground mt-1">{t("description")}</p>
-            </div>
+          {canEdit && (
             <div className="flex gap-2">
               <Button
                 variant="outline"
@@ -737,6 +665,92 @@ export function PromptConnections({
                 <span className="hidden sm:inline">{t("addNext")}</span>
               </Button>
             </div>
+          )}
+        </div>
+
+        {!hasConnections ? (
+          <p className="text-sm text-muted-foreground">{t("noConnections")}</p>
+        ) : (
+          <div className="w-full">
+            {incoming.length > 0 && (
+              <p className="text-xs text-muted-foreground mb-2 text-center">{t("previousSteps")}</p>
+            )}
+            <div className="w-full">
+              <svg ref={svgRef} className="w-full" />
+            </div>
+            {outgoing.length > 0 && (
+              <p className="text-xs text-muted-foreground mt-2 text-center">{t("nextSteps")}</p>
+            )}
+          </div>
+        )}
+
+        {canEdit && (
+          <AddConnectionDialog
+            open={dialogOpen}
+            onOpenChange={setDialogOpen}
+            promptId={promptId}
+            connectionType={connectionType}
+            onConnectionAdded={handleConnectionAdded}
+          />
+        )}
+      </div>
+    );
+  }
+
+  // Default: render both (for backwards compatibility)
+  // For non-owners: only show visualization if connections exist
+  const showVisualization = hasConnections || (canEdit && showExpanded);
+  
+  return (
+    <>
+      {canEdit && !showExpanded && (
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setIsExpanded(true)}
+        >
+          <Link2 className="h-4 w-4 mr-2" />
+          {t("addPromptFlow")}
+          <ChevronRight className="h-4 w-4 ml-1" />
+        </Button>
+      )}
+
+      {showVisualization && (
+        <div className="w-full mt-4 space-y-4 rounded-lg border bg-card p-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <div className="flex items-center gap-2">
+                <Link2 className="h-5 w-5 text-muted-foreground" />
+                <h3 className="font-semibold">{t("title")}</h3>
+              </div>
+              <p className="text-xs text-muted-foreground mt-1">{t("description")}</p>
+            </div>
+            {canEdit && (
+              <div className="flex gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    setConnectionType("previous");
+                    setDialogOpen(true);
+                  }}
+                >
+                  <ArrowUp className="h-4 w-4 sm:mr-1" />
+                  <span className="hidden sm:inline">{t("addPrevious")}</span>
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    setConnectionType("next");
+                    setDialogOpen(true);
+                  }}
+                >
+                  <ArrowDown className="h-4 w-4 sm:mr-1" />
+                  <span className="hidden sm:inline">{t("addNext")}</span>
+                </Button>
+              </div>
+            )}
           </div>
 
           {!hasConnections ? (
@@ -755,23 +769,17 @@ export function PromptConnections({
             </div>
           )}
 
-          <AddConnectionDialog
-            open={dialogOpen}
-            onOpenChange={setDialogOpen}
-            promptId={promptId}
-            connectionType={connectionType}
-            onConnectionAdded={handleConnectionAdded}
-          />
+          {canEdit && (
+            <AddConnectionDialog
+              open={dialogOpen}
+              onOpenChange={setDialogOpen}
+              promptId={promptId}
+              connectionType={connectionType}
+              onConnectionAdded={handleConnectionAdded}
+            />
+          )}
         </div>
       )}
-
-      <AddConnectionDialog
-        open={dialogOpen}
-        onOpenChange={setDialogOpen}
-        promptId={promptId}
-        connectionType={connectionType}
-        onConnectionAdded={handleConnectionAdded}
-      />
     </>
   );
 }
