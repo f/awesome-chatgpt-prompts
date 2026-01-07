@@ -19,6 +19,7 @@ import {
   Copy,
   ExternalLink,
   Chromium,
+  Hammer,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
@@ -44,7 +45,7 @@ import {
 import { NotificationBell } from "@/components/layout/notification-bell";
 import { setLocale } from "@/lib/i18n/client";
 import { useBranding } from "@/components/providers/branding-provider";
-import { analyticsAuth, analyticsSettings } from "@/lib/analytics";
+import { analyticsAuth, analyticsSettings, analyticsExternal } from "@/lib/analytics";
 import { isChromeBrowser } from "@/lib/utils";
 
 const languages = [
@@ -103,7 +104,7 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className={`flex h-12 items-center gap-4 ${pathname === "/builder" ? "px-4" : "container"}`}>
+      <div className={`flex h-12 items-center gap-4 ${pathname === "/developers" ? "px-4" : "container"}`}>
         {/* Mobile menu */}
         <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
           <SheetTrigger asChild className="md:hidden">
@@ -141,13 +142,22 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
               <nav className="flex-1 p-4">
                 <div className="space-y-1">
                   {user && (
-                    <Link 
-                      href="/feed" 
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
-                    >
-                      {t("nav.feed")}
-                    </Link>
+                    <>
+                      <Link 
+                        href="/collection" 
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+                      >
+                        {t("nav.collection")}
+                      </Link>
+                      <Link 
+                        href="/feed" 
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+                      >
+                        {t("nav.feed")}
+                      </Link>
+                    </>
                   )}
                   <Link 
                     href="/prompts" 
@@ -261,12 +271,20 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-1 text-sm">
           {user && (
-            <Link
-              href="/feed"
-              className="px-3 py-1.5 rounded-md text-muted-foreground transition-colors hover:text-foreground hover:bg-accent"
-            >
-              {t("nav.feed")}
-            </Link>
+            <>
+              <Link
+                href="/collection"
+                className="px-3 py-1.5 rounded-md text-muted-foreground transition-colors hover:text-foreground hover:bg-accent"
+              >
+                {t("nav.collection")}
+              </Link>
+              <Link
+                href="/feed"
+                className="px-3 py-1.5 rounded-md text-muted-foreground transition-colors hover:text-foreground hover:bg-accent"
+              >
+                {t("nav.feed")}
+              </Link>
+            </>
           )}
           <Link
             href="/prompts"
@@ -292,12 +310,6 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
           >
             {t("nav.promptmasters")}
           </Link>
-          <Link
-            href="/builder"
-            className="hidden lg:block px-3 py-1.5 rounded-md text-muted-foreground transition-colors hover:text-foreground hover:bg-accent"
-          >
-            {t("nav.ide")}
-          </Link>
         </nav>
 
         {/* Spacer */}
@@ -305,6 +317,14 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
 
         {/* Right side actions */}
         <div className="flex items-center gap-1">
+          {/* Developers link */}
+          <Button asChild variant="ghost" size="icon" className="hidden lg:flex h-8 w-8">
+            <Link href="/developers" title={t("nav.developers")}>
+              <Hammer className="h-4 w-4" />
+              <span className="sr-only">{t("nav.developers")}</span>
+            </Link>
+          </Button>
+
           {/* Create prompt button */}
           {user && (
             <Button asChild variant="ghost" size="icon" className="h-8 w-8">
@@ -329,6 +349,7 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
                 href={branding.chromeExtensionUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => analyticsExternal.clickChromeExtension()}
               >
                 <Chromium className="h-4 w-4" />
                 <span className="sr-only">Get Chrome Extension</span>

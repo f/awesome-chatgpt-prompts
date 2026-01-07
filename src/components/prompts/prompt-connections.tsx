@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import * as d3 from "d3";
-import { Link2, ArrowUp, ArrowDown } from "lucide-react";
+import { Link2, ArrowUp, ArrowDown, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AddConnectionDialog } from "./add-connection-dialog";
 import { getPromptUrl } from "@/lib/urls";
@@ -38,6 +38,10 @@ interface PromptConnectionsProps {
   promptId: string;
   promptTitle: string;
   canEdit: boolean;
+  buttonOnly?: boolean;  // Only render the collapsed button
+  sectionOnly?: boolean; // Only render the expanded section
+  expanded?: boolean;    // Controlled expanded state
+  onExpandChange?: (expanded: boolean) => void; // Callback when expanded state changes
 }
 
 interface GraphNode {
@@ -60,6 +64,10 @@ export function PromptConnections({
   promptId,
   promptTitle,
   canEdit,
+  buttonOnly = false,
+  sectionOnly = false,
+  expanded: controlledExpanded,
+  onExpandChange,
 }: PromptConnectionsProps) {
   const t = useTranslations("connectedPrompts");
   const router = useRouter();
@@ -69,10 +77,13 @@ export function PromptConnections({
   const [isLoading, setIsLoading] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [connectionType, setConnectionType] = useState<"previous" | "next">("next");
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const fetchConnections = useCallback(async () => {
     try {
-      const res = await fetch(`/api/prompts/${promptId}/connections`);
+      const res = await fetch(`/api/prompts/${promptId}/connections`, {
+        cache: "no-store",
+      });
       if (res.ok) {
         const data = await res.json();
         setOutgoing(data.outgoing || []);
@@ -93,11 +104,15 @@ export function PromptConnections({
     try {
       const res = await fetch(
         `/api/prompts/${promptId}/connections/${connectionId}`,
-        { method: "DELETE" }
+        { method: "DELETE", cache: "no-store" }
       );
 
       if (res.ok) {
+        // Update local state immediately for responsive UI
+        setOutgoing((prev) => prev.filter((c) => c.id !== connectionId));
+        setIncoming((prev) => prev.filter((c) => c.id !== connectionId));
         toast.success(t("connectionDeleted"));
+        // Also refetch to ensure sync with server
         fetchConnections();
       } else {
         const data = await res.json();
@@ -579,58 +594,174 @@ export function PromptConnections({
   }
 
   const hasConnections = outgoing.length > 0 || incoming.length > 0;
+  // Use controlled state if provided, otherwise use internal state
+  const isCurrentlyExpanded = controlledExpanded !== undefined ? controlledExpanded : isExpanded;
+  const showExpanded = hasConnections || isCurrentlyExpanded;
+  
+  const handleExpand = () => {
+    if (onExpandChange) {
+      onExpandChange(true);
+    } else {
+      setIsExpanded(true);
+    }
+  };
 
-  return (
-    <div className="mt-6 space-y-4 rounded-lg border bg-card p-4">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <div className="flex items-center gap-2">
-            <Link2 className="h-5 w-5 text-muted-foreground" />
-            <h3 className="font-semibold">{t("title")}</h3>
+  // buttonOnly mode: only show the collapsed button (for button row)
+  if (buttonOnly) {
+    if (showExpanded) return null; // Don't show button if expanded
+    return (
+      <Button
+        variant="ghost"
+        size="sm"
+        onClick={handleExpand}
+      >
+        <Link2 className="h-4 w-4 mr-2" />
+        {t("addPromptFlow")}
+        <ChevronRight className="h-4 w-4 ml-1" />
+      </Button>
+    );
+  }
+
+  // sectionOnly mode: only show the expanded section (for below buttons)
+  if (sectionOnly) {
+    if (!showExpanded) return null; // Don't show section if collapsed
+    return (
+      <div className="w-full mt-4 space-y-4 rounded-lg border bg-card p-4">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <div className="flex items-center gap-2">
+              <Link2 className="h-5 w-5 text-muted-foreground" />
+              <h3 className="font-semibold">{t("title")}</h3>
+            </div>
+            <p className="text-xs text-muted-foreground mt-1">{t("description")}</p>
           </div>
-          <p className="text-xs text-muted-foreground mt-1">{t("description")}</p>
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => {
+                setConnectionType("previous");
+                setDialogOpen(true);
+              }}
+            >
+              <ArrowUp className="h-4 w-4 sm:mr-1" />
+              <span className="hidden sm:inline">{t("addPrevious")}</span>
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => {
+                setConnectionType("next");
+                setDialogOpen(true);
+              }}
+            >
+              <ArrowDown className="h-4 w-4 sm:mr-1" />
+              <span className="hidden sm:inline">{t("addNext")}</span>
+            </Button>
+          </div>
         </div>
-        <div className="flex gap-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => {
-              setConnectionType("previous");
-              setDialogOpen(true);
-            }}
-          >
-            <ArrowUp className="h-4 w-4 sm:mr-1" />
-            <span className="hidden sm:inline">{t("addPrevious")}</span>
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => {
-              setConnectionType("next");
-              setDialogOpen(true);
-            }}
-          >
-            <ArrowDown className="h-4 w-4 sm:mr-1" />
-            <span className="hidden sm:inline">{t("addNext")}</span>
-          </Button>
-        </div>
-      </div>
 
-      {!hasConnections ? (
-        <p className="text-sm text-muted-foreground">{t("noConnections")}</p>
-      ) : (
-        <div className="w-full">
-          {/* Vertical flow labels */}
-          {incoming.length > 0 && (
-            <p className="text-xs text-muted-foreground mb-2 text-center">{t("previousSteps")}</p>
-          )}
-          {/* D3 Vertical Graph */}
+        {!hasConnections ? (
+          <p className="text-sm text-muted-foreground">{t("noConnections")}</p>
+        ) : (
           <div className="w-full">
-            <svg ref={svgRef} className="w-full" />
+            {incoming.length > 0 && (
+              <p className="text-xs text-muted-foreground mb-2 text-center">{t("previousSteps")}</p>
+            )}
+            <div className="w-full">
+              <svg ref={svgRef} className="w-full" />
+            </div>
+            {outgoing.length > 0 && (
+              <p className="text-xs text-muted-foreground mt-2 text-center">{t("nextSteps")}</p>
+            )}
           </div>
-          {outgoing.length > 0 && (
-            <p className="text-xs text-muted-foreground mt-2 text-center">{t("nextSteps")}</p>
+        )}
+
+        <AddConnectionDialog
+          open={dialogOpen}
+          onOpenChange={setDialogOpen}
+          promptId={promptId}
+          connectionType={connectionType}
+          onConnectionAdded={handleConnectionAdded}
+        />
+      </div>
+    );
+  }
+
+  // Default: render both (for backwards compatibility)
+  return (
+    <>
+      {!showExpanded && (
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setIsExpanded(true)}
+        >
+          <Link2 className="h-4 w-4 mr-2" />
+          {t("addPromptFlow")}
+          <ChevronRight className="h-4 w-4 ml-1" />
+        </Button>
+      )}
+
+      {showExpanded && (
+        <div className="w-full mt-4 space-y-4 rounded-lg border bg-card p-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <div className="flex items-center gap-2">
+                <Link2 className="h-5 w-5 text-muted-foreground" />
+                <h3 className="font-semibold">{t("title")}</h3>
+              </div>
+              <p className="text-xs text-muted-foreground mt-1">{t("description")}</p>
+            </div>
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  setConnectionType("previous");
+                  setDialogOpen(true);
+                }}
+              >
+                <ArrowUp className="h-4 w-4 sm:mr-1" />
+                <span className="hidden sm:inline">{t("addPrevious")}</span>
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  setConnectionType("next");
+                  setDialogOpen(true);
+                }}
+              >
+                <ArrowDown className="h-4 w-4 sm:mr-1" />
+                <span className="hidden sm:inline">{t("addNext")}</span>
+              </Button>
+            </div>
+          </div>
+
+          {!hasConnections ? (
+            <p className="text-sm text-muted-foreground">{t("noConnections")}</p>
+          ) : (
+            <div className="w-full">
+              {incoming.length > 0 && (
+                <p className="text-xs text-muted-foreground mb-2 text-center">{t("previousSteps")}</p>
+              )}
+              <div className="w-full">
+                <svg ref={svgRef} className="w-full" />
+              </div>
+              {outgoing.length > 0 && (
+                <p className="text-xs text-muted-foreground mt-2 text-center">{t("nextSteps")}</p>
+              )}
+            </div>
           )}
+
+          <AddConnectionDialog
+            open={dialogOpen}
+            onOpenChange={setDialogOpen}
+            promptId={promptId}
+            connectionType={connectionType}
+            onConnectionAdded={handleConnectionAdded}
+          />
         </div>
       )}
 
@@ -641,6 +772,6 @@ export function PromptConnections({
         connectionType={connectionType}
         onConnectionAdded={handleConnectionAdded}
       />
-    </div>
+    </>
   );
 }

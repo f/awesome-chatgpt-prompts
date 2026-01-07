@@ -4,7 +4,7 @@ import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { triggerWebhooks } from "@/lib/webhook";
-import { generatePromptEmbedding } from "@/lib/ai/embeddings";
+import { generatePromptEmbedding, findAndSaveRelatedPrompts } from "@/lib/ai/embeddings";
 import { generatePromptSlug } from "@/lib/slug";
 import { checkPromptQuality } from "@/lib/ai/quality-check";
 import { isSimilarContent, normalizeContent } from "@/lib/similarity";
@@ -247,10 +247,13 @@ export async function POST(request: Request) {
 
     // Generate embedding for AI search (non-blocking)
     // Only for public prompts - the function checks if aiSearch is enabled
+    // After embedding is generated, find and save related prompts
     if (!isPrivate) {
-      generatePromptEmbedding(prompt.id).catch((err) =>
-        console.error("Failed to generate embedding for prompt:", prompt.id, err)
-      );
+      generatePromptEmbedding(prompt.id)
+        .then(() => findAndSaveRelatedPrompts(prompt.id))
+        .catch((err) =>
+          console.error("Failed to generate embedding/related prompts for:", prompt.id, err)
+        );
     }
 
     // Run quality check for auto-delist (non-blocking for public prompts)

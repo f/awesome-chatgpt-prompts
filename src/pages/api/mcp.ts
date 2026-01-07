@@ -10,6 +10,7 @@ import {
 import { z } from "zod";
 import { db } from "@/lib/db";
 import { isValidApiKeyFormat } from "@/lib/api-key";
+import { improvePrompt } from "@/lib/ai/improve-prompt";
 
 interface AuthenticatedUser {
   id: string;
@@ -662,6 +663,55 @@ function createServer(options: ServerOptions = {}) {
     }
   );
 
+  // Improve prompt tool - uses AI to enhance prompts
+  server.registerTool(
+    "improve_prompt",
+    {
+      title: "Improve Prompt",
+      description:
+        "Transform a basic prompt into a well-structured, comprehensive prompt using AI. Optionally searches for similar prompts for inspiration. Supports different output types (text, image, video, sound) and formats (text, JSON, YAML).",
+      inputSchema: {
+        prompt: z.string().min(1).max(10000).describe("The prompt to improve"),
+        outputType: z
+          .enum(["text", "image", "video", "sound"])
+          .default("text")
+          .describe("Content type: text, image, video, or sound"),
+        outputFormat: z
+          .enum(["text", "structured_json", "structured_yaml"])
+          .default("text")
+          .describe("Response format: text, structured_json, or structured_yaml"),
+      },
+    },
+    async ({ prompt, outputType = "text", outputFormat = "text" }) => {
+      if (!authenticatedUser) {
+        return {
+          content: [{ type: "text" as const, text: JSON.stringify({ error: "Authentication required. Please provide an API key." }) }],
+          isError: true,
+        };
+      }
+
+      try {
+        const result = await improvePrompt({ prompt, outputType, outputFormat });
+
+        return {
+          content: [
+            {
+              type: "text" as const,
+              text: JSON.stringify(result, null, 2),
+            },
+          ],
+        };
+      } catch (error) {
+        console.error("MCP improve_prompt error:", error);
+        const message = error instanceof Error ? error.message : "Failed to improve prompt";
+        return {
+          content: [{ type: "text" as const, text: JSON.stringify({ error: message }) }],
+          isError: true,
+        };
+      }
+    }
+  );
+
   return server;
 }
 
@@ -703,6 +753,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         {
           name: "save_prompt",
           description: "Save a new prompt (requires API key authentication).",
+        },
+        {
+          name: "improve_prompt",
+          description: "Transform a basic prompt into a well-structured, comprehensive prompt using AI.",
         },
       ],
       prompts: {

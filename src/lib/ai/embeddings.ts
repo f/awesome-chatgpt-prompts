@@ -2,6 +2,9 @@ import OpenAI from "openai";
 import { Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
 import { getConfig } from "@/lib/config";
+import { loadPrompt, getSystemPrompt } from "./load-prompt";
+
+const queryTranslatorPrompt = loadPrompt("src/lib/ai/query-translator.prompt.yml");
 
 let openai: OpenAI | null = null;
 
@@ -20,6 +23,49 @@ function getOpenAIClient(): OpenAI {
 }
 
 const EMBEDDING_MODEL = process.env.OPENAI_EMBEDDING_MODEL || "text-embedding-3-small";
+const TRANSLATION_MODEL = process.env.OPENAI_TRANSLATION_MODEL || "gpt-4o-mini";
+
+/**
+ * Translate a non-English search query to English keywords for better semantic search.
+ * Uses a cheap model to extract and translate keywords.
+ */
+export async function translateQueryToEnglish(query: string): Promise<string> {
+  const client = getOpenAIClient();
+  
+  try {
+    const response = await client.chat.completions.create({
+      model: TRANSLATION_MODEL,
+      messages: [
+        {
+          role: "system",
+          content: getSystemPrompt(queryTranslatorPrompt)
+        },
+        {
+          role: "user",
+          content: query
+        }
+      ],
+      max_tokens: queryTranslatorPrompt.modelParameters?.maxTokens || 100,
+      temperature: queryTranslatorPrompt.modelParameters?.temperature || 0,
+    });
+    
+    const translatedQuery = response.choices[0]?.message?.content?.trim();
+    return translatedQuery || query;
+  } catch (error) {
+    // If translation fails, return original query
+    console.error("Query translation failed:", error);
+    return query;
+  }
+}
+
+/**
+ * Check if a string contains non-ASCII characters (likely non-English)
+ */
+function containsNonEnglish(text: string): boolean {
+  // Check for characters outside basic ASCII range (excluding common punctuation)
+  // This catches Chinese, Arabic, Japanese, Korean, Cyrillic, etc.
+  return /[^\x00-\x7F]/.test(text);
+}
 
 export async function generateEmbedding(text: string): Promise<number[]> {
   const client = getOpenAIClient();
@@ -169,8 +215,14 @@ export async function semanticSearch(
     throw new Error("AI Search is not enabled");
   }
 
+  // Translate non-English queries to English for better semantic matching
+  let searchQuery = query;
+  if (containsNonEnglish(query)) {
+    searchQuery = await translateQueryToEnglish(query);
+  }
+
   // Generate embedding for the query
-  const queryEmbedding = await generateEmbedding(query);
+  const queryEmbedding = await generateEmbedding(searchQuery);
 
   // Fetch all public prompts with embeddings (excluding soft-deleted)
   const prompts = await db.prompt.findMany({
@@ -241,4 +293,72 @@ export async function semanticSearch(
 export async function isAISearchEnabled(): Promise<boolean> {
   const config = await getConfig();
   return config.features.aiSearch === true && !!process.env.OPENAI_API_KEY;
+}
+
+/**
+ * Find and save 4 related prompts based on embedding similarity
+ * Uses PromptConnection with label "related" to store relationships
+ */
+export async function findAndSaveRelatedPrompts(promptId: string): Promise<void> {
+  const config = await getConfig();
+  if (!config.features.aiSearch) return;
+
+  const prompt = await db.prompt.findUnique({
+    where: { id: promptId },
+    select: { embedding: true, isPrivate: true, authorId: true, type: true },
+  });
+
+  if (!prompt || !prompt.embedding || prompt.isPrivate) return;
+
+  const promptEmbedding = prompt.embedding as number[];
+
+  // Fetch all public prompts with embeddings (excluding this prompt and soft-deleted)
+  // Only match prompts of the same type
+  const candidates = await db.prompt.findMany({
+    where: {
+      id: { not: promptId },
+      isPrivate: false,
+      isUnlisted: false,
+      deletedAt: null,
+      embedding: { not: Prisma.DbNull },
+      type: prompt.type, // Must match the same type
+    },
+    select: {
+      id: true,
+      embedding: true,
+    },
+  });
+
+  // Calculate similarity scores
+  const SIMILARITY_THRESHOLD = 0.5;
+  
+  const scoredPrompts = candidates
+    .map((p) => ({
+      id: p.id,
+      similarity: cosineSimilarity(promptEmbedding, p.embedding as number[]),
+    }))
+    .filter((p) => p.similarity >= SIMILARITY_THRESHOLD)
+    .sort((a, b) => b.similarity - a.similarity)
+    .slice(0, 4);
+
+  if (scoredPrompts.length === 0) return;
+
+  // Delete existing related connections for this prompt
+  await db.promptConnection.deleteMany({
+    where: {
+      sourceId: promptId,
+      label: "related",
+    },
+  });
+
+  // Create new related connections
+  await db.promptConnection.createMany({
+    data: scoredPrompts.map((p, index) => ({
+      sourceId: promptId,
+      targetId: p.id,
+      label: "related",
+      order: index,
+    })),
+    skipDuplicates: true,
+  });
 }

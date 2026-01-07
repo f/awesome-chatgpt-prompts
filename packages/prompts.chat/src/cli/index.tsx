@@ -5,6 +5,7 @@ import clipboardy from 'clipboardy';
 import { PromptList } from './components/PromptList.js';
 import { PromptDetail } from './components/PromptDetail.js';
 import type { Prompt } from './api.js';
+import { createNew } from './new.js';
 
 type View = 'list' | 'detail';
 
@@ -99,16 +100,17 @@ function App() {
 
 const cli = meow(`
   Usage
-    $ prompts-chat
+    $ prompts-chat [command] [options]
 
   Commands
     (default)     Launch interactive TUI
+    new <dir>     Create a new prompts.chat instance
 
   Options
     --help        Show this help
     --version     Show version
 
-  Navigation
+  Navigation (TUI)
     ↑/↓ or j/k    Navigate list
     Enter         Select prompt
     /             Search prompts
@@ -122,13 +124,29 @@ const cli = meow(`
 
   Examples
     $ npx prompts.chat
+    $ npx prompts.chat new my-prompts
     $ prompts-chat
 `, {
   importMeta: import.meta,
   flags: {},
 });
 
-function main() {
+async function main() {
+  const [command, ...args] = cli.input;
+
+  // Handle 'new' command
+  if (command === 'new') {
+    const directory = args[0];
+    if (!directory) {
+      console.error('\n❌ Please specify a directory name.\n');
+      console.error('   Usage: npx prompts.chat new <directory>\n');
+      process.exit(1);
+    }
+    await createNew({ directory });
+    return;
+  }
+
+  // Default: Launch interactive TUI
   console.clear();
   
   const { waitUntilExit } = render(<App />, {

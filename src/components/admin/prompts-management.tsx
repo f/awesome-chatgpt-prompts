@@ -28,6 +28,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
+import { useBranding } from "@/components/providers/branding-provider";
 
 interface ImportResult {
   success: boolean;
@@ -96,6 +97,10 @@ export function PromptsManagement({ aiSearchEnabled, promptsWithoutEmbeddings, t
   const router = useRouter();
   const t = useTranslations("admin");
   const tCommon = useTranslations("common");
+  const branding = useBranding();
+  
+  // Disable import/delete community prompts on main site (not clones)
+  const canModifyCommunityPrompts = branding.useCloneBranding;
   const [loading, setLoading] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [generating, setGenerating] = useState(false);
@@ -107,6 +112,9 @@ export function PromptsManagement({ aiSearchEnabled, promptsWithoutEmbeddings, t
   const [embeddingProgress, setEmbeddingProgress] = useState<ProgressState | null>(null);
   const [slugResult, setSlugResult] = useState<{ success: number; failed: number } | null>(null);
   const [slugProgress, setSlugProgress] = useState<ProgressState | null>(null);
+  const [generatingRelated, setGeneratingRelated] = useState(false);
+  const [relatedResult, setRelatedResult] = useState<{ success: number; failed: number } | null>(null);
+  const [relatedProgress, setRelatedProgress] = useState<ProgressState | null>(null);
 
   // Prompts list state
   const [prompts, setPrompts] = useState<AdminPrompt[]>([]);
@@ -296,6 +304,62 @@ export function PromptsManagement({ aiSearchEnabled, promptsWithoutEmbeddings, t
     toast.success(t("prompts.exportSuccess"));
   };
 
+  const handleGenerateRelatedPrompts = async () => {
+    setGeneratingRelated(true);
+    setRelatedResult(null);
+    setRelatedProgress(null);
+
+    try {
+      const res = await fetch("/api/admin/related-prompts", { method: "POST" });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || "Failed to generate related prompts");
+      }
+
+      // Read the stream
+      const reader = res.body?.getReader();
+      if (!reader) throw new Error("No response body");
+
+      const decoder = new TextDecoder();
+      
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        
+        const text = decoder.decode(value);
+        const lines = text.split("\n\n").filter(line => line.startsWith("data: "));
+        
+        for (const line of lines) {
+          const jsonStr = line.replace("data: ", "");
+          try {
+            const data = JSON.parse(jsonStr);
+            
+            if (data.done) {
+              setRelatedResult({ success: data.success, failed: data.failed });
+              toast.success(t("prompts.relatedSuccess", { count: data.success }));
+              router.refresh();
+            } else {
+              setRelatedProgress({
+                current: data.current,
+                total: data.total,
+                success: data.success,
+                failed: data.failed,
+              });
+            }
+          } catch {
+            // Ignore parse errors
+          }
+        }
+      }
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Failed to generate related prompts");
+    } finally {
+      setGeneratingRelated(false);
+      setRelatedProgress(null);
+    }
+  };
+
   const handleGenerateSlugs = async (regenerate: boolean = false) => {
     setGeneratingSlugs(true);
     setSlugResult(null);
@@ -364,32 +428,34 @@ export function PromptsManagement({ aiSearchEnabled, promptsWithoutEmbeddings, t
 
       <div className="rounded-md border p-3 sm:p-4 space-y-3">
         {/* Import Row */}
-        <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-          <span className="text-sm text-muted-foreground flex-1">{t("import.fileInfo")}</span>
-          <div className="flex gap-2">
-            <Button
-              size="sm"
-              variant="outline"
-              onClick={() => setShowConfirm(true)}
-              disabled={loading || deleting || generating}
-              className="flex-1 sm:flex-none"
-            >
-              {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <><Upload className="h-4 w-4 mr-2" />{t("prompts.import")}</>}
-            </Button>
-            <Button
-              size="sm"
-              variant="ghost"
-              onClick={() => setShowDeleteConfirm(true)}
-              disabled={loading || deleting || generating}
-              className="text-destructive hover:text-destructive"
-            >
-              {deleting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
-            </Button>
+        {canModifyCommunityPrompts && (
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+            <span className="text-sm text-muted-foreground flex-1">{t("import.fileInfo")}</span>
+            <div className="flex gap-2">
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => setShowConfirm(true)}
+                disabled={loading || deleting || generating}
+                className="flex-1 sm:flex-none"
+              >
+                {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <><Upload className="h-4 w-4 mr-2" />{t("prompts.import")}</>}
+              </Button>
+              <Button
+                size="sm"
+                variant="ghost"
+                onClick={() => setShowDeleteConfirm(true)}
+                disabled={loading || deleting || generating}
+                className="text-destructive hover:text-destructive"
+              >
+                {deleting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
+              </Button>
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Export Row */}
-        <div className="flex flex-col sm:flex-row sm:items-center gap-2 pt-3 border-t">
+        <div className={`flex flex-col sm:flex-row sm:items-center gap-2 ${canModifyCommunityPrompts ? "pt-3 border-t" : ""}`}>
           <span className="text-sm text-muted-foreground flex-1">{t("prompts.exportInfo")}</span>
           <Button
             size="sm"
@@ -521,6 +587,54 @@ export function PromptsManagement({ aiSearchEnabled, promptsWithoutEmbeddings, t
             {slugResult.failed === 0 ? <CheckCircle className="h-4 w-4 text-green-500" /> : <AlertCircle className="h-4 w-4 text-amber-500" />}
             <span>{t("prompts.slugsResult", { success: slugResult.success, failed: slugResult.failed })}</span>
           </div>
+        )}
+
+        {/* Related Prompts Row */}
+        {aiSearchEnabled && (
+          <>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 pt-3 border-t">
+              <span className="text-sm text-muted-foreground flex-1">
+                {t("prompts.relatedTitle")}
+              </span>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={handleGenerateRelatedPrompts}
+                disabled={loading || deleting || generating || generatingSlugs || generatingRelated}
+                className="w-full sm:w-auto"
+              >
+                {generatingRelated && !relatedProgress ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                ) : generatingRelated && relatedProgress ? (
+                  <><Loader2 className="h-4 w-4 animate-spin mr-2" />{relatedProgress.current}/{relatedProgress.total}</>
+                ) : (
+                  <><Sparkles className="h-4 w-4 mr-2" />{t("prompts.regenerateRelated")}</>
+                )}
+              </Button>
+            </div>
+
+            {/* Related Progress bar */}
+            {relatedProgress && (
+              <div className="space-y-2">
+                <Progress value={Math.round((relatedProgress.current / relatedProgress.total) * 100)} className="h-2" />
+                <div className="flex justify-between text-xs text-muted-foreground">
+                  <span>{relatedProgress.current} / {relatedProgress.total}</span>
+                  <span>{Math.round((relatedProgress.current / relatedProgress.total) * 100)}%</span>
+                </div>
+                <div className="flex gap-4 text-xs">
+                  <span className="text-green-600">✓ {relatedProgress.success}</span>
+                  {relatedProgress.failed > 0 && <span className="text-red-600">✗ {relatedProgress.failed}</span>}
+                </div>
+              </div>
+            )}
+
+            {relatedResult && !relatedProgress && (
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                {relatedResult.failed === 0 ? <CheckCircle className="h-4 w-4 text-green-500" /> : <AlertCircle className="h-4 w-4 text-amber-500" />}
+                <span>{t("prompts.relatedResult", { success: relatedResult.success, failed: relatedResult.failed })}</span>
+              </div>
+            )}
+          </>
         )}
       </div>
 

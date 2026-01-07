@@ -222,6 +222,7 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
               language={(prompt.structuredFormat?.toLowerCase() as "json" | "yaml") || "json"}
               maxLines={hasMediaBackground ? 3 : 10}
               fontSize="xs"
+              preview
             />
           ) : (
             <pre className={`text-xs text-muted-foreground bg-muted p-2 rounded overflow-hidden font-mono h-full whitespace-pre-wrap break-words ${hasMediaBackground ? "line-clamp-2" : "line-clamp-4"}`}>
@@ -335,6 +336,7 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
                 className="h-6 w-6"
                 categoryName={prompt.category?.name}
                 parentCategoryName={prompt.category?.parent?.name}
+                promptType={prompt.type as "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "STRUCTURED" | "SKILL"}
               />
             )}
           </div>

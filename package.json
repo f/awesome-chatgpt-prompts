@@ -13,6 +13,8 @@
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
     "db:seed": "prisma db seed",
+    "db:resetadmin": "npx tsx prisma/reset-admin.ts",
+    "db:setup": "prisma generate && prisma migrate dev && prisma db seed",
     "setup": "node scripts/setup.js",
     "generate:examples": "npx tsx scripts/generate-examples.ts",
     "postinstall": "prisma generate"

@@ -547,6 +547,77 @@ export const analyticsEngagement = {
 };
 
 // ============================================================================
+// Comment Events
+// ============================================================================
+
+export const analyticsComment = {
+  post: (promptId: string, isReply: boolean) => {
+    trackEvent({
+      action: isReply ? "post_reply" : "post_comment",
+      category: "comment",
+      prompt_id: promptId,
+    });
+  },
+};
+
+// ============================================================================
+// Collection Events
+// ============================================================================
+
+export const analyticsCollection = {
+  add: (promptId: string) => {
+    trackEvent({
+      action: "add_to_collection",
+      category: "collection",
+      prompt_id: promptId,
+    });
+  },
+
+  remove: (promptId: string) => {
+    trackEvent({
+      action: "remove_from_collection",
+      category: "collection",
+      prompt_id: promptId,
+    });
+  },
+};
+
+// ============================================================================
+// Translation Events
+// ============================================================================
+
+export const analyticsTranslate = {
+  translate: (targetLanguage: string) => {
+    trackEvent({
+      action: "translate_prompt",
+      category: "translate",
+      label: targetLanguage,
+    });
+  },
+};
+
+// ============================================================================
+// External Link Events
+// ============================================================================
+
+export const analyticsExternal = {
+  clickChromeExtension: () => {
+    trackEvent({
+      action: "chrome_extension_click",
+      category: "external",
+    });
+  },
+
+  clickFooterLink: (linkName: string) => {
+    trackEvent({
+      action: "footer_link_click",
+      category: "external",
+      label: linkName,
+    });
+  },
+};
+
+// ============================================================================
 // Admin Events
 // ============================================================================
 

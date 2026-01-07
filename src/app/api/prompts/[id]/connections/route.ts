@@ -27,8 +27,9 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
     }
 
     // Get all connections where this prompt is involved (source or target)
+    // Exclude "related" label connections - those are for Related Prompts feature, not Prompt Flow
     const outgoingConnections = await db.promptConnection.findMany({
-      where: { sourceId: id },
+      where: { sourceId: id, label: { not: "related" } },
       orderBy: { order: "asc" },
       include: {
         target: {
@@ -44,7 +45,7 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
     });
 
     const incomingConnections = await db.promptConnection.findMany({
-      where: { targetId: id },
+      where: { targetId: id, label: { not: "related" } },
       orderBy: { order: "asc" },
       include: {
         source: {

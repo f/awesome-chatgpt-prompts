@@ -27,16 +27,35 @@
 
 <div align="center">
   <a href="https://clemta.com/?utm_source=prompts.chat" align="center">
-    <img align="center" height="50" alt="Clemta logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/clemta.webp">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/clemta-dark.webp">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/clemta.webp">
+      <img align="center" height="40" alt="Clemta logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/clemta.webp">
+    </picture>
   </a><br><br>
   <a href="https://wiro.ai/?utm_source=prompts.chat" align="center">
-    <img align="center" height="30" alt="Cognition logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/wiro.png">
+    <img align="center" height="40" alt="Wiro logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/wiro.png">
   </a><br><br>
   <a href="https://wind.surf/prompts-chat" align="center">
-    <img align="center" height="40" alt="Cognition logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/cognition.svg">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/cognition-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/cognition.svg">
+      <img align="center" height="40" alt="Cognition logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/cognition.svg">
+    </picture>
+  </a><br><br>
+  <a href="https://mitte.ai/?utm_source=prompts.chat" align="center">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/mitte-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/mitte.svg">
+      <img align="center" height="40" alt="MitteAI logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/mitte.svg">
+    </picture>
   </a><br><br>
   <a href="https://warp.dev/?utm_source=prompts.chat" align="center">
-    <img align="center" height="30" alt="Warp logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/warp.svg">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/warp-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/warp.svg">
+      <img align="center" height="40" alt="Warp logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/warp.svg">
+    </picture>
   </a><br><br>
   <sub>prompts.chat is built with Windsurf and Devin by Cognition</sub>
 <hr>
@@ -55,19 +74,18 @@ In this repository, you will find a variety of [prompts](prompts.csv) that can b
 
 Check out our [Self-Hosting Guide](SELF-HOSTING.md) for instructions on setting up your own instance with **customizable branding, themes, and authentication**.
 
-### Quickstart
+### Quick Start (Recommended)
+
+Create a new prompts.chat instance with a single command:
 
 ```bash
-git clone https://github.com/f/awesome-chatgpt-prompts.git
-cd awesome-chatgpt-prompts
-npm install
-npm run db:push
-npm run dev
+npx prompts.chat new my-prompt-library
+cd my-prompt-library
 ```
 
-### Private Clone Setup (Recommended for Teams)
+This will clone a clean copy, install dependencies, and launch the interactive setup wizard.
 
-For private deployments, use our **interactive setup wizard** to configure your instance with custom branding, disable sponsorship sections, and set up authentication:
+### Manual Setup
 
 ```bash
 git clone https://github.com/f/awesome-chatgpt-prompts.git
@@ -79,8 +97,8 @@ npm run setup
 The setup wizard will guide you through:
 - **Branding** — Set your organization name, logo, and description
 - **Theme** — Choose colors, border radius, and UI style
-- **Authentication** — Configure GitHub, Google, Azure AD, or email/password login
-- **Features** — Enable/disable private prompts, categories, tags, AI search
+- **Authentication** — Configure GitHub, Google, Apple, Azure AD, or email/password login
+- **Features** — Enable/disable private prompts, categories, tags, comments, AI search, AI generation, MCP
 - **Languages** — Select supported locales
 - **Sponsors** — Optionally add your own sponsor logos (prompts.chat sponsors are disabled)
 

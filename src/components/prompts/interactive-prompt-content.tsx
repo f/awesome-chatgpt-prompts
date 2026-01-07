@@ -339,6 +339,7 @@ export function InteractivePromptContent({
                 getContentWithVariables={getContentWithVariables}
                 categoryName={categoryName}
                 parentCategoryName={parentCategoryName}
+                promptType={promptType as "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "STRUCTURED" | "SKILL"}
                 emphasized
               />
             </div>
@@ -347,6 +348,7 @@ export function InteractivePromptContent({
             content={displayContent} 
             language={structuredFormat}
             className="text-sm"
+            wordWrap
           />
         </div>
       );
@@ -381,11 +383,12 @@ export function InteractivePromptContent({
               getContentWithVariables={getContentWithVariables}
               categoryName={categoryName}
               parentCategoryName={parentCategoryName}
+              promptType={promptType as "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "STRUCTURED" | "SKILL"}
               emphasized
             />
           </div>
         </div>
-        <pre className="whitespace-pre-wrap text-sm bg-muted p-4 rounded-lg font-mono border">
+        <pre className="whitespace-pre-wrap text-sm bg-muted p-4 rounded-lg font-mono border max-h-[500px] overflow-y-auto">
           {displayedContent}
         </pre>
       </div>
@@ -431,6 +434,7 @@ export function InteractivePromptContent({
               getContentWithVariables={getContentWithVariables}
               categoryName={categoryName}
               parentCategoryName={parentCategoryName}
+              promptType={promptType as "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "STRUCTURED" | "SKILL"}
               emphasized
             />
           </div>
@@ -460,6 +464,7 @@ export function InteractivePromptContent({
           content={getFinalContent()} 
           language={structuredFormat}
           className="text-sm"
+          wordWrap
         />
       </div>
     );
@@ -539,6 +544,7 @@ export function InteractivePromptContent({
             getContentWithVariables={getContentWithVariables}
             categoryName={categoryName}
             parentCategoryName={parentCategoryName}
+            promptType={promptType as "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "STRUCTURED" | "SKILL"}
             emphasized
           />
         </div>
@@ -563,7 +569,7 @@ export function InteractivePromptContent({
           ))}
         </div>
       </div>
-      <div className="whitespace-pre-wrap text-sm bg-muted p-4 rounded-lg font-mono border leading-relaxed">
+      <div className="whitespace-pre-wrap text-sm bg-muted p-4 rounded-lg font-mono border leading-relaxed max-h-[500px] overflow-y-auto">
         {renderContent()}
       </div>
     </div>
