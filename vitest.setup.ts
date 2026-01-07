@@ -1,5 +1,20 @@
 import "@testing-library/jest-dom";
-import { vi } from "vitest";
+import { vi, beforeAll, afterAll } from "vitest";
+
+// Suppress console.error and console.log during tests to reduce noise
+// These are expected outputs from error handling tests
+const originalConsoleError = console.error;
+const originalConsoleLog = console.log;
+
+beforeAll(() => {
+  console.error = vi.fn();
+  console.log = vi.fn();
+});
+
+afterAll(() => {
+  console.error = originalConsoleError;
+  console.log = originalConsoleLog;
+});
 
 // Mock environment variables
 process.env.NEXTAUTH_SECRET = "test-secret";
