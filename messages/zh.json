@@ -904,7 +904,10 @@
     "thisWeek": "本周",
     "prompts": "提示词",
     "upvotes": "赞",
-    "noData": "暂无数据"
+    "perPrompt": "每提示词",
+    "noData": "暂无数据",
+    "sortByTotal": "按总票数排序",
+    "sortByRatio": "按每提示词票数排序"
   },
   "errors": {
     "notFound": "页面未找到",

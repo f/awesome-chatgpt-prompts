@@ -904,7 +904,10 @@
     "thisWeek": "Cette Semaine",
     "prompts": "prompts",
     "upvotes": "votes",
-    "noData": "Aucune donnée disponible pour l'instant"
+    "perPrompt": "par prompt",
+    "noData": "Aucune donnée disponible pour l'instant",
+    "sortByTotal": "Trier par votes totaux",
+    "sortByRatio": "Trier par votes par prompt"
   },
   "errors": {
     "notFound": "Page non trouvée",

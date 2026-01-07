@@ -878,7 +878,10 @@
     "thisWeek": "Bu Həftə",
     "prompts": "prompt",
     "upvotes": "bəyənmə",
-    "noData": "Hələ məlumat yoxdur"
+    "perPrompt": "prompt başına",
+    "noData": "Hələ məlumat yoxdur",
+    "sortByTotal": "Ümumi səslərə görə sırala",
+    "sortByRatio": "Prompt başına səslərə görə sırala"
   },
   "errors": {
     "notFound": "Səhifə tapılmadı",

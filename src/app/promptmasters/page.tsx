@@ -1,12 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { Trophy, Medal, Award } from "lucide-react";
+import { Trophy, Medal, Award, BarChart3, TrendingUp } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Button } from "@/components/ui/button";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+
+type SortMode = "total" | "perPrompt";
 
 interface LeaderboardUser {
   id: string;
@@ -55,8 +59,19 @@ function RankBadge({ rank }: { rank: number }) {
   );
 }
 
-function LeaderboardList({ users }: { users: LeaderboardUser[] }) {
+function LeaderboardList({ users, sortMode }: { users: LeaderboardUser[]; sortMode: SortMode }) {
   const t = useTranslations("promptmasters");
+
+  const sortedUsers = useMemo(() => {
+    return [...users].sort((a, b) => {
+      if (sortMode === "perPrompt") {
+        const aRatio = a.promptCount > 0 ? a.totalUpvotes / a.promptCount : 0;
+        const bRatio = b.promptCount > 0 ? b.totalUpvotes / b.promptCount : 0;
+        return bRatio - aRatio;
+      }
+      return b.totalUpvotes - a.totalUpvotes;
+    });
+  }, [users, sortMode]);
 
   if (users.length === 0) {
     return (
@@ -68,7 +83,7 @@ function LeaderboardList({ users }: { users: LeaderboardUser[] }) {
 
   return (
     <div className="divide-y">
-      {users.map((user, index) => (
+      {sortedUsers.map((user, index) => (
         <Link
           key={user.id}
           href={`/@${user.username}`}
@@ -94,8 +109,14 @@ function LeaderboardList({ users }: { users: LeaderboardUser[] }) {
               <p className="text-xs text-muted-foreground">{t("prompts")}</p>
             </div>
             <div className="text-center">
-              <p className="font-semibold text-primary">{user.totalUpvotes}</p>
-              <p className="text-xs text-muted-foreground">{t("upvotes")}</p>
+              <p className="font-semibold text-primary">
+                {sortMode === "perPrompt" 
+                  ? (user.promptCount > 0 ? (user.totalUpvotes / user.promptCount).toFixed(1) : "0")
+                  : user.totalUpvotes}
+              </p>
+              <p className="text-xs text-muted-foreground">
+                {sortMode === "perPrompt" ? t("perPrompt") : t("upvotes")}
+              </p>
             </div>
           </div>
         </Link>
@@ -110,6 +131,7 @@ export default function PromptmastersPage() {
   const [monthly, setMonthly] = useState<LeaderboardData | null>(null);
   const [weekly, setWeekly] = useState<LeaderboardData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [sortMode, setSortMode] = useState<SortMode>("total");
 
   useEffect(() => {
     async function fetchLeaderboards() {
@@ -145,17 +167,39 @@ export default function PromptmastersPage() {
         </div>
 
         <Tabs defaultValue="all" className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mb-6">
+          <div className="flex items-center gap-2 mb-6">
+          <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="all">{t("allTime")}</TabsTrigger>
             <TabsTrigger value="month">{t("thisMonth")}</TabsTrigger>
             <TabsTrigger value="week">{t("thisWeek")}</TabsTrigger>
           </TabsList>
+          <div className="flex-1" />
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => setSortMode(sortMode === "total" ? "perPrompt" : "total")}
+                className="shrink-0"
+              >
+                {sortMode === "total" ? (
+                  <BarChart3 className="h-4 w-4" />
+                ) : (
+                  <TrendingUp className="h-4 w-4" />
+                )}
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              {sortMode === "total" ? t("sortByTotal") : t("sortByRatio")}
+            </TooltipContent>
+          </Tooltip>
+          </div>
 
           <TabsContent value="all" className="mt-0">
             {loading ? (
               <LeaderboardSkeleton />
             ) : (
-              <LeaderboardList users={allTime?.leaderboard || []} />
+              <LeaderboardList users={allTime?.leaderboard || []} sortMode={sortMode} />
             )}
           </TabsContent>
 
@@ -163,7 +207,7 @@ export default function PromptmastersPage() {
             {loading ? (
               <LeaderboardSkeleton />
             ) : (
-              <LeaderboardList users={monthly?.leaderboard || []} />
+              <LeaderboardList users={monthly?.leaderboard || []} sortMode={sortMode} />
             )}
           </TabsContent>
 
@@ -171,7 +215,7 @@ export default function PromptmastersPage() {
             {loading ? (
               <LeaderboardSkeleton />
             ) : (
-              <LeaderboardList users={weekly?.leaderboard || []} />
+              <LeaderboardList users={weekly?.leaderboard || []} sortMode={sortMode} />
             )}
           </TabsContent>
         </Tabs>

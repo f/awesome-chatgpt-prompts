@@ -904,7 +904,10 @@
     "thisWeek": "今週",
     "prompts": "プロンプト",
     "upvotes": "票",
-    "noData": "データがまだありません"
+    "perPrompt": "プロンプトあたり",
+    "noData": "データがまだありません",
+    "sortByTotal": "総投票数で並べ替え",
+    "sortByRatio": "プロンプトあたりの投票数で並べ替え"
   },
   "errors": {
     "notFound": "ページが見つかりません",

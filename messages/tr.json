@@ -904,7 +904,10 @@
     "thisWeek": "Bu Hafta",
     "prompts": "prompt",
     "upvotes": "oy",
-    "noData": "Henüz veri yok"
+    "perPrompt": "prompt başına",
+    "noData": "Henüz veri yok",
+    "sortByTotal": "Toplam oya göre sırala",
+    "sortByRatio": "Prompt başına oya göre sırala"
   },
   "errors": {
     "notFound": "Sayfa bulunamadı",

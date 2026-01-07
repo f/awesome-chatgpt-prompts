@@ -904,7 +904,10 @@
     "thisWeek": "이번 주",
     "prompts": "프롬프트",
     "upvotes": "추천",
-    "noData": "아직 데이터가 없습니다"
+    "perPrompt": "프롬프트당",
+    "noData": "아직 데이터가 없습니다",
+    "sortByTotal": "총 투표수로 정렬",
+    "sortByRatio": "프롬프트당 투표수로 정렬"
   },
   "errors": {
     "notFound": "페이지를 찾을 수 없습니다",

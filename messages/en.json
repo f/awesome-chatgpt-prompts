@@ -878,7 +878,10 @@
     "thisWeek": "This Week",
     "prompts": "prompts",
     "upvotes": "upvotes",
-    "noData": "No data available yet"
+    "perPrompt": "per prompt",
+    "noData": "No data available yet",
+    "sortByTotal": "Sort by total votes",
+    "sortByRatio": "Sort by votes per prompt"
   },
   "errors": {
     "notFound": "Page not found",
