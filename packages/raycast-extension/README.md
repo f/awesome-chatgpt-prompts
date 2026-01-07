@@ -2,6 +2,10 @@
 
 Search, browse, and run AI prompts from [prompts.chat](https://prompts.chat) — the open-source community platform for ChatGPT and AI prompts.
 
+![Search Prompts](metadata/prompts-chat-1.png)
+![Browse Prompts](metadata/prompts-chat-2.png)
+![Run Prompt](metadata/prompts-chat-3.png)
+
 ## Features
 
 - **Search Prompts** — Quickly search through thousands of community AI prompts
