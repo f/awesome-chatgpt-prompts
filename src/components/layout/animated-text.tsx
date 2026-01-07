@@ -7,7 +7,7 @@ interface AnimatedTextProps {
 
 export function AnimatedText({ children, className = "" }: AnimatedTextProps) {
   return (
-    <span className="block whitespace-nowrap overflow-visible">
+    <span className="block overflow-visible">
       <span
         className={`animate-gradient-text ${className}`}
         style={{
