@@ -1,11 +1,4 @@
-import {
-  Action,
-  ActionPanel,
-  Detail,
-  Icon,
-  showToast,
-  Toast,
-} from "@raycast/api";
+import { Action, ActionPanel, Detail, showToast, Toast } from "@raycast/api";
 import { useState, useEffect, useCallback } from "react";
 import type { Prompt } from "./types";
 import { PromptDetailView } from "./components/prompt-detail";

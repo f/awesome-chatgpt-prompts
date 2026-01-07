@@ -5,9 +5,14 @@
   "description": "Search, browse, and copy AI prompts from prompts.chat - the community platform for ChatGPT and AI prompts",
   "icon": "icon.png",
   "author": "fka",
-  "categories": ["Productivity", "Developer Tools"],
+  "categories": [
+    "Productivity",
+    "Developer Tools"
+  ],
   "license": "MIT",
-  "platforms": ["macOS"],
+  "platforms": [
+    "macOS"
+  ],
   "commands": [
     {
       "name": "search-prompts",
@@ -52,21 +57,24 @@
       "description": "The base URL of the prompts.chat instance",
       "type": "textfield",
       "default": "https://prompts.chat",
-      "required": false
+      "required": true
     }
   ],
   "dependencies": {
-    "@raycast/api": "^1.96.1",
+    "@raycast/api": "^1.104.1",
     "@raycast/utils": "^1.19.1",
+    "@rushstack/eslint-patch": "^1.15.0",
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.2",
     "@raycast/eslint-config": "^1.0.11",
     "@types/node": "22.13.14",
     "@types/react": "19.0.10",
     "eslint": "^8.57.0",
     "prettier": "^3.5.3",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.52.0"
   },
   "scripts": {
     "build": "ray build",
