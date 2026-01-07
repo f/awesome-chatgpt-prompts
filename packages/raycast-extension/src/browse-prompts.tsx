@@ -13,11 +13,7 @@ import type { Prompt } from "./types";
 import { getPromptUrl } from "./api";
 import { RunPromptForm } from "./components/run-prompt";
 import { PromptDetailView } from "./components/prompt-detail";
-import {
-  getCachedPrompts,
-  convertToPrompt,
-  type CachedPrompt,
-} from "./cache";
+import { getCachedPrompts, convertToPrompt, type CachedPrompt } from "./cache";
 
 const TYPE_OPTIONS = [
   { title: "All Types", value: "" },
@@ -74,7 +70,7 @@ export default function BrowsePrompts() {
           p.author.username.toLowerCase().includes(query) ||
           (p.author.name && p.author.name.toLowerCase().includes(query)) ||
           p.tags.some((tag) => tag.toLowerCase().includes(query)) ||
-          (p.category && p.category.name.toLowerCase().includes(query))
+          (p.category && p.category.name.toLowerCase().includes(query)),
       );
     }
 

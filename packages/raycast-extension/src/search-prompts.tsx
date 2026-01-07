@@ -29,12 +29,22 @@ export default function SearchPrompts() {
   async function handleDownload() {
     setIsLoading(true);
     try {
-      await showToast({ style: Toast.Style.Animated, title: "Downloading prompts..." });
+      await showToast({
+        style: Toast.Style.Animated,
+        title: "Downloading prompts...",
+      });
       const prompts = await downloadAllPrompts();
       setAllPrompts(prompts);
-      await showToast({ style: Toast.Style.Success, title: `Downloaded ${prompts.length} prompts` });
+      await showToast({
+        style: Toast.Style.Success,
+        title: `Downloaded ${prompts.length} prompts`,
+      });
     } catch (err) {
-      await showToast({ style: Toast.Style.Failure, title: "Download failed", message: String(err) });
+      await showToast({
+        style: Toast.Style.Failure,
+        title: "Download failed",
+        message: String(err),
+      });
     } finally {
       setIsLoading(false);
     }

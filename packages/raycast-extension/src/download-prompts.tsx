@@ -1,6 +1,18 @@
-import { Action, ActionPanel, Detail, Icon, showToast, Toast } from "@raycast/api";
+import {
+  Action,
+  ActionPanel,
+  Detail,
+  Icon,
+  showToast,
+  Toast,
+} from "@raycast/api";
 import { useState, useEffect } from "react";
-import { downloadAllPrompts, getCacheTimestamp, getCachedPrompts, clearCache } from "./cache";
+import {
+  downloadAllPrompts,
+  getCacheTimestamp,
+  getCachedPrompts,
+  clearCache,
+} from "./cache";
 
 export default function DownloadPrompts() {
   const [isLoading, setIsLoading] = useState(false);

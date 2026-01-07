@@ -86,10 +86,7 @@ export function RunPromptForm({ prompt }: RunPromptProps) {
         />
       ))}
       <Form.Separator />
-      <Form.Description
-        title="Preview"
-        text={compiledContent}
-      />
+      <Form.Description title="Preview" text={compiledContent} />
     </Form>
   );
 }

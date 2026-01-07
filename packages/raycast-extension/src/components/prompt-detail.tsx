@@ -110,7 +110,10 @@ ${prompt.tags.length > 0 ? `**Tags:** ${prompt.tags.map((t) => t.tag.name).join(
           {prompt.tags.length > 0 && (
             <Detail.Metadata.TagList title="Tags">
               {prompt.tags.map((t) => (
-                <Detail.Metadata.TagList.Item key={t.tag.id} text={t.tag.name} />
+                <Detail.Metadata.TagList.Item
+                  key={t.tag.id}
+                  text={t.tag.name}
+                />
               ))}
             </Detail.Metadata.TagList>
           )}

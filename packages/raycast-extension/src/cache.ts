@@ -108,7 +108,10 @@ export async function downloadAllPrompts(): Promise<CachedPrompt[]> {
   return prompts;
 }
 
-export function searchPrompts(prompts: CachedPrompt[], query: string): CachedPrompt[] {
+export function searchPrompts(
+  prompts: CachedPrompt[],
+  query: string,
+): CachedPrompt[] {
   if (!query.trim()) return prompts;
 
   const lowerQuery = query.toLowerCase();
@@ -120,7 +123,7 @@ export function searchPrompts(prompts: CachedPrompt[], query: string): CachedPro
       p.author.username.toLowerCase().includes(lowerQuery) ||
       (p.author.name && p.author.name.toLowerCase().includes(lowerQuery)) ||
       (p.category && p.category.name.toLowerCase().includes(lowerQuery)) ||
-      p.tags.some((tag) => tag.toLowerCase().includes(lowerQuery))
+      p.tags.some((tag) => tag.toLowerCase().includes(lowerQuery)),
   );
 }
 

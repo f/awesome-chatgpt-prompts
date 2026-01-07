@@ -35,12 +35,22 @@ export default function BrowseCategories() {
   async function handleDownload() {
     setIsLoading(true);
     try {
-      await showToast({ style: Toast.Style.Animated, title: "Downloading prompts..." });
+      await showToast({
+        style: Toast.Style.Animated,
+        title: "Downloading prompts...",
+      });
       const prompts = await downloadAllPrompts();
       setAllPrompts(prompts);
-      await showToast({ style: Toast.Style.Success, title: `Downloaded ${prompts.length} prompts` });
+      await showToast({
+        style: Toast.Style.Success,
+        title: `Downloaded ${prompts.length} prompts`,
+      });
     } catch (err) {
-      await showToast({ style: Toast.Style.Failure, title: "Download failed", message: String(err) });
+      await showToast({
+        style: Toast.Style.Failure,
+        title: "Download failed",
+        message: String(err),
+      });
     } finally {
       setIsLoading(false);
     }
@@ -57,7 +67,7 @@ export default function BrowseCategories() {
 
   const categories = useMemo(() => {
     const categoryMap = new Map<string, Category>();
-    
+
     for (const prompt of allPrompts) {
       if (prompt.category) {
         const existing = categoryMap.get(prompt.category.slug);
@@ -72,25 +82,27 @@ export default function BrowseCategories() {
         }
       }
     }
-    
+
     return Array.from(categoryMap.values()).sort((a, b) => b.count - a.count);
   }, [allPrompts]);
 
   const categoryPrompts = useMemo(() => {
     if (!selectedCategory) return [];
-    
-    let result = allPrompts.filter((p) => p.category?.slug === selectedCategory);
-    
+
+    let result = allPrompts.filter(
+      (p) => p.category?.slug === selectedCategory,
+    );
+
     if (searchText.trim()) {
       const query = searchText.toLowerCase();
       result = result.filter(
         (p) =>
           p.title.toLowerCase().includes(query) ||
           (p.description && p.description.toLowerCase().includes(query)) ||
-          p.author.username.toLowerCase().includes(query)
+          p.author.username.toLowerCase().includes(query),
       );
     }
-    
+
     return result.sort((a, b) => b.voteCount - a.voteCount);
   }, [allPrompts, selectedCategory, searchText]);
 
@@ -116,8 +128,10 @@ export default function BrowseCategories() {
   }
 
   if (selectedCategory) {
-    const categoryName = categories.find((c) => c.slug === selectedCategory)?.name || selectedCategory;
-    
+    const categoryName =
+      categories.find((c) => c.slug === selectedCategory)?.name ||
+      selectedCategory;
+
     return (
       <List
         isLoading={isLoading}
@@ -130,7 +144,11 @@ export default function BrowseCategories() {
           <List.EmptyView
             icon={Icon.XMarkCircle}
             title="No prompts found"
-            description={searchText ? `No prompts match "${searchText}"` : "No prompts in this category"}
+            description={
+              searchText
+                ? `No prompts match "${searchText}"`
+                : "No prompts in this category"
+            }
             actions={
               <ActionPanel>
                 <Action
@@ -169,7 +187,11 @@ export default function BrowseCategories() {
         />
       ) : (
         categories
-          .filter((c) => !searchText || c.name.toLowerCase().includes(searchText.toLowerCase()))
+          .filter(
+            (c) =>
+              !searchText ||
+              c.name.toLowerCase().includes(searchText.toLowerCase()),
+          )
           .map((category) => (
             <List.Item
               key={category.slug}
@@ -195,7 +217,13 @@ export default function BrowseCategories() {
   );
 }
 
-function PromptListItem({ prompt, onBack }: { prompt: Prompt; onBack: () => void }) {
+function PromptListItem({
+  prompt,
+  onBack,
+}: {
+  prompt: Prompt;
+  onBack: () => void;
+}) {
   const promptUrl = getPromptUrl(prompt.author.username, prompt.slug);
 
   return (
