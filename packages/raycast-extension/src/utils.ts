@@ -187,13 +187,6 @@ export const codePlatforms: Platform[] = [
     isDeeplink: true,
   },
   {
-    id: "goose",
-    name: "Goose",
-    baseUrl: "goose://recipe",
-    supportsQuerystring: true,
-    isDeeplink: true,
-  },
-  {
     id: "github-copilot",
     name: "GitHub Copilot",
     baseUrl: "https://github.com/copilot",

@@ -1,5 +1,9 @@
 import { getPreferenceValues } from "@raycast/api";
-import type { Preferences, Prompt, PromptsResponse } from "./types";
+import type { Prompt, PromptsResponse } from "./types";
+
+interface Preferences {
+  baseUrl: string;
+}
 
 function getBaseUrl(): string {
   const { baseUrl } = getPreferenceValues<Preferences>();

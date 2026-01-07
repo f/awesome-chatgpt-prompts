@@ -62,9 +62,7 @@
   ],
   "dependencies": {
     "@raycast/api": "^1.104.1",
-    "@raycast/utils": "^1.19.1",
-    "@rushstack/eslint-patch": "^1.15.0",
-    "node-fetch": "^3.3.2"
+    "@raycast/utils": "^1.19.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",

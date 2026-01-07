@@ -64,6 +64,6 @@ export interface SearchPromptsResponse {
   }[];
 }
 
-export interface Preferences {
-  baseUrl: string;
-}
+// Preferences are auto-generated from package.json - import from @raycast/api
+// import { getPreferenceValues } from "@raycast/api";
+// const preferences = getPreferenceValues<Preferences>();
