@@ -21,6 +21,7 @@ describe("detectVariables", () => {
       const result = detectVariables("Hello [[ name ]]!");
       expect(result).toHaveLength(1);
       expect(result[0].name).toBe("name");
+      expect(result[0].original).toBe("[[ name ]]");
     });
 
     it("should detect [[name: default]] with default value", () => {
@@ -115,7 +116,7 @@ describe("detectVariables", () => {
       expect(result).toHaveLength(0);
     });
 
-    it("should NOT detect lowercase single words (looks like HTML)", () => {
+    it("should NOT detect lowercase single words in angle brackets (looks like HTML tags)", () => {
       const result = detectVariables("<username>");
       expect(result).toHaveLength(0);
     });
@@ -166,8 +167,8 @@ describe("detectVariables", () => {
       }
     });
 
-    it("should skip programming keywords", () => {
-      // These would be in angle brackets but should be filtered
+    it("should skip uppercase programming keywords in angle brackets", () => {
+      // These would be in angle brackets but should be filtered as keywords
       const result = detectVariables("<IF> <ELSE> <FOR>");
       expect(result).toHaveLength(0);
     });
@@ -270,6 +271,26 @@ describe("convertToSupportedFormat", () => {
       endIndex: 13,
     };
     expect(convertToSupportedFormat(variable)).toBe("${username}");
+  });
+
+  it("should handle consecutive special characters", () => {
+    const variable1: DetectedVariable = {
+      original: "[[user@@name]]",
+      name: "user@@name",
+      pattern: "double_bracket",
+      startIndex: 0,
+      endIndex: 14,
+    };
+    expect(convertToSupportedFormat(variable1)).toBe("${username}");
+
+    const variable2: DetectedVariable = {
+      original: "[[user!@#name]]",
+      name: "user!@#name",
+      pattern: "double_bracket",
+      startIndex: 0,
+      endIndex: 15,
+    };
+    expect(convertToSupportedFormat(variable2)).toBe("${username}");
   });
 });
 

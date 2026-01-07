@@ -48,7 +48,6 @@ describe("cn (className utility)", () => {
 
 describe("isChromeBrowser", () => {
   const originalWindow = global.window;
-  const originalNavigator = global.navigator;
 
   beforeEach(() => {
     // Reset window and navigator before each test
