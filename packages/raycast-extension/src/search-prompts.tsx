@@ -158,7 +158,6 @@ function PromptListItem({ prompt }: { prompt: Prompt }) {
               title="Open Extension Preferences"
               icon={Icon.Gear}
               onAction={openExtensionPreferences}
-              shortcut={{ modifiers: ["cmd"], key: "," }}
             />
           </ActionPanel.Section>
         </ActionPanel>

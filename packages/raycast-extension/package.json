@@ -57,7 +57,7 @@
       "description": "The base URL of the prompts.chat instance",
       "type": "textfield",
       "default": "https://prompts.chat",
-      "required": true
+      "required": false
     }
   ],
   "dependencies": {
