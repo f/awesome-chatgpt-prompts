@@ -16,7 +16,11 @@ vi.mock("next/navigation", () => ({
     forward: vi.fn(),
     prefetch: vi.fn(),
   }),
-  useSearchParams: () => new URLSearchParams(),
+  useSearchParams: () => {
+    const searchParams = new URLSearchParams();
+    // Return ReadonlyURLSearchParams-like object
+    return searchParams as ReadonlyURLSearchParams;
+  },
   usePathname: () => "/",
   useParams: () => ({}),
   redirect: vi.fn(),
@@ -24,14 +28,20 @@ vi.mock("next/navigation", () => ({
 }));
 
 // Mock next/headers
-vi.mock("next/headers", () => ({
-  cookies: () => ({
-    get: vi.fn(),
-    set: vi.fn(),
-    delete: vi.fn(),
-  }),
-  headers: () => new Headers(),
-}));
+vi.mock("next/headers", () => {
+  const getCookieMock = vi.fn().mockReturnValue(null);
+  const setCookieMock = vi.fn();
+  const deleteCookieMock = vi.fn();
+
+  return {
+    cookies: () => ({
+      get: getCookieMock,
+      set: setCookieMock,
+      delete: deleteCookieMock,
+    }),
+    headers: () => new Headers(),
+  };
+});
 
 // Mock next-intl
 vi.mock("next-intl", () => ({

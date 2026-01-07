@@ -268,6 +268,15 @@ describe("POST /api/auth/register", () => {
 
       const response = await POST(request);
       expect(response.status).toBe(200);
+      
+      // Verify that db.user.create was called with the correct username
+      expect(db.user.create).toHaveBeenCalledWith(
+        expect.objectContaining({
+          data: expect.objectContaining({
+            username: "test_user_123",
+          }),
+        })
+      );
     });
   });
 
