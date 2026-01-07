@@ -32,9 +32,7 @@ vi.mock("next/navigation", () => ({
     prefetch: vi.fn(),
   }),
   useSearchParams: () => {
-    const searchParams = new URLSearchParams();
-    // Return ReadonlyURLSearchParams-like object
-    return searchParams as ReadonlyURLSearchParams;
+    return new URLSearchParams();
   },
   usePathname: () => "/",
   useParams: () => ({}),
