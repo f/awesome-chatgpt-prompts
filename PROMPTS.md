@@ -37174,3 +37174,21 @@ Take a deep breath and work on this problem step-by-step.
 
 </details>
 
+<details>
+<summary><strong>Prompt</strong></summary>
+
+## Prompt
+
+Contributed by [@femibright750@gmail.com](https://github.com/femibright750@gmail.com)
+
+```md
+write a prompt to prepare a content guide on google form using this format
+Days	Content type	Content killer	Copy	Samples : Links for videos or pics	Notes
+	Static post/Videos	Educative	I need idea for		
+		Interactive			
+		Fun			
+
+```
+
+</details>
+
