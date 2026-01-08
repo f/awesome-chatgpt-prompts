@@ -4,9 +4,9 @@ import { getTranslations } from "next-intl/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Prisma } from "@prisma/client";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Users, FolderTree, Tags, FileText, Webhook, Flag } from "lucide-react";
+import { Users, FolderTree, Tags, FileText } from "lucide-react";
+import { AdminTabs } from "@/components/admin/admin-tabs";
 import { UsersTable } from "@/components/admin/users-table";
 import { CategoriesTable } from "@/components/admin/categories-table";
 import { TagsTable } from "@/components/admin/tags-table";
@@ -178,71 +178,33 @@ export default async function AdminPage() {
       </div>
 
       {/* Management Tabs */}
-      <Tabs defaultValue="users" className="space-y-4">
-        <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
-          <TabsList className="w-max sm:w-auto">
-            <TabsTrigger value="users" className="gap-1.5 sm:gap-2 px-2.5 sm:px-3">
-              <Users className="h-4 w-4" />
-              <span className="hidden sm:inline">{t("tabs.users")}</span>
-            </TabsTrigger>
-            <TabsTrigger value="categories" className="gap-1.5 sm:gap-2 px-2.5 sm:px-3">
-              <FolderTree className="h-4 w-4" />
-              <span className="hidden sm:inline">{t("tabs.categories")}</span>
-            </TabsTrigger>
-            <TabsTrigger value="tags" className="gap-1.5 sm:gap-2 px-2.5 sm:px-3">
-              <Tags className="h-4 w-4" />
-              <span className="hidden sm:inline">{t("tabs.tags")}</span>
-            </TabsTrigger>
-            <TabsTrigger value="webhooks" className="gap-1.5 sm:gap-2 px-2.5 sm:px-3">
-              <Webhook className="h-4 w-4" />
-              <span className="hidden sm:inline">{t("tabs.webhooks")}</span>
-            </TabsTrigger>
-            <TabsTrigger value="prompts" className="gap-1.5 sm:gap-2 px-2.5 sm:px-3">
-              <FileText className="h-4 w-4" />
-              <span className="hidden sm:inline">{t("tabs.prompts")}</span>
-            </TabsTrigger>
-            <TabsTrigger value="reports" className="gap-1.5 sm:gap-2 px-2.5 sm:px-3">
-              <Flag className="h-4 w-4" />
-              <span className="hidden sm:inline">{t("tabs.reports")}</span>
-              {reports.filter(r => r.status === "PENDING").length > 0 && (
-                <span className="ml-1 px-1.5 py-0.5 text-xs bg-destructive text-white rounded-full">
-                  {reports.filter(r => r.status === "PENDING").length}
-                </span>
-              )}
-            </TabsTrigger>
-          </TabsList>
-        </div>
-
-        <TabsContent value="users">
-          <UsersTable />
-        </TabsContent>
-
-        <TabsContent value="categories">
-          <CategoriesTable categories={categories} />
-        </TabsContent>
-
-        <TabsContent value="tags">
-          <TagsTable tags={tags} />
-        </TabsContent>
-
-        <TabsContent value="webhooks">
-          <WebhooksTable webhooks={webhooks} />
-        </TabsContent>
-
-        <TabsContent value="prompts">
-          <PromptsManagement 
-            aiSearchEnabled={aiSearchEnabled} 
-            promptsWithoutEmbeddings={promptsWithoutEmbeddings}
-            totalPublicPrompts={totalPublicPrompts}
-            promptsWithoutSlugs={promptsWithoutSlugs}
-            totalPrompts={totalPrompts}
-          />
-        </TabsContent>
-
-        <TabsContent value="reports">
-          <ReportsTable reports={reports} />
-        </TabsContent>
-      </Tabs>
+      <AdminTabs
+        translations={{
+          users: t("tabs.users"),
+          categories: t("tabs.categories"),
+          tags: t("tabs.tags"),
+          webhooks: t("tabs.webhooks"),
+          prompts: t("tabs.prompts"),
+          reports: t("tabs.reports"),
+        }}
+        pendingReportsCount={reports.filter(r => r.status === "PENDING").length}
+        children={{
+          users: <UsersTable />,
+          categories: <CategoriesTable categories={categories} />,
+          tags: <TagsTable tags={tags} />,
+          webhooks: <WebhooksTable webhooks={webhooks} />,
+          prompts: (
+            <PromptsManagement 
+              aiSearchEnabled={aiSearchEnabled} 
+              promptsWithoutEmbeddings={promptsWithoutEmbeddings}
+              totalPublicPrompts={totalPublicPrompts}
+              promptsWithoutSlugs={promptsWithoutSlugs}
+              totalPrompts={totalPrompts}
+            />
+          ),
+          reports: <ReportsTable reports={reports} />,
+        }}
+      />
     </div>
   );
 }
