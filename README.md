@@ -43,6 +43,13 @@
       <img align="center" height="40" alt="Cognition logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/cognition.svg">
     </picture>
   </a><br><br>
+  <a href="https://coderabbit.link/fatih" align="center">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/coderabbit-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/coderabbit.svg">
+      <img align="center" height="40" alt="CodeRabbit logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/coderabbit.svg">
+    </picture>
+  </a><br><br>
   <a href="https://mitte.ai/?utm_source=prompts.chat" align="center">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/mitte-dark.svg">
