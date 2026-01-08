@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button";
 import { Masonry } from "@/components/ui/masonry";
 import { useFilterContext } from "./filter-context";
 import { PromptCard, type PromptCardProps } from "./prompt-card";
+import { WidgetCard } from "./widget-card";
+import { injectWidgets, isWidget } from "@/lib/plugins/widgets";
 
 interface InfinitePromptListProps {
   initialPrompts: PromptCardProps["prompt"][];
@@ -17,6 +19,7 @@ interface InfinitePromptListProps {
     q?: string;
     type?: string;
     category?: string;
+    categorySlug?: string;
     tag?: string;
     sort?: string;
   };
@@ -183,12 +186,19 @@ export function InfinitePromptList({
     );
   }
 
+  // Inject widgets into the prompt list (widgets decide their own injection logic)
+  const itemsToRender = injectWidgets(prompts, { filters });
+
   return (
     <div className="space-y-4">
       <Masonry columnCount={{ default: 1, md: 2, lg: 3 }} gap={16}>
-        {prompts.map((prompt) => (
-          <PromptCard key={prompt.id} prompt={prompt} />
-        ))}
+        {itemsToRender.map((item) => 
+          isWidget(item) ? (
+            <WidgetCard key={item.id} prompt={item} />
+          ) : (
+            <PromptCard key={item.id} prompt={item} />
+          )
+        )}
       </Masonry>
 
       {/* Loader / End indicator / Error state */}

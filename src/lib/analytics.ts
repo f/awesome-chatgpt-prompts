@@ -618,6 +618,49 @@ export const analyticsExternal = {
 };
 
 // ============================================================================
+// Widget Events
+// ============================================================================
+
+export const analyticsWidget = {
+  view: (widgetId: string, actionName?: string) => {
+    trackEvent({
+      action: "widget_view",
+      category: "widget",
+      label: actionName,
+      widget_id: widgetId,
+    });
+  },
+
+  click: (widgetId: string, actionName?: string) => {
+    trackEvent({
+      action: "widget_click",
+      category: "widget",
+      label: actionName,
+      widget_id: widgetId,
+    });
+  },
+
+  copy: (widgetId: string, actionName?: string) => {
+    trackEvent({
+      action: "widget_copy",
+      category: "widget",
+      label: actionName,
+      widget_id: widgetId,
+    });
+  },
+
+  action: (widgetId: string, actionName?: string, actionUrl?: string) => {
+    trackEvent({
+      action: "widget_action",
+      category: "widget",
+      label: actionName,
+      widget_id: widgetId,
+      action_url: actionUrl,
+    });
+  },
+};
+
+// ============================================================================
 // Admin Events
 // ============================================================================
 

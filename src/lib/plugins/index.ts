@@ -6,6 +6,7 @@ import { getConfig } from "@/lib/config";
 // Export all types
 export * from "./types";
 export * from "./registry";
+export * from "./widgets";
 
 // Initialize all built-in plugins
 let initialized = false;

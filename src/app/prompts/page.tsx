@@ -302,6 +302,7 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
                 q: params.q,
                 type: params.type,
                 category: params.category,
+                categorySlug: categories.find(c => c.id === params.category)?.slug,
                 tag: params.tag,
                 sort: params.sort,
               }}
