@@ -46,6 +46,7 @@
     "@radix-ui/react-switch": "^1.2.6",
     "@radix-ui/react-tabs": "^1.1.13",
     "@radix-ui/react-tooltip": "^1.2.8",
+    "@sentry/nextjs": "^10.32.1",
     "@types/d3": "^7.4.3",
     "bcryptjs": "^3.0.3",
     "class-variance-authority": "^0.7.1",
