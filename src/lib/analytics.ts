@@ -495,6 +495,36 @@ export const analyticsHero = {
 };
 
 // ============================================================================
+// Sponsor Events
+// ============================================================================
+
+export const analyticsSponsor = {
+  click: (sponsorName: string, sponsorUrl: string) => {
+    trackEvent({
+      action: "sponsor_click",
+      category: "sponsor",
+      label: sponsorName,
+      sponsor_url: sponsorUrl,
+    });
+  },
+
+  becomeSponsorClick: () => {
+    trackEvent({
+      action: "become_sponsor_click",
+      category: "sponsor",
+    });
+  },
+
+  builtWithClick: (toolName: string) => {
+    trackEvent({
+      action: "built_with_click",
+      category: "sponsor",
+      label: toolName,
+    });
+  },
+};
+
+// ============================================================================
 // MCP Events
 // ============================================================================
 
