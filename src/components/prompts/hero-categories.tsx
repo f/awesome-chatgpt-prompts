@@ -180,22 +180,24 @@ export function HeroCategories() {
       
       <p className="text-sm text-muted-foreground">{t("prefix")}</p>
       
-      <div className="grid grid-cols-3 border border-border/50 rounded-lg overflow-hidden backdrop-blur-md bg-background/50 w-full max-w-md">
+      <div className="grid grid-cols-3 gap-3 w-full max-w-md">
         {visibleItems.map((industry, idx) => (
           <button
             key={idx}
             onClick={() => handleClick(industry)}
+            style={{
+              animationDelay: `${idx * 0.15}s`,
+            }}
             className={cn(
               "px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm font-medium whitespace-nowrap truncate",
-              "hover:bg-primary hover:text-primary-foreground",
+              "hover:bg-primary hover:text-primary-foreground hover:shadow-lg hover:-translate-y-0.5",
               "cursor-pointer transition-all duration-200",
-              "border-r border-b border-border",
-              "[&:nth-child(3n)]:border-r-0",
-              "[&:nth-child(n+7)]:border-b-0",
+              "border border-border/30 rounded-lg backdrop-blur-md",
+              "shadow-md animate-float",
               changingIdx === idx && !isFlashing && "opacity-0 scale-95",
               changingIdx === idx && isFlashing 
                 ? "bg-primary/40 scale-105" 
-                : "bg-muted/30"
+                : "bg-background/80"
             )}
           >
             {t(industry)}

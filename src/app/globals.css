@@ -247,27 +247,18 @@
 .density-comfortable h2 { font-size: 2rem; }
 .density-comfortable h3 { font-size: 1.5rem; }
 
-/* Hero floating animation - smooth multi-directional */
+/* Hero floating animation - subtle up/down */
 @keyframes float {
-  0% {
-    transform: translate(0, 0);
-  }
-  25% {
-    transform: translate(4px, -8px);
+  0%, 100% {
+    transform: translateY(0);
   }
   50% {
-    transform: translate(-3px, -4px);
-  }
-  75% {
-    transform: translate(-5px, -10px);
-  }
-  100% {
-    transform: translate(0, 0);
+    transform: translateY(-4px);
   }
 }
 
 .animate-float {
-  animation: float 4s ease-in-out infinite;
+  animation: float 3s ease-in-out infinite;
 }
 
 /* Hero bubble enter animation */
