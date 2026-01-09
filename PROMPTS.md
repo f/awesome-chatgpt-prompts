@@ -8251,13 +8251,12 @@ ${context} - Additional context or specific areas to focus on.
 
 ## Comprehensive repository analysis
 
-Contributed by [@hocestnonsatis](https://github.com/hocestnonsatis)
+Contributed by [@hocestnonsatis](https://github.com/hocestnonsatis), [@ersinkoc](https://github.com/ersinkoc)
 
 ```md
 {
   "task": "comprehensive_repository_analysis",
   "objective": "Conduct exhaustive analysis of entire codebase to identify, prioritize, fix, and document ALL verifiable bugs, security vulnerabilities, and critical issues across any technology stack",
-  
   "analysis_phases": [
     {
       "phase": 1,
@@ -8384,16 +8383,29 @@ Contributed by [@hocestnonsatis](https://github.com/hocestnonsatis)
         "bug_id": "Sequential identifier (BUG-001, BUG-002, etc.)",
         "severity": {
           "type": "enum",
-          "values": ["CRITICAL", "HIGH", "MEDIUM", "LOW"],
+          "values": [
+            "CRITICAL",
+            "HIGH",
+            "MEDIUM",
+            "LOW"
+          ],
           "description": "Bug severity level"
         },
         "category": {
           "type": "enum",
-          "values": ["SECURITY", "FUNCTIONAL", "PERFORMANCE", "INTEGRATION", "CODE_QUALITY"],
+          "values": [
+            "SECURITY",
+            "FUNCTIONAL",
+            "PERFORMANCE",
+            "INTEGRATION",
+            "CODE_QUALITY"
+          ],
           "description": "Bug classification"
         },
         "location": {
-          "files": ["Array of affected file paths with line numbers"],
+          "files": [
+            "Array of affected file paths with line numbers"
+          ],
           "component": "Module/Service/Feature name",
           "function": "Specific function or method name"
         },
@@ -8408,7 +8420,9 @@ Contributed by [@hocestnonsatis](https://github.com/hocestnonsatis)
           "business_impact": "Effect on business (compliance, revenue, reputation, legal)"
         },
         "reproduction": {
-          "steps": ["Step-by-step instructions to reproduce"],
+          "steps": [
+            "Step-by-step instructions to reproduce"
+          ],
           "test_data": "Sample data or conditions needed",
           "actual_result": "What happens when reproduced",
           "expected_result": "What should happen"
@@ -8419,9 +8433,15 @@ Contributed by [@hocestnonsatis](https://github.com/hocestnonsatis)
           "logs_or_metrics": "Evidence from logs or monitoring"
         },
         "dependencies": {
-          "related_bugs": ["Array of related BUG-IDs"],
-          "blocking_issues": ["Array of bugs that must be fixed first"],
-          "blocked_by": ["External factors preventing fix"]
+          "related_bugs": [
+            "Array of related BUG-IDs"
+          ],
+          "blocking_issues": [
+            "Array of bugs that must be fixed first"
+          ],
+          "blocked_by": [
+            "External factors preventing fix"
+          ]
         },
         "metadata": {
           "discovered_date": "ISO 8601 timestamp",
@@ -8434,12 +8454,12 @@ Contributed by [@hocestnonsatis](https://github.com/hocestnonsatis)
         "criteria": [
           {
             "factor": "severity",
-            "weight": 0.40,
+            "weight": 0.4,
             "scale": "CRITICAL=100, HIGH=70, MEDIUM=40, LOW=10"
           },
           {
             "factor": "user_impact",
-            "weight": 0.30,
+            "weight": 0.3,
             "scale": "All users=100, Many=70, Some=40, Few=10"
           },
           {
@@ -8574,11 +8594,23 @@ Contributed by [@hocestnonsatis](https://github.com/hocestnonsatis)
         },
         {
           "step": "Measure code coverage",
-          "tools": ["Istanbul/NYC", "Coverage.py", "JaCoCo", "SimpleCov", "Tarpaulin"]
+          "tools": [
+            "Istanbul/NYC",
+            "Coverage.py",
+            "JaCoCo",
+            "SimpleCov",
+            "Tarpaulin"
+          ]
         },
         {
           "step": "Run static analysis",
-          "tools": ["ESLint", "Pylint", "golangci-lint", "SpotBugs", "Clippy"]
+          "tools": [
+            "ESLint",
+            "Pylint",
+            "golangci-lint",
+            "SpotBugs",
+            "Clippy"
+          ]
         },
         {
           "step": "Performance benchmarking",
@@ -8586,7 +8618,12 @@ Contributed by [@hocestnonsatis](https://github.com/hocestnonsatis)
         },
         {
           "step": "Security scanning",
-          "tools": ["Snyk", "OWASP Dependency-Check", "Trivy", "Bandit"]
+          "tools": [
+            "Snyk",
+            "OWASP Dependency-Check",
+            "Trivy",
+            "Bandit"
+          ]
         }
       ]
     },
@@ -8630,14 +8667,31 @@ Contributed by [@hocestnonsatis](https://github.com/hocestnonsatis)
           "code_quality": "count"
         },
         "detailed_fix_table": {
-          "columns": ["BUG-ID", "File", "Line", "Category", "Severity", "Description", "Status", "Test Added"],
+          "columns": [
+            "BUG-ID",
+            "File",
+            "Line",
+            "Category",
+            "Severity",
+            "Description",
+            "Status",
+            "Test Added"
+          ],
           "format": "Markdown table or CSV"
         },
         "risk_assessment": {
-          "remaining_high_priority": ["List of unfixed critical issues"],
-          "recommended_next_steps": ["Prioritized action items"],
-          "technical_debt": ["Summary of identified tech debt"],
-          "breaking_changes": ["Any backwards-incompatible fixes"]
+          "remaining_high_priority": [
+            "List of unfixed critical issues"
+          ],
+          "recommended_next_steps": [
+            "Prioritized action items"
+          ],
+          "technical_debt": [
+            "Summary of identified tech debt"
+          ],
+          "breaking_changes": [
+            "Any backwards-incompatible fixes"
+          ]
         },
         "testing_results": {
           "test_command": "Exact command used to run tests",
@@ -8701,7 +8755,6 @@ Contributed by [@hocestnonsatis](https://github.com/hocestnonsatis)
       }
     }
   ],
-  
   "constraints_and_best_practices": [
     "NEVER compromise security for simplicity or convenience",
     "MAINTAIN complete audit trail of all changes",
@@ -8714,7 +8767,6 @@ Contributed by [@hocestnonsatis](https://github.com/hocestnonsatis)
     "AVOID introducing new dependencies without justification",
     "TEST in multiple environments when applicable"
   ],
-  
   "output_formats": [
     {
       "format": "markdown",
@@ -8731,7 +8783,15 @@ Contributed by [@hocestnonsatis](https://github.com/hocestnonsatis)
       "format": "csv",
       "purpose": "Import into bug tracking systems (Jira, GitHub Issues)",
       "filename_pattern": "bugs_{date}.csv",
-      "columns": ["BUG-ID", "Severity", "Category", "File", "Line", "Description", "Status"]
+      "columns": [
+        "BUG-ID",
+        "Severity",
+        "Category",
+        "File",
+        "Line",
+        "Description",
+        "Status"
+      ]
     },
     {
       "format": "yaml",
@@ -8739,7 +8799,6 @@ Contributed by [@hocestnonsatis](https://github.com/hocestnonsatis)
       "filename_pattern": "bug_config_{date}.yaml"
     }
   ],
-  
   "special_considerations": {
     "monorepos": "Analyze each package/workspace separately with cross-package dependency tracking",
     "microservices": "Consider inter-service contracts, API compatibility, and distributed tracing",
@@ -8749,7 +8808,6 @@ Contributed by [@hocestnonsatis](https://github.com/hocestnonsatis)
     "regulated_industries": "Ensure compliance requirements met (HIPAA, PCI-DSS, SOC2, GDPR)",
     "open_source_projects": "Follow contribution guidelines; engage with maintainers before large changes"
   },
-  
   "success_criteria": {
     "quantitative": [
       "All CRITICAL and HIGH severity bugs addressed",
