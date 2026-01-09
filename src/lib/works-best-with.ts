@@ -9,59 +9,42 @@ export interface PromptMCPConfig {
 // Well-known AI models (slug -> display info)
 export const AI_MODELS = {
   // OpenAI
-  "gpt-4o": { name: "GPT-4o", provider: "OpenAI" },
-  "gpt-4o-mini": { name: "GPT-4o Mini", provider: "OpenAI" },
-  "gpt-4-turbo": { name: "GPT-4 Turbo", provider: "OpenAI" },
-  "gpt-4": { name: "GPT-4", provider: "OpenAI" },
-  "o1": { name: "o1", provider: "OpenAI" },
-  "o1-mini": { name: "o1 Mini", provider: "OpenAI" },
-  "o1-pro": { name: "o1 Pro", provider: "OpenAI" },
+  "gpt-5-*": { name: "GPT-5.*", provider: "OpenAI" },
   "o3": { name: "o3", provider: "OpenAI" },
-  "o3-mini": { name: "o3 Mini", provider: "OpenAI" },
-  "gpt-4-5": { name: "GPT-4.5", provider: "OpenAI" },
+  "gpt-4o": { name: "GPT-4o", provider: "OpenAI" },
+  "o4-mini": { name: "o4-mini", provider: "OpenAI" },
 
   // Anthropic
-  "claude-3-5-sonnet": { name: "Claude 3.5 Sonnet", provider: "Anthropic" },
-  "claude-3-5-haiku": { name: "Claude 3.5 Haiku", provider: "Anthropic" },
-  "claude-3-opus": { name: "Claude 3 Opus", provider: "Anthropic" },
+  "claude-4-5-opus": { name: "Claude 4.5 Opus", provider: "Anthropic" },
+  "claude-4-5-sonnet": { name: "Claude 4.5 Sonnet", provider: "Anthropic" },
+  "claude-4-5-haiku": { name: "Claude 4.5 Haiku", provider: "Anthropic" },
   "claude-4-sonnet": { name: "Claude 4 Sonnet", provider: "Anthropic" },
   "claude-4-opus": { name: "Claude 4 Opus", provider: "Anthropic" },
+  "claude-3-5-sonnet": { name: "Claude 3.5 Sonnet", provider: "Anthropic" },
 
   // Google
-  "gemini-2-0-flash": { name: "Gemini 2.0 Flash", provider: "Google" },
+  "gemini-3": { name: "Gemini 3", provider: "Google" },
+  "gemini-3-pro": { name: "Gemini 3 Pro", provider: "Google" },
   "gemini-2-5-pro": { name: "Gemini 2.5 Pro", provider: "Google" },
   "gemini-2-5-flash": { name: "Gemini 2.5 Flash", provider: "Google" },
-  "gemma-3": { name: "Gemma 3", provider: "Google" },
-
-  // Meta
-  "llama-4": { name: "Llama 4", provider: "Meta" },
-  "llama-4-scout": { name: "Llama 4 Scout", provider: "Meta" },
-  "llama-4-maverick": { name: "Llama 4 Maverick", provider: "Meta" },
-  "llama-3-3": { name: "Llama 3.3", provider: "Meta" },
 
   // xAI
+  "grok-4": { name: "Grok 4", provider: "xAI" },
   "grok-3": { name: "Grok 3", provider: "xAI" },
-  "grok-2": { name: "Grok 2", provider: "xAI" },
 
-  // DeepSeek
-  "deepseek-r1": { name: "DeepSeek R1", provider: "DeepSeek" },
-  "deepseek-v3": { name: "DeepSeek V3", provider: "DeepSeek" },
+  // Image Generation
+  "nano-banana": { name: "Nano Banana", provider: "Google" },
+  "nano-banana-pro": { name: "Nano Banana Pro", provider: "Google" },
+  "dall-e-3": { name: "DALL·E 3", provider: "OpenAI" },
+  "midjourney": { name: "Midjourney", provider: "Midjourney" },
+  "stable-diffusion": { name: "Stable Diffusion", provider: "Stability AI" },
+  "flux": { name: "Flux", provider: "Black Forest Labs" },
 
-  // Mistral
-  "mistral-large": { name: "Mistral Large", provider: "Mistral" },
-  "mixtral-8x22b": { name: "Mixtral 8x22B", provider: "Mistral" },
-  "codestral": { name: "Codestral", provider: "Mistral" },
-
-  // Alibaba
-  "qwen-2-5": { name: "Qwen 2.5", provider: "Alibaba" },
-  "qwen-3": { name: "Qwen 3", provider: "Alibaba" },
-
-  // Microsoft
-  "phi-4": { name: "Phi-4", provider: "Microsoft" },
-
-  // Amazon
-  "nova-pro": { name: "Nova Pro", provider: "Amazon" },
-  "nova-lite": { name: "Nova Lite", provider: "Amazon" },
+  // Video Generation
+  "sora 2": { name: "Sora 2", provider: "OpenAI" },
+  "runway-gen4": { name: "Runway Gen-4", provider: "Runway" },
+  "veo": { name: "Veo", provider: "Google" },
+  "kling": { name: "Kling", provider: "Kuaishou" },
 } as const;
 
 export type AIModelSlug = keyof typeof AI_MODELS;
