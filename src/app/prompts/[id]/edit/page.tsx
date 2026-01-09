@@ -96,6 +96,8 @@ export default async function EditPromptPage({ params }: EditPromptPageProps) {
     requiresMediaUpload: prompt.requiresMediaUpload,
     requiredMediaType: (prompt.requiredMediaType as "IMAGE" | "VIDEO" | "DOCUMENT") || "IMAGE",
     requiredMediaCount: prompt.requiredMediaCount || 1,
+    bestWithModels: (prompt as unknown as { bestWithModels?: string[] }).bestWithModels || [],
+    bestWithMCP: (prompt as unknown as { bestWithMCP?: { command: string; tools?: string[] }[] }).bestWithMCP || [],
   };
 
   // Check if AI generation is enabled

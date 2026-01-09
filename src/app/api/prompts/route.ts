@@ -23,6 +23,11 @@ const promptSchema = z.object({
   requiresMediaUpload: z.boolean().optional(),
   requiredMediaType: z.enum(["IMAGE", "VIDEO", "DOCUMENT"]).optional(),
   requiredMediaCount: z.number().int().min(1).max(10).optional(),
+  bestWithModels: z.array(z.string()).max(3).optional(),
+  bestWithMCP: z.array(z.object({
+    command: z.string(),
+    tools: z.array(z.string()).optional(),
+  })).optional(),
 });
 
 // Create prompt
@@ -46,7 +51,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const { title, description, content, type, structuredFormat, categoryId, tagIds, contributorIds, isPrivate, mediaUrl, requiresMediaUpload, requiredMediaType, requiredMediaCount } = parsed.data;
+    const { title, description, content, type, structuredFormat, categoryId, tagIds, contributorIds, isPrivate, mediaUrl, requiresMediaUpload, requiredMediaType, requiredMediaCount, bestWithModels, bestWithMCP } = parsed.data;
 
     // Check if user is flagged (for auto-delisting and daily limit)
     const currentUser = await db.user.findUnique({
@@ -176,6 +181,8 @@ export async function POST(request: Request) {
         requiresMediaUpload: requiresMediaUpload || false,
         requiredMediaType: requiresMediaUpload ? requiredMediaType : null,
         requiredMediaCount: requiresMediaUpload ? requiredMediaCount : null,
+        bestWithModels: bestWithModels || [],
+        bestWithMCP: bestWithMCP || [],
         authorId: session.user.id,
         categoryId: categoryId || null,
         // Auto-delist prompts from flagged users

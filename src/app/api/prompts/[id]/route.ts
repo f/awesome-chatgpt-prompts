@@ -21,6 +21,11 @@ const updatePromptSchema = z.object({
   requiresMediaUpload: z.boolean().optional(),
   requiredMediaType: z.enum(["IMAGE", "VIDEO", "DOCUMENT"]).optional().nullable(),
   requiredMediaCount: z.number().int().min(1).max(10).optional().nullable(),
+  bestWithModels: z.array(z.string()).max(3).optional(),
+  bestWithMCP: z.array(z.object({
+    command: z.string(),
+    tools: z.array(z.string()).optional(),
+  })).optional(),
 });
 
 // Get single prompt
@@ -156,7 +161,7 @@ export async function PATCH(
       );
     }
 
-    const { tagIds, contributorIds, categoryId, mediaUrl, title, ...data } = parsed.data;
+    const { tagIds, contributorIds, categoryId, mediaUrl, title, bestWithModels, bestWithMCP, ...data } = parsed.data;
 
     // Regenerate slug if title changed
     let newSlug: string | undefined;
@@ -171,6 +176,8 @@ export async function PATCH(
       ...(newSlug && { slug: newSlug }),
       ...(categoryId !== undefined && { categoryId: categoryId || null }),
       ...(mediaUrl !== undefined && { mediaUrl: mediaUrl || null }),
+      ...(bestWithModels !== undefined && { bestWithModels }),
+      ...(bestWithMCP !== undefined && { bestWithMCP }),
     };
 
     // Update prompt
