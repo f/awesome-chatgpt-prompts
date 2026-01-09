@@ -4531,7 +4531,6 @@ ${context} - Additional context or specific areas to focus on.",FALSE,TEXT,2numa
 Comprehensive repository analysis,"{
   ""task"": ""comprehensive_repository_analysis"",
   ""objective"": ""Conduct exhaustive analysis of entire codebase to identify, prioritize, fix, and document ALL verifiable bugs, security vulnerabilities, and critical issues across any technology stack"",
-  
   ""analysis_phases"": [
     {
       ""phase"": 1,
@@ -4658,16 +4657,29 @@ Comprehensive repository analysis,"{
         ""bug_id"": ""Sequential identifier (BUG-001, BUG-002, etc.)"",
         ""severity"": {
           ""type"": ""enum"",
-          ""values"": [""CRITICAL"", ""HIGH"", ""MEDIUM"", ""LOW""],
+          ""values"": [
+            ""CRITICAL"",
+            ""HIGH"",
+            ""MEDIUM"",
+            ""LOW""
+          ],
           ""description"": ""Bug severity level""
         },
         ""category"": {
           ""type"": ""enum"",
-          ""values"": [""SECURITY"", ""FUNCTIONAL"", ""PERFORMANCE"", ""INTEGRATION"", ""CODE_QUALITY""],
+          ""values"": [
+            ""SECURITY"",
+            ""FUNCTIONAL"",
+            ""PERFORMANCE"",
+            ""INTEGRATION"",
+            ""CODE_QUALITY""
+          ],
           ""description"": ""Bug classification""
         },
         ""location"": {
-          ""files"": [""Array of affected file paths with line numbers""],
+          ""files"": [
+            ""Array of affected file paths with line numbers""
+          ],
           ""component"": ""Module/Service/Feature name"",
           ""function"": ""Specific function or method name""
         },
@@ -4682,7 +4694,9 @@ Comprehensive repository analysis,"{
           ""business_impact"": ""Effect on business (compliance, revenue, reputation, legal)""
         },
         ""reproduction"": {
-          ""steps"": [""Step-by-step instructions to reproduce""],
+          ""steps"": [
+            ""Step-by-step instructions to reproduce""
+          ],
           ""test_data"": ""Sample data or conditions needed"",
           ""actual_result"": ""What happens when reproduced"",
           ""expected_result"": ""What should happen""
@@ -4693,9 +4707,15 @@ Comprehensive repository analysis,"{
           ""logs_or_metrics"": ""Evidence from logs or monitoring""
         },
         ""dependencies"": {
-          ""related_bugs"": [""Array of related BUG-IDs""],
-          ""blocking_issues"": [""Array of bugs that must be fixed first""],
-          ""blocked_by"": [""External factors preventing fix""]
+          ""related_bugs"": [
+            ""Array of related BUG-IDs""
+          ],
+          ""blocking_issues"": [
+            ""Array of bugs that must be fixed first""
+          ],
+          ""blocked_by"": [
+            ""External factors preventing fix""
+          ]
         },
         ""metadata"": {
           ""discovered_date"": ""ISO 8601 timestamp"",
@@ -4708,12 +4728,12 @@ Comprehensive repository analysis,"{
         ""criteria"": [
           {
             ""factor"": ""severity"",
-            ""weight"": 0.40,
+            ""weight"": 0.4,
             ""scale"": ""CRITICAL=100, HIGH=70, MEDIUM=40, LOW=10""
           },
           {
             ""factor"": ""user_impact"",
-            ""weight"": 0.30,
+            ""weight"": 0.3,
             ""scale"": ""All users=100, Many=70, Some=40, Few=10""
           },
           {
@@ -4848,11 +4868,23 @@ Comprehensive repository analysis,"{
         },
         {
           ""step"": ""Measure code coverage"",
-          ""tools"": [""Istanbul/NYC"", ""Coverage.py"", ""JaCoCo"", ""SimpleCov"", ""Tarpaulin""]
+          ""tools"": [
+            ""Istanbul/NYC"",
+            ""Coverage.py"",
+            ""JaCoCo"",
+            ""SimpleCov"",
+            ""Tarpaulin""
+          ]
         },
         {
           ""step"": ""Run static analysis"",
-          ""tools"": [""ESLint"", ""Pylint"", ""golangci-lint"", ""SpotBugs"", ""Clippy""]
+          ""tools"": [
+            ""ESLint"",
+            ""Pylint"",
+            ""golangci-lint"",
+            ""SpotBugs"",
+            ""Clippy""
+          ]
         },
         {
           ""step"": ""Performance benchmarking"",
@@ -4860,7 +4892,12 @@ Comprehensive repository analysis,"{
         },
         {
           ""step"": ""Security scanning"",
-          ""tools"": [""Snyk"", ""OWASP Dependency-Check"", ""Trivy"", ""Bandit""]
+          ""tools"": [
+            ""Snyk"",
+            ""OWASP Dependency-Check"",
+            ""Trivy"",
+            ""Bandit""
+          ]
         }
       ]
     },
@@ -4904,14 +4941,31 @@ Comprehensive repository analysis,"{
           ""code_quality"": ""count""
         },
         ""detailed_fix_table"": {
-          ""columns"": [""BUG-ID"", ""File"", ""Line"", ""Category"", ""Severity"", ""Description"", ""Status"", ""Test Added""],
+          ""columns"": [
+            ""BUG-ID"",
+            ""File"",
+            ""Line"",
+            ""Category"",
+            ""Severity"",
+            ""Description"",
+            ""Status"",
+            ""Test Added""
+          ],
           ""format"": ""Markdown table or CSV""
         },
         ""risk_assessment"": {
-          ""remaining_high_priority"": [""List of unfixed critical issues""],
-          ""recommended_next_steps"": [""Prioritized action items""],
-          ""technical_debt"": [""Summary of identified tech debt""],
-          ""breaking_changes"": [""Any backwards-incompatible fixes""]
+          ""remaining_high_priority"": [
+            ""List of unfixed critical issues""
+          ],
+          ""recommended_next_steps"": [
+            ""Prioritized action items""
+          ],
+          ""technical_debt"": [
+            ""Summary of identified tech debt""
+          ],
+          ""breaking_changes"": [
+            ""Any backwards-incompatible fixes""
+          ]
         },
         ""testing_results"": {
           ""test_command"": ""Exact command used to run tests"",
@@ -4975,7 +5029,6 @@ Comprehensive repository analysis,"{
       }
     }
   ],
-  
   ""constraints_and_best_practices"": [
     ""NEVER compromise security for simplicity or convenience"",
     ""MAINTAIN complete audit trail of all changes"",
@@ -4988,7 +5041,6 @@ Comprehensive repository analysis,"{
     ""AVOID introducing new dependencies without justification"",
     ""TEST in multiple environments when applicable""
   ],
-  
   ""output_formats"": [
     {
       ""format"": ""markdown"",
@@ -5005,7 +5057,15 @@ Comprehensive repository analysis,"{
       ""format"": ""csv"",
       ""purpose"": ""Import into bug tracking systems (Jira, GitHub Issues)"",
       ""filename_pattern"": ""bugs_{date}.csv"",
-      ""columns"": [""BUG-ID"", ""Severity"", ""Category"", ""File"", ""Line"", ""Description"", ""Status""]
+      ""columns"": [
+        ""BUG-ID"",
+        ""Severity"",
+        ""Category"",
+        ""File"",
+        ""Line"",
+        ""Description"",
+        ""Status""
+      ]
     },
     {
       ""format"": ""yaml"",
@@ -5013,7 +5073,6 @@ Comprehensive repository analysis,"{
       ""filename_pattern"": ""bug_config_{date}.yaml""
     }
   ],
-  
   ""special_considerations"": {
     ""monorepos"": ""Analyze each package/workspace separately with cross-package dependency tracking"",
     ""microservices"": ""Consider inter-service contracts, API compatibility, and distributed tracing"",
@@ -5023,7 +5082,6 @@ Comprehensive repository analysis,"{
     ""regulated_industries"": ""Ensure compliance requirements met (HIPAA, PCI-DSS, SOC2, GDPR)"",
     ""open_source_projects"": ""Follow contribution guidelines; engage with maintainers before large changes""
   },
-  
   ""success_criteria"": {
     ""quantitative"": [
       ""All CRITICAL and HIGH severity bugs addressed"",
@@ -5040,7 +5098,7 @@ Comprehensive repository analysis,"{
       ""Development velocity improved""
     ]
   }
-}",FALSE,STRUCTURED,hocestnonsatis
+}",FALSE,STRUCTURED,"hocestnonsatis,ersinkoc"
 Optimize Large Data Reading in Code,"Act as a Code Optimization Expert specialized in C#. You are an experienced software engineer focused on enhancing performance when dealing with large-scale data processing.
 
 Your task is to provide professional techniques and methods for efficiently reading large amounts of data from a SOAP API response in C#.
