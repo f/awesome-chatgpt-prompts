@@ -582,60 +582,58 @@ export default async function PromptPage({ params }: PromptPageProps) {
           </div>
 
           {/* Works Best With */}
-          {(bestWithModels.length > 0 || bestWithMCP.length > 0) && (
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
-              {bestWithModels.length > 0 && (
-                <div className="flex items-center gap-2">
-                  <Cpu className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-muted-foreground">{t("worksBestWith")}:</span>
-                  <div className="flex flex-wrap gap-1.5">
-                    {bestWithModels.map((slug) => {
-                      const model = AI_MODELS[slug as keyof typeof AI_MODELS];
-                      return (
-                        <Badge key={slug} variant="secondary" className="text-xs">
-                          {model?.name || slug}
-                        </Badge>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-              {bestWithMCP.length > 0 && (
-                <div className="flex items-center gap-2">
-                  <Terminal className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-muted-foreground">MCP:</span>
-                  <div className="flex flex-wrap gap-1.5">
-                    {bestWithMCP.flatMap((mcp, mcpIndex) => 
-                      mcp.tools && mcp.tools.length > 0 
-                        ? mcp.tools.map((tool, toolIndex) => (
-                            <Tooltip key={`${mcpIndex}-${toolIndex}`}>
-                              <TooltipTrigger asChild>
-                                <Badge variant="outline" className="text-xs font-mono cursor-help gap-1">
-                                  <Wrench className="h-3 w-3" />
-                                  {tool}
-                                </Badge>
-                              </TooltipTrigger>
-                              <TooltipContent side="bottom" className="max-w-xs">
-                                <code className="text-xs break-all">{mcp.command}</code>
-                              </TooltipContent>
-                            </Tooltip>
-                          ))
-                        : [(
-                            <Tooltip key={mcpIndex}>
-                              <TooltipTrigger asChild>
-                                <Badge variant="outline" className="text-xs font-mono cursor-help">
-                                  {mcp.command.split("/").pop()?.replace("server-", "") || mcp.command}
-                                </Badge>
-                              </TooltipTrigger>
-                              <TooltipContent side="bottom" className="max-w-xs">
-                                <code className="text-xs break-all">{mcp.command}</code>
-                              </TooltipContent>
-                            </Tooltip>
-                          )]
-                    )}
-                  </div>
-                </div>
-              )}
+          {bestWithModels.length > 0 && (
+            <div className="flex flex-wrap items-center gap-2 text-sm">
+              <Cpu className="h-4 w-4 text-muted-foreground" />
+              <span className="text-muted-foreground">{t("worksBestWith")}:</span>
+              <div className="flex flex-wrap gap-1.5">
+                {bestWithModels.map((slug) => {
+                  const model = AI_MODELS[slug as keyof typeof AI_MODELS];
+                  return (
+                    <Badge key={slug} variant="secondary" className="text-xs">
+                      {model?.name || slug}
+                    </Badge>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* MCP Tools */}
+          {bestWithMCP.length > 0 && (
+            <div className="flex flex-wrap items-center gap-2 text-sm">
+              <Terminal className="h-4 w-4 text-muted-foreground" />
+              <span className="text-muted-foreground">{t("mcpTools")}:</span>
+              <div className="flex flex-wrap gap-1.5">
+                {bestWithMCP.flatMap((mcp, mcpIndex) => 
+                  mcp.tools && mcp.tools.length > 0 
+                    ? mcp.tools.map((tool, toolIndex) => (
+                        <Tooltip key={`${mcpIndex}-${toolIndex}`}>
+                          <TooltipTrigger asChild>
+                            <Badge variant="outline" className="text-xs font-mono cursor-help gap-1">
+                              <Wrench className="h-3 w-3" />
+                              {tool}
+                            </Badge>
+                          </TooltipTrigger>
+                          <TooltipContent side="bottom" className="max-w-xs">
+                            <code className="text-xs break-all">{mcp.command}</code>
+                          </TooltipContent>
+                        </Tooltip>
+                      ))
+                    : [(
+                        <Tooltip key={mcpIndex}>
+                          <TooltipTrigger asChild>
+                            <Badge variant="outline" className="text-xs font-mono cursor-help">
+                              {mcp.command.split("/").pop()?.replace("server-", "") || mcp.command}
+                            </Badge>
+                          </TooltipTrigger>
+                          <TooltipContent side="bottom" className="max-w-xs">
+                            <code className="text-xs break-all">{mcp.command}</code>
+                          </TooltipContent>
+                        </Tooltip>
+                      )]
+                )}
+              </div>
             </div>
           )}
 
