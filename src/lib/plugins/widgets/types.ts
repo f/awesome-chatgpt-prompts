@@ -15,6 +15,24 @@ export interface WidgetContext {
   itemCount?: number;
 }
 
+/**
+ * Widget positioning strategy
+ * - "once": Show the widget once at the specified position (default)
+ * - "repeat": Show the widget repeatedly every `repeatEvery` items
+ */
+export type WidgetPositionMode = "once" | "repeat";
+
+export interface WidgetPositionConfig {
+  /** Where to insert the first occurrence (0-indexed). Default: 2 */
+  position?: number;
+  /** Positioning mode: "once" (default) or "repeat" */
+  mode?: WidgetPositionMode;
+  /** For "repeat" mode: insert every N items. e.g., 30 = every 30th position */
+  repeatEvery?: number;
+  /** Maximum number of times to show this widget. Default: unlimited for repeat, 1 for once */
+  maxCount?: number;
+}
+
 export interface WidgetPrompt {
   id: string;
   slug: string;
@@ -33,7 +51,10 @@ export interface WidgetPrompt {
   category?: string;
   actionUrl?: string;
   actionLabel?: string;
+  /** @deprecated Use `positioning.position` instead */
   position?: number;
+  /** Widget positioning configuration */
+  positioning?: WidgetPositionConfig;
   shouldInject?: (context: WidgetContext) => boolean;
 }
 

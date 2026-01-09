@@ -48,7 +48,12 @@ Provide your review in a clear, actionable format with specific line references 
       category: "Development",
       actionUrl: "https://coderabbit.link/fatih",
       actionLabel: "Try CodeRabbit",
-      position: 2,
+      positioning: {
+        position: 2,       // Start at position 2
+        mode: "repeat",    // Repeat the widget
+        repeatEvery: 50,   // Every 50 items
+        maxCount: 3,       // Show maximum 3 times
+      },
       shouldInject: (context) => {
         const { filters } = context;
         
