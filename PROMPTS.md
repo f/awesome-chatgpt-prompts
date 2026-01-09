@@ -32298,19 +32298,6 @@ Choose a beautiful mother and son photo pose for them
 </details>
 
 <details>
-<summary><strong>Spoken word</strong></summary>
-
-## Spoken word
-
-Contributed by [@adediwuratemitope9-tech](https://github.com/adediwuratemitope9-tech)
-
-```md
-Act like a spoken word artist be wise, extraordinary and make each teaching super and how to act well on stage and also use word that has vibess
-```
-
-</details>
-
-<details>
 <summary><strong>Assistente de Geração de Imagens com Identidade Visual Padrão</strong></summary>
 
 ## Assistente de Geração de Imagens com Identidade Visual Padrão
