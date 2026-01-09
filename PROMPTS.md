@@ -33468,19 +33468,6 @@ Variables:
 </details>
 
 <details>
-<summary><strong>AI Picture Generation</strong></summary>
-
-## AI Picture Generation
-
-Contributed by [@haiderkamboh114](https://github.com/haiderkamboh114)
-
-```md
-Create an AI-generated picture. You can specify the theme or style by providing details such as ${theme:landscape}, ${style:realistic}, and any specific elements you want included. The AI will use these inputs to craft a unique visual masterpiece.
-```
-
-</details>
-
-<details>
 <summary><strong>Créer une Carte Mentale pour Séance d'Idéation</strong></summary>
 
 ## Créer une Carte Mentale pour Séance d'Idéation
