@@ -26128,20 +26128,6 @@ Variables:
 </details>
 
 <details>
-<summary><strong>Восстановление старого фото</strong></summary>
-
-## Восстановление старого фото
-
-Contributed by [@batya.mail@gmail.com](https://github.com/batya.mail@gmail.com)
-
-```md
-Улучши качество этого фото: увеличь разрешение без потери деталей, убери шум и артефакты, выровняй свет и контраст, Сделай изображение цветным, ${style:в современном стиле}, ${color:сочные цвета}. 
-Снято на ${kit:зеркальный фотоаппарат Nikon D6}, ${photograph:профессиональный фотограф}
-```
-
-</details>
-
-<details>
 <summary><strong>3x3 Grid Storyboarding from Photo</strong></summary>
 
 ## 3x3 Grid Storyboarding from Photo
