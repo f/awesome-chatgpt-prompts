@@ -176,6 +176,13 @@ const ideationCredits = [
     x: "semihdev",
   },
   {
+    username: "merveenoyan",
+    displayName: "Merve Noyan",
+    role: "Hugging Face Dataset Support",
+    x: "mervenoyann",
+    hf: "merve",
+  },
+  {
     username: "chatgpt",
     displayName: "ChatGPT",
     role: "The core idea of the app",
@@ -184,15 +191,6 @@ const ideationCredits = [
   },
 ];
 
-const specialThanks = [
-  {
-    username: "merveenoyan",
-    displayName: "Merve Noyan",
-    role: "Hugging Face Dataset Support",
-    x: "mervenoyann",
-    hf: "merve",
-  },
-];
 
 const excludedFromCommunity = ["f", "fatihsolhan", "iuzn", "semihkislar"];
 
@@ -655,60 +653,6 @@ export default async function AboutPage() {
                   </Link>
                 </div>
               )}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Special Thanks */}
-      <section className="mb-10">
-        <h2 className="text-lg font-semibold mb-4">Special Thanks</h2>
-        <div className="grid gap-3 sm:grid-cols-2">
-          {specialThanks.map((person) => (
-            <div
-              key={person.username}
-              className="flex items-center gap-3 p-3 border rounded-lg"
-            >
-              <Image
-                src={`https://github.com/${person.username}.png`}
-                alt=""
-                width={40}
-                height={40}
-                className="rounded-full shrink-0"
-              />
-              <div className="flex-1 min-w-0">
-                <div className="font-medium text-sm">{person.displayName}</div>
-                <div className="text-xs text-muted-foreground">{person.role}</div>
-              </div>
-              <div className="flex items-center gap-2">
-                <Link
-                  href={`https://github.com/${person.username}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-1.5 rounded-md hover:bg-muted transition-colors"
-                  title="GitHub"
-                >
-                  <BrandIcon name="github" />
-                </Link>
-                <Link
-                  href={`https://x.com/${person.x}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-1.5 rounded-md hover:bg-muted transition-colors"
-                  title="X"
-                >
-                  <BrandIcon name="x" />
-                </Link>
-                <Link
-                  href={`https://hf.co/${person.hf}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-1.5 rounded-md hover:bg-muted transition-colors"
-                  title="Hugging Face"
-                >
-                  <BrandIcon name="huggingface" />
-                </Link>
-              </div>
             </div>
           ))}
         </div>
