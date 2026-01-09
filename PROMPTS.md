@@ -39292,3 +39292,16 @@ Contributed by [@senoldak](https://github.com/senoldak)
 
 </details>
 
+<details>
+<summary><strong>Prepare for Meetings: Key Considerations</strong></summary>
+
+## Prepare for Meetings: Key Considerations
+
+Contributed by [@raul.grigelmo3@gmail.com](https://github.com/raul.grigelmo3@gmail.com)
+
+```md
+Based on my prior interactions with ${person}, give me 5 things likely top of mind for our next meeting.
+```
+
+</details>
+
