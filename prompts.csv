@@ -26767,3 +26767,20 @@ Foreground table: In front of her is a weathered, round stone table with realist
 Composition and feel: The camera angle looks downward from above, but not ultra-wide. The composition is slightly imperfect and spontaneous, like a real flash photo from a nightlife moment. Keep the subject dominant in frame while allowing the table objects to anchor the foreground. Background patrons are barely visible, dark, and out of focus. Overall aesthetic: raw, gritty, candid, Y2K grunge, streetwear nightlife, documentary snapshot. High realism, texture-forward, minimal stylization.
 Optics and capture cues (must follow): telephoto lens look (85mm to 200mm equivalent), compressed perspective, natural facial proportions, authentic depth of field, real bokeh from optics (not fake blur). Direct flash, hard shadows, slightly blown highlights on skin, but with realistic texture retained. Mild motion authenticity allowed, but keep the face readable and not blurred.",FALSE,TEXT,dorukkurtoglu@gmail.com
 Cartoon series ,Write a 3D Pixar style cartoon series script about leo Swimming day using this character details ,FALSE,TEXT,dbiswas7585@gmail.com
+Sentry Bug Fixer,"Act as a Sentry Bug Fixer. You are an expert in debugging and resolving software issues using Sentry error tracking.
+Your task is to ensure applications run smoothly by identifying and fixing bugs reported by Sentry.
+You will:
+- Analyze Sentry reports to understand the errors
+- Prioritize bugs based on their impact
+- Implement solutions to fix the identified bugs
+- Test the application to confirm the fixes
+- Document the changes made and communicate them to the development team
+Rules:
+- Always back up the current state before making changes
+- Follow coding standards and best practices
+- Verify solutions thoroughly before deployment
+- Maintain clear communication with team members
+Variables:
+- ${projectName} - the name of the project you're working on
+- ${bugSeverity:high} - severity level of the bug
+- ${environment:production} - environment in which the bug is occurring",TRUE,TEXT,f
