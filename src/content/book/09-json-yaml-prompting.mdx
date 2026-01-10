@@ -10,7 +10,11 @@ JSON and YAML transform AI outputs from freeform text into structured, type-safe
 
 ## JSON Prompting Basics
 
+JSON (JavaScript Object Notation) is the most common format for programmatic AI outputs. Its strict syntax makes it easy to parse, but also means small errors can break your entire pipeline.
+
 ### Simple JSON Output
+
+Start with a schema showing the expected structure. The model will fill in values based on the input text.
 
 ```
 Extract the following information as JSON:
@@ -34,6 +38,8 @@ Output:
 ```
 
 ### Nested JSON Structures
+
+Real-world data often has nested relationships. Define each level of your schema clearly, especially for arrays of objects.
 
 ```
 Parse this order into JSON:
@@ -60,6 +66,10 @@ Order: "Order #12345 for Jane Doe (jane@email.com): 2x Widget ($10 each),
 
 ### Ensuring Valid JSON
 
+<Callout type="warning" title="Common Failure Point">
+Models often wrap JSON in markdown code blocks or add explanatory text. Be explicit about wanting raw JSON only.
+</Callout>
+
 Add explicit instructions:
 
 ```
@@ -73,7 +83,11 @@ Numbers should not be quoted.
 
 ## YAML Prompting Basics
 
+YAML is more human-readable than JSON and supports comments. It's the standard for configuration files, especially in DevOps (Docker, Kubernetes, GitHub Actions).
+
 ### Simple YAML Output
+
+YAML uses indentation instead of braces. Provide a template showing the expected structure.
 
 ```
 Generate a configuration file in YAML format:
@@ -102,6 +116,8 @@ database:
 
 ### Complex YAML Structures
 
+For complex configurations, be specific about requirements. The model knows common patterns for tools like GitHub Actions, Docker Compose, and Kubernetes.
+
 ```
 Generate a GitHub Actions workflow in YAML:
 
@@ -114,9 +130,11 @@ Requirements:
 
 ## Type Definitions in Prompts
 
+Type definitions give the model a precise contract for output structure. They're more explicit than examples and easier to validate programmatically.
+
 ### Using TypeScript-like Types
 
-The prompts.chat platform uses TypeScript interfaces to define prompt structures:
+TypeScript interfaces are familiar to developers and precisely describe optional fields, union types, and arrays. The prompts.chat platform uses this approach for structured prompts.
 
 <TryIt 
   title="TypeScript Interface Extraction"
@@ -124,12 +142,12 @@ The prompts.chat platform uses TypeScript interfaces to define prompt structures
   prompt={`Extract data according to this type definition:
 
 interface ChatPersona {
-  name?: string;
-  role?: string;
-  tone?: "professional" | "casual" | "friendly" | "technical";
-  expertise?: string[];
-  personality?: string[];
-  background?: string;
+    name?: string;
+    role?: string;
+    tone?: "professional" | "casual" | "friendly" | "technical";
+    expertise?: string[];
+    personality?: string[];
+    background?: string;
 }
 
 Return as JSON matching this interface.
@@ -138,6 +156,12 @@ Description: "A senior software engineer named Alex who reviews code. They're an
 />
 
 ### JSON Schema Definition
+
+<Callout type="info" title="Industry Standard">
+JSON Schema is a formal specification for describing JSON structure. It's supported by many validation libraries and API tools.
+</Callout>
+
+JSON Schema provides constraints like min/max values, required fields, and regex patterns:
 
 ```
 Extract data according to this JSON Schema:
@@ -168,7 +192,11 @@ Genres: Science Fiction, Political Fiction. Rated 4.8/5"
 
 ## Handling Arrays
 
+Arrays require special attention. Specify whether you need a fixed number of items or a variable-length list, and how to handle empty cases.
+
 ### Fixed-Length Arrays
+
+When you need exactly N items, state it explicitly. The model will ensure the array has the right length.
 
 ```
 Extract exactly 3 key points as JSON:
@@ -185,6 +213,8 @@ Article: [article text]
 ```
 
 ### Variable-Length Arrays
+
+For variable-length arrays, specify what to do when there are zero items. Including a count field helps verify extraction completeness.
 
 ```
 Extract all mentioned people as JSON:
@@ -206,7 +236,11 @@ Text: [text]
 
 ## Enum Values and Constraints
 
+Enums restrict values to a predefined set. This is crucial for classification tasks and anywhere you need consistent, predictable outputs.
+
 ### String Enums
+
+List allowed values explicitly. Use "MUST be one of" language to enforce strict matching.
 
 ```
 Classify this text. The category MUST be one of these exact values:
@@ -227,6 +261,8 @@ Text: [text to classify]
 
 ### Validated Numbers
 
+Numeric constraints prevent out-of-range values. Specify the type (integer vs float) and valid range.
+
 ```
 Rate these aspects. Each score MUST be an integer from 1 to 5.
 
@@ -242,7 +278,11 @@ Review: [review text]
 
 ## Handling Missing Data
 
+Real-world text often lacks some information. Define how the model should handle missing data to avoid hallucinated values.
+
 ### Null Values
+
+Explicitly allow null and instruct the model not to invent information. This is safer than having the model guess.
 
 ```
 Extract information. Use null for any field that cannot be 
@@ -272,6 +312,8 @@ Output:
 
 ### Default Values
 
+When defaults make sense, specify them in the schema. This is common for configuration extraction.
+
 ```
 Extract settings with these defaults if not specified:
 
@@ -287,7 +329,11 @@ User preferences: "I want dark mode and larger text (18px)"
 
 ## Multi-Object Responses
 
+Often you need to extract multiple items from a single input. Define the array structure and any sorting/grouping requirements.
+
 ### Array of Objects
+
+For lists of similar items, define the object schema once and specify it's an array.
 
 ```
 Parse this list into JSON array:
@@ -308,6 +354,8 @@ Todo list:
 
 ### Grouped Objects
 
+Grouping tasks require categorization logic. The model will sort items into the categories you define.
+
 ```
 Categorize these items into JSON:
 
@@ -322,7 +370,11 @@ Items: apple, carrot, bread, banana, broccoli, milk, orange, spinach
 
 ## YAML for Configuration Generation
 
+YAML shines for DevOps configurations. The model knows standard patterns for common tools and can generate production-ready configs.
+
 ### Docker Compose
+
+Specify the services you need and any special requirements. The model will handle the YAML syntax and best practices.
 
 ```
 Generate a docker-compose.yml for:
@@ -340,6 +392,8 @@ Include:
 
 ### Kubernetes Manifests
 
+Kubernetes manifests are verbose but follow predictable patterns. Provide the key parameters and the model will generate compliant YAML.
+
 ```
 Generate Kubernetes deployment YAML:
 
@@ -356,7 +410,11 @@ Also generate matching Service (ClusterIP, port 8080)
 
 ## Validation and Error Handling
 
+For production systems, build validation into your prompts. This catches errors before they propagate through your pipeline.
+
 ### Self-Validation Prompt
+
+Ask the model to validate its own output against rules you specify. This catches format errors and invalid values.
 
 ```
 Extract data as JSON, then validate your output.
@@ -380,6 +438,8 @@ Text: [contact information]
 
 ### Error Response Format
 
+Define separate success and error formats. This makes programmatic handling much easier.
+
 ```
 Attempt to extract data. If extraction fails, return error format:
 
@@ -402,23 +462,23 @@ Error format:
 <div className="my-4 grid md:grid-cols-2 gap-4">
   <div className="p-4 bg-amber-50 dark:bg-amber-950/30 rounded-lg border border-amber-200 dark:border-amber-800">
     <div className="font-semibold text-amber-700 dark:text-amber-300 mb-2">Use JSON When</div>
-    <ul className="text-sm space-y-1">
-      <li>• Programmatic parsing needed</li>
-      <li>• API responses</li>
-      <li>• Strict type requirements</li>
-      <li>• JavaScript/Web integration</li>
-      <li>• Compact representation</li>
-    </ul>
+    <div className="text-sm space-y-1">
+      <p className="m-0!">Programmatic parsing needed</p>
+      <p className="m-0!">API responses</p>
+      <p className="m-0!">Strict type requirements</p>
+      <p className="m-0!">JavaScript/Web integration</p>
+      <p className="m-0!">Compact representation</p>
+    </div>
   </div>
   <div className="p-4 bg-purple-50 dark:bg-purple-950/30 rounded-lg border border-purple-200 dark:border-purple-800">
     <div className="font-semibold text-purple-700 dark:text-purple-300 mb-2">Use YAML When</div>
-    <ul className="text-sm space-y-1">
-      <li>• Human readability matters</li>
-      <li>• Configuration files</li>
-      <li>• Comments are needed</li>
-      <li>• DevOps/Infrastructure</li>
-      <li>• Deep nested structures</li>
-    </ul>
+    <div className="text-sm space-y-1">
+      <p className="m-0!">Human readability matters</p>
+      <p className="m-0!">Configuration files</p>
+      <p className="m-0!">Comments are needed</p>
+      <p className="m-0!">DevOps/Infrastructure</p>
+      <p className="m-0!">Deep nested structures</p>
+    </div>
   </div>
 </div>
 
@@ -440,6 +500,10 @@ The platform will:
 ```
 
 ## Common Pitfalls
+
+<Callout type="warning" title="Debug These First">
+These three issues cause most JSON parsing failures. Check for them when your code can't parse AI output.
+</Callout>
 
 ### 1. Markdown Code Blocks
 

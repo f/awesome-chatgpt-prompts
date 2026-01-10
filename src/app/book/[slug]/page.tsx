@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getChapterBySlug, getAdjacentChapters, getAllChapters } from "@/lib/book/chapters";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { MobileTOCButton } from "@/components/book/sidebar";
 import type { Metadata } from "next";
 
 interface ChapterPageProps {
@@ -53,13 +54,16 @@ export default async function ChapterPage({ params }: ChapterPageProps) {
   }
 
   return (
-    <article className="max-w-3xl">
+    <article>
       {/* Chapter Header */}
       <header className="mb-8">
         <div className="text-sm text-primary font-medium mb-1">
           {chapter.part}
         </div>
-        <h1 className="text-3xl font-bold tracking-tight mb-2">{chapter.title}</h1>
+        <div className="flex items-start justify-between gap-4">
+          <h1 className="text-3xl font-bold tracking-tight mb-2">{chapter.title}</h1>
+          <MobileTOCButton />
+        </div>
         {chapter.description && (
           <p className="text-muted-foreground">
             {chapter.description}

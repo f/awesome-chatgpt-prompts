@@ -6,61 +6,54 @@ Think of your first prompt as a rough draft. Even experienced prompt engineers r
 
 ## The Iteration Cycle
 
+Effective prompt refinement follows a predictable cycle: write, test, analyze, and improve. Each iteration brings you closer to a prompt that reliably produces the results you need.
+
 <IterativeRefinementDemo />
 
 ## Common Refinement Patterns
 
+Most prompt failures fall into a handful of categories. Learning to recognize these patterns lets you quickly diagnose and fix issues without starting from scratch.
+
 ### Problem: Output Too Long
 
-**Original:**
-```
-Explain how photosynthesis works.
-```
+One of the most common issues. Without explicit constraints, models tend to be thorough rather than concise.
 
-**Refined:**
-```
-Explain how photosynthesis works in 3-4 sentences suitable for 
-a 10-year-old.
-```
+<DiffView 
+  before="Explain how photosynthesis works."
+  after={`Explain how photosynthesis works in 3-4 sentences suitable for a 10-year-old.`}
+  beforeLabel="Original"
+  afterLabel="Refined"
+/>
 
 ### Problem: Output Too Vague
 
-**Original:**
-```
-Give me tips for better presentations.
-```
+Vague prompts produce vague outputs. The model can't read your mind about what "better" means or which aspects matter most to you.
 
-**Refined:**
-```
-Give me 5 specific, actionable tips for improving technical 
-presentations to non-technical stakeholders. For each tip, 
-include a concrete example.
-```
+<DiffView 
+  before="Give me tips for better presentations."
+  after={`Give me 5 specific, actionable tips for improving technical presentations to non-technical stakeholders. For each tip, include a concrete example.`}
+  beforeLabel="Original"
+  afterLabel="Refined"
+/>
 
 ### Problem: Wrong Tone
 
-**Original:**
-```
-Write an apology email for missing a deadline.
-```
+Tone is subjective and varies by context. What sounds "professional" to the model might not match your organization's voice or the relationship with your recipient.
 
-**Refined:**
-```
-Write a professional but warm apology email for missing a project 
-deadline. The tone should be accountable without being overly 
-apologetic. Include a concrete plan to prevent future delays.
-```
+<DiffView 
+  before="Write an apology email for missing a deadline."
+  after={`Write a professional but warm apology email for missing a project deadline. The tone should be accountable without being overly apologetic. Include a concrete plan to prevent future delays.`}
+  beforeLabel="Original"
+  afterLabel="Refined"
+/>
 
 ### Problem: Missing Key Information
 
-**Original:**
-```
-Review this code.
-```
+Open-ended requests get open-ended responses. If you need specific types of feedback, you must ask for them explicitly.
 
-**Refined:**
-```
-Review this Python code for:
+<DiffView 
+  before="Review this code."
+  after={`Review this Python code for:
 1. Bugs and logical errors
 2. Performance issues
 3. Security vulnerabilities
@@ -68,19 +61,18 @@ Review this Python code for:
 
 For each issue found, explain the problem and suggest a fix.
 
-[code]
-```
+[code]`}
+  beforeLabel="Original"
+  afterLabel="Refined"
+/>
 
 ### Problem: Inconsistent Format
 
-**Original:**
-```
-Analyze these three products.
-```
+Without a template, the model will structure each response differently, making comparison difficult and automation impossible.
 
-**Refined:**
-```
-Analyze these three products using this exact format for each:
+<DiffView 
+  before="Analyze these three products."
+  after={`Analyze these three products using this exact format for each:
 
 ## [Product Name]
 **Price:** $X
@@ -89,14 +81,18 @@ Analyze these three products using this exact format for each:
 **Best For:** [one sentence]
 **Rating:** X/10
 
-[products]
-```
+[products]`}
+  beforeLabel="Original"
+  afterLabel="Refined"
+/>
 
 ## Systematic Refinement Approach
 
+Random changes waste time. A systematic approach helps you identify problems quickly and fix them efficiently.
+
 ### Step 1: Diagnose the Issue
 
-Ask yourself:
+Before changing anything, identify what's actually wrong. Use this diagnostic table to map symptoms to solutions:
 
 <div className="my-4 grid gap-2">
   <div className="grid grid-cols-3 gap-2 p-3 bg-muted/50 rounded-lg text-sm">
@@ -138,7 +134,7 @@ Ask yourself:
 
 ### Step 2: Make Targeted Changes
 
-Don't overhaul everything at once. Change one thing, test, then change the next:
+Resist the urge to rewrite everything. Changing multiple variables at once makes it impossible to know what helped and what hurt. Make one change, test it, then proceed:
 
 ```
 Iteration 1: Add length constraint
@@ -149,7 +145,7 @@ Iteration 4: Refine tone instructions
 
 ### Step 3: Document What Works
 
-Keep notes on successful refinements:
+Prompt engineering knowledge is easily lost. Keep a log of what you tried and why. This saves time when you revisit the prompt later or face similar challenges:
 
 ```markdown
 ## Prompt: Customer Email Response
@@ -173,51 +169,35 @@ Tone: Friendly, professional, empathetic but not groveling."
 
 ## Real-World Iteration Example
 
+Let's walk through a complete iteration cycle to see how each refinement builds on the last. Notice how each version addresses specific shortcomings of the previous one.
+
 ### Task: Generate Product Names
 
-**Version 1:**
-```
-Generate names for a new productivity app.
-```
-
-**Output:** Generic names like "TaskMaster", "ProducivitPro", "GetItDone"
-
-**Problem:** Too generic, no context about the app
-
----
-
-**Version 2:**
-```
-Generate names for a new productivity app. The app uses AI to 
-automatically schedule your tasks based on energy levels and 
-calendar availability.
-```
-
-**Output:** "SmartScheduler", "AI Planner", "EnergyFlow"
-
-**Problem:** Better, but still somewhat generic
-
----
-
-**Version 3:**
-```
-Generate 10 unique, memorable names for a productivity app with 
-these characteristics:
+<VersionDiff versions={[
+  {
+    label: "Version 1",
+    content: "Generate names for a new productivity app.",
+    note: "Too generic, no context"
+  },
+  {
+    label: "Version 2",
+    content: `Generate names for a new productivity app. The app uses AI to automatically schedule your tasks based on energy levels and calendar availability.`,
+    note: "Added context, still generic"
+  },
+  {
+    label: "Version 3",
+    content: `Generate 10 unique, memorable names for a productivity app with these characteristics:
 - Uses AI to schedule tasks based on energy levels
 - Target audience: busy professionals aged 25-40
 - Brand tone: modern, smart, slightly playful
 - Avoid: generic words like "pro", "smart", "AI", "task"
 
-For each name, explain why it works.
-```
-
-**Output:** Much more creative options with reasoning
-
----
-
-**Version 4 (final):**
-```
-Generate 10 unique, memorable names for a productivity app.
+For each name, explain why it works.`,
+    note: "Added constraints and reasoning"
+  },
+  {
+    label: "Version 4 (final)",
+    content: `Generate 10 unique, memorable names for a productivity app.
 
 Context:
 - Uses AI to schedule tasks based on energy levels
@@ -231,50 +211,62 @@ Requirements:
 - Avoid: generic words (pro, smart, AI, task, flow)
 
 Format:
-Name | Pronunciation | Why It Works | Domain Availability Guess
-```
+Name | Pronunciation | Why It Works | Domain Availability Guess`,
+    note: "Structured format, specific requirements"
+  }
+]} />
 
 ## Refinement Strategies by Task Type
 
+Different tasks fail in predictable ways. Knowing the common failure modes helps you diagnose and fix issues faster.
+
 ### For Content Generation
 
-```
-If too generic → Add specific constraints and context
-If too long → Set word/paragraph limits
-If wrong style → Provide style examples
-If off-brand → Include brand voice guidelines
-```
+Content generation often produces generic, off-target, or poorly formatted output. The fix usually involves being more specific about constraints, providing concrete examples, or defining your brand voice explicitly.
+
+<InfoGrid items={[
+  { icon: "target", title: "Too Generic", description: "Add specific constraints and context", example: "\"Write about dogs\" → \"Write about golden retrievers for first-time owners, focusing on training and exercise needs\"" },
+  { icon: "scissors", title: "Too Long", description: "Set word/paragraph limits", example: "Add: \"Keep response under 150 words\" or \"Maximum 3 paragraphs\"" },
+  { icon: "palette", title: "Wrong Style", description: "Provide style examples", example: "\"Write in the style of this example: [paste sample text]\"" },
+  { icon: "megaphone", title: "Off-Brand", description: "Include brand voice guidelines", example: "\"Use friendly, casual tone. Avoid jargon. Address reader as 'you'.\"" }
+]} />
 
 ### For Code Generation
 
-```
-If syntax errors → Specify language version
-If wrong approach → Describe preferred patterns
-If missing edge cases → List scenarios to handle
-If poor naming → Include naming conventions
-```
+Code output can fail technically (syntax errors, wrong language features) or architecturally (poor patterns, missing cases). Technical issues need version/environment specifics; architectural issues need design guidance.
+
+<InfoGrid items={[
+  { icon: "code", title: "Syntax Errors", description: "Specify language version", example: "\"Use Python 3.11+ syntax with type hints\" or \"ES2022 JavaScript\"" },
+  { icon: "git-branch", title: "Wrong Approach", description: "Describe preferred patterns", example: "\"Use functional approach, avoid classes\" or \"Follow repository pattern\"" },
+  { icon: "shield", title: "Missing Edge Cases", description: "List scenarios to handle", example: "\"Handle: empty input, null values, network timeouts, invalid formats\"" },
+  { icon: "tag", title: "Poor Naming", description: "Include naming conventions", example: "\"Use camelCase for variables, PascalCase for classes, UPPER_SNAKE for constants\"" }
+]} />
 
 ### For Analysis
 
-```
-If shallow → Ask for specific frameworks
-If biased → Request multiple perspectives
-If missing data → Specify what to analyze
-If unstructured → Provide analysis template
-```
+Analysis tasks often produce surface-level or unstructured results. Guide the model with specific frameworks (SWOT, Porter's Five Forces), request multiple viewpoints, or provide a template for the output structure.
+
+<InfoGrid items={[
+  { icon: "layers", title: "Too Shallow", description: "Ask for specific frameworks", example: "\"Analyze using SWOT framework\" or \"Apply Porter's Five Forces\"" },
+  { icon: "scale", title: "Biased", description: "Request multiple perspectives", example: "\"Present arguments for and against\" or \"Include skeptic's viewpoint\"" },
+  { icon: "database", title: "Missing Data", description: "Specify what to analyze", example: "\"Focus on: market size, growth rate, key players, entry barriers\"" },
+  { icon: "layout", title: "Unstructured", description: "Provide analysis template", example: "\"Format as: Summary → Key Findings → Implications → Recommendations\"" }
+]} />
 
 ### For Q&A
 
-```
-If too short → Ask for elaboration
-If too long → Request concise answer
-If uncertain → Ask for confidence level
-If unsourced → Request citations
-```
+Question-answering can be too terse or too verbose, and may lack confidence indicators or sources. Specify the detail level you need and whether you want citations or uncertainty expressed.
+
+<InfoGrid items={[
+  { icon: "plus", title: "Too Short", description: "Ask for elaboration", example: "\"Explain in detail with examples\" or \"Elaborate on each point\"" },
+  { icon: "minus", title: "Too Long", description: "Request concise answer", example: "\"Answer in 2-3 sentences\" or \"Give me the TL;DR\"" },
+  { icon: "help-circle", title: "Uncertain", description: "Ask for confidence level", example: "\"Rate your confidence 1-10\" or \"Note any assumptions made\"" },
+  { icon: "link", title: "Unsourced", description: "Request citations", example: "\"Cite sources for claims\" or \"Include references where possible\"" }
+]} />
 
 ## The Feedback Loop Technique
 
-Use the model to help refine prompts:
+Here's a meta-technique: use the model itself to help improve your prompts. Share what you tried, what you got, and what you wanted. The model can often suggest improvements you hadn't considered.
 
 ```
 I used this prompt:
@@ -289,7 +281,7 @@ my prompt to get better results?
 
 ## A/B Testing Prompts
 
-For important applications, test variations:
+For prompts that will be used repeatedly or at scale, don't just pick the first one that works. Test variations to find the most reliable and highest-quality approach.
 
 ```
 Prompt A: "Summarize this article in 3 bullet points."
@@ -304,21 +296,38 @@ Run each multiple times, compare:
 
 ## When to Stop Iterating
 
-Stop when:
-- ✅ Output consistently meets requirements
-- ✅ Edge cases are handled appropriately  
-- ✅ Format is reliable and parseable
-- ✅ Further improvements show diminishing returns
+Perfection is the enemy of good enough. Know when your prompt is ready for use and when you're just polishing for diminishing returns.
 
-Don't stop if:
-- ❌ Output is inconsistent across runs
-- ❌ Edge cases cause failures
-- ❌ Critical requirements are missed
-- ❌ You haven't tested enough variations
+<div className="my-6 grid md:grid-cols-2 gap-4">
+  <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Ready to Ship</p>
+    <div className="text-sm p-4 pt-2 space-y-1">
+      <p className="m-0!">Output consistently meets requirements</p>
+      <p className="m-0!">Edge cases are handled appropriately</p>
+      <p className="m-0!">Format is reliable and parseable</p>
+      <p className="m-0!">Further improvements show diminishing returns</p>
+    </div>
+  </div>
+  <div className="border rounded-lg bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900">
+    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Keep Iterating</p>
+    <div className="text-sm p-4 pt-2 space-y-1">
+      <p className="m-0!">Output is inconsistent across runs</p>
+      <p className="m-0!">Edge cases cause failures</p>
+      <p className="m-0!">Critical requirements are missed</p>
+      <p className="m-0!">You haven't tested enough variations</p>
+    </div>
+  </div>
+</div>
 
 ## Version Control for Prompts
 
-For production prompts, maintain versions:
+Prompts are code. For any prompt used in production, treat it with the same rigor: version control, changelogs, and the ability to roll back if something breaks.
+
+<Callout type="tip" title="Built-in Versioning">
+prompts.chat includes automatic version history for your prompts. Every edit is saved, so you can compare versions and restore previous iterations with one click.
+</Callout>
+
+For self-managed prompts, use a folder structure:
 
 ```
 prompts/

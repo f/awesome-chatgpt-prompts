@@ -1,6 +1,6 @@
 import type { MDXComponents } from "mdx/types";
 import type { ComponentPropsWithoutRef } from "react";
-import { Callout, Checklist, Collapsible, Compare, ContextPlayground, ContextWindowDemo, CRISPEFramework, EmbeddingsDemo, FewShotDemo, IconCheck, IconClipboard, IconLightbulb, IconLock, IconSettings, IconStar, IconTarget, IconUser, IconX, InfoGrid, IterativeRefinementDemo, JailbreakDemo, JsonYamlDemo, PrinciplesSummary, PromptBreakdown, Quiz, RTFFramework, SpecificitySpectrum, StructuredOutputDemo, SummarizationDemo, TemperatureDemo, TextToImageDemo, TextToVideoDemo, TokenizerDemo, TryIt } from "@/components/book/interactive";
+import { BookPartsNav, BREAKFramework, Callout, ChainErrorDemo, ChainExample, ChainFlowDemo, Checklist, CodeEditor, Collapsible, Compare, ContentPipelineDemo, ContextPlayground, ContextWindowDemo, CRISPEFramework, DiffView, EmbeddingsDemo, FallbackDemo, FewShotDemo, IconCheck, IconClipboard, IconLightbulb, IconLock, IconSettings, IconStar, IconTarget, IconUser, IconX, InfoGrid, IterativeRefinementDemo, JailbreakDemo, JsonYamlDemo, LLMCapabilitiesDemo, PrinciplesSummary, PromptBreakdown, Quiz, RTFFramework, SpecificitySpectrum, StructuredOutputDemo, SummarizationDemo, TemperatureDemo, TextToImageDemo, TextToVideoDemo, TokenizerDemo, TokenPredictionDemo, TryIt, ValidationDemo, VersionDiff } from "@/components/book/interactive";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -25,14 +25,23 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     tr: ({ ref: _ref, ...props }: ComponentPropsWithoutRef<"tr"> & { ref?: unknown }) => (
       <tr className="even:bg-muted/30" {...props} />
     ),
+    BookPartsNav,
+    BREAKFramework,
     Callout,
+    ChainErrorDemo,
+    ChainExample,
+    ChainFlowDemo,
     Checklist,
+    CodeEditor,
     Collapsible,
     Compare,
+    ContentPipelineDemo,
     ContextPlayground,
     ContextWindowDemo,
     CRISPEFramework,
+    DiffView,
     EmbeddingsDemo,
+    FallbackDemo,
     FewShotDemo,
     IconCheck,
     IconClipboard,
@@ -47,6 +56,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     IterativeRefinementDemo,
     JailbreakDemo,
     JsonYamlDemo,
+    LLMCapabilitiesDemo,
     PrinciplesSummary,
     PromptBreakdown,
     Quiz,
@@ -58,6 +68,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     TextToImageDemo,
     TextToVideoDemo,
     TokenizerDemo,
+    TokenPredictionDemo,
     TryIt,
+    ValidationDemo,
+    VersionDiff,
   };
 }

@@ -16,6 +16,8 @@ At their heart, LLMs are prediction machines. You give them some text, and they 
 
 When you type "The capital of France is...", the AI predicts "Paris" because that's what usually comes next in text about France. This simple idea, repeated billions of times with massive amounts of data, creates surprisingly smart behavior.
 
+<TokenPredictionDemo />
+
 ### Key Concepts
 
 **Tokens**: AI doesn't read letter by letter. It breaks text into chunks called "tokens." A token might be a whole word like "hello" or part of a word like "ing." Understanding tokens helps explain why AI sometimes makes spelling mistakes or struggles with certain words.
@@ -26,24 +28,32 @@ When you type "The capital of France is...", the AI predicts "Paris" because tha
 
 <ContextWindowDemo />
 
-Context windows vary by model:
+Context windows vary by model and are rapidly expanding:
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-28">GPT-3.5</span>
-    <span className="text-muted-foreground">4K-16K tokens</span>
+    <span className="font-semibold min-w-32">GPT-4o</span>
+    <span className="text-muted-foreground">128K tokens</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-28">GPT-4</span>
-    <span className="text-muted-foreground">8K-128K tokens</span>
+    <span className="font-semibold min-w-32">GPT-5</span>
+    <span className="text-muted-foreground">400K tokens</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-28">Claude 3</span>
-    <span className="text-muted-foreground">200K tokens</span>
+    <span className="font-semibold min-w-32">Claude Sonnet 4</span>
+    <span className="text-muted-foreground">1M tokens</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-28">Gemini 1.5</span>
-    <span className="text-muted-foreground">Up to 1M tokens</span>
+    <span className="font-semibold min-w-32">Gemini 2.5</span>
+    <span className="text-muted-foreground">1M tokens</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Llama 4</span>
+    <span className="text-muted-foreground">1M-10M tokens</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">DeepSeek R1</span>
+    <span className="text-muted-foreground">128K tokens</span>
   </div>
 </div>
 
@@ -62,6 +72,10 @@ The most common type, these generate text responses to text inputs. They power c
 These can understand more than just text. They can look at images, listen to audio, and watch videos. Examples: GPT-4V, Gemini, Claude 3.
 
 ### Text-to-Image Models
+
+<Callout type="info" title="About This Book">
+While this book focuses primarily on prompting for Large Language Models (text-based AI), the principles of clear, specific prompting apply to image generation too. Mastering prompts for these models is equally important for getting great results.
+</Callout>
 
 Text-to-image models like DALL-E, Midjourney, Nano Banana and Stable Diffusion create images from text descriptions. They work differently from text models:
 
@@ -82,7 +96,7 @@ Unlike text prompts where you write sentences, image prompts often work better a
 
 ### Text-to-Video Models
 
-Text-to-video is the newest frontier. Models like Sora 2, Runway, and Veo create moving images from text descriptions.
+Text-to-video is the newest frontier. Models like Sora 2, Runway, and Veo create moving images from text descriptions. Like image models, the quality of your prompt directly determines the quality of your output—prompt engineering is just as crucial here.
 
 **How They Work:**
 1. **Temporal Understanding**: Beyond single images, these models understand how things move and change over time
@@ -93,32 +107,22 @@ Text-to-video is the newest frontier. Models like Sora 2, Runway, and Veo create
 <TextToVideoDemo />
 
 <Callout type="info" title="Video Prompting Tips">
-Video prompts need to describe action over time, not just a static scene. Include verbs and movement: "A bird takes flight from a branch" rather than "A bird on a branch."
+Video prompts need to describe action over time, not just a static scene. Include verbs and movement:
 </Callout>
+
+<Compare 
+  before={{ label: "Static (Weak)", content: "A bird on a branch" }}
+  after={{ label: "With Motion (Strong)", content: "A bird takes flight from a branch, wings spreading wide, leaves rustling as it lifts off" }}
+/>
 
 ### Specialized Models
 Fine-tuned for specific tasks like code generation (Codex, CodeLlama), music generation (Suno, Udio), or domain-specific applications like medical diagnosis or legal document analysis.
 
 ## Model Capabilities and Limitations
 
-### What LLMs Can Do Well
+Explore what LLMs can and cannot do. Click on each capability to see example prompts:
 
-- **Write text**: Stories, emails, essays, summaries
-- **Explain things**: Break down complex topics into simple parts
-- **Translate**: Between languages and formats
-- **Code**: Write, explain, and fix code
-- **Play roles**: Act as different characters or experts
-- **Reason step-by-step**: Solve problems with logical thinking
-
-<TryIt compact prompt={`Explain quantum physics to me like I'm 10 years old.`} />
-
-### What LLMs Cannot Do
-
-- **Know what's happening now**: Their knowledge stops at a certain date
-- **Take real actions**: They can only write text (unless connected to other tools)
-- **Remember old conversations**: Each chat starts fresh
-- **Always be correct**: They sometimes make up facts that sound true
-- **Do hard math**: Complex calculations often go wrong
+<LLMCapabilitiesDemo />
 
 ### Understanding Hallucinations
 

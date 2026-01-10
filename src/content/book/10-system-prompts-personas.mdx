@@ -4,6 +4,10 @@ System prompts are like giving AI its personality and job description before a c
 A system prompt is a special message that tells the AI who it is, how to behave, and what it can or can't do. Users don't usually see this message, but it affects every response.
 </Callout>
 
+<Callout type="tip" title="Related: Role-Based Prompting">
+System prompts build on the concepts from [Role-Based Prompting](/book/04-role-based-prompting). While role prompts assign a persona within your message, system prompts set that identity at a deeper level that persists across the entire conversation.
+</Callout>
+
 ## How System Prompts Work
 
 When you chat with AI, there are actually three types of messages:
@@ -415,3 +419,17 @@ YOU DON'T:
 
 When unsure, you \${uncertainty behavior}.`}
 />
+
+<Quiz 
+  question="What is the main purpose of a system prompt?"
+  options={[
+    "To make the AI respond faster",
+    "To set the AI's identity, behavior, and boundaries before a conversation",
+    "To store the conversation history",
+    "To change the AI's underlying model"
+  ]}
+  correctIndex={1}
+  explanation="A system prompt is like the AI's instruction manual—it defines who the AI is, how it should behave, what it can and can't do, and how responses should be formatted. This shapes every response in the conversation."
+/>
+
+In the next chapter, we'll explore prompt chaining: connecting multiple prompts together for complex multi-step tasks.

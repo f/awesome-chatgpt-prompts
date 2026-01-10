@@ -8,14 +8,36 @@ Think of roles as filters for AI's vast knowledge. The right role focuses respon
 
 When you assign a role, you're essentially telling the model: "Filter your vast knowledge through this specific lens." The model adjusts its:
 
-- **Vocabulary** — Using terminology appropriate to the role
-- **Perspective** — Considering problems from that viewpoint
-- **Expertise depth** — Providing role-appropriate detail levels
-- **Communication style** — Matching how that role would communicate
+- **Vocabulary**: Using terminology appropriate to the role
+- **Perspective**: Considering problems from that viewpoint
+- **Expertise depth**: Providing role-appropriate detail levels
+- **Communication style**: Matching how that role would communicate
+
+### The Technical Explanation
+
+LLMs work by predicting the most likely next token based on the context they're given. When you specify a role, you're fundamentally changing what "likely" means.
+
+**Activating Relevant Knowledge**: The role primes specific regions of the model's learned associations. Saying "You are a doctor" activates medical terminology, diagnostic reasoning patterns, and clinical communication styles from the training data.
+
+**Statistical Conditioning**: LLMs learned from millions of documents written by real experts. When you assign a role, the model conditions its probability distributions to match patterns it saw from that type of author.
+
+**Reducing Ambiguity**: Without a role, the model averages across all possible responders. With a role, it narrows to a specific subset, making responses more focused and consistent.
+
+**Context Anchoring**: The role creates a persistent context anchor throughout the conversation. Every subsequent response is influenced by this initial framing.
+
+Think of it this way: if you ask "What should I do about this cough?" the model could respond as a doctor, a friend, a pharmacist, or a worried parent. Each would give different advice. By specifying the role upfront, you're telling the model which "voice" to use from its training data.
+
+<Callout type="info" title="Why This Matters">
+The model isn't pretending or role-playing in a theatrical sense. It's statistically biasing its outputs toward patterns it learned from real experts, professionals, and specialists during training. A "doctor" role activates medical knowledge pathways; a "poet" role activates literary patterns.
+</Callout>
 
 ## Basic Role Patterns
 
+These foundational patterns work across most use cases. Start with these templates and customize them for your needs.
+
 ### The Expert Pattern
+
+The most versatile pattern. Specify the field of expertise and years of experience to get authoritative, in-depth responses. Works well for technical questions, analysis, and professional advice.
 
 <TryIt compact prompt={`You are an expert \${field} with \${years:10} years of experience in \${specialty}.
 
@@ -23,11 +45,15 @@ When you assign a role, you're essentially telling the model: "Filter your vast 
 
 ### The Professional Pattern
 
+Ground the role in a real-world context by specifying a job title and organization type. This adds institutional knowledge and professional norms to the response.
+
 <TryIt compact prompt={`You are a \${profession} working at \${organization}.
 
 \${task}`} />
 
 ### The Teacher Pattern
+
+Perfect for learning and explanations. Specifying the audience level ensures the response matches the learner's background, from beginners to advanced practitioners.
 
 <TryIt compact prompt={`You are a \${subject} teacher who specializes in explaining complex concepts to \${audience}.
 
@@ -37,7 +63,7 @@ When you assign a role, you're essentially telling the model: "Filter your vast 
 
 ### Compound Roles
 
-Combine multiple aspects for nuanced responses:
+Combine multiple identities to get responses that blend different perspectives. This pediatrician-parent combination produces advice that's both medically sound and practically tested.
 
 <TryIt compact prompt={`You are a pediatrician who is also a parent of three children. You understand both the medical and practical aspects of childhood health issues. You communicate with empathy and without medical jargon.
 
@@ -45,7 +71,7 @@ Combine multiple aspects for nuanced responses:
 
 ### Situational Roles
 
-Add context about the current situation:
+Place the role in a specific scenario to shape both content and tone. Here, the code review context makes the AI constructive and educational rather than just critical.
 
 <TryIt compact prompt={`You are a senior developer conducting a code review for a junior team member. You want to be helpful and educational, not critical. You explain not just what to fix, but why.
 
@@ -54,7 +80,7 @@ Code to review:
 
 ### Perspective Roles
 
-Use roles to get specific viewpoints:
+Get feedback from a specific stakeholder's point of view. A VC perspective evaluates viability and scalability differently than a customer or engineer would.
 
 <TryIt compact prompt={`You are a venture capitalist evaluating startup pitches. You've seen thousands of pitches and can quickly identify strengths, weaknesses, and red flags. Be direct but constructive.
 
@@ -62,15 +88,23 @@ Pitch: \${pitch}`} />
 
 ## Role Categories and Examples
 
+Different domains benefit from different types of roles. Here are proven examples organized by category that you can adapt for your tasks.
+
 ### Technical Roles
+
+**Software Architect**: Best for system design decisions, technology choices, and architectural trade-offs. The focus on maintainability steers responses toward practical, long-term solutions.
 
 <TryIt compact prompt={`You are a software architect specializing in scalable distributed systems. You prioritize maintainability, performance, and team productivity in your recommendations.
 
 \${question}`} />
 
+**Security Specialist**: The attacker mindset is key here. This role produces threat-focused analysis that identifies vulnerabilities a defensive-only perspective might miss.
+
 <TryIt compact prompt={`You are a cybersecurity specialist who conducts penetration testing. You think like an attacker to identify vulnerabilities.
 
 Analyze: \${target}`} />
+
+**DevOps Engineer**: Ideal for deployment, automation, and infrastructure questions. The emphasis on reliability ensures production-ready recommendations.
 
 <TryIt compact prompt={`You are a DevOps engineer focused on CI/CD pipelines and infrastructure as code. You value automation and reliability.
 
@@ -78,13 +112,19 @@ Analyze: \${target}`} />
 
 ### Creative Roles
 
+**Copywriter**: The "award-winning" qualifier and conversion focus produce punchy, persuasive copy rather than generic marketing text.
+
 <TryIt compact prompt={`You are an award-winning copywriter known for creating compelling headlines and persuasive content that drives conversions.
 
 Write copy for: \${product}`} />
 
+**Screenwriter**: Activates knowledge of dramatic structure, pacing, and dialogue conventions. Great for any narrative writing that needs tension and character voice.
+
 <TryIt compact prompt={`You are a screenwriter who has written for popular TV dramas. You understand story structure, dialogue, and character development.
 
 Write: \${scene}`} />
+
+**UX Writer**: A specialized role for interface text. The focus on brevity and user guidance produces concise, action-oriented copy.
 
 <TryIt compact prompt={`You are a UX writer specializing in microcopy. You make interfaces feel human and guide users with minimal text.
 
@@ -92,13 +132,19 @@ Write microcopy for: \${element}`} />
 
 ### Analytical Roles
 
+**Business Analyst**: Bridges the gap between technical and non-technical stakeholders. Useful for requirement gathering, spec writing, and identifying gaps in project plans.
+
 <TryIt compact prompt={`You are a business analyst who translates between technical teams and stakeholders. You clarify requirements and identify edge cases.
 
 Analyze: \${requirement}`} />
 
+**Research Scientist**: The emphasis on evidence and uncertainty acknowledgment produces balanced, well-sourced responses that distinguish facts from speculation.
+
 <TryIt compact prompt={`You are a research scientist who values empirical evidence and acknowledges uncertainty. You distinguish between established facts and hypotheses.
 
 Research question: \${question}`} />
+
+**Financial Analyst**: Combines quantitative analysis with risk assessment. The dual focus on returns and risk produces more balanced investment perspectives.
 
 <TryIt compact prompt={`You are a financial analyst who evaluates investments using fundamental and technical analysis. You consider risk alongside potential returns.
 
@@ -106,9 +152,13 @@ Evaluate: \${investment}`} />
 
 ### Educational Roles
 
+**Socratic Tutor**: Instead of giving answers, this role asks guiding questions. Excellent for deeper learning and helping students develop critical thinking skills.
+
 <TryIt compact prompt={`You are a tutor using the Socratic method. Instead of giving answers directly, you guide students to discover answers through thoughtful questions.
 
 Topic: \${topic}`} />
+
+**Instructional Designer**: Structures learning for maximum retention. Use this role when you need to break down complex topics into teachable chunks with clear progression.
 
 <TryIt compact prompt={`You are an instructional designer who creates engaging learning experiences. You break complex topics into digestible modules with clear learning objectives.
 
@@ -116,7 +166,9 @@ Create curriculum for: \${topic}`} />
 
 ## The Role Stack Technique
 
-Layer multiple roles for complex tasks:
+For complex tasks, combine multiple role aspects into a single, layered identity. This technique stacks expertise, audience awareness, and style guidelines to create highly specialized responses.
+
+This example layers three elements: domain expertise (API documentation), audience (junior developers), and style guide (Google's conventions). Each layer constrains the output further.
 
 <TryIt compact prompt={`You are a technical writer with expertise in API documentation. You write for developers who are new to REST APIs. Follow the Google developer documentation style guide: use second person ("you"), active voice, present tense, and keep sentences under 26 words.
 
@@ -233,6 +285,8 @@ Roles work even better when combined with other prompting techniques:
 
 ### Role + Few-Shot
 
+Combine a role with an example to show exactly how the role should respond. The example teaches tone and format while the role provides context and expertise.
+
 <TryIt compact prompt={`You are a customer support specialist trained to de-escalate angry customers.
 
 Example response to angry customer:
@@ -243,6 +297,8 @@ Now respond to:
 Customer: "\${customerMessage}"`} />
 
 ### Role + Chain of Thought
+
+The detective role naturally encourages step-by-step reasoning. Combining roles with chain-of-thought produces more transparent, verifiable problem-solving.
 
 <TryIt compact prompt={`You are a detective solving a logic puzzle. Think through each clue methodically, stating your reasoning at each step.
 
