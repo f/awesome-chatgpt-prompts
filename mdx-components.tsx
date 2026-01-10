@@ -1,6 +1,6 @@
 import type { MDXComponents } from "mdx/types";
 import type { ComponentPropsWithoutRef } from "react";
-import { Callout, Checklist, Collapsible, Compare, ContextPlayground, ContextWindowDemo, CRISPEFramework, EmbeddingsDemo, FewShotDemo, IconCheck, IconClipboard, IconLightbulb, IconLock, IconSettings, IconStar, IconTarget, IconUser, IconX, InfoGrid, IterativeRefinementDemo, JailbreakDemo, JsonYamlDemo, PrinciplesSummary, PromptBreakdown, Quiz, RTFFramework, SpecificitySpectrum, StructuredOutputDemo, SummarizationDemo, TemperatureDemo, TokenizerDemo, TryIt } from "@/components/book/interactive";
+import { Callout, Checklist, Collapsible, Compare, ContextPlayground, ContextWindowDemo, CRISPEFramework, EmbeddingsDemo, FewShotDemo, IconCheck, IconClipboard, IconLightbulb, IconLock, IconSettings, IconStar, IconTarget, IconUser, IconX, InfoGrid, IterativeRefinementDemo, JailbreakDemo, JsonYamlDemo, PrinciplesSummary, PromptBreakdown, Quiz, RTFFramework, SpecificitySpectrum, StructuredOutputDemo, SummarizationDemo, TemperatureDemo, TextToImageDemo, TextToVideoDemo, TokenizerDemo, TryIt } from "@/components/book/interactive";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -55,6 +55,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     StructuredOutputDemo,
     SummarizationDemo,
     TemperatureDemo,
+    TextToImageDemo,
+    TextToVideoDemo,
     TokenizerDemo,
     TryIt,
   };

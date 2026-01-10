@@ -55,14 +55,49 @@ Context windows vary by model:
 
 ## Types of AI Models
 
-### Text Models
-The most common type, these generate text responses to text inputs. Examples: GPT-4, Claude, Llama, Mistral.
+### Text Models (LLMs)
+The most common type, these generate text responses to text inputs. They power chatbots, writing assistants, and code generators. Examples: GPT-4, Claude, Llama, Mistral.
 
 ### Multimodal Models
 These can understand more than just text. They can look at images, listen to audio, and watch videos. Examples: GPT-4V, Gemini, Claude 3.
 
+### Text-to-Image Models
+
+Text-to-image models like DALL-E, Midjourney, Nano Banana and Stable Diffusion create images from text descriptions. They work differently from text models:
+
+**How They Work:**
+1. **Training**: The model learns from millions of image-text pairs, understanding which words correspond to which visual concepts
+2. **Diffusion Process**: Starting from random noise, the model gradually refines the image, guided by your text prompt
+3. **CLIP Guidance**: A separate model (CLIP) helps connect your words to visual concepts, ensuring the image matches your description
+
+<TextToImageDemo />
+
+**Prompting for Images is Different:**
+Unlike text prompts where you write sentences, image prompts often work better as descriptive phrases separated by commas:
+
+<Compare 
+  before={{ label: "Text-Style Prompt", content: "Please create an image of a cat sitting on a windowsill looking at the rain outside" }}
+  after={{ label: "Image-Style Prompt", content: "orange tabby cat, sitting on windowsill, watching rain, cozy interior, soft natural lighting, photorealistic, shallow depth of field, 4K" }}
+/>
+
+### Text-to-Video Models
+
+Text-to-video is the newest frontier. Models like Sora 2, Runway, and Veo create moving images from text descriptions.
+
+**How They Work:**
+1. **Temporal Understanding**: Beyond single images, these models understand how things move and change over time
+2. **Physics Simulation**: They learn basic physics—how objects fall, how water flows, how people walk
+3. **Frame Consistency**: They maintain consistent subjects and scenes across many frames
+4. **Diffusion in Time**: Similar to image models, but generating coherent sequences instead of single frames
+
+<TextToVideoDemo />
+
+<Callout type="info" title="Video Prompting Tips">
+Video prompts need to describe action over time, not just a static scene. Include verbs and movement: "A bird takes flight from a branch" rather than "A bird on a branch."
+</Callout>
+
 ### Specialized Models
-Fine-tuned for specific tasks like code generation (Codex, CodeLlama), image generation (DALL-E, Midjourney), or domain-specific applications.
+Fine-tuned for specific tasks like code generation (Codex, CodeLlama), music generation (Suno, Udio), or domain-specific applications like medical diagnosis or legal document analysis.
 
 ## Model Capabilities and Limitations
 
