@@ -1,0 +1,467 @@
+prompts.chat includes AI-powered prompt improvement that transforms basic prompts into well-structured, comprehensive prompts. This chapter covers the enhancement features.
+
+## Overview
+
+The prompt enhancement system:
+- Takes a basic prompt idea
+- Searches for similar high-quality prompts for inspiration
+- Uses AI to expand and improve the prompt
+- Supports different output types and formats
+
+## Using the Improve Prompt API
+
+### Basic Request
+
+```typescript
+const response = await fetch('https://prompts.chat/api/improve-prompt', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer your-api-key'
+  },
+  body: JSON.stringify({
+    prompt: "Help me write better code",
+    outputType: "text",
+    outputFormat: "text"
+  })
+});
+
+const result = await response.json();
+```
+
+### Response Structure
+
+```typescript
+{
+  "original": "Help me write better code",
+  "improved": "You are an expert software engineer and code mentor with 15 years of experience across multiple programming languages and paradigms...",
+  "outputType": "text",
+  "outputFormat": "text",
+  "inspirations": [
+    {
+      "id": "abc123",
+      "slug": "code-mentor",
+      "title": "Code Mentor",
+      "similarity": 85
+    },
+    {
+      "id": "def456",
+      "slug": "senior-developer",
+      "title": "Senior Developer Assistant",
+      "similarity": 72
+    }
+  ],
+  "model": "gpt-4"
+}
+```
+
+## Output Types
+
+### Text Output
+
+Standard text generation prompts:
+
+```typescript
+{
+  "prompt": "Help me brainstorm marketing ideas",
+  "outputType": "text",
+  "outputFormat": "text"
+}
+```
+
+Result focuses on:
+- Clear role definition
+- Structured thinking process
+- Comprehensive task breakdown
+
+### Image Output
+
+Prompts for image generation:
+
+```typescript
+{
+  "prompt": "Create a logo for a tech startup",
+  "outputType": "image",
+  "outputFormat": "text"
+}
+```
+
+Result includes:
+- Visual style descriptors
+- Composition guidelines
+- Color and mood specifications
+- Technical requirements
+
+### Video Output
+
+Prompts for video generation:
+
+```typescript
+{
+  "prompt": "Make a product demo video",
+  "outputType": "video",
+  "outputFormat": "text"
+}
+```
+
+Result covers:
+- Scene descriptions
+- Timing and pacing
+- Visual transitions
+- Audio/narration notes
+
+### Sound/Audio Output
+
+Prompts for audio generation:
+
+```typescript
+{
+  "prompt": "Create background music for meditation",
+  "outputType": "sound",
+  "outputFormat": "text"
+}
+```
+
+Result includes:
+- Musical characteristics
+- Mood and atmosphere
+- Tempo and rhythm
+- Instrumentation suggestions
+
+## Output Formats
+
+### Text Format
+
+Free-form prompt text:
+
+```typescript
+{
+  "outputFormat": "text"
+}
+```
+
+### Structured JSON
+
+JSON-formatted output prompts:
+
+```typescript
+{
+  "outputFormat": "structured_json"
+}
+```
+
+Enhanced prompt will include JSON schema definition:
+```
+...
+
+Return your analysis as JSON:
+{
+  "field1": "description",
+  "field2": ["array"],
+  "field3": {
+    "nested": "object"
+  }
+}
+```
+
+### Structured YAML
+
+YAML-formatted output prompts:
+
+```typescript
+{
+  "outputFormat": "structured_yaml"
+}
+```
+
+Enhanced prompt will include YAML structure:
+```
+...
+
+Return your analysis as YAML:
+field1: description
+field2:
+  - item1
+  - item2
+field3:
+  nested: object
+```
+
+## How Enhancement Works
+
+### 1. Semantic Search
+
+The system first searches for similar existing prompts:
+
+```
+Input: "Help me debug code"
+
+Similar prompts found:
+- "Senior Debugger" (87% similarity)
+- "Code Problem Solver" (82% similarity)
+- "Bug Hunter" (76% similarity)
+```
+
+### 2. Inspiration Extraction
+
+Patterns extracted from similar prompts:
+- Common role definitions
+- Effective structures
+- Useful constraints
+- Output format patterns
+
+### 3. AI Enhancement
+
+The AI expands the basic prompt using:
+- Best practices from the book
+- Patterns from similar prompts
+- Output type-specific techniques
+- Format-specific structures
+
+### 4. Result Assembly
+
+Final prompt combines:
+- Enhanced core instruction
+- Appropriate role/persona
+- Relevant constraints
+- Proper output format
+
+## Examples
+
+### Basic → Enhanced (Text)
+
+**Input:**
+```
+"Summarize articles"
+```
+
+**Enhanced:**
+```
+You are an expert content analyst and summarization specialist. 
+Your task is to create concise, accurate summaries that capture 
+the essential information from articles.
+
+When summarizing, follow these guidelines:
+
+1. **Identify Key Points**
+   - Main thesis or argument
+   - Supporting evidence
+   - Key conclusions
+
+2. **Structure Your Summary**
+   - Lead with the most important information
+   - Group related points together
+   - Maintain logical flow
+
+3. **Quality Standards**
+   - Preserve factual accuracy
+   - Use clear, concise language
+   - Avoid editorializing
+   - Include relevant context
+
+4. **Output Format**
+   - Length: \${length:150-200} words
+   - Start with a topic sentence
+   - Use bullet points for multiple key findings
+   - End with significance/implications
+
+Provide the article and I will create a focused summary.
+```
+
+### Basic → Enhanced (JSON)
+
+**Input:**
+```
+"Extract product info"
+```
+
+**Enhanced:**
+```
+You are a data extraction specialist who accurately extracts 
+structured information from product descriptions.
+
+Extract product information and return as JSON:
+
+{
+  "product": {
+    "name": "string - product name",
+    "brand": "string or null - brand name if mentioned",
+    "category": "string - product category",
+    "model": "string or null - model number if available"
+  },
+  "pricing": {
+    "price": "number - main price",
+    "currency": "string - ISO currency code",
+    "originalPrice": "number or null - if on sale",
+    "discount": "number or null - percentage if applicable"
+  },
+  "specifications": {
+    "dimensions": "string or null",
+    "weight": "string or null",
+    "materials": ["string array"],
+    "features": ["string array - key features"]
+  },
+  "availability": {
+    "inStock": "boolean",
+    "quantity": "number or null",
+    "shipping": "string or null - shipping info"
+  },
+  "confidence": {
+    "overall": "number 0-1 - extraction confidence",
+    "missingFields": ["string array - fields not found"]
+  }
+}
+
+Rules:
+- Use null for fields not found in the source
+- Do not invent information
+- Note confidence level for uncertain extractions
+- Include all available information
+```
+
+### Basic → Enhanced (Image)
+
+**Input:**
+```
+"Logo for coffee shop"
+```
+
+**Enhanced:**
+```
+Create a logo for an artisan coffee shop.
+
+Style: Modern minimalist with warm, inviting aesthetic
+Color palette: 
+- Primary: Rich coffee brown (#4A2C2A)
+- Secondary: Cream white (#F5F1E6)
+- Accent: Copper/gold (#B87333)
+
+Composition:
+- Circular or rounded badge shape
+- Central icon: stylized coffee cup or coffee bean
+- Shop name integrated elegantly
+- Balanced negative space
+
+Visual elements:
+- Clean, geometric lines
+- Subtle texture suggesting handcrafted quality
+- Professional but approachable
+- Works in single color (for stamps/embossing)
+
+Technical requirements:
+- Scalable from favicon to storefront
+- Clear at small sizes
+- Distinct silhouette
+- Print and digital friendly
+
+Mood: Warm, welcoming, premium but accessible, 
+      community-focused, artisanal quality
+
+Avoid: Clip art style, overly complex details, 
+       generic coffee imagery, hard edges
+```
+
+## Using via SDK
+
+### Node.js/TypeScript
+
+```typescript
+import { PromptsClient } from 'prompts.chat';
+
+const client = new PromptsClient({ apiKey: 'your-key' });
+
+const result = await client.prompts.improve({
+  prompt: "Help with data analysis",
+  outputType: "text",
+  outputFormat: "structured_json"
+});
+
+console.log(result.improved);
+console.log(result.inspirations);
+```
+
+### Python
+
+```python
+import requests
+
+response = requests.post(
+    'https://prompts.chat/api/improve-prompt',
+    headers={
+        'Authorization': 'Bearer your-api-key',
+        'Content-Type': 'application/json'
+    },
+    json={
+        'prompt': 'Help with data analysis',
+        'outputType': 'text',
+        'outputFormat': 'text'
+    }
+)
+
+result = response.json()
+print(result['improved'])
+```
+
+## Using via MCP
+
+```typescript
+// MCP tool call
+{
+  "name": "improve_prompt",
+  "arguments": {
+    "prompt": "Write marketing emails",
+    "outputType": "text",
+    "outputFormat": "text"
+  }
+}
+```
+
+## Best Practices
+
+### When to Use Enhancement
+
+**Good candidates:**
+- Rough ideas you want to develop
+- Simple prompts that need structure
+- Quick prototypes to expand
+- Learning prompt patterns
+
+**Better to write manually:**
+- Highly specific domain prompts
+- Prompts requiring exact wording
+- Sensitive/compliance prompts
+- Prompts you'll iterate on heavily
+
+### Post-Enhancement Review
+
+Always review enhanced prompts:
+```
+□ Core intent preserved
+□ Appropriate for your use case
+□ Variables make sense
+□ Output format matches needs
+□ No hallucinated requirements
+□ Matches your voice/brand
+```
+
+### Iterative Enhancement
+
+```
+1. Start with basic idea
+2. Enhance with API
+3. Review and adjust
+4. Test with real inputs
+5. Refine based on results
+6. Save final version
+```
+
+## Summary
+
+AI prompt enhancement:
+- Transforms basic ideas into structured prompts
+- Uses semantic search for inspiration
+- Supports multiple output types and formats
+- Provides transparency via inspiration sources
+- Works via API, SDK, and MCP
+
+Use enhancement as a starting point, then customize for your specific needs.

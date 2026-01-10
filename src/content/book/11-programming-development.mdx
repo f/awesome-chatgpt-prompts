@@ -1,0 +1,434 @@
+AI has transformed software development. This chapter covers prompting techniques for code generation, debugging, review, and development workflows.
+
+## Code Generation
+
+### Function Generation
+
+```
+Write a [language] function that [description].
+
+Requirements:
+- Input: [parameter types and descriptions]
+- Output: [return type and description]
+- Handle edge cases: [list specific cases]
+- Performance: [any performance requirements]
+
+Include:
+- Type hints/annotations
+- Docstring with examples
+- Input validation
+- Error handling
+```
+
+**Example:**
+
+```
+Write a Python function that validates email addresses.
+
+Requirements:
+- Input: string (potential email)
+- Output: boolean (valid or not) and optional error message
+- Handle edge cases: empty string, None, unicode characters
+- Use regex for validation
+
+Include type hints, docstring with examples, and handle 
+common edge cases.
+```
+
+### Class/Module Generation
+
+```
+Create a [language] class for [purpose].
+
+Class design:
+- Name: [ClassName]
+- Responsibility: [single responsibility description]
+- Properties: [list with types]
+- Methods: [list with signatures]
+
+Requirements:
+- Follow [design pattern] pattern
+- Include proper encapsulation
+- Add comprehensive docstrings
+- Include usage example
+
+Testing:
+- Include unit test skeleton
+```
+
+### API Endpoint Generation
+
+```
+Create a REST API endpoint for [resource].
+
+Framework: [Express/FastAPI/Rails/etc.]
+Method: [GET/POST/PUT/DELETE]
+Path: [/api/resource]
+
+Request:
+- Headers: [required headers]
+- Body schema: [JSON schema]
+- Query params: [parameters]
+
+Response:
+- Success: [status code + response shape]
+- Errors: [error codes and messages]
+
+Include:
+- Input validation
+- Authentication check
+- Error handling
+- Rate limiting consideration
+```
+
+## Debugging
+
+### Bug Analysis
+
+```
+Debug this code. It should [expected behavior] but instead 
+[actual behavior].
+
+Code:
+[code]
+
+Error message (if any):
+[error]
+
+Steps to debug:
+1. Identify what the code is trying to do
+2. Trace through execution with the given input
+3. Find where expected and actual behavior diverge
+4. Explain the root cause
+5. Provide the fix with explanation
+```
+
+### Error Message Interpretation
+
+```
+Explain this error and how to fix it:
+
+Error:
+[full error message/stack trace]
+
+Context:
+- Language/Framework: [details]
+- What I was trying to do: [action]
+- Relevant code: [code snippet]
+
+Provide:
+1. Plain English explanation of the error
+2. Root cause
+3. Step-by-step fix
+4. How to prevent this in the future
+```
+
+### Performance Debugging
+
+```
+This code is slow. Analyze and optimize:
+
+Code:
+[code]
+
+Current performance: [metrics]
+Target performance: [goals]
+Constraints: [memory limits, etc.]
+
+Provide:
+1. Identify bottlenecks
+2. Explain why each is slow
+3. Suggest optimizations (ranked by impact)
+4. Show optimized code
+5. Estimate improvement
+```
+
+## Code Review
+
+### Comprehensive Review
+
+```
+Review this code for a pull request.
+
+Code:
+[code]
+
+Review for:
+1. **Correctness**: Bugs, logic errors, edge cases
+2. **Security**: Vulnerabilities, injection risks, auth issues
+3. **Performance**: Inefficiencies, N+1 queries, memory leaks
+4. **Maintainability**: Readability, naming, complexity
+5. **Best practices**: [language/framework] conventions
+
+Format your review as:
+🔴 Critical: [must fix before merge]
+🟡 Important: [should fix]
+🟢 Suggestion: [nice to have]
+💭 Question: [clarification needed]
+```
+
+### Security Review
+
+```
+Perform a security review of this code:
+
+Code:
+[code]
+
+Check for:
+- [ ] Injection vulnerabilities (SQL, XSS, command)
+- [ ] Authentication/authorization flaws
+- [ ] Sensitive data exposure
+- [ ] Insecure dependencies
+- [ ] Cryptographic issues
+- [ ] Input validation gaps
+- [ ] Error handling that leaks info
+
+For each finding:
+- Severity: Critical/High/Medium/Low
+- Location: Line number or function
+- Issue: Description
+- Exploit: How it could be attacked
+- Fix: Recommended remediation
+```
+
+## Refactoring
+
+### Code Smell Detection
+
+```
+Analyze this code for code smells and refactoring opportunities:
+
+Code:
+[code]
+
+Identify:
+1. Long methods (suggest extraction)
+2. Duplicate code (suggest DRY improvements)
+3. Complex conditionals (suggest simplification)
+4. Poor naming (suggest better names)
+5. Tight coupling (suggest decoupling)
+
+For each issue, show before/after code.
+```
+
+### Design Pattern Application
+
+```
+Refactor this code using the [pattern name] pattern.
+
+Current code:
+[code]
+
+Goals:
+- [why this pattern is appropriate]
+- [specific benefits we want]
+
+Provide:
+1. Explanation of the pattern
+2. How it applies here
+3. Refactored code
+4. Trade-offs to consider
+```
+
+## Testing
+
+### Unit Test Generation
+
+```
+Write unit tests for this function:
+
+Function:
+[code]
+
+Testing framework: [Jest/pytest/JUnit/etc.]
+
+Cover:
+- Happy path (normal inputs)
+- Edge cases (empty, null, boundary values)
+- Error cases (invalid inputs)
+- [Specific scenarios to test]
+
+Format: Arrange-Act-Assert pattern
+Include: Descriptive test names
+```
+
+### Test Case Generation
+
+```
+Generate test cases for this feature:
+
+Feature: [description]
+Acceptance criteria: [criteria]
+
+Provide test cases in this format:
+
+| ID | Scenario | Given | When | Then | Priority |
+|----|----------|-------|------|------|----------|
+| TC01 | ... | ... | ... | ... | High |
+```
+
+## Architecture & Design
+
+### System Design
+
+```
+Design a system for [requirement].
+
+Constraints:
+- Expected load: [requests/users]
+- Latency requirements: [ms]
+- Availability: [SLA %]
+- Budget: [constraints]
+
+Provide:
+1. High-level architecture diagram (ASCII/text)
+2. Component descriptions
+3. Data flow
+4. Technology choices with rationale
+5. Scaling strategy
+6. Trade-offs and alternatives considered
+```
+
+### Database Schema Design
+
+```
+Design a database schema for [application].
+
+Requirements:
+- [Feature 1]: [data needs]
+- [Feature 2]: [data needs]
+- [Feature 3]: [data needs]
+
+Provide:
+1. Entity-relationship description
+2. Table definitions with columns and types
+3. Indexes for common queries
+4. Foreign key relationships
+5. Sample queries for key operations
+```
+
+## Documentation Generation
+
+### API Documentation
+
+```
+Generate API documentation from this code:
+
+Code:
+[endpoint code]
+
+Format: OpenAPI/Swagger YAML
+
+Include:
+- Endpoint description
+- Request/response schemas
+- Example requests/responses
+- Error codes
+- Authentication requirements
+```
+
+### Inline Documentation
+
+```
+Add comprehensive documentation to this code:
+
+Code:
+[code]
+
+Add:
+- File/module docstring (purpose, usage)
+- Function/method docstrings (params, returns, raises, examples)
+- Inline comments for complex logic only
+- Type hints if missing
+
+Style: [Google/NumPy/JSDoc/etc.]
+```
+
+## Prompt Templates from prompts.chat
+
+### Act as a Senior Developer
+
+```
+I want you to act as a senior software developer. I will provide 
+code and ask questions about it. You will review the code, suggest 
+improvements, explain concepts, and help debug issues. Your 
+responses should be educational and help me become a better 
+developer.
+```
+
+### Act as a Code Reviewer
+
+```
+I want you to act as a code reviewer. I will provide pull requests 
+with code changes, and you will review them thoroughly. Check for 
+bugs, security issues, performance problems, and adherence to best 
+practices. Provide constructive feedback that helps the developer 
+improve.
+```
+
+### Act as a Software Architect
+
+```
+I want you to act as a software architect. I will describe system 
+requirements and constraints, and you will design scalable, 
+maintainable architectures. Explain your design decisions, 
+trade-offs, and provide diagrams where helpful.
+```
+
+## Development Workflow Integration
+
+### Commit Message Generation
+
+```
+Generate a commit message for these changes:
+
+Diff:
+[git diff]
+
+Format: Conventional Commits
+Type: [feat/fix/docs/refactor/test/chore]
+
+Provide:
+- Subject line (50 chars max, imperative mood)
+- Body (what and why, wrapped at 72 chars)
+- Footer (references issues if applicable)
+```
+
+### PR Description Generation
+
+```
+Generate a pull request description:
+
+Changes:
+[list of changes or diff summary]
+
+Template:
+## Summary
+[Brief description of changes]
+
+## Changes Made
+- [Change 1]
+- [Change 2]
+
+## Testing
+- [ ] Unit tests added/updated
+- [ ] Manual testing completed
+
+## Screenshots (if UI changes)
+[placeholder]
+
+## Related Issues
+Closes #[issue number]
+```
+
+## Summary
+
+Effective programming prompts:
+- Include full context (language, framework, constraints)
+- Specify requirements precisely
+- Request specific output formats
+- Ask for explanations alongside code
+- Include edge cases to handle
+
+AI is a powerful coding partner—use it for generation, review, debugging, and documentation while maintaining your architectural judgment.

@@ -1,0 +1,354 @@
+Chain of Thought (CoT) prompting is a technique that dramatically improves AI performance on complex reasoning tasks by asking the model to show its work step by step.
+
+<Callout type="info" title="Show Your Work">
+Just like a math teacher asking students to show their work, CoT prompting asks the AI to make its reasoning visible.
+</Callout>
+
+## The Problem CoT Solves
+
+AI models can struggle with multi-step reasoning when asked to jump directly to an answer.
+
+<Compare 
+  before={{ label: "Direct Answer (Often Wrong)", content: "Question: A store sells apples for $2 each. If you buy 5 or more, you get 20% off. How much do 7 apples cost?\n\nAnswer: $14 ❌" }}
+  after={{ label: "Chain of Thought (Correct)", content: "Question: A store sells apples for $2 each. If you buy 5 or more, you get 20% off. How much do 7 apples cost?\n\nLet's work through this step by step:\n1. Regular price per apple: $2\n2. Number of apples: 7\n3. Since 7 ≥ 5, the discount applies\n4. Regular total: 7 × $2 = $14\n5. Discount: 20% of $14 = $2.80\n6. Final price: $14 - $2.80 = $11.20\n\nAnswer: $11.20 ✓" }}
+/>
+
+## Basic CoT Prompts
+
+### Simple Trigger Phrases
+
+Add one of these to your prompts:
+
+<div className="my-4 grid gap-2">
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Let's think step by step."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Think through this carefully."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Work through this problem methodically."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Show your reasoning at each step."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Explain your thought process."</div>
+</div>
+
+### Explicit Step Request
+
+<TryIt 
+  title="Try Chain of Thought"
+  description="Ask the AI to solve a problem step by step."
+  prompt={`Solve this problem:
+
+A car rental costs $40 per day plus $0.25 per mile. If someone rents a car for 3 days and drives 200 miles, what is the total cost?
+
+Before giving your final answer:
+1. Identify what information is given
+2. Determine what we need to find
+3. Plan your approach
+4. Execute each step, showing work
+5. Verify your answer`}
+/>
+
+## Zero-Shot vs Few-Shot CoT
+
+### Zero-Shot CoT
+
+Just add "Let's think step by step":
+
+```
+Q: If John has 3 apples and gives half to Mary, then buys 4 more, 
+how many does he have?
+
+A: Let's think step by step.
+- John starts with 3 apples
+- Half of 3 is 1.5, but since we can't split apples, he gives 1 
+  (or we interpret this as 1.5 in the mathematical sense)
+- After giving away: 3 - 1.5 = 1.5 apples
+- After buying 4 more: 1.5 + 4 = 5.5 apples
+
+Wait, this seems impractical. Let me reconsider...
+[model self-corrects]
+```
+
+### Few-Shot CoT
+
+Provide examples of the reasoning pattern:
+
+```
+Example 1:
+Q: A baker has 24 cupcakes. She puts them equally into 4 boxes. 
+Then she eats 2 cupcakes from one box. How many cupcakes total remain?
+
+A: Let's work through this:
+- Total cupcakes: 24
+- Cupcakes per box: 24 ÷ 4 = 6
+- After eating 2 from one box: 6 - 2 = 4 cupcakes in that box
+- Total remaining: (3 boxes × 6) + 4 = 18 + 4 = 22 cupcakes
+
+Example 2:
+Q: A train travels at 60 mph for 2 hours, then 40 mph for 3 hours. 
+What is its average speed?
+
+A: Let's work through this:
+- Distance at 60 mph: 60 × 2 = 120 miles
+- Distance at 40 mph: 40 × 3 = 120 miles
+- Total distance: 120 + 120 = 240 miles
+- Total time: 2 + 3 = 5 hours
+- Average speed: 240 ÷ 5 = 48 mph
+
+Now solve:
+Q: [your question]
+```
+
+## Structured CoT Formats
+
+### The BREAK Format
+
+```
+Solve this problem using BREAK:
+
+B - Begin by restating the problem
+R - Reason about what approach to use
+E - Execute the solution step by step
+A - Answer clearly
+K - Know by verifying/checking
+
+Problem: [complex problem]
+```
+
+### The Reasoning Template
+
+```
+GIVEN: [List known information]
+GOAL: [What we need to find]
+APPROACH: [Strategy we'll use]
+STEPS:
+  1. [First step with reasoning]
+  2. [Second step with reasoning]
+  ...
+VERIFICATION: [Check the answer]
+ANSWER: [Final answer]
+```
+
+## CoT for Different Problem Types
+
+### Mathematical Reasoning
+
+```
+A company's revenue was $1.2M in Q1. It grew 15% in Q2, declined 
+10% in Q3, and grew 25% in Q4. What was the total annual revenue?
+
+Think through each quarter:
+
+Q1: $1,200,000 (given)
+
+Q2: Growth of 15%
+- Calculation: $1,200,000 × 1.15 = $1,380,000
+
+Q3: Decline of 10% from Q2
+- Calculation: $1,380,000 × 0.90 = $1,242,000
+
+Q4: Growth of 25% from Q3
+- Calculation: $1,242,000 × 1.25 = $1,552,500
+
+Total Annual Revenue:
+$1,200,000 + $1,380,000 + $1,242,000 + $1,552,500 = $5,374,500
+```
+
+### Logical Reasoning
+
+```
+Three friends—Alice, Bob, and Carol—each have different pets 
+(cat, dog, fish) and different jobs (teacher, engineer, doctor).
+
+Clues:
+1. Alice doesn't have a cat
+2. The engineer has a dog
+3. Bob is a teacher
+4. Carol doesn't have a fish
+
+Who has which pet and job?
+
+Let me reason through this systematically:
+
+From clue 3: Bob = teacher
+Therefore: Alice and Carol are engineer and doctor (in some order)
+
+From clue 2: The engineer has a dog
+From clue 4: Carol doesn't have a fish
+
+If Carol is the engineer:
+- Carol has a dog (from clue 2)
+- Alice is the doctor
+- Bob has either cat or fish
+- From clue 1: Alice doesn't have a cat
+- So Alice has the fish, Bob has the cat
+
+Let me verify:
+- Alice: doctor, fish ✓ (doesn't have cat, satisfies clue 1)
+- Bob: teacher, cat ✓ (satisfies clue 3)
+- Carol: engineer, dog ✓ (satisfies clues 2 and 4)
+
+All clues satisfied!
+```
+
+### Code Debugging
+
+```
+This function should return the sum of even numbers in a list, 
+but it's returning wrong values. Debug step by step:
+
+def sum_evens(numbers):
+    total = 0
+    for n in numbers:
+        if n % 2 == 0:
+            total += 1
+    return total
+
+Let me trace through with [2, 3, 4, 6]:
+
+Step 1: n = 2
+- Is 2 % 2 == 0? Yes
+- total += 1 → total = 1
+- Wait, we're adding 1, not the number itself!
+
+Step 2: n = 3
+- Is 3 % 2 == 0? No
+- Skip
+
+Step 3: n = 4
+- Is 4 % 2 == 0? Yes
+- total += 1 → total = 2
+
+Step 4: n = 6
+- Is 6 % 2 == 0? Yes
+- total += 1 → total = 3
+
+Return: 3
+
+BUG FOUND: Line "total += 1" should be "total += n"
+
+Expected: 2 + 4 + 6 = 12
+Got: 3 (count of even numbers, not sum)
+
+Fix: Change "total += 1" to "total += n"
+```
+
+## Self-Consistency with CoT
+
+Generate multiple reasoning paths and take the majority answer:
+
+```
+Solve this problem 3 different ways, then give your final answer 
+based on which solution appears most correct:
+
+Problem: [complex problem]
+
+Approach 1: [First method]
+Approach 2: [Alternative method]
+Approach 3: [Third method]
+
+Analysis: Compare the three solutions...
+Final Answer: [Most consistent result]
+```
+
+## CoT for Decision Making
+
+```
+Should we adopt microservices architecture for our application?
+
+Let me think through this systematically:
+
+CURRENT STATE:
+- Monolithic application
+- 50,000 lines of code
+- 5 developers
+- 100 daily active users
+
+FACTORS TO CONSIDER:
+
+1. Team Size and Expertise
+   - 5 developers is relatively small
+   - Microservices add operational complexity
+   - Consideration: May be overkill for team size
+
+2. Scale Requirements
+   - 100 DAU is low traffic
+   - No immediate scaling needs
+   - Consideration: Premature optimization risk
+
+3. Development Velocity
+   - Monolith allows faster iteration
+   - Microservices have deployment overhead
+   - Consideration: Speed matters at this stage
+
+4. Future Growth
+   - Planning for 10x growth
+   - May need independent scaling later
+   - Consideration: Valid concern but uncertain timeline
+
+WEIGHING THE FACTORS:
+- Against microservices: team size (strong), current scale (strong), 
+  velocity (medium)
+- For microservices: future growth (weak - uncertain)
+
+RECOMMENDATION: Stay with monolith, but architect it with clear 
+module boundaries to ease future transition if needed.
+```
+
+## When to Use CoT
+
+<div className="my-4 grid gap-2">
+  <div className="flex items-center gap-3 p-3 bg-green-50 dark:bg-green-950/30 rounded-lg border border-green-200 dark:border-green-800">
+    <span className="text-green-600 dark:text-green-400">✅</span>
+    <span className="font-semibold min-w-32">Math problems</span>
+    <span className="text-muted-foreground">Reduces calculation errors</span>
+  </div>
+  <div className="flex items-center gap-3 p-3 bg-green-50 dark:bg-green-950/30 rounded-lg border border-green-200 dark:border-green-800">
+    <span className="text-green-600 dark:text-green-400">✅</span>
+    <span className="font-semibold min-w-32">Logic puzzles</span>
+    <span className="text-muted-foreground">Prevents skipped steps</span>
+  </div>
+  <div className="flex items-center gap-3 p-3 bg-green-50 dark:bg-green-950/30 rounded-lg border border-green-200 dark:border-green-800">
+    <span className="text-green-600 dark:text-green-400">✅</span>
+    <span className="font-semibold min-w-32">Complex analysis</span>
+    <span className="text-muted-foreground">Organizes thinking</span>
+  </div>
+  <div className="flex items-center gap-3 p-3 bg-red-50 dark:bg-red-950/30 rounded-lg border border-red-200 dark:border-red-800">
+    <span className="text-red-600 dark:text-red-400">❌</span>
+    <span className="font-semibold min-w-32">Simple Q&A</span>
+    <span className="text-muted-foreground">Unnecessary overhead</span>
+  </div>
+  <div className="flex items-center gap-3 p-3 bg-red-50 dark:bg-red-950/30 rounded-lg border border-red-200 dark:border-red-800">
+    <span className="text-red-600 dark:text-red-400">❌</span>
+    <span className="font-semibold min-w-32">Creative writing</span>
+    <span className="text-muted-foreground">Can constrain creativity</span>
+  </div>
+  <div className="flex items-center gap-3 p-3 bg-amber-50 dark:bg-amber-950/30 rounded-lg border border-amber-200 dark:border-amber-800">
+    <span className="text-amber-600 dark:text-amber-400">⚠️</span>
+    <span className="font-semibold min-w-32">Code generation</span>
+    <span className="text-muted-foreground">Helps with algorithms</span>
+  </div>
+</div>
+
+## CoT Limitations
+
+1. **Increased token usage** — More output means higher costs
+2. **Not always needed** — Simple tasks don't benefit
+3. **Can be verbose** — May need to ask for conciseness
+4. **Reasoning can be flawed** — CoT doesn't guarantee correctness
+
+## Summary
+
+<Callout type="tip" title="Key Takeaways">
+CoT dramatically improves complex reasoning by making implicit steps explicit. Use it for math, logic, analysis, and debugging. Trade-off: better accuracy for more tokens.
+</Callout>
+
+<Quiz 
+  question="When should you NOT use Chain of Thought prompting?"
+  options={[
+    "Math problems requiring multiple steps",
+    "Simple factual questions like 'What is the capital of France?'",
+    "Debugging code with complex logic",
+    "Analyzing a business decision"
+  ]}
+  correctIndex={1}
+  explanation="Chain of Thought adds unnecessary overhead for simple Q&A. It's best reserved for complex reasoning tasks like math, logic puzzles, code debugging, and analysis where showing work improves accuracy."
+/>
+
+In the next chapter, we'll explore few-shot learning—teaching the model through examples.

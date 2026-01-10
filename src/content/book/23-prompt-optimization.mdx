@@ -1,0 +1,330 @@
+Optimizing prompts means improving their effectiveness while reducing cost and latency. This chapter covers systematic approaches to prompt optimization.
+
+## Optimization Goals
+
+Different applications prioritize different goals:
+
+| Goal | Metric | Trade-offs |
+|------|--------|------------|
+| Quality | Accuracy, relevance | May need more tokens |
+| Cost | Tokens used | May sacrifice quality |
+| Latency | Response time | May limit model choice |
+| Consistency | Output variance | May reduce creativity |
+| Robustness | Edge case handling | May increase complexity |
+
+## Measuring Prompt Performance
+
+### Define Success Metrics
+
+Before optimizing, define what "good" means:
+
+```
+Quality metrics:
+- Accuracy (for factual tasks)
+- Relevance (for search/recommendation)
+- Completeness (covers requirements)
+- Coherence (well-structured)
+
+Efficiency metrics:
+- Input tokens used
+- Output tokens generated
+- API calls required
+- End-to-end latency
+```
+
+### A/B Testing Framework
+
+```
+Test Setup:
+- Control: Current prompt (version A)
+- Variant: Modified prompt (version B)
+- Sample size: [N] test cases
+- Success criteria: [metrics]
+
+Test Process:
+1. Run both prompts on same inputs
+2. Evaluate outputs against criteria
+3. Calculate statistical significance
+4. Choose winner, iterate
+
+Document:
+- What changed between versions
+- Performance delta
+- Hypotheses about why
+```
+
+## Token Optimization
+
+### Reducing Input Tokens
+
+**Before (verbose):**
+```
+I would like you to please help me with the following task. 
+I need you to take the text that I'm going to provide below 
+and create a summary of it. The summary should capture the 
+main points and be concise. Please make sure to include all 
+the important information. Here is the text:
+[text]
+```
+
+**After (concise):**
+```
+Summarize this text, capturing main points concisely:
+[text]
+```
+
+### Token-Efficient Patterns
+
+```
+1. Remove pleasantries: "Please" and "Thank you" add tokens
+2. Use abbreviations where clear: "e.g." vs "for example"
+3. Eliminate redundancy: Don't repeat yourself
+4. Use structured formats: JSON over prose when appropriate
+5. Reference by position: "the above" vs repeating content
+```
+
+### Prompt Compression Techniques
+
+```
+Original (45 tokens):
+"You are a helpful assistant specialized in Python programming. 
+You have extensive experience with web frameworks, particularly 
+Django and Flask. When answering questions, you should provide 
+code examples whenever possible."
+
+Compressed (25 tokens):
+"You are a Python expert (Django/Flask). Provide code examples."
+```
+
+## Quality Optimization
+
+### Improving Accuracy
+
+```
+Technique 1: Add verification step
+"...then verify your answer by [method]"
+
+Technique 2: Request confidence
+"...rate your confidence 1-10 and explain any uncertainty"
+
+Technique 3: Multiple perspectives
+"...provide 3 different approaches and recommend one"
+
+Technique 4: Explicit reasoning
+"...think step by step and show your reasoning"
+```
+
+### Improving Consistency
+
+```
+Technique 1: Detailed format specification
+[Show exact output structure expected]
+
+Technique 2: Few-shot examples
+[Provide 2-3 examples of ideal output]
+
+Technique 3: Temperature reduction
+[Use lower temperature: 0.3-0.5]
+
+Technique 4: Output validation
+[Add validation step for key fields]
+```
+
+### Improving Relevance
+
+```
+Technique 1: Explicit context
+"Given that the user is [persona] trying to [goal]..."
+
+Technique 2: Negative constraints
+"Do NOT include [irrelevant things]"
+
+Technique 3: Prioritization
+"Focus primarily on [key aspect], secondary on [other]"
+
+Technique 4: Audience specification
+"Explain as if to [specific audience]"
+```
+
+## Latency Optimization
+
+### Reducing Time to First Token
+
+```
+1. Choose faster models for simple tasks
+2. Reduce prompt length (fewer input tokens to process)
+3. Use streaming for long responses
+4. Cache common prompts
+```
+
+### Reducing Total Response Time
+
+```
+1. Request shorter outputs
+2. Use parallel requests where possible
+3. Early termination (stop sequences)
+4. Chunked processing for large inputs
+```
+
+### Model Selection for Latency
+
+```
+High latency tolerance → Use best model (GPT-4, Claude Opus)
+Medium latency needs → Mid-tier models (GPT-4-turbo)
+Low latency required → Fast models (GPT-3.5, Claude Haiku)
+Real-time needs → Smallest effective model + caching
+```
+
+## Cost Optimization
+
+### Cost Calculation
+
+```
+Cost = (Input tokens × input price) + (Output tokens × output price)
+
+Example (GPT-4):
+- Input: 1000 tokens × $0.03/1K = $0.03
+- Output: 500 tokens × $0.06/1K = $0.03
+- Total: $0.06 per request
+
+At 10,000 requests/day: $600/day = $18,000/month
+```
+
+### Cost Reduction Strategies
+
+```
+1. Model tiering
+   - Use expensive models only when needed
+   - Route simple tasks to cheaper models
+   
+2. Prompt efficiency
+   - Shorter prompts = lower cost
+   - Batch related queries
+
+3. Output control
+   - Set max_tokens appropriately
+   - Request concise responses
+
+4. Caching
+   - Cache identical queries
+   - Cache common prompt prefixes
+   
+5. Filtering
+   - Pre-filter requests that don't need AI
+   - Post-filter to avoid retry costs
+```
+
+### Model Routing
+
+```python
+def route_request(query, complexity):
+    if complexity == "simple":
+        return call_model("gpt-3.5-turbo", query)  # $0.002/1K
+    elif complexity == "medium":
+        return call_model("gpt-4-turbo", query)    # $0.01/1K
+    else:  # complex
+        return call_model("gpt-4", query)          # $0.03/1K
+
+# Auto-classify complexity
+def classify_complexity(query):
+    # Simple heuristics or classifier
+    if len(query) < 100 and "simple" in keywords:
+        return "simple"
+    # ... more logic
+```
+
+## Systematic Optimization Process
+
+### Step 1: Baseline
+
+```
+Document current state:
+- Prompt text
+- Average input/output tokens
+- Quality score on test set
+- Latency percentiles (p50, p95)
+- Cost per request
+```
+
+### Step 2: Identify Bottleneck
+
+```
+Quality issues? → Focus on accuracy/relevance
+Cost issues? → Focus on token reduction
+Latency issues? → Focus on model/prompt size
+Consistency issues? → Focus on format/examples
+```
+
+### Step 3: Generate Hypotheses
+
+```
+"If I [change], then [metric] will improve because [reason]"
+
+Examples:
+- "If I add examples, accuracy will improve because model 
+   learns pattern"
+- "If I remove preamble, cost will decrease because fewer tokens"
+- "If I use smaller model, latency will improve because faster 
+   inference"
+```
+
+### Step 4: Test and Measure
+
+```
+For each hypothesis:
+1. Create variant prompt
+2. Run on test set (same inputs)
+3. Measure relevant metrics
+4. Compare to baseline
+5. Statistical significance check
+```
+
+### Step 5: Iterate
+
+```
+Based on results:
+- Keep improvements that work
+- Discard changes that don't help
+- Generate new hypotheses
+- Repeat until satisfied
+```
+
+## Optimization Checklist
+
+```
+TOKEN OPTIMIZATION
+□ Removed unnecessary words/pleasantries
+□ Eliminated redundancy
+□ Used efficient formatting
+□ Checked prompt length vs. context window
+
+QUALITY OPTIMIZATION
+□ Added verification steps if needed
+□ Included relevant examples
+□ Specified format clearly
+□ Tested edge cases
+
+LATENCY OPTIMIZATION
+□ Using appropriate model for task
+□ Prompt length minimized
+□ Output length controlled
+□ Caching implemented where possible
+
+COST OPTIMIZATION
+□ Model routing implemented
+□ Token usage monitored
+□ Unnecessary calls eliminated
+□ Batch processing where applicable
+```
+
+## Summary
+
+Prompt optimization is iterative and context-dependent:
+
+1. **Define goals** — What matters most for your use case
+2. **Measure baseline** — Know where you're starting
+3. **Optimize systematically** — One change at a time
+4. **Test rigorously** — Measure actual impact
+5. **Balance trade-offs** — Quality vs. cost vs. speed
+
+The best prompt is one that achieves your goals efficiently—not necessarily the shortest or most sophisticated.

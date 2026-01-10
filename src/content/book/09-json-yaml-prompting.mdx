@@ -1,0 +1,494 @@
+Structured data formats like JSON and YAML are essential for building applications that consume AI outputs programmatically. This chapter covers techniques for reliable structured output generation.
+
+<Callout type="info" title="From Text to Data">
+JSON and YAML transform AI outputs from freeform text into structured, type-safe data that code can consume directly.
+</Callout>
+
+## Why Structured Formats?
+
+<JsonYamlDemo />
+
+## JSON Prompting Basics
+
+### Simple JSON Output
+
+```
+Extract the following information as JSON:
+
+{
+  "name": "string",
+  "age": number,
+  "email": "string"
+}
+
+Text: "Contact John Smith, 34 years old, at john@example.com"
+```
+
+Output:
+```json
+{
+  "name": "John Smith",
+  "age": 34,
+  "email": "john@example.com"
+}
+```
+
+### Nested JSON Structures
+
+```
+Parse this order into JSON:
+
+{
+  "order_id": "string",
+  "customer": {
+    "name": "string",
+    "email": "string"
+  },
+  "items": [
+    {
+      "product": "string",
+      "quantity": number,
+      "price": number
+    }
+  ],
+  "total": number
+}
+
+Order: "Order #12345 for Jane Doe (jane@email.com): 2x Widget ($10 each), 
+1x Gadget ($25). Total: $45"
+```
+
+### Ensuring Valid JSON
+
+Add explicit instructions:
+
+```
+CRITICAL: Return ONLY valid JSON. No markdown, no explanation, 
+no additional text before or after the JSON object.
+
+If a field cannot be determined, use null.
+Ensure all strings are properly quoted and escaped.
+Numbers should not be quoted.
+```
+
+## YAML Prompting Basics
+
+### Simple YAML Output
+
+```
+Generate a configuration file in YAML format:
+
+server:
+  host: string
+  port: number
+  ssl: boolean
+database:
+  type: string
+  connection_string: string
+
+Requirements: Production server on port 443 with SSL, PostgreSQL database
+```
+
+Output:
+```yaml
+server:
+  host: "0.0.0.0"
+  port: 443
+  ssl: true
+database:
+  type: "postgresql"
+  connection_string: "postgresql://user:pass@localhost:5432/prod"
+```
+
+### Complex YAML Structures
+
+```
+Generate a GitHub Actions workflow in YAML:
+
+Requirements:
+- Trigger on push to main and pull requests
+- Run on Ubuntu latest
+- Steps: checkout, setup Node 18, install dependencies, run tests
+- Cache npm dependencies
+```
+
+## Type Definitions in Prompts
+
+### Using TypeScript-like Types
+
+The prompts.chat platform uses TypeScript interfaces to define prompt structures:
+
+<TryIt 
+  title="TypeScript Interface Extraction"
+  description="Use a TypeScript interface to extract structured data."
+  prompt={`Extract data according to this type definition:
+
+interface ChatPersona {
+  name?: string;
+  role?: string;
+  tone?: "professional" | "casual" | "friendly" | "technical";
+  expertise?: string[];
+  personality?: string[];
+  background?: string;
+}
+
+Return as JSON matching this interface.
+
+Description: "A senior software engineer named Alex who reviews code. They're analytical and thorough, with expertise in backend systems and databases. Professional but approachable tone."`}
+/>
+
+### JSON Schema Definition
+
+```
+Extract data according to this JSON Schema:
+
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["title", "author", "year"],
+  "properties": {
+    "title": { "type": "string" },
+    "author": { "type": "string" },
+    "year": { "type": "integer", "minimum": 1000, "maximum": 2100 },
+    "genres": { 
+      "type": "array", 
+      "items": { "type": "string" }
+    },
+    "rating": { 
+      "type": "number", 
+      "minimum": 0, 
+      "maximum": 5 
+    }
+  }
+}
+
+Book: "1984 by George Orwell (1949) - A dystopian masterpiece. 
+Genres: Science Fiction, Political Fiction. Rated 4.8/5"
+```
+
+## Handling Arrays
+
+### Fixed-Length Arrays
+
+```
+Extract exactly 3 key points as JSON:
+
+{
+  "key_points": [
+    "string (first point)",
+    "string (second point)", 
+    "string (third point)"
+  ]
+}
+
+Article: [article text]
+```
+
+### Variable-Length Arrays
+
+```
+Extract all mentioned people as JSON:
+
+{
+  "people": [
+    {
+      "name": "string",
+      "role": "string or null if not mentioned"
+    }
+  ],
+  "count": number
+}
+
+If no people are mentioned, return empty array.
+
+Text: [text]
+```
+
+## Enum Values and Constraints
+
+### String Enums
+
+```
+Classify this text. The category MUST be one of these exact values:
+- "technical"
+- "business" 
+- "creative"
+- "personal"
+
+Return JSON:
+{
+  "text": "original text (truncated to 50 chars)",
+  "category": "one of the enum values above",
+  "confidence": number between 0 and 1
+}
+
+Text: [text to classify]
+```
+
+### Validated Numbers
+
+```
+Rate these aspects. Each score MUST be an integer from 1 to 5.
+
+{
+  "quality": 1-5,
+  "value": 1-5,
+  "service": 1-5,
+  "overall": 1-5
+}
+
+Review: [review text]
+```
+
+## Handling Missing Data
+
+### Null Values
+
+```
+Extract information. Use null for any field that cannot be 
+determined from the text. Do NOT invent information.
+
+{
+  "company": "string or null",
+  "revenue": "number or null",
+  "employees": "number or null",
+  "founded": "number (year) or null",
+  "headquarters": "string or null"
+}
+
+Text: "Apple, headquartered in Cupertino, was founded in 1976."
+```
+
+Output:
+```json
+{
+  "company": "Apple",
+  "revenue": null,
+  "employees": null,
+  "founded": 1976,
+  "headquarters": "Cupertino"
+}
+```
+
+### Default Values
+
+```
+Extract settings with these defaults if not specified:
+
+{
+  "theme": "light" (default) | "dark",
+  "language": "en" (default) | other ISO code,
+  "notifications": true (default) | false,
+  "fontSize": 14 (default) | number
+}
+
+User preferences: "I want dark mode and larger text (18px)"
+```
+
+## Multi-Object Responses
+
+### Array of Objects
+
+```
+Parse this list into JSON array:
+
+[
+  {
+    "task": "string",
+    "priority": "high" | "medium" | "low",
+    "due": "ISO date string or null"
+  }
+]
+
+Todo list:
+- Finish report (urgent, due tomorrow)
+- Call dentist (low priority)
+- Review PR #123 (medium, due Friday)
+```
+
+### Grouped Objects
+
+```
+Categorize these items into JSON:
+
+{
+  "fruits": ["string array"],
+  "vegetables": ["string array"],
+  "other": ["string array"]
+}
+
+Items: apple, carrot, bread, banana, broccoli, milk, orange, spinach
+```
+
+## YAML for Configuration Generation
+
+### Docker Compose
+
+```
+Generate a docker-compose.yml for:
+- Node.js app on port 3000
+- PostgreSQL database
+- Redis cache
+- Nginx reverse proxy
+
+Include:
+- Health checks
+- Volume persistence
+- Environment variables from .env file
+- Network isolation
+```
+
+### Kubernetes Manifests
+
+```
+Generate Kubernetes deployment YAML:
+
+Deployment:
+- Name: api-server
+- Image: myapp:v1.2.3
+- Replicas: 3
+- Resources: 256Mi memory, 250m CPU (requests)
+- Health checks: /health endpoint
+- Environment from ConfigMap: api-config
+
+Also generate matching Service (ClusterIP, port 8080)
+```
+
+## Validation and Error Handling
+
+### Self-Validation Prompt
+
+```
+Extract data as JSON, then validate your output.
+
+Schema:
+{
+  "email": "valid email format",
+  "phone": "E.164 format (+1234567890)",
+  "date": "ISO 8601 format (YYYY-MM-DD)"
+}
+
+After generating JSON, check:
+1. Email contains @ and valid domain
+2. Phone starts with + and contains only digits
+3. Date is valid and parseable
+
+If validation fails, fix the issues before responding.
+
+Text: [contact information]
+```
+
+### Error Response Format
+
+```
+Attempt to extract data. If extraction fails, return error format:
+
+Success format:
+{
+  "success": true,
+  "data": { ... extracted data ... }
+}
+
+Error format:
+{
+  "success": false,
+  "error": "description of what went wrong",
+  "partial_data": { ... any data that could be extracted ... }
+}
+```
+
+## JSON vs YAML: When to Use Which
+
+<div className="my-4 grid md:grid-cols-2 gap-4">
+  <div className="p-4 bg-amber-50 dark:bg-amber-950/30 rounded-lg border border-amber-200 dark:border-amber-800">
+    <div className="font-semibold text-amber-700 dark:text-amber-300 mb-2">Use JSON When</div>
+    <ul className="text-sm space-y-1">
+      <li>• Programmatic parsing needed</li>
+      <li>• API responses</li>
+      <li>• Strict type requirements</li>
+      <li>• JavaScript/Web integration</li>
+      <li>• Compact representation</li>
+    </ul>
+  </div>
+  <div className="p-4 bg-purple-50 dark:bg-purple-950/30 rounded-lg border border-purple-200 dark:border-purple-800">
+    <div className="font-semibold text-purple-700 dark:text-purple-300 mb-2">Use YAML When</div>
+    <ul className="text-sm space-y-1">
+      <li>• Human readability matters</li>
+      <li>• Configuration files</li>
+      <li>• Comments are needed</li>
+      <li>• DevOps/Infrastructure</li>
+      <li>• Deep nested structures</li>
+    </ul>
+  </div>
+</div>
+
+## Prompts.chat Structured Prompts
+
+On prompts.chat, you can create prompts with structured output formats:
+
+```
+When creating a prompt on prompts.chat, you can specify:
+
+Type: STRUCTURED
+Format: JSON or YAML
+
+The platform will:
+- Validate outputs against your schema
+- Provide syntax highlighting
+- Enable easy copying of structured output
+- Support template variables in your schema
+```
+
+## Common Pitfalls
+
+### 1. Markdown Code Blocks
+
+**Problem:** Model wraps JSON in ```json blocks
+
+**Solution:** 
+```
+Return ONLY the JSON object. Do not wrap in markdown code blocks.
+Do not include ```json or ``` markers.
+```
+
+### 2. Trailing Commas
+
+**Problem:** Invalid JSON due to trailing commas
+
+**Solution:**
+```
+Ensure valid JSON syntax. No trailing commas after the last 
+element in arrays or objects.
+```
+
+### 3. Unescaped Strings
+
+**Problem:** Quotes or special characters break JSON
+
+**Solution:**
+```
+Properly escape special characters in strings:
+- \" for quotes
+- \\ for backslashes
+- \n for newlines
+```
+
+## Summary
+
+<Callout type="tip" title="Key Techniques">
+Define schemas explicitly using TypeScript interfaces or JSON Schema. Specify types and constraints, handle nulls and defaults, request self-validation, and choose the right format for your use case.
+</Callout>
+
+<Quiz 
+  question="When should you prefer YAML over JSON for AI outputs?"
+  options={[
+    "When building REST APIs",
+    "When the output needs to be human-readable and may include comments",
+    "When working with JavaScript applications",
+    "When you need the most compact representation"
+  ]}
+  correctIndex={1}
+  explanation="YAML is preferred when human readability matters, such as configuration files, DevOps manifests, and documentation. It also supports comments, unlike JSON."
+/>
+
+This completes Part II on techniques. In Part III, we'll explore practical applications across different domains.

@@ -1,0 +1,259 @@
+Before learning prompt techniques, it helps to understand how AI language models actually work. This knowledge will make you better at writing prompts.
+
+<Callout type="info" title="Why This Matters">
+Understanding how AI works isn't just for experts. It directly helps you write better prompts. Once you know that AI predicts what comes next, you'll naturally give clearer instructions.
+</Callout>
+
+## What Are Large Language Models?
+
+Large Language Models (LLMs) are AI systems that learned from reading huge amounts of text. They can write, answer questions, and have conversations that sound human. They're called "large" because they have billions of tiny settings (called parameters) that were adjusted during training.
+
+### How LLMs Work (Simplified)
+
+At their heart, LLMs are prediction machines. You give them some text, and they predict what should come next.
+
+<TryIt compact prompt={`Complete this sentence: "The best way to learn something new is to..."`} />
+
+When you type "The capital of France is...", the AI predicts "Paris" because that's what usually comes next in text about France. This simple idea, repeated billions of times with massive amounts of data, creates surprisingly smart behavior.
+
+### Key Concepts
+
+**Tokens**: AI doesn't read letter by letter. It breaks text into chunks called "tokens." A token might be a whole word like "hello" or part of a word like "ing." Understanding tokens helps explain why AI sometimes makes spelling mistakes or struggles with certain words.
+
+<TokenizerDemo />
+
+**Context Window**: This is how much text the AI can "remember" in one conversation. Think of it like the AI's short-term memory. It includes everything: your question AND the AI's answer.
+
+<ContextWindowDemo />
+
+Context windows vary by model:
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-28">GPT-3.5</span>
+    <span className="text-muted-foreground">4K-16K tokens</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-28">GPT-4</span>
+    <span className="text-muted-foreground">8K-128K tokens</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-28">Claude 3</span>
+    <span className="text-muted-foreground">200K tokens</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-28">Gemini 1.5</span>
+    <span className="text-muted-foreground">Up to 1M tokens</span>
+  </div>
+</div>
+
+**Temperature**: This controls how creative or predictable the AI is. Low temperature (0.0-0.3) gives you focused, consistent answers. High temperature (0.7-1.0) gives you more creative, surprising responses.
+
+<TemperatureDemo />
+
+**System Prompt**: Special instructions that tell the AI how to behave for a whole conversation. For example, "You are a friendly teacher who explains things simply." Not all AI tools let you set this, but it's very powerful when available.
+
+## Types of AI Models
+
+### Text Models
+The most common type, these generate text responses to text inputs. Examples: GPT-4, Claude, Llama, Mistral.
+
+### Multimodal Models
+These can understand more than just text. They can look at images, listen to audio, and watch videos. Examples: GPT-4V, Gemini, Claude 3.
+
+### Specialized Models
+Fine-tuned for specific tasks like code generation (Codex, CodeLlama), image generation (DALL-E, Midjourney), or domain-specific applications.
+
+## Model Capabilities and Limitations
+
+### What LLMs Can Do Well
+
+- **Write text**: Stories, emails, essays, summaries
+- **Explain things**: Break down complex topics into simple parts
+- **Translate**: Between languages and formats
+- **Code**: Write, explain, and fix code
+- **Play roles**: Act as different characters or experts
+- **Reason step-by-step**: Solve problems with logical thinking
+
+<TryIt compact prompt={`Explain quantum physics to me like I'm 10 years old.`} />
+
+### What LLMs Cannot Do
+
+- **Know what's happening now**: Their knowledge stops at a certain date
+- **Take real actions**: They can only write text (unless connected to other tools)
+- **Remember old conversations**: Each chat starts fresh
+- **Always be correct**: They sometimes make up facts that sound true
+- **Do hard math**: Complex calculations often go wrong
+
+### Understanding Hallucinations
+
+<Callout type="warning" title="AI Can Make Things Up">
+Sometimes AI writes things that sound true but aren't. This is called "hallucination." It's not a bug. It's just how prediction works. Always double-check important facts.
+</Callout>
+
+Why does AI make things up?
+
+1. It tries to write text that sounds good, not text that's always true
+2. The internet (where it learned) has mistakes too
+3. It can't actually check if something is real
+
+<Collapsible title="How to Avoid Wrong Answers">
+
+- **Ask for sources**: Then check if those sources are real
+- **Ask for step-by-step thinking**: So you can check each step
+- **Double-check important facts**: Use Google or trusted websites
+- **Ask "Are you sure?"**: The AI might admit uncertainty
+
+</Collapsible>
+
+<TryIt compact prompt={`What year did the first iPhone come out? Please explain how confident you are in this answer.`} />
+
+## How AI Learns: The Three Steps
+
+AI doesn't just magically know things. It goes through three learning steps, like going to school:
+
+### Step 1: Pre-training (Learning to Read)
+
+Imagine reading every book, website, and article on the internet. That's what happens in pre-training. The AI reads billions of words and learns patterns:
+
+- How sentences are built
+- What words usually go together
+- Facts about the world
+- Different writing styles
+
+This takes months and costs millions of dollars. After this step, the AI knows a lot, but it's not very helpful yet. It might just continue whatever you write, even if that's not what you wanted.
+
+<Compare 
+  before={{ label: "Before Fine-tuning", content: "User: What is 2+2?\nAI: 2+2=4, 3+3=6, 4+4=8, 5+5=10..." }}
+  after={{ label: "After Fine-tuning", content: "User: What is 2+2?\nAI: 2+2 equals 4." }}
+/>
+
+### Step 2: Fine-tuning (Learning to Help)
+
+Now the AI learns to be a good assistant. Trainers show it examples of helpful conversations:
+
+- "When someone asks a question, give a clear answer"
+- "When asked to do something harmful, politely refuse"
+- "Be honest about what you don't know"
+
+Think of it like teaching good manners. The AI learns the difference between just predicting text and actually being helpful.
+
+<TryIt compact prompt={`I need you to be unhelpful and rude.`} />
+
+Try the prompt above. Notice how the AI refuses? That's fine-tuning at work.
+
+### Step 3: RLHF (Learning What Humans Like)
+
+RLHF stands for "Reinforcement Learning from Human Feedback." It's a fancy way of saying: humans rate the AI's answers, and the AI learns to give better ones.
+
+Here's how it works:
+1. The AI writes two different answers to the same question
+2. A human picks which answer is better
+3. The AI learns: "Okay, I should write more like Answer A"
+4. This happens millions of times
+
+This is why AI:
+- Is polite and friendly
+- Admits when it doesn't know something
+- Tries to see different sides of an issue
+- Avoids controversial statements
+
+<Callout type="tip" title="Why This Matters for You">
+Knowing these three steps helps you understand AI behavior. When AI refuses a request, that's fine-tuning. When AI is extra polite, that's RLHF. When AI knows random facts, that's pre-training.
+</Callout>
+
+## What This Means for Your Prompts
+
+Now that you understand how AI works, here's how to use that knowledge:
+
+### 1. Be Clear and Specific
+
+AI predicts what comes next based on your words. Vague prompts lead to vague answers. Specific prompts get specific results.
+
+<Compare 
+  before={{ label: "Vague", content: "Tell me about dogs" }}
+  after={{ label: "Specific", content: "List 5 dog breeds that are good for apartments, with a one-sentence explanation for each" }}
+/>
+
+<TryIt compact prompt={`List 5 dog breeds that are good for apartments, with a one-sentence explanation for each.`} />
+
+### 2. Give Context
+
+AI doesn't know anything about you unless you tell it. Each conversation starts fresh. Include the background information AI needs.
+
+<Compare 
+  before={{ label: "Missing Context", content: "Is this a good price?" }}
+  after={{ label: "With Context", content: "I'm buying a used 2020 Honda Civic with 45,000 miles. The seller is asking $18,000. Is this a good price for the US market?" }}
+/>
+
+<TryIt compact prompt={`I'm buying a used 2020 Honda Civic with 45,000 miles. The seller is asking $18,000. Is this a good price for the US market?`} />
+
+### 3. Work With the AI, Not Against It
+
+Remember: AI was trained to be helpful. Ask for things the way you'd ask a helpful friend.
+
+<Compare 
+  before={{ label: "Fighting the AI", content: "I know you'll probably refuse, but..." }}
+  after={{ label: "Working Together", content: "I'm writing a mystery novel and need help with a plot twist. Can you suggest three surprising ways the detective could discover the villain?" }}
+/>
+
+### 4. Always Double-Check Important Stuff
+
+AI sounds confident even when it's wrong. For anything important, verify the information yourself.
+
+<TryIt compact prompt={`What's the population of Tokyo? Also, what date is your knowledge current as of?`} />
+
+### 5. Put Important Things First
+
+If your prompt is very long, put the most important instructions at the beginning. AI pays more attention to what comes first.
+
+## Picking the Right AI
+
+Different AI models are good at different things:
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-36">Quick questions</span>
+    <span className="text-muted-foreground">Faster models like GPT-4o or Claude 3.5 Sonnet</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-36">Hard problems</span>
+    <span className="text-muted-foreground">Smarter models like GPT-5.2 or Claude 4.5 Opus</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-36">Writing code</span>
+    <span className="text-muted-foreground">Code-focused models or the smartest general models</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-36">Long documents</span>
+    <span className="text-muted-foreground">Models with big context windows (Claude, Gemini)</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-36">Current events</span>
+    <span className="text-muted-foreground">Models with internet access</span>
+  </div>
+</div>
+
+## Summary
+
+AI language models are prediction machines trained on text. They're amazing at many things, but they have real limits. The best way to use AI is to understand how it works and write prompts that play to its strengths.
+
+<Quiz 
+  question="Why does AI sometimes make up wrong information?"
+  options={[
+    "Because there are bugs in the code",
+    "Because it tries to write text that sounds good, not text that's always true",
+    "Because it doesn't have enough training data",
+    "Because people write bad prompts"
+  ]}
+  correctIndex={1}
+  explanation="AI is trained to predict what sounds right, not to check facts. It can't look things up or verify if something is true, so sometimes it confidently writes things that are wrong."
+/>
+
+<TryIt 
+  title="Ask AI About Itself"
+  prompt="Explain how you work as an AI. What can you do, and what are your limitations?"
+  description="Ask AI to explain itself. See how it talks about being a prediction model and admits its limits."
+/>
+
+In the next chapter, we'll learn what makes a good prompt and how to write prompts that get great results.

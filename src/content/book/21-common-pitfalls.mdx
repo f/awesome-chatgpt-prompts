@@ -1,0 +1,312 @@
+Even experienced prompt engineers make mistakes. This chapter catalogs the most common pitfalls and how to avoid them.
+
+## The Vagueness Trap
+
+### Problem
+Prompts that are too vague lead to generic, unhelpful responses.
+
+```
+❌ Bad: "Write something about marketing."
+✓ Good: "Write a 300-word LinkedIn post about the importance of 
+        brand consistency for B2B SaaS companies, targeting 
+        marketing managers."
+```
+
+### Why It Happens
+- Assuming the AI "knows" what you want
+- Not taking time to clarify requirements
+- Treating AI like a mind reader
+
+### How to Fix
+- Specify audience, format, length, tone
+- Include context about your situation
+- Ask yourself: "Would a smart stranger understand this?"
+
+## The Overloading Trap
+
+### Problem
+Cramming too many instructions into one prompt causes confusion and missed requirements.
+
+```
+❌ Bad: "Write a blog post about AI that's also SEO optimized 
+        and includes code examples and is funny but professional 
+        and targets beginners but also has advanced tips and 
+        should be 500 words but comprehensive and..."
+
+✓ Good: [Break into separate prompts or clear sections]
+```
+
+### Why It Happens
+- Wanting everything in one query
+- Fear of multiple interactions
+- Not prioritizing requirements
+
+### How to Fix
+- Limit to 3-5 key requirements per prompt
+- Use numbered lists for clarity
+- Chain prompts for complex tasks
+- Prioritize: what's essential vs. nice-to-have?
+
+## The Assumption Trap
+
+### Problem
+Assuming the AI has context it doesn't have.
+
+```
+❌ Bad: "Update the function I showed you earlier."
+(AI has no memory of previous sessions)
+
+✓ Good: "Update this function to add error handling:
+        [paste the function]"
+```
+
+### Why It Happens
+- Forgetting AI has no persistent memory
+- Treating AI like a colleague who knows your project
+- Not providing necessary context
+
+### How to Fix
+- Include all relevant context in each prompt
+- Paste code, text, or data directly
+- Don't reference "earlier" without including it
+
+## The Leading Question Trap
+
+### Problem
+Phrasing prompts in ways that bias the response.
+
+```
+❌ Bad: "Why is Python the best programming language?"
+(Assumes Python is best, limits response)
+
+✓ Good: "Compare Python with other languages for data science. 
+        What are its strengths and weaknesses?"
+```
+
+### Why It Happens
+- Seeking confirmation, not information
+- Unconsciously embedding assumptions
+- Not considering alternative viewpoints
+
+### How to Fix
+- Ask neutral questions
+- Explicitly request pros AND cons
+- Request multiple perspectives
+- Ask "What might I be missing?"
+
+## The Trust Everything Trap
+
+### Problem
+Accepting AI outputs without verification.
+
+```
+❌ Bad: Publishing AI-generated content without review
+❌ Bad: Using AI code in production without testing
+❌ Bad: Making decisions based solely on AI analysis
+
+✓ Good: Verify facts, test code, cross-reference analysis
+```
+
+### Why It Happens
+- AI sounds confident even when wrong
+- Automation bias (trusting computers)
+- Time pressure
+
+### How to Fix
+- Fact-check important claims
+- Test code thoroughly
+- Ask for sources/reasoning
+- Get human review for important outputs
+
+## The One-Shot Trap
+
+### Problem
+Expecting perfect results from the first prompt.
+
+```
+❌ Bad: Getting mediocre output → giving up
+
+✓ Good: Getting mediocre output → refining prompt → 
+        better output → refining again → excellent output
+```
+
+### Why It Happens
+- Impatience
+- Not treating prompting as a skill
+- Unrealistic expectations
+
+### How to Fix
+- Plan for iteration
+- Analyze what's wrong with outputs
+- Refine incrementally
+- Keep a prompt journal
+
+## The Format Neglect Trap
+
+### Problem
+Not specifying output format, leading to unusable responses.
+
+```
+❌ Bad: "Extract the data from this text."
+(Returns prose when you needed JSON)
+
+✓ Good: "Extract the data from this text as JSON:
+        {\"name\": string, \"date\": string, \"amount\": number}"
+```
+
+### Why It Happens
+- Focusing only on content, not structure
+- Assuming AI will choose right format
+- Not thinking about downstream use
+
+### How to Fix
+- Always specify format for structured data
+- Provide examples of desired output
+- Use templates for consistent formatting
+
+## The Context Window Trap
+
+### Problem
+Exceeding context limits or not managing long conversations.
+
+```
+❌ Bad: Pasting a 100-page document and expecting complete analysis
+
+✓ Good: Breaking document into sections, analyzing each, 
+        then synthesizing
+```
+
+### Why It Happens
+- Not understanding token limits
+- Not optimizing prompt length
+- Not chunking large inputs
+
+### How to Fix
+- Know your model's context window
+- Summarize or chunk large inputs
+- Put important info early
+- Trim unnecessary context
+
+## The Anthropomorphization Trap
+
+### Problem
+Treating AI as if it has human qualities it doesn't have.
+
+```
+❌ Bad: "I'm sure you'll enjoy this creative project!"
+(AI doesn't enjoy anything)
+
+❌ Bad: Expecting AI to remember you or care about outcomes
+
+✓ Good: Clear instructions without emotional appeals
+```
+
+### Why It Happens
+- Natural human tendency
+- AI's human-like responses
+- Marketing personification
+
+### How to Fix
+- Remember it's a prediction engine
+- Focus on clear instructions
+- Don't rely on rapport or relationship
+
+## The Security Neglect Trap
+
+### Problem
+Not considering security implications of prompts and responses.
+
+```
+❌ Bad: "Here's my API key: [key]. Use it to..."
+❌ Bad: Including PII in prompts
+❌ Bad: Trusting user input without sanitization
+
+✓ Good: Keeping secrets out of prompts
+✓ Good: Sanitizing user inputs before including in prompts
+```
+
+### Why It Happens
+- Focus on functionality over security
+- Not considering data handling
+- Trusting cloud services implicitly
+
+### How to Fix
+- Never put secrets in prompts
+- Sanitize user inputs
+- Consider where data goes
+- Review prompts for sensitive data
+
+## The Copy-Paste Trap
+
+### Problem
+Reusing prompts without adapting to context.
+
+```
+❌ Bad: Using a prompt template designed for marketing 
+        for a technical document
+
+✓ Good: Adapting templates to specific use cases
+```
+
+### Why It Happens
+- Time pressure
+- Template over-reliance
+- Not understanding why prompts work
+
+### How to Fix
+- Understand principles behind templates
+- Adapt to specific context
+- Test prompts in new contexts
+- Build a library of adaptable components
+
+## The Hallucination Ignorance Trap
+
+### Problem
+Not accounting for AI's tendency to make things up.
+
+```
+❌ Bad: Asking for citations and assuming they're real
+❌ Bad: Trusting specific numbers without verification
+❌ Bad: Using AI-generated "facts" in important documents
+
+✓ Good: Verifying claims independently
+✓ Good: Asking AI to acknowledge uncertainty
+```
+
+### Why It Happens
+- Confidence of AI responses
+- Not understanding how AI works
+- Time pressure
+
+### How to Fix
+- Always verify important facts
+- Ask "How confident are you? What might be wrong?"
+- Cross-reference with reliable sources
+- Use AI for drafts, not final fact-checking
+
+## Quick Reference: Pitfall Checklist
+
+Before sending a prompt, check:
+
+```
+□ Is it specific enough? (not vague)
+□ Is it focused? (not overloaded)
+□ Does it include necessary context?
+□ Is the question neutral? (not leading)
+□ Have I planned for verification?
+□ Am I prepared to iterate?
+□ Is the desired format specified?
+□ Is the input within context limits?
+□ Are there any security concerns?
+□ Is this the right tool for the job?
+```
+
+## Summary
+
+Most pitfalls stem from:
+1. **Unclear communication** — Be specific and explicit
+2. **Wrong assumptions** — About AI capabilities and context
+3. **Misplaced trust** — Verify, don't blindly accept
+4. **Skipping iteration** — Good prompts evolve
+
+Awareness of these patterns is the first step to avoiding them.

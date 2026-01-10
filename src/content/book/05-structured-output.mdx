@@ -1,0 +1,378 @@
+Getting consistent, well-formatted output is essential for production applications and efficient workflows. This chapter covers techniques for controlling exactly how AI models format their responses.
+
+<Callout type="info" title="From Prose to Data">
+Structured output transforms AI responses from freeform text into actionable, parseable data.
+</Callout>
+
+## Why Structure Matters
+
+<StructuredOutputDemo />
+
+## Basic Formatting Techniques
+
+### Lists
+
+```
+Provide 5 tips for better sleep.
+Format: Numbered list with a brief explanation for each.
+
+Output:
+1. **Consistent schedule** — Go to bed and wake up at the same 
+   time daily, even on weekends.
+2. **Dark environment** — Use blackout curtains or an eye mask 
+   to block light.
+[...]
+```
+
+### Tables
+
+```
+Compare Python web frameworks.
+
+Format as a markdown table with columns:
+| Framework | Best For | Learning Curve | Performance |
+```
+
+### Headers and Sections
+
+```
+Analyze this business proposal.
+
+Structure your response with these sections:
+## Executive Summary
+## Strengths
+## Weaknesses
+## Recommendations
+## Risk Assessment
+```
+
+## JSON Output
+
+JSON is ideal for programmatic use. Here's how to get reliable JSON:
+
+### Basic JSON Request
+
+<TryIt 
+  title="JSON Extraction"
+  description="Extract structured data from unstructured text."
+  prompt={`Extract information from this text and return as JSON:
+
+{
+  "company_name": "string",
+  "founding_year": number,
+  "headquarters": "string",
+  "employees": number,
+  "industry": "string"
+}
+
+Text: "Apple Inc., founded in 1976, is headquartered in Cupertino, California. The technology giant employs approximately 164,000 people worldwide."`}
+/>
+
+### Complex JSON Structures
+
+```
+Analyze this product review and return JSON:
+
+{
+  "review_id": "string (generate unique)",
+  "sentiment": {
+    "overall": "positive" | "negative" | "mixed" | "neutral",
+    "score": 0.0-1.0
+  },
+  "aspects": [
+    {
+      "aspect": "string (e.g., 'price', 'quality')",
+      "sentiment": "positive" | "negative" | "neutral",
+      "mentions": ["exact quotes from review"]
+    }
+  ],
+  "purchase_intent": {
+    "would_recommend": boolean,
+    "confidence": 0.0-1.0
+  },
+  "key_phrases": ["string array of notable phrases"]
+}
+
+Return ONLY valid JSON, no additional text.
+
+Review: "[review text]"
+```
+
+### Ensuring Valid JSON
+
+Add explicit instructions:
+
+```
+IMPORTANT:
+- Return ONLY the JSON object, no markdown code blocks
+- Ensure all strings are properly escaped
+- Use null for missing values, not undefined
+- Validate that the output is parseable JSON
+```
+
+Or request code blocks:
+
+```
+Return the result as a JSON code block:
+```json
+{ ... }
+```
+```
+
+## YAML Output
+
+YAML is more human-readable than JSON and works well for configuration-style outputs:
+
+```
+Generate a GitHub Actions workflow for a Node.js project.
+
+Return as valid YAML:
+- Include: install, lint, test, build stages
+- Use Node.js 18
+- Cache npm dependencies
+- Run on push to main and pull requests
+```
+
+Output:
+```yaml
+name: CI Pipeline
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      # ... more steps
+```
+
+## XML Output
+
+For systems requiring XML:
+
+```
+Convert this data to XML format:
+
+Requirements:
+- Root element: <catalog>
+- Each item in <book> element
+- Include attributes where appropriate
+- Use CDATA for description text
+
+Data: [book data]
+```
+
+## Custom Formats
+
+### Structured Analysis Format
+
+```
+Analyze this code using this exact format:
+
+=== CODE ANALYSIS ===
+
+[SUMMARY]
+One paragraph overview
+
+[ISSUES]
+• CRITICAL: [issue] — [file:line]
+• WARNING: [issue] — [file:line]  
+• INFO: [issue] — [file:line]
+
+[METRICS]
+Complexity: [Low/Medium/High]
+Maintainability: [score]/10
+Test Coverage: [estimated %]
+
+[RECOMMENDATIONS]
+1. [Priority 1 recommendation]
+2. [Priority 2 recommendation]
+
+=== END ANALYSIS ===
+```
+
+### Fill-in-the-Blank Format
+
+```
+Complete this template for the given product:
+
+PRODUCT BRIEF
+─────────────
+Name: _______________
+Tagline: _______________
+Target User: _______________
+Problem Solved: _______________
+Key Features:
+  1. _______________
+  2. _______________
+  3. _______________
+Differentiator: _______________
+
+Product: [product description]
+```
+
+## Typed Responses
+
+Define clear types for consistent extraction:
+
+```
+Extract entities from this text.
+
+Entity Types:
+- PERSON: Full names of people
+- ORG: Organization/company names
+- LOCATION: Cities, countries, addresses
+- DATE: Dates in ISO format (YYYY-MM-DD)
+- MONEY: Monetary amounts with currency
+
+Format each as: [TYPE]: [value]
+
+Text: "Tim Cook announced that Apple will invest $1 billion 
+in a new Austin facility by December 2024."
+```
+
+Output:
+```
+PERSON: Tim Cook
+ORG: Apple
+MONEY: $1 billion USD
+LOCATION: Austin
+DATE: 2024-12-01
+```
+
+## Multi-Part Structured Responses
+
+For complex outputs with multiple sections:
+
+```
+Research this topic and provide:
+
+### PART 1: EXECUTIVE SUMMARY
+[2-3 sentence overview]
+
+### PART 2: KEY FINDINGS
+[Exactly 5 bullet points]
+
+### PART 3: DATA TABLE
+| Metric | Value | Source |
+|--------|-------|--------|
+[Include 5 rows minimum]
+
+### PART 4: RECOMMENDATIONS
+[Numbered list of 3 actionable recommendations]
+
+### PART 5: FURTHER READING
+[3 suggested resources with brief descriptions]
+```
+
+## Conditional Formatting
+
+Handle different scenarios:
+
+```
+Classify this support ticket.
+
+If URGENT (system down, security issue, data loss):
+  Return: 🔴 URGENT | [Category] | [Suggested Action]
+
+If HIGH (affects multiple users, revenue impact):
+  Return: 🟠 HIGH | [Category] | [Suggested Action]
+
+If MEDIUM (single user affected, workaround exists):
+  Return: 🟡 MEDIUM | [Category] | [Suggested Action]
+
+If LOW (questions, feature requests):
+  Return: 🟢 LOW | [Category] | [Suggested Action]
+
+Ticket: "[ticket text]"
+```
+
+## Arrays and Lists in JSON
+
+Getting consistent arrays:
+
+```
+Extract all action items from this meeting transcript.
+
+Return as JSON array:
+{
+  "action_items": [
+    {
+      "task": "string describing the task",
+      "assignee": "person name or 'Unassigned'",
+      "deadline": "date if mentioned, else null",
+      "priority": "high" | "medium" | "low",
+      "context": "relevant quote from transcript"
+    }
+  ],
+  "total_count": number
+}
+
+Transcript: "[meeting transcript]"
+```
+
+## Validation Instructions
+
+Add self-validation to your prompts:
+
+```
+Generate the report, then:
+
+VALIDATION CHECKLIST:
+□ All required sections present
+□ No placeholder text remaining
+□ All statistics include sources
+□ Word count within 500-700 words
+□ Conclusion ties back to introduction
+
+If any check fails, fix before responding.
+```
+
+## Handling Optional Fields
+
+```
+Extract contact information. Use null for missing fields.
+
+{
+  "name": "string (required)",
+  "email": "string or null",
+  "phone": "string or null", 
+  "company": "string or null",
+  "role": "string or null",
+  "linkedin": "URL string or null"
+}
+
+IMPORTANT: 
+- Never invent information not in the source
+- Use null, not empty strings, for missing data
+- Phone numbers in E.164 format if possible
+```
+
+## Summary
+
+<Callout type="tip" title="Key Techniques">
+Be explicit about format, use examples, specify types, handle edge cases with null values, and ask the model to validate its own output.
+</Callout>
+
+<Quiz 
+  question="What's the main advantage of structured output over unstructured text?"
+  options={[
+    "It uses fewer tokens",
+    "It's easier for the AI to generate",
+    "It can be parsed programmatically and validated",
+    "It always produces correct information"
+  ]}
+  correctIndex={2}
+  explanation="Structured outputs like JSON can be parsed by code, compared across queries, integrated into workflows, and validated for completeness—things that are difficult or impossible with freeform text."
+/>
+
+Structured outputs are essential for building reliable AI-powered applications. In the next chapter, we'll explore chain-of-thought prompting for complex reasoning tasks.

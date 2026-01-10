@@ -1,0 +1,457 @@
+prompts.chat is open source and can be self-hosted for private use, custom branding, or enterprise deployment. This chapter covers setup and configuration.
+
+## Why Self-Host?
+
+### Use Cases
+
+```
+Private/Internal:
+- Company-internal prompt library
+- Team collaboration on proprietary prompts
+- Compliance with data residency requirements
+
+Custom Branding:
+- White-label deployment
+- Custom domain
+- Brand-specific theming
+
+Enterprise:
+- Single sign-on integration
+- Custom authentication
+- Enhanced security controls
+- On-premise deployment
+```
+
+### What You Get
+
+```
+Full platform features:
+- Prompt creation and management
+- User accounts and authentication
+- Categories and tags
+- Search functionality
+- Collections and upvoting
+- Version history
+- API access
+- MCP server integration
+```
+
+## Prerequisites
+
+### System Requirements
+
+```
+Minimum:
+- Node.js 18+
+- PostgreSQL 14+
+- 1GB RAM
+- 10GB storage
+
+Recommended:
+- Node.js 20+
+- PostgreSQL 15+
+- 2GB+ RAM
+- 20GB+ storage
+- Redis (for caching)
+```
+
+### Required Accounts/Services
+
+```
+Required:
+- PostgreSQL database
+
+Optional (for full features):
+- OAuth providers (GitHub, Google, Azure)
+- OpenAI API key (for AI features)
+- S3-compatible storage (for media)
+```
+
+## Quick Start
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/f/awesome-chatgpt-prompts.git
+cd awesome-chatgpt-prompts
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Set Up Environment
+
+```bash
+cp .env.example .env
+```
+
+Edit `.env` with your configuration:
+
+```bash
+# Required
+DATABASE_URL="postgresql://user:password@localhost:5432/prompts"
+AUTH_SECRET="your-secret-key-min-32-chars"
+
+# Optional OAuth
+AUTH_GITHUB_ID="your-github-oauth-id"
+AUTH_GITHUB_SECRET="your-github-oauth-secret"
+```
+
+### 4. Initialize Database
+
+```bash
+npm run db:push
+npm run db:seed  # Optional: seed with sample data
+```
+
+### 5. Start Development Server
+
+```bash
+npm run dev
+```
+
+Visit `http://localhost:3000`
+
+## Configuration
+
+### Environment Variables
+
+**Core Settings:**
+```bash
+# Database (required)
+DATABASE_URL="postgresql://..."
+
+# Authentication (required)
+AUTH_SECRET="random-32-char-string"
+
+# Site URL
+NEXTAUTH_URL="https://your-domain.com"
+```
+
+**Branding:**
+```bash
+# Custom branding
+PCHAT_NAME="My Prompt Library"
+PCHAT_DESCRIPTION="Internal prompt collection"
+PCHAT_LOGO="/custom-logo.svg"
+PCHAT_COLOR="#007bff"
+```
+
+**Authentication Providers:**
+```bash
+# GitHub OAuth
+AUTH_GITHUB_ID="..."
+AUTH_GITHUB_SECRET="..."
+
+# Google OAuth
+AUTH_GOOGLE_ID="..."
+AUTH_GOOGLE_SECRET="..."
+
+# Azure AD
+AUTH_AZURE_AD_CLIENT_ID="..."
+AUTH_AZURE_AD_CLIENT_SECRET="..."
+AUTH_AZURE_AD_ISSUER="..."
+```
+
+**Features:**
+```bash
+# Enable/disable features
+PCHAT_FEATURE_PRIVATE_PROMPTS=true
+PCHAT_FEATURE_CHANGE_REQUESTS=true
+PCHAT_FEATURE_AI_SEARCH=true
+PCHAT_FEATURE_AI_GENERATION=true
+PCHAT_FEATURE_MCP=true
+```
+
+**AI Features:**
+```bash
+# OpenAI (for AI-powered features)
+OPENAI_API_KEY="sk-..."
+OPENAI_BASE_URL="https://api.openai.com/v1"  # Optional custom endpoint
+```
+
+### Configuration File
+
+For more control, edit `prompts.config.ts`:
+
+```typescript
+import { defineConfig } from './src/lib/config';
+
+export default defineConfig({
+  branding: {
+    name: "My Prompts",
+    description: "Our internal prompt library",
+    logo: "/logo.svg",
+  },
+  theme: {
+    colors: {
+      primary: "#0066cc",
+    },
+    radius: "md",
+    variant: "default",
+  },
+  auth: {
+    providers: ["credentials", "github"],
+    allowRegistration: true,
+  },
+  features: {
+    privatePrompts: true,
+    changeRequests: true,
+    categories: true,
+    tags: true,
+    aiSearch: false,
+    mcp: true,
+  },
+  i18n: {
+    locales: ["en", "es", "de"],
+    defaultLocale: "en",
+  },
+});
+```
+
+## Deployment Options
+
+### Docker Deployment
+
+```dockerfile
+# docker-compose.yml
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@db:5432/prompts
+      - AUTH_SECRET=your-secret
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=prompts
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+```
+
+```bash
+docker-compose up -d
+```
+
+### Vercel Deployment
+
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel
+
+# Set environment variables in Vercel dashboard
+```
+
+### Traditional Server
+
+```bash
+# Build
+npm run build
+
+# Start production server
+npm start
+
+# Or use PM2
+pm2 start npm --name "prompts" -- start
+```
+
+## Database Management
+
+### Migrations
+
+```bash
+# Generate migration from schema changes
+npm run db:migrate
+
+# Push schema changes directly (dev only)
+npm run db:push
+
+# View database with Prisma Studio
+npm run db:studio
+```
+
+### Backup and Restore
+
+```bash
+# Backup
+pg_dump $DATABASE_URL > backup.sql
+
+# Restore
+psql $DATABASE_URL < backup.sql
+```
+
+### Seeding Data
+
+```bash
+# Seed with default data
+npm run db:seed
+
+# Custom seeding via Prisma
+npx prisma db seed
+```
+
+## Authentication Setup
+
+### Credentials (Email/Password)
+
+Enabled by default. Users register with email/password.
+
+### GitHub OAuth
+
+1. Create OAuth app at github.com/settings/developers
+2. Set callback URL: `https://your-domain.com/api/auth/callback/github`
+3. Add credentials to `.env`
+
+### Google OAuth
+
+1. Create project in Google Cloud Console
+2. Enable OAuth consent screen
+3. Create OAuth credentials
+4. Set callback: `https://your-domain.com/api/auth/callback/google`
+5. Add credentials to `.env`
+
+### Azure AD (Enterprise)
+
+1. Register app in Azure AD
+2. Configure redirect URI
+3. Add credentials and issuer to `.env`
+
+## Customization
+
+### Theming
+
+```typescript
+// prompts.config.ts
+theme: {
+  colors: {
+    primary: "#your-brand-color",
+    secondary: "#secondary-color",
+    accent: "#accent-color",
+  },
+  radius: "sm" | "md" | "lg",
+  variant: "default" | "brutal" | "soft",
+}
+```
+
+### Localization
+
+Add new languages:
+
+1. Create translation file: `messages/[locale].json`
+2. Add locale to config:
+```typescript
+i18n: {
+  locales: ["en", "es", "fr", "your-locale"],
+  defaultLocale: "en",
+}
+```
+
+### Custom Components
+
+Override components in `src/components/`:
+- Modify existing components
+- Add custom styling
+- Extend functionality
+
+## Maintenance
+
+### Updates
+
+```bash
+# Pull latest changes
+git pull origin main
+
+# Install new dependencies
+npm install
+
+# Run migrations
+npm run db:migrate
+
+# Rebuild and restart
+npm run build
+npm start
+```
+
+### Monitoring
+
+```bash
+# Check logs
+pm2 logs prompts
+
+# Monitor resources
+pm2 monit
+
+# Health check endpoint
+curl https://your-domain.com/api/health
+```
+
+### Troubleshooting
+
+```
+Common issues:
+
+Database connection failed:
+→ Check DATABASE_URL format
+→ Verify PostgreSQL is running
+→ Check network/firewall
+
+OAuth not working:
+→ Verify callback URLs match exactly
+→ Check client ID/secret
+→ Review OAuth provider settings
+
+Build failures:
+→ Clear .next folder
+→ Delete node_modules and reinstall
+→ Check Node.js version
+```
+
+## Security Considerations
+
+### Production Checklist
+
+```
+□ Use HTTPS (SSL certificate)
+□ Set strong AUTH_SECRET
+□ Configure proper CORS
+□ Enable rate limiting
+□ Set up firewall rules
+□ Regular security updates
+□ Database access controls
+□ Backup encryption
+```
+
+### Environment Security
+
+```bash
+# Never commit .env files
+# Use secrets management in production
+# Rotate secrets periodically
+# Limit database user permissions
+```
+
+## Summary
+
+Self-hosting prompts.chat gives you:
+- Full control over your data
+- Custom branding and configuration
+- Enterprise authentication options
+- Ability to extend and customize
+
+For detailed documentation, visit the [GitHub repository](https://github.com/f/awesome-chatgpt-prompts).

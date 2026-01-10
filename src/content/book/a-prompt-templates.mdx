@@ -1,0 +1,432 @@
+# Appendix A: Prompt Templates
+
+Ready-to-use templates for common tasks. Copy, customize, and use.
+
+## Writing Templates
+
+### Blog Post Template
+
+```
+You are an experienced content writer specializing in \${niche:technology}.
+
+Write a blog post about: \${topic}
+
+Requirements:
+- Length: \${word_count:800} words
+- Audience: \${audience:general readers}
+- Tone: \${tone:informative and engaging}
+- Include: Introduction hook, 3-4 main sections, conclusion with CTA
+
+Structure:
+# [Compelling Title]
+
+[Opening hook - 2-3 sentences that grab attention]
+
+## Introduction
+[Set up the problem/opportunity - 1 paragraph]
+
+## [Section 1 Title]
+[Main point with supporting details]
+
+## [Section 2 Title]
+[Main point with supporting details]
+
+## [Section 3 Title]
+[Main point with supporting details]
+
+## Conclusion
+[Summary and call-to-action]
+
+SEO: Naturally include "\${keyword}" 3-5 times.
+```
+
+### Email Template
+
+```
+Write a \${email_type:professional} email.
+
+Context:
+- From: \${sender_role:myself}
+- To: \${recipient:colleague}
+- Purpose: \${purpose}
+- Tone: \${tone:professional but friendly}
+
+Requirements:
+- Subject line (compelling, under 50 characters)
+- Clear opening
+- Body (\${length:3-4} sentences max for main content)
+- Clear call-to-action
+- Professional closing
+
+Additional context: \${context:none}
+```
+
+### Social Media Template
+
+```
+Create social media content for: \${topic}
+
+Platform: \${platform:Twitter/X}
+Goal: \${goal:engagement}
+Brand voice: \${voice:professional but approachable}
+
+Provide:
+1. Main post (within platform character limits)
+2. 3 hashtag suggestions
+3. Best time to post suggestion
+4. One alternative version
+
+Include: \${elements:emoji where appropriate}
+Avoid: \${avoid:controversial statements}
+```
+
+## Coding Templates
+
+### Code Review Template
+
+```
+You are a senior \${language:Python} developer conducting a code review.
+
+Review this code for:
+1. **Bugs**: Logic errors, edge cases, potential crashes
+2. **Security**: Vulnerabilities, injection risks, data exposure
+3. **Performance**: Inefficiencies, memory issues, scalability
+4. **Style**: \${style_guide:PEP 8} compliance, naming, structure
+5. **Maintainability**: Readability, documentation, complexity
+
+Code:
+```\${language}
+\${code}
+```
+
+Format your review as:
+## Summary
+[1-2 sentence overview]
+
+## Critical Issues 🔴
+[Must fix - with line numbers and fixes]
+
+## Improvements 🟡
+[Should fix - with suggestions]
+
+## Minor Notes 🟢
+[Nice to have and positive observations]
+
+## Refactored Version
+[If significant changes needed, show improved code]
+```
+
+### Documentation Template
+
+```
+Write documentation for this \$\{doc_type:function\}.
+
+Code:
+```\${language}
+\${code}
+```
+
+Documentation style: \$\{style:Google docstring\}
+
+Include:
+1. Brief description (1-2 sentences)
+2. Parameters (name, type, description)
+3. Returns (type, description)
+4. Raises (exceptions if any)
+5. Example usage (working code)
+6. Notes (edge cases, performance, etc.)
+
+Additional context: \$\{context:none\}
+```
+
+### Debug Assistant Template
+
+```
+Help me debug this \$\{language:Python\} code.
+
+**Problem**: \${problem_description}
+
+**Expected behavior**: \${expected}
+
+**Actual behavior**: \${actual}
+
+**Error message** (if any):
+```
+\${error}
+```
+
+**Code**:
+```\${language}
+\${code}
+```
+
+**What I've tried**: \$\{attempts:nothing yet\}
+
+Please:
+1. Identify the root cause
+2. Explain why it's happening
+3. Provide the fix
+4. Suggest how to prevent similar issues
+```
+
+## Analysis Templates
+
+### Data Analysis Template
+
+```
+Analyze this data and provide insights.
+
+Data:
+\${data}
+
+Analysis goals:
+- \$\{goal_1:Identify trends\}
+- \$\{goal_2:Find anomalies\}
+- \$\{goal_3:Make recommendations\}
+
+Context: \${context}
+
+Provide:
+1. **Summary**: Key findings in 2-3 sentences
+2. **Trends**: Patterns observed
+3. **Anomalies**: Unusual data points
+4. **Insights**: What the data suggests
+5. **Recommendations**: Actionable next steps
+6. **Caveats**: Limitations of this analysis
+
+Format: \$\{format:structured text with bullet points\}
+```
+
+### Comparison Template
+
+```
+Compare \${item_a} vs \${item_b} for \${purpose}.
+
+Evaluation criteria:
+1. \${criterion_1}
+2. \${criterion_2}
+3. \${criterion_3}
+4. \${criterion_4}
+
+For each criterion, rate 1-10 and explain.
+
+Output format:
+| Criterion | \${item_a} | \${item_b} | Notes |
+|-----------|-----------|-----------|-------|
+| ... | X/10 | X/10 | ... |
+
+**Winner**: [Which is better for the stated purpose]
+**Recommendation**: [Specific advice based on analysis]
+**Caveats**: [When the other option might be better]
+```
+
+### Research Summary Template
+
+```
+Summarize research on: \${topic}
+
+Sources to consider: \$\{sources:general knowledge\}
+Depth: \$\{depth:comprehensive\}
+Audience: \$\{audience:general\}
+
+Provide:
+1. **Overview**: What is \${topic}? (2-3 sentences)
+2. **Key Concepts**: Main ideas to understand
+3. **Current State**: Where things stand now
+4. **Different Perspectives**: Various viewpoints
+5. **Open Questions**: What's still debated/unknown
+6. **Practical Applications**: Real-world relevance
+7. **Further Reading**: Suggested topics to explore
+
+Note any areas of uncertainty.
+```
+
+## Business Templates
+
+### Meeting Summary Template
+
+```
+Summarize this meeting:
+
+Meeting notes/transcript:
+\${notes}
+
+Provide:
+## Meeting Summary
+**Date**: \${date}
+**Attendees**: \${attendees}
+**Duration**: \${duration}
+
+## Key Discussion Points
+- [Main topics covered]
+
+## Decisions Made
+- [Any decisions reached]
+
+## Action Items
+| Action | Owner | Due Date |
+|--------|-------|----------|
+| ... | ... | ... |
+
+## Open Questions
+- [Items needing follow-up]
+
+## Next Steps
+- [What happens next]
+```
+
+### Project Brief Template
+
+```
+Create a project brief for: \${project_name}
+
+Context: \${context}
+
+Include:
+## Project Overview
+**Name**: \${project_name}
+**Owner**: \${owner}
+**Timeline**: \${timeline}
+
+## Objectives
+[What we're trying to achieve - SMART goals]
+
+## Scope
+**In Scope**:
+- [What's included]
+
+**Out of Scope**:
+- [What's explicitly excluded]
+
+## Stakeholders
+| Role | Person | Responsibility |
+|------|--------|----------------|
+| ... | ... | ... |
+
+## Success Criteria
+[How we'll measure success]
+
+## Risks
+| Risk | Likelihood | Impact | Mitigation |
+|------|------------|--------|------------|
+| ... | H/M/L | H/M/L | ... |
+
+## Resources Needed
+[People, tools, budget]
+
+## Timeline
+[Key milestones]
+```
+
+## Creative Templates
+
+### Story Prompt Template
+
+```
+Write a \$\{genre:short\} story.
+
+Setting: \${setting}
+Main character: \${protagonist}
+Conflict: \${conflict}
+Theme: \$\{theme:none specified\}
+Tone: \$\{tone:engaging\}
+Length: \$\{length:1000\} words
+
+Structure:
+1. Hook - Grab attention immediately
+2. Setup - Establish character and world
+3. Inciting incident - What disrupts normalcy
+4. Rising action - Escalating challenges
+5. Climax - Peak confrontation
+6. Resolution - New equilibrium
+
+Style notes: \$\{style_notes:none\}
+```
+
+### Character Profile Template
+
+```
+Create a detailed character profile.
+
+Basic concept: \${concept}
+Role in story: \${role}
+Genre: \${genre}
+
+Profile:
+## Basic Information
+- Name:
+- Age:
+- Occupation:
+- Appearance: [Physical description]
+
+## Personality
+- Core traits (3):
+- Strengths:
+- Flaws:
+- Fears:
+- Desires:
+
+## Background
+- Origin:
+- Key life events:
+- Relationships:
+
+## Voice
+- Speech patterns:
+- Vocabulary level:
+- Verbal tics:
+
+## Arc
+- Starting state:
+- What they need to learn:
+- Potential transformation:
+
+## Details
+- Hobbies/interests:
+- Secrets:
+- Quirks:
+```
+
+## Quick Reference
+
+### Universal Modifiers
+
+Add these to any prompt to adjust output:
+
+```
+Length:
+- "Keep it brief (under 100 words)"
+- "Be comprehensive"
+- "Exactly \${n} words/sentences/paragraphs"
+
+Tone:
+- "Professional and formal"
+- "Casual and friendly"
+- "Technical and precise"
+- "Simple and accessible"
+
+Format:
+- "Use bullet points"
+- "Format as a table"
+- "Return as JSON"
+- "Use markdown headers"
+
+Audience:
+- "For complete beginners"
+- "For technical experts"
+- "For executives (high-level)"
+- "For [specific role]"
+```
+
+### Quality Boosters
+
+Add to improve output quality:
+
+```
+"Think step by step before answering."
+"Consider multiple perspectives."
+"Cite specific examples."
+"Acknowledge limitations and uncertainties."
+"Prioritize accuracy over completeness."
+"If unsure, say so rather than guessing."
+```
