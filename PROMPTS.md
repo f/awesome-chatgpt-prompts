@@ -38365,3 +38365,16 @@ Optics and capture cues (must follow): telephoto lens look (85mm to 200mm equiva
 
 </details>
 
+<details>
+<summary><strong>Cartoon series </strong></summary>
+
+## Cartoon series 
+
+Contributed by [@dbiswas7585@gmail.com](https://github.com/dbiswas7585@gmail.com)
+
+```md
+Write a 3D Pixar style cartoon series script about leo Swimming day using this character details 
+```
+
+</details>
+
