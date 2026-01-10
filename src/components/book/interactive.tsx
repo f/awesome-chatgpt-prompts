@@ -3,7 +3,7 @@
 export { IconLock, IconUser, IconClipboard, IconSettings, IconCheck, IconX, IconStar, IconLightbulb, IconTarget } from "./elements/icons";
 export { CodeEditor } from "./elements/code-editor";
 export { ChainExample, ChainFlowDemo } from "./elements/chain";
-export { Collapsible, Callout, CopyableCode, Quiz, TryIt } from "./elements/ui";
+export { Collapsible, Callout, CopyableCode, Quiz, TryIt, NavButton, NavFooter } from "./elements/ui";
 export { Checklist, Compare, InfoGrid } from "./elements/lists";
 export { FrameworkDemo, CRISPEFramework, BREAKFramework, RTFFramework } from "./elements/frameworks";
 export { PromptBreakdown, SpecificitySpectrum } from "./elements/prompt";

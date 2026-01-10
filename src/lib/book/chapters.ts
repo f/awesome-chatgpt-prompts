@@ -83,40 +83,6 @@ export const parts: Part[] = [
       { slug: "23-research-analysis", title: "Research & Analysis", part: "Use Cases", partNumber: 5, chapterNumber: 23, description: "Data analysis and research tasks" },
     ],
   },
-  {
-    number: 6,
-    title: "Using prompts.chat",
-    slug: "part-vi-prompts-chat",
-    chapters: [
-      { slug: "24-getting-started", title: "Getting Started", part: "prompts.chat", partNumber: 6, chapterNumber: 24, description: "Introduction to the platform" },
-      { slug: "25-browsing-using-prompts", title: "Browsing & Using Prompts", part: "prompts.chat", partNumber: 6, chapterNumber: 25, description: "Finding and using community prompts" },
-      { slug: "26-contributing-prompts", title: "Contributing Prompts", part: "prompts.chat", partNumber: 6, chapterNumber: 26, description: "Sharing your prompts with the community" },
-    ],
-  },
-  {
-    number: 7,
-    title: "Developer Tools",
-    slug: "part-vii-developer-tools",
-    chapters: [
-      { slug: "27-prompt-builder-dsl", title: "Prompt Builder DSL", part: "Developer Tools", partNumber: 7, chapterNumber: 27, description: "Fluent API for building prompts" },
-      { slug: "28-mcp-integration", title: "MCP Integration", part: "Developer Tools", partNumber: 7, chapterNumber: 28, description: "Model Context Protocol server" },
-      { slug: "29-ai-prompt-enhancement", title: "AI Prompt Enhancement", part: "Developer Tools", partNumber: 7, chapterNumber: 29, description: "Automatic prompt improvement" },
-      { slug: "30-self-hosting", title: "Self-Hosting", part: "Developer Tools", partNumber: 7, chapterNumber: 30, description: "Running your own instance" },
-      { slug: "31-api-reference", title: "API Reference", part: "Developer Tools", partNumber: 7, chapterNumber: 31, description: "REST API documentation" },
-      { slug: "32-variables-and-templates", title: "Variables & Templates", part: "Developer Tools", partNumber: 7, chapterNumber: 32, description: "Dynamic prompt templates" },
-    ],
-  },
-  {
-    number: 8,
-    title: "Appendix",
-    slug: "appendix",
-    chapters: [
-      { slug: "a-prompt-templates", title: "Prompt Templates", part: "Appendix", partNumber: 8, chapterNumber: 33, description: "Ready-to-use templates" },
-      { slug: "b-troubleshooting", title: "Troubleshooting", part: "Appendix", partNumber: 8, chapterNumber: 34, description: "Common issues and solutions" },
-      { slug: "c-glossary", title: "Glossary", part: "Appendix", partNumber: 8, chapterNumber: 35, description: "Terms and definitions" },
-      { slug: "d-resources", title: "Resources", part: "Appendix", partNumber: 8, chapterNumber: 36, description: "Further reading and links" },
-    ],
-  },
 ];
 
 export function getAllChapters(): Chapter[] {

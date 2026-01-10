@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, ChevronRight, Copy, Check, Lightbulb, AlertTriangle, Info, Zap } from "lucide-react";
+import { ChevronDown, ChevronRight, Copy, Check, Lightbulb, AlertTriangle, Info, Zap, ArrowRight, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { RunPromptButton } from "@/components/prompts/run-prompt-button";
+import Link from "next/link";
 
 // Collapsible Component
 interface CollapsibleProps {
@@ -262,6 +263,43 @@ export function TryIt({ prompt, description, title = "Try It Yourself", compact 
       </div>
       {description && <p className="text-sm text-muted-foreground mb-3 mt-0!">{description}</p>}
       <pre className="p-3 bg-background rounded border text-sm whitespace-pre-wrap mb-0!">{prompt}</pre>
+    </div>
+  );
+}
+
+// Navigation Button Component
+interface NavButtonProps {
+  href: string;
+  label: string;
+  direction?: "next" | "prev";
+}
+
+export function NavButton({ href, label, direction = "next" }: NavButtonProps) {
+  return (
+    <Link href={href} className="no-underline">
+      <Button variant="outline" className="gap-2">
+        {direction === "prev" && <ArrowLeft className="h-4 w-4" />}
+        {label}
+        {direction === "next" && <ArrowRight className="h-4 w-4" />}
+      </Button>
+    </Link>
+  );
+}
+
+// Navigation Footer Component
+interface NavFooterProps {
+  prev?: { href: string; label: string };
+  next?: { href: string; label: string };
+}
+
+export function NavFooter({ prev, next }: NavFooterProps) {
+  return (
+    <div className={cn(
+      "flex mt-12 pt-6 border-t",
+      prev && next ? "justify-between" : next ? "justify-end" : "justify-start"
+    )}>
+      {prev && <NavButton href={prev.href} label={prev.label} direction="prev" />}
+      {next && <NavButton href={next.href} label={next.label} direction="next" />}
     </div>
   );
 }

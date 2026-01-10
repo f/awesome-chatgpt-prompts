@@ -1,6 +1,6 @@
 import type { MDXComponents } from "mdx/types";
 import type { ComponentPropsWithoutRef } from "react";
-import { BookPartsNav, BREAKFramework, Callout, ChainErrorDemo, ChainExample, ChainFlowDemo, Checklist, CodeEditor, Collapsible, Compare, ContentPipelineDemo, ContextPlayground, ContextWindowDemo, CostCalculatorDemo, CRISPEFramework, DiffView, EmbeddingsDemo, FallbackDemo, FewShotDemo, IconCheck, IconClipboard, IconLightbulb, IconLock, IconSettings, IconStar, IconTarget, IconUser, IconX, InfoGrid, IterativeRefinementDemo, JailbreakDemo, JsonYamlDemo, LLMCapabilitiesDemo, PrinciplesSummary, PromptBreakdown, Quiz, RTFFramework, SpecificitySpectrum, StructuredOutputDemo, SummarizationDemo, TemperatureDemo, TextToImageDemo, TextToVideoDemo, TokenizerDemo, TokenPredictionDemo, TryIt, ValidationDemo, VersionDiff } from "@/components/book/interactive";
+import { BookPartsNav, BREAKFramework, Callout, ChainErrorDemo, ChainExample, ChainFlowDemo, Checklist, CodeEditor, Collapsible, Compare, ContentPipelineDemo, ContextPlayground, ContextWindowDemo, CostCalculatorDemo, CRISPEFramework, DiffView, EmbeddingsDemo, FallbackDemo, FewShotDemo, IconCheck, IconClipboard, IconLightbulb, IconLock, IconSettings, IconStar, IconTarget, IconUser, IconX, InfoGrid, IterativeRefinementDemo, JailbreakDemo, JsonYamlDemo, LLMCapabilitiesDemo, NavButton, NavFooter, PrinciplesSummary, PromptBreakdown, Quiz, RTFFramework, SpecificitySpectrum, StructuredOutputDemo, SummarizationDemo, TemperatureDemo, TextToImageDemo, TextToVideoDemo, TokenizerDemo, TokenPredictionDemo, TryIt, ValidationDemo, VersionDiff } from "@/components/book/interactive";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -58,6 +58,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     JailbreakDemo,
     JsonYamlDemo,
     LLMCapabilitiesDemo,
+    NavButton,
+    NavFooter,
     PrinciplesSummary,
     PromptBreakdown,
     Quiz,

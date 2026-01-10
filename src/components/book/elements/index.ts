@@ -2,7 +2,7 @@
 export { IconLock, IconUser, IconClipboard, IconSettings, IconCheck, IconX, IconStar, IconLightbulb, IconTarget } from "./icons";
 export { CodeEditor } from "./code-editor";
 export { ChainExample, ChainFlowDemo } from "./chain";
-export { Collapsible, Callout, CopyableCode, Quiz, TryIt } from "./ui";
+export { Collapsible, Callout, CopyableCode, Quiz, TryIt, NavButton, NavFooter } from "./ui";
 export { Checklist, Compare, InfoGrid } from "./lists";
 export { FrameworkDemo, CRISPEFramework, BREAKFramework, RTFFramework } from "./frameworks";
 export { PromptBreakdown, SpecificitySpectrum } from "./prompt";
