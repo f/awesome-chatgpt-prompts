@@ -12,6 +12,13 @@ JSON and YAML transform AI outputs from freeform text into structured, type-safe
 
 JSON (JavaScript Object Notation) is the most common format for programmatic AI outputs. Its strict syntax makes it easy to parse, but also means small errors can break your entire pipeline.
 
+### Do's and Don'ts: Requesting JSON
+
+<Compare 
+  before={{ label: "❌ Don't: Vague request", content: "Give me the user info as JSON." }}
+  after={{ label: "✓ Do: Show the schema", content: "Extract user info as JSON matching this schema:\n\n{\n  \"name\": \"string\",\n  \"age\": number,\n  \"email\": \"string\"\n}\n\nReturn ONLY valid JSON, no markdown." }}
+/>
+
 ### Simple JSON Output
 
 Start with a schema showing the expected structure. The model will fill in values based on the input text.
@@ -238,6 +245,13 @@ Text: [text]
 
 Enums restrict values to a predefined set. This is crucial for classification tasks and anywhere you need consistent, predictable outputs.
 
+### Do's and Don'ts: Enum Values
+
+<Compare 
+  before={{ label: "❌ Don't: Open-ended categories", content: "Classify this text into a category.\n\n{\n  \"category\": \"string\"\n}" }}
+  after={{ label: "✓ Do: Restrict to valid values", content: "Classify this text. Category MUST be exactly one of:\n- \"technical\"\n- \"business\"\n- \"creative\"\n- \"personal\"\n\n{\n  \"category\": \"one of the values above\"\n}" }}
+/>
+
 ### String Enums
 
 List allowed values explicitly. Use "MUST be one of" language to enforce strict matching.
@@ -279,6 +293,13 @@ Review: [review text]
 ## Handling Missing Data
 
 Real-world text often lacks some information. Define how the model should handle missing data to avoid hallucinated values.
+
+### Do's and Don'ts: Missing Information
+
+<Compare 
+  before={{ label: "❌ Don't: Let AI guess", content: "Extract all company details as JSON:\n{\n  \"revenue\": number,\n  \"employees\": number\n}" }}
+  after={{ label: "✓ Do: Explicitly allow null", content: "Extract company details. Use null for any field NOT explicitly mentioned. Do NOT invent or estimate values.\n\n{\n  \"revenue\": \"number or null\",\n  \"employees\": \"number or null\"\n}" }}
+/>
 
 ### Null Values
 
@@ -371,6 +392,13 @@ Items: apple, carrot, bread, banana, broccoli, milk, orange, spinach
 ## YAML for Configuration Generation
 
 YAML shines for DevOps configurations. The model knows standard patterns for common tools and can generate production-ready configs.
+
+### Do's and Don'ts: YAML Configs
+
+<Compare 
+  before={{ label: "❌ Don't: Vague requirements", content: "Generate a docker-compose file for my app." }}
+  after={{ label: "✓ Do: Specify components and needs", content: "Generate docker-compose.yml for:\n- Node.js app (port 3000)\n- PostgreSQL database\n- Redis cache\n\nInclude: health checks, volume persistence, environment from .env file" }}
+/>
 
 ### Docker Compose
 

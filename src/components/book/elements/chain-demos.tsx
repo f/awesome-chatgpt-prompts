@@ -127,7 +127,7 @@ export function ValidationDemo() {
             onClick={() => { setScenario("invalid"); resetSteps(); }}
             className={cn(
               "px-2 py-1 text-xs rounded",
-              scenario === "invalid" ? "bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-300" : "bg-muted"
+              scenario === "invalid" ? "bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300" : "bg-muted"
             )}
           >
             Invalid → Retry
@@ -144,42 +144,92 @@ export function ValidationDemo() {
       </div>
       
       <div className="p-4">
-        <div className="flex items-center gap-4">
-          {steps.map((step, index) => (
-            <div key={step.id} className="flex items-center gap-4 flex-1">
-              <div className={cn(
-                "flex-1 p-3 rounded-lg border transition-all",
-                step.status === "pending" && "bg-muted/30",
-                step.status === "running" && "bg-blue-50 dark:bg-blue-950/30 border-blue-300 dark:border-blue-700",
-                step.status === "success" && "bg-green-50 dark:bg-green-950/30 border-green-300 dark:border-green-700",
-                step.status === "failed" && "bg-red-50 dark:bg-red-950/30 border-red-300 dark:border-red-700",
-                step.status === "retrying" && "bg-amber-50 dark:bg-amber-950/30 border-amber-300 dark:border-amber-700"
-              )}>
-                <div className="flex items-center gap-2 mb-1">
-                  {step.status === "pending" && <div className="w-4 h-4 rounded-full border-2 border-muted-foreground/30" />}
-                  {step.status === "running" && <div className="w-4 h-4 rounded-full border-2 border-blue-500 border-t-transparent animate-spin" />}
-                  {step.status === "success" && <CheckCircle2 className="w-4 h-4 text-green-500" />}
-                  {step.status === "failed" && <XCircle className="w-4 h-4 text-red-500" />}
-                  {step.status === "retrying" && <RotateCcw className="w-4 h-4 text-amber-500 animate-spin" />}
-                  <span className="text-sm font-medium">{step.name}</span>
-                </div>
-                {step.output && <p className="text-xs font-mono text-muted-foreground truncate">{step.output}</p>}
-                {step.validationResult === "invalid" && (
-                  <p className="text-xs text-red-600 dark:text-red-400">INVALID: {step.reason}</p>
-                )}
-                {step.validationResult === "valid" && (
-                  <p className="text-xs text-green-600 dark:text-green-400">VALID ✓</p>
-                )}
-              </div>
-              {index < steps.length - 1 && (
-                <ArrowRight className={cn(
-                  "w-5 h-5 shrink-0",
-                  step.status === "success" ? "text-green-500" : "text-muted-foreground/30"
-                )} />
-              )}
+        <div className="grid md:grid-cols-3 gap-4">
+          {/* Generate Step */}
+          <div className={cn(
+            "p-4 rounded-lg border-2 transition-all",
+            steps[0].status === "pending" && "border-dashed border-muted-foreground/30",
+            steps[0].status === "running" && "border-blue-400 bg-blue-50 dark:bg-blue-950/30",
+            steps[0].status === "success" && "border-green-400 bg-green-50 dark:bg-green-950/30",
+            steps[0].status === "retrying" && "border-amber-400 bg-amber-50 dark:bg-amber-950/30"
+          )}>
+            <div className="text-xs uppercase tracking-wide text-muted-foreground mb-2">Step 1</div>
+            <div className="flex items-center gap-2 mb-2">
+              {steps[0].status === "pending" && <div className="w-4 h-4 rounded-full border-2 border-muted-foreground/30" />}
+              {steps[0].status === "running" && <div className="w-4 h-4 rounded-full border-2 border-blue-500 border-t-transparent animate-spin" />}
+              {steps[0].status === "success" && <CheckCircle2 className="w-4 h-4 text-green-500" />}
+              {steps[0].status === "retrying" && <RotateCcw className="w-4 h-4 text-amber-500 animate-spin" />}
+              <span className="font-medium text-sm">{steps[0].name}</span>
             </div>
-          ))}
+            {steps[0].output && (
+              <div className="mt-2 p-2 bg-muted/50 rounded text-xs font-mono break-all">
+                {steps[0].output}
+              </div>
+            )}
+          </div>
+          
+          {/* Validate Step */}
+          <div className={cn(
+            "p-4 rounded-lg border-2 transition-all",
+            steps[1].status === "pending" && "border-dashed border-muted-foreground/30",
+            steps[1].status === "running" && "border-blue-400 bg-blue-50 dark:bg-blue-950/30",
+            steps[1].status === "success" && "border-green-400 bg-green-50 dark:bg-green-950/30",
+            steps[1].status === "failed" && "border-red-400 bg-red-50 dark:bg-red-950/30"
+          )}>
+            <div className="text-xs uppercase tracking-wide text-muted-foreground mb-2">Step 2</div>
+            <div className="flex items-center gap-2 mb-2">
+              {steps[1].status === "pending" && <div className="w-4 h-4 rounded-full border-2 border-muted-foreground/30" />}
+              {steps[1].status === "running" && <div className="w-4 h-4 rounded-full border-2 border-blue-500 border-t-transparent animate-spin" />}
+              {steps[1].status === "success" && <CheckCircle2 className="w-4 h-4 text-green-500" />}
+              {steps[1].status === "failed" && <XCircle className="w-4 h-4 text-red-500" />}
+              <span className="font-medium text-sm">{steps[1].name}</span>
+            </div>
+            {steps[1].validationResult === "invalid" && (
+              <div className="mt-2 p-2 bg-red-100 dark:bg-red-900/30 rounded">
+                <p className="text-xs text-red-700 dark:text-red-300 font-medium">✗ INVALID</p>
+                <p className="text-xs text-red-600 dark:text-red-400 mt-1">{steps[1].reason}</p>
+              </div>
+            )}
+            {steps[1].validationResult === "valid" && (
+              <div className="mt-2 p-2 bg-green-100 dark:bg-green-900/30 rounded">
+                <p className="text-xs text-green-700 dark:text-green-300 font-medium">✓ VALID</p>
+                <p className="text-xs text-green-600 dark:text-green-400 mt-1">{steps[1].reason}</p>
+              </div>
+            )}
+            {steps[1].status === "pending" && (
+              <p className="text-xs text-muted-foreground">Checks output schema & types</p>
+            )}
+          </div>
+          
+          {/* Process Step */}
+          <div className={cn(
+            "p-4 rounded-lg border-2 transition-all",
+            steps[2].status === "pending" && "border-dashed border-muted-foreground/30",
+            steps[2].status === "running" && "border-blue-400 bg-blue-50 dark:bg-blue-950/30",
+            steps[2].status === "success" && "border-green-400 bg-green-50 dark:bg-green-950/30"
+          )}>
+            <div className="text-xs uppercase tracking-wide text-muted-foreground mb-2">Step 3</div>
+            <div className="flex items-center gap-2 mb-2">
+              {steps[2].status === "pending" && <div className="w-4 h-4 rounded-full border-2 border-muted-foreground/30" />}
+              {steps[2].status === "running" && <div className="w-4 h-4 rounded-full border-2 border-blue-500 border-t-transparent animate-spin" />}
+              {steps[2].status === "success" && <CheckCircle2 className="w-4 h-4 text-green-500" />}
+              <span className="font-medium text-sm">{steps[2].name}</span>
+            </div>
+            {steps[2].output && <p className="text-xs text-muted-foreground">{steps[2].output}</p>}
+            {steps[2].status === "pending" && (
+              <p className="text-xs text-muted-foreground">Uses validated data</p>
+            )}
+          </div>
         </div>
+        
+        {/* Retry indicator */}
+        {scenario === "invalid" && steps[0].status === "retrying" && (
+          <div className="mt-4 p-3 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg">
+            <p className="text-xs text-amber-700 dark:text-amber-300">
+              <span className="font-medium">↺ Retrying Step 1</span> — Validation failed, re-generating with feedback: "{steps[1].reason}"
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

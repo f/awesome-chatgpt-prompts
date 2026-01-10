@@ -862,3 +862,125 @@ export function IterativeRefinementDemo() {
     </div>
   );
 }
+
+// Cost Calculator Component
+export function CostCalculatorDemo() {
+  const [inputTokens, setInputTokens] = useState(500);
+  const [outputTokens, setOutputTokens] = useState(200);
+  const [requestsPerDay, setRequestsPerDay] = useState(1000);
+  const [inputPrice, setInputPrice] = useState(0.15); // $ per 1M tokens
+  const [outputPrice, setOutputPrice] = useState(0.60); // $ per 1M tokens
+
+  const costPerRequest = (inputTokens * inputPrice / 1_000_000) + (outputTokens * outputPrice / 1_000_000);
+  const dailyCost = costPerRequest * requestsPerDay;
+  const monthlyCost = dailyCost * 30;
+
+  const formatCurrency = (amount: number) => {
+    if (amount < 0.01) return `$${amount.toFixed(4)}`;
+    if (amount < 1) return `$${amount.toFixed(3)}`;
+    if (amount < 100) return `$${amount.toFixed(2)}`;
+    return `$${amount.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+  };
+
+  return (
+    <div className="my-6 p-4 border rounded-lg bg-card">
+      <div className="text-sm font-medium mb-4">API Cost Calculator</div>
+      
+      <div className="grid gap-4 md:grid-cols-2">
+        {/* Input Tokens */}
+        <div>
+          <label className="text-xs text-muted-foreground block mb-1.5">
+            Input Tokens (per request)
+          </label>
+          <input
+            type="number"
+            value={inputTokens}
+            onChange={(e) => setInputTokens(Math.max(0, parseInt(e.target.value) || 0))}
+            className="w-full px-3 py-2 text-sm border rounded-md bg-background"
+          />
+        </div>
+
+        {/* Input Price */}
+        <div>
+          <label className="text-xs text-muted-foreground block mb-1.5">
+            Input Price ($ per 1M tokens)
+          </label>
+          <input
+            type="number"
+            step="0.01"
+            value={inputPrice}
+            onChange={(e) => setInputPrice(Math.max(0, parseFloat(e.target.value) || 0))}
+            className="w-full px-3 py-2 text-sm border rounded-md bg-background"
+          />
+        </div>
+
+        {/* Output Tokens */}
+        <div>
+          <label className="text-xs text-muted-foreground block mb-1.5">
+            Output Tokens (per request)
+          </label>
+          <input
+            type="number"
+            value={outputTokens}
+            onChange={(e) => setOutputTokens(Math.max(0, parseInt(e.target.value) || 0))}
+            className="w-full px-3 py-2 text-sm border rounded-md bg-background"
+          />
+        </div>
+
+        {/* Output Price */}
+        <div>
+          <label className="text-xs text-muted-foreground block mb-1.5">
+            Output Price ($ per 1M tokens)
+          </label>
+          <input
+            type="number"
+            step="0.01"
+            value={outputPrice}
+            onChange={(e) => setOutputPrice(Math.max(0, parseFloat(e.target.value) || 0))}
+            className="w-full px-3 py-2 text-sm border rounded-md bg-background"
+          />
+        </div>
+
+        {/* Requests per Day */}
+        <div className="md:col-span-2">
+          <label className="text-xs text-muted-foreground block mb-1.5">
+            Requests per Day
+          </label>
+          <input
+            type="number"
+            value={requestsPerDay}
+            onChange={(e) => setRequestsPerDay(Math.max(0, parseInt(e.target.value) || 0))}
+            className="w-full px-3 py-2 text-sm border rounded-md bg-background"
+          />
+        </div>
+      </div>
+
+      {/* Results */}
+      <div className="mt-4 pt-4 border-t grid gap-3 md:grid-cols-3">
+        <div className="p-3 bg-muted/30 rounded-lg text-center">
+          <div className="text-xs text-muted-foreground">Per Request</div>
+          <div className="text-lg font-semibold text-blue-600 dark:text-blue-400">
+            {formatCurrency(costPerRequest)}
+          </div>
+        </div>
+        <div className="p-3 bg-muted/30 rounded-lg text-center">
+          <div className="text-xs text-muted-foreground">Daily Cost</div>
+          <div className="text-lg font-semibold text-amber-600 dark:text-amber-400">
+            {formatCurrency(dailyCost)}
+          </div>
+        </div>
+        <div className="p-3 bg-muted/30 rounded-lg text-center">
+          <div className="text-xs text-muted-foreground">Monthly Cost</div>
+          <div className="text-lg font-semibold text-red-600 dark:text-red-400">
+            {formatCurrency(monthlyCost)}
+          </div>
+        </div>
+      </div>
+
+      {/* Formula */}
+      <div className="mt-3 p-2 bg-muted/20 rounded text-xs text-muted-foreground font-mono text-center">
+        ({inputTokens.toLocaleString()} × ${inputPrice}/1M) + ({outputTokens.toLocaleString()} × ${outputPrice}/1M) = {formatCurrency(costPerRequest)}/request
+      </div>
+    </div>
+  );
+}

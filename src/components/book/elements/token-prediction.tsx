@@ -7,13 +7,18 @@ import { Play, RotateCcw } from "lucide-react";
 interface TokenPrediction {
   token: string;
   probability: number;
+  isPartial?: boolean;
 }
 
-// Simulated predictions based on text context
-const getPredictions = (text: string): TokenPrediction[] => {
-  const lowerText = text.toLowerCase().trim();
+// Define the full sentence with token boundaries
+const TOKENS = ["The", " capital", " of", " France", " is", " Paris", "."];
+const FULL_TEXT = TOKENS.join("");
+
+// Get predictions based on current position in the text
+const getPredictions = (text: string, fullText: string = FULL_TEXT): TokenPrediction[] => {
+  const lowerText = text.toLowerCase();
   
-  if (lowerText === "" || lowerText.length === 0) {
+  if (text === "" || text.length === 0) {
     return [
       { token: "The", probability: 0.15 },
       { token: "I", probability: 0.12 },
@@ -21,6 +26,34 @@ const getPredictions = (text: string): TokenPrediction[] => {
     ];
   }
   
+  // Find which token we're currently in and how much is left
+  let currentPos = 0;
+  let currentTokenIndex = 0;
+  
+  for (let i = 0; i < TOKENS.length; i++) {
+    const tokenEnd = currentPos + TOKENS[i].length;
+    if (text.length <= tokenEnd) {
+      currentTokenIndex = i;
+      break;
+    }
+    currentPos = tokenEnd;
+  }
+  
+  const currentToken = TOKENS[currentTokenIndex];
+  const typedInToken = text.length - currentPos;
+  const remainingInToken = currentToken.slice(typedInToken);
+  
+  // If we're in the middle of typing a token, show the remainder as top prediction
+  if (remainingInToken.length > 0 && typedInToken > 0) {
+    const prob = 0.85 + (typedInToken / currentToken.length) * 0.10; // Increases as more is typed
+    return [
+      { token: remainingInToken, probability: Math.min(prob, 0.98), isPartial: true },
+      { token: " and", probability: 0.02 },
+      { token: " the", probability: 0.01 },
+    ];
+  }
+  
+  // At token boundaries, show next token predictions
   if (lowerText === "the") {
     return [
       { token: " capital", probability: 0.04 },
@@ -61,11 +94,19 @@ const getPredictions = (text: string): TokenPrediction[] => {
     ];
   }
   
-  if (lowerText.includes("capital of france is paris")) {
+  if (lowerText === "the capital of france is paris") {
     return [
       { token: ".", probability: 0.65 },
       { token: ",", probability: 0.20 },
       { token: " which", probability: 0.08 },
+    ];
+  }
+  
+  if (text === fullText) {
+    return [
+      { token: " It", probability: 0.25 },
+      { token: " The", probability: 0.18 },
+      { token: " Paris", probability: 0.12 },
     ];
   }
   
@@ -84,7 +125,7 @@ export function TokenPredictionDemo() {
   const [isComplete, setIsComplete] = useState(false);
   const autoTypeRef = useRef<NodeJS.Timeout | null>(null);
   
-  const exampleText = "The capital of France is Paris";
+  const exampleText = FULL_TEXT;
   
   useEffect(() => {
     setIsAnimating(true);
@@ -196,7 +237,9 @@ export function TokenPredictionDemo() {
         </div>
 
         <div>
-          <p className="text-sm font-medium mb-3">Top 3 Predicted Next Tokens:</p>
+          <p className="text-sm font-medium mb-3">
+            {predictions[0]?.isPartial ? "Completing current token:" : "Top 3 Predicted Next Tokens:"}
+          </p>
           <div className="space-y-2">
             {predictions.map((pred, index) => (
               <div

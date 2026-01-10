@@ -55,11 +55,6 @@ const nextConfig: NextConfig = {
         destination: "/embed",
         permanent: true,
       },
-      {
-        source: "/book",
-        destination: "/book/00a-preface",
-        permanent: true,
-      },
     ];
   },
 };

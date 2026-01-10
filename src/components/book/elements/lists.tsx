@@ -99,6 +99,7 @@ interface InfoItem {
   title?: string;
   description: string;
   example?: string;
+  exampleType?: "code" | "text"; // "code" = mono font, "text" = regular font
   icon?: string;
   color?: "purple" | "blue" | "green" | "amber" | "rose" | "red" | "cyan" | "pink" | "indigo";
 }
@@ -144,7 +145,7 @@ const iconMap: Record<string, LucideIcon> = {
 export function InfoGrid({ items, columns = 1 }: InfoGridProps) {
   return (
     <div className={cn(
-      "my-4 grid gap-2",
+      "my-4 grid gap-3",
       columns === 2 ? "md:grid-cols-2" : "grid-cols-1"
     )}>
       {items.map((item, index) => {
@@ -156,20 +157,32 @@ export function InfoGrid({ items, columns = 1 }: InfoGridProps) {
         return (
           <div
             key={index}
-            className={cn(
-              "px-3 py-2.5 rounded-lg border",
-              colors.bg,
-              colors.border
-            )}
+            className="group relative pl-4 py-2"
           >
-            <div>
+            {/* Color accent bar */}
+            <div className={cn(
+              "absolute left-0 top-0 bottom-0 w-1 rounded-full",
+              colors.text.replace("text-", "bg-")
+            )} />
+            
+            <div className="space-y-1">
+              {/* Title row */}
               <div className="flex items-center gap-2">
                 {Icon && <Icon className={cn("h-4 w-4 shrink-0", colors.text)} />}
-                <span className={cn("font-medium text-sm", colors.text)}>{displayTitle}</span>
-                <span className="text-sm text-muted-foreground">{item.description}</span>
+                <span className={cn("font-semibold text-sm", colors.text)}>{displayTitle}</span>
               </div>
+              
+              {/* Description */}
+              <p className="text-sm text-foreground/80 m-0! leading-relaxed">{item.description}</p>
+              
+              {/* Example */}
               {item.example && (
-                <p className="text-xs text-muted-foreground mt-1.5 font-mono bg-black/5 dark:bg-white/5 rounded px-1.5 py-1 m-0! mt-3!">{item.example}</p>
+                <p className={cn(
+                  "m-0! mt-1.5!",
+                  item.exampleType === "text" 
+                    ? "text-sm italic text-muted-foreground" 
+                    : "text-xs font-mono bg-muted/50 text-foreground/70 rounded px-2 py-1.5 border border-border/50"
+                )}>{item.example}</p>
               )}
             </div>
           </div>

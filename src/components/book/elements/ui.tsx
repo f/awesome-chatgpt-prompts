@@ -261,7 +261,7 @@ export function TryIt({ prompt, description, title = "Try It Yourself", compact 
         </div>
       </div>
       {description && <p className="text-sm text-muted-foreground mb-3 mt-0!">{description}</p>}
-      <pre className="p-3 bg-background rounded border text-sm whitespace-pre-wrap">{prompt}</pre>
+      <pre className="p-3 bg-background rounded border text-sm whitespace-pre-wrap mb-0!">{prompt}</pre>
     </div>
   );
 }

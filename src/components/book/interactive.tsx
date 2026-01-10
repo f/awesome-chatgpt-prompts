@@ -7,7 +7,7 @@ export { Collapsible, Callout, CopyableCode, Quiz, TryIt } from "./elements/ui";
 export { Checklist, Compare, InfoGrid } from "./elements/lists";
 export { FrameworkDemo, CRISPEFramework, BREAKFramework, RTFFramework } from "./elements/frameworks";
 export { PromptBreakdown, SpecificitySpectrum } from "./elements/prompt";
-export { TokenizerDemo, ContextWindowDemo, TemperatureDemo, StructuredOutputDemo, FewShotDemo, JsonYamlDemo, IterativeRefinementDemo } from "./elements/demos";
+export { TokenizerDemo, ContextWindowDemo, TemperatureDemo, StructuredOutputDemo, FewShotDemo, JsonYamlDemo, IterativeRefinementDemo, CostCalculatorDemo } from "./elements/demos";
 export { PrinciplesSummary } from "./elements/principles";
 export { JailbreakDemo } from "./elements/security";
 export { EmbeddingsDemo, LLMCapabilitiesDemo } from "./elements/ai-demos";
