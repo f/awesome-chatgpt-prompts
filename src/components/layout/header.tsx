@@ -195,14 +195,16 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
                   >
                     {t("nav.promptmasters")}
                   </Link>
-                  {/* <Link 
-                    href="/book" 
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
-                  >
-                    <BookOpen className="h-4 w-4" />
-                    Book
-                  </Link> */}
+                  {!branding.useCloneBranding && (
+                    <Link 
+                      href="https://fka.gumroad.com/l/art-of-chatgpt-prompting" 
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+                    >
+                      <BookOpen className="h-4 w-4" />
+                      Book
+                    </Link>
+                  )}
                 </div>
               </nav>
 
@@ -327,12 +329,14 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
         {/* Right side actions */}
         <div className="flex items-center gap-1">
           {/* Book link */}
-          {/* <Button asChild variant="ghost" size="sm" className="hidden lg:flex h-8 gap-1.5">
-            <Link href="/book">
-              <BookOpen className="h-4 w-4" />
-              Book
-            </Link>
-          </Button> */}
+          {!branding.useCloneBranding && (
+            <Button asChild variant="ghost" size="sm" className="hidden lg:flex h-8 gap-1.5">
+              <Link href="https://fka.gumroad.com/l/art-of-chatgpt-prompting">
+                <BookOpen className="h-4 w-4" />
+                Book
+              </Link>
+            </Button>
+          )}
 
           {/* Developers link */}
           <Button asChild variant="ghost" size="icon" className="hidden lg:flex h-8 w-8">
