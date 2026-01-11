@@ -295,10 +295,10 @@ export function RunPromptButton({
   }, [variableValues, onVariablesFilled, pendingPlatform, getContentWithVariables, content, promptId]);
 
   const handleRun = (platform: Platform, baseUrl: string) => {
-    // Check if there are unfilled variables (empty values)
-    const hasUnfilled = unfilledVariables.some(v => !v.defaultValue || v.defaultValue.trim() === "");
+    // Check if there are any variables to fill
+    const hasVariables = unfilledVariables.length > 0;
     
-    if (hasUnfilled) {
+    if (hasVariables) {
       // Show variable fill dialog first (for both query string and copy flows)
       openVariableDialog(platform, baseUrl);
       return;

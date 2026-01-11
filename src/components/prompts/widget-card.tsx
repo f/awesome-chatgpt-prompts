@@ -20,6 +20,11 @@ export function WidgetCard({ prompt }: WidgetCardProps) {
   const tCommon = useTranslations("common");
   const [copied, setCopied] = useState(false);
 
+  // If widget has a custom render function, use it
+  if (prompt.render) {
+    return <>{prompt.render()}</>;
+  }
+
   const copyToClipboard = async () => {
     await navigator.clipboard.writeText(prompt.content);
     setCopied(true);
