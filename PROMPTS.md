@@ -38919,3 +38919,16 @@ Give me 5 strong ones. Let’s go.
 
 </details>
 
+<details>
+<summary><strong>postmortem</strong></summary>
+
+## postmortem
+
+Contributed by [@miyade.xyz@gmail.com](https://github.com/miyade.xyz@gmail.com)
+
+```md
+create a new markdown file that as a postmortem/analysis original message, what happened, how it happened, the chronological steps that you took to fix the problem. The commands that you used, what you did in the end. Have a section for technical terms used, future thoughts, recommended next steps etc.
+```
+
+</details>
+
