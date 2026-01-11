@@ -330,11 +330,17 @@ export async function GET(request: Request) {
     }
 
     if (tag) {
-      where.tags = {
-        some: {
-          tag: { slug: tag },
-        },
-      };
+      // Handle multiple tags (comma-separated)
+      const tagSlugs = tag.split(",").map(t => t.trim()).filter(Boolean);
+      if (tagSlugs.length > 0) {
+        where.AND = tagSlugs.map(slug => ({
+          tags: {
+            some: {
+              tag: { slug },
+            },
+          },
+        }));
+      }
     }
 
     if (q) {

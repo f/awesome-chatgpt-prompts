@@ -20,7 +20,7 @@ interface InfinitePromptListProps {
     type?: string;
     category?: string;
     categorySlug?: string;
-    tag?: string;
+    tag?: string; 
     sort?: string;
   };
 }
