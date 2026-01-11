@@ -2,6 +2,8 @@
 // Widgets Plugin Types
 // ============================================
 
+import type { ReactNode } from "react";
+
 export interface WidgetContext {
   filters?: {
     q?: string;
@@ -56,6 +58,8 @@ export interface WidgetPrompt {
   /** Widget positioning configuration */
   positioning?: WidgetPositionConfig;
   shouldInject?: (context: WidgetContext) => boolean;
+  /** Custom render function for completely custom widget designs */
+  render?: () => ReactNode;
 }
 
 export interface InjectedWidget extends WidgetPrompt {
