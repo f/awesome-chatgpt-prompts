@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: ChapterPageProps): Promise<Me
   }
 
   return {
-    title: `${chapter.title} | The Art of ChatGPT Prompting`,
+    title: `${chapter.title} | The Interactive Book of Prompting`,
     description: chapter.description || `Learn about ${chapter.title.toLowerCase()} in prompt engineering.`,
   };
 }
