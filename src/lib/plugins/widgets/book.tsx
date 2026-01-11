@@ -155,7 +155,7 @@ export const bookWidget: WidgetPlugin = {
       actionUrl: "https://fka.gumroad.com/l/art-of-chatgpt-prompting",
       actionLabel: "Read the Book",
       positioning: {
-        position: 7,
+        position: 10,
         mode: "repeat",
         repeatEvery: 60,
         maxCount: 4,
