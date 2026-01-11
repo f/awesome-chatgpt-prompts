@@ -63,7 +63,7 @@ export function MobileTOCButton() {
           <SheetHeader>
             <SheetTitle className="flex items-center gap-2">
               <Book className="h-4 w-4" />
-              The Art of Prompting
+              The Interactive Book of Prompting
             </SheetTitle>
           </SheetHeader>
           <ScrollArea className="h-[calc(100vh-8rem)] mt-4">
@@ -88,7 +88,7 @@ export function BookSidebar() {
               className="inline-flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition-colors"
             >
               <Book className="h-4 w-4" />
-              <span>The Art of Prompting</span>
+              <span>The Interactive Book of Prompting</span>
             </Link>
           </div>
 

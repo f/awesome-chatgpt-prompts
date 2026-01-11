@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "The Art of Prompting | prompts.chat",
-  description: "A Guide to Crafting Clear and Effective Prompts",
+  title: "The Interactive Book of Prompting | prompts.chat",
+  description: "An Interactive Guide to Crafting Clear and Effective Prompts",
 };
 
 export default function BookHomePage() {
@@ -15,10 +15,10 @@ export default function BookHomePage() {
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold tracking-tight mb-2">
-          The Art of Prompting
+          The Interactive Book of Prompting
         </h1>
         <p className="text-muted-foreground">
-          A Guide to Crafting Clear and Effective Prompts
+          An Interactive Guide to Crafting Clear and Effective Prompts
         </p>
       </div>
 

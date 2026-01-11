@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { db } from "@/lib/db";
+import { getAllChapters } from "@/lib/book/chapters";
 
 // Revalidate sitemap every hour (3600 seconds)
 export const revalidate = 3600;
@@ -33,7 +34,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 0.7,
     },
+    {
+      url: `${baseUrl}/book`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
   ];
+
+  // Book chapter pages
+  const chapters = getAllChapters();
+  const bookPages: MetadataRoute.Sitemap = chapters.map((chapter) => ({
+    url: `${baseUrl}/book/${chapter.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
 
   // Dynamic pages - skip if database is unavailable (e.g., during build)
   try {
@@ -69,9 +85,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.5,
     }));
 
-    return [...staticPages, ...categoryPages, ...promptPages, ...tagPages];
+    return [...staticPages, ...bookPages, ...categoryPages, ...promptPages, ...tagPages];
   } catch {
-    // Database unavailable (build time) - return static pages only
-    return staticPages;
+    // Database unavailable (build time) - return static and book pages only
+    return [...staticPages, ...bookPages];
   }
 }
