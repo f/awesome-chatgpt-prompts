@@ -17,3 +17,6 @@ export { TokenPredictionDemo } from "./token-prediction";
 export { DiffView, VersionDiff } from "./diff-view";
 export { ChainErrorDemo } from "./chain-error-demo";
 export { ValidationDemo, FallbackDemo, ContentPipelineDemo } from "./chain-demos";
+export { FillInTheBlank, InteractiveChecklist, PromptDebugger } from "./exercises";
+export { PromptBuilder, PromptAnalyzer } from "./builder";
+export { PromptChallenge, BeforeAfterEditor } from "./challenge";

@@ -342,3 +342,32 @@ Before sending any important prompt, run through this quick checklist:
   correctIndex={1}
   explanation="While all pitfalls cause problems, trusting AI outputs without verification is the most dangerous because it can lead to publishing false information, deploying buggy code, or making decisions based on hallucinated data. AI sounds confident even when completely wrong, making verification essential for any important use case."
 />
+
+## Analyze Your Prompts
+
+Use AI to get instant feedback on your prompt quality. Paste any prompt and get a detailed analysis:
+
+<PromptAnalyzer 
+  title="Prompt Quality Analyzer"
+  description="Get AI-powered feedback on clarity, specificity, and suggestions for improvement"
+  defaultPrompt="Help me with my code"
+/>
+
+## Debug This Prompt
+
+Can you spot what's wrong with this prompt?
+
+<PromptDebugger
+  title="Find the Pitfall"
+  badPrompt="Write a blog post about technology that's SEO optimized with keywords and also funny but professional and includes code examples and targets beginners but has advanced tips and mentions our product TechCo and has social proof and a call to action and is 500 words but comprehensive."
+  badOutput="Here's a draft blog post about technology...
+
+[Generic, unfocused content that tries to do everything but accomplishes nothing well. Tone shifts awkwardly between casual and technical. Missing half the requirements.]"
+  options={[
+    { id: "vague", label: "The prompt is too vague", isCorrect: false, explanation: "Actually, the prompt has many specific requirements. The problem is the opposite—too many requirements, not too few." },
+    { id: "overload", label: "The prompt is overloaded with too many competing requirements", isCorrect: true, explanation: "Correct! This prompt asks for SEO + funny + professional + code + beginners + advanced + product mention + social proof + CTA + length constraint. That's 10+ competing requirements! The AI can't satisfy them all, so it does a mediocre job on everything. Solution: break this into multiple focused prompts." },
+    { id: "format", label: "The output format isn't specified", isCorrect: false, explanation: "While a more specific format would help, the main issue is requirement overload. You can't format your way out of asking for too much." },
+    { id: "context", label: "There's not enough context", isCorrect: false, explanation: "The prompt actually has a lot of context—maybe too much! The problem is that it's trying to satisfy too many goals at once." }
+  ]}
+  hint="Count how many different requirements are packed into this single prompt."
+/>

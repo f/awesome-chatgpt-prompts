@@ -1,6 +1,6 @@
 import type { MDXComponents } from "mdx/types";
 import type { ComponentPropsWithoutRef } from "react";
-import { BookPartsNav, BREAKFramework, Callout, ChainErrorDemo, ChainExample, ChainFlowDemo, Checklist, CodeEditor, Collapsible, Compare, ContentPipelineDemo, ContextPlayground, ContextWindowDemo, CostCalculatorDemo, CRISPEFramework, DiffView, EmbeddingsDemo, FallbackDemo, FewShotDemo, IconCheck, IconClipboard, IconLightbulb, IconLock, IconSettings, IconStar, IconTarget, IconUser, IconX, InfoGrid, IterativeRefinementDemo, JailbreakDemo, JsonYamlDemo, LLMCapabilitiesDemo, NavButton, NavFooter, PrinciplesSummary, PromptBreakdown, Quiz, RTFFramework, SpecificitySpectrum, StructuredOutputDemo, SummarizationDemo, TemperatureDemo, TextToImageDemo, TextToVideoDemo, TokenizerDemo, TokenPredictionDemo, TryIt, ValidationDemo, VersionDiff } from "@/components/book/interactive";
+import { BeforeAfterEditor, BookPartsNav, BREAKFramework, Callout, ChainErrorDemo, ChainExample, ChainFlowDemo, Checklist, CodeEditor, Collapsible, Compare, ContentPipelineDemo, ContextPlayground, ContextWindowDemo, CostCalculatorDemo, CRISPEFramework, DiffView, EmbeddingsDemo, FallbackDemo, FewShotDemo, FillInTheBlank, IconCheck, IconClipboard, IconLightbulb, IconLock, IconSettings, IconStar, IconTarget, IconUser, IconX, InfoGrid, InteractiveChecklist, IterativeRefinementDemo, JailbreakDemo, JsonYamlDemo, LLMCapabilitiesDemo, NavButton, NavFooter, PrinciplesSummary, PromptAnalyzer, PromptBreakdown, PromptBuilder, PromptChallenge, PromptDebugger, Quiz, RTFFramework, SpecificitySpectrum, StructuredOutputDemo, SummarizationDemo, TemperatureDemo, TextToImageDemo, TextToVideoDemo, TokenizerDemo, TokenPredictionDemo, TryIt, ValidationDemo, VersionDiff } from "@/components/book/interactive";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -25,6 +25,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     tr: ({ ref: _ref, ...props }: ComponentPropsWithoutRef<"tr"> & { ref?: unknown }) => (
       <tr className="even:bg-muted/30" {...props} />
     ),
+    BeforeAfterEditor,
     BookPartsNav,
     BREAKFramework,
     Callout,
@@ -44,6 +45,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     EmbeddingsDemo,
     FallbackDemo,
     FewShotDemo,
+    FillInTheBlank,
     IconCheck,
     IconClipboard,
     IconLightbulb,
@@ -54,6 +56,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     IconUser,
     IconX,
     InfoGrid,
+    InteractiveChecklist,
     IterativeRefinementDemo,
     JailbreakDemo,
     JsonYamlDemo,
@@ -61,7 +64,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     NavButton,
     NavFooter,
     PrinciplesSummary,
+    PromptAnalyzer,
     PromptBreakdown,
+    PromptBuilder,
+    PromptChallenge,
+    PromptDebugger,
     Quiz,
     RTFFramework,
     SpecificitySpectrum,

@@ -296,4 +296,48 @@ Format: For each feature, provide:
   description="This prompt uses all six components. Try it and see how the structured approach produces focused, actionable results."
 />
 
+## Build Your Own Prompt
+
+Now it's your turn! Use this interactive prompt builder to construct your own prompt using the components you've learned:
+
+<PromptBuilder 
+  title="Interactive Prompt Builder"
+  description="Fill in each section to build a complete, well-structured prompt"
+/>
+
+<PromptChallenge
+  title="Chapter Challenge: Build a Code Review Prompt"
+  task="Write a prompt that asks an AI to review code for security vulnerabilities. Your prompt should be specific enough to get actionable feedback."
+  criteria={[
+    "Includes a clear role or expertise level",
+    "Specifies what type of code review (security focus)",
+    "Defines the expected output format",
+    "Sets appropriate constraints or scope"
+  ]}
+  hints={[
+    "Think about what expertise a code reviewer should have",
+    "Be specific about what security issues to look for",
+    "Consider asking for a structured response format"
+  ]}
+  exampleSolution={`You are a senior security engineer with expertise in web application security and OWASP Top 10 vulnerabilities.
+
+Task: Review the following code for security vulnerabilities.
+
+Focus on:
+- SQL injection risks
+- XSS vulnerabilities  
+- Authentication/authorization issues
+- Input validation gaps
+
+Output format:
+For each issue found:
+1. Line number(s)
+2. Vulnerability type
+3. Risk level (High/Medium/Low)
+4. Recommended fix
+
+[CODE TO REVIEW]`}
+  difficulty="intermediate"
+/>
+
 In the next chapter, we'll explore the core principles that guide prompt construction decisions.

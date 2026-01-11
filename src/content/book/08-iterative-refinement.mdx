@@ -357,4 +357,31 @@ Start simple, observe carefully, change one thing at a time, document what works
   explanation="Changing one thing at a time lets you isolate what works and what doesn't. If you change multiple things at once, you won't know which change fixed the problem or which made it worse."
 />
 
+## Practice: Improve This Prompt
+
+Try improving this weak prompt yourself. Edit it, then use AI to compare your version with the original:
+
+<BeforeAfterEditor
+  title="Refine This Email Prompt"
+  badPrompt="Write an email."
+  idealPrompt={`You are a professional business writer.
+
+Task: Write a follow-up email to a potential client after a sales meeting.
+
+Context:
+- Met with Sarah Chen, VP of Marketing at TechCorp
+- Discussed our analytics platform
+- She expressed interest in the reporting features
+- Meeting was yesterday
+
+Requirements:
+- Professional but warm tone
+- Reference specific points from our meeting
+- Include a clear next step (schedule a demo)
+- Keep under 150 words
+
+Format: Subject line + email body`}
+  task="Transform this vague email prompt into something that will produce a professional, effective result."
+/>
+
 In the next chapter, we'll explore JSON and YAML prompting for structured data applications.

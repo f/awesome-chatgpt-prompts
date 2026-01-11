@@ -18,3 +18,6 @@ export { TokenPredictionDemo } from "./elements/token-prediction";
 export { DiffView, VersionDiff } from "./elements/diff-view";
 export { ChainErrorDemo } from "./elements/chain-error-demo";
 export { ValidationDemo, FallbackDemo, ContentPipelineDemo } from "./elements/chain-demos";
+export { FillInTheBlank, InteractiveChecklist, PromptDebugger } from "./elements/exercises";
+export { PromptBuilder, PromptAnalyzer } from "./elements/builder";
+export { PromptChallenge, BeforeAfterEditor } from "./elements/challenge";

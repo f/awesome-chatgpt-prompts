@@ -324,4 +324,49 @@ List any issues found.
   explanation="Context Is King emphasizes that AI models have no memory between sessions and cannot read your mind. Including relevant background, constraints, and goals helps the model understand your needs."
 />
 
+## Practice: Fill in the Blanks
+
+Test your understanding of the core principles by completing this prompt template:
+
+<FillInTheBlank
+  title="Apply the Principles"
+  description="Fill in the blanks to create a well-structured prompt following the 8 principles"
+  useAI={true}
+  template={`You are a {{role}} with expertise in {{expertise}}.
+
+Context: I'm working on {{context}}.
+
+Task: {{task}}
+
+Constraints:
+- Keep your response under {{length}} words
+- Focus only on {{focus}}
+
+Format: Return your answer as {{format}}.`}
+  blanks={[
+    { id: "role", correctAnswers: ["senior developer", "software engineer", "technical writer", "data scientist"], hint: "What professional role should the AI assume?", context: "A job title or professional role" },
+    { id: "expertise", correctAnswers: ["Python", "React", "web development", "data analysis", "machine learning"], hint: "What specific domain knowledge is needed?", context: "A technical skill or domain" },
+    { id: "context", correctAnswers: ["a web application", "a mobile app", "a data pipeline", "an API"], hint: "What's the project or situation?", context: "A project type or work situation" },
+    { id: "task", correctAnswers: ["Review this code", "Write a function", "Debug this issue", "Explain this concept"], hint: "What specific action should the AI take?", context: "An action verb with an object" },
+    { id: "length", correctAnswers: ["200", "300", "500", "100"], hint: "How long should the response be?", context: "A number representing word count" },
+    { id: "focus", correctAnswers: ["performance", "security", "readability", "best practices"], hint: "What aspect should be prioritized?", context: "A quality or aspect to focus on" },
+    { id: "format", correctAnswers: ["a numbered list", "bullet points", "a table", "JSON", "markdown"], hint: "How should the output be structured?", context: "An output format type" }
+  ]}
+  explanation="A well-structured prompt includes: a clear role (Principle 1), sufficient context (Principle 3), specific task (Principle 2), constraints (Principle 4), and output format (Principle 5)."
+/>
+
+<InteractiveChecklist
+  title="Principles Checklist"
+  items={[
+    { id: "clarity", label: "Clarity Over Cleverness", description: "Is your prompt explicit and unambiguous?" },
+    { id: "specificity", label: "Specificity Yields Quality", description: "Have you included audience, length, tone, and format?" },
+    { id: "context", label: "Context Is King", description: "Does the prompt include all necessary background information?" },
+    { id: "examples", label: "Examples Beat Explanations", description: "Have you shown what you want, not just described it?" },
+    { id: "constraints", label: "Constraints Focus Output", description: "Are there clear boundaries on scope and format?" },
+    { id: "iteration", label: "Iterate and Refine", description: "Are you prepared to improve based on results?" },
+    { id: "persona", label: "Persona Shapes Perspective", description: "Does the AI know what role to play?" },
+    { id: "verify", label: "Verify and Validate", description: "Have you built in checks for accuracy?" }
+  ]}
+/>
+
 These principles form the foundation for everything that follows. In Part II, we'll apply them to specific techniques that dramatically enhance prompt effectiveness.
