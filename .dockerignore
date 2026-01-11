@@ -44,3 +44,50 @@ tsconfig.tsbuildinfo
 # Not needed
 scripts/
 packages/
+# Build outputs
+.next
+out
+dist
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Docker
+docker-compose*.yml
+Dockerfile*
+
+# Development files
+.github
+.claude
+packages
+*.md
+!README.md
+
+# Test files
+coverage
+.nyc_output
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Prisma
+prisma/migrations/**/migration_lock.toml

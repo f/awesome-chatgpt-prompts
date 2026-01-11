@@ -22,10 +22,24 @@ export function Masonry({
   const containerRef = useRef<HTMLDivElement>(null);
   const [columns, setColumns] = useState(columnCount.default);
   const [containerHeight, setContainerHeight] = useState(0);
+  const [isRTL, setIsRTL] = useState(false);
   const itemRefs = useRef<Map<number, HTMLDivElement>>(new Map());
   const positionsRef = useRef<Map<number, { x: number; y: number }>>(new Map());
   const [, forceUpdate] = useState(0);
   const prevChildrenLengthRef = useRef(0);
+
+  // Detect RTL direction
+  useEffect(() => {
+    const checkRTL = () => {
+      setIsRTL(document.documentElement.dir === "rtl");
+    };
+    checkRTL();
+    
+    // Watch for dir attribute changes
+    const observer = new MutationObserver(checkRTL);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["dir"] });
+    return () => observer.disconnect();
+  }, []);
 
   // Determine column count based on screen size
   useEffect(() => {
@@ -88,10 +102,10 @@ export function Masonry({
     return () => clearTimeout(timer);
   }, [children.length, calculatePositions]);
 
-  // Recalculate on column count change (resize)
+  // Recalculate on column count change (resize) or RTL change
   useEffect(() => {
     calculatePositions();
-  }, [columns, calculatePositions]);
+  }, [columns, isRTL, calculatePositions]);
 
   // Use ResizeObserver for image loading
   useEffect(() => {
@@ -134,9 +148,10 @@ export function Masonry({
             style={{
               width: columnWidth > 0 ? columnWidth : "100%",
               transform: hasPosition 
-                ? `translate3d(${position.x}px, ${position.y}px, 0)` 
+                ? `translate3d(${isRTL ? -position.x : position.x}px, ${position.y}px, 0)` 
                 : "translate3d(-9999px, 0, 0)",
               visibility: hasPosition ? "visible" : "hidden",
+              ...(isRTL ? { right: 0 } : { left: 0 }),
             }}
           >
             {child}

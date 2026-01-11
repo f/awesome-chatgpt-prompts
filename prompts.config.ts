@@ -11,6 +11,10 @@ export default defineConfig({
     logoDark: "/logo-dark.svg",
     favicon: "/logo.svg",
     description: "Collect, organize, and share AI prompts",
+
+    // Delete this if useCloneBranding is true
+    appStoreUrl: "https://apps.apple.com/tr/app/prompts-chat/id6756895736",
+    chromeExtensionUrl: "https://chromewebstore.google.com/detail/promptschat/eemdohkhbaifiocagjlhibfbhamlbeej",
   },
 
   // Theme - design system configuration
@@ -38,7 +42,7 @@ export default defineConfig({
 
   // Internationalization
   i18n: {
-    locales: ["en", "tr", "es", "zh", "ja", "ar", "pt", "fr", "it", "de", "ko", "ru", "he", "el"],
+    locales: ["en", "tr", "es", "zh", "ja", "ar", "pt", "fr", "it", "de", "ko", "ru", "he", "el", "az", "fa"],
     defaultLocale: "en",
   },
 
@@ -74,9 +78,11 @@ export default defineConfig({
       items: [
         // Add sponsors here
         { name: "Clemta", logo: '/sponsors/clemta.webp', url: "https://clemta.com/?utm_source=prompts.chat" },
-        { name: "Wiro.ai", className: 'p-1', darkLogo: '/sponsors/wiro.png', logo: '/sponsors/wiro.png', url: "https://wiro.ai/?utm_source=prompts.chat" },
+        { name: "Wiro.ai", className: 'py-1', darkLogo: '/sponsors/wiro.png', logo: '/sponsors/wiro.png', url: "https://wiro.ai/?utm_source=prompts.chat" },
         { name: "Cognition", logo: "/sponsors/cognition.svg", url: "https://wind.surf/prompts-chat" },
-        { name: "warp.dev", className: 'p-2', logo: '/sponsors/warp.svg', url: "https://warp.dev/?utm_source=prompts.chat" },
+        { name: "CodeRabbit", className: 'py-1', logo: '/sponsors/coderabbit.svg', darkLogo: '/sponsors/coderabbit-dark.svg', url: "https://coderabbit.link/fatih" },
+        { name: "MitteAI", logo: '/sponsors/mitte.svg', darkLogo: '/sponsors/mitte-dark.svg', url: "https://mitte.ai/?utm_source=prompts.chat" },
+        { name: "warp.dev", className: 'py-2', logo: '/sponsors/warp.svg', url: "https://warp.dev/?utm_source=prompts.chat" },
       ],
     },
   },

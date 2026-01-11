@@ -15,6 +15,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { McpConfigTabs } from "./mcp-config-tabs";
+import { analyticsMcp } from "@/lib/analytics";
 
 // MCP Logo component - shows dark version in dark mode
 export function McpIcon({ className }: { className?: string }) {
@@ -129,7 +130,10 @@ export function McpServerPopup({
   const removeTag = (tag: string) => setTags(tags.filter((t) => t !== tag));
 
   return (
-    <Popover modal open={isOpen} onOpenChange={setIsOpen}>
+    <Popover modal open={isOpen} onOpenChange={(open) => {
+        if (open) analyticsMcp.openPopup();
+        setIsOpen(open);
+      }}>
       <PopoverTrigger asChild>
         <Button variant="outline" size="sm" className="h-8 gap-1.5">
           <McpIcon className="h-4 w-4" />

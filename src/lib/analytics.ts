@@ -495,6 +495,36 @@ export const analyticsHero = {
 };
 
 // ============================================================================
+// Sponsor Events
+// ============================================================================
+
+export const analyticsSponsor = {
+  click: (sponsorName: string, sponsorUrl: string) => {
+    trackEvent({
+      action: "sponsor_click",
+      category: "sponsor",
+      label: sponsorName,
+      sponsor_url: sponsorUrl,
+    });
+  },
+
+  becomeSponsorClick: () => {
+    trackEvent({
+      action: "become_sponsor_click",
+      category: "sponsor",
+    });
+  },
+
+  builtWithClick: (toolName: string) => {
+    trackEvent({
+      action: "built_with_click",
+      category: "sponsor",
+      label: toolName,
+    });
+  },
+};
+
+// ============================================================================
 // MCP Events
 // ============================================================================
 
@@ -542,6 +572,120 @@ export const analyticsEngagement = {
       action: "external_link_click",
       category: "engagement",
       label: url,
+    });
+  },
+};
+
+// ============================================================================
+// Comment Events
+// ============================================================================
+
+export const analyticsComment = {
+  post: (promptId: string, isReply: boolean) => {
+    trackEvent({
+      action: isReply ? "post_reply" : "post_comment",
+      category: "comment",
+      prompt_id: promptId,
+    });
+  },
+};
+
+// ============================================================================
+// Collection Events
+// ============================================================================
+
+export const analyticsCollection = {
+  add: (promptId: string) => {
+    trackEvent({
+      action: "add_to_collection",
+      category: "collection",
+      prompt_id: promptId,
+    });
+  },
+
+  remove: (promptId: string) => {
+    trackEvent({
+      action: "remove_from_collection",
+      category: "collection",
+      prompt_id: promptId,
+    });
+  },
+};
+
+// ============================================================================
+// Translation Events
+// ============================================================================
+
+export const analyticsTranslate = {
+  translate: (targetLanguage: string) => {
+    trackEvent({
+      action: "translate_prompt",
+      category: "translate",
+      label: targetLanguage,
+    });
+  },
+};
+
+// ============================================================================
+// External Link Events
+// ============================================================================
+
+export const analyticsExternal = {
+  clickChromeExtension: () => {
+    trackEvent({
+      action: "chrome_extension_click",
+      category: "external",
+    });
+  },
+
+  clickFooterLink: (linkName: string) => {
+    trackEvent({
+      action: "footer_link_click",
+      category: "external",
+      label: linkName,
+    });
+  },
+};
+
+// ============================================================================
+// Widget Events
+// ============================================================================
+
+export const analyticsWidget = {
+  view: (widgetId: string, actionName?: string) => {
+    trackEvent({
+      action: "widget_view",
+      category: "widget",
+      label: actionName,
+      widget_id: widgetId,
+    });
+  },
+
+  click: (widgetId: string, actionName?: string) => {
+    trackEvent({
+      action: "widget_click",
+      category: "widget",
+      label: actionName,
+      widget_id: widgetId,
+    });
+  },
+
+  copy: (widgetId: string, actionName?: string) => {
+    trackEvent({
+      action: "widget_copy",
+      category: "widget",
+      label: actionName,
+      widget_id: widgetId,
+    });
+  },
+
+  action: (widgetId: string, actionName?: string, actionUrl?: string) => {
+    trackEvent({
+      action: "widget_action",
+      category: "widget",
+      label: actionName,
+      widget_id: widgetId,
+      action_url: actionUrl,
     });
   },
 };

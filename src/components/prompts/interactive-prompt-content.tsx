@@ -35,6 +35,8 @@ interface InteractivePromptContentProps {
   promptSlug?: string;
   promptType?: string;
   shareTitle?: string;
+  promptTitle?: string;
+  promptDescription?: string;
 }
 
 // Parse ${variablename:defaultvalue} or ${variablename} patterns
@@ -157,7 +159,9 @@ export function InteractivePromptContent({
   promptId,
   promptSlug,
   promptType,
-  shareTitle
+  shareTitle,
+  promptTitle,
+  promptDescription
 }: InteractivePromptContentProps) {
   const t = useTranslations("common");
   const [copied, setCopied] = useState(false);
@@ -328,13 +332,14 @@ export function InteractivePromptContent({
               </Button>
               <RunPromptButton 
                 content={displayContent}
-                title={title}
-                description={description}
+                title={promptTitle || title}
+                description={promptDescription || description}
                 unfilledVariables={unfilledVariables}
                 onVariablesFilled={handleVariablesFilled}
                 getContentWithVariables={getContentWithVariables}
                 categoryName={categoryName}
                 parentCategoryName={parentCategoryName}
+                promptType={promptType as "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "STRUCTURED" | "SKILL"}
                 emphasized
               />
             </div>
@@ -343,6 +348,7 @@ export function InteractivePromptContent({
             content={displayContent} 
             language={structuredFormat}
             className="text-sm"
+            wordWrap
           />
         </div>
       );
@@ -370,18 +376,19 @@ export function InteractivePromptContent({
             </Button>
             <RunPromptButton 
               content={displayedContent}
-              title={title}
-              description={description}
+              title={promptTitle || title}
+              description={promptDescription || description}
               unfilledVariables={unfilledVariables}
               onVariablesFilled={handleVariablesFilled}
               getContentWithVariables={getContentWithVariables}
               categoryName={categoryName}
               parentCategoryName={parentCategoryName}
+              promptType={promptType as "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "STRUCTURED" | "SKILL"}
               emphasized
             />
           </div>
         </div>
-        <pre className="whitespace-pre-wrap text-sm bg-muted p-4 rounded-lg font-mono border">
+        <pre className="whitespace-pre-wrap text-sm bg-muted p-4 rounded-lg font-mono border max-h-[500px] overflow-y-auto">
           {displayedContent}
         </pre>
       </div>
@@ -420,13 +427,14 @@ export function InteractivePromptContent({
             </Button>
             <RunPromptButton 
               content={getFinalContent()}
-              title={title}
-              description={description}
+              title={promptTitle || title}
+              description={promptDescription || description}
               unfilledVariables={unfilledVariables}
               onVariablesFilled={handleVariablesFilled}
               getContentWithVariables={getContentWithVariables}
               categoryName={categoryName}
               parentCategoryName={parentCategoryName}
+              promptType={promptType as "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "STRUCTURED" | "SKILL"}
               emphasized
             />
           </div>
@@ -456,6 +464,7 @@ export function InteractivePromptContent({
           content={getFinalContent()} 
           language={structuredFormat}
           className="text-sm"
+          wordWrap
         />
       </div>
     );
@@ -528,13 +537,14 @@ export function InteractivePromptContent({
           </Button>
           <RunPromptButton 
             content={getFinalContent()}
-            title={title}
-            description={description}
+            title={promptTitle || title}
+            description={promptDescription || description}
             unfilledVariables={unfilledVariables}
             onVariablesFilled={handleVariablesFilled}
             getContentWithVariables={getContentWithVariables}
             categoryName={categoryName}
             parentCategoryName={parentCategoryName}
+            promptType={promptType as "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "STRUCTURED" | "SKILL"}
             emphasized
           />
         </div>
@@ -559,7 +569,7 @@ export function InteractivePromptContent({
           ))}
         </div>
       </div>
-      <div className="whitespace-pre-wrap text-sm bg-muted p-4 rounded-lg font-mono border leading-relaxed">
+      <div className="whitespace-pre-wrap text-sm bg-muted p-4 rounded-lg font-mono border leading-relaxed max-h-[500px] overflow-y-auto">
         {renderContent()}
       </div>
     </div>

@@ -7,6 +7,8 @@ interface BrandingContextValue {
   logo: string;
   logoDark?: string;
   description: string;
+  appStoreUrl?: string;
+  chromeExtensionUrl?: string;
   useCloneBranding?: boolean;
 }
 

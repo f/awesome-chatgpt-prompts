@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { headers } from "next/headers";
-import { Code, Zap, Terminal, Search, Box, Key, Save } from "lucide-react";
+import { Code, Zap, Terminal, Search, Box, Key, Save, Sparkles } from "lucide-react";
+import { ImprovePromptDemo } from "@/components/api/improve-prompt-demo";
 import {
   Table,
   TableBody,
@@ -411,6 +412,76 @@ curl -X POST ${baseUrl}/api/mcp \\
   }'`}</pre>
             </div>
           </div>
+
+          {/* improve_prompt Tool */}
+          <div className="space-y-4">
+            <h3 className="font-medium flex items-center gap-2">
+              <Sparkles className="h-4 w-4" />
+              improve_prompt
+              <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded">Requires Auth</span>
+            </h3>
+            <p className="text-muted-foreground">
+              Transform a basic prompt into a well-structured, comprehensive prompt using AI.
+              Searches for similar prompts for inspiration and generates improved versions.
+            </p>
+
+            <div className="border rounded-lg overflow-hidden">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-[140px]">Parameter</TableHead>
+                    <TableHead className="w-[100px]">Type</TableHead>
+                    <TableHead className="w-[80px]">Required</TableHead>
+                    <TableHead>Description</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className="font-mono text-xs">prompt</TableCell>
+                    <TableCell className="text-muted-foreground text-xs">string</TableCell>
+                    <TableCell className="text-xs">Yes</TableCell>
+                    <TableCell className="text-muted-foreground text-sm">The prompt to improve (max 10,000 chars)</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-mono text-xs">outputType</TableCell>
+                    <TableCell className="text-muted-foreground text-xs">string</TableCell>
+                    <TableCell className="text-xs">No</TableCell>
+                    <TableCell className="text-muted-foreground text-sm">
+                      Content type: <code className="text-xs">text</code> (default), <code className="text-xs">image</code>, <code className="text-xs">video</code>, <code className="text-xs">sound</code>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-mono text-xs">outputFormat</TableCell>
+                    <TableCell className="text-muted-foreground text-xs">string</TableCell>
+                    <TableCell className="text-xs">No</TableCell>
+                    <TableCell className="text-muted-foreground text-sm">
+                      Response format: <code className="text-xs">text</code> (default), <code className="text-xs">structured_json</code>, <code className="text-xs">structured_yaml</code>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </div>
+
+            <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
+              <pre>{`# Improve a prompt via MCP
+curl -X POST ${baseUrl}/api/mcp \\
+  -H "Content-Type: application/json" \\
+  -H "PROMPTS_API_KEY: pchat_your_api_key_here" \\
+  -d '{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "tools/call",
+    "params": {
+      "name": "improve_prompt",
+      "arguments": {
+        "prompt": "write a blog post about AI",
+        "outputType": "text",
+        "outputFormat": "text"
+      }
+    }
+  }'`}</pre>
+            </div>
+          </div>
         </section>
 
             {/* MCP Protocol Example */}
@@ -504,6 +575,91 @@ curl -X POST ${baseUrl}/api/mcp \\
             </section>
           </>
         )}
+
+        {/* Improve Prompt API */}
+        <section className="space-y-4">
+          <h2 className="text-lg font-semibold flex items-center gap-2">
+            <Sparkles className="h-5 w-5" />
+            Improve Prompt API
+            <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded">Requires Auth</span>
+          </h2>
+          <p className="text-muted-foreground">
+            Transform basic prompts into well-structured, comprehensive prompts using AI.
+            The API uses embeddings to find similar prompts for inspiration and generates
+            improved versions while preserving the original intent. Requires API key authentication.
+          </p>
+
+          <div className="border rounded-lg overflow-hidden">
+            <table className="w-full">
+              <thead className="bg-muted/50">
+                <tr>
+                  <th className="text-left p-3 text-sm font-medium w-[120px]">Parameter</th>
+                  <th className="text-left p-3 text-sm font-medium w-[100px]">Type</th>
+                  <th className="text-left p-3 text-sm font-medium w-[80px]">Required</th>
+                  <th className="text-left p-3 text-sm font-medium">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-t">
+                  <td className="p-3 font-mono text-xs">prompt</td>
+                  <td className="p-3 text-muted-foreground text-xs">string</td>
+                  <td className="p-3 text-xs">Yes</td>
+                  <td className="p-3 text-muted-foreground text-sm">The prompt to improve (max 10,000 chars)</td>
+                </tr>
+                <tr className="border-t">
+                  <td className="p-3 font-mono text-xs">outputType</td>
+                  <td className="p-3 text-muted-foreground text-xs">string</td>
+                  <td className="p-3 text-xs">No</td>
+                  <td className="p-3 text-muted-foreground text-sm">
+                    Content type: <code className="text-xs">text</code> (default), <code className="text-xs">image</code>, <code className="text-xs">video</code>, <code className="text-xs">sound</code>
+                  </td>
+                </tr>
+                <tr className="border-t">
+                  <td className="p-3 font-mono text-xs">outputFormat</td>
+                  <td className="p-3 text-muted-foreground text-xs">string</td>
+                  <td className="p-3 text-xs">No</td>
+                  <td className="p-3 text-muted-foreground text-sm">
+                    Response format: <code className="text-xs">text</code> (default), <code className="text-xs">structured_json</code>, <code className="text-xs">structured_yaml</code>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
+            <pre>{`# Improve a prompt
+curl -X POST ${baseUrl}/api/improve-prompt \\
+  -H "Content-Type: application/json" \\
+  -H "X-API-Key: pchat_your_api_key_here" \\
+  -d '{
+    "prompt": "write a blog post about AI",
+    "outputType": "text",
+    "outputFormat": "text"
+  }'`}</pre>
+          </div>
+
+          <div className="bg-muted/50 rounded-lg p-4 text-sm space-y-3">
+            <div>
+              <p className="font-medium">Response Format</p>
+              <pre className="mt-2 text-xs text-muted-foreground">{`{
+  "original": "write a blog post about AI",
+  "improved": "You are an expert technology writer...\n\n## Task\nWrite an engaging blog post...",
+  "outputType": "text",
+  "outputFormat": "text",
+  "inspirations": [
+    { "title": "Blog Writer", "similarity": 85 },
+    { "title": "Content Creator", "similarity": 72 }
+  ],
+  "model": "gpt-4o"
+}`}</pre>
+            </div>
+          </div>
+
+          <div className="pt-4">
+            <h3 className="font-medium mb-4">Try It Out</h3>
+            <ImprovePromptDemo />
+          </div>
+        </section>
 
         {/* REST API Alternative */}
         <section className="space-y-4">

@@ -115,7 +115,7 @@ const CodeEditorInner = forwardRef<CodeEditorHandle, CodeEditorProps>(function C
         options={{
           minimap: { enabled: false },
           fontSize: 11,
-          lineNumbers: "on",
+          lineNumbers: "off",
           scrollBeyondLastLine: false,
           wordWrap: "on",
           wrappingIndent: "indent",

@@ -21,7 +21,6 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { useBranding } from "@/components/providers/branding-provider";
 
-const APP_STORE_URL = "https://apps.apple.com/tr/app/prompts-chat/id6756895736";
 const STORAGE_KEY = "app-banner-dismissed";
 
 function isAppleDevice(): boolean {
@@ -82,7 +81,7 @@ export function AppBanner() {
             variant="secondary"
             className="h-7 text-xs font-medium"
           >
-            <Link href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
+            <Link href={branding.appStoreUrl || "#"} target="_blank" rel="noopener noreferrer">
               {t("download")}
             </Link>
           </Button>

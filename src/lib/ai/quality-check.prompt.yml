@@ -15,12 +15,18 @@ messages:
 
       Evaluate the prompt for these issues:
 
-      1. LOW_QUALITY: The prompt is extremely low quality.
+      1. NOT_ENGLISH: The prompt is NOT written in English.
+         - This platform only lists English prompts to make them globally useful
+         - Flag prompts that are primarily in other languages (Spanish, French, Chinese, etc.)
+         - APPROVE prompts that are in English but contain some non-English words (e.g., technical terms, names)
+         - APPROVE prompts that instruct the AI to respond in another language but are themselves in English
+
+      2. LOW_QUALITY: The prompt is extremely low quality.
          - Random characters, keyboard mashing, or gibberish
          - Completely meaningless or incoherent text
          - NOT low quality: Simple prompts, informal language, or beginner-level prompts
 
-      2. NOT_LLM_INSTRUCTION: The content is NOT an instruction for an generative AI tool (LLM, image, video or sound generation text).
+      3. NOT_LLM_INSTRUCTION: The content is NOT an instruction for an generative AI tool (LLM, image, video or sound generation text).
          - This platform is for LLM, image, video or sound generation prompts/instructions only
          - Flag if it's clearly NOT a prompt (e.g., a recipe, personal note, random text, advertisement)
          - APPROVE if it could reasonably be used to instruct an AI, even if unusual

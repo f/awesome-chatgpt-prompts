@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { Play, ExternalLink, Zap, Clipboard } from "lucide-react";
+import { Play, ExternalLink, Zap, Clipboard, Heart } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import {
@@ -31,6 +31,7 @@ import {
 } from "@/components/ui/sheet";
 import { analyticsPrompt } from "@/lib/analytics";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useBranding } from "@/components/providers/branding-provider";
 
 interface Platform {
   id: string;
@@ -39,11 +40,43 @@ interface Platform {
   supportsQuerystring?: boolean;
   isDeeplink?: boolean;
   subOptions?: { name: string; baseUrl: string }[];
+  sponsor?: boolean;
 }
+
+// Image generation platforms (Mitte.ai)
+const imagePlatforms: Platform[] = [
+  {
+    id: "mitte-image",
+    name: "Mitte.ai",
+    baseUrl: "https://mitte.ai",
+    sponsor: true,
+    subOptions: [
+      { name: "Nano Banana", baseUrl: "https://mitte.ai?model=nano-banana" },
+      { name: "Nano Banana Pro", baseUrl: "https://mitte.ai?model=nano-banana-pro" },
+      { name: "Flux 2 Flex", baseUrl: "https://mitte.ai?model=flux-2-flex" },
+      { name: "Flux 2", baseUrl: "https://mitte.ai?model=flux-2" },
+    ],
+  },
+];
+
+// Video generation platforms (Mitte.ai)
+const videoPlatforms: Platform[] = [
+  {
+    id: "mitte-video",
+    name: "Mitte.ai",
+    baseUrl: "https://mitte.ai",
+    sponsor: true,
+    subOptions: [
+      { name: "Veo 3.1", baseUrl: "https://mitte.ai?model=veo-31" },
+      { name: "Kling 2.6", baseUrl: "https://mitte.ai?model=kling-26" },
+      { name: "Sora 2", baseUrl: "https://mitte.ai?model=sora-2" },
+    ],
+  },
+];
 
 // Code platforms (IDEs + code generation tools)
 const codePlatforms: Platform[] = [
-  { id: "windsurf", name: "Windsurf", baseUrl: "windsurf://", isDeeplink: true, supportsQuerystring: false },
+  { id: "windsurf", name: "Windsurf", baseUrl: "windsurf://", isDeeplink: true, supportsQuerystring: false, sponsor: true },
   { id: "vscode", name: "VS Code", baseUrl: "vscode://", isDeeplink: true, supportsQuerystring: false },
   { id: "vscode-insiders", name: "VS Code Insiders", baseUrl: "vscode-insiders://", isDeeplink: true, supportsQuerystring: false },
   { id: "cursor", name: "Cursor", baseUrl: "cursor://anysphere.cursor-deeplink/prompt", isDeeplink: true },
@@ -105,12 +138,12 @@ function buildUrl(platformId: string, baseUrl: string, promptText: string, promp
         version: "1.0.0",
         title: promptTitle || "Prompt",
         description: promptDescription || "",
-        instructions: promptText,
-        prompt: "Write your instructions here to run this prompt.",
+        instructions: "This is a prompt imported from [**prompts.chat**](https://prompts.chat). Follow the instructions below to complete the task.",
+        prompt: promptText,
         activities: [
           "message:This prompt was imported from [**prompts.chat**](https://prompts.chat). Follow the instructions below to complete the task.",
-          "Test this prompt",
-          "Learn more about the prompt"
+          "Do it now",
+          "Learn more about the instructions"
         ]
       });
       const base64Config = btoa(config);
@@ -151,6 +184,9 @@ function buildUrl(platformId: string, baseUrl: string, promptText: string, promp
       return `${baseUrl}?q=${encoded}`;
     case "you":
       return `${baseUrl}/search?q=${encoded}`;
+    case "mitte-image":
+    case "mitte-video":
+      return `${baseUrl}&prompt=${encoded}`;
     default:
       return `${baseUrl}?q=${encoded}`;
   }
@@ -175,6 +211,7 @@ interface RunPromptButtonProps {
   categoryName?: string;
   parentCategoryName?: string;
   emphasized?: boolean;
+  promptType?: "TEXT" | "IMAGE" | "VIDEO" | "AUDIO" | "STRUCTURED" | "SKILL";
 }
 
 // Check if category or parent category suggests code-related content
@@ -204,11 +241,13 @@ export function RunPromptButton({
   promptId,
   categoryName,
   parentCategoryName,
-  emphasized = false
+  emphasized = false,
+  promptType = "TEXT"
 }: RunPromptButtonProps) {
   const t = useTranslations("prompts");
   const tCommon = useTranslations("common");
   const isMobile = useIsMobile();
+  const { useCloneBranding } = useBranding();
   const [dialogOpen, setDialogOpen] = useState(false);
   const [variableDialogOpen, setVariableDialogOpen] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);
@@ -256,10 +295,10 @@ export function RunPromptButton({
   }, [variableValues, onVariablesFilled, pendingPlatform, getContentWithVariables, content, promptId]);
 
   const handleRun = (platform: Platform, baseUrl: string) => {
-    // Check if there are unfilled variables (empty values)
-    const hasUnfilled = unfilledVariables.some(v => !v.defaultValue || v.defaultValue.trim() === "");
+    // Check if there are any variables to fill
+    const hasVariables = unfilledVariables.length > 0;
     
-    if (hasUnfilled) {
+    if (hasVariables) {
       // Show variable fill dialog first (for both query string and copy flows)
       openVariableDialog(platform, baseUrl);
       return;
@@ -295,8 +334,31 @@ export function RunPromptButton({
     handleRun(platform, baseUrl);
   };
 
-  // Get platforms based on active tab
-  const activePlatforms = activeTab === "code" ? codePlatforms : chatPlatforms;
+  // Get media platforms based on prompt type (only if not using clone branding)
+  const mediaPlatforms = useCloneBranding ? [] : (promptType === "IMAGE" ? imagePlatforms : promptType === "VIDEO" ? videoPlatforms : imagePlatforms);
+  const isMediaPrompt = promptType === "IMAGE" || promptType === "VIDEO";
+
+  // Get platforms based on active tab, merge with media platforms
+  // Sponsors go to top, then rest sorted alphabetically
+  const basePlatforms = activeTab === "code" ? codePlatforms : chatPlatforms;
+  const sortedBasePlatforms = [...basePlatforms].sort((a, b) => {
+    // Sponsors first (unless useCloneBranding is true)
+    if (!useCloneBranding) {
+      if (a.sponsor && !b.sponsor) return -1;
+      if (!a.sponsor && b.sponsor) return 1;
+    }
+    return a.name.localeCompare(b.name);
+  });
+  
+  const activePlatforms = isMediaPrompt
+    ? [...mediaPlatforms, ...sortedBasePlatforms]
+    : [...sortedBasePlatforms, ...mediaPlatforms].sort((a, b) => {
+        if (!useCloneBranding) {
+          if (a.sponsor && !b.sponsor) return -1;
+          if (!a.sponsor && b.sponsor) return 1;
+        }
+        return a.name.localeCompare(b.name);
+      });
 
   // Render platform item for mobile
   const renderMobilePlatform = (platform: Platform) => {
@@ -304,7 +366,11 @@ export function RunPromptButton({
       return (
         <div key={platform.id} className="space-y-1">
           <div className="flex items-center gap-3 px-3 py-2 text-base text-muted-foreground">
-            <Zap className="h-4 w-4 text-green-500" />
+            {platform.sponsor && !useCloneBranding ? (
+              <Heart className="h-4 w-4 text-pink-500 fill-pink-500" />
+            ) : (
+              <Zap className="h-4 w-4 text-green-500" />
+            )}
             {platform.name}
           </div>
           <div className="pl-6 space-y-1">
@@ -327,7 +393,9 @@ export function RunPromptButton({
         onClick={() => handleRunAndClose(platform, platform.baseUrl)}
         className="flex items-center gap-3 w-full px-3 py-3 text-base hover:bg-accent rounded-md text-left"
       >
-        {platform.supportsQuerystring === false ? (
+        {platform.sponsor && !useCloneBranding ? (
+          <Heart className="h-4 w-4 text-pink-500 fill-pink-500" />
+        ) : platform.supportsQuerystring === false ? (
           <Clipboard className="h-4 w-4 text-muted-foreground" />
         ) : (
           <Zap className="h-4 w-4 text-green-500" />
@@ -343,7 +411,11 @@ export function RunPromptButton({
       return (
         <DropdownMenuSub key={platform.id}>
           <DropdownMenuSubTrigger className="flex items-center gap-2">
-            <Zap className="h-3 w-3 text-green-500" />
+            {platform.sponsor && !useCloneBranding ? (
+              <Heart className="h-3 w-3 text-pink-500 fill-pink-500" />
+            ) : (
+              <Zap className="h-3 w-3 text-green-500" />
+            )}
             {platform.name}
           </DropdownMenuSubTrigger>
           <DropdownMenuSubContent>
@@ -365,7 +437,9 @@ export function RunPromptButton({
         onClick={() => handleRun(platform, platform.baseUrl)}
         className="flex items-center gap-2"
       >
-        {platform.supportsQuerystring === false ? (
+        {platform.sponsor && !useCloneBranding ? (
+          <Heart className="h-3 w-3 text-pink-500 fill-pink-500" />
+        ) : platform.supportsQuerystring === false ? (
           <Clipboard className="h-3 w-3 text-muted-foreground" />
         ) : (
           <Zap className="h-3 w-3 text-green-500" />

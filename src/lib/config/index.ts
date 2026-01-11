@@ -4,6 +4,8 @@ export interface BrandingConfig {
   logoDark?: string;
   favicon: string;
   description: string;
+  appStoreUrl?: string;
+  chromeExtensionUrl?: string;
 }
 
 export interface ThemeConfig {
@@ -81,17 +83,100 @@ export function defineConfig(config: PromptsConfig): PromptsConfig {
 // Load the user's config
 let cachedConfig: PromptsConfig | null = null;
 
+/**
+ * Apply runtime environment variable overrides to config.
+ * This allows customization via Docker env vars without rebuilding.
+ * 
+ * All env vars are prefixed with PCHAT_ to avoid conflicts.
+ * 
+ * Supported env vars:
+ *   PCHAT_NAME, PCHAT_DESCRIPTION, PCHAT_LOGO, PCHAT_LOGO_DARK, PCHAT_FAVICON, PCHAT_COLOR
+ *   PCHAT_THEME_RADIUS (none|sm|md|lg), PCHAT_THEME_VARIANT (default|flat|brutal), PCHAT_THEME_DENSITY
+ *   PCHAT_AUTH_PROVIDERS (comma-separated), PCHAT_ALLOW_REGISTRATION (true|false)
+ *   PCHAT_LOCALES (comma-separated), PCHAT_DEFAULT_LOCALE
+ *   PCHAT_FEATURE_* (true|false for each feature)
+ */
+function applyEnvOverrides(config: PromptsConfig): PromptsConfig {
+  const env = process.env;
+  
+  // Helper functions
+  const envBool = (key: string, fallback: boolean): boolean => {
+    const val = env[key];
+    if (val === undefined) return fallback;
+    return val.toLowerCase() === 'true' || val === '1';
+  };
+  
+  const envArray = (key: string, fallback: string[]): string[] => {
+    const val = env[key];
+    if (!val) return fallback;
+    return val.split(',').map(s => s.trim()).filter(Boolean);
+  };
+
+  return {
+    branding: {
+      name: env.PCHAT_NAME || config.branding.name,
+      description: env.PCHAT_DESCRIPTION || config.branding.description,
+      logo: env.PCHAT_LOGO || config.branding.logo,
+      logoDark: env.PCHAT_LOGO_DARK || env.PCHAT_LOGO || config.branding.logoDark,
+      favicon: env.PCHAT_FAVICON || config.branding.favicon,
+      appStoreUrl: config.branding.appStoreUrl,
+      chromeExtensionUrl: config.branding.chromeExtensionUrl,
+    },
+    theme: {
+      radius: (env.PCHAT_THEME_RADIUS as ThemeConfig['radius']) || config.theme.radius,
+      variant: (env.PCHAT_THEME_VARIANT as ThemeConfig['variant']) || config.theme.variant,
+      density: (env.PCHAT_THEME_DENSITY as ThemeConfig['density']) || config.theme.density,
+      colors: {
+        primary: env.PCHAT_COLOR || config.theme.colors.primary,
+        secondary: config.theme.colors.secondary,
+        accent: config.theme.colors.accent,
+      },
+    },
+    auth: {
+      providers: env.PCHAT_AUTH_PROVIDERS 
+        ? envArray('PCHAT_AUTH_PROVIDERS', config.auth.providers || ['credentials'])
+        : config.auth.providers,
+      allowRegistration: env.PCHAT_ALLOW_REGISTRATION !== undefined
+        ? envBool('PCHAT_ALLOW_REGISTRATION', config.auth.allowRegistration)
+        : config.auth.allowRegistration,
+    },
+    i18n: {
+      locales: env.PCHAT_LOCALES 
+        ? envArray('PCHAT_LOCALES', config.i18n.locales)
+        : config.i18n.locales,
+      defaultLocale: env.PCHAT_DEFAULT_LOCALE || config.i18n.defaultLocale,
+    },
+    features: {
+      privatePrompts: envBool('PCHAT_FEATURE_PRIVATE_PROMPTS', config.features.privatePrompts),
+      changeRequests: envBool('PCHAT_FEATURE_CHANGE_REQUESTS', config.features.changeRequests),
+      categories: envBool('PCHAT_FEATURE_CATEGORIES', config.features.categories),
+      tags: envBool('PCHAT_FEATURE_TAGS', config.features.tags),
+      aiSearch: envBool('PCHAT_FEATURE_AI_SEARCH', config.features.aiSearch ?? false),
+      aiGeneration: envBool('PCHAT_FEATURE_AI_GENERATION', config.features.aiGeneration ?? false),
+      mcp: envBool('PCHAT_FEATURE_MCP', config.features.mcp ?? false),
+      comments: envBool('PCHAT_FEATURE_COMMENTS', config.features.comments ?? true),
+    },
+    homepage: env.PCHAT_NAME ? {
+      // If custom branding via env, use clone branding mode
+      useCloneBranding: true,
+      achievements: { enabled: false },
+      sponsors: { enabled: false, items: [] },
+    } : config.homepage,
+  };
+}
+
 export async function getConfig(): Promise<PromptsConfig> {
   if (cachedConfig) return cachedConfig;
 
+  let baseConfig: PromptsConfig;
+  
   try {
     // Dynamic import of user config
     const userConfig = await import("@/../prompts.config");
-    cachedConfig = userConfig.default;
-    return cachedConfig;
+    baseConfig = userConfig.default;
   } catch {
     // Fallback to default config
-    cachedConfig = {
+    baseConfig = {
       branding: {
         name: "prompts.chat",
         logo: "/logo.svg",
@@ -125,8 +210,11 @@ export async function getConfig(): Promise<PromptsConfig> {
         comments: true,
       },
     };
-    return cachedConfig;
   }
+  
+  // Apply runtime environment variable overrides
+  cachedConfig = applyEnvOverrides(baseConfig);
+  return cachedConfig;
 }
 
 // Sync version for client components (must be initialized first)

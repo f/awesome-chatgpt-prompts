@@ -380,6 +380,9 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
               <Link href="/support" prefetch={false} className="hover:text-foreground">
                 {t("footer.support")}
               </Link>
+              <Link href="/about" prefetch={false} className="hover:text-foreground">
+                {t("footer.about")}
+              </Link>
             </>
           )}
           <Link 

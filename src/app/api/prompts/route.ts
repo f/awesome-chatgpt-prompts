@@ -4,7 +4,7 @@ import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { triggerWebhooks } from "@/lib/webhook";
-import { generatePromptEmbedding } from "@/lib/ai/embeddings";
+import { generatePromptEmbedding, findAndSaveRelatedPrompts } from "@/lib/ai/embeddings";
 import { generatePromptSlug } from "@/lib/slug";
 import { checkPromptQuality } from "@/lib/ai/quality-check";
 import { isSimilarContent, normalizeContent } from "@/lib/similarity";
@@ -23,6 +23,11 @@ const promptSchema = z.object({
   requiresMediaUpload: z.boolean().optional(),
   requiredMediaType: z.enum(["IMAGE", "VIDEO", "DOCUMENT"]).optional(),
   requiredMediaCount: z.number().int().min(1).max(10).optional(),
+  bestWithModels: z.array(z.string()).max(3).optional(),
+  bestWithMCP: z.array(z.object({
+    command: z.string(),
+    tools: z.array(z.string()).optional(),
+  })).optional(),
 });
 
 // Create prompt
@@ -46,7 +51,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const { title, description, content, type, structuredFormat, categoryId, tagIds, contributorIds, isPrivate, mediaUrl, requiresMediaUpload, requiredMediaType, requiredMediaCount } = parsed.data;
+    const { title, description, content, type, structuredFormat, categoryId, tagIds, contributorIds, isPrivate, mediaUrl, requiresMediaUpload, requiredMediaType, requiredMediaCount, bestWithModels, bestWithMCP } = parsed.data;
 
     // Check if user is flagged (for auto-delisting and daily limit)
     const currentUser = await db.user.findUnique({
@@ -176,6 +181,8 @@ export async function POST(request: Request) {
         requiresMediaUpload: requiresMediaUpload || false,
         requiredMediaType: requiresMediaUpload ? requiredMediaType : null,
         requiredMediaCount: requiresMediaUpload ? requiredMediaCount : null,
+        bestWithModels: bestWithModels || [],
+        bestWithMCP: bestWithMCP || [],
         authorId: session.user.id,
         categoryId: categoryId || null,
         // Auto-delist prompts from flagged users
@@ -247,10 +254,13 @@ export async function POST(request: Request) {
 
     // Generate embedding for AI search (non-blocking)
     // Only for public prompts - the function checks if aiSearch is enabled
+    // After embedding is generated, find and save related prompts
     if (!isPrivate) {
-      generatePromptEmbedding(prompt.id).catch((err) =>
-        console.error("Failed to generate embedding for prompt:", prompt.id, err)
-      );
+      generatePromptEmbedding(prompt.id)
+        .then(() => findAndSaveRelatedPrompts(prompt.id))
+        .catch((err) =>
+          console.error("Failed to generate embedding/related prompts for:", prompt.id, err)
+        );
     }
 
     // Run quality check for auto-delist (non-blocking for public prompts)

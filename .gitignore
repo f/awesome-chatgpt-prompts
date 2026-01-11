@@ -48,3 +48,5 @@ next-env.d.ts
 # Docker customization
 prompts.config.custom.ts
 /assets/
+# Sentry Config File
+.env.sentry-build-plugin

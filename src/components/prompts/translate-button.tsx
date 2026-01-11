@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Languages, Loader2 } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { toast } from "sonner";
+import { analyticsTranslate } from "@/lib/analytics";
 
 // Map locale codes to full language names for OpenAI
 const localeToLanguage: Record<string, string> = {
@@ -70,6 +71,7 @@ export function TranslateButton({ content, onTranslate, isLoggedIn }: TranslateB
       const data = await response.json();
       onTranslate(data.translatedContent);
       setIsTranslated(true);
+      analyticsTranslate.translate(targetLanguage);
       toast.success(t("translated"));
     } catch (error) {
       console.error("Translation error:", error);

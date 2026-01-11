@@ -2,11 +2,11 @@
 export const LOCALE_COOKIE = "NEXT_LOCALE";
 
 // Supported locales - keep in sync with prompts.config.ts
-export const supportedLocales = ["en", "tr", "es", "zh", "ja", "ar", "pt", "fr", "it", "de", "ko", "ru", "he", "el"];
+export const supportedLocales = ["en", "tr", "es", "zh", "ja", "ar", "pt", "fr", "it", "de", "ko", "ru", "he", "el", "fa", "az"];
 export const defaultLocale = "en";
 
 // RTL locales
-export const rtlLocales = ["ar", "he"];
+export const rtlLocales = ["ar", "he", "fa"];
 
 // Check if a locale is RTL
 export function isRtlLocale(locale: string): boolean {

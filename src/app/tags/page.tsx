@@ -10,7 +10,17 @@ const getTags = unstable_cache(
     return db.tag.findMany({
       include: {
         _count: {
-          select: { prompts: true },
+          select: {
+            prompts: {
+              where: {
+                prompt: {
+                  isPrivate: false,
+                  isUnlisted: false,
+                  deletedAt: null,
+                },
+              },
+            },
+          },
         },
       },
       orderBy: {

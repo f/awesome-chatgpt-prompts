@@ -3,7 +3,7 @@ import { revalidateTag } from "next/cache";
 import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { generatePromptEmbedding } from "@/lib/ai/embeddings";
+import { generatePromptEmbedding, findAndSaveRelatedPrompts } from "@/lib/ai/embeddings";
 import { generatePromptSlug } from "@/lib/slug";
 import { checkPromptQuality } from "@/lib/ai/quality-check";
 
@@ -21,6 +21,11 @@ const updatePromptSchema = z.object({
   requiresMediaUpload: z.boolean().optional(),
   requiredMediaType: z.enum(["IMAGE", "VIDEO", "DOCUMENT"]).optional().nullable(),
   requiredMediaCount: z.number().int().min(1).max(10).optional().nullable(),
+  bestWithModels: z.array(z.string()).max(3).optional(),
+  bestWithMCP: z.array(z.object({
+    command: z.string(),
+    tools: z.array(z.string()).optional(),
+  })).optional(),
 });
 
 // Get single prompt
@@ -156,7 +161,7 @@ export async function PATCH(
       );
     }
 
-    const { tagIds, contributorIds, categoryId, mediaUrl, title, ...data } = parsed.data;
+    const { tagIds, contributorIds, categoryId, mediaUrl, title, bestWithModels, bestWithMCP, ...data } = parsed.data;
 
     // Regenerate slug if title changed
     let newSlug: string | undefined;
@@ -171,6 +176,8 @@ export async function PATCH(
       ...(newSlug && { slug: newSlug }),
       ...(categoryId !== undefined && { categoryId: categoryId || null }),
       ...(mediaUrl !== undefined && { mediaUrl: mediaUrl || null }),
+      ...(bestWithModels !== undefined && { bestWithModels }),
+      ...(bestWithMCP !== undefined && { bestWithMCP }),
     };
 
     // Update prompt
@@ -231,11 +238,14 @@ export async function PATCH(
 
     // Regenerate embedding if content, title, or description changed (non-blocking)
     // Only for public prompts - the function checks if aiSearch is enabled
+    // After embedding is regenerated, update related prompts
     const contentChanged = data.content || title || data.description !== undefined;
     if (contentChanged && !prompt.isPrivate) {
-      generatePromptEmbedding(id).catch((err) =>
-        console.error("Failed to regenerate embedding for prompt:", id, err)
-      );
+      generatePromptEmbedding(id)
+        .then(() => findAndSaveRelatedPrompts(id))
+        .catch((err) =>
+          console.error("Failed to regenerate embedding/related prompts for:", id, err)
+        );
     }
 
     // Run quality check for auto-delist on content changes (non-blocking)

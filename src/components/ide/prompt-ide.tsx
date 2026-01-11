@@ -672,47 +672,9 @@ export function PromptIde() {
   }, []);
 
   return (
-    <div className="flex flex-col h-[calc(100vh-48px)]">
-      {/* Toolbar */}
-      <div className="flex items-center justify-between border-b px-4 py-2 bg-background">
-        <div className="flex items-center gap-3">
-          <Code2 className="h-5 w-5 text-muted-foreground" />
-          <div>
-            <h1 className="text-lg font-semibold leading-tight">{t("title")}</h1>
-            <p className="text-xs text-muted-foreground">{t("subtitle")}</p>
-          </div>
-        </div>
-        <div className="flex items-center gap-2">
-          <Button
-            variant="ghost"
-            size="sm"
-            asChild
-            className="gap-2"
-          >
-            <a href="https://github.com/f/awesome-chatgpt-prompts/blob/main/packages/prompts.chat/API.md" target="_blank" rel="noopener noreferrer">
-              <FileText className="h-4 w-4" />
-              Docs
-            </a>
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={createPrompt}
-            className="gap-2"
-          >
-            <Plus className="h-4 w-4" />
-            {t("createPrompt")}
-          </Button>
-          <RunPromptButton
-            content={output || lastValidOutput}
-            size="sm"
-            variant="default"
-          />
-        </div>
-      </div>
-
+    <div className="flex flex-col h-full overflow-hidden">
       {/* Main content */}
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1 overflow-hidden min-h-0">
         {/* API Docs sidebar */}
         <div className="relative flex flex-col">
           <ApiDocsSidebar selectedItem={selectedApiItem} onSelectItem={setSelectedApiItem} />
@@ -722,8 +684,8 @@ export function PromptIde() {
         </div>
 
         {/* Editor panel */}
-        <div className="flex-1 flex flex-col border-r min-w-0">
-          <div className="h-10 px-4 border-b bg-muted/30 flex items-center justify-between">
+        <div className="flex-1 flex flex-col border-r min-w-0 min-h-0 overflow-hidden">
+          <div className="h-10 px-4 border-b bg-muted/30 flex items-center justify-between shrink-0">
             <div className="flex items-center gap-2">
               <span className="text-sm font-medium text-muted-foreground">{t("editor")}</span>
               <span className="text-[10px] text-muted-foreground/60 bg-muted px-1.5 py-0.5 rounded">⌥ + Space</span>
@@ -806,8 +768,8 @@ export function PromptIde() {
         </div>
 
         {/* Preview panel */}
-        <div className="flex-1 flex flex-col min-w-0">
-          <div className="h-10 px-4 border-b bg-muted/30 flex items-center justify-between">
+        <div className="flex-1 flex flex-col min-w-0 min-h-0 overflow-hidden">
+          <div className="h-10 px-4 border-b bg-muted/30 flex items-center justify-between shrink-0">
             <span className="text-sm font-medium text-muted-foreground">{t("preview")}</span>
             <div className="flex items-center gap-2">
               <Tabs value={outputFormat} onValueChange={(v) => setOutputFormat(v as OutputFormat)}>
@@ -990,8 +952,39 @@ export function PromptIde() {
             )}
           </div>
 
+          {/* Action buttons above console */}
+          <div className="border-t bg-background px-4 py-2 flex items-center justify-between shrink-0">
+            <Button
+              variant="ghost"
+              size="sm"
+              asChild
+              className="gap-2"
+            >
+              <a href="https://github.com/f/awesome-chatgpt-prompts/blob/main/packages/prompts.chat/API.md" target="_blank" rel="noopener noreferrer">
+                <FileText className="h-4 w-4" />
+                Docs
+              </a>
+            </Button>
+            <div className="flex items-center gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={createPrompt}
+                className="gap-2"
+              >
+                <Plus className="h-4 w-4" />
+                {t("createPrompt")}
+              </Button>
+              <RunPromptButton
+                content={output || lastValidOutput}
+                size="sm"
+                variant="default"
+              />
+            </div>
+          </div>
+
           {/* Console panel - inside preview section */}
-          <div className="border-t bg-background">
+          <div className="border-t bg-background shrink-0">
             {/* Resize handle */}
             {isConsoleOpen && (
               <div

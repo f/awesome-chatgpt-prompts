@@ -13,11 +13,13 @@ interface CodeViewProps {
   className?: string;
   maxLines?: number;
   fontSize?: "xs" | "sm" | "base";
+  wordWrap?: boolean;
+  preview?: boolean; // No scroll, just truncate with overflow hidden
 }
 
 type ViewMode = "code" | "tree";
 
-export function CodeView({ content, language = "json", className, maxLines, fontSize = "xs" }: CodeViewProps) {
+export function CodeView({ content, language = "json", className, maxLines, fontSize = "xs", wordWrap = false, preview = false }: CodeViewProps) {
   const t = useTranslations("common");
   const [viewMode, setViewMode] = useState<ViewMode>("code");
   const expandAllRef = useRef<(() => void) | undefined>(undefined);
@@ -107,7 +109,7 @@ export function CodeView({ content, language = "json", className, maxLines, font
           onCollapseAll={collapseAllRef}
         />
       ) : (
-        <pre suppressHydrationWarning className={cn("font-mono overflow-hidden bg-muted rounded p-2", {
+        <pre suppressHydrationWarning className={cn("font-mono bg-muted rounded p-2", preview ? "overflow-hidden" : "overflow-y-auto max-h-[500px]", {
             "text-xs": fontSize === "xs",
             "text-sm": fontSize === "sm",
             "text-base": fontSize === "base",
@@ -118,7 +120,7 @@ export function CodeView({ content, language = "json", className, maxLines, font
                 <span className="select-none text-muted-foreground/50 w-6 text-right pr-2 shrink-0">
                   {i + 1}
                 </span>
-                <span className="flex-1 break-all font-mono">
+                <span className={cn("flex-1 font-mono", wordWrap && "break-all whitespace-pre-wrap")}>
                   {highlightLine(line, language)}
                 </span>
               </div>

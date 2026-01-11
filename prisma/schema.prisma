@@ -43,6 +43,7 @@ model User {
   commentVotes          CommentVote[]
   notifications         Notification[]         @relation("NotificationRecipient")
   notificationsActed    Notification[]         @relation("NotificationActor")
+  collections           Collection[]
 
   @@map("users")
 }
@@ -122,6 +123,9 @@ model Prompt {
   contributors        User[]             @relation("PromptContributors")
   outgoingConnections PromptConnection[] @relation("ConnectionSource")
   incomingConnections PromptConnection[] @relation("ConnectionTarget")
+  collectedBy         Collection[]
+  bestWithModels      String[]           // Model slugs this prompt works best with (max 3), e.g. ["gpt-4o", "claude-3-5-sonnet"]
+  bestWithMCP         Json?              // MCP configs array, e.g. [{command: "npx -y @mcp/server", tools: ["tool1"]}]
 
   @@index([authorId])
   @@index([categoryId])
@@ -246,6 +250,19 @@ model PinnedPrompt {
   @@id([userId, promptId])
   @@index([userId])
   @@map("pinned_prompts")
+}
+
+model Collection {
+  userId    String
+  promptId  String
+  createdAt DateTime @default(now())
+  prompt    Prompt   @relation(fields: [promptId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, promptId])
+  @@index([userId])
+  @@index([promptId])
+  @@map("collections")
 }
 
 model PromptReport {

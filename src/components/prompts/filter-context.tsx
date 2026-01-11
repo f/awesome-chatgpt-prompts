@@ -21,8 +21,13 @@ export function FilterProvider({ children }: { children: ReactNode }) {
 
 export function useFilterContext() {
   const context = useContext(FilterContext);
+  // Return safe defaults if no provider exists (e.g., during SSR errors)
+  // This prevents crashes when the component tree errors before reaching FilterProvider
   if (!context) {
-    throw new Error("useFilterContext must be used within FilterProvider");
+    return {
+      isFilterPending: false,
+      setFilterPending: () => {},
+    };
   }
   return context;
 }

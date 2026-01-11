@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Loader2, Upload, X, ArrowDown, Play, Image as ImageIcon, Video, Volume2, Paperclip, Search, Sparkles, BookOpen, ExternalLink, ChevronDown } from "lucide-react";
+import { Loader2, Upload, X, ArrowDown, Play, Image as ImageIcon, Video, Volume2, Paperclip, Search, Sparkles, BookOpen, ExternalLink, ChevronDown, Settings2 } from "lucide-react";
 import Link from "next/link";
 import { VariableToolbar } from "./variable-toolbar";
 import { VariableWarning } from "./variable-warning";
@@ -47,6 +47,7 @@ import { toast } from "sonner";
 import { prettifyJson } from "@/lib/format";
 import { analyticsPrompt } from "@/lib/analytics";
 import { getPromptUrl } from "@/lib/urls";
+import { AI_MODELS, getModelsByProvider, type PromptMCPConfig } from "@/lib/works-best-with";
 
 interface MediaFieldProps {
   form: ReturnType<typeof useForm<PromptFormValues>>;
@@ -345,6 +346,11 @@ const createPromptSchema = (t: (key: string) => string) => z.object({
   requiresMediaUpload: z.boolean(),
   requiredMediaType: z.enum(["IMAGE", "VIDEO", "DOCUMENT"]).optional(),
   requiredMediaCount: z.coerce.number().int().min(1).max(10).optional(),
+  bestWithModels: z.array(z.string()).max(3).optional(),
+  bestWithMCP: z.array(z.object({
+    command: z.string(),
+    tools: z.array(z.string()).optional(),
+  })).optional(),
 });
 
 type PromptFormValues = z.infer<ReturnType<typeof createPromptSchema>>;
@@ -426,8 +432,18 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
       requiresMediaUpload: initialData?.requiresMediaUpload || false,
       requiredMediaType: initialData?.requiredMediaType || "IMAGE",
       requiredMediaCount: initialData?.requiredMediaCount || 1,
+      bestWithModels: initialData?.bestWithModels || [],
+      bestWithMCP: initialData?.bestWithMCP || [],
     },
   });
+
+  // State for MCP input and advanced section
+  const [newMcpCommand, setNewMcpCommand] = useState("");
+  const [newMcpTools, setNewMcpTools] = useState("");
+  const [showAdvanced, setShowAdvanced] = useState(false);
+  const bestWithMCP = form.watch("bestWithMCP") || [];
+  const bestWithModels = form.watch("bestWithModels") || [];
+  const modelsByProvider = getModelsByProvider();
 
   const selectedTags = form.watch("tagIds");
   const promptType = form.watch("type");
@@ -888,6 +904,136 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
               onSelect={(user) => setContributors((prev) => [...prev, user])}
               onRemove={(userId) => setContributors((prev) => prev.filter((u) => u.id !== userId))}
             />
+          </div>
+
+          {/* Advanced Section */}
+          <div className="border rounded-lg">
+            <button
+              type="button"
+              onClick={() => setShowAdvanced(!showAdvanced)}
+              className="flex items-center justify-between w-full p-3 text-sm font-medium text-left hover:bg-muted/50 transition-colors"
+            >
+              <span className="flex items-center gap-2">
+                <Settings2 className="h-4 w-4 text-muted-foreground" />
+                {t("advancedOptions")}
+                {(bestWithModels.length > 0 || bestWithMCP.length > 0) && (
+                  <Badge variant="secondary" className="text-[10px] h-5">{bestWithModels.length + bestWithMCP.length}</Badge>
+                )}
+              </span>
+              <ChevronDown className={`h-4 w-4 text-muted-foreground transition-transform ${showAdvanced ? "rotate-180" : ""}`} />
+            </button>
+            {showAdvanced && (
+              <div className="p-3 space-y-4 border-t">
+                {/* Works Best With Models */}
+                <div className="space-y-2">
+                  <label className="text-sm font-medium block">{t("worksBestWithModels")}</label>
+                  <p className="text-xs text-muted-foreground">{t("worksBestWithModelsDescription")}</p>
+                  {bestWithModels.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {bestWithModels.map((slug) => {
+                        const model = AI_MODELS[slug as keyof typeof AI_MODELS];
+                        return (
+                          <Badge key={slug} variant="secondary" className="pr-1 flex items-center gap-1">
+                            {model?.name || slug}
+                            <button
+                              type="button"
+                              onClick={() => form.setValue("bestWithModels", bestWithModels.filter((s) => s !== slug))}
+                              className="ml-1 rounded-full hover:bg-muted p-0.5"
+                            >
+                              <X className="h-3 w-3" />
+                            </button>
+                          </Badge>
+                        );
+                      })}
+                    </div>
+                  )}
+                  {bestWithModels.length < 3 && (
+                    <Select
+                      value=""
+                      onValueChange={(slug) => {
+                        if (slug && !bestWithModels.includes(slug)) {
+                          form.setValue("bestWithModels", [...bestWithModels, slug]);
+                        }
+                      }}
+                    >
+                      <SelectTrigger className="w-full sm:w-64 h-8 text-xs">
+                        <SelectValue placeholder={t("selectModel")} />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {Object.entries(modelsByProvider).map(([provider, models]) => (
+                          <div key={provider}>
+                            <div className="px-2 py-1.5 text-xs font-semibold text-muted-foreground">{provider}</div>
+                            {models
+                              .filter((m) => !bestWithModels.includes(m.slug))
+                              .map((model) => (
+                                <SelectItem key={model.slug} value={model.slug}>
+                                  {model.name}
+                                </SelectItem>
+                              ))}
+                          </div>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  )}
+                </div>
+
+                {/* Works Best With MCP */}
+                <div className="space-y-2">
+                  <label className="text-sm font-medium block">{t("worksBestWithMCP")}</label>
+                  <p className="text-xs text-muted-foreground">{t("worksBestWithMCPDescription")}</p>
+                  {bestWithMCP.length > 0 && (
+                    <div className="space-y-1.5">
+                      {bestWithMCP.map((mcp, index) => (
+                        <div key={index} className="flex items-center gap-2 p-2 rounded border bg-muted/30 text-xs">
+                          <code className="flex-1 break-all">{mcp.command}</code>
+                          {mcp.tools && mcp.tools.length > 0 && (
+                            <span className="text-muted-foreground">({mcp.tools.join(", ")})</span>
+                          )}
+                          <button
+                            type="button"
+                            onClick={() => form.setValue("bestWithMCP", bestWithMCP.filter((_, i) => i !== index))}
+                            className="p-1 hover:bg-muted rounded"
+                          >
+                            <X className="h-3 w-3" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  <div className="flex gap-2">
+                    <Input
+                      placeholder={t("mcpCommandPlaceholder")}
+                      value={newMcpCommand}
+                      onChange={(e) => setNewMcpCommand(e.target.value)}
+                      className="flex-1 text-xs h-8"
+                    />
+                    <Input
+                      placeholder={t("mcpToolsPlaceholder")}
+                      value={newMcpTools}
+                      onChange={(e) => setNewMcpTools(e.target.value)}
+                      className="w-28 text-xs h-8"
+                    />
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      className="h-8 px-2 text-xs"
+                      disabled={!newMcpCommand.trim()}
+                      onClick={() => {
+                        if (newMcpCommand.trim()) {
+                          const tools = newMcpTools.trim() ? newMcpTools.split(",").map(t => t.trim()).filter(Boolean) : undefined;
+                          form.setValue("bestWithMCP", [...bestWithMCP, { command: newMcpCommand.trim(), tools }]);
+                          setNewMcpCommand("");
+                          setNewMcpTools("");
+                        }
+                      }}
+                    >
+                      {t("add")}
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 

@@ -15,6 +15,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { toast } from "sonner";
+import { analyticsComment } from "@/lib/analytics";
 
 interface CommentFormProps {
   promptId: string;
@@ -90,6 +91,7 @@ export function CommentForm({
       const data = await response.json();
       onCommentAdded(data.comment);
       setContent("");
+      analyticsComment.post(promptId, !!parentId);
       toast.success(t("commentPosted"));
     } catch (error) {
       toast.error(error instanceof Error ? error.message : tCommon("error"));
