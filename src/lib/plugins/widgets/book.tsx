@@ -152,7 +152,7 @@ export const bookWidget: WidgetPlugin = {
       type: "TEXT",
       tags: ["Prompting", "AI", "Guide", "Learning"],
       category: "Education",
-      actionUrl: "/book",
+      actionUrl: "https://fka.gumroad.com/l/art-of-chatgpt-prompting",
       actionLabel: "Read the Book",
       positioning: {
         position: 7,
