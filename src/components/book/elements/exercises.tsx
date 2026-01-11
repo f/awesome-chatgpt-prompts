@@ -24,6 +24,7 @@ interface FillInTheBlankProps {
   blanks: BlankConfig[];
   explanation?: string;
   useAI?: boolean; // Enable AI-backed semantic validation
+  openEnded?: boolean; // Allow any answers, check consistency instead of correctness
 }
 
 interface AIValidationResult {
@@ -32,18 +33,28 @@ interface AIValidationResult {
   feedback?: string;
 }
 
+interface ConsistencyResult {
+  isConsistent: boolean;
+  overallScore: number;
+  issues: Array<{ blankId: string; issue: string }>;
+  suggestions: string[];
+  praise?: string;
+}
+
 export function FillInTheBlank({ 
   title = "Fill in the Blanks",
   description,
   template,
   blanks,
   explanation,
-  useAI = false
+  useAI = false,
+  openEnded = false
 }: FillInTheBlankProps) {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [isValidating, setIsValidating] = useState(false);
   const [aiResults, setAiResults] = useState<Record<string, AIValidationResult>>({});
+  const [consistencyResult, setConsistencyResult] = useState<ConsistencyResult | null>(null);
   const [showHints, setShowHints] = useState<Record<string, boolean>>({});
   const [error, setError] = useState<string | null>(null);
 
@@ -76,7 +87,7 @@ export function FillInTheBlank({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          type: "validate_blanks",
+          type: openEnded ? "check_consistency" : "validate_blanks",
           blanks: blanks.map(b => ({
             id: b.id,
             expectedAnswers: b.correctAnswers,
@@ -91,24 +102,28 @@ export function FillInTheBlank({
       
       if (!res.ok) {
         if (res.status === 429) {
-          setError(`Rate limit reached. Using local validation.`);
-          // Fallback to local validation
-          setSubmitted(true);
+          setError(`Rate limit reached.${openEnded ? "" : " Using local validation."}`);
+          if (!openEnded) setSubmitted(true);
           return;
         }
         throw new Error(data.error);
       }
 
-      // Store AI results
-      const results: Record<string, AIValidationResult> = {};
-      for (const result of data.result.validations as AIValidationResult[]) {
-        results[result.blankId] = result;
+      if (openEnded) {
+        // Store consistency check results
+        setConsistencyResult(data.result as ConsistencyResult);
+      } else {
+        // Store AI validation results
+        const results: Record<string, AIValidationResult> = {};
+        for (const result of data.result.validations as AIValidationResult[]) {
+          results[result.blankId] = result;
+        }
+        setAiResults(results);
       }
-      setAiResults(results);
       setSubmitted(true);
     } catch {
-      setError("AI validation failed. Using local validation.");
-      setSubmitted(true);
+      setError(openEnded ? "AI check failed. Please try again." : "AI validation failed. Using local validation.");
+      if (!openEnded) setSubmitted(true);
     } finally {
       setIsValidating(false);
     }
@@ -126,12 +141,18 @@ export function FillInTheBlank({
     setAnswers({});
     setSubmitted(false);
     setAiResults({});
+    setConsistencyResult(null);
     setShowHints({});
     setError(null);
   };
 
-  const allCorrect = submitted && blanks.every(blank => checkAnswer(blank.id, answers[blank.id] || ""));
-  const score = submitted ? blanks.filter(blank => checkAnswer(blank.id, answers[blank.id] || "")).length : 0;
+  // For openEnded mode, we don't check individual answers
+  const allCorrect = openEnded 
+    ? (consistencyResult?.isConsistent ?? false)
+    : (submitted && blanks.every(blank => checkAnswer(blank.id, answers[blank.id] || "")));
+  const score = openEnded
+    ? (consistencyResult?.overallScore ?? 0)
+    : (submitted ? blanks.filter(blank => checkAnswer(blank.id, answers[blank.id] || "")).length : 0);
 
   // Parse template and render with inputs
   const renderTemplate = () => {
@@ -142,8 +163,9 @@ export function FillInTheBlank({
       if (match) {
         const blankId = match[1];
         const blank = blanks.find(b => b.id === blankId);
-        const isCorrect = submitted && checkAnswer(blankId, answers[blankId] || "");
-        const isWrong = submitted && !isCorrect;
+        const hasIssue = openEnded && consistencyResult?.issues.some(i => i.blankId === blankId);
+        const isCorrect = openEnded ? (submitted && !hasIssue) : (submitted && checkAnswer(blankId, answers[blankId] || ""));
+        const isWrong = openEnded ? (submitted && hasIssue) : (submitted && !isCorrect);
         
         return (
           <span key={index} className="inline-flex items-center gap-1 mx-1">
@@ -157,12 +179,12 @@ export function FillInTheBlank({
                 "px-2 py-1 border-b-2 bg-transparent text-center min-w-[80px] max-w-[200px] focus:outline-none transition-colors",
                 !submitted && "border-primary/50 focus:border-primary",
                 isCorrect && "border-green-500 bg-green-50 dark:bg-green-950/30",
-                isWrong && "border-red-500 bg-red-50 dark:bg-red-950/30"
+                isWrong && "border-amber-500 bg-amber-50 dark:bg-amber-950/30"
               )}
               style={{ width: `${Math.max(80, (answers[blankId]?.length || 3) * 10)}px` }}
             />
-            {submitted && isCorrect && <Check className="h-4 w-4 text-green-500" />}
-            {submitted && isWrong && <X className="h-4 w-4 text-red-500" />}
+            {submitted && isCorrect && !openEnded && <Check className="h-4 w-4 text-green-500" />}
+            {submitted && isWrong && !openEnded && <X className="h-4 w-4 text-red-500" />}
             {!submitted && blank?.hint && (
               <button
                 onClick={() => setShowHints(prev => ({ ...prev, [blankId]: !prev[blankId] }))}
@@ -202,8 +224,8 @@ export function FillInTheBlank({
           ) : null;
         })}
 
-        {/* Results */}
-        {submitted && (
+        {/* Results - Standard mode */}
+        {submitted && !openEnded && (
           <div className={cn(
             "p-3 rounded-lg text-sm",
             allCorrect 
@@ -222,6 +244,55 @@ export function FillInTheBlank({
                 ))}
               </div>
             )}
+            {explanation && <p className="mt-2 m-0!">{explanation}</p>}
+          </div>
+        )}
+
+        {/* Results - Open-ended mode */}
+        {submitted && openEnded && consistencyResult && (
+          <div className={cn(
+            "p-3 rounded-lg text-sm",
+            consistencyResult.isConsistent
+              ? "bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800"
+              : "bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800"
+          )}>
+            <div className="flex items-center gap-3 mb-2">
+              <div className={cn(
+                "text-2xl font-bold",
+                consistencyResult.overallScore >= 8 ? "text-green-600" :
+                consistencyResult.overallScore >= 5 ? "text-amber-600" : "text-red-600"
+              )}>
+                {consistencyResult.overallScore}/10
+              </div>
+              <p className="font-medium m-0!">
+                {consistencyResult.isConsistent ? "🎉 Well-structured prompt!" : "Some consistency issues found"}
+              </p>
+            </div>
+            
+            {consistencyResult.praise && (
+              <p className="m-0! text-green-700 dark:text-green-400 mb-2">{consistencyResult.praise}</p>
+            )}
+            
+            {consistencyResult.issues.length > 0 && (
+              <div className="mt-2 space-y-1">
+                <p className="font-medium m-0! text-amber-700 dark:text-amber-400">Issues:</p>
+                {consistencyResult.issues.map((issue, i) => (
+                  <p key={i} className="m-0! text-muted-foreground">
+                    <span className="text-amber-600">⚠</span> {issue.issue}
+                  </p>
+                ))}
+              </div>
+            )}
+            
+            {consistencyResult.suggestions.length > 0 && (
+              <div className="mt-2 space-y-1">
+                <p className="font-medium m-0!">Suggestions:</p>
+                {consistencyResult.suggestions.map((suggestion, i) => (
+                  <p key={i} className="m-0! text-muted-foreground">• {suggestion}</p>
+                ))}
+              </div>
+            )}
+            
             {explanation && <p className="mt-2 m-0!">{explanation}</p>}
           </div>
         )}

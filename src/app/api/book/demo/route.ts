@@ -71,11 +71,12 @@ function checkRateLimit(
 }
 
 export type DemoType = 
-  | "run_prompt"      // Run a prompt and get response
-  | "analyze_prompt"  // Analyze prompt quality
-  | "score_challenge" // Score a challenge submission
-  | "compare_prompts" // Compare two prompts
-  | "validate_blanks"; // Validate fill-in-the-blank answers semantically
+  | "run_prompt"        // Run a prompt and get response
+  | "analyze_prompt"    // Analyze prompt quality
+  | "score_challenge"   // Score a challenge submission
+  | "compare_prompts"   // Compare two prompts
+  | "validate_blanks"   // Validate fill-in-the-blank answers semantically
+  | "check_consistency"; // Check if filled prompt is internally consistent (open-ended)
 
 interface BlankValidation {
   id: string;
@@ -148,6 +149,28 @@ Return JSON with this exact structure:
       "feedback": "<brief feedback if incorrect, explaining why or suggesting improvement>"
     }
   ]
+}`,
+
+  check_consistency: `You are evaluating the internal consistency and quality of a filled-in prompt template.
+
+The user can write ANY values they want - there are no "correct" answers. Instead, check if:
+1. The filled values make logical sense together (e.g., "teacher with expertise in math" working on "a math curriculum" is consistent, but working on "biology" is inconsistent)
+2. The role matches the expertise area
+3. The context matches what someone in that role would work on
+4. The task is appropriate for the role and context
+5. Constraints and format make sense for the task
+
+Be encouraging but point out logical inconsistencies. Accept creative or unusual combinations if they make sense.
+
+Return JSON with this exact structure:
+{
+  "isConsistent": <boolean - true if prompt is internally consistent>,
+  "overallScore": <number 1-10>,
+  "issues": [
+    {"blankId": "<id of problematic blank>", "issue": "<what's inconsistent and why>"}
+  ],
+  "suggestions": ["<suggestion for improvement>"],
+  "praise": "<what they did well, if anything>"
 }`
 };
 
@@ -264,6 +287,24 @@ export async function POST(request: NextRequest) {
         userContent = `Validate these fill-in-the-blank answers:\n\n${body.blanks.map(b => 
           `Blank ID: ${b.id}\nExpected answers (examples): ${b.expectedAnswers.join(", ")}\nUser's answer: "${b.userAnswer}"${b.context ? `\nContext: ${b.context}` : ""}`
         ).join("\n\n")}`;
+        responseFormat = "json_object";
+        break;
+
+      case "check_consistency":
+        if (!body.blanks || body.blanks.length === 0 || !body.template) {
+          return new Response(JSON.stringify({ error: "Blanks and template are required" }), {
+            status: 400,
+            headers: { "Content-Type": "application/json" },
+          });
+        }
+        // Build the filled prompt for context
+        let filledPrompt = body.template;
+        for (const blank of body.blanks) {
+          filledPrompt = filledPrompt.replace(`{{${blank.id}}}`, blank.userAnswer || "[empty]");
+        }
+        userContent = `Check the consistency of this filled prompt template:\n\nTemplate with blanks:\n${body.template}\n\nFilled values:\n${body.blanks.map(b => 
+          `- ${b.id}: "${b.userAnswer}"${b.context ? ` (expected type: ${b.context})` : ""}`
+        ).join("\n")}\n\nResulting prompt:\n${filledPrompt}`;
         responseFormat = "json_object";
         break;
 

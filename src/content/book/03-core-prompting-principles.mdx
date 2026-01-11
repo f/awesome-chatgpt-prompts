@@ -330,8 +330,9 @@ Test your understanding of the core principles by completing this prompt templat
 
 <FillInTheBlank
   title="Apply the Principles"
-  description="Fill in the blanks to create a well-structured prompt following the 8 principles"
+  description="Fill in the blanks to create a well-structured prompt — write anything you want!"
   useAI={true}
+  openEnded={true}
   template={`You are a {{role}} with expertise in {{expertise}}.
 
 Context: I'm working on {{context}}.
@@ -344,15 +345,15 @@ Constraints:
 
 Format: Return your answer as {{format}}.`}
   blanks={[
-    { id: "role", correctAnswers: ["senior developer", "software engineer", "technical writer", "data scientist"], hint: "What professional role should the AI assume?", context: "A job title or professional role" },
-    { id: "expertise", correctAnswers: ["Python", "React", "web development", "data analysis", "machine learning"], hint: "What specific domain knowledge is needed?", context: "A technical skill or domain" },
-    { id: "context", correctAnswers: ["a web application", "a mobile app", "a data pipeline", "an API"], hint: "What's the project or situation?", context: "A project type or work situation" },
-    { id: "task", correctAnswers: ["Review this code", "Write a function", "Debug this issue", "Explain this concept"], hint: "What specific action should the AI take?", context: "An action verb with an object" },
-    { id: "length", correctAnswers: ["200", "300", "500", "100"], hint: "How long should the response be?", context: "A number representing word count" },
-    { id: "focus", correctAnswers: ["performance", "security", "readability", "best practices"], hint: "What aspect should be prioritized?", context: "A quality or aspect to focus on" },
-    { id: "format", correctAnswers: ["a numbered list", "bullet points", "a table", "JSON", "markdown"], hint: "How should the output be structured?", context: "An output format type" }
+    { id: "role", correctAnswers: [], hint: "What professional role should the AI assume?", context: "A job title or professional role" },
+    { id: "expertise", correctAnswers: [], hint: "What specific domain knowledge is needed?", context: "A skill or domain that matches the role" },
+    { id: "context", correctAnswers: [], hint: "What's the project or situation?", context: "A project that someone with this expertise would work on" },
+    { id: "task", correctAnswers: [], hint: "What specific action should the AI take?", context: "An action appropriate for the role and context" },
+    { id: "length", correctAnswers: [], hint: "How long should the response be?", context: "A number (word count)" },
+    { id: "focus", correctAnswers: [], hint: "What aspect should be prioritized?", context: "A quality or aspect relevant to the task" },
+    { id: "format", correctAnswers: [], hint: "How should the output be structured?", context: "An output format type" }
   ]}
-  explanation="A well-structured prompt includes: a clear role (Principle 1), sufficient context (Principle 3), specific task (Principle 2), constraints (Principle 4), and output format (Principle 5)."
+  explanation="A well-structured prompt includes: a clear role (Principle 1), sufficient context (Principle 3), specific task (Principle 2), constraints (Principle 4), and output format (Principle 5). The AI checks if your choices are internally consistent."
 />
 
 <InteractiveChecklist
