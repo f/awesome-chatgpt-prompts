@@ -125,6 +125,15 @@
     "noTagsFound": "タグが見つかりません",
     "promptContributors": "コントリビューター",
     "contributorsDescription": "このプロンプトの作成を手伝った他のユーザー。変更リクエストが承認されたユーザーは自動的に追加されます。",
+    "worksBestWithModels": "最適なモデル",
+    "worksBestWithModelsDescription": "このプロンプトが最も効果的なAIモデル（最大3つ）",
+    "selectModel": "モデルを選択...",
+    "worksBestWithMCP": "MCPサーバー",
+    "worksBestWithMCPDescription": "このプロンプトが動作するMCPサーバーとツール",
+    "mcpCommandPlaceholder": "npx -y @mcp/server-name",
+    "mcpToolsPlaceholder": "tool1, tool2",
+    "add": "追加",
+    "advancedOptions": "詳細オプション",
     "searchContributors": "ユーザー名で検索...",
     "noUsersFound": "ユーザーが見つかりません",
     "worksBestWith": "最適なモデル",
@@ -1170,6 +1179,12 @@
   "promptWritingGuide": {
     "title": "優れたプロンプトの書き方",
     "subtitle": "効果的なAIプロンプトを作成するためのヒント、例、ベストプラクティス",
+    "interactiveBanner": {
+      "badge": "インタラクティブ版が利用可能",
+      "title": "より詳細でインタラクティブな体験をお求めですか？",
+      "description": "25章、実践的な演習、実例を含む包括的なインタラクティブガイドで、AIプロンプトをマスターしましょう。",
+      "cta": "インタラクティブブックを読む"
+    },
     "generalTips": {
       "title": "効果的なプロンプトのための一般的なヒント",
       "beSpecific": {

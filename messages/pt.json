@@ -128,6 +128,15 @@
     "noTagsFound": "Nenhuma tag encontrada",
     "promptContributors": "Contribuidores",
     "contributorsDescription": "Outros usuários que ajudaram a escrever este prompt. Usuários cujas solicitações de alteração são aprovadas são adicionados automaticamente.",
+    "worksBestWithModels": "Funciona Melhor Com",
+    "worksBestWithModelsDescription": "Modelos de IA com os quais este prompt funciona melhor (máx 3)",
+    "selectModel": "Selecionar modelo...",
+    "worksBestWithMCP": "Servidores MCP",
+    "worksBestWithMCPDescription": "Servidores e ferramentas MCP com os quais este prompt funciona",
+    "mcpCommandPlaceholder": "npx -y @mcp/server-name",
+    "mcpToolsPlaceholder": "tool1, tool2",
+    "add": "Adicionar",
+    "advancedOptions": "Opções Avançadas",
     "searchContributors": "Buscar por nome de usuário...",
     "noUsersFound": "Nenhum usuário encontrado",
     "worksBestWith": "Funciona melhor com",
@@ -1170,6 +1179,12 @@
   "promptWritingGuide": {
     "title": "Como Escrever Bons Prompts",
     "subtitle": "Dicas, exemplos e melhores práticas para criar prompts de IA eficazes",
+    "interactiveBanner": {
+      "badge": "Versão Interativa Disponível",
+      "title": "Quer uma Experiência Mais Detalhada e Interativa?",
+      "description": "Aprofunde-se com nosso guia interativo completo com 25 capítulos, exercícios práticos e exemplos do mundo real para dominar prompts de IA.",
+      "cta": "Ler o Livro Interativo"
+    },
     "generalTips": {
       "title": "Dicas Gerais para Prompts Eficazes",
       "beSpecific": {

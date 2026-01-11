@@ -128,6 +128,15 @@
     "noTagsFound": "לא נמצאו תגיות",
     "promptContributors": "תורמים",
     "contributorsDescription": "משתמשים אחרים שעזרו לכתוב את הפרומפט הזה. משתמשים שבקשות השינוי שלהם אושרו מתווספים אוטומטית.",
+    "worksBestWithModels": "עובד הכי טוב עם",
+    "worksBestWithModelsDescription": "מודלי AI שהפרומפט הזה עובד איתם הכי טוב (מקסימום 3)",
+    "selectModel": "בחר מודל...",
+    "worksBestWithMCP": "שרתי MCP",
+    "worksBestWithMCPDescription": "שרתים וכלים של MCP שהפרומפט הזה עובד איתם",
+    "mcpCommandPlaceholder": "npx -y @mcp/server-name",
+    "mcpToolsPlaceholder": "tool1, tool2",
+    "add": "הוסף",
+    "advancedOptions": "אפשרויות מתקדמות",
     "searchContributors": "חפש לפי שם משתמש...",
     "noUsersFound": "לא נמצאו משתמשים",
     "worksBestWith": "עובד הכי טוב עם",
@@ -1170,6 +1179,12 @@
   "promptWritingGuide": {
     "title": "איך לכתוב פרומפטים מעולים",
     "subtitle": "טיפים, דוגמאות ושיטות עבודה מומלצות ליצירת פרומפטים יעילים לבינה מלאכותית",
+    "interactiveBanner": {
+      "badge": "גרסה אינטראקטיבית זמינה",
+      "title": "רוצים חוויה מפורטת ואינטראקטיבית יותר?",
+      "description": "העמיקו עם המדריך האינטראקטיבי המקיף שלנו הכולל 25 פרקים, תרגילים מעשיים ודוגמאות מהעולם האמיתי לשליטה בפרומפטים ל-AI.",
+      "cta": "קראו את הספר האינטראקטיבי"
+    },
     "generalTips": {
       "title": "טיפים כלליים לפרומפטים יעילים",
       "beSpecific": {

@@ -127,7 +127,16 @@
     "searchTags": "Tags suchen...",
     "noTagsFound": "Keine Tags gefunden",
     "promptContributors": "Mitwirkende",
-    "contributorsDescription": "Andere Benutzer, die bei diesem Prompt mitgeholfen haben. Benutzer, deren Änderungsanfragen genehmigt werden, werden automatisch hinzugefügt.",
+    "contributorsDescription": "Andere Benutzer, die beim Schreiben dieses Prompts geholfen haben. Benutzer, deren Änderungsanfragen genehmigt werden, werden automatisch hinzugefügt.",
+    "worksBestWithModels": "Funktioniert Am Besten Mit",
+    "worksBestWithModelsDescription": "KI-Modelle, mit denen dieser Prompt am besten funktioniert (max. 3)",
+    "selectModel": "Modell auswählen...",
+    "worksBestWithMCP": "MCP-Server",
+    "worksBestWithMCPDescription": "MCP-Server und Tools, mit denen dieser Prompt funktioniert",
+    "mcpCommandPlaceholder": "npx -y @mcp/server-name",
+    "mcpToolsPlaceholder": "tool1, tool2",
+    "add": "Hinzufügen",
+    "advancedOptions": "Erweiterte Optionen",
     "searchContributors": "Nach Benutzernamen suchen...",
     "noUsersFound": "Keine Benutzer gefunden",
     "worksBestWith": "Funktioniert am besten mit",
@@ -1170,6 +1179,12 @@
   "promptWritingGuide": {
     "title": "Wie Man Gute Prompts Schreibt",
     "subtitle": "Tipps, Beispiele und Best Practices für effektive KI-Prompts",
+    "interactiveBanner": {
+      "badge": "Interaktive Version Verfügbar",
+      "title": "Möchten Sie ein detaillierteres und interaktives Erlebnis?",
+      "description": "Tauchen Sie tiefer ein mit unserem umfassenden interaktiven Leitfaden mit 25 Kapiteln, praktischen Übungen und Beispielen aus der Praxis.",
+      "cta": "Das interaktive Buch lesen"
+    },
     "generalTips": {
       "title": "Allgemeine Tipps für Effektive Prompts",
       "beSpecific": {

@@ -128,6 +128,15 @@
     "noTagsFound": "태그를 찾을 수 없습니다",
     "promptContributors": "기여자",
     "contributorsDescription": "이 프롬프트 작성에 도움을 준 다른 사용자들입니다. 변경 요청이 승인된 사용자는 자동으로 추가됩니다.",
+    "worksBestWithModels": "최적의 모델",
+    "worksBestWithModelsDescription": "이 프롬프트가 가장 잘 작동하는 AI 모델 (최대 3개)",
+    "selectModel": "모델 선택...",
+    "worksBestWithMCP": "MCP 서버",
+    "worksBestWithMCPDescription": "이 프롬프트가 작동하는 MCP 서버 및 도구",
+    "mcpCommandPlaceholder": "npx -y @mcp/server-name",
+    "mcpToolsPlaceholder": "tool1, tool2",
+    "add": "추가",
+    "advancedOptions": "고급 옵션",
     "searchContributors": "사용자명으로 검색...",
     "noUsersFound": "사용자를 찾을 수 없습니다",
     "worksBestWith": "최적의 모델",
@@ -1170,6 +1179,12 @@
   "promptWritingGuide": {
     "title": "좋은 프롬프트 작성법",
     "subtitle": "효과적인 AI 프롬프트를 만들기 위한 팁, 예시, 모범 사례",
+    "interactiveBanner": {
+      "badge": "인터랙티브 버전 제공",
+      "title": "더 상세하고 인터랙티브한 경험을 원하시나요?",
+      "description": "25개 챕터, 실습 연습, 실제 예제가 포함된 종합 인터랙티브 가이드로 AI 프롬프트를 마스터하세요.",
+      "cta": "인터랙티브 북 읽기"
+    },
     "generalTips": {
       "title": "효과적인 프롬프트를 위한 일반 팁",
       "beSpecific": {

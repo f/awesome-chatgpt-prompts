@@ -125,6 +125,15 @@
     "noTagsFound": "未找到标签",
     "promptContributors": "贡献者",
     "contributorsDescription": "帮助编写此提示词的其他用户。变更请求被批准的用户会自动添加。",
+    "worksBestWithModels": "最佳适用模型",
+    "worksBestWithModelsDescription": "此提示词最适合的AI模型（最多3个）",
+    "selectModel": "选择模型...",
+    "worksBestWithMCP": "MCP服务器",
+    "worksBestWithMCPDescription": "此提示词适用的MCP服务器和工具",
+    "mcpCommandPlaceholder": "npx -y @mcp/server-name",
+    "mcpToolsPlaceholder": "tool1, tool2",
+    "add": "添加",
+    "advancedOptions": "高级选项",
     "searchContributors": "按用户名搜索...",
     "noUsersFound": "未找到用户",
     "worksBestWith": "最适合",
@@ -1170,6 +1179,12 @@
   "promptWritingGuide": {
     "title": "如何写出优秀的提示词",
     "subtitle": "创建有效 AI 提示词的技巧、示例和最佳实践",
+    "interactiveBanner": {
+      "badge": "互动版本已上线",
+      "title": "想要更详细的互动体验？",
+      "description": "通过我们包含25章内容、实践练习和真实案例的综合互动指南，深入掌握AI提示词技巧。",
+      "cta": "阅读互动电子书"
+    },
     "generalTips": {
       "title": "有效提示词的通用技巧",
       "beSpecific": {

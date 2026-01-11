@@ -128,6 +128,15 @@
     "noTagsFound": "Δεν βρέθηκαν ετικέτες",
     "promptContributors": "Συνεισφέροντες",
     "contributorsDescription": "Άλλοι χρήστες που βοήθησαν στη σύνταξη αυτού του prompt. Οι χρήστες των οποίων οι αιτήσεις αλλαγής εγκρίθηκαν προστίθενται αυτόματα.",
+    "worksBestWithModels": "Λειτουργεί Καλύτερα Με",
+    "worksBestWithModelsDescription": "Μοντέλα AI με τα οποία αυτό το prompt λειτουργεί καλύτερα (μέγιστο 3)",
+    "selectModel": "Επιλέξτε μοντέλο...",
+    "worksBestWithMCP": "Διακομιστές MCP",
+    "worksBestWithMCPDescription": "Διακομιστές και εργαλεία MCP με τα οποία λειτουργεί αυτό το prompt",
+    "mcpCommandPlaceholder": "npx -y @mcp/server-name",
+    "mcpToolsPlaceholder": "tool1, tool2",
+    "add": "Προσθήκη",
+    "advancedOptions": "Προχωρημένες Επιλογές",
     "searchContributors": "Αναζήτηση με όνομα χρήστη...",
     "noUsersFound": "Δεν βρέθηκαν χρήστες",
     "worksBestWith": "Λειτουργεί καλύτερα με",
@@ -1170,6 +1179,12 @@
   "promptWritingGuide": {
     "title": "Πώς να Γράφετε Εξαιρετικά Prompts",
     "subtitle": "Συμβουλές, παραδείγματα και βέλτιστες πρακτικές για τη δημιουργία αποτελεσματικών AI prompts",
+    "interactiveBanner": {
+      "badge": "Διαδραστική Έκδοση Διαθέσιμη",
+      "title": "Θέλετε μια πιο λεπτομερή και διαδραστική εμπειρία;",
+      "description": "Εμβαθύνετε με τον πλήρη διαδραστικό οδηγό μας με 25 κεφάλαια, πρακτικές ασκήσεις και παραδείγματα από τον πραγματικό κόσμο για να κατακτήσετε τα AI prompts.",
+      "cta": "Διαβάστε το Διαδραστικό Βιβλίο"
+    },
     "generalTips": {
       "title": "Γενικές Συμβουλές για Αποτελεσματικά Prompts",
       "beSpecific": {

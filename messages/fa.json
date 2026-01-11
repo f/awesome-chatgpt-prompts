@@ -128,6 +128,15 @@
     "noTagsFound": "برچسبی یافت نشد",
     "promptContributors": "مشارکت‌کنندگان",
     "contributorsDescription": "کاربران دیگری که در نوشتن این پرامپت کمک کردند. کاربرانی که درخواست تغییراتشان تأیید می‌شود به صورت خودکار اضافه می‌شوند.",
+    "worksBestWithModels": "بهترین عملکرد با",
+    "worksBestWithModelsDescription": "مدل‌های هوش مصنوعی که این پرامپت با آن‌ها بهترین عملکرد را دارد (حداکثر ۳)",
+    "selectModel": "انتخاب مدل...",
+    "worksBestWithMCP": "سرورهای MCP",
+    "worksBestWithMCPDescription": "سرورها و ابزارهای MCP که این پرامپت با آن‌ها کار می‌کند",
+    "mcpCommandPlaceholder": "npx -y @mcp/server-name",
+    "mcpToolsPlaceholder": "tool1, tool2",
+    "add": "اضافه",
+    "advancedOptions": "گزینه‌های پیشرفته",
     "searchContributors": "جستجو بر اساس نام کاربری...",
     "noUsersFound": "کاربری یافت نشد",
     "worksBestWith": "بهترین عملکرد با",
@@ -1170,6 +1179,12 @@
   "promptWritingGuide": {
     "title": "چگونه پرامپت‌های عالی بنویسیم",
     "subtitle": "نکات، مثال‌ها و بهترین روش‌ها برای ایجاد پرامپت‌های مؤثر هوش مصنوعی",
+    "interactiveBanner": {
+      "badge": "نسخه تعاملی موجود است",
+      "title": "می‌خواهید تجربه‌ای دقیق‌تر و تعاملی‌تر داشته باشید؟",
+      "description": "با راهنمای تعاملی جامع ما شامل ۲۵ فصل، تمرین‌های عملی و مثال‌های واقعی، در نوشتن پرامپت‌های هوش مصنوعی مهارت پیدا کنید.",
+      "cta": "کتاب تعاملی را بخوانید"
+    },
     "generalTips": {
       "title": "نکات کلی برای پرامپت‌های مؤثر",
       "beSpecific": {

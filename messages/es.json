@@ -124,7 +124,16 @@
     "searchTags": "Buscar etiquetas...",
     "noTagsFound": "No se encontraron etiquetas",
     "promptContributors": "Colaboradores",
-    "contributorsDescription": "Otros usuarios que ayudaron a escribir este prompt. Los usuarios cuyas solicitudes de cambio son aprobadas se añaden automáticamente.",
+    "contributorsDescription": "Otros usuarios que ayudaron a escribir este prompt. Los usuarios cuyas solicitudes de cambio son aprobadas se agregan automáticamente.",
+    "worksBestWithModels": "Funciona Mejor Con",
+    "worksBestWithModelsDescription": "Modelos de IA con los que este prompt funciona mejor (máx 3)",
+    "selectModel": "Seleccionar modelo...",
+    "worksBestWithMCP": "Servidores MCP",
+    "worksBestWithMCPDescription": "Servidores y herramientas MCP con los que funciona este prompt",
+    "mcpCommandPlaceholder": "npx -y @mcp/server-name",
+    "mcpToolsPlaceholder": "tool1, tool2",
+    "add": "Añadir",
+    "advancedOptions": "Opciones Avanzadas",
     "searchContributors": "Buscar por nombre de usuario...",
     "noUsersFound": "No se encontraron usuarios",
     "worksBestWith": "Funciona mejor con",
@@ -1170,6 +1179,12 @@
   "promptWritingGuide": {
     "title": "Cómo Escribir Buenos Prompts",
     "subtitle": "Consejos, ejemplos y mejores prácticas para crear prompts de IA efectivos",
+    "interactiveBanner": {
+      "badge": "Versión Interactiva Disponible",
+      "title": "¿Quieres una Experiencia Más Detallada e Interactiva?",
+      "description": "Profundiza con nuestra guía interactiva completa con 25 capítulos, ejercicios prácticos y ejemplos del mundo real para dominar los prompts de IA.",
+      "cta": "Leer el Libro Interactivo"
+    },
     "generalTips": {
       "title": "Consejos Generales para Prompts Efectivos",
       "beSpecific": {

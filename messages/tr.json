@@ -128,6 +128,15 @@
     "noTagsFound": "Etiket bulunamadı",
     "promptContributors": "Katkıda Bulunanlar",
     "contributorsDescription": "Bu prompt'u yazmanda yardımcı olan diğer kullanıcılar. Değişiklik isteğinde bulunup kabul edilenler otomatik eklenir.",
+    "worksBestWithModels": "En İyi Çalıştığı Modeller",
+    "worksBestWithModelsDescription": "Bu prompt'un en iyi çalıştığı AI modelleri (maks 3)",
+    "selectModel": "Model seç...",
+    "worksBestWithMCP": "MCP Sunucuları",
+    "worksBestWithMCPDescription": "Bu prompt'un çalıştığı MCP sunucuları ve araçları",
+    "mcpCommandPlaceholder": "npx -y @mcp/server-name",
+    "mcpToolsPlaceholder": "tool1, tool2",
+    "add": "Ekle",
+    "advancedOptions": "Gelişmiş Seçenekler",
     "searchContributors": "Kullanıcı adına göre ara...",
     "noUsersFound": "Kullanıcı bulunamadı",
     "worksBestWith": "En iyi çalıştığı",
@@ -1170,6 +1179,12 @@
   "promptWritingGuide": {
     "title": "Harika Promptlar Nasıl Yazılır",
     "subtitle": "Etkili AI promptları oluşturmak için ipuçları, örnekler ve en iyi uygulamalar",
+    "interactiveBanner": {
+      "badge": "İnteraktif Versiyon Mevcut",
+      "title": "Daha Detaylı ve İnteraktif Bir Deneyim mi İstiyorsunuz?",
+      "description": "25 bölüm, uygulamalı alıştırmalar ve gerçek dünya örnekleri içeren kapsamlı interaktif rehberimizle AI prompt yazımında ustalaşın.",
+      "cta": "İnteraktif Kitabı Oku"
+    },
     "generalTips": {
       "title": "Etkili Promptlar İçin Genel İpuçları",
       "beSpecific": {
