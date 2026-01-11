@@ -22,11 +22,10 @@ export function Masonry({
   const containerRef = useRef<HTMLDivElement>(null);
   const [columns, setColumns] = useState(columnCount.default);
   const [containerHeight, setContainerHeight] = useState(0);
+  const [containerWidth, setContainerWidth] = useState(0);
   const [isRTL, setIsRTL] = useState(false);
+  const [positions, setPositions] = useState<Map<number, { x: number; y: number }>>(new Map());
   const itemRefs = useRef<Map<number, HTMLDivElement>>(new Map());
-  const positionsRef = useRef<Map<number, { x: number; y: number }>>(new Map());
-  const [, forceUpdate] = useState(0);
-  const prevChildrenLengthRef = useRef(0);
 
   // Detect RTL direction
   useEffect(() => {
@@ -63,9 +62,12 @@ export function Masonry({
   const calculatePositions = useCallback(() => {
     if (!containerRef.current) return;
 
-    const containerWidth = containerRef.current.offsetWidth;
-    const columnWidth = (containerWidth - gap * (columns - 1)) / columns;
+    const width = containerRef.current.offsetWidth;
+    setContainerWidth(width);
+    
+    const columnWidth = (width - gap * (columns - 1)) / columns;
     const columnHeights = new Array(columns).fill(0);
+    const newPositions = new Map<number, { x: number; y: number }>();
 
     children.forEach((_, index) => {
       const itemEl = itemRefs.current.get(index);
@@ -76,7 +78,7 @@ export function Masonry({
       const x = shortestColumn * (columnWidth + gap);
       const y = columnHeights[shortestColumn];
 
-      positionsRef.current.set(index, { x, y });
+      newPositions.set(index, { x, y });
 
       // Update column height
       const itemHeight = itemEl.offsetHeight;
@@ -87,18 +89,13 @@ export function Masonry({
     if (newHeight > 0) {
       setContainerHeight(newHeight);
     }
-    forceUpdate(n => n + 1);
+    setPositions(newPositions);
   }, [children, columns, gap]);
 
   // Recalculate when new children are added
   useEffect(() => {
-    const currentLength = children.length;
-    const prevLength = prevChildrenLengthRef.current;
-    
     // Calculate positions after a brief delay for new items to render
     const timer = setTimeout(calculatePositions, 10);
-    prevChildrenLengthRef.current = currentLength;
-
     return () => clearTimeout(timer);
   }, [children.length, calculatePositions]);
 
@@ -120,7 +117,6 @@ export function Masonry({
     return () => observer.disconnect();
   }, [calculatePositions, children.length]);
 
-  const containerWidth = containerRef.current?.offsetWidth || 0;
   const columnWidth = containerWidth > 0 
     ? (containerWidth - gap * (columns - 1)) / columns 
     : 0;
@@ -132,7 +128,7 @@ export function Masonry({
       style={{ height: containerHeight > 0 ? containerHeight : "auto" }}
     >
       {children.map((child, index) => {
-        const position = positionsRef.current.get(index);
+        const position = positions.get(index);
         const hasPosition = position !== undefined;
         return (
           <div
