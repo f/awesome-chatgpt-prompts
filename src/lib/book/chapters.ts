@@ -83,6 +83,14 @@ export const parts: Part[] = [
       { slug: "23-research-analysis", title: "Research & Analysis", part: "Use Cases", partNumber: 5, chapterNumber: 23, description: "Data analysis and research tasks" },
     ],
   },
+  {
+    number: 6,
+    title: "Conclusion",
+    slug: "part-vi-conclusion",
+    chapters: [
+      { slug: "24-future-of-prompting", title: "The Future of Prompting", part: "Conclusion", partNumber: 6, chapterNumber: 24, description: "Emerging trends and looking ahead" },
+    ],
+  },
 ];
 
 export function getAllChapters(): Chapter[] {
