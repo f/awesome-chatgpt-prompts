@@ -1,0 +1,104 @@
+<Section>
+<Panel character="promi" mood="excited">
+Bienvenue au dernier niveau du Château de la Clarté ! 🏰 Tu as appris QUI, QUOI, QUAND et OÙ. Maintenant, mettons TOUT ensemble !
+</Panel>
+</Section>
+
+<Section>
+## La checklist du Détective des Détails
+
+Avant d'envoyer un prompt, demande-toi :
+
+✅ **QUI** - Qui est impliqué ?
+✅ **QUOI** - Que veux-je ? Que se passe-t-il ?
+✅ **QUAND** - Quand ça se passe ?
+✅ **OÙ** - Où ça se passe ?
+</Section>
+
+<Section>
+## Trie les parties du prompt !
+
+<PromptParts
+  title="Associe chaque pièce !"
+  instruction="Touche une pièce, puis choisis si c'est un Rôle, Tâche, Contexte ou Contrainte !"
+  parts={[
+    { text: "Écris une histoire drôle", type: "task" },
+    { text: "sur un magicien maladroit", type: "context" },
+    { text: "dans une école de magie", type: "context" },
+    { text: "Fais-la courte", type: "constraint" }
+  ]}
+  successMessage="Tu as identifié toutes les parties du prompt ! Maintenant tu peux construire des prompts comme un pro !"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Tu n'as pas besoin des quatre à chaque fois, mais plus tu ajoutes de détails, mieux je peux t'aider !
+</Panel>
+</Section>
+
+<Section>
+## Défi Détective #1
+
+<PromptVsMistake
+  question="Quel prompt a les détails les plus utiles ?"
+  good="Écris une histoire drôle sur un magicien maladroit nommé Zap qui transforme accidentellement son chat en géant pendant un spectacle de magie au château royal"
+  bad="Écris une histoire sur la magie"
+  explanation="Le prompt détaillé a QUI (magicien Zap, son chat), QUOI (transforme le chat en géant, spectacle de magie), OÙ (château royal), et même un style (drôle) !"
+  promiMessage="Wow ! Ce prompt me donne tellement de matière. Je peux imaginer toute la scène !"
+/>
+</Section>
+
+<Section>
+## Défi Détective #2
+
+<PromptVsMistake
+  question="Quel prompt obtiendrait un meilleur poème ?"
+  good="Écris un court poème qui rime sur un ours somnolent qui se prépare pour l'hibernation dans sa grotte douillette"
+  bad="Écris un poème sur un animal"
+  explanation="Le premier prompt me dit QUI (ours somnolent), QUOI (se prépare pour l'hibernation), QUAND (hiver), OÙ (grotte douillette), et style (court, qui rime) !"
+  promiMessage="Chaque détail m'aide à créer quelque chose de spécial juste pour toi !"
+/>
+</Section>
+
+<Section>
+## Construis le prompt ultime !
+
+<DragDropPrompt
+  title="Détective Maître"
+  instruction="Arrange TOUS les détails en un prompt parfait"
+  pieces={["Écris une histoire passionnante", "sur un jeune inventeur", "qui construit un robot meilleur ami", "dans une ville futuriste", "le premier jour de l'été"]}
+  correctOrder={[0, 1, 2, 3, 4]}
+  successMessage="Parfait ! Tu as inclus QUI, QUOI, OÙ et QUAND !"
+/>
+</Section>
+
+<Section>
+## Crée ton chef-d'œuvre !
+
+<MagicWords
+  sentence="S'il te plaît, écris une histoire ___ sur un ___ qui ___ dans un ___ pendant ___"
+  blanks={[
+    { hint: "😊 une humeur/style", answers: ["drôle", "passionnante", "mystérieuse", "touchante", "rigolote"] },
+    { hint: "🦸 un personnage", answers: ["chevalier courageux", "petite fée", "renard malin", "jeune astronaute", "fantôme amical"] },
+    { hint: "🎬 une action", answers: ["découvre un secret", "part en quête", "se fait un nouvel ami", "résout un mystère", "apprend à voler"] },
+    { hint: "🏰 un endroit", answers: ["royaume magique", "jungle profonde", "station spatiale", "cité sous-marine", "forêt enchantée"] },
+    { hint: "🌙 un moment", answers: ["la pleine lune", "son anniversaire", "une grande tempête", "le dernier jour d'école", "minuit"] }
+  ]}
+  successMessage="Tu es un vrai Détective des Détails ! C'est un prompt incroyable !"
+/>
+</Section>
+
+<Section>
+## Félicitations, Détective ! 🎉
+
+<Panel character="promi" mood="celebrating">
+Tu l'as fait ! Tu as terminé le Château de la Clarté et tu es devenu un **Détective des Détails** ! Maintenant tu connais le secret : QUI + QUOI + QUAND + OÙ = Prompts Incroyables !
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-4-detail-detective" 
+  stars={3}
+  message="Tu as terminé le Château de la Clarté ! Tu es un Détective des Détails !"
+/>
+</Section>

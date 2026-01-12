@@ -1,0 +1,87 @@
+<Section>
+<Panel character="promi" mood="excited">
+오늘은 **형식**에 대해 배워요! 📝 AI에게 다른 방식으로 대답하도록 요청할 수 있다는 거 알았어요?
+</Panel>
+</Section>
+
+<Section>
+## 형식이란 무엇인가요?
+
+**형식**은 대답을 어떻게 보여줬으면 좋겠는지예요:
+
+- 📋 **목록** - 번호가 매겨진 또는 글머리 기호
+- 📖 **이야기** - 시작, 중간, 끝이 있는 내러티브
+- 🎵 **시** - 운율과 리듬이 있는
+- ❓ **Q&A** - 질문과 답변 스타일
+- 📊 **표** - 행과 열로 정리된
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+형식을 말해주면, 당신에게 가장 도움이 되는 방식으로 대답을 정리할 수 있어요!
+</Panel>
+</Section>
+
+<Section>
+## 형식이 차이를 만들어요!
+
+<PromptVsMistake
+  question="어떤 프롬프트가 명확한 형식을 요청하나요?"
+  good="돌고래에 대한 재미있는 사실 5가지를 번호가 매겨진 목록으로 줘"
+  bad="돌고래에 대해 말해줘"
+  explanation="첫 번째 프롬프트는 대답을 어떻게 정리해야 하는지 정확히 말해줘요 - 5개의 번호가 매겨진 사실로!"
+  promiMessage="특정 형식을 요청하면, 정확히 필요한 것을 얻을 수 있어요!"
+/>
+</Section>
+
+<Section>
+## 형식을 선택해요!
+
+<PromptVsMistake
+  question="기억하기에 가장 좋은 형식은 무엇일까요?"
+  good="태양에서부터 순서대로 행성들을 글머리 기호로 나열해줘"
+  bad="행성에 대해 말해줘"
+  explanation="목록 형식은 행성을 순서대로 기억하고 세기 쉽게 해줘요!"
+  promiMessage="목록은 배우고 기억하기에 좋아요!"
+/>
+</Section>
+
+<Section>
+## 형식을 연습해요!
+
+<DragDropPrompt
+  title="형식 추가하기"
+  instruction="특정 형식을 요청하도록 배열해요"
+  pieces={["짧은 시로", "운율이 있는 줄로", "비에 대해 써줘", "4줄로"]}
+  correctOrder={[2, 0, 1, 3]}
+  successMessage="완벽해요! 구체적인 세부사항으로 시 형식을 요청했어요!"
+/>
+</Section>
+
+<Section>
+## 형식을 선택해요!
+
+<MagicWords
+  sentence="___에 대한 ___를 ___로 줘"
+  blanks={[
+    { hint: "🔢 몇 개", answers: ["5가지 팁", "3가지 아이디어", "10가지 사실", "7가지 단계", "4가지 예시"] },
+    { hint: "📚 주제", answers: ["좋은 친구 되기", "지구 구하기", "건강 유지하기", "창의적이기", "새로운 것 배우기"] },
+    { hint: "📋 형식", answers: ["번호 목록", "글머리 기호", "짧은 시", "간단한 이야기", "쉬운 단계"] }
+  ]}
+  successMessage="형식 선택 훌륭한 작업이에요! 이것이 대답을 읽기 쉽게 만들어요!"
+/>
+</Section>
+
+<Section>
+## 형식 마스터! 🎉
+
+<Panel character="promi" mood="celebrating">
+훌륭해요! 특정 **형식**을 요청하면 정확히 필요한 방식으로 정리된 대답을 얻을 수 있다는 것을 배웠어요!
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-3-format-finder" 
+  stars={3}
+  message="다른 형식을 요청하는 법을 배웠어요!"
+/>
+</Section>

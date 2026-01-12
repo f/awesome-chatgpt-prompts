@@ -1,0 +1,104 @@
+<Section>
+<Panel character="promi" mood="happy">
+Bentornato! La lezione di oggi è super importante: **Mostra, non raccontare**! Usare esempi è uno dei modi migliori per aiutare l'IA a capire!
+</Panel>
+</Section>
+
+<Section>
+## Il potere degli esempi
+
+Invece di descrivere solo cosa vuoi, **mostrami un esempio**!
+
+È come quando insegni un gioco a qualcuno - è più facile mostrare come si gioca che solo spiegare le regole!
+</Section>
+
+<Section>
+## Impara il pattern!
+
+<ExampleMatcher
+  title="Potere dei Pattern"
+  instruction="L'IA impara dagli esempi! Guarda il pattern e scegli cosa viene dopo."
+  examples={[
+    { input: "felice", output: "😊" },
+    { input: "triste", output: "😢" },
+    { input: "assonnato", output: "😴" }
+  ]}
+  question="arrabbiato"
+  options={["😠", "😊", "🎉", "😴"]}
+  correctAnswer="😠"
+  explanation="L'IA ha imparato: parola di sentimento → emoji corrispondente! Questo si chiama 'imparare con l'esempio' - proprio come te!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Se dici "rendilo figo", potrei non sapere cosa significa "figo" per te. Ma se mi mostri un esempio, capirò perfettamente!
+</Panel>
+</Section>
+
+<Section>
+## Guarda la differenza
+
+<PromptVsMistake
+  question="Quale prompt usa meglio gli esempi?"
+  good="Scrivi un nome di prodotto divertente come 'Shampoo Super Brillante' o 'Cuscini Nuvola Magica' - qualcosa di accattivante e giocoso!"
+  bad="Scrivi un nome di prodotto divertente"
+  explanation="Gli esempi mostrano esattamente quale stile di nome stai cercando - accattivante, giocoso, con aggettivi divertenti!"
+  promiMessage="Gli esempi sono come mappe del tesoro - mi mostrano esattamente dove vuoi andare!"
+/>
+</Section>
+
+<Section>
+## Mostra il tuo stile
+
+<PromptVsMistake
+  question="Quale prompt mostra meglio lo stile di scrittura?"
+  good="Scrivi una barzelletta in questo stile: 'Perché la banana è andata dal dottore? Perché non si sentiva bene!' - qualcosa di sciocco con un gioco di parole!"
+  bad="Scrivi una barzelletta divertente"
+  explanation="Mostrando un esempio di barzelletta con gioco di parole, so che vuoi lo stesso stile sciocco!"
+  promiMessage="Quando mi mostri cosa ti piace, posso eguagliare quello stile!"
+/>
+</Section>
+
+<Section>
+## Dai esempi!
+
+<DragDropPrompt
+  title="Costruisci con Esempi"
+  instruction="Ordina i pezzi per creare un prompt con un esempio utile"
+  pieces={["Scrivi un nome da supereroe", "come 'Capitano Coraggio'", "o 'Signora Fulmine'", "- qualcosa di eroico e memorabile"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Perfetto! I tuoi esempi mostrano esattamente che tipo di nome vuoi!"
+/>
+</Section>
+
+<Section>
+## Crea il tuo prompt con esempi!
+
+<MagicWords
+  sentence="Scrivi un ___ come '___ ___ ___' - qualcosa di ___ e ___"
+  blanks={[
+    { hint: "📝 cosa scrivere", answers: ["nome squadra", "nome animale", "nome band", "titolo libro", "nome ristorante"] },
+    { hint: "✨ aggettivo", answers: ["Super", "Felice", "Dorato", "Magico", "Potente"] },
+    { hint: "🌟 nome", answers: ["Stelle", "Draghi", "Sogni", "Tuono", "Fenice"] },
+    { hint: "🎯 parola", answers: ["Club", "Squadra", "Gruppo", "Regno", "Avventura"] },
+    { hint: "😊 stile 1", answers: ["divertente", "emozionante", "figo", "creativo", "accattivante"] },
+    { hint: "🎨 stile 2", answers: ["memorabile", "unico", "potente", "amichevole", "audace"] }
+  ]}
+  successMessage="Fantastico! Il tuo esempio mostra esattamente quale stile vuoi!"
+/>
+</Section>
+
+<Section>
+## Gli esempi sono potenti! 🎉
+
+<Panel character="promi" mood="celebrating">
+Lavoro incredibile! Hai imparato che **mostrare esempi** è uno dei modi migliori per aiutare l'IA a capire esattamente cosa vuoi!
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-2-show-dont-tell" 
+  stars={3}
+  message="Hai padroneggiato l'uso degli esempi nei prompt!"
+/>
+</Section>

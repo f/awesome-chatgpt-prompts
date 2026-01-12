@@ -1,0 +1,86 @@
+<Section>
+<Panel character="promi" mood="excited">
+Benvenuto nel **Canyon della Creatività**! 🎨 Qui è dove la creatività prende vita! Oggi impariamo i **prompt di gioco di ruolo**!
+</Panel>
+</Section>
+
+<Section>
+## Cos'è il gioco di ruolo?
+
+**Gioco di ruolo** significa chiedere all'IA di fingere di essere qualcuno o qualcosa!
+
+Puoi dire cose come:
+- "Fai finta di essere un pirata..."
+- "Immagina di essere un insegnante..."
+- "Sei uno chef simpatico..."
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+Quando mi chiedi di interpretare un ruolo, posso dare risposte con la voce e lo stile di quel personaggio! È come giocare a fare finta insieme!
+</Panel>
+</Section>
+
+<Section>
+## Guarda il gioco di ruolo in azione!
+
+<PromptVsMistake
+  question="Quale prompt usa il gioco di ruolo?"
+  good="Fai finta di essere un esploratore spaziale simpatico. Raccontami delle tue avventure su Marte!"
+  bad="Parlami di Marte"
+  explanation="Il primo prompt mi chiede di ESSERE un esploratore spaziale, così posso raccontarti delle 'mie' avventure in modo divertente e personale!"
+  promiMessage="Il gioco di ruolo rende le nostre conversazioni molto più divertenti e creative!"
+/>
+</Section>
+
+<Section>
+## Scegli il tuo personaggio!
+
+<PromptVsMistake
+  question="Quale ruolo sarebbe migliore per imparare sull'oceano?"
+  good="Fai finta di essere una vecchia tartaruga marina saggia che ha vissuto 100 anni. Quali cose belle hai visto nell'oceano?"
+  bad="Cosa vive nell'oceano?"
+  explanation="Una tartaruga marina di 100 anni ha visto così tanto! Questo rende l'apprendimento sull'oceano come ascoltare storie da un amico!"
+  promiMessage="Ruoli diversi danno prospettive diverse e rendono l'apprendimento più interessante!"
+/>
+</Section>
+
+<Section>
+## Crea un prompt di gioco di ruolo!
+
+<DragDropPrompt
+  title="Tempo di immaginare!"
+  instruction="Ordina i pezzi per creare un prompt di gioco di ruolo divertente"
+  pieces={["e raccontami", "Fai finta di essere un drago", "del tuo tesoro preferito", "che ama collezionare cose luccicanti"]}
+  correctOrder={[1, 3, 0, 2]}
+  successMessage="Ottimo prompt di gioco di ruolo! Ora il drago può condividere le sue storie di tesori!"
+/>
+</Section>
+
+<Section>
+## Costruisci il tuo gioco di ruolo!
+
+<MagicWords
+  sentence="Fai finta di essere un ___ che ___. Raccontami di ___."
+  blanks={[
+    { hint: "🎭 un personaggio", answers: ["mago", "supereroe", "gatto parlante", "viaggiatore del tempo", "fata"] },
+    { hint: "⭐ cosa fa", answers: ["esaudisce desideri", "salva la situazione", "esplora terre magiche", "inventa gadget fighi", "fa pozioni"] },
+    { hint: "📖 cosa condividere", answers: ["la tua più grande avventura", "il tuo giorno migliore", "un errore divertente che hai fatto", "il tuo nascondiglio segreto", "il tuo migliore amico"] }
+  ]}
+  successMessage="Fantastico gioco di ruolo! Ora possiamo avere una conversazione immaginaria divertente!"
+/>
+</Section>
+
+<Section>
+## Maestro del Gioco di Ruolo! 🎉
+
+<Panel character="promi" mood="celebrating">
+Fantastico! Hai imparato che i **prompt di gioco di ruolo** rendono le conversazioni creative e divertenti! Basta chiedermi di "fare finta" o "essere" qualcuno!
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-1-pretend-time" 
+  stars={3}
+  message="Hai imparato a usare i prompt di gioco di ruolo!"
+/>
+</Section>

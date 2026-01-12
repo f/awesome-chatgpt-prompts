@@ -1413,9 +1413,35 @@
     "levels": {
       "1_1_meet_promi": { "title": "Γνώρισε τον Promi!", "description": "Πες γεια στο ρομπότ φίλο σου και μάθε τι είναι η AI" },
       "1_2_first_words": { "title": "Οι Πρώτες Λέξεις του Promi", "description": "Βοήθησε τον Promi να καταλάβει γράφοντας το πρώτο σου prompt" },
-      "1_3_being_clear": { "title": "Να Είσαι Σαφής", "description": "Μάθε γιατί οι σαφείς οδηγίες λειτουργούν καλύτερα" }
+      "1_3_being_clear": { "title": "Να Είσαι Σαφής", "description": "Μάθε γιατί οι σαφείς οδηγίες λειτουργούν καλύτερα" },
+      "2_1_missing_details": { "title": "Οι Λεπτομέρειες που Λείπουν", "description": "Ανακάλυψε γιατί οι λεπτομέρειες μετράνε" },
+      "2_2_who_and_what": { "title": "Ποιος και Τι", "description": "Πρόσθεσε χαρακτήρες και αντικείμενα" },
+      "2_3_when_and_where": { "title": "Πότε και Πού", "description": "Μάθε να προσθέτεις χρόνο και τόπο" },
+      "2_4_detail_detective": { "title": "Ντετέκτιβ Λεπτομερειών", "description": "Γίνε ειδικός στην προσθήκη λεπτομερειών" },
+      "3_1_setting_the_scene": { "title": "Στήνοντας τη Σκηνή", "description": "Μάθε γιατί το πλαίσιο βοηθάει" },
+      "3_2_show_dont_tell": { "title": "Δείξε, Μην Λες", "description": "Χρησιμοποίησε παραδείγματα για να δείξεις τι θέλεις" },
+      "3_3_format_finder": { "title": "Εύρεση Μορφής", "description": "Ζήτα λίστες, ιστορίες, ποιήματα!" },
+      "3_4_context_champion": { "title": "Πρωταθλητής Πλαισίου", "description": "Συνδύασε όλες τις τεχνικές πλαισίου" },
+      "4_1_pretend_time": { "title": "Ώρα για Υποκριτική!", "description": "Μάθε prompts υποδύσεων ρόλων" },
+      "4_2_story_starters": { "title": "Αρχές Ιστοριών", "description": "Δημιούργησε υπέροχες ιστορίες με την AI" },
+      "4_3_character_creator": { "title": "Δημιουργός Χαρακτήρων", "description": "Δώσε προσωπικότητα στην AI" },
+      "4_4_world_builder": { "title": "Κτίστης Κόσμων", "description": "Δημιούργησε φανταστικούς κόσμους" },
+      "5_1_perfect_prompt": { "title": "Το Τέλειο Prompt", "description": "Συνδύασε σαφήνεια, λεπτομέρειες και πλαίσιο" },
+      "5_2_fix_it_up": { "title": "Διόρθωσέ το!", "description": "Βρες και βελτίωσε αδύναμα prompts" },
+      "5_3_prompt_remix": { "title": "Remix Prompts", "description": "Ξαναγράψε prompts για διαφορετικά αποτελέσματα" },
+      "5_4_graduation_day": { "title": "Ημέρα Αποφοίτησης", "description": "Η τελική πρόκληση - γίνε Μάστερ!" }
     },
     "level": { "backToMap": "Πίσω στο Χάρτη", "levelLabel": "Επίπεδο {number}", "comingSoon": "Αυτό το επίπεδο έρχεται σύντομα!", "previous": "Προηγούμενο", "next": "Επόμενο", "map": "Χάρτης" },
-    "levelComplete": { "title": "Επίπεδο Ολοκληρώθηκε!", "nextLevel": "Επόμενο Επίπεδο", "backToMap": "Πίσω στο Χάρτη", "allDone": "Πίσω στο Χάρτη" }
+    "levelComplete": { "title": "Επίπεδο Ολοκληρώθηκε!", "nextLevel": "Επόμενο Επίπεδο", "backToMap": "Πίσω στο Χάρτη", "allDone": "Πίσω στο Χάρτη" },
+    "quiz": { "goodLabel": "Εξαιρετικό prompt!", "badLabel": "Όχι το καλύτερο", "correct": "Σωστά!", "incorrect": "Καλή προσπάθεια!", "tryAgain": "Προσπάθησε ξανά" },
+    "magicWords": { "title": "Σύρε τις μαγικές λέξεις! ✨", "dragOrTap": "🎯 Σύρε ή πάτα λέξεις:", "check": "Έλεγχος!", "retry": "Ξανά", "correct": "σωστό", "tryAgain": "Προσπάθησε ξανά!" },
+    "dragDrop": { "title": "Φτιάξε το prompt!", "instruction": "Χρησιμοποίησε βέλη για μετακίνηση ή πάτα δύο κομμάτια για ανταλλαγή!", "result": "Αποτέλεσμα", "check": "Έλεγχος!", "retry": "Ξανά", "success": "Τέλεια! Έφτιαξες υπέροχο prompt!", "almost": "Σχεδόν! Συνέχισε την ταξινόμηση.", "tapToSwap": "Πάτα άλλο κομμάτι για ανταλλαγή!" },
+    "promptParts": { "title": "Ταξινόμησε τα Μέρη του Prompt!", "instruction": "Πάτα κάθε κομμάτι, μετά επέλεξε τύπο!", "score": "Σκορ", "pickCategory": "Τι τύπος είναι;", "success": "Ταξινόμησες σωστά όλα τα μέρη!", "retry": "Προσπάθησε ξανά", "types": { "role": "Ρόλος", "task": "Εργασία", "context": "Πλαίσιο", "constraint": "Περιορισμός" } },
+    "exampleMatcher": { "title": "Αντιστοίχιση Μοτίβου", "instruction": "Κοίτα το μοτίβο και διάλεξε τι ακολουθεί!", "pattern": "Το Μοτίβο:", "check": "Έλεγχος!", "retry": "Προσπάθησε ξανά", "correct": "Σωστά! 🎉", "tryAgain": "Όχι ακριβώς - κοίτα ξανά το μοτίβο!" },
+    "promptDoctor": { "title": "Γιατρός Prompts", "health": "Υγεία Prompt", "sick": "Άρρωστο Prompt", "healthy": "Υγιές Prompt!", "diagnose": "Κάνε κλικ σε πρόβλημα για διόρθωση:", "success": "Το prompt είναι καλύτερα τώρα!", "retry": "Από την αρχή" },
+    "stepByStep": { "title": "Σκέψου Βήμα-Βήμα", "problem": "Το Πρόβλημα:", "withoutMagic": "Χωρίς μαγικές λέξεις:", "addMagicWords": "Πρόσθεσε Μαγικές Λέξεις!", "magicWordsActive": "Μαγικές λέξεις προστέθηκαν!", "nextStep": "Αποκάλυψη Επόμενου Βήματος", "withMagic": "Με σκέψη βήμα-βήμα:", "retry": "Προσπάθησε ξανά" },
+    "promptLab": { "title": "Εργαστήριο Prompts", "progress": "Βελτιώσεις", "yourPrompt": "Το Prompt σου:", "aiSays": "Απάντηση AI:", "addDetails": "Πρόσθεσε βελτιώσεις:", "success": "Το prompt σου είναι τώρα πολύ συγκεκριμένο!", "retry": "Από την αρχή" },
+    "wordPredictor": { "title": "Πώς Σκέφτεται η AI", "instruction": "Η AI μαντεύει την πιο πιθανή επόμενη λέξη. Μπορείς να σκεφτείς σαν AI;", "aiThinks": "Η AI διαβάζει:", "thinkingDefault": "Χμμ, ποια λέξη θα είχε νόημα εδώ;", "check": "Έλεγξε την απάντησή μου!", "correct": "Σκέφτεσαι σαν AI!", "tryAgain": "Όχι ακριβώς! Η AI διαλέγει την πιο πιθανή λέξη.", "retry": "Προσπάθησε ξανά" },
+    "settings": { "title": "Ρυθμίσεις", "language": "Γλώσσα", "progress": "Η Πρόοδός σου", "stars": "Αστέρια", "completed": "Ολοκληρώθηκε", "resetTitle": "Επαναφορά Προόδου", "resetButton": "Επαναφορά Όλων", "resetWarning": "Αυτό θα διαγράψει όλα τα αστέρια και την πρόοδο. Είσαι σίγουρος;", "resetConfirm": "Ναι, Επαναφορά Όλων", "resetComplete": "Η πρόοδος επαναφέρθηκε! Επαναφόρτωση...", "cancel": "Ακύρωση" }
   }
 }

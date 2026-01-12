@@ -1,0 +1,81 @@
+<Section>
+<Panel character="promi" mood="excited">
+**명확함의 성**에 오신 것을 환영해요! 🏰 여기 와줘서 정말 기뻐요! 이 세계에서 **세부사항**의 마법을 배울 거예요!
+</Panel>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+누군가에게 무언가를 부탁했는데, 그 사람이 네 말을 이해하지 못한 적 있어? AI에게도 같은 일이 일어나요!
+</Panel>
+</Section>
+
+<Section>
+## 모호한 프롬프트의 문제
+
+이 두 프롬프트를 봐봐요:
+
+❌ **모호함:** "그림을 그려줘"
+
+✅ **구체적:** "햇살 가득한 공원에서 놀고 있는 행복한 강아지 그림을 그려줘"
+
+어떤 게 더 많은 정보를 줘요?
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+두 번째는 **무엇을** 그릴지(강아지), **무엇을 하는지**(놀고 있는), **어디서**(햇살 가득한 공원)를 알려줘요. 이게 세부사항의 힘이에요!
+</Panel>
+</Section>
+
+<Section>
+## 연습해 봐요!
+
+<PromptVsMistake
+  question="어떤 프롬프트가 더 좋은 세부사항을 가지고 있나요?"
+  good="날고 싶어하는 펭귄에 대한 재미있는 농담을 써줘"
+  bad="농담 해줘"
+  explanation="자세한 프롬프트는 어떤 종류의 농담을 원하는지 정확히 알려줘요 - 재미있고, 펭귄에 대한, 특정한 이야기로!"
+  promiMessage="세부사항은 네가 원하는 것을 정확히 이해하도록 도와주는 단서 같아요!"
+/>
+</Section>
+
+<Section>
+## 세부사항이 중요한 이유
+
+<PromptVsMistake
+  question="어떤 프롬프트가 프로미가 더 좋은 생일 카드를 만들게 해줄까요?"
+  good="정원 가꾸기와 보라색을 좋아하는 할머니를 위한 생일 카드를 만들어줘"
+  bad="생일 카드를 만들어줘"
+  explanation="할머니를 위한 거고, 정원 가꾸기를 좋아하고, 좋아하는 색깔을 알면 특별하고 개인적인 것을 만들 수 있어요!"
+  promiMessage="네가 원하는 것에 대해 더 많이 알수록, 더 잘 도와줄 수 있어요!"
+/>
+</Section>
+
+<Section>
+## 세부사항을 채워봐요!
+
+<MagicWords
+  sentence="___에 살면서 ___를 좋아하는 ___에 대한 이야기를 써주세요"
+  blanks={[
+    { hint: "🐱 동물", answers: ["고양이", "강아지", "토끼", "용", "유니콘"] },
+    { hint: "🏠 장소", answers: ["성", "숲", "도시", "나무 위 집", "동굴"] },
+    { hint: "⭐ 활동", answers: ["노래하기", "춤추기", "요리하기", "그림 그리기", "탐험하기"] }
+  ]}
+  successMessage="세부사항을 추가하는 훌륭한 작업이에요!"
+/>
+</Section>
+
+<Section>
+## 배우고 있어요! 🎉
+
+<Panel character="promi" mood="celebrating">
+훌륭한 작업이에요! **세부사항이 프롬프트를 더 좋게 만든다**는 것을 발견했어요. 모호한 프롬프트 = 혼란스러운 AI. 자세한 프롬프트 = 놀라운 결과!
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-1-missing-details" 
+  stars={3}
+  message="프롬프트에서 세부사항이 왜 중요한지 배웠어요!"
+/>
+</Section>

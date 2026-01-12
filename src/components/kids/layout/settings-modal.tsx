@@ -23,7 +23,6 @@ const SUPPORTED_LOCALES = [
   { code: "ar", label: "العربية", flag: "🇸🇦" },
   { code: "fa", label: "فارسی", flag: "🇮🇷" },
   { code: "ru", label: "Русский", flag: "🇷🇺" },
-  { code: "he", label: "עברית", flag: "🇮🇱" },
   { code: "el", label: "Ελληνικά", flag: "🇬🇷" },
 ];
 

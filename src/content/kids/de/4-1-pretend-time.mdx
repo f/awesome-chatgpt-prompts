@@ -1,0 +1,86 @@
+<Section>
+<Panel character="promi" mood="excited">
+Willkommen in der **Kreativitäts-Schlucht**! 🎨 Hier wird Kreativität lebendig! Heute lernen wir über **Rollenspiel-Prompts**!
+</Panel>
+</Section>
+
+<Section>
+## Was ist Rollenspiel?
+
+**Rollenspiel** bedeutet, die KI zu bitten, so zu tun als wäre sie jemand oder etwas!
+
+Du kannst Dinge sagen wie:
+- "Tu so als wärst du ein Pirat..."
+- "Stell dir vor, du bist ein Lehrer..."
+- "Du bist ein freundlicher Koch..."
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+Wenn du mich bittest, eine Rolle zu spielen, kann ich Antworten in der Stimme und dem Stil dieser Figur geben! Es ist wie zusammen Fantasiespiel spielen!
+</Panel>
+</Section>
+
+<Section>
+## Sieh Rollenspiel in Aktion!
+
+<PromptVsMistake
+  question="Welcher Prompt nutzt Rollenspiel?"
+  good="Tu so als wärst du ein freundlicher Weltraumforscher. Erzähl mir von deinen Abenteuern auf dem Mars!"
+  bad="Erzähl mir über den Mars"
+  explanation="Der erste Prompt bittet mich, ein Weltraumforscher zu SEIN, so kann ich dir auf lustige, persönliche Weise von 'meinen' Abenteuern erzählen!"
+  promiMessage="Rollenspiel macht unsere Gespräche so viel lustiger und kreativer!"
+/>
+</Section>
+
+<Section>
+## Wähle deine Figur!
+
+<PromptVsMistake
+  question="Welche Rolle wäre am besten, um über den Ozean zu lernen?"
+  good="Tu so als wärst du eine weise alte Meeresschildkröte, die 100 Jahre gelebt hat. Was für coole Dinge hast du im Ozean gesehen?"
+  bad="Was lebt im Ozean?"
+  explanation="Eine 100-jährige Meeresschildkröte hat so viel gesehen! Das macht das Lernen über den Ozean wie Geschichten von einem Freund hören!"
+  promiMessage="Verschiedene Rollen geben verschiedene Perspektiven und machen das Lernen interessanter!"
+/>
+</Section>
+
+<Section>
+## Erstelle einen Rollenspiel-Prompt!
+
+<DragDropPrompt
+  title="Fantasiezeit!"
+  instruction="Ordne die Teile, um einen lustigen Rollenspiel-Prompt zu erstellen"
+  pieces={["und erzähl mir", "Tu so als wärst du ein Drache", "von deinem Lieblingsschatz", "der gerne glänzende Dinge sammelt"]}
+  correctOrder={[1, 3, 0, 2]}
+  successMessage="Toller Rollenspiel-Prompt! Jetzt kann der Drache seine Schatzgeschichten teilen!"
+/>
+</Section>
+
+<Section>
+## Baue dein eigenes Rollenspiel!
+
+<MagicWords
+  sentence="Tu so als wärst du ein ___ der ___. Erzähl mir von ___."
+  blanks={[
+    { hint: "🎭 eine Figur", answers: ["Zauberer", "Superheld", "sprechende Katze", "Zeitreisender", "Fee"] },
+    { hint: "⭐ was sie tut", answers: ["Wünsche erfüllt", "den Tag rettet", "magische Länder erkundet", "coole Gadgets erfindet", "Tränke macht"] },
+    { hint: "📖 was teilen", answers: ["dein größtes Abenteuer", "deinen besten Tag", "einen lustigen Fehler den du gemacht hast", "dein geheimes Versteck", "deinen besten Freund"] }
+  ]}
+  successMessage="Tolles Rollenspiel! Jetzt können wir ein lustiges Fantasiegespräch führen!"
+/>
+</Section>
+
+<Section>
+## Rollenspiel-Meister! 🎉
+
+<Panel character="promi" mood="celebrating">
+Fantastisch! Du hast gelernt, dass **Rollenspiel-Prompts** Gespräche kreativ und lustig machen! Bitte mich einfach "zu tun als ob" oder "so zu tun als wäre ich" jemand!
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-1-pretend-time" 
+  stars={3}
+  message="Du hast gelernt, Rollenspiel-Prompts zu nutzen!"
+/>
+</Section>

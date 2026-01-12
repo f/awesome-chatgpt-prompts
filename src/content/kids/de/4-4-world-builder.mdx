@@ -1,0 +1,85 @@
+<Section>
+<Panel character="promi" mood="excited">
+Willkommen zum letzten Level der Kreativitäts-Schlucht! 🎨 Lass uns **Weltenbauer** werden und erstaunliche fantasievolle Szenarien erschaffen!
+</Panel>
+</Section>
+
+<Section>
+## Fantasiewelten bauen
+
+Du kannst die KI bitten, dir zu helfen, ganze Welten zu erschaffen:
+
+- Fantasy-Königreiche mit Magie
+- Futuristische Städte mit Robotern
+- Unterwasser-Zivilisationen
+- Planeten in fernen Galaxien
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Die einzige Grenze ist deine Fantasie! Erzähl mir von deiner Welt und ich helfe, sie zum Leben zu erwecken!
+</Panel>
+</Section>
+
+<Section>
+## Weltenbau in Aktion!
+
+<PromptVsMistake
+  question="Welcher Prompt baut eine bessere Welt?"
+  good="Hilf mir, eine Welt zu erschaffen, wo alle Tiere sprechen können und ihre eigenen Städte haben. Die Katzen leiten die Bibliotheken und die Hunde sind Feuerwehrleute. Was könnte es noch dort geben?"
+  bad="Erfinde eine Welt"
+  explanation="Der detaillierte Prompt beginnt, die Welt zu bauen (sprechende Tiere mit Jobs) und bittet mich, mehr hinzuzufügen!"
+  promiMessage="Ich liebe diese Welt! Vielleicht liefern die Vögel Post und die Hasen führen Bäckereien!"
+/>
+</Section>
+
+<Section>
+## Erweitere deine Welt!
+
+<PromptVsMistake
+  question="Welcher Prompt hilft, eine Welt wachsen zu lassen?"
+  good="In meiner magischen Waldwelt gibt es Bäume, die Süßigkeiten wachsen lassen. Welche Arten von Süßigkeitenbäumen könnte es geben? Wer kümmert sich um sie? Welche Abenteuer könnten dort passieren?"
+  bad="Erzähl mir von einem Wald"
+  explanation="Indem du spezifische Fragen über deine Welt stellst, kann ich dir helfen, sie mit neuen Ideen zu erweitern!"
+  promiMessage="'Was wäre wenn' Fragen zu stellen hilft Welten, größer und interessanter zu werden!"
+/>
+</Section>
+
+<Section>
+## Baue deine Welt!
+
+<DragDropPrompt
+  title="Weltenbauer"
+  instruction="Ordne, um eine fantasievolle Welt zu erschaffen"
+  pieces={["Hilf mir, eine Welt zu erschaffen", "wo alles Wetter kontrolliert wird von", "Was könnte schief gehen?", "freundlichen Wetterzauberern."]}
+  correctOrder={[0, 1, 3, 2]}
+  successMessage="Was für eine kreative Welt! Ich stelle mir so viele lustige Szenarien vor!"
+/>
+</Section>
+
+<Section>
+## Erschaffe deine ultimative Welt!
+
+<MagicWords
+  sentence="Hilf mir, eine Welt zu bauen, wo ___. Das Besondere, das sie speziell macht, ist ___. Wer lebt dort? Welche Abenteuer könnten passieren?"
+  blanks={[
+    { hint: "🌍 Weltkonzept", answers: ["Träume lebendig werden", "jeder Superkräfte hat", "Spielzeug nachts sich bewegen kann", "Musik Magie erschafft", "Farben Gefühle haben"] },
+    { hint: "✨ besonderes Merkmal", answers: ["ein riesiger magischer Baum in der Mitte", "schwebende Inseln am Himmel", "Flüsse die mit Sternenlicht fließen", "Gebäude aus Wolken gemacht", "Türen zu anderen Dimensionen"] }
+  ]}
+  successMessage="Was für eine unglaubliche Welt! Die Abenteuer sind endlos!"
+/>
+</Section>
+
+<Section>
+## Herzlichen Glückwunsch, Weltenbauer! 🎉
+
+<Panel character="promi" mood="celebrating">
+Du hast es geschafft! Du hast die Kreativitäts-Schlucht abgeschlossen und bist ein **Weltenbauer** geworden! Deine Fantasie kombiniert mit KI kann endlose erstaunliche Welten erschaffen!
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-4-world-builder" 
+  stars={3}
+  message="Du hast die Kreativitäts-Schlucht abgeschlossen! Du bist ein Weltenbauer!"
+/>
+</Section>

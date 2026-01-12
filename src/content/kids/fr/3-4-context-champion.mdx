@@ -1,0 +1,87 @@
+<Section>
+<Panel character="promi" mood="excited">
+Bienvenue au dernier niveau des Grottes du Contexte ! 🕳️ C'est l'heure de devenir un **Champion du Contexte** en combinant tout ce que tu as appris !
+</Panel>
+</Section>
+
+<Section>
+## La checklist du Champion du Contexte
+
+Un super contexte inclut :
+
+✅ **Arrière-plan** - Qui tu es, dans quelle situation tu es
+✅ **Exemples** - Montre ce que tu veux
+✅ **Format** - Comment tu veux que la réponse soit organisée
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Mets les trois ensemble et tu obtiendras des résultats incroyables à chaque fois !
+</Panel>
+</Section>
+
+<Section>
+## Défi Champion #1
+
+<PromptVsMistake
+  question="Quel prompt a le meilleur contexte ?"
+  good="Je suis un enfant de 9 ans qui fait une affiche sur le recyclage pour le Jour de la Terre. Peux-tu me donner 5 slogans accrocheurs comme 'Réduire, Réutiliser, Recycler !' - courts et faciles à retenir ?"
+  bad="Donne-moi des slogans sur le recyclage"
+  explanation="Le prompt champion inclut : Arrière-plan (9 ans, affiche Jour de la Terre), Exemple ('Réduire, Réutiliser, Recycler !'), et Format (5 slogans, courts) !"
+  promiMessage="Ce prompt me dit tout ce dont j'ai besoin pour te donner des slogans parfaits !"
+/>
+</Section>
+
+<Section>
+## Défi Champion #2
+
+<PromptVsMistake
+  question="Quel prompt combine le mieux les éléments de contexte ?"
+  good="J'aide mon petit frère à apprendre les sons des animaux. Peux-tu faire une liste amusante de 6 animaux avec leurs sons, comme 'Vache - Meuh !' - fais-la rigolote et simple ?"
+  bad="Liste les sons des animaux"
+  explanation="Ça inclut : Arrière-plan (aider petit frère à apprendre), Exemple (Vache - Meuh !), et Format (liste de 6, rigolote et simple) !"
+  promiMessage="Contexte parfait ! Je sais exactement ce qui marchera pour ton petit frère !"
+/>
+</Section>
+
+<Section>
+## Construis un prompt champion !
+
+<DragDropPrompt
+  title="Champion du Contexte"
+  instruction="Arrange TOUS les éléments de contexte en un prompt parfait"
+  pieces={["J'écris une histoire pour ma classe.", "Peux-tu suggérer 3 noms d'animaux magiques", "comme 'Étincelle' ou 'Rayon de Lune' ?", "Quelque chose de mignon mais pas trop long."]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Prompt champion ! Tu as inclus arrière-plan, exemples et préférences de format !"
+/>
+</Section>
+
+<Section>
+## Crée ton prompt champion !
+
+<MagicWords
+  sentence="Je suis un ___ qui travaille sur ___. Peux-tu me donner ___ comme ___ ? Fais-le ___."
+  blanks={[
+    { hint: "👤 qui tu es", answers: ["élève", "jeune auteur", "enfant curieux", "artiste créatif", "cuisinier débutant"] },
+    { hint: "📚 ton projet", answers: ["un projet d'école", "une carte d'anniversaire", "une histoire drôle", "une expérience de sciences", "une BD"] },
+    { hint: "🎯 ce dont tu as besoin", answers: ["3 bonnes idées", "5 titres amusants", "quelques noms cool", "des exemples", "des conseils utiles"] },
+    { hint: "💡 un exemple", answers: ["'Super Étoile'", "'Moment Magique'", "'Monde Merveilleux'", "'Aide Joyeuse'", "'Équipe de Rêve'"] },
+    { hint: "✨ le style", answers: ["amusant et court", "créatif et accrocheur", "simple et clair", "excitant et audacieux", "amical et chaleureux"] }
+  ]}
+  successMessage="Tu es un vrai Champion du Contexte ! Ce prompt a tout !"
+/>
+</Section>
+
+<Section>
+## Félicitations, Champion ! 🎉
+
+<Panel character="promi" mood="celebrating">
+Tu l'as fait ! Tu as terminé les Grottes du Contexte et tu es devenu un **Champion du Contexte** ! Maintenant tu sais combiner arrière-plan, exemples et format pour des prompts incroyables !
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-4-context-champion" 
+  stars={3}
+  message="Tu as terminé les Grottes du Contexte ! Tu es un Champion du Contexte !"
+/>
+</Section>

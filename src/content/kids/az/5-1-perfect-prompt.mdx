@@ -1,0 +1,107 @@
+<Section>
+<Panel character="promi" mood="excited">
+**Ustalıq Dağına** xoş gəlmisiniz! ⛰️ Bu qədər uzağa gəldiniz! İndi öyrəndiyiniz HƏR ŞEYİ mükəmməl promptlara birləşdirmək vaxtıdır!
+</Panel>
+</Section>
+
+<Section>
+## Usta Yoxlama Siyahısı
+
+Mükəmməl prompt daxil edə bilər:
+
+✅ **Aydınlıq** - Konkret olun, qeyri-müəyyən deyil
+✅ **Detallar** - KİM, NƏ, NƏ VAXT, HARADA
+✅ **Kontekst** - Arxa plan məlumatı, nümunələr, format
+✅ **Yaradıcılıq** - Rol oynama, şəxsiyyət, xəyal
+</Section>
+
+<Section>
+## Sehrli sözlər: "Addım-addım düşün" 🧠
+
+<StepByStep
+  title="Addım-addım sehr"
+  problem="Hər birində 5 alma olan 3 paketim var və 2 yedim. Neçə qalıb?"
+  wrongAnswer="15 qalıb (Süni intellekt düşünmədən təxmin etdi!)"
+  steps={[
+    "Əvvəlcə: 3 paket × 5 alma = cəmi 15",
+    "Sonra: 2 alma yedim",
+    "Nəhayət: 15 - 2 = 13 qalır"
+  ]}
+  rightAnswer="13 qalır - və hesabı yoxlaya bilərik!"
+  magicWords="Gəlin addım-addım düşünək"
+  successMessage="Sehrli sözlər süni intellektə düşüncəsini göstərməyə kömək edir ki, düzgün olub-olmadığını yoxlaya biləsiniz!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Hər dəfə bunların HAMISINA ehtiyacınız yoxdur, amma hər birini nə vaxt istifadə edəcəyinizi bilmək sizi Prompt Ustası edir!
+</Panel>
+</Section>
+
+<Section>
+## Usta Çağırışı #1
+
+<PromptVsMistake
+  question="Hansı prompt ən çox bacarığı birləşdirir?"
+  good="Kosmosu sevən 10 yaşlı uşağam. Mehriban astronavt kimi davran və mənə Saturn haqqında 5 heyrətamiz fakt danış. Həyəcanlı et və uşağın başa düşəcəyi sadə sözlər istifadə et!"
+  bad="Mənə Saturn haqqında danış"
+  explanation="Bu promptda var: Kontekst (10 yaş, kosmosu sevir), Rol oynama (mehriban astronavt), Format (5 fakt), Şəxsiyyət (həyəcanlı) və Aydınlıq (sadə sözlər)!"
+  promiMessage="Bu usta səviyyəli promptdur! Dəqiq nəyə ehtiyacınız olduğunu deyir!"
+/>
+</Section>
+
+<Section>
+## Usta Çağırışı #2
+
+<PromptVsMistake
+  question="Hansı mükəmməl prompta daha yaxındır?"
+  good="Sehrli meşədə ağıllı qoca ağac kimi davran. Mən səni yeni tapmış gənc macəraçıyam. Mənə yaxınlıqda yaşayan sehrli varlıqlar haqqında qısa hekayə danış. Sirli, amma qorxulu deyil, xoşbəxt sonluqlu et!"
+  bad="Mənə meşə haqqında danış"
+  explanation="Bunda var: Rol oynama (ağıllı qoca ağac), Personajlar (gənc macəraçı), Yer (sehrli meşə), Mövzu (sehrli varlıqlar), Üslub (sirli, qorxulu deyil, xoşbəxt sonluq)!"
+  promiMessage="Bu qədər yaxşı element birlikdə! Bu heyrətamiz hekayə olacaq!"
+/>
+</Section>
+
+<Section>
+## Usta prompt qurun!
+
+<DragDropPrompt
+  title="Mükəmməl Prompt"
+  instruction="Bütün elementləri mükəmməl prompta sıralayın"
+  pieces={["Balıq tutmağı sevən atam üçün ad günü kartı hazırlayıram.", "Mənə 3 gülməli balıq tutma zarafatı ver", "'Balıq niyə qızardı? Dənizin dibini gördü!' kimi", "Ailəyə uyğun və qısa et!"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Mükəmməl! Kontekst, format, nümunə və üslub hamısı bir promptda!"
+/>
+</Section>
+
+<Section>
+## Usta promptunuzu yaradın!
+
+<MagicWords
+  sentence="Mən ___ ilə kömək lazım olan ___əm. ___ kimi davran və mənə ___ kimi ___ ver. ___ et!"
+  blanks={[
+    { hint: "👤 kimsiz", answers: ["gənc rəssam", "maraqlı şagird", "yaradıcı yazıçı", "təbiət sevər", "zarafat kolleksiyaçısı"] },
+    { hint: "📚 məqsədiniz", answers: ["məktəb layihəsi", "yaradıcı hekayə", "yeni şey öyrənmək", "kimisə güldürmək", "macəra planlaşdırmaq"] },
+    { hint: "🎭 bir personaj", answers: ["mehriban ekspert", "axmaq komediyaçı", "ağıllı müəllim", "yaradıcı ixtiraçı", "hekayə danışan nənə"] },
+    { hint: "🔢 nə lazımdır", answers: ["5 əyləncəli fikir", "3 faydalı məsləhət", "bəzi yaradıcı nümunələr", "qısa hekayə", "sadə izah"] },
+    { hint: "💡 nümunə", answers: ["'Super Ulduz Strategiyası'", "'Xoşbəxt Köməkçi Məsləhəti'", "'Sehrli An'", "'Möcüzə Sözü'", "'Yaradıcı Qığılcım'"] },
+    { hint: "✨ üslub", answers: ["əyləncəli və anlaşıqlı", "həyəcanlı və yadda qalan", "yaradıcı və rəngli", "faydalı və ruhlandırıcı", "axmaq amma faydalı"] }
+  ]}
+  successMessage="HEYRƏTAMİZ! Bu bütün elementləri olan əsl Usta Promptdur!"
+/>
+</Section>
+
+<Section>
+## Usta Bacarıqları açıldı! 🎉
+
+<Panel character="promi" mood="celebrating">
+Heyrətamiz! Bütün bacarıqlarınızı **mükəmməl promptlara** birləşdirməyi öyrəndiniz! Prompt Ustası olmaq yolundasınız!
+</Panel>
+
+<LevelComplete 
+  levelSlug="5-1-perfect-prompt" 
+  stars={3}
+  message="Mükəmməl promptlar yaratmağı öyrəndiniz!"
+/>
+</Section>

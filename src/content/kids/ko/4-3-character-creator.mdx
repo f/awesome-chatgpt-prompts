@@ -1,0 +1,88 @@
+<Section>
+<Panel character="promi" mood="excited">
+오늘은 AI에게 **성격**을 주는 법을 배워요! 🎭 이게 대화를 훨씬 더 재미있게 만들어요!
+</Panel>
+</Section>
+
+<Section>
+## AI에게 성격을 줘요!
+
+AI에게 어떤 성격을 가지라고 말할 수 있어요:
+
+- **친절하고 밝은** - 항상 긍정적!
+- **바보 같고 재미있는** - 농담을 많이 해요
+- **지혜롭고 차분한** - 신중한 대답을 줘요
+- **신나고 에너지 넘치는** - 느낌표를 많이 사용해요!
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+어떤 성격을 원하는지 말해주면, 당신이 찾는 분위기에 맞출 수 있어요!
+</Panel>
+</Section>
+
+<Section>
+## 성격이 차이를 만들어요!
+
+<PromptVsMistake
+  question="어떤 프롬프트가 재미있는 성격을 주나요?"
+  good="과학을 정말 좋아하는 엄청 신난 로봇인 척해줘! 느낌표를 많이 사용하고 '놀라워!'라고 자주 말해줘. 화산에 대해 말해줘!"
+  bad="화산에 대해 말해줘"
+  explanation="첫 번째 프롬프트는 재미있고 신난 성격을 만들어서 배움을 모험처럼 느끼게 해요!"
+  promiMessage="놀라워! 내가 신나면 과학이 얼마나 더 재미있는지 봐요?!"
+/>
+</Section>
+
+<Section>
+## 분위기를 맞춰요!
+
+<PromptVsMistake
+  question="잠잘 때 이야기에 가장 좋은 성격은 무엇일까요?"
+  good="차분하고 편안한 목소리로 잠잘 때 이야기를 해줘. 부드럽게 말하고 평화롭고 졸리게 만들어줘."
+  bad="잠잘 때 이야기를 해줘"
+  explanation="차분하고 편안한 성격을 요청하면, 이야기가 긴장을 풀도록 도와줄 거예요!"
+  promiMessage="다른 분위기는 다른 상황에 더 잘 맞아요!"
+/>
+</Section>
+
+<Section>
+## 캐릭터를 만들어요!
+
+<DragDropPrompt
+  title="캐릭터 성격"
+  instruction="재미있는 성격을 만들도록 배열해요"
+  pieces={["지혜로운 늙은 부엉이인 척해줘", "'부엉부엉' 소리를 많이 써줘!", "어린 새들에게 가르치는 것을 좋아하는.", "인내심 있고 친절하게 해줘."]}
+  correctOrder={[0, 2, 3, 1]}
+  successMessage="멋진 캐릭터예요! 부엉부엉! 이 부엉이는 가르칠 준비가 됐어요!"
+/>
+</Section>
+
+<Section>
+## AI 성격을 디자인해요!
+
+<MagicWords
+  sentence="항상 ___한 ___인 척해줘. ___를 사용하고 ___하게 돼줘. ___에 대해 말해줘."
+  blanks={[
+    { hint: "🎭 캐릭터 유형", answers: ["친절한 로봇", "지혜로운 마법사", "바보 같은 광대", "용감한 기사", "호기심 많은 외계인"] },
+    { hint: "😊 성격 특성", answers: ["신난", "차분한", "재미있는", "격려하는", "신비로운"] },
+    { hint: "💬 말하는 스타일", answers: ["많은 농담", "부드러운 말", "운율", "큰 단어", "효과음"] },
+    { hint: "❤️ 다른 특성", answers: ["도움이 되", "인내심 있", "창의적이", "모험적이", "다정하"] },
+    { hint: "📚 주제", answers: ["우주", "동물", "음악", "우정", "자연"] }
+  ]}
+  successMessage="놀라운 성격을 만들었어요! 이야기해요!"
+/>
+</Section>
+
+<Section>
+## 성격 마스터! 🎉
+
+<Panel character="promi" mood="celebrating">
+훌륭해요! AI에게 **성격**을 주면 대화가 더 재미있고 매력적이 된다는 것을 배웠어요! 다른 필요에 다른 성격을 시도해봐요!
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-3-character-creator" 
+  stars={3}
+  message="AI에게 성격을 주는 법을 배웠어요!"
+/>
+</Section>

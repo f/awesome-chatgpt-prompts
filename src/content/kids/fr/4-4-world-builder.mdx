@@ -1,0 +1,85 @@
+<Section>
+<Panel character="promi" mood="excited">
+Bienvenue au dernier niveau du Canyon de la Créativité ! 🎨 Devenons des **Constructeurs de Mondes** et créons des scénarios imaginatifs incroyables !
+</Panel>
+</Section>
+
+<Section>
+## Construire des mondes imaginaires
+
+Tu peux demander à l'IA de t'aider à créer des mondes entiers :
+
+- Royaumes fantastiques avec de la magie
+- Cités futuristes avec des robots
+- Civilisations sous-marines
+- Planètes dans des galaxies lointaines
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+La seule limite est ton imagination ! Parle-moi de ton monde et je t'aiderai à lui donner vie !
+</Panel>
+</Section>
+
+<Section>
+## La construction de monde en action !
+
+<PromptVsMistake
+  question="Quel prompt construit un meilleur monde ?"
+  good="Aide-moi à créer un monde où tous les animaux peuvent parler et ont leurs propres villes. Les chats gèrent les bibliothèques et les chiens sont pompiers. Quoi d'autre pourrait y avoir ?"
+  bad="Invente un monde"
+  explanation="Le prompt détaillé commence à construire le monde (animaux parlants avec des métiers) et me demande d'en ajouter !"
+  promiMessage="J'adore ce monde ! Peut-être que les oiseaux livrent le courrier et les lapins tiennent des boulangeries !"
+/>
+</Section>
+
+<Section>
+## Agrandis ton monde !
+
+<PromptVsMistake
+  question="Quel prompt aide à faire grandir un monde ?"
+  good="Dans mon monde de forêt magique, il y a des arbres qui font pousser des bonbons. Quels types d'arbres à bonbons pourraient exister ? Qui s'en occupe ? Quelles aventures pourraient s'y passer ?"
+  bad="Parle-moi d'une forêt"
+  explanation="En posant des questions spécifiques sur ton monde, je peux t'aider à l'agrandir avec de nouvelles idées !"
+  promiMessage="Poser des questions 'et si' aide les mondes à devenir plus grands et plus intéressants !"
+/>
+</Section>
+
+<Section>
+## Construis ton monde !
+
+<DragDropPrompt
+  title="Constructeur de Monde"
+  instruction="Arrange pour créer un monde imaginatif"
+  pieces={["Aide-moi à créer un monde", "où toute la météo est contrôlée par", "Qu'est-ce qui pourrait mal tourner ?", "des magiciens de la météo sympathiques."]}
+  correctOrder={[0, 1, 3, 2]}
+  successMessage="Quel monde créatif ! J'imagine plein de scénarios amusants !"
+/>
+</Section>
+
+<Section>
+## Crée ton monde ultime !
+
+<MagicWords
+  sentence="Aide-moi à construire un monde où ___. Ce qui le rend spécial c'est ___. Qui y vit ? Quelles aventures pourraient s'y passer ?"
+  blanks={[
+    { hint: "🌍 concept du monde", answers: ["les rêves deviennent réalité", "tout le monde a des super-pouvoirs", "les jouets peuvent bouger la nuit", "la musique crée de la magie", "les couleurs ont des sentiments"] },
+    { hint: "✨ caractéristique spéciale", answers: ["un arbre magique géant au centre", "des îles flottantes dans le ciel", "des rivières qui coulent avec de la lumière d'étoiles", "des bâtiments faits de nuages", "des portes vers d'autres dimensions"] }
+  ]}
+  successMessage="Quel monde incroyable ! Les aventures sont infinies !"
+/>
+</Section>
+
+<Section>
+## Félicitations, Constructeur de Monde ! 🎉
+
+<Panel character="promi" mood="celebrating">
+Tu l'as fait ! Tu as terminé le Canyon de la Créativité et tu es devenu un **Constructeur de Monde** ! Ton imagination combinée avec l'IA peut créer des mondes incroyables sans fin !
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-4-world-builder" 
+  stars={3}
+  message="Tu as terminé le Canyon de la Créativité ! Tu es un Constructeur de Monde !"
+/>
+</Section>

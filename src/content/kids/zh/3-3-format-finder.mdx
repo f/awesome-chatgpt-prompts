@@ -1,0 +1,87 @@
+<Section>
+<Panel character="promi" mood="excited">
+今天我们学习**格式**！📝 你知道你可以让AI以不同的方式回答吗？
+</Panel>
+</Section>
+
+<Section>
+## 什么是格式？
+
+**格式**是你希望回答如何呈现：
+
+- 📋 **列表** - 编号或项目符号
+- 📖 **故事** - 有开头、中间、结尾的叙述
+- 🎵 **诗** - 带韵律和节奏
+- ❓ **问答** - 问题和答案风格
+- 📊 **表格** - 按行列整理
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+告诉我格式，帮助我以对你最有用的方式组织我的回答！
+</Panel>
+</Section>
+
+<Section>
+## 格式有区别！
+
+<PromptVsMistake
+  question="哪个提示词要求了清晰的格式？"
+  good="给我5个关于海豚的有趣事实，用编号列表"
+  bad="告诉我关于海豚的事"
+  explanation="第一个提示词准确地告诉我如何组织回答 - 作为5个编号的事实！"
+  promiMessage="当你要求特定格式时，你就能得到正是你需要的！"
+/>
+</Section>
+
+<Section>
+## 选择你的格式！
+
+<PromptVsMistake
+  question="什么格式最适合记忆东西？"
+  good="用项目符号列出从太阳开始按顺序的行星"
+  bad="告诉我关于行星的事"
+  explanation="列表格式使按顺序记忆和数行星变得容易！"
+  promiMessage="列表很适合学习和记忆！"
+/>
+</Section>
+
+<Section>
+## 练习格式！
+
+<DragDropPrompt
+  title="添加格式"
+  instruction="排列来请求一个特定格式"
+  pieces={["作为一首短诗", "用押韵的句子", "写关于雨的", "4行"]}
+  correctOrder={[2, 0, 1, 3]}
+  successMessage="完美！你用具体细节请求了诗歌格式！"
+/>
+</Section>
+
+<Section>
+## 选择你的格式！
+
+<MagicWords
+  sentence="给我关于___的___，用___"
+  blanks={[
+    { hint: "🔢 多少", answers: ["5个技巧", "3个想法", "10个事实", "7个步骤", "4个例子"] },
+    { hint: "📚 主题", answers: ["做好朋友", "保护地球", "保持健康", "有创意", "学习新东西"] },
+    { hint: "📋 格式", answers: ["编号列表", "项目符号", "短诗", "简单故事", "简单步骤"] }
+  ]}
+  successMessage="选择格式做得很好！这让回答更容易阅读！"
+/>
+</Section>
+
+<Section>
+## 格式大师！🎉
+
+<Panel character="promi" mood="celebrating">
+太棒了！你学会了请求特定**格式**帮助你得到正是你需要的方式组织的回答！
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-3-format-finder" 
+  stars={3}
+  message="你学会了请求不同的格式！"
+/>
+</Section>

@@ -1,0 +1,85 @@
+<Section>
+<Panel character="promi" mood="excited">
+Yaradıcılıq Dərəsinin son səviyyəsinə xoş gəlmisiniz! 🎨 Gəlin **Dünya Qurucuları** olaq və heyrətamiz xəyali ssenarilər yaradaq!
+</Panel>
+</Section>
+
+<Section>
+## Xəyali dünyalar qurmaq
+
+Süni intellektdən bütün dünyalar yaratmaqda kömək istəyə bilərsiniz:
+
+- Sehri olan xəyal krallıqları
+- Robotları olan futuristik şəhərlər
+- Sualtı sivilizasiyalar
+- Uzaq qalaktikalarda planetlər
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Yeganə məhdudiyyət sizin xəyalınızdır! Mənə dünyanız haqqında danışın, canlandırmağa kömək edəcəyəm!
+</Panel>
+</Section>
+
+<Section>
+## Dünya qurmaq praktikada!
+
+<PromptVsMistake
+  question="Hansı prompt daha yaxşı dünya qurur?"
+  good="Bütün heyvanların danışa bildiyi və öz şəhərləri olan dünya yaratmaqda kömək et. Pişiklər kitabxanalar idarə edir, itlər yanğınsöndürəndir. Başqa nə ola bilər?"
+  bad="Bir dünya yarat"
+  explanation="Ətraflı prompt dünyanı qurmağa başlayır (işləri olan danışan heyvanlar) və məndən daha çox əlavə etməyimi istəyir!"
+  promiMessage="Bu dünyanı sevirəm! Bəlkə quşlar poçt çatdırır, dovşanlar çörəkxanalar işlədir!"
+/>
+</Section>
+
+<Section>
+## Dünyanızı genişləndirin!
+
+<PromptVsMistake
+  question="Hansı prompt dünyanın böyüməsinə kömək edir?"
+  good="Sehrli meşə dünyamda konfet yetişən ağaclar var. Hansı növ konfet ağacları ola bilər? Kim onlara qulluq edir? Orada hansı macəralar baş verə bilər?"
+  bad="Mənə meşə haqqında danış"
+  explanation="Dünyanız haqqında konkret suallar soruşduğunuzda, yeni fikirlərlə genişləndirməyə kömək edə bilirəm!"
+  promiMessage="'Bəs əgər' sualları dünyaların daha böyük və maraqlı olmasına kömək edir!"
+/>
+</Section>
+
+<Section>
+## Öz dünyanızı qurun!
+
+<DragDropPrompt
+  title="Dünya Qurucusu"
+  instruction="Xəyali dünya yaratmaq üçün sıralayın"
+  pieces={["Bir dünya yaratmaqda kömək et", "bütün hava", "Nə səhv gedə bilər?", "mehriban hava sehrbazları tərəfindən idarə olunur."]}
+  correctOrder={[0, 1, 3, 2]}
+  successMessage="Nə yaradıcı dünya! Çox əyləncəli ssenarı təsəvvür edirəm!"
+/>
+</Section>
+
+<Section>
+## İdeal dünyanızı yaradın!
+
+<MagicWords
+  sentence="___ olan dünya qurmaqda kömək et. Onu xüsusi edən əsas şey ___. Kim orada yaşayır? Hansı macəralar baş verə bilər?"
+  blanks={[
+    { hint: "🌍 dünya konsepti", answers: ["xəyallar gerçək olur", "hamının super güclər var", "oyuncaqlar gecə canlanır", "musiqi sehr yaradır", "rənglərin hissləri var"] },
+    { hint: "✨ xüsusi xüsusiyyət", answers: ["mərkəzdə nəhəng sehrli ağac", "göydə üzən adalar", "ulduz işığı ilə axan çaylar", "buludlardan tikilmiş binalar", "başqa ölçülərə qapılar"] }
+  ]}
+  successMessage="Nə heyrətamiz dünya! Macəralar sonsuzdur!"
+/>
+</Section>
+
+<Section>
+## Təbrik edirik, Dünya Qurucusu! 🎉
+
+<Panel character="promi" mood="celebrating">
+Bacardınız! Yaradıcılıq Dərəsini keçdiniz və **Dünya Qurucusu** oldunuz! Sizin xəyalınız süni intellektlə birləşərək sonsuz heyrətamiz dünyalar yarada bilər!
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-4-world-builder" 
+  stars={3}
+  message="Yaradıcılıq Dərəsini keçdiniz! Siz Dünya Qurucususunuz!"
+/>
+</Section>

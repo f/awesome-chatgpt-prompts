@@ -1,0 +1,86 @@
+<Section>
+<Panel character="promi" mood="excited">
+Bem-vindo ao **Cânion da Criatividade**! 🎨 Aqui é onde a criatividade ganha vida! Hoje aprendemos sobre **prompts de interpretação de papéis**!
+</Panel>
+</Section>
+
+<Section>
+## O que é interpretação de papéis?
+
+**Interpretação de papéis** significa pedir à IA para fingir ser alguém ou algo!
+
+Você pode dizer coisas como:
+- "Finja que você é um pirata..."
+- "Imagine que você é um professor..."
+- "Você é um chef simpático..."
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+Quando você me pede para interpretar um papel, posso dar respostas com a voz e o estilo desse personagem! É como brincar de faz de conta juntos!
+</Panel>
+</Section>
+
+<Section>
+## Veja a interpretação de papéis em ação!
+
+<PromptVsMistake
+  question="Qual prompt usa interpretação de papéis?"
+  good="Finja que você é um explorador espacial simpático. Me conte sobre suas aventuras em Marte!"
+  bad="Me conte sobre Marte"
+  explanation="O primeiro prompt me pede para SER um explorador espacial, assim posso te contar sobre 'minhas' aventuras de forma divertida e pessoal!"
+  promiMessage="A interpretação de papéis torna nossas conversas muito mais divertidas e criativas!"
+/>
+</Section>
+
+<Section>
+## Escolha seu personagem!
+
+<PromptVsMistake
+  question="Qual papel seria melhor para aprender sobre o oceano?"
+  good="Finja que você é uma tartaruga marinha velha e sábia que viveu 100 anos. Que coisas legais você viu no oceano?"
+  bad="O que vive no oceano?"
+  explanation="Uma tartaruga marinha de 100 anos viu tanta coisa! Isso faz o aprendizado sobre o oceano parecer como ouvir histórias de um amigo!"
+  promiMessage="Papéis diferentes dão perspectivas diferentes e tornam o aprendizado mais interessante!"
+/>
+</Section>
+
+<Section>
+## Crie um prompt de interpretação de papéis!
+
+<DragDropPrompt
+  title="Hora de imaginar!"
+  instruction="Organize as peças para criar um prompt de interpretação de papéis divertido"
+  pieces={["e me conte", "Finja que você é um dragão", "sobre seu tesouro favorito", "que adora colecionar coisas brilhantes"]}
+  correctOrder={[1, 3, 0, 2]}
+  successMessage="Ótimo prompt de interpretação de papéis! Agora o dragão pode compartilhar suas histórias de tesouros!"
+/>
+</Section>
+
+<Section>
+## Construa sua própria interpretação de papéis!
+
+<MagicWords
+  sentence="Finja que você é um ___ que ___. Me conte sobre ___."
+  blanks={[
+    { hint: "🎭 um personagem", answers: ["mago", "super-herói", "gato falante", "viajante do tempo", "fada"] },
+    { hint: "⭐ o que faz", answers: ["realiza desejos", "salva o dia", "explora terras mágicas", "inventa gadgets legais", "faz poções"] },
+    { hint: "📖 o que compartilhar", answers: ["sua maior aventura", "seu melhor dia", "um erro engraçado que você cometeu", "seu esconderijo secreto", "seu melhor amigo"] }
+  ]}
+  successMessage="Interpretação de papéis incrível! Agora podemos ter uma conversa imaginária divertida!"
+/>
+</Section>
+
+<Section>
+## Mestre da Interpretação de Papéis! 🎉
+
+<Panel character="promi" mood="celebrating">
+Fantástico! Você aprendeu que **prompts de interpretação de papéis** tornam as conversas criativas e divertidas! Só me peça para "fingir" ou "ser" alguém!
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-1-pretend-time" 
+  stars={3}
+  message="Você aprendeu a usar prompts de interpretação de papéis!"
+/>
+</Section>

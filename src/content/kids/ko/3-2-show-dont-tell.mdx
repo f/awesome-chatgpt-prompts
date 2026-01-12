@@ -1,0 +1,104 @@
+<Section>
+<Panel character="promi" mood="happy">
+다시 오신 것을 환영해요! 오늘 수업은 매우 중요해요: **보여주세요, 말하지 마세요**! 예시를 사용하는 것은 AI가 이해하도록 돕는 가장 좋은 방법 중 하나예요!
+</Panel>
+</Section>
+
+<Section>
+## 예시의 힘
+
+원하는 것을 설명하는 대신, **예시를 보여주세요**!
+
+누군가에게 게임을 가르치는 것과 같아요 - 규칙만 설명하는 것보다 어떻게 플레이하는지 보여주는 게 더 쉬워요!
+</Section>
+
+<Section>
+## 패턴을 배워요!
+
+<ExampleMatcher
+  title="패턴의 힘"
+  instruction="AI는 예시에서 배워요! 패턴을 보고 다음에 올 것을 선택하세요."
+  examples={[
+    { input: "행복한", output: "😊" },
+    { input: "슬픈", output: "😢" },
+    { input: "졸린", output: "😴" }
+  ]}
+  question="화난"
+  options={["😠", "😊", "🎉", "😴"]}
+  correctAnswer="😠"
+  explanation="AI가 배웠어요: 감정 단어 → 해당하는 이모지! 이것을 '예시로 배우기'라고 해요 - 당신처럼요!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+"멋지게 해줘"라고 하면, 당신에게 "멋진"이 무엇인지 모를 수도 있어요. 하지만 예시를 보여주면 완벽하게 이해할 수 있어요!
+</Panel>
+</Section>
+
+<Section>
+## 차이를 봐요
+
+<PromptVsMistake
+  question="어떤 프롬프트가 예시를 더 잘 사용하나요?"
+  good="'슈퍼 반짝 샴푸'나 '매직 클라우드 베개' 같은 재미있는 제품 이름을 써줘 - 캐치하고 장난스러운 것!"
+  bad="재미있는 제품 이름을 써줘"
+  explanation="예시는 당신이 찾는 이름의 스타일을 정확히 보여줘요 - 캐치하고 장난스럽고 재미있는 형용사와 함께!"
+  promiMessage="예시는 보물 지도와 같아요 - 당신이 어디로 가고 싶은지 정확히 보여줘요!"
+/>
+</Section>
+
+<Section>
+## 스타일을 보여줘요
+
+<PromptVsMistake
+  question="어떤 프롬프트가 글쓰기 스타일을 더 잘 보여주나요?"
+  good="이런 스타일로 농담을 써줘: '바나나는 왜 의사에게 갔을까? 기분이 안 좋아서!' - 말장난이 있는 우스꽝스러운 것!"
+  bad="재미있는 농담을 써줘"
+  explanation="말장난 농담의 예시를 보여주면, 같은 우스꽝스러운 스타일을 원한다는 걸 알아요!"
+  promiMessage="좋아하는 것을 보여주면, 그 스타일을 맞출 수 있어요!"
+/>
+</Section>
+
+<Section>
+## 예시를 줘요!
+
+<DragDropPrompt
+  title="예시로 만들기"
+  instruction="조각을 배열해서 유용한 예시가 있는 프롬프트를 만들어요"
+  pieces={["슈퍼히어로 이름을 써줘", "'캡틴 용기'처럼", "또는 '번개 레이디'", "- 영웅적이고 기억에 남는 것"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="완벽해요! 예시가 어떤 종류의 이름을 원하는지 정확히 보여줘요!"
+/>
+</Section>
+
+<Section>
+## 예시가 있는 프롬프트를 만들어요!
+
+<MagicWords
+  sentence="'___ ___ ___' 같은 ___를 써줘 - ___하고 ___한 것"
+  blanks={[
+    { hint: "📝 무엇을 쓸지", answers: ["팀 이름", "펫 이름", "밴드 이름", "책 제목", "레스토랑 이름"] },
+    { hint: "✨ 형용사", answers: ["슈퍼", "해피", "골든", "매직", "파워풀"] },
+    { hint: "🌟 명사", answers: ["스타즈", "드래곤즈", "드림즈", "썬더", "피닉스"] },
+    { hint: "🎯 단어", answers: ["클럽", "스쿼드", "팀", "킹덤", "어드벤처"] },
+    { hint: "😊 스타일1", answers: ["재미있", "신나", "멋있", "창의적이", "캐치"] },
+    { hint: "🎨 스타일2", answers: ["기억에 남", "유니크", "파워풀", "친근", "대담"] }
+  ]}
+  successMessage="훌륭해요! 예시가 어떤 스타일을 원하는지 정확히 보여줘요!"
+/>
+</Section>
+
+<Section>
+## 예시는 강력해요! 🎉
+
+<Panel character="promi" mood="celebrating">
+놀라운 작업이에요! **예시를 보여주는 것**이 AI가 원하는 것을 정확히 이해하도록 돕는 가장 좋은 방법 중 하나라는 것을 배웠어요!
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-2-show-dont-tell" 
+  stars={3}
+  message="프롬프트에서 예시 사용을 마스터했어요!"
+/>
+</Section>

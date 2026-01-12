@@ -1,0 +1,86 @@
+<Section>
+<Panel character="promi" mood="excited">
+¡Bienvenido al **Cañón de la Creatividad**! 🎨 ¡Aquí es donde la creatividad cobra vida! ¡Hoy aprendemos sobre **prompts de juego de roles**!
+</Panel>
+</Section>
+
+<Section>
+## ¿Qué es el juego de roles?
+
+**Juego de roles** significa pedirle a la IA que finja ser alguien o algo.
+
+Puedes decir cosas como:
+- "Actúa como un pirata..."
+- "Finge que eres un maestro..."
+- "Eres un chef amigable..."
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+¡Cuando me pides que interprete un rol, puedo dar respuestas con la voz y el estilo de ese personaje! ¡Es como jugar a imaginar juntos!
+</Panel>
+</Section>
+
+<Section>
+## ¡Mira el juego de roles en acción!
+
+<PromptVsMistake
+  question="¿Qué prompt usa juego de roles?"
+  good="Finge que eres un explorador espacial amigable. ¡Cuéntame sobre tus aventuras en Marte!"
+  bad="Cuéntame sobre Marte"
+  explanation="¡El primer prompt me pide que SEA un explorador espacial, así puedo contarte sobre 'mis' aventuras de manera divertida y personal!"
+  promiMessage="¡El juego de roles hace nuestras conversaciones mucho más divertidas y creativas!"
+/>
+</Section>
+
+<Section>
+## ¡Elige tu personaje!
+
+<PromptVsMistake
+  question="¿Qué rol sería mejor para aprender sobre el océano?"
+  good="Actúa como una tortuga marina sabia que ha vivido 100 años. ¿Qué cosas geniales has visto en el océano?"
+  bad="¿Qué vive en el océano?"
+  explanation="¡Una tortuga marina de 100 años ha visto mucho! ¡Esto hace que aprender sobre el océano se sienta como escuchar historias de un amigo!"
+  promiMessage="¡Diferentes roles dan diferentes perspectivas y hacen el aprendizaje más interesante!"
+/>
+</Section>
+
+<Section>
+## ¡Crea un prompt de juego de roles!
+
+<DragDropPrompt
+  title="¡Tiempo de imaginar!"
+  instruction="Ordena las piezas para crear un prompt de juego de roles divertido"
+  pieces={["y cuéntame", "Finge que eres un dragón", "sobre tu tesoro favorito", "que ama coleccionar cosas brillantes"]}
+  correctOrder={[1, 3, 0, 2]}
+  successMessage="¡Gran prompt de juego de roles! ¡Ahora el dragón puede compartir sus historias de tesoros!"
+/>
+</Section>
+
+<Section>
+## ¡Construye tu propio juego de roles!
+
+<MagicWords
+  sentence="Finge que eres un ___ que ___. Cuéntame sobre ___."
+  blanks={[
+    { hint: "🎭 un personaje", answers: ["mago", "superhéroe", "gato que habla", "viajero del tiempo", "hada"] },
+    { hint: "⭐ qué hace", answers: ["concede deseos", "salva el día", "explora tierras mágicas", "inventa gadgets geniales", "hace pociones"] },
+    { hint: "📖 qué compartir", answers: ["tu mejor aventura", "tu mejor día", "un error gracioso que cometiste", "tu escondite secreto", "tu mejor amigo"] }
+  ]}
+  successMessage="¡Increíble juego de roles! ¡Ahora podemos tener una conversación imaginaria divertida!"
+/>
+</Section>
+
+<Section>
+## ¡Maestro del Juego de Roles! 🎉
+
+<Panel character="promi" mood="celebrating">
+¡Fantástico! Aprendiste que los **prompts de juego de roles** hacen las conversaciones creativas y divertidas. ¡Solo pídeme que "actúe como" o "finja ser" alguien!
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-1-pretend-time" 
+  stars={3}
+  message="¡Aprendiste a usar prompts de juego de roles!"
+/>
+</Section>

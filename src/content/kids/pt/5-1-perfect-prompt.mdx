@@ -1,0 +1,107 @@
+<Section>
+<Panel character="promi" mood="excited">
+Bem-vindo à **Montanha do Mestre**! ⛰️ Você chegou tão longe! Agora é hora de combinar TUDO que você aprendeu em prompts perfeitos!
+</Panel>
+</Section>
+
+<Section>
+## A lista do Mestre
+
+Um prompt perfeito pode incluir:
+
+✅ **Clareza** - Seja específico, não vago
+✅ **Detalhes** - QUEM, O QUE, QUANDO, ONDE
+✅ **Contexto** - Informações de fundo, exemplos, formato
+✅ **Criatividade** - Interpretação de papéis, personalidade, imaginação
+</Section>
+
+<Section>
+## Palavras mágicas: "Pense passo a passo" 🧠
+
+<StepByStep
+  title="Magia passo a passo"
+  problem="Tenho 3 sacolas com 5 maçãs cada, e como 2 maçãs. Quantas sobram?"
+  wrongAnswer="15 maçãs sobram (A IA adivinhou sem pensar!)"
+  steps={[
+    "Primeiro: 3 sacolas × 5 maçãs = 15 maçãs no total",
+    "Depois: Como 2 maçãs",
+    "Finalmente: 15 - 2 = 13 maçãs sobram"
+  ]}
+  rightAnswer="13 maçãs sobram - e podemos verificar o trabalho!"
+  magicWords="Vamos pensar passo a passo"
+  successMessage="Palavras mágicas ajudam a IA a mostrar seu pensamento, para você verificar se está correto!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Você não precisa de TODOS esses toda vez, mas saber quando usar cada um te torna um Mestre dos Prompts!
+</Panel>
+</Section>
+
+<Section>
+## Desafio Mestre #1
+
+<PromptVsMistake
+  question="Qual prompt combina mais habilidades?"
+  good="Sou uma criança de 10 anos que adora espaço. Finja que você é um astronauta simpático e me conte 5 fatos incríveis sobre Saturno. Faça emocionante e use palavras simples que uma criança entenderia!"
+  bad="Me conte sobre Saturno"
+  explanation="Este prompt tem: Contexto (10 anos, adora espaço), Interpretação de papéis (astronauta simpático), Formato (5 fatos), Personalidade (emocionante), e Clareza (palavras simples)!"
+  promiMessage="Este é um prompt de nível mestre! Me diz exatamente o que você precisa!"
+/>
+</Section>
+
+<Section>
+## Desafio Mestre #2
+
+<PromptVsMistake
+  question="Qual está mais perto de um prompt perfeito?"
+  good="Finja que você é uma árvore velha e sábia em uma floresta encantada. Sou um jovem aventureiro que acabou de te encontrar. Me conte uma história curta sobre as criaturas mágicas que vivem por perto. Faça misteriosa mas não assustadora, com um final feliz!"
+  bad="Me conte sobre uma floresta"
+  explanation="Isso tem: Interpretação de papéis (árvore sábia), Personagens (jovem aventureiro), Cenário (floresta encantada), Tema (criaturas mágicas), Estilo (misterioso, não assustador, final feliz)!"
+  promiMessage="Tantos elementos ótimos combinados! Esta será uma história incrível!"
+/>
+</Section>
+
+<Section>
+## Construa um prompt mestre!
+
+<DragDropPrompt
+  title="Prompt Perfeito"
+  instruction="Organize todos os elementos em um prompt perfeito"
+  pieces={["Estou fazendo um cartão de aniversário para meu pai que adora pescar.", "Me dê 3 piadas engraçadas de pesca", "como 'Por que o peixe ficou vermelho? Viu o fundo do mar!'", "Mantenha apropriadas para família e curtas!"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Perfeito! Contexto, formato, exemplo e estilo tudo em um prompt!"
+/>
+</Section>
+
+<Section>
+## Crie seu prompt mestre!
+
+<MagicWords
+  sentence="Sou um ___ que precisa de ajuda com ___. Finja que você é um ___ e me dê ___ como ___. Faça ___!"
+  blanks={[
+    { hint: "👤 quem você é", answers: ["jovem artista", "estudante curioso", "escritor criativo", "amante da natureza", "colecionador de piadas"] },
+    { hint: "📚 seu objetivo", answers: ["um projeto escolar", "uma história criativa", "aprender algo novo", "fazer alguém rir", "planejar uma aventura"] },
+    { hint: "🎭 um personagem", answers: ["especialista simpático", "comediante bobo", "professor sábio", "inventor criativo", "vovó contadora de histórias"] },
+    { hint: "🔢 o que você precisa", answers: ["5 ideias divertidas", "3 dicas úteis", "alguns exemplos criativos", "uma história curta", "uma explicação fácil"] },
+    { hint: "💡 um exemplo", answers: ["'Estratégia Super Estrela'", "'Dica do Ajudante Feliz'", "'Momento Mágico'", "'Palavra Maravilha'", "'Faísca Criativa'"] },
+    { hint: "✨ o estilo", answers: ["divertido e fácil de entender", "emocionante e memorável", "criativo e colorido", "útil e encorajador", "bobo mas útil"] }
+  ]}
+  successMessage="INCRÍVEL! Este é um verdadeiro Prompt Mestre com todos os elementos!"
+/>
+</Section>
+
+<Section>
+## Habilidades de Mestre desbloqueadas! 🎉
+
+<Panel character="promi" mood="celebrating">
+Incrível! Você aprendeu a combinar todas as suas habilidades em **prompts perfeitos**! Você está no caminho para se tornar um Mestre dos Prompts!
+</Panel>
+
+<LevelComplete 
+  levelSlug="5-1-perfect-prompt" 
+  stars={3}
+  message="Você aprendeu a criar prompts perfeitos!"
+/>
+</Section>

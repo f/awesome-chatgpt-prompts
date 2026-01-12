@@ -1,0 +1,97 @@
+<Section>
+<Panel character="promi" mood="happy">
+Willkommen zurück in der Burg der Klarheit! Heute lernen wir über **WER** und **WAS** - zwei super wichtige Details!
+</Panel>
+</Section>
+
+<Section>
+## Die WER-Frage
+
+Wenn du die KI um Hilfe bittest, denke: **Wer ist beteiligt?**
+
+- Eine Person? (Junge, Mädchen, Oma, Superheld)
+- Ein Tier? (Katze, Drache, Wal)
+- Eine Figur? (Roboter, Zauberer, Außerirdischer)
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Wenn du sagst "Schreibe eine Geschichte", weiß ich nicht, über wen! Aber "Schreibe eine Geschichte über einen tapferen Ritter" sagt mir genau, wer die Hauptfigur ist!
+</Panel>
+</Section>
+
+<Section>
+## Lass uns WER üben!
+
+<PromptVsMistake
+  question="Welcher Prompt sagt uns, WER der Held der Geschichte ist?"
+  good="Schreibe eine Geschichte über eine neugierige kleine Maus namens Pip"
+  bad="Schreibe eine Geschichte über etwas"
+  explanation="Der erste Prompt sagt uns WER (eine Maus), WELCHE Art (neugierig, klein), und sogar ihren NAMEN (Pip)!"
+  promiMessage="Namen und Beschreibungen helfen mir, die Figur vorzustellen!"
+/>
+</Section>
+
+<Section>
+## Die WAS-Frage
+
+Jetzt denke: **Was passiert? Was willst du?**
+
+- Welche Handlung? (rennen, singen, bauen)
+- Welches Objekt? (ein Kuchen, ein Raumschiff, ein Gedicht)
+- Welcher Typ? (lustig, gruselig, bunt)
+</Section>
+
+<Section>
+## Lass uns WAS üben!
+
+<PromptVsMistake
+  question="Welcher Prompt sagt uns, WAS wir erstellen sollen?"
+  good="Schreibe ein lustiges Gedicht über Pizza mit vielen Reimen"
+  bad="Schreibe etwas Lustiges"
+  explanation="Der detaillierte Prompt sagt uns WAS (ein Gedicht), WORÜBER (Pizza), WELCHER Stil (lustig mit Reimen)!"
+  promiMessage="Spezifisch zu sein über WAS du willst, hilft mir, genau das zu erstellen!"
+/>
+</Section>
+
+<Section>
+## Baue deinen eigenen Prompt!
+
+Kombiniere WER und WAS:
+
+<DragDropPrompt
+  title="Baue einen Prompt"
+  instruction="Ziehe die Teile in die richtige Reihenfolge"
+  pieces={["Schreibe eine Geschichte", "über einen freundlichen Drachen", "der lernt", "Eis zu machen"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Perfekt! Du hast WER (freundlicher Drache) und WAS (lernt Eis zu machen) kombiniert!"
+/>
+</Section>
+
+<Section>
+## Erstelle deinen eigenen!
+
+<MagicWords
+  sentence="Bitte schreibe eine ___ über einen ___ der ___ will"
+  blanks={[
+    { hint: "📝 Art des Schreibens", answers: ["Geschichte", "Gedicht", "Lied", "Witz"] },
+    { hint: "🦸 eine Figur", answers: ["Superheld", "Prinzessin", "Roboter", "Zauberer", "Pirat"] },
+    { hint: "🎯 ein Ziel", answers: ["einen Schatz finden", "Freunde finden", "die Welt retten", "Magie lernen", "ein Rennen gewinnen"] }
+  ]}
+  successMessage="Du hast WER und WAS perfekt hinzugefügt!"
+/>
+</Section>
+
+<Section>
+## Erstaunlicher Fortschritt! 🎉
+
+<Panel character="promi" mood="celebrating">
+Du wirst richtig gut darin! Jetzt weißt du, immer **WER** in deinem Prompt einzufügen und **WAS** du willst. Mach weiter so!
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-2-who-and-what" 
+  stars={3}
+  message="Du hast WER und WAS in Prompts gemeistert!"
+/>
+</Section>

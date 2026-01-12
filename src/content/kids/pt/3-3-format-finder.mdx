@@ -1,0 +1,87 @@
+<Section>
+<Panel character="promi" mood="excited">
+Hoje aprendemos sobre **formatos**! 📝 Você sabia que pode pedir à IA para responder de formas diferentes?
+</Panel>
+</Section>
+
+<Section>
+## O que é um formato?
+
+Um **formato** é COMO você quer que a resposta seja apresentada:
+
+- 📋 **Lista** - pontos numerados ou marcadores
+- 📖 **História** - uma narrativa com começo, meio, fim
+- 🎵 **Poema** - com rimas e ritmo
+- ❓ **Perguntas e Respostas** - estilo pergunta e resposta
+- 📊 **Tabela** - organizado em linhas e colunas
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+Ao me dizer o formato, você me ajuda a organizar minha resposta da forma mais útil para você!
+</Panel>
+</Section>
+
+<Section>
+## O formato faz diferença!
+
+<PromptVsMistake
+  question="Qual prompt pede um formato claro?"
+  good="Me dê 5 fatos divertidos sobre golfinhos em uma lista numerada"
+  bad="Me fale sobre golfinhos"
+  explanation="O primeiro prompt me diz exatamente como organizar a resposta - como 5 fatos numerados!"
+  promiMessage="Quando você pede um formato específico, você recebe exatamente o que precisa!"
+/>
+</Section>
+
+<Section>
+## Escolha seu formato!
+
+<PromptVsMistake
+  question="Qual formato seria melhor para lembrar coisas?"
+  good="Liste os planetas em ordem a partir do sol como marcadores"
+  bad="Me fale sobre os planetas"
+  explanation="Um formato de lista torna fácil lembrar e contar os planetas em ordem!"
+  promiMessage="Listas são ótimas para aprender e lembrar!"
+/>
+</Section>
+
+<Section>
+## Pratique com formatos!
+
+<DragDropPrompt
+  title="Adicione um Formato"
+  instruction="Organize para pedir um formato específico"
+  pieces={["como um poema curto", "com versos que rimam", "Escreva sobre a chuva", "de 4 linhas"]}
+  correctOrder={[2, 0, 1, 3]}
+  successMessage="Perfeito! Você pediu um formato de poema com detalhes específicos!"
+/>
+</Section>
+
+<Section>
+## Escolha seu formato!
+
+<MagicWords
+  sentence="Me dê ___ sobre ___ como ___"
+  blanks={[
+    { hint: "🔢 quantos", answers: ["5 dicas", "3 ideias", "10 fatos", "7 passos", "4 exemplos"] },
+    { hint: "📚 tópico", answers: ["ser um bom amigo", "salvar o planeta", "ficar saudável", "ser criativo", "aprender coisas novas"] },
+    { hint: "📋 formato", answers: ["lista numerada", "marcadores", "poema curto", "história simples", "passos fáceis"] }
+  ]}
+  successMessage="Ótimo trabalho escolhendo um formato! Isso torna as respostas mais fáceis de ler!"
+/>
+</Section>
+
+<Section>
+## Mestre do Formato! 🎉
+
+<Panel character="promi" mood="celebrating">
+Maravilhoso! Você aprendeu que pedir um **formato** específico te ajuda a obter respostas organizadas exatamente como você precisa!
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-3-format-finder" 
+  stars={3}
+  message="Você aprendeu a pedir diferentes formatos!"
+/>
+</Section>

@@ -1,0 +1,96 @@
+<Section>
+<Panel character="promi" mood="excited">
+Sizi yenidən görmək çox yaxşıdır! Bugünkü dərs **NƏ VAXT** və **HARADA** haqqındadır - bu detallar promptlarınızı canlandırır!
+</Panel>
+</Section>
+
+<Section>
+## NƏ VAXT sualı
+
+Hekayəniz **nə vaxt** baş verir?
+
+- Günün vaxtı: səhər, gecə, gün batımı
+- Fəsil: yay, qış, yaz
+- Dövr: çoxdan-çoxdan, gələcək, indiki zaman
+- Xüsusi an: ad günü, bayram, məktəbdə ilk gün
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+"Pişik haqqında hekayə" yaxşıdır, amma "Qorxulu Hellouin gecəsində pişik haqqında hekayə" DAHA maraqlıdır!
+</Panel>
+</Section>
+
+<Section>
+## NƏ VAXTı məşq edək!
+
+<PromptVsMistake
+  question="Hansı promptda daha yaxşı NƏ VAXT hissi var?"
+  good="İsti yaz səhəri oyanan qardan adam haqqında yaz"
+  bad="Qardan adam haqqında yaz"
+  explanation="Birinci prompt bizə NƏ VAXT (yaz səhəri) deyir ki, bu maraqlı problem yaradır - yazda qardan adam! Əla hekayə ideyası!"
+  promiMessage="NƏ VAXT hekayələrinizdə həyəcanlı vəziyyətlər yarada bilər!"
+/>
+</Section>
+
+<Section>
+## HARADA sualı
+
+Hadisə **harada** baş verir?
+
+- Yer: çimərlik, meşə, şəhər, kosmos
+- Bina: məktəb, qala, ağac evi
+- Xəyali yer: sualtı krallıq, bulud şəhər
+- Konkret nöqtə: körpü altında, dağ başında
+</Section>
+
+<Section>
+## HARADAni məşq edək!
+
+<PromptVsMistake
+  question="Hansı prompt HARADAni daha yaxşı təsvir edir?"
+  good="Sirli dumanlı adada xəzinə axtaran piratlar haqqında yaz"
+  bad="Xəzinə axtaran piratlar haqqında yaz"
+  explanation="HARADA (sirli dumanlı ada) əlavə etmək səhnəni təsəvvür etməyimə və daha canlı hekayə yazmağıma kömək edir!"
+  promiMessage="HARADA hekayənizin əhvalını və atmosferini qurmağa kömək edir!"
+/>
+</Section>
+
+<Section>
+## NƏ VAXT və HARADAni birləşdirin!
+
+<DragDropPrompt
+  title="Vaxt və Yer"
+  instruction="NƏ VAXT və HARADA olan prompt yaratmaq üçün bu parçaları sıralayın"
+  pieces={["Mənə bir hekayə danış", "sehrli meşədə", "ulduzlu gecədə", "bayquş haqqında"]}
+  correctOrder={[0, 3, 1, 2]}
+  successMessage="Əla! HARADA (sehrli meşə) və NƏ VAXT (ulduzlu gecə) ilə səhnə qurdunuz!"
+/>
+</Section>
+
+<Section>
+## Tam bir səhnə qurun!
+
+<MagicWords
+  sentence="___ zamanı ___da baş verən macəra haqqında hekayə yaz"
+  blanks={[
+    { hint: "🗺️ bir yer", answers: ["kabus evi", "sualtı şəhər", "bulud krallığı", "dinozavr parkı", "şirniyyat ölkəsi"] },
+    { hint: "⏰ bir vaxt", answers: ["tufan", "gün batımı", "qış tətili", "dolunay", "gələcək"] }
+  ]}
+  successMessage="NƏ VAXT və HARADA ilə canlı mühit yaratdınız!"
+/>
+</Section>
+
+<Section>
+## Siz səhnə yaradıcısısınız! 🎉
+
+<Panel character="promi" mood="celebrating">
+Fantastik iş! İndi promptlarınıza **NƏ VAXT** (vaxt) və **HARADA** (yer) əlavə etməyi bilirsiniz. Bu, istəklərinizi daha maraqlı edir!
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-3-when-and-where" 
+  stars={3}
+  message="Promptlarda NƏ VAXT və HARADAni mənimsədiniz!"
+/>
+</Section>

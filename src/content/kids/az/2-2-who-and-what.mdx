@@ -1,0 +1,97 @@
+<Section>
+<Panel character="promi" mood="happy">
+Aydınlıq Qalasına xoş gəlmisiniz! Bu gün **KİM** və **NƏ** haqqında öyrənəcəyik - iki çox vacib detal!
+</Panel>
+</Section>
+
+<Section>
+## KİM sualı
+
+Süni intellektdən kömək istəyəndə, düşünün: **Kim iştirak edir?**
+
+- Bir insan? (oğlan, qız, nənə, super qəhrəman)
+- Bir heyvan? (pişik, əjdaha, balina)
+- Bir personaj? (robot, sehrbaz, yadplanetli)
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+"Bir hekayə yaz" desəniz, kimin haqqında olduğunu bilmirəm! Amma "Cəsur bir cəngavər haqqında hekayə yaz" mənə dəqiq baş qəhrəmanın kim olduğunu deyir!
+</Panel>
+</Section>
+
+<Section>
+## KİMi məşq edək!
+
+<PromptVsMistake
+  question="Hansı prompt bizə hekayənin qəhrəmanının KİM olduğunu deyir?"
+  good="Pip adlı maraqlı kiçik siçan haqqında hekayə yaz"
+  bad="Bir şey haqqında hekayə yaz"
+  explanation="Birinci prompt bizə KİM (siçan), NƏ növ (maraqlı, kiçik), və hətta ADINI (Pip) deyir!"
+  promiMessage="Adlar və təsvirlər personajı təsəvvür etməyimə kömək edir!"
+/>
+</Section>
+
+<Section>
+## NƏ sualı
+
+İndi düşünün: **Nə baş verir? Nə istəyirsiz?**
+
+- Hansı fəaliyyət? (qaçmaq, oxumaq, tikmək)
+- Hansı obyekt? (tort, kosmik gəmi, şeir)
+- Hansı növ? (gülməli, qorxulu, rəngli)
+</Section>
+
+<Section>
+## NƏni məşq edək!
+
+<PromptVsMistake
+  question="Hansı prompt bizə NƏ yaradacağımızı deyir?"
+  good="Çoxlu qafiyələrlə pizza haqqında gülməli şeir yaz"
+  bad="Gülməli bir şey yaz"
+  explanation="Ətraflı prompt bizə NƏ (şeir), NƏ HAQQINDA (pizza), HANSI üslub (gülməli qafiyələrlə) deyir!"
+  promiMessage="NƏ istədiyinizi konkret demək mənim onu dəqiq yaratmağıma kömək edir!"
+/>
+</Section>
+
+<Section>
+## Öz promptunuzu qurun!
+
+KİM və NƏni birləşdirin:
+
+<DragDropPrompt
+  title="Prompt Qur"
+  instruction="Parçaları düzgün sıraya sürüşdürün"
+  pieces={["Bir hekayə yaz", "mehriban əjdaha haqqında", "öyrənən", "dondurma hazırlamağı"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Mükəmməl! KİM (mehriban əjdaha) və NƏ (dondurma hazırlamağı öyrənən) birləşdirdiniz!"
+/>
+</Section>
+
+<Section>
+## Özünüz yaradın!
+
+<MagicWords
+  sentence="Zəhmət olmasa ___ istəyən ___ haqqında ___ yaz"
+  blanks={[
+    { hint: "📝 yazı növü", answers: ["hekayə", "şeir", "mahnı", "zarafat"] },
+    { hint: "🦸 bir personaj", answers: ["super qəhrəman", "şahzadə", "robot", "sehrbaz", "pirat"] },
+    { hint: "🎯 bir məqsəd", answers: ["xəzinə tapmaq", "dost qazanmaq", "dünyanı xilas etmək", "sehr öyrənmək", "yarış qazanmaq"] }
+  ]}
+  successMessage="KİM və NƏni mükəmməl əlavə etdiniz!"
+/>
+</Section>
+
+<Section>
+## Heyrətamiz irəliləyiş! 🎉
+
+<Panel character="promi" mood="celebrating">
+Çox yaxşı edirsiniz! İndi bilirsiniz ki, həmişə promptunuzda **KİM** var və **NƏ** istədiyinizi daxil edin. Belə davam edin!
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-2-who-and-what" 
+  stars={3}
+  message="Promptlarda KİM və NƏni mənimsədiniz!"
+/>
+</Section>

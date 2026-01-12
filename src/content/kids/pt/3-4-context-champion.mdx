@@ -1,0 +1,87 @@
+<Section>
+<Panel character="promi" mood="excited">
+Bem-vindo ao último nível das Cavernas do Contexto! 🕳️ É hora de se tornar um **Campeão do Contexto** combinando tudo que você aprendeu!
+</Panel>
+</Section>
+
+<Section>
+## A lista do Campeão do Contexto
+
+Um ótimo contexto inclui:
+
+✅ **Histórico** - Quem você é, em que situação está
+✅ **Exemplos** - Mostre o que você quer
+✅ **Formato** - Como você quer que a resposta seja organizada
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Junte os três e você terá resultados incríveis toda vez!
+</Panel>
+</Section>
+
+<Section>
+## Desafio Campeão #1
+
+<PromptVsMistake
+  question="Qual prompt tem o melhor contexto?"
+  good="Sou uma criança de 9 anos fazendo um pôster sobre reciclagem para o Dia da Terra. Você pode me dar 5 slogans cativantes como 'Reduza, Reutilize, Recicle!' - curtos e fáceis de lembrar?"
+  bad="Me dê slogans sobre reciclagem"
+  explanation="O prompt campeão inclui: Histórico (9 anos, pôster do Dia da Terra), Exemplo ('Reduza, Reutilize, Recicle!'), e Formato (5 slogans, curtos)!"
+  promiMessage="Esse prompt me diz tudo que preciso para te dar slogans perfeitos!"
+/>
+</Section>
+
+<Section>
+## Desafio Campeão #2
+
+<PromptVsMistake
+  question="Qual prompt combina melhor os elementos de contexto?"
+  good="Estou ajudando meu irmãozinho a aprender sons de animais. Você pode fazer uma lista divertida de 6 animais com seus sons, como 'Vaca - Muuu!'? Faça boba e simples."
+  bad="Liste sons de animais"
+  explanation="Isso inclui: Histórico (ajudando irmãozinho a aprender), Exemplo (Vaca - Muuu!), e Formato (lista de 6, boba e simples)!"
+  promiMessage="Contexto perfeito! Sei exatamente o que funcionará para seu irmãozinho!"
+/>
+</Section>
+
+<Section>
+## Construa um prompt campeão!
+
+<DragDropPrompt
+  title="Campeão do Contexto"
+  instruction="Organize TODOS os elementos de contexto em um prompt perfeito"
+  pieces={["Estou escrevendo uma história para minha turma.", "Você pode sugerir 3 nomes de animais mágicos", "como 'Brilhinho' ou 'Raio de Lua'?", "Algo fofo mas não muito longo."]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Prompt campeão! Você incluiu histórico, exemplos e preferências de formato!"
+/>
+</Section>
+
+<Section>
+## Crie seu prompt campeão!
+
+<MagicWords
+  sentence="Sou um ___ trabalhando em ___. Você pode me dar ___ como ___? Faça ___."
+  blanks={[
+    { hint: "👤 quem você é", answers: ["estudante", "jovem escritor", "criança curiosa", "artista criativo", "cozinheiro iniciante"] },
+    { hint: "📚 seu projeto", answers: ["um projeto escolar", "um cartão de aniversário", "uma história engraçada", "um experimento de ciências", "uma história em quadrinhos"] },
+    { hint: "🎯 o que você precisa", answers: ["3 boas ideias", "5 títulos divertidos", "alguns nomes legais", "alguns exemplos", "dicas úteis"] },
+    { hint: "💡 um exemplo", answers: ["'Super Estrela'", "'Momento Mágico'", "'Mundo das Maravilhas'", "'Ajudante Feliz'", "'Time dos Sonhos'"] },
+    { hint: "✨ o estilo", answers: ["divertido e curto", "criativo e cativante", "simples e claro", "emocionante e ousado", "amigável e caloroso"] }
+  ]}
+  successMessage="Você é um verdadeiro Campeão do Contexto! Esse prompt tem tudo!"
+/>
+</Section>
+
+<Section>
+## Parabéns, Campeão! 🎉
+
+<Panel character="promi" mood="celebrating">
+Você conseguiu! Você completou as Cavernas do Contexto e se tornou um **Campeão do Contexto**! Agora você sabe como combinar histórico, exemplos e formato para prompts incríveis!
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-4-context-champion" 
+  stars={3}
+  message="Você completou as Cavernas do Contexto! Você é um Campeão do Contexto!"
+/>
+</Section>

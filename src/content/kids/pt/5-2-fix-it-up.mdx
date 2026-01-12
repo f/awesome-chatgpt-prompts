@@ -1,0 +1,108 @@
+<Section>
+<Panel character="promi" mood="happy">
+Bem-vindo de volta! Hoje aprendemos uma habilidade super importante: **encontrar e consertar prompts fracos**! 🔧
+</Panel>
+</Section>
+
+<Section>
+## Identifique os problemas!
+
+Prompts fracos frequentemente têm:
+
+❌ Muito vagos - "Escreva algo"
+❌ Detalhes faltando - "Me conte sobre uma pessoa"
+❌ Sem formato - Só pedir sem estrutura
+❌ Estilo não claro - Não dizer como você quer
+</Section>
+
+<Section>
+## Seja o Doutor dos Prompts! 🏥
+
+<PromptDoctor
+  title="Cure este prompt"
+  brokenPrompt="Escreva algo"
+  problems={[
+    { issue: "Muito vago", symptom: "O que devo escrever? Uma história? Um poema? Uma piada?", fix: "Escreva uma história" },
+    { issue: "Sem tópico", symptom: "Sobre o que deveria ser a história?", fix: "Escreva uma história sobre um dragão" },
+    { issue: "Sem detalhes", symptom: "Que tipo de dragão? O que acontece?", fix: "Escreva uma história curta sobre um dragão amigável que faz biscoitos" }
+  ]}
+  healedPrompt="Escreva uma história curta sobre um dragão amigável que faz biscoitos"
+  successMessage="Você curou o prompt! De 2 palavras para uma ótima solicitação detalhada!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Aprender a identificar prompts fracos te ajuda a escrever melhores! É como ser um detetive de prompts!
+</Panel>
+</Section>
+
+<Section>
+## Encontre a solução!
+
+<PromptVsMistake
+  question="Este prompt é fraco: 'Escreva um poema.' Como você consertaria?"
+  good="Escreva um poema curto de 4 linhas com rimas sobre um arco-íris depois de uma tempestade. Faça alegre e use palavras coloridas!"
+  bad="Escreva um poema muito bom por favor"
+  explanation="Só dizer 'muito bom' não ajuda! Em vez disso, adicione detalhes: tópico (arco-íris), formato (4 linhas, com rimas), e estilo (alegre, colorido)!"
+  promiMessage="Adicionar detalhes específicos transforma um prompt fraco em um forte!"
+/>
+</Section>
+
+<Section>
+## Melhore este prompt!
+
+<PromptVsMistake
+  question="Prompt fraco: 'Me ajude com o dever de casa.' Como você o tornaria melhor?"
+  good="Estou no 4º ano e preciso de ajuda para entender frações. Você pode explicar o que 1/2 significa usando pizza como exemplo? Mantenha simples!"
+  bad="Por favor me ajude mais com o dever de casa"
+  explanation="A versão boa me diz: seu nível (4º ano), tópico (frações), pede um exemplo (pizza), e estilo (simples)!"
+  promiMessage="Quanto mais específico você for, melhor posso te ajudar!"
+/>
+</Section>
+
+<Section>
+## Conserte o prompt!
+
+<DragDropPrompt
+  title="Reparo de Prompt"
+  instruction="O prompt 'Me conte uma história' é muito fraco. Organize estas adições para consertá-lo:"
+  pieces={["sobre um ratinho corajoso", "Me conte uma história curta de ninar", "que ajuda um passarinho perdido a encontrar sua casa.", "Faça doce e termine com todos seguros."]}
+  correctOrder={[1, 0, 2, 3]}
+  successMessage="Você transformou um prompt fraco em um ótimo!"
+/>
+</Section>
+
+<Section>
+## Desafio de melhoria!
+
+Pegue este prompt fraco e faça-o forte:
+
+**Fraco:** "Me dê ideias"
+
+<MagicWords
+  sentence="Me dê ___ ideias criativas para ___ que sejam ___ e ___. Algo como ___!"
+  blanks={[
+    { hint: "🔢 quantas", answers: ["5", "3", "7", "10", "4"] },
+    { hint: "🎯 para quê", answers: ["uma festa de aniversário", "um projeto de ciências", "um jogo divertido", "uma história para escrever", "decorar meu quarto"] },
+    { hint: "✨ estilo 1", answers: ["divertidas", "fáceis de fazer", "criativas", "surpreendentes", "coloridas"] },
+    { hint: "🌟 estilo 2", answers: ["para crianças", "baratas", "únicas", "emocionantes", "simples"] },
+    { hint: "💡 exemplo", answers: ["uma caça ao tesouro", "fazer slime", "tema de super-heróis", "coisas que brilham no escuro", "um show de mágica"] }
+  ]}
+  successMessage="Você transformou um prompt fraco de 2 palavras em um incrível e detalhado!"
+/>
+</Section>
+
+<Section>
+## Consertador de Prompts! 🎉
+
+<Panel character="promi" mood="celebrating">
+Excelente! Você aprendeu a identificar prompts fracos e **consertá-los** adicionando detalhes, formato e estilo! Esta habilidade vai te ajudar para sempre!
+</Panel>
+
+<LevelComplete 
+  levelSlug="5-2-fix-it-up" 
+  stars={3}
+  message="Você aprendeu a encontrar e consertar prompts fracos!"
+/>
+</Section>

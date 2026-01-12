@@ -1,0 +1,104 @@
+<Section>
+<Panel character="promi" mood="excited">
+Willkommen zum letzten Level der Burg der Klarheit! 🏰 Du hast über WER, WAS, WANN und WO gelernt. Jetzt lass uns ALLES zusammensetzen!
+</Panel>
+</Section>
+
+<Section>
+## Die Detail-Detektiv-Checkliste
+
+Bevor du einen Prompt sendest, frage dich:
+
+✅ **WER** - Wer ist beteiligt?
+✅ **WAS** - Was will ich? Was passiert?
+✅ **WANN** - Wann passiert es?
+✅ **WO** - Wo findet es statt?
+</Section>
+
+<Section>
+## Sortiere die Prompt-Teile!
+
+<PromptParts
+  title="Ordne jedes Teil zu!"
+  instruction="Tippe auf ein Teil, dann wähle, ob es eine Rolle, Aufgabe, Kontext oder Einschränkung ist!"
+  parts={[
+    { text: "Schreibe eine lustige Geschichte", type: "task" },
+    { text: "über einen tollpatschigen Zauberer", type: "context" },
+    { text: "in einer Zauberschule", type: "context" },
+    { text: "Halte sie kurz", type: "constraint" }
+  ]}
+  successMessage="Du hast alle Prompt-Teile identifiziert! Jetzt kannst du Prompts wie ein Profi bauen!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Du brauchst nicht immer alle vier, aber je mehr Details du hinzufügst, desto besser kann ich dir helfen!
+</Panel>
+</Section>
+
+<Section>
+## Detektiv-Herausforderung #1
+
+<PromptVsMistake
+  question="Welcher Prompt hat die hilfreichsten Details?"
+  good="Schreibe eine lustige Geschichte über einen tollpatschigen Zauberer namens Zap, der versehentlich seine Katze in einen Riesen verwandelt während einer Zaubershow im königlichen Schloss"
+  bad="Schreibe eine Geschichte über Magie"
+  explanation="Der detaillierte Prompt hat WER (Zauberer Zap, seine Katze), WAS (verwandelt Katze in Riesen, Zaubershow), WO (königliches Schloss), und sogar einen Stil (lustig)!"
+  promiMessage="Wow! Dieser Prompt gibt mir so viel zum Arbeiten. Ich kann die ganze Szene vorstellen!"
+/>
+</Section>
+
+<Section>
+## Detektiv-Herausforderung #2
+
+<PromptVsMistake
+  question="Welcher Prompt würde ein besseres Gedicht bekommen?"
+  good="Schreibe ein kurzes reimendes Gedicht über einen schläfrigen Bären, der sich auf den Winterschlaf in seiner gemütlichen Höhle vorbereitet"
+  bad="Schreibe ein Gedicht über ein Tier"
+  explanation="Der erste Prompt sagt mir WER (schläfriger Bär), WAS (bereitet sich auf Winterschlaf vor), WANN (Winter), WO (gemütliche Höhle), und Stil (kurz, reimend)!"
+  promiMessage="Jedes Detail hilft mir, etwas Besonderes nur für dich zu erstellen!"
+/>
+</Section>
+
+<Section>
+## Baue den ultimativen Prompt!
+
+<DragDropPrompt
+  title="Meister-Detektiv"
+  instruction="Ordne ALLE Details zu einem perfekten Prompt"
+  pieces={["Schreibe eine aufregende Geschichte", "über einen jungen Erfinder", "der einen Roboter-besten-Freund baut", "in einer futuristischen Stadt", "am ersten Sommertag"]}
+  correctOrder={[0, 1, 2, 3, 4]}
+  successMessage="Perfekt! Du hast WER, WAS, WO und WANN einbezogen!"
+/>
+</Section>
+
+<Section>
+## Erstelle dein Meisterwerk!
+
+<MagicWords
+  sentence="Bitte schreibe eine ___ Geschichte über einen ___ der ___ in einem ___ während ___"
+  blanks={[
+    { hint: "😊 eine Stimmung/Stil", answers: ["lustige", "aufregende", "mysteriöse", "herzerwärmende", "alberne"] },
+    { hint: "🦸 eine Figur", answers: ["tapferen Ritter", "winzige Fee", "schlauen Fuchs", "jungen Astronauten", "freundlichen Geist"] },
+    { hint: "🎬 eine Handlung", answers: ["ein Geheimnis entdeckt", "auf eine Suche geht", "einen neuen Freund findet", "ein Rätsel löst", "fliegen lernt"] },
+    { hint: "🏰 einen Ort", answers: ["magischen Königreich", "tiefen Dschungel", "Raumstation", "Unterwasserstadt", "verzauberten Wald"] },
+    { hint: "🌙 einer Zeit", answers: ["Vollmond", "seinem Geburtstag", "einem großen Sturm", "dem letzten Schultag", "Mitternacht"] }
+  ]}
+  successMessage="Du bist ein wahrer Detail-Detektiv! Das ist ein erstaunlicher Prompt!"
+/>
+</Section>
+
+<Section>
+## Herzlichen Glückwunsch, Detektiv! 🎉
+
+<Panel character="promi" mood="celebrating">
+Du hast es geschafft! Du hast die Burg der Klarheit abgeschlossen und bist ein **Detail-Detektiv** geworden! Jetzt kennst du das Geheimnis: WER + WAS + WANN + WO = Erstaunliche Prompts!
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-4-detail-detective" 
+  stars={3}
+  message="Du hast die Burg der Klarheit abgeschlossen! Du bist ein Detail-Detektiv!"
+/>
+</Section>

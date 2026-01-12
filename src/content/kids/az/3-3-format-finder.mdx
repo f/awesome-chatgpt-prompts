@@ -1,0 +1,87 @@
+<Section>
+<Panel character="promi" mood="excited">
+Bu gün **formatlar** haqqında öyrənirik! 📝 Süni intellektdən fərqli yollarla cavab verməsini istəyə biləcəyinizi bilirdinizmi?
+</Panel>
+</Section>
+
+<Section>
+## Format nədir?
+
+**Format** cavabın NECƏ təqdim olunmasını istədiyinizdir:
+
+- 📋 **Siyahı** - nömrələnmiş və ya işarələnmiş
+- 📖 **Hekayə** - başlanğıc, orta, son ilə hekayə
+- 🎵 **Şeir** - qafiyə və ritm ilə
+- ❓ **Sual-Cavab** - sual və cavab üslubu
+- 📊 **Cədvəl** - sətir və sütunlarda təşkil edilmiş
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+Mənə formatı söylədiyinizdə, cavabımı sizin üçün ən faydalı şəkildə təşkil etməyimə kömək edirsiniz!
+</Panel>
+</Section>
+
+<Section>
+## Format fərq yaradır!
+
+<PromptVsMistake
+  question="Hansı prompt aydın format istəyir?"
+  good="Mənə delfinlər haqqında 5 maraqlı fakt nömrələnmiş siyahı şəklində ver"
+  bad="Mənə delfinlər haqqında danış"
+  explanation="Birinci prompt mənə dəqiq cavabı necə təşkil etməli olduğumu deyir - 5 nömrələnmiş fakt!"
+  promiMessage="Xüsusi format istədiyinizdə, ehtiyacınız olanı dəqiq əldə edirsiniz!"
+/>
+</Section>
+
+<Section>
+## Formatınızı seçin!
+
+<PromptVsMistake
+  question="Yadda saxlamaq üçün hansı format ən yaxşıdır?"
+  good="Günəşdən sıra ilə başlayaraq planetləri işarəli siyahı şəklində sırala"
+  bad="Mənə planetlər haqqında danış"
+  explanation="Siyahı formatı planetləri sıra ilə yadda saxlamağı və saymağı asanlaşdırır!"
+  promiMessage="Siyahılar öyrənmək və yadda saxlamaq üçün əladır!"
+/>
+</Section>
+
+<Section>
+## Formatı məşq edin!
+
+<DragDropPrompt
+  title="Format əlavə edin"
+  instruction="Xüsusi format istəmək üçün sıralayın"
+  pieces={["Qısa şeir şəklində", "qafiyəli sətirlərlə", "Yağış haqqında yaz", "4 sətirdə"]}
+  correctOrder={[2, 0, 1, 3]}
+  successMessage="Mükəmməl! Konkret detallarla şeir formatı istədiniz!"
+/>
+</Section>
+
+<Section>
+## Formatınızı seçin!
+
+<MagicWords
+  sentence="Mənə ___ haqqında ___ ___ şəklində ver"
+  blanks={[
+    { hint: "🔢 neçə", answers: ["5 məsləhət", "3 fikir", "10 fakt", "7 addım", "4 nümunə"] },
+    { hint: "📚 mövzu", answers: ["yaxşı dost olmaq", "planetimizi xilas etmək", "sağlam qalmaq", "yaradıcı olmaq", "yeni şeylər öyrənmək"] },
+    { hint: "📋 format", answers: ["nömrələnmiş siyahı", "işarəli siyahı", "qısa şeir", "sadə hekayə", "asan addımlar"] }
+  ]}
+  successMessage="Format seçməkdə əla iş! Bu cavabların oxunmasını asanlaşdırır!"
+/>
+</Section>
+
+<Section>
+## Format Ustası! 🎉
+
+<Panel character="promi" mood="celebrating">
+Əla! Xüsusi **format** istəməyin cavabları ehtiyacınız olan şəkildə təşkil olunmuş şəkildə almağa kömək etdiyini öyrəndiniz!
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-3-format-finder" 
+  stars={3}
+  message="Fərqli formatlar istəməyi öyrəndiniz!"
+/>
+</Section>

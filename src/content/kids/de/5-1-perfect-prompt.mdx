@@ -1,0 +1,107 @@
+<Section>
+<Panel character="promi" mood="excited">
+Willkommen am **Meister-Berg**! ⛰️ Du bist so weit gekommen! Jetzt ist es Zeit, ALLES was du gelernt hast in perfekten Prompts zu kombinieren!
+</Panel>
+</Section>
+
+<Section>
+## Die Meister-Checkliste
+
+Ein perfekter Prompt kann beinhalten:
+
+✅ **Klarheit** - Sei spezifisch, nicht vage
+✅ **Details** - WER, WAS, WANN, WO
+✅ **Kontext** - Hintergrundinformationen, Beispiele, Format
+✅ **Kreativität** - Rollenspiel, Persönlichkeit, Fantasie
+</Section>
+
+<Section>
+## Magische Worte: "Denke Schritt für Schritt" 🧠
+
+<StepByStep
+  title="Schritt-für-Schritt-Magie"
+  problem="Ich habe 3 Taschen mit je 5 Äpfeln, und ich esse 2 Äpfel. Wie viele sind noch übrig?"
+  wrongAnswer="15 Äpfel übrig (KI hat geraten ohne zu denken!)"
+  steps={[
+    "Zuerst: 3 Taschen × 5 Äpfel = 15 Äpfel insgesamt",
+    "Dann: Ich esse 2 Äpfel",
+    "Schließlich: 15 - 2 = 13 Äpfel übrig"
+  ]}
+  rightAnswer="13 Äpfel übrig - und wir können die Arbeit überprüfen!"
+  magicWords="Lass uns Schritt für Schritt denken"
+  successMessage="Magische Worte helfen der KI, ihr Denken zu zeigen, damit du überprüfen kannst, ob es richtig ist!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Du brauchst nicht ALLE davon jedes Mal, aber zu wissen, wann man jeden nutzt, macht dich zum Prompt-Meister!
+</Panel>
+</Section>
+
+<Section>
+## Meister-Herausforderung #1
+
+<PromptVsMistake
+  question="Welcher Prompt kombiniert die meisten Fähigkeiten?"
+  good="Ich bin ein 10-jähriges Kind, das den Weltraum liebt. Tu so als wärst du ein freundlicher Astronaut und erzähl mir 5 erstaunliche Fakten über Saturn. Mach es aufregend und benutze einfache Worte, die ein Kind verstehen würde!"
+  bad="Erzähl mir über Saturn"
+  explanation="Dieser Prompt hat: Kontext (10 Jahre, liebt Weltraum), Rollenspiel (freundlicher Astronaut), Format (5 Fakten), Persönlichkeit (aufregend), und Klarheit (einfache Worte)!"
+  promiMessage="Das ist ein Meister-Level Prompt! Er sagt mir genau, was du brauchst!"
+/>
+</Section>
+
+<Section>
+## Meister-Herausforderung #2
+
+<PromptVsMistake
+  question="Welcher ist näher an einem perfekten Prompt?"
+  good="Tu so als wärst du ein weiser alter Baum in einem verzauberten Wald. Ich bin ein junger Abenteurer, der dich gerade gefunden hat. Erzähl mir eine kurze Geschichte über die magischen Kreaturen, die in der Nähe leben. Mach sie geheimnisvoll aber nicht gruselig, mit einem glücklichen Ende!"
+  bad="Erzähl mir über einen Wald"
+  explanation="Das hat: Rollenspiel (weiser alter Baum), Figuren (junger Abenteurer), Setting (verzauberter Wald), Thema (magische Kreaturen), Stil (geheimnisvoll, nicht gruselig, glückliches Ende)!"
+  promiMessage="So viele tolle Elemente kombiniert! Das wird eine erstaunliche Geschichte!"
+/>
+</Section>
+
+<Section>
+## Baue einen Meister-Prompt!
+
+<DragDropPrompt
+  title="Perfekter Prompt"
+  instruction="Ordne alle Elemente in einen perfekten Prompt"
+  pieces={["Ich mache eine Geburtstagskarte für meinen Papa, der Angeln liebt.", "Gib mir 3 lustige Angel-Witze", "wie 'Warum wurde der Fisch rot? Er sah den Meeresgrund!'", "Halte sie familienfreundlich und kurz!"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Perfekt! Kontext, Format, Beispiel und Stil alles in einem Prompt!"
+/>
+</Section>
+
+<Section>
+## Erstelle deinen Meister-Prompt!
+
+<MagicWords
+  sentence="Ich bin ein ___ der Hilfe braucht mit ___. Tu so als wärst du ein ___ und gib mir ___ wie ___. Mach es ___!"
+  blanks={[
+    { hint: "👤 wer du bist", answers: ["junger Künstler", "neugieriger Schüler", "kreativer Autor", "Naturliebhaber", "Witzesammler"] },
+    { hint: "📚 dein Ziel", answers: ["einem Schulprojekt", "einer kreativen Geschichte", "etwas Neues lernen", "jemanden zum Lachen bringen", "ein Abenteuer planen"] },
+    { hint: "🎭 eine Figur", answers: ["freundlicher Experte", "alberner Komiker", "weiser Lehrer", "kreativer Erfinder", "Geschichten erzählende Oma"] },
+    { hint: "🔢 was du brauchst", answers: ["5 lustige Ideen", "3 hilfreiche Tipps", "ein paar kreative Beispiele", "eine kurze Geschichte", "eine einfache Erklärung"] },
+    { hint: "💡 ein Beispiel", answers: ["'Super Stern Strategie'", "'Fröhlicher Helfer Tipp'", "'Magischer Moment'", "'Wunder Wort'", "'Kreativer Funke'"] },
+    { hint: "✨ den Stil", answers: ["lustig und leicht zu verstehen", "aufregend und einprägsam", "kreativ und bunt", "hilfreich und ermutigend", "albern aber nützlich"] }
+  ]}
+  successMessage="ERSTAUNLICH! Das ist ein wahrer Meister-Prompt mit allen Elementen!"
+/>
+</Section>
+
+<Section>
+## Meister-Fähigkeiten freigeschaltet! 🎉
+
+<Panel character="promi" mood="celebrating">
+Unglaublich! Du hast gelernt, all deine Fähigkeiten in **perfekte Prompts** zu kombinieren! Du bist auf dem besten Weg, ein Prompt-Meister zu werden!
+</Panel>
+
+<LevelComplete 
+  levelSlug="5-1-perfect-prompt" 
+  stars={3}
+  message="Du hast gelernt, perfekte Prompts zu erstellen!"
+/>
+</Section>

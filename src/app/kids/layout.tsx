@@ -1,7 +1,10 @@
 import { Schoolbell } from "next/font/google";
+import { getLocale } from "next-intl/server";
 import { KidsHeader } from "@/components/kids/layout/kids-header";
 import { BackgroundMusic } from "@/components/kids/layout/background-music";
 import { LevelProvider } from "@/components/kids/providers/level-context";
+
+const RTL_LOCALES = ["ar", "he", "fa"];
 
 const kidsFont = Schoolbell({
   subsets: ["latin"],
@@ -27,14 +30,22 @@ function PixelCloudBg({ className, style }: { className?: string; style?: React.
   );
 }
 
-export default function KidsLayout({
+export default async function KidsLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const locale = await getLocale();
+  const isRtl = RTL_LOCALES.includes(locale);
+
   return (
     <LevelProvider>
-    <div className={`fixed inset-0 flex flex-col text-xl light ${kidsFont.className}`} data-theme="light" style={{ colorScheme: "light" }}>
+    <div 
+      className={`fixed inset-0 flex flex-col text-xl light ${kidsFont.className}`} 
+      data-theme="light" 
+      dir={isRtl ? "rtl" : "ltr"}
+      style={{ colorScheme: "light" }}
+    >
       {/* Smooth gradient sky background */}
       <div 
         className="absolute inset-0 -z-10"

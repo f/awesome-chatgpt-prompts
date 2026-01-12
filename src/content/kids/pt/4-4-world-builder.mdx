@@ -1,0 +1,85 @@
+<Section>
+<Panel character="promi" mood="excited">
+Bem-vindo ao último nível do Cânion da Criatividade! 🎨 Vamos nos tornar **Construtores de Mundos** e criar cenários imaginativos incríveis!
+</Panel>
+</Section>
+
+<Section>
+## Construindo mundos imaginários
+
+Você pode pedir à IA para te ajudar a criar mundos inteiros:
+
+- Reinos de fantasia com magia
+- Cidades futurísticas com robôs
+- Civilizações submarinas
+- Planetas em galáxias distantes
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+O único limite é sua imaginação! Me conte sobre seu mundo e eu ajudarei a dar vida a ele!
+</Panel>
+</Section>
+
+<Section>
+## Construção de mundos em ação!
+
+<PromptVsMistake
+  question="Qual prompt constrói um mundo melhor?"
+  good="Me ajude a criar um mundo onde todos os animais podem falar e têm suas próprias cidades. Os gatos comandam as bibliotecas e os cachorros são bombeiros. O que mais poderia ter lá?"
+  bad="Invente um mundo"
+  explanation="O prompt detalhado começa a construir o mundo (animais falantes com empregos) e me pede para adicionar mais!"
+  promiMessage="Adoro esse mundo! Talvez os pássaros entreguem correio e os coelhos tenham padarias!"
+/>
+</Section>
+
+<Section>
+## Expanda seu mundo!
+
+<PromptVsMistake
+  question="Qual prompt ajuda a fazer um mundo crescer?"
+  good="No meu mundo da floresta mágica, há árvores que crescem doces. Que tipos de árvores de doces poderiam existir? Quem cuida delas? Que aventuras poderiam acontecer lá?"
+  bad="Me conte sobre uma floresta"
+  explanation="Fazendo perguntas específicas sobre seu mundo, posso te ajudar a expandi-lo com novas ideias!"
+  promiMessage="Fazer perguntas 'e se' ajuda os mundos a ficarem maiores e mais interessantes!"
+/>
+</Section>
+
+<Section>
+## Construa seu mundo!
+
+<DragDropPrompt
+  title="Construtor de Mundos"
+  instruction="Organize para criar um mundo imaginativo"
+  pieces={["Me ajude a criar um mundo", "onde todo o clima é controlado por", "O que poderia dar errado?", "magos do clima simpáticos."]}
+  correctOrder={[0, 1, 3, 2]}
+  successMessage="Que mundo criativo! Estou imaginando tantos cenários divertidos!"
+/>
+</Section>
+
+<Section>
+## Crie seu mundo definitivo!
+
+<MagicWords
+  sentence="Me ajude a construir um mundo onde ___. A coisa principal que o torna especial é ___. Quem mora lá? Que aventuras poderiam acontecer?"
+  blanks={[
+    { hint: "🌍 conceito do mundo", answers: ["os sonhos se tornam realidade", "todos têm superpoderes", "os brinquedos se movem à noite", "a música cria magia", "as cores têm sentimentos"] },
+    { hint: "✨ característica especial", answers: ["uma árvore mágica gigante no centro", "ilhas flutuantes no céu", "rios que fluem com luz das estrelas", "prédios feitos de nuvens", "portais para outras dimensões"] }
+  ]}
+  successMessage="Que mundo incrível! As aventuras são infinitas!"
+/>
+</Section>
+
+<Section>
+## Parabéns, Construtor de Mundos! 🎉
+
+<Panel character="promi" mood="celebrating">
+Você conseguiu! Você completou o Cânion da Criatividade e se tornou um **Construtor de Mundos**! Sua imaginação combinada com a IA pode criar mundos incríveis sem fim!
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-4-world-builder" 
+  stars={3}
+  message="Você completou o Cânion da Criatividade! Você é um Construtor de Mundos!"
+/>
+</Section>

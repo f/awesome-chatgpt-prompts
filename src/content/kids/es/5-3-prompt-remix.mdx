@@ -1,0 +1,106 @@
+<Section>
+<Panel character="promi" mood="excited">
+¡Hoy aprendemos **Remix de Prompts**! 🎵 ¡Esto significa cambiar prompts para obtener diferentes resultados!
+</Panel>
+</Section>
+
+<Section>
+## ¡Mismo tema, diferentes resultados!
+
+Puedes preguntar sobre lo mismo de diferentes maneras para obtener diferentes respuestas:
+
+- **Para diversión**: "Cuéntame sobre los delfines de manera tonta"
+- **Para la escuela**: "Dame 5 datos educativos sobre los delfines"
+- **Para creatividad**: "Escribe un poema desde el punto de vista de un delfín"
+</Section>
+
+<Section>
+## ¡Prueba el Laboratorio de Prompts! 🔬
+
+<PromptLab
+  title="Mejora tu prompt"
+  scenario="¡Hagamos un prompt simple mejor agregando detalles uno a la vez!"
+  basePrompt="Cuéntame sobre los perros"
+  baseResponse="Los perros son animales. Tienen cuatro patas y pelaje."
+  improvements={[
+    { label: "Agrega una raza específica", prompt: "Cuéntame sobre los perros Golden Retriever", response: "¡Los Golden Retrievers son perros maravillosos conocidos por su personalidad amigable, pelaje dorado, y amor por nadar!" },
+    { label: "Agrega una audiencia", prompt: "Cuéntame sobre los perros Golden Retriever para un niño de 10 años", response: "¡Los Golden Retrievers son perros súper amigables que aman jugar a buscar y nadar! ¡Tienen pelaje dorado suave y grandes sonrisas felices!" },
+    { label: "Agrega un formato", prompt: "Dame 3 datos divertidos sobre los perros Golden Retriever para un niño de 10 años", response: "¡Aquí hay 3 datos divertidos sobre los Golden Retrievers: 1) Fueron entrenados para traer aves para los cazadores, 2) Pueden aprender más de 200 palabras, 3) ¡Tienen patas palmeadas que los hacen grandes nadadores!" }
+  ]}
+  successMessage="¡Cada detalle que agregaste hizo la respuesta mejor y más útil!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+¡Hacer remix de prompts significa que puedes explorar el mismo tema de muchas maneras emocionantes!
+</Panel>
+</Section>
+
+<Section>
+## ¡Mira el remix!
+
+<PromptVsMistake
+  question="Quieres aprender sobre dinosaurios pero de manera DIVERTIDA. ¿Qué remix es mejor?"
+  good="Finge que eres un T-Rex que acaba de despertar. Cuéntame sobre tu día - ¿qué comes, quiénes son tus amigos, y qué te pone gruñón?"
+  bad="Dame datos sobre el T-Rex"
+  explanation="¡Mismo tema (T-Rex), pero el remix lo convierte en una historia divertida desde la perspectiva del dinosaurio!"
+  promiMessage="¡Hacer remix del mismo tema te da formas frescas y divertidas de aprender!"
+/>
+</Section>
+
+<Section>
+## ¡Remix para diferentes metas!
+
+<PromptVsMistake
+  question="Aprendiste sobre la luna. Ahora quieres escribir una historia creativa. ¿Qué remix funciona?"
+  good="Escribe una historia para dormir sobre una estrellita que quiere visitar la luna. ¡Hazla mágica con un final dulce!"
+  bad="Cuéntame más datos sobre la luna"
+  explanation="¡Hiciste remix de 'aprender datos' a 'historia creativa' - mismo tema, diferente propósito!"
+  promiMessage="¡El remix te permite usar lo que sabes de nuevas maneras creativas!"
+/>
+</Section>
+
+<Section>
+## ¡Prueba diferentes remixes!
+
+<DragDropPrompt
+  title="Remix de Prompt"
+  instruction="Haz remix de 'Cuéntame sobre gatos' en un prompt creativo:"
+  pieces={["y describe tu lugar favorito para dormir la siesta", "Escribe desde la vista de un gato perezoso", "que vive en una librería acogedora.", "¡Hazlo gracioso y relajado!"]}
+  correctOrder={[1, 2, 0, 3]}
+  successMessage="¡Gran remix! ¡Mismo tema, enfoque totalmente diferente y divertido!"
+/>
+</Section>
+
+<Section>
+## ¡Crea tu remix!
+
+Toma el tema básico "robots" y hazle remix:
+
+<MagicWords
+  sentence="___ un robot ___ que ___. Describe ___. ¡Hazlo ___!"
+  blanks={[
+    { hint: "📝 qué escribir", answers: ["Cuenta una historia sobre", "Escribe un diario de", "Crea una canción sobre", "Describe un día para", "Entrevista a"] },
+    { hint: "🤖 tipo de robot", answers: ["pequeño ayudante", "bailarín", "cocinero", "explorador espacial", "amigable del salón de clases"] },
+    { hint: "⭐ qué hace", answers: ["acaba de aprender a hacer amigos", "descubrió que ama la música", "cometió un error tonto", "va en su primera aventura", "conoció a un humano por primera vez"] },
+    { hint: "🎯 qué incluir", answers: ["cómo se siente sobre su nuevo descubrimiento", "el momento más gracioso de su día", "con qué sueña", "su recuerdo favorito", "qué aprendió hoy"] },
+    { hint: "✨ el estilo", answers: ["conmovedor y dulce", "tonto y divertido", "emocionante y aventurero", "pacífico y calmado", "misterioso y curioso"] }
+  ]}
+  successMessage="¡Increíble remix! ¡Convertiste 'robots' en algo totalmente único!"
+/>
+</Section>
+
+<Section>
+## ¡Maestro del Remix! 🎉
+
+<Panel character="promi" mood="celebrating">
+¡Fantástico! ¡Aprendiste a **hacer remix de prompts** para obtener diferentes resultados del mismo tema! ¡Esto hace tu creatividad infinita!
+</Panel>
+
+<LevelComplete 
+  levelSlug="5-3-prompt-remix" 
+  stars={3}
+  message="¡Aprendiste a hacer remix de prompts para diferentes resultados!"
+/>
+</Section>

@@ -1,0 +1,88 @@
+<Section>
+<Panel character="promi" mood="excited">
+Bu gün süni intellektə **şəxsiyyət** verməyi öyrənəcəyik! 🎭 Bu söhbətləri DAHA əyləncəli edir!
+</Panel>
+</Section>
+
+<Section>
+## Süni intellektə şəxsiyyət verin!
+
+Süni intellektə hansı şəxsiyyət olacağını deyə bilərsiniz:
+
+- **Mehriban və şən** - həmişə pozitiv!
+- **Axmaq və gülməli** - çox zarafat edir
+- **Ağıllı və sakit** - düşüncəli cavablar verir
+- **Həyəcanlı və enerjili** - çox nida işarəsi istifadə edir!
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+Mənə hansı şəxsiyyət olacağımı söylədiyinizdə, axtardığınız əhval-ruhiyyəni uyğunlaşdıra bilirəm!
+</Panel>
+</Section>
+
+<Section>
+## Şəxsiyyət fərq yaradır!
+
+<PromptVsMistake
+  question="Hansı prompt əyləncəli şəxsiyyət verir?"
+  good="Elmi HƏDSİZ sevən super həyəcanlı robot kimi davran! Çox nida işarəsi istifadə et və tez-tez 'HEYRƏTAMİZ!' de. Mənə vulkanlar haqqında danış!"
+  bad="Mənə vulkanlar haqqında danış"
+  explanation="Birinci prompt əyləncəli, həyəcanlı şəxsiyyət yaradır ki, öyrənməyi macəra kimi hiss etdirir!"
+  promiMessage="HEYRƏTAMİZ! Həyəcanlı olanda elmin nə qədər əyləncəli olduğunu görürsünüz?!"
+/>
+</Section>
+
+<Section>
+## Əhvalı uyğunlaşdırın!
+
+<PromptVsMistake
+  question="Yatmaq vaxtı hekayəsi üçün ən yaxşı şəxsiyyət hansıdır?"
+  good="Mənə sakit, rahatladıcı səslə yatmaq vaxtı hekayəsi danış. Yumşaq danış və dinc və yuxulu et."
+  bad="Mənə yatmaq vaxtı hekayəsi danış"
+  explanation="Sakit, rahatladıcı şəxsiyyət istədiyinizdə, hekayə istirahət etməyinizə kömək edəcək!"
+  promiMessage="Fərqli əhval-ruhiyyələr fərqli vəziyyətlərə daha yaxşı uyğun gəlir!"
+/>
+</Section>
+
+<Section>
+## Personaj yaradın!
+
+<DragDropPrompt
+  title="Personaj Şəxsiyyəti"
+  instruction="Əyləncəli şəxsiyyət yaratmaq üçün sıralayın"
+  pieces={["Ağıllı qoca bayquş kimi davran", "'Hu-hu' səslərini çox istifadə et!", "gənc quşlara öyrətməyi sevən.", "Səbirli və mehriban ol."]}
+  correctOrder={[0, 2, 3, 1]}
+  successMessage="Nə gözəl personaj! Hu-hu! Bu bayquş öyrətməyə hazırdır!"
+/>
+</Section>
+
+<Section>
+## Süni intellekt şəxsiyyətinizi dizayn edin!
+
+<MagicWords
+  sentence="Həmişə ___ olan ___ kimi davran. ___ istifadə et və ___ ol. Mənə ___ haqqında danış."
+  blanks={[
+    { hint: "🎭 personaj növü", answers: ["mehriban robot", "ağıllı sehrbaz", "axmaq təlxək", "cəsur cəngavər", "maraqlı yadplanetli"] },
+    { hint: "😊 şəxsiyyət xüsusiyyəti", answers: ["həyəcanlı", "sakit", "gülməli", "ruhlandırıcı", "sirli"] },
+    { hint: "💬 danışma üslubu", answers: ["çox zarafat", "yumşaq sözlər", "qafiyələr", "böyük sözlər", "səs effektləri"] },
+    { hint: "❤️ başqa xüsusiyyət", answers: ["kömək edən", "səbirli", "yaradıcı", "macəraçı", "qayğılı"] },
+    { hint: "📚 mövzu", answers: ["kosmos", "heyvanlar", "musiqi", "dostluq", "təbiət"] }
+  ]}
+  successMessage="Heyrətamiz şəxsiyyət yaratdınız! Gəlin söhbət edək!"
+/>
+</Section>
+
+<Section>
+## Şəxsiyyət Ustası! 🎉
+
+<Panel character="promi" mood="celebrating">
+Əla! Süni intellektə **şəxsiyyət** verməyin söhbətləri daha əyləncəli və cəlbedici etdiyini öyrəndiniz! Fərqli ehtiyaclar üçün fərqli şəxsiyyətləri sınayın!
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-3-character-creator" 
+  stars={3}
+  message="Süni intellektə şəxsiyyət verməyi öyrəndiniz!"
+/>
+</Section>
