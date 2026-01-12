@@ -1,0 +1,87 @@
+<Section>
+<Panel character="promi" mood="excited">
+Welcome to the final level of Context Caves! 🕳️ Time to become a **Context Champion** by combining everything you've learned!
+</Panel>
+</Section>
+
+<Section>
+## The Context Champion Checklist
+
+Great context includes:
+
+✅ **Background** - Who you are, what situation you're in
+✅ **Examples** - Show what you want
+✅ **Format** - How you want the answer organized
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Put all three together and you'll get amazing results every time!
+</Panel>
+</Section>
+
+<Section>
+## Champion Challenge #1
+
+<PromptVsMistake
+  question="Which prompt has the best context?"
+  good="I'm a 9-year-old making a poster about recycling for Earth Day. Can you give me 5 catchy slogans like 'Reduce, Reuse, Recycle!' - short and easy to remember?"
+  bad="Give me recycling slogans"
+  explanation="The champion prompt includes: Background (9-year-old, Earth Day poster), Example ('Reduce, Reuse, Recycle!'), and Format (5 slogans, short)!"
+  promiMessage="This prompt tells me everything I need to give you perfect slogans!"
+/>
+</Section>
+
+<Section>
+## Champion Challenge #2
+
+<PromptVsMistake
+  question="Which prompt combines context elements best?"
+  good="I'm helping my little brother learn animal sounds. Can you make a fun list of 6 animals with their sounds, like 'Cow - Moo!' - keep it silly and simple?"
+  bad="List animal sounds"
+  explanation="This includes: Background (helping little brother learn), Example (Cow - Moo!), and Format (list of 6, silly and simple)!"
+  promiMessage="Perfect context! I know exactly what will work for your little brother!"
+/>
+</Section>
+
+<Section>
+## Build a Champion Prompt!
+
+<DragDropPrompt
+  title="Context Champion"
+  instruction="Arrange ALL context elements into a perfect prompt"
+  pieces={["I'm writing a story for my class.", "Can you suggest 3 magical pet names", "like 'Sparkle' or 'Moonbeam'?", "Something cute but not too long."]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Champion prompt! You included background, examples, and format preferences!"
+/>
+</Section>
+
+<Section>
+## Create Your Champion Prompt!
+
+<MagicWords
+  sentence="I'm a ___ working on ___. Can you give me ___ like ___? Make it ___."
+  blanks={[
+    { hint: "👤 who you are", answers: ["student", "young writer", "curious kid", "creative artist", "beginner cook"] },
+    { hint: "📚 your project", answers: ["a school project", "a birthday card", "a funny story", "a science experiment", "a comic book"] },
+    { hint: "🎯 what you need", answers: ["3 good ideas", "5 fun titles", "some cool names", "a few examples", "helpful tips"] },
+    { hint: "💡 an example", answers: ["'Super Star'", "'Magic Moment'", "'Wonder World'", "'Happy Helper'", "'Dream Team'"] },
+    { hint: "✨ the style", answers: ["fun and short", "creative and catchy", "simple and clear", "exciting and bold", "friendly and warm"] }
+  ]}
+  successMessage="You're a true Context Champion! That prompt has it all!"
+/>
+</Section>
+
+<Section>
+## Congratulations, Champion! 🎉
+
+<Panel character="promi" mood="celebrating">
+You did it! You've completed Context Caves and become a **Context Champion**! You now know how to combine background, examples, and format for amazing prompts!
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-4-context-champion" 
+  stars={3}
+  message="You completed Context Caves! You're a Context Champion!"
+/>
+</Section>

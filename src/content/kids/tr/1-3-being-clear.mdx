@@ -1,7 +1,10 @@
+<Section>
 <Panel character="promi" mood="happy">
 Merhaba süperstar! 🌟 Bugün en önemli beceriyi öğreneceğiz: **NET OLMAK**!
 </Panel>
+</Section>
 
+<Section>
 ## Neden Net Olmak Önemli
 
 Annenden "yiyecek" istemek ile "kabuksuz fıstık ezmeli sandviç" istemek arasındaki farkı düşün. Hangisi tam olarak istediğini sana verir?
@@ -9,10 +12,10 @@ Annenden "yiyecek" istemek ile "kabuksuz fıstık ezmeli sandviç" istemek aras�
 <Panel character="promi" mood="thinking">
 Benimle de aynı! Net olduğunda, tam olarak nasıl yardım edeceğimi bilirim. Belirsiz olduğunda tahmin etmem gerekiyor... ve yanlış tahmin edebilirim!
 </Panel>
+</Section>
 
+<Section>
 ## Net vs. Belirsiz
-
-Hadi farkı bulmayı pratik yapalım!
 
 <PromptVsMistake
   question="Hangi prompt daha net?"
@@ -21,7 +24,9 @@ Hadi farkı bulmayı pratik yapalım!
   explanation="Net prompt bana söylüyor: ne kadar uzun (4 satır), ne hakkında (bahçedeki kelebekler), ve özel bir kural (kafiyeli). Çok daha iyi!"
   promiMessage="Net promptlar = daha iyi sonuçlar! Bu sihir gibi!"
 />
+</Section>
 
+<Section>
 <PromptVsMistake
   question="Hangisi tam olarak neye ihtiyacın olduğunu söylüyor?"
   good="10 yaşındaki birinin seveceği yunuslar hakkında 3 eğlenceli bilgi yazmama yardım et"
@@ -29,39 +34,44 @@ Hadi farkı bulmayı pratik yapalım!
   explanation="İlk prompt bana söylüyor: kaç bilgi (3), ne tür (eğlenceli), ve kimin için (10 yaşındaki). Bu çok yardımcı oluyor!"
   promiMessage="Kimin için olduğunu söylediğinde, onlar için mükemmel yapabilirim!"
 />
+</Section>
 
+<Section>
 ## Netlik Mücadelesi
-
-Hadi şimdiye kadarki en net promptu oluşturalım!
 
 <DragDropPrompt
   title="Kristal netliğinde yap! 💎"
   instruction="Bu parçaları süper net bir prompt yapmak için düzenle"
   pieces={[
-    "Lütfen yazmama yardım et",
-    "kısa bir uyku hikayesi",
+    "Lütfen",
+    "küçük kardeşim için",
     "uykulu bir baykuş hakkında",
     "mutlu sonlu",
-    "küçük kardeşim için"
+    "kısa bir uyku hikayesi",
+    "yazmama yardım et"
   ]}
-  correctOrder={[0, 1, 2, 3, 4]}
+  correctOrder={[0, 1, 2, 3, 4, 5]}
   successMessage="Bu şimdiye kadarki en net prompt! Harika!"
 />
+</Section>
 
+<Section>
 ## Net Detaylar Ekle
 
 <MagicWords
   title="Detayları ekle! 🎯"
-  sentence="Bir {{length}} {{type}} yaz, {{topic}} hakkında, {{audience}} için"
+  sentence="___ için ___ hakkında ___ bir ___ yaz"
   blanks={[
-    { id: "length", hint: "Ne kadar uzun? (kısa, uzun)", answers: ["kısa", "uzun", "5 cümlelik", "bir sayfalık", "kısa", "hızlı"], emoji: "📏" },
-    { id: "type", hint: "Ne tür? (hikaye, liste, açıklama)", answers: ["hikaye", "liste", "açıklama", "şiir", "şarkı", "rehber"], emoji: "📝" },
-    { id: "topic", hint: "Ne hakkında? (uzay, hayvanlar, spor)", answers: ["uzay", "hayvanlar", "spor", "dinozorlar", "robotlar", "sihir", "doğa", "bilim"], emoji: "🎯" },
-    { id: "audience", hint: "Kimin için? (çocuklar, yeni başlayanlar)", answers: ["çocuklar", "yeni başlayanlar", "öğretmenim", "arkadaşım", "ailem", "öğrenciler"], emoji: "👥" }
+    { hint: "👥 kimin için?", answers: ["çocuklar", "yeni başlayanlar", "öğretmenim", "arkadaşım", "ailem", "öğrenciler"] },
+    { hint: "🎯 ne hakkında?", answers: ["uzay", "hayvanlar", "spor", "dinozorlar", "robotlar", "sihir", "doğa", "bilim"] },
+    { hint: "📏 ne kadar?", answers: ["kısa", "uzun", "5 cümlelik", "bir sayfalık", "hızlı"] },
+    { hint: "📝 ne tür?", answers: ["hikaye", "liste", "açıklama", "şiir", "şarkı", "rehber"] }
   ]}
   successMessage="Tüm önemli detayları ekledin! Harika iş!"
 />
+</Section>
 
+<Section>
 ## Netliğin Altın Kuralları
 
 <Panel character="promi" mood="excited">
@@ -73,7 +83,9 @@ Prompt yazarken bu üç soruyu hatırla:
 1. **NE** istiyorum? (hikaye, yardım, bilgi)
 2. **NASIL** olmalı? (kısa, komik, basit)
 3. **KİM** için? (ben, arkadaşım, sınıfım)
+</Section>
 
+<Section>
 <PromptVsMistake
   question="Son mücadele! Hangisi üç kuralı da kullanıyor?"
   good="Öğle yemeğinde arkadaşlarıma anlatabileceğim pizza hakkında kısa, komik bir fıkra yaz"
@@ -81,7 +93,9 @@ Prompt yazarken bu üç soruyu hatırla:
   explanation="Harika prompt şunları içeriyor: NE (pizza hakkında fıkra), NASIL (kısa ve komik), ve KİM (öğle yemeğinde arkadaşlara anlatmak için)!"
   promiMessage="Sen bir netlik şampiyonusun! 🏆"
 />
+</Section>
 
+<Section>
 ## Dünya 1 Tamamlandı! 🎊
 
 <Panel character="promi" mood="celebrating">
@@ -99,3 +113,4 @@ Yeni maceralara hazırsın!
   stars={3}
   message="Net olma sanatında ustalaştın! Dünya 1 tamamlandı!"
 />
+</Section>

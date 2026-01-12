@@ -1399,7 +1399,14 @@
         "stars": { "title": "Guadagna Stelle", "description": "Raccogli stelle e sblocca nuovi livelli" }
       },
       "startButton": "Inizia a Giocare!",
-      "ageNote": "Ideale per bambini di 8-14 anni che sanno leggere e scrivere"
+      "ageNote": "Ideale per bambini di 8-14 anni che sanno leggere e scrivere",
+      "whatYouLearn": "Cosa imparerai",
+      "readyTitle": "Pronto per iniziare?",
+      "readyMessage": "Andiamo all'avventura e impariamo a parlare con l'IA!"
+    },
+    "navigation": {
+      "back": "Indietro",
+      "next": "Avanti"
     },
     "map": { "title": "Mappa del Mondo", "subtitle": "Scegli un livello e inizia la tua avventura!", "worldLevels": "{count} livelli", "levelNumber": "Livello {number}", "locked": "Completa il livello precedente per sbloccare" },
     "worlds": { "1": { "title": "Villaggio Iniziale" }, "2": { "title": "Castello della Chiarezza" }, "3": { "title": "Caverne del Contesto" }, "4": { "title": "Canyon Creativo" }, "5": { "title": "Montagna del Maestro" } },

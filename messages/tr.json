@@ -1417,7 +1417,14 @@
         }
       },
       "startButton": "Oynamaya Başla!",
-      "ageNote": "Okuma yazma bilen 8-14 yaş çocuklar için en uygun"
+      "ageNote": "Okuma yazma bilen 8-14 yaş çocuklar için en uygun",
+      "whatYouLearn": "Ne Öğreneceksin",
+      "readyTitle": "Başlamaya Hazır mısın?",
+      "readyMessage": "Haydi bir maceraya çıkalım ve yapay zeka ile nasıl konuşulacağını öğrenelim!"
+    },
+    "navigation": {
+      "back": "Geri",
+      "next": "İleri"
     },
     "map": {
       "title": "Dünya Haritası",
@@ -1436,7 +1443,23 @@
     "levels": {
       "1_1_meet_promi": { "title": "Promi ile Tanış!", "description": "Robot arkadaşınla tanış ve yapay zekanın ne olduğunu öğren" },
       "1_2_first_words": { "title": "Promi'in İlk Sözleri", "description": "İlk promptunu yazarak Promi'in anlamasına yardım et" },
-      "1_3_being_clear": { "title": "Net Olmak", "description": "Net talimatların neden daha iyi çalıştığını öğren" }
+      "1_3_being_clear": { "title": "Net Olmak", "description": "Net talimatların neden daha iyi çalıştığını öğren" },
+      "2_1_missing_details": { "title": "Eksik Detaylar", "description": "Detayların neden önemli olduğunu keşfet" },
+      "2_2_who_and_what": { "title": "Kim ve Ne", "description": "Promptlarına karakter ve nesne ekle" },
+      "2_3_when_and_where": { "title": "Ne Zaman ve Nerede", "description": "Promptlarına zaman ve yer eklemeyi öğren" },
+      "2_4_detail_detective": { "title": "Detay Dedektifi", "description": "Doğru detayları ekleme ustası ol" },
+      "3_1_setting_the_scene": { "title": "Sahneyi Hazırlamak", "description": "Arka plan bilgisinin yapay zekaya nasıl yardımcı olduğunu öğren" },
+      "3_2_show_dont_tell": { "title": "Göster, Anlatma", "description": "Örnekler kullanarak tam olarak ne istediğini göster" },
+      "3_3_format_finder": { "title": "Format Bulucu", "description": "Liste, hikaye, şiir ve daha fazlasını iste!" },
+      "3_4_context_champion": { "title": "Bağlam Şampiyonu", "description": "Tüm bağlam tekniklerini bir profesyonel gibi birleştir" },
+      "4_1_pretend_time": { "title": "Hayal Zamanı!", "description": "Rol yapma promptlarını öğren" },
+      "4_2_story_starters": { "title": "Hikaye Başlatıcılar", "description": "Yapay zeka ile harika hikayeler oluştur" },
+      "4_3_character_creator": { "title": "Karakter Yaratıcı", "description": "Yapay zekaya kişilik ver" },
+      "4_4_world_builder": { "title": "Dünya Oluşturucu", "description": "Hayal gücüyle dolu dünyalar yarat" },
+      "5_1_perfect_prompt": { "title": "Mükemmel Prompt", "description": "Netlik, detay ve bağlamı birleştir" },
+      "5_2_fix_it_up": { "title": "Düzelt!", "description": "Zayıf promptları bul ve geliştir" },
+      "5_3_prompt_remix": { "title": "Prompt Remix", "description": "Farklı sonuçlar için promptları yeniden yaz" },
+      "5_4_graduation_day": { "title": "Mezuniyet Günü", "description": "Son mücadele - Prompt Ustası ol!" }
     },
     "level": {
       "backToMap": "Haritaya Dön",
@@ -1451,6 +1474,105 @@
       "nextLevel": "Sonraki Seviye",
       "backToMap": "Haritaya Dön",
       "allDone": "Haritaya Dön"
+    },
+    "quiz": {
+      "goodLabel": "Harika prompt!",
+      "badLabel": "Pek iyi değil",
+      "correct": "Doğru bildin!",
+      "incorrect": "İyi deneme!",
+      "tryAgain": "Tekrar Dene"
+    },
+    "magicWords": {
+      "title": "Sihirli kelimeleri sürükle! ✨",
+      "dragOrTap": "🎯 Kelimeleri sürükle veya tıkla:",
+      "check": "Kontrol Et!",
+      "retry": "Tekrar Dene",
+      "correct": "doğru",
+      "tryAgain": "Tekrar dene!"
+    },
+    "dragDrop": {
+      "title": "Promptu oluştur!",
+      "instruction": "Okları kullanarak taşı veya iki parçaya tıklayarak yer değiştir!",
+      "result": "Sonuç",
+      "check": "Kontrol Et!",
+      "retry": "Tekrar Dene",
+      "success": "Mükemmel! Harika bir prompt oluşturdun!",
+      "almost": "Neredeyse! Sıralamaya devam et.",
+      "tapToSwap": "Yer değiştirmek için başka bir parçaya tıkla!"
+    },
+    "promptParts": {
+      "title": "Prompt Parçalarını Sırala!",
+      "instruction": "Her parçaya tıkla, sonra türünü seç!",
+      "score": "Puan",
+      "pickCategory": "Bu ne türü?",
+      "success": "Tüm parçaları doğru sıraladın!",
+      "retry": "Tekrar Dene",
+      "types": {
+        "role": "Rol",
+        "task": "Görev",
+        "context": "Bağlam",
+        "constraint": "Kısıtlama"
+      }
+    },
+    "exampleMatcher": {
+      "title": "Desen Eşleştirici",
+      "instruction": "Desene bak ve sıradaki ne olmalı seç!",
+      "pattern": "Desen:",
+      "check": "Kontrol Et!",
+      "retry": "Tekrar Dene",
+      "correct": "Doğru bildin! 🎉",
+      "tryAgain": "Tam değil - desene tekrar bak!"
+    },
+    "promptDoctor": {
+      "title": "Prompt Doktoru",
+      "health": "Prompt Sağlığı",
+      "sick": "Hasta Prompt",
+      "healthy": "Sağlıklı Prompt!",
+      "diagnose": "Düzeltmek için bir soruna tıkla:",
+      "success": "Prompt artık tamamen iyileşti!",
+      "retry": "Baştan Başla"
+    },
+    "stepByStep": {
+      "title": "Adım Adım Düşün",
+      "problem": "Problem:",
+      "withoutMagic": "Sihirli kelimeler olmadan:",
+      "addMagicWords": "Sihirli Kelimeleri Ekle!",
+      "magicWordsActive": "Sihirli kelimeler eklendi!",
+      "nextStep": "Sonraki Adımı Göster",
+      "withMagic": "Adım adım düşünme ile:",
+      "retry": "Tekrar Dene"
+    },
+    "promptLab": {
+      "title": "Prompt Laboratuvarı",
+      "progress": "İyileştirmeler",
+      "yourPrompt": "Promptun:",
+      "aiSays": "Yapay Zeka Yanıtı:",
+      "addDetails": "İyileştirme ekle:",
+      "success": "Promptun artık süper detaylı!",
+      "retry": "Baştan Başla"
+    },
+    "wordPredictor": {
+      "title": "Yapay Zeka Nasıl Düşünür",
+      "instruction": "Yapay zeka en mantıklı kelimeyi tahmin eder. Sen de yapay zeka gibi düşünebilir misin?",
+      "aiThinks": "Yapay zeka okuyor:",
+      "thinkingDefault": "Hmm, buraya hangi kelime en çok uyar?",
+      "check": "Tahminimi Kontrol Et!",
+      "correct": "Yapay zeka gibi düşünüyorsun!",
+      "tryAgain": "Tam değil! Yapay zeka en olası kelimeyi seçer.",
+      "retry": "Tekrar Dene"
+    },
+    "settings": {
+      "title": "Ayarlar",
+      "language": "Dil",
+      "progress": "İlerlemeniz",
+      "stars": "Yıldız",
+      "completed": "Tamamlanan",
+      "resetTitle": "İlerlemeyi Sıfırla",
+      "resetButton": "Tüm İlerlemeyi Sıfırla",
+      "resetWarning": "Bu tüm yıldızlarını ve ilerlemenizi silecek. Emin misiniz?",
+      "resetConfirm": "Evet, Her Şeyi Sıfırla",
+      "resetComplete": "İlerleme sıfırlandı! Yeniden yükleniyor...",
+      "cancel": "İptal"
     }
   }
 }

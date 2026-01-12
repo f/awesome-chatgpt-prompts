@@ -1,0 +1,102 @@
+<Section>
+<Panel character="promi" mood="excited">
+🎉 **CONGRATULATIONS!** 🎉 You've made it to the FINAL LEVEL! This is **Graduation Day**!
+</Panel>
+</Section>
+
+<Section>
+## Look How Far You've Come!
+
+You've mastered:
+
+⭐ **World 1** - What AI is and why clarity matters
+⭐ **World 2** - WHO, WHAT, WHEN, WHERE details
+⭐ **World 3** - Context, examples, and formats
+⭐ **World 4** - Role-play, stories, and creativity
+⭐ **World 5** - Combining everything perfectly!
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+I'm SO proud of you! You've become a true Prompt Master! Let's celebrate with some final challenges!
+</Panel>
+</Section>
+
+<Section>
+## Final Challenge #1
+
+<PromptVsMistake
+  question="Show me your best prompt skills! Which is the master-level prompt?"
+  good="I'm a creative 11-year-old working on a comic book. Act as a fun superhero coach and help me create 3 unique superhero names with cool powers. Something like 'Starblaze - controls cosmic fire!' Make them exciting but kid-friendly!"
+  bad="Give me superhero names"
+  explanation="This master prompt has EVERYTHING: context (11-year-old, comic book), role (superhero coach), format (3 names with powers), example (Starblaze), and style (exciting, kid-friendly)!"
+  promiMessage="THAT is a Prompt Master at work! Perfect in every way!"
+/>
+</Section>
+
+<Section>
+## Final Challenge #2
+
+<PromptVsMistake
+  question="Create the ultimate helpful prompt!"
+  good="I'm nervous about my first day at a new school tomorrow. Pretend you're a kind older kid who's been through this before. Give me 5 tips to feel brave and make new friends. Be encouraging and remind me it's okay to be nervous!"
+  bad="Help me with school"
+  explanation="This prompt is heartfelt AND masterful: real situation (nervous, new school), role (kind older kid), format (5 tips), and emotional style (encouraging, understanding)!"
+  promiMessage="This shows prompts can help with real feelings too! Beautiful work!"
+/>
+</Section>
+
+<Section>
+## The Ultimate Prompt Challenge!
+
+<DragDropPrompt
+  title="Graduation Challenge"
+  instruction="Build the most complete prompt possible!"
+  pieces={["I'm a young chef who loves baking.", "Act as a friendly baking instructor", "and give me 3 easy cookie recipes for beginners,", "like 'Simple Sugar Cookies - only 5 ingredients!'", "Make the instructions clear and fun!"]}
+  correctOrder={[0, 1, 2, 3, 4]}
+  successMessage="PERFECT! Context, role, format, example, AND style! You're a true master!"
+/>
+</Section>
+
+<Section>
+## Create Your Graduation Masterpiece!
+
+<MagicWords
+  sentence="I'm a ___ who wants to ___. Act as a ___ and help me with ___. Give me something like '___'. Make it ___ and ___!"
+  blanks={[
+    { hint: "👤 who you are", answers: ["creative kid", "young explorer", "curious learner", "aspiring artist", "future inventor"] },
+    { hint: "🎯 your goal", answers: ["create something amazing", "learn something new", "solve a problem", "make people smile", "start an adventure"] },
+    { hint: "🎭 a helpful role", answers: ["wise mentor", "fun coach", "creative guide", "patient teacher", "encouraging friend"] },
+    { hint: "📚 what you need", answers: ["3 brilliant ideas", "a step-by-step plan", "an inspiring story", "helpful tips", "a creative project"] },
+    { hint: "💡 an example", answers: ["Build a cardboard rocket!", "Write a song about kindness", "Design a dream treehouse", "Create a new game", "Invent a helpful robot"] },
+    { hint: "✨ style 1", answers: ["fun", "inspiring", "creative", "exciting", "encouraging"] },
+    { hint: "🌟 style 2", answers: ["easy to follow", "full of imagination", "memorable", "unique", "joyful"] }
+  ]}
+  successMessage="🎉 MASTERPIECE! You've created the ultimate prompt! You are officially a PROMPT MASTER!"
+/>
+</Section>
+
+<Section>
+## 🎓 YOU DID IT! 🎓
+
+<Panel character="promi" mood="celebrating">
+**CONGRATULATIONS, PROMPT MASTER!** 🏆
+
+You've completed ALL levels! You now know how to talk to AI in the best ways possible. You can:
+- Be clear and specific
+- Add amazing details
+- Give helpful context
+- Be creative and imaginative
+- And so much more!
+
+Remember: The better your prompts, the better AI can help you. Go out there and create amazing things!
+
+**Thank you for learning with me! 🤖❤️**
+</Panel>
+
+<LevelComplete 
+  levelSlug="5-4-graduation-day" 
+  stars={3}
+  message="🎓 CONGRATULATIONS! You've graduated as a PROMPT MASTER! 🏆"
+/>
+</Section>

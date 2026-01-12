@@ -1399,7 +1399,14 @@
         "stars": { "title": "Ganhe Estrelas", "description": "Colete estrelas e desbloqueie novos níveis" }
       },
       "startButton": "Começar a Jogar!",
-      "ageNote": "Ideal para crianças de 8-14 anos que sabem ler e escrever"
+      "ageNote": "Ideal para crianças de 8-14 anos que sabem ler e escrever",
+      "whatYouLearn": "O que você vai aprender",
+      "readyTitle": "Pronto para começar?",
+      "readyMessage": "Vamos em uma aventura e aprender a falar com a IA!"
+    },
+    "navigation": {
+      "back": "Voltar",
+      "next": "Próximo"
     },
     "map": { "title": "Mapa do Mundo", "subtitle": "Escolha um nível e comece sua aventura!", "worldLevels": "{count} níveis", "levelNumber": "Nível {number}", "locked": "Complete o nível anterior para desbloquear" },
     "worlds": { "1": { "title": "Vila Inicial" }, "2": { "title": "Castelo da Clareza" }, "3": { "title": "Cavernas de Contexto" }, "4": { "title": "Cânion Criativo" }, "5": { "title": "Montanha Mestre" } },

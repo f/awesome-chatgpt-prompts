@@ -1399,7 +1399,14 @@
         "stars": { "title": "スターを集めよう", "description": "スターを集めて新しいレベルをアンロック" }
       },
       "startButton": "遊び始めよう！",
-      "ageNote": "読み書きができる8〜14歳のお子様に最適"
+      "ageNote": "読み書きができる8〜14歳のお子様に最適",
+      "whatYouLearn": "学べること",
+      "readyTitle": "始める準備はできた？",
+      "readyMessage": "冒険に出かけて、AIと話す方法を学ぼう！"
+    },
+    "navigation": {
+      "back": "戻る",
+      "next": "次へ"
     },
     "map": { "title": "ワールドマップ", "subtitle": "レベルを選んで冒険を始めよう！", "worldLevels": "{count}レベル", "levelNumber": "レベル{number}", "locked": "前のレベルをクリアしてアンロック" },
     "worlds": { "1": { "title": "はじまりの村" }, "2": { "title": "明確城" }, "3": { "title": "コンテキスト洞窟" }, "4": { "title": "クリエイティブ渓谷" }, "5": { "title": "マスター山" } },

@@ -1399,7 +1399,14 @@
         "stars": { "title": "Sterne sammeln", "description": "Sammle Sterne und schalte neue Level frei" }
       },
       "startButton": "Jetzt spielen!",
-      "ageNote": "Am besten für Kinder von 8-14 Jahren, die lesen und schreiben können"
+      "ageNote": "Am besten für Kinder von 8-14 Jahren, die lesen und schreiben können",
+      "whatYouLearn": "Was du lernst",
+      "readyTitle": "Bereit zum Starten?",
+      "readyMessage": "Lass uns auf ein Abenteuer gehen und lernen, mit KI zu sprechen!"
+    },
+    "navigation": {
+      "back": "Zurück",
+      "next": "Weiter"
     },
     "map": { "title": "Weltkarte", "subtitle": "Wähle ein Level und starte dein Abenteuer!", "worldLevels": "{count} Level", "levelNumber": "Level {number}", "locked": "Schließe das vorherige Level ab zum Freischalten" },
     "worlds": { "1": { "title": "Startdorf" }, "2": { "title": "Klarheitsschloss" }, "3": { "title": "Kontext-Höhlen" }, "4": { "title": "Kreativ-Canyon" }, "5": { "title": "Meisterberg" } },

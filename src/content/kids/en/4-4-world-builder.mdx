@@ -1,0 +1,85 @@
+<Section>
+<Panel character="promi" mood="excited">
+Welcome to the final level of Creation Canyon! 🎨 Let's become **World Builders** and create amazing imaginative scenarios!
+</Panel>
+</Section>
+
+<Section>
+## Building Imaginary Worlds
+
+You can ask AI to help you create entire worlds:
+
+- Fantasy kingdoms with magic
+- Futuristic cities with robots
+- Underwater civilizations
+- Planets in distant galaxies
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+The only limit is your imagination! Tell me about your world and I'll help bring it to life!
+</Panel>
+</Section>
+
+<Section>
+## World Building in Action!
+
+<PromptVsMistake
+  question="Which prompt builds a better world?"
+  good="Help me create a world where all animals can talk and they have their own cities. The cats run the libraries and the dogs are firefighters. What else might be there?"
+  bad="Make up a world"
+  explanation="The detailed prompt starts building the world (talking animals with jobs) and asks me to add more!"
+  promiMessage="I love this world! Maybe the birds deliver mail and the bunnies run bakeries!"
+/>
+</Section>
+
+<Section>
+## Expand Your World!
+
+<PromptVsMistake
+  question="Which prompt helps grow a world?"
+  good="In my magical forest world, there are trees that grow candy. What kinds of candy trees might exist? Who takes care of them? What adventures could happen there?"
+  bad="Tell me about a forest"
+  explanation="By asking specific questions about your world, I can help you expand it with new ideas!"
+  promiMessage="Asking 'what if' questions helps worlds grow bigger and more interesting!"
+/>
+</Section>
+
+<Section>
+## Build Your World!
+
+<DragDropPrompt
+  title="World Builder"
+  instruction="Arrange to create an imaginative world"
+  pieces={["Help me create a world", "where all weather is controlled by", "What might go wrong?", "friendly weather wizards."]}
+  correctOrder={[0, 1, 3, 2]}
+  successMessage="What a creative world! I'm imagining so many fun scenarios!"
+/>
+</Section>
+
+<Section>
+## Create Your Ultimate World!
+
+<MagicWords
+  sentence="Help me build a world where ___. The main thing that makes it special is ___. Who lives there? What adventures could happen?"
+  blanks={[
+    { hint: "🌍 world concept", answers: ["dreams come to life", "everyone has superpowers", "toys can move at night", "music creates magic", "colors have feelings"] },
+    { hint: "✨ special feature", answers: ["a giant magic tree in the center", "floating islands in the sky", "rivers that flow with starlight", "buildings made of clouds", "doorways to other dimensions"] }
+  ]}
+  successMessage="What an incredible world! The adventures are endless!"
+/>
+</Section>
+
+<Section>
+## Congratulations, World Builder! 🎉
+
+<Panel character="promi" mood="celebrating">
+You did it! You've completed Creation Canyon and become a **World Builder**! Your imagination combined with AI can create endless amazing worlds!
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-4-world-builder" 
+  stars={3}
+  message="You completed Creation Canyon! You're a World Builder!"
+/>
+</Section>

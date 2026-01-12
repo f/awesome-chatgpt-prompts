@@ -1399,7 +1399,14 @@
         "stars": { "title": "Ulduz Qazan", "description": "Ulduzlar topla və yeni səviyyələri aç" }
       },
       "startButton": "Oynamağa Başla!",
-      "ageNote": "Oxumaq və yazmaq bilən 8-14 yaşlı uşaqlar üçün ən uyğun"
+      "ageNote": "Oxumaq və yazmaq bilən 8-14 yaşlı uşaqlar üçün ən uyğun",
+      "whatYouLearn": "Nə öyrənəcəksən",
+      "readyTitle": "Başlamağa hazırsan?",
+      "readyMessage": "Gəl macəraya çıxaq və AI ilə danışmağı öyrənək!"
+    },
+    "navigation": {
+      "back": "Geri",
+      "next": "İrəli"
     },
     "map": { "title": "Dünya Xəritəsi", "subtitle": "Bir səviyyə seç və macərana başla!", "worldLevels": "{count} səviyyə", "levelNumber": "Səviyyə {number}", "locked": "Açmaq üçün əvvəlki səviyyəni tamamla" },
     "worlds": { "1": { "title": "Başlanğıc Kəndi" }, "2": { "title": "Aydınlıq Qalası" }, "3": { "title": "Kontekst Mağaraları" }, "4": { "title": "Yaradıcılıq Kanyonu" }, "5": { "title": "Ustad Dağı" } },

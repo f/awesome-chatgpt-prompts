@@ -1,189 +1,290 @@
 "use client";
 
-import { useState, useCallback } from "react";
-import { Check, RefreshCw, GripVertical } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useState, useCallback, useEffect, useId } from "react";
+import { useTranslations } from "next-intl";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useLevelSlug } from "@/components/kids/providers/level-context";
+import { getComponentState, saveComponentState } from "@/lib/kids/progress";
 
 interface DragDropPromptProps {
   title?: string;
   instruction?: string;
   pieces: string[];
-  correctOrder: number[]; // Indices of pieces in correct order
+  correctOrder: number[];
   successMessage?: string;
 }
 
+interface SavedState {
+  currentOrder: number[];
+  submitted: boolean;
+  shuffledPieces: number[];
+}
+
 export function DragDropPrompt({
-  title = "Build the prompt! 🧩",
-  instruction = "Drag the pieces into the right order to make a good prompt.",
+  title,
+  instruction,
   pieces,
   correctOrder,
-  successMessage = "Perfect! You built a great prompt!",
+  successMessage,
 }: DragDropPromptProps) {
-  const [shuffledPieces] = useState(() => {
-    // Create array of indices and shuffle
-    const indices = pieces.map((_, i) => i);
-    for (let i = indices.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [indices[i], indices[j]] = [indices[j], indices[i]];
-    }
-    return indices;
-  });
+  const t = useTranslations("kids.dragDrop");
+  const levelSlug = useLevelSlug();
+  const componentId = useId();
+  const displayTitle = title || t("title");
+  const displayInstruction = instruction || t("instruction");
 
-  const [currentOrder, setCurrentOrder] = useState<number[]>(shuffledPieces);
+  const [shuffledPieces, setShuffledPieces] = useState<number[]>([]);
+  const [currentOrder, setCurrentOrder] = useState<number[]>([]);
   const [submitted, setSubmitted] = useState(false);
-  const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  const isCorrect = useCallback(() => {
+  // Load saved state on mount
+  useEffect(() => {
+    const shuffle = () => {
+      const indices = pieces.map((_, i) => i);
+      for (let i = indices.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [indices[i], indices[j]] = [indices[j], indices[i]];
+      }
+      return indices;
+    };
+
+    if (!levelSlug) {
+      const shuffled = shuffle();
+      setShuffledPieces(shuffled);
+      setCurrentOrder(shuffled);
+      setIsLoaded(true);
+      return;
+    }
+    
+    const saved = getComponentState<SavedState>(levelSlug, componentId);
+    if (saved && saved.shuffledPieces && saved.shuffledPieces.length > 0 && saved.currentOrder) {
+      setShuffledPieces(saved.shuffledPieces);
+      setCurrentOrder(saved.currentOrder);
+      setSubmitted(saved.submitted || false);
+    } else {
+      const shuffled = shuffle();
+      setShuffledPieces(shuffled);
+      setCurrentOrder(shuffled);
+    }
+    setIsLoaded(true);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [levelSlug, componentId]);
+
+  // Save state when it changes
+  useEffect(() => {
+    if (!levelSlug || !isLoaded || currentOrder.length === 0) return;
+    
+    saveComponentState<SavedState>(levelSlug, componentId, {
+      currentOrder,
+      submitted,
+      shuffledPieces,
+    });
+  }, [levelSlug, componentId, currentOrder, submitted, shuffledPieces, isLoaded]);
+
+  // Don't render until loaded to prevent hydration mismatch
+  if (!isLoaded) return null;
+
+  const isCorrect = () => {
     return currentOrder.every((pieceIndex, position) => pieceIndex === correctOrder[position]);
-  }, [currentOrder, correctOrder]);
-
-  const handleDragStart = (index: number) => {
-    setDraggedIndex(index);
   };
 
-  const handleDragOver = (e: React.DragEvent, index: number) => {
-    e.preventDefault();
-    if (draggedIndex === null || draggedIndex === index) return;
-
+  // Move piece left (swap with previous)
+  const moveLeft = (position: number) => {
+    if (submitted || position === 0) return;
     const newOrder = [...currentOrder];
-    const draggedItem = newOrder[draggedIndex];
-    newOrder.splice(draggedIndex, 1);
-    newOrder.splice(index, 0, draggedItem);
+    [newOrder[position - 1], newOrder[position]] = [newOrder[position], newOrder[position - 1]];
     setCurrentOrder(newOrder);
-    setDraggedIndex(index);
   };
 
-  const handleDragEnd = () => {
-    setDraggedIndex(null);
-  };
-
-  const moveItem = (fromIndex: number, direction: "up" | "down") => {
-    const toIndex = direction === "up" ? fromIndex - 1 : fromIndex + 1;
-    if (toIndex < 0 || toIndex >= currentOrder.length) return;
-
+  // Move piece right (swap with next)
+  const moveRight = (position: number) => {
+    if (submitted || position === currentOrder.length - 1) return;
     const newOrder = [...currentOrder];
-    [newOrder[fromIndex], newOrder[toIndex]] = [newOrder[toIndex], newOrder[fromIndex]];
+    [newOrder[position], newOrder[position + 1]] = [newOrder[position + 1], newOrder[position]];
     setCurrentOrder(newOrder);
+  };
+
+  // Tap to select, tap another to swap
+  const handleTap = (position: number) => {
+    if (submitted) return;
+    
+    if (selectedIndex === null) {
+      // Select this piece
+      setSelectedIndex(position);
+    } else if (selectedIndex === position) {
+      // Deselect
+      setSelectedIndex(null);
+    } else {
+      // Swap with selected piece
+      const newOrder = [...currentOrder];
+      [newOrder[selectedIndex], newOrder[position]] = [newOrder[position], newOrder[selectedIndex]];
+      setCurrentOrder(newOrder);
+      setSelectedIndex(null);
+    }
   };
 
   const handleSubmit = () => {
     setSubmitted(true);
+    setSelectedIndex(null);
   };
 
   const handleReset = () => {
     setCurrentOrder(shuffledPieces);
     setSubmitted(false);
+    setSelectedIndex(null);
   };
 
   const correct = isCorrect();
 
   return (
-    <div className="my-6 rounded-2xl border-2 border-blue-200 dark:border-blue-800 overflow-hidden">
+    <div className="my-4 p-4 bg-white rounded-xl border-4 border-[#D97706]">
       {/* Header */}
-      <div className="px-4 py-3 bg-gradient-to-r from-blue-100 to-cyan-100 dark:from-blue-950/50 dark:to-cyan-950/50 border-b border-blue-200 dark:border-blue-800">
-        <p className="font-semibold m-0">{title}</p>
-        <p className="text-sm text-muted-foreground m-0">{instruction}</p>
+      <div className="flex items-center gap-3 mb-3">
+        <PixelPuzzleIcon />
+        <span className="font-bold text-2xl text-[#2C1810]">{displayTitle}</span>
       </div>
+      <p className="text-lg text-[#8B7355] mb-4 m-0">{displayInstruction}</p>
 
-      <div className="p-4 space-y-4">
-        {/* Draggable pieces */}
-        <div className="space-y-2">
-          {currentOrder.map((pieceIndex, position) => (
+      {/* Pieces with arrow controls */}
+      <div className="space-y-2 mb-4">
+        {currentOrder.map((pieceIndex, position) => {
+          const isSelected = selectedIndex === position;
+          const isCorrectPiece = submitted && pieceIndex === correctOrder[position];
+          const isWrongPiece = submitted && pieceIndex !== correctOrder[position];
+          
+          return (
             <div
               key={`${pieceIndex}-${position}`}
-              draggable={!submitted}
-              onDragStart={() => handleDragStart(position)}
-              onDragOver={(e) => handleDragOver(e, position)}
-              onDragEnd={handleDragEnd}
               className={cn(
-                "flex items-center gap-3 p-3 rounded-xl border-2 transition-all",
-                !submitted && "cursor-grab active:cursor-grabbing hover:border-primary hover:shadow-md",
-                submitted && pieceIndex === correctOrder[position] && "border-green-500 bg-green-50 dark:bg-green-950/30",
-                submitted && pieceIndex !== correctOrder[position] && "border-red-400 bg-red-50 dark:bg-red-950/30",
-                !submitted && "border-muted-foreground/20 bg-white dark:bg-card",
-                draggedIndex === position && "opacity-50 scale-95"
+                "flex items-center gap-2 p-2 rounded-lg border-2 transition-all",
+                !submitted && !isSelected && "bg-white border-[#D97706] hover:bg-[#FEF3C7]",
+                !submitted && isSelected && "bg-[#DBEAFE] border-[#3B82F6] ring-2 ring-[#3B82F6] scale-[1.02]",
+                isCorrectPiece && "bg-[#DCFCE7] border-[#16A34A]",
+                isWrongPiece && "bg-[#FEE2E2] border-[#DC2626]"
               )}
             >
-              {!submitted && (
-                <div className="flex flex-col gap-0.5">
-                  <button
-                    onClick={() => moveItem(position, "up")}
-                    disabled={position === 0}
-                    className="p-0.5 hover:text-primary disabled:opacity-30"
-                  >
-                    ▲
-                  </button>
-                  <button
-                    onClick={() => moveItem(position, "down")}
-                    disabled={position === currentOrder.length - 1}
-                    className="p-0.5 hover:text-primary disabled:opacity-30"
-                  >
-                    ▼
-                  </button>
-                </div>
-              )}
-              
-              <GripVertical className={cn("h-5 w-5 text-muted-foreground shrink-0", submitted && "opacity-0")} />
-              
-              <span className="flex-1 font-mono text-sm">{pieces[pieceIndex]}</span>
-              
-              <span className="w-6 h-6 rounded-full bg-muted flex items-center justify-center text-xs font-bold">
+              {/* Position number */}
+              <span className="w-8 h-8 flex items-center justify-center bg-[#D97706] text-white font-bold rounded-md text-lg">
                 {position + 1}
               </span>
+              
+              {/* Left arrow */}
+              <button
+                onClick={() => moveLeft(position)}
+                disabled={submitted || position === 0}
+                className={cn(
+                  "w-10 h-10 flex items-center justify-center rounded-lg border-2 transition-all",
+                  position === 0 || submitted
+                    ? "bg-gray-100 border-gray-200 text-gray-300 cursor-not-allowed"
+                    : "bg-[#FEF3C7] border-[#D97706] text-[#D97706] hover:bg-[#D97706] hover:text-white active:scale-95"
+                )}
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              
+              {/* Piece content - tappable */}
+              <button
+                onClick={() => handleTap(position)}
+                disabled={submitted}
+                className={cn(
+                  "flex-1 px-4 py-3 text-xl font-medium text-left rounded-lg transition-all",
+                  !submitted && "hover:bg-[#FEF3C7] cursor-pointer",
+                  submitted && "cursor-default"
+                )}
+              >
+                <span className="text-[#2C1810]">{pieces[pieceIndex]}</span>
+              </button>
+              
+              {/* Right arrow */}
+              <button
+                onClick={() => moveRight(position)}
+                disabled={submitted || position === currentOrder.length - 1}
+                className={cn(
+                  "w-10 h-10 flex items-center justify-center rounded-lg border-2 transition-all",
+                  position === currentOrder.length - 1 || submitted
+                    ? "bg-gray-100 border-gray-200 text-gray-300 cursor-not-allowed"
+                    : "bg-[#FEF3C7] border-[#D97706] text-[#D97706] hover:bg-[#D97706] hover:text-white active:scale-95"
+                )}
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+              
+              {/* Status indicator */}
+              {submitted && (
+                <span className="w-8 h-8 flex items-center justify-center text-xl">
+                  {isCorrectPiece ? "✓" : "✗"}
+                </span>
+              )}
             </div>
-          ))}
+          );
+        })}
+      </div>
+
+      {/* Hint for tap-to-swap */}
+      {selectedIndex !== null && (
+        <div className="bg-[#DBEAFE] border-2 border-[#3B82F6] rounded-lg p-3 mb-4 text-center">
+          <p className="text-lg text-[#1E40AF] font-medium m-0">
+            👆 {t("tapToSwap")}
+          </p>
         </div>
+      )}
 
-        {/* Preview */}
-        <div className="p-3 bg-muted/30 rounded-xl">
-          <p className="text-xs text-muted-foreground mb-2 m-0">Your prompt will look like:</p>
-          <pre className="whitespace-pre-wrap text-sm font-mono m-0">
-            {currentOrder.map((i) => pieces[i]).join(" ")}
-          </pre>
-        </div>
+      {/* Preview */}
+      <div className="bg-[#FEF3C7]/50 rounded-lg p-4 mb-4 border-2 border-[#D97706]/30">
+        <span className="text-lg text-[#8B7355]">{t("result")}: </span>
+        <span className="text-xl text-[#2C1810]">
+          {currentOrder.map((i) => pieces[i]).join(" ")}
+        </span>
+      </div>
 
-        {/* Result */}
-        {submitted && (
-          <div
-            className={cn(
-              "p-4 rounded-xl text-center",
-              correct
-                ? "bg-green-100 dark:bg-green-950/50 border border-green-300 dark:border-green-800"
-                : "bg-amber-100 dark:bg-amber-950/50 border border-amber-300 dark:border-amber-800"
-            )}
-          >
-            {correct ? (
-              <>
-                <p className="text-2xl mb-2">🎉</p>
-                <p className="font-semibold text-lg m-0">{successMessage}</p>
-              </>
-            ) : (
-              <>
-                <p className="font-semibold m-0">Almost there!</p>
-                <p className="text-sm text-muted-foreground m-0 mt-1">
-                  Try moving the pieces around to find the best order.
-                </p>
-              </>
-            )}
-          </div>
-        )}
-
-        {/* Actions */}
-        <div className="flex gap-2">
-          {!submitted ? (
-            <Button onClick={handleSubmit} className="rounded-full">
-              <Check className="h-4 w-4 mr-1" />
-              Check my prompt!
-            </Button>
+      {/* Result feedback */}
+      {submitted && (
+        <div className={cn(
+          "rounded-lg p-4 mt-4 mb-4 text-center",
+          correct ? "bg-[#DCFCE7] border-2 border-[#16A34A]" : "bg-[#FEF3C7] border-2 border-[#D97706]"
+        )}>
+          {correct ? (
+            <p className="font-bold text-xl m-0 text-[#16A34A]">🎉 {successMessage || t("success")}</p>
           ) : (
-            <Button onClick={handleReset} variant="outline" className="rounded-full">
-              <RefreshCw className="h-4 w-4 mr-1" />
-              Try again
-            </Button>
+            <p className="font-bold text-lg m-0 text-[#D97706]">{t("almost")}</p>
           )}
         </div>
+      )}
+
+      {/* Actions */}
+      <div className="flex gap-3">
+        {!submitted ? (
+          <button 
+            onClick={handleSubmit} 
+            className="px-6 py-3 bg-[#22C55E] hover:bg-[#16A34A] text-white font-bold rounded-lg text-xl transition-colors"
+          >
+            {t("check")}
+          </button>
+        ) : (
+          <button 
+            onClick={handleReset} 
+            className="px-6 py-3 bg-[#8B4513] hover:bg-[#A0522D] text-white font-bold rounded-lg text-xl transition-colors"
+          >
+            {t("retry")}
+          </button>
+        )}
       </div>
     </div>
+  );
+}
+
+function PixelPuzzleIcon() {
+  return (
+    <svg viewBox="0 0 16 16" className="w-5 h-5 inline-block text-[#3B82F6]" style={{ imageRendering: "pixelated" }}>
+      <rect x="2" y="2" width="5" height="5" fill="currentColor" />
+      <rect x="9" y="2" width="5" height="5" fill="currentColor" />
+      <rect x="2" y="9" width="5" height="5" fill="currentColor" />
+      <rect x="9" y="9" width="5" height="5" fill="currentColor" />
+      <rect x="7" y="4" width="2" height="2" fill="currentColor" />
+      <rect x="4" y="7" width="2" height="2" fill="currentColor" />
+    </svg>
   );
 }

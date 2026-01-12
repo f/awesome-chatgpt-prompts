@@ -1,0 +1,104 @@
+<Section>
+<Panel character="promi" mood="happy">
+Welcome back! Today's lesson is super important: **Show, Don't Tell**! Using examples is one of the best ways to help AI understand!
+</Panel>
+</Section>
+
+<Section>
+## The Power of Examples
+
+Instead of just describing what you want, **show me an example**!
+
+It's like when you're teaching someone a game - it's easier to show them how to play than just tell them the rules!
+</Section>
+
+<Section>
+## Learn the Pattern!
+
+<ExampleMatcher
+  title="Pattern Power"
+  instruction="AI learns from examples! See the pattern and pick what comes next."
+  examples={[
+    { input: "happy", output: "😊" },
+    { input: "sad", output: "😢" },
+    { input: "sleepy", output: "😴" }
+  ]}
+  question="angry"
+  options={["😠", "😊", "🎉", "😴"]}
+  correctAnswer="😠"
+  explanation="The AI learned: feeling word → matching emoji! This is called 'learning by example' - just like you!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+If you say "make it sound cool," I might not know what "cool" means to you. But if you show me an example, I'll understand perfectly!
+</Panel>
+</Section>
+
+<Section>
+## See the Difference
+
+<PromptVsMistake
+  question="Which prompt uses examples better?"
+  good="Write a fun product name like 'Super Sparkle Shampoo' or 'Magic Cloud Pillows' - something catchy and playful!"
+  bad="Write a fun product name"
+  explanation="The examples show exactly what style of name you're looking for - catchy, playful, with fun adjectives!"
+  promiMessage="Examples are like treasure maps - they show me exactly where you want to go!"
+/>
+</Section>
+
+<Section>
+## Show Your Style
+
+<PromptVsMistake
+  question="Which prompt better shows the writing style?"
+  good="Write a joke in this style: 'Why did the banana go to the doctor? Because it wasn't peeling well!' - something silly with a pun!"
+  bad="Write a funny joke"
+  explanation="By showing an example joke with a pun, I know you want that same silly wordplay style!"
+  promiMessage="When you show me what you like, I can match that style!"
+/>
+</Section>
+
+<Section>
+## Give Examples!
+
+<DragDropPrompt
+  title="Build with Examples"
+  instruction="Arrange the pieces to create a prompt with a helpful example"
+  pieces={["Write a superhero name", "like 'Captain Courage'", "or 'Lightning Lady'", "- something heroic and memorable"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Perfect! Your examples show exactly what kind of name you want!"
+/>
+</Section>
+
+<Section>
+## Create Your Own Example-Prompt!
+
+<MagicWords
+  sentence="Write a ___ like '___ ___ ___' - something ___ and ___"
+  blanks={[
+    { hint: "📝 what to write", answers: ["team name", "pet name", "band name", "book title", "restaurant name"] },
+    { hint: "✨ adjective", answers: ["Happy", "Super", "Golden", "Magical", "Mighty"] },
+    { hint: "🌟 noun", answers: ["Stars", "Dragons", "Dreams", "Thunder", "Phoenix"] },
+    { hint: "🎯 word", answers: ["Club", "Squad", "Crew", "Kingdom", "Adventure"] },
+    { hint: "😊 style 1", answers: ["fun", "exciting", "cool", "creative", "catchy"] },
+    { hint: "🎨 style 2", answers: ["memorable", "unique", "powerful", "friendly", "bold"] }
+  ]}
+  successMessage="Awesome! Your example shows exactly what style you want!"
+/>
+</Section>
+
+<Section>
+## Examples Are Powerful! 🎉
+
+<Panel character="promi" mood="celebrating">
+Amazing work! You learned that **showing examples** is one of the best ways to help AI understand exactly what you want!
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-2-show-dont-tell" 
+  stars={3}
+  message="You mastered using examples in prompts!"
+/>
+</Section>

@@ -1399,7 +1399,14 @@
         "stars": { "title": "Gagne des Étoiles", "description": "Collectionne des étoiles et débloque de nouveaux niveaux" }
       },
       "startButton": "Commencer à Jouer !",
-      "ageNote": "Idéal pour les enfants de 8-14 ans qui savent lire et écrire"
+      "ageNote": "Idéal pour les enfants de 8-14 ans qui savent lire et écrire",
+      "whatYouLearn": "Ce que tu vas apprendre",
+      "readyTitle": "Prêt à commencer ?",
+      "readyMessage": "Partons à l'aventure et apprenons à parler avec l'IA !"
+    },
+    "navigation": {
+      "back": "Retour",
+      "next": "Suivant"
     },
     "map": { "title": "Carte du Monde", "subtitle": "Choisis un niveau et commence ton aventure !", "worldLevels": "{count} niveaux", "levelNumber": "Niveau {number}", "locked": "Termine le niveau précédent pour débloquer" },
     "worlds": { "1": { "title": "Village de Départ" }, "2": { "title": "Château de la Clarté" }, "3": { "title": "Grottes du Contexte" }, "4": { "title": "Canyon Créatif" }, "5": { "title": "Montagne du Maître" } },

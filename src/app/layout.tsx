@@ -150,6 +150,7 @@ export default async function RootLayout({
   const headersList = await headers();
   const pathname = headersList.get("x-pathname") || headersList.get("x-invoke-path") || "";
   const isEmbedRoute = pathname.startsWith("/embed");
+  const isKidsRoute = pathname.startsWith("/kids");
   
   const locale = await getLocale();
   const messages = await getMessages();
@@ -198,7 +199,7 @@ export default async function RootLayout({
           </>
         )}
         <Providers locale={locale} messages={messages} theme={config.theme} branding={{ ...config.branding, useCloneBranding: config.homepage?.useCloneBranding }}>
-          {isEmbedRoute ? (
+          {isEmbedRoute || isKidsRoute ? (
             children
           ) : (
             <>

@@ -1399,7 +1399,14 @@
         "stars": { "title": "별 모으기", "description": "별을 모아 새로운 레벨을 열어요" }
       },
       "startButton": "게임 시작!",
-      "ageNote": "읽고 쓸 수 있는 8-14세 어린이에게 적합해요"
+      "ageNote": "읽고 쓸 수 있는 8-14세 어린이에게 적합해요",
+      "whatYouLearn": "배울 내용",
+      "readyTitle": "시작할 준비됐어?",
+      "readyMessage": "모험을 떠나 AI와 대화하는 법을 배워보자!"
+    },
+    "navigation": {
+      "back": "뒤로",
+      "next": "다음"
     },
     "map": { "title": "세계 지도", "subtitle": "레벨을 선택하고 모험을 시작하세요!", "worldLevels": "{count}개 레벨", "levelNumber": "레벨 {number}", "locked": "이전 레벨을 완료하면 열립니다" },
     "worlds": { "1": { "title": "시작 마을" }, "2": { "title": "명확성의 성" }, "3": { "title": "맥락 동굴" }, "4": { "title": "창의력 협곡" }, "5": { "title": "마스터 산" } },

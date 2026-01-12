@@ -1,0 +1,81 @@
+<Section>
+<Panel character="promi" mood="excited">
+**Netlik Kalesi**'ne hoş geldin! 🏰 Buraya ulaştığın için çok mutluyum! Bu dünyada **detayların** büyüsünü öğreneceğiz!
+</Panel>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Hiç birinden bir şey istedin de seni anlamadı mı? Bu yapay zeka için de olur!
+</Panel>
+</Section>
+
+<Section>
+## Belirsiz Promptların Sorunu
+
+Şu iki prompt'a bak:
+
+❌ **Belirsiz:** "Bir resim çiz"
+
+✅ **Net:** "Güneşli bir parkta oynayan mutlu bir köpek yavrusu çiz"
+
+Hangisi bana daha fazla bilgi veriyor?
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+İkincisi bana **neyi** çizeceğimi (köpek), **ne yaptığını** (oynuyor) ve **nerede** (güneşli park) olduğunu söylüyor. İşte detayların gücü bu!
+</Panel>
+</Section>
+
+<Section>
+## Hadi Pratik Yapalım!
+
+<PromptVsMistake
+  question="Hangi prompt daha iyi detaylara sahip?"
+  good="Uçmayı öğrenmek isteyen bir penguen hakkında komik bir fıkra yaz"
+  bad="Bana bir fıkra anlat"
+  explanation="Detaylı prompt bana tam olarak ne tür bir fıkra istediğini söylüyor - komik, bir penguen hakkında, belirli bir hikaye ile!"
+  promiMessage="Detaylar tam olarak ne istediğini anlamamı sağlayan ipuçları gibi!"
+/>
+</Section>
+
+<Section>
+## Detaylar Neden Önemli
+
+<PromptVsMistake
+  question="Promi'nin daha iyi bir doğum günü kartı yapmasına hangisi yardımcı olur?"
+  good="Bahçeciliği ve mor rengini seven anneannem için bir doğum günü kartı yap"
+  bad="Bir doğum günü kartı yap"
+  explanation="Anneannem için olduğunu, bahçeciliği sevdiğini ve en sevdiği rengi bilmek özel ve kişisel bir şey oluşturmamı sağlıyor!"
+  promiMessage="Ne istediğin hakkında ne kadar çok bilgi verirsen, o kadar iyi yardım edebilirim!"
+/>
+</Section>
+
+<Section>
+## Detayları Doldur!
+
+<MagicWords
+  sentence="___ yaşayan, ___ seven bir ___ hakkında hikaye yaz"
+  blanks={[
+    { hint: "🏠 nerede?", answers: ["kalede", "ormanda", "şehirde", "ağaç evde", "mağarada"] },
+    { hint: "⭐ neyi seven?", answers: ["şarkı söylemeyi", "dans etmeyi", "yemek yapmayı", "resim yapmayı", "keşfetmeyi"] },
+    { hint: "🐱 kim?", answers: ["kedi", "köpek", "tavşan", "ejderha", "tek boynuzlu at"] }
+  ]}
+  successMessage="Detay ekleme konusunda harika iş çıkardın!"
+/>
+</Section>
+
+<Section>
+## Öğreniyorsun! 🎉
+
+<Panel character="promi" mood="celebrating">
+Harika iş! **Detayların promptları daha iyi yaptığını** keşfettin. Belirsiz prompt = kafası karışmış yapay zeka. Detaylı prompt = harika sonuçlar!
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-1-missing-details" 
+  stars={3}
+  message="Detayların promptlarda neden önemli olduğunu öğrendin!"
+/>
+</Section>

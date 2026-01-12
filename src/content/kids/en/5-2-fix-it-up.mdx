@@ -1,0 +1,108 @@
+<Section>
+<Panel character="promi" mood="happy">
+Welcome back! Today we learn a super important skill: **finding and fixing weak prompts**! 🔧
+</Panel>
+</Section>
+
+<Section>
+## Spot the Problems!
+
+Weak prompts often have:
+
+❌ Too vague - "Write something"
+❌ Missing details - "Tell me about a person"
+❌ No format - Just asking without structure
+❌ Unclear style - Not saying how you want it
+</Section>
+
+<Section>
+## Be the Prompt Doctor! 🏥
+
+<PromptDoctor
+  title="Heal This Prompt"
+  brokenPrompt="Write something"
+  problems={[
+    { issue: "Too Vague", symptom: "What should I write? A story? A poem? A joke?", fix: "Write a story" },
+    { issue: "No Topic", symptom: "What should the story be about?", fix: "Write a story about a dragon" },
+    { issue: "No Details", symptom: "What kind of dragon? What happens?", fix: "Write a short story about a friendly dragon who bakes cookies" }
+  ]}
+  healedPrompt="Write a short story about a friendly dragon who bakes cookies"
+  successMessage="You healed the prompt! From 2 words to a great detailed request!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Learning to spot weak prompts helps you write better ones! It's like being a prompt detective!
+</Panel>
+</Section>
+
+<Section>
+## Find the Fix!
+
+<PromptVsMistake
+  question="This prompt is weak: 'Write a poem.' How would you fix it?"
+  good="Write a short 4-line rhyming poem about a rainbow after a storm. Make it cheerful and use colorful words!"
+  bad="Write a really good poem please"
+  explanation="Just saying 'really good' doesn't help! Instead, add details: topic (rainbow), format (4 lines, rhyming), and style (cheerful, colorful)!"
+  promiMessage="Adding specific details transforms a weak prompt into a strong one!"
+/>
+</Section>
+
+<Section>
+## Improve This Prompt!
+
+<PromptVsMistake
+  question="Weak prompt: 'Help with my homework.' How would you make it better?"
+  good="I'm in 4th grade and need help understanding fractions. Can you explain what 1/2 means using pizza as an example? Keep it simple!"
+  bad="Please help with my homework more"
+  explanation="The good version tells me: your level (4th grade), topic (fractions), asks for an example (pizza), and style (simple)!"
+  promiMessage="The more specific you are, the better I can help!"
+/>
+</Section>
+
+<Section>
+## Fix the Prompt!
+
+<DragDropPrompt
+  title="Prompt Repair"
+  instruction="The prompt 'Tell me a story' is too weak. Arrange these additions to fix it:"
+  pieces={["about a brave little mouse", "Tell me a short bedtime story", "who helps a lost baby bird find home.", "Make it gentle and end with everyone safe."]}
+  correctOrder={[1, 0, 2, 3]}
+  successMessage="You transformed a weak prompt into a great one!"
+/>
+</Section>
+
+<Section>
+## Upgrade Challenge!
+
+Take this weak prompt and make it strong:
+
+**Weak:** "Give me ideas"
+
+<MagicWords
+  sentence="Give me ___ creative ideas for ___ that are ___ and ___. Something like ___!"
+  blanks={[
+    { hint: "🔢 how many", answers: ["5", "3", "7", "10", "4"] },
+    { hint: "🎯 what for", answers: ["a birthday party", "a science project", "a fun game", "a story to write", "decorating my room"] },
+    { hint: "✨ style 1", answers: ["fun", "easy to do", "creative", "surprising", "colorful"] },
+    { hint: "🌟 style 2", answers: ["kid-friendly", "not too expensive", "unique", "exciting", "simple"] },
+    { hint: "💡 example", answers: ["a treasure hunt", "making slime", "a superhero theme", "glow-in-the-dark stuff", "a magic show"] }
+  ]}
+  successMessage="You turned a 2-word weak prompt into an amazing detailed one!"
+/>
+</Section>
+
+<Section>
+## Prompt Fixer! 🎉
+
+<Panel character="promi" mood="celebrating">
+Excellent! You learned to spot weak prompts and **fix them** by adding details, format, and style! This skill will help you forever!
+</Panel>
+
+<LevelComplete 
+  levelSlug="5-2-fix-it-up" 
+  stars={3}
+  message="You learned to find and fix weak prompts!"
+/>
+</Section>

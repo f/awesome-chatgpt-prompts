@@ -1,0 +1,87 @@
+<Section>
+<Panel character="promi" mood="happy">
+Welcome back to Creation Canyon! Today we're going to create amazing **stories** together! 📚
+</Panel>
+</Section>
+
+<Section>
+## AI as Your Co-Author
+
+You don't have to write stories alone! AI can help you:
+
+- Start a story with an exciting opening
+- Continue a story you've begun
+- Add new characters or plot twists
+- Give you ideas when you're stuck
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+The best stories come from your imagination AND my help working together!
+</Panel>
+</Section>
+
+<Section>
+## Story Starters That Work!
+
+<PromptVsMistake
+  question="Which is a better story starter prompt?"
+  good="Start a mystery story about a kid who finds a glowing map in their grandma's attic. Make the first paragraph exciting and mysterious!"
+  bad="Write a story"
+  explanation="The detailed prompt gives me a character (a kid), setting (grandma's attic), object (glowing map), and style (exciting, mysterious)!"
+  promiMessage="Great story starters give me just enough to begin, but leave room for adventure!"
+/>
+</Section>
+
+<Section>
+## Continue the Adventure!
+
+<PromptVsMistake
+  question="Which prompt helps continue a story better?"
+  good="Continue my story: 'Luna found a tiny door behind her bookshelf. She heard music coming from inside.' What happens when she opens it? Make it magical!"
+  bad="Continue a story about a door"
+  explanation="By sharing what you've written so far, I can continue it in the same style!"
+  promiMessage="Share your story so far and I'll keep the adventure going!"
+/>
+</Section>
+
+<Section>
+## Start Your Story!
+
+<DragDropPrompt
+  title="Story Starter"
+  instruction="Arrange these pieces to create an exciting story prompt"
+  pieces={["Write the opening", "who discovers they can talk to animals", "Make it funny and surprising!", "of a story about a kid"]}
+  correctOrder={[0, 3, 1, 2]}
+  successMessage="That's a great story starter! I can't wait to write this adventure!"
+/>
+</Section>
+
+<Section>
+## Create Your Story Prompt!
+
+<MagicWords
+  sentence="Write a ___ story about a ___ who finds a ___ that can ___. Start with an exciting opening!"
+  blanks={[
+    { hint: "✨ story type", answers: ["magical", "funny", "mysterious", "adventurous", "heartwarming"] },
+    { hint: "🧒 main character", answers: ["young inventor", "brave princess", "curious robot", "shy dragon", "clever fox"] },
+    { hint: "🎁 special object", answers: ["ancient book", "glowing crystal", "magic wand", "mysterious key", "talking pet"] },
+    { hint: "🌟 special power", answers: ["grant wishes", "open portals", "show the future", "bring drawings to life", "speak any language"] }
+  ]}
+  successMessage="What an amazing story idea! Let the adventure begin!"
+/>
+</Section>
+
+<Section>
+## Story Creator! 🎉
+
+<Panel character="promi" mood="celebrating">
+Amazing! You learned how to use AI as your **co-author**! Together, we can create the most incredible stories!
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-2-story-starters" 
+  stars={3}
+  message="You learned to create stories with AI!"
+/>
+</Section>

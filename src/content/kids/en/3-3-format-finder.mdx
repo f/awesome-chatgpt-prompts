@@ -1,0 +1,87 @@
+<Section>
+<Panel character="promi" mood="excited">
+Today we learn about **formats**! 📝 Did you know you can ask AI to respond in different ways?
+</Panel>
+</Section>
+
+<Section>
+## What's a Format?
+
+A **format** is HOW you want the answer presented:
+
+- 📋 **List** - numbered or bullet points
+- 📖 **Story** - a narrative with beginning, middle, end
+- 🎵 **Poem** - with rhymes and rhythm
+- ❓ **Q&A** - question and answer style
+- 📊 **Table** - organized in rows and columns
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+By telling me the format, you help me organize my answer in the way that's most helpful for you!
+</Panel>
+</Section>
+
+<Section>
+## Format Makes a Difference!
+
+<PromptVsMistake
+  question="Which prompt asks for a clear format?"
+  good="Give me 5 fun facts about dolphins in a numbered list"
+  bad="Tell me about dolphins"
+  explanation="The first prompt tells me exactly how to organize the answer - as 5 numbered facts!"
+  promiMessage="When you ask for a specific format, you get exactly what you need!"
+/>
+</Section>
+
+<Section>
+## Choose Your Format!
+
+<PromptVsMistake
+  question="Which format would be best for remembering things?"
+  good="List the planets in order from the sun as bullet points"
+  bad="Tell me about the planets"
+  explanation="A list format makes it easy to remember and count the planets in order!"
+  promiMessage="Lists are great for learning and remembering!"
+/>
+</Section>
+
+<Section>
+## Format Practice!
+
+<DragDropPrompt
+  title="Add a Format"
+  instruction="Arrange to ask for a specific format"
+  pieces={["as a short poem", "with rhyming lines", "Write about rain", "that's 4 lines long"]}
+  correctOrder={[2, 0, 1, 3]}
+  successMessage="Perfect! You asked for a poem format with specific details!"
+/>
+</Section>
+
+<Section>
+## Pick Your Format!
+
+<MagicWords
+  sentence="Give me ___ about ___ as a ___"
+  blanks={[
+    { hint: "🔢 how many", answers: ["5 tips", "3 ideas", "10 facts", "7 steps", "4 examples"] },
+    { hint: "📚 topic", answers: ["being a good friend", "saving the planet", "staying healthy", "being creative", "learning new things"] },
+    { hint: "📋 format", answers: ["numbered list", "bullet points", "short poem", "simple story", "easy steps"] }
+  ]}
+  successMessage="Great job picking a format! This makes answers easier to read!"
+/>
+</Section>
+
+<Section>
+## Format Master! 🎉
+
+<Panel character="promi" mood="celebrating">
+Wonderful! You learned that asking for a specific **format** helps you get answers organized exactly how you need them!
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-3-format-finder" 
+  stars={3}
+  message="You learned to ask for different formats!"
+/>
+</Section>

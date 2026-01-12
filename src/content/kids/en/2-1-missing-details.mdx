@@ -1,0 +1,81 @@
+<Section>
+<Panel character="promi" mood="excited">
+Welcome to **Clarity Castle**! 🏰 I'm so glad you made it here! In this world, we'll learn the magic of **details**!
+</Panel>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Have you ever asked someone for something, but they didn't understand what you meant? That happens to AI too!
+</Panel>
+</Section>
+
+<Section>
+## The Problem with Vague Prompts
+
+Look at these two prompts:
+
+❌ **Vague:** "Draw a picture"
+
+✅ **Specific:** "Draw a picture of a happy puppy playing in a sunny park"
+
+Which one gives me more information to work with?
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+The second one tells me **what** to draw (puppy), **what it's doing** (playing), and **where** (sunny park). That's the power of details!
+</Panel>
+</Section>
+
+<Section>
+## Let's Practice!
+
+<PromptVsMistake
+  question="Which prompt has better details?"
+  good="Write a funny joke about a penguin who wants to learn how to fly"
+  bad="Tell me a joke"
+  explanation="The detailed prompt tells me exactly what kind of joke you want - funny, about a penguin, with a specific story!"
+  promiMessage="Details are like clues that help me understand exactly what you want!"
+/>
+</Section>
+
+<Section>
+## Why Details Matter
+
+<PromptVsMistake
+  question="Which would help Promi make a better birthday card?"
+  good="Make a birthday card for my grandma who loves gardening and the color purple"
+  bad="Make a birthday card"
+  explanation="Knowing it's for grandma, that she loves gardening, and her favorite color helps create something special and personal!"
+  promiMessage="The more I know about what you want, the better I can help!"
+/>
+</Section>
+
+<Section>
+## Fill in the Details!
+
+<MagicWords
+  sentence="Please write a story about a ___ who lives in a ___ and loves to ___"
+  blanks={[
+    { hint: "🐱 an animal", answers: ["cat", "dog", "rabbit", "dragon", "unicorn"] },
+    { hint: "🏠 a place", answers: ["castle", "forest", "city", "treehouse", "cave"] },
+    { hint: "⭐ an activity", answers: ["sing", "dance", "cook", "paint", "explore"] }
+  ]}
+  successMessage="Great job adding details!"
+/>
+</Section>
+
+<Section>
+## You're Learning! 🎉
+
+<Panel character="promi" mood="celebrating">
+Awesome work! You discovered that **details make prompts better**. Vague prompts = confused AI. Detailed prompts = amazing results!
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-1-missing-details" 
+  stars={3}
+  message="You learned why details matter in prompts!"
+/>
+</Section>

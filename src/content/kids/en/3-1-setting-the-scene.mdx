@@ -1,0 +1,71 @@
+<Section>
+<Panel character="promi" mood="excited">
+Welcome to the **Context Caves**! 🕳️ Here we'll discover the magic of **background information**!
+</Panel>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Have you ever told someone a joke, but they didn't laugh because they didn't understand the background? Context is like giving someone the backstory!
+</Panel>
+</Section>
+
+<Section>
+## What is Context?
+
+**Context** is the extra information that helps AI understand your request better.
+
+Think of it like telling a story - if you just say "and then he won!" nobody knows who won, what they won, or why it matters!
+</Section>
+
+<Section>
+## See the Difference
+
+<PromptVsMistake
+  question="Which prompt gives better context?"
+  good="I'm writing a birthday card for my 8-year-old sister who loves unicorns. Can you help me write a short, fun message?"
+  bad="Write a birthday message"
+  explanation="The first prompt tells Promi WHO it's for (8-year-old sister), WHAT she likes (unicorns), and WHAT style you want (short, fun)!"
+  promiMessage="Context helps me understand the situation and give you exactly what you need!"
+/>
+</Section>
+
+<Section>
+## Setting the Scene
+
+<PromptVsMistake
+  question="Which prompt sets a better scene?"
+  good="I'm a 10-year-old working on a school project about dinosaurs. Can you explain what T-Rex ate in simple words?"
+  bad="What did T-Rex eat?"
+  explanation="By telling me you're 10 and it's for school, I know to use simple words and make it educational!"
+  promiMessage="When I know who I'm helping and why, I can adjust my answers perfectly!"
+/>
+</Section>
+
+<Section>
+## Practice Setting Context!
+
+<MagicWords
+  sentence="I'm a ___ and I need help with ___. Can you explain it in a ___ way?"
+  blanks={[
+    { hint: "👤 who you are", answers: ["student", "kid", "beginner", "young artist", "curious learner"] },
+    { hint: "📚 what you need", answers: ["math homework", "a science project", "writing a story", "learning to draw", "understanding space"] },
+    { hint: "✨ how to explain", answers: ["simple", "fun", "step-by-step", "easy to understand", "creative"] }
+  ]}
+  successMessage="Great context setting! Now the AI knows exactly how to help you!"
+/>
+</Section>
+
+<Section>
+## Excellent Start! 🎉
+
+<Panel character="promi" mood="celebrating">
+You're learning to set the scene! Remember: giving me context helps me understand your situation and give you better answers!
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-1-setting-the-scene" 
+  stars={3}
+  message="You learned how context helps AI understand you!"
+/>
+</Section>

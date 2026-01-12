@@ -1,0 +1,71 @@
+<Section>
+<Panel character="promi" mood="excited">
+**Bağlam Mağaraları**'na hoş geldin! 🕳️ Burada **arka plan bilgisinin** büyüsünü keşfedeceğiz!
+</Panel>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Hiç birine bir fıkra anlattın da gülmediler çünkü arka planı anlamadılar mı? Bağlam, birine hikayenin arka planını vermek gibi!
+</Panel>
+</Section>
+
+<Section>
+## Bağlam Nedir?
+
+**Bağlam**, yapay zekanın isteğini daha iyi anlamasına yardımcı olan ekstra bilgidir.
+
+Bir hikaye anlatmak gibi düşün - sadece "sonra kazandı!" dersen, kimse kimin kazandığını, ne kazandığını veya neden önemli olduğunu bilmez!
+</Section>
+
+<Section>
+## Farkı Gör
+
+<PromptVsMistake
+  question="Hangi prompt daha iyi bağlam veriyor?"
+  good="Tek boynuzlu atları seven 8 yaşındaki kız kardeşim için bir doğum günü kartı yazıyorum. Kısa ve eğlenceli bir mesaj yazmama yardım eder misin?"
+  bad="Doğum günü mesajı yaz"
+  explanation="İlk prompt Promi'ye KİM için olduğunu (8 yaşındaki kız kardeş), NEYİ sevdiğini (tek boynuzlu atlar) ve NE TARZI istediğini (kısa, eğlenceli) söylüyor!"
+  promiMessage="Bağlam durumu anlamamı ve tam olarak ihtiyacın olanı vermemi sağlıyor!"
+/>
+</Section>
+
+<Section>
+## Sahneyi Kurma
+
+<PromptVsMistake
+  question="Hangi prompt daha iyi bir sahne kuruyor?"
+  good="Dinozorlar hakkında bir okul projesi üzerinde çalışan 10 yaşında bir çocuğum. T-Rex'in ne yediğini basit kelimelerle açıklayabilir misin?"
+  bad="T-Rex ne yedi?"
+  explanation="10 yaşında olduğunu ve okul için olduğunu söyleyerek, basit kelimeler kullanmam ve eğitici yapmam gerektiğini biliyorum!"
+  promiMessage="Kime yardım ettiğimi ve neden olduğunu bildiğimde, cevaplarımı mükemmel şekilde ayarlayabilirim!"
+/>
+</Section>
+
+<Section>
+## Bağlam Kurma Pratiği!
+
+<MagicWords
+  sentence="Ben bir ___ ve ___ konusunda yardıma ihtiyacım var. Bunu ___ bir şekilde açıklayabilir misin?"
+  blanks={[
+    { hint: "👤 kim olduğun", answers: ["öğrenci", "çocuk", "başlangıç seviyesinde", "genç sanatçı", "meraklı öğrenci"] },
+    { hint: "📚 neye ihtiyacın var", answers: ["matematik ödevi", "fen projesi", "hikaye yazma", "çizim öğrenme", "uzayı anlama"] },
+    { hint: "✨ nasıl açıklansın", answers: ["basit", "eğlenceli", "adım adım", "anlaşılır", "yaratıcı"] }
+  ]}
+  successMessage="Harika bağlam kurma! Artık yapay zeka tam olarak nasıl yardım edeceğini biliyor!"
+/>
+</Section>
+
+<Section>
+## Mükemmel Başlangıç! 🎉
+
+<Panel character="promi" mood="celebrating">
+Sahneyi kurmayı öğreniyorsun! Unutma: bana bağlam vermek durumunu anlamamı ve sana daha iyi cevaplar vermemi sağlıyor!
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-1-setting-the-scene" 
+  stars={3}
+  message="Bağlamın yapay zekanın seni anlamasına nasıl yardımcı olduğunu öğrendin!"
+/>
+</Section>

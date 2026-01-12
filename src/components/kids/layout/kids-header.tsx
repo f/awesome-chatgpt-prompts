@@ -2,17 +2,24 @@
 
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { Home, Map, Star } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { getTotalStars, getCompletedLevelsCount } from "@/lib/kids/progress";
-import { getTotalLevels } from "@/lib/kids/levels";
+import { getTotalLevels, getLevelBySlug } from "@/lib/kids/levels";
+import { PixelStar, PixelRobot } from "@/components/kids/elements/pixel-art";
+import { MusicButton } from "./background-music";
+import { SettingsButton } from "./settings-modal";
+import { useLevelSlug } from "@/components/kids/providers/level-context";
 
 export function KidsHeader() {
   const t = useTranslations("kids");
   const [stars, setStars] = useState(0);
   const [completed, setCompleted] = useState(0);
   const total = getTotalLevels();
+  
+  // Get current level from context (will be empty if not in a level)
+  const levelSlug = useLevelSlug();
+  const currentLevel = levelSlug ? getLevelBySlug(levelSlug) : null;
+  const levelNumber = currentLevel ? `${currentLevel.world}.${currentLevel.levelNumber}` : null;
 
   useEffect(() => {
     setStars(getTotalStars());
@@ -20,54 +27,97 @@ export function KidsHeader() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white/80 dark:bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
-      <div className="container flex h-16 items-center justify-between">
+    <header className="shrink-0 z-50 w-full bg-[#2C1810] border-b-4 border-[#8B4513]">
+      <div className="container flex h-14 items-center justify-between px-4">
         {/* Logo */}
-        <Link href="/kids" className="flex items-center gap-2 font-bold text-xl">
-          <span className="text-2xl">🤖</span>
-          <span className="bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent">
+        <Link href="/kids" className="flex items-center gap-2">
+          <PixelRobot className="w-8 h-10" />
+          <span className="text-[#FFD700] font-bold text-2xl pixel-text-shadow hidden sm:block">
             {t("header.title")}
           </span>
         </Link>
 
         {/* Stats & Nav */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
+          {/* Current level indicator */}
+          {levelNumber && (
+            <div className="flex items-center gap-1 px-3 h-8 bg-[#FFD700] border-2 border-[#DAA520] pixel-border-sm">
+              <span className="text-[#8B4513] text-sm font-bold">
+                {t("level.levelLabel", { number: levelNumber })}
+              </span>
+            </div>
+          )}
+
           {/* Stars counter */}
-          <div className="flex items-center gap-1 px-3 py-1.5 bg-amber-100 dark:bg-amber-900/30 rounded-full text-amber-700 dark:text-amber-300">
-            <Star className="h-4 w-4 fill-current" />
-            <span className="font-semibold text-sm">{stars}</span>
+          <div className="flex items-center gap-1 px-3 h-8 bg-[#4A3728] border-2 border-[#8B4513] pixel-border-sm">
+            <PixelStar filled className="w-4 h-4" />
+            <span className="text-white text-sm">{stars}</span>
           </div>
 
           {/* Progress */}
-          <div className="hidden sm:flex items-center gap-1 px-3 py-1.5 bg-emerald-100 dark:bg-emerald-900/30 rounded-full text-emerald-700 dark:text-emerald-300 text-sm">
-            <span className="font-semibold">{completed}/{total}</span>
-            <span className="text-emerald-600 dark:text-emerald-400">{t("header.levels")}</span>
+          <div className="hidden sm:flex items-center gap-1 px-3 h-8 bg-[#4A3728] border-2 border-[#8B4513] pixel-border-sm">
+            <span className="text-[#22C55E] text-sm">{completed}/{total}</span>
           </div>
 
           {/* Nav buttons */}
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" asChild className="rounded-full">
-              <Link href="/kids">
-                <Home className="h-5 w-5" />
-                <span className="sr-only">{t("header.home")}</span>
-              </Link>
-            </Button>
-            <Button variant="ghost" size="icon" asChild className="rounded-full">
-              <Link href="/kids/map">
-                <Map className="h-5 w-5" />
-                <span className="sr-only">{t("header.map")}</span>
-              </Link>
-            </Button>
-          </div>
-
-          {/* Back to main site */}
-          <Button variant="outline" size="sm" asChild className="hidden md:flex rounded-full">
-            <Link href="/">
-              {t("header.mainSite")}
+            <MusicButton />
+            <SettingsButton />
+            <Link 
+              href="/kids" 
+              className="pixel-btn px-3 py-1.5 text-sm h-8 flex items-center"
+            >
+              <PixelHomeIcon />
             </Link>
-          </Button>
+            <Link 
+              href="/kids/map" 
+              className="pixel-btn pixel-btn-green px-3 py-1.5 text-sm h-8 flex items-center"
+            >
+              <PixelMapIcon />
+            </Link>
+            {/* Back to main site */}
+            <a 
+              href="/" 
+              className="hidden md:flex pixel-btn pixel-btn-amber px-3 py-1.5 text-sm h-8 items-center"
+            >
+              {t("header.mainSite")}
+            </a>
+          </div>
         </div>
       </div>
     </header>
+  );
+}
+
+// Pixel art home icon
+function PixelHomeIcon() {
+  return (
+    <svg viewBox="0 0 16 16" className="w-5 h-5" style={{ imageRendering: "pixelated" }}>
+      <rect x="7" y="1" width="2" height="2" fill="currentColor" />
+      <rect x="5" y="3" width="6" height="2" fill="currentColor" />
+      <rect x="3" y="5" width="10" height="2" fill="currentColor" />
+      <rect x="2" y="7" width="12" height="2" fill="currentColor" />
+      <rect x="3" y="9" width="10" height="6" fill="currentColor" />
+      <rect x="6" y="11" width="4" height="4" fill="#2C1810" />
+    </svg>
+  );
+}
+
+// Pixel art pin/location icon
+function PixelMapIcon() {
+  return (
+    <svg viewBox="0 0 16 16" className="w-5 h-5" style={{ imageRendering: "pixelated" }}>
+      {/* Pin head - circle */}
+      <rect x="5" y="1" width="6" height="2" fill="currentColor" />
+      <rect x="4" y="2" width="8" height="2" fill="currentColor" />
+      <rect x="3" y="3" width="10" height="4" fill="currentColor" />
+      <rect x="4" y="7" width="8" height="2" fill="currentColor" />
+      <rect x="5" y="9" width="6" height="2" fill="currentColor" />
+      {/* Pin point */}
+      <rect x="6" y="11" width="4" height="2" fill="currentColor" />
+      <rect x="7" y="13" width="2" height="2" fill="currentColor" />
+      {/* Inner highlight */}
+      <rect x="5" y="4" width="2" height="2" fill="rgba(255,255,255,0.4)" />
+    </svg>
   );
 }

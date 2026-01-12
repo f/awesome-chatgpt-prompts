@@ -1,0 +1,104 @@
+<Section>
+<Panel character="promi" mood="excited">
+Welcome to the final level of Clarity Castle! 🏰 You've learned about WHO, WHAT, WHEN, and WHERE. Now let's put it ALL together!
+</Panel>
+</Section>
+
+<Section>
+## The Detail Detective Checklist
+
+Before you send a prompt, ask yourself:
+
+✅ **WHO** - Who is involved?
+✅ **WHAT** - What do I want? What's happening?
+✅ **WHEN** - When does it happen?
+✅ **WHERE** - Where does it take place?
+</Section>
+
+<Section>
+## Sort the Prompt Parts!
+
+<PromptParts
+  title="Match Each Piece!"
+  instruction="Tap a piece, then pick if it's a Role, Task, Context, or Constraint!"
+  parts={[
+    { text: "Write a funny story", type: "task" },
+    { text: "about a clumsy wizard", type: "context" },
+    { text: "at a magic school", type: "context" },
+    { text: "Keep it short", type: "constraint" }
+  ]}
+  successMessage="You identified all the prompt parts! Now you can build prompts like a pro!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+You don't need ALL four every time, but the more details you add, the better I can help you!
+</Panel>
+</Section>
+
+<Section>
+## Detective Challenge #1
+
+<PromptVsMistake
+  question="Which prompt has the most helpful details?"
+  good="Write a funny story about a clumsy wizard named Zap who accidentally turns his cat into a giant during a magic show at the royal castle"
+  bad="Write a story about magic"
+  explanation="The detailed prompt has WHO (wizard Zap, his cat), WHAT (turns cat giant, magic show), WHERE (royal castle), and even a style (funny)!"
+  promiMessage="Wow! That prompt gives me so much to work with. I can picture the whole scene!"
+/>
+</Section>
+
+<Section>
+## Detective Challenge #2
+
+<PromptVsMistake
+  question="Which prompt would get a better poem?"
+  good="Write a short rhyming poem about a sleepy bear getting ready for winter hibernation in his cozy cave"
+  bad="Write a poem about an animal"
+  explanation="The first prompt tells me WHO (sleepy bear), WHAT (getting ready for hibernation), WHEN (winter), WHERE (cozy cave), and style (short, rhyming)!"
+  promiMessage="Every detail helps me create something special just for you!"
+/>
+</Section>
+
+<Section>
+## Build the Ultimate Prompt!
+
+<DragDropPrompt
+  title="Master Detective"
+  instruction="Arrange ALL the details into a perfect prompt"
+  pieces={["Write an exciting story", "about a young inventor", "who builds a robot best friend", "in a futuristic city", "on the first day of summer"]}
+  correctOrder={[0, 1, 2, 3, 4]}
+  successMessage="Perfect! You included WHO, WHAT, WHERE, and WHEN!"
+/>
+</Section>
+
+<Section>
+## Create Your Masterpiece!
+
+<MagicWords
+  sentence="Please write a ___ story about a ___ who ___ in a ___ during ___"
+  blanks={[
+    { hint: "😊 a mood/style", answers: ["funny", "exciting", "mysterious", "heartwarming", "silly"] },
+    { hint: "🦸 a character", answers: ["brave knight", "tiny fairy", "clever fox", "young astronaut", "friendly ghost"] },
+    { hint: "🎬 an action", answers: ["discovers a secret", "goes on a quest", "makes a new friend", "solves a mystery", "learns to fly"] },
+    { hint: "🏰 a place", answers: ["magical kingdom", "deep jungle", "space station", "underwater city", "enchanted forest"] },
+    { hint: "🌙 a time", answers: ["a full moon", "their birthday", "a big storm", "the last day of school", "midnight"] }
+  ]}
+  successMessage="You're a true Detail Detective! That's an amazing prompt!"
+/>
+</Section>
+
+<Section>
+## Congratulations, Detective! 🎉
+
+<Panel character="promi" mood="celebrating">
+You did it! You've completed Clarity Castle and become a **Detail Detective**! You now know the secret: WHO + WHAT + WHEN + WHERE = Amazing Prompts!
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-4-detail-detective" 
+  stars={3}
+  message="You completed Clarity Castle! You're a Detail Detective!"
+/>
+</Section>

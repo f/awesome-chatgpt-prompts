@@ -3,16 +3,15 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { Star, ArrowRight, Map, RotateCcw } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { completeLevel, getLevelProgress } from "@/lib/kids/progress";
-import { getAdjacentLevels } from "@/lib/kids/levels";
-import { PromiCharacter } from "./character-guide";
+import { getAdjacentLevels, getLevelBySlug } from "@/lib/kids/levels";
+import { analyticsKids } from "@/lib/analytics";
+import { PixelRobot, PixelStar } from "./pixel-art";
 
 interface LevelCompleteProps {
   levelSlug: string;
-  stars?: number; // 1-3, calculated based on performance
+  stars?: number;
   message?: string;
 }
 
@@ -27,58 +26,63 @@ export function LevelComplete({
   const { next } = getAdjacentLevels(levelSlug);
 
   useEffect(() => {
-    // Check if already completed with higher stars
     const existingProgress = getLevelProgress(levelSlug);
     const existingStars = existingProgress?.stars || 0;
     
     if (stars > existingStars) {
-      // Save progress
       completeLevel(levelSlug, stars);
       setShowConfetti(true);
+      
+      // Track level completion
+      const level = getLevelBySlug(levelSlug);
+      if (level) {
+        analyticsKids.completeLevel(levelSlug, level.world, stars);
+      }
     }
     
     setSavedStars(Math.max(stars, existingStars));
     
-    // Hide confetti after animation
     const timer = setTimeout(() => setShowConfetti(false), 3000);
     return () => clearTimeout(timer);
   }, [levelSlug, stars]);
 
   return (
     <div className="my-8 relative">
-      {/* Confetti effect */}
+      {/* Pixel confetti effect */}
       {showConfetti && (
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {Array.from({ length: 20 }).map((_, i) => (
+          {Array.from({ length: 15 }).map((_, i) => (
             <div
               key={i}
               className="absolute animate-bounce"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 50}%`,
-                animationDelay: `${Math.random() * 0.5}s`,
-                animationDuration: `${0.5 + Math.random() * 0.5}s`,
+                left: `${10 + (i * 6)}%`,
+                top: `${10 + (i % 4) * 15}%`,
+                animationDelay: `${i * 0.1}s`,
+                animationDuration: `${0.5 + (i % 3) * 0.2}s`,
               }}
             >
-              {["🎉", "⭐", "🌟", "✨", "🎊"][Math.floor(Math.random() * 5)]}
+              <PixelStar filled className="w-6 h-6" />
             </div>
           ))}
         </div>
       )}
 
-      <div className="rounded-2xl border-4 border-green-400 dark:border-green-600 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/50 dark:to-emerald-950/50 overflow-hidden">
+      <div className="pixel-panel pixel-panel-green overflow-hidden">
         {/* Header */}
         <div className="p-6 text-center">
           <div className="flex justify-center mb-4">
-            <PromiCharacter mood="celebrating" size="lg" />
+            <PixelRobot className="w-16 h-20 animate-bounce-slow" />
           </div>
           
-          <h2 className="text-3xl font-bold mb-2">🎉 {t("levelComplete.title")}</h2>
-          <p className="text-lg text-muted-foreground">{message}</p>
+          <h2 className="text-4xl font-bold mb-3 text-[#2C1810] pixel-text-shadow">
+            {t("levelComplete.title")}
+          </h2>
+          <p className="text-xl text-[#5D4037] m-0">{message}</p>
         </div>
 
-        {/* Stars */}
-        <div className="flex justify-center gap-2 pb-6">
+        {/* Pixel Stars */}
+        <div className="flex justify-center gap-3 pb-6">
           {[1, 2, 3].map((star) => (
             <div
               key={star}
@@ -86,48 +90,74 @@ export function LevelComplete({
                 "transition-all duration-500",
                 star <= savedStars ? "scale-100" : "scale-75 opacity-30"
               )}
-              style={{
-                animationDelay: `${star * 0.2}s`,
-              }}
+              style={{ animationDelay: `${star * 0.2}s` }}
             >
-              <Star
-                className={cn(
-                  "h-12 w-12",
-                  star <= savedStars 
-                    ? "fill-amber-400 text-amber-400 drop-shadow-lg" 
-                    : "text-muted-foreground/30"
-                )}
-              />
+              <PixelStar filled={star <= savedStars} className="w-10 h-10" />
             </div>
           ))}
         </div>
 
-        {/* Actions */}
-        <div className="flex flex-col sm:flex-row gap-3 justify-center p-6 bg-white/50 dark:bg-card/50 border-t">
+        {/* Actions - pixel style */}
+        <div className="flex flex-col sm:flex-row gap-3 justify-center p-4 bg-[#4A3728] border-t-4 border-[#8B4513]">
           {next ? (
-            <Button asChild size="lg" className="rounded-full gap-2">
-              <Link href={`/kids/level/${next.slug}`}>
+            <Link 
+              href={`/kids/level/${next.slug}`}
+              className="pixel-btn pixel-btn-green px-8 py-3 text-xl text-center"
+            >
+              <span className="flex items-center justify-center gap-2">
                 {t("levelComplete.nextLevel")}
-                <ArrowRight className="h-5 w-5" />
-              </Link>
-            </Button>
+                <PixelArrowRight />
+              </span>
+            </Link>
           ) : (
-            <Button asChild size="lg" className="rounded-full gap-2">
-              <Link href="/kids/map">
-                {t("levelComplete.allDone")}
-                <Map className="h-5 w-5" />
-              </Link>
-            </Button>
+            <Link 
+              href="/kids/map"
+              className="pixel-btn pixel-btn-green px-8 py-3 text-xl text-center"
+            >
+              {t("levelComplete.allDone")}
+            </Link>
           )}
           
-          <Button variant="outline" asChild size="lg" className="rounded-full gap-2">
-            <Link href="/kids/map">
-              <Map className="h-5 w-5" />
+          <Link 
+            href="/kids/map"
+            className="pixel-btn pixel-btn-amber px-8 py-3 text-xl text-center"
+          >
+            <span className="flex items-center justify-center gap-2">
+              <PixelMapIcon />
               {t("levelComplete.backToMap")}
-            </Link>
-          </Button>
+            </span>
+          </Link>
         </div>
       </div>
     </div>
+  );
+}
+
+function PixelArrowRight() {
+  return (
+    <svg viewBox="0 0 12 12" className="w-4 h-4" style={{ imageRendering: "pixelated" }}>
+      <rect x="2" y="5" width="6" height="2" fill="currentColor" />
+      <rect x="8" y="5" width="2" height="2" fill="currentColor" />
+      <rect x="6" y="3" width="2" height="2" fill="currentColor" />
+      <rect x="6" y="7" width="2" height="2" fill="currentColor" />
+    </svg>
+  );
+}
+
+function PixelMapIcon() {
+  return (
+    <svg viewBox="0 0 16 16" className="w-4 h-4" style={{ imageRendering: "pixelated" }}>
+      {/* Pin head - circle */}
+      <rect x="5" y="1" width="6" height="2" fill="currentColor" />
+      <rect x="4" y="2" width="8" height="2" fill="currentColor" />
+      <rect x="3" y="3" width="10" height="4" fill="currentColor" />
+      <rect x="4" y="7" width="8" height="2" fill="currentColor" />
+      <rect x="5" y="9" width="6" height="2" fill="currentColor" />
+      {/* Pin point */}
+      <rect x="6" y="11" width="4" height="2" fill="currentColor" />
+      <rect x="7" y="13" width="2" height="2" fill="currentColor" />
+      {/* Inner highlight */}
+      <rect x="5" y="4" width="2" height="2" fill="rgba(255,255,255,0.4)" />
+    </svg>
   );
 }

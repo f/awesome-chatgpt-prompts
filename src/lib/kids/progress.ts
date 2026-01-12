@@ -101,3 +101,69 @@ export function getCompletedLevelsCount(): number {
 export function getTotalStars(): number {
   return getProgress().totalStars;
 }
+
+// Component state persistence for within-level progress
+const COMPONENT_STATE_KEY = "kids-component-state";
+
+interface ComponentState {
+  [levelSlug: string]: {
+    [componentId: string]: unknown;
+  };
+}
+
+export function getComponentState<T>(levelSlug: string, componentId: string): T | null {
+  if (typeof window === "undefined") return null;
+  
+  try {
+    const stored = localStorage.getItem(COMPONENT_STATE_KEY);
+    if (!stored) return null;
+    const state = JSON.parse(stored) as ComponentState;
+    return (state[levelSlug]?.[componentId] as T) || null;
+  } catch {
+    return null;
+  }
+}
+
+export function saveComponentState<T>(levelSlug: string, componentId: string, data: T): void {
+  if (typeof window === "undefined") return;
+  
+  try {
+    const stored = localStorage.getItem(COMPONENT_STATE_KEY);
+    const state: ComponentState = stored ? JSON.parse(stored) : {};
+    
+    if (!state[levelSlug]) {
+      state[levelSlug] = {};
+    }
+    state[levelSlug][componentId] = data;
+    
+    localStorage.setItem(COMPONENT_STATE_KEY, JSON.stringify(state));
+  } catch {
+    console.error("Failed to save component state");
+  }
+}
+
+export function clearComponentState(levelSlug: string): void {
+  if (typeof window === "undefined") return;
+  
+  try {
+    const stored = localStorage.getItem(COMPONENT_STATE_KEY);
+    if (!stored) return;
+    
+    const state: ComponentState = JSON.parse(stored);
+    delete state[levelSlug];
+    localStorage.setItem(COMPONENT_STATE_KEY, JSON.stringify(state));
+  } catch {
+    console.error("Failed to clear component state");
+  }
+}
+
+export function clearAllProgress(): void {
+  if (typeof window === "undefined") return;
+  
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(COMPONENT_STATE_KEY);
+  } catch {
+    console.error("Failed to clear all progress");
+  }
+}

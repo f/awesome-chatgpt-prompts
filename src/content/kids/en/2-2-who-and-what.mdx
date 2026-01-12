@@ -1,0 +1,97 @@
+<Section>
+<Panel character="promi" mood="happy">
+Welcome back to Clarity Castle! Today we're learning about **WHO** and **WHAT** - two super important details!
+</Panel>
+</Section>
+
+<Section>
+## The WHO Question
+
+When you ask AI for help, think: **Who is involved?**
+
+- A person? (boy, girl, grandma, superhero)
+- An animal? (cat, dragon, whale)
+- A character? (robot, wizard, alien)
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+If you say "Write a story," I don't know who it's about! But "Write a story about a brave knight" tells me exactly who the main character is!
+</Panel>
+</Section>
+
+<Section>
+## Let's Practice WHO!
+
+<PromptVsMistake
+  question="Which prompt tells us WHO the story is about?"
+  good="Write a story about a curious little mouse named Pip"
+  bad="Write a story about something"
+  explanation="The first prompt tells us WHO (a mouse), WHAT kind (curious, little), and even their NAME (Pip)!"
+  promiMessage="Names and descriptions help me picture the character!"
+/>
+</Section>
+
+<Section>
+## The WHAT Question
+
+Now think: **What is happening? What do you want?**
+
+- What action? (running, singing, building)
+- What object? (a cake, a spaceship, a poem)
+- What type? (funny, scary, colorful)
+</Section>
+
+<Section>
+## Let's Practice WHAT!
+
+<PromptVsMistake
+  question="Which prompt tells us WHAT to create?"
+  good="Write a funny poem about pizza with lots of rhymes"
+  bad="Write something funny"
+  explanation="The detailed prompt tells us WHAT (a poem), WHAT about (pizza), WHAT style (funny with rhymes)!"
+  promiMessage="Being specific about WHAT you want helps me create exactly that!"
+/>
+</Section>
+
+<Section>
+## Build Your Own Prompt!
+
+Put WHO and WHAT together:
+
+<DragDropPrompt
+  title="Build a Prompt"
+  instruction="Drag the pieces into the right order"
+  pieces={["Write a story", "about a friendly dragon", "who learns", "to make ice cream"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Perfect! You combined WHO (friendly dragon) and WHAT (learns to make ice cream)!"
+/>
+</Section>
+
+<Section>
+## Create Your Own!
+
+<MagicWords
+  sentence="Please write a ___ about a ___ who wants to ___"
+  blanks={[
+    { hint: "📝 type of writing", answers: ["story", "poem", "song", "joke"] },
+    { hint: "🦸 a character", answers: ["superhero", "princess", "robot", "wizard", "pirate"] },
+    { hint: "🎯 a goal", answers: ["find treasure", "make friends", "save the world", "learn magic", "win a race"] }
+  ]}
+  successMessage="You added WHO and WHAT perfectly!"
+/>
+</Section>
+
+<Section>
+## Amazing Progress! 🎉
+
+<Panel character="promi" mood="celebrating">
+You're getting so good at this! Now you know to always include **WHO** is in your prompt and **WHAT** you want. Keep it up!
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-2-who-and-what" 
+  stars={3}
+  message="You mastered WHO and WHAT in prompts!"
+/>
+</Section>

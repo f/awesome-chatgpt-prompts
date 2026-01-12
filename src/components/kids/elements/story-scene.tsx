@@ -1,10 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { PromiCharacter } from "./character-guide";
+import { PixelRobot } from "./pixel-art";
 
 type PromiMood = "happy" | "thinking" | "excited" | "confused" | "celebrating";
 
@@ -27,66 +25,62 @@ export function StoryScene({ panels, className }: StorySceneProps) {
   const isLast = currentPanel === panels.length - 1;
 
   return (
-    <div className={cn("my-6 rounded-2xl border-2 border-primary/20 overflow-hidden", className)}>
+    <div className={cn("my-6 pixel-panel overflow-hidden", className)}>
       {/* Story panel */}
-      <div className="p-6 bg-gradient-to-br from-primary/5 to-purple-500/5 min-h-[200px] flex items-center">
+      <div className="p-4 min-h-[180px] flex items-center">
         <div className="flex items-start gap-4 w-full">
           {panel.character === "promi" && (
             <div className="shrink-0">
-              <PromiCharacter mood={panel.mood || "happy"} size="md" />
+              <PixelRobot className="w-12 h-16" />
             </div>
           )}
           <div 
             className={cn(
-              "flex-1 p-4 bg-white dark:bg-card rounded-xl shadow-md",
-              panel.highlight && "ring-2 ring-primary ring-offset-2"
+              "flex-1 p-4 bg-white/80 border-2 border-[#D97706]",
+              panel.highlight && "bg-[#FEF3C7]"
             )}
+            style={{ clipPath: "polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px)" }}
           >
-            <p className="text-lg leading-relaxed m-0">{panel.text}</p>
+            <p className="text-xl leading-relaxed m-0 text-[#2C1810]">{panel.text}</p>
           </div>
         </div>
       </div>
 
-      {/* Navigation */}
+      {/* Navigation - pixel style */}
       {panels.length > 1 && (
-        <div className="flex items-center justify-between px-4 py-3 bg-muted/30 border-t">
-          <Button
-            variant="ghost"
-            size="sm"
+        <div className="flex items-center justify-between px-4 py-2 bg-[#4A3728] border-t-2 border-[#8B4513]">
+          <button
             onClick={() => setCurrentPanel((p) => p - 1)}
             disabled={isFirst}
-            className="gap-1"
+            className={cn("pixel-btn px-3 py-1 text-xs", isFirst && "opacity-40")}
           >
-            <ChevronLeft className="h-4 w-4" />
             Back
-          </Button>
+          </button>
 
-          {/* Progress dots */}
+          {/* Progress dots - pixel style */}
           <div className="flex items-center gap-1.5">
             {panels.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrentPanel(i)}
                 className={cn(
-                  "w-2 h-2 rounded-full transition-colors",
+                  "w-3 h-3 border-2",
                   i === currentPanel 
-                    ? "bg-primary" 
-                    : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                    ? "bg-[#22C55E] border-[#16A34A]" 
+                    : "bg-[#4A3728] border-[#8B4513] hover:bg-[#5D4037]"
                 )}
+                style={{ clipPath: "polygon(2px 0, calc(100% - 2px) 0, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0 calc(100% - 2px), 0 2px)" }}
               />
             ))}
           </div>
 
-          <Button
-            variant="ghost"
-            size="sm"
+          <button
             onClick={() => setCurrentPanel((p) => p + 1)}
             disabled={isLast}
-            className="gap-1"
+            className={cn("pixel-btn pixel-btn-green px-3 py-1 text-xs", isLast && "opacity-40")}
           >
             Next
-            <ChevronRight className="h-4 w-4" />
-          </Button>
+          </button>
         </div>
       )}
     </div>
@@ -102,21 +96,22 @@ interface SinglePanelProps {
 
 export function Panel({ character = "promi", mood = "happy", children, highlight }: SinglePanelProps) {
   return (
-    <div className="my-6 rounded-2xl border-2 border-primary/20 overflow-hidden">
-      <div className="p-6 bg-gradient-to-br from-primary/5 to-purple-500/5">
+    <div className="my-6 pixel-panel">
+      <div className="p-4">
         <div className="flex items-start gap-4">
           {character === "promi" && (
             <div className="shrink-0">
-              <PromiCharacter mood={mood} size="md" />
+              <PixelRobot className="w-12 h-16" />
             </div>
           )}
           <div 
             className={cn(
-              "flex-1 p-4 bg-white dark:bg-card rounded-xl shadow-md",
-              highlight && "ring-2 ring-primary ring-offset-2"
+              "flex-1 p-4 bg-white/80 border-2 border-[#D97706]",
+              highlight && "bg-[#FEF3C7]"
             )}
+            style={{ clipPath: "polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px)" }}
           >
-            <div className="text-lg leading-relaxed">{children}</div>
+            <div className="text-xl leading-relaxed text-[#2C1810]">{children}</div>
           </div>
         </div>
       </div>

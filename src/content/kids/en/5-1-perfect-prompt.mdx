@@ -1,0 +1,107 @@
+<Section>
+<Panel character="promi" mood="excited">
+Welcome to **Master Mountain**! ⛰️ You've come so far! Now it's time to combine EVERYTHING you've learned into perfect prompts!
+</Panel>
+</Section>
+
+<Section>
+## The Master Checklist
+
+A perfect prompt can include:
+
+✅ **Clarity** - Be specific, not vague
+✅ **Details** - WHO, WHAT, WHEN, WHERE
+✅ **Context** - Background info, examples, format
+✅ **Creativity** - Role-play, personality, imagination
+</Section>
+
+<Section>
+## Magic Words: "Think Step by Step" 🧠
+
+<StepByStep
+  title="Step-by-Step Magic"
+  problem="I have 3 bags with 5 apples each, and I eat 2 apples. How many are left?"
+  wrongAnswer="15 apples left (AI guessed without thinking!)"
+  steps={[
+    "First: 3 bags × 5 apples = 15 apples total",
+    "Next: I eat 2 apples",
+    "Finally: 15 - 2 = 13 apples left"
+  ]}
+  rightAnswer="13 apples left - and we can check the work!"
+  magicWords="Let's think step by step"
+  successMessage="Magic words help AI show its thinking, so you can check if it's right!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+You don't need ALL of these every time, but knowing when to use each one makes you a Prompt Master!
+</Panel>
+</Section>
+
+<Section>
+## Master Challenge #1
+
+<PromptVsMistake
+  question="Which prompt combines the most skills?"
+  good="I'm a 10-year-old who loves space. Act as a friendly astronaut and tell me 5 amazing facts about Saturn. Make it exciting and use simple words a kid would understand!"
+  bad="Tell me about Saturn"
+  explanation="This prompt has: Context (10-year-old, loves space), Role-play (friendly astronaut), Format (5 facts), Personality (exciting), and Clarity (simple words)!"
+  promiMessage="This is a master-level prompt! It tells me exactly what you need!"
+/>
+</Section>
+
+<Section>
+## Master Challenge #2
+
+<PromptVsMistake
+  question="Which is closer to a perfect prompt?"
+  good="Pretend you're a wise old tree in an enchanted forest. I'm a young adventurer who just found you. Tell me a short story about the magical creatures who live nearby. Make it mysterious but not scary, with a happy ending!"
+  bad="Tell me about a forest"
+  explanation="This has: Role-play (wise old tree), Characters (young adventurer), Setting (enchanted forest), Topic (magical creatures), Style (mysterious, not scary, happy ending)!"
+  promiMessage="So many great elements combined! This will be an amazing story!"
+/>
+</Section>
+
+<Section>
+## Build a Master Prompt!
+
+<DragDropPrompt
+  title="Perfect Prompt"
+  instruction="Arrange all elements into one perfect prompt"
+  pieces={["I'm making a birthday card for my dad who loves fishing.", "Give me 3 funny fishing jokes", "like 'Why did the fish blush? Because it saw the ocean's bottom!'", "Keep them family-friendly and short!"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Perfect! Context, format, example, and style all in one prompt!"
+/>
+</Section>
+
+<Section>
+## Create Your Master Prompt!
+
+<MagicWords
+  sentence="I'm a ___ who needs help with ___. Act as a ___ and give me ___ like ___. Make it ___!"
+  blanks={[
+    { hint: "👤 who you are", answers: ["young artist", "curious student", "creative writer", "nature lover", "joke collector"] },
+    { hint: "📚 your goal", answers: ["a school project", "a creative story", "learning something new", "making someone laugh", "planning an adventure"] },
+    { hint: "🎭 a character", answers: ["friendly expert", "silly comedian", "wise teacher", "creative inventor", "storytelling grandma"] },
+    { hint: "🔢 what you need", answers: ["5 fun ideas", "3 helpful tips", "some creative examples", "a short story", "an easy explanation"] },
+    { hint: "💡 an example", answers: ["'Super Star Strategy'", "'Happy Helper Hint'", "'Magic Moment'", "'Wonder Word'", "'Creative Spark'"] },
+    { hint: "✨ the style", answers: ["fun and easy to understand", "exciting and memorable", "creative and colorful", "helpful and encouraging", "silly but useful"] }
+  ]}
+  successMessage="AMAZING! That's a true Master Prompt with all the elements!"
+/>
+</Section>
+
+<Section>
+## Master Skills Unlocked! 🎉
+
+<Panel character="promi" mood="celebrating">
+Incredible! You learned to combine all your skills into **perfect prompts**! You're well on your way to becoming a Prompt Master!
+</Panel>
+
+<LevelComplete 
+  levelSlug="5-1-perfect-prompt" 
+  stars={3}
+  message="You learned to create perfect prompts!"
+/>
+</Section>
