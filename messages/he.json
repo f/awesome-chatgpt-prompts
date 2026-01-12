@@ -1385,5 +1385,30 @@
     "ideationTitle": "רעיונות",
     "communityContributorsTitle": "תורמי קהילה",
     "viewAllContributors": "צפה בכל התורמים ב"
+  },
+  "kids": {
+    "header": { "title": "בית הספר לפרומפטים של צ'יפ", "levels": "שלבים", "home": "בית", "map": "מפה", "mainSite": "האתר הראשי" },
+    "home": {
+      "badge": "למידה לילדים",
+      "title": "למד לדבר עם AI!",
+      "subtitle": "הצטרף לרובוט צ'יפ בהרפתקה מהנה ללמוד איך לכתוב פרומפטים מדהימים!",
+      "promiIntro": { "greeting": "היי, אני צ'יפ! 🤖", "message": "אני רובוט ידידותי שצריך את העזרה שלך! תעזור לי להבין פרומפטים טוב יותר?" },
+      "features": {
+        "games": { "title": "משחקים כיפיים", "description": "למד על ידי משחקי גרירה ושחרור וחידונים" },
+        "stories": { "title": "סיפורים מגניבים", "description": "עקוב אחרי צ'יפ בהרפתקאות מרגשות" },
+        "stars": { "title": "אסוף כוכבים", "description": "אסוף כוכבים ופתח שלבים חדשים" }
+      },
+      "startButton": "התחל לשחק!",
+      "ageNote": "מתאים לילדים בגילאי 8-14 שיודעים לקרוא ולכתוב"
+    },
+    "map": { "title": "מפת העולם", "subtitle": "בחר שלב והתחל את ההרפתקה שלך!", "worldLevels": "{count} שלבים", "levelNumber": "שלב {number}", "locked": "השלם את השלב הקודם לפתיחה" },
+    "worlds": { "1": { "title": "כפר ההתחלה" }, "2": { "title": "טירת הבהירות" }, "3": { "title": "מערות ההקשר" }, "4": { "title": "קניון היצירתיות" }, "5": { "title": "הר המומחיות" } },
+    "levels": {
+      "1_1_meet_promi": { "title": "הכר את צ'יפ!", "description": "אמור שלום לחבר הרובוט שלך ולמד מה זה AI" },
+      "1_2_first_words": { "title": "המילים הראשונות של צ'יפ", "description": "עזור לצ'יפ להבין על ידי כתיבת הפרומפט הראשון שלך" },
+      "1_3_being_clear": { "title": "להיות ברור", "description": "למד למה הוראות ברורות עובדות טוב יותר" }
+    },
+    "level": { "backToMap": "חזרה למפה", "levelLabel": "שלב {number}", "comingSoon": "השלב הזה מגיע בקרוב!", "previous": "קודם", "next": "הבא", "map": "מפה" },
+    "levelComplete": { "title": "שלב הושלם!", "nextLevel": "השלב הבא", "backToMap": "חזרה למפה", "allDone": "חזרה למפה" }
   }
 }

@@ -1385,5 +1385,72 @@
     "ideationTitle": "Fikir",
     "communityContributorsTitle": "Topluluk Katkıda Bulunanları",
     "viewAllContributors": "Tüm katkıda bulunanları görüntüle:"
+  },
+  "kids": {
+    "header": {
+      "title": "Promi'in Prompt Okulu",
+      "levels": "seviye",
+      "home": "Ana Sayfa",
+      "map": "Harita",
+      "mainSite": "Ana Site"
+    },
+    "home": {
+      "badge": "Çocuklar İçin Öğrenme",
+      "title": "Yapay Zeka ile Konuşmayı Öğren!",
+      "subtitle": "Robot Promi ile harika promptlar yazmayı öğrenmek için eğlenceli bir maceraya katıl!",
+      "promiIntro": {
+        "greeting": "Merhaba, ben Promi! 🤖",
+        "message": "Senin yardımına ihtiyacı olan dostça bir robotum! Promptları daha iyi anlamam için bana yardım eder misin?"
+      },
+      "features": {
+        "games": {
+          "title": "Eğlenceli Oyunlar",
+          "description": "Sürükle-bırak oyunları ve testlerle öğren"
+        },
+        "stories": {
+          "title": "Harika Hikayeler",
+          "description": "Promi ile heyecanlı maceralar yaşa"
+        },
+        "stars": {
+          "title": "Yıldız Kazan",
+          "description": "Yıldızlar topla ve yeni seviyelerin kilidini aç"
+        }
+      },
+      "startButton": "Oynamaya Başla!",
+      "ageNote": "Okuma yazma bilen 8-14 yaş çocuklar için en uygun"
+    },
+    "map": {
+      "title": "Dünya Haritası",
+      "subtitle": "Bir seviye seç ve macerana başla!",
+      "worldLevels": "{count} seviye",
+      "levelNumber": "Seviye {number}",
+      "locked": "Kilidini açmak için önceki seviyeyi tamamla"
+    },
+    "worlds": {
+      "1": { "title": "Başlangıç Köyü" },
+      "2": { "title": "Netlik Kalesi" },
+      "3": { "title": "Bağlam Mağaraları" },
+      "4": { "title": "Yaratıcılık Kanyonu" },
+      "5": { "title": "Usta Dağı" }
+    },
+    "levels": {
+      "1_1_meet_promi": { "title": "Promi ile Tanış!", "description": "Robot arkadaşınla tanış ve yapay zekanın ne olduğunu öğren" },
+      "1_2_first_words": { "title": "Promi'in İlk Sözleri", "description": "İlk promptunu yazarak Promi'in anlamasına yardım et" },
+      "1_3_being_clear": { "title": "Net Olmak", "description": "Net talimatların neden daha iyi çalıştığını öğren" }
+    },
+    "level": {
+      "backToMap": "Haritaya Dön",
+      "levelLabel": "Seviye {number}",
+      "comingSoon": "Bu seviye yakında geliyor!",
+      "previous": "Önceki",
+      "next": "Sonraki",
+      "map": "Harita"
+    },
+    "levelComplete": {
+      "title": "Seviye Tamamlandı!",
+      "nextLevel": "Sonraki Seviye",
+      "backToMap": "Haritaya Dön",
+      "allDone": "Haritaya Dön"
+    }
   }
 }

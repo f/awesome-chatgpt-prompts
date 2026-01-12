@@ -1385,5 +1385,30 @@
     "ideationTitle": "Ideazione",
     "communityContributorsTitle": "Contributori della Community",
     "viewAllContributors": "Vedi tutti i contributori su"
+  },
+  "kids": {
+    "header": { "title": "La Scuola di Prompt di Promi", "levels": "livelli", "home": "Home", "map": "Mappa", "mainSite": "Sito Principale" },
+    "home": {
+      "badge": "Apprendimento per Bambini",
+      "title": "Impara a Parlare con l'IA!",
+      "subtitle": "Unisciti al robot Promi in un'avventura divertente per imparare a scrivere prompt fantastici!",
+      "promiIntro": { "greeting": "Ciao, sono Promi! 🤖", "message": "Sono un robot amichevole che ha bisogno del TUO aiuto! Mi aiuti a capire meglio i prompt?" },
+      "features": {
+        "games": { "title": "Giochi Divertenti", "description": "Impara giocando con drag-and-drop e quiz" },
+        "stories": { "title": "Storie Fantastiche", "description": "Segui Promi in avventure emozionanti" },
+        "stars": { "title": "Guadagna Stelle", "description": "Raccogli stelle e sblocca nuovi livelli" }
+      },
+      "startButton": "Inizia a Giocare!",
+      "ageNote": "Ideale per bambini di 8-14 anni che sanno leggere e scrivere"
+    },
+    "map": { "title": "Mappa del Mondo", "subtitle": "Scegli un livello e inizia la tua avventura!", "worldLevels": "{count} livelli", "levelNumber": "Livello {number}", "locked": "Completa il livello precedente per sbloccare" },
+    "worlds": { "1": { "title": "Villaggio Iniziale" }, "2": { "title": "Castello della Chiarezza" }, "3": { "title": "Caverne del Contesto" }, "4": { "title": "Canyon Creativo" }, "5": { "title": "Montagna del Maestro" } },
+    "levels": {
+      "1_1_meet_promi": { "title": "Incontra Promi!", "description": "Saluta il tuo amico robot e scopri cos'è l'IA" },
+      "1_2_first_words": { "title": "Le Prime Parole di Promi", "description": "Aiuta Promi a capire scrivendo il tuo primo prompt" },
+      "1_3_being_clear": { "title": "Essere Chiari", "description": "Scopri perché le istruzioni chiare funzionano meglio" }
+    },
+    "level": { "backToMap": "Torna alla Mappa", "levelLabel": "Livello {number}", "comingSoon": "Questo livello arriva presto!", "previous": "Precedente", "next": "Successivo", "map": "Mappa" },
+    "levelComplete": { "title": "Livello Completato!", "nextLevel": "Livello Successivo", "backToMap": "Torna alla Mappa", "allDone": "Torna alla Mappa" }
   }
 }

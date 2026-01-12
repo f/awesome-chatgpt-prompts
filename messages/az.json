@@ -1385,5 +1385,30 @@
     "ideationTitle": "İdeya",
     "communityContributorsTitle": "İcma Töhfəçiləri",
     "viewAllContributors": "Bütün töhfəçilərə baxın"
+  },
+  "kids": {
+    "header": { "title": "Promi-in Prompt Məktəbi", "levels": "səviyyə", "home": "Ana Səhifə", "map": "Xəritə", "mainSite": "Əsas Sayt" },
+    "home": {
+      "badge": "Uşaqlar üçün Öyrənmə",
+      "title": "AI ilə Danışmağı Öyrən!",
+      "subtitle": "Robot Promi ilə birlikdə əyləncəli bir macəraya çıx və möhtəşəm promptlar yazmağı öyrən!",
+      "promiIntro": { "greeting": "Salam, mən Promi-əm! 🤖", "message": "Mən SƏNİN köməyinə ehtiyacı olan dost robotam! Promptları daha yaxşı başa düşməyimə kömək edərsən?" },
+      "features": {
+        "games": { "title": "Əyləncəli Oyunlar", "description": "Sürüklə-burax oyunları və testlərlə öyrən" },
+        "stories": { "title": "Gözəl Hekayələr", "description": "Promi ilə həyəcanlı macəralara çıx" },
+        "stars": { "title": "Ulduz Qazan", "description": "Ulduzlar topla və yeni səviyyələri aç" }
+      },
+      "startButton": "Oynamağa Başla!",
+      "ageNote": "Oxumaq və yazmaq bilən 8-14 yaşlı uşaqlar üçün ən uyğun"
+    },
+    "map": { "title": "Dünya Xəritəsi", "subtitle": "Bir səviyyə seç və macərana başla!", "worldLevels": "{count} səviyyə", "levelNumber": "Səviyyə {number}", "locked": "Açmaq üçün əvvəlki səviyyəni tamamla" },
+    "worlds": { "1": { "title": "Başlanğıc Kəndi" }, "2": { "title": "Aydınlıq Qalası" }, "3": { "title": "Kontekst Mağaraları" }, "4": { "title": "Yaradıcılıq Kanyonu" }, "5": { "title": "Ustad Dağı" } },
+    "levels": {
+      "1_1_meet_promi": { "title": "Promi ilə Tanış Ol!", "description": "Robot dostunla salamlaş və AI-nin nə olduğunu öyrən" },
+      "1_2_first_words": { "title": "Promi-in İlk Sözləri", "description": "İlk promptunu yazaraq Promi-ə başa düşməyə kömək et" },
+      "1_3_being_clear": { "title": "Aydın Ol", "description": "Niyə aydın təlimatların daha yaxşı işlədiyini öyrən" }
+    },
+    "level": { "backToMap": "Xəritəyə Qayıt", "levelLabel": "Səviyyə {number}", "comingSoon": "Bu səviyyə tezliklə gəlir!", "previous": "Əvvəlki", "next": "Növbəti", "map": "Xəritə" },
+    "levelComplete": { "title": "Səviyyə Tamamlandı!", "nextLevel": "Növbəti Səviyyə", "backToMap": "Xəritəyə Qayıt", "allDone": "Xəritəyə Qayıt" }
   }
 }

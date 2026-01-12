@@ -1385,5 +1385,30 @@
     "ideationTitle": "Ideación",
     "communityContributorsTitle": "Contribuidores de la Comunidad",
     "viewAllContributors": "Ver todos los contribuidores en"
+  },
+  "kids": {
+    "header": { "title": "Escuela de Prompts de Promi", "levels": "niveles", "home": "Inicio", "map": "Mapa", "mainSite": "Sitio Principal" },
+    "home": {
+      "badge": "Aprendizaje para Niños",
+      "title": "¡Aprende a Hablar con IA!",
+      "subtitle": "¡Únete al robot Promi en una divertida aventura para aprender a escribir increíbles prompts!",
+      "promiIntro": { "greeting": "¡Hola, soy Promi! 🤖", "message": "¡Soy un robot amigable que necesita TU ayuda! ¿Me ayudarás a entender mejor los prompts?" },
+      "features": {
+        "games": { "title": "Juegos Divertidos", "description": "Aprende jugando con arrastrar y soltar y cuestionarios" },
+        "stories": { "title": "Historias Geniales", "description": "Sigue a Promi en emocionantes aventuras" },
+        "stars": { "title": "Gana Estrellas", "description": "Colecciona estrellas y desbloquea nuevos niveles" }
+      },
+      "startButton": "¡Empezar a Jugar!",
+      "ageNote": "Ideal para niños de 8-14 años que saben leer y escribir"
+    },
+    "map": { "title": "Mapa del Mundo", "subtitle": "¡Elige un nivel y comienza tu aventura!", "worldLevels": "{count} niveles", "levelNumber": "Nivel {number}", "locked": "Completa el nivel anterior para desbloquear" },
+    "worlds": { "1": { "title": "Aldea Inicial" }, "2": { "title": "Castillo de Claridad" }, "3": { "title": "Cuevas de Contexto" }, "4": { "title": "Cañón Creativo" }, "5": { "title": "Montaña Maestra" } },
+    "levels": {
+      "1_1_meet_promi": { "title": "¡Conoce a Promi!", "description": "Saluda a tu amigo robot y aprende qué es la IA" },
+      "1_2_first_words": { "title": "Las Primeras Palabras de Promi", "description": "Ayuda a Promi a entender escribiendo tu primer prompt" },
+      "1_3_being_clear": { "title": "Ser Claro", "description": "Aprende por qué las instrucciones claras funcionan mejor" }
+    },
+    "level": { "backToMap": "Volver al Mapa", "levelLabel": "Nivel {number}", "comingSoon": "¡Este nivel llegará pronto!", "previous": "Anterior", "next": "Siguiente", "map": "Mapa" },
+    "levelComplete": { "title": "¡Nivel Completado!", "nextLevel": "Siguiente Nivel", "backToMap": "Volver al Mapa", "allDone": "Volver al Mapa" }
   }
 }

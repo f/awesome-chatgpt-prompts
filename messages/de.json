@@ -1385,5 +1385,30 @@
     "ideationTitle": "Ideenfindung",
     "communityContributorsTitle": "Community-Mitwirkende",
     "viewAllContributors": "Alle Mitwirkenden ansehen auf"
+  },
+  "kids": {
+    "header": { "title": "Promis Prompt-Schule", "levels": "Level", "home": "Start", "map": "Karte", "mainSite": "Hauptseite" },
+    "home": {
+      "badge": "Lernen für Kinder",
+      "title": "Lerne mit KI zu sprechen!",
+      "subtitle": "Begleite den Roboter Promi auf einem lustigen Abenteuer und lerne, tolle Prompts zu schreiben!",
+      "promiIntro": { "greeting": "Hallo, ich bin Promi! 🤖", "message": "Ich bin ein freundlicher Roboter, der DEINE Hilfe braucht! Hilfst du mir, Prompts besser zu verstehen?" },
+      "features": {
+        "games": { "title": "Lustige Spiele", "description": "Lerne durch Drag-and-Drop-Spiele und Quiz" },
+        "stories": { "title": "Coole Geschichten", "description": "Folge Promi auf spannenden Abenteuern" },
+        "stars": { "title": "Sterne sammeln", "description": "Sammle Sterne und schalte neue Level frei" }
+      },
+      "startButton": "Jetzt spielen!",
+      "ageNote": "Am besten für Kinder von 8-14 Jahren, die lesen und schreiben können"
+    },
+    "map": { "title": "Weltkarte", "subtitle": "Wähle ein Level und starte dein Abenteuer!", "worldLevels": "{count} Level", "levelNumber": "Level {number}", "locked": "Schließe das vorherige Level ab zum Freischalten" },
+    "worlds": { "1": { "title": "Startdorf" }, "2": { "title": "Klarheitsschloss" }, "3": { "title": "Kontext-Höhlen" }, "4": { "title": "Kreativ-Canyon" }, "5": { "title": "Meisterberg" } },
+    "levels": {
+      "1_1_meet_promi": { "title": "Triff Promi!", "description": "Sag Hallo zu deinem Roboterfreund und lerne, was KI ist" },
+      "1_2_first_words": { "title": "Promis erste Worte", "description": "Hilf Promi zu verstehen, indem du deinen ersten Prompt schreibst" },
+      "1_3_being_clear": { "title": "Klar sein", "description": "Lerne, warum klare Anweisungen besser funktionieren" }
+    },
+    "level": { "backToMap": "Zurück zur Karte", "levelLabel": "Level {number}", "comingSoon": "Dieses Level kommt bald!", "previous": "Zurück", "next": "Weiter", "map": "Karte" },
+    "levelComplete": { "title": "Level geschafft!", "nextLevel": "Nächstes Level", "backToMap": "Zurück zur Karte", "allDone": "Zurück zur Karte" }
   }
 }

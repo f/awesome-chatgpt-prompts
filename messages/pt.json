@@ -1385,5 +1385,30 @@
     "ideationTitle": "Ideação",
     "communityContributorsTitle": "Contribuidores da Comunidade",
     "viewAllContributors": "Ver todos os contribuidores em"
+  },
+  "kids": {
+    "header": { "title": "Escola de Prompts do Promi", "levels": "níveis", "home": "Início", "map": "Mapa", "mainSite": "Site Principal" },
+    "home": {
+      "badge": "Aprendizado para Crianças",
+      "title": "Aprenda a Falar com IA!",
+      "subtitle": "Junte-se ao robô Promi em uma aventura divertida para aprender a escrever prompts incríveis!",
+      "promiIntro": { "greeting": "Oi, eu sou o Promi! 🤖", "message": "Sou um robô amigável que precisa da SUA ajuda! Você me ajuda a entender melhor os prompts?" },
+      "features": {
+        "games": { "title": "Jogos Divertidos", "description": "Aprenda jogando arrastar e soltar e quizzes" },
+        "stories": { "title": "Histórias Legais", "description": "Siga o Promi em aventuras emocionantes" },
+        "stars": { "title": "Ganhe Estrelas", "description": "Colete estrelas e desbloqueie novos níveis" }
+      },
+      "startButton": "Começar a Jogar!",
+      "ageNote": "Ideal para crianças de 8-14 anos que sabem ler e escrever"
+    },
+    "map": { "title": "Mapa do Mundo", "subtitle": "Escolha um nível e comece sua aventura!", "worldLevels": "{count} níveis", "levelNumber": "Nível {number}", "locked": "Complete o nível anterior para desbloquear" },
+    "worlds": { "1": { "title": "Vila Inicial" }, "2": { "title": "Castelo da Clareza" }, "3": { "title": "Cavernas de Contexto" }, "4": { "title": "Cânion Criativo" }, "5": { "title": "Montanha Mestre" } },
+    "levels": {
+      "1_1_meet_promi": { "title": "Conheça o Promi!", "description": "Diga olá ao seu amigo robô e aprenda o que é IA" },
+      "1_2_first_words": { "title": "As Primeiras Palavras do Promi", "description": "Ajude o Promi a entender escrevendo seu primeiro prompt" },
+      "1_3_being_clear": { "title": "Sendo Claro", "description": "Aprenda por que instruções claras funcionam melhor" }
+    },
+    "level": { "backToMap": "Voltar ao Mapa", "levelLabel": "Nível {number}", "comingSoon": "Este nível está chegando!", "previous": "Anterior", "next": "Próximo", "map": "Mapa" },
+    "levelComplete": { "title": "Nível Completo!", "nextLevel": "Próximo Nível", "backToMap": "Voltar ao Mapa", "allDone": "Voltar ao Mapa" }
   }
 }

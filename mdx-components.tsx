@@ -1,6 +1,7 @@
 import type { MDXComponents } from "mdx/types";
 import type { ComponentPropsWithoutRef } from "react";
 import { BeforeAfterEditor, BookPartsNav, BREAKFramework, Callout, ChainErrorDemo, ChainExample, ChainFlowDemo, Checklist, CodeEditor, Collapsible, Compare, ContentPipelineDemo, ContextPlayground, ContextWindowDemo, CostCalculatorDemo, CRISPEFramework, DiffView, EmbeddingsDemo, FallbackDemo, FewShotDemo, FillInTheBlank, IconCheck, IconClipboard, IconLightbulb, IconLock, IconSettings, IconStar, IconTarget, IconUser, IconX, InfoGrid, InteractiveChecklist, IterativeRefinementDemo, JailbreakDemo, JsonYamlDemo, LLMCapabilitiesDemo, NavButton, NavFooter, PrinciplesSummary, PromptAnalyzer, PromptBreakdown, PromptBuilder, PromptChallenge, PromptDebugger, Quiz, RTFFramework, SpecificitySpectrum, StructuredOutputDemo, SummarizationDemo, TemperatureDemo, TextToImageDemo, TextToVideoDemo, TokenizerDemo, TokenPredictionDemo, TryIt, ValidationDemo, VersionDiff } from "@/components/book/interactive";
+import { PromiCharacter, PromiWithMessage, Panel, StoryScene, PromptVsMistake, MagicWords, DragDropPrompt, LevelComplete } from "@/components/kids/elements";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -82,5 +83,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     TryIt,
     ValidationDemo,
     VersionDiff,
+    // Kids components
+    PromiCharacter,
+    PromiWithMessage,
+    Panel,
+    StoryScene,
+    PromptVsMistake,
+    MagicWords,
+    DragDropPrompt,
+    LevelComplete,
   };
 }

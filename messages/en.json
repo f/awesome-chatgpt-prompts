@@ -1385,5 +1385,91 @@
     "ideationTitle": "Ideation",
     "communityContributorsTitle": "Community Contributors",
     "viewAllContributors": "View all contributors on"
+  },
+  "kids": {
+    "header": {
+      "title": "Promi's Prompt School",
+      "levels": "levels",
+      "home": "Home",
+      "map": "Map",
+      "mainSite": "Main Site"
+    },
+    "home": {
+      "badge": "Learning for Kids",
+      "title": "Learn to Talk to AI!",
+      "subtitle": "Join Promi the robot on a fun adventure to learn how to write awesome prompts!",
+      "promiIntro": {
+        "greeting": "Hi, I'm Promi! 🤖",
+        "message": "I'm a friendly robot who needs YOUR help! Will you teach me how to understand prompts better?"
+      },
+      "features": {
+        "games": {
+          "title": "Fun Games",
+          "description": "Learn by playing drag-and-drop games and quizzes"
+        },
+        "stories": {
+          "title": "Cool Stories",
+          "description": "Follow Promi through exciting adventures"
+        },
+        "stars": {
+          "title": "Earn Stars",
+          "description": "Collect stars and unlock new levels"
+        }
+      },
+      "startButton": "Start Playing!",
+      "ageNote": "Best for kids ages 8-14 who can read and write"
+    },
+    "map": {
+      "title": "World Map",
+      "subtitle": "Choose a level and start your adventure!",
+      "worldLevels": "{count} levels",
+      "levelNumber": "Level {number}",
+      "locked": "Complete previous level to unlock"
+    },
+    "worlds": {
+      "1": {
+        "title": "Starter Village"
+      },
+      "2": {
+        "title": "Clarity Castle"
+      },
+      "3": {
+        "title": "Context Caves"
+      },
+      "4": {
+        "title": "Creation Canyon"
+      },
+      "5": {
+        "title": "Master Mountain"
+      }
+    },
+    "levels": {
+      "1_1_meet_promi": {
+        "title": "Meet Promi!",
+        "description": "Say hello to your robot friend and learn what AI is"
+      },
+      "1_2_first_words": {
+        "title": "Promi's First Words",
+        "description": "Help Promi understand by writing your first prompt"
+      },
+      "1_3_being_clear": {
+        "title": "Being Clear",
+        "description": "Learn why clear instructions work better"
+      }
+    },
+    "level": {
+      "backToMap": "Back to Map",
+      "levelLabel": "Level {number}",
+      "comingSoon": "This level is coming soon!",
+      "previous": "Previous",
+      "next": "Next",
+      "map": "Map"
+    },
+    "levelComplete": {
+      "title": "Level Complete!",
+      "nextLevel": "Next Level",
+      "backToMap": "Back to Map",
+      "allDone": "Back to Map"
+    }
   }
 }

@@ -1385,5 +1385,30 @@
     "ideationTitle": "아이디어",
     "communityContributorsTitle": "커뮤니티 기여자",
     "viewAllContributors": "모든 기여자 보기"
+  },
+  "kids": {
+    "header": { "title": "Promi의 프롬프트 학교", "levels": "레벨", "home": "홈", "map": "지도", "mainSite": "메인 사이트" },
+    "home": {
+      "badge": "어린이 학습",
+      "title": "AI와 대화하는 법을 배워요!",
+      "subtitle": "로봇 Promi과 함께 재미있는 모험을 떠나 멋진 프롬프트 작성법을 배워보세요!",
+      "promiIntro": { "greeting": "안녕, 나는 Promi이야! 🤖", "message": "네 도움이 필요한 친절한 로봇이야! 프롬프트를 더 잘 이해할 수 있게 도와줄래?" },
+      "features": {
+        "games": { "title": "재미있는 게임", "description": "드래그 앤 드롭 게임과 퀴즈로 배워요" },
+        "stories": { "title": "멋진 이야기", "description": "Promi과 함께 신나는 모험을 떠나요" },
+        "stars": { "title": "별 모으기", "description": "별을 모아 새로운 레벨을 열어요" }
+      },
+      "startButton": "게임 시작!",
+      "ageNote": "읽고 쓸 수 있는 8-14세 어린이에게 적합해요"
+    },
+    "map": { "title": "세계 지도", "subtitle": "레벨을 선택하고 모험을 시작하세요!", "worldLevels": "{count}개 레벨", "levelNumber": "레벨 {number}", "locked": "이전 레벨을 완료하면 열립니다" },
+    "worlds": { "1": { "title": "시작 마을" }, "2": { "title": "명확성의 성" }, "3": { "title": "맥락 동굴" }, "4": { "title": "창의력 협곡" }, "5": { "title": "마스터 산" } },
+    "levels": {
+      "1_1_meet_promi": { "title": "Promi을 만나요!", "description": "로봇 친구에게 인사하고 AI가 무엇인지 배워요" },
+      "1_2_first_words": { "title": "Promi의 첫 번째 말", "description": "첫 번째 프롬프트를 작성해서 Promi이 이해하도록 도와주세요" },
+      "1_3_being_clear": { "title": "명확하게 말하기", "description": "왜 명확한 지시가 더 잘 작동하는지 배워요" }
+    },
+    "level": { "backToMap": "지도로 돌아가기", "levelLabel": "레벨 {number}", "comingSoon": "이 레벨은 곧 출시됩니다!", "previous": "이전", "next": "다음", "map": "지도" },
+    "levelComplete": { "title": "레벨 완료!", "nextLevel": "다음 레벨", "backToMap": "지도로 돌아가기", "allDone": "지도로 돌아가기" }
   }
 }
