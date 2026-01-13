@@ -1,0 +1,85 @@
+<Section>
+<Panel character="promi" mood="excited">
+Welkom bij het laatste level van de Creatiecanyon! 🎨 Laten we **Wereldbouwers** worden en geweldige fantasiescenario's maken!
+</Panel>
+</Section>
+
+<Section>
+## Denkbeeldige werelden bouwen
+
+Je kunt AI vragen je te helpen hele werelden te maken:
+
+- Fantasiekoninkrijken met magie
+- Futuristische steden met robots
+- Onderwaterbeschavingen
+- Planeten in verre sterrenstelsels
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+De enige limiet is je verbeelding! Vertel me over je wereld en ik help het tot leven te brengen!
+</Panel>
+</Section>
+
+<Section>
+## Wereldbouwen in actie!
+
+<PromptVsMistake
+  question="Welke prompt bouwt een betere wereld?"
+  good="Help me een wereld te maken waar alle dieren kunnen praten en hun eigen steden hebben. De katten runnen de bibliotheken en de honden zijn brandweerlieden. Wat zou er nog meer kunnen zijn?"
+  bad="Verzin een wereld"
+  explanation="De gedetailleerde prompt begint de wereld te bouwen (pratende dieren met banen) en vraagt me meer toe te voegen!"
+  promiMessage="Ik hou van deze wereld! Misschien bezorgen de vogels de post en runnen de konijntjes bakkerijen!"
+/>
+</Section>
+
+<Section>
+## Breid je wereld uit!
+
+<PromptVsMistake
+  question="Welke prompt helpt een wereld te laten groeien?"
+  good="In mijn magische boswereld zijn er bomen die snoep laten groeien. Wat voor soort snoepbomen zouden er kunnen bestaan? Wie zorgt ervoor? Welke avonturen zouden daar kunnen gebeuren?"
+  bad="Vertel me over een bos"
+  explanation="Door specifieke vragen over je wereld te stellen, kan ik je helpen het uit te breiden met nieuwe ideeën!"
+  promiMessage="'Wat als' vragen stellen helpt werelden groter en interessanter te worden!"
+/>
+</Section>
+
+<Section>
+## Bouw je wereld!
+
+<DragDropPrompt
+  title="Wereldbouwer"
+  instruction="Schik om een fantasierijke wereld te maken"
+  pieces={["Help me een wereld te maken", "waar al het weer wordt bestuurd door", "Wat zou er mis kunnen gaan?", "vriendelijke weertovenaars."]}
+  correctOrder={[0, 1, 3, 2]}
+  successMessage="Wat een creatieve wereld! Ik stel me zoveel leuke scenario's voor!"
+/>
+</Section>
+
+<Section>
+## Maak je ultieme wereld!
+
+<MagicWords
+  sentence="Help me een wereld te bouwen waar ___. Het belangrijkste dat het speciaal maakt is ___. Wie woont daar? Welke avonturen zouden kunnen gebeuren?"
+  blanks={[
+    { hint: "🌍 wereldconcept", answers: ["dromen tot leven komen", "iedereen superkrachten heeft", "speelgoed 's nachts kan bewegen", "muziek magie creëert", "kleuren gevoelens hebben"] },
+    { hint: "✨ speciaal kenmerk", answers: ["een gigantische magische boom in het midden", "zwevende eilanden in de lucht", "rivieren die stromen met sterrenlicht", "gebouwen gemaakt van wolken", "deuren naar andere dimensies"] }
+  ]}
+  successMessage="Wat een ongelooflijke wereld! De avonturen zijn eindeloos!"
+/>
+</Section>
+
+<Section>
+## Gefeliciteerd, Wereldbouwer! 🎉
+
+<Panel character="promi" mood="celebrating">
+Je hebt het gedaan! Je hebt de Creatiecanyon voltooid en bent een **Wereldbouwer** geworden! Je verbeelding gecombineerd met AI kan eindeloos geweldige werelden maken!
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-4-world-builder" 
+  stars={3}
+  message="Je hebt de Creatiecanyon voltooid! Je bent een Wereldbouwer!"
+/>
+</Section>

@@ -1,0 +1,87 @@
+<Section>
+<Panel character="promi" mood="happy">
+Welkom terug bij de Creatiecanyon! Vandaag gaan we samen geweldige **verhalen** maken! 📚
+</Panel>
+</Section>
+
+<Section>
+## AI als je co-auteur
+
+Je hoeft niet alleen verhalen te schrijven! AI kan je helpen:
+
+- Een verhaal starten met een spannende opening
+- Een verhaal voortzetten dat je bent begonnen
+- Nieuwe personages of plotwendingen toevoegen
+- Je ideeën geven als je vastzit
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+De beste verhalen komen van jouw verbeelding EN mijn hulp die samenwerken!
+</Panel>
+</Section>
+
+<Section>
+## Verhaalstarters die werken!
+
+<PromptVsMistake
+  question="Welke is een betere verhaalstarter-prompt?"
+  good="Start een mysterieverhaal over een kind dat een gloeiende kaart vindt op oma's zolder. Maak de eerste paragraaf spannend en mysterieus!"
+  bad="Schrijf een verhaal"
+  explanation="De gedetailleerde prompt geeft me een personage (een kind), setting (oma's zolder), object (gloeiende kaart), en stijl (spannend, mysterieus)!"
+  promiMessage="Geweldige verhaalstarters geven me net genoeg om te beginnen, maar laten ruimte voor avontuur!"
+/>
+</Section>
+
+<Section>
+## Ga door met het avontuur!
+
+<PromptVsMistake
+  question="Welke prompt helpt een verhaal beter voort te zetten?"
+  good="Ga door met mijn verhaal: 'Luna vond een klein deurtje achter haar boekenkast. Ze hoorde muziek van binnenuit komen.' Wat gebeurt er als ze het opent? Maak het magisch!"
+  bad="Ga door met een verhaal over een deur"
+  explanation="Door te delen wat je tot nu toe hebt geschreven, kan ik het in dezelfde stijl voortzetten!"
+  promiMessage="Deel je verhaal tot nu toe en ik houd het avontuur gaande!"
+/>
+</Section>
+
+<Section>
+## Start je verhaal!
+
+<DragDropPrompt
+  title="Verhaalstarter"
+  instruction="Schik deze stukjes om een spannende verhaalprompt te maken"
+  pieces={["Schrijf de opening", "die ontdekt dat het met dieren kan praten", "Maak het grappig en verrassend!", "van een verhaal over een kind"]}
+  correctOrder={[0, 3, 1, 2]}
+  successMessage="Dat is een geweldige verhaalstarter! Ik kan niet wachten om dit avontuur te schrijven!"
+/>
+</Section>
+
+<Section>
+## Maak je verhaalprompt!
+
+<MagicWords
+  sentence="Schrijf een ___ verhaal over een ___ die een ___ vindt die kan ___. Begin met een spannende opening!"
+  blanks={[
+    { hint: "✨ verhaaltype", answers: ["magisch", "grappig", "mysterieus", "avontuurlijk", "hartverwarmend"] },
+    { hint: "🧒 hoofdpersonage", answers: ["jonge uitvinder", "dappere prinses", "nieuwsgierige robot", "verlegen draak", "slimme vos"] },
+    { hint: "🎁 speciaal object", answers: ["oud boek", "gloeiend kristal", "toverstaf", "mysterieuze sleutel", "pratend huisdier"] },
+    { hint: "🌟 speciale kracht", answers: ["wensen vervullen", "portalen openen", "de toekomst tonen", "tekeningen tot leven brengen", "elke taal spreken"] }
+  ]}
+  successMessage="Wat een geweldig verhaalidee! Laat het avontuur beginnen!"
+/>
+</Section>
+
+<Section>
+## Verhaalmaker! 🎉
+
+<Panel character="promi" mood="celebrating">
+Geweldig! Je hebt geleerd hoe je AI als je **co-auteur** gebruikt! Samen kunnen we de meest ongelooflijke verhalen maken!
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-2-story-starters" 
+  stars={3}
+  message="Je hebt geleerd verhalen te maken met AI!"
+/>
+</Section>

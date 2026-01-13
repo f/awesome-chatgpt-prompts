@@ -1,0 +1,108 @@
+<Section>
+<Panel character="promi" mood="happy">
+Welkom terug! Vandaag leren we een superbelangrijke vaardigheid: **zwakke prompts vinden en repareren**! 🔧
+</Panel>
+</Section>
+
+<Section>
+## Spot de problemen!
+
+Zwakke prompts hebben vaak:
+
+❌ Te vaag - "Schrijf iets"
+❌ Ontbrekende details - "Vertel me over een persoon"
+❌ Geen formaat - Gewoon vragen zonder structuur
+❌ Onduidelijke stijl - Niet zeggen hoe je het wilt
+</Section>
+
+<Section>
+## Wees de promptdokter! 🏥
+
+<PromptDoctor
+  title="Genees deze prompt"
+  brokenPrompt="Schrijf iets"
+  problems={[
+    { issue: "Te vaag", symptom: "Wat moet ik schrijven? Een verhaal? Een gedicht? Een grap?", fix: "Schrijf een verhaal" },
+    { issue: "Geen onderwerp", symptom: "Waar moet het verhaal over gaan?", fix: "Schrijf een verhaal over een draak" },
+    { issue: "Geen details", symptom: "Wat voor draak? Wat gebeurt er?", fix: "Schrijf een kort verhaal over een vriendelijke draak die koekjes bakt" }
+  ]}
+  healedPrompt="Schrijf een kort verhaal over een vriendelijke draak die koekjes bakt"
+  successMessage="Je hebt de prompt genezen! Van 2 woorden naar een geweldig gedetailleerd verzoek!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Leren zwakke prompts te herkennen helpt je betere te schrijven! Het is net als een promptdetective zijn!
+</Panel>
+</Section>
+
+<Section>
+## Vind de oplossing!
+
+<PromptVsMistake
+  question="Deze prompt is zwak: 'Schrijf een gedicht.' Hoe zou je het repareren?"
+  good="Schrijf een kort rijmend gedicht van 4 regels over een regenboog na een storm. Maak het vrolijk en gebruik kleurrijke woorden!"
+  bad="Schrijf alsjeblieft een heel goed gedicht"
+  explanation="Alleen 'heel goed' zeggen helpt niet! Voeg in plaats daarvan details toe: onderwerp (regenboog), formaat (4 regels, rijmend), en stijl (vrolijk, kleurrijk)!"
+  promiMessage="Specifieke details toevoegen verandert een zwakke prompt in een sterke!"
+/>
+</Section>
+
+<Section>
+## Verbeter deze prompt!
+
+<PromptVsMistake
+  question="Zwakke prompt: 'Help met mijn huiswerk.' Hoe zou je het beter maken?"
+  good="Ik zit in groep 6 en heb hulp nodig met het begrijpen van breuken. Kun je uitleggen wat 1/2 betekent met pizza als voorbeeld? Houd het simpel!"
+  bad="Help alsjeblieft meer met mijn huiswerk"
+  explanation="De goede versie vertelt me: je niveau (groep 6), onderwerp (breuken), vraagt om een voorbeeld (pizza), en stijl (simpel)!"
+  promiMessage="Hoe specifieker je bent, hoe beter ik kan helpen!"
+/>
+</Section>
+
+<Section>
+## Repareer de prompt!
+
+<DragDropPrompt
+  title="Promptreparatie"
+  instruction="De prompt 'Vertel me een verhaal' is te zwak. Schik deze toevoegingen om het te repareren:"
+  pieces={["over een dapper klein muisje", "Vertel me een kort slaapverhaaltje", "die een verdwaald babyvogeltje helpt naar huis te vinden.", "Maak het zacht en eindig met iedereen veilig."]}
+  correctOrder={[1, 0, 2, 3]}
+  successMessage="Je hebt een zwakke prompt omgetoverd in een geweldige!"
+/>
+</Section>
+
+<Section>
+## Upgrade-uitdaging!
+
+Neem deze zwakke prompt en maak hem sterk:
+
+**Zwak:** "Geef me ideeën"
+
+<MagicWords
+  sentence="Geef me ___ creatieve ideeën voor ___ die ___ en ___ zijn. Zoiets als ___!"
+  blanks={[
+    { hint: "🔢 hoeveel", answers: ["5", "3", "7", "10", "4"] },
+    { hint: "🎯 waarvoor", answers: ["een verjaardagsfeestje", "een wetenschapsproject", "een leuk spel", "een verhaal om te schrijven", "mijn kamer versieren"] },
+    { hint: "✨ stijl 1", answers: ["leuk", "makkelijk te doen", "creatief", "verrassend", "kleurrijk"] },
+    { hint: "🌟 stijl 2", answers: ["kindvriendelijk", "niet te duur", "uniek", "spannend", "simpel"] },
+    { hint: "💡 voorbeeld", answers: ["een schattenjacht", "slijm maken", "een superhelden thema", "glow-in-the-dark spullen", "een tovershow"] }
+  ]}
+  successMessage="Je hebt een zwakke prompt van 2 woorden omgetoverd in een geweldig gedetailleerde!"
+/>
+</Section>
+
+<Section>
+## Promptreparateur! 🎉
+
+<Panel character="promi" mood="celebrating">
+Uitstekend! Je hebt geleerd zwakke prompts te herkennen en **te repareren** door details, formaat en stijl toe te voegen! Deze vaardigheid helpt je voor altijd!
+</Panel>
+
+<LevelComplete 
+  levelSlug="5-2-fix-it-up" 
+  stars={3}
+  message="Je hebt geleerd zwakke prompts te vinden en te repareren!"
+/>
+</Section>

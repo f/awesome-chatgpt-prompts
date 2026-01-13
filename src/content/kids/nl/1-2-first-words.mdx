@@ -1,0 +1,100 @@
+<Section>
+<Panel character="promi" mood="happy">
+Welkom terug, vriend! Klaar om je eerste echte prompts te schrijven? Laten we gaan! 🚀
+</Panel>
+</Section>
+
+<Section>
+## De magie van woorden
+
+Als je met AI praat, is elk woord belangrijk! Laten we zien hoe meer woorden prompts beter maken.
+
+<WordPredictor
+  title="Waarom woorden belangrijk zijn"
+  instruction="Weet je nog hoe ik het volgende woord raad? Kijk wat er gebeurt met prompts!"
+  sentence="Schrijf een verhaal over een ___"
+  options={["draak", "ding", "de", "erg"]}
+  correctAnswer="draak"
+  explanation="'Draak' is het logischte omdat verhalen meestal over personages of dingen gaan! 'Ding' is te vaag, en 'de' of 'erg' passen niet in het patroon."
+  aiThinking="Verhalen gaan meestal over iemand of iets interessants..."
+  successMessage="Precies! Specifieke woorden sturen mijn voorspellingen - daarom zijn details belangrijk in prompts!"
+/>
+
+<Panel character="promi" mood="thinking">
+Kijk hier! Als iemand alleen "kat" tegen me zegt, weet ik niet wat ze willen. Willen ze een plaatje? Een verhaal? Feiten over katten? Ik ben in de war! 😵‍💫
+</Panel>
+</Section>
+
+<Section>
+## Betere prompts bouwen
+
+Een goede prompt heeft **drie delen**:
+
+1. **Wat je wilt** (een verhaal, hulp, informatie)
+2. **Het onderwerp** (katten, ruimte, dinosaurussen)
+3. **Details** (kort, grappig, voor kinderen)
+
+<Panel character="promi" mood="excited">
+Laten we samen een prompt bouwen!
+</Panel>
+</Section>
+
+<Section>
+## Sleep de stukjes!
+
+<DragDropPrompt
+  title="Bouw je eerste prompt! 🧩"
+  instruction="Zet deze stukjes in de juiste volgorde om een verhaal te vragen."
+  pieces={[
+    "Schrijf alsjeblieft",
+    "een kort verhaal",
+    "over een dapper katje",
+    "dat op avontuur gaat"
+  ]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Perfect! Dat is een geweldige prompt!"
+/>
+</Section>
+
+<Section>
+## Vul de lege plekken in!
+
+Probeer nu je eigen prompt te maken door de toverwoorden te slepen:
+
+<MagicWords
+  title="Maak je eigen prompt! ✨"
+  sentence="Schrijf alsjeblieft een {{type}} over een {{character}} die {{action}}"
+  blanks={[
+    { id: "type", hint: "Wat voor soort tekst? (verhaal, gedicht, liedje)", answers: ["verhaal", "gedicht", "liedje", "brief", "grap"], emoji: "📝" },
+    { id: "character", hint: "Over wie gaat het? (robot, draak, puppy)", answers: ["robot", "draak", "puppy", "kat", "tovenaar", "prinses", "ridder", "konijn", "eenhoorn"], emoji: "🦸" },
+    { id: "action", hint: "Wat doen ze? (een schat vindt, vrienden maakt, de dag redt)", answers: ["een schat vindt", "vrienden maakt", "de dag redt", "op avontuur gaat", "leert vliegen", "een vriend vindt", "magie ontdekt"], emoji: "⚡" }
+  ]}
+  successMessage="Wauw! Je hebt een geweldige prompt gemaakt!"
+/>
+</Section>
+
+<Section>
+## Jouw beurt om te kiezen!
+
+<PromptVsMistake
+  question="Welke prompt levert een beter verhaal op?"
+  good="Schrijf een grappig verhaal over een pinguïn die wil leren dansen"
+  bad="Schrijf verhaal pinguïn"
+  explanation="De eerste prompt vertelt me dat het grappig moet zijn, dat het over een pinguïn gaat, EN wat de pinguïn wil doen!"
+  promiMessage="Details maken alles beter! Ik vind het fijn om precies te weten wat je wilt!"
+/>
+</Section>
+
+<Section>
+## Goed gedaan! 🌟
+
+<Panel character="promi" mood="celebrating">
+Je hebt je eerste prompts geschreven! Je hebt geleerd dat goede prompts nodig hebben: wat je wilt, een onderwerp, en details. Je wordt echt goed hierin!
+</Panel>
+
+<LevelComplete 
+  levelSlug="1-2-first-words" 
+  stars={3}
+  message="Je hebt geleerd hoe je je eerste prompts schrijft!"
+/>
+</Section>

@@ -1,0 +1,104 @@
+<Section>
+<Panel character="promi" mood="excited">
+Welkom bij het laatste level van het Duidelijkheidskasteel! 🏰 Je hebt geleerd over WIE, WAT, WANNEER en WAAR. Nu gaan we het ALLEMAAL combineren!
+</Panel>
+</Section>
+
+<Section>
+## De detaildetective-checklist
+
+Voordat je een prompt stuurt, vraag jezelf:
+
+✅ **WIE** - Wie is erbij betrokken?
+✅ **WAT** - Wat wil ik? Wat gebeurt er?
+✅ **WANNEER** - Wanneer gebeurt het?
+✅ **WAAR** - Waar vindt het plaats?
+</Section>
+
+<Section>
+## Sorteer de promptonderdelen!
+
+<PromptParts
+  title="Match elk stukje!"
+  instruction="Tik op een stukje en kies of het een Rol, Taak, Context of Beperking is!"
+  parts={[
+    { text: "Schrijf een grappig verhaal", type: "task" },
+    { text: "over een onhandige tovenaar", type: "context" },
+    { text: "op een toverschool", type: "context" },
+    { text: "Houd het kort", type: "constraint" }
+  ]}
+  successMessage="Je hebt alle promptonderdelen geïdentificeerd! Nu kun je prompts bouwen als een pro!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Je hebt niet ALLE vier elke keer nodig, maar hoe meer details je toevoegt, hoe beter ik je kan helpen!
+</Panel>
+</Section>
+
+<Section>
+## Detective-uitdaging #1
+
+<PromptVsMistake
+  question="Welke prompt heeft de meest behulpzame details?"
+  good="Schrijf een grappig verhaal over een onhandige tovenaar genaamd Zap die per ongeluk zijn kat in een reus verandert tijdens een tovershow in het koninklijk kasteel"
+  bad="Schrijf een verhaal over magie"
+  explanation="De gedetailleerde prompt heeft WIE (tovenaar Zap, zijn kat), WAT (verandert kat in reus, tovershow), WAAR (koninklijk kasteel), en zelfs een stijl (grappig)!"
+  promiMessage="Wauw! Die prompt geeft me zoveel om mee te werken. Ik kan de hele scène voorstellen!"
+/>
+</Section>
+
+<Section>
+## Detective-uitdaging #2
+
+<PromptVsMistake
+  question="Welke prompt zou een beter gedicht opleveren?"
+  good="Schrijf een kort rijmend gedicht over een slaperige beer die zich klaarmaakt voor de winterslaap in zijn gezellige grot"
+  bad="Schrijf een gedicht over een dier"
+  explanation="De eerste prompt vertelt me WIE (slaperige beer), WAT (klaarmaken voor winterslaap), WANNEER (winter), WAAR (gezellige grot), en stijl (kort, rijmend)!"
+  promiMessage="Elk detail helpt me iets speciaals te maken speciaal voor jou!"
+/>
+</Section>
+
+<Section>
+## Bouw de ultieme prompt!
+
+<DragDropPrompt
+  title="Meesterdetective"
+  instruction="Schik ALLE details tot een perfecte prompt"
+  pieces={["Schrijf een spannend verhaal", "over een jonge uitvinder", "die een robotvriend bouwt", "in een futuristische stad", "op de eerste dag van de zomer"]}
+  correctOrder={[0, 1, 2, 3, 4]}
+  successMessage="Perfect! Je hebt WIE, WAT, WAAR en WANNEER toegevoegd!"
+/>
+</Section>
+
+<Section>
+## Maak je meesterwerk!
+
+<MagicWords
+  sentence="Schrijf alsjeblieft een ___ verhaal over een ___ die ___ in een ___ tijdens ___"
+  blanks={[
+    { hint: "😊 een sfeer/stijl", answers: ["grappig", "spannend", "mysterieus", "hartverwarmend", "gek"] },
+    { hint: "🦸 een personage", answers: ["dappere ridder", "kleine fee", "slimme vos", "jonge astronaut", "vriendelijke geest"] },
+    { hint: "🎬 een actie", answers: ["een geheim ontdekt", "op zoektocht gaat", "een nieuwe vriend maakt", "een mysterie oplost", "leert vliegen"] },
+    { hint: "🏰 een plek", answers: ["magisch koninkrijk", "diepe jungle", "ruimtestation", "onderwaterstad", "betoverd bos"] },
+    { hint: "🌙 een tijd", answers: ["volle maan", "hun verjaardag", "een grote storm", "de laatste schooldag", "middernacht"] }
+  ]}
+  successMessage="Je bent een echte detaildetective! Dat is een geweldige prompt!"
+/>
+</Section>
+
+<Section>
+## Gefeliciteerd, detective! 🎉
+
+<Panel character="promi" mood="celebrating">
+Je hebt het gedaan! Je hebt het Duidelijkheidskasteel voltooid en bent een **Detaildetective** geworden! Je kent nu het geheim: WIE + WAT + WANNEER + WAAR = Geweldige prompts!
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-4-detail-detective" 
+  stars={3}
+  message="Je hebt het Duidelijkheidskasteel voltooid! Je bent een Detaildetective!"
+/>
+</Section>

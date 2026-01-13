@@ -1,0 +1,87 @@
+<Section>
+<Panel character="promi" mood="excited">
+Vandaag leren we over **formaten**! 📝 Wist je dat je AI kunt vragen om op verschillende manieren te antwoorden?
+</Panel>
+</Section>
+
+<Section>
+## Wat is een formaat?
+
+Een **formaat** is HOE je het antwoord gepresenteerd wilt hebben:
+
+- 📋 **Lijst** - genummerd of met opsommingstekens
+- 📖 **Verhaal** - een verhaal met begin, midden, einde
+- 🎵 **Gedicht** - met rijm en ritme
+- ❓ **V&A** - vraag en antwoord stijl
+- 📊 **Tabel** - georganiseerd in rijen en kolommen
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+Door me het formaat te vertellen, help je me mijn antwoord te organiseren op de manier die het nuttigst voor je is!
+</Panel>
+</Section>
+
+<Section>
+## Formaat maakt verschil!
+
+<PromptVsMistake
+  question="Welke prompt vraagt om een duidelijk formaat?"
+  good="Geef me 5 leuke feiten over dolfijnen in een genummerde lijst"
+  bad="Vertel me over dolfijnen"
+  explanation="De eerste prompt vertelt me precies hoe het antwoord te organiseren - als 5 genummerde feiten!"
+  promiMessage="Als je om een specifiek formaat vraagt, krijg je precies wat je nodig hebt!"
+/>
+</Section>
+
+<Section>
+## Kies je formaat!
+
+<PromptVsMistake
+  question="Welk formaat zou het beste zijn om dingen te onthouden?"
+  good="Zet de planeten op volgorde vanaf de zon als opsommingstekens"
+  bad="Vertel me over de planeten"
+  explanation="Een lijstformaat maakt het makkelijk om de planeten op volgorde te onthouden en te tellen!"
+  promiMessage="Lijsten zijn geweldig voor leren en onthouden!"
+/>
+</Section>
+
+<Section>
+## Formaatpraktijk!
+
+<DragDropPrompt
+  title="Voeg een formaat toe"
+  instruction="Schik om een specifiek formaat te vragen"
+  pieces={["als een kort gedicht", "met rijmende regels", "Schrijf over regen", "dat 4 regels lang is"]}
+  correctOrder={[2, 0, 1, 3]}
+  successMessage="Perfect! Je vroeg om een gedichtformaat met specifieke details!"
+/>
+</Section>
+
+<Section>
+## Kies je formaat!
+
+<MagicWords
+  sentence="Geef me ___ over ___ als een ___"
+  blanks={[
+    { hint: "🔢 hoeveel", answers: ["5 tips", "3 ideeën", "10 feiten", "7 stappen", "4 voorbeelden"] },
+    { hint: "📚 onderwerp", answers: ["een goede vriend zijn", "de planeet redden", "gezond blijven", "creatief zijn", "nieuwe dingen leren"] },
+    { hint: "📋 formaat", answers: ["genummerde lijst", "opsommingstekens", "kort gedicht", "simpel verhaal", "makkelijke stappen"] }
+  ]}
+  successMessage="Goed gedaan met het kiezen van een formaat! Dit maakt antwoorden makkelijker te lezen!"
+/>
+</Section>
+
+<Section>
+## Formaatmeester! 🎉
+
+<Panel character="promi" mood="celebrating">
+Geweldig! Je hebt geleerd dat vragen om een specifiek **formaat** je helpt antwoorden te krijgen die precies zo georganiseerd zijn als je nodig hebt!
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-3-format-finder" 
+  stars={3}
+  message="Je hebt geleerd om verschillende formaten te vragen!"
+/>
+</Section>

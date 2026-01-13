@@ -1,0 +1,86 @@
+<Section>
+<Panel character="promi" mood="excited">
+Welkom bij de **Creatiecanyon**! 🎨 Dit is waar creativiteit tot leven komt! Vandaag leren we over **rollenspel-prompts**!
+</Panel>
+</Section>
+
+<Section>
+## Wat is rollenspel?
+
+**Rollenspel** betekent de AI vragen om te doen alsof het iemand of iets is!
+
+Je kunt dingen zeggen zoals:
+- "Doe alsof je een piraat bent..."
+- "Stel je voor dat je een leraar bent..."
+- "Je bent een vriendelijke kok..."
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+Als je me vraagt een rol te spelen, kan ik antwoorden geven in de stem en stijl van dat personage! Het is alsof we samen doen-alsof spelen!
+</Panel>
+</Section>
+
+<Section>
+## Zie rollenspel in actie!
+
+<PromptVsMistake
+  question="Welke prompt gebruikt rollenspel?"
+  good="Doe alsof je een vriendelijke ruimteverkenner bent. Vertel me over je avonturen op Mars!"
+  bad="Vertel me over Mars"
+  explanation="De eerste prompt vraagt me om een ruimteverkenner te ZIJN, dus kan ik je op een leuke, persoonlijke manier over 'mijn' avonturen vertellen!"
+  promiMessage="Rollenspel maakt onze gesprekken zoveel leuker en creatiever!"
+/>
+</Section>
+
+<Section>
+## Kies je personage!
+
+<PromptVsMistake
+  question="Welke rol zou het beste zijn om over de oceaan te leren?"
+  good="Doe alsof je een wijze oude zeeschildpad bent die 100 jaar heeft geleefd. Wat voor coole dingen heb je in de oceaan gezien?"
+  bad="Wat leeft er in de oceaan?"
+  explanation="Een 100 jaar oude zeeschildpad heeft zoveel gezien! Dit maakt leren over de oceaan voelen alsof je verhalen van een vriend hoort!"
+  promiMessage="Verschillende rollen geven verschillende perspectieven en maken leren interessanter!"
+/>
+</Section>
+
+<Section>
+## Maak een rollenspel-prompt!
+
+<DragDropPrompt
+  title="Doe-alsof tijd!"
+  instruction="Schik de stukjes om een leuke rollenspel-prompt te maken"
+  pieces={["en vertel me", "Doe alsof je een draak bent", "over je favoriete schat", "die van glimmende dingen houdt"]}
+  correctOrder={[1, 3, 0, 2]}
+  successMessage="Geweldige rollenspel-prompt! Nu kan de draak zijn schatverhalen delen!"
+/>
+</Section>
+
+<Section>
+## Bouw je eigen rollenspel!
+
+<MagicWords
+  sentence="Doe alsof je een ___ bent die ___. Vertel me over ___."
+  blanks={[
+    { hint: "🎭 een personage", answers: ["tovenaar", "superheld", "pratende kat", "tijdreiziger", "fee"] },
+    { hint: "⭐ wat ze doen", answers: ["wensen vervult", "de dag redt", "magische landen verkent", "coole gadgets uitvindt", "drankjes maakt"] },
+    { hint: "📖 wat te delen", answers: ["je grootste avontuur", "je beste dag ooit", "een grappige fout die je maakte", "je geheime schuilplaats", "je beste vriend"] }
+  ]}
+  successMessage="Geweldig rollenspel! Nu kunnen we een leuk doe-alsof gesprek hebben!"
+/>
+</Section>
+
+<Section>
+## Rollenspelmeester! 🎉
+
+<Panel character="promi" mood="celebrating">
+Fantastisch! Je hebt geleerd dat **rollenspel-prompts** gesprekken creatief en leuk maken! Vraag me gewoon om "te doen alsof" of "te zijn als" iemand!
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-1-pretend-time" 
+  stars={3}
+  message="Je hebt geleerd rollenspel-prompts te gebruiken!"
+/>
+</Section>

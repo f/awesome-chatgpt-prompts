@@ -1,0 +1,81 @@
+<Section>
+<Panel character="promi" mood="excited">
+Welkom bij het **Duidelijkheidskasteel**! 🏰 Ik ben zo blij dat je hier bent! In deze wereld leren we de magie van **details**!
+</Panel>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Heb je ooit iemand om iets gevraagd, maar begrepen ze niet wat je bedoelde? Dat gebeurt ook bij AI!
+</Panel>
+</Section>
+
+<Section>
+## Het probleem met vage prompts
+
+Kijk naar deze twee prompts:
+
+❌ **Vaag:** "Teken een plaatje"
+
+✅ **Specifiek:** "Teken een plaatje van een blije puppy die speelt in een zonnig park"
+
+Welke geeft mij meer informatie om mee te werken?
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+De tweede vertelt me **wat** ik moet tekenen (puppy), **wat het doet** (spelen), en **waar** (zonnig park). Dat is de kracht van details!
+</Panel>
+</Section>
+
+<Section>
+## Laten we oefenen!
+
+<PromptVsMistake
+  question="Welke prompt heeft betere details?"
+  good="Schrijf een grappige grap over een pinguïn die wil leren vliegen"
+  bad="Vertel me een grap"
+  explanation="De gedetailleerde prompt vertelt me precies wat voor grap je wilt - grappig, over een pinguïn, met een specifiek verhaal!"
+  promiMessage="Details zijn als aanwijzingen die me helpen precies te begrijpen wat je wilt!"
+/>
+</Section>
+
+<Section>
+## Waarom details belangrijk zijn
+
+<PromptVsMistake
+  question="Welke zou Promi helpen een betere verjaardagskaart te maken?"
+  good="Maak een verjaardagskaart voor mijn oma die van tuinieren en de kleur paars houdt"
+  bad="Maak een verjaardagskaart"
+  explanation="Weten dat het voor oma is, dat ze van tuinieren houdt, en haar favoriete kleur helpt iets speciaals en persoonlijks te maken!"
+  promiMessage="Hoe meer ik weet over wat je wilt, hoe beter ik kan helpen!"
+/>
+</Section>
+
+<Section>
+## Vul de details in!
+
+<MagicWords
+  sentence="Schrijf alsjeblieft een verhaal over een ___ die in een ___ woont en graag ___"
+  blanks={[
+    { hint: "🐱 een dier", answers: ["kat", "hond", "konijn", "draak", "eenhoorn"] },
+    { hint: "🏠 een plek", answers: ["kasteel", "bos", "stad", "boomhut", "grot"] },
+    { hint: "⭐ een activiteit", answers: ["zingt", "danst", "kookt", "schildert", "verkent"] }
+  ]}
+  successMessage="Goed gedaan met het toevoegen van details!"
+/>
+</Section>
+
+<Section>
+## Je leert het! 🎉
+
+<Panel character="promi" mood="celebrating">
+Geweldig werk! Je hebt ontdekt dat **details prompts beter maken**. Vage prompts = verwarde AI. Gedetailleerde prompts = geweldige resultaten!
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-1-missing-details" 
+  stars={3}
+  message="Je hebt geleerd waarom details belangrijk zijn in prompts!"
+/>
+</Section>

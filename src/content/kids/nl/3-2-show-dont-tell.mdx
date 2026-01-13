@@ -1,0 +1,104 @@
+<Section>
+<Panel character="promi" mood="happy">
+Welkom terug! De les van vandaag is superbelangrijk: **Laten zien, niet vertellen**! Voorbeelden gebruiken is een van de beste manieren om AI te helpen begrijpen!
+</Panel>
+</Section>
+
+<Section>
+## De kracht van voorbeelden
+
+In plaats van alleen te beschrijven wat je wilt, **laat me een voorbeeld zien**!
+
+Het is net als wanneer je iemand een spel leert - het is makkelijker om te laten zien hoe je speelt dan alleen de regels te vertellen!
+</Section>
+
+<Section>
+## Leer het patroon!
+
+<ExampleMatcher
+  title="Patroonkracht"
+  instruction="AI leert van voorbeelden! Zie het patroon en kies wat daarna komt."
+  examples={[
+    { input: "blij", output: "😊" },
+    { input: "verdrietig", output: "😢" },
+    { input: "slaperig", output: "😴" }
+  ]}
+  question="boos"
+  options={["😠", "😊", "🎉", "😴"]}
+  correctAnswer="😠"
+  explanation="De AI leerde: gevoelswoord → bijpassende emoji! Dit heet 'leren door voorbeelden' - net als jij!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Als je zegt "maak het cool klinken," weet ik misschien niet wat "cool" voor jou betekent. Maar als je me een voorbeeld laat zien, begrijp ik het perfect!
+</Panel>
+</Section>
+
+<Section>
+## Zie het verschil
+
+<PromptVsMistake
+  question="Welke prompt gebruikt voorbeelden beter?"
+  good="Schrijf een leuke productnaam zoals 'Super Schitter Shampoo' of 'Magische Wolk Kussens' - iets pakkends en speels!"
+  bad="Schrijf een leuke productnaam"
+  explanation="De voorbeelden laten precies zien welke stijl naam je zoekt - pakkend, speels, met leuke bijvoeglijke naamwoorden!"
+  promiMessage="Voorbeelden zijn als schatkaarten - ze laten me precies zien waar je heen wilt!"
+/>
+</Section>
+
+<Section>
+## Laat je stijl zien
+
+<PromptVsMistake
+  question="Welke prompt laat de schrijfstijl beter zien?"
+  good="Schrijf een grap in deze stijl: 'Waarom ging de banaan naar de dokter? Omdat hij zich niet lekker voelde!' - iets geks met een woordspeling!"
+  bad="Schrijf een grappige grap"
+  explanation="Door een voorbeeldgrap met een woordspeling te laten zien, weet ik dat je diezelfde gekke woordspelstijl wilt!"
+  promiMessage="Als je me laat zien wat je leuk vindt, kan ik die stijl evenaren!"
+/>
+</Section>
+
+<Section>
+## Geef voorbeelden!
+
+<DragDropPrompt
+  title="Bouw met voorbeelden"
+  instruction="Schik de stukjes om een prompt met een behulpzaam voorbeeld te maken"
+  pieces={["Schrijf een superheldennaam", "zoals 'Kapitein Moed'", "of 'Bliksem Dame'", "- iets heldhaftigs en memorabels"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Perfect! Je voorbeelden laten precies zien wat voor naam je wilt!"
+/>
+</Section>
+
+<Section>
+## Maak je eigen voorbeeld-prompt!
+
+<MagicWords
+  sentence="Schrijf een ___ zoals '___ ___ ___' - iets ___ en ___"
+  blanks={[
+    { hint: "📝 wat te schrijven", answers: ["teamnaam", "dierennaam", "bandnaam", "boektitel", "restaurantnaam"] },
+    { hint: "✨ bijvoeglijk naamwoord", answers: ["Blije", "Super", "Gouden", "Magische", "Machtige"] },
+    { hint: "🌟 zelfstandig naamwoord", answers: ["Sterren", "Draken", "Dromen", "Donder", "Feniks"] },
+    { hint: "🎯 woord", answers: ["Club", "Team", "Groep", "Koninkrijk", "Avontuur"] },
+    { hint: "😊 stijl 1", answers: ["leuks", "spannends", "cools", "creatiefs", "pakkends"] },
+    { hint: "🎨 stijl 2", answers: ["memorabels", "unieks", "krachtigs", "vriendelijks", "gewaagds"] }
+  ]}
+  successMessage="Geweldig! Je voorbeeld laat precies zien welke stijl je wilt!"
+/>
+</Section>
+
+<Section>
+## Voorbeelden zijn krachtig! 🎉
+
+<Panel character="promi" mood="celebrating">
+Geweldig werk! Je hebt geleerd dat **voorbeelden laten zien** een van de beste manieren is om AI te helpen precies te begrijpen wat je wilt!
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-2-show-dont-tell" 
+  stars={3}
+  message="Je beheerst het gebruik van voorbeelden in prompts!"
+/>
+</Section>

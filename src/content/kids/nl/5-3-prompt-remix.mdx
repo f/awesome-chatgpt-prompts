@@ -1,0 +1,106 @@
+<Section>
+<Panel character="promi" mood="excited">
+Vandaag leren we **Prompt Remix**! 🎵 Dit betekent prompts veranderen om verschillende resultaten te krijgen!
+</Panel>
+</Section>
+
+<Section>
+## Zelfde onderwerp, verschillende resultaten!
+
+Je kunt op verschillende manieren over hetzelfde vragen om verschillende antwoorden te krijgen:
+
+- **Voor de lol**: "Vertel me over dolfijnen op een gekke manier"
+- **Voor school**: "Geef me 5 educatieve feiten over dolfijnen"
+- **Voor creativiteit**: "Schrijf een gedicht vanuit het oogpunt van een dolfijn"
+</Section>
+
+<Section>
+## Probeer het promptlab! 🔬
+
+<PromptLab
+  title="Verbeter je prompt"
+  scenario="Laten we een simpele prompt beter maken door stap voor stap details toe te voegen!"
+  basePrompt="Vertel me over honden"
+  baseResponse="Honden zijn dieren. Ze hebben vier poten en vacht."
+  improvements={[
+    { label: "Voeg een specifiek ras toe", prompt: "Vertel me over Golden Retriever honden", response: "Golden Retrievers zijn geweldige honden bekend om hun vriendelijke persoonlijkheid, gouden vacht en liefde voor zwemmen!" },
+    { label: "Voeg een publiek toe", prompt: "Vertel me over Golden Retriever honden voor een 10-jarige", response: "Golden Retrievers zijn supervriendelijke honden die graag apporteren en zwemmen! Ze hebben zachte gouden vacht en grote blije glimlachen!" },
+    { label: "Voeg een formaat toe", prompt: "Geef me 3 leuke feiten over Golden Retriever honden voor een 10-jarige", response: "Hier zijn 3 leuke feiten over Golden Retrievers: 1) Ze werden getraind om vogels te apporteren voor jagers, 2) Ze kunnen meer dan 200 woorden leren, 3) Ze hebben zwemvliezen waardoor ze geweldige zwemmers zijn!" }
+  ]}
+  successMessage="Elk detail dat je toevoegde maakte het antwoord beter en nuttiger!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Prompts remixen betekent dat je hetzelfde onderwerp op veel spannende manieren kunt verkennen!
+</Panel>
+</Section>
+
+<Section>
+## Zie de remix!
+
+<PromptVsMistake
+  question="Je wilt over dinosaurussen leren maar op een LEUKE manier. Welke remix is het beste?"
+  good="Doe alsof je een T-Rex bent die net wakker is geworden. Vertel me over je dag - wat eet je, wie zijn je vrienden, en wat maakt je chagrijnig?"
+  bad="Geef me feiten over T-Rex"
+  explanation="Zelfde onderwerp (T-Rex), maar de remix maakt het een leuk verhaal vanuit het perspectief van de dinosaurus!"
+  promiMessage="Hetzelfde onderwerp remixen geeft je frisse, leuke manieren om te leren!"
+/>
+</Section>
+
+<Section>
+## Remix voor verschillende doelen!
+
+<PromptVsMistake
+  question="Je hebt over de maan geleerd. Nu wil je een creatief verhaal schrijven. Welke remix werkt?"
+  good="Schrijf een slaapverhaaltje over een klein sterretje dat de maan wil bezoeken. Maak het magisch met een lief einde!"
+  bad="Vertel me meer feiten over de maan"
+  explanation="Je hebt geremixt van 'feiten leren' naar 'creatief verhaal' - zelfde onderwerp, ander doel!"
+  promiMessage="Remixen laat je wat je weet op nieuwe creatieve manieren gebruiken!"
+/>
+</Section>
+
+<Section>
+## Probeer verschillende remixes!
+
+<DragDropPrompt
+  title="Prompt remix"
+  instruction="Remix 'Vertel me over katten' naar een creatieve prompt:"
+  pieces={["en beschrijf je favoriete dutjesplekje", "Schrijf vanuit het oogpunt van een luie kat", "die in een gezellige boekwinkel woont.", "Maak het grappig en ontspannen!"]}
+  correctOrder={[1, 2, 0, 3]}
+  successMessage="Geweldige remix! Zelfde onderwerp, totaal andere en leuke aanpak!"
+/>
+</Section>
+
+<Section>
+## Maak je remix!
+
+Neem het basisonderwerp "robots" en remix het:
+
+<MagicWords
+  sentence="___ een ___ robot die ___. Beschrijf ___. Maak het ___!"
+  blanks={[
+    { hint: "📝 wat te schrijven", answers: ["Vertel een verhaal over", "Schrijf een dagboekfragment van", "Maak een liedje over", "Beschrijf een dag voor", "Interview"] },
+    { hint: "🤖 robottype", answers: ["kleine helper", "dansende", "kokende", "ruimteverkenner", "vriendelijke klas"] },
+    { hint: "⭐ wat het doet", answers: ["net leerde vrienden te maken", "ontdekte dat het van muziek houdt", "een gekke fout maakte", "op zijn eerste avontuur gaat", "voor het eerst een mens ontmoette"] },
+    { hint: "🎯 wat op te nemen", answers: ["hoe het zich voelt over zijn nieuwe ontdekking", "het grappigste moment van zijn dag", "waar het over droomt", "zijn favoriete herinnering", "wat het vandaag leerde"] },
+    { hint: "✨ de stijl", answers: ["hartverwarmend en lief", "gek en leuk", "spannend en avontuurlijk", "vredig en kalm", "mysterieus en nieuwsgierig"] }
+  ]}
+  successMessage="Geweldige remix! Je hebt 'robots' in iets totaal unieks veranderd!"
+/>
+</Section>
+
+<Section>
+## Remixmeester! 🎉
+
+<Panel character="promi" mood="celebrating">
+Fantastisch! Je hebt geleerd **prompts te remixen** om verschillende resultaten van hetzelfde onderwerp te krijgen! Dit maakt je creativiteit eindeloos!
+</Panel>
+
+<LevelComplete 
+  levelSlug="5-3-prompt-remix" 
+  stars={3}
+  message="Je hebt geleerd prompts te remixen voor verschillende resultaten!"
+/>
+</Section>

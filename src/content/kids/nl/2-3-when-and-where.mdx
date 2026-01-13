@@ -1,0 +1,96 @@
+<Section>
+<Panel character="promi" mood="excited">
+Leuk je weer te zien! De les van vandaag gaat over **WANNEER** en **WAAR** - deze details brengen je prompts tot leven!
+</Panel>
+</Section>
+
+<Section>
+## De WANNEER-vraag
+
+**Wanneer** speelt je verhaal zich af?
+
+- Tijd van de dag: ochtend, nacht, zonsondergang
+- Seizoen: zomer, winter, lente
+- Tijdperk: lang geleden, toekomst, heden
+- Speciale tijd: verjaardag, vakantie, eerste schooldag
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+"Een verhaal over een kat" is oké, maar "Een verhaal over een kat op een griezelige Halloween-nacht" is VEEL interessanter!
+</Panel>
+</Section>
+
+<Section>
+## Laten we WANNEER oefenen!
+
+<PromptVsMistake
+  question="Welke prompt heeft een beter gevoel van WANNEER?"
+  good="Schrijf over een sneeuwpop die wakker wordt op een warme lenteochtend"
+  bad="Schrijf over een sneeuwpop"
+  explanation="De eerste prompt vertelt ons WANNEER (lenteochtend) wat een interessant probleem creëert - een sneeuwpop in de lente! Dat is een geweldig verhaalidee!"
+  promiMessage="WANNEER kan spannende situaties in je verhalen creëren!"
+/>
+</Section>
+
+<Section>
+## De WAAR-vraag
+
+**Waar** vindt de actie plaats?
+
+- Locatie: strand, bos, stad, ruimte
+- Gebouw: school, kasteel, boomhut
+- Fantasieplek: onderwaterkoninkrijk, wolkenstad
+- Specifieke plek: onder een brug, op een bergtop
+</Section>
+
+<Section>
+## Laten we WAAR oefenen!
+
+<PromptVsMistake
+  question="Welke prompt schetst een beter beeld van WAAR?"
+  good="Schrijf over piraten die naar een schat zoeken op een mysterieus mistig eiland"
+  bad="Schrijf over piraten die naar een schat zoeken"
+  explanation="WAAR toevoegen (mysterieus mistig eiland) helpt me de scène voor te stellen en een levendiger verhaal te schrijven!"
+  promiMessage="WAAR helpt de sfeer en atmosfeer van je verhaal te bepalen!"
+/>
+</Section>
+
+<Section>
+## Combineer WANNEER en WAAR!
+
+<DragDropPrompt
+  title="Tijd en plaats"
+  instruction="Schik deze stukjes om een prompt te maken met WANNEER en WAAR"
+  pieces={["Vertel me een verhaal", "dat zich afspeelt in een magisch bos", "op een sterrennacht", "over een uil"]}
+  correctOrder={[0, 3, 1, 2]}
+  successMessage="Uitstekend! Je hebt het decor bepaald met WAAR (magisch bos) en WANNEER (sterrennacht)!"
+/>
+</Section>
+
+<Section>
+## Bouw een complete scène!
+
+<MagicWords
+  sentence="Schrijf een verhaal over een avontuur dat plaatsvindt in een ___ tijdens ___"
+  blanks={[
+    { hint: "🗺️ een plek", answers: ["spookhuis", "onderwaterstad", "wolkenkoninkrijk", "dinosauruspark", "snoepland"] },
+    { hint: "⏰ een tijd", answers: ["een onweersbui", "zonsondergang", "wintervakantie", "volle maan", "de toekomst"] }
+  ]}
+  successMessage="Je hebt een levendige setting gemaakt met WANNEER en WAAR!"
+/>
+</Section>
+
+<Section>
+## Je bent een decorbouwer! 🎉
+
+<Panel character="promi" mood="celebrating">
+Fantastisch werk! Je weet nu hoe je **WANNEER** (tijd) en **WAAR** (plaats) aan je prompts toevoegt. Dit maakt je verzoeken zoveel interessanter!
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-3-when-and-where" 
+  stars={3}
+  message="Je beheerst WANNEER en WAAR in prompts!"
+/>
+</Section>

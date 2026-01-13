@@ -1,0 +1,87 @@
+<Section>
+<Panel character="promi" mood="excited">
+Welkom bij het laatste level van de Contextgrotten! 🕳️ Tijd om een **Contextkampioen** te worden door alles wat je hebt geleerd te combineren!
+</Panel>
+</Section>
+
+<Section>
+## De contextkampioen-checklist
+
+Goede context bevat:
+
+✅ **Achtergrond** - Wie je bent, in welke situatie je zit
+✅ **Voorbeelden** - Laat zien wat je wilt
+✅ **Formaat** - Hoe je het antwoord georganiseerd wilt
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Combineer alle drie en je krijgt elke keer geweldige resultaten!
+</Panel>
+</Section>
+
+<Section>
+## Kampioensuitdaging #1
+
+<PromptVsMistake
+  question="Welke prompt heeft de beste context?"
+  good="Ik ben 9 jaar en maak een poster over recyclen voor Dag van de Aarde. Kun je me 5 pakkende slogans geven zoals 'Minder, Hergebruik, Recycleer!' - kort en makkelijk te onthouden?"
+  bad="Geef me recycling slogans"
+  explanation="De kampioenprompt bevat: Achtergrond (9 jaar, Dag van de Aarde poster), Voorbeeld ('Minder, Hergebruik, Recycleer!'), en Formaat (5 slogans, kort)!"
+  promiMessage="Deze prompt vertelt me alles wat ik nodig heb om je perfecte slogans te geven!"
+/>
+</Section>
+
+<Section>
+## Kampioensuitdaging #2
+
+<PromptVsMistake
+  question="Welke prompt combineert contextelementen het beste?"
+  good="Ik help mijn kleine broertje dierengeluiden te leren. Kun je een leuke lijst maken van 6 dieren met hun geluiden, zoals 'Koe - Boe!' - houd het gek en simpel?"
+  bad="Lijst dierengeluiden"
+  explanation="Dit bevat: Achtergrond (kleine broertje helpen leren), Voorbeeld (Koe - Boe!), en Formaat (lijst van 6, gek en simpel)!"
+  promiMessage="Perfecte context! Ik weet precies wat zal werken voor je kleine broertje!"
+/>
+</Section>
+
+<Section>
+## Bouw een kampioenprompt!
+
+<DragDropPrompt
+  title="Contextkampioen"
+  instruction="Schik ALLE contextelementen tot een perfecte prompt"
+  pieces={["Ik schrijf een verhaal voor mijn klas.", "Kun je 3 magische huisdiernamen voorstellen", "zoals 'Sparkeltje' of 'Maanstraal'?", "Iets schattigs maar niet te lang."]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Kampioenprompt! Je hebt achtergrond, voorbeelden en formaatvoorkeuren toegevoegd!"
+/>
+</Section>
+
+<Section>
+## Maak je kampioenprompt!
+
+<MagicWords
+  sentence="Ik ben een ___ die werkt aan ___. Kun je me ___ geven zoals ___? Maak het ___."
+  blanks={[
+    { hint: "👤 wie je bent", answers: ["leerling", "jonge schrijver", "nieuwsgierig kind", "creatieve kunstenaar", "beginnende kok"] },
+    { hint: "📚 je project", answers: ["een schoolproject", "een verjaardagskaart", "een grappig verhaal", "een wetenschapsexperiment", "een stripboek"] },
+    { hint: "🎯 wat je nodig hebt", answers: ["3 goede ideeën", "5 leuke titels", "een paar coole namen", "een paar voorbeelden", "handige tips"] },
+    { hint: "💡 een voorbeeld", answers: ["'Super Ster'", "'Magisch Moment'", "'Wonder Wereld'", "'Blije Helper'", "'Droomteam'"] },
+    { hint: "✨ de stijl", answers: ["leuk en kort", "creatief en pakkend", "simpel en duidelijk", "spannend en gewaagd", "vriendelijk en warm"] }
+  ]}
+  successMessage="Je bent een echte Contextkampioen! Die prompt heeft alles!"
+/>
+</Section>
+
+<Section>
+## Gefeliciteerd, kampioen! 🎉
+
+<Panel character="promi" mood="celebrating">
+Je hebt het gedaan! Je hebt de Contextgrotten voltooid en bent een **Contextkampioen** geworden! Je weet nu hoe je achtergrond, voorbeelden en formaat combineert voor geweldige prompts!
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-4-context-champion" 
+  stars={3}
+  message="Je hebt de Contextgrotten voltooid! Je bent een Contextkampioen!"
+/>
+</Section>

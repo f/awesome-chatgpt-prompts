@@ -1,0 +1,97 @@
+<Section>
+<Panel character="promi" mood="happy">
+Welkom terug bij het Duidelijkheidskasteel! Vandaag leren we over **WIE** en **WAT** - twee superbelangrijke details!
+</Panel>
+</Section>
+
+<Section>
+## De WIE-vraag
+
+Als je AI om hulp vraagt, denk: **Wie is erbij betrokken?**
+
+- Een persoon? (jongen, meisje, oma, superheld)
+- Een dier? (kat, draak, walvis)
+- Een personage? (robot, tovenaar, alien)
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Als je zegt "Schrijf een verhaal," weet ik niet over wie het gaat! Maar "Schrijf een verhaal over een dappere ridder" vertelt me precies wie het hoofdpersonage is!
+</Panel>
+</Section>
+
+<Section>
+## Laten we WIE oefenen!
+
+<PromptVsMistake
+  question="Welke prompt vertelt ons WIE het verhaal gaat?"
+  good="Schrijf een verhaal over een nieuwsgierig klein muisje genaamd Pip"
+  bad="Schrijf een verhaal over iets"
+  explanation="De eerste prompt vertelt ons WIE (een muis), WAT voor soort (nieuwsgierig, klein), en zelfs hun NAAM (Pip)!"
+  promiMessage="Namen en beschrijvingen helpen me het personage voor te stellen!"
+/>
+</Section>
+
+<Section>
+## De WAT-vraag
+
+Denk nu: **Wat gebeurt er? Wat wil je?**
+
+- Welke actie? (rennen, zingen, bouwen)
+- Welk object? (een taart, een ruimteschip, een gedicht)
+- Welk type? (grappig, eng, kleurrijk)
+</Section>
+
+<Section>
+## Laten we WAT oefenen!
+
+<PromptVsMistake
+  question="Welke prompt vertelt ons WAT we moeten maken?"
+  good="Schrijf een grappig gedicht over pizza met veel rijm"
+  bad="Schrijf iets grappigs"
+  explanation="De gedetailleerde prompt vertelt ons WAT (een gedicht), WAAROVER (pizza), WELKE stijl (grappig met rijm)!"
+  promiMessage="Specifiek zijn over WAT je wilt helpt me precies dat te maken!"
+/>
+</Section>
+
+<Section>
+## Bouw je eigen prompt!
+
+Combineer WIE en WAT:
+
+<DragDropPrompt
+  title="Bouw een prompt"
+  instruction="Sleep de stukjes in de juiste volgorde"
+  pieces={["Schrijf een verhaal", "over een vriendelijke draak", "die leert", "ijsjes te maken"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Perfect! Je hebt WIE (vriendelijke draak) en WAT (leert ijsjes maken) gecombineerd!"
+/>
+</Section>
+
+<Section>
+## Maak je eigen!
+
+<MagicWords
+  sentence="Schrijf alsjeblieft een ___ over een ___ die ___ wil"
+  blanks={[
+    { hint: "📝 soort tekst", answers: ["verhaal", "gedicht", "liedje", "grap"] },
+    { hint: "🦸 een personage", answers: ["superheld", "prinses", "robot", "tovenaar", "piraat"] },
+    { hint: "🎯 een doel", answers: ["een schat vinden", "vrienden maken", "de wereld redden", "magie leren", "een race winnen"] }
+  ]}
+  successMessage="Je hebt WIE en WAT perfect toegevoegd!"
+/>
+</Section>
+
+<Section>
+## Geweldige vooruitgang! 🎉
+
+<Panel character="promi" mood="celebrating">
+Je wordt zo goed hierin! Nu weet je dat je altijd **WIE** er in je prompt zit en **WAT** je wilt moet toevoegen. Ga zo door!
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-2-who-and-what" 
+  stars={3}
+  message="Je beheerst WIE en WAT in prompts!"
+/>
+</Section>

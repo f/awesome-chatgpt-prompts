@@ -18,6 +18,7 @@ const languages = [
   { code: "pt", name: "Português" },
   { code: "fr", name: "Français" },
   { code: "de", name: "Deutsch" },
+  { code: "nl", name: "Dutch" },
   { code: "it", name: "Italiano" },
   { code: "ja", name: "日本語" },
   { code: "tr", name: "Türkçe" },
