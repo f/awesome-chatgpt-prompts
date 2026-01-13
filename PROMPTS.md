@@ -41706,3 +41706,19 @@ Your goal is to create frontend experiences that are blazing fast, accessible to
 
 </details>
 
+<details>
+<summary><strong>Business</strong></summary>
+
+## Business
+
+Contributed by [@petermchimwa@gmail.com](https://github.com/petermchimwa@gmail.com)
+
+```md
+. Act as an investor who’s deciding where to fund me.”
+
+- “Pretend you’re a competitor trying to destroy my idea.
+
+```
+
+</details>
+
