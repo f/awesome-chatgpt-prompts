@@ -132,7 +132,7 @@ export default function BookHomePage() {
               Try our Playable Book for Kids! 🎮
             </h3>
             <p className="text-sm text-amber-700 dark:text-amber-300 mb-4">
-              An interactive, game-based adventure to teach children (ages 6-12) how to communicate with AI through fun puzzles and stories.
+              An interactive, game-based adventure to teach children (ages 8-14) how to communicate with AI through fun puzzles and stories.
             </p>
             <Button asChild className="bg-green-500 hover:bg-green-600 text-white">
               <a href="/kids">
