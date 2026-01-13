@@ -1407,7 +1407,8 @@
     },
     "navigation": {
       "back": "戻る",
-      "next": "次へ"
+      "next": "次へ",
+      "completeFirst": "続けるには、まずアクティビティを完了してください"
     },
     "map": { "title": "ワールドマップ", "subtitle": "レベルを選んで冒険を始めよう！", "worldLevels": "{count}レベル", "levelNumber": "レベル{number}", "locked": "前のレベルをクリアしてアンロック" },
     "worlds": { "1": { "title": "はじまりの村" }, "2": { "title": "明確城" }, "3": { "title": "コンテキスト洞窟" }, "4": { "title": "クリエイティブ渓谷" }, "5": { "title": "マスター山" } },

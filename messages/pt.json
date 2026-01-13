@@ -1407,7 +1407,8 @@
     },
     "navigation": {
       "back": "Voltar",
-      "next": "Próximo"
+      "next": "Próximo",
+      "completeFirst": "Complete a atividade primeiro para continuar"
     },
     "map": { "title": "Mapa do Mundo", "subtitle": "Escolha um nível e comece sua aventura!", "worldLevels": "{count} níveis", "levelNumber": "Nível {number}", "locked": "Complete o nível anterior para desbloquear" },
     "worlds": { "1": { "title": "Vila Inicial" }, "2": { "title": "Castelo da Clareza" }, "3": { "title": "Cavernas de Contexto" }, "4": { "title": "Cânion Criativo" }, "5": { "title": "Montanha Mestre" } },

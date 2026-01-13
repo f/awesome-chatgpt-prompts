@@ -1407,7 +1407,8 @@
     },
     "navigation": {
       "back": "뒤로",
-      "next": "다음"
+      "next": "다음",
+      "completeFirst": "계속하려면 먼저 활동을 완료하세요"
     },
     "map": { "title": "세계 지도", "subtitle": "레벨을 선택하고 모험을 시작하세요!", "worldLevels": "{count}개 레벨", "levelNumber": "레벨 {number}", "locked": "이전 레벨을 완료하면 열립니다" },
     "worlds": { "1": { "title": "시작 마을" }, "2": { "title": "명확성의 성" }, "3": { "title": "맥락 동굴" }, "4": { "title": "창의력 협곡" }, "5": { "title": "마스터 산" } },

@@ -1407,7 +1407,8 @@
     },
     "navigation": {
       "back": "Indietro",
-      "next": "Avanti"
+      "next": "Avanti",
+      "completeFirst": "Completa prima l'attività per continuare"
     },
     "map": { "title": "Mappa del Mondo", "subtitle": "Scegli un livello e inizia la tua avventura!", "worldLevels": "{count} livelli", "levelNumber": "Livello {number}", "locked": "Completa il livello precedente per sbloccare" },
     "worlds": { "1": { "title": "Villaggio Iniziale" }, "2": { "title": "Castello della Chiarezza" }, "3": { "title": "Caverne del Contesto" }, "4": { "title": "Canyon Creativo" }, "5": { "title": "Montagna del Maestro" } },

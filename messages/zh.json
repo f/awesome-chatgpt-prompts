@@ -1407,7 +1407,8 @@
     },
     "navigation": {
       "back": "返回",
-      "next": "下一步"
+      "next": "下一步",
+      "completeFirst": "请先完成活动再继续"
     },
     "map": { "title": "世界地图", "subtitle": "选择一个关卡，开始你的冒险！", "worldLevels": "{count}个关卡", "levelNumber": "关卡{number}", "locked": "完成上一关以解锁" },
     "worlds": { "1": { "title": "新手村" }, "2": { "title": "清晰城堡" }, "3": { "title": "上下文洞穴" }, "4": { "title": "创意峡谷" }, "5": { "title": "大师山" } },
