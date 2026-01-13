@@ -167,3 +167,83 @@ export function clearAllProgress(): void {
     console.error("Failed to clear all progress");
   }
 }
+
+// Section completion tracking
+const SECTION_COMPLETION_KEY = "kids-section-completion";
+
+interface SectionCompletionState {
+  [levelSlug: string]: {
+    [sectionIndex: number]: boolean;
+  };
+}
+
+export function isSectionCompleted(levelSlug: string, sectionIndex: number): boolean {
+  if (typeof window === "undefined") return false;
+  
+  try {
+    const stored = localStorage.getItem(SECTION_COMPLETION_KEY);
+    if (!stored) return false;
+    const state = JSON.parse(stored) as SectionCompletionState;
+    return state[levelSlug]?.[sectionIndex] || false;
+  } catch {
+    return false;
+  }
+}
+
+export function markSectionCompleted(levelSlug: string, sectionIndex: number): void {
+  if (typeof window === "undefined") return;
+  
+  try {
+    const stored = localStorage.getItem(SECTION_COMPLETION_KEY);
+    const state: SectionCompletionState = stored ? JSON.parse(stored) : {};
+    
+    if (!state[levelSlug]) {
+      state[levelSlug] = {};
+    }
+    state[levelSlug][sectionIndex] = true;
+    
+    localStorage.setItem(SECTION_COMPLETION_KEY, JSON.stringify(state));
+  } catch {
+    console.error("Failed to mark section completed");
+  }
+}
+
+export function clearSectionCompletion(levelSlug: string): void {
+  if (typeof window === "undefined") return;
+  
+  try {
+    const stored = localStorage.getItem(SECTION_COMPLETION_KEY);
+    if (!stored) return;
+    
+    const state: SectionCompletionState = JSON.parse(stored);
+    delete state[levelSlug];
+    localStorage.setItem(SECTION_COMPLETION_KEY, JSON.stringify(state));
+  } catch {
+    console.error("Failed to clear section completion");
+  }
+}
+
+// Check if any interactive component in a level+section is completed
+export function hasCompletedInteraction(levelSlug: string, componentIdPrefix?: string): boolean {
+  if (typeof window === "undefined") return false;
+  
+  try {
+    const stored = localStorage.getItem(COMPONENT_STATE_KEY);
+    if (!stored) return false;
+    
+    const state = JSON.parse(stored) as ComponentState;
+    const levelState = state[levelSlug];
+    if (!levelState) return false;
+    
+    // Check if any component has completed state
+    for (const [componentId, data] of Object.entries(levelState)) {
+      if (componentIdPrefix && !componentId.includes(componentIdPrefix)) continue;
+      if (data && typeof data === 'object' && 'completed' in data && (data as { completed: boolean }).completed) {
+        return true;
+      }
+    }
+    return false;
+  } catch {
+    return false;
+  }
+}

@@ -3,8 +3,8 @@
 import { useState, useEffect, useId } from "react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
-import { useLevelSlug } from "@/components/kids/providers/level-context";
-import { getComponentState, saveComponentState } from "@/lib/kids/progress";
+import { useLevelSlug, useSectionNavigation } from "@/components/kids/providers/level-context";
+import { getComponentState, saveComponentState, markSectionCompleted } from "@/lib/kids/progress";
 
 type PartType = "role" | "task" | "context" | "constraint";
 
@@ -35,7 +35,13 @@ const partColors: Record<PartType, { bg: string; border: string; text: string; e
 export function PromptParts({ title, instruction, parts, successMessage }: PromptPartsProps) {
   const t = useTranslations("kids.promptParts");
   const levelSlug = useLevelSlug();
+  const { currentSection, markSectionComplete, registerSectionRequirement } = useSectionNavigation();
   const componentId = useId();
+  
+  // Register that this section has an interactive element requiring completion
+  useEffect(() => {
+    registerSectionRequirement(currentSection);
+  }, [currentSection, registerSectionRequirement]);
   
   const displayTitle = title || t("title");
   const displayInstruction = instruction || t("instruction");
@@ -76,6 +82,11 @@ export function PromptParts({ title, instruction, parts, successMessage }: Promp
     const allCorrect = parts.every((part, index) => newAssignments[index] === part.type);
     if (allAssigned && allCorrect) {
       setCompleted(true);
+      // Mark section as complete
+      if (levelSlug) {
+        markSectionCompleted(levelSlug, currentSection);
+        markSectionComplete(currentSection);
+      }
     }
   };
 

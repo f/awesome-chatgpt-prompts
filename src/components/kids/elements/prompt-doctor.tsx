@@ -3,8 +3,8 @@
 import { useState, useEffect, useId } from "react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
-import { useLevelSlug } from "@/components/kids/providers/level-context";
-import { getComponentState, saveComponentState } from "@/lib/kids/progress";
+import { useLevelSlug, useSectionNavigation } from "@/components/kids/providers/level-context";
+import { getComponentState, saveComponentState, markSectionCompleted } from "@/lib/kids/progress";
 
 interface Problem {
   issue: string;
@@ -34,7 +34,13 @@ export function PromptDoctor({
 }: PromptDoctorProps) {
   const t = useTranslations("kids.promptDoctor");
   const levelSlug = useLevelSlug();
+  const { currentSection, markSectionComplete, registerSectionRequirement } = useSectionNavigation();
   const componentId = useId();
+  
+  // Register that this section has an interactive element requiring completion
+  useEffect(() => {
+    registerSectionRequirement(currentSection);
+  }, [currentSection, registerSectionRequirement]);
   
   const displayTitle = title || t("title");
 
@@ -75,6 +81,11 @@ export function PromptDoctor({
     
     if (newFixed.length === problems.length) {
       setIsHealed(true);
+      // Mark section as complete
+      if (levelSlug) {
+        markSectionCompleted(levelSlug, currentSection);
+        markSectionComplete(currentSection);
+      }
     }
   };
 

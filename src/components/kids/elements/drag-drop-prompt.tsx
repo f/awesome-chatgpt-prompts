@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useCallback, useEffect, useId } from "react";
+import { useState, useEffect, useId } from "react";
 import { useTranslations } from "next-intl";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronUp, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useLevelSlug } from "@/components/kids/providers/level-context";
-import { getComponentState, saveComponentState } from "@/lib/kids/progress";
+import { useLevelSlug, useSectionNavigation } from "@/components/kids/providers/level-context";
+import { getComponentState, saveComponentState, markSectionCompleted } from "@/lib/kids/progress";
 
 interface DragDropPromptProps {
   title?: string;
@@ -30,15 +30,22 @@ export function DragDropPrompt({
 }: DragDropPromptProps) {
   const t = useTranslations("kids.dragDrop");
   const levelSlug = useLevelSlug();
+  const { currentSection, markSectionComplete, registerSectionRequirement } = useSectionNavigation();
   const componentId = useId();
   const displayTitle = title || t("title");
   const displayInstruction = instruction || t("instruction");
+  
+  // Register that this section has an interactive element requiring completion
+  useEffect(() => {
+    registerSectionRequirement(currentSection);
+  }, [currentSection, registerSectionRequirement]);
 
   const [shuffledPieces, setShuffledPieces] = useState<number[]>([]);
   const [currentOrder, setCurrentOrder] = useState<number[]>([]);
   const [submitted, setSubmitted] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
+  const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
 
   // Load saved state on mount
   useEffect(() => {
@@ -91,50 +98,70 @@ export function DragDropPrompt({
     return currentOrder.every((pieceIndex, position) => pieceIndex === correctOrder[position]);
   };
 
-  // Move piece left (swap with previous)
-  const moveLeft = (position: number) => {
+  // Move piece up (swap with previous)
+  const moveUp = (position: number) => {
     if (submitted || position === 0) return;
     const newOrder = [...currentOrder];
     [newOrder[position - 1], newOrder[position]] = [newOrder[position], newOrder[position - 1]];
     setCurrentOrder(newOrder);
   };
 
-  // Move piece right (swap with next)
-  const moveRight = (position: number) => {
+  // Move piece down (swap with next)
+  const moveDown = (position: number) => {
     if (submitted || position === currentOrder.length - 1) return;
     const newOrder = [...currentOrder];
     [newOrder[position], newOrder[position + 1]] = [newOrder[position + 1], newOrder[position]];
     setCurrentOrder(newOrder);
   };
 
-  // Tap to select, tap another to swap
-  const handleTap = (position: number) => {
+  // Drag handlers
+  const handleDragStart = (position: number) => {
     if (submitted) return;
-    
-    if (selectedIndex === null) {
-      // Select this piece
-      setSelectedIndex(position);
-    } else if (selectedIndex === position) {
-      // Deselect
-      setSelectedIndex(null);
-    } else {
-      // Swap with selected piece
-      const newOrder = [...currentOrder];
-      [newOrder[selectedIndex], newOrder[position]] = [newOrder[position], newOrder[selectedIndex]];
-      setCurrentOrder(newOrder);
-      setSelectedIndex(null);
+    setDraggedIndex(position);
+  };
+
+  const handleDragOver = (e: React.DragEvent, position: number) => {
+    e.preventDefault();
+    if (submitted || draggedIndex === null) return;
+    setDragOverIndex(position);
+  };
+
+  const handleDragLeave = () => {
+    setDragOverIndex(null);
+  };
+
+  const handleDrop = (position: number) => {
+    if (submitted || draggedIndex === null || draggedIndex === position) {
+      setDraggedIndex(null);
+      setDragOverIndex(null);
+      return;
     }
+    
+    const newOrder = [...currentOrder];
+    const [draggedItem] = newOrder.splice(draggedIndex, 1);
+    newOrder.splice(position, 0, draggedItem);
+    setCurrentOrder(newOrder);
+    setDraggedIndex(null);
+    setDragOverIndex(null);
+  };
+
+  const handleDragEnd = () => {
+    setDraggedIndex(null);
+    setDragOverIndex(null);
   };
 
   const handleSubmit = () => {
     setSubmitted(true);
-    setSelectedIndex(null);
+    // Mark section as complete if answer is correct
+    if (isCorrect() && levelSlug) {
+      markSectionCompleted(levelSlug, currentSection);
+      markSectionComplete(currentSection);
+    }
   };
 
   const handleReset = () => {
     setCurrentOrder(shuffledPieces);
     setSubmitted(false);
-    setSelectedIndex(null);
   };
 
   const correct = isCorrect();
@@ -148,76 +175,79 @@ export function DragDropPrompt({
       </div>
       <p className="text-lg text-[#8B7355] mb-4 m-0">{displayInstruction}</p>
 
-      {/* Pieces with arrow controls */}
+      {/* Pieces with up/down arrow controls */}
       <div className="space-y-2 mb-4">
         {currentOrder.map((pieceIndex, position) => {
-          const isSelected = selectedIndex === position;
           const isCorrectPiece = submitted && pieceIndex === correctOrder[position];
           const isWrongPiece = submitted && pieceIndex !== correctOrder[position];
+          const isDragging = draggedIndex === position;
+          const isDragOver = dragOverIndex === position && draggedIndex !== position;
           
           return (
             <div
               key={`${pieceIndex}-${position}`}
+              draggable={!submitted}
+              onDragStart={() => handleDragStart(position)}
+              onDragOver={(e) => handleDragOver(e, position)}
+              onDragLeave={handleDragLeave}
+              onDrop={() => handleDrop(position)}
+              onDragEnd={handleDragEnd}
               className={cn(
                 "flex items-center gap-2 p-2 border-2 transition-all",
-                !submitted && !isSelected && "bg-white border-[#D97706] hover:bg-[#FEF3C7]",
-                !submitted && isSelected && "bg-[#DBEAFE] border-[#3B82F6] ring-2 ring-[#3B82F6] scale-[1.02]",
+                !submitted && "bg-white border-[#D97706] hover:bg-[#FEF3C7] cursor-grab active:cursor-grabbing",
+                isDragging && "opacity-50 scale-95",
+                isDragOver && "border-[#3B82F6] border-dashed bg-[#DBEAFE]",
                 isCorrectPiece && "bg-[#DCFCE7] border-[#16A34A]",
                 isWrongPiece && "bg-[#FEE2E2] border-[#DC2626]"
               )}
               style={{ clipPath: "polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px)" }}
             >
               {/* Position number */}
-              <span className="w-8 h-8 flex items-center justify-center bg-[#D97706] text-white font-bold rounded-md text-lg">
+              <span className="w-8 h-8 flex items-center justify-center bg-[#D97706] text-white font-bold rounded-md text-lg shrink-0">
                 {position + 1}
               </span>
               
-              {/* Left arrow */}
-              <button
-                onClick={() => moveLeft(position)}
-                disabled={submitted || position === 0}
-                className={cn(
-                  "w-10 h-10 flex items-center justify-center border-2 transition-all",
-                  position === 0 || submitted
-                    ? "bg-gray-100 border-gray-200 text-gray-300 cursor-not-allowed"
-                    : "bg-[#FEF3C7] border-[#D97706] text-[#D97706] hover:bg-[#D97706] hover:text-white active:scale-95"
-                )}
-                style={{ clipPath: "polygon(2px 0, calc(100% - 2px) 0, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0 calc(100% - 2px), 0 2px)" }}
-              >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
-              
-              {/* Piece content - tappable */}
-              <button
-                onClick={() => handleTap(position)}
-                disabled={submitted}
-                className={cn(
-                  "flex-1 px-4 py-3 text-xl font-medium text-left transition-all",
-                  !submitted && "hover:bg-[#FEF3C7] cursor-pointer",
-                  submitted && "cursor-default"
-                )}
-              >
+              {/* Piece content */}
+              <div className="flex-1 px-4 py-3 text-xl font-medium text-left">
                 <span className="text-[#2C1810]">{pieces[pieceIndex]}</span>
-              </button>
+              </div>
               
-              {/* Right arrow */}
-              <button
-                onClick={() => moveRight(position)}
-                disabled={submitted || position === currentOrder.length - 1}
-                className={cn(
-                  "w-10 h-10 flex items-center justify-center border-2 transition-all",
-                  position === currentOrder.length - 1 || submitted
-                    ? "bg-gray-100 border-gray-200 text-gray-300 cursor-not-allowed"
-                    : "bg-[#FEF3C7] border-[#D97706] text-[#D97706] hover:bg-[#D97706] hover:text-white active:scale-95"
-                )}
-                style={{ clipPath: "polygon(2px 0, calc(100% - 2px) 0, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0 calc(100% - 2px), 0 2px)" }}
-              >
-                <ChevronRight className="w-6 h-6" />
-              </button>
+              {/* Up/Down arrows */}
+              <div className="flex flex-col gap-1 shrink-0">
+                {/* Up arrow */}
+                <button
+                  onClick={() => moveUp(position)}
+                  disabled={submitted || position === 0}
+                  className={cn(
+                    "w-10 h-8 flex items-center justify-center border-2 transition-all",
+                    position === 0 || submitted
+                      ? "bg-gray-100 border-gray-200 text-gray-300 cursor-not-allowed"
+                      : "bg-[#FEF3C7] border-[#D97706] text-[#D97706] hover:bg-[#D97706] hover:text-white active:scale-95"
+                  )}
+                  style={{ clipPath: "polygon(2px 0, calc(100% - 2px) 0, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0 calc(100% - 2px), 0 2px)" }}
+                >
+                  <ChevronUp className="w-5 h-5" />
+                </button>
+                
+                {/* Down arrow */}
+                <button
+                  onClick={() => moveDown(position)}
+                  disabled={submitted || position === currentOrder.length - 1}
+                  className={cn(
+                    "w-10 h-8 flex items-center justify-center border-2 transition-all",
+                    position === currentOrder.length - 1 || submitted
+                      ? "bg-gray-100 border-gray-200 text-gray-300 cursor-not-allowed"
+                      : "bg-[#FEF3C7] border-[#D97706] text-[#D97706] hover:bg-[#D97706] hover:text-white active:scale-95"
+                  )}
+                  style={{ clipPath: "polygon(2px 0, calc(100% - 2px) 0, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0 calc(100% - 2px), 0 2px)" }}
+                >
+                  <ChevronDown className="w-5 h-5" />
+                </button>
+              </div>
               
               {/* Status indicator */}
               {submitted && (
-                <span className="w-8 h-8 flex items-center justify-center text-xl">
+                <span className="w-8 h-8 flex items-center justify-center text-xl shrink-0">
                   {isCorrectPiece ? "✓" : "✗"}
                 </span>
               )}
@@ -225,15 +255,6 @@ export function DragDropPrompt({
           );
         })}
       </div>
-
-      {/* Hint for tap-to-swap */}
-      {selectedIndex !== null && (
-        <div className="bg-[#DBEAFE] border-2 border-[#3B82F6] p-3 mb-4 text-center" style={{ clipPath: "polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px)" }}>
-          <p className="text-lg text-[#1E40AF] font-medium m-0">
-            👆 {t("tapToSwap")}
-          </p>
-        </div>
-      )}
 
       {/* Preview */}
       <div className="bg-[#FEF3C7]/50 p-4 mb-4 border-2 border-[#D97706]/30" style={{ clipPath: "polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px)" }}>

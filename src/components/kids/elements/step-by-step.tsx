@@ -3,8 +3,8 @@
 import { useState, useEffect, useId } from "react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
-import { useLevelSlug } from "@/components/kids/providers/level-context";
-import { getComponentState, saveComponentState } from "@/lib/kids/progress";
+import { useLevelSlug, useSectionNavigation } from "@/components/kids/providers/level-context";
+import { getComponentState, saveComponentState, markSectionCompleted } from "@/lib/kids/progress";
 
 interface StepByStepProps {
   title?: string;
@@ -33,7 +33,13 @@ export function StepByStep({
 }: StepByStepProps) {
   const t = useTranslations("kids.stepByStep");
   const levelSlug = useLevelSlug();
+  const { currentSection, markSectionComplete, registerSectionRequirement } = useSectionNavigation();
   const componentId = useId();
+  
+  // Register that this section has an interactive element requiring completion
+  useEffect(() => {
+    registerSectionRequirement(currentSection);
+  }, [currentSection, registerSectionRequirement]);
   
   const displayTitle = title || t("title");
 
@@ -79,6 +85,11 @@ export function StepByStep({
       setRevealedSteps(newRevealed);
       if (newRevealed === steps.length) {
         setCompleted(true);
+        // Mark section as complete
+        if (levelSlug) {
+          markSectionCompleted(levelSlug, currentSection);
+          markSectionComplete(currentSection);
+        }
       }
     }
   };

@@ -1407,7 +1407,8 @@
     },
     "navigation": {
       "back": "Geri",
-      "next": "İrəli"
+      "next": "İrəli",
+      "completeFirst": "Davam etmək üçün əvvəlcə fəaliyyəti tamamla"
     },
     "map": { "title": "Dünya Xəritəsi", "subtitle": "Bir səviyyə seç və macərana başla!", "worldLevels": "{count} səviyyə", "levelNumber": "Səviyyə {number}", "locked": "Açmaq üçün əvvəlki səviyyəni tamamla" },
     "worlds": { "1": { "title": "Başlanğıc Kəndi" }, "2": { "title": "Aydınlıq Qalası" }, "3": { "title": "Kontekst Mağaraları" }, "4": { "title": "Yaradıcılıq Kanyonu" }, "5": { "title": "Ustad Dağı" } },

@@ -5,8 +5,8 @@ import { useTranslations } from "next-intl";
 import { Check, RefreshCw, Sparkles, GripVertical } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { useLevelSlug } from "@/components/kids/providers/level-context";
-import { getComponentState, saveComponentState } from "@/lib/kids/progress";
+import { useLevelSlug, useSectionNavigation } from "@/components/kids/providers/level-context";
+import { getComponentState, saveComponentState, markSectionCompleted } from "@/lib/kids/progress";
 
 interface BlankConfig {
   id?: string;
@@ -36,8 +36,14 @@ export function MagicWords({
 }: MagicWordsProps) {
   const t = useTranslations("kids.magicWords");
   const levelSlug = useLevelSlug();
+  const { currentSection, markSectionComplete, registerSectionRequirement } = useSectionNavigation();
   const componentId = useId();
   const displayTitle = title || t("title");
+  
+  // Register that this section has an interactive element requiring completion
+  useEffect(() => {
+    registerSectionRequirement(currentSection);
+  }, [currentSection, registerSectionRequirement]);
   
   const [placements, setPlacements] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
@@ -160,6 +166,12 @@ export function MagicWords({
 
   const handleSubmit = () => {
     setSubmitted(true);
+    // Check if all blanks are filled correctly
+    const allFilled = blanksWithIds.every(blank => placements[blank.id]);
+    if (allFilled && levelSlug) {
+      markSectionCompleted(levelSlug, currentSection);
+      markSectionComplete(currentSection);
+    }
   };
 
   const handleReset = () => {
@@ -169,13 +181,13 @@ export function MagicWords({
 
   // Parse sentence and render with drop zones
   const renderSentence = () => {
-    // Split by underscore placeholders
-    const parts = sentence.split(/(_+)/g);
+    // Split by underscore placeholders OR {{placeholder}} syntax
+    const parts = sentence.split(/(_+|\{\{[^}]+\}\})/g);
     let blankIndex = 0;
 
     return parts.map((part, index) => {
-      // Check if this is a blank placeholder (one or more underscores)
-      if (/^_+$/.test(part)) {
+      // Check if this is a blank placeholder (underscores or {{...}})
+      if (/^_+$/.test(part) || /^\{\{[^}]+\}\}$/.test(part)) {
         const blank = blanksWithIds[blankIndex];
         if (!blank) return <span key={index}>{part}</span>;
         

@@ -4,8 +4,8 @@ import { useState, useEffect, useId } from "react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { PixelRobot, PixelStar } from "./pixel-art";
-import { useLevelSlug } from "@/components/kids/providers/level-context";
-import { getComponentState, saveComponentState } from "@/lib/kids/progress";
+import { useLevelSlug, useSectionNavigation } from "@/components/kids/providers/level-context";
+import { getComponentState, saveComponentState, markSectionCompleted } from "@/lib/kids/progress";
 
 interface PromptVsMistakeProps {
   question: string;
@@ -30,7 +30,13 @@ export function PromptVsMistake({
 }: PromptVsMistakeProps) {
   const t = useTranslations("kids.quiz");
   const levelSlug = useLevelSlug();
+  const { currentSection, markSectionComplete, registerSectionRequirement } = useSectionNavigation();
   const componentId = useId();
+  
+  // Register that this section has an interactive element requiring completion
+  useEffect(() => {
+    registerSectionRequirement(currentSection);
+  }, [currentSection, registerSectionRequirement]);
   
   const [selected, setSelected] = useState<"good" | "bad" | null>(null);
   const [showResult, setShowResult] = useState(false);
@@ -72,6 +78,11 @@ export function PromptVsMistake({
   const handleSelect = (choice: "good" | "bad") => {
     setSelected(choice);
     setShowResult(true);
+    // Mark section as complete if correct answer selected
+    if (choice === "good" && levelSlug) {
+      markSectionCompleted(levelSlug, currentSection);
+      markSectionComplete(currentSection);
+    }
   };
 
   const handleReset = () => {

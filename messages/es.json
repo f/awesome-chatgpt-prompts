@@ -1407,7 +1407,8 @@
     },
     "navigation": {
       "back": "Atrás",
-      "next": "Siguiente"
+      "next": "Siguiente",
+      "completeFirst": "Completa la actividad primero para continuar"
     },
     "map": { "title": "Mapa del Mundo", "subtitle": "¡Elige un nivel y comienza tu aventura!", "worldLevels": "{count} niveles", "levelNumber": "Nivel {number}", "locked": "Completa el nivel anterior para desbloquear" },
     "worlds": { "1": { "title": "Aldea Inicial" }, "2": { "title": "Castillo de Claridad" }, "3": { "title": "Cuevas de Contexto" }, "4": { "title": "Cañón Creativo" }, "5": { "title": "Montaña Maestra" } },
