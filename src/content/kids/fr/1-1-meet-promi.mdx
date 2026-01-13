@@ -13,6 +13,37 @@ Je suis une IA ! Je peux lire tes messages et essayer de t'aider. Mais voici le 
 </Section>
 
 <Section>
+## Comment Je Pense ? 🧠
+
+Tu veux connaître mon secret ? En fait, je ne "pense" pas comme toi. Je lis des mots et j'essaie de deviner quel mot vient ensuite !
+
+<WordPredictor
+  title="Pense Comme une IA !"
+  instruction="Je lis des motifs et je devine le mot suivant. Que devinerais-TU ?"
+  sentence="Le chat dort sur le ___"
+  options={["lit", "lune", "vite", "violet"]}
+  correctAnswer="lit"
+  explanation="'Lit' a plus de sens car les chats dorment habituellement sur les lits ! L'IA apprend ces motifs en lisant beaucoup de textes."
+  aiThinking="Hmm, j'ai beaucoup lu sur où dorment les chats..."
+  successMessage="Tu penses comme une IA ! Je choisis le mot le plus probable selon les motifs."
+/>
+
+</Section>
+
+<Section>
+<WordPredictor
+  title="Encore Un Essai !"
+  instruction="Maintenant tu comprends ! Quel mot convient le mieux ici ?"
+  sentence="Il était une ___"
+  options={["fois", "banane", "vite", "vert"]}
+  correctAnswer="fois"
+  explanation="'Il était une fois' est le début de presque tous les contes de fées ! L'IA a lu des milliers d'histoires qui commencent ainsi."
+  aiThinking="Ça ressemble à un début de conte... J'ai vu ce motif tellement de fois !"
+  successMessage="Parfait ! Tu penses déjà comme une IA - tu reconnais les motifs !"
+/>
+</Section>
+
+<Section>
 ## C'est quoi un Prompt ?
 
 Un **prompt** est juste un mot chic pour le message que tu envoies à une IA comme moi.
