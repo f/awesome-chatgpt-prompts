@@ -1,0 +1,104 @@
+<Section>
+<Panel character="promi" mood="happy">
+Tekrar hoş geldin! Bugünkü ders süper önemli: **Göster, Anlatma**! Örnekler kullanmak yapay zekanın anlamasını sağlamanın en iyi yollarından biri!
+</Panel>
+</Section>
+
+<Section>
+## Örneklerin Gücü
+
+Ne istediğini sadece açıklamak yerine, **bana bir örnek göster**!
+
+Birine oyun öğretirken olduğu gibi - sadece kuralları söylemek yerine nasıl oynandığını göstermek daha kolay!
+</Section>
+
+<Section>
+## Deseni Öğren!
+
+<ExampleMatcher
+  title="Desen Gücü"
+  instruction="Yapay zeka örneklerden öğrenir! Desene bak ve sıradakini seç."
+  examples={[
+    { input: "mutlu", output: "😊" },
+    { input: "üzgün", output: "😢" },
+    { input: "uykulu", output: "😴" }
+  ]}
+  question="kızgın"
+  options={["😠", "😊", "🎉", "😴"]}
+  correctAnswer="😠"
+  explanation="Yapay zeka öğrendi: duygu kelimesi → eşleşen emoji! Buna 'örnekle öğrenme' denir - tıpkı senin gibi!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+"Havalı yap" dersen, senin için "havalı"nın ne anlama geldiğini bilemem. Ama bir örnek gösterirsen, mükemmel anlayacağım!
+</Panel>
+</Section>
+
+<Section>
+## Farkı Gör
+
+<PromptVsMistake
+  question="Hangi prompt örnekleri daha iyi kullanıyor?"
+  good="'Süper Parıltı Şampuan' veya 'Sihirli Bulut Yastıklar' gibi eğlenceli bir ürün adı yaz - akılda kalıcı ve oyuncu bir şey!"
+  bad="Eğlenceli bir ürün adı yaz"
+  explanation="Örnekler tam olarak ne tarz bir isim aradığını gösteriyor - akılda kalıcı, oyuncu, eğlenceli sıfatlarla!"
+  promiMessage="Örnekler hazine haritaları gibi - tam olarak nereye gitmek istediğini gösteriyorlar!"
+/>
+</Section>
+
+<Section>
+## Tarzını Göster
+
+<PromptVsMistake
+  question="Hangi prompt yazı tarzını daha iyi gösteriyor?"
+  good="Bu tarzda bir fıkra yaz: 'Muz neden doktora gitti? Çünkü kabuk soyuyormuş!' - kelime oyunlu saçma bir şey!"
+  bad="Komik bir fıkra yaz"
+  explanation="Kelime oyunlu bir örnek fıkra göstererek, aynı saçma kelime oyunu tarzını istediğini biliyorum!"
+  promiMessage="Neyi sevdiğini gösterdiğinde, o tarza uyabilirim!"
+/>
+</Section>
+
+<Section>
+## Örnekler Ver!
+
+<DragDropPrompt
+  title="Örneklerle Oluştur"
+  instruction="Yararlı bir örnek içeren bir prompt oluşturmak için parçaları düzenle"
+  pieces={["Bir süper kahraman adı yaz", "'Cesaret Kaptanı' gibi", "veya 'Yıldırım Kadın'", "- kahramanca ve akılda kalıcı bir şey"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Mükemmel! Örneklerin tam olarak ne tür bir isim istediğini gösteriyor!"
+/>
+</Section>
+
+<Section>
+## Kendi Örnek-Promptunu Oluştur!
+
+<MagicWords
+  sentence="___ yaz '___ ___ ___' gibi - ___ ve ___ bir şey"
+  blanks={[
+    { hint: "📝 ne yazılsın", answers: ["takım adı", "evcil hayvan adı", "grup adı", "kitap başlığı", "restoran adı"] },
+    { hint: "✨ sıfat", answers: ["Mutlu", "Süper", "Altın", "Sihirli", "Güçlü"] },
+    { hint: "🌟 isim", answers: ["Yıldızlar", "Ejderhalar", "Rüyalar", "Gök Gürültüsü", "Anka Kuşu"] },
+    { hint: "🎯 kelime", answers: ["Kulübü", "Takımı", "Ekibi", "Krallığı", "Macerası"] },
+    { hint: "😊 tarz 1", answers: ["eğlenceli", "heyecanlı", "havalı", "yaratıcı", "akılda kalıcı"] },
+    { hint: "🎨 tarz 2", answers: ["unutulmaz", "benzersiz", "güçlü", "arkadaş canlısı", "cesur"] }
+  ]}
+  successMessage="Harika! Örneğin tam olarak ne tarz istediğini gösteriyor!"
+/>
+</Section>
+
+<Section>
+## Örnekler Güçlü! 🎉
+
+<Panel character="promi" mood="celebrating">
+Harika iş! **Örnekler göstermenin** yapay zekanın tam olarak ne istediğini anlamasını sağlamanın en iyi yollarından biri olduğunu öğrendin!
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-2-show-dont-tell" 
+  stars={3}
+  message="Promptlarda örnek kullanmada ustalaştın!"
+/>
+</Section>

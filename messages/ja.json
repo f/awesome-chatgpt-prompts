@@ -47,7 +47,8 @@
     "register": "登録",
     "logout": "ログアウト",
     "ide": "Typed-Prompts IDE",
-    "developers": "開発者"
+    "developers": "開発者",
+    "book": "本"
   },
   "brand": {
     "copyLogoSvg": "ロゴSVGをコピー",
@@ -1385,5 +1386,63 @@
     "ideationTitle": "アイデア",
     "communityContributorsTitle": "コミュニティコントリビューター",
     "viewAllContributors": "すべてのコントリビューターを見る"
+  },
+  "kids": {
+    "header": { "title": "Promiのプロンプトスクール", "levels": "レベル", "home": "ホーム", "map": "マップ", "mainSite": "メインサイト" },
+    "home": {
+      "badge": "キッズ向け学習",
+      "title": "AIと話すことを学ぼう！",
+      "subtitle": "ロボットのPromiと一緒に、素晴らしいプロンプトを書く楽しい冒険に出かけよう！",
+      "promiIntro": { "greeting": "こんにちは、Promiだよ！🤖", "message": "キミの助けが必要なフレンドリーなロボットだよ！プロンプトをもっとよく理解できるように手伝ってくれる？" },
+      "features": {
+        "games": { "title": "楽しいゲーム", "description": "ドラッグ＆ドロップゲームやクイズで学ぼう" },
+        "stories": { "title": "すごいストーリー", "description": "Promiと一緒にワクワクする冒険を体験" },
+        "stars": { "title": "スターを集めよう", "description": "スターを集めて新しいレベルをアンロック" }
+      },
+      "startButton": "遊び始めよう！",
+      "ageNote": "読み書きができる8〜14歳のお子様に最適",
+      "whatYouLearn": "学べること",
+      "readyTitle": "始める準備はできた？",
+      "readyMessage": "冒険に出かけて、AIと話す方法を学ぼう！"
+    },
+    "navigation": {
+      "back": "戻る",
+      "next": "次へ"
+    },
+    "map": { "title": "ワールドマップ", "subtitle": "レベルを選んで冒険を始めよう！", "worldLevels": "{count}レベル", "levelNumber": "レベル{number}", "locked": "前のレベルをクリアしてアンロック" },
+    "worlds": { "1": { "title": "はじまりの村" }, "2": { "title": "明確城" }, "3": { "title": "コンテキスト洞窟" }, "4": { "title": "クリエイティブ渓谷" }, "5": { "title": "マスター山" } },
+    "levels": {
+      "1_1_meet_promi": { "title": "Promiに会おう！", "description": "ロボットの友達に挨拶してAIとは何かを学ぼう" },
+      "1_2_first_words": { "title": "Promiの最初の言葉", "description": "最初のプロンプトを書いてPromiの理解を助けよう" },
+      "1_3_being_clear": { "title": "はっきり伝えよう", "description": "なぜ明確な指示がより効果的なのかを学ぼう" },
+      "2_1_missing_details": { "title": "足りない詳細", "description": "なぜ詳細が重要かを発見しよう" },
+      "2_2_who_and_what": { "title": "誰と何", "description": "キャラクターと物を追加しよう" },
+      "2_3_when_and_where": { "title": "いつとどこ", "description": "時間と場所を追加することを学ぼう" },
+      "2_4_detail_detective": { "title": "詳細探偵", "description": "詳細を追加するエキスパートになろう" },
+      "3_1_setting_the_scene": { "title": "シーンを設定", "description": "なぜコンテキストが役立つかを学ぼう" },
+      "3_2_show_dont_tell": { "title": "見せて、言わないで", "description": "例を使って欲しいものを示そう" },
+      "3_3_format_finder": { "title": "フォーマット発見者", "description": "リスト、物語、詩などを頼もう！" },
+      "3_4_context_champion": { "title": "コンテキストチャンピオン", "description": "すべてのコンテキスト技術を組み合わせよう" },
+      "4_1_pretend_time": { "title": "ごっこ遊びの時間！", "description": "ロールプレイプロンプトを学ぼう" },
+      "4_2_story_starters": { "title": "ストーリーの始まり", "description": "AIと素晴らしい物語を作ろう" },
+      "4_3_character_creator": { "title": "キャラクター作成者", "description": "AIに個性を与えよう" },
+      "4_4_world_builder": { "title": "世界構築者", "description": "想像力豊かな世界を作ろう" },
+      "5_1_perfect_prompt": { "title": "完璧なプロンプト", "description": "明確さ、詳細、コンテキストを組み合わせよう" },
+      "5_2_fix_it_up": { "title": "直そう！", "description": "弱いプロンプトを見つけて改善しよう" },
+      "5_3_prompt_remix": { "title": "プロンプトリミックス", "description": "異なる結果のためにプロンプトを書き換えよう" },
+      "5_4_graduation_day": { "title": "卒業の日", "description": "最終チャレンジ - マスターになろう！" }
+    },
+    "level": { "backToMap": "マップに戻る", "levelLabel": "レベル{number}", "comingSoon": "このレベルは近日公開！", "previous": "前へ", "next": "次へ", "map": "マップ" },
+    "levelComplete": { "title": "レベルクリア！", "nextLevel": "次のレベル", "backToMap": "マップに戻る", "allDone": "マップに戻る" },
+    "quiz": { "goodLabel": "素晴らしいプロンプト！", "badLabel": "ベストではない", "correct": "正解！", "incorrect": "いい試み！", "tryAgain": "もう一度" },
+    "magicWords": { "title": "魔法の言葉をドラッグ！✨", "dragOrTap": "🎯 言葉をドラッグまたはタップ：", "check": "チェック！", "retry": "やり直し", "correct": "正解", "tryAgain": "もう一度！" },
+    "dragDrop": { "title": "プロンプトを組み立てよう！", "instruction": "矢印で移動、または2つのピースをタップで交換！", "result": "結果", "check": "チェック！", "retry": "やり直し", "success": "完璧！素晴らしいプロンプトを作った！", "almost": "惜しい！並べ替え続けて。", "tapToSwap": "別のピースをタップして交換！" },
+    "promptParts": { "title": "プロンプトのパーツを分類！", "instruction": "各ピースをタップして、タイプを選ぼう！", "score": "スコア", "pickCategory": "これは何タイプ？", "success": "すべてのパーツを正しく分類した！", "retry": "もう一度", "types": { "role": "役割", "task": "タスク", "context": "コンテキスト", "constraint": "制約" } },
+    "exampleMatcher": { "title": "パターンマッチャー", "instruction": "パターンを見て次に来るものを選ぼう！", "pattern": "パターン：", "check": "チェック！", "retry": "もう一度", "correct": "正解！🎉", "tryAgain": "違う - パターンをもう一度見て！" },
+    "promptDoctor": { "title": "プロンプトドクター", "health": "プロンプトの健康", "sick": "病気のプロンプト", "healthy": "健康なプロンプト！", "diagnose": "問題をクリックして修正：", "success": "プロンプトが良くなった！", "retry": "最初から" },
+    "stepByStep": { "title": "ステップバイステップで考えよう", "problem": "問題：", "withoutMagic": "魔法の言葉なし：", "addMagicWords": "魔法の言葉を追加！", "magicWordsActive": "魔法の言葉を追加した！", "nextStep": "次のステップを見る", "withMagic": "ステップバイステップ思考で：", "retry": "もう一度" },
+    "promptLab": { "title": "プロンプトラボ", "progress": "改善", "yourPrompt": "あなたのプロンプト：", "aiSays": "AIの応答：", "addDetails": "改善を追加：", "success": "プロンプトがとても具体的になった！", "retry": "最初から" },
+    "wordPredictor": { "title": "AIの考え方", "instruction": "AIは最も可能性の高い次の単語を推測する。AIのように考えられる？", "aiThinks": "AIが読んでいる：", "thinkingDefault": "うーん、ここでどの単語が一番意味がある？", "check": "答えをチェック！", "correct": "AIのように考えてる！", "tryAgain": "違う！AIは最も可能性の高い単語を選ぶ。", "retry": "もう一度" },
+    "settings": { "title": "設定", "language": "言語", "progress": "あなたの進捗", "stars": "スター", "completed": "完了", "resetTitle": "進捗をリセット", "resetButton": "すべてリセット", "resetWarning": "すべてのスターと進捗が削除されます。よろしいですか？", "resetConfirm": "はい、すべてリセット", "resetComplete": "進捗をリセットしました！再読み込み中...", "cancel": "キャンセル" }
   }
 }

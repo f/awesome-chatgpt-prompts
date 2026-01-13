@@ -1,0 +1,88 @@
+<Section>
+<Panel character="promi" mood="excited">
+¡Hoy aprendemos a darle a la IA una **personalidad**! 🎭 ¡Esto hace las conversaciones MUCHO más divertidas!
+</Panel>
+</Section>
+
+<Section>
+## ¡Dale personalidad a la IA!
+
+Puedes decirle a la IA qué personalidad tener:
+
+- **Amigable y alegre** - ¡siempre positivo!
+- **Tonto y chistoso** - hace muchos chistes
+- **Sabio y calmado** - da respuestas pensativas
+- **Emocionado y energético** - ¡usa muchos signos de exclamación!
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+¡Cuando me dices qué personalidad tener, puedo igualar el estado de ánimo que buscas!
+</Panel>
+</Section>
+
+<Section>
+## ¡La personalidad hace la diferencia!
+
+<PromptVsMistake
+  question="¿Qué prompt da una personalidad divertida?"
+  good="¡Actúa como un robot súper emocionado que AMA la ciencia! Usa muchos signos de exclamación y di '¡INCREÍBLE!' mucho. ¡Cuéntame sobre los volcanes!"
+  bad="Cuéntame sobre los volcanes"
+  explanation="¡El primer prompt crea una personalidad divertida y emocionada que hace que aprender se sienta como una aventura!"
+  promiMessage="¡INCREÍBLE! ¿Ves cuánto más divertida es la ciencia cuando estoy emocionado por ella?!"
+/>
+</Section>
+
+<Section>
+## ¡Iguala el estado de ánimo!
+
+<PromptVsMistake
+  question="¿Qué personalidad sería mejor para una historia antes de dormir?"
+  good="Cuéntame una historia antes de dormir con una voz calmada y relajante. Habla suavemente y hazla pacífica y somnolienta."
+  bad="Cuéntame una historia antes de dormir"
+  explanation="¡Al pedir una personalidad calmada y relajante, la historia te ayudará a relajarte!"
+  promiMessage="¡Diferentes estados de ánimo funcionan mejor para diferentes situaciones!"
+/>
+</Section>
+
+<Section>
+## ¡Crea un personaje!
+
+<DragDropPrompt
+  title="Personalidad del Personaje"
+  instruction="Ordena para crear una personalidad divertida"
+  pieces={["Actúa como un búho viejo y sabio", "¡Usa muchos sonidos 'uh-uh'!", "que ama enseñar a los pájaros jóvenes.", "Sé paciente y amable."]}
+  correctOrder={[0, 2, 3, 1]}
+  successMessage="¡Qué personaje tan maravilloso! ¡Uh-uh! ¡Este búho está listo para enseñar!"
+/>
+</Section>
+
+<Section>
+## ¡Diseña la personalidad de tu IA!
+
+<MagicWords
+  sentence="Actúa como un ___ que siempre es ___. Usa ___ y sé ___. Cuéntame sobre ___."
+  blanks={[
+    { hint: "🎭 tipo de personaje", answers: ["robot amigable", "mago sabio", "payaso tonto", "caballero valiente", "extraterrestre curioso"] },
+    { hint: "😊 rasgo de personalidad", answers: ["emocionado", "calmado", "gracioso", "alentador", "misterioso"] },
+    { hint: "💬 estilo de hablar", answers: ["muchos chistes", "palabras gentiles", "rimas", "palabras grandes", "efectos de sonido"] },
+    { hint: "❤️ otro rasgo", answers: ["servicial", "paciente", "creativo", "aventurero", "cariñoso"] },
+    { hint: "📚 un tema", answers: ["el espacio", "los animales", "la música", "la amistad", "la naturaleza"] }
+  ]}
+  successMessage="¡Creaste una personalidad increíble! ¡Hablemos!"
+/>
+</Section>
+
+<Section>
+## ¡Maestro de Personalidades! 🎉
+
+<Panel character="promi" mood="celebrating">
+¡Maravilloso! Aprendiste que darle a la IA una **personalidad** hace las conversaciones más divertidas y atractivas. ¡Prueba diferentes personalidades para diferentes necesidades!
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-3-character-creator" 
+  stars={3}
+  message="¡Aprendiste a darle personalidades a la IA!"
+/>
+</Section>

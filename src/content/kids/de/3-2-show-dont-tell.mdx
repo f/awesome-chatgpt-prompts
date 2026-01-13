@@ -1,0 +1,104 @@
+<Section>
+<Panel character="promi" mood="happy">
+Willkommen zurück! Die heutige Lektion ist super wichtig: **Zeigen, nicht erzählen**! Beispiele zu verwenden ist eine der besten Möglichkeiten, der KI zu helfen zu verstehen!
+</Panel>
+</Section>
+
+<Section>
+## Die Kraft der Beispiele
+
+Statt nur zu beschreiben, was du willst, **zeig mir ein Beispiel**!
+
+Es ist wie wenn du jemandem ein Spiel beibringst - es ist einfacher zu zeigen, wie man spielt, als nur die Regeln zu erklären!
+</Section>
+
+<Section>
+## Lerne das Muster!
+
+<ExampleMatcher
+  title="Muster-Power"
+  instruction="KI lernt aus Beispielen! Sieh das Muster und wähle, was als nächstes kommt."
+  examples={[
+    { input: "glücklich", output: "😊" },
+    { input: "traurig", output: "😢" },
+    { input: "schläfrig", output: "😴" }
+  ]}
+  question="wütend"
+  options={["😠", "😊", "🎉", "😴"]}
+  correctAnswer="😠"
+  explanation="Die KI hat gelernt: Gefühlswort → passendes Emoji! Das nennt man 'Lernen durch Beispiele' - genau wie du!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Wenn du sagst "mach es cool", weiß ich vielleicht nicht, was "cool" für dich bedeutet. Aber wenn du mir ein Beispiel zeigst, verstehe ich perfekt!
+</Panel>
+</Section>
+
+<Section>
+## Sieh den Unterschied
+
+<PromptVsMistake
+  question="Welcher Prompt verwendet Beispiele besser?"
+  good="Schreibe einen lustigen Produktnamen wie 'Super Glitzer Shampoo' oder 'Magische Wolken Kissen' - etwas Eingängiges und Verspieltes!"
+  bad="Schreibe einen lustigen Produktnamen"
+  explanation="Die Beispiele zeigen genau, welchen Stil von Namen du suchst - eingängig, verspielt, mit lustigen Adjektiven!"
+  promiMessage="Beispiele sind wie Schatzkarten - sie zeigen mir genau, wohin du gehen willst!"
+/>
+</Section>
+
+<Section>
+## Zeige deinen Stil
+
+<PromptVsMistake
+  question="Welcher Prompt zeigt den Schreibstil besser?"
+  good="Schreibe einen Witz in diesem Stil: 'Warum ging die Banane zum Arzt? Weil sie sich nicht gut fühlte!' - etwas Albernes mit Wortspielen!"
+  bad="Schreibe einen lustigen Witz"
+  explanation="Indem ich ein Beispiel eines Witzes mit Wortspiel zeige, weiß ich, dass du denselben albernen Wortspielstil willst!"
+  promiMessage="Wenn du mir zeigst, was du magst, kann ich diesen Stil nachahmen!"
+/>
+</Section>
+
+<Section>
+## Gib Beispiele!
+
+<DragDropPrompt
+  title="Mit Beispielen bauen"
+  instruction="Ordne die Teile, um einen Prompt mit einem hilfreichen Beispiel zu erstellen"
+  pieces={["Schreibe einen Superheldennamen", "wie 'Kapitän Mut'", "oder 'Blitz-Dame'", "- etwas Heroisches und Einprägsames"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Perfekt! Deine Beispiele zeigen genau, welche Art von Namen du willst!"
+/>
+</Section>
+
+<Section>
+## Erstelle deinen eigenen Beispiel-Prompt!
+
+<MagicWords
+  sentence="Schreibe einen ___ wie '___ ___ ___' - etwas ___ und ___"
+  blanks={[
+    { hint: "📝 was schreiben", answers: ["Teamnamen", "Haustiernamen", "Bandnamen", "Buchtitel", "Restaurantnamen"] },
+    { hint: "✨ Adjektiv", answers: ["Super", "Glücklich", "Golden", "Magisch", "Mächtig"] },
+    { hint: "🌟 Substantiv", answers: ["Sterne", "Drachen", "Träume", "Donner", "Phönix"] },
+    { hint: "🎯 Wort", answers: ["Club", "Truppe", "Crew", "Königreich", "Abenteuer"] },
+    { hint: "😊 Stil 1", answers: ["lustiges", "aufregendes", "cooles", "kreatives", "eingängiges"] },
+    { hint: "🎨 Stil 2", answers: ["einprägsames", "einzigartiges", "kraftvolles", "freundliches", "mutiges"] }
+  ]}
+  successMessage="Toll! Dein Beispiel zeigt genau, welchen Stil du willst!"
+/>
+</Section>
+
+<Section>
+## Beispiele sind mächtig! 🎉
+
+<Panel character="promi" mood="celebrating">
+Erstaunliche Arbeit! Du hast gelernt, dass **Beispiele zeigen** eine der besten Möglichkeiten ist, der KI zu helfen, genau zu verstehen, was du willst!
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-2-show-dont-tell" 
+  stars={3}
+  message="Du hast die Verwendung von Beispielen in Prompts gemeistert!"
+/>
+</Section>

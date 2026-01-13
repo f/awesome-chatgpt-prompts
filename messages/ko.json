@@ -47,7 +47,8 @@
     "register": "회원가입",
     "logout": "로그아웃",
     "ide": "Typed-Prompts IDE",
-    "developers": "개발자"
+    "developers": "개발자",
+    "book": "책"
   },
   "brand": {
     "copyLogoSvg": "로고 SVG 복사",
@@ -1385,5 +1386,63 @@
     "ideationTitle": "아이디어",
     "communityContributorsTitle": "커뮤니티 기여자",
     "viewAllContributors": "모든 기여자 보기"
+  },
+  "kids": {
+    "header": { "title": "Promi의 프롬프트 학교", "levels": "레벨", "home": "홈", "map": "지도", "mainSite": "메인 사이트" },
+    "home": {
+      "badge": "어린이 학습",
+      "title": "AI와 대화하는 법을 배워요!",
+      "subtitle": "로봇 Promi과 함께 재미있는 모험을 떠나 멋진 프롬프트 작성법을 배워보세요!",
+      "promiIntro": { "greeting": "안녕, 나는 Promi이야! 🤖", "message": "네 도움이 필요한 친절한 로봇이야! 프롬프트를 더 잘 이해할 수 있게 도와줄래?" },
+      "features": {
+        "games": { "title": "재미있는 게임", "description": "드래그 앤 드롭 게임과 퀴즈로 배워요" },
+        "stories": { "title": "멋진 이야기", "description": "Promi과 함께 신나는 모험을 떠나요" },
+        "stars": { "title": "별 모으기", "description": "별을 모아 새로운 레벨을 열어요" }
+      },
+      "startButton": "게임 시작!",
+      "ageNote": "읽고 쓸 수 있는 8-14세 어린이에게 적합해요",
+      "whatYouLearn": "배울 내용",
+      "readyTitle": "시작할 준비됐어?",
+      "readyMessage": "모험을 떠나 AI와 대화하는 법을 배워보자!"
+    },
+    "navigation": {
+      "back": "뒤로",
+      "next": "다음"
+    },
+    "map": { "title": "세계 지도", "subtitle": "레벨을 선택하고 모험을 시작하세요!", "worldLevels": "{count}개 레벨", "levelNumber": "레벨 {number}", "locked": "이전 레벨을 완료하면 열립니다" },
+    "worlds": { "1": { "title": "시작 마을" }, "2": { "title": "명확성의 성" }, "3": { "title": "맥락 동굴" }, "4": { "title": "창의력 협곡" }, "5": { "title": "마스터 산" } },
+    "levels": {
+      "1_1_meet_promi": { "title": "Promi을 만나요!", "description": "로봇 친구에게 인사하고 AI가 무엇인지 배워요" },
+      "1_2_first_words": { "title": "Promi의 첫 번째 말", "description": "첫 번째 프롬프트를 작성해서 Promi이 이해하도록 도와주세요" },
+      "1_3_being_clear": { "title": "명확하게 말하기", "description": "왜 명확한 지시가 더 잘 작동하는지 배워요" },
+      "2_1_missing_details": { "title": "빠진 세부사항", "description": "세부사항이 왜 중요한지 알아보세요" },
+      "2_2_who_and_what": { "title": "누구와 무엇", "description": "캐릭터와 사물을 추가하세요" },
+      "2_3_when_and_where": { "title": "언제와 어디", "description": "시간과 장소를 추가하는 법을 배워요" },
+      "2_4_detail_detective": { "title": "세부사항 탐정", "description": "세부사항 추가 전문가가 되세요" },
+      "3_1_setting_the_scene": { "title": "장면 설정", "description": "맥락이 왜 도움이 되는지 배워요" },
+      "3_2_show_dont_tell": { "title": "말하지 말고 보여줘", "description": "예시를 사용해 원하는 것을 보여주세요" },
+      "3_3_format_finder": { "title": "형식 찾기", "description": "목록, 이야기, 시 등을 요청하세요!" },
+      "3_4_context_champion": { "title": "맥락 챔피언", "description": "모든 맥락 기법을 결합하세요" },
+      "4_1_pretend_time": { "title": "역할극 시간!", "description": "역할극 프롬프트를 배워요" },
+      "4_2_story_starters": { "title": "이야기 시작", "description": "AI와 멋진 이야기를 만들어요" },
+      "4_3_character_creator": { "title": "캐릭터 만들기", "description": "AI에게 개성을 부여하세요" },
+      "4_4_world_builder": { "title": "세계 건설자", "description": "상상력 넘치는 세계를 만들어요" },
+      "5_1_perfect_prompt": { "title": "완벽한 프롬프트", "description": "명확함, 세부사항, 맥락을 결합하세요" },
+      "5_2_fix_it_up": { "title": "고쳐보세요!", "description": "약한 프롬프트를 찾아 개선하세요" },
+      "5_3_prompt_remix": { "title": "프롬프트 리믹스", "description": "다른 결과를 위해 프롬프트를 다시 작성하세요" },
+      "5_4_graduation_day": { "title": "졸업의 날", "description": "최종 도전 - 마스터가 되세요!" }
+    },
+    "level": { "backToMap": "지도로 돌아가기", "levelLabel": "레벨 {number}", "comingSoon": "이 레벨은 곧 출시됩니다!", "previous": "이전", "next": "다음", "map": "지도" },
+    "levelComplete": { "title": "레벨 완료!", "nextLevel": "다음 레벨", "backToMap": "지도로 돌아가기", "allDone": "지도로 돌아가기" },
+    "quiz": { "goodLabel": "훌륭한 프롬프트!", "badLabel": "최고는 아니에요", "correct": "정답!", "incorrect": "좋은 시도!", "tryAgain": "다시 시도" },
+    "magicWords": { "title": "마법의 단어를 끌어다 놓으세요! ✨", "dragOrTap": "🎯 단어를 끌거나 탭하세요:", "check": "확인!", "retry": "다시 시도", "correct": "정답", "tryAgain": "다시 시도해요!" },
+    "dragDrop": { "title": "프롬프트를 만들어요!", "instruction": "화살표로 이동하거나 두 조각을 탭해서 교환하세요!", "result": "결과", "check": "확인!", "retry": "다시 시도", "success": "완벽해요! 훌륭한 프롬프트를 만들었어요!", "almost": "거의 다 됐어요! 계속 정렬하세요.", "tapToSwap": "다른 조각을 탭해서 교환하세요!" },
+    "promptParts": { "title": "프롬프트 부분을 정렬하세요!", "instruction": "각 조각을 탭하고 유형을 선택하세요!", "score": "점수", "pickCategory": "이것은 어떤 유형인가요?", "success": "모든 부분을 올바르게 정렬했어요!", "retry": "다시 시도", "types": { "role": "역할", "task": "작업", "context": "맥락", "constraint": "제약" } },
+    "exampleMatcher": { "title": "패턴 매칭", "instruction": "패턴을 보고 다음에 올 것을 선택하세요!", "pattern": "패턴:", "check": "확인!", "retry": "다시 시도", "correct": "정답! 🎉", "tryAgain": "아니에요 - 패턴을 다시 보세요!" },
+    "promptDoctor": { "title": "프롬프트 의사", "health": "프롬프트 건강", "sick": "아픈 프롬프트", "healthy": "건강한 프롬프트!", "diagnose": "문제를 클릭해서 고치세요:", "success": "프롬프트가 좋아졌어요!", "retry": "처음부터" },
+    "stepByStep": { "title": "단계별로 생각하기", "problem": "문제:", "withoutMagic": "마법의 단어 없이:", "addMagicWords": "마법의 단어를 추가하세요!", "magicWordsActive": "마법의 단어가 추가됐어요!", "nextStep": "다음 단계 보기", "withMagic": "단계별 사고로:", "retry": "다시 시도" },
+    "promptLab": { "title": "프롬프트 연구소", "progress": "개선", "yourPrompt": "당신의 프롬프트:", "aiSays": "AI 응답:", "addDetails": "개선 추가:", "success": "프롬프트가 아주 구체적이 됐어요!", "retry": "처음부터" },
+    "wordPredictor": { "title": "AI가 생각하는 방법", "instruction": "AI는 가장 가능성 높은 다음 단어를 추측해요. AI처럼 생각할 수 있나요?", "aiThinks": "AI가 읽고 있어요:", "thinkingDefault": "음, 어떤 단어가 여기에 가장 맞을까?", "check": "내 답 확인!", "correct": "AI처럼 생각하고 있어요!", "tryAgain": "아니에요! AI는 가장 가능성 높은 단어를 선택해요.", "retry": "다시 시도" },
+    "settings": { "title": "설정", "language": "언어", "progress": "진행 상황", "stars": "별", "completed": "완료", "resetTitle": "진행 상황 초기화", "resetButton": "모두 초기화", "resetWarning": "모든 별과 진행 상황이 삭제됩니다. 확실한가요?", "resetConfirm": "네, 모두 초기화", "resetComplete": "진행 상황 초기화됨! 새로고침 중...", "cancel": "취소" }
   }
 }

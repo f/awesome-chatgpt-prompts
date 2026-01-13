@@ -1,0 +1,97 @@
+<Section>
+<Panel character="promi" mood="happy">
+Netlik Kalesi'ne tekrar hoş geldin! Bugün **KİM** ve **NE** hakkında öğreneceğiz - iki süper önemli detay!
+</Panel>
+</Section>
+
+<Section>
+## KİM Sorusu
+
+Yapay zekadan yardım istediğinde düşün: **Kim var?**
+
+- Bir kişi mi? (çocuk, anneanme, süper kahraman)
+- Bir hayvan mı? (kedi, ejderha, balina)
+- Bir karakter mi? (robot, büyücü, uzaylı)
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+"Bir hikaye yaz" dersen, kimin hakkında olduğunu bilmiyorum! Ama "Cesur bir şövalye hakkında hikaye yaz" dersen tam olarak ana karakterin kim olduğunu söylüyor!
+</Panel>
+</Section>
+
+<Section>
+## KİM Pratik Yapalım!
+
+<PromptVsMistake
+  question="Hangi prompt hikayenin KİM hakkında olduğunu söylüyor?"
+  good="Pip adında meraklı küçük bir fare hakkında hikaye yaz"
+  bad="Bir şey hakkında hikaye yaz"
+  explanation="İlk prompt bize KİM (bir fare), NE TÜR (meraklı, küçük), ve hatta ADINI (Pip) söylüyor!"
+  promiMessage="İsimler ve açıklamalar karakteri hayal etmemi sağlıyor!"
+/>
+</Section>
+
+<Section>
+## NE Sorusu
+
+Şimdi düşün: **Ne oluyor? Ne istiyorsun?**
+
+- Ne eylem? (koşmak, şarkı söylemek, inşa etmek)
+- Ne nesne? (bir pasta, bir uzay gemisi, bir şiir)
+- Ne tür? (komik, korkunç, renkli)
+</Section>
+
+<Section>
+## NE Pratik Yapalım!
+
+<PromptVsMistake
+  question="Hangi prompt NE oluşturacağımızı söylüyor?"
+  good="Pizza hakkında bol kafiyeli komik bir şiir yaz"
+  bad="Komik bir şey yaz"
+  explanation="Detaylı prompt bize NE (bir şiir), NE HAKKINDA (pizza), NE TARZI (komik, kafiyeli) olduğunu söylüyor!"
+  promiMessage="NE istediğin konusunda net olmak tam olarak onu oluşturmamı sağlıyor!"
+/>
+</Section>
+
+<Section>
+## Kendi Promptunu Oluştur!
+
+KİM ve NE'yi birleştir:
+
+<DragDropPrompt
+  title="Prompt Oluştur"
+  instruction="Parçaları doğru sıraya sürükle"
+  pieces={["Dost canlısı bir ejderha hakkında", "dondurma yapmayı öğrenen", "bir hikaye", "yaz"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Mükemmel! KİM (dost canlısı ejderha) ve NE (dondurma yapmayı öğreniyor) birleştirdin!"
+/>
+</Section>
+
+<Section>
+## Kendinkini Oluştur!
+
+<MagicWords
+  sentence="___ isteyen bir ___ hakkında kısa bir ___ yaz"
+  blanks={[
+    { hint: "🎯 ne isteyen?", answers: ["hazine bulmak", "arkadaş edinmek", "dünyayı kurtarmak", "büyü öğrenmek", "yarış kazanmak"] },
+    { hint: "🦸 kim?", answers: ["süper kahraman", "prenses", "robot", "büyücü", "korsan"] },
+    { hint: "📝 ne tür?", answers: ["hikaye", "şiir", "şarkı", "fıkra"] }
+  ]}
+  successMessage="KİM ve NE'yi mükemmel bir şekilde ekledin!"
+/>
+</Section>
+
+<Section>
+## Harika İlerleme! 🎉
+
+<Panel character="promi" mood="celebrating">
+Çok iyileşiyorsun! Artık promptuna her zaman **KİM** olduğunu ve **NE** istediğini eklemeyi biliyorsun. Böyle devam et!
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-2-who-and-what" 
+  stars={3}
+  message="Promptlarda KİM ve NE'de ustalaştın!"
+/>
+</Section>

@@ -1,0 +1,108 @@
+<Section>
+<Panel character="promi" mood="happy">
+Xoş gəlmisiniz! Bu gün super vacib bacarıq öyrənirik: **zəif promptları tapmaq və düzəltmək**! 🔧
+</Panel>
+</Section>
+
+<Section>
+## Problemləri tapın!
+
+Zəif promptlarda çox vaxt:
+
+❌ Çox qeyri-müəyyən - "Bir şey yaz"
+❌ Detal yoxdur - "Mənə insan haqqında danış"
+❌ Format yoxdur - Struktur olmadan sadəcə istəmək
+❌ Qeyri-aydın üslub - Necə istədiyinizi deməmək
+</Section>
+
+<Section>
+## Prompt Həkimi olun! 🏥
+
+<PromptDoctor
+  title="Bu promptu müalicə edin"
+  brokenPrompt="Bir şey yaz"
+  problems={[
+    { issue: "Çox qeyri-müəyyən", symptom: "Nə yazmalıyam? Hekayə? Şeir? Zarafat?", fix: "Bir hekayə yaz" },
+    { issue: "Mövzu yoxdur", symptom: "Hekayə nə haqqında olmalıdır?", fix: "Əjdaha haqqında hekayə yaz" },
+    { issue: "Detal yoxdur", symptom: "Hansı əjdaha? Nə baş verir?", fix: "Peçenye bişirən mehriban əjdaha haqqında qısa hekayə yaz" }
+  ]}
+  healedPrompt="Peçenye bişirən mehriban əjdaha haqqında qısa hekayə yaz"
+  successMessage="Promptu müalicə etdiniz! 2 sözdən əla ətraflı istəyə!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Zəif promptları tapmağı öyrənmək daha yaxşı yazmağa kömək edir! Prompt dedektivi olmaq kimidir!
+</Panel>
+</Section>
+
+<Section>
+## Həll tapın!
+
+<PromptVsMistake
+  question="Bu prompt zəifdir: 'Şeir yaz.' Necə düzəldərdiniz?"
+  good="Tufandan sonra göy qurşağı haqqında qafiyəli 4 sətirlik qısa şeir yaz. Parlaq et və rəngli sözlər istifadə et!"
+  bad="Zəhmət olmasa çox yaxşı şeir yaz"
+  explanation="Sadəcə 'çox yaxşı' demək kömək etmir! Əvəzinə detal əlavə edin: mövzu (göy qurşağı), format (4 sətir, qafiyəli) və üslub (parlaq, rəngli)!"
+  promiMessage="Konkret detallar əlavə etmək zəif promptu güclüyə çevirir!"
+/>
+</Section>
+
+<Section>
+## Bu promptu yaxşılaşdırın!
+
+<PromptVsMistake
+  question="Zəif prompt: 'Ev tapşırığı ilə kömək et.' Necə daha yaxşı edərdiniz?"
+  good="4-cü sinif şagirdiyəm və kəsrləri başa düşməkdə köməyə ehtiyacım var. Pizza nümunəsi istifadə edərək 1/2-nin nə demək olduğunu izah edə bilərsən? Sadə saxla!"
+  bad="Zəhmət olmasa ev tapşırığı ilə daha çox kömək et"
+  explanation="Yaxşı versiya mənə deyir: səviyyəniz (4-cü sinif), mövzu (kəsrlər), nümunə istəyir (pizza) və üslub (sadə)!"
+  promiMessage="Nə qədər konkret olsanız, bir o qədər yaxşı kömək edə bilirəm!"
+/>
+</Section>
+
+<Section>
+## Promptu düzəldin!
+
+<DragDropPrompt
+  title="Prompt Təmiri"
+  instruction="'Mənə hekayə danış' promptu çox zəifdir. Düzəltmək üçün bunları sıralayın:"
+  pieces={["cəsur kiçik siçan haqqında", "Mənə qısa yatmaq vaxtı hekayəsi danış", "azımış kiçik quşun ev tapmasına kömək edən.", "Şirin et və hamı təhlükəsiz bitsin."]}
+  correctOrder={[1, 0, 2, 3]}
+  successMessage="Zəif promptu əlaya çevirdiniz!"
+/>
+</Section>
+
+<Section>
+## Yüksəltmə Çağırışı!
+
+Bu zəif promptu güclü edin:
+
+**Zəif:** "Mənə fikirlər ver"
+
+<MagicWords
+  sentence="___ üçün ___ və ___ ___ yaradıcı fikir ver. ___ kimi!"
+  blanks={[
+    { hint: "🔢 neçə", answers: ["5", "3", "7", "10", "4"] },
+    { hint: "🎯 nə üçün", answers: ["ad günü şənliyi", "elm layihəsi", "əyləncəli oyun", "yazılacaq hekayə", "otağımı bəzəmək"] },
+    { hint: "✨ üslub1", answers: ["əyləncəli", "etmək asan", "yaradıcı", "sürprizli", "rəngli"] },
+    { hint: "🌟 üslub2", answers: ["uşaqlara uyğun", "ucuz", "unikal", "həyəcanlı", "sadə"] },
+    { hint: "💡 nümunə", answers: ["xəzinə ovu", "slime hazırlamaq", "super qəhrəman mövzusu", "qaranlıqda parlayan şeylər", "sehr şousu"] }
+  ]}
+  successMessage="2 sözlük zəif promptu heyrətamiz ətraflıya çevirdiniz!"
+/>
+</Section>
+
+<Section>
+## Prompt Təmirçisi! 🎉
+
+<Panel character="promi" mood="celebrating">
+Əla! Zəif promptları tapmağı və detal, format və üslub əlavə edərək **düzəltməyi** öyrəndiniz! Bu bacarıq həmişə kömək edəcək!
+</Panel>
+
+<LevelComplete 
+  levelSlug="5-2-fix-it-up" 
+  stars={3}
+  message="Zəif promptları tapmağı və düzəltməyi öyrəndiniz!"
+/>
+</Section>

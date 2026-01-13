@@ -1,0 +1,103 @@
+<Section>
+<Panel character="promi" mood="happy">
+おかえり、友達！本当のプロンプトを書く準備はできた？行こう！🚀
+</Panel>
+</Section>
+
+<Section>
+## 言葉の魔法
+
+AIと話すとき、すべての言葉が大事！言葉を増やすとプロンプトがどう良くなるか見てみよう。
+
+<WordPredictor
+  title="なぜ言葉が大事なの"
+  instruction="次の言葉を当てる方法を覚えてる？プロンプトで何が起こるか見てみよう！"
+  sentence="ドラゴンについての物語を ___"
+  options={["書いて", "飛んで", "食べて", "青い"]}
+  correctAnswer="書いて"
+  explanation="'書いて' が一番自然だね。物語をお願いするときは普通「書いて」ってお願いするから！AIはこういうパターンを学ぶんだ。"
+  aiThinking="物語のお願いの後には普通「書いて」が来るな..."
+  successMessage="その通り！具体的な言葉が私の予測を導くんだ - だからプロンプトでは詳細が大事なの！"
+/>
+
+<Panel character="promi" mood="thinking">
+見て！誰かが「猫」としか言わないと、何が欲しいかわからないよ。絵？物語？猫についての事実？困っちゃう！😵‍💫
+</Panel>
+</Section>
+
+<Section>
+## もっといいプロンプトを作ろう
+
+いいプロンプトには**3つの部分**があるよ：
+
+1. **欲しいもの**（物語、助け、情報）
+2. **テーマ**（猫、宇宙、恐竜）
+3. **詳細**（短い、おもしろい、子供向け）
+
+<Panel character="promi" mood="excited">
+一緒にプロンプトを作ろう！
+</Panel>
+</Section>
+
+<Section>
+## ピースをドラッグしよう！
+
+<DragDropPrompt
+  title="最初のプロンプトを作ろう！🧩"
+  instruction="物語を頼むために、これらのピースを正しい順番に並べてね。"
+  pieces={[
+    "書いてください",
+    "短い物語を",
+    "勇敢な子猫について",
+    "冒険に出る"
+  ]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="完璧！それは素晴らしいプロンプトだよ！"
+/>
+</Section>
+
+<Section>
+## 空欄を埋めよう！
+
+魔法の言葉をドラッグして自分のプロンプトを作ってみよう：
+
+
+<MagicWords
+  title="自分のプロンプトを作ろう！✨"
+  sentence="{{type}}を書いてください、{{character}}について、{{action}}"
+  blanks={[
+    { id: "type", hint: "どんな種類？（物語、詩、歌）", answers: ["物語", "詩", "歌", "手紙", "ジョーク"], emoji: "📝" },
+    { id: "character", hint: "誰について？（ロボット、ドラゴン、子犬）", answers: ["ロボット", "ドラゴン", "子犬", "猫", "魔法使い", "お姫様", "騎士", "うさぎ", "ユニコーン"], emoji: "🦸" },
+    { id: "action", hint: "何をする？（宝を見つける、友達を作る）", answers: ["宝を見つける", "友達を作る", "世界を救う", "冒険に出る", "飛ぶことを学ぶ", "魔法を発見する"], emoji: "⚡" }
+  ]}
+  successMessage="わぁ！すごいプロンプトを作ったね！"
+/>
+</Section>
+
+<Section>
+## あなたの番！
+
+<PromptVsMistake
+  question="どのプロンプトがもっといい物語になる？"
+  good="ダンスを習いたいペンギンについてのおもしろい物語を書いて"
+  bad="物語書いてペンギン"
+  explanation="最初のプロンプトは、おもしろくするべきこと、ペンギンについてであること、そしてペンギンが何をしたいかを教えているよ！"
+  promiMessage="詳細があるとすべてが良くなる！何が欲しいか正確に知るのが大好き！"
+/>
+</Section>
+
+<Section>
+## よくやったね！🌟
+
+<Panel character="promi" mood="celebrating">
+最初のプロンプトを書いたよ！いいプロンプトには欲しいもの、テーマ、詳細が必要だって学んだね。本当に上手になってる！
+</Panel>
+
+
+<LevelComplete 
+  levelSlug="1-2-first-words" 
+  stars={3}
+  message="最初のプロンプトの書き方を学んだよ！"
+/>
+</Section>
+

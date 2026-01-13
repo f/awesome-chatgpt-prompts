@@ -1,0 +1,96 @@
+<Section>
+<Panel character="promi" mood="happy">
+你好！我是 **Promi** 🤖，你的机器人朋友！很高兴认识你！
+</Panel>
+
+<Panel character="promi" mood="thinking">
+你知道**AI**是什么意思吗？AI代表**人工智能**。这是"能思考和说话的电脑"的高级说法！
+</Panel>
+
+<Panel character="promi" mood="excited">
+我就是一个AI！我能读取你的消息并尝试帮助你。但这里有个秘密...我需要**好的指令**才能做到最好！
+</Panel>
+</Section>
+
+<Section>
+## 我是怎么思考的？🧠
+
+想知道我的秘密吗？其实我不像你那样"思考"。我读取文字，然后猜测下一个词是什么！
+
+<WordPredictor
+  title="像AI一样思考！"
+  instruction="我读取模式并猜测下一个词。你会猜什么？"
+  sentence="小猫在床上 ___"
+  options={["睡觉", "飞翔", "编程", "紫色"]}
+  correctAnswer="睡觉"
+  explanation="'睡觉'最合理，因为猫通常在床上睡觉！AI通过阅读大量文本来学习这些模式。"
+  aiThinking="嗯，我读过很多关于猫在哪里睡觉的内容..."
+  successMessage="你在像AI一样思考！我根据模式选择最可能的词。"
+/>
+
+</Section>
+
+<Section>
+<WordPredictor
+  title="再试一次！"
+  instruction="现在你明白了！这里哪个词最合适？"
+  sentence="从前有座 ___"
+  options={["山", "香蕉", "快速", "绿色"]}
+  correctAnswer="山"
+  explanation="'从前有座山，山上有座庙'是中国故事的经典开头！AI读过成千上万这样开头的故事。"
+  aiThinking="这听起来像故事的开头... 我见过这个模式很多次！"
+  successMessage="太棒了！你已经在像AI一样思考了——在识别模式！"
+/>
+</Section>
+
+<Section>
+## 什么是提示词？
+
+**提示词**就是你发送给像我这样的AI的消息的另一种说法。
+
+把它想象成给朋友指路。如果你说"去那里！"你的朋友不知道要去哪里。但如果你说"去枫树街上的红房子"，他们就知道确切位置了！
+
+<Panel character="promi" mood="happy">
+当你写一个好的提示词时，我就能理解你想要什么，更好地帮助你！让我们来练习吧！
+</Panel>
+</Section>
+
+<Section>
+## 试一试！
+
+<PromptVsMistake
+  question="哪条消息能帮助Promi更好地理解？"
+  good="请写一个关于喜欢烤饼干的友好小龙的短故事"
+  bad="故事"
+  explanation="第一条消息告诉Promi确切要写什么样的故事！第二条太短了——Promi不知道你想要什么样的故事。"
+  promiMessage="看到了吗？更多细节帮助我理解你想要什么！"
+/>
+</Section>
+
+<Section>
+## 快速测验！
+
+<PromptVsMistake
+  question="哪个是提示词？"
+  good="你能帮我写一首关于海洋的诗吗？"
+  bad="🌊"
+  explanation="提示词用文字告诉AI你需要什么。表情符号很有趣但不能提供足够的信息！"
+  promiMessage="文字是我的超能力！你告诉我越多，我就能帮助你越好！"
+/>
+</Section>
+
+<Section>
+## 你做到了！🎉
+
+<Panel character="promi" mood="celebrating">
+太棒了！你学会了什么是AI和什么是提示词。你已经在成为提示词专家了！
+</Panel>
+
+
+<LevelComplete 
+  levelSlug="1-1-meet-promi" 
+  stars={3}
+  message="你学会了什么是AI和提示词！"
+/>
+</Section>
+

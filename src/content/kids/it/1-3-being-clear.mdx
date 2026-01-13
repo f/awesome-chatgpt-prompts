@@ -1,0 +1,121 @@
+<Section>
+<Panel character="promi" mood="happy">
+Ciao superstar! 🌟 Oggi impareremo l'abilità più importante: essere **CHIARI**!
+</Panel>
+</Section>
+
+<Section>
+## Perché Essere Chiari è Importante
+
+Immagina chiedere a tua mamma "cibo" vs chiedere "un panino al burro d'arachidi senza crosta." Quale ti dà esattamente quello che vuoi?
+
+<Panel character="promi" mood="thinking">
+È lo stesso con me! Quando sei chiaro, so esattamente come aiutare. Quando sei vago, devo indovinare... e potrei sbagliare!
+</Panel>
+</Section>
+
+<Section>
+## Chiaro vs. Non Chiaro
+
+Pratichiamo a trovare la differenza!
+
+
+<PromptVsMistake
+  question="Quale prompt è più chiaro?"
+  good="Scrivi una poesia di 4 righe sulle farfalle in un giardino, usando parole in rima"
+  bad="Scrivi poesia farfalle"
+  explanation="Il prompt chiaro mi dice: quanto lungo (4 righe), su cosa (farfalle in un giardino), e una regola speciale (in rima). Molto meglio!"
+  promiMessage="Prompt chiari = risultati migliori! È come magia!"
+/>
+
+
+<PromptVsMistake
+  question="Quale mi dice esattamente di cosa hai bisogno?"
+  good="Aiutami a scrivere 3 fatti divertenti sui delfini che piacciono a un bambino di 10 anni"
+  bad="Parlami dei delfini"
+  explanation="Il primo prompt mi dice: quanti fatti (3), che tipo (divertenti), e per chi (bambino di 10 anni). Questo aiuta molto!"
+  promiMessage="Quando mi dici per chi è, posso renderlo perfetto per loro!"
+/>
+</Section>
+
+<Section>
+## La Sfida della Chiarezza
+
+Costruiamo il prompt più chiaro di sempre!
+
+
+<DragDropPrompt
+  title="Rendilo cristallino! 💎"
+  instruction="Sistema questi pezzi per fare un prompt super chiaro"
+  pieces={[
+    "Per favore aiutami a scrivere",
+    "una breve storia della buonanotte",
+    "su un gufo assonnato",
+    "con un lieto fine",
+    "per la mia sorellina"
+  ]}
+  correctOrder={[0, 1, 2, 3, 4]}
+  successMessage="È il prompt più chiaro di sempre! Fantastico!"
+/>
+</Section>
+
+<Section>
+## Aggiungi Dettagli Chiari
+
+<MagicWords
+  title="Aggiungi i dettagli! 🎯"
+  sentence="Scrivi una {{length}} {{type}} su {{topic}} per {{audience}}"
+  blanks={[
+    { id: "length", hint: "Quanto lungo? (breve, lungo)", answers: ["breve", "lunga", "di 5 frasi", "di una pagina", "corta", "veloce"], emoji: "📏" },
+    { id: "type", hint: "Che tipo? (storia, lista, spiegazione)", answers: ["storia", "lista", "spiegazione", "poesia", "canzone", "guida"], emoji: "📝" },
+    { id: "topic", hint: "Su cosa? (spazio, animali, sport)", answers: ["spazio", "animali", "sport", "dinosauri", "robot", "magia", "natura", "scienza"], emoji: "🎯" },
+    { id: "audience", hint: "Per chi? (bambini, principianti)", answers: ["bambini", "principianti", "il mio insegnante", "il mio amico", "la mia famiglia", "studenti"], emoji: "👥" }
+  ]}
+  successMessage="Hai aggiunto tutti i dettagli importanti! Ottimo lavoro!"
+/>
+</Section>
+
+<Section>
+## Le Regole d'Oro della Chiarezza
+
+<Panel character="promi" mood="excited">
+Ecco i miei migliori consigli per essere chiaro:
+</Panel>
+
+Ricorda queste tre domande quando scrivi un prompt:
+
+1. **COSA** voglio? (storia, aiuto, informazione)
+2. **COME** deve essere? (corto, divertente, semplice)
+3. **PER CHI** è? (me, il mio amico, la mia classe)
+
+
+<PromptVsMistake
+  question="Sfida finale! Quale usa tutte e tre le regole?"
+  good="Scrivi una barzelletta corta e divertente sulla pizza che posso raccontare ai miei amici a pranzo"
+  bad="Fai qualcosa di divertente"
+  explanation="L'ottimo prompt ha COSA (una barzelletta sulla pizza), COME (corta e divertente), e PER CHI (raccontare agli amici a pranzo)!"
+  promiMessage="Sei un campione di chiarezza! 🏆"
+/>
+</Section>
+
+<Section>
+## Mondo 1 Completato! 🎊
+
+<Panel character="promi" mood="celebrating">
+WOW! Hai finito tutto il Mondo 1! Hai imparato:
+
+- ✅ Cosa sono l'IA e i prompt
+- ✅ Come scrivere i tuoi primi prompt
+- ✅ Perché essere chiaro è super importante
+
+Sei pronto per nuove avventure!
+</Panel>
+
+
+<LevelComplete 
+  levelSlug="1-3-being-clear" 
+  stars={3}
+  message="Hai padroneggiato l'arte di essere chiaro! Mondo 1 completato!"
+/>
+</Section>
+

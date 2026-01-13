@@ -1,0 +1,108 @@
+<Section>
+<Panel character="promi" mood="happy">
+Bienvenue de retour ! Aujourd'hui, nous apprenons une compétence super importante : **trouver et réparer les prompts faibles** ! 🔧
+</Panel>
+</Section>
+
+<Section>
+## Repère les problèmes !
+
+Les prompts faibles ont souvent :
+
+❌ Trop vague - "Écris quelque chose"
+❌ Détails manquants - "Parle-moi d'une personne"
+❌ Pas de format - Juste demander sans structure
+❌ Style pas clair - Ne pas dire comment tu le veux
+</Section>
+
+<Section>
+## Sois le Docteur des Prompts ! 🏥
+
+<PromptDoctor
+  title="Soigne ce prompt"
+  brokenPrompt="Écris quelque chose"
+  problems={[
+    { issue: "Trop vague", symptom: "Qu'est-ce que je dois écrire ? Une histoire ? Un poème ? Une blague ?", fix: "Écris une histoire" },
+    { issue: "Pas de sujet", symptom: "L'histoire devrait parler de quoi ?", fix: "Écris une histoire sur un dragon" },
+    { issue: "Pas de détails", symptom: "Quel type de dragon ? Que se passe-t-il ?", fix: "Écris une courte histoire sur un dragon sympa qui fait des gâteaux" }
+  ]}
+  healedPrompt="Écris une courte histoire sur un dragon sympa qui fait des gâteaux"
+  successMessage="Tu as soigné le prompt ! De 2 mots à une super demande détaillée !"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Apprendre à repérer les prompts faibles t'aide à en écrire de meilleurs ! C'est comme être un détective de prompts !
+</Panel>
+</Section>
+
+<Section>
+## Trouve la solution !
+
+<PromptVsMistake
+  question="Ce prompt est faible : 'Écris un poème.' Comment le réparerais-tu ?"
+  good="Écris un court poème de 4 lignes qui rime sur un arc-en-ciel après une tempête. Rends-le joyeux et utilise des mots colorés !"
+  bad="Écris un très bon poème s'il te plaît"
+  explanation="Juste dire 'très bon' n'aide pas ! À la place, ajoute des détails : sujet (arc-en-ciel), format (4 lignes, qui rime), et style (joyeux, coloré) !"
+  promiMessage="Ajouter des détails spécifiques transforme un prompt faible en un prompt fort !"
+/>
+</Section>
+
+<Section>
+## Améliore ce prompt !
+
+<PromptVsMistake
+  question="Prompt faible : 'Aide-moi avec mes devoirs.' Comment le rendrais-tu meilleur ?"
+  good="Je suis en CM1 et j'ai besoin d'aide pour comprendre les fractions. Peux-tu expliquer ce que signifie 1/2 en utilisant une pizza comme exemple ? Garde-le simple !"
+  bad="S'il te plaît aide-moi plus avec mes devoirs"
+  explanation="La bonne version me dit : ton niveau (CM1), sujet (fractions), demande un exemple (pizza), et style (simple) !"
+  promiMessage="Plus tu es précis, mieux je peux t'aider !"
+/>
+</Section>
+
+<Section>
+## Répare le prompt !
+
+<DragDropPrompt
+  title="Réparation de Prompt"
+  instruction="Le prompt 'Raconte-moi une histoire' est trop faible. Arrange ces ajouts pour le réparer :"
+  pieces={["sur une petite souris courageuse", "Raconte-moi une courte histoire du soir", "qui aide un petit oiseau perdu à retrouver sa maison.", "Rends-la douce et finis avec tout le monde en sécurité."]}
+  correctOrder={[1, 0, 2, 3]}
+  successMessage="Tu as transformé un prompt faible en un super prompt !"
+/>
+</Section>
+
+<Section>
+## Défi d'amélioration !
+
+Prends ce prompt faible et rends-le fort :
+
+**Faible :** "Donne-moi des idées"
+
+<MagicWords
+  sentence="Donne-moi ___ idées créatives pour ___ qui sont ___ et ___. Quelque chose comme ___ !"
+  blanks={[
+    { hint: "🔢 combien", answers: ["5", "3", "7", "10", "4"] },
+    { hint: "🎯 pour quoi", answers: ["une fête d'anniversaire", "un projet de sciences", "un jeu amusant", "une histoire à écrire", "décorer ma chambre"] },
+    { hint: "✨ style 1", answers: ["amusantes", "faciles à faire", "créatives", "surprenantes", "colorées"] },
+    { hint: "🌟 style 2", answers: ["pour les enfants", "pas trop chères", "uniques", "passionnantes", "simples"] },
+    { hint: "💡 exemple", answers: ["une chasse au trésor", "faire du slime", "un thème super-héros", "des trucs qui brillent dans le noir", "un spectacle de magie"] }
+  ]}
+  successMessage="Tu as transformé un prompt faible de 2 mots en un incroyable prompt détaillé !"
+/>
+</Section>
+
+<Section>
+## Réparateur de Prompts ! 🎉
+
+<Panel character="promi" mood="celebrating">
+Excellent ! Tu as appris à repérer les prompts faibles et à les **réparer** en ajoutant des détails, un format et un style ! Cette compétence t'aidera pour toujours !
+</Panel>
+
+<LevelComplete 
+  levelSlug="5-2-fix-it-up" 
+  stars={3}
+  message="Tu as appris à trouver et réparer les prompts faibles !"
+/>
+</Section>

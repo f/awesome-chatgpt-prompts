@@ -1,0 +1,85 @@
+<Section>
+<Panel character="promi" mood="excited">
+Yaratıcılık Kanyonu'nun son seviyesine hoş geldin! 🎨 **Dünya Oluşturucular** olalım ve harika hayali senaryolar yaratalım!
+</Panel>
+</Section>
+
+<Section>
+## Hayali Dünyalar Kurmak
+
+Yapay zekadan tüm dünyalar yaratmasına yardım etmesini isteyebilirsin:
+
+- Büyülü fantezi krallıkları
+- Robotlu fütüristik şehirler
+- Sualtı medeniyetleri
+- Uzak galaksilerdeki gezegenler
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Tek sınır senin hayal gücün! Bana dünyandan bahset ve canlandırmana yardım edeyim!
+</Panel>
+</Section>
+
+<Section>
+## Dünya İnşası İş Başında!
+
+<PromptVsMistake
+  question="Hangi prompt daha iyi bir dünya inşa ediyor?"
+  good="Tüm hayvanların konuşabildiği ve kendi şehirlerinin olduğu bir dünya yaratmama yardım et. Kediler kütüphaneleri yönetiyor ve köpekler itfaiyeci. Başka ne olabilir?"
+  bad="Bir dünya uydur"
+  explanation="Detaylı prompt dünyayı kurmaya başlıyor (işleri olan konuşan hayvanlar) ve daha fazla eklememi istiyor!"
+  promiMessage="Bu dünyayı seviyorum! Belki kuşlar posta dağıtır ve tavşanlar fırınları işletir!"
+/>
+</Section>
+
+<Section>
+## Dünyanı Genişlet!
+
+<PromptVsMistake
+  question="Hangi prompt dünyayı büyütmeye yardım eder?"
+  good="Büyülü orman dünyamda, şeker yetiştiren ağaçlar var. Ne tür şeker ağaçları olabilir? Onlara kim bakıyor? Orada ne maceralar olabilir?"
+  bad="Bana bir orman hakkında anlat"
+  explanation="Dünyan hakkında belirli sorular sorarak, yeni fikirlerle genişletmene yardım edebilirim!"
+  promiMessage="'Ya olsaydı' soruları sorarak dünyalar büyür ve daha ilginç olur!"
+/>
+</Section>
+
+<Section>
+## Dünya İnşa Et!
+
+<DragDropPrompt
+  title="Dünya Oluşturucu"
+  instruction="Hayali bir dünya yaratmak için düzenle"
+  pieces={["Tüm hava durumunun", "hava büyücüleri tarafından kontrol edildiği", "bir dünya yaratmama yardım et.", "Ne ters gidebilir?"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Ne yaratıcı bir dünya! Çok eğlenceli senaryo hayal edebiliyorum!"
+/>
+</Section>
+
+<Section>
+## En İyi Dünyani Yarat!
+
+<MagicWords
+  sentence="___ bir dünya kurmama yardım et. Onu özel yapan şey ___. Orada kim yaşıyor? Ne maceralar olabilir?"
+  blanks={[
+    { hint: "🌍 dünya konsepti", answers: ["rüyaların canlandığı", "herkesin süper güçleri olduğu", "oyuncakların geceleri hareket edebildiği", "müziğin sihir yarattığı", "renklerin duyguları olduğu"] },
+    { hint: "✨ özel özellik", answers: ["merkezde dev bir sihirli ağaç", "gökyüzünde yüzen adalar", "yıldız ışığıyla akan nehirler", "bulutlardan yapılmış binalar", "diğer boyutlara açılan kapılar"] }
+  ]}
+  successMessage="Ne inanılmaz bir dünya! Maceralar sonsuz!"
+/>
+</Section>
+
+<Section>
+## Tebrikler, Dünya Oluşturucu! 🎉
+
+<Panel character="promi" mood="celebrating">
+Başardın! Yaratıcılık Kanyonu'nu tamamladın ve bir **Dünya Oluşturucu** oldun! Hayal gücün ve yapay zeka birlikte sonsuz harika dünyalar yaratabilir!
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-4-world-builder" 
+  stars={3}
+  message="Yaratıcılık Kanyonu'nu tamamladın! Sen bir Dünya Oluşturucusun!"
+/>
+</Section>

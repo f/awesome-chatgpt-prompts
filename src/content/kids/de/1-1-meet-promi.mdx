@@ -1,0 +1,96 @@
+<Section>
+<Panel character="promi" mood="happy">
+Hallo! Ich bin **Promi** 🤖, dein Roboter-Freund! Ich freue mich so, dich kennenzulernen!
+</Panel>
+
+<Panel character="promi" mood="thinking">
+Weißt du, was **KI** bedeutet? KI steht für **Künstliche Intelligenz**. Das ist eine schicke Art zu sagen "ein Computer, der denken und sprechen kann"!
+</Panel>
+
+<Panel character="promi" mood="excited">
+Ich bin eine KI! Ich kann deine Nachrichten lesen und versuchen dir zu helfen. Aber hier ist das Geheimnis... Ich brauche **gute Anweisungen** um meine beste Arbeit zu machen!
+</Panel>
+</Section>
+
+<Section>
+## Wie Denke Ich? 🧠
+
+Willst du mein Geheimnis wissen? Ich "denke" nicht wirklich wie du. Ich lese Wörter und rate, welches Wort als nächstes kommt!
+
+<WordPredictor
+  title="Denke Wie KI!"
+  instruction="Ich lese Muster und rate das nächste Wort. Was würdest DU raten?"
+  sentence="Die Katze schläft auf dem ___"
+  options={["Bett", "Mond", "schnell", "lila"]}
+  correctAnswer="Bett"
+  explanation="'Bett' macht am meisten Sinn, weil Katzen normalerweise auf Betten schlafen! KI lernt diese Muster durch das Lesen vieler Texte."
+  aiThinking="Hmm, ich habe viel darüber gelesen, wo Katzen schlafen..."
+  successMessage="Du denkst wie KI! Ich wähle das wahrscheinlichste Wort basierend auf Mustern."
+/>
+
+</Section>
+
+<Section>
+<WordPredictor
+  title="Noch Ein Versuch!"
+  instruction="Jetzt verstehst du es! Welches Wort passt am besten?"
+  sentence="Es war einmal vor langer ___"
+  options={["Zeit", "Banane", "schnell", "grün"]}
+  correctAnswer="Zeit"
+  explanation="'Es war einmal vor langer Zeit' ist der Anfang fast aller Märchen! KI hat Tausende von Geschichten gelesen, die so beginnen."
+  aiThinking="Das klingt wie ein Märchenanfang... Ich habe dieses Muster so oft gesehen!"
+  successMessage="Perfekt! Du denkst schon wie KI - du erkennst Muster!"
+/>
+</Section>
+
+<Section>
+## Was ist ein Prompt?
+
+Ein **Prompt** ist einfach ein schickes Wort für die Nachricht, die du an eine KI wie mich sendest.
+
+Stell dir vor, du gibst einem Freund Wegbeschreibungen. Wenn du sagst "Geh dorthin!" weiß dein Freund nicht, wohin. Aber wenn du sagst "Geh zum roten Haus in der Ahornstraße," weiß er genau wo!
+
+<Panel character="promi" mood="happy">
+Wenn du einen guten Prompt schreibst, kann ich verstehen, was du willst und dir besser helfen! Lass uns üben!
+</Panel>
+</Section>
+
+<Section>
+## Probieren wir es!
+
+<PromptVsMistake
+  question="Welche Nachricht würde Promi besser verstehen helfen?"
+  good="Bitte schreibe eine kurze Geschichte über einen freundlichen Drachen, der gerne Kekse backt"
+  bad="Geschichte"
+  explanation="Die erste Nachricht sagt Promi genau, welche Art von Geschichte geschrieben werden soll! Die zweite ist zu kurz - Promi weiß nicht, welche Art von Geschichte du willst."
+  promiMessage="Siehst du? Mehr Details helfen mir zu verstehen, was du willst!"
+/>
+</Section>
+
+<Section>
+## Schnelles Quiz!
+
+<PromptVsMistake
+  question="Was ist ein Prompt?"
+  good="Kannst du mir helfen, ein Gedicht über den Ozean zu schreiben?"
+  bad="🌊"
+  explanation="Ein Prompt benutzt Worte, um der KI zu sagen, was du brauchst. Emojis sind lustig, aber geben nicht genug Informationen!"
+  promiMessage="Worte sind meine Superkraft! Je mehr du mir sagst, desto besser kann ich helfen!"
+/>
+</Section>
+
+<Section>
+## Du hast es geschafft! 🎉
+
+<Panel character="promi" mood="celebrating">
+Tolle Arbeit! Du hast gelernt, was KI ist und was ein Prompt ist. Du wirst schon ein Prompt-Experte!
+</Panel>
+
+
+<LevelComplete 
+  levelSlug="1-1-meet-promi" 
+  stars={3}
+  message="Du hast gelernt, was KI und Prompts sind!"
+/>
+</Section>
+

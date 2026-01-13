@@ -1,0 +1,104 @@
+<Section>
+<Panel character="promi" mood="excited">
+Bem-vindo ao último nível do Castelo da Clareza! 🏰 Você aprendeu sobre QUEM, O QUE, QUANDO e ONDE. Agora vamos juntar TUDO!
+</Panel>
+</Section>
+
+<Section>
+## A lista do Detetive de Detalhes
+
+Antes de enviar um prompt, pergunte-se:
+
+✅ **QUEM** - Quem está envolvido?
+✅ **O QUE** - O que eu quero? O que está acontecendo?
+✅ **QUANDO** - Quando acontece?
+✅ **ONDE** - Onde acontece?
+</Section>
+
+<Section>
+## Organize as partes do prompt!
+
+<PromptParts
+  title="Combine cada peça!"
+  instruction="Toque em uma peça, depois escolha se é um Papel, Tarefa, Contexto ou Restrição!"
+  parts={[
+    { text: "Escreva uma história engraçada", type: "task" },
+    { text: "sobre um mago atrapalhado", type: "context" },
+    { text: "em uma escola de magia", type: "context" },
+    { text: "Faça curta", type: "constraint" }
+  ]}
+  successMessage="Você identificou todas as partes do prompt! Agora pode construir prompts como um profissional!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Você não precisa dos quatro todas as vezes, mas quanto mais detalhes você adicionar, melhor posso te ajudar!
+</Panel>
+</Section>
+
+<Section>
+## Desafio Detetive #1
+
+<PromptVsMistake
+  question="Qual prompt tem os detalhes mais úteis?"
+  good="Escreva uma história engraçada sobre um mago atrapalhado chamado Zap que acidentalmente transforma seu gato em gigante durante um show de mágica no castelo real"
+  bad="Escreva uma história sobre magia"
+  explanation="O prompt detalhado tem QUEM (mago Zap, seu gato), O QUE (transforma o gato em gigante, show de mágica), ONDE (castelo real), e até um estilo (engraçado)!"
+  promiMessage="Uau! Esse prompt me dá muito material. Consigo imaginar toda a cena!"
+/>
+</Section>
+
+<Section>
+## Desafio Detetive #2
+
+<PromptVsMistake
+  question="Qual prompt conseguiria um poema melhor?"
+  good="Escreva um poema curto com rimas sobre um urso sonolento se preparando para hibernar em sua caverna aconchegante"
+  bad="Escreva um poema sobre um animal"
+  explanation="O primeiro prompt me diz QUEM (urso sonolento), O QUE (se preparando para hibernar), QUANDO (inverno), ONDE (caverna aconchegante), e estilo (curto, com rimas)!"
+  promiMessage="Cada detalhe me ajuda a criar algo especial só para você!"
+/>
+</Section>
+
+<Section>
+## Construa o prompt definitivo!
+
+<DragDropPrompt
+  title="Detetive Mestre"
+  instruction="Organize TODOS os detalhes em um prompt perfeito"
+  pieces={["Escreva uma história emocionante", "sobre um jovem inventor", "que constrói um robô melhor amigo", "em uma cidade futurista", "no primeiro dia do verão"]}
+  correctOrder={[0, 1, 2, 3, 4]}
+  successMessage="Perfeito! Você incluiu QUEM, O QUE, ONDE e QUANDO!"
+/>
+</Section>
+
+<Section>
+## Crie sua obra-prima!
+
+<MagicWords
+  sentence="Por favor escreva uma história ___ sobre um ___ que ___ em um ___ durante ___"
+  blanks={[
+    { hint: "😊 um humor/estilo", answers: ["engraçada", "emocionante", "misteriosa", "comovente", "boba"] },
+    { hint: "🦸 um personagem", answers: ["cavaleiro corajoso", "fada pequenina", "raposa esperta", "jovem astronauta", "fantasma amigável"] },
+    { hint: "🎬 uma ação", answers: ["descobre um segredo", "vai em uma busca", "faz um novo amigo", "resolve um mistério", "aprende a voar"] },
+    { hint: "🏰 um lugar", answers: ["reino mágico", "selva profunda", "estação espacial", "cidade submarina", "floresta encantada"] },
+    { hint: "🌙 um momento", answers: ["a lua cheia", "seu aniversário", "uma grande tempestade", "o último dia de escola", "meia-noite"] }
+  ]}
+  successMessage="Você é um verdadeiro Detetive de Detalhes! Esse é um prompt incrível!"
+/>
+</Section>
+
+<Section>
+## Parabéns, Detetive! 🎉
+
+<Panel character="promi" mood="celebrating">
+Você conseguiu! Você completou o Castelo da Clareza e se tornou um **Detetive de Detalhes**! Agora você conhece o segredo: QUEM + O QUE + QUANDO + ONDE = Prompts Incríveis!
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-4-detail-detective" 
+  stars={3}
+  message="Você completou o Castelo da Clareza! Você é um Detetive de Detalhes!"
+/>
+</Section>

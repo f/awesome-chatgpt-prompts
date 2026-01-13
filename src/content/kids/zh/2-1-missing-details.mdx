@@ -1,0 +1,81 @@
+<Section>
+<Panel character="promi" mood="excited">
+欢迎来到**清晰城堡**！🏰 很高兴你来了！在这个世界里，我们将学习**细节**的魔力！
+</Panel>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+你有没有问过某人一些事情，但他们不明白你的意思？AI也会遇到同样的情况！
+</Panel>
+</Section>
+
+<Section>
+## 模糊提示词的问题
+
+看看这两个提示词：
+
+❌ **模糊：** "画一幅画"
+
+✅ **具体：** "画一幅在阳光明媚的公园里玩耍的快乐小狗的画"
+
+哪一个给我更多的信息来工作？
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+第二个告诉我**画什么**（小狗），**在做什么**（玩耍），和**在哪里**（阳光明媚的公园）。这就是细节的力量！
+</Panel>
+</Section>
+
+<Section>
+## 让我们练习！
+
+<PromptVsMistake
+  question="哪个提示词有更好的细节？"
+  good="写一个关于想学飞的企鹅的有趣笑话"
+  bad="给我讲个笑话"
+  explanation="详细的提示词准确地告诉我你想要什么样的笑话 - 有趣的、关于企鹅的、有特定故事的！"
+  promiMessage="细节就像线索，帮助我准确理解你想要什么！"
+/>
+</Section>
+
+<Section>
+## 为什么细节很重要
+
+<PromptVsMistake
+  question="哪个提示词能帮助普罗米做出更好的生日卡片？"
+  good="为我喜欢园艺和紫色的奶奶做一张生日卡片"
+  bad="做一张生日卡片"
+  explanation="知道是给你奶奶的，她喜欢园艺，还有她最喜欢的颜色，有助于创造一些特别和个性化的东西！"
+  promiMessage="我对你想要什么了解得越多，就越能帮助你！"
+/>
+</Section>
+
+<Section>
+## 填写细节！
+
+<MagicWords
+  sentence="请写一个关于住在___里喜欢___的___的故事"
+  blanks={[
+    { hint: "🐱 一种动物", answers: ["猫", "狗", "兔子", "龙", "独角兽"] },
+    { hint: "🏠 一个地方", answers: ["城堡", "森林", "城市", "树屋", "洞穴"] },
+    { hint: "⭐ 一项活动", answers: ["唱歌", "跳舞", "烹饪", "画画", "探险"] }
+  ]}
+  successMessage="添加细节做得很好！"
+/>
+</Section>
+
+<Section>
+## 你在学习！🎉
+
+<Panel character="promi" mood="celebrating">
+太棒了！你发现了**细节让提示词更好**。模糊的提示词 = 困惑的AI。详细的提示词 = 惊人的结果！
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-1-missing-details" 
+  stars={3}
+  message="你学会了为什么细节在提示词中很重要！"
+/>
+</Section>

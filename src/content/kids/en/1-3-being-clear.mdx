@@ -1,0 +1,115 @@
+<Section>
+<Panel character="promi" mood="happy">
+Hey superstar! 🌟 Today we're going to learn the most important skill: being **CLEAR**!
+</Panel>
+</Section>
+
+<Section>
+## Why Being Clear Matters
+
+Imagine asking your mom for "food" vs asking for "a peanut butter sandwich with no crust." Which one gets you exactly what you want?
+
+<Panel character="promi" mood="thinking">
+It's the same with me! When you're clear, I know exactly how to help. When you're vague, I have to guess... and I might guess wrong!
+</Panel>
+</Section>
+
+<Section>
+## Clear vs. Unclear
+
+<PromptVsMistake
+  question="Which prompt is clearer?"
+  good="Write a 4-line poem about butterflies in a garden, using rhyming words"
+  bad="Write poem butterflies"
+  explanation="The clear prompt tells me: how long (4 lines), what about (butterflies in a garden), and a special rule (rhyming). Much better!"
+  promiMessage="Clear prompts = better results! It's like magic!"
+/>
+</Section>
+
+<Section>
+<PromptVsMistake
+  question="Which one tells me exactly what you need?"
+  good="Help me write 3 fun facts about dolphins that a 10-year-old would enjoy"
+  bad="Tell me about dolphins"
+  explanation="The first prompt tells me: how many facts (3), what kind (fun), and who it's for (10-year-old). That helps a lot!"
+  promiMessage="When you tell me who it's for, I can make it perfect for them!"
+/>
+</Section>
+
+<Section>
+## The Clarity Challenge
+
+<DragDropPrompt
+  title="Make it crystal clear! 💎"
+  instruction="Arrange these pieces to make a super clear prompt"
+  pieces={[
+    "Please help me write",
+    "a short bedtime story",
+    "about a sleepy owl",
+    "with a happy ending",
+    "for my little sister"
+  ]}
+  correctOrder={[0, 1, 2, 3, 4]}
+  successMessage="That's the clearest prompt ever! Amazing!"
+/>
+</Section>
+
+<Section>
+## Fill in Clear Details
+
+<MagicWords
+  title="Add the details! 🎯"
+  sentence="Write a {{length}} {{type}} about {{topic}} for {{audience}}"
+  blanks={[
+    { id: "length", hint: "How long? (short, 5-sentence, one-page)", answers: ["short", "long", "5-sentence", "one-page", "brief", "quick"], emoji: "📏" },
+    { id: "type", hint: "What kind? (story, list, explanation)", answers: ["story", "list", "explanation", "poem", "song", "guide"], emoji: "📝" },
+    { id: "topic", hint: "What about? (space, animals, sports)", answers: ["space", "animals", "sports", "dinosaurs", "robots", "magic", "nature", "science"], emoji: "🎯" },
+    { id: "audience", hint: "Who is it for? (kids, beginners, my teacher)", answers: ["kids", "beginners", "my teacher", "my friend", "my family", "students"], emoji: "👥" }
+  ]}
+  successMessage="You added all the important details! Great job!"
+/>
+</Section>
+
+<Section>
+## The Golden Rules of Clarity
+
+<Panel character="promi" mood="excited">
+Here are my top tips for being clear:
+</Panel>
+
+Remember these three questions when writing a prompt:
+
+1. **WHAT** do I want? (story, help, information)
+2. **HOW** should it be? (short, funny, simple)
+3. **WHO** is it for? (me, my friend, my class)
+</Section>
+
+<Section>
+<PromptVsMistake
+  question="Final challenge! Which uses all three rules?"
+  good="Write a short, funny joke about pizza that I can tell my friends at lunch"
+  bad="Make something funny"
+  explanation="The great prompt has WHAT (a joke about pizza), HOW (short and funny), and WHO (for telling friends at lunch)!"
+  promiMessage="You're a clarity champion! 🏆"
+/>
+</Section>
+
+<Section>
+## World 1 Complete! 🎊
+
+<Panel character="promi" mood="celebrating">
+WOW! You finished all of World 1! You learned:
+
+- ✅ What AI and prompts are
+- ✅ How to write your first prompts
+- ✅ Why being clear is super important
+
+You're ready for new adventures!
+</Panel>
+
+<LevelComplete 
+  levelSlug="1-3-being-clear" 
+  stars={3}
+  message="You mastered the art of being clear! World 1 complete!"
+/>
+</Section>

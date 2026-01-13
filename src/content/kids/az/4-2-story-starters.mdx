@@ -1,0 +1,87 @@
+<Section>
+<Panel character="promi" mood="happy">
+Yaradıcılıq Dərəsinə xoş gəlmisiniz! Bu gün birlikdə heyrətamiz **hekayələr** yaradacağıq! 📚
+</Panel>
+</Section>
+
+<Section>
+## Süni İntellekt sizin həmyazarınızdır
+
+Hekayələri tək yazmaq lazım deyil! Süni intellekt sizə kömək edə bilər:
+
+- Həyəcanlı başlanğıcla hekayə başlamaq
+- Başladığınız hekayəni davam etdirmək
+- Yeni personajlar və ya dönüşlər əlavə etmək
+- İlişdiyinizdə fikirlər vermək
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Ən yaxşı hekayələr sizin xəyalınız VƏ mənim köməyim birlikdə işlədiyində ortaya çıxır!
+</Panel>
+</Section>
+
+<Section>
+## İşləyən hekayə başlanğıcları!
+
+<PromptVsMistake
+  question="Hekayə başlamaq üçün hansı prompt daha yaxşıdır?"
+  good="Nənəsinin çardağında parlayan xəritə tapan uşaq haqqında sirli hekayə başla. İlk paraqrafı həyəcanlı və sirli et!"
+  bad="Bir hekayə yaz"
+  explanation="Ətraflı prompt mənə personaj (uşaq), yer (nənənin çardağı), əşya (parlayan xəritə) və üslub (həyəcanlı, sirli) verir!"
+  promiMessage="Yaxşı hekayə başlanğıcları başlamaq üçün kifayət qədər, amma macəraya yer qoyur!"
+/>
+</Section>
+
+<Section>
+## Macəranı davam etdirin!
+
+<PromptVsMistake
+  question="Hansı prompt hekayəni davam etdirməyə daha yaxşı kömək edir?"
+  good="Hekayəmi davam etdir: 'Luna kitab rəfinin arxasında kiçik qapı tapdı. İçəridən musiqi eşidirdi.' Açanda nə baş verir? Sehrli et!"
+  bad="Qapı haqqında hekayə davam etdir"
+  explanation="İndiyə qədər yazdıqlarınızı paylaşdığınızda, eyni üslubda davam edə bilirəm!"
+  promiMessage="Hekayənizi indiyə qədər paylaşın, mən macəranı davam etdirərəm!"
+/>
+</Section>
+
+<Section>
+## Hekayənizi başladın!
+
+<DragDropPrompt
+  title="Hekayə Başlanğıcı"
+  instruction="Həyəcanlı hekayə promptu yaratmaq üçün bu parçaları sıralayın"
+  pieces={["Bir hekayənin başlanğıcını yaz", "heyvanlarla danışa bildiyini kəşf edən", "Əyləncəli və sürprizli et!", "uşaq haqqında"]}
+  correctOrder={[0, 3, 1, 2]}
+  successMessage="Əla hekayə başlanğıcı! Bu macəranı yazmağı çox istəyirəm!"
+/>
+</Section>
+
+<Section>
+## Hekayə promptunuzu yaradın!
+
+<MagicWords
+  sentence="___ edə bilən ___ tapan ___ haqqında ___ hekayə yaz. Həyəcanlı başlanğıcla başla!"
+  blanks={[
+    { hint: "✨ hekayə növü", answers: ["sehrli", "gülməli", "sirli", "macəra", "duyğusal"] },
+    { hint: "🧒 baş qəhrəman", answers: ["gənc ixtiraçı", "cəsur şahzadə", "maraqlı robot", "utancaq əjdaha", "ağıllı tülkü"] },
+    { hint: "🎁 xüsusi əşya", answers: ["köhnə kitab", "parlayan kristal", "sehrli çubuq", "sirli açar", "danışan heyvan"] },
+    { hint: "🌟 xüsusi güc", answers: ["arzuları həyata keçirmək", "portallar açmaq", "gələcəyi göstərmək", "şəkilləri canlandırmaq", "hər dildə danışmaq"] }
+  ]}
+  successMessage="Nə heyrətamiz hekayə ideyası! Qoy macəra başlasın!"
+/>
+</Section>
+
+<Section>
+## Hekayə Yaradıcısı! 🎉
+
+<Panel character="promi" mood="celebrating">
+Heyrətamiz! Süni intellekti **həmyazar** kimi istifadə etməyi öyrəndiniz! Birlikdə ən gözəl hekayələri yarada bilərik!
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-2-story-starters" 
+  stars={3}
+  message="Süni intellektlə hekayə yaratmağı öyrəndiniz!"
+/>
+</Section>

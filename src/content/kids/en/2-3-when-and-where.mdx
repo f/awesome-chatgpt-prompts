@@ -1,0 +1,96 @@
+<Section>
+<Panel character="promi" mood="excited">
+Great to see you again! Today's lesson is about **WHEN** and **WHERE** - these details make your prompts come alive!
+</Panel>
+</Section>
+
+<Section>
+## The WHEN Question
+
+**When** does your story happen?
+
+- Time of day: morning, night, sunset
+- Season: summer, winter, spring
+- Era: long ago, future, present day
+- Special time: birthday, holiday, first day of school
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+"A story about a cat" is okay, but "A story about a cat on a spooky Halloween night" is SO much more interesting!
+</Panel>
+</Section>
+
+<Section>
+## Let's Practice WHEN!
+
+<PromptVsMistake
+  question="Which prompt has a better sense of WHEN?"
+  good="Write about a snowman who wakes up on a warm spring morning"
+  bad="Write about a snowman"
+  explanation="The first prompt tells us WHEN (spring morning) which creates an interesting problem - a snowman in spring! That's a great story idea!"
+  promiMessage="WHEN can create exciting situations in your stories!"
+/>
+</Section>
+
+<Section>
+## The WHERE Question
+
+**Where** does the action take place?
+
+- Location: beach, forest, city, space
+- Building: school, castle, treehouse
+- Fantasy place: underwater kingdom, cloud city
+- Specific spot: under a bridge, on top of a mountain
+</Section>
+
+<Section>
+## Let's Practice WHERE!
+
+<PromptVsMistake
+  question="Which prompt paints a better picture of WHERE?"
+  good="Write about pirates searching for treasure on a mysterious foggy island"
+  bad="Write about pirates searching for treasure"
+  explanation="Adding WHERE (mysterious foggy island) helps me imagine the scene and write a more vivid story!"
+  promiMessage="WHERE helps set the mood and atmosphere of your story!"
+/>
+</Section>
+
+<Section>
+## Combine WHEN and WHERE!
+
+<DragDropPrompt
+  title="Time and Place"
+  instruction="Arrange these pieces to create a prompt with WHEN and WHERE"
+  pieces={["Tell me a story", "set in a magical forest", "on a starry night", "about an owl"]}
+  correctOrder={[0, 3, 1, 2]}
+  successMessage="Excellent! You set the scene with WHERE (magical forest) and WHEN (starry night)!"
+/>
+</Section>
+
+<Section>
+## Build a Complete Scene!
+
+<MagicWords
+  sentence="Write a story about an adventure that happens in a ___ during ___"
+  blanks={[
+    { hint: "🗺️ a place", answers: ["haunted house", "underwater city", "cloud kingdom", "dinosaur park", "candy land"] },
+    { hint: "⏰ a time", answers: ["a thunderstorm", "sunset", "winter break", "a full moon", "the future"] }
+  ]}
+  successMessage="You created a vivid setting with WHEN and WHERE!"
+/>
+</Section>
+
+<Section>
+## You're a Scene Setter! 🎉
+
+<Panel character="promi" mood="celebrating">
+Fantastic work! You now know how to add **WHEN** (time) and **WHERE** (place) to your prompts. This makes your requests so much more interesting!
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-3-when-and-where" 
+  stars={3}
+  message="You mastered WHEN and WHERE in prompts!"
+/>
+</Section>

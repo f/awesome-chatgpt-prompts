@@ -1,0 +1,87 @@
+<Section>
+<Panel character="promi" mood="excited">
+欢迎来到背景洞穴的最后一关！🕳️ 是时候结合你学到的一切成为**背景冠军**了！
+</Panel>
+</Section>
+
+<Section>
+## 背景冠军清单
+
+很棒的背景包括：
+
+✅ **背景信息** - 你是谁，你在什么情况下
+✅ **例子** - 展示你想要什么
+✅ **格式** - 你希望回答如何组织
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+把三个放在一起，你每次都能得到惊人的结果！
+</Panel>
+</Section>
+
+<Section>
+## 冠军挑战 #1
+
+<PromptVsMistake
+  question="哪个提示词有最好的背景？"
+  good="我是一个9岁的孩子，正在为地球日做一个关于回收的海报。你能给我5个朗朗上口的口号，像'减少、重复使用、回收！' - 短而容易记住的？"
+  bad="给我回收口号"
+  explanation="冠军提示词包括：背景信息（9岁，地球日海报），例子（'减少、重复使用、回收！'），和格式（5个口号，短的）！"
+  promiMessage="这个提示词告诉我给你完美口号所需的一切！"
+/>
+</Section>
+
+<Section>
+## 冠军挑战 #2
+
+<PromptVsMistake
+  question="哪个提示词更好地结合了背景元素？"
+  good="我在帮我弟弟学习动物叫声。你能做一个6种动物和它们叫声的有趣列表，像'牛 - 哞！'？傻傻的而且简单。"
+  bad="列出动物叫声"
+  explanation="这包括：背景信息（帮弟弟学习），例子（牛 - 哞！），和格式（6个列表，傻傻的简单）！"
+  promiMessage="完美的背景！我确切地知道什么对你弟弟有效！"
+/>
+</Section>
+
+<Section>
+## 构建冠军提示词！
+
+<DragDropPrompt
+  title="背景冠军"
+  instruction="把所有背景元素排列成一个完美的提示词"
+  pieces={["我正在为我的班级写一个故事。", "你能建议3个魔法动物名字", "像'闪闪'或'月光'吗？", "可爱但不要太长。"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="冠军提示词！你包含了背景信息、例子和格式偏好！"
+/>
+</Section>
+
+<Section>
+## 创建你的冠军提示词！
+
+<MagicWords
+  sentence="我是一个正在做___的___。你能给我像___一样的___吗？做成___。"
+  blanks={[
+    { hint: "👤 你是谁", answers: ["学生", "年轻作家", "好奇的孩子", "创意艺术家", "烹饪初学者"] },
+    { hint: "📚 你的项目", answers: ["学校项目", "生日卡片", "有趣的故事", "科学实验", "漫画书"] },
+    { hint: "🎯 你需要什么", answers: ["3个好主意", "5个有趣的标题", "一些酷的名字", "一些例子", "有用的技巧"] },
+    { hint: "💡 一个例子", answers: ["'超级明星'", "'魔法时刻'", "'奇妙世界'", "'快乐帮手'", "'梦想队'"] },
+    { hint: "✨ 风格", answers: ["有趣又短", "创意又朗朗上口", "简单又清晰", "令人兴奋又大胆", "友好又温暖"] }
+  ]}
+  successMessage="你是真正的背景冠军！这个提示词什么都有！"
+/>
+</Section>
+
+<Section>
+## 恭喜，冠军！🎉
+
+<Panel character="promi" mood="celebrating">
+你做到了！你完成了背景洞穴，成为了**背景冠军**！现在你知道如何结合背景信息、例子和格式来创造惊人的提示词！
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-4-context-champion" 
+  stars={3}
+  message="你完成了背景洞穴！你是背景冠军！"
+/>
+</Section>

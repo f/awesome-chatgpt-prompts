@@ -1,8 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, BookOpen, Sparkles, Brain, Layers, Target, Lightbulb } from "lucide-react";
+import { Schoolbell } from "next/font/google";
+import { ArrowRight, BookOpen, Sparkles, Brain, Layers, Target, Lightbulb, Gamepad2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
+import { PixelRobot } from "@/components/kids/elements/pixel-art";
+
+const kidsFont = Schoolbell({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 export const metadata: Metadata = {
   title: "The Interactive Book of Prompting | prompts.chat",
@@ -109,6 +116,33 @@ export default function BookHomePage() {
       {/* Note */}
       <div className="text-sm text-muted-foreground italic">
         <p>This book is continuously updated with new techniques and insights as AI evolves.</p>
+      </div>
+
+      {/* Kids Playable Book Section */}
+      <div className="mt-10 p-6 rounded-xl bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 border-2 border-amber-200 dark:border-amber-800">
+        <div className="flex flex-col sm:flex-row items-center gap-4">
+          <div className="shrink-0">
+            <PixelRobot className="w-16 h-20" />
+          </div>
+          <div className="flex-1 text-center sm:text-left">
+            <p className="text-lg text-amber-800 dark:text-amber-200 mb-1">
+              Are you a school teacher or a parent?
+            </p>
+            <h3 className={`text-2xl md:text-3xl font-bold text-amber-900 dark:text-amber-100 mb-3 pixel-text-shadow ${kidsFont.className}`}>
+              Try our Playable Book for Kids! 🎮
+            </h3>
+            <p className="text-sm text-amber-700 dark:text-amber-300 mb-4">
+              An interactive, game-based adventure to teach children (ages 6-12) how to communicate with AI through fun puzzles and stories.
+            </p>
+            <Button asChild className="bg-green-500 hover:bg-green-600 text-white">
+              <Link href="/kids">
+                <Gamepad2 className="mr-2 h-4 w-4" />
+                Start Playing
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
       </div>
 
       {/* Footer */}

@@ -1,0 +1,121 @@
+<Section>
+<Panel character="promi" mood="happy">
+Salut superstar ! 🌟 Aujourd'hui on va apprendre la compétence la plus importante : être **CLAIR** !
+</Panel>
+</Section>
+
+<Section>
+## Pourquoi Être Clair est Important
+
+Imagine demander à ta maman "de la nourriture" vs demander "un sandwich au beurre de cacahuète sans croûte." Lequel te donne exactement ce que tu veux ?
+
+<Panel character="promi" mood="thinking">
+C'est pareil avec moi ! Quand tu es clair, je sais exactement comment t'aider. Quand tu es vague, je dois deviner... et je pourrais me tromper !
+</Panel>
+</Section>
+
+<Section>
+## Clair vs. Pas Clair
+
+Pratiquons à repérer la différence !
+
+
+<PromptVsMistake
+  question="Quel prompt est plus clair ?"
+  good="Écris un poème de 4 lignes sur des papillons dans un jardin, en utilisant des mots qui riment"
+  bad="Écris poème papillons"
+  explanation="Le prompt clair me dit : quelle longueur (4 lignes), sur quoi (papillons dans un jardin), et une règle spéciale (rimer). Bien mieux !"
+  promiMessage="Prompts clairs = meilleurs résultats ! C'est comme de la magie !"
+/>
+
+
+<PromptVsMistake
+  question="Lequel me dit exactement ce dont tu as besoin ?"
+  good="Aide-moi à écrire 3 faits amusants sur les dauphins qu'un enfant de 10 ans aimerait"
+  bad="Parle-moi des dauphins"
+  explanation="Le premier prompt me dit : combien de faits (3), quel type (amusants), et pour qui (enfant de 10 ans). Ça aide beaucoup !"
+  promiMessage="Quand tu me dis pour qui c'est, je peux le rendre parfait pour eux !"
+/>
+</Section>
+
+<Section>
+## Le Défi de la Clarté
+
+Construisons le prompt le plus clair jamais fait !
+
+
+<DragDropPrompt
+  title="Rends-le cristallin ! 💎"
+  instruction="Arrange ces pièces pour faire un prompt super clair"
+  pieces={[
+    "S'il te plaît aide-moi à écrire",
+    "une courte histoire du soir",
+    "sur un hibou endormi",
+    "avec une fin heureuse",
+    "pour ma petite sœur"
+  ]}
+  correctOrder={[0, 1, 2, 3, 4]}
+  successMessage="C'est le prompt le plus clair jamais fait ! Incroyable !"
+/>
+</Section>
+
+<Section>
+## Ajoute des Détails Clairs
+
+<MagicWords
+  title="Ajoute les détails ! 🎯"
+  sentence="Écris un {{length}} {{type}} sur {{topic}} pour {{audience}}"
+  blanks={[
+    { id: "length", hint: "Quelle longueur ? (court, long)", answers: ["court", "long", "de 5 phrases", "d'une page", "bref", "rapide"], emoji: "📏" },
+    { id: "type", hint: "Quel type ? (histoire, liste, explication)", answers: ["histoire", "liste", "explication", "poème", "chanson", "guide"], emoji: "📝" },
+    { id: "topic", hint: "Sur quoi ? (espace, animaux, sports)", answers: ["l'espace", "les animaux", "les sports", "les dinosaures", "les robots", "la magie", "la nature", "la science"], emoji: "🎯" },
+    { id: "audience", hint: "Pour qui ? (enfants, débutants)", answers: ["les enfants", "les débutants", "mon professeur", "mon ami", "ma famille", "les étudiants"], emoji: "👥" }
+  ]}
+  successMessage="Tu as ajouté tous les détails importants ! Bon travail !"
+/>
+</Section>
+
+<Section>
+## Les Règles d'Or de la Clarté
+
+<Panel character="promi" mood="excited">
+Voici mes meilleurs conseils pour être clair :
+</Panel>
+
+Rappelle-toi ces trois questions quand tu écris un prompt :
+
+1. **QUOI** je veux ? (histoire, aide, information)
+2. **COMMENT** ça doit être ? (court, drôle, simple)
+3. **POUR QUI** c'est ? (moi, mon ami, ma classe)
+
+
+<PromptVsMistake
+  question="Défi final ! Lequel utilise les trois règles ?"
+  good="Écris une blague courte et drôle sur la pizza que je peux raconter à mes amis au déjeuner"
+  bad="Fais quelque chose de drôle"
+  explanation="Le super prompt a QUOI (une blague sur la pizza), COMMENT (courte et drôle), et POUR QUI (raconter à des amis au déjeuner) !"
+  promiMessage="Tu es un champion de la clarté ! 🏆"
+/>
+</Section>
+
+<Section>
+## Monde 1 Terminé ! 🎊
+
+<Panel character="promi" mood="celebrating">
+WOW ! Tu as terminé tout le Monde 1 ! Tu as appris :
+
+- ✅ Ce que sont l'IA et les prompts
+- ✅ Comment écrire tes premiers prompts
+- ✅ Pourquoi être clair est super important
+
+Tu es prêt pour de nouvelles aventures !
+</Panel>
+
+
+<LevelComplete 
+  levelSlug="1-3-being-clear" 
+  stars={3}
+  message="Tu as maîtrisé l'art d'être clair ! Monde 1 terminé !"
+/>
+</Section>
+

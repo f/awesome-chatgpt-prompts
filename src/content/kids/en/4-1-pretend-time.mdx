@@ -1,0 +1,86 @@
+<Section>
+<Panel character="promi" mood="excited">
+Welcome to **Creation Canyon**! 🎨 This is where creativity comes alive! Today we learn about **role-play prompts**!
+</Panel>
+</Section>
+
+<Section>
+## What is Role-Play?
+
+**Role-play** means asking the AI to pretend to be someone or something!
+
+You can say things like:
+- "Act as a pirate..."
+- "Pretend you're a teacher..."
+- "You are a friendly chef..."
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+When you ask me to play a role, I can give answers in that character's voice and style! It's like we're playing pretend together!
+</Panel>
+</Section>
+
+<Section>
+## See Role-Play in Action!
+
+<PromptVsMistake
+  question="Which prompt uses role-play?"
+  good="Pretend you're a friendly space explorer. Tell me about your adventures on Mars!"
+  bad="Tell me about Mars"
+  explanation="The first prompt asks me to BE a space explorer, so I can tell you about 'my' adventures in a fun, personal way!"
+  promiMessage="Role-play makes our conversations so much more fun and creative!"
+/>
+</Section>
+
+<Section>
+## Choose Your Character!
+
+<PromptVsMistake
+  question="Which role would be best for learning about the ocean?"
+  good="Act as a wise old sea turtle who has lived for 100 years. What cool things have you seen in the ocean?"
+  bad="What lives in the ocean?"
+  explanation="A 100-year-old sea turtle has seen so much! This makes learning about the ocean feel like hearing stories from a friend!"
+  promiMessage="Different roles give different perspectives and make learning more interesting!"
+/>
+</Section>
+
+<Section>
+## Create a Role-Play Prompt!
+
+<DragDropPrompt
+  title="Pretend Time!"
+  instruction="Arrange the pieces to create a fun role-play prompt"
+  pieces={["and tell me", "Pretend you're a dragon", "about your favorite treasure", "who loves collecting shiny things"]}
+  correctOrder={[1, 3, 0, 2]}
+  successMessage="Great role-play prompt! Now the dragon can share its treasure stories!"
+/>
+</Section>
+
+<Section>
+## Build Your Own Role-Play!
+
+<MagicWords
+  sentence="Pretend you're a ___ who ___. Tell me about ___."
+  blanks={[
+    { hint: "🎭 a character", answers: ["wizard", "superhero", "talking cat", "time traveler", "fairy"] },
+    { hint: "⭐ what they do", answers: ["grants wishes", "saves the day", "explores magical lands", "invents cool gadgets", "makes potions"] },
+    { hint: "📖 what to share", answers: ["your greatest adventure", "your best day ever", "a funny mistake you made", "your secret hideout", "your best friend"] }
+  ]}
+  successMessage="Awesome role-play! Now we can have a fun pretend conversation!"
+/>
+</Section>
+
+<Section>
+## Role-Play Master! 🎉
+
+<Panel character="promi" mood="celebrating">
+Fantastic! You learned that **role-play prompts** make conversations creative and fun! Just ask me to "act as" or "pretend to be" someone!
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-1-pretend-time" 
+  stars={3}
+  message="You learned to use role-play prompts!"
+/>
+</Section>

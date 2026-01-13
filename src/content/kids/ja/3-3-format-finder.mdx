@@ -1,0 +1,87 @@
+<Section>
+<Panel character="promi" mood="excited">
+今日は**フォーマット**について学ぶよ！📝 AIに違う方法で答えてもらえるって知ってた？
+</Panel>
+</Section>
+
+<Section>
+## フォーマットって何？
+
+**フォーマット**は答えをどう見せてほしいか：
+
+- 📋 **リスト** - 番号付きまたは箇条書き
+- 📖 **物語** - 始まり、中間、終わりのある物語
+- 🎵 **詩** - 韻とリズムのあるもの
+- ❓ **Q&A** - 質問と答えのスタイル
+- 📊 **表** - 行と列で整理されたもの
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+フォーマットを教えてくれれば、あなたに一番役立つ方法で答えを整理できるよ！
+</Panel>
+</Section>
+
+<Section>
+## フォーマットで違いが出る！
+
+<PromptVsMistake
+  question="どっちのプロンプトが明確なフォーマットを求めている？"
+  good="イルカについての楽しい事実を5つ、番号付きリストで教えて"
+  bad="イルカについて教えて"
+  explanation="最初のプロンプトは答えをどう整理するか正確に教えている - 5つの番号付き事実として！"
+  promiMessage="特定のフォーマットを求めれば、まさに必要なものが得られるよ！"
+/>
+</Section>
+
+<Section>
+## フォーマットを選ぼう！
+
+<PromptVsMistake
+  question="どのフォーマットが覚えるのに一番良い？"
+  good="太陽からの順番で惑星を箇条書きでリストして"
+  bad="惑星について教えて"
+  explanation="リスト形式だと惑星を順番に覚えて数えやすいよ！"
+  promiMessage="リストは学んで覚えるのに最高！"
+/>
+</Section>
+
+<Section>
+## フォーマットを練習！
+
+<DragDropPrompt
+  title="フォーマットを追加"
+  instruction="特定のフォーマットを求めるように並べ替えよう"
+  pieces={["短い詩として", "韻を踏む行で", "雨について書いて", "4行で"]}
+  correctOrder={[2, 0, 1, 3]}
+  successMessage="完璧！詩のフォーマットを具体的な詳細で求めたね！"
+/>
+</Section>
+
+<Section>
+## フォーマットを選ぼう！
+
+<MagicWords
+  sentence="___についての___を___として教えて"
+  blanks={[
+    { hint: "🔢 いくつ", answers: ["5つのヒント", "3つのアイデア", "10の事実", "7つのステップ", "4つの例"] },
+    { hint: "📚 トピック", answers: ["良い友達になること", "地球を救うこと", "健康でいること", "クリエイティブになること", "新しいことを学ぶこと"] },
+    { hint: "📋 フォーマット", answers: ["番号付きリスト", "箇条書き", "短い詩", "簡単な物語", "簡単なステップ"] }
+  ]}
+  successMessage="フォーマット選びの素晴らしい仕事！これで答えが読みやすくなるよ！"
+/>
+</Section>
+
+<Section>
+## フォーマットマスター！🎉
+
+<Panel character="promi" mood="celebrating">
+素晴らしい！特定の**フォーマット**を求めることで、まさに必要な形で整理された答えが得られることを学んだね！
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-3-format-finder" 
+  stars={3}
+  message="異なるフォーマットの求め方を学んだよ！"
+/>
+</Section>

@@ -1,0 +1,121 @@
+<Section>
+<Panel character="promi" mood="happy">
+Hey Superstar! 🌟 Heute lernen wir die wichtigste Fähigkeit: **KLAR** sein!
+</Panel>
+</Section>
+
+<Section>
+## Warum Klar Sein Wichtig Ist
+
+Stell dir vor, du bittest deine Mama um "Essen" vs. um "ein Erdnussbutter-Sandwich ohne Kruste." Was gibt dir genau das, was du willst?
+
+<Panel character="promi" mood="thinking">
+Bei mir ist es genauso! Wenn du klar bist, weiß ich genau, wie ich helfen kann. Wenn du vage bist, muss ich raten... und ich könnte falsch raten!
+</Panel>
+</Section>
+
+<Section>
+## Klar vs. Unklar
+
+Lass uns üben, den Unterschied zu erkennen!
+
+
+<PromptVsMistake
+  question="Welcher Prompt ist klarer?"
+  good="Schreibe ein 4-zeiliges Gedicht über Schmetterlinge in einem Garten mit reimenden Worten"
+  bad="Schreibe Gedicht Schmetterlinge"
+  explanation="Der klare Prompt sagt mir: wie lang (4 Zeilen), worüber (Schmetterlinge im Garten), und eine besondere Regel (reimen). Viel besser!"
+  promiMessage="Klare Prompts = bessere Ergebnisse! Es ist wie Magie!"
+/>
+
+
+<PromptVsMistake
+  question="Welcher sagt mir genau, was du brauchst?"
+  good="Hilf mir, 3 lustige Fakten über Delfine zu schreiben, die ein 10-Jähriger mögen würde"
+  bad="Erzähl mir von Delfinen"
+  explanation="Der erste Prompt sagt mir: wie viele Fakten (3), welche Art (lustig), und für wen (10-Jähriger). Das hilft sehr!"
+  promiMessage="Wenn du mir sagst, für wen es ist, kann ich es perfekt für sie machen!"
+/>
+</Section>
+
+<Section>
+## Die Klarheits-Herausforderung
+
+Lass uns den klarsten Prompt aller Zeiten bauen!
+
+
+<DragDropPrompt
+  title="Mach es kristallklar! 💎"
+  instruction="Ordne diese Teile an, um einen super klaren Prompt zu machen"
+  pieces={[
+    "Bitte hilf mir zu schreiben",
+    "eine kurze Gute-Nacht-Geschichte",
+    "über eine schläfrige Eule",
+    "mit einem glücklichen Ende",
+    "für meine kleine Schwester"
+  ]}
+  correctOrder={[0, 1, 2, 3, 4]}
+  successMessage="Das ist der klarste Prompt aller Zeiten! Toll!"
+/>
+</Section>
+
+<Section>
+## Füge Klare Details Hinzu
+
+<MagicWords
+  title="Füge die Details hinzu! 🎯"
+  sentence="Schreibe eine {{length}} {{type}} über {{topic}} für {{audience}}"
+  blanks={[
+    { id: "length", hint: "Wie lang? (kurze, lange)", answers: ["kurze", "lange", "5-Satz", "einseitige", "kurze", "schnelle"], emoji: "📏" },
+    { id: "type", hint: "Welche Art? (Geschichte, Liste, Erklärung)", answers: ["Geschichte", "Liste", "Erklärung", "Gedicht", "Lied", "Anleitung"], emoji: "📝" },
+    { id: "topic", hint: "Worüber? (Weltraum, Tiere, Sport)", answers: ["Weltraum", "Tiere", "Sport", "Dinosaurier", "Roboter", "Magie", "Natur", "Wissenschaft"], emoji: "🎯" },
+    { id: "audience", hint: "Für wen? (Kinder, Anfänger)", answers: ["Kinder", "Anfänger", "meinen Lehrer", "meinen Freund", "meine Familie", "Schüler"], emoji: "👥" }
+  ]}
+  successMessage="Du hast alle wichtigen Details hinzugefügt! Gute Arbeit!"
+/>
+</Section>
+
+<Section>
+## Die Goldenen Regeln der Klarheit
+
+<Panel character="promi" mood="excited">
+Hier sind meine besten Tipps, um klar zu sein:
+</Panel>
+
+Erinnere dich an diese drei Fragen, wenn du einen Prompt schreibst:
+
+1. **WAS** will ich? (Geschichte, Hilfe, Information)
+2. **WIE** soll es sein? (kurz, lustig, einfach)
+3. **FÜR WEN** ist es? (mich, meinen Freund, meine Klasse)
+
+
+<PromptVsMistake
+  question="Letzte Herausforderung! Welcher benutzt alle drei Regeln?"
+  good="Schreibe einen kurzen, lustigen Witz über Pizza, den ich meinen Freunden beim Mittagessen erzählen kann"
+  bad="Mach was Lustiges"
+  explanation="Der tolle Prompt hat WAS (ein Witz über Pizza), WIE (kurz und lustig), und FÜR WEN (Freunden beim Mittagessen erzählen)!"
+  promiMessage="Du bist ein Klarheits-Champion! 🏆"
+/>
+</Section>
+
+<Section>
+## Welt 1 Abgeschlossen! 🎊
+
+<Panel character="promi" mood="celebrating">
+WOW! Du hast die ganze Welt 1 beendet! Du hast gelernt:
+
+- ✅ Was KI und Prompts sind
+- ✅ Wie man erste Prompts schreibt
+- ✅ Warum klar sein super wichtig ist
+
+Du bist bereit für neue Abenteuer!
+</Panel>
+
+
+<LevelComplete 
+  levelSlug="1-3-being-clear" 
+  stars={3}
+  message="Du hast die Kunst des Klar-Seins gemeistert! Welt 1 abgeschlossen!"
+/>
+</Section>
+

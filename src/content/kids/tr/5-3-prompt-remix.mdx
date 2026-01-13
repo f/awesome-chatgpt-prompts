@@ -1,0 +1,106 @@
+<Section>
+<Panel character="promi" mood="excited">
+Bugün **Prompt Remix** öğreniyoruz! 🎵 Bu, farklı sonuçlar almak için promptları değiştirmek demek!
+</Panel>
+</Section>
+
+<Section>
+## Aynı Konu, Farklı Sonuçlar!
+
+Aynı şeyi farklı şekillerde sorarak farklı cevaplar alabilirsin:
+
+- **Eğlence için**: "Bana yunusları komik bir şekilde anlat"
+- **Okul için**: "Bana yunuslar hakkında 5 eğitici bilgi ver"
+- **Yaratıcılık için**: "Yunusun bakış açısından bir şiir yaz"
+</Section>
+
+<Section>
+## Prompt Laboratuvarını Dene! 🔬
+
+<PromptLab
+  title="Promptunu Geliştir"
+  scenario="Basit bir promptu adım adım detay ekleyerek daha iyi yapalım!"
+  basePrompt="Bana köpekler hakkında anlat"
+  baseResponse="Köpekler hayvanlardır. Dört bacakları ve tüyleri vardır."
+  improvements={[
+    { label: "Belirli bir cins ekle", prompt: "Bana Golden Retriever köpekleri anlat", response: "Golden Retriever'lar arkadaş canlısı kişilikleri, altın rengi tüyleri ve yüzmeye olan aşklarıyla tanınan harika köpekler!" },
+    { label: "Hedef kitle ekle", prompt: "10 yaşındaki çocuklar için Golden Retriever köpekleri anlat", response: "Golden Retriever'lar top getirmeyi ve yüzmeyi seven süper arkadaş canlısı köpekler! Yumuşak altın rengi tüyleri ve kocaman mutlu gülümsemeleri var!" },
+    { label: "Format ekle", prompt: "10 yaşındaki çocuklar için Golden Retriever köpekleri 3 eğlenceli bilgi ver", response: "İşte Golden Retriever'lar hakkında 3 eğlenceli bilgi: 1) Avcılar için kuş getirmek üzere eğitildiler, 2) 200'den fazla kelime öğrenebilirler, 3) Perdeli ayakları sayesinde harika yüzücülerdir!" }
+  ]}
+  successMessage="Eklediğin her detay yanıtı daha iyi ve daha kullanışlı yaptı!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Promptları remixlemek aynı konuyu birçok heyecanlı şekilde keşfedebileceğin anlamına gelir!
+</Panel>
+</Section>
+
+<Section>
+## Remixi Gör!
+
+<PromptVsMistake
+  question="Dinozorlar hakkında öğrenmek istiyorsun ama EĞLENCELİ bir şekilde. Hangi remix en iyi?"
+  good="Yeni uyanan bir T-Rex olduğunu hayal et. Bana gününü anlat - ne yiyorsun, arkadaşların kim ve seni ne huysuz yapıyor?"
+  bad="Bana T-Rex hakkında bilgiler ver"
+  explanation="Aynı konu (T-Rex), ama remix onu dinozorun bakış açısından eğlenceli bir hikaye yapıyor!"
+  promiMessage="Aynı konuyu remixlemek taze, eğlenceli öğrenme yolları verir!"
+/>
+</Section>
+
+<Section>
+## Farklı Hedefler İçin Remix!
+
+<PromptVsMistake
+  question="Ay hakkında öğrendin. Şimdi yaratıcı bir hikaye yazmak istiyorsun. Hangi remix işe yarar?"
+  good="Ayı ziyaret etmek isteyen küçük bir yıldız hakkında uyku hikayesi yaz. Tatlı bir sonla büyülü yap!"
+  bad="Bana ay hakkında daha fazla bilgi ver"
+  explanation="'Bilgi öğrenme'den 'yaratıcı hikaye'ye remixledin - aynı konu, farklı amaç!"
+  promiMessage="Remixleme bildiklerini yeni yaratıcı şekillerde kullanmanı sağlar!"
+/>
+</Section>
+
+<Section>
+## Farklı Remixler Dene!
+
+<DragDropPrompt
+  title="Prompt Remix"
+  instruction="'Bana kediler hakkında anlat' promptunu yaratıcı bir prompta remixle:"
+  pieces={["Rahat bir kitapçıda yaşayan", "tembel bir kedinin bakış açısından yaz.", "En sevdiğin uyku yerini anlat.", "Komik ve rahat yap!"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Harika remix! Aynı konu, tamamen farklı ve eğlenceli yaklaşım!"
+/>
+</Section>
+
+<Section>
+## Remixini Oluştur!
+
+Temel konuyu "robotlar" al ve remixle:
+
+<MagicWords
+  sentence="___ bir ___ robot ___. ___ anlat. ___ yap!"
+  blanks={[
+    { hint: "📝 ne yazılsın", answers: ["hakkında hikaye anlat", "günlük yazısı yaz", "hakkında şarkı yarat", "için gün tanımla", "röportaj yap"] },
+    { hint: "🤖 robot türü", answers: ["minik yardımcı", "dans eden", "yemek yapan", "uzay kaşifi", "arkadaş canlısı sınıf"] },
+    { hint: "⭐ ne yapıyor", answers: ["yeni arkadaş edinmeyi öğrenen", "müziği sevdiğini keşfeden", "komik bir hata yapan", "ilk macerasına çıkan", "ilk defa bir insanla tanışan"] },
+    { hint: "🎯 ne dahil edilsin", answers: ["Yeni keşfi hakkında nasıl hissettiğini", "Gününün en komik anını", "Ne hayal ettiğini", "En sevdiği anıyı", "Bugün ne öğrendiğini"] },
+    { hint: "✨ tarz", answers: ["İçten ve tatlı", "Saçma ve eğlenceli", "Heyecanlı ve maceralı", "Huzurlu ve sakin", "Gizemli ve meraklı"] }
+  ]}
+  successMessage="Harika remix! 'Robotları' tamamen benzersiz bir şeye dönüştürdün!"
+/>
+</Section>
+
+<Section>
+## Remix Ustası! 🎉
+
+<Panel character="promi" mood="celebrating">
+Fantastik! Aynı konudan farklı sonuçlar almak için **promptları remixlemeyi** öğrendin! Bu yaratıcılığını sonsuz yapar!
+</Panel>
+
+<LevelComplete 
+  levelSlug="5-3-prompt-remix" 
+  stars={3}
+  message="Farklı sonuçlar için promptları remixlemeyi öğrendin!"
+/>
+</Section>

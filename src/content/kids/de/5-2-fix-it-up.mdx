@@ -1,0 +1,108 @@
+<Section>
+<Panel character="promi" mood="happy">
+Willkommen zurück! Heute lernen wir eine super wichtige Fähigkeit: **schwache Prompts finden und reparieren**! 🔧
+</Panel>
+</Section>
+
+<Section>
+## Erkenne die Probleme!
+
+Schwache Prompts haben oft:
+
+❌ Zu vage - "Schreibe etwas"
+❌ Fehlende Details - "Erzähl mir von einer Person"
+❌ Kein Format - Einfach fragen ohne Struktur
+❌ Unklarer Stil - Nicht sagen, wie du es willst
+</Section>
+
+<Section>
+## Sei der Prompt-Doktor! 🏥
+
+<PromptDoctor
+  title="Heile diesen Prompt"
+  brokenPrompt="Schreibe etwas"
+  problems={[
+    { issue: "Zu vage", symptom: "Was soll ich schreiben? Eine Geschichte? Ein Gedicht? Einen Witz?", fix: "Schreibe eine Geschichte" },
+    { issue: "Kein Thema", symptom: "Wovon soll die Geschichte handeln?", fix: "Schreibe eine Geschichte über einen Drachen" },
+    { issue: "Keine Details", symptom: "Was für ein Drache? Was passiert?", fix: "Schreibe eine kurze Geschichte über einen freundlichen Drachen, der Kekse backt" }
+  ]}
+  healedPrompt="Schreibe eine kurze Geschichte über einen freundlichen Drachen, der Kekse backt"
+  successMessage="Du hast den Prompt geheilt! Von 2 Wörtern zu einer tollen detaillierten Anfrage!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Schwache Prompts zu erkennen hilft dir, bessere zu schreiben! Es ist wie ein Prompt-Detektiv zu sein!
+</Panel>
+</Section>
+
+<Section>
+## Finde die Lösung!
+
+<PromptVsMistake
+  question="Dieser Prompt ist schwach: 'Schreibe ein Gedicht.' Wie würdest du ihn reparieren?"
+  good="Schreibe ein kurzes 4-zeiliges reimendes Gedicht über einen Regenbogen nach einem Sturm. Mach es fröhlich und benutze bunte Wörter!"
+  bad="Schreibe bitte ein wirklich gutes Gedicht"
+  explanation="Nur 'wirklich gut' zu sagen hilft nicht! Füge stattdessen Details hinzu: Thema (Regenbogen), Format (4 Zeilen, reimend), und Stil (fröhlich, bunt)!"
+  promiMessage="Spezifische Details hinzuzufügen verwandelt einen schwachen Prompt in einen starken!"
+/>
+</Section>
+
+<Section>
+## Verbessere diesen Prompt!
+
+<PromptVsMistake
+  question="Schwacher Prompt: 'Hilf mir bei meinen Hausaufgaben.' Wie würdest du ihn besser machen?"
+  good="Ich bin in der 4. Klasse und brauche Hilfe, Brüche zu verstehen. Kannst du erklären, was 1/2 bedeutet, mit Pizza als Beispiel? Halte es einfach!"
+  bad="Bitte hilf mir mehr bei meinen Hausaufgaben"
+  explanation="Die gute Version sagt mir: dein Level (4. Klasse), Thema (Brüche), fragt nach einem Beispiel (Pizza), und Stil (einfach)!"
+  promiMessage="Je spezifischer du bist, desto besser kann ich helfen!"
+/>
+</Section>
+
+<Section>
+## Repariere den Prompt!
+
+<DragDropPrompt
+  title="Prompt-Reparatur"
+  instruction="Der Prompt 'Erzähl mir eine Geschichte' ist zu schwach. Ordne diese Ergänzungen, um ihn zu reparieren:"
+  pieces={["über eine tapfere kleine Maus", "Erzähl mir eine kurze Gute-Nacht-Geschichte", "die einem verlorenen Vögelchen hilft, nach Hause zu finden.", "Mach sie sanft und ende damit, dass alle sicher sind."]}
+  correctOrder={[1, 0, 2, 3]}
+  successMessage="Du hast einen schwachen Prompt in einen tollen verwandelt!"
+/>
+</Section>
+
+<Section>
+## Upgrade-Herausforderung!
+
+Nimm diesen schwachen Prompt und mach ihn stark:
+
+**Schwach:** "Gib mir Ideen"
+
+<MagicWords
+  sentence="Gib mir ___ kreative Ideen für ___ die ___ und ___ sind. Etwas wie ___!"
+  blanks={[
+    { hint: "🔢 wie viele", answers: ["5", "3", "7", "10", "4"] },
+    { hint: "🎯 wofür", answers: ["eine Geburtstagsparty", "ein Wissenschaftsprojekt", "ein lustiges Spiel", "eine Geschichte zum Schreiben", "mein Zimmer dekorieren"] },
+    { hint: "✨ Stil 1", answers: ["lustig", "einfach zu machen", "kreativ", "überraschend", "bunt"] },
+    { hint: "🌟 Stil 2", answers: ["kinderfreundlich", "nicht zu teuer", "einzigartig", "aufregend", "einfach"] },
+    { hint: "💡 Beispiel", answers: ["eine Schatzsuche", "Schleim machen", "ein Superhelden-Thema", "im Dunkeln leuchtende Sachen", "eine Zaubershow"] }
+  ]}
+  successMessage="Du hast einen schwachen 2-Wort-Prompt in einen erstaunlichen detaillierten verwandelt!"
+/>
+</Section>
+
+<Section>
+## Prompt-Reparierer! 🎉
+
+<Panel character="promi" mood="celebrating">
+Ausgezeichnet! Du hast gelernt, schwache Prompts zu erkennen und sie zu **reparieren**, indem du Details, Format und Stil hinzufügst! Diese Fähigkeit wird dir für immer helfen!
+</Panel>
+
+<LevelComplete 
+  levelSlug="5-2-fix-it-up" 
+  stars={3}
+  message="Du hast gelernt, schwache Prompts zu finden und zu reparieren!"
+/>
+</Section>

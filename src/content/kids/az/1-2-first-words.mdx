@@ -1,0 +1,103 @@
+<Section>
+<Panel character="promi" mood="happy">
+Xoş gəldin geri, dost! İlk əsl promptlarını yazmağa hazırsan? Gedək! 🚀
+</Panel>
+</Section>
+
+<Section>
+## Sözlərin Sehri
+
+AI ilə danışanda hər söz önəmlidir! Gəl görək daha çox söz əlavə etmək promptları necə yaxşılaşdırır.
+
+<WordPredictor
+  title="Sözlər Niyə Vacibdir"
+  instruction="Növbəti sözü necə təxmin etdiyimi xatırlayırsanmı? Promptlarla nə baş verdiyinə bax!"
+  sentence="Bir əjdaha haqqında hekayə ___"
+  options={["yaz", "uç", "ye", "mavi"]}
+  correctAnswer="yaz"
+  explanation="'Yaz' ən məntiqlidir, çünki hekayə istəklərində adətən 'yaz' əmri gəlir! AI bu nümunələri öyrənir."
+  aiThinking="Hekayə istəklərindən sonra adətən 'yaz' gəlir..."
+  successMessage="Dəqiq! Detallı sözlər təxminlərimi istiqamətləndirir - buna görə promptlarda detallər vacibdir!"
+/>
+
+<Panel character="promi" mood="thinking">
+Bax buna! Kimsə mənə sadəcə "pişik" desə, nə istədiklərini bilmirəm. Şəkil istəyirlər? Hekayə? Pişiklər haqqında faktlar? Çaşqınam! 😵‍💫
+</Panel>
+</Section>
+
+<Section>
+## Daha Yaxşı Promptlar Qurmaq
+
+Yaxşı promptun **üç hissəsi** var:
+
+1. **Nə istəyirsən** (hekayə, kömək, məlumat)
+2. **Mövzu** (pişiklər, kosmos, dinozavrlar)
+3. **Detaillar** (qısa, gülməli, uşaqlar üçün)
+
+<Panel character="promi" mood="excited">
+Gəl birlikdə prompt quraq!
+</Panel>
+</Section>
+
+<Section>
+## Parçaları Sürüklə!
+
+<DragDropPrompt
+  title="İlk promptunu qur! 🧩"
+  instruction="Hekayə istəmək üçün bu parçaları düzgün sıraya qoy."
+  pieces={[
+    "Zəhmət olmasa yaz",
+    "qısa bir hekayə",
+    "cəsur bir pişik balası haqqında",
+    "macəraya çıxan"
+  ]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Mükəmməl! Bu əla promptdur!"
+/>
+</Section>
+
+<Section>
+## Boşluqları Doldur!
+
+İndi sehrli sözləri sürükləyərək öz promptunu etməyə çalış:
+
+
+<MagicWords
+  title="Öz promptunu yarat! ✨"
+  sentence="Zəhmət olmasa {{type}} yaz, {{character}} haqqında, {{action}}"
+  blanks={[
+    { id: "type", hint: "Hansı növ yazı? (hekayə, şeir, mahnı)", answers: ["hekayə", "şeir", "mahnı", "məktub", "zarafat"], emoji: "📝" },
+    { id: "character", hint: "Kim haqqında? (robot, əjdaha, küçük)", answers: ["robot", "əjdaha", "küçük", "pişik", "sehrbaz", "şahzadə", "cəngavər", "dovşan", "unicorn"], emoji: "🦸" },
+    { id: "action", hint: "Nə edirlər? (xəzinə tapan, dostlar qazanan)", answers: ["xəzinə tapan", "dostlar qazanan", "günü xilas edən", "macəraya çıxan", "uçmağı öyrənən", "sehr kəşf edən"], emoji: "⚡" }
+  ]}
+  successMessage="Vay! Möhtəşəm prompt yaratdın!"
+/>
+</Section>
+
+<Section>
+## Seçmə Növbəsi Səndədir!
+
+<PromptVsMistake
+  question="Hansı prompt daha yaxşı hekayə alacaq?"
+  good="Rəqs etməyi öyrənmək istəyən pinqvin haqqında gülməli hekayə yaz"
+  bad="Hekayə yaz pinqvin"
+  explanation="Birinci prompt mənə gülməli olmalı olduğunu, pinqvin haqqında olduğunu VƏ pinqvinin nə etmək istədiyini deyir!"
+  promiMessage="Detaillar hər şeyi daha yaxşı edir! Dəqiq nə istədiyini bilməyi sevirəm!"
+/>
+</Section>
+
+<Section>
+## Əla İş! 🌟
+
+<Panel character="promi" mood="celebrating">
+İlk promptlarını yazdın! Yaxşı promptlara lazım olanı öyrəndin: nə istəyirsən, mövzu və detaillar. Həqiqətən yaxşılaşırsan!
+</Panel>
+
+
+<LevelComplete 
+  levelSlug="1-2-first-words" 
+  stars={3}
+  message="İlk promptlarını yazmağı öyrəndin!"
+/>
+</Section>
+

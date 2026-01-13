@@ -1,0 +1,100 @@
+<Section>
+<Panel character="promi" mood="happy">
+Welcome back, friend! Ready to write your first real prompts? Let's go! 🚀
+</Panel>
+</Section>
+
+<Section>
+## The Magic of Words
+
+When you talk to AI, every word matters! Let's see how adding more words makes prompts better.
+
+<WordPredictor
+  title="Why Words Matter"
+  instruction="Remember how I guess the next word? Watch what happens with prompts!"
+  sentence="Write a story about a ___"
+  options={["dragon", "thing", "the", "very"]}
+  correctAnswer="dragon"
+  explanation="'Dragon' makes the most sense because stories are usually about characters or things! 'Thing' is too vague, and 'the' or 'very' don't fit the pattern."
+  aiThinking="Stories are usually about someone or something interesting..."
+  successMessage="Exactly! Specific words guide my predictions - that's why details matter in prompts!"
+/>
+
+<Panel character="promi" mood="thinking">
+Watch this! If someone just says "cat" to me, I don't know what they want. Do they want a picture? A story? Facts about cats? I'm confused! 😵‍💫
+</Panel>
+</Section>
+
+<Section>
+## Building Better Prompts
+
+A good prompt has **three parts**:
+
+1. **What you want** (a story, help, information)
+2. **The topic** (cats, space, dinosaurs)
+3. **Details** (short, funny, for kids)
+
+<Panel character="promi" mood="excited">
+Let's build a prompt together!
+</Panel>
+</Section>
+
+<Section>
+## Drag the Pieces!
+
+<DragDropPrompt
+  title="Build your first prompt! 🧩"
+  instruction="Put these pieces in the right order to ask for a story."
+  pieces={[
+    "Please write",
+    "a short story",
+    "about a brave kitten",
+    "who goes on an adventure"
+  ]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Perfect! That's a great prompt!"
+/>
+</Section>
+
+<Section>
+## Fill in the Blanks!
+
+Now try making your own prompt by dragging the magic words:
+
+<MagicWords
+  title="Create your own prompt! ✨"
+  sentence="Please write a {{type}} about a {{character}} who {{action}}"
+  blanks={[
+    { id: "type", hint: "What kind of writing? (story, poem, song)", answers: ["story", "poem", "song", "letter", "joke"], emoji: "📝" },
+    { id: "character", hint: "Who is it about? (robot, dragon, puppy)", answers: ["robot", "dragon", "puppy", "cat", "wizard", "princess", "knight", "bunny", "unicorn"], emoji: "🦸" },
+    { id: "action", hint: "What do they do? (finds treasure, makes friends, saves the day)", answers: ["finds treasure", "makes friends", "saves the day", "goes on adventure", "learns to fly", "finds a friend", "discovers magic"], emoji: "⚡" }
+  ]}
+  successMessage="Wow! You created an awesome prompt!"
+/>
+</Section>
+
+<Section>
+## Your Turn to Choose!
+
+<PromptVsMistake
+  question="Which prompt will get a better story?"
+  good="Write a funny story about a penguin who wants to learn how to dance"
+  bad="Write story penguin"
+  explanation="The first prompt tells me it should be funny, it's about a penguin, AND what the penguin wants to do!"
+  promiMessage="Details make everything better! I love knowing exactly what you want!"
+/>
+</Section>
+
+<Section>
+## Great Job! 🌟
+
+<Panel character="promi" mood="celebrating">
+You wrote your first prompts! You learned that good prompts need: what you want, a topic, and details. You're getting really good at this!
+</Panel>
+
+<LevelComplete 
+  levelSlug="1-2-first-words" 
+  stars={3}
+  message="You learned how to write your first prompts!"
+/>
+</Section>

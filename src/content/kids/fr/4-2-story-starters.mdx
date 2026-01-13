@@ -1,0 +1,87 @@
+<Section>
+<Panel character="promi" mood="happy">
+Bienvenue de retour au Canyon de la Créativité ! Aujourd'hui, nous allons créer des **histoires** incroyables ensemble ! 📚
+</Panel>
+</Section>
+
+<Section>
+## L'IA comme ton co-auteur
+
+Tu n'as pas à écrire des histoires tout seul ! L'IA peut t'aider à :
+
+- Commencer une histoire avec un début passionnant
+- Continuer une histoire que tu as commencée
+- Ajouter de nouveaux personnages ou rebondissements
+- Te donner des idées quand tu es bloqué
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Les meilleures histoires viennent de ton imagination ET de mon aide travaillant ensemble !
+</Panel>
+</Section>
+
+<Section>
+## Des débuts d'histoire qui marchent !
+
+<PromptVsMistake
+  question="Quel est un meilleur prompt pour commencer une histoire ?"
+  good="Commence une histoire de mystère sur un enfant qui trouve une carte brillante dans le grenier de sa grand-mère. Fais le premier paragraphe passionnant et mystérieux !"
+  bad="Écris une histoire"
+  explanation="Le prompt détaillé me donne un personnage (un enfant), un décor (grenier de grand-mère), un objet (carte brillante), et un style (passionnant, mystérieux) !"
+  promiMessage="Les bons débuts d'histoire me donnent juste assez pour commencer, mais laissent de la place pour l'aventure !"
+/>
+</Section>
+
+<Section>
+## Continue l'aventure !
+
+<PromptVsMistake
+  question="Quel prompt aide mieux à continuer une histoire ?"
+  good="Continue mon histoire : 'Luna a trouvé une petite porte derrière sa bibliothèque. Elle entendait de la musique venir de l'intérieur.' Que se passe-t-il quand elle l'ouvre ? Rends-le magique !"
+  bad="Continue une histoire sur une porte"
+  explanation="En partageant ce que tu as écrit jusqu'ici, je peux continuer dans le même style !"
+  promiMessage="Partage ton histoire jusqu'ici et je continuerai l'aventure !"
+/>
+</Section>
+
+<Section>
+## Commence ton histoire !
+
+<DragDropPrompt
+  title="Début d'Histoire"
+  instruction="Arrange ces pièces pour créer un prompt d'histoire passionnant"
+  pieces={["Écris le début", "qui découvre qu'il peut parler aux animaux", "Rends-le drôle et surprenant !", "d'une histoire sur un enfant"]}
+  correctOrder={[0, 3, 1, 2]}
+  successMessage="C'est un super début d'histoire ! J'ai hâte d'écrire cette aventure !"
+/>
+</Section>
+
+<Section>
+## Crée ton prompt d'histoire !
+
+<MagicWords
+  sentence="Écris une histoire ___ sur un ___ qui trouve un ___ qui peut ___. Commence par un début passionnant !"
+  blanks={[
+    { hint: "✨ type d'histoire", answers: ["magique", "drôle", "mystérieuse", "aventureuse", "touchante"] },
+    { hint: "🧒 personnage principal", answers: ["jeune inventeur", "princesse courageuse", "robot curieux", "dragon timide", "renard malin"] },
+    { hint: "🎁 objet spécial", answers: ["vieux livre", "cristal brillant", "baguette magique", "clé mystérieuse", "animal qui parle"] },
+    { hint: "🌟 pouvoir spécial", answers: ["exaucer des vœux", "ouvrir des portails", "montrer le futur", "donner vie aux dessins", "parler toutes les langues"] }
+  ]}
+  successMessage="Quelle idée d'histoire incroyable ! Que l'aventure commence !"
+/>
+</Section>
+
+<Section>
+## Créateur d'Histoires ! 🎉
+
+<Panel character="promi" mood="celebrating">
+Incroyable ! Tu as appris à utiliser l'IA comme ton **co-auteur** ! Ensemble, nous pouvons créer les histoires les plus incroyables !
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-2-story-starters" 
+  stars={3}
+  message="Tu as appris à créer des histoires avec l'IA !"
+/>
+</Section>

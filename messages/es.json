@@ -47,7 +47,8 @@
     "register": "Registrarse",
     "logout": "Cerrar sesión",
     "ide": "Typed-Prompts IDE",
-    "developers": "Desarrolladores"
+    "developers": "Desarrolladores",
+    "book": "Libro"
   },
   "brand": {
     "copyLogoSvg": "Copiar Logo SVG",
@@ -1385,5 +1386,63 @@
     "ideationTitle": "Ideación",
     "communityContributorsTitle": "Contribuidores de la Comunidad",
     "viewAllContributors": "Ver todos los contribuidores en"
+  },
+  "kids": {
+    "header": { "title": "Escuela de Prompts de Promi", "levels": "niveles", "home": "Inicio", "map": "Mapa", "mainSite": "Sitio Principal" },
+    "home": {
+      "badge": "Aprendizaje para Niños",
+      "title": "¡Aprende a Hablar con IA!",
+      "subtitle": "¡Únete al robot Promi en una divertida aventura para aprender a escribir increíbles prompts!",
+      "promiIntro": { "greeting": "¡Hola, soy Promi! 🤖", "message": "¡Soy un robot amigable que necesita TU ayuda! ¿Me ayudarás a entender mejor los prompts?" },
+      "features": {
+        "games": { "title": "Juegos Divertidos", "description": "Aprende jugando con arrastrar y soltar y cuestionarios" },
+        "stories": { "title": "Historias Geniales", "description": "Sigue a Promi en emocionantes aventuras" },
+        "stars": { "title": "Gana Estrellas", "description": "Colecciona estrellas y desbloquea nuevos niveles" }
+      },
+      "startButton": "¡Empezar a Jugar!",
+      "ageNote": "Ideal para niños de 8-14 años que saben leer y escribir",
+      "whatYouLearn": "Lo Que Aprenderás",
+      "readyTitle": "¿Listo para Empezar?",
+      "readyMessage": "¡Vamos a una aventura y aprendamos a hablar con la IA!"
+    },
+    "navigation": {
+      "back": "Atrás",
+      "next": "Siguiente"
+    },
+    "map": { "title": "Mapa del Mundo", "subtitle": "¡Elige un nivel y comienza tu aventura!", "worldLevels": "{count} niveles", "levelNumber": "Nivel {number}", "locked": "Completa el nivel anterior para desbloquear" },
+    "worlds": { "1": { "title": "Aldea Inicial" }, "2": { "title": "Castillo de Claridad" }, "3": { "title": "Cuevas de Contexto" }, "4": { "title": "Cañón Creativo" }, "5": { "title": "Montaña Maestra" } },
+    "levels": {
+      "1_1_meet_promi": { "title": "¡Conoce a Promi!", "description": "Saluda a tu amigo robot y aprende qué es la IA" },
+      "1_2_first_words": { "title": "Las Primeras Palabras de Promi", "description": "Ayuda a Promi a entender escribiendo tu primer prompt" },
+      "1_3_being_clear": { "title": "Ser Claro", "description": "Aprende por qué las instrucciones claras funcionan mejor" },
+      "2_1_missing_details": { "title": "Los Detalles Perdidos", "description": "Descubre por qué los detalles importan" },
+      "2_2_who_and_what": { "title": "Quién y Qué", "description": "Añade personajes y objetos" },
+      "2_3_when_and_where": { "title": "Cuándo y Dónde", "description": "Aprende a añadir tiempo y lugar" },
+      "2_4_detail_detective": { "title": "Detective de Detalles", "description": "Conviértete en experto añadiendo detalles" },
+      "3_1_setting_the_scene": { "title": "Preparando la Escena", "description": "Aprende por qué el contexto ayuda" },
+      "3_2_show_dont_tell": { "title": "Muestra, No Cuentes", "description": "Usa ejemplos para mostrar lo que quieres" },
+      "3_3_format_finder": { "title": "Buscador de Formato", "description": "¡Pide listas, historias, poemas y más!" },
+      "3_4_context_champion": { "title": "Campeón del Contexto", "description": "Combina todas las técnicas de contexto" },
+      "4_1_pretend_time": { "title": "¡Hora de Actuar!", "description": "Aprende prompts de juego de roles" },
+      "4_2_story_starters": { "title": "Inicios de Historias", "description": "Crea historias increíbles con IA" },
+      "4_3_character_creator": { "title": "Creador de Personajes", "description": "Dale personalidad a la IA" },
+      "4_4_world_builder": { "title": "Constructor de Mundos", "description": "Crea mundos imaginativos" },
+      "5_1_perfect_prompt": { "title": "El Prompt Perfecto", "description": "Combina claridad, detalles y contexto" },
+      "5_2_fix_it_up": { "title": "¡Arréglalo!", "description": "Encuentra y mejora prompts débiles" },
+      "5_3_prompt_remix": { "title": "Remix de Prompts", "description": "Reescribe prompts para diferentes resultados" },
+      "5_4_graduation_day": { "title": "Día de Graduación", "description": "¡El desafío final - conviértete en Maestro!" }
+    },
+    "level": { "backToMap": "Volver al Mapa", "levelLabel": "Nivel {number}", "comingSoon": "¡Este nivel llegará pronto!", "previous": "Anterior", "next": "Siguiente", "map": "Mapa" },
+    "levelComplete": { "title": "¡Nivel Completado!", "nextLevel": "Siguiente Nivel", "backToMap": "Volver al Mapa", "allDone": "Volver al Mapa" },
+    "quiz": { "goodLabel": "¡Gran prompt!", "badLabel": "No es el mejor", "correct": "¡Lo tienes!", "incorrect": "¡Buen intento!", "tryAgain": "Intentar de nuevo" },
+    "magicWords": { "title": "¡Arrastra las palabras mágicas! ✨", "dragOrTap": "🎯 Arrastra o toca palabras:", "check": "¡Comprobar!", "retry": "Reintentar", "correct": "correcto", "tryAgain": "¡Inténtalo de nuevo!" },
+    "dragDrop": { "title": "¡Construye el prompt!", "instruction": "¡Usa flechas para mover piezas, o toca dos piezas para intercambiar!", "result": "Resultado", "check": "¡Comprobar!", "retry": "Reintentar", "success": "¡Perfecto! ¡Construiste un gran prompt!", "almost": "¡Casi! Sigue reordenando.", "tapToSwap": "¡Toca otra pieza para intercambiar!" },
+    "promptParts": { "title": "¡Ordena las Partes del Prompt!", "instruction": "¡Toca cada pieza, luego elige su tipo!", "score": "Puntuación", "pickCategory": "¿Qué tipo es este?", "success": "¡Ordenaste todas las partes correctamente!", "retry": "Intentar de nuevo", "types": { "role": "Rol", "task": "Tarea", "context": "Contexto", "constraint": "Restricción" } },
+    "exampleMatcher": { "title": "Emparejador de Patrones", "instruction": "¡Mira el patrón y elige qué viene después!", "pattern": "El Patrón:", "check": "¡Comprobar!", "retry": "Intentar de nuevo", "correct": "¡Lo tienes! 🎉", "tryAgain": "¡No del todo - mira el patrón de nuevo!" },
+    "promptDoctor": { "title": "Doctor de Prompts", "health": "Salud del Prompt", "sick": "Prompt Enfermo", "healthy": "¡Prompt Sano!", "diagnose": "Haz clic en un problema para arreglarlo:", "success": "¡El prompt está mejor ahora!", "retry": "Empezar de nuevo" },
+    "stepByStep": { "title": "Piensa Paso a Paso", "problem": "El Problema:", "withoutMagic": "Sin palabras mágicas:", "addMagicWords": "¡Añade las Palabras Mágicas!", "magicWordsActive": "¡Palabras mágicas añadidas!", "nextStep": "Revelar Siguiente Paso", "withMagic": "Con pensamiento paso a paso:", "retry": "Intentar de nuevo" },
+    "promptLab": { "title": "Laboratorio de Prompts", "progress": "Mejoras", "yourPrompt": "Tu Prompt:", "aiSays": "Respuesta de IA:", "addDetails": "Añadir mejoras:", "success": "¡Tu prompt ahora es súper específico!", "retry": "Empezar de nuevo" },
+    "wordPredictor": { "title": "Cómo Piensa la IA", "instruction": "La IA adivina la palabra más probable. ¿Puedes pensar como IA?", "aiThinks": "La IA está leyendo:", "thinkingDefault": "Hmm, ¿qué palabra tendría más sentido aquí?", "check": "¡Comprobar mi respuesta!", "correct": "¡Piensas como IA!", "tryAgain": "¡No del todo! La IA elige la palabra más probable.", "retry": "Intentar de nuevo" },
+    "settings": { "title": "Configuración", "language": "Idioma", "progress": "Tu Progreso", "stars": "Estrellas", "completed": "Completados", "resetTitle": "Restablecer Progreso", "resetButton": "Restablecer Todo", "resetWarning": "Esto eliminará todas tus estrellas y progreso. ¿Estás seguro?", "resetConfirm": "Sí, Restablecer Todo", "resetComplete": "¡Progreso restablecido! Recargando...", "cancel": "Cancelar" }
   }
 }

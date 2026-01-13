@@ -1,0 +1,102 @@
+<Section>
+<Panel character="promi" mood="excited">
+🎉 **FÉLICITATIONS !** 🎉 Tu es arrivé au DERNIER NIVEAU ! C'est le **Jour de la Remise des Diplômes** !
+</Panel>
+</Section>
+
+<Section>
+## Regarde tout le chemin parcouru !
+
+Tu as maîtrisé :
+
+⭐ **Monde 1** - Ce qu'est l'IA et pourquoi la clarté compte
+⭐ **Monde 2** - Les détails QUI, QUOI, QUAND, OÙ
+⭐ **Monde 3** - Contexte, exemples et formats
+⭐ **Monde 4** - Jeu de rôle, histoires et créativité
+⭐ **Monde 5** - Combiner tout parfaitement !
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+Je suis TELLEMENT fier de toi ! Tu es devenu un vrai Maître des Prompts ! Célébrons avec quelques défis finaux !
+</Panel>
+</Section>
+
+<Section>
+## Défi Final #1
+
+<PromptVsMistake
+  question="Montre-moi tes meilleures compétences en prompts ! Lequel est le prompt niveau maître ?"
+  good="Je suis un enfant créatif de 11 ans qui travaille sur une BD. Fais comme si tu étais un coach de super-héros sympa et aide-moi à créer 3 noms de super-héros uniques avec des pouvoirs cool. Quelque chose comme 'Flamme Stellaire - contrôle le feu cosmique !' Rends-les passionnants mais appropriés pour les enfants !"
+  bad="Donne-moi des noms de super-héros"
+  explanation="Ce prompt maître a TOUT : Contexte (11 ans, BD), Rôle (coach de super-héros), Format (3 noms avec pouvoirs), Exemple (Flamme Stellaire), et Style (passionnant, pour les enfants) !"
+  promiMessage="ÇA c'est un Maître des Prompts au travail ! Parfait à tous points de vue !"
+/>
+</Section>
+
+<Section>
+## Défi Final #2
+
+<PromptVsMistake
+  question="Crée le prompt utile ultime !"
+  good="Je suis nerveux pour mon premier jour dans une nouvelle école demain. Fais comme si tu étais un grand frère ou une grande sœur gentil(le) qui est déjà passé(e) par là. Donne-moi 5 conseils pour me sentir courageux et me faire de nouveaux amis. Sois encourageant et rappelle-moi que c'est normal d'être nerveux !"
+  bad="Aide-moi avec l'école"
+  explanation="Ce prompt est sincère ET magistral : situation réelle (nerveux, nouvelle école), rôle (grand frère/sœur gentil(le)), format (5 conseils), et style émotionnel (encourageant, compréhensif) !"
+  promiMessage="Ça montre que les prompts peuvent aussi aider avec les vrais sentiments ! Beau travail !"
+/>
+</Section>
+
+<Section>
+## Le Défi Prompt Ultime !
+
+<DragDropPrompt
+  title="Défi de la Remise des Diplômes"
+  instruction="Construis le prompt le plus complet possible !"
+  pieces={["Je suis un jeune chef qui adore faire des gâteaux.", "Fais comme si tu étais un professeur de pâtisserie sympa", "et donne-moi 3 recettes de cookies faciles pour débutants,", "comme 'Cookies au sucre simples - seulement 5 ingrédients !'", "Rends les instructions claires et amusantes !"]}
+  correctOrder={[0, 1, 2, 3, 4]}
+  successMessage="PARFAIT ! Contexte, rôle, format, exemple ET style ! Tu es un vrai maître !"
+/>
+</Section>
+
+<Section>
+## Crée ton chef-d'œuvre de diplômé !
+
+<MagicWords
+  sentence="Je suis un ___ qui veut ___. Fais comme si tu étais un ___ et aide-moi avec ___. Donne-moi quelque chose comme '___'. Rends-le ___ et ___ !"
+  blanks={[
+    { hint: "👤 qui tu es", answers: ["enfant créatif", "jeune explorateur", "apprenant curieux", "artiste en herbe", "futur inventeur"] },
+    { hint: "🎯 ton but", answers: ["créer quelque chose d'incroyable", "apprendre quelque chose de nouveau", "résoudre un problème", "faire sourire les gens", "commencer une aventure"] },
+    { hint: "🎭 un rôle utile", answers: ["mentor sage", "coach amusant", "guide créatif", "professeur patient", "ami encourageant"] },
+    { hint: "📚 ce dont tu as besoin", answers: ["3 idées brillantes", "un plan étape par étape", "une histoire inspirante", "des conseils utiles", "un projet créatif"] },
+    { hint: "💡 un exemple", answers: ["Construis une fusée en carton !", "Écris une chanson sur la gentillesse", "Conçois une cabane de rêve dans les arbres", "Crée un nouveau jeu", "Invente un robot utile"] },
+    { hint: "✨ style 1", answers: ["amusant", "inspirant", "créatif", "passionnant", "encourageant"] },
+    { hint: "🌟 style 2", answers: ["facile à suivre", "plein d'imagination", "mémorable", "unique", "joyeux"] }
+  ]}
+  successMessage="🎉 CHEF-D'ŒUVRE ! Tu as créé le prompt ultime ! Tu es officiellement un MAÎTRE DES PROMPTS !"
+/>
+</Section>
+
+<Section>
+## 🎓 TU L'AS FAIT ! 🎓
+
+<Panel character="promi" mood="celebrating">
+**FÉLICITATIONS, MAÎTRE DES PROMPTS !** 🏆
+
+Tu as terminé TOUS les niveaux ! Tu sais maintenant comment parler à l'IA de la meilleure façon possible. Tu peux :
+- Être clair et précis
+- Ajouter des détails incroyables
+- Donner un contexte utile
+- Être créatif et imaginatif
+- Et tellement plus !
+
+Rappelle-toi : Plus tes prompts sont bons, mieux l'IA peut t'aider. Va créer des choses incroyables !
+
+**Merci d'avoir appris avec moi ! 🤖❤️**
+</Panel>
+
+<LevelComplete 
+  levelSlug="5-4-graduation-day" 
+  stars={3}
+  message="🎓 FÉLICITATIONS ! Tu as obtenu ton diplôme de MAÎTRE DES PROMPTS ! 🏆"
+/>
+</Section>

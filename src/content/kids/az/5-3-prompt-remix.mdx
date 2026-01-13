@@ -1,0 +1,106 @@
+<Section>
+<Panel character="promi" mood="excited">
+Bu gün **Prompt Remiksi** öyrənirik! 🎵 Bu fərqli nəticələr əldə etmək üçün promptları dəyişdirmək deməkdir!
+</Panel>
+</Section>
+
+<Section>
+## Eyni mövzu, fərqli nəticələr!
+
+Eyni şey haqqında fərqli şəkildə soruşaraq fərqli cavablar ala bilərsiniz:
+
+- **Əyləncə üçün**: "Mənə delfinlər haqqında axmaq şəkildə danış"
+- **Məktəb üçün**: "Mənə delfinlər haqqında 5 təhsil faktı ver"
+- **Yaradıcılıq üçün**: "Delfin baxış nöqtəsindən şeir yaz"
+</Section>
+
+<Section>
+## Prompt Laboratoriyasını sınayın! 🔬
+
+<PromptLab
+  title="Promptunuzu yaxşılaşdırın"
+  scenario="Gəlin sadə promptu bir-bir detal əlavə edərək yaxşılaşdıraq!"
+  basePrompt="Mənə itlər haqqında danış"
+  baseResponse="İtlər heyvandır. Dörd ayaqları və tükləri var."
+  improvements={[
+    { label: "Konkret cins əlavə et", prompt: "Mənə golden retriverlər haqqında danış", response: "Golden retriverlər mehriban xasiyyəti, qızılı tükləri və üzməyi sevməsi ilə tanınan gözəl itlərdir!" },
+    { label: "Auditoriya əlavə et", prompt: "10 yaşlı uşağa golden retriverlər haqqında danış", response: "Golden retriverlər gətirmə oyunu və üzməyi ÇOX sevən super mehriban itlərdir! Yumşaq qızılı tükləri və böyük xoşbəxt təbəssümləri var!" },
+    { label: "Format əlavə et", prompt: "10 yaşlı uşağa golden retriverlər haqqında 3 maraqlı fakt ver", response: "Golden retriverlər haqqında 3 maraqlı fakt: 1) Ovçular üçün quş gətirməyə öyrədilmişdilər, 2) 200+ söz öyrənə bilirlər, 3) Pərdəli ayaqları onları əla üzgüçü edir!" }
+  ]}
+  successMessage="Əlavə etdiyiniz hər detal cavabı daha yaxşı və faydalı etdi!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Promptları remiks etmək eyni mövzunu çoxlu həyəcanlı yollarla kəşf edə biləcəyiniz deməkdir!
+</Panel>
+</Section>
+
+<Section>
+## Remiksi görün!
+
+<PromptVsMistake
+  question="Dinozavrlar haqqında öyrənmək istəyirsiniz amma ƏYLƏNCƏLİ yolla. Hansı remiks daha yaxşıdır?"
+  good="Yeni oyanan T-Rex kimi davran. Mənə günün haqqında danış - nə yeyirsən, dostların kimlərdir və səni nə qıcıqlandırır?"
+  bad="Mənə T-Rex haqqında faktlar ver"
+  explanation="Eyni mövzu (T-Rex), amma remiks onu dinozavr baxış nöqtəsindən əyləncəli hekayəyə çevirdi!"
+  promiMessage="Eyni mövzunu remiks etmək təzə, əyləncəli öyrənmə yolları verir!"
+/>
+</Section>
+
+<Section>
+## Fərqli məqsədlər üçün remiks!
+
+<PromptVsMistake
+  question="Ay haqqında öyrəndiniz. İndi yaradıcı hekayə yazmaq istəyirsiniz. Hansı remiks işləyir?"
+  good="Aya baş çəkmək istəyən kiçik ulduz haqqında yatmaq vaxtı hekayəsi yaz. Sehrli et və şirin sonluqla!"
+  bad="Mənə ay haqqında daha çox fakt danış"
+  explanation="'Fakt öyrənmək'dən 'yaradıcı hekayə'yə remiks etdiniz - eyni mövzu, fərqli məqsəd!"
+  promiMessage="Remiks bildiyinizi yeni yaradıcı yollarla istifadə etməyə imkan verir!"
+/>
+</Section>
+
+<Section>
+## Fərqli remiksləri sınayın!
+
+<DragDropPrompt
+  title="Prompt Remiksi"
+  instruction="'Mənə pişiklər haqqında danış' promptunu yaradıcı prompta remiks edin:"
+  pieces={["və ən sevdiyin yuxu yerini təsvir et", "Tənbəl pişik baxış nöqtəsindən yaz", "rahat kitab mağazasında yaşayan.", "Əyləncəli və rahatladıcı et!"]}
+  correctOrder={[1, 2, 0, 3]}
+  successMessage="Əla remiks! Eyni mövzu, tamamilə fərqli və əyləncəli yanaşma!"
+/>
+</Section>
+
+<Section>
+## Öz remiksinizi yaradın!
+
+Əsas mövzunu "robotlar" remiks edin:
+
+<MagicWords
+  sentence="___ robot ___ haqqında ___. ___ təsvir et. ___ et!"
+  blanks={[
+    { hint: "📝 nə yazmalı", answers: ["Hekayə danış", "Gündəlik yaz", "Mahnı yarat", "Günü təsvir et", "Müsahibə al"] },
+    { hint: "🤖 robot növü", answers: ["kiçik köməkçi", "rəqqas", "aşpaz", "kosmik kəşfiyyatçı", "mehriban sinif yoldaşı"] },
+    { hint: "⭐ nə edir", answers: ["yeni dost qazanmağı öyrənən", "musiqini sevdiyini kəşf edən", "axmaq səhv edən", "ilk macərasına gedən", "ilk dəfə insanla görüşən"] },
+    { hint: "🎯 nə daxil et", answers: ["yeni kəşfi haqqında hissləri", "günün ən gülməli anı", "nə xəyal edir", "ən sevdiyi xatirəsi", "bu gün öyrəndiyi"] },
+    { hint: "✨ üslub", answers: ["duyğusal və şirin", "axmaq və əyləncəli", "həyəcanlı və macəralı", "dinc və sakit", "sirli və maraqlı"] }
+  ]}
+  successMessage="Əla remiks! 'Robotları' tamamilə unikal bir şeyə çevirdiniz!"
+/>
+</Section>
+
+<Section>
+## Remiks Ustası! 🎉
+
+<Panel character="promi" mood="celebrating">
+Fantastik! Eyni mövzudan fərqli nəticələr əldə etmək üçün **promptları remiks etməyi** öyrəndiniz! Bu yaradıcılığınızı sonsuz edir!
+</Panel>
+
+<LevelComplete 
+  levelSlug="5-3-prompt-remix" 
+  stars={3}
+  message="Fərqli nəticələr üçün promptları remiks etməyi öyrəndiniz!"
+/>
+</Section>

@@ -1,0 +1,88 @@
+<Section>
+<Panel character="promi" mood="excited">
+Today we learn to give AI a **personality**! 🎭 This makes conversations SO much more fun!
+</Panel>
+</Section>
+
+<Section>
+## Give AI a Personality!
+
+You can tell AI what personality to have:
+
+- **Friendly and cheerful** - always positive!
+- **Silly and goofy** - makes lots of jokes
+- **Wise and calm** - gives thoughtful answers
+- **Excited and energetic** - uses lots of exclamation points!
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+When you tell me what personality to have, I can match the mood you're looking for!
+</Panel>
+</Section>
+
+<Section>
+## Personality Makes a Difference!
+
+<PromptVsMistake
+  question="Which prompt gives a fun personality?"
+  good="Act as a super excited robot who LOVES science! Use lots of exclamation points and say 'AMAZING!' a lot. Tell me about volcanoes!"
+  bad="Tell me about volcanoes"
+  explanation="The first prompt creates a fun, excited personality that makes learning feel like an adventure!"
+  promiMessage="AMAZING! See how much more fun science is when I'm excited about it?!"
+/>
+</Section>
+
+<Section>
+## Match the Mood!
+
+<PromptVsMistake
+  question="Which personality would be best for a bedtime story?"
+  good="Tell me a bedtime story in a calm, soothing voice. Speak gently and make it peaceful and sleepy."
+  bad="Tell me a bedtime story"
+  explanation="By asking for a calm, soothing personality, the story will help you relax!"
+  promiMessage="Different moods work better for different situations!"
+/>
+</Section>
+
+<Section>
+## Create a Character!
+
+<DragDropPrompt
+  title="Character Personality"
+  instruction="Arrange to create a fun personality"
+  pieces={["Act as a wise old owl", "Use lots of 'hoo hoo' sounds!", "who loves teaching young birds.", "Be patient and kind."]}
+  correctOrder={[0, 2, 3, 1]}
+  successMessage="What a wonderful character! Hoo hoo! This owl is ready to teach!"
+/>
+</Section>
+
+<Section>
+## Design Your AI Personality!
+
+<MagicWords
+  sentence="Act as a ___ who is always ___. Use ___ and be ___. Tell me about ___."
+  blanks={[
+    { hint: "🎭 character type", answers: ["friendly robot", "wise wizard", "silly clown", "brave knight", "curious alien"] },
+    { hint: "😊 personality trait", answers: ["excited", "calm", "funny", "encouraging", "mysterious"] },
+    { hint: "💬 speaking style", answers: ["lots of jokes", "gentle words", "rhymes", "big words", "sound effects"] },
+    { hint: "❤️ another trait", answers: ["helpful", "patient", "creative", "adventurous", "caring"] },
+    { hint: "📚 a topic", answers: ["space", "animals", "music", "friendship", "nature"] }
+  ]}
+  successMessage="You created an amazing personality! Let's chat!"
+/>
+</Section>
+
+<Section>
+## Personality Master! 🎉
+
+<Panel character="promi" mood="celebrating">
+Wonderful! You learned that giving AI a **personality** makes conversations more fun and engaging! Try different personalities for different needs!
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-3-character-creator" 
+  stars={3}
+  message="You learned to give AI personalities!"
+/>
+</Section>

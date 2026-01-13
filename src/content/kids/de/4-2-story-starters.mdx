@@ -1,0 +1,87 @@
+<Section>
+<Panel character="promi" mood="happy">
+Willkommen zurück in der Kreativitäts-Schlucht! Heute werden wir zusammen erstaunliche **Geschichten** erschaffen! 📚
+</Panel>
+</Section>
+
+<Section>
+## KI als dein Co-Autor
+
+Du musst Geschichten nicht alleine schreiben! KI kann dir helfen:
+
+- Eine Geschichte mit einem aufregenden Anfang zu starten
+- Eine Geschichte fortzusetzen, die du begonnen hast
+- Neue Figuren oder Wendungen hinzuzufügen
+- Dir Ideen zu geben, wenn du feststeckst
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Die besten Geschichten kommen aus deiner Fantasie UND meiner Hilfe, die zusammenarbeiten!
+</Panel>
+</Section>
+
+<Section>
+## Geschichtenanfänge, die funktionieren!
+
+<PromptVsMistake
+  question="Welcher ist ein besserer Geschichtenanfang-Prompt?"
+  good="Beginne eine Mysteriengeschichte über ein Kind, das eine leuchtende Karte auf dem Dachboden seiner Oma findet. Mach den ersten Absatz aufregend und geheimnisvoll!"
+  bad="Schreibe eine Geschichte"
+  explanation="Der detaillierte Prompt gibt mir eine Figur (ein Kind), Schauplatz (Omas Dachboden), Objekt (leuchtende Karte), und Stil (aufregend, geheimnisvoll)!"
+  promiMessage="Gute Geschichtenanfänge geben mir gerade genug zum Starten, aber lassen Raum für Abenteuer!"
+/>
+</Section>
+
+<Section>
+## Setze das Abenteuer fort!
+
+<PromptVsMistake
+  question="Welcher Prompt hilft besser, eine Geschichte fortzusetzen?"
+  good="Setze meine Geschichte fort: 'Luna fand eine winzige Tür hinter ihrem Bücherregal. Sie hörte Musik von drinnen kommen.' Was passiert, wenn sie sie öffnet? Mach es magisch!"
+  bad="Setze eine Geschichte über eine Tür fort"
+  explanation="Indem du mir zeigst, was du bisher geschrieben hast, kann ich es im selben Stil fortsetzen!"
+  promiMessage="Teile deine Geschichte bis jetzt und ich halte das Abenteuer am Laufen!"
+/>
+</Section>
+
+<Section>
+## Starte deine Geschichte!
+
+<DragDropPrompt
+  title="Geschichtenanfang"
+  instruction="Ordne diese Teile, um einen aufregenden Geschichten-Prompt zu erstellen"
+  pieces={["Schreibe den Anfang", "das entdeckt, dass es mit Tieren sprechen kann", "Mach es lustig und überraschend!", "einer Geschichte über ein Kind"]}
+  correctOrder={[0, 3, 1, 2]}
+  successMessage="Das ist ein toller Geschichtenanfang! Ich kann es kaum erwarten, dieses Abenteuer zu schreiben!"
+/>
+</Section>
+
+<Section>
+## Erstelle deinen Geschichten-Prompt!
+
+<MagicWords
+  sentence="Schreibe eine ___ Geschichte über einen ___ der einen ___ findet der ___ kann. Starte mit einem aufregenden Anfang!"
+  blanks={[
+    { hint: "✨ Geschichtenart", answers: ["magische", "lustige", "mysteriöse", "abenteuerliche", "herzerwärmende"] },
+    { hint: "🧒 Hauptfigur", answers: ["jungen Erfinder", "tapfere Prinzessin", "neugierigen Roboter", "schüchternen Drachen", "schlauen Fuchs"] },
+    { hint: "🎁 besonderen Gegenstand", answers: ["altes Buch", "leuchtenden Kristall", "Zauberstab", "mysteriösen Schlüssel", "sprechendes Haustier"] },
+    { hint: "🌟 besondere Kraft", answers: ["Wünsche erfüllen", "Portale öffnen", "die Zukunft zeigen", "Zeichnungen zum Leben erwecken", "jede Sprache sprechen"] }
+  ]}
+  successMessage="Was für eine erstaunliche Geschichtenidee! Lass das Abenteuer beginnen!"
+/>
+</Section>
+
+<Section>
+## Geschichtenerfinder! 🎉
+
+<Panel character="promi" mood="celebrating">
+Erstaunlich! Du hast gelernt, KI als deinen **Co-Autor** zu nutzen! Zusammen können wir die unglaublichsten Geschichten erschaffen!
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-2-story-starters" 
+  stars={3}
+  message="Du hast gelernt, Geschichten mit KI zu erschaffen!"
+/>
+</Section>

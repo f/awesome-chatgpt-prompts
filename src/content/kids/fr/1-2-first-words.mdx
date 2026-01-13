@@ -1,0 +1,103 @@
+<Section>
+<Panel character="promi" mood="happy">
+Bon retour, ami ! Prêt à écrire tes premiers vrais prompts ? C'est parti ! 🚀
+</Panel>
+</Section>
+
+<Section>
+## La Magie des Mots
+
+Quand tu parles à l'IA, chaque mot compte ! Voyons comment ajouter plus de mots rend les prompts meilleurs.
+
+<WordPredictor
+  title="Pourquoi les Mots Comptent"
+  instruction="Tu te souviens comment je devine le mot suivant ? Regarde ce qui se passe avec les prompts !"
+  sentence="Écris une histoire sur un ___"
+  options={["dragon", "chose", "le", "très"]}
+  correctAnswer="dragon"
+  explanation="'Dragon' a plus de sens car les histoires parlent généralement de personnages ou de choses ! 'Chose' est trop vague, et 'le' ou 'très' ne correspondent pas au motif."
+  aiThinking="Les histoires parlent généralement de quelqu'un ou quelque chose d'intéressant..."
+  successMessage="Exactement ! Les mots spécifiques guident mes prédictions - c'est pourquoi les détails comptent dans les prompts !"
+/>
+
+<Panel character="promi" mood="thinking">
+Regarde ! Si quelqu'un me dit juste "chat", je ne sais pas ce qu'ils veulent. Ils veulent une image ? Une histoire ? Des faits sur les chats ? Je suis confus ! 😵‍💫
+</Panel>
+</Section>
+
+<Section>
+## Construire de Meilleurs Prompts
+
+Un bon prompt a **trois parties** :
+
+1. **Ce que tu veux** (une histoire, de l'aide, des informations)
+2. **Le sujet** (chats, espace, dinosaures)
+3. **Les détails** (court, drôle, pour enfants)
+
+<Panel character="promi" mood="excited">
+Construisons un prompt ensemble !
+</Panel>
+</Section>
+
+<Section>
+## Glisse les Pièces !
+
+<DragDropPrompt
+  title="Construis ton premier prompt ! 🧩"
+  instruction="Mets ces pièces dans le bon ordre pour demander une histoire."
+  pieces={[
+    "S'il te plaît écris",
+    "une courte histoire",
+    "sur un chaton courageux",
+    "qui part à l'aventure"
+  ]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Parfait ! C'est un super prompt !"
+/>
+</Section>
+
+<Section>
+## Remplis les Blancs !
+
+Maintenant essaie de faire ton propre prompt en glissant les mots magiques :
+
+
+<MagicWords
+  title="Crée ton propre prompt ! ✨"
+  sentence="S'il te plaît écris un {{type}} sur un {{character}} qui {{action}}"
+  blanks={[
+    { id: "type", hint: "Quel type d'écrit ? (histoire, poème, chanson)", answers: ["histoire", "poème", "chanson", "lettre", "blague"], emoji: "📝" },
+    { id: "character", hint: "À propos de qui ? (robot, dragon, chiot)", answers: ["robot", "dragon", "chiot", "chat", "magicien", "princesse", "chevalier", "lapin", "licorne"], emoji: "🦸" },
+    { id: "action", hint: "Que font-ils ? (trouve un trésor, se fait des amis)", answers: ["trouve un trésor", "se fait des amis", "sauve la journée", "part à l'aventure", "apprend à voler", "découvre la magie"], emoji: "⚡" }
+  ]}
+  successMessage="Wow ! Tu as créé un super prompt !"
+/>
+</Section>
+
+<Section>
+## À Toi de Choisir !
+
+<PromptVsMistake
+  question="Quel prompt donnera une meilleure histoire ?"
+  good="Écris une histoire drôle sur un pingouin qui veut apprendre à danser"
+  bad="Écris histoire pingouin"
+  explanation="Le premier prompt me dit que ça doit être drôle, c'est sur un pingouin, ET ce que le pingouin veut faire !"
+  promiMessage="Les détails rendent tout meilleur ! J'adore savoir exactement ce que tu veux !"
+/>
+</Section>
+
+<Section>
+## Super Travail ! 🌟
+
+<Panel character="promi" mood="celebrating">
+Tu as écrit tes premiers prompts ! Tu as appris que les bons prompts ont besoin de : ce que tu veux, un sujet, et des détails. Tu deviens vraiment bon !
+</Panel>
+
+
+<LevelComplete 
+  levelSlug="1-2-first-words" 
+  stars={3}
+  message="Tu as appris à écrire tes premiers prompts !"
+/>
+</Section>
+

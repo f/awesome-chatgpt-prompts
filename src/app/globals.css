@@ -452,3 +452,270 @@
   margin: 1rem 0;
 }
 
+/* Kids Map Animations */
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes draw-path {
+  from {
+    stroke-dashoffset: 200;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(2deg);
+  }
+  75% {
+    transform: translateY(3px) rotate(-2deg);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s ease-in-out infinite;
+}
+
+.animate-draw-path {
+  animation: draw-path 2s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Cloud animations for kids background */
+@keyframes cloud-drift {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+.animate-cloud-slow {
+  animation: cloud-drift 45s linear infinite;
+}
+
+.animate-cloud-medium {
+  animation: cloud-drift 30s linear infinite;
+}
+
+.animate-cloud-fast {
+  animation: cloud-drift 20s linear infinite;
+}
+
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1000ms;
+}
+
+.animation-delay-1500 {
+  animation-delay: 1500ms;
+}
+
+/* Pixel Art Styles for Kids Game */
+.pixel-font {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.pixel-border {
+  clip-path: polygon(
+    0 4px, 4px 4px, 4px 0,
+    calc(100% - 4px) 0, calc(100% - 4px) 4px, 100% 4px,
+    100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px), calc(100% - 4px) 100%,
+    4px 100%, 4px calc(100% - 4px), 0 calc(100% - 4px)
+  );
+}
+
+.pixel-border-sm {
+  clip-path: polygon(
+    0 2px, 2px 2px, 2px 0,
+    calc(100% - 2px) 0, calc(100% - 2px) 2px, 100% 2px,
+    100% calc(100% - 2px), calc(100% - 2px) calc(100% - 2px), calc(100% - 2px) 100%,
+    2px 100%, 2px calc(100% - 2px), 0 calc(100% - 2px)
+  );
+}
+
+.pixel-btn {
+  position: relative;
+  border: none;
+  background: linear-gradient(180deg, #4A90D9 0%, #357ABD 100%);
+  color: white !important;
+  text-decoration: none !important;
+  color: white;
+  font-weight: bold;
+  padding: 8px 16px;
+  clip-path: polygon(
+    0 4px, 4px 4px, 4px 0,
+    calc(100% - 4px) 0, calc(100% - 4px) 4px, 100% 4px,
+    100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px), calc(100% - 4px) 100%,
+    4px 100%, 4px calc(100% - 4px), 0 calc(100% - 4px)
+  );
+  box-shadow: 0 4px 0 #2563EB;
+  transition: all 0.1s;
+}
+
+.pixel-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #2563EB;
+}
+
+.pixel-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #2563EB;
+}
+
+.pixel-btn-green {
+  background: linear-gradient(180deg, #22C55E 0%, #16A34A 100%);
+  box-shadow: 0 4px 0 #15803D;
+}
+
+.pixel-btn-green:hover {
+  box-shadow: 0 6px 0 #15803D;
+}
+
+.pixel-btn-green:active {
+  box-shadow: 0 2px 0 #15803D;
+}
+
+.pixel-btn-amber {
+  background: linear-gradient(180deg, #F59E0B 0%, #D97706 100%);
+  box-shadow: 0 4px 0 #B45309;
+}
+
+.pixel-btn-amber:hover {
+  box-shadow: 0 6px 0 #B45309;
+}
+
+.pixel-btn-amber:active {
+  box-shadow: 0 2px 0 #B45309;
+}
+
+.pixel-panel {
+  background: linear-gradient(180deg, #FEF3C7 0%, #FDE68A 100%);
+  border: 4px solid #D97706;
+  clip-path: polygon(
+    0 8px, 8px 8px, 8px 0,
+    calc(100% - 8px) 0, calc(100% - 8px) 8px, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 100%,
+    8px 100%, 8px calc(100% - 8px), 0 calc(100% - 8px)
+  );
+}
+
+.pixel-panel-blue {
+  background: linear-gradient(180deg, #DBEAFE 0%, #BFDBFE 100%);
+  border-color: #2563EB;
+}
+
+.pixel-panel-green {
+  background: linear-gradient(180deg, #DCFCE7 0%, #BBF7D0 100%);
+  border-color: #16A34A;
+}
+
+.pixel-panel-red {
+  background: linear-gradient(180deg, #FEE2E2 0%, #FECACA 100%);
+  border-color: #DC2626;
+}
+
+.pixel-panel-purple {
+  background: linear-gradient(180deg, #F3E8FF 0%, #E9D5FF 100%);
+  border-color: #9333EA;
+}
+
+.pixel-panel-indigo {
+  background: linear-gradient(180deg, #E0E7FF 0%, #C7D2FE 100%);
+  border-color: #6366F1;
+}
+
+.pixel-text-shadow {
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+}
+
+/* Pixelated image rendering */
+.pixel-render {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Pixel art prose styles for kids levels */
+.kids-prose-pixel {
+  color: #2C1810;
+  font-size: 1.5rem;
+}
+
+.kids-prose-pixel h1,
+.kids-prose-pixel h2,
+.kids-prose-pixel h3 {
+  color: #2C1810;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+  margin-bottom: 1rem;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.kids-prose-pixel h1 {
+  font-size: 2.75rem;
+}
+
+.kids-prose-pixel h2 {
+  font-size: 2.25rem;
+}
+
+.kids-prose-pixel h3 {
+  font-size: 1.875rem;
+}
+
+.kids-prose-pixel p {
+  color: #5D4037;
+  margin-bottom: 1.25rem;
+  line-height: 1.8;
+  font-size: 1.5rem;
+}
+
+.kids-prose-pixel ul,
+.kids-prose-pixel ol {
+  color: #5D4037;
+  margin-bottom: 1.25rem;
+  padding-left: 2rem;
+  font-size: 1.5rem;
+}
+
+.kids-prose-pixel li {
+  margin-bottom: 0.75rem;
+}
+
+.kids-prose-pixel strong {
+  color: #2C1810;
+  font-weight: bold;
+}
+
+.kids-prose-pixel em {
+  color: #8B4513;
+}
+
+/* Reset margins for p tags inside interactive kids components */
+.kids-prose-pixel [class*="rounded-xl"] p,
+.kids-prose-pixel [class*="rounded-lg"] p,
+.kids-prose-pixel .pixel-panel p {
+  margin: 0;
+  padding: 0;
+}
+

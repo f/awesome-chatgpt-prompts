@@ -1,0 +1,103 @@
+<Section>
+<Panel character="promi" mood="happy">
+다시 왔구나, 친구! 첫 번째 진짜 프롬프트를 쓸 준비 됐어? 가보자! 🚀
+</Panel>
+</Section>
+
+<Section>
+## 단어의 마법
+
+AI와 대화할 때 모든 단어가 중요해! 더 많은 단어를 추가하면 프롬프트가 어떻게 좋아지는지 봐보자.
+
+<WordPredictor
+  title="왜 단어가 중요할까"
+  instruction="내가 다음 단어를 어떻게 추측하는지 기억해? 프롬프트에서 무슨 일이 일어나는지 봐!"
+  sentence="용에 대한 이야기를 ___"
+  options={["써줘", "날아가", "먹어", "파란색"]}
+  correctAnswer="써줘"
+  explanation="'써줘'가 가장 말이 돼. 이야기를 요청할 때 보통 '써줘'라고 하니까! AI는 이런 패턴을 배워."
+  aiThinking="이야기 요청 뒤에는 보통 '써줘'가 와..."
+  successMessage="정확해! 구체적인 단어가 내 예측을 이끌어 - 그래서 프롬프트에서 세부사항이 중요해!"
+/>
+
+<Panel character="promi" mood="thinking">
+이것 봐! 누군가 나에게 "고양이"라고만 하면 뭘 원하는지 몰라. 그림? 이야기? 고양이에 대한 사실? 혼란스러워! 😵‍💫
+</Panel>
+</Section>
+
+<Section>
+## 더 좋은 프롬프트 만들기
+
+좋은 프롬프트는 **세 가지 부분**이 있어:
+
+1. **원하는 것** (이야기, 도움, 정보)
+2. **주제** (고양이, 우주, 공룡)
+3. **세부사항** (짧은, 재미있는, 아이들용)
+
+<Panel character="promi" mood="excited">
+같이 프롬프트를 만들어보자!
+</Panel>
+</Section>
+
+<Section>
+## 조각을 드래그해!
+
+<DragDropPrompt
+  title="첫 번째 프롬프트를 만들어봐! 🧩"
+  instruction="이야기를 요청하려면 이 조각들을 올바른 순서로 놓아봐."
+  pieces={[
+    "써줘",
+    "짧은 이야기를",
+    "용감한 새끼 고양이에 대해",
+    "모험을 떠나는"
+  ]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="완벽해! 멋진 프롬프트야!"
+/>
+</Section>
+
+<Section>
+## 빈칸을 채워!
+
+이제 마법의 단어를 드래그해서 네 프롬프트를 만들어봐:
+
+
+<MagicWords
+  title="네 프롬프트를 만들어! ✨"
+  sentence="{{type}}을 써줘, {{character}}에 대해, {{action}}"
+  blanks={[
+    { id: "type", hint: "어떤 종류의 글? (이야기, 시, 노래)", answers: ["이야기", "시", "노래", "편지", "농담"], emoji: "📝" },
+    { id: "character", hint: "누구에 대해? (로봇, 용, 강아지)", answers: ["로봇", "용", "강아지", "고양이", "마법사", "공주", "기사", "토끼", "유니콘"], emoji: "🦸" },
+    { id: "action", hint: "뭘 해? (보물을 찾는, 친구를 사귀는)", answers: ["보물을 찾는", "친구를 사귀는", "세상을 구하는", "모험을 떠나는", "날기를 배우는", "마법을 발견하는"], emoji: "⚡" }
+  ]}
+  successMessage="와! 멋진 프롬프트를 만들었어!"
+/>
+</Section>
+
+<Section>
+## 네 차례야!
+
+<PromptVsMistake
+  question="어떤 프롬프트가 더 좋은 이야기를 만들까?"
+  good="춤추는 법을 배우고 싶은 펭귄에 대한 재미있는 이야기를 써줘"
+  bad="이야기 써줘 펭귄"
+  explanation="첫 번째 프롬프트는 재미있어야 하고, 펭귄에 대한 거고, 펭귄이 뭘 하고 싶은지 알려줘!"
+  promiMessage="세부사항은 모든 걸 더 좋게 해! 정확히 뭘 원하는지 아는 게 좋아!"
+/>
+</Section>
+
+<Section>
+## 잘했어! 🌟
+
+<Panel character="promi" mood="celebrating">
+첫 번째 프롬프트를 썼어! 좋은 프롬프트에는 원하는 것, 주제, 세부사항이 필요하다는 걸 배웠어. 정말 잘하고 있어!
+</Panel>
+
+
+<LevelComplete 
+  levelSlug="1-2-first-words" 
+  stars={3}
+  message="첫 번째 프롬프트 쓰는 법을 배웠어!"
+/>
+</Section>
+

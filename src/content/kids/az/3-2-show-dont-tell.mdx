@@ -1,0 +1,104 @@
+<Section>
+<Panel character="promi" mood="happy">
+Xoş gəlmisiniz! Bugünkü dərs çox vacibdir: **Göstərin, danışmayın**! Nümunələr istifadə etmək süni intellektə anlamağa kömək etməyin ən yaxşı yollarından biridir!
+</Panel>
+</Section>
+
+<Section>
+## Nümunələrin gücü
+
+Nə istədiyinizi təsvir etmək əvəzinə, **mənə nümunə göstərin**!
+
+Bu kiməsə oyun öyrətmək kimidir - qaydaları izah etməkdənsə necə oynamağı göstərmək daha asandır!
+</Section>
+
+<Section>
+## Nümunəni öyrənin!
+
+<ExampleMatcher
+  title="Nümunələrin gücü"
+  instruction="Süni intellekt nümunələrdən öyrənir! Nümunəyə baxın və növbəti nəyin gələcəyini seçin."
+  examples={[
+    { input: "xoşbəxt", output: "😊" },
+    { input: "kədərli", output: "😢" },
+    { input: "yuxulu", output: "😴" }
+  ]}
+  question="əsəbi"
+  options={["😠", "😊", "🎉", "😴"]}
+  correctAnswer="😠"
+  explanation="Süni intellekt öyrəndi: hiss sözü → uyğun emoji! Buna 'nümunələrdən öyrənmə' deyilir - sizin kimi!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+"Onu gözəl et" desəniz, sizin üçün 'gözəl'in nə demək olduğunu bilmiyə bilərəm. Amma mənə nümunə göstərsəniz, mükəmməl başa düşürəm!
+</Panel>
+</Section>
+
+<Section>
+## Fərqi görün
+
+<PromptVsMistake
+  question="Hansı prompt nümunələri daha yaxşı istifadə edir?"
+  good="'Super Parlaq Şampun' və ya 'Sehrli Bulud Yastıq' kimi əyləncəli məhsul adı yaz - yadda qalan və oyunbaz!"
+  bad="Əyləncəli məhsul adı yaz"
+  explanation="Nümunələr axtardığınız ad üslubunu dəqiq göstərir - yadda qalan, oyunbaz, əyləncəli sifətlərlə!"
+  promiMessage="Nümunələr xəzinə xəritəsi kimidir - dəqiq hara getmək istədiyinizi göstərir!"
+/>
+</Section>
+
+<Section>
+## Üslubunuzu göstərin
+
+<PromptVsMistake
+  question="Hansı prompt yazı üslubunu daha yaxşı göstərir?"
+  good="Bu üslubda zarafat yaz: 'Banan niyə həkimə getdi? Çünki özünü yaxşı hiss etmirdi!' - söz oyunu ilə axmaq!"
+  bad="Gülməli zarafat yaz"
+  explanation="Söz oyunu olan zarafat nümunəsi göstərərək, eyni axmaq üslub istədiyinizi bilirəm!"
+  promiMessage="Nə bəyəndiyinizi göstərdiyinizdə, o üslubu uyğunlaşdıra bilirəm!"
+/>
+</Section>
+
+<Section>
+## Nümunə verin!
+
+<DragDropPrompt
+  title="Nümunələrlə qurun"
+  instruction="Faydalı nümunəsi olan prompt yaratmaq üçün parçaları sıralayın"
+  pieces={["Super qəhrəman adı yaz", "'Cəsarət Kapitanı' kimi", "və ya 'İldırım Xanım'", "- qəhrəmanlıq və yadda qalan"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Mükəmməl! Nümunələriniz dəqiq hansı növ ad istədiyinizi göstərir!"
+/>
+</Section>
+
+<Section>
+## Nümunəli prompt yaradın!
+
+<MagicWords
+  sentence="___ kimi '___ ___ ___' yaz - ___ və ___"
+  blanks={[
+    { hint: "📝 nə yazmalı", answers: ["komanda adı", "heyvan adı", "qrup adı", "kitab adı", "restoran adı"] },
+    { hint: "✨ sifət", answers: ["Super", "Xoşbəxt", "Qızıl", "Sehrli", "Güclü"] },
+    { hint: "🌟 isim", answers: ["Ulduzlar", "Əjdahalar", "Xəyallar", "İldırım", "Simurg"] },
+    { hint: "🎯 söz", answers: ["Klub", "Komanda", "Dəstə", "Krallıq", "Macəra"] },
+    { hint: "😊 üslub1", answers: ["əyləncəli", "həyəcanlı", "gözəl", "yaradıcı", "yadda qalan"] },
+    { hint: "🎨 üslub2", answers: ["unudulmaz", "unikal", "güclü", "mehriban", "cəsarətli"] }
+  ]}
+  successMessage="Heyrətamiz! Nümunəniz dəqiq hansı üslub istədiyinizi göstərir!"
+/>
+</Section>
+
+<Section>
+## Nümunələr güclüdür! 🎉
+
+<Panel character="promi" mood="celebrating">
+Heyrətamiz iş! **Nümunə göstərməyin** süni intellektə dəqiq nə istədiyinizi anlamağa kömək edən ən yaxşı yollardan biri olduğunu öyrəndiniz!
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-2-show-dont-tell" 
+  stars={3}
+  message="Promptlarda nümunə istifadəsini mənimsədiniz!"
+/>
+</Section>

@@ -1,0 +1,71 @@
+<Section>
+<Panel character="promi" mood="excited">
+Bienvenue dans les **Grottes du Contexte** ! 🕳️ Ici, nous découvrirons la magie des **informations de fond** !
+</Panel>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+As-tu déjà raconté une blague à quelqu'un, mais il n'a pas ri parce qu'il ne comprenait pas le contexte ? Le contexte, c'est comme donner à quelqu'un toute l'histoire !
+</Panel>
+</Section>
+
+<Section>
+## Qu'est-ce que le Contexte ?
+
+Le **contexte** est l'information supplémentaire qui aide l'IA à mieux comprendre ta demande.
+
+Pense-y comme raconter une histoire - si tu dis juste "et puis il a gagné !" personne ne sait qui a gagné, quoi, ou pourquoi c'est important !
+</Section>
+
+<Section>
+## Vois la différence
+
+<PromptVsMistake
+  question="Quel prompt donne un meilleur contexte ?"
+  good="J'écris une carte d'anniversaire pour ma petite sœur de 8 ans qui adore les licornes. Peux-tu m'aider à écrire un message court et amusant ?"
+  bad="Écris un message d'anniversaire"
+  explanation="Le premier prompt dit à Promi POUR QUI c'est (petite sœur de 8 ans), CE qu'elle aime (licornes), et QUEL style tu veux (court, amusant) !"
+  promiMessage="Le contexte m'aide à comprendre la situation et à te donner exactement ce dont tu as besoin !"
+/>
+</Section>
+
+<Section>
+## Planter le décor
+
+<PromptVsMistake
+  question="Quel prompt plante un meilleur décor ?"
+  good="Je suis un élève de 10 ans qui travaille sur un projet d'école sur les dinosaures. Peux-tu expliquer ce que mangeait le T-Rex avec des mots simples ?"
+  bad="Que mangeait le T-Rex ?"
+  explanation="En me disant que tu as 10 ans et que c'est pour l'école, je sais utiliser des mots simples et le rendre éducatif !"
+  promiMessage="Quand je sais qui j'aide et pourquoi, je peux ajuster mes réponses parfaitement !"
+/>
+</Section>
+
+<Section>
+## Pratique à planter le contexte !
+
+<MagicWords
+  sentence="Je suis un ___ et j'ai besoin d'aide avec ___. Peux-tu l'expliquer de manière ___ ?"
+  blanks={[
+    { hint: "👤 qui tu es", answers: ["élève", "enfant", "débutant", "jeune artiste", "apprenant curieux"] },
+    { hint: "📚 ce dont tu as besoin", answers: ["mes devoirs de maths", "un projet de sciences", "écrire une histoire", "apprendre à dessiner", "comprendre l'espace"] },
+    { hint: "✨ comment expliquer", answers: ["simple", "amusante", "étape par étape", "facile à comprendre", "créative"] }
+  ]}
+  successMessage="Super contexte ! Maintenant l'IA sait exactement comment t'aider !"
+/>
+</Section>
+
+<Section>
+## Excellent début ! 🎉
+
+<Panel character="promi" mood="celebrating">
+Tu apprends à planter le décor ! Rappelle-toi : me donner du contexte m'aide à comprendre ta situation et à te donner de meilleures réponses !
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-1-setting-the-scene" 
+  stars={3}
+  message="Tu as appris comment le contexte aide l'IA à te comprendre !"
+/>
+</Section>

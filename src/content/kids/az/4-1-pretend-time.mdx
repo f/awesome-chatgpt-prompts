@@ -1,0 +1,86 @@
+<Section>
+<Panel character="promi" mood="excited">
+**Yaradıcılıq Dərəsinə** xoş gəlmisiniz! 🎨 Burada yaradıcılıq canlanır! Bu gün **rol oynama promptları** haqqında öyrənəcəyik!
+</Panel>
+</Section>
+
+<Section>
+## Rol oynama nədir?
+
+**Rol oynama** süni intellektdən kimsə və ya bir şey kimi davranmasını istəmək deməkdir!
+
+Deyə bilərsiniz:
+- "Pirat kimi davran..."
+- "Özünü müəllim kimi təsəvvür et..."
+- "Mehriban aşpaz ol..."
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+Bir rol oynamağımı istədiyinizdə, o personajın səsi və üslubu ilə cavab verə bilirəm! Bu birlikdə xəyal oyunu oynamaq kimidir!
+</Panel>
+</Section>
+
+<Section>
+## Rol oynamanı görün!
+
+<PromptVsMistake
+  question="Hansı prompt rol oynama istifadə edir?"
+  good="Mehriban kosmik kəşfiyyatçı kimi davran. Mənə Marsda macəralarından danış!"
+  bad="Mənə Mars haqqında danış"
+  explanation="Birinci prompt məndən kosmik kəşfiyyatçı OLMAĞIMI istəyir ki, 'mənim' macəralarımı əyləncəli və şəxsi şəkildə danışa bilim!"
+  promiMessage="Rol oynama söhbətlərimizi daha əyləncəli və yaradıcı edir!"
+/>
+</Section>
+
+<Section>
+## Personajınızı seçin!
+
+<PromptVsMistake
+  question="Okean haqqında öyrənmək üçün ən yaxşı rol hansıdır?"
+  good="100 il yaşamış ağıllı qoca dəniz tısbağası kimi davran. Okeanda hansı gözəl şeylər gördün?"
+  bad="Okeanda nə yaşayır?"
+  explanation="100 yaşlı dəniz tısbağası çox şey görüb! Bu okean haqqında öyrənməyi dostdan hekayə dinləmək kimi edir!"
+  promiMessage="Fərqli rollar fərqli perspektivlər verir və öyrənməyi daha maraqlı edir!"
+/>
+</Section>
+
+<Section>
+## Rol oynama promptu yaradın!
+
+<DragDropPrompt
+  title="Xəyal Vaxtı!"
+  instruction="Əyləncəli rol oynama promptu yaratmaq üçün parçaları sıralayın"
+  pieces={["və mənə danış", "Əjdaha kimi davran", "ən sevimli xəzinən haqqında", "parlaq şeylər toplamağı sevən"]}
+  correctOrder={[1, 3, 0, 2]}
+  successMessage="Əla rol oynama promptu! İndi əjdaha xəzinə hekayələrini paylaşa bilər!"
+/>
+</Section>
+
+<Section>
+## Öz rol oynamanızı qurun!
+
+<MagicWords
+  sentence="___ olan ___ kimi davran. Mənə ___ haqqında danış."
+  blanks={[
+    { hint: "🎭 bir personaj", answers: ["sehrbaz", "super qəhrəman", "danışan pişik", "zaman səyahətçisi", "pəri"] },
+    { hint: "⭐ nə edir", answers: ["arzuları həyata keçirən", "dünyanı xilas edən", "sehrli torpaqları kəşf edən", "gözəl şeylər icad edən", "iksir hazırlayan"] },
+    { hint: "📖 nə paylaşır", answers: ["ən böyük macəran", "ən yaxşı günün", "gülməli səhvin", "gizli sığınacağın", "ən yaxşı dostun"] }
+  ]}
+  successMessage="Heyrətamiz rol oynama! İndi əyləncəli xəyal söhbəti edə bilərik!"
+/>
+</Section>
+
+<Section>
+## Rol Oynama Ustası! 🎉
+
+<Panel character="promi" mood="celebrating">
+Fantastik! **Rol oynama promptlarının** söhbətləri yaradıcı və əyləncəli etdiyini öyrəndiniz! Sadəcə məndən "kimi davran" və ya "ol" deyin!
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-1-pretend-time" 
+  stars={3}
+  message="Rol oynama promptlarını istifadə etməyi öyrəndiniz!"
+/>
+</Section>

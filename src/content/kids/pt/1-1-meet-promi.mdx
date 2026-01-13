@@ -1,0 +1,96 @@
+<Section>
+<Panel character="promi" mood="happy">
+Olá! Eu sou o **Promi** 🤖, seu amigo robô! Estou muito feliz em conhecer você!
+</Panel>
+
+<Panel character="promi" mood="thinking">
+Você sabe o que **IA** significa? IA significa **Inteligência Artificial**. É uma forma chique de dizer "um computador que pode pensar e falar"!
+</Panel>
+
+<Panel character="promi" mood="excited">
+Eu sou uma IA! Posso ler suas mensagens e tentar ajudar. Mas aqui está o segredo... Preciso de **boas instruções** para fazer meu melhor trabalho!
+</Panel>
+</Section>
+
+<Section>
+## Como Eu Penso? 🧠
+
+Quer saber meu segredo? Na verdade, eu não "penso" como você. Eu leio palavras e tento adivinhar qual palavra vem depois!
+
+<WordPredictor
+  title="Pense Como uma IA!"
+  instruction="Eu leio padrões e adivinho a próxima palavra. O que VOCÊ adivinharia?"
+  sentence="O gato dorme na ___"
+  options={["cama", "lua", "rápido", "roxo"]}
+  correctAnswer="cama"
+  explanation="'Cama' faz mais sentido porque gatos geralmente dormem em camas! A IA aprende esses padrões lendo muitos textos."
+  aiThinking="Hmm, li muito sobre onde os gatos dormem..."
+  successMessage="Você pensa como uma IA! Eu escolho a palavra mais provável baseado em padrões."
+/>
+
+</Section>
+
+<Section>
+<WordPredictor
+  title="Mais Uma Tentativa!"
+  instruction="Agora você entendeu! Qual palavra se encaixa melhor aqui?"
+  sentence="Era uma ___"
+  options={["vez", "banana", "rápido", "verde"]}
+  correctAnswer="vez"
+  explanation="'Era uma vez' é como quase todos os contos de fadas começam! A IA leu milhares de histórias que começam assim."
+  aiThinking="Isso parece um começo de história... Já vi esse padrão tantas vezes!"
+  successMessage="Perfeito! Você já está pensando como IA - reconhecendo padrões!"
+/>
+</Section>
+
+<Section>
+## O que é um Prompt?
+
+Um **prompt** é apenas uma palavra chique para a mensagem que você envia para uma IA como eu.
+
+Pense nisso como dar direções para um amigo. Se você diz "Vá lá!" seu amigo não saberá onde ir. Mas se você diz "Vá para a casa vermelha na Rua das Flores," ele saberá exatamente onde!
+
+<Panel character="promi" mood="happy">
+Quando você escreve um bom prompt, eu posso entender o que você quer e te ajudar melhor! Vamos praticar!
+</Panel>
+</Section>
+
+<Section>
+## Vamos Tentar!
+
+<PromptVsMistake
+  question="Qual mensagem ajudaria o Promi a entender melhor?"
+  good="Por favor escreva uma história curta sobre um dragão amigável que adora fazer biscoitos"
+  bad="história"
+  explanation="A primeira mensagem diz ao Promi exatamente que tipo de história escrever! A segunda é muito curta - Promi não sabe que tipo de história você quer."
+  promiMessage="Viu? Mais detalhes me ajudam a entender o que você quer!"
+/>
+</Section>
+
+<Section>
+## Quiz Rápido!
+
+<PromptVsMistake
+  question="Qual é um prompt?"
+  good="Você pode me ajudar a escrever um poema sobre o oceano?"
+  bad="🌊"
+  explanation="Um prompt usa palavras para dizer à IA o que você precisa. Emojis são divertidos mas não dão informação suficiente!"
+  promiMessage="Palavras são meu super poder! Quanto mais você me contar, melhor posso ajudar!"
+/>
+</Section>
+
+<Section>
+## Você Conseguiu! 🎉
+
+<Panel character="promi" mood="celebrating">
+Incrível trabalho! Você aprendeu o que é IA e o que é um prompt. Você já está se tornando um expert em prompts!
+</Panel>
+
+
+<LevelComplete 
+  levelSlug="1-1-meet-promi" 
+  stars={3}
+  message="Você aprendeu o que são IA e prompts!"
+/>
+</Section>
+

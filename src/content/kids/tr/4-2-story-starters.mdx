@@ -1,0 +1,87 @@
+<Section>
+<Panel character="promi" mood="happy">
+Yaratıcılık Kanyonu'na tekrar hoş geldin! Bugün birlikte harika **hikayeler** oluşturacağız! 📚
+</Panel>
+</Section>
+
+<Section>
+## Ortak Yazar Olarak Yapay Zeka
+
+Hikayeleri yalnız yazmak zorunda değilsin! Yapay zeka sana yardım edebilir:
+
+- Heyecanlı bir açılışla hikaye başlatmak
+- Başladığın hikayeyi devam ettirmek
+- Yeni karakterler veya olay örgüsü dönüşleri eklemek
+- Takıldığında fikir vermek
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+En iyi hikayeler senin hayal gücün VE benim yardımımın birlikte çalışmasından çıkıyor!
+</Panel>
+</Section>
+
+<Section>
+## İşe Yarayan Hikaye Başlatıcılar!
+
+<PromptVsMistake
+  question="Hangi daha iyi bir hikaye başlatıcı promptu?"
+  good="Büyükannesinin tavan arasında parlayan bir harita bulan bir çocuk hakkında gizem hikayesi başlat. İlk paragrafı heyecanlı ve gizemli yap!"
+  bad="Bir hikaye yaz"
+  explanation="Detaylı prompt bana bir karakter (çocuk), mekan (büyükannenin tavan arası), nesne (parlayan harita) ve tarz (heyecanlı, gizemli) veriyor!"
+  promiMessage="Harika hikaye başlatıcılar başlamam için yeterli bilgi verir, ama maceraya yer bırakır!"
+/>
+</Section>
+
+<Section>
+## Maceraya Devam Et!
+
+<PromptVsMistake
+  question="Hangi prompt hikayeyi devam ettirmeye daha iyi yardım eder?"
+  good="Hikayemi devam ettir: 'Luna kitaplığının arkasında küçük bir kapı buldu. İçeriden müzik duydu.' Açtığında ne olur? Büyülü yap!"
+  bad="Bir kapı hakkında hikayeyi devam ettir"
+  explanation="Şimdiye kadar yazdığını paylaşarak, aynı tarzda devam edebilirim!"
+  promiMessage="Hikayeni şimdiye kadar paylaş ve maceraya devam edeyim!"
+/>
+</Section>
+
+<Section>
+## Hikayeni Başlat!
+
+<DragDropPrompt
+  title="Hikaye Başlatıcı"
+  instruction="Heyecanlı bir hikaye promptu oluşturmak için parçaları düzenle"
+  pieces={["Hayvanlarla konuşabildiğini keşfeden", "bir çocuk hakkında", "hikayenin açılışını yaz.", "Komik ve şaşırtıcı yap!"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Bu harika bir hikaye başlatıcı! Bu maceraya yazmak için sabırsızlanıyorum!"
+/>
+</Section>
+
+<Section>
+## Hikaye Promptunu Oluştur!
+
+<MagicWords
+  sentence="___ bir ___ bulan ___ hakkında ___ bir hikaye yaz. Heyecanlı bir açılışla başla!"
+  blanks={[
+    { hint: "✨ hikaye türü", answers: ["büyülü", "komik", "gizemli", "maceralı", "içten"] },
+    { hint: "🎁 özel nesne", answers: ["antik kitap", "parlayan kristal", "sihirli değnek", "gizemli anahtar", "konuşan evcil hayvan"] },
+    { hint: "🧒 ana karakter", answers: ["genç mucit", "cesur prenses", "meraklı robot", "utangaç ejderha", "zeki tilki"] },
+    { hint: "🌟 özel güç", answers: ["dilek gerçekleştirebilen", "portal açabilen", "geleceği gösterebilen", "çizimleri canlandırabilen", "herhangi bir dili konuşabilen"] }
+  ]}
+  successMessage="Ne harika bir hikaye fikri! Macera başlasın!"
+/>
+</Section>
+
+<Section>
+## Hikaye Yaratıcısı! 🎉
+
+<Panel character="promi" mood="celebrating">
+Harika! Yapay zekayı **ortak yazar** olarak nasıl kullanacağını öğrendin! Birlikte en inanılmaz hikayeleri yaratabiliriz!
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-2-story-starters" 
+  stars={3}
+  message="Yapay zeka ile hikaye oluşturmayı öğrendin!"
+/>
+</Section>

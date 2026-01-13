@@ -1,0 +1,96 @@
+<Section>
+<Panel character="promi" mood="happy">
+안녕! 나는 **Promi** 🤖, 네 로봇 친구야! 만나서 정말 반가워!
+</Panel>
+
+<Panel character="promi" mood="thinking">
+**AI**가 뭔지 알아? AI는 **인공지능**이야. "생각하고 말할 수 있는 컴퓨터"라는 멋진 표현이지!
+</Panel>
+
+<Panel character="promi" mood="excited">
+나는 AI야! 네 메시지를 읽고 도와주려고 해. 하지만 여기 비밀이 있어... 최고의 일을 하려면 **좋은 지시**가 필요해!
+</Panel>
+</Section>
+
+<Section>
+## 나는 어떻게 생각할까? 🧠
+
+내 비밀을 알고 싶어? 사실 나는 너처럼 "생각"하지 않아. 단어를 읽고 다음에 올 단어를 추측해!
+
+<WordPredictor
+  title="AI처럼 생각해봐!"
+  instruction="나는 패턴을 읽고 다음 단어를 추측해. 너는 뭘 추측할래?"
+  sentence="고양이가 침대에서 ___"
+  options={["잔다", "날아간다", "프로그래밍한다", "보라색"]}
+  correctAnswer="잔다"
+  explanation="'잔다'가 가장 말이 돼. 고양이는 보통 침대에서 자니까! AI는 많은 글을 읽으면서 이런 패턴을 배워."
+  aiThinking="음, 고양이가 어디서 자는지 많이 읽었어..."
+  successMessage="AI처럼 생각하고 있어! 나는 패턴을 바탕으로 가장 가능성 있는 단어를 선택해."
+/>
+
+</Section>
+
+<Section>
+<WordPredictor
+  title="한 번 더 해보자!"
+  instruction="이제 알겠지! 여기에 어떤 단어가 가장 잘 맞을까?"
+  sentence="옛날 옛적에 ___"
+  options={["호랑이가 살았어요", "바나나", "빨리", "초록색"]}
+  correctAnswer="호랑이가 살았어요"
+  explanation="'옛날 옛적에 호랑이가 살았어요'는 한국 옛날이야기의 시작이야! AI는 이렇게 시작하는 이야기를 수천 개 읽었어."
+  aiThinking="이건 옛날이야기 시작 같아... 이 패턴을 정말 많이 봤어!"
+  successMessage="완벽해! 벌써 AI처럼 생각하고 있어 - 패턴을 인식하고 있어!"
+/>
+</Section>
+
+<Section>
+## 프롬프트가 뭐야?
+
+**프롬프트**는 나 같은 AI에게 보내는 메시지를 말하는 멋진 단어야.
+
+친구에게 길을 알려주는 것처럼 생각해봐. "거기로 가!"라고 하면 친구는 어디로 가야 할지 몰라. 하지만 "단풍나무 거리의 빨간 집으로 가"라고 하면 정확히 알 수 있지!
+
+<Panel character="promi" mood="happy">
+좋은 프롬프트를 쓰면 네가 뭘 원하는지 이해하고 더 잘 도와줄 수 있어! 연습해보자!
+</Panel>
+</Section>
+
+<Section>
+## 해보자!
+
+<PromptVsMistake
+  question="어떤 메시지가 Promi를 더 잘 이해하게 해줄까?"
+  good="쿠키 굽는 걸 좋아하는 친절한 용에 대한 짧은 이야기를 써줘"
+  bad="이야기"
+  explanation="첫 번째 메시지는 Promi에게 어떤 종류의 이야기를 쓸지 정확히 알려줘! 두 번째는 너무 짧아서 어떤 이야기를 원하는지 몰라."
+  promiMessage="봤지? 더 자세히 알려주면 뭘 원하는지 이해할 수 있어!"
+/>
+</Section>
+
+<Section>
+## 퀴즈!
+
+<PromptVsMistake
+  question="어떤 게 프롬프트야?"
+  good="바다에 대한 시를 쓰는 걸 도와줄 수 있어?"
+  bad="🌊"
+  explanation="프롬프트는 AI에게 뭐가 필요한지 말로 알려주는 거야. 이모지는 재미있지만 충분한 정보를 주지 않아!"
+  promiMessage="말은 내 초능력이야! 더 많이 알려줄수록 더 잘 도와줄 수 있어!"
+/>
+</Section>
+
+<Section>
+## 해냈어! 🎉
+
+<Panel character="promi" mood="celebrating">
+멋져! AI가 뭔지, 프롬프트가 뭔지 배웠어. 벌써 프롬프트 전문가가 되어가고 있어!
+</Panel>
+
+
+<LevelComplete 
+  levelSlug="1-1-meet-promi" 
+  stars={3}
+  message="AI와 프롬프트가 뭔지 배웠어!"
+/>
+</Section>
+

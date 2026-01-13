@@ -1,0 +1,81 @@
+<Section>
+<Panel character="promi" mood="excited">
+Bem-vindo ao **Castelo da Clareza**! 🏰 Estou tão feliz que você está aqui! Neste mundo vamos aprender a magia dos **detalhes**!
+</Panel>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Você já pediu algo a alguém, mas ele não entendeu o que você queria dizer? Isso acontece com a IA também!
+</Panel>
+</Section>
+
+<Section>
+## O problema dos prompts vagos
+
+Olhe estes dois prompts:
+
+❌ **Vago:** "Desenhe uma imagem"
+
+✅ **Específico:** "Desenhe uma imagem de um filhotinho feliz brincando em um parque ensolarado"
+
+Qual me dá mais informações para trabalhar?
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+O segundo me diz **o que** desenhar (filhote), **o que está fazendo** (brincando), e **onde** (parque ensolarado). Esse é o poder dos detalhes!
+</Panel>
+</Section>
+
+<Section>
+## Vamos praticar!
+
+<PromptVsMistake
+  question="Qual prompt tem melhores detalhes?"
+  good="Escreva uma piada engraçada sobre um pinguim que quer aprender a voar"
+  bad="Me conte uma piada"
+  explanation="O prompt detalhado me diz exatamente que tipo de piada você quer - engraçada, sobre um pinguim, com uma história específica!"
+  promiMessage="Detalhes são como pistas que me ajudam a entender exatamente o que você quer!"
+/>
+</Section>
+
+<Section>
+## Por que os detalhes importam
+
+<PromptVsMistake
+  question="Qual prompt ajudaria Promi a fazer um cartão de aniversário melhor?"
+  good="Faça um cartão de aniversário para minha avó que adora jardinagem e a cor roxa"
+  bad="Faça um cartão de aniversário"
+  explanation="Saber que é para sua avó, que ela ama jardinagem, e sua cor favorita ajuda a criar algo especial e pessoal!"
+  promiMessage="Quanto mais eu sei sobre o que você quer, melhor posso te ajudar!"
+/>
+</Section>
+
+<Section>
+## Preencha os detalhes!
+
+<MagicWords
+  sentence="Por favor escreva uma história sobre um ___ que vive em um ___ e adora ___"
+  blanks={[
+    { hint: "🐱 um animal", answers: ["gato", "cachorro", "coelho", "dragão", "unicórnio"] },
+    { hint: "🏠 um lugar", answers: ["castelo", "floresta", "cidade", "casa na árvore", "caverna"] },
+    { hint: "⭐ uma atividade", answers: ["cantar", "dançar", "cozinhar", "pintar", "explorar"] }
+  ]}
+  successMessage="Ótimo trabalho adicionando detalhes!"
+/>
+</Section>
+
+<Section>
+## Você está aprendendo! 🎉
+
+<Panel character="promi" mood="celebrating">
+Excelente trabalho! Você descobriu que **detalhes tornam os prompts melhores**. Prompts vagos = IA confusa. Prompts detalhados = resultados incríveis!
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-1-missing-details" 
+  stars={3}
+  message="Você aprendeu por que os detalhes são importantes nos prompts!"
+/>
+</Section>

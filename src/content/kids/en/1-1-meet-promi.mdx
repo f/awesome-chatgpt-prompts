@@ -1,0 +1,100 @@
+<Section>
+<Panel character="promi" mood="happy">
+Hi there! I'm **Promi** 🤖, your robot friend! I'm so happy to meet you!
+</Panel>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Do you know what **AI** means? AI stands for **Artificial Intelligence**. That's a fancy way of saying "a computer that can think and talk!"
+</Panel>
+</Section>
+
+<Section>
+<Panel character="promi" mood="excited">
+I'm an AI! I can read your messages and try to help you. But here's the secret... I need **good instructions** to do my best work!
+</Panel>
+</Section>
+
+<Section>
+## How Do I Think? 🧠
+
+Want to know my secret? I don't actually "think" like you do. I read words and guess what word should come next!
+
+<WordPredictor
+  title="Think Like AI!"
+  instruction="I read patterns and guess the next word. What would YOU guess?"
+  sentence="The cat sat on the ___"
+  options={["mat", "moon", "purple", "keyboard"]}
+  correctAnswer="mat"
+  explanation="'Mat' is the most common word that follows 'The cat sat on the' because it's a famous rhyme! AI learns these patterns from reading lots of text."
+  aiThinking="I've seen 'The cat sat on the mat' many times before..."
+  successMessage="You think like AI! I pick the most likely word based on patterns."
+/>
+
+</Section>
+
+<Section>
+<WordPredictor
+  title="One More Try!"
+  instruction="Now you're getting it! What word fits best here?"
+  sentence="Once upon a ___"
+  options={["time", "banana", "quickly", "green"]}
+  correctAnswer="time"
+  explanation="'Once upon a time' is how almost every fairy tale starts! AI has read thousands of stories that begin this way."
+  aiThinking="This sounds like a story beginning... I've seen this pattern so many times!"
+  successMessage="Perfect! You're already thinking like AI - recognizing patterns!"
+/>
+</Section>
+
+<Section>
+## What is a Prompt?
+
+A **prompt** is just a fancy word for the message you send to an AI like me.
+
+Think of it like giving directions to a friend. If you say "Go there!" your friend won't know where to go. But if you say "Go to the red house on Maple Street," they'll know exactly where!
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+When you write a good prompt, I can understand what you want and help you better! Let's practice!
+</Panel>
+</Section>
+
+<Section>
+## Let's Try It!
+
+<PromptVsMistake
+  question="Which message would help Promi understand better?"
+  good="Please write a short story about a friendly dragon who loves to bake cookies"
+  bad="story"
+  explanation="The first message tells Promi exactly what kind of story to write! The second one is too short - Promi doesn't know what kind of story you want."
+  promiMessage="See? More details help me understand what you want!"
+/>
+</Section>
+
+<Section>
+## Quick Quiz!
+
+<PromptVsMistake
+  question="Which is a prompt?"
+  good="Can you help me write a poem about the ocean?"
+  bad="🌊"
+  explanation="A prompt uses words to tell the AI what you need. Emojis are fun but they don't give enough information!"
+  promiMessage="Words are my superpower! The more you tell me, the better I can help!"
+/>
+</Section>
+
+<Section>
+## You Did It! 🎉
+
+<Panel character="promi" mood="celebrating">
+Amazing job! You learned what AI is and what a prompt is. You're already becoming a prompt expert!
+</Panel>
+
+<LevelComplete 
+  levelSlug="1-1-meet-promi" 
+  stars={3}
+  message="You learned what AI and prompts are!"
+/>
+</Section>

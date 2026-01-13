@@ -1,0 +1,81 @@
+<Section>
+<Panel character="promi" mood="excited">
+**Aydınlıq Qalası**na xoş gəlmisiniz! 🏰 Burada olduğunuza çox şadam! Bu dünyada **detalların** sehrini öyrənəcəyik!
+</Panel>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Heç kimdən bir şey istəmisiniz, amma o nə demək istədiyinizi başa düşmədi? Eyni şey süni intellektlə də baş verir!
+</Panel>
+</Section>
+
+<Section>
+## Qeyri-müəyyən promptların problemi
+
+Bu iki prompta baxın:
+
+❌ **Qeyri-müəyyən:** "Bir şəkil çək"
+
+✅ **Konkret:** "Günəşli parkda oynayan xoşbəxt köpək balası şəkli çək"
+
+Hansı mənə işləmək üçün daha çox məlumat verir?
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+İkincisi mənə **nə** çəkəcəyimi (köpək balası), **nə etdiyini** (oynayır) və **harada** (günəşli park) deyir. Bu detalların gücüdür!
+</Panel>
+</Section>
+
+<Section>
+## Gəlin məşq edək!
+
+<PromptVsMistake
+  question="Hansı promptda daha yaxşı detallar var?"
+  good="Uçmağı öyrənmək istəyən pinqvin haqqında gülməli zarafat yaz"
+  bad="Mənə bir zarafat de"
+  explanation="Ətraflı prompt dəqiq hansı növ zarafat istədiyinizi deyir - gülməli, pinqvin haqqında, konkret hekayə ilə!"
+  promiMessage="Detallar mənim nə istədiyinizi dəqiq başa düşməyimə kömək edən ipuclarıdır!"
+/>
+</Section>
+
+<Section>
+## Niyə detallar vacibdir
+
+<PromptVsMistake
+  question="Hansı prompt Promiyə daha yaxşı ad günü kartı düzəltməyə kömək edər?"
+  good="Bağçılıq və bənövşəyi rəngi sevən nənəm üçün ad günü kartı düzəlt"
+  bad="Ad günü kartı düzəlt"
+  explanation="Bunun nənəniz üçün olduğunu, o bağçılığı sevdiyini və sevimli rəngini bilmək xüsusi və şəxsi bir şey yaratmağa kömək edir!"
+  promiMessage="Nə istədiyiniz haqqında nə qədər çox bilsəm, sizə bir o qədər yaxşı kömək edə bilərəm!"
+/>
+</Section>
+
+<Section>
+## Detalları doldurun!
+
+<MagicWords
+  sentence="Zəhmət olmasa ___də yaşayan və ___ı sevən ___ haqqında hekayə yaz"
+  blanks={[
+    { hint: "🐱 bir heyvan", answers: ["pişik", "it", "dovşan", "əjdaha", "unicorn"] },
+    { hint: "🏠 bir yer", answers: ["qala", "meşə", "şəhər", "ağac evi", "mağara"] },
+    { hint: "⭐ bir fəaliyyət", answers: ["oxumaq", "rəqs etmək", "yemək bişirmək", "rəsm çəkmək", "kəşf etmək"] }
+  ]}
+  successMessage="Detallar əlavə etməkdə əla iş!"
+/>
+</Section>
+
+<Section>
+## Öyrənirsən! 🎉
+
+<Panel character="promi" mood="celebrating">
+Əla iş! **Detalların promptları daha yaxşı etdiyini** kəşf etdiniz. Qeyri-müəyyən promptlar = çaşmış süni intellekt. Ətraflı promptlar = heyrətamiz nəticələr!
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-1-missing-details" 
+  stars={3}
+  message="Promptlarda detalların niyə vacib olduğunu öyrəndiniz!"
+/>
+</Section>

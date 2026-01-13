@@ -1,0 +1,85 @@
+<Section>
+<Panel character="promi" mood="excited">
+欢迎来到创意峡谷的最后一关！🎨 让我们成为**世界建造者**，创造惊人的想象场景！
+</Panel>
+</Section>
+
+<Section>
+## 建造想象的世界
+
+你可以让AI帮助你创造整个世界：
+
+- 有魔法的奇幻王国
+- 有机器人的未来城市
+- 水下文明
+- 遥远银河中的星球
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+唯一的限制是你的想象力！告诉我关于你的世界，我来帮助它变得生动！
+</Panel>
+</Section>
+
+<Section>
+## 世界建造实践！
+
+<PromptVsMistake
+  question="哪个提示词建造了更好的世界？"
+  good="帮我创建一个所有动物都能说话并有自己城市的世界。猫管理图书馆，狗是消防员。还有什么？"
+  bad="创造一个世界"
+  explanation="详细的提示词开始建造世界（有工作的会说话的动物）并让我添加更多！"
+  promiMessage="我喜欢这个世界！也许鸟送邮件，兔子开面包店！"
+/>
+</Section>
+
+<Section>
+## 扩展你的世界！
+
+<PromptVsMistake
+  question="哪个提示词帮助世界成长？"
+  good="在我的魔法森林世界里，有能长出糖果的树。可能有什么种类的糖果树？谁照顾它们？那里可能发生什么冒险？"
+  bad="告诉我关于森林"
+  explanation="问关于你世界的具体问题，我能帮助用新想法扩展它！"
+  promiMessage="问'如果'的问题帮助世界变得更大更有趣！"
+/>
+</Section>
+
+<Section>
+## 建造你的世界！
+
+<DragDropPrompt
+  title="世界建造者"
+  instruction="排列来创建一个富有想象力的世界"
+  pieces={["帮我创建一个世界", "所有天气都被", "什么可能出错？", "友好的天气魔法师控制的。"]}
+  correctOrder={[0, 1, 3, 2]}
+  successMessage="多么有创意的世界！我在想象很多有趣的场景！"
+/>
+</Section>
+
+<Section>
+## 创建你的终极世界！
+
+<MagicWords
+  sentence="帮我建造一个___的世界。让它特别的主要东西是___。谁住在那里？可能发生什么冒险？"
+  blanks={[
+    { hint: "🌍 世界概念", answers: ["梦想成真", "每个人都有超能力", "玩具晚上会动", "音乐创造魔法", "颜色有感情"] },
+    { hint: "✨ 特别特点", answers: ["中央的一棵巨大魔法树", "天空中漂浮的岛屿", "流淌星光的河流", "云做的建筑", "通往其他维度的门"] }
+  ]}
+  successMessage="多么惊人的世界！冒险是无限的！"
+/>
+</Section>
+
+<Section>
+## 恭喜，世界建造者！🎉
+
+<Panel character="promi" mood="celebrating">
+你做到了！你完成了创意峡谷，成为了**世界建造者**！你的想象力结合AI可以创造无尽的惊人世界！
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-4-world-builder" 
+  stars={3}
+  message="你完成了创意峡谷！你是世界建造者！"
+/>
+</Section>

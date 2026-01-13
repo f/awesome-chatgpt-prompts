@@ -1,0 +1,97 @@
+<Section>
+<Panel character="promi" mood="happy">
+Bentornato al Castello della Chiarezza! Oggi impariamo **CHI** e **COSA** - due dettagli super importanti!
+</Panel>
+</Section>
+
+<Section>
+## La domanda CHI
+
+Quando chiedi aiuto all'IA, pensa: **Chi è coinvolto?**
+
+- Una persona? (ragazzo, ragazza, nonna, supereroe)
+- Un animale? (gatto, drago, balena)
+- Un personaggio? (robot, mago, alieno)
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Se dici "Scrivi una storia", non so di chi si tratta! Ma "Scrivi una storia su un cavaliere coraggioso" mi dice esattamente chi è il personaggio principale!
+</Panel>
+</Section>
+
+<Section>
+## Pratichiamo CHI!
+
+<PromptVsMistake
+  question="Quale prompt ci dice CHI è il protagonista della storia?"
+  good="Scrivi una storia su un topolino curioso chiamato Pip"
+  bad="Scrivi una storia su qualcosa"
+  explanation="Il primo prompt ci dice CHI (un topo), CHE tipo (curioso, piccolo), e anche il suo NOME (Pip)!"
+  promiMessage="I nomi e le descrizioni mi aiutano a immaginare il personaggio!"
+/>
+</Section>
+
+<Section>
+## La domanda COSA
+
+Ora pensa: **Cosa sta succedendo? Cosa vuoi?**
+
+- Quale azione? (correre, cantare, costruire)
+- Quale oggetto? (una torta, un'astronave, una poesia)
+- Quale tipo? (divertente, spaventoso, colorato)
+</Section>
+
+<Section>
+## Pratichiamo COSA!
+
+<PromptVsMistake
+  question="Quale prompt ci dice COSA creare?"
+  good="Scrivi una poesia divertente sulla pizza con tante rime"
+  bad="Scrivi qualcosa di divertente"
+  explanation="Il prompt dettagliato ci dice COSA (una poesia), SU COSA (pizza), QUALE stile (divertente con rime)!"
+  promiMessage="Essere specifici su COSA vuoi mi aiuta a creare esattamente quello!"
+/>
+</Section>
+
+<Section>
+## Costruisci il tuo prompt!
+
+Combina CHI e COSA:
+
+<DragDropPrompt
+  title="Costruisci un Prompt"
+  instruction="Trascina i pezzi nell'ordine corretto"
+  pieces={["Scrivi una storia", "su un drago amichevole", "che impara", "a fare il gelato"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Perfetto! Hai combinato CHI (drago amichevole) e COSA (impara a fare il gelato)!"
+/>
+</Section>
+
+<Section>
+## Crea il tuo!
+
+<MagicWords
+  sentence="Per favore scrivi una ___ su un ___ che vuole ___"
+  blanks={[
+    { hint: "📝 tipo di scrittura", answers: ["storia", "poesia", "canzone", "barzelletta"] },
+    { hint: "🦸 un personaggio", answers: ["supereroe", "principessa", "robot", "mago", "pirata"] },
+    { hint: "🎯 un obiettivo", answers: ["trovare un tesoro", "fare amicizia", "salvare il mondo", "imparare la magia", "vincere una gara"] }
+  ]}
+  successMessage="Hai aggiunto CHI e COSA perfettamente!"
+/>
+</Section>
+
+<Section>
+## Progresso incredibile! 🎉
+
+<Panel character="promi" mood="celebrating">
+Stai diventando davvero bravo! Ora sai sempre includere **CHI** è nel tuo prompt e **COSA** vuoi. Continua così!
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-2-who-and-what" 
+  stars={3}
+  message="Hai padroneggiato CHI e COSA nei prompt!"
+/>
+</Section>

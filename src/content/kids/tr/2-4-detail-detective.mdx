@@ -1,0 +1,104 @@
+<Section>
+<Panel character="promi" mood="excited">
+Netlik Kalesi'nin son seviyesine hoş geldin! 🏰 KİM, NE, NE ZAMAN ve NEREDE hakkında öğrendin. Şimdi hepsini bir araya getirelim!
+</Panel>
+</Section>
+
+<Section>
+## Detay Dedektifi Kontrol Listesi
+
+Bir prompt göndermeden önce kendine sor:
+
+✅ **KİM** - Kim var?
+✅ **NE** - Ne istiyorum? Ne oluyor?
+✅ **NE ZAMAN** - Ne zaman oluyor?
+✅ **NEREDE** - Nerede gerçekleşiyor?
+</Section>
+
+<Section>
+## Prompt Parçalarını Sırala!
+
+<PromptParts
+  title="Her Parçayı Eşleştir!"
+  instruction="Bir parçaya tıkla, sonra Rol, Görev, Bağlam veya Kısıtlama mı seç!"
+  parts={[
+    { text: "Komik bir hikaye yaz", type: "task" },
+    { text: "sakar bir büyücü hakkında", type: "context" },
+    { text: "sihir okulunda", type: "context" },
+    { text: "Kısa tut", type: "constraint" }
+  ]}
+  successMessage="Tüm prompt parçalarını tanımladın! Artık profesyonel gibi prompt yazabilirsin!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Her seferinde dördüne de ihtiyacın yok, ama ne kadar çok detay eklersen, sana o kadar iyi yardımcı olabilirim!
+</Panel>
+</Section>
+
+<Section>
+## Dedektif Görevi #1
+
+<PromptVsMistake
+  question="Hangi prompt en yararlı detaylara sahip?"
+  good="Kraliyet kalesindeki bir sihir gösterisinde yanlışlıkla kedisini deve dönüştüren Zap adlı sakar bir büyücü hakkında komik bir hikaye yaz"
+  bad="Sihir hakkında bir hikaye yaz"
+  explanation="Detaylı prompt KİM (büyücü Zap, kedisi), NE (kediyi deve dönüştürüyor, sihir gösterisi), NEREDE (kraliyet kalesi) ve hatta bir tarz (komik) içeriyor!"
+  promiMessage="Vay! Bu prompt bana çalışmam için çok şey veriyor. Tüm sahneyi hayal edebiliyorum!"
+/>
+</Section>
+
+<Section>
+## Dedektif Görevi #2
+
+<PromptVsMistake
+  question="Hangi prompt daha iyi bir şiir elde eder?"
+  good="Rahat mağarasında kış uykusuna hazırlanan uykulu bir ayı hakkında kısa kafiyeliir yaz"
+  bad="Bir hayvan hakkında şiir yaz"
+  explanation="İlk prompt bana KİM (uykulu ayı), NE (kış uykusuna hazırlanıyor), NE ZAMAN (kış), NEREDE (rahat mağara) ve tarz (kısa, kafiyelili) söylüyor!"
+  promiMessage="Her detay sadece senin için özel bir şey oluşturmamı sağlıyor!"
+/>
+</Section>
+
+<Section>
+## En İyi Promptu Oluştur!
+
+<DragDropPrompt
+  title="Usta Dedektif"
+  instruction="TÜM detayları mükemmel bir prompt haline getir"
+  pieces={["Fütüristik bir şehirde", "yazın ilk gününde", "robot arkadaş yapan", "genç bir mucit hakkında", "heyecanlı bir hikaye yaz"]}
+  correctOrder={[0, 1, 2, 3, 4]}
+  successMessage="Mükemmel! KİM, NE, NEREDE ve NE ZAMAN'ı ekledin!"
+/>
+</Section>
+
+<Section>
+## Başyapıtını Yarat!
+
+<MagicWords
+  sentence="___ bir ___, ___ sırasında ___ bir macera yaşıyor. Bu ___ hikayeyi yaz!"
+  blanks={[
+    { hint: "🦸 nasıl biri?", answers: ["cesur", "meraklı", "sevimli", "zeki", "eğlenceli"] },
+    { hint: "👀 kim?", answers: ["şövalye", "peri", "tilki", "astronot", "hayalet"] },
+    { hint: "🕒 ne zaman?", answers: ["dolunay", "doğum günü", "fırtına", "gece yarısı", "yaz tatili"] },
+    { hint: "🏰 nerede?", answers: ["sihirli krallıkta", "uzayda", "ormanda", "sualtında", "bulutların üstünde"] },
+    { hint: "😊 nasıl?", answers: ["komik", "heyecanlı", "gizemli", "sıcacık", "eğlenceli"] }
+  ]}
+  successMessage="Sen gerçek bir Detay Dedektifisin! Bu harika bir prompt!"
+/>
+</Section>
+
+<Section>
+## Tebrikler Dedektif! 🎉
+
+<Panel character="promi" mood="celebrating">
+Başardın! Netlik Kalesi'ni tamamladın ve bir **Detay Dedektifi** oldun! Artık sırrı biliyorsun: KİM + NE + NE ZAMAN + NEREDE = Harika Promptlar!
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-4-detail-detective" 
+  stars={3}
+  message="Netlik Kalesi'ni tamamladın! Sen bir Detay Dedektifisin!"
+/>
+</Section>

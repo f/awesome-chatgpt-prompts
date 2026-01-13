@@ -47,7 +47,8 @@
     "register": "הרשמה",
     "logout": "התנתקות",
     "ide": "Typed-Prompts IDE",
-    "developers": "מפתחים"
+    "developers": "מפתחים",
+    "book": "ספר"
   },
   "brand": {
     "copyLogoSvg": "העתק לוגו SVG",
@@ -1385,5 +1386,63 @@
     "ideationTitle": "רעיונות",
     "communityContributorsTitle": "תורמי קהילה",
     "viewAllContributors": "צפה בכל התורמים ב"
+  },
+  "kids": {
+    "header": { "title": "בית הספר לפרומפטים של צ'יפ", "levels": "שלבים", "home": "בית", "map": "מפה", "mainSite": "האתר הראשי" },
+    "home": {
+      "badge": "למידה לילדים",
+      "title": "למד לדבר עם AI!",
+      "subtitle": "הצטרף לרובוט צ'יפ בהרפתקה מהנה ללמוד איך לכתוב פרומפטים מדהימים!",
+      "promiIntro": { "greeting": "היי, אני צ'יפ! 🤖", "message": "אני רובוט ידידותי שצריך את העזרה שלך! תעזור לי להבין פרומפטים טוב יותר?" },
+      "features": {
+        "games": { "title": "משחקים כיפיים", "description": "למד על ידי משחקי גרירה ושחרור וחידונים" },
+        "stories": { "title": "סיפורים מגניבים", "description": "עקוב אחרי צ'יפ בהרפתקאות מרגשות" },
+        "stars": { "title": "אסוף כוכבים", "description": "אסוף כוכבים ופתח שלבים חדשים" }
+      },
+      "startButton": "התחל לשחק!",
+      "ageNote": "מתאים לילדים בגילאי 8-14 שיודעים לקרוא ולכתוב",
+      "whatYouLearn": "מה תלמד",
+      "readyTitle": "מוכן להתחיל?",
+      "readyMessage": "בוא נצא להרפתקה ונלמד איך לדבר עם AI!"
+    },
+    "navigation": {
+      "back": "אחורה",
+      "next": "הבא"
+    },
+    "map": { "title": "מפת העולם", "subtitle": "בחר שלב והתחל את ההרפתקה שלך!", "worldLevels": "{count} שלבים", "levelNumber": "שלב {number}", "locked": "השלם את השלב הקודם לפתיחה" },
+    "worlds": { "1": { "title": "כפר ההתחלה" }, "2": { "title": "טירת הבהירות" }, "3": { "title": "מערות ההקשר" }, "4": { "title": "קניון היצירתיות" }, "5": { "title": "הר המומחיות" } },
+    "levels": {
+      "1_1_meet_promi": { "title": "הכר את צ'יפ!", "description": "אמור שלום לחבר הרובוט שלך ולמד מה זה AI" },
+      "1_2_first_words": { "title": "המילים הראשונות של צ'יפ", "description": "עזור לצ'יפ להבין על ידי כתיבת הפרומפט הראשון שלך" },
+      "1_3_being_clear": { "title": "להיות ברור", "description": "למד למה הוראות ברורות עובדות טוב יותר" },
+      "2_1_missing_details": { "title": "הפרטים החסרים", "description": "גלה למה פרטים חשובים" },
+      "2_2_who_and_what": { "title": "מי ומה", "description": "הוסף דמויות ואובייקטים" },
+      "2_3_when_and_where": { "title": "מתי ואיפה", "description": "למד להוסיף זמן ומקום" },
+      "2_4_detail_detective": { "title": "בלש הפרטים", "description": "הפוך למומחה בהוספת פרטים" },
+      "3_1_setting_the_scene": { "title": "הצבת הסצנה", "description": "למד למה הקשר עוזר" },
+      "3_2_show_dont_tell": { "title": "הראה, אל תספר", "description": "השתמש בדוגמאות להראות מה אתה רוצה" },
+      "3_3_format_finder": { "title": "מוצא הפורמט", "description": "בקש רשימות, סיפורים, שירים!" },
+      "3_4_context_champion": { "title": "אלוף ההקשר", "description": "שלב את כל טכניקות ההקשר" },
+      "4_1_pretend_time": { "title": "זמן משחק תפקידים!", "description": "למד פרומפטים של משחק תפקידים" },
+      "4_2_story_starters": { "title": "התחלות סיפורים", "description": "צור סיפורים מדהימים עם AI" },
+      "4_3_character_creator": { "title": "יוצר דמויות", "description": "תן ל-AI אישיות" },
+      "4_4_world_builder": { "title": "בונה עולמות", "description": "צור עולמות מדמיונים" },
+      "5_1_perfect_prompt": { "title": "הפרומפט המושלם", "description": "שלב בהירות, פרטים והקשר" },
+      "5_2_fix_it_up": { "title": "תקן את זה!", "description": "מצא ושפר פרומפטים חלשים" },
+      "5_3_prompt_remix": { "title": "רמיקס פרומפטים", "description": "כתוב מחדש פרומפטים לתוצאות שונות" },
+      "5_4_graduation_day": { "title": "יום הסיום", "description": "האתגר הסופי - הפוך למאסטר!" }
+    },
+    "level": { "backToMap": "חזרה למפה", "levelLabel": "שלב {number}", "comingSoon": "השלב הזה מגיע בקרוב!", "previous": "קודם", "next": "הבא", "map": "מפה" },
+    "levelComplete": { "title": "שלב הושלם!", "nextLevel": "השלב הבא", "backToMap": "חזרה למפה", "allDone": "חזרה למפה" },
+    "quiz": { "goodLabel": "פרומפט מעולה!", "badLabel": "לא הכי טוב", "correct": "נכון!", "incorrect": "ניסיון טוב!", "tryAgain": "נסה שוב" },
+    "magicWords": { "title": "גרור את מילות הקסם! ✨", "dragOrTap": "🎯 גרור או הקש על מילים:", "check": "בדוק!", "retry": "נסה שוב", "correct": "נכון", "tryAgain": "נסה שוב!" },
+    "dragDrop": { "title": "בנה את הפרומפט!", "instruction": "השתמש בחצים להזיז או הקש על שני חלקים להחלפה!", "result": "תוצאה", "check": "בדוק!", "retry": "נסה שוב", "success": "מושלם! בנית פרומפט מעולה!", "almost": "כמעט! המשך לסדר.", "tapToSwap": "הקש על חלק אחר להחלפה!" },
+    "promptParts": { "title": "מיין את חלקי הפרומפט!", "instruction": "הקש על כל חלק, אז בחר את הסוג!", "score": "ניקוד", "pickCategory": "איזה סוג זה?", "success": "מיינת את כל החלקים נכון!", "retry": "נסה שוב", "types": { "role": "תפקיד", "task": "משימה", "context": "הקשר", "constraint": "מגבלה" } },
+    "exampleMatcher": { "title": "מתאם דפוסים", "instruction": "הסתכל על הדפוס ובחר מה בא אחר כך!", "pattern": "הדפוס:", "check": "בדוק!", "retry": "נסה שוב", "correct": "נכון! 🎉", "tryAgain": "לא בדיוק - הסתכל שוב על הדפוס!" },
+    "promptDoctor": { "title": "רופא הפרומפטים", "health": "בריאות הפרומפט", "sick": "פרומפט חולה", "healthy": "פרומפט בריא!", "diagnose": "לחץ על בעיה לתיקון:", "success": "הפרומפט עכשיו בסדר!", "retry": "התחל מחדש" },
+    "stepByStep": { "title": "חשוב צעד אחר צעד", "problem": "הבעיה:", "withoutMagic": "בלי מילות קסם:", "addMagicWords": "הוסף את מילות הקסם!", "magicWordsActive": "מילות הקסם נוספו!", "nextStep": "גלה את הצעד הבא", "withMagic": "עם חשיבה צעד אחר צעד:", "retry": "נסה שוב" },
+    "promptLab": { "title": "מעבדת פרומפטים", "progress": "שיפורים", "yourPrompt": "הפרומפט שלך:", "aiSays": "תשובת AI:", "addDetails": "הוסף שיפורים:", "success": "הפרומפט שלך עכשיו ספציפי מאוד!", "retry": "התחל מחדש" },
+    "wordPredictor": { "title": "איך AI חושב", "instruction": "AI מנחש את המילה הסבירה ביותר. אתה יכול לחשוב כמו AI?", "aiThinks": "AI קורא:", "thinkingDefault": "הממ, איזו מילה תהיה הגיונית כאן?", "check": "בדוק את התשובה שלי!", "correct": "אתה חושב כמו AI!", "tryAgain": "לא בדיוק! AI בוחר את המילה הסבירה ביותר.", "retry": "נסה שוב" },
+    "settings": { "title": "הגדרות", "language": "שפה", "progress": "ההתקדמות שלך", "stars": "כוכבים", "completed": "הושלם", "resetTitle": "אפס התקדמות", "resetButton": "אפס הכל", "resetWarning": "זה ימחק את כל הכוכבים וההתקדמות. בטוח?", "resetConfirm": "כן, אפס הכל", "resetComplete": "התקדמות אופסה! טוען מחדש...", "cancel": "ביטול" }
   }
 }

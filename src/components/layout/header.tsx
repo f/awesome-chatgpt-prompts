@@ -202,7 +202,7 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
                       className="flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
                     >
                       <BookOpen className="h-4 w-4" />
-                      Book
+                      {t("nav.book")}
                     </Link>
                   )}
                 </div>
@@ -333,7 +333,7 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
             <Button asChild variant="ghost" size="sm" className="hidden lg:flex h-8 gap-1.5">
               <Link href="https://fka.gumroad.com/l/art-of-chatgpt-prompting">
                 <BookOpen className="h-4 w-4" />
-                Book
+                {t("nav.book")}
               </Link>
             </Button>
           )}

@@ -1,0 +1,97 @@
+<Section>
+<Panel character="promi" mood="happy">
+¡Bienvenido de vuelta al Castillo de la Claridad! Hoy aprenderemos sobre **QUIÉN** y **QUÉ** - ¡dos detalles súper importantes!
+</Panel>
+</Section>
+
+<Section>
+## La pregunta QUIÉN
+
+Cuando pides ayuda a la IA, piensa: **¿Quién está involucrado?**
+
+- ¿Una persona? (niño, niña, abuela, superhéroe)
+- ¿Un animal? (gato, dragón, ballena)
+- ¿Un personaje? (robot, mago, extraterrestre)
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Si dices "Escribe una historia", ¡no sé de quién se trata! Pero "Escribe una historia sobre un caballero valiente" me dice exactamente quién es el personaje principal.
+</Panel>
+</Section>
+
+<Section>
+## ¡Practiquemos QUIÉN!
+
+<PromptVsMistake
+  question="¿Qué prompt nos dice QUIÉN es el protagonista?"
+  good="Escribe una historia sobre un ratoncito curioso llamado Pipo"
+  bad="Escribe una historia sobre algo"
+  explanation="¡El primer prompt nos dice QUIÉN (un ratón), QUÉ tipo (curioso, pequeño), y hasta su NOMBRE (Pipo)!"
+  promiMessage="¡Los nombres y descripciones me ayudan a imaginar al personaje!"
+/>
+</Section>
+
+<Section>
+## La pregunta QUÉ
+
+Ahora piensa: **¿Qué está pasando? ¿Qué quieres?**
+
+- ¿Qué acción? (correr, cantar, construir)
+- ¿Qué objeto? (un pastel, una nave espacial, un poema)
+- ¿Qué tipo? (gracioso, aterrador, colorido)
+</Section>
+
+<Section>
+## ¡Practiquemos QUÉ!
+
+<PromptVsMistake
+  question="¿Qué prompt nos dice QUÉ crear?"
+  good="Escribe un poema gracioso sobre la pizza con muchas rimas"
+  bad="Escribe algo gracioso"
+  explanation="¡El prompt detallado nos dice QUÉ (un poema), SOBRE QUÉ (pizza), QUÉ estilo (gracioso con rimas)!"
+  promiMessage="¡Ser específico sobre QUÉ quieres me ayuda a crear exactamente eso!"
+/>
+</Section>
+
+<Section>
+## ¡Construye tu propio prompt!
+
+Junta QUIÉN y QUÉ:
+
+<DragDropPrompt
+  title="Construye un Prompt"
+  instruction="Arrastra las piezas en el orden correcto"
+  pieces={["Escribe una historia", "sobre un dragón amigable", "que aprende", "a hacer helado"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="¡Perfecto! Combinaste QUIÉN (dragón amigable) y QUÉ (aprende a hacer helado)!"
+/>
+</Section>
+
+<Section>
+## ¡Crea el tuyo!
+
+<MagicWords
+  sentence="Por favor escribe un ___ sobre un ___ que quiere ___"
+  blanks={[
+    { hint: "📝 tipo de escritura", answers: ["historia", "poema", "canción", "chiste"] },
+    { hint: "🦸 un personaje", answers: ["superhéroe", "princesa", "robot", "mago", "pirata"] },
+    { hint: "🎯 una meta", answers: ["encontrar un tesoro", "hacer amigos", "salvar el mundo", "aprender magia", "ganar una carrera"] }
+  ]}
+  successMessage="¡Agregaste QUIÉN y QUÉ perfectamente!"
+/>
+</Section>
+
+<Section>
+## ¡Progreso increíble! 🎉
+
+<Panel character="promi" mood="celebrating">
+¡Te estás volviendo muy bueno en esto! Ahora sabes incluir siempre **QUIÉN** está en tu prompt y **QUÉ** quieres. ¡Sigue así!
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-2-who-and-what" 
+  stars={3}
+  message="¡Dominaste QUIÉN y QUÉ en los prompts!"
+/>
+</Section>

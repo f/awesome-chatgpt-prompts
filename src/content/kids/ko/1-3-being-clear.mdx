@@ -1,0 +1,121 @@
+<Section>
+<Panel character="promi" mood="happy">
+안녕 슈퍼스타! 🌟 오늘은 가장 중요한 기술을 배울 거야: **명확하게** 말하기!
+</Panel>
+</Section>
+
+<Section>
+## 왜 명확하게 말하는 게 중요할까
+
+엄마에게 "음식"을 달라고 하는 것과 "가장자리 없는 땅콩버터 샌드위치"를 달라고 하는 것을 상상해봐. 어떤 게 원하는 걸 정확히 주지?
+
+<Panel character="promi" mood="thinking">
+나도 마찬가지야! 명확하게 말하면 어떻게 도와야 할지 정확히 알아. 모호하면 추측해야 하고... 틀릴 수도 있어!
+</Panel>
+</Section>
+
+<Section>
+## 명확 vs. 불명확
+
+차이를 찾는 연습을 해보자!
+
+
+<PromptVsMistake
+  question="어떤 프롬프트가 더 명확해?"
+  good="정원의 나비에 대해 운율이 맞는 단어로 4줄 시를 써줘"
+  bad="시 써줘 나비"
+  explanation="명확한 프롬프트는 말해줘: 얼마나 긴지 (4줄), 무엇에 대한지 (정원의 나비), 특별한 규칙 (운율). 훨씬 나아!"
+  promiMessage="명확한 프롬프트 = 더 좋은 결과! 마법 같아!"
+/>
+
+
+<PromptVsMistake
+  question="어떤 게 정확히 뭐가 필요한지 알려줘?"
+  good="10살이 좋아할 돌고래에 대한 재미있는 사실 3개를 쓰는 걸 도와줘"
+  bad="돌고래에 대해 알려줘"
+  explanation="첫 번째 프롬프트는 말해줘: 몇 개의 사실 (3개), 어떤 종류 (재미있는), 누구를 위한 (10살). 많이 도움돼!"
+  promiMessage="누구를 위한지 알려주면 그들에게 완벽하게 만들 수 있어!"
+/>
+</Section>
+
+<Section>
+## 명확성 도전
+
+지금까지 가장 명확한 프롬프트를 만들어보자!
+
+
+<DragDropPrompt
+  title="수정처럼 명확하게 만들어! 💎"
+  instruction="이 조각들을 배열해서 엄청 명확한 프롬프트를 만들어"
+  pieces={[
+    "써주는 걸 도와줘",
+    "짧은 잠자리 이야기를",
+    "졸린 부엉이에 대해",
+    "행복한 결말로",
+    "내 여동생을 위해"
+  ]}
+  correctOrder={[0, 1, 2, 3, 4]}
+  successMessage="지금까지 가장 명확한 프롬프트야! 대단해!"
+/>
+</Section>
+
+<Section>
+## 명확한 세부사항 추가
+
+<MagicWords
+  title="세부사항을 추가해! 🎯"
+  sentence="{{length}} {{type}}을 써줘, {{topic}}에 대해, {{audience}}를 위해"
+  blanks={[
+    { id: "length", hint: "얼마나 긴? (짧은, 긴)", answers: ["짧은", "긴", "5문장의", "한 페이지의", "간단한", "빠른"], emoji: "📏" },
+    { id: "type", hint: "어떤 종류? (이야기, 목록, 설명)", answers: ["이야기", "목록", "설명", "시", "노래", "가이드"], emoji: "📝" },
+    { id: "topic", hint: "무엇에 대해? (우주, 동물, 스포츠)", answers: ["우주", "동물", "스포츠", "공룡", "로봇", "마법", "자연", "과학"], emoji: "🎯" },
+    { id: "audience", hint: "누구를 위해? (아이들, 초보자)", answers: ["아이들", "초보자", "선생님", "친구", "가족", "학생들"], emoji: "👥" }
+  ]}
+  successMessage="모든 중요한 세부사항을 추가했어! 잘했어!"
+/>
+</Section>
+
+<Section>
+## 명확성의 황금 규칙
+
+<Panel character="promi" mood="excited">
+명확하게 말하기 위한 최고의 팁이야:
+</Panel>
+
+프롬프트를 쓸 때 이 세 가지 질문을 기억해:
+
+1. **뭘** 원해? (이야기, 도움, 정보)
+2. **어떻게** 되어야 해? (짧게, 재미있게, 간단하게)
+3. **누구를** 위한 거야? (나, 친구, 우리 반)
+
+
+<PromptVsMistake
+  question="마지막 도전! 세 가지 규칙을 모두 사용한 건?"
+  good="점심에 친구들에게 말할 수 있는 피자에 대한 짧고 재미있는 농담을 써줘"
+  bad="재미있는 거 만들어"
+  explanation="좋은 프롬프트에는 뭘 (피자 농담), 어떻게 (짧고 재미있게), 누구를 위해 (점심에 친구들에게 말할)가 있어!"
+  promiMessage="넌 명확성 챔피언이야! 🏆"
+/>
+</Section>
+
+<Section>
+## 월드 1 완료! 🎊
+
+<Panel character="promi" mood="celebrating">
+와! 월드 1 전체를 끝냈어! 배운 것:
+
+- ✅ AI와 프롬프트가 뭔지
+- ✅ 첫 번째 프롬프트 쓰는 법
+- ✅ 왜 명확하게 말하는 게 엄청 중요한지
+
+새로운 모험을 위한 준비가 됐어!
+</Panel>
+
+
+<LevelComplete 
+  levelSlug="1-3-being-clear" 
+  stars={3}
+  message="명확하게 말하기를 마스터했어! 월드 1 완료!"
+/>
+</Section>
+

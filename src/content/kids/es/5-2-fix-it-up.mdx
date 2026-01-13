@@ -1,0 +1,108 @@
+<Section>
+<Panel character="promi" mood="happy">
+¡Bienvenido de vuelta! Hoy aprendemos una habilidad súper importante: **¡encontrar y arreglar prompts débiles**! 🔧
+</Panel>
+</Section>
+
+<Section>
+## ¡Detecta los problemas!
+
+Los prompts débiles a menudo tienen:
+
+❌ Muy vagos - "Escribe algo"
+❌ Faltan detalles - "Cuéntame sobre una persona"
+❌ Sin formato - Solo preguntar sin estructura
+❌ Estilo no claro - No decir cómo lo quieres
+</Section>
+
+<Section>
+## ¡Sé el Doctor de Prompts! 🏥
+
+<PromptDoctor
+  title="Cura este prompt"
+  brokenPrompt="Escribe algo"
+  problems={[
+    { issue: "Muy vago", symptom: "¿Qué debo escribir? ¿Una historia? ¿Un poema? ¿Un chiste?", fix: "Escribe una historia" },
+    { issue: "Sin tema", symptom: "¿De qué debería ser la historia?", fix: "Escribe una historia sobre un dragón" },
+    { issue: "Sin detalles", symptom: "¿Qué tipo de dragón? ¿Qué pasa?", fix: "Escribe una historia corta sobre un dragón amigable que hornea galletas" }
+  ]}
+  healedPrompt="Escribe una historia corta sobre un dragón amigable que hornea galletas"
+  successMessage="¡Curaste el prompt! ¡De 2 palabras a una solicitud detallada genial!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+¡Aprender a detectar prompts débiles te ayuda a escribir mejores! ¡Es como ser un detective de prompts!
+</Panel>
+</Section>
+
+<Section>
+## ¡Encuentra la solución!
+
+<PromptVsMistake
+  question="Este prompt es débil: 'Escribe un poema.' ¿Cómo lo arreglarías?"
+  good="Escribe un poema corto de 4 líneas con rimas sobre un arcoíris después de una tormenta. ¡Hazlo alegre y usa palabras coloridas!"
+  bad="Escribe un poema muy bueno por favor"
+  explanation="¡Solo decir 'muy bueno' no ayuda! En cambio, agrega detalles: tema (arcoíris), formato (4 líneas, rimas), y estilo (alegre, colorido)!"
+  promiMessage="¡Agregar detalles específicos transforma un prompt débil en uno fuerte!"
+/>
+</Section>
+
+<Section>
+## ¡Mejora este prompt!
+
+<PromptVsMistake
+  question="Prompt débil: 'Ayuda con mi tarea.' ¿Cómo lo mejorarías?"
+  good="Estoy en cuarto grado y necesito ayuda para entender las fracciones. ¿Puedes explicar qué significa 1/2 usando pizza como ejemplo? ¡Mantenlo simple!"
+  bad="Por favor ayuda más con mi tarea"
+  explanation="¡La versión buena me dice: tu nivel (cuarto grado), tema (fracciones), pide un ejemplo (pizza), y estilo (simple)!"
+  promiMessage="¡Cuanto más específico seas, mejor puedo ayudarte!"
+/>
+</Section>
+
+<Section>
+## ¡Arregla el prompt!
+
+<DragDropPrompt
+  title="Reparación de Prompt"
+  instruction="El prompt 'Cuéntame una historia' es muy débil. Ordena estas adiciones para arreglarlo:"
+  pieces={["sobre un ratoncito valiente", "Cuéntame una historia corta antes de dormir", "que ayuda a un pajarito perdido a encontrar su casa.", "Hazla tierna y termina con todos a salvo."]}
+  correctOrder={[1, 0, 2, 3]}
+  successMessage="¡Transformaste un prompt débil en uno genial!"
+/>
+</Section>
+
+<Section>
+## ¡Desafío de mejora!
+
+Toma este prompt débil y hazlo fuerte:
+
+**Débil:** "Dame ideas"
+
+<MagicWords
+  sentence="Dame ___ ideas creativas para ___ que sean ___ y ___. ¡Algo como ___!"
+  blanks={[
+    { hint: "🔢 cuántas", answers: ["5", "3", "7", "10", "4"] },
+    { hint: "🎯 para qué", answers: ["una fiesta de cumpleaños", "un proyecto de ciencias", "un juego divertido", "una historia para escribir", "decorar mi cuarto"] },
+    { hint: "✨ estilo 1", answers: ["divertidas", "fáciles de hacer", "creativas", "sorprendentes", "coloridas"] },
+    { hint: "🌟 estilo 2", answers: ["aptas para niños", "no muy caras", "únicas", "emocionantes", "simples"] },
+    { hint: "💡 ejemplo", answers: ["una búsqueda del tesoro", "hacer slime", "tema de superhéroes", "cosas que brillan en la oscuridad", "un show de magia"] }
+  ]}
+  successMessage="¡Convertiste un prompt débil de 2 palabras en uno detallado increíble!"
+/>
+</Section>
+
+<Section>
+## ¡Reparador de Prompts! 🎉
+
+<Panel character="promi" mood="celebrating">
+¡Excelente! ¡Aprendiste a detectar prompts débiles y **arreglarlos** agregando detalles, formato y estilo! ¡Esta habilidad te ayudará siempre!
+</Panel>
+
+<LevelComplete 
+  levelSlug="5-2-fix-it-up" 
+  stars={3}
+  message="¡Aprendiste a encontrar y arreglar prompts débiles!"
+/>
+</Section>

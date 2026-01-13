@@ -1,0 +1,103 @@
+<Section>
+<Panel character="promi" mood="happy">
+欢迎回来，朋友！准备好写你的第一个真正的提示词了吗？出发！🚀
+</Panel>
+</Section>
+
+<Section>
+## 文字的魔力
+
+当你和AI交流时，每个字都很重要！让我们看看添加更多文字如何让提示词变得更好。
+
+<WordPredictor
+  title="为什么词语很重要"
+  instruction="记得我是怎么猜下一个词的吗？看看提示词会发生什么！"
+  sentence="写一个关于龙的 ___"
+  options={["故事", "东西", "这个", "非常"]}
+  correctAnswer="故事"
+  explanation="'故事'最合理，因为我们通常要求写'故事'！'东西'太模糊了，'这个'或'非常'不符合模式。"
+  aiThinking="请求故事后通常会跟着'故事'这个词..."
+  successMessage="没错！具体的词语引导我的预测——这就是为什么提示词中的细节很重要！"
+/>
+
+<Panel character="promi" mood="thinking">
+看这个！如果有人只对我说"猫"，我不知道他们想要什么。他们想要图片？故事？关于猫的知识？我很困惑！😵‍💫
+</Panel>
+</Section>
+
+<Section>
+## 构建更好的提示词
+
+一个好的提示词有**三个部分**：
+
+1. **你想要什么**（故事、帮助、信息）
+2. **主题**（猫、太空、恐龙）
+3. **细节**（短的、有趣的、给小朋友的）
+
+<Panel character="promi" mood="excited">
+让我们一起构建一个提示词！
+</Panel>
+</Section>
+
+<Section>
+## 拖动拼图！
+
+<DragDropPrompt
+  title="构建你的第一个提示词！🧩"
+  instruction="把这些片段按正确顺序排列来请求一个故事。"
+  pieces={[
+    "请写",
+    "一个短故事",
+    "关于一只勇敢的小猫",
+    "去冒险"
+  ]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="完美！这是一个很棒的提示词！"
+/>
+</Section>
+
+<Section>
+## 填空！
+
+现在试着通过拖动魔法词来创建你自己的提示词：
+
+
+<MagicWords
+  title="创建你自己的提示词！✨"
+  sentence="请写一个{{type}}，关于一个{{character}}，{{action}}"
+  blanks={[
+    { id: "type", hint: "什么类型的写作？（故事、诗、歌）", answers: ["故事", "诗", "歌", "信", "笑话"], emoji: "📝" },
+    { id: "character", hint: "关于谁？（机器人、龙、小狗）", answers: ["机器人", "龙", "小狗", "猫", "魔法师", "公主", "骑士", "兔子", "独角兽"], emoji: "🦸" },
+    { id: "action", hint: "他们做什么？（找到宝藏、交朋友）", answers: ["找到宝藏", "交朋友", "拯救世界", "去冒险", "学会飞翔", "发现魔法"], emoji: "⚡" }
+  ]}
+  successMessage="哇！你创建了一个超棒的提示词！"
+/>
+</Section>
+
+<Section>
+## 轮到你选择！
+
+<PromptVsMistake
+  question="哪个提示词会得到更好的故事？"
+  good="写一个关于想学跳舞的企鹅的有趣故事"
+  bad="写故事企鹅"
+  explanation="第一个提示词告诉我应该是有趣的，是关于企鹅的，而且企鹅想做什么！"
+  promiMessage="细节让一切变得更好！我喜欢确切知道你想要什么！"
+/>
+</Section>
+
+<Section>
+## 干得好！🌟
+
+<Panel character="promi" mood="celebrating">
+你写了你的第一个提示词！你学到了好的提示词需要：你想要什么、主题和细节。你在这方面真的越来越棒了！
+</Panel>
+
+
+<LevelComplete 
+  levelSlug="1-2-first-words" 
+  stars={3}
+  message="你学会了如何写你的第一个提示词！"
+/>
+</Section>
+

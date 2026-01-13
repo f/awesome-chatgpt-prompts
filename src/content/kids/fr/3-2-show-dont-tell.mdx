@@ -1,0 +1,104 @@
+<Section>
+<Panel character="promi" mood="happy">
+Bienvenue de retour ! La leçon d'aujourd'hui est super importante : **Montre, ne raconte pas** ! Utiliser des exemples est l'une des meilleures façons d'aider l'IA à comprendre !
+</Panel>
+</Section>
+
+<Section>
+## Le pouvoir des exemples
+
+Au lieu de juste décrire ce que tu veux, **montre-moi un exemple** !
+
+C'est comme quand tu apprends un jeu à quelqu'un - c'est plus facile de lui montrer comment jouer que de juste expliquer les règles !
+</Section>
+
+<Section>
+## Apprends le motif !
+
+<ExampleMatcher
+  title="Pouvoir des Motifs"
+  instruction="L'IA apprend des exemples ! Regarde le motif et choisis ce qui vient après."
+  examples={[
+    { input: "heureux", output: "😊" },
+    { input: "triste", output: "😢" },
+    { input: "fatigué", output: "😴" }
+  ]}
+  question="en colère"
+  options={["😠", "😊", "🎉", "😴"]}
+  correctAnswer="😠"
+  explanation="L'IA a appris : mot de sentiment → emoji correspondant ! Ça s'appelle 'apprendre par l'exemple' - comme toi !"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Si tu dis "rends-le cool", je ne sais peut-être pas ce que "cool" signifie pour toi. Mais si tu me montres un exemple, je comprendrai parfaitement !
+</Panel>
+</Section>
+
+<Section>
+## Vois la différence
+
+<PromptVsMistake
+  question="Quel prompt utilise mieux les exemples ?"
+  good="Écris un nom de produit amusant comme 'Shampooing Super Brillant' ou 'Oreillers Nuages Magiques' - quelque chose d'accrocheur et ludique !"
+  bad="Écris un nom de produit amusant"
+  explanation="Les exemples montrent exactement quel style de nom tu cherches - accrocheur, ludique, avec des adjectifs amusants !"
+  promiMessage="Les exemples sont comme des cartes au trésor - ils me montrent exactement où tu veux aller !"
+/>
+</Section>
+
+<Section>
+## Montre ton style
+
+<PromptVsMistake
+  question="Quel prompt montre mieux le style d'écriture ?"
+  good="Écris une blague dans ce style : 'Pourquoi la banane est allée chez le médecin ? Parce qu'elle ne se sentait pas bien !' - quelque chose de rigolo avec un jeu de mots !"
+  bad="Écris une blague drôle"
+  explanation="En montrant un exemple de blague avec un jeu de mots, je sais que tu veux le même style rigolo !"
+  promiMessage="Quand tu me montres ce que tu aimes, je peux reproduire ce style !"
+/>
+</Section>
+
+<Section>
+## Donne des exemples !
+
+<DragDropPrompt
+  title="Construis avec des Exemples"
+  instruction="Arrange les pièces pour créer un prompt avec un exemple utile"
+  pieces={["Écris un nom de super-héros", "comme 'Capitaine Courage'", "ou 'Dame Éclair'", "- quelque chose d'héroïque et mémorable"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Parfait ! Tes exemples montrent exactement quel type de nom tu veux !"
+/>
+</Section>
+
+<Section>
+## Crée ton propre prompt avec exemples !
+
+<MagicWords
+  sentence="Écris un ___ comme '___ ___ ___' - quelque chose de ___ et ___"
+  blanks={[
+    { hint: "📝 quoi écrire", answers: ["nom d'équipe", "nom d'animal", "nom de groupe", "titre de livre", "nom de restaurant"] },
+    { hint: "✨ adjectif", answers: ["Super", "Joyeux", "Doré", "Magique", "Puissant"] },
+    { hint: "🌟 nom", answers: ["Étoiles", "Dragons", "Rêves", "Tonnerre", "Phénix"] },
+    { hint: "🎯 mot", answers: ["Club", "Équipe", "Troupe", "Royaume", "Aventure"] },
+    { hint: "😊 style 1", answers: ["amusant", "excitant", "cool", "créatif", "accrocheur"] },
+    { hint: "🎨 style 2", answers: ["mémorable", "unique", "puissant", "amical", "audacieux"] }
+  ]}
+  successMessage="Super ! Ton exemple montre exactement quel style tu veux !"
+/>
+</Section>
+
+<Section>
+## Les exemples sont puissants ! 🎉
+
+<Panel character="promi" mood="celebrating">
+Travail incroyable ! Tu as appris que **montrer des exemples** est l'une des meilleures façons d'aider l'IA à comprendre exactement ce que tu veux !
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-2-show-dont-tell" 
+  stars={3}
+  message="Tu as maîtrisé l'utilisation des exemples dans les prompts !"
+/>
+</Section>

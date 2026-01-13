@@ -1,0 +1,87 @@
+<Section>
+<Panel character="promi" mood="excited">
+Bugün **formatları** öğreniyoruz! 📝 Yapay zekadan farklı şekillerde yanıt isteyebileceğini biliyor muydun?
+</Panel>
+</Section>
+
+<Section>
+## Format Nedir?
+
+**Format**, cevabın NASIL sunulmasını istediğindir:
+
+- 📋 **Liste** - numaralı veya madde işaretli
+- 📖 **Hikaye** - başı, ortası, sonu olan bir anlatı
+- 🎵 **Şiir** - kafiyeli ve ritmli
+- ❓ **Soru-Cevap** - soru ve cevap tarzı
+- 📊 **Tablo** - satır ve sütunlarda organize
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+Bana formatı söyleyerek, cevabımı senin için en yararlı şekilde düzenlememe yardım ediyorsun!
+</Panel>
+</Section>
+
+<Section>
+## Format Fark Yaratır!
+
+<PromptVsMistake
+  question="Hangi prompt net bir format istiyor?"
+  good="Bana yunuslar hakkında 5 eğlenceli bilgiyi numaralı liste olarak ver"
+  bad="Bana yunuslar hakkında anlat"
+  explanation="İlk prompt bana cevabı tam olarak nasıl düzenleyeceğimi söylüyor - 5 numaralı bilgi olarak!"
+  promiMessage="Belirli bir format istediğinde, tam olarak ihtiyacın olanı alıyorsun!"
+/>
+</Section>
+
+<Section>
+## Formatını Seç!
+
+<PromptVsMistake
+  question="Şeyleri hatırlamak için hangi format en iyi olur?"
+  good="Güneş'ten sırayla gezegenleri madde işaretleri olarak listele"
+  bad="Bana gezegenler hakkında anlat"
+  explanation="Liste formatı gezegenleri sırayla hatırlamayı ve saymayı kolaylaştırır!"
+  promiMessage="Listeler öğrenmek ve hatırlamak için harika!"
+/>
+</Section>
+
+<Section>
+## Format Pratiği!
+
+<DragDropPrompt
+  title="Format Ekle"
+  instruction="Belirli bir format istemek için düzenle"
+  pieces={["Yağmur hakkında", "4 satırlık", "kafiyeli bir şiir", "yaz"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Mükemmel! Belirli detaylarla bir şiir formatı istedin!"
+/>
+</Section>
+
+<Section>
+## Formatını Seç!
+
+<MagicWords
+  sentence="Bana ___ hakkında ___ bir ___ olarak ver"
+  blanks={[
+    { hint: "🔢 kaç tane", answers: ["5 ipucu", "3 fikir", "10 bilgi", "7 adım", "4 örnek"] },
+    { hint: "📚 konu", answers: ["iyi bir arkadaş olma", "gezegeni kurtarma", "sağlıklı kalma", "yaratıcı olma", "yeni şeyler öğrenme"] },
+    { hint: "📋 format", answers: ["numaralı liste", "madde işaretleri", "kısa şiir", "basit hikaye", "kolay adımlar"] }
+  ]}
+  successMessage="Format seçmede harika iş! Bu cevapları okumayı kolaylaştırır!"
+/>
+</Section>
+
+<Section>
+## Format Ustası! 🎉
+
+<Panel character="promi" mood="celebrating">
+Harika! Belirli bir **format** istemenin cevapları tam olarak ihtiyacın gibi organize etmeni sağladığını öğrendin!
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-3-format-finder" 
+  stars={3}
+  message="Farklı formatlar istemeyi öğrendin!"
+/>
+</Section>

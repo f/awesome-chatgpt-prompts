@@ -1,0 +1,104 @@
+<Section>
+<Panel character="promi" mood="excited">
+Aydınlıq Qalasının son səviyyəsinə xoş gəlmisiniz! 🏰 KİM, NƏ, NƏ VAXT və HARADAni öyrəndiniz. İndi gəlin HAMISINI birləşdirək!
+</Panel>
+</Section>
+
+<Section>
+## Detal Dedektivin Yoxlama Siyahısı
+
+Prompt göndərməzdən əvvəl özünüzdən soruşun:
+
+✅ **KİM** - Kim iştirak edir?
+✅ **NƏ** - Nə istəyirəm? Nə baş verir?
+✅ **NƏ VAXT** - Bu nə vaxt baş verir?
+✅ **HARADA** - Bu harada baş verir?
+</Section>
+
+<Section>
+## Prompt hissələrini təsnif edin!
+
+<PromptParts
+  title="Hər hissəni uyğunlaşdırın!"
+  instruction="Bir hissəyə toxunun, sonra Rol, Tapşırıq, Kontekst və ya Məhdudiyyət olub-olmadığını seçin!"
+  parts={[
+    { text: "Gülməli hekayə yaz", type: "task" },
+    { text: "yöndəmsiz sehrbaz haqqında", type: "context" },
+    { text: "sehr məktəbində", type: "context" },
+    { text: "Qısa et", type: "constraint" }
+  ]}
+  successMessage="Promptun bütün hissələrini müəyyən etdiniz! İndi peşəkar kimi prompt qura bilərsiniz!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Hər dəfə dördünə də ehtiyacınız yoxdur, amma nə qədər çox detal əlavə etsəniz, sizə bir o qədər yaxşı kömək edə bilərəm!
+</Panel>
+</Section>
+
+<Section>
+## Dedektiv Çağırışı #1
+
+<PromptVsMistake
+  question="Hansı promptda ən faydalı detallar var?"
+  good="Kral sarayında sehr şousunda təsadüfən pişiyini nəhəngə çevirən Zap adlı yöndəmsiz sehrbaz haqqında gülməli hekayə yaz"
+  bad="Sehr haqqında hekayə yaz"
+  explanation="Ətraflı promptda KİM (sehrbaz Zap, pişiyi), NƏ (pişiyi nəhəngə çevirir, sehr şousu), HARADA (kral sarayı) və hətta üslub (gülməli) var!"
+  promiMessage="Vay! Bu prompt işləmək üçün çox şey verir. Bütün səhnəni təsəvvür edə bilirəm!"
+/>
+</Section>
+
+<Section>
+## Dedektiv Çağırışı #2
+
+<PromptVsMistake
+  question="Hansı prompt daha yaxşı şeir əldə edər?"
+  good="Rahat mağarasında qışlamasına hazırlaşan yuxulu ayı haqqında qısa qafiyəli şeir yaz"
+  bad="Heyvan haqqında şeir yaz"
+  explanation="Birinci prompt mənə KİM (yuxulu ayı), NƏ (qışlamasına hazırlaşır), NƏ VAXT (qış), HARADA (rahat mağara) və üslub (qısa, qafiyəli) deyir!"
+  promiMessage="Hər detal yalnız sizin üçün xüsusi bir şey yaratmağıma kömək edir!"
+/>
+</Section>
+
+<Section>
+## Son prompt qurun!
+
+<DragDropPrompt
+  title="Baş Dedektiv"
+  instruction="BÜTÜN detalları mükəmməl prompta sıralayın"
+  pieces={["Həyəcanlı hekayə yaz", "gənc ixtiraçı haqqında", "robot dost yaradan", "futuristik şəhərdə", "yayın ilk günündə"]}
+  correctOrder={[0, 1, 2, 3, 4]}
+  successMessage="Mükəmməl! KİM, NƏ, HARADA və NƏ VAXT daxil etdiniz!"
+/>
+</Section>
+
+<Section>
+## Şah əsərinizi yaradın!
+
+<MagicWords
+  sentence="Zəhmət olmasa ___ zamanı ___da ___ edən ___ haqqında ___ hekayə yaz"
+  blanks={[
+    { hint: "😊 əhval/üslub", answers: ["gülməli", "həyəcanlı", "sirli", "duyğusal", "axmaq"] },
+    { hint: "🦸 personaj", answers: ["cəsur cəngavər", "kiçik pəri", "ağıllı tülkü", "gənc astronavt", "mehriban xəyal"] },
+    { hint: "🎬 fəaliyyət", answers: ["sirr kəşf edir", "səyahətə çıxır", "yeni dost qazanır", "sirr açır", "uçmağı öyrənir"] },
+    { hint: "🏰 yer", answers: ["sehrli krallıq", "dərin cəngəllik", "kosmik stansiya", "sualtı şəhər", "sehrli meşə"] },
+    { hint: "🌙 vaxt", answers: ["dolunay", "ad günü", "böyük tufan", "məktəbdə son gün", "gecə yarısı"] }
+  ]}
+  successMessage="Siz əsl Detal Dedektivisiniz! Bu heyrətamiz promptdur!"
+/>
+</Section>
+
+<Section>
+## Təbrik edirik, Dedektiv! 🎉
+
+<Panel character="promi" mood="celebrating">
+Bacardınız! Aydınlıq Qalasını keçdiniz və **Detal Dedektivi** oldunuz! İndi sirri bilirsiniz: KİM + NƏ + NƏ VAXT + HARADA = Heyrətamiz Promptlar!
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-4-detail-detective" 
+  stars={3}
+  message="Aydınlıq Qalasını keçdiniz! Siz Detal Dedektivisiniz!"
+/>
+</Section>

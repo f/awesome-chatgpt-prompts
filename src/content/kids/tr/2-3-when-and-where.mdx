@@ -1,0 +1,96 @@
+<Section>
+<Panel character="promi" mood="excited">
+Seni tekrar görmek harika! Bugünkü ders **NE ZAMAN** ve **NEREDE** hakkında - bu detaylar promptlarını canlandırıyor!
+</Panel>
+</Section>
+
+<Section>
+## NE ZAMAN Sorusu
+
+**Ne zaman** hikayenoluyor?
+
+- Günün zamanı: sabah, gece, gün batımı
+- Mevsim: yaz, kış, ilkbahar
+- Dönem: çok uzun zaman önce, gelecek, şimdiki zaman
+- Özel zaman: doğum günü, tatil, okulun ilk günü
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+"Bir kedi hakkında hikaye" tamam, ama "Ürkütücü bir Cadılar Bayramı gecesinde bir kedi hakkında hikaye" ÇOK daha ilginç!
+</Panel>
+</Section>
+
+<Section>
+## NE ZAMAN Pratik Yapalım!
+
+<PromptVsMistake
+  question="Hangi prompt daha iyi bir NE ZAMAN hissine sahip?"
+  good="Ilık bir ilkbahar sabahı uyanan bir kardan adam hakkında yaz"
+  bad="Bir kardan adam hakkında yaz"
+  explanation="İlk prompt bize NE ZAMAN (ilkbahar sabahı) söylüyor ve bu ilginç bir sorun yaratıyor - ilkbaharda kardan adam! Bu harika bir hikaye fikri!"
+  promiMessage="NE ZAMAN hikayelerinde heyecan verici durumlar yaratabilir!"
+/>
+</Section>
+
+<Section>
+## NEREDE Sorusu
+
+**Nerede** eylem gerçekleşiyor?
+
+- Konum: plaj, orman, şehir, uzay
+- Bina: okul, kale, ağaç ev
+- Fantezi mekan: sualtı krallığı, bulut şehri
+- Belirli nokta: köprünün altında, dağın tepesinde
+</Section>
+
+<Section>
+## NEREDE Pratik Yapalım!
+
+<PromptVsMistake
+  question="Hangi prompt NEREDE'nin daha iyi bir resmini çiziyor?"
+  good="Gizemli sisli bir adada hazine arayan korsanlar hakkında yaz"
+  bad="Hazine arayan korsanlar hakkında yaz"
+  explanation="NEREDE (gizemli sisli ada) eklemek sahneyi hayal etmeme ve daha canlı bir hikaye yazmama yardımcı oluyor!"
+  promiMessage="NEREDE hikayenin havasını ve atmosferini oluşturmaya yardımcı oluyor!"
+/>
+</Section>
+
+<Section>
+## NE ZAMAN ve NEREDE'yi Birleştir!
+
+<DragDropPrompt
+  title="Zaman ve Mekan"
+  instruction="NE ZAMAN ve NEREDE içeren bir prompt oluşturmak için parçaları düzenle"
+  pieces={["Sihirli ormanda", "yıldızlı bir gecede", "bir baykuş hakkında", "hikaye anlat"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Mükemmel! NEREDE (sihirli orman) ve NE ZAMAN (yıldızlı gece) ile sahneyi kurdun!"
+/>
+</Section>
+
+<Section>
+## Tam Bir Sahne Oluştur!
+
+<MagicWords
+  sentence="___ sırasında bir ___ geçen bir macera hakkında hikaye yaz"
+  blanks={[
+    { hint: "⏰ bir zaman", answers: ["fırtına", "gün batımı", "kış tatili", "dolunay", "gelecek"] },
+    { hint: "🗺️ bir yer", answers: ["perili ev", "sualtı şehri", "bulut krallığı", "dinozor parkı", "şeker diyarı"] }
+  ]}
+  successMessage="NE ZAMAN ve NEREDE ile canlı bir ortam yarattın!"
+/>
+</Section>
+
+<Section>
+## Sen Bir Sahne Kurucususun! 🎉
+
+<Panel character="promi" mood="celebrating">
+Fantastik iş! Artık promptlarına **NE ZAMAN** (zaman) ve **NEREDE** (yer) eklemeyi biliyorsun. Bu, isteklerini çok daha ilginç yapıyor!
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-3-when-and-where" 
+  stars={3}
+  message="Promptlarda NE ZAMAN ve NEREDE'de ustalaştın!"
+/>
+</Section>

@@ -1,0 +1,121 @@
+<Section>
+<Panel character="promi" mood="happy">
+Ei superestrela! 🌟 Hoje vamos aprender a habilidade mais importante: ser **CLARO**!
+</Panel>
+</Section>
+
+<Section>
+## Por Que Ser Claro Importa
+
+Imagine pedir para sua mãe "comida" vs pedir "um sanduíche de pasta de amendoim sem casca." Qual te dá exatamente o que você quer?
+
+<Panel character="promi" mood="thinking">
+É igual comigo! Quando você é claro, sei exatamente como ajudar. Quando é vago, tenho que adivinhar... e posso adivinhar errado!
+</Panel>
+</Section>
+
+<Section>
+## Claro vs. Não Claro
+
+Vamos praticar identificar a diferença!
+
+
+<PromptVsMistake
+  question="Qual prompt é mais claro?"
+  good="Escreva um poema de 4 linhas sobre borboletas num jardim, usando palavras que rimam"
+  bad="Escreva poema borboletas"
+  explanation="O prompt claro me diz: qual tamanho (4 linhas), sobre o quê (borboletas num jardim), e uma regra especial (rimar). Muito melhor!"
+  promiMessage="Prompts claros = melhores resultados! É como mágica!"
+/>
+
+
+<PromptVsMistake
+  question="Qual me diz exatamente o que você precisa?"
+  good="Me ajude a escrever 3 fatos divertidos sobre golfinhos que uma criança de 10 anos gostaria"
+  bad="Me conte sobre golfinhos"
+  explanation="O primeiro prompt me diz: quantos fatos (3), que tipo (divertidos), e para quem (criança de 10 anos). Isso ajuda muito!"
+  promiMessage="Quando você me diz para quem é, posso fazer perfeito para eles!"
+/>
+</Section>
+
+<Section>
+## O Desafio da Clareza
+
+Vamos construir o prompt mais claro de todos!
+
+
+<DragDropPrompt
+  title="Faça cristalino! 💎"
+  instruction="Organize essas peças para fazer um prompt super claro"
+  pieces={[
+    "Por favor me ajude a escrever",
+    "uma história curta de dormir",
+    "sobre uma coruja sonolenta",
+    "com um final feliz",
+    "para minha irmãzinha"
+  ]}
+  correctOrder={[0, 1, 2, 3, 4]}
+  successMessage="Esse é o prompt mais claro de todos! Incrível!"
+/>
+</Section>
+
+<Section>
+## Adicione Detalhes Claros
+
+<MagicWords
+  title="Adicione os detalhes! 🎯"
+  sentence="Escreva um {{length}} {{type}} sobre {{topic}} para {{audience}}"
+  blanks={[
+    { id: "length", hint: "Qual tamanho? (curto, longo)", answers: ["curto", "longo", "de 5 frases", "de uma página", "breve", "rápido"], emoji: "📏" },
+    { id: "type", hint: "Que tipo? (história, lista, explicação)", answers: ["história", "lista", "explicação", "poema", "música", "guia"], emoji: "📝" },
+    { id: "topic", hint: "Sobre o quê? (espaço, animais, esportes)", answers: ["espaço", "animais", "esportes", "dinossauros", "robôs", "magia", "natureza", "ciência"], emoji: "🎯" },
+    { id: "audience", hint: "Para quem? (crianças, iniciantes)", answers: ["crianças", "iniciantes", "meu professor", "meu amigo", "minha família", "estudantes"], emoji: "👥" }
+  ]}
+  successMessage="Você adicionou todos os detalhes importantes! Bom trabalho!"
+/>
+</Section>
+
+<Section>
+## As Regras de Ouro da Clareza
+
+<Panel character="promi" mood="excited">
+Aqui estão minhas melhores dicas para ser claro:
+</Panel>
+
+Lembre dessas três perguntas quando escrever um prompt:
+
+1. **O QUE** eu quero? (história, ajuda, informação)
+2. **COMO** deve ser? (curto, engraçado, simples)
+3. **PARA QUEM** é? (eu, meu amigo, minha turma)
+
+
+<PromptVsMistake
+  question="Desafio final! Qual usa as três regras?"
+  good="Escreva uma piada curta e engraçada sobre pizza que eu possa contar para meus amigos no almoço"
+  bad="Faça algo engraçado"
+  explanation="O ótimo prompt tem O QUE (uma piada sobre pizza), COMO (curta e engraçada), e PARA QUEM (contar para amigos no almoço)!"
+  promiMessage="Você é um campeão da clareza! 🏆"
+/>
+</Section>
+
+<Section>
+## Mundo 1 Completo! 🎊
+
+<Panel character="promi" mood="celebrating">
+UAU! Você terminou todo o Mundo 1! Você aprendeu:
+
+- ✅ O que são IA e prompts
+- ✅ Como escrever seus primeiros prompts
+- ✅ Por que ser claro é super importante
+
+Você está pronto para novas aventuras!
+</Panel>
+
+
+<LevelComplete 
+  levelSlug="1-3-being-clear" 
+  stars={3}
+  message="Você dominou a arte de ser claro! Mundo 1 completo!"
+/>
+</Section>
+

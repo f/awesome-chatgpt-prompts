@@ -1,0 +1,100 @@
+<Section>
+<Panel character="promi" mood="happy">
+Tekrar hoş geldin arkadaşım! İlk gerçek promptlarını yazmaya hazır mısın? Hadi başlayalım! 🚀
+</Panel>
+</Section>
+
+<Section>
+## Kelimelerin Büyüsü
+
+Yapay zeka ile konuşurken her kelime önemli! Daha fazla kelime eklemenin promptları nasıl daha iyi yaptığını görelim.
+
+<WordPredictor
+  title="Kelimeler Neden Önemli"
+  instruction="Sıradaki kelimeyi nasıl tahmin ettiğimi hatırlıyor musun? Promptlarda ne olduğuna bak!"
+  sentence="Bir ejderha hakkında kısa bir hikaye ___"
+  options={["yaz", "uç", "ye", "mavi"]}
+  correctAnswer="yaz"
+  explanation="'Yaz' en mantıklı çünkü hikaye istendiğinde genellikle 'yaz' komutu gelir! Yapay zeka bu kalıpları öğrenir."
+  aiThinking="Hikaye isteklerinden sonra genellikle 'yaz' geliyor..."
+  successMessage="Tam olarak! Detaylı kelimeler tahminlerimi yönlendiriyor - işte bu yüzden promptlarda detay önemli!"
+/>
+
+<Panel character="promi" mood="thinking">
+Bunu izle! Birisi bana sadece "kedi" derse, ne istediklerini bilmiyorum. Resim mi istiyorlar? Hikaye mi? Kediler hakkında bilgi mi? Kafam karıştı! 😵‍💫
+</Panel>
+</Section>
+
+<Section>
+## Daha İyi Promptlar Oluşturma
+
+İyi bir promptun **üç parçası** var:
+
+1. **Ne istediğin** (hikaye, yardım, bilgi)
+2. **Konu** (kediler, uzay, dinozorlar)
+3. **Detaylar** (kısa, komik, çocuklar için)
+
+<Panel character="promi" mood="excited">
+Hadi birlikte bir prompt oluşturalım!
+</Panel>
+</Section>
+
+<Section>
+## Parçaları Sürükle!
+
+<DragDropPrompt
+  title="İlk promptunu oluştur! 🧩"
+  instruction="Bu parçaları hikaye istemek için doğru sıraya koy."
+  pieces={[
+    "Lütfen",
+    "cesur bir kedi yavrusu hakkında",
+    "kısa bir hikaye",
+    "yaz"
+  ]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Mükemmel! Bu harika bir prompt!"
+/>
+</Section>
+
+<Section>
+## Boşlukları Doldur!
+
+Şimdi sihirli kelimeleri sürükleyerek kendi promptunu yap:
+
+<MagicWords
+  title="Kendi promptunu oluştur! ✨"
+  sentence="Lütfen ___ bir ___ hakkında kısa bir ___ yaz"
+  blanks={[
+    { hint: "⚡ ne yapan?", answers: ["hazine bulan", "arkadaş edinen", "günü kurtaran", "maceraya çıkan", "uçmayı öğrenen", "sihir keşfeden"] },
+    { hint: "🦸 kim?", answers: ["robot", "ejderha", "köpek", "kedi", "büyücü", "prenses", "şövalye", "tavşan", "unicorn"] },
+    { hint: "📝 ne tür?", answers: ["hikaye", "şiir", "şarkı", "mektup", "fıkra"] }
+  ]}
+  successMessage="Vay! Harika bir prompt oluşturdun!"
+/>
+</Section>
+
+<Section>
+## Senin Seçimin!
+
+<PromptVsMistake
+  question="Hangi prompt daha iyi bir hikaye çıkarır?"
+  good="Dans etmeyi öğrenmek isteyen bir penguen hakkında komik bir hikaye yaz"
+  bad="Hikaye yaz penguen"
+  explanation="İlk prompt bana komik olması gerektiğini, bir penguen hakkında olduğunu VE penguenin ne yapmak istediğini söylüyor!"
+  promiMessage="Detaylar her şeyi daha iyi yapar! Ne istediğini tam olarak bilmeyi seviyorum!"
+/>
+</Section>
+
+<Section>
+## Harika İş! 🌟
+
+<Panel character="promi" mood="celebrating">
+İlk promptlarını yazdın! İyi promptların şunlara ihtiyacı olduğunu öğrendin: ne istediğin, konu ve detaylar. Bunda gerçekten iyileşiyorsun!
+</Panel>
+
+<LevelComplete 
+  levelSlug="1-2-first-words" 
+  stars={3}
+  message="İlk promptlarını yazmayı öğrendin!"
+/>
+</Section>

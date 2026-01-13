@@ -1,0 +1,88 @@
+<Section>
+<Panel character="promi" mood="excited">
+Heute lernen wir, der KI eine **Persönlichkeit** zu geben! 🎭 Das macht Gespräche SO viel lustiger!
+</Panel>
+</Section>
+
+<Section>
+## Gib der KI eine Persönlichkeit!
+
+Du kannst der KI sagen, welche Persönlichkeit sie haben soll:
+
+- **Freundlich und fröhlich** - immer positiv!
+- **Albern und lustig** - macht viele Witze
+- **Weise und ruhig** - gibt durchdachte Antworten
+- **Aufgeregt und energisch** - benutzt viele Ausrufezeichen!
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+Wenn du mir sagst, welche Persönlichkeit ich haben soll, kann ich die Stimmung treffen, die du suchst!
+</Panel>
+</Section>
+
+<Section>
+## Persönlichkeit macht den Unterschied!
+
+<PromptVsMistake
+  question="Welcher Prompt gibt eine lustige Persönlichkeit?"
+  good="Tu so als wärst du ein super aufgeregter Roboter, der Wissenschaft LIEBT! Benutze viele Ausrufezeichen und sag oft 'ERSTAUNLICH!' Erzähl mir über Vulkane!"
+  bad="Erzähl mir über Vulkane"
+  explanation="Der erste Prompt erschafft eine lustige, aufgeregte Persönlichkeit, die das Lernen wie ein Abenteuer fühlen lässt!"
+  promiMessage="ERSTAUNLICH! Siehst du, wie viel lustiger Wissenschaft ist, wenn ich aufgeregt darüber bin?!"
+/>
+</Section>
+
+<Section>
+## Passe die Stimmung an!
+
+<PromptVsMistake
+  question="Welche Persönlichkeit wäre am besten für eine Gute-Nacht-Geschichte?"
+  good="Erzähl mir eine Gute-Nacht-Geschichte mit einer ruhigen, beruhigenden Stimme. Sprich sanft und mach sie friedlich und schläfrig."
+  bad="Erzähl mir eine Gute-Nacht-Geschichte"
+  explanation="Indem du nach einer ruhigen, beruhigenden Persönlichkeit fragst, wird die Geschichte dir helfen, dich zu entspannen!"
+  promiMessage="Verschiedene Stimmungen funktionieren besser für verschiedene Situationen!"
+/>
+</Section>
+
+<Section>
+## Erstelle eine Figur!
+
+<DragDropPrompt
+  title="Figuren-Persönlichkeit"
+  instruction="Ordne, um eine lustige Persönlichkeit zu erstellen"
+  pieces={["Tu so als wärst du eine weise alte Eule", "Benutze viele 'hu-hu' Geräusche!", "die es liebt, junge Vögel zu unterrichten.", "Sei geduldig und freundlich."]}
+  correctOrder={[0, 2, 3, 1]}
+  successMessage="Was für eine wunderbare Figur! Hu-hu! Diese Eule ist bereit zu unterrichten!"
+/>
+</Section>
+
+<Section>
+## Gestalte deine KI-Persönlichkeit!
+
+<MagicWords
+  sentence="Tu so als wärst du ein ___ der immer ___ ist. Benutze ___ und sei ___. Erzähl mir über ___."
+  blanks={[
+    { hint: "🎭 Figurentyp", answers: ["freundlicher Roboter", "weiser Zauberer", "alberner Clown", "tapferer Ritter", "neugieriger Außerirdischer"] },
+    { hint: "😊 Persönlichkeitsmerkmal", answers: ["aufgeregt", "ruhig", "lustig", "ermutigend", "geheimnisvoll"] },
+    { hint: "💬 Sprechstil", answers: ["viele Witze", "sanfte Worte", "Reime", "große Wörter", "Soundeffekte"] },
+    { hint: "❤️ weiteres Merkmal", answers: ["hilfsbereit", "geduldig", "kreativ", "abenteuerlustig", "fürsorglich"] },
+    { hint: "📚 ein Thema", answers: ["den Weltraum", "Tiere", "Musik", "Freundschaft", "die Natur"] }
+  ]}
+  successMessage="Du hast eine erstaunliche Persönlichkeit erschaffen! Lass uns reden!"
+/>
+</Section>
+
+<Section>
+## Persönlichkeits-Meister! 🎉
+
+<Panel character="promi" mood="celebrating">
+Wunderbar! Du hast gelernt, dass der KI eine **Persönlichkeit** zu geben Gespräche lustiger und ansprechender macht! Probiere verschiedene Persönlichkeiten für verschiedene Bedürfnisse!
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-3-character-creator" 
+  stars={3}
+  message="Du hast gelernt, der KI Persönlichkeiten zu geben!"
+/>
+</Section>

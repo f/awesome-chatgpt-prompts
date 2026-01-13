@@ -1,0 +1,114 @@
+<Section>
+<Panel character="promi" mood="happy">
+Merhaba süperstar! 🌟 Bugün en önemli beceriyi öğreneceğiz: **NET OLMAK**!
+</Panel>
+</Section>
+
+<Section>
+## Neden Net Olmak Önemli
+
+Annenden "yiyecek" istemek ile "kabuksuz fıstık ezmeli sandviç" istemek arasındaki farkı düşün. Hangisi tam olarak istediğini sana verir?
+
+<Panel character="promi" mood="thinking">
+Benimle de aynı! Net olduğunda, tam olarak nasıl yardım edeceğimi bilirim. Belirsiz olduğunda tahmin etmem gerekiyor... ve yanlış tahmin edebilirim!
+</Panel>
+</Section>
+
+<Section>
+## Net vs. Belirsiz
+
+<PromptVsMistake
+  question="Hangi prompt daha net?"
+  good="Kafiyeli kelimeler kullanarak, bahçedeki kelebekler hakkında 4 satırlık bir şiir yaz"
+  bad="Şiir yaz kelebek"
+  explanation="Net prompt bana söylüyor: ne kadar uzun (4 satır), ne hakkında (bahçedeki kelebekler), ve özel bir kural (kafiyeli). Çok daha iyi!"
+  promiMessage="Net promptlar = daha iyi sonuçlar! Bu sihir gibi!"
+/>
+</Section>
+
+<Section>
+<PromptVsMistake
+  question="Hangisi tam olarak neye ihtiyacın olduğunu söylüyor?"
+  good="10 yaşındaki birinin seveceği yunuslar hakkında 3 eğlenceli bilgi yazmama yardım et"
+  bad="Yunuslar hakkında anlat"
+  explanation="İlk prompt bana söylüyor: kaç bilgi (3), ne tür (eğlenceli), ve kimin için (10 yaşındaki). Bu çok yardımcı oluyor!"
+  promiMessage="Kimin için olduğunu söylediğinde, onlar için mükemmel yapabilirim!"
+/>
+</Section>
+
+<Section>
+## Netlik Mücadelesi
+
+<DragDropPrompt
+  title="Kristal netliğinde yap! 💎"
+  instruction="Bu parçaları süper net bir prompt yapmak için düzenle"
+  pieces={[
+    "Küçük kardeşim için",
+    "uykulu bir baykuş hakkında",
+    "mutlu sonlu kısa bir hikaye",
+    "yaz lütfen"
+  ]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Bu şimdiye kadarki en net prompt! Harika!"
+/>
+</Section>
+
+<Section>
+## Net Detaylar Ekle
+
+<MagicWords
+  title="Detayları ekle! 🎯"
+  sentence="___ için ___ hakkında ___ bir ___ yaz"
+  blanks={[
+    { hint: "👥 kimin için?", answers: ["çocuklar", "yeni başlayanlar", "öğretmenim", "arkadaşım", "ailem", "öğrenciler"] },
+    { hint: "🎯 ne hakkında?", answers: ["uzay", "hayvanlar", "spor", "dinozorlar", "robotlar", "sihir", "doğa", "bilim"] },
+    { hint: "📏 ne kadar?", answers: ["kısa", "uzun", "5 cümlelik", "bir sayfalık", "hızlı"] },
+    { hint: "📝 ne tür?", answers: ["hikaye", "liste", "açıklama", "şiir", "şarkı", "rehber"] }
+  ]}
+  successMessage="Tüm önemli detayları ekledin! Harika iş!"
+/>
+</Section>
+
+<Section>
+## Netliğin Altın Kuralları
+
+<Panel character="promi" mood="excited">
+İşte net olmak için en iyi ipuçlarım:
+</Panel>
+
+Prompt yazarken bu üç soruyu hatırla:
+
+1. **NE** istiyorum? (hikaye, yardım, bilgi)
+2. **NASIL** olmalı? (kısa, komik, basit)
+3. **KİM** için? (ben, arkadaşım, sınıfım)
+</Section>
+
+<Section>
+<PromptVsMistake
+  question="Son mücadele! Hangisi üç kuralı da kullanıyor?"
+  good="Öğle yemeğinde arkadaşlarıma anlatabileceğim pizza hakkında kısa, komik bir fıkra yaz"
+  bad="Komik bir şey yap"
+  explanation="Harika prompt şunları içeriyor: NE (pizza hakkında fıkra), NASIL (kısa ve komik), ve KİM (öğle yemeğinde arkadaşlara anlatmak için)!"
+  promiMessage="Sen bir netlik şampiyonusun! 🏆"
+/>
+</Section>
+
+<Section>
+## Dünya 1 Tamamlandı! 🎊
+
+<Panel character="promi" mood="celebrating">
+VAY! Dünya 1'in tamamını bitirdin! Öğrendiklerin:
+
+- ✅ Yapay zeka ve promptların ne olduğu
+- ✅ İlk promptlarını nasıl yazacağın
+- ✅ Neden net olmanın süper önemli olduğu
+
+Yeni maceralara hazırsın!
+</Panel>
+
+<LevelComplete 
+  levelSlug="1-3-being-clear" 
+  stars={3}
+  message="Net olma sanatında ustalaştın! Dünya 1 tamamlandı!"
+/>
+</Section>

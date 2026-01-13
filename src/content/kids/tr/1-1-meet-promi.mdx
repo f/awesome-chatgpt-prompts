@@ -1,0 +1,100 @@
+<Section>
+<Panel character="promi" mood="happy">
+Merhaba! Ben **Promi** 🤖, robot arkadaşın! Seninle tanıştığıma çok mutluyum!
+</Panel>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+**Yapay Zeka** ne demek biliyor musun? Yapay Zeka, "düşünebilen ve konuşabilen bir bilgisayar" demek!
+</Panel>
+</Section>
+
+<Section>
+<Panel character="promi" mood="excited">
+Ben bir yapay zekayım! Mesajlarını okuyup sana yardım etmeye çalışıyorum. Ama işte işin sırrı: En iyi işi yapmam için **iyi talimatlara** ihtiyacım var!
+</Panel>
+</Section>
+
+<Section>
+## Nasıl Düşünürüm? 🧠
+
+Sırrımı öğrenmek ister misin? Aslında senin gibi "düşünmüyorum". Kelimeleri okuyup sıradaki kelimenin ne olması gerektiğini tahmin ediyorum!
+
+<WordPredictor
+  title="Yapay Zeka Gibi Düşün!"
+  instruction="Ben desenleri okuyup sıradaki kelimeyi tahmin ederim. Sen ne tahmin ederdin?"
+  sentence="Kedi yatağın üstünde ___"
+  options={["uyuyor", "uçuyor", "programlıyor", "mor"]}
+  correctAnswer="uyuyor"
+  explanation="'Uyuyor' en mantıklı cevap çünkü kediler genellikle yatakta uyur! Yapay zeka çok metin okuyarak bu kalıpları öğrenir."
+  aiThinking="Hmm, kedilerin yatakta ne yaptığını çok okudum..."
+  successMessage="Yapay zeka gibi düşünüyorsun! Kalıplara göre en olası kelimeyi seçerim."
+/>
+
+</Section>
+
+<Section>
+<WordPredictor
+  title="Bir Tane Daha!"
+  instruction="Şimdi anlıyorsun! Buraya hangi kelime en iyi uyar?"
+  sentence="Bir varmış bir ___"
+  options={["yokmuş", "elma", "hızlıca", "mavi"]}
+  correctAnswer="yokmuş"
+  explanation="'Bir varmış bir yokmuş' neredeyse tüm masalların başlangıcı! Yapay zeka bu şekilde başlayan binlerce hikaye okumuş."
+  aiThinking="Bu bir hikaye başlangıcına benziyor... Bu kalıbı çok gördüm!"
+  successMessage="Mükemmel! Şimdiden yapay zeka gibi düşünüyorsun - kalıpları tanıyorsun!"
+/>
+</Section>
+
+<Section>
+## Prompt Nedir?
+
+**Prompt**, benim gibi bir yapay zekaya gönderdiğin mesaj demek.
+
+Bunu bir arkadaşına yol tarifi vermek gibi düşün. "Oraya git!" dersen arkadaşın nereye gideceğini bilmez. Ama <b>"Akasya Sokağı'ndaki kırmızı eve git"</b> dersen tam olarak nereye gideceğini bilir!
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+İyi bir prompt yazdığında, ne istediğini anlayabilir ve sana daha iyi yardım edebilirim! Hadi pratik yapalım!
+</Panel>
+</Section>
+
+<Section>
+## Hadi Deneyelim!
+
+<PromptVsMistake
+  question="Hangi mesaj Promi'nin daha iyi anlamasına yardımcı olur?"
+  good="Lütfen kurabiye yapmayı seven sevimli bir ejderha hakkında kısa bir hikaye yaz"
+  bad="hikaye"
+  explanation="İlk mesaj Promi'ye tam olarak ne tür bir hikaye yazacağını söylüyor! İkincisi çok kısa - Promi ne tür bir hikaye istediğini bilmiyor."
+  promiMessage="Gördün mü? Daha fazla detay ne istediğini anlamama yardımcı oluyor!"
+/>
+</Section>
+
+<Section>
+## Hızlı Test!
+
+<PromptVsMistake
+  question="Hangisi bir prompt?"
+  good="Okyanus hakkında bir şiir yazmama yardım eder misin?"
+  bad="🌊"
+  explanation="Prompt, yapay zekaya neye ihtiyacın olduğunu söylemek için kelimeler kullanır. Emojiler eğlenceli ama yeterli bilgi vermiyor!"
+  promiMessage="Kelimeler benim süper gücüm! Bana ne kadar çok söylersen, o kadar iyi yardım edebilirim!"
+/>
+</Section>
+
+<Section>
+## Başardın! 🎉
+
+<Panel character="promi" mood="celebrating">
+Harika iş! Yapay zekanın ne olduğunu ve promptun ne olduğunu öğrendin. Şimdiden bir prompt uzmanı oluyorsun!
+</Panel>
+
+<LevelComplete 
+  levelSlug="1-1-meet-promi" 
+  stars={3}
+  message="Yapay zeka ve promptların ne olduğunu öğrendin!"
+/>
+</Section>

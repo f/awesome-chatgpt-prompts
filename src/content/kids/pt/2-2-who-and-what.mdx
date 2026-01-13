@@ -1,0 +1,97 @@
+<Section>
+<Panel character="promi" mood="happy">
+Bem-vindo de volta ao Castelo da Clareza! Hoje aprendemos sobre **QUEM** e **O QUE** - dois detalhes super importantes!
+</Panel>
+</Section>
+
+<Section>
+## A pergunta QUEM
+
+Quando você pede ajuda à IA, pense: **Quem está envolvido?**
+
+- Uma pessoa? (menino, menina, avó, super-herói)
+- Um animal? (gato, dragão, baleia)
+- Um personagem? (robô, mago, alienígena)
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Se você diz "Escreva uma história", eu não sei de quem é! Mas "Escreva uma história sobre um cavaleiro corajoso" me diz exatamente quem é o personagem principal!
+</Panel>
+</Section>
+
+<Section>
+## Vamos praticar QUEM!
+
+<PromptVsMistake
+  question="Qual prompt nos diz QUEM é o herói da história?"
+  good="Escreva uma história sobre um ratinho curioso chamado Pip"
+  bad="Escreva uma história sobre algo"
+  explanation="O primeiro prompt nos diz QUEM (um rato), QUE tipo (curioso, pequeno), e até seu NOME (Pip)!"
+  promiMessage="Nomes e descrições me ajudam a imaginar o personagem!"
+/>
+</Section>
+
+<Section>
+## A pergunta O QUE
+
+Agora pense: **O que está acontecendo? O que você quer?**
+
+- Qual ação? (correr, cantar, construir)
+- Qual objeto? (um bolo, uma nave espacial, um poema)
+- Qual tipo? (engraçado, assustador, colorido)
+</Section>
+
+<Section>
+## Vamos praticar O QUE!
+
+<PromptVsMistake
+  question="Qual prompt nos diz O QUE criar?"
+  good="Escreva um poema engraçado sobre pizza com muitas rimas"
+  bad="Escreva algo engraçado"
+  explanation="O prompt detalhado nos diz O QUE (um poema), SOBRE O QUE (pizza), QUAL estilo (engraçado com rimas)!"
+  promiMessage="Ser específico sobre O QUE você quer me ajuda a criar exatamente isso!"
+/>
+</Section>
+
+<Section>
+## Construa seu próprio prompt!
+
+Combine QUEM e O QUE:
+
+<DragDropPrompt
+  title="Construa um Prompt"
+  instruction="Arraste as peças na ordem correta"
+  pieces={["Escreva uma história", "sobre um dragão amigável", "que aprende", "a fazer sorvete"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Perfeito! Você combinou QUEM (dragão amigável) e O QUE (aprende a fazer sorvete)!"
+/>
+</Section>
+
+<Section>
+## Crie o seu!
+
+<MagicWords
+  sentence="Por favor escreva uma ___ sobre um ___ que quer ___"
+  blanks={[
+    { hint: "📝 tipo de escrita", answers: ["história", "poema", "música", "piada"] },
+    { hint: "🦸 um personagem", answers: ["super-herói", "princesa", "robô", "mago", "pirata"] },
+    { hint: "🎯 um objetivo", answers: ["encontrar um tesouro", "fazer amigos", "salvar o mundo", "aprender magia", "ganhar uma corrida"] }
+  ]}
+  successMessage="Você adicionou QUEM e O QUE perfeitamente!"
+/>
+</Section>
+
+<Section>
+## Progresso incrível! 🎉
+
+<Panel character="promi" mood="celebrating">
+Você está ficando muito bom nisso! Agora você sabe sempre incluir **QUEM** está no seu prompt e **O QUE** você quer. Continue assim!
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-2-who-and-what" 
+  stars={3}
+  message="Você dominou QUEM e O QUE nos prompts!"
+/>
+</Section>

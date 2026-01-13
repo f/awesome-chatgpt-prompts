@@ -47,7 +47,8 @@
     "register": "Register",
     "logout": "Logout",
     "ide": "Typed-Prompts IDE",
-    "developers": "Developers"
+    "developers": "Developers",
+    "book": "Book"
   },
   "brand": {
     "copyLogoSvg": "Copy Logo SVG",
@@ -1385,5 +1386,261 @@
     "ideationTitle": "Ideation",
     "communityContributorsTitle": "Community Contributors",
     "viewAllContributors": "View all contributors on"
+  },
+  "kids": {
+    "header": {
+      "title": "Promi's Prompt School",
+      "levels": "levels",
+      "home": "Home",
+      "map": "Map",
+      "mainSite": "Main Site"
+    },
+    "home": {
+      "badge": "Learning for Kids",
+      "title": "Learn to Talk to AI!",
+      "subtitle": "Join Promi the robot on a fun adventure to learn how to write awesome prompts!",
+      "promiIntro": {
+        "greeting": "Hi, I'm Promi! 🤖",
+        "message": "I'm a friendly robot who needs YOUR help! Will you teach me how to understand prompts better?"
+      },
+      "features": {
+        "games": {
+          "title": "Fun Games",
+          "description": "Learn by playing drag-and-drop games and quizzes"
+        },
+        "stories": {
+          "title": "Cool Stories",
+          "description": "Follow Promi through exciting adventures"
+        },
+        "stars": {
+          "title": "Earn Stars",
+          "description": "Collect stars and unlock new levels"
+        }
+      },
+      "startButton": "Start Playing!",
+      "ageNote": "Best for kids ages 8-14 who can read and write",
+      "whatYouLearn": "What You'll Learn",
+      "readyTitle": "Ready to Start?",
+      "readyMessage": "Let's go on an adventure and learn how to talk to AI!"
+    },
+    "navigation": {
+      "back": "Back",
+      "next": "Next"
+    },
+    "map": {
+      "title": "World Map",
+      "subtitle": "Choose a level and start your adventure!",
+      "worldLevels": "{count} levels",
+      "levelNumber": "Level {number}",
+      "locked": "Complete previous level to unlock"
+    },
+    "worlds": {
+      "1": {
+        "title": "Starter Village"
+      },
+      "2": {
+        "title": "Clarity Castle"
+      },
+      "3": {
+        "title": "Context Caves"
+      },
+      "4": {
+        "title": "Creation Canyon"
+      },
+      "5": {
+        "title": "Master Mountain"
+      }
+    },
+    "levels": {
+      "1_1_meet_promi": {
+        "title": "Meet Promi!",
+        "description": "Say hello to your robot friend and learn what AI is"
+      },
+      "1_2_first_words": {
+        "title": "Promi's First Words",
+        "description": "Help Promi understand by writing your first prompt"
+      },
+      "1_3_being_clear": {
+        "title": "Being Clear",
+        "description": "Learn why clear instructions work better"
+      },
+      "2_1_missing_details": {
+        "title": "The Missing Details",
+        "description": "Discover why details matter - vague vs specific prompts"
+      },
+      "2_2_who_and_what": {
+        "title": "Who & What",
+        "description": "Add characters and objects to make prompts come alive"
+      },
+      "2_3_when_and_where": {
+        "title": "When & Where",
+        "description": "Learn to add time and place to your prompts"
+      },
+      "2_4_detail_detective": {
+        "title": "The Detail Detective",
+        "description": "Become a master of adding all the right details"
+      },
+      "3_1_setting_the_scene": {
+        "title": "Setting the Scene",
+        "description": "Learn why background info helps AI understand you"
+      },
+      "3_2_show_dont_tell": {
+        "title": "Show, Don't Tell",
+        "description": "Use examples to show AI exactly what you want"
+      },
+      "3_3_format_finder": {
+        "title": "The Format Finder",
+        "description": "Ask for lists, stories, poems, and more!"
+      },
+      "3_4_context_champion": {
+        "title": "Context Champion",
+        "description": "Combine all context techniques like a pro"
+      },
+      "4_1_pretend_time": {
+        "title": "Pretend Time!",
+        "description": "Learn role-play prompts - 'Act as...'"
+      },
+      "4_2_story_starters": {
+        "title": "Story Starters",
+        "description": "Create amazing stories with AI as your co-author"
+      },
+      "4_3_character_creator": {
+        "title": "Character Creator",
+        "description": "Give AI a personality and watch it come alive"
+      },
+      "4_4_world_builder": {
+        "title": "World Builder",
+        "description": "Create imaginative worlds and scenarios"
+      },
+      "5_1_perfect_prompt": {
+        "title": "The Perfect Prompt",
+        "description": "Combine clarity, details, and context together"
+      },
+      "5_2_fix_it_up": {
+        "title": "Fix It Up!",
+        "description": "Find and improve weak prompts"
+      },
+      "5_3_prompt_remix": {
+        "title": "Prompt Remix",
+        "description": "Rewrite prompts for different outcomes"
+      },
+      "5_4_graduation_day": {
+        "title": "Graduation Day",
+        "description": "The final challenge - become a Prompt Master!"
+      }
+    },
+    "level": {
+      "backToMap": "Back to Map",
+      "levelLabel": "Level {number}",
+      "comingSoon": "This level is coming soon!",
+      "previous": "Previous",
+      "next": "Next",
+      "map": "Map"
+    },
+    "levelComplete": {
+      "title": "Level Complete!",
+      "nextLevel": "Next Level",
+      "backToMap": "Back to Map",
+      "allDone": "Back to Map"
+    },
+    "quiz": {
+      "goodLabel": "Great prompt!",
+      "badLabel": "Not the best",
+      "correct": "You got it!",
+      "incorrect": "Good try!",
+      "tryAgain": "Try Again"
+    },
+    "magicWords": {
+      "title": "Drag the magic words! ✨",
+      "dragOrTap": "🎯 Drag or tap words:",
+      "check": "Check!",
+      "retry": "Retry",
+      "correct": "correct",
+      "tryAgain": "Try again!"
+    },
+    "dragDrop": {
+      "title": "Build the prompt!",
+      "instruction": "Use arrows to move pieces, or tap two pieces to swap!",
+      "result": "Result",
+      "check": "Check!",
+      "retry": "Retry",
+      "success": "Perfect! You built a great prompt!",
+      "almost": "Almost! Keep reordering.",
+      "tapToSwap": "Tap another piece to swap positions!"
+    },
+    "promptParts": {
+      "title": "Sort the Prompt Parts!",
+      "instruction": "Tap each piece, then pick which type it is!",
+      "score": "Score",
+      "pickCategory": "What type is this?",
+      "success": "You sorted all the parts correctly!",
+      "retry": "Try Again",
+      "types": {
+        "role": "Role",
+        "task": "Task",
+        "context": "Context",
+        "constraint": "Constraint"
+      }
+    },
+    "exampleMatcher": {
+      "title": "Pattern Matcher",
+      "instruction": "Look at the pattern and pick what comes next!",
+      "pattern": "The Pattern:",
+      "check": "Check!",
+      "retry": "Try Again",
+      "correct": "You got it! 🎉",
+      "tryAgain": "Not quite - look at the pattern again!"
+    },
+    "promptDoctor": {
+      "title": "Prompt Doctor",
+      "health": "Prompt Health",
+      "sick": "Sick Prompt",
+      "healthy": "Healthy Prompt!",
+      "diagnose": "Click a problem to fix it:",
+      "success": "The prompt is all better now!",
+      "retry": "Start Over"
+    },
+    "stepByStep": {
+      "title": "Think Step by Step",
+      "problem": "The Problem:",
+      "withoutMagic": "Without magic words:",
+      "addMagicWords": "Add the Magic Words!",
+      "magicWordsActive": "Magic words added!",
+      "nextStep": "Reveal Next Step",
+      "withMagic": "With step-by-step thinking:",
+      "retry": "Try Again"
+    },
+    "promptLab": {
+      "title": "Prompt Lab",
+      "progress": "Improvements",
+      "yourPrompt": "Your Prompt:",
+      "aiSays": "AI Response:",
+      "addDetails": "Add improvements:",
+      "success": "Your prompt is now super specific!",
+      "retry": "Start Over"
+    },
+    "wordPredictor": {
+      "title": "How AI Thinks",
+      "instruction": "AI guesses the most likely next word. Can you think like AI?",
+      "aiThinks": "AI is reading:",
+      "thinkingDefault": "Hmm, what word would make the most sense here?",
+      "check": "Check My Guess!",
+      "correct": "You think like AI!",
+      "tryAgain": "Not quite! AI picks the most likely word.",
+      "retry": "Try Again"
+    },
+    "settings": {
+      "title": "Settings",
+      "language": "Language",
+      "progress": "Your Progress",
+      "stars": "Stars",
+      "completed": "Completed",
+      "resetTitle": "Reset Progress",
+      "resetButton": "Reset All Progress",
+      "resetWarning": "This will delete all your stars and progress. Are you sure?",
+      "resetConfirm": "Yes, Reset Everything",
+      "resetComplete": "Progress reset! Reloading...",
+      "cancel": "Cancel"
+    }
   }
 }

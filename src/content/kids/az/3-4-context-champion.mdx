@@ -1,0 +1,87 @@
+<Section>
+<Panel character="promi" mood="excited">
+Kontekst Mağaralarının son səviyyəsinə xoş gəlmisiniz! 🕳️ Öyrəndiyiniz hər şeyi birləşdirib **Kontekst Çempionu** olmaq vaxtıdır!
+</Panel>
+</Section>
+
+<Section>
+## Kontekst Çempionunun Yoxlama Siyahısı
+
+Əla kontekst daxildir:
+
+✅ **Arxa plan** - Siz kimsiniz, hansı vəziyyətdəsiniz
+✅ **Nümunələr** - Nə istədiyinizi göstərin
+✅ **Format** - Cavabın necə təşkil olunmasını istəyirsiniz
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Üçünü bir araya gətirin və hər dəfə heyrətamiz nəticələr əldə edəcəksiniz!
+</Panel>
+</Section>
+
+<Section>
+## Çempion Çağırışı #1
+
+<PromptVsMistake
+  question="Hansı promptda ən yaxşı kontekst var?"
+  good="Dünya Günü üçün təkrar emal haqqında plakat hazırlayan 9 yaşlı uşağam. Mənə 'Azalt, Yenidən İstifadə Et, Təkrar Emal Et!' kimi 5 yadda qalan şüar verə bilərsən - qısa və yadda saxlamaq asan?"
+  bad="Mənə təkrar emal şüarları ver"
+  explanation="Çempion promptda daxildir: Arxa plan (9 yaş, Dünya Günü plakatı), Nümunə ('Azalt, Yenidən İstifadə Et, Təkrar Emal Et!'), və Format (5 şüar, qısa)!"
+  promiMessage="Bu prompt mükəmməl şüarlar vermək üçün lazım olan hər şeyi deyir!"
+/>
+</Section>
+
+<Section>
+## Çempion Çağırışı #2
+
+<PromptVsMistake
+  question="Hansı prompt kontekst elementlərini ən yaxşı birləşdirir?"
+  good="Kiçik qardaşıma heyvan səslərini öyrənməsində kömək edirəm. 'İnək - Muuu!' kimi 6 heyvan və səslərin əyləncəli siyahısını düzəldə bilərsən? Axmaq və sadə et."
+  bad="Heyvan səslərini sırala"
+  explanation="Bunda var: Arxa plan (kiçik qardaşın öyrənməsinə kömək), Nümunə (İnək - Muuu!), və Format (6 siyahı, axmaq və sadə)!"
+  promiMessage="Mükəmməl kontekst! Kiçik qardaşınız üçün nəyin işləyəcəyini dəqiq bilirəm!"
+/>
+</Section>
+
+<Section>
+## Çempion prompt qurun!
+
+<DragDropPrompt
+  title="Kontekst Çempionu"
+  instruction="BÜTÜN kontekst elementlərini mükəmməl prompta sıralayın"
+  pieces={["Sinifim üçün hekayə yazıram.", "3 sehrli heyvan adı təklif edə bilərsən", "'Parıldayan' və ya 'Ay Şüası' kimi?", "Şirin, amma çox uzun olmasın."]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Çempion prompt! Arxa plan, nümunələr və format üstünlüklərini daxil etdiniz!"
+/>
+</Section>
+
+<Section>
+## Çempion promptunuzu yaradın!
+
+<MagicWords
+  sentence="Mən ___ üzərində işləyən ___əm. Mənə ___ kimi ___ verə bilərsən? ___ et."
+  blanks={[
+    { hint: "👤 kimsiz", answers: ["şagird", "gənc yazıçı", "maraqlı uşaq", "yaradıcı rəssam", "yemək bişirməyə başlayan"] },
+    { hint: "📚 layihəniz", answers: ["məktəb layihəsi", "ad günü kartı", "əyləncəli hekayə", "elm təcrübəsi", "komiks kitabı"] },
+    { hint: "🎯 nə lazımdır", answers: ["3 yaxşı fikir", "5 əyləncəli başlıq", "bir neçə gözəl ad", "bir neçə nümunə", "faydalı məsləhətlər"] },
+    { hint: "💡 nümunə", answers: ["'Super Ulduz'", "'Sehrli An'", "'Möcüzə Dünyası'", "'Xoşbəxt Köməkçi'", "'Xəyal Komandası'"] },
+    { hint: "✨ üslub", answers: ["əyləncəli və qısa", "yaradıcı və yadda qalan", "sadə və aydın", "həyəcanlı və cəsarətli", "mehriban və isti"] }
+  ]}
+  successMessage="Siz əsl Kontekst Çempionusunuz! Bu promptda hər şey var!"
+/>
+</Section>
+
+<Section>
+## Təbrik edirik, Çempion! 🎉
+
+<Panel character="promi" mood="celebrating">
+Bacardınız! Kontekst Mağaralarını keçdiniz və **Kontekst Çempionu** oldunuz! İndi heyrətamiz promptlar yaratmaq üçün arxa plan, nümunələr və formatı necə birləşdirəcəyinizi bilirsiniz!
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-4-context-champion" 
+  stars={3}
+  message="Kontekst Mağaralarını keçdiniz! Siz Kontekst Çempionusunuz!"
+/>
+</Section>

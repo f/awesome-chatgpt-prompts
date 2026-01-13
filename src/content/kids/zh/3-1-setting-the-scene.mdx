@@ -1,0 +1,71 @@
+<Section>
+<Panel character="promi" mood="excited">
+欢迎来到**背景洞穴**！🕳️ 在这里我们将发现**背景信息**的魔力！
+</Panel>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+你有没有给某人讲过笑话，但他们因为不了解背景而没笑？背景就是给某人完整的故事！
+</Panel>
+</Section>
+
+<Section>
+## 什么是背景？
+
+**背景**是帮助AI更好地理解你请求的额外信息。
+
+把它想象成讲故事 - 如果你只说"然后他赢了！"没人知道谁赢了、赢了什么、或者为什么重要！
+</Section>
+
+<Section>
+## 看看区别
+
+<PromptVsMistake
+  question="哪个提示词给出了更好的背景？"
+  good="我正在为我8岁的喜欢独角兽的妹妹写一张生日卡。你能帮我写一条短而有趣的消息吗？"
+  bad="写一条生日消息"
+  explanation="第一个提示词告诉普罗米是给谁的（8岁的妹妹），她喜欢什么（独角兽），和你想要什么风格（短的、有趣的）！"
+  promiMessage="背景帮助我理解情况并给你正是你需要的！"
+/>
+</Section>
+
+<Section>
+## 设置场景
+
+<PromptVsMistake
+  question="哪个提示词设置了更好的场景？"
+  good="我是一个10岁的学生，正在做一个关于恐龙的学校项目。你能用简单的话解释霸王龙吃什么吗？"
+  bad="霸王龙吃什么？"
+  explanation="告诉我你10岁而且是为了学校，我知道要用简单的话并让它有教育意义！"
+  promiMessage="当我知道在帮助谁和为什么时，我可以完美地调整我的回答！"
+/>
+</Section>
+
+<Section>
+## 练习设置背景！
+
+<MagicWords
+  sentence="我是一个___，需要___的帮助。你能用___的方式解释吗？"
+  blanks={[
+    { hint: "👤 你是谁", answers: ["学生", "孩子", "初学者", "年轻艺术家", "好奇的学习者"] },
+    { hint: "📚 你需要什么", answers: ["数学作业", "科学项目", "写故事", "学画画", "理解太空"] },
+    { hint: "✨ 如何解释", answers: ["简单", "有趣", "一步一步", "容易理解", "创意"] }
+  ]}
+  successMessage="很棒的背景！现在AI知道该如何帮助你了！"
+/>
+</Section>
+
+<Section>
+## 很棒的开始！🎉
+
+<Panel character="promi" mood="celebrating">
+你正在学习设置场景！记住：给我背景帮助我理解你的情况并给你更好的回答！
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-1-setting-the-scene" 
+  stars={3}
+  message="你学会了背景如何帮助AI理解你！"
+/>
+</Section>

@@ -1,0 +1,121 @@
+<Section>
+<Panel character="promi" mood="happy">
+Salam superstar! 🌟 Bu gün ən vacib bacarığı öyrənəcəyik: **AYDIN** olmaq!
+</Panel>
+</Section>
+
+<Section>
+## Niyə Aydın Olmaq Vacibdir
+
+Anandan "yemək" istəməklə "qabıqsız fıstıq yağı sendviçi" istəməyin fərqini təsəvvür et. Hansı sənə dəqiq istədiyini verir?
+
+<Panel character="promi" mood="thinking">
+Mənimlə eynidir! Aydın olanda, dəqiq necə kömək edəcəyimi bilirəm. Qeyri-müəyyən olanda, təxmin etməliyəm... və səhv edə bilərəm!
+</Panel>
+</Section>
+
+<Section>
+## Aydın vs. Aydın Deyil
+
+Gəl fərqi tapmağı məşq edək!
+
+
+<PromptVsMistake
+  question="Hansı prompt daha aydındır?"
+  good="Bağçada kəpənəklər haqqında qafiyəli sözlərlə 4 sətirlik şeir yaz"
+  bad="Şeir yaz kəpənəklər"
+  explanation="Aydın prompt mənə deyir: nə qədər uzun (4 sətir), nə haqqında (bağçada kəpənəklər), və xüsusi qayda (qafiyəli). Çox daha yaxşı!"
+  promiMessage="Aydın promptlar = daha yaxşı nəticələr! Bu sehr kimidir!"
+/>
+
+
+<PromptVsMistake
+  question="Hansı mənə dəqiq nəyə ehtiyacın olduğunu deyir?"
+  good="10 yaşlı uşağın bəyənəcəyi delfinlər haqqında 3 əyləncəli fakt yazmağıma kömək et"
+  bad="Delfinlər haqqında danış"
+  explanation="Birinci prompt mənə deyir: neçə fakt (3), hansı növ (əyləncəli), və kimin üçün (10 yaşlı). Bu çox kömək edir!"
+  promiMessage="Kimin üçün olduğunu desən, onlar üçün mükəmməl edə bilərəm!"
+/>
+</Section>
+
+<Section>
+## Aydınlıq Çağırışı
+
+Gəl ən aydın promptu quraq!
+
+
+<DragDropPrompt
+  title="Kristal kimi aydın et! 💎"
+  instruction="Super aydın prompt etmək üçün bu parçaları düzəlt"
+  pieces={[
+    "Zəhmət olmasa yazmağıma kömək et",
+    "qısa yuxu hekayəsi",
+    "yuxulu bayquş haqqında",
+    "xoşbəxt sonla",
+    "kiçik bacım üçün"
+  ]}
+  correctOrder={[0, 1, 2, 3, 4]}
+  successMessage="Bu indiyə qədər ən aydın promptdur! Möhtəşəm!"
+/>
+</Section>
+
+<Section>
+## Aydın Detaillar Əlavə Et
+
+<MagicWords
+  title="Detailları əlavə et! 🎯"
+  sentence="{{length}} {{type}} yaz, {{topic}} haqqında, {{audience}} üçün"
+  blanks={[
+    { id: "length", hint: "Nə qədər uzun? (qısa, uzun)", answers: ["qısa", "uzun", "5 cümləlik", "bir səhifəlik", "qısa", "sürətli"], emoji: "📏" },
+    { id: "type", hint: "Hansı növ? (hekayə, siyahı, izahat)", answers: ["hekayə", "siyahı", "izahat", "şeir", "mahnı", "bələdçi"], emoji: "📝" },
+    { id: "topic", hint: "Nə haqqında? (kosmos, heyvanlar, idman)", answers: ["kosmos", "heyvanlar", "idman", "dinozavrlar", "robotlar", "sehr", "təbiət", "elm"], emoji: "🎯" },
+    { id: "audience", hint: "Kim üçün? (uşaqlar, yeni başlayanlar)", answers: ["uşaqlar", "yeni başlayanlar", "müəllimim", "dostum", "ailəm", "tələbələr"], emoji: "👥" }
+  ]}
+  successMessage="Bütün vacib detailları əlavə etdin! Əla iş!"
+/>
+</Section>
+
+<Section>
+## Aydınlığın Qızıl Qaydaları
+
+<Panel character="promi" mood="excited">
+Budur aydın olmaq üçün ən yaxşı məsləhətlərim:
+</Panel>
+
+Prompt yazanda bu üç sualı xatırla:
+
+1. **NƏ** istəyirəm? (hekayə, kömək, məlumat)
+2. **NECƏ** olmalıdır? (qısa, gülməli, sadə)
+3. **KİM** üçündür? (mən, dostum, sinifim)
+
+
+<PromptVsMistake
+  question="Son çağırış! Hansı üç qaydanın hamısını istifadə edir?"
+  good="Nahar vaxtı dostlarıma deyə biləcəyim pizza haqqında qısa, gülməli zarafat yaz"
+  bad="Gülməli bir şey et"
+  explanation="Əla promptda NƏ (pizza zarafatı), NECƏ (qısa və gülməli), və KİM üçün (naharda dostlara demək) var!"
+  promiMessage="Sən aydınlıq çempionusan! 🏆"
+/>
+</Section>
+
+<Section>
+## Dünya 1 Tamamlandı! 🎊
+
+<Panel character="promi" mood="celebrating">
+VAY! Bütün Dünya 1-i bitirdin! Öyrəndiklərin:
+
+- ✅ AI və promptların nə olduğu
+- ✅ İlk promptlarını necə yazmaq
+- ✅ Niyə aydın olmaq super vacibdir
+
+Yeni macəralara hazırsan!
+</Panel>
+
+
+<LevelComplete 
+  levelSlug="1-3-being-clear" 
+  stars={3}
+  message="Aydın olmaq sənətini mənimsədin! Dünya 1 tamamlandı!"
+/>
+</Section>
+

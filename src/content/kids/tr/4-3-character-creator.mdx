@@ -1,0 +1,88 @@
+<Section>
+<Panel character="promi" mood="excited">
+Bugün yapay zekaya **kişilik** vermeyi öğreniyoruz! 🎭 Bu konuşmaları ÇOK daha eğlenceli yapıyor!
+</Panel>
+</Section>
+
+<Section>
+## Yapay Zekaya Kişilik Ver!
+
+Yapay zekaya ne kişiliğe sahip olacağını söyleyebilirsin:
+
+- **Arkadaş canlısı ve neşeli** - her zaman pozitif!
+- **Saçma ve aptalca** - çok fıkra yapar
+- **Bilge ve sakin** - düşünceli cevaplar verir
+- **Heyecanlı ve enerjik** - çok ünlem işareti kullanır!
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+Bana ne kişiliğe sahip olacağımı söylediğinde, aradığın havaya uyabilirim!
+</Panel>
+</Section>
+
+<Section>
+## Kişilik Fark Yaratır!
+
+<PromptVsMistake
+  question="Hangi prompt eğlenceli bir kişilik veriyor?"
+  good="Bilimi seven süper heyecanlı bir robot gibi davran! Çok ünlem işareti kullan ve sık sık 'HARİKA!' de. Bana yanardağları anlat!"
+  bad="Bana yanardağları anlat"
+  explanation="İlk prompt öğrenmeyi bir macera gibi hissettiren eğlenceli, heyecanlı bir kişilik yaratıyor!"
+  promiMessage="HARİKA! Bak, ben heyecanlı olduğumda bilim ne kadar daha eğlenceli!"
+/>
+</Section>
+
+<Section>
+## Havayı Eşleştir!
+
+<PromptVsMistake
+  question="Uyku hikayesi için hangi kişilik en iyi olur?"
+  good="Bana sakin, yumuşak bir sesle uyku hikayesi anlat. Nazikçe konuş ve huzurlu ve uykulu yap."
+  bad="Bana uyku hikayesi anlat"
+  explanation="Sakin, yumuşak bir kişilik isteyerek, hikaye rahatlamanı sağlayacak!"
+  promiMessage="Farklı havalar farklı durumlar için daha iyi işler!"
+/>
+</Section>
+
+<Section>
+## Bir Karakter Oluştur!
+
+<DragDropPrompt
+  title="Karakter Kişiliği"
+  instruction="Eğlenceli bir kişilik oluşturmak için düzenle"
+  pieces={["Genç kuşlara öğretmeyi seven", "bilge yaşlı bir baykuş gibi davran.", "Sabırlı ve nazik ol.", "Çok 'huu huu' sesleri kullan!"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Ne harika bir karakter! Huu huu! Bu baykuş öğretmeye hazır!"
+/>
+</Section>
+
+<Section>
+## Yapay Zeka Kişiliğini Tasarla!
+
+<MagicWords
+  sentence="Her zaman ___ olan bir ___ gibi davran. ___ kullan ve ___ ol. Bana ___ hakkında anlat."
+  blanks={[
+    { hint: "😊 kişilik özelliği", answers: ["heyecanlı", "sakin", "komik", "cesaretlendirici", "gizemli"] },
+    { hint: "🎭 karakter türü", answers: ["arkadaş canlısı robot", "bilge büyücü", "saçma palyaço", "cesur şövalye", "meraklı uzaylı"] },
+    { hint: "💬 konuşma tarzı", answers: ["çok fıkra", "nazik kelimeler", "kafiyeler", "büyük kelimeler", "ses efektleri"] },
+    { hint: "❤️ başka bir özellik", answers: ["yardımsever", "sabırlı", "yaratıcı", "maceracı", "şefkatli"] },
+    { hint: "📚 bir konu", answers: ["uzay", "hayvanlar", "müzik", "arkadaşlık", "doğa"] }
+  ]}
+  successMessage="Harika bir kişilik yarattın! Hadi sohbet edelim!"
+/>
+</Section>
+
+<Section>
+## Kişilik Ustası! 🎉
+
+<Panel character="promi" mood="celebrating">
+Harika! Yapay zekaya **kişilik** vermenin konuşmaları daha eğlenceli ve ilgi çekici yaptığını öğrendin! Farklı ihtiyaçlar için farklı kişilikler dene!
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-3-character-creator" 
+  stars={3}
+  message="Yapay zekaya kişilik vermeyi öğrendin!"
+/>
+</Section>

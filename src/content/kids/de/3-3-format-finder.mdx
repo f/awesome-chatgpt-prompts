@@ -1,0 +1,87 @@
+<Section>
+<Panel character="promi" mood="excited">
+Heute lernen wir über **Formate**! 📝 Wusstest du, dass du die KI bitten kannst, auf verschiedene Arten zu antworten?
+</Panel>
+</Section>
+
+<Section>
+## Was ist ein Format?
+
+Ein **Format** ist WIE du die Antwort präsentiert haben möchtest:
+
+- 📋 **Liste** - nummerierte oder Aufzählungspunkte
+- 📖 **Geschichte** - eine Erzählung mit Anfang, Mitte, Ende
+- 🎵 **Gedicht** - mit Reimen und Rhythmus
+- ❓ **Fragen & Antworten** - Frage-Antwort-Stil
+- 📊 **Tabelle** - in Zeilen und Spalten organisiert
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+Wenn du mir das Format sagst, hilfst du mir, meine Antwort so zu organisieren, wie es für dich am hilfreichsten ist!
+</Panel>
+</Section>
+
+<Section>
+## Format macht den Unterschied!
+
+<PromptVsMistake
+  question="Welcher Prompt fragt nach einem klaren Format?"
+  good="Gib mir 5 lustige Fakten über Delfine in einer nummerierten Liste"
+  bad="Erzähl mir über Delfine"
+  explanation="Der erste Prompt sagt mir genau, wie ich die Antwort organisieren soll - als 5 nummerierte Fakten!"
+  promiMessage="Wenn du nach einem bestimmten Format fragst, bekommst du genau das, was du brauchst!"
+/>
+</Section>
+
+<Section>
+## Wähle dein Format!
+
+<PromptVsMistake
+  question="Welches Format wäre am besten zum Merken?"
+  good="Liste die Planeten der Reihe nach von der Sonne als Aufzählungspunkte"
+  bad="Erzähl mir über die Planeten"
+  explanation="Ein Listenformat macht es einfach, die Planeten der Reihe nach zu merken und zu zählen!"
+  promiMessage="Listen sind toll zum Lernen und Merken!"
+/>
+</Section>
+
+<Section>
+## Format üben!
+
+<DragDropPrompt
+  title="Format hinzufügen"
+  instruction="Ordne, um nach einem bestimmten Format zu fragen"
+  pieces={["als kurzes Gedicht", "mit reimenden Zeilen", "Schreibe über den Regen", "das 4 Zeilen lang ist"]}
+  correctOrder={[2, 0, 1, 3]}
+  successMessage="Perfekt! Du hast nach einem Gedichtformat mit spezifischen Details gefragt!"
+/>
+</Section>
+
+<Section>
+## Wähle dein Format!
+
+<MagicWords
+  sentence="Gib mir ___ über ___ als ___"
+  blanks={[
+    { hint: "🔢 wie viele", answers: ["5 Tipps", "3 Ideen", "10 Fakten", "7 Schritte", "4 Beispiele"] },
+    { hint: "📚 Thema", answers: ["ein guter Freund sein", "den Planeten retten", "gesund bleiben", "kreativ sein", "neue Dinge lernen"] },
+    { hint: "📋 Format", answers: ["nummerierte Liste", "Aufzählungspunkte", "kurzes Gedicht", "einfache Geschichte", "leichte Schritte"] }
+  ]}
+  successMessage="Gute Arbeit beim Wählen eines Formats! Das macht Antworten leichter zu lesen!"
+/>
+</Section>
+
+<Section>
+## Format-Meister! 🎉
+
+<Panel character="promi" mood="celebrating">
+Wunderbar! Du hast gelernt, dass das Fragen nach einem bestimmten **Format** dir hilft, Antworten zu bekommen, die genau so organisiert sind, wie du sie brauchst!
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-3-format-finder" 
+  stars={3}
+  message="Du hast gelernt, nach verschiedenen Formaten zu fragen!"
+/>
+</Section>

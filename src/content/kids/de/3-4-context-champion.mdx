@@ -1,0 +1,87 @@
+<Section>
+<Panel character="promi" mood="excited">
+Willkommen zum letzten Level der Kontext-Höhlen! 🕳️ Zeit, ein **Kontext-Champion** zu werden, indem du alles kombinierst, was du gelernt hast!
+</Panel>
+</Section>
+
+<Section>
+## Die Kontext-Champion-Checkliste
+
+Großartiger Kontext beinhaltet:
+
+✅ **Hintergrund** - Wer du bist, in welcher Situation du bist
+✅ **Beispiele** - Zeige, was du willst
+✅ **Format** - Wie du die Antwort organisiert haben möchtest
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Füge alle drei zusammen und du bekommst jedes Mal erstaunliche Ergebnisse!
+</Panel>
+</Section>
+
+<Section>
+## Champion-Herausforderung #1
+
+<PromptVsMistake
+  question="Welcher Prompt hat den besten Kontext?"
+  good="Ich bin ein 9-jähriges Kind, das ein Poster über Recycling für den Tag der Erde macht. Kannst du mir 5 eingängige Slogans geben wie 'Reduzieren, Wiederverwenden, Recyceln!' - kurz und leicht zu merken?"
+  bad="Gib mir Recycling-Slogans"
+  explanation="Der Champion-Prompt beinhaltet: Hintergrund (9 Jahre alt, Tag der Erde Poster), Beispiel ('Reduzieren, Wiederverwenden, Recyceln!'), und Format (5 Slogans, kurz)!"
+  promiMessage="Dieser Prompt sagt mir alles, was ich brauche, um dir perfekte Slogans zu geben!"
+/>
+</Section>
+
+<Section>
+## Champion-Herausforderung #2
+
+<PromptVsMistake
+  question="Welcher Prompt kombiniert Kontext-Elemente am besten?"
+  good="Ich helfe meinem kleinen Bruder, Tiergeräusche zu lernen. Kannst du eine lustige Liste von 6 Tieren mit ihren Geräuschen machen, wie 'Kuh - Muh!'? Mach sie albern und einfach."
+  bad="Liste Tiergeräusche auf"
+  explanation="Das beinhaltet: Hintergrund (kleinem Bruder beim Lernen helfen), Beispiel (Kuh - Muh!), und Format (Liste von 6, albern und einfach)!"
+  promiMessage="Perfekter Kontext! Ich weiß genau, was für deinen kleinen Bruder funktioniert!"
+/>
+</Section>
+
+<Section>
+## Baue einen Champion-Prompt!
+
+<DragDropPrompt
+  title="Kontext-Champion"
+  instruction="Ordne ALLE Kontext-Elemente zu einem perfekten Prompt"
+  pieces={["Ich schreibe eine Geschichte für meine Klasse.", "Kannst du 3 magische Haustiernamen vorschlagen", "wie 'Funkeln' oder 'Mondstrahl'?", "Etwas Süßes, aber nicht zu lang."]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Champion-Prompt! Du hast Hintergrund, Beispiele und Format-Präferenzen einbezogen!"
+/>
+</Section>
+
+<Section>
+## Erstelle deinen Champion-Prompt!
+
+<MagicWords
+  sentence="Ich bin ein ___ der an ___ arbeitet. Kannst du mir ___ geben wie ___? Mach es ___."
+  blanks={[
+    { hint: "👤 wer du bist", answers: ["Schüler", "junger Autor", "neugieriges Kind", "kreativer Künstler", "Kochanfänger"] },
+    { hint: "📚 dein Projekt", answers: ["einem Schulprojekt", "einer Geburtstagskarte", "einer lustigen Geschichte", "einem Wissenschaftsexperiment", "einem Comic"] },
+    { hint: "🎯 was du brauchst", answers: ["3 gute Ideen", "5 lustige Titel", "ein paar coole Namen", "einige Beispiele", "hilfreiche Tipps"] },
+    { hint: "💡 ein Beispiel", answers: ["'Super Stern'", "'Magischer Moment'", "'Wunder Welt'", "'Fröhlicher Helfer'", "'Traum Team'"] },
+    { hint: "✨ den Stil", answers: ["lustig und kurz", "kreativ und eingängig", "einfach und klar", "aufregend und mutig", "freundlich und warm"] }
+  ]}
+  successMessage="Du bist ein wahrer Kontext-Champion! Dieser Prompt hat alles!"
+/>
+</Section>
+
+<Section>
+## Herzlichen Glückwunsch, Champion! 🎉
+
+<Panel character="promi" mood="celebrating">
+Du hast es geschafft! Du hast die Kontext-Höhlen abgeschlossen und bist ein **Kontext-Champion** geworden! Jetzt weißt du, wie man Hintergrund, Beispiele und Format für erstaunliche Prompts kombiniert!
+</Panel>
+
+<LevelComplete 
+  levelSlug="3-4-context-champion" 
+  stars={3}
+  message="Du hast die Kontext-Höhlen abgeschlossen! Du bist ein Kontext-Champion!"
+/>
+</Section>

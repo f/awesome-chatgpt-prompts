@@ -1,0 +1,96 @@
+<Section>
+<Panel character="promi" mood="excited">
+¡Qué bueno verte de nuevo! La lección de hoy es sobre **CUÁNDO** y **DÓNDE** - ¡estos detalles hacen que tus prompts cobren vida!
+</Panel>
+</Section>
+
+<Section>
+## La pregunta CUÁNDO
+
+**¿Cuándo** sucede tu historia?
+
+- Hora del día: mañana, noche, atardecer
+- Estación: verano, invierno, primavera
+- Época: hace mucho tiempo, futuro, presente
+- Momento especial: cumpleaños, vacaciones, primer día de escuela
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+"Una historia sobre un gato" está bien, pero "Una historia sobre un gato en una noche espeluznante de Halloween" ¡es MUCHO más interesante!
+</Panel>
+</Section>
+
+<Section>
+## ¡Practiquemos CUÁNDO!
+
+<PromptVsMistake
+  question="¿Qué prompt tiene mejor sentido de CUÁNDO?"
+  good="Escribe sobre un muñeco de nieve que despierta en una mañana cálida de primavera"
+  bad="Escribe sobre un muñeco de nieve"
+  explanation="¡El primer prompt nos dice CUÁNDO (mañana de primavera) lo que crea un problema interesante - un muñeco de nieve en primavera! ¡Es una gran idea para una historia!"
+  promiMessage="¡CUÁNDO puede crear situaciones emocionantes en tus historias!"
+/>
+</Section>
+
+<Section>
+## La pregunta DÓNDE
+
+**¿Dónde** tiene lugar la acción?
+
+- Ubicación: playa, bosque, ciudad, espacio
+- Edificio: escuela, castillo, casa del árbol
+- Lugar fantástico: reino submarino, ciudad en las nubes
+- Punto específico: bajo un puente, en la cima de una montaña
+</Section>
+
+<Section>
+## ¡Practiquemos DÓNDE!
+
+<PromptVsMistake
+  question="¿Qué prompt pinta mejor imagen de DÓNDE?"
+  good="Escribe sobre piratas buscando un tesoro en una isla misteriosa y neblinosa"
+  bad="Escribe sobre piratas buscando un tesoro"
+  explanation="¡Agregar DÓNDE (isla misteriosa y neblinosa) me ayuda a imaginar la escena y escribir una historia más vívida!"
+  promiMessage="¡DÓNDE ayuda a establecer el ambiente y la atmósfera de tu historia!"
+/>
+</Section>
+
+<Section>
+## ¡Combina CUÁNDO y DÓNDE!
+
+<DragDropPrompt
+  title="Tiempo y Lugar"
+  instruction="Ordena estas piezas para crear un prompt con CUÁNDO y DÓNDE"
+  pieces={["Cuéntame una historia", "en un bosque mágico", "en una noche estrellada", "sobre un búho"]}
+  correctOrder={[0, 3, 1, 2]}
+  successMessage="¡Excelente! Estableciste la escena con DÓNDE (bosque mágico) y CUÁNDO (noche estrellada)!"
+/>
+</Section>
+
+<Section>
+## ¡Construye una escena completa!
+
+<MagicWords
+  sentence="Escribe una historia sobre una aventura que sucede en un ___ durante ___"
+  blanks={[
+    { hint: "🗺️ un lugar", answers: ["casa embrujada", "ciudad submarina", "reino de nubes", "parque de dinosaurios", "tierra de dulces"] },
+    { hint: "⏰ un momento", answers: ["una tormenta", "el atardecer", "vacaciones de invierno", "luna llena", "el futuro"] }
+  ]}
+  successMessage="¡Creaste un escenario vívido con CUÁNDO y DÓNDE!"
+/>
+</Section>
+
+<Section>
+## ¡Eres un creador de escenas! 🎉
+
+<Panel character="promi" mood="celebrating">
+¡Trabajo fantástico! Ahora sabes cómo agregar **CUÁNDO** (tiempo) y **DÓNDE** (lugar) a tus prompts. ¡Esto hace tus peticiones mucho más interesantes!
+</Panel>
+
+<LevelComplete 
+  levelSlug="2-3-when-and-where" 
+  stars={3}
+  message="¡Dominaste CUÁNDO y DÓNDE en los prompts!"
+/>
+</Section>

@@ -1,0 +1,86 @@
+<Section>
+<Panel character="promi" mood="excited">
+**Yaratıcılık Kanyonu**'na hoş geldin! 🎨 Yaratıcılığın canlandığı yer burası! Bugün **rol yapma promptlarını** öğreniyoruz!
+</Panel>
+</Section>
+
+<Section>
+## Rol Yapma Nedir?
+
+**Rol yapma**, yapay zekadan biri veya bir şey gibi davranmasını istemek demek!
+
+Şöyle şeyler söyleyebilirsin:
+- "Korsan gibi davran..."
+- "Öğretmen olduğunu hayal et..."
+- "Sen arkadaş canlısı bir aşçısın..."
+</Section>
+
+<Section>
+<Panel character="promi" mood="happy">
+Bir rol oynamamamı istediğinde, o karakterin sesi ve tarzıyla cevaplar verebilirim! Birlikte hayal kuruyormuşuz gibi!
+</Panel>
+</Section>
+
+<Section>
+## Rol Yapmayı Gör!
+
+<PromptVsMistake
+  question="Hangi prompt rol yapma kullanıyor?"
+  good="Arkadaş canlısı bir uzay kaşifi olduğunu hayal et. Bana Mars'taki maceralarını anlat!"
+  bad="Bana Mars'ı anlat"
+  explanation="İlk prompt benden uzay kaşifi OLMAMI istiyor, böylece 'kendi' maceralarımı eğlenceli ve kişisel bir şekilde anlatabilirim!"
+  promiMessage="Rol yapma konuşmalarımızı çok daha eğlenceli ve yaratıcı yapıyor!"
+/>
+</Section>
+
+<Section>
+## Karakterini Seç!
+
+<PromptVsMistake
+  question="Okyanus hakkında öğrenmek için hangi rol en iyi olur?"
+  good="100 yıl yaşamış bilge yaşlı bir deniz kaplumbağası gibi davran. Okyanusta ne havalı şeyler gördün?"
+  bad="Okyanusta ne yaşıyor?"
+  explanation="100 yaşındaki deniz kaplumbağası çok şey görmüş! Bu, okyanus hakkında öğrenmeyi bir arkadaştan hikayeler dinlemek gibi hissettiriyor!"
+  promiMessage="Farklı roller farklı bakış açıları verir ve öğrenmeyi daha ilginç yapar!"
+/>
+</Section>
+
+<Section>
+## Rol Yapma Promptu Oluştur!
+
+<DragDropPrompt
+  title="Hayal Zamanı!"
+  instruction="Eğlenceli bir rol yapma promptu oluşturmak için parçaları düzenle"
+  pieces={["Parlak şeyler toplamayı seven", "bir ejderha olduğunu hayal et.", "Bana en sevdiğin", "hazineni anlat."]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Harika rol yapma promptu! Artık ejderha hazine hikayelerini paylaşabilir!"
+/>
+</Section>
+
+<Section>
+## Kendi Rol Yapmını Oluştur!
+
+<MagicWords
+  sentence="___ bir ___ olduğunu hayal et. Bana ___ anlat."
+  blanks={[
+    { hint: "⭐ ne yapıyor", answers: ["dilek gerçekleştiren", "günü kurtaran", "sihirli diyarları keşfeden", "havalı aletler icat eden", "iksirler yapan"] },
+    { hint: "🎭 bir karakter", answers: ["büyücü", "süper kahraman", "konuşan kedi", "zaman yolcusu", "peri"] },
+    { hint: "📖 ne paylaşılsın", answers: ["en büyük maceranı", "şimdiye kadarki en iyi gününü", "yaptığın komik bir hatayı", "gizli saklanma yerini", "en iyi arkadaşını"] }
+  ]}
+  successMessage="Harika rol yapma! Artık eğlenceli bir hayal sohbeti yapabiliriz!"
+/>
+</Section>
+
+<Section>
+## Rol Yapma Ustası! 🎉
+
+<Panel character="promi" mood="celebrating">
+Fantastik! **Rol yapma promptlarının** konuşmaları yaratıcı ve eğlenceli yaptığını öğrendin! Sadece benden "gibi davran" veya "olduğunu hayal et" diye iste!
+</Panel>
+
+<LevelComplete 
+  levelSlug="4-1-pretend-time" 
+  stars={3}
+  message="Rol yapma promptlarını kullanmayı öğrendin!"
+/>
+</Section>

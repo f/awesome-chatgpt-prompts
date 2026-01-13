@@ -1,0 +1,108 @@
+<Section>
+<Panel character="promi" mood="happy">
+Tekrar hoş geldin! Bugün süper önemli bir beceri öğreniyoruz: **zayıf promptları bulma ve düzeltme**! 🔧
+</Panel>
+</Section>
+
+<Section>
+## Sorunları Tespit Et!
+
+Zayıf promptlarda genellikle şunlar vardır:
+
+❌ Çok belirsiz - "Bir şey yaz"
+❌ Eksik detaylar - "Bana bir kişi hakkında anlat"
+❌ Format yok - Yapı olmadan istemek
+❌ Belirsiz tarz - Nasıl istediğini söylememek
+</Section>
+
+<Section>
+## Prompt Doktoru Ol! 🏥
+
+<PromptDoctor
+  title="Bu Promptu İyileştir"
+  brokenPrompt="Bir şey yaz"
+  problems={[
+    { issue: "Çok Belirsiz", symptom: "Ne yazayım? Hikaye mi? Şiir mi? Fıkra mı?", fix: "Bir hikaye yaz" },
+    { issue: "Konu Yok", symptom: "Hikaye ne hakkında olmalı?", fix: "Bir ejderha hakkında hikaye yaz" },
+    { issue: "Detay Yok", symptom: "Nasıl bir ejderha? Ne oluyor?", fix: "Kurabiye yapan sevimli bir ejderha hakkında kısa bir hikaye yaz" }
+  ]}
+  healedPrompt="Kurabiye yapan sevimli bir ejderha hakkında kısa bir hikaye yaz"
+  successMessage="Promptu iyileştirdin! 2 kelimeden harika detaylı bir isteğe!"
+/>
+</Section>
+
+<Section>
+<Panel character="promi" mood="thinking">
+Zayıf promptları tespit etmeyi öğrenmek daha iyilerini yazmana yardımcı olur! Prompt dedektifi olmak gibi!
+</Panel>
+</Section>
+
+<Section>
+## Düzeltmeyi Bul!
+
+<PromptVsMistake
+  question="Bu prompt zayıf: 'Bir şiir yaz.' Nasıl düzeltirsin?"
+  good="Fırtınadan sonra gökkuşağı hakkında kısa 4 satırlık kafiyelir yaz. Neşeli yap ve renkli kelimeler kullan!"
+  bad="Lütfen gerçekten iyi bir şiir yaz"
+  explanation="Sadece 'gerçekten iyi' demek yardımcı olmuyor! Bunun yerine detaylar ekle: konu (gökkuşağı), format (4 satır, kafiyeli) ve tarz (neşeli, renkli)!"
+  promiMessage="Belirli detaylar eklemek zayıf bir promptu güçlü bir prompta dönüştürür!"
+/>
+</Section>
+
+<Section>
+## Bu Promptu Geliştir!
+
+<PromptVsMistake
+  question="Zayıf prompt: 'Ödevimde yardım et.' Nasıl daha iyi yaparsın?"
+  good="4. sınıftayım ve kesirleri anlamada yardıma ihtiyacım var. Pizza örneği kullanarak 1/2'nin ne anlama geldiğini açıklayabilir misin? Basit tut!"
+  bad="Lütfen ödevimde daha fazla yardım et"
+  explanation="İyi versiyon şunları söylüyor: seviyen (4. sınıf), konu (kesirler), örnek istiyor (pizza) ve tarz (basit)!"
+  promiMessage="Ne kadar net olursan, o kadar iyi yardım edebilirim!"
+/>
+</Section>
+
+<Section>
+## Promptu Düzelt!
+
+<DragDropPrompt
+  title="Prompt Tamiri"
+  instruction="'Bana bir hikaye anlat' promptu çok zayıf. Düzeltmek için bu eklemeleri düzenle:"
+  pieces={["Kayıp yavru kuşa yardım eden", "cesur küçük fare hakkında", "kısa bir uyku hikayesi anlat.", "Nazik ve mutlu sonlu yap!"]}
+  correctOrder={[0, 1, 2, 3]}
+  successMessage="Zayıf bir promptu harika bir prompta dönüştürdün!"
+/>
+</Section>
+
+<Section>
+## Yükseltme Görevi!
+
+Bu zayıf promptu al ve güçlü yap:
+
+**Zayıf:** "Bana fikirler ver"
+
+<MagicWords
+  sentence="Bana ___ ve ___ olan ___ için ___ yaratıcı fikir ver. ___ gibi bir şey!"
+  blanks={[
+    { hint: "🔢 kaç tane", answers: ["5", "3", "7", "10", "4"] },
+    { hint: "🎯 ne için", answers: ["doğum günü partisi", "fen projesi", "eğlenceli oyun", "yazılacak hikaye", "odamı süsleme"] },
+    { hint: "✨ tarz 1", answers: ["eğlenceli", "yapması kolay", "yaratıcı", "şaşırtıcı", "renkli"] },
+    { hint: "🌟 tarz 2", answers: ["çocuk dostu", "çok pahalı olmayan", "benzersiz", "heyecanlı", "basit"] },
+    { hint: "💡 örnek", answers: ["hazine avı", "slime yapma", "süper kahraman teması", "karanlıkta parlayan şeyler", "sihir gösterisi"] }
+  ]}
+  successMessage="2 kelimelik zayıf promptu harika detaylı bir prompta dönüştürdün!"
+/>
+</Section>
+
+<Section>
+## Prompt Tamircisi! 🎉
+
+<Panel character="promi" mood="celebrating">
+Mükemmel! Zayıf promptları tespit etmeyi ve detay, format ve tarz ekleyerek **düzeltmeyi** öğrendin! Bu beceri sana sonsuza kadar yardımcı olacak!
+</Panel>
+
+<LevelComplete 
+  levelSlug="5-2-fix-it-up" 
+  stars={3}
+  message="Zayıf promptları bulma ve düzeltmeyi öğrendin!"
+/>
+</Section>
