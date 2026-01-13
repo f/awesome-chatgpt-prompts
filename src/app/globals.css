@@ -635,6 +635,16 @@
   border-color: #DC2626;
 }
 
+.pixel-panel-purple {
+  background: linear-gradient(180deg, #F3E8FF 0%, #E9D5FF 100%);
+  border-color: #9333EA;
+}
+
+.pixel-panel-indigo {
+  background: linear-gradient(180deg, #E0E7FF 0%, #C7D2FE 100%);
+  border-color: #6366F1;
+}
+
 .pixel-text-shadow {
   text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
 }

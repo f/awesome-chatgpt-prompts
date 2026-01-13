@@ -105,7 +105,7 @@ export function WordPredictor({
   };
 
   return (
-    <div className="my-4 p-4 bg-gradient-to-br from-[#E0E7FF] to-[#C7D2FE] border-4 border-[#6366F1] rounded-xl">
+    <div className="my-4 p-4 pixel-panel pixel-panel-indigo">
       {/* Title */}
       <h3 className="text-xl font-bold text-[#4338CA] mb-2 flex items-center gap-2">
         🧠 {displayTitle}
@@ -113,7 +113,7 @@ export function WordPredictor({
       <p className="text-[#5D4037] mb-4 m-0">{displayInstruction}</p>
 
       {/* AI Brain visualization */}
-      <div className="bg-white/80 rounded-lg p-4 mb-4 border-2 border-[#6366F1]">
+      <div className="bg-white/80 p-4 mb-4 border-2 border-[#6366F1]" style={{ clipPath: "polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px)" }}>
         <div className="flex items-center gap-2 mb-3">
           <span className="text-2xl">🤖</span>
           <span className="font-medium text-[#4338CA]">{t("aiThinks")}</span>
@@ -125,7 +125,7 @@ export function WordPredictor({
 
       {/* Thinking bubble */}
       {!submitted && (
-        <div className="bg-[#F0F9FF] rounded-lg p-3 mb-4 border-2 border-[#0EA5E9] italic text-[#0369A1]">
+        <div className="bg-[#F0F9FF] p-3 mb-4 border-2 border-[#0EA5E9] italic text-[#0369A1]" style={{ clipPath: "polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px)" }}>
           💭 {aiThinking || t("thinkingDefault")}
         </div>
       )}
@@ -143,12 +143,13 @@ export function WordPredictor({
               onClick={() => handleSelect(option)}
               disabled={submitted}
               className={cn(
-                "p-3 rounded-lg border-2 font-bold text-lg transition-all",
+                "p-3 border-2 font-bold text-lg transition-all",
                 !submitted && !isSelected && "bg-white border-[#6366F1] text-[#4338CA] hover:bg-indigo-50 cursor-pointer",
                 !submitted && isSelected && "bg-indigo-100 border-[#4338CA] text-[#4338CA] ring-2 ring-[#4338CA] scale-105",
                 showCorrect && "bg-green-100 border-green-500 text-green-700",
                 showWrong && "bg-red-100 border-red-400 text-red-600"
               )}
+              style={{ clipPath: "polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px)" }}
             >
               {showCorrect && "✓ "}
               {showWrong && "✗ "}
@@ -164,11 +165,12 @@ export function WordPredictor({
           onClick={handleSubmit}
           disabled={!selectedAnswer}
           className={cn(
-            "w-full py-3 rounded-lg font-bold text-lg transition-all",
+            "w-full py-3 font-bold text-lg transition-all",
             selectedAnswer
               ? "bg-[#6366F1] hover:bg-[#4F46E5] text-white cursor-pointer"
               : "bg-gray-200 text-gray-400 cursor-not-allowed"
           )}
+          style={{ clipPath: "polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px)" }}
         >
           {t("check")}
         </button>
@@ -176,10 +178,13 @@ export function WordPredictor({
 
       {/* Result */}
       {submitted && (
-        <div className={cn(
-          "p-4 rounded-lg border-2 mb-4 animate-in fade-in zoom-in-95 duration-300",
-          isCorrect ? "bg-green-100 border-green-500" : "bg-orange-100 border-orange-400"
-        )}>
+        <div 
+          className={cn(
+            "p-4 border-2 mb-4 animate-in fade-in zoom-in-95 duration-300",
+            isCorrect ? "bg-green-100 border-green-500" : "bg-orange-100 border-orange-400"
+          )}
+          style={{ clipPath: "polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px)" }}
+        >
           <p className={cn(
             "font-bold text-lg mb-2 m-0",
             isCorrect ? "text-green-700" : "text-orange-700"
@@ -194,7 +199,8 @@ export function WordPredictor({
       {submitted && (
         <button
           onClick={handleReset}
-          className="px-6 py-2 rounded-lg font-bold bg-[#6366F1] hover:bg-[#4F46E5] text-white"
+          className="px-6 py-2 font-bold bg-[#6366F1] hover:bg-[#4F46E5] text-white"
+          style={{ clipPath: "polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px)" }}
         >
           {t("retry")}
         </button>

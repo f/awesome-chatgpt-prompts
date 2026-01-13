@@ -140,7 +140,7 @@ export function DragDropPrompt({
   const correct = isCorrect();
 
   return (
-    <div className="my-4 p-4 bg-white rounded-xl border-4 border-[#D97706]">
+    <div className="my-4 p-4 pixel-panel">
       {/* Header */}
       <div className="flex items-center gap-3 mb-3">
         <PixelPuzzleIcon />
@@ -159,12 +159,13 @@ export function DragDropPrompt({
             <div
               key={`${pieceIndex}-${position}`}
               className={cn(
-                "flex items-center gap-2 p-2 rounded-lg border-2 transition-all",
+                "flex items-center gap-2 p-2 border-2 transition-all",
                 !submitted && !isSelected && "bg-white border-[#D97706] hover:bg-[#FEF3C7]",
                 !submitted && isSelected && "bg-[#DBEAFE] border-[#3B82F6] ring-2 ring-[#3B82F6] scale-[1.02]",
                 isCorrectPiece && "bg-[#DCFCE7] border-[#16A34A]",
                 isWrongPiece && "bg-[#FEE2E2] border-[#DC2626]"
               )}
+              style={{ clipPath: "polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px)" }}
             >
               {/* Position number */}
               <span className="w-8 h-8 flex items-center justify-center bg-[#D97706] text-white font-bold rounded-md text-lg">
@@ -176,11 +177,12 @@ export function DragDropPrompt({
                 onClick={() => moveLeft(position)}
                 disabled={submitted || position === 0}
                 className={cn(
-                  "w-10 h-10 flex items-center justify-center rounded-lg border-2 transition-all",
+                  "w-10 h-10 flex items-center justify-center border-2 transition-all",
                   position === 0 || submitted
                     ? "bg-gray-100 border-gray-200 text-gray-300 cursor-not-allowed"
                     : "bg-[#FEF3C7] border-[#D97706] text-[#D97706] hover:bg-[#D97706] hover:text-white active:scale-95"
                 )}
+                style={{ clipPath: "polygon(2px 0, calc(100% - 2px) 0, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0 calc(100% - 2px), 0 2px)" }}
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
@@ -190,7 +192,7 @@ export function DragDropPrompt({
                 onClick={() => handleTap(position)}
                 disabled={submitted}
                 className={cn(
-                  "flex-1 px-4 py-3 text-xl font-medium text-left rounded-lg transition-all",
+                  "flex-1 px-4 py-3 text-xl font-medium text-left transition-all",
                   !submitted && "hover:bg-[#FEF3C7] cursor-pointer",
                   submitted && "cursor-default"
                 )}
@@ -203,11 +205,12 @@ export function DragDropPrompt({
                 onClick={() => moveRight(position)}
                 disabled={submitted || position === currentOrder.length - 1}
                 className={cn(
-                  "w-10 h-10 flex items-center justify-center rounded-lg border-2 transition-all",
+                  "w-10 h-10 flex items-center justify-center border-2 transition-all",
                   position === currentOrder.length - 1 || submitted
                     ? "bg-gray-100 border-gray-200 text-gray-300 cursor-not-allowed"
                     : "bg-[#FEF3C7] border-[#D97706] text-[#D97706] hover:bg-[#D97706] hover:text-white active:scale-95"
                 )}
+                style={{ clipPath: "polygon(2px 0, calc(100% - 2px) 0, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0 calc(100% - 2px), 0 2px)" }}
               >
                 <ChevronRight className="w-6 h-6" />
               </button>
@@ -225,7 +228,7 @@ export function DragDropPrompt({
 
       {/* Hint for tap-to-swap */}
       {selectedIndex !== null && (
-        <div className="bg-[#DBEAFE] border-2 border-[#3B82F6] rounded-lg p-3 mb-4 text-center">
+        <div className="bg-[#DBEAFE] border-2 border-[#3B82F6] p-3 mb-4 text-center" style={{ clipPath: "polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px)" }}>
           <p className="text-lg text-[#1E40AF] font-medium m-0">
             👆 {t("tapToSwap")}
           </p>
@@ -233,7 +236,7 @@ export function DragDropPrompt({
       )}
 
       {/* Preview */}
-      <div className="bg-[#FEF3C7]/50 rounded-lg p-4 mb-4 border-2 border-[#D97706]/30">
+      <div className="bg-[#FEF3C7]/50 p-4 mb-4 border-2 border-[#D97706]/30" style={{ clipPath: "polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px)" }}>
         <span className="text-lg text-[#8B7355]">{t("result")}: </span>
         <span className="text-xl text-[#2C1810]">
           {currentOrder.map((i) => pieces[i]).join(" ")}
@@ -242,10 +245,13 @@ export function DragDropPrompt({
 
       {/* Result feedback */}
       {submitted && (
-        <div className={cn(
-          "rounded-lg p-4 mt-4 mb-4 text-center",
-          correct ? "bg-[#DCFCE7] border-2 border-[#16A34A]" : "bg-[#FEF3C7] border-2 border-[#D97706]"
-        )}>
+        <div 
+          className={cn(
+            "p-4 mt-4 mb-4 text-center",
+            correct ? "bg-[#DCFCE7] border-2 border-[#16A34A]" : "bg-[#FEF3C7] border-2 border-[#D97706]"
+          )}
+          style={{ clipPath: "polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px)" }}
+        >
           {correct ? (
             <p className="font-bold text-xl m-0 text-[#16A34A]">🎉 {successMessage || t("success")}</p>
           ) : (
@@ -259,14 +265,16 @@ export function DragDropPrompt({
         {!submitted ? (
           <button 
             onClick={handleSubmit} 
-            className="px-6 py-3 bg-[#22C55E] hover:bg-[#16A34A] text-white font-bold rounded-lg text-xl transition-colors"
+            className="px-6 py-3 bg-[#22C55E] hover:bg-[#16A34A] text-white font-bold text-xl transition-colors"
+            style={{ clipPath: "polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px)" }}
           >
             {t("check")}
           </button>
         ) : (
           <button 
             onClick={handleReset} 
-            className="px-6 py-3 bg-[#8B4513] hover:bg-[#A0522D] text-white font-bold rounded-lg text-xl transition-colors"
+            className="px-6 py-3 bg-[#8B4513] hover:bg-[#A0522D] text-white font-bold text-xl transition-colors"
+            style={{ clipPath: "polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px)" }}
           >
             {t("retry")}
           </button>

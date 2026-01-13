@@ -31,7 +31,7 @@ export function StoryScene({ panels, className }: StorySceneProps) {
         <div className="flex items-start gap-4 w-full">
           {panel.character === "promi" && (
             <div className="shrink-0">
-              <PixelRobot className="w-12 h-16" />
+              <PixelRobot className="w-12 h-16" mood={panel.mood} />
             </div>
           )}
           <div 
@@ -101,7 +101,7 @@ export function Panel({ character = "promi", mood = "happy", children, highlight
         <div className="flex items-start gap-4">
           {character === "promi" && (
             <div className="shrink-0">
-              <PixelRobot className="w-12 h-16" />
+              <PixelRobot className="w-12 h-16" mood={mood} />
             </div>
           )}
           <div 

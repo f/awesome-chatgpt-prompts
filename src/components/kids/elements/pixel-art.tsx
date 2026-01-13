@@ -155,24 +155,99 @@ export function PixelStar({ className, filled = false }: { className?: string; f
   );
 }
 
-// Pixel Art Robot (Promi)
-export function PixelRobot({ className }: { className?: string }) {
+// Pixel Art Robot (Promi) with mood support
+type PromiMood = "happy" | "thinking" | "excited" | "confused" | "celebrating";
+
+interface PixelRobotProps {
+  className?: string;
+  mood?: PromiMood;
+}
+
+// Mouth shapes for different moods
+const mouthShapes: Record<PromiMood, { x: number; y: number; width: number; height: number; fill: string }[]> = {
+  happy: [
+    { x: 6, y: 10, width: 4, height: 1, fill: "#333" },
+    { x: 5, y: 9, width: 1, height: 1, fill: "#333" },
+    { x: 10, y: 9, width: 1, height: 1, fill: "#333" },
+  ],
+  thinking: [
+    { x: 7, y: 10, width: 2, height: 1, fill: "#333" },
+  ],
+  excited: [
+    { x: 5, y: 9, width: 6, height: 2, fill: "#333" },
+    { x: 6, y: 10, width: 4, height: 1, fill: "#FF6B6B" },
+  ],
+  confused: [
+    { x: 6, y: 10, width: 3, height: 1, fill: "#333" },
+    { x: 9, y: 9, width: 1, height: 1, fill: "#333" },
+  ],
+  celebrating: [
+    { x: 5, y: 9, width: 6, height: 2, fill: "#333" },
+    { x: 6, y: 9, width: 4, height: 1, fill: "#FF6B6B" },
+  ],
+};
+
+// Eye variations for moods
+const eyeVariations: Record<PromiMood, { leftPupil: { x: number; y: number }; rightPupil: { x: number; y: number }; extra?: { x: number; y: number; width: number; height: number; fill: string }[] }> = {
+  happy: { leftPupil: { x: 5, y: 7 }, rightPupil: { x: 10, y: 7 } },
+  thinking: { leftPupil: { x: 6, y: 6 }, rightPupil: { x: 11, y: 6 } },
+  excited: { 
+    leftPupil: { x: 5, y: 7 }, 
+    rightPupil: { x: 10, y: 7 },
+    extra: [
+      { x: 3, y: 5, width: 1, height: 1, fill: "#FFD700" },
+      { x: 12, y: 5, width: 1, height: 1, fill: "#FFD700" },
+    ]
+  },
+  confused: { 
+    leftPupil: { x: 5, y: 7 }, 
+    rightPupil: { x: 10, y: 6 },
+    extra: [
+      { x: 13, y: 3, width: 2, height: 1, fill: "#FFD700" },
+      { x: 14, y: 2, width: 1, height: 1, fill: "#FFD700" },
+    ]
+  },
+  celebrating: { 
+    leftPupil: { x: 5, y: 7 }, 
+    rightPupil: { x: 10, y: 7 },
+    extra: [
+      { x: 0, y: 0, width: 1, height: 1, fill: "#FF6B6B" },
+      { x: 15, y: 1, width: 1, height: 1, fill: "#22C55E" },
+      { x: 2, y: 2, width: 1, height: 1, fill: "#FFD700" },
+      { x: 14, y: 3, width: 1, height: 1, fill: "#3B82F6" },
+    ]
+  },
+};
+
+export function PixelRobot({ className, mood = "happy" }: PixelRobotProps) {
+  const mouthParts = mouthShapes[mood];
+  const eyeData = eyeVariations[mood];
+  
   return (
     <svg 
       viewBox="0 0 16 20" 
       className={cn("w-8 h-10", className)}
       style={{ imageRendering: "pixelated" }}
     >
+      {/* Confetti/effects for certain moods */}
+      {eyeData.extra?.map((rect, i) => (
+        <rect key={`extra-${i}`} x={rect.x} y={rect.y} width={rect.width} height={rect.height} fill={rect.fill} />
+      ))}
       {/* Antenna */}
       <rect x="7" y="0" width="2" height="2" fill="#FFD700" />
       <rect x="6" y="2" width="4" height="2" fill="#C0C0C0" />
       {/* Head */}
       <rect x="2" y="4" width="12" height="8" fill="#4A90D9" />
+      {/* Eyes - white part */}
       <rect x="4" y="6" width="3" height="3" fill="white" />
       <rect x="9" y="6" width="3" height="3" fill="white" />
-      <rect x="5" y="7" width="2" height="2" fill="#333" />
-      <rect x="10" y="7" width="2" height="2" fill="#333" />
-      <rect x="6" y="10" width="4" height="2" fill="#333" />
+      {/* Pupils - position varies by mood */}
+      <rect x={eyeData.leftPupil.x} y={eyeData.leftPupil.y} width="2" height="2" fill="#333" />
+      <rect x={eyeData.rightPupil.x} y={eyeData.rightPupil.y} width="2" height="2" fill="#333" />
+      {/* Mouth - varies by mood */}
+      {mouthParts.map((rect, i) => (
+        <rect key={`mouth-${i}`} x={rect.x} y={rect.y} width={rect.width} height={rect.height} fill={rect.fill} />
+      ))}
       {/* Body */}
       <rect x="4" y="12" width="8" height="6" fill="#4A90D9" />
       <rect x="6" y="14" width="4" height="2" fill="#FFD700" />

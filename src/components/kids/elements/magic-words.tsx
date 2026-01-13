@@ -213,7 +213,7 @@ export function MagicWords({
   };
 
   return (
-    <div className="my-4 rounded-xl border-4 border-purple-300 overflow-hidden bg-white">
+    <div className="my-4 pixel-panel pixel-panel-purple overflow-hidden">
       {/* Header */}
       <div className="px-4 py-3 bg-gradient-to-r from-purple-100 to-pink-100 border-b-2 border-purple-200">
         <div className="flex items-center gap-2">
@@ -224,12 +224,12 @@ export function MagicWords({
 
       <div className="p-4 space-y-4">
         {/* Sentence with blanks */}
-        <div className="text-xl leading-relaxed p-4 bg-purple-50 rounded-lg flex flex-wrap items-center text-[#2C1810]">
+        <div className="text-xl leading-relaxed p-4 bg-purple-50 flex flex-wrap items-center text-[#2C1810]" style={{ clipPath: "polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px)" }}>
           {renderSentence()}
         </div>
 
         {/* Word bank */}
-        <div className="p-4 bg-purple-100 rounded-lg">
+        <div className="p-4 bg-purple-100" style={{ clipPath: "polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px)" }}>
           <p className="text-lg font-medium text-purple-700 mb-3 m-0">
             {t("dragOrTap")}
           </p>
@@ -247,11 +247,12 @@ export function MagicWords({
                   onClick={() => !isUsed && handleClickWord(word)}
                   disabled={submitted || isUsed}
                   className={cn(
-                    "flex items-center gap-2 px-4 py-3 rounded-lg border-2 text-xl font-medium transition-all text-[#2C1810]",
+                    "flex items-center gap-2 px-4 py-3 border-2 text-xl font-medium transition-all text-[#2C1810]",
                     !isUsed && !submitted && "bg-white border-purple-300 hover:border-purple-500 hover:shadow-md cursor-grab active:cursor-grabbing",
                     isUsed && "bg-gray-100 border-gray-300 text-gray-400 opacity-50 cursor-not-allowed",
                     submitted && "cursor-default"
                   )}
+                  style={{ clipPath: "polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px)" }}
                 >
                   {!submitted && !isUsed && <GripVertical className="h-5 w-5 text-purple-400" />}
                   {word}
@@ -265,11 +266,12 @@ export function MagicWords({
         {submitted && (
           <div
             className={cn(
-              "p-4 rounded-lg text-center",
+              "p-4 text-center",
               allCorrect
                 ? "bg-green-100 border-2 border-green-300"
                 : "bg-amber-100 border-2 border-amber-300"
             )}
+            style={{ clipPath: "polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px)" }}
           >
             {allCorrect ? (
               <p className="font-bold text-xl m-0 text-green-800">🎉 {successMessage || "Amazing!"}</p>

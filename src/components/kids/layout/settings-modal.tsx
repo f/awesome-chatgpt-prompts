@@ -57,7 +57,10 @@ function SettingsModal({ onClose }: { onClose: () => void }) {
   const completed = getCompletedLevelsCount();
 
   const handleLanguageChange = (locale: string) => {
+    if (locale === currentLocale) return;
+    
     analyticsKids.changeLanguage(locale);
+    clearAllProgress();
     setLocale(locale);
   };
 
