@@ -2,6 +2,37 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { Schoolbell } from "next/font/google";
+
+const kidsFont = Schoolbell({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-kids",
+});
+
+// Mini Promi icon for header
+function MiniPromi({ className }: { className?: string }) {
+  return (
+    <svg 
+      viewBox="0 0 16 20" 
+      className={className}
+      style={{ imageRendering: "pixelated" }}
+    >
+      <rect x="7" y="0" width="2" height="2" fill="#FFD700" />
+      <rect x="6" y="2" width="4" height="2" fill="#C0C0C0" />
+      <rect x="2" y="4" width="12" height="8" fill="#4A90D9" />
+      <rect x="4" y="6" width="3" height="3" fill="white" />
+      <rect x="9" y="6" width="3" height="3" fill="white" />
+      <rect x="5" y="7" width="2" height="2" fill="#333" />
+      <rect x="10" y="7" width="2" height="2" fill="#333" />
+      <rect x="6" y="10" width="4" height="1" fill="#333" />
+      <rect x="5" y="9" width="1" height="1" fill="#333" />
+      <rect x="10" y="9" width="1" height="1" fill="#333" />
+      <rect x="4" y="12" width="8" height="6" fill="#4A90D9" />
+      <rect x="6" y="14" width="4" height="2" fill="#FFD700" />
+    </svg>
+  );
+}
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
@@ -206,6 +237,18 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
                       {t("nav.book")}
                     </Link>
                   )}
+                  {!branding.useCloneBranding && (
+                    <a 
+                      href="/kids" 
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={`flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium hover:bg-accent transition-colors ${kidsFont.className}`}
+                    >
+                      <MiniPromi className="h-5 w-4" />
+                      <span className="font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">
+                        {t("nav.forKids")}
+                      </span>
+                    </a>
+                  )}
                 </div>
               </nav>
 
@@ -337,6 +380,19 @@ export function Header({ authProvider = "credentials", allowRegistration = true 
                 {t("nav.book")}
               </Link>
             </Button>
+          )}
+
+          {/* For Kids link */}
+          {!branding.useCloneBranding && (
+            <a 
+              href="/kids" 
+              className={`hidden lg:flex items-center gap-1 px-2 py-1 rounded-md hover:bg-accent transition-colors ${kidsFont.className}`}
+            >
+              <MiniPromi className="h-5 w-4" />
+              <span className="text-sm font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">
+                {t("nav.forKids")}
+              </span>
+            </a>
           )}
 
           {/* Developers link */}

@@ -30,12 +30,12 @@ export function KidsHeader() {
     <header className="shrink-0 z-50 w-full bg-[#2C1810] border-b-4 border-[#8B4513]">
       <div className="container flex h-14 items-center justify-between px-4">
         {/* Logo */}
-        <Link href="/kids" className="flex items-center gap-2">
+        <a href="/kids" className="flex items-center gap-2">
           <PixelRobot className="w-8 h-10" />
           <span className="text-[#FFD700] font-bold text-2xl pixel-text-shadow hidden sm:block">
             {t("header.title")}
           </span>
-        </Link>
+        </a>
 
         {/* Stats & Nav */}
         <div className="flex items-center gap-3">
@@ -63,12 +63,12 @@ export function KidsHeader() {
           <div className="flex items-center gap-2">
             <MusicButton />
             <SettingsButton />
-            <Link 
+            <a 
               href="/kids" 
               className="pixel-btn px-3 py-1.5 text-sm h-8 flex items-center"
             >
               <PixelHomeIcon />
-            </Link>
+            </a>
             <Link 
               href="/kids/map" 
               className="pixel-btn pixel-btn-green px-3 py-1.5 text-sm h-8 flex items-center"
