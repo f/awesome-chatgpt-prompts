@@ -50,6 +50,10 @@ export function SettingsButton() {
   );
 }
 
+// Pixel clip-paths for consistent styling
+const pixelClipPath = "polygon(0 8px, 8px 8px, 8px 0, calc(100% - 8px) 0, calc(100% - 8px) 8px, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 8px calc(100% - 8px), 0 calc(100% - 8px))";
+const smallPixelClipPath = "polygon(0 4px, 4px 4px, 4px 0, calc(100% - 4px) 0, calc(100% - 4px) 4px, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 4px calc(100% - 4px), 0 calc(100% - 4px))";
+
 function SettingsModal({ onClose }: { onClose: () => void }) {
   const t = useTranslations("kids.settings");
   const currentLocale = useLocale();
@@ -95,11 +99,15 @@ function SettingsModal({ onClose }: { onClose: () => void }) {
       />
       
       {/* Modal */}
-      <div className="relative bg-[#FEF3C7] border-4 border-[#8B4513] rounded-xl p-6 w-full max-w-md max-h-[90vh] overflow-y-auto animate-in zoom-in-95 fade-in duration-200">
+      <div 
+        className="relative bg-[#FEF3C7] border-4 border-[#8B4513] p-6 w-full max-w-md max-h-[90vh] overflow-y-auto animate-in zoom-in-95 fade-in duration-200"
+        style={{ clipPath: pixelClipPath }}
+      >
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 p-2 text-[#8B4513] hover:bg-[#8B4513]/10 rounded-lg"
+          className="absolute top-3 right-3 p-2 text-[#8B4513] hover:bg-[#8B4513]/10"
+          style={{ clipPath: smallPixelClipPath }}
         >
           <X className="w-5 h-5" />
         </button>
@@ -145,27 +153,31 @@ function SettingsModal({ onClose }: { onClose: () => void }) {
             <Globe className="w-5 h-5" />
             {t("language")}
           </h3>
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-2 gap-2">
             {SUPPORTED_LOCALES.map((locale) => (
               <button
                 key={locale.code}
                 onClick={() => handleLanguageChange(locale.code)}
                 className={cn(
-                  "p-2 rounded-lg border-2 text-sm font-medium transition-all",
+                  "p-2 border-2 text-sm font-medium transition-all flex items-center gap-2",
                   currentLocale === locale.code
                     ? "bg-[#8B4513] border-[#5D4037] text-white"
                     : "bg-white border-[#D4A574] text-[#5D4037] hover:border-[#8B4513]"
                 )}
+                style={{ clipPath: smallPixelClipPath }}
               >
                 <span className="text-lg">{locale.flag}</span>
-                <div className="text-xs mt-1">{locale.label}</div>
+                <span className="text-xs">{locale.label}</span>
               </button>
             ))}
           </div>
         </div>
 
         {/* Progress Info */}
-        <div className="mb-6 p-4 bg-white/50 rounded-lg border-2 border-[#D4A574]">
+        <div 
+          className="mb-6 p-4 bg-white/50 border-2 border-[#D4A574]"
+          style={{ clipPath: smallPixelClipPath }}
+        >
           <h3 className="text-lg font-bold text-[#5D4037] mb-2">
             {t("progress")}
           </h3>
@@ -189,7 +201,10 @@ function SettingsModal({ onClose }: { onClose: () => void }) {
           </h3>
           
           {resetComplete ? (
-            <div className="p-3 bg-green-100 border-2 border-green-500 rounded-lg text-green-700 font-medium flex items-center gap-2">
+            <div 
+              className="p-3 bg-green-100 border-2 border-green-500 text-green-700 font-medium flex items-center gap-2"
+              style={{ clipPath: smallPixelClipPath }}
+            >
               <Check className="w-5 h-5" />
               {t("resetComplete")}
             </div>
@@ -198,16 +213,18 @@ function SettingsModal({ onClose }: { onClose: () => void }) {
               <p className="text-red-600 font-medium text-sm">
                 {t("resetWarning")}
               </p>
-              <div className="flex gap-2">
+              <div className="flex flex-col gap-2">
                 <button
                   onClick={handleResetProgress}
-                  className="flex-1 py-2 px-4 bg-red-500 hover:bg-red-600 text-white font-bold rounded-lg"
+                  className="w-full py-2 px-4 bg-red-500 hover:bg-red-600 text-white font-bold"
+                  style={{ clipPath: smallPixelClipPath }}
                 >
                   {t("resetConfirm")}
                 </button>
                 <button
                   onClick={() => setShowResetConfirm(false)}
-                  className="flex-1 py-2 px-4 bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold rounded-lg"
+                  className="w-full py-2 px-4 bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold"
+                  style={{ clipPath: smallPixelClipPath }}
                 >
                   {t("cancel")}
                 </button>
@@ -216,7 +233,8 @@ function SettingsModal({ onClose }: { onClose: () => void }) {
           ) : (
             <button
               onClick={handleResetProgress}
-              className="w-full py-2 px-4 bg-red-100 hover:bg-red-200 text-red-700 font-bold rounded-lg border-2 border-red-300"
+              className="w-full py-2 px-4 bg-red-100 hover:bg-red-200 text-red-700 font-bold border-2 border-red-300"
+              style={{ clipPath: smallPixelClipPath }}
             >
               {t("resetButton")}
             </button>

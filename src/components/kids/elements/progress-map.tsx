@@ -17,7 +17,13 @@ import {
   PixelFlower, 
   PixelStar,
   PixelRobot,
-  PixelLevelNode 
+  PixelLevelNode,
+  PixelPlaneWithBanner,
+  PixelLake,
+  PixelPond,
+  PixelCar,
+  PixelOldCar,
+  PixelVan 
 } from "./pixel-art";
 
 export function ProgressMap() {
@@ -56,14 +62,22 @@ export function ProgressMap() {
     <div className="relative h-full flex flex-col">
       {/* Scroll controls for desktop */}
       <div className="hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 z-20">
-        <Button variant="secondary" size="icon" onClick={scrollLeft} className="rounded-full shadow-lg">
-          <ChevronLeft className="h-5 w-5" />
-        </Button>
+        <button 
+          onClick={scrollLeft} 
+          className="w-10 h-10 bg-[#FFD700] border-3 border-[#DAA520] flex items-center justify-center hover:bg-[#FFC000] transition-colors shadow-lg"
+          style={{ clipPath: "polygon(0 4px, 4px 4px, 4px 0, calc(100% - 4px) 0, calc(100% - 4px) 4px, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 4px calc(100% - 4px), 0 calc(100% - 4px))" }}
+        >
+          <ChevronLeft className="h-5 w-5 text-[#8B4513]" />
+        </button>
       </div>
       <div className="hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 z-20">
-        <Button variant="secondary" size="icon" onClick={scrollRight} className="rounded-full shadow-lg">
-          <ChevronRight className="h-5 w-5" />
-        </Button>
+        <button 
+          onClick={scrollRight} 
+          className="w-10 h-10 bg-[#FFD700] border-3 border-[#DAA520] flex items-center justify-center hover:bg-[#FFC000] transition-colors shadow-lg"
+          style={{ clipPath: "polygon(0 4px, 4px 4px, 4px 0, calc(100% - 4px) 0, calc(100% - 4px) 4px, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 4px calc(100% - 4px), 0 calc(100% - 4px))" }}
+        >
+          <ChevronRight className="h-5 w-5 text-[#8B4513]" />
+        </button>
       </div>
 
       {/* Horizontal scrolling map container */}
@@ -83,32 +97,48 @@ export function ProgressMap() {
           <div className="absolute bottom-12 left-0 right-0 h-4 bg-[#228B22]" style={{ minWidth: `${mapWidth}px` }} />
           <div className="absolute bottom-16 left-0 right-0 h-2 bg-[#32CD32]" style={{ minWidth: `${mapWidth}px` }} />
           
+          {/* Road with dashed center line */}
+          <div 
+            className="absolute bottom-0 left-0 right-0 h-8 bg-[#4A4A4A]" 
+            style={{ minWidth: `${mapWidth}px` }}
+          >
+            {/* Road edges */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-[#6B6B6B]" />
+            <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#3A3A3A]" />
+            {/* Dashed center line */}
+            <div 
+              className="absolute top-1/2 -translate-y-1/2 left-0 right-0 h-1.5 bg-repeat-x"
+              style={{ 
+                backgroundImage: "repeating-linear-gradient(90deg, #FFD700 0px, #FFD700 20px, transparent 20px, transparent 40px)",
+                minWidth: `${mapWidth}px`,
+              }}
+            />
+          </div>
+          
           {/* Pixel art path connecting all levels */}
           <svg 
             className="absolute inset-0 w-full h-full pointer-events-none z-0" 
-            style={{ width: `${mapWidth}px` }}
+            style={{ width: `${mapWidth}px`, imageRendering: "pixelated" }}
             preserveAspectRatio="none"
+            shapeRendering="crispEdges"
           >
-            {/* Draw dotted path between levels - pixel style */}
+            {/* Path border for depth */}
             <path
-              d={generatePathD(levelPositions)}
+              d={generatePixelPathD(levelPositions)}
               fill="none"
-              stroke="#D4A574"
+              stroke="#8B5A2B"
               strokeWidth="12"
               strokeLinecap="square"
               strokeLinejoin="miter"
-              strokeDasharray="16 8"
             />
-            {/* Path border for depth */}
+            {/* Draw path between levels - pixel style */}
             <path
-              d={generatePathD(levelPositions)}
+              d={generatePixelPathD(levelPositions)}
               fill="none"
-              stroke="#8B5A2B"
-              strokeWidth="16"
+              stroke="#D4A574"
+              strokeWidth="8"
               strokeLinecap="square"
               strokeLinejoin="miter"
-              strokeDasharray="16 8"
-              className="opacity-30"
             />
           </svg>
 
@@ -205,7 +235,60 @@ function generatePathD(positions: { x: number; y: number }[]): string {
   return d;
 }
 
+// Generate pixelated path using straight line segments (stair-step pattern)
+function generatePixelPathD(positions: { x: number; y: number }[]): string {
+  if (positions.length === 0) return "";
+  
+  let d = `M ${positions[0].x} ${positions[0].y}`;
+  
+  for (let i = 1; i < positions.length; i++) {
+    const prev = positions[i - 1];
+    const curr = positions[i];
+    const midX = (prev.x + curr.x) / 2;
+    // Create stair-step pattern for pixelated look
+    d += ` H ${midX}`; // Horizontal to midpoint
+    d += ` V ${curr.y}`; // Vertical to new Y
+    d += ` H ${curr.x}`; // Horizontal to destination
+  }
+  
+  return d;
+}
+
 function MapDecorations({ mapWidth }: { mapWidth: number }) {
+  const [planeY, setPlaneY] = useState(15); // percentage from top
+  const [isDragging, setIsDragging] = useState(false);
+  const planeRef = useRef<HTMLDivElement>(null);
+  
+  // Handle plane dragging
+  useEffect(() => {
+    if (!isDragging) return;
+    
+    const handleMove = (clientY: number) => {
+      const container = planeRef.current?.parentElement;
+      if (!container) return;
+      const rect = container.getBoundingClientRect();
+      const y = ((clientY - rect.top) / rect.height) * 100;
+      // Constrain between 8% and 35% from top
+      setPlaneY(Math.max(8, Math.min(35, y)));
+    };
+    
+    const onMouseMove = (e: MouseEvent) => handleMove(e.clientY);
+    const onTouchMove = (e: TouchEvent) => handleMove(e.touches[0].clientY);
+    const onEnd = () => setIsDragging(false);
+    
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('touchmove', onTouchMove);
+    document.addEventListener('mouseup', onEnd);
+    document.addEventListener('touchend', onEnd);
+    
+    return () => {
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('touchmove', onTouchMove);
+      document.removeEventListener('mouseup', onEnd);
+      document.removeEventListener('touchend', onEnd);
+    };
+  }, [isDragging]);
+  
   // Generate decorations along the map - using seeded positions for consistency
   const decorations = [];
   const spacing = 100;
@@ -221,7 +304,7 @@ function MapDecorations({ mapWidth }: { mapWidth: number }) {
         className="absolute pointer-events-none"
         style={{ 
           left: `${x + (i % 3) * 15}px`, 
-          bottom: `${55 + yOffset + (i % 4) * 5}px` 
+          bottom: `${50 + yOffset + (i % 4) * 5}px` 
         }}
       >
         {type === 0 && <PixelTree />}
@@ -233,7 +316,30 @@ function MapDecorations({ mapWidth }: { mapWidth: number }) {
     );
   }
 
-// Add castle at the end
+// Add lakes and ponds scattered on the ground
+  const lakePositions = [
+    { x: 210, type: 'lake' },
+    { x: 1000, type: 'pond' },
+    { x: 2180, type: 'lake' },
+    { x: 2920, type: 'pond' },
+    { x: 3680, type: 'lake' },
+  ];
+  
+  lakePositions.forEach((lake, i) => {
+    if (lake.x < mapWidth - 100) {
+      decorations.push(
+        <div 
+          key={`lake-${i}`}
+          className="absolute pointer-events-none"
+          style={{ left: `${lake.x}px`, bottom: "50px" }}
+        >
+          {lake.type === 'lake' ? <PixelLake /> : <PixelPond />}
+        </div>
+      );
+    }
+  });
+
+  // Add castle at the end
   decorations.push(
     <div 
       key="castle"
@@ -241,6 +347,116 @@ function MapDecorations({ mapWidth }: { mapWidth: number }) {
       style={{ left: `${mapWidth - 80}px`, bottom: "50px" }}
     >
       <PixelCastle />
+    </div>
+  );
+
+  // Add cars on the road with hover traffic light
+  // Car 1 - going left (top lane)
+  decorations.push(
+    <div 
+      key="car1"
+      className="absolute z-[2] group"
+      style={{ 
+        bottom: "7px",
+        transform: "scaleX(-1)", // Flip to face left
+        animation: `driveLeft ${Math.max(10, mapWidth / 200)}s linear infinite`,
+        ["--map-width" as string]: `${mapWidth}px`,
+      }}
+      onMouseEnter={(e) => e.currentTarget.style.animationPlayState = "paused"}
+      onMouseLeave={(e) => e.currentTarget.style.animationPlayState = "running"}
+    >
+      {/* Traffic light - appears on hover, in front of car */}
+      <div className="absolute -right-8 -bottom-2 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center" style={{ transform: "scaleX(-1)" }}>
+        {/* Light box */}
+        <div className="w-4 h-10 bg-gray-700 flex flex-col items-center justify-center gap-0.5 p-1">
+          <div className="w-2 h-2 bg-red-500 shadow-[0_0_6px_#ef4444]" />
+          <div className="w-2 h-2 bg-yellow-800" />
+          <div className="w-2 h-2 bg-green-800" />
+        </div>
+        {/* Pole */}
+        <div className="w-1.5 h-8 bg-gray-500" />
+      </div>
+      <PixelCar color="#E74C3C" />
+    </div>
+  );
+  
+  // Van - going left (top lane, different timing)
+  decorations.push(
+    <div 
+      key="van1"
+      className="absolute z-[2] group"
+      style={{ 
+        bottom: "0px",
+        transform: "scaleX(-1)", // Flip to face left
+        animation: `driveLeft ${Math.max(18, mapWidth / 70)}s linear infinite`,
+        animationDelay: "-8s",
+        ["--map-width" as string]: `${mapWidth}px`,
+      }}
+      onMouseEnter={(e) => e.currentTarget.style.animationPlayState = "paused"}
+      onMouseLeave={(e) => e.currentTarget.style.animationPlayState = "running"}
+    >
+      {/* Traffic light - appears on hover, in front of van */}
+      <div className="absolute -right-8 -bottom-2 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center" style={{ transform: "scaleX(-1)" }}>
+        {/* Light box */}
+        <div className="w-4 h-10 bg-gray-700 flex flex-col items-center justify-center gap-0.5 p-1">
+          <div className="w-2 h-2 bg-red-500 shadow-[0_0_6px_#ef4444]" />
+          <div className="w-2 h-2 bg-yellow-800" />
+          <div className="w-2 h-2 bg-green-800" />
+        </div>
+        {/* Pole */}
+        <div className="w-1.5 h-8 bg-gray-500" />
+      </div>
+      <div style={{ animation: "engineVibrate 0.1s steps(2) infinite" }}>
+        <PixelVan text="prompts.chat" />
+      </div>
+    </div>
+  );
+  
+  // Car 2 - going right (bottom lane)
+  decorations.push(
+    <div 
+      key="car2"
+      className="absolute z-[1] group"
+      style={{ 
+        bottom: "22px",
+        animation: `driveRight ${Math.max(12, mapWidth / 90)}s linear infinite`,
+        ["--map-width" as string]: `${mapWidth}px`,
+      }}
+      onMouseEnter={(e) => e.currentTarget.style.animationPlayState = "paused"}
+      onMouseLeave={(e) => e.currentTarget.style.animationPlayState = "running"}
+    >
+      {/* Traffic light - appears on hover, on right side of car (going right) */}
+      <div className="absolute -right-8 bottom-2 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center">
+        {/* Light box */}
+        <div className="w-4 h-10 bg-gray-700 flex flex-col items-center justify-center gap-0.5 p-1">
+          <div className="w-2 h-2 bg-red-500 shadow-[0_0_6px_#ef4444]" />
+          <div className="w-2 h-2 bg-yellow-800" />
+          <div className="w-2 h-2 bg-green-800" />
+        </div>
+        {/* Pole */}
+        <div className="w-1.5 h-8 bg-gray-500" />
+      </div>
+      <div style={{ animation: "engineVibrate 0.1s steps(2) infinite" }}>
+        <PixelOldCar />
+      </div>
+    </div>
+  );
+
+  // Add flying plane with banner - flies across full map width, draggable up/down
+  decorations.push(
+    <div 
+      key="plane"
+      ref={planeRef}
+      className="absolute z-10 cursor-grab active:cursor-grabbing select-none"
+      style={{ 
+        top: `${planeY}%`,
+        animation: `flyPlaneMap ${Math.max(20, mapWidth / 50)}s linear infinite`,
+        ["--map-width" as string]: `${mapWidth}px`,
+      }}
+      onMouseDown={() => setIsDragging(true)}
+      onTouchStart={() => setIsDragging(true)}
+    >
+      <PixelPlaneWithBanner bannerText="prompts.chat" />
     </div>
   );
 

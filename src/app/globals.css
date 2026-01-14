@@ -495,6 +495,89 @@
   animation: float 4s ease-in-out infinite;
 }
 
+/* Flying plane animation for kids map */
+@keyframes flyPlane {
+  0% {
+    left: -200px;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Flying plane animation across full map width */
+@keyframes flyPlaneMap {
+  0% {
+    left: -250px;
+  }
+  100% {
+    left: var(--map-width, 100%);
+  }
+}
+
+/* Engine vibration animation for vehicles */
+@keyframes engineVibrate {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1px);
+  }
+}
+
+/* Propeller spin animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Car driving animations */
+@keyframes driveLeft {
+  0% {
+    left: var(--map-width, 100%);
+  }
+  100% {
+    left: -80px;
+  }
+}
+
+@keyframes driveRight {
+  0% {
+    left: -80px;
+  }
+  100% {
+    left: var(--map-width, 100%);
+  }
+}
+
+/* Pixelated flag wave animation - broken wave effect */
+@keyframes flagWave {
+  0% {
+    transform: skewX(0deg) scaleX(1);
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%, 4px 50%);
+  }
+  25% {
+    transform: skewX(-2deg) scaleX(0.98);
+    clip-path: polygon(0 2px, calc(100% - 10px) 0, 100% 45%, calc(100% - 6px) 100%, 0 calc(100% - 2px), 6px 50%);
+  }
+  50% {
+    transform: skewX(0deg) scaleX(1);
+    clip-path: polygon(0 0, calc(100% - 6px) 2px, 100% 55%, calc(100% - 10px) calc(100% - 2px), 0 100%, 4px 45%);
+  }
+  75% {
+    transform: skewX(2deg) scaleX(0.98);
+    clip-path: polygon(0 2px, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 calc(100% - 2px), 4px 55%);
+  }
+  100% {
+    transform: skewX(0deg) scaleX(1);
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%, 4px 50%);
+  }
+}
+
 /* Cloud animations for kids background */
 @keyframes cloud-drift {
   0% {
