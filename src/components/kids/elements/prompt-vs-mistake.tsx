@@ -120,8 +120,8 @@ export function PromptVsMistake({
         </div>
       </div>
 
-      {/* Choice cards - side by side for compact layout */}
-      <div className="grid grid-cols-2 gap-2">
+      {/* Choice cards - stacked on mobile, side by side on larger screens */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
         {options.map(({ type, text }, index) => {
           const isGood = type === "good";
           

@@ -176,24 +176,84 @@ export function LevelContentWrapper({ children, levelSlug, levelNumber }: LevelC
 
       {/* Navigation footer - pixel art style */}
       <div className="shrink-0 bg-[#2C1810] border-t-4 border-[#8B4513]">
-        <div className="max-w-2xl mx-auto py-3 px-4 flex items-center justify-between">
-          {/* Back button */}
-          <button
-            onClick={goToPrev}
-            disabled={isFirstSection}
-            className={cn(
-              "pixel-btn px-6 py-3 text-xl",
-              isFirstSection && "opacity-0 pointer-events-none"
-            )}
-          >
-            <span className="flex items-center gap-1">
-              <PixelArrowLeft />
-              {t("navigation.back")}
-            </span>
-          </button>
+        <div className="max-w-2xl mx-auto py-3 px-4 flex flex-col gap-3 sm:gap-0">
+          {/* Buttons row */}
+          <div className="flex items-center justify-between">
+            {/* Back button */}
+            <button
+              onClick={goToPrev}
+              disabled={isFirstSection}
+              className={cn(
+                "pixel-btn px-4 py-2 sm:px-6 sm:py-3 text-base sm:text-xl",
+                isFirstSection && "opacity-0 pointer-events-none"
+              )}
+            >
+              <span className="flex items-center gap-1">
+                <PixelArrowLeft />
+                {t("navigation.back")}
+              </span>
+            </button>
 
-          {/* Progress indicators - pixel style */}
-          <div className="flex items-center gap-2">
+            {/* Progress indicators - visible only on desktop, centered */}
+            <div className="hidden sm:flex items-center gap-2">
+              {Array.from({ length: totalSections }).map((_, i) => {
+                const canNavigate = canNavigateToSection(i);
+                const isVisited = i <= highestVisitedSection;
+                const isCurrent = i === currentSection;
+                return (
+                  <button
+                    key={i}
+                    onClick={() => handleDotClick(i)}
+                    disabled={!canNavigate}
+                    className={cn(
+                      "w-4 h-4 border-2 transition-all",
+                      isCurrent
+                        ? "bg-[#22C55E] border-[#16A34A]"
+                        : isVisited && i < currentSection
+                        ? "bg-[#3B82F6] border-[#2563EB]"
+                        : "bg-[#2C1810] border-[#4A3728] opacity-50 cursor-not-allowed"
+                    )}
+                    style={{ clipPath: "polygon(2px 0, calc(100% - 2px) 0, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0 calc(100% - 2px), 0 2px)" }}
+                    aria-label={`Go to section ${i + 1}${!canNavigate ? ' (locked)' : ''}`}
+                  />
+                );
+              })}
+            </div>
+
+            {/* Next button or Map link */}
+            {!isLastSection ? (
+              <button
+                onClick={goToNext}
+                disabled={!isCurrentSectionComplete}
+                className={cn(
+                  "pixel-btn px-4 py-2 sm:px-6 sm:py-3 text-base sm:text-xl",
+                  isCurrentSectionComplete 
+                    ? "pixel-btn-green" 
+                    : "opacity-50 cursor-not-allowed bg-[#4A3728] border-[#8B4513]"
+                )}
+                title={!isCurrentSectionComplete ? t("navigation.completeFirst") : undefined}
+              >
+                <span className="flex items-center gap-1">
+                  {!isCurrentSectionComplete && <PixelLockIcon />}
+                  {t("navigation.next")}
+                  <PixelArrowRight />
+                </span>
+              </button>
+            ) : (
+              <Link
+                href="/kids/map"
+                className="pixel-btn pixel-btn-amber px-4 py-2 sm:px-6 sm:py-3 text-base sm:text-xl"
+              >
+                <span className="flex items-center gap-1">
+                  <PixelMapIcon />
+                  {t("level.map")}
+                </span>
+              </Link>
+            )}
+          </div>
+
+          {/* Progress indicators - mobile only, below buttons */}
+          <div className="flex sm:hidden items-center justify-center gap-2">
             {Array.from({ length: totalSections }).map((_, i) => {
               const canNavigate = canNavigateToSection(i);
               const isVisited = i <= highestVisitedSection;
@@ -217,37 +277,6 @@ export function LevelContentWrapper({ children, levelSlug, levelNumber }: LevelC
               );
             })}
           </div>
-
-          {/* Next button or Map link */}
-          {!isLastSection ? (
-            <button
-              onClick={goToNext}
-              disabled={!isCurrentSectionComplete}
-              className={cn(
-                "pixel-btn px-6 py-3 text-xl",
-                isCurrentSectionComplete 
-                  ? "pixel-btn-green" 
-                  : "opacity-50 cursor-not-allowed bg-[#4A3728] border-[#8B4513]"
-              )}
-              title={!isCurrentSectionComplete ? t("navigation.completeFirst") : undefined}
-            >
-              <span className="flex items-center gap-1">
-                {!isCurrentSectionComplete && <PixelLockIcon />}
-                {t("navigation.next")}
-                <PixelArrowRight />
-              </span>
-            </button>
-          ) : (
-            <Link
-              href="/kids/map"
-              className="pixel-btn pixel-btn-amber px-6 py-3 text-xl"
-            >
-              <span className="flex items-center gap-1">
-                <PixelMapIcon />
-                {t("level.map")}
-              </span>
-            </Link>
-          )}
         </div>
       </div>
     </div>

@@ -127,24 +127,68 @@ export function KidsHomeContent() {
 
       {/* Navigation footer - pixel art style */}
       <div className="shrink-0 bg-[#2C1810] border-t-4 border-[#8B4513]">
-        <div className="container py-3 flex items-center justify-between">
-          {/* Back button */}
-          <button
-            onClick={prevStep}
-            disabled={step === 0}
-            className={cn(
-              "pixel-btn px-6 py-3 text-lg",
-              step === 0 && "opacity-0 pointer-events-none"
-            )}
-          >
-            <span className="flex items-center gap-1">
-              <PixelArrowLeft />
-              {t("navigation.back")}
-            </span>
-          </button>
+        <div className="container py-3 flex flex-col gap-3 sm:gap-0">
+          {/* Buttons row */}
+          <div className="flex items-center justify-between">
+            {/* Back button */}
+            <button
+              onClick={prevStep}
+              disabled={step === 0}
+              className={cn(
+                "pixel-btn px-4 py-2 sm:px-6 sm:py-3 text-base sm:text-lg",
+                step === 0 && "opacity-0 pointer-events-none"
+              )}
+            >
+              <span className="flex items-center gap-1">
+                <PixelArrowLeft />
+                {t("navigation.back")}
+              </span>
+            </button>
 
-          {/* Step indicators - pixel style */}
-          <div className="flex items-center gap-2">
+            {/* Step indicators - desktop only, centered */}
+            <div className="hidden sm:flex items-center gap-2">
+              {Array.from({ length: totalSteps }).map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setStep(i)}
+                  className={cn(
+                    "w-4 h-4 border-2 transition-all",
+                    i === step
+                      ? "bg-[#22C55E] border-[#16A34A]"
+                      : "bg-[#4A3728] border-[#8B4513] hover:bg-[#5D4037]"
+                  )}
+                  style={{ clipPath: "polygon(2px 0, calc(100% - 2px) 0, 100% 2px, 100% calc(100% - 2px), calc(100% - 2px) 100%, 2px 100%, 0 calc(100% - 2px), 0 2px)" }}
+                  aria-label={`Go to step ${i + 1}`}
+                />
+              ))}
+            </div>
+
+            {/* Next button */}
+            {step < totalSteps - 1 ? (
+              <button
+                onClick={nextStep}
+                className="pixel-btn pixel-btn-green px-4 py-2 sm:px-6 sm:py-3 text-base sm:text-lg"
+              >
+                <span className="flex items-center gap-1">
+                  {t("navigation.next")}
+                  <PixelArrowRight />
+                </span>
+              </button>
+            ) : (
+              <Link
+                href="/kids/map"
+                className="pixel-btn pixel-btn-green px-4 py-2 sm:px-6 sm:py-3 text-base sm:text-lg"
+              >
+                <span className="flex items-center gap-1">
+                  <PixelPlayIcon />
+                  {t("home.startButton")}
+                </span>
+              </Link>
+            )}
+          </div>
+
+          {/* Step indicators - mobile only, below buttons */}
+          <div className="flex sm:hidden items-center justify-center gap-2">
             {Array.from({ length: totalSteps }).map((_, i) => (
               <button
                 key={i}
@@ -160,29 +204,6 @@ export function KidsHomeContent() {
               />
             ))}
           </div>
-
-          {/* Next button */}
-          {step < totalSteps - 1 ? (
-            <button
-              onClick={nextStep}
-              className="pixel-btn pixel-btn-green px-6 py-3 text-lg"
-            >
-              <span className="flex items-center gap-1">
-                {t("navigation.next")}
-                <PixelArrowRight />
-              </span>
-            </button>
-          ) : (
-            <Link
-              href="/kids/map"
-              className="pixel-btn pixel-btn-green px-6 py-3 text-lg"
-            >
-              <span className="flex items-center gap-1">
-                <PixelPlayIcon />
-                {t("home.startButton")}
-              </span>
-            </Link>
-          )}
         </div>
       </div>
     </div>
