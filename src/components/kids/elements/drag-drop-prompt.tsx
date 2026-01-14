@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useId } from "react";
+import { useState, useEffect, useId, useRef, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { ChevronUp, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -45,7 +45,13 @@ export function DragDropPrompt({
   const [submitted, setSubmitted] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
-  const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
+  const [dragOffset, setDragOffset] = useState(0); // Y offset for dragged item
+  const [targetIndex, setTargetIndex] = useState<number | null>(null); // Where item will drop
+  const dragStateRef = useRef<{ startY: number; draggedIndex: number } | null>(null);
+  const targetIndexRef = useRef<number | null>(null); // Ref to access current target in event handlers
+  const containerRef = useRef<HTMLDivElement>(null);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const itemHeight = useRef(0);
 
   // Load saved state on mount
   useEffect(() => {
@@ -91,6 +97,89 @@ export function DragDropPrompt({
     });
   }, [levelSlug, componentId, currentOrder, submitted, shuffledPieces, isLoaded]);
 
+  // Shared drag move handler for both touch and mouse
+  const handleDragMove = useCallback((currentY: number) => {
+    const state = dragStateRef.current;
+    if (!state) return;
+    
+    const deltaY = currentY - state.startY;
+    
+    // Update drag offset for visual feedback
+    setDragOffset(deltaY);
+    
+    // Calculate target position based on how far we've dragged
+    const positionShift = Math.round(deltaY / itemHeight.current);
+    const newTargetIndex = Math.max(0, Math.min(pieces.length - 1, state.draggedIndex + positionShift));
+    setTargetIndex(newTargetIndex);
+    targetIndexRef.current = newTargetIndex; // Keep ref in sync
+  }, [pieces.length]);
+
+  // Event listeners for drag movement (touch and mouse)
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container || submitted || !isLoaded) return;
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (!dragStateRef.current) return;
+      e.preventDefault();
+      handleDragMove(e.touches[0].clientY);
+    };
+
+    const onMouseMove = (e: MouseEvent) => {
+      if (!dragStateRef.current) return;
+      e.preventDefault();
+      handleDragMove(e.clientY);
+    };
+
+    container.addEventListener('touchmove', onTouchMove, { passive: false });
+    document.addEventListener('mousemove', onMouseMove);
+    
+    return () => {
+      container.removeEventListener('touchmove', onTouchMove);
+      document.removeEventListener('mousemove', onMouseMove);
+    };
+  }, [submitted, isLoaded, handleDragMove]);
+
+  // Unified drag start handler for both touch and mouse
+  const handlePointerStart = useCallback((position: number, clientY: number, element: HTMLDivElement | null) => {
+    if (submitted || !element) return;
+    const rect = element.getBoundingClientRect();
+    itemHeight.current = rect.height + 8; // height + gap
+    setDraggedIndex(position);
+    setTargetIndex(position);
+    setDragOffset(0);
+    dragStateRef.current = { startY: clientY, draggedIndex: position };
+    targetIndexRef.current = position; // Initialize target ref
+  }, [submitted]);
+
+  // Listen for mouseup anywhere to end drag
+  useEffect(() => {
+    const onMouseUp = () => {
+      const state = dragStateRef.current;
+      const target = targetIndexRef.current;
+      if (!state) return;
+      
+      // Apply the reorder if target changed
+      if (target !== null && state.draggedIndex !== target) {
+        setCurrentOrder(prev => {
+          const newOrder = [...prev];
+          const [draggedItem] = newOrder.splice(state.draggedIndex, 1);
+          newOrder.splice(target, 0, draggedItem);
+          return newOrder;
+        });
+      }
+      
+      setDraggedIndex(null);
+      setTargetIndex(null);
+      setDragOffset(0);
+      dragStateRef.current = null;
+      targetIndexRef.current = null;
+    };
+    
+    document.addEventListener('mouseup', onMouseUp);
+    return () => document.removeEventListener('mouseup', onMouseUp);
+  }, []);
+
   // Don't render until loaded to prevent hydration mismatch
   if (!isLoaded) return null;
 
@@ -114,40 +203,21 @@ export function DragDropPrompt({
     setCurrentOrder(newOrder);
   };
 
-  // Drag handlers
-  const handleDragStart = (position: number) => {
-    if (submitted) return;
-    setDraggedIndex(position);
-  };
-
-  const handleDragOver = (e: React.DragEvent, position: number) => {
-    e.preventDefault();
-    if (submitted || draggedIndex === null) return;
-    setDragOverIndex(position);
-  };
-
-  const handleDragLeave = () => {
-    setDragOverIndex(null);
-  };
-
-  const handleDrop = (position: number) => {
-    if (submitted || draggedIndex === null || draggedIndex === position) {
-      setDraggedIndex(null);
-      setDragOverIndex(null);
-      return;
+  // Unified drag end handler (for touch)
+  const handlePointerEnd = () => {
+    // Apply the reorder if target changed
+    if (draggedIndex !== null && targetIndex !== null && draggedIndex !== targetIndex) {
+      setCurrentOrder(prev => {
+        const newOrder = [...prev];
+        const [draggedItem] = newOrder.splice(draggedIndex, 1);
+        newOrder.splice(targetIndex, 0, draggedItem);
+        return newOrder;
+      });
     }
-    
-    const newOrder = [...currentOrder];
-    const [draggedItem] = newOrder.splice(draggedIndex, 1);
-    newOrder.splice(position, 0, draggedItem);
-    setCurrentOrder(newOrder);
     setDraggedIndex(null);
-    setDragOverIndex(null);
-  };
-
-  const handleDragEnd = () => {
-    setDraggedIndex(null);
-    setDragOverIndex(null);
+    setTargetIndex(null);
+    setDragOffset(0);
+    dragStateRef.current = null;
   };
 
   const handleSubmit = () => {
@@ -176,31 +246,52 @@ export function DragDropPrompt({
       <p className="text-lg text-[#8B7355] mb-4 m-0">{displayInstruction}</p>
 
       {/* Pieces with up/down arrow controls */}
-      <div className="space-y-2 mb-4">
+      <div ref={containerRef} className="space-y-2 mb-4">
         {currentOrder.map((pieceIndex, position) => {
           const isCorrectPiece = submitted && pieceIndex === correctOrder[position];
           const isWrongPiece = submitted && pieceIndex !== correctOrder[position];
           const isDragging = draggedIndex === position;
-          const isDragOver = dragOverIndex === position && draggedIndex !== position;
+          
+          // Calculate transform for visual drag feedback
+          let transform = '';
+          if (draggedIndex !== null && targetIndex !== null) {
+            if (isDragging) {
+              // Dragged item follows the finger
+              transform = `translateY(${dragOffset}px) scale(1.02)`;
+            } else if (draggedIndex < targetIndex) {
+              // Items between original and target shift up
+              if (position > draggedIndex && position <= targetIndex) {
+                transform = `translateY(-${itemHeight.current}px)`;
+              }
+            } else if (draggedIndex > targetIndex) {
+              // Items between target and original shift down
+              if (position >= targetIndex && position < draggedIndex) {
+                transform = `translateY(${itemHeight.current}px)`;
+              }
+            }
+          }
           
           return (
             <div
               key={`${pieceIndex}-${position}`}
-              draggable={!submitted}
-              onDragStart={() => handleDragStart(position)}
-              onDragOver={(e) => handleDragOver(e, position)}
-              onDragLeave={handleDragLeave}
-              onDrop={() => handleDrop(position)}
-              onDragEnd={handleDragEnd}
+              onMouseDown={(e) => {
+                e.preventDefault();
+                handlePointerStart(position, e.clientY, e.currentTarget as HTMLDivElement);
+              }}
+              onTouchStart={(e) => handlePointerStart(position, e.touches[0].clientY, e.currentTarget as HTMLDivElement)}
+              onTouchEnd={handlePointerEnd}
               className={cn(
-                "flex items-center gap-2 p-2 border-2 transition-all",
-                !submitted && "bg-white border-[#D97706] hover:bg-[#FEF3C7] cursor-grab active:cursor-grabbing",
-                isDragging && "opacity-50 scale-95",
-                isDragOver && "border-[#3B82F6] border-dashed bg-[#DBEAFE]",
+                "flex items-center gap-2 p-2 border-2 select-none",
+                !submitted && "bg-white border-[#D97706] hover:bg-[#FEF3C7] cursor-grab active:cursor-grabbing touch-none",
+                isDragging && "z-10 shadow-lg border-[#3B82F6] bg-[#EFF6FF]",
+                !isDragging && draggedIndex !== null && "transition-transform duration-150",
                 isCorrectPiece && "bg-[#DCFCE7] border-[#16A34A]",
                 isWrongPiece && "bg-[#FEE2E2] border-[#DC2626]"
               )}
-              style={{ clipPath: "polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px)" }}
+              style={{ 
+                clipPath: "polygon(4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px), 0 4px)",
+                transform: transform || undefined,
+              }}
             >
               {/* Position number */}
               <span className="w-8 h-8 flex items-center justify-center bg-[#D97706] text-white font-bold rounded-md text-lg shrink-0">

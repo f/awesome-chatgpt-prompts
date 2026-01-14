@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
+import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { clearAllProgress, getTotalStars, getCompletedLevelsCount } from "@/lib/kids/progress";
 import { setLocale } from "@/lib/i18n/client";
@@ -52,6 +53,7 @@ export function SettingsButton() {
 function SettingsModal({ onClose }: { onClose: () => void }) {
   const t = useTranslations("kids.settings");
   const currentLocale = useLocale();
+  const router = useRouter();
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [resetComplete, setResetComplete] = useState(false);
 
@@ -77,9 +79,10 @@ function SettingsModal({ onClose }: { onClose: () => void }) {
     setResetComplete(true);
     setShowResetConfirm(false);
     
-    // Reload to reflect changes
+    // Navigate to world map
     setTimeout(() => {
-      window.location.reload();
+      onClose();
+      router.push("/kids/map");
     }, 1000);
   };
 

@@ -100,6 +100,10 @@ export function PromptVsMistake({
     text: type === "good" ? good : bad,
   }));
 
+  // Pixel clip-path for consistent styling (stepped corners like pixel-panel)
+  const pixelClipPath = "polygon(0 8px, 8px 8px, 8px 0, calc(100% - 8px) 0, calc(100% - 8px) 8px, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 8px calc(100% - 8px), 0 calc(100% - 8px))";
+  const smallPixelClipPath = "polygon(0 4px, 4px 4px, 4px 0, calc(100% - 4px) 0, calc(100% - 4px) 4px, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 4px calc(100% - 4px), 0 calc(100% - 4px))";
+
   return (
     <div className="my-2">
       {/* Question card with Promi */}
@@ -109,7 +113,10 @@ export function PromptVsMistake({
         </div>
         <div className="flex-1 relative">
           {/* Speech bubble */}
-          <div className="bg-white rounded-lg p-2 shadow-md border-2 border-[#8B4513] relative ml-2">
+          <div 
+            className="bg-white p-2 shadow-md border-2 border-[#8B4513] relative ml-2"
+            style={{ clipPath: pixelClipPath }}
+          >
             {/* Arrow pointing left */}
             <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-r-[8px] border-r-[#8B4513] border-b-[6px] border-b-transparent" />
             <div className="absolute -left-1 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[5px] border-t-transparent border-r-[6px] border-r-white border-b-[5px] border-b-transparent" />
@@ -131,30 +138,37 @@ export function PromptVsMistake({
               onClick={() => handleSelect(type)}
               disabled={showResult}
               className={cn(
-                "w-full h-full text-left transition-all duration-300 rounded-lg overflow-hidden",
+                "w-full h-full text-left transition-all duration-300 overflow-hidden",
                 !showResult && "hover:scale-[1.01] hover:shadow-lg cursor-pointer",
                 showResult && "scale-100"
               )}
+              style={{ clipPath: pixelClipPath }}
             >
               <div className={cn(
-                "p-0.5 rounded-md transition-colors h-full",
+                "p-0.5 transition-colors h-full",
                 !showResult && "bg-gradient-to-br from-[#FFB347] to-[#FF8C00]",
                 showResult && isGood && "bg-gradient-to-br from-[#4ADE80] to-[#16A34A]",
                 showResult && !isGood && "bg-gradient-to-br from-[#FB7185] to-[#E11D48]"
               )}>
-                <div className={cn(
-                  "bg-white rounded-md p-2 transition-colors h-full flex flex-col",
-                  showResult && isGood && "bg-[#F0FDF4]",
-                  showResult && !isGood && "bg-[#FFF1F2]"
-                )}>
+                <div 
+                  className={cn(
+                    "bg-white p-2 transition-colors h-full flex flex-col",
+                    showResult && isGood && "bg-[#F0FDF4]",
+                    showResult && !isGood && "bg-[#FFF1F2]"
+                  )}
+                  style={{ clipPath: smallPixelClipPath }}
+                >
                   {/* Option label */}
                   <div className="flex items-center gap-1 mb-1">
-                    <span className={cn(
-                      "w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold text-white",
-                      !showResult && "bg-[#F59E0B]",
-                      showResult && isGood && "bg-[#22C55E]",
-                      showResult && !isGood && "bg-[#EF4444]"
-                    )}>
+                    <span 
+                      className={cn(
+                        "w-6 h-6 flex items-center justify-center text-sm font-bold text-white",
+                        !showResult && "bg-[#F59E0B]",
+                        showResult && isGood && "bg-[#22C55E]",
+                        showResult && !isGood && "bg-[#EF4444]"
+                      )}
+                      style={{ clipPath: smallPixelClipPath }}
+                    >
                       {showResult ? (isGood ? <PixelCheckIcon /> : <PixelXIcon />) : (index === 0 ? "A" : "B")}
                     </span>
                     {showResult && (
@@ -168,7 +182,10 @@ export function PromptVsMistake({
                   </div>
                   
                   {/* Prompt text */}
-                  <div className="bg-[#FEF3C7] rounded p-1.5 border border-[#F59E0B]/30 flex-1 flex items-center">
+                  <div 
+                    className="bg-[#FEF3C7] p-1.5 border border-[#F59E0B]/30 flex-1 flex items-center"
+                    style={{ clipPath: smallPixelClipPath }}
+                  >
                     <p className="text-sm text-[#2C1810] m-0 whitespace-pre-wrap leading-tight">
                       "{text}"
                     </p>
@@ -182,12 +199,15 @@ export function PromptVsMistake({
 
       {/* Result feedback */}
       {showResult && (
-        <div className={cn(
-          "mt-3 rounded-lg p-3 text-center animate-in fade-in zoom-in-95 duration-300",
-          isCorrect 
-            ? "bg-gradient-to-br from-[#BBF7D0] to-[#86EFAC] border-2 border-[#22C55E]"
-            : "bg-gradient-to-br from-[#FEF08A] to-[#FDE047] border-2 border-[#F59E0B]"
-        )}>
+        <div 
+          className={cn(
+            "mt-3 p-3 text-center animate-in fade-in zoom-in-95 duration-300",
+            isCorrect 
+              ? "bg-gradient-to-br from-[#BBF7D0] to-[#86EFAC] border-2 border-[#22C55E]"
+              : "bg-gradient-to-br from-[#FEF08A] to-[#FDE047] border-2 border-[#F59E0B]"
+          )}
+          style={{ clipPath: pixelClipPath }}
+        >
           <p className="text-base font-bold text-[#2C1810] m-0">
             {isCorrect ? (
               <><PixelStar filled className="w-4 h-4 inline" /> {t("correct")} <PixelStar filled className="w-4 h-4 inline" /></>
@@ -197,14 +217,18 @@ export function PromptVsMistake({
             <p className="text-sm text-[#5D4037] m-0 mt-2">{explanation}</p>
           )}
           {promiMessage && (
-            <div className="flex items-center justify-center gap-2 mt-3 bg-white/60 rounded-md p-2">
+            <div 
+              className="flex items-center justify-center gap-2 mt-3 bg-white/60 p-2"
+              style={{ clipPath: smallPixelClipPath }}
+            >
               <PixelRobot className="w-6 h-7 shrink-0" />
               <p className="text-sm text-[#5D4037] m-0">{promiMessage}</p>
             </div>
           )}
           <button 
             onClick={handleReset} 
-            className="mt-3 inline-flex items-center gap-1 px-4 py-2 bg-[#8B4513] hover:bg-[#A0522D] text-white text-sm font-bold rounded-md transition-colors"
+            className="mt-3 inline-flex items-center gap-1 px-4 py-2 bg-[#8B4513] hover:bg-[#A0522D] text-white text-sm font-bold transition-colors"
+            style={{ clipPath: smallPixelClipPath }}
           >
             <PixelRefreshIcon />
             {t("tryAgain")}
