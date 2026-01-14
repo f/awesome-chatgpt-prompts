@@ -1445,6 +1445,6 @@
     "stepByStep": { "title": "단계별로 생각하기", "problem": "문제:", "withoutMagic": "마법의 단어 없이:", "addMagicWords": "마법의 단어를 추가하세요!", "magicWordsActive": "마법의 단어가 추가됐어요!", "nextStep": "다음 단계 보기", "withMagic": "단계별 사고로:", "retry": "다시 시도" },
     "promptLab": { "title": "프롬프트 연구소", "progress": "개선", "yourPrompt": "당신의 프롬프트:", "aiSays": "AI 응답:", "addDetails": "개선 추가:", "success": "프롬프트가 아주 구체적이 됐어요!", "retry": "처음부터" },
     "wordPredictor": { "title": "AI가 생각하는 방법", "instruction": "AI는 가장 가능성 높은 다음 단어를 추측해요. AI처럼 생각할 수 있나요?", "aiThinks": "AI가 읽고 있어요:", "thinkingDefault": "음, 어떤 단어가 여기에 가장 맞을까?", "check": "내 답 확인!", "correct": "AI처럼 생각하고 있어요!", "tryAgain": "아니에요! AI는 가장 가능성 높은 단어를 선택해요.", "retry": "다시 시도" },
-    "settings": { "title": "설정", "language": "언어", "progress": "진행 상황", "stars": "별", "completed": "완료", "resetTitle": "진행 상황 초기화", "resetButton": "모두 초기화", "resetWarning": "모든 별과 진행 상황이 삭제됩니다. 확실한가요?", "resetConfirm": "네, 모두 초기화", "resetComplete": "진행 상황 초기화됨! 새로고침 중...", "cancel": "취소" }
+    "settings": { "title": "설정", "music": "음악", "language": "언어", "progress": "진행 상황", "stars": "별", "completed": "완료", "resetTitle": "진행 상황 초기화", "resetButton": "모두 초기화", "resetWarning": "모든 별과 진행 상황이 삭제됩니다. 확실한가요?", "resetConfirm": "네, 모두 초기화", "resetComplete": "진행 상황 초기화됨! 새로고침 중...", "cancel": "취소" }
   }
 }

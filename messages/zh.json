@@ -1445,6 +1445,6 @@
     "stepByStep": { "title": "逐步思考", "problem": "问题：", "withoutMagic": "没有魔法词语：", "addMagicWords": "添加魔法词语！", "magicWordsActive": "魔法词语已添加！", "nextStep": "显示下一步", "withMagic": "逐步思考：", "retry": "再试一次" },
     "promptLab": { "title": "提示词实验室", "progress": "改进", "yourPrompt": "你的提示词：", "aiSays": "AI回应：", "addDetails": "添加改进：", "success": "你的提示词现在非常具体！", "retry": "重新开始" },
     "wordPredictor": { "title": "AI如何思考", "instruction": "AI猜测最可能的下一个词。你能像AI一样思考吗？", "aiThinks": "AI正在阅读：", "thinkingDefault": "嗯，哪个词在这里最有意义？", "check": "检查我的答案！", "correct": "你像AI一样思考！", "tryAgain": "不太对！AI选择最可能的词。", "retry": "再试一次" },
-    "settings": { "title": "设置", "language": "语言", "progress": "你的进度", "stars": "星星", "completed": "已完成", "resetTitle": "重置进度", "resetButton": "重置全部", "resetWarning": "这将删除所有星星和进度。确定吗？", "resetConfirm": "是的，重置全部", "resetComplete": "进度已重置！正在重新加载...", "cancel": "取消" }
+    "settings": { "title": "设置", "music": "音乐", "language": "语言", "progress": "你的进度", "stars": "星星", "completed": "已完成", "resetTitle": "重置进度", "resetButton": "重置全部", "resetWarning": "这将删除所有星星和进度。确定吗？", "resetConfirm": "是的，重置全部", "resetComplete": "进度已重置！正在重新加载...", "cancel": "取消" }
   }
 }

@@ -6,7 +6,8 @@ import { cn } from "@/lib/utils";
 import { clearAllProgress, getTotalStars, getCompletedLevelsCount } from "@/lib/kids/progress";
 import { setLocale } from "@/lib/i18n/client";
 import { analyticsKids } from "@/lib/analytics";
-import { Settings, X, Globe, Trash2, Check } from "lucide-react";
+import { Settings, X, Globe, Trash2, Check, Volume2 } from "lucide-react";
+import { MusicVolumeSlider } from "./background-music";
 
 const SUPPORTED_LOCALES = [
   { code: "en", label: "English", flag: "🇺🇸" },
@@ -91,7 +92,7 @@ function SettingsModal({ onClose }: { onClose: () => void }) {
       />
       
       {/* Modal */}
-      <div className="relative bg-[#FEF3C7] border-4 border-[#8B4513] rounded-xl p-6 w-full max-w-md animate-in zoom-in-95 fade-in duration-200">
+      <div className="relative bg-[#FEF3C7] border-4 border-[#8B4513] rounded-xl p-6 w-full max-w-md max-h-[90vh] overflow-y-auto animate-in zoom-in-95 fade-in duration-200">
         {/* Close button */}
         <button
           onClick={onClose}
@@ -105,6 +106,35 @@ function SettingsModal({ onClose }: { onClose: () => void }) {
           <Settings className="w-6 h-6" />
           {t("title")}
         </h2>
+
+        {/* Music Section */}
+        <div className="mb-6">
+          <h3 className="text-lg font-bold text-[#5D4037] mb-3 flex items-center gap-2">
+            <Volume2 className="w-5 h-5" />
+            {t("music")}
+          </h3>
+          <MusicVolumeSlider />
+          <p className="mt-3 text-xs text-[#8B7355]">
+            Music by{" "}
+            <a 
+              href="https://pixabay.com/users/djartmusic-46653586/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=301272"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-[#8B4513]"
+            >
+              Krzysztof Szymanski
+            </a>{" "}
+            from{" "}
+            <a 
+              href="https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=301272"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-[#8B4513]"
+            >
+              Pixabay
+            </a>
+          </p>
+        </div>
 
         {/* Language Section */}
         <div className="mb-6">

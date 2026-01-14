@@ -1,7 +1,7 @@
 import { Schoolbell } from "next/font/google";
 import { getLocale } from "next-intl/server";
 import { KidsHeader } from "@/components/kids/layout/kids-header";
-import { BackgroundMusic } from "@/components/kids/layout/background-music";
+import { MusicProvider } from "@/components/kids/layout/background-music";
 import { LevelProvider } from "@/components/kids/providers/level-context";
 
 const RTL_LOCALES = ["ar", "he", "fa"];
@@ -40,6 +40,7 @@ export default async function KidsLayout({
 
   return (
     <LevelProvider>
+    <MusicProvider>
     <div 
       className={`fixed inset-0 flex flex-col text-xl light ${kidsFont.className}`} 
       data-theme="light" 
@@ -86,8 +87,8 @@ export default async function KidsLayout({
       <main className="flex-1 min-h-0 overflow-hidden">
         {children}
       </main>
-      <BackgroundMusic />
     </div>
+    </MusicProvider>
     </LevelProvider>
   );
 }

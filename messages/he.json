@@ -1445,6 +1445,6 @@
     "stepByStep": { "title": "חשוב צעד אחר צעד", "problem": "הבעיה:", "withoutMagic": "בלי מילות קסם:", "addMagicWords": "הוסף את מילות הקסם!", "magicWordsActive": "מילות הקסם נוספו!", "nextStep": "גלה את הצעד הבא", "withMagic": "עם חשיבה צעד אחר צעד:", "retry": "נסה שוב" },
     "promptLab": { "title": "מעבדת פרומפטים", "progress": "שיפורים", "yourPrompt": "הפרומפט שלך:", "aiSays": "תשובת AI:", "addDetails": "הוסף שיפורים:", "success": "הפרומפט שלך עכשיו ספציפי מאוד!", "retry": "התחל מחדש" },
     "wordPredictor": { "title": "איך AI חושב", "instruction": "AI מנחש את המילה הסבירה ביותר. אתה יכול לחשוב כמו AI?", "aiThinks": "AI קורא:", "thinkingDefault": "הממ, איזו מילה תהיה הגיונית כאן?", "check": "בדוק את התשובה שלי!", "correct": "אתה חושב כמו AI!", "tryAgain": "לא בדיוק! AI בוחר את המילה הסבירה ביותר.", "retry": "נסה שוב" },
-    "settings": { "title": "הגדרות", "language": "שפה", "progress": "ההתקדמות שלך", "stars": "כוכבים", "completed": "הושלם", "resetTitle": "אפס התקדמות", "resetButton": "אפס הכל", "resetWarning": "זה ימחק את כל הכוכבים וההתקדמות. בטוח?", "resetConfirm": "כן, אפס הכל", "resetComplete": "התקדמות אופסה! טוען מחדש...", "cancel": "ביטול" }
+    "settings": { "title": "הגדרות", "music": "מוזיקה", "language": "שפה", "progress": "ההתקדמות שלך", "stars": "כוכבים", "completed": "הושלם", "resetTitle": "אפס התקדמות", "resetButton": "אפס הכל", "resetWarning": "זה ימחק את כל הכוכבים וההתקדמות. בטוח?", "resetConfirm": "כן, אפס הכל", "resetComplete": "התקדמות אופסה! טוען מחדש...", "cancel": "ביטול" }
   }
 }

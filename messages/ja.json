@@ -1445,6 +1445,6 @@
     "stepByStep": { "title": "ステップバイステップで考えよう", "problem": "問題：", "withoutMagic": "魔法の言葉なし：", "addMagicWords": "魔法の言葉を追加！", "magicWordsActive": "魔法の言葉を追加した！", "nextStep": "次のステップを見る", "withMagic": "ステップバイステップ思考で：", "retry": "もう一度" },
     "promptLab": { "title": "プロンプトラボ", "progress": "改善", "yourPrompt": "あなたのプロンプト：", "aiSays": "AIの応答：", "addDetails": "改善を追加：", "success": "プロンプトがとても具体的になった！", "retry": "最初から" },
     "wordPredictor": { "title": "AIの考え方", "instruction": "AIは最も可能性の高い次の単語を推測する。AIのように考えられる？", "aiThinks": "AIが読んでいる：", "thinkingDefault": "うーん、ここでどの単語が一番意味がある？", "check": "答えをチェック！", "correct": "AIのように考えてる！", "tryAgain": "違う！AIは最も可能性の高い単語を選ぶ。", "retry": "もう一度" },
-    "settings": { "title": "設定", "language": "言語", "progress": "あなたの進捗", "stars": "スター", "completed": "完了", "resetTitle": "進捗をリセット", "resetButton": "すべてリセット", "resetWarning": "すべてのスターと進捗が削除されます。よろしいですか？", "resetConfirm": "はい、すべてリセット", "resetComplete": "進捗をリセットしました！再読み込み中...", "cancel": "キャンセル" }
+    "settings": { "title": "設定", "music": "音楽", "language": "言語", "progress": "あなたの進捗", "stars": "スター", "completed": "完了", "resetTitle": "進捗をリセット", "resetButton": "すべてリセット", "resetWarning": "すべてのスターと進捗が削除されます。よろしいですか？", "resetConfirm": "はい、すべてリセット", "resetComplete": "進捗をリセットしました！再読み込み中...", "cancel": "キャンセル" }
   }
 }
