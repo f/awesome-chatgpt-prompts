@@ -58,9 +58,9 @@ export async function GET(
     zip.file(file.filename, file.content);
   }
 
-  // Generate the zip content
+  // Generate the zip content as Uint8Array for NextResponse compatibility
   const zipContent = await zip.generateAsync({ 
-    type: "nodebuffer",
+    type: "uint8array",
     compression: "DEFLATE",
     compressionOptions: { level: 9 },
   });
@@ -69,7 +69,7 @@ export async function GET(
   const slug = prompt.slug || prompt.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
   const filename = `${slug}.skill`;
 
-  return new NextResponse(zipContent, {
+  return new Response(zipContent, {
     headers: {
       "Content-Type": "application/zip",
       "Content-Disposition": `attachment; filename="${filename}"`,
