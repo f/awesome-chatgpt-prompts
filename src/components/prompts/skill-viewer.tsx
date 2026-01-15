@@ -285,7 +285,7 @@ export function SkillViewer({ content, className, promptId, promptSlug }: SkillV
         className={cn(
           "w-full md:w-56 border-r bg-background flex flex-col shrink-0 md:relative",
           // Mobile: absolute positioning with slide-in animation and full height
-          "absolute md:static z-50 transition-transform duration-300 ease-in-out",
+          "absolute md:static z-40 transition-transform duration-300 ease-in-out",
           "h-full",
           sidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
         )}
