@@ -291,15 +291,16 @@ export function SkillViewer({ content, className, promptId, promptSlug }: SkillV
       {/* Sidebar - File Tree */}
       <div 
         className={cn(
-          "w-full md:w-56 border-r bg-muted/30 flex flex-col shrink-0 md:relative",
-          // Mobile: absolute positioning with slide-in animation
+          "w-full md:w-56 border-r bg-background flex flex-col shrink-0 md:relative",
+          // Mobile: absolute positioning with slide-in animation and full height
           "absolute md:static z-50 transition-transform duration-300 ease-in-out",
+          "h-full",
           sidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
         )}
         aria-hidden={!sidebarOpen ? "true" : "false"}
       >
         {/* Sidebar Header */}
-        <div className="flex items-center gap-2 px-3 py-2 border-b bg-muted/50">
+        <div className="flex items-center gap-2 px-3 py-2 border-b bg-muted">
           <FolderOpen className="h-4 w-4 text-primary" />
           <span className="text-sm font-medium">{t("skillFiles")}</span>
           {/* Close button for mobile */}
@@ -331,7 +332,7 @@ export function SkillViewer({ content, className, promptId, promptSlug }: SkillV
         </div>
 
         {/* Sidebar Footer - File Count */}
-        <div className="px-3 py-2 border-t bg-muted/50 text-xs text-muted-foreground flex items-center justify-between">
+        <div className="px-3 py-2 border-t bg-muted text-xs text-muted-foreground flex items-center justify-between">
           <span>{files.length} {files.length === 1 ? t("file") : t("files")}</span>
           {promptId && (
             <Button
@@ -351,7 +352,7 @@ export function SkillViewer({ content, className, promptId, promptSlug }: SkillV
       {/* Main Editor Area */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Tab/File Header */}
-        <div className="flex items-center justify-between border-b bg-muted/30 px-3 py-1.5">
+        <div className="flex items-center justify-between border-b bg-muted px-3 py-1.5">
           <div className="flex items-center gap-2 min-w-0">
             {/* Menu button for mobile */}
             <Button
