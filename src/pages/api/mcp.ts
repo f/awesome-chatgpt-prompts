@@ -933,6 +933,96 @@ function createServer(options: ServerOptions = {}) {
     }
   );
 
+  // Update file in skill tool
+  server.registerTool(
+    "update_skill_file",
+    {
+      title: "Update Skill File",
+      description:
+        "Update an existing file in an Agent Skill. Use this to modify reference docs, scripts, configuration files, or SKILL.md content.",
+      inputSchema: {
+        skillId: z.string().describe("The ID of the skill containing the file"),
+        filename: z.string().describe("File path to update (e.g., 'SKILL.md', 'reference.md', 'scripts/helper.py')"),
+        content: z.string().describe("New file content"),
+      },
+    },
+    async ({ skillId, filename, content }) => {
+      if (!authenticatedUser) {
+        return {
+          content: [{ type: "text" as const, text: JSON.stringify({ error: "Authentication required. Please provide an API key." }) }],
+          isError: true,
+        };
+      }
+
+      try {
+        // Fetch the skill
+        const skill = await db.prompt.findFirst({
+          where: {
+            id: skillId,
+            type: "SKILL",
+            authorId: authenticatedUser.id,
+            deletedAt: null,
+          },
+          select: { id: true, content: true, title: true, slug: true },
+        });
+
+        if (!skill) {
+          return {
+            content: [{ type: "text" as const, text: JSON.stringify({ error: "Skill not found or you don't have permission to edit it" }) }],
+            isError: true,
+          };
+        }
+
+        // Parse existing files
+        const files = parseSkillFiles(skill.content);
+
+        // Find the file to update
+        const fileIndex = files.findIndex(f => f.filename === filename);
+        if (fileIndex === -1) {
+          return {
+            content: [{ type: "text" as const, text: JSON.stringify({ error: `File '${filename}' not found in skill. Use add_file_to_skill to add new files.` }) }],
+            isError: true,
+          };
+        }
+
+        // Update the file content
+        files[fileIndex].content = content;
+
+        // Serialize and update
+        const updatedContent = serializeSkillFiles(files);
+        await db.prompt.update({
+          where: { id: skillId },
+          data: { content: updatedContent, updatedAt: new Date() },
+        });
+
+        return {
+          content: [
+            {
+              type: "text" as const,
+              text: JSON.stringify(
+                {
+                  success: true,
+                  message: `File '${filename}' updated in skill`,
+                  skillId,
+                  files: files.map(f => f.filename),
+                  link: `https://prompts.chat/prompts/${skill.id}_${getPromptName(skill)}`,
+                },
+                null,
+                2
+              ),
+            },
+          ],
+        };
+      } catch (error) {
+        console.error("MCP update_skill_file error:", error);
+        return {
+          content: [{ type: "text" as const, text: JSON.stringify({ error: "Failed to update file in skill" }) }],
+          isError: true,
+        };
+      }
+    }
+  );
+
   // Remove file from skill tool
   server.registerTool(
     "remove_file_from_skill",
@@ -1280,6 +1370,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         {
           name: "add_file_to_skill",
           description: "Add a file to an existing Agent Skill (requires API key authentication).",
+        },
+        {
+          name: "update_skill_file",
+          description: "Update an existing file in an Agent Skill (requires API key authentication).",
         },
         {
           name: "remove_file_from_skill",
