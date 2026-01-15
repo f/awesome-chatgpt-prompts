@@ -14,6 +14,8 @@ import {
   Check,
   Download,
   Package,
+  Menu,
+  X,
 } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
@@ -174,6 +176,7 @@ export function SkillViewer({ content, className, promptId, promptSlug }: SkillV
   const [activeFile, setActiveFile] = useState<string>(DEFAULT_SKILL_FILE);
   const [expandedFolders, setExpandedFolders] = useState<Set<string>>(new Set());
   const [copied, setCopied] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Build tree structure from files
   const fileTree = useMemo(() => buildFileTree(files), [files]);
@@ -187,6 +190,12 @@ export function SkillViewer({ content, className, promptId, promptSlug }: SkillV
     () => getLanguageFromFilename(activeFile),
     [activeFile]
   );
+
+  // Handle file opening (close sidebar on mobile)
+  const handleOpenFile = useCallback((path: string) => {
+    setActiveFile(path);
+    setSidebarOpen(false);
+  }, []);
 
   // Toggle folder expansion
   const toggleFolder = useCallback((folderPath: string) => {
@@ -254,17 +263,40 @@ export function SkillViewer({ content, className, promptId, promptSlug }: SkillV
   return (
     <div
       className={cn(
-        "flex border rounded-lg overflow-hidden bg-background",
+        "flex flex-col md:flex-row border rounded-lg overflow-hidden bg-background relative",
         className
       )}
       style={{ height: "500px" }}
     >
+      {/* Mobile overlay backdrop */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
       {/* Sidebar - File Tree */}
-      <div className="w-56 border-r bg-muted/30 flex flex-col shrink-0">
+      <div className={cn(
+        "w-full md:w-56 border-r bg-muted/30 flex flex-col shrink-0 md:relative",
+        // Mobile: absolute positioning with slide-in animation
+        "absolute md:static z-50 transition-transform duration-300 ease-in-out",
+        sidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+      )}>
         {/* Sidebar Header */}
         <div className="flex items-center gap-2 px-3 py-2 border-b bg-muted/50">
           <FolderOpen className="h-4 w-4 text-primary" />
           <span className="text-sm font-medium">{t("skillFiles")}</span>
+          {/* Close button for mobile */}
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon"
+            className="h-6 w-6 ml-auto md:hidden"
+            onClick={() => setSidebarOpen(false)}
+          >
+            <X className="h-4 w-4" />
+          </Button>
         </div>
 
         {/* File Tree */}
@@ -277,7 +309,7 @@ export function SkillViewer({ content, className, promptId, promptSlug }: SkillV
               activeFile={activeFile}
               expandedFolders={expandedFolders}
               onToggleFolder={toggleFolder}
-              onOpenFile={setActiveFile}
+              onOpenFile={handleOpenFile}
             />
           ))}
         </div>
@@ -305,6 +337,16 @@ export function SkillViewer({ content, className, promptId, promptSlug }: SkillV
         {/* Tab/File Header */}
         <div className="flex items-center justify-between border-b bg-muted/30 px-3 py-1.5">
           <div className="flex items-center gap-2 min-w-0">
+            {/* Menu button for mobile */}
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon"
+              className="h-7 w-7 md:hidden shrink-0"
+              onClick={() => setSidebarOpen(true)}
+            >
+              <Menu className="h-4 w-4" />
+            </Button>
             <File className="h-4 w-4 text-muted-foreground shrink-0" />
             <span className="text-xs font-mono truncate">{activeFile}</span>
           </div>
