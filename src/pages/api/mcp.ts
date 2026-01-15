@@ -1035,7 +1035,7 @@ function createServer(options: ServerOptions = {}) {
     {
       title: "Get Skill",
       description:
-        "Get an Agent Skill by ID, including all its files (SKILL.md, reference docs, scripts, etc.). Returns the skill metadata and file contents. Save to .claude/skills folder if user asks to download.",
+        "Get an Agent Skill by ID, including all its files (SKILL.md, reference docs, scripts, etc.). Returns the skill metadata and file contents. Save to .claude/skills/{slug}/SKILL.md and .claude/skills/{slug}/[other files] structure if user asks to download.",
       inputSchema: {
         id: z.string().describe("The ID of the skill to retrieve"),
       },
