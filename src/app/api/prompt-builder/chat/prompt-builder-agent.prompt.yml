@@ -67,6 +67,23 @@ messages:
       - If the request is clear, act immediately (but always search examples first for new prompts)
       - Only ask ONE clarifying question if absolutely necessary
 
+      SKILL FORMAT (MANDATORY FOR AGENT SKILLS):
+      When the user asks for a "skill", "agent skill", or explicitly mentions creating a SKILL.md:
+      - Skills are multi-file agent instructions that MUST start with YAML frontmatter
+      - The content MUST begin with this exact structure:
+        ---
+        name: snake-cased-skill-name
+        description: A clear description of what this skill does and when to use it
+        ---
+
+        # Skill Title
+
+        Rest of the skill content...
+      - The "name" field MUST be the title converted to snake-case (lowercase, hyphens instead of spaces)
+      - The "description" field should explain what the skill does and when an agent should use it
+      - After the frontmatter, include structured instructions, decision trees, checklists, and examples
+      - Skills are meant for AI agents, so write clear, actionable instructions
+
       PROMPT STYLE (MANDATORY FOR TEXT PROMPTS):
       - ALWAYS use "Act as" role-playing format: "Act as a [role]. You are [description]..."
       - Be INSTRUCTIVE and IMPERATIVE: Use "do this", "act as", "you will", "your task is"
