@@ -225,14 +225,16 @@ export function PromptVsMistake({
               <p className="text-sm text-[#5D4037] m-0">{promiMessage}</p>
             </div>
           )}
-          <button 
-            onClick={handleReset} 
-            className="mt-3 inline-flex items-center gap-1 px-4 py-2 bg-[#8B4513] hover:bg-[#A0522D] text-white text-sm font-bold transition-colors"
-            style={{ clipPath: smallPixelClipPath }}
-          >
-            <PixelRefreshIcon />
-            {t("tryAgain")}
-          </button>
+          {!isCorrect && (
+            <button 
+              onClick={handleReset} 
+              className="mt-3 inline-flex items-center gap-1 px-4 py-2 bg-[#8B4513] hover:bg-[#A0522D] text-white text-sm font-bold transition-colors"
+              style={{ clipPath: smallPixelClipPath }}
+            >
+              <PixelRefreshIcon />
+              {t("tryAgain")}
+            </button>
+          )}
         </div>
       )}
     </div>

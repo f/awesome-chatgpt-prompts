@@ -382,7 +382,7 @@ export function DragDropPrompt({
           >
             {t("check")}
           </button>
-        ) : (
+        ) : !correct ? (
           <button 
             onClick={handleReset} 
             className="px-6 py-3 bg-[#8B4513] hover:bg-[#A0522D] text-white font-bold text-xl transition-colors"
@@ -390,7 +390,7 @@ export function DragDropPrompt({
           >
             {t("retry")}
           </button>
-        )}
+        ) : null}
       </div>
     </div>
   );

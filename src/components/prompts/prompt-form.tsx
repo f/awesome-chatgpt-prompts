@@ -1150,7 +1150,7 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
                         value={field.value}
                         onChange={field.onChange}
                         language="markdown"
-                        placeholder={`# My Skill\n\nDescribe what this skill does and how the agent should use it.\n\n## Instructions\n\n- Step 1: ...\n- Step 2: ...`}
+                        placeholder={`---\nname: my-skill-name\ndescription: A clear description of what this skill does and when to use it\n---\n\n# My Skill\n\nDescribe what this skill does and how the agent should use it.\n\n## Instructions\n\n- Step 1: ...\n- Step 2: ...`}
                         minHeight="400px"
                         className="border-0 rounded-none"
                       />

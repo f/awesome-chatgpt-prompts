@@ -173,14 +173,14 @@ export function ExampleMatcher({
           >
             {t("check")}
           </button>
-        ) : (
+        ) : !isCorrect ? (
           <button
             onClick={handleReset}
             className="px-6 py-2 rounded-lg font-bold bg-[#6366F1] hover:bg-[#4F46E5] text-white"
           >
             {t("retry")}
           </button>
-        )}
+        ) : null}
       </div>
 
       {/* Result feedback */}
