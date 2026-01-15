@@ -58,6 +58,7 @@ export const parts: Part[] = [
       { slug: "12-handling-edge-cases", title: "Handling Edge Cases", part: "Advanced", partNumber: 3, chapterNumber: 12, description: "Dealing with unexpected inputs" },
       { slug: "13-multimodal-prompting", title: "Multimodal Prompting", part: "Advanced", partNumber: 3, chapterNumber: 13, description: "Working with images, audio, and video" },
       { slug: "14-context-engineering", title: "Context Engineering", part: "Advanced", partNumber: 3, chapterNumber: 14, description: "RAG, embeddings, function calling, and MCP" },
+      { slug: "25-agents-and-skills", title: "Agents & Skills", part: "Advanced", partNumber: 3, chapterNumber: 25, description: "Building AI agents with reusable skill packages" },
     ],
   },
   {
