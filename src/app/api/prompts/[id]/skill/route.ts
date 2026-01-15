@@ -71,7 +71,7 @@ export async function GET(
 
   return new Response(zipContent, {
     headers: {
-      "Content-Type": "application/zip",
+      "Content-Type": "application/octet-stream",
       "Content-Disposition": `attachment; filename="${filename}"`,
     },
   });
