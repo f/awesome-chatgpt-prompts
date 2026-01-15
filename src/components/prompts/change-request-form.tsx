@@ -12,6 +12,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { DiffView } from "@/components/ui/diff-view";
 import { CodeEditor } from "@/components/ui/code-editor";
 import { VariableToolbar } from "@/components/prompts/variable-toolbar";
+import { SkillEditor } from "@/components/prompts/skill-editor";
+import { SkillDiffViewer } from "@/components/prompts/skill-diff-viewer";
 import { toast } from "sonner";
 import { analyticsPrompt } from "@/lib/analytics";
 
@@ -25,6 +27,7 @@ interface ChangeRequestFormProps {
 
 export function ChangeRequestForm({ promptId, currentContent, currentTitle, promptType, structuredFormat }: ChangeRequestFormProps) {
   const isStructured = promptType === "STRUCTURED";
+  const isSkill = promptType === "SKILL";
   const router = useRouter();
   const t = useTranslations("changeRequests");
   const tCommon = useTranslations("common");
@@ -130,32 +133,41 @@ export function ChangeRequestForm({ promptId, currentContent, currentTitle, prom
           </TabsList>
 
           <TabsContent value="edit" className="mt-0">
-            <div className="border rounded-lg overflow-hidden">
-              <VariableToolbar onInsert={handleInsertVariable} />
-              {isStructured ? (
-                <CodeEditor
-                  value={proposedContent}
-                  onChange={setProposedContent}
-                  language={(structuredFormat?.toLowerCase() as "json" | "yaml") || "json"}
-                  minHeight="300px"
-                  className="border-0"
-                />
-              ) : (
-                <Textarea
-                  ref={textareaRef}
-                  id="proposedContent"
-                  value={proposedContent}
-                  onChange={(e) => setProposedContent(e.target.value)}
-                  placeholder={t("proposedContentPlaceholder")}
-                  className="min-h-[300px] font-mono text-sm border-0 rounded-none focus-visible:ring-0"
-                  required
-                />
-              )}
-            </div>
+            {isSkill ? (
+              <SkillEditor
+                value={proposedContent}
+                onChange={setProposedContent}
+              />
+            ) : (
+              <div className="border rounded-lg overflow-hidden">
+                <VariableToolbar onInsert={handleInsertVariable} />
+                {isStructured ? (
+                  <CodeEditor
+                    value={proposedContent}
+                    onChange={setProposedContent}
+                    language={(structuredFormat?.toLowerCase() as "json" | "yaml") || "json"}
+                    minHeight="300px"
+                    className="border-0"
+                  />
+                ) : (
+                  <Textarea
+                    ref={textareaRef}
+                    id="proposedContent"
+                    value={proposedContent}
+                    onChange={(e) => setProposedContent(e.target.value)}
+                    placeholder={t("proposedContentPlaceholder")}
+                    className="min-h-[300px] font-mono text-sm border-0 rounded-none focus-visible:ring-0"
+                    required
+                  />
+                )}
+              </div>
+            )}
           </TabsContent>
 
           <TabsContent value="diff" className="mt-0">
-            {hasContentChanges ? (
+            {isSkill ? (
+              <SkillDiffViewer original={currentContent} modified={proposedContent} />
+            ) : hasContentChanges ? (
               <DiffView
                 original={currentContent}
                 modified={proposedContent}

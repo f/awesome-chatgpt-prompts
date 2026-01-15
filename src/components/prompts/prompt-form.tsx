@@ -15,6 +15,7 @@ import { StructuredFormatWarning } from "./structured-format-warning";
 import { ContributorSearch } from "./contributor-search";
 import { PromptBuilder, type PromptBuilderHandle } from "./prompt-builder";
 import { MediaGenerator } from "./media-generator";
+import { SkillEditor } from "./skill-editor";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -1143,18 +1144,10 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
               <FormItem>
                 <FormControl>
                   {promptType === "SKILL" ? (
-                    <div className="rounded-md border overflow-hidden">
-                      <VariableToolbar onInsert={insertVariable} getSelectedText={getSelectedText} />
-                      <CodeEditor
-                        ref={codeEditorRef}
-                        value={field.value}
-                        onChange={field.onChange}
-                        language="markdown"
-                        placeholder={`---\nname: my-skill-name\ndescription: A clear description of what this skill does and when to use it\n---\n\n# My Skill\n\nDescribe what this skill does and how the agent should use it.\n\n## Instructions\n\n- Step 1: ...\n- Step 2: ...`}
-                        minHeight="400px"
-                        className="border-0 rounded-none"
-                      />
-                    </div>
+                    <SkillEditor
+                      value={field.value}
+                      onChange={field.onChange}
+                    />
                   ) : isStructuredInput ? (
                     <div className="rounded-md border overflow-hidden">
                       <VariableToolbar onInsert={insertVariable} getSelectedText={getSelectedText} />
@@ -1202,15 +1195,17 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
             onConvert={(converted) => form.setValue("content", converted)}
           />
 
-          {/* Structured format detection warning */}
-          <StructuredFormatWarning
-            content={promptContent}
-            isStructuredInput={isStructuredInput}
-            onSwitchToStructured={(format) => {
-              form.setValue("structuredFormat", format);
-              form.setValue("type", "TEXT");
-            }}
-          />
+          {/* Structured format detection warning - hide for SKILL type */}
+          {promptType !== "SKILL" && (
+            <StructuredFormatWarning
+              content={promptContent}
+              isStructuredInput={isStructuredInput}
+              onSwitchToStructured={(format) => {
+                form.setValue("structuredFormat", format);
+                form.setValue("type", "TEXT");
+              }}
+            />
+          )}
         </div>
 
         {/* ===== LLM PROCESSING ARROW ===== */}

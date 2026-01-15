@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { headers } from "next/headers";
-import { Code, Zap, Terminal, Search, Box, Key, Save, Sparkles } from "lucide-react";
+import { Code, Zap, Terminal, Search, Box, Key, Save, Sparkles, Cpu, FilePlus, FileX } from "lucide-react";
 import { ImprovePromptDemo } from "@/components/api/improve-prompt-demo";
 import {
   Table,
@@ -477,6 +477,234 @@ curl -X POST ${baseUrl}/api/mcp \\
         "prompt": "write a blog post about AI",
         "outputType": "text",
         "outputFormat": "text"
+      }
+    }
+  }'`}</pre>
+            </div>
+          </div>
+
+          {/* save_skill Tool */}
+          <div className="space-y-4">
+            <h3 className="font-medium flex items-center gap-2">
+              <Cpu className="h-4 w-4" />
+              save_skill
+              <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded">Requires Auth</span>
+            </h3>
+            <p className="text-muted-foreground">
+              Save a new Agent Skill to your account. Skills are multi-file prompts that can include SKILL.md (required),
+              reference docs, scripts, and configuration files. Perfect for creating comprehensive coding agent skills.
+            </p>
+
+            <div className="border rounded-lg overflow-hidden">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-[140px]">Parameter</TableHead>
+                    <TableHead className="w-[100px]">Type</TableHead>
+                    <TableHead className="w-[80px]">Required</TableHead>
+                    <TableHead>Description</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className="font-mono text-xs">title</TableCell>
+                    <TableCell className="text-muted-foreground text-xs">string</TableCell>
+                    <TableCell className="text-xs">Yes</TableCell>
+                    <TableCell className="text-muted-foreground text-sm">Title of the skill (max 200 chars)</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-mono text-xs">files</TableCell>
+                    <TableCell className="text-muted-foreground text-xs">array</TableCell>
+                    <TableCell className="text-xs">Yes</TableCell>
+                    <TableCell className="text-muted-foreground text-sm">
+                      Array of {`{filename, content}`}. Must include <code className="text-xs">SKILL.md</code>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-mono text-xs">description</TableCell>
+                    <TableCell className="text-muted-foreground text-xs">string</TableCell>
+                    <TableCell className="text-xs">No</TableCell>
+                    <TableCell className="text-muted-foreground text-sm">Optional description (max 500 chars)</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-mono text-xs">tags</TableCell>
+                    <TableCell className="text-muted-foreground text-xs">string[]</TableCell>
+                    <TableCell className="text-xs">No</TableCell>
+                    <TableCell className="text-muted-foreground text-sm">Array of tag names (max 10)</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-mono text-xs">category</TableCell>
+                    <TableCell className="text-muted-foreground text-xs">string</TableCell>
+                    <TableCell className="text-xs">No</TableCell>
+                    <TableCell className="text-muted-foreground text-sm">Category slug</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-mono text-xs">isPrivate</TableCell>
+                    <TableCell className="text-muted-foreground text-xs">boolean</TableCell>
+                    <TableCell className="text-xs">No</TableCell>
+                    <TableCell className="text-muted-foreground text-sm">Override default privacy setting</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </div>
+
+            <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
+              <pre>{`# Save a skill via MCP
+curl -X POST ${baseUrl}/api/mcp \\
+  -H "Content-Type: application/json" \\
+  -H "PROMPTS_API_KEY: pchat_your_api_key_here" \\
+  -d '{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "tools/call",
+    "params": {
+      "name": "save_skill",
+      "arguments": {
+        "title": "PDF Processing Skill",
+        "description": "Comprehensive PDF manipulation toolkit",
+        "files": [
+          {"filename": "SKILL.md", "content": "# PDF Processing\\n\\nThis skill helps with PDF manipulation..."},
+          {"filename": "reference.md", "content": "# API Reference\\n\\n..."},
+          {"filename": "scripts/extract.py", "content": "import pypdf\\n..."}
+        ],
+        "tags": ["pdf", "documents"]
+      }
+    }
+  }'`}</pre>
+            </div>
+          </div>
+
+          {/* add_file_to_skill Tool */}
+          <div className="space-y-4">
+            <h3 className="font-medium flex items-center gap-2">
+              <FilePlus className="h-4 w-4" />
+              add_file_to_skill
+              <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded">Requires Auth</span>
+            </h3>
+            <p className="text-muted-foreground">
+              Add a new file to an existing Agent Skill. Use this to add reference docs, scripts, or configuration files.
+            </p>
+
+            <div className="border rounded-lg overflow-hidden">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-[140px]">Parameter</TableHead>
+                    <TableHead className="w-[100px]">Type</TableHead>
+                    <TableHead className="w-[80px]">Required</TableHead>
+                    <TableHead>Description</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className="font-mono text-xs">skillId</TableCell>
+                    <TableCell className="text-muted-foreground text-xs">string</TableCell>
+                    <TableCell className="text-xs">Yes</TableCell>
+                    <TableCell className="text-muted-foreground text-sm">ID of the skill to add the file to</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-mono text-xs">filename</TableCell>
+                    <TableCell className="text-muted-foreground text-xs">string</TableCell>
+                    <TableCell className="text-xs">Yes</TableCell>
+                    <TableCell className="text-muted-foreground text-sm">
+                      File path (e.g., <code className="text-xs">reference.md</code>, <code className="text-xs">scripts/helper.py</code>)
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-mono text-xs">content</TableCell>
+                    <TableCell className="text-muted-foreground text-xs">string</TableCell>
+                    <TableCell className="text-xs">Yes</TableCell>
+                    <TableCell className="text-muted-foreground text-sm">File content</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </div>
+          </div>
+
+          {/* remove_file_from_skill Tool */}
+          <div className="space-y-4">
+            <h3 className="font-medium flex items-center gap-2">
+              <FileX className="h-4 w-4" />
+              remove_file_from_skill
+              <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded">Requires Auth</span>
+            </h3>
+            <p className="text-muted-foreground">
+              Remove a file from an existing Agent Skill. Cannot remove SKILL.md as it is required.
+            </p>
+
+            <div className="border rounded-lg overflow-hidden">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-[140px]">Parameter</TableHead>
+                    <TableHead className="w-[100px]">Type</TableHead>
+                    <TableHead className="w-[80px]">Required</TableHead>
+                    <TableHead>Description</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className="font-mono text-xs">skillId</TableCell>
+                    <TableCell className="text-muted-foreground text-xs">string</TableCell>
+                    <TableCell className="text-xs">Yes</TableCell>
+                    <TableCell className="text-muted-foreground text-sm">ID of the skill to remove the file from</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-mono text-xs">filename</TableCell>
+                    <TableCell className="text-muted-foreground text-xs">string</TableCell>
+                    <TableCell className="text-xs">Yes</TableCell>
+                    <TableCell className="text-muted-foreground text-sm">File path to remove (cannot be SKILL.md)</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </div>
+          </div>
+
+          {/* get_skill Tool */}
+          <div className="space-y-4">
+            <h3 className="font-medium flex items-center gap-2">
+              <Cpu className="h-4 w-4" />
+              get_skill
+            </h3>
+            <p className="text-muted-foreground">
+              Get an Agent Skill by ID, including all its files (SKILL.md, reference docs, scripts, etc.).
+              Returns skill metadata and file contents. Public skills are accessible without authentication;
+              private skills require API key authentication.
+            </p>
+
+            <div className="border rounded-lg overflow-hidden">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-[140px]">Parameter</TableHead>
+                    <TableHead className="w-[100px]">Type</TableHead>
+                    <TableHead className="w-[80px]">Required</TableHead>
+                    <TableHead>Description</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow>
+                    <TableCell className="font-mono text-xs">id</TableCell>
+                    <TableCell className="text-muted-foreground text-xs">string</TableCell>
+                    <TableCell className="text-xs">Yes</TableCell>
+                    <TableCell className="text-muted-foreground text-sm">The ID of the skill to retrieve</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </div>
+
+            <div className="bg-muted rounded-lg p-4 font-mono text-sm overflow-x-auto">
+              <pre>{`# Get a skill via MCP
+curl -X POST ${baseUrl}/api/mcp \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "tools/call",
+    "params": {
+      "name": "get_skill",
+      "arguments": {
+        "id": "skill_id_here"
       }
     }
   }'`}</pre>

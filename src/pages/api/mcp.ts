@@ -11,6 +11,7 @@ import { z } from "zod";
 import { db } from "@/lib/db";
 import { isValidApiKeyFormat } from "@/lib/api-key";
 import { improvePrompt } from "@/lib/ai/improve-prompt";
+import { parseSkillFiles, serializeSkillFiles, DEFAULT_SKILL_FILE, DEFAULT_SKILL_CONTENT } from "@/lib/skill-files";
 
 interface AuthenticatedUser {
   id: string;
@@ -712,6 +713,520 @@ function createServer(options: ServerOptions = {}) {
     }
   );
 
+  // Save skill tool - create a new skill with multiple files
+  server.registerTool(
+    "save_skill",
+    {
+      title: "Save Skill",
+      description:
+        "Save a new Agent Skill to your prompts.chat account. Skills are multi-file prompts that can include SKILL.md (required), reference docs, scripts, and configuration files. Requires API key authentication.",
+      inputSchema: {
+        title: z.string().min(1).max(200).describe("Title of the skill"),
+        description: z.string().max(500).optional().describe("Description of what the skill does"),
+        files: z.array(z.object({
+          filename: z.string().describe("File path (e.g., 'SKILL.md', 'reference.md', 'scripts/helper.py')"),
+          content: z.string().describe("File content"),
+        })).min(1).describe("Array of files. Must include SKILL.md as the main skill file."),
+        tags: z.array(z.string()).max(10).optional().describe("Optional array of tag names"),
+        category: z.string().optional().describe("Optional category slug"),
+        isPrivate: z.boolean().optional().describe("Whether the skill is private (default: uses your account setting)"),
+      },
+    },
+    async ({ title, description, files, tags, category, isPrivate }) => {
+      if (!authenticatedUser) {
+        return {
+          content: [{ type: "text" as const, text: JSON.stringify({ error: "Authentication required. Please provide an API key." }) }],
+          isError: true,
+        };
+      }
+
+      try {
+        // Ensure SKILL.md exists
+        const hasSkillMd = files.some(f => f.filename === DEFAULT_SKILL_FILE);
+        if (!hasSkillMd) {
+          return {
+            content: [{ type: "text" as const, text: JSON.stringify({ error: "SKILL.md file is required" }) }],
+            isError: true,
+          };
+        }
+
+        // Serialize files to multi-file format
+        const content = serializeSkillFiles(files.map(f => ({ filename: f.filename, content: f.content })));
+
+        // Determine privacy setting
+        const shouldBePrivate = isPrivate !== undefined ? isPrivate : !authenticatedUser.mcpPromptsPublicByDefault;
+
+        // Find or create tags
+        const tagConnections: { tag: { connect: { id: string } } }[] = [];
+        if (tags && tags.length > 0) {
+          for (const tagName of tags) {
+            const tagSlug = slugify(tagName);
+            if (!tagSlug) continue;
+            
+            let tag = await db.tag.findUnique({ where: { slug: tagSlug } });
+            if (!tag) {
+              tag = await db.tag.create({
+                data: { name: tagName, slug: tagSlug },
+              });
+            }
+            tagConnections.push({ tag: { connect: { id: tag.id } } });
+          }
+        }
+
+        // Find category if provided
+        let categoryId: string | undefined;
+        if (category) {
+          const cat = await db.category.findUnique({ where: { slug: category } });
+          if (cat) categoryId = cat.id;
+        }
+
+        // Create the skill
+        const skill = await db.prompt.create({
+          data: {
+            title,
+            slug: slugify(title),
+            content,
+            description: description || null,
+            isPrivate: shouldBePrivate,
+            type: "SKILL",
+            authorId: authenticatedUser.id,
+            categoryId: categoryId || null,
+            tags: { create: tagConnections },
+          },
+          select: {
+            id: true,
+            slug: true,
+            title: true,
+            description: true,
+            isPrivate: true,
+            createdAt: true,
+            tags: { select: { tag: { select: { name: true, slug: true } } } },
+            category: { select: { name: true, slug: true } },
+          },
+        });
+
+        return {
+          content: [
+            {
+              type: "text" as const,
+              text: JSON.stringify(
+                {
+                  success: true,
+                  skill: {
+                    ...skill,
+                    files: files.map(f => f.filename),
+                    tags: skill.tags.map((t) => t.tag.name),
+                    category: skill.category?.name || null,
+                    link: skill.isPrivate ? null : `https://prompts.chat/prompts/${skill.id}_${getPromptName(skill)}`,
+                  },
+                },
+                null,
+                2
+              ),
+            },
+          ],
+        };
+      } catch (error) {
+        console.error("MCP save_skill error:", error);
+        return {
+          content: [{ type: "text" as const, text: JSON.stringify({ error: "Failed to save skill" }) }],
+          isError: true,
+        };
+      }
+    }
+  );
+
+  // Add file to skill tool
+  server.registerTool(
+    "add_file_to_skill",
+    {
+      title: "Add File to Skill",
+      description:
+        "Add a new file to an existing Agent Skill. Use this to add reference docs, scripts, or configuration files to a skill you own.",
+      inputSchema: {
+        skillId: z.string().describe("The ID of the skill to add the file to"),
+        filename: z.string().describe("File path (e.g., 'reference.md', 'scripts/helper.py', 'config/settings.json')"),
+        content: z.string().describe("File content"),
+      },
+    },
+    async ({ skillId, filename, content }) => {
+      if (!authenticatedUser) {
+        return {
+          content: [{ type: "text" as const, text: JSON.stringify({ error: "Authentication required. Please provide an API key." }) }],
+          isError: true,
+        };
+      }
+
+      try {
+        // Fetch the skill
+        const skill = await db.prompt.findFirst({
+          where: {
+            id: skillId,
+            type: "SKILL",
+            authorId: authenticatedUser.id,
+            deletedAt: null,
+          },
+          select: { id: true, content: true, title: true, slug: true },
+        });
+
+        if (!skill) {
+          return {
+            content: [{ type: "text" as const, text: JSON.stringify({ error: "Skill not found or you don't have permission to edit it" }) }],
+            isError: true,
+          };
+        }
+
+        // Parse existing files
+        const files = parseSkillFiles(skill.content);
+
+        // Check if file already exists
+        if (files.some(f => f.filename === filename)) {
+          return {
+            content: [{ type: "text" as const, text: JSON.stringify({ error: `File '${filename}' already exists. Use a different filename or update the existing file.` }) }],
+            isError: true,
+          };
+        }
+
+        // Cannot add SKILL.md (it always exists)
+        if (filename === DEFAULT_SKILL_FILE) {
+          return {
+            content: [{ type: "text" as const, text: JSON.stringify({ error: "SKILL.md already exists. Edit the skill directly to modify it." }) }],
+            isError: true,
+          };
+        }
+
+        // Add the new file
+        files.push({ filename, content });
+
+        // Serialize and update
+        const updatedContent = serializeSkillFiles(files);
+        await db.prompt.update({
+          where: { id: skillId },
+          data: { content: updatedContent, updatedAt: new Date() },
+        });
+
+        return {
+          content: [
+            {
+              type: "text" as const,
+              text: JSON.stringify(
+                {
+                  success: true,
+                  message: `File '${filename}' added to skill`,
+                  skillId,
+                  files: files.map(f => f.filename),
+                  link: `https://prompts.chat/prompts/${skill.id}_${getPromptName(skill)}`,
+                },
+                null,
+                2
+              ),
+            },
+          ],
+        };
+      } catch (error) {
+        console.error("MCP add_file_to_skill error:", error);
+        return {
+          content: [{ type: "text" as const, text: JSON.stringify({ error: "Failed to add file to skill" }) }],
+          isError: true,
+        };
+      }
+    }
+  );
+
+  // Remove file from skill tool
+  server.registerTool(
+    "remove_file_from_skill",
+    {
+      title: "Remove File from Skill",
+      description:
+        "Remove a file from an existing Agent Skill. Cannot remove SKILL.md as it is required.",
+      inputSchema: {
+        skillId: z.string().describe("The ID of the skill to remove the file from"),
+        filename: z.string().describe("File path to remove (e.g., 'reference.md', 'scripts/helper.py')"),
+      },
+    },
+    async ({ skillId, filename }) => {
+      if (!authenticatedUser) {
+        return {
+          content: [{ type: "text" as const, text: JSON.stringify({ error: "Authentication required. Please provide an API key." }) }],
+          isError: true,
+        };
+      }
+
+      try {
+        // Cannot remove SKILL.md
+        if (filename === DEFAULT_SKILL_FILE) {
+          return {
+            content: [{ type: "text" as const, text: JSON.stringify({ error: "Cannot remove SKILL.md - it is required for all skills" }) }],
+            isError: true,
+          };
+        }
+
+        // Fetch the skill
+        const skill = await db.prompt.findFirst({
+          where: {
+            id: skillId,
+            type: "SKILL",
+            authorId: authenticatedUser.id,
+            deletedAt: null,
+          },
+          select: { id: true, content: true, title: true, slug: true },
+        });
+
+        if (!skill) {
+          return {
+            content: [{ type: "text" as const, text: JSON.stringify({ error: "Skill not found or you don't have permission to edit it" }) }],
+            isError: true,
+          };
+        }
+
+        // Parse existing files
+        const files = parseSkillFiles(skill.content);
+
+        // Check if file exists
+        if (!files.some(f => f.filename === filename)) {
+          return {
+            content: [{ type: "text" as const, text: JSON.stringify({ error: `File '${filename}' not found in this skill` }) }],
+            isError: true,
+          };
+        }
+
+        // Remove the file
+        const updatedFiles = files.filter(f => f.filename !== filename);
+
+        // Serialize and update
+        const updatedContent = serializeSkillFiles(updatedFiles);
+        await db.prompt.update({
+          where: { id: skillId },
+          data: { content: updatedContent, updatedAt: new Date() },
+        });
+
+        return {
+          content: [
+            {
+              type: "text" as const,
+              text: JSON.stringify(
+                {
+                  success: true,
+                  message: `File '${filename}' removed from skill`,
+                  skillId,
+                  files: updatedFiles.map(f => f.filename),
+                  link: `https://prompts.chat/prompts/${skill.id}_${getPromptName(skill)}`,
+                },
+                null,
+                2
+              ),
+            },
+          ],
+        };
+      } catch (error) {
+        console.error("MCP remove_file_from_skill error:", error);
+        return {
+          content: [{ type: "text" as const, text: JSON.stringify({ error: "Failed to remove file from skill" }) }],
+          isError: true,
+        };
+      }
+    }
+  );
+
+  // Get skill tool - retrieve a skill with all its files
+  server.registerTool(
+    "get_skill",
+    {
+      title: "Get Skill",
+      description:
+        "Get an Agent Skill by ID, including all its files (SKILL.md, reference docs, scripts, etc.). Returns the skill metadata and file contents.",
+      inputSchema: {
+        id: z.string().describe("The ID of the skill to retrieve"),
+      },
+    },
+    async ({ id }) => {
+      try {
+        // Build visibility filter
+        const visibilityFilter = authenticatedUser
+          ? {
+              OR: [
+                { isPrivate: false },
+                { isPrivate: true, authorId: authenticatedUser.id },
+              ],
+            }
+          : { isPrivate: false };
+
+        const skill = await db.prompt.findFirst({
+          where: {
+            id,
+            type: "SKILL",
+            isUnlisted: false,
+            deletedAt: null,
+            ...visibilityFilter,
+          },
+          select: {
+            id: true,
+            slug: true,
+            title: true,
+            description: true,
+            content: true,
+            isPrivate: true,
+            createdAt: true,
+            updatedAt: true,
+            author: { select: { username: true, name: true } },
+            category: { select: { name: true, slug: true } },
+            tags: { select: { tag: { select: { name: true, slug: true } } } },
+            _count: { select: { votes: true } },
+          },
+        });
+
+        if (!skill) {
+          return {
+            content: [{ type: "text" as const, text: JSON.stringify({ error: "Skill not found" }) }],
+            isError: true,
+          };
+        }
+
+        // Parse files from content
+        const files = parseSkillFiles(skill.content);
+
+        return {
+          content: [
+            {
+              type: "text" as const,
+              text: JSON.stringify(
+                {
+                  id: skill.id,
+                  slug: getPromptName(skill),
+                  title: skill.title,
+                  description: skill.description,
+                  author: skill.author.name || skill.author.username,
+                  category: skill.category?.name || null,
+                  tags: skill.tags.map((t) => t.tag.name),
+                  votes: skill._count.votes,
+                  isPrivate: skill.isPrivate,
+                  createdAt: skill.createdAt.toISOString(),
+                  updatedAt: skill.updatedAt.toISOString(),
+                  files: files.map(f => ({
+                    filename: f.filename,
+                    content: f.content,
+                  })),
+                  link: skill.isPrivate ? null : `https://prompts.chat/prompts/${skill.id}_${getPromptName(skill)}`,
+                },
+                null,
+                2
+              ),
+            },
+          ],
+        };
+      } catch (error) {
+        console.error("MCP get_skill error:", error);
+        return {
+          content: [{ type: "text" as const, text: JSON.stringify({ error: "Failed to get skill" }) }],
+          isError: true,
+        };
+      }
+    }
+  );
+
+  // Search skills tool - search for agent skills
+  server.registerTool(
+    "search_skills",
+    {
+      title: "Search Skills",
+      description:
+        "Search for Agent Skills by keyword. Returns matching skills with title, description, author, and file list. Use this to discover reusable AI agent capabilities for coding, analysis, automation, and more.",
+      inputSchema: {
+        query: z.string().describe("Search query to find relevant skills"),
+        limit: z
+          .number()
+          .min(1)
+          .max(50)
+          .default(10)
+          .describe("Maximum number of skills to return (default 10, max 50)"),
+        category: z.string().optional().describe("Filter by category slug"),
+        tag: z.string().optional().describe("Filter by tag slug"),
+      },
+    },
+    async ({ query, limit = 10, category, tag }) => {
+      try {
+        const where: Record<string, unknown> = {
+          type: "SKILL",
+          isUnlisted: false,
+          deletedAt: null,
+          AND: [
+            // Search filter
+            {
+              OR: [
+                { title: { contains: query, mode: "insensitive" } },
+                { description: { contains: query, mode: "insensitive" } },
+                { content: { contains: query, mode: "insensitive" } },
+              ],
+            },
+            // Visibility filter: public OR user's own private skills
+            authenticatedUser
+              ? {
+                  OR: [
+                    { isPrivate: false },
+                    { isPrivate: true, authorId: authenticatedUser.id },
+                  ],
+                }
+              : { isPrivate: false },
+          ],
+        };
+
+        if (category) where.category = { slug: category };
+        if (tag) where.tags = { some: { tag: { slug: tag } } };
+
+        const skills = await db.prompt.findMany({
+          where,
+          take: Math.min(limit, 50),
+          orderBy: { createdAt: "desc" },
+          select: {
+            id: true,
+            slug: true,
+            title: true,
+            description: true,
+            content: true,
+            createdAt: true,
+            author: { select: { username: true, name: true } },
+            category: { select: { name: true, slug: true } },
+            tags: { select: { tag: { select: { name: true, slug: true } } } },
+            _count: { select: { votes: true } },
+          },
+        });
+
+        const results = skills.map((s) => {
+          const files = parseSkillFiles(s.content);
+          return {
+            id: s.id,
+            slug: getPromptName(s),
+            title: s.title,
+            description: s.description,
+            author: s.author.name || s.author.username,
+            category: s.category?.name || null,
+            tags: s.tags.map((t) => t.tag.name),
+            votes: s._count.votes,
+            files: files.map(f => f.filename),
+            createdAt: s.createdAt.toISOString(),
+            link: `https://prompts.chat/prompts/${s.id}_${getPromptName(s)}`,
+          };
+        });
+
+        return {
+          content: [
+            {
+              type: "text" as const,
+              text: JSON.stringify({ query, count: results.length, skills: results }, null, 2),
+            },
+          ],
+        };
+      } catch (error) {
+        console.error("MCP search_skills error:", error);
+        return {
+          content: [{ type: "text" as const, text: JSON.stringify({ error: "Failed to search skills" }) }],
+          isError: true,
+        };
+      }
+    }
+  );
+
   return server;
 }
 
@@ -757,6 +1272,26 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         {
           name: "improve_prompt",
           description: "Transform a basic prompt into a well-structured, comprehensive prompt using AI.",
+        },
+        {
+          name: "save_skill",
+          description: "Save a new Agent Skill with multiple files (requires API key authentication).",
+        },
+        {
+          name: "add_file_to_skill",
+          description: "Add a file to an existing Agent Skill (requires API key authentication).",
+        },
+        {
+          name: "remove_file_from_skill",
+          description: "Remove a file from an Agent Skill (requires API key authentication).",
+        },
+        {
+          name: "get_skill",
+          description: "Get an Agent Skill by ID with all its files.",
+        },
+        {
+          name: "search_skills",
+          description: "Search for Agent Skills by keyword.",
         },
       ],
       prompts: {

@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { formatDistanceToNow } from "@/lib/date";
 import { getPromptUrl } from "@/lib/urls";
-import { ArrowBigUp, Lock, Copy, ImageIcon, Play, BadgeCheck, Volume2 } from "lucide-react";
+import { ArrowBigUp, Lock, Copy, ImageIcon, Download, Play, BadgeCheck, Volume2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { CodeView } from "@/components/ui/code-view";
 import { toast } from "sonner";
@@ -133,6 +133,30 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
   const handleRunClick = () => {
     setModalMode("run");
     setModalOpen(true);
+  };
+
+  const handleDownloadSkill = async () => {
+    // Download .skill zip for skills
+    const base = prompt.slug ? `${prompt.id}_${prompt.slug}` : prompt.id;
+    const url = `/api/prompts/${base}/skill`;
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error("Failed to fetch");
+      const blob = await response.blob();
+      const downloadUrl = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = downloadUrl;
+      // Use slug for filename
+      const slug = prompt.slug || prompt.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      a.download = `${slug}.skill`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(downloadUrl);
+      toast.success(t("downloadStarted"));
+    } catch {
+      toast.error(t("downloadFailed"));
+    }
   };
 
   return (
@@ -319,7 +343,15 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
             >
               <Copy className="h-3 w-3" />
             </button>
-            {contentHasVariables ? (
+            {prompt.type === "SKILL" ? (
+              <button
+                onClick={handleDownloadSkill}
+                className="h-6 w-6 rounded hover:bg-accent flex items-center justify-center"
+                title={t("download")}
+              >
+                <Download className="h-3.5 w-3.5" />
+              </button>
+            ) : contentHasVariables ? (
               <button
                 onClick={handleRunClick}
                 className="h-6 w-6 rounded hover:bg-accent flex items-center justify-center"

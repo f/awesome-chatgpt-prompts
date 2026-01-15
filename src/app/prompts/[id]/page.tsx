@@ -14,6 +14,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { InteractivePromptContent } from "@/components/prompts/interactive-prompt-content";
+import { SkillViewer } from "@/components/prompts/skill-viewer";
 import { UpvoteButton } from "@/components/prompts/upvote-button";
 import { AddVersionForm } from "@/components/prompts/add-version-form";
 import { DeleteVersionButton } from "@/components/prompts/delete-version-button";
@@ -548,7 +549,13 @@ export default async function PromptPage({ params }: PromptPageProps) {
                 </span>
               </div>
             )}
-            {prompt.structuredFormat ? (
+            {prompt.type === "SKILL" ? (
+              <SkillViewer 
+                content={prompt.content} 
+                promptId={prompt.id}
+                promptSlug={prompt.slug ?? undefined}
+              />
+            ) : prompt.structuredFormat ? (
               <InteractivePromptContent 
                 content={prompt.content} 
                 isStructured={true}
@@ -637,14 +644,16 @@ export default async function PromptPage({ params }: PromptPageProps) {
             </div>
           )}
 
-          {/* Report & Prompt Flow */}
-          <PromptFlowSection
-            promptId={prompt.id}
-            promptTitle={prompt.title}
-            canEdit={canEdit}
-            isOwner={isOwner}
-            isLoggedIn={!!session?.user}
-          />
+          {/* Report & Prompt Flow - hide for SKILL type */}
+          {prompt.type !== "SKILL" && (
+            <PromptFlowSection
+              promptId={prompt.id}
+              promptTitle={prompt.title}
+              canEdit={canEdit}
+              isOwner={isOwner}
+              isLoggedIn={!!session?.user}
+            />
+          )}
 
           {/* Related Prompts */}
           {relatedPrompts.length > 0 && (

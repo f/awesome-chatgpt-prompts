@@ -73,12 +73,36 @@ export function DownloadPromptDropdown({ promptId, promptSlug, promptType }: Dow
     }
   };
 
-  // For SKILL type, show a simple button instead of dropdown
+  const handleDownloadSkill = async () => {
+    const base = promptSlug ? `${promptId}_${promptSlug}` : promptId;
+    const url = `/api/prompts/${base}/skill`;
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error("Failed to fetch");
+      const blob = await response.blob();
+      
+      const downloadUrl = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = downloadUrl;
+      // Use slug for filename
+      a.download = `${promptSlug || promptId}.skill`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(downloadUrl);
+      
+      toast.success(t("downloadStarted"));
+    } catch {
+      toast.error(t("downloadFailed"));
+    }
+  };
+
+  // For SKILL type, show a simple button that downloads .skill zip
   if (isSkill) {
     return (
-      <Button variant="ghost" size="sm" onClick={() => handleDownload("md")}>
+      <Button variant="ghost" size="sm" onClick={handleDownloadSkill}>
         <Download className="h-4 w-4 mr-1" />
-        {t("downloadSkillMd")}
+        {t("downloadSkill")}
       </Button>
     );
   }
