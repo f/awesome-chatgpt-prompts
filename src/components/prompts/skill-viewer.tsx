@@ -292,7 +292,7 @@ export function SkillViewer({ content, className, promptId, promptSlug }: SkillV
         aria-hidden={!sidebarOpen ? "true" : "false"}
       >
         {/* Sidebar Header */}
-        <div className="flex items-center gap-2 px-3 py-2 border-b bg-muted">
+        <div className="flex items-center gap-2 px-3 h-10 border-b bg-muted">
           <FolderOpen className="h-4 w-4 text-primary" />
           <span className="text-sm font-medium">{t("skillFiles")}</span>
           {/* Close button for mobile */}
@@ -344,7 +344,7 @@ export function SkillViewer({ content, className, promptId, promptSlug }: SkillV
       {/* Main Editor Area */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Tab/File Header */}
-        <div className="flex items-center justify-between border-b bg-muted px-3 py-1.5">
+        <div className="flex items-center justify-between border-b bg-muted px-3 h-10">
           <div className="flex items-center gap-2 min-w-0">
             {/* Menu button for mobile */}
             <Button
