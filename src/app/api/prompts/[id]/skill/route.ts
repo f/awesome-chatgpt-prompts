@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import { db } from "@/lib/db";
 import { parseSkillFiles } from "@/lib/skill-files";
 import JSZip from "jszip";
@@ -44,7 +44,7 @@ export async function GET(
   });
 
   if (!prompt) {
-    return new NextResponse("Skill not found", { status: 404 });
+    return new Response("Skill not found", { status: 404 });
   }
 
   // Parse the skill files
@@ -58,9 +58,9 @@ export async function GET(
     zip.file(file.filename, file.content);
   }
 
-  // Generate the zip content as Uint8Array for NextResponse compatibility
+  // Generate the zip content as blob for Response compatibility
   const zipContent = await zip.generateAsync({ 
-    type: "uint8array",
+    type: "blob",
     compression: "DEFLATE",
     compressionOptions: { level: 9 },
   });
