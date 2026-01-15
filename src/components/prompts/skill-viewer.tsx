@@ -204,7 +204,7 @@ export function SkillViewer({ content, className, promptId, promptSlug }: SkillV
         setSidebarOpen(false);
       }
     };
-    
+
     window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
   }, [sidebarOpen]);
@@ -285,7 +285,6 @@ export function SkillViewer({ content, className, promptId, promptSlug }: SkillV
         <div
           className="fixed inset-0 bg-black/50 z-40 md:hidden"
           onClick={() => setSidebarOpen(false)}
-          aria-label="Close sidebar"
         />
       )}
 
@@ -297,7 +296,7 @@ export function SkillViewer({ content, className, promptId, promptSlug }: SkillV
           "absolute md:static z-50 transition-transform duration-300 ease-in-out",
           sidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
         )}
-        aria-hidden={!sidebarOpen}
+        aria-hidden={!sidebarOpen ? "true" : "false"}
       >
         {/* Sidebar Header */}
         <div className="flex items-center gap-2 px-3 py-2 border-b bg-muted/50">
