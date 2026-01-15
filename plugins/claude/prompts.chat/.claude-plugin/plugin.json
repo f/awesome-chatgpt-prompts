@@ -1,0 +1,23 @@
+{
+  "name": "prompts.chat",
+  "description": "Access thousands of AI prompts and skills directly in your AI coding assistant. Search prompts, discover skills, save your own, and improve prompts with AI.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Fatih Kadir Akın",
+    "email": "fatihkadirakin@gmail.com"
+  },
+  "homepage": "https://prompts.chat",
+  "repository": "https://github.com/f/awesome-chatgpt-prompts",
+  "license": "MIT",
+  "keywords": ["prompts", "ai", "skills", "chatgpt", "claude", "llm"],
+  "commands": [
+    "./commands/prompts.md",
+    "./commands/skills.md"
+  ],
+  "agents": [
+    "./agents/prompt-manager.md",
+    "./agents/skill-manager.md"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}

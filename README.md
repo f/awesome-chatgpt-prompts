@@ -129,6 +129,20 @@ We hope you find these prompts useful and have fun exploring AI chat models!
 **[View on prompts.chat](https://prompts.chat)**
 
 **[View Hugging Face Dataset](https://huggingface.co/datasets/fka/awesome-chatgpt-prompts/)**
+
+---
+
+## Claude Code Plugin
+
+Access prompts.chat directly in [Claude Code](https://code.claude.com) with our official plugin.
+
+```
+/plugin marketplace add f/awesome-chatgpt-prompts
+/plugin install prompts.chat@prompts.chat
+```
+
+📖 **[View Full Plugin Documentation](CLAUDE-PLUGIN.md)**
+
 ---
 
 > ℹ️ **NOTE:** Sometimes, some of the prompts may not be working as you expected
