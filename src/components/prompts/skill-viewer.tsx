@@ -280,14 +280,6 @@ export function SkillViewer({ content, className, promptId, promptSlug }: SkillV
       )}
       style={{ height: "500px" }}
     >
-      {/* Mobile overlay backdrop */}
-      {sidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 z-40 md:hidden"
-          onClick={() => setSidebarOpen(false)}
-        />
-      )}
-
       {/* Sidebar - File Tree */}
       <div 
         className={cn(

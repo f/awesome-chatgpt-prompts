@@ -824,7 +824,7 @@ export default async function PromptPage({ params }: PromptPageProps) {
             <Shield className="h-4 w-4 text-red-500" />
             <h3 className="text-sm font-semibold text-red-500">{t("adminArea")}</h3>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <FeaturePromptButton
               promptId={prompt.id}
               isFeatured={prompt.isFeatured}
