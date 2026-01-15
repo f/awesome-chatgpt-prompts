@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import Editor from "@monaco-editor/react";
@@ -197,6 +197,18 @@ export function SkillViewer({ content, className, promptId, promptSlug }: SkillV
     setSidebarOpen(false);
   }, []);
 
+  // Handle Escape key to close sidebar on mobile
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && sidebarOpen) {
+        setSidebarOpen(false);
+      }
+    };
+    
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [sidebarOpen]);
+
   // Toggle folder expansion
   const toggleFolder = useCallback((folderPath: string) => {
     setExpandedFolders((prev) => {
@@ -273,16 +285,27 @@ export function SkillViewer({ content, className, promptId, promptSlug }: SkillV
         <div
           className="fixed inset-0 bg-black/50 z-40 md:hidden"
           onClick={() => setSidebarOpen(false)}
+          role="button"
+          aria-label="Close sidebar"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Escape" || e.key === "Enter" || e.key === " ") {
+              setSidebarOpen(false);
+            }
+          }}
         />
       )}
 
       {/* Sidebar - File Tree */}
-      <div className={cn(
-        "w-full md:w-56 border-r bg-muted/30 flex flex-col shrink-0 md:relative",
-        // Mobile: absolute positioning with slide-in animation
-        "absolute md:static z-50 transition-transform duration-300 ease-in-out",
-        sidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
-      )}>
+      <div 
+        className={cn(
+          "w-full md:w-56 border-r bg-muted/30 flex flex-col shrink-0 md:relative",
+          // Mobile: absolute positioning with slide-in animation
+          "absolute md:static z-50 transition-transform duration-300 ease-in-out",
+          sidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+        )}
+        aria-hidden={!sidebarOpen ? "true" : undefined}
+      >
         {/* Sidebar Header */}
         <div className="flex items-center gap-2 px-3 py-2 border-b bg-muted/50">
           <FolderOpen className="h-4 w-4 text-primary" />
@@ -294,6 +317,7 @@ export function SkillViewer({ content, className, promptId, promptSlug }: SkillV
             size="icon"
             className="h-6 w-6 ml-auto md:hidden"
             onClick={() => setSidebarOpen(false)}
+            aria-label="Close sidebar"
           >
             <X className="h-4 w-4" />
           </Button>
@@ -344,6 +368,8 @@ export function SkillViewer({ content, className, promptId, promptSlug }: SkillV
               size="icon"
               className="h-7 w-7 md:hidden shrink-0"
               onClick={() => setSidebarOpen(true)}
+              aria-label="Open sidebar"
+              aria-expanded={sidebarOpen}
             >
               <Menu className="h-4 w-4" />
             </Button>
