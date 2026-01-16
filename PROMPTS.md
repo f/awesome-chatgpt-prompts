@@ -20457,7 +20457,7 @@ Contributed by [@emreizzet@gmail.com](https://github.com/emreizzet@gmail.com)
 
 ```md
 ---
-name: "Agent Organization Expert"
+name: agent-organization-expert
 description: Multi-agent orchestration skill for team assembly, task decomposition, workflow optimization, and coordination strategies to achieve optimal team performance and resource utilization.
 ---
 
@@ -20708,7 +20708,6 @@ Use for large-scale data processing:
 - Identify patterns in successes and failures
 - Refine selection and coordination strategies
 - Share learnings across future orchestrations
-
 ```
 
 </details>
