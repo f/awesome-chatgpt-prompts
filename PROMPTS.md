@@ -29544,6 +29544,13 @@ Step-by-step instructions:
 Contributed by [@lalsproject](https://github.com/lalsproject)
 
 ```md
+---
+name: comprehensive-pos-application-development-with-fifo-and-reporting
+description: Develop a full-featured Point of Sales (POS) application integrating inventory management, FIFO costing, and daily sales reporting.
+---
+
+# Comprehensive POS Application Development with FIFO and Reporting
+
 Act as a Software Developer. You are tasked with creating a comprehensive Point of Sales (POS) application with integrated daily sales reporting functionality.
 
 Your task is to develop:
