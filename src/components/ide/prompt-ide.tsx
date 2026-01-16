@@ -146,6 +146,13 @@ export function PromptIde() {
   }, []);
 
   const runCode = useCallback((showErrors = true) => {
+    // A03: Require authentication before executing code
+    if (!session?.user) {
+      setError("Authentication required to run code");
+      setConsoleErrors([{ type: 'error', message: 'You must be logged in to execute code. Please sign in to use the IDE.' }]);
+      return;
+    }
+    
     setIsRunning(true);
     
     // Get type errors first

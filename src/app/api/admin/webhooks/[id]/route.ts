@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { Prisma } from "@prisma/client";
+import { isPrivateUrl } from "@/lib/webhook";
 
 const VALID_METHODS = ["GET", "POST", "PUT", "PATCH"];
 const VALID_EVENTS = ["PROMPT_CREATED", "PROMPT_UPDATED", "PROMPT_DELETED"];
@@ -39,6 +40,10 @@ function validateUpdateWebhook(body: unknown): { success: true; data: UpdateWebh
       new URL(data.url);
     } catch {
       return { success: false, error: "Invalid URL format" };
+    }
+    // A10: Block private/internal URLs to prevent SSRF
+    if (isPrivateUrl(data.url)) {
+      return { success: false, error: "Webhook URL cannot target private/internal networks" };
     }
     result.url = data.url;
   }

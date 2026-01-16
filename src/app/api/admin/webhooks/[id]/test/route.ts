@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
+import { isPrivateUrl } from "@/lib/webhook";
 
 export async function POST(
   request: Request,
@@ -62,6 +63,14 @@ export async function POST(
     } catch {
       return NextResponse.json(
         { error: "Invalid JSON payload" },
+        { status: 400 }
+      );
+    }
+
+    // A10: Validate webhook URL is not targeting private/internal networks
+    if (isPrivateUrl(webhook.url)) {
+      return NextResponse.json(
+        { error: "Webhook URL targets a private/internal network which is not allowed" },
         { status: 400 }
       );
     }
