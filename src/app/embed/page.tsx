@@ -147,8 +147,20 @@ function EmbedContent() {
     return `rgba(59, 130, 246, ${alpha})`;
   };
 
+  const escapeHtml = (text: string): string => {
+    const htmlEscapes: Record<string, string> = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;',
+    };
+    return text.replace(/[&<>"']/g, (char) => htmlEscapes[char]);
+  };
+
   const highlightMentions = (text: string) => {
-    return text.replace(/@(\w+)/g, '<span class="mention">@$1</span>');
+    const escaped = escapeHtml(text);
+    return escaped.replace(/@(\w+)/g, '<span class="mention">@$1</span>');
   };
 
   const renderContextPill = (context: string) => {
