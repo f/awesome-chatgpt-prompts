@@ -10704,7 +10704,7 @@ jobs:
           fi
 ```",FALSE,TEXT,emreizzet@gmail.com
 AWS Cloud Expert,"---
-name: ""AWS Cloud Expert""
+name: aws-cloud-expert
 description: |
   Designs and implements AWS cloud architectures with focus on Well-Architected Framework, cost optimization, and security. Use when:
   1. Designing or reviewing AWS infrastructure architecture
@@ -10930,8 +10930,7 @@ Aurora Global Database -------> Aurora Read Replica
 - [ ] Runbooks documented for common operations
 - [ ] Cost projection validated and budgets set
 - [ ] Tagging strategy implemented for all resources
-- [ ] Backup and restore procedures tested
-",FALSE,TEXT,emreizzet@gmail.com
+- [ ] Backup and restore procedures tested",FALSE,TEXT,emreizzet@gmail.com
 Accessibility Expert,"---
 name: ""Accessibility Expert""
 description: Tests and remediates accessibility issues for WCAG compliance and assistive technology compatibility. Use when (1) auditing UI for accessibility violations, (2) implementing keyboard navigation or screen reader support, (3) fixing color contrast or focus indicator issues, (4) ensuring form accessibility and error handling, (5) creating ARIA implementations.
