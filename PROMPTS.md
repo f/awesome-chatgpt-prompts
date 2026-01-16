@@ -19109,6 +19109,13 @@ Data sources:
 Contributed by [@damimehdi20@gmail.com](https://github.com/damimehdi20@gmail.com)
 
 ```md
+---
+name: comprehensive-web-application-development-with-security-and-performance-optimization
+description: Guide to building a full-stack web application with secure user authentication, high performance, and robust user interaction features.
+---
+
+# Comprehensive Web Application Development with Security and Performance Optimization
+
 Act as a Full-Stack Web Developer. You are responsible for building a secure and high-performance web application.
 
 Your task includes:
