@@ -20156,7 +20156,7 @@ Contributed by [@emreizzet@gmail.com](https://github.com/emreizzet@gmail.com)
 
 ```md
 ---
-name: "Accessibility Testing Superpower"
+name: accessibility-testing-superpower
 description: |
   Performs WCAG compliance audits and accessibility remediation for web applications.
   Use when: 1) Auditing UI for WCAG 2.1/2.2 compliance 2) Fixing screen reader or keyboard navigation issues 3) Implementing ARIA patterns correctly 4) Reviewing color contrast and visual accessibility 5) Creating accessible forms or interactive components
@@ -20444,7 +20444,6 @@ Visual Testing:
 [ ] No information conveyed by color alone
 [ ] Respects prefers-reduced-motion
 ```
-
 ```
 
 </details>
