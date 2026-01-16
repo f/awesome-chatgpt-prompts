@@ -437,6 +437,15 @@ export default async function AboutPage() {
                 })}
               </li>
               <li>
+                {t.rich("referencedGithubBlog", {
+                  link: (chunks) => (
+                    <Link href="https://github.blog/changelog/2025-02-14-personal-custom-instructions-bing-web-search-and-more-in-copilot-on-github-com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">
+                      {chunks}
+                    </Link>
+                  ),
+                })}
+              </li>
+              <li>
                 {t.rich("huggingFace", {
                   link: (chunks) => (
                     <Link href="https://huggingface.co/datasets/fka/awesome-chatgpt-prompts" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">

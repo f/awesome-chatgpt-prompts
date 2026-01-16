@@ -889,7 +889,9 @@
       "columbiaUniversity": "אוניברסיטת קולומביה",
       "olympicCollege": "Olympic College",
       "citedIn": "צוטט ב",
+      "referencedIn": "מוזכר ב",
       "arxivPaper": "מאמר arXiv",
+      "githubBlog": "בלוג GitHub",
       "mostLikedDataset": "מאגר הנתונים האהוב ביותר ב-Hugging Face",
       "githubStars": "כוכבי GitHub",
       "mostStarredRepo": "המאגר ה-33 עם הכי הרבה כוכבים בעולם",
@@ -1143,7 +1145,7 @@
       },
       "attribution": {
         "question": "מה אם הייחוס בפרומפט שגוי?",
-        "answer": "אם אתם מבחינים בייחוס שגוי בפרומפט (לדוגמה, אם אתם המחבר המקורי אך לא קיבלתם קרדיט), אנא פתחו issue במאגר GitHub שלנו. אתם יכולים להשתמש בטופס למטה כדי להגיש את הבעיה שלכם, ואנחנו נבדוק ונתקן בהקדם האפשרי."
+        "answer": "אם אתם מבחינים בייחוס שגוי בפרומפט (לדוגמה, אם אתם המחבר המקורי אך לא קיבלתם קרדיט), אנא פתחו issue במאגר GitHub שלנו. אתם יכולים להשתמש בטופס למטה כדי להגיש את בעייתכם, ואנחנו נבדוק ונתקן בהקדם האפשרי."
       }
     },
     "contact": {
@@ -1399,6 +1401,7 @@
     "citedArxiv": "צוטט ב-<link>מאמר מחקר arXiv</link>",
     "githubStars": "<link>141k+ כוכבי GitHub</link>, מאגר הפרומפטים עם הכי הרבה כוכבים",
     "githubStaffPick": "נבחר כ-<link>GitHub Staff Pick</link>",
+    "referencedGithubBlog": "מוזכר ב<link>בלוג GitHub</link>",
     "huggingFace": "הדאטאסט האהוב ביותר ב-<link>Hugging Face</link>",
     "usedByDevelopers": "בשימוש על ידי אלפי מפתחים ברחבי העולם",
     "supportUsTitle": "תמכו בנו",
