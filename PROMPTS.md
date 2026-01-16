@@ -10200,6 +10200,11 @@ Rules:
 Contributed by [@f](https://github.com/f)
 
 ```md
+---
+name: web-application-testing-skill
+description: A toolkit for interacting with and testing local web applications using Playwright.
+---
+
 # Web Application Testing
 
 This skill enables comprehensive testing and debugging of local web applications using Playwright automation.
