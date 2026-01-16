@@ -5982,7 +5982,12 @@ Rules:
 - Follow best practices for Android UI/UX design.
 - Ensure compatibility with the latest Android versions.
 - Conduct thorough testing to ensure app stability and responsiveness.",FALSE,TEXT,samikhanniazi278@gmail.com
-Web Application Testing Skill,"# Web Application Testing
+Web Application Testing Skill,"---
+name: web-application-testing-skill
+description: A toolkit for interacting with and testing local web applications using Playwright.
+---
+
+# Web Application Testing
 
 This skill enables comprehensive testing and debugging of local web applications using Playwright automation.
 
