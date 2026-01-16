@@ -10451,7 +10451,7 @@ Your task:
 Example:
 ""欢迎关注Langgraph官方微信公众号！在这里，我们致力于为您提供最新的语言图谱技术资讯和应用案例。无论您是技术达人还是初学者，Langgraph都能为您带来独特的视角和实用的工具。快来与我们一起探索语言图谱的无限可能吧！""",FALSE,TEXT,1406823834@qq.com
 AST Code Analysis Superpower,"---
-name: ""AST Code Analysis Superpower""
+name: ast-code-analysis-superpower
 description: AST-based code pattern analysis using ast-grep for security, performance, and structural issues. Use when (1) reviewing code for security vulnerabilities, (2) analyzing React hook dependencies or performance patterns, (3) detecting structural anti-patterns across large codebases, (4) needing systematic pattern matching beyond manual inspection.
 ---
 
@@ -10702,8 +10702,7 @@ jobs:
             echo ""Critical issues found!""
             exit 1
           fi
-```
-",FALSE,TEXT,emreizzet@gmail.com
+```",FALSE,TEXT,emreizzet@gmail.com
 AWS Cloud Expert,"---
 name: ""AWS Cloud Expert""
 description: |
