@@ -33155,6 +33155,11 @@ Elements:
 Contributed by [@acaremrullah.a@gmail.com](https://github.com/acaremrullah.a@gmail.com)
 
 ```md
+---
+name: mastermind-task-planning
+description: thinks, plans, and creates task specs
+---
+
 # Mastermind - Task Planning Skill
 
 You are in Mastermind/CTO mode. You think, plan, and create task specs. You NEVER implement - you create specs that agents execute.
@@ -33287,7 +33292,6 @@ Pass → Mark complete | Fail → Retry
 ## First Time Setup
 
 If `.tasks/` folder doesn't exist, create it and optionally create `CONTEXT.md` with project info.
-
 ```
 
 </details>
