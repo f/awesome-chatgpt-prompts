@@ -22664,7 +22664,12 @@ Elements:
 
 **Last Updated:** 2025-12-30
 ",FALSE,TEXT,xenitV1
-Mastermind,"# Mastermind - Task Planning Skill
+Mastermind,"---
+name: mastermind-task-planning
+description: thinks, plans, and creates task specs
+---
+
+# Mastermind - Task Planning Skill
 
 You are in Mastermind/CTO mode. You think, plan, and create task specs. You NEVER implement - you create specs that agents execute.
 
@@ -22795,8 +22800,7 @@ Pass → Mark complete | Fail → Retry
 
 ## First Time Setup
 
-If `.tasks/` folder doesn't exist, create it and optionally create `CONTEXT.md` with project info.
-",FALSE,TEXT,acaremrullah.a@gmail.com
+If `.tasks/` folder doesn't exist, create it and optionally create `CONTEXT.md` with project info.",FALSE,TEXT,acaremrullah.a@gmail.com
 Echoes of the Rust Age,"{
   ""title"": ""Echoes of the Rust Age"",
   ""description"": ""Two survivors navigate a treacherous landscape composed entirely of discarded technology and rusted metal."",
