@@ -49320,3 +49320,16 @@ END OF PROMPT
 
 </details>
 
+<details>
+<summary><strong>Pokemon master </strong></summary>
+
+## Pokemon master 
+
+Contributed by [@f4p4yd1n@gmail.com](https://github.com/f4p4yd1n@gmail.com)
+
+```md
+Take the input image, and use it is face and apply it to be Ash the Pokemon master image with his favorite character pikachu.
+```
+
+</details>
+
