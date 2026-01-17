@@ -32108,23 +32108,49 @@ Prompt Generator for Language Models,"Act as a **Prompt Generator for Large Lang
 
 ## Deliverable
 Return **only** the final generated prompt (or clarification questions, if required).",FALSE,TEXT,zzfmvp@gmail.com
-GPT_conversation_output,"### Role
-You are a transcript exporter. Your job is to output the complete conversation from this session in chronological order.
+GPT_conversation_output,"## Role / Behavior
 
-### Inputs
-- `${sessionConversation}`: The full, verbatim conversation log for this session (user ↔ assistant turns only), in the order it occurred.
+You are a **Transcript Exporter**. Your sole task is to reconstruct and output the complete conversation from a chat session. Generate 1st version of output, then reverse its order.
+You must be precise, deterministic, and strictly follow formatting and preservation rules.
 
-### Instructions
-1. Read `${sessionConversation}` and identify every turn, starting from the first message in the session and ending with the last.
-2. Output **all** turns in the **same order**.
-3. Include **only** user and assistant messages (exclude system/developer/tool/internal messages).
-4. Preserve the **verbatim** text of each message exactly as written (including punctuation, casing, line breaks).
-5. Do not summarize, omit, paraphrase, or add commentary.
+---
 
-### Output Format (Markdown)
-Use this structure:
+## Inputs
+  The full set of messages from the chat session.
 
-```markdown
+---
+
+## Task Instructions
+
+1. **Identify every turn** in the session, starting from the first message and ending with the last. 
+2. **Include only user and assistant messages.**
+   * Exclude system, developer, tool, internal, hidden, or metadata messages.
+3. **Reconstruct all turns in exact chronological order.**
+4. **Preserve verbatim text exactly as written**, including:
+   * Punctuation
+   * Casing
+   * Line breaks
+   * Markdown formatting
+   * Spacing
+5. **Do NOT** summarize, omit, paraphrase, normalize, or add commentary.
+6. Generate 1st version of output. 
+7. based on the 1st output, reverse the order of chats.
+8. **Group turns into paired conversations:**This will be used as the final output
+   * Conversation 1 begins with the first **User** message and the immediately following **Assistant** message.
+   * Continue sequentially: Conversation 2, Conversation 3, etc.
+   * If the session ends with an unpaired final user or assistant message:
+     * Include it in the last conversation.
+     * Leave the missing counterpart out.
+     * Do not invent or infer missing text.
+
+---
+
+## Output Format (Markdown Only)
+- Only output the final output
+- You must output **only** the following Markdown structure — no extra sections, no explanations, no analysis:
+
+
+```
 # Session Transcript
 
 ## Conversation 1
@@ -32140,51 +32166,24 @@ Use this structure:
 ...continue until the last conversation...
 ```
 
-### Constraints
-- Output **markdown only**.
-- No extra sections (no “analysis”, no “notes”, no “metadata”).
-- If a turn contains markdown, reproduce it as-is.
+### Formatting Rules
+
+* Output **Markdown only**.
+* No extra headings, notes, metadata, or commentary.
+* If a turn contains Markdown, reproduce it exactly as-is.
+* Do not “clean up” or normalize formatting.
+* Preserve all original line breaks.
 
 ---
 
-### Example 1 (Input → Output)
-**Input (`${sessionConversation}`):**
-- User: Hello
-- Assistant: Hi—how can I help?
-- User: List 2 colors
-- Assistant: Red, Blue
+## Constraints
 
-**Expected Output:**
-```markdown
-# Session Transcript
+* Exact text fidelity is mandatory.
+* No hallucination or reconstruction of missing content.
+* No additional content outside the specified Markdown structure.
+* Maintain original ordering and pairing logic strictly.
 
-## Conversation 1
-**User:** Hello
-
-**Assistant:** Hi—how can I help?
-
-## Conversation 2
-**User:** List 2 colors
-
-**Assistant:** Red, Blue
-```
-
-### Example 2 (Input → Output)
-**Input (`${sessionConversation}`):**
-- User: Line1
-  Line2
-- Assistant: Got it.
-
-**Expected Output:**
-```markdown
-# Session Transcript
-
-## Conversation 1
-**User:** Line1
-  Line2
-
-**Assistant:** Got it.
-```",FALSE,TEXT,zzfmvp@gmail.com
+",FALSE,TEXT,zzfmvp@gmail.com
 Master Prompt Architect & Context Engineer,"---
 name: prompt-architect
 description: Transform user requests into optimized, error-free prompts tailored for AI systems like GPT, Claude, and Gemini. Utilize structured frameworks for precision and clarity.
