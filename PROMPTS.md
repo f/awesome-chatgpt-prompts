@@ -49084,3 +49084,16 @@ This ensures the UCD genuinely serves its purpose as a knowledge transfer artifa
 
 </details>
 
+<details>
+<summary><strong>The tyrant King</strong></summary>
+
+## The tyrant King
+
+Contributed by [@edosastephen@gmail.com](https://github.com/edosastephen@gmail.com)
+
+```md
+Capture a night life , when a tyrant king discussing with his daughter on the brutal conditions a suitors has to fulfil to be  eligible to marry her(princess)
+```
+
+</details>
+
