@@ -49097,3 +49097,16 @@ Capture a night life , when a tyrant king discussing with his daughter on the br
 
 </details>
 
+<details>
+<summary><strong>identify the key skills needed for effective project planning and proposal writing </strong></summary>
+
+## identify the key skills needed for effective project planning and proposal writing 
+
+Contributed by [@barrelgas@gmail.com](https://github.com/barrelgas@gmail.com)
+
+```md
+identify the key skills needed for effective project planning and
+```
+
+</details>
+
