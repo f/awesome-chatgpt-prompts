@@ -255,7 +255,11 @@
       "pathContainsDotDot": "경로에 ..을 포함할 수 없습니다",
       "filenameReserved": "SKILL.md가 이미 존재합니다",
       "filenameDuplicate": "이 이름의 파일이 이미 존재합니다",
-      "pathTooLong": "경로가 너무 깁니다 (최대 200자)"
+      "pathTooLong": "경로가 너무 깁니다 (최대 200자)",
+      "frontmatterMissing": "스킬에는 이름과 설명이 포함된 frontmatter가 필요합니다",
+      "frontmatterNameRequired": "frontmatter 이름이 필요합니다 ('my-skill-name'을 고유한 이름으로 업데이트하세요)",
+      "frontmatterNameInvalidFormat": "스킬 이름은 소문자 kebab-case여야 합니다 (예: my-skill-name)",
+      "frontmatterDescriptionRequired": "frontmatter 설명이 필요합니다 (이 스킬이 무엇을 하는지 명확한 설명을 제공하세요)"
     },
     "copyMarkdownUrl": "MD 링크 복사",
     "copyYamlUrl": "YAML 링크 복사",
@@ -269,6 +273,7 @@
     "cancel": "취소",
     "titleRequired": "제목은 필수입니다",
     "contentRequired": "내용은 필수입니다",
+    "generateFrontmatter": "Frontmatter 생성",
     "titlePlaceholder": "프롬프트 제목을 입력하세요",
     "descriptionPlaceholder": "프롬프트에 대한 선택적 설명",
     "contentPlaceholder": "여기에 프롬프트 내용을 입력하세요...",

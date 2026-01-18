@@ -255,7 +255,11 @@
       "pathContainsDotDot": "Путь не может содержать ..",
       "filenameReserved": "SKILL.md уже существует",
       "filenameDuplicate": "Файл с таким именем уже существует",
-      "pathTooLong": "Путь слишком длинный (макс. 200 символов)"
+      "pathTooLong": "Путь слишком длинный (макс. 200 символов)",
+      "frontmatterMissing": "Навык должен содержать frontmatter с именем и описанием",
+      "frontmatterNameRequired": "Имя frontmatter обязательно (измените 'my-skill-name' на уникальное имя)",
+      "frontmatterNameInvalidFormat": "Имя навыка должно быть в нижнем регистре kebab-case (например: my-skill-name)",
+      "frontmatterDescriptionRequired": "Описание frontmatter обязательно (укажите чёткое описание того, что делает этот навык)"
     },
     "copyMarkdownUrl": "Копировать ссылку MD",
     "copyYamlUrl": "Копировать ссылку YAML",
@@ -269,6 +273,7 @@
     "cancel": "Отмена",
     "titleRequired": "Заголовок обязателен",
     "contentRequired": "Содержимое обязательно",
+    "generateFrontmatter": "Сгенерировать Frontmatter",
     "titlePlaceholder": "Введите заголовок промпта",
     "descriptionPlaceholder": "Необязательное описание промпта",
     "contentPlaceholder": "Введите содержимое промпта...",

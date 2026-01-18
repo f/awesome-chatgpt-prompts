@@ -255,7 +255,11 @@
       "pathContainsDotDot": "Pfad darf kein .. enthalten",
       "filenameReserved": "SKILL.md existiert bereits",
       "filenameDuplicate": "Eine Datei mit diesem Namen existiert bereits",
-      "pathTooLong": "Pfad ist zu lang (max. 200 Zeichen)"
+      "pathTooLong": "Pfad ist zu lang (max. 200 Zeichen)",
+      "frontmatterMissing": "Skill muss Frontmatter mit Name und Beschreibung enthalten",
+      "frontmatterNameRequired": "Frontmatter-Name ist erforderlich ('my-skill-name' zu einem eindeutigen Namen ändern)",
+      "frontmatterNameInvalidFormat": "Skill-Name muss in Kleinbuchstaben kebab-case sein (z.B. my-skill-name)",
+      "frontmatterDescriptionRequired": "Frontmatter-Beschreibung ist erforderlich (eine klare Beschreibung dessen, was dieser Skill tut)"
     },
     "copyMarkdownUrl": "MD-Link kopieren",
     "copyYamlUrl": "YAML-Link kopieren",
@@ -269,6 +273,7 @@
     "cancel": "Abbrechen",
     "titleRequired": "Titel ist erforderlich",
     "contentRequired": "Inhalt ist erforderlich",
+    "generateFrontmatter": "Frontmatter generieren",
     "titlePlaceholder": "Geben Sie einen Titel für Ihren Prompt ein",
     "descriptionPlaceholder": "Optionale Beschreibung Ihres Prompts",
     "contentPlaceholder": "Geben Sie hier den Inhalt Ihres Prompts ein...",

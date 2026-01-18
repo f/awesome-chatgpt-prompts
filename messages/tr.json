@@ -255,7 +255,11 @@
       "pathContainsDotDot": "Yol .. içeremez",
       "filenameReserved": "SKILL.md zaten mevcut",
       "filenameDuplicate": "Bu isimde bir dosya zaten mevcut",
-      "pathTooLong": "Yol çok uzun (maks. 200 karakter)"
+      "pathTooLong": "Yol çok uzun (maks. 200 karakter)",
+      "frontmatterMissing": "Beceri, isim ve açıklama içeren frontmatter içermelidir",
+      "frontmatterNameRequired": "Frontmatter ismi gereklidir ('my-skill-name' benzersiz bir isimle değiştirin)",
+      "frontmatterNameInvalidFormat": "Beceri ismi küçük harfli kebab-case olmalıdır (örn: my-skill-name)",
+      "frontmatterDescriptionRequired": "Frontmatter açıklaması gereklidir (bu becerinin ne yaptığının net bir açıklamasını sağlayın)"
     },
     "copyMarkdownUrl": "MD Linkini Kopyala",
     "copyYamlUrl": "YAML Linkini Kopyala",
@@ -269,6 +273,7 @@
     "cancel": "İptal",
     "titleRequired": "Başlık gerekli",
     "contentRequired": "İçerik gerekli",
+    "generateFrontmatter": "Frontmatter Oluştur",
     "titlePlaceholder": "Promptunuz için bir başlık girin",
     "descriptionPlaceholder": "İsteğe bağlı açıklama",
     "contentPlaceholder": "Prompt içeriğinizi buraya girin...",

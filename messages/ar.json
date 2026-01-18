@@ -268,7 +268,11 @@
       "pathContainsDotDot": "المسار لا يمكن أن يحتوي على ..",
       "filenameReserved": "SKILL.md موجود بالفعل",
       "filenameDuplicate": "ملف بهذا الاسم موجود بالفعل",
-      "pathTooLong": "المسار طويل جداً (الحد الأقصى 200 حرف)"
+      "pathTooLong": "المسار طويل جداً (الحد الأقصى 200 حرف)",
+      "frontmatterMissing": "يجب أن تتضمن المهارة frontmatter مع الاسم والوصف",
+      "frontmatterNameRequired": "اسم frontmatter مطلوب (قم بتحديث 'my-skill-name' إلى اسم فريد)",
+      "frontmatterNameInvalidFormat": "يجب أن يكون اسم المهارة بصيغة kebab-case صغيرة (مثال: my-skill-name)",
+      "frontmatterDescriptionRequired": "وصف frontmatter مطلوب (قدم وصفاً واضحاً لما تفعله هذه المهارة)"
     },
     "copyMarkdownUrl": "نسخ رابط MD",
     "copyYamlUrl": "نسخ رابط YAML",
@@ -282,6 +286,7 @@
     "cancel": "إلغاء",
     "titleRequired": "العنوان مطلوب",
     "contentRequired": "المحتوى مطلوب",
+    "generateFrontmatter": "توليد Frontmatter",
     "titlePlaceholder": "أدخل عنوان الأمر",
     "descriptionPlaceholder": "وصف اختياري للأمر",
     "contentPlaceholder": "أدخل محتوى الأمر هنا...",

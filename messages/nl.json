@@ -255,7 +255,11 @@
       "pathContainsDotDot": "Pad mag geen .. bevatten",
       "filenameReserved": "SKILL.md bestaat al",
       "filenameDuplicate": "Een bestand met deze naam bestaat al",
-      "pathTooLong": "Pad is te lang (max 200 tekens)"
+      "pathTooLong": "Pad is te lang (max 200 tekens)",
+      "frontmatterMissing": "Vaardigheid moet frontmatter met naam en beschrijving bevatten",
+      "frontmatterNameRequired": "Frontmatter-naam is vereist (wijzig 'my-skill-name' naar een unieke naam)",
+      "frontmatterNameInvalidFormat": "Skill-naam moet in kleine letters kebab-case zijn (bijv. my-skill-name)",
+      "frontmatterDescriptionRequired": "Frontmatter-beschrijving is vereist (geef een duidelijke beschrijving van wat deze vaardigheid doet)"
     },
     "copyMarkdownUrl": "MD-link kopiëren",
     "copyYamlUrl": "YAML-link kopiëren",
@@ -269,6 +273,7 @@
     "cancel": "Annuleren",
     "titleRequired": "Titel is verplicht",
     "contentRequired": "Inhoud is verplicht",
+    "generateFrontmatter": "Frontmatter genereren",
     "titlePlaceholder": "Voer een titel in voor je prompt",
     "descriptionPlaceholder": "Optionele beschrijving van je prompt",
     "contentPlaceholder": "Voer hier je promptinhoud in...",

@@ -21,6 +21,19 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import {
+  parseSkillFiles,
+  serializeSkillFiles,
+  getLanguageFromFilename,
+  validateFilename,
+  suggestFilename,
+  generateSkillContentWithFrontmatter,
+  updateSkillFrontmatter,
+  validateSkillFrontmatter,
+  DEFAULT_SKILL_FILE,
+  DEFAULT_SKILL_CONTENT,
+  type SkillFile,
+} from "@/lib/skill-files";
+import {
   Form,
   FormControl,
   FormDescription,
@@ -352,6 +365,17 @@ const createPromptSchema = (t: (key: string) => string) => z.object({
     command: z.string(),
     tools: z.array(z.string()).optional(),
   })).optional(),
+}).superRefine((data, ctx) => {
+  if (data.type === "SKILL") {
+    const frontmatterError = validateSkillFrontmatter(data.content);
+    if (frontmatterError) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: t(`validation.${frontmatterError}`),
+        path: ["content"],
+      });
+    }
+  }
 });
 
 type PromptFormValues = z.infer<ReturnType<typeof createPromptSchema>>;
@@ -471,6 +495,32 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
     window.addEventListener("beforeunload", handleBeforeUnload);
     return () => window.removeEventListener("beforeunload", handleBeforeUnload);
   }, [isDirty]);
+
+  // Watch title and description to update skill frontmatter
+  const watchedTitle = form.watch("title");
+  const watchedDescription = form.watch("description");
+  const prevTitleRef = useRef(watchedTitle);
+  const prevDescriptionRef = useRef(watchedDescription);
+  
+  useEffect(() => {
+    // Only update if type is SKILL and title or description actually changed
+    if (promptType !== "SKILL") return;
+    
+    const titleChanged = prevTitleRef.current !== watchedTitle;
+    const descChanged = prevDescriptionRef.current !== watchedDescription;
+    
+    if (titleChanged || descChanged) {
+      prevTitleRef.current = watchedTitle;
+      prevDescriptionRef.current = watchedDescription;
+      
+      const currentContent = form.getValues("content");
+      // Only update if content already has frontmatter (avoid overwriting during initial load)
+      if (currentContent && currentContent.startsWith("---")) {
+        const updatedContent = updateSkillFrontmatter(currentContent, watchedTitle, watchedDescription || "");
+        form.setValue("content", updatedContent);
+      }
+    }
+  }, [watchedTitle, watchedDescription, promptType, form]);
 
   // Fetch available media generator names
   useEffect(() => {
@@ -1056,6 +1106,14 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
                   } else if (v === "SKILL") {
                     form.setValue("structuredFormat", undefined);
                     form.setValue("type", "SKILL");
+                    // Auto-generate frontmatter from title and description
+                    const currentContent = form.getValues("content");
+                    const title = form.getValues("title");
+                    const description = form.getValues("description") || "";
+                    // Only generate if content is empty or doesn't look like skill content
+                    if (!currentContent || !currentContent.startsWith("---")) {
+                      form.setValue("content", generateSkillContentWithFrontmatter(title, description));
+                    }
                   } else {
                     form.setValue("structuredFormat", undefined);
                     form.setValue("type", "TEXT");
@@ -1184,7 +1242,28 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
                   )}
                 </FormControl>
                 <VariableHint content={field.value} onContentChange={(newContent) => form.setValue("content", newContent)} />
-                <FormMessage />
+                {/* Show error with generate frontmatter link for SKILL type */}
+                {promptType === "SKILL" && form.formState.errors.content ? (
+                  <p className="text-sm font-medium text-destructive flex items-center gap-2">
+                    <span>{form.formState.errors.content.message}</span>
+                    <button
+                      type="button"
+                      className="text-primary hover:underline inline-flex items-center gap-1"
+                      onClick={() => {
+                        const title = form.getValues("title");
+                        const description = form.getValues("description") || "";
+                        const currentContent = form.getValues("content");
+                        const updatedContent = updateSkillFrontmatter(currentContent, title, description);
+                        form.setValue("content", updatedContent, { shouldValidate: true });
+                      }}
+                    >
+                      <Sparkles className="h-3 w-3" />
+                      {t("generateFrontmatter")}
+                    </button>
+                  </p>
+                ) : (
+                  <FormMessage />
+                )}
               </FormItem>
             )}
           />

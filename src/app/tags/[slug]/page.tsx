@@ -44,7 +44,7 @@ export default async function TagPage({ params, searchParams }: TagPageProps) {
     notFound();
   }
 
-  const page = Math.max(1, parseInt(pageParam || "1"));
+  const page = Math.max(1, parseInt(pageParam || "1") || 1);
   const perPage = 24;
 
   // Build where clause

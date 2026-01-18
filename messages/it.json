@@ -255,7 +255,11 @@
       "pathContainsDotDot": "Il percorso non può contenere ..",
       "filenameReserved": "SKILL.md esiste già",
       "filenameDuplicate": "Un file con questo nome esiste già",
-      "pathTooLong": "Il percorso è troppo lungo (max 200 caratteri)"
+      "pathTooLong": "Il percorso è troppo lungo (max 200 caratteri)",
+      "frontmatterMissing": "La skill deve includere frontmatter con nome e descrizione",
+      "frontmatterNameRequired": "Il nome del frontmatter è richiesto (aggiorna 'my-skill-name' con un nome unico)",
+      "frontmatterNameInvalidFormat": "Il nome della skill deve essere in minuscolo kebab-case (es: my-skill-name)",
+      "frontmatterDescriptionRequired": "La descrizione del frontmatter è richiesta (fornisci una descrizione chiara di cosa fa questa skill)"
     },
     "copyMarkdownUrl": "Copia link MD",
     "copyYamlUrl": "Copia link YAML",
@@ -269,6 +273,7 @@
     "cancel": "Annulla",
     "titleRequired": "Il titolo è obbligatorio",
     "contentRequired": "Il contenuto è obbligatorio",
+    "generateFrontmatter": "Genera Frontmatter",
     "titlePlaceholder": "Inserisci un titolo per il tuo prompt",
     "descriptionPlaceholder": "Descrizione opzionale del tuo prompt",
     "contentPlaceholder": "Inserisci il contenuto del tuo prompt qui...",

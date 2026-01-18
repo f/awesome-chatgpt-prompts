@@ -250,6 +250,184 @@ export function validateFilename(filename: string, existingFiles: string[]): Fil
   return null;
 }
 
+// Default placeholder values
+const DEFAULT_SKILL_NAME = 'my-skill-name';
+const DEFAULT_SKILL_DESCRIPTION = 'A clear description of what this skill does and when to use it';
+
+// Regex for valid kebab-case: lowercase letters, numbers, hyphens, must start with letter
+const KEBAB_CASE_REGEX = /^[a-z][a-z0-9-]*$/;
+
+/**
+ * Check if a string is valid lowercase kebab-case.
+ */
+export function isValidKebabCase(name: string): boolean {
+  return KEBAB_CASE_REGEX.test(name);
+}
+
+/**
+ * Transliterate a string to ASCII, converting accented characters to their closest ASCII equivalents.
+ * Uses Unicode NFD normalization to decompose characters, then removes combining marks.
+ * Also handles special characters like Turkish ı, German ß, etc.
+ */
+function transliterateToAscii(text: string): string {
+  // Special character mappings for characters that don't decompose well
+  const specialMappings: Record<string, string> = {
+    'ı': 'i', 'İ': 'i',  // Turkish dotless i
+    'ğ': 'g', 'Ğ': 'g',  // Turkish soft g
+    'ş': 's', 'Ş': 's',  // Turkish/Romanian s-cedilla
+    'ç': 'c', 'Ç': 'c',  // French/Turkish c-cedilla
+    'ß': 'ss',           // German eszett
+    'ø': 'o', 'Ø': 'o',  // Danish/Norwegian o-slash
+    'æ': 'ae', 'Æ': 'ae', // Ligature ae
+    'œ': 'oe', 'Œ': 'oe', // Ligature oe
+    'ð': 'd', 'Ð': 'd',  // Icelandic eth
+    'þ': 'th', 'Þ': 'th', // Icelandic thorn
+    'ł': 'l', 'Ł': 'l',  // Polish l-stroke
+    'đ': 'd', 'Đ': 'd',  // Vietnamese/Croatian d-stroke
+    'ñ': 'n', 'Ñ': 'n',  // Spanish ñ
+  };
+  
+  // Apply special mappings first
+  let result = text;
+  for (const [char, replacement] of Object.entries(specialMappings)) {
+    result = result.replace(new RegExp(char, 'g'), replacement);
+  }
+  
+  // NFD normalization decomposes accented characters (e.g., é → e + ́)
+  // Then remove combining diacritical marks (Unicode range \u0300-\u036f)
+  return result
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+}
+
+/**
+ * Convert a title to lowercase kebab-case skill name.
+ * Transliterates non-ASCII characters to their closest ASCII equivalents.
+ */
+function titleToSkillName(title: string): string {
+  return transliterateToAscii(title)
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '')
+    || DEFAULT_SKILL_NAME;
+}
+
+/**
+ * Build frontmatter block from title and description.
+ */
+function buildFrontmatter(title: string, description: string): string {
+  const name = titleToSkillName(title);
+  const desc = description || DEFAULT_SKILL_DESCRIPTION;
+  return `---\nname: ${name}\ndescription: ${desc}\n---`;
+}
+
+/**
+ * Generate skill content with frontmatter from title and description.
+ * Converts title to kebab-case for the skill name.
+ */
+export function generateSkillContentWithFrontmatter(title: string, description: string): string {
+  const frontmatter = buildFrontmatter(title, description);
+  
+  return `${frontmatter}
+
+# ${title || 'My Skill'}
+
+Describe what this skill does and how the agent should use it.
+
+## Instructions
+
+- Step 1: ...
+- Step 2: ...
+`;
+}
+
+/**
+ * Parse frontmatter from skill content.
+ * Returns the parsed frontmatter object or null if not found/invalid.
+ */
+export function parseSkillFrontmatter(content: string): { name?: string; description?: string } | null {
+  const files = parseSkillFiles(content);
+  const skillFile = files.find(f => f.filename === DEFAULT_SKILL_FILE);
+  if (!skillFile) return null;
+  
+  const frontmatterMatch = skillFile.content.match(/^---\s*\n([\s\S]*?)\n---/);
+  if (!frontmatterMatch) return null;
+  
+  const frontmatterContent = frontmatterMatch[1];
+  const result: { name?: string; description?: string } = {};
+  
+  const nameMatch = frontmatterContent.match(/^name:\s*(.+)$/m);
+  if (nameMatch) result.name = nameMatch[1].trim();
+  
+  const descMatch = frontmatterContent.match(/^description:\s*(.+)$/m);
+  if (descMatch) result.description = descMatch[1].trim();
+  
+  return result;
+}
+
+/**
+ * Update only the frontmatter section of skill content, preserving the rest.
+ * If no frontmatter exists, it will be added at the beginning.
+ */
+export function updateSkillFrontmatter(content: string, title: string, description: string): string {
+  const files = parseSkillFiles(content);
+  const skillFileIndex = files.findIndex(f => f.filename === DEFAULT_SKILL_FILE);
+  if (skillFileIndex === -1) return content;
+  
+  const skillContent = files[skillFileIndex].content;
+  const newFrontmatter = buildFrontmatter(title, description);
+  
+  // Check if frontmatter exists
+  const frontmatterMatch = skillContent.match(/^---\s*\n[\s\S]*?\n---/);
+  
+  let updatedSkillContent: string;
+  if (frontmatterMatch) {
+    // Replace existing frontmatter
+    updatedSkillContent = skillContent.replace(/^---\s*\n[\s\S]*?\n---/, newFrontmatter);
+  } else {
+    // Add frontmatter at the beginning
+    updatedSkillContent = newFrontmatter + '\n\n' + skillContent;
+  }
+  
+  // Update the skill file and re-serialize
+  files[skillFileIndex] = { ...files[skillFileIndex], content: updatedSkillContent };
+  return serializeSkillFiles(files);
+}
+
+/**
+ * Validate that skill content has required frontmatter fields.
+ * Returns an error code for translation, or null if valid.
+ */
+export type SkillFrontmatterValidationError = 
+  | "frontmatterMissing"
+  | "frontmatterNameRequired"
+  | "frontmatterNameInvalidFormat"
+  | "frontmatterDescriptionRequired";
+
+export function validateSkillFrontmatter(content: string): SkillFrontmatterValidationError | null {
+  const frontmatter = parseSkillFrontmatter(content);
+  
+  if (!frontmatter) {
+    return "frontmatterMissing";
+  }
+  
+  if (!frontmatter.name || frontmatter.name === DEFAULT_SKILL_NAME) {
+    return "frontmatterNameRequired";
+  }
+  
+  if (!isValidKebabCase(frontmatter.name)) {
+    return "frontmatterNameInvalidFormat";
+  }
+  
+  if (!frontmatter.description || frontmatter.description === DEFAULT_SKILL_DESCRIPTION) {
+    return "frontmatterDescriptionRequired";
+  }
+  
+  return null;
+}
+
 /**
  * Get a suggested filename based on common patterns
  */

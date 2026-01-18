@@ -255,7 +255,11 @@
       "pathContainsDotDot": "Η διαδρομή δεν μπορεί να περιέχει ..",
       "filenameReserved": "Το SKILL.md υπάρχει ήδη",
       "filenameDuplicate": "Ένα αρχείο με αυτό το όνομα υπάρχει ήδη",
-      "pathTooLong": "Η διαδρομή είναι πολύ μεγάλη (μέγιστο 200 χαρακτήρες)"
+      "pathTooLong": "Η διαδρομή είναι πολύ μεγάλη (μέγιστο 200 χαρακτήρες)",
+      "frontmatterMissing": "Η δεξιότητα πρέπει να περιλαμβάνει frontmatter με όνομα και περιγραφή",
+      "frontmatterNameRequired": "Το όνομα frontmatter είναι υποχρεωτικό (ενημερώστε το 'my-skill-name' σε μοναδικό όνομα)",
+      "frontmatterNameInvalidFormat": "Το όνομα της δεξιότητας πρέπει να είναι σε πεζά kebab-case (π.χ. my-skill-name)",
+      "frontmatterDescriptionRequired": "Η περιγραφή frontmatter είναι υποχρεωτική (παρέχετε σαφή περιγραφή του τι κάνει αυτή η δεξιότητα)"
     },
     "copyMarkdownUrl": "Αντιγραφή συνδέσμου MD",
     "copyYamlUrl": "Αντιγραφή συνδέσμου YAML",
@@ -269,6 +273,7 @@
     "cancel": "Ακύρωση",
     "titleRequired": "Ο τίτλος είναι υποχρεωτικός",
     "contentRequired": "Το περιεχόμενο είναι υποχρεωτικό",
+    "generateFrontmatter": "Δημιουργία Frontmatter",
     "titlePlaceholder": "Εισάγετε τίτλο για το prompt σας",
     "descriptionPlaceholder": "Προαιρετική περιγραφή του prompt σας",
     "contentPlaceholder": "Εισάγετε το περιεχόμενο του prompt σας εδώ...",

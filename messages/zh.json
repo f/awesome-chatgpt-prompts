@@ -255,7 +255,11 @@
       "pathContainsDotDot": "路径不能包含 ..",
       "filenameReserved": "SKILL.md 已存在",
       "filenameDuplicate": "此名称的文件已存在",
-      "pathTooLong": "路径太长（最多200个字符）"
+      "pathTooLong": "路径太长（最多200个字符）",
+      "frontmatterMissing": "技能必须包含带有名称和描述的 frontmatter",
+      "frontmatterNameRequired": "需要 frontmatter 名称（将 'my-skill-name' 更新为唯一名称）",
+      "frontmatterNameInvalidFormat": "技能名称必须是小写 kebab-case 格式（例如: my-skill-name）",
+      "frontmatterDescriptionRequired": "需要 frontmatter 描述（提供此技能功能的清晰描述）"
     },
     "copyMarkdownUrl": "复制 MD 链接",
     "copyYamlUrl": "复制 YAML 链接",
@@ -269,6 +273,7 @@
     "cancel": "取消",
     "titleRequired": "标题为必填项",
     "contentRequired": "内容为必填项",
+    "generateFrontmatter": "生成 Frontmatter",
     "titlePlaceholder": "输入提示词标题",
     "descriptionPlaceholder": "可选的提示词描述",
     "contentPlaceholder": "在此输入提示词内容...",

@@ -268,7 +268,11 @@
       "pathContainsDotDot": "パスに .. は使用できません",
       "filenameReserved": "SKILL.md は既に存在します",
       "filenameDuplicate": "この名前のファイルは既に存在します",
-      "pathTooLong": "パスが長すぎます（最大200文字）"
+      "pathTooLong": "パスが長すぎます（最大200文字）",
+      "frontmatterMissing": "スキルには名前と説明を含むfrontmatterが必要です",
+      "frontmatterNameRequired": "frontmatterの名前が必要です（'my-skill-name'を一意の名前に更新してください）",
+      "frontmatterNameInvalidFormat": "スキル名は小文字のkebab-caseである必要があります（例: my-skill-name）",
+      "frontmatterDescriptionRequired": "frontmatterの説明が必要です（このスキルが何をするかの明確な説明を提供してください）"
     },
     "copyMarkdownUrl": "MDリンクをコピー",
     "copyYamlUrl": "YAMLリンクをコピー",
@@ -282,6 +286,7 @@
     "cancel": "キャンセル",
     "titleRequired": "タイトルは必須です",
     "contentRequired": "内容は必須です",
+    "generateFrontmatter": "Frontmatterを生成",
     "titlePlaceholder": "プロンプトのタイトルを入力",
     "descriptionPlaceholder": "プロンプトの説明（任意）",
     "contentPlaceholder": "プロンプトの内容を入力...",

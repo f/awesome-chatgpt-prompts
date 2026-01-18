@@ -255,7 +255,11 @@
       "pathContainsDotDot": "הנתיב לא יכול להכיל ..",
       "filenameReserved": "SKILL.md כבר קיים",
       "filenameDuplicate": "קובץ עם שם זה כבר קיים",
-      "pathTooLong": "הנתיב ארוך מדי (מקסימום 200 תווים)"
+      "pathTooLong": "הנתיב ארוך מדי (מקסימום 200 תווים)",
+      "frontmatterMissing": "המיומנות חייבת לכלול frontmatter עם שם ותיאור",
+      "frontmatterNameRequired": "שם frontmatter נדרש (עדכן את 'my-skill-name' לשם ייחודי)",
+      "frontmatterNameInvalidFormat": "שם המיומנות חייב להיות באותיות קטנות kebab-case (למשל: my-skill-name)",
+      "frontmatterDescriptionRequired": "תיאור frontmatter נדרש (ספק תיאור ברור של מה שהמיומנות הזו עושה)"
     },
     "copyMarkdownUrl": "העתק קישור MD",
     "copyYamlUrl": "העתק קישור YAML",
@@ -269,6 +273,7 @@
     "cancel": "ביטול",
     "titleRequired": "כותרת נדרשת",
     "contentRequired": "תוכן נדרש",
+    "generateFrontmatter": "יצירת Frontmatter",
     "titlePlaceholder": "הזן כותרת לפרומפט שלך",
     "descriptionPlaceholder": "תיאור אופציונלי של הפרומפט שלך",
     "contentPlaceholder": "הזן את תוכן הפרומפט שלך כאן...",

@@ -93,24 +93,28 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
     notFound();
   }
 
-  const page = parseInt(pageParam || "1");
+  const page = Math.max(1, parseInt(pageParam || "1") || 1);
   const perPage = 24;
   const isOwner = session?.user?.id === user.id;
   const isUnclaimed = user.email?.endsWith("@unclaimed.prompts.chat") ?? false;
 
-  // Parse date filter for filtering prompts by day
-  const filterDateStart = dateFilter ? new Date(dateFilter + "T00:00:00") : null;
-  const filterDateEnd = dateFilter ? new Date(dateFilter + "T23:59:59") : null;
+  // Parse date filter for filtering prompts by day (validate YYYY-MM-DD format)
+  const isValidDateFilter = dateFilter && /^\d{4}-\d{2}-\d{2}$/.test(dateFilter);
+  const filterDateStart = isValidDateFilter ? new Date(dateFilter + "T00:00:00") : null;
+  const filterDateEnd = isValidDateFilter ? new Date(dateFilter + "T23:59:59") : null;
+  // Also verify the Date objects are valid (e.g., 2024-02-30 would fail)
+  const validFilterDateStart = filterDateStart && !isNaN(filterDateStart.getTime()) ? filterDateStart : null;
+  const validFilterDateEnd = filterDateEnd && !isNaN(filterDateEnd.getTime()) ? filterDateEnd : null;
 
   // Build where clause - show private prompts only if owner (unlisted prompts are visible on profiles)
   const where = {
     authorId: user.id,
     deletedAt: null,
     ...(isOwner ? {} : { isPrivate: false }),
-    ...(filterDateStart && filterDateEnd ? {
+    ...(validFilterDateStart && validFilterDateEnd ? {
       createdAt: {
-        gte: filterDateStart,
-        lte: filterDateEnd,
+        gte: validFilterDateStart,
+        lte: validFilterDateEnd,
       },
     } : {}),
   };
@@ -534,11 +538,11 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
 
         <TabsContent value="prompts">
           {/* Date Filter Indicator */}
-          {dateFilter && (
+          {validFilterDateStart && (
             <div className="flex items-center gap-2 mb-4 p-3 bg-primary/10 border border-primary/20 rounded-lg">
               <Calendar className="h-4 w-4 text-primary" />
               <span className="text-sm">
-                {t("filteringByDate", { date: new Date(dateFilter).toLocaleDateString(locale, { weekday: "long", year: "numeric", month: "long", day: "numeric" }) })}
+                {t("filteringByDate", { date: validFilterDateStart.toLocaleDateString(locale, { weekday: "long", year: "numeric", month: "long", day: "numeric" }) })}
               </span>
               <Link 
                 href={`/@${user.username}`} 
@@ -569,7 +573,7 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
 
           {prompts.length === 0 && pinnedPrompts.length === 0 ? (
             <div className="text-center py-12 border rounded-lg bg-muted/30">
-              {dateFilter ? (
+              {validFilterDateStart ? (
                 <>
                   <p className="text-muted-foreground">
                     {isOwner ? t("noPromptsOnDateOwner") : t("noPromptsOnDate")}

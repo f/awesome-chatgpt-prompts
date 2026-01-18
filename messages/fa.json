@@ -255,7 +255,11 @@
       "pathContainsDotDot": "مسیر نمی‌تواند شامل .. باشد",
       "filenameReserved": "SKILL.md از قبل وجود دارد",
       "filenameDuplicate": "فایلی با این نام از قبل وجود دارد",
-      "pathTooLong": "مسیر خیلی طولانی است (حداکثر ۲۰۰ کاراکتر)"
+      "pathTooLong": "مسیر خیلی طولانی است (حداکثر ۲۰۰ کاراکتر)",
+      "frontmatterMissing": "مهارت باید شامل frontmatter با نام و توضیحات باشد",
+      "frontmatterNameRequired": "نام frontmatter الزامی است ('my-skill-name' را به نام منحصر به فرد تغییر دهید)",
+      "frontmatterNameInvalidFormat": "نام مهارت باید به صورت kebab-case کوچک باشد (مثال: my-skill-name)",
+      "frontmatterDescriptionRequired": "توضیحات frontmatter الزامی است (توضیح واضحی از کار این مهارت ارائه دهید)"
     },
     "copyMarkdownUrl": "کپی لینک MD",
     "copyYamlUrl": "کپی لینک YAML",
@@ -269,6 +273,7 @@
     "cancel": "لغو",
     "titleRequired": "عنوان الزامی است",
     "contentRequired": "محتوا الزامی است",
+    "generateFrontmatter": "تولید Frontmatter",
     "titlePlaceholder": "یک عنوان برای پرامپت خود وارد کنید",
     "descriptionPlaceholder": "توضیحات اختیاری پرامپت شما",
     "contentPlaceholder": "محتوای پرامپت خود را اینجا وارد کنید...",
