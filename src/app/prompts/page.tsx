@@ -219,14 +219,21 @@ export default async function PromptsPage({ searchParams }: PromptsPageProps) {
       where.categoryId = params.category;
     }
     
+    // Handle tag parameter (can be comma-separated for multiple tags)
     if (params.tag) {
-      where.tags = {
-        some: {
-          tag: {
-            slug: params.tag,
+      // Handle multiple tags (comma-separated)
+      const tagSlugs = params.tag.split(",").map(t => t.trim()).filter(Boolean);
+      if (tagSlugs.length > 0) {
+        where.AND = tagSlugs.map(slug => ({
+          tags: {
+            some: {
+              tag: {
+                slug,
+              },
+            },
           },
-        },
-      };
+        }));
+      }
     }
     
     // Build order by clause
