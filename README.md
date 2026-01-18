@@ -193,6 +193,12 @@ Many thanks to these AI whisperers:
   <img src="https://contrib.rocks/image?repo=f/awesome-chatgpt-prompts" />
 </a>
 
+---
+
+## Related Projects
+
+- [Prompts Library](https://github.com/ArangoGutierrez/promptsLibrary) — Research-backed prompt templates for Cursor IDE and Claude, featuring Chain of Verification (CoVe) and spec-first workflows
+
 # License
 
 This work is licensed under [CC0 1.0 Universal (Public Domain Dedication)](https://creativecommons.org/publicdomain/zero/1.0/).
