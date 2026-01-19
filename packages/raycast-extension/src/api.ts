@@ -1,9 +1,8 @@
 import { getPreferenceValues } from "@raycast/api";
 import type { Prompt, PromptsResponse } from "./types";
 
-interface Preferences {
-  baseUrl: string;
-}
+// Preferences are auto-generated in raycast-env.d.ts
+import type { Preferences } from "@raycast/api";
 
 function getBaseUrl(): string {
   const { baseUrl } = getPreferenceValues<Preferences>();
