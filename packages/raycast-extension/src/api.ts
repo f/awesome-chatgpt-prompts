@@ -1,11 +1,12 @@
 import { getPreferenceValues } from "@raycast/api";
 import type { Prompt, PromptsResponse } from "./types";
 
-// Preferences are auto-generated in raycast-env.d.ts
-import type { Preferences } from "@raycast/api";
+interface PromptsChatPreferences {
+  baseUrl?: string;
+}
 
 function getBaseUrl(): string {
-  const { baseUrl } = getPreferenceValues<Preferences>();
+  const { baseUrl } = getPreferenceValues<PromptsChatPreferences>();
   return baseUrl?.replace(/\/$/, "") || "https://prompts.chat";
 }
 
