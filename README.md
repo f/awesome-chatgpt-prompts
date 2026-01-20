@@ -50,6 +50,13 @@
       <img align="center" height="40" alt="CodeRabbit logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/coderabbit.svg">
     </picture>
   </a><br><br>
+  <a href="https://sentry.io/?utm_source=prompts.chat" align="center">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/sentry-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/sentry.svg">
+      <img align="center" height="40" alt="Sentry logo" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/sentry.svg">
+    </picture>
+  </a><br><br>
   <a href="https://mitte.ai/?utm_source=prompts.chat" align="center">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/mitte-dark.svg">

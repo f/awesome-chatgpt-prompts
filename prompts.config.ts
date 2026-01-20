@@ -81,6 +81,7 @@ export default defineConfig({
         { name: "Wiro.ai", className: 'py-1', darkLogo: '/sponsors/wiro.png', logo: '/sponsors/wiro.png', url: "https://wiro.ai/?utm_source=prompts.chat" },
         { name: "Cognition", logo: "/sponsors/cognition.svg", url: "https://wind.surf/prompts-chat" },
         { name: "CodeRabbit", className: 'py-1', logo: '/sponsors/coderabbit.svg', darkLogo: '/sponsors/coderabbit-dark.svg', url: "https://coderabbit.link/fatih" },
+        { name: "Sentry", className: 'py-1', logo: '/sponsors/sentry.svg', darkLogo: '/sponsors/sentry-dark.svg', url: "https://sentry.io/?utm_source=prompts.chat" },
         { name: "MitteAI", logo: '/sponsors/mitte.svg', darkLogo: '/sponsors/mitte-dark.svg', url: "https://mitte.ai/?utm_source=prompts.chat" },
         { name: "warp.dev", className: 'py-2', logo: '/sponsors/warp.svg', url: "https://warp.dev/?utm_source=prompts.chat" },
       ],
