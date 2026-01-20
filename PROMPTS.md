@@ -49491,3 +49491,17 @@ I want to create a drag-and-drop experience using UniApp, where cards can be dro
 
 </details>
 
+<details>
+<summary><strong>Develop a creative dice generator called “IdeaDice”.</strong></summary>
+
+## Develop a creative dice generator called “IdeaDice”.
+
+Contributed by [@loshu2003@gmail.com](https://github.com/loshu2003@gmail.com)
+
+```md
+Develop a creative dice generator called “IdeaDice”.
+Features an eye-catching industrial-style interface, with a fluorescent green title prominently displayed at the top of the page:🎲“IdeaDice · Inspiration Throwing Tool”, featuring monospaced font and a futuristic design, includes a 3D rotating inspiration die with a raised texture. Each side of the die features a different keyword. Clicking the “Roll” button initiates the rotation of the die. Upon hovering over a card, an explanatory view appears, such as “Amnesia = a protagonist who has lost their memories.” The tool also supports exporting and generating posters.
+```
+
+</details>
+
