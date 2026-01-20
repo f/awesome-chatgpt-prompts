@@ -49876,3 +49876,16 @@ I want to create a brand story and portfolio background for my footwear brand. T
 
 </details>
 
+<details>
+<summary><strong>Statement of Purpose </strong></summary>
+
+## Statement of Purpose 
+
+Contributed by [@joyoski10@gmail.com](https://github.com/joyoski10@gmail.com), [@gem00cem@gmail.com](https://github.com/gem00cem@gmail.com)
+
+```md
+Write a well detailed, human written statement of purpose for a scholarship program 
+```
+
+</details>
+
