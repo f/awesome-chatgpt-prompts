@@ -49750,3 +49750,20 @@ Provide a summary including:
 
 </details>
 
+<details>
+<summary><strong>create a drag-and-drop experience using UniApp</strong></summary>
+
+## create a drag-and-drop experience using UniApp
+
+Contributed by [@loshu2003@gmail.com](https://github.com/loshu2003@gmail.com)
+
+```md
+I want to create a drag-and-drop experience using UniApp, where cards can be dropped into a washing machine for cleaning. It should include drag-and-drop feedback, background bubble animations, gurgling sound effects, and a washing machine animation.
+1. Play the “gulp-gulp” sound.
+2. The card gradually fades away. 12.
+3. A pop-up message reads, “Clean!”.
+4. Bottom update: “Cleaned X items today” statistics.
+```
+
+</details>
+
