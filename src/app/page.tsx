@@ -405,7 +405,7 @@ export default async function HomePage() {
                         />
                         <div>
                           <p className="text-sm font-medium">Thomas Dohmke</p>
-                          <p className="text-xs text-muted-foreground">Ex CEO at GitHub · Feb 5, 2025</p>
+                          <p className="text-xs text-muted-foreground">Former CEO at GitHub · Feb 5, 2025</p>
                         </div>
                       </div>
                       <p className="text-sm text-muted-foreground italic leading-relaxed">&ldquo;You can now pass prompts to Copilot Chat via URL. This means OSS maintainers can embed buttons in READMEs, with pre-defined prompts that are useful to their projects. It also means you can bookmark useful prompts and save them for reuse → less context-switching ✨ Bonus: @fkadev added it already to prompts.chat 🚀&rdquo;</p>
