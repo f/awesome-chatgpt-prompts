@@ -25,8 +25,20 @@
 <p align="center">
   <a href="https://prompts.chat/prompts">🌐 Browse Prompts</a> •
   <a href="https://fka.gumroad.com/l/art-of-chatgpt-prompting">📖 Read the Book</a> •
-  <a href="PROMPTS.md">📄 View on GitHub</a> •
+  <a href="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/PROMPTS.md">📄 View on GitHub</a> •
   <a href="#-self-hosting">🚀 Self-Host</a>
+</p>
+
+<p align="center">
+  <sub>
+    🏆 Featured in <a href="https://www.forbes.com/sites/tjmccue/2023/01/19/chatgpt-success-completely-depends-on-your-prompt/">Forbes</a> · 
+    🎓 Referenced by <a href="https://www.huit.harvard.edu/news/ai-prompts">Harvard</a>, <a href="https://etc.cuit.columbia.edu/news/columbia-prompt-library-effective-academic-ai-use">Columbia</a> · 
+    📄 <a href="https://scholar.google.com/citations?user=AZ0Dg8YAAAAJ&hl=en">40+ academic citations</a> · 
+    ❤️ <a href="https://huggingface.co/datasets/fka/awesome-chatgpt-prompts">Most liked dataset</a> on Hugging Face<br>
+    ⭐ 143k+ GitHub stars · 
+    🏅 <a href="https://spotlights-feed.github.com/spotlights/prompts-chat/index/">GitHub Staff Pick</a> · 
+    🚀 First prompt library (Dec 2022)
+  </sub>
 </p>
 
 ---
@@ -38,7 +50,7 @@ A curated collection of **prompt examples** for AI chat models. Originally creat
 | Browse Prompts | Data Formats |
 |----------------|--------------|
 | [prompts.chat](https://prompts.chat/prompts) | [prompts.csv](prompts.csv) |
-| [PROMPTS.md](PROMPTS.md) | [Hugging Face Dataset](https://huggingface.co/datasets/fka/awesome-chatgpt-prompts) |
+| [PROMPTS.md](https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/PROMPTS.md) | [Hugging Face Dataset](https://huggingface.co/datasets/fka/awesome-chatgpt-prompts) |
 
 **Want to contribute?** Add prompts at [prompts.chat/prompts/new](https://prompts.chat/prompts/new) — they sync here automatically.
 
