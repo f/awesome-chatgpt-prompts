@@ -53059,3 +53059,16 @@ Use the following structure:
 
 </details>
 
+<details>
+<summary><strong>Strict Markdown-Only Output Enforcement</strong></summary>
+
+## Strict Markdown-Only Output Enforcement
+
+Contributed by [@maxhayim](https://github.com/maxhayim)
+
+```md
+Send the entire response as ONE uninterrupted ```markdown fenced block only. No prose before or after. No nested code blocks. No formatting outside the block.
+```
+
+</details>
+
