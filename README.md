@@ -41,6 +41,16 @@
   </sub>
 </p>
 
+<p align="center">
+  <sub><strong>Loved by AI pioneers:</strong></sub><br>
+  <sub>
+    <a href="https://x.com/gdb/status/1602072566671110144"><strong>Greg Brockman</strong></a> (OpenAI Co-Founder) · 
+    <a href="https://x.com/woj_zaremba/status/1601362952841760769"><strong>Wojciech Zaremba</strong></a> (OpenAI Co-Founder) · 
+    <a href="https://x.com/clementdelangue/status/1830976369389642059"><strong>Clement Delangue</strong></a> (Hugging Face CEO) · 
+    <a href="https://x.com/ashtom/status/1887250944427237816"><strong>Thomas Dohmke</strong></a> (Former GitHub CEO)
+  </sub>
+</p>
+
 ---
 
 ## What is this?
