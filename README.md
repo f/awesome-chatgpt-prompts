@@ -124,57 +124,51 @@ Use prompts.chat as an MCP server in your AI tools.
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/clemta-dark.webp">
       <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/clemta.webp">
-      <img height="35" alt="Clemta" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/clemta.webp" style="vertical-align: middle;">
+      <img height="35" alt="Clemta" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/clemta.webp" style="vertical-align: middle; margin: 0 10px;">
     </picture>
   </a>
-  &nbsp; • &nbsp;
   <!-- Wiro (py-1) -->
   <a href="https://wiro.ai/?utm_source=prompts.chat">
-    <img height="30" alt="Wiro" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/wiro.png" style="vertical-align: middle;">
+    <img height="30" alt="Wiro" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/wiro.png" style="vertical-align: middle; margin: 0 10px;">
   </a>
-  &nbsp; • &nbsp;
   <!-- Cognition -->
   <a href="https://wind.surf/prompts-chat">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/cognition-dark.svg">
       <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/cognition.svg">
-      <img height="35" alt="Cognition" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/cognition.svg" style="vertical-align: middle;">
+      <img height="35" alt="Cognition" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/cognition.svg" style="vertical-align: middle; margin: 0 10px;">
     </picture>
   </a>
-  &nbsp; • &nbsp;
   <!-- CodeRabbit (py-1) -->
   <a href="https://coderabbit.link/fatih">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/coderabbit-dark.svg">
       <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/coderabbit.svg">
-      <img height="30" alt="CodeRabbit" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/coderabbit.svg" style="vertical-align: middle;">
+      <img height="30" alt="CodeRabbit" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/coderabbit.svg" style="vertical-align: middle; margin: 0 10px;">
     </picture>
   </a>
-  &nbsp; • &nbsp;
   <!-- Sentry (py-1) -->
   <a href="https://sentry.io/?utm_source=prompts.chat">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/sentry-dark.svg">
       <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/sentry.svg">
-      <img height="30" alt="Sentry" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/sentry.svg" style="vertical-align: middle;">
+      <img height="30" alt="Sentry" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/sentry.svg" style="vertical-align: middle; margin: 0 10px;">
     </picture>
   </a>
-  &nbsp; • &nbsp;
   <!-- MitteAI -->
   <a href="https://mitte.ai/?utm_source=prompts.chat">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/mitte-dark.svg">
       <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/mitte.svg">
-      <img height="35" alt="MitteAI" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/mitte.svg" style="vertical-align: middle;">
+      <img height="35" alt="MitteAI" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/mitte.svg" style="vertical-align: middle; margin: 0 10px;">
     </picture>
   </a>
-  &nbsp; • &nbsp;
   <!-- Warp (py-2) -->
   <a href="https://warp.dev/?utm_source=prompts.chat">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/warp-dark.svg">
       <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/warp.svg">
-      <img height="25" alt="Warp" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/warp.svg" style="vertical-align: middle;">
+      <img height="25" alt="Warp" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/warp.svg" style="vertical-align: middle; margin: 0 10px;">
     </picture>
   </a>
 </p>
