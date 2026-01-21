@@ -126,11 +126,13 @@ Use prompts.chat as an MCP server in your AI tools.
       <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/clemta.webp">
       <img height="35" alt="Clemta" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/clemta.webp">
     </picture>
-  </a>&nbsp;&nbsp;
+  </a>
+  &nbsp;&nbsp;
   <!-- Wiro (py-1) -->
   <a href="https://wiro.ai/?utm_source=prompts.chat">
     <img height="30" alt="Wiro" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/wiro.png">
-  </a>&nbsp;&nbsp;
+  </a>
+  &nbsp;&nbsp;
   <!-- Cognition -->
   <a href="https://wind.surf/prompts-chat">
     <picture>
@@ -138,7 +140,8 @@ Use prompts.chat as an MCP server in your AI tools.
       <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/cognition.svg">
       <img height="35" alt="Cognition" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/cognition.svg">
     </picture>
-  </a>&nbsp;&nbsp;
+  </a>
+  &nbsp;&nbsp;
   <!-- CodeRabbit (py-1) -->
   <a href="https://coderabbit.link/fatih">
     <picture>
@@ -146,7 +149,8 @@ Use prompts.chat as an MCP server in your AI tools.
       <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/coderabbit.svg">
       <img height="30" alt="CodeRabbit" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/coderabbit.svg">
     </picture>
-  </a>&nbsp;&nbsp;
+  </a>
+  &nbsp;&nbsp;
   <!-- Sentry (py-1) -->
   <a href="https://sentry.io/?utm_source=prompts.chat">
     <picture>
@@ -154,7 +158,8 @@ Use prompts.chat as an MCP server in your AI tools.
       <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/sentry.svg">
       <img height="30" alt="Sentry" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/sentry.svg">
     </picture>
-  </a>&nbsp;&nbsp;
+  </a>
+  &nbsp;&nbsp;
   <!-- MitteAI -->
   <a href="https://mitte.ai/?utm_source=prompts.chat">
     <picture>
@@ -162,7 +167,8 @@ Use prompts.chat as an MCP server in your AI tools.
       <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/mitte.svg">
       <img height="35" alt="MitteAI" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/mitte.svg">
     </picture>
-  </a>&nbsp;&nbsp;
+  </a>
+  &nbsp;&nbsp;
   <!-- Warp (py-2) -->
   <a href="https://warp.dev/?utm_source=prompts.chat">
     <picture>
