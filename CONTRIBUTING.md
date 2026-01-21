@@ -30,27 +30,10 @@ For bug fixes, documentation improvements, or other non-prompt contributions:
 2. Create a branch for your changes
 3. Submit a pull request with a descriptive title and explanation
 
-## Prompt CSV Format
-
-If you're contributing directly to `prompts.csv`, follow this format:
-
-| Column | Description |
-|--------|-------------|
-| `act` | Prompt title (without "Act as" prefix) |
-| `prompt` | The full prompt text |
-| `for_devs` | `TRUE` or `FALSE` - is this for developers? |
-| `type` | `TEXT` or `STRUCTURED` |
-| `contributor` | Your GitHub username |
-
-**CSV Rules:**
-- Escape quotes by double-quoting them (`""`)
-- No spaces after commas inside quoted fields
-- Use your GitHub username exactly as it appears
-
 ## Questions & Issue Policy
 
 Open an issue if you have questions about contributing. 
 
 **Important:** This repository is strictly for AI prompts. 
-- Do **not** post advertisements, third-party software support requests (e.g., Norton Antivirus, billing issues), or fake tech support phone numbers. 
+- Do **not** post advertisements.
 - Any off-topic issues will be closed immediately, and the posting user will be reported to GitHub for spam and malicious activity.
