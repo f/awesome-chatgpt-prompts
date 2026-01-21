@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { ArrowRight, Star, Heart, Trophy, Users, HeartHandshake, Code, Lock, Building2, Github, GraduationCap, LogIn, Rocket, Quote, FileText, History } from "lucide-react";
+import { ArrowRight, Star, Heart, Trophy, Users, HeartHandshake, Code, Lock, Building2, Github, GraduationCap, LogIn, Rocket, Quote, History } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { getConfig } from "@/lib/config";
 import { Button } from "@/components/ui/button";
@@ -291,10 +291,6 @@ export default async function HomePage() {
                   <Link href="https://libguides.olympic.edu/UsingAI/Prompts" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
                     <GraduationCap className="h-4 w-4 text-[#003366]" />
                     <span>{tHomepage("achievements.referencedBy")} <strong>{tHomepage("achievements.olympicCollege")}</strong></span>
-                  </Link>
-                  <Link href="https://arxiv.org/pdf/2502.04484" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
-                    <FileText className="h-4 w-4 text-[#B31B1B]" />
-                    <span>{tHomepage("achievements.citedIn")} <strong>{tHomepage("achievements.arxivPaper")}</strong></span>
                   </Link>
                   <Link href="https://scholar.google.com/citations?user=AZ0Dg8YAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
                     <GraduationCap className="h-4 w-4 text-[#4285F4]" />

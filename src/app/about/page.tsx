@@ -403,15 +403,6 @@ export default async function AboutPage() {
                 })}
               </li>
               <li>
-                {t.rich("citedArxiv", {
-                  link: (chunks) => (
-                    <Link href="https://arxiv.org/pdf/2502.04484" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">
-                      {chunks}
-                    </Link>
-                  ),
-                })}
-              </li>
-              <li>
                 {t.rich("googleScholarCitations", {
                   link: (chunks) => (
                     <Link href="https://scholar.google.com/citations?user=AZ0Dg8YAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">
