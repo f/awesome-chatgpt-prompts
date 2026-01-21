@@ -40,7 +40,7 @@ A curated collection of **prompt examples** for AI chat models. Originally creat
 | [prompts.chat](https://prompts.chat/prompts) | [prompts.csv](prompts.csv) |
 | [PROMPTS.md](PROMPTS.md) | [Hugging Face Dataset](https://huggingface.co/datasets/fka/awesome-chatgpt-prompts) |
 
-**Want to contribute?** Add prompts at [prompts.chat](https://prompts.chat) — they sync here automatically.
+**Want to contribute?** Add prompts at [prompts.chat/prompts/new](https://prompts.chat/prompts/new) — they sync here automatically.
 
 ---
 
