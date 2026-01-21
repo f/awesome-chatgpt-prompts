@@ -335,7 +335,7 @@ export default async function HomePage() {
             {!useCloneBranding && (
               <div className="mt-6 pt-6 border-t">
                 <p className="text-center text-xs text-muted-foreground mb-6">{tHomepage("achievements.lovedByPioneers")}</p>
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+                <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
                   {/* Greg Brockman */}
                   <Link
                     href="https://x.com/gdb/status/1602072566671110144"
@@ -386,31 +386,6 @@ export default async function HomePage() {
                       <p className="text-sm text-muted-foreground italic leading-relaxed">&ldquo;I love it! https://github.com/f/awesome-chatgpt-prompts&rdquo;</p>
                     </div>
                   </Link>
-                  {/* Thomas Dohmke */}
-                  <Link
-                    href="https://x.com/ashtom/status/1887250944427237816"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative p-5 rounded-lg border bg-muted/30 overflow-hidden hover:border-primary/50 transition-colors"
-                  >
-                    <Quote className="absolute top-3 right-3 h-16 w-16 text-muted-foreground/10 -rotate-12" />
-                    <div className="relative z-10 flex flex-col gap-3 h-full">
-                      <div className="flex items-center gap-3">
-                        <Image
-                          src="https://github.com/ashtom.png"
-                          alt="Thomas Dohmke"
-                          width={40}
-                          height={40}
-                          className="rounded-full"
-                        />
-                        <div>
-                          <p className="text-sm font-medium">Thomas Dohmke</p>
-                          <p className="text-xs text-muted-foreground">Former CEO at GitHub · Feb 5, 2025</p>
-                        </div>
-                      </div>
-                      <p className="text-sm text-muted-foreground italic leading-relaxed">&ldquo;You can now pass prompts to Copilot Chat via URL. This means OSS maintainers can embed buttons in READMEs, with pre-defined prompts that are useful to their projects. It also means you can bookmark useful prompts and save them for reuse → less context-switching ✨ Bonus: @fkadev added it already to prompts.chat 🚀&rdquo;</p>
-                    </div>
-                  </Link>
                   {/* Clement Delangue */}
                   <Link
                     href="https://x.com/clementdelangue/status/1830976369389642059"
@@ -434,6 +409,31 @@ export default async function HomePage() {
                         </div>
                       </div>
                       <p className="text-sm text-muted-foreground italic leading-relaxed">&ldquo;Keep up the great work!&rdquo;</p>
+                    </div>
+                  </Link>
+                  {/* Thomas Dohmke */}
+                  <Link
+                    href="https://x.com/ashtom/status/1887250944427237816"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative p-5 rounded-lg border bg-muted/30 overflow-hidden hover:border-primary/50 transition-colors"
+                  >
+                    <Quote className="absolute top-3 right-3 h-16 w-16 text-muted-foreground/10 -rotate-12" />
+                    <div className="relative z-10 flex flex-col gap-3 h-full">
+                      <div className="flex items-center gap-3">
+                        <Image
+                          src="https://github.com/ashtom.png"
+                          alt="Thomas Dohmke"
+                          width={40}
+                          height={40}
+                          className="rounded-full"
+                        />
+                        <div>
+                          <p className="text-sm font-medium">Thomas Dohmke</p>
+                          <p className="text-xs text-muted-foreground">Former CEO at GitHub · Feb 5, 2025</p>
+                        </div>
+                      </div>
+                      <p className="text-sm text-muted-foreground italic leading-relaxed">&ldquo;You can now pass prompts to Copilot Chat via URL. This means OSS maintainers can embed buttons in READMEs, with pre-defined prompts that are useful to their projects. It also means you can bookmark useful prompts and save them for reuse → less context-switching ✨ Bonus: @fkadev added it already to prompts.chat 🚀&rdquo;</p>
                     </div>
                   </Link>
                 </div>
