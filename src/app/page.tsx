@@ -430,10 +430,10 @@ export default async function HomePage() {
                         />
                         <div>
                           <p className="text-sm font-medium">Clement Delangue</p>
-                          <p className="text-xs text-muted-foreground">CEO at HuggingFace · Sep 3, 2024</p>
+                          <p className="text-xs text-muted-foreground">CEO at Hugging Face · Sep 3, 2024</p>
                         </div>
                       </div>
-                      <p className="text-sm text-muted-foreground italic leading-relaxed">&ldquo;keep up the great work!&rdquo;</p>
+                      <p className="text-sm text-muted-foreground italic leading-relaxed">&ldquo;Keep up the great work!&rdquo;</p>
                     </div>
                   </Link>
                 </div>
