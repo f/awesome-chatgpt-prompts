@@ -1,0 +1,66 @@
+<svg viewBox="0 0 16 20" xmlns="http://www.w3.org/2000/svg" style="image-rendering: pixelated;">
+  <!-- Antenna -->
+  <rect x="7" y="0" width="2" height="2" fill="#FFD700"/>
+  <rect x="6" y="2" width="4" height="2" fill="#C0C0C0"/>
+  
+  <!-- Head -->
+  <rect x="2" y="4" width="12" height="8" fill="#4A90D9"/>
+  
+  <!-- Eyes - white part -->
+  <rect x="4" y="6" width="3" height="3" fill="white"/>
+  <rect x="9" y="6" width="3" height="3" fill="white"/>
+  
+  <!-- Pupils - look around animation (stay within eye whites) -->
+  <rect x="5" y="7" width="2" height="2" fill="#333">
+    <animate attributeName="x" values="5;5;5;5;4;4;5" keyTimes="0;0.3;0.5;0.6;0.65;0.85;1" dur="12s" repeatCount="indefinite" calcMode="discrete"/>
+  </rect>
+  <rect x="10" y="7" width="2" height="2" fill="#333">
+    <animate attributeName="x" values="10;10;10;10;9;9;10" keyTimes="0;0.3;0.5;0.6;0.65;0.85;1" dur="12s" repeatCount="indefinite" calcMode="discrete"/>
+  </rect>
+  
+  <!-- Eyelids for blink - both eyes together, every 6 seconds -->
+  <rect x="4" y="6" width="3" height="0" fill="#4A90D9">
+    <animate attributeName="height" 
+             values="0;3;0" 
+             keyTimes="0;0.5;1"
+             dur="0.2s" 
+             begin="0s;6s;12s;18s;24s;30s;36s;42s;48s;54s;60s"
+             fill="freeze"/>
+  </rect>
+  <rect x="9" y="6" width="3" height="0" fill="#4A90D9">
+    <animate attributeName="height" 
+             values="0;3;0" 
+             keyTimes="0;0.5;1"
+             dur="0.2s" 
+             begin="0s;6s;12s;18s;24s;30s;36s;42s;48s;54s;60s"
+             fill="freeze"/>
+  </rect>
+  
+  <!-- Mouth - base smile -->
+  <rect x="6" y="10" width="4" height="1" fill="#333"/>
+  <rect x="5" y="9" width="1" height="1" fill="#333"/>
+  <rect x="10" y="9" width="1" height="1" fill="#333"/>
+  
+  <!-- Bigger smile overlay (animated) - instant on/off -->
+  <rect x="5" y="10" width="1" height="1" fill="#333" opacity="0">
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.001;0.2;0.201" dur="8s" repeatCount="indefinite" calcMode="discrete"/>
+  </rect>
+  <rect x="10" y="10" width="1" height="1" fill="#333" opacity="0">
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.001;0.2;0.201" dur="8s" repeatCount="indefinite" calcMode="discrete"/>
+  </rect>
+  <rect x="6" y="11" width="4" height="1" fill="#333" opacity="0">
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.001;0.2;0.201" dur="8s" repeatCount="indefinite" calcMode="discrete"/>
+  </rect>
+  
+  <!-- Body -->
+  <rect x="4" y="12" width="8" height="6" fill="#4A90D9"/>
+  <rect x="6" y="14" width="4" height="2" fill="#FFD700"/>
+  
+  <!-- Arms -->
+  <rect x="0" y="12" width="4" height="2" fill="#4A90D9"/>
+  <rect x="12" y="12" width="4" height="2" fill="#4A90D9"/>
+  
+  <!-- Feet -->
+  <rect x="4" y="18" width="3" height="2" fill="#333"/>
+  <rect x="9" y="18" width="3" height="2" fill="#333"/>
+</svg>

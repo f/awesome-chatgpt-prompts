@@ -8,6 +8,76 @@ import { Button } from "@/components/ui/button";
 import { useBranding } from "@/components/providers/branding-provider";
 import { notFound } from "next/navigation";
 
+// Promi logo SVG component for light backgrounds
+function PromiLogo({ className }: { className?: string }) {
+  return (
+    <svg 
+      viewBox="0 0 16 20" 
+      className={className}
+      style={{ imageRendering: "pixelated" }}
+    >
+      {/* Antenna */}
+      <rect x="7" y="0" width="2" height="2" fill="#FFD700" />
+      <rect x="6" y="2" width="4" height="2" fill="#C0C0C0" />
+      {/* Head */}
+      <rect x="2" y="4" width="12" height="8" fill="#4A90D9" />
+      {/* Eyes */}
+      <rect x="4" y="6" width="3" height="3" fill="white" />
+      <rect x="9" y="6" width="3" height="3" fill="white" />
+      <rect x="5" y="7" width="2" height="2" fill="#333" />
+      <rect x="10" y="7" width="2" height="2" fill="#333" />
+      {/* Mouth */}
+      <rect x="6" y="10" width="4" height="1" fill="#333" />
+      <rect x="5" y="9" width="1" height="1" fill="#333" />
+      <rect x="10" y="9" width="1" height="1" fill="#333" />
+      {/* Body */}
+      <rect x="4" y="12" width="8" height="6" fill="#4A90D9" />
+      <rect x="6" y="14" width="4" height="2" fill="#FFD700" />
+      {/* Arms */}
+      <rect x="0" y="12" width="4" height="2" fill="#4A90D9" />
+      <rect x="12" y="12" width="4" height="2" fill="#4A90D9" />
+      {/* Feet */}
+      <rect x="4" y="18" width="3" height="2" fill="#333" />
+      <rect x="9" y="18" width="3" height="2" fill="#333" />
+    </svg>
+  );
+}
+
+// Promi logo SVG component for dark backgrounds
+function PromiLogoDark({ className }: { className?: string }) {
+  return (
+    <svg 
+      viewBox="0 0 16 20" 
+      className={className}
+      style={{ imageRendering: "pixelated" }}
+    >
+      {/* Antenna */}
+      <rect x="7" y="0" width="2" height="2" fill="#FFD700" />
+      <rect x="6" y="2" width="4" height="2" fill="#E0E0E0" />
+      {/* Head */}
+      <rect x="2" y="4" width="12" height="8" fill="#5BA0E9" />
+      {/* Eyes */}
+      <rect x="4" y="6" width="3" height="3" fill="white" />
+      <rect x="9" y="6" width="3" height="3" fill="white" />
+      <rect x="5" y="7" width="2" height="2" fill="#222" />
+      <rect x="10" y="7" width="2" height="2" fill="#222" />
+      {/* Mouth */}
+      <rect x="6" y="10" width="4" height="1" fill="#222" />
+      <rect x="5" y="9" width="1" height="1" fill="#222" />
+      <rect x="10" y="9" width="1" height="1" fill="#222" />
+      {/* Body */}
+      <rect x="4" y="12" width="8" height="6" fill="#5BA0E9" />
+      <rect x="6" y="14" width="4" height="2" fill="#FFD700" />
+      {/* Arms */}
+      <rect x="0" y="12" width="4" height="2" fill="#5BA0E9" />
+      <rect x="12" y="12" width="4" height="2" fill="#5BA0E9" />
+      {/* Feet */}
+      <rect x="4" y="18" width="3" height="2" fill="#888" />
+      <rect x="9" y="18" width="3" height="2" fill="#888" />
+    </svg>
+  );
+}
+
 interface AssetCardProps {
   title: string;
   description: string;
@@ -194,6 +264,65 @@ export default function BrandAssetsPage() {
                 />
                 <span className="text-2xl font-bold text-white">{branding.name}</span>
               </div>
+            </AssetCard>
+          </div>
+        </section>
+
+        {/* Promi Mascot Section */}
+        <section>
+          <h2 className="text-xl font-semibold mb-4">Promi</h2>
+          <p className="text-sm text-muted-foreground mb-4">The pixel art mascot for prompts.chat Kids</p>
+          <div className="grid md:grid-cols-2 gap-4">
+            {/* Promi for light backgrounds */}
+            <AssetCard
+              title="Promi"
+              description={t("forLightBackgrounds")}
+              bgClass="bg-gray-100"
+              downloadUrl="/promi.svg"
+              filename="promi.svg"
+            >
+              <PromiLogo className="h-20 w-auto" />
+            </AssetCard>
+
+            {/* Promi for dark backgrounds */}
+            <AssetCard
+              title="Promi"
+              description={t("forDarkBackgrounds")}
+              bgClass="bg-gray-900"
+              downloadUrl="/promi-dark.svg"
+              filename="promi-dark.svg"
+            >
+              <PromiLogoDark className="h-20 w-auto" />
+            </AssetCard>
+          </div>
+        </section>
+
+        {/* Animated Logos Section */}
+        <section>
+          <h2 className="text-xl font-semibold mb-4">{t("animatedLogos")}</h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            {/* Logo animated */}
+            <AssetCard
+              title={t("logo")}
+              description="Animated"
+              bgClass="bg-gray-100"
+              downloadUrl="/logo-animated.svg"
+              filename="logo-animated.svg"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logo-animated.svg" alt="Logo animated" className="h-20 w-auto" />
+            </AssetCard>
+
+            {/* Promi animated */}
+            <AssetCard
+              title="Promi"
+              description="Animated"
+              bgClass="bg-gradient-to-br from-gray-100 to-gray-200"
+              downloadUrl="/promi-animated.svg"
+              filename="promi-animated.svg"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/promi-animated.svg" alt="Promi animated" className="h-20 w-auto" />
             </AssetCard>
           </div>
         </section>
