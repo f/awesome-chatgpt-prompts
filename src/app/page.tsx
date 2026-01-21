@@ -296,6 +296,10 @@ export default async function HomePage() {
                     <FileText className="h-4 w-4 text-[#B31B1B]" />
                     <span>{tHomepage("achievements.citedIn")} <strong>{tHomepage("achievements.arxivPaper")}</strong></span>
                   </Link>
+                  <Link href="https://scholar.google.com/citations?user=AZ0Dg8YAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+                    <GraduationCap className="h-4 w-4 text-[#4285F4]" />
+                    <span><strong>40+</strong> {tHomepage("achievements.academicCitations")}</span>
+                  </Link>
                   <Link href="https://github.blog/changelog/2025-02-14-personal-custom-instructions-bing-web-search-and-more-in-copilot-on-github-com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
                     <Github className="h-4 w-4" />
                     <span>{tHomepage("achievements.referencedIn")} <strong>{tHomepage("achievements.githubBlog")}</strong></span>

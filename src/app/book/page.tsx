@@ -12,8 +12,96 @@ const kidsFont = Schoolbell({
 });
 
 export const metadata: Metadata = {
-  title: "The Interactive Book of Prompting | prompts.chat",
-  description: "An Interactive Guide to Crafting Clear and Effective Prompts",
+  title: "The Interactive Book of Prompting | Free Online Guide to AI Prompt Engineering",
+  description: "Master AI prompt engineering with this free, interactive guide. Learn ChatGPT prompts, chain-of-thought reasoning, few-shot learning, and advanced techniques. 25+ chapters with real examples.",
+  keywords: [
+    "prompt engineering",
+    "ChatGPT prompts",
+    "AI prompts",
+    "prompt engineering guide",
+    "prompt engineering book",
+    "how to write prompts",
+    "AI prompt techniques",
+    "chain of thought prompting",
+    "few-shot learning",
+    "prompt chaining",
+    "system prompts",
+    "LLM prompts",
+    "GPT prompts",
+    "Claude prompts",
+    "AI communication",
+  ],
+  authors: [{ name: "Fatih Kadir Akın", url: "https://github.com/f" }],
+  creator: "Fatih Kadir Akın",
+  publisher: "prompts.chat",
+  openGraph: {
+    title: "The Interactive Book of Prompting",
+    description: "Master AI prompt engineering with this free, interactive guide. Learn ChatGPT prompts, chain-of-thought reasoning, few-shot learning, and 25+ chapters of advanced techniques.",
+    url: "https://prompts.chat/book",
+    siteName: "prompts.chat",
+    images: [
+      {
+        url: "https://prompts.chat/book-cover-photo.jpg",
+        width: 1200,
+        height: 630,
+        alt: "The Interactive Book of Prompting - Free AI Prompt Engineering Guide",
+      },
+    ],
+    locale: "en_US",
+    type: "book",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Interactive Book of Prompting",
+    description: "Master AI prompt engineering with this free, interactive guide. 25+ chapters with real examples.",
+    images: ["https://prompts.chat/book-cover-photo.jpg"],
+    creator: "@fkadev",
+  },
+  alternates: {
+    canonical: "https://prompts.chat/book",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
+// JSON-LD structured data for SEO
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Book",
+  name: "The Interactive Book of Prompting",
+  alternateName: "AI Prompt Engineering Guide",
+  description: "Master AI prompt engineering with this free, interactive guide. Learn ChatGPT prompts, chain-of-thought reasoning, few-shot learning, and advanced techniques.",
+  author: {
+    "@type": "Person",
+    name: "Fatih Kadir Akın",
+    url: "https://github.com/f",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "prompts.chat",
+    url: "https://prompts.chat",
+  },
+  url: "https://prompts.chat/book",
+  image: "https://prompts.chat/book-cover-photo.jpg",
+  inLanguage: "en",
+  genre: ["Technology", "Education", "Artificial Intelligence"],
+  about: {
+    "@type": "Thing",
+    name: "Prompt Engineering",
+  },
+  isAccessibleForFree: true,
+  numberOfPages: 25,
+  bookFormat: "https://schema.org/EBook",
+  license: "https://creativecommons.org/publicdomain/zero/1.0/",
 };
 
 export default function BookHomePage() {
@@ -27,7 +115,13 @@ export default function BookHomePage() {
   ];
 
   return (
-    <div className="max-w-2xl">
+    <>
+      {/* JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className="max-w-2xl">
       {/* Book Cover Image */}
       <div className="mb-10">
         <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl">
@@ -155,6 +249,7 @@ export default function BookHomePage() {
           project. Licensed under CC0.
         </p>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

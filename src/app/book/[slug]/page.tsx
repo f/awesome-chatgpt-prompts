@@ -24,9 +24,58 @@ export async function generateMetadata({ params }: ChapterPageProps): Promise<Me
     return { title: "Chapter Not Found" };
   }
 
+  const description = chapter.description 
+    ? `${chapter.description}. Learn ${chapter.title.toLowerCase()} techniques in this free interactive prompt engineering guide.`
+    : `Learn about ${chapter.title.toLowerCase()} in this free interactive prompt engineering guide. Part of The Interactive Book of Prompting.`;
+
   return {
     title: `${chapter.title} | The Interactive Book of Prompting`,
-    description: chapter.description || `Learn about ${chapter.title.toLowerCase()} in prompt engineering.`,
+    description,
+    keywords: [
+      chapter.title.toLowerCase(),
+      "prompt engineering",
+      "AI prompts",
+      "ChatGPT",
+      chapter.part.toLowerCase(),
+      "prompting techniques",
+    ],
+    authors: [{ name: "Fatih Kadir Akın", url: "https://github.com/f" }],
+    openGraph: {
+      title: `${chapter.title} - The Interactive Book of Prompting`,
+      description,
+      url: `https://prompts.chat/book/${slug}`,
+      siteName: "prompts.chat",
+      images: [
+        {
+          url: "https://prompts.chat/book-cover-photo.jpg",
+          width: 1200,
+          height: 630,
+          alt: `${chapter.title} - Prompt Engineering Guide`,
+        },
+      ],
+      locale: "en_US",
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${chapter.title} | Prompt Engineering`,
+      description,
+      images: ["https://prompts.chat/book-cover-photo.jpg"],
+    },
+    alternates: {
+      canonical: `https://prompts.chat/book/${slug}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
   };
 }
 

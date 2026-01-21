@@ -411,6 +411,15 @@ export default async function AboutPage() {
                   ),
                 })}
               </li>
+              <li>
+                {t.rich("googleScholarCitations", {
+                  link: (chunks) => (
+                    <Link href="https://scholar.google.com/citations?user=AZ0Dg8YAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">
+                      {chunks}
+                    </Link>
+                  ),
+                })}
+              </li>
             </ul>
           </div>
 
