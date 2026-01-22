@@ -134,6 +134,29 @@ npx prompts.chat
 ### MCP Server
 Use prompts.chat as an MCP server in your AI tools.
 
+**Remote (recommended):**
+```json
+{
+  "mcpServers": {
+    "prompts.chat": {
+      "url": "https://prompts.chat/api/mcp"
+    }
+  }
+}
+```
+
+**Local:**
+```json
+{
+  "mcpServers": {
+    "prompts.chat": {
+      "command": "npx",
+      "args": ["-y", "prompts.chat", "mcp"]
+    }
+  }
+}
+```
+
 📖 [MCP Documentation](https://prompts.chat/docs/api)
 
 ---

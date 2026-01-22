@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { render } from 'ink';
 import meow from 'meow';
 import clipboardy from 'clipboardy';
+import { spawn } from 'child_process';
 import { PromptList } from './components/PromptList.js';
 import { PromptDetail } from './components/PromptDetail.js';
 import type { Prompt } from './api.js';
@@ -105,6 +106,7 @@ const cli = meow(`
   Commands
     (default)     Launch interactive TUI
     new <dir>     Create a new prompts.chat instance
+    mcp           Start MCP server for AI tools
 
   Options
     --help        Show this help
@@ -143,6 +145,16 @@ async function main() {
       process.exit(1);
     }
     await createNew({ directory });
+    return;
+  }
+
+  // Handle 'mcp' command - proxy to @fkadev/prompts.chat-mcp
+  if (command === 'mcp') {
+    const child = spawn('npx', ['-y', '@fkadev/prompts.chat-mcp', ...args], {
+      stdio: 'inherit',
+      shell: true,
+    });
+    child.on('close', (code) => process.exit(code ?? 0));
     return;
   }
 
