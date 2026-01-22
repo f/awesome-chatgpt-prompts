@@ -130,7 +130,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         },
       },
       _count: {
-        select: { votes: true, contributors: true },
+        select: { votes: true, contributors: true, outgoingConnections: true, incomingConnections: true },
       },
     },
   });
