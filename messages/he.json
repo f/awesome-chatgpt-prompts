@@ -38,7 +38,8 @@
     "feed": "פיד",
     "promptmasters": "מאסטרים",
     "prompts": "פרומפטים",
-    "skills": "מיומנויות",
+    "skills": "כישורים",
+    "workflows": "תהליכי עבודה",
     "categories": "קטגוריות",
     "tags": "תגיות",
     "settings": "הגדרות",
@@ -50,7 +51,8 @@
     "ide": "Typed-Prompts IDE",
     "developers": "מפתחים",
     "book": "ספר",
-    "forKids": "לילדים"
+    "forKids": "לילדים",
+    "more": "עוד"
   },
   "brand": {
     "copyLogoSvg": "העתק לוגו SVG",
@@ -848,6 +850,13 @@
     "subscribeToCategories": "הירשם לקטגוריות כדי לראות פרומפטים כאן",
     "viewAllCategories": "צפה בכל הקטגוריות"
   },
+  "workflows": {
+    "title": "תהליכי עבודה",
+    "description": "פרומפטים עם זרימות וחיבורים רציפים",
+    "noWorkflows": "עדיין אין תהליכי עבודה",
+    "noWorkflowsDescription": "תהליכי עבודה הם פרומפטים שמתחברים לפרומפטים אחרים ברצף. צור פרומפט והוסף חיבורים כדי לבנות תהליך עבודה.",
+    "browsePrompts": "עיין בפרומפטים"
+  },
   "collection": {
     "title": "האוסף שלי",
     "description": "פרומפטים ששמרת למועד מאוחר יותר",
@@ -1197,7 +1206,8 @@
     "addNextDescription": "בחר פרומפט שבא אחרי זה בתהליך העבודה.",
     "noConnections": "אין עדיין פרומפטים מקושרים. הוסף קישורים ליצירת שרשרת פרומפטים.",
     "previousSteps": "שלבים קודמים",
-    "nextSteps": "שלבים הבאים",
+    "nextSteps": "השלבים הבאים",
+    "fullFlow": "תהליך עבודה מלא",
     "searchPrompt": "חפש פרומפט",
     "searchPlaceholder": "חפש לפי כותרת...",
     "selectedPrompt": "פרומפט נבחר",

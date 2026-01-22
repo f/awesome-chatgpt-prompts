@@ -39,6 +39,7 @@
     "promptmasters": "پرامپت‌مسترها",
     "prompts": "پرامپت‌ها",
     "skills": "مهارت‌ها",
+    "workflows": "گردش کار",
     "categories": "دسته‌بندی‌ها",
     "tags": "برچسب‌ها",
     "settings": "تنظیمات",
@@ -50,7 +51,8 @@
     "ide": "Typed-Prompts IDE",
     "developers": "توسعه‌دهندگان",
     "book": "کتاب",
-    "forKids": "برای کودکان"
+    "forKids": "برای کودکان",
+    "more": "بیشتر"
   },
   "brand": {
     "copyLogoSvg": "کپی SVG لوگو",
@@ -848,6 +850,13 @@
     "subscribeToCategories": "برای دیدن پرامپت‌ها، دسته‌بندی‌ها را دنبال کنید",
     "viewAllCategories": "مشاهده همه دسته‌بندی‌ها"
   },
+  "workflows": {
+    "title": "گردش کار",
+    "description": "پرامپت‌ها با جریان‌ها و اتصالات ترتیبی",
+    "noWorkflows": "هنوز گردش کاری وجود ندارد",
+    "noWorkflowsDescription": "گردش کار پرامپت‌هایی هستند که به ترتیب به پرامپت‌های دیگر متصل می‌شوند. یک پرامپت ایجاد کنید و اتصالات اضافه کنید تا گردش کار بسازید.",
+    "browsePrompts": "مرور پرامپت‌ها"
+  },
   "collection": {
     "title": "مجموعه من",
     "description": "پرامپت‌هایی که برای بعد ذخیره کردید",
@@ -1198,6 +1207,7 @@
     "noConnections": "هنوز پرامپت متصلی نیست. اتصالاتی اضافه کنید تا یک زنجیره پرامپت بسازید.",
     "previousSteps": "مراحل قبلی",
     "nextSteps": "مراحل بعدی",
+    "fullFlow": "گردش کار کامل",
     "searchPrompt": "جستجوی پرامپت",
     "searchPlaceholder": "جستجو بر اساس عنوان...",
     "selectedPrompt": "پرامپت انتخاب شده",

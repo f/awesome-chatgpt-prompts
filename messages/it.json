@@ -39,6 +39,7 @@
     "promptmasters": "Promptmaster",
     "prompts": "Prompt",
     "skills": "Competenze",
+    "workflows": "Flussi di lavoro",
     "categories": "Categorie",
     "tags": "Tag",
     "settings": "Impostazioni",
@@ -50,7 +51,8 @@
     "ide": "Typed-Prompts IDE",
     "developers": "Sviluppatori",
     "book": "Libro",
-    "forKids": "Per Bambini"
+    "forKids": "Per Bambini",
+    "more": "Altro"
   },
   "brand": {
     "copyLogoSvg": "Copia Logo SVG",
@@ -848,6 +850,13 @@
     "subscribeToCategories": "Iscriviti alle categorie per vedere i prompt qui",
     "viewAllCategories": "Vedi Tutte le Categorie"
   },
+  "workflows": {
+    "title": "Flussi di lavoro",
+    "description": "Prompt con flussi e connessioni sequenziali",
+    "noWorkflows": "Ancora nessun flusso di lavoro",
+    "noWorkflowsDescription": "I flussi di lavoro sono prompt che si connettono ad altri prompt in sequenza. Crea un prompt e aggiungi connessioni per costruire un flusso di lavoro.",
+    "browsePrompts": "Sfoglia Prompt"
+  },
   "collection": {
     "title": "La Mia Collezione",
     "description": "Prompt che hai salvato per dopo",
@@ -1197,7 +1206,8 @@
     "addNextDescription": "Seleziona un prompt che viene dopo questo nel workflow.",
     "noConnections": "Nessun prompt collegato ancora. Aggiungi connessioni per creare una catena di prompt.",
     "previousSteps": "Passaggi precedenti",
-    "nextSteps": "Passaggi successivi",
+    "nextSteps": "Passi successivi",
+    "fullFlow": "Flusso completo",
     "searchPrompt": "Cerca Prompt",
     "searchPlaceholder": "Cerca per titolo...",
     "selectedPrompt": "Prompt Selezionato",

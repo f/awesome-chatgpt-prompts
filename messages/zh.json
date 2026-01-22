@@ -39,6 +39,7 @@
     "promptmasters": "Promptmasters",
     "prompts": "提示词",
     "skills": "技能",
+    "workflows": "工作流程",
     "categories": "分类",
     "tags": "标签",
     "settings": "设置",
@@ -50,7 +51,8 @@
     "ide": "Typed-Prompts IDE",
     "developers": "开发者",
     "book": "书籍",
-    "forKids": "儿童版"
+    "forKids": "儿童版",
+    "more": "更多"
   },
   "brand": {
     "copyLogoSvg": "复制Logo SVG",
@@ -848,6 +850,13 @@
     "subscribeToCategories": "订阅分类以在此查看提示词",
     "viewAllCategories": "查看所有分类"
   },
+  "workflows": {
+    "title": "工作流程",
+    "description": "具有顺序流程和连接的提示词",
+    "noWorkflows": "暂无工作流程",
+    "noWorkflowsDescription": "工作流程是按顺序连接到其他提示词的提示词。创建一个提示词并添加连接以构建工作流程。",
+    "browsePrompts": "浏览提示词"
+  },
   "collection": {
     "title": "我的收藏",
     "description": "您保存的提示词",
@@ -1198,6 +1207,7 @@
     "noConnections": "尚无关联提示词。添加关联以创建提示词链。",
     "previousSteps": "上一步",
     "nextSteps": "下一步",
+    "fullFlow": "完整流程",
     "searchPrompt": "搜索提示词",
     "searchPlaceholder": "按标题搜索...",
     "selectedPrompt": "已选提示词",

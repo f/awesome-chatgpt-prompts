@@ -191,7 +191,7 @@ export function InfinitePromptList({
 
   return (
     <div className="space-y-4">
-      <Masonry columnCount={{ default: 1, md: 2, lg: 3 }} gap={16}>
+      <Masonry columnCount={{ default: 1, md: 2, lg: 2, xl: 3 }} gap={16}>
         {itemsToRender.map((item) => 
           isWidget(item) ? (
             <WidgetCard key={item.id} prompt={item} />

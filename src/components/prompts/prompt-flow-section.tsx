@@ -10,6 +10,8 @@ interface PromptFlowSectionProps {
   canEdit: boolean;
   isOwner: boolean;
   isLoggedIn: boolean;
+  currentUserId?: string;
+  isAdmin?: boolean;
 }
 
 export function PromptFlowSection({
@@ -18,6 +20,8 @@ export function PromptFlowSection({
   canEdit,
   isOwner,
   isLoggedIn,
+  currentUserId,
+  isAdmin,
 }: PromptFlowSectionProps) {
   const [expanded, setExpanded] = useState(false);
 
@@ -29,6 +33,8 @@ export function PromptFlowSection({
           promptId={promptId}
           promptTitle={promptTitle}
           canEdit={canEdit}
+          currentUserId={currentUserId}
+          isAdmin={isAdmin}
           buttonOnly
           expanded={expanded}
           onExpandChange={setExpanded}
@@ -43,6 +49,8 @@ export function PromptFlowSection({
         promptId={promptId}
         promptTitle={promptTitle}
         canEdit={canEdit}
+        currentUserId={currentUserId}
+        isAdmin={isAdmin}
         sectionOnly
         expanded={expanded}
         onExpandChange={setExpanded}

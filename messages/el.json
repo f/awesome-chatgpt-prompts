@@ -39,6 +39,7 @@
     "promptmasters": "Promptmasters",
     "prompts": "Prompts",
     "skills": "Δεξιότητες",
+    "workflows": "Ροές εργασίας",
     "categories": "Κατηγορίες",
     "tags": "Ετικέτες",
     "settings": "Ρυθμίσεις",
@@ -50,7 +51,8 @@
     "ide": "Typed-Prompts IDE",
     "developers": "Προγραμματιστές",
     "book": "Βιβλίο",
-    "forKids": "Για Παιδιά"
+    "forKids": "Για Παιδιά",
+    "more": "Περισσότερα"
   },
   "brand": {
     "copyLogoSvg": "Αντιγραφή Logo SVG",
@@ -848,6 +850,13 @@
     "subscribeToCategories": "Εγγραφείτε σε κατηγορίες για να δείτε prompts εδώ",
     "viewAllCategories": "Προβολή όλων των κατηγοριών"
   },
+  "workflows": {
+    "title": "Ροές εργασίας",
+    "description": "Prompts με διαδοχικές ροές και συνδέσεις",
+    "noWorkflows": "Δεν υπάρχουν ακόμα ροές εργασίας",
+    "noWorkflowsDescription": "Οι ροές εργασίας είναι prompts που συνδέονται με άλλα prompts σε ακολουθία. Δημιουργήστε ένα prompt και προσθέστε συνδέσεις για να δημιουργήσετε μια ροή εργασίας.",
+    "browsePrompts": "Περιήγηση Prompts"
+  },
   "collection": {
     "title": "Η Συλλογή μου",
     "description": "Prompts που αποθηκεύσατε για αργότερα",
@@ -1198,6 +1207,7 @@
     "noConnections": "Δεν υπάρχουν συνδεδεμένα prompts ακόμα. Προσθέστε συνδέσεις για να δημιουργήσετε μια αλυσίδα prompts.",
     "previousSteps": "Προηγούμενα βήματα",
     "nextSteps": "Επόμενα βήματα",
+    "fullFlow": "Πλήρης ροή εργασίας",
     "searchPrompt": "Αναζήτηση Prompt",
     "searchPlaceholder": "Αναζήτηση με τίτλο...",
     "selectedPrompt": "Επιλεγμένο Prompt",

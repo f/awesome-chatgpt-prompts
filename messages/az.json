@@ -39,6 +39,7 @@
     "promptmasters": "Promptmasterlər",
     "prompts": "Promptlar",
     "skills": "Bacarıqlar",
+    "workflows": "İş axınları",
     "categories": "Kateqoriyalar",
     "tags": "Etiketlər",
     "settings": "Parametrlər",
@@ -50,7 +51,8 @@
     "ide": "Typed-Prompts IDE",
     "developers": "Tərtibatçılar",
     "book": "Kitab",
-    "forKids": "Uşaqlar Üçün"
+    "forKids": "Uşaqlar Üçün",
+    "more": "Daha çox"
   },
   "brand": {
     "copyLogoSvg": "Logo SVG-ni Kopyala",
@@ -848,6 +850,13 @@
     "subscribeToCategories": "Burada promptları görmək üçün kateqoriyalara abunə olun",
     "viewAllCategories": "Bütün Kateqoriyalara Bax"
   },
+  "workflows": {
+    "title": "İş axınları",
+    "description": "Ardıcıl axınları və əlaqələri olan promptlar",
+    "noWorkflows": "Hələ iş axını yoxdur",
+    "noWorkflowsDescription": "İş axınları digər promptlara ardıcıl olaraq bağlanan promptlardır. İş axını yaratmaq üçün prompt yaradın və əlaqələr əlavə edin.",
+    "browsePrompts": "Promptlara Bax"
+  },
   "collection": {
     "title": "Kolleksiyam",
     "description": "Sonra üçün saxladığınız promptlar",
@@ -1197,7 +1206,8 @@
     "addNextDescription": "İş axınında bundan sonra gələn promptu seçin.",
     "noConnections": "Hələ bağlı prompt yoxdur. Prompt zənciri yaratmaq üçün əlaqələr əlavə edin.",
     "previousSteps": "Əvvəlki addımlar",
-    "nextSteps": "Növbəti addımlar",
+    "nextSteps": "Sonrakı addımlar",
+    "fullFlow": "Tam Axın",
     "searchPrompt": "Prompt Axtar",
     "searchPlaceholder": "Başlığa görə axtar...",
     "selectedPrompt": "Seçilmiş Prompt",

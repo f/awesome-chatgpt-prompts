@@ -38,7 +38,8 @@
     "feed": "Feed",
     "promptmasters": "Promptmasters",
     "prompts": "Prompts",
-    "skills": "Skills",
+    "skills": "Fähigkeiten",
+    "workflows": "Workflows",
     "categories": "Kategorien",
     "tags": "Tags",
     "settings": "Einstellungen",
@@ -50,7 +51,8 @@
     "ide": "Typed-Prompts IDE",
     "developers": "Entwickler",
     "book": "Buch",
-    "forKids": "Für Kinder"
+    "forKids": "Für Kinder",
+    "more": "Mehr"
   },
   "brand": {
     "copyLogoSvg": "Logo SVG kopieren",
@@ -848,6 +850,13 @@
     "subscribeToCategories": "Abonnieren Sie Kategorien, um hier Prompts zu sehen",
     "viewAllCategories": "Alle Kategorien anzeigen"
   },
+  "workflows": {
+    "title": "Workflows",
+    "description": "Prompts mit sequentiellen Abläufen und Verbindungen",
+    "noWorkflows": "Noch keine Workflows",
+    "noWorkflowsDescription": "Workflows sind Prompts, die in einer Sequenz mit anderen Prompts verbunden sind. Erstellen Sie einen Prompt und fügen Sie Verbindungen hinzu, um einen Workflow zu erstellen.",
+    "browsePrompts": "Prompts durchsuchen"
+  },
   "collection": {
     "title": "Meine Sammlung",
     "description": "Prompts, die Sie für später gespeichert haben",
@@ -1198,6 +1207,7 @@
     "noConnections": "Noch keine verbundenen Prompts. Fügen Sie Verbindungen hinzu, um eine Prompt-Kette zu erstellen.",
     "previousSteps": "Vorherige Schritte",
     "nextSteps": "Nächste Schritte",
+    "fullFlow": "Vollständiger Workflow",
     "searchPrompt": "Prompt suchen",
     "searchPlaceholder": "Nach Titel suchen...",
     "selectedPrompt": "Ausgewählter Prompt",

@@ -107,9 +107,12 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
   const validFilterDateEnd = filterDateEnd && !isNaN(filterDateEnd.getTime()) ? filterDateEnd : null;
 
   // Build where clause - show private prompts only if owner (unlisted prompts are visible on profiles)
+  // Exclude intermediate flow prompts (only show first prompts or standalone)
+  // Note: "related" connections are AI-suggested similar prompts, not flow connections
   const where = {
     authorId: user.id,
     deletedAt: null,
+    incomingConnections: { none: { label: { not: "related" } } },
     ...(isOwner ? {} : { isPrivate: false }),
     ...(validFilterDateStart && validFilterDateEnd ? {
       createdAt: {
@@ -143,7 +146,7 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
       },
     },
     _count: {
-      select: { votes: true, contributors: true },
+      select: { votes: true, contributors: true, outgoingConnections: true, incomingConnections: true },
     },
   };
 

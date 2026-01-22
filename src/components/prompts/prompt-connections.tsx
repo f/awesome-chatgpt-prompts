@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import * as d3 from "d3";
-import { Link2, ArrowUp, ArrowDown, ChevronRight } from "lucide-react";
+import { Link2, ArrowUp, ArrowDown, ChevronRight, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AddConnectionDialog } from "./add-connection-dialog";
 import { getPromptUrl } from "@/lib/urls";
@@ -38,6 +38,8 @@ interface PromptConnectionsProps {
   promptId: string;
   promptTitle: string;
   canEdit: boolean;
+  currentUserId?: string;
+  isAdmin?: boolean;
   buttonOnly?: boolean;  // Only render the collapsed button
   sectionOnly?: boolean; // Only render the expanded section
   expanded?: boolean;    // Controlled expanded state
@@ -60,10 +62,393 @@ interface GraphLink {
   connectionId: string;
 }
 
+interface FlowGraphNode {
+  id: string;
+  title: string;
+  slug: string | null;
+  description: string | null;
+  content: string;
+  type: string;
+  authorId: string;
+  authorUsername: string;
+  authorAvatar: string | null;
+}
+
+interface FlowGraphEdge {
+  source: string;
+  target: string;
+  label: string;
+}
+
+interface FlowGraphProps {
+  nodes: FlowGraphNode[];
+  edges: FlowGraphEdge[];
+  currentPromptId: string;
+  currentUserId?: string;
+  isAdmin?: boolean;
+  onNodeClick: (node: FlowGraphNode) => void;
+  onNodeDelete?: (node: FlowGraphNode) => void;
+}
+
+function FlowGraph({ nodes, edges, currentPromptId, currentUserId, isAdmin, onNodeClick, onNodeDelete }: FlowGraphProps) {
+  const svgRef = useRef<SVGSVGElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const tooltipRef = useRef<HTMLDivElement>(null);
+  const [hoveredNode, setHoveredNode] = useState<FlowGraphNode | null>(null);
+  const [nodePos, setNodePos] = useState({ x: 0, y: 0, width: 0 });
+  const isOverTooltipRef = useRef(false);
+  const isOverNodeRef = useRef(false);
+  const hideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Clear timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
+    };
+  }, []);
+
+  const scheduleHide = useCallback(() => {
+    if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
+    hideTimeoutRef.current = setTimeout(() => {
+      // Only hide if not over node or tooltip
+      if (!isOverNodeRef.current && !isOverTooltipRef.current) {
+        setHoveredNode(null);
+      }
+    }, 50);
+  }, []);
+
+  const handleNodeEnter = useCallback((node: FlowGraphNode, pos: { x: number; y: number }, nodeWidth: number) => {
+    if (hideTimeoutRef.current) {
+      clearTimeout(hideTimeoutRef.current);
+      hideTimeoutRef.current = null;
+    }
+    isOverNodeRef.current = true;
+    setHoveredNode(node);
+    setNodePos({ x: pos.x, y: pos.y, width: nodeWidth });
+  }, []);
+
+  const handleNodeLeave = useCallback(() => {
+    isOverNodeRef.current = false;
+    scheduleHide();
+  }, [scheduleHide]);
+
+  const handleTooltipEnter = useCallback(() => {
+    if (hideTimeoutRef.current) {
+      clearTimeout(hideTimeoutRef.current);
+      hideTimeoutRef.current = null;
+    }
+    isOverTooltipRef.current = true;
+  }, []);
+
+  const handleTooltipLeave = useCallback(() => {
+    isOverTooltipRef.current = false;
+    scheduleHide();
+  }, [scheduleHide]);
+
+  useEffect(() => {
+    if (!svgRef.current || nodes.length === 0) return;
+
+    const svg = d3.select(svgRef.current);
+    svg.selectAll("*").remove();
+
+    const container = svgRef.current.parentElement;
+    const width = container?.clientWidth || 600;
+    
+    // Build adjacency for topological sort
+    const inDegree: Record<string, number> = {};
+    const outEdges: Record<string, string[]> = {};
+    const nodeMap: Record<string, FlowGraphNode> = {};
+    
+    nodes.forEach(n => {
+      inDegree[n.id] = 0;
+      outEdges[n.id] = [];
+      nodeMap[n.id] = n;
+    });
+    
+    edges.forEach(e => {
+      inDegree[e.target] = (inDegree[e.target] || 0) + 1;
+      outEdges[e.source] = outEdges[e.source] || [];
+      outEdges[e.source].push(e.target);
+    });
+
+    // Topological sort to assign levels (y positions)
+    const levels: Record<string, number> = {};
+    const queue = nodes.filter(n => inDegree[n.id] === 0).map(n => n.id);
+    
+    queue.forEach(id => { levels[id] = 0; });
+    
+    while (queue.length > 0) {
+      const current = queue.shift()!;
+      const currentLevel = levels[current];
+      
+      for (const next of outEdges[current] || []) {
+        levels[next] = Math.max(levels[next] || 0, currentLevel + 1);
+        inDegree[next]--;
+        if (inDegree[next] === 0) {
+          queue.push(next);
+        }
+      }
+    }
+
+    // Group nodes by level
+    const levelGroups: Record<number, string[]> = {};
+    Object.entries(levels).forEach(([id, level]) => {
+      levelGroups[level] = levelGroups[level] || [];
+      levelGroups[level].push(id);
+    });
+
+    const maxLevel = Math.max(...Object.values(levels), 0);
+    const nodeWidth = Math.min(180, width * 0.4);
+    const nodeHeight = 44;
+    const levelHeight = 100;
+    const height = (maxLevel + 1) * levelHeight + 80;
+
+    svg.attr("width", width).attr("height", height);
+
+    // Calculate x positions for each node
+    const positions: Record<string, { x: number; y: number }> = {};
+    
+    Object.entries(levelGroups).forEach(([levelStr, ids]) => {
+      const level = parseInt(levelStr);
+      const count = ids.length;
+      const totalWidth = count * nodeWidth + (count - 1) * 40;
+      const startX = (width - totalWidth) / 2 + nodeWidth / 2;
+      
+      ids.forEach((id, i) => {
+        positions[id] = {
+          x: startX + i * (nodeWidth + 40),
+          y: level * levelHeight + 50,
+        };
+      });
+    });
+
+    // Theme colors
+    const isDark = document.documentElement.classList.contains("dark");
+    const colors = {
+      primary: isDark ? "#f4f4f5" : "#18181b",
+      primaryFg: isDark ? "#18181b" : "#fafafa",
+      card: isDark ? "#27272a" : "#ffffff",
+      cardFg: isDark ? "#fafafa" : "#09090b",
+      border: isDark ? "#3f3f46" : "#e4e4e7",
+      muted: isDark ? "#27272a" : "#f4f4f5",
+      mutedFg: isDark ? "#a1a1aa" : "#71717a",
+    };
+
+    // Defs for arrow marker
+    const defs = svg.append("defs");
+    defs.append("marker")
+      .attr("id", "flow-arrow")
+      .attr("viewBox", "-0 -5 10 10")
+      .attr("refX", 8)
+      .attr("refY", 0)
+      .attr("orient", "auto")
+      .attr("markerWidth", 6)
+      .attr("markerHeight", 6)
+      .append("path")
+      .attr("d", "M 0,-4 L 8,0 L 0,4")
+      .attr("fill", colors.mutedFg);
+
+    // Draw edges
+    const edgeGroup = svg.append("g").attr("class", "edges");
+    
+    edges.forEach(edge => {
+      const source = positions[edge.source];
+      const target = positions[edge.target];
+      if (!source || !target) return;
+
+      const sourceY = source.y + nodeHeight / 2;
+      const targetY = target.y - nodeHeight / 2;
+      const midY = (sourceY + targetY) / 2;
+
+      edgeGroup.append("path")
+        .attr("d", `M ${source.x} ${sourceY} C ${source.x} ${midY}, ${target.x} ${midY}, ${target.x} ${targetY}`)
+        .attr("fill", "none")
+        .attr("stroke", `${colors.mutedFg}60`)
+        .attr("stroke-width", 2)
+        .attr("marker-end", "url(#flow-arrow)");
+
+      // Edge label
+      if (edge.label) {
+        const labelX = (source.x + target.x) / 2;
+        const labelY = midY;
+        const labelWidth = edge.label.length * 5 + 16;
+        
+        edgeGroup.append("rect")
+          .attr("x", labelX - labelWidth / 2)
+          .attr("y", labelY - 8)
+          .attr("width", labelWidth)
+          .attr("height", 16)
+          .attr("rx", 8)
+          .attr("fill", colors.muted)
+          .attr("stroke", colors.border);
+
+        edgeGroup.append("text")
+          .attr("x", labelX)
+          .attr("y", labelY)
+          .attr("text-anchor", "middle")
+          .attr("dy", "0.35em")
+          .attr("fill", colors.mutedFg)
+          .attr("font-size", "9px")
+          .text(edge.label);
+      }
+    });
+
+    // Draw nodes
+    const nodeGroup = svg.append("g").attr("class", "nodes");
+
+    nodes.forEach(node => {
+      const pos = positions[node.id];
+      if (!pos) return;
+
+      const isCurrent = node.id === currentPromptId;
+      const g = nodeGroup.append("g")
+        .attr("transform", `translate(${pos.x}, ${pos.y})`)
+        .attr("cursor", "pointer")
+        .on("click", () => onNodeClick(node))
+        .on("mouseenter", () => {
+          if (!isCurrent) {
+            handleNodeEnter(node, pos, nodeWidth);
+          }
+        })
+        .on("mouseleave", () => {
+          if (!isCurrent) {
+            handleNodeLeave();
+          }
+        });
+
+      g.append("rect")
+        .attr("x", -nodeWidth / 2)
+        .attr("y", -nodeHeight / 2)
+        .attr("width", nodeWidth)
+        .attr("height", nodeHeight)
+        .attr("rx", 10)
+        .attr("fill", isCurrent ? colors.primary : colors.card)
+        .attr("stroke", isCurrent ? colors.primary : colors.border)
+        .attr("stroke-width", isCurrent ? 0 : 1.5);
+
+      // Truncate title if too long
+      let displayTitle = node.title;
+      if (displayTitle.length > 22) {
+        displayTitle = displayTitle.slice(0, 20) + "...";
+      }
+
+      g.append("text")
+        .attr("text-anchor", "middle")
+        .attr("dy", "0.35em")
+        .attr("fill", isCurrent ? colors.primaryFg : colors.cardFg)
+        .attr("font-size", "11px")
+        .attr("font-weight", isCurrent ? "700" : "500")
+        .text(displayTitle);
+    });
+
+  }, [nodes, edges, currentPromptId, onNodeClick, handleNodeEnter, handleNodeLeave]);
+
+  return (
+    <div ref={containerRef} className="relative">
+      <svg ref={svgRef} className="w-full" />
+      {hoveredNode && (() => {
+          // Calculate position with viewport awareness
+          const tooltipWidth = 320;
+          const tooltipHeight = 280;
+          const containerRect = containerRef.current?.getBoundingClientRect();
+          const containerWidth = containerRef.current?.clientWidth || 600;
+          
+          // Calculate left position - overlap slightly with node for easier hover transition
+          let leftPos = nodePos.x + nodePos.width / 2 - 5;
+          // Check if it overflows right edge of container
+          if (leftPos + tooltipWidth > containerWidth) {
+            leftPos = nodePos.x - nodePos.width / 2 - tooltipWidth + 5;
+          }
+          // Ensure not negative
+          if (leftPos < 0) leftPos = 10;
+          
+          // Calculate top position - check against viewport
+          let topPos = nodePos.y - tooltipHeight / 2;
+          
+          if (containerRect) {
+            const viewportHeight = window.innerHeight;
+            const absoluteTop = containerRect.top + topPos;
+            const margin = 60; // Keep tooltip well inside viewport
+            
+            // If tooltip would go below viewport, push it up
+            if (absoluteTop + tooltipHeight > viewportHeight - margin) {
+              topPos = viewportHeight - containerRect.top - tooltipHeight - margin;
+            }
+            // If tooltip would go above viewport, push it down
+            if (absoluteTop < margin) {
+              topPos = margin - containerRect.top;
+            }
+          }
+          
+          // Also clamp to container bounds
+          if (topPos < 10) topPos = 10;
+          // Ensure left is valid
+          if (leftPos < 10) leftPos = 10;
+          
+          return (
+            <div 
+              ref={tooltipRef}
+              className="absolute z-[100] w-80 p-3 rounded-lg border bg-card shadow-xl"
+              style={{ 
+                left: leftPos, 
+                top: topPos,
+                pointerEvents: 'auto',
+              }}
+              onMouseEnter={handleTooltipEnter}
+              onMouseLeave={handleTooltipLeave}
+            >
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  {hoveredNode.authorAvatar ? (
+                    <img 
+                      src={hoveredNode.authorAvatar} 
+                      alt={hoveredNode.authorUsername}
+                      className="w-5 h-5 rounded-full"
+                    />
+                  ) : (
+                    <div className="w-5 h-5 rounded-full bg-muted flex items-center justify-center text-[10px] font-medium">
+                      {hoveredNode.authorUsername.charAt(0).toUpperCase()}
+                    </div>
+                  )}
+                  <span className="text-xs text-muted-foreground">@{hoveredNode.authorUsername}</span>
+                  <span className="ml-auto text-[10px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground">
+                    {hoveredNode.type}
+                  </span>
+                </div>
+                <h4 className="font-semibold text-sm">{hoveredNode.title}</h4>
+                {hoveredNode.description && (
+                  <p className="text-xs text-muted-foreground">{hoveredNode.description}</p>
+                )}
+                <div className="text-xs text-muted-foreground bg-muted p-2 rounded font-mono whitespace-pre-wrap max-h-48 overflow-y-auto">
+                  {hoveredNode.content}
+                </div>
+                {/* Delete button for owner or admin */}
+                {onNodeDelete && (currentUserId === hoveredNode.authorId || isAdmin) && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onNodeDelete(hoveredNode);
+                    }}
+                    className="w-full mt-2 px-3 py-1.5 text-xs text-destructive hover:bg-destructive/10 rounded border border-destructive/20 transition-colors flex items-center justify-center gap-1.5"
+                  >
+                    <Trash2 className="w-3 h-3" />
+                    Remove from flow
+                  </button>
+                )}
+              </div>
+            </div>
+          );
+        })()}
+    </div>
+  );
+}
+
 export function PromptConnections({
   promptId,
   promptTitle,
   canEdit,
+  currentUserId,
+  isAdmin,
   buttonOnly = false,
   sectionOnly = false,
   expanded: controlledExpanded,
@@ -79,15 +464,28 @@ export function PromptConnections({
   const [connectionType, setConnectionType] = useState<"previous" | "next">("next");
   const [isExpanded, setIsExpanded] = useState(false);
 
+  // Full flow graph state
+  const [flowNodes, setFlowNodes] = useState<FlowGraphNode[]>([]);
+  const [flowEdges, setFlowEdges] = useState<FlowGraphEdge[]>([]);
+
   const fetchConnections = useCallback(async () => {
     try {
-      const res = await fetch(`/api/prompts/${promptId}/connections`, {
-        cache: "no-store",
-      });
-      if (res.ok) {
-        const data = await res.json();
+      // Fetch both regular connections and full flow
+      const [connRes, flowRes] = await Promise.all([
+        fetch(`/api/prompts/${promptId}/connections`, { cache: "no-store" }),
+        fetch(`/api/prompts/${promptId}/flow`, { cache: "no-store" }),
+      ]);
+      
+      if (connRes.ok) {
+        const data = await connRes.json();
         setOutgoing(data.outgoing || []);
         setIncoming(data.incoming || []);
+      }
+      
+      if (flowRes.ok) {
+        const flowData = await flowRes.json();
+        setFlowNodes(flowData.nodes || []);
+        setFlowEdges(flowData.edges || []);
       }
     } catch (err) {
       console.error("Failed to fetch connections:", err);
@@ -99,6 +497,42 @@ export function PromptConnections({
   useEffect(() => {
     fetchConnections();
   }, [fetchConnections]);
+
+  // Handle removing a node from the flow (deletes all its connections)
+  const handleRemoveFromFlow = useCallback(async (node: FlowGraphNode) => {
+    if (!confirm(`Remove "${node.title}" from this flow? This will delete all connections to/from this prompt.`)) {
+      return;
+    }
+    
+    try {
+      // Find all edges connected to this node
+      const edgesToDelete = flowEdges.filter(
+        e => e.source === node.id || e.target === node.id
+      );
+      
+      // Delete each connection via API
+      for (const edge of edgesToDelete) {
+        // We need to find the connection ID - fetch connections for the source prompt
+        const res = await fetch(`/api/prompts/${edge.source}/connections`, { cache: "no-store" });
+        if (res.ok) {
+          const data = await res.json();
+          const conn = data.outgoing?.find((c: OutgoingConnection) => c.targetId === edge.target);
+          if (conn) {
+            await fetch(`/api/prompts/${edge.source}/connections/${conn.id}`, {
+              method: "DELETE",
+              cache: "no-store",
+            });
+          }
+        }
+      }
+      
+      toast.success("Removed from flow");
+      fetchConnections();
+    } catch (err) {
+      console.error("Failed to remove from flow:", err);
+      toast.error("Failed to remove from flow");
+    }
+  }, [flowEdges, fetchConnections]);
 
   const handleDeleteConnection = useCallback(async (connectionId: string) => {
     try {
@@ -589,6 +1023,7 @@ export function PromptConnections({
   }
 
   const hasConnections = outgoing.length > 0 || incoming.length > 0;
+  const hasFullFlow = flowNodes.length > 1 && flowEdges.length > 0;
 
   // Show to everyone if there are connections, otherwise only show to owners/admins
   if (!canEdit && !hasConnections) {
@@ -670,7 +1105,22 @@ export function PromptConnections({
 
         {!hasConnections ? (
           <p className="text-sm text-muted-foreground">{t("noConnections")}</p>
+        ) : hasFullFlow ? (
+          /* Full Flow Graph Display with D3 */
+          <div className="w-full space-y-2">
+            <p className="text-xs text-muted-foreground text-center mb-3">{t("fullFlow")}</p>
+            <FlowGraph
+              nodes={flowNodes}
+              edges={flowEdges}
+              currentPromptId={promptId}
+              currentUserId={currentUserId}
+              isAdmin={isAdmin}
+              onNodeClick={(node) => router.push(getPromptLink(node))}
+              onNodeDelete={canEdit ? handleRemoveFromFlow : undefined}
+            />
+          </div>
         ) : (
+          /* Original D3 Spider Diagram for simple connections */
           <div className="w-full">
             {incoming.length > 0 && (
               <p className="text-xs text-muted-foreground mb-2 text-center">{t("previousSteps")}</p>
@@ -755,6 +1205,19 @@ export function PromptConnections({
 
           {!hasConnections ? (
             <p className="text-sm text-muted-foreground">{t("noConnections")}</p>
+          ) : hasFullFlow ? (
+            <div className="w-full space-y-2">
+              <p className="text-xs text-muted-foreground text-center mb-3">{t("fullFlow")}</p>
+              <FlowGraph
+                nodes={flowNodes}
+                edges={flowEdges}
+                currentPromptId={promptId}
+                currentUserId={currentUserId}
+                isAdmin={isAdmin}
+                onNodeClick={(node) => router.push(getPromptLink(node))}
+                onNodeDelete={canEdit ? handleRemoveFromFlow : undefined}
+              />
+            </div>
           ) : (
             <div className="w-full">
               {incoming.length > 0 && (

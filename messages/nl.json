@@ -39,6 +39,7 @@
     "promptmasters": "Promptmasters",
     "prompts": "Prompts",
     "skills": "Vaardigheden",
+    "workflows": "Workflows",
     "categories": "Categorieën",
     "tags": "Tags",
     "settings": "Instellingen",
@@ -50,7 +51,8 @@
     "ide": "Typed-Prompts IDE",
     "developers": "Ontwikkelaars",
     "book": "Boek",
-    "forKids": "Voor kinderen"
+    "forKids": "Voor kinderen",
+    "more": "Meer"
   },
   "brand": {
     "copyLogoSvg": "Logo SVG kopiëren",
@@ -848,6 +850,13 @@
     "subscribeToCategories": "Abonneer op categorieën om hier prompts te zien",
     "viewAllCategories": "Alle categorieën bekijken"
   },
+  "workflows": {
+    "title": "Workflows",
+    "description": "Prompts met sequentiële stromen en verbindingen",
+    "noWorkflows": "Nog geen workflows",
+    "noWorkflowsDescription": "Workflows zijn prompts die in volgorde verbonden zijn met andere prompts. Maak een prompt en voeg verbindingen toe om een workflow te bouwen.",
+    "browsePrompts": "Prompts bekijken"
+  },
   "collection": {
     "title": "Mijn collectie",
     "description": "Prompts die je hebt opgeslagen voor later",
@@ -1198,6 +1207,7 @@
     "noConnections": "Nog geen verbonden prompts. Voeg verbindingen toe om een promptketen te maken.",
     "previousSteps": "Vorige stappen",
     "nextSteps": "Volgende stappen",
+    "fullFlow": "Volledige workflow",
     "searchPrompt": "Prompt zoeken",
     "searchPlaceholder": "Zoeken op titel...",
     "selectedPrompt": "Geselecteerde prompt",

@@ -319,6 +319,9 @@ export async function GET(request: Request) {
       isPrivate: false,
       isUnlisted: false, // Exclude unlisted prompts from public API
       deletedAt: null, // Exclude soft-deleted prompts
+      // Exclude intermediate flow prompts (only show first prompts or standalone)
+      // Note: "related" connections are AI-suggested similar prompts, not flow connections
+      incomingConnections: { none: { label: { not: "related" } } },
     };
 
     if (type) {
@@ -391,7 +394,7 @@ export async function GET(request: Request) {
             },
           },
           _count: {
-            select: { votes: true, contributors: true },
+            select: { votes: true, contributors: true, outgoingConnections: true, incomingConnections: true },
           },
         },
       }),

@@ -39,6 +39,7 @@
     "promptmasters": "프롬프트마스터",
     "prompts": "프롬프트",
     "skills": "스킬",
+    "workflows": "워크플로우",
     "categories": "카테고리",
     "tags": "태그",
     "settings": "설정",
@@ -50,7 +51,8 @@
     "ide": "Typed-Prompts IDE",
     "developers": "개발자",
     "book": "책",
-    "forKids": "어린이용"
+    "forKids": "어린이용",
+    "more": "더 보기"
   },
   "brand": {
     "copyLogoSvg": "로고 SVG 복사",
@@ -848,6 +850,13 @@
     "subscribeToCategories": "카테고리를 구독하여 여기서 프롬프트를 확인하세요",
     "viewAllCategories": "모든 카테고리 보기"
   },
+  "workflows": {
+    "title": "워크플로우",
+    "description": "순차적 흐름과 연결이 있는 프롬프트",
+    "noWorkflows": "아직 워크플로우가 없습니다",
+    "noWorkflowsDescription": "워크플로우는 다른 프롬프트에 순차적으로 연결되는 프롬프트입니다. 프롬프트를 만들고 연결을 추가하여 워크플로우를 구축하세요.",
+    "browsePrompts": "프롬프트 둘러보기"
+  },
   "collection": {
     "title": "내 컬렉션",
     "description": "나중을 위해 저장한 프롬프트",
@@ -1198,6 +1207,7 @@
     "noConnections": "아직 연결된 프롬프트가 없습니다. 프롬프트 체인을 만들려면 연결을 추가하세요.",
     "previousSteps": "이전 단계",
     "nextSteps": "다음 단계",
+    "fullFlow": "전체 흐름",
     "searchPrompt": "프롬프트 검색",
     "searchPlaceholder": "제목으로 검색...",
     "selectedPrompt": "선택된 프롬프트",

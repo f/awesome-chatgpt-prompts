@@ -39,6 +39,7 @@
     "promptmasters": "Promptmasters",
     "prompts": "プロンプト",
     "skills": "スキル",
+    "workflows": "ワークフロー",
     "categories": "カテゴリー",
     "tags": "タグ",
     "settings": "設定",
@@ -50,7 +51,8 @@
     "ide": "Typed-Prompts IDE",
     "developers": "開発者",
     "book": "本",
-    "forKids": "子ども向け"
+    "forKids": "子ども向け",
+    "more": "もっと見る"
   },
   "brand": {
     "copyLogoSvg": "ロゴSVGをコピー",
@@ -848,6 +850,13 @@
     "subscribeToCategories": "カテゴリーを購読してプロンプトを表示",
     "viewAllCategories": "すべてのカテゴリーを見る"
   },
+  "workflows": {
+    "title": "ワークフロー",
+    "description": "シーケンシャルなフローと接続を持つプロンプト",
+    "noWorkflows": "まだワークフローがありません",
+    "noWorkflowsDescription": "ワークフローは、他のプロンプトに順番に接続するプロンプトです。プロンプトを作成し、接続を追加してワークフローを構築してください。",
+    "browsePrompts": "プロンプトを見る"
+  },
   "collection": {
     "title": "マイコレクション",
     "description": "保存したプロンプト",
@@ -1198,6 +1207,7 @@
     "noConnections": "接続されたプロンプトはまだありません。プロンプトチェーンを作成するには接続を追加してください。",
     "previousSteps": "前のステップ",
     "nextSteps": "次のステップ",
+    "fullFlow": "完全なフロー",
     "searchPrompt": "プロンプトを検索",
     "searchPlaceholder": "タイトルで検索...",
     "selectedPrompt": "選択したプロンプト",

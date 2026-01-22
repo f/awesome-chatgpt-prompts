@@ -652,6 +652,8 @@ export default async function PromptPage({ params }: PromptPageProps) {
               canEdit={canEdit}
               isOwner={isOwner}
               isLoggedIn={!!session?.user}
+              currentUserId={session?.user?.id}
+              isAdmin={isAdmin}
             />
           )}
 

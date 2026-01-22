@@ -39,6 +39,7 @@
     "promptmasters": "Promptmasters",
     "prompts": "الأوامر",
     "skills": "المهارات",
+    "workflows": "سير العمل",
     "categories": "الفئات",
     "tags": "الوسوم",
     "settings": "الإعدادات",
@@ -50,7 +51,8 @@
     "ide": "Typed-Prompts IDE",
     "developers": "المطورون",
     "book": "كتاب",
-    "forKids": "للأطفال"
+    "forKids": "للأطفال",
+    "more": "المزيد"
   },
   "brand": {
     "copyLogoSvg": "نسخ شعار SVG",
@@ -848,6 +850,13 @@
     "subscribeToCategories": "اشترك في التصنيفات لرؤية الأوامر هنا",
     "viewAllCategories": "عرض جميع التصنيفات"
   },
+  "workflows": {
+    "title": "سير العمل",
+    "description": "أوامر ذات تدفقات واتصالات متسلسلة",
+    "noWorkflows": "لا توجد سير عمل بعد",
+    "noWorkflowsDescription": "سير العمل هي أوامر تتصل بأوامر أخرى بالتسلسل. أنشئ أمرًا وأضف اتصالات لبناء سير عمل.",
+    "browsePrompts": "تصفح الأوامر"
+  },
   "collection": {
     "title": "مجموعتي",
     "description": "الأوامر التي حفظتها لوقت لاحق",
@@ -1198,6 +1207,7 @@
     "noConnections": "لا توجد أوامر متصلة بعد. أضف اتصالات لإنشاء سلسلة أوامر.",
     "previousSteps": "الخطوات السابقة",
     "nextSteps": "الخطوات التالية",
+    "fullFlow": "سير العمل الكامل",
     "searchPrompt": "بحث عن أمر",
     "searchPlaceholder": "البحث بالعنوان...",
     "selectedPrompt": "الأمر المحدد",

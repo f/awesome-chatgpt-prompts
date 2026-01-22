@@ -8,6 +8,7 @@ interface MasonryProps {
     default: number;
     md?: number;
     lg?: number;
+    xl?: number;
   };
   gap?: number;
   className?: string;
@@ -44,7 +45,9 @@ export function Masonry({
   useEffect(() => {
     const updateColumns = () => {
       const width = window.innerWidth;
-      if (width >= 1024 && columnCount.lg) {
+      if (width >= 1280 && columnCount.xl) {
+        setColumns(columnCount.xl);
+      } else if (width >= 1024 && columnCount.lg) {
         setColumns(columnCount.lg);
       } else if (width >= 768 && columnCount.md) {
         setColumns(columnCount.md);
@@ -104,7 +107,29 @@ export function Masonry({
     calculatePositions();
   }, [columns, isRTL, calculatePositions]);
 
-  // Use ResizeObserver for image loading
+  // Recalculate positions on window resize (container width may change)
+  useEffect(() => {
+    const handleResize = () => {
+      calculatePositions();
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [calculatePositions]);
+
+  // Use ResizeObserver on container for layout changes
+  useEffect(() => {
+    if (!containerRef.current) return;
+    
+    const observer = new ResizeObserver(() => {
+      calculatePositions();
+    });
+
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, [calculatePositions]);
+
+  // Use ResizeObserver for image loading and item size changes
   useEffect(() => {
     const observer = new ResizeObserver(() => {
       calculatePositions();

@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { formatDistanceToNow } from "@/lib/date";
 import { getPromptUrl } from "@/lib/urls";
-import { ArrowBigUp, Lock, Copy, ImageIcon, Download, Play, BadgeCheck, Volume2 } from "lucide-react";
+import { ArrowBigUp, Lock, Copy, ImageIcon, Download, Play, BadgeCheck, Volume2, Link2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { CodeView } from "@/components/ui/code-view";
 import { toast } from "sonner";
@@ -67,6 +67,10 @@ export interface PromptCardProps {
         color: string;
       };
     }>;
+    _count?: {
+      outgoingConnections?: number;
+      incomingConnections?: number;
+    };
   };
   showPinButton?: boolean;
   isPinned?: boolean;
@@ -76,6 +80,9 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
   const t = useTranslations("prompts");
   const tCommon = useTranslations("common");
   const locale = useLocale();
+  const outgoingCount = prompt._count?.outgoingConnections || 0;
+  const incomingCount = prompt._count?.incomingConnections || 0;
+  const isFlowStart = outgoingCount > 0 && incomingCount === 0;
   const [modalOpen, setModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState<"copy" | "run">("copy");
   const [imageError, setImageError] = useState(false);
@@ -197,6 +204,14 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent pointer-events-none" />
           {/* Badges overlay */}
           <div className="absolute top-2 right-2 flex items-center gap-1.5">
+            {isFlowStart && (
+              <div className="flex items-center gap-0.5 bg-background/80 backdrop-blur-sm rounded px-1.5 py-0.5">
+                <Link2 className="h-3 w-3 text-muted-foreground" />
+                <span className="flex items-center justify-center h-4 w-4 rounded-full bg-muted text-[9px] font-medium text-muted-foreground">
+                  {outgoingCount}
+                </span>
+              </div>
+            )}
             <Badge variant="secondary" className="text-[10px] bg-background/80 backdrop-blur-sm">
               {t(`types.${prompt.type.toLowerCase()}`)}
             </Badge>
@@ -227,9 +242,19 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
             </Link>
           </div>
           {(!hasMediaBackground || isAudio) && (
-            <Badge variant="outline" className="text-[10px] shrink-0">
-              {t(`types.${prompt.type.toLowerCase()}`)}
-            </Badge>
+            <div className="flex items-center gap-1 shrink-0">
+              {isFlowStart && (
+                <div className="flex items-center gap-0.5 border rounded px-1.5 py-0.5">
+                  <Link2 className="h-3 w-3 text-muted-foreground" />
+                  <span className="flex items-center justify-center h-4 w-4 rounded-full bg-muted text-[9px] font-medium text-muted-foreground">
+                    {outgoingCount}
+                  </span>
+                </div>
+              )}
+              <Badge variant="outline" className="text-[10px]">
+                {t(`types.${prompt.type.toLowerCase()}`)}
+              </Badge>
+            </div>
           )}
         </div>
 

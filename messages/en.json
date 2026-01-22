@@ -39,6 +39,7 @@
     "promptmasters": "Promptmasters",
     "prompts": "Prompts",
     "skills": "Skills",
+    "workflows": "Workflows",
     "categories": "Categories",
     "tags": "Tags",
     "settings": "Settings",
@@ -50,7 +51,8 @@
     "ide": "Typed-Prompts IDE",
     "developers": "Developers",
     "book": "Book",
-    "forKids": "For Kids"
+    "forKids": "For Kids",
+    "more": "More"
   },
   "brand": {
     "copyLogoSvg": "Copy Logo SVG",
@@ -848,6 +850,13 @@
     "subscribeToCategories": "Subscribe to categories to see prompts here",
     "viewAllCategories": "View All Categories"
   },
+  "workflows": {
+    "title": "Workflows",
+    "description": "Prompts with sequential flows and connections",
+    "noWorkflows": "No workflows yet",
+    "noWorkflowsDescription": "Workflows are prompts that connect to other prompts in a sequence. Create a prompt and add connections to build a workflow.",
+    "browsePrompts": "Browse Prompts"
+  },
   "collection": {
     "title": "My Collection",
     "description": "Prompts you've saved for later",
@@ -1198,6 +1207,7 @@
     "noConnections": "No connected prompts yet. Add connections to create a prompt chain.",
     "previousSteps": "Previous steps",
     "nextSteps": "Next steps",
+    "fullFlow": "Complete Workflow",
     "searchPrompt": "Search Prompt",
     "searchPlaceholder": "Search by title...",
     "selectedPrompt": "Selected Prompt",

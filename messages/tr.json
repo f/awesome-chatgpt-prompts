@@ -39,6 +39,7 @@
     "promptmasters": "Promptmasters",
     "prompts": "Promptlar",
     "skills": "Yetenekler",
+    "workflows": "Akışlar",
     "categories": "Kategoriler",
     "tags": "Etiketler",
     "settings": "Ayarlar",
@@ -50,7 +51,8 @@
     "ide": "Typed-Prompts IDE",
     "developers": "Geliştiriciler",
     "book": "Kitap",
-    "forKids": "Çocuklar İçin"
+    "forKids": "Çocuklar İçin",
+    "more": "Daha Fazla"
   },
   "brand": {
     "copyLogoSvg": "Logo SVG'sini Kopyala",
@@ -848,6 +850,13 @@
     "subscribeToCategories": "Burada promptları görmek için kategorilere abone olun",
     "viewAllCategories": "Tüm Kategorileri Gör"
   },
+  "workflows": {
+    "title": "Akışlar",
+    "description": "Sıralı akışlara ve bağlantılara sahip promptlar",
+    "noWorkflows": "Henüz akış yok",
+    "noWorkflowsDescription": "Akışlar, diğer promptlara sıralı olarak bağlanan promptlardır. Bir akış oluşturmak için bir prompt oluşturun ve bağlantılar ekleyin.",
+    "browsePrompts": "Promptlara Göz At"
+  },
   "collection": {
     "title": "Koleksiyonum",
     "description": "Sonra için kaydettiğiniz promptlar",
@@ -1198,6 +1207,7 @@
     "noConnections": "Henüz bağlı prompt yok. Prompt zinciri oluşturmak için bağlantılar ekleyin.",
     "previousSteps": "Önceki adımlar",
     "nextSteps": "Sonraki adımlar",
+    "fullFlow": "Tam Akış",
     "searchPrompt": "Prompt Ara",
     "searchPlaceholder": "Başlığa göre ara...",
     "selectedPrompt": "Seçili Prompt",

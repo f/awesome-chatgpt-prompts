@@ -1,19 +1,16 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { unstable_cache } from "next/cache";
-import { Plus } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { InfinitePromptList } from "@/components/prompts/infinite-prompt-list";
 import { db } from "@/lib/db";
 
 export const metadata: Metadata = {
-  title: "Skills",
-  description: "Browse and discover AI agent skills",
+  title: "Workflows",
+  description: "Browse prompts with sequential flows and connections",
 };
 
-// Query for skills list (cached)
-function getCachedSkills(
+// Query for workflows list (cached)
+function getCachedWorkflows(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   orderBy: any,
   perPage: number,
@@ -24,10 +21,21 @@ function getCachedSkills(
   return unstable_cache(
     async () => {
       const where: Record<string, unknown> = {
-        type: "SKILL",
         isPrivate: false,
         isUnlisted: false,
         deletedAt: null,
+        type: { not: "SKILL" },
+        // Only include prompts with actual flow connections (not "related" connections)
+        outgoingConnections: {
+          some: {
+            label: { not: "related" },
+          },
+        },
+        incomingConnections: {
+          none: {
+            label: { not: "related" },
+          },
+        },
       };
 
       if (searchQuery) {
@@ -38,7 +46,7 @@ function getCachedSkills(
         ];
       }
 
-      const [skillsRaw, totalCount] = await Promise.all([
+      const [workflowsRaw, totalCount] = await Promise.all([
         db.prompt.findMany({
           where,
           orderBy,
@@ -84,7 +92,7 @@ function getCachedSkills(
 
       return {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        skills: skillsRaw.map((p: any) => ({
+        workflows: workflowsRaw.map((p: any) => ({
           ...p,
           voteCount: p._count.votes,
           contributorCount: p._count.contributors,
@@ -93,20 +101,20 @@ function getCachedSkills(
         total: totalCount,
       };
     },
-    ["skills", cacheKey],
-    { tags: ["prompts"] }
+    ["workflows", cacheKey],
+    { tags: ["prompts", "connections"] }
   )();
 }
 
-interface SkillsPageProps {
+interface WorkflowsPageProps {
   searchParams: Promise<{
     q?: string;
     sort?: string;
   }>;
 }
 
-export default async function SkillsPage({ searchParams }: SkillsPageProps) {
-  const t = await getTranslations("prompts");
+export default async function WorkflowsPage({ searchParams }: WorkflowsPageProps) {
+  const t = await getTranslations("workflows");
   const tNav = await getTranslations("nav");
   const tSearch = await getTranslations("search");
   const params = await searchParams;
@@ -122,35 +130,28 @@ export default async function SkillsPage({ searchParams }: SkillsPageProps) {
     orderBy = { votes: { _count: "desc" } };
   }
 
-  const result = await getCachedSkills(orderBy, perPage, params.q);
-  const skills = result.skills;
+  const result = await getCachedWorkflows(orderBy, perPage, params.q);
+  const workflows = result.workflows;
   const total = result.total;
 
   return (
     <div className="container py-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div className="flex items-baseline gap-2">
-          <h1 className="text-lg font-semibold">{tNav("skills")}</h1>
+          <h1 className="text-lg font-semibold">{tNav("workflows")}</h1>
           <span className="text-xs text-muted-foreground">{tSearch("found", { count: total })}</span>
         </div>
-        <Button size="sm" className="h-8 text-xs w-full sm:w-auto" asChild>
-          <Link href="/prompts/new?type=SKILL">
-            <Plus className="h-3.5 w-3.5 mr-1" />
-            {t("createSkill")}
-          </Link>
-        </Button>
       </div>
       
       <p className="text-sm text-muted-foreground mb-6">
-        {t("skillsDescription")}
+        {t("description")}
       </p>
 
       <InfinitePromptList
-        initialPrompts={skills}
+        initialPrompts={workflows}
         initialTotal={total}
         filters={{
           q: params.q,
-          type: "SKILL",
           sort: params.sort,
         }}
       />
