@@ -68,6 +68,8 @@ export interface PromptCardProps {
       };
     }>;
     _count?: {
+      votes?: number;
+      contributors?: number;
       outgoingConnections?: number;
       incomingConnections?: number;
     };
