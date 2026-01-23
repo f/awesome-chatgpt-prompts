@@ -20,7 +20,7 @@ export const videoPlatforms: Platform[] = [
   { id: "mitte-veo-31", name: "Mitte.ai - Veo 3.1", baseUrl: "https://mitte.ai?model=veo-31", sponsor: true },
   { id: "mitte-kling-26", name: "Mitte.ai - Kling 2.6", baseUrl: "https://mitte.ai?model=kling-26", sponsor: true },
   { id: "mitte-sora-2", name: "Mitte.ai - Sora 2", baseUrl: "https://mitte.ai?model=sora-2", sponsor: true },
-  { id: "mitte-remotion", name: "Mitte.ai - Remotion", baseUrl: "https://mitte.ai/?model=remotion", sponsor: true },
+  { id: "mitte-remotion", name: "Mitte.ai - Remotion", baseUrl: "https://mitte.ai?model=remotion", sponsor: true },
 ];
 
 export const codePlatforms: Platform[] = [
@@ -120,6 +120,7 @@ export function buildUrl(
     case "mitte-veo-31":
     case "mitte-kling-26":
     case "mitte-sora-2":
+    case "mitte-remotion":
       return `${baseUrl}&prompt=${encoded}`;
     default:
       return `${baseUrl}?q=${encoded}`;
