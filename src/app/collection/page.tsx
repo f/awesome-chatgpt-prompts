@@ -43,7 +43,7 @@ export default async function CollectionPage() {
             },
           },
           _count: {
-            select: { votes: true, contributors: true },
+            select: { votes: true, contributors: true, outgoingConnections: true, incomingConnections: true },
           },
         },
       },

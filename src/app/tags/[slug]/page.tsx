@@ -89,7 +89,7 @@ export default async function TagPage({ params, searchParams }: TagPageProps) {
           },
         },
         _count: {
-          select: { votes: true, contributors: true },
+          select: { votes: true, contributors: true, outgoingConnections: true, incomingConnections: true },
         },
       },
     }),
