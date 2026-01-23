@@ -70,6 +70,7 @@ const videoPlatforms: Platform[] = [
       { name: "Veo 3.1", baseUrl: "https://mitte.ai?model=veo-31" },
       { name: "Kling 2.6", baseUrl: "https://mitte.ai?model=kling-26" },
       { name: "Sora 2", baseUrl: "https://mitte.ai?model=sora-2" },
+      {name: "Remotion", baseUrl: "https://mitte.ai/?model=remotion" },
     ],
   },
 ];
