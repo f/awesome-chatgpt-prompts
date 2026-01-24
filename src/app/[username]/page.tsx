@@ -146,7 +146,12 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
       },
     },
     _count: {
-      select: { votes: true, contributors: true, outgoingConnections: true, incomingConnections: true },
+      select: {
+        votes: true,
+        contributors: true,
+        outgoingConnections: { where: { label: { not: "related" } } },
+        incomingConnections: { where: { label: { not: "related" } } },
+      },
     },
   };
 

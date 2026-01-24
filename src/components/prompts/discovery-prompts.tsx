@@ -34,7 +34,12 @@ export async function DiscoveryPrompts({ isHomepage = false }: DiscoveryPromptsP
       select: { id: true, username: true, name: true, avatar: true },
     },
     _count: {
-      select: { votes: true, contributors: true, outgoingConnections: true, incomingConnections: true },
+      select: {
+        votes: true,
+        contributors: true,
+        outgoingConnections: { where: { label: { not: "related" } } },
+        incomingConnections: { where: { label: { not: "related" } } },
+      },
     },
   };
 
