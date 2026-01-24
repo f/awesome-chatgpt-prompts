@@ -53866,3 +53866,16 @@ Startup vibes — elegant, creative, modern, and confident.
 
 </details>
 
+<details>
+<summary><strong>Elements </strong></summary>
+
+## Elements 
+
+Contributed by [@rodj3881@gmail.com](https://github.com/rodj3881@gmail.com)
+
+```md
+I want to create a 4k image of 3D character of each element in the periodic table. I want them to look cute but has distinct features 
+```
+
+</details>
+
