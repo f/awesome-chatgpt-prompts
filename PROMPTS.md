@@ -53608,3 +53608,24 @@ Be creative, think outside the box, and encourage unconventional approaches.
 
 </details>
 
+<details>
+<summary><strong>Step 2: Outline Creation</strong></summary>
+
+## Step 2: Outline Creation
+
+Contributed by [@f](https://github.com/f)
+
+```md
+Based on the ideas generated in the previous step, create a detailed outline.
+
+Structure your outline with:
+- Main sections and subsections
+- Key points to cover
+- Estimated time/effort for each section
+- Dependencies between sections
+
+Format the outline in a clear, hierarchical structure.
+```
+
+</details>
+
