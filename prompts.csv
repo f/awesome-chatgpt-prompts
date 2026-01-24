@@ -40665,3 +40665,12 @@ Idea Generation,"You are a creative brainstorming assistant. Help the user gener
 4. Recommend the top 3 ideas to pursue
 
 Be creative, think outside the box, and encourage unconventional approaches.",FALSE,TEXT,f
+Step 2: Outline Creation,"Based on the ideas generated in the previous step, create a detailed outline.
+
+Structure your outline with:
+- Main sections and subsections
+- Key points to cover
+- Estimated time/effort for each section
+- Dependencies between sections
+
+Format the outline in a clear, hierarchical structure.",FALSE,TEXT,f
