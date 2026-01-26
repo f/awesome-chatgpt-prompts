@@ -1120,6 +1120,14 @@
     "terms": "약관",
     "support": "지원"
   },
+  "cookies": {
+    "message": "분석을 위해 쿠키를 사용합니다.",
+    "accept": "수락",
+    "reject": "거부",
+    "confirmMessage": "정말요? 분석은 개선에 도움이 됩니다. 이 앱은 완전히 오픈 소스입니다.",
+    "nevermind": "취소",
+    "confirmReject": "네, 거부합니다"
+  },
   "support": {
     "title": "지원",
     "description": "자주 묻는 질문에 대한 답변을 찾거나 커뮤니티의 도움을 받으세요.",

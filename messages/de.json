@@ -1120,6 +1120,14 @@
     "terms": "Nutzungsbedingungen",
     "support": "Support"
   },
+  "cookies": {
+    "message": "Wir verwenden Cookies für Analysen.",
+    "accept": "Akzeptieren",
+    "reject": "Ablehnen",
+    "confirmMessage": "Sind Sie sicher? Analysen helfen uns zu verbessern. Diese App ist vollständig Open Source.",
+    "nevermind": "Abbrechen",
+    "confirmReject": "Ja, ablehnen"
+  },
   "support": {
     "title": "Support",
     "description": "Finden Sie Antworten auf häufige Fragen oder erhalten Sie Hilfe von unserer Community.",

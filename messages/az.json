@@ -1120,6 +1120,14 @@
     "terms": "Şərtlər",
     "support": "Dəstək"
   },
+  "cookies": {
+    "message": "Analitika üçün çərəzlərdən istifadə edirik.",
+    "accept": "Qəbul et",
+    "reject": "Rədd et",
+    "confirmMessage": "Əminsiniz? Analitika yaxşılaşdırmağa kömək edir. Bu tətbiq tamamilə açıq mənbədir.",
+    "nevermind": "Ləğv et",
+    "confirmReject": "Bəli, rədd et"
+  },
   "support": {
     "title": "Dəstək",
     "description": "Ümumi suallara cavab tapın və ya icmamızdan kömək alın.",

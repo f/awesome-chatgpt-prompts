@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Inter, Noto_Sans_Arabic, Geist_Mono, Playfair_Display } from "next/font/google";
 import { headers } from "next/headers";
 import { getMessages, getLocale } from "next-intl/server";
 import { Providers } from "@/components/providers";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { CookieConsentBanner } from "@/components/layout/cookie-consent";
+import { Analytics } from "@/components/layout/analytics";
 import { WebsiteStructuredData } from "@/components/seo/structured-data";
 import { AppBanner } from "@/components/layout/app-banner";
 import { LocaleDetector } from "@/components/providers/locale-detector";
@@ -183,20 +184,7 @@ export default async function RootLayout({
       </head>
       <body className={`${fontClasses} antialiased`}>
         {process.env.GOOGLE_ANALYTICS_ID && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${process.env.GOOGLE_ANALYTICS_ID}');
-              `}
-            </Script>
-          </>
+          <Analytics gaId={process.env.GOOGLE_ANALYTICS_ID} />
         )}
         <Providers locale={locale} messages={messages} theme={config.theme} branding={{ ...config.branding, useCloneBranding: config.homepage?.useCloneBranding }}>
           {isEmbedRoute || isKidsRoute ? (
@@ -208,6 +196,7 @@ export default async function RootLayout({
                 <Header authProvider={config.auth.provider} allowRegistration={config.auth.allowRegistration} />
                 <main className="flex-1">{children}</main>
                 <Footer />
+                <CookieConsentBanner />
               </div>
             </>
           )}

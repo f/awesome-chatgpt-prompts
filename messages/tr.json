@@ -1120,6 +1120,14 @@
     "terms": "Şartlar",
     "support": "Destek"
   },
+  "cookies": {
+    "message": "Analitik için çerez kullanıyoruz.",
+    "accept": "Kabul Et",
+    "reject": "Reddet",
+    "confirmMessage": "Emin misiniz? Analitik geliştirmemize yardımcı oluyor. Bu uygulama tamamen açık kaynak.",
+    "nevermind": "Vazgeç",
+    "confirmReject": "Evet, reddet"
+  },
   "support": {
     "title": "Destek",
     "description": "Sık sorulan sorulara cevap bulun veya topluluğumuzdan yardım alın.",

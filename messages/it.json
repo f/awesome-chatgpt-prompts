@@ -1120,6 +1120,14 @@
     "terms": "Termini",
     "support": "Supporto"
   },
+  "cookies": {
+    "message": "Utilizziamo cookie per l'analisi.",
+    "accept": "Accetta",
+    "reject": "Rifiuta",
+    "confirmMessage": "Sei sicuro? Le analisi ci aiutano a migliorare. Questa app è completamente open source.",
+    "nevermind": "Annulla",
+    "confirmReject": "Sì, rifiuta"
+  },
   "support": {
     "title": "Supporto",
     "description": "Trova risposte alle domande frequenti o ottieni aiuto dalla nostra community.",

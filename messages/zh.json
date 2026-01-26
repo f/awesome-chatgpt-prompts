@@ -1120,6 +1120,14 @@
     "terms": "条款",
     "support": "支持"
   },
+  "cookies": {
+    "message": "我们使用 Cookie 进行分析。",
+    "accept": "接受",
+    "reject": "拒绝",
+    "confirmMessage": "确定吗？分析帮助我们改进。此应用完全开源。",
+    "nevermind": "取消",
+    "confirmReject": "是的，拒绝"
+  },
   "support": {
     "title": "支持",
     "description": "查找常见问题的答案或从我们的社区获得帮助。",

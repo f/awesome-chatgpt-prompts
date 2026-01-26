@@ -1120,6 +1120,14 @@
     "support": "Support",
     "about": "About"
   },
+  "cookies": {
+    "message": "We use cookies for analytics.",
+    "accept": "Accept",
+    "reject": "Reject",
+    "confirmMessage": "Are you sure? Analytics help us improve. This app is fully open source.",
+    "nevermind": "Nevermind",
+    "confirmReject": "Yes, reject"
+  },
   "support": {
     "title": "Support",
     "description": "Find answers to common questions or get help from our community.",

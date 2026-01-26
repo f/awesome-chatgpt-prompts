@@ -1120,6 +1120,14 @@
     "terms": "利用規約",
     "support": "サポート"
   },
+  "cookies": {
+    "message": "分析のためにCookieを使用しています。",
+    "accept": "同意",
+    "reject": "拒否",
+    "confirmMessage": "本当によろしいですか？分析は改善に役立ちます。このアプリは完全にオープンソースです。",
+    "nevermind": "キャンセル",
+    "confirmReject": "はい、拒否します"
+  },
   "support": {
     "title": "サポート",
     "description": "よくある質問への回答を見つけるか、コミュニティからサポートを受けてください。",
