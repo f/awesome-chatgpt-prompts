@@ -70,7 +70,7 @@ export function ActivityChart({ data, locale = "en", selectedDate, onDateClick }
     }
 
     // Calculate month labels
-    const months: { label: string; colStart: number }[] = [];
+    const allMonths: { label: string; colStart: number; month: number }[] = [];
     let lastMonth = -1;
 
     weeks.forEach((week, weekIndex) => {
@@ -78,14 +78,28 @@ export function ActivityChart({ data, locale = "en", selectedDate, onDateClick }
       if (firstDay) {
         const month = firstDay.date.getMonth();
         if (month !== lastMonth) {
-          months.push({
+          allMonths.push({
             label: firstDay.date.toLocaleDateString(locale, { month: "short" }),
             colStart: weekIndex,
+            month,
           });
           lastMonth = month;
         }
       }
     });
+
+    // Filter out overlapping labels - when two are too close, keep the second one
+    const months: { label: string; colStart: number }[] = [];
+    for (let i = 0; i < allMonths.length; i++) {
+      const current = allMonths[i];
+      const next = allMonths[i + 1];
+      
+      // If next month is too close (< 4 columns), skip current and show next instead
+      if (next && next.colStart - current.colStart < 4) {
+        continue;
+      }
+      months.push({ label: current.label, colStart: current.colStart });
+    }
 
     return { weeks, months };
   }, [data, locale, isMobile]);
