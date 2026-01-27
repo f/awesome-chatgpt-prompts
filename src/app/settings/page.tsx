@@ -25,6 +25,8 @@ export default async function SettingsPage() {
       verified: true,
       apiKey: true,
       mcpPromptsPublicByDefault: true,
+      bio: true,
+      customLinks: true,
     },
   });
 

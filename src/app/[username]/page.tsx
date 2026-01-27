@@ -18,6 +18,7 @@ import { Masonry } from "@/components/ui/masonry";
 import { McpServerPopup } from "@/components/mcp/mcp-server-popup";
 import { PrivatePromptsNote } from "@/components/prompts/private-prompts-note";
 import { ActivityChartWrapper } from "@/components/user/activity-chart-wrapper";
+import { ProfileLinks, type CustomLink } from "@/components/user/profile-links";
 
 interface UserProfilePageProps {
   params: Promise<{ username: string }>;
@@ -80,6 +81,8 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
       role: true,
       verified: true,
       createdAt: true,
+      bio: true,
+      customLinks: true,
       _count: {
         select: {
           prompts: true,
@@ -465,6 +468,26 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
           </div>
         </div>
 
+        {/* Actions - mobile only */}
+        <div className="md:hidden flex gap-2">
+          {config.features.mcp !== false && <McpServerPopup initialUsers={[user.username]} showOfficialBranding={!config.homepage?.useCloneBranding} />}
+          {isOwner && (
+            <Button variant="outline" size="sm" asChild className="flex-1">
+              <Link href="/settings">
+                <Settings className="h-4 w-4 mr-1.5" />
+                {t("editProfile")}
+              </Link>
+            </Button>
+          )}
+        </div>
+
+        {/* Bio and Social Links */}
+        <ProfileLinks 
+          bio={user.bio} 
+          customLinks={user.customLinks as CustomLink[] | null}
+          className="mb-2"
+        />
+
         {/* Stats - stacked on mobile, inline on desktop */}
         <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-6 text-sm">
           <div className="flex items-center gap-1.5">
@@ -486,19 +509,6 @@ export default async function UserProfilePage({ params, searchParams }: UserProf
             <Calendar className="h-4 w-4" />
             <span>{t("joined")} {formatDistanceToNow(user.createdAt, locale)}</span>
           </div>
-        </div>
-
-        {/* Actions - mobile only */}
-        <div className="md:hidden flex gap-2">
-          {config.features.mcp !== false && <McpServerPopup initialUsers={[user.username]} showOfficialBranding={!config.homepage?.useCloneBranding} />}
-          {isOwner && (
-            <Button variant="outline" size="sm" asChild className="flex-1">
-              <Link href="/settings">
-                <Settings className="h-4 w-4 mr-1.5" />
-                {t("editProfile")}
-              </Link>
-            </Button>
-          )}
         </div>
 
         </div>

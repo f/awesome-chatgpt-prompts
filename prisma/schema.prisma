@@ -15,6 +15,8 @@ model User {
   name                      String?
   password                  String?
   avatar                    String?
+  bio                       String?                @db.VarChar(250)
+  customLinks               Json?                  // Array of {type: string, url: string, label?: string}
   role                      UserRole               @default(USER)
   locale                    String                 @default("en")
   emailVerified             DateTime?

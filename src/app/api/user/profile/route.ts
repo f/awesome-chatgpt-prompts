@@ -3,6 +3,12 @@ import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 
+const customLinkSchema = z.object({
+  type: z.enum(["website", "github", "twitter", "linkedin", "instagram", "youtube", "twitch", "discord", "mastodon", "bluesky", "sponsor"]),
+  url: z.string().url(),
+  label: z.string().max(30).optional(),
+});
+
 const updateProfileSchema = z.object({
   name: z.string().min(1).max(100),
   username: z
@@ -11,6 +17,8 @@ const updateProfileSchema = z.object({
     .max(30)
     .regex(/^[a-zA-Z0-9_]+$/),
   avatar: z.string().url().optional().or(z.literal("")),
+  bio: z.string().max(250).optional().or(z.literal("")),
+  customLinks: z.array(customLinkSchema).max(5).optional(),
 });
 
 export async function PATCH(request: NextRequest) {
@@ -33,7 +41,7 @@ export async function PATCH(request: NextRequest) {
       );
     }
 
-    const { name, username, avatar } = parsed.data;
+    const { name, username, avatar, bio, customLinks } = parsed.data;
 
     // Check if username is taken by another user
     if (username !== session.user.username) {
@@ -57,6 +65,8 @@ export async function PATCH(request: NextRequest) {
         name,
         username,
         avatar: avatar || null,
+        bio: bio || null,
+        customLinks: customLinks && customLinks.length > 0 ? customLinks : null,
       },
       select: {
         id: true,
@@ -64,6 +74,8 @@ export async function PATCH(request: NextRequest) {
         username: true,
         email: true,
         avatar: true,
+        bio: true,
+        customLinks: true,
       },
     });
 
