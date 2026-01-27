@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { 
   Globe, 
   Github, 
@@ -65,7 +66,7 @@ export interface CustomLink {
 }
 
 interface LinkIconConfig {
-  icon: LucideIcon | (({ className }: { className?: string }) => JSX.Element);
+  icon: LucideIcon | (({ className }: { className?: string }) => React.ReactElement);
   color: string;
   hoverColor: string;
 }
