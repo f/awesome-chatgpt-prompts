@@ -5,6 +5,7 @@ import { db } from "@/lib/db";
 import config from "@/../prompts.config";
 import { ProfileForm } from "@/components/settings/profile-form";
 import { ApiKeySettings } from "@/components/settings/api-key-settings";
+import type { CustomLink } from "@/components/user/profile-links";
 
 export default async function SettingsPage() {
   const session = await auth();
@@ -44,7 +45,13 @@ export default async function SettingsPage() {
       </div>
 
       <div className="space-y-6">
-        <ProfileForm user={user} showVerifiedSection={!config.homepage?.useCloneBranding} />
+        <ProfileForm 
+          user={{
+            ...user,
+            customLinks: user.customLinks as CustomLink[] | null,
+          }} 
+          showVerifiedSection={!config.homepage?.useCloneBranding} 
+        />
 
         {config.features.mcp !== false && (
           <ApiKeySettings

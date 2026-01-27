@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+import { Prisma } from "@prisma/client";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 
@@ -66,7 +67,7 @@ export async function PATCH(request: NextRequest) {
         username,
         avatar: avatar || null,
         bio: bio || null,
-        customLinks: customLinks && customLinks.length > 0 ? customLinks : null,
+        customLinks: customLinks && customLinks.length > 0 ? customLinks : Prisma.DbNull,
       },
       select: {
         id: true,
