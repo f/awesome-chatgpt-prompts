@@ -38,6 +38,7 @@ ENV NODE_ENV=production
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 ENV DATABASE_URL="postgresql://prompts:prompts@localhost:5432/prompts?schema=public"
+ENV DIRECT_URL="postgresql://prompts:prompts@localhost:5432/prompts?schema=public"
 ENV REPO_URL="https://github.com/f/awesome-chatgpt-prompts.git"
 
 EXPOSE 3000
