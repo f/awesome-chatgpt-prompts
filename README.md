@@ -208,6 +208,14 @@ Use prompts.chat as an MCP server in your AI tools.
       <img height="35" alt="MitteAI" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/mitte.svg">
     </picture>
   </a>&nbsp;&nbsp;
+  <!-- Each Labs (py-[6px]) -->
+  <a href="https://www.eachlabs.ai/?utm_source=promptschat&utm_medium=referral">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/eachlabs-dark.png">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/eachlabs.png">
+      <img height="28" alt="Each Labs" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/eachlabs.png">
+    </picture>
+  </a>&nbsp;&nbsp;
   <!-- Warp (py-2) -->
   <a href="https://warp.dev/?utm_source=prompts.chat">
     <picture>
