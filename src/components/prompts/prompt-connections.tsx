@@ -490,15 +490,26 @@ function FlowGraph({ nodes, edges, currentPromptId, currentUserId, isAdmin, onNo
       // Add cover image/video preview if available
       if (showPreview && node.mediaUrl) {
         if (node.type === "VIDEO") {
-          // Use foreignObject for video to enable autoplay
-          const fo = g.append("foreignObject")
-            .attr("x", -nodeWidth / 2)
-            .attr("y", -currentNodeHeight / 2)
+          // For videos, use foreignObject with ABSOLUTE positioning (not relative to group)
+          // This fixes iOS Safari which doesn't respect parent group transforms
+          const videoClipId = `vclip-${node.id.replace(/[^a-zA-Z0-9]/g, '')}`;
+          defs.append("clipPath")
+            .attr("id", videoClipId)
+            .append("rect")
+            .attr("x", pos.x - nodeWidth / 2)
+            .attr("y", pos.y - currentNodeHeight / 2)
             .attr("width", nodeWidth)
             .attr("height", currentNodeHeight)
-            .attr("clip-path", `url(#${clipId})`);
-          
-          fo.append("xhtml:video")
+            .attr("rx", 10);
+
+          svg.append("foreignObject")
+            .attr("x", pos.x - nodeWidth / 2)
+            .attr("y", pos.y - currentNodeHeight / 2)
+            .attr("width", nodeWidth)
+            .attr("height", currentNodeHeight)
+            .attr("clip-path", `url(#${videoClipId})`)
+            .attr("pointer-events", "none")
+            .append("xhtml:video")
             .attr("src", node.mediaUrl)
             .attr("autoplay", true)
             .attr("loop", true)
@@ -509,7 +520,7 @@ function FlowGraph({ nodes, edges, currentPromptId, currentUserId, isAdmin, onNo
             .style("object-fit", "cover")
             .style("border-radius", "10px");
         } else {
-          // Full cover image
+          // For images, use SVG image element (works everywhere)
           g.append("image")
             .attr("x", -nodeWidth / 2)
             .attr("y", -currentNodeHeight / 2)
