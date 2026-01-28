@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidateTag } from "next/cache";
 import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -192,6 +193,9 @@ export async function POST(request: NextRequest, { params }: RouteParams) {
         },
       },
     });
+
+    // Revalidate prompt flow cache
+    revalidateTag("prompt-flow", "max");
 
     return NextResponse.json(connection, { status: 201 });
   } catch (error) {

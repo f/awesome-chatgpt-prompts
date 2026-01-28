@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { z } from "zod";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -59,8 +59,9 @@ export async function DELETE(request: NextRequest, { params }: RouteParams) {
       where: { id: connectionId },
     });
 
-    // Revalidate the prompt page cache
+    // Revalidate the prompt page and flow cache
     revalidatePath(`/prompts/${id}`);
+    revalidateTag("prompt-flow", "max");
 
     return NextResponse.json({ success: true });
   } catch (error) {
@@ -130,6 +131,9 @@ export async function PATCH(request: NextRequest, { params }: RouteParams) {
         },
       },
     });
+
+    // Revalidate prompt flow cache
+    revalidateTag("prompt-flow", "max");
 
     return NextResponse.json(updated);
   } catch (error) {

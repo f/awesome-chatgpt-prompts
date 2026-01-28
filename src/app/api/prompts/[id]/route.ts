@@ -335,8 +335,9 @@ export async function PATCH(
       }
     }
 
-    // Revalidate prompts cache
+    // Revalidate prompts and flow cache
     revalidateTag("prompts", "max");
+    revalidateTag("prompt-flow", "max");
 
     return NextResponse.json(prompt);
   } catch (error) {
@@ -416,10 +417,11 @@ export async function DELETE(
       data: { deletedAt: new Date() },
     });
 
-    // Revalidate caches (prompts, categories, tags counts change)
+    // Revalidate caches (prompts, categories, tags, flow counts change)
     revalidateTag("prompts", "max");
     revalidateTag("categories", "max");
     revalidateTag("tags", "max");
+    revalidateTag("prompt-flow", "max");
 
     return NextResponse.json({ 
       success: true, 
