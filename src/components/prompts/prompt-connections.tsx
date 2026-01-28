@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import * as d3 from "d3";
-import { Link2, ArrowUp, ArrowDown, ChevronRight, Trash2, FastForward, ExternalLink, ImageIcon, Video, FileText } from "lucide-react";
+import { Link2, ArrowUp, ArrowDown, ChevronRight, Trash2, FastForward, ExternalLink, ImageIcon, Video, FileText, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AddConnectionDialog } from "./add-connection-dialog";
 import { getPromptUrl } from "@/lib/urls";
@@ -291,10 +291,15 @@ function FlowGraph({ nodes, edges, currentPromptId, currentUserId, isAdmin, onNo
     const hasInputNodes = inputNodes.length > 0;
     const nodeWidth = Math.min(180, width * 0.4);
     const nodeHeight = 44;
+    const nodeWithPreviewHeight = 90; // Taller nodes for image previews
     const ioNodeHeight = 32;
-    const levelHeight = 100;
-    const inputOffset = hasInputNodes ? levelHeight : 0;
-    const height = inputOffset + (maxLevel + 1) * levelHeight + (hasOutputNodes ? levelHeight : 0) + 80;
+    const levelHeight = 140; // Increased to accommodate previews
+    const inputOffset = hasInputNodes ? 80 : 0;
+    const height = inputOffset + (maxLevel + 1) * levelHeight + (hasOutputNodes ? 80 : 0) + 80;
+    
+    // Check if any node has a preview (mediaUrl for IMAGE/VIDEO types)
+    const hasPreview = (node: FlowGraphNode) => 
+      node.mediaUrl && (node.type === "IMAGE" || node.type === "VIDEO");
 
     svg.attr("width", width).attr("height", height);
 
@@ -383,13 +388,21 @@ function FlowGraph({ nodes, edges, currentPromptId, currentUserId, isAdmin, onNo
     // Draw edges
     const edgeGroup = svg.append("g").attr("class", "edges");
     
+    // Helper to get node height based on whether it has preview
+    const getNodeHeight = (nodeId: string) => {
+      const node = nodeMap[nodeId];
+      return node && hasPreview(node) ? nodeWithPreviewHeight : nodeHeight;
+    };
+    
     edges.forEach(edge => {
       const source = positions[edge.source];
       const target = positions[edge.target];
       if (!source || !target) return;
 
-      const sourceY = source.y + nodeHeight / 2;
-      const targetY = target.y - nodeHeight / 2;
+      const sourceHeight = getNodeHeight(edge.source);
+      const targetHeight = getNodeHeight(edge.target);
+      const sourceY = source.y + sourceHeight / 2;
+      const targetY = target.y - targetHeight / 2;
       const midY = (sourceY + targetY) / 2;
 
       edgeGroup.append("path")
@@ -433,6 +446,9 @@ function FlowGraph({ nodes, edges, currentPromptId, currentUserId, isAdmin, onNo
       if (!pos) return;
 
       const isCurrent = node.id === currentPromptId;
+      const showPreview = hasPreview(node);
+      const currentNodeHeight = showPreview ? nodeWithPreviewHeight : nodeHeight;
+      
       const g = nodeGroup.append("g")
         .attr("transform", `translate(${pos.x}, ${pos.y})`)
         .attr("cursor", "pointer")
@@ -448,26 +464,105 @@ function FlowGraph({ nodes, edges, currentPromptId, currentUserId, isAdmin, onNo
           }
         });
 
+      // Clip path for rounded corners on the entire node
+      const clipId = `clip-${node.id.replace(/[^a-zA-Z0-9]/g, '')}`;
+      const defs = svg.select("defs").node() ? svg.select("defs") : svg.append("defs");
+      defs.append("clipPath")
+        .attr("id", clipId)
+        .append("rect")
+        .attr("x", -nodeWidth / 2)
+        .attr("y", -currentNodeHeight / 2)
+        .attr("width", nodeWidth)
+        .attr("height", currentNodeHeight)
+        .attr("rx", 10);
+
+      // Main node rectangle (background)
       g.append("rect")
         .attr("x", -nodeWidth / 2)
-        .attr("y", -nodeHeight / 2)
+        .attr("y", -currentNodeHeight / 2)
         .attr("width", nodeWidth)
-        .attr("height", nodeHeight)
+        .attr("height", currentNodeHeight)
         .attr("rx", 10)
         .attr("fill", isCurrent ? colors.primary : colors.card)
         .attr("stroke", isCurrent ? colors.primary : colors.border)
         .attr("stroke-width", isCurrent ? 0 : 1.5);
 
-      // Truncate title if too long
-      let displayTitle = node.title;
-      if (displayTitle.length > 22) {
-        displayTitle = displayTitle.slice(0, 20) + "...";
+      // Add cover image/video preview if available
+      if (showPreview && node.mediaUrl) {
+        if (node.type === "VIDEO") {
+          // Use foreignObject for video to enable autoplay
+          const fo = g.append("foreignObject")
+            .attr("x", -nodeWidth / 2)
+            .attr("y", -currentNodeHeight / 2)
+            .attr("width", nodeWidth)
+            .attr("height", currentNodeHeight)
+            .attr("clip-path", `url(#${clipId})`);
+          
+          fo.append("xhtml:video")
+            .attr("src", node.mediaUrl)
+            .attr("autoplay", true)
+            .attr("loop", true)
+            .attr("muted", true)
+            .attr("playsinline", true)
+            .style("width", "100%")
+            .style("height", "100%")
+            .style("object-fit", "cover")
+            .style("border-radius", "10px");
+        } else {
+          // Full cover image
+          g.append("image")
+            .attr("x", -nodeWidth / 2)
+            .attr("y", -currentNodeHeight / 2)
+            .attr("width", nodeWidth)
+            .attr("height", currentNodeHeight)
+            .attr("href", node.mediaUrl)
+            .attr("preserveAspectRatio", "xMidYMid slice")
+            .attr("clip-path", `url(#${clipId})`);
+        }
+        
+        // Gradient overlay for text readability (bottom gradient)
+        const gradientId = `grad-${node.id.replace(/[^a-zA-Z0-9]/g, '')}`;
+        const gradient = defs.append("linearGradient")
+          .attr("id", gradientId)
+          .attr("x1", "0%")
+          .attr("y1", "0%")
+          .attr("x2", "0%")
+          .attr("y2", "100%");
+        gradient.append("stop")
+          .attr("offset", "0%")
+          .attr("stop-color", "transparent");
+        gradient.append("stop")
+          .attr("offset", "50%")
+          .attr("stop-color", "transparent");
+        gradient.append("stop")
+          .attr("offset", "100%")
+          .attr("stop-color", isDark ? "rgba(0,0,0,0.85)" : "rgba(0,0,0,0.7)");
+        
+        g.append("rect")
+          .attr("x", -nodeWidth / 2)
+          .attr("y", -currentNodeHeight / 2)
+          .attr("width", nodeWidth)
+          .attr("height", currentNodeHeight)
+          .attr("rx", 10)
+          .attr("fill", `url(#${gradientId})`)
+          .attr("clip-path", `url(#${clipId})`);
       }
 
+      // Truncate title if too long
+      let displayTitle = node.title;
+      const maxTitleLen = showPreview ? 20 : 22;
+      if (displayTitle.length > maxTitleLen) {
+        displayTitle = displayTitle.slice(0, maxTitleLen - 2) + "...";
+      }
+
+      // Title position depends on whether we have a preview
+      const titleY = showPreview ? currentNodeHeight / 2 - 14 : 0;
+      
       g.append("text")
         .attr("text-anchor", "middle")
+        .attr("y", titleY)
         .attr("dy", "0.35em")
-        .attr("fill", isCurrent ? colors.primaryFg : colors.cardFg)
+        .attr("fill", showPreview ? "#ffffff" : (isCurrent ? colors.primaryFg : colors.cardFg))
         .attr("font-size", "11px")
         .attr("font-weight", isCurrent ? "700" : "500")
         .text(displayTitle);
@@ -475,7 +570,7 @@ function FlowGraph({ nodes, edges, currentPromptId, currentUserId, isAdmin, onNo
       // Add media indicator icon if node requires media upload
       if (node.requiresMediaUpload && node.requiredMediaType) {
         const badgeX = nodeWidth / 2 - 8;
-        const badgeY = -nodeHeight / 2 - 4;
+        const badgeY = -currentNodeHeight / 2 - 4;
         
         // Badge background circle
         g.append("circle")
@@ -495,6 +590,33 @@ function FlowGraph({ nodes, edges, currentPromptId, currentUserId, isAdmin, onNo
           .attr("transform", `translate(${badgeX - 5}, ${badgeY - 5}) scale(0.42)`)
           .attr("fill", "#fff");
       }
+      
+      // Add output type badge in bottom-right corner
+      if (!showPreview) {
+        const typeBadgeX = nodeWidth / 2 - 14;
+        const typeBadgeY = currentNodeHeight / 2 - 10;
+        const typeColors: Record<string, string> = {
+          TEXT: "#3b82f6",
+          IMAGE: "#8b5cf6",
+          VIDEO: "#ec4899",
+          AUDIO: "#f97316",
+          STRUCTURED: "#10b981",
+          SKILL: "#6366f1",
+        };
+        const typeColor = typeColors[node.type] || colors.mutedFg;
+        const typeIcon = node.type === "IMAGE" ? ICON_PATHS.image
+          : node.type === "VIDEO" ? ICON_PATHS.video
+          : node.type === "AUDIO" ? ICON_PATHS.audio
+          : node.type === "STRUCTURED" ? ICON_PATHS.structured
+          : node.type === "SKILL" ? ICON_PATHS.skill
+          : ICON_PATHS.text;
+        
+        g.append("path")
+          .attr("d", typeIcon)
+          .attr("transform", `translate(${typeBadgeX - 5}, ${typeBadgeY - 5}) scale(0.42)`)
+          .attr("fill", typeColor)
+          .attr("opacity", 0.7);
+      }
     });
 
     // Draw output type nodes for leaf nodes
@@ -505,7 +627,8 @@ function FlowGraph({ nodes, edges, currentPromptId, currentUserId, isAdmin, onNo
       if (!pos || !sourcePos) return;
 
       // Draw edge from leaf node to output node
-      const sourceY = sourcePos.y + nodeHeight / 2;
+      const sourceHeight = getNodeHeight(outNode.sourceId);
+      const sourceY = sourcePos.y + sourceHeight / 2;
       const targetY = pos.y - ioNodeHeight / 2;
       const midY = (sourceY + targetY) / 2;
 
@@ -584,7 +707,8 @@ function FlowGraph({ nodes, edges, currentPromptId, currentUserId, isAdmin, onNo
 
       // Draw edge from input node to target node
       const sourceY = pos.y + ioNodeHeight / 2;
-      const targetY = targetPos.y - nodeHeight / 2;
+      const targetHeight = getNodeHeight(inNode.targetId);
+      const targetY = targetPos.y - targetHeight / 2;
       const midY = (sourceY + targetY) / 2;
 
       edgeGroup.append("path")
@@ -1343,8 +1467,14 @@ export function PromptConnections({
     };
   }, [isLoading, incoming, outgoing, promptId, promptTitle, canEdit, router, handleDeleteConnection]);
 
+  // Only show loader for sectionOnly mode, not buttonOnly
   if (isLoading) {
-    return null;
+    if (buttonOnly) return null;
+    return (
+      <div className="flex items-center justify-center py-8">
+        <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />
+      </div>
+    );
   }
 
   const hasConnections = outgoing.length > 0 || incoming.length > 0;
@@ -1426,17 +1556,32 @@ export function PromptConnections({
                 </Button>
               </>
             )}
-            {hasConnections && workflowLink && (
-              <Button
-                size="sm"
-                className="bg-emerald-700/80 hover:bg-emerald-700 text-white gap-1.5"
-                onClick={() => window.open(workflowLink, '_blank', 'noopener,noreferrer')}
-              >
-                <FastForward className="h-3.5 w-3.5" />
-                <span className="hidden sm:inline">{t("testWorkflow")}</span>
-                <ExternalLink className="h-3 w-3" />
-              </Button>
-            )}
+            {hasConnections && workflowLink && (() => {
+              // Extract domain from URL without www
+              let domain = "";
+              try {
+                const url = new URL(workflowLink);
+                domain = url.hostname.replace(/^www\./, "");
+              } catch {
+                domain = "";
+              }
+              return (
+                <Button
+                  size="sm"
+                  className="bg-emerald-700/80 hover:bg-emerald-700 text-white gap-1.5"
+                  onClick={() => window.open(workflowLink, '_blank', 'noopener,noreferrer')}
+                >
+                  <FastForward className="h-3.5 w-3.5" />
+                  <span className="hidden sm:inline">{t("testWorkflow")}</span>
+                  {domain && (
+                    <span className="hidden sm:inline px-1.5 py-0.5 text-[10px] bg-white/20 rounded font-medium">
+                      {domain}
+                    </span>
+                  )}
+                  <ExternalLink className="h-3 w-3" />
+                </Button>
+              );
+            })()}
             </div>
           </div>
         </div>
