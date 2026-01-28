@@ -98,6 +98,7 @@ export default async function EditPromptPage({ params }: EditPromptPageProps) {
     requiredMediaCount: prompt.requiredMediaCount || 1,
     bestWithModels: (prompt as unknown as { bestWithModels?: string[] }).bestWithModels || [],
     bestWithMCP: (prompt as unknown as { bestWithMCP?: { command: string; tools?: string[] }[] }).bestWithMCP || [],
+    workflowLink: (prompt as unknown as { workflowLink?: string }).workflowLink || "",
   };
 
   // Check if AI generation is enabled

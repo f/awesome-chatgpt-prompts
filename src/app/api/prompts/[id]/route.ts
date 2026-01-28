@@ -26,6 +26,7 @@ const updatePromptSchema = z.object({
     command: z.string(),
     tools: z.array(z.string()).optional(),
   })).optional(),
+  workflowLink: z.string().url().optional().or(z.literal("")).nullable(),
 });
 
 // Get single prompt
@@ -161,7 +162,7 @@ export async function PATCH(
       );
     }
 
-    const { tagIds, contributorIds, categoryId, mediaUrl, title, bestWithModels, bestWithMCP, ...data } = parsed.data;
+    const { tagIds, contributorIds, categoryId, mediaUrl, title, bestWithModels, bestWithMCP, workflowLink, ...data } = parsed.data;
 
     // Regenerate slug if title changed
     let newSlug: string | undefined;
@@ -178,6 +179,7 @@ export async function PATCH(
       ...(mediaUrl !== undefined && { mediaUrl: mediaUrl || null }),
       ...(bestWithModels !== undefined && { bestWithModels }),
       ...(bestWithMCP !== undefined && { bestWithMCP }),
+      ...(workflowLink !== undefined && { workflowLink: workflowLink || null }),
     };
 
     // Update prompt
@@ -273,6 +275,64 @@ export async function PATCH(
       }).catch((err) => {
         console.error("[Quality Check] Failed to run quality check for prompt:", id, err);
       });
+    }
+
+    // Propagate workflow link to all prompts in the same workflow chain (not "related" ones)
+    if (workflowLink !== undefined) {
+      const newWorkflowLink = workflowLink || null;
+      
+      // Get all flow connections (excluding "related")
+      const allFlowConnections = await db.promptConnection.findMany({
+        where: {
+          label: { not: "related" },
+        },
+        select: {
+          sourceId: true,
+          targetId: true,
+        },
+      });
+
+      // Build adjacency list for the workflow graph
+      const adjacency = new Map<string, Set<string>>();
+      allFlowConnections.forEach((conn) => {
+        if (!adjacency.has(conn.sourceId)) adjacency.set(conn.sourceId, new Set());
+        if (!adjacency.has(conn.targetId)) adjacency.set(conn.targetId, new Set());
+        adjacency.get(conn.sourceId)!.add(conn.targetId);
+        adjacency.get(conn.targetId)!.add(conn.sourceId);
+      });
+
+      // BFS to find all prompts in the same workflow chain
+      const workflowPromptIds = new Set<string>();
+      const queue = [id];
+      workflowPromptIds.add(id);
+
+      while (queue.length > 0) {
+        const current = queue.shift()!;
+        const neighbors = adjacency.get(current);
+        if (neighbors) {
+          neighbors.forEach((neighborId) => {
+            if (!workflowPromptIds.has(neighborId)) {
+              workflowPromptIds.add(neighborId);
+              queue.push(neighborId);
+            }
+          });
+        }
+      }
+
+      // Remove current prompt from update set (already updated above)
+      workflowPromptIds.delete(id);
+
+      // Update all prompts in the workflow with the same workflow link
+      if (workflowPromptIds.size > 0) {
+        await db.prompt.updateMany({
+          where: {
+            id: { in: Array.from(workflowPromptIds) },
+          },
+          data: {
+            workflowLink: newWorkflowLink,
+          },
+        });
+      }
     }
 
     // Revalidate prompts cache

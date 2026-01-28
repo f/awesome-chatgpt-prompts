@@ -365,6 +365,7 @@ const createPromptSchema = (t: (key: string) => string) => z.object({
     command: z.string(),
     tools: z.array(z.string()).optional(),
   })).optional(),
+  workflowLink: z.string().url().optional().or(z.literal("")),
 }).superRefine((data, ctx) => {
   if (data.type === "SKILL") {
     const frontmatterError = validateSkillFrontmatter(data.content);
@@ -459,6 +460,7 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
       requiredMediaCount: initialData?.requiredMediaCount || 1,
       bestWithModels: initialData?.bestWithModels || [],
       bestWithMCP: initialData?.bestWithMCP || [],
+      workflowLink: initialData?.workflowLink || "",
     },
   });
 
@@ -1083,6 +1085,7 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
                     </Button>
                   </div>
                 </div>
+
               </div>
             )}
           </div>
@@ -1432,6 +1435,34 @@ export function PromptForm({ categories, tags, initialData, initialContributors 
             </div>
           </div>
         )}
+
+        {/* ===== WORKFLOW LINK SECTION ===== */}
+        <div className="space-y-3 py-6 border-t">
+          <FormField
+            control={form.control}
+            name="workflowLink"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t("workflowLink")}</FormLabel>
+                <FormDescription className="text-xs">
+                  {mode === "create" 
+                    ? t("workflowLinkCreateNote")
+                    : t("workflowLinkDescription")
+                  }
+                </FormDescription>
+                <FormControl>
+                  <Input 
+                    placeholder={t("workflowLinkPlaceholder")} 
+                    {...field} 
+                    disabled={mode === "create"}
+                    className={mode === "create" ? "opacity-50" : ""}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
 
         <div className="flex justify-end gap-4 pt-2">
           <Button type="button" variant="outline" onClick={() => router.back()}>

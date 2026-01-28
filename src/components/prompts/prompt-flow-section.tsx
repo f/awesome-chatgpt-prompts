@@ -12,6 +12,8 @@ interface PromptFlowSectionProps {
   isLoggedIn: boolean;
   currentUserId?: string;
   isAdmin?: boolean;
+  workflowLink?: string | null;
+  hasFlowConnections?: boolean;
 }
 
 export function PromptFlowSection({
@@ -22,6 +24,7 @@ export function PromptFlowSection({
   isLoggedIn,
   currentUserId,
   isAdmin,
+  workflowLink,
 }: PromptFlowSectionProps) {
   const [expanded, setExpanded] = useState(false);
 
@@ -51,6 +54,7 @@ export function PromptFlowSection({
         canEdit={canEdit}
         currentUserId={currentUserId}
         isAdmin={isAdmin}
+        workflowLink={workflowLink}
         sectionOnly
         expanded={expanded}
         onExpandChange={setExpanded}

@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import * as d3 from "d3";
-import { Link2, ArrowUp, ArrowDown, ChevronRight, Trash2 } from "lucide-react";
+import { Link2, ArrowUp, ArrowDown, ChevronRight, Trash2, FastForward, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AddConnectionDialog } from "./add-connection-dialog";
 import { getPromptUrl } from "@/lib/urls";
@@ -44,6 +44,7 @@ interface PromptConnectionsProps {
   sectionOnly?: boolean; // Only render the expanded section
   expanded?: boolean;    // Controlled expanded state
   onExpandChange?: (expanded: boolean) => void; // Callback when expanded state changes
+  workflowLink?: string | null; // URL to test the workflow
 }
 
 interface GraphNode {
@@ -453,6 +454,7 @@ export function PromptConnections({
   sectionOnly = false,
   expanded: controlledExpanded,
   onExpandChange,
+  workflowLink,
 }: PromptConnectionsProps) {
   const t = useTranslations("connectedPrompts");
   const router = useRouter();
@@ -1066,43 +1068,58 @@ export function PromptConnections({
     if (canEdit && !showExpanded) return null;
     
     return (
-      <div className="w-full mt-4 space-y-4 rounded-lg border bg-card p-4">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <div>
+      <div className="w-full mt-4 space-y-3">
+        {/* Header row - above the container */}
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-2">
               <Link2 className="h-5 w-5 text-muted-foreground" />
               <h3 className="font-semibold">{t("title")}</h3>
             </div>
-            <p className="text-xs text-muted-foreground mt-1">{t("description")}</p>
-          </div>
-          {canEdit && (
             <div className="flex gap-2">
+            {canEdit && (
+              <>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    setConnectionType("previous");
+                    setDialogOpen(true);
+                  }}
+                >
+                  <ArrowUp className="h-4 w-4 sm:mr-1" />
+                  <span className="hidden sm:inline">{t("addPrevious")}</span>
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    setConnectionType("next");
+                    setDialogOpen(true);
+                  }}
+                >
+                  <ArrowDown className="h-4 w-4 sm:mr-1" />
+                  <span className="hidden sm:inline">{t("addNext")}</span>
+                </Button>
+              </>
+            )}
+            {hasConnections && workflowLink && (
               <Button
-                variant="outline"
                 size="sm"
-                onClick={() => {
-                  setConnectionType("previous");
-                  setDialogOpen(true);
-                }}
+                className="bg-emerald-700/80 hover:bg-emerald-700 text-white gap-1.5"
+                onClick={() => window.open(workflowLink, '_blank', 'noopener,noreferrer')}
               >
-                <ArrowUp className="h-4 w-4 sm:mr-1" />
-                <span className="hidden sm:inline">{t("addPrevious")}</span>
+                <FastForward className="h-3.5 w-3.5" />
+                <span className="hidden sm:inline">{t("testWorkflow")}</span>
+                <ExternalLink className="h-3 w-3" />
               </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => {
-                  setConnectionType("next");
-                  setDialogOpen(true);
-                }}
-              >
-                <ArrowDown className="h-4 w-4 sm:mr-1" />
-                <span className="hidden sm:inline">{t("addNext")}</span>
-              </Button>
+            )}
             </div>
-          )}
+          </div>
         </div>
 
+        {/* Content container */}
+        <div className="rounded-lg border bg-card p-4">
         {!hasConnections ? (
           <p className="text-sm text-muted-foreground">{t("noConnections")}</p>
         ) : hasFullFlow ? (
@@ -1133,6 +1150,7 @@ export function PromptConnections({
             )}
           </div>
         )}
+        </div>
 
         {canEdit && (
           <AddConnectionDialog

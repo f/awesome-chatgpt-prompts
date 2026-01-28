@@ -28,6 +28,7 @@ const promptSchema = z.object({
     command: z.string(),
     tools: z.array(z.string()).optional(),
   })).optional(),
+  workflowLink: z.string().url().optional().or(z.literal("")),
 });
 
 // Create prompt
@@ -51,7 +52,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const { title, description, content, type, structuredFormat, categoryId, tagIds, contributorIds, isPrivate, mediaUrl, requiresMediaUpload, requiredMediaType, requiredMediaCount, bestWithModels, bestWithMCP } = parsed.data;
+    const { title, description, content, type, structuredFormat, categoryId, tagIds, contributorIds, isPrivate, mediaUrl, requiresMediaUpload, requiredMediaType, requiredMediaCount, bestWithModels, bestWithMCP, workflowLink } = parsed.data;
 
     // Check if user is flagged (for auto-delisting and daily limit)
     const currentUser = await db.user.findUnique({
@@ -183,6 +184,7 @@ export async function POST(request: Request) {
         requiredMediaCount: requiresMediaUpload ? requiredMediaCount : null,
         bestWithModels: bestWithModels || [],
         bestWithMCP: bestWithMCP || [],
+        workflowLink: workflowLink || null,
         authorId: session.user.id,
         categoryId: categoryId || null,
         // Auto-delist prompts from flagged users

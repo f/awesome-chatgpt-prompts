@@ -207,6 +207,17 @@ export default async function PromptPage({ params }: PromptPageProps) {
     .map((conn) => conn.target)
     .filter((p) => !p.isPrivate && !p.isUnlisted && !p.deletedAt);
 
+  // Check if prompt has flow connections (previous/next, not "related")
+  const flowConnectionCount = await db.promptConnection.count({
+    where: {
+      OR: [
+        { sourceId: id, label: { not: "related" } },
+        { targetId: id, label: { not: "related" } },
+      ],
+    },
+  });
+  const hasFlowConnections = flowConnectionCount > 0;
+
   if (!prompt) {
     notFound();
   }
@@ -654,6 +665,8 @@ export default async function PromptPage({ params }: PromptPageProps) {
               isLoggedIn={!!session?.user}
               currentUserId={session?.user?.id}
               isAdmin={isAdmin}
+              workflowLink={(prompt as unknown as { workflowLink?: string | null }).workflowLink}
+              hasFlowConnections={hasFlowConnections}
             />
           )}
 

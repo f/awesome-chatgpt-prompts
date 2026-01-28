@@ -129,6 +129,7 @@ model Prompt {
   collectedBy         Collection[]
   bestWithModels      String[]           // Model slugs this prompt works best with (max 3), e.g. ["gpt-4o", "claude-3-5-sonnet"]
   bestWithMCP         Json?              // MCP configs array, e.g. [{command: "npx -y @mcp/server", tools: ["tool1"]}]
+  workflowLink        String?            // URL to test/demo the workflow when prompt has previous/next connections
 
   @@index([authorId])
   @@index([categoryId])
