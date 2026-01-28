@@ -55105,3 +55105,19 @@ Contributed by [@22abdullahok22@gmail.com](https://github.com/22abdullahok22@gma
 
 </details>
 
+<details>
+<summary><strong>My-Skills</strong></summary>
+
+## My-Skills
+
+Contributed by [@ikavak@gmail.com](https://github.com/ikavak@gmail.com)
+
+```md
+Yazılacak kod aşağıdaki yeteneklerde olacak.
+
+1. kullanıcı girişi olacak ve kullanıcı şifresi veritabanında salt ve diğer güçlü şifre korumaları ile tutulacak.
+2. backend ve frontend güçlü güvenlik sıkılaştırmalarına sahip olacak.
+```
+
+</details>
+
