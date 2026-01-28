@@ -502,7 +502,7 @@ function FlowGraph({ nodes, edges, currentPromptId, currentUserId, isAdmin, onNo
             .attr("height", currentNodeHeight)
             .attr("rx", 10);
 
-          svg.append("foreignObject")
+          const videoEl = svg.append("foreignObject")
             .attr("x", pos.x - nodeWidth / 2)
             .attr("y", pos.y - currentNodeHeight / 2)
             .attr("width", nodeWidth)
@@ -511,14 +511,21 @@ function FlowGraph({ nodes, edges, currentPromptId, currentUserId, isAdmin, onNo
             .attr("pointer-events", "none")
             .append("xhtml:video")
             .attr("src", node.mediaUrl)
-            .attr("autoplay", true)
-            .attr("loop", true)
-            .attr("muted", true)
-            .attr("playsinline", true)
+            .attr("autoplay", "")
+            .attr("loop", "")
+            .attr("muted", "")
+            .attr("playsinline", "")
             .style("width", "100%")
             .style("height", "100%")
             .style("object-fit", "cover")
             .style("border-radius", "10px");
+          
+          // Ensure video is muted (some browsers need this set via property)
+          const videoNode = videoEl.node() as HTMLVideoElement | null;
+          if (videoNode) {
+            videoNode.muted = true;
+            videoNode.volume = 0;
+          }
         } else {
           // For images, use SVG image element (works everywhere)
           g.append("image")
