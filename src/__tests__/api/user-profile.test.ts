@@ -232,6 +232,8 @@ describe("PATCH /api/user/profile", () => {
         name: "New Name",
         username: "newuser",
         avatar: "https://example.com/new-avatar.png",
+        bio: null,
+        customLinks: expect.anything(),
       },
       select: {
         id: true,
@@ -239,6 +241,8 @@ describe("PATCH /api/user/profile", () => {
         username: true,
         email: true,
         avatar: true,
+        bio: true,
+        customLinks: true,
       },
     });
   });
