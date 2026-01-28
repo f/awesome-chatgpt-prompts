@@ -1259,7 +1259,19 @@
     "connectionAdded": "Verbindung erfolgreich hinzugefügt",
     "connectionDeleted": "Verbindung gelöscht",
     "deleteFailed": "Verbindung konnte nicht gelöscht werden",
-    "noResults": "Keine Prompts gefunden"
+    "noResults": "Keine Prompts gefunden",
+    "outputText": "Text",
+    "outputImage": "Bild",
+    "outputVideo": "Video",
+    "outputAudio": "Audio",
+    "outputStructured": "strukturiert",
+    "outputSkill": "Fähigkeit",
+    "inputImage": "Bild",
+    "inputVideo": "Video",
+    "inputDocument": "Dokument",
+    "inputImages": "{count} Bilder",
+    "inputVideos": "{count} Videos",
+    "inputDocuments": "{count} Dokumente"
   },
   "promptWritingGuide": {
     "title": "Wie Man Gute Prompts Schreibt",

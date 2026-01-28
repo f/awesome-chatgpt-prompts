@@ -12,6 +12,10 @@ interface FlowNode {
   authorId: string;
   authorUsername: string;
   authorAvatar: string | null;
+  requiresMediaUpload: boolean;
+  requiredMediaType: string | null;
+  requiredMediaCount: number | null;
+  mediaUrl: string | null;
 }
 
 interface FlowEdge {
@@ -71,6 +75,10 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
           type: true,
           isPrivate: true, 
           authorId: true,
+          requiresMediaUpload: true,
+          requiredMediaType: true,
+          requiredMediaCount: true,
+          mediaUrl: true,
           author: {
             select: {
               username: true,
@@ -92,6 +100,10 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
         authorId: p.authorId,
         authorUsername: p.author.username,
         authorAvatar: p.author.avatar,
+        requiresMediaUpload: p.requiresMediaUpload,
+        requiredMediaType: p.requiredMediaType,
+        requiredMediaCount: p.requiredMediaCount,
+        mediaUrl: p.mediaUrl,
       });
 
       // Get outgoing connections

@@ -1259,7 +1259,19 @@
     "connectionAdded": "Η σύνδεση προστέθηκε επιτυχώς",
     "connectionDeleted": "Η σύνδεση διαγράφηκε",
     "deleteFailed": "Αποτυχία διαγραφής σύνδεσης",
-    "noResults": "Δεν βρέθηκαν prompts"
+    "noResults": "Δεν βρέθηκαν prompts",
+    "outputText": "κείμενο",
+    "outputImage": "εικόνα",
+    "outputVideo": "βίντεο",
+    "outputAudio": "ήχος",
+    "outputStructured": "δομημένο",
+    "outputSkill": "δεξιότητα",
+    "inputImage": "εικόνα",
+    "inputVideo": "βίντεο",
+    "inputDocument": "έγγραφο",
+    "inputImages": "{count} εικόνες",
+    "inputVideos": "{count} βίντεο",
+    "inputDocuments": "{count} έγγραφα"
   },
   "promptWritingGuide": {
     "title": "Πώς να Γράφετε Εξαιρετικά Prompts",

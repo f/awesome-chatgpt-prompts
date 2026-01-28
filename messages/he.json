@@ -1259,7 +1259,19 @@
     "connectionAdded": "הקישור נוסף בהצלחה",
     "connectionDeleted": "הקישור נמחק",
     "deleteFailed": "מחיקת הקישור נכשלה",
-    "noResults": "לא נמצאו פרומפטים"
+    "noResults": "לא נמצאו פרומפטים",
+    "outputText": "טקסט",
+    "outputImage": "תמונה",
+    "outputVideo": "וידאו",
+    "outputAudio": "אודיו",
+    "outputStructured": "מובנה",
+    "outputSkill": "מיומנות",
+    "inputImage": "תמונה",
+    "inputVideo": "וידאו",
+    "inputDocument": "מסמך",
+    "inputImages": "{count} תמונות",
+    "inputVideos": "{count} סרטונים",
+    "inputDocuments": "{count} מסמכים"
   },
   "promptWritingGuide": {
     "title": "איך לכתוב פרומפטים מעולים",

@@ -1259,7 +1259,19 @@
     "connectionAdded": "Connessione aggiunta con successo",
     "connectionDeleted": "Connessione eliminata",
     "deleteFailed": "Impossibile eliminare la connessione",
-    "noResults": "Nessun prompt trovato"
+    "noResults": "Nessun prompt trovato",
+    "outputText": "testo",
+    "outputImage": "immagine",
+    "outputVideo": "video",
+    "outputAudio": "audio",
+    "outputStructured": "strutturato",
+    "outputSkill": "abilità",
+    "inputImage": "immagine",
+    "inputVideo": "video",
+    "inputDocument": "documento",
+    "inputImages": "{count} immagini",
+    "inputVideos": "{count} video",
+    "inputDocuments": "{count} documenti"
   },
   "promptWritingGuide": {
     "title": "Come Scrivere Buoni Prompt",

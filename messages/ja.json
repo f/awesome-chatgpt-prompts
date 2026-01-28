@@ -1259,7 +1259,19 @@
     "connectionAdded": "接続が正常に追加されました",
     "connectionDeleted": "接続が削除されました",
     "deleteFailed": "接続の削除に失敗しました",
-    "noResults": "プロンプトが見つかりません"
+    "noResults": "プロンプトが見つかりません",
+    "outputText": "テキスト",
+    "outputImage": "画像",
+    "outputVideo": "動画",
+    "outputAudio": "音声",
+    "outputStructured": "構造化",
+    "outputSkill": "スキル",
+    "inputImage": "画像",
+    "inputVideo": "動画",
+    "inputDocument": "ドキュメント",
+    "inputImages": "{count}枚の画像",
+    "inputVideos": "{count}本の動画",
+    "inputDocuments": "{count}件のドキュメント"
   },
   "promptWritingGuide": {
     "title": "優れたプロンプトの書き方",

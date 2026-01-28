@@ -1259,7 +1259,19 @@
     "connectionAdded": "Bağlantı başarıyla eklendi",
     "connectionDeleted": "Bağlantı silindi",
     "deleteFailed": "Bağlantı silinemedi",
-    "noResults": "Prompt bulunamadı"
+    "noResults": "Prompt bulunamadı",
+    "outputText": "metin",
+    "outputImage": "görsel",
+    "outputVideo": "video",
+    "outputAudio": "ses",
+    "outputStructured": "yapılandırılmış",
+    "outputSkill": "yetenek",
+    "inputImage": "görsel",
+    "inputVideo": "video",
+    "inputDocument": "belge",
+    "inputImages": "{count} görsel",
+    "inputVideos": "{count} video",
+    "inputDocuments": "{count} belge"
   },
   "promptWritingGuide": {
     "title": "Harika Promptlar Nasıl Yazılır",

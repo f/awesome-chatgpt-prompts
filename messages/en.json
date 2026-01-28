@@ -1259,7 +1259,19 @@
     "connectionAdded": "Connection added successfully",
     "connectionDeleted": "Connection deleted",
     "deleteFailed": "Failed to delete connection",
-    "noResults": "No prompts found"
+    "noResults": "No prompts found",
+    "outputText": "text",
+    "outputImage": "image",
+    "outputVideo": "video",
+    "outputAudio": "audio",
+    "outputStructured": "structured",
+    "outputSkill": "skill",
+    "inputImage": "image",
+    "inputVideo": "video",
+    "inputDocument": "document",
+    "inputImages": "{count} images",
+    "inputVideos": "{count} videos",
+    "inputDocuments": "{count} documents"
   },
   "promptWritingGuide": {
     "title": "How to Write Great Prompts",

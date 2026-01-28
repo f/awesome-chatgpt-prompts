@@ -1259,7 +1259,19 @@
     "connectionAdded": "اتصال با موفقیت اضافه شد",
     "connectionDeleted": "اتصال حذف شد",
     "deleteFailed": "حذف اتصال ناموفق بود",
-    "noResults": "پرامپتی یافت نشد"
+    "noResults": "پرامپتی یافت نشد",
+    "outputText": "متن",
+    "outputImage": "تصویر",
+    "outputVideo": "ویدیو",
+    "outputAudio": "صدا",
+    "outputStructured": "ساختاریافته",
+    "outputSkill": "مهارت",
+    "inputImage": "تصویر",
+    "inputVideo": "ویدیو",
+    "inputDocument": "سند",
+    "inputImages": "{count} تصویر",
+    "inputVideos": "{count} ویدیو",
+    "inputDocuments": "{count} سند"
   },
   "promptWritingGuide": {
     "title": "چگونه پرامپت‌های عالی بنویسیم",

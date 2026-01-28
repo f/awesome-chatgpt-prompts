@@ -1259,7 +1259,19 @@
     "connectionAdded": "Связь успешно добавлена",
     "connectionDeleted": "Связь удалена",
     "deleteFailed": "Не удалось удалить связь",
-    "noResults": "Промпты не найдены"
+    "noResults": "Промпты не найдены",
+    "outputText": "текст",
+    "outputImage": "изображение",
+    "outputVideo": "видео",
+    "outputAudio": "аудио",
+    "outputStructured": "структурированный",
+    "outputSkill": "навык",
+    "inputImage": "изображение",
+    "inputVideo": "видео",
+    "inputDocument": "документ",
+    "inputImages": "{count} изображений",
+    "inputVideos": "{count} видео",
+    "inputDocuments": "{count} документов"
   },
   "promptWritingGuide": {
     "title": "Как писать отличные промпты",

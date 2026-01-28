@@ -1259,7 +1259,19 @@
     "connectionAdded": "Əlaqə uğurla əlavə edildi",
     "connectionDeleted": "Əlaqə silindi",
     "deleteFailed": "Əlaqə silinmədi",
-    "noResults": "Prompt tapılmadı"
+    "noResults": "Prompt tapılmadı",
+    "outputText": "mətn",
+    "outputImage": "şəkil",
+    "outputVideo": "video",
+    "outputAudio": "audio",
+    "outputStructured": "strukturlaşdırılmış",
+    "outputSkill": "bacarıq",
+    "inputImage": "şəkil",
+    "inputVideo": "video",
+    "inputDocument": "sənəd",
+    "inputImages": "{count} şəkil",
+    "inputVideos": "{count} video",
+    "inputDocuments": "{count} sənəd"
   },
   "promptWritingGuide": {
     "title": "Əla Promptlar Necə Yazılır",

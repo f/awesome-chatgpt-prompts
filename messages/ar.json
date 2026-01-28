@@ -1259,7 +1259,19 @@
     "connectionAdded": "تمت إضافة الاتصال بنجاح",
     "connectionDeleted": "تم حذف الاتصال",
     "deleteFailed": "فشل حذف الاتصال",
-    "noResults": "لم يتم العثور على أوامر"
+    "noResults": "لم يتم العثور على أوامر",
+    "outputText": "نص",
+    "outputImage": "صورة",
+    "outputVideo": "فيديو",
+    "outputAudio": "صوت",
+    "outputStructured": "منظم",
+    "outputSkill": "مهارة",
+    "inputImage": "صورة",
+    "inputVideo": "فيديو",
+    "inputDocument": "مستند",
+    "inputImages": "{count} صور",
+    "inputVideos": "{count} فيديوهات",
+    "inputDocuments": "{count} مستندات"
   },
   "promptWritingGuide": {
     "title": "كيفية كتابة أوامر رائعة",

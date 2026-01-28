@@ -1259,7 +1259,19 @@
     "connectionAdded": "关联添加成功",
     "connectionDeleted": "关联已删除",
     "deleteFailed": "删除关联失败",
-    "noResults": "未找到提示词"
+    "noResults": "未找到提示词",
+    "outputText": "文本",
+    "outputImage": "图片",
+    "outputVideo": "视频",
+    "outputAudio": "音频",
+    "outputStructured": "结构化",
+    "outputSkill": "技能",
+    "inputImage": "图片",
+    "inputVideo": "视频",
+    "inputDocument": "文档",
+    "inputImages": "{count}张图片",
+    "inputVideos": "{count}个视频",
+    "inputDocuments": "{count}个文档"
   },
   "promptWritingGuide": {
     "title": "如何写出优秀的提示词",

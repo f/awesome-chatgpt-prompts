@@ -1259,7 +1259,19 @@
     "connectionAdded": "Verbinding succesvol toegevoegd",
     "connectionDeleted": "Verbinding verwijderd",
     "deleteFailed": "Kon verbinding niet verwijderen",
-    "noResults": "Geen prompts gevonden"
+    "noResults": "Geen prompts gevonden",
+    "outputText": "tekst",
+    "outputImage": "afbeelding",
+    "outputVideo": "video",
+    "outputAudio": "audio",
+    "outputStructured": "gestructureerd",
+    "outputSkill": "vaardigheid",
+    "inputImage": "afbeelding",
+    "inputVideo": "video",
+    "inputDocument": "document",
+    "inputImages": "{count} afbeeldingen",
+    "inputVideos": "{count} video's",
+    "inputDocuments": "{count} documenten"
   },
   "promptWritingGuide": {
     "title": "Hoe schrijf je geweldige prompts",

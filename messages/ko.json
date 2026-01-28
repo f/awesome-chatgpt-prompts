@@ -1259,7 +1259,19 @@
     "connectionAdded": "연결이 성공적으로 추가되었습니다",
     "connectionDeleted": "연결이 삭제되었습니다",
     "deleteFailed": "연결 삭제에 실패했습니다",
-    "noResults": "프롬프트를 찾을 수 없습니다"
+    "noResults": "프롬프트를 찾을 수 없습니다",
+    "outputText": "텍스트",
+    "outputImage": "이미지",
+    "outputVideo": "비디오",
+    "outputAudio": "오디오",
+    "outputStructured": "구조화",
+    "outputSkill": "스킬",
+    "inputImage": "이미지",
+    "inputVideo": "비디오",
+    "inputDocument": "문서",
+    "inputImages": "{count}개 이미지",
+    "inputVideos": "{count}개 비디오",
+    "inputDocuments": "{count}개 문서"
   },
   "promptWritingGuide": {
     "title": "좋은 프롬프트 작성법",
