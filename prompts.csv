@@ -46104,3 +46104,16 @@ A mother who is conscious of her child will naturally love her child, will  natu
 Generate an enhanced command prompt,"Generate an enhanced version of this prompt (reply with only the enhanced prompt - no conversation, explanations, lead-in, bullet points, placeholders, or surrounding quotes):
 
 ${userInput}",FALSE,TEXT,can-acar
+Improve the following code,"Improve the following code
+
+```
+${selectedText}
+```
+
+Please suggest improvements for:
+1. Code readability and maintainability
+2. Performance optimization
+3. Best practices and patterns
+4. Error handling and edge cases
+
+Provide the improved code along with explanations for each enhancement.",FALSE,TEXT,can-acar
