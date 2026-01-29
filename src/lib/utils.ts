@@ -20,3 +20,13 @@ export function isChromeBrowser(): boolean {
   
   return isChrome || isEdge || isOpera || isBrave;
 }
+
+/**
+ * Detect if the browser is Firefox
+ * Must be called on client-side only
+ */
+export function isFirefoxBrowser(): boolean {
+  if (typeof window === 'undefined') return false;
+  
+  return /Firefox/.test(navigator.userAgent);
+}
