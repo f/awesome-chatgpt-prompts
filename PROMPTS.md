@@ -59454,3 +59454,16 @@ Faces must remain 100% identical to the reference with absolute identity lock: n
 
 </details>
 
+<details>
+<summary><strong>Romantic Rainy Scene Video</strong></summary>
+
+## Romantic Rainy Scene Video
+
+Contributed by [@f](https://github.com/f)
+
+```md
+They are standing under the rain, looking at each other romantically. Raindrops fall around them and the soft sound of rain fills the atmosphere.
+```
+
+</details>
+
