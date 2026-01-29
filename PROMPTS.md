@@ -59499,3 +59499,18 @@ A mother who is conscious of her child will naturally love her child, will  natu
 
 </details>
 
+<details>
+<summary><strong>Generate an enhanced command prompt</strong></summary>
+
+## Generate an enhanced command prompt
+
+Contributed by [@can-acar](https://github.com/can-acar)
+
+```md
+Generate an enhanced version of this prompt (reply with only the enhanced prompt - no conversation, explanations, lead-in, bullet points, placeholders, or surrounding quotes):
+
+${userInput}
+```
+
+</details>
+
