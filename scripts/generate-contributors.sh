@@ -184,7 +184,7 @@ def init_prompts_md(prompts_md_path):
     """Initialize PROMPTS.md with header if it doesn't exist"""
     if not os.path.exists(prompts_md_path):
         with open(prompts_md_path, 'w', encoding='utf-8') as f:
-            f.write('# Awesome ChatGPT Prompts\n\n')
+            f.write('# prompts.chat\n\n')
             f.write('> A curated list of prompts for ChatGPT and other AI models.\n\n')
             f.write('---\n\n')
 
