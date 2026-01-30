@@ -7,14 +7,15 @@
     </picture>
     <br>
     prompts.chat
-    <br>
-    <sub>formerly known as Awesome ChatGPT Prompts</sub>
   </a>
 </h1>
 
 <p align="center">
   <strong>The world's largest open-source prompt library for AI</strong><br>
   <sub>Works with ChatGPT, Claude, Gemini, Llama, Mistral, and more</sub>
+</p>
+<p align="center">
+  <sub>formerly known as Awesome ChatGPT Prompts</sub>
 </p>
 
 <p align="center">
