@@ -1,0 +1,414 @@
+Süni intellekt, proqram inkişafını dəyişdirdi. Bu bölmə, kod istehsalı, sazlama, nəzərdən keçirmə və inkişaf iş axışları üçün promptlama texnikalarını əhatə edir.
+
+<Callout type="info" title="Kodlaşdırma Ortağı Olaraq Sİ">
+Sİ, kod istehsalı, sazlama və sənədləşdirmədə mükəmməldir—amma istehsal edilən kodu təhlükəsizlik, düzgünlük və davamlılıq baxımından həmişə nəzərdən keçirin. Test etmədən Sİ kodunu heç vaxt yerləşdirməyin.
+</Callout>
+
+## Kod İstehsalı
+
+### Edilməli və Edilməməli Olanlar: Kod Promptları
+
+<Compare 
+  before={{ label: "❌ Qeyri-müəyyən istək", content: "E-poçtları doğrulayan bir funksiya yaz." }}
+  after={{ label: "✓ Tam spesifikasiya", content: "E-poçt ünvanlarını doğrulayan bir Python funksiyası yaz.\n\nGiriş: string (potensial e-poçt)\nÇıxış: tuple[bool, str | None] - (is_valid, error_message)\nİdarə et: boş string, None, unicode simvollar\nRegex istifadə et, tip ipucları və docstring daxil et." }}
+/>
+
+### Funksiya İstehsalı
+
+<TryIt compact prompt={`\${description:e-poçt ünvanlarını doğrulayan} bir \${language:Python} funksiyası yaz.
+
+Tələblər:
+- Giriş: \${inputTypes:string (potensial e-poçt)}
+- Çıxış: \${outputType:boolean və isteğə bağlı xəta mesajı}
+- Uç halları idarə et: \${edgeCases:boş string, None, unicode simvollar}
+- Performans: \${performance:standart}
+
+Daxil et:
+- Tip ipucları/annotasiyalar
+- Nümunələrlə docstring
+- Giriş doğrulaması
+- Xəta idarəetməsi`} />
+
+### Sinif/Modul İstehsalı
+
+<TryIt compact prompt={`\${purpose:istifadəçi sessiyalarını idarə etmək} üçün bir \${language:Python} sinfi yarat.
+
+Sinif dizaynı:
+- Ad: \${className:SessionManager}
+- Məsuliyyət: \${responsibility:istifadəçi sessiya həyat dövrünü idarə et}
+- Xüsusiyyətlər: \${properties:session_id, user_id, created_at, expires_at}
+- Metodlar: \${methods:create(), validate(), refresh(), destroy()}
+
+Tələblər:
+- \${designPattern:Singleton} nümunəsini izlə
+- Müvafiq inkapsulyasiya daxil et
+- Əhatəli docstringlər əlavə et
+- İstifadə nümunəsi daxil et
+
+Test:
+- Unit test skeleti daxil et`} />
+
+### API Endpoint İstehsalı
+
+<TryIt compact prompt={`\${resource:istifadəçi profilləri} üçün REST API endpoint-i yarat.
+
+Framework: \${framework:FastAPI}
+Metod: \${method:GET}
+Yol: \${path:/api/users/{id}}
+
+İstək:
+- Headerlər: \${headers:Authorization Bearer token}
+- Body sxemi: \${bodySchema:GET üçün keçərli deyil}
+- Query parametrləri: \${queryParams:include_posts (boolean)}
+
+Cavab:
+- Uğur: \${successResponse:200 ilə istifadəçi obyekti}
+- Xətalar: \${errorResponses:401 Unauthorized, 404 Not Found}
+
+Daxil et:
+- Giriş doğrulaması
+- Kimlik doğrulaması yoxlaması
+- Xəta idarəetməsi
+- Rate limiting nəzərdən keçirilməsi`} />
+
+## Sazlama
+
+<Callout type="tip" title="Sazlama Prinsipi">
+Həmişə **gözlənilən davranış**, **faktiki davranış** və **xəta mesajı** (varsa) daxil edin. Nə qədər çox kontekst təmin etsəniz, Sİ kök səbəbi o qədər sürətli müəyyən edə bilər.
+</Callout>
+
+### Xəta Təhlili
+
+<TryIt compact prompt={`Bu kodu sazla. \${expectedBehavior:bütün ədədlərin cəmini qaytarmalıdır} amma bunun əvəzinə \${actualBehavior:bütün girişlər üçün 0 qaytarır}.
+
+Kod:
+\${code:kodunuzu bura yapışdırın}
+
+Xəta mesajı (varsa):
+\${error:yoxdur}
+
+Sazlama addımları:
+1. Kodun nə etməyə çalışdığını müəyyən et
+2. Verilən girişlə icranı izlə
+3. Gözlənilən və faktiki davranışın harada ayrıldığını tap
+4. Kök səbəbi izah et
+5. İzahla düzəlişi təmin et`} />
+
+### Xəta Mesajı Şərhi
+
+<TryIt compact prompt={`Bu xətanı izah et və necə düzəldiləcəyini göstər:
+
+Xəta:
+\${errorMessage:xəta mesajını və ya stack trace-i bura yapışdırın}
+
+Kontekst:
+- Dil/Framework: \${framework:Python 3.11}
+- Etməyə çalışdığım şey: \${action:JSON faylı oxumaq}
+- Əlaqəli kod: \${codeSnippet:əlaqəli kodu yapışdırın}
+
+Təmin et:
+1. Xətanın sadə Azərbaycan dilində izahı
+2. Kök səbəb
+3. Addım-addım düzəliş
+4. Gələcəkdə bundan necə qaçınmaq`} />
+
+### Performans Sazlaması
+
+<TryIt compact prompt={`Bu kod yavaşdır. Təhlil et və optimallaşdır:
+
+Kod:
+\${code:kodunuzu bura yapışdırın}
+
+Cari performans: \${currentPerformance:1000 element üçün 30 saniyə çəkir}
+Hədəf performans: \${targetPerformance:5 saniyədən az}
+Məhdudiyyətlər: \${constraints:512MB yaddaş limiti}
+
+Təmin et:
+1. Darboğazları müəyyən et
+2. Hər birinin niyə yavaş olduğunu izah et
+3. Optimallaşdırmalar təklif et (təsirə görə sırala)
+4. Optimallaşdırılmış kodu göstər
+5. Yaxşılaşmanı təxmin et`} />
+
+## Kod Nəzərdən Keçirmə
+
+### Edilməli və Edilməməli Olanlar: Kod Nəzərdən Keçirmə Promptları
+
+<Compare 
+  before={{ label: "❌ Ümumi istək", content: "Bu kodu nəzərdən keçir." }}
+  after={{ label: "✓ Spesifik meyarlar", content: "Pull request üçün bu kodu nəzərdən keçir.\n\nYoxla:\n1. Düzgünlük: xətalar, məntiq səhvləri, uç hallar\n2. Təhlükəsizlik: enjeksiyon riskləri, auth problemləri\n3. Performans: N+1 sorğular, yaddaş sızıntıları\n4. Davamlılıq: adlandırma, mürəkkəblik\n\nFormat: 🔴 Kritik / 🟡 Vacib / 🟢 Təklif" }}
+/>
+
+### Əhatəli Nəzərdən Keçirmə
+
+<TryIt compact prompt={`Pull request üçün bu kodu nəzərdən keçir.
+
+Kod:
+\${code:kodunuzu bura yapışdırın}
+
+Bunlar üçün nəzərdən keçir:
+1. **Düzgünlük**: Xətalar, məntiq səhvləri, uç hallar
+2. **Təhlükəsizlik**: Təhlükəsizlik boşluqları, enjeksiyon riskləri, auth problemləri
+3. **Performans**: Səmərəsizliklər, N+1 sorğular, yaddaş sızıntıları
+4. **Davamlılıq**: Oxunaqlılıq, adlandırma, mürəkkəblik
+5. **Ən yaxşı təcrübələr**: \${framework:Python/Django} konvensiyaları
+
+Nəzərdən keçirməni belə formatla:
+🔴 Kritik: birləşdirməzdən əvvəl düzəldilməlidir
+🟡 Vacib: düzəldilməlidir
+🟢 Təklif: olsa yaxşıdır
+💭 Sual: aydınlaşdırma lazımdır`} />
+
+### Təhlükəsizlik Nəzərdən Keçirməsi
+
+<TryIt compact prompt={`Bu kodun təhlükəsizlik nəzərdən keçirməsini et:
+
+Kod:
+\${code:kodunuzu bura yapışdırın}
+
+Yoxla:
+- [ ] Enjeksiyon təhlükəsizlik boşluqları (SQL, XSS, əmr)
+- [ ] Kimlik doğrulaması/səlahiyyət qüsurları
+- [ ] Həssas məlumat ifşası
+- [ ] Təhlükəsiz olmayan asılılıqlar
+- [ ] Kriptoqrafik problemlər
+- [ ] Giriş doğrulaması boşluqları
+- [ ] Məlumat sızdıran xəta idarəetməsi
+
+Hər tapıntı üçün:
+- Ciddililik: Kritik/Yüksək/Orta/Aşağı
+- Yer: Sətir nömrəsi və ya funksiya
+- Problem: İzahat
+- İstismar: Necə hücum edilə bilər
+- Düzəliş: Təklif olunan həll`} />
+
+## Yenidən Strukturlaşdırma
+
+### Kod Qoxusu Aşkarlanması
+
+<TryIt compact prompt={`Bu kodu kod qoxuları və yenidən strukturlaşdırma fürsətləri üçün təhlil et:
+
+Kod:
+\${code:kodunuzu bura yapışdırın}
+
+Müəyyən et:
+1. Uzun metodlar (çıxarma təklif et)
+2. Təkrarlanan kod (DRY yaxşılaşdırmaları təklif et)
+3. Mürəkkəb şərtlər (sadələşdirmə təklif et)
+4. Pis adlandırma (daha yaxşı adlar təklif et)
+5. Sıx bağlantı (ayırma təklif et)
+
+Hər problem üçün, əvvəl/sonra kodu göstər.`} />
+
+### Dizayn Nümunəsi Tətbiqi
+
+<TryIt compact prompt={`Bu kodu \${patternName:Factory} nümunəsi istifadə edərək yenidən strukturlaşdır.
+
+Cari kod:
+\${code:kodunuzu bura yapışdırın}
+
+Hədəflər:
+- \${whyPattern:obyekt yaratmanı istifadədən ayır}
+- \${benefits:daha asan test və genişlənə bilmə}
+
+Təmin et:
+1. Nümunənin izahı
+2. Burada necə tətbiq ediləcəyi
+3. Yenidən strukturlaşdırılmış kod
+4. Nəzərdən keçiriləcək tarazlaşmalar`} />
+
+## Test
+
+### Unit Test İstehsalı
+
+<TryIt compact prompt={`Bu funksiya üçün unit testlər yaz:
+
+Funksiya:
+\${code:funksiyanızı bura yapışdırın}
+
+Test framework-ü: \${testFramework:pytest}
+
+Əhatə et:
+- Xoşbəxt yol (normal girişlər)
+- Uç hallar (boş, null, sərhəd dəyərləri)
+- Xəta halları (etibarsız girişlər)
+- \${specificScenarios:eyni zamanlı giriş, böyük girişlər}
+
+Format: Arrange-Act-Assert nümunəsi
+Daxil et: Açıqlayıcı test adları`} />
+
+### Test Halı İstehsalı
+
+<TryIt compact prompt={`Bu xüsusiyyət üçün test halları istehsal et:
+
+Xüsusiyyət: \${featureDescription:e-poçt doğrulaması ilə istifadəçi qeydiyyatı}
+Qəbul meyarları: \${acceptanceCriteria:istifadəçi qeydiyyatdan keçə bilər, e-poçt alır, hesabı doğrulaya bilər}
+
+Test hallarını bu formatda təmin et:
+
+| ID | Ssenari | Verildi | Zaman | Nəticə | Prioritet |
+|----|---------|---------|-------|--------|-----------|
+| TC01 | ... | ... | ... | ... | Yüksək |`} />
+
+## Arxitektura və Dizayn
+
+### Sistem Dizaynı
+
+<TryIt compact prompt={`\${requirement:real vaxt söhbət tətbiqi} üçün sistem dizayn et.
+
+Məhdudiyyətlər:
+- Gözlənilən yük: \${expectedLoad:10.000 eyni zamanlı istifadəçi}
+- Gecikmə tələbləri: \${latency:< 100ms mesaj çatdırılması}
+- Əlçatanlıq: \${availability:%99.9}
+- Büdcə: \${budget:orta, açıq mənbə üstünlük}
+
+Təmin et:
+1. Üst səviyyə arxitektura diaqramı (ASCII/mətn)
+2. Komponent izahları
+3. Məlumat axışı
+4. Əsaslandırma ilə texnologiya seçimləri
+5. Miqyaslandırma strategiyası
+6. Nəzərdən keçirilən tarazlaşmalar və alternativlər`} />
+
+### Verilənlər Bazası Sxem Dizaynı
+
+<TryIt compact prompt={`\${application:e-ticarət platforması} üçün verilənlər bazası sxemi dizayn et.
+
+Tələblər:
+- \${feature1:Profillər və ünvanlarla istifadəçi hesabları}
+- \${feature2:Kateqoriyalar və variantlarla məhsul kataloqu}
+- \${feature3:Sətir elementləri və ödəniş izləməsi ilə sifarişlər}
+
+Təmin et:
+1. Varlıq-münasibət izahı
+2. Sütunlar və tiplərlə cədvəl tərifləri
+3. Geniş yayılmış sorğular üçün indekslər
+4. Foreign key münasibətləri
+5. Əsas əməliyyatlar üçün nümunə sorğular`} />
+
+## Sənədləşdirmə İstehsalı
+
+### API Sənədləşdirməsi
+
+<TryIt compact prompt={`Bu koddan API sənədləşdirməsi istehsal et:
+
+Kod:
+\${code:endpoint kodunuzu bura yapışdırın}
+
+Format: \${format:OpenAPI/Swagger YAML}
+
+Daxil et:
+- Endpoint izahı
+- İstək/cavab sxemləri
+- Nümunə istəklər/cavablar
+- Xəta kodları
+- Kimlik doğrulaması tələbləri`} />
+
+### Sətir İçi Sənədləşdirmə
+
+<TryIt compact prompt={`Bu koda əhatəli sənədləşdirmə əlavə et:
+
+Kod:
+\${code:kodunuzu bura yapışdırın}
+
+Əlavə et:
+- Fayl/modul docstring-i (məqsəd, istifadə)
+- Funksiya/metod docstring-ləri (parametrlər, qaytarmalar, xətalar, nümunələr)
+- Yalnız mürəkkəb məntiq üçün sətir içi şərhlər
+- Əskikdirsə tip ipucları
+
+Stil: \${docStyle:Google}`} />
+
+## prompts.chat-dən Prompt Şablonları
+
+### Baş Tərtibatçı Olaraq Davran
+
+```
+Baş bir proqram tərtibatçısı olaraq davranmanı istəyirəm. 
+Kod təmin edəcəyəm və haqqında suallar soruşacağam. Kodu nəzərdən keçirəcək, 
+yaxşılaşdırmalar təklif edəcək, konseptləri izah edəcək və problemləri 
+sazlamağa kömək edəcəksən. Cavabların təhsil verici olmalı 
+və daha yaxşı bir tərtibatçı olmağıma kömək etməlidir.
+```
+
+### Kod Nəzərdən Keçirəni Olaraq Davran
+
+```
+Bir kod nəzərdən keçirəni olaraq davranmanı istəyirəm. Kod 
+dəyişiklikləri ilə pull request-lər təmin edəcəyəm və bunları 
+əhatəli şəkildə nəzərdən keçirəcəksən. Xətaları, təhlükəsizlik problemlərini, 
+performans problemlərini və ən yaxşı təcrübələrə uyğunluğu yoxla. 
+Tərtibatçının inkişafına kömək edən konstruktiv rəy təmin et.
+```
+
+### Proqram Arxitektoru Olaraq Davran
+
+```
+Bir proqram arxitektoru olaraq davranmanı istəyirəm. Sistem 
+tələblərini və məhdudiyyətlərini təyin edəcəyəm və 
+miqyaslana bilən, davamlı arxitekturalar dizayn edəcəksən. 
+Dizayn qərarlarını, tarazlaşmaları izah et və kömək 
+etdikdə diaqramlar təmin et.
+```
+
+## İnkişaf İş Axışı İnteqrasiyası
+
+### Commit Mesajı İstehsalı
+
+<TryIt compact prompt={`Bu dəyişikliklər üçün commit mesajı istehsal et:
+
+Diff:
+\${diff:git diff-i bura yapışdırın}
+
+Format: Conventional Commits
+Növ: \${commitType:feat}
+
+Təmin et:
+- Mövzu sətri (maksimum 50 simvol, əmr forması)
+- Gövdə (nə və niyə, 72 simvolda sarma)
+- Alt bilgi (varsa issue istinadları)`} />
+
+### PR Təsviri İstehsalı
+
+<TryIt compact prompt={`Pull request təsviri istehsal et:
+
+Dəyişikliklər:
+\${changes:dəyişikliklərinizi siyahılayın və ya diff xülasəsini yapışdırın}
+
+Şablon:
+## Xülasə
+Dəyişikliklərin qısa izahı
+
+## Edilən Dəyişikliklər
+- Dəyişiklik 1
+- Dəyişiklik 2
+
+## Test
+- [ ] Unit testlər əlavə edildi/yeniləndi
+- [ ] Manual test tamamlandı
+
+## Ekran Görüntüləri (UI dəyişiklikləri varsa)
+yer tutucu
+
+## Əlaqəli Issue-lar
+Bağlayır #\${issueNumber:123}`} />
+
+## Xülasə
+
+<Callout type="tip" title="Əsas Texnikalar">
+Tam kontekst (dil, framework, məhdudiyyətlər) daxil et, tələbləri dəqiq bildir, spesifik çıxış formatları istə, kodla birlikdə izahlar istə və idarə ediləcək uç halları daxil et.
+</Callout>
+
+<Quiz 
+  question="Sİ-dən kod sazlaması istəyərkən daxil ediləcək ən vacib element nədir?"
+  options={[
+    "Yalnız proqramlaşdırma dili",
+    "Gözlənilən davranış, faktiki davranış və xəta mesajı",
+    "Yalnız kod parçası",
+    "Fayl adı"
+  ]}
+  correctIndex={1}
+  explanation="Sazlama kontekst tələb edir: nə olmalıdır vs. faktiki olaraq nə olur. Xəta mesajları və stack trace-lər Sİ-nin dəqiq problemi sürətlə müəyyən etməsinə kömək edir."
+/>
+
+Sİ güclü bir kodlaşdırma ortağıdır—arxitektura mühakimənizi qoruyarkən istehsal, nəzərdən keçirmə, sazlama və sənədləşdirmə üçün istifadə edin.

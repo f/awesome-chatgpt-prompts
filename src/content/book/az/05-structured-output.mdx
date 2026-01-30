@@ -1,0 +1,411 @@
+Ardıcıl, yaxşı formatlanmış çıxış almaq istehsal tətbiqləri və səmərəli iş axışları üçün vacibdir. Bu fəsil, süni intellekt modellərinin cavablarını tam olaraq necə formatladığını idarə etmə texnikalarını əhatə edir.
+
+<Callout type="info" title="Düz Yazıdan Məlumata">
+Strukturlaşdırılmış çıxış, süni intellekt cavablarını sərbəst formatlı mətndən hərəkətə çevrilə bilən, təhlil edilə bilən məlumata çevirir.
+</Callout>
+
+## Struktur Niyə Vacibdir
+
+<StructuredOutputDemo />
+
+## Əsas Formatlama Texnikaları
+
+### Siyahılar
+
+Siyahılar addım-addım təlimatlar, sıralanmış elementlər və ya əlaqəli nöqtələrin kolleksiyaları üçün mükəmməldir. Skan edilməsi və təhlil edilməsi asandır. Sıra vacib olduqda (addımlar, sıralamalar) **nömrələnmiş siyahılar** və sırasız kolleksiyalar üçün **nöqtəli siyahılar** istifadə edin.
+
+<TryIt 
+  compact
+  title="Siyahı Formatlama"
+  prompt={`Daha yaxşı yuxu üçün 5 məsləhət ver.
+
+Format: Hər biri üçün qısa izahat olan nömrələnmiş siyahı.
+Hər məsləhət qalın olmalı, ardından tire və izahat gəlməlidir.`}
+/>
+
+<Callout type="tip" title="Siyahı Ən Yaxşı Təcrübələri">
+İstədiyiniz tam element sayısını, izahatların daxil edilib-edilməyəcəyini və elementlərin qalın mı yoxsa müəyyən bir strukturda mı olması lazım olduğunu göstərin.
+</Callout>
+
+### Cədvəllər
+
+Cədvəllər, bir neçə elementi eyni ölçülər üzrə müqayisə etməkdə mükəmməldir. Xüsusiyyət müqayisələri, məlumat xülasələri və ardıcıl xüsusiyyətlərə malik istənilən məlumat üçün idealdır. Sütun başlıqlarınızı həmişə aydın şəkildə təyin edin.
+
+<TryIt 
+  compact
+  title="Cədvəl Formatlama"
+  prompt={`Ən yaxşı 4 Python veb framework-ünü müqayisə et.
+
+Bu sütunlarla markdown cədvəli olaraq formatla:
+| Framework | Ən Yaxşı İstifadə | Öyrənmə Əyrisi | Performans |`}
+/>
+
+<Callout type="tip" title="Cədvəl Ən Yaxşı Təcrübələri">
+Sütun adlarını, gözlənilən məlumat növlərini (mətn, rəqəmlər, reytinqlər) və neçə sətirə ehtiyacınız olduğunu göstərin. Mürəkkəb müqayisələr üçün oxuna bilirlik baxımından 4-6 sütunla məhdudlaşdırın.
+</Callout>
+
+### Başlıqlar və Bölmələr
+
+Başlıqlar aydın sənəd strukturu yaradır, uzun cavabları skan edilə bilən və nizamlı edir. Hesabatlar, analizlər və ya istənilən çox hissəli cavab üçün istifadə edin. İyerarxik başlıqlar (##, ###) bölmələr arasındakı əlaqələri göstərir.
+
+```
+Bu iş təklifini analiz et.
+
+Cavabını bu bölmələrlə strukturlaşdır:
+## İcraçı Xülasə
+## Güclü Tərəflər
+## Zəif Tərəflər
+## Tövsiyələr
+## Risk Qiymətləndirməsi
+```
+
+<Callout type="tip" title="Bölmə Ən Yaxşı Təcrübələri">
+Bölmələrinizi istədiyiniz sırada siyahılayın. Ardıcıllıq üçün hər bölmənin nə ehtiva etməsi lazım olduğunu göstərin (məsələn, "İcraçı Xülasə: yalnız 2-3 cümlə").
+</Callout>
+
+### Böyük Hərfli Direktivlərlə Vurğulama
+
+Böyük hərfli sözlər modelə güclü siqnallar kimi davranır, kritik məhdudiyyətləri və ya tələbləri vurğulayır. Maksimum təsir üçün onları ehtiyatla istifadə edin—həddən artıq istifadə təsirlərini azaldır.
+
+**Ümumi Böyük Hərfli Direktivlər:**
+
+<InfoGrid items={[
+  { label: "ƏSLA", description: "Mütləq qadağa: \"ƏSLA şəxsi fikir əlavə etmə\"", color: "red" },
+  { label: "HƏMİŞƏ", description: "Məcburi tələb: \"HƏMİŞƏ mənbə göstər\"", color: "green" },
+  { label: "VACİB", description: "Kritik təlimat: \"VACİB: Cavabları 100 sözdən az saxla\"", color: "amber" },
+  { label: "ETMƏ", description: "Güclü qadağa: \"Statistika uyduRMA\"", color: "red" },
+  { label: "OLMALIDIR", description: "Tələb olunan hərəkət: \"Çıxış etibarlı JSON OLMALIDIR\"", color: "blue" },
+  { label: "YALNIZ", description: "Məhdudiyyət: \"YALNIZ kodu qaytar, izahat yox\"", color: "purple" },
+]} />
+
+```
+Bu məqaləni xülasə et.
+
+VACİB: Xülasəni 100 sözdən az saxla.
+ƏSLA orijinalda olmayan məlumat əlavə etmə.
+HƏMİŞƏ orijinal ton və perspektivi qoru.
+Öz fikir və ya analizini əlavə ETMƏ.
+```
+
+<Callout type="warning" title="Ehtiyatla İstifadə Et">
+Hər şey böyük hərf və ya kritik olaraq işarələnirsə, heç nə öne çıxmır. Bu direktivləri həqiqətən vacib məhdudiyyətlər üçün saxlayın.
+</Callout>
+
+## JSON Çıxış
+
+JSON (JavaScript Object Notation), strukturlaşdırılmış süni intellekt çıxışı üçün ən populyar formatdır. Maşın tərəfindən oxuna bilər, proqramlaşdırma dilləri tərəfindən geniş şəkildə dəstəklənir və API-lər, verilənlər bazaları və avtomatlaşdırma iş axışları üçün mükəmməldir. Etibarlı JSON-un açarı aydın bir sxem təmin etməkdir.
+
+### Əsas JSON Sorğusu
+
+İstədiyiniz tam strukturu göstərən bir şablonla başlayın. Sahə adlarını, məlumat növlərini və nümunə dəyərləri daxil edin. Bu, modelin izləyəcəyi bir müqavilə rolunu oynayır.
+
+<TryIt 
+  title="JSON Çıxarışı"
+  description="Strukturlaşdırılmamış mətndən strukturlaşdırılmış məlumat çıxarın."
+  prompt={`Bu mətndən məlumat çıxar və JSON olaraq qaytar:
+
+{
+    "sirket_adi": "string",
+    "qurulus_ili": number,
+    "merkez": "string",
+    "isci_sayi": number,
+    "sektor": "string"
+}
+
+Mətn: "1976-cı ildə qurulan Apple Inc., mərkəzi Cupertino, Kaliforniyadır. Texnologiya nəhəngi dünya üzrə təxminən 164.000 nəfər işə götürür."`}
+/>
+
+### Mürəkkəb JSON Strukturları
+
+İç-içə məlumat üçün, obyektlər içində obyektlər, obyekt massivləri və qarışıq növlərlə iyerarxik JSON istifadə edin. Hər səviyyəni aydın şəkildə təyin edin və dəyərləri məhdudlaşdırmaq üçün TypeScript stilində annotasiyalar (`"pozitiv" | "neqativ"`) istifadə edin.
+
+```
+Bu məhsul rəyini analiz et və JSON qaytar:
+
+{
+  "rey_id": "string (unikal yarat)",
+  "hiss": {
+    "umumi": "pozitiv" | "neqativ" | "qarisiq" | "neytral",
+    "bal": 0.0-1.0
+  },
+  "aspektler": [
+    {
+      "aspekt": "string (məs., 'qiymət', 'keyfiyyət')",
+      "hiss": "pozitiv" | "neqativ" | "neytral",
+      "sitat": ["rəydən tam sitatlar"]
+    }
+  ],
+  "satin_alma_niyyeti": {
+    "tovsiye_eder_mi": boolean,
+    "eminlik": 0.0-1.0
+  },
+  "acar_ifadeler": ["diqqəti çəkən ifadələrin string massivi"]
+}
+
+YALNIZ etibarlı JSON qaytar, əlavə mətn yox.
+
+Rəy: "[rəy mətni]"
+```
+
+### Etibarlı JSON Təmin Etmə
+
+Modellər bəzən JSON ətrafına izahedici mətn və ya markdown formatlama əlavə edir. Çıxış formatı haqqında açıq təlimatlarla bunun qarşısını alın. Xam JSON və ya kod blokları içində JSON istəyə bilərsiniz—təhlil ehtiyaclarınıza görə seçin.
+
+Açıq təlimatlar əlavə edin:
+
+```
+VACİB:
+- YALNIZ JSON obyektini qaytar, markdown kod blokları yox
+- Bütün stringlərin düzgün escape edildiyindən əmin ol
+- Əksik dəyərlər üçün undefined deyil null istifadə et
+- Çıxışın təhlil edilə bilən JSON olduğunu doğrula
+```
+
+Və ya modeldən çıxışını sarmasını istəyərək kod blokları istəyin:
+
+````
+Nəticəni JSON kod bloku olaraq qaytar:
+```json
+{ ... }
+```
+````
+
+## YAML Çıxış
+
+YAML, mötərizələr əvəzinə girintidən istifadə edərək JSON-dan daha insan tərəfindən oxuna bilirdir. Konfiqurasiya faylları (Docker, Kubernetes, GitHub Actions) üçün standartdır və çıxış insanlar tərəfindən oxunacaqsa və ya DevOps kontekstlərində istifadə ediləcəksə yaxşı işləyir. YAML girintiyə həssasdır, buna görə formatlama tələbləri haqqında spesifik olun.
+
+<TryIt 
+  compact
+  title="YAML Yaratma"
+  prompt={`Node.js layihəsi üçün GitHub Actions iş axışı yarat.
+
+Etibarlı YAML olaraq qaytar:
+- Daxil et: yüklə, lint, test, build mərhələləri
+- Node.js 18 istifadə et
+- npm asılılıqlarını keşlə
+- main-ə push və pull request-lərdə işlət`}
+/>
+
+## XML Çıxış
+
+XML, bir çox korporativ sistem, SOAP API-ləri və köhnə inteqrasiyalar üçün hələ də tələb olunur. JSON-dan daha ətraflıdır amma mürəkkəb məlumatlar üçün atributlar, ad sahələri və CDATA bölmələri kimi xüsusiyyətlər təqdim edir. Element adlarını, iç-içə strukturu və atributlar ilə alt elementlərin harada istifadə ediləcəyini göstərin.
+
+```
+Bu məlumatı XML formatına çevir:
+
+Tələblər:
+- Kök element: <catalog>
+- Hər element <book> elementində
+- Uyğun yerlərdə atribut istifadə et
+- Təsvir mətni üçün CDATA istifadə et
+
+Məlumat: [kitab məlumatı]
+```
+
+## Xüsusi Formatlar
+
+Bəzən standart formatlar ehtiyaclarınıza uyğun gəlmir. Aydın bir şablon təmin edərək istənilən xüsusi format təyin edə bilərsiniz. Xüsusi formatlar, insanlar tərəfindən oxunacaq hesabatlar, loglar və ya sahəyə xas çıxışlar üçün yaxşı işləyir.
+
+### Strukturlaşdırılmış Analiz Formatı
+
+Bölmələr arasında aydın sərhədlərlə skan edilə bilən sənədlər yaratmaq üçün ayırıcılar (===, ---, [BÖLMƏ]) istifadə edin. Bu format kod nəzərdən keçirmələri, auditlər və analizlər üçün əladır.
+
+```
+Bu kodu tam olaraq bu formatla analiz et:
+
+=== KOD ANALİZİ ===
+
+[XÜLASƏ]
+Tək paraqraf ümumi baxış
+
+[PROBLEMLƏR]
+• KRİTİK: [problem] — [fayl:sətir]
+• XƏBƏRDARLIQ: [problem] — [fayl:sətir]  
+• MƏLUMAT: [problem] — [fayl:sətir]
+
+[METRİKLƏR]
+Mürəkkəblik: [Aşağı/Orta/Yüksək]
+Davamlılıq: [bal]/10
+Test Əhatəsi: [təxmini %]
+
+[TÖVSİYƏLƏR]
+1. [Prioritet 1 tövsiyəsi]
+2. [Prioritet 2 tövsiyəsi]
+
+=== ANALİZ SONU ===
+```
+
+### Boşluq Doldurma Formatı
+
+Boşluqlu (___) şablonlar, modeli tam formatlama saxlayaraq müəyyən sahələri doldurmağa yönəldir. Bu yanaşma, ardıcıllığın vacib olduğu formlar, xülasələr və standartlaşdırılmış sənədlər üçün mükəmməldir.
+
+```
+Verilən məhsul üçün bu şablonu tamamla:
+
+MƏHSUL XÜLASƏSİ
+─────────────
+Adı: _______________
+Slogan: _______________
+Hədəf İstifadəçi: _______________
+Həll Edilən Problem: _______________
+Əsas Xüsusiyyətlər:
+  1. _______________
+  2. _______________
+  3. _______________
+Fərqləndirici: _______________
+
+Məhsul: [məhsul təsviri]
+```
+
+## Tipli Cavablar
+
+Tipli cavablar, modelin tanıması və etiketləməsi lazım olan kateqoriyaları və ya varlıq növlərini təyin edir. Bu texnika, Named Entity Recognition (NER), təsnifat tapşırıqları və məlumatı ardıcıl şəkildə kateqoriyalaşdırmanız lazım olan istənilən çıxarış üçün vacibdir. Növlərinizi nümunələrlə aydın şəkildə təyin edin.
+
+<TryIt 
+  compact
+  title="Varlıq Çıxarışı"
+  prompt={`Bu mətndən varlıqları çıxar.
+
+Varlıq Növləri:
+- ŞƏX: Şəxslərin tam adları
+- TƏŞKİLAT: Təşkilat/şirkət adları
+- MƏKAN: Şəhərlər, ölkələr, ünvanlar
+- TARİX: ISO formatında tariXlər (YYYY-AA-GG)
+- PUL: Valyuta ilə pul məbləğləri
+
+Hər birini belə formatla: [NÖV]: [dəyər]
+
+Mətn: "Tim Cook, Apple-ın Dekabr 2024-ə qədər yeni bir Austin obyektinə 1 milyard dollar investisiya edəcəyini açıqladı."`}
+/>
+
+## Çox Hissəli Strukturlaşdırılmış Cavablar
+
+Bir neçə aspekti əhatə edən hərtərəfli çıxışa ehtiyacınız olduqda, aydın sərhədlərlə ayrı hissələr təyin edin. Hər hissəyə tam olaraq nəyin gedəcəyini göstərin—format, uzunluq və məzmun növü. Bu, modelin bölmələri qarışdırmasını və ya hissələri atlamasını önləyir.
+
+```
+Bu mövzunu araşdır və bunları təmin et:
+
+### BÖLMƏ 1: İCRAÇI XÜLASƏ
+[2-3 cümlə ümumi baxış]
+
+### BÖLMƏ 2: ƏSAS TAPINTILAR
+[Tam olaraq 5 nöqtəli siyahı]
+
+### BÖLMƏ 3: MƏLUMAT CƏDVƏLİ
+| Metrik | Dəyər | Mənbə |
+|--------|-------|--------|
+[Minimum 5 sətir daxil et]
+
+### BÖLMƏ 4: TÖVSİYƏLƏR
+[3 hərəkətə çevrilə bilən tövsiyənin nömrələnmiş siyahısı]
+
+### BÖLMƏ 5: ƏLAVƏİ OXUMA
+[Qısa təsvirlərlə 3 tövsiyə edilən mənbə]
+```
+
+## Şərti Formatlama
+
+Şərti formatlama, girişin xüsusiyyətlərinə görə fərqli çıxış formatları təyin etməyə imkan verir. Bu, cavab formatının modelin algıladığına görə dəyişməli olan təsnifat, triyaj və yönləndirmə sistemləri üçün güclüdür. Hər hal üçün açıq şablonlarla aydın if/then məntiqi istifadə edin.
+
+<TryIt 
+  compact
+  title="Bilet Təsnifatı"
+  prompt={`Bu dəstək biletini təsnif et.
+
+TƏCİLİ isə (sistem çöküb, təhlükəsizlik problemi, məlumat itkisi):
+  Qaytar: 🔴 TƏCİLİ | [Kateqoriya] | [Tövsiyə Edilən Hərəkət]
+
+YÜKSƏK isə (bir neçə istifadəçi təsirlənib, gəlir təsiri):
+  Qaytar: 🟠 YÜKSƏK | [Kateqoriya] | [Tövsiyə Edilən Hərəkət]
+
+ORTA isə (tək istifadəçi təsirlənib, müvəqqəti həll mövcud):
+  Qaytar: 🟡 ORTA | [Kateqoriya] | [Tövsiyə Edilən Hərəkət]
+
+AŞAĞI isə (suallar, xüsusiyyət istəkləri):
+  Qaytar: 🟢 AŞAĞI | [Kateqoriya] | [Tövsiyə Edilən Hərəkət]
+
+Bilet: "Hesabıma daxil ola bilmirəm. Şifrəmi iki dəfə sıfırlamağa çalışdım amma hələ də xəta alıram. Bu, bütün komandamın panelə daxil olmasını əngəlləyir."`}
+/>
+
+## JSON-da Massivlər və Siyahılar
+
+Bir neçə elementi massivlərə çıxarmaq diqqətli sxem tərifi tələb edir. Massiv strukturunu, hər elementin nə ehtiva etməsi lazım olduğunu və uç halları necə idarə edəcəyinizi (boş massivlər, tək elementlər) göstərin. Sayı sahəsi əlavə etmək tamlığı doğrulamağa kömək edir.
+
+```
+Bu görüş transkriptindən bütün hərəkət maddələrini çıxar.
+
+JSON massivi olaraq qaytar:
+{
+  "hereket_maddeleri": [
+    {
+      "tapsirig": "tapşırığı təsvir edən string",
+      "teyin_edilen": "şəxs adı və ya 'Təyin edilməyib'",
+      "son_tarix": "göstərilmişsə tarix, yoxsa null",
+      "prioritet": "yuksek" | "orta" | "asagi",
+      "kontekst": "transkriptdən əlaqəli sitat"
+    }
+  ],
+  "toplam_say": number
+}
+
+Transkript: "[görüş transkripti]"
+```
+
+## Doğrulama Təlimatları
+
+Öz-doğrulama, modeli cavab verməzdən əvvəl öz çıxışını yoxlamağa yönəldir. Bu, əksik bölmələr, yer tutucu mətn və ya məhdudiyyət pozuntuları kimi ümumi problemləri tutur. Model, əlavə API çağırışları olmadan çıxış keyfiyyətini yaxşılaşdıraraq problemləri düzəltmək üçün daxili olaraq iterasiya edir.
+
+```
+Hesabatı yarat, sonra:
+
+DOĞRULAMA YOXLAMA SİYAHISI:
+□ Bütün tələb olunan bölmələr mövcuddur
+□ Yer tutucu mətn qalmayıb
+□ Bütün statistikalar mənbə ehtiva edir
+□ Söz sayı 500-700 söz arasındadır
+□ Nəticə girişə bağlanır
+
+Hər hansı yoxlama uğursuz olarsa, cavab verməzdən əvvəl düzəlt.
+```
+
+## Opsional Sahələri İdarə Etmə
+
+Real dünya məlumatlarında adətən əksik dəyərlər olur. Modelə opsional sahələri necə idarə edəcəyi barədə açıq şəkildə təlimat verin—`null` istifadə etmək boş stringlərdən daha təmizdir və proqramatik olaraq işlənməsi daha asandır. Həmçinin modelin əksik məlumatı "halüsinasiya ilə" yaratmasının qarşısını almaq üçün məlumat uydurmamalı olduğunu vurğulayın.
+
+```
+Əlaqə məlumatlarını çıxar. Əksik sahələr üçün null istifadə et.
+
+{
+  "ad": "string (tələb olunur)",
+  "email": "string və ya null",
+  "telefon": "string və ya null", 
+  "sirket": "string və ya null",
+  "rol": "string və ya null",
+  "linkedin": "URL string və ya null"
+}
+
+VACİB: 
+- Mənbədə olmayan məlumatı əsla uydurma
+- Əksik məlumat üçün boş string deyil null istifadə et
+- Telefon nömrələri mümkünsə E.164 formatında
+```
+
+## Xülasə
+
+<Callout type="tip" title="Əsas Texnikalar">
+Format haqqında açıq ol, nümunələr istifadə et, növləri göstər, uç halları null dəyərlərlə idarə et və modeldən öz çıxışını doğrulamasını istə.
+</Callout>
+
+<Quiz 
+  question="Strukturlaşdırılmış çıxışın strukturlaşdırılmamış mətnə görə əsas üstünlüyü nədir?"
+  options={[
+    "Daha az token istifadə edir",
+    "Süni intellektin istehsal etməsi daha asandır",
+    "Proqramatik olaraq təhlil edilə bilir və doğrulana bilir",
+    "Həmişə doğru məlumat istehsal edir"
+  ]}
+  correctIndex={2}
+  explanation="JSON kimi strukturlaşdırılmış çıxışlar kod tərəfindən təhlil edilə bilir, sorğular arasında müqayisə edilə bilir, iş axışlarına inteqrasiya edilə bilir və tamlıq üçün doğrulana bilir—sərbəst formatlı mətnlə çətin və ya qeyri-mümkün olan şeylər."
+/>
+
+Strukturlaşdırılmış çıxışlar, etibarlı süni intellekt dəstəkli tətbiqlər qurmaq üçün vacibdir. Növbəti fəsildə, mürəkkəb mühakimə tapşırıqları üçün düşüncə zənciri prompting-i kəşf edəcəyik.

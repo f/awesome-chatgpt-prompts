@@ -1,0 +1,340 @@
+Yazdığınız promptlar süni intellektin necə davrandığını formalaşdırır. Yaxşı hazırlanmış bir prompt öyrədə, kömək edə və gücləndirir. Diqqətsiz bir prompt aldada, ayrı-seçkilik edə və ya zərər verə bilər. Prompt mühəndisləri olaraq sadəcə istifadəçi deyilik—süni intellekt davranışının dizaynerləriyik və bu həqiqi bir məsuliyyət daşıyır.
+
+Bu bölmə yuxarıdan qoyulan qaydalar haqqında deyil. Seçimlərimizin təsirini anlamaq və fəxr edə biləcəyimiz süni intellekt istifadəsinə aparan vərdişlər formalaşdırmaq haqqındadır.
+
+<Callout type="warning" title="Bu Niyə Vacibdir">
+Süni intellekt nə verilirsə onu böyüdür. Qərəzli bir prompt böyük miqyasda qərəzli çıxışlar istehsal edir. Aldadıcı bir prompt böyük miqyasda aldatmanı mümkün edir. Prompt mühəndisliyinin etik nəticələri bu sistemlərin qazandığı hər yeni qabiliyyətlə böyüyür.
+</Callout>
+
+## Etik Əsaslar
+
+Prompt mühəndisliyindəki hər qərar bir neçə əsas prinsipə bağlanır:
+
+<InfoGrid items={[
+  { label: "Dürüstlük", description: "İnsanları aldatmaq və ya yanıltıcı məzmun yaratmaq üçün Sİ istifadə etməyin", example: "Saxta rəylər, şəxsiyyətə bürünmə və ya uydurulmuş 'sübutlar' yox", exampleType: "text", color: "blue" },
+  { label: "Ədalət", description: "Qərəzləri və stereotipləri davam etdirməkdən qaçınmaq üçün aktiv çalışın", example: "Promptları demoqrafiklər arasında test et, fərqli baxış bucaqları istə", exampleType: "text", color: "purple" },
+  { label: "Şəffaflıq", description: "Vacib olduqda Sİ iştirakı haqqında aydın olun", example: "Dərc edilən işlərdə, peşəkar kontekstlərdə Sİ köməyini açıqla", exampleType: "text", color: "green" },
+  { label: "Məxfilik", description: "Promptlarda və çıxışlarda şəxsi məlumatları qoruyun", example: "Məlumatları anonimləşdir, ŞTM daxil etməkdən qaçın, məlumat siyasətlərini anla", exampleType: "text", color: "amber" },
+  { label: "Təhlükəsizlik", description: "Zərərli çıxışları qarşısını alan promptlar dizayn edin", example: "Təhlükəsizlik tədbirləri qur, uç halları test et, rəddləri zərif şəkildə idarə et", exampleType: "text", color: "red" },
+  { label: "Hesabatlılıq", description: "Promptlarınızın istehsal etdiyi şeylər üçün məsuliyyət götürün", example: "Çıxışları nəzərdən keçir, problemləri düzəlt, insan nəzarətini davam etdir", exampleType: "text", color: "cyan" }
+]} />
+
+### Prompt Mühəndisinin Rolu
+
+Fərq edə biləcəyinizdən daha çox təsiriniz var:
+
+- **Sİ nə istehsal edir**: Promptlarınız məzmunun, tonun və keyfiyyətin çıxışlarını müəyyən edir
+- **Sİ necə qarşılıqlı əlaqə qurur**: Sistem promptlarınız şəxsiyyəti, sərhədləri və istifadəçi təcrübəsini formalaşdırır
+- **Hansı təhlükəsizlik tədbirləri var**: Dizayn seçimləriniz Sİ-nin nə edib-etməyəcəyini müəyyən edir
+- **Xətalar necə idarə edilir**: Xəta idarəetməniz uğursuzluqların zərif mi yoxsa zərərli mi olduğunu müəyyən edir
+
+## Zərərli Çıxışlardan Qaçınma
+
+Ən əsas etik öhdəlik, promptlarınızın zərər verməsini qarşısını almaqdır.
+
+### Zərərli Məzmun Kateqoriyaları
+
+<InfoGrid items={[
+  { label: "Zorakılıq və Zərər", description: "Fiziki zərərə səbəb ola biləcək təlimatlar", example: "Silah düzəltmə, özünə zərər vermə, başqalarına zorakılıq", exampleType: "text", color: "red" },
+  { label: "Qanunsuz Fəaliyyətlər", description: "Qanunları pozmağı asanlaşdıran məzmun", example: "Dələduzluq planları, hack təlimatları, narkotik sintezi", exampleType: "text", color: "red" },
+  { label: "Təqib və Nifrət", description: "Fərdləri və ya qrupları hədəfləyən məzmun", example: "Ayrı-seçkilik məzmunu, ifşa etmə, hədəfli təqib", exampleType: "text", color: "red" },
+  { label: "Yanlış Məlumat", description: "Qəsdən yanlış və ya yanıltıcı məzmun", example: "Saxta xəbərlər, sağlamlıq yanlış məlumatı, sui-qəsd məzmunu", exampleType: "text", color: "red" },
+  { label: "Məxfilik Pozuntuları", description: "Şəxsi məlumatları ifşa etmə və ya istismar etmə", example: "Özəl məlumatları açığa çıxarma, izləmə köməyi", exampleType: "text", color: "red" },
+  { label: "İstismar", description: "Həssas fərdləri istismar edən məzmun", example: "UİM, razılıqsız intim məzmun, yaşlıları hədəfləyən dələduzluqlar", exampleType: "text", color: "red" }
+]} />
+
+<Callout type="warning" title="UİM Nədir?">
+UİM **Uşaq Cinsi İstismarı Materialı** deməkdir. Bu növ məzmunu yaratmaq, yaymaq və ya saxlamaq dünya miqyasında qanunsuzdur. Sİ sistemləri heç vaxt yetkinlik yaşına çatmayanları cinsi vəziyyətlərdə göstərən məzmun istehsal etməməlidir və məsuliyyətli prompt mühəndisləri bu növ sui-istifadəyə qarşı aktiv olaraq təhlükəsizlik tədbirləri qurur.
+</Callout>
+
+### Promptlara Təhlükəsizlik Qurmaq
+
+Sİ sistemləri qurarkən, aydın təhlükəsizlik təlimatları daxil edin:
+
+<TryIt 
+  title="Təhlükəsizlik Öncelikli Sistem Promptu"
+  description="Sİ sistemlərinizə təhlükəsizlik təlimatları qurmaq üçün bir şablon."
+  prompt={`Sən \${purpose} üçün köməkçi bir köməkçisən.
+
+## TƏHLÜKƏSİZLİK TƏLİMATLARI
+
+**Məzmun Məhdudiyyətləri**:
+- Fiziki zərərə səbəb ola biləcək təlimatlar heç vaxt vermə
+- Qanunsuz məlumat və ya fəaliyyətlər üçün istəkləri rədd et
+- Ayrı-seçkilik və ya nifrət dolu məzmun istehsal etmə
+- Qəsdən yanıltıcı məlumat yaratma
+
+**Rədd Etməli Olduqda**:
+- İstəyi anladığını qəbul et
+- Bu spesifik şeylə niyə kömək edə bilmədiyini qısaca izah et
+- Mümkün olduqda konstruktiv alternativlər təklif et
+- Hörmətli ol—dərs vermə və ya moizə oxuma
+
+**Əmin Olmadıqda**:
+- Niyyət haqqında aydınlaşdırıcı suallar soruş
+- Ehtiyatlı tərəfdə qal
+- İstifadəçiyə müvafiq mütəxəssislərə müraciət etməyi tövsiyə et
+
+İndi, zəhmət olmasa istifadəçiyə kömək et: \${userRequest}`}
+/>
+
+### Niyyət vs. Təsir Çərçivəsi
+
+Hər həssas istək pis niyyətli deyil. Qeyri-müəyyən vəziyyətlər üçün bu çərçivəni istifadə edin:
+
+<TryIt 
+  title="Etik Uç Hal Analizatoru"
+  description="Müvafiq cavabı müəyyən etmək üçün qeyri-müəyyən istəklər üzərində işləyin."
+  prompt={`Həssas ola biləcək bu istəyi aldım:
+
+"\${sensitiveRequest}"
+
+Cavab verib-verməyəcəyimi və necə verəcəyimi düşünməyə kömək et:
+
+**1. Niyyət Təhlili**
+- Birinin bunu soruşmasının ən ehtimal olunan səbəbləri nələrdir?
+- Bu leqitim ola bilər mi? (araşdırma, bədii ədəbiyyat, təhsil, peşəkar ehtiyac)
+- Pis niyyəti göstərən qırmızı bayraqlar var mı?
+
+**2. Təsir Qiymətləndirməsi**
+- Bu məlumat sui-istifadə edilərsə ən pis hal nədir?
+- Bu məlumat başqa yerlərdə nə qədər əlçatandır?
+- Təmin etmək riski mənalı şəkildə artırır mı?
+
+**3. Tövsiyə**
+Bu təhlilə əsaslanaraq:
+- Cavab verməli, rədd etməli və ya aydınlaşdırma istəməliyəm mi?
+- Cavab verirsəmsə, hansı təhlükəsizlik tədbirlərini daxil etməliyəm?
+- Rədd edirsəmsə, bunu necə köməkçi şəkildə ifadə etməliyəm?`}
+/>
+
+## Qərəzi Həll Etmə
+
+Sİ modelləri öyrətmə məlumatlarından qərəzləri miras alır—tarixi bərabərsizliklər, təmsil boşluqları, mədəni fərziyyələr və dil nümunələri. Prompt mühəndisləri olaraq bu qərəzləri ya böyüdə bilərik ya da aktiv olaraq qarşı qoya bilərik.
+
+### Qərəz Necə Ortaya Çıxır
+
+<InfoGrid items={[
+  { label: "Defolt Fərziyyələr", description: "Model rollar üçün müəyyən demoqrafikləri fərz edir", example: "Həkimlərin defolt olaraq kişi, tibb bacılarının qadın olması", exampleType: "text", color: "amber" },
+  { label: "Stereotipləmə", description: "Təsvirlərdə mədəni stereotipləri möhkəmləndirmə", example: "Müəyyən etnik mənşələri spesifik xüsusiyyətlərlə əlaqələndirmə", exampleType: "text", color: "amber" },
+  { label: "Təmsil Boşluqları", description: "Bəzi qruplar kifayət qədər və ya yanlış təmsil olunur", example: "Azlıq mədəniyyətləri haqqında məhdud dəqiq məlumat", exampleType: "text", color: "amber" },
+  { label: "Qərb Mərkəzli Görüşlər", description: "Baxış bucaqları Qərb mədəniyyəti və dəyərlərinə əyilir", example: "Qərb normlarının universal olduğunu fərz etmə", exampleType: "text", color: "amber" }
+]} />
+
+### Qərəzi Test Etmə
+
+<TryIt 
+  title="Qərəz Aşkarlama Testi"
+  description="Promptlarınızı potensial qərəz problemləri üçün test etmək üçün bunu istifadə edin."
+  prompt={`Bu promptu qərəz üçün test etmək istəyirəm:
+
+"\${promptToTest}"
+
+Bu qərəz yoxlamalarını işlət:
+
+**1. Demoqrafik Variasiya Testi**
+Promptu fərqli demoqrafik təyinedicilərlə (cins, etnik mənşə, yaş və s.) işlət və bunlardakı fərqləri qeyd et:
+- Ton və ya hörmət səviyyəsi
+- Defolt səriştə və ya bacarıqlar
+- Stereotipik əlaqələndirmələr
+
+**2. Defolt Fərziyyə Yoxlaması**
+Demoqrafiklər göstərilmədikdə:
+- Model nəyi fərz edir?
+- Bu fərziyyələr problemli mi?
+
+**3. Təmsil Təhlili**
+- Fərqli qruplar ədalətli şəkildə təmsil olunur mu?
+- Əksik və ya kənarlaşdırılmış qruplar var mı?
+
+**4. Tövsiyələr**
+Tapıntılara əsaslanaraq, qərəzi azaltmaq üçün prompt dəyişiklikləri təklif et.`}
+/>
+
+### Praktikada Qərəzi Azaltma
+
+<Compare 
+  before={{ label: "Qərəzə meyilli prompt", content: "Tipik bir CEO-nu təsvir et." }}
+  after={{ label: "Qərəz fərqindalıqlı prompt", content: "Bir CEO-nu təsvir et. Nümunələr arasında demoqrafikləri dəyişdir və hər hansı bir cinsə, etnik mənşəyə və ya yaşa defolt olaraq düşməkdən qaçın." }}
+/>
+
+## Şəffaflıq və Açıqlama
+
+İnsanlara Sİ-nin iştirak etdiyini nə vaxt söyləməlisiniz? Cavab kontekstdən asılıdır—amma meyl daha az deyil, daha çox açıqlama istiqamətindədir.
+
+### Açıqlamanın Nə Vaxt Vacib Olduğu
+
+<InfoGrid items={[
+  { label: "Dərc Edilən Məzmun", description: "Ictimaiyyətlə paylaşılan məqalələr, paylaşımlar və ya məzmun", example: "Bloq yazıları, sosial media, marketinq materialları", exampleType: "text", color: "blue" },
+  { label: "Nəticəli Qərarlar", description: "Sİ çıxışlarının insanların həyatlarını təsir etdiyi vəziyyətlər", example: "İşə qəbul tövsiyələri, tibbi məlumat, hüquqi rəhbərlik", exampleType: "text", color: "blue" },
+  { label: "Güvən Kontekstləri", description: "Orijinallığın gözlənildiyi və ya dəyərli olduğu yerlər", example: "Şəxsi yazışmalar, şahidliklər, rəylər", exampleType: "text", color: "blue" },
+  { label: "Peşəkar Mühitlər", description: "İş yeri və ya akademik mühitlər", example: "Hesabatlar, araşdırma, müştəri çatdırılmaları", exampleType: "text", color: "blue" }
+]} />
+
+### Müvafiq Şəkildə Necə Açıqlamaq
+
+<Compare 
+  before={{ label: "Gizli Sİ iştirakı", content: "Budur bazar trendləri təhlilim..." }}
+  after={{ label: "Şəffaf açıqlama", content: "Məlumatları təhlil etməyə və bu hesabatı hazırlamağa kömək etmək üçün Sİ alətləri istifadə etdim. Bütün nəticələr tərəfimdən doğrulanmış və redaktə edilmişdir." }}
+/>
+
+Yaxşı işləyən ümumi açıqlama ifadələri:
+- "Sİ köməyi ilə yazılmışdır"
+- "Sİ tərəfindən istehsal edilmiş ilk qaralama, insan tərəfindən redaktə edilmişdir"
+- "Sİ alətləri istifadə edilərək edilmiş təhlil"
+- "Sİ ilə yaradılmış, [ad] tərəfindən nəzərdən keçirilmiş və təsdiq edilmişdir"
+
+## Məxfilik Mülahizələri
+
+Göndərdiyiniz hər prompt məlumat ehtiva edir. Bu məlumatın hara getdiyini—və nəyin içində olmaması lazım olduğunu—anlamaq əsasdır.
+
+### Promptlara Heç Vaxt Daxil Edilməməli Olanlar
+
+<InfoGrid items={[
+  { label: "Şəxsi Təyinedicilər", description: "Adlar, ünvanlar, telefon nömrələri, ŞSN nömrələri", example: "'Əhməd Əliyev' əvəzinə [MÜŞTƏRİ] istifadə et", color: "red" },
+  { label: "Maliyyə Məlumatları", description: "Hesab nömrələri, kredit kartları, gəlir detalları", example: "Həqiqi rəqəmlər əvəzinə nümunəni təsvir et", exampleType: "text", color: "red" },
+  { label: "Sağlamlıq Məlumatları", description: "Tibbi qeydlər, diaqnozlar, reseptlər", example: "Spesifik xəstələr deyil, ümumi olaraq vəziyyətlər haqqında soruş", exampleType: "text", color: "red" },
+  { label: "Kimlik Məlumatları", description: "Şifrələr, API açarları, tokenlər, sirlər", example: "Kimlik məlumatlarını heç vaxt yapışdırma—yer tutucular istifadə et", exampleType: "text", color: "red" },
+  { label: "Özəl Yazışmalar", description: "Şəxsi e-poçtlar, mesajlar, gizli sənədlər", example: "Özəl mətni sitat gətirmədən vəziyyəti xülasə et", exampleType: "text", color: "red" }
+]} />
+
+### Təhlükəsiz Məlumat İşləmə Nümunəsi
+
+<Compare 
+  before={{ label: "Təhlükəsiz deyil: ŞTM Ehtiva Edir", content: "Əhməd Əliyevdən Bakı, Nizami küç. 123-də sifariş #12345 haqqında bu şikayəti xülasə et: '15 Martda sifariş verdim və hələ almamışam...'" }}
+  after={{ label: "Təhlükəsiz: Anonimləşdirilmiş", content: "Bu müştəri şikayəti nümunəsini xülasə et: Bir müştəri 3 həftə əvvəl sifariş verdi, sifarişini almadı və həll olmadan iki dəfə dəstəklə əlaqə saxladı." }}
+/>
+
+<Callout type="info" title="ŞTM Nədir?">
+**ŞTM** **Şəxsi Təyin Edilə Bilən Məlumatlar** deməkdir—müəyyən bir fərdi tanıya biləcək hər hansı bir məlumat. Bu adları, ünvanları, telefon nömrələrini, e-poçt ünvanlarını, ŞSN nömrələrini, maliyyə hesab nömrələrini və hətta birini tanıya biləcək məlumat kombinasiyalarını (iş vəzifəsi + şirkət + şəhər kimi) ehtiva edir. Sİ-yə prompt verərkən, məxfiliyi qorumaq üçün həmişə ŞTM-i anonimləşdirin və ya çıxarın.
+</Callout>
+
+## Orijinallıq və Aldatma
+
+Sİ-ni alət olaraq istifadə etmək ilə Sİ-ni aldatmaq üçün istifadə etmək arasında fərq var.
+
+### Legitimlik Xətti
+
+<InfoGrid items={[
+  { label: "Legitim İstifadələr", description: "İşinizi yaxşılaşdırmaq üçün alət olaraq Sİ", example: "Qaralama yaratma, beyin fırtınası, redaktə etmə, öyrənmə", exampleType: "text", color: "green" },
+  { label: "Boz Sahələr", description: "Kontekstdən asılı, mühakimə tələb edir", example: "Hayalet yazarlıq, şablonlar, avtomatik cavablar", exampleType: "text", color: "amber" },
+  { label: "Aldadıcı İstifadələr", description: "Sİ işini insan-orijinal olaraq yanlış təmsil etmə", example: "Saxta rəylər, akademik saxtakarlıq, şəxsiyyətə bürünmə", exampleType: "text", color: "red" }
+]} />
+
+Soruşulması lazım olan əsas suallar:
+- Alıcı bunun orijinal insan işi olmasını gözləyir mi?
+- Aldatma yolu ilə haqsız üstünlük əldə edirəm mi?
+- Açıqlama işin necə qəbul ediləcəyini dəyişdirərdi mi?
+
+### Sintetik Media Məsuliyyəti
+
+Həqiqi insanların realistik təsvirlərini yaratmaq—şəkillər, səs və ya video olsun—xüsusi öhdəliklər daşıyır:
+
+- Razılıq olmadan realistik təsvirlər **heç vaxt** yaratma
+- Sintetik medianı həmişə aydın şəkildə **etiketlə**
+- Yaratmazdan əvvəl sui-istifadə potensialını **düşün**
+- Razılıqsız intim şəkil yaratmağı **rədd et**
+
+## Məsuliyyətli Yerləşdirmə
+
+Başqalarının istifadəsi üçün Sİ xüsusiyyətləri qurarkən, etik öhdəlikləriniz çoxalır.
+
+### Yerləşdirmə Öncəsi Yoxlama Siyahısı
+
+<Checklist 
+  title="Yerləşdirmə Hazırlığı"
+  items={[
+    { text: "Müxtəlif girişlər arasında zərərli çıxışlar üçün test edildi" },
+    { text: "Dəyişən demoqrafiklərlə qərəz üçün test edildi" },
+    { text: "İstifadəçi açıqlama/razılıq mexanizmləri mövcuddur" },
+    { text: "Yüksək riskli qərarlar üçün insan nəzarəti var" },
+    { text: "Geri bildirim və hesabat sistemi mövcuddur" },
+    { text: "Hadisə müdaxilə planı sənədləşdirilmişdir" },
+    { text: "Aydın istifadə siyasətləri çatdırılmışdır" },
+    { text: "Monitorinq və xəbərdarlıq konfiqurasiya edilmişdir" }
+  ]}
+/>
+
+### İnsan Nəzarəti Prinsipləri
+
+<InfoGrid items={[
+  { label: "Yüksək Riskli Nəzərdən Keçirmə", description: "İnsanlar, insanları əhəmiyyətli dərəcədə təsir edən qərarları nəzərdən keçirir", example: "İşə qəbul, tibbi, hüquqi, maliyyə tövsiyələri", exampleType: "text", color: "blue" },
+  { label: "Xəta Düzəltmə", description: "Sİ xətalarını tutmaq və düzəltmək üçün mexanizmlər var", example: "İstifadəçi geri bildirimi, keyfiyyət seçmələri, etiraz prosesi", exampleType: "text", color: "blue" },
+  { label: "Davamlı Öyrənmə", description: "Problemlərdən əldə edilən anlayışlar sistemi yaxşılaşdırır", example: "Hadisə sonrası təhlillər, prompt yeniləmələri, öyrətmə yaxşılaşdırmaları", exampleType: "text", color: "blue" },
+  { label: "Üstün Gəlmə Qabiliyyəti", description: "Sİ uğursuz olduqda insanlar müdaxilə edə bilər", example: "Manual nəzərdən keçirmə növbələri, eskalasiya yolları", exampleType: "text", color: "blue" }
+]} />
+
+## Xüsusi Kontekst Təlimatları
+
+Bəzi sahələr, zərər potensialları və ya əlaqəli şəxslərin həssaslığı səbəbindən əlavə diqqət tələb edir.
+
+### Sağlamlıq
+
+<TryIt 
+  title="Tibbi Kontekst Məsuliyyət Rəddi"
+  description="Sağlamlıqla bağlı sorğular ala biləcək Sİ sistemləri üçün şablon."
+  prompt={`Sən bir Sİ köməkçisisən. İstifadəçilər sağlamlıq və ya tibbi mövzular haqqında soruşduqda:
+
+**Həmişə**:
+- Şəxsi tibbi qərarlar üçün ixtisaslı bir sağlamlıq mütəxəssisinə müraciət etməyi tövsiyə et
+- Şəxsiləşdirilmiş tibbi məsləhət deyil, ümumi təhsil məlumatı təmin et
+- Vəziyyətləri diaqnoz edə bilməyəcəyinə dair məsuliyyət rəddi əlavə et
+- Təcili hallar üçün təcili yardım (103) tövsiyə et
+
+**Heç vaxt**:
+- Spesifik diaqnozlar vermə
+- Spesifik dərmanlar və ya dozalar tövsiyə etmə
+- Birini peşəkar qayğı axtarmaqdan çəkindirmə
+- Qeyri-müəyyənliyi qeyd etmədən müalicələr haqqında iddialar etmə
+
+İstifadəçi sualı: \${healthQuestion}
+
+Bu təlimatları izləyərək köməkçi şəkildə cavab ver.`}
+/>
+
+### Hüquqi və Maliyyə
+
+Bu sahələrin tənzimləyici nəticələri var və müvafiq məsuliyyət rəddi tələb edir:
+
+<InfoGrid items={[
+  { label: "Hüquqi Sorğular", description: "Hüquqi məsləhət deyil, ümumi məlumat təmin et", example: "\"Bu ümumi məlumatdır. Spesifik vəziyyətiniz üçün lisenziyalı bir vəkilə müraciət edin.\"", color: "purple" },
+  { label: "Maliyyə Sorğuları", description: "Şəxsi maliyyə məsləhəti vermədən öyrət", example: "\"Bu təhsil məqsədlidir. Vəziyyətiniz üçün bir maliyyə məsləhətçisinə müraciət etməyi düşünün.\"", color: "purple" },
+  { label: "Yurisdiksiya Fərqindalığı", description: "Qanunlar yerə görə dəyişir", example: "\"Qanunlar ölkəyə/bölgəyə görə fərqlənir. Yurisdiksiyamz üçün tələbləri doğrulayın.\"", color: "purple" }
+]} />
+
+### Uşaqlar və Təhsil
+
+<InfoGrid items={[
+  { label: "Yaşa Uyğun Məzmun", description: "Çıxışların yaş qrupuna uyğun olduğundan əmin ol", example: "Yetkin məzmunu filtrələ, uyğun dil istifadə et", exampleType: "text", color: "cyan" },
+  { label: "Akademik Dürüstlük", description: "Öyrənməni dəstəklə, yerini alma", example: "Tələbələr üçün ev tapşırığı yazmaq əvəzinə konseptləri izah et", exampleType: "text", color: "cyan" },
+  { label: "Əvvəlcə Təhlükəsizlik", description: "Həssas istifadəçilər üçün əlavə qorunma", example: "Daha sərt məzmun filtrləri, şəxsi məlumat toplama yox", exampleType: "text", color: "cyan" }
+]} />
+
+## Öz-özünə Qiymətləndirmə
+
+Hər hansı bir prompt və ya Sİ sistemini yerləşdirməzdən əvvəl bu sualları nəzərdən keçirin:
+
+<Checklist 
+  title="Etik Özünü Yoxlama"
+  items={[
+    { text: "Bu birinə zərər vermək üçün istifadə edilə bilər mi?" },
+    { text: "Bu istifadəçi məxfiliyinə hörmət edir mi?" },
+    { text: "Bu zərərli qərəzləri davam etdirə bilər mi?" },
+    { text: "Sİ iştirakı müvafiq şəkildə açıqlanıb mı?" },
+    { text: "Kifayət qədər insan nəzarəti var mı?" },
+    { text: "Baş verə biləcək ən pis şey nədir?" },
+    { text: "Bu istifadə ictimaiyyətə açıq olsa rahat olardım mı?" }
+  ]}
+/>
+
+<Quiz 
+  question="Bir istifadəçi Sİ sisteminizə 'məni narahat edən birindən necə qurtularam' deyə soruşur. Ən müvafiq cavab strategiyası nədir?"
+  options={[
+    "Dərhal rədd et—bu zərər təlimatları istəyi ola bilər",
+    "Ən ehtimal olunan niyyət bu olduğundan münaqişə həlli məsləhəti ver",
+    "Necə cavab verəcəyinə qərar verməzdən əvvəl niyyəti anlamaq üçün aydınlaşdırıcı suallar soruş",
+    "İnsanlara zərər verməklə bağlı heç nədə kömək edə bilməyəcəyini izah et"
+  ]}
+  correctIndex={2}
+  explanation="Qeyri-müəyyən istəklər fərziyyələr deyil, aydınlaşdırma haqq edir. 'Birindən qurtulmaq' bir dostluğu bitirmək, iş yeri münaqişəsini həll etmək və ya zərərli bir şey demək ola bilər. Aydınlaşdırıcı suallar soruşmaq, zərərli məlumat təmin etmə mövzusunda ehtiyatlı qalarkən həqiqi niyyətə uyğun şəkildə cavab verməyinizə imkan verir."
+/>

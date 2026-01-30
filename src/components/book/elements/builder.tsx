@@ -5,6 +5,7 @@ import { Play, Copy, Check, Loader2, RefreshCw, ChevronDown, ChevronUp } from "l
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useTranslations, useLocale } from "next-intl";
+import { getLocaleField, type BuilderField } from "./locales";
 
 // ============================================================================
 // PromptBuilder Component - Step-by-step prompt construction
@@ -24,32 +25,6 @@ interface PromptBuilderProps {
   showAllFields?: boolean;
 }
 
-interface BuilderField {
-  id: keyof NonNullable<PromptBuilderProps["defaultValues"]>;
-  label: string;
-  placeholder: string;
-  hint: string;
-  required?: boolean;
-}
-
-const BUILDER_FIELDS_LOCALE: Record<string, BuilderField[]> = {
-  en: [
-    { id: "role", label: "Role / Persona", placeholder: "You are a senior software engineer...", hint: "Who should the AI act as? What expertise should it have?" },
-    { id: "context", label: "Context / Background", placeholder: "I'm building a React app that...", hint: "What does the AI need to know about your situation?" },
-    { id: "task", label: "Task / Instruction", placeholder: "Review this code and identify bugs...", hint: "What specific action should the AI take?", required: true },
-    { id: "constraints", label: "Constraints / Rules", placeholder: "Keep response under 200 words. Focus only on...", hint: "What limitations or rules should the AI follow?" },
-    { id: "format", label: "Output Format", placeholder: "Return as a numbered list with...", hint: "How should the response be structured?" },
-    { id: "examples", label: "Examples", placeholder: "Example input: X → Output: Y", hint: "Show examples of what you want (few-shot learning)" },
-  ],
-  tr: [
-    { id: "role", label: "Rol / Persona", placeholder: "Sen kıdemli bir yazılım mühendisisin...", hint: "AI kim olarak davranmalı? Hangi uzmanlığa sahip olmalı?" },
-    { id: "context", label: "Bağlam / Arka Plan", placeholder: "Bir React uygulaması geliştiriyorum...", hint: "AI durumunuz hakkında ne bilmeli?" },
-    { id: "task", label: "Görev / Talimat", placeholder: "Bu kodu incele ve hataları bul...", hint: "AI hangi özel eylemi yapmalı?", required: true },
-    { id: "constraints", label: "Kısıtlamalar / Kurallar", placeholder: "Yanıtı 200 kelime altında tut. Sadece şuna odaklan...", hint: "AI hangi sınırlamalara veya kurallara uymalı?" },
-    { id: "format", label: "Çıktı Formatı", placeholder: "Numaralı liste olarak döndür...", hint: "Yanıt nasıl yapılandırılmalı?" },
-    { id: "examples", label: "Örnekler", placeholder: "Örnek girdi: X → Çıktı: Y", hint: "Ne istediğinizi örneklerle gösterin (few-shot öğrenme)" },
-  ],
-};
 
 export function PromptBuilder({
   title,
@@ -59,7 +34,7 @@ export function PromptBuilder({
 }: PromptBuilderProps) {
   const t = useTranslations("book.interactive");
   const locale = useLocale();
-  const BUILDER_FIELDS = BUILDER_FIELDS_LOCALE[locale] || BUILDER_FIELDS_LOCALE.en;
+  const BUILDER_FIELDS = getLocaleField(locale, "builderFields");
   
   const [values, setValues] = useState<Record<string, string>>(defaultValues as Record<string, string>);
   const [expandedFields, setExpandedFields] = useState<Set<string>>(

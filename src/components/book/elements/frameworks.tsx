@@ -1,10 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations, useLocale } from "next-intl";
+import { useLocale } from "next-intl";
 import { User, HelpCircle, FileText, Settings, Palette, FlaskConical, Target, Check, ListChecks, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { RunPromptButton } from "@/components/prompts/run-prompt-button";
+import { getLocaleField, type FrameworkStepData } from "./locales";
+
+const iconMap: Record<string, LucideIcon> = {
+  User, HelpCircle, FileText, Settings, Palette, FlaskConical, Target, Check, ListChecks
+};
 
 // Framework Demo Component
 interface FrameworkStep {
@@ -117,86 +122,58 @@ export function FrameworkDemo({ name, steps, example }: FrameworkDemoProps) {
   );
 }
 
+// Helper to convert locale step data to component step data
+function mapStepsToComponent(steps: FrameworkStepData[]): FrameworkStep[] {
+  return steps.map(s => ({
+    ...s,
+    icon: iconMap[s.iconName] || FileText,
+  }));
+}
+
 // Pre-defined framework configurations
 export function CRISPEFramework() {
+  const locale = useLocale();
+  const data = getLocaleField(locale, "frameworks").crispe;
+  
   return (
     <FrameworkDemo
-      name="The CRISPE Framework"
-      steps={[
-        { letter: "C", label: "Capacity/Role", description: "What role should the AI take on?", icon: User, color: "blue", example: "You are a senior marketing consultant with 15 years of experience in beauty brands." },
-        { letter: "R", label: "Request", description: "What do you want the AI to do?", icon: HelpCircle, color: "green", example: "Create a social media content calendar for next month." },
-        { letter: "I", label: "Information", description: "What background info does the AI need?", icon: FileText, color: "purple", example: "Background: We sell organic skincare products to women aged 25-40. Our brand voice is friendly and educational." },
-        { letter: "S", label: "Situation", description: "What circumstances apply?", icon: Settings, color: "amber", example: "Situation: We're launching a new vitamin C serum on the 15th." },
-        { letter: "P", label: "Persona", description: "What style should responses have?", icon: Palette, color: "pink", example: "Style: Casual, emoji-friendly, with a focus on education over selling." },
-        { letter: "E", label: "Experiment", description: "What examples clarify your intent?", icon: FlaskConical, color: "cyan", example: "Example post style: \"Did you know vitamin C is a skincare superhero? 🦸‍♀️ Here's why your skin will thank you...\"" },
-      ]}
+      name={data.name}
+      steps={mapStepsToComponent(data.steps)}
       example={{
-        prompt: `You are a senior marketing consultant with 15 years of experience in beauty brands.
-
-Create a social media content calendar for next month.
-
-Background: We sell organic skincare products to women aged 25-40. Our brand voice is friendly and educational.
-
-Situation: We're launching a new vitamin C serum on the 15th.
-
-Style: Casual, emoji-friendly, with a focus on education over selling.
-
-Example post style: "Did you know vitamin C is a skincare superhero? 🦸‍♀️ Here's why your skin will thank you..."
-
-Create a week-by-week content plan with 3 posts per week.`,
-        description: "Hover over each letter to see that part highlighted:"
+        prompt: data.examplePrompt,
+        description: data.exampleDescription
       }}
     />
   );
 }
 
 export function BREAKFramework() {
+  const locale = useLocale();
+  const data = getLocaleField(locale, "frameworks").break;
+  
   return (
     <FrameworkDemo
-      name="The BREAK Framework"
-      steps={[
-        { letter: "B", label: "Begin", description: "Restate the problem in your own words", icon: FileText, color: "blue", example: "B - Begin by restating the problem" },
-        { letter: "R", label: "Reason", description: "Think about what approach to use", icon: HelpCircle, color: "green", example: "R - Reason about what approach to use" },
-        { letter: "E", label: "Execute", description: "Work through the solution step by step", icon: Settings, color: "purple", example: "E - Execute the solution step by step" },
-        { letter: "A", label: "Answer", description: "State the final answer clearly", icon: Target, color: "amber", example: "A - Answer clearly" },
-        { letter: "K", label: "Know", description: "Verify by checking your work", icon: Check, color: "cyan", example: "K - Know by verifying/checking" },
-      ]}
+      name={data.name}
+      steps={mapStepsToComponent(data.steps)}
       example={{
-        prompt: `Solve this problem using BREAK:
-
-B - Begin by restating the problem
-R - Reason about what approach to use
-E - Execute the solution step by step
-A - Answer clearly
-K - Know by verifying/checking
-
-Problem: A rectangle's length is twice its width. If the perimeter is 36 cm, what is the area?`,
-        description: "Hover over each letter to see that part highlighted:"
+        prompt: data.examplePrompt,
+        description: data.exampleDescription
       }}
     />
   );
 }
 
 export function RTFFramework() {
+  const locale = useLocale();
+  const data = getLocaleField(locale, "frameworks").rtf;
+  
   return (
     <FrameworkDemo
-      name="The RTF Framework"
-      steps={[
-        { letter: "R", label: "Role", description: "Who should the AI be?", icon: User, color: "blue", example: "Role: You are a patient math tutor who specializes in making concepts easy for beginners." },
-        { letter: "T", label: "Task", description: "What should the AI do?", icon: ListChecks, color: "green", example: "Task: Explain what fractions are and how to add them together." },
-        { letter: "F", label: "Format", description: "How should the output look?", icon: FileText, color: "purple", example: "Format:" },
-      ]}
+      name={data.name}
+      steps={mapStepsToComponent(data.steps)}
       example={{
-        prompt: `Role: You are a patient math tutor who specializes in making concepts easy for beginners.
-
-Task: Explain what fractions are and how to add them together.
-
-Format: 
-- Start with a real-world example
-- Use simple language (no jargon)
-- Show 3 practice problems with answers
-- Keep it under 300 words`,
-        description: "Hover over each letter to see that part highlighted:"
+        prompt: data.examplePrompt,
+        description: data.exampleDescription
       }}
     />
   );

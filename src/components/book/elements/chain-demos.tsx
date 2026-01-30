@@ -4,6 +4,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Play, RotateCcw, CheckCircle2, XCircle, AlertTriangle, ArrowRight, ArrowDown, FileText, Search, Edit3, Sparkles, Package } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
+import { getLocaleField } from "./locales";
 
 type StepStatus = "pending" | "running" | "success" | "failed" | "invalid" | "retrying";
 
@@ -21,13 +22,13 @@ interface ValidationStep {
 }
 
 export function ValidationDemo() {
+  const locale = useLocale();
+  const localeData = getLocaleField(locale, "validationDemo");
   const [scenario, setScenario] = useState<"valid" | "invalid">("invalid");
   const [isRunning, setIsRunning] = useState(false);
-  const [steps, setSteps] = useState<ValidationStep[]>([
-    { id: "generate", name: "Generate Data", status: "pending" },
-    { id: "validate", name: "Validate Output", status: "pending" },
-    { id: "process", name: "Process Data", status: "pending" },
-  ]);
+  
+  const getInitialSteps = (): ValidationStep[] => localeData.steps.map(s => ({ ...s, status: "pending" as StepStatus }));
+  const [steps, setSteps] = useState<ValidationStep[]>(getInitialSteps());
 
   const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -36,11 +37,7 @@ export function ValidationDemo() {
   };
 
   const resetSteps = () => {
-    setSteps([
-      { id: "generate", name: "Generate Data", status: "pending" },
-      { id: "validate", name: "Validate Output", status: "pending" },
-      { id: "process", name: "Process Data", status: "pending" },
-    ]);
+    setSteps(getInitialSteps());
   };
 
   const runDemo = async () => {
@@ -65,12 +62,12 @@ export function ValidationDemo() {
       updateStep("validate", { 
         status: "failed", 
         validationResult: "invalid",
-        reason: "age must be a number, got string" 
+        reason: localeData.outputs.ageMustBeNumber 
       });
       
       await delay(600);
       // Retry with feedback
-      updateStep("generate", { status: "retrying", output: "Retrying with validation feedback..." });
+      updateStep("generate", { status: "retrying", output: localeData.outputs.retryingWithFeedback });
       await delay(1000);
       updateStep("generate", { 
         status: "success", 
@@ -83,7 +80,7 @@ export function ValidationDemo() {
       updateStep("validate", { 
         status: "success", 
         validationResult: "valid",
-        reason: "All fields valid" 
+        reason: localeData.outputs.allFieldsValid 
       });
     } else {
       // Valid scenario
@@ -98,14 +95,14 @@ export function ValidationDemo() {
       updateStep("validate", { 
         status: "success", 
         validationResult: "valid",
-        reason: "All fields valid" 
+        reason: localeData.outputs.allFieldsValid 
       });
     }
     
     await delay(400);
     updateStep("process", { status: "running" });
     await delay(700);
-    updateStep("process", { status: "success", output: "Data processed successfully" });
+    updateStep("process", { status: "success", output: localeData.outputs.dataProcessedSuccessfully });
     
     setIsRunning(false);
   };
@@ -113,7 +110,7 @@ export function ValidationDemo() {
   return (
     <div className="my-6 border rounded-lg overflow-hidden">
       <div className="px-4 py-3 bg-muted/50 border-b flex items-center justify-between">
-        <span className="font-medium text-sm">Validation Between Steps</span>
+        <span className="font-medium text-sm">{localeData.title}</span>
         <div className="flex items-center gap-2">
           <button
             onClick={() => { setScenario("valid"); resetSteps(); }}
@@ -122,7 +119,7 @@ export function ValidationDemo() {
               scenario === "valid" ? "bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300" : "bg-muted"
             )}
           >
-            Valid Data
+            {localeData.validData}
           </button>
           <button
             onClick={() => { setScenario("invalid"); resetSteps(); }}
@@ -131,7 +128,7 @@ export function ValidationDemo() {
               scenario === "invalid" ? "bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300" : "bg-muted"
             )}
           >
-            Invalid → Retry
+            {localeData.invalidRetry}
           </button>
           <button
             onClick={runDemo}
@@ -139,7 +136,7 @@ export function ValidationDemo() {
             className="flex items-center gap-1.5 px-3 py-1.5 bg-primary text-primary-foreground rounded text-sm font-medium disabled:opacity-50"
           >
             <Play className="w-3.5 h-3.5" />
-            Run
+            {localeData.run}
           </button>
         </div>
       </div>
@@ -154,7 +151,7 @@ export function ValidationDemo() {
             steps[0].status === "success" && "border-green-400 bg-green-50 dark:bg-green-950/30",
             steps[0].status === "retrying" && "border-amber-400 bg-amber-50 dark:bg-amber-950/30"
           )}>
-            <div className="text-xs uppercase tracking-wide text-muted-foreground mb-2">Step 1</div>
+            <div className="text-xs uppercase tracking-wide text-muted-foreground mb-2">{localeData.step} 1</div>
             <div className="flex items-center gap-2 mb-2">
               {steps[0].status === "pending" && <div className="w-4 h-4 rounded-full border-2 border-muted-foreground/30" />}
               {steps[0].status === "running" && <div className="w-4 h-4 rounded-full border-2 border-blue-500 border-t-transparent animate-spin" />}
@@ -177,7 +174,7 @@ export function ValidationDemo() {
             steps[1].status === "success" && "border-green-400 bg-green-50 dark:bg-green-950/30",
             steps[1].status === "failed" && "border-red-400 bg-red-50 dark:bg-red-950/30"
           )}>
-            <div className="text-xs uppercase tracking-wide text-muted-foreground mb-2">Step 2</div>
+            <div className="text-xs uppercase tracking-wide text-muted-foreground mb-2">{localeData.step} 2</div>
             <div className="flex items-center gap-2 mb-2">
               {steps[1].status === "pending" && <div className="w-4 h-4 rounded-full border-2 border-muted-foreground/30" />}
               {steps[1].status === "running" && <div className="w-4 h-4 rounded-full border-2 border-blue-500 border-t-transparent animate-spin" />}
@@ -198,7 +195,7 @@ export function ValidationDemo() {
               </div>
             )}
             {steps[1].status === "pending" && (
-              <p className="text-xs text-muted-foreground">Checks output schema & types</p>
+              <p className="text-xs text-muted-foreground">{localeData.checksOutput}</p>
             )}
           </div>
           
@@ -209,7 +206,7 @@ export function ValidationDemo() {
             steps[2].status === "running" && "border-blue-400 bg-blue-50 dark:bg-blue-950/30",
             steps[2].status === "success" && "border-green-400 bg-green-50 dark:bg-green-950/30"
           )}>
-            <div className="text-xs uppercase tracking-wide text-muted-foreground mb-2">Step 3</div>
+            <div className="text-xs uppercase tracking-wide text-muted-foreground mb-2">{localeData.step} 3</div>
             <div className="flex items-center gap-2 mb-2">
               {steps[2].status === "pending" && <div className="w-4 h-4 rounded-full border-2 border-muted-foreground/30" />}
               {steps[2].status === "running" && <div className="w-4 h-4 rounded-full border-2 border-blue-500 border-t-transparent animate-spin" />}
@@ -218,7 +215,7 @@ export function ValidationDemo() {
             </div>
             {steps[2].output && <p className="text-xs text-muted-foreground">{steps[2].output}</p>}
             {steps[2].status === "pending" && (
-              <p className="text-xs text-muted-foreground">Uses validated data</p>
+              <p className="text-xs text-muted-foreground">{localeData.usesValidatedData}</p>
             )}
           </div>
         </div>
@@ -227,7 +224,7 @@ export function ValidationDemo() {
         {scenario === "invalid" && steps[0].status === "retrying" && (
           <div className="mt-4 p-3 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg">
             <p className="text-xs text-amber-700 dark:text-amber-300">
-              <span className="font-medium">↺ Retrying Step 1</span> — Validation failed, re-generating with feedback: "{steps[1].reason}"
+              <span className="font-medium">↺ {localeData.retryingStep}</span> — {localeData.validationFailed}: "{steps[1].reason}"
             </p>
           </div>
         )}
@@ -250,13 +247,13 @@ interface FallbackStep {
 }
 
 export function FallbackDemo() {
+  const locale = useLocale();
+  const localeData = getLocaleField(locale, "fallbackDemo");
   const [scenario, setScenario] = useState<"primary" | "fallback">("fallback");
   const [isRunning, setIsRunning] = useState(false);
-  const [steps, setSteps] = useState<FallbackStep[]>([
-    { id: "primary", name: "Complex Analysis", type: "primary", status: "pending" },
-    { id: "fallback", name: "Simple Extraction", type: "fallback", status: "pending" },
-    { id: "output", name: "Final Result", type: "primary", status: "pending" },
-  ]);
+  
+  const getInitialSteps = (): FallbackStep[] => localeData.steps.map(s => ({ ...s, type: s.type as "primary" | "fallback", status: "pending" as StepStatus }));
+  const [steps, setSteps] = useState<FallbackStep[]>(getInitialSteps());
 
   const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -265,11 +262,7 @@ export function FallbackDemo() {
   };
 
   const resetSteps = () => {
-    setSteps([
-      { id: "primary", name: "Complex Analysis", type: "primary", status: "pending" },
-      { id: "fallback", name: "Simple Extraction", type: "fallback", status: "pending" },
-      { id: "output", name: "Final Result", type: "primary", status: "pending" },
-    ]);
+    setSteps(getInitialSteps());
   };
 
   const runDemo = async () => {
@@ -283,7 +276,7 @@ export function FallbackDemo() {
     if (scenario === "fallback") {
       updateStep("primary", { 
         status: "failed", 
-        output: "Low confidence (32%)",
+        output: localeData.outputs.lowConfidence.replace("{confidence}", "32"),
         confidence: 32
       });
       
@@ -292,7 +285,7 @@ export function FallbackDemo() {
       await delay(800);
       updateStep("fallback", { 
         status: "success", 
-        output: "Extracted key entities",
+        output: localeData.outputs.extractedKeyEntities,
         confidence: 95
       });
       
@@ -301,12 +294,12 @@ export function FallbackDemo() {
       await delay(600);
       updateStep("output", { 
         status: "success", 
-        output: "Result from fallback (partial data)"
+        output: localeData.outputs.resultFromFallback
       });
     } else {
       updateStep("primary", { 
         status: "success", 
-        output: "Deep analysis complete",
+        output: localeData.outputs.deepAnalysisComplete,
         confidence: 94
       });
       
@@ -315,7 +308,7 @@ export function FallbackDemo() {
       await delay(600);
       updateStep("output", { 
         status: "success", 
-        output: "Result from primary (full analysis)"
+        output: localeData.outputs.resultFromPrimary
       });
     }
     
@@ -325,7 +318,7 @@ export function FallbackDemo() {
   return (
     <div className="my-6 border rounded-lg overflow-hidden">
       <div className="px-4 py-3 bg-muted/50 border-b flex items-center justify-between">
-        <span className="font-medium text-sm">Fallback Chain Demo</span>
+        <span className="font-medium text-sm">{localeData.title}</span>
         <div className="flex items-center gap-2">
           <button
             onClick={() => { setScenario("primary"); resetSteps(); }}
@@ -334,7 +327,7 @@ export function FallbackDemo() {
               scenario === "primary" ? "bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300" : "bg-muted"
             )}
           >
-            Primary Succeeds
+            {localeData.primarySucceeds}
           </button>
           <button
             onClick={() => { setScenario("fallback"); resetSteps(); }}
@@ -343,7 +336,7 @@ export function FallbackDemo() {
               scenario === "fallback" ? "bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300" : "bg-muted"
             )}
           >
-            Use Fallback
+            {localeData.useFallback}
           </button>
           <button
             onClick={runDemo}
@@ -351,7 +344,7 @@ export function FallbackDemo() {
             className="flex items-center gap-1.5 px-3 py-1.5 bg-primary text-primary-foreground rounded text-sm font-medium disabled:opacity-50"
           >
             <Play className="w-3.5 h-3.5" />
-            Run
+            {localeData.run}
           </button>
         </div>
       </div>
@@ -366,7 +359,7 @@ export function FallbackDemo() {
             steps[0].status === "success" && "border-green-400 bg-green-50 dark:bg-green-950/30",
             steps[0].status === "failed" && "border-red-400 bg-red-50 dark:bg-red-950/30"
           )}>
-            <div className="text-xs uppercase tracking-wide text-muted-foreground mb-2">Primary</div>
+            <div className="text-xs uppercase tracking-wide text-muted-foreground mb-2">{localeData.primary}</div>
             <div className="flex items-center gap-2 mb-2">
               {steps[0].status === "running" && <div className="w-4 h-4 rounded-full border-2 border-blue-500 border-t-transparent animate-spin" />}
               {steps[0].status === "success" && <CheckCircle2 className="w-4 h-4 text-green-500" />}
@@ -386,7 +379,7 @@ export function FallbackDemo() {
                     style={{ width: `${steps[0].confidence}%` }}
                   />
                 </div>
-                <p className="text-xs text-muted-foreground mt-1">Confidence: {steps[0].confidence}%</p>
+                <p className="text-xs text-muted-foreground mt-1">{localeData.confidence}: {steps[0].confidence}%</p>
               </div>
             )}
           </div>
@@ -398,7 +391,7 @@ export function FallbackDemo() {
             steps[1].status === "running" && "border-purple-400 bg-purple-50 dark:bg-purple-950/30",
             steps[1].status === "success" && "border-purple-400 bg-purple-50 dark:bg-purple-950/30"
           )}>
-            <div className="text-xs uppercase tracking-wide text-muted-foreground mb-2">Fallback</div>
+            <div className="text-xs uppercase tracking-wide text-muted-foreground mb-2">{localeData.fallback}</div>
             <div className="flex items-center gap-2 mb-2">
               {steps[1].status === "running" && <div className="w-4 h-4 rounded-full border-2 border-purple-500 border-t-transparent animate-spin" />}
               {steps[1].status === "success" && <CheckCircle2 className="w-4 h-4 text-purple-500" />}
@@ -406,14 +399,14 @@ export function FallbackDemo() {
               <span className="font-medium text-sm">{steps[1].name}</span>
             </div>
             <p className="text-xs text-muted-foreground">
-              {steps[1].status === "pending" ? "Standby if primary fails" : steps[1].output}
+              {steps[1].status === "pending" ? localeData.standbyIfPrimaryFails : steps[1].output}
             </p>
             {steps[1].confidence && (
               <div className="mt-2">
                 <div className="h-1.5 bg-muted rounded-full overflow-hidden">
                   <div className="h-full bg-purple-500" style={{ width: `${steps[1].confidence}%` }} />
                 </div>
-                <p className="text-xs text-muted-foreground mt-1">Confidence: {steps[1].confidence}%</p>
+                <p className="text-xs text-muted-foreground mt-1">{localeData.confidence}: {steps[1].confidence}%</p>
               </div>
             )}
           </div>
@@ -425,7 +418,7 @@ export function FallbackDemo() {
             steps[2].status === "running" && "border-blue-400 bg-blue-50 dark:bg-blue-950/30",
             steps[2].status === "success" && "border-green-400 bg-green-50 dark:bg-green-950/30"
           )}>
-            <div className="text-xs uppercase tracking-wide text-muted-foreground mb-2">Output</div>
+            <div className="text-xs uppercase tracking-wide text-muted-foreground mb-2">{localeData.output}</div>
             <div className="flex items-center gap-2 mb-2">
               {steps[2].status === "running" && <div className="w-4 h-4 rounded-full border-2 border-blue-500 border-t-transparent animate-spin" />}
               {steps[2].status === "success" && <Package className="w-4 h-4 text-green-500" />}
@@ -454,39 +447,29 @@ interface PipelineStep {
   prompt?: string;
 }
 
-const pipelinePrompts: Record<string, string> = {
-  input: "How to learn programming",
-  outline: `Create a detailed outline for an article about "How to learn programming". Include main points, subpoints, and target word count per section.`,
-  draft: `Write the [section_name] section based on:
-Outline: [section_outline]
-Previous sections: [context]
-Style: Beginner-friendly, practical`,
-  review: `Review this assembled article for:
-- Flow between sections
-- Consistency of tone
-- Missing transitions
-Provide specific edit suggestions.`,
-  edit: `Apply these edits and polish the final article:
-Article: [assembled_sections]
-Edits: [review_suggestions]`,
-  metadata: `For this article, generate:
-- SEO title (60 chars)
-- Meta description (155 chars)
-- 5 keywords
-- Social media post (280 chars)`,
+const pipelineIcons: Record<string, typeof FileText> = {
+  input: Sparkles,
+  outline: Search,
+  draft: Edit3,
+  review: FileText,
+  edit: Edit3,
+  metadata: Package,
 };
 
 export function ContentPipelineDemo() {
+  const locale = useLocale();
+  const localeData = getLocaleField(locale, "contentPipelineDemo");
   const [isRunning, setIsRunning] = useState(false);
   const [expandedStep, setExpandedStep] = useState<string | null>(null);
-  const [steps, setSteps] = useState<PipelineStep[]>([
-    { id: "input", name: "Article Idea", icon: Sparkles, status: "pending", output: '"How to learn programming"' },
-    { id: "outline", name: "Research & Outline", icon: Search, status: "pending" },
-    { id: "draft", name: "Draft Sections", icon: Edit3, status: "pending", parallel: true },
-    { id: "review", name: "Assemble & Review", icon: FileText, status: "pending" },
-    { id: "edit", name: "Final Edit", icon: Edit3, status: "pending" },
-    { id: "metadata", name: "Generate Metadata", icon: Package, status: "pending" },
-  ]);
+  
+  const getInitialSteps = (): PipelineStep[] => localeData.steps.map(s => ({
+    ...s,
+    icon: pipelineIcons[s.id],
+    status: "pending" as StepStatus,
+    output: s.id === "input" ? `"${localeData.prompts.input}"` : undefined,
+    parallel: s.id === "draft" ? true : undefined,
+  }));
+  const [steps, setSteps] = useState<PipelineStep[]>(getInitialSteps());
 
   const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -496,14 +479,7 @@ export function ContentPipelineDemo() {
 
   const resetSteps = () => {
     setExpandedStep(null);
-    setSteps([
-      { id: "input", name: "Article Idea", icon: Sparkles, status: "pending", output: '"How to learn programming"' },
-      { id: "outline", name: "Research & Outline", icon: Search, status: "pending" },
-      { id: "draft", name: "Draft Sections", icon: Edit3, status: "pending", parallel: true },
-      { id: "review", name: "Assemble & Review", icon: FileText, status: "pending" },
-      { id: "edit", name: "Final Edit", icon: Edit3, status: "pending" },
-      { id: "metadata", name: "Generate Metadata", icon: Package, status: "pending" },
-    ]);
+    setSteps(getInitialSteps());
   };
 
   const runDemo = async () => {
@@ -518,31 +494,31 @@ export function ContentPipelineDemo() {
     // Step 1: Outline
     updateStep("outline", { status: "running" });
     await delay(1000);
-    updateStep("outline", { status: "success", output: "5 sections outlined" });
+    updateStep("outline", { status: "success", output: localeData.outputs.sectionsOutlined });
     await delay(300);
 
     // Step 2: Draft (parallel)
-    updateStep("draft", { status: "running", output: "Writing 5 sections in parallel..." });
+    updateStep("draft", { status: "running", output: localeData.outputs.writingSectionsParallel });
     await delay(1500);
-    updateStep("draft", { status: "success", output: "5 sections drafted (2,400 words)" });
+    updateStep("draft", { status: "success", output: localeData.outputs.sectionsDrafted });
     await delay(300);
 
     // Step 3: Review
     updateStep("review", { status: "running" });
     await delay(1000);
-    updateStep("review", { status: "success", output: "3 edit suggestions" });
+    updateStep("review", { status: "success", output: localeData.outputs.editSuggestions });
     await delay(300);
 
     // Step 4: Final Edit
     updateStep("edit", { status: "running" });
     await delay(800);
-    updateStep("edit", { status: "success", output: "Article polished" });
+    updateStep("edit", { status: "success", output: localeData.outputs.articlePolished });
     await delay(300);
 
     // Step 5: Metadata
     updateStep("metadata", { status: "running" });
     await delay(700);
-    updateStep("metadata", { status: "success", output: "SEO title, description, keywords, social post" });
+    updateStep("metadata", { status: "success", output: localeData.outputs.seoMetadata });
 
     setIsRunning(false);
   };
@@ -550,7 +526,7 @@ export function ContentPipelineDemo() {
   return (
     <div className="my-6 border rounded-lg overflow-hidden">
       <div className="px-4 py-3 bg-muted/50 border-b flex items-center justify-between">
-        <span className="font-medium text-sm">Content Pipeline Chain</span>
+        <span className="font-medium text-sm">{localeData.title}</span>
         <div className="flex items-center gap-2">
           <button
             onClick={resetSteps}
@@ -565,7 +541,7 @@ export function ContentPipelineDemo() {
             className="flex items-center gap-1.5 px-3 py-1.5 bg-primary text-primary-foreground rounded text-sm font-medium disabled:opacity-50"
           >
             <Play className="w-3.5 h-3.5" />
-            Run Pipeline
+            {localeData.runPipeline}
           </button>
         </div>
       </div>
@@ -574,7 +550,7 @@ export function ContentPipelineDemo() {
         <div className="space-y-2">
           {steps.map((step, index) => {
             const Icon = step.icon;
-            const prompt = pipelinePrompts[step.id];
+            const prompt = localeData.prompts[step.id];
             const isExpanded = expandedStep === step.id;
             const showPrompt = step.status === "running" || isExpanded;
             
@@ -607,7 +583,7 @@ export function ContentPipelineDemo() {
                     <div className="flex items-center gap-2">
                       <span className="text-sm font-medium">{step.name}</span>
                       {step.parallel && (
-                        <span className="text-xs px-1.5 py-0.5 rounded bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300">parallel</span>
+                        <span className="text-xs px-1.5 py-0.5 rounded bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300">{localeData.parallel}</span>
                       )}
                     </div>
                     {step.output && (
@@ -616,7 +592,7 @@ export function ContentPipelineDemo() {
                   </button>
                   {showPrompt && prompt && step.id !== "input" && (
                     <div className="mt-2 p-3 rounded-lg bg-muted/50 border border-dashed">
-                      <div className="text-xs font-medium text-muted-foreground mb-1">Prompt:</div>
+                      <div className="text-xs font-medium text-muted-foreground mb-1">{localeData.prompt}:</div>
                       <pre className="text-xs font-mono whitespace-pre-wrap text-foreground/80">{prompt}</pre>
                     </div>
                   )}

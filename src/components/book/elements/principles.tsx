@@ -3,28 +3,10 @@
 import { Gem, Target, Crown, Compass, RefreshCw, Sparkles, Ruler, CheckCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLocale } from "next-intl";
+import { getLocaleField, type Principle } from "./locales";
 
-const principlesLocale: Record<string, Array<{ icon: typeof Gem; title: string; description: string; color: string }>> = {
-  en: [
-    { icon: Gem, title: "Clarity Over Cleverness", description: "Be explicit and unambiguous", color: "blue" },
-    { icon: Target, title: "Specificity Yields Quality", description: "Details improve outputs", color: "green" },
-    { icon: Crown, title: "Context Is King", description: "Include all relevant information", color: "purple" },
-    { icon: Compass, title: "Guide, Don't Just Ask", description: "Structure the reasoning process", color: "amber" },
-    { icon: RefreshCw, title: "Iterate and Refine", description: "Improve through successive attempts", color: "pink" },
-    { icon: Sparkles, title: "Leverage Strengths", description: "Work with model training", color: "cyan" },
-    { icon: Ruler, title: "Control Structure", description: "Request specific formats", color: "indigo" },
-    { icon: CheckCircle, title: "Verify and Validate", description: "Check outputs for accuracy", color: "rose" },
-  ],
-  tr: [
-    { icon: Gem, title: "Zeka Yerine Netlik", description: "Açık ve belirsizlikten uzak olun", color: "blue" },
-    { icon: Target, title: "Özgüllük Kalite Getirir", description: "Detaylar çıktıları iyileştirir", color: "green" },
-    { icon: Crown, title: "Bağlam Her Şeydir", description: "Tüm ilgili bilgileri dahil edin", color: "purple" },
-    { icon: Compass, title: "Sadece Sormayın, Yönlendirin", description: "Düşünce sürecini yapılandırın", color: "amber" },
-    { icon: RefreshCw, title: "Yineleyin ve İyileştirin", description: "Art arda denemelerle geliştirin", color: "pink" },
-    { icon: Sparkles, title: "Güçlü Yönleri Kullanın", description: "Model eğitimiyle uyumlu çalışın", color: "cyan" },
-    { icon: Ruler, title: "Yapıyı Kontrol Edin", description: "Belirli formatlar isteyin", color: "indigo" },
-    { icon: CheckCircle, title: "Doğrulayın ve Onaylayın", description: "Çıktıları doğruluk için kontrol edin", color: "rose" },
-  ],
+const iconMap: Record<string, typeof Gem> = {
+  Gem, Target, Crown, Compass, RefreshCw, Sparkles, Ruler, CheckCircle
 };
 
 const principleColors: Record<string, { bg: string; border: string; icon: string }> = {
@@ -40,13 +22,13 @@ const principleColors: Record<string, { bg: string; border: string; icon: string
 
 export function PrinciplesSummary() {
   const locale = useLocale();
-  const principles = principlesLocale[locale] || principlesLocale.en;
+  const principles = getLocaleField(locale, "principles");
   
   return (
     <div className="my-6 grid gap-2">
       {principles.map((principle, index) => {
         const colors = principleColors[principle.color];
-        const Icon = principle.icon;
+        const Icon = iconMap[principle.iconName];
         return (
           <div
             key={index}

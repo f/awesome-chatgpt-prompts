@@ -4,6 +4,13 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Play, RotateCcw, CheckCircle2, XCircle, AlertTriangle, ArrowRight, RefreshCw } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
+import { getLocaleField, type ChainScenario, type ChainStep } from "./locales";
+
+const scenarioIcons: Record<string, typeof CheckCircle2> = {
+  success: CheckCircle2,
+  retry: RefreshCw,
+  fallback: AlertTriangle,
+};
 
 type StepStatus = "pending" | "running" | "success" | "failed" | "retrying" | "fallback";
 
@@ -16,33 +23,6 @@ interface Step {
   attempt?: number;
 }
 
-const scenariosLocale: Record<string, Array<{ id: string; name: string; description: string; icon: typeof CheckCircle2; color: string }>> = {
-  en: [
-    { id: "success", name: "Happy Path", description: "All steps succeed", icon: CheckCircle2, color: "green" },
-    { id: "retry", name: "With Retry", description: "Step fails, retry succeeds", icon: RefreshCw, color: "amber" },
-    { id: "fallback", name: "With Fallback", description: "Primary fails, fallback used", icon: AlertTriangle, color: "purple" },
-  ],
-  tr: [
-    { id: "success", name: "Başarılı Yol", description: "Tüm adımlar başarılı", icon: CheckCircle2, color: "green" },
-    { id: "retry", name: "Yeniden Deneme", description: "Adım başarısız, yeniden deneme başarılı", icon: RefreshCw, color: "amber" },
-    { id: "fallback", name: "Yedek Plan", description: "Ana yol başarısız, yedek kullanıldı", icon: AlertTriangle, color: "purple" },
-  ],
-};
-
-const stepsLocale: Record<string, Step[]> = {
-  en: [
-    { id: "extract", name: "Extract Data", status: "pending" },
-    { id: "validate", name: "Validate Output", status: "pending" },
-    { id: "transform", name: "Transform Data", status: "pending" },
-    { id: "output", name: "Final Output", status: "pending" },
-  ],
-  tr: [
-    { id: "extract", name: "Veri Çıkar", status: "pending" },
-    { id: "validate", name: "Çıktıyı Doğrula", status: "pending" },
-    { id: "transform", name: "Veriyi Dönüştür", status: "pending" },
-    { id: "output", name: "Son Çıktı", status: "pending" },
-  ],
-};
 
 export function ChainErrorDemo() {
   const [selectedScenario, setSelectedScenario] = useState<string>("success");
@@ -50,12 +30,12 @@ export function ChainErrorDemo() {
   const t = useTranslations("book.interactive");
   const locale = useLocale();
   
-  const scenarios = scenariosLocale[locale] || scenariosLocale.en;
-  const initialSteps = stepsLocale[locale] || stepsLocale.en;
+  const scenarios = getLocaleField(locale, "scenarios");
+  const initialSteps = getLocaleField(locale, "steps") as Step[];
   const [steps, setSteps] = useState<Step[]>(initialSteps);
 
   const resetSteps = () => {
-    setSteps(stepsLocale[locale] || stepsLocale.en);
+    setSteps(getLocaleField(locale, "steps") as Step[]);
   };
 
   const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
@@ -186,7 +166,7 @@ export function ChainErrorDemo() {
         {/* Scenario Selector */}
         <div className="flex gap-2 mb-4">
           {scenarios.map(scenario => {
-            const Icon = scenario.icon;
+            const Icon = scenarioIcons[scenario.id];
             return (
               <button
                 key={scenario.id}

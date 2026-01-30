@@ -1,0 +1,222 @@
+Təcrübəli prompt mühəndisləri belə proqnozlaşdırıla bilən tələlərə düşür. Yaxşı xəbər? Bu nümunələri tanıdıqda, qaçınmaq asandır. Bu bölmə ən geniş yayılmış tələləri araşdırır, niyə baş verdiklərini izah edir və bunlardan qaçınmaq üçün konkret strategiyalar verir.
+
+<Callout type="warning" title="Tələlər Niyə Vacibdir">
+Tək bir tələ güclü bir süni intellekti sinir bozucu bir alətə çevirə bilər. Bu nümunələri anlamaq çox vaxt "Süni intellekt mənim üçün işləmir" ilə "Süni intellekt iş axınımı dönüşdürdü" arasındakı fərqdir.
+</Callout>
+
+## Qeyri-müəyyənlik Tələsi
+
+**Nümunə**: Nə istədiyinizi bilirsiz, ona görə süni intellektin də həll edəcəyini fərz edirsiz. Amma qeyri-müəyyən promptlar qeyri-müəyyən nəticələr istehsal edir.
+
+<Compare 
+  before={{ label: "Qeyri-müəyyən prompt", content: "Marketinq haqqında bir şeylər yaz." }}
+  after={{ label: "Spesifik prompt", content: "B2B SaaS şirkətləri üçün brend ardıcıllığının əhəmiyyəti haqqında 300 sözlük bir LinkedIn paylaşımı yaz, marketinq rəhbərlərini hədəflə. Peşəkar amma səmimi bir ton istifadə et. Bir konkret nümunə əlavə et." }}
+/>
+
+**Niyə baş verir**: Təbii olaraq "aşkar" olduğunu düşündüyümüz detalları atlayırıq. Amma sizin üçün aşkar olan, vəziyyətiniz, auditoriyanız və ya hədəfləriniz haqqında konteksti olmayan bir model üçün aşkar deyil.
+
+<TryIt 
+  title="Spesifiklik Təkmilləşdiricisi"
+  description="Qeyri-müəyyən bir promptu alıb spesifik hala gətirin. Detal əlavə etmənin nəticələrin keyfiyyətini necə dönüşdürdüyünə diqqət edin."
+  prompt={`Yaxşılaşdırmaya ehtiyacı olan qeyri-müəyyən bir promptum var.
+
+Orijinal qeyri-müəyyən prompt: "\${vaguePrompt}"
+
+Bu promptu bunları əlavə edərək spesifik hala gətir:
+1. **Hədəf Auditoriya**: Bunu kim oxuyacaq/istifadə edəcək?
+2. **Format**: Hansı strukturda olmalıdır?
+3. **Uzunluq**: Nə qədər uzun olmalıdır?
+4. **Ton**: Hansı səs və ya stil?
+5. **Kontekst**: Vəziyyət və ya məqsəd nədir?
+6. **Məhdudiyyətlər**: Məcburi və ya qadağan olan şeylər var mı?
+
+Bütün bu detalları daxil edərək promptu yenidən yaz.`}
+/>
+
+## Həddindən Artıq Yükləmə Tələsi
+
+**Nümunə**: Hər şeyi tək bir promptda almağa çalışırsız—əhatəli, gülməli, peşəkar, yeni başlayanlar üçün uyğun, qabaqcıl, SEO optimallaşdırılmış və qısa. Nəticə? Süni intellekt tələblərinizin yarısını qaçırır və ya mürəkkəb bir qarışıqlıq istehsal edir.
+
+<Compare 
+  before={{ label: "Həddindən artıq yüklənmiş prompt", content: "Süni intellekt haqqında SEO optimallaşdırılmış və kod nümunələri ehtiva edən və gülməli amma peşəkar olan və yeni başlayanları hədəfləyən amma qabaqcıl ipucları da olan və 500 söz olmalı amma əhatəli olan və məhsulumuzdan bəhs edən və fəaliyyət çağırışı olan bir bloq yazısı yaz..." }}
+  after={{ label: "Fokuslanmış prompt", content: "Yeni başlayanlara süni intellekti tanıdan 500 sözlük bir bloq yazısı yaz.\n\nTələblər:\n1. Bir əsas konsepti aydın şəkildə izah et\n2. Bir sadə kod nümunəsi əlavə et\n3. Fəaliyyət çağırışı ilə bitir\n\nTon: Peşəkar amma səmimi" }}
+/>
+
+**Niyə baş verir**: Bir neçə qarşılıqlı əlaqə qorxusu və ya "hər şeyi bir dəfədə demək" istəyi. Amma koqnitiv həddindən artıq yükləmə süni intellekti də insanları təsir etdiyi kimi təsir edir—çox çox rəqabət edən tələb qaçırılmış toplara gətirib çıxarır.
+
+<InfoGrid items={[
+  { label: "Tələbləri Məhdudlaşdır", description: "Prompt başına 3-5 əsas tələblə qal", example: "Bunlara fokuslan: auditoriya, format, uzunluq, bir əsas məhdudiyyət", exampleType: "text", color: "green" },
+  { label: "Nömrəli Siyahılar İstifadə Et", description: "Struktur prioritetləri aydınlaşdırır", example: "1. X olmalı, 2. Y olmalı, 3. Z olsa yaxşı", exampleType: "text", color: "green" },
+  { label: "Promptları Zəncirlə", description: "Mürəkkəb tapşırıqları addımlara böl", example: "Əvvəlcə: qaralama. Sonra: 1. bölmə. Sonra: 2. bölmə.", exampleType: "text", color: "green" },
+  { label: "Amansızcasına Prioritetləşdir", description: "Məcburi vs. olsa yaxşı olan nədir?", example: "Yalnız BİR şeyi düzgün edə bilsəm, nə olardı?", color: "green" }
+]} />
+
+<Callout type="tip" title="Prompt Zəncirlənməsini Öyrən">
+Tək bir prompt həddindən artıq yükləndikdə, [prompt zəncirlənməsi](/book/11-prompt-chaining) çox vaxt həlldir. Mürəkkəb tapşırıqları hər addımın əvvəlkinin üzərində qurulduğu fokuslanmış promptlar ardıcıllığına bölün.
+</Callout>
+
+## Fərziyyə Tələsi
+
+**Nümunə**: "Əvvəlki" bir şeyə istinad edirsiz və ya süni intellektin layihənizi, şirkətinizi və ya əvvəlki söhbətlərinizi bildiyini fərz edirsiz. Bilmir.
+
+<Compare 
+  before={{ label: "Kontekst fərz edir", content: "Əvvəl göstərdiyim funksiyaya xəta idarəetməsi əlavə et." }}
+  after={{ label: "Kontekst təmin edir", content: "Bu funksiyaya xəta idarəetməsi əlavə et:\n\n```python\ndef hesabla_cem(elementler):\n    return sum(element.qiymet for element in elementler)\n```\n\nBoş siyahılar və etibarsız elementlər üçün try/except əlavə et." }}
+/>
+
+**Niyə baş verir**: Süni intellekt söhbətləri bir həmkarla danışmaq kimi hiss etdirir. Amma həmkarların əksinə, əksər süni intellekt modellərinin sessiyalar arasında davamlı yaddaşı yoxdur—hər söhbət sıfırdan başlayır.
+
+## Yönləndirici Sual Tələsi
+
+**Nümunə**: Sualınızı fərziyyənizi gömən bir şəkildə ifadə edirsiz, anlayış əvəzinə təsdiq alırsız.
+
+<Compare 
+  before={{ label: "Yönləndirici sual", content: "Python niyə məlumat elmi üçün ən yaxşı proqramlaşdırma dilidir?" }}
+  after={{ label: "Neytral sual", content: "Məlumat elmi işi üçün Python, R və Julia-nı müqayisə et. Hər birinin güclü və zəif tərəfləri hansılardır? Birini digərinə nə vaxt üstün tutarsan?" }}
+/>
+
+**Niyə baş verir**: Çox vaxt məlumat deyil, təsdiq axtarırıq. İfadəmiz şüursuz olaraq gözlədiyimiz və ya istədiyimiz cavaba doğru itələyir.
+
+## Hər Şeyə Güvənmə Tələsi
+
+**Nümunə**: Süni intellekt cavabları güvənli və avtoritar görünür, ona görə doğrulama olmadan qəbul edirsiz. Amma güvən, dəqiqlik demək deyil.
+
+<InfoGrid items={[
+  { label: "Nəzərdən Keçirilməmiş Məzmun", description: "Sİ tərəfindən istehsal edilən mətni doğrulama olmadan dərc etmə", example: "Uydurma statistikalar və ya saxta sitatlar ehtiva edən bloq yazıları", exampleType: "text", color: "red" },
+  { label: "Test Edilməmiş Kod", description: "Sİ kodunu test etmədən istehsalda istifadə etmə", example: "Təhlükəsizlik boşluqları, uç hal uğursuzluqları, incə xətalar", exampleType: "text", color: "red" },
+  { label: "Kor Qərarlar", description: "Yalnız Sİ təhlilinə əsaslanan vacib qərarlar alma", example: "Halüsinasiyalı bazar məlumatlarına əsaslanan iş strategiyası", exampleType: "text", color: "red" }
+]} />
+
+**Niyə baş verir**: Süni intellekt tamamilə səhv olduqda belə güvənli görünür. Həmçinin "avtomatlaşdırma qərəzi"nə—kompüter çıxışlarına olması lazım olandan çox güvənmə meylindən təsirlənməyə meylli oluruq.
+
+## Tək Cəhd Tələsi
+
+**Nümunə**: Bir prompt göndərirsiz, orta nəticə alırsız və süni intellektin istifadə halınız üçün "işləmədiyi" qənaətinə gəlirsiz. Amma əla nəticələr demək olar ki həmişə iterasiya tələb edir.
+
+<Compare 
+  before={{ label: "Tək cəhd düşüncəsi", content: "Orta çıxış → \"Sİ bunu edə bilmir\" → Təslim ol" }}
+  after={{ label: "İterativ düşüncə", content: "Orta çıxış → Nəyin səhv olduğunu təhlil et → Promptu yaxşılaşdır → Daha yaxşı çıxış → Yenidən yaxşılaşdır → Mükəmməl çıxış" }}
+/>
+
+**Niyə baş verir**: Süni intellektin ilk cəhddə ağlımızı oxumasını gözləyirik. Google axtarışları ilə iterasiya gözləmirik amma nədənsə süni intellektdən mükəmməllik gözləyirik.
+
+## Format Nəzərə Almama Tələsi
+
+**Nümunə**: Süni intellektin nə deməsini istədiyinizə fokuslanırsız amma necə formatlanması lazım olduğunu göstərməyi unudursuz. Sonra JSON lazım olduqda nəsr və ya maddə işarələri lazım olduqda mətn divarı alırsız.
+
+<Compare 
+  before={{ label: "Format göstərilməyib", content: "Bu mətndən əsas məlumatları çıxar." }}
+  after={{ label: "Format göstərilib", content: "Bu mətndən əsas məlumatları JSON olaraq çıxar:\n\n{\n  \"ad\": string,\n  \"tarix\": \"YYYY-AA-GG\",\n  \"mebleg\": number,\n  \"kateqoriya\": string\n}\n\nYALNIZ JSON qaytar, izahat yox." }}
+/>
+
+**Niyə baş verir**: Strukturdan çox məzmuna fokuslanırıq. Amma çıxışı proqramatik olaraq təhlil etməlisiniz və ya müəyyən bir yerə yapışdırmalısınızsa, format məzmun qədər vacibdir.
+
+## Kontekst Pəncərəsi Tələsi
+
+**Nümunə**: Nəhəng bir sənəd yapışdırırsız və əhatəli təhlil gözləyirsiz. Amma modellərin limitləri var—kəsə bilər, fokusu itirə bilər və ya uzun girişlərdəki vacib detalları qaçıra bilər.
+
+<InfoGrid items={[
+  { label: "Limitlərini Bil", description: "Fərqli modellərin fərqli kontekst pəncərələri var", example: "GPT-4: 128K token, Claude: 200K token, Gemini: 1M token", exampleType: "text", color: "blue" },
+  { label: "Böyük Girişləri Parçala", description: "Sənədləri idarə oluna bilən bölmələrə böl", example: "Bölmələri ayrı təhlil et, sonra sintez et", exampleType: "text", color: "blue" },
+  { label: "Vacib Məlumatı Önə Qoy", description: "Kritik konteksti promptun əvvəlinə qoy", example: "Əsas tələblər əvvəl, arxa plan detalları sonra", exampleType: "text", color: "blue" },
+  { label: "Lazımsızı At", description: "Lazımsız konteksti çıxar", example: "Həqiqətən bütün sənədə ehtiyacın var mı, yoxsa yalnız əlaqəli bölmələrə mi?", exampleType: "text", color: "blue" }
+]} />
+
+## Antropomorfizasiya Tələsi
+
+**Nümunə**: Süni intellektə bir insan həmkar kimi yanaşırsız—tapşırıqlardan "zövq almasını", sizi xatırlamasını və ya nəticələri önəmsəməsini gözləyirsiz. Önəmsəmir.
+
+<Compare 
+  before={{ label: "Antropomorfizə edilmiş", content: "Bu yaradıcı layihəni sevəcəyinə əminəm! İnsanlara kömək etməyi sevdiyini bilirəm və bu mənim üçün həqiqətən vacibdir." }}
+  after={{ label: "Aydın və birbaşa", content: "Bu spesifikasiyalarla yaradıcı bir qısa hekayə yaz:\n- Janr: Elmi fantastika\n- Uzunluq: 500 söz\n- Ton: Ümidverici\n- Daxil etməli: Bir bükülmüş final" }}
+/>
+
+**Niyə baş verir**: Süni intellekt cavabları o qədər insana bənzəyir ki təbii olaraq sosial nümunələrə sürüşürük. Amma emosional çağırışlar süni intellekti daha çox cəhd etməsini təmin etmir—aydın təlimatlar təmin edir.
+
+<Callout type="info" title="Həqiqətən Nə Kömək Edir">
+Emosional çağırışlar əvəzinə bunlara fokuslanın: aydın tələblər, yaxşı nümunələr, spesifik məhdudiyyətlər və açıq uğur meyarları. Bunlar çıxışları yaxşılaşdırır. "Zəhmət olmasa həqiqətən çox çalış" yaxşılaşdırmır.
+</Callout>
+
+## Təhlükəsizlik Nəzərə Almama Tələsi
+
+**Nümunə**: İşləri işlətmə tələsikliyində, həssas məlumatları promptlara daxil edirsiz—API açarları, şifrələr, şəxsi məlumatlar və ya xüsusi məlumatlar.
+
+<InfoGrid items={[
+  { label: "Promptlarda Sirlər", description: "Promptlara yapışdırılan API açarları, şifrələr, tokenlər", example: "\"Bu API açarını istifadə et: sk-abc123...\"", color: "red" },
+  { label: "Şəxsi Məlumatlar", description: "Üçüncü tərəf serverlərinə göndərilən ŞTM daxil etmə", example: "Promptlarda müştəri adları, e-poçtlar, ünvanlar", exampleType: "text", color: "red" },
+  { label: "Təmizlənməmiş İstifadəçi Girişi", description: "İstifadəçi girişini birbaşa promptlara ötürmə", example: "Prompt enjeksiyonu təhlükəsizlik boşluqları", exampleType: "text", color: "red" },
+  { label: "Xüsusi Məlumatlar", description: "Ticarət sirləri və ya gizli məlumatlar", example: "Daxili strategiyalar, dərc edilməmiş məhsul detalları", exampleType: "text", color: "red" }
+]} />
+
+**Niyə baş verir**: Təhlükəsizlik əvəzinə funksionallığa fokuslanma. Amma unutmayın: promptlar çox vaxt xarici serverlərə gedir, qeydə alına bilər və öyrətmə üçün istifadə edilə bilər.
+
+## Halüsinasiya Bilməzlik Tələsi
+
+**Nümunə**: Sitatlar, statistikalar və ya spesifik faktlar istəyirsiz və süni intellekt güvənlə bildirdiyi üçün həqiqi olduqlarını fərz edirsiz. Amma süni intellekt müntəzəm olaraq məqbul görünən məlumatlar uydurur.
+
+<Compare 
+  before={{ label: "Korkoranə güvənmə", content: "Mənbələri ilə birlikdə uzaqdan iş məhsuldarlığı haqqında 5 statistika ver." }}
+  after={{ label: "Məhdudiyyətləri qəbul etmə", content: "Uzaqdan iş məhsuldarlığı haqqında nə bilirik? Bəhs etdiyin statistikalar üçün, yaxşı qurulmuş tapıntılar mı yoxsa daha qeyri-müəyyən mi olduqlarını qeyd et. Spesifik rəqəmləri müstəqil olaraq doğrulayacağam." }}
+/>
+
+**Niyə baş verir**: Süni intellekt avtoritar görünən mətn istehsal edir. Bir şeylər uydurduqda "bilmir"—doğrulanmış faktları almaq deyil, ehtimal olunan mətni təxmin edir.
+
+## Göndər Öncəsi Yoxlama Siyahısı
+
+Hər hansı bir vacib promptu göndərməzdən əvvəl bu sürətli yoxlama siyahısını nəzərdən keçirin:
+
+<Checklist 
+  title="Prompt Keyfiyyət Nəzarəti"
+  items={[
+    { text: "Kifayət qədər spesifik mi? (Qeyri-müəyyən deyil)" },
+    { text: "Fokuslanıb mı? (Tələblərlə həddindən artıq yüklənməyib)" },
+    { text: "Bütün lazımi konteksti ehtiva edir mi?" },
+    { text: "Sual neytral mı? (Yönləndirici deyil)" },
+    { text: "Çıxış formatını göstərdim mi?" },
+    { text: "Giriş kontekst limitləri daxilindədir mi?" },
+    { text: "Hər hansı bir təhlükəsizlik narahatlığı var mı?" },
+    { text: "Çıxışı doğrulamağa hazıram mı?" },
+    { text: "Lazım gələrsə iterasiyaya hazıram mı?" }
+  ]}
+/>
+
+<Quiz 
+  question="Vacib qərarlar üçün süni intellekt istifadə edərkən ən təhlükəli tələ hansıdır?"
+  options={[
+    "Qeyri-müəyyən promptlar istifadə etmə",
+    "Sİ çıxışlarına doğrulama olmadan güvənmə",
+    "Çıxış formatı göstərməmə",
+    "Promptları tələblərlə həddindən artıq yükləmə"
+  ]}
+  correctIndex={1}
+  explanation="Bütün tələlər problemlərə səbəb olarkən, süni intellekt çıxışlarına doğrulama olmadan güvənmək ən təhlükəlisidir çünki səhv məlumat dərc etməyə, xətalı kod yerləşdirməyə və ya halüsinasiyalı məlumatlara əsaslanan qərarlar almağa gətirib çıxara bilər. Süni intellekt tamamilə səhv olduqda belə güvənli görünür, bu da doğrulamanı hər hansı bir vacib istifadə halı üçün əsas edir."
+/>
+
+## Promptlarınızı Təhlil Edin
+
+Prompt keyfiyyətiniz haqqında dərhal geri bildirim almaq üçün süni intellektdən istifadə edin. Hər hansı bir promptu yapışdırın və ətraflı təhlil alın:
+
+<PromptAnalyzer 
+  title="Prompt Keyfiyyət Analizatoru"
+  description="Aydınlıq, spesifiklik və yaxşılaşdırma təklifləri haqqında Sİ dəstəkli geri bildirim alın"
+  defaultPrompt="Kodumla kömək et"
+/>
+
+## Bu Promptu Sazla
+
+Bu promptda nəyin səhv olduğunu müəyyən edə bilərsiniz mi?
+
+<PromptDebugger
+  title="Tələni Tap"
+  badPrompt="Açar sözlərlə SEO optimallaşdırılmış və həmçinin gülməli amma peşəkar olan və kod nümunələri ehtiva edən və yeni başlayanları hədəfləyən amma qabaqcıl ipucları da olan və TechCo məhsulumuzdan bəhs edən və sosial sübut və fəaliyyət çağırışı olan və 500 söz olan amma əhatəli olan texnologiya haqqında bir bloq yazısı yaz."
+  badOutput="Budur texnologiya haqqında bir qaralama bloq yazısı...
+
+[Hər şeyi etməyə çalışan amma heç nəyi yaxşı bacarmayan ümumi, fokuslanmamış məzmun. Ton gündəlik və texniki arasında qəribə şəkildə sürüşür. Tələblərin yarısı əksikdir.]"
+  options={[
+    { id: "vague", label: "Prompt çox qeyri-müəyyəndir", isCorrect: false, explanation: "Əslində, promptun bir çox spesifik tələbi var. Problem tərsidir—çox az tələb deyil, çox çox." },
+    { id: "overload", label: "Prompt çox çox rəqabət edən tələblə həddindən artıq yüklənib", isCorrect: true, explanation: "Doğru! Bu prompt SEO + gülməli + peşəkar + kod + yeni başlayanlar + qabaqcıl + məhsul bəhsi + sosial sübut + CTA + uzunluq məhdudiyyəti istəyir. Bu 10+ rəqabət edən tələbdir! Sİ hamısını təmin edə bilməz, ona görə hər şeydə orta bir iş görür. Həll: bunu bir neçə fokuslanmış prompta böl." },
+    { id: "format", label: "Çıxış formatı göstərilməyib", isCorrect: false, explanation: "Daha spesifik bir format kömək edərdi amma əsas problem tələb həddindən artıq yükləməsidir. Çox çox istəmənin yolunu formatlaşdırma ilə çıxmaq olmaz." },
+    { id: "context", label: "Kifayət qədər kontekst yoxdur", isCorrect: false, explanation: "Prompt əslində çox çox kontekst ehtiva edir—bəlkə də çox çox! Problem eyni anda çox çox hədəfi təmin etməyə çalışmasıdır." }
+  ]}
+  hint="Bu tək promptda neçə fərqli tələb olduğunu sayın."
+/>

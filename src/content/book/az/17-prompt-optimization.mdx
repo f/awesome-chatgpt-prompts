@@ -1,0 +1,269 @@
+Yaxşı bir prompt işi görür. Optimallaşdırılmış bir prompt işi səmərəli görür—daha sürətli, daha ucuz, daha ardıcıl. Bu bölmə sizə promptları bir neçə ölçüdə sistematik olaraq yaxşılaşdırmağı öyrədir.
+
+<Callout type="tip" title="Prompt Təkmilləşdiricini Sınayın">
+Promptlarınızı avtomatik olaraq optimallaşdırmaq istəyirsiniz? [Prompt Təkmilləşdirici](/developers#enhancer) alətimizi istifadə edin. Promptunuzu təhlil edir, optimallaşdırma texnikalarını tətbiq edir və ilham üçün oxşar icma promptlarını göstərir.
+</Callout>
+
+## Optimallaşdırma Tarazlaşmaları
+
+Hər optimallaşdırma tarazlaşmalar ehtiva edir. Bunları anlamaq şüurlu seçimlər etməyinizə kömək edir:
+
+<InfoGrid items={[
+  { label: "Keyfiyyət vs. Xərc", description: "Daha yüksək keyfiyyət çox vaxt daha çox token və ya daha yaxşı modellər tələb edir", example: "Nümunə əlavə etmək dəqiqliyi artırır amma token sayını artırır", exampleType: "text", color: "blue" },
+  { label: "Sürət vs. Keyfiyyət", description: "Daha sürətli modellər bəzi qabiliyyətlərdən imtina edə bilər", example: "GPT-4 daha ağıllıdır amma GPT-4o-mini-dən daha yavaşdır", exampleType: "text", color: "purple" },
+  { label: "Ardıcıllıq vs. Yaradıcılıq", description: "Aşağı temperatur = daha proqnozlaşdırıla bilən amma daha az yaradıcı", example: "Faktlar üçün temperatur 0.2, beyin fırtınası üçün 0.8", exampleType: "text", color: "green" },
+  { label: "Sadəlik vs. Möhkəmlik", description: "Uç hal idarəetməsi mürəkkəblik əlavə edir", example: "Sadə promptlar qeyri-adi girişlərdə uğursuz olur", exampleType: "text", color: "amber" }
+]} />
+
+## Vacib Olanı Ölçmə
+
+Optimallaşdırmazdan əvvəl uğuru müəyyən edin. İstifadə halınız üçün "daha yaxşı" nə deməkdir?
+
+<InfoGrid items={[
+  { label: "Dəqiqlik", description: "Çıxış nə qədər tez-tez düzgündür?", example: "Kod təkliflərinin %90-ı xətasız dərlənir", exampleType: "text", color: "blue" },
+  { label: "Əlaqəlilik", description: "Həqiqətən soruşulanı həll edir mi?", example: "Cavab birbaşa sualı cavablayır vs. mövzudan sapır", exampleType: "text", color: "blue" },
+  { label: "Tamlıq", description: "Bütün tələblər yerinə yetirildi mi?", example: "İstənilən 5 bölmənin hamısı çıxışda mövcuddur", exampleType: "text", color: "blue" },
+  { label: "Gecikmə", description: "Cavab nə qədər vaxt alır?", example: "Söhbət tətbiqləri üçün p50 < 2s, p95 < 5s", exampleType: "text", color: "purple" },
+  { label: "Token Səmərəliliyi", description: "Eyni nəticə üçün neçə token?", example: "Ekvivalent çıxış üçün 500 token vs. 1500 token", exampleType: "text", color: "purple" },
+  { label: "Ardıcıllıq", description: "Oxşar girişlər üçün çıxışlar nə qədər oxşardır?", example: "Eyni sual struktural olaraq oxşar cavablar alır", exampleType: "text", color: "green" }
+]} />
+
+<Callout type="info" title="p50 və p95 Nə Deməkdir?">
+Faizlik metriklər cavab vaxtı paylanmasını göstərir. **p50** (median) istəklərin %50-nin bu dəyərdən daha sürətli olduğu deməkdir. **p95** %95-nin daha sürətli olduğu deməkdir—yavaş kənar dəyərləri tutur. p50-niz 1s amma p95-iniz 10s-dirsə, əksər istifadəçi məmnundur amma %5-i sinir bozucu gecikmələr yaşayır.
+</Callout>
+
+<TryIt 
+  title="Uğur Metriklərinizi Müəyyən Edin"
+  description="Dəyişiklik etməzdən əvvəl nəyi optimallaşdırdığınızı aydınlaşdırmaq üçün bu şablondan istifadə edin."
+  prompt={`Prompt optimallaşdırmam üçün uğur metriklərini müəyyən etməyə kömək et.
+
+**İstifadə halım**: \${useCase}
+**Cari problemlər**: \${painPoints}
+
+Bu istifadə halı üçün müəyyən etməyə kömək et:
+
+1. **Birincil metrik**: Hansı tək metrik ən çox vacibdir?
+2. **İkincil metriklər**: Başqa nə izləməliyəm?
+3. **Qəbul edilə bilən tarazlaşmalar**: Birincil metrik üçün nədən imtina edə bilərəm?
+4. **Qırmızı xətlər**: Hansı keyfiyyət səviyyəsi qəbul edilməzdir?
+5. **Necə ölçülür**: Hər metrikin qiymətləndirilməsinin praktik yolları`}
+/>
+
+## Token Optimallaşdırması
+
+Tokenlər pul və gecikmə xərci daşıyır. Budur eyni şeyi daha az tokenlə demək.
+
+### Sıxışdırma Prinsipi
+
+<Compare 
+  before={{ label: "Uzun (67 token)", content: "Zəhmət olmasa aşağıdakı tapşırıqda mənə kömək edə bilərsiniz mi. Aşağıda təmin edəcəyim mətni almanızı və onun bir xülasəsini yaratmanızı istəyirəm. Xülasə əsas nöqtələri tutmalı və qısa olmalıdır. Zəhmət olmasa bütün vacib məlumatları daxil etdiyinizdən əmin olun. Budur mətn:\n\n[mətn]" }}
+  after={{ label: "Qısa (12 token)", content: "Bu mətni xülasə et, əsas nöqtələri qısa şəkildə tut:\n\n[mətn]" }}
+/>
+
+**Eyni nəticə, %82 daha az token.**
+
+### Token Qənaət Texnikaları
+
+<InfoGrid items={[
+  { label: "Nəzakət İfadələrini Kəs", description: "\"Zəhmət olmasa\" və \"Təşəkkürlər\" çıxışı yaxşılaşdırmadan token əlavə edir", example: "\"Zəhmət olmasa xülasə et\" → \"Xülasə et\"", color: "green" },
+  { label: "Təkrarı Aradan Qaldır", description: "Özünü təkrarlamaq və ya aşkar olanı bildirmək", example: "\"Xülasələyən bir xülasə yaz\" → \"Xülasə et\"", color: "green" },
+  { label: "Qısaltmalar İstifadə Et", description: "Məna aydın olduqda qısalt", example: "\"məsələn\" → \"məs.\"", color: "green" },
+  { label: "Mövqe ilə İstinad Et", description: "Təkrarlamaq əvəzinə məzmuna işarə et", example: "Yenidən sitat gətirmək əvəzinə \"yuxarıdakı mətn\"", color: "green" }
+]} />
+
+<TryIt 
+  title="Prompt Sıxışdırıcı"
+  description="Token optimallaşdırılmış versiya almaq üçün uzun bir prompt yapışdırın."
+  prompt={`Bu promptu mənasını və effektivliyini qoruyaraq sıxışdır:
+
+Orijinal prompt:
+"\${verbosePrompt}"
+
+Təlimatlar:
+1. Lazımsız nəzakət ifadələrini və doldurucu sözləri çıxar
+2. Təkrarı aradan qaldır
+3. Qısa ifadə istifadə et
+4. Bütün əsas təlimatları və məhdudiyyətləri qoru
+5. Aydınlığı qoru—qısalıq üçün anlaşılırlıqdan imtina etmə
+
+Təmin et:
+- **Sıxışdırılmış versiya**: Optimallaşdırılmış prompt
+- **Token azalması**: Təxmini qənaət faizi
+- **Nə kəsildi**: Nəyin çıxarıldığının və niyə təhlükəsiz olduğunun qısa izahı`}
+/>
+
+## Keyfiyyət Optimallaşdırması
+
+Bəzən daha ucuz deyil, daha yaxşı çıxışlara ehtiyacınız var. Budur keyfiyyəti necə yaxşılaşdırmaq.
+
+### Dəqiqlik Artırıcılar
+
+<InfoGrid items={[
+  { label: "Doğrulama Əlavə Et", description: "Modeldən öz işini yoxlamasını istə", example: "\"...sonra cavabının düzgün olduğunu doğrula\"", color: "blue" },
+  { label: "Güvən İstə", description: "Qeyri-müəyyənliyi açıq et", example: "\"Güvənini 1-10 şkalasında qiymətləndir və qeyri-müəyyənlikləri izah et\"", color: "blue" },
+  { label: "Bir Neçə Yanaşma", description: "Fərqli perspektivlər al, sonra seç", example: "\"3 yanaşma təmin et və ən yaxşısını tövsiyə et\"", color: "blue" },
+  { label: "Açıq Mühakimə", description: "Addım-addım düşünməni məcbur et", example: "\"Addım-addım düşün və mühakiməni göstər\"", color: "blue" }
+]} />
+
+### Ardıcıllıq Artırıcılar
+
+<InfoGrid items={[
+  { label: "Ətraflı Format Spesifikasiyaları", description: "Çıxışın tam olaraq necə görünməsi lazım olduğunu göstər", example: "Bir şablon və ya sxem daxil et", exampleType: "text", color: "purple" },
+  { label: "Few-Shot Nümunələr", description: "İdeal çıxışın 2-3 nümunəsini təmin et", example: "\"Yaxşı olan belə görünür: [nümunələr]\"", color: "purple" },
+  { label: "Aşağı Temperatur", description: "Daha proqnozlaşdırıla bilən çıxış üçün təsadüfiliyi azalt", example: "Ardıcıl nəticələr üçün temperatur 0.3-0.5", exampleType: "text", color: "purple" },
+  { label: "Çıxış Doğrulaması", description: "Kritik sahələr üçün doğrulama addımı əlavə et", example: "\"Bütün məcburi sahələrin mövcud olduğunu doğrula\"", color: "purple" }
+]} />
+
+<TryIt 
+  title="Keyfiyyət Təkmilləşdiricisi"
+  description="Promptunuza keyfiyyət artırıcı elementlər əlavə edin."
+  prompt={`Daha yüksək keyfiyyətli çıxışlar üçün bu promptu təkmilləşdir:
+
+Orijinal prompt:
+"\${originalPrompt}"
+
+**Gördüyüm keyfiyyət problemi**: \${qualityIssue}
+
+Müvafiq keyfiyyət artırıcılar əlavə et:
+1. Problem dəqiqlikdirsə → doğrulama addımları əlavə et
+2. Problem ardıcıllıqdırsa → format spesifikasiyaları və ya nümunələr əlavə et
+3. Problem əlaqəlilikdirsə → kontekst və məhdudiyyətlər əlavə et
+4. Problem tamlıqdırsa → açıq tələblər əlavə et
+
+Hər əlavə üçün izahlarla təkmilləşdirilmiş promptu təmin et.`}
+/>
+
+## Gecikmə Optimallaşdırması
+
+Sürət vacib olduqda, hər millisaniyə əhəmiyyətlidir.
+
+### Sürət Ehtiyacına Görə Model Seçimi
+
+<InfoGrid items={[
+  { label: "Real Vaxt (< 500ms)", description: "Ən kiçik effektiv model + aqressiv keş istifadə et", example: "GPT-4o-mini, Claude Haiku, keşlənmiş cavablar", exampleType: "text", color: "red" },
+  { label: "İnteraktiv (< 2s)", description: "Sürətli modellər, axın aktiv", example: "Axın ilə GPT-4o-mini", exampleType: "text", color: "amber" },
+  { label: "Tolerantlı (< 10s)", description: "Orta səviyyə modellər, keyfiyyət/sürət balansı", example: "GPT-4o, Claude Sonnet", exampleType: "text", color: "green" },
+  { label: "Asinxron/Toplu", description: "Ən yaxşı modeli istifadə et, arxa planda işlə", example: "Offlayn işləmə üçün GPT-4, Claude Opus", exampleType: "text", color: "blue" }
+]} />
+
+### Sürət Texnikaları
+
+<InfoGrid items={[
+  { label: "Daha Qısa Promptlar", description: "Daha az giriş tokeni = daha sürətli işləmə", example: "Promptları sıxışdır, lazımsız konteksti çıxar", exampleType: "text", color: "cyan" },
+  { label: "Çıxışı Məhdudlaşdır", description: "Qaçaq cavabları qarşısını almaq üçün max_tokens təyin et", example: "Xülasələr üçün max_tokens: 500", exampleType: "text", color: "cyan" },
+  { label: "Axın İstifadə Et", description: "İlk tokenləri daha sürətli al, daha yaxşı UX", example: "> 100 token cavablar üçün axın", exampleType: "text", color: "cyan" },
+  { label: "Aqressiv Keş", description: "Eyni sorğuları yenidən hesablama", example: "Geniş yayılmış sualları, şablon çıxışları keşlə", exampleType: "text", color: "cyan" }
+]} />
+
+## Xərc Optimallaşdırması
+
+Miqyasda, kiçik qənaətlər əhəmiyyətli büdcə təsirinə çoxalır.
+
+### Xərcləri Anlamaq
+
+Fərqli modellər arasında API xərclərinizi təxmin etmək üçün bu kalkulyatordan istifadə edin:
+
+<CostCalculatorDemo />
+
+### Xərc Azaltma Strategiyaları
+
+<InfoGrid items={[
+  { label: "Model Yönləndirmə", description: "Bahalı modelləri yalnız lazım olduqda istifadə et", example: "Sadə suallar → GPT-4o-mini, Mürəkkəb → GPT-4", exampleType: "text", color: "green" },
+  { label: "Prompt Səmərəliliyi", description: "Daha qısa promptlar = istək başına daha aşağı xərc", example: "Tokenlərin %50-ni kəs = %50 giriş xərci qənaəti", exampleType: "text", color: "green" },
+  { label: "Çıxış Nəzarəti", description: "Tam detal lazım olmadıqda cavab uzunluğunu məhdudlaşdır", example: "\"2-3 cümlə ilə cavab ver\" vs. məhdudiyyətsiz", color: "green" },
+  { label: "Qruplaşdırma", description: "Əlaqəli sorğuları tək istəklərə birləşdir", example: "10 elementi tək promptda təhlil et vs. 10 ayrı çağırış", exampleType: "text", color: "green" },
+  { label: "Ön Filtrasiya", description: "Sİ tələb etməyən istəkləri göndərmə", example: "Bahalı təsnifatdan əvvəl açar söz uyğunlaşdırma", exampleType: "text", color: "green" }
+]} />
+
+## Optimallaşdırma Dövrü
+
+Optimallaşdırma iterativdir. Budur sistematik bir proses:
+
+### Addım 1: Baza Xəttini Müəyyən Et
+
+Ölçmədiyinizi yaxşılaşdıra bilməzsiniz. Hər hansı bir şeyi dəyişdirməzdən əvvəl, başlanğıc nöqtənizi dəqiq sənədləşdirin.
+
+<InfoGrid items={[
+  { label: "Prompt Sənədləşdirməsi", description: "Tam prompt mətnini qeyd et, sistem promptları və şablonlar daxil", example: "Promptlarınızı kod kimi versiya idarəsi edin", exampleType: "text", color: "blue" },
+  { label: "Test Dəsti", description: "Geniş yayılmış halları və uç halları əhatə edən 20-50 nümayəndə giriş yarat", example: "Asan, orta və çətin nümunələr daxil et", exampleType: "text", color: "blue" },
+  { label: "Keyfiyyət Metrikləri", description: "Hər çıxışı uğur meyarlarına görə puanla", example: "Dəqiqlik %, əlaqəlilik puanı, format uyğunluğu", exampleType: "text", color: "purple" },
+  { label: "Performans Metrikləri", description: "Hər test halı üçün tokenləri və vaxtı ölç", example: "Ort. giriş: 450 token, Ort. çıxış: 200 token, p50 gecikmə: 1.2s", exampleType: "text", color: "purple" }
+]} />
+
+<TryIt 
+  title="Baza Xətti Sənədləşdirmə Şablonu"
+  description="Optimallaşdırmazdan əvvəl əhatəli bir baza xətti yaratmaq üçün bunu istifadə edin."
+  prompt={`Prompt optimallaşdırma layihəm üçün baza xətti sənədləşdirməsi yarat.
+
+**Cari prompt**:
+"\${currentPrompt}"
+
+**Promptun etdiyi**: \${promptPurpose}
+
+**Gördüyüm cari problemlər**: \${currentIssues}
+
+Bunlarla bir baza xətti sənədləşdirmə şablonu yarat:
+
+1. **Prompt Anlıq Görüntüsü**: Tam prompt mətni (versiya idarəsi üçün)
+
+2. **Test Halları**: İstifadə etməli olduğum 10 nümayəndə test girişi təklif et, bunları əhatə edən:
+   - 3 tipik/asan hal
+   - 4 orta mürəkkəblikdə hal  
+   - 3 uç hal və ya çətin giriş
+
+3. **İzləniləcək Metriklər**:
+   - Bu istifadə halına xas keyfiyyət metrikləri
+   - Səmərəlilik metrikləri (tokenlər, gecikmə)
+   - Hər metrik necə puanlanır
+
+4. **Baza Xətti Hipotezi**: Cari performansın nə olmasını gözləyirəm?
+
+5. **Uğur Meyarları**: Hansı rəqəmlər optimallaşdırmadan məmnun olmağıma səbəb olacaq?`}
+/>
+
+### Addım 2: Hipotez Formalaşdır
+
+<Compare 
+  before={{ label: "Qeyri-müəyyən hədəf", content: "Promptumu daha yaxşı etmək istəyirəm." }}
+  after={{ label: "Test edilə bilən hipotez", content: "2 few-shot nümunə əlavə etsəm, dəqiqlik %75-dən %85-ə yüksələcək çünki model gözlənilən nümunəni öyrənəcək." }}
+/>
+
+### Addım 3: Tək Dəyişiklik Test Et
+
+Eyni anda bir şeyi dəyişdirin. Hər iki versiyanı eyni test girişləri üzərində işlədin. Vacib olan metrikləri ölçün.
+
+### Addım 4: Təhlil Et və Qərar Ver
+
+İşə yaradı mı? Dəyişikliyi saxla. Zərər verdi mi? Geri al. Neytral idi mi? Geri al (sadə olan daha yaxşıdır).
+
+### Addım 5: Təkrarla
+
+Öyrəndiklərinizə əsaslanaraq yeni hipotezlər yaradın. Hədəflərinizə çatana və ya azalan gəlirə çatana qədər iterasiyaya davam edin.
+
+## Optimallaşdırma Yoxlama Siyahısı
+
+<Checklist 
+  title="Optimallaşdırılmış Promptu Yerləşdirməzdən Əvvəl"
+  items={[
+    { text: "Aydın uğur metrikləri müəyyən edildi" },
+    { text: "Baza xətti performansı ölçüldü" },
+    { text: "Dəyişikliklər nümayəndə girişlər üzərində test edildi" },
+    { text: "Keyfiyyət geriləmədiyi doğrulandı" },
+    { text: "Uç hal idarəetməsi yoxlanıldı" },
+    { text: "Gözlənilən miqyasda xərc hesablandı" },
+    { text: "Yük altında gecikmə test edildi" },
+    { text: "Nəyin dəyişdiyi və niyə sənədləşdirildi" }
+  ]}
+/>
+
+<Quiz 
+  question="Yaxşı işləyən amma miqyasda çox bahalı olan bir promptunuz var. Etməli olduğunuz İLK şey nədir?"
+  options={[
+    "Dərhal daha ucuz bir modelə keç",
+    "Token azaltmaq üçün promptdan sözlər çıxar",
+    "Promptun hansı hissəsinin ən çox token istifadə etdiyini ölç",
+    "Bütün istəklər üçün keş əlavə et"
+  ]}
+  correctIndex={2}
+  explanation="Optimallaşdırmazdan əvvəl ölçün. Tokenlərin hara getdiyini anlamalısınız, yalnız o zaman effektiv şəkildə azalda bilərsiniz. Prompt lazımsız kontekst, uzun təlimatlar ehtiva edə bilər və ya lazım olandan daha uzun çıxışlar istehsal edə bilər. Ölçmə sizə optimallaşdırma səylərini hara fokuslamağı söyləyir."
+/>

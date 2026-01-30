@@ -1,0 +1,393 @@
+Süni intellekt, düzgün promptlandıqda yazma tapşırıqlarında mükəmməldir. Bu bölmə, müxtəlif məzmun yaratma ssenariləri üçün texnikaları əhatə edir.
+
+<Callout type="info" title="Yazma Ortağı Olaraq Sİ">
+Sİ ən yaxşı əməkdaşlıq yazma aləti olaraq işləyir—qaralamalar istehsal etmək üçün istifadə edin, sonra təcrübəniz və səsinizlə yaxşılaşdırın.
+</Callout>
+
+## Bloq Yazıları və Məqalələr
+
+### Edilməli və Edilməməli Olanlar: Yazma Promptları
+
+<Compare 
+  before={{ label: "❌ Qeyri-müəyyən istək", content: "Məhsuldarlıq haqqında bir bloq yazısı yaz." }}
+  after={{ label: "✓ Spesifik brifinq", content: "Uzaqdan işləyənlər üçün məhsuldarlıq haqqında 800 sözlük bir bloq yazısı yaz.\n\nHədəf auditoriya: Evdən işləyən texnologiya peşəkarları\nTon: Səmimi amma fəaliyyətə çevrilə bilən\nDaxil et: Nümunələrlə 3 spesifik texnika\nAçar söz: 'uzaqdan məhsuldarlıq ipucları'" }}
+/>
+
+### Bloq Yazısı Çərçivəsi
+
+<TryIt 
+  title="Bloq Yazısı Generatoru"
+  description="SEO optimallaşdırması ilə strukturlaşdırılmış bir bloq yazısı istehsal edin."
+  prompt={`\${topic} haqqında bir bloq yazısı yaz.
+
+Spesifikasiyalar:
+- Uzunluq: \${wordCount:800-1000} söz
+- Hədəf auditoriya: \${audience}
+- Ton: \${tone:səmimi}
+- Məqsəd: \${purpose:məlumatlandırmaq və fəaliyyətə çevrilə bilən məsləhət təmin etmək}
+
+Struktur:
+1. Qarmaq açılış (ilk 2 cümlədə diqqət çək)
+2. Giriş (problem/fürsəti bildir)
+3. Əsas məzmun (nümunələrlə 3-4 əsas nöqtə)
+4. Praktik çıxarışlar (fəaliyyətə çevrilə bilən məsləhət)
+5. Fəaliyyət çağırışı ilə nəticə
+
+SEO Tələbləri:
+- "\${keyword}" açar sözünü təbii şəkildə 3-5 dəfə daxil et
+- Əsas bölmələr üçün H2 başlıqları istifadə et
+- Meta təsviri daxil et (155 simvol)`}
+/>
+
+### Məqalə Növləri
+
+**Necə Edilir Məqaləsi:**
+<TryIt compact prompt={`\${topic} haqqında addım-addım necə edilir məqaləsi yaz.
+
+Tələblər:
+- Aydın nömrələnmiş addımlar
+- Hər addım: fəaliyyət + izahat + ipucu
+- "Nə lazımdır" bölməsi daxil et
+- Geniş yayılmış problemlər üçün problem həlli bölməsi əlavə et
+- Təxmini tamamlama vaxtı`} />
+
+**Siyahı Məqaləsi:**
+<TryIt compact prompt={`Siyahı məqaləsi yaz: "\${count} \${topic} İpucu/Aləti/Fikri"
+
+Hər element üçün:
+- Cəlbedici alt başlıq
+- 2-3 cümlə izahat
+- Konkret nümunə və ya istifadə halı
+- Pro ipucu və ya xəbərdarlıq
+
+Sırala: \${ordering:ən vaciblindən başla}`} />
+
+## Marketinq Mətni
+
+<Callout type="tip" title="Marketinq Mətni Prinsipi">
+**Xüsusiyyətlərdən çox faydalara** fokuslan. "Proqramımız Sİ alqoritmləri istifadə edir" əvəzinə "Avtomatik hesabatlarla həftədə 10 saat qənaət edin" yaz. Oxuculara həyatlarının necə yaxşılaşacağını göstər.
+</Callout>
+
+### Açılış Səhifəsi Mətni
+
+<TryIt compact prompt={`\${product} üçün açılış səhifəsi mətni yaz.
+
+Tələb olunan bölmələr:
+1. Hero: Başlıq (maksimum 10 söz) + alt başlıq + CTA düyməsi mətni
+2. Problem: Auditoriyanın üzləşdiyi ağrı nöqtələri (3 maddə)
+3. Həll: Məhsulunuz bunları necə həll edir (xüsusiyyətlərlə deyil, faydalarla)
+4. Sosial sübut: Şahidliklər üçün yer tutucu
+5. Xüsusiyyətlər: Fayda yönümlü izahlarla 3 əsas xüsusiyyət
+6. CTA: Təcililik ilə son fəaliyyət çağırışı
+
+Səs: \${brandVoice}
+Hədəf auditoriya: \${targetAudience}
+Əsas fərqləndirici: \${differentiator}`} />
+
+### E-poçt Silsilələri
+
+<TryIt compact prompt={`Yeni abunəçilər üçün 5 e-poçtlu xoş gəlmisiniz silsiləsi yaz.
+
+Brend: \${brand}
+Hədəf: \${goal:ödənişliyə çevir}
+
+Hər e-poçt üçün təmin et:
+- Mövzu sətri (+ 1 alternativ)
+- Önizləmə mətni
+- Gövdə (150-200 söz)
+- CTA
+
+Silsilə axışı:
+E-poçt 1 (Gün 0): Xoş gəlmisiniz + dərhal dəyər
+E-poçt 2 (Gün 2): Hekayə/missiya paylaş
+E-poçt 3 (Gün 4): Təhsil məzmunu
+E-poçt 4 (Gün 7): Sosial sübut + yumşaq təqdimat
+E-poçt 5 (Gün 10): Təcililik ilə birbaşa təklif`} />
+
+### Sosial Media Paylaşımları
+
+<TryIt compact prompt={`\${topic} üçün sosial media məzmunu yarat.
+
+Platformaya xas versiyalar:
+
+Twitter/X (280 simvol):
+- Qarmaq + əsas nöqtə + hashtaglər
+- Mürəkkəb mövzular üçün thread seçimi (5 tvit)
+
+LinkedIn (1300 simvol):
+- Peşəkar bucaq
+- Hekayə strukturu
+- Əlaqə üçün sualla bitir
+
+Instagram alt yazısı:
+- Açılış qarmağı ("daha çox"dan əvvəl görünür)
+- Dəyər dolu gövdə
+- CTA
+- Hashtaglər (20-30 əlaqəli)`} />
+
+## Texniki Yazarlıq
+
+<Callout type="info" title="Texniki Yazarlıq Prinsipi">
+**Ustalıqdan çox aydınlıq.** Sadə sözlər, qısa cümlələr və aktiv fel istifadə et. Hər cümlənin bir işi olmalıdır. Oxucular bir şeyi yenidən oxumaq məcburiyyətindədirsə, sadələşdir.
+</Callout>
+
+### Sənədləşdirmə
+
+<TryIt compact prompt={`\${feature} üçün sənədləşdirmə yaz.
+
+Struktur:
+## Ümumi Baxış
+Nə etdiyinin və niyə istifadə edəcəyinizin qısa izahı.
+
+## Sürətli Başlanğıc
+2 dəqiqədən az müddətdə başlamaq üçün minimal nümunə.
+
+## Quraşdırma
+Addım-addım quraşdırma təlimatları.
+
+## İstifadə
+Nümunələrlə ətraflı istifadə.
+
+## API Referansı
+Parametrlər, qaytarma dəyərləri, tiplər.
+
+## Nümunələr
+3-4 real dünya istifadə nümunəsi.
+
+## Problem Həlli
+Geniş yayılmış problemlər və həllər.
+
+Stil: 
+- İkinci şəxs ("siz")
+- İndiki zaman
+- Aktiv fel
+- Hər konsept üçün kod nümunələri`} />
+
+### README Faylları
+
+<TryIt 
+  title="README Generatoru"
+  description="Layihəniz üçün peşəkar bir README.md istehsal edin."
+  prompt={`\${project} üçün README.md yaz.
+
+Bu bölmələri daxil et:
+# Layihə Adı - Tək sətir izahat
+
+## Xüsusiyyətlər
+- Əsas xüsusiyyətlərin maddə siyahısı
+
+## Quraşdırma
+(bash quraşdırma əmrləri)
+
+## Sürətli Başlanğıc
+(minimal işləyən nümunə)
+
+## Konfiqurasiya
+Əsas konfiqurasiya seçimləri
+
+## Sənədləşdirmə
+Tam sənədləşdirməyə keçid
+
+## Töhfə Vermə
+Qısa töhfə təlimatları
+
+## Lisenziya
+Lisenziya növü`}
+/>
+
+## Yaradıcı Yazarlıq
+
+### Edilməli və Edilməməli Olanlar: Yaradıcı Promptlar
+
+<Compare 
+  before={{ label: "❌ Çox açıq uçlu", content: "Mənə bir hekayə yaz." }}
+  after={{ label: "✓ Məhdudiyyətlərlə zəngin", content: "Kiçik bir sahil qəsəbəsində keçən 1000 sözlük bir sirr hekayəsi yaz. Baş personaj təqaüdə çıxmış bir dedektivdir. Qurbanın düşündüyümüz şəxs olmadığı bir bükülmüş final ehtiva edir. Ton: qara yumorla noir." }}
+/>
+
+### Hekayə Elementləri
+
+<TryIt compact prompt={`\${genre} janrında qısa hekayə yaz.
+
+Daxil ediləcək elementlər:
+- Baş personaj: \${protagonist}
+- Məkan: \${setting}
+- Mərkəzi münaqişə: \${conflict}
+- Tema: \${theme}
+- Söz sayı: \${wordCount:1000}
+
+Stil seçimləri:
+- Baxış bucağı: \${pov:üçüncü şəxs}
+- Zaman: \${tense:keçmiş}
+- Ton: \${tone:gərgin}
+
+Bununla başla: \${openingHook}`} />
+
+### Personaj İnkişafı
+
+<TryIt compact prompt={`\${characterName} üçün ətraflı personaj profili yarat.
+
+Əsas Məlumatlar:
+- Ad, yaş, peşə
+- Fiziki təsvir
+- Keçmiş/tarixçə
+
+Şəxsiyyət:
+- 3 əsas xüsusiyyət
+- Güclü və zəif tərəflər
+- Qorxular və arzular
+- Necə danışır (şifahi tiklər, söz səviyyəsi)
+
+Münasibətlər:
+- Əsas münasibətlər
+- Yad adamlara vs dostlara necə davranır
+
+Personaj inkişafı:
+- Başlanğıc vəziyyəti
+- Öyrənməli olduğu şey
+- Potensial çevrilmə`} />
+
+## Redaktə və Yenidən Yazma
+
+### Əhatəli Redaktə
+
+<TryIt compact prompt={`Bu mətni \${purpose} üçün redaktə et.
+
+Yoxla və yaxşılaşdır:
+□ Qrammatika və orfoqrafiya
+□ Cümlə strukturu müxtəlifliyi
+□ Söz seçimi (zəif sözləri həll et)
+□ Axış və keçidlər
+□ Aydınlıq və qısalıq
+□ Ton ardıcıllığı
+
+Təmin et:
+1. Redaktə edilmiş versiya
+2. Böyük dəyişikliklərin xülasəsi
+3. Daha çox yaxşılaşdırma təklifləri
+
+Orijinal mətn:
+\${text}`} />
+
+### Stil Çevrilməsi
+
+<Compare 
+  before={{ label: "Texniki/Rəsmi", content: "Yeni alqoritmin tətbiqi hesablama yükündə %47 azalma ilə nəticələndi, beləliklə sistem verimini əhəmiyyətli dərəcədə artırdı və bütün ölçülən son nöqtələrdə gecikmə metriklərini azaltdı." }}
+  after={{ label: "Gündəlik/Əlçatan", content: "Sistemi çox daha sürətli etdik! Yeni yanaşma işləmə vaxtını demək olar ki yarıya endirdi, bu da sizin üçün hər şeyin daha sürətli yüklənməsi deməkdir." }}
+/>
+
+<TryIt compact prompt={`Bu mətni fərqli bir stildə yenidən yaz.
+
+Orijinal stil: \${originalStyle}
+Hədəf stil: \${targetStyle}
+
+Qoru:
+- Əsas məna və məlumat
+- Əsas terminologiya
+- Xüsusi adlar
+
+Dəyişdir:
+- Cümlə uzunluğu və strukturu
+- Söz səviyyəsi
+- Ton və rəsmilik
+- Ritorik alətlər
+
+Orijinal:
+\${text}`} />
+
+### Sadələşdirmə
+
+<TryIt compact prompt={`Bu mətni \${audience} üçün sadələşdir.
+
+Hədəf oxuma səviyyəsi: \${readingLevel:8-ci sinif}
+
+Təlimatlar:
+- Jarqonu sadə dillə əvəz et
+- Cümlələri qısalt (ortalama 15-20 söz hədəflə)
+- Geniş yayılmış sözlər istifadə et
+- Lazımi texniki terminlər üçün izahlar əlavə et
+- Mürəkkəb fikirləri addımlara böl
+
+Orijinal:
+\${text}`} />
+
+## prompts.chat-dən Prompt Şablonları
+
+Budur prompts.chat icmasından populyar yazma promptları:
+
+### Mətn Yazıçısı Olaraq Davran
+
+<TryIt compact prompt={`Bir mətn yazıçısı olaraq davranmanı istəyirəm. Sənə bir məhsul və ya xidmət təmin edəcəyəm və faydalarını vurğulayan və potensial müştəriləri fəaliyyətə keçməyə inandıran cəlbedici mətn yaradacaqsan. Mətnin yaradıcı, diqqət çəkən və hədəf auditoriyaya uyğunlaşdırılmış olmalıdır.
+
+Məhsul/Xidmət: \${product}`} />
+
+### Texniki Yazıçı Olaraq Davran
+
+<TryIt compact prompt={`Bir texniki yazıçı olaraq davranmanı istəyirəm. Proqram məhsulları üçün aydın, qısa sənədləşdirmə yaradacaqsan. Sənə texniki məlumat təmin edəcəyəm və bunu həm texniki həm də texniki olmayan auditoriyalar üçün anlaşılması asan istifadəçi dostu sənədləşdirməyə çevirəcəksən.
+
+Mövzu: \${topic}`} />
+
+### Hekayə Danışanı Olaraq Davran
+
+<TryIt compact prompt={`Bir hekayə danışanı olaraq davranmanı istəyirəm. Auditoriya üçün maraqlı, xəyal gücünə əsaslanan və cəlbedici əyləncəli hekayələr ortaya çıxaracaqsan. Nağıllar, təhsil hekayələri və ya insanların diqqətini və xəyal gücünü tutma potensialına sahib hər hansı bir hekayə növü ola bilər.
+
+Hekayə teması: \${theme}`} />
+
+## Yazma İş Axışı İpucları
+
+### 1. Əvvəlcə Plan
+
+<TryIt compact prompt={`Yazmazdan əvvəl bir plan yarat:
+
+Mövzu: \${topic}
+
+1. 5 mümkün bucaq yarat
+2. Ən yaxşı bucağı seç və səbəbini izah et
+3. Ətraflı plan yarat:
+   - Əsas bölmələr
+   - Bölmə başına əsas nöqtələr
+   - Lazım olan dəstəkləyici sübut/nümunələr
+4. Araşdırma tələb edən boşluqları müəyyən et`} />
+
+### 2. Qaralama Sonra Yaxşılaşdır
+
+<TryIt compact prompt={`Mərhələ 1 - Qaralama:
+"Fikirləri yazmağa fokuslanaraq kobud bir qaralama yaz. Mükəmməllik barədə narahat olma. Sadəcə əsas nöqtələri tut."
+
+Mərhələ 2 - Yaxşılaşdır:
+"İndi bu qaralamani yaxşılaşdır: cümlələri sıxlaşdır, keçidlər əlavə et, açılışı və bağlanışı gücləndir."
+
+Mərhələ 3 - Cilalandır:
+"Son keçid: qrammatikanı yoxla, cümlə strukturunu müxtəlifləşdir, ardıcıl ton təmin et."
+
+Mövzu: \${topic}`} />
+
+### 3. Səs Uyğunlaşdırma
+
+<TryIt compact prompt={`Bu yazı nümunəsini səs xüsusiyyətləri üçün təhlil et:
+\${sample}
+
+Sonra \${newContent} yaz, bunları uyğunlaşdıraraq:
+- Cümlə uzunluğu nümunələri
+- Söz səviyyəsi
+- İstifadə edilən ritorik alətlər
+- Ton və şəxsiyyət`} />
+
+## Xülasə
+
+<Callout type="tip" title="Əsas Texnikalar">
+Hədəf auditoriyanı və məqsədi aydın bildir, struktur və formatı müəyyən et, stil təlimatları daxil et, mümkün olduqda nümunələr təmin et və spesifik çıxışlar istə.
+</Callout>
+
+<Quiz 
+  question="Yazma tapşırıqları üçün Sİ-ni istifadə etmənin ən effektiv yolu nədir?"
+  options={[
+    "Sİ-nin redaktə olmadan son versiyanı yazmasına icazə ver",
+    "Qaralama istehsal etmək üçün Sİ istifadə et, sonra təcrübənlə yaxşılaşdır",
+    "Sİ-ni yalnız qrammatika yoxlaması üçün istifadə et",
+    "Yaradıcı yazarlıq üçün Sİ-dən tamamilə qaçın"
+  ]}
+  correctIndex={1}
+  explanation="Sİ ən yaxşı əməkdaşlıq yazma aləti olaraq işləyir. Qaralamalar və fikirlər istehsal etmək üçün istifadə edin, sonra çıxışı yaxşılaşdırmaq üçün təcrübənizi, səsinizi və mühakimənizi tətbiq edin."
+/>
+
+Sİ ilə yazmaq ən yaxşı əməkdaşlıq olaraq işləyir—Sİ-nin qaralama istehsal etməsinə icazə verin, sonra təcrübəniz və səsinizlə yaxşılaşdırın.

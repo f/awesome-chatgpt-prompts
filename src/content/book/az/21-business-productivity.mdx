@@ -1,0 +1,335 @@
+Süni intellekt, peşəkar məhsuldarlığı dramatik şəkildə artıra bilər. Bu bölmə, iş kommunikasiyası, təhlil, planlaşdırma və iş axışı optimallaşdırması üçün promptları əhatə edir.
+
+<Callout type="info" title="Biznes Üçün Sİ">
+Sİ, qaralama yaratma, təhlil və strukturlaşdırmada mükəmməldir—beləliklə strategiya, münasibətlər və insan mühakiməsi tələb edən qərarlara fokuslanа bilərsiniz.
+</Callout>
+
+## İş Kommunikasiyası
+
+### Edilməli və Edilməməli Olanlar: İş E-poçtları
+
+<Compare 
+  before={{ label: "❌ Qeyri-müəyyən istək", content: "Rəhbərimə layihə haqqında bir e-poçt yaz." }}
+  after={{ label: "✓ Tam kontekst", content: "Meneceriməa (Aynur xanım) Q4 marketinq layihəsi haqqında yenilənmə e-poçtu yaz.\n\nƏsas nöqtələr: 15 Noyabr son tarixi üçün yoldayıq, təchizatçı problemini həll etdik, 5.000₼-lik büdcə artışı üçün onayına ehtiyacımız var.\nTon: Peşəkar amma səmimi (yaxşı münasibətimiz var)\n150 sözdən az saxla, sonunda aydın istək olsun." }}
+/>
+
+### E-poçt Qaralamasi
+
+<TryIt compact prompt={`Peşəkar bir e-poçt yaz.
+
+Kontekst:
+- Kimə: [alıcı və münasibət]
+- Məqsəd: [istək/məlumatlandırma/izləmə/üzr]
+- Əsas nöqtələr: [çatdırılmalı olanlar]
+- Ton: [rəsmi/səmimi peşəkar/təcili]
+
+Məhdudiyyətlər:
+- [X] cümlədən az saxla
+- Aydın fəaliyyət çağırışı
+- Mövzu sətri daxil et`} />
+
+**Məqsədə görə nümunələr:**
+
+<TryIt compact prompt={`\${emailType:Görüş İstəyi}: Ortaqlıq fürsətlərini müzakirə etmək üçün potensial bir müştəri ilə görüş istəyən bir e-poçt yaz. Qısa saxla və bəli demələrini asanlaşdır.`} />
+
+<TryIt compact prompt={`\${emailType:Çətin Söhbət}: Gələcək fürsətlər üçün münasibəti qoruyarkən bir təchizatçının təklifini rədd edən bir e-poçt yaz. Aydın amma diplomatik ol.`} />
+
+<TryIt compact prompt={`\${emailType:Vəziyyət Yeniləməsi}: Maraqlı tərəflərə layihə vəziyyət e-poçtu yaz. Layihə əhatə dəyişiklikləri səbəbindən 2 həftə geridədir. Vəziyyəti peşəkarcasına, bərpa planı ilə birlikdə təqdim et.`} />
+
+### Təqdimat Məzmunu
+
+<TryIt compact prompt={`\${topic:Q4 satış strategiyası} üçün təqdimat məzmunu yarat.
+
+Hədəf auditoriya: \${audience:üst rəhbərlik}
+Müddət: \${duration:15 dəqiqə}
+Hədəf: \${goal:büdcə artışı onayı almaq}
+
+Hər slayd üçün təmin et:
+- Başlıq
+- Əsas mesaj (bir ana nöqtə)
+- Dəstəkləyici nöqtələr (maksimum 3)
+- Natiq qeydləri (nə deyilməli)
+- Vizual təklifi (qrafik/şəkil/diaqram)
+
+Struktur:
+1. Qarmaq/Diqqət çəkici
+2. Problem/Fürsət
+3. Həll/Təklif
+4. Sübut/Dəstək
+5. Fəaliyyət çağırışı`} />
+
+### Hesabat Yazımı
+
+<TryIt compact prompt={`\${topic:Avropa bazarlarına genişlənmə} haqqında \${reportType:təklif} hesabatı yaz.
+
+Hesabat növü: \${type:təklif}
+Hədəf auditoriya: \${audience:C-səviyyə rəhbərlər}
+Uzunluq: \${length:5 səhifə}
+
+Struktur:
+1. İcraçı Xülasə (əsas tapıntılar, 1 paraqraf)
+2. Arxa Plan/Kontekst
+3. Metodologiya (varsa)
+4. Tapıntılar
+5. Təhlil
+6. Tövsiyələr
+7. Növbəti Addımlar
+
+Daxil et: Əlaqəli yerlərdə məlumat vizuallaşdırması təklifləri
+Ton: \${tone:rəsmi biznes}`} />
+
+## Təhlil və Qərar Vermə
+
+<Callout type="tip" title="Təhlil Prinsipi">
+Sİ düşüncənizi strukturlaşdıra bilər, amma **real dünya kontekstini siz təmin edirsiniz**. Ən yaxşı təhlillər Sİ-nin çərçivələrini alan təcrübənizlə birləşdirir.
+</Callout>
+
+### SWOT Təhlili
+
+<TryIt compact prompt={`\${subject:yeni bir mobil tətbiq buraxılışı} üçün SWOT təhlili et.
+
+Kontekst:
+\${context:İstehlakçı bankçılıq tətbiqi düşünən orta ölçülü bir fintech şirkətiyik}
+
+Təmin et:
+
+**Güclü Tərəflər** (daxili müsbət)
+- Qısa izahlarla ən az 4 maddə
+
+**Zəif Tərəflər** (daxili mənfi)
+- Qısa izahlarla ən az 4 maddə
+
+**Fürsətlər** (xarici müsbət)
+- Qısa izahlarla ən az 4 maddə
+
+**Təhdidlər** (xarici mənfi)
+- Qısa izahlarla ən az 4 maddə
+
+**Strateji Çıxarışlar**
+- Təhlidən əsas görüşlər
+- Tövsiyə olunan prioritetlər`} />
+
+### Qərar Çərçivəsi
+
+<TryIt compact prompt={`\${decision:hansı CRM-i seçəcəyim} haqqında qərar verməyimə kömək et.
+
+Seçimlər:
+1. \${optionA:Salesforce}
+2. \${optionB:HubSpot}
+3. \${optionC:Pipedrive}
+
+Mənim üçün vacib meyarlar:
+- \${criterion1:istifadə asanlığı} (çəki: yüksək)
+- \${criterion2:mövcud alətlərlə inteqrasiya} (çəki: yüksək)
+- \${criterion3:xərc} (çəki: orta)
+
+Təmin et:
+1. Hər seçimi hər meyara görə puanla (1-5)
+2. Çəkili təhlil
+3. Hər biri üçün artılar/əksilər xülasəsi
+4. Risk qiymətləndirməsi
+5. Əsaslandırma ilə tövsiyə
+6. Qərar verməzdən əvvəl düşünüləcək suallar`} />
+
+### Rəqabət Təhlili
+
+<TryIt compact prompt={`\${competitor:Slack}-i \${ourProduct:komanda kommunikasiya alətimiz} ilə müqayisə edərək təhlil et.
+
+Araşdır:
+1. **Məhsullar/Xidmətlər** - təkliflər, qiymətləndirmə, mövqeləndirmə
+2. **Güclü tərəflər** - yaxşı etdikləri
+3. **Zəif tərəflər** - çatışmadıqları yerlər
+4. **Bazar mövqeyi** - hədəf seqmentlər, bazar payı
+5. **Strategiya** - görünən istiqamət və fokus
+
+Bizimlə müqayisə et:
+- Harada daha güclüyük
+- Harada onlar daha güclü
+- Fürsət boşluqları
+- Rəqabət təhdidləri
+
+Təklif et: Rəqabətçi mövqeyimizi yaxşılaşdırmaq üçün fəaliyyətlər`} />
+
+## Planlaşdırma və Strategiya
+
+### Hədəf Müəyyənləşdirmə (OKR-lər)
+
+<TryIt compact prompt={`\${scope:Q1 marketinq komandası} üçün OKR-lər müəyyənləşdirməyimdə kömək et.
+
+Kontekst:
+- Şirkət hədəfləri: \${companyGoals:ildən ilə gəliri %25 artır}
+- Cari vəziyyət: \${currentState:yeni bazarlarda brend tanınırlığı aşağıdır}
+- Əsas prioritetlər: \${priorities:potensial müştəri yaratma, məzmun marketinqi}
+
+Hər biri 3-4 Əsas Nəticəli 3 Hədəf yarat.
+
+Format:
+**Hədəf 1:** Keyfiyyət hədəfi - ilhamlandırıcı
+- ƏN 1.1: Kəmiyyət ölçüsü (Cari: X → Hədəf: Y)
+- ƏN 1.2: Kəmiyyət ölçüsü (Cari: X → Hədəf: Y)
+- ƏN 1.3: Kəmiyyət ölçüsü (Cari: X → Hədəf: Y)
+
+ƏN-lərin bunlar olduğundan əmin ol:
+- Ölçülə bilən
+- İddialı amma əldə edilə bilən
+- Zamana bağlı
+- Nəticə yönümlü (tapşırıq deyil)`} />
+
+### Layihə Planlaması
+
+<TryIt compact prompt={`\${project:veb sayt yenidən dizaynı} üçün layihə planı yarat.
+
+Əhatə: \${scope:yeni ana səhifə, məhsul səhifələri, ödəniş axışı}
+Müddət: \${timeline:3 ay}
+Komanda: \${team:2 tərtibatçı, 1 dizayner, 1 PM}
+Büdcə: \${budget:250.000₼}
+
+Təmin et:
+1. **Layihə mərhələləri** mərhələ daşları ilə
+2. **İş bölgüsü strukturu** (əsas tapşırıqlar)
+3. **Zaman cədvəli** (Gantt tipli izah)
+4. **Asılılıqlar** (nəyi nə bloklayır)
+5. **Risklər** (potensial problemlər və azaltma)
+6. **Uğur meyarları** (bitdiyimizi necə bilirik)`} />
+
+### Görüş Gündəmi
+
+<TryIt compact prompt={`\${meetingType:rüblük planlaşdırma} üçün gündəm yarat.
+
+Məqsəd: \${purpose:Q2 prioritetləri və resurs bölgüsü üzərində uyğunlaşma}
+İştirakçılar: \${attendees:departament rəhbərləri, CEO, COO}
+Müddət: \${duration:90 dəqiqə}
+
+Format:
+| Vaxt | Mövzu | Sahib | Hədəf |
+|------|-------|-------|-------|
+| 5 dəq | Açılış | Fasilitator | Kontekst |
+| ... | ... | ... | ... |
+
+Daxil et:
+- Vaxt bölgüləri
+- Hər element üçün aydın sahib
+- Gözlənilən spesifik nəticələr
+- Lazım olan ön iş
+- İzləmə fəaliyyət elementi şablonu`} />
+
+## Məhsuldarlıq İş Axışları
+
+### Tapşırıq Prioritetləşdirməsi
+
+<TryIt compact prompt={`Eisenhower Matrisi istifadə edərək tapşırıqlarımı prioritetləşdirməyimə kömək et.
+
+Tapşırıqlarım:
+\${tasks:1. Rüblük hesabat hazırla (Cümə təhvil)\n2. İş müraciətlərini nəzərdən keçir\n3. Təchizatçı e-poçtlarına cavab ver\n4. Komanda ofisdənkənar tədbiri planla\n5. LinkedIn profilimi yenilə}
+
+Hər birini kateqoriyalaşdır:
+1. **Təcili + Vacib** (Əvvəlcə et)
+2. **Vacib, Təcili Deyil** (Planla)
+3. **Təcili, Vacib Deyil** (Həvalə et)
+4. **Heç biri Deyil** (Ləğv et)
+
+Sonra təmin et:
+- Tövsiyə olunan icra sırası
+- Vaxt təxminləri
+- Həvalə etmə və ya ləğv etmə təklifləri`} />
+
+### Proses Sənədləşdirməsi
+
+<TryIt compact prompt={`Bu iş prosesini sənədləşdir: \${processName:müştəri iadə istəyi}.
+
+Yarat:
+1. **Proses icmalı** (1 paraqraf)
+2. **Tetikleyici** (bu prosesi nə başladır)
+3. **Addımlar** (nömrəli, məsul tərəflə)
+4. **Qərar nöqtələri** (əgər X isə Y formatında)
+5. **Çıxışlar** (bu prosesin istehsal etdiyi)
+6. **Daxil olan sistemlər** (alətlər/proqramlar)
+7. **İstisnalar** (uç hallar və idarə edilməsi)
+
+Format: Yeni işçinin izləyə biləcəyi qədər aydın`} />
+
+### Standart Əməliyyat Proseduru
+
+<TryIt compact prompt={`\${task:yeni işçiləri Slack-ə əlavə etmə} üçün SƏP yaz.
+
+Hədəf auditoriya: \${audience:HR menecerləri}
+Mürəkkəblik: \${complexity:əsas istifadəçilər}
+
+Daxil et:
+1. Məqsəd və əhatə
+2. Ön şərtlər/tələblər
+3. Addım-addım təlimatlar
+4. Ekran görüntüləri/vizual yer tutucuları
+5. Keyfiyyət yoxlama nöqtələri
+6. Geniş yayılmış xətalar və problem həlli
+7. Əlaqəli SƏP-lər/sənədlər
+8. Versiya tarixçəsi`} />
+
+## Kommunikasiya Şablonları
+
+### Maraqlı Tərəf Yeniləməsi
+
+<TryIt compact prompt={`\${project:CRM keçid layihəsi} üçün maraqlı tərəf yeniləməsi yaz.
+
+Vəziyyət: \${status:riskli}
+Dövr: \${period:6-10 Yanvar Həftəsi}
+
+Format:
+## Layihə Adı Yeniləməsi
+
+**Vəziyyət:** 🟢/🟡/🔴
+
+**Bu dövrdəki irəliləyiş:**
+- Uğur 1
+- Uğur 2
+
+**Növbəti dövr hədəfləri:**
+- Hədəf 1
+- Hədəf 2
+
+**Risklər/Bloklayıcılar:**
+- Varsa
+
+**Lazım olan qərarlar:**
+- Varsa`} />
+
+### Rəy İstəyi
+
+<TryIt compact prompt={`\${deliverable:yeni məhsul yol xəritəsi sənədi} haqqında rəy istəyən mesaj yaz.
+
+Kontekst: \${context:Bu Q2 prioritetlərimizə rəhbərlik edəcək, bir şey qaçırmadığımdan əmin olmaq istəyirəm}
+Rəy üçün spesifik sahələr: \${feedbackAreas:zaman cədvəli fizibilitəsi, resurs bölgüsü, çatışmayan xüsusiyyətlər}
+Müddət: \${deadline:Cümə iş saatı bitənədək}
+
+Ton: Peşəkar amma həddindən artıq rəsmi deyil
+Spesifik suallarla cavab verməyi asanlaşdır`} />
+
+## prompts.chat-dən Prompt Şablonları
+
+### Biznes Məsləhətçisi Olaraq Davran
+
+<TryIt compact prompt={`Bir biznes məsləhətçisi olaraq davranmanı istəyirəm. İş vəziyyətlərini və çətinliklərini təsvir edəcəyəm və strateji məsləhət, problemlər haqqında düşünmək üçün çərçivələr və fəaliyyətə çevrilə bilən təkliflər təmin edəcəksən. Praktik və spesifik olarkən qurulmuş biznes prinsiplərindən istifadə et.`} />
+
+### Görüş Fasilitatoru Olaraq Davran
+
+<TryIt compact prompt={`Bir görüş fasilitatoru olaraq davranmanı istəyirəm. Effektiv görüşlər planlaşdırmağıma və idarə etməyimə kömək et. Gündəmlər yarat, müzakirə çərçivələri təklif et, söhbətləri sintez etməyə kömək et və izləmə kommunikasiyalarını hazırla. Görüşləri səmərəli və fəaliyyət yönümlü etməyə fokuslan.`} />
+
+## Xülasə
+
+<Callout type="tip" title="Əsas Texnikalar">
+Hədəf auditoriyanı və ehtiyaclarını bildir, istənilən nəticəni aydın təyin et, əlaqəli kontekst və məhdudiyyətləri daxil et, spesifik format və strukturlar istə və peşəkar ton tələblərini qiymətləndir.
+</Callout>
+
+<Quiz 
+  question="Sİ-dən iş e-poçtu yazmasını istəyərkən həmişə nəyi daxil etməlisiniz?"
+  options={[
+    "Yalnız müzakirə etmək istədiyiniz mövzu",
+    "Alıcı, məqsəd, əsas nöqtələr və istənilən ton",
+    "Yalnız alıcının adı",
+    "İnternetdən bir şablon"
+  ]}
+  correctIndex={1}
+  explanation="Effektiv iş e-poçtları kontekst tələb edir: kimə yazırsınız, niyə, nə çatdırılmalı və müvafiq ton. Sİ peşəkar münasibətlərinizi və ya təşkilati kontekstinizi çıxara bilməz."
+/>
+
+Sİ rutin iş kommunikasiyasını idarə edə bilər, siz strategiya və münasibətlərə fokuslanın.

@@ -1,0 +1,445 @@
+Süni intellekt misli görülməmiş bir sürətlə inkişaf etməyə davam edərkən, promptlama sənəti və elmi də elədir. Bu son bölmə, ortaya çıxan trendləri, insan-süni intellekt əməkdaşlığının dəyişən mənzərəsini və sahə dönüşərkən necə öndə qalmağı araşdırır.
+
+<Callout type="info" title="Hərəkətli Hədəf">
+Bu kitabdakı texnikalar cari ən yaxşı təcrübələri təmsil edir, amma süni intellekt imkanları sürətlə dəyişir. Aydın kommunikasiya, strukturlaşdırılmış düşünmə və iterativ yaxşılaşdırma prinsipləri, spesifik taktikalar təkamül etsə belə dəyərli qalacaq.
+</Callout>
+
+## Dəyişən Mənzərə
+
+### Promptlardan Söhbətlərə
+
+Erkən promptlama əməliyyat xarakterli idi—tək giriş tək çıxış verirdi. Müasir süni intellekt qarşılıqlı əlaqəsi getdikcə **söhbət və əməkdaşlıq** xarakterli olur:
+
+- **Çoxlu tur yaxşılaşdırma** - Dəyişikliklər boyunca anlayış qurmaq
+- **Daimi kontekst** - Qarşılıqlı əlaqələrdən xatırlayan və öyrənən sistemlər
+- **Agentik iş axışları** - Planlaya bilən, tətbiq edə bilən və avtonom olaraq iterasiya edə bilən süni intellekt
+- **Alət istifadəsi** - Axtarış edə bilən, hesablama edə bilən və xarici sistemlərlə qarşılıqlı əlaqə qura bilən modellər
+
+<TryIt compact prompt={`\${task:texniki bloq yazısı yazma} üzərində birlikdə işləyək.
+
+Bunu iterativ olaraq inkişaf etdirmək istəyirəm:
+1. Əvvəlcə, bucaqlar üzərində beyin fırtınası etməyimə kömək et
+2. Sonra birlikdə qaralama çıxaraq
+3. Bölmələri qaralama olaraq yazacağam və rəyini alacağam
+4. Nəhayət, final versiyasını cilalatacağıq
+
+Hədəf auditoriyam və əsas mesajım haqqında sual soraraq başla.`} />
+
+### Kontekst Mühəndisliyinin Yüksəlişi
+
+Bölmə 14-də əhatə edildiyi kimi, promptlama tək təlimatların ötəsinə **kontekst mühəndisliyi**—bir süni intellektin hansı məlumatlara əlçata biləcəyinin strateji idarəetməsi—əhatə edəcək şəkildə genişlənir:
+
+- **RAG (Retrieval-Augmented Generation)** - Dinamik məlumat əlçatanlığı
+- **Funksiya çağırışı** - Strukturlaşdırılmış alət inteqrasiyası
+- **MCP (Model Context Protocol)** - Standartlaşdırılmış kontekst paylaşımı
+- **Yaddaş sistemləri** - Sessiyalar arasında daimi məlumat
+
+Gələcəyin prompt mühəndisi yalnız *nə deyiləcəyini* deyil, *hansı kontekstin təmin ediləcəyini* də düşünür.
+
+### Defolt Olaraq Çoxlu Modal
+
+Yalnız mətn qarşılıqlı əlaqəsi istisna halına çevrilir. Gələcək süni intellekt sistemləri problemsiz şəkildə bunları idarə edəcək:
+
+- **Şəkillər və video** - Vizual məzmunu anlama və istehsal etmə
+- **Səs və audio** - Təbii danışıq qarşılıqlı əlaqəsi
+- **Sənədlər və fayllar** - Mürəkkəb materialların birbaşa işlənməsi
+- **Real dünya qarşılıqlı əlaqəsi** - Robotika və fiziki sistemlər
+
+Promptlama bacarıqları, süni intellekt qavrayışını və fiziki hərəkəti istiqamətləndirməyə qədər genişlənəcək.
+
+## Agentik Gələcək
+
+Süni intellektdəki ən vacib dəyişiklik **agentlərin** yüksəlişidir—yalnız promptlara cavab verməyən, aktiv olaraq hədəfləri izləyən, qərarlar alan və dünyada hərəkətlər həyata keçirən süni intellekt sistemləri.
+
+### Süni İntellekt Agentləri Nədir?
+
+Bir süni intellekt agenti bunları edən bir sistemdir:
+
+- **Qavrayır** ətrafını girişlər vasitəsilə (mətn, şəkillər, məlumatlar, API-lər)
+- **Mühakimə edir** nə edəcəyi haqqında bir LLM-i "beyin" olaraq istifadə edərək
+- **Hərəkət edir** alətləri çağıraraq, kod yazaraq və ya sistemlərlə qarşılıqlı əlaqə quraraq
+- **Öyrənir** rəydən və yanaşmasını tənzimləyir
+
+<Callout type="info" title="Söhbət Botlarından Agentlərə">
+Ənənəvi söhbət botları giriş gözləyir və cavab verir. Agentlər təşəbbüs göstərir—çox addımlı tapşırıqları planlaşdırır, alətləri avtonom istifadə edir, xətalardan bərpa olur və hədəflərə çatılana qədər davam edir.
+</Callout>
+
+### Agentlərdə Promptların Rolu
+
+Agentik bir dünyada, promptlar daha da kritik olur—amma fərqli məqsədlərə xidmət edir:
+
+<div className="my-6 grid md:grid-cols-2 gap-4">
+  <div className="border rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-900 p-4">
+    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 m-0!">Sistem Promptları</p>
+    <p className="text-sm text-muted-foreground mt-2 m-0!">Agentin kimliyini, imkanlarını, məhdudiyyətlərini və davranış təlimatlarını təyin edir. Bunlar agentin "konstitusiyası"dır.</p>
+  </div>
+  <div className="border rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-900 p-4">
+    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 m-0!">Planlaşdırma Promptları</p>
+    <p className="text-sm text-muted-foreground mt-2 m-0!">Agentlərin mürəkkəb hədəfləri fəaliyyətə çevrilə bilən addımlara necə böləcəyinə rəhbərlik edir. Çox addımlı mühakimə üçün kritikdir.</p>
+  </div>
+  <div className="border rounded-lg bg-amber-50/50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900 p-4">
+    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 m-0!">Alət İstifadəsi Promptları</p>
+    <p className="text-sm text-muted-foreground mt-2 m-0!">Mövcud alətləri və nə vaxt/necə istifadə ediləcəyini təyin edir. Agentlərin imkanlarını anlaması lazımdır.</p>
+  </div>
+  <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900 p-4">
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 m-0!">Refleksiya Promptları</p>
+    <p className="text-sm text-muted-foreground mt-2 m-0!">Agentlərin öz çıxışlarını qiymətləndirməsini, xətaları tutmasını və iterativ olaraq yaxşılaşmasını təmin edir.</p>
+  </div>
+</div>
+
+### Agent Memarlıq Nümunələri
+
+Müasir agentlər tanına bilən nümunələri izləyir. Bunları anlamaq effektiv agent sistemləri dizayn etməyinizə kömək edir:
+
+**ReAct (Mühakimə + Hərəkət)**
+
+Agent, nə ediləcəyi haqqında mühakimə etmə ilə hərəkət etmə arasında gəzir:
+
+<div className="my-6 flex flex-col items-center gap-2 p-6 bg-muted/30 rounded-lg">
+  <div className="flex items-center gap-4">
+    <div className="px-4 py-2 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg">
+      <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Düşün</p>
+    </div>
+    <div className="text-slate-400">→</div>
+    <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
+      <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">Tətbiq et</p>
+    </div>
+    <div className="text-slate-400">→</div>
+    <div className="px-4 py-2 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg">
+      <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">Müşahidə et</p>
+    </div>
+    <div className="text-slate-400">→</div>
+    <div className="text-muted-foreground text-sm">(təkrarla)</div>
+  </div>
+</div>
+
+**Planlaşdır və Tətbiq et**
+
+Agent əvvəlcə tam bir plan yaradır, sonra addımları tətbiq edir:
+
+<div className="my-6 flex flex-col items-center gap-2 p-6 bg-muted/30 rounded-lg">
+  <div className="px-6 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
+    <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Plan Yarat</p>
+    <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">Hədəfi addımlara böl</p>
+  </div>
+  <div className="text-blue-400 dark:text-blue-500 text-lg">↓</div>
+  <div className="flex items-center gap-3">
+    <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
+      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Addım 1</p>
+    </div>
+    <div className="text-slate-400">→</div>
+    <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
+      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Addım 2</p>
+    </div>
+    <div className="text-slate-400">→</div>
+    <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
+      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Addım 3</p>
+    </div>
+    <div className="text-slate-400">→</div>
+    <div className="text-muted-foreground text-sm">...</div>
+  </div>
+  <div className="text-green-400 dark:text-green-500 text-lg">↓</div>
+  <div className="px-6 py-3 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-lg text-center">
+    <p className="text-sm font-medium text-amber-700 dark:text-amber-300 m-0!">Lazım olsa Reviziya Et</p>
+    <p className="text-xs text-amber-600 dark:text-amber-400 m-0!">Nəticələrə görə planı uyğunlaşdır</p>
+  </div>
+</div>
+
+### Agentlər Üçün Promptlama
+
+Agent sistemləri üçün prompt dizayn edərkən bunları nəzərdən keçirin:
+
+<TryIt compact prompt={`Avtonom bir tədqiqat agentisən. Hədəfin \${goal:bərpa olunan enerji qəbulu haqqında ən son statistikaları tapmaq}.
+
+**İmkanların:**
+- Məlumat üçün veb axtarışı et
+- Sənədləri oxu və təhlil et
+- Qeydlər al və tapıntıları sintez et
+- Lazım olsa aydınlaşdırıcı suallar soruş
+
+**Yanaşman:**
+1. Əvvəlcə, tədqiqat strategiyasını planla
+2. Axtarışları sistematik şəkildə tətbiq et
+3. Mənbə etibarlılığını qiymətləndir
+4. Tapıntıları ardıcıl bir hesabata sintez et
+5. Bütün mənbələri istinad et
+
+**Məhdudiyyətlər:**
+- Hədəfə fokuslanmış qal
+- Qeyri-müəyyənliyi qəbul et
+- Heç vaxt məlumat uydurmaq
+- İlişsən dayan və soruş
+
+Tədqiqat planını xülasə edərək başla.`} />
+
+### Çoxlu Agent Sistemləri
+
+Gələcək, birlikdə işləyən ixtisaslaşmış agent komandalarını ehtiva edir:
+
+<div className="my-6 p-6 bg-muted/30 rounded-lg">
+  <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+    <div className="flex flex-col items-center gap-2">
+      <div className="px-4 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
+        <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Koordinator</p>
+        <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">İş axışını idarə edir</p>
+      </div>
+    </div>
+    <div className="hidden md:block text-slate-400 text-2xl">⟷</div>
+    <div className="md:hidden text-slate-400 text-2xl">↕</div>
+    <div className="flex flex-wrap justify-center gap-3">
+      <div className="px-3 py-2 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg">
+        <p className="text-xs font-medium text-purple-700 dark:text-purple-300 m-0!">Tədqiqatçı</p>
+      </div>
+      <div className="px-3 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
+        <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Yazıçı</p>
+      </div>
+      <div className="px-3 py-2 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-lg">
+        <p className="text-xs font-medium text-amber-700 dark:text-amber-300 m-0!">Tənqidçi</p>
+      </div>
+      <div className="px-3 py-2 bg-red-100 dark:bg-red-900/50 border border-red-200 dark:border-red-800 rounded-lg">
+        <p className="text-xs font-medium text-red-700 dark:text-red-300 m-0!">Kodlayıcı</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+Hər agentin rolunu təyin edən öz sistem promptu var və strukturlaşdırılmış mesajlar vasitəsilə kommunikasiya qururlar. Prompt mühəndisinin işi **komandanı dizayn etmək** olur—rollar, kommunikasiya protokolları və koordinasiya strategiyaları təyin etmək.
+
+<Callout type="tip" title="Memar Olaraq Prompt Mühəndisi">
+Agentik bir gələcəkdə, prompt mühəndisləri sistem memarları olur. Yalnız təlimat yazmırsınız—mühakimə edə bilən, planlaya bilən və hərəkət həyata keçirə bilən avtonom sistemlər dizayn edirsiniz. Bu kitabda öyrəndiyiniz bacarıqlar bu yeni fənnin təməlidir.
+</Callout>
+
+## Ortaya Çıxan Nümunələr
+
+### Prompt Orkestrasiyası
+
+Tək promptlar **orkestr edilmiş sistemlərə** yerini verir:
+
+<div className="my-6 flex flex-col items-center gap-2 p-6 bg-muted/30 rounded-lg">
+  <div className="px-6 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg text-center">
+    <p className="text-sm font-medium text-slate-700 dark:text-slate-300 m-0!">İstifadəçi İstəyi</p>
+  </div>
+  <div className="text-slate-400 dark:text-slate-500 text-lg">↓</div>
+  <div className="px-6 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
+    <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Planlayıcı Agent</p>
+    <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">Tapşırığı bölür</p>
+  </div>
+  <div className="text-blue-400 dark:text-blue-500 text-lg">↓</div>
+  <div className="px-6 py-3 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg text-center">
+    <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">Tədqiqatçı Agent</p>
+    <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">Məlumat toplayır</p>
+  </div>
+  <div className="text-purple-400 dark:text-purple-500 text-lg">↓</div>
+  <div className="px-6 py-3 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-lg text-center">
+    <p className="text-sm font-medium text-amber-700 dark:text-amber-300 m-0!">Yazıçı Agent</p>
+    <p className="text-xs text-amber-600 dark:text-amber-400 m-0!">Məzmun yaradır</p>
+  </div>
+  <div className="text-amber-400 dark:text-amber-500 text-lg">↓</div>
+  <div className="px-6 py-3 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg text-center">
+    <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">Nəzərdən Keçirici Agent</p>
+    <p className="text-xs text-green-600 dark:text-green-400 m-0!">Keyfiyyət nəzarəti edir</p>
+  </div>
+  <div className="text-green-400 dark:text-green-500 text-lg">↓</div>
+  <div className="px-6 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg text-center">
+    <p className="text-sm font-medium text-slate-700 dark:text-slate-300 m-0!">Final Çıxış</p>
+  </div>
+</div>
+
+Gələcəkdəki tətbiqçilər fərdi promptlar əvəzinə prompt *sistemləri* dizayn edəcəklər.
+
+### Özünü Yaxşılaşdıran Promptlar
+
+Süni intellekt sistemləri bunları etməyə başlayır:
+
+- **Öz promptlarını optimallaşdırma** - Daha yaxşı təlimatlar üçün meta-öyrənmə
+- **Rəydən öyrənmə** - Nəticələrə görə uyğunlaşma
+- **Təlim məlumatı istehsal etmə** - İncə tənzimləmə üçün nümunələr yaratma
+- **Özünü qiymətləndirmə** - Keyfiyyət qiymətləndirməsi yaratma
+
+<TryIt compact prompt={`Bu promptu təhlil et və yaxşılaşdırmalar təklif et:
+
+Orijinal: "\${originalPrompt:Robot haqqında hekayə yaz}"
+
+Qiymətləndir:
+1. **Aydınlıq** - Niyyət açıqdırmı?
+2. **Spesifiklik** - Hansı detallar əskikdir?
+3. **Struktur** - Çıxış necə daha yaxşı təşkil edilə bilər?
+4. **Kənar hallar** - Nə yanlış gedə bilər?
+
+Təmin et: Dəyişikliklərin izahı ilə yaxşılaşdırılmış versiya`} />
+
+### Təbii Dil Proqramlaşdırma
+
+Promptlama ilə proqramlaşdırma arasındakı xətt bulanıqlaşır:
+
+- **Kod olaraq promptlar** - Versiya nəzarəti, test edilmiş, yerləşdirilmiş
+- **İnterpretator olaraq LLM-lər** - Təbii dil icra edilə bilən təlimatlar olaraq
+- **Hibrid sistemlər** - Ənənəvi kodu süni intellekt mühakiməsi ilə birləşdirmə
+- **Sİ dəstəkli inkişaf** - Kod yazan və xəta ayıklayan modellər
+
+Promptlamanı anlamaq getdikcə proqram təminatı inkişafını anlamaq deməkdir.
+
+## Gələcək Üçün Bacarıqlar
+
+### Dəyərli Qalacaq Olanlar
+
+Bəzi bacarıqlar, süni intellekt necə təkamül edərsə etsin əsas qalacaq:
+
+1. **Aydın düşünmə** - Həqiqətən nə istədiyinizi bilmək
+2. **Sahə ekspertizası** - Problem sahəsini anlamaq
+3. **Kritik qiymətləndirmə** - Süni intellekt çıxış keyfiyyətini qiymətləndirmək
+4. **Etik mühakimə** - Nəyin *edilməli olduğunu* bilmək
+5. **İterativ yaxşılaşdırma** - Davamlı yaxşılaşdırma düşüncə tərzi
+
+### Dəyişəcək Olanlar
+
+Digər aspektlər əhəmiyyətli dərəcədə dəyişəcək:
+
+<div className="my-6 overflow-x-auto">
+  <table className="w-full border-collapse text-sm">
+    <thead>
+      <tr className="border-b border-border">
+        <th className="text-left py-3 px-4 font-semibold text-muted-foreground">Bu gün</th>
+        <th className="text-left py-3 px-4 font-semibold text-muted-foreground">Sabah</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="border-b border-border/50">
+        <td className="py-3 px-4">Ętraflı promptlar yazma</td>
+        <td className="py-3 px-4 text-primary font-medium">Agent sistemləri dizayn etmə</td>
+      </tr>
+      <tr className="border-b border-border/50">
+        <td className="py-3 px-4">Manual prompt optimallaşdırması</td>
+        <td className="py-3 px-4 text-primary font-medium">Avtomatik prompt tənzimləmə</td>
+      </tr>
+      <tr className="border-b border-border/50">
+        <td className="py-3 px-4">Tək model ekspertizası</td>
+        <td className="py-3 px-4 text-primary font-medium">Çoxlu model orkestrasyası</td>
+      </tr>
+      <tr className="border-b border-border/50">
+        <td className="py-3 px-4">Mətn fokuslu qarşılıqlı əlaqə</td>
+        <td className="py-3 px-4 text-primary font-medium">Çoxlu modal səlislik</td>
+      </tr>
+      <tr>
+        <td className="py-3 px-4">Fərdi səmərəlilik</td>
+        <td className="py-3 px-4 text-primary font-medium">Komanda-Sİ əməkdaşlığı</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Aktual Qalmaq
+
+Bacarıqlarınızı aktual saxlamaq üçün:
+
+- **Davamlı təcrübə edin** - Çıxdıqca yeni modelləri və xüsusiyyətləri sınayın
+- **Tədqiqatı izləyin** - Akademik inkişaflardan xəbərdar olun
+- **İcmalara qatılın** - Digər tətbiqçilərdən öyrənin
+- **Layihələr qurun** - Bacarıqları real problemlərə tətbiq edin
+- **Başqalarına öyrədin** - İzah edərək anlayışı möhkəmləndirin
+
+## İnsan Elementi
+
+### Gücləndirici Olaraq Süni İntellekt
+
+Ən yaxşı halda, süni intellekt insan istedadını əvəz etmək əvəzinə gücləndirir:
+
+- **Ekspertlər daha ekspert olur** - Süni intellekt rutin işi idarə edir, insanlar içgörüyə fokuslanır
+- **Yaradıcılıq genişlənir** - Daha çox fikir kəşf edilir, daha çox ehtimal test edilir
+- **Əlçatanlıq demokratikləşir** - Əvvəllər ekspert tələb edən imkanlar hər kəs üçün əlçatan olur
+- **Əməkdaşlıq dərinləşir** - İnsan-süni intellekt komandaları hər ikisini aşır
+
+### Əvəzedilməz İnsan
+
+Bəzi keyfiyyətlər açıq şəkildə insani qalır:
+
+- **Orijinal təcrübə** - Dünyada yaşamaq, duyğular və münasibətlər
+- **Dəyərlər və etika** - Nəyin vacib olduğuna və nəyin doğru olduğuna qərar vermə
+- **Hesabatlılıq** - Nəticələr üçün məsuliyyət almaq
+- **Məna yaratma** - Bir şeyin *niyə* vacib olduğunu anlamaq
+- **Həqiqi yaradıcılıq** - Unikal perspektivdən doğan əsl yenilik
+
+<Callout type="tip" title="Unikal Dəyəriniz">
+Süni intellekt daha çox rutin koqnitiv tapşırığı idarə etdikcə, unikal dəyəriniz mühakimə, yaradıcılıq, sahə ekspertizası və süni intellektin kopyalaya bilməyəcəyi insan əlaqələrində yatar. Sizi əvəzedilməz edən şeylərə investisiya edin.
+</Callout>
+
+## Son Düşüncələr
+
+### Öyrəndiklərimiz
+
+Bu kitab boyunca bunları kəşf etdik:
+
+- **Əsaslar** - Süni intellekt modelləri necə işləyir və promptları effektiv edən nədir
+- **Texnikalar** - Rol əsaslı promptlama, düşüncə zənciri, few-shot öyrənmə və daha çoxu
+- **Qabaqcıl strategiyalar** - Sistem promptları, prompt zəncirlənməsi, çoxlu modal qarşılıqlı əlaqə
+- **Ən yaxşı təcrübələr** - Tələlərdən qaçınma, etik mülahizələr, optimallaşdırma
+- **Tətbiqlər** - Yazı, proqramlaşdırma, təhsil, biznes, yaradıcılıq, tədqiqat
+
+Bu texnikalar ortaq cəhətləri paylaşır:
+
+1. **Aydın və spesifik ol** - Nə istədiyinizi bilin və dəqiq kommunikasiya qurun
+2. **Kontekst təmin et** - Süni intellektə ehtiyac duyduğu məlumatı verin
+3. **İstəklərinizi strukturlaşdırın** - Təşkilat çıxışları yaxşılaşdırır
+4. **İterasiya edin və yaxşılaşdırın** - İlk cəhdlər başlanğıc nöqtələridir, son nöqtələr deyil
+5. **Kritik qiymətləndirin** - Süni intellekt çıxışı insan mühakiməsi tələb edir
+
+### Sənət və Elm
+
+Promptlama həm **sənət həm də elm**dir:
+
+- **Elm**: Test edilə bilən fərziyyələr, ölçülə bilən nəticələr, təkrarlana bilən texnikalar
+- **Sənət**: İntuisiya, yaradıcılıq, qaydaları nə vaxt pozacağını bilmək
+
+Ən yaxşı tətbiqçilər ciddi metodologiyanı yaradıcı təcrübə ilə birləşdirir. Sistematik test edirlər amma instinktlərinə də güvənirlər. Ən yaxşı təcrübələri izləyirlər amma nə vaxt sapacaqlarını bilirlər.
+
+### Yaratmağa Çağırış
+
+Bu kitab sizə alətlər verdi. Onlarla nə inşa edəcəyiniz sizə bağlıdır.
+
+- Sizin və başqalarının üçün vacib **problemləri həll edin**
+- Əvvəllər mövcud olmayan **şeylər yaradın**
+- İnsanların tək başına edə bilmədikləri şeyləri etmələrinə **kömək edin**
+- Nəyin mümkün olduğunun **sərhədlərini zorlayın**
+- Sahə təkamül edərkən **maraqlı qalın**
+
+Süni intellekt dövrü yenicə başlayır. Ən vacib tətbiqlər hələ icad edilməyib. Ən güclü texnikalar hələ kəşf edilməyib. Gələcək indi yazılır—sizin kimi insanlar tərəfindən, bir prompt qədər uzaqda.
+
+## İrəliyə Baxmaq
+
+<TryIt compact prompt={`"İnteraktiv Promptlama Kitabı"nı yenicə bitirdim və şəxsi bir praktik planı inkişaf etdirmək istəyirəm.
+
+Keçmişim: \${background:təcrübə səviyyənizi və ilkin istifadə halınızı təyin edin}
+Hədəflərim: \${goals:Sİ ilə nə nail olmaq istəyirsiniz?}
+Mövcud vaxt: \${time:həftəlik nə qədər vaxt ayıra bilərsiniz?}
+
+30 günlük bir praktik planı yarat:
+1. Bacarıqları mərhələli olaraq qurur
+2. Spesifik məşqlər ehtiva edir
+3. Real işimə tətbiq olunur
+4. İnkişafı ölçür
+
+Daxil et: Mərhələ daşları, resurslar və uğur meyarları`} />
+
+<Callout type="tip" title="Öyrənməyə Davam Et">
+İcma promptları, yeni texnikalar və öz kəşflərinizi paylaşmaq üçün [prompts.chat](https://prompts.chat) saytını ziyarət edin. Ən yaxşı öyrənmə icmada baş verir.
+</Callout>
+
+## Xülasə
+
+<Callout type="info" title="Əsas Çıxarışlar">
+Süni intellekt sürətlə təkamül etməyə davam edəcək, amma aydın kommunikasiya, kritik düşünmə və iterativ yaxşılaşdırmanın əsas bacarıqları dəyərli qalır. Sizi əvəzedilməz edən şeylərə fokuslanın: mühakimə, yaradıcılıq, etika və həqiqi insan əlaqəsi. Promptlamanın gələcəyi əməkdaşlıq xarakterli, çoxlu modal və daha böyük sistemlərə inteqrasiya edilmişdir. Maraqlı qalın, təcrübə etməyə davam edin və vacib şeylər qurun.
+</Callout>
+
+<Quiz 
+  question="Süni intellekt təkamül etməyə davam edərkən inkişaf etdiriləcək ən vacib bacarıq nədir?"
+  options={[
+    "Spesifik prompt şablonlarını əzbərləmək",
+    "Hər yeni modelin spesifik sintaksisini öyrənmək",
+    "Aydın düşünmə və Sİ çıxışını kritik qiymətləndirmə",
+    "İnsan bacarıqlarını qorumaq üçün Sİ-dən tamamilə qaçınmaq"
+  ]}
+  correctIndex={2}
+  explanation="Spesifik texnikalar dəyişərkən, nə istədiyiniz haqqında aydın düşünmə, effektiv kommunikasiya qurmaq və Sİ çıxışını kritik qiymətləndirmə bacarığı süni intellekt necə təkamül edərsə etsin dəyərli qalır. Bu meta-bacarıqlar modellər və tətbiqlər arasında transfer olur."
+/>
+
+*İnteraktiv Promptlama Kitabı*nı oxuduğunuz üçün təşəkkür edirik. İndi gedin və möhtəşəm şeylər yaradın.

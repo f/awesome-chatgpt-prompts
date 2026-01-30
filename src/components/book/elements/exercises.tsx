@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import { Check, X, RefreshCw, Lightbulb, ChevronRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { getLocaleField } from "./locales";
 
 // ============================================================================
 // FillInTheBlank Component
@@ -43,7 +44,7 @@ interface ConsistencyResult {
 }
 
 export function FillInTheBlank({ 
-  title = "Fill in the Blanks",
+  title,
   description,
   template,
   blanks,
@@ -51,6 +52,9 @@ export function FillInTheBlank({
   useAI = false,
   openEnded = false
 }: FillInTheBlankProps) {
+  const locale = useLocale();
+  const t = getLocaleField(locale, "exercises").fillInTheBlank;
+  const displayTitle = title || t.defaultTitle;
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [isValidating, setIsValidating] = useState(false);
@@ -103,7 +107,7 @@ export function FillInTheBlank({
       
       if (!res.ok) {
         if (res.status === 429) {
-          setError(`Rate limit reached.${openEnded ? "" : " Using local validation."}`);
+          setError(`${t.rateLimitReached}${openEnded ? "" : " " + t.usingLocalValidation}`);
           if (!openEnded) setSubmitted(true);
           return;
         }
@@ -123,7 +127,7 @@ export function FillInTheBlank({
       }
       setSubmitted(true);
     } catch {
-      setError(openEnded ? "AI check failed. Please try again." : "AI validation failed. Using local validation.");
+      setError(openEnded ? t.aiCheckFailed : t.aiValidationFailed);
       if (!openEnded) setSubmitted(true);
     } finally {
       setIsValidating(false);
@@ -190,7 +194,7 @@ export function FillInTheBlank({
               <button
                 onClick={() => setShowHints(prev => ({ ...prev, [blankId]: !prev[blankId] }))}
                 className="text-muted-foreground hover:text-primary"
-                title="Show hint"
+                title={t.showHint}
               >
                 <Lightbulb className="h-4 w-4" />
               </button>
@@ -205,7 +209,7 @@ export function FillInTheBlank({
   return (
     <div className="my-6 border rounded-lg overflow-hidden">
       <div className="px-4 py-3 bg-muted/50 border-b">
-        <span className="font-semibold">{title}</span>
+        <span className="font-semibold">{displayTitle}</span>
         {description && <span className="text-muted-foreground text-sm ml-2">{description}</span>}
       </div>
       
@@ -220,7 +224,7 @@ export function FillInTheBlank({
           return blank?.hint ? (
             <div key={blankId} className="text-sm text-muted-foreground bg-amber-50 dark:bg-amber-950/30 p-2 rounded flex items-center gap-2">
               <Lightbulb className="h-4 w-4 text-amber-500" />
-              <span><strong>Hint for blank:</strong> {blank.hint}</span>
+              <span><strong>{t.hintForBlank}</strong> {blank.hint}</span>
             </div>
           ) : null;
         })}
@@ -234,13 +238,13 @@ export function FillInTheBlank({
               : "bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800"
           )}>
             <p className="font-medium m-0!">
-              {allCorrect ? "🎉 Perfect!" : `${score} of ${blanks.length} correct`}
+              {allCorrect ? t.perfect : t.xOfYCorrect.replace("{score}", String(score)).replace("{total}", String(blanks.length))}
             </p>
             {!allCorrect && (
               <div className="mt-2 space-y-1">
                 {blanks.filter(blank => !checkAnswer(blank.id, answers[blank.id] || "")).map(blank => (
                   <p key={blank.id} className="m-0! text-muted-foreground">
-                    <span className="text-red-600 dark:text-red-400">✗</span> Correct answer: <code className="bg-muted px-1 rounded">{blank.correctAnswers[0]}</code>
+                    <span className="text-red-600 dark:text-red-400">✗</span> {t.correctAnswer} <code className="bg-muted px-1 rounded">{blank.correctAnswers[0]}</code>
                   </p>
                 ))}
               </div>
@@ -266,7 +270,7 @@ export function FillInTheBlank({
                 {consistencyResult.overallScore}/10
               </div>
               <p className="font-medium m-0!">
-                {consistencyResult.isConsistent ? "🎉 Well-structured prompt!" : "Some consistency issues found"}
+                {consistencyResult.isConsistent ? t.wellStructuredPrompt : t.consistencyIssuesFound}
               </p>
             </div>
             
@@ -276,7 +280,7 @@ export function FillInTheBlank({
             
             {consistencyResult.issues.length > 0 && (
               <div className="mt-2 space-y-1">
-                <p className="font-medium m-0! text-amber-700 dark:text-amber-400">Issues:</p>
+                <p className="font-medium m-0! text-amber-700 dark:text-amber-400">{t.issues}</p>
                 {consistencyResult.issues.map((issue, i) => (
                   <p key={i} className="m-0! text-muted-foreground">
                     <span className="text-amber-600">⚠</span> {issue.issue}
@@ -287,7 +291,7 @@ export function FillInTheBlank({
             
             {consistencyResult.suggestions.length > 0 && (
               <div className="mt-2 space-y-1">
-                <p className="font-medium m-0!">Suggestions:</p>
+                <p className="font-medium m-0!">{t.suggestions}</p>
                 {consistencyResult.suggestions.map((suggestion, i) => (
                   <p key={i} className="m-0! text-muted-foreground">• {suggestion}</p>
                 ))}
@@ -325,16 +329,16 @@ export function FillInTheBlank({
               ) : (
                 <Check className="h-4 w-4 mr-1" />
               )}
-              {isValidating ? "Checking..." : "Check Answers"}
+              {isValidating ? t.checking : t.checkAnswers}
             </Button>
           ) : (
             <Button onClick={handleReset} variant="outline" size="sm">
               <RefreshCw className="h-4 w-4 mr-1" />
-              Try Again
+              {t.tryAgain}
             </Button>
           )}
           {useAI && !submitted && (
-            <span className="text-xs text-muted-foreground self-center">AI-powered semantic validation</span>
+            <span className="text-xs text-muted-foreground self-center">{t.aiPoweredValidation}</span>
           )}
         </div>
       </div>
@@ -359,10 +363,13 @@ interface InteractiveChecklistProps {
 }
 
 export function InteractiveChecklist({ 
-  title = "Checklist",
+  title,
   items,
   onComplete
 }: InteractiveChecklistProps) {
+  const locale = useLocale();
+  const t = getLocaleField(locale, "exercises").checklist;
+  const displayTitle = title || t.defaultTitle;
   const [checked, setChecked] = useState<Set<string>>(new Set());
 
   const toggleItem = (id: string) => {
@@ -386,9 +393,9 @@ export function InteractiveChecklist({
   return (
     <div className="my-6 border rounded-lg overflow-hidden">
       <div className="px-4 py-3 bg-muted/50 border-b flex items-center justify-between">
-        <span className="font-semibold">{title}</span>
+        <span className="font-semibold">{displayTitle}</span>
         <span className="text-sm text-muted-foreground">
-          {checked.size}/{items.length} complete
+          {checked.size}/{items.length} {t.complete}
         </span>
       </div>
       
@@ -442,7 +449,7 @@ export function InteractiveChecklist({
         {allComplete && (
           <div className="mt-4 p-3 bg-green-50 dark:bg-green-950/30 rounded-lg text-center">
             <p className="font-medium text-green-700 dark:text-green-300 m-0!">
-              🎉 All done! Great work!
+              {t.allDone}
             </p>
           </div>
         )}
@@ -471,12 +478,15 @@ interface PromptDebuggerProps {
 }
 
 export function PromptDebugger({
-  title = "Debug This Prompt",
+  title,
   badPrompt,
   badOutput,
   options,
   hint
 }: PromptDebuggerProps) {
+  const locale = useLocale();
+  const t = getLocaleField(locale, "exercises").debugger;
+  const displayTitle = title || t.defaultTitle;
   const [selected, setSelected] = useState<string | null>(null);
   const [showHint, setShowHint] = useState(false);
 
@@ -485,14 +495,14 @@ export function PromptDebugger({
   return (
     <div className="my-6 border rounded-lg overflow-hidden">
       <div className="px-4 py-3 bg-muted/50 border-b flex items-center justify-between">
-        <span className="font-semibold">{title}</span>
+        <span className="font-semibold">{displayTitle}</span>
         {hint && !selected && (
           <button
             onClick={() => setShowHint(!showHint)}
             className="text-sm text-muted-foreground hover:text-primary flex items-center gap-1"
           >
             <Lightbulb className="h-4 w-4" />
-            {showHint ? "Hide hint" : "Show hint"}
+            {showHint ? t.hideHint : t.showHint}
           </button>
         )}
       </div>
@@ -500,13 +510,13 @@ export function PromptDebugger({
       <div className="p-4 space-y-4">
         {/* Bad prompt */}
         <div>
-          <p className="text-sm font-medium text-muted-foreground mb-1 m-0!">The Prompt:</p>
+          <p className="text-sm font-medium text-muted-foreground mb-1 m-0!">{t.thePrompt}</p>
           <pre className="p-3 bg-muted/50 rounded-lg text-sm whitespace-pre-wrap">{badPrompt}</pre>
         </div>
 
         {/* Bad output */}
         <div>
-          <p className="text-sm font-medium text-muted-foreground mb-1 m-0!">The Output (problematic):</p>
+          <p className="text-sm font-medium text-muted-foreground mb-1 m-0!">{t.theOutputProblematic}</p>
           <pre className="p-3 bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 rounded-lg text-sm whitespace-pre-wrap">{badOutput}</pre>
         </div>
 
@@ -520,7 +530,7 @@ export function PromptDebugger({
 
         {/* Question */}
         <div>
-          <p className="font-medium m-0! mb-2">What's wrong with this prompt?</p>
+          <p className="font-medium m-0! mb-2">{t.whatsWrong}</p>
           <div className="space-y-2">
             {options.map((option) => (
               <button
@@ -556,7 +566,7 @@ export function PromptDebugger({
               : "bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800"
           )}>
             <p className="font-medium m-0!">
-              {selectedOption.isCorrect ? "✓ Correct!" : "✗ Not quite."}
+              {selectedOption.isCorrect ? t.correct : t.notQuite}
             </p>
             <p className="m-0! mt-1">{selectedOption.explanation}</p>
           </div>
@@ -566,7 +576,7 @@ export function PromptDebugger({
         {selected && (
           <Button onClick={() => setSelected(null)} variant="outline" size="sm">
             <RefreshCw className="h-4 w-4 mr-1" />
-            Try Again
+            {t.tryAgain}
           </Button>
         )}
       </div>

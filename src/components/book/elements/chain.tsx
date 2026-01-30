@@ -4,22 +4,9 @@ import { useState, useEffect, Fragment } from "react";
 import { ChevronDown, ChevronRight, Check, RefreshCw, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTranslations, useLocale } from "next-intl";
+import { getLocaleField, type ChainType } from "./locales";
 
 // Chain Flow Demo Data
-const chainTypesLocale: Record<string, Array<{ id: string; name: string; description: string; color: string; steps: Array<{ label: string; desc: string }> }>> = {
-  en: [
-    { id: "sequential", name: "Sequential", description: "Each step depends on the previous, like a relay race.", color: "blue", steps: [{ label: "Extract", desc: "Pull data from input" }, { label: "Analyze", desc: "Find patterns" }, { label: "Generate", desc: "Create output" }] },
-    { id: "parallel", name: "Parallel", description: "Multiple analyses run simultaneously, then merge.", color: "purple", steps: [{ label: "Sentiment", desc: "Analyze tone" }, { label: "Entities", desc: "Extract names" }, { label: "Topics", desc: "Find themes" }] },
-    { id: "conditional", name: "Conditional", description: "Different paths based on classification.", color: "amber", steps: [{ label: "Classify", desc: "Determine type" }, { label: "Route A", desc: "If complaint" }, { label: "Route B", desc: "If question" }] },
-    { id: "iterative", name: "Iterative", description: "Loop until quality threshold is met.", color: "green", steps: [{ label: "Generate", desc: "Create draft" }, { label: "Evaluate", desc: "Score quality" }, { label: "Refine", desc: "Improve output" }] },
-  ],
-  tr: [
-    { id: "sequential", name: "Sıralı", description: "Her adım bir öncekine bağlı, bayrak yarışı gibi.", color: "blue", steps: [{ label: "Çıkar", desc: "Girdiden veri al" }, { label: "Analiz Et", desc: "Kalıpları bul" }, { label: "Üret", desc: "Çıktı oluştur" }] },
-    { id: "parallel", name: "Paralel", description: "Birden fazla analiz eş zamanlı çalışır, sonra birleşir.", color: "purple", steps: [{ label: "Duygu", desc: "Tonu analiz et" }, { label: "Varlıklar", desc: "İsimleri çıkar" }, { label: "Konular", desc: "Temaları bul" }] },
-    { id: "conditional", name: "Koşullu", description: "Sınıflandırmaya göre farklı yollar.", color: "amber", steps: [{ label: "Sınıfla", desc: "Türü belirle" }, { label: "Yol A", desc: "Şikayet ise" }, { label: "Yol B", desc: "Soru ise" }] },
-    { id: "iterative", name: "Yinelemeli", description: "Kalite eşiğine ulaşana kadar döngü.", color: "green", steps: [{ label: "Üret", desc: "Taslak oluştur" }, { label: "Değerlendir", desc: "Kalite puanı ver" }, { label: "İyileştir", desc: "Çıktıyı geliştir" }] },
-  ],
-};
 
 const chainColors: Record<string, { bg: string; border: string; text: string; stepBg: string; arrow: string }> = {
   blue: { bg: "bg-blue-50 dark:bg-blue-950/30", border: "border-blue-200 dark:border-blue-800", text: "text-blue-700 dark:text-blue-300", stepBg: "bg-blue-100 dark:bg-blue-900/50", arrow: "text-blue-400" },
@@ -270,7 +257,7 @@ export function ChainExample({ type, steps }: ChainExampleProps) {
 
 export function ChainFlowDemo() {
   const locale = useLocale();
-  const chainTypes = chainTypesLocale[locale] || chainTypesLocale.en;
+  const chainTypes = getLocaleField(locale, "chainTypes");
   const [selected, setSelected] = useState(chainTypes[0]);
   const [activeStep, setActiveStep] = useState(0);
   const colors = chainColors[selected.color];

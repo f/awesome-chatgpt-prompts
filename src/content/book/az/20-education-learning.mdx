@@ -1,0 +1,345 @@
+Süni intellekt, həm öyrətmə həm də öyrənmə üçün güclü bir alətdir. Bu bölmə, fərdiləşdirilmiş xüsusi dərs verməkdən kurikulum inkişafına qədər təhsil kontekstləri üçün promptları əhatə edir.
+
+<Callout type="info" title="Öyrənmə Ortağı Olaraq Sİ">
+Sİ, konseptləri bir neçə şəkildə izah edə bilən, limitsiz məşq problemi istehsal edə bilən və dərhal rəy təmin edə bilən səbirli, uyğunlaşa bilən bir müəllim olaraq mükəmməldir—24/7 əlçatandır.
+</Callout>
+
+## Fərdiləşdirilmiş Öyrənmə
+
+### Edilməli və Edilməməli Olanlar: Öyrənmə Promptları
+
+<Compare 
+  before={{ label: "❌ Passiv istək", content: "Kvant fizikasını mənə izah et." }}
+  after={{ label: "✓ Kontekst baxımından zəngin istək", content: "Kvant superpozisiyasını mənə izah et.\n\nKeçmişim: Əsas kimya və klassik fizikanı anlayıram.\nÖyrənmə stili: Analogiyalar və nümunələrlə ən yaxşı öyrənirəm.\nSadə bir analogiya ilə izah et, sonra əsas konsepti, sonra praktik bir nümunə. Anlayışımı bir sualla yoxla." }}
+/>
+
+### Konsept İzahı
+
+<TryIt compact prompt={`[konsept]-i mənə izah et.
+
+Keçmişim:
+- Cari səviyyə: [başlanğıc/orta/qabaqcıl]
+- Əlaqəli bilik: [artıq bildiklərim]
+- Öyrənmə stili: [vizual/nümunələr/nəzəri]
+
+Bununla izah et:
+1. Tanış bir şeyə sadə analogiya
+2. Sadə dillə əsas konsept
+3. Bildiklərimlə necə əlaqəlidir
+4. Praktik bir nümunə
+5. Qaçınılmalı geniş yayılmış yanlış anlayışlar
+
+Sonra anlayışımı bir sualla yoxla.`} />
+
+### Uyğunlaşa Bilən Xüsusi Dərs
+
+<TryIt compact prompt={`\${subject:kalkülüs} üçün müəllimim ol. Mənə \${topic:törəmələri} uyğunlaşa bilən şəkildə öyrət.
+
+Səviyyəmi qiymətləndirmək üçün diaqnostik bir sualla başla.
+Cavabıma görə:
+- Düzgündürsə: Daha qabaqcıl aspektlərə keç
+- Qismən düzgündürsə: Boşluğu izah et, sonra davam et
+- Yanlışdırsa: Geri addım at və təməl qur
+
+Hər izahdan sonra:
+- Anlayışımı bir sualla yoxla
+- Cavablarıma görə çətinliyi tənzimlə
+- Həvəsləndirmə təmin et və irəliləyişi izlə`} />
+
+### Öyrənmə Yolu Yaratma
+
+<TryIt compact prompt={`\${goal:veb tərtibatçı olmaq} üçün öyrənmə yolu yarat.
+
+Vəziyyətim:
+- Cari bacarıq səviyyəsi: \${skillLevel:tam başlanğıc}
+- Mövcud vaxt: \${timeAvailable:həftədə 10 saat}
+- Hədəf müddət: \${timeline:6 ay}
+- Öyrənmə üstünlükləri: \${preferences:layihələr və dərsliklər}
+
+Təmin et:
+1. Ön şərt yoxlaması (əvvəlcə nəyə ehtiyacım var)
+2. Mərhələ daşı paylanması (hədəflərlə mərhələlər)
+3. Hər mərhələ üçün resurslar (mümkünsə pulsuz)
+4. Hər mərhələdə praktik layihələr
+5. Qiymətləndirmə meyarları (irəliləməyə hazır olduğumu necə bilirəm)`} />
+
+## Öyrənmə Köməyi
+
+<Callout type="tip" title="Aktiv Öyrənmə Prinsipi">
+Sİ izahlarını passiv şəkildə oxuma. Səni sorğulamasını, problem istehsal etməsini və anlayışını yoxlamasını istə. **Aktiv xatırlama passiv təkrarı üstələyir.**
+</Callout>
+
+### Xülasə İstehsalı
+
+<TryIt compact prompt={`Bu \${contentType:bölməni} öyrənmə məqsədi ilə xülasə et.
+
+Məzmun:
+\${content:məzmununuzu bura yapışdırın}
+
+Təmin et:
+1. **Əsas Konseptlər** (5-7 ana fikir)
+2. **Vacib Terminlər** (qısa təriflərlə)
+3. **Münasibətlər** (konseptlər necə əlaqəlidir)
+4. **Öyrənmə Sualları** (anlayışı test etmək üçün)
+5. **Yaddaş Köməkçiləri** (mnemoniklər və ya assosiasiyalar)
+
+Asan təkrar və əzbərləmə üçün formatla.`} />
+
+### Flashcard İstehsalı
+
+<TryIt compact prompt={`\${topic:İkinci Dünya Müharibəsi} öyrənmək üçün flashcard-lar yarat.
+
+Mənbə material:
+\${content:öyrənmə materialınızı bura yapışdırın}
+
+Hər kartı formatla:
+Ön: Sual və ya termin
+Arxa: Cavab və ya tərif
+İpucu: İsteğə bağlı yaddaş köməkçisi
+
+Əhatə ediləcək kateqoriyalar:
+- Təriflər (əsas terminlər)
+- Konseptlər (ana fikirlər)
+- Münasibətlər (şeylər necə əlaqəlidir)
+- Tətbiqlər (real dünya istifadələri)
+
+Kateqoriyalar arasında balanslaşdırılmış \${numberOfCards:20} kart istehsal et.`} />
+
+### Məşq Problemləri
+
+<TryIt compact prompt={`\${topic:ikinci dərəcəli tənliklər} üçün məşq problemləri istehsal et.
+
+Çətinlik səviyyələri:
+- 3 Əsas (əsas anlayışı test et)
+- 3 Orta (tətbiq tələb edir)
+- 2 Qabaqcıl (sintez/analiz tələb edir)
+
+Hər problem üçün:
+1. Aydın problem ifadəsi
+2. Şagird işi üçün yer
+3. İstək üzərinə mövcud ipucları
+4. İzahlı ətraflı həll
+
+Müxtəliflik daxil et: \${problemTypes:hesablama, konseptual, tətbiq}`} />
+
+## Öyrətmə Alətləri
+
+### Dərs Planı Yaratma
+
+<TryIt compact prompt={`\${topic:fotosintez} öyrətmək üçün dərs planı yarat.
+
+Kontekst:
+- Sinif/Səviyyə: \${audience:8-ci sinif təbiət}
+- Dərs müddəti: \${duration:50 dəqiqə}
+- Sinif sayı: \${classSize:25 şagird}
+- Ön bilik: \${prerequisites:əsas hüceyrə strukturu}
+
+Daxil et:
+1. **Öyrənmə Hədəfləri** (SMART formatında)
+2. **Açılış Qarmağı** (5 dəq) - iştirak aktivitəsi
+3. **Öyrətmə** (15-20 dəq) - əsas məzmun çatdırılması
+4. **Rəhbərli Tətbiq** (10 dəq) - şagirdlərlə birlikdə işlə
+5. **Müstəqil Tətbiq** (10 dəq) - şagirdlər tək işləyir
+6. **Qiymətləndirmə** (5 dəq) - anlayışı yoxla
+7. **Bağlanış** - xülasə et və önizlə
+
+Lazım olan materiallar: siyahı
+Fərqləndirmə strategiyaları: müxtəlif öyrənənlər üçün`} />
+
+### Tapşırıq Dizaynı
+
+<TryIt compact prompt={`\${learningObjective:ilkin mənbələri təhlil etmə} üçün tapşırıq dizayn et.
+
+Parametrlər:
+- Dərs: \${course:Tarix}
+- Təhvil müddəti: \${dueIn:2 həftə}
+- Fərdi/Qrup: \${grouping:fərdi}
+- Çəki: \${weight:qiymətin %15-i}
+
+Daxil et:
+1. Aydın təlimatlar
+2. Meyarlarla qiymətləndirmə rubrikası
+3. Gözlənilən keyfiyyət nümunəsi
+4. Təhvil tələbləri
+5. Akademik düzgünlük xatırlatmaları
+
+Tapşırıq bunları etməlidir:
+- \${skills:tənqidi düşünmə və mənbə qiymətləndirmə} qiymətləndirməlidir
+- \${allowFor:analiz və şərh} üçün imkan verməlidir
+- Təxminən \${hours:8 saatda} tamamlana bilən olmalıdır`} />
+
+### İmtahan İstehsalı
+
+<TryIt compact prompt={`\${topic:Milli Azadlıq Mübarizəsi} haqqında imtahan yarat.
+
+Format:
+- [X] Çoxseçimli suallar (hər biri 4 seçimli)
+- [X] Doğru/Yanlış sualları
+- [X] Qısa cavablı suallar
+- [X] Bir inşa sualı
+
+Spesifikasiyalar:
+- Bütün əsas öyrənmə hədəflərini əhatə et
+- Xatırlamadan analizə qədər uzansın
+- İzahlı cavab açarı daxil et
+- Vaxt təxmini: \${timeEstimate:30 dəqiqə}
+- Hər bölmə üçün bal dəyərləri`} />
+
+## Xüsusi Öyrənmə Kontekstləri
+
+### Dil Öyrənməsi
+
+<TryIt compact prompt={`\${language:İngilis dili} öyrənməyə kömək et.
+
+Cari səviyyə: \${currentLevel:A2 - başlanğıc}
+Ana dil: \${nativeLanguage:Azərbaycan dili}
+Hədəflər: \${goals:səyahət üçün danışıq}
+
+Bugünkü dərs: \${focusArea:restoranda yemək sifarişi vermək}
+
+Daxil et:
+1. Yeni lüğət (5-10 söz) ilə:
+   - Tələffüz bələdçisi
+   - Nümunə cümlələr
+   - Geniş yayılmış istifadə qeydləri
+2. Aydın izahla qrammatika nöqtəsi
+3. Məşq egzersizləri
+4. Mədəni kontekst qeydi
+5. Danışıq praktikası ssenarisi`} />
+
+### Bacarıq İnkişafı
+
+<TryIt compact prompt={`\${skill:gitara} öyrənmək istəyirəm. Məşqçim ol.
+
+Cari səviyyəm: \${currentLevel:tam başlanğıc}
+Hədəf: \${goal:5 mahnını qulaqla çalmaq}
+Mövcud praktik vaxtı: \${practiceTime:gündə 30 dəqiqə}
+
+Təmin et:
+1. Başlanğıc nöqtəsi qiymətləndirməsi
+2. Lazım olan alt bacarıqların paylanması
+3. Praktik rutini (spesifik egzersizlər)
+4. İrəliləyiş göstəriciləri (inkişafı necə ölçürəm)
+5. Geniş yayılmış platolar və bunları necə aşmaq
+6. İlk həftənin ətraflı praktik planı`} />
+
+### İmtahan Hazırlığı
+
+<TryIt compact prompt={`\${examName:Buraxılış} imtahanına hazırlaşmağıma kömək et.
+
+İmtahan formatı: \${examFormat:əsas və əlavə bölmələr}
+İmtahana qalan vaxt: \${timeUntilExam:8 həftə}
+Zəif sahələrim: \${weakAreas:oxuduğunu anlamaq, həndəsə}
+Hədəf bal: \${targetScore:450+}
+
+Öyrənmə planı yarat:
+1. Əhatə ediləcək mövzular (prioritetli)
+2. Gündəlik öyrənmə proqramı
+3. Sınaq imtahanı strategiyası
+4. Əzbərlənəcək əsas düsturlar/məlumatlar
+5. Bu imtahana xas imtahan həll ipucları
+6. İmtahandan bir gün əvvəl və imtahan günü tövsiyələri`} />
+
+## prompts.chat-dən Prompt Şablonları
+
+### Sokratik Müəllim Olaraq Davran
+
+<TryIt compact prompt={`Sokratik bir müəllim olaraq davranmanı istəyirəm. Birbaşa cavablar vermək əvəzinə araşdırıcı suallar soraraq öyrənməyimə kömək edəcəksən. Bir mövzu haqqında soruşduqda, cavabı özüm kəşf etməyimə rəhbərlik edən suallarla cavab ver. Çıxılmaza düşsəm ipucları təmin et amma həllər deyil. Tənqidi düşünmə bacarıqlarımı inkişaf etdirməyimə kömək et.`} />
+
+### Təhsil Məzmunu Yaradıcısı Olaraq Davran
+
+<TryIt compact prompt={`Bir təhsil məzmunu yaradıcısı olaraq davranmanı istəyirəm. \${subject:biologiya} üçün maraqlı, dəqiq təhsil materialları yaradacaqsan. Mürəkkəb mövzuları həddindən artıq sadələşdirmədən əlçatan et. Analogiyalar, nümunələr və vizual izahlar istifadə et. Bilik yoxlamaları daxil et və aktiv öyrənməni həvəsləndir.`} />
+
+### Öyrənmə Yoldaşı Olaraq Davran
+
+<TryIt compact prompt={`Öyrənmə yoldaşım olaraq davranmanı istəyirəm. Birlikdə \${subject:üzvi kimya} öyrənirik. Məni konseptlər üzərində sorğula, fikirləri müzakirə et, problemləri həll etməyimə kömək et və məni motivasiya et. Həvəsləndirici ol amma eyni zamanda daha dərindən düşünməyim üçün məni sıx. Öyrənməni interaktiv və effektiv edək.`} />
+
+## Təhsildə Əlçatanlıq
+
+### Məzmun Uyğunlaşdırması
+
+<TryIt compact prompt={`Bu təhsil məzmununu \${accessibilityNeed:disleksiya dostu format} üçün uyğunlaşdır:
+
+Orijinal məzmun:
+\${content:məzmununuzu bura yapışdırın}
+
+Lazım olan uyğunlaşdırma:
+- [ ] Sadələşdirilmiş dil (daha aşağı oxuma səviyyəsi)
+- [ ] Vizual izahlar (mətn-danışıq üçün)
+- [ ] Strukturlaşdırılmış format (koqnitiv əlçatanlıq üçün)
+- [ ] Uzadılmış vaxt qiymətləndirmələri
+- [ ] Alternativ izahlar
+
+Qoru:
+- Bütün əsas öyrənmə hədəfləri
+- Məzmun düzgünlüyü
+- Qiymətləndirmə ekvivalentliyi`} />
+
+### Bir Neçə Modalitet
+
+<TryIt compact prompt={`\${concept:fotosintez}-i bir neçə şəkildə təqdim et:
+
+1. **Mətn izahı** (aydın nəsr)
+2. **Vizual izah** (diaqram təsvir et)
+3. **Analogiya** (gündəlik təcrübə ilə əlaqələndir)
+4. **Hekayə/Nağıl** (ssenariyaya yerləşdir)
+5. **Sual-Cavab formatı** (sual və cavab)
+
+Bu, öyrənənlərin üstünlük verdikləri stildə əlaqə qurmasını təmin edir.`} />
+
+## Qiymətləndirmə və Rəy
+
+### Rəy Təmin Etmə
+
+<TryIt compact prompt={`Bu şagird işi haqqında təhsil rəyi təmin et:
+
+Tapşırıq: \${assignment:iqlim dəyişikliyi haqqında 5 paraqraflıq inşa}
+Şagird təhvili: \${work:şagird işini bura yapışdırın}
+Rubrika: \${rubric:tezis aydınlığı, sübut, təşkilat, qrammatika}
+
+Rəy formatı:
+1. **Güclü tərəflər** - Yaxşı etdikləri (spesifik)
+2. **İnkişaf sahələri** - İş tələb edən (konstruktiv)
+3. **Təkliflər** - Necə yaxşılaşdırmaq (fəaliyyətə çevrilə bilən)
+4. **Qiymət/Bal** - Rubrikaya əsaslanan
+5. **Həvəsləndirmə** - Motivasiya edici bağlanış
+
+Ton: Dəstəkləyici, spesifik, inkişaf yönümlü`} />
+
+### Özünüqiymətləndirmə Promptları
+
+<TryIt compact prompt={`\${topic:Fransa İnqilabı} anlayışımı qiymətləndirməyimə kömək et.
+
+Bunları test edən 5 sual soruş:
+1. Əsas xatırlama
+2. Anlamaq
+3. Tətbiq
+4. Analiz
+5. Sintez/Yaratma
+
+Hər cavabdan sonra mənə bunları söylə:
+- Anlayışımı nəyi göstərdim
+- Nəyi təkrar etməliyəm
+- Biliyimi necə dərinləşdirə bilərəm
+
+Dürüst amma həvəsləndirici ol.`} />
+
+## Xülasə
+
+<Callout type="tip" title="Əsas Texnikalar">
+Öyrənənin səviyyəsinə uyğunlaşdır, mürəkkəb mövzuları addımlara böl, aktiv praktik daxil et (yalnız izah deyil), müxtəlif yanaşmalar təmin et, anlayışı müntəzəm yoxla və konstruktiv rəy ver.
+</Callout>
+
+<Quiz 
+  question="Öyrənmə üçün Sİ-ni istifadə etmənin ən effektiv yolu nədir?"
+  options={[
+    "Sİ izahlarını dərslik kimi passiv şəkildə oxu",
+    "Sİ-dən səni sorğulamasını və məşq problemləri istehsal etməsini istə",
+    "Sİ-ni yalnız tapşırıq cavabları üçün istifadə et",
+    "Öyrənmə üçün Sİ-dən tamamilə qaçın"
+  ]}
+  correctIndex={1}
+  explanation="Aktiv xatırlama passiv təkrarı üstələyir. Sİ-nin səni sorğulamasını, problem istehsal etməsini və anlayışını yoxlamasını təmin et—bu yalnız izahları oxumaqdan daha güclü yaddaş qurur."
+/>
+
+Sİ səbirli, həmişə əlçatan bir öyrənmə ortağıdır—insan öyrətməsini tamamlamaq üçün istifadə et, əvəz etmək üçün deyil.

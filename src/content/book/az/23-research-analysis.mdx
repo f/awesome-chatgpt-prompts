@@ -1,0 +1,323 @@
+Süni intellekt, ədəbiyyat icmalından məlumat analizinə qədər tədqiqat iş axışlarını sürətləndirə bilər. Bu bölmə, akademik və peşəkar tədqiqat üçün promptlama texnikalarını əhatə edir.
+
+<Callout type="info" title="Tədqiqatda Sİ">
+Sİ sintez, təhlil və yazımda kömək edə bilər—amma tənqidi düşünmə, etik mühakimə və ya sahə təcrübəsinin yerini ala bilməz. İddiaları həmişə doğrulayın və orijinal mənbələri istinad edin.
+</Callout>
+
+## Ədəbiyyat və Məlumat İcmalı
+
+### Edilməli və Edilməməli Olanlar: Tədqiqat Promptları
+
+<Compare 
+  before={{ label: "❌ Qeyri-müəyyən istək", content: "Bu məqaləni mənim üçün xülasə et." }}
+  after={{ label: "✓ Strukturlaşdırılmış istək", content: "Səhiyyədə maşın öyrənməsi üzrə ədəbiyyat icmalım üçün bu məqaləni xülasə et.\n\nTəmin et:\n1. Əsas tezis (1-2 cümlə)\n2. Metodologiya\n3. Əsas tapıntılar (maddələr)\n4. Məhdudiyyətlər\n5. Tədqiqatımla əlaqə\n\nOxuma səviyyəsi: Magistrant" }}
+/>
+
+### Məqalə Xülasəsi
+
+<TryIt compact prompt={`Bu akademik məqaləni xülasə et:
+
+[məqalə xülasəsi və ya tam mətn]
+
+Təmin et:
+1. **Əsas tezis** - Mərkəzi arqument (1-2 cümlə)
+2. **Metodologiya** - Necə yanaşdılar
+3. **Əsas tapıntılar** - Ən vacib nəticələr (maddə işarələri)
+4. **Töhfələr** - Yeni/vacib olan nə
+5. **Məhdudiyyətlər** - Qəbul edilən və ya görünən zəifliklər
+6. **[Tədqiqat mövzumla] əlaqə** - Necə bağlıdır
+
+Oxuma səviyyəsi: \${readingLevel:magistrant}`} />
+
+### Ədəbiyyat Sintezi
+
+<TryIt compact prompt={`\${topic:uzaqdan işləmənin effektivliyi} üzrə bu məqalələri sintez et:
+
+Məqalə 1: \${paper1:Smith 2021 - məhsuldarlıq %15 artdı}
+Məqalə 2: \${paper2:Jones 2022 - əməkdaşlıq çətinlikləri qeyd edildi}
+Məqalə 3: \${paper3:Chen 2023 - hibrid model ən yaxşı nəticələr göstərdi}
+
+Təhlil et:
+1. **Ortaq mövzular** - Nədə razıdırlar?
+2. **Ziddiyyətlər** - Harada razılaşmırlar?
+3. **Boşluqlar** - Nə əhatə edilməyib?
+4. **Təkamül** - Düşüncə necə irəlilədi?
+5. **Sintez** - İnteqrasiya olunmuş anlayış
+
+Bu formata: \${outputType:tezis} üçün uyğun ədəbiyyat icmalı paraqrafı`} />
+
+### Tədqiqat Sualı İnkişafı
+
+<TryIt compact prompt={`\${topic:səhiyyədə Sİ qəbulu} üçün tədqiqat sualları inkişaf etdirməyimə kömək et.
+
+Kontekst:
+- Sahə: \${field:səhiyyə informatikası}
+- Cari bilik: \${currentKnowledge:Sİ alətləri var amma qəbul yavaşdır}
+- Müəyyən edilən boşluq: \${gap:həkim müqavimət faktorlarının məhdud anlaşılması}
+- Maraq sahəm: \${interest:təşkilati dəyişiklik idarəetməsi}
+
+İstehsal et:
+1. **Əsas TS** - Cavablanacaq əsas sual
+2. **Alt suallar** - Dəstəkləyici suallar (3-4)
+3. **Fərziyyələr** - Test edilə bilən proqnozlar (varsa)
+
+Meyarlar: Suallar bunlar olmalıdır:
+- Mövcud metodlarla cavablana bilən
+- Sahə üçün vacib
+- Müvafiq şəkildə əhatəli`} />
+
+## Məlumat Analizi
+
+<Callout type="warning" title="Sİ Həqiqi Məlumatlarınızı Təhlil Edə Bilməz">
+Sİ metodologiya rəhbərliyi edə bilər və nəticələri şərh etməyə kömək edə bilər, amma həqiqi məlumat dəstlərinizə daxil ola bilməz və ya işləyə bilməz. Həssas tədqiqat məlumatlarını heç vaxt promptlara yapışdırmayın. Sİ-ni **rəhbərlik** üçün istifadə edin, hesablama üçün deyil.
+</Callout>
+
+### Statistik Analiz Rəhbərliyi
+
+<TryIt compact prompt={`Bu məlumatı təhlil etməyimə kömək et:
+
+Məlumat təsviri:
+- Dəyişənlər: \${variables:yaş (davamlı), müalicə qrupu (kateqorik: A/B/C), nəticə skoru (davamlı)}
+- Seçmə həcmi: \${sampleSize:n=150 (qrup başına 50)}
+- Tədqiqat sualı: \${researchQuestion:Müalicə növü nəticə skorlarına təsir edirmi?}
+- Məlumat xüsusiyyətləri: \${characteristics:normal paylanma, çatışmayan dəyər yoxdur}
+
+Bu mövzularda tövsiyə ver:
+1. **Uyğun testlər** - Hansı statistik testlər istifadə edilməlidir
+2. **Yoxlanılacaq fərziyyələr** - Ön şərtlər
+3. **Nəticələri necə şərh etmək** - Fərqli nəticələr nə deməkdir
+4. **Effekt ölçüsü** - Praktik əhəmiyyət
+5. **Hesabat** - Tapıntılar necə təqdim edilir
+
+Qeyd: Analizimə rəhbərlik et, nəticə uydurmaq deyil.`} />
+
+### Keyfiyyət Analizi
+
+<TryIt compact prompt={`Bu keyfiyyət cavablarını təhlil etməyimə kömək et:
+
+Cavablar:
+\${responses:müsahibə sitatları və ya anket cavablarını bura yapışdırın}
+
+\${method:tematik analiz} istifadə edərək:
+
+1. **İlkin kodlar** - Təkrarlanan konseptləri müəyyən et
+2. **Kateqoriyalar** - Əlaqəli kodları qrupla
+3. **Mövzular** - Əhatəli nümunələr
+4. **Münasibətlər** - Mövzular necə bağlıdır
+5. **Təmsilçi sitatlar** - Hər mövzu üçün dəlil
+
+Qoru: İştirakçı səsi və kontekst`} />
+
+### Məlumat Şərhi
+
+<TryIt compact prompt={`Bu tapıntıları şərh etməyimdə kömək et:
+
+Nəticələr:
+\${results:statistik çıxış və ya məlumat xülasəsini bura yapışdırın}
+
+Kontekst:
+- Tədqiqat sualı: \${researchQuestion:X, Y-ni proqnozlaşdırırmı?}
+- Fərziyyə: \${hypothesis:X pozitiv olaraq Y-ni proqnozlaşdırır}
+- Gözlənilən nəticələr: \${expectedResults:əhəmiyyətli pozitiv korrelyasiya}
+
+Təmin et:
+1. **Sadə dil şərhi** - Bu nə deməkdir?
+2. **Statistik əhəmiyyət** - p-dəyərləri nə deyir
+3. **Praktik əhəmiyyət** - Həqiqi dünya mənası
+4. **Ədəbiyyatla müqayisə** - Bu necə uyğun gəlir?
+5. **Alternativ izahlar** - Digər şərhlər
+6. **Şərh məhdudiyyətləri**`} />
+
+## Strukturlaşdırılmış Analiz Çərçivələri
+
+### PESTLE Analizi
+
+<TryIt compact prompt={`\${subject:Avropada elektrikli avtomobil sektoru} üçün PESTLE analizi et.
+
+**Politik** faktorlar:
+- Hökumət siyasətləri, tənzimləmələr, siyasi sabitlik
+
+**İqtisadi** faktorlar:
+- İqtisadi artım, inflyasiya, valyuta məzənnələri, işsizlik
+
+**Sosial** faktorlar:
+- Demoqrafik struktur, mədəni trendlər, həyat tərzi dəyişiklikləri
+
+**Texnoloji** faktorlar:
+- İnnovasiya, Ar-Ge, avtomatlaşdırma, texnologiya dəyişiklikləri
+
+**Hüquqi** faktorlar:
+- Qanunvericilik, tənzimləyici orqanlar, əmək hüququ
+
+**Ekoloji** faktorlar:
+- İqlim, davamlılıq, ətraf mühit tənzimləmələri
+
+Hər biri üçün: Cari vəziyyət + trendlər + nəticələr`} />
+
+### Kök Səbəb Analizi
+
+<TryIt compact prompt={`\${problem:müştəri itkisi keçən rüb %20 artdı} üçün kök səbəb analizi et.
+
+Problem ifadəsi:
+\${problemStatement:Aylıq itki dərəcəsi Q3 ilə Q4 arasında %3-dən %3.6-ya yüksəldi}
+
+5 Niyə istifadə edərək:
+1. Niyə? İlk səviyyə səbəb
+   2. Niyə? Daha dərin səbəb
+      3. Niyə? Daha da dərin
+         4. Niyə? Kökə yaxınlaşır
+            5. Niyə? Kök səbəb
+
+Alternativ: Balıq sümüyü diaqram kateqoriyaları
+- İnsanlar
+- Proses
+- Avadanlıq
+- Materiallar
+- Mühit
+- İdarəetmə
+
+Təmin et: Kök səbəb(lər) + tövsiyə olunan fəaliyyətlər`} />
+
+### Boşluq Analizi
+
+<TryIt compact prompt={`\${subject:müştəri dəstək əməliyyatlarımız} üçün boşluq analizi et.
+
+**Cari Vəziyyət:**
+- \${currentState:Orta cavab müddəti 24 saat, CSAT 3.2/5}
+
+**İstənilən Vəziyyət:**
+- \${desiredState:Cavab müddəti 4 saatdan az, CSAT 4.5/5}
+
+**Boşluq Müəyyənləşdirmə:**
+| Sahə | Cari | İstənilən | Boşluq | Prioritet |
+|------|------|-----------|--------|-----------|
+| ... | ... | ... | ... | Y/O/A |
+
+**Fəaliyyət Planı:**
+Hər yüksək prioritetli boşluq üçün:
+- Spesifik fəaliyyətlər
+- Lazım olan resurslar
+- Zaman cədvəli
+- Uğur metrikləri`} />
+
+## Akademik Yazım Dəstəyi
+
+### Arqument Strukturu
+
+<TryIt compact prompt={`\${topic:uzaqdan işləmənin niyə daimi siyasət olmalı olduğu} üçün arqument strukturlaşdırmağıma kömək et.
+
+Əsas iddia: \${thesis:Təşkilatlar bilik işçiləri üçün daimi uzaqdan/hibrid siyasətlər qəbul etməlidir}
+
+Lazımdır:
+1. **Öncüllər** - Nəticəyə aparan dəstəkləyici iddialar
+2. **Dəlil** - Hər öncül üçün məlumat/mənbələr
+3. **Əks arqumentlər** - Zidd baxışlar
+4. **Rəddlər** - Əks arqumentlərə cavablar
+5. **Məntiqi axış** - Hər şey necə bağlıdır
+
+Yoxla:
+- Məntiqi yanlışlıqlar
+- Dəstəklənməmiş iddialar
+- Mühakimədəki boşluqlar`} />
+
+### Metodlar Bölməsi
+
+<TryIt compact prompt={`Bunun üçün metodlar bölməsi yazmağıma kömək et:
+
+Tədqiqat növü: \${studyType:anket}
+İştirakçılar: \${participants:200 bakalavr tələbəsi, rahatlıq seçməsi}
+Materiallar: \${materials:Likert şkalası ilə onlayn anket}
+Prosedur: \${procedure:iştirakçılar 20 dəqiqəlik anketi onlayn tamamladı}
+Analiz: \${analysis:təsviri statistika və reqressiya analizi}
+
+Standartlar: \${standards:APA 7-ci nəşr} təlimatlarını izlə
+Daxil et: Replikasiya üçün kifayət qədər detal
+Ton: Məchul, keçmiş zaman`} />
+
+### Müzakirə Bölməsi
+
+<TryIt compact prompt={`Müzakirə bölməsi yazmağıma kömək et.
+
+Əsas tapıntılar:
+\${findings:1. X və Y arasında əhəmiyyətli pozitiv korrelyasiya (r=0.45)\n2. İkinci ölçümdə qruplar arasında əhəmiyyətli fərq yoxdur}
+
+Struktur:
+1. **Xülasə** - Əsas tapıntıların qısa təkrarı
+2. **Şərh** - Tapıntılar nə deməkdir
+3. **Kontekst** - Tapıntılar mövcud ədəbiyyatla necə əlaqəlidir
+4. **Nəticələr** - Nəzəri və praktik əhəmiyyət
+5. **Məhdudiyyətlər** - Tədqiqat zəiflikləri
+6. **Gələcək istiqamətlər** - Hansı tədqiqatlar izləməlidir
+7. **Nəticə** - Evə aparılacaq mesaj
+
+Qaçın: Tapıntıları şişirtmək və ya yeni nəticələr təqdim etmək`} />
+
+## Tənqidi Analiz
+
+### Mənbə Qiymətləndirməsi
+
+<TryIt compact prompt={`Bu mənbəni akademik istifadə üçün qiymətləndir:
+
+Mənbə: \${source:istinad və ya linki bura yapışdırın}
+Məzmun xülasəsi: \${summary:mənbənin nə iddia etdiyinin qısa izahı}
+
+CRAAP meyarları istifadə edərək qiymətləndir:
+- **Aktuallıq**: Nə vaxt dərc edildi? Yeniləndi mi? Kifayət qədər aktualdırmı?
+- **Əlaqəlilik**: Mövzumla əlaqəlidirmi? Uyğun səviyyədirmi?
+- **Səlahiyyət**: Müəllif etimadnamələri? Nəşriyyat nüfuzu?
+- **Dəqiqlik**: Dəlillə dəstəklənirmi? Hakemli nəzərdən keçirilibmi?
+- **Məqsəd**: Niyə yazılıb? Qərəz aşkardırmı?
+
+Qərar: Yüksək etibarlı / Diqqətlə istifadə et / Qaçın
+Necə istifadə etmək: Daxil etmə təklifləri`} />
+
+### Arqument Analizi
+
+<TryIt compact prompt={`Bu mətndəki arqumenti təhlil et:
+
+\${text:təhlil etmək istədiyiniz mətni yapışdırın}
+
+Müəyyən et:
+1. **Əsas iddia** - Nə müdafiə edilir
+2. **Dəstəkləyici dəlil** - Nə ilə dəstəklənir
+3. **Fərziyyələr** - Deyilməmiş öncüllər
+4. **Məntiqi struktur** - Nəticə necə çıxır
+5. **Güclü tərəflər** - Cəlbedici olan nə
+6. **Zəif tərəflər** - Məntiqi boşluqlar və ya yanlışlıqlar
+7. **Alternativ şərhlər**
+
+Təmin et: Ədalətli, balanslaşdırılmış qiymətləndirmə`} />
+
+## prompts.chat-dən Prompt Şablonları
+
+### Tədqiqat Köməkçisi Olaraq Davran
+
+<TryIt compact prompt={`Bir tədqiqat köməkçisi olaraq davranmanı istəyirəm. Mövzuları kəşf etməyimə, məlumat tapmağıma, mənbələri sintez etməyimə və arqumentlər inkişaf etdirməyimə kömək et. Aydınlaşdırıcı suallar soruş, araşdırılacaq əlaqəli sahələr təklif et və dəlilləri tənqidi düşünməyimə kömək et. Əhatəli ol amma biliklərin məhdudiyyətlərini qəbul et.`} />
+
+### Məlumat Analitiki Olaraq Davran
+
+<TryIt compact prompt={`Bir məlumat analitiki olaraq davranmanı istəyirəm. Məlumat dəstlərini və tədqiqat suallarını təsvir edəcəyəm və analiz yanaşmaları təklif edəcək, nəticələri şərh etməyimə kömək edəcək və potensial problemləri müəyyən edəcəksən. Möhkəm metodologiyaya və tapıntıların aydın kommunikasiyasına fokuslan.`} />
+
+### Hakemli Nəzərdən Keçirici Olaraq Davran
+
+<TryIt compact prompt={`Bir akademik hakemli nəzərdən keçirici olaraq davranmanı istəyirəm. Məqalələri və ya bölmələri paylaşacağam və metodologiya, arqument, yazım və sahəyə töhfə haqqında konstruktiv rəy təmin edəcəksən. Ciddi amma dəstəkləyici ol, həm güclü tərəfləri həm də yaxşılaşdırma sahələrini qeyd et.`} />
+
+## Xülasə
+
+<Callout type="tip" title="Əsas Texnikalar">
+Tədqiqat kontekstini və hədəflərini aydın bildir, istifadə ediləcək analitik çərçivəni spesifikləşdir, məhdudiyyətlərin qəbulunu istə, dəlilə əsaslanan mühakimə istə və akademik ciddilik və dürüstlüyü qoru.
+</Callout>
+
+<Quiz 
+  question="Tədqiqat üçün Sİ istifadə edərkən xatırlanması lazım olan ən vacib şey nədir?"
+  options={[
+    "Sİ ilkin mənbə ehtiyacının yerini ala bilər",
+    "Sİ analizi həmişə düzgün və aktualdır",
+    "Sİ iddialarını həmişə müstəqil olaraq doğrula və orijinal mənbələri istinad et",
+    "Sİ həqiqi məlumat dəstlərinizə daxil ola bilər və təhlil edə bilər"
+  ]}
+  correctIndex={2}
+  explanation="Sİ sintez və strukturda kömək edə bilər, amma istinadları hallüsinasiya edə bilər, köhnəlmiş məlumatlara sahib ola bilər və həqiqi məlumatlarınıza daxil ola bilməz. İddiaları həmişə ilkin mənbələrə görə doğrulayın və akademik dürüstlüyü qoruyun."
+/>
+
+Unutma: Sİ tədqiqata kömək edə bilər amma tənqidi düşünmə, etik mühakimə və ya sahə təcrübəsinin yerini ala bilməz. İddiaları həmişə müstəqil olaraq doğrula.

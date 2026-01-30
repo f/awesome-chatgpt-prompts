@@ -1,0 +1,343 @@
+Hər əla prompt ümumi struktur elementlərini paylaşır. Bu komponentləri anlamaq, sınaq-səhv əvəzinə sistematik şəkildə prompt qurmağınıza imkan verir.
+
+<Callout type="tip" title="Tikinti Blokları">
+Bu komponentləri LEGO kərpicləri kimi düşünün. Hər prompt üçün hamısına ehtiyacınız yoxdur, amma nələrin mövcud olduğunu bilmək tam olaraq ehtiyacınız olanı qurmağınıza kömək edir.
+</Callout>
+
+## Əsas Komponentlər
+
+Effektiv bir prompt adətən bu elementlərin bir hissəsini və ya hamısını ehtiva edir:
+
+<PromptBreakdown parts={[
+  { label: "Kontekst", text: "React tətbiqi üzərində işləyən" },
+  { label: "Rol", text: "baş proqram mühəndisisən." },
+  { label: "Tapşırıq", text: "Bu kodu səhvlərə qarşı yoxla" },
+  { label: "Məhdudiyyətlər", text: "və yalnız təhlükəsizlik problemlərinə fokuslan." },
+  { label: "Format", text: "Tapıntıları nömrələnmiş siyahı olaraq qaytar." },
+  { label: "Nümunə", text: "Nümunə: 1. 42-ci sətirdə SQL inyeksiya riski" }
+]} />
+
+Hər bir komponenti ətraflı şəkildə nəzərdən keçirək.
+
+## 1. Rol / Persona
+
+Bir rol təyin etmək, modelin cavablarını müəyyən bir ekspertiza və ya baxış bucağı prizmasından fokuslaşdırır.
+
+<Compare 
+  before={{ label: "Rolsuz", content: "Kvant hesablamanı izah et." }}
+  after={{ label: "Rol ilə", content: "Sən mürəkkəb mövzuları yeni başlayanlar üçün əlçatan etməkdə ixtisaslaşmış fizika professorusan. Kvant hesablamanı izah et." }}
+/>
+
+Rol, modeli bunları etməyə hazırlayır:
+- Uyğun lüğət istifadə etmək
+- Müvafiq ekspertizanı tətbiq etmək
+- Ardıcıl baxış bucağı saxlamaq
+- Hədəf auditoriyanı uyğun şəkildə qiymətləndirmək
+
+### Effektiv Rol Nümunələri
+
+```
+"Sən [peşə] sahəsində [X il] təcrübəyə malik [ixtisas] üzrə ekspertsən"
+"[xarakteristika] olan bir [rol] kimi davran"
+"Sən [auditoriya növü]nə kömək edən ekspert bir [sahə] peşəkarisın"
+```
+
+## 2. Kontekst / Arxa Plan
+
+Kontekst, modelin vəziyyətinizi başa düşməsi üçün lazım olan məlumatı təmin edir. Unutmayın: siz söyləmədikdə model sizin, layihənizin və ya hədəfləriniz haqqında heç nə bilmir.
+
+<Compare 
+  before={{ label: "Zəif Kontekst", content: "Kodumdakı bu səhvi düzəlt." }}
+  after={{ label: "Güclü Kontekst", content: "Express.js istifadə edərək Node.js REST API-si qururam. API, JWT tokenləri ilə istifadəçi autentifikasiyası edir. Bir istifadəçi qorunan bir marşruta daxil olmağa çalışdıqda, etibarlı tokenlə belə 403 xətası alır. Budur əlaqəli kod: [kod]" }}
+/>
+
+### Kontekstə Nə Əlavə Etməli
+
+- **Layihə detalları** — Texnologiya yığını, arxitektura, məhdudiyyətlər
+- **Cari vəziyyət** — Nə sınadınız, nə işləyir, nə işləmir
+- **Hədəflər** — Son nəticədə nəyə nail olmağa çalışırsınız
+- **Məhdudiyyətlər** — Vaxt limitləri, texniki tələblər, stil bələdçiləri
+
+## 3. Tapşırıq / Təlimat
+
+Tapşırıq, promptunuzun ürəyidir—modelin nə etməsini istəyirsiniz. Spesifik olun və qeyri-müəyyən olmayın.
+
+### Spesifiklik Spektrumu
+
+<SpecificitySpectrum levels={[
+  { level: "Qeyri-müəyyən", text: "Bu məqalə ilə mənə kömək et" },
+  { level: "Daha Yaxşı", text: "Bu məqaləni redaktə et" },
+  { level: "Yaxşı", text: "Bu məqaləni qrammatika və aydınlıq baxımından redaktə et" },
+  { level: "Ən Yaxşı", text: "Bu məqaləni qrammatika və aydınlıq baxımından redaktə et, orijinal tonu saxla amma artıqlıqları %20 azalt" }
+]} />
+
+### Yaxşı İşləyən Feil Felləri
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Yaratma</span>
+    <span className="text-muted-foreground">Yaz, Yarat, İstehsal et, Tərtib et, Dizayn et</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Analiz</span>
+    <span className="text-muted-foreground">Analiz et, Qiymətləndir, Müqayisə et, Ölç, Yoxla</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Çevirmə</span>
+    <span className="text-muted-foreground">Çevir, Tərcümə et, Yenidən formatla, Xülasə et, Genişlət</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">İzahat</span>
+    <span className="text-muted-foreground">İzah et, Təsvir et, Aydınlaşdır, Tərif ver, Nümunə göstər</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Problem Həlli</span>
+    <span className="text-muted-foreground">Həll et, Debug et, Düzəlt, Optimallaşdır, Yaxşılaşdır</span>
+  </div>
+</div>
+
+## 4. Məhdudiyyətlər / Qaydalar
+
+Məhdudiyyətlər, modelin çıxışını hüdudlaşdırır. Ümumi problemlərin qarşısını alır və uyğunluğu təmin edir.
+
+### Məhdudiyyət Növləri
+
+**Uzunluq məhdudiyyətləri:**
+```
+"Cavabını 200 sözdən az saxla"
+"Tam olaraq 5 təklif ver"
+"3-4 paraqraf yaz"
+```
+
+**Məzmun məhdudiyyətləri:**
+```
+"Heç bir kod nümunəsi əlavə etmə"
+"Yalnız texniki cəhətlərə fokuslan"
+"Marketinq dilindən qaçın"
+```
+
+**Stil məhdudiyyətləri:**
+```
+"Rəsmi, akademik ton istifadə et"
+"10 yaşında birinə danışır kimi yaz"
+"Birbaşa ol və qeyri-müəyyən dildən qaçın"
+```
+
+**Əhatə məhdudiyyətləri:**
+```
+"Yalnız Python 3.10+-da mövcud seçimləri nəzərə al"
+"Təklifləri pulsuz alətlərlə məhdudlaşdır"
+"Əlavə asılılıq tələb etməyən həllərə fokuslan"
+```
+
+## 5. Çıxış Formatı
+
+Çıxış formatını müəyyən etmək, istifadə edilə bilən strukturda cavablar almağınızı təmin edir.
+
+### Ümumi Formatlar
+
+**Siyahılar:**
+```
+"Nöqtəli siyahı olaraq qaytar"
+"Nömrələnmiş addımlar siyahısı ver"
+```
+
+**Strukturlaşdırılmış məlumat:**
+```
+"JSON olaraq qaytar: başlıq, təsvir, prioritet açarları ilə"
+"Markdown cədvəli olaraq formatla: Xüsusiyyət, Üstünlüklər, Çatışmazlıqlar sütunları ilə"
+```
+
+**Xüsusi strukturlar:**
+```
+"Cavabını belə strukturlaşdır:
+ ## Xülasə
+ ## Əsas Nöqtələr
+ ## Tövsiyələr"
+```
+
+### JSON Çıxış Nümunəsi
+
+```
+Bu müştəri rəyini analiz et və JSON qaytar:
+{
+  "hiss": "pozitiv" | "neqativ" | "neytral",
+  "mövzular": ["əsas mövzuların massivi"],
+  "bal_proqnozu": 1-5,
+  "açar_ifadələr": ["diqqəti çəkən ifadələr"]
+}
+
+Rəy: "Məhsul tez gəldi və əla işləyir, amma 
+təlimatlar qarışıq idi."
+```
+
+## 6. Nümunələr (Az Nümunə ilə Öyrənmə)
+
+Nümunələr, modelə tam olaraq nə istədiyinizi göstərməyin ən güclü yoludur.
+
+### Tək Nümunə
+
+```
+Bu cümlələri keçmiş zamana çevir.
+
+Nümunə:
+Giriş: "Mağazaya gedir"
+Çıxış: "Mağazaya getdi"
+
+İndi çevir:
+Giriş: "Hər səhər qaçırlar"
+```
+
+### Bir Neçə Nümunə
+
+```
+Bu dəstək biletlərini təcililiyə görə təsnif et.
+
+Nümunələr:
+"Hesabım hack edilib" → Kritik
+"Şifrəmi necə dəyişdirə bilərəm?" → Aşağı
+"Ödəniş uğursuz oldu amma məbləğ tutuldu" → Yüksək
+
+Təsnif et: "Parametrləri açdıqda tətbiq çöküyor"
+```
+
+## Hamısını Bir Araya Gətirmək
+
+Budur bütün komponentləri istifadə edən tam bir prompt:
+
+<TryIt 
+  title="Tam Prompt Nümunəsi"
+  description="Bu prompt, altı komponentin birlikdə işlədiyini göstərir. Strukturlaşdırılmış promptların necə peşəkar nəticələr istehsal etdiyini görmək üçün sınayın."
+  prompt={`# Rol
+Sən 10 illik təcrübəyə malik, tərtibatçı sənədləşdirilməsi yaradan baş texniki yazarsan.
+
+# Kontekst
+Bir ödəniş emalı xidməti üçün REST API-sini sənədləşdirirəm. Hədəf auditoriya, API-mizi tətbiqlərinə inteqrasiya edən tərtibatçılardır. Orta səviyyəli proqramlaşdırma biliklərinə malikdirlər amma ödəniş emalı anlayışlarında yeni ola bilərlər.
+
+# Tapşırıq
+Yeni ödəniş niyyəti yaradan aşağıdakı API endpoint üçün sənədləşdirmə yaz.
+
+# Məhdudiyyətlər
+- Aydın, qısa dil istifadə et
+- Ümumi xəta ssenarilərini daxil et
+- Backend haqqında tətbiq detallarını daxil etmə
+- Oxucuların HTTP və JSON əsaslarını başa düşdüyünü fərz et
+
+# Çıxış Formatı
+Sənədləşdirməni belə strukturlaşdır:
+1. Endpoint-ə Ümumi Baxış (2-3 cümlə)
+2. Sorğu (metod, URL, başlıqlar, nümunəli gövdə)
+3. Cavab (uğur və xəta nümunələri)
+4. Kod Nümunəsi (JavaScript/Node.js-də)
+
+# Endpoint Detalları
+POST /v1/payments/intents
+Gövdə: { "amount": 1000, "currency": "azn", "description": "Sifariş #1234" }`}
+/>
+
+## Minimal Effektiv Prompt
+
+Hər promptun bütün komponentlərə ehtiyacı yoxdur. Sadə tapşırıqlar üçün aydın bir təlimat kifayət edə bilər:
+
+```
+"Salam, necəsən?"ı İngiliscəyə tərcümə et.
+```
+
+Əlavə komponentləri bu hallarda istifadə edin:
+- Tapşırıq mürəkkəb və ya qeyri-müəyyəndir
+- Xüsusi formatlama tələb olunur
+- Nəticələr gözləntilərlə uyğun gəlmir
+- Bir neçə sorğuda ardıcıllıq vacibdir
+
+## Ümumi Prompt Nümunələri
+
+Bu çərçivələr, prompt yazarkən izləyə biləcəyiniz sadə yoxlama siyahısı verir. Hər addımda bir nümunə görmək üçün klikləyin.
+
+<CRISPEFramework />
+
+<RTFFramework />
+
+## Xülasə
+
+Effektiv promptlar inşa edilir, kəşf edilmir. Bu struktur komponentlərini anlayaraq və tətbiq edərək:
+
+- İlk cəhddə daha yaxşı nəticələr əldə edə bilərsiniz
+- İşləməyən promptları debug edə bilərsiniz
+- Yenidən istifadə edilə bilən prompt şablonları yarada bilərsiniz
+- Niyyətlərinizi aydın şəkildə çatdıra bilərsiniz
+
+<Quiz 
+  question="Hansı komponent cavab keyfiyyətinə ən böyük təsirə malikdir?"
+  options={[
+    "Həmişə rol/persona",
+    "Həmişə çıxış formatı",
+    "Tapşırıqdan asılıdır",
+    "Promptun uzunluğu"
+  ]}
+  correctIndex={2}
+  explanation="Fərqli tapşırıqlar fərqli komponentlərdən faydalanır. Sadə bir tərcümə minimal struktur tələb edir, mürəkkəb bir analiz isə ətraflı rol, kontekst və format spesifikasiyalarından faydalanır."
+/>
+
+<TryIt 
+  prompt={`Sən SaaS məhsullarında 10 illik təcrübəyə malik baş məhsul menecerisen.
+
+Kontekst: Uzaqdan işləyən komandalar üçün bir tapşırıq idarəetmə tətbiqi qururam. Məhdud mühəndislik resurslarına malik kiçik startapıq.
+
+Tapşırıq: MVP üçün prioritetləşdirməli olduğumuz 3 xüsusiyyət təklif et.
+
+Məhdudiyyətlər:
+- Xüsusiyyətlər 2 tərtibatçı tərəfindən 4 həftədə tətbiq edilə bilən olmalıdır
+- Bizi Trello və Asana-dan fərqləndirən şeylərə fokuslan
+
+Format: Hər xüsusiyyət üçün bunları təmin et:
+1. Xüsusiyyət adı
+2. Bir cümləlik təsvir  
+3. Uzaqdan komandalar üçün niyə vacibdir`}
+  description="Bu prompt altı komponentin hamısını istifadə edir. Sınayın və strukturlaşdırılmış yanaşmanın necə fokuslanmış, tətbiq oluna bilən nəticələr istehsal etdiyini görün."
+/>
+
+## Öz Promptunuzu Yaradın
+
+İndi növbə sizdədir! Öyrəndiyiniz komponentləri istifadə edərək öz promptunuzu yaratmaq üçün bu interaktiv prompt qurucusundan istifadə edin:
+
+<PromptBuilder 
+  title="İnteraktiv Prompt Qurucusu"
+  description="Tam, yaxşı strukturlaşdırılmış bir prompt yaratmaq üçün hər bölməni doldurun"
+/>
+
+<PromptChallenge
+  title="Fəsil Çağırışı: Kod Nəzərdən Keçirmə Promptu Yaradın"
+  task="Süni intellektdən təhlükəsizlik boşluqlarına qarşı kod nəzərdən keçirməsini istəyən bir prompt yazın. Promptunuz tətbiq edilə bilən rəy almaq üçün kifayət qədər spesifik olmalıdır."
+  criteria={[
+    "Aydın bir rol və ya ekspertiza səviyyəsi daxil edir",
+    "Nə növ kod nəzərdən keçirməsi olduğunu göstərir (təhlükəsizlik fokuslu)",
+    "Gözlənilən çıxış formatını təyin edir",
+    "Uyğun məhdudiyyətlər və ya əhatə müəyyən edir"
+  ]}
+  hints={[
+    "Kod nəzərdən keçirənin hansı ekspertizaya malik olması lazım olduğunu düşünün",
+    "Hansı təhlükəsizlik problemlərinin axtarılacağı barədə spesifik olun",
+    "Strukturlaşdırılmış cavab formatı istəməyi düşünün"
+  ]}
+  exampleSolution={`Sən veb tətbiqi təhlükəsizliyi və OWASP Top 10 boşluqlarında ekspert baş təhlükəsizlik mühəndisisən.
+
+Tapşırıq: Aşağıdakı kodu təhlükəsizlik boşluqlarına qarşı nəzərdən keçir.
+
+Fokuslan:
+- SQL inyeksiya riskləri
+- XSS boşluqları  
+- Autentifikasiya/avtorizasiya problemləri
+- Giriş doğrulama çatışmazlıqları
+
+Çıxış formatı:
+Tapılan hər problem üçün:
+1. Sətir nömrəsi/nömrələri
+2. Boşluq növü
+3. Risk səviyyəsi (Yüksək/Orta/Aşağı)
+4. Tövsiyə edilən düzəliş
+
+[NƏZƏRDƏN KEÇİRİLƏCƏK KOD]`}
+  difficulty="intermediate"
+/>
+
+Növbəti fəsildə, prompt yaratma qərarlarına rəhbərlik edən əsas prinsipləri kəşf edəcəyik.

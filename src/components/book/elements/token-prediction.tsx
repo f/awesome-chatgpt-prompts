@@ -11,17 +11,7 @@ interface TokenPrediction {
   isPartial?: boolean;
 }
 
-// Locale-specific token configurations
-const LOCALE_CONFIGS: Record<string, { tokens: string[]; fullText: string }> = {
-  en: {
-    tokens: ["The", " capital", " of", " France", " is", " Paris", "."],
-    fullText: "The capital of France is Paris.",
-  },
-  tr: {
-    tokens: ["Türkiye", "'nin", " başkenti", " Ankara", "'dır", "."],
-    fullText: "Türkiye'nin başkenti Ankara'dır.",
-  },
-};
+import { getLocaleField } from "./locales";
 
 export function TokenPredictionDemo() {
   const [text, setText] = useState("");
@@ -33,8 +23,8 @@ export function TokenPredictionDemo() {
   const locale = useLocale();
   
   // Get locale-specific tokens and text
-  const { tokens: TOKENS, fullText: exampleText } = useMemo(() => {
-    return LOCALE_CONFIGS[locale] || LOCALE_CONFIGS.en;
+  const { tokens: TOKENS, fullText: exampleText, predictions: predictionData } = useMemo(() => {
+    return getLocaleField(locale, "tokenPrediction");
   }, [locale]);
 
   // Get predictions based on current position in the text
@@ -42,17 +32,7 @@ export function TokenPredictionDemo() {
     const lowerText = currentText.toLowerCase();
     
     if (currentText === "" || currentText.length === 0) {
-      return locale === "tr" 
-        ? [
-            { token: "Türkiye", probability: 0.15 },
-            { token: "Ben", probability: 0.12 },
-            { token: "Bu", probability: 0.08 },
-          ]
-        : [
-            { token: "The", probability: 0.15 },
-            { token: "I", probability: 0.12 },
-            { token: "What", probability: 0.08 },
-          ];
+      return predictionData.empty;
     }
     
     // Find which token we're currently in and how much is left
@@ -77,120 +57,22 @@ export function TokenPredictionDemo() {
       const prob = 0.85 + (typedInToken / currentToken.length) * 0.10;
       return [
         { token: remainingInToken, probability: Math.min(prob, 0.98), isPartial: true },
-        { token: locale === "tr" ? " ve" : " and", probability: 0.02 },
-        { token: locale === "tr" ? " bir" : " the", probability: 0.01 },
+        { token: predictionData.partial.and, probability: 0.02 },
+        { token: predictionData.partial.the, probability: 0.01 },
       ];
     }
     
-    // Turkish predictions
-    if (locale === "tr") {
-      if (lowerText === "türkiye") {
-        return [
-          { token: "'nin", probability: 0.35 },
-          { token: "'de", probability: 0.25 },
-          { token: "'yi", probability: 0.15 },
-        ];
-      }
-      if (lowerText === "türkiye'nin") {
-        return [
-          { token: " başkenti", probability: 0.45 },
-          { token: " en", probability: 0.20 },
-          { token: " nüfusu", probability: 0.12 },
-        ];
-      }
-      if (lowerText === "türkiye'nin başkenti") {
-        return [
-          { token: " Ankara", probability: 0.75 },
-          { token: " İstanbul", probability: 0.12 },
-          { token: " neresi", probability: 0.08 },
-        ];
-      }
-      if (lowerText === "türkiye'nin başkenti ankara") {
-        return [
-          { token: "'dır", probability: 0.82 },
-          { token: ",", probability: 0.10 },
-          { token: "'ydı", probability: 0.05 },
-        ];
-      }
-      if (lowerText === "türkiye'nin başkenti ankara'dır") {
-        return [
-          { token: ".", probability: 0.75 },
-          { token: " ve", probability: 0.15 },
-          { token: "!", probability: 0.05 },
-        ];
-      }
-    } else {
-      // English predictions
-      if (lowerText === "the") {
-        return [
-          { token: " capital", probability: 0.04 },
-          { token: " best", probability: 0.03 },
-          { token: " first", probability: 0.03 },
-        ];
-      }
-      if (lowerText === "the capital") {
-        return [
-          { token: " of", probability: 0.85 },
-          { token: " city", probability: 0.08 },
-          { token: " is", probability: 0.04 },
-        ];
-      }
-      if (lowerText === "the capital of") {
-        return [
-          { token: " France", probability: 0.18 },
-          { token: " the", probability: 0.15 },
-          { token: " Japan", probability: 0.09 },
-        ];
-      }
-      if (lowerText === "the capital of france") {
-        return [
-          { token: " is", probability: 0.92 },
-          { token: ",", probability: 0.05 },
-          { token: " was", probability: 0.02 },
-        ];
-      }
-      if (lowerText === "the capital of france is") {
-        return [
-          { token: " Paris", probability: 0.94 },
-          { token: " a", probability: 0.02 },
-          { token: " the", probability: 0.01 },
-        ];
-      }
-      if (lowerText === "the capital of france is paris") {
-        return [
-          { token: ".", probability: 0.65 },
-          { token: ",", probability: 0.20 },
-          { token: " which", probability: 0.08 },
-        ];
-      }
+    // Check step-based predictions
+    if (predictionData.steps[lowerText]) {
+      return predictionData.steps[lowerText];
     }
     
     if (currentText === exampleText) {
-      return locale === "tr"
-        ? [
-            { token: " Bu", probability: 0.25 },
-            { token: " Ankara", probability: 0.18 },
-            { token: " Aynı", probability: 0.12 },
-          ]
-        : [
-            { token: " It", probability: 0.25 },
-            { token: " The", probability: 0.18 },
-            { token: " Paris", probability: 0.12 },
-          ];
+      return predictionData.complete;
     }
     
-    return locale === "tr"
-      ? [
-          { token: " bir", probability: 0.08 },
-          { token: " ve", probability: 0.06 },
-          { token: " ile", probability: 0.05 },
-        ]
-      : [
-          { token: " the", probability: 0.08 },
-          { token: " and", probability: 0.06 },
-          { token: " is", probability: 0.05 },
-        ];
-  }, [TOKENS, exampleText, locale]);
+    return predictionData.fallback;
+  }, [TOKENS, exampleText, predictionData]);
 
   const [predictions, setPredictions] = useState<TokenPrediction[]>(() => getPredictions(""));
   

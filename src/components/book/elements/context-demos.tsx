@@ -1,138 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { cn } from "@/lib/utils";
 import { RunPromptButton } from "@/components/prompts/run-prompt-button";
+import { getLocaleField, type ConversationMessage, type ContextBlock, type SummarizationStrategy } from "./locales";
 
-// Summarization Demo
-interface ConversationMessage {
-  role: "user" | "assistant";
-  content: string;
-  tokens: number;
-}
-
-const sampleConversationLocale: Record<string, ConversationMessage[]> = {
-  en: [
-    { role: "user", content: "Hi, I want to learn Python", tokens: 8 },
-    { role: "assistant", content: "Great choice! What's your goal?", tokens: 10 },
-    { role: "user", content: "Data analysis for my job", tokens: 7 },
-    { role: "assistant", content: "Perfect. Let's start with variables.", tokens: 12 },
-    { role: "user", content: "What are variables?", tokens: 5 },
-    { role: "assistant", content: "Variables store data like name = 'Alice'", tokens: 14 },
-    { role: "user", content: "Can I store numbers?", tokens: 6 },
-    { role: "assistant", content: "Yes! age = 25 or price = 19.99", tokens: 12 },
-    { role: "user", content: "What about lists?", tokens: 5 },
-    { role: "assistant", content: "Lists hold multiple values: [1, 2, 3]", tokens: 14 },
-    { role: "user", content: "How do I loop through them?", tokens: 7 },
-    { role: "assistant", content: "Use for loops: for x in list: print(x)", tokens: 16 },
-  ],
-  tr: [
-    { role: "user", content: "Merhaba, Python öğrenmek istiyorum", tokens: 8 },
-    { role: "assistant", content: "Harika seçim! Hedefiniz ne?", tokens: 10 },
-    { role: "user", content: "İşim için veri analizi", tokens: 7 },
-    { role: "assistant", content: "Mükemmel. Değişkenlerle başlayalım.", tokens: 12 },
-    { role: "user", content: "Değişkenler nedir?", tokens: 5 },
-    { role: "assistant", content: "Değişkenler veri depolar: isim = 'Ali'", tokens: 14 },
-    { role: "user", content: "Sayı saklayabilir miyim?", tokens: 6 },
-    { role: "assistant", content: "Evet! yas = 25 veya fiyat = 19.99", tokens: 12 },
-    { role: "user", content: "Listeler ne olacak?", tokens: 5 },
-    { role: "assistant", content: "Listeler birden fazla değer tutar: [1, 2, 3]", tokens: 14 },
-    { role: "user", content: "Bunları nasıl döngüye alırım?", tokens: 7 },
-    { role: "assistant", content: "for döngüsü kullanın: for x in liste: print(x)", tokens: 16 },
-  ],
-};
-
-interface SummarizationStrategy {
-  name: string;
-  description: string;
-  color: string;
-  apply: (messages: ConversationMessage[]) => { kept: number[]; summarized: number[]; summary?: string };
-}
-
-const strategiesLocale: Record<string, SummarizationStrategy[]> = {
-  en: [
-    {
-      name: "Rolling Summary",
-      description: "Summarize oldest messages, keep recent ones intact",
-      color: "blue",
-      apply: () => ({
-        kept: [8, 9, 10, 11],
-        summarized: [0, 1, 2, 3, 4, 5, 6, 7],
-        summary: "User learning Python for data analysis. Covered: variables, numbers, lists basics."
-      })
-    },
-    {
-      name: "Hierarchical",
-      description: "Create layered summaries (detail → overview)",
-      color: "purple",
-      apply: () => ({
-        kept: [10, 11],
-        summarized: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-        summary: "Session 1: Python basics (variables, numbers). Session 2: Data structures (lists, loops)."
-      })
-    },
-    {
-      name: "Key Points Only",
-      description: "Extract decisions and facts, discard chitchat",
-      color: "green",
-      apply: () => ({
-        kept: [2, 5, 7, 9, 11],
-        summarized: [0, 1, 3, 4, 6, 8, 10],
-        summary: "Goal: data analysis. Learned: variables, numbers, lists, loops."
-      })
-    },
-    {
-      name: "Sliding Window",
-      description: "Keep last N messages, drop everything else",
-      color: "amber",
-      apply: () => ({
-        kept: [6, 7, 8, 9, 10, 11],
-        summarized: [0, 1, 2, 3, 4, 5],
-      })
-    },
-  ],
-  tr: [
-    {
-      name: "Dönen Özet",
-      description: "En eski mesajları özetle, yenileri aynen koru",
-      color: "blue",
-      apply: () => ({
-        kept: [8, 9, 10, 11],
-        summarized: [0, 1, 2, 3, 4, 5, 6, 7],
-        summary: "Kullanıcı veri analizi için Python öğreniyor. İşlenen: değişkenler, sayılar, liste temelleri."
-      })
-    },
-    {
-      name: "Hiyerarşik",
-      description: "Katmanlı özetler oluştur (detay → genel bakış)",
-      color: "purple",
-      apply: () => ({
-        kept: [10, 11],
-        summarized: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-        summary: "Oturum 1: Python temelleri (değişkenler, sayılar). Oturum 2: Veri yapıları (listeler, döngüler)."
-      })
-    },
-    {
-      name: "Sadece Kilit Noktalar",
-      description: "Kararları ve gerçekleri çıkar, sohbeti at",
-      color: "green",
-      apply: () => ({
-        kept: [2, 5, 7, 9, 11],
-        summarized: [0, 1, 3, 4, 6, 8, 10],
-        summary: "Hedef: veri analizi. Öğrenilen: değişkenler, sayılar, listeler, döngüler."
-      })
-    },
-    {
-      name: "Kayan Pencere",
-      description: "Son N mesajı koru, diğerlerini at",
-      color: "amber",
-      apply: () => ({
-        kept: [6, 7, 8, 9, 10, 11],
-        summarized: [0, 1, 2, 3, 4, 5],
-      })
-    },
-  ],
+// Strategy apply functions - logic is the same across locales, only summaries differ
+const strategyApplyFunctions: Record<number, (summary?: string) => { kept: number[]; summarized: number[]; summary?: string }> = {
+  0: (summary) => ({ kept: [8, 9, 10, 11], summarized: [0, 1, 2, 3, 4, 5, 6, 7], summary }),
+  1: (summary) => ({ kept: [10, 11], summarized: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], summary }),
+  2: (summary) => ({ kept: [2, 5, 7, 9, 11], summarized: [0, 1, 3, 4, 6, 8, 10], summary }),
+  3: () => ({ kept: [6, 7, 8, 9, 10, 11], summarized: [0, 1, 2, 3, 4, 5] }),
 };
 
 const strategyColors: Record<string, { bg: string; border: string; text: string; pill: string }> = {
@@ -147,11 +26,12 @@ export function SummarizationDemo() {
   const t = useTranslations("book.interactive");
   const locale = useLocale();
   
-  const sampleConversation = sampleConversationLocale[locale] || sampleConversationLocale.en;
-  const strategies = strategiesLocale[locale] || strategiesLocale.en;
+  const sampleConversation = getLocaleField(locale, "sampleConversation");
+  const strategies = getLocaleField(locale, "strategies");
   const strategy = strategies[selectedIndex];
   const colors = strategyColors[strategy.color];
-  const result = strategy.apply(sampleConversation);
+  const applyFn = strategyApplyFunctions[selectedIndex];
+  const result = applyFn(strategy.summary);
   
   const originalTokens = sampleConversation.reduce((sum: number, m: ConversationMessage) => sum + m.tokens, 0);
   const keptTokens = result.kept.reduce((sum: number, i: number) => sum + sampleConversation[i].tokens, 0);
@@ -167,7 +47,7 @@ export function SummarizationDemo() {
       
       <div className="p-4">
         <div className="flex flex-wrap gap-2 mb-4">
-          {strategies.map((s: SummarizationStrategy, index: number) => {
+          {strategies.map((s, index) => {
             const c = strategyColors[s.color];
             return (
               <button
@@ -251,31 +131,6 @@ export function SummarizationDemo() {
 }
 
 // Context Playground
-interface ContextBlock {
-  id: string;
-  type: "system" | "history" | "rag" | "tools" | "query";
-  label: string;
-  content: string;
-  tokens: number;
-  enabled: boolean;
-}
-
-const contextBlocksLocale: Record<string, ContextBlock[]> = {
-  en: [
-    { id: "system", type: "system", label: "System Prompt", content: "You are a helpful customer support agent for TechStore. Be friendly and concise.", tokens: 25, enabled: true },
-    { id: "rag", type: "rag", label: "Retrieved Documents (RAG)", content: "From knowledge base:\n- Return policy: 30 days, original packaging required\n- Shipping: Free over $50\n- Warranty: 1 year on electronics", tokens: 45, enabled: true },
-    { id: "history", type: "history", label: "Conversation History", content: "[Summary] User asked about order #12345. Product: Wireless Mouse. Status: Shipped yesterday.\n\nUser: When will it arrive?\nAssistant: Based on standard shipping, it should arrive in 3-5 business days.", tokens: 55, enabled: true },
-    { id: "tools", type: "tools", label: "Available Tools", content: "Tools:\n- check_order(order_id) - Get order status\n- process_return(order_id) - Start return process\n- escalate_to_human() - Transfer to human agent", tokens: 40, enabled: false },
-    { id: "query", type: "query", label: "User Query", content: "Can I return it if I don't like it?", tokens: 12, enabled: true },
-  ],
-  tr: [
-    { id: "system", type: "system", label: "Sistem Promptu", content: "TechStore için yardımcı bir müşteri destek temsilcisisin. Samimi ve özlü ol.", tokens: 25, enabled: true },
-    { id: "rag", type: "rag", label: "Getirilen Belgeler (RAG)", content: "Bilgi tabanından:\n- İade politikası: 30 gün, orijinal ambalaj gerekli\n- Kargo: 50₺ üzeri ücretsiz\n- Garanti: Elektroniklerde 1 yıl", tokens: 45, enabled: true },
-    { id: "history", type: "history", label: "Konuşma Geçmişi", content: "[Özet] Kullanıcı #12345 numaralı sipariş hakkında sordu. Ürün: Kablosuz Mouse. Durum: Dün kargoya verildi.\n\nKullanıcı: Ne zaman gelir?\nAsistan: Standart kargoya göre 3-5 iş günü içinde ulaşması gerekir.", tokens: 55, enabled: true },
-    { id: "tools", type: "tools", label: "Mevcut Araçlar", content: "Araçlar:\n- check_order(order_id) - Sipariş durumunu al\n- process_return(order_id) - İade işlemini başlat\n- escalate_to_human() - İnsan temsilciye aktar", tokens: 40, enabled: false },
-    { id: "query", type: "query", label: "Kullanıcı Sorusu", content: "Beğenmezsem iade edebilir miyim?", tokens: 12, enabled: true },
-  ],
-};
 
 const contextColors: Record<string, { bg: string; border: string; text: string }> = {
   system: { bg: "bg-purple-50 dark:bg-purple-950/30", border: "border-purple-200 dark:border-purple-700", text: "text-purple-700 dark:text-purple-300" },
@@ -288,7 +143,7 @@ const contextColors: Record<string, { bg: string; border: string; text: string }
 export function ContextPlayground() {
   const t = useTranslations("book.interactive");
   const locale = useLocale();
-  const defaultBlocks = contextBlocksLocale[locale] || contextBlocksLocale.en;
+  const defaultBlocks = getLocaleField(locale, "contextBlocks");
   const [blocks, setBlocks] = useState<ContextBlock[]>(defaultBlocks);
   const maxTokens = 200;
 

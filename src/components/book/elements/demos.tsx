@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo } from "react";
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTranslations, useLocale } from "next-intl";
+import { getLocaleField } from "./locales";
 
 // Tokenizer Demo Component - simulates BPE-style tokenization
 function simulateTokenization(text: string): string[] {
@@ -52,34 +53,7 @@ export function TokenizerDemo() {
   const t = useTranslations("book.interactive");
   const locale = useLocale();
 
-  // Locale-specific tokenizer samples
-  const tokenizerData = useMemo(() => ({
-    en: {
-      default: "Hello, world!",
-      samples: {
-        "Hello, world!": ["Hel", "lo", ",", " wor", "ld", "!"],
-        "Unbelievable": ["Un", "bel", "iev", "able"],
-        "ChatGPT is amazing": ["Chat", "GPT", " is", " amaz", "ing"],
-        "The quick brown fox": ["The", " qui", "ck", " bro", "wn", " fox"],
-        "Prompt engineering": ["Prom", "pt", " eng", "ine", "ering"],
-        "Artificial Intelligence": ["Art", "ific", "ial", " Int", "ell", "igen", "ce"],
-      },
-      tryExamples: 'Try: "Unbelievable", "ChatGPT is amazing", or type your own text',
-    },
-    tr: {
-      default: "Merhaba, dünya!",
-      samples: {
-        "Merhaba, dünya!": ["Mer", "ha", "ba", ",", " dün", "ya", "!"],
-        "İnanılmaz": ["İna", "nıl", "maz"],
-        "Yapay zeka harika": ["Ya", "pay", " ze", "ka", " ha", "ri", "ka"],
-        "Hızlı kahverengi tilki": ["Hız", "lı", " kah", "ve", "ren", "gi", " til", "ki"],
-        "Prompt mühendisliği": ["Prom", "pt", " mü", "hen", "dis", "li", "ği"],
-      },
-      tryExamples: 'Deneyin: "İnanılmaz", "Yapay zeka harika" veya kendi metninizi yazın',
-    },
-  }), []);
-
-  const currentData = tokenizerData[locale as keyof typeof tokenizerData] || tokenizerData.en;
+  const currentData = getLocaleField(locale, "tokenizer");
   
   const [input, setInput] = useState(currentData.default);
   const [tokens, setTokens] = useState<string[]>(currentData.samples[currentData.default as keyof typeof currentData.samples] || []);
@@ -257,57 +231,10 @@ export function TemperatureDemo() {
   const t = useTranslations("book.interactive");
   const locale = useLocale();
 
-  // Locale-specific temperature examples
-  const temperatureExamples = useMemo(() => ({
-    en: {
-      prompt: "What is the capital of France?",
-      lowTemp: [
-        "The capital of France is Paris.",
-        "The capital of France is Paris.",
-        "The capital of France is Paris.",
-      ],
-      mediumLowTemp: [
-        "The capital of France is Paris.",
-        "Paris is the capital of France.",
-        "The capital of France is Paris, a major European city.",
-      ],
-      mediumHighTemp: [
-        "Paris serves as France's capital city.",
-        "The capital of France is Paris, known for the Eiffel Tower.",
-        "France's capital is the beautiful city of Paris.",
-      ],
-      highTemp: [
-        "Paris, the City of Light, proudly serves as France's capital!",
-        "The romantic capital of France is none other than Paris.",
-        "France chose Paris as its capital, a city of art and culture.",
-      ],
-    },
-    tr: {
-      prompt: "Türkiye'nin başkenti neresidir?",
-      lowTemp: [
-        "Türkiye'nin başkenti Ankara'dır.",
-        "Türkiye'nin başkenti Ankara'dır.",
-        "Türkiye'nin başkenti Ankara'dır.",
-      ],
-      mediumLowTemp: [
-        "Türkiye'nin başkenti Ankara'dır.",
-        "Ankara, Türkiye'nin başkentidir.",
-        "Türkiye'nin başkenti Ankara, büyük bir Anadolu şehridir.",
-      ],
-      mediumHighTemp: [
-        "Ankara, Türkiye'nin başkenti olarak hizmet vermektedir.",
-        "Türkiye'nin başkenti, Anıtkabir'in bulunduğu Ankara'dır.",
-        "Türkiye'nin başkenti tarihi ve modern Ankara şehridir.",
-      ],
-      highTemp: [
-        "Ankara, Cumhuriyet'in kalbi, gururla Türkiye'nin başkenti olarak parlıyor!",
-        "Türkiye'nin romantik başkenti, kültür ve tarih şehri Ankara'dan başkası değil.",
-        "Türkiye, sanat ve kültür şehri Ankara'yı başkent olarak seçti.",
-      ],
-    },
-  }), []);
-
-  const currentExamples = temperatureExamples[locale as keyof typeof temperatureExamples] || temperatureExamples.en;
+  // Get locale-specific temperature examples
+  const currentExamples = useMemo(() => {
+    return getLocaleField(locale, "temperatureExamples");
+  }, [locale]);
 
   const getOutputExamples = (temp: number): string[] => {
     if (temp <= 0.2) return currentExamples.lowTemp;

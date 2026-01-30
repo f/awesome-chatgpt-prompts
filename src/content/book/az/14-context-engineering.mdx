@@ -1,0 +1,270 @@
+Konteksti anlamaq, həqiqətən işləyən süni intellekt tətbiqləri yaratmaq üçün vacibdir. Bu bölmə, süni intellektə düzgün vaxtda düzgün məlumatı vermə haqqında bilməli olduğunuz hər şeyi əhatə edir.
+
+<Callout type="info" title="Kontekst Niyə Vacibdir">
+Süni intellekt modelləri vəziyyətsizdir. Keçmiş söhbətləri xatırlamırlar. Hər mesaj göndərdiyinizdə, süni intellektin bilməli olduğu hər şeyi daxil etməlisiniz. Buna "kontekst mühəndisliyi" deyilir.
+</Callout>
+
+## Kontekst Nədir?
+
+Kontekst, sualınızla birlikdə süni intellektə verdiyiniz bütün məlumatdır. Belə düşünün:
+
+<Compare 
+  before={{ label: "Kontekstsiz", content: "Vəziyyət nədir?" }}
+  after={{ label: "Kontekstlə", content: "Sən bir layihə meneceri köməkçisisən. İstifadəçi Cümə günü təhvil tarixi olan Layihə Alfa üzərində işləyir. Son yeniləmə: 'Backend tamamlandı, frontend 80% bitdi.'\n\nİstifadəçi: Vəziyyət nədir?" }}
+/>
+
+Kontekst olmadan, süni intellekt hansı "vəziyyəti" soruşduğunuz haqqında heç bir fikrə sahib deyil. Kontekstlə, faydalı bir cavab verə bilər.
+
+### Kontekst Pəncərəsi
+
+Əvvəlki bölmələrdən xatırlayın: Süni intellektin məhdud bir "kontekst pəncərəsi" var - eyni anda görə biləcəyi maksimum mətn miqdarı. Bu bunları ehtiva edir:
+
+<InfoGrid items={[
+  { label: "Sistem Promptu", description: "Sİ davranışını təyin edən təlimatlar", color: "purple" },
+  { label: "Söhbət Tarixçəsi", description: "Bu söhbətdəki əvvəlki mesajlar", color: "blue" },
+  { label: "Alınan Məlumat", description: "Bu sorğu üçün gətirilən sənədlər, məlumat və ya informasiya", color: "green" },
+  { label: "Cari Sorğu", description: "İstifadəçinin həqiqi sualı", color: "amber" },
+  { label: "Sİ Cavabı", description: "Cavab (bu da limitə daxildir!)", color: "rose" },
+]} />
+
+## Süni İntellekt Vəziyyətsizdir
+
+<Callout type="warning" title="Vacib Konsept">
+Süni intellekt söhbətlər arasında heç nə xatırlamır. Hər API çağırışı sıfırdan başlayır. Süni intellektin bir şeyi "xatırlamasını" istəyirsinizsə, SİZİN hər dəfə kontekstə daxil etməyiniz lazımdır.
+</Callout>
+
+Buna görə söhbət botları hər mesajla bütün söhbət tarixçənizi göndərir. Süni intellekt xatırlamır - tətbiq hər şeyi yenidən göndərir.
+
+<TryIt compact prompt={`Tarixçəsi olmayan yeni bir söhbət olduğunu fərz et.
+
+İndicə sənə nə soruşdum?`} />
+
+Süni intellekt bilmədiyini deyəcək çünki həqiqətən əvvəlki kontekstə girişi yoxdur.
+
+## RAG: Əldəetmə ilə Artırılmış İstehsal
+
+RAG, süni intellektə üzərində öyrədilmədiyi məlumata giriş təmin etmə texnikasıdır. Hər şeyi süni intellektin öyrənməsinə sığdırmağa çalışmaq əvəzinə:
+
+1. **Saxla** - Sənədlərinizi axtarıla bilən bir verilənlər bazasında
+2. **Axtar** - İstifadəçi sual soruşduqda əlaqəli sənədləri
+3. **Al** - Ən əlaqəli parçaları
+4. **Artır** - Promptunuzu bu parçalarla
+5. **İstehsal et** - Bu konteksti istifadə edərək bir cavab
+
+<div className="my-6 p-4 border rounded-lg bg-muted/30">
+  <p className="font-semibold mb-3">RAG Necə İşləyir:</p>
+  <div className="flex flex-col gap-2 text-sm">
+    <div className="flex items-center gap-3">
+      <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">1</span>
+      <span>İstifadəçi soruşur: "Qaytarma siyasətimiz nədir?"</span>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">2</span>
+      <span>Sistem sənədlərinizdə "qaytarma siyasəti"ni axtarır</span>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">3</span>
+      <span>Siyasət sənədinizdən əlaqəli bölməni tapır</span>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">4</span>
+      <span>Sİ-yə göndərir: "Bu siyasətə görə: [mətn], cavab ver: Qaytarma siyasətimiz nədir?"</span>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center text-green-600 font-bold">5</span>
+      <span>Sİ həqiqi siyasətinizi istifadə edərək düzgün cavab istehsal edir</span>
+    </div>
+  </div>
+</div>
+
+### Niyə RAG?
+
+<div className="my-6 grid md:grid-cols-2 gap-4">
+  <div className="p-4 border rounded-lg">
+    <p className="font-semibold text-green-600 dark:text-green-400 mb-2 flex items-center gap-2"><IconCheck className="text-green-600" /> RAG Üstünlükləri</p>
+    <ul className="text-sm space-y-1 text-muted-foreground">
+      <li>Həqiqi, aktual məlumatlarınızı istifadə edir</li>
+      <li>Halüsinasiyaları azaldır</li>
+      <li>Mənbə göstərə bilir</li>
+      <li>Yenilənməsi asan (yalnız sənədləri yenilə)</li>
+      <li>Bahalı incə sazlama lazım deyil</li>
+    </ul>
+  </div>
+  <div className="p-4 border rounded-lg">
+    <p className="font-semibold text-amber-600 dark:text-amber-400 mb-2 flex items-center gap-2"><IconLightbulb className="text-amber-600" /> RAG Nə Vaxt İstifadə Edilir</p>
+    <ul className="text-sm space-y-1 text-muted-foreground">
+      <li>Müştəri dəstək botları</li>
+      <li>Sənədləşdirmə axtarışı</li>
+      <li>Daxili bilik bazaları</li>
+      <li>Hər hansı bir sahəyə xas S&C</li>
+      <li>Dəqiqlik vacib olduqda</li>
+    </ul>
+  </div>
+</div>
+
+## Embedding-lər: Axtarış Necə İşləyir
+
+RAG hansı sənədlərin "əlaqəli" olduğunu necə bilir? **Embedding-lər** istifadə edir - mətni məna tutan rəqəmlərə çevirmənin bir yolu.
+
+### Embedding-lər Nədir?
+
+Embedding, mətnin mənasını təmsil edən rəqəm siyahısıdır (bir "vektor"). Oxşar mənalar = oxşar rəqəmlər.
+
+<EmbeddingsDemo />
+
+### Semantik Axtarış
+
+Embedding-lərlə, yalnız açar sözlərə görə deyil, mənaya görə axtarış edə bilərsiniz:
+
+<Compare 
+  before={{ label: "Açar Söz Axtarışı", content: "Sorğu: 'qaytarma siyasəti'\nTapır: 'qaytarma' və 'siyasəti' ehtiva edən sənədlər\nQaçırır: 'Geri ödəmə necə alınır'" }}
+  after={{ label: "Semantik Axtarış", content: "Sorğu: 'qaytarma siyasəti'\nBütün əlaqəli sənədləri tapır:\n- 'Geri ödəmə təlimatları'\n- 'Məhsullar necə geri göndərilir'\n- 'Pul qaytarma zəmanəti'" }}
+/>
+
+Buna görə RAG çox güclüdür - tam sözlər uyğun gəlməsə belə əlaqəli məlumatı tapır.
+
+## Funksiya Çağırma / Alət İstifadəsi
+
+Funksiya çağırma, süni intellektin xarici alətləri istifadə etməsini təmin edir - webdə axtarış, verilənlər bazası yoxlaması və ya API çağırışı kimi.
+
+<Callout type="tip" title="Fərqli Adlar">
+Fərqli süni intellekt təminatçıları buna fərqli şeylər deyir: "funksiya çağırma" (OpenAI), "alət istifadəsi" (Anthropic/Claude) və ya "alətlər" (ümumi termin). Hamısı eyni məna verir.
+</Callout>
+
+### Necə İşləyir
+
+1. Süni intellektə hansı alətlərin mövcud olduğunu söyləyirsiniz
+2. Sİ cavab vermək üçün alətə ehtiyacı olub-olmadığına qərar verir
+3. Sİ alət üçün strukturlaşdırılmış bir istək çıxarır
+4. Kodunuz aləti işlədir və nəticələri qaytarır
+5. Sİ nəticələri istifadə edərək cavabını formalaşdırır
+
+<TryIt 
+  title="Funksiya Çağırma Nümunəsi"
+  description="Bu prompt Sİ-nin alət istifadə etməyə necə qərar verdiyini göstərir:"
+  prompt={`Bu alətlərə girişin var:
+
+1. get_weather(city: string) - Bir şəhər üçün cari havanı al
+2. search_web(query: string) - İnternetdə axtar
+3. calculate(expression: string) - Riyazi hesablamalar et
+
+İstifadəçi: Tokioda indi hava necədir?
+
+Addım-addım düşün: Alətə ehtiyacın var mı? Hansına? Hansı parametrlərlə?`}
+/>
+
+## Xülasələmə: Uzun Söhbətləri İdarə Etmə
+
+Söhbətlər uzandıqca, kontekst pəncərəsi limitinə çatırsınız. Sİ vəziyyətsiz olduğundan (heç nə xatırlamır), uzun söhbətlər daşa bilər. Həll? **Xülasələmə**.
+
+### Problem
+
+<Compare 
+  before={{ label: "Xülasələmə Olmadan", content: "Mesaj 1 (500 token)\nMesaj 2 (800 token)\nMesaj 3 (600 token)\n... 50 mesaj daha ...\n────────────────────\n= 40.000+ token\n= LİMİTİ AŞIR!" }}
+  after={{ label: "Xülasələmə İlə", content: "[Xülasə]: 200 token\nSon mesajlar: 2.000 token\nCari sorğu: 100 token\n────────────────────\n= 2.300 token\n= Mükəmməl sığır!" }}
+/>
+
+### Xülasələmə Strategiyaları
+
+Fərqli yanaşmalar fərqli istifadə halları üçün işləyir. Hər strategiyanın eyni söhbəti necə işlədiyini görmək üçün klikləyin:
+
+<SummarizationDemo />
+
+### Xülasələrdə Nəyi Tutmalı
+
+Yaxşı bir söhbət xülasəsi vacib olanı qoruyur:
+
+<Checklist 
+  title="Xülasə Yoxlama Siyahısı"
+  items={[
+    { text: "Qəbul edilən əsas qərarlar" },
+    { text: "Bəhs edilən vacib faktlar" },
+    { text: "Kəşf edilən istifadəçi tercihləri" },
+    { text: "Cari tapşırıq və ya hədəf" },
+    { text: "Gözləyən suallar" },
+    { text: "Ton və rəsmilik səviyyəsi" }
+  ]}
+/>
+
+### Sına: Xülasə Yarat
+
+<TryIt 
+  title="Söhbət Xülasəçisi"
+  description="Bu söhbətdən kontekst qoruyan bir xülasə yaratmağı sınayın:"
+  prompt={`Kontekst idarəetməsi üçün bu söhbəti xülasə et. Xülasə, Sİ-nin yaddaşında tam söhbətin yerini alacaq.
+
+SÖHBƏT:
+İstifadəçi: Salam, məlumat təhlili üçün Python öyrənirəm
+Köməkçi: Xoş gəldiniz! Python məlumat təhlili üçün əladır. Cari təcrübə səviyyəniz nədir?
+İstifadəçi: Əsas Excel bilirəm. Proqramlaşdırmada tamamilə yeni başlayıram.
+Köməkçi: Mükəmməl başlanğıc nöqtəsi! Dəyişənlərlə başlayaq - məlumat saxlayan Excel hüceyrələri kimi.
+İstifadəçi: Dəyişənləri izah edə bilərsən?
+Köməkçi: Dəyişənlər məlumat saxlama konteynerləridir. Python-da: ad = "Aynur" və ya yas = 25
+İstifadəçi: Bəs siyahılar? Bir neçə dəyəri işləməliyəm.
+Köməkçi: Siyahılar Excel sütunları kimidir! Belə yarat: qiymetler = [10, 20, 30]. Elementlərə qiymetler[0] ilə daxil ol.
+İstifadəçi: Siyahılar üzərində hesablama edə bilərəm?
+Köməkçi: Bəli! sum(qiymetler), len(qiymetler) və ya max(qiymetler) istifadə et. Mürəkkəb təhlil üçün pandas istifadə edəcəyik.
+İstifadəçi: Pandas nədir?
+Köməkçi: Pandas məlumat təhlili kitabxanasıdır - "steroidli Excel" kimi. DataFrame-ləri var (cədvəllər kimi).
+
+BUNLARI TUTAN BİR XÜLASƏ YARAT:
+1. İstifadəçinin hədəfi və keçmişi (1 cümlə)
+2. İndiyə qədər işlənən mövzular (1 cümlə)  
+3. İstifadəçinin öyrənmə tərzi/tercihləri (1 cümlə)
+4. Növbədə nə işlənəcək (1 cümlə)`}
+/>
+
+## MCP: Model Kontekst Protokolu
+
+MCP (Model Context Protocol), süni intellekti xarici məlumat və alətlərə bağlamağın standart bir yoludur. Hər süni intellekt təminatçısı üçün xüsusi inteqrasiyalar yaratmaq əvəzinə, MCP universal bir interfeys təmin edir.
+
+### Niyə MCP?
+
+<InfoGrid columns={2} items={[
+  { label: "MCP Olmadan", description: "ChatGPT, Claude, Gemini üçün ayrı inteqrasiyalar yarat... Bir neçə kod bazası saxla. API-lər dəyişəndə pozul.", color: "red" },
+  { label: "MCP İlə", description: "Bir dəfə yarat, hər yerdə işləyir. Standart protokol. Sİ alətlərinizi avtomatik olaraq kəşf edib istifadə edə bilər.", color: "green" },
+]} />
+
+### MCP Təmin Edir
+
+- **Resurslar**: Sİ-nin oxuya biləcəyi məlumatlar (fayllar, verilənlər bazası qeydləri, API cavabları)
+- **Alətlər**: Sİ-nin edə biləcəyi əməliyyatlar (axtar, yarat, yenilə, sil)
+- **Promptlar**: Əvvəlcədən yaradılmış prompt şablonları
+
+<Callout type="info" title="prompts.chat MCP İstifadə Edir">
+Bu platformun bir MCP serveri var! Promptları birbaşa süni intellekt köməkçinizdən axtarmaq və istifadə etmək üçün Claude Desktop və ya digər MCP uyğun müştərilərə bağlaya bilərsiniz.
+</Callout>
+
+## Kontekst Yaratma: Tam Mənzərə
+
+<ContextPlayground />
+
+## Ən Yaxşı Təcrübələr
+
+<Checklist 
+  title="Kontekst Mühəndisliyi Yoxlama Siyahısı"
+  items={[
+    { text: "Sistem promptlarını qısa amma tam saxla" },
+    { text: "Yalnız əlaqəli konteksti daxil et (hər şeyi deyil)" },
+    { text: "Uzun söhbətləri xülasə et" },
+    { text: "Sahəyə xas məlumat üçün RAG istifadə et" },
+    { text: "Real vaxt məlumat üçün Sİ-yə alətlər ver" },
+    { text: "Limitlər daxilində qalmaq üçün token istifadəsini izlə" },
+    { text: "Uç hallarla test et (çox uzun girişlər və s.)" }
+  ]}
+/>
+
+## Xülasə
+
+Kontekst mühəndisliyi süni intellektə düzgün məlumatı verməkdir:
+
+- **Sİ vəziyyətsizdir** - hər dəfə ehtiyacı olan hər şeyi daxil et
+- **RAG** promptları artırmaq üçün əlaqəli sənədləri alır
+- **Embedding-lər** semantik axtarışı mümkün edir (yalnız açar sözlər deyil, məna)
+- **Funksiya çağırma** Sİ-nin xarici alətləri istifadə etməsini təmin edir
+- **Xülasələmə** uzun söhbətləri idarə edir
+- **MCP** Sİ-nin məlumat və alətlərə necə bağlandığını standartlaşdırır
+
+<Callout type="tip" title="Unutma">
+Sİ çıxışının keyfiyyəti təmin etdiyiniz kontekstin keyfiyyətinə bağlıdır. Daha yaxşı kontekst = daha yaxşı cavablar.
+</Callout>

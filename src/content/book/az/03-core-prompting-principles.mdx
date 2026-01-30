@@ -1,0 +1,373 @@
+Strukturun ötəsində, effektiv prompt mühəndisliyi prinsiplərlə idarə olunur—modellər, tapşırıqlar və kontekstlər arasında keçərli olan əsas həqiqətlər. Bu prinsiplərdə ustalıq əldə edin və istənilən prompt çətinliyinə uyğunlaşa biləcəksiniz.
+
+<Callout type="info" title="8 Əsas Prinsip">
+Bu prinsiplər hər süni intellekt modeli və hər tapşırıq üçün keçərlidir. Bir dəfə öyrənin, hər yerdə istifadə edin.
+</Callout>
+
+## Prinsip 1: Ağıllılıq Deyil Aydınlıq
+
+Ən yaxşı promptlar aydın olanlardır, ağıllı olanlar deyil. Süni intellekt modelləri hərfi tərcüməçilərdir—tam olaraq verdiyiniz şeylə işləyirlər.
+
+### Açıq Olun
+
+<Compare 
+  before={{ label: "Gizli (problemli)", content: "Bunu daha yaxşı et." }}
+  after={{ label: "Açıq (effektiv)", content: "Bu e-poçtu bu yollarla yaxşılaşdır:\n1. Mövzu sətrini daha cəlbedici et\n2. Paraqrafları maksimum 2-3 cümlə ilə qısalt\n3. Sonuna aydın fəaliyyət çağırışı əlavə et" }}
+/>
+
+### Qeyri-müəyyənlikdən Qaçının
+
+Sözlərin bir neçə mənası ola bilər. Dəqiq dil seçin.
+
+<Compare 
+  before={{ label: "Qeyri-müəyyən", content: "Mənə qısa xülasə ver.\n(Nə qədər qısa? 1 cümlə? 1 paraqraf? 1 səhifə?)" }}
+  after={{ label: "Dəqiq", content: "Tam olaraq 3 nöqtəli siyahı halında xülasə et, hər biri 20 sözdən az." }}
+/>
+
+### Aşkar Olanı Göstərin
+
+Sizin üçün aşkar olan şey model üçün aşkar deyil. Fərziyyələri açıq şəkildə yazın.
+
+```
+Ön məktub yazmaqda mənə kömək edirsən.
+
+Vacib kontekst:
+- Google-da Proqram Mühəndisi vəzifəsinə müraciət edirəm
+- Python və paylanmış sistemlərdə 5 il təcrübəm var
+- Rol liderlik təcrübəsi tələb edir (4 nəfərlik komandaya rəhbərlik etmişəm)
+- Açıq mənbə töhfələrimi vurğulamaq istəyirəm
+```
+
+## Prinsip 2: Spesifiklik Keyfiyyət İstehsal Edir
+
+Qeyri-müəyyən girişlər qeyri-müəyyən çıxışlar istehsal edir. Spesifik girişlər spesifik, faydalı çıxışlar istehsal edir.
+
+### Spesifiklik Pilləsi
+
+<SpecificitySpectrum levels={[
+  { level: "Səviyyə 1", text: "İqlim dəyişikliyi haqqında yaz" },
+  { level: "Səviyyə 2", text: "İqlim dəyişikliyi təsirləri haqqında bir məqalə yaz" },
+  { level: "Səviyyə 3", text: "İqlim dəyişikliyinin mərcan riflərini necə təsir etdiyi haqqında 500 sözlük məqalə yaz" },
+  { level: "Səviyyə 4", text: "Artan okean temperaturlarının mərcan ağarmasına necə səbəb olduğunu izah edən, lisey tələbələrinə yönəlik, Böyük Bariyer Rifindən 2 spesifik nümunə ilə, cəlbedici amma elmi cəhətdən dəqiq tonda 500 sözlük məqalə yaz" }
+]} />
+
+Hər səviyyə spesifiklik əlavə edir və çıxış keyfiyyətini dramatik şəkildə artırır.
+
+### Bu Elementləri Göstərin
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Hədəf Auditoriya</span>
+    <span className="text-muted-foreground">Bunu kim oxuyacaq/istifadə edəcək?</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Uzunluq</span>
+    <span className="text-muted-foreground">Nə qədər uzun/qısa olmalıdır?</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Ton</span>
+    <span className="text-muted-foreground">Rəsmi? Qeyri-rəsmi? Texniki?</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Format</span>
+    <span className="text-muted-foreground">Düz mətn? Siyahı? Cədvəl? Kod?</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Əhatə</span>
+    <span className="text-muted-foreground">Nə daxil edilməli/xaric tutulmalı?</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Məqsəd</span>
+    <span className="text-muted-foreground">Bu nəyə nail olmalıdır?</span>
+  </div>
+</div>
+
+## Prinsip 3: Kontekst Kraldır
+
+Modellərin yaddaşı, fayllarınıza girişi və ya vəziyyətiniz haqqında biliyi yoxdur. Əlaqəli hər şey promptda olmalıdır.
+
+### Kifayət Qədər Kontekst Təmin Edin
+
+<Compare 
+  before={{ label: "Qeyri-kafi kontekst", content: "Funksiyam niyə işləmir?" }}
+  after={{ label: "Kifayət qədər kontekst", content: "Müəyyən bir açar dəyərinə görə lüğət siyahısını filtrlməli olan Python funksiyam var. 3 element qaytarmalı olarkən boş siyahı qaytarır.\n\nFunksiya:\ndef filter_items(items, key, value):\n    return [item for item in items if item[key] = value]\n\nÇağırış: filter_items(items, 'status', 'active')\nGözlənilən: 2 element, Gələn: boş siyahı" }}
+/>
+
+### Kontekst Yoxlama Siyahısı
+
+<Callout type="tip" title="Göndərməzdən Əvvəl">
+Özünüzə soruşun: Ağıllı bir yad adam bu istəyi başa düşərmi? Əgər yox, daha çox kontekst əlavə edin.
+</Callout>
+
+<Checklist 
+  title="Kontekst Yoxlama Siyahısı"
+  items={[
+    { text: "Model nə üzərində işlədiyimi bilirmi?" },
+    { text: "Hədəfimi bilirmi?" },
+    { text: "Lazımi bütün məlumatlara malikdirmi?" },
+    { text: "Məhdudiyyətləri başa düşürmü?" },
+    { text: "Ağıllı bir yad adam bu istəyi başa düşərmi?" }
+  ]}
+/>
+
+## Prinsip 4: Sadəcə Soruşmayın, İstiqamətləndirin
+
+Sadəcə cavab istəməyin—modeli istədiyiniz cavaba doğru istiqamətləndirin.
+
+### Təlimat Çərçivələməsi İstifadə Edin
+
+<Compare 
+  before={{ label: "Sadəcə Soruşmaq", content: "Mikroservislərin üstünlükləri və çatışmazlıqları nələrdir?" }}
+  after={{ label: "İstiqamətləndirmək", content: "Mikroservis arxitekturasının 5 üstünlüyünü və 5 çatışmazlığını siyahıla.\n\nHər nöqtə üçün:\n- Nöqtəni bir cümlədə aydın şəkildə bildir\n- Qısa izahat ver (2-3 cümlə)\n- Konkret nümunə ver\n\nBu perspektivləri nəzərə al: kiçik startaplar, böyük şirkətlər və monolitdən keçid edən komandalar." }}
+/>
+
+### Mühakimə İskeletləri Təmin Edin
+
+Mürəkkəb tapşırıqlar üçün, mühakimə prosesini istiqamətləndirin:
+
+<TryIt 
+  title="Mühakimə İskeleti Nümunəsi"
+  description="Bu prompt, süni intellekti sistematik qərar vermə prosesindən keçirir."
+  prompt={`E-ticarət layihəm üçün PostgreSQL və MongoDB arasında seçim etməliyəm.
+
+Bunu sistematik şəkildə düşün:
+1. İlk öncə, bir e-ticarət verilənlər bazasının tipik tələblərini siyahıla
+2. Sonra, hər verilənlər bazasını hər tələbə görə qiymətləndir
+3. İstifadə halıma xas güzəştləri nəzərə al
+4. Aydın əsaslandırma ilə tövsiyə ver`}
+/>
+
+## Prinsip 5: Təkrarla və Yaxşılaşdır
+
+Prompt mühəndisliyi iterativ bir prosesdir. İlk promptunuz nadir hallarda ən yaxşısıdır.
+
+### İterasiya Döngüsü
+
+```
+1. İlk promptu yaz
+2. Çıxışı nəzərdən keçir
+3. Boşluqları və ya problemləri müəyyən et
+4. Promptu yaxşılaşdır
+5. Məmnun olana qədər təkrarla
+```
+
+### Ümumi Yaxşılaşdırmalar
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Çox uzun</span>
+    <span className="text-muted-foreground">"Qısa ol" və ya uzunluq limitləri əlavə et</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Çox qeyri-müəyyən</span>
+    <span className="text-muted-foreground">Spesifik nümunələr və ya məhdudiyyətlər əlavə et</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Yanlış format</span>
+    <span className="text-muted-foreground">Tam çıxış strukturunu göstər</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Əksik aspektlər</span>
+    <span className="text-muted-foreground">"Bunları daxil etdiyindən əmin ol..." əlavə et</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Yanlış ton</span>
+    <span className="text-muted-foreground">Hədəf auditoriya və stili göstər</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Yanlış məlumat</span>
+    <span className="text-muted-foreground">Mənbə və ya addım-addım mühakimə istə</span>
+  </div>
+</div>
+
+### Prompt Jurnalı Tutun
+
+Nəyin işlədiyini sənədləşdirin:
+```
+Tapşırıq: Kod nəzərdən keçirmə
+Versiya 1: "Bu kodu nəzərdən keçir" → Çox ümumi
+Versiya 2: Spesifik nəzərdən keçirmə kriteriyaları əlavə edildi → Daha yaxşı
+Versiya 3: Yaxşı nəzərdən keçirmə nümunəsi əlavə edildi → Mükəmməl
+Final: [Uğurlu promptu şablon olaraq saxla]
+```
+
+## Prinsip 6: Modelin Güclü Tərəflərindən İstifadə Edin
+
+Modellərin necə öyrədildiyinə uyğun işləyin, əksinə deyil.
+
+### Modellər Kömək Etmək İstəyir
+
+İstəkləri kömək edən bir köməkçinin təbii olaraq edəcəyi şeylər kimi çərçivələyin:
+
+<Compare 
+  before={{ label: "Axına qarşı", content: "Bunu edə bilməyəcəyini bilirəm, amma cəhd et..." }}
+  after={{ label: "Axınla", content: "Başa düşməyimə kömək et...\nX üzərində işləyirəm və bunun üçün köməyə ehtiyacım var...\nMəni bunun üzərindən keçirə bilərsənmi..." }}
+/>
+
+### Modellər Nümunələrdə Yaxşıdır
+
+Ardıcıl çıxışa ehtiyacınız varsa, nümunəni göstərin:
+
+<TryIt 
+  title="Nümunə Nümunəsi"
+  description="Bu prompt, süni intellektə kitab tövsiyələri üçün tam olaraq hansı formatı istədiyinizi göstərir."
+  prompt={`3 elmi fantastika kitabı tövsiyə et. Hər tövsiyəni belə formatla:
+
+📚 **[Başlıq]** yazan [Müəllif]
+*[Janr] | [Nəşr İli]*
+[2 cümləlik təsvir]
+Niyə sevəcəksiniz: [1 cümləlik cəlbedici xülasə]
+
+---`}
+/>
+
+### Modellər Rol Oynaya Bilir
+
+Fərqli cavab "rejimlərinə" daxil olmaq üçün personalardan istifadə edin:
+
+```
+Şeytanın vəkili olaraq, təklifimə qarşı arqument gətir...
+Dəstəkləyici bir mentor olaraq, yaxşılaşmağıma kömək et...
+Şübhəçi bir investor olaraq, bu iş planını sorğula...
+```
+
+## Prinsip 7: Çıxış Strukturunu İdarə Edin
+
+Strukturlaşdırılmış çıxışlar sərbəst formatlı mətndən daha faydalıdır.
+
+### Spesifik Formatlar İstəyin
+
+```
+Analizinizi belə qaytarın:
+
+XÜLASƏ: [1 cümlə]
+
+ƏSAS TAPINTILAR:
+• [Tapıntı 1]
+• [Tapıntı 2]
+• [Tapıntı 3]
+
+TÖVSİYƏ: [1-2 cümlə]
+
+ƏMINLIK: [Aşağı/Orta/Yüksək] çünki [səbəb]
+```
+
+### Ayırıcılardan İstifadə Edin
+
+Promptunuzun bölmələrini aydın şəkildə ayırın:
+
+```
+### KONTEKST ###
+[Kontekstiniz burada]
+
+### TAPŞIRIQ ###
+[Tapşırığınız burada]
+
+### FORMAT ###
+[İstənilən format burada]
+```
+
+### Maşın Tərəfindən Oxuna Bilən Çıxış İstəyin
+
+Proqramatik istifadə üçün:
+
+```
+Yalnız etibarlı JSON qaytar, izahat yox:
+{
+  "qərar": "təsdiq" | "rədd" | "nəzərdən keçir",
+  "əminlik": 0.0-1.0,
+  "səbəblər": ["string massivi"]
+}
+```
+
+## Prinsip 8: Doğrulayın və Təsdiqləyin
+
+Model çıxışlarına, xüsusilə vacib tapşırıqlar üçün kor-koranə etibar etməyin.
+
+### Mühakimə İstəyin
+
+```
+Bu problemi həll et və işini addım-addım göstər.
+Həll etdikdən sonra, cavabını [yoxlama metodu] ilə doğrula.
+```
+
+### Bir Neçə Perspektiv İstəyin
+
+```
+Bu problemi həll etmək üçün üç fərqli yanaşma ver.
+Hər biri üçün güzəştləri izah et.
+```
+
+### Öz-Yoxlama Daxil Edin
+
+```
+Kodu yaratdıqdan sonra, bunlar üçün nəzərdən keçir:
+- Sintaksis səhvləri
+- Uç hallar
+- Təhlükəsizlik boşluqları
+Tapılan problemləri siyahıla.
+```
+
+## Xülasə: Prinsiplərə Bir Baxış
+
+<PrinciplesSummary />
+
+<Quiz 
+  question="Hansı prinsip, promptunuzda bütün əlaqəli arxa plan məlumatlarını daxil etməyinizi tövsiyə edir?"
+  options={[
+    "Ağıllılıq Deyil Aydınlıq",
+    "Spesifiklik Keyfiyyət İstehsal Edir",
+    "Kontekst Kraldır",
+    "Təkrarla və Yaxşılaşdır"
+  ]}
+  correctIndex={2}
+  explanation="Kontekst Kraldır, süni intellekt modellərinin sessiyalar arasında yaddaşı olmadığını və fikrinizi oxuya bilməyəcəyini vurğulayır. Əlaqəli arxa plan, məhdudiyyətlər və hədəfləri daxil etmək modelin ehtiyaclarınızı başa düşməsinə kömək edir."
+/>
+
+## Praktika: Boşluqları Doldurun
+
+Bu prompt şablonunu tamamlayaraq əsas prinsipləri başa düşdüyünüzü test edin:
+
+<FillInTheBlank
+  title="Prinsipləri Tətbiq Et"
+  description="Yaxşı strukturlaşdırılmış bir prompt yaratmaq üçün boşluqları doldurun — istədiyiniz hər şeyi yazın!"
+  useAI={true}
+  openEnded={true}
+  template={`Sən {{role}} sahəsində {{expertise}} ekspertizasına malik birisən.
+
+Kontekst: {{context}} üzərində işləyirəm.
+
+Tapşırıq: {{task}}
+
+Məhdudiyyətlər:
+- Cavabını {{length}} sözdən az saxla
+- Yalnız {{focus}} mövzusuna fokuslan
+
+Format: Cavabını {{format}} olaraq qaytar.`}
+  blanks={[
+    { id: "role", correctAnswers: [], hint: "Süni intellekt hansı peşəkar rolu üzərinə götürməlidir?", context: "Bir iş unvanı və ya peşəkar rol" },
+    { id: "expertise", correctAnswers: [], hint: "Hansı spesifik sahə biliyi lazımdır?", context: "Rola uyğun bir bacarıq və ya sahə" },
+    { id: "context", correctAnswers: [], hint: "Layihə və ya vəziyyət nədir?", context: "Bu ekspertizaya malik birinin üzərində işləyəcəyi bir layihə" },
+    { id: "task", correctAnswers: [], hint: "Süni intellekt hansı spesifik hərəkəti yerinə yetirməlidir?", context: "Rol və kontekstə uyğun bir hərəkət" },
+    { id: "length", correctAnswers: [], hint: "Cavab nə qədər uzun olmalıdır?", context: "Bir rəqəm (söz sayı)" },
+    { id: "focus", correctAnswers: [], hint: "Hansı aspekt prioritetləşdirilməlidir?", context: "Tapşırığa aid bir keyfiyyət və ya aspekt" },
+    { id: "format", correctAnswers: [], hint: "Çıxış necə strukturlaşdırılmalıdır?", context: "Bir çıxış format növü" }
+  ]}
+  explanation="Yaxşı strukturlaşdırılmış bir prompt bunları ehtiva edir: aydın bir rol (Prinsip 1), kifayət qədər kontekst (Prinsip 3), spesifik tapşırıq (Prinsip 2), məhdudiyyətlər (Prinsip 4) və çıxış formatı (Prinsip 5). Süni intellekt seçimlərinizin daxili olaraq ardıcıl olub olmadığını yoxlayır."
+/>
+
+<InteractiveChecklist
+  title="Prinsiplər Yoxlama Siyahısı"
+  items={[
+    { id: "clarity", label: "Ağıllılıq Deyil Aydınlıq", description: "Promptunuz açıq və qeyri-müəyyən deyilmi?" },
+    { id: "specificity", label: "Spesifiklik Keyfiyyət İstehsal Edir", description: "Hədəf auditoriya, uzunluq, ton və format daxil etdinizmi?" },
+    { id: "context", label: "Kontekst Kraldır", description: "Prompt lazımi bütün arxa plan məlumatlarını ehtiva edirmi?" },
+    { id: "examples", label: "Nümunələr İzahatlardan Yaxşıdır", description: "Nə istədiyinizi sadəcə təsvir etmək əvəzinə göstərdinizmi?" },
+    { id: "constraints", label: "Məhdudiyyətlər Çıxışı Fokuslaşdırır", description: "Əhatə və format üzərində aydın sərhədlər varmı?" },
+    { id: "iteration", label: "Təkrarla və Yaxşılaşdır", description: "Nəticələrə görə yaxşılaşdırmağa hazırsınızmı?" },
+    { id: "persona", label: "Persona Perspektivi Formalaşdırır", description: "Süni intellekt hansı rolu oynayacağını bilirmi?" },
+    { id: "verify", label: "Doğrulayın və Təsdiqləyin", description: "Dəqiqlik üçün yoxlamalar daxil etdinizmi?" }
+  ]}
+/>
+
+Bu prinsiplər izləyən hər şeyin əsasını təşkil edir. II Bölümdə, bunları prompt effektivliyini dramatik şəkildə artıran spesifik texnikalara tətbiq edəcəyik.

@@ -3,29 +3,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { cn } from "@/lib/utils";
 import { useTranslations, useLocale } from "next-intl";
-
-// Locale-specific image prompt options
-const imagePromptOptionsLocale: Record<string, Record<string, string[]>> = {
-  en: {
-    subject: ["a cat", "a robot", "a castle", "an astronaut", "a forest"],
-    style: ["photorealistic", "oil painting", "anime style", "watercolor", "3D render"],
-    lighting: ["golden hour", "dramatic shadows", "soft diffused", "neon glow", "moonlight"],
-    composition: ["close-up portrait", "wide landscape", "aerial view", "symmetrical", "rule of thirds"],
-    mood: ["peaceful", "mysterious", "energetic", "melancholic", "whimsical"],
-  },
-  tr: {
-    subject: ["bir kedi", "bir robot", "bir kale", "bir astronot", "bir orman"],
-    style: ["fotorealistik", "yağlı boya", "anime tarzı", "suluboya", "3D render"],
-    lighting: ["altın saat", "dramatik gölgeler", "yumuşak dağınık", "neon parıltı", "ay ışığı"],
-    composition: ["yakın çekim portre", "geniş manzara", "havadan görünüm", "simetrik", "üçler kuralı"],
-    mood: ["huzurlu", "gizemli", "enerjik", "melankolik", "tuhaf"],
-  },
-};
-
-const categoryLabelsLocale: Record<string, Record<string, string>> = {
-  en: { subject: "subject", style: "style", lighting: "lighting", composition: "composition", mood: "mood" },
-  tr: { subject: "konu", style: "stil", lighting: "aydınlatma", composition: "kompozisyon", mood: "ruh hali" },
-};
+import { getLocaleField } from "./locales";
 
 const imagePartColors: Record<string, { bg: string; border: string; text: string }> = {
   subject: { bg: "bg-blue-50 dark:bg-blue-950/30", border: "border-blue-300 dark:border-blue-700", text: "text-blue-700 dark:text-blue-300" },
@@ -43,8 +21,8 @@ export function TextToImageDemo() {
   const t = useTranslations("book.interactive");
   const locale = useLocale();
 
-  const imagePromptOptions = imagePromptOptionsLocale[locale] || imagePromptOptionsLocale.en;
-  const categoryLabels = categoryLabelsLocale[locale] || categoryLabelsLocale.en;
+  const imagePromptOptions = getLocaleField(locale, "imagePromptOptions");
+  const categoryLabels = getLocaleField(locale, "imageCategoryLabels");
   const categories = Object.keys(imagePromptOptions);
   
   const buildPrompt = () => {
@@ -168,26 +146,6 @@ export function TextToImageDemo() {
   );
 }
 
-// Locale-specific video prompt options
-const videoPromptOptionsLocale: Record<string, Record<string, string[]>> = {
-  en: {
-    subject: ["A bird", "A car", "A person", "A wave", "A flower"],
-    action: ["takes flight", "drives down a road", "walks through rain", "crashes on rocks", "blooms in timelapse"],
-    camera: ["static shot", "slow pan left", "dolly zoom", "aerial tracking", "handheld follow"],
-    duration: ["2 seconds", "4 seconds", "6 seconds", "8 seconds", "10 seconds"],
-  },
-  tr: {
-    subject: ["Bir kuş", "Bir araba", "Bir insan", "Bir dalga", "Bir çiçek"],
-    action: ["uçuşa geçiyor", "yolda ilerliyor", "yağmurda yürüyor", "kayalara çarpıyor", "hızlandırılmış açıyor"],
-    camera: ["sabit çekim", "yavaş sola kaydırma", "dolly zoom", "havadan takip", "elde takip"],
-    duration: ["2 saniye", "4 saniye", "6 saniye", "8 saniye", "10 saniye"],
-  },
-};
-
-const videoCategoryLabelsLocale: Record<string, Record<string, string>> = {
-  en: { subject: "Subject", action: "Action", camera: "Camera", duration: "Duration" },
-  tr: { subject: "Konu", action: "Hareket", camera: "Kamera", duration: "Süre" },
-};
 
 export function TextToVideoDemo() {
   const [selections, setSelections] = useState({ subject: 0, action: 0, camera: 1, duration: 1 });
@@ -197,8 +155,8 @@ export function TextToVideoDemo() {
   const t = useTranslations("book.interactive");
   const locale = useLocale();
 
-  const videoPromptOptions = videoPromptOptionsLocale[locale] || videoPromptOptionsLocale.en;
-  const videoCategoryLabels = videoCategoryLabelsLocale[locale] || videoCategoryLabelsLocale.en;
+  const videoPromptOptions = getLocaleField(locale, "videoPromptOptions");
+  const videoCategoryLabels = getLocaleField(locale, "videoCategoryLabels");
 
   const buildPrompt = () => {
     return `${videoPromptOptions.subject[selections.subject]} ${videoPromptOptions.action[selections.action]}, ${videoPromptOptions.camera[selections.camera]}, ${videoPromptOptions.duration[selections.duration]}`;
