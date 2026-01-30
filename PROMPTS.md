@@ -59707,3 +59707,16 @@ Constraints and Standards:
 
 </details>
 
+<details>
+<summary><strong>scaryface</strong></summary>
+
+## scaryface
+
+Contributed by [@cem.royal@gmail.com](https://github.com/cem.royal@gmail.com)
+
+```md
+I want a scaryface masked man with really realistic lilke chasing me etc as cosplay
+```
+
+</details>
+
