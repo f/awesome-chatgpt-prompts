@@ -1,373 +1,214 @@
-Even experienced prompt engineers fall into predictable traps. The good news? Once you recognize these patterns, they're easy to avoid. This chapter walks through the most common pitfalls, explains why they happen, and gives you concrete strategies to sidestep them.
+Selbst erfahrene Prompt Engineers fallen in vorhersehbare Fallen. Die gute Nachricht? Sobald du diese Muster erkennst, sind sie leicht zu vermeiden. Dieses Kapitel führt durch die häufigsten Fallstricke, erklärt warum sie passieren und gibt dir konkrete Strategien, um sie zu umgehen.
 
-<Callout type="warning" title="Why Pitfalls Matter">
-A single pitfall can turn a powerful AI into a frustrating tool. Understanding these patterns is often the difference between "AI doesn't work for me" and "AI transformed my workflow."
+<Callout type="warning" title="Warum Fallstricke wichtig sind">
+Ein einzelner Fallstrick kann eine leistungsstarke KI in ein frustrierendes Werkzeug verwandeln. Diese Muster zu verstehen ist oft der Unterschied zwischen "KI funktioniert für mich nicht" und "KI hat meinen Workflow transformiert."
 </Callout>
 
-## The Vagueness Trap
+## Die Vagheits-Falle
 
-**The Pattern**: You know what you want, so you assume the AI will figure it out too. But vague prompts produce vague results.
+**Das Muster**: Du weißt, was du willst, also nimmst du an, die KI wird es auch herausfinden. Aber vage Prompts produzieren vage Ergebnisse.
 
 <Compare 
-  before={{ label: "Vague prompt", content: "Write something about marketing." }}
-  after={{ label: "Specific prompt", content: "Write a 300-word LinkedIn post about the importance of brand consistency for B2B SaaS companies, targeting marketing managers. Use a professional but approachable tone. Include one concrete example." }}
+  before={{ label: "Vager Prompt", content: "Schreib etwas über Marketing." }}
+  after={{ label: "Spezifischer Prompt", content: "Schreib einen 300-Wörter LinkedIn-Post über die Wichtigkeit von Markenkonsistenz für B2B-SaaS-Unternehmen, zielend auf Marketing-Manager. Verwende einen professionellen aber zugänglichen Ton. Füge ein konkretes Beispiel ein." }}
 />
 
-**Why it happens**: We naturally skip details when we think they're "obvious." But what's obvious to you isn't obvious to a model that has no context about your situation, audience, or goals.
+**Warum es passiert**: Wir überspringen natürlich Details, wenn wir denken, sie seien "offensichtlich." Aber was für dich offensichtlich ist, ist nicht offensichtlich für ein Modell, das keinen Kontext über deine Situation, dein Publikum oder deine Ziele hat.
 
 <TryIt 
-  title="Specificity Improver"
-  description="Take a vague prompt and make it specific. Notice how adding details transforms the quality of results."
-  prompt={`I have a vague prompt that needs improvement.
+  title="Spezifitäts-Verbesserer"
+  description="Nimm einen vagen Prompt und mach ihn spezifisch. Beachte, wie das Hinzufügen von Details die Ergebnisqualität transformiert."
+  prompt={`Ich habe einen vagen Prompt, der verbessert werden muss.
 
-Original vague prompt: "\${vaguePrompt}"
+Ursprünglicher vager Prompt: "\${vagerPrompt}"
 
-Make this prompt specific by adding:
-1. **Audience**: Who will read/use this?
-2. **Format**: What structure should it have?
-3. **Length**: How long should it be?
-4. **Tone**: What voice or style?
-5. **Context**: What's the situation or purpose?
-6. **Constraints**: Any must-haves or must-avoids?
+Mach diesen Prompt spezifisch, indem du hinzufügst:
+1. **Zielgruppe**: Wer wird das lesen/verwenden?
+2. **Format**: Welche Struktur soll es haben?
+3. **Länge**: Wie lang soll es sein?
+4. **Ton**: Welche Stimme oder welcher Stil?
+5. **Kontext**: Was ist die Situation oder der Zweck?
+6. **Einschränkungen**: Muss-Haben oder Muss-Vermeiden?
 
-Rewrite the prompt with all these details included.`}
+Schreibe den Prompt mit all diesen Details um.`}
 />
 
-## The Overloading Trap
+## Die Überladungs-Falle
 
-**The Pattern**: You try to get everything in one prompt—comprehensive, funny, professional, beginner-friendly, advanced, SEO-optimized, and short. The result? The AI misses half your requirements or produces a confused mess.
+**Das Muster**: Du versuchst, alles in einem Prompt zu bekommen—umfassend, witzig, professionell, anfängerfreundlich, fortgeschritten, SEO-optimiert und kurz. Das Ergebnis? Die KI verpasst die Hälfte deiner Anforderungen oder produziert ein verworrenes Durcheinander.
 
 <Compare 
-  before={{ label: "Overloaded prompt", content: "Write a blog post about AI that's SEO optimized and includes code examples and is funny but professional and targets beginners but also has advanced tips and should be 500 words but comprehensive and mentions our product and has a call to action..." }}
-  after={{ label: "Focused prompt", content: "Write a 500-word blog post introducing AI to beginners.\n\nRequirements:\n1. Explain one core concept clearly\n2. Include one simple code example\n3. End with a call to action\n\nTone: Professional but approachable" }}
+  before={{ label: "Überladener Prompt", content: "Schreib einen Blogpost über KI, der SEO-optimiert ist und Code-Beispiele enthält und witzig aber professionell ist und auf Anfänger zielt aber auch fortgeschrittene Tipps hat und 500 Wörter sein soll aber umfassend und unser Produkt erwähnt und einen Call-to-Action hat..." }}
+  after={{ label: "Fokussierter Prompt", content: "Schreib einen 500-Wörter-Blogpost, der Anfängern KI vorstellt.\n\nAnforderungen:\n1. Erkläre ein Kernkonzept klar\n2. Füge ein einfaches Code-Beispiel ein\n3. Ende mit einem Call-to-Action\n\nTon: Professionell aber zugänglich" }}
 />
 
-**Why it happens**: Fear of multiple interactions, or wanting to "get it all out" in one go. But cognitive overload affects AI just like it affects humans—too many competing requirements leads to dropped balls.
+**Warum es passiert**: Angst vor mehreren Interaktionen, oder der Wunsch, "alles rauszulassen" auf einmal. Aber kognitive Überlastung betrifft KI genauso wie Menschen—zu viele konkurrierende Anforderungen führen zu verpassten Punkten.
 
 <InfoGrid items={[
-  { label: "Limit Requirements", description: "Stick to 3-5 key requirements per prompt", example: "Focus on: audience, format, length, one key constraint", exampleType: "text", color: "green" },
-  { label: "Use Numbered Lists", description: "Structure makes priorities clear", example: "1. Must have X, 2. Should have Y, 3. Nice to have Z", exampleType: "text", color: "green" },
-  { label: "Chain Prompts", description: "Break complex tasks into steps", example: "First: outline. Then: draft section 1. Then: draft section 2.", exampleType: "text", color: "green" },
-  { label: "Prioritize Ruthlessly", description: "What's essential vs. nice-to-have?", example: "If I could only get ONE thing right, what would it be?", color: "green" }
+  { label: "Anforderungen begrenzen", description: "Bleib bei 3-5 Schlüsselanforderungen pro Prompt", example: "Fokus auf: Zielgruppe, Format, Länge, eine Schlüsseleinschränkung", exampleType: "text", color: "green" },
+  { label: "Nummerierte Listen verwenden", description: "Struktur macht Prioritäten klar", example: "1. Muss X haben, 2. Sollte Y haben, 3. Schön zu haben Z", exampleType: "text", color: "green" },
+  { label: "Prompts verketten", description: "Komplexe Aufgaben in Schritte aufteilen", example: "Erst: Gliederung. Dann: Abschnitt 1. Dann: Abschnitt 2.", exampleType: "text", color: "green" },
+  { label: "Rücksichtslos priorisieren", description: "Was ist essenziell vs. nice-to-have?", example: "Wenn ich nur EINE Sache richtig machen könnte, was wäre es?", color: "green" }
 ]} />
 
-<Callout type="tip" title="Learn Prompt Chaining">
-When a single prompt gets overloaded, [prompt chaining](/book/11-prompt-chaining) is often the solution. Break complex tasks into a sequence of focused prompts, where each step builds on the previous one.
-</Callout>
+## Die Annahmen-Falle
 
-## The Assumption Trap
-
-**The Pattern**: You reference something "from earlier" or assume the AI knows your project, your company, or your previous conversations. It doesn't.
+**Das Muster**: Du referenzierst etwas "von vorher" oder nimmst an, die KI kennt dein Projekt, dein Unternehmen oder deine vorherigen Gespräche. Tut sie nicht.
 
 <Compare 
-  before={{ label: "Assumes context", content: "Update the function I showed you earlier to add error handling." }}
-  after={{ label: "Provides context", content: "Update this function to add error handling:\n\n```python\ndef calculate_total(items):\n    return sum(item.price for item in items)\n```\n\nAdd try/except for empty lists and invalid items." }}
+  before={{ label: "Nimmt Kontext an", content: "Aktualisiere die Funktion, die ich dir vorher gezeigt habe, um Fehlerbehandlung hinzuzufügen." }}
+  after={{ label: "Liefert Kontext", content: "Aktualisiere diese Funktion, um Fehlerbehandlung hinzuzufügen:\n\n```python\ndef calculate_total(items):\n    return sum(item.price for item in items)\n```\n\nFüge try/except für leere Listen und ungültige Items hinzu." }}
 />
 
-**Why it happens**: AI conversations feel like talking to a colleague. But unlike colleagues, most AI models have no persistent memory between sessions—each conversation starts fresh.
+**Warum es passiert**: KI-Gespräche fühlen sich an wie mit einem Kollegen reden. Aber anders als Kollegen haben die meisten KI-Modelle kein persistentes Gedächtnis zwischen Sitzungen—jedes Gespräch startet frisch.
 
-<TryIt 
-  title="Context Completeness Check"
-  description="Use this to verify your prompt contains all necessary context before sending."
-  prompt={`Review this prompt for missing context:
+## Die Suggestiv-Fragen-Falle
 
-"\${promptToCheck}"
-
-Check for:
-1. **Referenced but not included**: Does it mention "the code," "the document," "earlier," or "above" without including the actual content?
-
-2. **Assumed knowledge**: Does it assume knowledge about a specific project, company, or situation?
-
-3. **Implicit requirements**: Are there unstated expectations about format, length, or style?
-
-4. **Missing background**: Would a smart stranger understand what's being asked?
-
-List what's missing and suggest how to add it.`}
-/>
-
-## The Leading Question Trap
-
-**The Pattern**: You phrase your question in a way that embeds your assumption, getting back confirmation rather than insight.
+**Das Muster**: Du formulierst deine Frage so, dass sie deine Annahme einbettet, und bekommst Bestätigung statt Einsicht zurück.
 
 <Compare 
-  before={{ label: "Leading question", content: "Why is Python the best programming language for data science?" }}
-  after={{ label: "Neutral question", content: "Compare Python, R, and Julia for data science work. What are the strengths and weaknesses of each? When would you choose one over the others?" }}
+  before={{ label: "Suggestivfrage", content: "Warum ist Python die beste Programmiersprache für Data Science?" }}
+  after={{ label: "Neutrale Frage", content: "Vergleiche Python, R und Julia für Data Science-Arbeit. Was sind die Stärken und Schwächen von jeder? Wann würdest du eine über die anderen wählen?" }}
 />
 
-**Why it happens**: We often seek confirmation, not information. Our phrasing unconsciously pushes toward the answer we expect or want.
+**Warum es passiert**: Wir suchen oft Bestätigung, nicht Information. Unsere Formulierung drängt unbewusst zu der Antwort, die wir erwarten oder wollen.
 
-<TryIt 
-  title="Bias Detector"
-  description="Check your prompts for hidden biases and leading language."
-  prompt={`Analyze this prompt for bias and leading language:
+## Die Alles-Glauben-Falle
 
-"\${promptToAnalyze}"
-
-Check for:
-1. **Embedded assumptions**: Does the question assume something is true?
-2. **Leading phrasing**: Does "Why is X good?" assume X is good?
-3. **Missing alternatives**: Does it ignore other possibilities?
-4. **Confirmation seeking**: Is it asking for validation rather than analysis?
-
-Rewrite the prompt to be neutral and open-ended.`}
-/>
-
-## The Trust Everything Trap
-
-**The Pattern**: AI responses sound confident and authoritative, so you accept them without verification. But confidence doesn't equal accuracy.
+**Das Muster**: KI-Antworten klingen selbstbewusst und autoritativ, also akzeptierst du sie ohne Verifizierung. Aber Selbstbewusstsein gleicht nicht Genauigkeit.
 
 <InfoGrid items={[
-  { label: "Unreviewed Content", description: "Publishing AI-generated text without fact-checking", example: "Blog posts with invented statistics or fake quotes", exampleType: "text", color: "red" },
-  { label: "Untested Code", description: "Using AI code in production without testing", example: "Security vulnerabilities, edge case failures, subtle bugs", exampleType: "text", color: "red" },
-  { label: "Blind Decisions", description: "Making important choices based solely on AI analysis", example: "Business strategy based on hallucinated market data", exampleType: "text", color: "red" }
+  { label: "Ungeprüfter Inhalt", description: "KI-generierten Text ohne Faktenprüfung veröffentlichen", example: "Blogposts mit erfundenen Statistiken oder falschen Zitaten", exampleType: "text", color: "red" },
+  { label: "Ungetesteter Code", description: "KI-Code ohne Testen in Produktion verwenden", example: "Sicherheitslücken, Edge-Case-Fehler, subtile Bugs", exampleType: "text", color: "red" },
+  { label: "Blinde Entscheidungen", description: "Wichtige Entscheidungen allein auf KI-Analyse basieren", example: "Geschäftsstrategie basierend auf halluzinierten Marktdaten", exampleType: "text", color: "red" }
 ]} />
 
-**Why it happens**: AI sounds confident even when completely wrong. We're also prone to "automation bias"—the tendency to trust computer outputs more than we should.
+**Warum es passiert**: KI klingt selbstbewusst, auch wenn sie komplett falsch liegt. Wir neigen auch zu "Automation Bias"—der Tendenz, Computerausgaben mehr zu vertrauen als wir sollten.
 
-<TryIt 
-  title="Verification Prompt"
-  description="Use this to get the AI to flag its own uncertainties and potential errors."
-  prompt={`I need you to provide information about: \${topic}
+## Die Ein-Versuch-Falle
 
-IMPORTANT: After your response, add a section called "Verification Notes" that includes:
-
-1. **Confidence Level**: How certain are you about this information? (High/Medium/Low)
-
-2. **Potential Errors**: What parts of this response are most likely to be wrong or outdated?
-
-3. **What to Verify**: What specific claims should the user fact-check independently?
-
-4. **Sources to Check**: Where could the user verify this information?
-
-Be honest about limitations. It's better to flag uncertainty than to sound confident about something wrong.`}
-/>
-
-## The One-Shot Trap
-
-**The Pattern**: You send one prompt, get a mediocre result, and conclude that AI "doesn't work" for your use case. But great results almost always require iteration.
+**Das Muster**: Du sendest einen Prompt, bekommst ein mittelmäßiges Ergebnis, und schließt daraus, dass KI für deinen Anwendungsfall "nicht funktioniert." Aber großartige Ergebnisse erfordern fast immer Iteration.
 
 <Compare 
-  before={{ label: "One-shot thinking", content: "Mediocre output → \"AI can't do this\" → Give up" }}
-  after={{ label: "Iterative thinking", content: "Mediocre output → Analyze what's wrong → Refine prompt → Better output → Refine again → Excellent output" }}
+  before={{ label: "Ein-Versuch-Denken", content: "Mittelmäßige Ausgabe → \"KI kann das nicht\" → Aufgeben" }}
+  after={{ label: "Iteratives Denken", content: "Mittelmäßige Ausgabe → Analysieren was falsch ist → Prompt verfeinern → Bessere Ausgabe → Nochmal verfeinern → Ausgezeichnete Ausgabe" }}
 />
 
-**Why it happens**: We expect AI to read our minds on the first try. We don't expect to iterate with Google searches, but somehow expect perfection from AI.
+**Warum es passiert**: Wir erwarten, dass KI beim ersten Versuch unsere Gedanken liest. Wir erwarten nicht, bei Google-Suchen zu iterieren, aber erwarten irgendwie Perfektion von KI.
 
-<TryIt 
-  title="Iteration Helper"
-  description="When your first result isn't right, use this to systematically improve it."
-  prompt={`My original prompt was:
-"\${originalPrompt}"
+## Die Format-Vernachlässigungs-Falle
 
-The output I got was:
-"\${outputReceived}"
-
-What's wrong with it:
-"\${whatIsWrong}"
-
-Help me iterate:
-
-1. **Diagnosis**: Why did the original prompt produce this result?
-
-2. **Missing Elements**: What was I not explicit about that I should have been?
-
-3. **Revised Prompt**: Rewrite my prompt to address these issues.
-
-4. **What to Watch For**: What should I check in the new output?`}
-/>
-
-## The Format Neglect Trap
-
-**The Pattern**: You focus on what you want the AI to say, but forget to specify how it should be formatted. Then you get prose when you needed JSON, or a wall of text when you needed bullet points.
+**Das Muster**: Du konzentrierst dich darauf, was die KI sagen soll, aber vergisst, wie es formatiert sein soll. Dann bekommst du Fließtext, wenn du JSON brauchtest, oder eine Textwand, wenn du Aufzählungspunkte brauchtest.
 
 <Compare 
-  before={{ label: "No format specified", content: "Extract the key data from this text." }}
-  after={{ label: "Format specified", content: "Extract the key data from this text as JSON:\n\n{\n  \"name\": string,\n  \"date\": \"YYYY-MM-DD\",\n  \"amount\": number,\n  \"category\": string\n}\n\nReturn ONLY the JSON, no explanation." }}
+  before={{ label: "Kein Format spezifiziert", content: "Extrahiere die Schlüsseldaten aus diesem Text." }}
+  after={{ label: "Format spezifiziert", content: "Extrahiere die Schlüsseldaten aus diesem Text als JSON:\n\n{\n  \"name\": string,\n  \"datum\": \"YYYY-MM-DD\",\n  \"betrag\": number,\n  \"kategorie\": string\n}\n\nGib NUR das JSON zurück, keine Erklärung." }}
 />
 
-**Why it happens**: We focus on content over structure. But if you need to parse the output programmatically, or paste it somewhere specific, format matters as much as content.
+**Warum es passiert**: Wir konzentrieren uns auf Inhalt statt Struktur. Aber wenn du die Ausgabe programmatisch parsen musst oder irgendwo Bestimmtes einfügen, ist Format genauso wichtig wie Inhalt.
 
-<TryIt 
-  title="Format Specification Builder"
-  description="Generate clear format specifications for any output type you need."
-  prompt={`I need AI output in a specific format.
+## Die Kontextfenster-Falle
 
-**What I'm asking for**: \${taskDescription}
-**How I'll use the output**: \${intendedUse}
-**Preferred format**: \${formatType} (JSON, Markdown, CSV, bullet points, etc.)
-
-Generate a format specification I can add to my prompt, including:
-
-1. **Exact structure** with field names and types
-2. **Example output** showing the format
-3. **Constraints** (e.g., "Return ONLY the JSON, no explanation")
-4. **Edge cases** (what to output if data is missing)`}
-/>
-
-## The Context Window Trap
-
-**The Pattern**: You paste an enormous document and expect comprehensive analysis. But models have limits—they may truncate, lose focus, or miss important details in long inputs.
+**Das Muster**: Du fügst ein riesiges Dokument ein und erwartest umfassende Analyse. Aber Modelle haben Grenzen—sie können kürzen, den Fokus verlieren oder wichtige Details in langen Eingaben verpassen.
 
 <InfoGrid items={[
-  { label: "Know Your Limits", description: "Different models have different context windows", example: "GPT-4: 128K tokens, Claude: 200K tokens, Gemini: 1M tokens", exampleType: "text", color: "blue" },
-  { label: "Chunk Large Inputs", description: "Break documents into manageable sections", example: "Analyze chapters separately, then synthesize", exampleType: "text", color: "blue" },
-  { label: "Front-Load Important Info", description: "Put critical context early in the prompt", example: "Key requirements first, background details later", exampleType: "text", color: "blue" },
-  { label: "Trim the Fat", description: "Remove unnecessary context", example: "Do you really need the entire doc, or just relevant sections?", exampleType: "text", color: "blue" }
+  { label: "Kenne deine Grenzen", description: "Verschiedene Modelle haben verschiedene Kontextfenster", example: "GPT-4: 128K Tokens, Claude: 200K Tokens, Gemini: 1M Tokens", exampleType: "text", color: "blue" },
+  { label: "Große Eingaben aufteilen", description: "Dokumente in handhabbare Abschnitte aufbrechen", example: "Kapitel separat analysieren, dann synthetisieren", exampleType: "text", color: "blue" },
+  { label: "Wichtiges nach vorne", description: "Kritischen Kontext früh im Prompt platzieren", example: "Schlüsselanforderungen zuerst, Hintergrunddetails später", exampleType: "text", color: "blue" },
+  { label: "Unnötiges kürzen", description: "Unnötigen Kontext entfernen", example: "Brauchst du wirklich das ganze Dokument, oder nur relevante Abschnitte?", exampleType: "text", color: "blue" }
 ]} />
 
-<TryIt 
-  title="Document Chunking Strategy"
-  description="Get a strategy for processing documents that exceed context limits."
-  prompt={`I have a large document to analyze:
+## Die Vermenschlichungs-Falle
 
-**Document type**: \${documentType}
-**Approximate length**: \${documentLength}
-**What I need to extract/analyze**: \${analysisGoal}
-**Model I'm using**: \${modelName}
-
-Create a chunking strategy:
-
-1. **How to divide**: Logical break points for this document type
-2. **What to include in each chunk**: Context needed for standalone analysis
-3. **How to synthesize**: Combining results from multiple chunks
-4. **What to watch for**: Information that might span chunks`}
-/>
-
-## The Anthropomorphization Trap
-
-**The Pattern**: You treat AI like a human colleague—expecting it to "enjoy" tasks, remember you, or care about outcomes. It doesn't.
+**Das Muster**: Du behandelst KI wie einen menschlichen Kollegen—erwartest, dass sie Aufgaben "genießt," sich an dich erinnert, oder sich um Ergebnisse kümmert. Tut sie nicht.
 
 <Compare 
-  before={{ label: "Anthropomorphized", content: "I'm sure you'll enjoy this creative project! I know you love helping people, and this is really important to me personally." }}
-  after={{ label: "Clear and direct", content: "Write a creative short story with these specifications:\n- Genre: Science fiction\n- Length: 500 words\n- Tone: Hopeful\n- Must include: A twist ending" }}
+  before={{ label: "Vermenschlicht", content: "Ich bin sicher, du wirst dieses kreative Projekt genießen! Ich weiß, du liebst es, Menschen zu helfen, und das ist mir persönlich wirklich wichtig." }}
+  after={{ label: "Klar und direkt", content: "Schreib eine kreative Kurzgeschichte mit diesen Spezifikationen:\n- Genre: Science-Fiction\n- Länge: 500 Wörter\n- Ton: Hoffnungsvoll\n- Muss enthalten: Eine Wendung am Ende" }}
 />
 
-**Why it happens**: AI responses are so human-like that we naturally slip into social patterns. But emotional appeals don't make the AI try harder—clear instructions do.
+**Warum es passiert**: KI-Antworten sind so menschenähnlich, dass wir natürlich in soziale Muster verfallen. Aber emotionale Appelle bringen die KI nicht dazu, sich mehr anzustrengen—klare Anweisungen tun das.
 
-<Callout type="info" title="What Actually Helps">
-Instead of emotional appeals, focus on: clear requirements, good examples, specific constraints, and explicit success criteria. These improve outputs. "Please try really hard" doesn't.
-</Callout>
+## Die Sicherheits-Vernachlässigungs-Falle
 
-## The Security Neglect Trap
-
-**The Pattern**: In the rush to get things working, you include sensitive information in prompts—API keys, passwords, personal data, or proprietary information.
+**Das Muster**: Im Eifer, Dinge zum Laufen zu bringen, fügst du sensible Informationen in Prompts ein—API-Schlüssel, Passwörter, persönliche Daten oder proprietäre Informationen.
 
 <InfoGrid items={[
-  { label: "Secrets in Prompts", description: "API keys, passwords, tokens pasted into prompts", example: "\"Use this API key: sk-abc123...\"", color: "red" },
-  { label: "Personal Data", description: "Including PII that gets sent to third-party servers", example: "Customer names, emails, addresses in prompts", exampleType: "text", color: "red" },
-  { label: "Unsanitized User Input", description: "Passing user input directly into prompts", example: "Prompt injection vulnerabilities", exampleType: "text", color: "red" },
-  { label: "Proprietary Information", description: "Trade secrets or confidential data", example: "Internal strategies, unreleased product details", exampleType: "text", color: "red" }
+  { label: "Geheimnisse in Prompts", description: "API-Schlüssel, Passwörter, Tokens in Prompts eingefügt", example: "\"Verwende diesen API-Key: sk-abc123...\"", color: "red" },
+  { label: "Persönliche Daten", description: "PII einbeziehen, die an Drittserver gesendet werden", example: "Kundennamen, E-Mails, Adressen in Prompts", exampleType: "text", color: "red" },
+  { label: "Unsanierte Benutzereingabe", description: "Benutzereingabe direkt in Prompts übergeben", example: "Prompt-Injection-Schwachstellen", exampleType: "text", color: "red" },
+  { label: "Proprietäre Informationen", description: "Geschäftsgeheimnisse oder vertrauliche Daten", example: "Interne Strategien, unveröffentlichte Produktdetails", exampleType: "text", color: "red" }
 ]} />
 
-**Why it happens**: Focus on functionality over security. But remember: prompts often go to external servers, may be logged, and could be used for training.
+**Warum es passiert**: Fokus auf Funktionalität statt Sicherheit. Aber denk dran: Prompts gehen oft an externe Server, können geloggt werden und könnten fürs Training verwendet werden.
 
-<TryIt 
-  title="Security Review"
-  description="Check your prompt for security issues before sending."
-  prompt={`Review this prompt for security concerns:
+## Die Halluzinations-Ignoranz-Falle
 
-"\${promptToReview}"
-
-Check for:
-
-1. **Exposed Secrets**: API keys, passwords, tokens, credentials
-2. **Personal Data**: Names, emails, addresses, phone numbers, SSNs
-3. **Proprietary Info**: Trade secrets, internal strategies, confidential data
-4. **Injection Risks**: User input that could manipulate the prompt
-
-For each issue found:
-- Explain the risk
-- Suggest how to redact or protect the information
-- Recommend safer alternatives`}
-/>
-
-## The Hallucination Ignorance Trap
-
-**The Pattern**: You ask for citations, statistics, or specific facts, and assume they're real because the AI stated them confidently. But AI regularly invents plausible-sounding information.
+**Das Muster**: Du fragst nach Zitaten, Statistiken oder spezifischen Fakten und nimmst an, sie seien real, weil die KI sie selbstbewusst formuliert hat. Aber KI erfindet regelmäßig plausibel klingende Informationen.
 
 <Compare 
-  before={{ label: "Trusting blindly", content: "Give me 5 statistics about remote work productivity with sources." }}
-  after={{ label: "Acknowledging limitations", content: "What do we know about remote work productivity? For any statistics you mention, note whether they're well-established findings or more uncertain. I will verify any specific numbers independently." }}
+  before={{ label: "Blindes Vertrauen", content: "Gib mir 5 Statistiken über Remote-Work-Produktivität mit Quellen." }}
+  after={{ label: "Grenzen anerkennen", content: "Was wissen wir über Remote-Work-Produktivität? Für alle Statistiken, die du erwähnst, notiere ob sie etablierte Erkenntnisse oder eher unsicher sind. Ich werde alle spezifischen Zahlen unabhängig verifizieren." }}
 />
 
-**Why it happens**: AI generates text that sounds authoritative. It doesn't "know" when it's making things up—it's predicting likely text, not retrieving verified facts.
+**Warum es passiert**: KI generiert Text, der autoritativ klingt. Sie "weiß" nicht, wenn sie Dinge erfindet—sie prognostiziert wahrscheinlichen Text, ruft keine verifizierten Fakten ab.
 
-<TryIt 
-  title="Hallucination-Resistant Query"
-  description="Structure your prompt to minimize hallucination risk and flag uncertainties."
-  prompt={`I need information about: \${topic}
+## Vor-dem-Senden-Checkliste
 
-Please follow these guidelines to minimize errors:
-
-1. **Stick to well-established facts**. Avoid obscure claims that are hard to verify.
-
-2. **Flag uncertainty**. If you're not confident about something, say "I believe..." or "This may need verification..."
-
-3. **No invented sources**. Don't cite specific papers, books, or URLs unless you're certain they exist. Instead, describe where to find this type of information.
-
-4. **Acknowledge knowledge limits**. If my question is about events after your training data, say so.
-
-5. **Separate fact from inference**. Clearly distinguish between "X is true" and "Based on Y, X is likely true."
-
-Now, with these guidelines in mind: \${actualQuestion}`}
-/>
-
-## Pre-Send Checklist
-
-Before sending any important prompt, run through this quick checklist:
+Bevor du irgendeinen wichtigen Prompt sendest, geh diese schnelle Checkliste durch:
 
 <Checklist 
-  title="Prompt Quality Check"
+  title="Prompt-Qualitäts-Check"
   items={[
-    { text: "Is it specific enough? (Not vague)" },
-    { text: "Is it focused? (Not overloaded with requirements)" },
-    { text: "Does it include all necessary context?" },
-    { text: "Is the question neutral? (Not leading)" },
-    { text: "Have I specified the output format?" },
-    { text: "Is the input within context limits?" },
-    { text: "Are there any security concerns?" },
-    { text: "Am I prepared to verify the output?" },
-    { text: "Am I prepared to iterate if needed?" }
+    { text: "Ist er spezifisch genug? (Nicht vage)" },
+    { text: "Ist er fokussiert? (Nicht überladen mit Anforderungen)" },
+    { text: "Enthält er allen notwendigen Kontext?" },
+    { text: "Ist die Frage neutral? (Nicht suggestiv)" },
+    { text: "Habe ich das Ausgabeformat spezifiziert?" },
+    { text: "Ist die Eingabe innerhalb der Kontextgrenzen?" },
+    { text: "Gibt es Sicherheitsbedenken?" },
+    { text: "Bin ich bereit, die Ausgabe zu verifizieren?" },
+    { text: "Bin ich bereit zu iterieren, wenn nötig?" }
   ]}
 />
 
 <Quiz 
-  question="What's the most dangerous pitfall when using AI for important decisions?"
+  question="Was ist der gefährlichste Fallstrick bei der Verwendung von KI für wichtige Entscheidungen?"
   options={[
-    "Using vague prompts",
-    "Trusting AI outputs without verification",
-    "Not specifying output format",
-    "Overloading prompts with requirements"
+    "Vage Prompts verwenden",
+    "KI-Ausgaben ohne Verifizierung vertrauen",
+    "Ausgabeformat nicht spezifizieren",
+    "Prompts mit Anforderungen überladen"
   ]}
   correctIndex={1}
-  explanation="While all pitfalls cause problems, trusting AI outputs without verification is the most dangerous because it can lead to publishing false information, deploying buggy code, or making decisions based on hallucinated data. AI sounds confident even when completely wrong, making verification essential for any important use case."
+  explanation="Während alle Fallstricke Probleme verursachen, ist das Vertrauen in KI-Ausgaben ohne Verifizierung am gefährlichsten, weil es zum Veröffentlichen falscher Informationen, Bereitstellen von fehlerhaftem Code oder Treffen von Entscheidungen basierend auf halluzinierten Daten führen kann. KI klingt selbstbewusst, auch wenn sie komplett falsch liegt, was Verifizierung für jeden wichtigen Anwendungsfall essenziell macht."
 />
 
-## Analyze Your Prompts
+## Analysiere deine Prompts
 
-Use AI to get instant feedback on your prompt quality. Paste any prompt and get a detailed analysis:
+Verwende KI, um sofortiges Feedback zu deiner Prompt-Qualität zu erhalten. Füge irgendeinen Prompt ein und erhalte eine detaillierte Analyse:
 
 <PromptAnalyzer 
-  title="Prompt Quality Analyzer"
-  description="Get AI-powered feedback on clarity, specificity, and suggestions for improvement"
-  defaultPrompt="Help me with my code"
+  title="Prompt-Qualitäts-Analyzer"
+  description="Erhalte KI-gestütztes Feedback zu Klarheit, Spezifität und Verbesserungsvorschlägen"
+  defaultPrompt="Hilf mir mit meinem Code"
 />
 
-## Debug This Prompt
+## Debugge diesen Prompt
 
-Can you spot what's wrong with this prompt?
+Kannst du erkennen, was an diesem Prompt falsch ist?
 
 <PromptDebugger
-  title="Find the Pitfall"
-  badPrompt="Write a blog post about technology that's SEO optimized with keywords and also funny but professional and includes code examples and targets beginners but has advanced tips and mentions our product TechCo and has social proof and a call to action and is 500 words but comprehensive."
-  badOutput="Here's a draft blog post about technology...
+  title="Finde den Fallstrick"
+  badPrompt="Schreib einen Blogpost über Technologie, der SEO-optimiert ist mit Keywords und auch witzig aber professionell und Code-Beispiele enthält und auf Anfänger zielt aber fortgeschrittene Tipps hat und unser Produkt TechCo erwähnt und Social Proof hat und einen Call-to-Action und 500 Wörter ist aber umfassend."
+  badOutput="Hier ist ein Entwurf eines Blogposts über Technologie...
 
-[Generic, unfocused content that tries to do everything but accomplishes nothing well. Tone shifts awkwardly between casual and technical. Missing half the requirements.]"
+[Generischer, unfokussierter Inhalt, der versucht, alles zu tun, aber nichts gut macht. Der Ton wechselt unbeholfen zwischen locker und technisch. Die Hälfte der Anforderungen fehlt.]"
   options={[
-    { id: "vague", label: "The prompt is too vague", isCorrect: false, explanation: "Actually, the prompt has many specific requirements. The problem is the opposite—too many requirements, not too few." },
-    { id: "overload", label: "The prompt is overloaded with too many competing requirements", isCorrect: true, explanation: "Correct! This prompt asks for SEO + funny + professional + code + beginners + advanced + product mention + social proof + CTA + length constraint. That's 10+ competing requirements! The AI can't satisfy them all, so it does a mediocre job on everything. Solution: break this into multiple focused prompts." },
-    { id: "format", label: "The output format isn't specified", isCorrect: false, explanation: "While a more specific format would help, the main issue is requirement overload. You can't format your way out of asking for too much." },
-    { id: "context", label: "There's not enough context", isCorrect: false, explanation: "The prompt actually has a lot of context—maybe too much! The problem is that it's trying to satisfy too many goals at once." }
+    { id: "vague", label: "Der Prompt ist zu vage", isCorrect: false, explanation: "Tatsächlich hat der Prompt viele spezifische Anforderungen. Das Problem ist das Gegenteil—zu viele Anforderungen, nicht zu wenige." },
+    { id: "overload", label: "Der Prompt ist überladen mit zu vielen konkurrierenden Anforderungen", isCorrect: true, explanation: "Richtig! Dieser Prompt verlangt SEO + witzig + professionell + Code + Anfänger + Fortgeschritten + Produkterwähnung + Social Proof + CTA + Längenbeschränkung. Das sind 10+ konkurrierende Anforderungen! Die KI kann sie nicht alle erfüllen, also macht sie einen mittelmäßigen Job bei allem. Lösung: In mehrere fokussierte Prompts aufteilen." },
+    { id: "format", label: "Das Ausgabeformat ist nicht spezifiziert", isCorrect: false, explanation: "Während ein spezifischeres Format helfen würde, ist das Hauptproblem die Anforderungsüberlastung. Du kannst dich nicht durch Format aus dem Zuviel-Verlangen herausformatieren." },
+    { id: "context", label: "Es gibt nicht genug Kontext", isCorrect: false, explanation: "Der Prompt hat tatsächlich viel Kontext—vielleicht zu viel! Das Problem ist, dass er versucht, zu viele Ziele auf einmal zu erfüllen." }
   ]}
-  hint="Count how many different requirements are packed into this single prompt."
+  hint="Zähle, wie viele verschiedene Anforderungen in diesen einzelnen Prompt gepackt sind."
 />
