@@ -4,13 +4,40 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { parts } from "@/lib/book/chapters";
-import { Book, Bookmark, List, Search, X } from "lucide-react";
+import { Book, Bookmark, List, Search, X, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { useState, useMemo, useEffect, useCallback } from "react";
 import { Input } from "@/components/ui/input";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { setLocale } from "@/lib/i18n/client";
+
+const languages = [
+  { code: "en", name: "English" },
+  { code: "zh", name: "中文" },
+  { code: "es", name: "Español" },
+  { code: "pt", name: "Português" },
+  { code: "fr", name: "Français" },
+  { code: "de", name: "Deutsch" },
+  { code: "nl", name: "Dutch" },
+  { code: "it", name: "Italiano" },
+  { code: "ja", name: "日本語" },
+  { code: "tr", name: "Türkçe" },
+  { code: "az", name: "Azərbaycan dili" },
+  { code: "ko", name: "한국어" },
+  { code: "ar", name: "العربية" },
+  { code: "fa", name: "فارسی" },
+  { code: "ru", name: "Русский" },
+  { code: "he", name: "עברית" },
+  { code: "el", name: "Ελληνικά" }
+];
 
 const BOOKMARK_KEY = "book-reading-progress";
 
@@ -228,39 +255,53 @@ export function BookSidebar() {
       {/* Desktop: Static sidebar */}
       <aside className="hidden lg:block w-56 shrink-0">
         <div className="sticky top-20">
-          {/* Header */}
-          <div className="mb-4 pb-4 border-b">
+          {/* Header with title and search */}
+          <div className="flex items-center gap-2 mb-4 pb-4 border-b">
             <Link
               href="/book"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition-colors"
+              className="flex items-center gap-1.5 text-sm font-semibold text-foreground hover:text-primary transition-colors shrink-0"
             >
               <Book className="h-4 w-4" />
-              <span>{t("title")}</span>
             </Link>
-          </div>
-
-          {/* Search */}
-          <div className="relative mb-4">
-            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
-              type="text"
-              placeholder={t("search.placeholder")}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-8 pr-8 h-9 text-sm"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery("")}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-              >
-                <X className="h-4 w-4" />
-              </button>
-            )}
+            <div className="relative flex-1">
+              <Search className="absolute left-2 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
+              <Input
+                type="text"
+                placeholder={t("search.placeholder")}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-7 pr-7 h-7 text-xs"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                >
+                  <X className="h-3.5 w-3.5" />
+                </button>
+              )}
+            </div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="h-7 w-7 shrink-0">
+                  <Globe className="h-3.5 w-3.5" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                {languages.map((lang) => (
+                  <DropdownMenuItem
+                    key={lang.code}
+                    onClick={() => setLocale(lang.code)}
+                  >
+                    {lang.name}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
 
           {/* Navigation */}
-          <ScrollArea className="h-[calc(100vh-15rem)]">
+          <ScrollArea className="h-[calc(100vh-10rem)]">
             <SidebarContent 
               searchQuery={searchQuery}
               bookmark={bookmark}
