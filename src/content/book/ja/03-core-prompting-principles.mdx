@@ -1,0 +1,373 @@
+構造を超えて、効果的なプロンプトエンジニアリングは原則—モデル、タスク、コンテキストを超えて適用される基本的な真理—によって導かれます。これらの原則をマスターすれば、あらゆるプロンプティングの課題に適応できるようになります。
+
+<Callout type="info" title="8つの核となる原則">
+これらの原則はすべてのAIモデルとすべてのタスクに適用されます。一度学べば、どこでも使えます。
+</Callout>
+
+## 原則1：巧みさより明確さ
+
+最良のプロンプトは、巧みではなく明確です。AIモデルは字義通りの解釈者です—与えられたものをそのまま処理します。
+
+### 明示的に
+
+<Compare 
+  before={{ label: "暗黙的（問題あり）", content: "これをより良くして。" }}
+  after={{ label: "明示的（効果的）", content: "このメールを以下の点で改善してください：\n1. 件名をより魅力的にする\n2. 段落を最大2-3文に短縮する\n3. 最後に明確な行動喚起を追加する" }}
+/>
+
+### 曖昧さを避ける
+
+言葉には複数の意味がある場合があります。正確な言葉を選んでください。
+
+<Compare 
+  before={{ label: "曖昧", content: "短い要約をください。\n（どのくらい短い？1文？1段落？1ページ？）" }}
+  after={{ label: "正確", content: "正確に3つの箇条書きで要約してください。各項目は20語以内にしてください。" }}
+/>
+
+### 当たり前のことを述べる
+
+あなたにとって当たり前のことは、モデルにとって当たり前ではありません。前提を明確にしてください。
+
+```
+カバーレターを書くのを手伝っています。
+
+重要なコンテキスト：
+- Googleのソフトウェアエンジニアポジションに応募しています
+- Pythonと分散システムで5年の経験があります
+- このポジションにはリーダーシップ経験が必要です（4人のチームを率いました）
+- オープンソースへの貢献を強調したいです
+```
+
+## 原則2：具体性が品質を生む
+
+曖昧な入力は曖昧な出力を生みます。具体的な入力は具体的で有用な出力を生みます。
+
+### 具体性のはしご
+
+<SpecificitySpectrum levels={[
+  { level: "レベル1", text: "気候変動について書いて" },
+  { level: "レベル2", text: "気候変動の影響についての記事を書いて" },
+  { level: "レベル3", text: "気候変動がサンゴ礁にどのような影響を与えるかについて500語の記事を書いて" },
+  { level: "レベル4", text: "海水温の上昇がサンゴの白化を引き起こす仕組みを説明する500語の記事を書いてください。高校生向けで、グレートバリアリーフからの具体的な例を2つ含め、魅力的でありながら科学的に正確なトーンで" }
+]} />
+
+各レベルが具体性を追加し、出力品質を劇的に向上させます。
+
+### これらの要素を指定する
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">対象読者</span>
+    <span className="text-muted-foreground">誰がこれを読む/使う？</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">長さ</span>
+    <span className="text-muted-foreground">どのくらい長く/短くすべきか？</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">トーン</span>
+    <span className="text-muted-foreground">フォーマル？カジュアル？技術的？</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">フォーマット</span>
+    <span className="text-muted-foreground">散文？リスト？テーブル？コード？</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">範囲</span>
+    <span className="text-muted-foreground">何を含める/除外する？</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">目的</span>
+    <span className="text-muted-foreground">これは何を達成すべきか？</span>
+  </div>
+</div>
+
+## 原則3：コンテキストが王様
+
+モデルには記憶がなく、あなたのファイルへのアクセスもなく、あなたの状況についての知識もありません。関連するすべてがプロンプトに含まれている必要があります。
+
+### 十分なコンテキストを提供する
+
+<Compare 
+  before={{ label: "不十分なコンテキスト", content: "なぜ私の関数が動かないのですか？" }}
+  after={{ label: "十分なコンテキスト", content: "特定のキー値で辞書のリストをフィルタリングするPython関数があります。3つのアイテムを返すべきところ、空のリストを返しています。\n\n関数：\ndef filter_items(items, key, value):\n    return [item for item in items if item[key] = value]\n\n呼び出し：filter_items(items, 'status', 'active')\n期待：2アイテム、結果：空のリスト" }}
+/>
+
+### コンテキストチェックリスト
+
+<Callout type="tip" title="送信前に">
+自問してください：賢い見知らぬ人がこのリクエストを理解できるか？そうでなければ、もっとコンテキストを追加してください。
+</Callout>
+
+<Checklist 
+  title="コンテキストチェックリスト"
+  items={[
+    { text: "モデルは私が何に取り組んでいるか知っているか？" },
+    { text: "私の目標を知っているか？" },
+    { text: "必要なすべての情報を持っているか？" },
+    { text: "制約を理解しているか？" },
+    { text: "賢い見知らぬ人がこのリクエストを理解できるか？" }
+  ]}
+/>
+
+## 原則4：尋ねるだけでなく、導く
+
+答えを求めるだけでなく、欲しい答えに向けてモデルを導いてください。
+
+### 指示的なフレーミングを使用する
+
+<Compare 
+  before={{ label: "ただ尋ねる", content: "マイクロサービスの長所と短所は何ですか？" }}
+  after={{ label: "導く", content: "マイクロサービスアーキテクチャの利点を5つ、欠点を5つ挙げてください。\n\n各ポイントについて：\n- 1文で明確に述べる\n- 簡単な説明を提供する（2-3文）\n- 具体的な例を挙げる\n\n以下の視点を考慮してください：小規模スタートアップ、大企業、モノリスからの移行チーム。" }}
+/>
+
+### 推論の足場を提供する
+
+複雑なタスクには、推論プロセスを導いてください：
+
+<TryIt 
+  title="推論の足場の例"
+  description="このプロンプトは、AIを体系的な意思決定プロセスを通じて導きます。"
+  prompt={`Eコマースプロジェクトに、PostgreSQLとMongoDBのどちらを選ぶべきか決める必要があります。
+
+体系的に考えてください：
+1. まず、Eコマースデータベースの典型的な要件を挙げてください
+2. 次に、各要件に対して各データベースを評価してください
+3. 私のユースケースに特有のトレードオフを考慮してください
+4. 明確な根拠とともに推奨を行ってください`}
+/>
+
+## 原則5：反復と改善
+
+プロンプトエンジニアリングは反復的なプロセスです。最初のプロンプトがベストであることはめったにありません。
+
+### 反復サイクル
+
+```
+1. 初期プロンプトを書く
+2. 出力をレビューする
+3. ギャップや問題を特定する
+4. プロンプトを改良する
+5. 満足するまで繰り返す
+```
+
+### よくある改良点
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">冗長すぎる</span>
+    <span className="text-muted-foreground">「簡潔に」や長さ制限を追加</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">曖昧すぎる</span>
+    <span className="text-muted-foreground">具体的な例や制約を追加</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">フォーマットが違う</span>
+    <span className="text-muted-foreground">正確な出力構造を指定</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">側面が欠けている</span>
+    <span className="text-muted-foreground">「必ず含めてください...」を追加</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">トーンが違う</span>
+    <span className="text-muted-foreground">対象読者とスタイルを指定</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">不正確</span>
+    <span className="text-muted-foreground">引用やステップバイステップの推論を要求</span>
+  </div>
+</div>
+
+### プロンプトジャーナルを付ける
+
+何が効果的かを記録してください：
+```
+タスク：コードレビュー
+バージョン1：「このコードをレビューして」→ 汎用的すぎる
+バージョン2：具体的なレビュー基準を追加 → 改善
+バージョン3：良いレビューの例を追加 → 優秀
+最終：[成功したプロンプトをテンプレートとして保存]
+```
+
+## 原則6：モデルの強みを活かす
+
+モデルがどのようにトレーニングされたかに沿って働き、逆らわないでください。
+
+### モデルは役に立ちたい
+
+リクエストを、役立つアシスタントが自然に行うこととしてフレーミングしてください：
+
+<Compare 
+  before={{ label: "逆らう", content: "これはできないと思いますが、試してみてください..." }}
+  after={{ label: "沿う", content: "〜を理解するのを手伝ってください...\nXに取り組んでいて、〜の支援が必要です...\n〜を順を追って説明してもらえますか..." }}
+/>
+
+### モデルはパターンに優れている
+
+一貫した出力が必要な場合は、パターンを示してください：
+
+<TryIt 
+  title="パターンの例"
+  description="このプロンプトは、本の推薦に欲しい正確なフォーマットをAIに示します。"
+  prompt={`SFの本を3冊推薦してください。各推薦を以下のようにフォーマットしてください：
+
+📚 **[タイトル]** by [著者]
+*[ジャンル] | [出版年]*
+[2文の説明]
+おすすめの理由：[1文のフック]
+
+---`}
+/>
+
+### モデルはロールプレイができる
+
+ペルソナを使用して、異なる「モード」の応答にアクセスしてください：
+
+```
+悪魔の代弁者として、私の提案に反論してください...
+支援的なメンターとして、改善を手伝ってください...
+懐疑的な投資家として、このビジネスプランに質問してください...
+```
+
+## 原則7：出力構造を制御する
+
+構造化された出力は、自由形式のテキストよりも有用です。
+
+### 特定のフォーマットを要求する
+
+```
+以下のように分析を返してください：
+
+要約：[1文]
+
+主要な発見：
+• [発見1]
+• [発見2]
+• [発見3]
+
+推奨：[1-2文]
+
+確信度：[低/中/高] 理由：[理由]
+```
+
+### 区切り文字を使用する
+
+プロンプトのセクションを明確に分けてください：
+
+```
+### コンテキスト ###
+[あなたのコンテキストをここに]
+
+### タスク ###
+[あなたのタスクをここに]
+
+### フォーマット ###
+[希望するフォーマットをここに]
+```
+
+### 機械可読出力を要求する
+
+プログラム的な使用のために：
+
+```
+有効なJSONのみを返してください、説明なしで：
+{
+  "decision": "approve" | "reject" | "review",
+  "confidence": 0.0-1.0,
+  "reasons": ["文字列の配列"]
+}
+```
+
+## 原則8：検証と確認
+
+モデルの出力を盲目的に信頼しないでください、特に重要なタスクについては。
+
+### 推論を求める
+
+```
+この問題を解いて、ステップバイステップで作業を示してください。
+解いた後、[確認方法]で答えを検証してください。
+```
+
+### 複数の視点を要求する
+
+```
+この問題を解決する3つの異なるアプローチを教えてください。
+それぞれについて、トレードオフを説明してください。
+```
+
+### セルフチェックを組み込む
+
+```
+コードを生成した後、以下についてレビューしてください：
+- 構文エラー
+- エッジケース
+- セキュリティの脆弱性
+見つかった問題をリストしてください。
+```
+
+## まとめ：原則の概要
+
+<PrinciplesSummary />
+
+<Quiz 
+  question="プロンプトに関連するすべての背景情報を含めるべきと示唆する原則はどれですか？"
+  options={[
+    "巧みさより明確さ",
+    "具体性が品質を生む",
+    "コンテキストが王様",
+    "反復と改善"
+  ]}
+  correctIndex={2}
+  explanation="「コンテキストが王様」は、AIモデルはセッション間で記憶がなく、あなたの心を読むことができないことを強調しています。関連する背景、制約、目標を含めることで、モデルがあなたのニーズを理解するのに役立ちます。"
+/>
+
+## 練習：空欄を埋める
+
+このプロンプトテンプレートを完成させて、核となる原則の理解をテストしてください：
+
+<FillInTheBlank
+  title="原則を適用する"
+  description="空欄を埋めて、構造化されたプロンプトを作成してください—何でも書いて構いません！"
+  useAI={true}
+  openEnded={true}
+  template={`あなたは{{expertise}}の専門知識を持つ{{role}}です。
+
+コンテキスト：私は{{context}}に取り組んでいます。
+
+タスク：{{task}}
+
+制約：
+- 回答を{{length}}語以内にしてください
+- {{focus}}のみに焦点を当ててください
+
+フォーマット：{{format}}として回答を返してください。`}
+  blanks={[
+    { id: "role", correctAnswers: [], hint: "AIはどのような専門的役割を担うべきですか？", context: "職種や専門的な役割" },
+    { id: "expertise", correctAnswers: [], hint: "どのような専門知識が必要ですか？", context: "役割に合ったスキルや分野" },
+    { id: "context", correctAnswers: [], hint: "プロジェクトや状況は何ですか？", context: "この専門知識を持つ人が取り組むプロジェクト" },
+    { id: "task", correctAnswers: [], hint: "AIはどのような具体的なアクションを取るべきですか？", context: "役割とコンテキストに適したアクション" },
+    { id: "length", correctAnswers: [], hint: "回答はどのくらいの長さにすべきですか？", context: "数字（単語数）" },
+    { id: "focus", correctAnswers: [], hint: "どの側面を優先すべきですか？", context: "タスクに関連する品質や側面" },
+    { id: "format", correctAnswers: [], hint: "出力はどのように構成されるべきですか？", context: "出力フォーマットの種類" }
+  ]}
+  explanation="構造化されたプロンプトには、明確な役割（原則1）、十分なコンテキスト（原則3）、具体的なタスク（原則2）、制約（原則4）、出力フォーマット（原則5）が含まれます。AIはあなたの選択が内部的に一貫しているかどうかをチェックします。"
+/>
+
+<InteractiveChecklist
+  title="原則チェックリスト"
+  items={[
+    { id: "clarity", label: "巧みさより明確さ", description: "あなたのプロンプトは明示的で曖昧さがないですか？" },
+    { id: "specificity", label: "具体性が品質を生む", description: "対象読者、長さ、トーン、フォーマットを含めましたか？" },
+    { id: "context", label: "コンテキストが王様", description: "プロンプトに必要なすべての背景情報が含まれていますか？" },
+    { id: "examples", label: "例は説明に勝る", description: "欲しいものを説明するだけでなく、示しましたか？" },
+    { id: "constraints", label: "制約が出力を絞る", description: "範囲とフォーマットに明確な境界がありますか？" },
+    { id: "iteration", label: "反復と改善", description: "結果に基づいて改善する準備ができていますか？" },
+    { id: "persona", label: "ペルソナが視点を形作る", description: "AIはどの役割を演じるべきか知っていますか？" },
+    { id: "verify", label: "検証と確認", description: "正確性のチェックを組み込みましたか？" }
+  ]}
+/>
+
+これらの原則は、これ以降のすべての基礎を形成します。第2部では、プロンプトの効果を劇的に向上させる具体的なテクニックにこれらを適用します。

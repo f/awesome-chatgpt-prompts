@@ -1,0 +1,373 @@
+Even experienced prompt engineers fall into predictable traps. The good news? Once you recognize these patterns, they're easy to avoid. This chapter walks through the most common pitfalls, explains why they happen, and gives you concrete strategies to sidestep them.
+
+<Callout type="warning" title="Why Pitfalls Matter">
+A single pitfall can turn a powerful AI into a frustrating tool. Understanding these patterns is often the difference between "AI doesn't work for me" and "AI transformed my workflow."
+</Callout>
+
+## The Vagueness Trap
+
+**The Pattern**: You know what you want, so you assume the AI will figure it out too. But vague prompts produce vague results.
+
+<Compare 
+  before={{ label: "Vague prompt", content: "Write something about marketing." }}
+  after={{ label: "Specific prompt", content: "Write a 300-word LinkedIn post about the importance of brand consistency for B2B SaaS companies, targeting marketing managers. Use a professional but approachable tone. Include one concrete example." }}
+/>
+
+**Why it happens**: We naturally skip details when we think they're "obvious." But what's obvious to you isn't obvious to a model that has no context about your situation, audience, or goals.
+
+<TryIt 
+  title="Specificity Improver"
+  description="Take a vague prompt and make it specific. Notice how adding details transforms the quality of results."
+  prompt={`I have a vague prompt that needs improvement.
+
+Original vague prompt: "\${vaguePrompt}"
+
+Make this prompt specific by adding:
+1. **Audience**: Who will read/use this?
+2. **Format**: What structure should it have?
+3. **Length**: How long should it be?
+4. **Tone**: What voice or style?
+5. **Context**: What's the situation or purpose?
+6. **Constraints**: Any must-haves or must-avoids?
+
+Rewrite the prompt with all these details included.`}
+/>
+
+## The Overloading Trap
+
+**The Pattern**: You try to get everything in one prompt—comprehensive, funny, professional, beginner-friendly, advanced, SEO-optimized, and short. The result? The AI misses half your requirements or produces a confused mess.
+
+<Compare 
+  before={{ label: "Overloaded prompt", content: "Write a blog post about AI that's SEO optimized and includes code examples and is funny but professional and targets beginners but also has advanced tips and should be 500 words but comprehensive and mentions our product and has a call to action..." }}
+  after={{ label: "Focused prompt", content: "Write a 500-word blog post introducing AI to beginners.\n\nRequirements:\n1. Explain one core concept clearly\n2. Include one simple code example\n3. End with a call to action\n\nTone: Professional but approachable" }}
+/>
+
+**Why it happens**: Fear of multiple interactions, or wanting to "get it all out" in one go. But cognitive overload affects AI just like it affects humans—too many competing requirements leads to dropped balls.
+
+<InfoGrid items={[
+  { label: "Limit Requirements", description: "Stick to 3-5 key requirements per prompt", example: "Focus on: audience, format, length, one key constraint", exampleType: "text", color: "green" },
+  { label: "Use Numbered Lists", description: "Structure makes priorities clear", example: "1. Must have X, 2. Should have Y, 3. Nice to have Z", exampleType: "text", color: "green" },
+  { label: "Chain Prompts", description: "Break complex tasks into steps", example: "First: outline. Then: draft section 1. Then: draft section 2.", exampleType: "text", color: "green" },
+  { label: "Prioritize Ruthlessly", description: "What's essential vs. nice-to-have?", example: "If I could only get ONE thing right, what would it be?", color: "green" }
+]} />
+
+<Callout type="tip" title="Learn Prompt Chaining">
+When a single prompt gets overloaded, [prompt chaining](/book/11-prompt-chaining) is often the solution. Break complex tasks into a sequence of focused prompts, where each step builds on the previous one.
+</Callout>
+
+## The Assumption Trap
+
+**The Pattern**: You reference something "from earlier" or assume the AI knows your project, your company, or your previous conversations. It doesn't.
+
+<Compare 
+  before={{ label: "Assumes context", content: "Update the function I showed you earlier to add error handling." }}
+  after={{ label: "Provides context", content: "Update this function to add error handling:\n\n```python\ndef calculate_total(items):\n    return sum(item.price for item in items)\n```\n\nAdd try/except for empty lists and invalid items." }}
+/>
+
+**Why it happens**: AI conversations feel like talking to a colleague. But unlike colleagues, most AI models have no persistent memory between sessions—each conversation starts fresh.
+
+<TryIt 
+  title="Context Completeness Check"
+  description="Use this to verify your prompt contains all necessary context before sending."
+  prompt={`Review this prompt for missing context:
+
+"\${promptToCheck}"
+
+Check for:
+1. **Referenced but not included**: Does it mention "the code," "the document," "earlier," or "above" without including the actual content?
+
+2. **Assumed knowledge**: Does it assume knowledge about a specific project, company, or situation?
+
+3. **Implicit requirements**: Are there unstated expectations about format, length, or style?
+
+4. **Missing background**: Would a smart stranger understand what's being asked?
+
+List what's missing and suggest how to add it.`}
+/>
+
+## The Leading Question Trap
+
+**The Pattern**: You phrase your question in a way that embeds your assumption, getting back confirmation rather than insight.
+
+<Compare 
+  before={{ label: "Leading question", content: "Why is Python the best programming language for data science?" }}
+  after={{ label: "Neutral question", content: "Compare Python, R, and Julia for data science work. What are the strengths and weaknesses of each? When would you choose one over the others?" }}
+/>
+
+**Why it happens**: We often seek confirmation, not information. Our phrasing unconsciously pushes toward the answer we expect or want.
+
+<TryIt 
+  title="Bias Detector"
+  description="Check your prompts for hidden biases and leading language."
+  prompt={`Analyze this prompt for bias and leading language:
+
+"\${promptToAnalyze}"
+
+Check for:
+1. **Embedded assumptions**: Does the question assume something is true?
+2. **Leading phrasing**: Does "Why is X good?" assume X is good?
+3. **Missing alternatives**: Does it ignore other possibilities?
+4. **Confirmation seeking**: Is it asking for validation rather than analysis?
+
+Rewrite the prompt to be neutral and open-ended.`}
+/>
+
+## The Trust Everything Trap
+
+**The Pattern**: AI responses sound confident and authoritative, so you accept them without verification. But confidence doesn't equal accuracy.
+
+<InfoGrid items={[
+  { label: "Unreviewed Content", description: "Publishing AI-generated text without fact-checking", example: "Blog posts with invented statistics or fake quotes", exampleType: "text", color: "red" },
+  { label: "Untested Code", description: "Using AI code in production without testing", example: "Security vulnerabilities, edge case failures, subtle bugs", exampleType: "text", color: "red" },
+  { label: "Blind Decisions", description: "Making important choices based solely on AI analysis", example: "Business strategy based on hallucinated market data", exampleType: "text", color: "red" }
+]} />
+
+**Why it happens**: AI sounds confident even when completely wrong. We're also prone to "automation bias"—the tendency to trust computer outputs more than we should.
+
+<TryIt 
+  title="Verification Prompt"
+  description="Use this to get the AI to flag its own uncertainties and potential errors."
+  prompt={`I need you to provide information about: \${topic}
+
+IMPORTANT: After your response, add a section called "Verification Notes" that includes:
+
+1. **Confidence Level**: How certain are you about this information? (High/Medium/Low)
+
+2. **Potential Errors**: What parts of this response are most likely to be wrong or outdated?
+
+3. **What to Verify**: What specific claims should the user fact-check independently?
+
+4. **Sources to Check**: Where could the user verify this information?
+
+Be honest about limitations. It's better to flag uncertainty than to sound confident about something wrong.`}
+/>
+
+## The One-Shot Trap
+
+**The Pattern**: You send one prompt, get a mediocre result, and conclude that AI "doesn't work" for your use case. But great results almost always require iteration.
+
+<Compare 
+  before={{ label: "One-shot thinking", content: "Mediocre output → \"AI can't do this\" → Give up" }}
+  after={{ label: "Iterative thinking", content: "Mediocre output → Analyze what's wrong → Refine prompt → Better output → Refine again → Excellent output" }}
+/>
+
+**Why it happens**: We expect AI to read our minds on the first try. We don't expect to iterate with Google searches, but somehow expect perfection from AI.
+
+<TryIt 
+  title="Iteration Helper"
+  description="When your first result isn't right, use this to systematically improve it."
+  prompt={`My original prompt was:
+"\${originalPrompt}"
+
+The output I got was:
+"\${outputReceived}"
+
+What's wrong with it:
+"\${whatIsWrong}"
+
+Help me iterate:
+
+1. **Diagnosis**: Why did the original prompt produce this result?
+
+2. **Missing Elements**: What was I not explicit about that I should have been?
+
+3. **Revised Prompt**: Rewrite my prompt to address these issues.
+
+4. **What to Watch For**: What should I check in the new output?`}
+/>
+
+## The Format Neglect Trap
+
+**The Pattern**: You focus on what you want the AI to say, but forget to specify how it should be formatted. Then you get prose when you needed JSON, or a wall of text when you needed bullet points.
+
+<Compare 
+  before={{ label: "No format specified", content: "Extract the key data from this text." }}
+  after={{ label: "Format specified", content: "Extract the key data from this text as JSON:\n\n{\n  \"name\": string,\n  \"date\": \"YYYY-MM-DD\",\n  \"amount\": number,\n  \"category\": string\n}\n\nReturn ONLY the JSON, no explanation." }}
+/>
+
+**Why it happens**: We focus on content over structure. But if you need to parse the output programmatically, or paste it somewhere specific, format matters as much as content.
+
+<TryIt 
+  title="Format Specification Builder"
+  description="Generate clear format specifications for any output type you need."
+  prompt={`I need AI output in a specific format.
+
+**What I'm asking for**: \${taskDescription}
+**How I'll use the output**: \${intendedUse}
+**Preferred format**: \${formatType} (JSON, Markdown, CSV, bullet points, etc.)
+
+Generate a format specification I can add to my prompt, including:
+
+1. **Exact structure** with field names and types
+2. **Example output** showing the format
+3. **Constraints** (e.g., "Return ONLY the JSON, no explanation")
+4. **Edge cases** (what to output if data is missing)`}
+/>
+
+## The Context Window Trap
+
+**The Pattern**: You paste an enormous document and expect comprehensive analysis. But models have limits—they may truncate, lose focus, or miss important details in long inputs.
+
+<InfoGrid items={[
+  { label: "Know Your Limits", description: "Different models have different context windows", example: "GPT-4: 128K tokens, Claude: 200K tokens, Gemini: 1M tokens", exampleType: "text", color: "blue" },
+  { label: "Chunk Large Inputs", description: "Break documents into manageable sections", example: "Analyze chapters separately, then synthesize", exampleType: "text", color: "blue" },
+  { label: "Front-Load Important Info", description: "Put critical context early in the prompt", example: "Key requirements first, background details later", exampleType: "text", color: "blue" },
+  { label: "Trim the Fat", description: "Remove unnecessary context", example: "Do you really need the entire doc, or just relevant sections?", exampleType: "text", color: "blue" }
+]} />
+
+<TryIt 
+  title="Document Chunking Strategy"
+  description="Get a strategy for processing documents that exceed context limits."
+  prompt={`I have a large document to analyze:
+
+**Document type**: \${documentType}
+**Approximate length**: \${documentLength}
+**What I need to extract/analyze**: \${analysisGoal}
+**Model I'm using**: \${modelName}
+
+Create a chunking strategy:
+
+1. **How to divide**: Logical break points for this document type
+2. **What to include in each chunk**: Context needed for standalone analysis
+3. **How to synthesize**: Combining results from multiple chunks
+4. **What to watch for**: Information that might span chunks`}
+/>
+
+## The Anthropomorphization Trap
+
+**The Pattern**: You treat AI like a human colleague—expecting it to "enjoy" tasks, remember you, or care about outcomes. It doesn't.
+
+<Compare 
+  before={{ label: "Anthropomorphized", content: "I'm sure you'll enjoy this creative project! I know you love helping people, and this is really important to me personally." }}
+  after={{ label: "Clear and direct", content: "Write a creative short story with these specifications:\n- Genre: Science fiction\n- Length: 500 words\n- Tone: Hopeful\n- Must include: A twist ending" }}
+/>
+
+**Why it happens**: AI responses are so human-like that we naturally slip into social patterns. But emotional appeals don't make the AI try harder—clear instructions do.
+
+<Callout type="info" title="What Actually Helps">
+Instead of emotional appeals, focus on: clear requirements, good examples, specific constraints, and explicit success criteria. These improve outputs. "Please try really hard" doesn't.
+</Callout>
+
+## The Security Neglect Trap
+
+**The Pattern**: In the rush to get things working, you include sensitive information in prompts—API keys, passwords, personal data, or proprietary information.
+
+<InfoGrid items={[
+  { label: "Secrets in Prompts", description: "API keys, passwords, tokens pasted into prompts", example: "\"Use this API key: sk-abc123...\"", color: "red" },
+  { label: "Personal Data", description: "Including PII that gets sent to third-party servers", example: "Customer names, emails, addresses in prompts", exampleType: "text", color: "red" },
+  { label: "Unsanitized User Input", description: "Passing user input directly into prompts", example: "Prompt injection vulnerabilities", exampleType: "text", color: "red" },
+  { label: "Proprietary Information", description: "Trade secrets or confidential data", example: "Internal strategies, unreleased product details", exampleType: "text", color: "red" }
+]} />
+
+**Why it happens**: Focus on functionality over security. But remember: prompts often go to external servers, may be logged, and could be used for training.
+
+<TryIt 
+  title="Security Review"
+  description="Check your prompt for security issues before sending."
+  prompt={`Review this prompt for security concerns:
+
+"\${promptToReview}"
+
+Check for:
+
+1. **Exposed Secrets**: API keys, passwords, tokens, credentials
+2. **Personal Data**: Names, emails, addresses, phone numbers, SSNs
+3. **Proprietary Info**: Trade secrets, internal strategies, confidential data
+4. **Injection Risks**: User input that could manipulate the prompt
+
+For each issue found:
+- Explain the risk
+- Suggest how to redact or protect the information
+- Recommend safer alternatives`}
+/>
+
+## The Hallucination Ignorance Trap
+
+**The Pattern**: You ask for citations, statistics, or specific facts, and assume they're real because the AI stated them confidently. But AI regularly invents plausible-sounding information.
+
+<Compare 
+  before={{ label: "Trusting blindly", content: "Give me 5 statistics about remote work productivity with sources." }}
+  after={{ label: "Acknowledging limitations", content: "What do we know about remote work productivity? For any statistics you mention, note whether they're well-established findings or more uncertain. I will verify any specific numbers independently." }}
+/>
+
+**Why it happens**: AI generates text that sounds authoritative. It doesn't "know" when it's making things up—it's predicting likely text, not retrieving verified facts.
+
+<TryIt 
+  title="Hallucination-Resistant Query"
+  description="Structure your prompt to minimize hallucination risk and flag uncertainties."
+  prompt={`I need information about: \${topic}
+
+Please follow these guidelines to minimize errors:
+
+1. **Stick to well-established facts**. Avoid obscure claims that are hard to verify.
+
+2. **Flag uncertainty**. If you're not confident about something, say "I believe..." or "This may need verification..."
+
+3. **No invented sources**. Don't cite specific papers, books, or URLs unless you're certain they exist. Instead, describe where to find this type of information.
+
+4. **Acknowledge knowledge limits**. If my question is about events after your training data, say so.
+
+5. **Separate fact from inference**. Clearly distinguish between "X is true" and "Based on Y, X is likely true."
+
+Now, with these guidelines in mind: \${actualQuestion}`}
+/>
+
+## Pre-Send Checklist
+
+Before sending any important prompt, run through this quick checklist:
+
+<Checklist 
+  title="Prompt Quality Check"
+  items={[
+    { text: "Is it specific enough? (Not vague)" },
+    { text: "Is it focused? (Not overloaded with requirements)" },
+    { text: "Does it include all necessary context?" },
+    { text: "Is the question neutral? (Not leading)" },
+    { text: "Have I specified the output format?" },
+    { text: "Is the input within context limits?" },
+    { text: "Are there any security concerns?" },
+    { text: "Am I prepared to verify the output?" },
+    { text: "Am I prepared to iterate if needed?" }
+  ]}
+/>
+
+<Quiz 
+  question="What's the most dangerous pitfall when using AI for important decisions?"
+  options={[
+    "Using vague prompts",
+    "Trusting AI outputs without verification",
+    "Not specifying output format",
+    "Overloading prompts with requirements"
+  ]}
+  correctIndex={1}
+  explanation="While all pitfalls cause problems, trusting AI outputs without verification is the most dangerous because it can lead to publishing false information, deploying buggy code, or making decisions based on hallucinated data. AI sounds confident even when completely wrong, making verification essential for any important use case."
+/>
+
+## Analyze Your Prompts
+
+Use AI to get instant feedback on your prompt quality. Paste any prompt and get a detailed analysis:
+
+<PromptAnalyzer 
+  title="Prompt Quality Analyzer"
+  description="Get AI-powered feedback on clarity, specificity, and suggestions for improvement"
+  defaultPrompt="Help me with my code"
+/>
+
+## Debug This Prompt
+
+Can you spot what's wrong with this prompt?
+
+<PromptDebugger
+  title="Find the Pitfall"
+  badPrompt="Write a blog post about technology that's SEO optimized with keywords and also funny but professional and includes code examples and targets beginners but has advanced tips and mentions our product TechCo and has social proof and a call to action and is 500 words but comprehensive."
+  badOutput="Here's a draft blog post about technology...
+
+[Generic, unfocused content that tries to do everything but accomplishes nothing well. Tone shifts awkwardly between casual and technical. Missing half the requirements.]"
+  options={[
+    { id: "vague", label: "The prompt is too vague", isCorrect: false, explanation: "Actually, the prompt has many specific requirements. The problem is the opposite—too many requirements, not too few." },
+    { id: "overload", label: "The prompt is overloaded with too many competing requirements", isCorrect: true, explanation: "Correct! This prompt asks for SEO + funny + professional + code + beginners + advanced + product mention + social proof + CTA + length constraint. That's 10+ competing requirements! The AI can't satisfy them all, so it does a mediocre job on everything. Solution: break this into multiple focused prompts." },
+    { id: "format", label: "The output format isn't specified", isCorrect: false, explanation: "While a more specific format would help, the main issue is requirement overload. You can't format your way out of asking for too much." },
+    { id: "context", label: "There's not enough context", isCorrect: false, explanation: "The prompt actually has a lot of context—maybe too much! The problem is that it's trying to satisfy too many goals at once." }
+  ]}
+  hint="Count how many different requirements are packed into this single prompt."
+/>

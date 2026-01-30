@@ -1,0 +1,302 @@
+在学习提示词技巧之前，了解 AI 语言模型的实际工作原理会很有帮助。这些知识将帮助你更好地编写提示词。
+
+<Callout type="info" title="为什么这很重要">
+理解 AI 的工作原理不仅仅是专家的事。它直接帮助你写出更好的提示词。一旦你知道 AI 是在预测接下来会出现什么，你自然会给出更清晰的指令。
+</Callout>
+
+## 什么是大语言模型？
+
+大语言模型（LLM）是通过阅读大量文本来学习的 AI 系统。它们可以写作、回答问题，并进行听起来很自然的对话。之所以叫"大"，是因为它们有数十亿个在训练过程中调整的微小设置（称为参数）。
+
+### LLM 的工作原理（简化版）
+
+从本质上讲，LLM 是预测机器。你给它们一些文本，它们就会预测接下来应该出现什么。
+
+<TryIt compact prompt={`完成这个句子："学习新事物的最好方法是..."`} />
+
+当你输入"法国的首都是..."时，AI 会预测"巴黎"，因为在关于法国的文本中，这通常是接下来出现的内容。这个简单的想法，在大量数据上重复数十亿次，就创造出了令人惊讶的智能行为。
+
+<TokenPredictionDemo />
+
+### 关键概念
+
+**Token（词元）**：AI 不是逐字母阅读的。它将文本分成称为"token"的块。一个 token 可能是一个完整的词，如"hello"，也可能是词的一部分，如"ing"。理解 token 有助于解释为什么 AI 有时会出现拼写错误或难以处理某些单词。
+
+<Callout type="info" title="什么是 Token？">
+Token 是 AI 模型处理的最小文本单位。它不一定是一个完整的词——可能是词的片段、标点符号或空格。例如，"unbelievable"可能变成 3 个 token："un" + "believ" + "able"。平均而言，**1 个 token ≈ 4 个英文字符** 或 **100 个 token ≈ 75 个英文单词**。API 费用和上下文限制以 token 为单位计量。
+</Callout>
+
+<TokenizerDemo />
+
+**上下文窗口**：这是 AI 在一次对话中能"记住"多少文本。可以把它想象成 AI 的短期记忆。它包括所有内容：你的问题和 AI 的回答。
+
+<ContextWindowDemo />
+
+上下文窗口因模型而异，并且正在快速扩大：
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">GPT-4o</span>
+    <span className="text-muted-foreground">128K token</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">GPT-5</span>
+    <span className="text-muted-foreground">400K token</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Claude Sonnet 4</span>
+    <span className="text-muted-foreground">1M token</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Gemini 2.5</span>
+    <span className="text-muted-foreground">1M token</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Llama 4</span>
+    <span className="text-muted-foreground">1M-10M token</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">DeepSeek R1</span>
+    <span className="text-muted-foreground">128K token</span>
+  </div>
+</div>
+
+**温度**：这控制 AI 的创造性或可预测性。低温度（0.0-0.3）给你集中、一致的答案。高温度（0.7-1.0）给你更有创意、更出人意料的回应。
+
+<TemperatureDemo />
+
+**系统提示词**：特殊指令，告诉 AI 在整个对话中如何表现。例如，"你是一位友善的老师，用简单的方式解释事物。"并非所有 AI 工具都允许你设置这个，但当可用时，它非常强大。
+
+## AI 模型的类型
+
+### 文本模型（LLM）
+最常见的类型，根据文本输入生成文本回复。它们驱动聊天机器人、写作助手和代码生成器。例如：GPT-4、Claude、Llama、Mistral。
+
+### 多模态模型
+这些模型不仅能理解文本，还能查看图像、听取音频和观看视频。例如：GPT-4V、Gemini、Claude 3。
+
+### 文生图模型
+
+<Callout type="info" title="关于本书">
+虽然本书主要关注大语言模型（基于文本的 AI）的提示词，但清晰、具体的提示原则同样适用于图像生成。掌握这些模型的提示词对于获得出色结果同样重要。
+</Callout>
+
+像 DALL-E、Midjourney、Nano Banana 和 Stable Diffusion 这样的文生图模型可以根据文字描述创建图像。它们的工作方式与文本模型不同：
+
+**工作原理：**
+1. **训练**：模型从数百万个图像-文本对中学习，理解哪些词对应哪些视觉概念
+2. **扩散过程**：从随机噪声开始，模型在你的文本提示词引导下逐渐细化图像
+3. **CLIP 引导**：一个单独的模型（CLIP）帮助将你的文字与视觉概念连接起来，确保图像匹配你的描述
+
+<TextToImageDemo />
+
+**图像提示词的不同之处：**
+与用完整句子编写的文本提示词不同，图像提示词通常以逗号分隔的描述性短语效果更好：
+
+<Compare 
+  before={{ label: "文本风格提示词", content: "请创建一张猫坐在窗台上看着外面下雨的图片" }}
+  after={{ label: "图像风格提示词", content: "橘色虎斑猫，坐在窗台上，看着雨，温馨的室内，柔和的自然光，逼真写实，浅景深，4K" }}
+/>
+
+### 文生视频模型
+
+文生视频是最新的前沿领域。像 Sora 2、Runway 和 Veo 这样的模型可以从文字描述创建动态图像。与图像模型一样，提示词的质量直接决定输出的质量——提示词工程在这里同样至关重要。
+
+**工作原理：**
+1. **时间理解**：除了单张图像，这些模型还理解事物如何随时间移动和变化
+2. **物理模拟**：它们学习基本物理——物体如何下落、水如何流动、人如何行走
+3. **帧一致性**：它们在多帧之间保持主体和场景的一致性
+4. **时间维度的扩散**：类似于图像模型，但生成连贯的序列而不是单帧
+
+<TextToVideoDemo />
+
+<Callout type="info" title="视频提示词技巧">
+视频提示词需要描述随时间变化的动作，而不仅仅是静态场景。包含动词和运动：
+</Callout>
+
+<Compare 
+  before={{ label: "静态（较弱）", content: "树枝上的一只鸟" }}
+  after={{ label: "有动态（较强）", content: "一只鸟从树枝上起飞，翅膀展开，叶子在它升空时沙沙作响" }}
+/>
+
+### 专业模型
+针对特定任务进行微调，如代码生成（Codex、CodeLlama）、音乐生成（Suno、Udio），或医疗诊断、法律文档分析等特定领域的应用。
+
+## 模型的能力和局限性
+
+探索 LLM 能做什么和不能做什么。点击每个能力查看示例提示词：
+
+<LLMCapabilitiesDemo />
+
+### 理解幻觉
+
+<Callout type="warning" title="AI 可能会编造内容">
+有时 AI 写出的内容听起来是真的但实际上不是。这叫做"幻觉"。这不是 bug，只是预测工作方式的结果。始终仔细核查重要事实。
+</Callout>
+
+为什么 AI 会编造内容？
+
+1. 它试图写出听起来好的文本，而不是始终正确的文本
+2. 互联网（它学习的地方）也有错误
+3. 它实际上无法检查某件事是否真实
+
+<Collapsible title="如何避免错误答案">
+
+- **要求提供来源**：然后检查这些来源是否真实
+- **要求逐步思考**：这样你可以检查每一步
+- **仔细核查重要事实**：使用 Google 或可信网站
+- **问"你确定吗？"**：AI 可能会承认不确定性
+
+</Collapsible>
+
+<TryIt compact prompt={`第一部 iPhone 是哪一年发布的？请说明你对这个答案有多确信。`} />
+
+## AI 如何学习：三个步骤
+
+AI 不是神奇地就知道事情的。它经历三个学习步骤，就像上学一样：
+
+### 第一步：预训练（学习阅读）
+
+想象一下阅读互联网上的每一本书、每一个网站和每一篇文章。这就是预训练中发生的事情。AI 阅读数十亿个词并学习模式：
+
+- 句子是如何构建的
+- 哪些词通常一起出现
+- 关于世界的事实
+- 不同的写作风格
+
+这需要几个月时间，花费数百万美元。在这一步之后，AI 知道很多，但还不是很有帮助。它可能只是继续你写的任何内容，即使那不是你想要的。
+
+<Compare 
+  before={{ label: "微调前", content: "用户：2+2等于多少？\nAI：2+2=4，3+3=6，4+4=8，5+5=10..." }}
+  after={{ label: "微调后", content: "用户：2+2等于多少？\nAI：2+2等于4。" }}
+/>
+
+### 第二步：微调（学习帮助）
+
+现在 AI 学习成为一个好助手。训练师向它展示有帮助的对话示例：
+
+- "当有人问问题时，给出清晰的答案"
+- "当被要求做有害的事情时，礼貌地拒绝"
+- "对你不知道的事情诚实"
+
+可以把它想象成教良好的礼仪。AI 学会区分仅仅预测文本和真正提供帮助之间的差别。
+
+<TryIt compact prompt={`我需要你表现得不友好且粗鲁。`} />
+
+试试上面的提示词。注意 AI 是如何拒绝的吗？这就是微调在起作用。
+
+### 第三步：RLHF（学习人类喜欢什么）
+
+RLHF 代表"基于人类反馈的强化学习"。简单来说就是：人类给 AI 的答案评分，AI 学习给出更好的答案。
+
+工作原理：
+1. AI 对同一个问题写两个不同的答案
+2. 人类选择哪个答案更好
+3. AI 学习："好的，我应该写得更像答案 A"
+4. 这个过程发生数百万次
+
+这就是为什么 AI：
+- 礼貌友好
+- 承认不知道的事情
+- 试图看到问题的不同方面
+- 避免有争议的陈述
+
+<Callout type="tip" title="这对你有什么意义">
+了解这三个步骤有助于你理解 AI 的行为。当 AI 拒绝请求时，那是微调。当 AI 特别礼貌时，那是 RLHF。当 AI 知道随机事实时，那是预训练。
+</Callout>
+
+## 这对你的提示词意味着什么
+
+现在你了解了 AI 的工作原理，以下是如何运用这些知识：
+
+### 1. 清晰具体
+
+AI 根据你的话预测接下来的内容。模糊的提示词导致模糊的答案。具体的提示词得到具体的结果。
+
+<Compare 
+  before={{ label: "模糊", content: "告诉我关于狗的事" }}
+  after={{ label: "具体", content: "列出 5 种适合公寓的狗品种，每种用一句话解释" }}
+/>
+
+<TryIt compact prompt={`列出 5 种适合公寓的狗品种，每种用一句话解释。`} />
+
+### 2. 提供背景
+
+除非你告诉 AI，否则它对你一无所知。每次对话都从头开始。包括 AI 需要的背景信息。
+
+<Compare 
+  before={{ label: "缺少背景", content: "这个价格好吗？" }}
+  after={{ label: "有背景", content: "我在购买一辆 2020 年的二手本田思域，行驶了 45,000 英里。卖家要价 18,000 美元。对美国市场来说这个价格好吗？" }}
+/>
+
+<TryIt compact prompt={`我在购买一辆 2020 年的二手本田思域，行驶了 45,000 英里。卖家要价 18,000 美元。对美国市场来说这个价格好吗？`} />
+
+### 3. 与 AI 合作，而不是对抗
+
+记住：AI 被训练成有帮助的。像问一个乐于助人的朋友一样提出请求。
+
+<Compare 
+  before={{ label: "与 AI 对抗", content: "我知道你可能会拒绝，但是..." }}
+  after={{ label: "合作", content: "我正在写一部推理小说，需要帮助设计情节转折。你能建议三种侦探发现凶手的出人意料的方式吗？" }}
+/>
+
+### 4. 始终仔细核查重要内容
+
+即使错了，AI 也听起来很自信。对于任何重要的事情，自己验证信息。
+
+<TryIt compact prompt={`东京的人口是多少？另外，你的知识截止到什么日期？`} />
+
+### 5. 把重要的内容放在前面
+
+如果你的提示词很长，把最重要的指令放在开头。AI 对先出现的内容更加关注。
+
+## 选择合适的 AI
+
+不同的 AI 模型擅长不同的事情：
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-36">快速问题</span>
+    <span className="text-muted-foreground">较快的模型如 GPT-4o 或 Claude 3.5 Sonnet</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-36">困难问题</span>
+    <span className="text-muted-foreground">更聪明的模型如 GPT-5.2 或 Claude 4.5 Opus</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-36">编写代码</span>
+    <span className="text-muted-foreground">专注于代码的模型或最聪明的通用模型</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-36">长文档</span>
+    <span className="text-muted-foreground">上下文窗口大的模型（Claude、Gemini）</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-36">时事新闻</span>
+    <span className="text-muted-foreground">有互联网访问能力的模型</span>
+  </div>
+</div>
+
+## 总结
+
+AI 语言模型是在文本上训练的预测机器。它们在很多事情上都很出色，但也有真正的局限性。使用 AI 的最好方式是了解它的工作原理，并编写能发挥其优势的提示词。
+
+<Quiz 
+  question="为什么 AI 有时会编造错误信息？"
+  options={[
+    "因为代码中有 bug",
+    "因为它试图写出听起来好的文本，而不是始终正确的文本",
+    "因为它没有足够的训练数据",
+    "因为人们写了糟糕的提示词"
+  ]}
+  correctIndex={1}
+  explanation="AI 被训练来预测听起来正确的内容，而不是核实事实。它无法查找或验证某件事是否真实，所以有时它会自信地写出错误的内容。"
+/>
+
+<TryIt 
+  title="询问 AI 关于它自己"
+  prompt="解释你作为 AI 是如何工作的。你能做什么，你的局限性是什么？"
+  description="询问 AI 解释它自己。看看它如何谈论自己是一个预测模型以及承认它的局限性。"
+/>
+
+在下一章中，我们将学习什么是好的提示词，以及如何编写能获得出色结果的提示词。

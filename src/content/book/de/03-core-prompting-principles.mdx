@@ -1,0 +1,373 @@
+Über die Struktur hinaus wird effektives Prompt Engineering von Prinzipien geleitet – grundlegenden Wahrheiten, die über Modelle, Aufgaben und Kontexte hinweg gelten. Meistere diese Prinzipien, und du wirst dich an jede Prompting-Herausforderung anpassen können.
+
+<Callout type="info" title="Die 8 Kernprinzipien">
+Diese Prinzipien gelten für jedes KI-Modell und jede Aufgabe. Lerne sie einmal, nutze sie überall.
+</Callout>
+
+## Prinzip 1: Klarheit vor Cleverness
+
+Die besten Prompts sind klar, nicht clever. KI-Modelle sind wörtliche Interpreten – sie arbeiten genau mit dem, was du ihnen gibst.
+
+### Sei explizit
+
+<Compare 
+  before={{ label: "Implizit (problematisch)", content: "Mach das besser." }}
+  after={{ label: "Explizit (effektiv)", content: "Verbessere diese E-Mail durch:\n1. Eine ansprechendere Betreffzeile\n2. Kürzere Absätze mit maximal 2-3 Sätzen\n3. Einen klaren Call-to-Action am Ende" }}
+/>
+
+### Vermeide Mehrdeutigkeit
+
+Wörter können mehrere Bedeutungen haben. Wähle präzise Sprache.
+
+<Compare 
+  before={{ label: "Mehrdeutig", content: "Gib mir eine kurze Zusammenfassung.\n(Wie kurz? 1 Satz? 1 Absatz? 1 Seite?)" }}
+  after={{ label: "Präzise", content: "Fasse in genau 3 Stichpunkten zusammen, jeder unter 20 Wörtern." }}
+/>
+
+### Sage das Offensichtliche
+
+Was für dich offensichtlich ist, ist nicht offensichtlich für das Modell. Buchstabiere Annahmen aus.
+
+```
+Du hilfst mir, ein Anschreiben zu schreiben.
+
+Wichtiger Kontext:
+- Ich bewerbe mich für eine Software-Entwickler-Position bei Google
+- Ich habe 5 Jahre Erfahrung in Python und verteilten Systemen
+- Die Rolle erfordert Führungserfahrung (ich habe ein Team von 4 geleitet)
+- Ich möchte meine Open-Source-Beiträge hervorheben
+```
+
+## Prinzip 2: Spezifität bringt Qualität
+
+Vage Eingaben produzieren vage Ausgaben. Spezifische Eingaben produzieren spezifische, nützliche Ausgaben.
+
+### Die Spezifitätsleiter
+
+<SpecificitySpectrum levels={[
+  { level: "Stufe 1", text: "Schreibe über den Klimawandel" },
+  { level: "Stufe 2", text: "Schreibe einen Artikel über Auswirkungen des Klimawandels" },
+  { level: "Stufe 3", text: "Schreibe einen 500-Wörter-Artikel darüber, wie der Klimawandel Korallenriffe beeinflusst" },
+  { level: "Stufe 4", text: "Schreibe einen 500-Wörter-Artikel, der erklärt, wie steigende Meerestemperaturen Korallenbleiche verursachen, für Oberstufenschüler, mit 2 konkreten Beispielen vom Great Barrier Reef, in einem ansprechenden aber wissenschaftlich korrekten Ton" }
+]} />
+
+Jede Stufe fügt Spezifität hinzu und verbessert dramatisch die Ausgabequalität.
+
+### Spezifiziere diese Elemente
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Publikum</span>
+    <span className="text-muted-foreground">Wer wird das lesen/nutzen?</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Länge</span>
+    <span className="text-muted-foreground">Wie lang/kurz sollte es sein?</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Ton</span>
+    <span className="text-muted-foreground">Formell? Lässig? Technisch?</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Format</span>
+    <span className="text-muted-foreground">Prosa? Liste? Tabelle? Code?</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Umfang</span>
+    <span className="text-muted-foreground">Was einschließen/ausschließen?</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Zweck</span>
+    <span className="text-muted-foreground">Was soll das erreichen?</span>
+  </div>
+</div>
+
+## Prinzip 3: Der Kontext ist König
+
+Modelle haben kein Gedächtnis, keinen Zugang zu deinen Dateien und kein Wissen über deine Situation. Alles Relevante muss im Prompt sein.
+
+### Liefere ausreichend Kontext
+
+<Compare 
+  before={{ label: "Unzureichender Kontext", content: "Warum funktioniert meine Funktion nicht?" }}
+  after={{ label: "Ausreichender Kontext", content: "Ich habe eine Python-Funktion, die eine Liste von Dictionaries nach einem bestimmten Schlüsselwert filtern soll. Sie gibt eine leere Liste zurück, obwohl sie 3 Elemente zurückgeben sollte.\n\nFunktion:\ndef filter_items(items, key, value):\n    return [item for item in items if item[key] = value]\n\nAufruf: filter_items(items, 'status', 'active')\nErwartet: 2 Elemente, Erhalten: leere Liste" }}
+/>
+
+### Die Kontext-Checkliste
+
+<Callout type="tip" title="Bevor du abschickst">
+Frag dich: Würde ein kluger Fremder diese Anfrage verstehen? Wenn nicht, füge mehr Kontext hinzu.
+</Callout>
+
+<Checklist 
+  title="Kontext-Checkliste"
+  items={[
+    { text: "Weiß das Modell, woran ich arbeite?" },
+    { text: "Kennt es mein Ziel?" },
+    { text: "Hat es alle notwendigen Informationen?" },
+    { text: "Versteht es die Einschränkungen?" },
+    { text: "Würde ein kluger Fremder diese Anfrage verstehen?" }
+  ]}
+/>
+
+## Prinzip 4: Führe, frage nicht nur
+
+Frag nicht nur nach einer Antwort – führe das Modell zur Antwort, die du willst.
+
+### Nutze anleitende Rahmung
+
+<Compare 
+  before={{ label: "Nur fragen", content: "Was sind die Vor- und Nachteile von Microservices?" }}
+  after={{ label: "Führend", content: "Liste 5 Vorteile und 5 Nachteile der Microservices-Architektur auf.\n\nFür jeden Punkt:\n- Formuliere den Punkt klar in einem Satz\n- Gib eine kurze Erklärung (2-3 Sätze)\n- Nenne ein konkretes Beispiel\n\nBerücksichtige Perspektiven von: kleinen Startups, großen Unternehmen und Teams, die von Monolithen migrieren." }}
+/>
+
+### Stelle Denkgerüste bereit
+
+Für komplexe Aufgaben, führe den Denkprozess:
+
+<TryIt 
+  title="Denkgerüst-Beispiel"
+  description="Dieser Prompt führt die KI durch einen systematischen Entscheidungsprozess."
+  prompt={`Ich muss zwischen PostgreSQL und MongoDB für mein E-Commerce-Projekt wählen.
+
+Denke das systematisch durch:
+1. Liste zuerst die typischen Anforderungen für eine E-Commerce-Datenbank auf
+2. Bewerte dann jede Datenbank gegen jede Anforderung
+3. Berücksichtige Trade-offs spezifisch für meinen Anwendungsfall
+4. Gib eine Empfehlung mit klarer Begründung`}
+/>
+
+## Prinzip 5: Iteriere und verfeinere
+
+Prompt Engineering ist ein iterativer Prozess. Dein erster Prompt ist selten dein bester.
+
+### Der Iterationszyklus
+
+```
+1. Schreibe initialen Prompt
+2. Überprüfe die Ausgabe
+3. Identifiziere Lücken oder Probleme
+4. Verfeinere den Prompt
+5. Wiederhole, bis zufrieden
+```
+
+### Häufige Verfeinerungen
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Zu wortreich</span>
+    <span className="text-muted-foreground">Füge „Sei prägnant" oder Längenlimits hinzu</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Zu vage</span>
+    <span className="text-muted-foreground">Füge konkrete Beispiele oder Einschränkungen hinzu</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Falsches Format</span>
+    <span className="text-muted-foreground">Spezifiziere die genaue Ausgabestruktur</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Fehlende Aspekte</span>
+    <span className="text-muted-foreground">Füge „Stelle sicher, dass du einschließt..." hinzu</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Falscher Ton</span>
+    <span className="text-muted-foreground">Spezifiziere Publikum und Stil</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Ungenau</span>
+    <span className="text-muted-foreground">Fordere Quellenangaben oder schrittweises Denken an</span>
+  </div>
+</div>
+
+### Führe ein Prompt-Tagebuch
+
+Dokumentiere, was funktioniert:
+```
+Aufgabe: Code-Review
+Version 1: "Überprüfe diesen Code" → Zu generisch
+Version 2: Spezifische Review-Kriterien hinzugefügt → Besser
+Version 3: Beispiel für gutes Review hinzugefügt → Ausgezeichnet
+Final: [Speichere erfolgreichen Prompt als Vorlage]
+```
+
+## Prinzip 6: Nutze die Stärken des Modells
+
+Arbeite mit der Trainingsweise der Modelle, nicht dagegen.
+
+### Modelle wollen hilfreich sein
+
+Formuliere Anfragen als Dinge, die ein hilfreicher Assistent natürlich tun würde:
+
+<Compare 
+  before={{ label: "Gegen das Modell", content: "Ich weiß, du kannst das nicht, aber versuch mal..." }}
+  after={{ label: "Mit dem Modell", content: "Hilf mir zu verstehen...\nIch arbeite an X und brauche Unterstützung bei...\nKönntest du mich durch ... führen..." }}
+/>
+
+### Modelle sind gut mit Mustern
+
+Wenn du konsistente Ausgaben brauchst, zeige das Muster:
+
+<TryIt 
+  title="Muster-Beispiel"
+  description="Dieser Prompt zeigt der KI genau, welches Format du für Buchempfehlungen möchtest."
+  prompt={`Empfehle 3 Science-Fiction-Bücher. Formatiere jede Empfehlung als:
+
+📚 **[Titel]** von [Autor]
+*[Genre] | [Erscheinungsjahr]*
+[2-Satz-Beschreibung]
+Warum du es lieben wirst: [1-Satz-Aufhänger]
+
+---`}
+/>
+
+### Modelle können Rollen spielen
+
+Nutze Personas, um verschiedene „Modi" der Antwort zu aktivieren:
+
+```
+Als Advocatus Diaboli, argumentiere gegen meinen Vorschlag...
+Als unterstützender Mentor, hilf mir mich zu verbessern...
+Als skeptischer Investor, hinterfrage diesen Businessplan...
+```
+
+## Prinzip 7: Kontrolliere die Ausgabestruktur
+
+Strukturierte Ausgaben sind nützlicher als Freitext.
+
+### Fordere spezifische Formate an
+
+```
+Gib deine Analyse zurück als:
+
+ZUSAMMENFASSUNG: [1 Satz]
+
+WICHTIGE ERKENNTNISSE:
+• [Erkenntnis 1]
+• [Erkenntnis 2]
+• [Erkenntnis 3]
+
+EMPFEHLUNG: [1-2 Sätze]
+
+KONFIDENZ: [Niedrig/Mittel/Hoch] weil [Grund]
+```
+
+### Nutze Trennzeichen
+
+Trenne Abschnitte deines Prompts klar:
+
+```
+### KONTEXT ###
+[Dein Kontext hier]
+
+### AUFGABE ###
+[Deine Aufgabe hier]
+
+### FORMAT ###
+[Gewünschtes Format hier]
+```
+
+### Fordere maschinenlesbare Ausgabe an
+
+Für programmatische Nutzung:
+
+```
+Gib nur gültiges JSON zurück, keine Erklärung:
+{
+  "decision": "approve" | "reject" | "review",
+  "confidence": 0.0-1.0,
+  "reasons": ["String-Array"]
+}
+```
+
+## Prinzip 8: Verifiziere und validiere
+
+Vertraue Modellausgaben nie blind, besonders bei wichtigen Aufgaben.
+
+### Frage nach dem Denkweg
+
+```
+Löse dieses Problem und zeige deine Arbeit Schritt für Schritt.
+Nach dem Lösen, verifiziere deine Antwort durch [Überprüfungsmethode].
+```
+
+### Fordere mehrere Perspektiven an
+
+```
+Gib mir drei verschiedene Ansätze, um dieses Problem zu lösen.
+Erkläre für jeden die Trade-offs.
+```
+
+### Baue Selbstüberprüfung ein
+
+```
+Nach dem Generieren des Codes, überprüfe ihn auf:
+- Syntaxfehler
+- Randfälle
+- Sicherheitslücken
+Liste alle gefundenen Probleme auf.
+```
+
+## Zusammenfassung: Die Prinzipien auf einen Blick
+
+<PrinciplesSummary />
+
+<Quiz 
+  question="Welches Prinzip schlägt vor, dass du alle relevanten Hintergrundinformationen in deinen Prompt aufnehmen solltest?"
+  options={[
+    "Klarheit vor Cleverness",
+    "Spezifität bringt Qualität",
+    "Der Kontext ist König",
+    "Iteriere und verfeinere"
+  ]}
+  correctIndex={2}
+  explanation="Der Kontext ist König betont, dass KI-Modelle kein Gedächtnis zwischen Sitzungen haben und nicht Gedanken lesen können. Das Einbeziehen relevanter Hintergründe, Einschränkungen und Ziele hilft dem Modell, deine Bedürfnisse zu verstehen."
+/>
+
+## Übung: Fülle die Lücken
+
+Teste dein Verständnis der Kernprinzipien, indem du diese Prompt-Vorlage vervollständigst:
+
+<FillInTheBlank
+  title="Wende die Prinzipien an"
+  description="Fülle die Lücken aus, um einen gut strukturierten Prompt zu erstellen — schreibe, was du möchtest!"
+  useAI={true}
+  openEnded={true}
+  template={`Du bist ein {{role}} mit Expertise in {{expertise}}.
+
+Kontext: Ich arbeite an {{context}}.
+
+Aufgabe: {{task}}
+
+Einschränkungen:
+- Halte deine Antwort unter {{length}} Wörtern
+- Konzentriere dich nur auf {{focus}}
+
+Format: Gib deine Antwort als {{format}} zurück.`}
+  blanks={[
+    { id: "role", correctAnswers: [], hint: "Welche professionelle Rolle sollte die KI einnehmen?", context: "Eine Berufsbezeichnung oder professionelle Rolle" },
+    { id: "expertise", correctAnswers: [], hint: "Welches spezifische Fachwissen wird benötigt?", context: "Eine Fähigkeit oder Domäne, die zur Rolle passt" },
+    { id: "context", correctAnswers: [], hint: "Was ist das Projekt oder die Situation?", context: "Ein Projekt, an dem jemand mit dieser Expertise arbeiten würde" },
+    { id: "task", correctAnswers: [], hint: "Welche konkrete Aktion soll die KI ausführen?", context: "Eine Aktion, die für die Rolle und den Kontext angemessen ist" },
+    { id: "length", correctAnswers: [], hint: "Wie lang sollte die Antwort sein?", context: "Eine Zahl (Wortanzahl)" },
+    { id: "focus", correctAnswers: [], hint: "Welcher Aspekt sollte priorisiert werden?", context: "Eine Eigenschaft oder ein Aspekt, der für die Aufgabe relevant ist" },
+    { id: "format", correctAnswers: [], hint: "Wie sollte die Ausgabe strukturiert sein?", context: "Ein Ausgabeformat-Typ" }
+  ]}
+  explanation="Ein gut strukturierter Prompt enthält: eine klare Rolle (Prinzip 1), ausreichend Kontext (Prinzip 3), eine spezifische Aufgabe (Prinzip 2), Einschränkungen (Prinzip 4) und Ausgabeformat (Prinzip 5). Die KI prüft, ob deine Entscheidungen intern konsistent sind."
+/>
+
+<InteractiveChecklist
+  title="Prinzipien-Checkliste"
+  items={[
+    { id: "clarity", label: "Klarheit vor Cleverness", description: "Ist dein Prompt explizit und eindeutig?" },
+    { id: "specificity", label: "Spezifität bringt Qualität", description: "Hast du Publikum, Länge, Ton und Format angegeben?" },
+    { id: "context", label: "Der Kontext ist König", description: "Enthält der Prompt alle notwendigen Hintergrundinformationen?" },
+    { id: "examples", label: "Beispiele schlagen Erklärungen", description: "Hast du gezeigt, was du willst, nicht nur beschrieben?" },
+    { id: "constraints", label: "Einschränkungen fokussieren die Ausgabe", description: "Gibt es klare Grenzen für Umfang und Format?" },
+    { id: "iteration", label: "Iteriere und verfeinere", description: "Bist du bereit, basierend auf Ergebnissen zu verbessern?" },
+    { id: "persona", label: "Persona formt die Perspektive", description: "Weiß die KI, welche Rolle sie spielen soll?" },
+    { id: "verify", label: "Verifiziere und validiere", description: "Hast du Überprüfungen für Genauigkeit eingebaut?" }
+  ]}
+/>
+
+Diese Prinzipien bilden das Fundament für alles, was folgt. In Teil II werden wir sie auf spezifische Techniken anwenden, die die Prompt-Effektivität dramatisch verbessern.
