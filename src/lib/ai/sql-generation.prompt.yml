@@ -1,5 +1,5 @@
 name: SQL Generation
-description: Generates SQL queries for searching the Hugging Face datasets viewer with the awesome-chatgpt-prompts dataset.
+description: Generates SQL queries for searching the Hugging Face datasets viewer with the prompts.chat dataset.
 model: openai/gpt-4o-mini
 modelParameters:
   temperature: 0.7
