@@ -7,6 +7,8 @@
     </picture>
     <br>
     prompts.chat
+    <br>
+    <sub>formerly known as Awesome ChatGPT Prompts</sub>
   </a>
 </h1>
 
