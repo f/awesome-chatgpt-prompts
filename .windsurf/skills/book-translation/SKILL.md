@@ -27,6 +27,7 @@ The Turkish (`tr`) translation is complete and well-tested. **Copy it as your st
 ```bash
 mkdir -p src/content/book/{locale}
 cp -r src/content/book/*.mdx src/content/book/{locale}/
+cp src/components/book/elements/locales/en.ts src/components/book/elements/locales/{locale}.ts
 ```
 
 This is faster because:
@@ -146,7 +147,7 @@ Localize example text for demos (tokenizer samples, temperature examples, etc.):
 
 ### Book Elements
 
-Localize elements at `/src/book/elements/*.tsx` files. Find the `en:`, `tr:` etc. translations and add localized translations for target language.
+Localize elements at `/src/book/elements/*.tsx` files. Use `/src/book/elements/locales/*.ts` files to translate.
 
 ### UI Strings (`book.interactive.*`, `book.chapter.*`, `book.search.*`)
 Translate all interactive component labels and navigation strings.
