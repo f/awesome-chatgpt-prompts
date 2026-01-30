@@ -1,0 +1,335 @@
+Yapay zeka, profesyonel verimliliği dramatik şekilde artırabilir. Bu bölüm, iş iletişimi, analiz, planlama ve iş akışı optimizasyonu için promptları kapsar.
+
+<Callout type="info" title="İş İçin YZ">
+YZ, taslak oluşturma, analiz ve yapılandırmada mükemmelleşir—böylece strateji, ilişkiler ve insan yargısı gerektiren kararlara odaklanabilirsiniz.
+</Callout>
+
+## İş İletişimi
+
+### Yapılması ve Yapılmaması Gerekenler: İş E-postaları
+
+<Compare 
+  before={{ label: "❌ Belirsiz istek", content: "Patronuma proje hakkında bir e-posta yaz." }}
+  after={{ label: "✓ Tam bağlam", content: "Yöneticime (Ayşe Hanım) Q4 pazarlama projesi hakkında güncelleme e-postası yaz.\n\nAnahtar noktalar: 15 Kasım son tarihi için yoldayız, tedarikçi sorununu çözdük, 5.000₺'lik bütçe artışı için onayına ihtiyacımız var.\nTon: Profesyonel ama samimi (iyi bir ilişkimiz var)\n150 kelimenin altında tut, sonunda net istek olsun." }}
+/>
+
+### E-posta Taslağı
+
+<TryIt compact prompt={`Profesyonel bir e-posta yaz.
+
+Bağlam:
+- Kime: [alıcı ve ilişki]
+- Amaç: [talep/bilgilendirme/takip/özür]
+- Anahtar noktalar: [iletilmesi gerekenler]
+- Ton: [resmi/samimi profesyonel/acil]
+
+Kısıtlamalar:
+- [X] cümlenin altında tut
+- Net eylem çağrısı
+- Konu satırı dahil`} />
+
+**Amaca göre örnekler:**
+
+<TryIt compact prompt={`\${emailType:Toplantı Talebi}: Ortaklık fırsatlarını görüşmek için potansiyel bir müşteriyle toplantı talep eden bir e-posta yaz. Kısa tut ve evet demelerini kolaylaştır.`} />
+
+<TryIt compact prompt={`\${emailType:Zor Konuşma}: Gelecekteki fırsatlar için ilişkiyi korurken bir tedarikçinin teklifini reddeden bir e-posta yaz. Net ama diplomatik ol.`} />
+
+<TryIt compact prompt={`\${emailType:Durum Güncellemesi}: Paydaşlara proje durum e-postası yaz. Proje kapsam değişiklikleri nedeniyle 2 hafta geride. Durumu profesyonelce, toparlanma planıyla birlikte sun.`} />
+
+### Sunum İçeriği
+
+<TryIt compact prompt={`\${topic:Q4 satış stratejisi} için sunum içeriği oluştur.
+
+Hedef kitle: \${audience:üst yönetim}
+Süre: \${duration:15 dakika}
+Hedef: \${goal:bütçe artışı onayı almak}
+
+Her slayt için sağla:
+- Başlık
+- Anahtar mesaj (bir ana nokta)
+- Destekleyici noktalar (maksimum 3)
+- Konuşmacı notları (ne söylenmeli)
+- Görsel önerisi (grafik/görsel/diyagram)
+
+Yapı:
+1. Kanca/Dikkat çekici
+2. Problem/Fırsat
+3. Çözüm/Öneri
+4. Kanıt/Destek
+5. Eylem çağrısı`} />
+
+### Rapor Yazımı
+
+<TryIt compact prompt={`\${topic:Avrupa pazarlarına açılma} hakkında \${reportType:öneri} raporu yaz.
+
+Rapor türü: \${type:öneri}
+Hedef kitle: \${audience:C-seviye yöneticiler}
+Uzunluk: \${length:5 sayfa}
+
+Yapı:
+1. Yönetici Özeti (anahtar bulgular, 1 paragraf)
+2. Arka Plan/Bağlam
+3. Metodoloji (varsa)
+4. Bulgular
+5. Analiz
+6. Öneriler
+7. Sonraki Adımlar
+
+Dahil et: İlgili yerlerde veri görselleştirme önerileri
+Ton: \${tone:resmi iş}`} />
+
+## Analiz ve Karar Verme
+
+<Callout type="tip" title="Analiz İlkesi">
+YZ düşüncenizi yapılandırabilir, ama **gerçek dünya bağlamını siz sağlarsınız**. En iyi analizler YZ'nin çerçevelerini alan uzmanlığınızla birleştirir.
+</Callout>
+
+### SWOT Analizi
+
+<TryIt compact prompt={`\${subject:yeni bir mobil uygulama başlatma} için SWOT analizi yap.
+
+Bağlam:
+\${context:Tüketici bankacılık uygulaması düşünen orta ölçekli bir fintech şirketiyiz}
+
+Sağla:
+
+**Güçlü Yönler** (iç olumlu)
+- Kısa açıklamalarla en az 4 madde
+
+**Zayıf Yönler** (iç olumsuz)
+- Kısa açıklamalarla en az 4 madde
+
+**Fırsatlar** (dış olumlu)
+- Kısa açıklamalarla en az 4 madde
+
+**Tehditler** (dış olumsuz)
+- Kısa açıklamalarla en az 4 madde
+
+**Stratejik Çıkarımlar**
+- Analizden anahtar içgörü
+- Önerilen öncelikler`} />
+
+### Karar Çerçevesi
+
+<TryIt compact prompt={`\${decision:hangi CRM'i seçeceğim} hakkında karar vermeme yardım et.
+
+Seçenekler:
+1. \${optionA:Salesforce}
+2. \${optionB:HubSpot}
+3. \${optionC:Pipedrive}
+
+Benim için önemli kriterler:
+- \${criterion1:kullanım kolaylığı} (ağırlık: yüksek)
+- \${criterion2:mevcut araçlarla entegrasyon} (ağırlık: yüksek)
+- \${criterion3:maliyet} (ağırlık: orta)
+
+Sağla:
+1. Her seçeneği her kritere göre puanla (1-5)
+2. Ağırlıklı analiz
+3. Her biri için artılar/eksiler özeti
+4. Risk değerlendirmesi
+5. Gerekçeyle öneri
+6. Karar vermeden önce düşünülecek sorular`} />
+
+### Rekabet Analizi
+
+<TryIt compact prompt={`\${competitor:Slack}'i \${ourProduct:ekip iletişim aracımız} ile karşılaştırarak analiz et.
+
+Araştır:
+1. **Ürünler/Hizmetler** - teklifler, fiyatlandırma, konumlandırma
+2. **Güçlü yönler** - iyi yaptıkları
+3. **Zayıf yönler** - yetersiz kaldıkları yerler
+4. **Pazar konumu** - hedef segmentler, pazar payı
+5. **Strateji** - görünür yön ve odak
+
+Bizimle karşılaştır:
+- Nerede daha güçlüyüz
+- Nerede onlar daha güçlü
+- Fırsat boşlukları
+- Rekabetçi tehditler
+
+Öner: Rekabetçi konumumuzu iyileştirmek için eylemler`} />
+
+## Planlama ve Strateji
+
+### Hedef Belirleme (OKR'ler)
+
+<TryIt compact prompt={`\${scope:Q1 pazarlama ekibi} için OKR'ler belirlememde yardım et.
+
+Bağlam:
+- Şirket hedefleri: \${companyGoals:yıldan yıla geliri %25 artır}
+- Mevcut durum: \${currentState:yeni pazarlarda marka bilinirliği düşük}
+- Anahtar öncelikler: \${priorities:potansiyel müşteri oluşturma, içerik pazarlaması}
+
+Her biri 3-4 Anahtar Sonuçlu 3 Hedef oluştur.
+
+Format:
+**Hedef 1:** Niteliksel hedef - ilham verici
+- AS 1.1: Nicel ölçü (Mevcut: X → Hedef: Y)
+- AS 1.2: Nicel ölçü (Mevcut: X → Hedef: Y)
+- AS 1.3: Nicel ölçü (Mevcut: X → Hedef: Y)
+
+AS'lerin şunlar olduğundan emin ol:
+- Ölçülebilir
+- İddialı ama ulaşılabilir
+- Zamana bağlı
+- Sonuç odaklı (görev değil)`} />
+
+### Proje Planlama
+
+<TryIt compact prompt={`\${project:web sitesi yeniden tasarımı} için proje planı oluştur.
+
+Kapsam: \${scope:yeni ana sayfa, ürün sayfaları, ödeme akışı}
+Süre: \${timeline:3 ay}
+Ekip: \${team:2 geliştirici, 1 tasarımcı, 1 PM}
+Bütçe: \${budget:250.000₺}
+
+Sağla:
+1. **Proje aşamaları** kilometre taşlarıyla
+2. **İş kırılım yapısı** (ana görevler)
+3. **Zaman çizelgesi** (Gantt tarzı açıklama)
+4. **Bağımlılıklar** (neyi ne blokluyor)
+5. **Riskler** (potansiyel sorunlar ve azaltma)
+6. **Başarı kriterleri** (bittiğimizi nasıl biliriz)`} />
+
+### Toplantı Gündemi
+
+<TryIt compact prompt={`\${meetingType:çeyreklik planlama} için gündem oluştur.
+
+Amaç: \${purpose:Q2 öncelikleri ve kaynak tahsisi üzerinde uyum}
+Katılımcılar: \${attendees:departman başkanları, CEO, COO}
+Süre: \${duration:90 dakika}
+
+Format:
+| Zaman | Konu | Sahip | Hedef |
+|-------|------|-------|-------|
+| 5 dk | Açılış | Kolaylaştırıcı | Bağlam |
+| ... | ... | ... | ... |
+
+Dahil et:
+- Zaman tahsisleri
+- Her öğe için net sahip
+- Beklenen spesifik sonuçlar
+- Gereken ön çalışma
+- Takip eylem öğesi şablonu`} />
+
+## Verimlilik İş Akışları
+
+### Görev Önceliklendirme
+
+<TryIt compact prompt={`Eisenhower Matrisi kullanarak görevlerimi önceliklendirmeme yardım et.
+
+Görevlerim:
+\${tasks:1. Çeyreklik raporu hazırla (Cuma teslim)\n2. İş başvurularını incele\n3. Tedarikçi e-postalarına yanıt ver\n4. Ekip ofis dışı etkinliği planla\n5. LinkedIn profilimi güncelle}
+
+Her birini kategorize et:
+1. **Acil + Önemli** (Önce yap)
+2. **Önemli, Acil Değil** (Planla)
+3. **Acil, Önemli Değil** (Delege et)
+4. **İkisi de Değil** (Ele)
+
+Sonra sağla:
+- Önerilen yürütme sırası
+- Zaman tahminleri
+- Delegasyon veya eleme önerileri`} />
+
+### Süreç Dokümantasyonu
+
+<TryIt compact prompt={`Bu iş sürecini belgele: \${processName:müşteri iade talebi}.
+
+Oluştur:
+1. **Süreç genel bakışı** (1 paragraf)
+2. **Tetikleyici** (bu süreci ne başlatır)
+3. **Adımlar** (numaralı, sorumlu tarafla)
+4. **Karar noktaları** (eğer X ise Y formatında)
+5. **Çıktılar** (bu sürecin ürettiği)
+6. **Dahil olan sistemler** (araçlar/yazılımlar)
+7. **İstisnalar** (uç durumlar ve ele alınması)
+
+Format: Yeni çalışanın izleyebileceği kadar net`} />
+
+### Standart Operasyon Prosedürü
+
+<TryIt compact prompt={`\${task:yeni çalışanları Slack'e ekleme} için SOP yaz.
+
+Hedef kitle: \${audience:İK yöneticileri}
+Karmaşıklık: \${complexity:temel kullanıcılar}
+
+Dahil et:
+1. Amaç ve kapsam
+2. Ön koşullar/gereksinimler
+3. Adım adım talimatlar
+4. Ekran görüntüleri/görsel yer tutucuları
+5. Kalite kontrol noktaları
+6. Yaygın hatalar ve sorun giderme
+7. İlgili SOP'ler/belgeler
+8. Versiyon geçmişi`} />
+
+## İletişim Şablonları
+
+### Paydaş Güncellemesi
+
+<TryIt compact prompt={`\${project:CRM geçiş projesi} için paydaş güncellemesi yaz.
+
+Durum: \${status:riskli}
+Dönem: \${period:6-10 Ocak Haftası}
+
+Format:
+## Proje Adı Güncellemesi
+
+**Durum:** 🟢/🟡/🔴
+
+**Bu dönemdeki ilerleme:**
+- Başarı 1
+- Başarı 2
+
+**Sonraki dönem hedefleri:**
+- Hedef 1
+- Hedef 2
+
+**Riskler/Engelleyiciler:**
+- Varsa
+
+**Gereken kararlar:**
+- Varsa`} />
+
+### Geri Bildirim Talebi
+
+<TryIt compact prompt={`\${deliverable:yeni ürün yol haritası belgesi} hakkında geri bildirim talep eden mesaj yaz.
+
+Bağlam: \${context:Bu Q2 önceliklerimize rehberlik edecek, bir şey kaçırmadığımdan emin olmak istiyorum}
+Geri bildirim için spesifik alanlar: \${feedbackAreas:zaman çizelgesi fizibilitesi, kaynak tahsisi, eksik özellikler}
+Süre: \${deadline:Cuma mesai bitimine kadar}
+
+Ton: Profesyonel ama aşırı resmi değil
+Spesifik sorularla yanıt vermeyi kolaylaştır`} />
+
+## prompts.chat'ten Prompt Şablonları
+
+### İş Danışmanı Olarak Davran
+
+<TryIt compact prompt={`Bir iş danışmanı olarak davranmanı istiyorum. İş durumlarını ve zorluklarını tanımlayacağım ve stratejik tavsiye, problemler hakkında düşünmek için çerçeveler ve eyleme dönüştürülebilir öneriler sağlayacaksın. Pratik ve spesifik olurken yerleşik iş ilkelerinden yararlan.`} />
+
+### Toplantı Kolaylaştırıcısı Olarak Davran
+
+<TryIt compact prompt={`Bir toplantı kolaylaştırıcısı olarak davranmanı istiyorum. Etkili toplantılar planlamama ve yürütmeme yardım et. Gündemler oluştur, tartışma çerçeveleri öner, konuşmaları sentezlemeye yardım et ve takip iletişimlerini hazırla. Toplantıları verimli ve eylem odaklı yapmaya odaklan.`} />
+
+## Özet
+
+<Callout type="tip" title="Anahtar Teknikler">
+Hedef kitleyi ve ihtiyaçlarını belirt, istenen sonucu net tanımla, ilgili bağlam ve kısıtlamaları dahil et, spesifik format ve yapılar iste ve profesyonel ton gereksinimlerini değerlendir.
+</Callout>
+
+<Quiz 
+  question="YZ'den iş e-postası yazmasını isterken her zaman neyi dahil etmelisiniz?"
+  options={[
+    "Sadece tartışmak istediğiniz konu",
+    "Alıcı, amaç, anahtar noktalar ve istenen ton",
+    "Sadece alıcının adı",
+    "İnternetten bir şablon"
+  ]}
+  correctIndex={1}
+  explanation="Etkili iş e-postaları bağlam gerektirir: kime yazıyorsunuz, neden, ne iletilmeli ve uygun ton. YZ profesyonel ilişkilerinizi veya organizasyonel bağlamınızı çıkarsayamaz."
+/>
+
+YZ rutin iş iletişimini halledebilir, siz strateji ve ilişkilere odaklanın.

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Check, Target, Scissors, Palette, Megaphone, Code, GitBranch, Shield, Tag, Layers, Scale, Database, Layout, Plus, Minus, HelpCircle, Link, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 

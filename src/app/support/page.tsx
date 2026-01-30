@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label";
 import { ExternalLink, MessageCircleQuestion, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const GITHUB_ISSUE_BASE_URL = "https://github.com/f/awesome-chatgpt-prompts/issues/new";
+const GITHUB_ISSUE_BASE_URL = "https://github.com/f/prompts.chat/issues/new";
 
 interface FAQItemProps {
   question: string;

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations, useLocale } from "next-intl";
 import { User, HelpCircle, FileText, Settings, Palette, FlaskConical, Target, Check, ListChecks, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { RunPromptButton } from "@/components/prompts/run-prompt-button";

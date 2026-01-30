@@ -1,0 +1,586 @@
+JSON ve YAML gibi yapılandırılmış veri formatları, yapay zeka çıktılarını programatik olarak tüketen uygulamalar oluşturmak için esastır. Bu bölüm güvenilir yapılandırılmış çıktı üretimi tekniklerini kapsar.
+
+<Callout type="info" title="Metinden Veriye">
+JSON ve YAML, yapay zeka çıktılarını serbest biçimli metinden kodun doğrudan tüketebileceği yapılandırılmış, tip güvenli veriye dönüştürür.
+</Callout>
+
+## Yapılandırılmış Formatlar Neden?
+
+<JsonYamlDemo />
+
+## JSON Promptlama Temelleri
+
+JSON (JavaScript Object Notation), programatik yapay zeka çıktıları için en yaygın formattır. Katı sözdizimi ayrıştırmayı kolaylaştırır, ama aynı zamanda küçük hatalar tüm pipeline'ınızı bozabilir demektir.
+
+### Yapılması ve Yapılmaması Gerekenler: JSON İsteme
+
+<Compare 
+  before={{ label: "❌ Yapma: Belirsiz istek", content: "Kullanıcı bilgilerini JSON olarak ver." }}
+  after={{ label: "✓ Yap: Şemayı göster", content: "Kullanıcı bilgilerini bu şemaya uygun JSON olarak çıkar:\n\n{\n  \"isim\": \"string\",\n  \"yas\": number,\n  \"email\": \"string\"\n}\n\nSADECE geçerli JSON döndür, markdown yok." }}
+/>
+
+### Basit JSON Çıktı
+
+Beklenen yapıyı gösteren bir şemayla başlayın. Model girdi metnine göre değerleri dolduracaktır.
+
+```
+Aşağıdaki bilgileri JSON olarak çıkar:
+
+{
+  "isim": "string",
+  "yas": number,
+  "email": "string"
+}
+
+Metin: "Ahmet Yılmaz ile iletişime geçin, 34 yaşında, ahmet@example.com"
+```
+
+Çıktı:
+```json
+{
+  "isim": "Ahmet Yılmaz",
+  "yas": 34,
+  "email": "ahmet@example.com"
+}
+```
+
+### İç İçe JSON Yapıları
+
+Gerçek dünya verisi genellikle iç içe ilişkilere sahiptir. Şemanızın her seviyesini, özellikle nesne dizileri için net bir şekilde tanımlayın.
+
+```
+Bu siparişi JSON'a ayrıştır:
+
+{
+  "siparis_id": "string",
+  "musteri": {
+    "isim": "string",
+    "email": "string"
+  },
+  "urunler": [
+    {
+      "urun": "string",
+      "miktar": number,
+      "fiyat": number
+    }
+  ],
+  "toplam": number
+}
+
+Sipariş: "Ayşe Kaya (ayse@email.com) için #12345 sipariş: 2x Widget (tanesi 10 TL), 
+1x Gadget (25 TL). Toplam: 45 TL"
+```
+
+### Geçerli JSON Sağlama
+
+<Callout type="warning" title="Yaygın Başarısızlık Noktası">
+Modeller genellikle JSON'u markdown kod blokları içine sarar veya açıklayıcı metin ekler. Sadece ham JSON istediğiniz konusunda açık olun.
+</Callout>
+
+Açık talimatlar ekleyin:
+
+```
+KRİTİK: SADECE geçerli JSON döndür. Markdown yok, açıklama yok, 
+JSON nesnesinden önce veya sonra ek metin yok.
+
+Bir alan belirlenemiyorsa null kullan.
+Tüm stringlerin düzgün alıntılanmış ve escape edilmiş olduğundan emin ol.
+Sayılar alıntılanmamalı.
+```
+
+## YAML Promptlama Temelleri
+
+YAML, JSON'dan daha insan tarafından okunabilirdir ve yorumları destekler. Yapılandırma dosyaları için standarttır, özellikle DevOps'ta (Docker, Kubernetes, GitHub Actions).
+
+### Basit YAML Çıktı
+
+YAML parantezler yerine girinti kullanır. Beklenen yapıyı gösteren bir şablon sağlayın.
+
+```
+YAML formatında bir yapılandırma dosyası oluştur:
+
+server:
+  host: string
+  port: number
+  ssl: boolean
+database:
+  type: string
+  connection_string: string
+
+Gereksinimler: Port 443'te SSL ile üretim sunucusu, PostgreSQL veritabanı
+```
+
+Çıktı:
+```yaml
+server:
+  host: "0.0.0.0"
+  port: 443
+  ssl: true
+database:
+  type: "postgresql"
+  connection_string: "postgresql://user:pass@localhost:5432/prod"
+```
+
+### Karmaşık YAML Yapıları
+
+Karmaşık yapılandırmalar için gereksinimler hakkında spesifik olun. Model GitHub Actions, Docker Compose ve Kubernetes gibi araçlar için yaygın kalıpları bilir.
+
+```
+YAML'da GitHub Actions iş akışı oluştur:
+
+Gereksinimler:
+- main'e push ve pull request'lerde tetikle
+- Ubuntu latest üzerinde çalıştır
+- Adımlar: checkout, Node 18 kurulumu, bağımlılıkları yükle, testleri çalıştır
+- npm bağımlılıklarını önbelleğe al
+```
+
+## Promptlarda Tip Tanımları
+
+Tip tanımları, çıktı yapısı için modele kesin bir sözleşme verir. Örneklerden daha açıktırlar ve programatik olarak doğrulamak daha kolaydır.
+
+### TypeScript Benzeri Tipler Kullanma
+
+TypeScript arayüzleri geliştiricilere tanıdıktır ve opsiyonel alanları, birleşim tiplerini ve dizileri hassas bir şekilde tanımlar. prompts.chat platformu yapılandırılmış promptlar için bu yaklaşımı kullanır.
+
+<TryIt 
+  title="TypeScript Arayüz Çıkarma"
+  description="Yapılandırılmış veri çıkarmak için bir TypeScript arayüzü kullanın."
+  prompt={`Bu tip tanımına göre veri çıkar:
+
+interface ChatPersona {
+    name?: string;
+    role?: string;
+    tone?: "professional" | "casual" | "friendly" | "technical";
+    expertise?: string[];
+    personality?: string[];
+    background?: string;
+}
+
+Bu arayüze uygun JSON olarak döndür.
+
+Açıklama: "Kod inceleyen Alex adında kıdemli bir yazılım mühendisi. Analitik ve titiz, backend sistemleri ve veritabanlarında uzmanlığa sahip. Profesyonel ama yaklaşılabilir ton."`}
+/>
+
+### JSON Schema Tanımı
+
+<Callout type="info" title="Endüstri Standardı">
+JSON Schema, JSON yapısını tanımlamak için resmi bir spesifikasyondur. Birçok doğrulama kütüphanesi ve API aracı tarafından desteklenir.
+</Callout>
+
+JSON Schema min/max değerler, zorunlu alanlar ve regex kalıpları gibi kısıtlamalar sağlar:
+
+```
+Bu JSON Schema'ya göre veri çıkar:
+
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["baslik", "yazar", "yil"],
+  "properties": {
+    "baslik": { "type": "string" },
+    "yazar": { "type": "string" },
+    "yil": { "type": "integer", "minimum": 1000, "maximum": 2100 },
+    "turler": { 
+      "type": "array", 
+      "items": { "type": "string" }
+    },
+    "puan": { 
+      "type": "number", 
+      "minimum": 0, 
+      "maximum": 5 
+    }
+  }
+}
+
+Kitap: "George Orwell'in 1984'ü (1949) - Distopik bir başyapıt. 
+Türler: Bilim Kurgu, Politik Kurgu. 4.8/5 puan"
+```
+
+## Dizileri İşleme
+
+Diziler özel dikkat gerektirir. Sabit sayıda öğeye mi yoksa değişken uzunluklu bir listeye mi ihtiyacınız olduğunu ve boş durumların nasıl ele alınacağını belirtin.
+
+### Sabit Uzunluklu Diziler
+
+Tam olarak N öğeye ihtiyacınız olduğunda, bunu açıkça belirtin. Model dizinin doğru uzunlukta olmasını sağlayacaktır.
+
+```
+Tam olarak 3 ana noktayı JSON olarak çıkar:
+
+{
+  "ana_noktalar": [
+    "string (birinci nokta)",
+    "string (ikinci nokta)", 
+    "string (üçüncü nokta)"
+  ]
+}
+
+Makale: [makale metni]
+```
+
+### Değişken Uzunluklu Diziler
+
+Değişken uzunluklu diziler için sıfır öğe olduğunda ne yapılacağını belirtin. Sayı alanı eklemek çıkarma tamlığını doğrulamaya yardımcı olur.
+
+```
+Bahsedilen tüm kişileri JSON olarak çıkar:
+
+{
+  "kisiler": [
+    {
+      "isim": "string",
+      "rol": "string veya bahsedilmemişse null"
+    }
+  ],
+  "sayi": number
+}
+
+Hiç kişi bahsedilmemişse, boş dizi döndür.
+
+Metin: [metin]
+```
+
+## Enum Değerleri ve Kısıtlamalar
+
+Enum'lar değerleri önceden tanımlanmış bir kümeyle kısıtlar. Bu, sınıflandırma görevleri ve tutarlı, öngörülebilir çıktılara ihtiyaç duyduğunuz her yerde çok önemlidir.
+
+### Yapılması ve Yapılmaması Gerekenler: Enum Değerleri
+
+<Compare 
+  before={{ label: "❌ Yapma: Açık uçlu kategoriler", content: "Bu metni bir kategoriye sınıflandır.\n\n{\n  \"kategori\": \"string\"\n}" }}
+  after={{ label: "✓ Yap: Geçerli değerlerle kısıtla", content: "Bu metni sınıflandır. Kategori tam olarak şunlardan biri OLMALI:\n- \"teknik\"\n- \"is\"\n- \"yaratici\"\n- \"kisisel\"\n\n{\n  \"kategori\": \"yukarıdaki değerlerden biri\"\n}" }}
+/>
+
+### String Enum'ları
+
+İzin verilen değerleri açıkça listeleyin. Katı eşleşmeyi zorlamak için "şunlardan biri OLMALI" dili kullanın.
+
+```
+Bu metni sınıflandır. Kategori tam olarak şu değerlerden biri OLMALI:
+- "teknik"
+- "is" 
+- "yaratici"
+- "kisisel"
+
+JSON döndür:
+{
+  "metin": "orijinal metin (50 karaktere kısaltılmış)",
+  "kategori": "yukarıdaki enum değerlerinden biri",
+  "guven": 0 ile 1 arasında sayı
+}
+
+Metin: [sınıflandırılacak metin]
+```
+
+### Doğrulanmış Sayılar
+
+Sayısal kısıtlamalar aralık dışı değerleri önler. Türü (tam sayı vs ondalık) ve geçerli aralığı belirtin.
+
+```
+Bu yönleri puanla. Her puan 1 ile 5 arasında tam sayı OLMALI.
+
+{
+  "kalite": 1-5,
+  "deger": 1-5,
+  "hizmet": 1-5,
+  "genel": 1-5
+}
+
+Yorum: [yorum metni]
+```
+
+## Eksik Veriyi İşleme
+
+Gerçek dünya metni genellikle bazı bilgilerden yoksundur. Modelin eksik veriyi nasıl işlemesi gerektiğini tanımlayarak halüsinasyonla üretilen değerlerden kaçının.
+
+### Yapılması ve Yapılmaması Gerekenler: Eksik Bilgi
+
+<Compare 
+  before={{ label: "❌ Yapma: YZ'nin tahmin etmesine izin ver", content: "Tüm şirket detaylarını JSON olarak çıkar:\n{\n  \"gelir\": number,\n  \"calisanlar\": number\n}" }}
+  after={{ label: "✓ Yap: Açıkça null'a izin ver", content: "Şirket detaylarını çıkar. Açıkça bahsedilMEYEN alanlar için null kullan. Değer uyduRMA veya tahmin etME.\n\n{\n  \"gelir\": \"number veya null\",\n  \"calisanlar\": \"number veya null\"\n}" }}
+/>
+
+### Null Değerler
+
+Açıkça null'a izin verin ve modele bilgi uydurmamasını söyleyin. Bu, modelin tahmin etmesinden daha güvenlidir.
+
+```
+Bilgi çıkar. Metinden belirlenemeyen alanlar için null kullan. 
+Bilgi uyduRMA.
+
+{
+  "sirket": "string veya null",
+  "gelir": "number veya null",
+  "calisanlar": "number veya null",
+  "kurulus": "number (yıl) veya null",
+  "merkez": "string veya null"
+}
+
+Metin: "Merkezi Cupertino'da olan Apple, 1976'da kuruldu."
+```
+
+Çıktı:
+```json
+{
+  "sirket": "Apple",
+  "gelir": null,
+  "calisanlar": null,
+  "kurulus": 1976,
+  "merkez": "Cupertino"
+}
+```
+
+### Varsayılan Değerler
+
+Varsayılanlar mantıklı olduğunda, şemada belirtin. Bu, yapılandırma çıkarma için yaygındır.
+
+```
+Belirtilmemişse bu varsayılanlarla ayarları çıkar:
+
+{
+  "tema": "acik" (varsayılan) | "koyu",
+  "dil": "tr" (varsayılan) | diğer ISO kodu,
+  "bildirimler": true (varsayılan) | false,
+  "yaziBoyu": 14 (varsayılan) | number
+}
+
+Kullanıcı tercihleri: "Karanlık mod ve daha büyük metin (18px) istiyorum"
+```
+
+## Çok Nesneli Yanıtlar
+
+Genellikle tek bir girdiden birden fazla öğe çıkarmanız gerekir. Dizi yapısını ve herhangi bir sıralama/gruplama gereksinimini tanımlayın.
+
+### Nesne Dizisi
+
+Benzer öğelerin listeleri için nesne şemasını bir kez tanımlayın ve bunun bir dizi olduğunu belirtin.
+
+```
+Bu listeyi JSON dizisine ayrıştır:
+
+[
+  {
+    "gorev": "string",
+    "oncelik": "yuksek" | "orta" | "dusuk",
+    "sonTarih": "ISO tarih string veya null"
+  }
+]
+
+Yapılacaklar listesi:
+- Raporu bitir (acil, yarın teslim)
+- Dişçiyi ara (düşük öncelik)
+- PR #123'ü incele (orta, Cuma teslim)
+```
+
+### Gruplandırılmış Nesneler
+
+Gruplama görevleri kategorilendirme mantığı gerektirir. Model öğeleri tanımladığınız kategorilere sıralayacaktır.
+
+```
+Bu öğeleri JSON'a kategorize et:
+
+{
+  "meyveler": ["string dizisi"],
+  "sebzeler": ["string dizisi"],
+  "diger": ["string dizisi"]
+}
+
+Öğeler: elma, havuç, ekmek, muz, brokoli, süt, portakal, ıspanak
+```
+
+## Yapılandırma Üretimi için YAML
+
+YAML, DevOps yapılandırmaları için parlar. Model yaygın araçlar için standart kalıpları bilir ve üretime hazır yapılandırmalar üretebilir.
+
+### Yapılması ve Yapılmaması Gerekenler: YAML Yapılandırmaları
+
+<Compare 
+  before={{ label: "❌ Yapma: Belirsiz gereksinimler", content: "Uygulamam için bir docker-compose dosyası oluştur." }}
+  after={{ label: "✓ Yap: Bileşenleri ve ihtiyaçları belirt", content: "docker-compose.yml oluştur:\n- Node.js uygulama (port 3000)\n- PostgreSQL veritabanı\n- Redis önbellek\n\nDahil et: sağlık kontrolleri, volume kalıcılığı, .env dosyasından ortam değişkenleri" }}
+/>
+
+### Docker Compose
+
+İhtiyacınız olan servisleri ve özel gereksinimleri belirtin. Model YAML sözdizimini ve en iyi uygulamaları halledecektir.
+
+```
+docker-compose.yml oluştur:
+- Port 3000'de Node.js uygulama
+- PostgreSQL veritabanı
+- Redis önbellek
+- Nginx reverse proxy
+
+Dahil et:
+- Sağlık kontrolleri
+- Volume kalıcılığı
+- .env dosyasından ortam değişkenleri
+- Ağ izolasyonu
+```
+
+### Kubernetes Manifest'leri
+
+Kubernetes manifest'leri ayrıntılıdır ama öngörülebilir kalıpları takip eder. Anahtar parametreleri sağlayın, model uyumlu YAML üretecektir.
+
+```
+Kubernetes deployment YAML'ı oluştur:
+
+Deployment:
+- Ad: api-server
+- Image: myapp:v1.2.3
+- Replicas: 3
+- Resources: 256Mi bellek, 250m CPU (requests)
+- Sağlık kontrolleri: /health endpoint
+- ConfigMap'ten ortam: api-config
+
+Ayrıca eşleşen Service oluştur (ClusterIP, port 8080)
+```
+
+## Doğrulama ve Hata İşleme
+
+Üretim sistemleri için promptlarınıza doğrulama dahil edin. Bu, hatalar pipeline'ınız boyunca yayılmadan önce yakalar.
+
+### Öz Doğrulama Promptu
+
+Modelden çıktısını belirttiğiniz kurallara göre doğrulamasını isteyin. Bu, format hatalarını ve geçersiz değerleri yakalar.
+
+```
+Veriyi JSON olarak çıkar, sonra çıktını doğrula.
+
+Şema:
+{
+  "email": "geçerli email formatı",
+  "telefon": "E.164 formatı (+901234567890)",
+  "tarih": "ISO 8601 formatı (YYYY-AA-GG)"
+}
+
+JSON oluşturduktan sonra kontrol et:
+1. Email @ ve geçerli domain içeriyor
+2. Telefon + ile başlıyor ve sadece rakamlar içeriyor
+3. Tarih geçerli ve ayrıştırılabilir
+
+Doğrulama başarısız olursa, yanıt vermeden önce düzelt.
+
+Metin: [iletişim bilgileri]
+```
+
+### Hata Yanıt Formatı
+
+Ayrı başarı ve hata formatları tanımlayın. Bu, programatik işlemeyi çok kolaylaştırır.
+
+```
+Veri çıkarmayı dene. Çıkarma başarısız olursa, hata formatı döndür:
+
+Başarı formatı:
+{
+  "basarili": true,
+  "veri": { ... çıkarılan veri ... }
+}
+
+Hata formatı:
+{
+  "basarili": false,
+  "hata": "neyin yanlış gittiğinin açıklaması",
+  "kismi_veri": { ... çıkarılabilen veri ... }
+}
+```
+
+## JSON vs YAML: Hangisini Ne Zaman Kullanmalı
+
+<div className="my-4 grid md:grid-cols-2 gap-4">
+  <div className="p-4 bg-amber-50 dark:bg-amber-950/30 rounded-lg border border-amber-200 dark:border-amber-800">
+    <div className="font-semibold text-amber-700 dark:text-amber-300 mb-2">JSON Kullan</div>
+    <div className="text-sm space-y-1">
+      <p className="m-0!">Programatik ayrıştırma gerekli</p>
+      <p className="m-0!">API yanıtları</p>
+      <p className="m-0!">Katı tip gereksinimleri</p>
+      <p className="m-0!">JavaScript/Web entegrasyonu</p>
+      <p className="m-0!">Kompakt gösterim</p>
+    </div>
+  </div>
+  <div className="p-4 bg-purple-50 dark:bg-purple-950/30 rounded-lg border border-purple-200 dark:border-purple-800">
+    <div className="font-semibold text-purple-700 dark:text-purple-300 mb-2">YAML Kullan</div>
+    <div className="text-sm space-y-1">
+      <p className="m-0!">İnsan okunabilirliği önemli</p>
+      <p className="m-0!">Yapılandırma dosyaları</p>
+      <p className="m-0!">Yorumlar gerekli</p>
+      <p className="m-0!">DevOps/Altyapı</p>
+      <p className="m-0!">Derin iç içe yapılar</p>
+    </div>
+  </div>
+</div>
+
+## Prompts.chat Yapılandırılmış Promptları
+
+prompts.chat'te yapılandırılmış çıktı formatlarıyla promptlar oluşturabilirsiniz:
+
+```
+prompts.chat'te prompt oluştururken belirtebilirsiniz:
+
+Tür: STRUCTURED
+Format: JSON veya YAML
+
+Platform:
+- Çıktıları şemanıza göre doğrular
+- Sözdizimi vurgulama sağlar
+- Yapılandırılmış çıktıyı kolayca kopyalamayı etkinleştirir
+- Şemanızda şablon değişkenlerini destekler
+```
+
+## Yaygın Tuzaklar
+
+<Callout type="warning" title="Önce Bunları Hata Ayıkla">
+Bu üç sorun JSON ayrıştırma hatalarının çoğuna neden olur. Kodunuz yapay zeka çıktısını ayrıştıramadığında bunları kontrol edin.
+</Callout>
+
+### 1. Markdown Kod Blokları
+
+**Problem:** Model JSON'u ```json blokları içine sarıyor
+
+**Çözüm:** 
+```
+SADECE JSON nesnesini döndür. Markdown kod blokları içine sarma.
+```json veya ``` işaretçileri ekleme.
+```
+
+### 2. Takip Eden Virgüller
+
+**Problem:** Takip eden virgüller nedeniyle geçersiz JSON
+
+**Çözüm:**
+```
+Geçerli JSON sözdizimi sağla. Dizilerde veya nesnelerde son 
+öğeden sonra virgül olmamalı.
+```
+
+### 3. Escape Edilmemiş Stringler
+
+**Problem:** Tırnak işaretleri veya özel karakterler JSON'u bozuyor
+
+**Çözüm:**
+```
+Stringlerdeki özel karakterleri düzgün escape et:
+- \" tırnak işaretleri için
+- \\ ters eğik çizgiler için
+- \n yeni satırlar için
+```
+
+## Özet
+
+<Callout type="tip" title="Ana Teknikler">
+TypeScript arayüzleri veya JSON Schema kullanarak şemaları açıkça tanımla. Tipleri ve kısıtlamaları belirt, null ve varsayılanları ele al, öz doğrulama iste ve kullanım durumunuz için doğru formatı seç.
+</Callout>
+
+<Quiz 
+  question="Yapay zeka çıktıları için JSON yerine YAML'ı ne zaman tercih etmelisiniz?"
+  options={[
+    "REST API'leri oluştururken",
+    "Çıktının insan tarafından okunabilir olması ve yorum içermesi gerektiğinde",
+    "JavaScript uygulamalarıyla çalışırken",
+    "En kompakt gösterime ihtiyaç duyduğunuzda"
+  ]}
+  correctIndex={1}
+  explanation="YAML, yapılandırma dosyaları, DevOps manifest'leri ve dokümantasyon gibi insan okunabilirliğinin önemli olduğu durumlarda tercih edilir. Ayrıca JSON'un aksine yorumları destekler."
+/>
+
+Bu, tekniklerle ilgili Bölüm II'yi tamamlar. Bölüm III'te, farklı alanlar arasındaki pratik uygulamaları keşfedeceğiz.

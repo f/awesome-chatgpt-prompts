@@ -1,0 +1,414 @@
+Yapay zeka, yazılım geliştirmeyi dönüştürdü. Bu bölüm, kod üretimi, hata ayıklama, inceleme ve geliştirme iş akışları için promptlama tekniklerini kapsar.
+
+<Callout type="info" title="Kodlama Ortağı Olarak YZ">
+YZ, kod üretimi, hata ayıklama ve dokümantasyonda mükemmelleşir—ancak üretilen kodu güvenlik, doğruluk ve sürdürülebilirlik açısından her zaman gözden geçirin. Test etmeden YZ kodunu asla dağıtmayın.
+</Callout>
+
+## Kod Üretimi
+
+### Yapılması ve Yapılmaması Gerekenler: Kod Promptları
+
+<Compare 
+  before={{ label: "❌ Belirsiz istek", content: "E-postaları doğrulayan bir fonksiyon yaz." }}
+  after={{ label: "✓ Tam spesifikasyon", content: "E-posta adreslerini doğrulayan bir Python fonksiyonu yaz.\n\nGirdi: string (potansiyel e-posta)\nÇıktı: tuple[bool, str | None] - (is_valid, error_message)\nEle al: boş string, None, unicode karakterler\nRegex kullan, tip ipuçları ve docstring dahil et." }}
+/>
+
+### Fonksiyon Üretimi
+
+<TryIt compact prompt={`\${description:e-posta adreslerini doğrulayan} bir \${language:Python} fonksiyonu yaz.
+
+Gereksinimler:
+- Girdi: \${inputTypes:string (potansiyel e-posta)}
+- Çıktı: \${outputType:boolean ve isteğe bağlı hata mesajı}
+- Uç durumları ele al: \${edgeCases:boş string, None, unicode karakterler}
+- Performans: \${performance:standart}
+
+Dahil et:
+- Tip ipuçları/annotasyonlar
+- Örneklerle docstring
+- Girdi doğrulama
+- Hata işleme`} />
+
+### Sınıf/Modül Üretimi
+
+<TryIt compact prompt={`\${purpose:kullanıcı oturumlarını yönetmek} için bir \${language:Python} sınıfı oluştur.
+
+Sınıf tasarımı:
+- Ad: \${className:SessionManager}
+- Sorumluluk: \${responsibility:kullanıcı oturum yaşam döngüsünü yönet}
+- Özellikler: \${properties:session_id, user_id, created_at, expires_at}
+- Metodlar: \${methods:create(), validate(), refresh(), destroy()}
+
+Gereksinimler:
+- \${designPattern:Singleton} kalıbını izle
+- Uygun kapsülleme dahil et
+- Kapsamlı docstringler ekle
+- Kullanım örneği dahil et
+
+Test:
+- Unit test iskeleti dahil et`} />
+
+### API Endpoint Üretimi
+
+<TryIt compact prompt={`\${resource:kullanıcı profilleri} için REST API endpoint'i oluştur.
+
+Framework: \${framework:FastAPI}
+Metod: \${method:GET}
+Yol: \${path:/api/users/{id}}
+
+İstek:
+- Header'lar: \${headers:Authorization Bearer token}
+- Body şeması: \${bodySchema:GET için geçerli değil}
+- Query parametreleri: \${queryParams:include_posts (boolean)}
+
+Yanıt:
+- Başarı: \${successResponse:200 ile kullanıcı nesnesi}
+- Hatalar: \${errorResponses:401 Unauthorized, 404 Not Found}
+
+Dahil et:
+- Girdi doğrulama
+- Kimlik doğrulama kontrolü
+- Hata işleme
+- Rate limiting değerlendirmesi`} />
+
+## Hata Ayıklama
+
+<Callout type="tip" title="Hata Ayıklama İlkesi">
+Her zaman **beklenen davranış**, **gerçek davranış** ve **hata mesajı** (varsa) dahil edin. Ne kadar çok bağlam sağlarsanız, YZ kök nedeni o kadar hızlı belirleyebilir.
+</Callout>
+
+### Hata Analizi
+
+<TryIt compact prompt={`Bu kodu hata ayıkla. \${expectedBehavior:tüm sayıların toplamını döndürmeli} ama bunun yerine \${actualBehavior:tüm girdiler için 0 döndürüyor}.
+
+Kod:
+\${code:kodunuzu buraya yapıştırın}
+
+Hata mesajı (varsa):
+\${error:yok}
+
+Hata ayıklama adımları:
+1. Kodun ne yapmaya çalıştığını belirle
+2. Verilen girdiyle yürütmeyi izle
+3. Beklenen ve gerçek davranışın nerede ayrıştığını bul
+4. Kök nedeni açıkla
+5. Açıklamayla düzeltmeyi sağla`} />
+
+### Hata Mesajı Yorumlama
+
+<TryIt compact prompt={`Bu hatayı açıkla ve nasıl düzeltileceğini göster:
+
+Hata:
+\${errorMessage:hata mesajını veya stack trace'i buraya yapıştırın}
+
+Bağlam:
+- Dil/Framework: \${framework:Python 3.11}
+- Yapmaya çalıştığım şey: \${action:JSON dosyası okuma}
+- İlgili kod: \${codeSnippet:ilgili kodu yapıştırın}
+
+Sağla:
+1. Hatanın sade Türkçe açıklaması
+2. Kök neden
+3. Adım adım düzeltme
+4. Gelecekte bundan nasıl kaçınılır`} />
+
+### Performans Hata Ayıklama
+
+<TryIt compact prompt={`Bu kod yavaş. Analiz et ve optimize et:
+
+Kod:
+\${code:kodunuzu buraya yapıştırın}
+
+Mevcut performans: \${currentPerformance:1000 öğe için 30 saniye sürüyor}
+Hedef performans: \${targetPerformance:5 saniyenin altında}
+Kısıtlamalar: \${constraints:512MB bellek limiti}
+
+Sağla:
+1. Darboğazları belirle
+2. Her birinin neden yavaş olduğunu açıkla
+3. Optimizasyonlar öner (etkiye göre sırala)
+4. Optimize edilmiş kodu göster
+5. İyileştirmeyi tahmin et`} />
+
+## Kod İncelemesi
+
+### Yapılması ve Yapılmaması Gerekenler: Kod İnceleme Promptları
+
+<Compare 
+  before={{ label: "❌ Genel istek", content: "Bu kodu incele." }}
+  after={{ label: "✓ Spesifik kriterler", content: "Pull request için bu kodu incele.\n\nKontrol et:\n1. Doğruluk: hatalar, mantık hataları, uç durumlar\n2. Güvenlik: enjeksiyon riskleri, auth sorunları\n3. Performans: N+1 sorgular, bellek sızıntıları\n4. Sürdürülebilirlik: isimlendirme, karmaşıklık\n\nFormat: 🔴 Kritik / 🟡 Önemli / 🟢 Öneri" }}
+/>
+
+### Kapsamlı İnceleme
+
+<TryIt compact prompt={`Pull request için bu kodu incele.
+
+Kod:
+\${code:kodunuzu buraya yapıştırın}
+
+Şunlar için incele:
+1. **Doğruluk**: Hatalar, mantık hataları, uç durumlar
+2. **Güvenlik**: Güvenlik açıkları, enjeksiyon riskleri, auth sorunları
+3. **Performans**: Verimsizlikler, N+1 sorgular, bellek sızıntıları
+4. **Sürdürülebilirlik**: Okunabilirlik, isimlendirme, karmaşıklık
+5. **En iyi uygulamalar**: \${framework:Python/Django} konvansiyonları
+
+İncelemeyi şöyle formatla:
+🔴 Kritik: birleştirmeden önce düzeltilmeli
+🟡 Önemli: düzeltilmeli
+🟢 Öneri: olsa iyi
+💭 Soru: açıklama gerekli`} />
+
+### Güvenlik İncelemesi
+
+<TryIt compact prompt={`Bu kodun güvenlik incelemesini yap:
+
+Kod:
+\${code:kodunuzu buraya yapıştırın}
+
+Kontrol et:
+- [ ] Enjeksiyon güvenlik açıkları (SQL, XSS, komut)
+- [ ] Kimlik doğrulama/yetkilendirme kusurları
+- [ ] Hassas veri ifşası
+- [ ] Güvensiz bağımlılıklar
+- [ ] Kriptografik sorunlar
+- [ ] Girdi doğrulama boşlukları
+- [ ] Bilgi sızdıran hata işleme
+
+Her bulgu için:
+- Ciddiyet: Kritik/Yüksek/Orta/Düşük
+- Konum: Satır numarası veya fonksiyon
+- Sorun: Açıklama
+- İstismar: Nasıl saldırılabilir
+- Düzeltme: Önerilen çözüm`} />
+
+## Yeniden Düzenleme
+
+### Kod Kokusu Tespiti
+
+<TryIt compact prompt={`Bu kodu kod kokuları ve yeniden düzenleme fırsatları için analiz et:
+
+Kod:
+\${code:kodunuzu buraya yapıştırın}
+
+Belirle:
+1. Uzun metodlar (çıkarma öner)
+2. Tekrarlayan kod (DRY iyileştirmeleri öner)
+3. Karmaşık koşullar (basitleştirme öner)
+4. Kötü isimlendirme (daha iyi isimler öner)
+5. Sıkı bağlantı (ayrıştırma öner)
+
+Her sorun için, önce/sonra kodu göster.`} />
+
+### Tasarım Kalıbı Uygulaması
+
+<TryIt compact prompt={`Bu kodu \${patternName:Factory} kalıbı kullanarak yeniden düzenle.
+
+Mevcut kod:
+\${code:kodunuzu buraya yapıştırın}
+
+Hedefler:
+- \${whyPattern:nesne oluşturmayı kullanımdan ayır}
+- \${benefits:daha kolay test ve genişletilebilirlik}
+
+Sağla:
+1. Kalıbın açıklaması
+2. Burada nasıl uygulanacağı
+3. Yeniden düzenlenmiş kod
+4. Değerlendirilecek ödünleşimler`} />
+
+## Test
+
+### Unit Test Üretimi
+
+<TryIt compact prompt={`Bu fonksiyon için unit testler yaz:
+
+Fonksiyon:
+\${code:fonksiyonunuzu buraya yapıştırın}
+
+Test framework'ü: \${testFramework:pytest}
+
+Kapsa:
+- Mutlu yol (normal girdiler)
+- Uç durumlar (boş, null, sınır değerler)
+- Hata durumları (geçersiz girdiler)
+- \${specificScenarios:eşzamanlı erişim, büyük girdiler}
+
+Format: Arrange-Act-Assert kalıbı
+Dahil et: Açıklayıcı test isimleri`} />
+
+### Test Durumu Üretimi
+
+<TryIt compact prompt={`Bu özellik için test durumları üret:
+
+Özellik: \${featureDescription:e-posta doğrulamalı kullanıcı kaydı}
+Kabul kriterleri: \${acceptanceCriteria:kullanıcı kayıt olabilir, e-posta alır, hesabı doğrulayabilir}
+
+Test durumlarını bu formatta sağla:
+
+| ID | Senaryo | Verildi | Zaman | Sonuç | Öncelik |
+|----|---------|---------|-------|-------|---------|
+| TC01 | ... | ... | ... | ... | Yüksek |`} />
+
+## Mimari ve Tasarım
+
+### Sistem Tasarımı
+
+<TryIt compact prompt={`\${requirement:gerçek zamanlı sohbet uygulaması} için sistem tasarla.
+
+Kısıtlamalar:
+- Beklenen yük: \${expectedLoad:10.000 eşzamanlı kullanıcı}
+- Gecikme gereksinimleri: \${latency:< 100ms mesaj teslimi}
+- Erişilebilirlik: \${availability:%99.9}
+- Bütçe: \${budget:orta, açık kaynak tercih}
+
+Sağla:
+1. Üst düzey mimari diyagramı (ASCII/metin)
+2. Bileşen açıklamaları
+3. Veri akışı
+4. Gerekçeyle teknoloji seçimleri
+5. Ölçeklendirme stratejisi
+6. Değerlendirilen ödünleşimler ve alternatifler`} />
+
+### Veritabanı Şema Tasarımı
+
+<TryIt compact prompt={`\${application:e-ticaret platformu} için veritabanı şeması tasarla.
+
+Gereksinimler:
+- \${feature1:Profiller ve adreslerle kullanıcı hesapları}
+- \${feature2:Kategoriler ve varyantlarla ürün kataloğu}
+- \${feature3:Satır öğeleri ve ödeme takibiyle siparişler}
+
+Sağla:
+1. Varlık-ilişki açıklaması
+2. Sütunlar ve tiplerle tablo tanımları
+3. Yaygın sorgular için indeksler
+4. Foreign key ilişkileri
+5. Anahtar işlemler için örnek sorgular`} />
+
+## Dokümantasyon Üretimi
+
+### API Dokümantasyonu
+
+<TryIt compact prompt={`Bu koddan API dokümantasyonu üret:
+
+Kod:
+\${code:endpoint kodunuzu buraya yapıştırın}
+
+Format: \${format:OpenAPI/Swagger YAML}
+
+Dahil et:
+- Endpoint açıklaması
+- İstek/yanıt şemaları
+- Örnek istekler/yanıtlar
+- Hata kodları
+- Kimlik doğrulama gereksinimleri`} />
+
+### Satır İçi Dokümantasyon
+
+<TryIt compact prompt={`Bu koda kapsamlı dokümantasyon ekle:
+
+Kod:
+\${code:kodunuzu buraya yapıştırın}
+
+Ekle:
+- Dosya/modül docstring'i (amaç, kullanım)
+- Fonksiyon/metod docstring'leri (parametreler, dönüşler, hatalar, örnekler)
+- Sadece karmaşık mantık için satır içi yorumlar
+- Eksikse tip ipuçları
+
+Stil: \${docStyle:Google}`} />
+
+## prompts.chat'ten Prompt Şablonları
+
+### Kıdemli Geliştirici Olarak Davran
+
+```
+Kıdemli bir yazılım geliştiricisi olarak davranmanı istiyorum. 
+Kod sağlayacağım ve hakkında sorular soracağım. Kodu inceleyecek, 
+iyileştirmeler önerecek, kavramları açıklayacak ve sorunları 
+hata ayıklamaya yardımcı olacaksın. Yanıtların eğitici olmalı 
+ve daha iyi bir geliştirici olmama yardımcı olmalı.
+```
+
+### Kod İnceleyici Olarak Davran
+
+```
+Bir kod inceleyicisi olarak davranmanı istiyorum. Kod 
+değişiklikleriyle pull request'ler sağlayacağım ve bunları 
+kapsamlı şekilde inceleyeceksin. Hataları, güvenlik sorunlarını, 
+performans problemlerini ve en iyi uygulamalara uyumu kontrol et. 
+Geliştiricinin gelişmesine yardımcı olan yapıcı geri bildirim sağla.
+```
+
+### Yazılım Mimarı Olarak Davran
+
+```
+Bir yazılım mimarı olarak davranmanı istiyorum. Sistem 
+gereksinimlerini ve kısıtlamalarını tanımlayacağım ve 
+ölçeklenebilir, sürdürülebilir mimariler tasarlayacaksın. 
+Tasarım kararlarını, ödünleşimleri açıkla ve yardımcı 
+olduğunda diyagramlar sağla.
+```
+
+## Geliştirme İş Akışı Entegrasyonu
+
+### Commit Mesajı Üretimi
+
+<TryIt compact prompt={`Bu değişiklikler için commit mesajı üret:
+
+Diff:
+\${diff:git diff'i buraya yapıştırın}
+
+Format: Conventional Commits
+Tür: \${commitType:feat}
+
+Sağla:
+- Konu satırı (maksimum 50 karakter, emir kipi)
+- Gövde (ne ve neden, 72 karakterde sarmal)
+- Alt bilgi (varsa issue referansları)`} />
+
+### PR Açıklaması Üretimi
+
+<TryIt compact prompt={`Pull request açıklaması üret:
+
+Değişiklikler:
+\${changes:değişikliklerinizi listeleyin veya diff özetini yapıştırın}
+
+Şablon:
+## Özet
+Değişikliklerin kısa açıklaması
+
+## Yapılan Değişiklikler
+- Değişiklik 1
+- Değişiklik 2
+
+## Test
+- [ ] Unit testler eklendi/güncellendi
+- [ ] Manuel test tamamlandı
+
+## Ekran Görüntüleri (UI değişiklikleri varsa)
+yer tutucu
+
+## İlgili Issue'lar
+Kapatır #\${issueNumber:123}`} />
+
+## Özet
+
+<Callout type="tip" title="Anahtar Teknikler">
+Tam bağlam (dil, framework, kısıtlamalar) dahil et, gereksinimleri kesin belirt, spesifik çıktı formatları iste, kodla birlikte açıklamalar iste ve ele alınacak uç durumları dahil et.
+</Callout>
+
+<Quiz 
+  question="YZ'den kod hata ayıklamasını isterken dahil edilecek en önemli öğe nedir?"
+  options={[
+    "Sadece programlama dili",
+    "Beklenen davranış, gerçek davranış ve hata mesajı",
+    "Sadece kod parçacığı",
+    "Dosya adı"
+  ]}
+  correctIndex={1}
+  explanation="Hata ayıklama bağlam gerektirir: ne olması gerektiği vs. gerçekte ne oluyor. Hata mesajları ve stack trace'ler YZ'nin kesin sorunu hızlıca belirlemesine yardımcı olur."
+/>
+
+YZ güçlü bir kodlama ortağıdır—mimari yargınızı korurken üretim, inceleme, hata ayıklama ve dokümantasyon için kullanın.

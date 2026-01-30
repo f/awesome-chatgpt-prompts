@@ -1,0 +1,428 @@
+Yapay zeka sistemleri basit soru-cevaplamadan otonom görev yürütmeye evrimleştikçe, **ajanları** ve **becerileri** anlamak esansiyel hale gelir. Bu bölüm, promptların yapay zeka ajanları için temel yapı taşları olarak nasıl hizmet ettiğini ve becerilerin uzmanlığı yeniden kullanılabilir, kapsamlı talimat setlerine nasıl paketlediğini keşfeder.
+
+<div className="my-8 p-6 bg-muted/20 rounded-xl border">
+  <div className="flex flex-col items-center gap-6">
+    <div className="text-center">
+      <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-100 dark:bg-blue-900/50 border-2 border-blue-300 dark:border-blue-700">
+        <IconSettings className="w-10 h-10 text-blue-600 dark:text-blue-400" />
+      </div>
+      <p className="font-semibold mt-2 m-0!">Ajan</p>
+      <p className="text-xs text-muted-foreground m-0!">Otonom YZ sistemi</p>
+    </div>
+    <div className="flex items-center gap-2 text-muted-foreground text-sm">
+      <span>gücünü alır</span>
+      <span>↓</span>
+    </div>
+    <div className="flex flex-wrap justify-center gap-4">
+      <div className="text-center">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-lg bg-purple-100 dark:bg-purple-900/50 border-2 border-purple-300 dark:border-purple-700">
+          <IconStar className="w-8 h-8 text-purple-600 dark:text-purple-400" />
+        </div>
+        <p className="font-medium text-sm mt-2 m-0!">Beceri</p>
+        <p className="text-xs text-muted-foreground m-0!">Yeniden kullanılabilir uzmanlık</p>
+      </div>
+      <div className="text-center">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-lg bg-purple-100 dark:bg-purple-900/50 border-2 border-purple-300 dark:border-purple-700">
+          <IconStar className="w-8 h-8 text-purple-600 dark:text-purple-400" />
+        </div>
+        <p className="font-medium text-sm mt-2 m-0!">Beceri</p>
+        <p className="text-xs text-muted-foreground m-0!">Yeniden kullanılabilir uzmanlık</p>
+      </div>
+      <div className="text-center">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-lg bg-purple-100 dark:bg-purple-900/50 border-2 border-purple-300 dark:border-purple-700">
+          <IconStar className="w-8 h-8 text-purple-600 dark:text-purple-400" />
+        </div>
+        <p className="font-medium text-sm mt-2 m-0!">Beceri</p>
+        <p className="text-xs text-muted-foreground m-0!">Yeniden kullanılabilir uzmanlık</p>
+      </div>
+    </div>
+    <div className="flex items-center gap-2 text-muted-foreground text-sm">
+      <span>oluşur</span>
+      <span>↓</span>
+    </div>
+    <div className="flex flex-wrap justify-center gap-2">
+      <div className="px-3 py-2 rounded bg-amber-100 dark:bg-amber-900/50 border border-amber-300 dark:border-amber-700 flex items-center gap-1">
+        <IconClipboard className="w-3 h-3 text-amber-600 dark:text-amber-400" />
+        <span className="text-xs font-medium">Prompt</span>
+      </div>
+      <div className="px-3 py-2 rounded bg-amber-100 dark:bg-amber-900/50 border border-amber-300 dark:border-amber-700 flex items-center gap-1">
+        <IconClipboard className="w-3 h-3 text-amber-600 dark:text-amber-400" />
+        <span className="text-xs font-medium">Prompt</span>
+      </div>
+      <div className="px-3 py-2 rounded bg-amber-100 dark:bg-amber-900/50 border border-amber-300 dark:border-amber-700 flex items-center gap-1">
+        <IconClipboard className="w-3 h-3 text-amber-600 dark:text-amber-400" />
+        <span className="text-xs font-medium">Prompt</span>
+      </div>
+      <div className="px-3 py-2 rounded bg-amber-100 dark:bg-amber-900/50 border border-amber-300 dark:border-amber-700 flex items-center gap-1">
+        <IconClipboard className="w-3 h-3 text-amber-600 dark:text-amber-400" />
+        <span className="text-xs font-medium">Prompt</span>
+      </div>
+      <div className="px-3 py-2 rounded bg-amber-100 dark:bg-amber-900/50 border border-amber-300 dark:border-amber-700 flex items-center gap-1">
+        <IconClipboard className="w-3 h-3 text-amber-600 dark:text-amber-400" />
+        <span className="text-xs font-medium">Prompt</span>
+      </div>
+    </div>
+    <p className="text-xs text-muted-foreground text-center m-0! mt-2">Promptlar atomlar → Beceriler moleküller → Ajanlar tam yapılar</p>
+  </div>
+</div>
+
+## Yapay Zeka Ajanları Nedir?
+
+Bir **yapay zeka ajanı**, görevleri otonom olarak planlayabilen, yürütebilen ve iterasyon yapabilen bir yapay zeka sistemidir. Basit prompt-yanıt etkileşimlerinden farklı olarak, ajanlar şunları yapabilir:
+
+- **Planla** - Karmaşık hedefleri uygulanabilir adımlara böl
+- **Yürüt** - Gerçek dünyada araçlar kullan ve eylemler al
+- **Gözlemle** - Eylemlerinden geri bildirim işle
+- **Uyum Sağla** - Sonuçlara göre yaklaşımını ayarla
+- **Sürdür** - Etkileşimler arasında bağlam ve hafızayı koru
+
+<div className="my-6 flex items-center justify-center p-6 bg-muted/30 rounded-lg">
+  <div className="relative">
+    <div className="flex items-center gap-3">
+      <div className="px-4 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center text-sm">
+        <p className="font-medium text-blue-700 dark:text-blue-300 m-0!">Hedef</p>
+      </div>
+      <div className="text-muted-foreground">→</div>
+      <div className="flex flex-col items-center gap-2">
+        <div className="flex items-center gap-2 px-4 py-3 bg-muted/50 border border-dashed rounded-lg">
+          <div className="px-3 py-2 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded text-center text-sm">
+            <p className="font-medium text-purple-700 dark:text-purple-300 m-0!">Planla</p>
+          </div>
+          <div className="text-muted-foreground">→</div>
+          <div className="px-3 py-2 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded text-center text-sm">
+            <p className="font-medium text-amber-700 dark:text-amber-300 m-0!">Yürüt</p>
+          </div>
+          <div className="text-muted-foreground">→</div>
+          <div className="px-3 py-2 bg-teal-100 dark:bg-teal-900/50 border border-teal-200 dark:border-teal-800 rounded text-center text-sm">
+            <p className="font-medium text-teal-700 dark:text-teal-300 m-0!">Gözlemle</p>
+          </div>
+          <div className="text-muted-foreground">→</div>
+          <div className="px-3 py-2 bg-rose-100 dark:bg-rose-900/50 border border-rose-200 dark:border-rose-800 rounded text-center text-sm">
+            <p className="font-medium text-rose-700 dark:text-rose-300 m-0!">Uyum Sağla</p>
+          </div>
+        </div>
+        <div className="text-xs text-muted-foreground flex items-center gap-1">
+          <span>↺</span> Tamamlanana kadar döngü
+        </div>
+      </div>
+      <div className="text-muted-foreground">→</div>
+      <div className="px-4 py-3 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg text-center text-sm">
+        <p className="font-medium text-green-700 dark:text-green-300 m-0!">Bitti</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+## Yapı Taşları Olarak Promptlar
+
+Her ajan, ne kadar sofistike olursa olsun, promptlardan oluşur. Tıpkı atomların birleşerek molekülleri ve moleküllerin birleşerek karmaşık yapıları oluşturması gibi, promptlar birleşerek akıllı ajan davranışı oluşturur.
+
+<div className="my-6 grid md:grid-cols-4 gap-3 text-center text-sm">
+  <div className="border rounded-lg p-4 bg-blue-50/50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-900">
+    <p className="font-semibold text-blue-700 dark:text-blue-300 m-0!">Sistem Promptları</p>
+    <p className="text-xs text-blue-600 dark:text-blue-400 m-0! mt-1">Kimlik ve Rol</p>
+  </div>
+  <div className="border rounded-lg p-4 bg-purple-50/50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-900">
+    <p className="font-semibold text-purple-700 dark:text-purple-300 m-0!">Planlama Promptları</p>
+    <p className="text-xs text-purple-600 dark:text-purple-400 m-0! mt-1">Nasıl Düşünülür</p>
+  </div>
+  <div className="border rounded-lg p-4 bg-amber-50/50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900">
+    <p className="font-semibold text-amber-700 dark:text-amber-300 m-0!">Araç Promptları</p>
+    <p className="text-xs text-amber-600 dark:text-amber-400 m-0! mt-1">Nasıl Hareket Edilir</p>
+  </div>
+  <div className="border rounded-lg p-4 bg-rose-50/50 dark:bg-rose-950/20 border-rose-200 dark:border-rose-900">
+    <p className="font-semibold text-rose-700 dark:text-rose-300 m-0!">Kurtarma Promptları</p>
+    <p className="text-xs text-rose-600 dark:text-rose-400 m-0! mt-1">Nasıl Kurtarılır</p>
+  </div>
+</div>
+
+Bu prompt türleri bir araya gelerek tam ajan davranışı oluşturur:
+
+### Sistem Promptları (Ajanın Kimliği)
+
+Ajanın kim olduğunu ve nasıl davrandığını belirleyen temel prompt:
+
+```markdown
+Sen bir kod inceleme asistanısın. Görevin:
+- Kodu hatalar, güvenlik sorunları ve performans problemleri için analiz etmek
+- En iyi uygulamaları takip eden iyileştirmeler önermek
+- Gerekçeni net bir şekilde açıklamak
+- Geri bildirimde yapıcı ve eğitici olmak
+
+Dosya okuma, kod arama ve test çalıştırma araçlarına erişimin var.
+```
+
+### Planlama Promptları (Nasıl Düşünülür)
+
+Ajanın muhakeme ve planlama sürecini yönlendiren talimatlar:
+
+```markdown
+Eylem almadan önce, her zaman:
+1. Tam isteği anla
+2. Daha küçük, doğrulanabilir adımlara böl
+3. Hangi araçlara ihtiyacın olacağını belirle
+4. Uç durumları ve potansiyel sorunları düşün
+5. Adım adım yürüt, ilerledikçe doğrula
+```
+
+### Araç Kullanım Promptları (Nasıl Hareket Edilir)
+
+Mevcut araçların ne zaman ve nasıl kullanılacağına dair rehberlik:
+
+```markdown
+Bir kod tabanını anlamak için:
+- Belirli kalıpları bulmak için grep_search kullan
+- Dosya içeriklerini incelemek için read_file kullan
+- Dizin yapısını keşfetmek için list_dir kullan
+- Değişiklik yapmadan önce anlayışını her zaman doğrula
+```
+
+### Kurtarma Promptları (Başarısızlık Nasıl Ele Alınır)
+
+İşler ters gittiğinde talimatlar:
+
+```markdown
+Bir eylem başarısız olursa:
+1. Hata mesajını dikkatle analiz et
+2. Alternatif yaklaşımları düşün
+3. Görev belirsizse açıklama iste
+4. Aynı başarısız eylemi değişiklik olmadan asla tekrarlama
+```
+
+<Callout type="info" title="Prompt Yığını">
+Bir ajanın davranışı, birlikte çalışan prompt katmanlarından ortaya çıkar. Sistem promptu temeli atar, planlama promptları muhakemeyi yönlendirir, araç promptları eylemi mümkün kılar ve kurtarma promptları başarısızlıkları ele alır. Birlikte, tutarlı, yetenekli davranış oluştururlar.
+</Callout>
+
+## Beceriler Nedir?
+
+Promptlar atomlarsa, **beceriler moleküllerdir**—ajanlara spesifik yetenekler veren yeniden kullanılabilir yapı taşları.
+
+Bir **beceri**, bir yapay zeka ajanına spesifik bir alan veya görevde uzmanlık veren kapsamlı, taşınabilir bir talimat paketidir. Beceriler ajanların yeniden kullanılabilir bloklarıdır: bir kez oluşturursunuz ve herhangi bir ajan kullanabilir.
+
+<Callout type="tip" title="Beceriler = Yeniden Kullanılabilir Ajan Blokları">
+Kod inceleme için bir beceri bir kez yaz. Şimdi her kodlama ajanı—Python, JavaScript veya Rust için olsun—o beceriyi yükleyerek anında uzman kod inceleyici olabilir. Beceriler, ajan yeteneklerini LEGO blokları gibi oluşturmanızı sağlar.
+</Callout>
+
+### Becerinin Anatomisi
+
+İyi tasarlanmış bir beceri genellikle şunları içerir:
+
+<div className="my-6 grid md:grid-cols-2 gap-4">
+  <div className="border rounded-lg p-4 bg-muted/30">
+    <p className="font-semibold text-sm m-0! mb-2">📄 SKILL.md (Zorunlu)</p>
+    <p className="text-sm text-muted-foreground m-0!">Ana talimat dosyası. Beceriyi tanımlayan temel uzmanlık, kılavuzlar ve davranışları içerir.</p>
+  </div>
+  <div className="border rounded-lg p-4 bg-muted/30">
+    <p className="font-semibold text-sm m-0! mb-2">📚 Referans Dokümanları</p>
+    <p className="text-sm text-muted-foreground m-0!">Ajanın çalışırken başvurabileceği destekleyici dokümantasyon, örnekler ve bağlam.</p>
+  </div>
+  <div className="border rounded-lg p-4 bg-muted/30">
+    <p className="font-semibold text-sm m-0! mb-2">🔧 Scriptler ve Araçlar</p>
+    <p className="text-sm text-muted-foreground m-0!">Becerinin işlevselliğini destekleyen yardımcı scriptler, şablonlar veya araç yapılandırmaları.</p>
+  </div>
+  <div className="border rounded-lg p-4 bg-muted/30">
+    <p className="font-semibold text-sm m-0! mb-2">⚙️ Yapılandırma</p>
+    <p className="text-sm text-muted-foreground m-0!">Beceriyi farklı bağlamlara uyarlamak için ayarlar, parametreler ve özelleştirme seçenekleri.</p>
+  </div>
+</div>
+
+### Örnek: Kod İnceleme Becerisi
+
+İşte bir kod inceleme becerisi nasıl görünebilir:
+
+<div className="my-6 border rounded-lg overflow-hidden bg-muted/20">
+  <div className="px-3 py-2 bg-muted/50 border-b flex items-center gap-2">
+    <span className="text-sm">📁</span>
+    <span className="text-sm font-medium">kod-inceleme-becerisi/</span>
+  </div>
+  <div className="p-3 space-y-1 text-sm font-mono">
+    <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-muted/50">
+      <span>📄</span>
+      <span className="font-medium">SKILL.md</span>
+      <span className="text-muted-foreground text-xs ml-auto">Temel inceleme kılavuzları</span>
+    </div>
+    <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-muted/50">
+      <span>📄</span>
+      <span>guvenlik-kontrol-listesi.md</span>
+      <span className="text-muted-foreground text-xs ml-auto">Güvenlik kalıpları</span>
+    </div>
+    <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-muted/50">
+      <span>📄</span>
+      <span>performans-ipuclari.md</span>
+      <span className="text-muted-foreground text-xs ml-auto">Optimizasyon kılavuzu</span>
+    </div>
+    <div className="mt-2 border-t pt-2">
+      <div className="flex items-center gap-2 px-2 py-1">
+        <span>📁</span>
+        <span className="font-medium">dil-ozel/</span>
+      </div>
+      <div className="ml-6 space-y-1">
+        <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-muted/50">
+          <span>📄</span>
+          <span>python.md</span>
+          <span className="text-muted-foreground text-xs ml-auto">Python en iyi uygulamaları</span>
+        </div>
+        <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-muted/50">
+          <span>📄</span>
+          <span>javascript.md</span>
+          <span className="text-muted-foreground text-xs ml-auto">JavaScript kalıpları</span>
+        </div>
+        <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-muted/50">
+          <span>📄</span>
+          <span>rust.md</span>
+          <span className="text-muted-foreground text-xs ml-auto">Rust kılavuzları</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+`SKILL.md` dosyası genel yaklaşımı tanımlar:
+
+```markdown
+---
+name: kod-inceleme
+description: Güvenlik, performans ve stil analizi ile kapsamlı kod incelemesi
+---
+
+# Kod İnceleme Becerisi
+
+Sen uzman bir kod inceleyicisin. Kod incelerken:
+
+## Süreç
+1. **Bağlamı Anla** - Bu kod ne yapıyor? Hangi problemi çözüyor?
+2. **Doğruluğu Kontrol Et** - Çalışıyor mu? Mantık hataları var mı?
+3. **Güvenlik Taraması** - Yaygın güvenlik açıkları için guvenlik-kontrol-listesi.md'ye başvur
+4. **Performans İncelemesi** - Optimizasyon fırsatları için performans-ipuclari.md'yi kontrol et
+5. **Stil ve Sürdürülebilirlik** - Kod okunabilir ve sürdürülebilir mi?
+
+## Çıktı Formatı
+Geri bildirimi kategorilere ayır:
+- 🔴 **Kritik** - Birleştirmeden önce düzeltilmeli
+- 🟡 **Önerilen** - Tavsiye edilen iyileştirmeler
+- 🟢 **Olsa iyi** - İsteğe bağlı geliştirmeler
+
+Her zaman *neden* bir sorun olduğunu açıkla, sadece *ne* olduğunu değil.
+```
+
+## Beceriler vs. Basit Promptlar
+
+<div className="my-6 grid md:grid-cols-2 gap-4">
+  <div className="border rounded-lg bg-muted/30">
+    <p className="text-sm font-semibold px-4 pt-3 m-0!">Basit Prompt</p>
+    <div className="text-sm p-4 pt-2 space-y-2">
+      <p className="m-0!">Tek talimat</p>
+      <p className="m-0!">Tek seferlik kullanım</p>
+      <p className="m-0!">Sınırlı bağlam</p>
+      <p className="m-0!">Genel yaklaşım</p>
+      <p className="m-0!">Destekleyici materyal yok</p>
+    </div>
+  </div>
+  <div className="border rounded-lg bg-primary/5 border-primary/20">
+    <p className="text-sm font-semibold px-4 pt-3 m-0!">Beceri</p>
+    <div className="text-sm p-4 pt-2 space-y-2">
+      <p className="m-0!">Kapsamlı talimat seti</p>
+      <p className="m-0!">Projeler arasında yeniden kullanılabilir</p>
+      <p className="m-0!">Referanslarla zengin bağlam</p>
+      <p className="m-0!">Alana özgü uzmanlık</p>
+      <p className="m-0!">Destekleyici dokümanlar, scriptler, yapılandırmalar</p>
+    </div>
+  </div>
+</div>
+
+## Becerileri Birleştirme
+
+Birden fazla beceri birlikte çalıştığında ajanlar güçlü hale gelir:
+
+<div className="my-6 flex flex-wrap items-center justify-center gap-4 p-6 bg-muted/30 rounded-lg">
+  <div className="px-4 py-2 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-sm font-medium text-blue-700 dark:text-blue-300">
+    Kod İnceleme
+  </div>
+  <div className="text-xl">+</div>
+  <div className="px-4 py-2 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg text-sm font-medium text-purple-700 dark:text-purple-300">
+    Güvenlik Denetimi
+  </div>
+  <div className="text-xl">+</div>
+  <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg text-sm font-medium text-green-700 dark:text-green-300">
+    Dokümantasyon
+  </div>
+  <div className="text-xl">=</div>
+  <div className="px-4 py-2 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-lg text-sm font-medium text-amber-700 dark:text-amber-300">
+    Tam Kod Kalitesi Ajanı
+  </div>
+</div>
+
+Becerileri birleştirirken, çatışmadıklarından emin olun. Beceriler şöyle olmalı:
+
+- **Modüler** - Her beceri bir alanı iyi ele alır
+- **Uyumlu** - Beceriler çelişen talimatlar vermemeli
+- **Önceliklendirilmiş** - Beceriler çakıştığında, hangisinin öncelikli olduğunu tanımla
+
+## Becerileri Paylaşma ve Keşfetme
+
+Beceriler paylaşıldığında en değerlidir. [prompts.chat](https://prompts.chat/skills) gibi platformlar şunları yapmanıza izin verir:
+
+- **Keşfet** - Yaygın görevler için topluluk tarafından oluşturulan becerileri
+- **İndir** - Becerileri doğrudan projelerinize
+- **Paylaş** - Kendi uzmanlığınızı yeniden kullanılabilir beceriler olarak
+- **İtere Et** - Gerçek dünya kullanımına göre becerileri geliştir
+
+<Callout type="tip" title="Topluluk Becerileriyle Başla">
+Sıfırdan beceri oluşturmadan önce, birinin probleminizi zaten çözüp çözmediğini kontrol edin. Topluluk becerileri savaşta test edilmiştir ve genellikle sıfırdan başlamaktan daha iyidir.
+</Callout>
+
+## En İyi Uygulamalar
+
+### Beceri Oluşturmak İçin
+
+1. **Spesifikten başla, sonra genelleştir** - Önce tam kullanım durumunuz için bir beceri oluşturun, sonra soyutlayın
+2. **Başarısızlık durumlarını dahil et** - Becerinin ne yapamayacağını ve nasıl ele alınacağını belgele
+3. **Becerilerinizi versiyonla** - Ajanların kararlı versiyonlara bağlı kalabilmesi için değişiklikleri takip et
+4. **Gerçek görevlerle test et** - Becerileri teoriye değil, gerçek işe karşı doğrula
+
+### Ajanlarla Beceri Kullanmak İçin
+
+1. **Önce beceriyi oku** - Dağıtmadan önce bir becerinin ne yaptığını anla
+2. **Düşünerek özelleştir** - Beceri varsayılanlarını sadece gerektiğinde geçersiz kıl
+3. **Performansı izle** - Becerilerin bağlamınızda ne kadar iyi performans gösterdiğini takip et
+4. **İyileştirmelere katkıda bulun** - Bir beceriyi iyileştirdiğinizde, geri paylaşmayı düşünün
+
+<Callout type="info" title="Gelecek Birleştirilebilir">
+Yapay zeka ajanları daha yetenekli hale geldikçe, becerileri birleştirme, paylaşma ve özelleştirme yeteneği temel bir yetkinlik haline gelecek. Yarının prompt mühendisleri sadece prompt yazmayacak—yapay zeka ajanlarını belirli alanlarda gerçekten uzman yapan beceri ekosistemleri tasarlayacaklar.
+</Callout>
+
+<Quiz 
+  question="Basit bir prompt ile beceri arasındaki temel fark nedir?"
+  options={[
+    "Beceriler promptlardan daha uzundur",
+    "Beceriler ajanlara alan uzmanlığı veren yeniden kullanılabilir, çok dosyalı paketlerdir",
+    "Beceriler sadece belirli YZ modelleriyle çalışır",
+    "Beceriler herhangi bir prompt gerektirmez"
+  ]}
+  correctIndex={1}
+  explanation="Beceriler birden fazla prompt, referans dokümanlar, scriptler ve yapılandırmayı birleştiren kapsamlı, taşınabilir paketlerdir. Herhangi bir ajana spesifik yetenekler vermek için eklenebilen yeniden kullanılabilir yapı taşlarıdır."
+/>
+
+<Quiz 
+  question="Ajan döngüsü nedir?"
+  options={[
+    "YZ hataları için hata ayıklama tekniği",
+    "Hedef başarılana kadar tekrarlanan Planla → Yürüt → Gözlemle → Uyum Sağla döngüsü",
+    "Birden fazla promptu birbirine zincirleme yöntemi",
+    "Yeni YZ modelleri eğitme metodu"
+  ]}
+  correctIndex={1}
+  explanation="YZ ajanları sürekli bir döngüde çalışır: göreve nasıl yaklaşılacağını planlar, eylemleri yürütür, sonuçları gözlemler ve geri bildirime göre yaklaşımını uyarlar—hedef tamamlanana kadar tekrarlar."
+/>
+
+<Quiz 
+  question="Beceriler neden 'ajanların yeniden kullanılabilir blokları' olarak tanımlanır?"
+  options={[
+    "Çünkü sadece bir kez kullanılabilirler",
+    "Çünkü blok programlama dilinde yazılırlar",
+    "Çünkü herhangi bir ajan o yeteneği anında kazanmak için bir beceri yükleyebilir",
+    "Çünkü beceriler ajan ihtiyacını ortadan kaldırır"
+  ]}
+  correctIndex={2}
+  explanation="Beceriler taşınabilir uzmanlık paketleridir. Kod inceleme becerisi bir kez yazın ve herhangi bir kodlama ajanı o beceriyi yükleyerek uzman kod inceleyici olabilir—herhangi bir yapıya oturan LEGO blokları gibi."
+/>

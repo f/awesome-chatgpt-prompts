@@ -18,14 +18,14 @@
 <p align="center">
   <a href="https://prompts.chat"><img src="https://img.shields.io/badge/Website-prompts.chat-blue?style=flat-square" alt="Website"></a>
   <a href="https://github.com/sindresorhus/awesome"><img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome"></a>
-  <a href="https://huggingface.co/datasets/fka/awesome-chatgpt-prompts"><img src="https://img.shields.io/badge/🤗-Hugging_Face-yellow?style=flat-square" alt="Hugging Face"></a>
-  <a href="https://deepwiki.com/f/awesome-chatgpt-prompts"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki"></a>
+  <a href="https://huggingface.co/datasets/fka/prompts.chat"><img src="https://img.shields.io/badge/🤗-Hugging_Face-yellow?style=flat-square" alt="Hugging Face"></a>
+  <a href="https://deepwiki.com/f/prompts.chat"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki"></a>
 </p>
 
 <p align="center">
   <a href="https://prompts.chat/prompts">🌐 Browse Prompts</a> •
   <a href="https://fka.gumroad.com/l/art-of-chatgpt-prompting">📖 Read the Book</a> •
-  <a href="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/PROMPTS.md">📄 View on GitHub</a> •
+  <a href="https://raw.githubusercontent.com/f/prompts.chat/main/PROMPTS.md">📄 View on GitHub</a> •
   <a href="#-self-hosting">🚀 Self-Host</a>
 </p>
 
@@ -34,7 +34,7 @@
     🏆 Featured in <a href="https://www.forbes.com/sites/tjmccue/2023/01/19/chatgpt-success-completely-depends-on-your-prompt/">Forbes</a> · 
     🎓 Referenced by <a href="https://www.huit.harvard.edu/news/ai-prompts">Harvard</a>, <a href="https://etc.cuit.columbia.edu/news/columbia-prompt-library-effective-academic-ai-use">Columbia</a> · 
     📄 <a href="https://scholar.google.com/citations?user=AZ0Dg8YAAAAJ&hl=en">40+ academic citations</a> · 
-    ❤️ <a href="https://huggingface.co/datasets/fka/awesome-chatgpt-prompts">Most liked dataset</a> on Hugging Face<br>
+    ❤️ <a href="https://huggingface.co/datasets/fka/prompts.chat">Most liked dataset</a> on Hugging Face<br>
     ⭐ 143k+ GitHub stars · 
     🏅 <a href="https://spotlights-feed.github.com/spotlights/prompts-chat/index/">GitHub Staff Pick</a> · 
     🚀 First prompt library (Dec 2022)
@@ -60,7 +60,7 @@ A curated collection of **prompt examples** for AI chat models. Originally creat
 | Browse Prompts | Data Formats |
 |----------------|--------------|
 | [prompts.chat](https://prompts.chat/prompts) | [prompts.csv](prompts.csv) |
-| [PROMPTS.md](https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/PROMPTS.md) | [Hugging Face Dataset](https://huggingface.co/datasets/fka/awesome-chatgpt-prompts) |
+| [PROMPTS.md](https://raw.githubusercontent.com/f/prompts.chat/main/PROMPTS.md) | [Hugging Face Dataset](https://huggingface.co/datasets/fka/prompts.chat) |
 
 **Want to contribute?** Add prompts at [prompts.chat/prompts/new](https://prompts.chat/prompts/new) — they sync here automatically.
 
@@ -106,8 +106,8 @@ cd my-prompt-library
 
 **Manual Setup:**
 ```bash
-git clone https://github.com/f/awesome-chatgpt-prompts.git
-cd awesome-chatgpt-prompts
+git clone https://github.com/f/prompts.chat.git
+cd prompts.chat
 npm install && npm run setup
 ```
 
@@ -126,7 +126,7 @@ npx prompts.chat
 
 ### Claude Code Plugin
 ```
-/plugin marketplace add f/awesome-chatgpt-prompts
+/plugin marketplace add f/prompts.chat
 /plugin install prompts.chat@prompts.chat
 ```
 📖 [Plugin Documentation](CLAUDE-PLUGIN.md)
@@ -167,61 +167,61 @@ Use prompts.chat as an MCP server in your AI tools.
   <!-- Clemta -->
   <a href="https://clemta.com/?utm_source=prompts.chat">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/clemta-dark.webp">
-      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/clemta.webp">
-      <img height="35" alt="Clemta" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/clemta.webp">
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/clemta-dark.webp">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/clemta.webp">
+      <img height="35" alt="Clemta" src="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/clemta.webp">
     </picture>
   </a>&nbsp;&nbsp;
   <!-- Wiro (py-1) -->
   <a href="https://wiro.ai/?utm_source=prompts.chat">
-    <img height="30" alt="Wiro" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/wiro.png">
+    <img height="30" alt="Wiro" src="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/wiro.png">
   </a>&nbsp;&nbsp;
   <!-- Cognition -->
   <a href="https://wind.surf/prompts-chat">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/cognition-dark.svg">
-      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/cognition.svg">
-      <img height="35" alt="Cognition" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/cognition.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/cognition-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/cognition.svg">
+      <img height="35" alt="Cognition" src="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/cognition.svg">
     </picture>
   </a>&nbsp;&nbsp;
   <!-- CodeRabbit (py-1) -->
   <a href="https://coderabbit.link/fatih">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/coderabbit-dark.svg">
-      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/coderabbit.svg">
-      <img height="30" alt="CodeRabbit" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/coderabbit.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/coderabbit-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/coderabbit.svg">
+      <img height="30" alt="CodeRabbit" src="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/coderabbit.svg">
     </picture>
   </a>&nbsp;&nbsp;
   <!-- Sentry (py-1) -->
   <a href="https://sentry.io/?utm_source=prompts.chat">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/sentry-dark.svg">
-      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/sentry.svg">
-      <img height="30" alt="Sentry" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/sentry.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/sentry-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/sentry.svg">
+      <img height="30" alt="Sentry" src="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/sentry.svg">
     </picture>
   </a>&nbsp;&nbsp;
   <!-- MitteAI -->
   <a href="https://mitte.ai/?utm_source=prompts.chat">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/mitte-dark.svg">
-      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/mitte.svg">
-      <img height="35" alt="MitteAI" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/mitte.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/mitte-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/mitte.svg">
+      <img height="35" alt="MitteAI" src="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/mitte.svg">
     </picture>
   </a>&nbsp;&nbsp;
   <!-- Each Labs (py-[6px]) -->
   <a href="https://www.eachlabs.ai/?utm_source=promptschat&utm_medium=referral">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/eachlabs-dark.png">
-      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/eachlabs.png">
-      <img height="28" alt="Each Labs" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/eachlabs.png">
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/eachlabs-dark.png">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/eachlabs.png">
+      <img height="28" alt="Each Labs" src="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/eachlabs.png">
     </picture>
   </a>&nbsp;&nbsp;
   <!-- Warp (py-2) -->
   <a href="https://warp.dev/?utm_source=prompts.chat">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/warp-dark.svg">
-      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/warp.svg">
-      <img height="25" alt="Warp" src="https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/public/sponsors/warp.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/warp-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/warp.svg">
+      <img height="25" alt="Warp" src="https://raw.githubusercontent.com/f/prompts.chat/main/public/sponsors/warp.svg">
     </picture>
   </a>
 </p>
@@ -235,8 +235,8 @@ Use prompts.chat as an MCP server in your AI tools.
 
 ## 👥 Contributors
 
-<a href="https://github.com/f/awesome-chatgpt-prompts/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=f/awesome-chatgpt-prompts" />
+<a href="https://github.com/f/prompts.chat/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=f/prompts.chat" />
 </a>
 
 ---

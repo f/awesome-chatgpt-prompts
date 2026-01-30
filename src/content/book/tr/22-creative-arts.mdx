@@ -1,0 +1,326 @@
+Yapay zeka güçlü bir yaratıcı işbirlikçidir. Bu bölüm, görsel sanatlar, müzik, oyun tasarımı ve diğer yaratıcı alanlar için promptlama tekniklerini kapsar.
+
+<Callout type="info" title="Yaratıcı Ortak Olarak YZ">
+YZ yaratıcı olasılıklarınızı genişletir—varyasyonları keşfetmek, tıkanıklıkları aşmak ve seçenekler üretmek için kullanın. Yaratıcı vizyon ve nihai kararlar sizin kalır.
+</Callout>
+
+## Görsel Sanat ve Tasarım
+
+### Yapılması ve Yapılmaması Gerekenler: Görsel Promptlar
+
+<Compare 
+  before={{ label: "❌ Belirsiz prompt", content: "Kütüphanede bir büyücü" }}
+  after={{ label: "✓ Zengin açıklama", content: "Gün batımında bir kule kütüphanesinde antik bir kitap okuyan bilge yaşlı büyücü, fantezi sanat stili, sıcak altın ışıklandırma, düşünceli ruh hali, son derece detaylı, 4K, Greg Rutkowski tarzı" }}
+/>
+
+### Görsel Prompt Oluşturma
+
+Görsel üretim modelleriyle (DALL-E, Midjourney, Stable Diffusion) çalışırken:
+
+<TryIt compact prompt={`[kavram] için görsel prompt oluştur.
+
+Yapı:
+[Konu] + [Eylem/Poz] + [Ortam/Arka Plan] + [Stil] + 
+[Işıklandırma] + [Ruh Hali] + [Teknik özellikler]
+
+Örnek:
+"Gün batımında bir kule kütüphanesinde antik bir kitap okuyan 
+bilge yaşlı büyücü, fantezi sanat stili, sıcak altın ışıklandırma, 
+düşünceli ruh hali, son derece detaylı, 4K"`} />
+
+### Sanat Yönetimi
+
+<TryIt compact prompt={`\${project:fantezi kitap kapağı} için sanat eseri tanımla.
+
+Dahil et:
+1. **Kompozisyon** - öğelerin düzenlenmesi
+2. **Renk paleti** - spesifik renkler ve ilişkileri
+3. **Stil referansı** - benzer sanatçılar/eserler/akımlar
+4. **Odak noktası** - gözün çekilmesi gereken yer
+5. **Ruh hali/Atmosfer** - duygusal kalite
+6. **Teknik yaklaşım** - ortam, teknik
+
+Amaç: \${purpose:kitap kapağı için illüstrasyon}`} />
+
+### Tasarım Eleştirisi
+
+<TryIt compact prompt={`Bu tasarımı profesyonel bir perspektiften eleştir.
+
+Tasarım: \${design:hero bölümü, özellik ızgarası ve tanıklıklar içeren bir açılış sayfası}
+Bağlam: \${context:proje yönetimi için SaaS ürünü}
+
+Değerlendir:
+1. **Görsel hiyerarşi** - Önem net mi?
+2. **Denge** - Görsel olarak istikrarlı mı?
+3. **Kontrast** - Öğeler uygun şekilde öne çıkıyor mu?
+4. **Hizalama** - Düzenli mi?
+5. **Tekrar** - Tutarlılık var mı?
+6. **Yakınlık** - İlgili öğeler gruplu mu?
+
+Sağla:
+- Spesifik güçlü yönler
+- İyileştirme alanları
+- Eyleme dönüştürülebilir öneriler`} />
+
+## Yaratıcı Yazarlık
+
+<Callout type="tip" title="Yaratıcı Kısıtlama İlkesi">
+**Kısıtlamalar yaratıcılığı besler.** "Bir şeyler yaz" gibi bir prompt jenerik sonuçlar üretir. Tür, ton ve yapı gibi spesifik kısıtlamalar beklenmedik, ilginç çözümler zorlar.
+</Callout>
+
+### Dünya İnşası
+
+<TryIt compact prompt={`\${project:bir fantezi roman} için dünya inşa etmeme yardım et.
+
+Tür: \${genre:karanlık fantezi}
+Kapsam: \${scope:bir krallık}
+
+Geliştir:
+1. **Coğrafya** - fiziksel çevre
+2. **Tarih** - bu dünyayı şekillendiren anahtar olaylar
+3. **Kültür** - gelenekler, değerler, günlük yaşam
+4. **Güç yapıları** - kim yönetiyor, nasıl
+5. **Ekonomi** - insanlar nasıl geçiniyor
+6. **Çatışma** - gerilim kaynakları
+7. **Benzersiz öğe** - bu dünyayı özel yapan ne
+
+Geniş çerçeveyle başla, sonra bir yönü derinlemesine detaylandır.`} />
+
+### Olay Örgüsü Geliştirme
+
+<TryIt compact prompt={`\${storyConcept:ters giden bir soygun} için olay örgüsü geliştirmeme yardım et.
+
+Tür: \${genre:gerilim}
+Ton: \${tone:kara mizah anlarıyla karanlık}
+Uzunluk: \${length:roman}
+
+\${structure:üç perde} yapısını kullanarak:
+
+1. **Kurulum** - dünya, karakter, normal hayat
+2. **Kışkırtıcı olay** - normalliği bozan ne
+3. **Yükselen aksiyon** - tırmanan zorluklar
+4. **Orta nokta** - büyük kayma veya ifşa
+5. **Kriz** - en karanlık an
+6. **Doruk** - yüzleşme
+7. **Çözüm** - yeni normal
+
+Her beat için spesifik sahneler öner.`} />
+
+### Diyalog Yazımı
+
+<TryIt compact prompt={`\${characters:iki kardeş} arasında \${topic:uzaklaşmış babalarının dönüşü} hakkında diyalog yaz.
+
+Karakter A: \${characterA:ablası, korumacı, pragmatik, devam etmek istiyor}
+Karakter B: \${characterB:erkek kardeş, umutlu, duygusal, yeniden bağlantı kurmak istiyor}
+İlişki: \${relationship:yakın ama farklı başa çıkma stilleriyle}
+Alt metin: \${subtext:kimin daha fazla yük taşıdığı konusunda söylenmeyen kızgınlık}
+
+Kılavuzlar:
+- Her karakterin ayrı sesi var
+- Diyalog sadece bilgi değil, karakter açığa çıkarır
+- Beat'ler (eylemler/tepkiler) dahil et
+- Gerilim oluştur veya ilişkiyi geliştir
+- Duyguları göster, söyleme`} />
+
+## Müzik ve Ses
+
+### Şarkı Yapısı
+
+<TryIt compact prompt={`Şarkı yapılandırmama yardım et.
+
+Tür: \${genre:indie folk}
+Ruh hali: \${mood:buruk nostalji}
+Tempo: \${tempo:orta, yaklaşık 90 BPM}
+Tema/Mesaj: \${theme:büyüdüğünüz memlekete geriye bakmak}
+
+Sağla:
+1. **Yapı** - verse/nakarat/köprü düzeni
+2. **1. Verse** - lirik konsept, 4-8 satır
+3. **Nakarat** - kanca konsepti, 4 satır
+4. **2. Verse** - gelişim, 4-8 satır
+5. **Köprü** - kontrast/kayma, 4 satır
+6. **Akor progresyonu önerisi**
+7. **Melodik yön notları**`} />
+
+### Ses Tasarımı Açıklaması
+
+<TryIt compact prompt={`\${scene:terk edilmiş bir uzay istasyonuna giren karakter} için ses tasarımı tanımla.
+
+Bağlam: \${context:baş karakter istasyonun onlarca yıldır boş olduğunu keşfediyor}
+Uyandırılacak duygu: \${emotion:korku ile karışık ürkütücü merak}
+Ortam: \${medium:video oyunu}
+
+Katman katman:
+1. **Temel** - ambiyans/arka plan
+2. **Orta zemin** - çevresel sesler
+3. **Ön plan** - odak sesleri
+4. **Vurgular** - noktalama sesleri
+5. **Müzik** - skor önerileri
+
+Sesleri sadece isimlerle değil, çağrıştırıcı terimlerle tanımla.`} />
+
+## Oyun Tasarımı
+
+### Oyun Mekanik Tasarımı
+
+<TryIt compact prompt={`\${gameType:bulmaca platformer} için oyun mekaniği tasarla.
+
+Temel döngü: \${coreLoop:mekansal bulmacaları çözmek için yerçekimini manipüle etme}
+Oyuncu motivasyonu: \${motivation:ustalık ve keşif}
+Dahil olan beceri: \${skill:mekansal muhakeme ve zamanlama}
+
+Tanımla:
+1. **Mekanik** - nasıl çalışıyor
+2. **Oyuncu girdisi** - neyi kontrol ediyorlar
+3. **Geri bildirim** - sonucu nasıl biliyorlar
+4. **İlerleme** - nasıl gelişiyor/derinleşiyor
+5. **Denge değerlendirmeleri**
+6. **Uç durumlar** - olağandışı senaryolar`} />
+
+### Seviye Tasarımı
+
+<TryIt compact prompt={`\${gameType:gizli aksiyon oyunu} için seviye tasarla.
+
+Ortam: \${setting:gece şirket merkezi}
+Hedefler: \${objectives:sunucu odasına sızma ve veri çıkarma}
+Zorluk: \${difficulty:oyun ortası, oyuncunun temel yetenekleri var}
+
+Dahil et:
+1. **Yerleşim genel bakışı** - mekansal açıklama
+2. **Tempo grafiği** - zamanla gerilim
+3. **Zorluklar** - engeller ve nasıl aşılır
+4. **Ödüller** - oyuncunun kazandığı
+5. **Gizli alanlar** - isteğe bağlı keşifler
+6. **Öğretme anları** - beceri tanıtımı
+7. **Çevresel hikaye anlatımı** - tasarım yoluyla anlatı`} />
+
+### Karakter/Düşman Tasarımı
+
+<TryIt compact prompt={`\${game:karanlık fantezi aksiyon RPG} için \${entityType:boss düşman} tasarla.
+
+Rol: \${role:oyun ortası boss}
+Bağlam: \${context:bozulmuş orman tapınağını koruyor}
+
+Tanımla:
+1. **Görsel konsept** - görünüm açıklaması
+2. **Yetenekler** - neler yapabilir
+3. **Davranış kalıpları** - nasıl davranır
+4. **Zayıflıklar** - savunmasız noktalar
+5. **Kişilik** - ilgiliyse
+6. **Hikaye/Geçmiş** - dünya entegrasyonu
+7. **Oyuncu stratejisi** - nasıl etkileşim/yenilgi`} />
+
+## Beyin Fırtınası ve Fikir Üretimi
+
+### Yaratıcı Beyin Fırtınası
+
+<TryIt compact prompt={`\${project:farkındalık hakkında mobil oyun} için fikirler üret.
+
+Kısıtlamalar:
+- \${constraint1:2 dakikalık oturumlarda oynanabilir olmalı}
+- \${constraint2:şiddet veya rekabet yok}
+- \${constraint3:doğa temaları}
+
+Üret:
+1. **10 geleneksel fikir** - sağlam, beklenen
+2. **5 alışılmadık fikir** - beklenmedik açılar
+3. **3 çılgın fikir** - sınır zorlayan
+4. **1 kombinasyon** - en iyi öğeleri birleştir
+
+Her biri için, bir cümle açıklama + neden işe yaradığı.
+Kendini sansürleme—önce nicelik sonra nitelik.`} />
+
+### Yaratıcı Kısıtlamalar
+
+<TryIt compact prompt={`\${projectType:kısa hikaye yazma} için yaratıcı kısıtlamalar ver.
+
+Şunları yapan kısıtlamalar istiyorum:
+- Beklenmedik seçimler zorla
+- Bariz çözümleri ele
+- Üretken sınırlamalar oluştur
+
+Format:
+1. Kısıtlama - Yaratıcılığa nasıl yardımcı oluyor
+2. ...
+
+Sonra bu kısıtlamaları uygulamanın jenerik bir konsepti 
+ilginç bir şeye nasıl dönüştürdüğünün bir örneğini göster.`} />
+
+### Stil Keşfi
+
+<TryIt compact prompt={`\${concept:kahve dükkanı logosu} için farklı stilleri keşfet.
+
+Bu konseptin şu stillerde nasıl tezahür edeceğini göster:
+1. **Minimalist** - öze indirilmiş
+2. **Maksimalist** - bol ve detaylı
+3. **Retro 1950'ler** - dönem spesifik
+4. **Fütüristik** - ileriye bakan
+5. **Halk/Geleneksel** - kültürel kökler
+6. **Soyut** - temsili olmayan
+7. **Sürrealist** - rüya benzeri mantık
+
+Her biri için, anahtar özellikleri ve örneği tanımla.`} />
+
+## prompts.chat'ten Prompt Şablonları
+
+### Yaratıcı Yönetmen Olarak Davran
+
+<TryIt compact prompt={`Bir yaratıcı yönetmen olarak davranmanı istiyorum. Yaratıcı projeleri tanımlayacağım ve yaratıcı vizyonlar geliştirecek, estetik kararları yönlendirecek ve kavramsal tutarlılığı sağlayacaksın. Sanat tarihinden, tasarım ilkelerinden ve kültürel trendlerden yararlan. Net gerekçeyle cesur yaratıcı seçimler yapmama yardım et.`} />
+
+### Dünya İnşacısı Olarak Davran
+
+<TryIt compact prompt={`Bir dünya inşacısı olarak davranmanı istiyorum. Detaylı tarihler, kültürler ve sistemlerle zengin, tutarlı kurgusal dünyalar oluşturmama yardım et. Dünyayı derinleştirmek için araştırıcı sorular sor. Tutarsızlıklara dikkat çek ve çözümler öner. Dünyayı yaşanmış ve inandırıcı hissettir.`} />
+
+### Zindan Ustası Olarak Davran
+
+<TryIt compact prompt={`Masa üstü RPG için Zindan Ustası olarak davranmanı istiyorum. İlgi çekici senaryolar oluştur, canlı ortamlar tanımla, ayrı kişiliklere sahip NPC'leri canlandır ve oyuncu seçimlerine dinamik şekilde yanıt ver. Zorluğu eğlenceyle dengele ve anlatıyı çekici tut.`} />
+
+## Yaratıcı İşbirliği İpuçları
+
+### Fikirleri Geliştirme
+
+<TryIt compact prompt={`Bu yaratıcı fikrim var: \${idea:yapay zekanın dedektif olduğu bir uzay istasyonunda geçen gizem romanı}
+
+Şunları yaparak geliştirmeme yardım et:
+1. İyi çalışan ne
+2. Keşfedilecek sorular
+3. Beklenmedik yönler
+4. Potansiyel zorluklar
+5. İlk üç geliştirme adımı
+
+Vizyonumu değiştirme—geliştir.`} />
+
+### Yaratıcı Geri Bildirim
+
+<TryIt compact prompt={`Bu yaratıcı çalışma hakkında geri bildirim ver:
+
+\${work:yaratıcı çalışmanızı buraya yapıştırın}
+
+\${perspective:yaratıcı arkadaş} olarak:
+1. En güçlü yankılanan ne
+2. Geliştirilmemiş hisseden ne
+3. Kafa karıştıran veya net olmayan ne
+4. Bir cesur öneri
+5. Bunu unutulmaz yapacak ne
+
+Dürüst ama yapıcı ol.`} />
+
+## Özet
+
+<Callout type="tip" title="Anahtar Teknikler">
+Kısıtlamadan yönlendirmek için yeterli yapı sağla, özgüllüğü benimse (belirsiz = jenerik), referanslar ve ilham kaynakları dahil et, varyasyonlar ve alternatifler iste ve olasılıkları keşfederken yaratıcı vizyonunu koru.
+</Callout>
+
+<Quiz 
+  question="Spesifik kısıtlamalar neden genellikle açık uçlu promptlardan daha iyi yaratıcı sonuçlar üretir?"
+  options={[
+    "YZ sadece katı talimatları izleyebilir",
+    "Kısıtlamalar beklenmedik çözümler zorlar ve bariz seçimleri eler",
+    "Açık uçlu promptlar YZ için çok zor",
+    "Kısıtlamalar çıktıyı kısaltır"
+  ]}
+  correctIndex={1}
+  explanation="Paradoks olarak, sınırlamalar yaratıcılığı kıvılcımlandırır. Bariz çözümler elendiğinde, beklenmedik yönleri keşfetmek zorunda kalırsınız. 'Hikaye yaz' klişeler üretir; 'Denizaltında geçen, geriye doğru anlatılan, 500 kelimenin altında gizem yaz' benzersiz bir şey üretir."
+/>
+
+YZ yaratıcı vizyon için bir değiştirici değil, işbirlikçidir. Keşfetmek, seçenekler üretmek ve tıkanıklıkları aşmak için kullan—ama yaratıcı kararlar senin kalır.

@@ -3,54 +3,23 @@
 import { useState, useEffect, Fragment } from "react";
 import { ChevronDown, ChevronRight, Check, RefreshCw, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslations, useLocale } from "next-intl";
 
 // Chain Flow Demo Data
-const chainTypes = [
-  {
-    id: "sequential",
-    name: "Sequential",
-    description: "Each step depends on the previous, like a relay race.",
-    color: "blue",
-    steps: [
-      { label: "Extract", desc: "Pull data from input" },
-      { label: "Analyze", desc: "Find patterns" },
-      { label: "Generate", desc: "Create output" },
-    ],
-  },
-  {
-    id: "parallel",
-    name: "Parallel",
-    description: "Multiple analyses run simultaneously, then merge.",
-    color: "purple",
-    steps: [
-      { label: "Sentiment", desc: "Analyze tone" },
-      { label: "Entities", desc: "Extract names" },
-      { label: "Topics", desc: "Find themes" },
-    ],
-  },
-  {
-    id: "conditional",
-    name: "Conditional",
-    description: "Different paths based on classification.",
-    color: "amber",
-    steps: [
-      { label: "Classify", desc: "Determine type" },
-      { label: "Route A", desc: "If complaint" },
-      { label: "Route B", desc: "If question" },
-    ],
-  },
-  {
-    id: "iterative",
-    name: "Iterative",
-    description: "Loop until quality threshold is met.",
-    color: "green",
-    steps: [
-      { label: "Generate", desc: "Create draft" },
-      { label: "Evaluate", desc: "Score quality" },
-      { label: "Refine", desc: "Improve output" },
-    ],
-  },
-];
+const chainTypesLocale: Record<string, Array<{ id: string; name: string; description: string; color: string; steps: Array<{ label: string; desc: string }> }>> = {
+  en: [
+    { id: "sequential", name: "Sequential", description: "Each step depends on the previous, like a relay race.", color: "blue", steps: [{ label: "Extract", desc: "Pull data from input" }, { label: "Analyze", desc: "Find patterns" }, { label: "Generate", desc: "Create output" }] },
+    { id: "parallel", name: "Parallel", description: "Multiple analyses run simultaneously, then merge.", color: "purple", steps: [{ label: "Sentiment", desc: "Analyze tone" }, { label: "Entities", desc: "Extract names" }, { label: "Topics", desc: "Find themes" }] },
+    { id: "conditional", name: "Conditional", description: "Different paths based on classification.", color: "amber", steps: [{ label: "Classify", desc: "Determine type" }, { label: "Route A", desc: "If complaint" }, { label: "Route B", desc: "If question" }] },
+    { id: "iterative", name: "Iterative", description: "Loop until quality threshold is met.", color: "green", steps: [{ label: "Generate", desc: "Create draft" }, { label: "Evaluate", desc: "Score quality" }, { label: "Refine", desc: "Improve output" }] },
+  ],
+  tr: [
+    { id: "sequential", name: "Sıralı", description: "Her adım bir öncekine bağlı, bayrak yarışı gibi.", color: "blue", steps: [{ label: "Çıkar", desc: "Girdiden veri al" }, { label: "Analiz Et", desc: "Kalıpları bul" }, { label: "Üret", desc: "Çıktı oluştur" }] },
+    { id: "parallel", name: "Paralel", description: "Birden fazla analiz eş zamanlı çalışır, sonra birleşir.", color: "purple", steps: [{ label: "Duygu", desc: "Tonu analiz et" }, { label: "Varlıklar", desc: "İsimleri çıkar" }, { label: "Konular", desc: "Temaları bul" }] },
+    { id: "conditional", name: "Koşullu", description: "Sınıflandırmaya göre farklı yollar.", color: "amber", steps: [{ label: "Sınıfla", desc: "Türü belirle" }, { label: "Yol A", desc: "Şikayet ise" }, { label: "Yol B", desc: "Soru ise" }] },
+    { id: "iterative", name: "Yinelemeli", description: "Kalite eşiğine ulaşana kadar döngü.", color: "green", steps: [{ label: "Üret", desc: "Taslak oluştur" }, { label: "Değerlendir", desc: "Kalite puanı ver" }, { label: "İyileştir", desc: "Çıktıyı geliştir" }] },
+  ],
+};
 
 const chainColors: Record<string, { bg: string; border: string; text: string; stepBg: string; arrow: string }> = {
   blue: { bg: "bg-blue-50 dark:bg-blue-950/30", border: "border-blue-200 dark:border-blue-800", text: "text-blue-700 dark:text-blue-300", stepBg: "bg-blue-100 dark:bg-blue-900/50", arrow: "text-blue-400" },
@@ -77,6 +46,7 @@ export function ChainExample({ type, steps }: ChainExampleProps) {
   const [isAnimating, setIsAnimating] = useState(false);
   const [currentIteration, setCurrentIteration] = useState(0);
   const [iterationOutput, setIterationOutput] = useState<string | null>(null);
+  const t = useTranslations("book.interactive");
 
   const runAnimation = () => {
     setActiveSteps([]);
@@ -180,13 +150,13 @@ export function ChainExample({ type, steps }: ChainExampleProps) {
   return (
     <div className="my-4 rounded-lg border overflow-hidden">
       <div className="flex items-center justify-between px-4 py-2 border-b bg-muted/30">
-        <span className="text-xs text-muted-foreground capitalize">{type} chain</span>
+        <span className="text-xs text-muted-foreground capitalize">{t(`${type}Chain`)}</span>
         <button
           onClick={runAnimation}
           disabled={isAnimating}
           className="text-xs px-2 py-1 rounded bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50"
         >
-          {isAnimating ? "Running..." : "Run"}
+          {isAnimating ? t("running") : t("run")}
         </button>
       </div>
       <div className="p-4 space-y-0">
@@ -221,17 +191,17 @@ export function ChainExample({ type, steps }: ChainExampleProps) {
                     {!isSkipped && (
                       <>
                         <div className="text-sm p-3 rounded border bg-muted/50 mb-2">
-                          <p className="text-xs text-muted-foreground mb-1 m-0!">Prompt:</p>
+                          <p className="text-xs text-muted-foreground mb-1 m-0!">{t("prompt")}:</p>
                           <p className="m-0! font-mono text-xs whitespace-pre-wrap">{step.prompt}</p>
                         </div>
                         <div className={cn("text-sm p-3 rounded border transition-colors duration-300", isStepActive(i) ? "bg-green-50 dark:bg-green-950/30 border-green-200 dark:border-green-800" : "bg-background")}>
-                          <p className="text-xs text-muted-foreground mb-1 m-0!">Output:</p>
+                          <p className="text-xs text-muted-foreground mb-1 m-0!">{t("outputLabel")}:</p>
                           <p className="m-0! font-mono text-xs whitespace-pre-wrap">{step.output}</p>
                         </div>
                       </>
                     )}
                     {isSkipped && isStepActive(i) && (
-                      <p className="text-xs text-muted-foreground italic m-0!">Skipped - condition not met</p>
+                      <p className="text-xs text-muted-foreground italic m-0!">{t("skippedConditionNotMet")}</p>
                     )}
                   </div>
                 </div>
@@ -256,11 +226,11 @@ export function ChainExample({ type, steps }: ChainExampleProps) {
                 <div className={cn("flex-1 pb-4 transition-opacity duration-300", isStepActive(i) || isStepLoading(i) ? "opacity-100" : "opacity-50")}>
                   <p className="text-sm font-medium mb-2 m-0!">{step.step}</p>
                   <div className="text-sm p-3 rounded border bg-muted/50 mb-2">
-                    <p className="text-xs text-muted-foreground mb-1 m-0!">Prompt:</p>
+                    <p className="text-xs text-muted-foreground mb-1 m-0!">{t("prompt")}:</p>
                     <p className="m-0! font-mono text-xs whitespace-pre-wrap">{step.prompt}</p>
                   </div>
                   <div className={cn("text-sm p-3 rounded border transition-colors duration-300", isStepActive(i) ? "bg-green-50 dark:bg-green-950/30 border-green-200 dark:border-green-800" : "bg-background")}>
-                    <p className="text-xs text-muted-foreground mb-1 m-0!">Output:</p>
+                    <p className="text-xs text-muted-foreground mb-1 m-0!">{t("outputLabel")}:</p>
                     <p className="m-0! font-mono text-xs whitespace-pre-wrap">{step.output}</p>
                   </div>
                 </div>
@@ -276,20 +246,20 @@ export function ChainExample({ type, steps }: ChainExampleProps) {
                   "px-2 py-1 rounded text-xs font-medium",
                   currentIteration === 1 ? "bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300" : "bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300"
                 )}>
-                  Iteration {currentIteration} of 2
+                  {t("iterationOf", { current: currentIteration, total: 2 })}
                 </span>
               </div>
             )}
             {iterationOutput && currentIteration === 2 && (
               <div className="mx-4 p-2 rounded border border-dashed bg-amber-50/50 dark:bg-amber-950/20 border-amber-300 dark:border-amber-700">
                 <p className="text-xs text-amber-700 dark:text-amber-300 m-0!">
-                  <span className="font-medium">↳ Previous output as input:</span> {iterationOutput}
+                  <span className="font-medium">↳ {t("previousOutputAsInput")}:</span> {iterationOutput}
                 </p>
               </div>
             )}
             <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
               <RefreshCw className={cn("h-3 w-3", isAnimating && "animate-spin")} />
-              <span>Loop until quality threshold met</span>
+              <span>{t("loopUntilQualityMet")}</span>
             </div>
           </div>
         )}
@@ -299,6 +269,8 @@ export function ChainExample({ type, steps }: ChainExampleProps) {
 }
 
 export function ChainFlowDemo() {
+  const locale = useLocale();
+  const chainTypes = chainTypesLocale[locale] || chainTypesLocale.en;
   const [selected, setSelected] = useState(chainTypes[0]);
   const [activeStep, setActiveStep] = useState(0);
   const colors = chainColors[selected.color];

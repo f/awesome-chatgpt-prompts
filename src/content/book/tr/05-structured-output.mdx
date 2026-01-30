@@ -1,0 +1,411 @@
+Tutarlı, iyi formatlanmış çıktı almak üretim uygulamaları ve verimli iş akışları için esastır. Bu bölüm, yapay zeka modellerinin yanıtlarını tam olarak nasıl formatladığını kontrol etme tekniklerini kapsar.
+
+<Callout type="info" title="Düz Yazıdan Veriye">
+Yapılandırılmış çıktı, yapay zeka yanıtlarını serbest biçimli metinden eyleme dönüştürülebilir, ayrıştırılabilir veriye dönüştürür.
+</Callout>
+
+## Yapı Neden Önemli
+
+<StructuredOutputDemo />
+
+## Temel Formatlama Teknikleri
+
+### Listeler
+
+Listeler adım adım talimatlar, sıralı öğeler veya ilgili noktaların koleksiyonları için mükemmeldir. Taranması ve ayrıştırılması kolaydır. Sıra önemli olduğunda (adımlar, sıralamalar) **numaralı listeler** ve sırasız koleksiyonlar için **madde işaretleri** kullanın.
+
+<TryIt 
+  compact
+  title="Liste Formatlama"
+  prompt={`Daha iyi uyku için 5 ipucu ver.
+
+Format: Her biri için kısa bir açıklama içeren numaralı liste.
+Her ipucu kalın olmalı, ardından tire ve açıklama gelmelidir.`}
+/>
+
+<Callout type="tip" title="Liste En İyi Uygulamaları">
+İstediğiniz tam öğe sayısını, açıklamaların dahil edilip edilmeyeceğini ve öğelerin kalın mı yoksa belirli bir yapıda mı olması gerektiğini belirtin.
+</Callout>
+
+### Tablolar
+
+Tablolar, birden fazla öğeyi aynı boyutlar üzerinden karşılaştırmada mükemmeldir. Özellik karşılaştırmaları, veri özetleri ve tutarlı özelliklere sahip herhangi bir bilgi için idealdir. Sütun başlıklarınızı her zaman açıkça tanımlayın.
+
+<TryIt 
+  compact
+  title="Tablo Formatlama"
+  prompt={`En iyi 4 Python web framework'ünü karşılaştır.
+
+Şu sütunlarla markdown tablosu olarak formatla:
+| Framework | En İyi Kullanım | Öğrenme Eğrisi | Performans |`}
+/>
+
+<Callout type="tip" title="Tablo En İyi Uygulamaları">
+Sütun adlarını, beklenen veri türlerini (metin, sayılar, derecelendirmeler) ve kaç satıra ihtiyacınız olduğunu belirtin. Karmaşık karşılaştırmalar için okunabilirlik açısından 4-6 sütunla sınırlayın.
+</Callout>
+
+### Başlıklar ve Bölümler
+
+Başlıklar net bir belge yapısı oluşturur, uzun yanıtları taranabilir ve düzenli hale getirir. Raporlar, analizler veya herhangi bir çok parçalı yanıt için kullanın. Hiyerarşik başlıklar (##, ###) bölümler arasındaki ilişkileri gösterir.
+
+```
+Bu iş teklifini analiz et.
+
+Yanıtını şu bölümlerle yapılandır:
+## Yönetici Özeti
+## Güçlü Yönler
+## Zayıf Yönler
+## Öneriler
+## Risk Değerlendirmesi
+```
+
+<Callout type="tip" title="Bölüm En İyi Uygulamaları">
+Bölümlerinizi istediğiniz sırada listeleyin. Tutarlılık için her bölümün ne içermesi gerektiğini belirtin (örneğin, "Yönetici Özeti: sadece 2-3 cümle").
+</Callout>
+
+### Büyük Harfli Direktiflerle Vurgulama
+
+Büyük harfli kelimeler modele güçlü sinyaller olarak davranır, kritik kısıtlamaları veya gereksinimleri vurgular. Maksimum etki için onları idareli kullanın—aşırı kullanım etkilerini azaltır.
+
+**Yaygın Büyük Harfli Direktifler:**
+
+<InfoGrid items={[
+  { label: "ASLA", description: "Mutlak yasak: \"ASLA kişisel görüş ekleme\"", color: "red" },
+  { label: "HER ZAMAN", description: "Zorunlu gereksinim: \"HER ZAMAN kaynak göster\"", color: "green" },
+  { label: "ÖNEMLİ", description: "Kritik talimat: \"ÖNEMLİ: Yanıtları 100 kelimenin altında tut\"", color: "amber" },
+  { label: "YAPMA", description: "Güçlü yasak: \"İstatistik uyduRMA\"", color: "red" },
+  { label: "OLMALI", description: "Gerekli eylem: \"Çıktı geçerli JSON OLMALI\"", color: "blue" },
+  { label: "SADECE", description: "Kısıtlama: \"SADECE kodu döndür, açıklama yok\"", color: "purple" },
+]} />
+
+```
+Bu makaleyi özetle.
+
+ÖNEMLİ: Özeti 100 kelimenin altında tut.
+ASLA orijinalde olmayan bilgi ekleme.
+HER ZAMAN orijinal ton ve perspektifi koru.
+Kendi görüş veya analizini ekleME.
+```
+
+<Callout type="warning" title="İdareli Kullan">
+Her şey büyük harf veya kritik olarak işaretlenirse, hiçbir şey öne çıkmaz. Bu direktifleri gerçekten önemli kısıtlamalar için saklayın.
+</Callout>
+
+## JSON Çıktı
+
+JSON (JavaScript Object Notation), yapılandırılmış yapay zeka çıktısı için en popüler formattır. Makine tarafından okunabilir, programlama dilleri tarafından geniş çapta desteklenir ve API'ler, veritabanları ve otomasyon iş akışları için mükemmeldir. Güvenilir JSON'un anahtarı net bir şema sağlamaktır.
+
+### Temel JSON İsteği
+
+İstediğiniz tam yapıyı gösteren bir şablonla başlayın. Alan adlarını, veri türlerini ve örnek değerleri dahil edin. Bu, modelin takip edeceği bir sözleşme görevi görür.
+
+<TryIt 
+  title="JSON Çıkarma"
+  description="Yapılandırılmamış metinden yapılandırılmış veri çıkarın."
+  prompt={`Bu metinden bilgi çıkar ve JSON olarak döndür:
+
+{
+    "sirket_adi": "string",
+    "kurulus_yili": number,
+    "merkez": "string",
+    "calisan_sayisi": number,
+    "sektor": "string"
+}
+
+Metin: "1976'da kurulan Apple Inc., merkezi Cupertino, California'dadır. Teknoloji devi dünya çapında yaklaşık 164.000 kişi istihdam etmektedir."`}
+/>
+
+### Karmaşık JSON Yapıları
+
+İç içe veri için, nesneler içinde nesneler, nesne dizileri ve karma türlerle hiyerarşik JSON kullanın. Her seviyeyi net bir şekilde tanımlayın ve değerleri kısıtlamak için TypeScript stili açıklamalar (`"pozitif" | "negatif"`) kullanın.
+
+```
+Bu ürün yorumunu analiz et ve JSON döndür:
+
+{
+  "yorum_id": "string (benzersiz oluştur)",
+  "duygu": {
+    "genel": "pozitif" | "negatif" | "karışık" | "nötr",
+    "puan": 0.0-1.0
+  },
+  "yonler": [
+    {
+      "yon": "string (örn., 'fiyat', 'kalite')",
+      "duygu": "pozitif" | "negatif" | "nötr",
+      "bahisler": ["yorumdan tam alıntılar"]
+    }
+  ],
+  "satin_alma_niyeti": {
+    "tavsiye_eder_mi": boolean,
+    "guven": 0.0-1.0
+  },
+  "anahtar_ifadeler": ["dikkat çekici ifadelerin string dizisi"]
+}
+
+SADECE geçerli JSON döndür, ek metin yok.
+
+Yorum: "[yorum metni]"
+```
+
+### Geçerli JSON Sağlama
+
+Modeller bazen JSON etrafına açıklayıcı metin veya markdown formatlaması ekler. Çıktı formatı hakkında açık talimatlarla bunu önleyin. Ham JSON veya kod blokları içinde JSON isteyebilirsiniz—ayrıştırma ihtiyaçlarınıza göre seçin.
+
+Açık talimatlar ekleyin:
+
+```
+ÖNEMLİ:
+- SADECE JSON nesnesini döndür, markdown kod blokları yok
+- Tüm stringlerin düzgün escape edildiğinden emin ol
+- Eksik değerler için undefined değil null kullan
+- Çıktının ayrıştırılabilir JSON olduğunu doğrula
+```
+
+Veya modelden çıktısını sarmasını isteyerek kod blokları isteyin:
+
+````
+Sonucu JSON kod bloğu olarak döndür:
+```json
+{ ... }
+```
+````
+
+## YAML Çıktı
+
+YAML, parantezler yerine girinti kullanarak JSON'dan daha insan tarafından okunabilirdir. Yapılandırma dosyaları (Docker, Kubernetes, GitHub Actions) için standarttır ve çıktı insanlar tarafından okunacaksa veya DevOps bağlamlarında kullanılacaksa iyi çalışır. YAML girintiye duyarlıdır, bu yüzden formatlama gereksinimleri hakkında spesifik olun.
+
+<TryIt 
+  compact
+  title="YAML Oluşturma"
+  prompt={`Node.js projesi için GitHub Actions iş akışı oluştur.
+
+Geçerli YAML olarak döndür:
+- Dahil et: yükle, lint, test, build aşamaları
+- Node.js 18 kullan
+- npm bağımlılıklarını önbelleğe al
+- main'e push ve pull request'lerde çalıştır`}
+/>
+
+## XML Çıktı
+
+XML, birçok kurumsal sistem, SOAP API'leri ve eski entegrasyonlar için hâlâ gereklidir. JSON'dan daha ayrıntılıdır ama karmaşık veriler için öznitelikler, ad alanları ve CDATA bölümleri gibi özellikler sunar. Element adlarını, iç içe yapıyı ve öznitelikler ile alt elementlerin nerede kullanılacağını belirtin.
+
+```
+Bu veriyi XML formatına dönüştür:
+
+Gereksinimler:
+- Kök element: <catalog>
+- Her öğe <book> elementinde
+- Uygun yerlerde öznitelik kullan
+- Açıklama metni için CDATA kullan
+
+Veri: [kitap verisi]
+```
+
+## Özel Formatlar
+
+Bazen standart formatlar ihtiyaçlarınıza uymaz. Net bir şablon sağlayarak herhangi bir özel format tanımlayabilirsiniz. Özel formatlar, insanlar tarafından okunacak raporlar, loglar veya alana özgü çıktılar için iyi çalışır.
+
+### Yapılandırılmış Analiz Formatı
+
+Bölümler arasında net sınırlarla taranabilir belgeler oluşturmak için sınırlayıcılar (===, ---, [BÖLÜM]) kullanın. Bu format kod incelemeleri, denetimler ve analizler için harikadır.
+
+```
+Bu kodu tam olarak şu formatla analiz et:
+
+=== KOD ANALİZİ ===
+
+[ÖZET]
+Tek paragraf genel bakış
+
+[SORUNLAR]
+• KRİTİK: [sorun] — [dosya:satır]
+• UYARI: [sorun] — [dosya:satır]  
+• BİLGİ: [sorun] — [dosya:satır]
+
+[METRİKLER]
+Karmaşıklık: [Düşük/Orta/Yüksek]
+Sürdürülebilirlik: [puan]/10
+Test Kapsamı: [tahmini %]
+
+[ÖNERİLER]
+1. [Öncelik 1 önerisi]
+2. [Öncelik 2 önerisi]
+
+=== ANALİZ SONU ===
+```
+
+### Boşluk Doldurma Formatı
+
+Boşluklu (___) şablonlar, modeli tam formatlama korurken belirli alanları doldurmaya yönlendirir. Bu yaklaşım, tutarlılığın önemli olduğu formlar, özetler ve standartlaştırılmış belgeler için mükemmeldir.
+
+```
+Verilen ürün için bu şablonu tamamla:
+
+ÜRÜN ÖZETİ
+─────────────
+Adı: _______________
+Slogan: _______________
+Hedef Kullanıcı: _______________
+Çözülen Problem: _______________
+Ana Özellikler:
+  1. _______________
+  2. _______________
+  3. _______________
+Farklılaştırıcı: _______________
+
+Ürün: [ürün açıklaması]
+```
+
+## Tipli Yanıtlar
+
+Tipli yanıtlar, modelin tanıması ve etiketlemesi gereken kategorileri veya varlık türlerini tanımlar. Bu teknik, Named Entity Recognition (NER), sınıflandırma görevleri ve bilgiyi tutarlı bir şekilde kategorize etmeniz gereken herhangi bir çıkarma için esastır. Türlerinizi örneklerle net bir şekilde tanımlayın.
+
+<TryIt 
+  compact
+  title="Varlık Çıkarma"
+  prompt={`Bu metinden varlıkları çıkar.
+
+Varlık Türleri:
+- KİŞİ: Kişilerin tam adları
+- KURULUŞ: Organizasyon/şirket adları
+- KONUM: Şehirler, ülkeler, adresler
+- TARİH: ISO formatında tarihler (YYYY-AA-GG)
+- PARA: Para birimi ile parasal miktarlar
+
+Her birini şu şekilde formatla: [TÜR]: [değer]
+
+Metin: "Tim Cook, Apple'ın Aralık 2024'e kadar yeni bir Austin tesisine 1 milyar dolar yatırım yapacağını açıkladı."`}
+/>
+
+## Çok Parçalı Yapılandırılmış Yanıtlar
+
+Birden fazla yönü kapsayan kapsamlı çıktıya ihtiyacınız olduğunda, net sınırlarla ayrı parçalar tanımlayın. Her parçaya tam olarak neyin gideceğini belirtin—format, uzunluk ve içerik türü. Bu, modelin bölümleri karıştırmasını veya parçaları atlamasını önler.
+
+```
+Bu konuyu araştır ve şunları sağla:
+
+### BÖLÜM 1: YÖNETİCİ ÖZETİ
+[2-3 cümle genel bakış]
+
+### BÖLÜM 2: ANA BULGULAR
+[Tam olarak 5 madde işareti]
+
+### BÖLÜM 3: VERİ TABLOSU
+| Metrik | Değer | Kaynak |
+|--------|-------|--------|
+[Minimum 5 satır dahil et]
+
+### BÖLÜM 4: ÖNERİLER
+[3 eyleme dönüştürülebilir önerinin numaralı listesi]
+
+### BÖLÜM 5: İLERİ OKUMA
+[Kısa açıklamalarla 3 önerilen kaynak]
+```
+
+## Koşullu Formatlama
+
+Koşullu formatlama, girdinin özelliklerine göre farklı çıktı formatları tanımlamanızı sağlar. Bu, yanıt formatının modelin algıladığına göre değişmesi gereken sınıflandırma, triyaj ve yönlendirme sistemleri için güçlüdür. Her durum için açık şablonlarla net if/then mantığı kullanın.
+
+<TryIt 
+  compact
+  title="Bilet Sınıflandırma"
+  prompt={`Bu destek biletini sınıflandır.
+
+ACİL ise (sistem çökmüş, güvenlik sorunu, veri kaybı):
+  Döndür: 🔴 ACİL | [Kategori] | [Önerilen Eylem]
+
+YÜKSEK ise (birden fazla kullanıcı etkileniyor, gelir etkisi):
+  Döndür: 🟠 YÜKSEK | [Kategori] | [Önerilen Eylem]
+
+ORTA ise (tek kullanıcı etkileniyor, geçici çözüm mevcut):
+  Döndür: 🟡 ORTA | [Kategori] | [Önerilen Eylem]
+
+DÜŞÜK ise (sorular, özellik istekleri):
+  Döndür: 🟢 DÜŞÜK | [Kategori] | [Önerilen Eylem]
+
+Bilet: "Hesabıma giriş yapamıyorum. Şifremi iki kez sıfırlamayı denedim ama hâlâ hata alıyorum. Bu, tüm ekibimin panoya erişmesini engelliyor."`}
+/>
+
+## JSON'da Diziler ve Listeler
+
+Birden fazla öğeyi dizilere çıkarmak dikkatli şema tanımı gerektirir. Dizi yapısını, her öğenin ne içermesi gerektiğini ve uç durumları nasıl ele alacağınızı (boş diziler, tek öğeler) belirtin. Sayı alanı eklemek tamlığı doğrulamaya yardımcı olur.
+
+```
+Bu toplantı transkriptinden tüm eylem öğelerini çıkar.
+
+JSON dizisi olarak döndür:
+{
+  "eylem_ogeleri": [
+    {
+      "gorev": "görevi tanımlayan string",
+      "atanan": "kişi adı veya 'Atanmamış'",
+      "son_tarih": "belirtilmişse tarih, yoksa null",
+      "oncelik": "yuksek" | "orta" | "dusuk",
+      "baglam": "transkriptten ilgili alıntı"
+    }
+  ],
+  "toplam_sayi": number
+}
+
+Transkript: "[toplantı transkripti]"
+```
+
+## Doğrulama Talimatları
+
+Öz doğrulama, modeli yanıt vermeden önce kendi çıktısını kontrol etmeye yönlendirir. Bu, eksik bölümler, yer tutucu metin veya kısıtlama ihlalleri gibi yaygın sorunları yakalar. Model, ek API çağrıları olmadan çıktı kalitesini iyileştirerek sorunları düzeltmek için dahili olarak yineler.
+
+```
+Raporu oluştur, sonra:
+
+DOĞRULAMA KONTROL LİSTESİ:
+□ Tüm gerekli bölümler mevcut
+□ Yer tutucu metin kalmadı
+□ Tüm istatistikler kaynak içeriyor
+□ Kelime sayısı 500-700 kelime arasında
+□ Sonuç girişe bağlanıyor
+
+Herhangi bir kontrol başarısız olursa, yanıt vermeden önce düzelt.
+```
+
+## Opsiyonel Alanları İşleme
+
+Gerçek dünya verilerinde genellikle eksik değerler bulunur. Modele opsiyonel alanları nasıl işleyeceği konusunda açıkça talimat verin—`null` kullanmak boş stringlerden daha temizdir ve programatik olarak işlenmesi daha kolaydır. Ayrıca modelin eksik veriyi "halüsinasyonla" üretmesini önlemek için bilgi uydurmamesi gerektiğini vurgulayın.
+
+```
+İletişim bilgilerini çıkar. Eksik alanlar için null kullan.
+
+{
+  "isim": "string (gerekli)",
+  "email": "string veya null",
+  "telefon": "string veya null", 
+  "sirket": "string veya null",
+  "rol": "string veya null",
+  "linkedin": "URL string veya null"
+}
+
+ÖNEMLİ: 
+- Kaynakta olmayan bilgi asla uydurma
+- Eksik veri için boş string değil null kullan
+- Telefon numaraları mümkünse E.164 formatında
+```
+
+## Özet
+
+<Callout type="tip" title="Ana Teknikler">
+Format hakkında açık ol, örnekler kullan, türleri belirt, uç durumları null değerlerle ele al ve modelden kendi çıktısını doğrulamasını iste.
+</Callout>
+
+<Quiz 
+  question="Yapılandırılmış çıktının yapılandırılmamış metne göre ana avantajı nedir?"
+  options={[
+    "Daha az token kullanır",
+    "Yapay zekanın üretmesi daha kolaydır",
+    "Programatik olarak ayrıştırılabilir ve doğrulanabilir",
+    "Her zaman doğru bilgi üretir"
+  ]}
+  correctIndex={2}
+  explanation="JSON gibi yapılandırılmış çıktılar kod tarafından ayrıştırılabilir, sorgular arasında karşılaştırılabilir, iş akışlarına entegre edilebilir ve tamlık için doğrulanabilir—serbest biçimli metinle zor veya imkansız olan şeyler."
+/>
+
+Yapılandırılmış çıktılar, güvenilir yapay zeka destekli uygulamalar oluşturmak için esastır. Bir sonraki bölümde, karmaşık muhakeme görevleri için düşünce zinciri promptlamayı keşfedeceğiz.

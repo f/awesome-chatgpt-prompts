@@ -352,7 +352,7 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
           {!config.homepage?.useCloneBranding && (
             <>
               <Link 
-                href="https://deepwiki.com/f/awesome-chatgpt-prompts" 
+                href="https://deepwiki.com/f/prompts.chat" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 prefetch={false}
@@ -386,7 +386,7 @@ export function PromptFilters({ categories, tags, currentFilters, aiSearchEnable
             </>
           )}
           <Link 
-            href="https://github.com/f/awesome-chatgpt-prompts" 
+            href="https://github.com/f/prompts.chat" 
             target="_blank" 
             rel="noopener noreferrer"
             prefetch={false}

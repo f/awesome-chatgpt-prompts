@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { RunPromptButton } from "@/components/prompts/run-prompt-button";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 // Collapsible Component
 interface CollapsibleProps {
@@ -124,6 +125,7 @@ interface QuizProps {
 export function Quiz({ question, options, correctIndex, explanation }: QuizProps) {
   const [selected, setSelected] = useState<number | null>(null);
   const [showExplanation, setShowExplanation] = useState(false);
+  const t = useTranslations("book.interactive");
 
   const handleSelect = (index: number) => {
     setSelected(index);
@@ -162,7 +164,7 @@ export function Quiz({ question, options, correctIndex, explanation }: QuizProps
           isCorrect ? "bg-green-50 dark:bg-green-950/50" : "bg-amber-50 dark:bg-amber-950/50"
         )}>
           <p className="font-medium m-0! mb-1!">
-            {isCorrect ? "Correct!" : "Not quite."}
+            {isCorrect ? t("correct") : t("notQuite")}
           </p>
           <p>{explanation}</p>
         </div>
@@ -193,8 +195,10 @@ function parsePromptVariables(content: string): { name: string; defaultValue: st
   return Array.from(seen.entries()).map(([name, defaultValue]) => ({ name, defaultValue }));
 }
 
-export function TryIt({ prompt, description, title = "Try It Yourself", compact = false }: TryItProps) {
+export function TryIt({ prompt, description, title, compact = false }: TryItProps) {
   const [copied, setCopied] = useState(false);
+  const t = useTranslations("book.interactive");
+  const displayTitle = title || t("tryIt");
 
   const unfilledVariables = parsePromptVariables(prompt);
 
@@ -219,7 +223,7 @@ export function TryIt({ prompt, description, title = "Try It Yourself", compact 
         <div className="absolute top-2 right-2 z-10">
           <RunPromptButton
             content={prompt}
-            title={title}
+            title={displayTitle}
             description={description}
             variant="ghost"
             size="icon"
@@ -237,7 +241,7 @@ export function TryIt({ prompt, description, title = "Try It Yourself", compact 
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2 text-primary font-semibold">
           <Zap className="h-4 w-4" />
-          {title}
+          {displayTitle}
         </div>
         <div className="flex items-center gap-2">
           <Button
@@ -247,11 +251,11 @@ export function TryIt({ prompt, description, title = "Try It Yourself", compact 
             className="h-8"
           >
             {copied ? <Check className="h-4 w-4 mr-1" /> : <Copy className="h-4 w-4 mr-1" />}
-            {copied ? "Copied!" : "Copy"}
+            {copied ? t("copied") : t("copy")}
           </Button>
           <RunPromptButton
             content={prompt}
-            title={title}
+            title={displayTitle}
             description={description}
             variant="default"
             size="sm"

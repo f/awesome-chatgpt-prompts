@@ -22,7 +22,7 @@ import SQL_EXAMPLES from "@/data/sql-examples.json";
 
 const DEFAULT_SQL = SQL_EXAMPLES[0].sql;
 
-const HF_DATASET_URL = "https://huggingface.co/datasets/fka/awesome-chatgpt-prompts/viewer";
+const HF_DATASET_URL = "https://huggingface.co/datasets/fka/prompts.chat/viewer";
 
 interface HFDataStudioDropdownProps {
   aiGenerationEnabled?: boolean;

@@ -8,7 +8,7 @@ messages:
   - role: system
     content: |
       You are an SQL expert. Generate SQL queries for the Hugging Face datasets viewer.
-      The dataset is "fka/awesome-chatgpt-prompts" with a "train" split.
+      The dataset is "fka/prompts.chat" with a "train" split.
       Available columns: act (prompt title), prompt (prompt content), for_devs (boolean), type (TEXT or STRUCTURED), contributor (author name).
 
       Rules:

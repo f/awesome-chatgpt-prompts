@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import { Play, Copy, Check, Loader2, RefreshCw, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useTranslations, useLocale } from "next-intl";
 
 // ============================================================================
 // PromptBuilder Component - Step-by-step prompt construction
@@ -31,55 +32,38 @@ interface BuilderField {
   required?: boolean;
 }
 
-const BUILDER_FIELDS: BuilderField[] = [
-  {
-    id: "role",
-    label: "Role / Persona",
-    placeholder: "You are a senior software engineer...",
-    hint: "Who should the AI act as? What expertise should it have?",
-  },
-  {
-    id: "context",
-    label: "Context / Background",
-    placeholder: "I'm building a React app that...",
-    hint: "What does the AI need to know about your situation?",
-  },
-  {
-    id: "task",
-    label: "Task / Instruction",
-    placeholder: "Review this code and identify bugs...",
-    hint: "What specific action should the AI take?",
-    required: true,
-  },
-  {
-    id: "constraints",
-    label: "Constraints / Rules",
-    placeholder: "Keep response under 200 words. Focus only on...",
-    hint: "What limitations or rules should the AI follow?",
-  },
-  {
-    id: "format",
-    label: "Output Format",
-    placeholder: "Return as a numbered list with...",
-    hint: "How should the response be structured?",
-  },
-  {
-    id: "examples",
-    label: "Examples",
-    placeholder: "Example input: X → Output: Y",
-    hint: "Show examples of what you want (few-shot learning)",
-  },
-];
+const BUILDER_FIELDS_LOCALE: Record<string, BuilderField[]> = {
+  en: [
+    { id: "role", label: "Role / Persona", placeholder: "You are a senior software engineer...", hint: "Who should the AI act as? What expertise should it have?" },
+    { id: "context", label: "Context / Background", placeholder: "I'm building a React app that...", hint: "What does the AI need to know about your situation?" },
+    { id: "task", label: "Task / Instruction", placeholder: "Review this code and identify bugs...", hint: "What specific action should the AI take?", required: true },
+    { id: "constraints", label: "Constraints / Rules", placeholder: "Keep response under 200 words. Focus only on...", hint: "What limitations or rules should the AI follow?" },
+    { id: "format", label: "Output Format", placeholder: "Return as a numbered list with...", hint: "How should the response be structured?" },
+    { id: "examples", label: "Examples", placeholder: "Example input: X → Output: Y", hint: "Show examples of what you want (few-shot learning)" },
+  ],
+  tr: [
+    { id: "role", label: "Rol / Persona", placeholder: "Sen kıdemli bir yazılım mühendisisin...", hint: "AI kim olarak davranmalı? Hangi uzmanlığa sahip olmalı?" },
+    { id: "context", label: "Bağlam / Arka Plan", placeholder: "Bir React uygulaması geliştiriyorum...", hint: "AI durumunuz hakkında ne bilmeli?" },
+    { id: "task", label: "Görev / Talimat", placeholder: "Bu kodu incele ve hataları bul...", hint: "AI hangi özel eylemi yapmalı?", required: true },
+    { id: "constraints", label: "Kısıtlamalar / Kurallar", placeholder: "Yanıtı 200 kelime altında tut. Sadece şuna odaklan...", hint: "AI hangi sınırlamalara veya kurallara uymalı?" },
+    { id: "format", label: "Çıktı Formatı", placeholder: "Numaralı liste olarak döndür...", hint: "Yanıt nasıl yapılandırılmalı?" },
+    { id: "examples", label: "Örnekler", placeholder: "Örnek girdi: X → Çıktı: Y", hint: "Ne istediğinizi örneklerle gösterin (few-shot öğrenme)" },
+  ],
+};
 
 export function PromptBuilder({
-  title = "Prompt Builder",
-  description = "Build your prompt step by step",
+  title,
+  description,
   defaultValues = {},
   showAllFields = false,
 }: PromptBuilderProps) {
+  const t = useTranslations("book.interactive");
+  const locale = useLocale();
+  const BUILDER_FIELDS = BUILDER_FIELDS_LOCALE[locale] || BUILDER_FIELDS_LOCALE.en;
+  
   const [values, setValues] = useState<Record<string, string>>(defaultValues as Record<string, string>);
   const [expandedFields, setExpandedFields] = useState<Set<string>>(
-    new Set(showAllFields ? BUILDER_FIELDS.map(f => f.id) : ["task"])
+    new Set(showAllFields ? BUILDER_FIELDS.map((f: BuilderField) => f.id) : ["task"])
   );
   const [copied, setCopied] = useState(false);
   const [isRunning, setIsRunning] = useState(false);
@@ -133,7 +117,7 @@ export function PromptBuilder({
   const handleRun = async () => {
     const prompt = buildPrompt();
     if (!prompt.trim()) {
-      setError("Please add at least a task to your prompt");
+      setError(t("pleaseAddTask"));
       return;
     }
 
@@ -155,9 +139,9 @@ export function PromptBuilder({
       
       if (!res.ok) {
         if (res.status === 429) {
-          setError(`Rate limit reached. Try again in ${data.resetIn}s${data.signInForMore ? " or sign in for more." : "."}`);
+          setError(`${t("rateLimitReached")} ${data.resetIn}s${data.signInForMore ? ` ${t("orSignInForMore")}` : "."}`);
         } else {
-          setError(data.error || "Failed to run prompt");
+          setError(data.error || t("failedToRunPrompt"));
         }
         return;
       }
@@ -165,7 +149,7 @@ export function PromptBuilder({
       setResponse(data.result);
       setRateLimit({ remaining: data.remaining, dailyRemaining: data.dailyRemaining });
     } catch {
-      setError("Failed to connect to API");
+      setError(t("failedToConnectApi"));
     } finally {
       setIsRunning(false);
     }
@@ -177,8 +161,8 @@ export function PromptBuilder({
   return (
     <div className="my-6 border rounded-lg overflow-hidden">
       <div className="px-4 py-3 bg-muted/50 border-b">
-        <span className="font-semibold">{title}</span>
-        <span className="text-muted-foreground text-sm ml-2">{description}</span>
+        <span className="font-semibold">{title || t("promptBuilder")}</span>
+        <span className="text-muted-foreground text-sm ml-2">{description || t("buildYourPromptStepByStep")}</span>
       </div>
 
       <div className="p-4 space-y-3">
@@ -198,7 +182,7 @@ export function PromptBuilder({
                 {field.required && <span className="text-red-500 text-xs">*</span>}
                 {values[field.id] && (
                   <span className="text-xs text-muted-foreground bg-muted px-1.5 py-0.5 rounded">
-                    filled
+                    {t("filled")}
                   </span>
                 )}
               </div>
@@ -228,8 +212,8 @@ export function PromptBuilder({
         {hasContent && (
           <div className="mt-4">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium">Generated Prompt</span>
-              <span className="text-xs text-muted-foreground">{prompt.length} chars</span>
+              <span className="text-sm font-medium">{t("generatedPrompt")}</span>
+              <span className="text-xs text-muted-foreground">{prompt.length} {t("chars")}</span>
             </div>
             <pre className="p-3 bg-muted/50 rounded-lg text-sm whitespace-pre-wrap max-h-48 overflow-y-auto">
               {prompt}
@@ -241,7 +225,7 @@ export function PromptBuilder({
         <div className="flex items-center gap-2 pt-2">
           <Button onClick={handleCopy} variant="outline" size="sm" disabled={!hasContent}>
             {copied ? <Check className="h-4 w-4 mr-1" /> : <Copy className="h-4 w-4 mr-1" />}
-            {copied ? "Copied!" : "Copy"}
+            {copied ? t("copied") : t("copy")}
           </Button>
           <Button onClick={handleRun} size="sm" disabled={!hasContent || isRunning}>
             {isRunning ? (
@@ -249,11 +233,11 @@ export function PromptBuilder({
             ) : (
               <Play className="h-4 w-4 mr-1" />
             )}
-            Run with AI
+            {t("runWithAI")}
           </Button>
           {rateLimit?.remaining !== undefined && (
             <span className="text-xs text-muted-foreground ml-auto">
-              {rateLimit.remaining} {rateLimit.dailyRemaining !== undefined ? `(${rateLimit.dailyRemaining}/day)` : ""} remaining
+              {rateLimit.remaining} {rateLimit.dailyRemaining !== undefined ? `(${rateLimit.dailyRemaining}/${t("day")})` : ""} {t("remaining")}
             </span>
           )}
         </div>
@@ -269,10 +253,10 @@ export function PromptBuilder({
         {response && (
           <div className="mt-4">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-green-700 dark:text-green-400">AI Response</span>
+              <span className="text-sm font-medium text-green-700 dark:text-green-400">{t("aiResponse")}</span>
               <Button onClick={() => setResponse(null)} variant="ghost" size="sm" className="h-6 text-xs">
                 <RefreshCw className="h-3 w-3 mr-1" />
-                Clear
+                {t("clear")}
               </Button>
             </div>
             <div className="p-3 bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800 rounded-lg text-sm whitespace-pre-wrap">
@@ -305,10 +289,11 @@ interface PromptAnalyzerProps {
 }
 
 export function PromptAnalyzer({
-  title = "Prompt Analyzer",
-  description = "Get AI feedback on your prompt",
+  title,
+  description,
   defaultPrompt = "",
 }: PromptAnalyzerProps) {
+  const t = useTranslations("book.interactive");
   const [prompt, setPrompt] = useState(defaultPrompt);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [analysis, setAnalysis] = useState<AnalysisResult | null>(null);
@@ -317,7 +302,7 @@ export function PromptAnalyzer({
 
   const handleAnalyze = async () => {
     if (!prompt.trim()) {
-      setError("Please enter a prompt to analyze");
+      setError(t("pleaseEnterPromptToAnalyze"));
       return;
     }
 
@@ -339,9 +324,9 @@ export function PromptAnalyzer({
       
       if (!res.ok) {
         if (res.status === 429) {
-          setError(`Rate limit reached. Try again in ${data.resetIn}s.`);
+          setError(`${t("rateLimitReached")} ${data.resetIn}s.`);
         } else {
-          setError(data.error || "Failed to analyze prompt");
+          setError(data.error || t("failedToAnalyzePrompt"));
         }
         return;
       }
@@ -349,7 +334,7 @@ export function PromptAnalyzer({
       setAnalysis(data.result as AnalysisResult);
       setRateLimit({ remaining: data.remaining });
     } catch {
-      setError("Failed to connect to API");
+      setError(t("failedToConnectApi"));
     } finally {
       setIsAnalyzing(false);
     }
@@ -364,17 +349,17 @@ export function PromptAnalyzer({
   return (
     <div className="my-6 border rounded-lg overflow-hidden">
       <div className="px-4 py-3 bg-muted/50 border-b">
-        <span className="font-semibold">{title}</span>
-        <span className="text-muted-foreground text-sm ml-2">{description}</span>
+        <span className="font-semibold">{title || t("promptAnalyzer")}</span>
+        <span className="text-muted-foreground text-sm ml-2">{description || t("getAiFeedbackOnPrompt")}</span>
       </div>
 
       <div className="p-4 space-y-4">
         <div>
-          <label className="text-sm font-medium mb-1 block">Your Prompt</label>
+          <label className="text-sm font-medium mb-1 block">{t("yourPrompt")}</label>
           <textarea
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
-            placeholder="Paste or write your prompt here..."
+            placeholder={t("pasteOrWritePromptHere")}
             rows={5}
             className="w-full px-3 py-2 text-sm border rounded-lg bg-background resize-none focus:outline-none focus:ring-2 focus:ring-primary/50 font-mono"
           />
@@ -387,11 +372,11 @@ export function PromptAnalyzer({
             ) : (
               <Play className="h-4 w-4 mr-1" />
             )}
-            Analyze
+            {t("analyze")}
           </Button>
           {rateLimit?.remaining !== undefined && (
             <span className="text-xs text-muted-foreground">
-              {rateLimit.remaining} remaining
+              {rateLimit.remaining} {t("remaining")}
             </span>
           )}
         </div>
@@ -412,11 +397,11 @@ export function PromptAnalyzer({
               </div>
               <div className="flex-1 space-y-2">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-medium w-20">Clarity</span>
+                  <span className="text-xs font-medium w-20">{t("clarity")}</span>
                   <span className="text-xs text-muted-foreground flex-1">{analysis.clarity}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-medium w-20">Specificity</span>
+                  <span className="text-xs font-medium w-20">{t("specificity")}</span>
                   <span className="text-xs text-muted-foreground flex-1">{analysis.specificity}</span>
                 </div>
               </div>
@@ -425,7 +410,7 @@ export function PromptAnalyzer({
             {/* Missing Elements */}
             {analysis.missingElements.length > 0 && (
               <div>
-                <p className="text-sm font-medium mb-2 m-0!">Missing Elements</p>
+                <p className="text-sm font-medium mb-2 m-0!">{t("missingElements")}</p>
                 <div className="flex flex-wrap gap-2">
                   {analysis.missingElements.map((el, i) => (
                     <span key={i} className="px-2 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 text-xs rounded">
@@ -439,7 +424,7 @@ export function PromptAnalyzer({
             {/* Suggestions */}
             {analysis.suggestions.length > 0 && (
               <div>
-                <p className="text-sm font-medium mb-2 m-0!">Suggestions</p>
+                <p className="text-sm font-medium mb-2 m-0!">{t("suggestions")}</p>
                 <ul className="space-y-1 text-sm text-muted-foreground">
                   {analysis.suggestions.map((s, i) => (
                     <li key={i} className="flex items-start gap-2">
@@ -454,7 +439,7 @@ export function PromptAnalyzer({
             {/* Improved Version */}
             {analysis.improved && (
               <div>
-                <p className="text-sm font-medium mb-2 m-0!">Improved Version</p>
+                <p className="text-sm font-medium mb-2 m-0!">{t("improvedVersion")}</p>
                 <pre className="p-3 bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800 rounded-lg text-sm whitespace-pre-wrap font-mono">
                   {analysis.improved}
                 </pre>

@@ -1,0 +1,345 @@
+Yapay zeka, hem öğretme hem de öğrenme için güçlü bir araçtır. Bu bölüm, kişiselleştirilmiş özel ders vermeden müfredat geliştirmeye kadar eğitim bağlamları için promptları kapsar.
+
+<Callout type="info" title="Öğrenme Ortağı Olarak YZ">
+YZ, kavramları birden fazla şekilde açıklayabilen, sınırsız alıştırma problemi üretebilen ve anında geri bildirim sağlayabilen sabırlı, uyarlanabilir bir öğretmen olarak mükemmelleşir—7/24 erişilebilir.
+</Callout>
+
+## Kişiselleştirilmiş Öğrenme
+
+### Yapılması ve Yapılmaması Gerekenler: Öğrenme Promptları
+
+<Compare 
+  before={{ label: "❌ Pasif istek", content: "Kuantum fiziğini bana açıkla." }}
+  after={{ label: "✓ Bağlam açısından zengin istek", content: "Kuantum süperpozisyonunu bana açıkla.\n\nGeçmişim: Temel kimya ve klasik fiziği anlıyorum.\nÖğrenme stili: Analojiler ve örneklerle en iyi öğrenirim.\nBasit bir analojiyle açıkla, sonra temel kavramı, sonra pratik bir örnek. Anlayışımı bir soruyla kontrol et." }}
+/>
+
+### Kavram Açıklaması
+
+<TryIt compact prompt={`[kavram]'ı bana açıkla.
+
+Geçmişim:
+- Mevcut seviye: [başlangıç/orta/ileri]
+- İlgili bilgi: [zaten bildiklerim]
+- Öğrenme stili: [görsel/örnekler/teorik]
+
+Şununla açıkla:
+1. Tanıdık bir şeye basit analoji
+2. Sade dille temel kavram
+3. Bildiklerimle nasıl bağlantılı
+4. Pratik bir örnek
+5. Kaçınılması gereken yaygın yanılgılar
+
+Sonra anlayışımı bir soruyla kontrol et.`} />
+
+### Uyarlanabilir Özel Ders
+
+<TryIt compact prompt={`\${subject:kalkülüs} için öğretmenim ol. Bana \${topic:türevleri} uyarlanabilir şekilde öğret.
+
+Seviyemi değerlendirmek için tanılayıcı bir soruyla başla.
+Yanıtıma göre:
+- Doğruysa: Daha ileri yönlere geç
+- Kısmen doğruysa: Boşluğu açıkla, sonra devam et
+- Yanlışsa: Geri adım at ve temel oluştur
+
+Her açıklamadan sonra:
+- Anlayışımı bir soruyla kontrol et
+- Cevaplarıma göre zorluğu ayarla
+- Teşvik sağla ve ilerlemeyi takip et`} />
+
+### Öğrenme Yolu Oluşturma
+
+<TryIt compact prompt={`\${goal:web geliştiricisi olmak} için öğrenme yolu oluştur.
+
+Durumum:
+- Mevcut beceri seviyesi: \${skillLevel:tam başlangıç}
+- Mevcut zaman: \${timeAvailable:haftada 10 saat}
+- Hedef süre: \${timeline:6 ay}
+- Öğrenme tercihleri: \${preferences:projeler ve eğitimler}
+
+Sağla:
+1. Ön koşul kontrolü (önce neye ihtiyacım var)
+2. Kilometre taşı dağılımı (hedeflerle aşamalar)
+3. Her aşama için kaynaklar (mümkünse ücretsiz)
+4. Her aşamada pratik projeler
+5. Değerlendirme kriterleri (ilerlemeye hazır olduğumu nasıl bilirim)`} />
+
+## Çalışma Yardımı
+
+<Callout type="tip" title="Aktif Öğrenme İlkesi">
+YZ açıklamalarını pasif şekilde okuma. Seni sorgulamasını, problem üretmesini ve anlayışını kontrol etmesini iste. **Aktif hatırlama pasif tekrarı yener.**
+</Callout>
+
+### Özet Üretimi
+
+<TryIt compact prompt={`Bu \${contentType:bölümü} çalışma amaçlı özetle.
+
+İçerik:
+\${content:içeriğinizi buraya yapıştırın}
+
+Sağla:
+1. **Anahtar Kavramlar** (5-7 ana fikir)
+2. **Önemli Terimler** (kısa tanımlarla)
+3. **İlişkiler** (kavramlar nasıl bağlantılı)
+4. **Çalışma Soruları** (anlayışı test etmek için)
+5. **Hafıza Yardımcıları** (mnemonikler veya çağrışımlar)
+
+Kolay tekrar ve ezberleme için formatla.`} />
+
+### Flashcard Üretimi
+
+<TryIt compact prompt={`\${topic:İkinci Dünya Savaşı} çalışmak için flashcard'lar oluştur.
+
+Kaynak materyal:
+\${content:çalışma materyalinizi buraya yapıştırın}
+
+Her kartı formatla:
+Ön: Soru veya terim
+Arka: Cevap veya tanım
+İpucu: İsteğe bağlı hafıza yardımcısı
+
+Kapsanacak kategoriler:
+- Tanımlar (anahtar terimler)
+- Kavramlar (ana fikirler)
+- İlişkiler (şeyler nasıl bağlantılı)
+- Uygulamalar (gerçek dünya kullanımları)
+
+Kategoriler arasında dengeli \${numberOfCards:20} kart üret.`} />
+
+### Alıştırma Problemleri
+
+<TryIt compact prompt={`\${topic:ikinci dereceden denklemler} için alıştırma problemleri üret.
+
+Zorluk seviyeleri:
+- 3 Temel (temel anlayışı test et)
+- 3 Orta (uygulama gerektirir)
+- 2 İleri (sentez/analiz gerektirir)
+
+Her problem için:
+1. Net problem ifadesi
+2. Öğrenci çalışması için alan
+3. İstek üzerine mevcut ipuçları
+4. Açıklamalı detaylı çözüm
+
+Çeşitlilik dahil et: \${problemTypes:hesaplama, kavramsal, uygulama}`} />
+
+## Öğretme Araçları
+
+### Ders Planı Oluşturma
+
+<TryIt compact prompt={`\${topic:fotosentez} öğretmek için ders planı oluştur.
+
+Bağlam:
+- Sınıf/Seviye: \${audience:8. sınıf fen}
+- Ders süresi: \${duration:50 dakika}
+- Sınıf mevcudu: \${classSize:25 öğrenci}
+- Ön bilgi: \${prerequisites:temel hücre yapısı}
+
+Dahil et:
+1. **Öğrenme Hedefleri** (SMART formatında)
+2. **Açılış Kancası** (5 dk) - katılım aktivitesi
+3. **Öğretim** (15-20 dk) - temel içerik aktarımı
+4. **Rehberli Uygulama** (10 dk) - öğrencilerle çalış
+5. **Bağımsız Uygulama** (10 dk) - öğrenciler tek başına çalışır
+6. **Değerlendirme** (5 dk) - anlayışı kontrol et
+7. **Kapanış** - özetle ve önizle
+
+Gereken materyaller: liste
+Farklılaştırma stratejileri: çeşitli öğrenenler için`} />
+
+### Ödev Tasarımı
+
+<TryIt compact prompt={`\${learningObjective:birincil kaynakları analiz etme} için ödev tasarla.
+
+Parametreler:
+- Ders: \${course:YKS Tarih}
+- Teslim süresi: \${dueIn:2 hafta}
+- Bireysel/Grup: \${grouping:bireysel}
+- Ağırlık: \${weight:notun %15'i}
+
+Dahil et:
+1. Net talimatlar
+2. Kriterlerle puanlama rubriği
+3. Beklenen kalite örneği
+4. Teslim gereksinimleri
+5. Akademik dürüstlük hatırlatmaları
+
+Ödev şunları yapmalı:
+- \${skills:eleştirel düşünme ve kaynak değerlendirme} değerlendirmeli
+- \${allowFor:analiz ve yorumlama} için olanak tanımalı
+- Yaklaşık \${hours:8 saatte} tamamlanabilir olmalı`} />
+
+### Sınav Üretimi
+
+<TryIt compact prompt={`\${topic:Kurtuluş Savaşı} hakkında sınav oluştur.
+
+Format:
+- [X] Çoktan seçmeli sorular (her biri 4 seçenekli)
+- [X] Doğru/Yanlış soruları
+- [X] Kısa cevaplı sorular
+- [X] Bir kompozisyon sorusu
+
+Spesifikasyonlar:
+- Tüm anahtar öğrenme hedeflerini kapsa
+- Hatırlamadan analize kadar uzansın
+- Açıklamalı cevap anahtarı dahil et
+- Zaman tahmini: \${timeEstimate:30 dakika}
+- Her bölüm için puan değerleri`} />
+
+## Özel Öğrenme Bağlamları
+
+### Dil Öğrenimi
+
+<TryIt compact prompt={`\${language:İngilizce} öğrenmeme yardım et.
+
+Mevcut seviye: \${currentLevel:A2 - başlangıç}
+Ana dil: \${nativeLanguage:Türkçe}
+Hedefler: \${goals:seyahat için konuşma}
+
+Bugünkü ders: \${focusArea:restoranda yemek siparişi verme}
+
+Dahil et:
+1. Yeni kelime dağarcığı (5-10 kelime) ile:
+   - Telaffuz kılavuzu
+   - Örnek cümleler
+   - Yaygın kullanım notları
+2. Net açıklamayla dilbilgisi noktası
+3. Alıştırma egzersizleri
+4. Kültürel bağlam notu
+5. Konuşma pratiği senaryosu`} />
+
+### Beceri Geliştirme
+
+<TryIt compact prompt={`\${skill:gitar} öğrenmek istiyorum. Koçum ol.
+
+Mevcut seviyem: \${currentLevel:tam başlangıç}
+Hedef: \${goal:5 şarkıyı kulaktan çalmak}
+Mevcut pratik zamanı: \${practiceTime:günde 30 dakika}
+
+Sağla:
+1. Başlangıç noktası değerlendirmesi
+2. Gereken alt becerilerin dağılımı
+3. Pratik rutini (spesifik egzersizler)
+4. İlerleme göstergeleri (gelişmeyi nasıl ölçerim)
+5. Yaygın platolar ve bunları nasıl aşılır
+6. İlk haftanın detaylı pratik planı`} />
+
+### Sınav Hazırlığı
+
+<TryIt compact prompt={`\${examName:YKS} sınavına hazırlanmama yardım et.
+
+Sınav formatı: \${examFormat:TYT, AYT bölümleri}
+Sınava kalan süre: \${timeUntilExam:8 hafta}
+Zayıf alanlarım: \${weakAreas:okuduğunu anlama, geometri}
+Hedef skor: \${targetScore:450+}
+
+Çalışma planı oluştur:
+1. Kapsanacak konular (öncelikli)
+2. Günlük çalışma programı
+3. Deneme sınavı stratejisi
+4. Ezberlenecek anahtar formüller/bilgiler
+5. Bu sınava özel sınav çözme ipuçları
+6. Sınavdan bir gün önce ve sınav günü önerileri`} />
+
+## prompts.chat'ten Prompt Şablonları
+
+### Sokratik Öğretmen Olarak Davran
+
+<TryIt compact prompt={`Sokratik bir öğretmen olarak davranmanı istiyorum. Doğrudan cevaplar vermek yerine araştırıcı sorular sorarak öğrenmeme yardım edeceksin. Bir konu hakkında sorduğumda, cevabı kendim keşfetmeme rehberlik eden sorularla yanıt ver. Takılırsam ipuçları sağla ama çözümler değil. Eleştirel düşünme becerilerimi geliştirmeme yardım et.`} />
+
+### Eğitim İçeriği Oluşturucusu Olarak Davran
+
+<TryIt compact prompt={`Bir eğitim içeriği oluşturucusu olarak davranmanı istiyorum. \${subject:biyoloji} için ilgi çekici, doğru eğitim materyalleri oluşturacaksın. Karmaşık konuları aşırı basitleştirmeden erişilebilir yap. Analojiler, örnekler ve görsel açıklamalar kullan. Bilgi kontrolleri dahil et ve aktif öğrenmeyi teşvik et.`} />
+
+### Çalışma Arkadaşı Olarak Davran
+
+<TryIt compact prompt={`Çalışma arkadaşım olarak davranmanı istiyorum. Birlikte \${subject:organik kimya} çalışıyoruz. Beni kavramlar üzerinde sorgula, fikirleri tartış, problemleri çözmeme yardım et ve beni motive tut. Teşvik edici ol ama aynı zamanda daha derin düşünmem için beni zorla. Çalışmayı etkileşimli ve etkili yapalım.`} />
+
+## Eğitimde Erişilebilirlik
+
+### İçerik Uyarlama
+
+<TryIt compact prompt={`Bu eğitim içeriğini \${accessibilityNeed:disleksi dostu format} için uyarla:
+
+Orijinal içerik:
+\${content:içeriğinizi buraya yapıştırın}
+
+Gereken uyarlama:
+- [ ] Basitleştirilmiş dil (daha düşük okuma seviyesi)
+- [ ] Görsel açıklamalar (metin-konuşma için)
+- [ ] Yapılandırılmış format (bilişsel erişilebilirlik için)
+- [ ] Uzatılmış süre değerlendirmeleri
+- [ ] Alternatif açıklamalar
+
+Koru:
+- Tüm anahtar öğrenme hedefleri
+- İçerik doğruluğu
+- Değerlendirme eşdeğerliği`} />
+
+### Birden Fazla Modalite
+
+<TryIt compact prompt={`\${concept:fotosentez}'i birden fazla şekilde sun:
+
+1. **Metin açıklaması** (net düzyazı)
+2. **Görsel açıklama** (diyagram tanımla)
+3. **Analoji** (günlük deneyimle ilişkilendir)
+4. **Hikaye/Anlatı** (senaryoya yerleştir)
+5. **Soru-Cevap formatı** (soru ve cevap)
+
+Bu, öğrenenlerin tercih ettikleri stille etkileşim kurmasını sağlar.`} />
+
+## Değerlendirme ve Geri Bildirim
+
+### Geri Bildirim Sağlama
+
+<TryIt compact prompt={`Bu öğrenci çalışması hakkında eğitici geri bildirim sağla:
+
+Ödev: \${assignment:iklim değişikliği hakkında 5 paragraflık kompozisyon}
+Öğrenci teslimi: \${work:öğrenci çalışmasını buraya yapıştırın}
+Rubrik: \${rubric:tez netliği, kanıt, organizasyon, dilbilgisi}
+
+Geri bildirim formatı:
+1. **Güçlü yönler** - İyi yaptıkları (spesifik)
+2. **Gelişim alanları** - Çalışma gerektiren (yapıcı)
+3. **Öneriler** - Nasıl iyileştirilir (eyleme dönüştürülebilir)
+4. **Not/Skor** - Rubriğe dayalı
+5. **Teşvik** - Motive edici kapanış
+
+Ton: Destekleyici, spesifik, gelişim odaklı`} />
+
+### Öz Değerlendirme Promptları
+
+<TryIt compact prompt={`\${topic:Fransız Devrimi} anlayışımı değerlendirmeme yardım et.
+
+Şunları test eden 5 soru sor:
+1. Temel hatırlama
+2. Anlama
+3. Uygulama
+4. Analiz
+5. Sentez/Yaratma
+
+Her cevaptan sonra bana şunları söyle:
+- Anlayışımı neyi gösterdim
+- Neyi tekrar etmeliyim
+- Bilgimi nasıl derinleştirebilirim
+
+Dürüst ama teşvik edici ol.`} />
+
+## Özet
+
+<Callout type="tip" title="Anahtar Teknikler">
+Öğrenenin seviyesine uyarla, karmaşık konuları adımlara böl, aktif pratik dahil et (sadece açıklama değil), çeşitli yaklaşımlar sağla, anlayışı düzenli kontrol et ve yapıcı geri bildirim ver.
+</Callout>
+
+<Quiz 
+  question="Öğrenme için YZ'yi kullanmanın en etkili yolu nedir?"
+  options={[
+    "YZ açıklamalarını ders kitabı gibi pasif şekilde oku",
+    "YZ'den seni sorgulamasını ve alıştırma problemleri üretmesini iste",
+    "YZ'yi sadece ödev cevapları için kullan",
+    "Öğrenme için YZ'den tamamen kaçın"
+  ]}
+  correctIndex={1}
+  explanation="Aktif hatırlama pasif tekrarı yener. YZ'nin seni sorgulamasını, problem üretmesini ve anlayışını kontrol etmesini sağla—bu sadece açıklamaları okumaktan daha güçlü hafıza oluşturur."
+/>
+
+YZ sabırlı, her zaman erişilebilir bir öğrenme ortağıdır—insan öğretimi tamamlamak için kullan, yerini almak için değil.

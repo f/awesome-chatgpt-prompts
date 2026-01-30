@@ -1,0 +1,373 @@
+Yapının ötesinde, etkili prompt mühendisliği ilkelerle yönlendirilir—modeller, görevler ve bağlamlar arasında geçerli olan temel gerçekler. Bu ilkelerde ustalaşın ve herhangi bir prompt zorluğuna uyum sağlayabileceksiniz.
+
+<Callout type="info" title="8 Temel İlke">
+Bu ilkeler her yapay zeka modeli ve her görev için geçerlidir. Bir kez öğrenin, her yerde kullanın.
+</Callout>
+
+## İlke 1: Zekilik Değil Netlik
+
+En iyi promptlar net olanlardır, zeki olanlar değil. Yapay zeka modelleri literal yorumcularıdır—tam olarak verdiğiniz şeyle çalışırlar.
+
+### Açık Olun
+
+<Compare 
+  before={{ label: "Örtük (sorunlu)", content: "Bunu daha iyi yap." }}
+  after={{ label: "Açık (etkili)", content: "Bu e-postayı şu şekillerde iyileştir:\n1. Konu satırını daha çekici yap\n2. Paragrafları maksimum 2-3 cümleyle kısalt\n3. Sonuna net bir eylem çağrısı ekle" }}
+/>
+
+### Belirsizlikten Kaçının
+
+Kelimelerin birden fazla anlamı olabilir. Kesin dil seçin.
+
+<Compare 
+  before={{ label: "Belirsiz", content: "Bana kısa bir özet ver.\n(Ne kadar kısa? 1 cümle? 1 paragraf? 1 sayfa?)" }}
+  after={{ label: "Kesin", content: "Tam olarak 3 madde işareti halinde özetle, her biri 20 kelimenin altında." }}
+/>
+
+### Bariz Olanı Belirtin
+
+Sizin için bariz olan şey model için bariz değildir. Varsayımları açıkça yazın.
+
+```
+Bir ön yazı yazmamda bana yardım ediyorsun.
+
+Önemli bağlam:
+- Google'da Yazılım Mühendisi pozisyonuna başvuruyorum
+- Python ve dağıtık sistemlerde 5 yıl deneyimim var
+- Rol liderlik deneyimi gerektiriyor (4 kişilik bir ekibe liderlik ettim)
+- Açık kaynak katkılarımı vurgulamak istiyorum
+```
+
+## İlke 2: Özgüllük Kalite Üretir
+
+Belirsiz girdiler belirsiz çıktılar üretir. Spesifik girdiler spesifik, kullanışlı çıktılar üretir.
+
+### Özgüllük Merdiveni
+
+<SpecificitySpectrum levels={[
+  { level: "Seviye 1", text: "İklim değişikliği hakkında yaz" },
+  { level: "Seviye 2", text: "İklim değişikliği etkileri hakkında bir makale yaz" },
+  { level: "Seviye 3", text: "İklim değişikliğinin mercan resiflerini nasıl etkilediği hakkında 500 kelimelik bir makale yaz" },
+  { level: "Seviye 4", text: "Artan okyanus sıcaklıklarının mercan ağartmasına nasıl neden olduğunu açıklayan, lise öğrencilerine yönelik, Büyük Set Resifi'nden 2 spesifik örnekle, ilgi çekici ama bilimsel olarak doğru bir tonda 500 kelimelik bir makale yaz" }
+]} />
+
+Her seviye özgüllük ekler ve çıktı kalitesini dramatik biçimde artırır.
+
+### Bu Elemanları Belirtin
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Hedef Kitle</span>
+    <span className="text-muted-foreground">Bunu kim okuyacak/kullanacak?</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Uzunluk</span>
+    <span className="text-muted-foreground">Ne kadar uzun/kısa olmalı?</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Ton</span>
+    <span className="text-muted-foreground">Resmi? Günlük? Teknik?</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Format</span>
+    <span className="text-muted-foreground">Düz metin? Liste? Tablo? Kod?</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Kapsam</span>
+    <span className="text-muted-foreground">Ne dahil edilmeli/hariç tutulmalı?</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Amaç</span>
+    <span className="text-muted-foreground">Bu ne başarmalı?</span>
+  </div>
+</div>
+
+## İlke 3: Bağlam Kraldır
+
+Modellerin hafızası, dosyalarınıza erişimi veya durumunuz hakkında bilgisi yoktur. İlgili her şey promptta olmalıdır.
+
+### Yeterli Bağlam Sağlayın
+
+<Compare 
+  before={{ label: "Yetersiz bağlam", content: "Fonksiyonum neden çalışmıyor?" }}
+  after={{ label: "Yeterli bağlam", content: "Belirli bir anahtar değerine göre sözlük listesini filtrelemesi gereken bir Python fonksiyonum var. 3 öğe döndürmesi gerekirken boş liste döndürüyor.\n\nFonksiyon:\ndef filter_items(items, key, value):\n    return [item for item in items if item[key] = value]\n\nÇağrı: filter_items(items, 'status', 'active')\nBeklenen: 2 öğe, Gelen: boş liste" }}
+/>
+
+### Bağlam Kontrol Listesi
+
+<Callout type="tip" title="Göndermeden Önce">
+Kendinize sorun: Akıllı bir yabancı bu isteği anlar mıydı? Eğer hayırsa, daha fazla bağlam ekleyin.
+</Callout>
+
+<Checklist 
+  title="Bağlam Kontrol Listesi"
+  items={[
+    { text: "Model ne üzerinde çalıştığımı biliyor mu?" },
+    { text: "Hedefimi biliyor mu?" },
+    { text: "Gerekli tüm bilgilere sahip mi?" },
+    { text: "Kısıtlamaları anlıyor mu?" },
+    { text: "Akıllı bir yabancı bu isteği anlar mıydı?" }
+  ]}
+/>
+
+## İlke 4: Sadece Sormayın, Yönlendirin
+
+Sadece cevap istemeyin—modeli istediğiniz cevaba doğru yönlendirin.
+
+### Talimat Çerçevelemesi Kullanın
+
+<Compare 
+  before={{ label: "Sadece Sormak", content: "Mikroservislerin artıları ve eksileri nelerdir?" }}
+  after={{ label: "Yönlendirmek", content: "Mikroservis mimarisinin 5 avantajını ve 5 dezavantajını listele.\n\nHer nokta için:\n- Noktayı tek cümlede net bir şekilde belirt\n- Kısa bir açıklama ver (2-3 cümle)\n- Somut bir örnek ver\n\nŞu perspektifleri düşün: küçük startup'lar, büyük şirketler ve monolit'ten geçiş yapan ekipler." }}
+/>
+
+### Muhakeme İskeleleri Sağlayın
+
+Karmaşık görevler için, muhakeme sürecini yönlendirin:
+
+<TryIt 
+  title="Muhakeme İskelesi Örneği"
+  description="Bu prompt, yapay zekayı sistematik bir karar verme sürecinden geçirir."
+  prompt={`E-ticaret projem için PostgreSQL ve MongoDB arasında seçim yapmam gerekiyor.
+
+Bunu sistematik olarak düşün:
+1. İlk olarak, bir e-ticaret veritabanının tipik gereksinimlerini listele
+2. Sonra, her veritabanını her gereksinime göre değerlendir
+3. Kullanım durumuma özgü ödünleşimleri düşün
+4. Net gerekçeyle bir öneri yap`}
+/>
+
+## İlke 5: Yinele ve İyileştir
+
+Prompt mühendisliği yinelemeli bir süreçtir. İlk promptunuz nadiren en iyisidir.
+
+### Yineleme Döngüsü
+
+```
+1. İlk promptu yaz
+2. Çıktıyı incele
+3. Boşlukları veya sorunları belirle
+4. Promptu iyileştir
+5. Memnun olana kadar tekrarla
+```
+
+### Yaygın İyileştirmeler
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Çok uzun</span>
+    <span className="text-muted-foreground">"Öz ol" veya uzunluk sınırları ekle</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Çok belirsiz</span>
+    <span className="text-muted-foreground">Spesifik örnekler veya kısıtlamalar ekle</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Yanlış format</span>
+    <span className="text-muted-foreground">Tam çıktı yapısını belirt</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Eksik yönler</span>
+    <span className="text-muted-foreground">"Şunları dahil ettiğinden emin ol..." ekle</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Yanlış ton</span>
+    <span className="text-muted-foreground">Hedef kitle ve stili belirt</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Yanlış bilgi</span>
+    <span className="text-muted-foreground">Kaynak veya adım adım muhakeme iste</span>
+  </div>
+</div>
+
+### Prompt Günlüğü Tutun
+
+Neyin işe yaradığını belgeleyin:
+```
+Görev: Kod inceleme
+Versiyon 1: "Bu kodu incele" → Çok genel
+Versiyon 2: Spesifik inceleme kriterleri eklendi → Daha iyi
+Versiyon 3: İyi inceleme örneği eklendi → Mükemmel
+Final: [Başarılı promptu şablon olarak kaydet]
+```
+
+## İlke 6: Modelin Güçlü Yönlerinden Yararlanın
+
+Modellerin nasıl eğitildiğiyle uyumlu çalışın, karşı değil.
+
+### Modeller Yardımcı Olmak İster
+
+İstekleri yardımcı bir asistanın doğal olarak yapacağı şeyler olarak çerçeveleyin:
+
+<Compare 
+  before={{ label: "Akıntıya karşı", content: "Bunu yapamayacağını biliyorum, ama dene..." }}
+  after={{ label: "Akıntıyla", content: "Anlamama yardım et...\nX üzerinde çalışıyorum ve şunun için yardıma ihtiyacım var...\nBeni şunun üzerinden geçirir misin..." }}
+/>
+
+### Modeller Kalıplarda İyi
+
+Tutarlı çıktıya ihtiyacınız varsa, kalıbı gösterin:
+
+<TryIt 
+  title="Kalıp Örneği"
+  description="Bu prompt, yapay zekaya kitap önerileri için tam olarak hangi formatı istediğinizi gösterir."
+  prompt={`3 bilim kurgu kitabı öner. Her öneriyi şu şekilde formatla:
+
+📚 **[Başlık]** yazan [Yazar]
+*[Tür] | [Yayın Yılı]*
+[2 cümlelik açıklama]
+Neden seveceğiniz: [1 cümlelik çekici özet]
+
+---`}
+/>
+
+### Modeller Rol Yapabilir
+
+Farklı yanıt "modlarına" erişmek için personalar kullanın:
+
+```
+Şeytanın avukatı olarak, teklifime karşı argüman yap...
+Destekleyici bir mentor olarak, iyileştirmeme yardım et...
+Şüpheci bir yatırımcı olarak, bu iş planını sorgula...
+```
+
+## İlke 7: Çıktı Yapısını Kontrol Edin
+
+Yapılandırılmış çıktılar serbest biçimli metinden daha kullanışlıdır.
+
+### Spesifik Formatlar İsteyin
+
+```
+Analizinizi şu şekilde döndürün:
+
+ÖZET: [1 cümle]
+
+ANA BULGULAR:
+• [Bulgu 1]
+• [Bulgu 2]
+• [Bulgu 3]
+
+ÖNERİ: [1-2 cümle]
+
+GÜVEN: [Düşük/Orta/Yüksek] çünkü [neden]
+```
+
+### Sınırlayıcılar Kullanın
+
+Promptunuzun bölümlerini net bir şekilde ayırın:
+
+```
+### BAĞLAM ###
+[Bağlamınız buraya]
+
+### GÖREV ###
+[Göreviniz buraya]
+
+### FORMAT ###
+[İstenen format buraya]
+```
+
+### Makine Tarafından Okunabilir Çıktı İsteyin
+
+Programatik kullanım için:
+
+```
+Sadece geçerli JSON döndür, açıklama yok:
+{
+  "karar": "onayla" | "reddet" | "incele",
+  "güven": 0.0-1.0,
+  "nedenler": ["string dizisi"]
+}
+```
+
+## İlke 8: Doğrulayın ve Onaylayın
+
+Model çıktılarına, özellikle önemli görevler için körü körüne güvenmeyin.
+
+### Muhakeme İsteyin
+
+```
+Bu problemi çöz ve çalışmanı adım adım göster.
+Çözdükten sonra, cevabını [kontrol yöntemi] ile doğrula.
+```
+
+### Birden Fazla Perspektif İsteyin
+
+```
+Bu problemi çözmek için üç farklı yaklaşım ver.
+Her biri için ödünleşimleri açıkla.
+```
+
+### Öz Kontrol Dahil Edin
+
+```
+Kodu oluşturduktan sonra, şunlar için incele:
+- Sözdizimi hataları
+- Uç durumlar
+- Güvenlik açıkları
+Bulunan sorunları listele.
+```
+
+## Özet: İlkelere Bir Bakışta
+
+<PrinciplesSummary />
+
+<Quiz 
+  question="Hangi ilke, promptunuzda tüm ilgili arka plan bilgilerini dahil etmenizi önerir?"
+  options={[
+    "Zekilik Değil Netlik",
+    "Özgüllük Kalite Üretir",
+    "Bağlam Kraldır",
+    "Yinele ve İyileştir"
+  ]}
+  correctIndex={2}
+  explanation="Bağlam Kraldır, yapay zeka modellerinin oturumlar arasında hafızası olmadığını ve aklınızı okuyamayacağını vurgular. İlgili arka plan, kısıtlamalar ve hedefleri dahil etmek modelin ihtiyaçlarınızı anlamasına yardımcı olur."
+/>
+
+## Pratik: Boşlukları Doldurun
+
+Bu prompt şablonunu tamamlayarak temel ilkeleri anladığınızı test edin:
+
+<FillInTheBlank
+  title="İlkeleri Uygula"
+  description="İyi yapılandırılmış bir prompt oluşturmak için boşlukları doldurun — istediğiniz herhangi bir şey yazın!"
+  useAI={true}
+  openEnded={true}
+  template={`Sen {{role}} konusunda {{expertise}} uzmanlığına sahip birisin.
+
+Bağlam: {{context}} üzerinde çalışıyorum.
+
+Görev: {{task}}
+
+Kısıtlamalar:
+- Yanıtını {{length}} kelimenin altında tut
+- Sadece {{focus}} konusuna odaklan
+
+Format: Cevabını {{format}} olarak döndür.`}
+  blanks={[
+    { id: "role", correctAnswers: [], hint: "Yapay zeka hangi profesyonel rolü üstlenmeli?", context: "Bir iş unvanı veya profesyonel rol" },
+    { id: "expertise", correctAnswers: [], hint: "Hangi spesifik alan bilgisi gerekli?", context: "Role uygun bir beceri veya alan" },
+    { id: "context", correctAnswers: [], hint: "Proje veya durum nedir?", context: "Bu uzmanlığa sahip birinin üzerinde çalışacağı bir proje" },
+    { id: "task", correctAnswers: [], hint: "Yapay zeka hangi spesifik eylemi gerçekleştirmeli?", context: "Rol ve bağlama uygun bir eylem" },
+    { id: "length", correctAnswers: [], hint: "Yanıt ne kadar uzun olmalı?", context: "Bir sayı (kelime sayısı)" },
+    { id: "focus", correctAnswers: [], hint: "Hangi yön önceliklendirilmeli?", context: "Göreve ilgili bir kalite veya yön" },
+    { id: "format", correctAnswers: [], hint: "Çıktı nasıl yapılandırılmalı?", context: "Bir çıktı format türü" }
+  ]}
+  explanation="İyi yapılandırılmış bir prompt şunları içerir: net bir rol (İlke 1), yeterli bağlam (İlke 3), spesifik görev (İlke 2), kısıtlamalar (İlke 4) ve çıktı formatı (İlke 5). Yapay zeka seçimlerinizin dahili olarak tutarlı olup olmadığını kontrol eder."
+/>
+
+<InteractiveChecklist
+  title="İlkeler Kontrol Listesi"
+  items={[
+    { id: "clarity", label: "Zekilik Değil Netlik", description: "Promptunuz açık ve belirsiz değil mi?" },
+    { id: "specificity", label: "Özgüllük Kalite Üretir", description: "Hedef kitle, uzunluk, ton ve format dahil ettiniz mi?" },
+    { id: "context", label: "Bağlam Kraldır", description: "Prompt gerekli tüm arka plan bilgilerini içeriyor mu?" },
+    { id: "examples", label: "Örnekler Açıklamalardan İyidir", description: "Ne istediğinizi sadece tanımlamak yerine gösterdiniz mi?" },
+    { id: "constraints", label: "Kısıtlamalar Çıktıyı Odaklar", description: "Kapsam ve format üzerinde net sınırlar var mı?" },
+    { id: "iteration", label: "Yinele ve İyileştir", description: "Sonuçlara göre iyileştirmeye hazır mısınız?" },
+    { id: "persona", label: "Persona Perspektifi Şekillendirir", description: "Yapay zeka hangi rolü oynayacağını biliyor mu?" },
+    { id: "verify", label: "Doğrulayın ve Onaylayın", description: "Doğruluk için kontroller dahil ettiniz mi?" }
+  ]}
+/>
+
+Bu ilkeler takip eden her şeyin temelini oluşturur. Bölüm II'de, bunları prompt etkinliğini dramatik biçimde artıran spesifik tekniklere uygulayacağız.

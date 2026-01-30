@@ -1,0 +1,270 @@
+Bağlamı anlamak, gerçekten çalışan yapay zeka uygulamaları oluşturmak için esastır. Bu bölüm, yapay zekaya doğru zamanda doğru bilgiyi verme hakkında bilmeniz gereken her şeyi kapsar.
+
+<Callout type="info" title="Bağlam Neden Önemli">
+Yapay zeka modelleri durumsuzdur. Geçmiş konuşmaları hatırlamazlar. Her mesaj gönderdiğinizde, yapay zekanın bilmesi gereken her şeyi dahil etmeniz gerekir. Buna "bağlam mühendisliği" denir.
+</Callout>
+
+## Bağlam Nedir?
+
+Bağlam, sorunuzla birlikte yapay zekaya verdiğiniz tüm bilgidir. Şöyle düşünün:
+
+<Compare 
+  before={{ label: "Bağlamsız", content: "Durum ne?" }}
+  after={{ label: "Bağlamlı", content: "Sen bir proje yöneticisi asistanısın. Kullanıcı Cuma günü teslimi olan Proje Alfa üzerinde çalışıyor. Son güncelleme: 'Backend tamamlandı, frontend %80 bitti.'\n\nKullanıcı: Durum ne?" }}
+/>
+
+Bağlam olmadan, yapay zeka hangi "durum"u sorduğunuz hakkında hiçbir fikre sahip değildir. Bağlamla, yararlı bir cevap verebilir.
+
+### Bağlam Penceresi
+
+Önceki bölümlerden hatırlayın: Yapay zekanın sınırlı bir "bağlam penceresi" var - aynı anda görebildiği maksimum metin miktarı. Bu şunları içerir:
+
+<InfoGrid items={[
+  { label: "Sistem Promptu", description: "YZ davranışını tanımlayan talimatlar", color: "purple" },
+  { label: "Konuşma Geçmişi", description: "Bu sohbetteki önceki mesajlar", color: "blue" },
+  { label: "Alınan Bilgi", description: "Bu sorgu için getirilen belgeler, veri veya bilgi", color: "green" },
+  { label: "Mevcut Sorgu", description: "Kullanıcının gerçek sorusu", color: "amber" },
+  { label: "YZ Yanıtı", description: "Cevap (bu da limite dahil!)", color: "rose" },
+]} />
+
+## Yapay Zeka Durumsuzdur
+
+<Callout type="warning" title="Önemli Kavram">
+Yapay zeka konuşmalar arasında hiçbir şey hatırlamaz. Her API çağrısı sıfırdan başlar. Yapay zekanın bir şeyi "hatırlamasını" istiyorsanız, SİZİN her seferinde bağlama dahil etmeniz gerekir.
+</Callout>
+
+Bu yüzden sohbet botları her mesajla tüm konuşma geçmişinizi gönderir. Yapay zeka hatırlamaz - uygulama her şeyi yeniden gönderir.
+
+<TryIt compact prompt={`Geçmişi olmayan yeni bir konuşma olduğunu varsay.
+
+Az önce ne sordum sana?`} />
+
+Yapay zeka bilmediğini söyleyecektir çünkü gerçekten önceki bağlama erişimi yoktur.
+
+## RAG: Alım-Artırılmış Üretim
+
+RAG, yapay zekaya üzerinde eğitilmediği bilgiye erişim sağlama tekniğidir. Her şeyi yapay zekanın eğitimine sığdırmaya çalışmak yerine:
+
+1. **Sakla** - Belgelerinizi aranabilir bir veritabanında
+2. **Ara** - Kullanıcı soru sorduğunda ilgili belgeleri
+3. **Al** - En ilgili parçaları
+4. **Artır** - Promptunuzu bu parçalarla
+5. **Üret** - Bu bağlamı kullanarak bir cevap
+
+<div className="my-6 p-4 border rounded-lg bg-muted/30">
+  <p className="font-semibold mb-3">RAG Nasıl Çalışır:</p>
+  <div className="flex flex-col gap-2 text-sm">
+    <div className="flex items-center gap-3">
+      <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">1</span>
+      <span>Kullanıcı sorar: "İade politikamız ne?"</span>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">2</span>
+      <span>Sistem belgelerinizde "iade politikası"nı arar</span>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">3</span>
+      <span>Politika belgenizden ilgili bölümü bulur</span>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">4</span>
+      <span>YZ'ye gönderir: "Bu politikaya göre: [metin], yanıtla: İade politikamız ne?"</span>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center text-green-600 font-bold">5</span>
+      <span>YZ gerçek politikanızı kullanarak doğru cevap üretir</span>
+    </div>
+  </div>
+</div>
+
+### Neden RAG?
+
+<div className="my-6 grid md:grid-cols-2 gap-4">
+  <div className="p-4 border rounded-lg">
+    <p className="font-semibold text-green-600 dark:text-green-400 mb-2 flex items-center gap-2"><IconCheck className="text-green-600" /> RAG Avantajları</p>
+    <ul className="text-sm space-y-1 text-muted-foreground">
+      <li>Gerçek, güncel verilerinizi kullanır</li>
+      <li>Halüsinasyonları azaltır</li>
+      <li>Kaynak gösterebilir</li>
+      <li>Güncellenmesi kolay (sadece belgeleri güncelle)</li>
+      <li>Pahalı ince ayar gerekmez</li>
+    </ul>
+  </div>
+  <div className="p-4 border rounded-lg">
+    <p className="font-semibold text-amber-600 dark:text-amber-400 mb-2 flex items-center gap-2"><IconLightbulb className="text-amber-600" /> RAG Ne Zaman Kullanılır</p>
+    <ul className="text-sm space-y-1 text-muted-foreground">
+      <li>Müşteri destek botları</li>
+      <li>Dokümantasyon araması</li>
+      <li>İç bilgi tabanları</li>
+      <li>Herhangi bir alana özgü S&C</li>
+      <li>Doğruluk önemli olduğunda</li>
+    </ul>
+  </div>
+</div>
+
+## Gömüler: Arama Nasıl Çalışır
+
+RAG hangi belgelerin "ilgili" olduğunu nasıl bilir? **Gömüler** kullanır - metni anlam yakalayan sayılara dönüştürmenin bir yolu.
+
+### Gömüler Nedir?
+
+Gömü, metnin anlamını temsil eden sayı listesidir (bir "vektör"). Benzer anlamlar = benzer sayılar.
+
+<EmbeddingsDemo />
+
+### Anlamsal Arama
+
+Gömülerle, sadece anahtar kelimelere göre değil, anlama göre arama yapabilirsiniz:
+
+<Compare 
+  before={{ label: "Anahtar Kelime Araması", content: "Sorgu: 'iade politikası'\nBulur: 'iade' ve 'politikası' içeren belgeler\nKaçırır: 'Nasıl geri ödeme alınır'" }}
+  after={{ label: "Anlamsal Arama", content: "Sorgu: 'iade politikası'\nTüm ilgili belgeleri bulur:\n- 'Geri ödeme kılavuzları'\n- 'Ürünler nasıl geri gönderilir'\n- 'Para iade garantisi'" }}
+/>
+
+Bu yüzden RAG çok güçlü - tam kelimeler eşleşmese bile ilgili bilgiyi bulur.
+
+## Fonksiyon Çağırma / Araç Kullanımı
+
+Fonksiyon çağırma, yapay zekanın harici araçları kullanmasını sağlar - web'de arama, veritabanı kontrolü veya API çağrısı gibi.
+
+<Callout type="tip" title="Farklı İsimler">
+Farklı yapay zeka sağlayıcıları buna farklı şeyler der: "fonksiyon çağırma" (OpenAI), "araç kullanımı" (Anthropic/Claude) veya "araçlar" (genel terim). Hepsi aynı anlama gelir.
+</Callout>
+
+### Nasıl Çalışır
+
+1. Yapay zekaya hangi araçların mevcut olduğunu söylersiniz
+2. YZ yanıtlamak için araca ihtiyacı olup olmadığına karar verir
+3. YZ araç için yapılandırılmış bir istek çıkarır
+4. Kodunuz aracı çalıştırır ve sonuçları döndürür
+5. YZ sonuçları kullanarak cevabını oluşturur
+
+<TryIt 
+  title="Fonksiyon Çağırma Örneği"
+  description="Bu prompt YZ'nin araç kullanmaya nasıl karar verdiğini gösterir:"
+  prompt={`Bu araçlara erişimin var:
+
+1. get_weather(city: string) - Bir şehir için güncel havayı al
+2. search_web(query: string) - İnternette ara
+3. calculate(expression: string) - Matematik hesaplamaları yap
+
+Kullanıcı: Tokyo'da şu anda hava nasıl?
+
+Adım adım düşün: Araca ihtiyacın var mı? Hangisine? Hangi parametrelerle?`}
+/>
+
+## Özetleme: Uzun Konuşmaları Yönetme
+
+Konuşmalar uzadıkça, bağlam penceresi limitine ulaşırsınız. YZ durumsuz olduğundan (hiçbir şey hatırlamaz), uzun konuşmalar taşabilir. Çözüm? **Özetleme**.
+
+### Problem
+
+<Compare 
+  before={{ label: "Özetleme Olmadan", content: "Mesaj 1 (500 token)\nMesaj 2 (800 token)\nMesaj 3 (600 token)\n... 50 mesaj daha ...\n────────────────────\n= 40.000+ token\n= LİMİTİ AŞIYOR!" }}
+  after={{ label: "Özetleme İle", content: "[Özet]: 200 token\nSon mesajlar: 2.000 token\nMevcut sorgu: 100 token\n────────────────────\n= 2.300 token\n= Mükemmel sığıyor!" }}
+/>
+
+### Özetleme Stratejileri
+
+Farklı yaklaşımlar farklı kullanım durumları için çalışır. Her stratejinin aynı konuşmayı nasıl işlediğini görmek için tıklayın:
+
+<SummarizationDemo />
+
+### Özetlerde Neyi Yakalamalı
+
+İyi bir konuşma özeti önemli olanı korur:
+
+<Checklist 
+  title="Özet Kontrol Listesi"
+  items={[
+    { text: "Alınan anahtar kararlar" },
+    { text: "Bahsedilen önemli gerçekler" },
+    { text: "Keşfedilen kullanıcı tercihleri" },
+    { text: "Mevcut görev veya hedef" },
+    { text: "Bekleyen sorular" },
+    { text: "Ton ve resmiyet seviyesi" }
+  ]}
+/>
+
+### Dene: Özet Oluştur
+
+<TryIt 
+  title="Konuşma Özetleyici"
+  description="Bu konuşmadan bağlam koruyucu bir özet oluşturmayı deneyin:"
+  prompt={`Bağlam yönetimi için bu konuşmayı özetle. Özet, YZ'nin hafızasında tam konuşmanın yerini alacak.
+
+KONUŞMA:
+Kullanıcı: Merhaba, veri analizi için Python öğreniyorum
+Asistan: Hoş geldiniz! Python veri analizi için harika. Mevcut deneyim seviyeniz ne?
+Kullanıcı: Temel Excel biliyorum. Programlamada tamamen yeni başlayan.
+Asistan: Mükemmel başlangıç noktası! Değişkenlerle başlayalım - veri saklayan Excel hücreleri gibi.
+Kullanıcı: Değişkenleri açıklayabilir misin?
+Asistan: Değişkenler veri saklama kaplarıdır. Python'da: isim = "Ayşe" veya yas = 25
+Kullanıcı: Peki listeler? Birden fazla değeri işlemem gerekiyor.
+Asistan: Listeler Excel sütunları gibi! Şöyle oluştur: fiyatlar = [10, 20, 30]. Öğelere fiyatlar[0] ile eriş.
+Kullanıcı: Listeler üzerinde hesaplama yapabilir miyim?
+Asistan: Evet! sum(fiyatlar), len(fiyatlar), veya max(fiyatlar) kullan. Karmaşık analiz için pandas kullanacağız.
+Kullanıcı: Pandas ne?
+Asistan: Pandas veri analizi kütüphanesi - "steroidli Excel" gibi. DataFrame'leri var (tablolar gibi).
+
+ŞUNLARI YAKALAYAN BİR ÖZET OLUŞTUR:
+1. Kullanıcının hedefi ve geçmişi (1 cümle)
+2. Şimdiye kadar işlenen konular (1 cümle)  
+3. Kullanıcının öğrenme stili/tercihleri (1 cümle)
+4. Sırada ne işlenecek (1 cümle)`}
+/>
+
+## MCP: Model Bağlam Protokolü
+
+MCP (Model Context Protocol), yapay zekayı harici veri ve araçlara bağlamanın standart bir yoludur. Her yapay zeka sağlayıcısı için özel entegrasyonlar oluşturmak yerine, MCP evrensel bir arayüz sağlar.
+
+### Neden MCP?
+
+<InfoGrid columns={2} items={[
+  { label: "MCP Olmadan", description: "ChatGPT, Claude, Gemini için ayrı entegrasyonlar oluştur... Birden fazla kod tabanı koru. API'ler değişince bozul.", color: "red" },
+  { label: "MCP İle", description: "Bir kez oluştur, her yerde çalışır. Standart protokol. YZ araçlarınızı otomatik olarak keşfedip kullanabilir.", color: "green" },
+]} />
+
+### MCP Sağlar
+
+- **Kaynaklar**: YZ'nin okuyabileceği veriler (dosyalar, veritabanı kayıtları, API yanıtları)
+- **Araçlar**: YZ'nin yapabileceği eylemler (ara, oluştur, güncelle, sil)
+- **Promptlar**: Önceden oluşturulmuş prompt şablonları
+
+<Callout type="info" title="prompts.chat MCP Kullanıyor">
+Bu platformun bir MCP sunucusu var! Promptları doğrudan yapay zeka asistanınızdan aramak ve kullanmak için Claude Desktop veya diğer MCP uyumlu istemcilere bağlayabilirsiniz.
+</Callout>
+
+## Bağlam Oluşturma: Tam Resim
+
+<ContextPlayground />
+
+## En İyi Uygulamalar
+
+<Checklist 
+  title="Bağlam Mühendisliği Kontrol Listesi"
+  items={[
+    { text: "Sistem promptlarını özlü ama eksiksiz tut" },
+    { text: "Sadece ilgili bağlamı dahil et (her şeyi değil)" },
+    { text: "Uzun konuşmaları özetle" },
+    { text: "Alana özgü bilgi için RAG kullan" },
+    { text: "Gerçek zamanlı veri için YZ'ye araçlar ver" },
+    { text: "Limitler içinde kalmak için token kullanımını izle" },
+    { text: "Uç durumlarla test et (çok uzun girdiler vb.)" }
+  ]}
+/>
+
+## Özet
+
+Bağlam mühendisliği yapay zekaya doğru bilgiyi vermektir:
+
+- **YZ durumsuzdur** - her seferinde ihtiyacı olan her şeyi dahil et
+- **RAG** promptları artırmak için ilgili belgeleri alır
+- **Gömüler** anlamsal aramayı mümkün kılar (sadece anahtar kelimeler değil, anlam)
+- **Fonksiyon çağırma** YZ'nin harici araçları kullanmasını sağlar
+- **Özetleme** uzun konuşmaları yönetir
+- **MCP** YZ'nin veri ve araçlara nasıl bağlandığını standartlaştırır
+
+<Callout type="tip" title="Unutma">
+YZ çıktısının kalitesi sağladığınız bağlamın kalitesine bağlıdır. Daha iyi bağlam = daha iyi cevaplar.
+</Callout>

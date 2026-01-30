@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { Play, Loader2, Trophy, Clock, RefreshCw, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 // ============================================================================
 // PromptChallenge Component - Timed exercises with AI scoring
@@ -27,7 +28,7 @@ interface PromptChallengeProps {
 }
 
 export function PromptChallenge({
-  title = "Prompt Challenge",
+  title,
   task,
   criteria,
   timeLimit = 0,
@@ -35,6 +36,7 @@ export function PromptChallenge({
   exampleSolution,
   difficulty = "intermediate",
 }: PromptChallengeProps) {
+  const t = useTranslations("book.interactive");
   const [prompt, setPrompt] = useState("");
   const [isStarted, setIsStarted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -74,7 +76,7 @@ export function PromptChallenge({
 
   const handleSubmit = useCallback(async () => {
     if (!prompt.trim()) {
-      setError("Please write a prompt before submitting");
+      setError(t("pleaseWritePromptBeforeSubmitting"));
       return;
     }
 
@@ -148,9 +150,9 @@ export function PromptChallenge({
       <div className="px-4 py-3 bg-primary/5 border-b border-primary/20 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Trophy className="h-5 w-5 text-primary" />
-          <span className="font-semibold">{title}</span>
+          <span className="font-semibold">{title || t("promptChallenge")}</span>
           <span className={cn("px-2 py-0.5 text-xs rounded-full", difficultyColors[difficulty])}>
-            {difficulty}
+            {t(difficulty)}
           </span>
         </div>
         {isStarted && timeLimit > 0 && !result && (
@@ -167,7 +169,7 @@ export function PromptChallenge({
       <div className="p-4 space-y-4">
         {/* Task */}
         <div>
-          <p className="font-medium mb-2 m-0!">Your Task:</p>
+          <p className="font-medium mb-2 m-0!">{t("yourTask")}</p>
           <div className="p-3 bg-muted/50 rounded-lg text-sm">
             {task}
           </div>
@@ -175,7 +177,7 @@ export function PromptChallenge({
 
         {/* Criteria */}
         <div>
-          <p className="font-medium mb-2 m-0!">Your prompt will be scored on:</p>
+          <p className="font-medium mb-2 m-0!">{t("yourPromptWillBeScoredOn")}</p>
           <ul className="space-y-1 text-sm">
             {criteria.map((c, i) => (
               <li key={i} className="flex items-start gap-2">
@@ -201,12 +203,12 @@ export function PromptChallenge({
           <div className="text-center py-4">
             <p className="text-muted-foreground mb-4 m-0!">
               {timeLimit > 0 
-                ? `You'll have ${formatTime(timeLimit)} to complete this challenge.`
-                : "Take your time to craft the best prompt."}
+                ? t("youllHaveTime", { time: formatTime(timeLimit) })
+                : t("takeYourTime")}
             </p>
             <Button onClick={handleStart} size="lg">
               <Play className="h-4 w-4 mr-2" />
-              Start Challenge
+              {t("startChallenge")}
             </Button>
           </div>
         )}
@@ -215,11 +217,11 @@ export function PromptChallenge({
         {isStarted && !result && (
           <>
             <div>
-              <label className="text-sm font-medium mb-1 block">Your Prompt:</label>
+              <label className="text-sm font-medium mb-1 block">{t("yourPrompt")}</label>
               <textarea
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
-                placeholder="Write your prompt here..."
+                placeholder={t("writeYourPromptHere")}
                 rows={6}
                 className="w-full px-3 py-2 text-sm border rounded-lg bg-background resize-none focus:outline-none focus:ring-2 focus:ring-primary/50 font-mono"
                 autoFocus
@@ -234,18 +236,18 @@ export function PromptChallenge({
                   className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary"
                 >
                   {showHints ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-                  Hints ({hintsUsed}/{hints.length} used, -5 points each)
+                  {t("hints")} ({t("hintsUsed", { used: hintsUsed, total: hints.length })})
                 </button>
                 {showHints && (
                   <div className="mt-2 space-y-2">
                     {hints.slice(0, hintsUsed).map((hint, i) => (
                       <div key={i} className="p-2 bg-amber-50 dark:bg-amber-950/30 rounded text-sm">
-                        <strong>Hint {i + 1}:</strong> {hint}
+                        <strong>{t("hintForBlank")} {i + 1}:</strong> {hint}
                       </div>
                     ))}
                     {hintsUsed < hints.length && (
                       <Button onClick={handleShowHint} variant="outline" size="sm">
-                        Reveal Next Hint (-5 points)
+                        {t("revealNextHint")}
                       </Button>
                     )}
                   </div>
@@ -260,11 +262,11 @@ export function PromptChallenge({
                 ) : (
                   <Trophy className="h-4 w-4 mr-1" />
                 )}
-                Submit for Scoring
+                {t("submitForScoring")}
               </Button>
               {rateLimit?.remaining !== undefined && (
                 <span className="text-xs text-muted-foreground">
-                  {rateLimit.remaining} AI calls remaining
+                  {rateLimit.remaining} {t("aiCallsRemaining")}
                 </span>
               )}
             </div>
@@ -289,12 +291,12 @@ export function PromptChallenge({
               </div>
               <div className="flex-1">
                 <p className="font-medium m-0!">
-                  {result.score >= 80 ? "🎉 Excellent!" : result.score >= 50 ? "👍 Good effort!" : "Keep practicing!"}
+                  {result.score >= 80 ? t("excellent") : result.score >= 50 ? t("goodEffort") : t("keepPracticing")}
                 </p>
                 <p className="text-sm text-muted-foreground m-0!">{result.overallFeedback}</p>
                 {hintsUsed > 0 && (
                   <p className="text-xs text-amber-600 m-0! mt-1">
-                    ({hintsUsed} hint{hintsUsed > 1 ? "s" : ""} used, -{hintsUsed * 5} points)
+                    ({t("hintsUsed", { used: hintsUsed, total: hints.length })}, -{hintsUsed * 5} {t("points")})
                   </p>
                 )}
               </div>
@@ -302,7 +304,7 @@ export function PromptChallenge({
 
             {/* Criteria breakdown */}
             <div>
-              <p className="font-medium mb-2 m-0!">Criteria Breakdown:</p>
+              <p className="font-medium mb-2 m-0!">{t("criteriaBreakdown")}</p>
               <div className="space-y-2">
                 {result.criteriaScores.map((cs, i) => (
                   <div 
@@ -327,7 +329,7 @@ export function PromptChallenge({
             {/* Suggestions */}
             {result.suggestions.length > 0 && (
               <div>
-                <p className="font-medium mb-2 m-0!">Suggestions for Improvement:</p>
+                <p className="font-medium mb-2 m-0!">{t("suggestionsForImprovement")}</p>
                 <ul className="space-y-1 text-sm text-muted-foreground">
                   {result.suggestions.map((s, i) => (
                     <li key={i} className="flex items-start gap-2">
@@ -347,7 +349,7 @@ export function PromptChallenge({
                   className="flex items-center gap-1 text-sm font-medium hover:text-primary"
                 >
                   {showSolution ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-                  {showSolution ? "Hide" : "Show"} Example Solution
+                  {showSolution ? t("hide") : t("show")} {t("exampleSolution")}
                 </button>
                 {showSolution && (
                   <pre className="mt-2 p-3 bg-primary/5 border border-primary/20 rounded-lg text-sm whitespace-pre-wrap font-mono">
@@ -360,7 +362,7 @@ export function PromptChallenge({
             {/* Retry */}
             <Button onClick={handleStart} variant="outline">
               <RefreshCw className="h-4 w-4 mr-1" />
-              Try Again
+              {t("tryAgain")}
             </Button>
           </div>
         )}
@@ -382,11 +384,12 @@ interface BeforeAfterEditorProps {
 }
 
 export function BeforeAfterEditor({
-  title = "Improve This Prompt",
+  title,
   badPrompt,
   idealPrompt,
-  task = "Improve this prompt to get better results",
+  task,
 }: BeforeAfterEditorProps) {
+  const t = useTranslations("book.interactive");
   const [userPrompt, setUserPrompt] = useState(badPrompt);
   const [showIdeal, setShowIdeal] = useState(false);
   const [isComparing, setIsComparing] = useState(false);
@@ -442,17 +445,17 @@ export function BeforeAfterEditor({
   return (
     <div className="my-6 border rounded-lg overflow-hidden">
       <div className="px-4 py-3 bg-muted/50 border-b">
-        <span className="font-semibold">{title}</span>
+        <span className="font-semibold">{title || t("improveThisPrompt")}</span>
       </div>
 
       <div className="p-4 space-y-4">
-        <p className="text-sm text-muted-foreground m-0!">{task}</p>
+        <p className="text-sm text-muted-foreground m-0!">{task || t("improvePromptTask")}</p>
 
         <div className="grid md:grid-cols-2 gap-4 mt-3">
           {/* Original */}
           <div>
             <label className="text-sm font-medium mb-1 block text-red-600 dark:text-red-400">
-              Original (Weak) Prompt
+              {t("originalWeakPrompt")}
             </label>
             <pre className="mt-0! p-3 bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 rounded-lg text-sm whitespace-pre-wrap h-40 overflow-y-auto">
               {badPrompt}
@@ -462,7 +465,7 @@ export function BeforeAfterEditor({
           {/* User's version */}
           <div>
             <label className="text-sm font-medium mb-1 block text-primary">
-              Your Improved Version
+              {t("yourImprovedVersion")}
             </label>
             <textarea
               value={userPrompt}
@@ -479,18 +482,18 @@ export function BeforeAfterEditor({
             ) : (
               <Play className="h-4 w-4 mr-1" />
             )}
-            Compare with AI
+            {t("compareWithAI")}
           </Button>
           <Button onClick={handleReset} variant="outline">
             <RefreshCw className="h-4 w-4 mr-1" />
-            Reset
+            {t("reset")}
           </Button>
           <Button 
             onClick={() => setShowIdeal(!showIdeal)} 
             variant="ghost"
             className="ml-auto"
           >
-            {showIdeal ? "Hide" : "Show"} Ideal Solution
+            {showIdeal ? t("hideIdealSolution") : t("showIdealSolution")}
           </Button>
         </div>
 
@@ -504,7 +507,7 @@ export function BeforeAfterEditor({
         {showIdeal && (
           <div>
             <label className="text-sm font-medium mb-1 block text-green-600 dark:text-green-400">
-              Ideal Solution
+              {t("idealSolution")}
             </label>
             <pre className="p-3 bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800 rounded-lg text-sm whitespace-pre-wrap">
               {idealPrompt}
@@ -518,8 +521,8 @@ export function BeforeAfterEditor({
             <div className="flex items-center gap-2">
               <span className="font-medium">
                 {comparison.winner === 2 
-                  ? "🎉 Your version is better!" 
-                  : "The original might still be better. Keep improving!"}
+                  ? t("yourVersionBetter") 
+                  : t("keepImproving")}
               </span>
             </div>
             
@@ -527,7 +530,7 @@ export function BeforeAfterEditor({
 
             {comparison.keyDifferences.length > 0 && (
               <div>
-                <p className="text-sm font-medium mb-1 m-0!">Key Differences:</p>
+                <p className="text-sm font-medium mb-1 m-0!">{t("keyDifferences")}</p>
                 <ul className="text-sm space-y-1">
                   {comparison.keyDifferences.map((d, i) => (
                     <li key={i} className="flex items-start gap-2">

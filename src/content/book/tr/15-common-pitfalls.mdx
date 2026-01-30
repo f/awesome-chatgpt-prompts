@@ -1,0 +1,222 @@
+Deneyimli prompt mühendisleri bile öngörülebilir tuzaklara düşer. İyi haber? Bu kalıpları tanıdığınızda, kaçınması kolaydır. Bu bölüm en yaygın tuzakları inceler, neden olduklarını açıklar ve bunlardan kaçınmak için somut stratejiler verir.
+
+<Callout type="warning" title="Tuzaklar Neden Önemli">
+Tek bir tuzak güçlü bir yapay zekayı sinir bozucu bir araca dönüştürebilir. Bu kalıpları anlamak genellikle "Yapay zeka benim için çalışmıyor" ile "Yapay zeka iş akışımı dönüştürdü" arasındaki farktır.
+</Callout>
+
+## Belirsizlik Tuzağı
+
+**Kalıp**: Ne istediğinizi biliyorsunuz, bu yüzden yapay zekanın da çözeceğini varsayıyorsunuz. Ama belirsiz promptlar belirsiz sonuçlar üretir.
+
+<Compare 
+  before={{ label: "Belirsiz prompt", content: "Pazarlama hakkında bir şeyler yaz." }}
+  after={{ label: "Spesifik prompt", content: "B2B SaaS şirketleri için marka tutarlılığının önemi hakkında 300 kelimelik bir LinkedIn paylaşımı yaz, pazarlama yöneticilerini hedefle. Profesyonel ama samimi bir ton kullan. Bir somut örnek ekle." }}
+/>
+
+**Neden oluyor**: Doğal olarak "bariz" olduğunu düşündüğümüz detayları atlıyoruz. Ama sizin için bariz olan, durumunuz, kitleniz veya hedefleriniz hakkında bağlamı olmayan bir model için bariz değil.
+
+<TryIt 
+  title="Özgüllük Geliştirici"
+  description="Belirsiz bir promptu alıp spesifik hale getirin. Detay eklemenin sonuçların kalitesini nasıl dönüştürdüğüne dikkat edin."
+  prompt={`İyileştirmeye ihtiyaç duyan belirsiz bir promptum var.
+
+Orijinal belirsiz prompt: "\${vaguePrompt}"
+
+Bu promptu şunları ekleyerek spesifik hale getir:
+1. **Hedef Kitle**: Bunu kim okuyacak/kullanacak?
+2. **Format**: Hangi yapıda olmalı?
+3. **Uzunluk**: Ne kadar uzun olmalı?
+4. **Ton**: Hangi ses veya stil?
+5. **Bağlam**: Durum veya amaç nedir?
+6. **Kısıtlamalar**: Zorunlu veya yasak şeyler var mı?
+
+Tüm bu detayları dahil ederek promptu yeniden yaz.`}
+/>
+
+## Aşırı Yükleme Tuzağı
+
+**Kalıp**: Her şeyi tek bir promptta almaya çalışıyorsunuz—kapsamlı, komik, profesyonel, yeni başlayanlar için uygun, ileri düzey, SEO optimizasyonlu ve kısa. Sonuç? Yapay zeka gereksinimlerinizin yarısını kaçırıyor veya karmaşık bir karışıklık üretiyor.
+
+<Compare 
+  before={{ label: "Aşırı yüklenmiş prompt", content: "Yapay zeka hakkında SEO optimizasyonlu ve kod örnekleri içeren ve komik ama profesyonel olan ve yeni başlayanları hedefleyen ama ileri düzey ipuçları da olan ve 500 kelime olması gereken ama kapsamlı olan ve ürünümüzden bahseden ve eylem çağrısı olan bir blog yazısı yaz..." }}
+  after={{ label: "Odaklanmış prompt", content: "Yeni başlayanlara yapay zekayı tanıtan 500 kelimelik bir blog yazısı yaz.\n\nGereksinimler:\n1. Bir temel kavramı net bir şekilde açıkla\n2. Bir basit kod örneği ekle\n3. Eylem çağrısıyla bitir\n\nTon: Profesyonel ama samimi" }}
+/>
+
+**Neden oluyor**: Birden fazla etkileşim korkusu veya "her şeyi bir kerede söylemek" isteme. Ama bilişsel aşırı yük yapay zekayı da insanları etkilediği gibi etkiler—çok fazla rekabet eden gereksinim kaçırılan toplara yol açar.
+
+<InfoGrid items={[
+  { label: "Gereksinimleri Sınırla", description: "Prompt başına 3-5 anahtar gereksinimle kal", example: "Şunlara odaklan: kitle, format, uzunluk, bir anahtar kısıtlama", exampleType: "text", color: "green" },
+  { label: "Numaralı Listeler Kullan", description: "Yapı öncelikleri netleştirir", example: "1. X olmalı, 2. Y olmalı, 3. Z olsa iyi", exampleType: "text", color: "green" },
+  { label: "Promptları Zincirle", description: "Karmaşık görevleri adımlara böl", example: "Önce: taslak. Sonra: 1. bölüm. Sonra: 2. bölüm.", exampleType: "text", color: "green" },
+  { label: "Acımasızca Önceliklendir", description: "Zorunlu vs. olsa iyi olan ne?", example: "Sadece BİR şeyi doğru yapabilsem, ne olurdu?", color: "green" }
+]} />
+
+<Callout type="tip" title="Prompt Zincirlemeyi Öğren">
+Tek bir prompt aşırı yüklendiğinde, [prompt zincirleme](/book/11-prompt-chaining) genellikle çözümdür. Karmaşık görevleri her adımın öncekinin üzerine inşa edildiği odaklanmış promptlar dizisine bölün.
+</Callout>
+
+## Varsayım Tuzağı
+
+**Kalıp**: "Daha önceki" bir şeye atıfta bulunuyorsunuz veya yapay zekanın projenizi, şirketinizi veya önceki konuşmalarınızı bildiğini varsayıyorsunuz. Bilmiyor.
+
+<Compare 
+  before={{ label: "Bağlam varsayar", content: "Daha önce gösterdiğim fonksiyona hata işleme ekle." }}
+  after={{ label: "Bağlam sağlar", content: "Bu fonksiyona hata işleme ekle:\n\n```python\ndef hesapla_toplam(ogeler):\n    return sum(oge.fiyat for oge in ogeler)\n```\n\nBoş listeler ve geçersiz öğeler için try/except ekle." }}
+/>
+
+**Neden oluyor**: Yapay zeka konuşmaları bir meslektaşla konuşmak gibi hissettiriyor. Ama meslektaşların aksine, çoğu yapay zeka modelinin oturumlar arasında kalıcı hafızası yok—her konuşma sıfırdan başlar.
+
+## Yönlendirici Soru Tuzağı
+
+**Kalıp**: Sorunuzu varsayımınızı gömen bir şekilde ifade ediyorsunuz, içgörü yerine onay alıyorsunuz.
+
+<Compare 
+  before={{ label: "Yönlendirici soru", content: "Python neden veri bilimi için en iyi programlama dili?" }}
+  after={{ label: "Nötr soru", content: "Veri bilimi çalışması için Python, R ve Julia'yı karşılaştır. Her birinin güçlü ve zayıf yönleri neler? Birini diğerine ne zaman tercih edersin?" }}
+/>
+
+**Neden oluyor**: Genellikle bilgi değil, onay ararız. İfademiz bilinçsizce beklediğimiz veya istediğimiz cevaba doğru iter.
+
+## Her Şeye Güvenme Tuzağı
+
+**Kalıp**: Yapay zeka yanıtları güvenli ve otoriter görünüyor, bu yüzden doğrulama olmadan kabul ediyorsunuz. Ama güven, doğruluk demek değil.
+
+<InfoGrid items={[
+  { label: "İncelenmemiş İçerik", description: "YZ tarafından üretilen metni doğrulama olmadan yayınlama", example: "Uydurma istatistikler veya sahte alıntılar içeren blog yazıları", exampleType: "text", color: "red" },
+  { label: "Test Edilmemiş Kod", description: "YZ kodunu test etmeden üretimde kullanma", example: "Güvenlik açıkları, uç durum başarısızlıkları, ince hatalar", exampleType: "text", color: "red" },
+  { label: "Kör Kararlar", description: "Sadece YZ analizine dayalı önemli kararlar alma", example: "Halüsinasyonlu pazar verilerine dayalı iş stratejisi", exampleType: "text", color: "red" }
+]} />
+
+**Neden oluyor**: Yapay zeka tamamen yanlış olduğunda bile güvenli görünür. Ayrıca "otomasyon önyargısı"na—bilgisayar çıktılarına olması gerekenden fazla güvenme eğilimine—eğilimli oluruz.
+
+## Tek Deneme Tuzağı
+
+**Kalıp**: Bir prompt gönderiyorsunuz, vasat sonuç alıyorsunuz ve yapay zekanın kullanım durumunuz için "çalışmadığı" sonucuna varıyorsunuz. Ama harika sonuçlar neredeyse her zaman iterasyon gerektirir.
+
+<Compare 
+  before={{ label: "Tek deneme düşüncesi", content: "Vasat çıktı → \"YZ bunu yapamaz\" → Vazgeç" }}
+  after={{ label: "İteratif düşünce", content: "Vasat çıktı → Neyin yanlış olduğunu analiz et → Promptu iyileştir → Daha iyi çıktı → Tekrar iyileştir → Mükemmel çıktı" }}
+/>
+
+**Neden oluyor**: Yapay zekanın ilk denemede aklımızı okumasını bekliyoruz. Google aramalarıyla iterasyon beklmiyoruz ama bir şekilde yapay zekadan mükemmellik bekliyoruz.
+
+## Format İhmal Tuzağı
+
+**Kalıp**: Yapay zekanın ne söylemesini istediğinize odaklanıyorsunuz ama nasıl formatlanması gerektiğini belirtmeyi unutuyorsunuz. Sonra JSON gerekirken düzyazı veya madde işaretleri gerekirken metin duvarı alıyorsunuz.
+
+<Compare 
+  before={{ label: "Format belirtilmemiş", content: "Bu metinden anahtar verileri çıkar." }}
+  after={{ label: "Format belirtilmiş", content: "Bu metinden anahtar verileri JSON olarak çıkar:\n\n{\n  \"isim\": string,\n  \"tarih\": \"YYYY-AA-GG\",\n  \"tutar\": number,\n  \"kategori\": string\n}\n\nSADECE JSON döndür, açıklama yok." }}
+/>
+
+**Neden oluyor**: Yapıdan çok içeriğe odaklanıyoruz. Ama çıktıyı programatik olarak ayrıştırmanız veya belirli bir yere yapıştırmanız gerekiyorsa, format içerik kadar önemlidir.
+
+## Bağlam Penceresi Tuzağı
+
+**Kalıp**: Devasa bir belge yapıştırıyorsunuz ve kapsamlı analiz bekliyorsunuz. Ama modellerin limitleri var—kesebilir, odağı kaybedebilir veya uzun girdilerdeki önemli detayları kaçırabilir.
+
+<InfoGrid items={[
+  { label: "Limitlerini Bil", description: "Farklı modellerin farklı bağlam pencereleri var", example: "GPT-4: 128K token, Claude: 200K token, Gemini: 1M token", exampleType: "text", color: "blue" },
+  { label: "Büyük Girdileri Parçala", description: "Belgeleri yönetilebilir bölümlere böl", example: "Bölümleri ayrı analiz et, sonra sentezle", exampleType: "text", color: "blue" },
+  { label: "Önemli Bilgiyi Öne Koy", description: "Kritik bağlamı promptun başına koy", example: "Anahtar gereksinimler önce, arka plan detayları sonra", exampleType: "text", color: "blue" },
+  { label: "Gereksizi At", description: "Gereksiz bağlamı kaldır", example: "Gerçekten tüm belgeye mi ihtiyacın var, yoksa sadece ilgili bölümlere mi?", exampleType: "text", color: "blue" }
+]} />
+
+## Antropomorfizasyon Tuzağı
+
+**Kalıp**: Yapay zekaya bir insan meslektaş gibi davranıyorsunuz—görevlerden "zevk almasını", sizi hatırlamasını veya sonuçları önemsemesini bekliyorsunuz. Önemsemiyor.
+
+<Compare 
+  before={{ label: "Antropomorfize edilmiş", content: "Bu yaratıcı projeyi seveceğinden eminim! İnsanlara yardım etmeyi sevdiğini biliyorum ve bu benim için gerçekten önemli." }}
+  after={{ label: "Net ve doğrudan", content: "Bu spesifikasyonlarla yaratıcı bir kısa hikaye yaz:\n- Tür: Bilim kurgu\n- Uzunluk: 500 kelime\n- Ton: Umutlu\n- Dahil etmeli: Bir bükülü final" }}
+/>
+
+**Neden oluyor**: Yapay zeka yanıtları o kadar insansı ki doğal olarak sosyal kalıplara kayıyoruz. Ama duygusal çağrılar yapay zekayı daha fazla denemesini sağlamaz—net talimatlar sağlar.
+
+<Callout type="info" title="Gerçekten Ne Yardımcı Olur">
+Duygusal çağrılar yerine şunlara odaklanın: net gereksinimler, iyi örnekler, spesifik kısıtlamalar ve açık başarı kriterleri. Bunlar çıktıları iyileştirir. "Lütfen gerçekten çok dene" iyileştirmez.
+</Callout>
+
+## Güvenlik İhmal Tuzağı
+
+**Kalıp**: İşleri çalıştırma telaşında, hassas bilgileri promptlara dahil ediyorsunuz—API anahtarları, şifreler, kişisel veriler veya özel bilgiler.
+
+<InfoGrid items={[
+  { label: "Promptlarda Sırlar", description: "Promptlara yapıştırılan API anahtarları, şifreler, tokenlar", example: "\"Bu API anahtarını kullan: sk-abc123...\"", color: "red" },
+  { label: "Kişisel Veriler", description: "Üçüncü taraf sunucularına gönderilen KKV dahil etme", example: "Promptlarda müşteri adları, e-postalar, adresler", exampleType: "text", color: "red" },
+  { label: "Temizlenmemiş Kullanıcı Girdisi", description: "Kullanıcı girdisini doğrudan promptlara aktarma", example: "Prompt enjeksiyonu güvenlik açıkları", exampleType: "text", color: "red" },
+  { label: "Özel Bilgiler", description: "Ticari sırlar veya gizli veriler", example: "İç stratejiler, yayınlanmamış ürün detayları", exampleType: "text", color: "red" }
+]} />
+
+**Neden oluyor**: Güvenlik yerine işlevselliğe odaklanma. Ama unutmayın: promptlar genellikle harici sunuculara gider, günlüğe kaydedilebilir ve eğitim için kullanılabilir.
+
+## Halüsinasyon Cehalet Tuzağı
+
+**Kalıp**: Alıntılar, istatistikler veya spesifik gerçekler istiyorsunuz ve yapay zeka güvenle belirttiği için gerçek olduklarını varsayıyorsunuz. Ama yapay zeka düzenli olarak makul görünen bilgiler uydurur.
+
+<Compare 
+  before={{ label: "Körü körüne güvenme", content: "Bana kaynaklarıyla birlikte uzaktan çalışma verimliliği hakkında 5 istatistik ver." }}
+  after={{ label: "Sınırlamaları kabul etme", content: "Uzaktan çalışma verimliliği hakkında ne biliyoruz? Bahsettiğin istatistikler için, iyi yerleşmiş bulgular mı yoksa daha belirsiz mi olduklarını not et. Spesifik rakamları bağımsız olarak doğrulayacağım." }}
+/>
+
+**Neden oluyor**: Yapay zeka otoriter görünen metin üretir. Bir şeyler uydurduğunda "bilmiyor"—doğrulanmış gerçekleri almak değil, muhtemel metni tahmin ediyor.
+
+## Gönder Öncesi Kontrol Listesi
+
+Herhangi bir önemli promptu göndermeden önce bu hızlı kontrol listesini inceleyin:
+
+<Checklist 
+  title="Prompt Kalite Kontrolü"
+  items={[
+    { text: "Yeterince spesifik mi? (Belirsiz değil)" },
+    { text: "Odaklanmış mı? (Gereksinimlerle aşırı yüklenmemiş)" },
+    { text: "Tüm gerekli bağlamı içeriyor mu?" },
+    { text: "Soru nötr mü? (Yönlendirici değil)" },
+    { text: "Çıktı formatını belirttim mi?" },
+    { text: "Girdi bağlam limitleri içinde mi?" },
+    { text: "Herhangi bir güvenlik endişesi var mı?" },
+    { text: "Çıktıyı doğrulamaya hazır mıyım?" },
+    { text: "Gerekirse iterasyona hazır mıyım?" }
+  ]}
+/>
+
+<Quiz 
+  question="Önemli kararlar için yapay zeka kullanırken en tehlikeli tuzak nedir?"
+  options={[
+    "Belirsiz promptlar kullanma",
+    "YZ çıktılarına doğrulama olmadan güvenme",
+    "Çıktı formatı belirtmeme",
+    "Promptları gereksinimlerle aşırı yükleme"
+  ]}
+  correctIndex={1}
+  explanation="Tüm tuzaklar sorunlara neden olurken, yapay zeka çıktılarına doğrulama olmadan güvenmek en tehlikelisidir çünkü yanlış bilgi yayınlamaya, hatalı kod dağıtmaya veya halüsinasyonlu verilere dayalı kararlar almaya yol açabilir. Yapay zeka tamamen yanlış olduğunda bile güvenli görünür, bu da doğrulamayı herhangi bir önemli kullanım durumu için esansiyel yapar."
+/>
+
+## Promptlarınızı Analiz Edin
+
+Prompt kaliteniz hakkında anında geri bildirim almak için yapay zekayı kullanın. Herhangi bir promptu yapıştırın ve detaylı analiz alın:
+
+<PromptAnalyzer 
+  title="Prompt Kalite Analizörü"
+  description="Netlik, özgüllük ve iyileştirme önerileri hakkında YZ destekli geri bildirim alın"
+  defaultPrompt="Kodumla yardım et"
+/>
+
+## Bu Promptu Hata Ayıkla
+
+Bu promptta neyin yanlış olduğunu tespit edebilir misiniz?
+
+<PromptDebugger
+  title="Tuzağı Bul"
+  badPrompt="Anahtar kelimelerle SEO optimizasyonlu ve ayrıca komik ama profesyonel olan ve kod örnekleri içeren ve yeni başlayanları hedefleyen ama ileri düzey ipuçları da olan ve TechCo ürünümüzden bahseden ve sosyal kanıt ve eylem çağrısı olan ve 500 kelime olan ama kapsamlı olan teknoloji hakkında bir blog yazısı yaz."
+  badOutput="İşte teknoloji hakkında bir taslak blog yazısı...
+
+[Her şeyi yapmaya çalışan ama hiçbir şeyi iyi başaramayan genel, odaklanmamış içerik. Ton günlük ve teknik arasında garip şekilde kayıyor. Gereksinimlerin yarısı eksik.]"
+  options={[
+    { id: "vague", label: "Prompt çok belirsiz", isCorrect: false, explanation: "Aslında, promptun birçok spesifik gereksinimi var. Problem tersi—çok az gereksinim değil, çok fazla." },
+    { id: "overload", label: "Prompt çok fazla rekabet eden gereksinimle aşırı yüklenmiş", isCorrect: true, explanation: "Doğru! Bu prompt SEO + komik + profesyonel + kod + yeni başlayanlar + ileri düzey + ürün bahsi + sosyal kanıt + CTA + uzunluk kısıtlaması istiyor. Bu 10+ rekabet eden gereksinim! YZ hepsini tatmin edemez, bu yüzden her şeyde vasat bir iş yapıyor. Çözüm: bunu birden fazla odaklanmış prompta böl." },
+    { id: "format", label: "Çıktı formatı belirtilmemiş", isCorrect: false, explanation: "Daha spesifik bir format yardımcı olurdu ama asıl sorun gereksinim aşırı yüklemesi. Çok fazla istemenin yolunu formatlama ile çıkamazsınız." },
+    { id: "context", label: "Yeterli bağlam yok", isCorrect: false, explanation: "Prompt aslında çok fazla bağlam içeriyor—belki de çok fazla! Problem aynı anda çok fazla hedefi tatmin etmeye çalışması." }
+  ]}
+  hint="Bu tek promptta kaç farklı gereksinim olduğunu sayın."
+/>

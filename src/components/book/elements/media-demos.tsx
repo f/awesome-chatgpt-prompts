@@ -1,15 +1,30 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { cn } from "@/lib/utils";
+import { useTranslations, useLocale } from "next-intl";
 
-// Text-to-Image Demo
-const imagePromptOptions: Record<string, string[]> = {
-  subject: ["a cat", "a robot", "a castle", "an astronaut", "a forest"],
-  style: ["photorealistic", "oil painting", "anime style", "watercolor", "3D render"],
-  lighting: ["golden hour", "dramatic shadows", "soft diffused", "neon glow", "moonlight"],
-  composition: ["close-up portrait", "wide landscape", "aerial view", "symmetrical", "rule of thirds"],
-  mood: ["peaceful", "mysterious", "energetic", "melancholic", "whimsical"],
+// Locale-specific image prompt options
+const imagePromptOptionsLocale: Record<string, Record<string, string[]>> = {
+  en: {
+    subject: ["a cat", "a robot", "a castle", "an astronaut", "a forest"],
+    style: ["photorealistic", "oil painting", "anime style", "watercolor", "3D render"],
+    lighting: ["golden hour", "dramatic shadows", "soft diffused", "neon glow", "moonlight"],
+    composition: ["close-up portrait", "wide landscape", "aerial view", "symmetrical", "rule of thirds"],
+    mood: ["peaceful", "mysterious", "energetic", "melancholic", "whimsical"],
+  },
+  tr: {
+    subject: ["bir kedi", "bir robot", "bir kale", "bir astronot", "bir orman"],
+    style: ["fotorealistik", "yağlı boya", "anime tarzı", "suluboya", "3D render"],
+    lighting: ["altın saat", "dramatik gölgeler", "yumuşak dağınık", "neon parıltı", "ay ışığı"],
+    composition: ["yakın çekim portre", "geniş manzara", "havadan görünüm", "simetrik", "üçler kuralı"],
+    mood: ["huzurlu", "gizemli", "enerjik", "melankolik", "tuhaf"],
+  },
+};
+
+const categoryLabelsLocale: Record<string, Record<string, string>> = {
+  en: { subject: "subject", style: "style", lighting: "lighting", composition: "composition", mood: "mood" },
+  tr: { subject: "konu", style: "stil", lighting: "aydınlatma", composition: "kompozisyon", mood: "ruh hali" },
 };
 
 const imagePartColors: Record<string, { bg: string; border: string; text: string }> = {
@@ -25,7 +40,11 @@ export function TextToImageDemo() {
     subject: 0, style: 0, lighting: 0, composition: 0, mood: 0,
   });
   const [step, setStep] = useState(0);
+  const t = useTranslations("book.interactive");
+  const locale = useLocale();
 
+  const imagePromptOptions = imagePromptOptionsLocale[locale] || imagePromptOptionsLocale.en;
+  const categoryLabels = categoryLabelsLocale[locale] || categoryLabelsLocale.en;
   const categories = Object.keys(imagePromptOptions);
   
   const buildPrompt = () => {
@@ -51,12 +70,12 @@ export function TextToImageDemo() {
   return (
     <div className="my-6 border rounded-lg overflow-hidden">
       <div className="px-4 py-3 bg-muted/50 border-b">
-        <h4 className="font-semibold mt-2!">Text-to-Image: Build Your Prompt</h4>
+        <h4 className="font-semibold mt-2!">{t("textToImageBuildPrompt")}</h4>
       </div>
       
       <div className="p-4">
         <p className="text-sm text-muted-foreground mb-4 mt-0!">
-          Select options from each category to build an image prompt:
+          {t("selectOptionsToBuiltImagePrompt")}
         </p>
 
         <div className="space-y-3 mb-4">
@@ -64,9 +83,9 @@ export function TextToImageDemo() {
             const colors = imagePartColors[category];
             return (
               <div key={category} className="flex flex-wrap items-center gap-2">
-                <span className={cn("text-xs font-medium w-24 capitalize", colors.text)}>{category}:</span>
+                <span className={cn("text-xs font-medium w-24 capitalize", colors.text)}>{categoryLabels[category]}:</span>
                 <div className="flex flex-wrap gap-1">
-                  {imagePromptOptions[category].map((option, index) => (
+                  {imagePromptOptions[category].map((option: string, index: number) => (
                     <button
                       key={option}
                       onClick={() => handleSelect(category, index)}
@@ -87,7 +106,7 @@ export function TextToImageDemo() {
         </div>
 
         <div className="p-3 bg-muted/30 rounded-lg mb-4">
-          <p className="text-xs font-medium text-muted-foreground mb-1 mt-0!">Generated Prompt:</p>
+          <p className="text-xs font-medium text-muted-foreground mb-1 mt-0!">{t("generatedPrompt")}</p>
           <p className="text-sm font-mono m-0!">{buildPrompt()}</p>
         </div>
 
@@ -97,7 +116,7 @@ export function TextToImageDemo() {
               onClick={simulateDiffusion}
               className="w-full px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors mb-3"
             >
-              Simulate Diffusion Process
+              {t("simulateDiffusionProcess")}
             </button>
             <div className="space-y-2">
               {[1, 2, 3, 4, 5].map(s => (
@@ -109,11 +128,11 @@ export function TextToImageDemo() {
                     {s}
                   </div>
                   <span className={cn("text-xs", step >= s ? "text-foreground" : "text-muted-foreground")}>
-                    {s === 1 && "Start from random noise"}
-                    {s === 2 && "Detect rough shapes"}
-                    {s === 3 && "Add basic colors & forms"}
-                    {s === 4 && "Refine details"}
-                    {s === 5 && "Final image"}
+                    {s === 1 && t("diffusionStep1")}
+                    {s === 2 && t("diffusionStep2")}
+                    {s === 3 && t("diffusionStep3")}
+                    {s === 4 && t("diffusionStep4")}
+                    {s === 5 && t("diffusionStep5")}
                   </span>
                 </div>
               ))}
@@ -142,19 +161,32 @@ export function TextToImageDemo() {
         </div>
 
         <p className="text-xs text-muted-foreground mt-4 m-0!">
-          Real diffusion models run thousands of steps, gradually removing noise until a coherent image emerges.
+          {t("diffusionExplanation")}
         </p>
       </div>
     </div>
   );
 }
 
-// Text-to-Video Demo
-const videoPromptOptions = {
-  subject: ["A bird", "A car", "A person", "A wave", "A flower"],
-  action: ["takes flight", "drives down a road", "walks through rain", "crashes on rocks", "blooms in timelapse"],
-  camera: ["static shot", "slow pan left", "dolly zoom", "aerial tracking", "handheld follow"],
-  duration: ["2 seconds", "4 seconds", "6 seconds", "8 seconds", "10 seconds"],
+// Locale-specific video prompt options
+const videoPromptOptionsLocale: Record<string, Record<string, string[]>> = {
+  en: {
+    subject: ["A bird", "A car", "A person", "A wave", "A flower"],
+    action: ["takes flight", "drives down a road", "walks through rain", "crashes on rocks", "blooms in timelapse"],
+    camera: ["static shot", "slow pan left", "dolly zoom", "aerial tracking", "handheld follow"],
+    duration: ["2 seconds", "4 seconds", "6 seconds", "8 seconds", "10 seconds"],
+  },
+  tr: {
+    subject: ["Bir kuş", "Bir araba", "Bir insan", "Bir dalga", "Bir çiçek"],
+    action: ["uçuşa geçiyor", "yolda ilerliyor", "yağmurda yürüyor", "kayalara çarpıyor", "hızlandırılmış açıyor"],
+    camera: ["sabit çekim", "yavaş sola kaydırma", "dolly zoom", "havadan takip", "elde takip"],
+    duration: ["2 saniye", "4 saniye", "6 saniye", "8 saniye", "10 saniye"],
+  },
+};
+
+const videoCategoryLabelsLocale: Record<string, Record<string, string>> = {
+  en: { subject: "Subject", action: "Action", camera: "Camera", duration: "Duration" },
+  tr: { subject: "Konu", action: "Hareket", camera: "Kamera", duration: "Süre" },
 };
 
 export function TextToVideoDemo() {
@@ -162,6 +194,11 @@ export function TextToVideoDemo() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentFrame, setCurrentFrame] = useState(0);
   const totalFrames = 12;
+  const t = useTranslations("book.interactive");
+  const locale = useLocale();
+
+  const videoPromptOptions = videoPromptOptionsLocale[locale] || videoPromptOptionsLocale.en;
+  const videoCategoryLabels = videoCategoryLabelsLocale[locale] || videoCategoryLabelsLocale.en;
 
   const buildPrompt = () => {
     return `${videoPromptOptions.subject[selections.subject]} ${videoPromptOptions.action[selections.action]}, ${videoPromptOptions.camera[selections.camera]}, ${videoPromptOptions.duration[selections.duration]}`;
@@ -191,10 +228,10 @@ export function TextToVideoDemo() {
   }, [isPlaying]);
 
   const categories = [
-    { key: "subject" as const, label: "Subject", color: "blue" },
-    { key: "action" as const, label: "Action", color: "green" },
-    { key: "camera" as const, label: "Camera", color: "purple" },
-    { key: "duration" as const, label: "Duration", color: "amber" },
+    { key: "subject" as const, label: videoCategoryLabels.subject, color: "blue" },
+    { key: "action" as const, label: videoCategoryLabels.action, color: "green" },
+    { key: "camera" as const, label: videoCategoryLabels.camera, color: "purple" },
+    { key: "duration" as const, label: videoCategoryLabels.duration, color: "amber" },
   ];
 
   const categoryColors: Record<string, { bg: string; border: string; text: string }> = {
@@ -207,12 +244,12 @@ export function TextToVideoDemo() {
   return (
     <div className="my-6 border rounded-lg overflow-hidden">
       <div className="px-4 py-3 bg-muted/50 border-b">
-        <h4 className="font-semibold mt-2!">Text-to-Video: Build Your Prompt</h4>
+        <h4 className="font-semibold mt-2!">{t("textToVideoBuildPrompt")}</h4>
       </div>
       
       <div className="p-4">
         <p className="text-sm text-muted-foreground mb-4 mt-0!">
-          Video prompts need motion, camera work, and timing:
+          {t("videoPromptsNeed")}
         </p>
 
         <div className="space-y-3 mb-4">
@@ -223,7 +260,7 @@ export function TextToVideoDemo() {
               <div key={key} className="flex flex-wrap items-center gap-2">
                 <span className={cn("text-xs font-medium w-20", colors.text)}>{label}:</span>
                 <div className="flex flex-wrap gap-1">
-                  {options.map((option, index) => (
+                  {options.map((option: string, index: number) => (
                     <button
                       key={option}
                       onClick={() => handleSelect(key, index)}
@@ -244,7 +281,7 @@ export function TextToVideoDemo() {
         </div>
 
         <div className="p-3 bg-muted/30 rounded-lg mb-4">
-          <p className="text-xs font-medium text-muted-foreground mb-1 mt-0!">Generated Prompt:</p>
+          <p className="text-xs font-medium text-muted-foreground mb-1 mt-0!">{t("generatedPrompt")}</p>
           <p className="text-sm font-mono m-0!">{buildPrompt()}</p>
         </div>
 
@@ -254,12 +291,12 @@ export function TextToVideoDemo() {
               onClick={playVideo}
               className="w-full px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors mb-3"
             >
-              {isPlaying ? "Stop" : "Play Animation"}
+              {isPlaying ? t("stop") : t("playAnimation")}
             </button>
             
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <span className="text-xs text-muted-foreground w-16">Frame:</span>
+                <span className="text-xs text-muted-foreground w-16">{t("frame")}</span>
                 <div className="flex-1 h-2 bg-muted rounded-full overflow-hidden">
                   <div 
                     className="h-full bg-primary transition-all duration-200"
@@ -270,9 +307,9 @@ export function TextToVideoDemo() {
               </div>
               
               <div className="text-xs text-muted-foreground space-y-1 mt-3">
-                <p><strong>Consistency:</strong> Subject stays the same across frames</p>
-                <p><strong>Motion:</strong> Position changes smoothly over time</p>
-                <p><strong>Physics:</strong> Movement follows natural laws</p>
+                <p><strong>{t("consistency")}</strong> {t("consistencyDesc")}</p>
+                <p><strong>{t("motion")}</strong> {t("motionDesc")}</p>
+                <p><strong>{t("physics")}</strong> {t("physicsDesc")}</p>
               </div>
             </div>
           </div>
@@ -298,12 +335,12 @@ export function TextToVideoDemo() {
                 {selections.subject === 4 && "🌸"}
               </div>
             </div>
-            <p className="text-xs text-muted-foreground m-0!">Simplified animation preview</p>
+            <p className="text-xs text-muted-foreground m-0!">{t("simplifiedAnimationPreview")}</p>
           </div>
         </div>
 
         <p className="text-xs text-muted-foreground mt-4 m-0!">
-          Real video models generate 24-60 frames per second with photorealistic detail and consistent subjects.
+          {t("videoModelExplanation")}
         </p>
       </div>
     </div>

@@ -7,7 +7,7 @@ Access prompts.chat directly in [Claude Code](https://code.claude.com) with our 
 Add the prompts.chat marketplace to Claude Code:
 
 ```
-/plugin marketplace add f/awesome-chatgpt-prompts
+/plugin marketplace add f/prompts.chat
 ```
 
 Then install the plugin:

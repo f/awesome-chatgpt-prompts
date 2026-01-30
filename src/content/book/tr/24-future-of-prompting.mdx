@@ -1,0 +1,445 @@
+Yapay zeka benzeri görülmemiş bir hızla gelişmeye devam ederken, promptlama sanatı ve bilimi de öyle. Bu son bölüm, ortaya çıkan trendleri, insan-yapay zeka işbirliğinin değişen manzarasını ve alan dönüşürken nasıl önde kalınacağını keşfediyor.
+
+<Callout type="info" title="Hareketli Hedef">
+Bu kitaptaki teknikler mevcut en iyi uygulamaları temsil eder, ancak yapay zeka yetenekleri hızla değişir. Net iletişim, yapılandırılmış düşünme ve iteratif iyileştirme ilkeleri, spesifik taktikler evrilse bile değerli kalacaktır.
+</Callout>
+
+## Değişen Manzara
+
+### Promptlardan Konuşmalara
+
+Erken promptlama işlemseldı—tek girdi tek çıktı veriyordu. Modern yapay zeka etkileşimi giderek **konuşma ve işbirlikçi** oluyor:
+
+- **Çoklu tur iyileştirme** - Değişimler boyunca anlayış oluşturma
+- **Kalıcı bağlam** - Etkileşimlerden hatırlayan ve öğrenen sistemler
+- **Ajantik iş akışları** - Planlayabilen, uygulayabilen ve otonom olarak iterasyon yapabilen yapay zeka
+- **Araç kullanımı** - Arama yapabilen, hesaplama yapabilen ve harici sistemlerle etkileşim kurabilen modeller
+
+<TryIt compact prompt={`\${task:teknik blog yazısı yazma} üzerinde birlikte çalışalım.
+
+Bunu iteratif olarak geliştirmek istiyorum:
+1. İlk olarak, açılar üzerinde beyin fırtınası yapmama yardım et
+2. Sonra birlikte taslak çıkaralım
+3. Bölümleri taslak olarak yazacağım ve geri bildirimini alacağım
+4. Son olarak, final versiyonunu cilalatacağız
+
+Hedef kitlem ve anahtar mesajım hakkında soru sorarak başla.`} />
+
+### Bağlam Mühendisliğinin Yükselişi
+
+Bölüm 14'te ele alındığı gibi, promptlama tek talimatların ötesine **bağlam mühendisliği**—bir yapay zekanın hangi bilgilere erişebileceğinin stratejik yönetimi—kapsayacak şekilde genişliyor:
+
+- **RAG (Retrieval-Augmented Generation)** - Dinamik bilgi erişimi
+- **Fonksiyon çağırma** - Yapılandırılmış araç entegrasyonu
+- **MCP (Model Context Protocol)** - Standartlaştırılmış bağlam paylaşımı
+- **Hafıza sistemleri** - Oturumlar arasında kalıcı bilgi
+
+Geleceğin prompt mühendisi sadece *ne söyleneceğini* değil, *hangi bağlamın sağlanacağını* da düşünür.
+
+### Varsayılan Olarak Çoklu Modal
+
+Sadece metin etkileşimi istisna haline geliyor. Gelecekteki yapay zeka sistemleri sorunsuz şekilde şunları ele alacak:
+
+- **Görüntüler ve video** - Görsel içeriği anlama ve üretme
+- **Ses ve ses** - Doğal konuşma etkileşimi
+- **Belgeler ve dosyalar** - Karmaşık materyallerin doğrudan işlenmesi
+- **Gerçek dünya etkileşimi** - Robotik ve fiziksel sistemler
+
+Promptlama becerileri, yapay zeka algısını ve fiziksel eylemi yönlendirmeye kadar genişleyecek.
+
+## Ajantik Gelecek
+
+Yapay zekadaki en önemli kayma **ajanların** yükselişidir—sadece promptlara yanıt vermeyen, aktif olarak hedefleri takip eden, kararlar alan ve dünyada eylemler gerçekleştiren yapay zeka sistemleri.
+
+### Yapay Zeka Ajanları Nedir?
+
+Bir yapay zeka ajanı şunları yapan bir sistemdir:
+
+- **Algılar** çevresini girdiler aracılığıyla (metin, görüntüler, veriler, API'ler)
+- **Muhakeme** eder ne yapacağı hakkında bir LLM'i "beyin" olarak kullanarak
+- **Eylem** gerçekleştirir araçları çağırarak, kod yazarak veya sistemlerle etkileşim kurarak
+- **Öğrenir** geri bildirimden ve yaklaşımını ayarlar
+
+<Callout type="info" title="Sohbet Botlarından Ajanlara">
+Geleneksel sohbet botları girdi bekler ve yanıt verir. Ajanlar inisiyatif alır—çok adımlı görevleri planlar, araçları otonom kullanır, hatalardan kurtulur ve hedeflere ulaşılana kadar devam eder.
+</Callout>
+
+### Ajanlarda Promptların Rolü
+
+Ajantik bir dünyada, promptlar daha da kritik hale gelir—ama farklı amaçlara hizmet eder:
+
+<div className="my-6 grid md:grid-cols-2 gap-4">
+  <div className="border rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-900 p-4">
+    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 m-0!">Sistem Promptları</p>
+    <p className="text-sm text-muted-foreground mt-2 m-0!">Ajanın kimliğini, yeteneklerini, kısıtlamalarını ve davranışsal kılavuzlarını tanımlar. Bunlar ajanın "anayasası"dır.</p>
+  </div>
+  <div className="border rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-900 p-4">
+    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 m-0!">Planlama Promptları</p>
+    <p className="text-sm text-muted-foreground mt-2 m-0!">Ajanların karmaşık hedefleri eyleme dönüştürülebilir adımlara nasıl böleceğine rehberlik eder. Çok adımlı muhakeme için kritiktir.</p>
+  </div>
+  <div className="border rounded-lg bg-amber-50/50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900 p-4">
+    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 m-0!">Araç Kullanımı Promptları</p>
+    <p className="text-sm text-muted-foreground mt-2 m-0!">Mevcut araçları ve ne zaman/nasıl kullanılacağını tanımlar. Ajanların yeteneklerini anlaması gerekir.</p>
+  </div>
+  <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900 p-4">
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 m-0!">Yansıma Promptları</p>
+    <p className="text-sm text-muted-foreground mt-2 m-0!">Ajanların kendi çıktılarını değerlendirmesini, hataları yakalamasını ve iteratif olarak iyileşmesini sağlar.</p>
+  </div>
+</div>
+
+### Ajan Mimari Kalıpları
+
+Modern ajanlar tanınabilir kalıpları izler. Bunları anlamak etkili ajan sistemleri tasarlamanıza yardımcı olur:
+
+**ReAct (Muhakeme + Eylem)**
+
+Ajan, ne yapılacağı hakkında muhakeme etme ile eylem alma arasında gidip gelir:
+
+<div className="my-6 flex flex-col items-center gap-2 p-6 bg-muted/30 rounded-lg">
+  <div className="flex items-center gap-4">
+    <div className="px-4 py-2 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg">
+      <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Düşün</p>
+    </div>
+    <div className="text-slate-400">→</div>
+    <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
+      <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">Uygula</p>
+    </div>
+    <div className="text-slate-400">→</div>
+    <div className="px-4 py-2 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg">
+      <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">Gözlemle</p>
+    </div>
+    <div className="text-slate-400">→</div>
+    <div className="text-muted-foreground text-sm">(tekrarla)</div>
+  </div>
+</div>
+
+**Planla ve Uygula**
+
+Ajan önce tam bir plan oluşturur, sonra adımları uygular:
+
+<div className="my-6 flex flex-col items-center gap-2 p-6 bg-muted/30 rounded-lg">
+  <div className="px-6 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
+    <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Plan Oluştur</p>
+    <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">Hedefi adımlara böl</p>
+  </div>
+  <div className="text-blue-400 dark:text-blue-500 text-lg">↓</div>
+  <div className="flex items-center gap-3">
+    <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
+      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Adım 1</p>
+    </div>
+    <div className="text-slate-400">→</div>
+    <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
+      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Adım 2</p>
+    </div>
+    <div className="text-slate-400">→</div>
+    <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
+      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Adım 3</p>
+    </div>
+    <div className="text-slate-400">→</div>
+    <div className="text-muted-foreground text-sm">...</div>
+  </div>
+  <div className="text-green-400 dark:text-green-500 text-lg">↓</div>
+  <div className="px-6 py-3 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-lg text-center">
+    <p className="text-sm font-medium text-amber-700 dark:text-amber-300 m-0!">Gerekirse Revize Et</p>
+    <p className="text-xs text-amber-600 dark:text-amber-400 m-0!">Sonuçlara göre planı uyarla</p>
+  </div>
+</div>
+
+### Ajanlar İçin Promptlama
+
+Ajan sistemleri için prompt tasarlarken şunları değerlendirin:
+
+<TryIt compact prompt={`Otonom bir araştırma ajanısın. Hedefin \${goal:yenilenebilir enerji benimsenmesi hakkında en son istatistikleri bulmak}.
+
+**Yeteneklerin:**
+- Bilgi için web araması yap
+- Belgeleri oku ve analiz et
+- Notlar al ve bulguları sentezle
+- Gerekirse açıklayıcı sorular sor
+
+**Yaklaşımın:**
+1. İlk olarak, araştırma stratejini planla
+2. Aramaları sistematik şekilde uygula
+3. Kaynak güvenilirliğini değerlendir
+4. Bulguları tutarlı bir rapora sentezle
+5. Tüm kaynakları atıf yap
+
+**Kısıtlamalar:**
+- Hedefe odaklı kal
+- Belirsizliği kabul et
+- Asla bilgi uydurmak
+- Takılırsan dur ve sor
+
+Araştırma planını özetleyerek başla.`} />
+
+### Çoklu Ajan Sistemleri
+
+Gelecek, birlikte çalışan uzmanlaşmış ajan ekiplerini içerir:
+
+<div className="my-6 p-6 bg-muted/30 rounded-lg">
+  <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+    <div className="flex flex-col items-center gap-2">
+      <div className="px-4 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
+        <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Koordinatör</p>
+        <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">İş akışını yönetir</p>
+      </div>
+    </div>
+    <div className="hidden md:block text-slate-400 text-2xl">⟷</div>
+    <div className="md:hidden text-slate-400 text-2xl">↕</div>
+    <div className="flex flex-wrap justify-center gap-3">
+      <div className="px-3 py-2 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg">
+        <p className="text-xs font-medium text-purple-700 dark:text-purple-300 m-0!">Araştırmacı</p>
+      </div>
+      <div className="px-3 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
+        <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Yazar</p>
+      </div>
+      <div className="px-3 py-2 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-lg">
+        <p className="text-xs font-medium text-amber-700 dark:text-amber-300 m-0!">Eleştirmen</p>
+      </div>
+      <div className="px-3 py-2 bg-red-100 dark:bg-red-900/50 border border-red-200 dark:border-red-800 rounded-lg">
+        <p className="text-xs font-medium text-red-700 dark:text-red-300 m-0!">Kodlayıcı</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+Her ajanın rolünü tanımlayan kendi sistem promptu vardır ve yapılandırılmış mesajlar aracılığıyla iletişim kurarlar. Prompt mühendisinin işi **ekibi tasarlamak** olur—roller, iletişim protokolleri ve koordinasyon stratejileri tanımlamak.
+
+<Callout type="tip" title="Mimar Olarak Prompt Mühendisi">
+Ajantik bir gelecekte, prompt mühendisleri sistem mimarları olur. Sadece talimat yazmıyorsunuz—muhakeme yapabilen, planlayabilen ve eylem gerçekleştirebilen otonom sistemler tasarlıyorsunuz. Bu kitapta öğrendiğiniz beceriler bu yeni disiplinin temelidir.
+</Callout>
+
+## Ortaya Çıkan Kalıplar
+
+### Prompt Orkestrasyonu
+
+Tek promptlar **orkestre edilmiş sistemlere** yerini veriyor:
+
+<div className="my-6 flex flex-col items-center gap-2 p-6 bg-muted/30 rounded-lg">
+  <div className="px-6 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg text-center">
+    <p className="text-sm font-medium text-slate-700 dark:text-slate-300 m-0!">Kullanıcı İsteği</p>
+  </div>
+  <div className="text-slate-400 dark:text-slate-500 text-lg">↓</div>
+  <div className="px-6 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
+    <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Planlayıcı Ajan</p>
+    <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">Görevi böler</p>
+  </div>
+  <div className="text-blue-400 dark:text-blue-500 text-lg">↓</div>
+  <div className="px-6 py-3 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg text-center">
+    <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">Araştırmacı Ajan</p>
+    <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">Bilgi toplar</p>
+  </div>
+  <div className="text-purple-400 dark:text-purple-500 text-lg">↓</div>
+  <div className="px-6 py-3 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-lg text-center">
+    <p className="text-sm font-medium text-amber-700 dark:text-amber-300 m-0!">Yazar Ajan</p>
+    <p className="text-xs text-amber-600 dark:text-amber-400 m-0!">İçerik oluşturur</p>
+  </div>
+  <div className="text-amber-400 dark:text-amber-500 text-lg">↓</div>
+  <div className="px-6 py-3 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg text-center">
+    <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">İnceleyici Ajan</p>
+    <p className="text-xs text-green-600 dark:text-green-400 m-0!">Kalite kontrol eder</p>
+  </div>
+  <div className="text-green-400 dark:text-green-500 text-lg">↓</div>
+  <div className="px-6 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg text-center">
+    <p className="text-sm font-medium text-slate-700 dark:text-slate-300 m-0!">Final Çıktı</p>
+  </div>
+</div>
+
+Gelecekteki uygulayıcılar bireysel promptlar yerine prompt *sistemleri* tasarlayacak.
+
+### Kendini İyileştiren Promptlar
+
+Yapay zeka sistemleri şunları yapmaya başlıyor:
+
+- **Kendi promptlarını optimize etme** - Daha iyi talimatlar için meta-öğrenme
+- **Geri bildirimden öğrenme** - Sonuçlara göre uyum sağlama
+- **Eğitim verisi üretme** - İnce ayar için örnekler oluşturma
+- **Kendini değerlendirme** - Kalite değerlendirmesi oluşturma
+
+<TryIt compact prompt={`Bu promptu analiz et ve iyileştirmeler öner:
+
+Orijinal: "\${originalPrompt:Robot hakkında hikaye yaz}"
+
+Değerlendir:
+1. **Netlik** - Niyet açık mı?
+2. **Özgüllük** - Hangi detaylar eksik?
+3. **Yapı** - Çıktı nasıl daha iyi organize edilebilir?
+4. **Uç durumlar** - Ne yanlış gidebilir?
+
+Sağla: Değişikliklerin açıklamasıyla iyileştirilmiş versiyon`} />
+
+### Doğal Dil Programlama
+
+Promptlama ile programlama arasındaki çizgi bulanıklaşıyor:
+
+- **Kod olarak promptlar** - Versiyon kontrolü, test edilmiş, dağıtılmış
+- **Yorumlayıcı olarak LLM'ler** - Doğal dil yürütülebilir talimatlar olarak
+- **Hibrit sistemler** - Geleneksel kodu yapay zeka muhakemesiyle birleştirme
+- **YZ destekli geliştirme** - Kod yazan ve hata ayıklayan modeller
+
+Promptlamayı anlamak giderek yazılım geliştirmeyi anlamak demek oluyor.
+
+## Gelecek İçin Beceriler
+
+### Değerli Kalacak Olanlar
+
+Bazı beceriler, yapay zeka nasıl evrilirse evrilsin esansiyel kalacak:
+
+1. **Net düşünme** - Gerçekten ne istediğinizi bilmek
+2. **Alan uzmanlığı** - Problem alanını anlamak
+3. **Eleştirel değerlendirme** - Yapay zeka çıktı kalitesini değerlendirmek
+4. **Etik yargı** - Ne *yapılması gerektiğini* bilmek
+5. **İteratif iyileştirme** - Sürekli iyileştirme zihniyeti
+
+### Değişecek Olanlar
+
+Diğer yönler önemli ölçüde kayacak:
+
+<div className="my-6 overflow-x-auto">
+  <table className="w-full border-collapse text-sm">
+    <thead>
+      <tr className="border-b border-border">
+        <th className="text-left py-3 px-4 font-semibold text-muted-foreground">Bugün</th>
+        <th className="text-left py-3 px-4 font-semibold text-muted-foreground">Yarın</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="border-b border-border/50">
+        <td className="py-3 px-4">Detaylı promptlar yazma</td>
+        <td className="py-3 px-4 text-primary font-medium">Ajan sistemleri tasarlama</td>
+      </tr>
+      <tr className="border-b border-border/50">
+        <td className="py-3 px-4">Manuel prompt optimizasyonu</td>
+        <td className="py-3 px-4 text-primary font-medium">Otomatik prompt ayarlama</td>
+      </tr>
+      <tr className="border-b border-border/50">
+        <td className="py-3 px-4">Tek model uzmanlığı</td>
+        <td className="py-3 px-4 text-primary font-medium">Çoklu model orkestrasyonu</td>
+      </tr>
+      <tr className="border-b border-border/50">
+        <td className="py-3 px-4">Metin odaklı etkileşim</td>
+        <td className="py-3 px-4 text-primary font-medium">Çoklu modal akıcılık</td>
+      </tr>
+      <tr>
+        <td className="py-3 px-4">Bireysel verimlilik</td>
+        <td className="py-3 px-4 text-primary font-medium">Ekip-YZ işbirliği</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Güncel Kalmak
+
+Becerilerinizi ilgili tutmak için:
+
+- **Sürekli deney yapın** - Çıktıkça yeni modelleri ve özellikleri deneyin
+- **Araştırmayı takip edin** - Akademik gelişmelerden haberdar olun
+- **Topluluklara katılın** - Diğer uygulayıcılardan öğrenin
+- **Projeler oluşturun** - Becerileri gerçek problemlere uygulayın
+- **Başkalarına öğretin** - Açıklayarak anlayışı sağlamlaştırın
+
+## İnsan Öğesi
+
+### Güçlendirici Olarak Yapay Zeka
+
+En iyi durumda, yapay zeka insan yeteneğini değiştirmek yerine güçlendirir:
+
+- **Uzmanlar daha uzman olur** - Yapay zeka rutin işi halleder, insanlar içgörüye odaklanır
+- **Yaratıcılık genişler** - Daha fazla fikir keşfedilir, daha fazla olasılık test edilir
+- **Erişim demokratikleşir** - Eskiden uzman gerektiren yetenekler herkes için erişilebilir olur
+- **İşbirliği derinleşir** - İnsan-yapay zeka ekipleri her ikisini de aşar
+
+### Yeri Doldurulamaz İnsan
+
+Bazı nitelikler belirgin şekilde insanca kalır:
+
+- **Orijinal deneyim** - Dünyada yaşama, duygular ve ilişkiler
+- **Değerler ve etik** - Neyin önemli olduğuna ve neyin doğru olduğuna karar verme
+- **Hesap verebilirlik** - Sonuçlar için sorumluluk alma
+- **Anlam yaratma** - Bir şeyin *neden* önemli olduğunu anlama
+- **Gerçek yaratıcılık** - Benzersiz perspektiften doğan gerçek yenilik
+
+<Callout type="tip" title="Benzersiz Değeriniz">
+Yapay zeka daha fazla rutin bilişsel görevi hallettikçe, benzersiz değeriniz yargı, yaratıcılık, alan uzmanlığı ve yapay zekanın kopyalayamayacağı insan bağlantılarında yatar. Sizi yeri doldurulamaz yapan şeylere yatırım yapın.
+</Callout>
+
+## Son Düşünceler
+
+### Öğrendiklerimiz
+
+Bu kitap boyunca şunları keşfettik:
+
+- **Temeller** - Yapay zeka modelleri nasıl çalışır ve promptları etkili yapan ne
+- **Teknikler** - Rol tabanlı promptlama, düşünce zinciri, few-shot öğrenme ve daha fazlası
+- **İleri stratejiler** - Sistem promptları, prompt zincirleme, çoklu modal etkileşim
+- **En iyi uygulamalar** - Tuzaklardan kaçınma, etik değerlendirmeler, optimizasyon
+- **Uygulamalar** - Yazma, programlama, eğitim, iş, yaratıcılık, araştırma
+
+Bu teknikler ortak paydaları paylaşır:
+
+1. **Net ve spesifik ol** - Ne istediğinizi bilin ve kesin iletişim kurun
+2. **Bağlam sağla** - Yapay zekaya ihtiyaç duyduğu bilgiyi verin
+3. **İsteklerinizi yapılandırın** - Organizasyon çıktıları iyileştirir
+4. **İterasyona devam et ve iyileştir** - İlk denemeler başlangıç noktaları, son noktalar değil
+5. **Eleştirel değerlendir** - Yapay zeka çıktısı insan yargısı gerektirir
+
+### Sanat ve Bilim
+
+Promptlama hem **sanat hem de bilim**:
+
+- **Bilim**: Test edilebilir hipotezler, ölçülebilir sonuçlar, tekrarlanabilir teknikler
+- **Sanat**: Sezgi, yaratıcılık, kuralları ne zaman kıracağını bilmek
+
+En iyi uygulayıcılar titiz metodolojiyi yaratıcı deneyimle birleştirir. Sistematik test ederler ama içgüdülerine de güvenirler. En iyi uygulamaları izlerler ama ne zaman sapacaklarını bilirler.
+
+### Yaratmaya Çağrı
+
+Bu kitap size araçlar verdi. Onlarla ne inşa edeceğiniz size bağlı.
+
+- Sizin ve başkalarının için önemli **problemleri çözün**
+- Daha önce var olmayan **şeyler yaratın**
+- İnsanların yalnız yapamayacakları şeyleri yapmalarına **yardım edin**
+- Neyin mümkün olduğunun **sınırlarını zorlayın**
+- Alan evrilirken **meraklı kalın**
+
+Yapay zeka çağı yeni başlıyor. En önemli uygulamalar henüz icat edilmedi. En güçlü teknikler henüz keşfedilmedi. Gelecek şimdi yazılıyor—sizin gibi insanlar tarafından, bir prompt ötede.
+
+## İleriye Bakmak
+
+<TryIt compact prompt={`"Etkileşimli Promptlama Kitabı"nı yeni bitirdim ve kişisel bir pratik planı geliştirmek istiyorum.
+
+Geçmişim: \${background:deneyim seviyenizi ve birincil kullanım durumunuzu tanımlayın}
+Hedeflerim: \${goals:YZ ile ne başarmak istiyorsunuz?}
+Mevcut zaman: \${time:haftalık ne kadar zaman ayırabilirsiniz?}
+
+30 günlük bir pratik planı oluştur:
+1. Becerileri aşamalı olarak oluşturur
+2. Spesifik egzersizler içerir
+3. Gerçek işime uygulanır
+4. İlerlemeyi ölçer
+
+Dahil et: Kilometre taşları, kaynaklar ve başarı kriterleri`} />
+
+<Callout type="tip" title="Öğrenmeye Devam Et">
+Topluluk promptları, yeni teknikler ve kendi keşiflerinizi paylaşmak için [prompts.chat](https://prompts.chat) ziyaret edin. En iyi öğrenme toplulukta gerçekleşir.
+</Callout>
+
+## Özet
+
+<Callout type="info" title="Anahtar Çıkarımlar">
+Yapay zeka hızla evrilmeye devam edecek, ancak net iletişim, eleştirel düşünme ve iteratif iyileştirmenin temel becerileri değerli kalır. Sizi yeri doldurulamaz yapan şeylere odaklanın: yargı, yaratıcılık, etik ve gerçek insan bağlantısı. Promptlamanın geleceği işbirlikçi, çoklu modal ve daha büyük sistemlere entegredir. Meraklı kalın, deney yapmaya devam edin ve önemli şeyler inşa edin.
+</Callout>
+
+<Quiz 
+  question="Yapay zeka evrilmeye devam ederken geliştirilecek en önemli beceri nedir?"
+  options={[
+    "Spesifik prompt şablonlarını ezberlemek",
+    "Her yeni modelin spesifik sözdizimini öğrenmek",
+    "Net düşünme ve YZ çıktısını eleştirel değerlendirme",
+    "İnsan becerilerini korumak için YZ'den tamamen kaçınmak"
+  ]}
+  correctIndex={2}
+  explanation="Spesifik teknikler değişirken, ne istediğiniz hakkında net düşünme, etkili iletişim kurma ve YZ çıktısını eleştirel değerlendirme yeteneği yapay zeka nasıl evrilirse evrilsin değerli kalır. Bu meta-beceriler modeller ve uygulamalar arasında transfer olur."
+/>
+
+*Etkileşimli Promptlama Kitabı*'nı okuduğunuz için teşekkür ederiz. Şimdi gidin ve harika şeyler yaratın.

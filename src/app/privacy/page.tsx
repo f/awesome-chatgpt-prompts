@@ -118,7 +118,7 @@ export default function PrivacyPage() {
           <h2 className="text-lg font-semibold">Open Source</h2>
           <p className="text-muted-foreground">
             This platform is open source. You can review the code and self-host your own instance at{" "}
-            <Link href="https://github.com/f/awesome-chatgpt-prompts" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">
+            <Link href="https://github.com/f/prompts.chat" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">
               GitHub
             </Link>.
           </p>

@@ -1,0 +1,363 @@
+Düşünce Zinciri (Chain of Thought - CoT) promptlaması, modelden çalışmasını adım adım göstermesini isteyerek karmaşık muhakeme görevlerinde yapay zeka performansını dramatik biçimde artıran bir tekniktir.
+
+<Callout type="info" title="Çalışmanı Göster">
+Tıpkı bir matematik öğretmeninin öğrencilerden çalışmalarını göstermelerini istemesi gibi, CoT promptlaması yapay zekadan muhakemesini görünür kılmasını ister.
+</Callout>
+
+## CoT'un Çözdüğü Problem
+
+Yapay zeka modelleri, doğrudan cevaba atlamaları istendiğinde çok adımlı muhakemede zorlanabilir.
+
+<Compare 
+  before={{ label: "Doğrudan Cevap (Genellikle Yanlış)", content: "Soru: Bir mağaza elmaları tanesi 2 TL'ye satıyor. 5 veya daha fazla alırsan %20 indirim alırsın. 7 elma kaç lira tutar?\n\nCevap: 14 TL ❌" }}
+  after={{ label: "Düşünce Zinciri (Doğru)", content: "Soru: Bir mağaza elmaları tanesi 2 TL'ye satıyor. 5 veya daha fazla alırsan %20 indirim alırsın. 7 elma kaç lira tutar?\n\nBunu adım adım çözelim:\n1. Elma başına normal fiyat: 2 TL\n2. Elma sayısı: 7\n3. 7 ≥ 5 olduğundan indirim uygulanır\n4. Normal toplam: 7 × 2 TL = 14 TL\n5. İndirim: 14 TL'nin %20'si = 2,80 TL\n6. Son fiyat: 14 TL - 2,80 TL = 11,20 TL\n\nCevap: 11,20 TL ✓" }}
+/>
+
+## Temel CoT Promptları
+
+### Basit Tetikleyici İfadeler
+
+Bunlardan birini promptlarınıza ekleyin:
+
+<div className="my-4 grid gap-2">
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Adım adım düşünelim."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Bunu dikkatlice düşün."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Bu problemi metodik olarak çöz."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Her adımda muhakemeni göster."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Düşünce sürecini açıkla."</div>
+</div>
+
+### Açık Adım İsteği
+
+<TryIt 
+  title="Düşünce Zincirini Dene"
+  description="Yapay zekadan bir problemi adım adım çözmesini isteyin."
+  prompt={`Bu problemi çöz:
+
+Bir araç kiralama günlük 40 TL artı kilometre başına 0,25 TL tutuyor. Birisi 3 gün araç kiralar ve 200 kilometre sürerse, toplam maliyet ne olur?
+
+Son cevabını vermeden önce:
+1. Verilen bilgileri belirle
+2. Ne bulmamız gerektiğini tespit et
+3. Yaklaşımını planla
+4. Her adımı çalışmayı göstererek uygula
+5. Cevabını doğrula`}
+/>
+
+## Sıfır Örnek vs Birkaç Örnek CoT
+
+Düşünce Zinciri promptlamasına iki ana yaklaşım vardır, her biri basitlik ve kontrol arasında farklı ödünleşimler sunar.
+
+### Sıfır Örnek CoT
+
+En basit yaklaşım—sadece bir tetikleyici ifade ekleyin ve modelin nasıl muhakeme edeceğini bulmasına izin verin. Örnek gerekmez. Bu, birçok problem için şaşırtıcı derecede iyi çalışır, ancak muhakeme formatı üzerinde daha az kontrolünüz olur.
+
+<TryIt 
+  compact
+  title="Sıfır Örnek CoT"
+  prompt={`Ali'nin 3 elması var ve yarısını Ayşe'ye veriyor, sonra 4 tane daha alıyor. Kaç tane elması var?
+
+Adım adım düşünelim.`}
+/>
+
+**Örnek Çıktı:**
+```
+Adım adım düşünelim.
+- Ali 3 elmayla başlıyor
+- 3'ün yarısı 1,5 ama elmaları bölemeyiz
+- Aşağı yuvarlarsak: Ali 1 elma verir, 2 tutar
+- 4 tane daha aldıktan sonra: 2 + 4 = 6 elma
+
+Cevap: 6 elma
+```
+
+### Birkaç Örnek CoT
+
+Daha tutarlı sonuçlar için, çözülmüş örnekler vererek modele tam olarak nasıl muhakeme etmesini istediğinizi gösterin. Bu size muhakeme stili, formatı ve detay seviyesi üzerinde kontrol sağlar. Model gösterilen kalıbı taklit edecektir.
+
+<TryIt 
+  compact
+  title="Birkaç Örnek CoT"
+  prompt={`Örnek 1:
+S: Bir pastacının 24 kurabiyesi var. Bunları eşit olarak 4 kutuya koyuyor. Sonra bir kutudan 2 kurabiye yiyor. Toplamda kaç kurabiye kalır?
+
+C: Bunu adım adım çözelim:
+- Toplam kurabiye: 24
+- Kutu başına kurabiye: 24 ÷ 4 = 6
+- Bir kutudan 2 yedikten sonra: 6 - 2 = 4 kurabiye o kutuda
+- Kalan toplam: (3 kutu × 6) + 4 = 18 + 4 = 22 kurabiye
+
+Örnek 2:
+S: Bir tren 2 saat boyunca saatte 60 km hızla, sonra 3 saat boyunca saatte 40 km hızla gidiyor. Ortalama hızı nedir?
+
+C: Bunu adım adım çözelim:
+- 60 km/sa ile mesafe: 60 × 2 = 120 km
+- 40 km/sa ile mesafe: 40 × 3 = 120 km
+- Toplam mesafe: 120 + 120 = 240 km
+- Toplam süre: 2 + 3 = 5 saat
+- Ortalama hız: 240 ÷ 5 = 48 km/sa
+
+Şimdi çöz:
+S: Bir mağaza defterleri tanesi 3 TL'ye satıyor. 10 veya daha fazla alırsan %25 indirim alırsın. 12 defter kaç lira tutar?`}
+/>
+
+**Örnek Çıktı:**
+```
+C: Bunu adım adım çözelim:
+- Normal fiyat: 3 TL, Miktar: 12
+- 12 ≥ 10 olduğundan %25 indirim uygulanır
+- Normal toplam: 12 × 3 TL = 36 TL
+- İndirim: 36 TL'nin %25'i = 9 TL
+- Son fiyat: 36 TL - 9 TL = 27 TL
+```
+
+## Yapılandırılmış CoT Formatları
+
+Tutarlı, tekrarlanabilir muhakeme için adlandırılmış adımlarla yapılandırılmış formatlar kullanın. Bu çerçeveler modelin önemli aşamaları atlamamasını sağlar ve çıktıları ayrıştırmayı ve doğrulamayı kolaylaştırır.
+
+### BREAK Formatı
+
+Modeli anlama'dan doğrulama'ya tam bir problem çözme döngüsünden geçiren akılda kalıcı bir kısaltma.
+
+<BREAKFramework />
+
+### Muhakeme Şablonu
+
+Girdileri, hedefleri ve uygulamayı ayıran daha resmi bir yapı. Çözüm sürecinin net belgelenmesine ihtiyaç duyduğunuz teknik problemler için mükemmel.
+
+<TryIt 
+  compact
+  title="Muhakeme Şablonu"
+  prompt={`Problemi çözmek için bu şablonu kullan:
+
+VERİLENLER: [Bilinen bilgileri listele]
+HEDEF: [Ne bulmamız gerekiyor]
+YAKLAŞIM: [Kullanacağımız strateji]
+ADIMLAR:
+  1. [Muhakemeyle birinci adım]
+  2. [Muhakemeyle ikinci adım]
+  ...
+DOĞRULAMA: [Cevabı kontrol et]
+CEVAP: [Son cevap]
+
+Problem: Bir araba 100 km'de 8 litre yakıt tüketiyor. Depo 45 litre alıyorsa ve yakıt litresi 35 TL ise, 300 km sürmek kaça mal olur?`}
+/>
+
+**Örnek Çıktı:**
+```
+VERİLENLER: 8L/100km, depo 45L, 35 TL/L, 300km sürmek
+HEDEF: Yakıt maliyetini hesapla
+YAKLAŞIM: Gereken yakıt × litre başına maliyet
+ADIMLAR:
+1. Yakıt = (300 ÷ 100) × 8 = 24 litre
+2. Maliyet = 24 × 35 TL = 840 TL
+DOĞRULAMA: 24L < 45L depo ✓
+CEVAP: 840 TL
+```
+
+## Farklı Problem Türleri için CoT
+
+Farklı problem türleri farklı CoT yaklaşımlarından faydalanır. İşte yaygın senaryolar için optimize edilmiş kalıplar.
+
+### Matematiksel Muhakeme
+
+Matematik problemleri CoT'tan en çok faydalanır çünkü her adım bir öncekinin üzerine inşa edilir. Hatalar katlanır, bu yüzden çalışmayı göstermek hataları erken yakalamaya yardımcı olur. Model her hesaplamayı net bir şekilde etiketlemelidir.
+
+<TryIt 
+  compact
+  title="CoT ile Matematik"
+  prompt={`Bir şirketin 1. çeyrekte geliri 1,2 milyon TL idi. 2. çeyrekte %15 büyüdü, 3. çeyrekte %10 düştü ve 4. çeyrekte %25 büyüdü. Toplam yıllık gelir ne kadardı?
+
+Her çeyreği düşün, hesaplamalarını net bir şekilde göster.`}
+/>
+
+**Örnek Çıktı:**
+```
+Q1: 1.200.000 TL (verilmiş)
+Q2: 1.200.000 TL × 1,15 = 1.380.000 TL
+Q3: 1.380.000 TL × 0,90 = 1.242.000 TL
+Q4: 1.242.000 TL × 1,25 = 1.552.500 TL
+
+Toplam: 5.374.500 TL
+```
+
+### Mantıksal Muhakeme
+
+Mantık bulmacaları sistematik eleme ve hipotez testi gerektirir. CoT modelin kısıtlamaları takip etmesine, olasılıkları test etmesine ve tüm koşulların karşılandığını doğrulamasına yardımcı olur. Anahtar, tahmin etmek yerine metodik keşiftir.
+
+<TryIt 
+  compact
+  title="Mantık Bulmacası"
+  prompt={`Üç arkadaş—Ayşe, Ali ve Cemile—her birinin farklı evcil hayvanları (kedi, köpek, balık) ve farklı meslekleri (öğretmen, mühendis, doktor) var.
+
+İpuçları:
+1. Ayşe'nin kedisi yok
+2. Mühendisin köpeği var
+3. Ali öğretmen
+4. Cemile'nin balığı yok
+
+Kimin hangi evcil hayvanı ve mesleği var? Bunu sistematik olarak düşün, hipotezleri test et ve tüm ipuçlarına karşı doğrula.`}
+/>
+
+**Örnek Çıktı:**
+```
+İpucu 3'ten: Ali = öğretmen
+→ Ayşe ve Cemile mühendis/doktor
+
+Eğer Cemile = mühendis ise:
+- Cemile'nin köpeği var (ipucu 2)
+- Ayşe = doktor, balığı var (ipucu 1)
+- Ali'nin kedisi var
+
+Doğrula: 4 ipucu da karşılandı ✓
+Cevap: Ayşe (doktor, balık), Ali (öğretmen, kedi), Cemile (mühendis, köpek)
+```
+
+### Kod Hata Ayıklama
+
+Hata ayıklama CoT'tan faydalanır çünkü modeli hata tahmin etmek yerine yürütmeyi izlemeye zorlar. Kodu somut değerlerle adım adım geçerek, gerçek davranış görünür hale gelir ve beklenen davranışla tutarsızlıklar ortaya çıkar.
+
+<TryIt 
+  compact
+  title="CoT ile Hata Ayıklama"
+  prompt={`Bu fonksiyon listedeki çift sayıların toplamını döndürmeli ama yanlış değerler döndürüyor. [2, 3, 4, 6] girdisiyle adım adım izleyerek hata ayıkla:
+
+def cift_toplami(sayilar):
+    toplam = 0
+    for n in sayilar:
+        if n % 2 == 0:
+            toplam += 1
+    return toplam
+
+Her adımı izle, hatayı bul ve düzeltmeyi sağla.`}
+/>
+
+**Örnek Çıktı:**
+```
+[2, 3, 4, 6] izle:
+n=2: toplam += 1 → 1 (bekle, n değil 1 ekleniyor!)
+n=3: atla (tek)
+n=4: toplam = 2
+n=6: toplam = 3
+
+HATA: "toplam += 1" yerine "toplam += n" olmalı
+Beklenen: 12, Gelen: 3
+Düzeltme: "toplam += n" olarak değiştir
+```
+
+## CoT ile Öz Tutarlılık
+
+Kritik problemler için tek bir muhakeme yoluna güvenmeyin. Birden fazla bağımsız çözüm üretin ve sonuçları karşılaştırın. Farklı yaklaşımlar aynı cevaba ulaşırsa, güven yüksektir. Uyuşmazlık dikkatli inceleme ihtiyacını işaret eder.
+
+<TryIt 
+  compact
+  title="Öz Tutarlılık"
+  prompt={`Bu problemi 3 farklı yolla çöz, sonra hangi çözümün en doğru göründüğüne dayanarak son cevabını ver:
+
+Problem: Bir çiftçinin tavukları ve inekleri var. Toplamda 30 baş ve 74 bacak var. Çiftçinin kaç tavuğu ve kaç ineği var?
+
+Yaklaşım 1: Cebir
+Yaklaşım 2: Deneme yanılma
+Yaklaşım 3: Mantıksal muhakeme
+
+Sonra karşılaştır ve son cevabını ver.`}
+/>
+
+**Örnek Çıktı:**
+```
+Yaklaşım 1 (Cebir): t + i = 30, 2t + 4i = 74 → t=23, i=7
+Yaklaşım 2 (Deneme): 23/7 dene → 46 + 28 = 74 ✓
+Yaklaşım 3 (Mantık): 30 tavuk = 60 bacak, 14 tane daha gerek → 7 inek
+
+Hepsi aynı: 23 tavuk, 7 inek
+```
+
+## Karar Verme için CoT
+
+Kararlar birden fazla boyutta ödünleşimleri tartmayı içerir. CoT tüm ilgili faktörlerin sonuçlara atlamak yerine sistematik olarak değerlendirilmesini sağlar. Bu yapılandırılmış yaklaşım aynı zamanda gelecek referans için muhakemeyi belgeler.
+
+<TryIt 
+  compact
+  title="Karar Analizi"
+  prompt={`Uygulamamız için mikroservis mimarisini benimsemeli miyiz?
+
+Bağlam:
+- 50.000 satır kodlu monolit uygulama
+- 5 kişilik geliştirici ekibi
+- 100 günlük aktif kullanıcı
+- 2 yılda 10 kat büyüme planlanıyor
+
+Bunu sistematik olarak düşün:
+1. Mevcut durumu listele
+2. Değerlendirilecek faktörleri belirle (ekip boyutu, ölçek, hız, gelecek büyüme)
+3. Her faktörü lehine/aleyhine olarak tart
+4. Muhakemeyle bir öneri ver`}
+/>
+
+**Örnek Çıktı:**
+```
+FAKTÖRLER:
+- Ekip boyutu (5): Mikroservisler için çok küçük ❌
+- Ölçek (100 DAU): Ölçekleme ihtiyacı yok ❌  
+- Hız: Monolit = daha hızlı iterasyon ❌
+- Gelecek büyüme: Belirsiz zaman çizelgesi ⚠️
+
+TARTMA: 3 güçlü aleyhine, 1 zayıf lehine
+
+ÖNERİ: Monolit olarak kal, gelecekteki geçişi 
+kolaylaştırmak için net modül sınırları kullan.
+```
+
+## CoT Ne Zaman Kullanılmalı
+
+<div className="my-6 grid md:grid-cols-2 gap-4">
+  <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> CoT Kullan</p>
+    <div className="text-sm p-4 pt-2 space-y-1">
+      <p className="m-0!">**Matematik problemleri** — Hesaplama hatalarını azaltır</p>
+      <p className="m-0!">**Mantık bulmacaları** — Atlanan adımları önler</p>
+      <p className="m-0!">**Karmaşık analiz** — Düşünceyi organize eder</p>
+      <p className="m-0!">**Kod hata ayıklama** — Yürütmeyi izler</p>
+      <p className="m-0!">**Karar verme** — Ödünleşimleri tartar</p>
+    </div>
+  </div>
+  <div className="border rounded-lg bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900">
+    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> CoT Atlayın</p>
+    <div className="text-sm p-4 pt-2 space-y-1">
+      <p className="m-0!">**Basit S&C** — Gereksiz ek yük</p>
+      <p className="m-0!">**Yaratıcı yazı** — Yaratıcılığı kısıtlayabilir</p>
+      <p className="m-0!">**Gerçek aramaları** — Muhakeme gerekmez</p>
+      <p className="m-0!">**Çeviri** — Doğrudan görev</p>
+      <p className="m-0!">**Özetleme** — Genellikle basit</p>
+    </div>
+  </div>
+</div>
+
+## CoT Sınırlamaları
+
+Güçlü olsa da, Düşünce Zinciri her derde deva değildir. Sınırlamalarını anlamak onu uygun şekilde uygulamanıza yardımcı olur.
+
+1. **Artan token kullanımı** — Daha fazla çıktı daha yüksek maliyet demek
+2. **Her zaman gerekli değil** — Basit görevler faydalanmaz
+3. **Uzun olabilir** — Kısalık istemeniz gerekebilir
+4. **Muhakeme hatalı olabilir** — CoT doğruluğu garanti etmez
+
+## Özet
+
+<Callout type="tip" title="Ana Çıkarımlar">
+CoT, örtük adımları açık hale getirerek karmaşık muhakemeyi dramatik biçimde iyileştirir. Matematik, mantık, analiz ve hata ayıklama için kullanın. Ödünleşim: daha fazla token için daha iyi doğruluk.
+</Callout>
+
+<Quiz 
+  question="Düşünce Zinciri promptlamasını ne zaman KULLANMAMALISINIZ?"
+  options={[
+    "Birden fazla adım gerektiren matematik problemleri",
+    "'Fransa'nın başkenti neresidir?' gibi basit gerçeksel sorular",
+    "Karmaşık mantıklı kod hata ayıklama",
+    "Bir iş kararını analiz etme"
+  ]}
+  correctIndex={1}
+  explanation="Düşünce Zinciri basit S&C için gereksiz ek yük ekler. Çalışmayı göstermenin doğruluğu artırdığı matematik, mantık bulmacaları, kod hata ayıklama ve analiz gibi karmaşık muhakeme görevleri için en iyisidir."
+/>
+
+Bir sonraki bölümde, az örnekli öğrenmeyi—modele örneklerle öğretmeyi—keşfedeceğiz.

@@ -2,16 +2,28 @@
 
 import { Compass, Settings, Zap, Target, Gem, Code } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslations, useLocale } from "next-intl";
 
-const bookPartsData = [
-  { number: 1, title: "Foundations", description: "How AI works, what makes a good prompt", icon: Compass, color: "blue", slug: "01-understanding-ai-models" },
-  { number: 2, title: "Techniques", description: "Roles, structured output, chain of thought", icon: Settings, color: "purple", slug: "04-role-based-prompting" },
-  { number: 3, title: "Advanced", description: "System prompts, chaining, multimodal", icon: Zap, color: "amber", slug: "10-system-prompts-personas" },
-  { number: 4, title: "Best Practices", description: "Common mistakes and optimization tips", icon: Target, color: "green", slug: "15-common-pitfalls" },
-  { number: 5, title: "Use Cases", description: "Writing, coding, education, business", icon: Gem, color: "rose", slug: "18-writing-content" },
-  { number: 6, title: "prompts.chat", description: "Using and contributing to the platform", icon: null, customIcon: true, color: "cyan", slug: "24-getting-started" },
-  { number: 7, title: "Developer Tools", description: "Prompt Builder, MCP, API reference", icon: Code, color: "indigo", slug: "27-prompt-builder-dsl" },
-];
+const bookPartsDataLocale: Record<string, Array<{ number: number; title: string; description: string; icon: typeof Compass | null; customIcon?: boolean; color: string; slug: string }>> = {
+  en: [
+    { number: 1, title: "Foundations", description: "How AI works, what makes a good prompt", icon: Compass, color: "blue", slug: "01-understanding-ai-models" },
+    { number: 2, title: "Techniques", description: "Roles, structured output, chain of thought", icon: Settings, color: "purple", slug: "04-role-based-prompting" },
+    { number: 3, title: "Advanced", description: "System prompts, chaining, multimodal", icon: Zap, color: "amber", slug: "10-system-prompts-personas" },
+    { number: 4, title: "Best Practices", description: "Common mistakes and optimization tips", icon: Target, color: "green", slug: "15-common-pitfalls" },
+    { number: 5, title: "Use Cases", description: "Writing, coding, education, business", icon: Gem, color: "rose", slug: "18-writing-content" },
+    { number: 6, title: "prompts.chat", description: "Using and contributing to the platform", icon: null, customIcon: true, color: "cyan", slug: "24-getting-started" },
+    { number: 7, title: "Developer Tools", description: "Prompt Builder, MCP, API reference", icon: Code, color: "indigo", slug: "27-prompt-builder-dsl" },
+  ],
+  tr: [
+    { number: 1, title: "Temeller", description: "AI nasıl çalışır, iyi bir prompt nasıl olur", icon: Compass, color: "blue", slug: "01-understanding-ai-models" },
+    { number: 2, title: "Teknikler", description: "Roller, yapılandırılmış çıktı, düşünce zinciri", icon: Settings, color: "purple", slug: "04-role-based-prompting" },
+    { number: 3, title: "İleri Düzey", description: "Sistem promptları, zincirleme, çoklu ortam", icon: Zap, color: "amber", slug: "10-system-prompts-personas" },
+    { number: 4, title: "En İyi Uygulamalar", description: "Yaygın hatalar ve optimizasyon ipuçları", icon: Target, color: "green", slug: "15-common-pitfalls" },
+    { number: 5, title: "Kullanım Alanları", description: "Yazarlık, kodlama, eğitim, iş", icon: Gem, color: "rose", slug: "18-writing-content" },
+    { number: 6, title: "prompts.chat", description: "Platformu kullanma ve katkıda bulunma", icon: null, customIcon: true, color: "cyan", slug: "24-getting-started" },
+    { number: 7, title: "Geliştirici Araçları", description: "Prompt Builder, MCP, API referansı", icon: Code, color: "indigo", slug: "27-prompt-builder-dsl" },
+  ],
+};
 
 const partColors: Record<string, { bg: string; border: string; text: string; hover: string }> = {
   blue: { bg: "bg-blue-50 dark:bg-blue-950/30", border: "border-blue-200 dark:border-blue-800", text: "text-blue-700 dark:text-blue-300", hover: "hover:bg-blue-100 dark:hover:bg-blue-950/50" },
@@ -24,6 +36,10 @@ const partColors: Record<string, { bg: string; border: string; text: string; hov
 };
 
 export function BookPartsNav() {
+  const t = useTranslations("book.interactive");
+  const locale = useLocale();
+  const bookPartsData = bookPartsDataLocale[locale] || bookPartsDataLocale.en;
+  
   return (
     <div className="my-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
       {bookPartsData.map((part) => {
@@ -54,7 +70,7 @@ export function BookPartsNav() {
               </div>
               <div className="flex-1 min-w-0">
                 <p className={cn("font-semibold text-sm m-0!", colors.text)}>
-                  Part {part.number}: {part.title}
+                  {t("part")} {part.number}: {part.title}
                 </p>
                 <p className="text-xs text-muted-foreground mt-0.5 m-0!">
                   {part.description}

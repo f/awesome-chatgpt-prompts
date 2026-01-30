@@ -2,7 +2,7 @@ import { spawn, execSync } from 'child_process';
 import { existsSync, rmSync, readdirSync } from 'fs';
 import { join, resolve } from 'path';
 
-const REPO = 'f/awesome-chatgpt-prompts';
+const REPO = 'f/prompts.chat';
 
 interface NewOptions {
   directory: string;

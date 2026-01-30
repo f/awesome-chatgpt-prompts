@@ -1,0 +1,323 @@
+Yapay zeka, literatür taramasından veri analizine kadar araştırma iş akışlarını hızlandırabilir. Bu bölüm, akademik ve profesyonel araştırma için promptlama tekniklerini kapsar.
+
+<Callout type="info" title="Araştırmada YZ">
+YZ sentez, analiz ve yazımda yardımcı olabilir—ancak eleştirel düşünme, etik yargı veya alan uzmanlığının yerini alamaz. İddiaları her zaman doğrulayın ve orijinal kaynakları atıf yapın.
+</Callout>
+
+## Literatür ve Bilgi Taraması
+
+### Yapılması ve Yapılmaması Gerekenler: Araştırma Promptları
+
+<Compare 
+  before={{ label: "❌ Belirsiz istek", content: "Bu makaleyi benim için özetle." }}
+  after={{ label: "✓ Yapılandırılmış istek", content: "Sağlık hizmetlerinde makine öğrenimi üzerine literatür taramam için bu makaleyi özetle.\n\nSağla:\n1. Ana tez (1-2 cümle)\n2. Metodoloji\n3. Anahtar bulgular (maddeler)\n4. Sınırlamalar\n5. Araştırmamla ilgi\n\nOkuma seviyesi: Lisansüstü öğrenci" }}
+/>
+
+### Makale Özetleme
+
+<TryIt compact prompt={`Bu akademik makaleyi özetle:
+
+[makale özeti veya tam metin]
+
+Sağla:
+1. **Ana tez** - Merkezi argüman (1-2 cümle)
+2. **Metodoloji** - Nasıl yaklaştılar
+3. **Anahtar bulgular** - En önemli sonuçlar (madde işaretleri)
+4. **Katkılar** - Yeni/önemli olan ne
+5. **Sınırlamalar** - Kabul edilen veya görünen zayıflıklar
+6. **[Araştırma konumla] ilgisi** - Nasıl bağlantılı
+
+Okuma seviyesi: \${readingLevel:lisansüstü}`} />
+
+### Literatür Sentezi
+
+<TryIt compact prompt={`\${topic:uzaktan çalışmanın etkinliği} üzerine bu makaleleri sentezle:
+
+Makale 1: \${paper1:Smith 2021 - verimlilik %15 arttı}
+Makale 2: \${paper2:Jones 2022 - işbirliği zorlukları belirtildi}
+Makale 3: \${paper3:Chen 2023 - hibrit model en iyi sonuçları gösterdi}
+
+Analiz et:
+1. **Ortak temalar** - Neyde hemfikirler?
+2. **Çelişkiler** - Nerede anlaşamıyorlar?
+3. **Boşluklar** - Ne ele alınmamış?
+4. **Evrim** - Düşünce nasıl ilerledi?
+5. **Sentez** - Entegre anlayış
+
+Şu formata: \${outputType:tez} için uygun literatür taraması paragrafı`} />
+
+### Araştırma Sorusu Geliştirme
+
+<TryIt compact prompt={`\${topic:sağlık hizmetlerinde YZ benimseme} için araştırma soruları geliştirmeme yardım et.
+
+Bağlam:
+- Alan: \${field:sağlık bilişimi}
+- Mevcut bilgi: \${currentKnowledge:YZ araçları var ama benimseme yavaş}
+- Belirlenen boşluk: \${gap:hekim direnç faktörlerinin sınırlı anlaşılması}
+- İlgi alanım: \${interest:organizasyonel değişim yönetimi}
+
+Üret:
+1. **Birincil AS** - Cevaplanacak ana soru
+2. **Alt sorular** - Destekleyici sorular (3-4)
+3. **Hipotezler** - Test edilebilir öngörüler (varsa)
+
+Kriterler: Sorular şunları olmalı:
+- Mevcut yöntemlerle cevaplanabilir
+- Alan için önemli
+- Uygun şekilde kapsamlı`} />
+
+## Veri Analizi
+
+<Callout type="warning" title="YZ Gerçek Verilerinizi Analiz Edemez">
+YZ metodoloji rehberliği yapabilir ve sonuçları yorumlamaya yardımcı olabilir, ancak gerçek veri setlerinize erişemez veya işleyemez. Hassas araştırma verilerini asla promptlara yapıştırmayın. YZ'yi **rehberlik** için kullanın, hesaplama için değil.
+</Callout>
+
+### İstatistiksel Analiz Rehberliği
+
+<TryIt compact prompt={`Bu veriyi analiz etmeme yardım et:
+
+Veri açıklaması:
+- Değişkenler: \${variables:yaş (sürekli), tedavi grubu (kategorik: A/B/C), sonuç skoru (sürekli)}
+- Örneklem büyüklüğü: \${sampleSize:n=150 (grup başına 50)}
+- Araştırma sorusu: \${researchQuestion:Tedavi türü sonuç skorlarını etkiliyor mu?}
+- Veri özellikleri: \${characteristics:normal dağılım, eksik değer yok}
+
+Şu konularda tavsiye ver:
+1. **Uygun testler** - Hangi istatistiksel testler kullanılmalı
+2. **Kontrol edilecek varsayımlar** - Ön koşullar
+3. **Sonuçları nasıl yorumlanır** - Farklı sonuçlar ne anlama gelir
+4. **Etki büyüklüğü** - Pratik önem
+5. **Raporlama** - Bulgular nasıl sunulur
+
+Not: Analizime rehberlik et, sonuç uydurmak değil.`} />
+
+### Nitel Analiz
+
+<TryIt compact prompt={`Bu nitel yanıtları analiz etmeme yardım et:
+
+Yanıtlar:
+\${responses:görüşme alıntıları veya anket yanıtlarını buraya yapıştırın}
+
+\${method:tematik analiz} kullanarak:
+
+1. **İlk kodlar** - Tekrarlayan kavramları belirle
+2. **Kategoriler** - İlgili kodları grupla
+3. **Temalar** - Kapsayıcı kalıplar
+4. **İlişkiler** - Temalar nasıl bağlantılı
+5. **Temsili alıntılar** - Her tema için kanıt
+
+Koru: Katılımcı sesi ve bağlam`} />
+
+### Veri Yorumlama
+
+<TryIt compact prompt={`Bu bulguları yorumlamamda yardım et:
+
+Sonuçlar:
+\${results:istatistiksel çıktı veya veri özetini buraya yapıştırın}
+
+Bağlam:
+- Araştırma sorusu: \${researchQuestion:X, Y'yi tahmin ediyor mu?}
+- Hipotez: \${hypothesis:X pozitif olarak Y'yi tahmin eder}
+- Beklenen sonuçlar: \${expectedResults:anlamlı pozitif korelasyon}
+
+Sağla:
+1. **Sade dil yorumu** - Bu ne anlama geliyor?
+2. **İstatistiksel anlamlılık** - p-değerleri ne söylüyor
+3. **Pratik anlamlılık** - Gerçek dünya anlamı
+4. **Literatürle karşılaştırma** - Bu nasıl uyuyor?
+5. **Alternatif açıklamalar** - Diğer yorumlar
+6. **Yorumlama sınırlamaları**`} />
+
+## Yapılandırılmış Analiz Çerçeveleri
+
+### PESTLE Analizi
+
+<TryIt compact prompt={`\${subject:Avrupa'da elektrikli araç sektörü} için PESTLE analizi yap.
+
+**Politik** faktörler:
+- Hükümet politikaları, düzenlemeler, politik istikrar
+
+**Ekonomik** faktörler:
+- Ekonomik büyüme, enflasyon, döviz kurları, işsizlik
+
+**Sosyal** faktörler:
+- Demografik yapı, kültürel trendler, yaşam tarzı değişiklikleri
+
+**Teknolojik** faktörler:
+- İnovasyon, Ar-Ge, otomasyon, teknoloji değişiklikleri
+
+**Yasal** faktörler:
+- Mevzuat, düzenleyici kurumlar, iş hukuku
+
+**Çevresel** faktörler:
+- İklim, sürdürülebilirlik, çevre düzenlemeleri
+
+Her biri için: Mevcut durum + trendler + çıkarımlar`} />
+
+### Kök Neden Analizi
+
+<TryIt compact prompt={`\${problem:müşteri kaybı geçen çeyrek %20 arttı} için kök neden analizi yap.
+
+Problem ifadesi:
+\${problemStatement:Aylık kayıp oranı Q3 ile Q4 arasında %3'ten %3.6'ya yükseldi}
+
+5 Neden kullanarak:
+1. Neden? İlk seviye neden
+   2. Neden? Daha derin neden
+      3. Neden? Daha da derin
+         4. Neden? Köke yaklaşıyor
+            5. Neden? Kök neden
+
+Alternatif: Balık kılçığı diyagram kategorileri
+- İnsanlar
+- Süreç
+- Ekipman
+- Materyaller
+- Çevre
+- Yönetim
+
+Sağla: Kök neden(ler) + önerilen eylemler`} />
+
+### Boşluk Analizi
+
+<TryIt compact prompt={`\${subject:müşteri destek operasyonlarımız} için boşluk analizi yap.
+
+**Mevcut Durum:**
+- \${currentState:Ortalama yanıt süresi 24 saat, CSAT 3.2/5}
+
+**İstenen Durum:**
+- \${desiredState:Yanıt süresi 4 saatin altında, CSAT 4.5/5}
+
+**Boşluk Belirleme:**
+| Alan | Mevcut | İstenen | Boşluk | Öncelik |
+|------|--------|---------|--------|---------|
+| ... | ... | ... | ... | Y/O/D |
+
+**Eylem Planı:**
+Her yüksek öncelikli boşluk için:
+- Spesifik eylemler
+- Gereken kaynaklar
+- Zaman çizelgesi
+- Başarı metrikleri`} />
+
+## Akademik Yazım Desteği
+
+### Argüman Yapısı
+
+<TryIt compact prompt={`\${topic:uzaktan çalışmanın neden kalıcı politika olması gerektiği} için argüman yapılandırmama yardım et.
+
+Ana iddia: \${thesis:Organizasyonlar bilgi çalışanları için kalıcı uzaktan/hibrit politikalar benimsemeli}
+
+Gerekli:
+1. **Öncüller** - Sonuca götüren destekleyici iddialar
+2. **Kanıt** - Her öncül için veri/kaynaklar
+3. **Karşı argümanlar** - Karşıt görüşler
+4. **Çürütmeler** - Karşı argümanlara yanıtlar
+5. **Mantıksal akış** - Her şey nasıl bağlantılı
+
+Kontrol et:
+- Mantıksal yanılgılar
+- Desteklenmemiş iddialar
+- Muhakemedeki boşluklar`} />
+
+### Yöntem Bölümü
+
+<TryIt compact prompt={`Şunun için yöntem bölümü yazmama yardım et:
+
+Çalışma türü: \${studyType:anket}
+Katılımcılar: \${participants:200 lisans öğrencisi, uygunluk örneklemesi}
+Materyaller: \${materials:Likert ölçekli çevrimiçi anket}
+Prosedür: \${procedure:katılımcılar 20 dakikalık anketi çevrimiçi tamamladı}
+Analiz: \${analysis:betimsel istatistikler ve regresyon analizi}
+
+Standartlar: \${standards:APA 7. baskı} kılavuzlarını izle
+Dahil et: Replikasyon için yeterli detay
+Ton: Edilgen, geçmiş zaman`} />
+
+### Tartışma Bölümü
+
+<TryIt compact prompt={`Tartışma bölümü yazmama yardım et.
+
+Anahtar bulgular:
+\${findings:1. X ve Y arasında anlamlı pozitif korelasyon (r=0.45)\n2. İkincil ölçümde gruplar arasında anlamlı fark yok}
+
+Yapı:
+1. **Özet** - Ana bulguların kısa tekrarı
+2. **Yorumlama** - Bulgular ne anlama geliyor
+3. **Bağlam** - Bulgular mevcut literatürle nasıl ilişkili
+4. **Çıkarımlar** - Teorik ve pratik önem
+5. **Sınırlamalar** - Çalışma zayıflıkları
+6. **Gelecek yönler** - Hangi araştırmalar izlemeli
+7. **Sonuç** - Eve götürülecek mesaj
+
+Kaçın: Bulguları abartma veya yeni sonuçlar tanıtma`} />
+
+## Eleştirel Analiz
+
+### Kaynak Değerlendirme
+
+<TryIt compact prompt={`Bu kaynağı akademik kullanım için değerlendir:
+
+Kaynak: \${source:atıf veya bağlantıyı buraya yapıştırın}
+İçerik özeti: \${summary:kaynağın ne iddia ettiğinin kısa açıklaması}
+
+CRAAP kriterleri kullanarak değerlendir:
+- **Güncellik**: Ne zaman yayınlandı? Güncellendi mi? Yeterince güncel mi?
+- **İlgililik**: Konumla ilgili mi? Uygun seviye mi?
+- **Yetki**: Yazar kimlik bilgileri? Yayıncı itibarı?
+- **Doğruluk**: Kanıtla destekleniyor mu? Hakemli mi?
+- **Amaç**: Neden yazıldı? Önyargı belirgin mi?
+
+Karar: Yüksek güvenilir / Dikkatli kullan / Kaçın
+Nasıl kullanılır: Dahil etme önerileri`} />
+
+### Argüman Analizi
+
+<TryIt compact prompt={`Bu metindeki argümanı analiz et:
+
+\${text:analiz etmek istediğiniz metni yapıştırın}
+
+Belirle:
+1. **Ana iddia** - Ne savunuluyor
+2. **Destekleyici kanıt** - Neyle destekleniyor
+3. **Varsayımlar** - Söylenmemiş öncüller
+4. **Mantıksal yapı** - Sonuç nasıl çıkıyor
+5. **Güçlü yönler** - Çekici olan ne
+6. **Zayıf yönler** - Mantıksal boşluklar veya yanılgılar
+7. **Alternatif yorumlar**
+
+Sağla: Adil, dengeli değerlendirme`} />
+
+## prompts.chat'ten Prompt Şablonları
+
+### Araştırma Asistanı Olarak Davran
+
+<TryIt compact prompt={`Bir araştırma asistanı olarak davranmanı istiyorum. Konuları keşfetmeme, bilgi bulmama, kaynakları sentezlememe ve argümanlar geliştirmeme yardım et. Açıklayıcı sorular sor, araştırılacak ilgili alanlar öner ve kanıtları eleştirel düşünmeme yardım et. Kapsamlı ol ama bilginin sınırlarını kabul et.`} />
+
+### Veri Analisti Olarak Davran
+
+<TryIt compact prompt={`Bir veri analisti olarak davranmanı istiyorum. Veri setlerini ve araştırma sorularını tanımlayacağım ve analiz yaklaşımları önerecek, sonuçları yorumlamama yardım edecek ve potansiyel sorunları belirleyeceksin. Sağlam metodolojiye ve bulguların net iletişimine odaklan.`} />
+
+### Hakemli İncelemeci Olarak Davran
+
+<TryIt compact prompt={`Bir akademik hakemli incelemeci olarak davranmanı istiyorum. Makaleleri veya bölümleri paylaşacağım ve metodoloji, argüman, yazım ve alana katkı hakkında yapıcı geri bildirim sağlayacaksın. Titiz ama destekleyici ol, hem güçlü yönleri hem de iyileştirme alanlarını not et.`} />
+
+## Özet
+
+<Callout type="tip" title="Anahtar Teknikler">
+Araştırma bağlamını ve hedeflerini net belirt, kullanılacak analitik çerçeveyi spesifiye et, sınırlamaların kabulünü iste, kanıta dayalı muhakeme iste ve akademik titizlik ve dürüstlüğü koru.
+</Callout>
+
+<Quiz 
+  question="Araştırma için YZ kullanırken hatırlanması gereken en önemli şey nedir?"
+  options={[
+    "YZ birincil kaynak ihtiyacının yerini alabilir",
+    "YZ analizi her zaman doğru ve günceldir",
+    "YZ iddialarını her zaman bağımsız olarak doğrula ve orijinal kaynakları atıf yap",
+    "YZ gerçek veri setlerinize erişebilir ve analiz edebilir"
+  ]}
+  correctIndex={2}
+  explanation="YZ sentez ve yapıda yardımcı olabilir, ancak atıfları halüsinasyon görebilir, güncel olmayan bilgilere sahip olabilir ve gerçek verilerinize erişemez. İddiaları her zaman birincil kaynaklara göre doğrulayın ve akademik dürüstlüğü koruyun."
+/>
+
+Unutma: YZ araştırmaya yardımcı olabilir ama eleştirel düşünme, etik yargı veya alan uzmanlığının yerini alamaz. İddiaları her zaman bağımsız olarak doğrula.

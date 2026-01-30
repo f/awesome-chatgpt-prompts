@@ -80,8 +80,8 @@ This will:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/f/awesome-chatgpt-prompts.git
-   cd awesome-chatgpt-prompts
+   git clone https://github.com/f/prompts.chat.git
+   cd prompts.chat
    ```
 
 2. **Install dependencies**
@@ -202,4 +202,4 @@ This is ideal for organizations that want to deploy their own white-labeled prom
 
 ## Support
 
-For issues and questions, please open a [GitHub Issue](https://github.com/f/awesome-chatgpt-prompts/issues).
+For issues and questions, please open a [GitHub Issue](https://github.com/f/prompts.chat/issues).

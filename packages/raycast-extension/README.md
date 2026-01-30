@@ -53,4 +53,4 @@ You can use this extension with self-hosted instances of prompts.chat by changin
 ## Links
 
 - [prompts.chat](https://prompts.chat) — Browse prompts on the web
-- [GitHub Repository](https://github.com/f/awesome-chatgpt-prompts) — Source code and contributions
+- [GitHub Repository](https://github.com/f/prompts.chat) — Source code and contributions

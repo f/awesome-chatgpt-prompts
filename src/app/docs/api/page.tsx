@@ -926,7 +926,7 @@ curl "${baseUrl}/api/prompts/{id}"`}</pre>
           <p className="text-muted-foreground">
             For issues and feature requests, please open a{" "}
             <Link
-              href="https://github.com/f/awesome-chatgpt-prompts/issues"
+              href="https://github.com/f/prompts.chat/issues"
               target="_blank"
               rel="noopener noreferrer"
               className="underline hover:text-foreground"

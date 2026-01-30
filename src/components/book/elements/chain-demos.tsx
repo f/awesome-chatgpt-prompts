@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Play, RotateCcw, CheckCircle2, XCircle, AlertTriangle, ArrowRight, ArrowDown, FileText, Search, Edit3, Sparkles, Package } from "lucide-react";
+import { useTranslations, useLocale } from "next-intl";
 
 type StepStatus = "pending" | "running" | "success" | "failed" | "invalid" | "retrying";
 
