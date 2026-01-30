@@ -1,7 +1,7 @@
-Todo gran prompt comparte elementos estructurales comunes. Entender estos componentes te permite construir prompts sistemáticamente en lugar de por prueba y error.
+Cada gran prompt comparte elementos estructurales comunes. Entender estos componentes te permite construir prompts sistemáticamente en lugar de por prueba y error.
 
 <Callout type="tip" title="Los Bloques de Construcción">
-Piensa en estos componentes como bloques LEGO. No necesitas todos ellos para cada prompt, pero saber qué está disponible te ayuda a construir exactamente lo que necesitas.
+Piensa en estos componentes como piezas de LEGO. No necesitas todos para cada prompt, pero saber qué está disponible te ayuda a construir exactamente lo que necesitas.
 </Callout>
 
 ## Los Componentes Principales
@@ -11,10 +11,10 @@ Un prompt efectivo típicamente incluye algunos o todos estos elementos:
 <PromptBreakdown parts={[
   { label: "Rol", text: "Eres un ingeniero de software senior" },
   { label: "Contexto", text: "trabajando en una aplicación React." },
-  { label: "Tarea", text: "Revisa este código en busca de errores" },
+  { label: "Tarea", text: "Revisa este código buscando errores" },
   { label: "Restricciones", text: "y enfócate solo en problemas de seguridad." },
   { label: "Formato", text: "Devuelve los hallazgos como una lista numerada." },
-  { label: "Ejemplo", text: "Como: 1. Riesgo de inyección SQL en la línea 42" }
+  { label: "Ejemplo", text: "Como: 1. Riesgo de inyección SQL en línea 42" }
 ]} />
 
 Examinemos cada componente en detalle.
@@ -25,12 +25,12 @@ Establecer un rol enfoca las respuestas del modelo a través del lente de una ex
 
 <Compare 
   before={{ label: "Sin Rol", content: "Explica la computación cuántica." }}
-  after={{ label: "Con Rol", content: "Eres un profesor de física que se especializa en hacer accesibles temas complejos para principiantes. Explica la computación cuántica." }}
+  after={{ label: "Con Rol", content: "Eres un profesor de física especializado en hacer accesibles temas complejos para principiantes. Explica la computación cuántica." }}
 />
 
 El rol prepara al modelo para:
 - Usar vocabulario apropiado
-- Aplicar experiencia relevante
+- Aplicar expertise relevante
 - Mantener una perspectiva consistente
 - Considerar la audiencia apropiadamente
 
@@ -48,19 +48,19 @@ El contexto proporciona la información que el modelo necesita para entender tu 
 
 <Compare 
   before={{ label: "Contexto Débil", content: "Arregla este error en mi código." }}
-  after={{ label: "Contexto Fuerte", content: "Estoy construyendo una API REST en Node.js usando Express.js. La API maneja autenticación de usuarios con tokens JWT. Cuando un usuario intenta acceder a una ruta protegida, obtiene un error 403 incluso con un token válido. Aquí está el código relevante: [código]" }}
+  after={{ label: "Contexto Fuerte", content: "Estoy construyendo una API REST en Node.js usando Express.js. La API maneja autenticación de usuarios con tokens JWT. Cuando un usuario intenta acceder a una ruta protegida, recibe un error 403 incluso con un token válido. Aquí está el código relevante: [código]" }}
 />
 
 ### Qué Incluir en el Contexto
 
 - **Detalles del proyecto** — Stack tecnológico, arquitectura, restricciones
 - **Estado actual** — Qué has intentado, qué funciona, qué no
-- **Objetivos** — Qué estás tratando de lograr en última instancia
+- **Objetivos** — Qué estás tratando de lograr finalmente
 - **Restricciones** — Límites de tiempo, requisitos técnicos, guías de estilo
 
 ## 3. Tarea / Instrucción
 
-La tarea es el corazón de tu prompt—lo que quieres que haga el modelo. Sé específico e inequívoco.
+La tarea es el corazón de tu prompt—lo que quieres que el modelo haga. Sé específico e inequívoco.
 
 ### El Espectro de Especificidad
 
@@ -68,7 +68,7 @@ La tarea es el corazón de tu prompt—lo que quieres que haga el modelo. Sé es
   { level: "Vago", text: "Ayúdame con este ensayo" },
   { level: "Mejor", text: "Edita este ensayo" },
   { level: "Bueno", text: "Edita este ensayo para gramática y claridad" },
-  { level: "Óptimo", text: "Edita este ensayo para gramática y claridad, manteniendo el tono original pero reduciendo la palabrería en un 20%" }
+  { level: "Óptimo", text: "Edita este ensayo para gramática y claridad, manteniendo el tono original pero reduciendo la verbosidad en un 20%" }
 ]} />
 
 ### Verbos de Acción Que Funcionan Bien
@@ -76,7 +76,7 @@ La tarea es el corazón de tu prompt—lo que quieres que haga el modelo. Sé es
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
     <span className="font-semibold min-w-32">Creación</span>
-    <span className="text-muted-foreground">Escribe, Crea, Genera, Compone, Diseña</span>
+    <span className="text-muted-foreground">Escribe, Crea, Genera, Compón, Diseña</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
     <span className="font-semibold min-w-32">Análisis</span>
@@ -119,8 +119,8 @@ Las restricciones limitan la salida del modelo. Previenen problemas comunes y as
 **Restricciones de estilo:**
 ```
 "Usa un tono formal y académico"
-"Escribe como si hablaras con un niño de 10 años"
-"Sé directo y evita el lenguaje evasivo"
+"Escribe como si hablaras a un niño de 10 años"
+"Sé directo y evita lenguaje evasivo"
 ```
 
 **Restricciones de alcance:**
@@ -132,7 +132,7 @@ Las restricciones limitan la salida del modelo. Previenen problemas comunes y as
 
 ## 5. Formato de Salida
 
-Especificar el formato de salida asegura que obtengas respuestas en una estructura utilizable.
+Especificar el formato de salida asegura que obtengas respuestas en una estructura usable.
 
 ### Formatos Comunes
 
@@ -144,7 +144,7 @@ Especificar el formato de salida asegura que obtengas respuestas en una estructu
 
 **Datos estructurados:**
 ```
-"Devuelve como JSON con claves: título, descripción, prioridad"
+"Devuelve como JSON con claves: titulo, descripcion, prioridad"
 "Formatea como una tabla markdown con columnas: Característica, Pros, Contras"
 ```
 
@@ -171,14 +171,14 @@ Reseña: "El producto llegó rápido y funciona genial, pero
 las instrucciones eran confusas."
 ```
 
-## 6. Ejemplos (Aprendizaje con Pocos Ejemplos)
+## 6. Ejemplos (Aprendizaje de Pocos Ejemplos)
 
-Los ejemplos son la forma más poderosa de mostrarle al modelo exactamente lo que quieres.
+Los ejemplos son la forma más poderosa de mostrar al modelo exactamente lo que quieres.
 
-### Ejemplo con Un Solo Caso
+### Ejemplo de Un Solo Caso
 
 ```
-Convierte estas oraciones al tiempo pasado.
+Convierte estas oraciones a tiempo pasado.
 
 Ejemplo:
 Entrada: "Ella camina a la tienda"
@@ -188,7 +188,7 @@ Ahora convierte:
 Entrada: "Ellos corren cada mañana"
 ```
 
-### Ejemplo con Varios Casos
+### Ejemplo de Pocos Casos
 
 ```
 Clasifica estos tickets de soporte por urgencia.
@@ -198,10 +198,10 @@ Ejemplos:
 "¿Cómo cambio mi contraseña?" → Bajo
 "El pago falló pero me cobraron" → Alto
 
-Clasifica: "La app se bloquea cuando abro configuración"
+Clasifica: "La app se cierra cuando abro configuración"
 ```
 
-## Uniendo Todo
+## Uniéndolo Todo
 
 Aquí hay un prompt completo usando todos los componentes:
 
@@ -209,7 +209,7 @@ Aquí hay un prompt completo usando todos los componentes:
   title="Ejemplo de Prompt Completo"
   description="Este prompt demuestra los seis componentes trabajando juntos. Pruébalo para ver cómo los prompts estructurados producen resultados profesionales."
   prompt={`# Rol
-Eres un escritor técnico senior con 10 años de experiencia creando documentación para desarrolladores.
+Eres un redactor técnico senior con 10 años de experiencia creando documentación para desarrolladores.
 
 # Contexto
 Estoy documentando una API REST para un servicio de procesamiento de pagos. La audiencia son desarrolladores integrando nuestra API en sus aplicaciones. Tienen conocimiento intermedio de programación pero pueden ser nuevos en conceptos de procesamiento de pagos.
@@ -221,13 +221,13 @@ Escribe documentación para el siguiente endpoint de API que crea una nueva inte
 - Usa lenguaje claro y conciso
 - Incluye escenarios de error comunes
 - No incluyas detalles de implementación sobre nuestro backend
-- Asume que los lectores entienden HTTP y JSON básicos
+- Asume que los lectores entienden HTTP y JSON básico
 
 # Formato de Salida
 Estructura la documentación como:
-1. Resumen del Endpoint (2-3 oraciones)
-2. Solicitud (método, URL, headers, body con ejemplo)
-3. Respuesta (ejemplos de éxito y error)
+1. Descripción del Endpoint (2-3 oraciones)
+2. Request (método, URL, headers, body con ejemplo)
+3. Response (ejemplos de éxito y error)
 4. Ejemplo de Código (en JavaScript/Node.js)
 
 # Detalles del Endpoint
@@ -237,7 +237,7 @@ Body: { "amount": 1000, "currency": "usd", "description": "Orden #1234" }`}
 
 ## El Prompt Mínimo Efectivo
 
-No todo prompt necesita todos los componentes. Para tareas simples, una instrucción clara puede ser suficiente:
+No todos los prompts necesitan todos los componentes. Para tareas simples, una instrucción clara puede ser suficiente:
 
 ```
 Traduce "Hello, how are you?" al español.
@@ -263,11 +263,11 @@ Los prompts efectivos se construyen, no se descubren. Al entender y aplicar esto
 
 - Obtener mejores resultados en el primer intento
 - Depurar prompts que no funcionan
-- Crear plantillas de prompts reutilizables
+- Crear plantillas de prompt reutilizables
 - Comunicar tus intenciones claramente
 
 <Quiz 
-  question="¿Qué componente tiene el mayor impacto en la calidad de la respuesta?"
+  question="¿Qué componente tiene el mayor impacto en la calidad de respuesta?"
   options={[
     "Siempre el rol/persona",
     "Siempre el formato de salida",
@@ -291,14 +291,14 @@ Restricciones:
 
 Formato: Para cada característica, proporciona:
 1. Nombre de la característica
-2. Descripción de una oración  
+2. Descripción de una oración
 3. Por qué importa para equipos remotos`}
-  description="Este prompt usa los seis componentes. Pruébalo y observa cómo el enfoque estructurado produce resultados enfocados y accionables."
+  description="Este prompt usa los seis componentes. Pruébalo y ve cómo el enfoque estructurado produce resultados enfocados y accionables."
 />
 
 ## Construye Tu Propio Prompt
 
-¡Ahora es tu turno! Usa este constructor de prompts interactivo para construir tu propio prompt usando los componentes que has aprendido:
+¡Ahora es tu turno! Usa este constructor de prompts interactivo para crear tu propio prompt usando los componentes que has aprendido:
 
 <PromptBuilder 
   title="Constructor de Prompts Interactivo"
@@ -307,34 +307,34 @@ Formato: Para cada característica, proporciona:
 
 <PromptChallenge
   title="Desafío del Capítulo: Construye un Prompt de Revisión de Código"
-  task="Escribe un prompt que pida a una IA revisar código en busca de vulnerabilidades de seguridad. Tu prompt debe ser lo suficientemente específico para obtener retroalimentación accionable."
+  task="Escribe un prompt que pida a una IA revisar código por vulnerabilidades de seguridad. Tu prompt debe ser lo suficientemente específico para obtener retroalimentación accionable."
   criteria={[
-    "Incluye un rol o nivel de experiencia claro",
-    "Especifica qué tipo de revisión de código (enfoque en seguridad)",
+    "Incluye un rol claro o nivel de expertise",
+    "Especifica qué tipo de revisión de código (enfoque de seguridad)",
     "Define el formato de salida esperado",
     "Establece restricciones o alcance apropiados"
   ]}
   hints={[
-    "Piensa en qué experiencia debería tener un revisor de código",
+    "Piensa en qué expertise debería tener un revisor de código",
     "Sé específico sobre qué problemas de seguridad buscar",
     "Considera pedir un formato de respuesta estructurado"
   ]}
-  exampleSolution={`Eres un ingeniero de seguridad senior con experiencia en seguridad de aplicaciones web y vulnerabilidades del OWASP Top 10.
+  exampleSolution={`Eres un ingeniero de seguridad senior con expertise en seguridad de aplicaciones web y vulnerabilidades OWASP Top 10.
 
-Tarea: Revisa el siguiente código en busca de vulnerabilidades de seguridad.
+Tarea: Revisa el siguiente código por vulnerabilidades de seguridad.
 
 Enfócate en:
 - Riesgos de inyección SQL
 - Vulnerabilidades XSS
 - Problemas de autenticación/autorización
-- Brechas de validación de entrada
+- Gaps de validación de entrada
 
 Formato de salida:
 Para cada problema encontrado:
 1. Número(s) de línea
 2. Tipo de vulnerabilidad
 3. Nivel de riesgo (Alto/Medio/Bajo)
-4. Solución recomendada
+4. Corrección recomendada
 
 [CÓDIGO A REVISAR]`}
   difficulty="intermediate"
