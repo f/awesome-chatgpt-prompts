@@ -1,387 +1,387 @@
-Prompt engineering is rarely a one-shot process. The best prompts emerge through iteration—testing, observing, and refining until you achieve the desired results.
+Prompt Engineering ist selten ein Ein-Schuss-Prozess. Die besten Prompts entstehen durch Iteration—testen, beobachten und verfeinern, bis du die gewünschten Ergebnisse erzielst.
 
-<Callout type="info" title="First Draft, Not Final Draft">
-Think of your first prompt as a rough draft. Even experienced prompt engineers rarely nail it on the first try.
+<Callout type="info" title="Erster Entwurf, nicht Endversion">
+Denke an deinen ersten Prompt als Rohentwurf. Selbst erfahrene Prompt Engineers treffen selten beim ersten Versuch ins Schwarze.
 </Callout>
 
-## The Iteration Cycle
+## Der Iterationszyklus
 
-Effective prompt refinement follows a predictable cycle: write, test, analyze, and improve. Each iteration brings you closer to a prompt that reliably produces the results you need.
+Effektive Prompt-Verfeinerung folgt einem vorhersehbaren Zyklus: schreiben, testen, analysieren und verbessern. Jede Iteration bringt dich näher zu einem Prompt, der zuverlässig die Ergebnisse produziert, die du brauchst.
 
 <IterativeRefinementDemo />
 
-## Common Refinement Patterns
+## Häufige Verfeinerungsmuster
 
-Most prompt failures fall into a handful of categories. Learning to recognize these patterns lets you quickly diagnose and fix issues without starting from scratch.
+Die meisten Prompt-Fehler fallen in eine Handvoll Kategorien. Diese Muster erkennen zu lernen ermöglicht es dir, Probleme schnell zu diagnostizieren und zu beheben, ohne von vorne anzufangen.
 
-### Problem: Output Too Long
+### Problem: Ausgabe zu lang
 
-One of the most common issues. Without explicit constraints, models tend to be thorough rather than concise.
+Eines der häufigsten Probleme. Ohne explizite Einschränkungen tendieren Modelle dazu, gründlich statt prägnant zu sein.
 
 <DiffView 
-  before="Explain how photosynthesis works."
-  after={`Explain how photosynthesis works in 3-4 sentences suitable for a 10-year-old.`}
+  before="Erkläre, wie Photosynthese funktioniert."
+  after={`Erkläre, wie Photosynthese funktioniert, in 3-4 Sätzen, die für ein 10-jähriges Kind geeignet sind.`}
   beforeLabel="Original"
-  afterLabel="Refined"
+  afterLabel="Verfeinert"
 />
 
-### Problem: Output Too Vague
+### Problem: Ausgabe zu vage
 
-Vague prompts produce vague outputs. The model can't read your mind about what "better" means or which aspects matter most to you.
+Vage Prompts produzieren vage Ausgaben. Das Modell kann nicht deine Gedanken lesen, was "besser" bedeutet oder welche Aspekte dir am wichtigsten sind.
 
 <DiffView 
-  before="Give me tips for better presentations."
-  after={`Give me 5 specific, actionable tips for improving technical presentations to non-technical stakeholders. For each tip, include a concrete example.`}
+  before="Gib mir Tipps für bessere Präsentationen."
+  after={`Gib mir 5 spezifische, umsetzbare Tipps zur Verbesserung technischer Präsentationen für nicht-technische Stakeholder. Füge für jeden Tipp ein konkretes Beispiel hinzu.`}
   beforeLabel="Original"
-  afterLabel="Refined"
+  afterLabel="Verfeinert"
 />
 
-### Problem: Wrong Tone
+### Problem: Falscher Ton
 
-Tone is subjective and varies by context. What sounds "professional" to the model might not match your organization's voice or the relationship with your recipient.
+Ton ist subjektiv und variiert je nach Kontext. Was für das Modell "professionell" klingt, entspricht möglicherweise nicht der Stimme deiner Organisation oder der Beziehung zu deinem Empfänger.
 
 <DiffView 
-  before="Write an apology email for missing a deadline."
-  after={`Write a professional but warm apology email for missing a project deadline. The tone should be accountable without being overly apologetic. Include a concrete plan to prevent future delays.`}
+  before="Schreibe eine Entschuldigungs-E-Mail für das Verpassen einer Deadline."
+  after={`Schreibe eine professionelle aber herzliche Entschuldigungs-E-Mail für das Verpassen einer Projekt-Deadline. Der Ton sollte verantwortungsbewusst sein, ohne übermäßig apologetisch zu wirken. Füge einen konkreten Plan zur Vermeidung zukünftiger Verzögerungen hinzu.`}
   beforeLabel="Original"
-  afterLabel="Refined"
+  afterLabel="Verfeinert"
 />
 
-### Problem: Missing Key Information
+### Problem: Fehlende Schlüsselinformationen
 
-Open-ended requests get open-ended responses. If you need specific types of feedback, you must ask for them explicitly.
+Offene Anfragen bekommen offene Antworten. Wenn du bestimmte Arten von Feedback brauchst, musst du explizit danach fragen.
 
 <DiffView 
-  before="Review this code."
-  after={`Review this Python code for:
-1. Bugs and logical errors
-2. Performance issues
-3. Security vulnerabilities
-4. Code style (PEP 8)
+  before="Überprüfe diesen Code."
+  after={`Überprüfe diesen Python-Code auf:
+1. Bugs und logische Fehler
+2. Performance-Probleme
+3. Sicherheitslücken
+4. Code-Stil (PEP 8)
 
-For each issue found, explain the problem and suggest a fix.
+Erkläre für jedes gefundene Problem das Problem und schlage eine Lösung vor.
 
 [code]`}
   beforeLabel="Original"
-  afterLabel="Refined"
+  afterLabel="Verfeinert"
 />
 
-### Problem: Inconsistent Format
+### Problem: Inkonsistentes Format
 
-Without a template, the model will structure each response differently, making comparison difficult and automation impossible.
+Ohne Vorlage wird das Modell jede Antwort anders strukturieren, was Vergleiche erschwert und Automatisierung unmöglich macht.
 
 <DiffView 
-  before="Analyze these three products."
-  after={`Analyze these three products using this exact format for each:
+  before="Analysiere diese drei Produkte."
+  after={`Analysiere diese drei Produkte mit diesem exakten Format für jedes:
 
-## [Product Name]
-**Price:** $X
-**Pros:** [bullet list]
-**Cons:** [bullet list]
-**Best For:** [one sentence]
-**Rating:** X/10
+## [Produktname]
+**Preis:** X€
+**Vorteile:** [Aufzählungsliste]
+**Nachteile:** [Aufzählungsliste]
+**Beste Für:** [ein Satz]
+**Bewertung:** X/10
 
-[products]`}
+[produkte]`}
   beforeLabel="Original"
-  afterLabel="Refined"
+  afterLabel="Verfeinert"
 />
 
-## Systematic Refinement Approach
+## Systematischer Verfeinerungsansatz
 
-Random changes waste time. A systematic approach helps you identify problems quickly and fix them efficiently.
+Zufällige Änderungen verschwenden Zeit. Ein systematischer Ansatz hilft dir, Probleme schnell zu identifizieren und effizient zu beheben.
 
-### Step 1: Diagnose the Issue
+### Schritt 1: Das Problem diagnostizieren
 
-Before changing anything, identify what's actually wrong. Use this diagnostic table to map symptoms to solutions:
+Bevor du etwas änderst, identifiziere, was tatsächlich falsch ist. Verwende diese Diagnosetabelle, um Symptome auf Lösungen abzubilden:
 
 <div className="my-4 grid gap-2">
   <div className="grid grid-cols-3 gap-2 p-3 bg-muted/50 rounded-lg text-sm">
     <span className="font-semibold">Symptom</span>
-    <span className="font-semibold">Likely Cause</span>
-    <span className="font-semibold">Solution</span>
+    <span className="font-semibold">Wahrscheinliche Ursache</span>
+    <span className="font-semibold">Lösung</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Too long</span>
-    <span className="text-muted-foreground">No length constraint</span>
-    <span className="text-green-600 dark:text-green-400">Add word/sentence limits</span>
+    <span>Zu lang</span>
+    <span className="text-muted-foreground">Keine Längenbeschränkung</span>
+    <span className="text-green-600 dark:text-green-400">Wort-/Satzlimits hinzufügen</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Too short</span>
-    <span className="text-muted-foreground">Lacks detail request</span>
-    <span className="text-green-600 dark:text-green-400">Ask for elaboration</span>
+    <span>Zu kurz</span>
+    <span className="text-muted-foreground">Fehlende Detailanfrage</span>
+    <span className="text-green-600 dark:text-green-400">Um Ausführung bitten</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Off-topic</span>
-    <span className="text-muted-foreground">Vague instructions</span>
-    <span className="text-green-600 dark:text-green-400">Be more specific</span>
+    <span>Themenfremd</span>
+    <span className="text-muted-foreground">Vage Anweisungen</span>
+    <span className="text-green-600 dark:text-green-400">Spezifischer sein</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Wrong format</span>
-    <span className="text-muted-foreground">Format not specified</span>
-    <span className="text-green-600 dark:text-green-400">Define exact structure</span>
+    <span>Falsches Format</span>
+    <span className="text-muted-foreground">Format nicht spezifiziert</span>
+    <span className="text-green-600 dark:text-green-400">Exakte Struktur definieren</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Wrong tone</span>
-    <span className="text-muted-foreground">Audience not clear</span>
-    <span className="text-green-600 dark:text-green-400">Specify audience/style</span>
+    <span>Falscher Ton</span>
+    <span className="text-muted-foreground">Publikum nicht klar</span>
+    <span className="text-green-600 dark:text-green-400">Publikum/Stil spezifizieren</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Inconsistent</span>
-    <span className="text-muted-foreground">No examples provided</span>
-    <span className="text-green-600 dark:text-green-400">Add few-shot examples</span>
+    <span>Inkonsistent</span>
+    <span className="text-muted-foreground">Keine Beispiele bereitgestellt</span>
+    <span className="text-green-600 dark:text-green-400">Few-Shot-Beispiele hinzufügen</span>
   </div>
 </div>
 
-### Step 2: Make Targeted Changes
+### Schritt 2: Gezielte Änderungen vornehmen
 
-Resist the urge to rewrite everything. Changing multiple variables at once makes it impossible to know what helped and what hurt. Make one change, test it, then proceed:
+Widerstehe dem Drang, alles neu zu schreiben. Mehrere Variablen gleichzeitig zu ändern macht es unmöglich zu wissen, was geholfen hat und was geschadet hat. Mache eine Änderung, teste sie, dann fahre fort:
 
 ```
-Iteration 1: Add length constraint
-Iteration 2: Specify format
-Iteration 3: Add example
-Iteration 4: Refine tone instructions
+Iteration 1: Längenbeschränkung hinzufügen
+Iteration 2: Format spezifizieren
+Iteration 3: Beispiel hinzufügen
+Iteration 4: Tonanweisungen verfeinern
 ```
 
-### Step 3: Document What Works
+### Schritt 3: Dokumentiere, was funktioniert
 
-Prompt engineering knowledge is easily lost. Keep a log of what you tried and why. This saves time when you revisit the prompt later or face similar challenges:
+Prompt-Engineering-Wissen geht leicht verloren. Führe ein Protokoll darüber, was du versucht hast und warum. Das spart Zeit, wenn du den Prompt später erneut besuchst oder ähnliche Herausforderungen hast:
 
 ```markdown
-## Prompt: Customer Email Response
+## Prompt: Kunden-E-Mail-Antwort
 
-### Version 1 (too formal)
-"Write a response to this customer complaint."
+### Version 1 (zu formal)
+"Schreibe eine Antwort auf diese Kundenbeschwerde."
 
-### Version 2 (better tone, still missing structure)
-"Write a friendly but professional response to this complaint. 
-Show empathy first."
+### Version 2 (besserer Ton, fehlt noch Struktur)
+"Schreibe eine freundliche aber professionelle Antwort auf diese Beschwerde. 
+Zeige zuerst Empathie."
 
-### Version 3 (final - good results)
-"Write a response to this customer complaint. Structure:
-1. Acknowledge their frustration (1 sentence)
-2. Apologize specifically (1 sentence)  
-3. Explain solution (2-3 sentences)
-4. Offer additional help (1 sentence)
+### Version 3 (final - gute Ergebnisse)
+"Schreibe eine Antwort auf diese Kundenbeschwerde. Struktur:
+1. Frustation anerkennen (1 Satz)
+2. Spezifisch entschuldigen (1 Satz)  
+3. Lösung erklären (2-3 Sätze)
+4. Zusätzliche Hilfe anbieten (1 Satz)
 
-Tone: Friendly, professional, empathetic but not groveling."
+Ton: Freundlich, professionell, empathisch aber nicht unterwürfig."
 ```
 
-## Real-World Iteration Example
+## Praxisbeispiel einer Iteration
 
-Let's walk through a complete iteration cycle to see how each refinement builds on the last. Notice how each version addresses specific shortcomings of the previous one.
+Lass uns einen kompletten Iterationszyklus durchgehen, um zu sehen, wie jede Verfeinerung auf der vorherigen aufbaut. Beachte, wie jede Version spezifische Mängel der vorherigen adressiert.
 
-### Task: Generate Product Names
+### Aufgabe: Produktnamen generieren
 
 <VersionDiff versions={[
   {
     label: "Version 1",
-    content: "Generate names for a new productivity app.",
-    note: "Too generic, no context"
+    content: "Generiere Namen für eine neue Produktivitäts-App.",
+    note: "Zu generisch, kein Kontext"
   },
   {
     label: "Version 2",
-    content: `Generate names for a new productivity app. The app uses AI to automatically schedule your tasks based on energy levels and calendar availability.`,
-    note: "Added context, still generic"
+    content: `Generiere Namen für eine neue Produktivitäts-App. Die App nutzt KI, um deine Aufgaben automatisch basierend auf Energieniveau und Kalenderverfügbarkeit zu planen.`,
+    note: "Kontext hinzugefügt, immer noch generisch"
   },
   {
     label: "Version 3",
-    content: `Generate 10 unique, memorable names for a productivity app with these characteristics:
-- Uses AI to schedule tasks based on energy levels
-- Target audience: busy professionals aged 25-40
-- Brand tone: modern, smart, slightly playful
-- Avoid: generic words like "pro", "smart", "AI", "task"
+    content: `Generiere 10 einzigartige, einprägsame Namen für eine Produktivitäts-App mit diesen Eigenschaften:
+- Nutzt KI zum Planen von Aufgaben basierend auf Energieniveau
+- Zielgruppe: beschäftigte Berufstätige im Alter von 25-40
+- Markenton: modern, intelligent, leicht verspielt
+- Vermeiden: generische Wörter wie "pro", "smart", "AI", "task"
 
-For each name, explain why it works.`,
-    note: "Added constraints and reasoning"
+Erkläre für jeden Namen, warum er funktioniert.`,
+    note: "Einschränkungen und Begründung hinzugefügt"
   },
   {
     label: "Version 4 (final)",
-    content: `Generate 10 unique, memorable names for a productivity app.
+    content: `Generiere 10 einzigartige, einprägsame Namen für eine Produktivitäts-App.
 
-Context:
-- Uses AI to schedule tasks based on energy levels
-- Target: busy professionals, 25-40
-- Tone: modern, smart, slightly playful
+Kontext:
+- Nutzt KI zum Planen von Aufgaben basierend auf Energieniveau
+- Ziel: beschäftigte Berufstätige, 25-40
+- Ton: modern, intelligent, leicht verspielt
 
-Requirements:
-- 2-3 syllables maximum
-- Easy to spell and pronounce
-- Available as .com domain (check if plausible)
-- Avoid: generic words (pro, smart, AI, task, flow)
+Anforderungen:
+- Maximal 2-3 Silben
+- Leicht zu buchstabieren und auszusprechen
+- Als .com-Domain verfügbar (plausibel prüfen)
+- Vermeiden: generische Wörter (pro, smart, AI, task, flow)
 
 Format:
-Name | Pronunciation | Why It Works | Domain Availability Guess`,
-    note: "Structured format, specific requirements"
+Name | Aussprache | Warum es funktioniert | Domain-Verfügbarkeitsschätzung`,
+    note: "Strukturiertes Format, spezifische Anforderungen"
   }
 ]} />
 
-## Refinement Strategies by Task Type
+## Verfeinerungsstrategien nach Aufgabentyp
 
-Different tasks fail in predictable ways. Knowing the common failure modes helps you diagnose and fix issues faster.
+Verschiedene Aufgaben scheitern auf vorhersehbare Weise. Die häufigen Fehlermodi zu kennen hilft dir, Probleme schneller zu diagnostizieren und zu beheben.
 
-### For Content Generation
+### Für Content-Generierung
 
-Content generation often produces generic, off-target, or poorly formatted output. The fix usually involves being more specific about constraints, providing concrete examples, or defining your brand voice explicitly.
-
-<InfoGrid items={[
-  { icon: "target", title: "Too Generic", description: "Add specific constraints and context", example: "\"Write about dogs\" → \"Write about golden retrievers for first-time owners, focusing on training and exercise needs\"" },
-  { icon: "scissors", title: "Too Long", description: "Set word/paragraph limits", example: "Add: \"Keep response under 150 words\" or \"Maximum 3 paragraphs\"" },
-  { icon: "palette", title: "Wrong Style", description: "Provide style examples", example: "\"Write in the style of this example: [paste sample text]\"" },
-  { icon: "megaphone", title: "Off-Brand", description: "Include brand voice guidelines", example: "\"Use friendly, casual tone. Avoid jargon. Address reader as 'you'.\"" }
-]} />
-
-### For Code Generation
-
-Code output can fail technically (syntax errors, wrong language features) or architecturally (poor patterns, missing cases). Technical issues need version/environment specifics; architectural issues need design guidance.
+Content-Generierung produziert oft generische, ziellose oder schlecht formatierte Ausgaben. Die Lösung beinhaltet meist, spezifischer über Einschränkungen zu sein, konkrete Beispiele zu liefern oder deine Markenstimme explizit zu definieren.
 
 <InfoGrid items={[
-  { icon: "code", title: "Syntax Errors", description: "Specify language version", example: "\"Use Python 3.11+ syntax with type hints\" or \"ES2022 JavaScript\"" },
-  { icon: "git-branch", title: "Wrong Approach", description: "Describe preferred patterns", example: "\"Use functional approach, avoid classes\" or \"Follow repository pattern\"" },
-  { icon: "shield", title: "Missing Edge Cases", description: "List scenarios to handle", example: "\"Handle: empty input, null values, network timeouts, invalid formats\"" },
-  { icon: "tag", title: "Poor Naming", description: "Include naming conventions", example: "\"Use camelCase for variables, PascalCase for classes, UPPER_SNAKE for constants\"" }
+  { icon: "target", title: "Zu generisch", description: "Spezifische Einschränkungen und Kontext hinzufügen", example: "\"Schreibe über Hunde\" → \"Schreibe über Golden Retriever für Erstbesitzer, mit Fokus auf Training und Bewegungsbedürfnisse\"" },
+  { icon: "scissors", title: "Zu lang", description: "Wort-/Absatzlimits setzen", example: "Hinzufügen: \"Halte die Antwort unter 150 Wörtern\" oder \"Maximal 3 Absätze\"" },
+  { icon: "palette", title: "Falscher Stil", description: "Stilbeispiele bereitstellen", example: "\"Schreibe im Stil dieses Beispiels: [Beispieltext einfügen]\"" },
+  { icon: "megaphone", title: "Markenfremd", description: "Markenstimmen-Richtlinien einbeziehen", example: "\"Verwende freundlichen, lockeren Ton. Vermeide Fachjargon. Sprich den Leser mit 'du' an.\"" }
 ]} />
 
-### For Analysis
+### Für Code-Generierung
 
-Analysis tasks often produce surface-level or unstructured results. Guide the model with specific frameworks (SWOT, Porter's Five Forces), request multiple viewpoints, or provide a template for the output structure.
+Code-Ausgabe kann technisch (Syntaxfehler, falsche Sprachfeatures) oder architektonisch (schlechte Muster, fehlende Fälle) scheitern. Technische Probleme brauchen Versions-/Umgebungsspezifika; architektonische Probleme brauchen Design-Anleitung.
 
 <InfoGrid items={[
-  { icon: "layers", title: "Too Shallow", description: "Ask for specific frameworks", example: "\"Analyze using SWOT framework\" or \"Apply Porter's Five Forces\"" },
-  { icon: "scale", title: "Biased", description: "Request multiple perspectives", example: "\"Present arguments for and against\" or \"Include skeptic's viewpoint\"" },
-  { icon: "database", title: "Missing Data", description: "Specify what to analyze", example: "\"Focus on: market size, growth rate, key players, entry barriers\"" },
-  { icon: "layout", title: "Unstructured", description: "Provide analysis template", example: "\"Format as: Summary → Key Findings → Implications → Recommendations\"" }
+  { icon: "code", title: "Syntaxfehler", description: "Sprachversion spezifizieren", example: "\"Verwende Python 3.11+ Syntax mit Type Hints\" oder \"ES2022 JavaScript\"" },
+  { icon: "git-branch", title: "Falscher Ansatz", description: "Bevorzugte Muster beschreiben", example: "\"Verwende funktionalen Ansatz, vermeide Klassen\" oder \"Folge Repository-Muster\"" },
+  { icon: "shield", title: "Fehlende Grenzfälle", description: "Zu behandelnde Szenarien auflisten", example: "\"Handle: leere Eingabe, Null-Werte, Netzwerk-Timeouts, ungültige Formate\"" },
+  { icon: "tag", title: "Schlechte Benennung", description: "Namenskonventionen einbeziehen", example: "\"Verwende camelCase für Variablen, PascalCase für Klassen, UPPER_SNAKE für Konstanten\"" }
 ]} />
 
-### For Q&A
+### Für Analyse
 
-Question-answering can be too terse or too verbose, and may lack confidence indicators or sources. Specify the detail level you need and whether you want citations or uncertainty expressed.
+Analyseaufgaben produzieren oft oberflächliche oder unstrukturierte Ergebnisse. Leite das Modell mit spezifischen Frameworks (SWOT, Porters Five Forces), fordere mehrere Perspektiven an oder stelle eine Vorlage für die Ausgabestruktur bereit.
 
 <InfoGrid items={[
-  { icon: "plus", title: "Too Short", description: "Ask for elaboration", example: "\"Explain in detail with examples\" or \"Elaborate on each point\"" },
-  { icon: "minus", title: "Too Long", description: "Request concise answer", example: "\"Answer in 2-3 sentences\" or \"Give me the TL;DR\"" },
-  { icon: "help-circle", title: "Uncertain", description: "Ask for confidence level", example: "\"Rate your confidence 1-10\" or \"Note any assumptions made\"" },
-  { icon: "link", title: "Unsourced", description: "Request citations", example: "\"Cite sources for claims\" or \"Include references where possible\"" }
+  { icon: "layers", title: "Zu oberflächlich", description: "Nach spezifischen Frameworks fragen", example: "\"Analysiere mit SWOT-Framework\" oder \"Wende Porters Five Forces an\"" },
+  { icon: "scale", title: "Einseitig", description: "Mehrere Perspektiven anfordern", example: "\"Präsentiere Argumente dafür und dagegen\" oder \"Beziehe skeptische Sichtweise ein\"" },
+  { icon: "database", title: "Fehlende Daten", description: "Spezifizieren, was zu analysieren ist", example: "\"Fokus auf: Marktgröße, Wachstumsrate, Schlüsselakteure, Eintrittsbarrieren\"" },
+  { icon: "layout", title: "Unstrukturiert", description: "Analysevorlage bereitstellen", example: "\"Format als: Zusammenfassung → Haupterkenntnisse → Implikationen → Empfehlungen\"" }
 ]} />
 
-## The Feedback Loop Technique
+### Für Q&A
 
-Here's a meta-technique: use the model itself to help improve your prompts. Share what you tried, what you got, and what you wanted. The model can often suggest improvements you hadn't considered.
+Frage-Antwort kann zu knapp oder zu ausführlich sein und Konfidenzindikatoren oder Quellen vermissen lassen. Spezifiziere den Detailgrad, den du brauchst, und ob du Zitate oder ausgedrückte Unsicherheit willst.
 
-```
-I used this prompt:
-"[your prompt]"
+<InfoGrid items={[
+  { icon: "plus", title: "Zu kurz", description: "Um Ausführung bitten", example: "\"Erkläre detailliert mit Beispielen\" oder \"Führe jeden Punkt aus\"" },
+  { icon: "minus", title: "Zu lang", description: "Prägnante Antwort anfordern", example: "\"Antworte in 2-3 Sätzen\" oder \"Gib mir das TL;DR\"" },
+  { icon: "help-circle", title: "Unsicher", description: "Nach Konfidenzniveau fragen", example: "\"Bewerte deine Konfidenz 1-10\" oder \"Notiere gemachte Annahmen\"" },
+  { icon: "link", title: "Ohne Quellen", description: "Zitate anfordern", example: "\"Zitiere Quellen für Behauptungen\" oder \"Füge Referenzen wo möglich hinzu\"" }
+]} />
 
-And got this output:
-"[model output]"
+## Die Feedback-Schleife-Technik
 
-I wanted something more [describe gap]. How should I modify 
-my prompt to get better results?
-```
-
-## A/B Testing Prompts
-
-For prompts that will be used repeatedly or at scale, don't just pick the first one that works. Test variations to find the most reliable and highest-quality approach.
+Hier ist eine Meta-Technik: Nutze das Modell selbst, um deine Prompts zu verbessern. Teile, was du versucht hast, was du bekommen hast, und was du wolltest. Das Modell kann oft Verbesserungen vorschlagen, an die du nicht gedacht hattest.
 
 ```
-Prompt A: "Summarize this article in 3 bullet points."
-Prompt B: "Extract the 3 most important insights from this article."
-Prompt C: "What are the key takeaways from this article? List 3."
+Ich habe diesen Prompt verwendet:
+"[dein prompt]"
+
+Und diese Ausgabe bekommen:
+"[modell-ausgabe]"
+
+Ich wollte etwas mehr [Lücke beschreiben]. Wie sollte ich 
+meinen Prompt modifizieren, um bessere Ergebnisse zu bekommen?
 ```
 
-Run each multiple times, compare:
-- Consistency of output
-- Quality of information
-- Relevance to your needs
+## A/B-Tests für Prompts
 
-## When to Stop Iterating
+Für Prompts, die wiederholt oder in großem Maßstab verwendet werden, nimm nicht einfach den ersten, der funktioniert. Teste Variationen, um den zuverlässigsten und qualitativ hochwertigsten Ansatz zu finden.
 
-Perfection is the enemy of good enough. Know when your prompt is ready for use and when you're just polishing for diminishing returns.
+```
+Prompt A: "Fasse diesen Artikel in 3 Stichpunkten zusammen."
+Prompt B: "Extrahiere die 3 wichtigsten Erkenntnisse aus diesem Artikel."
+Prompt C: "Was sind die Haupterkenntnisse aus diesem Artikel? Liste 3 auf."
+```
+
+Führe jeden mehrmals aus, vergleiche:
+- Konsistenz der Ausgabe
+- Qualität der Information
+- Relevanz für deine Bedürfnisse
+
+## Wann aufhören zu iterieren
+
+Perfektion ist der Feind von gut genug. Wisse, wann dein Prompt bereit für den Einsatz ist und wann du nur für abnehmende Erträge polierst.
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Ready to Ship</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Bereit zum Versenden</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Output consistently meets requirements</p>
-      <p className="m-0!">Edge cases are handled appropriately</p>
-      <p className="m-0!">Format is reliable and parseable</p>
-      <p className="m-0!">Further improvements show diminishing returns</p>
+      <p className="m-0!">Ausgabe erfüllt Anforderungen konsistent</p>
+      <p className="m-0!">Grenzfälle werden angemessen behandelt</p>
+      <p className="m-0!">Format ist zuverlässig und parsbar</p>
+      <p className="m-0!">Weitere Verbesserungen zeigen abnehmende Erträge</p>
     </div>
   </div>
   <div className="border rounded-lg bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900">
-    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Keep Iterating</p>
+    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Weiter iterieren</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Output is inconsistent across runs</p>
-      <p className="m-0!">Edge cases cause failures</p>
-      <p className="m-0!">Critical requirements are missed</p>
-      <p className="m-0!">You haven't tested enough variations</p>
+      <p className="m-0!">Ausgabe ist inkonsistent über Durchläufe</p>
+      <p className="m-0!">Grenzfälle verursachen Fehler</p>
+      <p className="m-0!">Kritische Anforderungen werden verfehlt</p>
+      <p className="m-0!">Du hast nicht genug Variationen getestet</p>
     </div>
   </div>
 </div>
 
-## Version Control for Prompts
+## Versionskontrolle für Prompts
 
-Prompts are code. For any prompt used in production, treat it with the same rigor: version control, changelogs, and the ability to roll back if something breaks.
+Prompts sind Code. Behandle jeden Prompt, der in Produktion verwendet wird, mit der gleichen Strenge: Versionskontrolle, Changelogs und die Möglichkeit zum Rollback, wenn etwas kaputt geht.
 
-<Callout type="tip" title="Built-in Versioning">
-prompts.chat includes automatic version history for your prompts. Every edit is saved, so you can compare versions and restore previous iterations with one click.
+<Callout type="tip" title="Eingebaute Versionierung">
+prompts.chat enthält automatischen Versionsverlauf für deine Prompts. Jede Bearbeitung wird gespeichert, sodass du Versionen vergleichen und vorherige Iterationen mit einem Klick wiederherstellen kannst.
 </Callout>
 
-For self-managed prompts, use a folder structure:
+Für selbst verwaltete Prompts verwende eine Ordnerstruktur:
 
 ```
 prompts/
-├── customer-response/
-│   ├── v1.0.txt    # Initial version
-│   ├── v1.1.txt    # Fixed tone issue
-│   ├── v2.0.txt    # Major restructure
-│   └── current.txt # Symlink to active version
-└── changelog.md    # Document changes
+├── kunden-antwort/
+│   ├── v1.0.txt    # Erste Version
+│   ├── v1.1.txt    # Tonproblem behoben
+│   ├── v2.0.txt    # Große Umstrukturierung
+│   └── current.txt # Symlink zur aktiven Version
+└── changelog.md    # Änderungen dokumentieren
 ```
 
-## Summary
+## Zusammenfassung
 
-<Callout type="tip" title="Key Takeaways">
-Start simple, observe carefully, change one thing at a time, document what works, and know when to stop. The best prompts aren't written—they're discovered through systematic iteration.
+<Callout type="tip" title="Wichtige Erkenntnisse">
+Fange einfach an, beobachte sorgfältig, ändere eine Sache nach der anderen, dokumentiere was funktioniert, und wisse wann aufzuhören. Die besten Prompts werden nicht geschrieben—sie werden durch systematische Iteration entdeckt.
 </Callout>
 
 <Quiz 
-  question="What's the best approach when refining a prompt that's producing wrong results?"
+  question="Was ist der beste Ansatz beim Verfeinern eines Prompts, der falsche Ergebnisse produziert?"
   options={[
-    "Rewrite the entire prompt from scratch",
-    "Add more examples until it works",
-    "Change one thing at a time and test each change",
-    "Make the prompt as long as possible"
+    "Den gesamten Prompt von Grund auf neu schreiben",
+    "Mehr Beispiele hinzufügen, bis es funktioniert",
+    "Eine Sache nach der anderen ändern und jede Änderung testen",
+    "Den Prompt so lang wie möglich machen"
   ]}
   correctIndex={2}
-  explanation="Changing one thing at a time lets you isolate what works and what doesn't. If you change multiple things at once, you won't know which change fixed the problem or which made it worse."
+  explanation="Eine Sache nach der anderen zu ändern ermöglicht es dir zu isolieren, was funktioniert und was nicht. Wenn du mehrere Dinge gleichzeitig änderst, weißt du nicht, welche Änderung das Problem behoben hat oder welche es verschlimmert hat."
 />
 
-## Practice: Improve This Prompt
+## Übung: Verbessere diesen Prompt
 
-Try improving this weak prompt yourself. Edit it, then use AI to compare your version with the original:
+Versuche selbst, diesen schwachen Prompt zu verbessern. Bearbeite ihn, dann verwende KI um deine Version mit dem Original zu vergleichen:
 
 <BeforeAfterEditor
-  title="Refine This Email Prompt"
-  badPrompt="Write an email."
-  idealPrompt={`You are a professional business writer.
+  title="Verfeinere diesen E-Mail-Prompt"
+  badPrompt="Schreibe eine E-Mail."
+  idealPrompt={`Du bist ein professioneller Geschäftsschreiber.
 
-Task: Write a follow-up email to a potential client after a sales meeting.
+Aufgabe: Schreibe eine Follow-up-E-Mail an einen potenziellen Kunden nach einem Verkaufsgespräch.
 
-Context:
-- Met with Sarah Chen, VP of Marketing at TechCorp
-- Discussed our analytics platform
-- She expressed interest in the reporting features
-- Meeting was yesterday
+Kontext:
+- Treffen mit Sarah Chen, VP Marketing bei TechCorp
+- Unsere Analytics-Plattform besprochen
+- Sie zeigte Interesse an den Reporting-Funktionen
+- Treffen war gestern
 
-Requirements:
-- Professional but warm tone
-- Reference specific points from our meeting
-- Include a clear next step (schedule a demo)
-- Keep under 150 words
+Anforderungen:
+- Professioneller aber herzlicher Ton
+- Bezug auf spezifische Punkte aus unserem Treffen
+- Klaren nächsten Schritt einbeziehen (Demo vereinbaren)
+- Unter 150 Wörter halten
 
-Format: Subject line + email body`}
-  task="Transform this vague email prompt into something that will produce a professional, effective result."
+Format: Betreffzeile + E-Mail-Text`}
+  task="Verwandle diesen vagen E-Mail-Prompt in etwas, das ein professionelles, effektives Ergebnis produziert."
 />
 
-In the next chapter, we'll explore JSON and YAML prompting for structured data applications.
+Im nächsten Kapitel erkunden wir JSON- und YAML-Prompting für strukturierte Datenanwendungen.
