@@ -3,7 +3,7 @@
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://prompts.chat/logo-dark.svg">
       <source media="(prefers-color-scheme: light)" srcset="https://prompts.chat/logo.svg">
-      <img height="40" alt="prompts.chat" src="https://prompts.chat/logo.svg">
+      <img height="60" alt="prompts.chat" src="https://prompts.chat/logo.svg">
     </picture>
     <br>
     prompts.chat
