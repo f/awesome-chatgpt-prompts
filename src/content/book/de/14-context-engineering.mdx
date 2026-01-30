@@ -1,287 +1,242 @@
-Understanding context is essential for building AI applications that actually work. This chapter covers everything you need to know about giving AI the right information at the right time.
+Kontext zu verstehen ist essentiell für den Aufbau von KI-Anwendungen, die tatsächlich funktionieren. Dieses Kapitel behandelt alles, was du wissen musst, um KI die richtigen Informationen zur richtigen Zeit zu geben.
 
-<Callout type="info" title="Why Context Matters">
-AI models are stateless. They don't remember past conversations. Every time you send a message, you need to include everything the AI needs to know. This is called "context engineering."
+<Callout type="info" title="Warum Kontext wichtig ist">
+KI-Modelle sind zustandslos. Sie erinnern sich nicht an vergangene Gespräche. Jedes Mal, wenn du eine Nachricht sendest, musst du alles einbeziehen, was die KI wissen muss. Das nennt man "Context Engineering."
 </Callout>
 
-## What is Context?
+## Was ist Kontext?
 
-Context is all the information you give to AI alongside your question. Think of it like this:
+Kontext sind alle Informationen, die du der KI zusammen mit deiner Frage gibst. Denke daran so:
 
 <Compare 
-  before={{ label: "No Context", content: "What's the status?" }}
-  after={{ label: "With Context", content: "You are a project manager assistant. The user is working on Project Alpha, which is due Friday. The last update was: 'Backend complete, frontend 80% done.'\n\nUser: What's the status?" }}
+  before={{ label: "Kein Kontext", content: "Was ist der Status?" }}
+  after={{ label: "Mit Kontext", content: "Du bist ein Projektmanager-Assistent. Der Benutzer arbeitet an Projekt Alpha, das am Freitag fällig ist. Das letzte Update war: 'Backend fertig, Frontend zu 80% fertig.'\n\nBenutzer: Was ist der Status?" }}
 />
 
-Without context, the AI has no idea what "status" you're asking about. With context, it can give a useful answer.
+Ohne Kontext hat die KI keine Ahnung, nach welchem "Status" du fragst. Mit Kontext kann sie eine nützliche Antwort geben.
 
-### The Context Window
+### Das Kontextfenster
 
-Remember from earlier chapters: AI has a limited "context window" - the maximum amount of text it can see at once. This includes:
+Erinnere dich aus früheren Kapiteln: KI hat ein begrenztes "Kontextfenster" - die maximale Textmenge, die sie auf einmal sehen kann. Das beinhaltet:
 
 <InfoGrid items={[
-  { label: "System Prompt", description: "Instructions that define AI behavior", color: "purple" },
-  { label: "Conversation History", description: "Previous messages in this chat", color: "blue" },
-  { label: "Retrieved Information", description: "Documents, data, or knowledge fetched for this query", color: "green" },
-  { label: "Current Query", description: "The user's actual question", color: "amber" },
-  { label: "AI Response", description: "The answer (also counts toward the limit!)", color: "rose" },
+  { label: "System Prompt", description: "Anweisungen, die KI-Verhalten definieren", color: "purple" },
+  { label: "Gesprächsverlauf", description: "Vorherige Nachrichten in diesem Chat", color: "blue" },
+  { label: "Abgerufene Informationen", description: "Dokumente, Daten oder Wissen, das für diese Anfrage geholt wurde", color: "green" },
+  { label: "Aktuelle Anfrage", description: "Die tatsächliche Frage des Benutzers", color: "amber" },
+  { label: "KI-Antwort", description: "Die Antwort (zählt auch zum Limit!)", color: "rose" },
 ]} />
 
-## AI is Stateless
+## KI ist zustandslos
 
-<Callout type="warning" title="Important Concept">
-AI doesn't remember anything between conversations. Every API call starts fresh. If you want the AI to "remember" something, YOU have to include it in the context every time.
+<Callout type="warning" title="Wichtiges Konzept">
+KI erinnert sich nicht an irgendetwas zwischen Gesprächen. Jeder API-Aufruf startet frisch. Wenn du willst, dass die KI sich an etwas "erinnert", MUSST DU es jedes Mal in den Kontext einbeziehen.
 </Callout>
 
-This is why chatbots send your entire conversation history with each message. It's not that the AI remembers - it's that the app re-sends everything.
+Deshalb senden Chatbots deinen gesamten Gesprächsverlauf mit jeder Nachricht. Es ist nicht so, dass die KI sich erinnert - die App sendet alles erneut.
 
-<TryIt compact prompt={`Pretend this is a new conversation with no history.
+<TryIt compact prompt={`Tu so, als wäre dies ein neues Gespräch ohne Verlauf.
 
-What did I just ask you about?`} />
+Was habe ich dich gerade gefragt?`} />
 
-The AI will say it doesn't know because it truly doesn't have access to any previous context.
+Die KI wird sagen, dass sie es nicht weiß, weil sie wirklich keinen Zugang zu früherem Kontext hat.
 
 ## RAG: Retrieval-Augmented Generation
 
-RAG is a technique for giving AI access to knowledge it wasn't trained on. Instead of trying to fit everything into the AI's training, you:
+RAG ist eine Technik, um KI Zugang zu Wissen zu geben, auf das sie nicht trainiert wurde. Anstatt zu versuchen, alles in das KI-Training zu packen:
 
-1. **Store** your documents in a searchable database
-2. **Search** for relevant documents when a user asks a question
-3. **Retrieve** the most relevant pieces
-4. **Augment** your prompt with those pieces
-5. **Generate** an answer using that context
+1. **Speichere** deine Dokumente in einer durchsuchbaren Datenbank
+2. **Suche** nach relevanten Dokumenten, wenn ein Benutzer eine Frage stellt
+3. **Rufe** die relevantesten Teile ab
+4. **Ergänze** deinen Prompt mit diesen Teilen
+5. **Generiere** eine Antwort mit diesem Kontext
 
 <div className="my-6 p-4 border rounded-lg bg-muted/30">
-  <p className="font-semibold mb-3">How RAG Works:</p>
+  <p className="font-semibold mb-3">Wie RAG funktioniert:</p>
   <div className="flex flex-col gap-2 text-sm">
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">1</span>
-      <span>User asks: "What's our refund policy?"</span>
+      <span>Benutzer fragt: "Was ist unsere Rückgaberichtlinie?"</span>
     </div>
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">2</span>
-      <span>System searches your documents for "refund policy"</span>
+      <span>System durchsucht deine Dokumente nach "Rückgaberichtlinie"</span>
     </div>
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">3</span>
-      <span>Finds relevant section from your policy document</span>
+      <span>Findet relevanten Abschnitt aus deinem Richtliniendokument</span>
     </div>
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">4</span>
-      <span>Sends to AI: "Based on this policy: [text], answer: What's our refund policy?"</span>
+      <span>Sendet an KI: "Basierend auf dieser Richtlinie: [Text], beantworte: Was ist unsere Rückgaberichtlinie?"</span>
     </div>
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center text-green-600 font-bold">5</span>
-      <span>AI generates accurate answer using your actual policy</span>
+      <span>KI generiert genaue Antwort mit deiner tatsächlichen Richtlinie</span>
     </div>
   </div>
 </div>
 
-### Why RAG?
+### Warum RAG?
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="p-4 border rounded-lg">
-    <p className="font-semibold text-green-600 dark:text-green-400 mb-2 flex items-center gap-2"><IconCheck className="text-green-600" /> RAG Advantages</p>
+    <p className="font-semibold text-green-600 dark:text-green-400 mb-2 flex items-center gap-2"><IconCheck className="text-green-600" /> RAG-Vorteile</p>
     <ul className="text-sm space-y-1 text-muted-foreground">
-      <li>Uses your actual, current data</li>
-      <li>Reduces hallucinations</li>
-      <li>Can cite sources</li>
-      <li>Easy to update (just update documents)</li>
-      <li>No expensive fine-tuning needed</li>
+      <li>Verwendet deine tatsächlichen, aktuellen Daten</li>
+      <li>Reduziert Halluzinationen</li>
+      <li>Kann Quellen zitieren</li>
+      <li>Einfach zu aktualisieren (einfach Dokumente aktualisieren)</li>
+      <li>Kein teures Fine-Tuning nötig</li>
     </ul>
   </div>
   <div className="p-4 border rounded-lg">
-    <p className="font-semibold text-amber-600 dark:text-amber-400 mb-2 flex items-center gap-2"><IconLightbulb className="text-amber-600" /> When to Use RAG</p>
+    <p className="font-semibold text-amber-600 dark:text-amber-400 mb-2 flex items-center gap-2"><IconLightbulb className="text-amber-600" /> Wann RAG verwenden</p>
     <ul className="text-sm space-y-1 text-muted-foreground">
-      <li>Customer support bots</li>
-      <li>Documentation search</li>
-      <li>Internal knowledge bases</li>
-      <li>Any domain-specific Q&A</li>
-      <li>When accuracy matters</li>
+      <li>Kundensupport-Bots</li>
+      <li>Dokumentationssuche</li>
+      <li>Interne Wissensdatenbanken</li>
+      <li>Jede domänenspezifische Q&A</li>
+      <li>Wenn Genauigkeit wichtig ist</li>
     </ul>
   </div>
 </div>
 
-## Embeddings: How Search Works
+## Embeddings: Wie Suche funktioniert
 
-How does RAG know which documents are "relevant"? It uses **embeddings** - a way to turn text into numbers that capture meaning.
+Woher weiß RAG, welche Dokumente "relevant" sind? Es verwendet **Embeddings** - eine Methode, Text in Zahlen umzuwandeln, die Bedeutung erfassen.
 
-### What Are Embeddings?
+### Was sind Embeddings?
 
-An embedding is a list of numbers (a "vector") that represents the meaning of text. Similar meanings = similar numbers.
+Ein Embedding ist eine Liste von Zahlen (ein "Vektor"), die die Bedeutung von Text repräsentiert. Ähnliche Bedeutungen = ähnliche Zahlen.
 
 <EmbeddingsDemo />
 
-### Semantic Search
+### Semantische Suche
 
-With embeddings, you can search by meaning, not just keywords:
+Mit Embeddings kannst du nach Bedeutung suchen, nicht nur nach Schlüsselwörtern:
 
 <Compare 
-  before={{ label: "Keyword Search", content: "Query: 'return policy'\nFinds: Documents containing 'return' and 'policy'\nMisses: 'How to get a refund'" }}
-  after={{ label: "Semantic Search", content: "Query: 'return policy'\nFinds: All related documents including:\n- 'Refund guidelines'\n- 'How to send items back'\n- 'Money-back guarantee'" }}
+  before={{ label: "Schlüsselwort-Suche", content: "Anfrage: 'Rückgaberichtlinie'\nFindet: Dokumente mit 'Rückgabe' und 'Richtlinie'\nVerpasst: 'Wie bekomme ich eine Erstattung'" }}
+  after={{ label: "Semantische Suche", content: "Anfrage: 'Rückgaberichtlinie'\nFindet: Alle verwandten Dokumente einschließlich:\n- 'Erstattungsrichtlinien'\n- 'Wie man Artikel zurücksendet'\n- 'Geld-zurück-Garantie'" }}
 />
 
-This is why RAG is so powerful - it finds relevant information even when the exact words don't match.
+Deshalb ist RAG so mächtig - es findet relevante Informationen, auch wenn die exakten Wörter nicht übereinstimmen.
 
 ## Function Calling / Tool Use
 
-Function calling lets AI use external tools - like searching the web, checking a database, or calling an API.
+Function Calling lässt KI externe Tools verwenden - wie im Web suchen, eine Datenbank prüfen oder eine API aufrufen.
 
-<Callout type="tip" title="Also Called">
-Different AI providers call this different things: "function calling" (OpenAI), "tool use" (Anthropic/Claude), or "tools" (general term). They all mean the same thing.
+<Callout type="tip" title="Auch genannt">
+Verschiedene KI-Anbieter nennen das unterschiedlich: "Function Calling" (OpenAI), "Tool Use" (Anthropic/Claude) oder "Tools" (allgemeiner Begriff). Sie meinen alle dasselbe.
 </Callout>
 
-### How It Works
+### Wie es funktioniert
 
-1. You tell the AI what tools are available
-2. AI decides if it needs a tool to answer
-3. AI outputs a structured request for the tool
-4. Your code runs the tool and returns results
-5. AI uses the results to form its answer
+1. Du sagst der KI, welche Tools verfügbar sind
+2. KI entscheidet, ob sie ein Tool braucht, um zu antworten
+3. KI gibt eine strukturierte Anfrage für das Tool aus
+4. Dein Code führt das Tool aus und gibt Ergebnisse zurück
+5. KI verwendet die Ergebnisse, um ihre Antwort zu formulieren
 
 <TryIt 
-  title="Function Calling Example"
-  description="This prompt shows how AI decides to use a tool:"
-  prompt={`You have access to these tools:
+  title="Function Calling Beispiel"
+  description="Dieser Prompt zeigt, wie KI entscheidet, ein Tool zu verwenden:"
+  prompt={`Du hast Zugang zu diesen Tools:
 
-1. get_weather(city: string) - Get current weather for a city
-2. search_web(query: string) - Search the internet
-3. calculate(expression: string) - Do math calculations
+1. get_weather(city: string) - Aktuelles Wetter für eine Stadt abrufen
+2. search_web(query: string) - Im Internet suchen
+3. calculate(expression: string) - Mathematische Berechnungen durchführen
 
-User: What's the weather like in Tokyo right now?
+Benutzer: Wie ist das Wetter gerade in Tokio?
 
-Think step by step: Do you need a tool? Which one? What parameters?`}
+Denke Schritt für Schritt: Brauchst du ein Tool? Welches? Welche Parameter?`}
 />
 
-## Summarization: Managing Long Conversations
+## Zusammenfassung: Lange Gespräche verwalten
 
-As conversations get longer, you'll hit the context window limit. Since AI is stateless (it doesn't remember anything), long conversations can overflow. The solution? **Summarization**.
+Wenn Gespräche länger werden, erreichst du das Kontextfensterlimit. Da KI zustandslos ist (sie erinnert sich an nichts), können lange Gespräche überlaufen. Die Lösung? **Zusammenfassung**.
 
-### The Problem
+### Das Problem
 
 <Compare 
-  before={{ label: "Without Summarization", content: "Message 1 (500 tokens)\nMessage 2 (800 tokens)\nMessage 3 (600 tokens)\n... 50 more messages ...\n────────────────────\n= 40,000+ tokens\n= OVER THE LIMIT!" }}
-  after={{ label: "With Summarization", content: "[Summary]: 200 tokens\nRecent messages: 2,000 tokens\nCurrent query: 100 tokens\n────────────────────\n= 2,300 tokens\n= Fits perfectly!" }}
+  before={{ label: "Ohne Zusammenfassung", content: "Nachricht 1 (500 Tokens)\nNachricht 2 (800 Tokens)\nNachricht 3 (600 Tokens)\n... 50 weitere Nachrichten ...\n────────────────────\n= 40.000+ Tokens\n= ÜBER DEM LIMIT!" }}
+  after={{ label: "Mit Zusammenfassung", content: "[Zusammenfassung]: 200 Tokens\nAktuelle Nachrichten: 2.000 Tokens\nAktuelle Anfrage: 100 Tokens\n────────────────────\n= 2.300 Tokens\n= Passt perfekt!" }}
 />
 
-### Summarization Strategies
+### Zusammenfassungsstrategien
 
-Different approaches work for different use cases. Click each strategy to see how it processes the same conversation:
+Verschiedene Ansätze funktionieren für verschiedene Anwendungsfälle. Klicke auf jede Strategie, um zu sehen, wie sie dasselbe Gespräch verarbeitet:
 
 <SummarizationDemo />
 
-### What to Capture in Summaries
+### Was in Zusammenfassungen erfassen
 
-A good conversation summary preserves what matters:
+Eine gute Gesprächszusammenfassung bewahrt, was wichtig ist:
 
 <Checklist 
-  title="Summary Checklist"
+  title="Zusammenfassungs-Checkliste"
   items={[
-    { text: "Key decisions made" },
-    { text: "Important facts mentioned" },
-    { text: "User preferences discovered" },
-    { text: "Current task or goal" },
-    { text: "Any pending questions" },
-    { text: "Tone and formality level" }
+    { text: "Getroffene Schlüsselentscheidungen" },
+    { text: "Erwähnte wichtige Fakten" },
+    { text: "Entdeckte Benutzerpräferenzen" },
+    { text: "Aktuelle Aufgabe oder Ziel" },
+    { text: "Alle ausstehenden Fragen" },
+    { text: "Ton und Formalitätsgrad" }
   ]}
 />
 
-### Try It: Create a Summary
-
-<TryIt 
-  title="Conversation Summarizer"
-  description="Practice creating a context-preserving summary from this conversation:"
-  prompt={`Summarize this conversation for context management. The summary will replace the full conversation in the AI's memory.
-
-CONVERSATION:
-User: Hi, I'm learning Python for data analysis
-Assistant: Welcome! Python is great for data analysis. What's your current experience level?
-User: I know basic Excel. Complete beginner with programming.
-Assistant: Perfect starting point! Let's begin with variables - they're like Excel cells that store data.
-User: Can you explain variables?
-Assistant: Variables are containers for storing data. In Python: name = "Alice" or age = 25
-User: What about lists? I need to handle multiple values.
-Assistant: Lists are like Excel columns! Create one like: prices = [10, 20, 30]. Access items with prices[0].
-User: Can I do calculations on lists?
-Assistant: Yes! Use sum(prices), len(prices), or max(prices). For complex analysis, we'll use pandas later.
-User: What's pandas?
-Assistant: Pandas is a library for data analysis - think "Excel on steroids". It has DataFrames (like spreadsheets).
-
-CREATE A SUMMARY that captures:
-1. User's goal and background (1 sentence)
-2. Topics covered so far (1 sentence)  
-3. User's learning style/preferences (1 sentence)
-4. What to cover next (1 sentence)`}
-/>
-
-### When to Summarize
-
-<TryIt compact prompt={`You are managing a conversation's context window. Given these conditions, decide when to trigger summarization:
-
-CONTEXT WINDOW: 8,000 tokens max
-CURRENT USAGE:
-- System prompt: 500 tokens
-- Conversation history: 6,200 tokens  
-- Buffer for response: 1,500 tokens
-
-RULES:
-- Summarize when history exceeds 70% of available space
-- Keep last 5 messages intact
-- Preserve all user preferences and decisions
-
-Should you summarize now? If yes, what messages should be summarized vs kept intact?`} />
-
 ## MCP: Model Context Protocol
 
-MCP (Model Context Protocol) is a standard way to connect AI to external data and tools. Instead of building custom integrations for each AI provider, MCP provides a universal interface.
+MCP (Model Context Protocol) ist ein Standard, um KI mit externen Daten und Tools zu verbinden. Anstatt benutzerdefinierte Integrationen für jeden KI-Anbieter zu bauen, bietet MCP eine universelle Schnittstelle.
 
-### Why MCP?
+### Warum MCP?
 
 <InfoGrid columns={2} items={[
-  { label: "Without MCP", description: "Build separate integrations for ChatGPT, Claude, Gemini... Maintain multiple codebases. Break when APIs change.", color: "red" },
-  { label: "With MCP", description: "Build once, works everywhere. Standard protocol. AI can discover and use your tools automatically.", color: "green" },
+  { label: "Ohne MCP", description: "Separate Integrationen für ChatGPT, Claude, Gemini bauen... Mehrere Codebasen pflegen. Brechen, wenn APIs sich ändern.", color: "red" },
+  { label: "Mit MCP", description: "Einmal bauen, funktioniert überall. Standardprotokoll. KI kann deine Tools automatisch entdecken und verwenden.", color: "green" },
 ]} />
 
-### MCP Provides
+### MCP bietet
 
-- **Resources**: Data the AI can read (files, database records, API responses)
-- **Tools**: Actions the AI can take (search, create, update, delete)
-- **Prompts**: Pre-built prompt templates
+- **Ressourcen**: Daten, die die KI lesen kann (Dateien, Datenbankeinträge, API-Antworten)
+- **Tools**: Aktionen, die die KI ausführen kann (suchen, erstellen, aktualisieren, löschen)
+- **Prompts**: Vorgefertigte Prompt-Vorlagen
 
-<Callout type="info" title="prompts.chat Uses MCP">
-This platform has an MCP server! You can connect it to Claude Desktop or other MCP-compatible clients to search and use prompts directly from your AI assistant.
+<Callout type="info" title="prompts.chat verwendet MCP">
+Diese Plattform hat einen MCP-Server! Du kannst ihn mit Claude Desktop oder anderen MCP-kompatiblen Clients verbinden, um Prompts direkt von deinem KI-Assistenten zu suchen und zu verwenden.
 </Callout>
 
-## Building Context: The Complete Picture
+## Kontext aufbauen: Das Gesamtbild
 
 <ContextPlayground />
 
 ## Best Practices
 
 <Checklist 
-  title="Context Engineering Checklist"
+  title="Context Engineering Checkliste"
   items={[
-    { text: "Keep system prompts concise but complete" },
-    { text: "Only include relevant context (not everything)" },
-    { text: "Summarize long conversations" },
-    { text: "Use RAG for domain-specific knowledge" },
-    { text: "Give AI tools for real-time data" },
-    { text: "Monitor token usage to stay within limits" },
-    { text: "Test with edge cases (very long inputs, etc.)" }
+    { text: "System Prompts prägnant aber vollständig halten" },
+    { text: "Nur relevanten Kontext einbeziehen (nicht alles)" },
+    { text: "Lange Gespräche zusammenfassen" },
+    { text: "RAG für domänenspezifisches Wissen verwenden" },
+    { text: "KI Tools für Echtzeitdaten geben" },
+    { text: "Token-Verbrauch überwachen, um innerhalb der Limits zu bleiben" },
+    { text: "Mit Grenzfällen testen (sehr lange Eingaben, etc.)" }
   ]}
 />
 
-## Summary
+## Zusammenfassung
 
-Context engineering is about giving AI the right information:
+Context Engineering geht darum, KI die richtigen Informationen zu geben:
 
-- **AI is stateless** - include everything it needs every time
-- **RAG** retrieves relevant documents to augment prompts
-- **Embeddings** enable semantic search (meaning, not just keywords)
-- **Function calling** lets AI use external tools
-- **Summarization** manages long conversations
-- **MCP** standardizes how AI connects to data and tools
+- **KI ist zustandslos** - beziehe jedes Mal alles ein, was sie braucht
+- **RAG** ruft relevante Dokumente ab, um Prompts zu ergänzen
+- **Embeddings** ermöglichen semantische Suche (Bedeutung, nicht nur Schlüsselwörter)
+- **Function Calling** lässt KI externe Tools verwenden
+- **Zusammenfassung** verwaltet lange Gespräche
+- **MCP** standardisiert, wie KI sich mit Daten und Tools verbindet
 
-<Callout type="tip" title="Remember">
-The quality of AI output depends on the quality of context you provide. Better context = better answers.
+<Callout type="tip" title="Denk dran">
+Die Qualität der KI-Ausgabe hängt von der Qualität des Kontexts ab, den du bereitstellst. Besserer Kontext = bessere Antworten.
 </Callout>
