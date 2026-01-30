@@ -1,0 +1,331 @@
+L'IA est un outil puissant pour l'enseignement et l'apprentissage. Ce chapitre couvre les prompts pour les contextes éducatifs—du tutorat personnalisé au développement de curriculum.
+
+<Callout type="info" title="L'IA comme Partenaire d'Apprentissage">
+L'IA excelle comme tuteur patient et adaptatif qui peut expliquer les concepts de multiples façons, générer des exercices illimités, et fournir un feedback instantané—disponible 24h/24.
+</Callout>
+
+## Apprentissage Personnalisé
+
+### À Faire et À Éviter : Prompts d'Apprentissage
+
+<Compare 
+  before={{ label: "❌ Demande passive", content: "Explique-moi la physique quantique." }}
+  after={{ label: "✓ Demande riche en contexte", content: "Explique-moi la superposition quantique.\n\nMon background : Je comprends la chimie de base et la physique classique.\nStyle d'apprentissage : J'apprends mieux avec des analogies et des exemples.\nExplique avec une analogie simple, puis le concept central, puis un exemple pratique. Vérifie ma compréhension avec une question." }}
+/>
+
+### Explication de Concept
+
+<TryIt compact prompt={`Explique-moi [concept].
+
+Mon background :
+- Niveau actuel : [débutant/intermédiaire/avancé]
+- Connaissances liées : [ce que je sais déjà]
+- Style d'apprentissage : [visuel/exemples/théorique]
+
+Explique avec :
+1. Analogie simple avec quelque chose de familier
+2. Concept central en langage simple
+3. Comment ça se connecte à ce que je sais
+4. Un exemple pratique
+5. Idées fausses courantes à éviter
+
+Puis vérifie ma compréhension avec une question.`} />
+
+### Tutorat Adaptatif
+
+<TryIt compact prompt={`Tu es mon tuteur pour \${matiere:le calcul}. Enseigne-moi \${sujet:les dérivées} de façon adaptative.
+
+Commence par une question diagnostique pour évaluer mon niveau.
+Basé sur ma réponse :
+- Si correcte : Passe aux aspects plus avancés
+- Si partiellement correcte : Clarifie la lacune, puis continue
+- Si incorrecte : Reviens en arrière et construis les fondations
+
+Après chaque explication :
+- Vérifie la compréhension avec une question
+- Ajuste la difficulté selon mes réponses
+- Fournis des encouragements et suis les progrès`} />
+
+### Création de Parcours d'Apprentissage
+
+<TryIt compact prompt={`Crée un parcours d'apprentissage pour \${objectif:devenir développeur web}.
+
+Ma situation :
+- Niveau de compétence actuel : \${niveauCompetence:débutant complet}
+- Temps disponible : \${tempsDisponible:10 heures par semaine}
+- Timeline cible : \${timeline:6 mois}
+- Préférences d'apprentissage : \${preferences:projets et tutoriels}
+
+Fournis :
+1. Vérification des prérequis (ce dont j'ai besoin d'abord)
+2. Découpage en jalons (phases avec objectifs)
+3. Ressources pour chaque phase (gratuites quand possible)
+4. Projets pratiques à chaque étape
+5. Critères d'évaluation (comment savoir si je suis prêt à avancer)`} />
+
+## Aide à l'Étude
+
+<Callout type="tip" title="Principe d'Apprentissage Actif">
+Ne lisez pas passivement les explications de l'IA. Demandez-lui de vous interroger, de générer des problèmes, et de vérifier votre compréhension. **Le rappel actif bat la révision passive.**
+</Callout>
+
+### Génération de Résumé
+
+<TryIt compact prompt={`Résume ce \${typeContenu:chapitre} pour l'étude.
+
+Contenu :
+\${contenu:colle ton contenu ici}
+
+Fournis :
+1. **Concepts Clés** (5-7 idées principales)
+2. **Termes Importants** (avec définitions brèves)
+3. **Relations** (comment les concepts se connectent)
+4. **Questions d'Étude** (pour tester la compréhension)
+5. **Aides Mémoire** (mnémotechniques ou associations)
+
+Formate pour une révision et mémorisation faciles.`} />
+
+### Génération de Flashcards
+
+<TryIt compact prompt={`Crée des flashcards pour étudier \${sujet:la Seconde Guerre Mondiale}.
+
+Matériel source :
+\${contenu:colle ton matériel d'étude ici}
+
+Formate chaque carte :
+Recto : Question ou terme
+Verso : Réponse ou définition
+Indice : Aide mémoire optionnelle
+
+Catégories à couvrir :
+- Définitions (termes clés)
+- Concepts (idées principales)
+- Relations (comment les choses se connectent)
+- Applications (utilisations réelles)
+
+Génère \${nombreCartes:20} cartes, équilibrées entre les catégories.`} />
+
+### Exercices Pratiques
+
+<TryIt compact prompt={`Génère des exercices pratiques pour \${sujet:les équations du second degré}.
+
+Niveaux de difficulté :
+- 3 Basiques (testent la compréhension fondamentale)
+- 3 Intermédiaires (requièrent application)
+- 2 Avancés (requièrent synthèse/analyse)
+
+Pour chaque problème :
+1. Énoncé clair du problème
+2. Espace pour le travail de l'étudiant
+3. Indices disponibles sur demande
+4. Solution détaillée avec explication
+
+Inclure de la variété : \${typesProblemes:calcul, conceptuel, application}`} />
+
+## Outils d'Enseignement
+
+### Création de Plan de Cours
+
+<TryIt compact prompt={`Crée un plan de cours pour enseigner \${sujet:la photosynthèse}.
+
+Contexte :
+- Niveau/Classe : \${audience:3ème sciences}
+- Durée du cours : \${duree:50 minutes}
+- Taille de classe : \${tailleClasse:25 élèves}
+- Connaissances préalables : \${prerequis:structure cellulaire de base}
+
+Inclure :
+1. **Objectifs d'Apprentissage** (format SMART)
+2. **Accroche d'Ouverture** (5 min) - activité d'engagement
+3. **Instruction** (15-20 min) - délivrance du contenu central
+4. **Pratique Guidée** (10 min) - travail avec les élèves
+5. **Pratique Indépendante** (10 min) - les élèves travaillent seuls
+6. **Évaluation** (5 min) - vérifier la compréhension
+7. **Clôture** - résumer et aperçu
+
+Matériel nécessaire : liste
+Stratégies de différenciation : pour différents apprenants`} />
+
+### Conception de Devoirs
+
+<TryIt compact prompt={`Conçois un devoir pour \${objectifApprentissage:analyser des sources primaires}.
+
+Paramètres :
+- Cours : \${cours:Histoire Terminale}
+- À rendre dans : \${delai:2 semaines}
+- Individuel/Groupe : \${groupement:individuel}
+- Poids : \${poids:15% de la note}
+
+Inclure :
+1. Instructions claires
+2. Grille d'évaluation avec critères
+3. Exemple de qualité attendue
+4. Exigences de soumission
+5. Rappels d'intégrité académique
+
+Le devoir devrait :
+- Évaluer \${competences:pensée critique et évaluation de sources}
+- Permettre \${permettre:analyse et interprétation}
+- Être completable en environ \${heures:8 heures}`} />
+
+### Génération de Quiz
+
+<TryIt compact prompt={`Crée un quiz sur \${sujet:la Révolution Française}.
+
+Format :
+- [X] Questions à choix multiples (4 options chacune)
+- [X] Questions Vrai/Faux
+- [X] Questions à réponse courte
+- [X] Une question de dissertation
+
+Spécifications :
+- Couvrir tous les objectifs d'apprentissage clés
+- Aller du rappel à l'analyse
+- Inclure corrigé avec explications
+- Estimation de temps : \${estimationTemps:30 minutes}
+- Valeurs en points pour chaque section`} />
+
+## Contextes d'Apprentissage Spécialisés
+
+### Apprentissage des Langues
+
+<TryIt compact prompt={`Aide-moi à apprendre \${langue:l'espagnol}.
+
+Niveau actuel : \${niveauActuel:A2 - élémentaire}
+Langue maternelle : \${langueMaternelle:français}
+Objectifs : \${objectifs:conversation pour les voyages}
+
+Leçon d'aujourd'hui : \${domaineAttention:commander à manger au restaurant}
+
+Inclure :
+1. Nouveau vocabulaire (5-10 mots) avec :
+   - Guide de prononciation
+   - Phrases exemples
+   - Notes d'usage courant
+2. Point de grammaire avec explication claire
+3. Exercices pratiques
+4. Note de contexte culturel
+5. Scénario de pratique de conversation`} />
+
+### Développement de Compétences
+
+<TryIt compact prompt={`Je veux apprendre \${competence:la guitare}. Sois mon coach.
+
+Mon niveau actuel : \${niveauActuel:débutant complet}
+Objectif : \${objectif:jouer 5 chansons à l'oreille}
+Temps de pratique disponible : \${tempsPratique:30 minutes par jour}
+
+Fournis :
+1. Évaluation du point de départ
+2. Décomposition des sous-compétences nécessaires
+3. Routine de pratique (exercices spécifiques)
+4. Marqueurs de progrès (comment mesurer l'amélioration)
+5. Plateaux courants et comment les surmonter
+6. Plan de pratique de la première semaine en détail`} />
+
+### Préparation aux Examens
+
+<TryIt compact prompt={`Aide-moi à me préparer pour \${nomExamen:le baccalauréat}.
+
+Format de l'examen : \${formatExamen:épreuves écrites et orales}
+Temps jusqu'à l'examen : \${tempsJusquExamen:8 semaines}
+Mes points faibles : \${pointsFaibles:compréhension de texte, géométrie}
+Score cible : \${scoreCible:mention Bien}
+
+Crée un plan d'étude :
+1. Sujets à couvrir (priorisés)
+2. Planning d'étude quotidien
+3. Stratégie d'examens blancs
+4. Formules/faits clés à mémoriser
+5. Conseils de passage d'examen spécifiques à cet examen
+6. Recommandations pour la veille et le jour J`} />
+
+## Accessibilité en Éducation
+
+### Adaptation de Contenu
+
+<TryIt compact prompt={`Adapte ce contenu éducatif pour \${besoinAccessibilite:format adapté à la dyslexie} :
+
+Contenu original :
+\${contenu:colle ton contenu ici}
+
+Adaptation nécessaire :
+- [ ] Langage simplifié (niveau de lecture plus bas)
+- [ ] Descriptions visuelles (pour synthèse vocale)
+- [ ] Format structuré (pour accessibilité cognitive)
+- [ ] Considérations de temps étendu
+- [ ] Explications alternatives
+
+Maintenir :
+- Tous les objectifs d'apprentissage clés
+- Exactitude du contenu
+- Équivalence d'évaluation`} />
+
+### Modalités Multiples
+
+<TryIt compact prompt={`Présente \${concept:la photosynthèse} de multiples façons :
+
+1. **Explication textuelle** (prose claire)
+2. **Description visuelle** (décrire un diagramme)
+3. **Analogie** (relier à l'expérience quotidienne)
+4. **Histoire/Narration** (intégrer dans un scénario)
+5. **Format Q&R** (questions et réponses)
+
+Cela permet aux apprenants de s'engager avec leur style préféré.`} />
+
+## Évaluation & Feedback
+
+### Fournir du Feedback
+
+<TryIt compact prompt={`Fournis un feedback éducatif sur ce travail d'élève :
+
+Devoir : \${devoir:dissertation en 5 paragraphes sur le changement climatique}
+Soumission de l'élève : \${travail:colle le travail de l'élève ici}
+Grille : \${grille:clarté de la thèse, preuves, organisation, grammaire}
+
+Format du feedback :
+1. **Forces** - Ce qu'il/elle a bien fait (spécifique)
+2. **Points d'amélioration** - Ce qui a besoin de travail (constructif)
+3. **Suggestions** - Comment s'améliorer (actionnable)
+4. **Note/Score** - Basé sur la grille
+5. **Encouragement** - Conclusion motivante
+
+Ton : Bienveillant, spécifique, orienté croissance`} />
+
+### Prompts d'Auto-Évaluation
+
+<TryIt compact prompt={`Aide-moi à évaluer ma compréhension de \${sujet:la Révolution Française}.
+
+Pose-moi 5 questions qui testent :
+1. Rappel basique
+2. Compréhension
+3. Application
+4. Analyse
+5. Synthèse/Création
+
+Après chaque réponse, dis-moi :
+- Ce que j'ai démontré comprendre
+- Ce que je devrais revoir
+- Comment approfondir mes connaissances
+
+Sois honnête mais encourageant.`} />
+
+## Résumé
+
+<Callout type="tip" title="Techniques Clés">
+Adaptez-vous au niveau de l'apprenant, décomposez les sujets complexes en étapes, incluez de la pratique active (pas juste des explications), fournissez des approches variées, vérifiez la compréhension régulièrement, et donnez un feedback constructif.
+</Callout>
+
+<Quiz 
+  question="Quelle est la façon la plus efficace d'utiliser l'IA pour apprendre ?"
+  options={[
+    "Lire les explications de l'IA passivement comme un manuel",
+    "Demander à l'IA de vous interroger et générer des exercices",
+    "Utiliser l'IA uniquement pour les réponses aux devoirs",
+    "Éviter complètement l'IA pour l'apprentissage"
+  ]}
+  correctIndex={1}
+  explanation="Le rappel actif bat la révision passive. Demandez à l'IA de vous interroger, de générer des problèmes, et de vérifier votre compréhension—cela construit une mémoire plus forte que simplement lire des explications."
+/>
+
+L'IA est un partenaire d'apprentissage patient et toujours disponible—utilisez-la pour compléter, pas remplacer, l'instruction humaine.

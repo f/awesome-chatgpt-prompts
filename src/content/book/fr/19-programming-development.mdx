@@ -1,0 +1,382 @@
+L'IA a transformé le développement logiciel. Ce chapitre couvre les techniques de prompting pour la génération de code, le débogage, la revue et les workflows de développement.
+
+<Callout type="info" title="L'IA comme Partenaire de Codage">
+L'IA excelle dans la génération de code, le débogage et la documentation—mais révisez toujours le code généré pour la sécurité, l'exactitude et la maintenabilité. Ne déployez jamais du code IA sans le tester.
+</Callout>
+
+## Génération de Code
+
+### À Faire et À Éviter : Prompts de Code
+
+<Compare 
+  before={{ label: "❌ Demande vague", content: "Écris une fonction pour valider les emails." }}
+  after={{ label: "✓ Spécification complète", content: "Écris une fonction Python qui valide les adresses email.\n\nEntrée : string (email potentiel)\nSortie : tuple[bool, str | None] - (est_valide, message_erreur)\nGérer : chaîne vide, None, caractères unicode\nUtiliser regex, inclure type hints et docstring." }}
+/>
+
+### Génération de Fonction
+
+<TryIt compact prompt={`Écris une fonction \${langage:Python} qui \${description:valide les adresses email}.
+
+Exigences :
+- Entrée : \${typesEntree:string (email potentiel)}
+- Sortie : \${typeSortie:booléen et message d'erreur optionnel}
+- Gérer les cas limites : \${casLimites:chaîne vide, None, caractères unicode}
+- Performance : \${performance:standard}
+
+Inclure :
+- Type hints/annotations
+- Docstring avec exemples
+- Validation des entrées
+- Gestion des erreurs`} />
+
+### Génération de Classe/Module
+
+<TryIt compact prompt={`Crée une classe \${langage:Python} pour \${objectif:gérer les sessions utilisateur}.
+
+Design de la classe :
+- Nom : \${nomClasse:SessionManager}
+- Responsabilité : \${responsabilite:gérer le cycle de vie des sessions utilisateur}
+- Propriétés : \${proprietes:session_id, user_id, created_at, expires_at}
+- Méthodes : \${methodes:create(), validate(), refresh(), destroy()}
+
+Exigences :
+- Suivre le pattern \${designPattern:Singleton}
+- Inclure une encapsulation appropriée
+- Ajouter des docstrings complètes
+- Inclure un exemple d'utilisation
+
+Tests :
+- Inclure un squelette de tests unitaires`} />
+
+### Génération d'Endpoint API
+
+<TryIt compact prompt={`Crée un endpoint REST API pour \${ressource:profils utilisateur}.
+
+Framework : \${framework:FastAPI}
+Méthode : \${methode:GET}
+Chemin : \${chemin:/api/users/{id}}
+
+Requête :
+- Headers : \${headers:Authorization Bearer token}
+- Schéma du body : \${schemaBody:N/A pour GET}
+- Query params : \${queryParams:include_posts (booléen)}
+
+Réponse :
+- Succès : \${reponseSucces:200 avec objet utilisateur}
+- Erreurs : \${reponsesErreur:401 Non autorisé, 404 Non trouvé}
+
+Inclure :
+- Validation des entrées
+- Vérification d'authentification
+- Gestion des erreurs
+- Considération de rate limiting`} />
+
+## Débogage
+
+<Callout type="tip" title="Principe de Débogage">
+Incluez toujours le **comportement attendu**, le **comportement réel**, et le **message d'erreur** (s'il y en a un). Plus vous fournissez de contexte, plus vite l'IA peut identifier la cause racine.
+</Callout>
+
+### Analyse de Bug
+
+<TryIt compact prompt={`Débogue ce code. Il devrait \${comportementAttendu:retourner la somme de tous les nombres} mais à la place \${comportementReel:retourne 0 pour toutes les entrées}.
+
+Code :
+\${code:colle ton code ici}
+
+Message d'erreur (si présent) :
+\${erreur:aucun}
+
+Étapes de débogage :
+1. Identifier ce que le code essaie de faire
+2. Tracer l'exécution avec l'entrée donnée
+3. Trouver où les comportements attendu et réel divergent
+4. Expliquer la cause racine
+5. Fournir la correction avec explication`} />
+
+### Interprétation de Message d'Erreur
+
+<TryIt compact prompt={`Explique cette erreur et comment la corriger :
+
+Erreur :
+\${messageErreur:colle le message d'erreur ou stack trace ici}
+
+Contexte :
+- Langage/Framework : \${framework:Python 3.11}
+- Ce que j'essayais de faire : \${action:lire un fichier JSON}
+- Code pertinent : \${snippetCode:colle le code pertinent}
+
+Fournis :
+1. Explication en langage simple de l'erreur
+2. Cause racine
+3. Correction étape par étape
+4. Comment prévenir ceci à l'avenir`} />
+
+### Débogage de Performance
+
+<TryIt compact prompt={`Ce code est lent. Analyse et optimise :
+
+Code :
+\${code:colle ton code ici}
+
+Performance actuelle : \${performanceActuelle:prend 30 secondes pour 1000 éléments}
+Performance cible : \${performanceCible:moins de 5 secondes}
+Contraintes : \${contraintes:limite mémoire 512MB}
+
+Fournis :
+1. Identifier les goulots d'étranglement
+2. Expliquer pourquoi chacun est lent
+3. Suggérer des optimisations (classées par impact)
+4. Montrer le code optimisé
+5. Estimer l'amélioration`} />
+
+## Revue de Code
+
+### À Faire et À Éviter : Prompts de Revue de Code
+
+<Compare 
+  before={{ label: "❌ Demande générique", content: "Revois ce code." }}
+  after={{ label: "✓ Critères spécifiques", content: "Revois ce code pour une pull request.\n\nVérifie :\n1. Exactitude : bugs, erreurs de logique, cas limites\n2. Sécurité : risques d'injection, problèmes d'auth\n3. Performance : requêtes N+1, fuites mémoire\n4. Maintenabilité : nommage, complexité\n\nFormat : 🔴 Critique / 🟡 Important / 🟢 Suggestion" }}
+/>
+
+### Revue Complète
+
+<TryIt compact prompt={`Revois ce code pour une pull request.
+
+Code :
+\${code:colle ton code ici}
+
+Revois pour :
+1. **Exactitude** : Bugs, erreurs de logique, cas limites
+2. **Sécurité** : Vulnérabilités, risques d'injection, problèmes d'auth
+3. **Performance** : Inefficacités, requêtes N+1, fuites mémoire
+4. **Maintenabilité** : Lisibilité, nommage, complexité
+5. **Bonnes pratiques** : Conventions \${framework:Python/Django}
+
+Formate ta revue comme :
+🔴 Critique : doit être corrigé avant merge
+🟡 Important : devrait être corrigé
+🟢 Suggestion : agréable à avoir
+💭 Question : clarification nécessaire`} />
+
+### Revue de Sécurité
+
+<TryIt compact prompt={`Effectue une revue de sécurité de ce code :
+
+Code :
+\${code:colle ton code ici}
+
+Vérifie :
+- [ ] Vulnérabilités d'injection (SQL, XSS, commande)
+- [ ] Failles d'authentification/autorisation
+- [ ] Exposition de données sensibles
+- [ ] Dépendances non sécurisées
+- [ ] Problèmes cryptographiques
+- [ ] Lacunes de validation d'entrée
+- [ ] Gestion d'erreurs qui fuit des infos
+
+Pour chaque découverte :
+- Sévérité : Critique/Haute/Moyenne/Basse
+- Localisation : Numéro de ligne ou fonction
+- Problème : Description
+- Exploit : Comment ça pourrait être attaqué
+- Correction : Remédiation recommandée`} />
+
+## Refactoring
+
+### Détection de Code Smell
+
+<TryIt compact prompt={`Analyse ce code pour les code smells et opportunités de refactoring :
+
+Code :
+\${code:colle ton code ici}
+
+Identifie :
+1. Méthodes longues (suggérer extraction)
+2. Code dupliqué (suggérer améliorations DRY)
+3. Conditionnels complexes (suggérer simplification)
+4. Mauvais nommage (suggérer meilleurs noms)
+5. Couplage serré (suggérer découplage)
+
+Pour chaque problème, montre le code avant/après.`} />
+
+### Application de Design Pattern
+
+<TryIt compact prompt={`Refactorise ce code en utilisant le pattern \${nomPattern:Factory}.
+
+Code actuel :
+\${code:colle ton code ici}
+
+Objectifs :
+- \${pourquoiPattern:découpler la création d'objets de l'utilisation}
+- \${benefices:tests et extensibilité plus faciles}
+
+Fournis :
+1. Explication du pattern
+2. Comment il s'applique ici
+3. Code refactorisé
+4. Compromis à considérer`} />
+
+## Tests
+
+### Génération de Tests Unitaires
+
+<TryIt compact prompt={`Écris des tests unitaires pour cette fonction :
+
+Fonction :
+\${code:colle ta fonction ici}
+
+Framework de test : \${frameworkTest:pytest}
+
+Couvrir :
+- Chemin heureux (entrées normales)
+- Cas limites (vide, null, valeurs aux limites)
+- Cas d'erreur (entrées invalides)
+- \${scenariosSpecifiques:accès concurrent, grandes entrées}
+
+Format : pattern Arrange-Act-Assert
+Inclure : Noms de tests descriptifs`} />
+
+### Génération de Cas de Test
+
+<TryIt compact prompt={`Génère des cas de test pour cette fonctionnalité :
+
+Fonctionnalité : \${descriptionFonctionnalite:inscription utilisateur avec vérification email}
+Critères d'acceptation : \${criteresAcceptation:l'utilisateur peut s'inscrire, reçoit un email, peut vérifier son compte}
+
+Fournis les cas de test dans ce format :
+
+| ID | Scénario | Étant donné | Quand | Alors | Priorité |
+|----|----------|-------------|-------|-------|----------|
+| TC01 | ... | ... | ... | ... | Haute |`} />
+
+## Architecture & Design
+
+### Design Système
+
+<TryIt compact prompt={`Conçois un système pour \${exigence:application de chat en temps réel}.
+
+Contraintes :
+- Charge attendue : \${chargeAttendue:10 000 utilisateurs concurrents}
+- Exigences de latence : \${latence:< 100ms livraison de message}
+- Disponibilité : \${disponibilite:99.9%}
+- Budget : \${budget:modéré, préférer open source}
+
+Fournis :
+1. Diagramme d'architecture haut niveau (ASCII/texte)
+2. Descriptions des composants
+3. Flux de données
+4. Choix technologiques avec justification
+5. Stratégie de scaling
+6. Compromis et alternatives considérées`} />
+
+### Design de Schéma de Base de Données
+
+<TryIt compact prompt={`Conçois un schéma de base de données pour \${application:plateforme e-commerce}.
+
+Exigences :
+- \${fonctionnalite1:Comptes utilisateurs avec profils et adresses}
+- \${fonctionnalite2:Catalogue produits avec catégories et variantes}
+- \${fonctionnalite3:Commandes avec lignes et suivi de paiement}
+
+Fournis :
+1. Description entité-relation
+2. Définitions de tables avec colonnes et types
+3. Index pour les requêtes courantes
+4. Relations de clés étrangères
+5. Requêtes exemples pour les opérations clés`} />
+
+## Génération de Documentation
+
+### Documentation API
+
+<TryIt compact prompt={`Génère la documentation API à partir de ce code :
+
+Code :
+\${code:colle ton code d'endpoint ici}
+
+Format : \${format:OpenAPI/Swagger YAML}
+
+Inclure :
+- Description de l'endpoint
+- Schémas requête/réponse
+- Exemples de requêtes/réponses
+- Codes d'erreur
+- Exigences d'authentification`} />
+
+### Documentation Inline
+
+<TryIt compact prompt={`Ajoute une documentation complète à ce code :
+
+Code :
+\${code:colle ton code ici}
+
+Ajouter :
+- Docstring de fichier/module (objectif, utilisation)
+- Docstrings de fonction/méthode (params, retours, exceptions, exemples)
+- Commentaires inline pour la logique complexe uniquement
+- Type hints si manquants
+
+Style : \${styleDoc:Google}`} />
+
+## Intégration au Workflow de Développement
+
+### Génération de Message de Commit
+
+<TryIt compact prompt={`Génère un message de commit pour ces changements :
+
+Diff :
+\${diff:colle le git diff ici}
+
+Format : Conventional Commits
+Type : \${typeCommit:feat}
+
+Fournis :
+- Ligne de sujet (50 caractères max, mode impératif)
+- Corps (quoi et pourquoi, retour à la ligne à 72 caractères)
+- Footer (références aux issues si applicable)`} />
+
+### Génération de Description de PR
+
+<TryIt compact prompt={`Génère une description de pull request :
+
+Changements :
+\${changements:liste tes changements ou colle le résumé du diff}
+
+Template :
+## Résumé
+Brève description des changements
+
+## Changements Effectués
+- Changement 1
+- Changement 2
+
+## Tests
+- [ ] Tests unitaires ajoutés/mis à jour
+- [ ] Tests manuels complétés
+
+## Captures d'écran (si changements UI)
+placeholder
+
+## Issues Liées
+Ferme #\${numeroIssue:123}`} />
+
+## Résumé
+
+<Callout type="tip" title="Techniques Clés">
+Incluez le contexte complet (langage, framework, contraintes), spécifiez les exigences précisément, demandez des formats de sortie spécifiques, demandez des explications en plus du code, et incluez les cas limites à gérer.
+</Callout>
+
+<Quiz 
+  question="Quel est l'élément le plus important à inclure quand vous demandez à l'IA de déboguer du code ?"
+  options={[
+    "Le langage de programmation uniquement",
+    "Comportement attendu, comportement réel et message d'erreur",
+    "Juste le snippet de code",
+    "Le nom du fichier"
+  ]}
+  correctIndex={1}
+  explanation="Le débogage nécessite du contexte : ce qui devrait se passer vs ce qui se passe réellement. Les messages d'erreur et stack traces aident l'IA à identifier précisément le problème rapidement."
+/>
+
+L'IA est un puissant partenaire de codage—utilisez-la pour la génération, la revue, le débogage et la documentation tout en maintenant votre jugement architectural.

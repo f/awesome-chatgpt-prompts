@@ -1,0 +1,328 @@
+Le prompting basé sur les rôles est l'une des techniques les plus puissantes et les plus utilisées en ingénierie des prompts. En assignant un rôle ou une persona spécifique à l'IA, vous pouvez influencer considérablement la qualité, le style et la pertinence des réponses.
+
+<Callout type="tip" title="Le Pouvoir des Personas">
+Pensez aux rôles comme des filtres pour les vastes connaissances de l'IA. Le bon rôle concentre les réponses comme une lentille concentre la lumière.
+</Callout>
+
+## Pourquoi les Rôles Fonctionnent
+
+Quand vous assignez un rôle, vous dites essentiellement au modèle : « Filtre tes vastes connaissances à travers ce prisme spécifique. » Le modèle ajuste son :
+
+- **Vocabulaire** : Utilisant une terminologie appropriée au rôle
+- **Perspective** : Considérant les problèmes de ce point de vue
+- **Profondeur d'expertise** : Fournissant des niveaux de détail appropriés au rôle
+- **Style de communication** : Correspondant à la façon dont ce rôle communiquerait
+
+### L'Explication Technique
+
+Les LLM fonctionnent en prédisant le token le plus probable suivant basé sur le contexte qui leur est donné. Quand vous spécifiez un rôle, vous changez fondamentalement ce que « probable » signifie.
+
+**Activation des Connaissances Pertinentes** : Le rôle amorce des régions spécifiques des associations apprises du modèle. Dire « Tu es médecin » active la terminologie médicale, les patterns de raisonnement diagnostique, et les styles de communication clinique des données d'entraînement.
+
+**Conditionnement Statistique** : Les LLM ont appris de millions de documents écrits par de vrais experts. Quand vous assignez un rôle, le modèle conditionne ses distributions de probabilité pour correspondre aux patterns qu'il a vus de ce type d'auteur.
+
+**Réduction de l'Ambiguïté** : Sans rôle, le modèle fait la moyenne de tous les répondants possibles. Avec un rôle, il se restreint à un sous-ensemble spécifique, rendant les réponses plus focalisées et cohérentes.
+
+**Ancrage du Contexte** : Le rôle crée un ancrage de contexte persistant tout au long de la conversation. Chaque réponse suivante est influencée par ce cadrage initial.
+
+Pensez-y ainsi : si vous demandez « Que dois-je faire pour cette toux ? », le modèle pourrait répondre comme un médecin, un ami, un pharmacien, ou un parent inquiet. Chacun donnerait des conseils différents. En spécifiant le rôle d'emblée, vous dites au modèle quelle « voix » utiliser de ses données d'entraînement.
+
+<Callout type="info" title="Pourquoi C'est Important">
+Le modèle ne fait pas semblant ou ne joue pas un rôle au sens théâtral. Il biaise statistiquement ses sorties vers des patterns qu'il a appris de vrais experts, professionnels et spécialistes pendant l'entraînement. Un rôle de « médecin » active les voies de connaissances médicales ; un rôle de « poète » active les patterns littéraires.
+</Callout>
+
+## Patterns de Rôle Basiques
+
+Ces patterns fondamentaux fonctionnent dans la plupart des cas d'usage. Commencez avec ces modèles et personnalisez-les selon vos besoins.
+
+### Le Pattern Expert
+
+Le pattern le plus polyvalent. Spécifiez le domaine d'expertise et les années d'expérience pour obtenir des réponses autoritaires et approfondies. Fonctionne bien pour les questions techniques, l'analyse et les conseils professionnels.
+
+<TryIt compact prompt={`Tu es un(e) expert(e) en \${field} avec \${years:10} ans d'expérience en \${specialty}.
+
+\${task}`} />
+
+### Le Pattern Professionnel
+
+Ancrez le rôle dans un contexte réel en spécifiant un titre de poste et un type d'organisation. Cela ajoute des connaissances institutionnelles et des normes professionnelles à la réponse.
+
+<TryIt compact prompt={`Tu es un(e) \${profession} travaillant chez \${organization}.
+
+\${task}`} />
+
+### Le Pattern Enseignant
+
+Parfait pour l'apprentissage et les explications. Spécifier le niveau de l'audience assure que la réponse correspond au bagage de l'apprenant, des débutants aux praticiens avancés.
+
+<TryIt compact prompt={`Tu es un(e) enseignant(e) de \${subject} spécialisé(e) dans l'explication de concepts complexes à \${audience}.
+
+\${task}`} />
+
+## Constructions de Rôles Avancées
+
+### Rôles Composés
+
+Combinez plusieurs identités pour obtenir des réponses qui mêlent différentes perspectives. Cette combinaison pédiatre-parent produit des conseils à la fois médicalement fondés et pratiquement testés.
+
+<TryIt compact prompt={`Tu es pédiatre et aussi parent de trois enfants. Tu comprends à la fois les aspects médicaux et pratiques des problèmes de santé infantile. Tu communiques avec empathie et sans jargon médical.
+
+\${question}`} />
+
+### Rôles Situationnels
+
+Placez le rôle dans un scénario spécifique pour façonner à la fois le contenu et le ton. Ici, le contexte de revue de code rend l'IA constructive et éducative plutôt que simplement critique.
+
+<TryIt compact prompt={`Tu es un développeur senior effectuant une revue de code pour un membre junior de l'équipe. Tu veux être utile et éducatif, pas critique. Tu expliques non seulement quoi corriger, mais pourquoi.
+
+Code à réviser :
+\${code}`} />
+
+### Rôles de Perspective
+
+Obtenez des retours du point de vue d'une partie prenante spécifique. Une perspective de VC évalue la viabilité et l'évolutivité différemment d'un client ou d'un ingénieur.
+
+<TryIt compact prompt={`Tu es un capital-risqueur évaluant des pitchs de startups. Tu as vu des milliers de pitchs et peux rapidement identifier les forces, faiblesses et signaux d'alerte. Sois direct mais constructif.
+
+Pitch : \${pitch}`} />
+
+## Catégories de Rôles et Exemples
+
+Différents domaines bénéficient de différents types de rôles. Voici des exemples éprouvés organisés par catégorie que vous pouvez adapter pour vos tâches.
+
+### Rôles Techniques
+
+**Architecte Logiciel** : Idéal pour les décisions de conception de systèmes, les choix technologiques et les compromis architecturaux. L'accent sur la maintenabilité oriente les réponses vers des solutions pratiques à long terme.
+
+<TryIt compact prompt={`Tu es un architecte logiciel spécialisé dans les systèmes distribués évolutifs. Tu priorises la maintenabilité, la performance et la productivité de l'équipe dans tes recommandations.
+
+\${question}`} />
+
+**Spécialiste Sécurité** : L'état d'esprit d'attaquant est clé ici. Ce rôle produit une analyse centrée sur les menaces qui identifie des vulnérabilités qu'une perspective uniquement défensive pourrait manquer.
+
+<TryIt compact prompt={`Tu es un spécialiste en cybersécurité qui effectue des tests de pénétration. Tu penses comme un attaquant pour identifier les vulnérabilités.
+
+Analyse : \${target}`} />
+
+**Ingénieur DevOps** : Idéal pour les questions de déploiement, d'automatisation et d'infrastructure. L'accent sur la fiabilité assure des recommandations prêtes pour la production.
+
+<TryIt compact prompt={`Tu es un ingénieur DevOps focalisé sur les pipelines CI/CD et l'infrastructure as code. Tu valorises l'automatisation et la fiabilité.
+
+\${question}`} />
+
+### Rôles Créatifs
+
+**Rédacteur Publicitaire** : Le qualificatif « primé » et l'accent sur la conversion produisent un texte percutant et persuasif plutôt qu'un texte marketing générique.
+
+<TryIt compact prompt={`Tu es un rédacteur publicitaire primé reconnu pour créer des titres accrocheurs et du contenu persuasif qui génère des conversions.
+
+Écris le texte pour : \${product}`} />
+
+**Scénariste** : Active les connaissances sur la structure dramatique, le rythme et les conventions de dialogue. Excellent pour tout écrit narratif nécessitant tension et voix des personnages.
+
+<TryIt compact prompt={`Tu es un scénariste qui a écrit pour des séries dramatiques populaires. Tu comprends la structure narrative, le dialogue et le développement des personnages.
+
+Écris : \${scene}`} />
+
+**Rédacteur UX** : Un rôle spécialisé pour le texte d'interface. L'accent sur la brièveté et le guidage utilisateur produit un texte concis et orienté action.
+
+<TryIt compact prompt={`Tu es un rédacteur UX spécialisé dans le microcopy. Tu rends les interfaces humaines et guides les utilisateurs avec un minimum de texte.
+
+Écris le microcopy pour : \${element}`} />
+
+### Rôles Analytiques
+
+**Analyste d'Affaires** : Fait le pont entre les équipes techniques et non-techniques. Utile pour la collecte de besoins, la rédaction de spécifications et l'identification de lacunes dans les plans de projet.
+
+<TryIt compact prompt={`Tu es un analyste d'affaires qui traduit entre les équipes techniques et les parties prenantes. Tu clarifies les exigences et identifies les cas limites.
+
+Analyse : \${requirement}`} />
+
+**Chercheur Scientifique** : L'accent sur les preuves et la reconnaissance de l'incertitude produit des réponses équilibrées et bien sourcées qui distinguent les faits des spéculations.
+
+<TryIt compact prompt={`Tu es un chercheur scientifique qui valorise les preuves empiriques et reconnaît l'incertitude. Tu distingues entre les faits établis et les hypothèses.
+
+Question de recherche : \${question}`} />
+
+**Analyste Financier** : Combine l'analyse quantitative avec l'évaluation des risques. Le double focus sur les rendements et le risque produit des perspectives d'investissement plus équilibrées.
+
+<TryIt compact prompt={`Tu es un analyste financier qui évalue les investissements en utilisant l'analyse fondamentale et technique. Tu considères le risque aux côtés du potentiel de rendement.
+
+Évalue : \${investment}`} />
+
+### Rôles Éducatifs
+
+**Tuteur Socratique** : Au lieu de donner des réponses, ce rôle pose des questions guidées. Excellent pour un apprentissage plus profond et aider les étudiants à développer leur pensée critique.
+
+<TryIt compact prompt={`Tu es un tuteur utilisant la méthode socratique. Au lieu de donner des réponses directement, tu guides les étudiants à découvrir les réponses par des questions réfléchies.
+
+Sujet : \${topic}`} />
+
+**Concepteur Pédagogique** : Structure l'apprentissage pour une rétention maximale. Utilisez ce rôle quand vous devez décomposer des sujets complexes en morceaux enseignables avec une progression claire.
+
+<TryIt compact prompt={`Tu es un concepteur pédagogique qui crée des expériences d'apprentissage engageantes. Tu décomposes les sujets complexes en modules digestibles avec des objectifs d'apprentissage clairs.
+
+Crée un curriculum pour : \${topic}`} />
+
+## La Technique d'Empilement de Rôles
+
+Pour les tâches complexes, combinez plusieurs aspects de rôle en une seule identité multicouche. Cette technique empile l'expertise, la conscience de l'audience et les directives de style pour créer des réponses hautement spécialisées.
+
+Cet exemple superpose trois éléments : expertise du domaine (documentation API), audience (développeurs juniors) et guide de style (conventions Google). Chaque couche contraint davantage la sortie.
+
+<TryIt compact prompt={`Tu es un rédacteur technique expert en documentation API. Tu écris pour des développeurs nouveaux aux API REST. Suis le guide de style de documentation développeur Google : utilise la deuxième personne ("vous"), la voix active, le présent, et garde les phrases sous 26 mots.
+
+Documente : \${apiEndpoint}`} />
+
+## Rôles pour Différentes Tâches
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-40">Revue de code</span>
+    <span className="text-muted-foreground">Développeur senior + mentor</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-40">Retour d'écriture</span>
+    <span className="text-muted-foreground">Éditeur + membre de l'audience cible</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-40">Stratégie business</span>
+    <span className="text-muted-foreground">Consultant + expert du secteur</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-40">Apprendre un nouveau sujet</span>
+    <span className="text-muted-foreground">Enseignant patient + praticien</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-40">Écriture créative</span>
+    <span className="text-muted-foreground">Auteur de genre spécifique</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-40">Explication technique</span>
+    <span className="text-muted-foreground">Expert + communicateur</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-40">Résolution de problèmes</span>
+    <span className="text-muted-foreground">Spécialiste du domaine + généraliste</span>
+  </div>
+</div>
+
+## Anti-Patterns à Éviter
+
+### Rôles Trop Génériques
+
+<Compare 
+  before={{ label: "Faible", content: "Tu es un assistant utile." }}
+  after={{ label: "Mieux", content: "Tu es un assistant utile spécialisé dans le développement Python, particulièrement les applications web avec Flask et Django." }}
+/>
+
+### Rôles Conflictuels
+
+<Compare 
+  before={{ label: "Problématique", content: "Tu es un écrivain créatif qui suit toujours des templates stricts." }}
+  after={{ label: "Mieux", content: "Tu es un écrivain créatif qui travaille dans des structures narratives établies tout en ajoutant des éléments originaux." }}
+/>
+
+### Expertise Irréaliste
+
+<Compare 
+  before={{ label: "Problématique", content: "Tu es un expert en tout." }}
+  after={{ label: "Mieux", content: "Tu es un professionnel en T : expertise profonde en machine learning avec de larges connaissances des pratiques d'ingénierie logicielle." }}
+/>
+
+## Exemples de Prompts Réels
+
+### Documentation Technique
+
+<TryIt 
+  title="Rôle de Rédacteur Technique"
+  description="Essayez ce prompt de documentation technique avec votre propre endpoint API."
+  prompt={`Tu es un rédacteur technique senior dans une entreprise d'outils développeur. Tu as 10 ans d'expérience dans l'écriture de documentation API, guides SDK et tutoriels développeur.
+
+Ton style de documentation :
+- Structure claire et scannable avec des headers et exemples de code
+- Explique le "pourquoi" aux côtés du "comment"
+- Anticipe les questions courantes et les cas limites
+- Utilise une terminologie cohérente définie dans un glossaire
+- Inclut des exemples de code fonctionnels que les utilisateurs peuvent copier-coller
+
+Documente cet endpoint API : GET /api/users/:id - Retourne les données du profil utilisateur`}
+/>
+
+### Écriture Créative
+
+<TryIt 
+  title="Rôle de Romancier"
+  description="Ce rôle combine l'expertise de genre avec des traits stylistiques spécifiques."
+  prompt={`Tu es un romancier qui écrit dans le style de la fiction littéraire avec des éléments de réalisme magique. Ta prose est reconnue pour :
+- Un langage lyrique mais accessible
+- Des portraits psychologiques profonds des personnages
+- Des éléments magiques subtils tissés dans des décors quotidiens
+- Des thèmes de mémoire, d'identité et de transformation
+
+Écris la scène d'ouverture d'une histoire sur une bibliothécaire qui découvre que les livres de sa bibliothèque changent lentement leurs fins.`}
+/>
+
+### Communication d'Entreprise
+
+<TryIt 
+  title="Rôle de Coach Exécutif"
+  description="Ce rôle aide avec les communications professionnelles sensibles."
+  prompt={`Tu es un coach en communication exécutive qui a travaillé avec des PDG du Fortune 500. Tu aides les leaders à communiquer des idées complexes simplement et à bâtir la confiance avec leurs équipes.
+
+Révise ce message pour une réunion d'équipe sur les coupes budgétaires. Suggère des améliorations qui :
+- Reconnaissent la difficulté tout en maintenant la confiance
+- Sont transparentes sans créer de panique
+- Montrent de l'empathie tout en étant professionnelles
+- Incluent des prochaines étapes claires
+
+Brouillon du message : "En raison de contraintes budgétaires, nous devons réduire la portée du projet. Certaines initiatives seront mises en pause."`}
+/>
+
+## Combiner les Rôles avec d'Autres Techniques
+
+Les rôles fonctionnent encore mieux quand ils sont combinés avec d'autres techniques de prompting :
+
+### Rôle + Few-Shot
+
+Combinez un rôle avec un exemple pour montrer exactement comment le rôle devrait répondre. L'exemple enseigne le ton et le format tandis que le rôle fournit le contexte et l'expertise.
+
+<TryIt compact prompt={`Tu es un spécialiste du support client formé pour désamorcer les clients en colère.
+
+Exemple de réponse à un client en colère :
+Client : "C'est ridicule ! J'attends depuis 2 semaines !"
+Toi : "Je comprends parfaitement votre frustration, et je m'excuse pour le retard. Laissez-moi vérifier cela immédiatement et découvrir exactement où se trouve votre commande. Puis-je avoir votre numéro de commande ?"
+
+Maintenant réponds à :
+Client : "\${customerMessage}"`} />
+
+### Rôle + Chaîne de Pensée
+
+Le rôle de détective encourage naturellement le raisonnement étape par étape. Combiner les rôles avec la chaîne de pensée produit une résolution de problèmes plus transparente et vérifiable.
+
+<TryIt compact prompt={`Tu es un détective résolvant un puzzle logique. Réfléchis à chaque indice méthodiquement, en énonçant ton raisonnement à chaque étape.
+
+Indices :
+\${clues}
+
+Résous étape par étape, en expliquant tes déductions.`} />
+
+## Résumé
+
+<Callout type="info" title="Points Clés à Retenir">
+Le prompting basé sur les rôles est puissant parce qu'il focalise les vastes connaissances du modèle, établit des attentes pour le ton et le style, fournit un contexte implicite, et rend les sorties plus cohérentes.
+</Callout>
+
+<Quiz 
+  question="Qu'est-ce qui rend un prompt basé sur un rôle plus efficace ?"
+  options={[
+    "Utiliser des titres de rôle génériques comme 'expert'",
+    "Ajouter des détails spécifiques d'expertise, d'expérience et de perspective",
+    "Garder la description du rôle aussi courte que possible",
+    "Demander à l'IA de changer de rôle fréquemment"
+  ]}
+  correctIndex={1}
+  explanation="Plus le rôle est détaillé et réaliste, meilleurs sont les résultats. La spécificité aide le modèle à comprendre exactement quelles connaissances, quel ton et quelle perspective appliquer."
+/>
+
+La clé est la **spécificité** : plus le rôle est détaillé et réaliste, meilleurs sont les résultats. Dans le prochain chapitre, nous explorerons comment obtenir des sorties cohérentes et structurées de vos prompts.

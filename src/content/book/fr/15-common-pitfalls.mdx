@@ -1,0 +1,218 @@
+Même les ingénieurs de prompts expérimentés tombent dans des pièges prévisibles. La bonne nouvelle ? Une fois que vous reconnaissez ces patterns, ils sont faciles à éviter. Ce chapitre parcourt les pièges les plus courants, explique pourquoi ils surviennent, et vous donne des stratégies concrètes pour les éviter.
+
+<Callout type="warning" title="Pourquoi les Pièges Comptent">
+Un seul piège peut transformer une IA puissante en un outil frustrant. Comprendre ces patterns fait souvent la différence entre « L'IA ne marche pas pour moi » et « L'IA a transformé mon workflow ».
+</Callout>
+
+## Le Piège du Vague
+
+**Le Pattern** : Vous savez ce que vous voulez, donc vous supposez que l'IA le comprendra aussi. Mais les prompts vagues produisent des résultats vagues.
+
+<Compare 
+  before={{ label: "Prompt vague", content: "Écris quelque chose sur le marketing." }}
+  after={{ label: "Prompt spécifique", content: "Écris un post LinkedIn de 300 mots sur l'importance de la cohérence de marque pour les entreprises SaaS B2B, ciblant les directeurs marketing. Utilise un ton professionnel mais accessible. Inclus un exemple concret." }}
+/>
+
+**Pourquoi ça arrive** : Nous sautons naturellement les détails quand nous pensons qu'ils sont « évidents ». Mais ce qui est évident pour vous ne l'est pas pour un modèle qui n'a aucun contexte sur votre situation.
+
+<TryIt 
+  title="Améliorateur de Spécificité"
+  description="Prenez un prompt vague et rendez-le spécifique."
+  prompt={`J'ai un prompt vague qui a besoin d'amélioration.
+
+Prompt vague original : "\${promptVague}"
+
+Rends ce prompt spécifique en ajoutant :
+1. **Audience** : Qui va lire/utiliser ceci ?
+2. **Format** : Quelle structure doit-il avoir ?
+3. **Longueur** : Quelle doit être sa longueur ?
+4. **Ton** : Quelle voix ou quel style ?
+5. **Contexte** : Quelle est la situation ou l'objectif ?
+6. **Contraintes** : Des incontournables ou des interdits ?
+
+Réécris le prompt avec tous ces détails inclus.`}
+/>
+
+## Le Piège de la Surcharge
+
+**Le Pattern** : Vous essayez de tout obtenir en un seul prompt—complet, drôle, professionnel, adapté aux débutants, avancé, optimisé SEO, et court. Le résultat ? L'IA manque la moitié de vos exigences.
+
+<Compare 
+  before={{ label: "Prompt surchargé", content: "Écris un article de blog sur l'IA qui soit optimisé SEO et inclut des exemples de code et soit drôle mais professionnel et cible les débutants mais aussi avec des astuces avancées et devrait faire 500 mots mais complet..." }}
+  after={{ label: "Prompt focalisé", content: "Écris un article de blog de 500 mots introduisant l'IA aux débutants.\n\nExigences :\n1. Explique un concept central clairement\n2. Inclus un exemple de code simple\n3. Termine par un appel à l'action\n\nTon : Professionnel mais accessible" }}
+/>
+
+**Pourquoi ça arrive** : Peur des interactions multiples, ou vouloir « tout sortir » d'un coup. Mais la surcharge cognitive affecte l'IA comme elle affecte les humains.
+
+<InfoGrid items={[
+  { label: "Limiter les Exigences", description: "S'en tenir à 3-5 exigences clés par prompt", color: "green" },
+  { label: "Utiliser des Listes Numérotées", description: "La structure rend les priorités claires", color: "green" },
+  { label: "Chaîner les Prompts", description: "Diviser les tâches complexes en étapes", color: "green" },
+  { label: "Prioriser Sans Pitié", description: "Qu'est-ce qui est essentiel vs agréable à avoir ?", color: "green" }
+]} />
+
+## Le Piège des Suppositions
+
+**Le Pattern** : Vous référencez quelque chose « de tout à l'heure » ou supposez que l'IA connaît votre projet. Elle ne le connaît pas.
+
+<Compare 
+  before={{ label: "Suppose le contexte", content: "Mets à jour la fonction que je t'ai montrée tout à l'heure pour ajouter la gestion des erreurs." }}
+  after={{ label: "Fournit le contexte", content: "Mets à jour cette fonction pour ajouter la gestion des erreurs :\n\n```python\ndef calculer_total(articles):\n    return sum(article.prix for article in articles)\n```\n\nAjoute try/except pour les listes vides et articles invalides." }}
+/>
+
+**Pourquoi ça arrive** : Les conversations IA semblent comme parler à un collègue. Mais contrairement aux collègues, la plupart des modèles d'IA n'ont pas de mémoire persistante entre les sessions.
+
+## Le Piège de la Question Orientée
+
+**Le Pattern** : Vous formulez votre question d'une façon qui intègre votre supposition, obtenant une confirmation plutôt qu'un insight.
+
+<Compare 
+  before={{ label: "Question orientée", content: "Pourquoi Python est-il le meilleur langage de programmation pour la data science ?" }}
+  after={{ label: "Question neutre", content: "Compare Python, R et Julia pour le travail de data science. Quels sont les forces et faiblesses de chacun ? Quand choisiriez-vous l'un plutôt que l'autre ?" }}
+/>
+
+**Pourquoi ça arrive** : Nous cherchons souvent la confirmation, pas l'information. Notre formulation pousse inconsciemment vers la réponse que nous attendons.
+
+## Le Piège de Tout Croire
+
+**Le Pattern** : Les réponses de l'IA semblent confiantes et autoritaires, donc vous les acceptez sans vérification. Mais la confiance n'égale pas la précision.
+
+<InfoGrid items={[
+  { label: "Contenu Non Révisé", description: "Publier du texte généré par IA sans vérification des faits", color: "red" },
+  { label: "Code Non Testé", description: "Utiliser du code IA en production sans test", color: "red" },
+  { label: "Décisions Aveugles", description: "Prendre des décisions importantes basées uniquement sur l'analyse IA", color: "red" }
+]} />
+
+**Pourquoi ça arrive** : L'IA semble confiante même quand elle a complètement tort. Nous sommes aussi enclins au « biais d'automatisation »—la tendance à faire plus confiance aux sorties informatiques qu'il ne faudrait.
+
+<TryIt 
+  title="Prompt de Vérification"
+  description="Utilisez ceci pour que l'IA signale ses propres incertitudes et erreurs potentielles."
+  prompt={`J'ai besoin d'informations sur : \${sujet}
+
+IMPORTANT : Après ta réponse, ajoute une section appelée "Notes de Vérification" qui inclut :
+
+1. **Niveau de Confiance** : Quelle est ta certitude sur cette information ? (Haute/Moyenne/Basse)
+
+2. **Erreurs Potentielles** : Quelles parties de cette réponse sont les plus susceptibles d'être fausses ou obsolètes ?
+
+3. **Ce Qu'il Faut Vérifier** : Quelles affirmations spécifiques l'utilisateur devrait-il vérifier indépendamment ?
+
+Sois honnête sur les limitations.`}
+/>
+
+## Le Piège du One-Shot
+
+**Le Pattern** : Vous envoyez un prompt, obtenez un résultat médiocre, et concluez que l'IA « ne marche pas » pour votre cas d'usage. Mais les excellents résultats nécessitent presque toujours de l'itération.
+
+<Compare 
+  before={{ label: "Pensée one-shot", content: "Sortie médiocre → \"L'IA ne peut pas faire ça\" → Abandonner" }}
+  after={{ label: "Pensée itérative", content: "Sortie médiocre → Analyser ce qui ne va pas → Affiner le prompt → Meilleure sortie → Affiner encore → Excellente sortie" }}
+/>
+
+## Le Piège de l'Oubli du Format
+
+**Le Pattern** : Vous vous concentrez sur ce que vous voulez que l'IA dise, mais oubliez de spécifier comment ça doit être formaté.
+
+<Compare 
+  before={{ label: "Pas de format spécifié", content: "Extrais les données clés de ce texte." }}
+  after={{ label: "Format spécifié", content: "Extrais les données clés de ce texte en JSON :\n\n{\n  \"nom\": string,\n  \"date\": \"AAAA-MM-JJ\",\n  \"montant\": number,\n  \"categorie\": string\n}\n\nRetourne UNIQUEMENT le JSON, pas d'explication." }}
+/>
+
+## Le Piège de la Fenêtre de Contexte
+
+**Le Pattern** : Vous collez un énorme document et attendez une analyse complète. Mais les modèles ont des limites.
+
+<InfoGrid items={[
+  { label: "Connaître Vos Limites", description: "Différents modèles ont différentes fenêtres de contexte", color: "blue" },
+  { label: "Découper les Grosses Entrées", description: "Diviser les documents en sections gérables", color: "blue" },
+  { label: "Mettre l'Important en Premier", description: "Mettre le contexte critique au début du prompt", color: "blue" },
+  { label: "Éliminer le Superflu", description: "Retirer le contexte inutile", color: "blue" }
+]} />
+
+## Le Piège de l'Anthropomorphisation
+
+**Le Pattern** : Vous traitez l'IA comme un collègue humain—attendant qu'elle « apprécie » les tâches, se souvienne de vous, ou se soucie des résultats. Elle ne le fait pas.
+
+<Compare 
+  before={{ label: "Anthropomorphisé", content: "Je suis sûr que tu vas adorer ce projet créatif ! Je sais que tu adores aider les gens, et c'est vraiment important pour moi personnellement." }}
+  after={{ label: "Clair et direct", content: "Écris une nouvelle courte créative avec ces spécifications :\n- Genre : Science-fiction\n- Longueur : 500 mots\n- Ton : Plein d'espoir\n- Doit inclure : Une fin surprise" }}
+/>
+
+<Callout type="info" title="Ce Qui Aide Vraiment">
+Au lieu d'appels émotionnels, concentrez-vous sur : exigences claires, bons exemples, contraintes spécifiques, et critères de succès explicites. Ces choses améliorent les sorties. « S'il te plaît essaie vraiment fort » ne le fait pas.
+</Callout>
+
+## Le Piège de la Négligence Sécuritaire
+
+**Le Pattern** : Dans la précipitation pour faire fonctionner les choses, vous incluez des informations sensibles dans les prompts—clés API, mots de passe, données personnelles.
+
+<InfoGrid items={[
+  { label: "Secrets dans les Prompts", description: "Clés API, mots de passe, tokens collés dans les prompts", color: "red" },
+  { label: "Données Personnelles", description: "Inclure des PII envoyées à des serveurs tiers", color: "red" },
+  { label: "Entrée Utilisateur Non Sanitisée", description: "Passer l'entrée utilisateur directement dans les prompts", color: "red" },
+  { label: "Informations Propriétaires", description: "Secrets commerciaux ou données confidentielles", color: "red" }
+]} />
+
+## Le Piège de l'Ignorance des Hallucinations
+
+**Le Pattern** : Vous demandez des citations, statistiques, ou faits spécifiques, et supposez qu'ils sont réels parce que l'IA les a énoncés avec confiance. Mais l'IA invente régulièrement des informations qui semblent plausibles.
+
+<Compare 
+  before={{ label: "Faire confiance aveuglément", content: "Donne-moi 5 statistiques sur la productivité du télétravail avec sources." }}
+  after={{ label: "Reconnaître les limitations", content: "Que sait-on sur la productivité du télétravail ? Pour toute statistique que tu mentionnes, note si ce sont des découvertes bien établies ou plus incertaines. Je vérifierai les chiffres spécifiques indépendamment." }}
+/>
+
+## Checklist Pré-Envoi
+
+<Checklist 
+  title="Vérification de Qualité du Prompt"
+  items={[
+    { text: "Est-ce assez spécifique ? (Pas vague)" },
+    { text: "Est-ce focalisé ? (Pas surchargé d'exigences)" },
+    { text: "Inclut-il tout le contexte nécessaire ?" },
+    { text: "La question est-elle neutre ? (Pas orientée)" },
+    { text: "Ai-je spécifié le format de sortie ?" },
+    { text: "L'entrée est-elle dans les limites de contexte ?" },
+    { text: "Y a-t-il des préoccupations de sécurité ?" },
+    { text: "Suis-je prêt à vérifier la sortie ?" },
+    { text: "Suis-je prêt à itérer si nécessaire ?" }
+  ]}
+/>
+
+<Quiz 
+  question="Quel est le piège le plus dangereux lors de l'utilisation de l'IA pour des décisions importantes ?"
+  options={[
+    "Utiliser des prompts vagues",
+    "Faire confiance aux sorties IA sans vérification",
+    "Ne pas spécifier le format de sortie",
+    "Surcharger les prompts d'exigences"
+  ]}
+  correctIndex={1}
+  explanation="Bien que tous les pièges causent des problèmes, faire confiance aux sorties IA sans vérification est le plus dangereux car cela peut mener à publier de fausses informations, déployer du code buggé, ou prendre des décisions basées sur des données hallucinées."
+/>
+
+## Analysez Vos Prompts
+
+<PromptAnalyzer 
+  title="Analyseur de Qualité de Prompt"
+  description="Obtenez du feedback alimenté par IA sur la clarté, la spécificité et des suggestions d'amélioration"
+  defaultPrompt="Aide-moi avec mon code"
+/>
+
+## Déboguez Ce Prompt
+
+<PromptDebugger
+  title="Trouvez le Piège"
+  badPrompt="Écris un article de blog sur la technologie qui soit optimisé SEO avec des mots-clés et aussi drôle mais professionnel et inclut des exemples de code et cible les débutants mais a des astuces avancées et mentionne notre produit TechCo et a de la preuve sociale et un appel à l'action et fait 500 mots mais complet."
+  badOutput="Voici un brouillon d'article de blog sur la technologie...
+
+[Contenu générique et non focalisé qui essaie de tout faire mais n'accomplit rien bien. Le ton change maladroitement entre décontracté et technique. La moitié des exigences manquent.]"
+  options={[
+    { id: "vague", label: "Le prompt est trop vague", isCorrect: false, explanation: "En fait, le prompt a beaucoup d'exigences spécifiques. Le problème est l'opposé—trop d'exigences, pas trop peu." },
+    { id: "overload", label: "Le prompt est surchargé avec trop d'exigences concurrentes", isCorrect: true, explanation: "Correct ! Ce prompt demande SEO + drôle + professionnel + code + débutants + avancé + mention produit + preuve sociale + CTA + contrainte de longueur. C'est plus de 10 exigences concurrentes ! L'IA ne peut pas toutes les satisfaire, donc elle fait un travail médiocre sur tout. Solution : diviser en plusieurs prompts focalisés." },
+    { id: "format", label: "Le format de sortie n'est pas spécifié", isCorrect: false, explanation: "Bien qu'un format plus spécifique aiderait, le problème principal est la surcharge d'exigences." },
+    { id: "context", label: "Il n'y a pas assez de contexte", isCorrect: false, explanation: "Le prompt a en fait beaucoup de contexte—peut-être trop ! Le problème est qu'il essaie de satisfaire trop d'objectifs à la fois." }
+  ]}
+  hint="Comptez combien d'exigences différentes sont empaquetées dans ce seul prompt."
+/>

@@ -30,6 +30,11 @@ cp -r src/content/book/*.mdx src/content/book/{locale}/
 cp src/components/book/elements/locales/en.ts src/components/book/elements/locales/{locale}.ts
 ```
 
+**⚠️ IMPORTANT: After copying, you MUST register the new locale in `src/components/book/elements/locales/index.ts`:**
+1. Add import: `import {locale} from "./{locale}";`
+2. Add to `locales` object: `{locale},`
+3. Add to named exports: `export { en, tr, az, {locale} };`
+
 This is faster because:
 - Turkish and many languages share similar sentence structures
 - All JSX/React components are already preserved correctly
@@ -145,9 +150,30 @@ Localize example text for demos (tokenizer samples, temperature examples, etc.):
 }
 ```
 
-### Book Elements
+### Book Elements Locales (REQUIRED)
 
-Localize elements at `/src/book/elements/*.tsx` files. Use `/src/book/elements/locales/*.ts` files to translate.
+**⚠️ DO NOT SKIP THIS STEP** - The interactive demos will not work in the new language without this.
+
+Translate the locale data file at `src/components/book/elements/locales/{locale}.ts`:
+- Temperature examples, token predictions, embedding words
+- Capabilities list, sample conversations, strategies
+- Tokenizer samples, builder fields, chain types
+- Frameworks (CRISPE, BREAK, RTF), exercises
+- Image/video prompt options, validation demos
+
+**Then register it in `src/components/book/elements/locales/index.ts`:**
+```typescript
+import {locale} from "./{locale}";
+
+const locales: Record<string, LocaleData> = {
+  en,
+  tr,
+  az,
+  {locale},  // Add your new locale here
+};
+
+export { en, tr, az, {locale} };  // Add to exports
+```
 
 ### UI Strings (`book.interactive.*`, `book.chapter.*`, `book.search.*`)
 Translate all interactive component labels and navigation strings.

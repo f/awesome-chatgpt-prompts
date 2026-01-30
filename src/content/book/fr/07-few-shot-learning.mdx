@@ -1,0 +1,365 @@
+L'apprentissage few-shot est l'une des techniques de prompting les plus puissantes. En fournissant des exemples de ce que vous voulez, vous pouvez enseigner au modèle des tâches complexes sans aucun fine-tuning.
+
+<Callout type="info" title="Apprendre par l'Exemple">
+Tout comme les humains apprennent en voyant des exemples, les modèles d'IA peuvent apprendre des patterns à partir des exemples que vous fournissez dans votre prompt.
+</Callout>
+
+## Qu'est-ce que l'Apprentissage Few-Shot ?
+
+L'apprentissage few-shot montre au modèle des paires entrée-sortie avant de lui demander d'effectuer la même tâche. Le modèle apprend le pattern de vos exemples et l'applique aux nouvelles entrées.
+
+<Compare 
+  before={{ 
+    label: "Zero-Shot (Sans Exemples)", 
+    content: `Classe cet avis comme positif ou négatif :
+
+"La batterie dure une éternité mais l'écran est trop sombre."
+
+→ Le modèle peut être incohérent avec les cas limites` 
+  }}
+  after={{ 
+    label: "Few-Shot (Avec Exemples)", 
+    content: `"Je l'adore !" → Positif
+"Terrible qualité" → Négatif  
+"Bien mais cher" → Mixte
+
+Maintenant classe :
+"La batterie dure une éternité mais l'écran est trop sombre."
+
+→ Le modèle apprend vos catégories exactes` 
+  }}
+/>
+
+<div className="my-4 grid grid-cols-2 md:grid-cols-4 gap-2">
+  <div className="p-3 bg-muted/50 rounded-lg text-center">
+    <div className="text-2xl font-bold">0</div>
+    <div className="text-xs text-muted-foreground">Zero-shot</div>
+  </div>
+  <div className="p-3 bg-muted/50 rounded-lg text-center">
+    <div className="text-2xl font-bold">1</div>
+    <div className="text-xs text-muted-foreground">One-shot</div>
+  </div>
+  <div className="p-3 bg-primary/10 rounded-lg text-center border-2 border-primary">
+    <div className="text-2xl font-bold">2-5</div>
+    <div className="text-xs text-muted-foreground">Few-shot</div>
+  </div>
+  <div className="p-3 bg-muted/50 rounded-lg text-center">
+    <div className="text-2xl font-bold">5+</div>
+    <div className="text-xs text-muted-foreground">Many-shot</div>
+  </div>
+</div>
+
+## Pourquoi les Exemples Fonctionnent
+
+<FewShotDemo />
+
+Les exemples communiquent :
+- **Format** : Comment la sortie doit être structurée
+- **Style** : Ton, longueur, vocabulaire
+- **Logique** : Le pattern de raisonnement à suivre
+- **Cas limites** : Comment gérer les situations spéciales
+
+## Pattern Few-Shot Basique
+
+La structure fondamentale du prompting few-shot suit un pattern simple : montrez des exemples, puis demandez la nouvelle tâche. La cohérence du formatage entre les exemples est cruciale.
+
+```
+[Exemple 1]
+Entrée : [entrée 1]
+Sortie : [sortie 1]
+
+[Exemple 2]
+Entrée : [entrée 2]
+Sortie : [sortie 2]
+
+Maintenant fais celui-ci :
+Entrée : [nouvelle entrée]
+Sortie :
+```
+
+## Few-Shot pour la Classification
+
+La classification est l'un des cas d'usage les plus forts pour l'apprentissage few-shot.
+
+### Analyse de Sentiment
+
+<Callout type="info" title="Qu'est-ce que l'Analyse de Sentiment ?">
+L'analyse de sentiment classe le texte par ton émotionnel : positif, négatif, neutre ou mixte.
+</Callout>
+
+<TryIt compact prompt={`Classe le sentiment de ces avis clients.
+
+Avis : "Ce produit a dépassé toutes mes attentes !"
+Sentiment : Positif
+
+Avis : "Arrivé cassé et le service client était inutile."
+Sentiment : Négatif
+
+Avis : "Ça fonctionne bien, rien de spécial."
+Sentiment : Neutre
+
+Avis : "La qualité est incroyable mais la livraison a pris une éternité."
+Sentiment : Mixte
+
+Maintenant classe :
+Avis : "J'adore le design mais l'autonomie de la batterie est décevante."
+Sentiment :`} />
+
+### Classification par Sujet
+
+<TryIt compact prompt={`Catégorise ces tickets de support.
+
+Ticket : "Je ne peux pas me connecter à mon compte"
+Catégorie : Authentification
+
+Ticket : "Comment passer au plan premium ?"
+Catégorie : Facturation
+
+Ticket : "L'application plante quand j'exporte des données"
+Catégorie : Rapport de Bug
+
+Maintenant catégorise :
+Ticket : "Mon paiement a été refusé mais je vois la charge sur ma carte"
+Catégorie :`} />
+
+## Few-Shot pour la Transformation
+
+Les tâches de transformation convertissent l'entrée d'une forme à une autre tout en préservant le sens.
+
+### Réécriture de Texte
+
+<TryIt compact prompt={`Réécris ces phrases dans un ton professionnel.
+
+Familier : "Salut, je voulais juste vérifier si tu avais reçu mon email ?"
+Professionnel : "Je souhaitais faire un suivi concernant mon précédent email."
+
+Familier : "C'est super important et doit être fait ASAP !"
+Professionnel : "Cette question nécessite une attention urgente et une action rapide."
+
+Maintenant réécris :
+Familier : "Je peux pas venir à la réunion, un truc est arrivé."
+Professionnel :`} />
+
+### Conversion de Format
+
+<TryIt compact prompt={`Convertis ces dates en langage naturel en format ISO.
+
+Entrée : "mardi prochain"
+Sortie : 2024-01-16 (en supposant qu'aujourd'hui est le 2024-01-11)
+
+Entrée : "après-demain"
+Sortie : 2024-01-13
+
+Maintenant convertis :
+Entrée : "le premier lundi du mois prochain"
+Sortie :`} />
+
+## Few-Shot pour la Génération
+
+Les tâches de génération créent du nouveau contenu suivant un pattern appris.
+
+### Descriptions de Produits
+
+<TryIt compact prompt={`Écris des descriptions de produits dans ce style :
+
+Produit : Casque Bluetooth Sans Fil
+Description : Plongez dans un son cristallin avec notre casque sans fil léger. Avec 40 heures d'autonomie et réduction active du bruit pour un confort toute la journée.
+
+Produit : Gourde en Acier Inoxydable
+Description : Restez hydraté avec style avec notre bouteille isotherme à double paroi. Garde les boissons froides 24 heures ou chaudes 12 heures.
+
+Maintenant écris :
+Produit : Chargeur Portable de Téléphone
+Description :`} />
+
+### Documentation de Code
+
+<TryIt compact prompt={`Écris des commentaires de documentation pour ces fonctions :
+
+Fonction :
+def calculate_bmi(weight_kg, height_m):
+    return weight_kg / (height_m ** 2)
+
+Documentation :
+"""
+Calcule l'Indice de Masse Corporelle (IMC).
+
+Args:
+    weight_kg (float): Poids en kilogrammes
+    height_m (float): Taille en mètres
+
+Returns:
+    float: Valeur de l'IMC
+"""
+
+Maintenant documente :
+Fonction :
+def is_palindrome(text):
+    cleaned = ''.join(c.lower() for c in text if c.isalnum())
+    return cleaned == cleaned[::-1]
+
+Documentation :`} />
+
+## Few-Shot pour l'Extraction
+
+Les tâches d'extraction tirent des informations structurées de texte non structuré.
+
+### Extraction d'Entités
+
+<TryIt compact prompt={`Extrais les entités nommées de ces phrases.
+
+Texte : "Le PDG d'Apple, Tim Cook, a annoncé l'iPhone 15 à Cupertino."
+Entités :
+- ENTREPRISE : Apple
+- PERSONNE : Tim Cook
+- PRODUIT : iPhone 15
+- LIEU : Cupertino
+
+Maintenant extrais de :
+Texte : "SpaceX d'Elon Musk a lancé 23 satellites Starlink depuis Cap Canaveral le 3 décembre."
+Entités :`} />
+
+## Techniques Few-Shot Avancées
+
+### Exemples Diversifiés
+
+La diversité dans les exemples est plus précieuse que la quantité. Couvrez différents scénarios et cas limites.
+
+<TryIt compact prompt={`Réponds aux plaintes clients.
+
+Exemple 1 (Problème de Produit) :
+Client : "Ma commande est arrivée endommagée."
+Réponse : "Je m'excuse sincèrement. Je vais immédiatement envoyer un remplacement sans frais."
+
+Exemple 2 (Problème de Service) :
+Client : "J'attends depuis 2 heures !"
+Réponse : "Je suis vraiment désolé pour ce temps d'attente. Je suis là maintenant pour vous aider."
+
+Maintenant réponds à :
+Client : "Le produit ne correspond pas à ce qui était montré sur le site."
+Réponse :`} />
+
+### Exemples Négatifs
+
+<Callout type="tip" title="Apprentissage Contrastif">
+Montrer des exemples « bons » vs « mauvais » aide le modèle à comprendre ce qu'il faut éviter.
+</Callout>
+
+<TryIt compact prompt={`Écris des objets d'email concis.
+
+Bon : "Rapport T3 Prêt pour Révision"
+Mauvais : "Salut, j'ai fini ce truc de rapport dont on a parlé"
+
+Bon : "Action Requise : Approuver les Congés avant Vendredi"
+Mauvais : "J'ai besoin que tu fasses quelque chose stp lis ça"
+
+Maintenant écris un objet pour :
+Email concernant : Demande de feedback sur un brouillon de proposition
+Objet :`} />
+
+### Exemples de Cas Limites
+
+<TryIt compact prompt={`Analyse les noms en format structuré.
+
+Entrée : "Jean Dupont"
+Sortie : {"prenom": "Jean", "nom": "Dupont", "deuxieme_prenom": null}
+
+Entrée : "Marie Jeanne Martin-Duval"
+Sortie : {"prenom": "Marie", "deuxieme_prenom": "Jeanne", "nom": "Martin-Duval"}
+
+Entrée : "Dr. Pierre Louis Bernard Jr."
+Sortie : {"prefixe": "Dr.", "prenom": "Pierre", "deuxieme_prenom": "Louis", "nom": "Bernard", "suffixe": "Jr."}
+
+Maintenant analyse :
+Entrée : "Professeur Jacques Henri Lefèvre III"
+Sortie :`} />
+
+## Combien d'Exemples ?
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-40">Classification simple</span>
+    <span className="text-primary font-mono">2-3</span>
+    <span className="text-muted-foreground">Un par catégorie minimum</span>
+  </div>
+  <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-40">Formatage complexe</span>
+    <span className="text-primary font-mono">3-5</span>
+    <span className="text-muted-foreground">Montrer les variations</span>
+  </div>
+  <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-40">Style nuancé</span>
+    <span className="text-primary font-mono">4-6</span>
+    <span className="text-muted-foreground">Capturer toute la gamme</span>
+  </div>
+</div>
+
+## Qualité des Exemples
+
+<Compare 
+  before={{ 
+    label: "Mauvais Exemples", 
+    content: `"Bon produit" → Bon
+"Bon service" → Bon
+"Bon prix" → Bon
+
+✗ Tous trop similaires
+✗ Même mot répété` 
+  }}
+  after={{ 
+    label: "Bons Exemples", 
+    content: `"A dépassé mes attentes !" → Positif
+"Cassé à l'arrivée" → Négatif
+"Fait le travail" → Neutre
+"Super qualité mais trop cher" → Mixte
+
+✓ Scénarios diversifiés
+✓ Frontières claires` 
+  }}
+/>
+
+## Combiner Few-Shot avec d'Autres Techniques
+
+### Few-Shot + Rôle
+
+```
+Tu es un réviseur de contrats juridiques.
+
+[exemples d'analyse de clauses]
+
+Maintenant analyse : [nouvelle clause]
+```
+
+### Few-Shot + CoT
+
+```
+Classe et explique le raisonnement.
+
+Avis : "Bonnes fonctionnalités mais trop cher"
+Réflexion : L'avis mentionne des aspects positifs mais aussi un 
+négatif significatif. Le "mais" suggère que le négatif l'emporte.
+Classification : Mixte-Négatif
+
+Maintenant classe avec raisonnement :
+Avis : "Exactement ce qu'il me fallait, arrivé plus vite que prévu"
+```
+
+## Résumé
+
+<Callout type="tip" title="Points Clés à Retenir">
+L'apprentissage few-shot enseigne par la démonstration et est souvent plus efficace que les instructions seules. Utilisez 2-5 exemples diversifiés et corrects, et combinez avec d'autres techniques pour de meilleurs résultats.
+</Callout>
+
+<Quiz 
+  question="Combien d'exemples devriez-vous généralement fournir en apprentissage few-shot ?"
+  options={[
+    "Autant que possible (10+)",
+    "Juste 1 exemple suffit toujours",
+    "2-5 exemples diversifiés et corrects",
+    "Les exemples ne sont pas nécessaires si les instructions sont claires"
+  ]}
+  correctIndex={2}
+  explanation="2-5 exemples diversifiés et corrects fonctionnent généralement le mieux. Trop peu peuvent ne pas capturer le pattern, tandis que trop nombreux gaspillent des tokens. La qualité et la diversité comptent plus que la quantité."
+/>
+
+Dans le prochain chapitre, nous explorerons l'affinement itératif : l'art d'améliorer les prompts par des tentatives successives.

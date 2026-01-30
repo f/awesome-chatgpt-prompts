@@ -14,6 +14,7 @@ import type { LocaleData } from "./types";
 import en from "./en";
 import tr from "./tr";
 import az from "./az";
+import fr from "./fr";
 
 // Re-export types for convenience
 export * from "./types";
@@ -23,6 +24,7 @@ const locales: Record<string, LocaleData> = {
   en,
   tr,
   az,
+  fr,
 };
 
 /**
@@ -46,7 +48,7 @@ export function getLocaleField<K extends keyof LocaleData>(
 }
 
 // Export individual locale data for direct access if needed
-export { en, tr, az };
+export { en, tr, az, fr };
 
 // Export the full locales object
 export { locales };

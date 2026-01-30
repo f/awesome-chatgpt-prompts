@@ -1,0 +1,333 @@
+Le chaînage de prompts décompose des tâches complexes en séquences de prompts plus simples, où la sortie de chaque étape alimente la suivante. Cette technique améliore considérablement la fiabilité et permet des workflows sophistiqués qui seraient impossibles avec un seul prompt.
+
+<Callout type="tip" title="Pensez Chaîne de Montage">
+Tout comme une chaîne de montage d'usine décompose la fabrication en stations spécialisées, le chaînage de prompts décompose les tâches d'IA en étapes spécialisées. Chaque étape fait bien une chose, et le résultat combiné est bien meilleur que d'essayer de tout faire d'un coup.
+</Callout>
+
+## Pourquoi Chaîner les Prompts ?
+
+Les prompts uniques ont du mal avec les tâches complexes car ils essaient de faire trop à la fois. L'IA doit simultanément comprendre, analyser, planifier et générer, ce qui mène à des erreurs et incohérences.
+
+<div className="my-6 grid md:grid-cols-2 gap-4">
+  <div className="border rounded-lg bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900">
+    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Le Prompt Unique Échoue</p>
+    <div className="text-sm p-4 pt-2 space-y-1">
+      <p className="m-0!">Le raisonnement multi-étapes se confond</p>
+      <p className="m-0!">Différents « modes » de pensée s'entrechoquent</p>
+      <p className="m-0!">Les sorties complexes manquent de cohérence</p>
+      <p className="m-0!">Pas d'opportunité de contrôle qualité</p>
+    </div>
+  </div>
+  <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Le Chaînage Résout Cela</p>
+    <div className="text-sm p-4 pt-2 space-y-1">
+      <p className="m-0!">Chaque étape se concentre sur une tâche</p>
+      <p className="m-0!">Prompts spécialisés pour chaque mode</p>
+      <p className="m-0!">Valider entre les étapes</p>
+      <p className="m-0!">Déboguer et améliorer les étapes individuelles</p>
+    </div>
+  </div>
+</div>
+
+## Pattern de Chaînage Basique
+
+La chaîne la plus simple passe la sortie d'un prompt directement au suivant. Chaque étape a un objectif clair et focalisé.
+
+<div className="my-6 flex items-center justify-center gap-3 p-6 bg-muted/30 rounded-lg overflow-x-auto">
+  <div className="flex flex-col items-center">
+    <div className="px-4 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
+      <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Prompt 1</p>
+      <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">(Extraire)</p>
+    </div>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">Entrée</p>
+  </div>
+  <div className="text-blue-400 dark:text-blue-500">→</div>
+  <div className="flex flex-col items-center">
+    <div className="px-4 py-3 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg text-center">
+      <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">Prompt 2</p>
+      <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">(Analyser)</p>
+    </div>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">Intermédiaire</p>
+  </div>
+  <div className="text-purple-400 dark:text-purple-500">→</div>
+  <div className="flex flex-col items-center">
+    <div className="px-4 py-3 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg text-center">
+      <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">Prompt 3</p>
+      <p className="text-xs text-green-600 dark:text-green-400 m-0!">(Générer)</p>
+    </div>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">Sortie</p>
+  </div>
+</div>
+
+<Callout type="info" title="Le Pattern ETG">
+Le pattern de chaîne le plus courant est **Extraire → Transformer → Générer**. D'abord extraire les données brutes, puis les remodeler pour votre objectif, puis générer la sortie finale.
+</Callout>
+
+## Types de Chaînes
+
+Différentes tâches nécessitent différentes architectures de chaînes.
+
+<ChainFlowDemo />
+
+### Chaîne Séquentielle
+
+Le pattern le plus direct : chaque étape dépend de la précédente. Pensez-y comme une course de relais où chaque coureur passe le témoin au suivant.
+
+<ChainExample 
+  type="sequential"
+  steps={[
+    { step: "Étape 1 : Extraire", prompt: "Extrais toutes les dates, noms et nombres de : [texte]", output: '{ dates: ["2024-01-15", "2024-02-20"], noms: ["Jean Dupont", "Acme Corp"], nombres: [15000, 42] }' },
+    { step: "Étape 2 : Analyser", prompt: "Étant donné ces données extraites : [sortie_etape1], identifie les relations et patterns.", output: '{ patterns: ["Réunions mensuelles planifiées"], relations: ["Jean Dupont travaille chez Acme Corp"] }' },
+    { step: "Étape 3 : Générer", prompt: "En utilisant ces patterns : [sortie_etape2], écris un rapport résumé mettant en avant les conclusions les plus significatives.", output: "Rapport Résumé : L'analyse du document révèle une relation commerciale entre Jean Dupont et Acme Corp, avec des réunions mensuelles planifiées..." }
+  ]}
+/>
+
+### Chaîne Parallèle
+
+Quand vous avez besoin de plusieurs perspectives sur la même entrée, exécutez les prompts en parallèle et fusionnez les résultats.
+
+<ChainExample 
+  type="parallel"
+  steps={[
+    { step: "Entrée", prompt: "Texte d'avis produit", output: '"J\'adore ces écouteurs ! La batterie dure une éternité et l\'écran sur le boîtier est très pratique. Parfait pour mes trajets quotidiens."' },
+    { step: "Branche A : Sentiment", prompt: "Analyse le sentiment : [texte]", output: '{ sentiment: "positif", score: 0.85 }' },
+    { step: "Branche B : Fonctionnalités", prompt: "Extrais les fonctionnalités mentionnées : [texte]", output: '{ fonctionnalites: ["batterie", "ecran"] }' },
+    { step: "Branche C : Persona", prompt: "Identifie le persona utilisateur : [texte]", output: '{ persona: "navetteur" }' },
+    { step: "Fusion", prompt: "Combine les analyses en rapport unifié", output: "Rapport Unifié : Avis positif d'un navetteur mettant en avant la batterie et l'écran." }
+  ]}
+/>
+
+### Chaîne Conditionnelle
+
+Routez les entrées à travers différents chemins basés sur la classification. C'est comme un arbre de décision où l'IA catégorise d'abord l'entrée, puis gère chaque catégorie différemment.
+
+<ChainExample 
+  type="conditional"
+  steps={[
+    { step: "Classifier l'Entrée", prompt: "Classe ce message client comme : plainte, question, feedback, ou autre.\n\nMessage : [texte]", output: '{ classification: "plainte", confiance: 0.92 }' },
+    { step: "Route : Question (sautée)", prompt: "Identifier quelle information est nécessaire", output: "Sauté - entrée classée comme plainte" },
+    { step: "Route : Plainte", prompt: "Identifie le problème et sa gravité : [texte]", output: '{ probleme: "livraison retardée", gravite: "moyenne" }' },
+    { step: "Générer Réponse", prompt: "Génère une réponse empathique avec résolution : [analyse]", output: "Cher Client, Nous nous excusons sincèrement pour ce retard. Votre commande a été expédiée en urgence..." }
+  ]}
+/>
+
+### Chaîne Itérative
+
+Continuez à affiner la sortie jusqu'à ce qu'elle réponde aux standards de qualité.
+
+<Callout type="warning" title="Définir des Limites d'Itération">
+Définissez toujours un nombre maximum d'itérations (typiquement 3-5) pour prévenir les boucles infinies et contrôler les coûts.
+</Callout>
+
+<ChainExample 
+  type="iterative"
+  steps={[
+    { step: "Générer Brouillon", prompt: "Écris une description de produit pour : [écouteurs sans fil]", output: "Ces écouteurs sans fil offrent une bonne qualité sonore et un port confortable pour un usage quotidien." },
+    { step: "Évaluer (Score : 5)", prompt: "Note cette description de 1 à 10 sur : clarté, persuasion, précision.", output: '{ score: 5, ameliorations: ["Ajouter fonctionnalités spécifiques", "Inclure bénéfices émotionnels", "Mentionner autonomie batterie"] }' },
+    { step: "Améliorer Brouillon", prompt: "Améliore cette description selon ce feedback.", output: "Découvrez un son cristallin avec nos écouteurs sans fil premium. Avec 30 heures d'autonomie, réduction active du bruit et design ergonomique confortable toute la journée. Parfait pour les mélomanes et professionnels. Commandez maintenant et transformez votre expérience d'écoute." },
+    { step: "Évaluer (Score : 8)", prompt: "Note cette description de 1 à 10.", output: '{ score: 8, ameliorations: ["Mineur : Pourrait ajouter info garantie"] }\n\n✓ Score >= 8 : SORTIE DE BOUCLE' }
+  ]}
+/>
+
+## Patterns de Chaînes Courants
+
+### Extraire → Transformer → Générer
+
+Le cheval de bataille du traitement de contenu.
+
+<div className="mb-4 p-3 rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800">
+  <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 m-0!">Idéal Pour</p>
+  <p className="text-sm text-blue-600 dark:text-blue-400 m-0!">Résumé de documents, génération de rapports, réutilisation de contenu, conversion données-vers-récit</p>
+</div>
+
+### Analyser → Planifier → Exécuter
+
+Parfait pour le refactoring de code, la planification de projet, ou toute tâche où vous devez comprendre avant d'agir.
+
+<div className="mb-4 p-3 rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border border-purple-200 dark:border-purple-800">
+  <p className="text-xs font-semibold text-purple-700 dark:text-purple-300 mb-1 m-0!">Idéal Pour</p>
+  <p className="text-sm text-purple-600 dark:text-purple-400 m-0!">Refactoring de code, planification de projet, dépannage, prise de décision stratégique</p>
+</div>
+
+### Générer → Critiquer → Affiner
+
+La boucle d'auto-amélioration. Générer du contenu, faire évaluer critiquement par l'IA, puis améliorer selon ce feedback.
+
+<div className="mb-4 p-3 rounded-lg bg-green-50/50 dark:bg-green-950/20 border border-green-200 dark:border-green-800">
+  <p className="text-xs font-semibold text-green-700 dark:text-green-300 mb-1 m-0!">Idéal Pour</p>
+  <p className="text-sm text-green-600 dark:text-green-400 m-0!">Copywriting marketing, écriture créative, brouillons d'emails, présentations</p>
+</div>
+
+## Implémenter les Chaînes
+
+### Chaînage Manuel
+
+L'approche copier-coller est parfaite pour le prototypage et l'expérimentation.
+
+<CodeEditor 
+  language="python"
+  filename="chaine_manuelle.py"
+  code={`# Pseudocode pour chaînage manuel
+sortie_etape1 = appeler_ia("Extrais les entités de : " + texte_entree)
+sortie_etape2 = appeler_ia("Analyse les relations : " + sortie_etape1)
+sortie_finale = appeler_ia("Génère un rapport : " + sortie_etape2)`}
+/>
+
+### Chaînage Programmatique
+
+Pour les systèmes de production, automatisez la chaîne avec du code.
+
+<CodeEditor 
+  language="python"
+  filename="chaine.py"
+  code={`def chaine_analyse(document):
+    # Étape 1 : Résumer
+    resume = appeler_ia(f"""
+        Résume les points clés de ce document en 5 puces :
+        {document}
+    """)
+    
+    # Étape 2 : Extraire les entités
+    entites = appeler_ia(f"""
+        Extrais les entités nommées (personnes, organisations, lieux) 
+        de ce résumé. Retourne en JSON.
+        {resume}
+    """)
+    
+    # Étape 3 : Générer des insights
+    insights = appeler_ia(f"""
+        Basé sur ce résumé et ces entités, génère 3 insights 
+        actionnables pour un analyste business.
+        Résumé : {resume}
+        Entités : {entites}
+    """)
+    
+    return {
+        "resume": resume,
+        "entites": json.loads(entites),
+        "insights": insights
+    }`}
+/>
+
+### Utiliser des Templates de Chaîne
+
+<CodeEditor 
+  language="yaml"
+  filename="template_chaine.yaml"
+  code={`name: "Chaîne d'Analyse de Document"
+steps:
+  - name: "extraire"
+    prompt: |
+      Extrais les informations clés de ce document :
+      {input}
+      Retourne JSON avec : sujets, entites, dates, nombres
+    
+  - name: "analyser"
+    prompt: |
+      Analyse ces données extraites pour des patterns :
+      {extraire.output}
+      Identifie : tendances, anomalies, relations
+    
+  - name: "rapport"
+    prompt: |
+      Génère un résumé exécutif basé sur :
+      Données : {extraire.output}
+      Analyse : {analyser.output}
+      Format : 3 paragraphes, ton business`}
+/>
+
+## Gestion des Erreurs dans les Chaînes
+
+Les chaînes peuvent échouer à n'importe quelle étape. Intégrez validation, réessais et solutions de repli.
+
+<ChainErrorDemo />
+
+<Callout type="warning" title="Déchet Entrant, Déchet Sortant">
+Si une étape produit une mauvaise sortie, chaque étape suivante sera affectée. Validez toujours les résultats intermédiaires critiques avant de les transmettre.
+</Callout>
+
+### Validation Entre Étapes
+
+<ValidationDemo />
+
+### Chaînes de Repli
+
+<FallbackDemo />
+
+## Optimisation des Chaînes
+
+<div className="my-6 grid md:grid-cols-3 gap-4">
+  <div className="border rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-900 p-4">
+    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 mb-2 m-0!">Réduire la Latence</p>
+    <div className="text-sm space-y-1">
+      <p className="m-0!">Paralléliser les étapes indépendantes</p>
+      <p className="m-0!">Mettre en cache les résultats intermédiaires</p>
+      <p className="m-0!">Utiliser des modèles plus petits pour les étapes simples</p>
+    </div>
+  </div>
+  <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900 p-4">
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 mb-2 m-0!">Réduire le Coût</p>
+    <div className="text-sm space-y-1">
+      <p className="m-0!">Utiliser des modèles moins chers pour la classification</p>
+      <p className="m-0!">Limiter les itérations dans les boucles</p>
+      <p className="m-0!">Court-circuiter quand possible</p>
+    </div>
+  </div>
+  <div className="border rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-900 p-4">
+    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 mb-2 m-0!">Améliorer la Fiabilité</p>
+    <div className="text-sm space-y-1">
+      <p className="m-0!">Ajouter validation entre étapes</p>
+      <p className="m-0!">Inclure logique de réessai</p>
+      <p className="m-0!">Journaliser les résultats intermédiaires</p>
+    </div>
+  </div>
+</div>
+
+## Exemple de Chaîne Réel
+
+### Pipeline de Contenu
+
+<ContentPipelineDemo />
+
+## Résumé
+
+Le chaînage de prompts transforme ce que l'IA peut accomplir en décomposant les tâches impossibles en étapes réalisables.
+
+<div className="my-6 grid md:grid-cols-2 gap-4">
+  <div className="border rounded-lg bg-amber-50/50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900 p-4">
+    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 mb-2 m-0!">Le Chaînage Permet</p>
+    <div className="text-sm space-y-1">
+      <p className="m-0!">Workflows complexes multi-étapes</p>
+      <p className="m-0!">Meilleure qualité par la spécialisation</p>
+      <p className="m-0!">Meilleure gestion et validation des erreurs</p>
+      <p className="m-0!">Composants de prompts modulaires et réutilisables</p>
+    </div>
+  </div>
+  <div className="border rounded-lg bg-cyan-50/50 dark:bg-cyan-950/20 border-cyan-200 dark:border-cyan-900 p-4">
+    <p className="text-sm font-semibold text-cyan-700 dark:text-cyan-400 mb-2 m-0!">Principes Clés</p>
+    <div className="text-sm space-y-1">
+      <p className="m-0!">Décomposer les tâches complexes en étapes simples</p>
+      <p className="m-0!">Concevoir des interfaces claires entre étapes</p>
+      <p className="m-0!">Valider les sorties intermédiaires</p>
+      <p className="m-0!">Intégrer gestion d'erreurs et replis</p>
+    </div>
+  </div>
+</div>
+
+<Callout type="tip" title="Commencer Simple">
+Commencez avec une chaîne séquentielle de 2-3 étapes. Faites-la fonctionner de manière fiable avant d'ajouter de la complexité.
+</Callout>
+
+<Quiz 
+  question="Quel est le principal avantage du chaînage de prompts par rapport à un seul prompt complexe ?"
+  options={[
+    "Il utilise moins de tokens au total",
+    "Il s'exécute plus rapidement",
+    "Chaque étape peut se spécialiser, améliorant la qualité et permettant la gestion des erreurs",
+    "Il nécessite moins de planification"
+  ]}
+  correctIndex={2}
+  explanation="Le chaînage de prompts décompose les tâches complexes en étapes spécialisées. Chaque étape peut se concentrer sur une chose, les résultats intermédiaires peuvent être validés, les erreurs peuvent être attrapées et réessayées."
+/>
+
+Dans le prochain chapitre, nous explorerons le prompting multimodal : travailler avec des images, audio et autre contenu non-textuel.

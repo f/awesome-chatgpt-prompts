@@ -1,0 +1,264 @@
+Comprendre le contexte est essentiel pour construire des applications d'IA qui fonctionnent réellement. Ce chapitre couvre tout ce que vous devez savoir sur donner à l'IA la bonne information au bon moment.
+
+<Callout type="info" title="Pourquoi le Contexte Est Important">
+Les modèles d'IA sont sans état. Ils ne se souviennent pas des conversations passées. Chaque fois que vous envoyez un message, vous devez inclure tout ce dont l'IA a besoin. C'est ce qu'on appelle « l'ingénierie du contexte ».
+</Callout>
+
+## Qu'est-ce que le Contexte ?
+
+Le contexte est toute l'information que vous donnez à l'IA avec votre question. Pensez-y comme ceci :
+
+<Compare 
+  before={{ label: "Sans Contexte", content: "Quel est le statut ?" }}
+  after={{ label: "Avec Contexte", content: "Tu es un assistant chef de projet. L'utilisateur travaille sur le Projet Alpha, qui est dû vendredi. La dernière mise à jour était : 'Backend terminé, frontend 80% fait.'\n\nUtilisateur : Quel est le statut ?" }}
+/>
+
+Sans contexte, l'IA n'a aucune idée de quel « statut » vous demandez. Avec contexte, elle peut donner une réponse utile.
+
+### La Fenêtre de Contexte
+
+Rappelez-vous des chapitres précédents : l'IA a une « fenêtre de contexte » limitée - la quantité maximale de texte qu'elle peut voir à la fois. Cela inclut :
+
+<InfoGrid items={[
+  { label: "Prompt Système", description: "Instructions qui définissent le comportement de l'IA", color: "purple" },
+  { label: "Historique de Conversation", description: "Messages précédents dans ce chat", color: "blue" },
+  { label: "Information Récupérée", description: "Documents, données ou connaissances récupérés pour cette requête", color: "green" },
+  { label: "Requête Actuelle", description: "La vraie question de l'utilisateur", color: "amber" },
+  { label: "Réponse de l'IA", description: "La réponse (compte aussi vers la limite !)", color: "rose" },
+]} />
+
+## L'IA est Sans État
+
+<Callout type="warning" title="Concept Important">
+L'IA ne se souvient de rien entre les conversations. Chaque appel API commence à zéro. Si vous voulez que l'IA « se souvienne » de quelque chose, VOUS devez l'inclure dans le contexte à chaque fois.
+</Callout>
+
+C'est pourquoi les chatbots envoient tout votre historique de conversation avec chaque message. Ce n'est pas que l'IA se souvient - c'est que l'application renvoie tout.
+
+<TryIt compact prompt={`Fais comme si c'était une nouvelle conversation sans historique.
+
+De quoi viens-je de te parler ?`} />
+
+L'IA dira qu'elle ne sait pas parce qu'elle n'a vraiment pas accès à un contexte précédent.
+
+## RAG : Génération Augmentée par Récupération
+
+RAG est une technique pour donner à l'IA accès à des connaissances sur lesquelles elle n'a pas été entraînée. Au lieu d'essayer de tout faire tenir dans l'entraînement de l'IA, vous :
+
+1. **Stockez** vos documents dans une base de données consultable
+2. **Cherchez** les documents pertinents quand un utilisateur pose une question
+3. **Récupérez** les morceaux les plus pertinents
+4. **Augmentez** votre prompt avec ces morceaux
+5. **Générez** une réponse utilisant ce contexte
+
+<div className="my-6 p-4 border rounded-lg bg-muted/30">
+  <p className="font-semibold mb-3">Comment Fonctionne RAG :</p>
+  <div className="flex flex-col gap-2 text-sm">
+    <div className="flex items-center gap-3">
+      <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">1</span>
+      <span>L'utilisateur demande : « Quelle est notre politique de remboursement ? »</span>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">2</span>
+      <span>Le système cherche dans vos documents « politique de remboursement »</span>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">3</span>
+      <span>Trouve la section pertinente de votre document de politique</span>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">4</span>
+      <span>Envoie à l'IA : « Basé sur cette politique : [texte], réponds : Quelle est notre politique de remboursement ? »</span>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center text-green-600 font-bold">5</span>
+      <span>L'IA génère une réponse précise utilisant votre vraie politique</span>
+    </div>
+  </div>
+</div>
+
+### Pourquoi RAG ?
+
+<div className="my-6 grid md:grid-cols-2 gap-4">
+  <div className="p-4 border rounded-lg">
+    <p className="font-semibold text-green-600 dark:text-green-400 mb-2 flex items-center gap-2"><IconCheck className="text-green-600" /> Avantages de RAG</p>
+    <ul className="text-sm space-y-1 text-muted-foreground">
+      <li>Utilise vos données réelles et actuelles</li>
+      <li>Réduit les hallucinations</li>
+      <li>Peut citer les sources</li>
+      <li>Facile à mettre à jour (mettez juste à jour les documents)</li>
+      <li>Pas de fine-tuning coûteux nécessaire</li>
+    </ul>
+  </div>
+  <div className="p-4 border rounded-lg">
+    <p className="font-semibold text-amber-600 dark:text-amber-400 mb-2 flex items-center gap-2"><IconLightbulb className="text-amber-600" /> Quand Utiliser RAG</p>
+    <ul className="text-sm space-y-1 text-muted-foreground">
+      <li>Bots de support client</li>
+      <li>Recherche de documentation</li>
+      <li>Bases de connaissances internes</li>
+      <li>Tout Q&R spécifique à un domaine</li>
+      <li>Quand la précision compte</li>
+    </ul>
+  </div>
+</div>
+
+## Embeddings : Comment Fonctionne la Recherche
+
+Comment RAG sait-il quels documents sont « pertinents » ? Il utilise les **embeddings** - une façon de transformer le texte en nombres qui capturent le sens.
+
+### Que Sont les Embeddings ?
+
+Un embedding est une liste de nombres (un « vecteur ») qui représente le sens du texte. Sens similaire = nombres similaires.
+
+<EmbeddingsDemo />
+
+### Recherche Sémantique
+
+Avec les embeddings, vous pouvez chercher par sens, pas juste par mots-clés :
+
+<Compare 
+  before={{ label: "Recherche par Mots-clés", content: "Requête : 'politique retour'\nTrouve : Documents contenant 'politique' et 'retour'\nManque : 'Comment obtenir un remboursement'" }}
+  after={{ label: "Recherche Sémantique", content: "Requête : 'politique retour'\nTrouve : Tous les documents liés incluant :\n- 'Directives de remboursement'\n- 'Comment renvoyer des articles'\n- 'Garantie satisfait ou remboursé'" }}
+/>
+
+C'est pourquoi RAG est si puissant - il trouve les informations pertinentes même quand les mots exacts ne correspondent pas.
+
+## Appel de Fonction / Utilisation d'Outils
+
+L'appel de fonction permet à l'IA d'utiliser des outils externes - comme chercher sur le web, vérifier une base de données, ou appeler une API.
+
+<Callout type="tip" title="Aussi Appelé">
+Différents fournisseurs d'IA appellent cela différemment : « function calling » (OpenAI), « tool use » (Anthropic/Claude), ou « outils » (terme général). Ils signifient tous la même chose.
+</Callout>
+
+### Comment Ça Marche
+
+1. Vous dites à l'IA quels outils sont disponibles
+2. L'IA décide si elle a besoin d'un outil pour répondre
+3. L'IA produit une requête structurée pour l'outil
+4. Votre code exécute l'outil et retourne les résultats
+5. L'IA utilise les résultats pour former sa réponse
+
+<TryIt 
+  title="Exemple d'Appel de Fonction"
+  description="Ce prompt montre comment l'IA décide d'utiliser un outil :"
+  prompt={`Tu as accès à ces outils :
+
+1. obtenir_meteo(ville: string) - Obtenir la météo actuelle pour une ville
+2. rechercher_web(requete: string) - Chercher sur internet
+3. calculer(expression: string) - Faire des calculs mathématiques
+
+Utilisateur : Quel temps fait-il à Paris en ce moment ?
+
+Réfléchis étape par étape : As-tu besoin d'un outil ? Lequel ? Quels paramètres ?`}
+/>
+
+## Résumé : Gérer les Longues Conversations
+
+Comme les conversations s'allongent, vous atteindrez la limite de la fenêtre de contexte. Puisque l'IA est sans état, les longues conversations peuvent déborder. La solution ? **Le résumé**.
+
+### Le Problème
+
+<Compare 
+  before={{ label: "Sans Résumé", content: "Message 1 (500 tokens)\nMessage 2 (800 tokens)\nMessage 3 (600 tokens)\n... 50 messages de plus ...\n────────────────────\n= 40 000+ tokens\n= DÉPASSE LA LIMITE !" }}
+  after={{ label: "Avec Résumé", content: "[Résumé] : 200 tokens\nMessages récents : 2 000 tokens\nRequête actuelle : 100 tokens\n────────────────────\n= 2 300 tokens\n= Rentre parfaitement !" }}
+/>
+
+### Stratégies de Résumé
+
+<SummarizationDemo />
+
+### Que Capturer dans les Résumés
+
+Un bon résumé de conversation préserve ce qui compte :
+
+<Checklist 
+  title="Checklist de Résumé"
+  items={[
+    { text: "Décisions clés prises" },
+    { text: "Faits importants mentionnés" },
+    { text: "Préférences utilisateur découvertes" },
+    { text: "Tâche ou objectif actuel" },
+    { text: "Questions en attente" },
+    { text: "Niveau de ton et formalité" }
+  ]}
+/>
+
+### Essayez : Créer un Résumé
+
+<TryIt 
+  title="Résumeur de Conversation"
+  description="Pratiquez la création d'un résumé préservant le contexte :"
+  prompt={`Résume cette conversation pour la gestion du contexte. Le résumé remplacera la conversation complète dans la mémoire de l'IA.
+
+CONVERSATION :
+Utilisateur : Salut, j'apprends Python pour l'analyse de données
+Assistant : Bienvenue ! Python est excellent pour l'analyse de données. Quel est votre niveau actuel ?
+Utilisateur : Je connais les bases d'Excel. Débutant complet en programmation.
+Assistant : Excellent point de départ ! Commençons par les variables - ce sont comme des cellules Excel qui stockent des données.
+Utilisateur : Peux-tu expliquer les variables ?
+Assistant : Les variables sont des conteneurs pour stocker des données. En Python : nom = "Alice" ou age = 25
+Utilisateur : Et les listes ? J'ai besoin de gérer plusieurs valeurs.
+Assistant : Les listes sont comme des colonnes Excel ! Créez-en une comme : prix = [10, 20, 30]. Accédez aux éléments avec prix[0].
+
+CRÉE UN RÉSUMÉ qui capture :
+1. Objectif et contexte de l'utilisateur (1 phrase)
+2. Sujets couverts jusqu'ici (1 phrase)
+3. Style/préférences d'apprentissage de l'utilisateur (1 phrase)
+4. Ce qu'il faut couvrir ensuite (1 phrase)`}
+/>
+
+## MCP : Model Context Protocol
+
+MCP (Model Context Protocol) est une façon standard de connecter l'IA aux données et outils externes. Au lieu de construire des intégrations personnalisées pour chaque fournisseur d'IA, MCP fournit une interface universelle.
+
+### Pourquoi MCP ?
+
+<InfoGrid columns={2} items={[
+  { label: "Sans MCP", description: "Construire des intégrations séparées pour ChatGPT, Claude, Gemini... Maintenir plusieurs bases de code. Casser quand les APIs changent.", color: "red" },
+  { label: "Avec MCP", description: "Construire une fois, fonctionne partout. Protocole standard. L'IA peut découvrir et utiliser vos outils automatiquement.", color: "green" },
+]} />
+
+### MCP Fournit
+
+- **Ressources** : Données que l'IA peut lire (fichiers, enregistrements de base de données, réponses API)
+- **Outils** : Actions que l'IA peut effectuer (chercher, créer, mettre à jour, supprimer)
+- **Prompts** : Templates de prompts pré-construits
+
+<Callout type="info" title="prompts.chat Utilise MCP">
+Cette plateforme a un serveur MCP ! Vous pouvez le connecter à Claude Desktop ou d'autres clients compatibles MCP pour chercher et utiliser des prompts directement depuis votre assistant IA.
+</Callout>
+
+## Construire le Contexte : L'Image Complète
+
+<ContextPlayground />
+
+## Bonnes Pratiques
+
+<Checklist 
+  title="Checklist d'Ingénierie du Contexte"
+  items={[
+    { text: "Garder les prompts système concis mais complets" },
+    { text: "N'inclure que le contexte pertinent (pas tout)" },
+    { text: "Résumer les longues conversations" },
+    { text: "Utiliser RAG pour les connaissances spécifiques au domaine" },
+    { text: "Donner des outils à l'IA pour les données en temps réel" },
+    { text: "Surveiller l'utilisation des tokens pour rester dans les limites" },
+    { text: "Tester avec des cas limites (entrées très longues, etc.)" }
+  ]}
+/>
+
+## Résumé
+
+L'ingénierie du contexte consiste à donner à l'IA la bonne information :
+
+- **L'IA est sans état** - incluez tout ce dont elle a besoin à chaque fois
+- **RAG** récupère des documents pertinents pour augmenter les prompts
+- **Les embeddings** permettent la recherche sémantique (sens, pas juste mots-clés)
+- **L'appel de fonction** permet à l'IA d'utiliser des outils externes
+- **Le résumé** gère les longues conversations
+- **MCP** standardise comment l'IA se connecte aux données et outils
+
+<Callout type="tip" title="Rappelez-vous">
+La qualité de la sortie de l'IA dépend de la qualité du contexte que vous fournissez. Meilleur contexte = meilleures réponses.
+</Callout>

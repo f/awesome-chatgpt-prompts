@@ -1,0 +1,200 @@
+Un bon prompt fait le travail. Un prompt optimisé fait le travail efficacement—plus vite, moins cher, plus régulièrement. Ce chapitre vous apprend comment améliorer systématiquement les prompts sur plusieurs dimensions.
+
+<Callout type="tip" title="Essayez l'Améliorateur de Prompts">
+Vous voulez optimiser vos prompts automatiquement ? Utilisez notre outil [Améliorateur de Prompts](/developers#enhancer). Il analyse votre prompt, applique des techniques d'optimisation, et vous montre des prompts communautaires similaires pour inspiration.
+</Callout>
+
+## Les Compromis d'Optimisation
+
+Chaque optimisation implique des compromis. Les comprendre vous aide à faire des choix intentionnels :
+
+<InfoGrid items={[
+  { label: "Qualité vs. Coût", description: "Une qualité plus haute nécessite souvent plus de tokens ou de meilleurs modèles", example: "Ajouter des exemples améliore la précision mais augmente le nombre de tokens", color: "blue" },
+  { label: "Vitesse vs. Qualité", description: "Les modèles plus rapides peuvent sacrifier certaines capacités", example: "GPT-4 est plus intelligent mais plus lent que GPT-4o-mini", color: "purple" },
+  { label: "Cohérence vs. Créativité", description: "Temperature plus basse = plus prévisible mais moins créatif", example: "Temperature 0.2 pour les faits, 0.8 pour le brainstorming", color: "green" },
+  { label: "Simplicité vs. Robustesse", description: "La gestion des cas limites ajoute de la complexité", example: "Les prompts simples échouent sur les entrées inhabituelles", color: "amber" }
+]} />
+
+## Mesurer Ce Qui Compte
+
+Avant d'optimiser, définissez le succès. Que signifie « meilleur » pour votre cas d'usage ?
+
+<InfoGrid items={[
+  { label: "Précision", description: "À quelle fréquence la sortie est-elle correcte ?", example: "90% des suggestions de code compilent sans erreurs", color: "blue" },
+  { label: "Pertinence", description: "Cela répond-il à ce qui a été demandé ?", example: "La réponse répond directement à la question vs digressions", color: "blue" },
+  { label: "Complétude", description: "Toutes les exigences sont-elles couvertes ?", example: "Les 5 sections demandées incluses dans la sortie", color: "blue" },
+  { label: "Latence", description: "Combien de temps jusqu'à l'arrivée de la réponse ?", example: "p50 < 2s, p95 < 5s pour les applications de chat", color: "purple" },
+  { label: "Efficacité des Tokens", description: "Combien de tokens pour le même résultat ?", example: "500 tokens vs. 1500 tokens pour une sortie équivalente", color: "purple" },
+  { label: "Cohérence", description: "Les sorties sont-elles similaires pour des entrées similaires ?", example: "La même question obtient des réponses structurellement similaires", color: "green" }
+]} />
+
+<Callout type="info" title="Que Signifient p50 et p95 ?">
+Les métriques de percentile montrent la distribution du temps de réponse. **p50** (médiane) signifie que 50% des requêtes sont plus rapides que cette valeur. **p95** signifie que 95% sont plus rapides—cela capture les valeurs aberrantes lentes.
+</Callout>
+
+## Optimisation des Tokens
+
+Les tokens coûtent de l'argent et ajoutent de la latence. Voici comment dire la même chose avec moins de tokens.
+
+### Le Principe de Compression
+
+<Compare 
+  before={{ label: "Verbeux (67 tokens)", content: "J'aimerais que tu m'aides s'il te plaît avec la tâche suivante. J'ai besoin que tu prennes le texte que je vais fournir ci-dessous et que tu en crées un résumé. Le résumé devrait capturer les points principaux et être concis. Assure-toi s'il te plaît d'inclure toutes les informations importantes. Voici le texte :\n\n[texte]" }}
+  after={{ label: "Concis (12 tokens)", content: "Résume ce texte, en capturant les points principaux de manière concise :\n\n[texte]" }}
+/>
+
+**Même résultat, 82% de tokens en moins.**
+
+### Techniques d'Économie de Tokens
+
+<InfoGrid items={[
+  { label: "Couper les Politesses", description: "\"S'il te plaît\" et \"Merci\" ajoutent des tokens sans améliorer la sortie", example: "\"S'il te plaît résume\" → \"Résume\"", color: "green" },
+  { label: "Éliminer la Redondance", description: "Ne pas se répéter ou énoncer l'évident", example: "\"Écris un résumé qui résume\" → \"Résume\"", color: "green" },
+  { label: "Utiliser des Abréviations", description: "Où le sens est clair, abréger", example: "\"par exemple\" → \"ex.\"", color: "green" },
+  { label: "Référencer par Position", description: "Pointer vers le contenu au lieu de le répéter", example: "\"le texte ci-dessus\" au lieu de re-citer", color: "green" }
+]} />
+
+<TryIt 
+  title="Compresseur de Prompt"
+  description="Collez un prompt verbeux pour obtenir une version optimisée en tokens."
+  prompt={`Compresse ce prompt tout en préservant son sens et son efficacité :
+
+Prompt original :
+"\${promptVerbeux}"
+
+Instructions :
+1. Retirer les politesses et mots de remplissage inutiles
+2. Éliminer la redondance
+3. Utiliser des formulations concises
+4. Garder toutes les instructions et contraintes essentielles
+5. Maintenir la clarté—ne pas sacrifier la compréhension pour la brièveté
+
+Fournis :
+- **Version compressée** : Le prompt optimisé
+- **Réduction de tokens** : Pourcentage estimé économisé
+- **Ce qui a été coupé** : Brève explication de ce qui a été retiré et pourquoi c'était sûr de le retirer`}
+/>
+
+## Optimisation de la Qualité
+
+Parfois vous avez besoin de meilleures sorties, pas de moins chères. Voici comment améliorer la qualité.
+
+### Boosters de Précision
+
+<InfoGrid items={[
+  { label: "Ajouter la Vérification", description: "Demander au modèle de vérifier son propre travail", example: "\"...puis vérifie que ta réponse est correcte\"", color: "blue" },
+  { label: "Demander la Confiance", description: "Rendre l'incertitude explicite", example: "\"Note ta confiance de 1 à 10 et explique toute incertitude\"", color: "blue" },
+  { label: "Approches Multiples", description: "Obtenir différentes perspectives, puis choisir", example: "\"Fournis 3 approches et recommande la meilleure\"", color: "blue" },
+  { label: "Raisonnement Explicite", description: "Forcer la réflexion étape par étape", example: "\"Réfléchis étape par étape et montre ton raisonnement\"", color: "blue" }
+]} />
+
+### Boosters de Cohérence
+
+<InfoGrid items={[
+  { label: "Spécifications de Format Détaillées", description: "Montrer exactement à quoi la sortie devrait ressembler", example: "Inclure un template ou schéma", color: "purple" },
+  { label: "Exemples Few-Shot", description: "Fournir 2-3 exemples de sortie idéale", example: "\"Voici à quoi le bon ressemble : [exemples]\"", color: "purple" },
+  { label: "Temperature Plus Basse", description: "Réduire l'aléatoire pour une sortie plus prévisible", example: "Temperature 0.3-0.5 pour des résultats cohérents", color: "purple" },
+  { label: "Validation de Sortie", description: "Ajouter une étape de validation pour les champs critiques", example: "\"Vérifie que tous les champs requis sont présents\"", color: "purple" }
+]} />
+
+## Optimisation de la Latence
+
+Quand la vitesse compte, chaque milliseconde compte.
+
+### Sélection de Modèle par Besoin de Vitesse
+
+<InfoGrid items={[
+  { label: "Temps Réel (< 500ms)", description: "Utiliser le plus petit modèle efficace + cache agressif", example: "GPT-4o-mini, Claude Haiku, réponses cachées", color: "red" },
+  { label: "Interactif (< 2s)", description: "Modèles rapides, streaming activé", example: "GPT-4o-mini avec streaming", color: "amber" },
+  { label: "Tolérant (< 10s)", description: "Modèles de milieu de gamme, équilibre qualité/vitesse", example: "GPT-4o, Claude Sonnet", color: "green" },
+  { label: "Async/Batch", description: "Utiliser le meilleur modèle, traiter en arrière-plan", example: "GPT-4, Claude Opus pour traitement hors ligne", color: "blue" }
+]} />
+
+### Techniques de Vitesse
+
+<InfoGrid items={[
+  { label: "Prompts Plus Courts", description: "Moins de tokens en entrée = traitement plus rapide", example: "Compresser les prompts, retirer le contexte inutile", color: "cyan" },
+  { label: "Limiter la Sortie", description: "Définir max_tokens pour prévenir les réponses interminables", example: "max_tokens: 500 pour les résumés", color: "cyan" },
+  { label: "Utiliser le Streaming", description: "Obtenir les premiers tokens plus vite, meilleure UX", example: "Streamer pour toute réponse > 100 tokens", color: "cyan" },
+  { label: "Cacher Agressivement", description: "Ne pas recalculer les requêtes identiques", example: "Cacher les questions courantes, sorties de templates", color: "cyan" }
+]} />
+
+## Optimisation des Coûts
+
+À grande échelle, les petites économies se multiplient en impact budgétaire significatif.
+
+### Comprendre les Coûts
+
+<CostCalculatorDemo />
+
+### Stratégies de Réduction des Coûts
+
+<InfoGrid items={[
+  { label: "Routage de Modèle", description: "Utiliser les modèles chers uniquement quand nécessaire", example: "Questions simples → GPT-4o-mini, Complexes → GPT-4", color: "green" },
+  { label: "Efficacité du Prompt", description: "Prompts plus courts = coût plus bas par requête", example: "Couper 50% des tokens = 50% d'économies sur le coût d'entrée", color: "green" },
+  { label: "Contrôle de Sortie", description: "Limiter la longueur de réponse quand le détail complet n'est pas nécessaire", example: "\"Réponds en 2-3 phrases\" vs. illimité", color: "green" },
+  { label: "Batching", description: "Combiner les requêtes liées en requêtes uniques", example: "Analyser 10 éléments dans un prompt vs. 10 appels séparés", color: "green" },
+  { label: "Pré-filtrage", description: "Ne pas envoyer de requêtes qui n'ont pas besoin d'IA", example: "Correspondance de mots-clés avant classification coûteuse", color: "green" }
+]} />
+
+## La Boucle d'Optimisation
+
+L'optimisation est itérative. Voici un processus systématique :
+
+### Étape 1 : Établir la Baseline
+
+Vous ne pouvez pas améliorer ce que vous ne mesurez pas. Avant de changer quoi que ce soit, documentez rigoureusement votre point de départ.
+
+<InfoGrid items={[
+  { label: "Documentation du Prompt", description: "Sauvegarder le texte exact du prompt, incluant les prompts système", example: "Versionner vos prompts comme du code", color: "blue" },
+  { label: "Jeu de Test", description: "Créer 20-50 entrées représentatives couvrant les cas courants et limites", example: "Inclure des exemples faciles, moyens et difficiles", color: "blue" },
+  { label: "Métriques de Qualité", description: "Noter chaque sortie contre vos critères de succès", example: "% Précision, score de pertinence, conformité de format", color: "purple" },
+  { label: "Métriques de Performance", description: "Mesurer les tokens et le timing pour chaque cas de test", example: "Moy entrée : 450 tokens, Moy sortie : 200 tokens, latence p50 : 1.2s", color: "purple" }
+]} />
+
+### Étape 2 : Former une Hypothèse
+
+<Compare 
+  before={{ label: "Objectif vague", content: "Je veux améliorer mon prompt." }}
+  after={{ label: "Hypothèse testable", content: "Si j'ajoute 2 exemples few-shot, la précision s'améliorera de 75% à 85% parce que le modèle apprendra le pattern attendu." }}
+/>
+
+### Étape 3 : Tester Un Changement
+
+Changez une chose à la fois. Exécutez les deux versions sur les mêmes entrées de test. Mesurez les métriques qui comptent.
+
+### Étape 4 : Analyser et Décider
+
+Ça a marché ? Gardez le changement. Ça a nui ? Revenez en arrière. C'était neutre ? Revenez en arrière (plus simple est meilleur).
+
+### Étape 5 : Répéter
+
+Générez de nouvelles hypothèses basées sur ce que vous avez appris. Continuez à itérer jusqu'à atteindre vos cibles ou des rendements décroissants.
+
+## Checklist d'Optimisation
+
+<Checklist 
+  title="Avant de Déployer un Prompt Optimisé"
+  items={[
+    { text: "Métriques de succès claires définies" },
+    { text: "Performance de baseline mesurée" },
+    { text: "Changements testés sur des entrées représentatives" },
+    { text: "Vérifié que la qualité n'a pas régressé" },
+    { text: "Gestion des cas limites vérifiée" },
+    { text: "Coût calculé à l'échelle attendue" },
+    { text: "Latence testée sous charge" },
+    { text: "Documenté ce qui a changé et pourquoi" }
+  ]}
+/>
+
+<Quiz 
+  question="Vous avez un prompt qui fonctionne bien mais coûte trop cher à grande échelle. Quelle est la PREMIÈRE chose que vous devriez faire ?"
+  options={[
+    "Passer immédiatement à un modèle moins cher",
+    "Retirer des mots du prompt pour réduire les tokens",
+    "Mesurer quelle partie du prompt utilise le plus de tokens",
+    "Ajouter du cache pour toutes les requêtes"
+  ]}
+  correctIndex={2}
+  explanation="Avant d'optimiser, mesurez. Vous devez comprendre où vont les tokens avant de pouvoir efficacement les réduire. Le prompt pourrait avoir du contexte inutile, des instructions verbeuses, ou générer des sorties plus longues que nécessaire. La mesure vous dit où concentrer vos efforts d'optimisation."
+/>

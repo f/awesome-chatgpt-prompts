@@ -1,0 +1,411 @@
+Obtenir des sorties cohérentes et bien formatées est essentiel pour les applications de production et les workflows efficaces. Ce chapitre couvre les techniques pour contrôler exactement comment les modèles d'IA formatent leurs réponses.
+
+<Callout type="info" title="De la Prose aux Données">
+Les sorties structurées transforment les réponses de l'IA de texte libre en données actionnables et analysables.
+</Callout>
+
+## Pourquoi la Structure Est Importante
+
+<StructuredOutputDemo />
+
+## Techniques de Formatage de Base
+
+### Listes
+
+Les listes sont parfaites pour les instructions étape par étape, les éléments classés ou les collections de points connexes. Elles sont faciles à scanner et à analyser. Utilisez des **listes numérotées** quand l'ordre compte (étapes, classements) et des **puces** pour les collections non ordonnées.
+
+<TryIt 
+  compact
+  title="Formatage en Liste"
+  prompt={`Donne 5 conseils pour mieux dormir.
+
+Format : Liste numérotée avec une brève explication pour chaque.
+Chaque conseil doit être en gras, suivi d'un tiret et de l'explication.`}
+/>
+
+<Callout type="tip" title="Bonnes Pratiques pour les Listes">
+Spécifiez le nombre exact d'éléments souhaités, s'il faut inclure des explications, et si les éléments doivent être en gras ou avoir une structure spécifique.
+</Callout>
+
+### Tableaux
+
+Les tableaux excellent pour comparer plusieurs éléments selon les mêmes dimensions. Ils sont idéaux pour les comparaisons de fonctionnalités, les résumés de données et toute information avec des attributs cohérents. Définissez toujours explicitement vos en-têtes de colonnes.
+
+<TryIt 
+  compact
+  title="Formatage en Tableau"
+  prompt={`Compare les 4 principaux frameworks web Python.
+
+Formate comme un tableau markdown avec les colonnes :
+| Framework | Idéal Pour | Courbe d'Apprentissage | Performance |`}
+/>
+
+<Callout type="tip" title="Bonnes Pratiques pour les Tableaux">
+Spécifiez les noms de colonnes, les types de données attendus (texte, nombres, notes), et combien de lignes vous avez besoin. Pour les comparaisons complexes, limitez à 4-6 colonnes pour la lisibilité.
+</Callout>
+
+### En-têtes et Sections
+
+Les en-têtes créent une structure de document claire, rendant les longues réponses scannables et organisées. Utilisez-les pour les rapports, analyses ou toute réponse multi-parties. Les en-têtes hiérarchiques (##, ###) montrent les relations entre les sections.
+
+```
+Analyse cette proposition commerciale.
+
+Structure ta réponse avec ces sections :
+## Résumé Exécutif
+## Forces
+## Faiblesses
+## Recommandations
+## Évaluation des Risques
+```
+
+<Callout type="tip" title="Bonnes Pratiques pour les Sections">
+Listez vos sections dans l'ordre souhaité. Pour la cohérence, spécifiez ce que chaque section doit contenir (ex : « Résumé Exécutif : 2-3 phrases uniquement »).
+</Callout>
+
+### Emphase avec des Directives en Majuscules
+
+Les mots en majuscules agissent comme des signaux forts pour le modèle, soulignant les contraintes ou exigences critiques. Utilisez-les avec parcimonie pour un impact maximum—l'abus dilue leur efficacité.
+
+**Directives en Majuscules Courantes :**
+
+<InfoGrid items={[
+  { label: "JAMAIS", description: "Interdiction absolue : \"N'inclus JAMAIS d'opinions personnelles\"", color: "red" },
+  { label: "TOUJOURS", description: "Exigence obligatoire : \"Cite TOUJOURS tes sources\"", color: "green" },
+  { label: "IMPORTANT", description: "Instruction critique : \"IMPORTANT : Garde les réponses sous 100 mots\"", color: "amber" },
+  { label: "NE PAS", description: "Interdiction forte : \"NE PAS inventer de statistiques\"", color: "red" },
+  { label: "DOIT", description: "Action requise : \"La sortie DOIT être du JSON valide\"", color: "blue" },
+  { label: "UNIQUEMENT", description: "Restriction : \"Retourne UNIQUEMENT le code, pas d'explications\"", color: "purple" },
+]} />
+
+```
+Résume cet article.
+
+IMPORTANT : Garde le résumé sous 100 mots.
+N'ajoute JAMAIS d'information non présente dans l'original.
+Maintiens TOUJOURS le ton et la perspective originaux.
+N'inclus PAS tes propres opinions ou analyses.
+```
+
+<Callout type="warning" title="Utiliser avec Parcimonie">
+Si tout est en majuscules ou marqué comme critique, rien ne ressort. Réservez ces directives pour les contraintes véritablement importantes.
+</Callout>
+
+## Sortie JSON
+
+JSON (JavaScript Object Notation) est le format le plus populaire pour les sorties structurées d'IA. Il est lisible par les machines, largement supporté par les langages de programmation, et parfait pour les APIs, bases de données et workflows d'automatisation. La clé d'un JSON fiable est de fournir un schéma clair.
+
+### Requête JSON Basique
+
+Commencez avec un template montrant la structure exacte souhaitée. Incluez les noms de champs, types de données et valeurs d'exemple. Cela agit comme un contrat que le modèle suivra.
+
+<TryIt 
+  title="Extraction JSON"
+  description="Extraire des données structurées de texte non structuré."
+  prompt={`Extrais les informations de ce texte et retourne en JSON :
+
+{
+    "nom_entreprise": "string",
+    "annee_fondation": number,
+    "siege_social": "string",
+    "employes": number,
+    "secteur": "string"
+}
+
+Texte : "Apple Inc., fondée en 1976, a son siège à Cupertino, Californie. Le géant technologique emploie environ 164 000 personnes dans le monde."`}
+/>
+
+### Structures JSON Complexes
+
+Pour les données imbriquées, utilisez du JSON hiérarchique avec des objets dans des objets, des tableaux d'objets et des types mixtes. Définissez clairement chaque niveau et utilisez des annotations de style TypeScript (`"positif" | "négatif"`) pour contraindre les valeurs.
+
+```
+Analyse cet avis produit et retourne du JSON :
+
+{
+  "id_avis": "string (générer unique)",
+  "sentiment": {
+    "global": "positif" | "négatif" | "mixte" | "neutre",
+    "score": 0.0-1.0
+  },
+  "aspects": [
+    {
+      "aspect": "string (ex: 'prix', 'qualité')",
+      "sentiment": "positif" | "négatif" | "neutre",
+      "mentions": ["citations exactes de l'avis"]
+    }
+  ],
+  "intention_achat": {
+    "recommanderait": boolean,
+    "confiance": 0.0-1.0
+  },
+  "phrases_cles": ["tableau de phrases notables"]
+}
+
+Retourne UNIQUEMENT du JSON valide, pas de texte additionnel.
+
+Avis : "[texte de l'avis]"
+```
+
+### Assurer un JSON Valide
+
+Les modèles ajoutent parfois du texte explicatif ou du formatage markdown autour du JSON. Prévenez cela avec des instructions explicites sur le format de sortie. Vous pouvez demander du JSON brut ou du JSON dans des blocs de code—choisissez selon vos besoins de parsing.
+
+Ajoutez des instructions explicites :
+
+```
+IMPORTANT :
+- Retourne UNIQUEMENT l'objet JSON, pas de blocs de code markdown
+- Assure-toi que toutes les chaînes sont correctement échappées
+- Utilise null pour les valeurs manquantes, pas undefined
+- Vérifie que la sortie est du JSON analysable
+```
+
+Ou demandez des blocs de code en demandant au modèle d'envelopper sa sortie :
+
+````
+Retourne le résultat comme un bloc de code JSON :
+```json
+{ ... }
+```
+````
+
+## Sortie YAML
+
+YAML est plus lisible que JSON, utilisant l'indentation au lieu des accolades. C'est le standard pour les fichiers de configuration (Docker, Kubernetes, GitHub Actions) et fonctionne bien quand la sortie sera lue par des humains ou utilisée dans des contextes DevOps. YAML est sensible à l'indentation, donc soyez spécifique sur les exigences de formatage.
+
+<TryIt 
+  compact
+  title="Génération YAML"
+  prompt={`Génère un workflow GitHub Actions pour un projet Node.js.
+
+Retourne en YAML valide :
+- Inclure : étapes install, lint, test, build
+- Utiliser Node.js 18
+- Mettre en cache les dépendances npm
+- Exécuter sur push vers main et pull requests`}
+/>
+
+## Sortie XML
+
+XML est encore requis pour de nombreux systèmes d'entreprise, APIs SOAP et intégrations legacy. Il est plus verbeux que JSON mais offre des fonctionnalités comme les attributs, espaces de noms et sections CDATA pour les données complexes. Spécifiez les noms d'éléments, la structure d'imbrication et où utiliser des attributs vs des éléments enfants.
+
+```
+Convertis ces données en format XML :
+
+Exigences :
+- Élément racine : <catalogue>
+- Chaque élément dans un élément <livre>
+- Inclure des attributs où approprié
+- Utiliser CDATA pour le texte de description
+
+Données : [données du livre]
+```
+
+## Formats Personnalisés
+
+Parfois les formats standards ne correspondent pas à vos besoins. Vous pouvez définir n'importe quel format personnalisé en fournissant un template clair. Les formats personnalisés fonctionnent bien pour les rapports, logs ou sorties spécifiques au domaine qui seront lues par des humains.
+
+### Format d'Analyse Structurée
+
+Utilisez des délimiteurs (===, ---, [SECTION]) pour créer des documents scannables avec des limites claires entre les sections. Ce format est excellent pour les revues de code, audits et analyses.
+
+```
+Analyse ce code en utilisant ce format exact :
+
+=== ANALYSE DU CODE ===
+
+[RÉSUMÉ]
+Un paragraphe de vue d'ensemble
+
+[PROBLÈMES]
+• CRITIQUE : [problème] — [fichier:ligne]
+• AVERTISSEMENT : [problème] — [fichier:ligne]  
+• INFO : [problème] — [fichier:ligne]
+
+[MÉTRIQUES]
+Complexité : [Faible/Moyenne/Élevée]
+Maintenabilité : [score]/10
+Couverture de Tests : [% estimé]
+
+[RECOMMANDATIONS]
+1. [Recommandation priorité 1]
+2. [Recommandation priorité 2]
+
+=== FIN ANALYSE ===
+```
+
+### Format à Trous
+
+Les templates avec des blancs (___) guident le modèle à remplir des champs spécifiques tout en maintenant un formatage exact. Cette approche est excellente pour les formulaires, briefs et documents standardisés où la cohérence compte.
+
+```
+Complète ce template pour le produit donné :
+
+BRIEF PRODUIT
+─────────────
+Nom : _______________
+Slogan : _______________
+Utilisateur Cible : _______________
+Problème Résolu : _______________
+Fonctionnalités Clés :
+  1. _______________
+  2. _______________
+  3. _______________
+Différenciateur : _______________
+
+Produit : [description du produit]
+```
+
+## Réponses Typées
+
+Les réponses typées définissent des catégories ou types d'entités que le modèle doit reconnaître et étiqueter. Cette technique est essentielle pour la Reconnaissance d'Entités Nommées (NER), les tâches de classification et toute extraction où vous devez catégoriser l'information de manière cohérente. Définissez clairement vos types avec des exemples.
+
+<TryIt 
+  compact
+  title="Extraction d'Entités"
+  prompt={`Extrais les entités nommées de ce texte.
+
+Types d'Entités :
+- PERSONNE : Noms complets de personnes
+- ORG : Noms d'organisations/entreprises
+- LIEU : Villes, pays, adresses
+- DATE : Dates en format ISO (AAAA-MM-JJ)
+- ARGENT : Montants monétaires avec devise
+
+Formate chaque entité comme : [TYPE] : [valeur]
+
+Texte : "Tim Cook a annoncé qu'Apple investira 1 milliard de dollars dans une nouvelle installation à Austin d'ici décembre 2024."`}
+/>
+
+## Réponses Structurées Multi-Parties
+
+Quand vous avez besoin d'une sortie complète couvrant plusieurs aspects, définissez des parties distinctes avec des limites claires. Spécifiez exactement ce qui va dans chaque partie—format, longueur et type de contenu. Cela empêche le modèle de mélanger les sections ou d'omettre des parties.
+
+```
+Recherche ce sujet et fournis :
+
+### PARTIE 1 : RÉSUMÉ EXÉCUTIF
+[Vue d'ensemble en 2-3 phrases]
+
+### PARTIE 2 : CONCLUSIONS CLÉS
+[Exactement 5 points]
+
+### PARTIE 3 : TABLEAU DE DONNÉES
+| Métrique | Valeur | Source |
+|----------|--------|--------|
+[Inclure minimum 5 lignes]
+
+### PARTIE 4 : RECOMMANDATIONS
+[Liste numérotée de 3 recommandations actionnables]
+
+### PARTIE 5 : LECTURES COMPLÉMENTAIRES
+[3 ressources suggérées avec brèves descriptions]
+```
+
+## Formatage Conditionnel
+
+Le formatage conditionnel vous permet de définir différents formats de sortie basés sur les caractéristiques de l'entrée. C'est puissant pour la classification, le triage et les systèmes de routage où le format de réponse doit varier selon ce que le modèle détecte. Utilisez une logique si/alors claire avec des templates de sortie explicites pour chaque cas.
+
+<TryIt 
+  compact
+  title="Classification de Tickets"
+  prompt={`Classe ce ticket de support.
+
+Si URGENT (système down, problème de sécurité, perte de données) :
+  Retourne : 🔴 URGENT | [Catégorie] | [Action Suggérée]
+
+Si ÉLEVÉ (affecte plusieurs utilisateurs, impact sur le revenu) :
+  Retourne : 🟠 ÉLEVÉ | [Catégorie] | [Action Suggérée]
+
+Si MOYEN (un seul utilisateur affecté, contournement existe) :
+  Retourne : 🟡 MOYEN | [Catégorie] | [Action Suggérée]
+
+Si FAIBLE (questions, demandes de fonctionnalités) :
+  Retourne : 🟢 FAIBLE | [Catégorie] | [Action Suggérée]
+
+Ticket : "Je ne peux pas me connecter à mon compte. J'ai essayé de réinitialiser mon mot de passe deux fois mais j'obtiens toujours une erreur. Cela bloque toute mon équipe pour accéder au tableau de bord."`}
+/>
+
+## Tableaux et Listes en JSON
+
+Extraire plusieurs éléments dans des tableaux nécessite une définition de schéma soignée. Spécifiez la structure du tableau, ce que chaque élément doit contenir, et comment gérer les cas limites (tableaux vides, éléments uniques). Inclure un champ de comptage aide à vérifier la complétude.
+
+```
+Extrais tous les points d'action de cette transcription de réunion.
+
+Retourne comme tableau JSON :
+{
+  "points_action": [
+    {
+      "tache": "string décrivant la tâche",
+      "responsable": "nom de la personne ou 'Non assigné'",
+      "deadline": "date si mentionnée, sinon null",
+      "priorite": "haute" | "moyenne" | "basse",
+      "contexte": "citation pertinente de la transcription"
+    }
+  ],
+  "total_compte": number
+}
+
+Transcription : "[transcription de réunion]"
+```
+
+## Instructions de Validation
+
+L'auto-validation demande au modèle de vérifier sa propre sortie avant de répondre. Cela attrape les problèmes courants comme les sections manquantes, le texte placeholder ou les violations de contraintes. Le modèle itérera en interne pour corriger les problèmes, améliorant la qualité de sortie sans appels API supplémentaires.
+
+```
+Génère le rapport, puis :
+
+CHECKLIST DE VALIDATION :
+□ Toutes les sections requises présentes
+□ Pas de texte placeholder restant
+□ Toutes les statistiques incluent les sources
+□ Compte de mots entre 500-700 mots
+□ La conclusion fait écho à l'introduction
+
+Si une vérification échoue, corrige avant de répondre.
+```
+
+## Gestion des Champs Optionnels
+
+Les données du monde réel ont souvent des valeurs manquantes. Donnez des instructions explicites au modèle sur comment gérer les champs optionnels—utiliser `null` est plus propre que des chaînes vides et plus facile à traiter programmatiquement. Prévenez aussi l'« hallucination » de données manquantes en soulignant que le modèle ne doit jamais inventer d'information.
+
+```
+Extrais les informations de contact. Utilise null pour les champs manquants.
+
+{
+  "nom": "string (requis)",
+  "email": "string ou null",
+  "telephone": "string ou null", 
+  "entreprise": "string ou null",
+  "role": "string ou null",
+  "linkedin": "string URL ou null"
+}
+
+IMPORTANT : 
+- N'invente jamais d'information non présente dans la source
+- Utilise null, pas de chaînes vides, pour les données manquantes
+- Numéros de téléphone en format E.164 si possible
+```
+
+## Résumé
+
+<Callout type="tip" title="Techniques Clés">
+Soyez explicite sur le format, utilisez des exemples, spécifiez les types, gérez les cas limites avec des valeurs null, et demandez au modèle de valider sa propre sortie.
+</Callout>
+
+<Quiz 
+  question="Quel est le principal avantage de la sortie structurée par rapport au texte non structuré ?"
+  options={[
+    "Elle utilise moins de tokens",
+    "C'est plus facile à générer pour l'IA",
+    "Elle peut être analysée programmatiquement et validée",
+    "Elle produit toujours des informations correctes"
+  ]}
+  correctIndex={2}
+  explanation="Les sorties structurées comme JSON peuvent être analysées par du code, comparées entre requêtes, intégrées dans des workflows et validées pour la complétude—des choses difficiles ou impossibles avec du texte libre."
+/>
+
+Les sorties structurées sont essentielles pour construire des applications alimentées par l'IA fiables. Dans le prochain chapitre, nous explorerons le prompting en chaîne de pensée pour les tâches de raisonnement complexe.

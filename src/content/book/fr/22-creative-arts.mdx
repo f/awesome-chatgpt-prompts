@@ -1,0 +1,312 @@
+L'IA est un puissant collaborateur créatif. Ce chapitre couvre les techniques de prompting pour les arts visuels, la musique, le game design et d'autres domaines créatifs.
+
+<Callout type="info" title="L'IA comme Partenaire Créatif">
+L'IA élargit vos possibilités créatives—utilisez-la pour explorer des variations, surmonter les blocages et générer des options. La vision créative et les décisions finales restent les vôtres.
+</Callout>
+
+## Art Visuel & Design
+
+### À Faire et À Éviter : Prompts d'Image
+
+<Compare 
+  before={{ label: "❌ Prompt vague", content: "Un sorcier dans une bibliothèque" }}
+  after={{ label: "✓ Description riche", content: "Un vieux sorcier sage lisant un tome ancien, assis dans une bibliothèque de tour au coucher du soleil, style art fantasy, éclairage doré chaud, ambiance contemplative, très détaillé, 4K, par Greg Rutkowski" }}
+/>
+
+### Création de Prompts d'Image
+
+Quand vous travaillez avec des modèles de génération d'images (DALL-E, Midjourney, Stable Diffusion) :
+
+<TryIt compact prompt={`Crée un prompt d'image pour [concept].
+
+Structure :
+[Sujet] + [Action/Pose] + [Cadre/Arrière-plan] + [Style] + 
+[Éclairage] + [Ambiance] + [Spécifications techniques]
+
+Exemple :
+"Un vieux sorcier sage lisant un tome ancien, assis dans une 
+bibliothèque de tour au coucher du soleil, style art fantasy, 
+éclairage doré chaud, ambiance contemplative, très détaillé, 4K"`} />
+
+### Direction Artistique
+
+<TryIt compact prompt={`Décris une œuvre d'art pour \${projet:couverture de livre fantasy}.
+
+Inclure :
+1. **Composition** - arrangement des éléments
+2. **Palette de couleurs** - couleurs spécifiques et leurs relations
+3. **Référence de style** - artistes/œuvres/mouvements similaires
+4. **Point focal** - où l'œil devrait être attiré
+5. **Ambiance/Atmosphère** - qualité émotionnelle
+6. **Approche technique** - médium, technique
+
+Objectif : \${objectif:illustration pour couverture de livre}`} />
+
+### Critique de Design
+
+<TryIt compact prompt={`Critique ce design d'un point de vue professionnel.
+
+Design : \${design:une landing page avec section hero, grille de fonctionnalités et témoignages}
+Contexte : \${contexte:produit SaaS pour la gestion de projet}
+
+Évalue :
+1. **Hiérarchie visuelle** - L'importance est-elle claire ?
+2. **Équilibre** - Est-ce visuellement stable ?
+3. **Contraste** - Les éléments se démarquent-ils correctement ?
+4. **Alignement** - Est-ce organisé ?
+5. **Répétition** - Y a-t-il de la cohérence ?
+6. **Proximité** - Les éléments liés sont-ils groupés ?
+
+Fournis :
+- Forces spécifiques
+- Points d'amélioration
+- Suggestions actionnables`} />
+
+## Écriture Créative
+
+<Callout type="tip" title="Principe de Contrainte Créative">
+**Les contraintes alimentent la créativité.** Un prompt comme "écris n'importe quoi" produit des résultats génériques. Des contraintes spécifiques comme le genre, le ton et la structure forcent des solutions inattendues et intéressantes.
+</Callout>
+
+### Worldbuilding
+
+<TryIt compact prompt={`Aide-moi à construire un monde pour \${projet:un roman fantasy}.
+
+Genre : \${genre:dark fantasy}
+Périmètre : \${perimetre:un royaume}
+
+Développe :
+1. **Géographie** - environnement physique
+2. **Histoire** - événements clés qui ont façonné ce monde
+3. **Culture** - coutumes, valeurs, vie quotidienne
+4. **Structures de pouvoir** - qui gouverne, comment
+5. **Économie** - comment les gens survivent
+6. **Conflit** - sources de tension
+7. **Élément unique** - ce qui rend ce monde spécial
+
+Commence avec les grandes lignes, puis détaille un aspect en profondeur.`} />
+
+### Développement d'Intrigue
+
+<TryIt compact prompt={`Aide-moi à développer une intrigue pour \${conceptHistoire:un braquage qui tourne mal}.
+
+Genre : \${genre:thriller}
+Ton : \${ton:sombre avec moments d'humour noir}
+Longueur : \${longueur:roman}
+
+En utilisant la structure \${structure:en trois actes} :
+
+1. **Setup** - monde, personnage, vie normale
+2. **Incident déclencheur** - ce qui perturbe la normalité
+3. **Action montante** - défis escaladants
+4. **Point médian** - changement ou révélation majeure
+5. **Crise** - moment le plus sombre
+6. **Climax** - confrontation
+7. **Résolution** - nouvelle normalité
+
+Pour chaque beat, suggère des scènes spécifiques.`} />
+
+### Écriture de Dialogues
+
+<TryIt compact prompt={`Écris un dialogue entre \${personnages:deux frère et sœur} sur \${sujet:le retour de leur père absent}.
+
+Personnage A : \${personnageA:sœur aînée, protectrice, pragmatique, veut tourner la page}
+Personnage B : \${personnageB:frère cadet, plein d'espoir, émotionnel, veut renouer}
+Relation : \${relation:proches mais avec différents mécanismes d'adaptation}
+Sous-texte : \${sousTexte:ressentiment non-dit sur qui a porté plus de fardeau}
+
+Directives :
+- Chaque personnage a une voix distincte
+- Le dialogue révèle le personnage, pas juste l'information
+- Inclure des beats (actions/réactions)
+- Construire la tension ou développer la relation
+- Montrer, ne pas dire les émotions`} />
+
+## Musique & Audio
+
+### Structure de Chanson
+
+<TryIt compact prompt={`Aide-moi à structurer une chanson.
+
+Genre : \${genre:indie folk}
+Ambiance : \${ambiance:nostalgie douce-amère}
+Tempo : \${tempo:modéré, environ 90 BPM}
+Thème/Message : \${theme:regard en arrière sur une ville natale qu'on a dépassée}
+
+Fournis :
+1. **Structure** - arrangement couplet/refrain/pont
+2. **Couplet 1** - concept lyrique, 4-8 lignes
+3. **Refrain** - concept d'accroche, 4 lignes
+4. **Couplet 2** - développement, 4-8 lignes
+5. **Pont** - contraste/changement, 4 lignes
+6. **Suggestion de progression d'accords**
+7. **Notes de direction mélodique**`} />
+
+### Description de Sound Design
+
+<TryIt compact prompt={`Décris un sound design pour \${scene:un personnage entrant dans une station spatiale abandonnée}.
+
+Contexte : \${contexte:le protagoniste découvre que la station est vide depuis des décennies}
+Émotion à évoquer : \${emotion:émerveillement étrange mêlé d'effroi}
+Médium : \${medium:jeu vidéo}
+
+Couche par couche :
+1. **Fondation** - ambiant/arrière-plan
+2. **Plan moyen** - sons environnementaux
+3. **Premier plan** - sons focaux
+4. **Accents** - sons de ponctuation
+5. **Musique** - suggestions de partition
+
+Décris les sons en termes évocateurs, pas juste des noms.`} />
+
+## Game Design
+
+### Design de Mécanique de Jeu
+
+<TryIt compact prompt={`Conçois une mécanique de jeu pour \${typeJeu:un puzzle platformer}.
+
+Boucle principale : \${bouclePrincipale:manipuler la gravité pour résoudre des puzzles spatiaux}
+Motivation du joueur : \${motivation:maîtrise et découverte}
+Compétence impliquée : \${competence:raisonnement spatial et timing}
+
+Décris :
+1. **La mécanique** - comment ça fonctionne
+2. **Input du joueur** - ce qu'il contrôle
+3. **Feedback** - comment il connaît le résultat
+4. **Progression** - comment ça évolue/s'approfondit
+5. **Considérations d'équilibrage**
+6. **Cas limites** - scénarios inhabituels`} />
+
+### Level Design
+
+<TryIt compact prompt={`Conçois un niveau pour \${typeJeu:un jeu d'action infiltration}.
+
+Cadre : \${cadre:siège social d'entreprise la nuit}
+Objectifs : \${objectifs:infiltrer la salle serveur et extraire des données}
+Difficulté : \${difficulte:milieu de jeu, le joueur a les capacités de base}
+
+Inclure :
+1. **Vue d'ensemble du layout** - description spatiale
+2. **Graphique de rythme** - tension au fil du temps
+3. **Défis** - obstacles et comment les surmonter
+4. **Récompenses** - ce que le joueur gagne
+5. **Secrets** - découvertes optionnelles
+6. **Moments d'enseignement** - introduction de compétences
+7. **Narration environnementale** - histoire à travers le design`} />
+
+### Design de Personnage/Ennemi
+
+<TryIt compact prompt={`Conçois un \${typeEntite:boss ennemi} pour \${jeu:un action RPG dark fantasy}.
+
+Rôle : \${role:boss de milieu de jeu}
+Contexte : \${contexte:garde un temple forestier corrompu}
+
+Définis :
+1. **Concept visuel** - description de l'apparence
+2. **Capacités** - ce qu'il peut faire
+3. **Patterns de comportement** - comment il agit
+4. **Faiblesses** - vulnérabilités
+5. **Personnalité** - si pertinent
+6. **Lore/Backstory** - intégration au monde
+7. **Stratégie du joueur** - comment interagir/vaincre`} />
+
+## Brainstorming & Idéation
+
+### Brainstorm Créatif
+
+<TryIt compact prompt={`Brainstorme des idées pour \${projet:un jeu mobile sur la pleine conscience}.
+
+Contraintes :
+- \${contrainte1:doit être jouable en sessions de 2 minutes}
+- \${contrainte2:pas de violence ou compétition}
+- \${contrainte3:thèmes de nature}
+
+Génère :
+1. **10 idées conventionnelles** - solides, attendues
+2. **5 idées inhabituelles** - angles inattendus
+3. **3 idées folles** - qui poussent les limites
+4. **1 combinaison** - fusionner les meilleurs éléments
+
+Pour chaque, une phrase de description + pourquoi ça marche.
+Ne te censure pas—quantité avant qualité d'abord.`} />
+
+### Contraintes Créatives
+
+<TryIt compact prompt={`Donne-moi des contraintes créatives pour \${typeProjet:écrire une nouvelle}.
+
+Je veux des contraintes qui :
+- Forcent des choix inattendus
+- Éliminent les solutions évidentes
+- Créent des limitations productives
+
+Format :
+1. Contrainte - Pourquoi elle aide la créativité
+2. ...
+
+Puis montre un exemple de comment appliquer ces contraintes 
+transforme un concept générique en quelque chose d'intéressant.`} />
+
+### Exploration de Style
+
+<TryIt compact prompt={`Explore différents styles pour \${concept:un logo de café}.
+
+Montre comment ce concept se manifesterait en :
+1. **Minimaliste** - réduit à l'essence
+2. **Maximaliste** - abondant et détaillé
+3. **Rétro années 1950** - spécifique à l'époque
+4. **Futuriste** - tourné vers l'avenir
+5. **Folk/Traditionnel** - racines culturelles
+6. **Abstrait** - non-représentationnel
+7. **Surréaliste** - logique onirique
+
+Pour chaque, décris les caractéristiques clés et un exemple.`} />
+
+## Collaboration Créative
+
+### Construire sur les Idées
+
+<TryIt compact prompt={`J'ai cette idée créative : \${idee:un roman policier dans une station spatiale où l'IA est le détective}
+
+Aide-moi à la développer par :
+1. Ce qui fonctionne bien
+2. Questions à explorer
+3. Directions inattendues
+4. Défis potentiels
+5. Trois premières étapes de développement
+
+Ne remplace pas ma vision—améliore-la.`} />
+
+### Feedback Créatif
+
+<TryIt compact prompt={`Donne-moi du feedback sur ce travail créatif :
+
+\${travail:colle ton travail créatif ici}
+
+En tant que \${perspective:créateur collègue} :
+1. Ce qui résonne le plus fortement
+2. Ce qui semble sous-développé
+3. Ce qui est confus ou pas clair
+4. Une suggestion audacieuse
+5. Ce qui rendrait ceci inoubliable
+
+Sois honnête mais constructif.`} />
+
+## Résumé
+
+<Callout type="tip" title="Techniques Clés">
+Fournissez assez de structure pour guider sans contraindre, embrassez la spécificité (vague = générique), incluez références et inspirations, demandez variations et alternatives, et maintenez votre vision créative tout en explorant les possibilités.
+</Callout>
+
+<Quiz 
+  question="Pourquoi les contraintes spécifiques produisent-elles souvent de meilleurs résultats créatifs que les prompts ouverts ?"
+  options={[
+    "L'IA ne peut suivre que des instructions strictes",
+    "Les contraintes forcent des solutions inattendues et éliminent les choix évidents",
+    "Les prompts ouverts sont trop difficiles pour l'IA",
+    "Les contraintes rendent la sortie plus courte"
+  ]}
+  correctIndex={1}
+  explanation="Paradoxalement, les limitations stimulent la créativité. Quand les solutions évidentes sont éliminées, vous êtes forcé d'explorer des directions inattendues. 'Écris une histoire' produit des clichés ; 'Écris un mystère dans un sous-marin, raconté à l'envers, en moins de 500 mots' produit quelque chose d'unique."
+/>
+
+L'IA est un collaborateur, pas un remplacement pour la vision créative. Utilisez-la pour explorer, générer des options et surmonter les blocages—mais les décisions créatives restent les vôtres.

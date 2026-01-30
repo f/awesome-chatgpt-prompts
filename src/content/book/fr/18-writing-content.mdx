@@ -1,0 +1,393 @@
+L'IA excelle dans les tâches d'écriture quand elle est correctement promptée. Ce chapitre couvre les techniques pour différents scénarios de création de contenu.
+
+<Callout type="info" title="L'IA comme Partenaire d'Écriture">
+L'IA fonctionne mieux comme outil d'écriture collaboratif—utilisez-la pour générer des brouillons, puis affinez avec votre expertise et votre voix.
+</Callout>
+
+## Articles de Blog et Articles
+
+### À Faire et À Éviter : Prompts d'Écriture
+
+<Compare 
+  before={{ label: "❌ Demande vague", content: "Écris un article de blog sur la productivité." }}
+  after={{ label: "✓ Brief spécifique", content: "Écris un article de blog de 800 mots sur la productivité pour les télétravailleurs.\n\nAudience : Professionnels tech travaillant de chez eux\nTon : Conversationnel mais actionnable\nInclure : 3 techniques spécifiques avec exemples\nMot-clé : 'conseils productivité télétravail'" }}
+/>
+
+### Framework d'Article de Blog
+
+<TryIt 
+  title="Générateur d'Article de Blog"
+  description="Générez un article de blog structuré avec optimisation SEO."
+  prompt={`Écris un article de blog sur \${sujet}.
+
+Spécifications :
+- Longueur : \${nombreMots:800-1000} mots
+- Audience : \${audience}
+- Ton : \${ton:conversationnel}
+- Objectif : \${objectif:informer et fournir des conseils actionnables}
+
+Structure :
+1. Accroche d'ouverture (capter l'attention dans les 2 premières phrases)
+2. Introduction (énoncer le problème/opportunité)
+3. Contenu principal (3-4 points clés avec exemples)
+4. Points à retenir pratiques (conseils actionnables)
+5. Conclusion avec appel à l'action
+
+Exigences SEO :
+- Inclure le mot-clé "\${motCle}" naturellement 3-5 fois
+- Utiliser des titres H2 pour les sections principales
+- Inclure une méta description (155 caractères)`}
+/>
+
+### Types d'Articles
+
+**Article How-To :**
+<TryIt compact prompt={`Écris un article tutoriel étape par étape sur \${sujet}.
+
+Exigences :
+- Étapes clairement numérotées
+- Chaque étape : action + explication + astuce
+- Inclure une section "ce dont vous aurez besoin"
+- Ajouter une section dépannage pour les problèmes courants
+- Temps estimé pour compléter`} />
+
+**Listicle :**
+<TryIt compact prompt={`Écris un listicle : "\${nombre} Conseils/Outils/Idées \${sujet}"
+
+Pour chaque élément :
+- Sous-titre accrocheur
+- Explication en 2-3 phrases
+- Exemple concret ou cas d'usage
+- Astuce pro ou mise en garde
+
+Ordre : \${ordre:plus important d'abord}`} />
+
+## Copywriting Marketing
+
+<Callout type="tip" title="Principe du Copywriting Marketing">
+Concentrez-vous sur les **bénéfices plutôt que les fonctionnalités**. Au lieu de "Notre logiciel utilise des algorithmes IA", écrivez "Économisez 10 heures par semaine avec des rapports automatisés." Montrez aux lecteurs comment leur vie s'améliore.
+</Callout>
+
+### Copywriting de Landing Page
+
+<TryIt compact prompt={`Écris le copywriting de landing page pour \${produit}.
+
+Sections nécessaires :
+1. Hero : Titre (10 mots max) + sous-titre + texte bouton CTA
+2. Problème : Points de douleur que l'audience affronte (3 puces)
+3. Solution : Comment votre produit résout ces problèmes (avec bénéfices, pas fonctionnalités)
+4. Preuve sociale : Espace pour témoignages
+5. Fonctionnalités : 3 fonctionnalités clés avec descriptions orientées bénéfices
+6. CTA : Appel à l'action final avec urgence
+
+Voix : \${voixMarque}
+Audience cible : \${audienceCible}
+Différenciateur clé : \${differenciateur}`} />
+
+### Séquences Email
+
+<TryIt compact prompt={`Écris une séquence de 5 emails de bienvenue pour les nouveaux abonnés.
+
+Marque : \${marque}
+Objectif : \${objectif:convertir en payant}
+
+Pour chaque email fournis :
+- Ligne d'objet (+ 1 alternative)
+- Texte d'aperçu
+- Corps (150-200 mots)
+- CTA
+
+Flux de séquence :
+Email 1 (Jour 0) : Bienvenue + valeur immédiate
+Email 2 (Jour 2) : Partager histoire/mission
+Email 3 (Jour 4) : Contenu éducatif
+Email 4 (Jour 7) : Preuve sociale + pitch doux
+Email 5 (Jour 10) : Offre directe avec urgence`} />
+
+### Posts Réseaux Sociaux
+
+<TryIt compact prompt={`Crée du contenu réseaux sociaux pour \${sujet}.
+
+Versions spécifiques par plateforme :
+
+Twitter/X (280 caractères) :
+- Accroche + point clé + hashtags
+- Option thread (5 tweets) pour sujets complexes
+
+LinkedIn (1300 caractères) :
+- Angle professionnel
+- Structure narrative
+- Terminer par question pour engagement
+
+Légende Instagram :
+- Accroche d'ouverture (visible avant "plus")
+- Corps riche en valeur
+- CTA
+- Hashtags (20-30 pertinents)`} />
+
+## Rédaction Technique
+
+<Callout type="info" title="Principe de Rédaction Technique">
+**Clarté avant élégance.** Utilisez des mots simples, des phrases courtes, et la voix active. Chaque phrase devrait avoir un seul travail. Si les lecteurs doivent relire quelque chose, simplifiez.
+</Callout>
+
+### Documentation
+
+<TryIt compact prompt={`Écris la documentation pour \${fonctionnalite}.
+
+Structure :
+## Vue d'ensemble
+Brève description de ce que ça fait et pourquoi vous l'utiliseriez.
+
+## Démarrage Rapide
+Exemple minimal pour démarrer en moins de 2 minutes.
+
+## Installation/Configuration
+Instructions de setup étape par étape.
+
+## Utilisation
+Utilisation détaillée avec exemples.
+
+## Référence API
+Paramètres, valeurs de retour, types.
+
+## Exemples
+3-4 exemples d'utilisation réelle.
+
+## Dépannage
+Problèmes courants et solutions.
+
+Style : 
+- Deuxième personne ("vous")
+- Présent
+- Voix active
+- Exemples de code pour chaque concept`} />
+
+### Fichiers README
+
+<TryIt 
+  title="Générateur de README"
+  description="Générez un README.md professionnel pour votre projet."
+  prompt={`Écris un README.md pour \${projet}.
+
+Inclure ces sections :
+# Nom du Projet - Description en une ligne
+
+## Fonctionnalités
+- Liste à puces des fonctionnalités clés
+
+## Installation
+(commandes d'installation bash)
+
+## Démarrage Rapide
+(exemple de travail minimal)
+
+## Configuration
+Options de configuration clés
+
+## Documentation
+Lien vers la doc complète
+
+## Contribuer
+Brèves directives de contribution
+
+## Licence
+Type de licence`}
+/>
+
+## Écriture Créative
+
+### À Faire et À Éviter : Prompts Créatifs
+
+<Compare 
+  before={{ label: "❌ Trop ouvert", content: "Écris-moi une histoire." }}
+  after={{ label: "✓ Riche en contraintes", content: "Écris une histoire mystère de 1000 mots située dans une petite ville côtière. Le protagoniste est un détective retraité. Inclure une fin surprise où la victime n'est pas qui on pensait. Ton : noir avec humour sombre." }}
+/>
+
+### Éléments d'Histoire
+
+<TryIt compact prompt={`Écris une nouvelle \${genre}.
+
+Éléments à inclure :
+- Protagoniste : \${protagoniste}
+- Cadre : \${cadre}
+- Conflit central : \${conflit}
+- Thème : \${theme}
+- Nombre de mots : \${nombreMots:1000}
+
+Préférences de style :
+- PDV : \${pdv:troisième personne}
+- Temps : \${temps:passé}
+- Ton : \${ton:suspense}
+
+Commencer par : \${accrocheOuverture}`} />
+
+### Développement de Personnage
+
+<TryIt compact prompt={`Crée un profil de personnage détaillé pour \${nomPersonnage}.
+
+Informations de Base :
+- Nom, âge, profession
+- Description physique
+- Contexte/histoire
+
+Personnalité :
+- 3 traits principaux
+- Forces et défauts
+- Peurs et désirs
+- Comment il parle (tics verbaux, niveau de vocabulaire)
+
+Relations :
+- Relations clés
+- Comment il traite les étrangers vs les amis
+
+Arc du personnage :
+- État de départ
+- Ce qu'il doit apprendre
+- Transformation potentielle`} />
+
+## Édition et Réécriture
+
+### Édition Complète
+
+<TryIt compact prompt={`Édite ce texte pour \${objectif}.
+
+Vérifier et améliorer :
+□ Grammaire et orthographe
+□ Variété de structure de phrases
+□ Choix des mots (éliminer les mots faibles)
+□ Fluidité et transitions
+□ Clarté et concision
+□ Cohérence du ton
+
+Fournir :
+1. Version éditée
+2. Résumé des changements majeurs
+3. Suggestions pour amélioration supplémentaire
+
+Texte original :
+\${texte}`} />
+
+### Transformation de Style
+
+<Compare 
+  before={{ label: "Technique/Formel", content: "L'implémentation du nouvel algorithme a résulté en une réduction de 47% de la charge computationnelle, améliorant ainsi significativement le débit du système et réduisant les métriques de latence sur tous les points de mesure." }}
+  after={{ label: "Casual/Accessible", content: "On a rendu le système beaucoup plus rapide ! La nouvelle approche a coupé le temps de traitement presque de moitié, ce qui veut dire que tout charge plus vite pour vous." }}
+/>
+
+<TryIt compact prompt={`Réécris ce texte dans un style différent.
+
+Style original : \${styleOriginal}
+Style cible : \${styleCible}
+
+Préserver :
+- Sens et information de base
+- Terminologie clé
+- Noms propres
+
+Changer :
+- Longueur et structure des phrases
+- Niveau de vocabulaire
+- Ton et formalité
+- Procédés rhétoriques
+
+Original :
+\${texte}`} />
+
+### Simplification
+
+<TryIt compact prompt={`Simplifie ce texte pour \${audience}.
+
+Niveau de lecture cible : \${niveauLecture:collège}
+
+Directives :
+- Remplacer le jargon par du langage simple
+- Raccourcir les phrases (viser 15-20 mots en moyenne)
+- Utiliser des mots courants
+- Ajouter des explications pour les termes techniques nécessaires
+- Diviser les idées complexes en étapes
+
+Original :
+\${texte}`} />
+
+## Templates de Prompts de prompts.chat
+
+Voici des prompts d'écriture populaires de la communauté prompts.chat :
+
+### Agir comme Copywriter
+
+<TryIt compact prompt={`Je veux que tu agisses comme copywriter. Je te fournirai un produit ou service, et tu créeras du copy convaincant qui met en avant ses bénéfices et persuade les clients potentiels d'agir. Ton copy doit être créatif, accrocheur et adapté à l'audience cible.
+
+Produit/Service : \${produit}`} />
+
+### Agir comme Rédacteur Technique
+
+<TryIt compact prompt={`Je veux que tu agisses comme rédacteur technique. Tu créeras une documentation claire et concise pour les produits logiciels. Je te fournirai des informations techniques, et tu les transformeras en documentation conviviale facile à comprendre pour les audiences techniques et non-techniques.
+
+Sujet : \${sujet}`} />
+
+### Agir comme Conteur
+
+<TryIt compact prompt={`Je veux que tu agisses comme conteur. Tu inventeras des histoires divertissantes qui sont engageantes, imaginatives et captivantes pour l'audience. Ce peuvent être des contes de fées, des histoires éducatives, ou tout autre type d'histoire qui a le potentiel de capturer l'attention et l'imagination des gens.
+
+Thème de l'histoire : \${theme}`} />
+
+## Conseils de Workflow d'Écriture
+
+### 1. Plan d'Abord
+
+<TryIt compact prompt={`Avant d'écrire, crée un plan :
+
+Sujet : \${sujet}
+
+1. Générer 5 angles possibles
+2. Choisir le meilleur angle et expliquer pourquoi
+3. Créer un plan détaillé avec :
+   - Sections principales
+   - Points clés par section
+   - Preuves/exemples de support nécessaires
+4. Identifier les lacunes nécessitant recherche`} />
+
+### 2. Brouillon Puis Affiner
+
+<TryIt compact prompt={`Phase 1 - Brouillon :
+"Écris un brouillon rapide en te concentrant sur capturer les idées. Ne t'inquiète pas de la perfection. Capture juste les points clés."
+
+Phase 2 - Affiner :
+"Maintenant améliore ce brouillon : resserre les phrases, ajoute des transitions, renforce l'ouverture et la conclusion."
+
+Phase 3 - Polir :
+"Passage final : vérifie la grammaire, varie la structure des phrases, assure un ton cohérent."
+
+Sujet : \${sujet}`} />
+
+### 3. Correspondance de Voix
+
+<TryIt compact prompt={`Analyse cet échantillon d'écriture pour les caractéristiques de voix :
+\${echantillon}
+
+Puis écris \${nouveauContenu} en correspondant :
+- Patterns de longueur de phrases
+- Niveau de vocabulaire
+- Procédés rhétoriques utilisés
+- Ton et personnalité`} />
+
+## Résumé
+
+<Callout type="tip" title="Techniques Clés">
+Spécifiez l'audience et l'objectif clairement, définissez la structure et le format, incluez des directives de style, fournissez des exemples quand possible, et demandez des livrables spécifiques.
+</Callout>
+
+<Quiz 
+  question="Quelle est la façon la plus efficace d'utiliser l'IA pour les tâches d'écriture ?"
+  options={[
+    "Laisser l'IA écrire la version finale sans édition",
+    "Utiliser l'IA pour générer des brouillons, puis affiner avec votre expertise",
+    "Utiliser l'IA uniquement pour la vérification grammaticale",
+    "Éviter complètement l'IA pour l'écriture créative"
+  ]}
+  correctIndex={1}
+  explanation="L'IA fonctionne mieux comme outil d'écriture collaboratif. Utilisez-la pour générer des brouillons et des idées, puis appliquez votre expertise, votre voix et votre jugement pour affiner le résultat."
+/>
+
+Écrire avec l'IA fonctionne mieux comme collaboration—laissez l'IA générer des brouillons, puis affinez avec votre expertise et votre voix.
