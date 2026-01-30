@@ -1,379 +1,241 @@
-Prompt Chaining zerlegt komplexe Aufgaben in Sequenzen einfacherer Prompts, wobei die Ausgabe jedes Schritts in den nächsten einfließt. Diese Technik verbessert die Zuverlässigkeit dramatisch und ermöglicht ausgefeilte Workflows, die mit einem einzelnen Prompt unmöglich wären.
+El encadenamiento de prompts divide tareas complejas en secuencias de prompts más simples, donde la salida de cada paso alimenta el siguiente. Esta técnica mejora dramáticamente la confiabilidad y permite flujos de trabajo sofisticados que serían imposibles con un solo prompt.
 
-<Callout type="tip" title="Denke an Fließbänder">
-Genau wie ein Fabrik-Fließband die Fertigung in spezialisierte Stationen aufteilt, zerlegt Prompt Chaining KI-Aufgaben in spezialisierte Schritte. Jeder Schritt macht eine Sache gut, und die kombinierte Ausgabe ist weit besser als der Versuch, alles auf einmal zu tun.
+<Callout type="tip" title="Piensa en Líneas de Ensamblaje">
+Así como una línea de ensamblaje de fábrica divide la manufactura en estaciones especializadas, el encadenamiento de prompts divide las tareas de IA en pasos especializados. Cada paso hace una cosa bien, y la salida combinada es mucho mejor que intentar hacer todo a la vez.
 </Callout>
 
-## Warum Prompts verketten?
+## ¿Por Qué Encadenar Prompts?
 
-Einzelne Prompts haben Schwierigkeiten mit komplexen Aufgaben, weil sie versuchen, zu viel auf einmal zu tun. Die KI muss gleichzeitig verstehen, analysieren, planen und generieren, was zu Fehlern und Inkonsistenzen führt.
+Los prompts individuales tienen dificultades con tareas complejas porque intentan hacer demasiado a la vez. La IA tiene que simultáneamente entender, analizar, planificar y generar, lo que lleva a errores e inconsistencias.
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900">
-    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Einzelner Prompt hat Probleme</p>
+    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Problemas del Prompt Único</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Mehrstufiges Denken wird verwirrt</p>
-      <p className="m-0!">Verschiedene "Modi" des Denkens kollidieren</p>
-      <p className="m-0!">Komplexe Ausgaben mangeln an Konsistenz</p>
-      <p className="m-0!">Keine Möglichkeit zur Qualitätskontrolle</p>
+      <p className="m-0!">El razonamiento multi-paso se confunde</p>
+      <p className="m-0!">Diferentes "modos" de pensamiento chocan</p>
+      <p className="m-0!">Salidas complejas carecen de consistencia</p>
+      <p className="m-0!">Sin oportunidad para control de calidad</p>
     </div>
   </div>
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Chaining löst das</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> El Encadenamiento Resuelve Esto</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Jeder Schritt konzentriert sich auf eine Aufgabe</p>
-      <p className="m-0!">Spezialisierte Prompts für jeden Modus</p>
-      <p className="m-0!">Validierung zwischen Schritten</p>
-      <p className="m-0!">Einzelne Schritte debuggen und verbessern</p>
+      <p className="m-0!">Cada paso se enfoca en una tarea</p>
+      <p className="m-0!">Prompts especializados para cada modo</p>
+      <p className="m-0!">Validar entre pasos</p>
+      <p className="m-0!">Depurar y mejorar pasos individuales</p>
     </div>
   </div>
 </div>
 
-## Grundlegendes Verkettungsmuster
+## Patrón Básico de Encadenamiento
 
-Die einfachste Kette übergibt die Ausgabe eines Prompts direkt an den nächsten. Jeder Schritt hat einen klaren, fokussierten Zweck.
+La cadena más simple pasa la salida de un prompt directamente al siguiente. Cada paso tiene un propósito claro y enfocado.
 
 <div className="my-6 flex items-center justify-center gap-3 p-6 bg-muted/30 rounded-lg overflow-x-auto">
   <div className="flex flex-col items-center">
     <div className="px-4 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
       <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Prompt 1</p>
-      <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">(Extrahieren)</p>
+      <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">(Extraer)</p>
     </div>
-    <p className="text-xs text-muted-foreground mt-1 m-0!">Eingabe</p>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">Entrada</p>
   </div>
   <div className="text-blue-400 dark:text-blue-500">→</div>
   <div className="flex flex-col items-center">
     <div className="px-4 py-3 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg text-center">
       <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">Prompt 2</p>
-      <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">(Analysieren)</p>
+      <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">(Analizar)</p>
     </div>
-    <p className="text-xs text-muted-foreground mt-1 m-0!">Zwischenergebnis</p>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">Intermedio</p>
   </div>
   <div className="text-purple-400 dark:text-purple-500">→</div>
   <div className="flex flex-col items-center">
     <div className="px-4 py-3 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg text-center">
       <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">Prompt 3</p>
-      <p className="text-xs text-green-600 dark:text-green-400 m-0!">(Generieren)</p>
+      <p className="text-xs text-green-600 dark:text-green-400 m-0!">(Generar)</p>
     </div>
-    <p className="text-xs text-muted-foreground mt-1 m-0!">Ausgabe</p>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">Salida</p>
   </div>
 </div>
 
-<Callout type="info" title="Das ETG-Muster">
-Das häufigste Kettenmuster ist **Extrahieren → Transformieren → Generieren**. Zuerst Rohdaten extrahieren, dann für deinen Zweck umformen, dann die finale Ausgabe generieren. Dieses Muster funktioniert für fast jede Content-Aufgabe.
+<Callout type="info" title="El Patrón ETG">
+El patrón de cadena más común es **Extraer → Transformar → Generar**. Primero extrae datos crudos, luego reformatéalos para tu propósito, luego genera la salida final. Este patrón funciona para casi cualquier tarea de contenido.
 </Callout>
 
-## Kettentypen
+## Tipos de Cadenas
 
-Verschiedene Aufgaben erfordern verschiedene Kettenarchitekturen. Wähle das Muster, das zu deinem Workflow passt.
+Diferentes tareas requieren diferentes arquitecturas de cadena. Elige el patrón que coincida con tu flujo de trabajo.
 
 <ChainFlowDemo />
 
-### Sequentielle Kette
+### Cadena Secuencial
 
-Das einfachste Muster: Jeder Schritt hängt vom vorherigen ab. Denke daran wie ein Staffellauf, bei dem jeder Läufer den Stab an den nächsten übergibt.
+El patrón más directo: cada paso depende del anterior. Piénsalo como una carrera de relevos donde cada corredor pasa el testigo al siguiente.
 
 <ChainExample 
   type="sequential"
   steps={[
-    { step: "Schritt 1: Extrahieren", prompt: "Extrahiere alle Daten, Namen und Zahlen aus: [text]", output: '{ daten: ["2024-01-15", "2024-02-20"], namen: ["Hans Schmidt", "Acme GmbH"], zahlen: [15000, 42] }' },
-    { step: "Schritt 2: Analysieren", prompt: "Analysiere diese extrahierten Daten auf Muster: [schritt1_ausgabe]", output: '{ muster: ["Monatliche Meetings geplant"], beziehungen: ["Hans Schmidt arbeitet bei Acme GmbH"] }' },
-    { step: "Schritt 3: Generieren", prompt: "Schreibe basierend auf diesen Mustern einen Resumensbericht: [schritt2_ausgabe]", output: "Resumensbericht: Die Analyse des Dokuments zeigt eine Geschäftsbeziehung zwischen Hans Schmidt und Acme GmbH, mit geplanten monatlichen Meetings..." }
+    { step: "Paso 1: Extraer", prompt: "Extrae todas las fechas, nombres y números de: [texto]", output: '{ fechas: ["2024-01-15", "2024-02-20"], nombres: ["Juan García", "Acme Corp"], numeros: [15000, 42] }' },
+    { step: "Paso 2: Analizar", prompt: "Dados estos datos extraídos: [salida_paso1], identifica relaciones y patrones.", output: '{ patrones: ["Reuniones mensuales programadas"], relaciones: ["Juan García trabaja en Acme Corp"] }' },
+    { step: "Paso 3: Generar", prompt: "Basándote en este análisis: [salida_paso2], escribe un resumen ejecutivo.", output: "Resumen Ejecutivo: Juan García de Acme Corp ha programado reuniones mensuales con un presupuesto de $15,000..." }
   ]}
 />
 
-### Parallele Kette
+### Cadena de Ramificación
 
-Wenn du mehrere Perspektiven auf dieselbe Eingabe brauchst, führe Prompts parallel aus und führe die Ergebnisse zusammen. Das ist schneller als sequentielle Ketten und liefert reichere Analysen.
+Cuando necesitas explorar múltiples direcciones simultáneamente, usa ramificación. Piénsalo como un equipo trabajando en paralelo en diferentes aspectos del mismo proyecto.
 
 <ChainExample 
-  type="parallel"
+  type="branch"
   steps={[
-    { step: "Eingabe", prompt: "Produktbewertungstext", output: '"Ich liebe diese Kopfhörer! Der Akku hält ewig und das Display am Case ist super praktisch. Perfekt für meinen täglichen Pendeln."' },
-    { step: "Zweig A: Sentiment", prompt: "Analysiere Sentiment: [text]", output: '{ sentiment: "positiv", score: 0.85 }' },
-    { step: "Zweig B: Features", prompt: "Extrahiere erwähnte Features: [text]", output: '{ features: ["akku", "display"] }' },
-    { step: "Zweig C: Persona", prompt: "Identifiziere Benutzer-Persona: [text]", output: '{ persona: "pendler" }' },
-    { step: "Zusammenführen", prompt: "Kombiniere Analysen zu einheitlichem Bericht", output: "Einheitlicher Bericht: Positive Bewertung von Pendler, hebt Akku und Display hervor." }
+    { step: "Entrada", prompt: "Concepto de producto: 'App de productividad impulsada por IA'", output: "→ Se ramifica a análisis paralelos" },
+    { step: "Rama A: Investigación de Mercado", prompt: "Analiza oportunidades de mercado para: [entrada]", output: "Tamaño del mercado: $5B, Competidores: Notion, Todoist..." },
+    { step: "Rama B: Análisis Técnico", prompt: "Evalúa requisitos técnicos para: [entrada]", output: "Stack: React + GPT-4, Timeline estimado: 6 meses..." },
+    { step: "Rama C: Evaluación de Riesgos", prompt: "Identifica riesgos para: [entrada]", output: "Riesgo principal: competencia, Mitigación: diferenciación..." },
+    { step: "Fusionar", prompt: "Sintetiza estos tres análisis en una recomendación.", output: "Recomendación: Proceder con MVP enfocado en..." }
   ]}
 />
 
-### Bedingte Kette
+### Cadena Condicional
 
-Leite Eingaben basierend auf Klassifizierung durch verschiedene Pfade. Das ist wie ein Entscheidungsbaum, bei dem die KI zuerst die Eingabe kategorisiert, dann jede Kategorie anders behandelt.
+Rutas dinámicas basadas en salidas intermedias. El camino a través de la cadena depende de lo que descubras en el camino.
 
 <ChainExample 
   type="conditional"
   steps={[
-    { step: "Eingabe klassifizieren", prompt: "Klassifiziere diese Kundennachricht als: beschwerde, frage, feedback oder sonstiges.\n\nNachricht: [text]", output: '{ klassifizierung: "beschwerde", konfidenz: 0.92 }' },
-    { step: "Route: Frage (übersprungen)", prompt: "Identifiziere welche Information benötigt wird", output: "Übersprungen - Eingabe als Beschwerde klassifiziert" },
-    { step: "Route: Beschwerde", prompt: "Identifiziere das Problem und die Schwere: [text]", output: '{ problem: "verzögerter versand", schwere: "mittel" }' },
-    { step: "Antwort generieren", prompt: "Generiere empathische Antwort mit Lösung: [analyse]", output: "Sehr geehrter Kunde, wir entschuldigen uns aufrichtig für die Verzögerung. Ihre Bestellung wurde beschleunigt..." }
+    { step: "Clasificar", prompt: "Clasifica esta consulta del cliente:\n'¡Mi pedido nunca llegó y quiero un reembolso!'", output: '{ tipo: "queja", urgencia: "alta", sentimiento: "enojado" }' },
+    { step: "Enrutar", prompt: "Si urgencia es alta Y sentimiento es negativo → manejar_escalamiento\nDe lo contrario → respuesta_estandar", output: "→ Ruta: manejar_escalamiento" },
+    { step: "Ejecutar", prompt: "[prompt_escalamiento] Redacta respuesta empática con oferta de resolución inmediata", output: "Estimado cliente, Lamento profundamente escuchar sobre..." }
   ]}
 />
 
-### Iterative Kette
+## Ejemplo Práctico: Pipeline de Creación de Contenido
 
-Verfeinere die Ausgabe, bis sie Qualitätsstandards erfüllt. Die KI generiert, bewertet und verbessert in einer Schleife, bis zufrieden oder maximale Iterationen erreicht.
+Veamos un flujo de trabajo de creación de contenido del mundo real usando encadenamiento.
 
-<Callout type="warning" title="Iterationslimits setzen">
-Setze immer eine maximale Anzahl von Iterationen (typischerweise 3-5), um Endlosschleifen zu verhindern und Kosten zu kontrollieren. Das Gesetz des abnehmenden Ertrags gilt: Die meiste Verbesserung passiert in den ersten 2-3 Iterationen.
-</Callout>
+<TryIt 
+  title="Paso 1: Extracción de Tema"
+  description="Primero, extrae los elementos clave del brief de contenido."
+  prompt={`Extrae los elementos clave del contenido de este brief:
 
-<ChainExample 
-  type="iterative"
-  steps={[
-    { step: "Entwurf generieren", prompt: "Schreibe eine Produktbeschreibung für: [kabellose kopfhörer]", output: "Diese kabellosen Kopfhörer bieten gute Soundqualität und bequemen Sitz für den Alltag." },
-    { step: "Bewerten (Score: 5)", prompt: "Bewerte diese Beschreibung 1-10 auf: Klarheit, Überzeugungskraft, Genauigkeit.\n\nBeschreibung: [aktueller_entwurf]", output: '{ score: 5, verbesserungen: ["Spezifische Features hinzufügen", "Emotionale Benefits einbeziehen", "Akkulaufzeit erwähnen", "Call-to-Action hinzufügen"] }' },
-    { step: "Entwurf verbessern", prompt: "Schreibe die Beschreibung neu basierend auf diesem Feedback:\n\nAktuell: [aktueller_entwurf]\nFeedback: [verbesserungen]", output: "Erlebe kristallklaren Sound mit unseren Premium-Kopfhörern. Mit 30 Stunden Akkulaufzeit, aktiver Geräuschunterdrückung und ergonomischem Design, das den ganzen Tag bequem bleibt. Perfekt für Musikliebhaber und Profis. Bestelle jetzt und transformiere dein Hörerlebnis." },
-    { step: "Bewerten (Score: 8)", prompt: "Bewerte die verbesserte Beschreibung erneut.", output: '{ score: 8, verbesserungen: ["Klein: Könnte Garantie-Info hinzufügen"] }\n\n✓ Score >= 8: SCHLEIFE BEENDEN' }
-  ]}
+Brief: "Necesitamos un post de blog sobre prácticas de codificación sustentable para desarrolladores web. Debe cubrir eficiencia energética, optimización del lado del servidor y diseño verde. Apuntando a desarrolladores intermedios. Objetivo: 1500 palabras."
+
+Extrae como JSON:
+{
+  "tema": "string",
+  "subtemas": ["array"],
+  "audiencia": "string",
+  "longitud_objetivo": "number",
+  "tono": "string (inferido)"
+}`}
 />
 
-## Häufige Kettenmuster
+<TryIt 
+  title="Paso 2: Generación de Esquema"
+  description="Usa los datos extraídos para crear un esquema estructurado."
+  prompt={`Crea un esquema de post de blog basado en estos datos extraídos:
 
-Diese bewährten Muster lösen häufige Probleme. Verwende sie als Ausgangspunkte und passe sie an deine Bedürfnisse an.
+{
+  "tema": "Prácticas de Codificación Sustentable",
+  "subtemas": ["eficiencia energética", "optimización del servidor", "diseño verde"],
+  "audiencia": "desarrolladores intermedios",
+  "longitud_objetivo": 1500,
+  "tono": "técnico pero accesible"
+}
 
-### Extrahieren → Transformieren → Generieren
-
-Der Arbeitspferd der Content-Verarbeitung. Daten herausziehen, umformen, dann etwas Neues erstellen.
-
-<div className="mb-4 p-3 rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800">
-  <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 m-0!">Am besten für</p>
-  <p className="text-sm text-blue-600 dark:text-blue-400 m-0!">Dokumentzusammenfassung, Berichtgenerierung, Content-Umnutzung, Daten-zu-Narrativ-Konvertierung</p>
-</div>
-
-<ChainExample 
-  type="sequential"
-  steps={[
-    { step: "Extrahieren", prompt: "Extrahiere aus diesem Dokument:\n- Hauptthema\n- Kernargumente (Liste)\n- Unterstützende Belege (Liste)\n- Schlussfolgerungen\nAls JSON zurückgeben.", output: '{ "thema": "Klimawandel-Auswirkungen", "argumente": ["Steigende Temperaturen", "Meeresspiegelanstieg"], "belege": ["NASA-Daten", "IPCC-Berichte"], "schlussfolgerungen": ["Dringendes Handeln nötig"] }' },
-    { step: "Transformieren", prompt: "Reorganisiere diese Information für [Geschäftsführer]:\n[extrahierte_daten]\nFokus auf: wirtschaftliche Implikationen\nEntfernen: Fachjargon", output: '{ "zusammenfassung": "Klimarisiken fürs Geschäft", "kernpunkte": ["Lieferkettenunterbrechung", "Versicherungskosten steigend"], "aktionspunkte": ["Schwachstellen bewerten", "Anpassungen planen"] }' },
-    { step: "Generieren", prompt: "Schreibe mit diesen umstrukturierten Informationen ein [Executive Brief]:\n[transformierte_daten]\nTon: professionell\nLänge: 200 Wörter", output: "Executive Brief: Der Klimawandel stellt erhebliche operative Risiken für unser Geschäft dar. Hauptsorgen sind Lieferkettenunterbrechungen durch Extremwetterereignisse und steigende Versicherungsprämien. Wir empfehlen sofortige Bewertung der Anlagen-Schwachstellen und Entwicklung von Anpassungsstrategien..." }
-  ]}
+Genera un esquema con:
+- Título atractivo
+- Secciones con conteos estimados de palabras
+- Puntos clave para cada sección
+- Lugares sugeridos para ejemplos de código`}
 />
 
-### Analysieren → Planen → Ausführen
+<TryIt 
+  title="Paso 3: Generación de Sección"
+  description="Genera cada sección basándote en el esquema."
+  prompt={`Escribe la introducción para este post de blog:
 
-Perfekt für Code-Refactoring, Projektplanung oder jede Aufgabe, bei der du verstehen musst, bevor du handelst.
+Esquema:
+# Código Verde: Prácticas de Codificación Sustentable para Desarrolladores Web
 
-<div className="mb-4 p-3 rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border border-purple-200 dark:border-purple-800">
-  <p className="text-xs font-semibold text-purple-700 dark:text-purple-300 mb-1 m-0!">Am besten für</p>
-  <p className="text-sm text-purple-600 dark:text-purple-400 m-0!">Code-Refactoring, Projektplanung, Fehlerbehebung, strategische Entscheidungsfindung, komplexe Problemlösung</p>
-</div>
+## Introducción (150 palabras)
+- Gancho: el impacto ambiental del desarrollo web
+- Relevancia para desarrolladores
+- Vista previa del contenido
 
-<ChainExample 
-  type="sequential"
-  steps={[
-    { step: "Analysieren", prompt: "Analysiere diese Codebase-Struktur und identifiziere:\n- Architekturmuster\n- Hauptkomponenten\n- Abhängigkeiten\n- Potenzielle Probleme\n[code]", output: '{ "muster": "MVC", "komponenten": ["UserController", "AuthService", "Database"], "abhaengigkeiten": ["express", "mongoose"], "probleme": ["Keine Eingabevalidierung", "Hardcodierte Secrets"] }' },
-    { step: "Planen", prompt: "Erstelle basierend auf dieser Analyse einen Refactoring-Plan:\n[analyse_ausgabe]\nZiel: Sicherheit verbessern\nRestricciones: keine Breaking Changes", output: '{ "schritte": ["1. Eingabevalidierung-Middleware hinzufügen", "2. Secrets in env vars verschieben", "3. Rate Limiting hinzufügen"], "prioritaet": "hoch", "geschaetzte_zeit": "4 Stunden" }' },
-    { step: "Ausführen", prompt: "Implementiere Schritt 1 dieses Plans:\n[plan_ausgabe]\nZeige den refaktorisierten Code mit Erklärungen.", output: "// Validierungs-Middleware hinzugefügt\nconst validateInput = (req, res, next) => {\n  const { email, password } = req.body;\n  if (!email || !isValidEmail(email)) {\n    return res.status(400).json({ error: 'Ungültige E-Mail' });\n  }\n  next();\n};" }
-  ]}
+Requisitos:
+- Tono técnico pero accesible
+- Incluir una estadística sobre uso de energía de centros de datos
+- Terminar con una vista previa de lo que cubrirá el artículo`}
 />
 
-### Generieren → Kritisieren → Verfeinern
+## Validación Entre Pasos
 
-Die Selbstverbesserungsschleife. Content generieren, die KI kritisch bewerten lassen, dann basierend auf dem Feedback verbessern. Das ahmt nach, wie professionelle Autoren und Lektoren zusammenarbeiten.
+El encadenamiento te permite validar antes de continuar. Esto captura errores temprano y previene que se propaguen.
 
-<div className="mb-4 p-3 rounded-lg bg-green-50/50 dark:bg-green-950/20 border border-green-200 dark:border-green-800">
-  <p className="text-xs font-semibold text-green-700 dark:text-green-300 mb-1 m-0!">Am besten für</p>
-  <p className="text-sm text-green-600 dark:text-green-400 m-0!">Marketing-Texte, kreatives Schreiben, E-Mail-Entwürfe, Präsentationen, jeder Content, der von Überarbeitung profitiert</p>
-</div>
+### Patrón de Validación
 
-<ChainExample 
-  type="iterative"
-  steps={[
-    { step: "Generieren", prompt: "Schreibe eine Marketing-E-Mail für [Fitness-App] mit Zielgruppe [vielbeschäftigte Berufstätige].", output: "Betreff: Werde schnell fit!\n\nHallo! Unsere App hilft dir beim Training. Lade sie heute herunter und starte deine Fitness-Reise. Danke!" },
-    { step: "Kritisieren", prompt: "Als Marketing-Experte kritisiere diese E-Mail:\n[generierte_email]\nBewerte: Betreffzeile, Hook, Wertversprechen, CTA, Ton\nBewerte jedes 1-10.", output: '{ "betreffzeile": 4, "hook": 3, "wertversprechen": 2, "cta": 5, "ton": 4, "feedback": "Zu generisch, keine spezifischen Benefits, schwache Dringlichkeit" }' },
-    { step: "Verfeinern", prompt: "Schreibe die E-Mail neu und adressiere dieses Feedback:\nOriginal: [generierte_email]\nKritik: [kritik_ausgabe]\nFokus auf die niedrigst bewerteten Elemente.", output: "Betreff: 15-Minuten-Workouts für deine Mittagspause\n\nVoller Terminkalender? Verstehen wir. Unsere App liefert wissenschaftlich fundierte Workouts für Berufstätige, die keine Zeit zu verschwenden haben. Schließe dich 50.000+ Führungskräften an, die ihre Gesundheit in nur 15 Minuten täglich transformiert haben. Starte jetzt deine kostenlose Testphase—dein zukünftiges Ich wird es dir danken." },
-    { step: "Finale Bewertung", prompt: "Bewerte die verfeinerte E-Mail erneut.", output: '{ "betreffzeile": 8, "hook": 8, "wertversprechen": 9, "cta": 8, "ton": 9, "verbesserung": "+23 Punkte gesamt" }' }
-  ]}
-/>
+<TryIt compact prompt={`Antes de proceder al siguiente paso, valida esta salida:
 
-## Ketten implementieren
+Salida a validar:
+{
+  "fecha_evento": "2024-13-45",
+  "asistentes": -5,
+  "ubicacion": ""
+}
 
-Du kannst Ketten manuell für Experimente oder programmatisch für Produktionssysteme implementieren. Fange einfach an und füge bei Bedarf Komplexität hinzu.
+Verifica:
+1. Todas las fechas son válidas (formato y valores)
+2. Los números están en rangos razonables
+3. Los campos requeridos no están vacíos
 
-### Manuelle Verkettung
+Devuelve:
+{
+  "valido": boolean,
+  "errores": ["lista de problemas encontrados"],
+  "corregido": { ... datos corregidos si es posible ... }
+}`} />
 
-Der Copy-Paste-Ansatz ist perfekt für Prototyping und Experimente. Führe jeden Prompt manuell aus, untersuche die Ausgabe und füge sie in den nächsten Prompt ein.
+## Manejo de Errores en Cadenas
 
-<CodeEditor 
-  language="python"
-  filename="manuelle_kette.py"
-  code={`# Pseudocode für manuelle Verkettung
-schritt1_ausgabe = call_ai("Extrahiere Entitäten aus: " + eingabe_text)
-schritt2_ausgabe = call_ai("Analysiere Beziehungen: " + schritt1_ausgabe)
-finale_ausgabe = call_ai("Generiere Bericht: " + schritt2_ausgabe)`}
-/>
+Cuando un paso falla, necesitas estrategias de recuperación:
 
-### Programmatische Verkettung
-
-Für Produktionssysteme automatisiere die Kette mit Code. Das ermöglicht Fehlerbehandlung, Logging und Integration mit deiner Anwendung.
-
-<CodeEditor 
-  language="python"
-  filename="kette.py"
-  code={`def analyse_kette(dokument):
-    # Schritt 1: Zusammenfassen
-    zusammenfassung = call_ai(f"""
-        Fasse die Kernpunkte dieses Dokuments in 5 Stichpunkten zusammen:
-        {dokument}
-    """)
-    
-    # Schritt 2: Entitäten extrahieren
-    entitaeten = call_ai(f"""
-        Extrahiere benannte Entitäten (Personen, Organisationen, Orte) 
-        aus dieser Resumen. Als JSON zurückgeben.
-        {zusammenfassung}
-    """)
-    
-    # Schritt 3: Erkenntnisse generieren
-    erkenntnisse = call_ai(f"""
-        Generiere basierend auf dieser Resumen und den Entitäten 
-        3 umsetzbare Erkenntnisse für einen Business-Analysten.
-        Resumen: {zusammenfassung}
-        Entitäten: {entitaeten}
-    """)
-    
-    return {
-        "zusammenfassung": zusammenfassung,
-        "entitaeten": json.loads(entitaeten),
-        "erkenntnisse": erkenntnisse
-    }`}
-/>
-
-### Ketten-Templates verwenden
-
-Definiere Ketten als Konfigurationsdateien für Wiederverwendbarkeit und einfache Modifikation. Das trennt Prompt-Logik vom Anwendungscode.
-
-<CodeEditor 
-  language="yaml"
-  filename="ketten_template.yaml"
-  code={`name: "Dokumentanalyse-Kette"
-schritte:
-  - name: "extrahieren"
-    prompt: |
-      Extrahiere Schlüsselinformationen aus diesem Dokument:
-      {eingabe}
-      JSON mit: themen, entitaeten, daten, zahlen zurückgeben
-    
-  - name: "analysieren"
-    prompt: |
-      Analysiere diese extrahierten Daten auf Muster:
-      {extrahieren.ausgabe}
-      Identifiziere: trends, anomalien, beziehungen
-    
-  - name: "bericht"
-    prompt: |
-      Generiere eine Executive Summary basierend auf:
-      Daten: {extrahieren.ausgabe}
-      Analyse: {analysieren.ausgabe}
-      Formato: 3 Absätze, Business-Ton`}
-/>
-
-## Fehlerbehandlung in Ketten
-
-Ketten können an jedem Schritt fehlschlagen. Baue Validierung, Wiederholungen und Fallbacks ein, um deine Ketten robust zu machen.
-
-<ChainErrorDemo />
-
-<Callout type="warning" title="Müll rein, Müll raus">
-Wenn ein Schritt schlechte Ausgabe produziert, wird jeder folgende Schritt betroffen sein. Validiere kritische Zwischenergebnisse immer, bevor du sie weitergibst.
-</Callout>
-
-### Validierung zwischen Schritten
-
-Füge einen Validierungsschritt nach jedem Schritt hinzu, der strukturierte Daten produziert. Das fängt Fehler früh ab, bevor sie kaskadieren.
-
-<ValidationDemo />
-
-### Fallback-Ketten
-
-Wenn dein primärer Ansatz fehlschlägt, halte ein einfacheres Backup bereit. Tausche Fähigkeiten gegen Zuverlässigkeit.
-
-<FallbackDemo />
-
-## Kettenoptimierung
-
-Sobald deine Kette funktioniert, optimiere für Geschwindigkeit, Kosten und Zuverlässigkeit. Diese stehen oft in Konkurrenz zueinander.
-
-<div className="my-6 grid md:grid-cols-3 gap-4">
-  <div className="border rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-900 p-4">
-    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 mb-2 m-0!">Latenz reduzieren</p>
-    <div className="text-sm space-y-1">
-      <p className="m-0!">Unabhängige Schritte parallelisieren</p>
-      <p className="m-0!">Zwischenergebnisse cachen</p>
-      <p className="m-0!">Kleinere Modelle für einfache Schritte</p>
-      <p className="m-0!">Ähnliche Operationen bündeln</p>
-    </div>
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Reintentar</span>
+    <span className="text-muted-foreground">Intenta el mismo prompt de nuevo (para errores transitorios)</span>
   </div>
-  <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900 p-4">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 mb-2 m-0!">Kosten reduzieren</p>
-    <div className="text-sm space-y-1">
-      <p className="m-0!">Günstigere Modelle für Klassifizierung</p>
-      <p className="m-0!">Iterationen in Schleifen begrenzen</p>
-      <p className="m-0!">Kurzschluss wenn möglich</p>
-      <p className="m-0!">Wiederholte Abfragen cachen</p>
-    </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Fallback</span>
+    <span className="text-muted-foreground">Usa un prompt alternativo más simple</span>
   </div>
-  <div className="border rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-900 p-4">
-    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 mb-2 m-0!">Zuverlässigkeit verbessern</p>
-    <div className="text-sm space-y-1">
-      <p className="m-0!">Validierung zwischen Schritten</p>
-      <p className="m-0!">Wiederholungslogik einbauen</p>
-      <p className="m-0!">Zwischenergebnisse loggen</p>
-      <p className="m-0!">Fallback-Pfade implementieren</p>
-    </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Escalar</span>
+    <span className="text-muted-foreground">Pasa a revisión humana</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Omitir</span>
+    <span className="text-muted-foreground">Continúa sin el paso fallido (si es opcional)</span>
   </div>
 </div>
-
-## Praxisbeispiel einer Kette
-
-Lass uns eine vollständige Produktionskette durchgehen. Diese Content-Pipeline transformiert eine rohe Idee in ein ausgefeiltes Artikelpaket.
-
-### Content-Pipeline-Kette
-
-<ContentPipelineDemo />
 
 ## Resumen
 
-Prompt Chaining transformiert, was KI erreichen kann, indem es unmögliche Aufgaben in erreichbare Schritte zerlegt.
-
-<div className="my-6 grid md:grid-cols-2 gap-4">
-  <div className="border rounded-lg bg-amber-50/50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900 p-4">
-    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 mb-2 m-0!">Chaining ermöglicht</p>
-    <div className="text-sm space-y-1">
-      <p className="m-0!">Komplexe mehrstufige Workflows</p>
-      <p className="m-0!">Höhere Qualität durch Spezialisierung</p>
-      <p className="m-0!">Bessere Fehlerbehandlung und Validierung</p>
-      <p className="m-0!">Modulare, wiederverwendbare Prompt-Komponenten</p>
-    </div>
-  </div>
-  <div className="border rounded-lg bg-cyan-50/50 dark:bg-cyan-950/20 border-cyan-200 dark:border-cyan-900 p-4">
-    <p className="text-sm font-semibold text-cyan-700 dark:text-cyan-400 mb-2 m-0!">Schlüsselprinzipien</p>
-    <div className="text-sm space-y-1">
-      <p className="m-0!">Komplexe Aufgaben in einfache Schritte zerlegen</p>
-      <p className="m-0!">Klare Schnittstellen zwischen Schritten entwerfen</p>
-      <p className="m-0!">Zwischenausgaben validieren</p>
-      <p className="m-0!">Fehlerbehandlung und Fallbacks einbauen</p>
-      <p className="m-0!">Für deine Einschränkungen optimieren</p>
-    </div>
-  </div>
-</div>
-
-<Callout type="tip" title="Fang einfach an">
-Beginne mit einer 2-3-schrittigen sequentiellen Kette. Bringe sie zuverlässig zum Laufen, bevor du Komplexität hinzufügst. Die meisten Aufgaben brauchen keine aufwendigen Kettenarchitekturen.
+<Callout type="tip" title="Técnicas Clave">
+Divide tareas complejas en pasos simples y enfocados. Usa datos estructurados entre pasos. Valida salidas antes de proceder. Elige el tipo de cadena que coincida con tu flujo de trabajo. Planifica el manejo de errores para cada paso.
 </Callout>
 
 <Quiz 
-  question="Was ist der Hauptvorteil von Prompt Chaining gegenüber einem einzelnen komplexen Prompt?"
+  question="¿Cuándo deberías usar una cadena de ramificación en lugar de una secuencial?"
   options={[
-    "Es verwendet insgesamt weniger Tokens",
-    "Es ist schneller auszuführen",
-    "Jeder Schritt kann sich spezialisieren, was Qualität verbessert und Fehlerbehandlung ermöglicht",
-    "Es erfordert weniger Planung"
+    "Cuando cada paso depende del anterior",
+    "Cuando necesitas explorar múltiples direcciones independientes simultáneamente",
+    "Cuando quieres reducir llamadas a la API",
+    "Cuando la tarea es simple y directa"
   ]}
-  correctIndex={2}
-  explanation="Prompt Chaining zerlegt komplexe Aufgaben in spezialisierte Schritte. Jeder Schritt kann sich auf eine Sache konzentrieren, Zwischenergebnisse können validiert werden, Fehler können abgefangen und wiederholt werden, und die Gesamtqualität verbessert sich durch Spezialisierung."
+  correctIndex={1}
+  explanation="Las cadenas de ramificación son ideales cuando necesitas analizar la misma entrada desde múltiples ángulos independientes (como mercado, técnico y riesgo) y luego sintetizar los resultados. Las cadenas secuenciales son mejores cuando cada paso depende del anterior."
 />
 
-Im nächsten Kapitel erkunden wir multimodales Prompting: Arbeiten mit Bildern, Audio und anderen nicht-textlichen Inhalten.
+En el próximo capítulo, exploraremos cómo manejar casos límite y entradas inesperadas.
