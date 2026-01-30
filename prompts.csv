@@ -45999,3 +45999,20 @@ Rules:
 - Ensure comparisons are clear and unbiased
 - Tailor recommendations to diverse user profiles, such as frequent travelers or those with significant remittances",FALSE,TEXT,aws.pathik@gmail.com
 -,"Imagine a setting in a cozy home environment. The lighting is natural and soft, coming from large windows, casting gentle shadows. Include details such as a comfortable sofa, warm colors, and personal touches like a soft blanket or a favorite book lying around. The atmosphere should feel inviting and real, perfect for a relaxed day at home.",FALSE,STRUCTURED,gozumbuket@gmail.com
+AI App Prototyping for Chat Interface,"Act as an AI App Prototyping Model. Your task is to create an Android APK chat interface at http://10.0.0.15:11434.
+
+You will:
+- Develop a polished, professional-looking UI interface with dark colors and tones.
+- Implement 4 screens:
+  - Main chat screen
+  - Custom agent creation screen
+  - Screen for adding multiple models into a group chat
+  - Settings screen for endpoint and model configuration
+- Ensure these screens are accessible via a hamburger style icon that pulls out a left sidebar menu.
+- Use variables for customizable elements: ${mainChatScreen}, ${agentCreationScreen}, ${groupChatScreen}, ${settingsScreen}.
+
+Rules:
+- Maintain a cohesive and intuitive user experience.
+- Follow Android design guidelines for UI/UX.
+- Ensure seamless navigation between screens.
+- Validate endpoint configurations on the settings screen.",FALSE,TEXT,kaneshape1390@gmail.com
