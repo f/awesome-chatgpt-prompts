@@ -1,345 +1,252 @@
-AI is a powerful tool for both teaching and learning. This chapter covers prompts for educational contexts—from personalized tutoring to curriculum development.
+KI ist ein mächtiges Werkzeug sowohl für das Lehren als auch das Lernen. Este capítulo behandelt Prompts für Bildungskontexte—von personalisiertem Tutoring bis zur Lehrplanentwicklung.
 
-<Callout type="info" title="AI as Learning Partner">
-AI excels as a patient, adaptive tutor that can explain concepts multiple ways, generate unlimited practice problems, and provide instant feedback—available 24/7.
+<Callout type="info" title="KI als Lernpartner">
+KI glänzt als geduldiger, adaptiver Tutor, der Konzepte auf verschiedene Weisen erklären, unbegrenzt Übungsaufgaben generieren und sofortiges Feedback geben kann—rund um die Uhr verfügbar.
 </Callout>
 
-## Personalized Learning
+## Personalisiertes Lernen
 
-### Do's and Don'ts: Learning Prompts
+### Do's und Don'ts: Lern-Prompts
 
 <Compare 
-  before={{ label: "❌ Passive request", content: "Explain quantum physics to me." }}
-  after={{ label: "✓ Context-rich request", content: "Explain quantum superposition to me.\n\nMy background: I understand basic chemistry and classical physics.\nLearning style: I learn best through analogies and examples.\nExplain with a simple analogy, then the core concept, then a practical example. Check my understanding with a question." }}
+  before={{ label: "❌ Passive Anfrage", content: "Erkläre mir Quantenphysik." }}
+  after={{ label: "✓ Kontextreiche Anfrage", content: "Erkläre mir Quantensuperposition.\n\nMein Hintergrund: Ich verstehe grundlegende Chemie und klassische Physik.\nLernstil: Ich lerne am besten durch Analogien und Ejemploe.\nErkläre mit einer einfachen Analogie, dann das Kernkonzept, dann ein praktisches Ejemplo. Prüfe mein Verständnis mit einer Frage." }}
 />
 
-### Concept Explanation
+### Konzept-Erklärung
 
-<TryIt compact prompt={`Explain [concept] to me.
+<TryIt compact prompt={`Erkläre mir [Konzept].
 
-My background:
-- Current level: [beginner/intermediate/advanced]
-- Related knowledge: [what I already know]
-- Learning style: [visual/examples/theoretical]
+Mein Hintergrund:
+- Aktuelles Level: [Anfänger/Mittelstufe/Fortgeschritten]
+- Verwandtes Wissen: [was ich bereits weiß]
+- Lernstil: [visuell/Ejemploe/theoretisch]
 
-Explain with:
-1. Simple analogy to something familiar
-2. Core concept in plain language
-3. How it connects to what I know
-4. A practical example
-5. Common misconceptions to avoid
+Erkläre mit:
+1. Einfache Analogie zu etwas Bekanntem
+2. Kernkonzept in verständlicher Sprache
+3. Wie es mit meinem Wissen zusammenhängt
+4. Ein praktisches Ejemplo
+5. Häufige Missverständnisse, die man vermeiden sollte
 
-Then check my understanding with a question.`} />
+Dann prüfe mein Verständnis mit einer Frage.`} />
 
-### Adaptive Tutoring
+### Adaptives Tutoring
 
-<TryIt compact prompt={`You are my tutor for \${subject:calculus}. Teach me \${topic:derivatives} adaptively.
+<TryIt compact prompt={`Du bist mein Tutor für \${fach:Mathematik}. Bringe mir \${thema:Ableitungen} adaptiv bei.
 
-Start with a diagnostic question to assess my level.
-Based on my response:
-- If correct: Move to more advanced aspects
-- If partially correct: Clarify the gap, then continue
-- If incorrect: Step back and build foundation
+Beginne mit einer Diagnosefrage, um mein Level einzuschätzen.
+Basierend auf meiner Antwort:
+- Wenn korrekt: Gehe zu fortgeschritteneren Aspekten
+- Wenn teilweise korrekt: Kläre die Lücke, dann weiter
+- Wenn falsch: Gehe einen Schritt zurück und baue Grundlagen auf
 
-After each explanation:
-- Check understanding with a question
-- Adjust difficulty based on my answers
-- Provide encouragement and track progress`} />
+Nach jeder Erklärung:
+- Prüfe Verständnis mit einer Frage
+- Passe Schwierigkeit basierend auf meinen Antworten an
+- Gib Ermutigung und verfolge Fortschritt`} />
 
-### Learning Path Creation
+### Lernpfad-Erstellung
 
-<TryIt compact prompt={`Create a learning path for \${goal:becoming a web developer}.
+<TryIt compact prompt={`Erstelle einen Lernpfad für \${ziel:Webentwickler werden}.
 
-My situation:
-- Current skill level: \${skillLevel:complete beginner}
-- Time available: \${timeAvailable:10 hours per week}
-- Target timeline: \${timeline:6 months}
-- Learning preferences: \${preferences:projects and tutorials}
+Meine Situation:
+- Aktuelles Skill-Level: \${skillLevel:kompletter Anfänger}
+- Verfügbare Zeit: \${verfuegbareZeit:10 Stunden pro Woche}
+- Ziel-Zeitrahmen: \${zeitrahmen:6 Monate}
+- Lernpräferenzen: \${praeferenzen:Projekte und Tutorials}
 
-Provide:
-1. Prerequisites check (what I need first)
-2. Milestone breakdown (phases with goals)
-3. Resources for each phase (free when possible)
-4. Practice projects at each stage
-5. Assessment criteria (how to know I'm ready to advance)`} />
+Liefere:
+1. Voraussetzungs-Check (was ich zuerst brauche)
+2. Meilenstein-Aufschlüsselung (Phasen mit Zielen)
+3. Ressourcen für jede Phase (kostenlos wenn möglich)
+4. Übungsprojekte für jede Stufe
+5. Bewertungskriterien (wie ich weiß, dass ich weitermachen kann)`} />
 
-## Study Assistance
+## Lernhilfen
 
-<Callout type="tip" title="Active Learning Principle">
-Don't just read AI explanations passively. Ask it to quiz you, generate problems, and check your understanding. **Active recall beats passive review.**
+<Callout type="tip" title="Aktives Lernen Prinzip">
+Lies KI-Erklärungen nicht nur passiv. Bitte sie, dich abzufragen, Aufgaben zu generieren und dein Verständnis zu prüfen. **Aktives Abrufen schlägt passives Wiederholen.**
 </Callout>
 
-### Summary Generation
+### Resumens-Generierung
 
-<TryIt compact prompt={`Summarize this \${contentType:chapter} for study purposes.
+<TryIt compact prompt={`Fasse dieses \${inhaltsTyp:Kapitel} für Lernzwecke zusammen.
 
-Content:
-\${content:paste your content here}
+Inhalt:
+\${inhalt:füge deinen Inhalt ein}
 
-Provide:
-1. **Key Concepts** (5-7 main ideas)
-2. **Important Terms** (with brief definitions)
-3. **Relationships** (how concepts connect)
-4. **Study Questions** (to test understanding)
-5. **Memory Aids** (mnemonics or associations)
+Liefere:
+1. **Schlüsselkonzepte** (5-7 Hauptideen)
+2. **Wichtige Begriffe** (mit kurzen Definitionen)
+3. **Zusammenhänge** (wie Konzepte verbunden sind)
+4. **Lernfragen** (zum Testen des Verständnisses)
+5. **Gedächtnisstützen** (Eselsbrücken oder Assoziationen)
 
-Format for easy review and memorization.`} />
+Formatiere für einfache Wiederholung und Einprägen.`} />
 
-### Flashcard Generation
+### Karteikarten-Generierung
 
-<TryIt compact prompt={`Create flashcards for studying \${topic:World War II}.
+<TryIt compact prompt={`Erstelle Karteikarten zum Lernen von \${thema:Zweiter Weltkrieg}.
 
-Source material:
-\${content:paste your study material here}
+Quellmaterial:
+\${inhalt:füge dein Lernmaterial ein}
 
-Format each card:
-Front: Question or term
-Back: Answer or definition
-Hint: Optional memory aid
+Formatiere jede Karte:
+Vorderseite: Frage oder Begriff
+Rückseite: Antwort oder Definition
+Nota: Optionale Gedächtnisstütze
 
-Categories to cover:
-- Definitions (key terms)
-- Concepts (main ideas)
-- Relationships (how things connect)
-- Applications (real-world uses)
+Zu behandelnde Kategorien:
+- Definitionen (Schlüsselbegriffe)
+- Konzepte (Hauptideen)
+- Zusammenhänge (wie Dinge verbunden sind)
+- Anwendungen (reale Nutzung)
 
-Generate \${numberOfCards:20} cards, balanced across categories.`} />
+Generiere \${anzahlKarten:20} Karten, ausgewogen über Kategorien.`} />
 
-### Practice Problems
+### Übungsaufgaben
 
-<TryIt compact prompt={`Generate practice problems for \${topic:quadratic equations}.
+<TryIt compact prompt={`Generiere Übungsaufgaben für \${thema:quadratische Gleichungen}.
 
-Difficulty levels:
-- 3 Basic (test fundamental understanding)
-- 3 Intermediate (require application)
-- 2 Advanced (require synthesis/analysis)
+Schwierigkeitsgrade:
+- 3 Grundlegend (teste fundamentales Verständnis)
+- 3 Mittelstufe (erfordern Anwendung)
+- 2 Fortgeschritten (erfordern Synthese/Analyse)
 
-For each problem:
-1. Clear problem statement
-2. Space for student work
-3. Hints available on request
-4. Detailed solution with explanation
+Für jede Tarea:
+1. Klare Aufgabenstellung
+2. Platz für Schülerarbeit
+3. Notae auf Anfrage verfügbar
+4. Detaillierte Lösung mit Erklärung
 
-Include variety: \${problemTypes:calculation, conceptual, application}`} />
+Vielfalt einschließen: \${aufgabenTypen:Berechnung, konzeptuell, Anwendung}`} />
 
-## Teaching Tools
+## Lehrwerkzeuge
 
-### Lesson Plan Creation
+### Unterrichtsplan-Erstellung
 
-<TryIt compact prompt={`Create a lesson plan for teaching \${topic:photosynthesis}.
+<TryIt compact prompt={`Erstelle einen Unterrichtsplan für das Unterrichten von \${thema:Photosynthese}.
 
-Context:
-- Grade/Level: \${audience:8th grade science}
-- Class duration: \${duration:50 minutes}
-- Class size: \${classSize:25 students}
-- Prior knowledge: \${prerequisites:basic cell structure}
+Contexto:
+- Klasse/Level: \${zielgruppe:8. Klasse Biologie}
+- Unterrichtsdauer: \${dauer:45 Minuten}
+- Klassengröße: \${klassenGroesse:25 Schüler}
+- Vorwissen: \${voraussetzungen:grundlegende Zellstruktur}
 
-Include:
-1. **Learning Objectives** (SMART format)
-2. **Opening Hook** (5 min) - engagement activity
-3. **Instruction** (15-20 min) - core content delivery
-4. **Guided Practice** (10 min) - work with students
-5. **Independent Practice** (10 min) - students work alone
-6. **Assessment** (5 min) - check understanding
-7. **Closure** - summarize and preview
+Inkludiere:
+1. **Lernziele** (SMART-Format)
+2. **Einstieg** (5 Min) - Aktivierung
+3. **Instruktion** (15-20 Min) - Kerninhalt vermitteln
+4. **Geleitete Übung** (10 Min) - mit Schülern arbeiten
+5. **Selbstständige Übung** (10 Min) - Schüler arbeiten allein
+6. **Bewertung** (5 Min) - Verständnis prüfen
+7. **Abschluss** - zusammenfassen und Vorschau
 
-Materials needed: list
-Differentiation strategies: for various learners`} />
+Benötigte Materialien: Liste
+Differenzierungsstrategien: für verschiedene Lerner`} />
 
-### Assignment Design
+### Quiz-Generierung
 
-<TryIt compact prompt={`Design an assignment for \${learningObjective:analyzing primary sources}.
+<TryIt compact prompt={`Erstelle ein Quiz über \${thema:die Französische Revolution}.
 
-Parameters:
-- Course: \${course:AP US History}
-- Due in: \${dueIn:2 weeks}
-- Individual/Group: \${grouping:individual}
-- Weight: \${weight:15% of grade}
+Formato:
+- [X] Multiple-Choice-Fragen (je 4 Optionen)
+- [X] Richtig/Falsch-Fragen
+- [X] Kurzantwort-Fragen
+- [X] Eine Essay-Frage
 
-Include:
-1. Clear instructions
-2. Grading rubric with criteria
-3. Example of expected quality
-4. Submission requirements
-5. Academic integrity reminders
+Spezifikationen:
+- Alle wichtigen Lernziele abdecken
+- Von Wissen bis Analyse reichen
+- Antwortschlüssel mit Erklärungen
+- Zeitschätzung: \${zeitSchaetzung:30 Minuten}
+- Punktwerte für jeden Abschnitt`} />
 
-The assignment should:
-- Assess \${skills:critical thinking and source evaluation}
-- Allow for \${allowFor:analysis and interpretation}
-- Be completable in approximately \${hours:8 hours}`} />
+## Spezialisierte Lernkontexte
 
-### Quiz Generation
+### Sprachenlernen
 
-<TryIt compact prompt={`Create a quiz on \${topic:the American Revolution}.
+<TryIt compact prompt={`Hilf mir \${sprache:Spanisch} zu lernen.
 
-Format:
-- [X] Multiple choice questions (4 options each)
-- [X] True/False questions
-- [X] Short answer questions
-- [X] One essay question
+Aktuelles Level: \${aktuellesLevel:A2 - elementar}
+Muttersprache: \${muttersprache:Deutsch}
+Ziele: \${ziele:Konversation für Reisen}
 
-Specifications:
-- Cover all key learning objectives
-- Range from recall to analysis
-- Include answer key with explanations
-- Time estimate: \${timeEstimate:30 minutes}
-- Point values for each section`} />
+Heutige Lektion: \${fokusBereich:Essen im Restaurant bestellen}
 
-## Specialized Learning Contexts
+Inkludiere:
+1. Neues Vokabular (5-10 Wörter) mit:
+   - Ausspracheführer
+   - Ejemplosätze
+   - Häufige Nutzungshinweise
+2. Grammatikpunkt mit klarer Erklärung
+3. Übungen
+4. Kultureller Kontext
+5. Konversations-Übungsszenario`} />
 
-### Language Learning
+### Prüfungsvorbereitung
 
-<TryIt compact prompt={`Help me learn \${language:Spanish}.
+<TryIt compact prompt={`Hilf mir bei der Vorbereitung auf \${pruefung:das Abitur}.
 
-Current level: \${currentLevel:A2 - elementary}
-Native language: \${nativeLanguage:English}
-Goals: \${goals:conversation for travel}
+Prüfungsformat: \${format:schriftlich und mündlich}
+Zeit bis zur Prüfung: \${zeitBis:8 Wochen}
+Meine Schwächen: \${schwaechen:Textverständnis, Geometrie}
+Zielnote: \${zielNote:1,5}
 
-Today's lesson: \${focusArea:ordering food at restaurants}
+Erstelle einen Lernplan:
+1. Zu behandelnde Themen (priorisiert)
+2. Täglicher Lernplan
+3. Probeprüfungs-Strategie
+4. Wichtige Formeln/Fakten zum Auswendiglernen
+5. Prüfungstipps spezifisch für diese Prüfung
+6. Empfehlungen für den Tag vorher und den Prüfungstag`} />
 
-Include:
-1. New vocabulary (5-10 words) with:
-   - Pronunciation guide
-   - Example sentences
-   - Common usage notes
-2. Grammar point with clear explanation
-3. Practice exercises
-4. Cultural context note
-5. Conversation practice scenario`} />
+## Prompt-Vorlagen von prompts.chat
 
-### Skill Development
+### Agiere als Sokratischer Tutor
 
-<TryIt compact prompt={`I want to learn \${skill:guitar}. Be my coach.
+<TryIt compact prompt={`Ich möchte, dass du als sokratischer Tutor agierst. Du wirst mir helfen zu lernen, indem du prüfende Fragen stellst, statt direkte Antworten zu geben. Wenn ich nach einem Thema frage, antworte mit Fragen, die mich anleiten, die Antwort selbst zu entdecken. Wenn ich feststecke, gib Notae aber keine Lösungen. Hilf mir, kritisches Denken zu entwickeln.`} />
 
-My current level: \${currentLevel:complete beginner}
-Goal: \${goal:play 5 songs by ear}
-Practice time available: \${practiceTime:30 minutes per day}
+### Agiere als Lernbuddy
 
-Provide:
-1. Assessment of starting point
-2. Breakdown of sub-skills needed
-3. Practice routine (specific exercises)
-4. Progress markers (how to measure improvement)
-5. Common plateaus and how to overcome them
-6. First week's practice plan in detail`} />
+<TryIt compact prompt={`Ich möchte, dass du als mein Lernbuddy agierst. Wir lernen zusammen \${fach:Chemie}. Frage mich Konzepte ab, diskutiere Ideen, hilf mir bei Aufgaben und halte mich motiviert. Sei ermutigend aber fordere mich auch heraus, tiefer zu denken. Lass uns das Lernen interaktiv und effektiv gestalten.`} />
 
-### Exam Preparation
+## Bewertung & Feedback
 
-<TryIt compact prompt={`Help me prepare for \${examName:the GRE}.
+### Feedback geben
 
-Exam format: \${examFormat:Verbal, Quantitative, Writing sections}
-Time until exam: \${timeUntilExam:8 weeks}
-My weak areas: \${weakAreas:reading comprehension, geometry}
-Target score: \${targetScore:320+}
+<TryIt compact prompt={`Gib pädagogisches Feedback zu dieser Schülerarbeit:
 
-Create a study plan:
-1. Topics to cover (prioritized)
-2. Daily study schedule
-3. Practice test strategy
-4. Key formulas/facts to memorize
-5. Test-taking tips specific to this exam
-6. Day-before and day-of recommendations`} />
+Tarea: \${aufgabe:Aufsatz über Klimawandel}
+Schülereinreichung: \${arbeit:füge Schülerarbeit ein}
+Rubrik: \${rubrik:These-Klarheit, Beweise, Organisation, Grammatik}
 
-## Prompt Templates from prompts.chat
+Feedback-Formato:
+1. **Stärken** - Was gut gemacht wurde (spezifisch)
+2. **Verbesserungsbereiche** - Was Arbeit braucht (konstruktiv)
+3. **Vorschläge** - Wie verbessern (umsetzbar)
+4. **Note/Punkte** - Basierend auf Rubrik
+5. **Ermutigung** - Motivierender Abschluss
 
-### Act as a Socratic Tutor
+Ton: Unterstützend, spezifisch, wachstumsorientiert`} />
 
-<TryIt compact prompt={`I want you to act as a Socratic tutor. You will help me learn by asking probing questions rather than giving direct answers. When I ask about a topic, respond with questions that guide me to discover the answer myself. If I'm stuck, provide hints but not solutions. Help me develop critical thinking skills.`} />
+## Resumen
 
-### Act as an Educational Content Creator
-
-<TryIt compact prompt={`I want you to act as an educational content creator. You will create engaging, accurate educational materials for \${subject:biology}. Make complex topics accessible without oversimplifying. Use analogies, examples, and visual descriptions. Include knowledge checks and encourage active learning.`} />
-
-### Act as a Study Buddy
-
-<TryIt compact prompt={`I want you to act as my study buddy. We're studying \${subject:organic chemistry} together. Quiz me on concepts, discuss ideas, help me work through problems, and keep me motivated. Be encouraging but also challenge me to think deeper. Let's make studying interactive and effective.`} />
-
-## Accessibility in Education
-
-### Content Adaptation
-
-<TryIt compact prompt={`Adapt this educational content for \${accessibilityNeed:dyslexia-friendly format}:
-
-Original content:
-\${content:paste your content here}
-
-Adaptation needed:
-- [ ] Simplified language (lower reading level)
-- [ ] Visual descriptions (for text-to-speech)
-- [ ] Structured format (for cognitive accessibility)
-- [ ] Extended time considerations
-- [ ] Alternative explanations
-
-Maintain:
-- All key learning objectives
-- Accuracy of content
-- Assessment equivalence`} />
-
-### Multiple Modalities
-
-<TryIt compact prompt={`Present \${concept:photosynthesis} in multiple ways:
-
-1. **Text explanation** (clear prose)
-2. **Visual description** (describe a diagram)
-3. **Analogy** (relate to everyday experience)
-4. **Story/Narrative** (embed in a scenario)
-5. **Q&A format** (question and answer)
-
-This allows learners to engage with their preferred style.`} />
-
-## Assessment & Feedback
-
-### Providing Feedback
-
-<TryIt compact prompt={`Provide educational feedback on this student work:
-
-Assignment: \${assignment:5-paragraph essay on climate change}
-Student submission: \${work:paste student work here}
-Rubric: \${rubric:thesis clarity, evidence, organization, grammar}
-
-Feedback format:
-1. **Strengths** - What they did well (specific)
-2. **Areas for improvement** - What needs work (constructive)
-3. **Suggestions** - How to improve (actionable)
-4. **Grade/Score** - Based on rubric
-5. **Encouragement** - Motivational closing
-
-Tone: Supportive, specific, growth-oriented`} />
-
-### Self-Assessment Prompts
-
-<TryIt compact prompt={`Help me assess my understanding of \${topic:the French Revolution}.
-
-Ask me 5 questions that test:
-1. Basic recall
-2. Understanding
-3. Application
-4. Analysis
-5. Synthesis/Creation
-
-After each answer, tell me:
-- What I demonstrated understanding of
-- What I should review
-- How to deepen my knowledge
-
-Be honest but encouraging.`} />
-
-## Summary
-
-<Callout type="tip" title="Key Techniques">
-Adapt to the learner's level, break complex topics into steps, include active practice (not just explanation), provide varied approaches, check understanding regularly, and give constructive feedback.
+<Callout type="tip" title="Técnicas clave">
+An das Level des Lernenden anpassen, komplexe Themen in Schritte aufteilen, aktive Übung einschließen (nicht nur Erklärung), vielfältige Ansätze bieten, Verständnis regelmäßig prüfen und konstruktives Feedback geben.
 </Callout>
 
 <Quiz 
-  question="What's the most effective way to use AI for learning?"
+  question="Was ist der effektivste Weg, KI zum Lernen zu nutzen?"
   options={[
-    "Read AI explanations passively like a textbook",
-    "Ask AI to quiz you and generate practice problems",
-    "Only use AI for homework answers",
-    "Avoid AI for learning entirely"
+    "KI-Erklärungen passiv wie ein Lehrbuch lesen",
+    "KI bitten, dich abzufragen und Übungsaufgaben zu generieren",
+    "KI nur für Hausaufgaben-Antworten nutzen",
+    "KI zum Lernen komplett vermeiden"
   ]}
   correctIndex={1}
-  explanation="Active recall beats passive review. Have AI quiz you, generate problems, and check your understanding—this builds stronger memory than just reading explanations."
+  explanation="Aktives Abrufen schlägt passives Wiederholen. Lass KI dich abfragen, Aufgaben generieren und dein Verständnis prüfen—das baut stärkere Erinnerung als nur Erklärungen zu lesen."
 />
 
-AI is a patient, always-available learning partner—use it to supplement, not replace, human instruction.
+KI ist ein geduldiger, immer verfügbarer Lernpartner—nutze sie, um menschliche Instruktion zu ergänzen, nicht zu ersetzen.
