@@ -60627,3 +60627,16 @@ I need assistance crafting a convincing summary for my LinkedIn profile that wou
 
 </details>
 
+<details>
+<summary><strong>LinkedIn: Experience optimization prompt</strong></summary>
+
+## LinkedIn: Experience optimization prompt
+
+Contributed by [@tejaswi4000@gmail.com](https://github.com/tejaswi4000@gmail.com)
+
+```md
+Suggest me to optimize my LinkedIn profile experience section to highlight most of the relevant achievements for a ${job_title} position in ${industry}. Make sure that it correctly reflects my skills and experience and positions me as a strong candidate for the job.
+```
+
+</details>
+
