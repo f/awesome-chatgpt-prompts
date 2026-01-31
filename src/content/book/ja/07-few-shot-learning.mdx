@@ -1,0 +1,478 @@
+Few-shot learning is one of the most powerful prompting techniques. By providing examples of what you want, you can teach the model complex tasks without any fine-tuning.
+
+<Callout type="info" title="Learn by Example">
+Just like humans learn by seeing examples, AI models can learn patterns from the examples you provide in your prompt.
+</Callout>
+
+## What is Few-Shot Learning?
+
+Few-shot learning shows the model examples of input-output pairs before asking it to perform the same task. The model learns the pattern from your examples and applies it to new inputs.
+
+<Compare 
+  before={{ 
+    label: "Zero-Shot (No Examples)", 
+    content: `Classify this review as positive or negative:
+
+"The battery lasts forever but the screen is too dim."
+
+→ Model may be inconsistent with edge cases` 
+  }}
+  after={{ 
+    label: "Few-Shot (With Examples)", 
+    content: `"Love it!" → Positive
+"Terrible quality" → Negative  
+"Good but expensive" → Mixed
+
+Now classify:
+"The battery lasts forever but the screen is too dim."
+
+→ Model learns your exact categories` 
+  }}
+/>
+
+<div className="my-4 grid grid-cols-2 md:grid-cols-4 gap-2">
+  <div className="p-3 bg-muted/50 rounded-lg text-center">
+    <div className="text-2xl font-bold">0</div>
+    <div className="text-xs text-muted-foreground">Zero-shot</div>
+  </div>
+  <div className="p-3 bg-muted/50 rounded-lg text-center">
+    <div className="text-2xl font-bold">1</div>
+    <div className="text-xs text-muted-foreground">One-shot</div>
+  </div>
+  <div className="p-3 bg-primary/10 rounded-lg text-center border-2 border-primary">
+    <div className="text-2xl font-bold">2-5</div>
+    <div className="text-xs text-muted-foreground">Few-shot</div>
+  </div>
+  <div className="p-3 bg-muted/50 rounded-lg text-center">
+    <div className="text-2xl font-bold">5+</div>
+    <div className="text-xs text-muted-foreground">Many-shot</div>
+  </div>
+</div>
+
+## Why Examples Work
+
+<FewShotDemo />
+
+Examples communicate:
+- **Format**: How output should be structured
+- **Style**: Tone, length, vocabulary
+- **Logic**: The reasoning pattern to follow
+- **Edge cases**: How to handle special situations
+
+## Basic Few-Shot Pattern
+
+The fundamental structure of few-shot prompting follows a simple pattern: show examples, then ask for the new task. Consistency in formatting between examples is crucial. The model learns from the pattern you establish.
+
+```
+[Example 1]
+Input: [input 1]
+Output: [output 1]
+
+[Example 2]
+Input: [input 2]
+Output: [output 2]
+
+[Example 3]
+Input: [input 3]
+Output: [output 3]
+
+Now do this one:
+Input: [new input]
+Output:
+```
+
+## Few-Shot for Classification
+
+Classification is one of the strongest use cases for few-shot learning. By showing examples of each category, you define the boundaries between classes more precisely than instructions alone could achieve.
+
+### Sentiment Analysis
+
+<Callout type="info" title="What is Sentiment Analysis?">
+Sentiment analysis classifies text by emotional tone: positive, negative, neutral, or mixed. It's widely used for customer feedback, social media monitoring, and brand perception tracking.
+</Callout>
+
+Sentiment classification benefits from showing examples of each sentiment type, especially edge cases like "mixed" sentiment that might be ambiguous.
+
+<TryIt compact prompt={`Classify the sentiment of these customer reviews.
+
+Review: "This product exceeded all my expectations! Will buy again."
+Sentiment: Positive
+
+Review: "Arrived broken and customer service was unhelpful."
+Sentiment: Negative
+
+Review: "It works fine, nothing special but does the job."
+Sentiment: Neutral
+
+Review: "The quality is amazing but shipping took forever."
+Sentiment: Mixed
+
+Now classify:
+Review: "Love the design but the battery life is disappointing."
+Sentiment:`} />
+
+### Topic Classification
+
+For multi-class categorization, include at least one example per category. This helps the model understand your specific taxonomy, which may differ from its default understanding.
+
+<TryIt compact prompt={`Categorize these support tickets.
+
+Ticket: "I can't log into my account, password reset not working"
+Category: Authentication
+
+Ticket: "How do I upgrade to the premium plan?"
+Category: Billing
+
+Ticket: "The app crashes when I try to export data"
+Category: Bug Report
+
+Ticket: "Can you add dark mode to the mobile app?"
+Category: Feature Request
+
+Now categorize:
+Ticket: "My payment was declined but I see the charge on my card"
+Category:`} />
+
+## Few-Shot for Transformation
+
+Transformation tasks convert input from one form to another while preserving meaning. Examples are essential here because they define exactly what "transformation" means for your use case.
+
+### Text Rewriting
+
+Style transformation requires examples that show the exact tone shift you want. Abstract instructions like "make it professional" are interpreted differently. Examples make it concrete.
+
+<TryIt compact prompt={`Rewrite these sentences in a professional tone.
+
+Casual: "Hey, just wanted to check if you got my email?"
+Professional: "I wanted to follow up regarding my previous email."
+
+Casual: "This is super important and needs to be done ASAP!"
+Professional: "This matter requires urgent attention and prompt action."
+
+Casual: "Sorry for the late reply, been swamped!"
+Professional: "I apologize for the delayed response. I've had a particularly demanding schedule."
+
+Now rewrite:
+Casual: "Can't make it to the meeting, something came up."
+Professional:`} />
+
+### Format Conversion
+
+Format conversion tasks benefit from examples showing edge cases and ambiguous inputs. The model learns your specific conventions for handling tricky cases.
+
+<TryIt compact prompt={`Convert these natural language dates to ISO format.
+
+Input: "next Tuesday"
+Output: 2024-01-16 (assuming today is 2024-01-11, Thursday)
+
+Input: "the day after tomorrow"
+Output: 2024-01-13
+
+Input: "last day of this month"
+Output: 2024-01-31
+
+Input: "two weeks from now"
+Output: 2024-01-25
+
+Now convert:
+Input: "the first Monday of next month"
+Output:`} />
+
+## Few-Shot for Generation
+
+Generation tasks create new content following a learned pattern. Examples establish length, structure, tone, and what details to highlight. These are hard to specify in instructions alone.
+
+### Product Descriptions
+
+Marketing copy benefits enormously from examples because they capture brand voice, feature emphasis, and persuasive techniques that are difficult to describe abstractly.
+
+<TryIt compact prompt={`Write product descriptions in this style:
+
+Product: Wireless Bluetooth Headphones
+Description: Immerse yourself in crystal-clear sound with our lightweight wireless headphones. Featuring 40-hour battery life, active noise cancellation, and plush memory foam ear cushions for all-day comfort.
+
+Product: Stainless Steel Water Bottle
+Description: Stay hydrated in style with our double-walled insulated bottle. Keeps drinks cold for 24 hours or hot for 12. Features a leak-proof lid and fits standard cup holders.
+
+Product: Ergonomic Office Chair
+Description: Transform your workspace with our adjustable ergonomic chair. Breathable mesh back, lumbar support, and 360° swivel combine to keep you comfortable during long work sessions.
+
+Now write:
+Product: Portable Phone Charger
+Description:`} />
+
+### Code Documentation
+
+<Callout type="info" title="Why Document Code?">
+Good documentation explains what code does, its parameters, return values, and usage examples. Consistent docstrings enable auto-generated API docs and help IDEs provide better code completion.
+</Callout>
+
+Documentation style varies widely between projects. Examples teach your specific format, what to include (args, returns, examples), and the level of detail expected.
+
+<TryIt compact prompt={`Write documentation comments for these functions:
+
+Function:
+def calculate_bmi(weight_kg, height_m):
+    return weight_kg / (height_m ** 2)
+
+Documentation:
+"""
+Calculate Body Mass Index (BMI) from weight and height.
+
+Args:
+    weight_kg (float): Weight in kilograms
+    height_m (float): Height in meters
+
+Returns:
+    float: BMI value (weight/height²)
+
+Example:
+    >>> calculate_bmi(70, 1.75)
+    22.86
+"""
+
+Now document:
+Function:
+def is_palindrome(text):
+    cleaned = ''.join(c.lower() for c in text if c.isalnum())
+    return cleaned == cleaned[::-1]
+
+Documentation:`} />
+
+## Few-Shot for Extraction
+
+Extraction tasks pull structured information from unstructured text. Examples define which entities matter, how to format output, and how to handle cases where information is missing or ambiguous.
+
+### Entity Extraction
+
+<Callout type="info" title="What is Named Entity Recognition?">
+Named Entity Recognition (NER) identifies and classifies named entities in text into categories like persons, organizations, locations, dates, and products. It's fundamental for information retrieval and knowledge graphs.
+</Callout>
+
+NER benefits from examples showing your specific entity types and how to handle entities that could fit multiple categories.
+
+<TryIt compact prompt={`Extract named entities from these sentences.
+
+Text: "Apple CEO Tim Cook announced the iPhone 15 in Cupertino."
+Entities:
+- COMPANY: Apple
+- PERSON: Tim Cook
+- PRODUCT: iPhone 15
+- LOCATION: Cupertino
+
+Text: "The European Union fined Google €4.34 billion in 2018."
+Entities:
+- ORGANIZATION: European Union
+- COMPANY: Google
+- MONEY: €4.34 billion
+- DATE: 2018
+
+Now extract from:
+Text: "Elon Musk's SpaceX launched 23 Starlink satellites from Cape Canaveral on December 3rd."
+Entities:`} />
+
+### Structured Data Extraction
+
+Extracting structured data from natural language requires examples showing how to handle missing fields, implicit information, and varying input formats.
+
+<TryIt compact prompt={`Extract meeting details into structured format.
+
+Email: "Let's meet tomorrow at 3pm in Conference Room B to discuss the Q4 budget. Please bring your laptop."
+
+Meeting:
+- Date: [tomorrow's date]
+- Time: 3:00 PM
+- Location: Conference Room B
+- Topic: Q4 budget discussion
+- Requirements: Bring laptop
+
+Email: "Team sync moved to Friday 10am, we'll use Zoom instead. Link in calendar invite. 30 minutes max."
+
+Meeting:
+- Date: Friday
+- Time: 10:00 AM
+- Location: Zoom (virtual)
+- Topic: Team sync
+- Duration: 30 minutes
+
+Now extract from:
+Email: "Can we do a quick call Monday morning around 9:30 to go over the client presentation? I'll send a Teams link."
+
+Meeting:`} />
+
+## Advanced Few-Shot Techniques
+
+Beyond basic few-shot, several techniques can improve results for complex tasks.
+
+### Diverse Examples
+
+Diversity in examples is more valuable than quantity. Cover different scenarios, edge cases, and potential ambiguities rather than showing similar examples repeatedly.
+
+<TryIt compact prompt={`Respond to customer complaints.
+
+Example 1 (Product Issue):
+Customer: "My order arrived damaged."
+Response: "I sincerely apologize for the damaged delivery. I'll immediately send a replacement at no charge. You don't need to return the damaged item. May I confirm your shipping address?"
+
+Example 2 (Service Issue):
+Customer: "I've been on hold for 2 hours!"
+Response: "I'm very sorry for the long wait time. That's unacceptable. I'm here now and will personally ensure your issue is resolved. What can I help you with today?"
+
+Example 3 (Billing Issue):
+Customer: "You charged me twice for the same order!"
+Response: "I apologize for this billing error. I've verified the duplicate charge and initiated a refund of $XX.XX to your original payment method. You should see it within 3-5 business days."
+
+Now respond to:
+Customer: "The product doesn't match what was shown on the website."
+Response:`} />
+
+### Negative Examples
+
+<Callout type="tip" title="Contrastive Learning">
+Showing "good" vs "bad" examples is called contrastive learning. It helps the model understand not just what you want, but what to avoid. This is especially useful for style and quality judgments.
+</Callout>
+
+Sometimes showing what *not* to do is as valuable as showing correct examples. Negative examples help the model understand boundaries and avoid common mistakes.
+
+<TryIt compact prompt={`Write concise email subject lines.
+
+Good: "Q3 Report Ready for Review"
+Bad: "Hey, I finished that report thing we talked about"
+
+Good: "Action Required: Approve PTO by Friday"
+Bad: "I need you to do something for me please read this"
+
+Good: "Meeting Rescheduled: Project Sync → Thursday 2pm"
+Bad: "Change of plans!!!!!"
+
+Now write a subject line for:
+Email about: Requesting feedback on a proposal draft
+Subject:`} />
+
+### Edge Case Examples
+
+Edge cases often determine whether a solution works in production. Including unusual inputs in your examples prevents the model from failing on real-world data that doesn't fit the "happy path."
+
+<TryIt compact prompt={`Parse names into structured format.
+
+Input: "John Smith"
+Output: {"first": "John", "last": "Smith", "middle": null, "suffix": null}
+
+Input: "Mary Jane Watson-Parker"
+Output: {"first": "Mary", "middle": "Jane", "last": "Watson-Parker", "suffix": null}
+
+Input: "Dr. Martin Luther King Jr."
+Output: {"prefix": "Dr.", "first": "Martin", "middle": "Luther", "last": "King", "suffix": "Jr."}
+
+Input: "Madonna"
+Output: {"first": "Madonna", "last": null, "middle": null, "suffix": null, "mononym": true}
+
+Now parse:
+Input: "Sir Patrick Stewart III"
+Output:`} />
+
+## How Many Examples?
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-40">Simple classification</span>
+    <span className="text-primary font-mono">2-3</span>
+    <span className="text-muted-foreground">One per category minimum</span>
+  </div>
+  <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-40">Complex formatting</span>
+    <span className="text-primary font-mono">3-5</span>
+    <span className="text-muted-foreground">Show variations</span>
+  </div>
+  <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-40">Nuanced style</span>
+    <span className="text-primary font-mono">4-6</span>
+    <span className="text-muted-foreground">Capture full range</span>
+  </div>
+  <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-40">Edge cases</span>
+    <span className="text-primary font-mono">1-2</span>
+    <span className="text-muted-foreground">Alongside normal examples</span>
+  </div>
+</div>
+
+## Example Quality Matters
+
+<Compare 
+  before={{ 
+    label: "Bad Examples", 
+    content: `"Nice product" → Good
+"Nice service" → Good
+"Nice price" → Good
+
+✗ All too similar
+✗ Same word repeated
+✗ No edge cases shown` 
+  }}
+  after={{ 
+    label: "Good Examples", 
+    content: `"Exceeded expectations!" → Positive
+"Broken on arrival" → Negative
+"Works fine, nothing special" → Neutral
+"Great quality but overpriced" → Mixed
+
+✓ Diverse scenarios
+✓ Clear boundaries
+✓ Covers edge cases` 
+  }}
+/>
+
+## Combining Few-Shot with Other Techniques
+
+Few-shot learning combines powerfully with other prompting techniques. The examples provide the "what" while other techniques can add context, reasoning, or structure.
+
+### Few-Shot + Role
+
+Adding a role gives the model context for *why* it's doing the task, which can improve quality and consistency.
+
+```
+You are a legal contract reviewer.
+
+[examples of contract clause analysis]
+
+Now analyze: [new clause]
+```
+
+### Few-Shot + CoT
+
+Combining few-shot with Chain of Thought shows not just *what* answer to give, but *how* to reason through to that answer. This is powerful for tasks requiring judgment.
+
+```
+Classify and explain reasoning.
+
+Review: "Great features but overpriced"
+Thinking: The review mentions positive aspects ("great features") 
+but also a significant negative ("overpriced"). The negative seems 
+to outweigh the positive based on the "but" conjunction.
+Classification: Mixed-Negative
+
+[more examples with reasoning]
+
+Now classify with reasoning:
+Review: "Exactly what I needed, arrived faster than expected"
+```
+
+## Summary
+
+<Callout type="tip" title="Key Takeaways">
+Few-shot learning teaches through demonstration and is often more effective than instructions alone. Use 2-5 diverse, correct examples and combine with other techniques for best results.
+</Callout>
+
+<Quiz 
+  question="How many examples should you typically provide in few-shot learning?"
+  options={[
+    "As many as possible (10+)",
+    "Just 1 example is always enough",
+    "2-5 diverse, correct examples",
+    "Examples aren't necessary if instructions are clear"
+  ]}
+  correctIndex={2}
+  explanation="2-5 diverse, correct examples typically work best. Too few may not capture the pattern, while too many waste tokens and may confuse the model. Quality and diversity matter more than quantity."
+/>
+
+In the next chapter, we'll explore iterative refinement: the art of improving prompts through successive attempts.

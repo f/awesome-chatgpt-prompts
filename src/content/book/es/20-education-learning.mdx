@@ -1,0 +1,252 @@
+KI ist ein mächtiges Werkzeug sowohl für das Lehren als auch das Lernen. Este capítulo behandelt Prompts für Bildungskontexte—von personalisiertem Tutoring bis zur Lehrplanentwicklung.
+
+<Callout type="info" title="KI als Lernpartner">
+KI glänzt als geduldiger, adaptiver Tutor, der Konzepte auf verschiedene Weisen erklären, unbegrenzt Übungsaufgaben generieren und sofortiges Feedback geben kann—rund um die Uhr verfügbar.
+</Callout>
+
+## Personalisiertes Lernen
+
+### Do's und Don'ts: Lern-Prompts
+
+<Compare 
+  before={{ label: "❌ Passive Anfrage", content: "Erkläre mir Quantenphysik." }}
+  after={{ label: "✓ Kontextreiche Anfrage", content: "Erkläre mir Quantensuperposition.\n\nMein Hintergrund: Ich verstehe grundlegende Chemie und klassische Physik.\nLernstil: Ich lerne am besten durch Analogien und Ejemploe.\nErkläre mit einer einfachen Analogie, dann das Kernkonzept, dann ein praktisches Ejemplo. Prüfe mein Verständnis mit einer Frage." }}
+/>
+
+### Konzept-Erklärung
+
+<TryIt compact prompt={`Erkläre mir [Konzept].
+
+Mein Hintergrund:
+- Aktuelles Level: [Anfänger/Mittelstufe/Fortgeschritten]
+- Verwandtes Wissen: [was ich bereits weiß]
+- Lernstil: [visuell/Ejemploe/theoretisch]
+
+Erkläre mit:
+1. Einfache Analogie zu etwas Bekanntem
+2. Kernkonzept in verständlicher Sprache
+3. Wie es mit meinem Wissen zusammenhängt
+4. Ein praktisches Ejemplo
+5. Häufige Missverständnisse, die man vermeiden sollte
+
+Dann prüfe mein Verständnis mit einer Frage.`} />
+
+### Adaptives Tutoring
+
+<TryIt compact prompt={`Du bist mein Tutor für \${fach:Mathematik}. Bringe mir \${thema:Ableitungen} adaptiv bei.
+
+Beginne mit einer Diagnosefrage, um mein Level einzuschätzen.
+Basierend auf meiner Antwort:
+- Wenn korrekt: Gehe zu fortgeschritteneren Aspekten
+- Wenn teilweise korrekt: Kläre die Lücke, dann weiter
+- Wenn falsch: Gehe einen Schritt zurück und baue Grundlagen auf
+
+Nach jeder Erklärung:
+- Prüfe Verständnis mit einer Frage
+- Passe Schwierigkeit basierend auf meinen Antworten an
+- Gib Ermutigung und verfolge Fortschritt`} />
+
+### Lernpfad-Erstellung
+
+<TryIt compact prompt={`Erstelle einen Lernpfad für \${ziel:Webentwickler werden}.
+
+Meine Situation:
+- Aktuelles Skill-Level: \${skillLevel:kompletter Anfänger}
+- Verfügbare Zeit: \${verfuegbareZeit:10 Stunden pro Woche}
+- Ziel-Zeitrahmen: \${zeitrahmen:6 Monate}
+- Lernpräferenzen: \${praeferenzen:Projekte und Tutorials}
+
+Liefere:
+1. Voraussetzungs-Check (was ich zuerst brauche)
+2. Meilenstein-Aufschlüsselung (Phasen mit Zielen)
+3. Ressourcen für jede Phase (kostenlos wenn möglich)
+4. Übungsprojekte für jede Stufe
+5. Bewertungskriterien (wie ich weiß, dass ich weitermachen kann)`} />
+
+## Lernhilfen
+
+<Callout type="tip" title="Aktives Lernen Prinzip">
+Lies KI-Erklärungen nicht nur passiv. Bitte sie, dich abzufragen, Aufgaben zu generieren und dein Verständnis zu prüfen. **Aktives Abrufen schlägt passives Wiederholen.**
+</Callout>
+
+### Resumens-Generierung
+
+<TryIt compact prompt={`Fasse dieses \${inhaltsTyp:Kapitel} für Lernzwecke zusammen.
+
+Inhalt:
+\${inhalt:füge deinen Inhalt ein}
+
+Liefere:
+1. **Schlüsselkonzepte** (5-7 Hauptideen)
+2. **Wichtige Begriffe** (mit kurzen Definitionen)
+3. **Zusammenhänge** (wie Konzepte verbunden sind)
+4. **Lernfragen** (zum Testen des Verständnisses)
+5. **Gedächtnisstützen** (Eselsbrücken oder Assoziationen)
+
+Formatiere für einfache Wiederholung und Einprägen.`} />
+
+### Karteikarten-Generierung
+
+<TryIt compact prompt={`Erstelle Karteikarten zum Lernen von \${thema:Zweiter Weltkrieg}.
+
+Quellmaterial:
+\${inhalt:füge dein Lernmaterial ein}
+
+Formatiere jede Karte:
+Vorderseite: Frage oder Begriff
+Rückseite: Antwort oder Definition
+Nota: Optionale Gedächtnisstütze
+
+Zu behandelnde Kategorien:
+- Definitionen (Schlüsselbegriffe)
+- Konzepte (Hauptideen)
+- Zusammenhänge (wie Dinge verbunden sind)
+- Anwendungen (reale Nutzung)
+
+Generiere \${anzahlKarten:20} Karten, ausgewogen über Kategorien.`} />
+
+### Übungsaufgaben
+
+<TryIt compact prompt={`Generiere Übungsaufgaben für \${thema:quadratische Gleichungen}.
+
+Schwierigkeitsgrade:
+- 3 Grundlegend (teste fundamentales Verständnis)
+- 3 Mittelstufe (erfordern Anwendung)
+- 2 Fortgeschritten (erfordern Synthese/Analyse)
+
+Für jede Tarea:
+1. Klare Aufgabenstellung
+2. Platz für Schülerarbeit
+3. Notae auf Anfrage verfügbar
+4. Detaillierte Lösung mit Erklärung
+
+Vielfalt einschließen: \${aufgabenTypen:Berechnung, konzeptuell, Anwendung}`} />
+
+## Lehrwerkzeuge
+
+### Unterrichtsplan-Erstellung
+
+<TryIt compact prompt={`Erstelle einen Unterrichtsplan für das Unterrichten von \${thema:Photosynthese}.
+
+Contexto:
+- Klasse/Level: \${zielgruppe:8. Klasse Biologie}
+- Unterrichtsdauer: \${dauer:45 Minuten}
+- Klassengröße: \${klassenGroesse:25 Schüler}
+- Vorwissen: \${voraussetzungen:grundlegende Zellstruktur}
+
+Inkludiere:
+1. **Lernziele** (SMART-Format)
+2. **Einstieg** (5 Min) - Aktivierung
+3. **Instruktion** (15-20 Min) - Kerninhalt vermitteln
+4. **Geleitete Übung** (10 Min) - mit Schülern arbeiten
+5. **Selbstständige Übung** (10 Min) - Schüler arbeiten allein
+6. **Bewertung** (5 Min) - Verständnis prüfen
+7. **Abschluss** - zusammenfassen und Vorschau
+
+Benötigte Materialien: Liste
+Differenzierungsstrategien: für verschiedene Lerner`} />
+
+### Quiz-Generierung
+
+<TryIt compact prompt={`Erstelle ein Quiz über \${thema:die Französische Revolution}.
+
+Formato:
+- [X] Multiple-Choice-Fragen (je 4 Optionen)
+- [X] Richtig/Falsch-Fragen
+- [X] Kurzantwort-Fragen
+- [X] Eine Essay-Frage
+
+Spezifikationen:
+- Alle wichtigen Lernziele abdecken
+- Von Wissen bis Analyse reichen
+- Antwortschlüssel mit Erklärungen
+- Zeitschätzung: \${zeitSchaetzung:30 Minuten}
+- Punktwerte für jeden Abschnitt`} />
+
+## Spezialisierte Lernkontexte
+
+### Sprachenlernen
+
+<TryIt compact prompt={`Hilf mir \${sprache:Spanisch} zu lernen.
+
+Aktuelles Level: \${aktuellesLevel:A2 - elementar}
+Muttersprache: \${muttersprache:Deutsch}
+Ziele: \${ziele:Konversation für Reisen}
+
+Heutige Lektion: \${fokusBereich:Essen im Restaurant bestellen}
+
+Inkludiere:
+1. Neues Vokabular (5-10 Wörter) mit:
+   - Ausspracheführer
+   - Ejemplosätze
+   - Häufige Nutzungshinweise
+2. Grammatikpunkt mit klarer Erklärung
+3. Übungen
+4. Kultureller Kontext
+5. Konversations-Übungsszenario`} />
+
+### Prüfungsvorbereitung
+
+<TryIt compact prompt={`Hilf mir bei der Vorbereitung auf \${pruefung:das Abitur}.
+
+Prüfungsformat: \${format:schriftlich und mündlich}
+Zeit bis zur Prüfung: \${zeitBis:8 Wochen}
+Meine Schwächen: \${schwaechen:Textverständnis, Geometrie}
+Zielnote: \${zielNote:1,5}
+
+Erstelle einen Lernplan:
+1. Zu behandelnde Themen (priorisiert)
+2. Täglicher Lernplan
+3. Probeprüfungs-Strategie
+4. Wichtige Formeln/Fakten zum Auswendiglernen
+5. Prüfungstipps spezifisch für diese Prüfung
+6. Empfehlungen für den Tag vorher und den Prüfungstag`} />
+
+## Prompt-Vorlagen von prompts.chat
+
+### Agiere als Sokratischer Tutor
+
+<TryIt compact prompt={`Ich möchte, dass du als sokratischer Tutor agierst. Du wirst mir helfen zu lernen, indem du prüfende Fragen stellst, statt direkte Antworten zu geben. Wenn ich nach einem Thema frage, antworte mit Fragen, die mich anleiten, die Antwort selbst zu entdecken. Wenn ich feststecke, gib Notae aber keine Lösungen. Hilf mir, kritisches Denken zu entwickeln.`} />
+
+### Agiere als Lernbuddy
+
+<TryIt compact prompt={`Ich möchte, dass du als mein Lernbuddy agierst. Wir lernen zusammen \${fach:Chemie}. Frage mich Konzepte ab, diskutiere Ideen, hilf mir bei Aufgaben und halte mich motiviert. Sei ermutigend aber fordere mich auch heraus, tiefer zu denken. Lass uns das Lernen interaktiv und effektiv gestalten.`} />
+
+## Bewertung & Feedback
+
+### Feedback geben
+
+<TryIt compact prompt={`Gib pädagogisches Feedback zu dieser Schülerarbeit:
+
+Tarea: \${aufgabe:Aufsatz über Klimawandel}
+Schülereinreichung: \${arbeit:füge Schülerarbeit ein}
+Rubrik: \${rubrik:These-Klarheit, Beweise, Organisation, Grammatik}
+
+Feedback-Formato:
+1. **Stärken** - Was gut gemacht wurde (spezifisch)
+2. **Verbesserungsbereiche** - Was Arbeit braucht (konstruktiv)
+3. **Vorschläge** - Wie verbessern (umsetzbar)
+4. **Note/Punkte** - Basierend auf Rubrik
+5. **Ermutigung** - Motivierender Abschluss
+
+Ton: Unterstützend, spezifisch, wachstumsorientiert`} />
+
+## Resumen
+
+<Callout type="tip" title="Técnicas clave">
+An das Level des Lernenden anpassen, komplexe Themen in Schritte aufteilen, aktive Übung einschließen (nicht nur Erklärung), vielfältige Ansätze bieten, Verständnis regelmäßig prüfen und konstruktives Feedback geben.
+</Callout>
+
+<Quiz 
+  question="Was ist der effektivste Weg, KI zum Lernen zu nutzen?"
+  options={[
+    "KI-Erklärungen passiv wie ein Lehrbuch lesen",
+    "KI bitten, dich abzufragen und Übungsaufgaben zu generieren",
+    "KI nur für Hausaufgaben-Antworten nutzen",
+    "KI zum Lernen komplett vermeiden"
+  ]}
+  correctIndex={1}
+  explanation="Aktives Abrufen schlägt passives Wiederholen. Lass KI dich abfragen, Aufgaben generieren und dein Verständnis prüfen—das baut stärkere Erinnerung als nur Erklärungen zu lesen."
+/>
+
+KI ist ein geduldiger, immer verfügbarer Lernpartner—nutze sie, um menschliche Instruktion zu ergänzen, nicht zu ersetzen.

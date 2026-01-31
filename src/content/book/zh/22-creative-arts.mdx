@@ -1,0 +1,326 @@
+AI is a powerful creative collaborator. This chapter covers prompting techniques for visual arts, music, game design, and other creative domains.
+
+<Callout type="info" title="AI as Creative Partner">
+AI expands your creative possibilities—use it to explore variations, overcome blocks, and generate options. The creative vision and final decisions remain yours.
+</Callout>
+
+## Visual Art & Design
+
+### Do's and Don'ts: Image Prompts
+
+<Compare 
+  before={{ label: "❌ Vague prompt", content: "A wizard in a library" }}
+  after={{ label: "✓ Rich description", content: "A wise elderly wizard reading an ancient tome, sitting in a tower library at sunset, fantasy art style, warm golden lighting, contemplative mood, highly detailed, 4K, by Greg Rutkowski" }}
+/>
+
+### Image Prompt Crafting
+
+When working with image generation models (DALL-E, Midjourney, Stable Diffusion):
+
+<TryIt compact prompt={`Create an image prompt for [concept].
+
+Structure:
+[Subject] + [Action/Pose] + [Setting/Background] + [Style] + 
+[Lighting] + [Mood] + [Technical specs]
+
+Example:
+"A wise elderly wizard reading an ancient tome, sitting in a 
+tower library at sunset, fantasy art style, warm golden lighting, 
+contemplative mood, highly detailed, 4K"`} />
+
+### Art Direction
+
+<TryIt compact prompt={`Describe artwork for \${project:fantasy book cover}.
+
+Include:
+1. **Composition** - arrangement of elements
+2. **Color palette** - specific colors and their relationships
+3. **Style reference** - similar artists/works/movements
+4. **Focal point** - where the eye should be drawn
+5. **Mood/Atmosphere** - emotional quality
+6. **Technical approach** - medium, technique
+
+Purpose: \${purpose:illustration for book cover}`} />
+
+### Design Critique
+
+<TryIt compact prompt={`Critique this design from a professional perspective.
+
+Design: \${design:a landing page with hero section, feature grid, and testimonials}
+Context: \${context:SaaS product for project management}
+
+Evaluate:
+1. **Visual hierarchy** - Is importance clear?
+2. **Balance** - Is it visually stable?
+3. **Contrast** - Do elements stand out appropriately?
+4. **Alignment** - Is it organized?
+5. **Repetition** - Is there consistency?
+6. **Proximity** - Are related items grouped?
+
+Provide:
+- Specific strengths
+- Areas for improvement
+- Actionable suggestions`} />
+
+## Creative Writing
+
+<Callout type="tip" title="Creative Constraint Principle">
+**Constraints fuel creativity.** A prompt like "write anything" produces generic results. Specific constraints like genre, tone, and structure force unexpected, interesting solutions.
+</Callout>
+
+### Worldbuilding
+
+<TryIt compact prompt={`Help me build a world for \${project:a fantasy novel}.
+
+Genre: \${genre:dark fantasy}
+Scope: \${scope:a kingdom}
+
+Develop:
+1. **Geography** - physical environment
+2. **History** - key events that shaped this world
+3. **Culture** - customs, values, daily life
+4. **Power structures** - who rules, how
+5. **Economy** - how people survive
+6. **Conflict** - sources of tension
+7. **Unique element** - what makes this world special
+
+Start with broad strokes, then detail one aspect deeply.`} />
+
+### Plot Development
+
+<TryIt compact prompt={`Help me develop a plot for \${storyConcept:a heist gone wrong}.
+
+Genre: \${genre:thriller}
+Tone: \${tone:dark with moments of dark humor}
+Length: \${length:novel}
+
+Using \${structure:three-act} structure:
+
+1. **Setup** - world, character, normal life
+2. **Inciting incident** - what disrupts normalcy
+3. **Rising action** - escalating challenges
+4. **Midpoint** - major shift or revelation
+5. **Crisis** - darkest moment
+6. **Climax** - confrontation
+7. **Resolution** - new normal
+
+For each beat, suggest specific scenes.`} />
+
+### Dialogue Writing
+
+<TryIt compact prompt={`Write dialogue between \${characters:two siblings} about \${topic:their estranged father returning}.
+
+Character A: \${characterA:older sister, protective, pragmatic, wants to move on}
+Character B: \${characterB:younger brother, hopeful, emotional, wants to reconnect}
+Relationship: \${relationship:close but with different coping styles}
+Subtext: \${subtext:unspoken resentment about who bore more burden}
+
+Guidelines:
+- Each character has distinct voice
+- Dialogue reveals character, not just information
+- Include beats (actions/reactions)
+- Build tension or develop relationship
+- Show, don't tell emotions`} />
+
+## Music & Audio
+
+### Song Structure
+
+<TryIt compact prompt={`Help me structure a song.
+
+Genre: \${genre:indie folk}
+Mood: \${mood:bittersweet nostalgia}
+Tempo: \${tempo:moderate, around 90 BPM}
+Theme/Message: \${theme:looking back on a hometown you've outgrown}
+
+Provide:
+1. **Structure** - verse/chorus/bridge arrangement
+2. **Verse 1** - lyrical concept, 4-8 lines
+3. **Chorus** - hook concept, 4 lines
+4. **Verse 2** - development, 4-8 lines
+5. **Bridge** - contrast/shift, 4 lines
+6. **Chord progression suggestion**
+7. **Melodic direction notes**`} />
+
+### Sound Design Description
+
+<TryIt compact prompt={`Describe a sound design for \${scene:a character entering an abandoned space station}.
+
+Context: \${context:protagonist discovers the station has been empty for decades}
+Emotion to evoke: \${emotion:eerie wonder mixed with dread}
+Medium: \${medium:video game}
+
+Layer by layer:
+1. **Foundation** - ambient/background
+2. **Mid-ground** - environmental sounds
+3. **Foreground** - focal sounds
+4. **Accents** - punctuation sounds
+5. **Music** - score suggestions
+
+Describe sounds in evocative terms, not just names.`} />
+
+## Game Design
+
+### Game Mechanic Design
+
+<TryIt compact prompt={`Design a game mechanic for \${gameType:a puzzle platformer}.
+
+Core loop: \${coreLoop:manipulate gravity to solve spatial puzzles}
+Player motivation: \${motivation:mastery and discovery}
+Skill involved: \${skill:spatial reasoning and timing}
+
+Describe:
+1. **The mechanic** - how it works
+2. **Player input** - what they control
+3. **Feedback** - how they know the result
+4. **Progression** - how it evolves/deepens
+5. **Balance considerations**
+6. **Edge cases** - unusual scenarios`} />
+
+### Level Design
+
+<TryIt compact prompt={`Design a level for \${gameType:a stealth action game}.
+
+Setting: \${setting:corporate headquarters at night}
+Objectives: \${objectives:infiltrate the server room and extract data}
+Difficulty: \${difficulty:mid-game, player has basic abilities}
+
+Include:
+1. **Layout overview** - spatial description
+2. **Pacing graph** - tension over time
+3. **Challenges** - obstacles and how to overcome
+4. **Rewards** - what player gains
+5. **Secrets** - optional discoveries
+6. **Teaching moments** - skill introduction
+7. **Environmental storytelling** - narrative through design`} />
+
+### Character/Enemy Design
+
+<TryIt compact prompt={`Design a \${entityType:boss enemy} for \${game:a dark fantasy action RPG}.
+
+Role: \${role:mid-game boss}
+Context: \${context:guards a corrupted forest temple}
+
+Define:
+1. **Visual concept** - appearance description
+2. **Abilities** - what they can do
+3. **Behavior patterns** - how they act
+4. **Weaknesses** - vulnerabilities
+5. **Personality** - if relevant
+6. **Lore/Backstory** - world integration
+7. **Player strategy** - how to interact/defeat`} />
+
+## Brainstorming & Ideation
+
+### Creative Brainstorm
+
+<TryIt compact prompt={`Brainstorm ideas for \${project:a mobile game about mindfulness}.
+
+Constraints:
+- \${constraint1:must be playable in 2-minute sessions}
+- \${constraint2:no violence or competition}
+- \${constraint3:nature themes}
+
+Generate:
+1. **10 conventional ideas** - solid, expected
+2. **5 unusual ideas** - unexpected angles
+3. **3 wild ideas** - boundary-pushing
+4. **1 combination** - merge best elements
+
+For each, one sentence description + why it works.
+Don't self-censor—quantity over quality first.`} />
+
+### Creative Constraints
+
+<TryIt compact prompt={`Give me creative constraints for \${projectType:writing a short story}.
+
+I want constraints that:
+- Force unexpected choices
+- Eliminate obvious solutions
+- Create productive limitations
+
+Format:
+1. Constraint - Why it helps creativity
+2. ...
+
+Then show one example of how applying these constraints 
+transforms a generic concept into something interesting.`} />
+
+### Style Exploration
+
+<TryIt compact prompt={`Explore different styles for \${concept:a coffee shop logo}.
+
+Show how this concept would manifest in:
+1. **Minimalist** - stripped to essence
+2. **Maximalist** - abundant and detailed
+3. **Retro 1950s** - period-specific
+4. **Futuristic** - forward-looking
+5. **Folk/Traditional** - cultural roots
+6. **Abstract** - non-representational
+7. **Surrealist** - dreamlike logic
+
+For each, describe key characteristics and example.`} />
+
+## Prompt Templates from prompts.chat
+
+### Act as a Creative Director
+
+<TryIt compact prompt={`I want you to act as a creative director. I will describe creative projects and you will develop creative visions, guide aesthetic decisions, and ensure conceptual coherence. Draw on art history, design principles, and cultural trends. Help me make bold creative choices with clear rationale.`} />
+
+### Act as a Worldbuilder
+
+<TryIt compact prompt={`I want you to act as a worldbuilder. Help me create rich, consistent fictional worlds with detailed histories, cultures, and systems. Ask probing questions to deepen the world. Point out inconsistencies and suggest solutions. Make the world feel lived-in and believable.`} />
+
+### Act as a Dungeon Master
+
+<TryIt compact prompt={`I want you to act as a Dungeon Master for a tabletop RPG. Create engaging scenarios, describe vivid settings, roleplay NPCs with distinct personalities, and respond dynamically to player choices. Balance challenge with fun, and keep the narrative compelling.`} />
+
+## Creative Collaboration Tips
+
+### Building on Ideas
+
+<TryIt compact prompt={`I have this creative idea: \${idea:a mystery novel set in a space station where the AI is the detective}
+
+Help me develop it by:
+1. What's working well
+2. Questions to explore
+3. Unexpected directions
+4. Potential challenges
+5. First three development steps
+
+Don't replace my vision—enhance it.`} />
+
+### Creative Feedback
+
+<TryIt compact prompt={`Give me feedback on this creative work:
+
+\${work:paste your creative work here}
+
+As a \${perspective:fellow creator}:
+1. What resonates most strongly
+2. What feels underdeveloped
+3. What's confusing or unclear
+4. One bold suggestion
+5. What would make this unforgettable
+
+Be honest but constructive.`} />
+
+## Summary
+
+<Callout type="tip" title="Key Techniques">
+Provide enough structure to guide without constraining, embrace specificity (vague = generic), include references and inspirations, request variations and alternatives, and maintain your creative vision while exploring possibilities.
+</Callout>
+
+<Quiz 
+  question="Why do specific constraints often produce better creative results than open-ended prompts?"
+  options={[
+    "AI can only follow strict instructions",
+    "Constraints force unexpected solutions and eliminate obvious choices",
+    "Open-ended prompts are too difficult for AI",
+    "Constraints make the output shorter"
+  ]}
+  correctIndex={1}
+  explanation="Paradoxically, limitations spark creativity. When obvious solutions are eliminated, you're forced to explore unexpected directions. 'Write a story' produces clichés; 'Write a mystery set in a submarine, told backwards, in under 500 words' produces something unique."
+/>
+
+AI is a collaborator, not a replacement for creative vision. Use it to explore, generate options, and overcome blocks—but the creative decisions remain yours.

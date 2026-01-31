@@ -1,0 +1,373 @@
+Beyond structure, effective prompt engineering is guided by principles—fundamental truths that apply across models, tasks, and contexts. Master these principles, and you'll be able to adapt to any prompting challenge.
+
+<Callout type="info" title="The 8 Core Principles">
+These principles apply to every AI model and every task. Learn them once, use them everywhere.
+</Callout>
+
+## Principle 1: Clarity Over Cleverness
+
+The best prompts are clear, not clever. AI models are literal interpreters—they work with exactly what you give them.
+
+### Be Explicit
+
+<Compare 
+  before={{ label: "Implicit (problematic)", content: "Make this better." }}
+  after={{ label: "Explicit (effective)", content: "Improve this email by:\n1. Making the subject line more compelling\n2. Shortening paragraphs to 2-3 sentences max\n3. Adding a clear call-to-action at the end" }}
+/>
+
+### Avoid Ambiguity
+
+Words can have multiple meanings. Choose precise language.
+
+<Compare 
+  before={{ label: "Ambiguous", content: "Give me a short summary.\n(How short? 1 sentence? 1 paragraph? 1 page?)" }}
+  after={{ label: "Precise", content: "Summarize in exactly 3 bullet points, each under 20 words." }}
+/>
+
+### State the Obvious
+
+What's obvious to you isn't obvious to the model. Spell out assumptions.
+
+```
+You're helping me write a cover letter.
+
+Important context:
+- I'm applying for a Software Engineer position at Google
+- I have 5 years of experience in Python and distributed systems
+- The role requires leadership experience (I've led a team of 4)
+- I want to emphasize my open-source contributions
+```
+
+## Principle 2: Specificity Yields Quality
+
+Vague inputs produce vague outputs. Specific inputs produce specific, useful outputs.
+
+### The Specificity Ladder
+
+<SpecificitySpectrum levels={[
+  { level: "Level 1", text: "Write about climate change" },
+  { level: "Level 2", text: "Write an article about climate change effects" },
+  { level: "Level 3", text: "Write a 500-word article about how climate change affects coral reefs" },
+  { level: "Level 4", text: "Write a 500-word article explaining how rising ocean temperatures cause coral bleaching, aimed at high school students, with 2 specific examples from the Great Barrier Reef, in an engaging but scientifically accurate tone" }
+]} />
+
+Each level adds specificity and dramatically improves output quality.
+
+### Specify These Elements
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Audience</span>
+    <span className="text-muted-foreground">Who will read/use this?</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Length</span>
+    <span className="text-muted-foreground">How long/short should it be?</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Tone</span>
+    <span className="text-muted-foreground">Formal? Casual? Technical?</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Format</span>
+    <span className="text-muted-foreground">Prose? List? Table? Code?</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Scope</span>
+    <span className="text-muted-foreground">What to include/exclude?</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Purpose</span>
+    <span className="text-muted-foreground">What should this accomplish?</span>
+  </div>
+</div>
+
+## Principle 3: Context Is King
+
+Models have no memory, no access to your files, and no knowledge of your situation. Everything relevant must be in the prompt.
+
+### Provide Sufficient Context
+
+<Compare 
+  before={{ label: "Insufficient context", content: "Why isn't my function working?" }}
+  after={{ label: "Sufficient context", content: "I have a Python function that should filter a list of dictionaries by a specific key value. It's returning an empty list when it should return 3 items.\n\nFunction:\ndef filter_items(items, key, value):\n    return [item for item in items if item[key] = value]\n\nCall: filter_items(items, 'status', 'active')\nExpected: 2 items, Got: empty list" }}
+/>
+
+### The Context Checklist
+
+<Callout type="tip" title="Before You Submit">
+Ask yourself: Would a smart stranger understand this request? If not, add more context.
+</Callout>
+
+<Checklist 
+  title="Context Checklist"
+  items={[
+    { text: "Does the model know what I'm working on?" },
+    { text: "Does it know my goal?" },
+    { text: "Does it have all necessary information?" },
+    { text: "Does it understand the constraints?" },
+    { text: "Would a smart stranger understand this request?" }
+  ]}
+/>
+
+## Principle 4: Guide, Don't Just Ask
+
+Don't just ask for an answer—guide the model toward the answer you want.
+
+### Use Instructional Framing
+
+<Compare 
+  before={{ label: "Just Asking", content: "What are the pros and cons of microservices?" }}
+  after={{ label: "Guiding", content: "List 5 advantages and 5 disadvantages of microservices architecture.\n\nFor each point:\n- State the point clearly in one sentence\n- Provide a brief explanation (2-3 sentences)\n- Give a concrete example\n\nConsider perspectives of: small startups, large enterprises, and teams transitioning from monoliths." }}
+/>
+
+### Provide Reasoning Scaffolds
+
+For complex tasks, guide the reasoning process:
+
+<TryIt 
+  title="Reasoning Scaffold Example"
+  description="This prompt guides the AI through a systematic decision-making process."
+  prompt={`I need to choose between PostgreSQL and MongoDB for my e-commerce project.
+
+Think through this systematically:
+1. First, list the typical requirements for an e-commerce database
+2. Then, evaluate each database against each requirement
+3. Consider trade-offs specific to my use case
+4. Make a recommendation with clear justification`}
+/>
+
+## Principle 5: Iterate and Refine
+
+Prompt engineering is an iterative process. Your first prompt is rarely your best.
+
+### The Iteration Cycle
+
+```
+1. Write initial prompt
+2. Review output
+3. Identify gaps or issues
+4. Refine prompt
+5. Repeat until satisfied
+```
+
+### Common Refinements
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Too verbose</span>
+    <span className="text-muted-foreground">Add "Be concise" or length limits</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Too vague</span>
+    <span className="text-muted-foreground">Add specific examples or constraints</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Wrong format</span>
+    <span className="text-muted-foreground">Specify exact output structure</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Missing aspects</span>
+    <span className="text-muted-foreground">Add "Make sure to include..."</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Wrong tone</span>
+    <span className="text-muted-foreground">Specify audience and style</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Inaccurate</span>
+    <span className="text-muted-foreground">Request citations or step-by-step reasoning</span>
+  </div>
+</div>
+
+### Keep a Prompt Journal
+
+Document what works:
+```
+Task: Code review
+Version 1: "Review this code" → Too generic
+Version 2: Added specific review criteria → Better
+Version 3: Added example of good review → Excellent
+Final: [Save successful prompt as template]
+```
+
+## Principle 6: Leverage the Model's Strengths
+
+Work with how models are trained, not against them.
+
+### Models Want to Be Helpful
+
+Frame requests as things a helpful assistant would naturally do:
+
+<Compare 
+  before={{ label: "Against the grain", content: "I know you can't do this, but try to..." }}
+  after={{ label: "With the grain", content: "Help me understand...\nI'm working on X and need assistance with...\nCould you walk me through..." }}
+/>
+
+### Models Excel at Patterns
+
+If you need consistent output, show the pattern:
+
+<TryIt 
+  title="Pattern Example"
+  description="This prompt shows the AI exactly what format you want for book recommendations."
+  prompt={`Recommend 3 science fiction books. Format each recommendation as:
+
+📚 **[Title]** by [Author]
+*[Genre] | [Publication Year]*
+[2-sentence description]
+Why you'll love it: [1 sentence hook]
+
+---`}
+/>
+
+### Models Can Role-Play
+
+Use personas to access different "modes" of response:
+
+```
+As a devil's advocate, argue against my proposal...
+As a supportive mentor, help me improve...
+As a skeptical investor, question this business plan...
+```
+
+## Principle 7: Control Output Structure
+
+Structured outputs are more useful than free-form text.
+
+### Request Specific Formats
+
+```
+Return your analysis as:
+
+SUMMARY: [1 sentence]
+
+KEY FINDINGS:
+• [Finding 1]
+• [Finding 2]
+• [Finding 3]
+
+RECOMMENDATION: [1-2 sentences]
+
+CONFIDENCE: [Low/Medium/High] because [reason]
+```
+
+### Use Delimiters
+
+Clearly separate sections of your prompt:
+
+```
+### CONTEXT ###
+[Your context here]
+
+### TASK ###
+[Your task here]
+
+### FORMAT ###
+[Desired format here]
+```
+
+### Request Machine-Readable Output
+
+For programmatic use:
+
+```
+Return only valid JSON, no explanation:
+{
+  "decision": "approve" | "reject" | "review",
+  "confidence": 0.0-1.0,
+  "reasons": ["string array"]
+}
+```
+
+## Principle 8: Verify and Validate
+
+Never blindly trust model outputs, especially for important tasks.
+
+### Ask for Reasoning
+
+```
+Solve this problem and show your work step by step.
+After solving, verify your answer by [checking method].
+```
+
+### Request Multiple Perspectives
+
+```
+Give me three different approaches to solve this problem.
+For each, explain the trade-offs.
+```
+
+### Build in Self-Checking
+
+```
+After generating the code, review it for:
+- Syntax errors
+- Edge cases
+- Security vulnerabilities
+List any issues found.
+```
+
+## Summary: The Principles at a Glance
+
+<PrinciplesSummary />
+
+<Quiz 
+  question="Which principle suggests you should include all relevant background information in your prompt?"
+  options={[
+    "Clarity Over Cleverness",
+    "Specificity Yields Quality",
+    "Context Is King",
+    "Iterate and Refine"
+  ]}
+  correctIndex={2}
+  explanation="Context Is King emphasizes that AI models have no memory between sessions and cannot read your mind. Including relevant background, constraints, and goals helps the model understand your needs."
+/>
+
+## Practice: Fill in the Blanks
+
+Test your understanding of the core principles by completing this prompt template:
+
+<FillInTheBlank
+  title="Apply the Principles"
+  description="Fill in the blanks to create a well-structured prompt — write anything you want!"
+  useAI={true}
+  openEnded={true}
+  template={`You are a {{role}} with expertise in {{expertise}}.
+
+Context: I'm working on {{context}}.
+
+Task: {{task}}
+
+Constraints:
+- Keep your response under {{length}} words
+- Focus only on {{focus}}
+
+Format: Return your answer as {{format}}.`}
+  blanks={[
+    { id: "role", correctAnswers: [], hint: "What professional role should the AI assume?", context: "A job title or professional role" },
+    { id: "expertise", correctAnswers: [], hint: "What specific domain knowledge is needed?", context: "A skill or domain that matches the role" },
+    { id: "context", correctAnswers: [], hint: "What's the project or situation?", context: "A project that someone with this expertise would work on" },
+    { id: "task", correctAnswers: [], hint: "What specific action should the AI take?", context: "An action appropriate for the role and context" },
+    { id: "length", correctAnswers: [], hint: "How long should the response be?", context: "A number (word count)" },
+    { id: "focus", correctAnswers: [], hint: "What aspect should be prioritized?", context: "A quality or aspect relevant to the task" },
+    { id: "format", correctAnswers: [], hint: "How should the output be structured?", context: "An output format type" }
+  ]}
+  explanation="A well-structured prompt includes: a clear role (Principle 1), sufficient context (Principle 3), specific task (Principle 2), constraints (Principle 4), and output format (Principle 5). The AI checks if your choices are internally consistent."
+/>
+
+<InteractiveChecklist
+  title="Principles Checklist"
+  items={[
+    { id: "clarity", label: "Clarity Over Cleverness", description: "Is your prompt explicit and unambiguous?" },
+    { id: "specificity", label: "Specificity Yields Quality", description: "Have you included audience, length, tone, and format?" },
+    { id: "context", label: "Context Is King", description: "Does the prompt include all necessary background information?" },
+    { id: "examples", label: "Examples Beat Explanations", description: "Have you shown what you want, not just described it?" },
+    { id: "constraints", label: "Constraints Focus Output", description: "Are there clear boundaries on scope and format?" },
+    { id: "iteration", label: "Iterate and Refine", description: "Are you prepared to improve based on results?" },
+    { id: "persona", label: "Persona Shapes Perspective", description: "Does the AI know what role to play?" },
+    { id: "verify", label: "Verify and Validate", description: "Have you built in checks for accuracy?" }
+  ]}
+/>
+
+These principles form the foundation for everything that follows. In Part II, we'll apply them to specific techniques that dramatically enhance prompt effectiveness.

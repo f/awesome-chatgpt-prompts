@@ -1,0 +1,288 @@
+KI kann die professionelle Produktivität dramatisch steigern. Dieses Kapitel behandelt Prompts für Geschäftskommunikation, Analyse, Planung und Workflow-Optimierung.
+
+<Callout type="info" title="KI für Business">
+KI glänzt bei Entwürfen, Analysen und Strukturierung—so kannst du dich auf Strategie, Beziehungen und Entscheidungen konzentrieren, die menschliches Urteil erfordern.
+</Callout>
+
+## Geschäftskommunikation
+
+### Do's und Don'ts: Business-E-Mails
+
+<Compare 
+  before={{ label: "❌ Vage Anfrage", content: "Schreib eine E-Mail an meinen Chef über das Projekt." }}
+  after={{ label: "✓ Vollständiger Kontext", content: "Schreib eine E-Mail an meine Managerin (Sarah) mit einem Update zum Q4-Marketing-Projekt.\n\nKernpunkte: Wir liegen im Plan für die Deadline am 15. Nov, haben das Lieferantenproblem gelöst, brauchen ihre Genehmigung für die 5.000€ Budgeterhöhung.\nTon: Professionell aber freundlich (wir haben ein gutes Verhältnis)\nUnter 150 Wörtern mit klarer Handlungsaufforderung am Ende." }}
+/>
+
+### E-Mail-Entwurf
+
+<TryIt compact prompt={`Schreib eine professionelle E-Mail.
+
+Kontext:
+- An: [Empfänger und Beziehung]
+- Zweck: [Anfrage/Informieren/Nachfassen/Entschuldigen]
+- Kernpunkte: [was kommuniziert werden muss]
+- Ton: [formal/freundlich-professionell/dringend]
+
+Einschränkungen:
+- Unter [X] Sätzen halten
+- Klare Handlungsaufforderung
+- Betreffzeile inklusive`} />
+
+**Beispiele nach Zweck:**
+
+<TryIt compact prompt={`\${emailTyp:Meeting-Anfrage}: Schreib eine E-Mail mit Bitte um ein Meeting mit einem potenziellen Kunden zur Besprechung von Partnerschaftsmöglichkeiten. Halte es kurz und mache es ihnen leicht, zuzusagen.`} />
+
+<TryIt compact prompt={`\${emailTyp:Schwieriges Gespräch}: Schreib eine E-Mail, die den Vorschlag eines Anbieters ablehnt, aber die Beziehung für zukünftige Möglichkeiten pflegt. Sei klar aber diplomatisch.`} />
+
+<TryIt compact prompt={`\${emailTyp:Status-Update}: Schreib eine Projekt-Status-E-Mail an Stakeholder. Das Projekt ist 2 Wochen hinter dem Zeitplan aufgrund von Scope-Änderungen. Präsentiere die Situation professionell mit einem Recovery-Plan.`} />
+
+### Präsentationsinhalte
+
+<TryIt compact prompt={`Erstelle Präsentationsinhalte für \${thema:Q4-Vertriebsstrategie}.
+
+Zielgruppe: \${zielgruppe:Geschäftsführung}
+Dauer: \${dauer:15 Minuten}
+Ziel: \${ziel:Genehmigung für Budgeterhöhung erhalten}
+
+Liefere für jede Folie:
+- Titel
+- Kernbotschaft (ein Hauptpunkt)
+- Unterstützende Punkte (max 3)
+- Sprechernotizen (was zu sagen ist)
+- Visualisierungsvorschlag (Diagramm/Bild/Grafik)
+
+Struktur:
+1. Hook/Aufmerksamkeitsfänger
+2. Problem/Chance
+3. Lösung/Empfehlung
+4. Belege/Unterstützung
+5. Handlungsaufforderung`} />
+
+### Bericht schreiben
+
+<TryIt compact prompt={`Schreib einen \${berichtTyp:Empfehlungs}-Bericht über \${thema:Expansion in europäische Märkte}.
+
+Berichttyp: \${typ:Empfehlung}
+Zielgruppe: \${zielgruppe:Geschäftsführung}
+Länge: \${laenge:5 Seiten}
+
+Struktur:
+1. Executive Summary (Kernerkenntnisse, 1 Absatz)
+2. Hintergrund/Kontext
+3. Methodik (falls zutreffend)
+4. Erkenntnisse
+5. Analyse
+6. Empfehlungen
+7. Nächste Schritte
+
+Inkludiere: Datenvisualisierungsvorschläge wo relevant
+Ton: \${ton:formell geschäftlich}`} />
+
+## Analyse & Entscheidungsfindung
+
+<Callout type="tip" title="Analyse-Prinzip">
+KI kann dein Denken strukturieren, aber **du lieferst den realen Kontext**. Die besten Analysen kombinieren KIs Frameworks mit deinem Domänenwissen.
+</Callout>
+
+### SWOT-Analyse
+
+<TryIt compact prompt={`Führe eine SWOT-Analyse durch für \${thema:Launch einer neuen Mobile-App}.
+
+Kontext:
+\${kontext:Wir sind ein mittelständisches Fintech-Unternehmen und erwägen eine Consumer-Banking-App}
+
+Liefere:
+
+**Stärken** (interne Positive)
+- Mindestens 4 Punkte mit kurzen Erklärungen
+
+**Schwächen** (interne Negative)
+- Mindestens 4 Punkte mit kurzen Erklärungen
+
+**Chancen** (externe Positive)
+- Mindestens 4 Punkte mit kurzen Erklärungen
+
+**Risiken** (externe Negative)
+- Mindestens 4 Punkte mit kurzen Erklärungen
+
+**Strategische Implikationen**
+- Kernerkenntnis aus der Analyse
+- Empfohlene Prioritäten`} />
+
+### Entscheidungs-Framework
+
+<TryIt compact prompt={`Hilf mir bei einer Entscheidung über \${entscheidung:welches CRM wählen}.
+
+Optionen:
+1. \${optionA:Salesforce}
+2. \${optionB:HubSpot}
+3. \${optionC:Pipedrive}
+
+Kriterien, die mir wichtig sind:
+- \${kriterium1:Benutzerfreundlichkeit} (Gewicht: hoch)
+- \${kriterium2:Integration mit bestehenden Tools} (Gewicht: hoch)
+- \${kriterium3:Kosten} (Gewicht: mittel)
+
+Liefere:
+1. Bewerte jede Option gegen jedes Kriterium (1-5)
+2. Gewichtete Analyse
+3. Pro/Contra-Zusammenfassung für jede
+4. Risikobewertung
+5. Empfehlung mit Begründung
+6. Fragen vor der Entscheidung`} />
+
+## Planung & Strategie
+
+### Zielsetzung (OKRs)
+
+<TryIt compact prompt={`Hilf mir OKRs zu setzen für \${bereich:Q1 Marketing-Team}.
+
+Kontext:
+- Unternehmensziele: \${unternehmensziele:Umsatz um 25% YoY steigern}
+- Aktuelle Situation: \${aktuellerStand:Markenbekanntheit in neuen Märkten ist niedrig}
+- Hauptprioritäten: \${prioritaeten:Lead-Generierung, Content-Marketing}
+
+Erstelle 3 Objectives mit je 3-4 Key Results.
+
+Format:
+**Objective 1:** Qualitatives Ziel - inspirierend
+- KR 1.1: Quantitative Messung (Aktuell: X → Ziel: Y)
+- KR 1.2: Quantitative Messung (Aktuell: X → Ziel: Y)
+- KR 1.3: Quantitative Messung (Aktuell: X → Ziel: Y)
+
+Stelle sicher, dass KRs sind:
+- Messbar
+- Ambitioniert aber erreichbar
+- Zeitgebunden
+- Ergebnisorientiert (keine Aufgaben)`} />
+
+### Projektplanung
+
+<TryIt compact prompt={`Erstelle einen Projektplan für \${projekt:Website-Redesign}.
+
+Scope: \${scope:neue Homepage, Produktseiten, Checkout-Flow}
+Zeitrahmen: \${zeitrahmen:3 Monate}
+Team: \${team:2 Entwickler, 1 Designer, 1 PM}
+Budget: \${budget:50.000€}
+
+Liefere:
+1. **Projektphasen** mit Meilensteinen
+2. **Arbeitsstruktur** (Hauptaufgaben)
+3. **Zeitplan** (Gantt-artige Beschreibung)
+4. **Abhängigkeiten** (was blockiert was)
+5. **Risiken** (potenzielle Probleme und Mitigation)
+6. **Erfolgskriterien** (wie wissen wir, dass wir fertig sind)`} />
+
+### Meeting-Agenda
+
+<TryIt compact prompt={`Erstelle eine Agenda für \${meetingTyp:Quartalsplanung}.
+
+Zweck: \${zweck:Abstimmung auf Q2-Prioritäten und Ressourcenallokation}
+Teilnehmer: \${teilnehmer:Abteilungsleiter, CEO, COO}
+Dauer: \${dauer:90 Minuten}
+
+Format:
+| Zeit | Thema | Verantwortlich | Ziel |
+|------|-------|----------------|------|
+| 5 Min | Eröffnung | Moderator | Kontext |
+| ... | ... | ... | ... |
+
+Inkludiere:
+- Zeitallokationen
+- Klare Verantwortliche für jeden Punkt
+- Erwartete Ergebnisse
+- Benötigte Vorbereitung
+- Follow-up Action-Item-Template`} />
+
+## Produktivitäts-Workflows
+
+### Aufgaben-Priorisierung
+
+<TryIt compact prompt={`Hilf mir meine Aufgaben mit der Eisenhower-Matrix zu priorisieren.
+
+Meine Aufgaben:
+\${aufgaben:1. Quartalsbericht vorbereiten (Deadline Freitag)\n2. Bewerbungen durchsehen\n3. Lieferanten-E-Mails beantworten\n4. Team-Offsite planen\n5. LinkedIn-Profil aktualisieren}
+
+Kategorisiere jede in:
+1. **Dringend + Wichtig** (Zuerst erledigen)
+2. **Wichtig, Nicht Dringend** (Einplanen)
+3. **Dringend, Nicht Wichtig** (Delegieren)
+4. **Weder noch** (Eliminieren)
+
+Dann liefere:
+- Empfohlene Reihenfolge
+- Zeitschätzungen
+- Vorschläge für Delegation oder Eliminierung`} />
+
+### Prozessdokumentation
+
+<TryIt compact prompt={`Dokumentiere diesen Geschäftsprozess: \${prozessName:Kunden-Rückerstattungsanfrage}.
+
+Erstelle:
+1. **Prozessübersicht** (1 Absatz)
+2. **Auslöser** (was startet diesen Prozess)
+3. **Schritte** (nummeriert, mit Verantwortlichem)
+4. **Entscheidungspunkte** (wenn X dann Y Format)
+5. **Outputs** (was dieser Prozess produziert)
+6. **Beteiligte Systeme** (Tools/Software)
+7. **Ausnahmen** (Edge Cases und Behandlung)
+
+Format: Klar genug für neue Mitarbeiter`} />
+
+## Kommunikationsvorlagen
+
+### Stakeholder-Update
+
+<TryIt compact prompt={`Schreib ein Stakeholder-Update für \${projekt:CRM-Migrationsprojekt}.
+
+Status: \${status:gefährdet}
+Zeitraum: \${zeitraum:Woche vom 6.-10. Januar}
+
+Format:
+## Projektname Update
+
+**Status:** 🟢/🟡/🔴
+
+**Fortschritt diese Periode:**
+- Erreichtes 1
+- Erreichtes 2
+
+**Ziele nächste Periode:**
+- Ziel 1
+- Ziel 2
+
+**Risiken/Blocker:**
+- Falls vorhanden
+
+**Benötigte Entscheidungen:**
+- Falls vorhanden`} />
+
+## Prompt-Vorlagen von prompts.chat
+
+### Agiere als Business-Berater
+
+<TryIt compact prompt={`Ich möchte, dass du als Business-Berater agierst. Ich werde Geschäftssituationen und Herausforderungen beschreiben, und du wirst strategische Beratung, Frameworks für Problemdenken und umsetzbare Empfehlungen liefern. Nutze etablierte Business-Prinzipien, sei dabei praktisch und spezifisch.`} />
+
+### Agiere als Meeting-Moderator
+
+<TryIt compact prompt={`Ich möchte, dass du als Meeting-Moderator agierst. Hilf mir, effektive Meetings zu planen und durchzuführen. Erstelle Agenden, schlage Diskussions-Frameworks vor, hilf Gespräche zu synthetisieren und verfasse Follow-up-Kommunikation. Fokussiere darauf, Meetings produktiv und handlungsorientiert zu machen.`} />
+
+## Zusammenfassung
+
+<Callout type="tip" title="Schlüsseltechniken">
+Spezifiziere die Zielgruppe und ihre Bedürfnisse, definiere das gewünschte Ergebnis klar, inkludiere relevanten Kontext und Einschränkungen, fordere spezifische Formate und Strukturen an, und berücksichtige professionelle Tonanforderungen.
+</Callout>
+
+<Quiz 
+  question="Was solltest du immer einschließen, wenn du KI bittest, eine geschäftliche E-Mail zu schreiben?"
+  options={[
+    "Nur das Thema, das du besprechen willst",
+    "Empfänger, Zweck, Kernpunkte und gewünschten Ton",
+    "Nur den Namen des Empfängers",
+    "Ein Template aus dem Internet"
+  ]}
+  correctIndex={1}
+  explanation="Effektive geschäftliche E-Mails brauchen Kontext: an wen du schreibst, warum, was kommuniziert werden muss und der passende Ton. KI kann deine professionellen Beziehungen oder organisatorischen Kontext nicht erraten."
+/>
+
+KI kann Routine-Geschäftskommunikation übernehmen, während du dich auf Strategie und Beziehungen konzentrierst.

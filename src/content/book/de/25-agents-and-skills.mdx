@@ -1,0 +1,519 @@
+Da sich KI-Systeme von einfacher Frage-Antwort zu autonomer Aufgabenausführung entwickeln, wird das Verständnis von **Agents** und **Skills** essenziell. Dieses Kapitel erkundet, wie Prompts als fundamentale Bausteine für KI-Agents dienen, und wie Skills Expertise in wiederverwendbare, umfassende Anweisungspakete verpacken.
+
+<div className="my-8 p-6 bg-muted/20 rounded-xl border">
+  <div className="flex flex-col items-center gap-6">
+    <div className="text-center">
+      <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-100 dark:bg-blue-900/50 border-2 border-blue-300 dark:border-blue-700">
+        <IconSettings className="w-10 h-10 text-blue-600 dark:text-blue-400" />
+      </div>
+      <p className="font-semibold mt-2 m-0!">Agent</p>
+      <p className="text-xs text-muted-foreground m-0!">Autonomes KI-System</p>
+    </div>
+    <div className="flex items-center gap-2 text-muted-foreground text-sm">
+      <span>angetrieben von</span>
+      <span>↓</span>
+    </div>
+    <div className="flex flex-wrap justify-center gap-4">
+      <div className="text-center">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-lg bg-purple-100 dark:bg-purple-900/50 border-2 border-purple-300 dark:border-purple-700">
+          <IconStar className="w-8 h-8 text-purple-600 dark:text-purple-400" />
+        </div>
+        <p className="font-medium text-sm mt-2 m-0!">Skill</p>
+        <p className="text-xs text-muted-foreground m-0!">Wiederverwendbare Expertise</p>
+      </div>
+      <div className="text-center">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-lg bg-purple-100 dark:bg-purple-900/50 border-2 border-purple-300 dark:border-purple-700">
+          <IconStar className="w-8 h-8 text-purple-600 dark:text-purple-400" />
+        </div>
+        <p className="font-medium text-sm mt-2 m-0!">Skill</p>
+        <p className="text-xs text-muted-foreground m-0!">Wiederverwendbare Expertise</p>
+      </div>
+      <div className="text-center">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-lg bg-purple-100 dark:bg-purple-900/50 border-2 border-purple-300 dark:border-purple-700">
+          <IconStar className="w-8 h-8 text-purple-600 dark:text-purple-400" />
+        </div>
+        <p className="font-medium text-sm mt-2 m-0!">Skill</p>
+        <p className="text-xs text-muted-foreground m-0!">Wiederverwendbare Expertise</p>
+      </div>
+    </div>
+    <div className="flex items-center gap-2 text-muted-foreground text-sm">
+      <span>zusammengesetzt aus</span>
+      <span>↓</span>
+    </div>
+    <div className="flex flex-wrap justify-center gap-2">
+      <div className="px-3 py-2 rounded bg-amber-100 dark:bg-amber-900/50 border border-amber-300 dark:border-amber-700 flex items-center gap-1">
+        <IconClipboard className="w-3 h-3 text-amber-600 dark:text-amber-400" />
+        <span className="text-xs font-medium">Prompt</span>
+      </div>
+      <div className="px-3 py-2 rounded bg-amber-100 dark:bg-amber-900/50 border border-amber-300 dark:border-amber-700 flex items-center gap-1">
+        <IconClipboard className="w-3 h-3 text-amber-600 dark:text-amber-400" />
+        <span className="text-xs font-medium">Prompt</span>
+      </div>
+      <div className="px-3 py-2 rounded bg-amber-100 dark:bg-amber-900/50 border border-amber-300 dark:border-amber-700 flex items-center gap-1">
+        <IconClipboard className="w-3 h-3 text-amber-600 dark:text-amber-400" />
+        <span className="text-xs font-medium">Prompt</span>
+      </div>
+      <div className="px-3 py-2 rounded bg-amber-100 dark:bg-amber-900/50 border border-amber-300 dark:border-amber-700 flex items-center gap-1">
+        <IconClipboard className="w-3 h-3 text-amber-600 dark:text-amber-400" />
+        <span className="text-xs font-medium">Prompt</span>
+      </div>
+      <div className="px-3 py-2 rounded bg-amber-100 dark:bg-amber-900/50 border border-amber-300 dark:border-amber-700 flex items-center gap-1">
+        <IconClipboard className="w-3 h-3 text-amber-600 dark:text-amber-400" />
+        <span className="text-xs font-medium">Prompt</span>
+      </div>
+    </div>
+    <p className="text-xs text-muted-foreground text-center m-0! mt-2">Prompts sind Atome → Skills sind Moleküle → Agents sind vollständige Strukturen</p>
+  </div>
+</div>
+
+## Was sind KI-Agents?
+
+Ein **KI-Agent** ist ein KI-System, das autonom planen, ausführen und iterieren kann. Im Gegensatz zu einfachen Prompt-Response-Interaktionen können Agents:
+
+- **Planen** - Komplexe Ziele in umsetzbare Schritte aufteilen
+- **Ausführen** - Tools nutzen und Aktionen in der realen Welt ausführen
+- **Beobachten** - Feedback von ihren Aktionen verarbeiten
+- **Anpassen** - Ihren Ansatz basierend auf Ergebnissen justieren
+- **Persistieren** - Kontext und Gedächtnis über Interaktionen hinweg bewahren
+
+<div className="my-6 flex items-center justify-center p-6 bg-muted/30 rounded-lg">
+  <div className="relative">
+    <div className="flex items-center gap-3">
+      <div className="px-4 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center text-sm">
+        <p className="font-medium text-blue-700 dark:text-blue-300 m-0!">Ziel</p>
+      </div>
+      <div className="text-muted-foreground">→</div>
+      <div className="flex flex-col items-center gap-2">
+        <div className="flex items-center gap-2 px-4 py-3 bg-muted/50 border border-dashed rounded-lg">
+          <div className="px-3 py-2 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded text-center text-sm">
+            <p className="font-medium text-purple-700 dark:text-purple-300 m-0!">Plan</p>
+          </div>
+          <div className="text-muted-foreground">→</div>
+          <div className="px-3 py-2 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded text-center text-sm">
+            <p className="font-medium text-amber-700 dark:text-amber-300 m-0!">Ausführen</p>
+          </div>
+          <div className="text-muted-foreground">→</div>
+          <div className="px-3 py-2 bg-teal-100 dark:bg-teal-900/50 border border-teal-200 dark:border-teal-800 rounded text-center text-sm">
+            <p className="font-medium text-teal-700 dark:text-teal-300 m-0!">Beobachten</p>
+          </div>
+          <div className="text-muted-foreground">→</div>
+          <div className="px-3 py-2 bg-rose-100 dark:bg-rose-900/50 border border-rose-200 dark:border-rose-800 rounded text-center text-sm">
+            <p className="font-medium text-rose-700 dark:text-rose-300 m-0!">Anpassen</p>
+          </div>
+        </div>
+        <div className="text-xs text-muted-foreground flex items-center gap-1">
+          <span>↺</span> Wiederholen bis fertig
+        </div>
+      </div>
+      <div className="text-muted-foreground">→</div>
+      <div className="px-4 py-3 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg text-center text-sm">
+        <p className="font-medium text-green-700 dark:text-green-300 m-0!">Fertig</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+## Prompts als Bausteine
+
+Jeder Agent, egal wie ausgeklügelt, ist aus Prompts gebaut. Genau wie Atome sich zu Molekülen verbinden und Moleküle komplexe Strukturen bilden, verbinden sich Prompts zu intelligentem Agent-Verhalten.
+
+<div className="my-6 grid md:grid-cols-4 gap-3 text-center text-sm">
+  <div className="border rounded-lg p-4 bg-blue-50/50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-900">
+    <p className="font-semibold text-blue-700 dark:text-blue-300 m-0!">System-Prompts</p>
+    <p className="text-xs text-blue-600 dark:text-blue-400 m-0! mt-1">Identität & Rolle</p>
+  </div>
+  <div className="border rounded-lg p-4 bg-purple-50/50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-900">
+    <p className="font-semibold text-purple-700 dark:text-purple-300 m-0!">Planungs-Prompts</p>
+    <p className="text-xs text-purple-600 dark:text-purple-400 m-0! mt-1">Wie Denken</p>
+  </div>
+  <div className="border rounded-lg p-4 bg-amber-50/50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900">
+    <p className="font-semibold text-amber-700 dark:text-amber-300 m-0!">Tool-Prompts</p>
+    <p className="text-xs text-amber-600 dark:text-amber-400 m-0! mt-1">Wie Handeln</p>
+  </div>
+  <div className="border rounded-lg p-4 bg-rose-50/50 dark:bg-rose-950/20 border-rose-200 dark:border-rose-900">
+    <p className="font-semibold text-rose-700 dark:text-rose-300 m-0!">Recovery-Prompts</p>
+    <p className="text-xs text-rose-600 dark:text-rose-400 m-0! mt-1">Wie Erholen</p>
+  </div>
+</div>
+
+Diese Prompt-Typen stapeln sich zusammen zu vollständigem Agent-Verhalten:
+
+### System-Prompts (Die Agent-Identität)
+
+Der grundlegende Prompt, der festlegt, wer der Agent ist und wie er sich verhält:
+
+```markdown
+Du bist ein Code-Review-Assistent. Deine Rolle ist:
+- Code auf Bugs, Sicherheitsprobleme und Performance-Probleme analysieren
+- Verbesserungen nach Best Practices vorschlagen
+- Dein Reasoning klar erklären
+- Konstruktiv und lehrreich im Feedback sein
+
+Du hast Zugang zu Tools zum Lesen von Dateien, Code-Suche und Test-Ausführung.
+```
+
+### Planungs-Prompts (Wie Denken)
+
+Anweisungen, die den Reasoning- und Planungsprozess des Agents leiten:
+
+```markdown
+Bevor du handelst, immer:
+1. Die komplette Anfrage verstehen
+2. In kleinere, verifizierbare Schritte aufteilen
+3. Identifizieren, welche Tools du brauchst
+4. Edge Cases und potenzielle Probleme berücksichtigen
+5. Schritt für Schritt ausführen, dabei validieren
+```
+
+### Tool-Use-Prompts (Wie Handeln)
+
+Anleitung, wann und wie verfügbare Tools zu nutzen sind:
+
+```markdown
+Wenn du eine Codebase verstehen musst:
+- Nutze grep_search zum Finden spezifischer Muster
+- Nutze read_file zum Untersuchen von Dateiinhalten
+- Nutze list_dir zum Erkunden der Verzeichnisstruktur
+- Verifiziere immer dein Verständnis, bevor du Änderungen machst
+```
+
+### Recovery-Prompts (Wie mit Fehlern umgehen)
+
+Anweisungen für wenn etwas schiefgeht:
+
+```markdown
+Wenn eine Aktion fehlschlägt:
+1. Die Fehlermeldung sorgfältig analysieren
+2. Alternative Ansätze in Betracht ziehen
+3. Um Klärung bitten, wenn die Aufgabe mehrdeutig ist
+4. Niemals dieselbe fehlgeschlagene Aktion ohne Änderungen wiederholen
+```
+
+<Callout type="info" title="Der Prompt-Stack">
+Das Verhalten eines Agents entsteht aus Schichten von Prompts, die zusammenarbeiten. Der System-Prompt legt das Fundament, Planungs-Prompts leiten das Reasoning, Tool-Prompts ermöglichen Aktionen, und Recovery-Prompts behandeln Fehler. Zusammen erzeugen sie kohärentes, fähiges Verhalten.
+</Callout>
+
+## Was sind Skills?
+
+Wenn Prompts die Atome sind, **sind Skills die Moleküle**—wiederverwendbare Bausteine, die Agents spezifische Fähigkeiten geben.
+
+Ein **Skill** ist ein umfassendes, portables Paket von Anweisungen, das einem KI-Agent Expertise in einer spezifischen Domäne oder Aufgabe gibt. Skills sind die wiederverwendbaren Blöcke von Agents: du baust sie einmal, und jeder Agent kann sie nutzen.
+
+<Callout type="tip" title="Skills = Wiederverwendbare Agent-Blöcke">
+Schreib einen Skill für Code-Review einmal. Jetzt kann jeder Coding-Agent—ob für Python, JavaScript oder Rust—sofort ein Experten-Code-Reviewer werden, indem er diesen Skill lädt. Skills lassen dich Agent-Fähigkeiten wie LEGO-Steine bauen.
+</Callout>
+
+### Anatomie eines Skills
+
+Ein gut designter Skill enthält typischerweise:
+
+<div className="my-6 grid md:grid-cols-2 gap-4">
+  <div className="border rounded-lg p-4 bg-muted/30">
+    <p className="font-semibold text-sm m-0! mb-2">📄 SKILL.md (Erforderlich)</p>
+    <p className="text-sm text-muted-foreground m-0!">Die Haupt-Anweisungsdatei. Enthält die Kern-Expertise, Richtlinien und Verhaltensweisen, die den Skill definieren.</p>
+  </div>
+  <div className="border rounded-lg p-4 bg-muted/30">
+    <p className="font-semibold text-sm m-0! mb-2">📚 Referenz-Docs</p>
+    <p className="text-sm text-muted-foreground m-0!">Unterstützende Dokumentation, Beispiele und Kontext, auf die der Agent beim Arbeiten zugreifen kann.</p>
+  </div>
+  <div className="border rounded-lg p-4 bg-muted/30">
+    <p className="font-semibold text-sm m-0! mb-2">🔧 Skripte & Tools</p>
+    <p className="text-sm text-muted-foreground m-0!">Hilfsskripte, Templates oder Tool-Konfigurationen, die die Funktionalität des Skills unterstützen.</p>
+  </div>
+  <div className="border rounded-lg p-4 bg-muted/30">
+    <p className="font-semibold text-sm m-0! mb-2">⚙️ Konfiguration</p>
+    <p className="text-sm text-muted-foreground m-0!">Einstellungen, Parameter und Anpassungsoptionen zur Adaption des Skills an verschiedene Kontexte.</p>
+  </div>
+</div>
+
+### Beispiel: Code-Review-Skill
+
+So könnte ein Code-Review-Skill aussehen:
+
+<div className="my-6 border rounded-lg overflow-hidden bg-muted/20">
+  <div className="px-3 py-2 bg-muted/50 border-b flex items-center gap-2">
+    <span className="text-sm">📁</span>
+    <span className="text-sm font-medium">code-review-skill/</span>
+  </div>
+  <div className="p-3 space-y-1 text-sm font-mono">
+    <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-muted/50">
+      <span>📄</span>
+      <span className="font-medium">SKILL.md</span>
+      <span className="text-muted-foreground text-xs ml-auto">Kern-Review-Richtlinien</span>
+    </div>
+    <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-muted/50">
+      <span>📄</span>
+      <span>security-checklist.md</span>
+      <span className="text-muted-foreground text-xs ml-auto">Sicherheitsmuster</span>
+    </div>
+    <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-muted/50">
+      <span>📄</span>
+      <span>performance-tips.md</span>
+      <span className="text-muted-foreground text-xs ml-auto">Optimierungsguide</span>
+    </div>
+    <div className="mt-2 border-t pt-2">
+      <div className="flex items-center gap-2 px-2 py-1">
+        <span>📁</span>
+        <span className="font-medium">language-specific/</span>
+      </div>
+      <div className="ml-6 space-y-1">
+        <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-muted/50">
+          <span>📄</span>
+          <span>python.md</span>
+          <span className="text-muted-foreground text-xs ml-auto">Python Best Practices</span>
+        </div>
+        <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-muted/50">
+          <span>📄</span>
+          <span>javascript.md</span>
+          <span className="text-muted-foreground text-xs ml-auto">JavaScript-Muster</span>
+        </div>
+        <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-muted/50">
+          <span>📄</span>
+          <span>rust.md</span>
+          <span className="text-muted-foreground text-xs ml-auto">Rust-Richtlinien</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+Die `SKILL.md`-Datei definiert den Gesamtansatz:
+
+```markdown
+---
+name: code-review
+description: Umfassendes Code-Review mit Sicherheits-, Performance- und Stil-Analyse
+---
+
+# Code-Review-Skill
+
+Du bist ein Experten-Code-Reviewer. Beim Reviewen von Code:
+
+## Prozess
+1. **Kontext verstehen** - Was tut dieser Code? Welches Problem löst er?
+2. **Korrektheit prüfen** - Funktioniert es? Gibt es Logikfehler?
+3. **Sicherheits-Scan** - Referenziere security-checklist.md für häufige Schwachstellen
+4. **Performance-Review** - Prüfe performance-tips.md für Optimierungsmöglichkeiten
+5. **Stil & Wartbarkeit** - Ist der Code lesbar und wartbar?
+
+## Ausgabeformat
+Liefere Feedback in Kategorien:
+- 🔴 **Kritisch** - Muss vor Merge behoben werden
+- 🟡 **Empfohlen** - Empfohlene Verbesserungen
+- 🟢 **Nice to have** - Optionale Verbesserungen
+
+Erkläre immer *warum* etwas ein Problem ist, nicht nur *was* falsch ist.
+```
+
+## Skills vs. Einfache Prompts
+
+<div className="my-6 grid md:grid-cols-2 gap-4">
+  <div className="border rounded-lg bg-muted/30">
+    <p className="text-sm font-semibold px-4 pt-3 m-0!">Einfacher Prompt</p>
+    <div className="text-sm p-4 pt-2 space-y-2">
+      <p className="m-0!">Einzelne Anweisung</p>
+      <p className="m-0!">Einmalige Nutzung</p>
+      <p className="m-0!">Begrenzter Kontext</p>
+      <p className="m-0!">Generischer Ansatz</p>
+      <p className="m-0!">Keine unterstützenden Materialien</p>
+    </div>
+  </div>
+  <div className="border rounded-lg bg-primary/5 border-primary/20">
+    <p className="text-sm font-semibold px-4 pt-3 m-0!">Skill</p>
+    <div className="text-sm p-4 pt-2 space-y-2">
+      <p className="m-0!">Umfassendes Anweisungsset</p>
+      <p className="m-0!">Wiederverwendbar über Projekte</p>
+      <p className="m-0!">Reicher Kontext mit Referenzen</p>
+      <p className="m-0!">Domänenspezifische Expertise</p>
+      <p className="m-0!">Unterstützende Docs, Skripte, Configs</p>
+    </div>
+  </div>
+</div>
+
+## Effektive Skills bauen
+
+### 1. Die Expertise klar definieren
+
+Beginne mit einer klaren Beschreibung, was der Skill ermöglicht:
+
+```markdown
+---
+name: api-design
+description: RESTful APIs nach Industrie-Best-Practices designen, 
+  inklusive Versionierung, Fehlerbehandlung und Dokumentationsstandards
+---
+```
+
+### 2. Wissen hierarchisch strukturieren
+
+Organisiere Information von allgemein zu spezifisch:
+
+```markdown
+# API-Design-Skill
+
+## Kernprinzipien
+- Ressourcen sollten Nomen sein, keine Verben
+- HTTP-Methoden semantisch nutzen
+- APIs von Tag eins versionieren
+
+## Detaillierte Richtlinien
+[Spezifischere Regeln...]
+
+## Referenzmaterialien
+- Siehe `rest-conventions.md` für Namenskonventionen
+- Siehe `error-codes.md` für Standard-Fehlerantworten
+```
+
+### 3. Konkrete Beispiele einschließen
+
+Abstrakte Regeln werden mit Beispielen klar:
+
+```markdown
+## Endpoint-Benennung
+
+✅ Gut:
+- GET /users/{id}
+- POST /orders
+- DELETE /products/{id}/reviews/{reviewId}
+
+❌ Vermeiden:
+- GET /getUser
+- POST /createNewOrder
+- DELETE /removeProductReview
+```
+
+## Skills komponieren
+
+Agents werden mächtig, wenn mehrere Skills zusammenarbeiten. Bedenke, wie Skills sich ergänzen können:
+
+<div className="my-6 flex flex-wrap items-center justify-center gap-4 p-6 bg-muted/30 rounded-lg">
+  <div className="px-4 py-2 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-sm font-medium text-blue-700 dark:text-blue-300">
+    Code Review
+  </div>
+  <div className="text-xl">+</div>
+  <div className="px-4 py-2 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg text-sm font-medium text-purple-700 dark:text-purple-300">
+    Security Audit
+  </div>
+  <div className="text-xl">+</div>
+  <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg text-sm font-medium text-green-700 dark:text-green-300">
+    Dokumentation
+  </div>
+  <div className="text-xl">=</div>
+  <div className="px-4 py-2 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-lg text-sm font-medium text-amber-700 dark:text-amber-300">
+    Kompletter Code-Quality-Agent
+  </div>
+</div>
+
+Beim Komponieren von Skills stelle sicher, dass sie nicht konfliktieren. Skills sollten sein:
+
+- **Modular** - Jeder Skill behandelt eine Domäne gut
+- **Kompatibel** - Skills sollten keine widersprüchlichen Anweisungen geben
+- **Priorisiert** - Wenn Skills überlappen, definiere welcher Vorrang hat
+
+## Skills teilen und entdecken
+
+Skills sind am wertvollsten, wenn sie geteilt werden. Plattformen wie [prompts.chat](https://prompts.chat/skills) erlauben dir:
+
+- **Entdecken** - Community-erstellte Skills für häufige Aufgaben
+- **Herunterladen** - Skills direkt in deine Projekte
+- **Teilen** - Deine eigene Expertise als wiederverwendbare Skills
+- **Iterieren** - Auf Skills basierend auf realem Einsatz
+
+<Callout type="tip" title="Mit Community-Skills starten">
+Bevor du einen Skill von Grund auf baust, prüfe ob jemand dein Problem bereits gelöst hat. Community-Skills sind kampferprobt und oft besser als bei null anzufangen.
+</Callout>
+
+## Das Agent-Skill-Ökosystem
+
+Die Beziehung zwischen Agents und Skills schafft ein mächtiges Ökosystem:
+
+<div className="my-6 p-6 bg-muted/30 rounded-lg border">
+  <div className="text-center mb-4">
+    <span className="text-sm font-semibold text-muted-foreground">KI-Agent</span>
+  </div>
+  <div className="flex flex-wrap justify-center gap-3 mb-4">
+    <div className="px-4 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
+      <p className="font-medium text-blue-700 dark:text-blue-300 text-sm m-0!">Code Review</p>
+      <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">Skill 1</p>
+    </div>
+    <div className="px-4 py-3 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg text-center">
+      <p className="font-medium text-purple-700 dark:text-purple-300 text-sm m-0!">API Design</p>
+      <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">Skill 2</p>
+    </div>
+    <div className="px-4 py-3 bg-teal-100 dark:bg-teal-900/50 border border-teal-200 dark:border-teal-800 rounded-lg text-center">
+      <p className="font-medium text-teal-700 dark:text-teal-300 text-sm m-0!">Test Writing</p>
+      <p className="text-xs text-teal-600 dark:text-teal-400 m-0!">Skill 3</p>
+    </div>
+  </div>
+  <div className="flex justify-center mb-3">
+    <div className="text-muted-foreground">↓</div>
+  </div>
+  <div className="flex justify-center">
+    <div className="px-6 py-4 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-lg text-center">
+      <p className="font-semibold text-amber-700 dark:text-amber-300 text-sm m-0!">Kern-Prompts</p>
+      <p className="text-xs text-amber-600 dark:text-amber-400 m-0!">Planung • Tools • Recovery • Memory</p>
+    </div>
+  </div>
+</div>
+
+Der Agent liefert das Ausführungs-Framework—Planung, Tool-Nutzung und Memory—während Skills Domänenexpertise liefern. Diese Trennung bedeutet:
+
+- **Skills sind portabel** - Derselbe Skill funktioniert mit verschiedenen Agents
+- **Agents sind erweiterbar** - Füge neue Fähigkeiten hinzu durch Hinzufügen von Skills
+- **Expertise ist teilbar** - Domänenexperten können Skills beitragen, ohne komplette Agents zu bauen
+
+## Best Practices
+
+### Für das Bauen von Skills
+
+1. **Starte spezifisch, dann generalisiere** - Baue zuerst einen Skill für deinen exakten Anwendungsfall, dann abstrahiere
+2. **Fehlerfälle einschließen** - Dokumentiere, was der Skill nicht kann und wie damit umzugehen ist
+3. **Versioniere deine Skills** - Tracke Änderungen, damit Agents auf stabile Versionen vertrauen können
+4. **Teste mit echten Aufgaben** - Validiere Skills gegen tatsächliche Arbeit, nicht nur Theorie
+
+### Für die Nutzung von Skills mit Agents
+
+1. **Den Skill zuerst lesen** - Verstehe, was ein Skill tut, bevor du ihn deployst
+2. **Durchdacht anpassen** - Überschreibe Skill-Defaults nur wenn nötig
+3. **Performance überwachen** - Tracke, wie gut Skills in deinem Kontext performen
+4. **Verbesserungen beitragen** - Wenn du einen Skill verbesserst, erwäge zurückzugeben
+
+<Callout type="info" title="Die Zukunft ist komponierbar">
+Da KI-Agents fähiger werden, wird die Fähigkeit, Skills zu komponieren, zu teilen und anzupassen, eine Kernkompetenz. Die Prompt Engineers von morgen werden nicht nur Prompts schreiben—sie werden Skill-Ökosysteme architekturieren, die KI-Agents wirklich zu Experten in spezifischen Domänen machen.
+</Callout>
+
+<Quiz 
+  question="Was ist der Hauptunterschied zwischen einem einfachen Prompt und einem Skill?"
+  options={[
+    "Skills sind länger als Prompts",
+    "Skills sind wiederverwendbare, mehrteilige Pakete, die Agents Domänenexpertise geben",
+    "Skills funktionieren nur mit bestimmten KI-Modellen",
+    "Skills brauchen keine Prompts"
+  ]}
+  correctIndex={1}
+  explanation="Skills sind umfassende, portable Pakete, die mehrere Prompts, Referenz-Docs, Skripte und Konfiguration kombinieren. Sie sind wiederverwendbare Bausteine, die jedem Agent hinzugefügt werden können, um ihm spezifische Fähigkeiten zu geben."
+/>
+
+<Quiz 
+  question="Was ist der Agent-Loop?"
+  options={[
+    "Eine Debugging-Technik für KI-Fehler",
+    "Plan → Ausführen → Beobachten → Anpassen, wiederholt bis das Ziel erreicht ist",
+    "Ein Weg, mehrere Prompts zu verketten",
+    "Eine Methode zum Trainieren neuer KI-Modelle"
+  ]}
+  correctIndex={1}
+  explanation="KI-Agents arbeiten in einer kontinuierlichen Schleife: sie planen, wie sie eine Aufgabe angehen, führen Aktionen aus, beobachten die Ergebnisse und passen ihren Ansatz basierend auf Feedback an—wiederholend bis das Ziel erreicht ist."
+/>
+
+<Quiz 
+  question="Warum werden Skills als 'wiederverwendbare Blöcke von Agents' beschrieben?"
+  options={[
+    "Weil sie nur einmal verwendet werden können",
+    "Weil sie in einer Block-Programmiersprache geschrieben sind",
+    "Weil jeder Agent einen Skill laden kann, um diese Fähigkeit sofort zu erlangen",
+    "Weil Skills die Notwendigkeit von Agents ersetzen"
+  ]}
+  correctIndex={2}
+  explanation="Skills sind portable Expertise-Pakete. Schreib einen Code-Review-Skill einmal, und jeder Coding-Agent kann ein Experten-Code-Reviewer werden, indem er diesen Skill lädt—wie LEGO-Steine, die in jede Struktur einrasten."
+/>

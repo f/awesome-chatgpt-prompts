@@ -1,0 +1,268 @@
+KI kann Forschungs-Workflows von der Literaturrecherche bis zur Datenanalyse beschleunigen. Este capítulo behandelt Prompting-Techniken für akademische und professionelle Forschung.
+
+<Callout type="info" title="KI in der Forschung">
+KI kann bei Synthese, Analyse und Schreiben unterstützen—aber kann kritisches Denken, ethisches Urteil oder Domänenexpertise nicht ersetzen. Verifiziere immer Behauptungen und zitiere Originalquellen.
+</Callout>
+
+## Literatur- & Informationsrecherche
+
+### Do's und Don'ts: Forschungs-Prompts
+
+<Compare 
+  before={{ label: "❌ Vage Anfrage", content: "Fasse dieses Paper für mich zusammen." }}
+  after={{ label: "✓ Strukturierte Anfrage", content: "Fasse dieses Paper für meine Literaturrecherche über Machine Learning im Gesundheitswesen zusammen.\n\nLiefere:\n1. Hauptthese (1-2 Sätze)\n2. Methodik\n3. Kernerkenntnisse (Aufzählung)\n4. Limitationen\n5. Relevanz für meine Forschung\n\nLeseniveau: Doktorand" }}
+/>
+
+### Paper-Resumen
+
+<TryIt compact prompt={`Fasse dieses akademische Paper zusammen:
+
+[Paper-Abstract oder Volltext]
+
+Liefere:
+1. **Hauptthese** - Zentrales Argument (1-2 Sätze)
+2. **Methodik** - Wie sie es angegangen sind
+3. **Kernerkenntnisse** - Wichtigste Ergebnisse (Aufzählung)
+4. **Beiträge** - Was ist neu/signifikant
+5. **Limitationen** - Anerkannte oder offensichtliche Schwächen
+6. **Relevanz für [mein Forschungsthema]** - Wie es zusammenhängt
+
+Leseniveau: \${leseNiveau:Doktorand}`} />
+
+### Literatur-Synthese
+
+<TryIt compact prompt={`Synthetisiere diese Paper über \${thema:die Effektivität von Remote-Arbeit}:
+
+Paper 1: \${paper1:Schmidt 2021 - fand 15% Produktivitätssteigerung}
+Paper 2: \${paper2:Müller 2022 - notierte Kollaborations-Herausforderungen}
+Paper 3: \${paper3:Weber 2023 - Hybrid-Modell zeigte beste Ergebnisse}
+
+Analysiere:
+1. **Gemeinsame Themen** - Worin stimmen sie überein?
+2. **Widersprüche** - Wo sind sie uneins?
+3. **Lücken** - Was wird nicht adressiert?
+4. **Evolution** - Wie hat sich das Denken entwickelt?
+5. **Synthese** - Integriertes Verständnis
+
+Formatiere als: Literaturübersichts-Absatz geeignet für \${outputTyp:Dissertation}`} />
+
+### Forschungsfragen-Entwicklung
+
+<TryIt compact prompt={`Hilf mir Forschungsfragen zu entwickeln für \${thema:KI-Adoption im Gesundheitswesen}.
+
+Contexto:
+- Feld: \${feld:Gesundheitsinformatik}
+- Aktueller Wissensstand: \${aktuellesWissen:KI-Tools existieren, aber Adoption ist langsam}
+- Identifizierte Lücke: \${luecke:begrenztes Verständnis von Arzt-Widerstandsfaktoren}
+- Mein Interesse: \${interesse:organisatorisches Change Management}
+
+Generiere:
+1. **Primäre FF** - Hauptfrage zu beantworten
+2. **Unterfragen** - Unterstützende Anfragen (3-4)
+3. **Hypothesen** - Testbare Vorhersagen (falls zutreffend)
+
+Kriterien: Fragen sollten sein:
+- Mit verfügbaren Methoden beantwortbar
+- Signifikant für das Feld
+- Angemessen eingegrenzt`} />
+
+## Datenanalyse
+
+<Callout type="warning" title="KI kann deine tatsächlichen Daten nicht analysieren">
+KI kann Methodik leiten und bei der Interpretation helfen, aber sie kann nicht auf deine tatsächlichen Datensätze zugreifen oder sie verarbeiten. Füge niemals sensible Forschungsdaten in Prompts ein. Nutze KI für **Anleitung**, nicht Berechnung.
+</Callout>
+
+### Statistische Analyse-Anleitung
+
+<TryIt compact prompt={`Hilf mir diese Daten zu analysieren:
+
+Datenbeschreibung:
+- Variablen: \${variablen:Alter (kontinuierlich), Behandlungsgruppe (kategorial: A/B/C), Ergebnis-Score (kontinuierlich)}
+- Stichprobengröße: \${stichprobe:n=150 (50 pro Gruppe)}
+- Forschungsfrage: \${forschungsfrage:Beeinflusst der Behandlungstyp die Ergebnis-Scores?}
+- Datencharakteristika: \${charakteristika:normalverteilt, keine fehlenden Werte}
+
+Berate zu:
+1. **Geeignete Tests** - Welche statistischen Tests nutzen
+2. **Zu prüfende Annahmen** - Voraussetzungen
+3. **Ergebnisinterpretation** - Was verschiedene Resultate bedeuten
+4. **Effektstärke** - Praktische Signifikanz
+5. **Berichterstattung** - Wie Ergebnisse präsentieren
+
+Nota: Leite meine Analyse, erfinde keine Ergebnisse.`} />
+
+### Qualitative Analyse
+
+<TryIt compact prompt={`Hilf mir diese qualitativen Antworten zu analysieren:
+
+Antworten:
+\${antworten:füge Interview-Auszüge oder Umfrageantworten ein}
+
+Mit \${methode:thematischer Analyse}:
+
+1. **Initiale Codes** - Identifiziere wiederkehrende Konzepte
+2. **Kategorien** - Gruppiere verwandte Codes
+3. **Themen** - Übergreifende Muster
+4. **Beziehungen** - Wie Themen zusammenhängen
+5. **Repräsentative Zitate** - Belege für jedes Thema
+
+Bewahre: Teilnehmerstimme und Kontext`} />
+
+## Strukturierte Analyse-Frameworks
+
+### PESTLE-Analyse
+
+<TryIt compact prompt={`Führe eine PESTLE-Analyse durch für \${thema:Elektrofahrzeug-Industrie in Europa}.
+
+**Politische** Faktoren:
+- Regierungspolitik, Regulierungen, politische Stabilität
+
+**Wirtschaftliche** Faktoren:
+- Wirtschaftswachstum, Inflation, Wechselkurse, Arbeitslosigkeit
+
+**Soziale** Faktoren:
+- Demografie, kulturelle Trends, Lebensstil-Änderungen
+
+**Technologische** Faktoren:
+- Innovation, F&E, Automatisierung, Technologie-Wandel
+
+**Rechtliche** Faktoren:
+- Gesetzgebung, Regulierungsbehörden, Arbeitsrecht
+
+**Umwelt**-Faktoren:
+- Klima, Nachhaltigkeit, Umweltvorschriften
+
+Für jeden: Aktueller Stand + Trends + Implikationen`} />
+
+### Ursachenanalyse
+
+<TryIt compact prompt={`Führe eine Ursachenanalyse durch für \${problem:Kundenabwanderung stieg letztes Quartal um 20%}.
+
+Problembeschreibung:
+\${problembeschreibung:Monatliche Abwanderungsrate stieg von 3% auf 3,6% zwischen Q3 und Q4}
+
+Mit 5-Why-Methode:
+1. Warum? Erste Ebene Ursache
+   2. Warum? Tiefere Ursache
+      3. Warum? Noch tiefer
+         4. Warum? Nähert sich Kern
+            5. Warum? Grundursache
+
+Alternative: Ishikawa-Diagramm-Kategorien
+- Menschen
+- Prozesse
+- Ausrüstung
+- Materialien
+- Umwelt
+- Management
+
+Liefere: Grundursache(n) + empfohlene Maßnahmen`} />
+
+### Gap-Analyse
+
+<TryIt compact prompt={`Führe eine Gap-Analyse durch für \${thema:unseren Kundensupport-Betrieb}.
+
+**Ist-Zustand:**
+- \${istZustand:Durchschnittliche Antwortzeit 24 Stunden, CSAT 3,2/5}
+
+**Soll-Zustand:**
+- \${sollZustand:Antwortzeit unter 4 Stunden, CSAT 4,5/5}
+
+**Gap-Identifikation:**
+| Bereich | Aktuell | Gewünscht | Gap | Priorität |
+|---------|---------|-----------|-----|-----------|
+| ... | ... | ... | ... | H/M/N |
+
+**Maßnahmenplan:**
+Für jede Hochprioritäts-Lücke:
+- Spezifische Maßnahmen
+- Benötigte Ressourcen
+- Zeitplan
+- Erfolgsmetriken`} />
+
+## Akademisches Schreiben Support
+
+### Argumentstruktur
+
+<TryIt compact prompt={`Hilf mir ein Argument zu strukturieren für \${thema:warum Remote-Arbeit permanente Policy werden sollte}.
+
+Hauptbehauptung: \${these:Organisationen sollten permanente Remote/Hybrid-Policies für Wissensarbeiter einführen}
+
+Benötigt:
+1. **Prämissen** - Unterstützende Behauptungen, die zur Schlussfolgerung führen
+2. **Belege** - Daten/Quellen für jede Prämisse
+3. **Gegenargumente** - Gegenpositionen
+4. **Widerlegungen** - Antworten auf Gegenargumente
+5. **Logischer Fluss** - Wie alles zusammenhängt
+
+Prüfe auf:
+- Logische Fehlschlüsse
+- Unbelegte Behauptungen
+- Lücken im Reasoning`} />
+
+### Methoden-Abschnitt
+
+<TryIt compact prompt={`Hilf mir einen Methoden-Abschnitt zu schreiben für:
+
+Studientyp: \${studienTyp:Umfrage}
+Teilnehmer: \${teilnehmer:200 Studierende, Convenience Sampling}
+Materialien: \${materialien:Online-Fragebogen mit Likert-Skalen}
+Durchführung: \${durchfuehrung:Teilnehmer füllten 20-minütige Online-Umfrage aus}
+Analyse: \${analyse:deskriptive Statistik und Regressionsanalyse}
+
+Standards: Folge \${standards:APA 7. Auflage} Richtlinien
+Inkludiere: Genug Detail für Replikation
+Ton: Passiv, Vergangenheitsform`} />
+
+## Kritische Analyse
+
+### Quellenbeurteilung
+
+<TryIt compact prompt={`Bewerte diese Quelle für akademische Nutzung:
+
+Quelle: \${quelle:füge Zitation oder Link ein}
+Inhaltszusammenfassung: \${zusammenfassung:kurze Beschreibung der Behauptungen}
+
+Bewerte nach CRAAP-Kriterien:
+- **Aktualität**: Wann veröffentlicht? Aktualisiert? Aktuell genug?
+- **Relevanz**: Bezug zu meinem Thema? Angemessenes Level?
+- **Autorität**: Autorenqualifikation? Verlagsreputation?
+- **Genauigkeit**: Durch Belege gestützt? Peer-reviewed?
+- **Zweck**: Warum wurde es geschrieben? Bias erkennbar?
+
+Urteil: Hochglaubwürdig / Mit Vorsicht nutzen / Vermeiden
+Verwendung: Empfehlungen zur Einbindung`} />
+
+## Prompt-Vorlagen von prompts.chat
+
+### Agiere als Forschungsassistent
+
+<TryIt compact prompt={`Ich möchte, dass du als Forschungsassistent agierst. Hilf mir Themen zu erkunden, Informationen zu finden, Quellen zu synthetisieren und Argumente zu entwickeln. Stelle klärende Fragen, schlage relevante Untersuchungsbereiche vor und hilf mir kritisch über Belege nachzudenken. Sei gründlich aber erkenne die Grenzen deines Wissens an.`} />
+
+### Agiere als Datenanalyst
+
+<TryIt compact prompt={`Ich möchte, dass du als Datenanalyst agierst. Ich werde Datensätze und Forschungsfragen beschreiben, und du wirst Analyseansätze vorschlagen, bei der Interpretation helfen und potenzielle Probleme identifizieren. Fokussiere auf solide Methodik und klare Kommunikation der Ergebnisse.`} />
+
+### Agiere als Peer Reviewer
+
+<TryIt compact prompt={`Ich möchte, dass du als akademischer Peer Reviewer agierst. Ich werde Manuskripte oder Abschnitte teilen, und du wirst konstruktives Feedback zu Methodik, Argumentation, Schreiben und Beitrag zum Feld geben. Sei rigoros aber unterstützend, notiere Stärken und Verbesserungsbereiche.`} />
+
+## Resumen
+
+<Callout type="tip" title="Técnicas clave">
+Stelle Forschungskontext und Ziele klar dar, spezifiziere das zu nutzende Analyse-Framework, fordere Anerkennung von Limitationen an, bitte um evidenzbasiertes Reasoning und bewahre akademische Rigorosität und Ehrlichkeit.
+</Callout>
+
+<Quiz 
+  question="Was ist das Wichtigste, das man bei der Nutzung von KI für Forschung bedenken sollte?"
+  options={[
+    "KI kann den Bedarf an Primärquellen ersetzen",
+    "KI-Analyse ist immer akkurat und aktuell",
+    "Verifiziere KI-Behauptungen immer unabhängig und zitiere Originalquellen",
+    "KI kann auf deine tatsächlichen Datensätze zugreifen und sie analysieren"
+  ]}
+  correctIndex={2}
+  explanation="KI kann bei Synthese und Struktur helfen, aber sie kann Zitationen halluzinieren, veraltete Informationen haben und kann nicht auf deine tatsächlichen Daten zugreifen. Verifiziere Behauptungen immer gegen Primärquellen und bewahre akademische Integrität."
+/>
+
+Denke daran: KI kann Forschung unterstützen, aber nicht kritisches Denken, ethisches Urteil oder Domänenexpertise ersetzen. Verifiziere Behauptungen immer unabhängig.

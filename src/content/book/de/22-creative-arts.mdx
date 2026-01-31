@@ -1,0 +1,248 @@
+KI ist ein mächtiger kreativer Kollaborateur. Dieses Kapitel behandelt Prompting-Techniken für visuelle Kunst, Musik, Game Design und andere kreative Bereiche.
+
+<Callout type="info" title="KI als Kreativpartner">
+KI erweitert deine kreativen Möglichkeiten—nutze sie, um Variationen zu erkunden, Blockaden zu überwinden und Optionen zu generieren. Die kreative Vision und finalen Entscheidungen bleiben bei dir.
+</Callout>
+
+## Visuelle Kunst & Design
+
+### Do's und Don'ts: Bild-Prompts
+
+<Compare 
+  before={{ label: "❌ Vager Prompt", content: "Ein Zauberer in einer Bibliothek" }}
+  after={{ label: "✓ Reiche Beschreibung", content: "Ein weiser älterer Zauberer, der ein altes Buch liest, sitzt in einer Turmbibliothek bei Sonnenuntergang, Fantasy-Kunststil, warme goldene Beleuchtung, kontemplative Stimmung, hochdetailliert, 4K, von Greg Rutkowski" }}
+/>
+
+### Bild-Prompt-Erstellung
+
+Bei der Arbeit mit Bildgenerierungsmodellen (DALL-E, Midjourney, Stable Diffusion):
+
+<TryIt compact prompt={`Erstelle einen Bild-Prompt für [Konzept].
+
+Struktur:
+[Subjekt] + [Aktion/Pose] + [Setting/Hintergrund] + [Stil] + 
+[Beleuchtung] + [Stimmung] + [Technische Specs]
+
+Beispiel:
+"Ein weiser älterer Zauberer, der ein altes Buch liest, sitzt in 
+einer Turmbibliothek bei Sonnenuntergang, Fantasy-Kunststil, warme 
+goldene Beleuchtung, kontemplative Stimmung, hochdetailliert, 4K"`} />
+
+### Art Direction
+
+<TryIt compact prompt={`Beschreibe Artwork für \${projekt:Fantasy-Buchcover}.
+
+Inkludiere:
+1. **Komposition** - Anordnung der Elemente
+2. **Farbpalette** - spezifische Farben und ihre Beziehungen
+3. **Stilreferenz** - ähnliche Künstler/Werke/Bewegungen
+4. **Fokalpunkt** - wohin das Auge gezogen werden soll
+5. **Stimmung/Atmosphäre** - emotionale Qualität
+6. **Technischer Ansatz** - Medium, Technik
+
+Zweck: \${zweck:Illustration für Buchcover}`} />
+
+### Design-Kritik
+
+<TryIt compact prompt={`Kritisiere dieses Design aus professioneller Perspektive.
+
+Design: \${design:eine Landing Page mit Hero-Sektion, Feature-Grid und Testimonials}
+Kontext: \${kontext:SaaS-Produkt für Projektmanagement}
+
+Bewerte:
+1. **Visuelle Hierarchie** - Ist die Wichtigkeit klar?
+2. **Balance** - Ist es visuell stabil?
+3. **Kontrast** - Heben sich Elemente angemessen ab?
+4. **Ausrichtung** - Ist es organisiert?
+5. **Wiederholung** - Gibt es Konsistenz?
+6. **Nähe** - Sind verwandte Elemente gruppiert?
+
+Liefere:
+- Spezifische Stärken
+- Verbesserungsbereiche
+- Umsetzbare Vorschläge`} />
+
+## Kreatives Schreiben
+
+<Callout type="tip" title="Kreative Einschränkungs-Prinzip">
+**Einschränkungen befeuern Kreativität.** Ein Prompt wie "schreib irgendwas" produziert generische Ergebnisse. Spezifische Einschränkungen wie Genre, Ton und Struktur erzwingen unerwartete, interessante Lösungen.
+</Callout>
+
+### Worldbuilding
+
+<TryIt compact prompt={`Hilf mir eine Welt zu bauen für \${projekt:einen Fantasy-Roman}.
+
+Genre: \${genre:Dark Fantasy}
+Scope: \${scope:ein Königreich}
+
+Entwickle:
+1. **Geografie** - physische Umgebung
+2. **Geschichte** - Schlüsselereignisse, die diese Welt formten
+3. **Kultur** - Bräuche, Werte, Alltag
+4. **Machtstrukturen** - wer regiert, wie
+5. **Wirtschaft** - wie Menschen überleben
+6. **Konflikt** - Quellen von Spannung
+7. **Einzigartiges Element** - was macht diese Welt besonders
+
+Beginne mit groben Strichen, dann detailliere einen Aspekt tiefgehend.`} />
+
+### Plot-Entwicklung
+
+<TryIt compact prompt={`Hilf mir einen Plot zu entwickeln für \${storyKonzept:ein Raubüberfall, der schiefgeht}.
+
+Genre: \${genre:Thriller}
+Ton: \${ton:düster mit Momenten von schwarzem Humor}
+Länge: \${laenge:Roman}
+
+Mit \${struktur:Drei-Akt}-Struktur:
+
+1. **Setup** - Welt, Charakter, normales Leben
+2. **Auslösendes Ereignis** - was die Normalität stört
+3. **Steigende Handlung** - eskalierende Herausforderungen
+4. **Mittelpunkt** - große Wende oder Enthüllung
+5. **Krise** - dunkelster Moment
+6. **Höhepunkt** - Konfrontation
+7. **Auflösung** - neue Normalität
+
+Für jeden Beat, schlage spezifische Szenen vor.`} />
+
+### Dialog-Schreiben
+
+<TryIt compact prompt={`Schreib einen Dialog zwischen \${charaktere:zwei Geschwistern} über \${thema:die Rückkehr ihres entfremdeten Vaters}.
+
+Charakter A: \${charakterA:ältere Schwester, beschützend, pragmatisch, will weitermachen}
+Charakter B: \${charakterB:jüngerer Bruder, hoffnungsvoll, emotional, will Kontakt wieder aufnehmen}
+Beziehung: \${beziehung:eng aber mit unterschiedlichen Bewältigungsstilen}
+Subtext: \${subtext:unausgesprochener Groll darüber, wer mehr Last trug}
+
+Richtlinien:
+- Jeder Charakter hat eigene Stimme
+- Dialog enthüllt Charakter, nicht nur Information
+- Inkludiere Beats (Aktionen/Reaktionen)
+- Baue Spannung auf oder entwickle Beziehung
+- Zeige, erzähle nicht Emotionen`} />
+
+## Musik & Audio
+
+### Song-Struktur
+
+<TryIt compact prompt={`Hilf mir einen Song zu strukturieren.
+
+Genre: \${genre:Indie Folk}
+Stimmung: \${stimmung:bittersüße Nostalgie}
+Tempo: \${tempo:moderat, etwa 90 BPM}
+Thema/Botschaft: \${thema:Zurückblicken auf eine Heimatstadt, der man entwachsen ist}
+
+Liefere:
+1. **Struktur** - Strophe/Refrain/Bridge-Anordnung
+2. **Strophe 1** - Textkonzept, 4-8 Zeilen
+3. **Refrain** - Hook-Konzept, 4 Zeilen
+4. **Strophe 2** - Entwicklung, 4-8 Zeilen
+5. **Bridge** - Kontrast/Wende, 4 Zeilen
+6. **Akkordfolgen-Vorschlag**
+7. **Melodische Richtungsnotizen**`} />
+
+## Game Design
+
+### Spielmechanik-Design
+
+<TryIt compact prompt={`Designe eine Spielmechanik für \${spielTyp:einen Puzzle-Platformer}.
+
+Core Loop: \${coreLoop:Gravitation manipulieren, um räumliche Rätsel zu lösen}
+Spielermotivation: \${motivation:Meisterschaft und Entdeckung}
+Benötigte Fähigkeit: \${faehigkeit:räumliches Denken und Timing}
+
+Beschreibe:
+1. **Die Mechanik** - wie sie funktioniert
+2. **Spielereingabe** - was sie kontrollieren
+3. **Feedback** - wie sie das Ergebnis erfahren
+4. **Progression** - wie sie sich entwickelt/vertieft
+5. **Balance-Überlegungen**
+6. **Edge Cases** - ungewöhnliche Szenarien`} />
+
+### Level-Design
+
+<TryIt compact prompt={`Designe ein Level für \${spielTyp:ein Stealth-Action-Spiel}.
+
+Setting: \${setting:Firmenzentrale bei Nacht}
+Ziele: \${ziele:in den Serverraum eindringen und Daten extrahieren}
+Schwierigkeit: \${schwierigkeit:Mitte des Spiels, Spieler hat Grundfähigkeiten}
+
+Inkludiere:
+1. **Layout-Übersicht** - räumliche Beschreibung
+2. **Pacing-Graph** - Spannung über Zeit
+3. **Herausforderungen** - Hindernisse und Überwindung
+4. **Belohnungen** - was Spieler gewinnt
+5. **Geheimnisse** - optionale Entdeckungen
+6. **Lehrmomente** - Fähigkeits-Einführung
+7. **Umwelt-Storytelling** - Narrativ durch Design`} />
+
+## Brainstorming & Ideenfindung
+
+### Kreatives Brainstorming
+
+<TryIt compact prompt={`Brainstorme Ideen für \${projekt:ein Mobile Game über Achtsamkeit}.
+
+Einschränkungen:
+- \${einschraenkung1:muss in 2-Minuten-Sessions spielbar sein}
+- \${einschraenkung2:keine Gewalt oder Wettbewerb}
+- \${einschraenkung3:Naturthemen}
+
+Generiere:
+1. **10 konventionelle Ideen** - solide, erwartbar
+2. **5 ungewöhnliche Ideen** - unerwartete Winkel
+3. **3 wilde Ideen** - grenzensprengend
+4. **1 Kombination** - beste Elemente zusammenführen
+
+Für jede: ein Satz Beschreibung + warum sie funktioniert.
+Nicht selbst zensieren—erst Quantität vor Qualität.`} />
+
+### Kreative Einschränkungen
+
+<TryIt compact prompt={`Gib mir kreative Einschränkungen für \${projektTyp:das Schreiben einer Kurzgeschichte}.
+
+Ich will Einschränkungen, die:
+- Unerwartete Entscheidungen erzwingen
+- Offensichtliche Lösungen eliminieren
+- Produktive Limitationen schaffen
+
+Format:
+1. Einschränkung - Warum sie Kreativität hilft
+2. ...
+
+Zeige dann ein Beispiel, wie diese Einschränkungen 
+ein generisches Konzept in etwas Interessantes verwandeln.`} />
+
+## Prompt-Vorlagen von prompts.chat
+
+### Agiere als Creative Director
+
+<TryIt compact prompt={`Ich möchte, dass du als Creative Director agierst. Ich werde kreative Projekte beschreiben und du wirst kreative Visionen entwickeln, ästhetische Entscheidungen leiten und konzeptuelle Kohärenz sicherstellen. Nutze Kunstgeschichte, Design-Prinzipien und kulturelle Trends. Hilf mir, mutige kreative Entscheidungen mit klarer Begründung zu treffen.`} />
+
+### Agiere als Worldbuilder
+
+<TryIt compact prompt={`Ich möchte, dass du als Worldbuilder agierst. Hilf mir, reiche, konsistente fiktionale Welten zu erschaffen mit detaillierten Geschichten, Kulturen und Systemen. Stelle forschende Fragen, um die Welt zu vertiefen. Zeige Inkonsistenzen auf und schlage Lösungen vor. Mache die Welt lebendig und glaubwürdig.`} />
+
+### Agiere als Dungeon Master
+
+<TryIt compact prompt={`Ich möchte, dass du als Dungeon Master für ein Tabletop-RPG agierst. Erstelle fesselnde Szenarien, beschreibe lebendige Settings, spiele NPCs mit eigenen Persönlichkeiten und reagiere dynamisch auf Spielerentscheidungen. Balance Herausforderung mit Spaß und halte das Narrativ packend.`} />
+
+## Zusammenfassung
+
+<Callout type="tip" title="Schlüsseltechniken">
+Liefere genug Struktur um zu leiten ohne einzuschränken, umarme Spezifität (vage = generisch), inkludiere Referenzen und Inspirationen, fordere Variationen und Alternativen an, und behalte deine kreative Vision während du Möglichkeiten erkundest.
+</Callout>
+
+<Quiz 
+  question="Warum produzieren spezifische Einschränkungen oft bessere kreative Ergebnisse als offene Prompts?"
+  options={[
+    "KI kann nur strikte Anweisungen befolgen",
+    "Einschränkungen erzwingen unerwartete Lösungen und eliminieren offensichtliche Wahlen",
+    "Offene Prompts sind zu schwierig für KI",
+    "Einschränkungen machen die Ausgabe kürzer"
+  ]}
+  correctIndex={1}
+  explanation="Paradoxerweise entfachen Limitationen Kreativität. Wenn offensichtliche Lösungen eliminiert sind, bist du gezwungen, unerwartete Richtungen zu erkunden. 'Schreib eine Geschichte' produziert Klischees; 'Schreib einen Krimi auf einem U-Boot, rückwärts erzählt, unter 500 Wörtern' produziert etwas Einzigartiges."
+/>
+
+KI ist ein Kollaborateur, kein Ersatz für kreative Vision. Nutze sie zum Erkunden, Optionen generieren und Blockaden überwinden—aber die kreativen Entscheidungen bleiben bei dir.

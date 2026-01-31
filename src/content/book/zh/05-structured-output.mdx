@@ -1,0 +1,411 @@
+Getting consistent, well-formatted output is essential for production applications and efficient workflows. This chapter covers techniques for controlling exactly how AI models format their responses.
+
+<Callout type="info" title="From Prose to Data">
+Structured output transforms AI responses from freeform text into actionable, parseable data.
+</Callout>
+
+## Why Structure Matters
+
+<StructuredOutputDemo />
+
+## Basic Formatting Techniques
+
+### Lists
+
+Lists are perfect for step-by-step instructions, ranked items, or collections of related points. They're easy to scan and parse. Use **numbered lists** when order matters (steps, rankings) and **bullet points** for unordered collections.
+
+<TryIt 
+  compact
+  title="List Formatting"
+  prompt={`Provide 5 tips for better sleep.
+
+Format: Numbered list with a brief explanation for each.
+Each tip should be bold, followed by a dash and explanation.`}
+/>
+
+<Callout type="tip" title="List Best Practices">
+Specify the exact number of items you want, whether to include explanations, and if items should be bold or have a specific structure.
+</Callout>
+
+### Tables
+
+Tables excel at comparing multiple items across the same dimensions. They're ideal for feature comparisons, data summaries, and any information with consistent attributes. Always define your column headers explicitly.
+
+<TryIt 
+  compact
+  title="Table Formatting"
+  prompt={`Compare the top 4 Python web frameworks.
+
+Format as a markdown table with columns:
+| Framework | Best For | Learning Curve | Performance |`}
+/>
+
+<Callout type="tip" title="Table Best Practices">
+Specify column names, expected data types (text, numbers, ratings), and how many rows you need. For complex comparisons, limit to 4-6 columns for readability.
+</Callout>
+
+### Headers and Sections
+
+Headers create a clear document structure, making long responses scannable and organized. Use them for reports, analyses, or any multi-part response. Hierarchical headers (##, ###) show relationships between sections.
+
+```
+Analyze this business proposal.
+
+Structure your response with these sections:
+## Executive Summary
+## Strengths
+## Weaknesses
+## Recommendations
+## Risk Assessment
+```
+
+<Callout type="tip" title="Section Best Practices">
+List your sections in the order you want them. For consistency, specify what each section should contain (e.g., "Executive Summary: 2-3 sentences only").
+</Callout>
+
+### Emphasis with Uppercase Directives
+
+Uppercase words act as strong signals to the model, emphasizing critical constraints or requirements. Use them sparingly for maximum impact—overuse dilutes their effectiveness.
+
+**Common Uppercase Directives:**
+
+<InfoGrid items={[
+  { label: "NEVER", description: "Absolute prohibition: \"NEVER include personal opinions\"", color: "red" },
+  { label: "ALWAYS", description: "Mandatory requirement: \"ALWAYS cite sources\"", color: "green" },
+  { label: "IMPORTANT", description: "Critical instruction: \"IMPORTANT: Keep responses under 100 words\"", color: "amber" },
+  { label: "DO NOT", description: "Strong prohibition: \"DO NOT make up statistics\"", color: "red" },
+  { label: "MUST", description: "Required action: \"Output MUST be valid JSON\"", color: "blue" },
+  { label: "ONLY", description: "Restriction: \"Return ONLY the code, no explanations\"", color: "purple" },
+]} />
+
+```
+Summarize this article.
+
+IMPORTANT: Keep the summary under 100 words.
+NEVER add information not present in the original.
+ALWAYS maintain the original tone and perspective.
+DO NOT include your own opinions or analysis.
+```
+
+<Callout type="warning" title="Use Sparingly">
+If everything is uppercase or marked as critical, nothing stands out. Reserve these directives for genuinely important constraints.
+</Callout>
+
+## JSON Output
+
+JSON (JavaScript Object Notation) is the most popular format for structured AI output. It's machine-readable, widely supported by programming languages, and perfect for APIs, databases, and automation workflows. The key to reliable JSON is providing a clear schema.
+
+### Basic JSON Request
+
+Start with a template showing the exact structure you want. Include field names, data types, and example values. This acts as a contract the model will follow.
+
+<TryIt 
+  title="JSON Extraction"
+  description="Extract structured data from unstructured text."
+  prompt={`Extract information from this text and return as JSON:
+
+{
+    "company_name": "string",
+    "founding_year": number,
+    "headquarters": "string",
+    "employees": number,
+    "industry": "string"
+}
+
+Text: "Apple Inc., founded in 1976, is headquartered in Cupertino, California. The technology giant employs approximately 164,000 people worldwide."`}
+/>
+
+### Complex JSON Structures
+
+For nested data, use hierarchical JSON with objects inside objects, arrays of objects, and mixed types. Define each level clearly and use TypeScript-style annotations (`"positive" | "negative"`) to constrain values.
+
+```
+Analyze this product review and return JSON:
+
+{
+  "review_id": "string (generate unique)",
+  "sentiment": {
+    "overall": "positive" | "negative" | "mixed" | "neutral",
+    "score": 0.0-1.0
+  },
+  "aspects": [
+    {
+      "aspect": "string (e.g., 'price', 'quality')",
+      "sentiment": "positive" | "negative" | "neutral",
+      "mentions": ["exact quotes from review"]
+    }
+  ],
+  "purchase_intent": {
+    "would_recommend": boolean,
+    "confidence": 0.0-1.0
+  },
+  "key_phrases": ["string array of notable phrases"]
+}
+
+Return ONLY valid JSON, no additional text.
+
+Review: "[review text]"
+```
+
+### Ensuring Valid JSON
+
+Models sometimes add explanatory text or markdown formatting around JSON. Prevent this with explicit instructions about output format. You can request raw JSON or JSON inside code blocks—choose based on your parsing needs.
+
+Add explicit instructions:
+
+```
+IMPORTANT:
+- Return ONLY the JSON object, no markdown code blocks
+- Ensure all strings are properly escaped
+- Use null for missing values, not undefined
+- Validate that the output is parseable JSON
+```
+
+Or request code blocks by asking the model to wrap its output:
+
+````
+Return the result as a JSON code block:
+```json
+{ ... }
+```
+````
+
+## YAML Output
+
+YAML is more human-readable than JSON, using indentation instead of brackets. It's the standard for configuration files (Docker, Kubernetes, GitHub Actions) and works well when the output will be read by humans or used in DevOps contexts. YAML is sensitive to indentation, so be specific about formatting requirements.
+
+<TryIt 
+  compact
+  title="YAML Generation"
+  prompt={`Generate a GitHub Actions workflow for a Node.js project.
+
+Return as valid YAML:
+- Include: install, lint, test, build stages
+- Use Node.js 18
+- Cache npm dependencies
+- Run on push to main and pull requests`}
+/>
+
+## XML Output
+
+XML is still required for many enterprise systems, SOAP APIs, and legacy integrations. It's more verbose than JSON but offers features like attributes, namespaces, and CDATA sections for complex data. Specify element names, nesting structure, and where to use attributes vs. child elements.
+
+```
+Convert this data to XML format:
+
+Requirements:
+- Root element: <catalog>
+- Each item in <book> element
+- Include attributes where appropriate
+- Use CDATA for description text
+
+Data: [book data]
+```
+
+## Custom Formats
+
+Sometimes standard formats don't fit your needs. You can define any custom format by providing a clear template. Custom formats work well for reports, logs, or domain-specific outputs that will be read by humans.
+
+### Structured Analysis Format
+
+Use delimiters (===, ---, [SECTION]) to create scannable documents with clear boundaries between sections. This format is great for code reviews, audits, and analyses.
+
+```
+Analyze this code using this exact format:
+
+=== CODE ANALYSIS ===
+
+[SUMMARY]
+One paragraph overview
+
+[ISSUES]
+• CRITICAL: [issue] — [file:line]
+• WARNING: [issue] — [file:line]  
+• INFO: [issue] — [file:line]
+
+[METRICS]
+Complexity: [Low/Medium/High]
+Maintainability: [score]/10
+Test Coverage: [estimated %]
+
+[RECOMMENDATIONS]
+1. [Priority 1 recommendation]
+2. [Priority 2 recommendation]
+
+=== END ANALYSIS ===
+```
+
+### Fill-in-the-Blank Format
+
+Templates with blanks (___) guide the model to fill in specific fields while maintaining exact formatting. This approach is excellent for forms, briefs, and standardized documents where consistency matters.
+
+```
+Complete this template for the given product:
+
+PRODUCT BRIEF
+─────────────
+Name: _______________
+Tagline: _______________
+Target User: _______________
+Problem Solved: _______________
+Key Features:
+  1. _______________
+  2. _______________
+  3. _______________
+Differentiator: _______________
+
+Product: [product description]
+```
+
+## Typed Responses
+
+Typed responses define categories or entity types that the model should recognize and label. This technique is essential for Named Entity Recognition (NER), classification tasks, and any extraction where you need to categorize information consistently. Define your types clearly with examples.
+
+<TryIt 
+  compact
+  title="Entity Extraction"
+  prompt={`Extract entities from this text.
+
+Entity Types:
+- PERSON: Full names of people
+- ORG: Organization/company names
+- LOCATION: Cities, countries, addresses
+- DATE: Dates in ISO format (YYYY-MM-DD)
+- MONEY: Monetary amounts with currency
+
+Format each as: [TYPE]: [value]
+
+Text: "Tim Cook announced that Apple will invest $1 billion in a new Austin facility by December 2024."`}
+/>
+
+## Multi-Part Structured Responses
+
+When you need comprehensive output covering multiple aspects, define distinct parts with clear boundaries. Specify exactly what goes in each part—format, length, and content type. This prevents the model from blending sections or omitting parts.
+
+```
+Research this topic and provide:
+
+### PART 1: EXECUTIVE SUMMARY
+[2-3 sentence overview]
+
+### PART 2: KEY FINDINGS
+[Exactly 5 bullet points]
+
+### PART 3: DATA TABLE
+| Metric | Value | Source |
+|--------|-------|--------|
+[Include 5 rows minimum]
+
+### PART 4: RECOMMENDATIONS
+[Numbered list of 3 actionable recommendations]
+
+### PART 5: FURTHER READING
+[3 suggested resources with brief descriptions]
+```
+
+## Conditional Formatting
+
+Conditional formatting lets you define different output formats based on the input's characteristics. This is powerful for classification, triage, and routing systems where the response format should vary based on what the model detects. Use clear if/then logic with explicit output templates for each case.
+
+<TryIt 
+  compact
+  title="Ticket Classification"
+  prompt={`Classify this support ticket.
+
+If URGENT (system down, security issue, data loss):
+  Return: 🔴 URGENT | [Category] | [Suggested Action]
+
+If HIGH (affects multiple users, revenue impact):
+  Return: 🟠 HIGH | [Category] | [Suggested Action]
+
+If MEDIUM (single user affected, workaround exists):
+  Return: 🟡 MEDIUM | [Category] | [Suggested Action]
+
+If LOW (questions, feature requests):
+  Return: 🟢 LOW | [Category] | [Suggested Action]
+
+Ticket: "I can't login to my account. I've tried resetting my password twice but still getting an error. This is blocking my entire team from accessing the dashboard."`}
+/>
+
+## Arrays and Lists in JSON
+
+Extracting multiple items into arrays requires careful schema definition. Specify the array structure, what each item should contain, and how to handle edge cases (empty arrays, single items). Including a count field helps verify completeness.
+
+```
+Extract all action items from this meeting transcript.
+
+Return as JSON array:
+{
+  "action_items": [
+    {
+      "task": "string describing the task",
+      "assignee": "person name or 'Unassigned'",
+      "deadline": "date if mentioned, else null",
+      "priority": "high" | "medium" | "low",
+      "context": "relevant quote from transcript"
+    }
+  ],
+  "total_count": number
+}
+
+Transcript: "[meeting transcript]"
+```
+
+## Validation Instructions
+
+Self-validation prompts the model to check its own output before responding. This catches common issues like missing sections, placeholder text, or constraint violations. The model will iterate internally to fix problems, improving output quality without additional API calls.
+
+```
+Generate the report, then:
+
+VALIDATION CHECKLIST:
+□ All required sections present
+□ No placeholder text remaining
+□ All statistics include sources
+□ Word count within 500-700 words
+□ Conclusion ties back to introduction
+
+If any check fails, fix before responding.
+```
+
+## Handling Optional Fields
+
+Real-world data often has missing values. Explicitly instruct the model on how to handle optional fields—using `null` is cleaner than empty strings and easier to process programmatically. Also prevent "hallucination" of missing data by emphasizing that the model should never invent information.
+
+```
+Extract contact information. Use null for missing fields.
+
+{
+  "name": "string (required)",
+  "email": "string or null",
+  "phone": "string or null", 
+  "company": "string or null",
+  "role": "string or null",
+  "linkedin": "URL string or null"
+}
+
+IMPORTANT: 
+- Never invent information not in the source
+- Use null, not empty strings, for missing data
+- Phone numbers in E.164 format if possible
+```
+
+## Summary
+
+<Callout type="tip" title="Key Techniques">
+Be explicit about format, use examples, specify types, handle edge cases with null values, and ask the model to validate its own output.
+</Callout>
+
+<Quiz 
+  question="What's the main advantage of structured output over unstructured text?"
+  options={[
+    "It uses fewer tokens",
+    "It's easier for the AI to generate",
+    "It can be parsed programmatically and validated",
+    "It always produces correct information"
+  ]}
+  correctIndex={2}
+  explanation="Structured outputs like JSON can be parsed by code, compared across queries, integrated into workflows, and validated for completeness—things that are difficult or impossible with freeform text."
+/>
+
+Structured outputs are essential for building reliable AI-powered applications. In the next chapter, we'll explore chain-of-thought prompting for complex reasoning tasks.

@@ -1,0 +1,393 @@
+AI excels at writing tasks when properly prompted. This chapter covers techniques for various content creation scenarios.
+
+<Callout type="info" title="AI as Writing Partner">
+AI works best as a collaborative writing tool—use it to generate drafts, then refine with your expertise and voice.
+</Callout>
+
+## Blog Posts and Articles
+
+### Do's and Don'ts: Writing Prompts
+
+<Compare 
+  before={{ label: "❌ Vague request", content: "Write a blog post about productivity." }}
+  after={{ label: "✓ Specific brief", content: "Write an 800-word blog post about productivity for remote workers.\n\nAudience: Tech professionals working from home\nTone: Conversational but actionable\nInclude: 3 specific techniques with examples\nKeyword: 'remote productivity tips'" }}
+/>
+
+### Blog Post Framework
+
+<TryIt 
+  title="Blog Post Generator"
+  description="Generate a structured blog post with SEO optimization."
+  prompt={`Write a blog post about \${topic}.
+
+Specifications:
+- Length: \${wordCount:800-1000} words
+- Audience: \${audience}
+- Tone: \${tone:conversational}
+- Purpose: \${purpose:inform and provide actionable advice}
+
+Structure:
+1. Hook opening (grab attention in first 2 sentences)
+2. Introduction (state the problem/opportunity)
+3. Main content (3-4 key points with examples)
+4. Practical takeaways (actionable advice)
+5. Conclusion with call-to-action
+
+SEO Requirements:
+- Include keyword "\${keyword}" naturally 3-5 times
+- Use H2 headers for main sections
+- Include a meta description (155 chars)`}
+/>
+
+### Article Types
+
+**How-To Article:**
+<TryIt compact prompt={`Write a step-by-step how-to article on \${topic}.
+
+Requirements:
+- Clear numbered steps
+- Each step: action + explanation + tip
+- Include "what you'll need" section
+- Add troubleshooting section for common issues
+- Estimated time to complete`} />
+
+**Listicle:**
+<TryIt compact prompt={`Write a listicle: "\${count} \${topic} Tips/Tools/Ideas"
+
+For each item:
+- Catchy subheading
+- 2-3 sentence explanation
+- Concrete example or use case
+- Pro tip or caveat
+
+Order by: \${ordering:most important first}`} />
+
+## Marketing Copy
+
+<Callout type="tip" title="Marketing Copy Principle">
+Focus on **benefits over features**. Instead of "Our software uses AI algorithms," write "Save 10 hours a week with automated reports." Show readers how their lives improve.
+</Callout>
+
+### Landing Page Copy
+
+<TryIt compact prompt={`Write landing page copy for \${product}.
+
+Sections needed:
+1. Hero: Headline (10 words max) + subheadline + CTA button text
+2. Problem: Pain points the audience faces (3 bullet points)
+3. Solution: How your product solves these (with benefits, not features)
+4. Social proof: Placeholder for testimonials
+5. Features: 3 key features with benefit-focused descriptions
+6. CTA: Final call-to-action with urgency
+
+Voice: \${brandVoice}
+Target audience: \${targetAudience}
+Key differentiator: \${differentiator}`} />
+
+### Email Sequences
+
+<TryIt compact prompt={`Write a 5-email welcome sequence for new subscribers.
+
+Brand: \${brand}
+Goal: \${goal:convert to paid}
+
+For each email provide:
+- Subject line (+ 1 alternative)
+- Preview text
+- Body (150-200 words)
+- CTA
+
+Sequence flow:
+Email 1 (Day 0): Welcome + immediate value
+Email 2 (Day 2): Share story/mission
+Email 3 (Day 4): Educational content
+Email 4 (Day 7): Social proof + soft pitch
+Email 5 (Day 10): Direct offer with urgency`} />
+
+### Social Media Posts
+
+<TryIt compact prompt={`Create social media content for \${topic}.
+
+Platform-specific versions:
+
+Twitter/X (280 chars):
+- Hook + key point + hashtags
+- Thread option (5 tweets) for complex topics
+
+LinkedIn (1300 chars):
+- Professional angle
+- Story structure
+- End with question for engagement
+
+Instagram caption:
+- Opening hook (shows before "more")
+- Value-packed body
+- CTA
+- Hashtags (20-30 relevant)`} />
+
+## Technical Writing
+
+<Callout type="info" title="Technical Writing Principle">
+**Clarity over cleverness.** Use simple words, short sentences, and active voice. Every sentence should have one job. If readers have to re-read something, simplify it.
+</Callout>
+
+### Documentation
+
+<TryIt compact prompt={`Write documentation for \${feature}.
+
+Structure:
+## Overview
+Brief description of what it does and why you'd use it.
+
+## Quick Start
+Minimal example to get started in under 2 minutes.
+
+## Installation/Setup
+Step-by-step setup instructions.
+
+## Usage
+Detailed usage with examples.
+
+## API Reference
+Parameters, return values, types.
+
+## Examples
+3-4 real-world usage examples.
+
+## Troubleshooting
+Common issues and solutions.
+
+Style: 
+- Second person ("you")
+- Present tense
+- Active voice
+- Code examples for every concept`} />
+
+### README Files
+
+<TryIt 
+  title="README Generator"
+  description="Generate a professional README.md for your project."
+  prompt={`Write a README.md for \${project}.
+
+Include these sections:
+# Project Name - One-line description
+
+## Features
+- Bullet list of key features
+
+## Installation
+(bash installation commands)
+
+## Quick Start
+(minimal working example)
+
+## Configuration
+Key configuration options
+
+## Documentation
+Link to full docs
+
+## Contributing
+Brief contribution guidelines
+
+## License
+License type`}
+/>
+
+## Creative Writing
+
+### Do's and Don'ts: Creative Prompts
+
+<Compare 
+  before={{ label: "❌ Too open-ended", content: "Write me a story." }}
+  after={{ label: "✓ Rich with constraints", content: "Write a 1000-word mystery story set in a small coastal town. The protagonist is a retired detective. Include a twist ending where the victim isn't who we thought. Tone: noir with dark humor." }}
+/>
+
+### Story Elements
+
+<TryIt compact prompt={`Write a \${genre} short story.
+
+Elements to include:
+- Protagonist: \${protagonist}
+- Setting: \${setting}
+- Central conflict: \${conflict}
+- Theme: \${theme}
+- Word count: \${wordCount:1000}
+
+Style preferences:
+- POV: \${pov:third person}
+- Tense: \${tense:past}
+- Tone: \${tone:suspenseful}
+
+Start with: \${openingHook}`} />
+
+### Character Development
+
+<TryIt compact prompt={`Create a detailed character profile for \${characterName}.
+
+Basic Information:
+- Name, age, occupation
+- Physical description
+- Background/history
+
+Personality:
+- 3 core traits
+- Strengths and flaws
+- Fears and desires
+- How they speak (verbal tics, vocabulary level)
+
+Relationships:
+- Key relationships
+- How they treat strangers vs friends
+
+Character arc:
+- Starting state
+- What they need to learn
+- Potential transformation`} />
+
+## Editing and Rewriting
+
+### Comprehensive Edit
+
+<TryIt compact prompt={`Edit this text for \${purpose}.
+
+Check and improve:
+□ Grammar and spelling
+□ Sentence structure variety
+□ Word choice (eliminate weak words)
+□ Flow and transitions
+□ Clarity and conciseness
+□ Tone consistency
+
+Provide:
+1. Edited version
+2. Summary of major changes
+3. Suggestions for further improvement
+
+Original text:
+\${text}`} />
+
+### Style Transformation
+
+<Compare 
+  before={{ label: "Technical/Formal", content: "The implementation of the new algorithm resulted in a 47% reduction in computational overhead, thereby significantly enhancing system throughput and reducing latency metrics across all measured endpoints." }}
+  after={{ label: "Casual/Accessible", content: "We made the system way faster! The new approach cut processing time nearly in half, which means everything loads quicker for you." }}
+/>
+
+<TryIt compact prompt={`Rewrite this text in a different style.
+
+Original style: \${originalStyle}
+Target style: \${targetStyle}
+
+Preserve:
+- Core meaning and information
+- Key terminology
+- Proper nouns
+
+Change:
+- Sentence length and structure
+- Vocabulary level
+- Tone and formality
+- Rhetorical devices
+
+Original:
+\${text}`} />
+
+### Simplification
+
+<TryIt compact prompt={`Simplify this text for \${audience}.
+
+Target reading level: \${readingLevel:8th grade}
+
+Guidelines:
+- Replace jargon with plain language
+- Shorten sentences (aim for 15-20 words average)
+- Use common words
+- Add explanations for necessary technical terms
+- Break complex ideas into steps
+
+Original:
+\${text}`} />
+
+## Prompt Templates from prompts.chat
+
+Here are popular writing prompts from the prompts.chat community:
+
+### Act as a Copywriter
+
+<TryIt compact prompt={`I want you to act as a copywriter. I will provide you with a product or service, and you will create compelling copy that highlights its benefits and persuades potential customers to take action. Your copy should be creative, attention-grabbing, and tailored to the target audience.
+
+Product/Service: \${product}`} />
+
+### Act as a Technical Writer
+
+<TryIt compact prompt={`I want you to act as a technical writer. You will create clear, concise documentation for software products. I will provide you with technical information, and you will transform it into user-friendly documentation that is easy to understand for both technical and non-technical audiences.
+
+Topic: \${topic}`} />
+
+### Act as a Storyteller
+
+<TryIt compact prompt={`I want you to act as a storyteller. You will come up with entertaining stories that are engaging, imaginative, and captivating for the audience. It can be fairy tales, educational stories, or any other type of story that has the potential to capture people's attention and imagination.
+
+Story theme: \${theme}`} />
+
+## Writing Workflow Tips
+
+### 1. Outline First
+
+<TryIt compact prompt={`Before writing, create an outline:
+
+Topic: \${topic}
+
+1. Generate 5 possible angles
+2. Choose the best angle and explain why
+3. Create detailed outline with:
+   - Main sections
+   - Key points per section
+   - Supporting evidence/examples needed
+4. Identify gaps that need research`} />
+
+### 2. Draft Then Refine
+
+<TryIt compact prompt={`Phase 1 - Draft:
+"Write a rough draft focusing on getting ideas down. Don't worry about perfection. Just capture the key points."
+
+Phase 2 - Refine:
+"Now improve this draft: tighten sentences, add transitions, strengthen the opening and closing."
+
+Phase 3 - Polish:
+"Final pass: check grammar, vary sentence structure, ensure consistent tone."
+
+Topic: \${topic}`} />
+
+### 3. Voice Matching
+
+<TryIt compact prompt={`Analyze this writing sample for voice characteristics:
+\${sample}
+
+Then write \${newContent} matching:
+- Sentence length patterns
+- Vocabulary level
+- Rhetorical devices used
+- Tone and personality`} />
+
+## Summary
+
+<Callout type="tip" title="Key Techniques">
+Specify audience and purpose clearly, define structure and format, include style guidelines, provide examples when possible, and request specific deliverables.
+</Callout>
+
+<Quiz 
+  question="What's the most effective way to use AI for writing tasks?"
+  options={[
+    "Let AI write the final version without editing",
+    "Use AI to generate drafts, then refine with your expertise",
+    "Only use AI for grammar checking",
+    "Avoid AI for creative writing entirely"
+  ]}
+  correctIndex={1}
+  explanation="AI works best as a collaborative writing tool. Use it to generate drafts and ideas, then apply your expertise, voice, and judgment to refine the output."
+/>
+
+Writing with AI works best as collaboration—let AI generate drafts, then refine with your expertise and voice.

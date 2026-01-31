@@ -1,0 +1,335 @@
+AI can dramatically enhance professional productivity. This chapter covers prompts for business communication, analysis, planning, and workflow optimization.
+
+<Callout type="info" title="AI for Business">
+AI excels at drafting, analysis, and structuring—freeing you to focus on strategy, relationships, and decisions that require human judgment.
+</Callout>
+
+## Business Communication
+
+### Do's and Don'ts: Business Emails
+
+<Compare 
+  before={{ label: "❌ Vague request", content: "Write an email to my boss about the project." }}
+  after={{ label: "✓ Complete context", content: "Write an email to my manager (Sarah) updating her on the Q4 marketing project.\n\nKey points: We're on track for the Nov 15 deadline, resolved the vendor issue, need her approval on the $5K budget increase.\nTone: Professional but friendly (we have a good relationship)\nKeep under 150 words with a clear ask at the end." }}
+/>
+
+### Email Drafting
+
+<TryIt compact prompt={`Write a professional email.
+
+Context:
+- To: [recipient and relationship]
+- Purpose: [request/inform/follow-up/apologize]
+- Key points: [what must be communicated]
+- Tone: [formal/friendly professional/urgent]
+
+Constraints:
+- Keep under [X] sentences
+- Clear call-to-action
+- Subject line included`} />
+
+**Examples by purpose:**
+
+<TryIt compact prompt={`\${emailType:Meeting Request}: Write an email requesting a meeting with a potential client to discuss partnership opportunities. Keep it brief and make it easy for them to say yes.`} />
+
+<TryIt compact prompt={`\${emailType:Difficult Conversation}: Write an email declining a vendor's proposal while maintaining the relationship for future opportunities. Be clear but diplomatic.`} />
+
+<TryIt compact prompt={`\${emailType:Status Update}: Write a project status email to stakeholders. The project is 2 weeks behind schedule due to scope changes. Present the situation professionally with a recovery plan.`} />
+
+### Presentation Content
+
+<TryIt compact prompt={`Create presentation content for \${topic:Q4 sales strategy}.
+
+Audience: \${audience:executive leadership}
+Duration: \${duration:15 minutes}
+Goal: \${goal:persuade to approve budget increase}
+
+Provide for each slide:
+- Title
+- Key message (one main point)
+- Supporting points (3 max)
+- Speaker notes (what to say)
+- Visual suggestion (chart/image/diagram)
+
+Structure:
+1. Hook/Attention grabber
+2. Problem/Opportunity
+3. Solution/Recommendation
+4. Evidence/Support
+5. Call to action`} />
+
+### Report Writing
+
+<TryIt compact prompt={`Write a \${reportType:recommendation} report on \${topic:expanding into European markets}.
+
+Report type: \${type:recommendation}
+Audience: \${audience:C-suite}
+Length: \${length:5 pages}
+
+Structure:
+1. Executive Summary (key findings, 1 paragraph)
+2. Background/Context
+3. Methodology (if applicable)
+4. Findings
+5. Analysis
+6. Recommendations
+7. Next Steps
+
+Include: Data visualization suggestions where relevant
+Tone: \${tone:formal business}`} />
+
+## Analysis & Decision-Making
+
+<Callout type="tip" title="Analysis Principle">
+AI can structure your thinking, but **you provide the real-world context**. The best analyses combine AI's frameworks with your domain knowledge.
+</Callout>
+
+### SWOT Analysis
+
+<TryIt compact prompt={`Conduct a SWOT analysis for \${subject:launching a new mobile app}.
+
+Context:
+\${context:We're a mid-size fintech company considering a consumer banking app}
+
+Provide:
+
+**Strengths** (internal positives)
+- At least 4 points with brief explanations
+
+**Weaknesses** (internal negatives)
+- At least 4 points with brief explanations
+
+**Opportunities** (external positives)
+- At least 4 points with brief explanations
+
+**Threats** (external negatives)
+- At least 4 points with brief explanations
+
+**Strategic Implications**
+- Key insight from analysis
+- Recommended priorities`} />
+
+### Decision Framework
+
+<TryIt compact prompt={`Help me make a decision about \${decision:which CRM to choose}.
+
+Options:
+1. \${optionA:Salesforce}
+2. \${optionB:HubSpot}
+3. \${optionC:Pipedrive}
+
+Criteria that matter to me:
+- \${criterion1:ease of use} (weight: high)
+- \${criterion2:integration with existing tools} (weight: high)
+- \${criterion3:cost} (weight: medium)
+
+Provide:
+1. Score each option against each criterion (1-5)
+2. Weighted analysis
+3. Pros/cons summary for each
+4. Risk assessment
+5. Recommendation with rationale
+6. Questions to consider before deciding`} />
+
+### Competitive Analysis
+
+<TryIt compact prompt={`Analyze \${competitor:Slack} compared to \${ourProduct:our team communication tool}.
+
+Research their:
+1. **Products/Services** - offerings, pricing, positioning
+2. **Strengths** - what they do well
+3. **Weaknesses** - where they fall short
+4. **Market position** - target segments, market share
+5. **Strategy** - apparent direction and focus
+
+Compare to us:
+- Where we're stronger
+- Where they're stronger
+- Opportunity gaps
+- Competitive threats
+
+Recommend: Actions to improve our competitive position`} />
+
+## Planning & Strategy
+
+### Goal Setting (OKRs)
+
+<TryIt compact prompt={`Help me set OKRs for \${scope:Q1 marketing team}.
+
+Context:
+- Company goals: \${companyGoals:increase revenue 25% YoY}
+- Current situation: \${currentState:brand awareness is low in new markets}
+- Key priorities: \${priorities:lead generation, content marketing}
+
+Create 3 Objectives with 3-4 Key Results each.
+
+Format:
+**Objective 1:** Qualitative goal - inspiring
+- KR 1.1: Quantitative measure (Current: X → Target: Y)
+- KR 1.2: Quantitative measure (Current: X → Target: Y)
+- KR 1.3: Quantitative measure (Current: X → Target: Y)
+
+Ensure KRs are:
+- Measurable
+- Ambitious but achievable
+- Time-bound
+- Outcome-focused (not tasks)`} />
+
+### Project Planning
+
+<TryIt compact prompt={`Create a project plan for \${project:website redesign}.
+
+Scope: \${scope:new homepage, product pages, checkout flow}
+Timeline: \${timeline:3 months}
+Team: \${team:2 developers, 1 designer, 1 PM}
+Budget: \${budget:$50,000}
+
+Provide:
+1. **Project phases** with milestones
+2. **Work breakdown structure** (major tasks)
+3. **Timeline** (Gantt-style description)
+4. **Dependencies** (what blocks what)
+5. **Risks** (potential issues and mitigation)
+6. **Success criteria** (how we know we're done)`} />
+
+### Meeting Agenda
+
+<TryIt compact prompt={`Create an agenda for \${meetingType:quarterly planning}.
+
+Purpose: \${purpose:align on Q2 priorities and resource allocation}
+Attendees: \${attendees:department heads, CEO, COO}
+Duration: \${duration:90 minutes}
+
+Format:
+| Time | Topic | Owner | Goal |
+|------|-------|-------|------|
+| 5 min | Opening | Facilitator | Context |
+| ... | ... | ... | ... |
+
+Include:
+- Time allocations
+- Clear owner for each item
+- Specific outcomes expected
+- Pre-work required
+- Follow-up action item template`} />
+
+## Productivity Workflows
+
+### Task Prioritization
+
+<TryIt compact prompt={`Help me prioritize my tasks using the Eisenhower Matrix.
+
+My tasks:
+\${tasks:1. Prepare quarterly report (due Friday)\n2. Review job applications\n3. Reply to vendor emails\n4. Plan team offsite\n5. Update LinkedIn profile}
+
+Categorize each into:
+1. **Urgent + Important** (Do first)
+2. **Important, Not Urgent** (Schedule)
+3. **Urgent, Not Important** (Delegate)
+4. **Neither** (Eliminate)
+
+Then provide:
+- Recommended order of execution
+- Time estimates
+- Suggestions for delegation or elimination`} />
+
+### Process Documentation
+
+<TryIt compact prompt={`Document this business process: \${processName:customer refund request}.
+
+Create:
+1. **Process overview** (1 paragraph)
+2. **Trigger** (what starts this process)
+3. **Steps** (numbered, with responsible party)
+4. **Decision points** (if X then Y format)
+5. **Outputs** (what this process produces)
+6. **Systems involved** (tools/software)
+7. **Exceptions** (edge cases and handling)
+
+Format: Clear enough for new employee to follow`} />
+
+### Standard Operating Procedure
+
+<TryIt compact prompt={`Write an SOP for \${task:onboarding new employees to Slack}.
+
+Audience: \${audience:HR administrators}
+Complexity: \${complexity:basic users}
+
+Include:
+1. Purpose and scope
+2. Prerequisites/requirements
+3. Step-by-step instructions
+4. Screenshots/visual placeholders
+5. Quality checkpoints
+6. Common errors and troubleshooting
+7. Related SOPs/documents
+8. Version history`} />
+
+## Communication Templates
+
+### Stakeholder Update
+
+<TryIt compact prompt={`Write a stakeholder update for \${project:CRM migration project}.
+
+Status: \${status:at risk}
+Period: \${period:Week of Jan 6-10}
+
+Format:
+## Project Name Update
+
+**Status:** 🟢/🟡/🔴
+
+**Progress this period:**
+- Accomplishment 1
+- Accomplishment 2
+
+**Next period goals:**
+- Goal 1
+- Goal 2
+
+**Risks/Blockers:**
+- If any
+
+**Decisions needed:**
+- If any`} />
+
+### Feedback Request
+
+<TryIt compact prompt={`Write a message requesting feedback on \${deliverable:the new product roadmap document}.
+
+Context: \${context:This will guide our Q2 priorities, I want to make sure I haven't missed anything}
+Specific areas for feedback: \${feedbackAreas:timeline feasibility, resource allocation, missing features}
+Timeline: \${deadline:by Friday EOD}
+
+Tone: Professional but not overly formal
+Make it easy to respond with specific questions`} />
+
+## Prompt Templates from prompts.chat
+
+### Act as a Business Consultant
+
+<TryIt compact prompt={`I want you to act as a business consultant. I will describe business situations and challenges, and you will provide strategic advice, frameworks for thinking about problems, and actionable recommendations. Draw on established business principles while being practical and specific.`} />
+
+### Act as a Meeting Facilitator
+
+<TryIt compact prompt={`I want you to act as a meeting facilitator. Help me plan and run effective meetings. Create agendas, suggest discussion frameworks, help synthesize conversations, and draft follow-up communications. Focus on making meetings productive and action-oriented.`} />
+
+## Summary
+
+<Callout type="tip" title="Key Techniques">
+Specify the audience and their needs, define the desired outcome clearly, include relevant context and constraints, request specific formats and structures, and consider professional tone requirements.
+</Callout>
+
+<Quiz 
+  question="What should you always include when asking AI to write a business email?"
+  options={[
+    "Just the topic you want to discuss",
+    "Recipient, purpose, key points, and desired tone",
+    "Only the recipient's name",
+    "A template from the internet"
+  ]}
+  correctIndex={1}
+  explanation="Effective business emails need context: who you're writing to, why, what must be communicated, and the appropriate tone. AI can't infer your professional relationships or organizational context."
+/>
+
+AI can handle routine business communication while you focus on strategy and relationships.

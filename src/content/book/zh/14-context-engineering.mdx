@@ -1,0 +1,287 @@
+Understanding context is essential for building AI applications that actually work. This chapter covers everything you need to know about giving AI the right information at the right time.
+
+<Callout type="info" title="Why Context Matters">
+AI models are stateless. They don't remember past conversations. Every time you send a message, you need to include everything the AI needs to know. This is called "context engineering."
+</Callout>
+
+## What is Context?
+
+Context is all the information you give to AI alongside your question. Think of it like this:
+
+<Compare 
+  before={{ label: "No Context", content: "What's the status?" }}
+  after={{ label: "With Context", content: "You are a project manager assistant. The user is working on Project Alpha, which is due Friday. The last update was: 'Backend complete, frontend 80% done.'\n\nUser: What's the status?" }}
+/>
+
+Without context, the AI has no idea what "status" you're asking about. With context, it can give a useful answer.
+
+### The Context Window
+
+Remember from earlier chapters: AI has a limited "context window" - the maximum amount of text it can see at once. This includes:
+
+<InfoGrid items={[
+  { label: "System Prompt", description: "Instructions that define AI behavior", color: "purple" },
+  { label: "Conversation History", description: "Previous messages in this chat", color: "blue" },
+  { label: "Retrieved Information", description: "Documents, data, or knowledge fetched for this query", color: "green" },
+  { label: "Current Query", description: "The user's actual question", color: "amber" },
+  { label: "AI Response", description: "The answer (also counts toward the limit!)", color: "rose" },
+]} />
+
+## AI is Stateless
+
+<Callout type="warning" title="Important Concept">
+AI doesn't remember anything between conversations. Every API call starts fresh. If you want the AI to "remember" something, YOU have to include it in the context every time.
+</Callout>
+
+This is why chatbots send your entire conversation history with each message. It's not that the AI remembers - it's that the app re-sends everything.
+
+<TryIt compact prompt={`Pretend this is a new conversation with no history.
+
+What did I just ask you about?`} />
+
+The AI will say it doesn't know because it truly doesn't have access to any previous context.
+
+## RAG: Retrieval-Augmented Generation
+
+RAG is a technique for giving AI access to knowledge it wasn't trained on. Instead of trying to fit everything into the AI's training, you:
+
+1. **Store** your documents in a searchable database
+2. **Search** for relevant documents when a user asks a question
+3. **Retrieve** the most relevant pieces
+4. **Augment** your prompt with those pieces
+5. **Generate** an answer using that context
+
+<div className="my-6 p-4 border rounded-lg bg-muted/30">
+  <p className="font-semibold mb-3">How RAG Works:</p>
+  <div className="flex flex-col gap-2 text-sm">
+    <div className="flex items-center gap-3">
+      <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">1</span>
+      <span>User asks: "What's our refund policy?"</span>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">2</span>
+      <span>System searches your documents for "refund policy"</span>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">3</span>
+      <span>Finds relevant section from your policy document</span>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">4</span>
+      <span>Sends to AI: "Based on this policy: [text], answer: What's our refund policy?"</span>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center text-green-600 font-bold">5</span>
+      <span>AI generates accurate answer using your actual policy</span>
+    </div>
+  </div>
+</div>
+
+### Why RAG?
+
+<div className="my-6 grid md:grid-cols-2 gap-4">
+  <div className="p-4 border rounded-lg">
+    <p className="font-semibold text-green-600 dark:text-green-400 mb-2 flex items-center gap-2"><IconCheck className="text-green-600" /> RAG Advantages</p>
+    <ul className="text-sm space-y-1 text-muted-foreground">
+      <li>Uses your actual, current data</li>
+      <li>Reduces hallucinations</li>
+      <li>Can cite sources</li>
+      <li>Easy to update (just update documents)</li>
+      <li>No expensive fine-tuning needed</li>
+    </ul>
+  </div>
+  <div className="p-4 border rounded-lg">
+    <p className="font-semibold text-amber-600 dark:text-amber-400 mb-2 flex items-center gap-2"><IconLightbulb className="text-amber-600" /> When to Use RAG</p>
+    <ul className="text-sm space-y-1 text-muted-foreground">
+      <li>Customer support bots</li>
+      <li>Documentation search</li>
+      <li>Internal knowledge bases</li>
+      <li>Any domain-specific Q&A</li>
+      <li>When accuracy matters</li>
+    </ul>
+  </div>
+</div>
+
+## Embeddings: How Search Works
+
+How does RAG know which documents are "relevant"? It uses **embeddings** - a way to turn text into numbers that capture meaning.
+
+### What Are Embeddings?
+
+An embedding is a list of numbers (a "vector") that represents the meaning of text. Similar meanings = similar numbers.
+
+<EmbeddingsDemo />
+
+### Semantic Search
+
+With embeddings, you can search by meaning, not just keywords:
+
+<Compare 
+  before={{ label: "Keyword Search", content: "Query: 'return policy'\nFinds: Documents containing 'return' and 'policy'\nMisses: 'How to get a refund'" }}
+  after={{ label: "Semantic Search", content: "Query: 'return policy'\nFinds: All related documents including:\n- 'Refund guidelines'\n- 'How to send items back'\n- 'Money-back guarantee'" }}
+/>
+
+This is why RAG is so powerful - it finds relevant information even when the exact words don't match.
+
+## Function Calling / Tool Use
+
+Function calling lets AI use external tools - like searching the web, checking a database, or calling an API.
+
+<Callout type="tip" title="Also Called">
+Different AI providers call this different things: "function calling" (OpenAI), "tool use" (Anthropic/Claude), or "tools" (general term). They all mean the same thing.
+</Callout>
+
+### How It Works
+
+1. You tell the AI what tools are available
+2. AI decides if it needs a tool to answer
+3. AI outputs a structured request for the tool
+4. Your code runs the tool and returns results
+5. AI uses the results to form its answer
+
+<TryIt 
+  title="Function Calling Example"
+  description="This prompt shows how AI decides to use a tool:"
+  prompt={`You have access to these tools:
+
+1. get_weather(city: string) - Get current weather for a city
+2. search_web(query: string) - Search the internet
+3. calculate(expression: string) - Do math calculations
+
+User: What's the weather like in Tokyo right now?
+
+Think step by step: Do you need a tool? Which one? What parameters?`}
+/>
+
+## Summarization: Managing Long Conversations
+
+As conversations get longer, you'll hit the context window limit. Since AI is stateless (it doesn't remember anything), long conversations can overflow. The solution? **Summarization**.
+
+### The Problem
+
+<Compare 
+  before={{ label: "Without Summarization", content: "Message 1 (500 tokens)\nMessage 2 (800 tokens)\nMessage 3 (600 tokens)\n... 50 more messages ...\n────────────────────\n= 40,000+ tokens\n= OVER THE LIMIT!" }}
+  after={{ label: "With Summarization", content: "[Summary]: 200 tokens\nRecent messages: 2,000 tokens\nCurrent query: 100 tokens\n────────────────────\n= 2,300 tokens\n= Fits perfectly!" }}
+/>
+
+### Summarization Strategies
+
+Different approaches work for different use cases. Click each strategy to see how it processes the same conversation:
+
+<SummarizationDemo />
+
+### What to Capture in Summaries
+
+A good conversation summary preserves what matters:
+
+<Checklist 
+  title="Summary Checklist"
+  items={[
+    { text: "Key decisions made" },
+    { text: "Important facts mentioned" },
+    { text: "User preferences discovered" },
+    { text: "Current task or goal" },
+    { text: "Any pending questions" },
+    { text: "Tone and formality level" }
+  ]}
+/>
+
+### Try It: Create a Summary
+
+<TryIt 
+  title="Conversation Summarizer"
+  description="Practice creating a context-preserving summary from this conversation:"
+  prompt={`Summarize this conversation for context management. The summary will replace the full conversation in the AI's memory.
+
+CONVERSATION:
+User: Hi, I'm learning Python for data analysis
+Assistant: Welcome! Python is great for data analysis. What's your current experience level?
+User: I know basic Excel. Complete beginner with programming.
+Assistant: Perfect starting point! Let's begin with variables - they're like Excel cells that store data.
+User: Can you explain variables?
+Assistant: Variables are containers for storing data. In Python: name = "Alice" or age = 25
+User: What about lists? I need to handle multiple values.
+Assistant: Lists are like Excel columns! Create one like: prices = [10, 20, 30]. Access items with prices[0].
+User: Can I do calculations on lists?
+Assistant: Yes! Use sum(prices), len(prices), or max(prices). For complex analysis, we'll use pandas later.
+User: What's pandas?
+Assistant: Pandas is a library for data analysis - think "Excel on steroids". It has DataFrames (like spreadsheets).
+
+CREATE A SUMMARY that captures:
+1. User's goal and background (1 sentence)
+2. Topics covered so far (1 sentence)  
+3. User's learning style/preferences (1 sentence)
+4. What to cover next (1 sentence)`}
+/>
+
+### When to Summarize
+
+<TryIt compact prompt={`You are managing a conversation's context window. Given these conditions, decide when to trigger summarization:
+
+CONTEXT WINDOW: 8,000 tokens max
+CURRENT USAGE:
+- System prompt: 500 tokens
+- Conversation history: 6,200 tokens  
+- Buffer for response: 1,500 tokens
+
+RULES:
+- Summarize when history exceeds 70% of available space
+- Keep last 5 messages intact
+- Preserve all user preferences and decisions
+
+Should you summarize now? If yes, what messages should be summarized vs kept intact?`} />
+
+## MCP: Model Context Protocol
+
+MCP (Model Context Protocol) is a standard way to connect AI to external data and tools. Instead of building custom integrations for each AI provider, MCP provides a universal interface.
+
+### Why MCP?
+
+<InfoGrid columns={2} items={[
+  { label: "Without MCP", description: "Build separate integrations for ChatGPT, Claude, Gemini... Maintain multiple codebases. Break when APIs change.", color: "red" },
+  { label: "With MCP", description: "Build once, works everywhere. Standard protocol. AI can discover and use your tools automatically.", color: "green" },
+]} />
+
+### MCP Provides
+
+- **Resources**: Data the AI can read (files, database records, API responses)
+- **Tools**: Actions the AI can take (search, create, update, delete)
+- **Prompts**: Pre-built prompt templates
+
+<Callout type="info" title="prompts.chat Uses MCP">
+This platform has an MCP server! You can connect it to Claude Desktop or other MCP-compatible clients to search and use prompts directly from your AI assistant.
+</Callout>
+
+## Building Context: The Complete Picture
+
+<ContextPlayground />
+
+## Best Practices
+
+<Checklist 
+  title="Context Engineering Checklist"
+  items={[
+    { text: "Keep system prompts concise but complete" },
+    { text: "Only include relevant context (not everything)" },
+    { text: "Summarize long conversations" },
+    { text: "Use RAG for domain-specific knowledge" },
+    { text: "Give AI tools for real-time data" },
+    { text: "Monitor token usage to stay within limits" },
+    { text: "Test with edge cases (very long inputs, etc.)" }
+  ]}
+/>
+
+## Summary
+
+Context engineering is about giving AI the right information:
+
+- **AI is stateless** - include everything it needs every time
+- **RAG** retrieves relevant documents to augment prompts
+- **Embeddings** enable semantic search (meaning, not just keywords)
+- **Function calling** lets AI use external tools
+- **Summarization** manages long conversations
+- **MCP** standardizes how AI connects to data and tools
+
+<Callout type="tip" title="Remember">
+The quality of AI output depends on the quality of context you provide. Better context = better answers.
+</Callout>
