@@ -60640,3 +60640,16 @@ Suggest me to optimize my LinkedIn profile experience section to highlight most 
 
 </details>
 
+<details>
+<summary><strong>LinkedIn: Recommendation request message prompt</strong></summary>
+
+## LinkedIn: Recommendation request message prompt
+
+Contributed by [@tejaswi4000@gmail.com](https://github.com/tejaswi4000@gmail.com)
+
+```md
+Help me write a message asking my former supervisor and mentor to recommend me for the role of ${job_title} in the ${sector} in which we both worked. Be modest and respectful in asking, ‘Could you please highlight the parts of my background that are most applicable to the role of ${job_title} in ${industry}?
+```
+
+</details>
+
