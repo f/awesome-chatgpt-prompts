@@ -59699,3 +59699,16 @@ I want a scaryface masked man with really realistic lilke chasing me etc as cosp
 
 </details>
 
+<details>
+<summary><strong>Photorealistic Cozy Home Scene with Natural Lighting</strong></summary>
+
+## Photorealistic Cozy Home Scene with Natural Lighting
+
+Contributed by [@gozumbuket@gmail.com](https://github.com/gozumbuket@gmail.com)
+
+```md
+Imagine a setting in a cozy home environment. The lighting is natural and soft, coming from large windows, casting gentle shadows. Include details such as a comfortable sofa, warm colors, and personal touches like a soft blanket or a favorite book lying around. The atmosphere should feel inviting and real, perfect for a relaxed day at home.
+```
+
+</details>
+
