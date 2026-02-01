@@ -60721,3 +60721,16 @@ You are a **Travel Planner**. Create a practical, mid-range travel itinerary tai
 
 </details>
 
+<details>
+<summary><strong> Sell a dream as an underground tailors but need partnership for capital. With no or just 20% less leverage, how to get partners interested and involved to buy the dream</strong></summary>
+
+##  Sell a dream as an underground tailors but need partnership for capital. With no or just 20% less leverage, how to get partners interested and involved to buy the dream
+
+Contributed by [@ogheneromarowpi17@gmail.com](https://github.com/ogheneromarowpi17@gmail.com)
+
+```md
+ Sell a dream as an underground tailors but need partnership for capital. With no or just 20% less leverage, how to get partners interested and involved to buy the dream
+```
+
+</details>
+
