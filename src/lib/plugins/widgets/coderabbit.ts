@@ -76,9 +76,10 @@ Provide your review in a clear, actionable format with specific line references 
         }
         
         // Inject when tag includes "code", "debug", "git"
-        if (filters?.tag) {
-          const tag = filters.tag.toLowerCase();
-          if (tag.includes("code") || tag.includes("debug") || tag.includes("git")) {
+        const tagParam = filters?.tag;
+        if (tagParam) {
+          const tagList = tagParam.toLowerCase();
+          if (tagList.includes("code") || tagList.includes("debug") || tagList.includes("git")) {
             return true;
           }
         }
