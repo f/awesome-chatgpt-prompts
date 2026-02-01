@@ -14,6 +14,7 @@ import { prettifyJson } from "@/lib/format";
 import { PinButton } from "@/components/prompts/pin-button";
 import { RunPromptButton } from "@/components/prompts/run-prompt-button";
 import { VariableFillModal, hasVariables, renderContentWithVariables } from "@/components/prompts/variable-fill-modal";
+import { ExamplesSlider } from "@/components/prompts/examples-slider";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { AudioPlayer } from "@/components/prompts/audio-player";
 import {
@@ -73,6 +74,15 @@ export interface PromptCardProps {
       outgoingConnections?: number;
       incomingConnections?: number;
     };
+    userExamples?: Array<{
+      id: string;
+      mediaUrl: string;
+      user: {
+        username: string;
+        name: string | null;
+        avatar: string | null;
+      };
+    }>;
   };
   showPinButton?: boolean;
   isPinned?: boolean;
@@ -178,7 +188,14 @@ export function PromptCard({ prompt, showPinButton = false, isPinned = false }: 
       {hasMediaBackground && (
         <div className="relative bg-muted">
           {prompt.mediaUrl && !imageError ? (
-            isVideo ? (
+            prompt.userExamples && prompt.userExamples.length > 0 ? (
+              <ExamplesSlider
+                examples={prompt.userExamples}
+                mainMediaUrl={prompt.mediaUrl}
+                title={prompt.title}
+                isVideo={isVideo}
+              />
+            ) : isVideo ? (
               <video
                 ref={videoRef}
                 src={prompt.mediaUrl}

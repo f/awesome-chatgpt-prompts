@@ -123,6 +123,21 @@ function getCachedPrompts(
                 incomingConnections: { where: { label: { not: "related" } } },
               },
             },
+            userExamples: {
+              take: 5,
+              orderBy: { createdAt: "desc" },
+              select: {
+                id: true,
+                mediaUrl: true,
+                user: {
+                  select: {
+                    username: true,
+                    name: true,
+                    avatar: true,
+                  },
+                },
+              },
+            },
           },
         }),
         db.prompt.count({ where }),

@@ -22,7 +22,7 @@ import { VersionCompareModal } from "@/components/prompts/version-compare-modal"
 import { VersionCompareButton } from "@/components/prompts/version-compare-button";
 import { FeaturePromptButton } from "@/components/prompts/feature-prompt-button";
 import { UnlistPromptButton } from "@/components/prompts/unlist-prompt-button";
-import { MediaPreview } from "@/components/prompts/media-preview";
+import { UserExamplesSection } from "@/components/prompts/user-examples-section";
 import { DelistBanner } from "@/components/prompts/delist-banner";
 import { RestorePromptButton } from "@/components/prompts/restore-prompt-button";
 import { CommentSection } from "@/components/comments";
@@ -535,12 +535,16 @@ export default async function PromptPage({ params }: PromptPageProps) {
         </div>
 
         <TabsContent value="content" className="space-y-4 mt-0">
-          {/* Media Preview (for image/video prompts) */}
+          {/* Media Preview with User Examples (for image/video prompts) */}
           {prompt.mediaUrl && (
-            <MediaPreview 
+            <UserExamplesSection 
               mediaUrl={prompt.mediaUrl} 
               title={prompt.title} 
-              type={prompt.type} 
+              type={prompt.type}
+              promptId={prompt.id}
+              isLoggedIn={!!session?.user}
+              currentUserId={session?.user?.id}
+              isAdmin={isAdmin}
             />
           )}
 
