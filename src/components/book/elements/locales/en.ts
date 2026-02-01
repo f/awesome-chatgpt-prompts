@@ -148,16 +148,15 @@ const en: LocaleData = {
   ],
 
   tokenizer: {
-    default: "Hello, world!",
+    default: "example1",
     samples: {
-      "Hello, world!": ["Hel", "lo", ",", " wor", "ld", "!"],
-      "Unbelievable": ["Un", "bel", "iev", "able"],
-      "ChatGPT is amazing": ["Chat", "GPT", " is", " amaz", "ing"],
-      "The quick brown fox": ["The", " qui", "ck", " bro", "wn", " fox"],
-      "Prompt engineering": ["Prom", "pt", " eng", "ine", "ering"],
-      "Artificial Intelligence": ["Art", "ific", "ial", " Int", "ell", "igen", "ce"],
+      example1: { text: "Hello, world!", tokens: ["Hel", "lo", ",", " wor", "ld", "!"] },
+      example2: { text: "Washington D.C.", tokens: ["Wash", "ington", " D", ".", "C", "."] },
+      example3: { text: "Artificial Intelligence", tokens: ["Art", "ific", "ial", " Int", "ell", "igtic", "e"] },
+      example4: { text: "The Statue of Liberty", tokens: ["The", " Stat", "ue", " of", " Lib", "erty"] },
+      example5: { text: "Prompt engineering", tokens: ["Prom", "pt", " eng", "ine", "ering"] },
     },
-    tryExamples: 'Try: "Unbelievable", "ChatGPT is amazing", or type your own text',
+    tryExamples: "Try the examples or type your own text",
   },
 
   builderFields: [

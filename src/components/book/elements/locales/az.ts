@@ -143,15 +143,15 @@ const az: LocaleData = {
   ],
 
   tokenizer: {
-    default: "Salam, dünya!",
+    default: "example1",
     samples: {
-      "Salam, dünya!": ["Sa", "lam", ",", " dün", "ya", "!"],
-      "İnanılmaz": ["İna", "nıl", "maz"],
-      "Süni intellekt əladır": ["Sü", "ni", " in", "tel", "lekt", " əla", "dır"],
-      "Sürətli qəhvəyi tülkü": ["Sü", "rət", "li", " qəh", "və", "yi", " tül", "kü"],
-      "Prompt mühəndisliyi": ["Prom", "pt", " mü", "hən", "dis", "li", "yi"],
+      example1: { text: "Salam dünya!", tokens: ["Sa", "lam", " dün", "ya", "!"] },
+      example2: { text: "Bakı paytaxt", tokens: ["Ba", "kı", " pay", "taxt"] },
+      example3: { text: "Süni intellekt əladır", tokens: ["Sü", "ni", " in", "tel", "lekt", " əla", "dır"] },
+      example4: { text: "Xəzər dənizi", tokens: ["Xə", "zər", " də", "ni", "zi"] },
+      example5: { text: "Prompt mühəndisliyi", tokens: ["Prom", "pt", " mü", "hən", "dis", "li", "yi"] },
     },
-    tryExamples: 'Sınayın: "İnanılmaz", "Süni intellekt əladır" və ya öz mətninizi yazın',
+    tryExamples: "Nümunələri sınayın və ya öz mətninizi yazın",
   },
 
   builderFields: [

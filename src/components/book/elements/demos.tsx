@@ -55,21 +55,26 @@ export function TokenizerDemo() {
 
   const currentData = getLocaleField(locale, "tokenizer");
   
-  const [input, setInput] = useState(currentData.default);
-  const [tokens, setTokens] = useState<string[]>(currentData.samples[currentData.default as keyof typeof currentData.samples] || []);
+  // Get the default sample's text and tokens
+  const defaultSample = currentData.samples[currentData.default];
+  const [input, setInput] = useState(defaultSample?.text || "");
+  const [tokens, setTokens] = useState<string[]>(defaultSample?.tokens || []);
 
   // Update input and tokens when locale changes
   useEffect(() => {
-    const samples = currentData.samples as Record<string, string[]>;
-    setInput(currentData.default);
-    setTokens(samples[currentData.default] || []);
+    const sample = currentData.samples[currentData.default];
+    if (sample) {
+      setInput(sample.text);
+      setTokens(sample.tokens);
+    }
   }, [locale, currentData]);
 
   const handleInputChange = (value: string) => {
     setInput(value);
-    const samples = currentData.samples as Record<string, string[]>;
-    if (samples[value]) {
-      setTokens(samples[value]);
+    // Check if input matches any sample text
+    const matchingSample = Object.values(currentData.samples).find(s => s.text === value);
+    if (matchingSample) {
+      setTokens(matchingSample.tokens);
     } else {
       setTokens(simulateTokenization(value));
     }

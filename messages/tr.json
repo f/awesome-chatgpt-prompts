@@ -1534,32 +1534,99 @@
       "locked": "Kilidini açmak için önceki seviyeyi tamamla"
     },
     "worlds": {
-      "1": { "title": "Başlangıç Köyü" },
-      "2": { "title": "Netlik Kalesi" },
-      "3": { "title": "Bağlam Mağaraları" },
-      "4": { "title": "Yaratıcılık Kanyonu" },
-      "5": { "title": "Usta Dağı" }
+      "1": {
+        "title": "Başlangıç Köyü"
+      },
+      "2": {
+        "title": "Netlik Kalesi"
+      },
+      "3": {
+        "title": "Bağlam Mağaraları"
+      },
+      "4": {
+        "title": "Yaratıcılık Kanyonu"
+      },
+      "5": {
+        "title": "Usta Dağı"
+      }
     },
     "levels": {
-      "1_1_meet_promi": { "title": "Promi ile Tanış!", "description": "Robot arkadaşınla tanış ve yapay zekanın ne olduğunu öğren" },
-      "1_2_first_words": { "title": "Promi'in İlk Sözleri", "description": "İlk promptunu yazarak Promi'in anlamasına yardım et" },
-      "1_3_being_clear": { "title": "Net Olmak", "description": "Net talimatların neden daha iyi çalıştığını öğren" },
-      "2_1_missing_details": { "title": "Eksik Detaylar", "description": "Detayların neden önemli olduğunu keşfet" },
-      "2_2_who_and_what": { "title": "Kim ve Ne", "description": "Promptlarına karakter ve nesne ekle" },
-      "2_3_when_and_where": { "title": "Ne Zaman ve Nerede", "description": "Promptlarına zaman ve yer eklemeyi öğren" },
-      "2_4_detail_detective": { "title": "Detay Dedektifi", "description": "Doğru detayları ekleme ustası ol" },
-      "3_1_setting_the_scene": { "title": "Sahneyi Hazırlamak", "description": "Arka plan bilgisinin yapay zekaya nasıl yardımcı olduğunu öğren" },
-      "3_2_show_dont_tell": { "title": "Göster, Anlatma", "description": "Örnekler kullanarak tam olarak ne istediğini göster" },
-      "3_3_format_finder": { "title": "Format Bulucu", "description": "Liste, hikaye, şiir ve daha fazlasını iste!" },
-      "3_4_context_champion": { "title": "Bağlam Şampiyonu", "description": "Tüm bağlam tekniklerini bir profesyonel gibi birleştir" },
-      "4_1_pretend_time": { "title": "Hayal Zamanı!", "description": "Rol yapma promptlarını öğren" },
-      "4_2_story_starters": { "title": "Hikaye Başlatıcılar", "description": "Yapay zeka ile harika hikayeler oluştur" },
-      "4_3_character_creator": { "title": "Karakter Yaratıcı", "description": "Yapay zekaya kişilik ver" },
-      "4_4_world_builder": { "title": "Dünya Oluşturucu", "description": "Hayal gücüyle dolu dünyalar yarat" },
-      "5_1_perfect_prompt": { "title": "Mükemmel Prompt", "description": "Netlik, detay ve bağlamı birleştir" },
-      "5_2_fix_it_up": { "title": "Düzelt!", "description": "Zayıf promptları bul ve geliştir" },
-      "5_3_prompt_remix": { "title": "Prompt Remix", "description": "Farklı sonuçlar için promptları yeniden yaz" },
-      "5_4_graduation_day": { "title": "Mezuniyet Günü", "description": "Son mücadele - Prompt Ustası ol!" }
+      "1_1_meet_promi": {
+        "title": "Promi ile Tanış!",
+        "description": "Robot arkadaşınla tanış ve yapay zekanın ne olduğunu öğren"
+      },
+      "1_2_first_words": {
+        "title": "Promi'in İlk Sözleri",
+        "description": "İlk promptunu yazarak Promi'in anlamasına yardım et"
+      },
+      "1_3_being_clear": {
+        "title": "Net Olmak",
+        "description": "Net talimatların neden daha iyi çalıştığını öğren"
+      },
+      "2_1_missing_details": {
+        "title": "Eksik Detaylar",
+        "description": "Detayların neden önemli olduğunu keşfet"
+      },
+      "2_2_who_and_what": {
+        "title": "Kim ve Ne",
+        "description": "Promptlarına karakter ve nesne ekle"
+      },
+      "2_3_when_and_where": {
+        "title": "Ne Zaman ve Nerede",
+        "description": "Promptlarına zaman ve yer eklemeyi öğren"
+      },
+      "2_4_detail_detective": {
+        "title": "Detay Dedektifi",
+        "description": "Doğru detayları ekleme ustası ol"
+      },
+      "3_1_setting_the_scene": {
+        "title": "Sahneyi Hazırlamak",
+        "description": "Arka plan bilgisinin yapay zekaya nasıl yardımcı olduğunu öğren"
+      },
+      "3_2_show_dont_tell": {
+        "title": "Göster, Anlatma",
+        "description": "Örnekler kullanarak tam olarak ne istediğini göster"
+      },
+      "3_3_format_finder": {
+        "title": "Format Bulucu",
+        "description": "Liste, hikaye, şiir ve daha fazlasını iste!"
+      },
+      "3_4_context_champion": {
+        "title": "Bağlam Şampiyonu",
+        "description": "Tüm bağlam tekniklerini bir profesyonel gibi birleştir"
+      },
+      "4_1_pretend_time": {
+        "title": "Hayal Zamanı!",
+        "description": "Rol yapma promptlarını öğren"
+      },
+      "4_2_story_starters": {
+        "title": "Hikaye Başlatıcılar",
+        "description": "Yapay zeka ile harika hikayeler oluştur"
+      },
+      "4_3_character_creator": {
+        "title": "Karakter Yaratıcı",
+        "description": "Yapay zekaya kişilik ver"
+      },
+      "4_4_world_builder": {
+        "title": "Dünya Oluşturucu",
+        "description": "Hayal gücüyle dolu dünyalar yarat"
+      },
+      "5_1_perfect_prompt": {
+        "title": "Mükemmel Prompt",
+        "description": "Netlik, detay ve bağlamı birleştir"
+      },
+      "5_2_fix_it_up": {
+        "title": "Düzelt!",
+        "description": "Zayıf promptları bul ve geliştir"
+      },
+      "5_3_prompt_remix": {
+        "title": "Prompt Remix",
+        "description": "Farklı sonuçlar için promptları yeniden yaz"
+      },
+      "5_4_graduation_day": {
+        "title": "Mezuniyet Günü",
+        "description": "Son mücadele - Prompt Ustası ol!"
+      }
     },
     "level": {
       "backToMap": "Haritaya Dön",
@@ -1820,7 +1887,7 @@
       "tokenizerDemo": "Tokenizer Demosu",
       "seeHowTextIsSplit": "Metnin token'lara nasıl ayrıldığını görün",
       "enterText": "Metin girin:",
-      "tokens": "Token'lar",
+      "tokens": "token",
       "tryExamples": "Deneyin: \"Unbelievable\", \"ChatGPT is amazing\" veya kendi metninizi yazın",
       "contextWindowVisualizer": "Bağlam Penceresi Görselleştirici",
       "understandHowContextIsConsumed": "Bağlamın nasıl tüketildiğini anlayın",
@@ -1828,7 +1895,7 @@
       "remaining": "kalan",
       "prompt": "Prompt",
       "response": "Yanıt",
-      "yourPrompt": "Promptunuz",
+      "yourPrompt": "Promptunuz:",
       "aiResponse": "AI Yanıtı",
       "contextOverflow": "Bağlam taşması!",
       "contextOverflowMessage": "Promptunuz + yanıtınız bağlam penceresini aşıyor. Model kırpacak veya başarısız olacak. Prompt uzunluğunuzu azaltmayı veya daha kısa yanıtlar istemeyi deneyin.",
@@ -1889,7 +1956,7 @@
       "newInThisVersion": "Bu sürümde yeni",
       "quality": "Kalite",
       "issue": "Sorun:",
-      "success": "✓ Başarılı!",
+      "success": "Başarılı",
       "successMessage": "Prompt artık yüksek kaliteli, tutarlı çıktı üretiyor.",
       "apiCostCalculator": "API Maliyet Hesaplayıcı",
       "inputTokens": "Girdi Token'ları (istek başına)",
@@ -1933,7 +2000,7 @@
       "promptBuilder": "Prompt Oluşturucu",
       "buildYourPromptStepByStep": "Promptunuzu adım adım oluşturun",
       "pleaseAddTask": "Lütfen promptunuza en az bir görev ekleyin",
-      "rateLimitReached": "Hız sınırına ulaşıldı. Tekrar deneyin:",
+      "rateLimitReached": "İstek limiti aşıldı.",
       "orSignInForMore": "veya daha fazlası için giriş yapın.",
       "failedToRunPrompt": "Prompt çalıştırılamadı",
       "runWithAI": "AI ile Çalıştır",
@@ -1948,7 +2015,7 @@
       "clarity": "Netlik",
       "specificity": "Özgüllük",
       "missingElements": "Eksik Öğeler",
-      "suggestions": "Öneriler",
+      "suggestions": "Öneriler:",
       "improvedVersion": "İyileştirilmiş Versiyon",
       "summarizationStrategies": "Özetleme Stratejileri",
       "originalConversation": "Orijinal Konuşma",
@@ -1959,19 +2026,71 @@
       "part": "Bölüm",
       "demoExamples": {
         "tokenPrediction": {
-          "tokens": ["Türkiye", "'nin", " başkenti", " Ankara", "'dır", "."],
+          "tokens": [
+            "Türkiye",
+            "'nin",
+            " başkenti",
+            " Ankara",
+            "'dır",
+            "."
+          ],
           "fullText": "Türkiye'nin başkenti Ankara'dır."
         },
         "tokenizer": {
-          "default": "Merhaba, dünya!",
+          "default": "example1",
           "samples": {
-            "Merhaba, dünya!": ["Mer", "ha", "ba", ",", " dün", "ya", "!"],
-            "İnanılmaz": ["İna", "nıl", "maz"],
-            "Yapay zeka harika": ["Ya", "pay", " ze", "ka", " ha", "ri", "ka"],
-            "Hızlı kahverengi tilki": ["Hız", "lı", " kah", "ve", "ren", "gi", " til", "ki"],
-            "Prompt mühendisliği": ["Prom", "pt", " mü", "hen", "dis", "li", "ği"]
+            "example1": {
+              "text": "Merhaba dünya!",
+              "tokens": [
+                "Mer",
+                "haba",
+                " dünya",
+                "!"
+              ]
+            },
+            "example2": {
+              "text": "Ankara başkent",
+              "tokens": [
+                "Ank",
+                "ara",
+                " baş",
+                "kent"
+              ]
+            },
+            "example3": {
+              "text": "Yapay zeka harika",
+              "tokens": [
+                "Ya",
+                "pay",
+                " ze",
+                "ka",
+                " ha",
+                "ri",
+                "ka"
+              ]
+            },
+            "example4": {
+              "text": "İstanbul Boğazı",
+              "tokens": [
+                "İst",
+                "anb",
+                "ul",
+                " Boğ",
+                "azı"
+              ]
+            },
+            "example5": {
+              "text": "Prompt mühendisliği",
+              "tokens": [
+                "Prom",
+                "pt",
+                " mühen",
+                "dis",
+                "liği"
+              ]
+            }
           },
-          "tryExamples": "Deneyin: \"İnanılmaz\", \"Yapay zeka harika\" veya kendi metninizi yazın"
+          "tryExamples": "Örnekleri deneyin veya kendi metninizi yazın"
         },
         "temperature": {
           "prompt": "Türkiye'nin başkenti neresidir?",
@@ -1998,11 +2117,23 @@
         },
         "fewShot": {
           "examples": [
-            { "input": "Bu ürünü çok sevdim!", "output": "Olumlu" },
-            { "input": "Berbat bir deneyim, para israfı", "output": "Olumsuz" },
-            { "input": "Fena değil, özel bir şey yok", "output": "Nötr" }
+            {
+              "input": "Bu ürünü çok sevdim!",
+              "output": "Olumlu"
+            },
+            {
+              "input": "Berbat bir deneyim, para israfı",
+              "output": "Olumsuz"
+            },
+            {
+              "input": "Fena değil, özel bir şey yok",
+              "output": "Nötr"
+            }
           ],
-          "testCase": { "input": "Kalitesi harika ama kargo yavaştı", "expected": "Karışık" },
+          "testCase": {
+            "input": "Kalitesi harika ama kargo yavaştı",
+            "expected": "Karışık"
+          },
           "labels": {
             "positive": "Olumlu",
             "negative": "Olumsuz",
@@ -2016,7 +2147,6 @@
       "yourPromptWillBeScoredOn": "Promptunuz şunlara göre puanlanacak:",
       "startChallenge": "Mücadeleyi Başlat",
       "writeYourPromptHere": "Promptunuzu buraya yazın...",
-      "yourPrompt": "Promptunuz:",
       "points": "puan",
       "hints": "İpuçları",
       "hintsUsed": "{used}/{total} kullanıldı, her biri -5 puan",
@@ -2031,10 +2161,10 @@
       "exampleSolution": "Örnek Çözüm",
       "hide": "Gizle",
       "show": "Göster",
-      "improveThisPrompt": "Bu Promptu İyileştirin",
+      "improveThisPrompt": "Bu Promptu İyileştir",
       "improveThisPromptTask": "Daha iyi sonuçlar almak için bu promptu iyileştirin",
       "originalWeakPrompt": "Orijinal (Zayıf) Prompt",
-      "yourImprovedVersion": "İyileştirilmiş Sürümünüz",
+      "yourImprovedVersion": "İyileştirilmiş Versiyonunuz",
       "compareWithAI": "AI ile Karşılaştır",
       "reset": "Sıfırla",
       "idealSolution": "İdeal Çözüm",
@@ -2059,8 +2189,6 @@
       "wellStructuredPrompt": "🎉 İyi yapılandırılmış prompt!",
       "consistencyIssuesFound": "Bazı tutarlılık sorunları bulundu",
       "issues": "Sorunlar:",
-      "suggestions": "Öneriler:",
-      "rateLimitReached": "İstek limiti aşıldı.",
       "aiValidationFailed": "AI doğrulaması başarısız. Yerel doğrulama kullanılıyor.",
       "aiCheckFailed": "AI kontrolü başarısız. Lütfen tekrar deneyin.",
       "checklist": "Kontrol Listesi",
@@ -2072,18 +2200,11 @@
       "thePrompt": "Prompt:",
       "theOutputProblematic": "Çıktı (sorunlu):",
       "whatsWrongWithThisPrompt": "Bu promptta yanlış olan ne?",
-      "improveThisPrompt": "Bu Promptu İyileştir",
       "improvePromptTask": "Daha iyi sonuçlar almak için bu promptu iyileştirin",
-      "originalWeakPrompt": "Orijinal (Zayıf) Prompt",
-      "yourImprovedVersion": "İyileştirilmiş Versiyonunuz",
-      "compareWithAI": "AI ile Karşılaştır",
-      "reset": "Sıfırla",
       "showIdealSolution": "İdeal Çözümü Göster",
       "hideIdealSolution": "İdeal Çözümü Gizle",
-      "idealSolution": "İdeal Çözüm",
       "yourVersionBetter": "🎉 Sizin versiyonunuz daha iyi!",
       "keepImproving": "Orijinal hala daha iyi olabilir. İyileştirmeye devam edin!",
-      "keyDifferences": "Temel Farklar:",
       "jailbreakAttackSimulator": "Jailbreak Saldırı Simülatörü",
       "selectAttackType": "Nasıl çalıştığını görmek ve AI'ın buna karşı savunma yapıp yapmadığını test etmek için bir saldırı türü seçin:",
       "systemPromptDefense": "Sistem Promptu (Savunma)",
@@ -2098,7 +2219,6 @@
       "iterativeChain": "Yinelemeli Zincir",
       "running": "Çalışıyor...",
       "run": "Çalıştır",
-      "prompt": "Prompt",
       "outputLabel": "Çıktı",
       "skippedConditionNotMet": "Atlandı - koşul sağlanmadı",
       "iterationOf": "{current}. yineleme / {total}",
@@ -2108,16 +2228,39 @@
       "attempt": "Deneme",
       "retryingWithFeedback": "Hata geri bildirimiyle yeniden deneniyor...",
       "switchingToFallback": "Yedek yaklaşıma geçiliyor...",
-      "success": "Başarılı",
       "failed": "Başarısız",
       "retry": "Yeniden Dene",
       "fallback": "Yedek",
       "contextPlayground": "Bağlam Oyun Alanı",
-      "tokens": "token",
       "toggleContextBlocks": "Bağlam bloklarını açıp kapatarak nasıl birleştiklerini görün. Token sayısını takip edin!",
       "overContextLimit": "Bağlam limiti aşıldı! Bazı içerikler kırpılacak.",
       "enableContextBlocksToBuild": "Bir prompt oluşturmak için bazı bağlam bloklarını etkinleştirin",
       "testContext": "Bağlamı Test Et"
     }
+  },
+  "userExamples": {
+    "addMyExample": "Örneğimi Ekle",
+    "addExampleTitle": "Örneğinizi Ekleyin",
+    "addExampleDescriptionImage": "Bu prompt ile oluşturduğunuz bir görseli paylaşın.",
+    "addExampleDescriptionVideo": "Bu prompt ile oluşturduğunuz bir videoyu paylaşın.",
+    "imageUrl": "Görsel URL",
+    "videoUrl": "Video URL",
+    "imagePreview": "Görsel Önizleme",
+    "videoPreview": "Video Önizleme",
+    "urlTab": "URL",
+    "uploadTab": "Yükle",
+    "clickToUpload": "Görsel yüklemek için tıklayın",
+    "clickToUploadVideo": "Video yüklemek için tıklayın",
+    "uploading": "Yükleniyor...",
+    "maxFileSize": "Maksimum 4MB (JPEG, PNG, GIF, WebP)",
+    "fileTooLarge": "Dosya çok büyük. Maksimum boyut 4MB.",
+    "invalidFileType": "Geçersiz dosya türü. Sadece JPEG, PNG, GIF ve WebP kabul edilir.",
+    "invalidVideoType": "Geçersiz dosya türü. Sadece MP4 videolar kabul edilir.",
+    "commentOptional": "Yorum (isteğe bağlı)",
+    "commentPlaceholder": "Eserinizi açıklayın veya ipuçları paylaşın...",
+    "cancel": "İptal",
+    "submit": "Gönder",
+    "communityExamples": "Topluluk Örnekleri",
+    "userExample": "Kullanıcı örneği"
   }
 }

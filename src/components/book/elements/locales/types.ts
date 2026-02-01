@@ -70,9 +70,14 @@ export interface ChainStep {
   status: string;
 }
 
+export interface TokenizerSample {
+  text: string;
+  tokens: string[];
+}
+
 export interface TokenizerData {
   default: string;
-  samples: Record<string, string[]>;
+  samples: Record<string, TokenizerSample>;
   tryExamples: string;
 }
 

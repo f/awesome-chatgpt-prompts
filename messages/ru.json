@@ -1486,16 +1486,34 @@
     "viewAllContributors": "Посмотреть всех участников на"
   },
   "kids": {
-    "header": { "title": "Школа промптов Чипа", "levels": "уровней", "home": "Главная", "map": "Карта", "mainSite": "Основной сайт" },
+    "header": {
+      "title": "Школа промптов Чипа",
+      "levels": "уровней",
+      "home": "Главная",
+      "map": "Карта",
+      "mainSite": "Основной сайт"
+    },
     "home": {
       "badge": "Обучение для детей",
       "title": "Научись разговаривать с ИИ!",
       "subtitle": "Присоединяйся к роботу Чипу в увлекательном приключении и научись писать крутые промпты!",
-      "promiIntro": { "greeting": "Привет, я Чип! 🤖", "message": "Я дружелюбный робот, которому нужна ТВОЯ помощь! Поможешь мне лучше понимать промпты?" },
+      "promiIntro": {
+        "greeting": "Привет, я Чип! 🤖",
+        "message": "Я дружелюбный робот, которому нужна ТВОЯ помощь! Поможешь мне лучше понимать промпты?"
+      },
       "features": {
-        "games": { "title": "Весёлые игры", "description": "Учись, играя в игры перетаскивания и викторины" },
-        "stories": { "title": "Классные истории", "description": "Следуй за Чипом в захватывающих приключениях" },
-        "stars": { "title": "Собирай звёзды", "description": "Собирай звёзды и открывай новые уровни" }
+        "games": {
+          "title": "Весёлые игры",
+          "description": "Учись, играя в игры перетаскивания и викторины"
+        },
+        "stories": {
+          "title": "Классные истории",
+          "description": "Следуй за Чипом в захватывающих приключениях"
+        },
+        "stars": {
+          "title": "Собирай звёзды",
+          "description": "Собирай звёзды и открывай новые уровни"
+        }
       },
       "startButton": "Начать играть!",
       "ageNote": "Лучше всего подходит для детей 8-14 лет, умеющих читать и писать",
@@ -1508,40 +1526,741 @@
       "next": "Далее",
       "completeFirst": "Сначала завершите задание, чтобы продолжить"
     },
-    "map": { "title": "Карта мира", "subtitle": "Выбери уровень и начни своё приключение!", "worldLevels": "{count} уровней", "levelNumber": "Уровень {number}", "locked": "Пройди предыдущий уровень для разблокировки" },
-    "worlds": { "1": { "title": "Стартовая деревня" }, "2": { "title": "Замок ясности" }, "3": { "title": "Пещеры контекста" }, "4": { "title": "Каньон творчества" }, "5": { "title": "Гора мастерства" } },
-    "levels": {
-      "1_1_meet_promi": { "title": "Познакомься с Чипом!", "description": "Поздоровайся с роботом-другом и узнай, что такое ИИ" },
-      "1_2_first_words": { "title": "Первые слова Чипа", "description": "Помоги Чипу понять, написав свой первый промпт" },
-      "1_3_being_clear": { "title": "Будь понятным", "description": "Узнай, почему чёткие инструкции работают лучше" },
-      "2_1_missing_details": { "title": "Пропущенные детали", "description": "Узнай, почему детали важны" },
-      "2_2_who_and_what": { "title": "Кто и Что", "description": "Добавь персонажей и объекты" },
-      "2_3_when_and_where": { "title": "Когда и Где", "description": "Научись добавлять время и место" },
-      "2_4_detail_detective": { "title": "Детектив деталей", "description": "Стань экспертом по добавлению деталей" },
-      "3_1_setting_the_scene": { "title": "Создание сцены", "description": "Узнай, почему контекст помогает" },
-      "3_2_show_dont_tell": { "title": "Показывай, не рассказывай", "description": "Используй примеры, чтобы показать, что хочешь" },
-      "3_3_format_finder": { "title": "Искатель формата", "description": "Проси списки, истории, стихи!" },
-      "3_4_context_champion": { "title": "Чемпион контекста", "description": "Объедини все техники контекста" },
-      "4_1_pretend_time": { "title": "Время притворяться!", "description": "Изучи промпты для ролевых игр" },
-      "4_2_story_starters": { "title": "Начала историй", "description": "Создавай потрясающие истории с ИИ" },
-      "4_3_character_creator": { "title": "Создатель персонажей", "description": "Дай ИИ личность" },
-      "4_4_world_builder": { "title": "Строитель миров", "description": "Создавай воображаемые миры" },
-      "5_1_perfect_prompt": { "title": "Идеальный промпт", "description": "Объедини ясность, детали и контекст" },
-      "5_2_fix_it_up": { "title": "Исправь это!", "description": "Найди и улучши слабые промпты" },
-      "5_3_prompt_remix": { "title": "Ремикс промптов", "description": "Переписывай промпты для разных результатов" },
-      "5_4_graduation_day": { "title": "День выпуска", "description": "Финальное испытание - стань Мастером!" }
+    "map": {
+      "title": "Карта мира",
+      "subtitle": "Выбери уровень и начни своё приключение!",
+      "worldLevels": "{count} уровней",
+      "levelNumber": "Уровень {number}",
+      "locked": "Пройди предыдущий уровень для разблокировки"
     },
-    "level": { "backToMap": "Назад к карте", "levelLabel": "Уровень {number}", "comingSoon": "Этот уровень скоро появится!", "previous": "Назад", "next": "Далее", "map": "Карта" },
-    "levelComplete": { "title": "Уровень пройден!", "nextLevel": "Следующий уровень", "backToMap": "Назад к карте", "allDone": "Назад к карте" },
-    "quiz": { "goodLabel": "Отличный промпт!", "badLabel": "Не лучший", "correct": "Правильно!", "incorrect": "Хорошая попытка!", "tryAgain": "Попробуй снова" },
-    "magicWords": { "title": "Перетащи волшебные слова! ✨", "dragOrTap": "🎯 Перетащи или нажми на слова:", "check": "Проверить!", "retry": "Заново", "correct": "правильно", "tryAgain": "Попробуй снова!" },
-    "dragDrop": { "title": "Построй промпт!", "instruction": "Используй стрелки для перемещения или нажми на два элемента для обмена!", "result": "Результат", "check": "Проверить!", "retry": "Заново", "success": "Отлично! Ты построил классный промпт!", "almost": "Почти! Продолжай сортировать.", "tapToSwap": "Нажми на другой элемент для обмена!" },
-    "promptParts": { "title": "Рассортируй части промпта!", "instruction": "Нажми на каждую часть, затем выбери тип!", "score": "Счёт", "pickCategory": "Какой это тип?", "success": "Ты правильно рассортировал все части!", "retry": "Попробуй снова", "types": { "role": "Роль", "task": "Задача", "context": "Контекст", "constraint": "Ограничение" } },
-    "exampleMatcher": { "title": "Сопоставление паттернов", "instruction": "Посмотри на паттерн и выбери, что идёт дальше!", "pattern": "Паттерн:", "check": "Проверить!", "retry": "Попробуй снова", "correct": "Правильно! 🎉", "tryAgain": "Не совсем - посмотри на паттерн ещё раз!" },
-    "promptDoctor": { "title": "Доктор промптов", "health": "Здоровье промпта", "sick": "Больной промпт", "healthy": "Здоровый промпт!", "diagnose": "Нажми на проблему, чтобы исправить:", "success": "Промпт теперь в порядке!", "retry": "Сначала" },
-    "stepByStep": { "title": "Думай пошагово", "problem": "Проблема:", "withoutMagic": "Без волшебных слов:", "addMagicWords": "Добавь волшебные слова!", "magicWordsActive": "Волшебные слова добавлены!", "nextStep": "Показать следующий шаг", "withMagic": "С пошаговым мышлением:", "retry": "Попробуй снова" },
-    "promptLab": { "title": "Лаборатория промптов", "progress": "Улучшения", "yourPrompt": "Твой промпт:", "aiSays": "Ответ ИИ:", "addDetails": "Добавь улучшения:", "success": "Твой промпт теперь очень конкретный!", "retry": "Сначала" },
-    "wordPredictor": { "title": "Как думает ИИ", "instruction": "ИИ угадывает наиболее вероятное следующее слово. Можешь думать как ИИ?", "aiThinks": "ИИ читает:", "thinkingDefault": "Хмм, какое слово имело бы смысл здесь?", "check": "Проверь мой ответ!", "correct": "Ты думаешь как ИИ!", "tryAgain": "Не совсем! ИИ выбирает наиболее вероятное слово.", "retry": "Попробуй снова" },
-    "settings": { "title": "Настройки", "music": "Музыка", "language": "Язык", "progress": "Твой прогресс", "stars": "Звёзды", "completed": "Завершено", "resetTitle": "Сбросить прогресс", "resetButton": "Сбросить всё", "resetWarning": "Это удалит все звёзды и прогресс. Уверен?", "resetConfirm": "Да, сбросить всё", "resetComplete": "Прогресс сброшен! Перезагрузка...", "cancel": "Отмена" }
+    "worlds": {
+      "1": {
+        "title": "Стартовая деревня"
+      },
+      "2": {
+        "title": "Замок ясности"
+      },
+      "3": {
+        "title": "Пещеры контекста"
+      },
+      "4": {
+        "title": "Каньон творчества"
+      },
+      "5": {
+        "title": "Гора мастерства"
+      }
+    },
+    "levels": {
+      "1_1_meet_promi": {
+        "title": "Познакомься с Чипом!",
+        "description": "Поздоровайся с роботом-другом и узнай, что такое ИИ"
+      },
+      "1_2_first_words": {
+        "title": "Первые слова Чипа",
+        "description": "Помоги Чипу понять, написав свой первый промпт"
+      },
+      "1_3_being_clear": {
+        "title": "Будь понятным",
+        "description": "Узнай, почему чёткие инструкции работают лучше"
+      },
+      "2_1_missing_details": {
+        "title": "Пропущенные детали",
+        "description": "Узнай, почему детали важны"
+      },
+      "2_2_who_and_what": {
+        "title": "Кто и Что",
+        "description": "Добавь персонажей и объекты"
+      },
+      "2_3_when_and_where": {
+        "title": "Когда и Где",
+        "description": "Научись добавлять время и место"
+      },
+      "2_4_detail_detective": {
+        "title": "Детектив деталей",
+        "description": "Стань экспертом по добавлению деталей"
+      },
+      "3_1_setting_the_scene": {
+        "title": "Создание сцены",
+        "description": "Узнай, почему контекст помогает"
+      },
+      "3_2_show_dont_tell": {
+        "title": "Показывай, не рассказывай",
+        "description": "Используй примеры, чтобы показать, что хочешь"
+      },
+      "3_3_format_finder": {
+        "title": "Искатель формата",
+        "description": "Проси списки, истории, стихи!"
+      },
+      "3_4_context_champion": {
+        "title": "Чемпион контекста",
+        "description": "Объедини все техники контекста"
+      },
+      "4_1_pretend_time": {
+        "title": "Время притворяться!",
+        "description": "Изучи промпты для ролевых игр"
+      },
+      "4_2_story_starters": {
+        "title": "Начала историй",
+        "description": "Создавай потрясающие истории с ИИ"
+      },
+      "4_3_character_creator": {
+        "title": "Создатель персонажей",
+        "description": "Дай ИИ личность"
+      },
+      "4_4_world_builder": {
+        "title": "Строитель миров",
+        "description": "Создавай воображаемые миры"
+      },
+      "5_1_perfect_prompt": {
+        "title": "Идеальный промпт",
+        "description": "Объедини ясность, детали и контекст"
+      },
+      "5_2_fix_it_up": {
+        "title": "Исправь это!",
+        "description": "Найди и улучши слабые промпты"
+      },
+      "5_3_prompt_remix": {
+        "title": "Ремикс промптов",
+        "description": "Переписывай промпты для разных результатов"
+      },
+      "5_4_graduation_day": {
+        "title": "День выпуска",
+        "description": "Финальное испытание - стань Мастером!"
+      }
+    },
+    "level": {
+      "backToMap": "Назад к карте",
+      "levelLabel": "Уровень {number}",
+      "comingSoon": "Этот уровень скоро появится!",
+      "previous": "Назад",
+      "next": "Далее",
+      "map": "Карта"
+    },
+    "levelComplete": {
+      "title": "Уровень пройден!",
+      "nextLevel": "Следующий уровень",
+      "backToMap": "Назад к карте",
+      "allDone": "Назад к карте"
+    },
+    "quiz": {
+      "goodLabel": "Отличный промпт!",
+      "badLabel": "Не лучший",
+      "correct": "Правильно!",
+      "incorrect": "Хорошая попытка!",
+      "tryAgain": "Попробуй снова"
+    },
+    "magicWords": {
+      "title": "Перетащи волшебные слова! ✨",
+      "dragOrTap": "🎯 Перетащи или нажми на слова:",
+      "check": "Проверить!",
+      "retry": "Заново",
+      "correct": "правильно",
+      "tryAgain": "Попробуй снова!"
+    },
+    "dragDrop": {
+      "title": "Построй промпт!",
+      "instruction": "Используй стрелки для перемещения или нажми на два элемента для обмена!",
+      "result": "Результат",
+      "check": "Проверить!",
+      "retry": "Заново",
+      "success": "Отлично! Ты построил классный промпт!",
+      "almost": "Почти! Продолжай сортировать.",
+      "tapToSwap": "Нажми на другой элемент для обмена!"
+    },
+    "promptParts": {
+      "title": "Рассортируй части промпта!",
+      "instruction": "Нажми на каждую часть, затем выбери тип!",
+      "score": "Счёт",
+      "pickCategory": "Какой это тип?",
+      "success": "Ты правильно рассортировал все части!",
+      "retry": "Попробуй снова",
+      "types": {
+        "role": "Роль",
+        "task": "Задача",
+        "context": "Контекст",
+        "constraint": "Ограничение"
+      }
+    },
+    "exampleMatcher": {
+      "title": "Сопоставление паттернов",
+      "instruction": "Посмотри на паттерн и выбери, что идёт дальше!",
+      "pattern": "Паттерн:",
+      "check": "Проверить!",
+      "retry": "Попробуй снова",
+      "correct": "Правильно! 🎉",
+      "tryAgain": "Не совсем - посмотри на паттерн ещё раз!"
+    },
+    "promptDoctor": {
+      "title": "Доктор промптов",
+      "health": "Здоровье промпта",
+      "sick": "Больной промпт",
+      "healthy": "Здоровый промпт!",
+      "diagnose": "Нажми на проблему, чтобы исправить:",
+      "success": "Промпт теперь в порядке!",
+      "retry": "Сначала"
+    },
+    "stepByStep": {
+      "title": "Думай пошагово",
+      "problem": "Проблема:",
+      "withoutMagic": "Без волшебных слов:",
+      "addMagicWords": "Добавь волшебные слова!",
+      "magicWordsActive": "Волшебные слова добавлены!",
+      "nextStep": "Показать следующий шаг",
+      "withMagic": "С пошаговым мышлением:",
+      "retry": "Попробуй снова"
+    },
+    "promptLab": {
+      "title": "Лаборатория промптов",
+      "progress": "Улучшения",
+      "yourPrompt": "Твой промпт:",
+      "aiSays": "Ответ ИИ:",
+      "addDetails": "Добавь улучшения:",
+      "success": "Твой промпт теперь очень конкретный!",
+      "retry": "Сначала"
+    },
+    "wordPredictor": {
+      "title": "Как думает ИИ",
+      "instruction": "ИИ угадывает наиболее вероятное следующее слово. Можешь думать как ИИ?",
+      "aiThinks": "ИИ читает:",
+      "thinkingDefault": "Хмм, какое слово имело бы смысл здесь?",
+      "check": "Проверь мой ответ!",
+      "correct": "Ты думаешь как ИИ!",
+      "tryAgain": "Не совсем! ИИ выбирает наиболее вероятное слово.",
+      "retry": "Попробуй снова"
+    },
+    "settings": {
+      "title": "Настройки",
+      "music": "Музыка",
+      "language": "Язык",
+      "progress": "Твой прогресс",
+      "stars": "Звёзды",
+      "completed": "Завершено",
+      "resetTitle": "Сбросить прогресс",
+      "resetButton": "Сбросить всё",
+      "resetWarning": "Это удалит все звёзды и прогресс. Уверен?",
+      "resetConfirm": "Да, сбросить всё",
+      "resetComplete": "Прогресс сброшен! Перезагрузка...",
+      "cancel": "Отмена"
+    }
+  },
+  "book": {
+    "title": "The Interactive Book of Prompting",
+    "subtitle": "An Interactive Guide to Crafting Clear and Effective Prompts",
+    "metaTitle": "The Interactive Book of Prompting | Free Online Guide to AI Prompt Engineering",
+    "metaDescription": "Master AI prompt engineering with this free, interactive guide. Learn ChatGPT prompts, chain-of-thought reasoning, few-shot learning, and advanced techniques. 25+ chapters with real examples.",
+    "interactiveGuideBy": "An Interactive Guide by",
+    "authorIntro": "Hi, I'm <author>Fatih Kadir Akın</author>, the curator of the popular <repoLink>Awesome ChatGPT Prompts</repoLink> repository on GitHub and <siteName>prompts.chat</siteName>.",
+    "bookDescription": "In this comprehensive and interactive guide, you'll discover expert strategies for crafting compelling AI prompts that drive engaging and effective conversations. From understanding how AI models work to mastering advanced techniques like prompt chaining and agentic systems, this book provides you with the tools you need to take your AI interactions to the next level.",
+    "whatYouWillLearn": "What you'll learn:",
+    "highlights": {
+      "understanding": "Understanding how AI models think and process prompts",
+      "crafting": "Crafting clear, specific, and effective prompts",
+      "advanced": "Advanced techniques: chain-of-thought, few-shot learning, and prompt chaining",
+      "interactive": "Interactive examples you can try directly in the browser",
+      "realWorld": "Real-world use cases for writing, coding, education, and business",
+      "future": "The future of prompting: agents and agentic systems"
+    },
+    "bookStructure": "Book Structure",
+    "structure": {
+      "introduction": "Introduction",
+      "part1": "Part 1: Foundations",
+      "part2": "Part 2: Techniques",
+      "part3": "Part 3: Advanced Strategies",
+      "part4": "Part 4: Best Practices",
+      "part5": "Part 5: Use Cases",
+      "part6": "Part 6: Conclusion",
+      "chapters": "25 Interactive Chapters"
+    },
+    "startReading": "Start Reading",
+    "skipToChapter1": "Skip to Chapter 1",
+    "continuousUpdate": "This book is continuously updated with new techniques and insights as AI evolves.",
+    "partOfProject": "Part of the <repoLink>Awesome ChatGPT Prompts</repoLink> project. Licensed under CC0.",
+    "kidsSection": {
+      "question": "Are you a school teacher or a parent?",
+      "title": "Try our Playable Book for Kids! 🎮",
+      "description": "An interactive, game-based adventure to teach children (ages 8-14) how to communicate with AI through fun puzzles and stories.",
+      "startPlaying": "Start Playing"
+    },
+    "chapter": {
+      "notFound": "Chapter Not Found",
+      "comingSoon": "This chapter is coming soon.",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "tableOfContents": "Table of Contents",
+    "awesomeChatGPTPrompts": "Awesome ChatGPT Prompts",
+    "search": {
+      "placeholder": "Search chapters...",
+      "noResults": "No chapters found"
+    },
+    "bookmark": {
+      "add": "Bookmark this chapter",
+      "remove": "Remove bookmark",
+      "continueReading": "Continue where you left off",
+      "continue": "Continue"
+    },
+    "parts": {
+      "introduction": "Introduction",
+      "foundations": "Foundations",
+      "techniques": "Techniques",
+      "advanced": "Advanced Strategies",
+      "bestPractices": "Best Practices",
+      "useCases": "Use Cases",
+      "conclusion": "Conclusion"
+    },
+    "chapters": {
+      "00a-preface": "Preface",
+      "00b-history": "History",
+      "00c-introduction": "Introduction",
+      "01-understanding-ai-models": "Understanding AI Models",
+      "02-anatomy-of-effective-prompt": "Anatomy of an Effective Prompt",
+      "03-core-prompting-principles": "Core Prompting Principles",
+      "04-role-based-prompting": "Role-Based Prompting",
+      "05-structured-output": "Structured Output",
+      "06-chain-of-thought": "Chain of Thought",
+      "07-few-shot-learning": "Few-Shot Learning",
+      "08-iterative-refinement": "Iterative Refinement",
+      "09-json-yaml-prompting": "JSON & YAML Prompting",
+      "10-system-prompts-personas": "System Prompts & Personas",
+      "11-prompt-chaining": "Prompt Chaining",
+      "12-handling-edge-cases": "Handling Edge Cases",
+      "13-multimodal-prompting": "Multimodal Prompting",
+      "14-context-engineering": "Context Engineering",
+      "25-agents-and-skills": "Agents & Skills",
+      "15-common-pitfalls": "Common Pitfalls",
+      "16-ethics-responsible-use": "Ethics & Responsible Use",
+      "17-prompt-optimization": "Prompt Optimization",
+      "18-writing-content": "Writing & Content",
+      "19-programming-development": "Programming & Development",
+      "20-education-learning": "Education & Learning",
+      "21-business-productivity": "Business & Productivity",
+      "22-creative-arts": "Creative Arts",
+      "23-research-analysis": "Research & Analysis",
+      "24-future-of-prompting": "The Future of Prompting"
+    },
+    "chapterDescriptions": {
+      "00a-preface": "A personal note from the author",
+      "00b-history": "The story of Awesome ChatGPT Prompts",
+      "00c-introduction": "What is prompt engineering and why it matters",
+      "01-understanding-ai-models": "How large language models work",
+      "02-anatomy-of-effective-prompt": "Components that make prompts work",
+      "03-core-prompting-principles": "Fundamental principles for better prompts",
+      "04-role-based-prompting": "Using personas and roles effectively",
+      "05-structured-output": "Getting consistent, formatted responses",
+      "06-chain-of-thought": "Step-by-step reasoning for complex tasks",
+      "07-few-shot-learning": "Teaching by example",
+      "08-iterative-refinement": "Improving prompts through iteration",
+      "09-json-yaml-prompting": "Structured data formats in prompts",
+      "10-system-prompts-personas": "Creating consistent AI personalities",
+      "11-prompt-chaining": "Connecting multiple prompts",
+      "12-handling-edge-cases": "Dealing with unexpected inputs",
+      "13-multimodal-prompting": "Working with images, audio, and video",
+      "14-context-engineering": "RAG, embeddings, function calling, and MCP",
+      "25-agents-and-skills": "Building AI agents with reusable skill packages",
+      "15-common-pitfalls": "Mistakes to avoid",
+      "16-ethics-responsible-use": "Ethical considerations in AI",
+      "17-prompt-optimization": "Testing and improving prompts",
+      "18-writing-content": "Content creation and copywriting",
+      "19-programming-development": "Code generation and debugging",
+      "20-education-learning": "Teaching and learning applications",
+      "21-business-productivity": "Professional and workplace applications",
+      "22-creative-arts": "Artistic and creative applications",
+      "23-research-analysis": "Data analysis and research tasks",
+      "24-future-of-prompting": "Emerging trends and looking ahead"
+    },
+    "interactive": {
+      "tryIt": "Try It Yourself",
+      "copy": "Copy",
+      "copied": "Copied!",
+      "correct": "Correct!",
+      "notQuite": "Not quite.",
+      "nextTokenPrediction": "Next Token Prediction",
+      "watchHowAIPredicts": "Watch how AI predicts the next token at each step",
+      "replay": "Replay",
+      "playing": "Playing...",
+      "play": "Play",
+      "pressPlayToStart": "Press Play to start...",
+      "completingCurrentToken": "Completing current token:",
+      "top3PredictedNextTokens": "Top 3 Predicted Next Tokens:",
+      "howItWorks": "How it works:",
+      "howItWorksExplanation": "At each step, the model calculates probabilities for all possible next tokens (~50,000+). The highest probability token is selected, then the process repeats.",
+      "tokenizerDemo": "Tokenizer Demo",
+      "seeHowTextIsSplit": "See how text is split into tokens",
+      "enterText": "Enter text:",
+      "tokens": "tokens",
+      "tryExamples": "Try: \"Unbelievable\", \"ChatGPT is amazing\" or type your own",
+      "contextWindowVisualizer": "Context Window Visualizer",
+      "understandHowContextIsConsumed": "Understand how context is consumed",
+      "contextWindow": "Context Window",
+      "remaining": "remaining",
+      "prompt": "Prompt",
+      "response": "Response",
+      "yourPrompt": "Your Prompt:",
+      "aiResponse": "AI Response",
+      "contextOverflow": "Context overflow!",
+      "contextOverflowMessage": "Your prompt + response exceeds the context window. The model will truncate or fail. Try reducing your prompt length or requesting shorter responses.",
+      "tipLabel": "Tip:",
+      "contextTip": "Both your prompt AND the AI's response must fit in the context window. Longer prompts leave less room for responses. Put important information at the start of your prompt.",
+      "temperatureDemo": "Temperature Demo",
+      "seeHowRandomnessAffects": "See how randomness affects outputs",
+      "temperature": "Temperature",
+      "deterministic": "Deterministic",
+      "balanced": "Balanced",
+      "creative": "Creative",
+      "veryCreative": "Very Creative",
+      "focused": "Focused",
+      "random": "Random",
+      "possibleResponsesAtThisTemp": "Possible responses at this temperature:",
+      "useLowTemperature": "Use low temperature",
+      "useHighTemperature": "Use high temperature",
+      "forFactualAnswers": "for factual, consistent answers.",
+      "forCreativeWriting": "for creative writing and brainstorming.",
+      "structuredOutputDemo": "Structured Output Demo",
+      "seeTheDifferenceStructureMakes": "See the difference structure makes",
+      "unstructured": "Unstructured",
+      "output": "Output:",
+      "youCan": "You can:",
+      "parseProgrammatically": "Parse programmatically",
+      "compareAcrossQueries": "Compare across queries",
+      "integrateIntoWorkflows": "Integrate into workflows",
+      "validateForCompleteness": "Validate for completeness",
+      "parseProgrammaticallyLabel": "Parse programmatically:",
+      "complexRegexRequired": "Complex regex or NLP required",
+      "unreliableBreaksWithChanges": "Unreliable, breaks with slight wording changes",
+      "simpleAndReliable": "Simple and reliable",
+      "parseableWithMarkdown": "Parseable with markdown library",
+      "fewShotLearningDemo": "Few-Shot Learning Demo",
+      "seeHowExamplesImproveAccuracy": "See how examples improve accuracy",
+      "numberOfExamples": "Number of examples",
+      "zeroShot": "Zero-shot",
+      "oneShot": "One-shot",
+      "twoShot": "Two-shot",
+      "threeShot": "Three-shot",
+      "examplesProvided": "Examples provided:",
+      "testInput": "Test input:",
+      "modelPrediction": "Model prediction:",
+      "confidence": "Confidence:",
+      "expected": "Expected:",
+      "formatComparison": "Format Comparison",
+      "sameDataDifferentFormats": "Same data, different formats",
+      "defineStructureWithTypeScript": "Define the structure with TypeScript interfaces",
+      "machineReadableStrictSyntax": "Machine-readable, strict syntax, great for APIs",
+      "humanReadableSupportsComments": "Human-readable, supports comments, great for config",
+      "defineSchema": "Define schema",
+      "apisAndParsing": "APIs & parsing",
+      "configFiles": "Config files",
+      "iterativeRefinementDemo": "Iterative Refinement Demo",
+      "watchAPromptEvolve": "Watch a prompt evolve",
+      "pause": "Pause",
+      "versionXOfY": "Version {current} / {total}",
+      "newInThisVersion": "New in this version",
+      "quality": "Quality",
+      "issue": "Issue:",
+      "success": "Success",
+      "successMessage": "The prompt now produces high-quality, consistent output.",
+      "apiCostCalculator": "API Cost Calculator",
+      "inputTokens": "Input Tokens (per request)",
+      "outputTokens": "Output Tokens (per request)",
+      "inputPrice": "Input Price ($ per 1M tokens)",
+      "outputPrice": "Output Price ($ per 1M tokens)",
+      "requestsPerDay": "Requests per Day",
+      "perRequest": "Per Request",
+      "dailyCost": "Daily Cost",
+      "monthlyCost": "Monthly Cost",
+      "textToImageBuildPrompt": "Text-to-Image: Build Your Prompt",
+      "selectOptionsToBuiltImagePrompt": "Select options from each category to build an image prompt:",
+      "generatedPrompt": "Generated Prompt",
+      "simulateDiffusionProcess": "Simulate Diffusion Process",
+      "diffusionStep1": "Start from random noise",
+      "diffusionStep2": "Detect rough shapes",
+      "diffusionStep3": "Add basic colors and forms",
+      "diffusionStep4": "Refine details",
+      "diffusionStep5": "Final image",
+      "diffusionExplanation": "Real diffusion models run thousands of steps, gradually removing noise until a coherent image emerges.",
+      "textToVideoBuildPrompt": "Text-to-Video: Build Your Prompt",
+      "videoPromptsNeed": "Video prompts need motion, camera work, and timing:",
+      "playAnimation": "Play Animation",
+      "stop": "Stop",
+      "frame": "Frame:",
+      "consistency": "Consistency:",
+      "consistencyDesc": "Subject stays the same across frames",
+      "motion": "Motion:",
+      "motionDesc": "Position changes smoothly over time",
+      "physics": "Physics:",
+      "physicsDesc": "Movement follows natural laws",
+      "simplifiedAnimationPreview": "Simplified animation preview",
+      "videoModelExplanation": "Real video models generate 24-60 frames per second with photorealistic detail and consistent subjects.",
+      "embeddingsVisualization": "Embeddings Visualization",
+      "clickWordToSeeVector": "Click a word to see its vector and similarity to other words:",
+      "vector": "vector",
+      "similarityTo": "Similarity to:",
+      "embeddingsExplanation": "Words with similar meanings (like \"happy\" and \"joyful\") have similar vectors and get high similarity scores.",
+      "canDoWell": "Can Do Well",
+      "cannotDo": "Cannot Do",
+      "promptBuilder": "Prompt Builder",
+      "buildYourPromptStepByStep": "Build your prompt step by step",
+      "pleaseAddTask": "Please add at least one task to your prompt",
+      "rateLimitReached": "Rate limit reached. Try again in:",
+      "orSignInForMore": "or sign in for more.",
+      "failedToRunPrompt": "Failed to run prompt",
+      "runWithAI": "Run with AI",
+      "failedToConnectApi": "Failed to connect to API",
+      "day": "day",
+      "promptAnalyzer": "Prompt Analyzer",
+      "getAiFeedbackOnPrompt": "Get AI feedback on your prompt",
+      "pasteOrWritePromptHere": "Paste or write your prompt here...",
+      "analyze": "Analyze",
+      "pleaseEnterPromptToAnalyze": "Please enter a prompt to analyze",
+      "failedToAnalyzePrompt": "Failed to analyze prompt",
+      "clarity": "Clarity",
+      "specificity": "Specificity",
+      "missingElements": "Missing Elements",
+      "suggestions": "Suggestions",
+      "improvedVersion": "Improved Version",
+      "summarizationStrategies": "Summarization Strategies",
+      "originalConversation": "Original Conversation",
+      "after": "After:",
+      "summary": "Summary",
+      "keptMessages": "Kept Messages",
+      "saved": "Saved:",
+      "part": "Part",
+      "demoExamples": {
+        "tokenPrediction": {
+          "tokens": [
+            "The",
+            " capital",
+            " of",
+            " France",
+            " is",
+            " Paris",
+            "."
+          ],
+          "fullText": "The capital of France is Paris."
+        },
+        "tokenizer": {
+          "default": "example1",
+          "samples": {
+            "example1": {
+              "text": "Привет мир!",
+              "tokens": [
+                "При",
+                "вет",
+                " мир",
+                "!"
+              ]
+            },
+            "example2": {
+              "text": "Москва столица России",
+              "tokens": [
+                "Моск",
+                "ва",
+                " стол",
+                "ица",
+                " Рос",
+                "сии"
+              ]
+            },
+            "example3": {
+              "text": "Искусственный интеллект",
+              "tokens": [
+                "Иск",
+                "усст",
+                "венный",
+                " инт",
+                "елл",
+                "ект"
+              ]
+            },
+            "example4": {
+              "text": "Красная площадь",
+              "tokens": [
+                "Крас",
+                "ная",
+                " площ",
+                "адь"
+              ]
+            },
+            "example5": {
+              "text": "Промпт инженерия",
+              "tokens": [
+                "Пром",
+                "пт",
+                " инжен",
+                "ерия"
+              ]
+            }
+          },
+          "tryExamples": "Попробуйте примеры или введите свой текст"
+        },
+        "temperature": {
+          "prompt": "What is the capital of France?",
+          "lowTemp": [
+            "The capital of France is Paris.",
+            "The capital of France is Paris.",
+            "The capital of France is Paris."
+          ],
+          "mediumLowTemp": [
+            "The capital of France is Paris.",
+            "Paris is the capital of France.",
+            "The capital of France is Paris, a major European city."
+          ],
+          "mediumHighTemp": [
+            "Paris serves as the capital of France.",
+            "The capital of France is Paris, home to the Eiffel Tower.",
+            "France's capital is the historic and romantic city of Paris."
+          ],
+          "highTemp": [
+            "Paris, the City of Light, proudly stands as France's magnificent capital!",
+            "France's romantic capital is none other than the enchanting city of Paris.",
+            "The heart of France beats in Paris, its beloved capital of art and culture."
+          ]
+        },
+        "fewShot": {
+          "examples": [
+            {
+              "input": "I love this product!",
+              "output": "Positive"
+            },
+            {
+              "input": "Terrible experience, waste of money",
+              "output": "Negative"
+            },
+            {
+              "input": "It's okay, nothing special",
+              "output": "Neutral"
+            }
+          ],
+          "testCase": {
+            "input": "Great quality but slow shipping",
+            "expected": "Mixed"
+          },
+          "labels": {
+            "positive": "Positive",
+            "negative": "Negative",
+            "neutral": "Neutral",
+            "mixed": "Mixed"
+          }
+        }
+      },
+      "promptChallenge": "Prompt Challenge",
+      "yourTask": "Your task:",
+      "yourPromptWillBeScoredOn": "Your prompt will be scored on:",
+      "startChallenge": "Start Challenge",
+      "writeYourPromptHere": "Write your prompt here...",
+      "points": "points",
+      "hints": "Hints",
+      "hintsUsed": "{used}/{total} used, each -5 points",
+      "revealNextHint": "Reveal Next Hint (-5 points)",
+      "submitForScoring": "Submit for Scoring",
+      "aiCallsRemaining": "AI calls remaining",
+      "excellent": "🎉 Excellent!",
+      "goodEffort": "👍 Good effort!",
+      "keepPracticing": "Keep practicing!",
+      "criteriaBreakdown": "Criteria Breakdown:",
+      "suggestionsForImprovement": "Suggestions for Improvement:",
+      "exampleSolution": "Example Solution",
+      "hide": "Hide",
+      "show": "Show",
+      "improveThisPrompt": "Improve This Prompt",
+      "improveThisPromptTask": "Improve this prompt to get better results",
+      "improvePromptTask": "Improve this prompt to get better results",
+      "originalWeakPrompt": "Original (Weak) Prompt",
+      "yourImprovedVersion": "Your Improved Version",
+      "compareWithAI": "Compare with AI",
+      "reset": "Reset",
+      "showIdealSolution": "Show Ideal Solution",
+      "hideIdealSolution": "Hide Ideal Solution",
+      "idealSolution": "Ideal Solution",
+      "yourVersionBetter": "🎉 Your version is better!",
+      "yourVersionIsBetter": "🎉 Your version is better!",
+      "keepImproving": "The original might still be better. Keep improving!",
+      "originalMightBeBetter": "The original might still be better. Keep improving!",
+      "keyDifferences": "Key Differences:",
+      "beginner": "beginner",
+      "intermediate": "intermediate",
+      "advanced": "advanced",
+      "youllHaveTime": "You'll have {time} to complete this challenge.",
+      "takeYourTime": "Take your time and craft the best prompt.",
+      "pleaseWritePromptBeforeSubmitting": "Please write a prompt before submitting",
+      "fillInTheBlanks": "Fill in the Blanks",
+      "perfect": "🎉 Perfect!",
+      "ofCorrect": "{score} / {total} correct",
+      "correctAnswer": "Correct answer:",
+      "checking": "Checking...",
+      "checkAnswers": "Check Answers",
+      "tryAgain": "Try Again",
+      "aiPoweredValidation": "AI-powered semantic validation",
+      "hintForBlank": "Hint:",
+      "wellStructuredPrompt": "🎉 Well-structured prompt!",
+      "consistencyIssuesFound": "Some consistency issues found",
+      "issues": "Issues:",
+      "aiValidationFailed": "AI validation failed. Using local validation.",
+      "aiCheckFailed": "AI check failed. Please try again.",
+      "checklist": "Checklist",
+      "complete": "complete",
+      "allDoneGreatWork": "🎉 All done! Great work!",
+      "debugThisPrompt": "Debug This Prompt",
+      "hideHint": "Hide hint",
+      "showHint": "Show hint",
+      "thePrompt": "The Prompt:",
+      "theOutputProblematic": "The Output (problematic):",
+      "whatsWrongWithThisPrompt": "What's wrong with this prompt?",
+      "jailbreakAttackSimulator": "Jailbreak Attack Simulator",
+      "selectAttackType": "Select an attack type to see how it works and test if AI defends against it:",
+      "systemPromptDefense": "System Prompt (Defense)",
+      "attackAttempt": "Attack Attempt",
+      "whatThisAttackDoes": "What this attack does:",
+      "testJailbreakDefense": "Test Jailbreak Defense",
+      "systemPromptLabel": "SYSTEM PROMPT",
+      "userAttemptsJailbreak": "USER ATTEMPTS JAILBREAK",
+      "sequentialChain": "Sequential Chain",
+      "parallelChain": "Parallel Chain",
+      "conditionalChain": "Conditional Chain",
+      "iterativeChain": "Iterative Chain",
+      "running": "Running...",
+      "run": "Run",
+      "outputLabel": "Output",
+      "skippedConditionNotMet": "Skipped - condition not met",
+      "iterationOf": "Iteration {current} of {total}",
+      "previousOutputAsInput": "Previous output as input",
+      "loopUntilQualityMet": "Loop until quality threshold met",
+      "chainErrorHandlingDemo": "Chain Error Handling Demo",
+      "attempt": "Attempt",
+      "retryingWithFeedback": "Retrying with error feedback...",
+      "switchingToFallback": "Switching to fallback approach...",
+      "failed": "Failed",
+      "retry": "Retry",
+      "fallback": "Fallback",
+      "contextPlayground": "Context Playground",
+      "toggleContextBlocks": "Toggle context blocks on/off to see how they combine. Watch the token count!",
+      "overContextLimit": "Over context limit! Some content will be truncated.",
+      "enableContextBlocksToBuild": "Enable some context blocks to build a prompt",
+      "testContext": "Test Context"
+    }
+  },
+  "userExamples": {
+    "addMyExample": "Add My Example",
+    "addExampleTitle": "Add Your Example",
+    "addExampleDescriptionImage": "Share an image you created using this prompt.",
+    "addExampleDescriptionVideo": "Share a video you created using this prompt.",
+    "imageUrl": "Image URL",
+    "videoUrl": "Video URL",
+    "imagePreview": "Image Preview",
+    "videoPreview": "Video Preview",
+    "urlTab": "URL",
+    "uploadTab": "Upload",
+    "clickToUpload": "Click to upload an image",
+    "clickToUploadVideo": "Click to upload a video",
+    "uploading": "Uploading...",
+    "maxFileSize": "Max 4MB (JPEG, PNG, GIF, WebP)",
+    "fileTooLarge": "File is too large. Maximum size is 4MB.",
+    "invalidFileType": "Invalid file type. Only JPEG, PNG, GIF, and WebP are allowed.",
+    "invalidVideoType": "Invalid file type. Only MP4 videos are allowed.",
+    "commentOptional": "Comment (optional)",
+    "commentPlaceholder": "Describe your creation or share tips...",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "communityExamples": "Community Examples",
+    "userExample": "User example"
   }
 }

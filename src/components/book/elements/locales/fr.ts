@@ -148,16 +148,15 @@ const fr: LocaleData = {
   ],
 
   tokenizer: {
-    default: "Bonjour le monde !",
+    default: "example1",
     samples: {
-      "Bonjour le monde !": ["Bon", "jour", " le", " mon", "de", " !"],
-      "Incroyable": ["In", "croy", "able"],
-      "ChatGPT est génial": ["Chat", "GPT", " est", " gén", "ial"],
-      "Le renard brun rapide": ["Le", " ren", "ard", " br", "un", " rapide"],
-      "Ingénierie de prompts": ["Ing", "éni", "erie", " de", " prom", "pts"],
-      "Intelligence Artificielle": ["Int", "ell", "igence", " Art", "ific", "ielle"],
+      example1: { text: "Bonjour le monde!", tokens: ["Bon", "jour", " le", " mon", "de", "!"] },
+      example2: { text: "Paris est magnifique", tokens: ["Par", "is", " est", " magn", "ifi", "que"] },
+      example3: { text: "Intelligence artificielle", tokens: ["Int", "ell", "igence", " art", "ific", "ielle"] },
+      example4: { text: "La Tour Eiffel", tokens: ["La", " Tour", " Eif", "fel"] },
+      example5: { text: "Ingénierie de prompts", tokens: ["Ing", "éni", "erie", " de", " prom", "pts"] },
     },
-    tryExamples: 'Essayez : "Incroyable", "ChatGPT est génial", ou tapez votre propre texte',
+    tryExamples: "Essayez les exemples ou tapez votre propre texte",
   },
 
   builderFields: [

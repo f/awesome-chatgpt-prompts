@@ -143,15 +143,15 @@ const tr: LocaleData = {
   ],
 
   tokenizer: {
-    default: "Merhaba, dünya!",
+    default: "example1",
     samples: {
-      "Merhaba, dünya!": ["Mer", "ha", "ba", ",", " dün", "ya", "!"],
-      "İnanılmaz": ["İna", "nıl", "maz"],
-      "Yapay zeka harika": ["Ya", "pay", " ze", "ka", " ha", "ri", "ka"],
-      "Hızlı kahverengi tilki": ["Hız", "lı", " kah", "ve", "ren", "gi", " til", "ki"],
-      "Prompt mühendisliği": ["Prom", "pt", " mü", "hen", "dis", "li", "ği"],
+      example1: { text: "Merhaba dünya!", tokens: ["Mer", "ha", "ba", " dün", "ya", "!"] },
+      example2: { text: "Ankara başkent", tokens: ["Ank", "ara", " baş", "kent"] },
+      example3: { text: "Yapay zeka harika", tokens: ["Ya", "pay", " ze", "ka", " ha", "ri", "ka"] },
+      example4: { text: "İstanbul Boğazı", tokens: ["İst", "anb", "ul", " Boğ", "azı"] },
+      example5: { text: "Prompt mühendisliği", tokens: ["Prom", "pt", " mü", "hen", "dis", "li", "ği"] },
     },
-    tryExamples: 'Deneyin: "İnanılmaz", "Yapay zeka harika" veya kendi metninizi yazın',
+    tryExamples: "Örnekleri deneyin veya kendi metninizi yazın",
   },
 
   builderFields: [

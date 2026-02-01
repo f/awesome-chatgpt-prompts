@@ -1895,7 +1895,7 @@
       "remaining": "remaining",
       "prompt": "Prompt",
       "response": "Response",
-      "yourPrompt": "Your Prompt",
+      "yourPrompt": "Your Prompt:",
       "aiResponse": "AI Response",
       "contextOverflow": "Context overflow!",
       "contextOverflowMessage": "Your prompt + response exceeds the context window. The model will truncate or fail. Try reducing your prompt length or requesting shorter responses.",
@@ -2026,19 +2026,76 @@
       "part": "Part",
       "demoExamples": {
         "tokenPrediction": {
-          "tokens": ["The", " capital", " of", " France", " is", " Paris", "."],
+          "tokens": [
+            "The",
+            " capital",
+            " of",
+            " France",
+            " is",
+            " Paris",
+            "."
+          ],
           "fullText": "The capital of France is Paris."
         },
         "tokenizer": {
-          "default": "Hello, world!",
+          "default": "example1",
           "samples": {
-            "Hello, world!": ["Hel", "lo", ",", " world", "!"],
-            "Unbelievable": ["Un", "believ", "able"],
-            "ChatGPT is amazing": ["Chat", "G", "PT", " is", " amazing"],
-            "The quick brown fox": ["The", " quick", " brown", " fox"],
-            "Prompt engineering": ["Prom", "pt", " engineering"]
+            "example1": {
+              "text": "Hello, world!",
+              "tokens": [
+                "Hel",
+                "lo",
+                ",",
+                " wor",
+                "ld",
+                "!"
+              ]
+            },
+            "example2": {
+              "text": "Washington D.C.",
+              "tokens": [
+                "Wash",
+                "ington",
+                " D",
+                ".",
+                "C",
+                "."
+              ]
+            },
+            "example3": {
+              "text": "Artificial Intelligence",
+              "tokens": [
+                "Art",
+                "ific",
+                "ial",
+                " Int",
+                "ell",
+                "igence"
+              ]
+            },
+            "example4": {
+              "text": "The Statue of Liberty",
+              "tokens": [
+                "The",
+                " Stat",
+                "ue",
+                " of",
+                " Lib",
+                "erty"
+              ]
+            },
+            "example5": {
+              "text": "Prompt engineering",
+              "tokens": [
+                "Prom",
+                "pt",
+                " eng",
+                "ine",
+                "ering"
+              ]
+            }
           },
-          "tryExamples": "Try: \"Unbelievable\", \"ChatGPT is amazing\" or type your own"
+          "tryExamples": "Try the examples or type your own text"
         },
         "temperature": {
           "prompt": "What is the capital of France?",
@@ -2065,11 +2122,23 @@
         },
         "fewShot": {
           "examples": [
-            { "input": "I love this product!", "output": "Positive" },
-            { "input": "Terrible experience, waste of money", "output": "Negative" },
-            { "input": "It's okay, nothing special", "output": "Neutral" }
+            {
+              "input": "I love this product!",
+              "output": "Positive"
+            },
+            {
+              "input": "Terrible experience, waste of money",
+              "output": "Negative"
+            },
+            {
+              "input": "It's okay, nothing special",
+              "output": "Neutral"
+            }
           ],
-          "testCase": { "input": "Great quality but slow shipping", "expected": "Mixed" },
+          "testCase": {
+            "input": "Great quality but slow shipping",
+            "expected": "Mixed"
+          },
           "labels": {
             "positive": "Positive",
             "negative": "Negative",
@@ -2083,7 +2152,6 @@
       "yourPromptWillBeScoredOn": "Your prompt will be scored on:",
       "startChallenge": "Start Challenge",
       "writeYourPromptHere": "Write your prompt here...",
-      "yourPrompt": "Your Prompt:",
       "points": "points",
       "hints": "Hints",
       "hintsUsed": "{used}/{total} used, each -5 points",
