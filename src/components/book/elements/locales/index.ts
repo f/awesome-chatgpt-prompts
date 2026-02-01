@@ -15,6 +15,19 @@ import en from "./en";
 import tr from "./tr";
 import az from "./az";
 import fr from "./fr";
+import de from "./de";
+import es from "./es";
+import it from "./it";
+import pt from "./pt";
+import ja from "./ja";
+import zh from "./zh";
+import ko from "./ko";
+import ar from "./ar";
+import nl from "./nl";
+import ru from "./ru";
+import el from "./el";
+import fa from "./fa";
+import he from "./he";
 
 // Re-export types for convenience
 export * from "./types";
@@ -25,6 +38,19 @@ const locales: Record<string, LocaleData> = {
   tr,
   az,
   fr,
+  de,
+  es,
+  it,
+  pt,
+  ja,
+  zh,
+  ko,
+  ar,
+  nl,
+  ru,
+  el,
+  fa,
+  he,
 };
 
 /**
@@ -48,7 +74,7 @@ export function getLocaleField<K extends keyof LocaleData>(
 }
 
 // Export individual locale data for direct access if needed
-export { en, tr, az, fr };
+export { en, tr, az, fr, de, es, it, pt, ja, zh, ko, ar, nl, ru, el, fa, he };
 
 // Export the full locales object
 export { locales };
