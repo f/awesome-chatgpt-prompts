@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { parts } from "@/lib/book/chapters";
-import { Book, Bookmark, List, Search, X, Globe } from "lucide-react";
+import { Book, Bookmark, List, Search, X, Globe, Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -255,6 +255,17 @@ export function BookSidebar() {
       {/* Desktop: Static sidebar */}
       <aside className="hidden lg:block w-56 shrink-0">
         <div className="sticky top-20">
+          {/* Donate button */}
+          <a
+            href="https://donate.stripe.com/aFa8wO4NF2S96jDfn4dMI09"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-1.5 w-full mb-3 px-3 py-1.5 text-xs rounded-md border border-pink-200 dark:border-pink-900/50 bg-pink-50/50 dark:bg-pink-950/20 text-pink-600 dark:text-pink-400 hover:bg-pink-100 dark:hover:bg-pink-950/40 transition-colors"
+          >
+            <Heart className="h-3 w-3" />
+            {t("donate")}
+          </a>
+
           {/* Header with title and search */}
           <div className="flex items-center gap-2 mb-4 pb-4 border-b">
             <Link

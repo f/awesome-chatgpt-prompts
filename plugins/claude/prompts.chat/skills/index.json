@@ -1,0 +1,14 @@
+{
+  "skills": [
+    {
+      "name": "prompt-lookup",
+      "description": "Activates when the user asks about AI prompts, needs prompt templates, wants to search for prompts, or mentions prompts.chat. Use for discovering, retrieving, and improving prompts.",
+      "files": ["SKILL.md"]
+    },
+    {
+      "name": "skill-lookup",
+      "description": "Activates when the user asks about Agent Skills, wants to find reusable AI capabilities, needs to install skills, or mentions skills for Claude. Use for discovering, retrieving, and installing skills.",
+      "files": ["SKILL.md"]
+    }
+  ]
+}
