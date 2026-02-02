@@ -1,40 +1,40 @@
-Every great prompt shares common structural elements. Understanding these components allows you to construct prompts systematically rather than through trial and error.
+هر پرامپت عالی دارای عناصر ساختاری مشترکی است. درک این اجزا به شما امکان می‌دهد پرامپت‌ها را به صورت سیستماتیک بسازید، نه از طریق آزمون و خطا.
 
-<Callout type="tip" title="The Building Blocks">
-Think of these components like LEGO bricks. You don't need all of them for every prompt, but knowing what's available helps you build exactly what you need.
+<Callout type="tip" title="بلوک‌های سازنده">
+این اجزا را مانند آجرهای لگو در نظر بگیرید. برای هر پرامپت به همه آن‌ها نیاز ندارید، اما دانستن امکانات موجود به شما کمک می‌کند دقیقاً آنچه نیاز دارید را بسازید.
 </Callout>
 
-## The Core Components
+## اجزای اصلی
 
-An effective prompt typically includes some or all of these elements:
+یک پرامپت مؤثر معمولاً شامل برخی یا همه این عناصر است:
 
 <PromptBreakdown parts={[
-  { label: "Role", text: "You are a senior software engineer" },
-  { label: "Context", text: "working on a React application." },
-  { label: "Task", text: "Review this code for bugs" },
-  { label: "Constraints", text: "and focus only on security issues." },
-  { label: "Format", text: "Return findings as a numbered list." },
-  { label: "Example", text: "Like: 1. SQL injection risk on line 42" }
+  { label: "نقش", text: "شما یک مهندس نرم‌افزار ارشد هستید" },
+  { label: "زمینه", text: "که روی یک اپلیکیشن React کار می‌کنید." },
+  { label: "وظیفه", text: "این کد را برای باگ‌ها بررسی کنید" },
+  { label: "محدودیت‌ها", text: "و فقط روی مسائل امنیتی تمرکز کنید." },
+  { label: "فرمت", text: "یافته‌ها را به صورت لیست شماره‌دار برگردانید." },
+  { label: "مثال", text: "مانند: ۱. ریسک SQL injection در خط ۴۲" }
 ]} />
 
-Let's examine each component in detail.
+بیایید هر جزء را با جزئیات بررسی کنیم.
 
-## 1. Role / Persona
+## ۱. نقش / شخصیت
 
-Setting a role focuses the model's responses through the lens of a specific expertise or perspective.
+تعیین نقش، پاسخ‌های مدل را از دیدگاه یک تخصص یا چشم‌انداز خاص متمرکز می‌کند.
 
 <Compare 
-  before={{ label: "Without Role", content: "Explain quantum computing." }}
-  after={{ label: "With Role", content: "You are a physics professor who specializes in making complex topics accessible to beginners. Explain quantum computing." }}
+  before={{ label: "بدون نقش", content: "محاسبات کوانتومی را توضیح دهید." }}
+  after={{ label: "با نقش", content: "شما یک استاد فیزیک هستید که در ساده‌سازی موضوعات پیچیده برای مبتدیان تخصص دارید. محاسبات کوانتومی را توضیح دهید." }}
 />
 
-The role primes the model to:
-- Use appropriate vocabulary
-- Apply relevant expertise
-- Maintain a consistent perspective
-- Consider the audience appropriately
+نقش، مدل را آماده می‌کند تا:
+- از واژگان مناسب استفاده کند
+- تخصص مرتبط را به کار ببرد
+- دیدگاه یکپارچه‌ای حفظ کند
+- مخاطب را به درستی در نظر بگیرد
 
-### Effective Role Patterns
+### الگوهای مؤثر نقش
 
 ```
 "You are a [profession] with [X years] of experience in [specialty]"
@@ -42,113 +42,113 @@ The role primes the model to:
 "You are an expert [field] helping a [audience type]"
 ```
 
-## 2. Context / Background
+## ۲. زمینه / پیش‌زمینه
 
-Context provides the information the model needs to understand your situation. Remember: the model knows nothing about you, your project, or your goals unless you tell it.
+زمینه، اطلاعاتی را فراهم می‌کند که مدل برای درک موقعیت شما نیاز دارد. به یاد داشته باشید: مدل هیچ چیز درباره شما، پروژه‌تان یا اهدافتان نمی‌داند، مگر اینکه به آن بگویید.
 
 <Compare 
-  before={{ label: "Weak Context", content: "Fix this bug in my code." }}
-  after={{ label: "Strong Context", content: "I'm building a Node.js REST API using Express.js. The API handles user authentication with JWT tokens. When a user tries to access a protected route, they're getting a 403 error even with a valid token. Here's the relevant code: [code]" }}
+  before={{ label: "زمینه ضعیف", content: "این باگ را در کد من رفع کنید." }}
+  after={{ label: "زمینه قوی", content: "من در حال ساخت یک REST API با Node.js و Express.js هستم. این API احراز هویت کاربر را با توکن‌های JWT انجام می‌دهد. وقتی کاربر سعی می‌کند به یک مسیر محافظت‌شده دسترسی پیدا کند، حتی با توکن معتبر، خطای 403 دریافت می‌کند. این کد مربوطه است: [code]" }}
 />
 
-### What to Include in Context
+### چه چیزی در زمینه بگنجانیم
 
-- **Project details** — Technology stack, architecture, constraints
-- **Current state** — What you've tried, what's working, what isn't
-- **Goals** — What you're ultimately trying to achieve
-- **Constraints** — Time limits, technical requirements, style guides
+- **جزئیات پروژه** — پشته فناوری، معماری، محدودیت‌ها
+- **وضعیت فعلی** — چه چیزهایی امتحان کرده‌اید، چه چیزی کار می‌کند، چه چیزی کار نمی‌کند
+- **اهداف** — در نهایت چه می‌خواهید به دست آورید
+- **محدودیت‌ها** — محدودیت‌های زمانی، الزامات فنی، راهنماهای سبک
 
-## 3. Task / Instruction
+## ۳. وظیفه / دستورالعمل
 
-The task is the heart of your prompt—what you want the model to do. Be specific and unambiguous.
+وظیفه، قلب پرامپت شماست—آنچه می‌خواهید مدل انجام دهد. مشخص و بدون ابهام باشید.
 
-### The Specificity Spectrum
+### طیف دقت
 
 <SpecificitySpectrum levels={[
-  { level: "Vague", text: "Help me with this essay" },
-  { level: "Better", text: "Edit this essay" },
-  { level: "Good", text: "Edit this essay for grammar and clarity" },
-  { level: "Best", text: "Edit this essay for grammar and clarity, maintaining the original tone but reducing wordiness by 20%" }
+  { level: "مبهم", text: "در این مقاله به من کمک کنید" },
+  { level: "بهتر", text: "این مقاله را ویرایش کنید" },
+  { level: "خوب", text: "این مقاله را از نظر دستور زبان و وضوح ویرایش کنید" },
+  { level: "بهترین", text: "این مقاله را از نظر دستور زبان و وضوح ویرایش کنید، لحن اصلی را حفظ کنید اما پرگویی را ۲۰٪ کاهش دهید" }
 ]} />
 
-### Action Verbs That Work Well
+### افعال عملی که خوب کار می‌کنند
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Creation</span>
+    <span className="font-semibold min-w-32">ایجاد</span>
     <span className="text-muted-foreground">Write, Create, Generate, Compose, Design</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Analysis</span>
+    <span className="font-semibold min-w-32">تحلیل</span>
     <span className="text-muted-foreground">Analyze, Evaluate, Compare, Assess, Review</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Transformation</span>
+    <span className="font-semibold min-w-32">تبدیل</span>
     <span className="text-muted-foreground">Convert, Translate, Reformat, Summarize, Expand</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Explanation</span>
+    <span className="font-semibold min-w-32">توضیح</span>
     <span className="text-muted-foreground">Explain, Describe, Clarify, Define, Illustrate</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Problem-solving</span>
+    <span className="font-semibold min-w-32">حل مسئله</span>
     <span className="text-muted-foreground">Solve, Debug, Fix, Optimize, Improve</span>
   </div>
 </div>
 
-## 4. Constraints / Rules
+## ۴. محدودیت‌ها / قواعد
 
-Constraints bound the model's output. They prevent common issues and ensure relevance.
+محدودیت‌ها خروجی مدل را محدود می‌کنند. آن‌ها از مشکلات رایج جلوگیری کرده و مرتبط بودن را تضمین می‌کنند.
 
-### Types of Constraints
+### انواع محدودیت‌ها
 
-**Length constraints:**
+**محدودیت‌های طول:**
 ```
 "Keep your response under 200 words"
 "Provide exactly 5 suggestions"
 "Write 3-4 paragraphs"
 ```
 
-**Content constraints:**
+**محدودیت‌های محتوا:**
 ```
 "Do not include any code examples"
 "Focus only on the technical aspects"
 "Avoid marketing language"
 ```
 
-**Style constraints:**
+**محدودیت‌های سبک:**
 ```
 "Use a formal, academic tone"
 "Write as if speaking to a 10-year-old"
 "Be direct and avoid hedging language"
 ```
 
-**Scope constraints:**
+**محدودیت‌های دامنه:**
 ```
 "Only consider options available in Python 3.10+"
 "Limit suggestions to free tools"
 "Focus on solutions that don't require additional dependencies"
 ```
 
-## 5. Output Format
+## ۵. فرمت خروجی
 
-Specifying the output format ensures you get responses in a usable structure.
+مشخص کردن فرمت خروجی تضمین می‌کند که پاسخ‌ها را در ساختاری قابل استفاده دریافت می‌کنید.
 
-### Common Formats
+### فرمت‌های رایج
 
-**Lists:**
+**لیست‌ها:**
 ```
 "Return as a bulleted list"
 "Provide a numbered list of steps"
 ```
 
-**Structured data:**
+**داده‌های ساختاریافته:**
 ```
 "Return as JSON with keys: title, description, priority"
 "Format as a markdown table with columns: Feature, Pros, Cons"
 ```
 
-**Specific structures:**
+**ساختارهای خاص:**
 ```
 "Structure your response as:
  ## Summary
@@ -156,7 +156,7 @@ Specifying the output format ensures you get responses in a usable structure.
  ## Recommendations"
 ```
 
-### JSON Output Example
+### مثال خروجی JSON
 
 ```
 Analyze this customer review and return JSON:
@@ -171,11 +171,11 @@ Review: "The product arrived quickly and works great, but
 the instructions were confusing."
 ```
 
-## 6. Examples (Few-Shot Learning)
+## ۶. مثال‌ها (یادگیری Few-Shot)
 
-Examples are the most powerful way to show the model exactly what you want.
+مثال‌ها قدرتمندترین راه برای نشان دادن دقیق آنچه می‌خواهید به مدل هستند.
 
-### One-Shot Example
+### مثال One-Shot
 
 ```
 Convert these sentences to past tense.
@@ -188,7 +188,7 @@ Now convert:
 Input: "They run every morning"
 ```
 
-### Few-Shot Example
+### مثال Few-Shot
 
 ```
 Classify these support tickets by urgency.
@@ -201,13 +201,13 @@ Examples:
 Classify: "The app crashes when I open settings"
 ```
 
-## Putting It All Together
+## ترکیب همه اجزا
 
-Here's a complete prompt using all components:
+این یک پرامپت کامل با استفاده از همه اجزاست:
 
 <TryIt 
-  title="Complete Prompt Example"
-  description="This prompt demonstrates all six components working together. Try it to see how structured prompts produce professional results."
+  title="مثال پرامپت کامل"
+  description="این پرامپت نشان می‌دهد که چگونه هر شش جزء با هم کار می‌کنند. آن را امتحان کنید تا ببینید چگونه پرامپت‌های ساختاریافته نتایج حرفه‌ای تولید می‌کنند."
   prompt={`# Role
 You are a senior technical writer with 10 years of experience creating developer documentation.
 
@@ -235,47 +235,47 @@ POST /v1/payments/intents
 Body: { "amount": 1000, "currency": "usd", "description": "Order #1234" }`}
 />
 
-## The Minimal Effective Prompt
+## حداقل پرامپت مؤثر
 
-Not every prompt needs all components. For simple tasks, a clear instruction may suffice:
+هر پرامپتی به همه اجزا نیاز ندارد. برای کارهای ساده، یک دستورالعمل واضح ممکن است کافی باشد:
 
 ```
 Translate "Hello, how are you?" to Spanish.
 ```
 
-Use additional components when:
-- The task is complex or ambiguous
-- You need specific formatting
-- Results aren't matching expectations
-- Consistency across multiple queries matters
+از اجزای اضافی استفاده کنید وقتی:
+- کار پیچیده یا مبهم است
+- به فرمت خاصی نیاز دارید
+- نتایج با انتظارات مطابقت ندارند
+- یکپارچگی در چندین پرس‌وجو اهمیت دارد
 
-## Common Prompt Patterns
+## الگوهای رایج پرامپت
 
-These frameworks give you a simple checklist to follow when writing prompts. Click on each step to see an example.
+این چارچوب‌ها یک چک‌لیست ساده برای دنبال کردن هنگام نوشتن پرامپت‌ها به شما می‌دهند. روی هر مرحله کلیک کنید تا یک مثال ببینید.
 
 <CRISPEFramework />
 
 <RTFFramework />
 
-## Summary
+## خلاصه
 
-Effective prompts are constructed, not discovered. By understanding and applying these structural components, you can:
+پرامپت‌های مؤثر ساخته می‌شوند، نه کشف. با درک و به‌کارگیری این اجزای ساختاری، می‌توانید:
 
-- Get better results on the first try
-- Debug prompts that aren't working
-- Create reusable prompt templates
-- Communicate your intentions clearly
+- در اولین تلاش نتایج بهتری بگیرید
+- پرامپت‌هایی که کار نمی‌کنند را اشکال‌زدایی کنید
+- قالب‌های پرامپت قابل استفاده مجدد بسازید
+- نیات خود را به وضوح بیان کنید
 
 <Quiz 
-  question="Which component has the biggest impact on response quality?"
+  question="کدام جزء بیشترین تأثیر را بر کیفیت پاسخ دارد؟"
   options={[
-    "Always the role/persona",
-    "Always the output format",
-    "It depends on the task",
-    "The length of the prompt"
+    "همیشه نقش/شخصیت",
+    "همیشه فرمت خروجی",
+    "بستگی به کار دارد",
+    "طول پرامپت"
   ]}
   correctIndex={2}
-  explanation="Different tasks benefit from different components. A simple translation needs minimal structure, while a complex analysis benefits from detailed role, context, and format specifications."
+  explanation="کارهای مختلف از اجزای مختلف بهره می‌برند. یک ترجمه ساده به ساختار حداقلی نیاز دارد، در حالی که یک تحلیل پیچیده از نقش، زمینه و مشخصات فرمت دقیق سود می‌برد."
 />
 
 <TryIt 
@@ -293,31 +293,31 @@ Format: For each feature, provide:
 1. Feature name
 2. One-sentence description  
 3. Why it matters for remote teams`}
-  description="This prompt uses all six components. Try it and see how the structured approach produces focused, actionable results."
+  description="این پرامپت از هر شش جزء استفاده می‌کند. آن را امتحان کنید و ببینید چگونه رویکرد ساختاریافته نتایج متمرکز و عملی تولید می‌کند."
 />
 
-## Build Your Own Prompt
+## پرامپت خود را بسازید
 
-Now it's your turn! Use this interactive prompt builder to construct your own prompt using the components you've learned:
+حالا نوبت شماست! از این سازنده پرامپت تعاملی برای ساختن پرامپت خود با استفاده از اجزایی که یاد گرفتید استفاده کنید:
 
 <PromptBuilder 
-  title="Interactive Prompt Builder"
-  description="Fill in each section to build a complete, well-structured prompt"
+  title="سازنده پرامپت تعاملی"
+  description="هر بخش را پر کنید تا یک پرامپت کامل و خوش‌ساختار بسازید"
 />
 
 <PromptChallenge
-  title="Chapter Challenge: Build a Code Review Prompt"
-  task="Write a prompt that asks an AI to review code for security vulnerabilities. Your prompt should be specific enough to get actionable feedback."
+  title="چالش فصل: ساختن پرامپت بررسی کد"
+  task="یک پرامپت بنویسید که از یک هوش مصنوعی بخواهد کد را برای آسیب‌پذیری‌های امنیتی بررسی کند. پرامپت شما باید به اندازه کافی مشخص باشد تا بازخورد عملی دریافت کنید."
   criteria={[
-    "Includes a clear role or expertise level",
-    "Specifies what type of code review (security focus)",
-    "Defines the expected output format",
-    "Sets appropriate constraints or scope"
+    "شامل یک نقش یا سطح تخصص واضح است",
+    "نوع بررسی کد را مشخص می‌کند (تمرکز امنیتی)",
+    "فرمت خروجی مورد انتظار را تعریف می‌کند",
+    "محدودیت‌ها یا دامنه مناسب تعیین می‌کند"
   ]}
   hints={[
-    "Think about what expertise a code reviewer should have",
-    "Be specific about what security issues to look for",
-    "Consider asking for a structured response format"
+    "فکر کنید یک بررسی‌کننده کد باید چه تخصصی داشته باشد",
+    "درباره اینکه به دنبال چه مسائل امنیتی باشید مشخص باشید",
+    "در نظر بگیرید که یک فرمت پاسخ ساختاریافته بخواهید"
   ]}
   exampleSolution={`You are a senior security engineer with expertise in web application security and OWASP Top 10 vulnerabilities.
 
@@ -340,4 +340,4 @@ For each issue found:
   difficulty="intermediate"
 />
 
-In the next chapter, we'll explore the core principles that guide prompt construction decisions.
+در فصل بعدی، اصول اساسی که تصمیمات ساخت پرامپت را هدایت می‌کنند بررسی خواهیم کرد.

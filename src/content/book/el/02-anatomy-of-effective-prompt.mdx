@@ -1,165 +1,165 @@
-Every great prompt shares common structural elements. Understanding these components allows you to construct prompts systematically rather than through trial and error.
+Κάθε σπουδαίο prompt μοιράζεται κοινά δομικά στοιχεία. Η κατανόηση αυτών των συστατικών σας επιτρέπει να κατασκευάζετε prompts συστηματικά αντί μέσω δοκιμής και λάθους.
 
-<Callout type="tip" title="The Building Blocks">
-Think of these components like LEGO bricks. You don't need all of them for every prompt, but knowing what's available helps you build exactly what you need.
+<Callout type="tip" title="Τα Δομικά Στοιχεία">
+Σκεφτείτε αυτά τα συστατικά σαν τουβλάκια LEGO. Δεν χρειάζεστε όλα για κάθε prompt, αλλά ξέροντας τι είναι διαθέσιμο σας βοηθά να χτίσετε ακριβώς αυτό που χρειάζεστε.
 </Callout>
 
-## The Core Components
+## Τα Βασικά Συστατικά
 
-An effective prompt typically includes some or all of these elements:
+Ένα αποτελεσματικό prompt τυπικά περιλαμβάνει μερικά ή όλα αυτά τα στοιχεία:
 
 <PromptBreakdown parts={[
-  { label: "Role", text: "You are a senior software engineer" },
-  { label: "Context", text: "working on a React application." },
-  { label: "Task", text: "Review this code for bugs" },
-  { label: "Constraints", text: "and focus only on security issues." },
-  { label: "Format", text: "Return findings as a numbered list." },
-  { label: "Example", text: "Like: 1. SQL injection risk on line 42" }
+  { label: "Ρόλος", text: "Είσαι senior software engineer" },
+  { label: "Πλαίσιο", text: "που δουλεύει σε μια εφαρμογή React." },
+  { label: "Εργασία", text: "Αξιολόγησε αυτόν τον κώδικα για bugs" },
+  { label: "Περιορισμοί", text: "και εστίασε μόνο σε θέματα ασφάλειας." },
+  { label: "Μορφή", text: "Επέστρεψε τα ευρήματα ως αριθμημένη λίστα." },
+  { label: "Παράδειγμα", text: "Όπως: 1. Κίνδυνος SQL injection στη γραμμή 42" }
 ]} />
 
-Let's examine each component in detail.
+Ας εξετάσουμε κάθε συστατικό λεπτομερώς.
 
-## 1. Role / Persona
+## 1. Ρόλος / Persona
 
-Setting a role focuses the model's responses through the lens of a specific expertise or perspective.
-
-<Compare 
-  before={{ label: "Without Role", content: "Explain quantum computing." }}
-  after={{ label: "With Role", content: "You are a physics professor who specializes in making complex topics accessible to beginners. Explain quantum computing." }}
-/>
-
-The role primes the model to:
-- Use appropriate vocabulary
-- Apply relevant expertise
-- Maintain a consistent perspective
-- Consider the audience appropriately
-
-### Effective Role Patterns
-
-```
-"You are a [profession] with [X years] of experience in [specialty]"
-"Act as a [role] who is [characteristic]"
-"You are an expert [field] helping a [audience type]"
-```
-
-## 2. Context / Background
-
-Context provides the information the model needs to understand your situation. Remember: the model knows nothing about you, your project, or your goals unless you tell it.
+Ο καθορισμός ρόλου εστιάζει τις απαντήσεις του μοντέλου μέσα από το πρίσμα μιας συγκεκριμένης τεχνογνωσίας ή προοπτικής.
 
 <Compare 
-  before={{ label: "Weak Context", content: "Fix this bug in my code." }}
-  after={{ label: "Strong Context", content: "I'm building a Node.js REST API using Express.js. The API handles user authentication with JWT tokens. When a user tries to access a protected route, they're getting a 403 error even with a valid token. Here's the relevant code: [code]" }}
+  before={{ label: "Χωρίς Ρόλο", content: "Εξήγησε την κβαντική υπολογιστική." }}
+  after={{ label: "Με Ρόλο", content: "Είσαι καθηγητής φυσικής που ειδικεύεται στο να κάνει πολύπλοκα θέματα προσβάσιμα σε αρχάριους. Εξήγησε την κβαντική υπολογιστική." }}
 />
 
-### What to Include in Context
+Ο ρόλος προετοιμάζει το μοντέλο να:
+- Χρησιμοποιεί κατάλληλο λεξιλόγιο
+- Εφαρμόζει σχετική τεχνογνωσία
+- Διατηρεί συνεπή προοπτική
+- Λαμβάνει υπόψη το κοινό κατάλληλα
 
-- **Project details** — Technology stack, architecture, constraints
-- **Current state** — What you've tried, what's working, what isn't
-- **Goals** — What you're ultimately trying to achieve
-- **Constraints** — Time limits, technical requirements, style guides
+### Αποτελεσματικά Μοτίβα Ρόλων
 
-## 3. Task / Instruction
+```
+"Είσαι [επάγγελμα] με [X χρόνια] εμπειρία σε [ειδικότητα]"
+"Ενέργησε ως [ρόλος] που είναι [χαρακτηριστικό]"
+"Είσαι ειδικός [πεδίο] που βοηθά [τύπος κοινού]"
+```
 
-The task is the heart of your prompt—what you want the model to do. Be specific and unambiguous.
+## 2. Πλαίσιο / Υπόβαθρο
 
-### The Specificity Spectrum
+Το πλαίσιο παρέχει τις πληροφορίες που χρειάζεται το μοντέλο για να κατανοήσει την κατάστασή σας. Θυμηθείτε: το μοντέλο δεν ξέρει τίποτα για εσάς, το project σας, ή τους στόχους σας εκτός αν του πείτε.
+
+<Compare 
+  before={{ label: "Αδύναμο Πλαίσιο", content: "Διόρθωσε αυτό το bug στον κώδικά μου." }}
+  after={{ label: "Ισχυρό Πλαίσιο", content: "Χτίζω ένα Node.js REST API χρησιμοποιώντας Express.js. Το API χειρίζεται αυθεντικοποίηση χρήστη με JWT tokens. Όταν ένας χρήστης προσπαθεί να προσπελάσει μια προστατευμένη διαδρομή, παίρνει σφάλμα 403 ακόμα και με έγκυρο token. Εδώ είναι ο σχετικός κώδικας: [code]" }}
+/>
+
+### Τι να Συμπεριλάβετε στο Πλαίσιο
+
+- **Λεπτομέρειες project** — Τεχνολογικό stack, αρχιτεκτονική, περιορισμοί
+- **Τρέχουσα κατάσταση** — Τι έχετε δοκιμάσει, τι λειτουργεί, τι όχι
+- **Στόχοι** — Τι προσπαθείτε τελικά να πετύχετε
+- **Περιορισμοί** — Χρονικά όρια, τεχνικές απαιτήσεις, οδηγοί στυλ
+
+## 3. Εργασία / Οδηγία
+
+Η εργασία είναι η καρδιά του prompt σας—τι θέλετε να κάνει το μοντέλο. Να είστε συγκεκριμένοι και αδιαμφισβήτητοι.
+
+### Το Φάσμα της Εξειδίκευσης
 
 <SpecificitySpectrum levels={[
-  { level: "Vague", text: "Help me with this essay" },
-  { level: "Better", text: "Edit this essay" },
-  { level: "Good", text: "Edit this essay for grammar and clarity" },
-  { level: "Best", text: "Edit this essay for grammar and clarity, maintaining the original tone but reducing wordiness by 20%" }
+  { level: "Αόριστο", text: "Βοήθησέ με με αυτό το δοκίμιο" },
+  { level: "Καλύτερο", text: "Επεξεργάσου αυτό το δοκίμιο" },
+  { level: "Καλό", text: "Επεξεργάσου αυτό το δοκίμιο για γραμματική και σαφήνεια" },
+  { level: "Καλύτερο", text: "Επεξεργάσου αυτό το δοκίμιο για γραμματική και σαφήνεια, διατηρώντας τον αρχικό τόνο αλλά μειώνοντας την πολυλογία κατά 20%" }
 ]} />
 
-### Action Verbs That Work Well
+### Ρήματα Δράσης που Λειτουργούν Καλά
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Creation</span>
-    <span className="text-muted-foreground">Write, Create, Generate, Compose, Design</span>
+    <span className="font-semibold min-w-32">Δημιουργία</span>
+    <span className="text-muted-foreground">Γράψε, Δημιούργησε, Παράγαγε, Συνέθεσε, Σχεδίασε</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Analysis</span>
-    <span className="text-muted-foreground">Analyze, Evaluate, Compare, Assess, Review</span>
+    <span className="font-semibold min-w-32">Ανάλυση</span>
+    <span className="text-muted-foreground">Ανάλυσε, Αξιολόγησε, Σύγκρινε, Εκτίμησε, Αναθεώρησε</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Transformation</span>
-    <span className="text-muted-foreground">Convert, Translate, Reformat, Summarize, Expand</span>
+    <span className="font-semibold min-w-32">Μετασχηματισμός</span>
+    <span className="text-muted-foreground">Μετάτρεψε, Μετάφρασε, Επαναμορφοποίησε, Συνόψισε, Επέκτεινε</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Explanation</span>
-    <span className="text-muted-foreground">Explain, Describe, Clarify, Define, Illustrate</span>
+    <span className="font-semibold min-w-32">Επεξήγηση</span>
+    <span className="text-muted-foreground">Εξήγησε, Περίγραψε, Διασάφησε, Όρισε, Απεικόνισε</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Problem-solving</span>
-    <span className="text-muted-foreground">Solve, Debug, Fix, Optimize, Improve</span>
+    <span className="font-semibold min-w-32">Επίλυση Προβλημάτων</span>
+    <span className="text-muted-foreground">Λύσε, Debug, Διόρθωσε, Βελτιστοποίησε, Βελτίωσε</span>
   </div>
 </div>
 
-## 4. Constraints / Rules
+## 4. Περιορισμοί / Κανόνες
 
-Constraints bound the model's output. They prevent common issues and ensure relevance.
+Οι περιορισμοί οριοθετούν την έξοδο του μοντέλου. Αποτρέπουν κοινά προβλήματα και διασφαλίζουν σχετικότητα.
 
-### Types of Constraints
+### Τύποι Περιορισμών
 
-**Length constraints:**
+**Περιορισμοί μήκους:**
 ```
-"Keep your response under 200 words"
-"Provide exactly 5 suggestions"
-"Write 3-4 paragraphs"
-```
-
-**Content constraints:**
-```
-"Do not include any code examples"
-"Focus only on the technical aspects"
-"Avoid marketing language"
+"Κράτησε την απάντησή σου κάτω από 200 λέξεις"
+"Δώσε ακριβώς 5 προτάσεις"
+"Γράψε 3-4 παραγράφους"
 ```
 
-**Style constraints:**
+**Περιορισμοί περιεχομένου:**
 ```
-"Use a formal, academic tone"
-"Write as if speaking to a 10-year-old"
-"Be direct and avoid hedging language"
-```
-
-**Scope constraints:**
-```
-"Only consider options available in Python 3.10+"
-"Limit suggestions to free tools"
-"Focus on solutions that don't require additional dependencies"
+"Μην συμπεριλάβεις παραδείγματα κώδικα"
+"Εστίασε μόνο στις τεχνικές πτυχές"
+"Απόφυγε γλώσσα μάρκετινγκ"
 ```
 
-## 5. Output Format
-
-Specifying the output format ensures you get responses in a usable structure.
-
-### Common Formats
-
-**Lists:**
+**Περιορισμοί στυλ:**
 ```
-"Return as a bulleted list"
-"Provide a numbered list of steps"
+"Χρησιμοποίησε επίσημο, ακαδημαϊκό τόνο"
+"Γράψε σαν να μιλάς σε παιδί 10 ετών"
+"Να είσαι άμεσος και απόφυγε διστακτική γλώσσα"
 ```
 
-**Structured data:**
+**Περιορισμοί εύρους:**
 ```
-"Return as JSON with keys: title, description, priority"
-"Format as a markdown table with columns: Feature, Pros, Cons"
-```
-
-**Specific structures:**
-```
-"Structure your response as:
- ## Summary
- ## Key Points
- ## Recommendations"
+"Λάβε υπόψη μόνο επιλογές διαθέσιμες σε Python 3.10+"
+"Περιόρισε τις προτάσεις σε δωρεάν εργαλεία"
+"Εστίασε σε λύσεις που δεν απαιτούν επιπλέον dependencies"
 ```
 
-### JSON Output Example
+## 5. Μορφή Εξόδου
+
+Ο καθορισμός της μορφής εξόδου διασφαλίζει ότι παίρνετε απαντήσεις σε χρήσιμη δομή.
+
+### Κοινές Μορφές
+
+**Λίστες:**
+```
+"Επέστρεψε ως λίστα με κουκκίδες"
+"Δώσε αριθμημένη λίστα βημάτων"
+```
+
+**Δομημένα δεδομένα:**
+```
+"Επέστρεψε ως JSON με κλειδιά: title, description, priority"
+"Μορφοποίησε ως πίνακα markdown με στήλες: Χαρακτηριστικό, Πλεονεκτήματα, Μειονεκτήματα"
+```
+
+**Συγκεκριμένες δομές:**
+```
+"Δόμησε την απάντησή σου ως:
+ ## Σύνοψη
+ ## Βασικά Σημεία
+ ## Συστάσεις"
+```
+
+### Παράδειγμα Εξόδου JSON
 
 ```
-Analyze this customer review and return JSON:
+Ανάλυσε αυτή την κριτική πελάτη και επέστρεψε JSON:
 {
   "sentiment": "positive" | "negative" | "neutral",
   "topics": ["array of main topics"],
@@ -167,72 +167,72 @@ Analyze this customer review and return JSON:
   "key_phrases": ["notable phrases"]
 }
 
-Review: "The product arrived quickly and works great, but 
-the instructions were confusing."
+Κριτική: "Το προϊόν έφτασε γρήγορα και λειτουργεί τέλεια, αλλά 
+οι οδηγίες ήταν μπερδεμένες."
 ```
 
-## 6. Examples (Few-Shot Learning)
+## 6. Παραδείγματα (Few-Shot Learning)
 
-Examples are the most powerful way to show the model exactly what you want.
+Τα παραδείγματα είναι ο πιο ισχυρός τρόπος να δείξετε στο μοντέλο ακριβώς τι θέλετε.
 
-### One-Shot Example
-
-```
-Convert these sentences to past tense.
-
-Example:
-Input: "She walks to the store"
-Output: "She walked to the store"
-
-Now convert:
-Input: "They run every morning"
-```
-
-### Few-Shot Example
+### Παράδειγμα One-Shot
 
 ```
-Classify these support tickets by urgency.
+Μετάτρεψε αυτές τις προτάσεις σε παρελθοντικό χρόνο.
 
-Examples:
-"My account was hacked" → Critical
-"How do I change my password?" → Low
-"Payment failed but I was charged" → High
+Παράδειγμα:
+Είσοδος: "Περπατάει στο μαγαζί"
+Έξοδος: "Περπάτησε στο μαγαζί"
 
-Classify: "The app crashes when I open settings"
+Τώρα μετάτρεψε:
+Είσοδος: "Τρέχουν κάθε πρωί"
 ```
 
-## Putting It All Together
+### Παράδειγμα Few-Shot
 
-Here's a complete prompt using all components:
+```
+Κατηγοριοποίησε αυτά τα tickets υποστήριξης κατά επείγον.
+
+Παραδείγματα:
+"Ο λογαριασμός μου χακαρίστηκε" → Κρίσιμο
+"Πώς αλλάζω τον κωδικό μου;" → Χαμηλό
+"Η πληρωμή απέτυχε αλλά χρεώθηκα" → Υψηλό
+
+Κατηγοριοποίησε: "Η εφαρμογή κρασάρει όταν ανοίγω ρυθμίσεις"
+```
+
+## Συνδυάζοντας τα Όλα Μαζί
+
+Εδώ είναι ένα πλήρες prompt χρησιμοποιώντας όλα τα συστατικά:
 
 <TryIt 
-  title="Complete Prompt Example"
-  description="This prompt demonstrates all six components working together. Try it to see how structured prompts produce professional results."
-  prompt={`# Role
-You are a senior technical writer with 10 years of experience creating developer documentation.
+  title="Παράδειγμα Πλήρους Prompt"
+  description="Αυτό το prompt επιδεικνύει και τα έξι συστατικά να δουλεύουν μαζί. Δοκιμάστε το για να δείτε πώς τα δομημένα prompts παράγουν επαγγελματικά αποτελέσματα."
+  prompt={`# Ρόλος
+Είσαι senior technical writer με 10 χρόνια εμπειρία στη δημιουργία τεκμηρίωσης για developers.
 
-# Context
-I'm documenting a REST API for a payment processing service. The audience is developers integrating our API into their applications. They have intermediate programming knowledge but may be new to payment processing concepts.
+# Πλαίσιο
+Τεκμηριώνω ένα REST API για υπηρεσία επεξεργασίας πληρωμών. Το κοινό είναι developers που ενσωματώνουν το API μας στις εφαρμογές τους. Έχουν ενδιάμεση γνώση προγραμματισμού αλλά μπορεί να είναι νέοι σε έννοιες επεξεργασίας πληρωμών.
 
-# Task
-Write documentation for the following API endpoint that creates a new payment intent.
+# Εργασία
+Γράψε τεκμηρίωση για το παρακάτω API endpoint που δημιουργεί νέο payment intent.
 
-# Constraints
-- Use clear, concise language
-- Include common error scenarios
-- Do not include implementation details about our backend
-- Assume readers understand HTTP and JSON basics
+# Περιορισμοί
+- Χρησιμοποίησε σαφή, συνοπτική γλώσσα
+- Συμπερίλαβε κοινά σενάρια σφαλμάτων
+- Μην συμπεριλάβεις λεπτομέρειες υλοποίησης του backend μας
+- Υπόθεσε ότι οι αναγνώστες κατανοούν βασικά HTTP και JSON
 
-# Output Format
-Structure the documentation as:
-1. Endpoint Overview (2-3 sentences)
-2. Request (method, URL, headers, body with example)
-3. Response (success and error examples)
-4. Code Example (in JavaScript/Node.js)
+# Μορφή Εξόδου
+Δόμησε την τεκμηρίωση ως:
+1. Επισκόπηση Endpoint (2-3 προτάσεις)
+2. Request (method, URL, headers, body με παράδειγμα)
+3. Response (παραδείγματα επιτυχίας και σφάλματος)
+4. Παράδειγμα Κώδικα (σε JavaScript/Node.js)
 
-# Endpoint Details
+# Λεπτομέρειες Endpoint
 POST /v1/payments/intents
-Body: { "amount": 1000, "currency": "usd", "description": "Order #1234" }`}
+Body: { "amount": 1000, "currency": "eur", "description": "Order #1234" }`}
 />
 
 ## The Minimal Effective Prompt
