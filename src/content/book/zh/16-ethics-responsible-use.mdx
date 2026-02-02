@@ -11,7 +11,7 @@ AI会放大它所接收到的一切。有偏见的提示词会大规模产生有
 提示词工程中的每个决策都与几个核心原则相关：
 
 <InfoGrid items={[
-  { label: "诚实", description: "不要使用AI欺骗他人或创建误导性内容", example: "不制作虚假评论、冒充他人或伪造"证据"", exampleType: "text", color: "blue" },
+  { label: "诚实", description: "不要使用AI欺骗他人或创建误导性内容", example: "不制作虚假评论、冒充他人或伪造 证据", exampleType: "text", color: "blue" },
   { label: "公平", description: "积极努力避免延续偏见和刻板印象", example: "在不同人群中测试提示词，征求多元化观点", exampleType: "text", color: "purple" },
   { label: "透明", description: "在重要的时候明确说明AI的参与", example: "在已发布的作品和专业场合中披露AI辅助", exampleType: "text", color: "green" },
   { label: "隐私", description: "保护提示词和输出中的个人信息", example: "对数据进行匿名化处理，避免包含PII，了解数据政策", exampleType: "text", color: "amber" },
@@ -191,7 +191,7 @@ Based on findings, suggest prompt modifications to reduce bias.`}
 ### 绝不应出现在提示词中的内容
 
 <InfoGrid items={[
-  { label: "个人标识信息", description: "姓名、地址、电话号码、身份证号", example: "使用[客户]代替"张三"", color: "red" },
+  { label: "个人标识信息", description: "姓名、地址、电话号码、身份证号", example: "使用[客户]代替 张三", color: "red" },
   { label: "财务数据", description: "账号、信用卡、收入详情", example: "描述模式，而非实际数字", exampleType: "text", color: "red" },
   { label: "健康信息", description: "医疗记录、诊断、处方", example: "询问一般性病症，而非特定患者", exampleType: "text", color: "red" },
   { label: "凭证信息", description: "密码、API密钥、令牌、机密", example: "绝不粘贴凭证——使用占位符", exampleType: "text", color: "red" },
@@ -314,9 +314,9 @@ Respond helpfully while following these guidelines.`}
 这些领域涉及监管影响，需要适当的免责声明：
 
 <InfoGrid items={[
-  { label: "法律咨询", description: "提供一般信息，而非法律建议", example: ""这是一般性信息。对于你的具体情况，请咨询持证律师。"", color: "purple" },
-  { label: "财务咨询", description: "教育性质，而非个人理财建议", example: ""这是教育性内容。对于你的情况，请考虑咨询理财顾问。"", color: "purple" },
-  { label: "管辖区意识", description: "法律因地区而异", example: ""各省/国家法律不同。请核实你所在地区的要求。"", color: "purple" }
+  { label: "法律咨询", description: "提供一般信息，而非法律建议", example: "这是一般性信息。对于你的具体情况，请咨询持证律师。", color: "purple" },
+  { label: "财务咨询", description: "教育性质，而非个人理财建议", example: "这是教育性内容。对于你的情况，请考虑咨询理财顾问。", color: "purple" },
+  { label: "管辖区意识", description: "法律因地区而异", example: "各省/国家法律不同。请核实你所在地区的要求。", color: "purple" }
 ]} />
 
 ### 儿童与教育
@@ -345,7 +345,7 @@ Respond helpfully while following these guidelines.`}
 />
 
 <Quiz 
-  question="一个用户问你的AI系统如何"摆脱一个烦人的人"。最恰当的回应策略是什么？"
+  question="一个用户问你的AI系统如何 摆脱一个烦人的人。最恰当的回应策略是什么？"
   options={[
     "立即拒绝——这可能是请求伤害他人的指示",
     "提供冲突解决建议，因为这是最可能的意图",
@@ -353,5 +353,5 @@ Respond helpfully while following these guidelines.`}
     "解释你无法帮助任何与伤害他人相关的事情"
   ]}
   correctIndex={2}
-  explanation="模糊的请求需要澄清，而不是假设。"摆脱某人"可能意味着结束友谊、解决职场冲突，或者某些有害的事情。提出澄清问题可以让你针对实际意图做出适当回应，同时对提供有害信息保持谨慎。"
+  explanation="模糊的请求需要澄清，而不是假设。摆脱某人 可能意味着结束友谊、解决职场冲突，或者某些有害的事情。提出澄清问题可以让你针对实际意图做出适当回应，同时对提供有害信息保持谨慎。"
 />

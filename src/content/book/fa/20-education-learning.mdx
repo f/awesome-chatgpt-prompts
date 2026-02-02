@@ -1,345 +1,345 @@
-AI is a powerful tool for both teaching and learning. This chapter covers prompts for educational contexts—from personalized tutoring to curriculum development.
+هوش مصنوعی ابزاری قدرتمند برای تدریس و یادگیری است. این فصل پرامپت‌هایی برای زمینه‌های آموزشی ارائه می‌دهد—از تدریس خصوصی شخصی‌سازی‌شده تا توسعه برنامه درسی.
 
-<Callout type="info" title="AI as Learning Partner">
-AI excels as a patient, adaptive tutor that can explain concepts multiple ways, generate unlimited practice problems, and provide instant feedback—available 24/7.
+<Callout type="info" title="هوش مصنوعی به عنوان شریک یادگیری">
+هوش مصنوعی به عنوان یک معلم صبور و انعطاف‌پذیر عالی عمل می‌کند که می‌تواند مفاهیم را به روش‌های مختلف توضیح دهد، تمرین‌های نامحدود تولید کند و بازخورد فوری ارائه دهد—۲۴ ساعته در دسترس.
 </Callout>
 
-## Personalized Learning
+## یادگیری شخصی‌سازی‌شده
 
-### Do's and Don'ts: Learning Prompts
+### بایدها و نبایدها: پرامپت‌های یادگیری
 
 <Compare 
-  before={{ label: "❌ Passive request", content: "Explain quantum physics to me." }}
-  after={{ label: "✓ Context-rich request", content: "Explain quantum superposition to me.\n\nMy background: I understand basic chemistry and classical physics.\nLearning style: I learn best through analogies and examples.\nExplain with a simple analogy, then the core concept, then a practical example. Check my understanding with a question." }}
+  before={{ label: "❌ درخواست منفعلانه", content: "فیزیک کوانتوم را برایم توضیح بده." }}
+  after={{ label: "✓ درخواست با زمینه کامل", content: "برهم‌نهی کوانتومی را برایم توضیح بده.\n\nپیش‌زمینه من: شیمی پایه و فیزیک کلاسیک را می‌فهمم.\nسبک یادگیری: با تشبیه و مثال بهتر یاد می‌گیرم.\nابتدا با یک تشبیه ساده، سپس مفهوم اصلی، و بعد یک مثال کاربردی توضیح بده. در پایان با یک سؤال درک من را بسنج." }}
 />
 
-### Concept Explanation
+### توضیح مفاهیم
 
-<TryIt compact prompt={`Explain [concept] to me.
+<TryIt compact prompt={`[مفهوم] را برایم توضیح بده.
 
-My background:
-- Current level: [beginner/intermediate/advanced]
-- Related knowledge: [what I already know]
-- Learning style: [visual/examples/theoretical]
+پیش‌زمینه من:
+- سطح فعلی: [مبتدی/متوسط/پیشرفته]
+- دانش مرتبط: [آنچه از قبل می‌دانم]
+- سبک یادگیری: [تصویری/مثال‌محور/نظری]
 
-Explain with:
-1. Simple analogy to something familiar
-2. Core concept in plain language
-3. How it connects to what I know
-4. A practical example
-5. Common misconceptions to avoid
+توضیح بده با:
+۱. تشبیه ساده به چیزی آشنا
+۲. مفهوم اصلی به زبان ساده
+۳. ارتباط با آنچه می‌دانم
+۴. یک مثال کاربردی
+۵. تصورات اشتباه رایج که باید از آن‌ها اجتناب کرد
 
-Then check my understanding with a question.`} />
+سپس با یک سؤال درک من را بسنج.`} />
 
-### Adaptive Tutoring
+### تدریس تطبیقی
 
-<TryIt compact prompt={`You are my tutor for \${subject:calculus}. Teach me \${topic:derivatives} adaptively.
+<TryIt compact prompt={`تو معلم خصوصی من برای \${subject:حسابان} هستی. \${topic:مشتق} را به صورت تطبیقی به من آموزش بده.
 
-Start with a diagnostic question to assess my level.
-Based on my response:
-- If correct: Move to more advanced aspects
-- If partially correct: Clarify the gap, then continue
-- If incorrect: Step back and build foundation
+با یک سؤال تشخیصی برای ارزیابی سطح من شروع کن.
+بر اساس پاسخ من:
+- اگر درست بود: به جنبه‌های پیشرفته‌تر برو
+- اگر تا حدی درست بود: شکاف را روشن کن، سپس ادامه بده
+- اگر نادرست بود: یک قدم به عقب برگرد و پایه را بساز
 
-After each explanation:
-- Check understanding with a question
-- Adjust difficulty based on my answers
-- Provide encouragement and track progress`} />
+بعد از هر توضیح:
+- با یک سؤال درک را بسنج
+- سختی را بر اساس پاسخ‌هایم تنظیم کن
+- تشویق کن و پیشرفت را پیگیری کن`} />
 
-### Learning Path Creation
+### ایجاد مسیر یادگیری
 
-<TryIt compact prompt={`Create a learning path for \${goal:becoming a web developer}.
+<TryIt compact prompt={`یک مسیر یادگیری برای \${goal:تبدیل شدن به توسعه‌دهنده وب} بساز.
 
-My situation:
-- Current skill level: \${skillLevel:complete beginner}
-- Time available: \${timeAvailable:10 hours per week}
-- Target timeline: \${timeline:6 months}
-- Learning preferences: \${preferences:projects and tutorials}
+وضعیت من:
+- سطح مهارت فعلی: \${skillLevel:کاملاً مبتدی}
+- زمان در دسترس: \${timeAvailable:۱۰ ساعت در هفته}
+- بازه زمانی هدف: \${timeline:۶ ماه}
+- ترجیحات یادگیری: \${preferences:پروژه‌ها و آموزش‌های عملی}
 
-Provide:
-1. Prerequisites check (what I need first)
-2. Milestone breakdown (phases with goals)
-3. Resources for each phase (free when possible)
-4. Practice projects at each stage
-5. Assessment criteria (how to know I'm ready to advance)`} />
+ارائه بده:
+۱. بررسی پیش‌نیازها (آنچه ابتدا نیاز دارم)
+۲. تقسیم‌بندی نقاط عطف (مراحل با اهداف)
+۳. منابع برای هر مرحله (در صورت امکان رایگان)
+۴. پروژه‌های تمرینی در هر مرحله
+۵. معیارهای ارزیابی (چگونه بدانم آماده پیشرفت هستم)`} />
 
-## Study Assistance
+## کمک در مطالعه
 
-<Callout type="tip" title="Active Learning Principle">
-Don't just read AI explanations passively. Ask it to quiz you, generate problems, and check your understanding. **Active recall beats passive review.**
+<Callout type="tip" title="اصل یادگیری فعال">
+توضیحات هوش مصنوعی را فقط منفعلانه نخوان. از آن بخواه که امتحانت کند، مسئله تولید کند و درکت را بسنجد. **یادآوری فعال از مرور منفعلانه بهتر است.**
 </Callout>
 
-### Summary Generation
+### تولید خلاصه
 
-<TryIt compact prompt={`Summarize this \${contentType:chapter} for study purposes.
+<TryIt compact prompt={`این \${contentType:فصل} را برای اهداف مطالعاتی خلاصه کن.
 
-Content:
-\${content:paste your content here}
+محتوا:
+\${content:محتوای خود را اینجا قرار دهید}
 
-Provide:
-1. **Key Concepts** (5-7 main ideas)
-2. **Important Terms** (with brief definitions)
-3. **Relationships** (how concepts connect)
-4. **Study Questions** (to test understanding)
-5. **Memory Aids** (mnemonics or associations)
+ارائه بده:
+۱. **مفاهیم کلیدی** (۵-۷ ایده اصلی)
+۲. **اصطلاحات مهم** (با تعریف مختصر)
+۳. **روابط** (چگونه مفاهیم به هم متصل می‌شوند)
+۴. **سؤالات مطالعاتی** (برای سنجش درک)
+۵. **کمک‌های حافظه** (یادآورها یا تداعی‌ها)
 
-Format for easy review and memorization.`} />
+برای مرور و حفظ آسان فرمت‌بندی کن.`} />
 
-### Flashcard Generation
+### تولید فلش‌کارت
 
-<TryIt compact prompt={`Create flashcards for studying \${topic:World War II}.
+<TryIt compact prompt={`فلش‌کارت‌هایی برای مطالعه \${topic:جنگ جهانی دوم} بساز.
 
-Source material:
-\${content:paste your study material here}
+مطالب منبع:
+\${content:مطالب مطالعاتی خود را اینجا قرار دهید}
 
-Format each card:
-Front: Question or term
-Back: Answer or definition
-Hint: Optional memory aid
+فرمت هر کارت:
+روی کارت: سؤال یا اصطلاح
+پشت کارت: پاسخ یا تعریف
+راهنما: کمک حافظه اختیاری
 
-Categories to cover:
-- Definitions (key terms)
-- Concepts (main ideas)
-- Relationships (how things connect)
-- Applications (real-world uses)
+دسته‌بندی‌ها برای پوشش:
+- تعاریف (اصطلاحات کلیدی)
+- مفاهیم (ایده‌های اصلی)
+- روابط (چگونه چیزها به هم متصل می‌شوند)
+- کاربردها (استفاده‌های دنیای واقعی)
 
-Generate \${numberOfCards:20} cards, balanced across categories.`} />
+\${numberOfCards:۲۰} کارت تولید کن، متعادل در بین دسته‌بندی‌ها.`} />
 
-### Practice Problems
+### تمرین‌ها
 
-<TryIt compact prompt={`Generate practice problems for \${topic:quadratic equations}.
+<TryIt compact prompt={`تمرین‌هایی برای \${topic:معادلات درجه دوم} تولید کن.
 
-Difficulty levels:
-- 3 Basic (test fundamental understanding)
-- 3 Intermediate (require application)
-- 2 Advanced (require synthesis/analysis)
+سطوح دشواری:
+- ۳ پایه (سنجش درک بنیادی)
+- ۳ متوسط (نیاز به کاربرد)
+- ۲ پیشرفته (نیاز به ترکیب/تحلیل)
 
-For each problem:
-1. Clear problem statement
-2. Space for student work
-3. Hints available on request
-4. Detailed solution with explanation
+برای هر مسئله:
+۱. صورت مسئله واضح
+۲. فضا برای کار دانش‌آموز
+۳. راهنمایی در صورت درخواست
+۴. راه‌حل کامل با توضیح
 
-Include variety: \${problemTypes:calculation, conceptual, application}`} />
+تنوع شامل: \${problemTypes:محاسباتی، مفهومی، کاربردی}`} />
 
-## Teaching Tools
+## ابزارهای تدریس
 
-### Lesson Plan Creation
+### ایجاد طرح درس
 
-<TryIt compact prompt={`Create a lesson plan for teaching \${topic:photosynthesis}.
+<TryIt compact prompt={`یک طرح درس برای آموزش \${topic:فتوسنتز} بساز.
 
-Context:
-- Grade/Level: \${audience:8th grade science}
-- Class duration: \${duration:50 minutes}
-- Class size: \${classSize:25 students}
-- Prior knowledge: \${prerequisites:basic cell structure}
+زمینه:
+- پایه/سطح: \${audience:علوم پایه هشتم}
+- مدت کلاس: \${duration:۵۰ دقیقه}
+- تعداد دانش‌آموزان: \${classSize:۲۵ نفر}
+- دانش پیش‌نیاز: \${prerequisites:ساختار پایه سلول}
 
-Include:
-1. **Learning Objectives** (SMART format)
-2. **Opening Hook** (5 min) - engagement activity
-3. **Instruction** (15-20 min) - core content delivery
-4. **Guided Practice** (10 min) - work with students
-5. **Independent Practice** (10 min) - students work alone
-6. **Assessment** (5 min) - check understanding
-7. **Closure** - summarize and preview
+شامل باشد:
+۱. **اهداف یادگیری** (فرمت SMART)
+۲. **شروع جذاب** (۵ دقیقه) - فعالیت جلب توجه
+۳. **آموزش** (۱۵-۲۰ دقیقه) - ارائه محتوای اصلی
+۴. **تمرین راهنمایی‌شده** (۱۰ دقیقه) - کار با دانش‌آموزان
+۵. **تمرین مستقل** (۱۰ دقیقه) - کار انفرادی دانش‌آموزان
+۶. **ارزیابی** (۵ دقیقه) - سنجش درک
+۷. **جمع‌بندی** - خلاصه و پیش‌نمایش
 
-Materials needed: list
-Differentiation strategies: for various learners`} />
+مواد مورد نیاز: فهرست
+استراتژی‌های تمایز: برای یادگیرندگان مختلف`} />
 
-### Assignment Design
+### طراحی تکلیف
 
-<TryIt compact prompt={`Design an assignment for \${learningObjective:analyzing primary sources}.
+<TryIt compact prompt={`تکلیفی برای \${learningObjective:تحلیل منابع دست اول} طراحی کن.
 
-Parameters:
-- Course: \${course:AP US History}
-- Due in: \${dueIn:2 weeks}
-- Individual/Group: \${grouping:individual}
-- Weight: \${weight:15% of grade}
+پارامترها:
+- درس: \${course:تاریخ ایران}
+- مهلت: \${dueIn:۲ هفته}
+- فردی/گروهی: \${grouping:فردی}
+- وزن: \${weight:۱۵٪ نمره}
 
-Include:
-1. Clear instructions
-2. Grading rubric with criteria
-3. Example of expected quality
-4. Submission requirements
-5. Academic integrity reminders
+شامل باشد:
+۱. دستورالعمل‌های واضح
+۲. روبریک نمره‌دهی با معیارها
+۳. نمونه‌ای از کیفیت مورد انتظار
+۴. الزامات تحویل
+۵. یادآوری‌های صداقت علمی
 
-The assignment should:
-- Assess \${skills:critical thinking and source evaluation}
-- Allow for \${allowFor:analysis and interpretation}
-- Be completable in approximately \${hours:8 hours}`} />
+تکلیف باید:
+- \${skills:تفکر انتقادی و ارزیابی منابع} را بسنجد
+- امکان \${allowFor:تحلیل و تفسیر} را بدهد
+- در حدود \${hours:۸ ساعت} قابل انجام باشد`} />
 
-### Quiz Generation
+### تولید آزمون
 
-<TryIt compact prompt={`Create a quiz on \${topic:the American Revolution}.
+<TryIt compact prompt={`یک آزمون درباره \${topic:انقلاب مشروطه} بساز.
 
-Format:
-- [X] Multiple choice questions (4 options each)
-- [X] True/False questions
-- [X] Short answer questions
-- [X] One essay question
+فرمت:
+- [X] سؤالات چندگزینه‌ای (هر کدام ۴ گزینه)
+- [X] سؤالات صحیح/غلط
+- [X] سؤالات کوتاه‌پاسخ
+- [X] یک سؤال تشریحی
 
-Specifications:
-- Cover all key learning objectives
-- Range from recall to analysis
-- Include answer key with explanations
-- Time estimate: \${timeEstimate:30 minutes}
-- Point values for each section`} />
+مشخصات:
+- تمام اهداف یادگیری کلیدی را پوشش دهد
+- از یادآوری تا تحلیل متنوع باشد
+- کلید پاسخ با توضیحات داشته باشد
+- تخمین زمان: \${timeEstimate:۳۰ دقیقه}
+- ارزش نمره برای هر بخش`} />
 
-## Specialized Learning Contexts
+## زمینه‌های یادگیری تخصصی
 
-### Language Learning
+### یادگیری زبان
 
-<TryIt compact prompt={`Help me learn \${language:Spanish}.
+<TryIt compact prompt={`کمکم کن \${language:انگلیسی} یاد بگیرم.
 
-Current level: \${currentLevel:A2 - elementary}
-Native language: \${nativeLanguage:English}
-Goals: \${goals:conversation for travel}
+سطح فعلی: \${currentLevel:A2 - مقدماتی}
+زبان مادری: \${nativeLanguage:فارسی}
+اهداف: \${goals:مکالمه برای سفر}
 
-Today's lesson: \${focusArea:ordering food at restaurants}
+درس امروز: \${focusArea:سفارش غذا در رستوران}
 
-Include:
-1. New vocabulary (5-10 words) with:
-   - Pronunciation guide
-   - Example sentences
-   - Common usage notes
-2. Grammar point with clear explanation
-3. Practice exercises
-4. Cultural context note
-5. Conversation practice scenario`} />
+شامل باشد:
+۱. واژگان جدید (۵-۱۰ کلمه) با:
+   - راهنمای تلفظ
+   - جملات نمونه
+   - نکات کاربرد رایج
+۲. نکته گرامری با توضیح واضح
+۳. تمرین‌های عملی
+۴. نکته فرهنگی
+۵. سناریوی تمرین مکالمه`} />
 
-### Skill Development
+### توسعه مهارت
 
-<TryIt compact prompt={`I want to learn \${skill:guitar}. Be my coach.
+<TryIt compact prompt={`می‌خواهم \${skill:گیتار} یاد بگیرم. مربی من باش.
 
-My current level: \${currentLevel:complete beginner}
-Goal: \${goal:play 5 songs by ear}
-Practice time available: \${practiceTime:30 minutes per day}
+سطح فعلی من: \${currentLevel:کاملاً مبتدی}
+هدف: \${goal:نواختن ۵ آهنگ}
+زمان تمرین در دسترس: \${practiceTime:۳۰ دقیقه در روز}
 
-Provide:
-1. Assessment of starting point
-2. Breakdown of sub-skills needed
-3. Practice routine (specific exercises)
-4. Progress markers (how to measure improvement)
-5. Common plateaus and how to overcome them
-6. First week's practice plan in detail`} />
+ارائه بده:
+۱. ارزیابی نقطه شروع
+۲. تجزیه مهارت‌های فرعی مورد نیاز
+۳. برنامه تمرین (تمرین‌های مشخص)
+۴. نشانگرهای پیشرفت (چگونه بهبود را بسنجم)
+۵. فلات‌های رایج و چگونگی غلبه بر آن‌ها
+۶. برنامه تمرین هفته اول با جزئیات`} />
 
-### Exam Preparation
+### آمادگی آزمون
 
-<TryIt compact prompt={`Help me prepare for \${examName:the GRE}.
+<TryIt compact prompt={`کمکم کن برای \${examName:کنکور سراسری} آماده شوم.
 
-Exam format: \${examFormat:Verbal, Quantitative, Writing sections}
-Time until exam: \${timeUntilExam:8 weeks}
-My weak areas: \${weakAreas:reading comprehension, geometry}
-Target score: \${targetScore:320+}
+فرمت آزمون: \${examFormat:زبان و ادبیات، عربی، دین و زندگی، زبان انگلیسی، ریاضی، فیزیک، شیمی}
+زمان تا آزمون: \${timeUntilExam:۸ هفته}
+نقاط ضعف من: \${weakAreas:درک مطلب، هندسه}
+نمره هدف: \${targetScore:رتبه زیر ۱۰۰۰}
 
-Create a study plan:
-1. Topics to cover (prioritized)
-2. Daily study schedule
-3. Practice test strategy
-4. Key formulas/facts to memorize
-5. Test-taking tips specific to this exam
-6. Day-before and day-of recommendations`} />
+یک برنامه مطالعاتی بساز:
+۱. موضوعات برای پوشش (اولویت‌بندی‌شده)
+۲. برنامه مطالعه روزانه
+۳. استراتژی آزمون‌های آزمایشی
+۴. فرمول‌ها/نکات کلیدی برای حفظ
+۵. تکنیک‌های تست‌زنی مخصوص این آزمون
+۶. توصیه‌های روز قبل و روز آزمون`} />
 
-## Prompt Templates from prompts.chat
+## قالب‌های پرامپت از prompts.chat
 
-### Act as a Socratic Tutor
+### نقش معلم سقراطی
 
-<TryIt compact prompt={`I want you to act as a Socratic tutor. You will help me learn by asking probing questions rather than giving direct answers. When I ask about a topic, respond with questions that guide me to discover the answer myself. If I'm stuck, provide hints but not solutions. Help me develop critical thinking skills.`} />
+<TryIt compact prompt={`می‌خواهم به عنوان یک معلم سقراطی عمل کنی. به جای دادن پاسخ‌های مستقیم، با پرسیدن سؤالات عمیق کمکم کن یاد بگیرم. وقتی درباره موضوعی می‌پرسم، با سؤالاتی پاسخ بده که مرا به کشف پاسخ خودم هدایت کند. اگر گیر کردم، راهنمایی بده اما راه‌حل نده. کمکم کن مهارت‌های تفکر انتقادی توسعه دهم.`} />
 
-### Act as an Educational Content Creator
+### نقش تولیدکننده محتوای آموزشی
 
-<TryIt compact prompt={`I want you to act as an educational content creator. You will create engaging, accurate educational materials for \${subject:biology}. Make complex topics accessible without oversimplifying. Use analogies, examples, and visual descriptions. Include knowledge checks and encourage active learning.`} />
+<TryIt compact prompt={`می‌خواهم به عنوان تولیدکننده محتوای آموزشی عمل کنی. مواد آموزشی جذاب و دقیق برای \${subject:زیست‌شناسی} خواهی ساخت. موضوعات پیچیده را بدون ساده‌سازی بیش از حد قابل دسترس کن. از تشبیه، مثال و توصیفات تصویری استفاده کن. سنجش دانش و تشویق به یادگیری فعال را شامل کن.`} />
 
-### Act as a Study Buddy
+### نقش همراه مطالعه
 
-<TryIt compact prompt={`I want you to act as my study buddy. We're studying \${subject:organic chemistry} together. Quiz me on concepts, discuss ideas, help me work through problems, and keep me motivated. Be encouraging but also challenge me to think deeper. Let's make studying interactive and effective.`} />
+<TryIt compact prompt={`می‌خواهم به عنوان همراه مطالعه من عمل کنی. داریم با هم \${subject:شیمی آلی} می‌خوانیم. از من سؤال بپرس، درباره ایده‌ها بحث کن، کمکم کن مسائل را حل کنم و انگیزه‌ام را حفظ کن. تشویق‌کننده باش اما چالش‌برانگیز هم باش تا عمیق‌تر فکر کنم. بیا مطالعه را تعاملی و مؤثر کنیم.`} />
 
-## Accessibility in Education
+## دسترسی‌پذیری در آموزش
 
-### Content Adaptation
+### تطبیق محتوا
 
-<TryIt compact prompt={`Adapt this educational content for \${accessibilityNeed:dyslexia-friendly format}:
+<TryIt compact prompt={`این محتوای آموزشی را برای \${accessibilityNeed:فرمت مناسب دیسلکسی} تطبیق بده:
 
-Original content:
-\${content:paste your content here}
+محتوای اصلی:
+\${content:محتوای خود را اینجا قرار دهید}
 
-Adaptation needed:
-- [ ] Simplified language (lower reading level)
-- [ ] Visual descriptions (for text-to-speech)
-- [ ] Structured format (for cognitive accessibility)
-- [ ] Extended time considerations
-- [ ] Alternative explanations
+تطبیق مورد نیاز:
+- [ ] زبان ساده‌شده (سطح خوانایی پایین‌تر)
+- [ ] توصیفات تصویری (برای تبدیل متن به گفتار)
+- [ ] فرمت ساختاریافته (برای دسترسی‌پذیری شناختی)
+- [ ] ملاحظات زمان اضافی
+- [ ] توضیحات جایگزین
 
-Maintain:
-- All key learning objectives
-- Accuracy of content
-- Assessment equivalence`} />
+حفظ شود:
+- تمام اهداف یادگیری کلیدی
+- دقت محتوا
+- برابری ارزیابی`} />
 
-### Multiple Modalities
+### چندوجهی
 
-<TryIt compact prompt={`Present \${concept:photosynthesis} in multiple ways:
+<TryIt compact prompt={`\${concept:فتوسنتز} را به چند روش ارائه بده:
 
-1. **Text explanation** (clear prose)
-2. **Visual description** (describe a diagram)
-3. **Analogy** (relate to everyday experience)
-4. **Story/Narrative** (embed in a scenario)
-5. **Q&A format** (question and answer)
+۱. **توضیح متنی** (نثر روشن)
+۲. **توصیف تصویری** (توصیف یک نمودار)
+۳. **تشبیه** (ربط به تجربه روزمره)
+۴. **داستان/روایت** (قرار دادن در یک سناریو)
+۵. **فرمت پرسش و پاسخ** (سؤال و جواب)
 
-This allows learners to engage with their preferred style.`} />
+این به یادگیرندگان امکان می‌دهد با سبک ترجیحی خود درگیر شوند.`} />
 
-## Assessment & Feedback
+## ارزیابی و بازخورد
 
-### Providing Feedback
+### ارائه بازخورد
 
-<TryIt compact prompt={`Provide educational feedback on this student work:
+<TryIt compact prompt={`بازخورد آموزشی برای این کار دانش‌آموز ارائه بده:
 
-Assignment: \${assignment:5-paragraph essay on climate change}
-Student submission: \${work:paste student work here}
-Rubric: \${rubric:thesis clarity, evidence, organization, grammar}
+تکلیف: \${assignment:انشای ۵ پاراگرافی درباره تغییرات اقلیمی}
+کار دانش‌آموز: \${work:کار دانش‌آموز را اینجا قرار دهید}
+روبریک: \${rubric:وضوح تز، شواهد، سازماندهی، دستور زبان}
 
-Feedback format:
-1. **Strengths** - What they did well (specific)
-2. **Areas for improvement** - What needs work (constructive)
-3. **Suggestions** - How to improve (actionable)
-4. **Grade/Score** - Based on rubric
-5. **Encouragement** - Motivational closing
+فرمت بازخورد:
+۱. **نقاط قوت** - چه کارهایی را خوب انجام داد (مشخص)
+۲. **زمینه‌های بهبود** - چه چیزی نیاز به کار دارد (سازنده)
+۳. **پیشنهادات** - چگونه بهبود دهد (عملی)
+۴. **نمره/امتیاز** - بر اساس روبریک
+۵. **تشویق** - جمع‌بندی انگیزشی
 
-Tone: Supportive, specific, growth-oriented`} />
+لحن: حمایتی، مشخص، رشدمحور`} />
 
-### Self-Assessment Prompts
+### پرامپت‌های خودارزیابی
 
-<TryIt compact prompt={`Help me assess my understanding of \${topic:the French Revolution}.
+<TryIt compact prompt={`کمکم کن درک خود از \${topic:انقلاب فرانسه} را ارزیابی کنم.
 
-Ask me 5 questions that test:
-1. Basic recall
-2. Understanding
-3. Application
-4. Analysis
-5. Synthesis/Creation
+۵ سؤال از من بپرس که بسنجد:
+۱. یادآوری پایه
+۲. درک
+۳. کاربرد
+۴. تحلیل
+۵. ترکیب/خلق
 
-After each answer, tell me:
-- What I demonstrated understanding of
-- What I should review
-- How to deepen my knowledge
+بعد از هر پاسخ، بگو:
+- چه چیزی نشان دادم که درک کرده‌ام
+- چه چیزی باید مرور کنم
+- چگونه دانشم را عمیق‌تر کنم
 
-Be honest but encouraging.`} />
+صادق اما تشویق‌کننده باش.`} />
 
-## Summary
+## خلاصه
 
-<Callout type="tip" title="Key Techniques">
-Adapt to the learner's level, break complex topics into steps, include active practice (not just explanation), provide varied approaches, check understanding regularly, and give constructive feedback.
+<Callout type="tip" title="تکنیک‌های کلیدی">
+با سطح یادگیرنده تطبیق دهید، موضوعات پیچیده را به مراحل تقسیم کنید، تمرین فعال شامل کنید (نه فقط توضیح)، رویکردهای متنوع ارائه دهید، درک را منظم بسنجید، و بازخورد سازنده بدهید.
 </Callout>
 
 <Quiz 
-  question="What's the most effective way to use AI for learning?"
+  question="مؤثرترین روش استفاده از هوش مصنوعی برای یادگیری چیست؟"
   options={[
-    "Read AI explanations passively like a textbook",
-    "Ask AI to quiz you and generate practice problems",
-    "Only use AI for homework answers",
-    "Avoid AI for learning entirely"
+    "خواندن منفعلانه توضیحات هوش مصنوعی مثل یک کتاب درسی",
+    "درخواست از هوش مصنوعی برای امتحان گرفتن و تولید تمرین",
+    "استفاده از هوش مصنوعی فقط برای پاسخ تکالیف",
+    "اجتناب کامل از هوش مصنوعی برای یادگیری"
   ]}
   correctIndex={1}
-  explanation="Active recall beats passive review. Have AI quiz you, generate problems, and check your understanding—this builds stronger memory than just reading explanations."
+  explanation="یادآوری فعال از مرور منفعلانه بهتر است. از هوش مصنوعی بخواهید امتحان بگیرد، مسئله تولید کند و درکتان را بسنجد—این حافظه قوی‌تری می‌سازد تا فقط خواندن توضیحات."
 />
 
-AI is a patient, always-available learning partner—use it to supplement, not replace, human instruction.
+هوش مصنوعی یک شریک یادگیری صبور و همیشه در دسترس است—از آن برای تکمیل آموزش انسانی استفاده کنید، نه جایگزینی آن.

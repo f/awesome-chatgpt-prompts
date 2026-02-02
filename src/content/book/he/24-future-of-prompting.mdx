@@ -1,19 +1,19 @@
-As AI continues to evolve at an unprecedented pace, so too will the art and science of prompting. This final chapter explores emerging trends, the shifting landscape of human-AI collaboration, and how to stay ahead as the field transforms.
+ככל שהבינה המלאכותית ממשיכה להתפתח בקצב חסר תקדים, כך גם האמנות והמדע של כתיבת פרומפטים. פרק אחרון זה חוקר מגמות מתפתחות, את הנוף המשתנה של שיתוף פעולה בין אדם לבינה מלאכותית, וכיצד להישאר בחזית ככל שהתחום מתמיר.
 
-<Callout type="info" title="A Moving Target">
-The techniques in this book represent current best practices, but AI capabilities change rapidly. The principles of clear communication, structured thinking, and iterative refinement will remain valuable even as specific tactics evolve.
+<Callout type="info" title="מטרה נעה">
+הטכניקות בספר זה מייצגות את השיטות המומלצות הנוכחיות, אך יכולות הבינה המלאכותית משתנות במהירות. העקרונות של תקשורת ברורה, חשיבה מובנית ושיפור איטרטיבי יישארו בעלי ערך גם כאשר טקטיקות ספציפיות מתפתחות.
 </Callout>
 
-## The Evolving Landscape
+## הנוף המתפתח
 
-### From Prompts to Conversations
+### מפרומפטים לשיחות
 
-Early prompting was transactional—a single input yielding a single output. Modern AI interaction is increasingly **conversational and collaborative**:
+כתיבת פרומפטים מוקדמת הייתה טרנזקציונית—קלט יחיד שמניב פלט יחיד. האינטראקציה המודרנית עם בינה מלאכותית היא יותר ויותר **שיחתית ושיתופית**:
 
-- **Multi-turn refinement** - Building understanding across exchanges
-- **Persistent context** - Systems that remember and learn from interactions
-- **Agentic workflows** - AI that can plan, execute, and iterate autonomously
-- **Tool use** - Models that can search, compute, and interact with external systems
+- **שיפור רב-תורני** - בניית הבנה לאורך חילופים
+- **הקשר מתמשך** - מערכות שזוכרות ולומדות מאינטראקציות
+- **זרימות עבודה אגנטיות** - בינה מלאכותית שיכולה לתכנן, לבצע ולשפר באופן אוטונומי
+- **שימוש בכלים** - מודלים שיכולים לחפש, לחשב ולתקשר עם מערכות חיצוניות
 
 <TryIt compact prompt={`Let's work together on \${task:writing a technical blog post}.
 
@@ -25,129 +25,129 @@ I'd like to develop this iteratively:
 
 Start by asking me about my target audience and key message.`} />
 
-### The Rise of Context Engineering
+### עליית הנדסת ההקשר
 
-As covered in Chapter 14, prompting is expanding beyond single instructions to encompass **context engineering**—the strategic management of what information an AI can access:
+כפי שנדון בפרק 14, כתיבת פרומפטים מתרחבת מעבר להוראות בודדות לכלול **הנדסת הקשר**—הניהול האסטרטגי של איזה מידע הבינה המלאכותית יכולה לגשת אליו:
 
-- **RAG (Retrieval-Augmented Generation)** - Dynamic knowledge retrieval
-- **Function calling** - Structured tool integration
-- **MCP (Model Context Protocol)** - Standardized context sharing
-- **Memory systems** - Persistent knowledge across sessions
+- **RAG (Retrieval-Augmented Generation)** - אחזור ידע דינמי
+- **Function calling** - שילוב כלים מובנה
+- **MCP (Model Context Protocol)** - שיתוף הקשר סטנדרטי
+- **מערכות זיכרון** - ידע מתמשך לאורך סשנים
 
-The future prompt engineer thinks not just about *what to say* but *what context to provide*.
+מהנדס הפרומפטים של העתיד חושב לא רק על *מה לומר* אלא *איזה הקשר לספק*.
 
-### Multimodal by Default
+### מולטימודלי כברירת מחדל
 
-Text-only interaction is becoming the exception. Future AI systems will seamlessly handle:
+אינטראקציה מבוססת טקסט בלבד הופכת לחריג. מערכות בינה מלאכותית עתידיות יטפלו בצורה חלקה ב:
 
-- **Images and video** - Understanding and generating visual content
-- **Audio and voice** - Natural speech interaction
-- **Documents and files** - Direct processing of complex materials
-- **Real-world interaction** - Robotics and physical systems
+- **תמונות ווידאו** - הבנה ויצירה של תוכן ויזואלי
+- **אודיו וקול** - אינטראקציה בדיבור טבעי
+- **מסמכים וקבצים** - עיבוד ישיר של חומרים מורכבים
+- **אינטראקציה עם העולם האמיתי** - רובוטיקה ומערכות פיזיות
 
-Prompting skills will extend to guiding AI perception and physical action.
+מיומנויות כתיבת פרומפטים יתרחבו להנחיית תפיסה ופעולה פיזית של בינה מלאכותית.
 
-## The Agentic Future
+## העתיד האגנטי
 
-The most significant shift in AI is the rise of **agents**—AI systems that don't just respond to prompts but actively pursue goals, make decisions, and take actions in the world.
+השינוי המשמעותי ביותר בבינה המלאכותית הוא עליית ה**סוכנים**—מערכות בינה מלאכותית שלא רק מגיבות לפרומפטים אלא רודפות באופן פעיל אחר מטרות, מקבלות החלטות ונוקטות פעולות בעולם.
 
-### What Are AI Agents?
+### מהם סוכני בינה מלאכותית?
 
-An AI agent is a system that:
+סוכן בינה מלאכותית הוא מערכת ש:
 
-- **Perceives** its environment through inputs (text, images, data, APIs)
-- **Reasons** about what to do using an LLM as its "brain"
-- **Acts** by calling tools, writing code, or interacting with systems
-- **Learns** from feedback and adjusts its approach
+- **תופסת** את סביבתה דרך קלטים (טקסט, תמונות, נתונים, APIs)
+- **מסיקה** מה לעשות תוך שימוש ב-LLM כ"מוח" שלה
+- **פועלת** על ידי קריאה לכלים, כתיבת קוד או אינטראקציה עם מערכות
+- **לומדת** ממשוב ומתאימה את הגישה שלה
 
-<Callout type="info" title="From Chatbots to Agents">
-Traditional chatbots wait for input and respond. Agents take initiative—they plan multi-step tasks, use tools autonomously, recover from errors, and persist until goals are achieved.
+<Callout type="info" title="מצ'אטבוטים לסוכנים">
+צ'אטבוטים מסורתיים ממתינים לקלט ומגיבים. סוכנים נוקטים יוזמה—הם מתכננים משימות רב-שלביות, משתמשים בכלים באופן אוטונומי, מתאוששים משגיאות ומתמידים עד להשגת המטרות.
 </Callout>
 
-### The Role of Prompts in Agents
+### תפקיד הפרומפטים בסוכנים
 
-In an agentic world, prompts become even more critical—but they serve different purposes:
+בעולם אגנטי, פרומפטים הופכים עוד יותר קריטיים—אך הם משרתים מטרות שונות:
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-900 p-4">
-    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 m-0!">System Prompts</p>
-    <p className="text-sm text-muted-foreground mt-2 m-0!">Define the agent's identity, capabilities, constraints, and behavioral guidelines. These are the agent's "constitution."</p>
+    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 m-0!">פרומפטים מערכתיים</p>
+    <p className="text-sm text-muted-foreground mt-2 m-0!">מגדירים את זהות הסוכן, יכולותיו, מגבלותיו והנחיות ההתנהגות שלו. אלו ה"חוקה" של הסוכן.</p>
   </div>
   <div className="border rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-900 p-4">
-    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 m-0!">Planning Prompts</p>
-    <p className="text-sm text-muted-foreground mt-2 m-0!">Guide how agents break down complex goals into actionable steps. Critical for multi-step reasoning.</p>
+    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 m-0!">פרומפטים לתכנון</p>
+    <p className="text-sm text-muted-foreground mt-2 m-0!">מנחים כיצד סוכנים מפרקים מטרות מורכבות לצעדים ברי-פעולה. קריטיים להסקה רב-שלבית.</p>
   </div>
   <div className="border rounded-lg bg-amber-50/50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900 p-4">
-    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 m-0!">Tool-Use Prompts</p>
-    <p className="text-sm text-muted-foreground mt-2 m-0!">Describe available tools and when/how to use them. Agents must understand their capabilities.</p>
+    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 m-0!">פרומפטים לשימוש בכלים</p>
+    <p className="text-sm text-muted-foreground mt-2 m-0!">מתארים כלים זמינים ומתי/כיצד להשתמש בהם. סוכנים חייבים להבין את היכולות שלהם.</p>
   </div>
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900 p-4">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 m-0!">Reflection Prompts</p>
-    <p className="text-sm text-muted-foreground mt-2 m-0!">Enable agents to evaluate their own outputs, catch errors, and improve iteratively.</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 m-0!">פרומפטים לרפלקציה</p>
+    <p className="text-sm text-muted-foreground mt-2 m-0!">מאפשרים לסוכנים להעריך את הפלטים שלהם, לתפוס שגיאות ולהשתפר באופן איטרטיבי.</p>
   </div>
 </div>
 
-### Agent Architecture Patterns
+### דפוסי ארכיטקטורת סוכנים
 
-Modern agents follow recognizable patterns. Understanding these helps you design effective agent systems:
+סוכנים מודרניים עוקבים אחר דפוסים מזוהים. הבנתם עוזרת לכם לתכנן מערכות סוכנים יעילות:
 
 **ReAct (Reasoning + Acting)**
 
-The agent alternates between reasoning about what to do and taking actions:
+הסוכן מתחלף בין הסקה לגבי מה לעשות לבין נקיטת פעולות:
 
 <div className="my-6 flex flex-col items-center gap-2 p-6 bg-muted/30 rounded-lg">
   <div className="flex items-center gap-4">
     <div className="px-4 py-2 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg">
-      <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Think</p>
+      <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">חשוב</p>
     </div>
     <div className="text-slate-400">→</div>
     <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
-      <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">Act</p>
+      <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">פעל</p>
     </div>
     <div className="text-slate-400">→</div>
     <div className="px-4 py-2 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg">
-      <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">Observe</p>
+      <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">התבונן</p>
     </div>
     <div className="text-slate-400">→</div>
-    <div className="text-muted-foreground text-sm">(repeat)</div>
+    <div className="text-muted-foreground text-sm">(חזור)</div>
   </div>
 </div>
 
 **Plan-and-Execute**
 
-The agent creates a complete plan first, then executes steps:
+הסוכן יוצר תוכנית מלאה תחילה, ואז מבצע את הצעדים:
 
 <div className="my-6 flex flex-col items-center gap-2 p-6 bg-muted/30 rounded-lg">
   <div className="px-6 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
-    <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Create Plan</p>
-    <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">Break goal into steps</p>
+    <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">צור תוכנית</p>
+    <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">פרק את המטרה לצעדים</p>
   </div>
   <div className="text-blue-400 dark:text-blue-500 text-lg">↓</div>
   <div className="flex items-center gap-3">
     <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
-      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Step 1</p>
+      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">צעד 1</p>
     </div>
     <div className="text-slate-400">→</div>
     <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
-      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Step 2</p>
+      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">צעד 2</p>
     </div>
     <div className="text-slate-400">→</div>
     <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
-      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Step 3</p>
+      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">צעד 3</p>
     </div>
     <div className="text-slate-400">→</div>
     <div className="text-muted-foreground text-sm">...</div>
   </div>
   <div className="text-green-400 dark:text-green-500 text-lg">↓</div>
   <div className="px-6 py-3 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-lg text-center">
-    <p className="text-sm font-medium text-amber-700 dark:text-amber-300 m-0!">Revise if Needed</p>
-    <p className="text-xs text-amber-600 dark:text-amber-400 m-0!">Adapt plan based on results</p>
+    <p className="text-sm font-medium text-amber-700 dark:text-amber-300 m-0!">עדכן במידת הצורך</p>
+    <p className="text-xs text-amber-600 dark:text-amber-400 m-0!">התאם תוכנית על בסיס תוצאות</p>
   </div>
 </div>
 
-### Prompting for Agents
+### כתיבת פרומפטים לסוכנים
 
-When designing prompts for agent systems, consider:
+בעת תכנון פרומפטים למערכות סוכנים, שקלו:
 
 <TryIt compact prompt={`You are an autonomous research agent. Your goal is to \${goal:find the latest statistics on renewable energy adoption}.
 
@@ -172,89 +172,89 @@ When designing prompts for agent systems, consider:
 
 Begin by outlining your research plan.`} />
 
-### Multi-Agent Systems
+### מערכות רב-סוכניות
 
-The future involves teams of specialized agents working together:
+העתיד כולל צוותים של סוכנים מתמחים שעובדים יחד:
 
 <div className="my-6 p-6 bg-muted/30 rounded-lg">
   <div className="flex flex-col md:flex-row items-center justify-center gap-6">
     <div className="flex flex-col items-center gap-2">
       <div className="px-4 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
-        <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Coordinator</p>
-        <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">Manages workflow</p>
+        <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">מתאם</p>
+        <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">מנהל זרימת עבודה</p>
       </div>
     </div>
     <div className="hidden md:block text-slate-400 text-2xl">⟷</div>
     <div className="md:hidden text-slate-400 text-2xl">↕</div>
     <div className="flex flex-wrap justify-center gap-3">
       <div className="px-3 py-2 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg">
-        <p className="text-xs font-medium text-purple-700 dark:text-purple-300 m-0!">Researcher</p>
+        <p className="text-xs font-medium text-purple-700 dark:text-purple-300 m-0!">חוקר</p>
       </div>
       <div className="px-3 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
-        <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Writer</p>
+        <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">כותב</p>
       </div>
       <div className="px-3 py-2 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-lg">
-        <p className="text-xs font-medium text-amber-700 dark:text-amber-300 m-0!">Critic</p>
+        <p className="text-xs font-medium text-amber-700 dark:text-amber-300 m-0!">מבקר</p>
       </div>
       <div className="px-3 py-2 bg-red-100 dark:bg-red-900/50 border border-red-200 dark:border-red-800 rounded-lg">
-        <p className="text-xs font-medium text-red-700 dark:text-red-300 m-0!">Coder</p>
+        <p className="text-xs font-medium text-red-700 dark:text-red-300 m-0!">מתכנת</p>
       </div>
     </div>
   </div>
 </div>
 
-Each agent has its own system prompt defining its role, and they communicate through structured messages. The prompt engineer's job becomes **designing the team**—defining roles, communication protocols, and coordination strategies.
+לכל סוכן יש פרומפט מערכתי משלו המגדיר את תפקידו, והם מתקשרים באמצעות הודעות מובנות. עבודת מהנדס הפרומפטים הופכת ל**תכנון הצוות**—הגדרת תפקידים, פרוטוקולי תקשורת ואסטרטגיות תיאום.
 
-<Callout type="tip" title="The Prompt Engineer as Architect">
-In an agentic future, prompt engineers become system architects. You're not just writing instructions—you're designing autonomous systems that can reason, plan, and act. The skills you've learned in this book are the foundation for this new discipline.
+<Callout type="tip" title="מהנדס הפרומפטים כאדריכל">
+בעתיד אגנטי, מהנדסי פרומפטים הופכים לאדריכלי מערכות. אתם לא רק כותבים הוראות—אתם מתכננים מערכות אוטונומיות שיכולות להסיק, לתכנן ולפעול. המיומנויות שלמדתם בספר זה הן הבסיס לתחום החדש הזה.
 </Callout>
 
-## Emerging Patterns
+## דפוסים מתפתחים
 
-### Prompt Orchestration
+### תזמור פרומפטים
 
-Single prompts are giving way to **orchestrated systems**:
+פרומפטים בודדים מפנים את מקומם ל**מערכות מתוזמרות**:
 
 <div className="my-6 flex flex-col items-center gap-2 p-6 bg-muted/30 rounded-lg">
   <div className="px-6 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg text-center">
-    <p className="text-sm font-medium text-slate-700 dark:text-slate-300 m-0!">User Request</p>
+    <p className="text-sm font-medium text-slate-700 dark:text-slate-300 m-0!">בקשת משתמש</p>
   </div>
   <div className="text-slate-400 dark:text-slate-500 text-lg">↓</div>
   <div className="px-6 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
-    <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Planner Agent</p>
-    <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">Breaks down task</p>
+    <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">סוכן מתכנן</p>
+    <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">מפרק את המשימה</p>
   </div>
   <div className="text-blue-400 dark:text-blue-500 text-lg">↓</div>
   <div className="px-6 py-3 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg text-center">
-    <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">Researcher Agent</p>
-    <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">Gathers information</p>
+    <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">סוכן חוקר</p>
+    <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">אוסף מידע</p>
   </div>
   <div className="text-purple-400 dark:text-purple-500 text-lg">↓</div>
   <div className="px-6 py-3 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-lg text-center">
-    <p className="text-sm font-medium text-amber-700 dark:text-amber-300 m-0!">Writer Agent</p>
-    <p className="text-xs text-amber-600 dark:text-amber-400 m-0!">Creates content</p>
+    <p className="text-sm font-medium text-amber-700 dark:text-amber-300 m-0!">סוכן כותב</p>
+    <p className="text-xs text-amber-600 dark:text-amber-400 m-0!">יוצר תוכן</p>
   </div>
   <div className="text-amber-400 dark:text-amber-500 text-lg">↓</div>
   <div className="px-6 py-3 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg text-center">
-    <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">Reviewer Agent</p>
-    <p className="text-xs text-green-600 dark:text-green-400 m-0!">Quality checks</p>
+    <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">סוכן סוקר</p>
+    <p className="text-xs text-green-600 dark:text-green-400 m-0!">בדיקות איכות</p>
   </div>
   <div className="text-green-400 dark:text-green-500 text-lg">↓</div>
   <div className="px-6 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg text-center">
-    <p className="text-sm font-medium text-slate-700 dark:text-slate-300 m-0!">Final Output</p>
+    <p className="text-sm font-medium text-slate-700 dark:text-slate-300 m-0!">פלט סופי</p>
   </div>
 </div>
 
-Future practitioners will design prompt *systems* rather than individual prompts.
+מתרגלי העתיד יתכננו *מערכות* פרומפטים במקום פרומפטים בודדים.
 
-### Self-Improving Prompts
+### פרומפטים שמשפרים את עצמם
 
-AI systems are beginning to:
+מערכות בינה מלאכותית מתחילות ל:
 
-- **Optimize their own prompts** - Meta-learning for better instructions
-- **Learn from feedback** - Adapting based on outcomes
-- **Generate training data** - Creating examples for fine-tuning
-- **Evaluate themselves** - Building in quality assessment
+- **לייעל את הפרומפטים שלהן** - למידת-על להוראות טובות יותר
+- **ללמוד ממשוב** - להתאים על בסיס תוצאות
+- **ליצור נתוני אימון** - ליצור דוגמאות לכיוונון עדין
+- **להעריך את עצמן** - לבנות הערכת איכות פנימית
 
 <TryIt compact prompt={`Analyze this prompt and suggest improvements:
 
@@ -268,143 +268,143 @@ Consider:
 
 Provide: Improved version with explanation of changes`} />
 
-### Natural Language Programming
+### תכנות בשפה טבעית
 
-The line between prompting and programming is blurring:
+הגבול בין כתיבת פרומפטים לתכנות מטשטש:
 
-- **Prompts as code** - Version-controlled, tested, deployed
-- **LLMs as interpreters** - Natural language as executable instructions
-- **Hybrid systems** - Combining traditional code with AI reasoning
-- **AI-assisted development** - Models that write and debug code
+- **פרומפטים כקוד** - מנוהלים בגרסאות, נבדקים, נפרסים
+- **LLMs כמפרשנים** - שפה טבעית כהוראות ניתנות להרצה
+- **מערכות היברידיות** - שילוב קוד מסורתי עם הסקת בינה מלאכותית
+- **פיתוח בסיוע בינה מלאכותית** - מודלים שכותבים ומתקנים קוד
 
-Understanding prompting increasingly means understanding software development.
+הבנת כתיבת פרומפטים פירושה יותר ויותר הבנת פיתוח תוכנה.
 
-## Skills for the Future
+## מיומנויות לעתיד
 
-### What Will Remain Valuable
+### מה יישאר בעל ערך
 
-Certain skills will remain essential regardless of how AI evolves:
+מיומנויות מסוימות יישארו חיוניות ללא קשר לאופן שבו הבינה המלאכותית מתפתחת:
 
-1. **Clear thinking** - Knowing what you actually want
-2. **Domain expertise** - Understanding the problem space
-3. **Critical evaluation** - Assessing AI output quality
-4. **Ethical judgment** - Knowing what *should* be done
-5. **Iterative refinement** - Continuous improvement mindset
+1. **חשיבה ברורה** - לדעת מה אתם באמת רוצים
+2. **מומחיות תחומית** - הבנת מרחב הבעיה
+3. **הערכה ביקורתית** - הערכת איכות הפלט של הבינה המלאכותית
+4. **שיקול דעת אתי** - לדעת מה *צריך* לעשות
+5. **שיפור איטרטיבי** - גישת שיפור מתמשכת
 
-### What Will Change
+### מה ישתנה
 
-Other aspects will shift significantly:
+היבטים אחרים ישתנו משמעותית:
 
 <div className="my-6 overflow-x-auto">
   <table className="w-full border-collapse text-sm">
     <thead>
       <tr className="border-b border-border">
-        <th className="text-left py-3 px-4 font-semibold text-muted-foreground">Today</th>
-        <th className="text-left py-3 px-4 font-semibold text-muted-foreground">Tomorrow</th>
+        <th className="text-left py-3 px-4 font-semibold text-muted-foreground">היום</th>
+        <th className="text-left py-3 px-4 font-semibold text-muted-foreground">מחר</th>
       </tr>
     </thead>
     <tbody>
       <tr className="border-b border-border/50">
-        <td className="py-3 px-4">Writing detailed prompts</td>
-        <td className="py-3 px-4 text-primary font-medium">Designing agent systems</td>
+        <td className="py-3 px-4">כתיבת פרומפטים מפורטים</td>
+        <td className="py-3 px-4 text-primary font-medium">תכנון מערכות סוכנים</td>
       </tr>
       <tr className="border-b border-border/50">
-        <td className="py-3 px-4">Manual prompt optimization</td>
-        <td className="py-3 px-4 text-primary font-medium">Automated prompt tuning</td>
+        <td className="py-3 px-4">אופטימיזציה ידנית של פרומפטים</td>
+        <td className="py-3 px-4 text-primary font-medium">כיוונון פרומפטים אוטומטי</td>
       </tr>
       <tr className="border-b border-border/50">
-        <td className="py-3 px-4">Single-model expertise</td>
-        <td className="py-3 px-4 text-primary font-medium">Multi-model orchestration</td>
+        <td className="py-3 px-4">מומחיות במודל יחיד</td>
+        <td className="py-3 px-4 text-primary font-medium">תזמור רב-מודלי</td>
       </tr>
       <tr className="border-b border-border/50">
-        <td className="py-3 px-4">Text-focused interaction</td>
-        <td className="py-3 px-4 text-primary font-medium">Multimodal fluency</td>
+        <td className="py-3 px-4">אינטראקציה ממוקדת טקסט</td>
+        <td className="py-3 px-4 text-primary font-medium">שליטה מולטימודלית</td>
       </tr>
       <tr>
-        <td className="py-3 px-4">Individual productivity</td>
-        <td className="py-3 px-4 text-primary font-medium">Team-AI collaboration</td>
+        <td className="py-3 px-4">פרודוקטיביות אישית</td>
+        <td className="py-3 px-4 text-primary font-medium">שיתוף פעולה צוות-בינה מלאכותית</td>
       </tr>
     </tbody>
   </table>
 </div>
 
-### Staying Current
+### להישאר מעודכנים
 
-To keep your skills relevant:
+כדי לשמור על הרלוונטיות של המיומנויות שלכם:
 
-- **Experiment continuously** - Try new models and features as they release
-- **Follow research** - Stay aware of academic developments
-- **Join communities** - Learn from other practitioners
-- **Build projects** - Apply skills to real problems
-- **Teach others** - Solidify understanding by explaining
+- **התנסו ברציפות** - נסו מודלים ותכונות חדשים עם שחרורם
+- **עקבו אחר מחקר** - הישארו מודעים להתפתחויות אקדמיות
+- **הצטרפו לקהילות** - למדו ממתרגלים אחרים
+- **בנו פרויקטים** - יישמו מיומנויות על בעיות אמיתיות
+- **לַמדו אחרים** - חזקו הבנה על ידי הסבר
 
-## The Human Element
+## המרכיב האנושי
 
-### AI as Amplifier
+### בינה מלאכותית כמגבירה
 
-At its best, AI amplifies human capability rather than replacing it:
+במיטבה, בינה מלאכותית מגבירה יכולת אנושית במקום להחליף אותה:
 
-- **Experts become more expert** - AI handles routine work, humans focus on insight
-- **Creativity expands** - More ideas explored, more possibilities tested
-- **Access democratizes** - Capabilities once requiring specialists become available to all
-- **Collaboration deepens** - Human-AI teams exceed either alone
+- **מומחים נעשים יותר מומחים** - בינה מלאכותית מטפלת בעבודה שגרתית, בני אדם מתמקדים בתובנה
+- **יצירתיות מתרחבת** - יותר רעיונות נחקרים, יותר אפשרויות נבדקות
+- **גישה מתפשטת** - יכולות שפעם דרשו מומחים הופכות זמינות לכולם
+- **שיתוף פעולה מעמיק** - צוותי אדם-בינה מלאכותית עולים על כל אחד מהם לבד
 
-### The Irreplaceable Human
+### האנושי שאינו ניתן להחלפה
 
-Certain qualities remain distinctly human:
+תכונות מסוימות נשארות אנושיות באופן מובהק:
 
-- **Original experience** - Living in the world, having emotions and relationships
-- **Values and ethics** - Deciding what matters and what's right
-- **Accountability** - Taking responsibility for outcomes
-- **Meaning-making** - Understanding *why* something matters
-- **Genuine creativity** - True novelty born from unique perspective
+- **חוויה מקורית** - לחיות בעולם, להרגיש רגשות ולקיים מערכות יחסים
+- **ערכים ואתיקה** - להחליט מה חשוב ומה נכון
+- **אחריותיות** - לקחת אחריות על תוצאות
+- **יצירת משמעות** - להבין *למה* משהו חשוב
+- **יצירתיות אמיתית** - חידוש אמיתי הנולד מפרספקטיבה ייחודית
 
-<Callout type="tip" title="Your Unique Value">
-As AI handles more routine cognitive tasks, your unique value lies in judgment, creativity, domain expertise, and the human connections AI cannot replicate. Invest in what makes you irreplaceable.
+<Callout type="tip" title="הערך הייחודי שלכם">
+ככל שהבינה המלאכותית מטפלת ביותר משימות קוגניטיביות שגרתיות, הערך הייחודי שלכם טמון בשיקול דעת, יצירתיות, מומחיות תחומית והקשרים האנושיים שבינה מלאכותית אינה יכולה לשכפל. השקיעו במה שהופך אתכם לבלתי ניתנים להחלפה.
 </Callout>
 
-## Final Reflections
+## הרהורים אחרונים
 
-### What We've Learned
+### מה למדנו
 
-Throughout this book, we've explored:
+לאורך ספר זה, חקרנו:
 
-- **Foundations** - How AI models work and what makes prompts effective
-- **Techniques** - Role-based prompting, chain-of-thought, few-shot learning, and more
-- **Advanced strategies** - System prompts, prompt chaining, multimodal interaction
-- **Best practices** - Avoiding pitfalls, ethical considerations, optimization
-- **Applications** - Writing, programming, education, business, creativity, research
+- **יסודות** - כיצד מודלים של בינה מלאכותית עובדים ומה הופך פרומפטים לאפקטיביים
+- **טכניקות** - פרומפטים מבוססי תפקיד, שרשרת חשיבה, למידה מדוגמאות מועטות ועוד
+- **אסטרטגיות מתקדמות** - פרומפטים מערכתיים, שרשור פרומפטים, אינטראקציה מולטימודלית
+- **שיטות עבודה מומלצות** - הימנעות ממלכודות, שיקולים אתיים, אופטימיזציה
+- **יישומים** - כתיבה, תכנות, חינוך, עסקים, יצירתיות, מחקר
 
-These techniques share common threads:
+לטכניקות אלו חוטים משותפים:
 
-1. **Be clear and specific** - Know what you want and communicate it precisely
-2. **Provide context** - Give AI the information it needs
-3. **Structure your requests** - Organization improves outputs
-4. **Iterate and refine** - First attempts are starting points, not endpoints
-5. **Evaluate critically** - AI output requires human judgment
+1. **היו ברורים וספציפיים** - דעו מה אתם רוצים והעבירו זאת בדיוק
+2. **ספקו הקשר** - תנו לבינה המלאכותית את המידע שהיא צריכה
+3. **מבנו את הבקשות שלכם** - ארגון משפר פלטים
+4. **שפרו באופן איטרטיבי** - ניסיונות ראשונים הם נקודות התחלה, לא סוף
+5. **הערכה ביקורתית** - פלט בינה מלאכותית דורש שיקול דעת אנושי
 
-### The Art and Science
+### האמנות והמדע
 
-Prompting is both **art and science**:
+כתיבת פרומפטים היא גם **אמנות וגם מדע**:
 
-- **Science**: Testable hypotheses, measurable outcomes, reproducible techniques
-- **Art**: Intuition, creativity, knowing when to break the rules
+- **מדע**: השערות הניתנות לבדיקה, תוצאות מדידות, טכניקות שניתן לשחזר
+- **אמנות**: אינטואיציה, יצירתיות, לדעת מתי לשבור את הכללים
 
-The best practitioners combine rigorous methodology with creative experimentation. They test systematically but also trust their instincts. They follow best practices but know when to deviate.
+המתרגלים הטובים ביותר משלבים מתודולוגיה קפדנית עם ניסויים יצירתיים. הם בודקים באופן שיטתי אך גם סומכים על האינסטינקטים שלהם. הם עוקבים אחר שיטות עבודה מומלצות אך יודעים מתי לסטות.
 
-### A Call to Create
+### קריאה ליצור
 
-This book has given you tools. What you build with them is up to you.
+ספר זה נתן לכם כלים. מה שתבנו איתם תלוי בכם.
 
-- **Solve problems** that matter to you and others
-- **Create things** that didn't exist before
-- **Help people** do things they couldn't do alone
-- **Push boundaries** of what's possible
-- **Stay curious** as the field evolves
+- **פתרו בעיות** שחשובות לכם ולאחרים
+- **צרו דברים** שלא היו קיימים קודם
+- **עזרו לאנשים** לעשות דברים שלא יכלו לעשות לבד
+- **הרחיבו גבולות** של מה שאפשרי
+- **הישארו סקרנים** ככל שהתחום מתפתח
 
-The age of AI is just beginning. The most important applications haven't been invented yet. The most powerful techniques haven't been discovered. The future is being written now—by people like you, one prompt at a time.
+עידן הבינה המלאכותית רק מתחיל. היישומים החשובים ביותר עדיין לא הומצאו. הטכניקות החזקות ביותר עדיין לא נתגלו. העתיד נכתב עכשיו—על ידי אנשים כמוכם, פרומפט אחד בכל פעם.
 
-## Looking Ahead
+## מבט קדימה
 
 <TryIt compact prompt={`I've just finished reading "The Interactive Book of Prompting" and want to develop a personal practice plan.
 
@@ -420,26 +420,26 @@ Create a 30-day practice plan that:
 
 Include: Milestones, resources, and success criteria`} />
 
-<Callout type="tip" title="Keep Learning">
-Visit [prompts.chat](https://prompts.chat) for community prompts, new techniques, and to share your own discoveries. The best learning happens in community.
+<Callout type="tip" title="המשיכו ללמוד">
+בקרו ב-[prompts.chat](https://prompts.chat) לפרומפטים מהקהילה, טכניקות חדשות ולשתף את התגליות שלכם. הלמידה הטובה ביותר מתרחשת בקהילה.
 </Callout>
 
-## Summary
+## סיכום
 
-<Callout type="info" title="Key Takeaways">
-AI will continue evolving rapidly, but core skills of clear communication, critical thinking, and iterative refinement remain valuable. Focus on what makes you irreplaceable: judgment, creativity, ethics, and genuine human connection. The future of prompting is collaborative, multimodal, and integrated into larger systems. Stay curious, keep experimenting, and build things that matter.
+<Callout type="info" title="נקודות מפתח">
+הבינה המלאכותית תמשיך להתפתח במהירות, אך מיומנויות הליבה של תקשורת ברורה, חשיבה ביקורתית ושיפור איטרטיבי נשארות בעלות ערך. התמקדו במה שהופך אתכם לבלתי ניתנים להחלפה: שיקול דעת, יצירתיות, אתיקה וקשר אנושי אמיתי. עתיד כתיבת הפרומפטים הוא שיתופי, מולטימודלי ומשולב במערכות גדולות יותר. הישארו סקרנים, המשיכו להתנסות ובנו דברים שחשובים.
 </Callout>
 
 <Quiz 
-  question="What is the most important skill to develop as AI continues to evolve?"
+  question="מהי המיומנות החשובה ביותר לפתח ככל שהבינה המלאכותית ממשיכה להתפתח?"
   options={[
-    "Memorizing specific prompt templates",
-    "Learning every new model's specific syntax",
-    "Clear thinking and critical evaluation of AI output",
-    "Avoiding AI entirely to preserve human skills"
+    "שינון תבניות פרומפטים ספציפיות",
+    "לימוד התחביר הספציפי של כל מודל חדש",
+    "חשיבה ברורה והערכה ביקורתית של פלט בינה מלאכותית",
+    "הימנעות מוחלטת מבינה מלאכותית כדי לשמר מיומנויות אנושיות"
   ]}
   correctIndex={2}
-  explanation="While specific techniques change, the ability to think clearly about what you want, communicate it effectively, and critically evaluate AI output remains valuable regardless of how AI evolves. These meta-skills transfer across models and applications."
+  explanation="בעוד שטכניקות ספציפיות משתנות, היכולת לחשוב בבהירות על מה שאתם רוצים, לתקשר זאת באופן אפקטיבי ולהעריך באופן ביקורתי את פלט הבינה המלאכותית נשארת בעלת ערך ללא קשר לאופן שבו הבינה המלאכותית מתפתחת. מיומנויות-על אלו מועברות בין מודלים ויישומים."
 />
 
-Thank you for reading *The Interactive Book of Prompting*. Now go create something amazing.
+תודה שקראתם את *הספר האינטראקטיבי של כתיבת פרומפטים*. עכשיו לכו וצרו משהו מדהים.

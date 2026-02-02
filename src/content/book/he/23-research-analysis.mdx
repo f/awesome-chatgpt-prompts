@@ -1,323 +1,323 @@
-AI can accelerate research workflows from literature review to data analysis. This chapter covers prompting techniques for academic and professional research.
+בינה מלאכותית יכולה להאיץ תהליכי מחקר מסקירת ספרות ועד ניתוח נתונים. פרק זה עוסק בטכניקות הנחיה למחקר אקדמי ומקצועי.
 
-<Callout type="info" title="AI in Research">
-AI can assist with synthesis, analysis, and writing—but cannot replace critical thinking, ethical judgment, or domain expertise. Always verify claims and cite original sources.
+<Callout type="info" title="בינה מלאכותית במחקר">
+בינה מלאכותית יכולה לסייע בסינתזה, ניתוח וכתיבה—אך אינה יכולה להחליף חשיבה ביקורתית, שיקול דעת אתי או מומחיות תחומית. תמיד ודאו טענות וציינו מקורות מקוריים.
 </Callout>
 
-## Literature & Information Review
+## סקירת ספרות ומידע
 
-### Do's and Don'ts: Research Prompts
+### מה לעשות ומה לא: הנחיות מחקר
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Summarize this paper for me." }}
-  after={{ label: "✓ Structured request", content: "Summarize this paper for my literature review on machine learning in healthcare.\n\nProvide:\n1. Main thesis (1-2 sentences)\n2. Methodology\n3. Key findings (bullets)\n4. Limitations\n5. Relevance to my research\n\nReading level: Graduate student" }}
+  before={{ label: "❌ בקשה מעורפלת", content: "סכם לי את המאמר הזה." }}
+  after={{ label: "✓ בקשה מובנית", content: "סכם את המאמר הזה עבור סקירת הספרות שלי בנושא למידת מכונה בבריאות.\n\nספק:\n1. תזה מרכזית (1-2 משפטים)\n2. מתודולוגיה\n3. ממצאים עיקריים (נקודות)\n4. מגבלות\n5. רלוונטיות למחקר שלי\n\nרמת קריאה: סטודנט לתואר שני" }}
 />
 
-### Paper Summarization
+### סיכום מאמרים
 
-<TryIt compact prompt={`Summarize this academic paper:
+<TryIt compact prompt={`סכם את המאמר האקדמי הזה:
 
-[paper abstract or full text]
+[תקציר המאמר או הטקסט המלא]
 
-Provide:
-1. **Main thesis** - Central argument (1-2 sentences)
-2. **Methodology** - How they approached it
-3. **Key findings** - Most important results (bullet points)
-4. **Contributions** - What's new/significant
-5. **Limitations** - Acknowledged or apparent weaknesses
-6. **Relevance to [my research topic]** - How it connects
+ספק:
+1. **תזה מרכזית** - הטיעון המרכזי (1-2 משפטים)
+2. **מתודולוגיה** - כיצד ניגשו לנושא
+3. **ממצאים עיקריים** - התוצאות החשובות ביותר (נקודות)
+4. **תרומות** - מה חדש/משמעותי
+5. **מגבלות** - חולשות מוכרות או נראות לעין
+6. **רלוונטיות ל[נושא המחקר שלי]** - כיצד זה מתחבר
 
-Reading level: \${readingLevel:graduate}`} />
+רמת קריאה: \${readingLevel:תואר שני}`} />
 
-### Literature Synthesis
+### סינתזת ספרות
 
-<TryIt compact prompt={`Synthesize these papers on \${topic:the effectiveness of remote work}:
+<TryIt compact prompt={`סנתז את המאמרים האלה בנושא \${topic:יעילות העבודה מרחוק}:
 
-Paper 1: \${paper1:Smith 2021 - found productivity increased 15%}
-Paper 2: \${paper2:Jones 2022 - noted collaboration challenges}
-Paper 3: \${paper3:Chen 2023 - hybrid model showed best outcomes}
+מאמר 1: \${paper1:סמית 2021 - מצא שהפרודוקטיביות עלתה ב-15%}
+מאמר 2: \${paper2:ג'ונס 2022 - ציין אתגרי שיתוף פעולה}
+מאמר 3: \${paper3:צ'ן 2023 - המודל ההיברידי הראה את התוצאות הטובות ביותר}
 
-Analyze:
-1. **Common themes** - What do they agree on?
-2. **Contradictions** - Where do they disagree?
-3. **Gaps** - What's not addressed?
-4. **Evolution** - How has thinking progressed?
-5. **Synthesis** - Integrated understanding
+נתח:
+1. **נושאים משותפים** - במה הם מסכימים?
+2. **סתירות** - היכן הם חולקים?
+3. **פערים** - מה לא נדון?
+4. **התפתחות** - כיצד התקדמה החשיבה?
+5. **סינתזה** - הבנה משולבת
 
-Format as: Literature review paragraph suitable for \${outputType:thesis}`} />
+עצב כ: פסקת סקירת ספרות מתאימה ל\${outputType:תזה}`} />
 
-### Research Question Development
+### פיתוח שאלות מחקר
 
-<TryIt compact prompt={`Help me develop research questions for \${topic:AI adoption in healthcare}.
+<TryIt compact prompt={`עזור לי לפתח שאלות מחקר עבור \${topic:אימוץ בינה מלאכותית בבריאות}.
 
-Context:
-- Field: \${field:health informatics}
-- Current knowledge: \${currentKnowledge:AI tools exist but adoption is slow}
-- Gap identified: \${gap:limited understanding of physician resistance factors}
-- My interest: \${interest:organizational change management}
+הקשר:
+- תחום: \${field:אינפורמטיקה רפואית}
+- ידע נוכחי: \${currentKnowledge:קיימים כלי AI אך האימוץ איטי}
+- פער שזוהה: \${gap:הבנה מוגבלת של גורמי התנגדות רופאים}
+- התעניינות שלי: \${interest:ניהול שינויים ארגוניים}
 
-Generate:
-1. **Primary RQ** - Main question to answer
-2. **Sub-questions** - Supporting inquiries (3-4)
-3. **Hypotheses** - Testable predictions (if applicable)
+צור:
+1. **שאלת מחקר ראשית** - השאלה המרכזית לענות עליה
+2. **שאלות משנה** - חקירות תומכות (3-4)
+3. **השערות** - תחזיות ניתנות לבדיקה (אם רלוונטי)
 
-Criteria: Questions should be:
-- Answerable with available methods
-- Significant to the field
-- Appropriately scoped`} />
+קריטריונים: השאלות צריכות להיות:
+- ניתנות למענה בשיטות הזמינות
+- משמעותיות לתחום
+- בהיקף מתאים`} />
 
-## Data Analysis
+## ניתוח נתונים
 
-<Callout type="warning" title="AI Cannot Analyze Your Actual Data">
-AI can guide methodology and help interpret results, but it cannot access or process your actual datasets. Never paste sensitive research data into prompts. Use AI for **guidance**, not computation.
+<Callout type="warning" title="בינה מלאכותית אינה יכולה לנתח את הנתונים שלכם בפועל">
+בינה מלאכותית יכולה להנחות בנוגע למתודולוגיה ולעזור לפרש תוצאות, אך אינה יכולה לגשת או לעבד את מערכי הנתונים שלכם בפועל. לעולם אל תדביקו נתוני מחקר רגישים בהנחיות. השתמשו בבינה מלאכותית **להנחיה**, לא לחישוב.
 </Callout>
 
-### Statistical Analysis Guidance
+### הנחיה לניתוח סטטיסטי
 
-<TryIt compact prompt={`Help me analyze this data:
+<TryIt compact prompt={`עזור לי לנתח את הנתונים האלה:
 
-Data description:
-- Variables: \${variables:age (continuous), treatment group (categorical: A/B/C), outcome score (continuous)}
-- Sample size: \${sampleSize:n=150 (50 per group)}
-- Research question: \${researchQuestion:Does treatment type affect outcome scores?}
-- Data characteristics: \${characteristics:normally distributed, no missing values}
+תיאור הנתונים:
+- משתנים: \${variables:גיל (רציף), קבוצת טיפול (קטגורית: A/B/C), ציון תוצאה (רציף)}
+- גודל מדגם: \${sampleSize:n=150 (50 בכל קבוצה)}
+- שאלת מחקר: \${researchQuestion:האם סוג הטיפול משפיע על ציוני התוצאה?}
+- מאפייני הנתונים: \${characteristics:התפלגות נורמלית, ללא ערכים חסרים}
 
-Advise on:
-1. **Appropriate tests** - Which statistical tests to use
-2. **Assumptions to check** - Prerequisites
-3. **How to interpret results** - What different outcomes mean
-4. **Effect size** - Practical significance
-5. **Reporting** - How to present findings
+ייעץ לגבי:
+1. **מבחנים מתאימים** - אילו מבחנים סטטיסטיים להשתמש
+2. **הנחות לבדיקה** - תנאים מוקדמים
+3. **כיצד לפרש תוצאות** - מה משמעות התוצאות השונות
+4. **גודל אפקט** - משמעות מעשית
+5. **דיווח** - כיצד להציג ממצאים
 
-Note: Guide my analysis, don't fabricate results.`} />
+הערה: הנחה את הניתוח שלי, אל תמציא תוצאות.`} />
 
-### Qualitative Analysis
+### ניתוח איכותני
 
-<TryIt compact prompt={`Help me analyze these qualitative responses:
+<TryIt compact prompt={`עזור לי לנתח את התשובות האיכותניות האלה:
 
-Responses:
-\${responses:paste interview excerpts or survey responses here}
+תשובות:
+\${responses:הדביקו קטעי ראיון או תשובות סקר כאן}
 
-Using \${method:thematic analysis}:
+באמצעות \${method:ניתוח תמטי}:
 
-1. **Initial codes** - Identify recurring concepts
-2. **Categories** - Group related codes
-3. **Themes** - Overarching patterns
-4. **Relationships** - How themes connect
-5. **Representative quotes** - Evidence for each theme
+1. **קודים ראשוניים** - זיהוי מושגים חוזרים
+2. **קטגוריות** - קיבוץ קודים קשורים
+3. **תמות** - דפוסים מקיפים
+4. **יחסים** - כיצד התמות מתחברות
+5. **ציטוטים מייצגים** - עדויות לכל תמה
 
-Maintain: Participant voice and context`} />
+שמור על: קול המשתתף וההקשר`} />
 
-### Data Interpretation
+### פרשנות נתונים
 
-<TryIt compact prompt={`Help me interpret these findings:
+<TryIt compact prompt={`עזור לי לפרש את הממצאים האלה:
 
-Results:
-\${results:paste statistical output or data summary here}
+תוצאות:
+\${results:הדביקו פלט סטטיסטי או סיכום נתונים כאן}
 
-Context:
-- Research question: \${researchQuestion:Does X predict Y?}
-- Hypothesis: \${hypothesis:X positively predicts Y}
-- Expected results: \${expectedResults:significant positive correlation}
+הקשר:
+- שאלת מחקר: \${researchQuestion:האם X מנבא Y?}
+- השערה: \${hypothesis:X מנבא חיובית Y}
+- תוצאות צפויות: \${expectedResults:מתאם חיובי מובהק}
 
-Provide:
-1. **Plain language interpretation** - What does this mean?
-2. **Statistical significance** - What the p-values tell us
-3. **Practical significance** - Real-world meaning
-4. **Comparison to literature** - How does this fit?
-5. **Alternative explanations** - Other interpretations
-6. **Limitations of interpretation**`} />
+ספק:
+1. **פרשנות בשפה פשוטה** - מה זה אומר?
+2. **מובהקות סטטיסטית** - מה אומרים לנו ערכי ה-p
+3. **משמעות מעשית** - משמעות בעולם האמיתי
+4. **השוואה לספרות** - כיצד זה מתאים?
+5. **הסברים חלופיים** - פרשנויות אחרות
+6. **מגבלות הפרשנות**`} />
 
-## Structured Analysis Frameworks
+## מסגרות ניתוח מובנות
 
-### PESTLE Analysis
+### ניתוח PESTLE
 
-<TryIt compact prompt={`Conduct a PESTLE analysis for \${subject:electric vehicle industry in Europe}.
+<TryIt compact prompt={`ערוך ניתוח PESTLE עבור \${subject:תעשיית הרכב החשמלי באירופה}.
 
-**Political** factors:
-- Government policies, regulations, political stability
+גורמים **פוליטיים**:
+- מדיניות ממשלתית, רגולציה, יציבות פוליטית
 
-**Economic** factors:
-- Economic growth, inflation, exchange rates, unemployment
+גורמים **כלכליים**:
+- צמיחה כלכלית, אינפלציה, שערי חליפין, אבטלה
 
-**Social** factors:
-- Demographics, cultural trends, lifestyle changes
+גורמים **חברתיים**:
+- דמוגרפיה, מגמות תרבותיות, שינויי אורח חיים
 
-**Technological** factors:
-- Innovation, R&D, automation, technology changes
+גורמים **טכנולוגיים**:
+- חדשנות, מו"פ, אוטומציה, שינויים טכנולוגיים
 
-**Legal** factors:
-- Legislation, regulatory bodies, employment law
+גורמים **משפטיים**:
+- חקיקה, גופי רגולציה, דיני עבודה
 
-**Environmental** factors:
-- Climate, sustainability, environmental regulations
+גורמים **סביבתיים**:
+- אקלים, קיימות, תקנות סביבתיות
 
-For each: Current state + trends + implications`} />
+לכל אחד: מצב נוכחי + מגמות + השלכות`} />
 
-### Root Cause Analysis
+### ניתוח שורש הבעיה
 
-<TryIt compact prompt={`Perform root cause analysis for \${problem:customer churn increased 20% last quarter}.
+<TryIt compact prompt={`בצע ניתוח שורש הבעיה עבור \${problem:נטישת לקוחות עלתה ב-20% ברבעון האחרון}.
 
-Problem statement:
-\${problemStatement:Monthly churn rate rose from 3% to 3.6% between Q3 and Q4}
+הצהרת הבעיה:
+\${problemStatement:שיעור הנטישה החודשי עלה מ-3% ל-3.6% בין Q3 ל-Q4}
 
-Using 5 Whys:
-1. Why? First level cause
-   2. Why? Deeper cause
-      3. Why? Deeper still
-         4. Why? Approaching root
-            5. Why? Root cause
+באמצעות 5 למה:
+1. למה? סיבה ברמה ראשונה
+   2. למה? סיבה עמוקה יותר
+      3. למה? עמוק עוד יותר
+         4. למה? מתקרבים לשורש
+            5. למה? שורש הבעיה
 
-Alternative: Fishbone diagram categories
-- People
-- Process
-- Equipment
-- Materials
-- Environment
-- Management
+חלופה: קטגוריות תרשים עצם דג
+- אנשים
+- תהליך
+- ציוד
+- חומרים
+- סביבה
+- ניהול
 
-Provide: Root cause(s) + recommended actions`} />
+ספק: שורש הבעיה + פעולות מומלצות`} />
 
-### Gap Analysis
+### ניתוח פערים
 
-<TryIt compact prompt={`Conduct a gap analysis for \${subject:our customer support operations}.
+<TryIt compact prompt={`ערוך ניתוח פערים עבור \${subject:פעילות תמיכת הלקוחות שלנו}.
 
-**Current State:**
-- \${currentState:Average response time 24 hours, CSAT 3.2/5}
+**מצב נוכחי:**
+- \${currentState:זמן תגובה ממוצע 24 שעות, CSAT 3.2/5}
 
-**Desired State:**
-- \${desiredState:Response time under 4 hours, CSAT 4.5/5}
+**מצב רצוי:**
+- \${desiredState:זמן תגובה מתחת ל-4 שעות, CSAT 4.5/5}
 
-**Gap Identification:**
-| Area | Current | Desired | Gap | Priority |
+**זיהוי פערים:**
+| תחום | נוכחי | רצוי | פער | עדיפות |
 |------|---------|---------|-----|----------|
-| ... | ... | ... | ... | H/M/L |
+| ... | ... | ... | ... | ג/ב/נ |
 
-**Action Plan:**
-For each high-priority gap:
-- Specific actions
-- Resources needed
-- Timeline
-- Success metrics`} />
+**תוכנית פעולה:**
+לכל פער בעדיפות גבוהה:
+- פעולות ספציפיות
+- משאבים נדרשים
+- לוח זמנים
+- מדדי הצלחה`} />
 
-## Academic Writing Support
+## תמיכה בכתיבה אקדמית
 
-### Argument Structure
+### מבנה טיעון
 
-<TryIt compact prompt={`Help me structure an argument for \${topic:why remote work should become permanent policy}.
+<TryIt compact prompt={`עזור לי לבנות טיעון עבור \${topic:מדוע עבודה מרחוק צריכה להפוך למדיניות קבועה}.
 
-Main claim: \${thesis:Organizations should adopt permanent remote/hybrid policies for knowledge workers}
+טענה מרכזית: \${thesis:ארגונים צריכים לאמץ מדיניות קבועה של עבודה מרחוק/היברידית לעובדי ידע}
 
-Required:
-1. **Premises** - Supporting claims that lead to conclusion
-2. **Evidence** - Data/sources for each premise
-3. **Counterarguments** - Opposing views
-4. **Rebuttals** - Responses to counterarguments
-5. **Logical flow** - How it all connects
+נדרש:
+1. **הנחות יסוד** - טענות תומכות שמובילות למסקנה
+2. **ראיות** - נתונים/מקורות לכל הנחה
+3. **טענות נגד** - דעות מנוגדות
+4. **הפרכות** - תשובות לטענות הנגד
+5. **זרימה לוגית** - כיצד הכל מתחבר
 
-Check for:
-- Logical fallacies
-- Unsupported claims
-- Gaps in reasoning`} />
+בדוק:
+- כשלים לוגיים
+- טענות לא מגובות
+- פערים בהיגיון`} />
 
-### Methods Section
+### פרק שיטות
 
-<TryIt compact prompt={`Help me write a methods section for:
+<TryIt compact prompt={`עזור לי לכתוב פרק שיטות עבור:
 
-Study type: \${studyType:survey}
-Participants: \${participants:200 undergraduate students, convenience sampling}
-Materials: \${materials:online questionnaire with Likert scales}
-Procedure: \${procedure:participants completed 20-minute survey online}
-Analysis: \${analysis:descriptive statistics and regression analysis}
+סוג המחקר: \${studyType:סקר}
+משתתפים: \${participants:200 סטודנטים לתואר ראשון, דגימת נוחות}
+חומרים: \${materials:שאלון מקוון עם סולמות ליקרט}
+נוהל: \${procedure:משתתפים מילאו סקר מקוון של 20 דקות}
+ניתוח: \${analysis:סטטיסטיקה תיאורית וניתוח רגרסיה}
 
-Standards: Follow \${standards:APA 7th edition} guidelines
-Include: Enough detail for replication
-Tone: Passive voice, past tense`} />
+תקנים: עקוב אחר הנחיות \${standards:APA מהדורה 7}
+כלול: מספיק פרטים לשחזור
+טון: סביל, עבר`} />
 
-### Discussion Section
+### פרק דיון
 
-<TryIt compact prompt={`Help me write a discussion section.
+<TryIt compact prompt={`עזור לי לכתוב פרק דיון.
 
-Key findings:
-\${findings:1. Significant positive correlation (r=0.45) between X and Y\n2. No significant difference between groups on secondary measure}
+ממצאים עיקריים:
+\${findings:1. מתאם חיובי מובהק (r=0.45) בין X ל-Y\n2. אין הבדל מובהק בין קבוצות במדד המשני}
 
-Structure:
-1. **Summary** - Brief restatement of main findings
-2. **Interpretation** - What the findings mean
-3. **Context** - How findings relate to existing literature
-4. **Implications** - Theoretical and practical significance
-5. **Limitations** - Study weaknesses
-6. **Future directions** - What research should follow
-7. **Conclusion** - Take-home message
+מבנה:
+1. **סיכום** - חזרה קצרה על הממצאים העיקריים
+2. **פרשנות** - מה הממצאים אומרים
+3. **הקשר** - כיצד הממצאים מתייחסים לספרות הקיימת
+4. **השלכות** - משמעות תיאורטית ומעשית
+5. **מגבלות** - חולשות המחקר
+6. **כיוונים עתידיים** - איזה מחקר צריך להמשיך
+7. **מסקנה** - המסר המרכזי
 
-Avoid: Overstating findings or introducing new results`} />
+הימנע מ: הגזמה בממצאים או הצגת תוצאות חדשות`} />
 
-## Critical Analysis
+## ניתוח ביקורתי
 
-### Source Evaluation
+### הערכת מקורות
 
-<TryIt compact prompt={`Evaluate this source for academic use:
+<TryIt compact prompt={`הערך את המקור הזה לשימוש אקדמי:
 
-Source: \${source:paste citation or link here}
-Content summary: \${summary:brief description of what the source claims}
+מקור: \${source:הדביקו ציטוט או קישור כאן}
+סיכום תוכן: \${summary:תיאור קצר של מה המקור טוען}
 
-Assess using CRAAP criteria:
-- **Currency**: When published? Updated? Current enough?
-- **Relevance**: Relates to my topic? Appropriate level?
-- **Authority**: Author credentials? Publisher reputation?
-- **Accuracy**: Supported by evidence? Peer-reviewed?
-- **Purpose**: Why was it written? Bias evident?
+הערך באמצעות קריטריוני CRAAP:
+- **עדכניות**: מתי פורסם? עודכן? עדכני מספיק?
+- **רלוונטיות**: קשור לנושא שלי? רמה מתאימה?
+- **סמכות**: הסמכות המחבר? מוניטין המו"ל?
+- **דיוק**: נתמך בראיות? עבר ביקורת עמיתים?
+- **מטרה**: למה נכתב? יש הטיה?
 
-Verdict: Highly credible / Use with caution / Avoid
-How to use: Recommendations for incorporation`} />
+פסיקה: אמין מאוד / להשתמש בזהירות / להימנע
+כיצד להשתמש: המלצות לשילוב`} />
 
-### Argument Analysis
+### ניתוח טיעון
 
-<TryIt compact prompt={`Analyze the argument in this text:
+<TryIt compact prompt={`נתח את הטיעון בטקסט הזה:
 
-\${text:paste the text you want to analyze}
+\${text:הדביקו את הטקסט שברצונכם לנתח}
 
-Identify:
-1. **Main claim** - What's being argued
-2. **Supporting evidence** - What backs it up
-3. **Assumptions** - Unstated premises
-4. **Logical structure** - How conclusion follows
-5. **Strengths** - What's compelling
-6. **Weaknesses** - Logical gaps or fallacies
-7. **Alternative interpretations**
+זהה:
+1. **טענה מרכזית** - מה נטען
+2. **ראיות תומכות** - מה מגבה זאת
+3. **הנחות** - הנחות לא מפורשות
+4. **מבנה לוגי** - כיצד המסקנה נובעת
+5. **חוזקות** - מה משכנע
+6. **חולשות** - פערים לוגיים או כשלים
+7. **פרשנויות חלופיות**
 
-Provide: Fair, balanced assessment`} />
+ספק: הערכה הוגנת ומאוזנת`} />
 
-## Prompt Templates from prompts.chat
+## תבניות הנחיות מ-prompts.chat
 
-### Act as a Research Assistant
+### פעל כעוזר מחקר
 
-<TryIt compact prompt={`I want you to act as a research assistant. Help me explore topics, find information, synthesize sources, and develop arguments. Ask clarifying questions, suggest relevant areas to investigate, and help me think critically about evidence. Be thorough but acknowledge the limits of your knowledge.`} />
+<TryIt compact prompt={`אני רוצה שתפעל כעוזר מחקר. עזור לי לחקור נושאים, למצוא מידע, לסנתז מקורות ולפתח טיעונים. שאל שאלות הבהרה, הצע תחומים רלוונטיים לחקירה, ועזור לי לחשוב באופן ביקורתי על ראיות. היה יסודי אך הכר במגבלות הידע שלך.`} />
 
-### Act as a Data Analyst
+### פעל כמנתח נתונים
 
-<TryIt compact prompt={`I want you to act as a data analyst. I will describe datasets and research questions, and you will suggest analysis approaches, help interpret results, and identify potential issues. Focus on sound methodology and clear communication of findings.`} />
+<TryIt compact prompt={`אני רוצה שתפעל כמנתח נתונים. אתאר מערכי נתונים ושאלות מחקר, ואתה תציע גישות ניתוח, תעזור לפרש תוצאות ותזהה בעיות פוטנציאליות. התמקד במתודולוגיה נכונה ובתקשורת ברורה של ממצאים.`} />
 
-### Act as a Peer Reviewer
+### פעל כסוקר עמיתים
 
-<TryIt compact prompt={`I want you to act as an academic peer reviewer. I will share manuscripts or sections, and you will provide constructive feedback on methodology, argument, writing, and contribution to the field. Be rigorous but supportive, noting both strengths and areas for improvement.`} />
+<TryIt compact prompt={`אני רוצה שתפעל כסוקר עמיתים אקדמי. אשתף כתבי יד או קטעים, ואתה תספק משוב בונה על מתודולוגיה, טיעון, כתיבה ותרומה לתחום. היה קפדני אך תומך, וציין הן חוזקות והן תחומים לשיפור.`} />
 
-## Summary
+## סיכום
 
-<Callout type="tip" title="Key Techniques">
-Clearly state research context and goals, specify the analytical framework to use, request acknowledgment of limitations, ask for evidence-based reasoning, and maintain academic rigor and honesty.
+<Callout type="tip" title="טכניקות מפתח">
+ציינו בבירור הקשר ומטרות מחקר, פרטו את המסגרת האנליטית לשימוש, בקשו הכרה במגבלות, דרשו חשיבה מבוססת ראיות, ושמרו על קפדנות ויושרה אקדמית.
 </Callout>
 
 <Quiz 
-  question="What's the most important thing to remember when using AI for research?"
+  question="מה הדבר החשוב ביותר לזכור בעת שימוש בבינה מלאכותית למחקר?"
   options={[
-    "AI can replace the need for primary sources",
-    "AI analysis is always accurate and up-to-date",
-    "Always verify AI claims independently and cite original sources",
-    "AI can access and analyze your actual datasets"
+    "בינה מלאכותית יכולה להחליף את הצורך במקורות ראשוניים",
+    "ניתוח של בינה מלאכותית תמיד מדויק ועדכני",
+    "תמיד ודאו טענות בינה מלאכותית באופן עצמאי וציינו מקורות מקוריים",
+    "בינה מלאכותית יכולה לגשת ולנתח את מערכי הנתונים שלכם בפועל"
   ]}
   correctIndex={2}
-  explanation="AI can assist with synthesis and structure, but it can hallucinate citations, have outdated information, and cannot access your actual data. Always verify claims against primary sources and maintain academic integrity."
+  explanation="בינה מלאכותית יכולה לסייע בסינתזה ובמבנה, אך היא יכולה להזות ציטוטים, להכיל מידע מיושן, ואינה יכולה לגשת לנתונים שלכם בפועל. תמיד ודאו טענות מול מקורות ראשוניים ושמרו על יושרה אקדמית."
 />
 
-Remember: AI can assist research but cannot replace critical thinking, ethical judgment, or domain expertise. Always verify claims independently.
+זכרו: בינה מלאכותית יכולה לסייע במחקר אך אינה יכולה להחליף חשיבה ביקורתית, שיקול דעת אתי או מומחיות תחומית. תמיד ודאו טענות באופן עצמאי.

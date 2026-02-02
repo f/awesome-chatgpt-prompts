@@ -1,326 +1,326 @@
-AI is a powerful creative collaborator. This chapter covers prompting techniques for visual arts, music, game design, and other creative domains.
+בינה מלאכותית היא שותפה יצירתית רבת עוצמה. פרק זה עוסק בטכניקות הנחיה לאמנות חזותית, מוזיקה, עיצוב משחקים ותחומים יצירתיים נוספים.
 
-<Callout type="info" title="AI as Creative Partner">
-AI expands your creative possibilities—use it to explore variations, overcome blocks, and generate options. The creative vision and final decisions remain yours.
+<Callout type="info" title="בינה מלאכותית כשותפה יצירתית">
+בינה מלאכותית מרחיבה את האפשרויות היצירתיות שלך—השתמש בה לחקירת וריאציות, התגברות על חסימות יצירתיות ויצירת אפשרויות. החזון היצירתי וההחלטות הסופיות נשארים שלך.
 </Callout>
 
-## Visual Art & Design
+## אמנות חזותית ועיצוב
 
-### Do's and Don'ts: Image Prompts
+### מה לעשות ומה לא לעשות: הנחיות לתמונות
 
 <Compare 
-  before={{ label: "❌ Vague prompt", content: "A wizard in a library" }}
-  after={{ label: "✓ Rich description", content: "A wise elderly wizard reading an ancient tome, sitting in a tower library at sunset, fantasy art style, warm golden lighting, contemplative mood, highly detailed, 4K, by Greg Rutkowski" }}
+  before={{ label: "❌ הנחיה מעורפלת", content: "קוסם בספרייה" }}
+  after={{ label: "✓ תיאור עשיר", content: "קוסם זקן וחכם קורא בכרך עתיק, יושב בספריית מגדל בשקיעה, סגנון אמנות פנטזיה, תאורה זהובה וחמה, אווירה מהורהרת, מפורט מאוד, 4K, מאת Greg Rutkowski" }}
 />
 
-### Image Prompt Crafting
+### יצירת הנחיות לתמונות
 
-When working with image generation models (DALL-E, Midjourney, Stable Diffusion):
+בעבודה עם מודלים ליצירת תמונות (DALL-E, Midjourney, Stable Diffusion):
 
-<TryIt compact prompt={`Create an image prompt for [concept].
+<TryIt compact prompt={`צור הנחיית תמונה עבור [מושג].
 
-Structure:
-[Subject] + [Action/Pose] + [Setting/Background] + [Style] + 
-[Lighting] + [Mood] + [Technical specs]
+מבנה:
+[נושא] + [פעולה/תנוחה] + [סביבה/רקע] + [סגנון] + 
+[תאורה] + [אווירה] + [מפרטים טכניים]
 
-Example:
-"A wise elderly wizard reading an ancient tome, sitting in a 
-tower library at sunset, fantasy art style, warm golden lighting, 
-contemplative mood, highly detailed, 4K"`} />
+דוגמה:
+"קוסם זקן וחכם קורא בכרך עתיק, יושב בספריית 
+מגדל בשקיעה, סגנון אמנות פנטזיה, תאורה זהובה וחמה, 
+אווירה מהורהרת, מפורט מאוד, 4K"`} />
 
-### Art Direction
+### הנחיה אמנותית
 
-<TryIt compact prompt={`Describe artwork for \${project:fantasy book cover}.
+<TryIt compact prompt={`תאר יצירת אמנות עבור \${project:עטיפת ספר פנטזיה}.
 
-Include:
-1. **Composition** - arrangement of elements
-2. **Color palette** - specific colors and their relationships
-3. **Style reference** - similar artists/works/movements
-4. **Focal point** - where the eye should be drawn
-5. **Mood/Atmosphere** - emotional quality
-6. **Technical approach** - medium, technique
+כלול:
+1. **קומפוזיציה** - סידור האלמנטים
+2. **לוח צבעים** - צבעים ספציפיים והיחסים ביניהם
+3. **התייחסות לסגנון** - אמנים/עבודות/תנועות דומות
+4. **נקודת מוקד** - לאן העין צריכה להימשך
+5. **אווירה/אטמוספירה** - איכות רגשית
+6. **גישה טכנית** - מדיום, טכניקה
 
-Purpose: \${purpose:illustration for book cover}`} />
+מטרה: \${purpose:איור לעטיפת ספר}`} />
 
-### Design Critique
+### ביקורת עיצוב
 
-<TryIt compact prompt={`Critique this design from a professional perspective.
+<TryIt compact prompt={`בקר את העיצוב הזה מנקודת מבט מקצועית.
 
-Design: \${design:a landing page with hero section, feature grid, and testimonials}
-Context: \${context:SaaS product for project management}
+עיצוב: \${design:דף נחיתה עם קטע ראשי, רשת תכונות והמלצות}
+הקשר: \${context:מוצר SaaS לניהול פרויקטים}
 
-Evaluate:
-1. **Visual hierarchy** - Is importance clear?
-2. **Balance** - Is it visually stable?
-3. **Contrast** - Do elements stand out appropriately?
-4. **Alignment** - Is it organized?
-5. **Repetition** - Is there consistency?
-6. **Proximity** - Are related items grouped?
+הערך:
+1. **היררכיה חזותית** - האם החשיבות ברורה?
+2. **איזון** - האם זה יציב ויזואלית?
+3. **ניגודיות** - האם האלמנטים בולטים כראוי?
+4. **יישור** - האם זה מאורגן?
+5. **חזרתיות** - האם יש עקביות?
+6. **קרבה** - האם פריטים קשורים מקובצים?
 
-Provide:
-- Specific strengths
-- Areas for improvement
-- Actionable suggestions`} />
+ספק:
+- חוזקות ספציפיות
+- תחומים לשיפור
+- הצעות מעשיות`} />
 
-## Creative Writing
+## כתיבה יצירתית
 
-<Callout type="tip" title="Creative Constraint Principle">
-**Constraints fuel creativity.** A prompt like "write anything" produces generic results. Specific constraints like genre, tone, and structure force unexpected, interesting solutions.
+<Callout type="tip" title="עקרון האילוץ היצירתי">
+**אילוצים מזינים יצירתיות.** הנחיה כמו "כתוב משהו" מייצרת תוצאות גנריות. אילוצים ספציפיים כמו ז'אנר, טון ומבנה מכריחים פתרונות בלתי צפויים ומעניינים.
 </Callout>
 
-### Worldbuilding
+### בניית עולמות
 
-<TryIt compact prompt={`Help me build a world for \${project:a fantasy novel}.
+<TryIt compact prompt={`עזור לי לבנות עולם עבור \${project:רומן פנטזיה}.
 
-Genre: \${genre:dark fantasy}
-Scope: \${scope:a kingdom}
+ז'אנר: \${genre:פנטזיה אפלה}
+היקף: \${scope:ממלכה}
 
-Develop:
-1. **Geography** - physical environment
-2. **History** - key events that shaped this world
-3. **Culture** - customs, values, daily life
-4. **Power structures** - who rules, how
-5. **Economy** - how people survive
-6. **Conflict** - sources of tension
-7. **Unique element** - what makes this world special
+פתח:
+1. **גאוגרפיה** - סביבה פיזית
+2. **היסטוריה** - אירועים מרכזיים שעיצבו את העולם הזה
+3. **תרבות** - מנהגים, ערכים, חיי יומיום
+4. **מבני כוח** - מי שולט, איך
+5. **כלכלה** - איך אנשים מתקיימים
+6. **קונפליקט** - מקורות מתח
+7. **אלמנט ייחודי** - מה הופך את העולם הזה למיוחד
 
-Start with broad strokes, then detail one aspect deeply.`} />
+התחל עם קווים כלליים, ואז פרט היבט אחד לעומק.`} />
 
-### Plot Development
+### פיתוח עלילה
 
-<TryIt compact prompt={`Help me develop a plot for \${storyConcept:a heist gone wrong}.
+<TryIt compact prompt={`עזור לי לפתח עלילה עבור \${storyConcept:שוד שהשתבש}.
 
-Genre: \${genre:thriller}
-Tone: \${tone:dark with moments of dark humor}
-Length: \${length:novel}
+ז'אנר: \${genre:מותחן}
+טון: \${tone:אפל עם רגעים של הומור שחור}
+אורך: \${length:רומן}
 
-Using \${structure:three-act} structure:
+באמצעות מבנה \${structure:שלוש מערכות}:
 
-1. **Setup** - world, character, normal life
-2. **Inciting incident** - what disrupts normalcy
-3. **Rising action** - escalating challenges
-4. **Midpoint** - major shift or revelation
-5. **Crisis** - darkest moment
-6. **Climax** - confrontation
-7. **Resolution** - new normal
+1. **הצגה** - עולם, דמות, חיים רגילים
+2. **אירוע מעורר** - מה משבש את השגרה
+3. **עלייה בפעולה** - אתגרים הולכים וגוברים
+4. **נקודת אמצע** - תפנית או גילוי משמעותי
+5. **משבר** - הרגע האפל ביותר
+6. **שיא** - עימות
+7. **פתרון** - מציאות חדשה
 
-For each beat, suggest specific scenes.`} />
+לכל נקודה, הצע סצנות ספציפיות.`} />
 
-### Dialogue Writing
+### כתיבת דיאלוגים
 
-<TryIt compact prompt={`Write dialogue between \${characters:two siblings} about \${topic:their estranged father returning}.
+<TryIt compact prompt={`כתוב דיאלוג בין \${characters:שני אחים} על \${topic:חזרתו של אביהם המנוכר}.
 
-Character A: \${characterA:older sister, protective, pragmatic, wants to move on}
-Character B: \${characterB:younger brother, hopeful, emotional, wants to reconnect}
-Relationship: \${relationship:close but with different coping styles}
-Subtext: \${subtext:unspoken resentment about who bore more burden}
+דמות א': \${characterA:אחות בכורה, מגוננת, פרגמטית, רוצה להמשיך הלאה}
+דמות ב': \${characterB:אח צעיר, מלא תקווה, רגשי, רוצה להתחבר מחדש}
+מערכת יחסים: \${relationship:קרובים אך עם סגנונות התמודדות שונים}
+סאבטקסט: \${subtext:טינה לא מדוברת על מי נשא בנטל הגדול יותר}
 
-Guidelines:
-- Each character has distinct voice
-- Dialogue reveals character, not just information
-- Include beats (actions/reactions)
-- Build tension or develop relationship
-- Show, don't tell emotions`} />
+הנחיות:
+- לכל דמות קול ייחודי
+- הדיאלוג חושף דמות, לא רק מידע
+- כלול beats (פעולות/תגובות)
+- בנה מתח או פתח את מערכת היחסים
+- הראה, אל תספר רגשות`} />
 
-## Music & Audio
+## מוזיקה ואודיו
 
-### Song Structure
+### מבנה שיר
 
-<TryIt compact prompt={`Help me structure a song.
+<TryIt compact prompt={`עזור לי לבנות מבנה לשיר.
 
-Genre: \${genre:indie folk}
-Mood: \${mood:bittersweet nostalgia}
-Tempo: \${tempo:moderate, around 90 BPM}
-Theme/Message: \${theme:looking back on a hometown you've outgrown}
+ז'אנר: \${genre:אינדי פולק}
+אווירה: \${mood:נוסטלגיה מתוקמרת}
+קצב: \${tempo:מתון, בסביבות 90 BPM}
+נושא/מסר: \${theme:מבט לאחור על עיר מולדת שגדלת ממנה}
 
-Provide:
-1. **Structure** - verse/chorus/bridge arrangement
-2. **Verse 1** - lyrical concept, 4-8 lines
-3. **Chorus** - hook concept, 4 lines
-4. **Verse 2** - development, 4-8 lines
-5. **Bridge** - contrast/shift, 4 lines
-6. **Chord progression suggestion**
-7. **Melodic direction notes**`} />
+ספק:
+1. **מבנה** - סידור בית/פזמון/גשר
+2. **בית 1** - קונספט לירי, 4-8 שורות
+3. **פזמון** - קונספט הוק, 4 שורות
+4. **בית 2** - פיתוח, 4-8 שורות
+5. **גשר** - ניגוד/שינוי, 4 שורות
+6. **הצעה לרצף אקורדים**
+7. **הערות לכיוון מלודי**`} />
 
-### Sound Design Description
+### תיאור עיצוב צליל
 
-<TryIt compact prompt={`Describe a sound design for \${scene:a character entering an abandoned space station}.
+<TryIt compact prompt={`תאר עיצוב צליל עבור \${scene:דמות נכנסת לתחנת חלל נטושה}.
 
-Context: \${context:protagonist discovers the station has been empty for decades}
-Emotion to evoke: \${emotion:eerie wonder mixed with dread}
-Medium: \${medium:video game}
+הקשר: \${context:הגיבור מגלה שהתחנה הייתה ריקה עשרות שנים}
+רגש לעורר: \${emotion:פליאה מחרידה מעורבת בחרדה}
+מדיום: \${medium:משחק וידאו}
 
-Layer by layer:
-1. **Foundation** - ambient/background
-2. **Mid-ground** - environmental sounds
-3. **Foreground** - focal sounds
-4. **Accents** - punctuation sounds
-5. **Music** - score suggestions
+שכבה אחר שכבה:
+1. **בסיס** - אמביינט/רקע
+2. **אמצע** - צלילי סביבה
+3. **חזית** - צלילים מרכזיים
+4. **הדגשות** - צלילי פיסוק
+5. **מוזיקה** - הצעות לפסקול
 
-Describe sounds in evocative terms, not just names.`} />
+תאר צלילים במונחים מעוררים, לא רק שמות.`} />
 
-## Game Design
+## עיצוב משחקים
 
-### Game Mechanic Design
+### עיצוב מכניקת משחק
 
-<TryIt compact prompt={`Design a game mechanic for \${gameType:a puzzle platformer}.
+<TryIt compact prompt={`עצב מכניקת משחק עבור \${gameType:פלטפורמר פאזלים}.
 
-Core loop: \${coreLoop:manipulate gravity to solve spatial puzzles}
-Player motivation: \${motivation:mastery and discovery}
-Skill involved: \${skill:spatial reasoning and timing}
+לולאת ליבה: \${coreLoop:מניפולציה של כוח המשיכה לפתרון חידות מרחביות}
+מוטיבציית השחקן: \${motivation:שליטה וגילוי}
+מיומנות מעורבת: \${skill:חשיבה מרחבית ותזמון}
 
-Describe:
-1. **The mechanic** - how it works
-2. **Player input** - what they control
-3. **Feedback** - how they know the result
-4. **Progression** - how it evolves/deepens
-5. **Balance considerations**
-6. **Edge cases** - unusual scenarios`} />
+תאר:
+1. **המכניקה** - איך היא עובדת
+2. **קלט השחקן** - מה הוא שולט בו
+3. **משוב** - איך הוא יודע את התוצאה
+4. **התקדמות** - איך היא מתפתחת/מעמיקה
+5. **שיקולי איזון**
+6. **מקרי קצה** - תרחישים יוצאי דופן`} />
 
-### Level Design
+### עיצוב שלב
 
-<TryIt compact prompt={`Design a level for \${gameType:a stealth action game}.
+<TryIt compact prompt={`עצב שלב עבור \${gameType:משחק פעולה והתגנבות}.
 
-Setting: \${setting:corporate headquarters at night}
-Objectives: \${objectives:infiltrate the server room and extract data}
-Difficulty: \${difficulty:mid-game, player has basic abilities}
+סביבה: \${setting:מטה תאגידי בלילה}
+מטרות: \${objectives:לחדור לחדר השרתים ולחלץ נתונים}
+רמת קושי: \${difficulty:אמצע המשחק, לשחקן יש יכולות בסיסיות}
 
-Include:
-1. **Layout overview** - spatial description
-2. **Pacing graph** - tension over time
-3. **Challenges** - obstacles and how to overcome
-4. **Rewards** - what player gains
-5. **Secrets** - optional discoveries
-6. **Teaching moments** - skill introduction
-7. **Environmental storytelling** - narrative through design`} />
+כלול:
+1. **סקירת פריסה** - תיאור מרחבי
+2. **גרף קצב** - מתח לאורך זמן
+3. **אתגרים** - מכשולים ואיך להתגבר עליהם
+4. **תגמולים** - מה השחקן מרוויח
+5. **סודות** - גילויים אופציונליים
+6. **רגעי לימוד** - הצגת מיומנויות
+7. **סיפור סביבתי** - נרטיב דרך עיצוב`} />
 
-### Character/Enemy Design
+### עיצוב דמות/אויב
 
-<TryIt compact prompt={`Design a \${entityType:boss enemy} for \${game:a dark fantasy action RPG}.
+<TryIt compact prompt={`עצב \${entityType:אויב בוס} עבור \${game:משחק RPG פעולה פנטזיה אפלה}.
 
-Role: \${role:mid-game boss}
-Context: \${context:guards a corrupted forest temple}
+תפקיד: \${role:בוס אמצע המשחק}
+הקשר: \${context:שומר על מקדש יער מושחת}
 
-Define:
-1. **Visual concept** - appearance description
-2. **Abilities** - what they can do
-3. **Behavior patterns** - how they act
-4. **Weaknesses** - vulnerabilities
-5. **Personality** - if relevant
-6. **Lore/Backstory** - world integration
-7. **Player strategy** - how to interact/defeat`} />
+הגדר:
+1. **קונספט חזותי** - תיאור מראה
+2. **יכולות** - מה הוא יכול לעשות
+3. **דפוסי התנהגות** - איך הוא פועל
+4. **חולשות** - פגיעויות
+5. **אישיות** - אם רלוונטי
+6. **לור/סיפור רקע** - שילוב בעולם
+7. **אסטרטגיית שחקן** - איך להתמודד/לנצח`} />
 
-## Brainstorming & Ideation
+## סיעור מוחות ויצירת רעיונות
 
-### Creative Brainstorm
+### סיעור מוחות יצירתי
 
-<TryIt compact prompt={`Brainstorm ideas for \${project:a mobile game about mindfulness}.
+<TryIt compact prompt={`סער מוחות רעיונות עבור \${project:משחק מובייל על מיינדפולנס}.
 
-Constraints:
-- \${constraint1:must be playable in 2-minute sessions}
-- \${constraint2:no violence or competition}
-- \${constraint3:nature themes}
+אילוצים:
+- \${constraint1:חייב להיות ניתן לשחק בסשנים של 2 דקות}
+- \${constraint2:ללא אלימות או תחרות}
+- \${constraint3:נושאי טבע}
 
-Generate:
-1. **10 conventional ideas** - solid, expected
-2. **5 unusual ideas** - unexpected angles
-3. **3 wild ideas** - boundary-pushing
-4. **1 combination** - merge best elements
+צור:
+1. **10 רעיונות קונבנציונליים** - מוצקים, צפויים
+2. **5 רעיונות יוצאי דופן** - זוויות בלתי צפויות
+3. **3 רעיונות פרועים** - דוחפי גבולות
+4. **1 שילוב** - מיזוג האלמנטים הטובים ביותר
 
-For each, one sentence description + why it works.
-Don't self-censor—quantity over quality first.`} />
+לכל אחד, משפט תיאור אחד + למה זה עובד.
+אל תצנזר את עצמך—כמות לפני איכות.`} />
 
-### Creative Constraints
+### אילוצים יצירתיים
 
-<TryIt compact prompt={`Give me creative constraints for \${projectType:writing a short story}.
+<TryIt compact prompt={`תן לי אילוצים יצירתיים עבור \${projectType:כתיבת סיפור קצר}.
 
-I want constraints that:
-- Force unexpected choices
-- Eliminate obvious solutions
-- Create productive limitations
+אני רוצה אילוצים ש:
+- מכריחים בחירות בלתי צפויות
+- מבטלים פתרונות ברורים
+- יוצרים מגבלות פרודוקטיביות
 
-Format:
-1. Constraint - Why it helps creativity
+פורמט:
+1. אילוץ - למה הוא עוזר ליצירתיות
 2. ...
 
-Then show one example of how applying these constraints 
-transforms a generic concept into something interesting.`} />
+ואז הראה דוגמה אחת איך יישום האילוצים הללו 
+הופך קונספט גנרי למשהו מעניין.`} />
 
-### Style Exploration
+### חקירת סגנונות
 
-<TryIt compact prompt={`Explore different styles for \${concept:a coffee shop logo}.
+<TryIt compact prompt={`חקור סגנונות שונים עבור \${concept:לוגו לבית קפה}.
 
-Show how this concept would manifest in:
-1. **Minimalist** - stripped to essence
-2. **Maximalist** - abundant and detailed
-3. **Retro 1950s** - period-specific
-4. **Futuristic** - forward-looking
-5. **Folk/Traditional** - cultural roots
-6. **Abstract** - non-representational
-7. **Surrealist** - dreamlike logic
+הראה איך הקונספט הזה יתבטא ב:
+1. **מינימליסטי** - מופשט למהות
+2. **מקסימליסטי** - שופע ומפורט
+3. **רטרו שנות ה-50** - ספציפי לתקופה
+4. **עתידני** - מבט קדימה
+5. **עממי/מסורתי** - שורשים תרבותיים
+6. **מופשט** - לא ייצוגי
+7. **סוריאליסטי** - היגיון חלומי
 
-For each, describe key characteristics and example.`} />
+לכל אחד, תאר מאפיינים מרכזיים ודוגמה.`} />
 
-## Prompt Templates from prompts.chat
+## תבניות הנחיה מ-prompts.chat
 
-### Act as a Creative Director
+### שחק תפקיד של מנהל קריאייטיב
 
-<TryIt compact prompt={`I want you to act as a creative director. I will describe creative projects and you will develop creative visions, guide aesthetic decisions, and ensure conceptual coherence. Draw on art history, design principles, and cultural trends. Help me make bold creative choices with clear rationale.`} />
+<TryIt compact prompt={`אני רוצה שתשחק תפקיד של מנהל קריאייטיב. אתאר פרויקטים יצירתיים ואתה תפתח חזונות יצירתיים, תנחה החלטות אסתטיות ותבטיח קוהרנטיות קונספטואלית. השתמש בידע מתולדות האמנות, עקרונות עיצוב ומגמות תרבותיות. עזור לי לקבל החלטות יצירתיות נועזות עם נימוק ברור.`} />
 
-### Act as a Worldbuilder
+### שחק תפקיד של בונה עולמות
 
-<TryIt compact prompt={`I want you to act as a worldbuilder. Help me create rich, consistent fictional worlds with detailed histories, cultures, and systems. Ask probing questions to deepen the world. Point out inconsistencies and suggest solutions. Make the world feel lived-in and believable.`} />
+<TryIt compact prompt={`אני רוצה שתשחק תפקיד של בונה עולמות. עזור לי ליצור עולמות בדיוניים עשירים ועקביים עם היסטוריות, תרבויות ומערכות מפורטות. שאל שאלות מעמיקות להעמקת העולם. הצבע על חוסר עקביות והצע פתרונות. גרום לעולם להרגיש מיושב ואמין.`} />
 
-### Act as a Dungeon Master
+### שחק תפקיד של מנהל מבוכים
 
-<TryIt compact prompt={`I want you to act as a Dungeon Master for a tabletop RPG. Create engaging scenarios, describe vivid settings, roleplay NPCs with distinct personalities, and respond dynamically to player choices. Balance challenge with fun, and keep the narrative compelling.`} />
+<TryIt compact prompt={`אני רוצה שתשחק תפקיד של מנהל מבוכים למשחק תפקידים שולחני. צור תרחישים מרתקים, תאר סביבות חיות, גלם דמויות לא-שחקן עם אישיויות מובחנות והגב באופן דינמי לבחירות השחקנים. אזן בין אתגר לכיף, ושמור על הנרטיב מרתק.`} />
 
-## Creative Collaboration Tips
+## טיפים לשיתוף פעולה יצירתי
 
-### Building on Ideas
+### בנייה על רעיונות
 
-<TryIt compact prompt={`I have this creative idea: \${idea:a mystery novel set in a space station where the AI is the detective}
+<TryIt compact prompt={`יש לי רעיון יצירתי: \${idea:רומן מסתורין המתרחש בתחנת חלל שבה הבינה המלאכותית היא הבלש}
 
-Help me develop it by:
-1. What's working well
-2. Questions to explore
-3. Unexpected directions
-4. Potential challenges
-5. First three development steps
+עזור לי לפתח אותו על ידי:
+1. מה עובד טוב
+2. שאלות לחקירה
+3. כיוונים בלתי צפויים
+4. אתגרים פוטנציאליים
+5. שלושת צעדי הפיתוח הראשונים
 
-Don't replace my vision—enhance it.`} />
+אל תחליף את החזון שלי—שפר אותו.`} />
 
-### Creative Feedback
+### משוב יצירתי
 
-<TryIt compact prompt={`Give me feedback on this creative work:
+<TryIt compact prompt={`תן לי משוב על העבודה היצירתית הזו:
 
-\${work:paste your creative work here}
+\${work:הדבק את העבודה היצירתית שלך כאן}
 
-As a \${perspective:fellow creator}:
-1. What resonates most strongly
-2. What feels underdeveloped
-3. What's confusing or unclear
-4. One bold suggestion
-5. What would make this unforgettable
+כ\${perspective:יוצר עמית}:
+1. מה מהדהד הכי חזק
+2. מה מרגיש לא מפותח
+3. מה מבלבל או לא ברור
+4. הצעה נועזת אחת
+5. מה יהפוך את זה לבלתי נשכח
 
-Be honest but constructive.`} />
+היה כנה אך בונה.`} />
 
-## Summary
+## סיכום
 
-<Callout type="tip" title="Key Techniques">
-Provide enough structure to guide without constraining, embrace specificity (vague = generic), include references and inspirations, request variations and alternatives, and maintain your creative vision while exploring possibilities.
+<Callout type="tip" title="טכניקות מפתח">
+ספק מספיק מבנה להנחיה בלי להגביל, אמץ ספציפיות (מעורפל = גנרי), כלול הפניות והשראות, בקש וריאציות וחלופות, ושמור על החזון היצירתי שלך תוך חקירת אפשרויות.
 </Callout>
 
 <Quiz 
-  question="Why do specific constraints often produce better creative results than open-ended prompts?"
+  question="מדוע אילוצים ספציפיים מייצרים לעתים קרובות תוצאות יצירתיות טובות יותר מהנחיות פתוחות?"
   options={[
-    "AI can only follow strict instructions",
-    "Constraints force unexpected solutions and eliminate obvious choices",
-    "Open-ended prompts are too difficult for AI",
-    "Constraints make the output shorter"
+    "בינה מלאכותית יכולה רק לעקוב אחר הוראות מחמירות",
+    "אילוצים מכריחים פתרונות בלתי צפויים ומבטלים בחירות ברורות",
+    "הנחיות פתוחות קשות מדי לבינה מלאכותית",
+    "אילוצים הופכים את הפלט לקצר יותר"
   ]}
   correctIndex={1}
-  explanation="Paradoxically, limitations spark creativity. When obvious solutions are eliminated, you're forced to explore unexpected directions. 'Write a story' produces clichés; 'Write a mystery set in a submarine, told backwards, in under 500 words' produces something unique."
+  explanation="באופן פרדוקסלי, מגבלות מציתות יצירתיות. כשפתרונות ברורים מתבטלים, אתה נאלץ לחקור כיוונים בלתי צפויים. 'כתוב סיפור' מייצר קלישאות; 'כתוב מסתורין המתרחש בצוללת, מסופר לאחור, בפחות מ-500 מילים' מייצר משהו ייחודי."
 />
 
-AI is a collaborator, not a replacement for creative vision. Use it to explore, generate options, and overcome blocks—but the creative decisions remain yours.
+בינה מלאכותית היא שותפה, לא תחליף לחזון יצירתי. השתמש בה לחקירה, יצירת אפשרויות והתגברות על חסימות—אבל ההחלטות היצירתיות נשארות שלך.

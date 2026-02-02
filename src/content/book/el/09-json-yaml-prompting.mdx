@@ -1,30 +1,30 @@
-Structured data formats like JSON and YAML are essential for building applications that consume AI outputs programmatically. This chapter covers techniques for reliable structured output generation.
+Οι μορφές δομημένων δεδομένων όπως JSON και YAML είναι απαραίτητες για τη δημιουργία εφαρμογών που καταναλώνουν εξόδους AI προγραμματιστικά. Αυτό το κεφάλαιο καλύπτει τεχνικές για αξιόπιστη δημιουργία δομημένης εξόδου.
 
-<Callout type="info" title="From Text to Data">
-JSON and YAML transform AI outputs from freeform text into structured, type-safe data that code can consume directly.
+<Callout type="info" title="Από Κείμενο σε Δεδομένα">
+Τα JSON και YAML μετατρέπουν τις εξόδους AI από ελεύθερο κείμενο σε δομημένα, ασφαλή ως προς τους τύπους δεδομένα που ο κώδικας μπορεί να καταναλώσει απευθείας.
 </Callout>
 
-## Why Structured Formats?
+## Γιατί Δομημένες Μορφές;
 
 <JsonYamlDemo />
 
-## JSON Prompting Basics
+## Βασικά JSON Prompting
 
-JSON (JavaScript Object Notation) is the most common format for programmatic AI outputs. Its strict syntax makes it easy to parse, but also means small errors can break your entire pipeline.
+Το JSON (JavaScript Object Notation) είναι η πιο κοινή μορφή για προγραμματιστικές εξόδους AI. Η αυστηρή σύνταξή του το κάνει εύκολο στην ανάλυση, αλλά σημαίνει επίσης ότι μικρά σφάλματα μπορούν να σπάσουν ολόκληρη τη ροή εργασίας σου.
 
-### Do's and Don'ts: Requesting JSON
+### Τι Κάνεις και Τι Δεν Κάνεις: Ζητώντας JSON
 
 <Compare 
-  before={{ label: "❌ Don't: Vague request", content: "Give me the user info as JSON." }}
-  after={{ label: "✓ Do: Show the schema", content: "Extract user info as JSON matching this schema:\n\n{\n  \"name\": \"string\",\n  \"age\": number,\n  \"email\": \"string\"\n}\n\nReturn ONLY valid JSON, no markdown." }}
+  before={{ label: "❌ Μην: Ασαφές αίτημα", content: "Δώσε μου τα στοιχεία χρήστη ως JSON." }}
+  after={{ label: "✓ Κάνε: Δείξε το σχήμα", content: "Εξαγάγε στοιχεία χρήστη ως JSON που ταιριάζει με αυτό το σχήμα:\n\n{\n  \"name\": \"string\",\n  \"age\": number,\n  \"email\": \"string\"\n}\n\nΕπιστρέψε ΜΟΝΟ έγκυρο JSON, χωρίς markdown." }}
 />
 
-### Simple JSON Output
+### Απλή Έξοδος JSON
 
-Start with a schema showing the expected structure. The model will fill in values based on the input text.
+Ξεκίνα με ένα σχήμα που δείχνει την αναμενόμενη δομή. Το μοντέλο θα συμπληρώσει τιμές βάσει του κειμένου εισόδου.
 
 ```
-Extract the following information as JSON:
+Εξαγάγε τις ακόλουθες πληροφορίες ως JSON:
 
 {
   "name": "string",
@@ -32,24 +32,24 @@ Extract the following information as JSON:
   "email": "string"
 }
 
-Text: "Contact John Smith, 34 years old, at john@example.com"
+Κείμενο: "Επικοινώνησε με τον Γιάννη Παπαδόπουλο, 34 ετών, στο john@example.com"
 ```
 
-Output:
+Έξοδος:
 ```json
 {
-  "name": "John Smith",
+  "name": "Γιάννης Παπαδόπουλος",
   "age": 34,
   "email": "john@example.com"
 }
 ```
 
-### Nested JSON Structures
+### Ένθετες Δομές JSON
 
-Real-world data often has nested relationships. Define each level of your schema clearly, especially for arrays of objects.
+Τα δεδομένα πραγματικού κόσμου συχνά έχουν ένθετες σχέσεις. Όρισε κάθε επίπεδο του σχήματός σου καθαρά, ειδικά για πίνακες αντικειμένων.
 
 ```
-Parse this order into JSON:
+Ανάλυσε αυτή την παραγγελία σε JSON:
 
 {
   "order_id": "string",
@@ -67,37 +67,37 @@ Parse this order into JSON:
   "total": number
 }
 
-Order: "Order #12345 for Jane Doe (jane@email.com): 2x Widget ($10 each), 
-1x Gadget ($25). Total: $45"
+Παραγγελία: "Παραγγελία #12345 για την Μαρία Γεωργίου (maria@email.com): 2x Widget (10€ το καθένα), 
+1x Gadget (25€). Σύνολο: 45€"
 ```
 
-### Ensuring Valid JSON
+### Εξασφάλιση Έγκυρου JSON
 
-<Callout type="warning" title="Common Failure Point">
-Models often wrap JSON in markdown code blocks or add explanatory text. Be explicit about wanting raw JSON only.
+<Callout type="warning" title="Κοινό Σημείο Αποτυχίας">
+Τα μοντέλα συχνά τυλίγουν το JSON σε markdown code blocks ή προσθέτουν επεξηγηματικό κείμενο. Να είσαι ρητός ότι θέλεις μόνο ακατέργαστο JSON.
 </Callout>
 
-Add explicit instructions:
+Πρόσθεσε ρητές οδηγίες:
 
 ```
-CRITICAL: Return ONLY valid JSON. No markdown, no explanation, 
-no additional text before or after the JSON object.
+ΚΡΙΣΙΜΟ: Επιστρέψε ΜΟΝΟ έγκυρο JSON. Χωρίς markdown, χωρίς εξήγηση, 
+χωρίς επιπλέον κείμενο πριν ή μετά το αντικείμενο JSON.
 
-If a field cannot be determined, use null.
-Ensure all strings are properly quoted and escaped.
-Numbers should not be quoted.
+Αν ένα πεδίο δεν μπορεί να προσδιοριστεί, χρησιμοποίησε null.
+Βεβαιώσου ότι όλα τα strings είναι σωστά σε εισαγωγικά και escaped.
+Οι αριθμοί δεν πρέπει να είναι σε εισαγωγικά.
 ```
 
-## YAML Prompting Basics
+## Βασικά YAML Prompting
 
-YAML is more human-readable than JSON and supports comments. It's the standard for configuration files, especially in DevOps (Docker, Kubernetes, GitHub Actions).
+Το YAML είναι πιο ευανάγνωστο από ανθρώπους από το JSON και υποστηρίζει σχόλια. Είναι το πρότυπο για αρχεία διαμόρφωσης, ειδικά στο DevOps (Docker, Kubernetes, GitHub Actions).
 
-### Simple YAML Output
+### Απλή Έξοδος YAML
 
-YAML uses indentation instead of braces. Provide a template showing the expected structure.
+Το YAML χρησιμοποιεί εσοχή αντί για αγκύλες. Παρέχε ένα template που δείχνει την αναμενόμενη δομή.
 
 ```
-Generate a configuration file in YAML format:
+Δημιούργησε ένα αρχείο διαμόρφωσης σε μορφή YAML:
 
 server:
   host: string
@@ -107,10 +107,10 @@ database:
   type: string
   connection_string: string
 
-Requirements: Production server on port 443 with SSL, PostgreSQL database
+Απαιτήσεις: Παραγωγικός server στη θύρα 443 με SSL, PostgreSQL βάση δεδομένων
 ```
 
-Output:
+Έξοδος:
 ```yaml
 server:
   host: "0.0.0.0"
@@ -121,32 +121,32 @@ database:
   connection_string: "postgresql://user:pass@localhost:5432/prod"
 ```
 
-### Complex YAML Structures
+### Πολύπλοκες Δομές YAML
 
-For complex configurations, be specific about requirements. The model knows common patterns for tools like GitHub Actions, Docker Compose, and Kubernetes.
+Για πολύπλοκες διαμορφώσεις, να είσαι συγκεκριμένος σχετικά με τις απαιτήσεις. Το μοντέλο γνωρίζει κοινά μοτίβα για εργαλεία όπως GitHub Actions, Docker Compose, και Kubernetes.
 
 ```
-Generate a GitHub Actions workflow in YAML:
+Δημιούργησε ένα GitHub Actions workflow σε YAML:
 
-Requirements:
-- Trigger on push to main and pull requests
-- Run on Ubuntu latest
-- Steps: checkout, setup Node 18, install dependencies, run tests
+Απαιτήσεις:
+- Ενεργοποίηση σε push στο main και pull requests
+- Εκτέλεση σε Ubuntu latest
+- Βήματα: checkout, setup Node 18, εγκατάσταση dependencies, εκτέλεση tests
 - Cache npm dependencies
 ```
 
-## Type Definitions in Prompts
+## Ορισμοί Τύπων σε Prompts
 
-Type definitions give the model a precise contract for output structure. They're more explicit than examples and easier to validate programmatically.
+Οι ορισμοί τύπων δίνουν στο μοντέλο ένα ακριβές συμβόλαιο για τη δομή εξόδου. Είναι πιο ρητοί από παραδείγματα και πιο εύκολο να επικυρωθούν προγραμματιστικά.
 
-### Using TypeScript-like Types
+### Χρήση Τύπων τύπου TypeScript
 
-TypeScript interfaces are familiar to developers and precisely describe optional fields, union types, and arrays. The prompts.chat platform uses this approach for structured prompts.
+Τα TypeScript interfaces είναι οικεία στους προγραμματιστές και περιγράφουν ακριβώς προαιρετικά πεδία, τύπους ένωσης, και πίνακες. Η πλατφόρμα prompts.chat χρησιμοποιεί αυτή την προσέγγιση για δομημένα prompts.
 
 <TryIt 
-  title="TypeScript Interface Extraction"
-  description="Use a TypeScript interface to extract structured data."
-  prompt={`Extract data according to this type definition:
+  title="Εξαγωγή με TypeScript Interface"
+  description="Χρησιμοποίησε ένα TypeScript interface για εξαγωγή δομημένων δεδομένων."
+  prompt={`Εξαγάγε δεδομένα σύμφωνα με αυτόν τον ορισμό τύπου:
 
 interface ChatPersona {
     name?: string;
@@ -157,21 +157,21 @@ interface ChatPersona {
     background?: string;
 }
 
-Return as JSON matching this interface.
+Επιστρέψε ως JSON που ταιριάζει με αυτό το interface.
 
-Description: "A senior software engineer named Alex who reviews code. They're analytical and thorough, with expertise in backend systems and databases. Professional but approachable tone."`}
+Περιγραφή: "Ένας senior μηχανικός λογισμικού ονόματι Αλέξης που κάνει code review. Είναι αναλυτικός και διεξοδικός, με εξειδίκευση σε backend συστήματα και βάσεις δεδομένων. Επαγγελματικός αλλά προσιτός τόνος."`}
 />
 
-### JSON Schema Definition
+### Ορισμός JSON Schema
 
-<Callout type="info" title="Industry Standard">
-JSON Schema is a formal specification for describing JSON structure. It's supported by many validation libraries and API tools.
+<Callout type="info" title="Βιομηχανικό Πρότυπο">
+Το JSON Schema είναι μια επίσημη προδιαγραφή για περιγραφή δομής JSON. Υποστηρίζεται από πολλές βιβλιοθήκες επικύρωσης και εργαλεία API.
 </Callout>
 
-JSON Schema provides constraints like min/max values, required fields, and regex patterns:
+Το JSON Schema παρέχει περιορισμούς όπως min/max τιμές, απαιτούμενα πεδία, και regex patterns:
 
 ```
-Extract data according to this JSON Schema:
+Εξαγάγε δεδομένα σύμφωνα με αυτό το JSON Schema:
 
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -193,92 +193,92 @@ Extract data according to this JSON Schema:
   }
 }
 
-Book: "1984 by George Orwell (1949) - A dystopian masterpiece. 
-Genres: Science Fiction, Political Fiction. Rated 4.8/5"
+Βιβλίο: "1984 του George Orwell (1949) - Ένα δυστοπικό αριστούργημα. 
+Είδη: Επιστημονική Φαντασία, Πολιτική Μυθοπλασία. Βαθμολογία 4.8/5"
 ```
 
-## Handling Arrays
+## Χειρισμός Πινάκων
 
-Arrays require special attention. Specify whether you need a fixed number of items or a variable-length list, and how to handle empty cases.
+Οι πίνακες απαιτούν ιδιαίτερη προσοχή. Καθόρισε αν χρειάζεσαι σταθερό αριθμό στοιχείων ή λίστα μεταβλητού μήκους, και πώς να χειριστείς κενές περιπτώσεις.
 
-### Fixed-Length Arrays
+### Πίνακες Σταθερού Μήκους
 
-When you need exactly N items, state it explicitly. The model will ensure the array has the right length.
+Όταν χρειάζεσαι ακριβώς N στοιχεία, δήλωσέ το ρητά. Το μοντέλο θα εξασφαλίσει ότι ο πίνακας έχει το σωστό μήκος.
 
 ```
-Extract exactly 3 key points as JSON:
+Εξαγάγε ακριβώς 3 βασικά σημεία ως JSON:
 
 {
   "key_points": [
-    "string (first point)",
-    "string (second point)", 
-    "string (third point)"
+    "string (πρώτο σημείο)",
+    "string (δεύτερο σημείο)", 
+    "string (τρίτο σημείο)"
   ]
 }
 
-Article: [article text]
+Άρθρο: [κείμενο άρθρου]
 ```
 
-### Variable-Length Arrays
+### Πίνακες Μεταβλητού Μήκους
 
-For variable-length arrays, specify what to do when there are zero items. Including a count field helps verify extraction completeness.
+Για πίνακες μεταβλητού μήκους, καθόρισε τι να κάνεις όταν υπάρχουν μηδέν στοιχεία. Η συμπερίληψη πεδίου count βοηθά να επαληθεύσεις την πληρότητα εξαγωγής.
 
 ```
-Extract all mentioned people as JSON:
+Εξαγάγε όλα τα αναφερόμενα άτομα ως JSON:
 
 {
   "people": [
     {
       "name": "string",
-      "role": "string or null if not mentioned"
+      "role": "string ή null αν δεν αναφέρεται"
     }
   ],
   "count": number
 }
 
-If no people are mentioned, return empty array.
+Αν δεν αναφέρονται άτομα, επιστρέψε κενό πίνακα.
 
-Text: [text]
+Κείμενο: [κείμενο]
 ```
 
-## Enum Values and Constraints
+## Τιμές Enum και Περιορισμοί
 
-Enums restrict values to a predefined set. This is crucial for classification tasks and anywhere you need consistent, predictable outputs.
+Τα Enums περιορίζουν τις τιμές σε ένα προκαθορισμένο σύνολο. Αυτό είναι κρίσιμο για εργασίες ταξινόμησης και οπουδήποτε χρειάζεσαι συνεπείς, προβλέψιμες εξόδους.
 
-### Do's and Don'ts: Enum Values
+### Τι Κάνεις και Τι Δεν Κάνεις: Τιμές Enum
 
 <Compare 
-  before={{ label: "❌ Don't: Open-ended categories", content: "Classify this text into a category.\n\n{\n  \"category\": \"string\"\n}" }}
-  after={{ label: "✓ Do: Restrict to valid values", content: "Classify this text. Category MUST be exactly one of:\n- \"technical\"\n- \"business\"\n- \"creative\"\n- \"personal\"\n\n{\n  \"category\": \"one of the values above\"\n}" }}
+  before={{ label: "❌ Μην: Ανοιχτές κατηγορίες", content: "Ταξινόμησε αυτό το κείμενο σε κατηγορία.\n\n{\n  \"category\": \"string\"\n}" }}
+  after={{ label: "✓ Κάνε: Περιόρισε σε έγκυρες τιμές", content: "Ταξινόμησε αυτό το κείμενο. Η Κατηγορία ΠΡΕΠΕΙ να είναι ακριβώς μία από:\n- \"technical\"\n- \"business\"\n- \"creative\"\n- \"personal\"\n\n{\n  \"category\": \"μία από τις παραπάνω τιμές\"\n}" }}
 />
 
 ### String Enums
 
-List allowed values explicitly. Use "MUST be one of" language to enforce strict matching.
+Κατέγραψε τις επιτρεπόμενες τιμές ρητά. Χρησιμοποίησε γλώσσα "ΠΡΕΠΕΙ να είναι μία από" για να επιβάλεις αυστηρή αντιστοίχιση.
 
 ```
-Classify this text. The category MUST be one of these exact values:
+Ταξινόμησε αυτό το κείμενο. Η κατηγορία ΠΡΕΠΕΙ να είναι μία από αυτές τις ακριβείς τιμές:
 - "technical"
 - "business" 
 - "creative"
 - "personal"
 
-Return JSON:
+Επιστρέψε JSON:
 {
-  "text": "original text (truncated to 50 chars)",
-  "category": "one of the enum values above",
-  "confidence": number between 0 and 1
+  "text": "αρχικό κείμενο (κομμένο στους 50 χαρακτήρες)",
+  "category": "μία από τις παραπάνω τιμές enum",
+  "confidence": αριθμός μεταξύ 0 και 1
 }
 
-Text: [text to classify]
+Κείμενο: [κείμενο προς ταξινόμηση]
 ```
 
-### Validated Numbers
+### Επικυρωμένοι Αριθμοί
 
-Numeric constraints prevent out-of-range values. Specify the type (integer vs float) and valid range.
+Οι αριθμητικοί περιορισμοί αποτρέπουν τιμές εκτός εύρους. Καθόρισε τον τύπο (ακέραιος vs δεκαδικός) και το έγκυρο εύρος.
 
 ```
-Rate these aspects. Each score MUST be an integer from 1 to 5.
+Βαθμολόγησε αυτές τις πτυχές. Κάθε βαθμολογία ΠΡΕΠΕΙ να είναι ακέραιος από 1 έως 5.
 
 {
   "quality": 1-5,
@@ -287,40 +287,40 @@ Rate these aspects. Each score MUST be an integer from 1 to 5.
   "overall": 1-5
 }
 
-Review: [review text]
+Κριτική: [κείμενο κριτικής]
 ```
 
-## Handling Missing Data
+## Χειρισμός Ελλειπόντων Δεδομένων
 
-Real-world text often lacks some information. Define how the model should handle missing data to avoid hallucinated values.
+Το κείμενο πραγματικού κόσμου συχνά λείπει κάποια πληροφορία. Όρισε πώς το μοντέλο πρέπει να χειρίζεται ελλείποντα δεδομένα για να αποφύγεις εφευρεμένες τιμές.
 
-### Do's and Don'ts: Missing Information
+### Τι Κάνεις και Τι Δεν Κάνεις: Ελλείπουσα Πληροφορία
 
 <Compare 
-  before={{ label: "❌ Don't: Let AI guess", content: "Extract all company details as JSON:\n{\n  \"revenue\": number,\n  \"employees\": number\n}" }}
-  after={{ label: "✓ Do: Explicitly allow null", content: "Extract company details. Use null for any field NOT explicitly mentioned. Do NOT invent or estimate values.\n\n{\n  \"revenue\": \"number or null\",\n  \"employees\": \"number or null\"\n}" }}
+  before={{ label: "❌ Μην: Άφησε το AI να μαντέψει", content: "Εξαγάγε όλες τις λεπτομέρειες εταιρείας ως JSON:\n{\n  \"revenue\": number,\n  \"employees\": number\n}" }}
+  after={{ label: "✓ Κάνε: Επίτρεψε ρητά null", content: "Εξαγάγε λεπτομέρειες εταιρείας. Χρησιμοποίησε null για οποιοδήποτε πεδίο ΔΕΝ αναφέρεται ρητά. ΜΗΝ εφευρίσκεις ή εκτιμάς τιμές.\n\n{\n  \"revenue\": \"number ή null\",\n  \"employees\": \"number ή null\"\n}" }}
 />
 
-### Null Values
+### Τιμές Null
 
-Explicitly allow null and instruct the model not to invent information. This is safer than having the model guess.
+Επίτρεψε ρητά null και δώσε οδηγία στο μοντέλο να μην εφευρίσκει πληροφορία. Αυτό είναι ασφαλέστερο από το να μαντεύει το μοντέλο.
 
 ```
-Extract information. Use null for any field that cannot be 
-determined from the text. Do NOT invent information.
+Εξαγάγε πληροφορίες. Χρησιμοποίησε null για οποιοδήποτε πεδίο δεν μπορεί 
+να προσδιοριστεί από το κείμενο. ΜΗΝ εφευρίσκεις πληροφορία.
 
 {
-  "company": "string or null",
-  "revenue": "number or null",
-  "employees": "number or null",
-  "founded": "number (year) or null",
-  "headquarters": "string or null"
+  "company": "string ή null",
+  "revenue": "number ή null",
+  "employees": "number ή null",
+  "founded": "number (έτος) ή null",
+  "headquarters": "string ή null"
 }
 
-Text: "Apple, headquartered in Cupertino, was founded in 1976."
+Κείμενο: "Η Apple, με έδρα το Cupertino, ιδρύθηκε το 1976."
 ```
 
-Output:
+Έξοδος:
 ```json
 {
   "company": "Apple",
@@ -331,256 +331,256 @@ Output:
 }
 ```
 
-### Default Values
+### Προεπιλεγμένες Τιμές
 
-When defaults make sense, specify them in the schema. This is common for configuration extraction.
+Όταν οι προεπιλογές έχουν νόημα, καθόρισέ τες στο σχήμα. Αυτό είναι κοινό για εξαγωγή διαμορφώσεων.
 
 ```
-Extract settings with these defaults if not specified:
+Εξαγάγε ρυθμίσεις με αυτές τις προεπιλογές αν δεν καθορίζονται:
 
 {
-  "theme": "light" (default) | "dark",
-  "language": "en" (default) | other ISO code,
-  "notifications": true (default) | false,
-  "fontSize": 14 (default) | number
+  "theme": "light" (προεπιλογή) | "dark",
+  "language": "el" (προεπιλογή) | άλλος κωδικός ISO,
+  "notifications": true (προεπιλογή) | false,
+  "fontSize": 14 (προεπιλογή) | number
 }
 
-User preferences: "I want dark mode and larger text (18px)"
+Προτιμήσεις χρήστη: "Θέλω σκοτεινή λειτουργία και μεγαλύτερο κείμενο (18px)"
 ```
 
-## Multi-Object Responses
+## Απαντήσεις Πολλαπλών Αντικειμένων
 
-Often you need to extract multiple items from a single input. Define the array structure and any sorting/grouping requirements.
+Συχνά χρειάζεται να εξαγάγεις πολλαπλά στοιχεία από μία μόνο είσοδο. Όρισε τη δομή πίνακα και τυχόν απαιτήσεις ταξινόμησης/ομαδοποίησης.
 
-### Array of Objects
+### Πίνακας Αντικειμένων
 
-For lists of similar items, define the object schema once and specify it's an array.
+Για λίστες παρόμοιων στοιχείων, όρισε το σχήμα αντικειμένου μία φορά και καθόρισε ότι είναι πίνακας.
 
 ```
-Parse this list into JSON array:
+Ανάλυσε αυτή τη λίστα σε JSON array:
 
 [
   {
     "task": "string",
     "priority": "high" | "medium" | "low",
-    "due": "ISO date string or null"
+    "due": "ISO date string ή null"
   }
 ]
 
-Todo list:
-- Finish report (urgent, due tomorrow)
-- Call dentist (low priority)
-- Review PR #123 (medium, due Friday)
+Λίστα εργασιών:
+- Τελείωσε την αναφορά (επείγον, προθεσμία αύριο)
+- Κάλεσε τον οδοντίατρο (χαμηλή προτεραιότητα)
+- Ανασκόπησε PR #123 (μέση, προθεσμία Παρασκευή)
 ```
 
-### Grouped Objects
+### Ομαδοποιημένα Αντικείμενα
 
-Grouping tasks require categorization logic. The model will sort items into the categories you define.
+Οι εργασίες ομαδοποίησης απαιτούν λογική κατηγοριοποίησης. Το μοντέλο θα ταξινομήσει τα στοιχεία στις κατηγορίες που ορίζεις.
 
 ```
-Categorize these items into JSON:
+Κατηγοριοποίησε αυτά τα στοιχεία σε JSON:
 
 {
-  "fruits": ["string array"],
-  "vegetables": ["string array"],
-  "other": ["string array"]
+  "fruits": ["πίνακας strings"],
+  "vegetables": ["πίνακας strings"],
+  "other": ["πίνακας strings"]
 }
 
-Items: apple, carrot, bread, banana, broccoli, milk, orange, spinach
+Στοιχεία: μήλο, καρότο, ψωμί, μπανάνα, μπρόκολο, γάλα, πορτοκάλι, σπανάκι
 ```
 
-## YAML for Configuration Generation
+## YAML για Δημιουργία Διαμορφώσεων
 
-YAML shines for DevOps configurations. The model knows standard patterns for common tools and can generate production-ready configs.
+Το YAML λάμπει για διαμορφώσεις DevOps. Το μοντέλο γνωρίζει τυπικά μοτίβα για κοινά εργαλεία και μπορεί να δημιουργήσει configs έτοιμα για παραγωγή.
 
-### Do's and Don'ts: YAML Configs
+### Τι Κάνεις και Τι Δεν Κάνεις: YAML Configs
 
 <Compare 
-  before={{ label: "❌ Don't: Vague requirements", content: "Generate a docker-compose file for my app." }}
-  after={{ label: "✓ Do: Specify components and needs", content: "Generate docker-compose.yml for:\n- Node.js app (port 3000)\n- PostgreSQL database\n- Redis cache\n\nInclude: health checks, volume persistence, environment from .env file" }}
+  before={{ label: "❌ Μην: Ασαφείς απαιτήσεις", content: "Δημιούργησε ένα docker-compose αρχείο για την εφαρμογή μου." }}
+  after={{ label: "✓ Κάνε: Καθόρισε components και ανάγκες", content: "Δημιούργησε docker-compose.yml για:\n- Node.js app (θύρα 3000)\n- PostgreSQL βάση δεδομένων\n- Redis cache\n\nΣυμπερίλαβε: health checks, volume persistence, περιβάλλον από .env αρχείο" }}
 />
 
 ### Docker Compose
 
-Specify the services you need and any special requirements. The model will handle the YAML syntax and best practices.
+Καθόρισε τις υπηρεσίες που χρειάζεσαι και τυχόν ειδικές απαιτήσεις. Το μοντέλο θα χειριστεί τη σύνταξη YAML και τις καλές πρακτικές.
 
 ```
-Generate a docker-compose.yml for:
-- Node.js app on port 3000
-- PostgreSQL database
+Δημιούργησε docker-compose.yml για:
+- Node.js app στη θύρα 3000
+- PostgreSQL βάση δεδομένων
 - Redis cache
 - Nginx reverse proxy
 
-Include:
+Συμπερίλαβε:
 - Health checks
 - Volume persistence
-- Environment variables from .env file
-- Network isolation
+- Μεταβλητές περιβάλλοντος από .env αρχείο
+- Απομόνωση δικτύου
 ```
 
 ### Kubernetes Manifests
 
-Kubernetes manifests are verbose but follow predictable patterns. Provide the key parameters and the model will generate compliant YAML.
+Τα Kubernetes manifests είναι εκτενή αλλά ακολουθούν προβλέψιμα μοτίβα. Παρέχε τις βασικές παραμέτρους και το μοντέλο θα δημιουργήσει συμμορφούμενο YAML.
 
 ```
-Generate Kubernetes deployment YAML:
+Δημιούργησε Kubernetes deployment YAML:
 
 Deployment:
-- Name: api-server
+- Όνομα: api-server
 - Image: myapp:v1.2.3
 - Replicas: 3
-- Resources: 256Mi memory, 250m CPU (requests)
+- Resources: 256Mi μνήμη, 250m CPU (requests)
 - Health checks: /health endpoint
-- Environment from ConfigMap: api-config
+- Environment από ConfigMap: api-config
 
-Also generate matching Service (ClusterIP, port 8080)
+Επίσης δημιούργησε αντίστοιχο Service (ClusterIP, θύρα 8080)
 ```
 
-## Validation and Error Handling
+## Επικύρωση και Χειρισμός Σφαλμάτων
 
-For production systems, build validation into your prompts. This catches errors before they propagate through your pipeline.
+Για συστήματα παραγωγής, ενσωμάτωσε επικύρωση στα prompts σου. Αυτό πιάνει σφάλματα πριν διαδοθούν στη ροή εργασίας σου.
 
-### Self-Validation Prompt
+### Prompt Αυτο-Επικύρωσης
 
-Ask the model to validate its own output against rules you specify. This catches format errors and invalid values.
+Ζήτησε από το μοντέλο να επικυρώσει τη δική του έξοδο σύμφωνα με κανόνες που καθορίζεις. Αυτό πιάνει σφάλματα μορφής και άκυρες τιμές.
 
 ```
-Extract data as JSON, then validate your output.
+Εξαγάγε δεδομένα ως JSON, μετά επικύρωσε την έξοδό σου.
 
-Schema:
+Σχήμα:
 {
-  "email": "valid email format",
-  "phone": "E.164 format (+1234567890)",
-  "date": "ISO 8601 format (YYYY-MM-DD)"
+  "email": "έγκυρη μορφή email",
+  "phone": "μορφή E.164 (+301234567890)",
+  "date": "μορφή ISO 8601 (YYYY-MM-DD)"
 }
 
-After generating JSON, check:
-1. Email contains @ and valid domain
-2. Phone starts with + and contains only digits
-3. Date is valid and parseable
+Μετά τη δημιουργία JSON, έλεγξε:
+1. Το email περιέχει @ και έγκυρο domain
+2. Το τηλέφωνο ξεκινά με + και περιέχει μόνο ψηφία
+3. Η ημερομηνία είναι έγκυρη και αναλύσιμη
 
-If validation fails, fix the issues before responding.
+Αν η επικύρωση αποτύχει, διόρθωσε τα ζητήματα πριν απαντήσεις.
 
-Text: [contact information]
+Κείμενο: [πληροφορίες επικοινωνίας]
 ```
 
-### Error Response Format
+### Μορφή Απάντησης Σφάλματος
 
-Define separate success and error formats. This makes programmatic handling much easier.
+Όρισε ξεχωριστές μορφές επιτυχίας και σφάλματος. Αυτό κάνει τον προγραμματιστικό χειρισμό πολύ ευκολότερο.
 
 ```
-Attempt to extract data. If extraction fails, return error format:
+Προσπάθησε να εξαγάγεις δεδομένα. Αν η εξαγωγή αποτύχει, επιστρέψε μορφή σφάλματος:
 
-Success format:
+Μορφή επιτυχίας:
 {
   "success": true,
-  "data": { ... extracted data ... }
+  "data": { ... εξαγόμενα δεδομένα ... }
 }
 
-Error format:
+Μορφή σφάλματος:
 {
   "success": false,
-  "error": "description of what went wrong",
-  "partial_data": { ... any data that could be extracted ... }
+  "error": "περιγραφή του τι πήγε στραβά",
+  "partial_data": { ... όποια δεδομένα μπόρεσαν να εξαχθούν ... }
 }
 ```
 
-## JSON vs YAML: When to Use Which
+## JSON εναντίον YAML: Πότε να Χρησιμοποιήσεις Ποιο
 
 <div className="my-4 grid md:grid-cols-2 gap-4">
   <div className="p-4 bg-amber-50 dark:bg-amber-950/30 rounded-lg border border-amber-200 dark:border-amber-800">
-    <div className="font-semibold text-amber-700 dark:text-amber-300 mb-2">Use JSON When</div>
+    <div className="font-semibold text-amber-700 dark:text-amber-300 mb-2">Χρησιμοποίησε JSON Όταν</div>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Programmatic parsing needed</p>
-      <p className="m-0!">API responses</p>
-      <p className="m-0!">Strict type requirements</p>
-      <p className="m-0!">JavaScript/Web integration</p>
-      <p className="m-0!">Compact representation</p>
+      <p className="m-0!">Χρειάζεται προγραμματιστική ανάλυση</p>
+      <p className="m-0!">Απαντήσεις API</p>
+      <p className="m-0!">Αυστηρές απαιτήσεις τύπων</p>
+      <p className="m-0!">Ενσωμάτωση JavaScript/Web</p>
+      <p className="m-0!">Συμπαγής αναπαράσταση</p>
     </div>
   </div>
   <div className="p-4 bg-purple-50 dark:bg-purple-950/30 rounded-lg border border-purple-200 dark:border-purple-800">
-    <div className="font-semibold text-purple-700 dark:text-purple-300 mb-2">Use YAML When</div>
+    <div className="font-semibold text-purple-700 dark:text-purple-300 mb-2">Χρησιμοποίησε YAML Όταν</div>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Human readability matters</p>
-      <p className="m-0!">Configuration files</p>
-      <p className="m-0!">Comments are needed</p>
+      <p className="m-0!">Η αναγνωσιμότητα από ανθρώπους έχει σημασία</p>
+      <p className="m-0!">Αρχεία διαμόρφωσης</p>
+      <p className="m-0!">Χρειάζονται σχόλια</p>
       <p className="m-0!">DevOps/Infrastructure</p>
-      <p className="m-0!">Deep nested structures</p>
+      <p className="m-0!">Βαθιά ένθετες δομές</p>
     </div>
   </div>
 </div>
 
-## Prompts.chat Structured Prompts
+## Δομημένα Prompts στο Prompts.chat
 
-On prompts.chat, you can create prompts with structured output formats:
+Στο prompts.chat, μπορείς να δημιουργήσεις prompts με δομημένες μορφές εξόδου:
 
 ```
-When creating a prompt on prompts.chat, you can specify:
+Όταν δημιουργείς ένα prompt στο prompts.chat, μπορείς να καθορίσεις:
 
 Type: STRUCTURED
-Format: JSON or YAML
+Format: JSON ή YAML
 
-The platform will:
-- Validate outputs against your schema
-- Provide syntax highlighting
-- Enable easy copying of structured output
-- Support template variables in your schema
+Η πλατφόρμα θα:
+- Επικυρώνει τις εξόδους σύμφωνα με το σχήμα σου
+- Παρέχει syntax highlighting
+- Επιτρέπει εύκολη αντιγραφή δομημένης εξόδου
+- Υποστηρίζει template μεταβλητές στο σχήμα σου
 ```
 
-## Common Pitfalls
+## Κοινές Παγίδες
 
-<Callout type="warning" title="Debug These First">
-These three issues cause most JSON parsing failures. Check for them when your code can't parse AI output.
+<Callout type="warning" title="Αποσφαλμάτωσε Αυτά Πρώτα">
+Αυτά τα τρία ζητήματα προκαλούν τις περισσότερες αποτυχίες ανάλυσης JSON. Έλεγξέ τα όταν ο κώδικάς σου δεν μπορεί να αναλύσει έξοδο AI.
 </Callout>
 
 ### 1. Markdown Code Blocks
 
-**Problem:** Model wraps JSON in ```json blocks
+**Πρόβλημα:** Το μοντέλο τυλίγει το JSON σε ```json blocks
 
-**Solution:** 
+**Λύση:** 
 ```
-Return ONLY the JSON object. Do not wrap in markdown code blocks.
-Do not include ```json or ``` markers.
+Επιστρέψε ΜΟΝΟ το JSON αντικείμενο. Μην τυλίγεις σε markdown code blocks.
+Μην συμπεριλαμβάνεις ```json ή ``` markers.
 ```
 
 ### 2. Trailing Commas
 
-**Problem:** Invalid JSON due to trailing commas
+**Πρόβλημα:** Άκυρο JSON λόγω trailing commas
 
-**Solution:**
+**Λύση:**
 ```
-Ensure valid JSON syntax. No trailing commas after the last 
-element in arrays or objects.
+Εξασφάλισε έγκυρη σύνταξη JSON. Χωρίς trailing commas μετά το τελευταίο 
+στοιχείο σε πίνακες ή αντικείμενα.
 ```
 
 ### 3. Unescaped Strings
 
-**Problem:** Quotes or special characters break JSON
+**Πρόβλημα:** Εισαγωγικά ή ειδικοί χαρακτήρες σπάνε το JSON
 
-**Solution:**
+**Λύση:**
 ```
-Properly escape special characters in strings:
-- \" for quotes
-- \\ for backslashes
-- \n for newlines
+Κάνε σωστά escape τους ειδικούς χαρακτήρες σε strings:
+- \" για εισαγωγικά
+- \\ για backslashes
+- \n για νέες γραμμές
 ```
 
-## Summary
+## Σύνοψη
 
-<Callout type="tip" title="Key Techniques">
-Define schemas explicitly using TypeScript interfaces or JSON Schema. Specify types and constraints, handle nulls and defaults, request self-validation, and choose the right format for your use case.
+<Callout type="tip" title="Βασικές Τεχνικές">
+Όρισε σχήματα ρητά χρησιμοποιώντας TypeScript interfaces ή JSON Schema. Καθόρισε τύπους και περιορισμούς, χειρίσου nulls και προεπιλογές, ζήτησε αυτο-επικύρωση, και επίλεξε τη σωστή μορφή για την περίπτωση χρήσης σου.
 </Callout>
 
 <Quiz 
-  question="When should you prefer YAML over JSON for AI outputs?"
+  question="Πότε πρέπει να προτιμήσεις YAML έναντι JSON για εξόδους AI;"
   options={[
-    "When building REST APIs",
-    "When the output needs to be human-readable and may include comments",
-    "When working with JavaScript applications",
-    "When you need the most compact representation"
+    "Όταν χτίζεις REST APIs",
+    "Όταν η έξοδος πρέπει να είναι αναγνώσιμη από ανθρώπους και μπορεί να περιλαμβάνει σχόλια",
+    "Όταν εργάζεσαι με εφαρμογές JavaScript",
+    "Όταν χρειάζεσαι την πιο συμπαγή αναπαράσταση"
   ]}
   correctIndex={1}
-  explanation="YAML is preferred when human readability matters, such as configuration files, DevOps manifests, and documentation. It also supports comments, unlike JSON."
+  explanation="Το YAML προτιμάται όταν η αναγνωσιμότητα από ανθρώπους έχει σημασία, όπως αρχεία διαμόρφωσης, DevOps manifests, και τεκμηρίωση. Επίσης υποστηρίζει σχόλια, σε αντίθεση με το JSON."
 />
 
-This completes Part II on techniques. In Part III, we'll explore practical applications across different domains.
+Αυτό ολοκληρώνει το Μέρος II για τεχνικές. Στο Μέρος III, θα εξερευνήσουμε πρακτικές εφαρμογές σε διαφορετικούς τομείς.

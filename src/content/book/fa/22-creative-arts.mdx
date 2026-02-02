@@ -1,326 +1,326 @@
-AI is a powerful creative collaborator. This chapter covers prompting techniques for visual arts, music, game design, and other creative domains.
+هوش مصنوعی یک همکار خلاقانه قدرتمند است. این فصل تکنیک‌های پرامپت‌نویسی برای هنرهای تجسمی، موسیقی، طراحی بازی و سایر حوزه‌های خلاقانه را پوشش می‌دهد.
 
-<Callout type="info" title="AI as Creative Partner">
-AI expands your creative possibilities—use it to explore variations, overcome blocks, and generate options. The creative vision and final decisions remain yours.
+<Callout type="info" title="هوش مصنوعی به عنوان شریک خلاق">
+هوش مصنوعی امکانات خلاقانه شما را گسترش می‌دهد—از آن برای کاوش تنوع‌ها، غلبه بر بن‌بست‌ها و تولید گزینه‌ها استفاده کنید. چشم‌انداز خلاقانه و تصمیمات نهایی متعلق به شماست.
 </Callout>
 
-## Visual Art & Design
+## هنر تجسمی و طراحی
 
-### Do's and Don'ts: Image Prompts
+### بایدها و نبایدها: پرامپت‌های تصویری
 
 <Compare 
-  before={{ label: "❌ Vague prompt", content: "A wizard in a library" }}
-  after={{ label: "✓ Rich description", content: "A wise elderly wizard reading an ancient tome, sitting in a tower library at sunset, fantasy art style, warm golden lighting, contemplative mood, highly detailed, 4K, by Greg Rutkowski" }}
+  before={{ label: "❌ پرامپت مبهم", content: "یک جادوگر در کتابخانه" }}
+  after={{ label: "✓ توصیف غنی", content: "A wise elderly wizard reading an ancient tome, sitting in a tower library at sunset, fantasy art style, warm golden lighting, contemplative mood, highly detailed, 4K, by Greg Rutkowski" }}
 />
 
-### Image Prompt Crafting
+### ساخت پرامپت تصویری
 
-When working with image generation models (DALL-E, Midjourney, Stable Diffusion):
+هنگام کار با مدل‌های تولید تصویر (DALL-E، Midjourney، Stable Diffusion):
 
-<TryIt compact prompt={`Create an image prompt for [concept].
+<TryIt compact prompt={`یک پرامپت تصویری برای [مفهوم] ایجاد کن.
 
-Structure:
-[Subject] + [Action/Pose] + [Setting/Background] + [Style] + 
-[Lighting] + [Mood] + [Technical specs]
+ساختار:
+[سوژه] + [حرکت/ژست] + [محیط/پس‌زمینه] + [سبک] + 
+[نورپردازی] + [حال‌وهوا] + [مشخصات فنی]
 
-Example:
+مثال:
 "A wise elderly wizard reading an ancient tome, sitting in a 
 tower library at sunset, fantasy art style, warm golden lighting, 
 contemplative mood, highly detailed, 4K"`} />
 
-### Art Direction
+### کارگردانی هنری
 
-<TryIt compact prompt={`Describe artwork for \${project:fantasy book cover}.
+<TryIt compact prompt={`اثر هنری برای \${project:جلد کتاب فانتزی} را توصیف کن.
 
-Include:
-1. **Composition** - arrangement of elements
-2. **Color palette** - specific colors and their relationships
-3. **Style reference** - similar artists/works/movements
-4. **Focal point** - where the eye should be drawn
-5. **Mood/Atmosphere** - emotional quality
-6. **Technical approach** - medium, technique
+شامل:
+1. **ترکیب‌بندی** - چیدمان عناصر
+2. **پالت رنگی** - رنگ‌های خاص و روابط آن‌ها
+3. **مرجع سبک** - هنرمندان/آثار/جنبش‌های مشابه
+4. **نقطه کانونی** - جایی که چشم باید جذب شود
+5. **حال‌وهوا/فضا** - کیفیت احساسی
+6. **رویکرد فنی** - رسانه، تکنیک
 
-Purpose: \${purpose:illustration for book cover}`} />
+هدف: \${purpose:تصویرسازی برای جلد کتاب}`} />
 
-### Design Critique
+### نقد طراحی
 
-<TryIt compact prompt={`Critique this design from a professional perspective.
+<TryIt compact prompt={`این طراحی را از دیدگاه حرفه‌ای نقد کن.
 
-Design: \${design:a landing page with hero section, feature grid, and testimonials}
-Context: \${context:SaaS product for project management}
+طراحی: \${design:یک صفحه فرود با بخش قهرمان، شبکه ویژگی‌ها و نظرات کاربران}
+زمینه: \${context:محصول SaaS برای مدیریت پروژه}
 
-Evaluate:
-1. **Visual hierarchy** - Is importance clear?
-2. **Balance** - Is it visually stable?
-3. **Contrast** - Do elements stand out appropriately?
-4. **Alignment** - Is it organized?
-5. **Repetition** - Is there consistency?
-6. **Proximity** - Are related items grouped?
+ارزیابی کن:
+1. **سلسله‌مراتب بصری** - آیا اهمیت واضح است؟
+2. **تعادل** - آیا از نظر بصری پایدار است؟
+3. **کنتراست** - آیا عناصر به درستی برجسته می‌شوند؟
+4. **هم‌ترازی** - آیا منظم است؟
+5. **تکرار** - آیا یکپارچگی وجود دارد؟
+6. **مجاورت** - آیا موارد مرتبط گروه‌بندی شده‌اند؟
 
-Provide:
-- Specific strengths
-- Areas for improvement
-- Actionable suggestions`} />
+ارائه بده:
+- نقاط قوت خاص
+- حوزه‌های بهبود
+- پیشنهادات عملی`} />
 
-## Creative Writing
+## نوشتن خلاقانه
 
-<Callout type="tip" title="Creative Constraint Principle">
-**Constraints fuel creativity.** A prompt like "write anything" produces generic results. Specific constraints like genre, tone, and structure force unexpected, interesting solutions.
+<Callout type="tip" title="اصل محدودیت خلاقانه">
+**محدودیت‌ها خلاقیت را تقویت می‌کنند.** پرامپتی مانند «هر چیزی بنویس» نتایج عمومی تولید می‌کند. محدودیت‌های خاص مانند ژانر، لحن و ساختار راه‌حل‌های غیرمنتظره و جالب را به وجود می‌آورند.
 </Callout>
 
-### Worldbuilding
+### جهان‌سازی
 
-<TryIt compact prompt={`Help me build a world for \${project:a fantasy novel}.
+<TryIt compact prompt={`کمکم کن برای \${project:یک رمان فانتزی} جهانی بسازم.
 
-Genre: \${genre:dark fantasy}
-Scope: \${scope:a kingdom}
+ژانر: \${genre:فانتزی تاریک}
+گستره: \${scope:یک پادشاهی}
 
-Develop:
-1. **Geography** - physical environment
-2. **History** - key events that shaped this world
-3. **Culture** - customs, values, daily life
-4. **Power structures** - who rules, how
-5. **Economy** - how people survive
-6. **Conflict** - sources of tension
-7. **Unique element** - what makes this world special
+توسعه بده:
+1. **جغرافیا** - محیط فیزیکی
+2. **تاریخ** - رویدادهای کلیدی که این جهان را شکل دادند
+3. **فرهنگ** - آداب و رسوم، ارزش‌ها، زندگی روزمره
+4. **ساختارهای قدرت** - چه کسی حکومت می‌کند، چگونه
+5. **اقتصاد** - مردم چگونه زندگی می‌کنند
+6. **تعارض** - منابع تنش
+7. **عنصر منحصربه‌فرد** - چه چیزی این جهان را خاص می‌کند
 
-Start with broad strokes, then detail one aspect deeply.`} />
+با خطوط کلی شروع کن، سپس یک جنبه را عمیقاً جزئیات بده.`} />
 
-### Plot Development
+### توسعه پیرنگ
 
-<TryIt compact prompt={`Help me develop a plot for \${storyConcept:a heist gone wrong}.
+<TryIt compact prompt={`کمکم کن برای \${storyConcept:یک سرقت که خراب می‌شود} پیرنگی توسعه دهم.
 
-Genre: \${genre:thriller}
-Tone: \${tone:dark with moments of dark humor}
-Length: \${length:novel}
+ژانر: \${genre:تریلر}
+لحن: \${tone:تاریک با لحظاتی از طنز سیاه}
+طول: \${length:رمان}
 
-Using \${structure:three-act} structure:
+با استفاده از ساختار \${structure:سه‌پرده‌ای}:
 
-1. **Setup** - world, character, normal life
-2. **Inciting incident** - what disrupts normalcy
-3. **Rising action** - escalating challenges
-4. **Midpoint** - major shift or revelation
-5. **Crisis** - darkest moment
-6. **Climax** - confrontation
-7. **Resolution** - new normal
+1. **معرفی** - جهان، شخصیت، زندگی عادی
+2. **رویداد آغازین** - چه چیزی وضع عادی را برهم می‌زند
+3. **کشش صعودی** - چالش‌های فزاینده
+4. **نقطه میانی** - تغییر یا افشای بزرگ
+5. **بحران** - تاریک‌ترین لحظه
+6. **اوج** - رویارویی
+7. **گره‌گشایی** - وضع عادی جدید
 
-For each beat, suggest specific scenes.`} />
+برای هر ضربه، صحنه‌های خاصی پیشنهاد کن.`} />
 
-### Dialogue Writing
+### نوشتن دیالوگ
 
-<TryIt compact prompt={`Write dialogue between \${characters:two siblings} about \${topic:their estranged father returning}.
+<TryIt compact prompt={`دیالوگی بین \${characters:دو خواهر و برادر} درباره \${topic:بازگشت پدر بیگانه‌شده‌شان} بنویس.
 
-Character A: \${characterA:older sister, protective, pragmatic, wants to move on}
-Character B: \${characterB:younger brother, hopeful, emotional, wants to reconnect}
-Relationship: \${relationship:close but with different coping styles}
-Subtext: \${subtext:unspoken resentment about who bore more burden}
+شخصیت الف: \${characterA:خواهر بزرگ‌تر، محافظ، عمل‌گرا، می‌خواهد ادامه دهد}
+شخصیت ب: \${characterB:برادر کوچک‌تر، امیدوار، احساسی، می‌خواهد دوباره ارتباط برقرار کند}
+رابطه: \${relationship:صمیمی اما با سبک‌های مقابله‌ای متفاوت}
+زیرمتن: \${subtext:رنجش ناگفته درباره اینکه چه کسی بار بیشتری را تحمل کرد}
 
-Guidelines:
-- Each character has distinct voice
-- Dialogue reveals character, not just information
-- Include beats (actions/reactions)
-- Build tension or develop relationship
-- Show, don't tell emotions`} />
+راهنمایی‌ها:
+- هر شخصیت صدای متمایزی دارد
+- دیالوگ شخصیت را آشکار می‌کند، نه فقط اطلاعات را
+- ضرب‌آهنگ‌ها (کنش‌ها/واکنش‌ها) را بگنجان
+- تنش ایجاد کن یا رابطه را توسعه بده
+- احساسات را نشان بده، نه تعریف`} />
 
-## Music & Audio
+## موسیقی و صدا
 
-### Song Structure
+### ساختار آهنگ
 
-<TryIt compact prompt={`Help me structure a song.
+<TryIt compact prompt={`کمکم کن یک آهنگ ساختار دهم.
 
-Genre: \${genre:indie folk}
-Mood: \${mood:bittersweet nostalgia}
-Tempo: \${tempo:moderate, around 90 BPM}
-Theme/Message: \${theme:looking back on a hometown you've outgrown}
+ژانر: \${genre:ایندی فولک}
+حال‌وهوا: \${mood:نوستالژی تلخ‌وشیرین}
+تمپو: \${tempo:متوسط، حدود ۹۰ BPM}
+تم/پیام: \${theme:نگاه به گذشته به زادگاهی که از آن بزرگ‌تر شده‌ای}
 
-Provide:
-1. **Structure** - verse/chorus/bridge arrangement
-2. **Verse 1** - lyrical concept, 4-8 lines
-3. **Chorus** - hook concept, 4 lines
-4. **Verse 2** - development, 4-8 lines
-5. **Bridge** - contrast/shift, 4 lines
-6. **Chord progression suggestion**
-7. **Melodic direction notes**`} />
+ارائه بده:
+1. **ساختار** - چیدمان بند/کُرَس/بریج
+2. **بند ۱** - مفهوم شعری، ۴-۸ سطر
+3. **کُرَس** - مفهوم هوک، ۴ سطر
+4. **بند ۲** - توسعه، ۴-۸ سطر
+5. **بریج** - کنتراست/تغییر، ۴ سطر
+6. **پیشنهاد پیشرفت آکورد**
+7. **یادداشت‌های جهت ملودیک**`} />
 
-### Sound Design Description
+### توصیف طراحی صدا
 
-<TryIt compact prompt={`Describe a sound design for \${scene:a character entering an abandoned space station}.
+<TryIt compact prompt={`طراحی صدا برای \${scene:ورود یک شخصیت به یک ایستگاه فضایی متروکه} را توصیف کن.
 
-Context: \${context:protagonist discovers the station has been empty for decades}
-Emotion to evoke: \${emotion:eerie wonder mixed with dread}
-Medium: \${medium:video game}
+زمینه: \${context:قهرمان داستان کشف می‌کند که ایستگاه دهه‌هاست خالی بوده}
+احساسی که باید برانگیخته شود: \${emotion:شگفتی ترسناک آمیخته با هراس}
+رسانه: \${medium:بازی ویدیویی}
 
-Layer by layer:
-1. **Foundation** - ambient/background
-2. **Mid-ground** - environmental sounds
-3. **Foreground** - focal sounds
-4. **Accents** - punctuation sounds
-5. **Music** - score suggestions
+لایه به لایه:
+1. **پایه** - محیطی/پس‌زمینه
+2. **میان‌زمینه** - صداهای محیطی
+3. **پیش‌زمینه** - صداهای کانونی
+4. **تأکیدها** - صداهای نشانه‌گذاری
+5. **موسیقی** - پیشنهادات موسیقی متن
 
-Describe sounds in evocative terms, not just names.`} />
+صداها را با اصطلاحات تأثیرگذار توصیف کن، نه فقط نام‌ها.`} />
 
-## Game Design
+## طراحی بازی
 
-### Game Mechanic Design
+### طراحی مکانیک بازی
 
-<TryIt compact prompt={`Design a game mechanic for \${gameType:a puzzle platformer}.
+<TryIt compact prompt={`یک مکانیک بازی برای \${gameType:یک پلتفرمر پازلی} طراحی کن.
 
-Core loop: \${coreLoop:manipulate gravity to solve spatial puzzles}
-Player motivation: \${motivation:mastery and discovery}
-Skill involved: \${skill:spatial reasoning and timing}
+حلقه اصلی: \${coreLoop:دستکاری گرانش برای حل پازل‌های فضایی}
+انگیزه بازیکن: \${motivation:تسلط و کشف}
+مهارت درگیر: \${skill:استدلال فضایی و زمان‌بندی}
 
-Describe:
-1. **The mechanic** - how it works
-2. **Player input** - what they control
-3. **Feedback** - how they know the result
-4. **Progression** - how it evolves/deepens
-5. **Balance considerations**
-6. **Edge cases** - unusual scenarios`} />
+توصیف کن:
+1. **مکانیک** - چگونه کار می‌کند
+2. **ورودی بازیکن** - چه چیزی را کنترل می‌کنند
+3. **بازخورد** - چگونه نتیجه را می‌فهمند
+4. **پیشرفت** - چگونه تکامل/عمق می‌یابد
+5. **ملاحظات تعادل**
+6. **موارد حاشیه‌ای** - سناریوهای غیرمعمول`} />
 
-### Level Design
+### طراحی مرحله
 
-<TryIt compact prompt={`Design a level for \${gameType:a stealth action game}.
+<TryIt compact prompt={`یک مرحله برای \${gameType:یک بازی اکشن مخفی‌کاری} طراحی کن.
 
-Setting: \${setting:corporate headquarters at night}
-Objectives: \${objectives:infiltrate the server room and extract data}
-Difficulty: \${difficulty:mid-game, player has basic abilities}
+محیط: \${setting:مقر شرکتی در شب}
+اهداف: \${objectives:نفوذ به اتاق سرور و استخراج داده}
+سختی: \${difficulty:میانه بازی، بازیکن توانایی‌های پایه را دارد}
 
-Include:
-1. **Layout overview** - spatial description
-2. **Pacing graph** - tension over time
-3. **Challenges** - obstacles and how to overcome
-4. **Rewards** - what player gains
-5. **Secrets** - optional discoveries
-6. **Teaching moments** - skill introduction
-7. **Environmental storytelling** - narrative through design`} />
+شامل:
+1. **نمای کلی چیدمان** - توصیف فضایی
+2. **نمودار ریتم** - تنش در طول زمان
+3. **چالش‌ها** - موانع و نحوه غلبه
+4. **پاداش‌ها** - بازیکن چه چیزی به دست می‌آورد
+5. **رازها** - کشف‌های اختیاری
+6. **لحظات آموزشی** - معرفی مهارت
+7. **روایت محیطی** - داستان از طریق طراحی`} />
 
-### Character/Enemy Design
+### طراحی شخصیت/دشمن
 
-<TryIt compact prompt={`Design a \${entityType:boss enemy} for \${game:a dark fantasy action RPG}.
+<TryIt compact prompt={`یک \${entityType:دشمن باس} برای \${game:یک بازی اکشن نقش‌آفرینی فانتزی تاریک} طراحی کن.
 
-Role: \${role:mid-game boss}
-Context: \${context:guards a corrupted forest temple}
+نقش: \${role:باس میانه بازی}
+زمینه: \${context:محافظ یک معبد جنگلی فاسدشده}
 
-Define:
-1. **Visual concept** - appearance description
-2. **Abilities** - what they can do
-3. **Behavior patterns** - how they act
-4. **Weaknesses** - vulnerabilities
-5. **Personality** - if relevant
-6. **Lore/Backstory** - world integration
-7. **Player strategy** - how to interact/defeat`} />
+تعریف کن:
+1. **مفهوم بصری** - توصیف ظاهر
+2. **توانایی‌ها** - چه کارهایی می‌تواند انجام دهد
+3. **الگوهای رفتاری** - چگونه عمل می‌کند
+4. **نقاط ضعف** - آسیب‌پذیری‌ها
+5. **شخصیت** - در صورت مرتبط بودن
+6. **داستان پس‌زمینه** - یکپارچگی با جهان
+7. **استراتژی بازیکن** - نحوه تعامل/شکست دادن`} />
 
-## Brainstorming & Ideation
+## طوفان فکری و ایده‌پردازی
 
-### Creative Brainstorm
+### طوفان فکری خلاقانه
 
-<TryIt compact prompt={`Brainstorm ideas for \${project:a mobile game about mindfulness}.
+<TryIt compact prompt={`برای \${project:یک بازی موبایل درباره ذهن‌آگاهی} ایده‌هایی طوفان فکری کن.
 
-Constraints:
-- \${constraint1:must be playable in 2-minute sessions}
-- \${constraint2:no violence or competition}
-- \${constraint3:nature themes}
+محدودیت‌ها:
+- \${constraint1:باید در جلسات ۲ دقیقه‌ای قابل بازی باشد}
+- \${constraint2:بدون خشونت یا رقابت}
+- \${constraint3:تم‌های طبیعت}
 
-Generate:
-1. **10 conventional ideas** - solid, expected
-2. **5 unusual ideas** - unexpected angles
-3. **3 wild ideas** - boundary-pushing
-4. **1 combination** - merge best elements
+تولید کن:
+1. **۱۰ ایده معمولی** - محکم، قابل انتظار
+2. **۵ ایده غیرمعمول** - زوایای غیرمنتظره
+3. **۳ ایده وحشیانه** - مرزشکن
+4. **۱ ترکیب** - ادغام بهترین عناصر
 
-For each, one sentence description + why it works.
-Don't self-censor—quantity over quality first.`} />
+برای هر کدام، یک جمله توصیف + چرا کار می‌کند.
+خودسانسوری نکن—کمیت قبل از کیفیت.`} />
 
-### Creative Constraints
+### محدودیت‌های خلاقانه
 
-<TryIt compact prompt={`Give me creative constraints for \${projectType:writing a short story}.
+<TryIt compact prompt={`محدودیت‌های خلاقانه‌ای برای \${projectType:نوشتن یک داستان کوتاه} به من بده.
 
-I want constraints that:
-- Force unexpected choices
-- Eliminate obvious solutions
-- Create productive limitations
+می‌خواهم محدودیت‌هایی که:
+- انتخاب‌های غیرمنتظره را مجبور کنند
+- راه‌حل‌های بدیهی را حذف کنند
+- محدودیت‌های سازنده ایجاد کنند
 
-Format:
-1. Constraint - Why it helps creativity
+قالب:
+1. محدودیت - چرا به خلاقیت کمک می‌کند
 2. ...
 
-Then show one example of how applying these constraints 
-transforms a generic concept into something interesting.`} />
+سپس یک مثال نشان بده که چگونه اعمال این محدودیت‌ها 
+یک مفهوم عمومی را به چیزی جالب تبدیل می‌کند.`} />
 
-### Style Exploration
+### کاوش سبک
 
-<TryIt compact prompt={`Explore different styles for \${concept:a coffee shop logo}.
+<TryIt compact prompt={`سبک‌های مختلف را برای \${concept:یک لوگوی کافی‌شاپ} کاوش کن.
 
-Show how this concept would manifest in:
-1. **Minimalist** - stripped to essence
-2. **Maximalist** - abundant and detailed
-3. **Retro 1950s** - period-specific
-4. **Futuristic** - forward-looking
-5. **Folk/Traditional** - cultural roots
-6. **Abstract** - non-representational
-7. **Surrealist** - dreamlike logic
+نشان بده این مفهوم چگونه در موارد زیر تجلی می‌یابد:
+1. **مینیمالیست** - خلاصه شده به ذات
+2. **ماکسیمالیست** - فراوان و جزئی
+3. **رترو دهه ۱۹۵۰** - خاص دوره
+4. **آینده‌نگر** - رو به جلو
+5. **فولک/سنتی** - ریشه‌های فرهنگی
+6. **انتزاعی** - غیرنمایشی
+7. **سوررئالیست** - منطق رویاگونه
 
-For each, describe key characteristics and example.`} />
+برای هر کدام، ویژگی‌های کلیدی و مثال را توصیف کن.`} />
 
-## Prompt Templates from prompts.chat
+## قالب‌های پرامپت از prompts.chat
 
-### Act as a Creative Director
+### نقش مدیر خلاق را بازی کن
 
-<TryIt compact prompt={`I want you to act as a creative director. I will describe creative projects and you will develop creative visions, guide aesthetic decisions, and ensure conceptual coherence. Draw on art history, design principles, and cultural trends. Help me make bold creative choices with clear rationale.`} />
+<TryIt compact prompt={`می‌خواهم نقش یک مدیر خلاق را بازی کنی. پروژه‌های خلاقانه را توصیف می‌کنم و تو چشم‌اندازهای خلاقانه توسعه می‌دهی، تصمیمات زیبایی‌شناختی را هدایت می‌کنی و انسجام مفهومی را تضمین می‌کنی. از تاریخ هنر، اصول طراحی و روندهای فرهنگی بهره ببر. کمکم کن انتخاب‌های خلاقانه جسورانه با دلیل روشن داشته باشم.`} />
 
-### Act as a Worldbuilder
+### نقش جهان‌ساز را بازی کن
 
-<TryIt compact prompt={`I want you to act as a worldbuilder. Help me create rich, consistent fictional worlds with detailed histories, cultures, and systems. Ask probing questions to deepen the world. Point out inconsistencies and suggest solutions. Make the world feel lived-in and believable.`} />
+<TryIt compact prompt={`می‌خواهم نقش یک جهان‌ساز را بازی کنی. کمکم کن جهان‌های داستانی غنی و منسجم با تاریخ‌ها، فرهنگ‌ها و سیستم‌های جزئی بسازم. سؤالات کاوشگرانه بپرس تا جهان را عمق ببخشی. تناقضات را نشان بده و راه‌حل‌ها پیشنهاد کن. جهان را زنده و باورپذیر کن.`} />
 
-### Act as a Dungeon Master
+### نقش دانجن مستر را بازی کن
 
-<TryIt compact prompt={`I want you to act as a Dungeon Master for a tabletop RPG. Create engaging scenarios, describe vivid settings, roleplay NPCs with distinct personalities, and respond dynamically to player choices. Balance challenge with fun, and keep the narrative compelling.`} />
+<TryIt compact prompt={`می‌خواهم نقش یک دانجن مستر برای یک بازی نقش‌آفرینی رومیزی را بازی کنی. سناریوهای جذاب بساز، محیط‌های زنده توصیف کن، شخصیت‌های غیربازیکن را با شخصیت‌های متمایز ایفا کن و به انتخاب‌های بازیکنان به صورت پویا پاسخ بده. چالش را با سرگرمی متعادل کن و روایت را جذاب نگه دار.`} />
 
-## Creative Collaboration Tips
+## نکات همکاری خلاقانه
 
-### Building on Ideas
+### ساختن بر روی ایده‌ها
 
-<TryIt compact prompt={`I have this creative idea: \${idea:a mystery novel set in a space station where the AI is the detective}
+<TryIt compact prompt={`من این ایده خلاقانه را دارم: \${idea:یک رمان معمایی در یک ایستگاه فضایی که هوش مصنوعی کارآگاه است}
 
-Help me develop it by:
-1. What's working well
-2. Questions to explore
-3. Unexpected directions
-4. Potential challenges
-5. First three development steps
+کمکم کن توسعه‌اش دهم با:
+1. چه چیزی خوب کار می‌کند
+2. سؤالاتی برای کاوش
+3. جهت‌های غیرمنتظره
+4. چالش‌های بالقوه
+5. سه قدم اول توسعه
 
-Don't replace my vision—enhance it.`} />
+چشم‌انداز من را جایگزین نکن—تقویتش کن.`} />
 
-### Creative Feedback
+### بازخورد خلاقانه
 
-<TryIt compact prompt={`Give me feedback on this creative work:
+<TryIt compact prompt={`درباره این اثر خلاقانه بازخورد بده:
 
-\${work:paste your creative work here}
+\${work:اثر خلاقانه‌ات را اینجا بچسبان}
 
-As a \${perspective:fellow creator}:
-1. What resonates most strongly
-2. What feels underdeveloped
-3. What's confusing or unclear
-4. One bold suggestion
-5. What would make this unforgettable
+به عنوان یک \${perspective:خالق هم‌قطار}:
+1. چه چیزی بیشتر طنین‌انداز می‌شود
+2. چه چیزی توسعه‌نیافته به نظر می‌رسد
+3. چه چیزی گیج‌کننده یا نامشخص است
+4. یک پیشنهاد جسورانه
+5. چه چیزی این را فراموش‌نشدنی می‌کند
 
-Be honest but constructive.`} />
+صادق اما سازنده باش.`} />
 
-## Summary
+## خلاصه
 
-<Callout type="tip" title="Key Techniques">
-Provide enough structure to guide without constraining, embrace specificity (vague = generic), include references and inspirations, request variations and alternatives, and maintain your creative vision while exploring possibilities.
+<Callout type="tip" title="تکنیک‌های کلیدی">
+ساختار کافی برای راهنمایی بدون محدود کردن فراهم کن، از جزئیات استقبال کن (مبهم = عمومی)، مراجع و الهامات را بگنجان، تنوع و جایگزین‌ها درخواست کن، و چشم‌انداز خلاقانه‌ات را حفظ کن در حالی که امکانات را کاوش می‌کنی.
 </Callout>
 
 <Quiz 
-  question="Why do specific constraints often produce better creative results than open-ended prompts?"
+  question="چرا محدودیت‌های خاص اغلب نتایج خلاقانه بهتری نسبت به پرامپت‌های باز تولید می‌کنند؟"
   options={[
-    "AI can only follow strict instructions",
-    "Constraints force unexpected solutions and eliminate obvious choices",
-    "Open-ended prompts are too difficult for AI",
-    "Constraints make the output shorter"
+    "هوش مصنوعی فقط می‌تواند دستورالعمل‌های دقیق را دنبال کند",
+    "محدودیت‌ها راه‌حل‌های غیرمنتظره را مجبور می‌کنند و انتخاب‌های بدیهی را حذف می‌کنند",
+    "پرامپت‌های باز برای هوش مصنوعی خیلی سخت هستند",
+    "محدودیت‌ها خروجی را کوتاه‌تر می‌کنند"
   ]}
   correctIndex={1}
-  explanation="Paradoxically, limitations spark creativity. When obvious solutions are eliminated, you're forced to explore unexpected directions. 'Write a story' produces clichés; 'Write a mystery set in a submarine, told backwards, in under 500 words' produces something unique."
+  explanation="به طور متناقض، محدودیت‌ها خلاقیت را شعله‌ور می‌کنند. وقتی راه‌حل‌های بدیهی حذف می‌شوند، مجبور می‌شوید جهت‌های غیرمنتظره را کاوش کنید. «یک داستان بنویس» کلیشه تولید می‌کند؛ «یک معما در یک زیردریایی بنویس که به صورت معکوس روایت می‌شود، در کمتر از ۵۰۰ کلمه» چیزی منحصربه‌فرد تولید می‌کند."
 />
 
-AI is a collaborator, not a replacement for creative vision. Use it to explore, generate options, and overcome blocks—but the creative decisions remain yours.
+هوش مصنوعی یک همکار است، نه جایگزینی برای چشم‌انداز خلاقانه. از آن برای کاوش، تولید گزینه‌ها و غلبه بر بن‌بست‌ها استفاده کن—اما تصمیمات خلاقانه متعلق به توست.

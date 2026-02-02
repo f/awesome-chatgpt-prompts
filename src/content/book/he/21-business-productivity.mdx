@@ -1,335 +1,335 @@
-AI can dramatically enhance professional productivity. This chapter covers prompts for business communication, analysis, planning, and workflow optimization.
+בינה מלאכותית יכולה לשפר באופן דרמטי את הפרודוקטיביות המקצועית. פרק זה מכסה הנחיות לתקשורת עסקית, ניתוח, תכנון ואופטימיזציה של תהליכי עבודה.
 
-<Callout type="info" title="AI for Business">
-AI excels at drafting, analysis, and structuring—freeing you to focus on strategy, relationships, and decisions that require human judgment.
+<Callout type="info" title="בינה מלאכותית לעסקים">
+בינה מלאכותית מצטיינת בניסוח טיוטות, ניתוח ומבנה—ומשחררת אתכם להתמקד באסטרטגיה, ביחסים ובהחלטות הדורשות שיקול דעת אנושי.
 </Callout>
 
-## Business Communication
+## תקשורת עסקית
 
-### Do's and Don'ts: Business Emails
+### מה כן ומה לא: מיילים עסקיים
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Write an email to my boss about the project." }}
-  after={{ label: "✓ Complete context", content: "Write an email to my manager (Sarah) updating her on the Q4 marketing project.\n\nKey points: We're on track for the Nov 15 deadline, resolved the vendor issue, need her approval on the $5K budget increase.\nTone: Professional but friendly (we have a good relationship)\nKeep under 150 words with a clear ask at the end." }}
+  before={{ label: "❌ בקשה מעורפלת", content: "כתוב מייל למנהל שלי על הפרויקט." }}
+  after={{ label: "✓ הקשר מלא", content: "כתוב מייל למנהלת שלי (שרה) ועדכן אותה על פרויקט השיווק של Q4.\n\nנקודות מפתח: אנחנו בלוח הזמנים ליעד ה-15 בנובמבר, פתרנו את בעיית הספק, צריכים את אישורה להגדלת תקציב של 5,000$.\nטון: מקצועי אך ידידותי (יש לנו יחסים טובים)\nשמור על פחות מ-150 מילים עם בקשה ברורה בסוף." }}
 />
 
-### Email Drafting
+### ניסוח מיילים
 
-<TryIt compact prompt={`Write a professional email.
+<TryIt compact prompt={`כתוב מייל מקצועי.
 
-Context:
-- To: [recipient and relationship]
-- Purpose: [request/inform/follow-up/apologize]
-- Key points: [what must be communicated]
-- Tone: [formal/friendly professional/urgent]
+הקשר:
+- אל: [נמען והיחסים]
+- מטרה: [בקשה/עדכון/מעקב/התנצלות]
+- נקודות מפתח: [מה צריך להעביר]
+- טון: [רשמי/מקצועי-ידידותי/דחוף]
 
-Constraints:
-- Keep under [X] sentences
-- Clear call-to-action
-- Subject line included`} />
+אילוצים:
+- שמור על פחות מ-[X] משפטים
+- קריאה לפעולה ברורה
+- כולל שורת נושא`} />
 
-**Examples by purpose:**
+**דוגמאות לפי מטרה:**
 
-<TryIt compact prompt={`\${emailType:Meeting Request}: Write an email requesting a meeting with a potential client to discuss partnership opportunities. Keep it brief and make it easy for them to say yes.`} />
+<TryIt compact prompt={`\${emailType:בקשת פגישה}: כתוב מייל המבקש פגישה עם לקוח פוטנציאלי לדיון בהזדמנויות שותפות. שמור על קיצור והקל עליהם לומר כן.`} />
 
-<TryIt compact prompt={`\${emailType:Difficult Conversation}: Write an email declining a vendor's proposal while maintaining the relationship for future opportunities. Be clear but diplomatic.`} />
+<TryIt compact prompt={`\${emailType:שיחה קשה}: כתוב מייל המסרב להצעת ספק תוך שמירה על הקשר להזדמנויות עתידיות. היה ברור אך דיפלומטי.`} />
 
-<TryIt compact prompt={`\${emailType:Status Update}: Write a project status email to stakeholders. The project is 2 weeks behind schedule due to scope changes. Present the situation professionally with a recovery plan.`} />
+<TryIt compact prompt={`\${emailType:עדכון סטטוס}: כתוב מייל עדכון סטטוס פרויקט לבעלי עניין. הפרויקט מאחר בשבועיים בגלל שינויי היקף. הצג את המצב בצורה מקצועית עם תוכנית התאוששות.`} />
 
-### Presentation Content
+### תוכן מצגת
 
-<TryIt compact prompt={`Create presentation content for \${topic:Q4 sales strategy}.
+<TryIt compact prompt={`צור תוכן מצגת עבור \${topic:אסטרטגיית מכירות Q4}.
 
-Audience: \${audience:executive leadership}
-Duration: \${duration:15 minutes}
-Goal: \${goal:persuade to approve budget increase}
+קהל יעד: \${audience:הנהלה בכירה}
+משך: \${duration:15 דקות}
+מטרה: \${goal:לשכנע לאשר הגדלת תקציב}
 
-Provide for each slide:
-- Title
-- Key message (one main point)
-- Supporting points (3 max)
-- Speaker notes (what to say)
-- Visual suggestion (chart/image/diagram)
+ספק לכל שקף:
+- כותרת
+- מסר מפתח (נקודה עיקרית אחת)
+- נקודות תומכות (מקסימום 3)
+- הערות מרצה (מה לומר)
+- הצעה ויזואלית (תרשים/תמונה/דיאגרמה)
 
-Structure:
-1. Hook/Attention grabber
-2. Problem/Opportunity
-3. Solution/Recommendation
-4. Evidence/Support
-5. Call to action`} />
+מבנה:
+1. Hook/משיכת תשומת לב
+2. בעיה/הזדמנות
+3. פתרון/המלצה
+4. ראיות/תמיכה
+5. קריאה לפעולה`} />
 
-### Report Writing
+### כתיבת דוחות
 
-<TryIt compact prompt={`Write a \${reportType:recommendation} report on \${topic:expanding into European markets}.
+<TryIt compact prompt={`כתוב דוח \${reportType:המלצות} על \${topic:התרחבות לשווקים אירופיים}.
 
-Report type: \${type:recommendation}
-Audience: \${audience:C-suite}
-Length: \${length:5 pages}
+סוג דוח: \${type:המלצות}
+קהל יעד: \${audience:הנהלה בכירה}
+אורך: \${length:5 עמודים}
 
-Structure:
-1. Executive Summary (key findings, 1 paragraph)
-2. Background/Context
-3. Methodology (if applicable)
-4. Findings
-5. Analysis
-6. Recommendations
-7. Next Steps
+מבנה:
+1. תקציר מנהלים (ממצאים מרכזיים, פסקה אחת)
+2. רקע/הקשר
+3. מתודולוגיה (אם רלוונטי)
+4. ממצאים
+5. ניתוח
+6. המלצות
+7. צעדים הבאים
 
-Include: Data visualization suggestions where relevant
-Tone: \${tone:formal business}`} />
+כלול: הצעות להמחשה גרפית של נתונים במקומות רלוונטיים
+טון: \${tone:עסקי רשמי}`} />
 
-## Analysis & Decision-Making
+## ניתוח וקבלת החלטות
 
-<Callout type="tip" title="Analysis Principle">
-AI can structure your thinking, but **you provide the real-world context**. The best analyses combine AI's frameworks with your domain knowledge.
+<Callout type="tip" title="עקרון הניתוח">
+בינה מלאכותית יכולה למבנה את החשיבה שלכם, אבל **אתם מספקים את ההקשר מהעולם האמיתי**. הניתוחים הטובים ביותר משלבים את המסגרות של הבינה המלאכותית עם הידע התחומי שלכם.
 </Callout>
 
-### SWOT Analysis
+### ניתוח SWOT
 
-<TryIt compact prompt={`Conduct a SWOT analysis for \${subject:launching a new mobile app}.
+<TryIt compact prompt={`בצע ניתוח SWOT עבור \${subject:השקת אפליקציית מובייל חדשה}.
 
-Context:
-\${context:We're a mid-size fintech company considering a consumer banking app}
+הקשר:
+\${context:אנחנו חברת פינטק בינונית השוקלת אפליקציית בנקאות לצרכנים}
 
-Provide:
+ספק:
 
-**Strengths** (internal positives)
-- At least 4 points with brief explanations
+**חוזקות** (יתרונות פנימיים)
+- לפחות 4 נקודות עם הסברים קצרים
 
-**Weaknesses** (internal negatives)
-- At least 4 points with brief explanations
+**חולשות** (חסרונות פנימיים)
+- לפחות 4 נקודות עם הסברים קצרים
 
-**Opportunities** (external positives)
-- At least 4 points with brief explanations
+**הזדמנויות** (יתרונות חיצוניים)
+- לפחות 4 נקודות עם הסברים קצרים
 
-**Threats** (external negatives)
-- At least 4 points with brief explanations
+**איומים** (חסרונות חיצוניים)
+- לפחות 4 נקודות עם הסברים קצרים
 
-**Strategic Implications**
-- Key insight from analysis
-- Recommended priorities`} />
+**השלכות אסטרטגיות**
+- תובנה מפתח מהניתוח
+- עדיפויות מומלצות`} />
 
-### Decision Framework
+### מסגרת קבלת החלטות
 
-<TryIt compact prompt={`Help me make a decision about \${decision:which CRM to choose}.
+<TryIt compact prompt={`עזור לי לקבל החלטה לגבי \${decision:איזה CRM לבחור}.
 
-Options:
+אפשרויות:
 1. \${optionA:Salesforce}
 2. \${optionB:HubSpot}
 3. \${optionC:Pipedrive}
 
-Criteria that matter to me:
-- \${criterion1:ease of use} (weight: high)
-- \${criterion2:integration with existing tools} (weight: high)
-- \${criterion3:cost} (weight: medium)
+קריטריונים שחשובים לי:
+- \${criterion1:קלות שימוש} (משקל: גבוה)
+- \${criterion2:אינטגרציה עם כלים קיימים} (משקל: גבוה)
+- \${criterion3:עלות} (משקל: בינוני)
 
-Provide:
-1. Score each option against each criterion (1-5)
-2. Weighted analysis
-3. Pros/cons summary for each
-4. Risk assessment
-5. Recommendation with rationale
-6. Questions to consider before deciding`} />
+ספק:
+1. דרג כל אפשרות מול כל קריטריון (1-5)
+2. ניתוח משוקלל
+3. סיכום יתרונות/חסרונות לכל אחת
+4. הערכת סיכונים
+5. המלצה עם נימוק
+6. שאלות לשקול לפני ההחלטה`} />
 
-### Competitive Analysis
+### ניתוח תחרותי
 
-<TryIt compact prompt={`Analyze \${competitor:Slack} compared to \${ourProduct:our team communication tool}.
+<TryIt compact prompt={`נתח את \${competitor:Slack} בהשוואה ל-\${ourProduct:כלי התקשורת הצוותית שלנו}.
 
-Research their:
-1. **Products/Services** - offerings, pricing, positioning
-2. **Strengths** - what they do well
-3. **Weaknesses** - where they fall short
-4. **Market position** - target segments, market share
-5. **Strategy** - apparent direction and focus
+חקור את:
+1. **מוצרים/שירותים** - היצע, תמחור, מיצוב
+2. **חוזקות** - במה הם מצטיינים
+3. **חולשות** - איפה הם נכשלים
+4. **מיקום בשוק** - פלחי יעד, נתח שוק
+5. **אסטרטגיה** - כיוון ומיקוד נראים לעין
 
-Compare to us:
-- Where we're stronger
-- Where they're stronger
-- Opportunity gaps
-- Competitive threats
+השווה אלינו:
+- איפה אנחנו חזקים יותר
+- איפה הם חזקים יותר
+- פערי הזדמנויות
+- איומים תחרותיים
 
-Recommend: Actions to improve our competitive position`} />
+המלץ: פעולות לשיפור המיקום התחרותי שלנו`} />
 
-## Planning & Strategy
+## תכנון ואסטרטגיה
 
-### Goal Setting (OKRs)
+### הגדרת יעדים (OKRs)
 
-<TryIt compact prompt={`Help me set OKRs for \${scope:Q1 marketing team}.
+<TryIt compact prompt={`עזור לי להגדיר OKRs עבור \${scope:צוות השיווק Q1}.
 
-Context:
-- Company goals: \${companyGoals:increase revenue 25% YoY}
-- Current situation: \${currentState:brand awareness is low in new markets}
-- Key priorities: \${priorities:lead generation, content marketing}
+הקשר:
+- יעדי החברה: \${companyGoals:הגדלת הכנסות ב-25% שנה-על-שנה}
+- מצב נוכחי: \${currentState:מודעות למותג נמוכה בשווקים חדשים}
+- עדיפויות מפתח: \${priorities:יצירת לידים, שיווק תוכן}
 
-Create 3 Objectives with 3-4 Key Results each.
+צור 3 יעדים עם 3-4 תוצאות מפתח לכל אחד.
 
-Format:
-**Objective 1:** Qualitative goal - inspiring
-- KR 1.1: Quantitative measure (Current: X → Target: Y)
-- KR 1.2: Quantitative measure (Current: X → Target: Y)
-- KR 1.3: Quantitative measure (Current: X → Target: Y)
+פורמט:
+**יעד 1:** מטרה איכותית - מעוררת השראה
+- KR 1.1: מדד כמותי (נוכחי: X → יעד: Y)
+- KR 1.2: מדד כמותי (נוכחי: X → יעד: Y)
+- KR 1.3: מדד כמותי (נוכחי: X → יעד: Y)
 
-Ensure KRs are:
-- Measurable
-- Ambitious but achievable
-- Time-bound
-- Outcome-focused (not tasks)`} />
+ודא שתוצאות המפתח הן:
+- מדידות
+- שאפתניות אך ברות השגה
+- מוגבלות בזמן
+- ממוקדות בתוצאות (לא במשימות)`} />
 
-### Project Planning
+### תכנון פרויקט
 
-<TryIt compact prompt={`Create a project plan for \${project:website redesign}.
+<TryIt compact prompt={`צור תוכנית פרויקט עבור \${project:עיצוב מחדש של האתר}.
 
-Scope: \${scope:new homepage, product pages, checkout flow}
-Timeline: \${timeline:3 months}
-Team: \${team:2 developers, 1 designer, 1 PM}
-Budget: \${budget:$50,000}
+היקף: \${scope:דף בית חדש, דפי מוצר, תהליך תשלום}
+לוח זמנים: \${timeline:3 חודשים}
+צוות: \${team:2 מפתחים, מעצב 1, PM 1}
+תקציב: \${budget:$50,000}
 
-Provide:
-1. **Project phases** with milestones
-2. **Work breakdown structure** (major tasks)
-3. **Timeline** (Gantt-style description)
-4. **Dependencies** (what blocks what)
-5. **Risks** (potential issues and mitigation)
-6. **Success criteria** (how we know we're done)`} />
+ספק:
+1. **שלבי פרויקט** עם אבני דרך
+2. **מבנה פירוק עבודה** (משימות עיקריות)
+3. **לוח זמנים** (תיאור בסגנון Gantt)
+4. **תלויות** (מה חוסם מה)
+5. **סיכונים** (בעיות פוטנציאליות ומיטיגציה)
+6. **קריטריונים להצלחה** (איך נדע שסיימנו)`} />
 
-### Meeting Agenda
+### סדר יום לפגישה
 
-<TryIt compact prompt={`Create an agenda for \${meetingType:quarterly planning}.
+<TryIt compact prompt={`צור סדר יום עבור \${meetingType:תכנון רבעוני}.
 
-Purpose: \${purpose:align on Q2 priorities and resource allocation}
-Attendees: \${attendees:department heads, CEO, COO}
-Duration: \${duration:90 minutes}
+מטרה: \${purpose:התיישרות על עדיפויות Q2 והקצאת משאבים}
+משתתפים: \${attendees:מנהלי מחלקות, מנכ"ל, סמנכ"ל תפעול}
+משך: \${duration:90 דקות}
 
-Format:
-| Time | Topic | Owner | Goal |
+פורמט:
+| זמן | נושא | אחראי | מטרה |
 |------|-------|-------|------|
-| 5 min | Opening | Facilitator | Context |
+| 5 דק' | פתיחה | מנחה | הקשר |
 | ... | ... | ... | ... |
 
-Include:
-- Time allocations
-- Clear owner for each item
-- Specific outcomes expected
-- Pre-work required
-- Follow-up action item template`} />
+כלול:
+- הקצאות זמן
+- אחראי ברור לכל פריט
+- תוצאות ספציפיות צפויות
+- עבודה מקדימה נדרשת
+- תבנית פריטי מעקב`} />
 
-## Productivity Workflows
+## תהליכי עבודה לפרודוקטיביות
 
-### Task Prioritization
+### תעדוף משימות
 
-<TryIt compact prompt={`Help me prioritize my tasks using the Eisenhower Matrix.
+<TryIt compact prompt={`עזור לי לתעדף את המשימות שלי באמצעות מטריצת אייזנהאואר.
 
-My tasks:
-\${tasks:1. Prepare quarterly report (due Friday)\n2. Review job applications\n3. Reply to vendor emails\n4. Plan team offsite\n5. Update LinkedIn profile}
+המשימות שלי:
+\${tasks:1. הכנת דוח רבעוני (עד יום שישי)\n2. סקירת מועמדויות לעבודה\n3. מענה למיילים של ספקים\n4. תכנון יום גיבוש צוותי\n5. עדכון פרופיל LinkedIn}
 
-Categorize each into:
-1. **Urgent + Important** (Do first)
-2. **Important, Not Urgent** (Schedule)
-3. **Urgent, Not Important** (Delegate)
-4. **Neither** (Eliminate)
+סווג כל אחת ל:
+1. **דחוף + חשוב** (עשה קודם)
+2. **חשוב, לא דחוף** (תזמן)
+3. **דחוף, לא חשוב** (האצל)
+4. **אף אחד** (בטל)
 
-Then provide:
-- Recommended order of execution
-- Time estimates
-- Suggestions for delegation or elimination`} />
+לאחר מכן ספק:
+- סדר ביצוע מומלץ
+- הערכות זמן
+- הצעות להאצלה או ביטול`} />
 
-### Process Documentation
+### תיעוד תהליכים
 
-<TryIt compact prompt={`Document this business process: \${processName:customer refund request}.
+<TryIt compact prompt={`תעד את התהליך העסקי הזה: \${processName:בקשת החזר כספי ללקוח}.
 
-Create:
-1. **Process overview** (1 paragraph)
-2. **Trigger** (what starts this process)
-3. **Steps** (numbered, with responsible party)
-4. **Decision points** (if X then Y format)
-5. **Outputs** (what this process produces)
-6. **Systems involved** (tools/software)
-7. **Exceptions** (edge cases and handling)
+צור:
+1. **סקירת התהליך** (פסקה אחת)
+2. **טריגר** (מה מתחיל את התהליך)
+3. **שלבים** (ממוספרים, עם גורם אחראי)
+4. **נקודות החלטה** (בפורמט אם X אז Y)
+5. **פלטים** (מה התהליך מייצר)
+6. **מערכות מעורבות** (כלים/תוכנה)
+7. **חריגים** (מקרי קצה וטיפול)
 
-Format: Clear enough for new employee to follow`} />
+פורמט: ברור מספיק כדי שעובד חדש יוכל לעקוב`} />
 
-### Standard Operating Procedure
+### נוהל הפעלה תקני
 
-<TryIt compact prompt={`Write an SOP for \${task:onboarding new employees to Slack}.
+<TryIt compact prompt={`כתוב SOP עבור \${task:קליטת עובדים חדשים ל-Slack}.
 
-Audience: \${audience:HR administrators}
-Complexity: \${complexity:basic users}
+קהל יעד: \${audience:מנהלי משאבי אנוש}
+מורכבות: \${complexity:משתמשים בסיסיים}
 
-Include:
-1. Purpose and scope
-2. Prerequisites/requirements
-3. Step-by-step instructions
-4. Screenshots/visual placeholders
-5. Quality checkpoints
-6. Common errors and troubleshooting
-7. Related SOPs/documents
-8. Version history`} />
+כלול:
+1. מטרה והיקף
+2. דרישות מוקדמות
+3. הוראות צעד אחר צעד
+4. מקומות לצילומי מסך/ויזואליה
+5. נקודות בקרת איכות
+6. שגיאות נפוצות ופתרון בעיות
+7. SOPs/מסמכים קשורים
+8. היסטוריית גרסאות`} />
 
-## Communication Templates
+## תבניות תקשורת
 
-### Stakeholder Update
+### עדכון בעלי עניין
 
-<TryIt compact prompt={`Write a stakeholder update for \${project:CRM migration project}.
+<TryIt compact prompt={`כתוב עדכון לבעלי עניין עבור \${project:פרויקט מיגרציית CRM}.
 
-Status: \${status:at risk}
-Period: \${period:Week of Jan 6-10}
+סטטוס: \${status:בסיכון}
+תקופה: \${period:שבוע 6-10 בינואר}
 
-Format:
-## Project Name Update
+פורמט:
+## עדכון שם הפרויקט
 
-**Status:** 🟢/🟡/🔴
+**סטטוס:** 🟢/🟡/🔴
 
-**Progress this period:**
-- Accomplishment 1
-- Accomplishment 2
+**התקדמות בתקופה זו:**
+- הישג 1
+- הישג 2
 
-**Next period goals:**
-- Goal 1
-- Goal 2
+**יעדים לתקופה הבאה:**
+- יעד 1
+- יעד 2
 
-**Risks/Blockers:**
-- If any
+**סיכונים/חסמים:**
+- אם יש
 
-**Decisions needed:**
-- If any`} />
+**החלטות נדרשות:**
+- אם יש`} />
 
-### Feedback Request
+### בקשת משוב
 
-<TryIt compact prompt={`Write a message requesting feedback on \${deliverable:the new product roadmap document}.
+<TryIt compact prompt={`כתוב הודעה המבקשת משוב על \${deliverable:מסמך מפת הדרכים למוצר החדש}.
 
-Context: \${context:This will guide our Q2 priorities, I want to make sure I haven't missed anything}
-Specific areas for feedback: \${feedbackAreas:timeline feasibility, resource allocation, missing features}
-Timeline: \${deadline:by Friday EOD}
+הקשר: \${context:זה ינחה את העדיפויות שלנו ב-Q2, אני רוצה לוודא שלא פספסתי משהו}
+תחומים ספציפיים למשוב: \${feedbackAreas:היתכנות לוח זמנים, הקצאת משאבים, תכונות חסרות}
+לוח זמנים: \${deadline:עד יום שישי סוף היום}
 
-Tone: Professional but not overly formal
-Make it easy to respond with specific questions`} />
+טון: מקצועי אך לא רשמי מדי
+הקל על המענה עם שאלות ספציפיות`} />
 
-## Prompt Templates from prompts.chat
+## תבניות הנחיות מ-prompts.chat
 
-### Act as a Business Consultant
+### פעל כיועץ עסקי
 
-<TryIt compact prompt={`I want you to act as a business consultant. I will describe business situations and challenges, and you will provide strategic advice, frameworks for thinking about problems, and actionable recommendations. Draw on established business principles while being practical and specific.`} />
+<TryIt compact prompt={`אני רוצה שתפעל כיועץ עסקי. אתאר מצבים ואתגרים עסקיים, ואתה תספק עצות אסטרטגיות, מסגרות לחשיבה על בעיות והמלצות מעשיות. הסתמך על עקרונות עסקיים מבוססים תוך היותך פרקטי וספציפי.`} />
 
-### Act as a Meeting Facilitator
+### פעל כמנחה פגישות
 
-<TryIt compact prompt={`I want you to act as a meeting facilitator. Help me plan and run effective meetings. Create agendas, suggest discussion frameworks, help synthesize conversations, and draft follow-up communications. Focus on making meetings productive and action-oriented.`} />
+<TryIt compact prompt={`אני רוצה שתפעל כמנחה פגישות. עזור לי לתכנן ולנהל פגישות אפקטיביות. צור סדרי יום, הצע מסגרות לדיון, עזור לסכם שיחות ונסח תקשורת מעקב. התמקד בהפיכת פגישות לפרודוקטיביות וממוקדות פעולה.`} />
 
-## Summary
+## סיכום
 
-<Callout type="tip" title="Key Techniques">
-Specify the audience and their needs, define the desired outcome clearly, include relevant context and constraints, request specific formats and structures, and consider professional tone requirements.
+<Callout type="tip" title="טכניקות מפתח">
+ציינו את קהל היעד ואת צרכיו, הגדירו את התוצאה הרצויה בבירור, כללו הקשר ואילוצים רלוונטיים, בקשו פורמטים ומבנים ספציפיים, ושקלו דרישות טון מקצועי.
 </Callout>
 
 <Quiz 
-  question="What should you always include when asking AI to write a business email?"
+  question="מה תמיד צריך לכלול כשמבקשים מבינה מלאכותית לכתוב מייל עסקי?"
   options={[
-    "Just the topic you want to discuss",
-    "Recipient, purpose, key points, and desired tone",
-    "Only the recipient's name",
-    "A template from the internet"
+    "רק את הנושא שרוצים לדון בו",
+    "נמען, מטרה, נקודות מפתח וטון רצוי",
+    "רק את שם הנמען",
+    "תבנית מהאינטרנט"
   ]}
   correctIndex={1}
-  explanation="Effective business emails need context: who you're writing to, why, what must be communicated, and the appropriate tone. AI can't infer your professional relationships or organizational context."
+  explanation="מיילים עסקיים אפקטיביים צריכים הקשר: למי אתם כותבים, למה, מה חייבים להעביר, ומהו הטון המתאים. בינה מלאכותית לא יכולה להסיק את היחסים המקצועיים שלכם או את ההקשר הארגוני."
 />
 
-AI can handle routine business communication while you focus on strategy and relationships.
+בינה מלאכותית יכולה לטפל בתקשורת עסקית שגרתית בזמן שאתם מתמקדים באסטרטגיה וביחסים.

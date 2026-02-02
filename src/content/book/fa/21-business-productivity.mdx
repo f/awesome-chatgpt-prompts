@@ -1,335 +1,335 @@
-AI can dramatically enhance professional productivity. This chapter covers prompts for business communication, analysis, planning, and workflow optimization.
+هوش مصنوعی می‌تواند بهره‌وری حرفه‌ای را به طور چشمگیری افزایش دهد. این فصل پرامپت‌هایی برای ارتباطات تجاری، تحلیل، برنامه‌ریزی و بهینه‌سازی جریان کار را پوشش می‌دهد.
 
-<Callout type="info" title="AI for Business">
-AI excels at drafting, analysis, and structuring—freeing you to focus on strategy, relationships, and decisions that require human judgment.
+<Callout type="info" title="هوش مصنوعی برای کسب‌وکار">
+هوش مصنوعی در پیش‌نویس‌نویسی، تحلیل و ساختاردهی عالی است—و به شما امکان می‌دهد روی استراتژی، روابط و تصمیماتی که نیاز به قضاوت انسانی دارند تمرکز کنید.
 </Callout>
 
-## Business Communication
+## ارتباطات تجاری
 
-### Do's and Don'ts: Business Emails
+### بایدها و نبایدها: ایمیل‌های تجاری
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Write an email to my boss about the project." }}
-  after={{ label: "✓ Complete context", content: "Write an email to my manager (Sarah) updating her on the Q4 marketing project.\n\nKey points: We're on track for the Nov 15 deadline, resolved the vendor issue, need her approval on the $5K budget increase.\nTone: Professional but friendly (we have a good relationship)\nKeep under 150 words with a clear ask at the end." }}
+  before={{ label: "❌ درخواست مبهم", content: "یک ایمیل به رئیسم درباره پروژه بنویس." }}
+  after={{ label: "✓ زمینه کامل", content: "یک ایمیل به مدیرم (سارا) بنویس و او را از پروژه بازاریابی فصل چهارم مطلع کن.\n\nنکات کلیدی: ما در مسیر تحویل تا ۱۵ آبان هستیم، مشکل تأمین‌کننده حل شد، نیاز به تأیید او برای افزایش بودجه ۵ میلیون تومانی داریم.\nلحن: حرفه‌ای اما صمیمی (رابطه خوبی داریم)\nزیر ۱۵۰ کلمه نگه دار با یک درخواست واضح در انتها." }}
 />
 
-### Email Drafting
+### نوشتن ایمیل
 
-<TryIt compact prompt={`Write a professional email.
+<TryIt compact prompt={`یک ایمیل حرفه‌ای بنویس.
 
-Context:
-- To: [recipient and relationship]
-- Purpose: [request/inform/follow-up/apologize]
-- Key points: [what must be communicated]
-- Tone: [formal/friendly professional/urgent]
+زمینه:
+- به: [گیرنده و رابطه]
+- هدف: [درخواست/اطلاع‌رسانی/پیگیری/عذرخواهی]
+- نکات کلیدی: [چه چیزی باید منتقل شود]
+- لحن: [رسمی/صمیمی حرفه‌ای/فوری]
 
-Constraints:
-- Keep under [X] sentences
-- Clear call-to-action
-- Subject line included`} />
+محدودیت‌ها:
+- زیر [X] جمله نگه دار
+- فراخوان به اقدام واضح
+- خط موضوع شامل شود`} />
 
-**Examples by purpose:**
+**مثال‌ها بر اساس هدف:**
 
-<TryIt compact prompt={`\${emailType:Meeting Request}: Write an email requesting a meeting with a potential client to discuss partnership opportunities. Keep it brief and make it easy for them to say yes.`} />
+<TryIt compact prompt={`\${emailType:درخواست جلسه}: یک ایمیل برای درخواست جلسه با یک مشتری بالقوه برای بحث درباره فرصت‌های همکاری بنویس. مختصر باشد و بله گفتن را برای آنها آسان کن.`} />
 
-<TryIt compact prompt={`\${emailType:Difficult Conversation}: Write an email declining a vendor's proposal while maintaining the relationship for future opportunities. Be clear but diplomatic.`} />
+<TryIt compact prompt={`\${emailType:مکالمه دشوار}: یک ایمیل برای رد پیشنهاد یک تأمین‌کننده بنویس در حالی که رابطه را برای فرصت‌های آینده حفظ می‌کنی. واضح اما دیپلماتیک باش.`} />
 
-<TryIt compact prompt={`\${emailType:Status Update}: Write a project status email to stakeholders. The project is 2 weeks behind schedule due to scope changes. Present the situation professionally with a recovery plan.`} />
+<TryIt compact prompt={`\${emailType:گزارش وضعیت}: یک ایمیل گزارش وضعیت پروژه به ذینفعان بنویس. پروژه به دلیل تغییرات دامنه ۲ هفته عقب است. وضعیت را حرفه‌ای با یک برنامه بازیابی ارائه بده.`} />
 
-### Presentation Content
+### محتوای ارائه
 
-<TryIt compact prompt={`Create presentation content for \${topic:Q4 sales strategy}.
+<TryIt compact prompt={`محتوای ارائه برای \${topic:استراتژی فروش فصل چهارم} ایجاد کن.
 
-Audience: \${audience:executive leadership}
-Duration: \${duration:15 minutes}
-Goal: \${goal:persuade to approve budget increase}
+مخاطب: \${audience:رهبری اجرایی}
+مدت: \${duration:۱۵ دقیقه}
+هدف: \${goal:متقاعد کردن برای تصویب افزایش بودجه}
 
-Provide for each slide:
-- Title
-- Key message (one main point)
-- Supporting points (3 max)
-- Speaker notes (what to say)
-- Visual suggestion (chart/image/diagram)
+برای هر اسلاید ارائه بده:
+- عنوان
+- پیام کلیدی (یک نکته اصلی)
+- نکات پشتیبان (حداکثر ۳)
+- یادداشت‌های سخنران (چه بگویید)
+- پیشنهاد بصری (نمودار/تصویر/دیاگرام)
 
-Structure:
-1. Hook/Attention grabber
-2. Problem/Opportunity
-3. Solution/Recommendation
-4. Evidence/Support
-5. Call to action`} />
+ساختار:
+۱. قلاب/جلب توجه
+۲. مشکل/فرصت
+۳. راه‌حل/توصیه
+۴. شواهد/پشتیبانی
+۵. فراخوان به اقدام`} />
 
-### Report Writing
+### نوشتن گزارش
 
-<TryIt compact prompt={`Write a \${reportType:recommendation} report on \${topic:expanding into European markets}.
+<TryIt compact prompt={`یک گزارش \${reportType:توصیه‌ای} درباره \${topic:گسترش به بازارهای اروپایی} بنویس.
 
-Report type: \${type:recommendation}
-Audience: \${audience:C-suite}
-Length: \${length:5 pages}
+نوع گزارش: \${type:توصیه‌ای}
+مخاطب: \${audience:مدیران ارشد}
+طول: \${length:۵ صفحه}
 
-Structure:
-1. Executive Summary (key findings, 1 paragraph)
-2. Background/Context
-3. Methodology (if applicable)
-4. Findings
-5. Analysis
-6. Recommendations
-7. Next Steps
+ساختار:
+۱. خلاصه اجرایی (یافته‌های کلیدی، ۱ پاراگراف)
+۲. پیشینه/زمینه
+۳. روش‌شناسی (در صورت لزوم)
+۴. یافته‌ها
+۵. تحلیل
+۶. توصیه‌ها
+۷. گام‌های بعدی
 
-Include: Data visualization suggestions where relevant
-Tone: \${tone:formal business}`} />
+شامل: پیشنهادات تجسم داده در جایی که مرتبط است
+لحن: \${tone:تجاری رسمی}`} />
 
-## Analysis & Decision-Making
+## تحلیل و تصمیم‌گیری
 
-<Callout type="tip" title="Analysis Principle">
-AI can structure your thinking, but **you provide the real-world context**. The best analyses combine AI's frameworks with your domain knowledge.
+<Callout type="tip" title="اصل تحلیل">
+هوش مصنوعی می‌تواند تفکر شما را ساختار دهد، اما **شما زمینه واقعی را ارائه می‌دهید**. بهترین تحلیل‌ها چارچوب‌های هوش مصنوعی را با دانش حوزه‌ای شما ترکیب می‌کنند.
 </Callout>
 
-### SWOT Analysis
+### تحلیل SWOT
 
-<TryIt compact prompt={`Conduct a SWOT analysis for \${subject:launching a new mobile app}.
+<TryIt compact prompt={`یک تحلیل SWOT برای \${subject:راه‌اندازی یک اپلیکیشن موبایل جدید} انجام بده.
 
-Context:
-\${context:We're a mid-size fintech company considering a consumer banking app}
+زمینه:
+\${context:ما یک شرکت فین‌تک متوسط هستیم که یک اپلیکیشن بانکداری مصرفی را در نظر داریم}
 
-Provide:
+ارائه بده:
 
-**Strengths** (internal positives)
-- At least 4 points with brief explanations
+**نقاط قوت** (مثبت‌های داخلی)
+- حداقل ۴ نکته با توضیحات مختصر
 
-**Weaknesses** (internal negatives)
-- At least 4 points with brief explanations
+**نقاط ضعف** (منفی‌های داخلی)
+- حداقل ۴ نکته با توضیحات مختصر
 
-**Opportunities** (external positives)
-- At least 4 points with brief explanations
+**فرصت‌ها** (مثبت‌های خارجی)
+- حداقل ۴ نکته با توضیحات مختصر
 
-**Threats** (external negatives)
-- At least 4 points with brief explanations
+**تهدیدها** (منفی‌های خارجی)
+- حداقل ۴ نکته با توضیحات مختصر
 
-**Strategic Implications**
-- Key insight from analysis
-- Recommended priorities`} />
+**پیامدهای استراتژیک**
+- بینش کلیدی از تحلیل
+- اولویت‌های توصیه‌شده`} />
 
-### Decision Framework
+### چارچوب تصمیم‌گیری
 
-<TryIt compact prompt={`Help me make a decision about \${decision:which CRM to choose}.
+<TryIt compact prompt={`کمکم کن درباره \${decision:کدام CRM را انتخاب کنم} تصمیم بگیرم.
 
-Options:
-1. \${optionA:Salesforce}
-2. \${optionB:HubSpot}
-3. \${optionC:Pipedrive}
+گزینه‌ها:
+۱. \${optionA:Salesforce}
+۲. \${optionB:HubSpot}
+۳. \${optionC:Pipedrive}
 
-Criteria that matter to me:
-- \${criterion1:ease of use} (weight: high)
-- \${criterion2:integration with existing tools} (weight: high)
-- \${criterion3:cost} (weight: medium)
+معیارهایی که برایم مهم هستند:
+- \${criterion1:سهولت استفاده} (وزن: بالا)
+- \${criterion2:یکپارچگی با ابزارهای موجود} (وزن: بالا)
+- \${criterion3:هزینه} (وزن: متوسط)
 
-Provide:
-1. Score each option against each criterion (1-5)
-2. Weighted analysis
-3. Pros/cons summary for each
-4. Risk assessment
-5. Recommendation with rationale
-6. Questions to consider before deciding`} />
+ارائه بده:
+۱. امتیاز هر گزینه در برابر هر معیار (۱-۵)
+۲. تحلیل وزن‌دار
+۳. خلاصه مزایا/معایب برای هر کدام
+۴. ارزیابی ریسک
+۵. توصیه با دلیل
+۶. سؤالاتی که قبل از تصمیم‌گیری باید در نظر گرفته شوند`} />
 
-### Competitive Analysis
+### تحلیل رقابتی
 
-<TryIt compact prompt={`Analyze \${competitor:Slack} compared to \${ourProduct:our team communication tool}.
+<TryIt compact prompt={`\${competitor:Slack} را در مقایسه با \${ourProduct:ابزار ارتباط تیمی ما} تحلیل کن.
 
-Research their:
-1. **Products/Services** - offerings, pricing, positioning
-2. **Strengths** - what they do well
-3. **Weaknesses** - where they fall short
-4. **Market position** - target segments, market share
-5. **Strategy** - apparent direction and focus
+تحقیق کن درباره:
+۱. **محصولات/خدمات** - پیشنهادات، قیمت‌گذاری، جایگاه‌یابی
+۲. **نقاط قوت** - در چه چیزی خوب هستند
+۳. **نقاط ضعف** - کجا کوتاهی می‌کنند
+۴. **موقعیت بازار** - بخش‌های هدف، سهم بازار
+۵. **استراتژی** - جهت و تمرکز آشکار
 
-Compare to us:
-- Where we're stronger
-- Where they're stronger
-- Opportunity gaps
-- Competitive threats
+با ما مقایسه کن:
+- کجا ما قوی‌تریم
+- کجا آنها قوی‌ترند
+- شکاف‌های فرصت
+- تهدیدهای رقابتی
 
-Recommend: Actions to improve our competitive position`} />
+توصیه کن: اقداماتی برای بهبود موقعیت رقابتی ما`} />
 
-## Planning & Strategy
+## برنامه‌ریزی و استراتژی
 
-### Goal Setting (OKRs)
+### تعیین هدف (OKRها)
 
-<TryIt compact prompt={`Help me set OKRs for \${scope:Q1 marketing team}.
+<TryIt compact prompt={`کمکم کن OKR برای \${scope:تیم بازاریابی فصل اول} تعیین کنم.
 
-Context:
-- Company goals: \${companyGoals:increase revenue 25% YoY}
-- Current situation: \${currentState:brand awareness is low in new markets}
-- Key priorities: \${priorities:lead generation, content marketing}
+زمینه:
+- اهداف شرکت: \${companyGoals:افزایش درآمد ۲۵٪ سالانه}
+- وضعیت فعلی: \${currentState:آگاهی از برند در بازارهای جدید پایین است}
+- اولویت‌های کلیدی: \${priorities:تولید سرنخ، بازاریابی محتوا}
 
-Create 3 Objectives with 3-4 Key Results each.
+۳ هدف با ۳-۴ نتیجه کلیدی برای هر کدام ایجاد کن.
 
-Format:
-**Objective 1:** Qualitative goal - inspiring
-- KR 1.1: Quantitative measure (Current: X → Target: Y)
-- KR 1.2: Quantitative measure (Current: X → Target: Y)
-- KR 1.3: Quantitative measure (Current: X → Target: Y)
+قالب:
+**هدف ۱:** هدف کیفی - الهام‌بخش
+- KR 1.1: معیار کمی (فعلی: X → هدف: Y)
+- KR 1.2: معیار کمی (فعلی: X → هدف: Y)
+- KR 1.3: معیار کمی (فعلی: X → هدف: Y)
 
-Ensure KRs are:
-- Measurable
-- Ambitious but achievable
-- Time-bound
-- Outcome-focused (not tasks)`} />
+اطمینان حاصل کن KRها:
+- قابل اندازه‌گیری
+- جاه‌طلبانه اما قابل دستیابی
+- زمان‌بندی‌شده
+- نتیجه‌محور (نه وظیفه‌محور)`} />
 
-### Project Planning
+### برنامه‌ریزی پروژه
 
-<TryIt compact prompt={`Create a project plan for \${project:website redesign}.
+<TryIt compact prompt={`یک برنامه پروژه برای \${project:بازطراحی وب‌سایت} ایجاد کن.
 
-Scope: \${scope:new homepage, product pages, checkout flow}
-Timeline: \${timeline:3 months}
-Team: \${team:2 developers, 1 designer, 1 PM}
-Budget: \${budget:$50,000}
+دامنه: \${scope:صفحه اصلی جدید، صفحات محصول، جریان پرداخت}
+جدول زمانی: \${timeline:۳ ماه}
+تیم: \${team:۲ توسعه‌دهنده، ۱ طراح، ۱ مدیر پروژه}
+بودجه: \${budget:۵۰ میلیون تومان}
 
-Provide:
-1. **Project phases** with milestones
-2. **Work breakdown structure** (major tasks)
-3. **Timeline** (Gantt-style description)
-4. **Dependencies** (what blocks what)
-5. **Risks** (potential issues and mitigation)
-6. **Success criteria** (how we know we're done)`} />
+ارائه بده:
+۱. **فازهای پروژه** با نقاط عطف
+۲. **ساختار شکست کار** (وظایف اصلی)
+۳. **جدول زمانی** (توصیف به سبک Gantt)
+۴. **وابستگی‌ها** (چه چیزی چه چیزی را مسدود می‌کند)
+۵. **ریسک‌ها** (مشکلات احتمالی و کاهش آنها)
+۶. **معیارهای موفقیت** (چگونه بدانیم کارمان تمام شده)`} />
 
-### Meeting Agenda
+### دستور جلسه
 
-<TryIt compact prompt={`Create an agenda for \${meetingType:quarterly planning}.
+<TryIt compact prompt={`یک دستور جلسه برای \${meetingType:برنامه‌ریزی فصلی} ایجاد کن.
 
-Purpose: \${purpose:align on Q2 priorities and resource allocation}
-Attendees: \${attendees:department heads, CEO, COO}
-Duration: \${duration:90 minutes}
+هدف: \${purpose:هماهنگی روی اولویت‌های فصل دوم و تخصیص منابع}
+شرکت‌کنندگان: \${attendees:رؤسای بخش‌ها، مدیرعامل، معاون عملیات}
+مدت: \${duration:۹۰ دقیقه}
 
-Format:
-| Time | Topic | Owner | Goal |
+قالب:
+| زمان | موضوع | مسئول | هدف |
 |------|-------|-------|------|
-| 5 min | Opening | Facilitator | Context |
+| ۵ دقیقه | افتتاحیه | تسهیل‌گر | زمینه |
 | ... | ... | ... | ... |
 
-Include:
-- Time allocations
-- Clear owner for each item
-- Specific outcomes expected
-- Pre-work required
-- Follow-up action item template`} />
+شامل:
+- تخصیص زمان
+- مسئول مشخص برای هر مورد
+- نتایج مشخص مورد انتظار
+- کار پیش‌نیاز لازم
+- قالب اقدامات پیگیری`} />
 
-## Productivity Workflows
+## جریان‌های کار بهره‌وری
 
-### Task Prioritization
+### اولویت‌بندی وظایف
 
-<TryIt compact prompt={`Help me prioritize my tasks using the Eisenhower Matrix.
+<TryIt compact prompt={`کمکم کن وظایفم را با استفاده از ماتریس آیزنهاور اولویت‌بندی کنم.
 
-My tasks:
-\${tasks:1. Prepare quarterly report (due Friday)\n2. Review job applications\n3. Reply to vendor emails\n4. Plan team offsite\n5. Update LinkedIn profile}
+وظایف من:
+\${tasks:۱. آماده‌سازی گزارش فصلی (مهلت جمعه)\n۲. بررسی درخواست‌های شغلی\n۳. پاسخ به ایمیل‌های تأمین‌کننده\n۴. برنامه‌ریزی گردهمایی تیم\n۵. به‌روزرسانی پروفایل LinkedIn}
 
-Categorize each into:
-1. **Urgent + Important** (Do first)
-2. **Important, Not Urgent** (Schedule)
-3. **Urgent, Not Important** (Delegate)
-4. **Neither** (Eliminate)
+هر کدام را دسته‌بندی کن:
+۱. **فوری + مهم** (اول انجام بده)
+۲. **مهم، نه فوری** (زمان‌بندی کن)
+۳. **فوری، نه مهم** (واگذار کن)
+۴. **هیچ‌کدام** (حذف کن)
 
-Then provide:
-- Recommended order of execution
-- Time estimates
-- Suggestions for delegation or elimination`} />
+سپس ارائه بده:
+- ترتیب توصیه‌شده اجرا
+- تخمین زمان
+- پیشنهادات برای واگذاری یا حذف`} />
 
-### Process Documentation
+### مستندسازی فرآیند
 
-<TryIt compact prompt={`Document this business process: \${processName:customer refund request}.
+<TryIt compact prompt={`این فرآیند کسب‌وکار را مستند کن: \${processName:درخواست بازپرداخت مشتری}.
 
-Create:
-1. **Process overview** (1 paragraph)
-2. **Trigger** (what starts this process)
-3. **Steps** (numbered, with responsible party)
-4. **Decision points** (if X then Y format)
-5. **Outputs** (what this process produces)
-6. **Systems involved** (tools/software)
-7. **Exceptions** (edge cases and handling)
+ایجاد کن:
+۱. **نمای کلی فرآیند** (۱ پاراگراف)
+۲. **محرک** (چه چیزی این فرآیند را شروع می‌کند)
+۳. **مراحل** (شماره‌گذاری شده، با طرف مسئول)
+۴. **نقاط تصمیم‌گیری** (اگر X پس Y)
+۵. **خروجی‌ها** (این فرآیند چه چیزی تولید می‌کند)
+۶. **سیستم‌های درگیر** (ابزارها/نرم‌افزارها)
+۷. **استثناها** (موارد لبه و مدیریت آنها)
 
-Format: Clear enough for new employee to follow`} />
+قالب: به اندازه کافی واضح باشد که یک کارمند جدید بتواند دنبال کند`} />
 
-### Standard Operating Procedure
+### روش عملیاتی استاندارد
 
-<TryIt compact prompt={`Write an SOP for \${task:onboarding new employees to Slack}.
+<TryIt compact prompt={`یک SOP برای \${task:معرفی کارمندان جدید به Slack} بنویس.
 
-Audience: \${audience:HR administrators}
-Complexity: \${complexity:basic users}
+مخاطب: \${audience:مدیران منابع انسانی}
+پیچیدگی: \${complexity:کاربران مبتدی}
 
-Include:
-1. Purpose and scope
-2. Prerequisites/requirements
-3. Step-by-step instructions
-4. Screenshots/visual placeholders
-5. Quality checkpoints
-6. Common errors and troubleshooting
-7. Related SOPs/documents
-8. Version history`} />
+شامل:
+۱. هدف و دامنه
+۲. پیش‌نیازها/الزامات
+۳. دستورالعمل‌های گام به گام
+۴. اسکرین‌شات‌ها/جایگزین‌های بصری
+۵. نقاط بازرسی کیفیت
+۶. خطاهای رایج و عیب‌یابی
+۷. SOPها/اسناد مرتبط
+۸. تاریخچه نسخه`} />
 
-## Communication Templates
+## قالب‌های ارتباطی
 
-### Stakeholder Update
+### به‌روزرسانی ذینفعان
 
-<TryIt compact prompt={`Write a stakeholder update for \${project:CRM migration project}.
+<TryIt compact prompt={`یک به‌روزرسانی ذینفعان برای \${project:پروژه مهاجرت CRM} بنویس.
 
-Status: \${status:at risk}
-Period: \${period:Week of Jan 6-10}
+وضعیت: \${status:در معرض خطر}
+دوره: \${period:هفته ۱۶ تا ۲۰ دی}
 
-Format:
-## Project Name Update
+قالب:
+## به‌روزرسانی نام پروژه
 
-**Status:** 🟢/🟡/🔴
+**وضعیت:** 🟢/🟡/🔴
 
-**Progress this period:**
-- Accomplishment 1
-- Accomplishment 2
+**پیشرفت این دوره:**
+- دستاورد ۱
+- دستاورد ۲
 
-**Next period goals:**
-- Goal 1
-- Goal 2
+**اهداف دوره بعد:**
+- هدف ۱
+- هدف ۲
 
-**Risks/Blockers:**
-- If any
+**ریسک‌ها/موانع:**
+- در صورت وجود
 
-**Decisions needed:**
-- If any`} />
+**تصمیمات مورد نیاز:**
+- در صورت وجود`} />
 
-### Feedback Request
+### درخواست بازخورد
 
-<TryIt compact prompt={`Write a message requesting feedback on \${deliverable:the new product roadmap document}.
+<TryIt compact prompt={`یک پیام برای درخواست بازخورد روی \${deliverable:سند نقشه راه محصول جدید} بنویس.
 
-Context: \${context:This will guide our Q2 priorities, I want to make sure I haven't missed anything}
-Specific areas for feedback: \${feedbackAreas:timeline feasibility, resource allocation, missing features}
-Timeline: \${deadline:by Friday EOD}
+زمینه: \${context:این راهنمای اولویت‌های فصل دوم ما خواهد بود، می‌خواهم مطمئن شوم چیزی را از قلم نینداخته‌ام}
+حوزه‌های خاص برای بازخورد: \${feedbackAreas:امکان‌پذیری جدول زمانی، تخصیص منابع، ویژگی‌های از قلم افتاده}
+جدول زمانی: \${deadline:تا پایان روز جمعه}
 
-Tone: Professional but not overly formal
-Make it easy to respond with specific questions`} />
+لحن: حرفه‌ای اما نه بیش از حد رسمی
+با سؤالات مشخص پاسخ دادن را آسان کن`} />
 
-## Prompt Templates from prompts.chat
+## قالب‌های پرامپت از prompts.chat
 
-### Act as a Business Consultant
+### نقش مشاور کسب‌وکار
 
-<TryIt compact prompt={`I want you to act as a business consultant. I will describe business situations and challenges, and you will provide strategic advice, frameworks for thinking about problems, and actionable recommendations. Draw on established business principles while being practical and specific.`} />
+<TryIt compact prompt={`می‌خواهم نقش یک مشاور کسب‌وکار را بازی کنی. من موقعیت‌ها و چالش‌های کسب‌وکار را توصیف می‌کنم و تو مشاوره استراتژیک، چارچوب‌هایی برای تفکر درباره مشکلات و توصیه‌های عملی ارائه می‌دهی. از اصول کسب‌وکار تثبیت‌شده استفاده کن در حالی که عملی و مشخص هستی.`} />
 
-### Act as a Meeting Facilitator
+### نقش تسهیل‌گر جلسه
 
-<TryIt compact prompt={`I want you to act as a meeting facilitator. Help me plan and run effective meetings. Create agendas, suggest discussion frameworks, help synthesize conversations, and draft follow-up communications. Focus on making meetings productive and action-oriented.`} />
+<TryIt compact prompt={`می‌خواهم نقش یک تسهیل‌گر جلسه را بازی کنی. کمکم کن جلسات مؤثر برنامه‌ریزی و اجرا کنم. دستور جلسه ایجاد کن، چارچوب‌های بحث پیشنهاد بده، کمک کن مکالمات را جمع‌بندی کنم و پیش‌نویس ارتباطات پیگیری را بنویس. روی مؤثر و اقدام‌محور کردن جلسات تمرکز کن.`} />
 
-## Summary
+## خلاصه
 
-<Callout type="tip" title="Key Techniques">
-Specify the audience and their needs, define the desired outcome clearly, include relevant context and constraints, request specific formats and structures, and consider professional tone requirements.
+<Callout type="tip" title="تکنیک‌های کلیدی">
+مخاطب و نیازهای آنها را مشخص کنید، نتیجه مطلوب را واضح تعریف کنید، زمینه و محدودیت‌های مرتبط را بگنجانید، قالب‌ها و ساختارهای مشخص درخواست کنید و الزامات لحن حرفه‌ای را در نظر بگیرید.
 </Callout>
 
 <Quiz 
-  question="What should you always include when asking AI to write a business email?"
+  question="هنگام درخواست از هوش مصنوعی برای نوشتن ایمیل تجاری، چه چیزی را باید همیشه بگنجانید؟"
   options={[
-    "Just the topic you want to discuss",
-    "Recipient, purpose, key points, and desired tone",
-    "Only the recipient's name",
-    "A template from the internet"
+    "فقط موضوعی که می‌خواهید درباره‌اش بحث کنید",
+    "گیرنده، هدف، نکات کلیدی و لحن مطلوب",
+    "فقط نام گیرنده",
+    "یک قالب از اینترنت"
   ]}
   correctIndex={1}
-  explanation="Effective business emails need context: who you're writing to, why, what must be communicated, and the appropriate tone. AI can't infer your professional relationships or organizational context."
+  explanation="ایمیل‌های تجاری مؤثر نیاز به زمینه دارند: به چه کسی می‌نویسید، چرا، چه چیزی باید منتقل شود و لحن مناسب. هوش مصنوعی نمی‌تواند روابط حرفه‌ای یا زمینه سازمانی شما را استنباط کند."
 />
 
-AI can handle routine business communication while you focus on strategy and relationships.
+هوش مصنوعی می‌تواند ارتباطات تجاری روتین را مدیریت کند در حالی که شما روی استراتژی و روابط تمرکز می‌کنید.

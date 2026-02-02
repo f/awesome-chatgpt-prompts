@@ -1,323 +1,323 @@
-AI can accelerate research workflows from literature review to data analysis. This chapter covers prompting techniques for academic and professional research.
+هوش مصنوعی می‌تواند فرآیندهای پژوهشی را از مرور ادبیات تا تحلیل داده‌ها تسریع کند. این فصل تکنیک‌های پرامپت‌نویسی برای تحقیقات آکادمیک و حرفه‌ای را پوشش می‌دهد.
 
-<Callout type="info" title="AI in Research">
-AI can assist with synthesis, analysis, and writing—but cannot replace critical thinking, ethical judgment, or domain expertise. Always verify claims and cite original sources.
+<Callout type="info" title="هوش مصنوعی در پژوهش">
+هوش مصنوعی می‌تواند در ترکیب، تحلیل و نگارش کمک کند—اما نمی‌تواند جایگزین تفکر انتقادی، قضاوت اخلاقی یا تخصص موضوعی شود. همیشه ادعاها را بررسی کنید و به منابع اصلی ارجاع دهید.
 </Callout>
 
-## Literature & Information Review
+## مرور ادبیات و اطلاعات
 
-### Do's and Don'ts: Research Prompts
+### بایدها و نبایدها: پرامپت‌های پژوهشی
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Summarize this paper for me." }}
-  after={{ label: "✓ Structured request", content: "Summarize this paper for my literature review on machine learning in healthcare.\n\nProvide:\n1. Main thesis (1-2 sentences)\n2. Methodology\n3. Key findings (bullets)\n4. Limitations\n5. Relevance to my research\n\nReading level: Graduate student" }}
+  before={{ label: "❌ درخواست مبهم", content: "این مقاله را برایم خلاصه کن." }}
+  after={{ label: "✓ درخواست ساختارمند", content: "این مقاله را برای مرور ادبیات من در زمینه یادگیری ماشین در بهداشت و درمان خلاصه کن.\n\nارائه بده:\n1. تز اصلی (1-2 جمله)\n2. روش‌شناسی\n3. یافته‌های کلیدی (فهرست نقطه‌ای)\n4. محدودیت‌ها\n5. ارتباط با پژوهش من\n\nسطح خوانایی: دانشجوی تحصیلات تکمیلی" }}
 />
 
-### Paper Summarization
+### خلاصه‌سازی مقاله
 
-<TryIt compact prompt={`Summarize this academic paper:
+<TryIt compact prompt={`این مقاله آکادمیک را خلاصه کن:
 
-[paper abstract or full text]
+[چکیده یا متن کامل مقاله]
 
-Provide:
-1. **Main thesis** - Central argument (1-2 sentences)
-2. **Methodology** - How they approached it
-3. **Key findings** - Most important results (bullet points)
-4. **Contributions** - What's new/significant
-5. **Limitations** - Acknowledged or apparent weaknesses
-6. **Relevance to [my research topic]** - How it connects
+ارائه بده:
+1. **تز اصلی** - استدلال مرکزی (1-2 جمله)
+2. **روش‌شناسی** - چگونه به آن پرداختند
+3. **یافته‌های کلیدی** - مهم‌ترین نتایج (فهرست نقطه‌ای)
+4. **مشارکت‌ها** - چه چیزی جدید/مهم است
+5. **محدودیت‌ها** - نقاط ضعف اعلام‌شده یا آشکار
+6. **ارتباط با [موضوع پژوهش من]** - چگونه مرتبط است
 
-Reading level: \${readingLevel:graduate}`} />
+سطح خوانایی: \${readingLevel:تحصیلات تکمیلی}`} />
 
-### Literature Synthesis
+### ترکیب ادبیات
 
-<TryIt compact prompt={`Synthesize these papers on \${topic:the effectiveness of remote work}:
+<TryIt compact prompt={`این مقالات درباره \${topic:اثربخشی دورکاری} را ترکیب کن:
 
-Paper 1: \${paper1:Smith 2021 - found productivity increased 15%}
-Paper 2: \${paper2:Jones 2022 - noted collaboration challenges}
-Paper 3: \${paper3:Chen 2023 - hybrid model showed best outcomes}
+مقاله 1: \${paper1:اسمیت 2021 - بهره‌وری 15% افزایش یافت}
+مقاله 2: \${paper2:جونز 2022 - چالش‌های همکاری را یادآوری کرد}
+مقاله 3: \${paper3:چن 2023 - مدل ترکیبی بهترین نتایج را نشان داد}
 
-Analyze:
-1. **Common themes** - What do they agree on?
-2. **Contradictions** - Where do they disagree?
-3. **Gaps** - What's not addressed?
-4. **Evolution** - How has thinking progressed?
-5. **Synthesis** - Integrated understanding
+تحلیل کن:
+1. **موضوعات مشترک** - در چه موضوعاتی توافق دارند؟
+2. **تضادها** - کجا اختلاف نظر دارند؟
+3. **خلأها** - چه چیزی پوشش داده نشده؟
+4. **تحول** - تفکر چگونه پیشرفت کرده؟
+5. **ترکیب** - درک یکپارچه
 
-Format as: Literature review paragraph suitable for \${outputType:thesis}`} />
+قالب: پاراگراف مرور ادبیات مناسب برای \${outputType:پایان‌نامه}`} />
 
-### Research Question Development
+### توسعه سؤال پژوهشی
 
-<TryIt compact prompt={`Help me develop research questions for \${topic:AI adoption in healthcare}.
+<TryIt compact prompt={`کمکم کن سؤالات پژوهشی برای \${topic:پذیرش هوش مصنوعی در بهداشت و درمان} توسعه دهم.
 
-Context:
-- Field: \${field:health informatics}
-- Current knowledge: \${currentKnowledge:AI tools exist but adoption is slow}
-- Gap identified: \${gap:limited understanding of physician resistance factors}
-- My interest: \${interest:organizational change management}
+زمینه:
+- رشته: \${field:انفورماتیک سلامت}
+- دانش فعلی: \${currentKnowledge:ابزارهای هوش مصنوعی وجود دارند اما پذیرش کند است}
+- خلأ شناسایی‌شده: \${gap:درک محدود از عوامل مقاومت پزشکان}
+- علاقه من: \${interest:مدیریت تغییر سازمانی}
 
-Generate:
-1. **Primary RQ** - Main question to answer
-2. **Sub-questions** - Supporting inquiries (3-4)
-3. **Hypotheses** - Testable predictions (if applicable)
+تولید کن:
+1. **سؤال پژوهشی اصلی** - سؤال اصلی برای پاسخ دادن
+2. **سؤالات فرعی** - پرسش‌های پشتیبان (3-4)
+3. **فرضیه‌ها** - پیش‌بینی‌های قابل آزمون (در صورت لزوم)
 
-Criteria: Questions should be:
-- Answerable with available methods
-- Significant to the field
-- Appropriately scoped`} />
+معیارها: سؤالات باید:
+- با روش‌های موجود قابل پاسخ باشند
+- برای حوزه مهم باشند
+- محدوده مناسبی داشته باشند`} />
 
-## Data Analysis
+## تحلیل داده
 
-<Callout type="warning" title="AI Cannot Analyze Your Actual Data">
-AI can guide methodology and help interpret results, but it cannot access or process your actual datasets. Never paste sensitive research data into prompts. Use AI for **guidance**, not computation.
+<Callout type="warning" title="هوش مصنوعی نمی‌تواند داده‌های واقعی شما را تحلیل کند">
+هوش مصنوعی می‌تواند روش‌شناسی را راهنمایی کند و به تفسیر نتایج کمک کند، اما نمی‌تواند به مجموعه داده‌های واقعی شما دسترسی داشته یا آن‌ها را پردازش کند. هرگز داده‌های حساس پژوهشی را در پرامپت‌ها قرار ندهید. از هوش مصنوعی برای **راهنمایی** استفاده کنید، نه محاسبه.
 </Callout>
 
-### Statistical Analysis Guidance
+### راهنمای تحلیل آماری
 
-<TryIt compact prompt={`Help me analyze this data:
+<TryIt compact prompt={`کمکم کن این داده‌ها را تحلیل کنم:
 
-Data description:
-- Variables: \${variables:age (continuous), treatment group (categorical: A/B/C), outcome score (continuous)}
-- Sample size: \${sampleSize:n=150 (50 per group)}
-- Research question: \${researchQuestion:Does treatment type affect outcome scores?}
-- Data characteristics: \${characteristics:normally distributed, no missing values}
+توصیف داده:
+- متغیرها: \${variables:سن (پیوسته)، گروه درمانی (طبقه‌ای: A/B/C)، نمره نتیجه (پیوسته)}
+- حجم نمونه: \${sampleSize:n=150 (50 در هر گروه)}
+- سؤال پژوهشی: \${researchQuestion:آیا نوع درمان بر نمرات نتیجه تأثیر می‌گذارد؟}
+- ویژگی‌های داده: \${characteristics:توزیع نرمال، بدون داده گمشده}
 
-Advise on:
-1. **Appropriate tests** - Which statistical tests to use
-2. **Assumptions to check** - Prerequisites
-3. **How to interpret results** - What different outcomes mean
-4. **Effect size** - Practical significance
-5. **Reporting** - How to present findings
+راهنمایی کن درباره:
+1. **آزمون‌های مناسب** - کدام آزمون‌های آماری استفاده شود
+2. **فرضیات برای بررسی** - پیش‌نیازها
+3. **چگونه نتایج را تفسیر کنیم** - نتایج مختلف چه معنایی دارند
+4. **اندازه اثر** - اهمیت عملی
+5. **گزارش‌دهی** - چگونه یافته‌ها را ارائه کنیم
 
-Note: Guide my analysis, don't fabricate results.`} />
+توجه: تحلیل من را راهنمایی کن، نتایج جعلی تولید نکن.`} />
 
-### Qualitative Analysis
+### تحلیل کیفی
 
-<TryIt compact prompt={`Help me analyze these qualitative responses:
+<TryIt compact prompt={`کمکم کن این پاسخ‌های کیفی را تحلیل کنم:
 
-Responses:
-\${responses:paste interview excerpts or survey responses here}
+پاسخ‌ها:
+\${responses:گزیده‌های مصاحبه یا پاسخ‌های نظرسنجی را اینجا قرار بده}
 
-Using \${method:thematic analysis}:
+با استفاده از \${method:تحلیل موضوعی}:
 
-1. **Initial codes** - Identify recurring concepts
-2. **Categories** - Group related codes
-3. **Themes** - Overarching patterns
-4. **Relationships** - How themes connect
-5. **Representative quotes** - Evidence for each theme
+1. **کدهای اولیه** - شناسایی مفاهیم تکرارشونده
+2. **دسته‌بندی‌ها** - گروه‌بندی کدهای مرتبط
+3. **موضوعات** - الگوهای فراگیر
+4. **روابط** - موضوعات چگونه به هم مرتبطند
+5. **نقل‌قول‌های نمایانگر** - شواهد برای هر موضوع
 
-Maintain: Participant voice and context`} />
+حفظ کن: صدا و زمینه شرکت‌کننده`} />
 
-### Data Interpretation
+### تفسیر داده
 
-<TryIt compact prompt={`Help me interpret these findings:
+<TryIt compact prompt={`کمکم کن این یافته‌ها را تفسیر کنم:
 
-Results:
-\${results:paste statistical output or data summary here}
+نتایج:
+\${results:خروجی آماری یا خلاصه داده‌ها را اینجا قرار بده}
 
-Context:
-- Research question: \${researchQuestion:Does X predict Y?}
-- Hypothesis: \${hypothesis:X positively predicts Y}
-- Expected results: \${expectedResults:significant positive correlation}
+زمینه:
+- سؤال پژوهشی: \${researchQuestion:آیا X پیش‌بینی‌کننده Y است؟}
+- فرضیه: \${hypothesis:X به‌طور مثبت Y را پیش‌بینی می‌کند}
+- نتایج مورد انتظار: \${expectedResults:همبستگی مثبت معنادار}
 
-Provide:
-1. **Plain language interpretation** - What does this mean?
-2. **Statistical significance** - What the p-values tell us
-3. **Practical significance** - Real-world meaning
-4. **Comparison to literature** - How does this fit?
-5. **Alternative explanations** - Other interpretations
-6. **Limitations of interpretation**`} />
+ارائه بده:
+1. **تفسیر به زبان ساده** - این چه معنایی دارد؟
+2. **معناداری آماری** - مقادیر p چه می‌گویند
+3. **معناداری عملی** - معنای دنیای واقعی
+4. **مقایسه با ادبیات** - این چگونه جا می‌افتد؟
+5. **تفسیرهای جایگزین** - تفسیرهای دیگر
+6. **محدودیت‌های تفسیر**`} />
 
-## Structured Analysis Frameworks
+## چارچوب‌های تحلیل ساختارمند
 
-### PESTLE Analysis
+### تحلیل PESTLE
 
-<TryIt compact prompt={`Conduct a PESTLE analysis for \${subject:electric vehicle industry in Europe}.
+<TryIt compact prompt={`تحلیل PESTLE برای \${subject:صنعت خودروهای الکتریکی در اروپا} انجام بده.
 
-**Political** factors:
-- Government policies, regulations, political stability
+عوامل **سیاسی**:
+- سیاست‌های دولتی، مقررات، ثبات سیاسی
 
-**Economic** factors:
-- Economic growth, inflation, exchange rates, unemployment
+عوامل **اقتصادی**:
+- رشد اقتصادی، تورم، نرخ ارز، بیکاری
 
-**Social** factors:
-- Demographics, cultural trends, lifestyle changes
+عوامل **اجتماعی**:
+- جمعیت‌شناسی، روندهای فرهنگی، تغییرات سبک زندگی
 
-**Technological** factors:
-- Innovation, R&D, automation, technology changes
+عوامل **فناوری**:
+- نوآوری، تحقیق و توسعه، اتوماسیون، تغییرات فناوری
 
-**Legal** factors:
-- Legislation, regulatory bodies, employment law
+عوامل **قانونی**:
+- قانون‌گذاری، نهادهای نظارتی، قانون کار
 
-**Environmental** factors:
-- Climate, sustainability, environmental regulations
+عوامل **محیطی**:
+- آب‌وهوا، پایداری، مقررات محیط‌زیستی
 
-For each: Current state + trends + implications`} />
+برای هر کدام: وضعیت فعلی + روندها + پیامدها`} />
 
-### Root Cause Analysis
+### تحلیل علت ریشه‌ای
 
-<TryIt compact prompt={`Perform root cause analysis for \${problem:customer churn increased 20% last quarter}.
+<TryIt compact prompt={`تحلیل علت ریشه‌ای برای \${problem:ریزش مشتری 20% در سه‌ماهه گذشته افزایش یافت} انجام بده.
 
-Problem statement:
-\${problemStatement:Monthly churn rate rose from 3% to 3.6% between Q3 and Q4}
+بیان مسئله:
+\${problemStatement:نرخ ریزش ماهانه بین سه‌ماهه سوم و چهارم از 3% به 3.6% افزایش یافت}
 
-Using 5 Whys:
-1. Why? First level cause
-   2. Why? Deeper cause
-      3. Why? Deeper still
-         4. Why? Approaching root
-            5. Why? Root cause
+با استفاده از 5 چرا:
+1. چرا؟ علت سطح اول
+   2. چرا؟ علت عمیق‌تر
+      3. چرا؟ باز هم عمیق‌تر
+         4. چرا؟ نزدیک به ریشه
+            5. چرا؟ علت ریشه‌ای
 
-Alternative: Fishbone diagram categories
-- People
-- Process
-- Equipment
-- Materials
-- Environment
-- Management
+جایگزین: دسته‌بندی‌های نمودار استخوان ماهی
+- افراد
+- فرآیند
+- تجهیزات
+- مواد
+- محیط
+- مدیریت
 
-Provide: Root cause(s) + recommended actions`} />
+ارائه بده: علت(های) ریشه‌ای + اقدامات توصیه‌شده`} />
 
-### Gap Analysis
+### تحلیل شکاف
 
-<TryIt compact prompt={`Conduct a gap analysis for \${subject:our customer support operations}.
+<TryIt compact prompt={`تحلیل شکاف برای \${subject:عملیات پشتیبانی مشتری ما} انجام بده.
 
-**Current State:**
-- \${currentState:Average response time 24 hours, CSAT 3.2/5}
+**وضعیت فعلی:**
+- \${currentState:میانگین زمان پاسخ 24 ساعت، CSAT 3.2/5}
 
-**Desired State:**
-- \${desiredState:Response time under 4 hours, CSAT 4.5/5}
+**وضعیت مطلوب:**
+- \${desiredState:زمان پاسخ کمتر از 4 ساعت، CSAT 4.5/5}
 
-**Gap Identification:**
-| Area | Current | Desired | Gap | Priority |
+**شناسایی شکاف:**
+| حوزه | فعلی | مطلوب | شکاف | اولویت |
 |------|---------|---------|-----|----------|
-| ... | ... | ... | ... | H/M/L |
+| ... | ... | ... | ... | بالا/متوسط/پایین |
 
-**Action Plan:**
-For each high-priority gap:
-- Specific actions
-- Resources needed
-- Timeline
-- Success metrics`} />
+**برنامه اقدام:**
+برای هر شکاف با اولویت بالا:
+- اقدامات مشخص
+- منابع مورد نیاز
+- جدول زمانی
+- معیارهای موفقیت`} />
 
-## Academic Writing Support
+## پشتیبانی نگارش آکادمیک
 
-### Argument Structure
+### ساختار استدلال
 
-<TryIt compact prompt={`Help me structure an argument for \${topic:why remote work should become permanent policy}.
+<TryIt compact prompt={`کمکم کن استدلالی برای \${topic:چرا دورکاری باید به سیاست دائمی تبدیل شود} ساختاربندی کنم.
 
-Main claim: \${thesis:Organizations should adopt permanent remote/hybrid policies for knowledge workers}
+ادعای اصلی: \${thesis:سازمان‌ها باید سیاست‌های دورکاری/ترکیبی دائمی برای کارکنان دانشی اتخاذ کنند}
 
-Required:
-1. **Premises** - Supporting claims that lead to conclusion
-2. **Evidence** - Data/sources for each premise
-3. **Counterarguments** - Opposing views
-4. **Rebuttals** - Responses to counterarguments
-5. **Logical flow** - How it all connects
+مورد نیاز:
+1. **مقدمات** - ادعاهای پشتیبان که به نتیجه‌گیری منجر می‌شوند
+2. **شواهد** - داده/منابع برای هر مقدمه
+3. **استدلال‌های مخالف** - دیدگاه‌های مخالف
+4. **پاسخ به انتقادات** - پاسخ به استدلال‌های مخالف
+5. **جریان منطقی** - همه چیز چگونه به هم مرتبط است
 
-Check for:
-- Logical fallacies
-- Unsupported claims
-- Gaps in reasoning`} />
+بررسی کن برای:
+- مغالطات منطقی
+- ادعاهای بدون پشتوانه
+- خلأها در استدلال`} />
 
-### Methods Section
+### بخش روش‌ها
 
-<TryIt compact prompt={`Help me write a methods section for:
+<TryIt compact prompt={`کمکم کن بخش روش‌ها بنویسم برای:
 
-Study type: \${studyType:survey}
-Participants: \${participants:200 undergraduate students, convenience sampling}
-Materials: \${materials:online questionnaire with Likert scales}
-Procedure: \${procedure:participants completed 20-minute survey online}
-Analysis: \${analysis:descriptive statistics and regression analysis}
+نوع مطالعه: \${studyType:پیمایش}
+شرکت‌کنندگان: \${participants:200 دانشجوی کارشناسی، نمونه‌گیری در دسترس}
+ابزارها: \${materials:پرسشنامه آنلاین با مقیاس‌های لیکرت}
+رویه: \${procedure:شرکت‌کنندگان پرسشنامه 20 دقیقه‌ای آنلاین را تکمیل کردند}
+تحلیل: \${analysis:آمار توصیفی و تحلیل رگرسیون}
 
-Standards: Follow \${standards:APA 7th edition} guidelines
-Include: Enough detail for replication
-Tone: Passive voice, past tense`} />
+استانداردها: از رهنمودهای \${standards:APA ویرایش 7} پیروی کن
+شامل: جزئیات کافی برای تکرار
+لحن: صیغه مجهول، زمان گذشته`} />
 
-### Discussion Section
+### بخش بحث
 
-<TryIt compact prompt={`Help me write a discussion section.
+<TryIt compact prompt={`کمکم کن بخش بحث بنویسم.
 
-Key findings:
-\${findings:1. Significant positive correlation (r=0.45) between X and Y\n2. No significant difference between groups on secondary measure}
+یافته‌های کلیدی:
+\${findings:1. همبستگی مثبت معنادار (r=0.45) بین X و Y\n2. تفاوت معناداری بین گروه‌ها در معیار ثانویه وجود نداشت}
 
-Structure:
-1. **Summary** - Brief restatement of main findings
-2. **Interpretation** - What the findings mean
-3. **Context** - How findings relate to existing literature
-4. **Implications** - Theoretical and practical significance
-5. **Limitations** - Study weaknesses
-6. **Future directions** - What research should follow
-7. **Conclusion** - Take-home message
+ساختار:
+1. **خلاصه** - بازگویی مختصر یافته‌های اصلی
+2. **تفسیر** - یافته‌ها چه معنایی دارند
+3. **زمینه** - یافته‌ها چگونه به ادبیات موجود مربوط می‌شوند
+4. **پیامدها** - اهمیت نظری و عملی
+5. **محدودیت‌ها** - نقاط ضعف مطالعه
+6. **جهت‌گیری‌های آینده** - چه پژوهش‌هایی باید دنبال شوند
+7. **نتیجه‌گیری** - پیام اصلی
 
-Avoid: Overstating findings or introducing new results`} />
+اجتناب کن از: اغراق در یافته‌ها یا معرفی نتایج جدید`} />
 
-## Critical Analysis
+## تحلیل انتقادی
 
-### Source Evaluation
+### ارزیابی منبع
 
-<TryIt compact prompt={`Evaluate this source for academic use:
+<TryIt compact prompt={`این منبع را برای استفاده آکادمیک ارزیابی کن:
 
-Source: \${source:paste citation or link here}
-Content summary: \${summary:brief description of what the source claims}
+منبع: \${source:ارجاع یا لینک را اینجا قرار بده}
+خلاصه محتوا: \${summary:توصیف مختصر از ادعاهای منبع}
 
-Assess using CRAAP criteria:
-- **Currency**: When published? Updated? Current enough?
-- **Relevance**: Relates to my topic? Appropriate level?
-- **Authority**: Author credentials? Publisher reputation?
-- **Accuracy**: Supported by evidence? Peer-reviewed?
-- **Purpose**: Why was it written? Bias evident?
+با استفاده از معیارهای CRAAP ارزیابی کن:
+- **به‌روز بودن**: کی منتشر شده؟ به‌روزرسانی شده؟ به اندازه کافی جدید است؟
+- **ارتباط**: به موضوع من مربوط است؟ سطح مناسب؟
+- **اعتبار نویسنده**: مدارک نویسنده؟ اعتبار ناشر؟
+- **دقت**: با شواهد پشتیبانی شده؟ داوری شده؟
+- **هدف**: چرا نوشته شده؟ تعصب آشکار است؟
 
-Verdict: Highly credible / Use with caution / Avoid
-How to use: Recommendations for incorporation`} />
+حکم: بسیار معتبر / با احتیاط استفاده شود / اجتناب شود
+نحوه استفاده: توصیه‌هایی برای گنجاندن`} />
 
-### Argument Analysis
+### تحلیل استدلال
 
-<TryIt compact prompt={`Analyze the argument in this text:
+<TryIt compact prompt={`استدلال در این متن را تحلیل کن:
 
-\${text:paste the text you want to analyze}
+\${text:متنی را که می‌خواهی تحلیل کنی اینجا قرار بده}
 
-Identify:
-1. **Main claim** - What's being argued
-2. **Supporting evidence** - What backs it up
-3. **Assumptions** - Unstated premises
-4. **Logical structure** - How conclusion follows
-5. **Strengths** - What's compelling
-6. **Weaknesses** - Logical gaps or fallacies
-7. **Alternative interpretations**
+شناسایی کن:
+1. **ادعای اصلی** - چه چیزی استدلال می‌شود
+2. **شواهد پشتیبان** - چه چیزی آن را تأیید می‌کند
+3. **فرضیات** - مقدمات بیان‌نشده
+4. **ساختار منطقی** - نتیجه‌گیری چگونه حاصل می‌شود
+5. **نقاط قوت** - چه چیزی قانع‌کننده است
+6. **نقاط ضعف** - خلأهای منطقی یا مغالطات
+7. **تفسیرهای جایگزین**
 
-Provide: Fair, balanced assessment`} />
+ارائه بده: ارزیابی منصفانه و متعادل`} />
 
-## Prompt Templates from prompts.chat
+## الگوهای پرامپت از prompts.chat
 
-### Act as a Research Assistant
+### نقش دستیار پژوهشی
 
-<TryIt compact prompt={`I want you to act as a research assistant. Help me explore topics, find information, synthesize sources, and develop arguments. Ask clarifying questions, suggest relevant areas to investigate, and help me think critically about evidence. Be thorough but acknowledge the limits of your knowledge.`} />
+<TryIt compact prompt={`می‌خواهم به عنوان دستیار پژوهشی عمل کنی. کمکم کن موضوعات را کاوش کنم، اطلاعات پیدا کنم، منابع را ترکیب کنم و استدلال‌ها را توسعه دهم. سؤالات روشن‌کننده بپرس، حوزه‌های مرتبط برای بررسی پیشنهاد بده و کمکم کن درباره شواهد انتقادی فکر کنم. دقیق باش اما محدودیت‌های دانشت را بپذیر.`} />
 
-### Act as a Data Analyst
+### نقش تحلیلگر داده
 
-<TryIt compact prompt={`I want you to act as a data analyst. I will describe datasets and research questions, and you will suggest analysis approaches, help interpret results, and identify potential issues. Focus on sound methodology and clear communication of findings.`} />
+<TryIt compact prompt={`می‌خواهم به عنوان تحلیلگر داده عمل کنی. مجموعه داده‌ها و سؤالات پژوهشی را توصیف خواهم کرد، و تو رویکردهای تحلیلی پیشنهاد بده، کمک کن نتایج را تفسیر کنم و مشکلات احتمالی را شناسایی کن. بر روش‌شناسی صحیح و ارتباط روشن یافته‌ها تمرکز کن.`} />
 
-### Act as a Peer Reviewer
+### نقش داور همتا
 
-<TryIt compact prompt={`I want you to act as an academic peer reviewer. I will share manuscripts or sections, and you will provide constructive feedback on methodology, argument, writing, and contribution to the field. Be rigorous but supportive, noting both strengths and areas for improvement.`} />
+<TryIt compact prompt={`می‌خواهم به عنوان داور همتای آکادمیک عمل کنی. دست‌نوشته‌ها یا بخش‌هایی را به اشتراک خواهم گذاشت، و تو بازخورد سازنده درباره روش‌شناسی، استدلال، نگارش و مشارکت در حوزه ارائه بده. سخت‌گیر اما حمایت‌کننده باش، هم نقاط قوت و هم نقاط قابل بهبود را ذکر کن.`} />
 
-## Summary
+## خلاصه
 
-<Callout type="tip" title="Key Techniques">
-Clearly state research context and goals, specify the analytical framework to use, request acknowledgment of limitations, ask for evidence-based reasoning, and maintain academic rigor and honesty.
+<Callout type="tip" title="تکنیک‌های کلیدی">
+زمینه و اهداف پژوهشی را به‌وضوح بیان کنید، چارچوب تحلیلی مورد استفاده را مشخص کنید، درخواست پذیرش محدودیت‌ها را بکنید، استدلال مبتنی بر شواهد بخواهید و دقت و صداقت آکادمیک را حفظ کنید.
 </Callout>
 
 <Quiz 
-  question="What's the most important thing to remember when using AI for research?"
+  question="مهم‌ترین نکته برای به خاطر سپردن هنگام استفاده از هوش مصنوعی در پژوهش چیست؟"
   options={[
-    "AI can replace the need for primary sources",
-    "AI analysis is always accurate and up-to-date",
-    "Always verify AI claims independently and cite original sources",
-    "AI can access and analyze your actual datasets"
+    "هوش مصنوعی می‌تواند نیاز به منابع اولیه را جایگزین کند",
+    "تحلیل هوش مصنوعی همیشه دقیق و به‌روز است",
+    "همیشه ادعاهای هوش مصنوعی را به‌طور مستقل بررسی کنید و به منابع اصلی ارجاع دهید",
+    "هوش مصنوعی می‌تواند به مجموعه داده‌های واقعی شما دسترسی داشته و آن‌ها را تحلیل کند"
   ]}
   correctIndex={2}
-  explanation="AI can assist with synthesis and structure, but it can hallucinate citations, have outdated information, and cannot access your actual data. Always verify claims against primary sources and maintain academic integrity."
+  explanation="هوش مصنوعی می‌تواند در ترکیب و ساختاردهی کمک کند، اما ممکن است ارجاعات ساختگی تولید کند، اطلاعات قدیمی داشته باشد و نمی‌تواند به داده‌های واقعی شما دسترسی داشته باشد. همیشه ادعاها را با منابع اولیه بررسی کنید و صداقت آکادمیک را حفظ کنید."
 />
 
-Remember: AI can assist research but cannot replace critical thinking, ethical judgment, or domain expertise. Always verify claims independently.
+به یاد داشته باشید: هوش مصنوعی می‌تواند به پژوهش کمک کند اما نمی‌تواند جایگزین تفکر انتقادی، قضاوت اخلاقی یا تخصص موضوعی شود. همیشه ادعاها را به‌طور مستقل بررسی کنید.
