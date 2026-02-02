@@ -1,445 +1,445 @@
-As AI continues to evolve at an unprecedented pace, so too will the art and science of prompting. This final chapter explores emerging trends, the shifting landscape of human-AI collaboration, and how to stay ahead as the field transforms.
+Naarmate AI zich in een ongekend tempo blijft ontwikkelen, zal ook de kunst en wetenschap van prompting evolueren. Dit laatste hoofdstuk verkent opkomende trends, het veranderende landschap van mens-AI samenwerking, en hoe je voorop kunt blijven terwijl het vakgebied transformeert.
 
-<Callout type="info" title="A Moving Target">
-The techniques in this book represent current best practices, but AI capabilities change rapidly. The principles of clear communication, structured thinking, and iterative refinement will remain valuable even as specific tactics evolve.
+<Callout type="info" title="Een Bewegend Doel">
+De technieken in dit boek vertegenwoordigen de huidige best practices, maar AI-mogelijkheden veranderen snel. De principes van duidelijke communicatie, gestructureerd denken en iteratieve verfijning blijven waardevol, zelfs als specifieke tactieken evolueren.
 </Callout>
 
-## The Evolving Landscape
+## Het Evoluerende Landschap
 
-### From Prompts to Conversations
+### Van Prompts naar Gesprekken
 
-Early prompting was transactional—a single input yielding a single output. Modern AI interaction is increasingly **conversational and collaborative**:
+Vroege prompting was transactioneel—een enkele invoer die een enkele uitvoer opleverde. Moderne AI-interactie is steeds meer **conversationeel en collaboratief**:
 
-- **Multi-turn refinement** - Building understanding across exchanges
-- **Persistent context** - Systems that remember and learn from interactions
-- **Agentic workflows** - AI that can plan, execute, and iterate autonomously
-- **Tool use** - Models that can search, compute, and interact with external systems
+- **Multi-turn verfijning** - Begrip opbouwen door uitwisselingen
+- **Persistente context** - Systemen die onthouden en leren van interacties
+- **Agentische workflows** - AI die autonoom kan plannen, uitvoeren en itereren
+- **Tool-gebruik** - Modellen die kunnen zoeken, berekenen en interacteren met externe systemen
 
-<TryIt compact prompt={`Let's work together on \${task:writing a technical blog post}.
+<TryIt compact prompt={`Laten we samen werken aan \${task:het schrijven van een technische blogpost}.
 
-I'd like to develop this iteratively:
-1. First, help me brainstorm angles
-2. Then we'll outline together
-3. I'll draft sections and get your feedback
-4. Finally, we'll polish the final version
+Ik wil dit iteratief ontwikkelen:
+1. Help me eerst met het brainstormen over invalshoeken
+2. Dan maken we samen een outline
+3. Ik schrijf secties en krijg je feedback
+4. Tot slot polijsten we de definitieve versie
 
-Start by asking me about my target audience and key message.`} />
+Begin door me te vragen over mijn doelgroep en kernboodschap.`} />
 
-### The Rise of Context Engineering
+### De Opkomst van Context Engineering
 
-As covered in Chapter 14, prompting is expanding beyond single instructions to encompass **context engineering**—the strategic management of what information an AI can access:
+Zoals behandeld in Hoofdstuk 14, breidt prompting zich uit voorbij enkele instructies naar **context engineering**—het strategisch beheren van welke informatie een AI kan benaderen:
 
-- **RAG (Retrieval-Augmented Generation)** - Dynamic knowledge retrieval
-- **Function calling** - Structured tool integration
-- **MCP (Model Context Protocol)** - Standardized context sharing
-- **Memory systems** - Persistent knowledge across sessions
+- **RAG (Retrieval-Augmented Generation)** - Dynamische kennisophaling
+- **Function calling** - Gestructureerde tool-integratie
+- **MCP (Model Context Protocol)** - Gestandaardiseerde context-deling
+- **Geheugensystemen** - Persistente kennis over sessies heen
 
-The future prompt engineer thinks not just about *what to say* but *what context to provide*.
+De toekomstige prompt engineer denkt niet alleen na over *wat te zeggen* maar ook *welke context te bieden*.
 
-### Multimodal by Default
+### Multimodaal als Standaard
 
-Text-only interaction is becoming the exception. Future AI systems will seamlessly handle:
+Alleen-tekst interactie wordt de uitzondering. Toekomstige AI-systemen zullen naadloos omgaan met:
 
-- **Images and video** - Understanding and generating visual content
-- **Audio and voice** - Natural speech interaction
-- **Documents and files** - Direct processing of complex materials
-- **Real-world interaction** - Robotics and physical systems
+- **Afbeeldingen en video** - Visuele content begrijpen en genereren
+- **Audio en spraak** - Natuurlijke spraakinteractie
+- **Documenten en bestanden** - Directe verwerking van complexe materialen
+- **Real-world interactie** - Robotica en fysieke systemen
 
-Prompting skills will extend to guiding AI perception and physical action.
+Prompting-vaardigheden zullen zich uitbreiden naar het begeleiden van AI-perceptie en fysieke actie.
 
-## The Agentic Future
+## De Agentische Toekomst
 
-The most significant shift in AI is the rise of **agents**—AI systems that don't just respond to prompts but actively pursue goals, make decisions, and take actions in the world.
+De meest significante verschuiving in AI is de opkomst van **agents**—AI-systemen die niet alleen reageren op prompts maar actief doelen nastreven, beslissingen nemen en acties ondernemen in de wereld.
 
-### What Are AI Agents?
+### Wat Zijn AI Agents?
 
-An AI agent is a system that:
+Een AI agent is een systeem dat:
 
-- **Perceives** its environment through inputs (text, images, data, APIs)
-- **Reasons** about what to do using an LLM as its "brain"
-- **Acts** by calling tools, writing code, or interacting with systems
-- **Learns** from feedback and adjusts its approach
+- **Waarneemt** zijn omgeving via invoer (tekst, afbeeldingen, data, API's)
+- **Redeneert** over wat te doen met een LLM als zijn "brein"
+- **Handelt** door tools aan te roepen, code te schrijven of te interacteren met systemen
+- **Leert** van feedback en past zijn aanpak aan
 
-<Callout type="info" title="From Chatbots to Agents">
-Traditional chatbots wait for input and respond. Agents take initiative—they plan multi-step tasks, use tools autonomously, recover from errors, and persist until goals are achieved.
+<Callout type="info" title="Van Chatbots naar Agents">
+Traditionele chatbots wachten op invoer en reageren. Agents nemen initiatief—ze plannen meerstaps-taken, gebruiken tools autonoom, herstellen van fouten en volharden totdat doelen bereikt zijn.
 </Callout>
 
-### The Role of Prompts in Agents
+### De Rol van Prompts in Agents
 
-In an agentic world, prompts become even more critical—but they serve different purposes:
+In een agentische wereld worden prompts nog belangrijker—maar ze dienen andere doeleinden:
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-900 p-4">
-    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 m-0!">System Prompts</p>
-    <p className="text-sm text-muted-foreground mt-2 m-0!">Define the agent's identity, capabilities, constraints, and behavioral guidelines. These are the agent's "constitution."</p>
+    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 m-0!">Systeem Prompts</p>
+    <p className="text-sm text-muted-foreground mt-2 m-0!">Definiëren de identiteit, mogelijkheden, beperkingen en gedragsrichtlijnen van de agent. Dit zijn de "grondwet" van de agent.</p>
   </div>
   <div className="border rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-900 p-4">
     <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 m-0!">Planning Prompts</p>
-    <p className="text-sm text-muted-foreground mt-2 m-0!">Guide how agents break down complex goals into actionable steps. Critical for multi-step reasoning.</p>
+    <p className="text-sm text-muted-foreground mt-2 m-0!">Begeleiden hoe agents complexe doelen opsplitsen in uitvoerbare stappen. Cruciaal voor meerstaps-redeneren.</p>
   </div>
   <div className="border rounded-lg bg-amber-50/50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900 p-4">
-    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 m-0!">Tool-Use Prompts</p>
-    <p className="text-sm text-muted-foreground mt-2 m-0!">Describe available tools and when/how to use them. Agents must understand their capabilities.</p>
+    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 m-0!">Tool-Gebruik Prompts</p>
+    <p className="text-sm text-muted-foreground mt-2 m-0!">Beschrijven beschikbare tools en wanneer/hoe ze te gebruiken. Agents moeten hun mogelijkheden begrijpen.</p>
   </div>
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900 p-4">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 m-0!">Reflection Prompts</p>
-    <p className="text-sm text-muted-foreground mt-2 m-0!">Enable agents to evaluate their own outputs, catch errors, and improve iteratively.</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 m-0!">Reflectie Prompts</p>
+    <p className="text-sm text-muted-foreground mt-2 m-0!">Stellen agents in staat hun eigen output te evalueren, fouten op te vangen en iteratief te verbeteren.</p>
   </div>
 </div>
 
-### Agent Architecture Patterns
+### Agent Architectuur Patronen
 
-Modern agents follow recognizable patterns. Understanding these helps you design effective agent systems:
+Moderne agents volgen herkenbare patronen. Het begrijpen hiervan helpt je effectieve agent-systemen te ontwerpen:
 
 **ReAct (Reasoning + Acting)**
 
-The agent alternates between reasoning about what to do and taking actions:
+De agent wisselt af tussen redeneren over wat te doen en acties ondernemen:
 
 <div className="my-6 flex flex-col items-center gap-2 p-6 bg-muted/30 rounded-lg">
   <div className="flex items-center gap-4">
     <div className="px-4 py-2 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg">
-      <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Think</p>
+      <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Denken</p>
     </div>
     <div className="text-slate-400">→</div>
     <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
-      <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">Act</p>
+      <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">Handelen</p>
     </div>
     <div className="text-slate-400">→</div>
     <div className="px-4 py-2 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg">
-      <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">Observe</p>
+      <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">Observeren</p>
     </div>
     <div className="text-slate-400">→</div>
-    <div className="text-muted-foreground text-sm">(repeat)</div>
+    <div className="text-muted-foreground text-sm">(herhalen)</div>
   </div>
 </div>
 
 **Plan-and-Execute**
 
-The agent creates a complete plan first, then executes steps:
+De agent maakt eerst een volledig plan en voert dan de stappen uit:
 
 <div className="my-6 flex flex-col items-center gap-2 p-6 bg-muted/30 rounded-lg">
   <div className="px-6 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
-    <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Create Plan</p>
-    <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">Break goal into steps</p>
+    <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Plan Maken</p>
+    <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">Doel opsplitsen in stappen</p>
   </div>
   <div className="text-blue-400 dark:text-blue-500 text-lg">↓</div>
   <div className="flex items-center gap-3">
     <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
-      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Step 1</p>
+      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Stap 1</p>
     </div>
     <div className="text-slate-400">→</div>
     <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
-      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Step 2</p>
+      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Stap 2</p>
     </div>
     <div className="text-slate-400">→</div>
     <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
-      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Step 3</p>
+      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Stap 3</p>
     </div>
     <div className="text-slate-400">→</div>
     <div className="text-muted-foreground text-sm">...</div>
   </div>
   <div className="text-green-400 dark:text-green-500 text-lg">↓</div>
   <div className="px-6 py-3 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-lg text-center">
-    <p className="text-sm font-medium text-amber-700 dark:text-amber-300 m-0!">Revise if Needed</p>
-    <p className="text-xs text-amber-600 dark:text-amber-400 m-0!">Adapt plan based on results</p>
+    <p className="text-sm font-medium text-amber-700 dark:text-amber-300 m-0!">Herzien Indien Nodig</p>
+    <p className="text-xs text-amber-600 dark:text-amber-400 m-0!">Plan aanpassen op basis van resultaten</p>
   </div>
 </div>
 
-### Prompting for Agents
+### Prompting voor Agents
 
-When designing prompts for agent systems, consider:
+Bij het ontwerpen van prompts voor agent-systemen, overweeg:
 
-<TryIt compact prompt={`You are an autonomous research agent. Your goal is to \${goal:find the latest statistics on renewable energy adoption}.
+<TryIt compact prompt={`Je bent een autonome onderzoeksagent. Je doel is om \${goal:de laatste statistieken over adoptie van hernieuwbare energie te vinden}.
 
-**Your capabilities:**
-- Search the web for information
-- Read and analyze documents
-- Take notes and synthesize findings
-- Ask clarifying questions if needed
+**Je mogelijkheden:**
+- Het web doorzoeken voor informatie
+- Documenten lezen en analyseren
+- Notities maken en bevindingen samenvatten
+- Verduidelijkende vragen stellen indien nodig
 
-**Your approach:**
-1. First, plan your research strategy
-2. Execute searches systematically
-3. Evaluate source credibility
-4. Synthesize findings into a coherent report
-5. Cite all sources
+**Je aanpak:**
+1. Plan eerst je onderzoeksstrategie
+2. Voer systematisch zoekopdrachten uit
+3. Evalueer de geloofwaardigheid van bronnen
+4. Vat bevindingen samen in een coherent rapport
+5. Citeer alle bronnen
 
-**Constraints:**
-- Stay focused on the goal
-- Acknowledge uncertainty
-- Never fabricate information
-- Stop and ask if you're stuck
+**Beperkingen:**
+- Blijf gefocust op het doel
+- Erken onzekerheid
+- Verzin nooit informatie
+- Stop en vraag als je vastloopt
 
-Begin by outlining your research plan.`} />
+Begin met het schetsen van je onderzoeksplan.`} />
 
-### Multi-Agent Systems
+### Multi-Agent Systemen
 
-The future involves teams of specialized agents working together:
+De toekomst omvat teams van gespecialiseerde agents die samenwerken:
 
 <div className="my-6 p-6 bg-muted/30 rounded-lg">
   <div className="flex flex-col md:flex-row items-center justify-center gap-6">
     <div className="flex flex-col items-center gap-2">
       <div className="px-4 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
-        <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Coordinator</p>
-        <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">Manages workflow</p>
+        <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Coördinator</p>
+        <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">Beheert workflow</p>
       </div>
     </div>
     <div className="hidden md:block text-slate-400 text-2xl">⟷</div>
     <div className="md:hidden text-slate-400 text-2xl">↕</div>
     <div className="flex flex-wrap justify-center gap-3">
       <div className="px-3 py-2 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg">
-        <p className="text-xs font-medium text-purple-700 dark:text-purple-300 m-0!">Researcher</p>
+        <p className="text-xs font-medium text-purple-700 dark:text-purple-300 m-0!">Onderzoeker</p>
       </div>
       <div className="px-3 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
-        <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Writer</p>
+        <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Schrijver</p>
       </div>
       <div className="px-3 py-2 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-lg">
-        <p className="text-xs font-medium text-amber-700 dark:text-amber-300 m-0!">Critic</p>
+        <p className="text-xs font-medium text-amber-700 dark:text-amber-300 m-0!">Criticus</p>
       </div>
       <div className="px-3 py-2 bg-red-100 dark:bg-red-900/50 border border-red-200 dark:border-red-800 rounded-lg">
-        <p className="text-xs font-medium text-red-700 dark:text-red-300 m-0!">Coder</p>
+        <p className="text-xs font-medium text-red-700 dark:text-red-300 m-0!">Programmeur</p>
       </div>
     </div>
   </div>
 </div>
 
-Each agent has its own system prompt defining its role, and they communicate through structured messages. The prompt engineer's job becomes **designing the team**—defining roles, communication protocols, and coordination strategies.
+Elke agent heeft zijn eigen systeem prompt die zijn rol definieert, en ze communiceren via gestructureerde berichten. De taak van de prompt engineer wordt **het ontwerpen van het team**—het definiëren van rollen, communicatieprotocollen en coördinatiestrategieën.
 
-<Callout type="tip" title="The Prompt Engineer as Architect">
-In an agentic future, prompt engineers become system architects. You're not just writing instructions—you're designing autonomous systems that can reason, plan, and act. The skills you've learned in this book are the foundation for this new discipline.
+<Callout type="tip" title="De Prompt Engineer als Architect">
+In een agentische toekomst worden prompt engineers systeemarchitecten. Je schrijft niet alleen instructies—je ontwerpt autonome systemen die kunnen redeneren, plannen en handelen. De vaardigheden die je in dit boek hebt geleerd zijn de basis voor deze nieuwe discipline.
 </Callout>
 
-## Emerging Patterns
+## Opkomende Patronen
 
-### Prompt Orchestration
+### Prompt Orchestratie
 
-Single prompts are giving way to **orchestrated systems**:
+Enkele prompts maken plaats voor **georkestreerde systemen**:
 
 <div className="my-6 flex flex-col items-center gap-2 p-6 bg-muted/30 rounded-lg">
   <div className="px-6 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg text-center">
-    <p className="text-sm font-medium text-slate-700 dark:text-slate-300 m-0!">User Request</p>
+    <p className="text-sm font-medium text-slate-700 dark:text-slate-300 m-0!">Gebruikersverzoek</p>
   </div>
   <div className="text-slate-400 dark:text-slate-500 text-lg">↓</div>
   <div className="px-6 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
     <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Planner Agent</p>
-    <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">Breaks down task</p>
+    <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">Splitst taak op</p>
   </div>
   <div className="text-blue-400 dark:text-blue-500 text-lg">↓</div>
   <div className="px-6 py-3 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg text-center">
-    <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">Researcher Agent</p>
-    <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">Gathers information</p>
+    <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">Onderzoeker Agent</p>
+    <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">Verzamelt informatie</p>
   </div>
   <div className="text-purple-400 dark:text-purple-500 text-lg">↓</div>
   <div className="px-6 py-3 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-lg text-center">
-    <p className="text-sm font-medium text-amber-700 dark:text-amber-300 m-0!">Writer Agent</p>
-    <p className="text-xs text-amber-600 dark:text-amber-400 m-0!">Creates content</p>
+    <p className="text-sm font-medium text-amber-700 dark:text-amber-300 m-0!">Schrijver Agent</p>
+    <p className="text-xs text-amber-600 dark:text-amber-400 m-0!">Creëert content</p>
   </div>
   <div className="text-amber-400 dark:text-amber-500 text-lg">↓</div>
   <div className="px-6 py-3 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg text-center">
     <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">Reviewer Agent</p>
-    <p className="text-xs text-green-600 dark:text-green-400 m-0!">Quality checks</p>
+    <p className="text-xs text-green-600 dark:text-green-400 m-0!">Kwaliteitscontroles</p>
   </div>
   <div className="text-green-400 dark:text-green-500 text-lg">↓</div>
   <div className="px-6 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg text-center">
-    <p className="text-sm font-medium text-slate-700 dark:text-slate-300 m-0!">Final Output</p>
+    <p className="text-sm font-medium text-slate-700 dark:text-slate-300 m-0!">Eindresultaat</p>
   </div>
 </div>
 
-Future practitioners will design prompt *systems* rather than individual prompts.
+Toekomstige beoefenaars zullen prompt *systemen* ontwerpen in plaats van individuele prompts.
 
-### Self-Improving Prompts
+### Zelfverbeterende Prompts
 
-AI systems are beginning to:
+AI-systemen beginnen met:
 
-- **Optimize their own prompts** - Meta-learning for better instructions
-- **Learn from feedback** - Adapting based on outcomes
-- **Generate training data** - Creating examples for fine-tuning
-- **Evaluate themselves** - Building in quality assessment
+- **Hun eigen prompts optimaliseren** - Meta-learning voor betere instructies
+- **Leren van feedback** - Aanpassen op basis van resultaten
+- **Trainingsdata genereren** - Voorbeelden maken voor fine-tuning
+- **Zichzelf evalueren** - Ingebouwde kwaliteitsbeoordeling
 
-<TryIt compact prompt={`Analyze this prompt and suggest improvements:
+<TryIt compact prompt={`Analyseer deze prompt en stel verbeteringen voor:
 
-Original: "\${originalPrompt:Write a story about a robot}"
+Origineel: "\${originalPrompt:Schrijf een verhaal over een robot}"
 
-Consider:
-1. **Clarity** - Is the intent clear?
-2. **Specificity** - What details are missing?
-3. **Structure** - How could output be better organized?
-4. **Edge cases** - What could go wrong?
+Overweeg:
+1. **Duidelijkheid** - Is de bedoeling duidelijk?
+2. **Specificiteit** - Welke details ontbreken?
+3. **Structuur** - Hoe kan de output beter georganiseerd worden?
+4. **Randgevallen** - Wat kan er misgaan?
 
-Provide: Improved version with explanation of changes`} />
+Geef: Verbeterde versie met uitleg van wijzigingen`} />
 
 ### Natural Language Programming
 
-The line between prompting and programming is blurring:
+De grens tussen prompting en programmeren vervaagt:
 
-- **Prompts as code** - Version-controlled, tested, deployed
-- **LLMs as interpreters** - Natural language as executable instructions
-- **Hybrid systems** - Combining traditional code with AI reasoning
-- **AI-assisted development** - Models that write and debug code
+- **Prompts als code** - Versiebeheerd, getest, gedeployed
+- **LLM's als interpreters** - Natuurlijke taal als uitvoerbare instructies
+- **Hybride systemen** - Traditionele code combineren met AI-redeneren
+- **AI-ondersteunde ontwikkeling** - Modellen die code schrijven en debuggen
 
-Understanding prompting increasingly means understanding software development.
+Prompting begrijpen betekent steeds meer softwareontwikkeling begrijpen.
 
-## Skills for the Future
+## Vaardigheden voor de Toekomst
 
-### What Will Remain Valuable
+### Wat Waardevol Zal Blijven
 
-Certain skills will remain essential regardless of how AI evolves:
+Bepaalde vaardigheden blijven essentieel, ongeacht hoe AI evolueert:
 
-1. **Clear thinking** - Knowing what you actually want
-2. **Domain expertise** - Understanding the problem space
-3. **Critical evaluation** - Assessing AI output quality
-4. **Ethical judgment** - Knowing what *should* be done
-5. **Iterative refinement** - Continuous improvement mindset
+1. **Helder denken** - Weten wat je daadwerkelijk wilt
+2. **Domeinexpertise** - Het probleemgebied begrijpen
+3. **Kritische evaluatie** - AI-output kwaliteit beoordelen
+4. **Ethisch oordeel** - Weten wat *zou moeten* worden gedaan
+5. **Iteratieve verfijning** - Continu verbeterende mindset
 
-### What Will Change
+### Wat Zal Veranderen
 
-Other aspects will shift significantly:
+Andere aspecten zullen significant verschuiven:
 
 <div className="my-6 overflow-x-auto">
   <table className="w-full border-collapse text-sm">
     <thead>
       <tr className="border-b border-border">
-        <th className="text-left py-3 px-4 font-semibold text-muted-foreground">Today</th>
-        <th className="text-left py-3 px-4 font-semibold text-muted-foreground">Tomorrow</th>
+        <th className="text-left py-3 px-4 font-semibold text-muted-foreground">Vandaag</th>
+        <th className="text-left py-3 px-4 font-semibold text-muted-foreground">Morgen</th>
       </tr>
     </thead>
     <tbody>
       <tr className="border-b border-border/50">
-        <td className="py-3 px-4">Writing detailed prompts</td>
-        <td className="py-3 px-4 text-primary font-medium">Designing agent systems</td>
+        <td className="py-3 px-4">Gedetailleerde prompts schrijven</td>
+        <td className="py-3 px-4 text-primary font-medium">Agent-systemen ontwerpen</td>
       </tr>
       <tr className="border-b border-border/50">
-        <td className="py-3 px-4">Manual prompt optimization</td>
-        <td className="py-3 px-4 text-primary font-medium">Automated prompt tuning</td>
+        <td className="py-3 px-4">Handmatige prompt-optimalisatie</td>
+        <td className="py-3 px-4 text-primary font-medium">Geautomatiseerde prompt-tuning</td>
       </tr>
       <tr className="border-b border-border/50">
-        <td className="py-3 px-4">Single-model expertise</td>
-        <td className="py-3 px-4 text-primary font-medium">Multi-model orchestration</td>
+        <td className="py-3 px-4">Expertise in één model</td>
+        <td className="py-3 px-4 text-primary font-medium">Multi-model orchestratie</td>
       </tr>
       <tr className="border-b border-border/50">
-        <td className="py-3 px-4">Text-focused interaction</td>
-        <td className="py-3 px-4 text-primary font-medium">Multimodal fluency</td>
+        <td className="py-3 px-4">Tekstgerichte interactie</td>
+        <td className="py-3 px-4 text-primary font-medium">Multimodale vaardigheid</td>
       </tr>
       <tr>
-        <td className="py-3 px-4">Individual productivity</td>
-        <td className="py-3 px-4 text-primary font-medium">Team-AI collaboration</td>
+        <td className="py-3 px-4">Individuele productiviteit</td>
+        <td className="py-3 px-4 text-primary font-medium">Team-AI samenwerking</td>
       </tr>
     </tbody>
   </table>
 </div>
 
-### Staying Current
+### Actueel Blijven
 
-To keep your skills relevant:
+Om je vaardigheden relevant te houden:
 
-- **Experiment continuously** - Try new models and features as they release
-- **Follow research** - Stay aware of academic developments
-- **Join communities** - Learn from other practitioners
-- **Build projects** - Apply skills to real problems
-- **Teach others** - Solidify understanding by explaining
+- **Experimenteer continu** - Probeer nieuwe modellen en functies zodra ze uitkomen
+- **Volg onderzoek** - Blijf op de hoogte van academische ontwikkelingen
+- **Word lid van communities** - Leer van andere beoefenaars
+- **Bouw projecten** - Pas vaardigheden toe op echte problemen
+- **Onderwijs anderen** - Versterk begrip door uit te leggen
 
-## The Human Element
+## Het Menselijke Element
 
-### AI as Amplifier
+### AI als Versterker
 
-At its best, AI amplifies human capability rather than replacing it:
+Op zijn best versterkt AI menselijke capaciteiten in plaats van deze te vervangen:
 
-- **Experts become more expert** - AI handles routine work, humans focus on insight
-- **Creativity expands** - More ideas explored, more possibilities tested
-- **Access democratizes** - Capabilities once requiring specialists become available to all
-- **Collaboration deepens** - Human-AI teams exceed either alone
+- **Experts worden meer expert** - AI handelt routinewerk af, mensen focussen op inzicht
+- **Creativiteit breidt uit** - Meer ideeën verkend, meer mogelijkheden getest
+- **Toegang democratiseert** - Capaciteiten die ooit specialisten vereisten worden beschikbaar voor iedereen
+- **Samenwerking verdiept** - Mens-AI teams overtreffen beide alleen
 
-### The Irreplaceable Human
+### De Onvervangbare Mens
 
-Certain qualities remain distinctly human:
+Bepaalde kwaliteiten blijven uitgesproken menselijk:
 
-- **Original experience** - Living in the world, having emotions and relationships
-- **Values and ethics** - Deciding what matters and what's right
-- **Accountability** - Taking responsibility for outcomes
-- **Meaning-making** - Understanding *why* something matters
-- **Genuine creativity** - True novelty born from unique perspective
+- **Originele ervaring** - Leven in de wereld, emoties en relaties hebben
+- **Waarden en ethiek** - Beslissen wat ertoe doet en wat juist is
+- **Verantwoordelijkheid** - Verantwoordelijk zijn voor resultaten
+- **Betekenisgeving** - Begrijpen *waarom* iets ertoe doet
+- **Echte creativiteit** - Ware vernieuwing geboren uit uniek perspectief
 
-<Callout type="tip" title="Your Unique Value">
-As AI handles more routine cognitive tasks, your unique value lies in judgment, creativity, domain expertise, and the human connections AI cannot replicate. Invest in what makes you irreplaceable.
+<Callout type="tip" title="Jouw Unieke Waarde">
+Naarmate AI meer routinematige cognitieve taken afhandelt, ligt jouw unieke waarde in oordeelsvermogen, creativiteit, domeinexpertise en de menselijke connecties die AI niet kan repliceren. Investeer in wat jou onvervangbaar maakt.
 </Callout>
 
-## Final Reflections
+## Laatste Reflecties
 
-### What We've Learned
+### Wat We Hebben Geleerd
 
-Throughout this book, we've explored:
+Door dit boek heen hebben we verkend:
 
-- **Foundations** - How AI models work and what makes prompts effective
-- **Techniques** - Role-based prompting, chain-of-thought, few-shot learning, and more
-- **Advanced strategies** - System prompts, prompt chaining, multimodal interaction
-- **Best practices** - Avoiding pitfalls, ethical considerations, optimization
-- **Applications** - Writing, programming, education, business, creativity, research
+- **Fundamenten** - Hoe AI-modellen werken en wat prompts effectief maakt
+- **Technieken** - Rolgebaseerde prompting, chain-of-thought, few-shot learning, en meer
+- **Geavanceerde strategieën** - Systeem prompts, prompt chaining, multimodale interactie
+- **Best practices** - Valkuilen vermijden, ethische overwegingen, optimalisatie
+- **Toepassingen** - Schrijven, programmeren, onderwijs, business, creativiteit, onderzoek
 
-These techniques share common threads:
+Deze technieken delen gemeenschappelijke draden:
 
-1. **Be clear and specific** - Know what you want and communicate it precisely
-2. **Provide context** - Give AI the information it needs
-3. **Structure your requests** - Organization improves outputs
-4. **Iterate and refine** - First attempts are starting points, not endpoints
-5. **Evaluate critically** - AI output requires human judgment
+1. **Wees duidelijk en specifiek** - Weet wat je wilt en communiceer het precies
+2. **Bied context** - Geef AI de informatie die het nodig heeft
+3. **Structureer je verzoeken** - Organisatie verbetert output
+4. **Itereer en verfijn** - Eerste pogingen zijn startpunten, geen eindpunten
+5. **Evalueer kritisch** - AI-output vereist menselijk oordeel
 
-### The Art and Science
+### De Kunst en Wetenschap
 
-Prompting is both **art and science**:
+Prompting is zowel **kunst als wetenschap**:
 
-- **Science**: Testable hypotheses, measurable outcomes, reproducible techniques
-- **Art**: Intuition, creativity, knowing when to break the rules
+- **Wetenschap**: Testbare hypotheses, meetbare resultaten, reproduceerbare technieken
+- **Kunst**: Intuïtie, creativiteit, weten wanneer de regels te breken
 
-The best practitioners combine rigorous methodology with creative experimentation. They test systematically but also trust their instincts. They follow best practices but know when to deviate.
+De beste beoefenaars combineren rigoureuze methodologie met creatieve experimentatie. Ze testen systematisch maar vertrouwen ook op hun instinct. Ze volgen best practices maar weten wanneer af te wijken.
 
-### A Call to Create
+### Een Oproep om te Creëren
 
-This book has given you tools. What you build with them is up to you.
+Dit boek heeft je gereedschappen gegeven. Wat je ermee bouwt is aan jou.
 
-- **Solve problems** that matter to you and others
-- **Create things** that didn't exist before
-- **Help people** do things they couldn't do alone
-- **Push boundaries** of what's possible
-- **Stay curious** as the field evolves
+- **Los problemen op** die ertoe doen voor jou en anderen
+- **Creëer dingen** die eerder niet bestonden
+- **Help mensen** dingen te doen die ze alleen niet konden
+- **Verleg grenzen** van wat mogelijk is
+- **Blijf nieuwsgierig** terwijl het vakgebied evolueert
 
-The age of AI is just beginning. The most important applications haven't been invented yet. The most powerful techniques haven't been discovered. The future is being written now—by people like you, one prompt at a time.
+Het AI-tijdperk is nog maar net begonnen. De belangrijkste toepassingen zijn nog niet uitgevonden. De krachtigste technieken zijn nog niet ontdekt. De toekomst wordt nu geschreven—door mensen zoals jij, één prompt tegelijk.
 
-## Looking Ahead
+## Vooruitkijken
 
-<TryIt compact prompt={`I've just finished reading "The Interactive Book of Prompting" and want to develop a personal practice plan.
+<TryIt compact prompt={`Ik heb net "Het Interactieve Boek over Prompting" uitgelezen en wil een persoonlijk oefenplan ontwikkelen.
 
-My background: \${background:describe your experience level and primary use case}
-My goals: \${goals:what do you want to accomplish with AI?}
-Available time: \${time:how much time can you dedicate weekly?}
+Mijn achtergrond: \${background:beschrijf je ervaringsniveau en primaire use case}
+Mijn doelen: \${goals:wat wil je bereiken met AI?}
+Beschikbare tijd: \${time:hoeveel tijd kun je wekelijks besteden?}
 
-Create a 30-day practice plan that:
-1. Builds skills progressively
-2. Includes specific exercises
-3. Applies to my actual work
-4. Measures improvement
+Maak een 30-dagen oefenplan dat:
+1. Vaardigheden progressief opbouwt
+2. Specifieke oefeningen bevat
+3. Van toepassing is op mijn daadwerkelijke werk
+4. Vooruitgang meet
 
-Include: Milestones, resources, and success criteria`} />
+Inclusief: Mijlpalen, bronnen en succescriteria`} />
 
-<Callout type="tip" title="Keep Learning">
-Visit [prompts.chat](https://prompts.chat) for community prompts, new techniques, and to share your own discoveries. The best learning happens in community.
+<Callout type="tip" title="Blijf Leren">
+Bezoek [prompts.chat](https://prompts.chat) voor community prompts, nieuwe technieken en om je eigen ontdekkingen te delen. Het beste leren gebeurt in gemeenschap.
 </Callout>
 
-## Summary
+## Samenvatting
 
-<Callout type="info" title="Key Takeaways">
-AI will continue evolving rapidly, but core skills of clear communication, critical thinking, and iterative refinement remain valuable. Focus on what makes you irreplaceable: judgment, creativity, ethics, and genuine human connection. The future of prompting is collaborative, multimodal, and integrated into larger systems. Stay curious, keep experimenting, and build things that matter.
+<Callout type="info" title="Belangrijkste Inzichten">
+AI zal zich snel blijven ontwikkelen, maar kernvaardigheden van duidelijke communicatie, kritisch denken en iteratieve verfijning blijven waardevol. Focus op wat jou onvervangbaar maakt: oordeelsvermogen, creativiteit, ethiek en echte menselijke verbinding. De toekomst van prompting is collaboratief, multimodaal en geïntegreerd in grotere systemen. Blijf nieuwsgierig, blijf experimenteren en bouw dingen die ertoe doen.
 </Callout>
 
 <Quiz 
-  question="What is the most important skill to develop as AI continues to evolve?"
+  question="Wat is de belangrijkste vaardigheid om te ontwikkelen naarmate AI blijft evolueren?"
   options={[
-    "Memorizing specific prompt templates",
-    "Learning every new model's specific syntax",
-    "Clear thinking and critical evaluation of AI output",
-    "Avoiding AI entirely to preserve human skills"
+    "Specifieke prompt-sjablonen onthouden",
+    "De specifieke syntax van elk nieuw model leren",
+    "Helder denken en kritische evaluatie van AI-output",
+    "AI volledig vermijden om menselijke vaardigheden te behouden"
   ]}
   correctIndex={2}
-  explanation="While specific techniques change, the ability to think clearly about what you want, communicate it effectively, and critically evaluate AI output remains valuable regardless of how AI evolves. These meta-skills transfer across models and applications."
+  explanation="Hoewel specifieke technieken veranderen, blijft het vermogen om helder na te denken over wat je wilt, dit effectief te communiceren en AI-output kritisch te evalueren waardevol, ongeacht hoe AI evolueert. Deze meta-vaardigheden zijn overdraagbaar tussen modellen en toepassingen."
 />
 
-Thank you for reading *The Interactive Book of Prompting*. Now go create something amazing.
+Bedankt voor het lezen van *Het Interactieve Boek over Prompting*. Ga nu iets geweldigs creëren.
