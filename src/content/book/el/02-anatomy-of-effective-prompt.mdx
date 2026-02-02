@@ -235,109 +235,109 @@ POST /v1/payments/intents
 Body: { "amount": 1000, "currency": "eur", "description": "Order #1234" }`}
 />
 
-## The Minimal Effective Prompt
+## Το Ελάχιστο Αποτελεσματικό Prompt
 
-Not every prompt needs all components. For simple tasks, a clear instruction may suffice:
+Δεν χρειάζεται κάθε prompt όλα τα συστατικά. Για απλές εργασίες, μια σαφής οδηγία μπορεί να αρκεί:
 
 ```
-Translate "Hello, how are you?" to Spanish.
+Μετάφρασε "Γεια, τι κάνεις;" στα Ισπανικά.
 ```
 
-Use additional components when:
-- The task is complex or ambiguous
-- You need specific formatting
-- Results aren't matching expectations
-- Consistency across multiple queries matters
+Χρησιμοποιήστε επιπλέον συστατικά όταν:
+- Η εργασία είναι πολύπλοκη ή διφορούμενη
+- Χρειάζεστε συγκεκριμένη μορφοποίηση
+- Τα αποτελέσματα δεν ταιριάζουν με τις προσδοκίες
+- Η συνέπεια σε πολλαπλά ερωτήματα έχει σημασία
 
-## Common Prompt Patterns
+## Κοινά Μοτίβα Prompts
 
-These frameworks give you a simple checklist to follow when writing prompts. Click on each step to see an example.
+Αυτά τα πλαίσια σας δίνουν μια απλή λίστα ελέγχου να ακολουθήσετε όταν γράφετε prompts. Κάντε κλικ σε κάθε βήμα για να δείτε παράδειγμα.
 
 <CRISPEFramework />
 
 <RTFFramework />
 
-## Summary
+## Σύνοψη
 
-Effective prompts are constructed, not discovered. By understanding and applying these structural components, you can:
+Τα αποτελεσματικά prompts κατασκευάζονται, δεν ανακαλύπτονται. Κατανοώντας και εφαρμόζοντας αυτά τα δομικά συστατικά, μπορείτε να:
 
-- Get better results on the first try
-- Debug prompts that aren't working
-- Create reusable prompt templates
-- Communicate your intentions clearly
+- Πάρετε καλύτερα αποτελέσματα από την πρώτη προσπάθεια
+- Εντοπίσετε προβλήματα σε prompts που δεν λειτουργούν
+- Δημιουργήσετε επαναχρησιμοποιήσιμα πρότυπα prompts
+- Επικοινωνήσετε τις προθέσεις σας ξεκάθαρα
 
 <Quiz 
-  question="Which component has the biggest impact on response quality?"
+  question="Ποιο συστατικό έχει τη μεγαλύτερη επίδραση στην ποιότητα απάντησης;"
   options={[
-    "Always the role/persona",
-    "Always the output format",
-    "It depends on the task",
-    "The length of the prompt"
+    "Πάντα ο ρόλος/persona",
+    "Πάντα η μορφή εξόδου",
+    "Εξαρτάται από την εργασία",
+    "Το μήκος του prompt"
   ]}
   correctIndex={2}
-  explanation="Different tasks benefit from different components. A simple translation needs minimal structure, while a complex analysis benefits from detailed role, context, and format specifications."
+  explanation="Διαφορετικές εργασίες ωφελούνται από διαφορετικά συστατικά. Μια απλή μετάφραση χρειάζεται ελάχιστη δομή, ενώ μια πολύπλοκη ανάλυση ωφελείται από λεπτομερή ρόλο, πλαίσιο, και προδιαγραφές μορφής."
 />
 
 <TryIt 
-  prompt={`You are a senior product manager with 10 years of experience in SaaS products.
+  prompt={`Είσαι senior product manager με 10 χρόνια εμπειρία σε προϊόντα SaaS.
 
-Context: I'm building a task management app for remote teams. We're a small startup with limited engineering resources.
+Πλαίσιο: Χτίζω μια εφαρμογή διαχείρισης εργασιών για απομακρυσμένες ομάδες. Είμαστε μικρή startup με περιορισμένους πόρους engineering.
 
-Task: Suggest 3 features we should prioritize for our MVP.
+Εργασία: Πρότεινε 3 χαρακτηριστικά που πρέπει να δώσουμε προτεραιότητα για το MVP μας.
 
-Constraints:
-- Features must be implementable by a team of 2 developers in 4 weeks
-- Focus on what differentiates us from Trello and Asana
+Περιορισμοί:
+- Τα χαρακτηριστικά πρέπει να μπορούν να υλοποιηθούν από ομάδα 2 developers σε 4 εβδομάδες
+- Εστίασε σε αυτό που μας διαφοροποιεί από Trello και Asana
 
-Format: For each feature, provide:
-1. Feature name
-2. One-sentence description  
-3. Why it matters for remote teams`}
-  description="This prompt uses all six components. Try it and see how the structured approach produces focused, actionable results."
+Μορφή: Για κάθε χαρακτηριστικό, δώσε:
+1. Όνομα χαρακτηριστικού
+2. Περιγραφή μιας πρότασης
+3. Γιατί έχει σημασία για απομακρυσμένες ομάδες`}
+  description="Αυτό το prompt χρησιμοποιεί και τα έξι συστατικά. Δοκιμάστε το και δείτε πώς η δομημένη προσέγγιση παράγει εστιασμένα, πρακτικά αποτελέσματα."
 />
 
-## Build Your Own Prompt
+## Χτίστε το Δικό σας Prompt
 
-Now it's your turn! Use this interactive prompt builder to construct your own prompt using the components you've learned:
+Τώρα είναι η σειρά σας! Χρησιμοποιήστε αυτό το διαδραστικό εργαλείο δημιουργίας prompts για να κατασκευάσετε το δικό σας prompt χρησιμοποιώντας τα συστατικά που μάθατε:
 
 <PromptBuilder 
-  title="Interactive Prompt Builder"
-  description="Fill in each section to build a complete, well-structured prompt"
+  title="Διαδραστικός Δημιουργός Prompts"
+  description="Συμπληρώστε κάθε ενότητα για να χτίσετε ένα πλήρες, καλά δομημένο prompt"
 />
 
 <PromptChallenge
-  title="Chapter Challenge: Build a Code Review Prompt"
-  task="Write a prompt that asks an AI to review code for security vulnerabilities. Your prompt should be specific enough to get actionable feedback."
+  title="Πρόκληση Κεφαλαίου: Χτίστε ένα Prompt Αναθεώρησης Κώδικα"
+  task="Γράψτε ένα prompt που ζητά από μια AI να αναθεωρήσει κώδικα για ευπάθειες ασφαλείας. Το prompt σας πρέπει να είναι αρκετά συγκεκριμένο ώστε να πάρετε πρακτική ανατροφοδότηση."
   criteria={[
-    "Includes a clear role or expertise level",
-    "Specifies what type of code review (security focus)",
-    "Defines the expected output format",
-    "Sets appropriate constraints or scope"
+    "Συμπεριλαμβάνει σαφή ρόλο ή επίπεδο τεχνογνωσίας",
+    "Καθορίζει τον τύπο αναθεώρησης κώδικα (εστίαση στην ασφάλεια)",
+    "Ορίζει την αναμενόμενη μορφή εξόδου",
+    "Θέτει κατάλληλους περιορισμούς ή εύρος"
   ]}
   hints={[
-    "Think about what expertise a code reviewer should have",
-    "Be specific about what security issues to look for",
-    "Consider asking for a structured response format"
+    "Σκεφτείτε τι τεχνογνωσία πρέπει να έχει ένας αναθεωρητής κώδικα",
+    "Να είστε συγκεκριμένοι για τα θέματα ασφαλείας που πρέπει να αναζητήσει",
+    "Σκεφτείτε να ζητήσετε δομημένη μορφή απάντησης"
   ]}
-  exampleSolution={`You are a senior security engineer with expertise in web application security and OWASP Top 10 vulnerabilities.
+  exampleSolution={`Είσαι senior security engineer με τεχνογνωσία στην ασφάλεια web εφαρμογών και τις ευπάθειες OWASP Top 10.
 
-Task: Review the following code for security vulnerabilities.
+Εργασία: Αναθεώρησε τον παρακάτω κώδικα για ευπάθειες ασφαλείας.
 
-Focus on:
-- SQL injection risks
-- XSS vulnerabilities  
-- Authentication/authorization issues
-- Input validation gaps
+Εστίασε σε:
+- Κινδύνους SQL injection
+- Ευπάθειες XSS
+- Θέματα αυθεντικοποίησης/εξουσιοδότησης
+- Κενά επικύρωσης εισόδου
 
-Output format:
-For each issue found:
-1. Line number(s)
-2. Vulnerability type
-3. Risk level (High/Medium/Low)
-4. Recommended fix
+Μορφή εξόδου:
+Για κάθε πρόβλημα που βρέθηκε:
+1. Αριθμός γραμμής(ών)
+2. Τύπος ευπάθειας
+3. Επίπεδο κινδύνου (Υψηλό/Μέσο/Χαμηλό)
+4. Συνιστώμενη διόρθωση
 
-[CODE TO REVIEW]`}
+[ΚΩΔΙΚΑΣ ΓΙΑ ΑΝΑΘΕΩΡΗΣΗ]`}
   difficulty="intermediate"
 />
 
-In the next chapter, we'll explore the core principles that guide prompt construction decisions.
+Στο επόμενο κεφάλαιο, θα εξερευνήσουμε τις βασικές αρχές που καθοδηγούν τις αποφάσεις κατασκευής prompts.

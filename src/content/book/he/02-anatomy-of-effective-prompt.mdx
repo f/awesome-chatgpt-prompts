@@ -1,165 +1,165 @@
-Every great prompt shares common structural elements. Understanding these components allows you to construct prompts systematically rather than through trial and error.
+כל פרומפט מצוין חולק מרכיבים מבניים משותפים. הבנת הרכיבים הללו מאפשרת לכם לבנות פרומפטים בצורה שיטתית במקום בדרך של ניסוי וטעייה.
 
-<Callout type="tip" title="The Building Blocks">
-Think of these components like LEGO bricks. You don't need all of them for every prompt, but knowing what's available helps you build exactly what you need.
+<Callout type="tip" title="אבני הבניין">
+חשבו על הרכיבים האלה כמו קוביות לגו. אתם לא צריכים את כולם לכל פרומפט, אבל לדעת מה זמין עוזר לכם לבנות בדיוק את מה שאתם צריכים.
 </Callout>
 
-## The Core Components
+## הרכיבים המרכזיים
 
-An effective prompt typically includes some or all of these elements:
+פרומפט אפקטיבי כולל בדרך כלל חלק מהמרכיבים הבאים או את כולם:
 
 <PromptBreakdown parts={[
-  { label: "Role", text: "You are a senior software engineer" },
-  { label: "Context", text: "working on a React application." },
-  { label: "Task", text: "Review this code for bugs" },
-  { label: "Constraints", text: "and focus only on security issues." },
-  { label: "Format", text: "Return findings as a numbered list." },
-  { label: "Example", text: "Like: 1. SQL injection risk on line 42" }
+  { label: "תפקיד", text: "אתה מהנדס תוכנה בכיר" },
+  { label: "הקשר", text: "העובד על אפליקציית React." },
+  { label: "משימה", text: "סקור את הקוד הזה לאיתור באגים" },
+  { label: "מגבלות", text: "והתמקד רק בבעיות אבטחה." },
+  { label: "פורמט", text: "החזר ממצאים כרשימה ממוספרת." },
+  { label: "דוגמה", text: "כמו: 1. סיכון SQL injection בשורה 42" }
 ]} />
 
-Let's examine each component in detail.
+בואו נבחן כל רכיב בפירוט.
 
-## 1. Role / Persona
+## 1. תפקיד / פרסונה
 
-Setting a role focuses the model's responses through the lens of a specific expertise or perspective.
-
-<Compare 
-  before={{ label: "Without Role", content: "Explain quantum computing." }}
-  after={{ label: "With Role", content: "You are a physics professor who specializes in making complex topics accessible to beginners. Explain quantum computing." }}
-/>
-
-The role primes the model to:
-- Use appropriate vocabulary
-- Apply relevant expertise
-- Maintain a consistent perspective
-- Consider the audience appropriately
-
-### Effective Role Patterns
-
-```
-"You are a [profession] with [X years] of experience in [specialty]"
-"Act as a [role] who is [characteristic]"
-"You are an expert [field] helping a [audience type]"
-```
-
-## 2. Context / Background
-
-Context provides the information the model needs to understand your situation. Remember: the model knows nothing about you, your project, or your goals unless you tell it.
+הגדרת תפקיד ממקדת את תגובות המודל דרך הפריזמה של מומחיות או נקודת מבט ספציפית.
 
 <Compare 
-  before={{ label: "Weak Context", content: "Fix this bug in my code." }}
-  after={{ label: "Strong Context", content: "I'm building a Node.js REST API using Express.js. The API handles user authentication with JWT tokens. When a user tries to access a protected route, they're getting a 403 error even with a valid token. Here's the relevant code: [code]" }}
+  before={{ label: "ללא תפקיד", content: "הסבר מחשוב קוונטי." }}
+  after={{ label: "עם תפקיד", content: "אתה פרופסור לפיזיקה המתמחה בהנגשת נושאים מורכבים למתחילים. הסבר מחשוב קוונטי." }}
 />
 
-### What to Include in Context
+התפקיד מכין את המודל ל:
+- שימוש באוצר מילים מתאים
+- יישום מומחיות רלוונטית
+- שמירה על נקודת מבט עקבית
+- התחשבות נכונה בקהל היעד
 
-- **Project details** — Technology stack, architecture, constraints
-- **Current state** — What you've tried, what's working, what isn't
-- **Goals** — What you're ultimately trying to achieve
-- **Constraints** — Time limits, technical requirements, style guides
+### דפוסי תפקיד אפקטיביים
 
-## 3. Task / Instruction
+```
+"אתה [מקצוע] עם [X שנות] ניסיון ב[התמחות]"
+"פעל כ[תפקיד] שהוא [מאפיין]"
+"אתה מומחה ל[תחום] שעוזר ל[סוג קהל]"
+```
 
-The task is the heart of your prompt—what you want the model to do. Be specific and unambiguous.
+## 2. הקשר / רקע
 
-### The Specificity Spectrum
+הקשר מספק את המידע שהמודל צריך כדי להבין את המצב שלכם. זכרו: המודל לא יודע דבר עליכם, על הפרויקט שלכם, או על המטרות שלכם אלא אם תספרו לו.
+
+<Compare 
+  before={{ label: "הקשר חלש", content: "תקן את הבאג הזה בקוד שלי." }}
+  after={{ label: "הקשר חזק", content: "אני בונה REST API ב-Node.js באמצעות Express.js. ה-API מטפל באימות משתמשים עם JWT tokens. כאשר משתמש מנסה לגשת לנתיב מוגן, הוא מקבל שגיאת 403 גם עם token תקין. הנה הקוד הרלוונטי: [code]" }}
+/>
+
+### מה לכלול בהקשר
+
+- **פרטי הפרויקט** — מחסנית טכנולוגית, ארכיטקטורה, מגבלות
+- **מצב נוכחי** — מה ניסיתם, מה עובד, מה לא
+- **מטרות** — מה אתם בסופו של דבר מנסים להשיג
+- **מגבלות** — הגבלות זמן, דרישות טכניות, מדריכי סגנון
+
+## 3. משימה / הוראה
+
+המשימה היא הלב של הפרומפט שלכם—מה שאתם רוצים שהמודל יעשה. היו ספציפיים וחד-משמעיים.
+
+### ספקטרום הספציפיות
 
 <SpecificitySpectrum levels={[
-  { level: "Vague", text: "Help me with this essay" },
-  { level: "Better", text: "Edit this essay" },
-  { level: "Good", text: "Edit this essay for grammar and clarity" },
-  { level: "Best", text: "Edit this essay for grammar and clarity, maintaining the original tone but reducing wordiness by 20%" }
+  { level: "מעורפל", text: "עזור לי עם החיבור הזה" },
+  { level: "יותר טוב", text: "ערוך את החיבור הזה" },
+  { level: "טוב", text: "ערוך את החיבור הזה לדקדוק ובהירות" },
+  { level: "הכי טוב", text: "ערוך את החיבור הזה לדקדוק ובהירות, תוך שמירה על הטון המקורי אך צמצום יתירות ב-20%" }
 ]} />
 
-### Action Verbs That Work Well
+### פעלי פעולה שעובדים היטב
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Creation</span>
+    <span className="font-semibold min-w-32">יצירה</span>
     <span className="text-muted-foreground">Write, Create, Generate, Compose, Design</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Analysis</span>
+    <span className="font-semibold min-w-32">ניתוח</span>
     <span className="text-muted-foreground">Analyze, Evaluate, Compare, Assess, Review</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Transformation</span>
+    <span className="font-semibold min-w-32">המרה</span>
     <span className="text-muted-foreground">Convert, Translate, Reformat, Summarize, Expand</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Explanation</span>
+    <span className="font-semibold min-w-32">הסבר</span>
     <span className="text-muted-foreground">Explain, Describe, Clarify, Define, Illustrate</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Problem-solving</span>
+    <span className="font-semibold min-w-32">פתרון בעיות</span>
     <span className="text-muted-foreground">Solve, Debug, Fix, Optimize, Improve</span>
   </div>
 </div>
 
-## 4. Constraints / Rules
+## 4. מגבלות / כללים
 
-Constraints bound the model's output. They prevent common issues and ensure relevance.
+מגבלות מתחמות את הפלט של המודל. הן מונעות בעיות נפוצות ומבטיחות רלוונטיות.
 
-### Types of Constraints
+### סוגי מגבלות
 
-**Length constraints:**
+**מגבלות אורך:**
 ```
-"Keep your response under 200 words"
-"Provide exactly 5 suggestions"
-"Write 3-4 paragraphs"
-```
-
-**Content constraints:**
-```
-"Do not include any code examples"
-"Focus only on the technical aspects"
-"Avoid marketing language"
+"שמור על התגובה שלך מתחת ל-200 מילים"
+"ספק בדיוק 5 הצעות"
+"כתוב 3-4 פסקאות"
 ```
 
-**Style constraints:**
+**מגבלות תוכן:**
 ```
-"Use a formal, academic tone"
-"Write as if speaking to a 10-year-old"
-"Be direct and avoid hedging language"
-```
-
-**Scope constraints:**
-```
-"Only consider options available in Python 3.10+"
-"Limit suggestions to free tools"
-"Focus on solutions that don't require additional dependencies"
+"אל תכלול דוגמאות קוד"
+"התמקד רק בהיבטים הטכניים"
+"הימנע משפה שיווקית"
 ```
 
-## 5. Output Format
-
-Specifying the output format ensures you get responses in a usable structure.
-
-### Common Formats
-
-**Lists:**
+**מגבלות סגנון:**
 ```
-"Return as a bulleted list"
-"Provide a numbered list of steps"
+"השתמש בטון פורמלי ואקדמי"
+"כתוב כאילו אתה מדבר לילד בן 10"
+"היה ישיר והימנע משפה מהססת"
 ```
 
-**Structured data:**
+**מגבלות היקף:**
 ```
-"Return as JSON with keys: title, description, priority"
-"Format as a markdown table with columns: Feature, Pros, Cons"
-```
-
-**Specific structures:**
-```
-"Structure your response as:
- ## Summary
- ## Key Points
- ## Recommendations"
+"שקול רק אפשרויות זמינות ב-Python 3.10+"
+"הגבל הצעות לכלים חינמיים"
+"התמקד בפתרונות שלא דורשים תלויות נוספות"
 ```
 
-### JSON Output Example
+## 5. פורמט פלט
+
+ציון פורמט הפלט מבטיח שתקבלו תגובות במבנה שימושי.
+
+### פורמטים נפוצים
+
+**רשימות:**
+```
+"החזר כרשימה עם תבליטים"
+"ספק רשימה ממוספרת של שלבים"
+```
+
+**נתונים מובנים:**
+```
+"החזר כ-JSON עם מפתחות: title, description, priority"
+"עצב כטבלת markdown עם עמודות: Feature, Pros, Cons"
+```
+
+**מבנים ספציפיים:**
+```
+"מבנה את התגובה שלך כ:
+ ## סיכום
+ ## נקודות מפתח
+ ## המלצות"
+```
+
+### דוגמת פלט JSON
 
 ```
-Analyze this customer review and return JSON:
+נתח את ביקורת הלקוח הזו והחזר JSON:
 {
   "sentiment": "positive" | "negative" | "neutral",
   "topics": ["array of main topics"],
@@ -167,47 +167,47 @@ Analyze this customer review and return JSON:
   "key_phrases": ["notable phrases"]
 }
 
-Review: "The product arrived quickly and works great, but 
-the instructions were confusing."
+ביקורת: "המוצר הגיע מהר ועובד מצוין, אבל 
+ההוראות היו מבלבלות."
 ```
 
-## 6. Examples (Few-Shot Learning)
+## 6. דוגמאות (Few-Shot Learning)
 
-Examples are the most powerful way to show the model exactly what you want.
+דוגמאות הן הדרך החזקה ביותר להראות למודל בדיוק מה אתם רוצים.
 
-### One-Shot Example
-
-```
-Convert these sentences to past tense.
-
-Example:
-Input: "She walks to the store"
-Output: "She walked to the store"
-
-Now convert:
-Input: "They run every morning"
-```
-
-### Few-Shot Example
+### דוגמת One-Shot
 
 ```
-Classify these support tickets by urgency.
+המר את המשפטים האלה לזמן עבר.
 
-Examples:
-"My account was hacked" → Critical
-"How do I change my password?" → Low
-"Payment failed but I was charged" → High
+דוגמה:
+קלט: "She walks to the store"
+פלט: "She walked to the store"
 
-Classify: "The app crashes when I open settings"
+כעת המר:
+קלט: "They run every morning"
 ```
 
-## Putting It All Together
+### דוגמת Few-Shot
 
-Here's a complete prompt using all components:
+```
+סווג את פניות התמיכה האלה לפי דחיפות.
+
+דוגמאות:
+"החשבון שלי נפרץ" → קריטי
+"איך אני משנה את הסיסמה?" → נמוך
+"התשלום נכשל אבל חייבו אותי" → גבוה
+
+סווג: "האפליקציה קורסת כשאני פותח הגדרות"
+```
+
+## שילוב הכל יחד
+
+הנה פרומפט מלא המשתמש בכל הרכיבים:
 
 <TryIt 
-  title="Complete Prompt Example"
-  description="This prompt demonstrates all six components working together. Try it to see how structured prompts produce professional results."
+  title="דוגמת פרומפט מלא"
+  description="פרומפט זה מדגים את כל ששת הרכיבים עובדים יחד. נסו אותו כדי לראות איך פרומפטים מובנים מייצרים תוצאות מקצועיות."
   prompt={`# Role
 You are a senior technical writer with 10 years of experience creating developer documentation.
 
@@ -235,47 +235,47 @@ POST /v1/payments/intents
 Body: { "amount": 1000, "currency": "usd", "description": "Order #1234" }`}
 />
 
-## The Minimal Effective Prompt
+## הפרומפט האפקטיבי המינימלי
 
-Not every prompt needs all components. For simple tasks, a clear instruction may suffice:
+לא כל פרומפט צריך את כל הרכיבים. למשימות פשוטות, הוראה ברורה עשויה להספיק:
 
 ```
-Translate "Hello, how are you?" to Spanish.
+תרגם "Hello, how are you?" לספרדית.
 ```
 
-Use additional components when:
-- The task is complex or ambiguous
-- You need specific formatting
-- Results aren't matching expectations
-- Consistency across multiple queries matters
+השתמשו ברכיבים נוספים כאשר:
+- המשימה מורכבת או מעורפלת
+- אתם צריכים עיצוב ספציפי
+- התוצאות לא תואמות לציפיות
+- עקביות בין שאילתות מרובות חשובה
 
-## Common Prompt Patterns
+## דפוסי פרומפט נפוצים
 
-These frameworks give you a simple checklist to follow when writing prompts. Click on each step to see an example.
+המסגרות הללו נותנות לכם רשימת בדיקה פשוטה לעקוב אחריה בעת כתיבת פרומפטים. לחצו על כל שלב כדי לראות דוגמה.
 
 <CRISPEFramework />
 
 <RTFFramework />
 
-## Summary
+## סיכום
 
-Effective prompts are constructed, not discovered. By understanding and applying these structural components, you can:
+פרומפטים אפקטיביים נבנים, לא מתגלים. על ידי הבנה ויישום של הרכיבים המבניים הללו, תוכלו:
 
-- Get better results on the first try
-- Debug prompts that aren't working
-- Create reusable prompt templates
-- Communicate your intentions clearly
+- לקבל תוצאות טובות יותר בניסיון הראשון
+- לנפות באגים בפרומפטים שלא עובדים
+- ליצור תבניות פרומפט לשימוש חוזר
+- לתקשר את הכוונות שלכם בבהירות
 
 <Quiz 
-  question="Which component has the biggest impact on response quality?"
+  question="לאיזה רכיב יש את ההשפעה הגדולה ביותר על איכות התגובה?"
   options={[
-    "Always the role/persona",
-    "Always the output format",
-    "It depends on the task",
-    "The length of the prompt"
+    "תמיד התפקיד/הפרסונה",
+    "תמיד פורמט הפלט",
+    "זה תלוי במשימה",
+    "אורך הפרומפט"
   ]}
   correctIndex={2}
-  explanation="Different tasks benefit from different components. A simple translation needs minimal structure, while a complex analysis benefits from detailed role, context, and format specifications."
+  explanation="משימות שונות נהנות מרכיבים שונים. תרגום פשוט צריך מבנה מינימלי, בעוד שניתוח מורכב נהנה מפירוט תפקיד, הקשר ומפרטי פורמט."
 />
 
 <TryIt 
@@ -293,31 +293,31 @@ Format: For each feature, provide:
 1. Feature name
 2. One-sentence description  
 3. Why it matters for remote teams`}
-  description="This prompt uses all six components. Try it and see how the structured approach produces focused, actionable results."
+  description="פרומפט זה משתמש בכל ששת הרכיבים. נסו אותו וראו איך הגישה המובנית מייצרת תוצאות ממוקדות ומעשיות."
 />
 
-## Build Your Own Prompt
+## בנו פרומפט משלכם
 
-Now it's your turn! Use this interactive prompt builder to construct your own prompt using the components you've learned:
+עכשיו תורכם! השתמשו בבונה הפרומפטים האינטראקטיבי הזה כדי לבנות פרומפט משלכם באמצעות הרכיבים שלמדתם:
 
 <PromptBuilder 
-  title="Interactive Prompt Builder"
-  description="Fill in each section to build a complete, well-structured prompt"
+  title="בונה פרומפטים אינטראקטיבי"
+  description="מלאו כל סעיף כדי לבנות פרומפט מלא ומובנה היטב"
 />
 
 <PromptChallenge
-  title="Chapter Challenge: Build a Code Review Prompt"
-  task="Write a prompt that asks an AI to review code for security vulnerabilities. Your prompt should be specific enough to get actionable feedback."
+  title="אתגר הפרק: בנו פרומפט לסקירת קוד"
+  task="כתבו פרומפט שמבקש מ-AI לסקור קוד עבור פגיעויות אבטחה. הפרומפט שלכם צריך להיות ספציפי מספיק כדי לקבל משוב מעשי."
   criteria={[
-    "Includes a clear role or expertise level",
-    "Specifies what type of code review (security focus)",
-    "Defines the expected output format",
-    "Sets appropriate constraints or scope"
+    "כולל תפקיד או רמת מומחיות ברורה",
+    "מציין איזה סוג סקירת קוד (מיקוד באבטחה)",
+    "מגדיר את פורמט הפלט הצפוי",
+    "קובע מגבלות או היקף מתאימים"
   ]}
   hints={[
-    "Think about what expertise a code reviewer should have",
-    "Be specific about what security issues to look for",
-    "Consider asking for a structured response format"
+    "חשבו איזו מומחיות צריכה להיות לסוקר קוד",
+    "היו ספציפיים לגבי אילו בעיות אבטחה לחפש",
+    "שקלו לבקש פורמט תגובה מובנה"
   ]}
   exampleSolution={`You are a senior security engineer with expertise in web application security and OWASP Top 10 vulnerabilities.
 
@@ -340,4 +340,4 @@ For each issue found:
   difficulty="intermediate"
 />
 
-In the next chapter, we'll explore the core principles that guide prompt construction decisions.
+בפרק הבא, נחקור את העקרונות המרכזיים המנחים החלטות בניית פרומפטים.

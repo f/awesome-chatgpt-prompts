@@ -1,373 +1,373 @@
-Beyond structure, effective prompt engineering is guided by principles—fundamental truths that apply across models, tasks, and contexts. Master these principles, and you'll be able to adapt to any prompting challenge.
+فراتر از ساختار، مهندسی پرامپت مؤثر بر پایه اصولی بنا شده است—حقایق بنیادینی که در تمام مدل‌ها، وظایف و زمینه‌ها کاربرد دارند. این اصول را فرا بگیرید و خواهید توانست با هر چالش پرامپت‌نویسی سازگار شوید.
 
-<Callout type="info" title="The 8 Core Principles">
-These principles apply to every AI model and every task. Learn them once, use them everywhere.
+<Callout type="info" title="۸ اصل اساسی">
+این اصول برای هر مدل هوش مصنوعی و هر وظیفه‌ای کاربرد دارند. یک بار یاد بگیرید، همه جا استفاده کنید.
 </Callout>
 
-## Principle 1: Clarity Over Cleverness
+## اصل ۱: وضوح بر هوشمندی
 
-The best prompts are clear, not clever. AI models are literal interpreters—they work with exactly what you give them.
+بهترین پرامپت‌ها واضح هستند، نه هوشمندانه. مدل‌های هوش مصنوعی تفسیرگران لفظی هستند—دقیقاً با آنچه به آن‌ها می‌دهید کار می‌کنند.
 
-### Be Explicit
-
-<Compare 
-  before={{ label: "Implicit (problematic)", content: "Make this better." }}
-  after={{ label: "Explicit (effective)", content: "Improve this email by:\n1. Making the subject line more compelling\n2. Shortening paragraphs to 2-3 sentences max\n3. Adding a clear call-to-action at the end" }}
-/>
-
-### Avoid Ambiguity
-
-Words can have multiple meanings. Choose precise language.
+### صریح باشید
 
 <Compare 
-  before={{ label: "Ambiguous", content: "Give me a short summary.\n(How short? 1 sentence? 1 paragraph? 1 page?)" }}
-  after={{ label: "Precise", content: "Summarize in exactly 3 bullet points, each under 20 words." }}
+  before={{ label: "ضمنی (مشکل‌ساز)", content: "این را بهتر کن." }}
+  after={{ label: "صریح (مؤثر)", content: "این ایمیل را با این موارد بهبود بده:\n۱. جذاب‌تر کردن خط موضوع\n۲. کوتاه کردن پاراگراف‌ها به حداکثر ۲-۳ جمله\n۳. افزودن یک فراخوان به اقدام روشن در انتها" }}
 />
 
-### State the Obvious
+### از ابهام پرهیز کنید
 
-What's obvious to you isn't obvious to the model. Spell out assumptions.
+کلمات می‌توانند معانی متعددی داشته باشند. زبان دقیق انتخاب کنید.
+
+<Compare 
+  before={{ label: "مبهم", content: "یک خلاصه کوتاه به من بده.\n(چقدر کوتاه؟ ۱ جمله؟ ۱ پاراگراف؟ ۱ صفحه؟)" }}
+  after={{ label: "دقیق", content: "در دقیقاً ۳ نکته خلاصه کن، هر کدام کمتر از ۲۰ کلمه." }}
+/>
+
+### بدیهیات را بیان کنید
+
+آنچه برای شما بدیهی است، برای مدل بدیهی نیست. فرضیات را توضیح دهید.
 
 ```
-You're helping me write a cover letter.
+تو داری کمکم می‌کنی یک نامه پوششی بنویسم.
 
-Important context:
-- I'm applying for a Software Engineer position at Google
-- I have 5 years of experience in Python and distributed systems
-- The role requires leadership experience (I've led a team of 4)
-- I want to emphasize my open-source contributions
+زمینه مهم:
+- من برای موقعیت مهندس نرم‌افزار در Google درخواست می‌دهم
+- ۵ سال تجربه در Python و سیستم‌های توزیع‌شده دارم
+- این نقش نیاز به تجربه رهبری دارد (من یک تیم ۴ نفره را رهبری کرده‌ام)
+- می‌خواهم مشارکت‌های متن‌باز خود را برجسته کنم
 ```
 
-## Principle 2: Specificity Yields Quality
+## اصل ۲: دقت کیفیت می‌آورد
 
-Vague inputs produce vague outputs. Specific inputs produce specific, useful outputs.
+ورودی‌های مبهم خروجی‌های مبهم تولید می‌کنند. ورودی‌های دقیق خروجی‌های مشخص و مفید تولید می‌کنند.
 
-### The Specificity Ladder
+### نردبان دقت
 
 <SpecificitySpectrum levels={[
-  { level: "Level 1", text: "Write about climate change" },
-  { level: "Level 2", text: "Write an article about climate change effects" },
-  { level: "Level 3", text: "Write a 500-word article about how climate change affects coral reefs" },
-  { level: "Level 4", text: "Write a 500-word article explaining how rising ocean temperatures cause coral bleaching, aimed at high school students, with 2 specific examples from the Great Barrier Reef, in an engaging but scientifically accurate tone" }
+  { level: "سطح ۱", text: "درباره تغییرات اقلیمی بنویس" },
+  { level: "سطح ۲", text: "مقاله‌ای درباره اثرات تغییرات اقلیمی بنویس" },
+  { level: "سطح ۳", text: "مقاله‌ای ۵۰۰ کلمه‌ای درباره تأثیر تغییرات اقلیمی بر مرجان‌ها بنویس" },
+  { level: "سطح ۴", text: "مقاله‌ای ۵۰۰ کلمه‌ای بنویس که توضیح دهد چگونه افزایش دمای اقیانوس‌ها باعث سفید شدن مرجان‌ها می‌شود، برای دانش‌آموزان دبیرستانی، با ۲ مثال مشخص از دیواره بزرگ مرجانی، با لحنی جذاب اما از نظر علمی دقیق" }
 ]} />
 
-Each level adds specificity and dramatically improves output quality.
+هر سطح دقت بیشتری اضافه می‌کند و کیفیت خروجی را به طرز چشمگیری بهبود می‌بخشد.
 
-### Specify These Elements
+### این عناصر را مشخص کنید
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Audience</span>
-    <span className="text-muted-foreground">Who will read/use this?</span>
+    <span className="font-semibold min-w-24">مخاطب</span>
+    <span className="text-muted-foreground">چه کسی این را خواهد خواند/استفاده خواهد کرد؟</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Length</span>
-    <span className="text-muted-foreground">How long/short should it be?</span>
+    <span className="font-semibold min-w-24">طول</span>
+    <span className="text-muted-foreground">چقدر باید بلند/کوتاه باشد؟</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Tone</span>
-    <span className="text-muted-foreground">Formal? Casual? Technical?</span>
+    <span className="font-semibold min-w-24">لحن</span>
+    <span className="text-muted-foreground">رسمی؟ غیررسمی؟ فنی؟</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Format</span>
-    <span className="text-muted-foreground">Prose? List? Table? Code?</span>
+    <span className="font-semibold min-w-24">قالب</span>
+    <span className="text-muted-foreground">نثر؟ فهرست؟ جدول؟ کد؟</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Scope</span>
-    <span className="text-muted-foreground">What to include/exclude?</span>
+    <span className="font-semibold min-w-24">محدوده</span>
+    <span className="text-muted-foreground">چه چیزی شامل/حذف شود؟</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Purpose</span>
-    <span className="text-muted-foreground">What should this accomplish?</span>
+    <span className="font-semibold min-w-24">هدف</span>
+    <span className="text-muted-foreground">این باید چه چیزی را محقق کند؟</span>
   </div>
 </div>
 
-## Principle 3: Context Is King
+## اصل ۳: زمینه پادشاه است
 
-Models have no memory, no access to your files, and no knowledge of your situation. Everything relevant must be in the prompt.
+مدل‌ها حافظه‌ای ندارند، به فایل‌های شما دسترسی ندارند و از وضعیت شما اطلاعی ندارند. هر چیز مرتبطی باید در پرامپت باشد.
 
-### Provide Sufficient Context
+### زمینه کافی فراهم کنید
 
 <Compare 
-  before={{ label: "Insufficient context", content: "Why isn't my function working?" }}
-  after={{ label: "Sufficient context", content: "I have a Python function that should filter a list of dictionaries by a specific key value. It's returning an empty list when it should return 3 items.\n\nFunction:\ndef filter_items(items, key, value):\n    return [item for item in items if item[key] = value]\n\nCall: filter_items(items, 'status', 'active')\nExpected: 2 items, Got: empty list" }}
+  before={{ label: "زمینه ناکافی", content: "چرا تابع من کار نمی‌کند؟" }}
+  after={{ label: "زمینه کافی", content: "من یک تابع Python دارم که باید یک لیست از دیکشنری‌ها را بر اساس یک مقدار کلید خاص فیلتر کند. این تابع یک لیست خالی برمی‌گرداند در حالی که باید ۳ آیتم برگرداند.\n\nتابع:\ndef filter_items(items, key, value):\n    return [item for item in items if item[key] = value]\n\nفراخوانی: filter_items(items, 'status', 'active')\nمورد انتظار: ۲ آیتم، دریافت شده: لیست خالی" }}
 />
 
-### The Context Checklist
+### چک‌لیست زمینه
 
-<Callout type="tip" title="Before You Submit">
-Ask yourself: Would a smart stranger understand this request? If not, add more context.
+<Callout type="tip" title="قبل از ارسال">
+از خود بپرسید: آیا یک غریبه باهوش این درخواست را درک خواهد کرد؟ اگر نه، زمینه بیشتری اضافه کنید.
 </Callout>
 
 <Checklist 
-  title="Context Checklist"
+  title="چک‌لیست زمینه"
   items={[
-    { text: "Does the model know what I'm working on?" },
-    { text: "Does it know my goal?" },
-    { text: "Does it have all necessary information?" },
-    { text: "Does it understand the constraints?" },
-    { text: "Would a smart stranger understand this request?" }
+    { text: "آیا مدل می‌داند روی چه چیزی کار می‌کنم؟" },
+    { text: "آیا هدف من را می‌داند؟" },
+    { text: "آیا تمام اطلاعات لازم را دارد؟" },
+    { text: "آیا محدودیت‌ها را درک می‌کند؟" },
+    { text: "آیا یک غریبه باهوش این درخواست را درک خواهد کرد؟" }
   ]}
 />
 
-## Principle 4: Guide, Don't Just Ask
+## اصل ۴: هدایت کنید، نه فقط بپرسید
 
-Don't just ask for an answer—guide the model toward the answer you want.
+فقط جواب نخواهید—مدل را به سمت جوابی که می‌خواهید هدایت کنید.
 
-### Use Instructional Framing
+### از چارچوب‌بندی دستوری استفاده کنید
 
 <Compare 
-  before={{ label: "Just Asking", content: "What are the pros and cons of microservices?" }}
-  after={{ label: "Guiding", content: "List 5 advantages and 5 disadvantages of microservices architecture.\n\nFor each point:\n- State the point clearly in one sentence\n- Provide a brief explanation (2-3 sentences)\n- Give a concrete example\n\nConsider perspectives of: small startups, large enterprises, and teams transitioning from monoliths." }}
+  before={{ label: "فقط پرسیدن", content: "مزایا و معایب میکروسرویس‌ها چیست؟" }}
+  after={{ label: "هدایت کردن", content: "۵ مزیت و ۵ عیب معماری میکروسرویس را فهرست کن.\n\nبرای هر نکته:\n- نکته را به وضوح در یک جمله بیان کن\n- توضیح مختصری ارائه بده (۲-۳ جمله)\n- یک مثال ملموس بزن\n\nدیدگاه‌های استارتاپ‌های کوچک، شرکت‌های بزرگ و تیم‌هایی که از معماری یکپارچه در حال انتقال هستند را در نظر بگیر." }}
 />
 
-### Provide Reasoning Scaffolds
+### داربست‌های استدلال فراهم کنید
 
-For complex tasks, guide the reasoning process:
+برای وظایف پیچیده، فرآیند استدلال را هدایت کنید:
 
 <TryIt 
-  title="Reasoning Scaffold Example"
-  description="This prompt guides the AI through a systematic decision-making process."
-  prompt={`I need to choose between PostgreSQL and MongoDB for my e-commerce project.
+  title="مثال داربست استدلال"
+  description="این پرامپت هوش مصنوعی را از طریق یک فرآیند تصمیم‌گیری سیستماتیک هدایت می‌کند."
+  prompt={`من باید بین PostgreSQL و MongoDB برای پروژه تجارت الکترونیکی خود انتخاب کنم.
 
-Think through this systematically:
-1. First, list the typical requirements for an e-commerce database
-2. Then, evaluate each database against each requirement
-3. Consider trade-offs specific to my use case
-4. Make a recommendation with clear justification`}
+به صورت سیستماتیک به این فکر کن:
+۱. ابتدا، نیازمندی‌های معمول برای پایگاه داده تجارت الکترونیکی را فهرست کن
+۲. سپس، هر پایگاه داده را در برابر هر نیازمندی ارزیابی کن
+۳. معاوضه‌های خاص مورد استفاده من را در نظر بگیر
+۴. توصیه‌ای با توجیه روشن ارائه بده`}
 />
 
-## Principle 5: Iterate and Refine
+## اصل ۵: تکرار و اصلاح کنید
 
-Prompt engineering is an iterative process. Your first prompt is rarely your best.
+مهندسی پرامپت یک فرآیند تکراری است. اولین پرامپت شما به ندرت بهترین است.
 
-### The Iteration Cycle
+### چرخه تکرار
 
 ```
-1. Write initial prompt
-2. Review output
-3. Identify gaps or issues
-4. Refine prompt
-5. Repeat until satisfied
+۱. پرامپت اولیه را بنویسید
+۲. خروجی را بررسی کنید
+۳. شکاف‌ها یا مشکلات را شناسایی کنید
+۴. پرامپت را اصلاح کنید
+۵. تا رسیدن به رضایت تکرار کنید
 ```
 
-### Common Refinements
+### اصلاحات رایج
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Too verbose</span>
-    <span className="text-muted-foreground">Add "Be concise" or length limits</span>
+    <span className="font-semibold min-w-32">خیلی طولانی</span>
+    <span className="text-muted-foreground">"مختصر باش" یا محدودیت طول اضافه کنید</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Too vague</span>
-    <span className="text-muted-foreground">Add specific examples or constraints</span>
+    <span className="font-semibold min-w-32">خیلی مبهم</span>
+    <span className="text-muted-foreground">مثال‌ها یا محدودیت‌های مشخص اضافه کنید</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Wrong format</span>
-    <span className="text-muted-foreground">Specify exact output structure</span>
+    <span className="font-semibold min-w-32">قالب اشتباه</span>
+    <span className="text-muted-foreground">ساختار خروجی دقیق را مشخص کنید</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Missing aspects</span>
-    <span className="text-muted-foreground">Add "Make sure to include..."</span>
+    <span className="font-semibold min-w-32">جنبه‌های ناقص</span>
+    <span className="text-muted-foreground">"مطمئن شو که شامل... باشد" اضافه کنید</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Wrong tone</span>
-    <span className="text-muted-foreground">Specify audience and style</span>
+    <span className="font-semibold min-w-32">لحن اشتباه</span>
+    <span className="text-muted-foreground">مخاطب و سبک را مشخص کنید</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Inaccurate</span>
-    <span className="text-muted-foreground">Request citations or step-by-step reasoning</span>
+    <span className="font-semibold min-w-32">نادقیق</span>
+    <span className="text-muted-foreground">منابع یا استدلال گام به گام درخواست کنید</span>
   </div>
 </div>
 
-### Keep a Prompt Journal
+### یک دفترچه پرامپت نگه دارید
 
-Document what works:
+آنچه کار می‌کند را مستند کنید:
 ```
-Task: Code review
-Version 1: "Review this code" → Too generic
-Version 2: Added specific review criteria → Better
-Version 3: Added example of good review → Excellent
-Final: [Save successful prompt as template]
+وظیفه: بررسی کد
+نسخه ۱: "این کد را بررسی کن" → خیلی کلی
+نسخه ۲: معیارهای بررسی مشخص اضافه شد → بهتر
+نسخه ۳: مثال بررسی خوب اضافه شد → عالی
+نهایی: [پرامپت موفق را به عنوان قالب ذخیره کنید]
 ```
 
-## Principle 6: Leverage the Model's Strengths
+## اصل ۶: از نقاط قوت مدل استفاده کنید
 
-Work with how models are trained, not against them.
+با نحوه آموزش مدل‌ها کار کنید، نه بر خلاف آن.
 
-### Models Want to Be Helpful
+### مدل‌ها می‌خواهند کمک‌کننده باشند
 
-Frame requests as things a helpful assistant would naturally do:
+درخواست‌ها را به عنوان چیزهایی که یک دستیار مفید به طور طبیعی انجام می‌دهد چارچوب‌بندی کنید:
 
 <Compare 
-  before={{ label: "Against the grain", content: "I know you can't do this, but try to..." }}
-  after={{ label: "With the grain", content: "Help me understand...\nI'm working on X and need assistance with...\nCould you walk me through..." }}
+  before={{ label: "بر خلاف جریان", content: "می‌دانم که نمی‌توانی این کار را بکنی، اما سعی کن..." }}
+  after={{ label: "در جهت جریان", content: "کمکم کن بفهمم...\nمن روی X کار می‌کنم و در... به کمک نیاز دارم\nمی‌توانی من را قدم به قدم راهنمایی کنی..." }}
 />
 
-### Models Excel at Patterns
+### مدل‌ها در الگوها عالی هستند
 
-If you need consistent output, show the pattern:
+اگر به خروجی ثابت نیاز دارید، الگو را نشان دهید:
 
 <TryIt 
-  title="Pattern Example"
-  description="This prompt shows the AI exactly what format you want for book recommendations."
-  prompt={`Recommend 3 science fiction books. Format each recommendation as:
+  title="مثال الگو"
+  description="این پرامپت دقیقاً به هوش مصنوعی نشان می‌دهد که چه قالبی برای پیشنهاد کتاب می‌خواهید."
+  prompt={`۳ کتاب علمی-تخیلی پیشنهاد کن. هر پیشنهاد را به این شکل قالب‌بندی کن:
 
-📚 **[Title]** by [Author]
-*[Genre] | [Publication Year]*
-[2-sentence description]
-Why you'll love it: [1 sentence hook]
+📚 **[عنوان]** نوشته [نویسنده]
+*[ژانر] | [سال انتشار]*
+[توضیح ۲ جمله‌ای]
+چرا عاشقش خواهی شد: [یک جمله جذاب]
 
 ---`}
 />
 
-### Models Can Role-Play
+### مدل‌ها می‌توانند نقش‌بازی کنند
 
-Use personas to access different "modes" of response:
-
-```
-As a devil's advocate, argue against my proposal...
-As a supportive mentor, help me improve...
-As a skeptical investor, question this business plan...
-```
-
-## Principle 7: Control Output Structure
-
-Structured outputs are more useful than free-form text.
-
-### Request Specific Formats
+از پرسوناها برای دسترسی به "حالت‌های" مختلف پاسخ استفاده کنید:
 
 ```
-Return your analysis as:
-
-SUMMARY: [1 sentence]
-
-KEY FINDINGS:
-• [Finding 1]
-• [Finding 2]
-• [Finding 3]
-
-RECOMMENDATION: [1-2 sentences]
-
-CONFIDENCE: [Low/Medium/High] because [reason]
+به عنوان یک مدافع شیطان، علیه پیشنهاد من استدلال کن...
+به عنوان یک مربی حمایتگر، کمکم کن بهتر شوم...
+به عنوان یک سرمایه‌گذار شکاک، این طرح کسب‌وکار را زیر سؤال ببر...
 ```
 
-### Use Delimiters
+## اصل ۷: ساختار خروجی را کنترل کنید
 
-Clearly separate sections of your prompt:
+خروجی‌های ساختاریافته از متن آزاد مفیدتر هستند.
 
-```
-### CONTEXT ###
-[Your context here]
-
-### TASK ###
-[Your task here]
-
-### FORMAT ###
-[Desired format here]
-```
-
-### Request Machine-Readable Output
-
-For programmatic use:
+### قالب‌های مشخص درخواست کنید
 
 ```
-Return only valid JSON, no explanation:
+تحلیل خود را به این شکل برگردان:
+
+خلاصه: [۱ جمله]
+
+یافته‌های کلیدی:
+• [یافته ۱]
+• [یافته ۲]
+• [یافته ۳]
+
+توصیه: [۱-۲ جمله]
+
+اطمینان: [کم/متوسط/زیاد] چون [دلیل]
+```
+
+### از جداکننده‌ها استفاده کنید
+
+بخش‌های پرامپت خود را به وضوح جدا کنید:
+
+```
+### زمینه ###
+[زمینه شما اینجا]
+
+### وظیفه ###
+[وظیفه شما اینجا]
+
+### قالب ###
+[قالب مورد نظر اینجا]
+```
+
+### خروجی قابل خواندن توسط ماشین درخواست کنید
+
+برای استفاده برنامه‌ای:
+
+```
+فقط JSON معتبر برگردان، بدون توضیح:
 {
   "decision": "approve" | "reject" | "review",
   "confidence": 0.0-1.0,
-  "reasons": ["string array"]
+  "reasons": ["آرایه رشته‌ای"]
 }
 ```
 
-## Principle 8: Verify and Validate
+## اصل ۸: تأیید و اعتبارسنجی کنید
 
-Never blindly trust model outputs, especially for important tasks.
+هرگز کورکورانه به خروجی‌های مدل اعتماد نکنید، به خصوص برای وظایف مهم.
 
-### Ask for Reasoning
-
-```
-Solve this problem and show your work step by step.
-After solving, verify your answer by [checking method].
-```
-
-### Request Multiple Perspectives
+### استدلال بخواهید
 
 ```
-Give me three different approaches to solve this problem.
-For each, explain the trade-offs.
+این مسئله را حل کن و کار خود را قدم به قدم نشان بده.
+پس از حل، جواب خود را با [روش بررسی] تأیید کن.
 ```
 
-### Build in Self-Checking
+### چندین دیدگاه درخواست کنید
 
 ```
-After generating the code, review it for:
-- Syntax errors
-- Edge cases
-- Security vulnerabilities
-List any issues found.
+سه رویکرد متفاوت برای حل این مسئله به من بده.
+برای هر کدام، معاوضه‌ها را توضیح بده.
 ```
 
-## Summary: The Principles at a Glance
+### خودبررسی را در آن بگنجانید
+
+```
+پس از تولید کد، آن را برای موارد زیر بررسی کن:
+- خطاهای نحوی
+- موارد لبه
+- آسیب‌پذیری‌های امنیتی
+هر مشکلی که یافتی را فهرست کن.
+```
+
+## خلاصه: اصول در یک نگاه
 
 <PrinciplesSummary />
 
 <Quiz 
-  question="Which principle suggests you should include all relevant background information in your prompt?"
+  question="کدام اصل پیشنهاد می‌کند که باید تمام اطلاعات پس‌زمینه مرتبط را در پرامپت خود بگنجانید؟"
   options={[
-    "Clarity Over Cleverness",
-    "Specificity Yields Quality",
-    "Context Is King",
-    "Iterate and Refine"
+    "وضوح بر هوشمندی",
+    "دقت کیفیت می‌آورد",
+    "زمینه پادشاه است",
+    "تکرار و اصلاح کنید"
   ]}
   correctIndex={2}
-  explanation="Context Is King emphasizes that AI models have no memory between sessions and cannot read your mind. Including relevant background, constraints, and goals helps the model understand your needs."
+  explanation="زمینه پادشاه است تأکید می‌کند که مدل‌های هوش مصنوعی بین جلسات حافظه‌ای ندارند و نمی‌توانند ذهن شما را بخوانند. گنجاندن پس‌زمینه مرتبط، محدودیت‌ها و اهداف به مدل کمک می‌کند نیازهای شما را درک کند."
 />
 
-## Practice: Fill in the Blanks
+## تمرین: جاهای خالی را پر کنید
 
-Test your understanding of the core principles by completing this prompt template:
+درک خود از اصول اساسی را با تکمیل این قالب پرامپت آزمایش کنید:
 
 <FillInTheBlank
-  title="Apply the Principles"
-  description="Fill in the blanks to create a well-structured prompt — write anything you want!"
+  title="اصول را به کار ببندید"
+  description="جاهای خالی را پر کنید تا یک پرامپت با ساختار خوب بسازید — هر چیزی که می‌خواهید بنویسید!"
   useAI={true}
   openEnded={true}
-  template={`You are a {{role}} with expertise in {{expertise}}.
+  template={`تو یک {{role}} با تخصص در {{expertise}} هستی.
 
-Context: I'm working on {{context}}.
+زمینه: من روی {{context}} کار می‌کنم.
 
-Task: {{task}}
+وظیفه: {{task}}
 
-Constraints:
-- Keep your response under {{length}} words
-- Focus only on {{focus}}
+محدودیت‌ها:
+- پاسخ خود را زیر {{length}} کلمه نگه دار
+- فقط روی {{focus}} تمرکز کن
 
-Format: Return your answer as {{format}}.`}
+قالب: پاسخ خود را به صورت {{format}} برگردان.`}
   blanks={[
-    { id: "role", correctAnswers: [], hint: "What professional role should the AI assume?", context: "A job title or professional role" },
-    { id: "expertise", correctAnswers: [], hint: "What specific domain knowledge is needed?", context: "A skill or domain that matches the role" },
-    { id: "context", correctAnswers: [], hint: "What's the project or situation?", context: "A project that someone with this expertise would work on" },
-    { id: "task", correctAnswers: [], hint: "What specific action should the AI take?", context: "An action appropriate for the role and context" },
-    { id: "length", correctAnswers: [], hint: "How long should the response be?", context: "A number (word count)" },
-    { id: "focus", correctAnswers: [], hint: "What aspect should be prioritized?", context: "A quality or aspect relevant to the task" },
-    { id: "format", correctAnswers: [], hint: "How should the output be structured?", context: "An output format type" }
+    { id: "role", correctAnswers: [], hint: "هوش مصنوعی باید چه نقش حرفه‌ای را بپذیرد؟", context: "یک عنوان شغلی یا نقش حرفه‌ای" },
+    { id: "expertise", correctAnswers: [], hint: "چه دانش دامنه‌ای خاصی لازم است؟", context: "یک مهارت یا دامنه که با نقش مطابقت دارد" },
+    { id: "context", correctAnswers: [], hint: "پروژه یا وضعیت چیست؟", context: "پروژه‌ای که کسی با این تخصص روی آن کار می‌کند" },
+    { id: "task", correctAnswers: [], hint: "هوش مصنوعی باید چه اقدام مشخصی انجام دهد؟", context: "عملی مناسب برای نقش و زمینه" },
+    { id: "length", correctAnswers: [], hint: "پاسخ چقدر باید طولانی باشد؟", context: "یک عدد (تعداد کلمات)" },
+    { id: "focus", correctAnswers: [], hint: "چه جنبه‌ای باید اولویت داشته باشد؟", context: "یک کیفیت یا جنبه مرتبط با وظیفه" },
+    { id: "format", correctAnswers: [], hint: "خروجی باید چگونه ساختاربندی شود؟", context: "یک نوع قالب خروجی" }
   ]}
-  explanation="A well-structured prompt includes: a clear role (Principle 1), sufficient context (Principle 3), specific task (Principle 2), constraints (Principle 4), and output format (Principle 5). The AI checks if your choices are internally consistent."
+  explanation="یک پرامپت با ساختار خوب شامل: یک نقش روشن (اصل ۱)، زمینه کافی (اصل ۳)، وظیفه مشخص (اصل ۲)، محدودیت‌ها (اصل ۴) و قالب خروجی (اصل ۵) است. هوش مصنوعی بررسی می‌کند که آیا انتخاب‌های شما از نظر داخلی سازگار هستند."
 />
 
 <InteractiveChecklist
-  title="Principles Checklist"
+  title="چک‌لیست اصول"
   items={[
-    { id: "clarity", label: "Clarity Over Cleverness", description: "Is your prompt explicit and unambiguous?" },
-    { id: "specificity", label: "Specificity Yields Quality", description: "Have you included audience, length, tone, and format?" },
-    { id: "context", label: "Context Is King", description: "Does the prompt include all necessary background information?" },
-    { id: "examples", label: "Examples Beat Explanations", description: "Have you shown what you want, not just described it?" },
-    { id: "constraints", label: "Constraints Focus Output", description: "Are there clear boundaries on scope and format?" },
-    { id: "iteration", label: "Iterate and Refine", description: "Are you prepared to improve based on results?" },
-    { id: "persona", label: "Persona Shapes Perspective", description: "Does the AI know what role to play?" },
-    { id: "verify", label: "Verify and Validate", description: "Have you built in checks for accuracy?" }
+    { id: "clarity", label: "وضوح بر هوشمندی", description: "آیا پرامپت شما صریح و بدون ابهام است؟" },
+    { id: "specificity", label: "دقت کیفیت می‌آورد", description: "آیا مخاطب، طول، لحن و قالب را گنجانده‌اید؟" },
+    { id: "context", label: "زمینه پادشاه است", description: "آیا پرامپت شامل تمام اطلاعات پس‌زمینه لازم است؟" },
+    { id: "examples", label: "مثال‌ها بهتر از توضیحات هستند", description: "آیا آنچه می‌خواهید را نشان داده‌اید، نه فقط توصیف کرده‌اید؟" },
+    { id: "constraints", label: "محدودیت‌ها خروجی را متمرکز می‌کنند", description: "آیا مرزهای روشنی برای محدوده و قالب وجود دارد؟" },
+    { id: "iteration", label: "تکرار و اصلاح کنید", description: "آیا آماده‌اید بر اساس نتایج بهبود دهید؟" },
+    { id: "persona", label: "پرسونا دیدگاه را شکل می‌دهد", description: "آیا هوش مصنوعی می‌داند چه نقشی بازی کند؟" },
+    { id: "verify", label: "تأیید و اعتبارسنجی کنید", description: "آیا بررسی‌هایی برای دقت در آن گنجانده‌اید؟" }
   ]}
 />
 
-These principles form the foundation for everything that follows. In Part II, we'll apply them to specific techniques that dramatically enhance prompt effectiveness.
+این اصول پایه و اساس همه چیزهایی که در ادامه می‌آید را تشکیل می‌دهند. در بخش دوم، آن‌ها را برای تکنیک‌های مشخصی که اثربخشی پرامپت را به طرز چشمگیری افزایش می‌دهند، به کار خواهیم برد.
