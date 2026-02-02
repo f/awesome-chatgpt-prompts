@@ -1,287 +1,287 @@
-Understanding context is essential for building AI applications that actually work. This chapter covers everything you need to know about giving AI the right information at the right time.
+درک زمینه (context) برای ساخت برنامه‌های هوش مصنوعی که واقعاً کار می‌کنند ضروری است. این فصل همه چیزهایی را که باید درباره ارائه اطلاعات درست در زمان درست به هوش مصنوعی بدانید پوشش می‌دهد.
 
-<Callout type="info" title="Why Context Matters">
-AI models are stateless. They don't remember past conversations. Every time you send a message, you need to include everything the AI needs to know. This is called "context engineering."
+<Callout type="info" title="چرا زمینه مهم است">
+مدل‌های هوش مصنوعی بدون حالت (stateless) هستند. آن‌ها مکالمات قبلی را به یاد نمی‌آورند. هر بار که پیامی ارسال می‌کنید، باید همه چیزهایی که هوش مصنوعی نیاز دارد بداند را شامل کنید. این «مهندسی زمینه» نامیده می‌شود.
 </Callout>
 
-## What is Context?
+## زمینه چیست؟
 
-Context is all the information you give to AI alongside your question. Think of it like this:
+زمینه تمام اطلاعاتی است که در کنار سوال خود به هوش مصنوعی می‌دهید. به این شکل فکر کنید:
 
 <Compare 
-  before={{ label: "No Context", content: "What's the status?" }}
-  after={{ label: "With Context", content: "You are a project manager assistant. The user is working on Project Alpha, which is due Friday. The last update was: 'Backend complete, frontend 80% done.'\n\nUser: What's the status?" }}
+  before={{ label: "بدون زمینه", content: "وضعیت چیست؟" }}
+  after={{ label: "با زمینه", content: "شما یک دستیار مدیر پروژه هستید. کاربر روی پروژه آلفا کار می‌کند که مهلت آن جمعه است. آخرین به‌روزرسانی این بود: 'بک‌اند کامل شده، فرانت‌اند ۸۰٪ انجام شده.'\n\nکاربر: وضعیت چیست؟" }}
 />
 
-Without context, the AI has no idea what "status" you're asking about. With context, it can give a useful answer.
+بدون زمینه، هوش مصنوعی نمی‌داند درباره چه «وضعیتی» می‌پرسید. با زمینه، می‌تواند پاسخ مفیدی بدهد.
 
-### The Context Window
+### پنجره زمینه
 
-Remember from earlier chapters: AI has a limited "context window" - the maximum amount of text it can see at once. This includes:
+از فصل‌های قبلی به یاد دارید: هوش مصنوعی یک «پنجره زمینه» محدود دارد - حداکثر مقدار متنی که می‌تواند همزمان ببیند. این شامل موارد زیر می‌شود:
 
 <InfoGrid items={[
-  { label: "System Prompt", description: "Instructions that define AI behavior", color: "purple" },
-  { label: "Conversation History", description: "Previous messages in this chat", color: "blue" },
-  { label: "Retrieved Information", description: "Documents, data, or knowledge fetched for this query", color: "green" },
-  { label: "Current Query", description: "The user's actual question", color: "amber" },
-  { label: "AI Response", description: "The answer (also counts toward the limit!)", color: "rose" },
+  { label: "پرامپت سیستم", description: "دستورالعمل‌هایی که رفتار هوش مصنوعی را تعریف می‌کنند", color: "purple" },
+  { label: "تاریخچه مکالمه", description: "پیام‌های قبلی در این چت", color: "blue" },
+  { label: "اطلاعات بازیابی شده", description: "اسناد، داده‌ها یا دانشی که برای این پرسش واکشی شده", color: "green" },
+  { label: "پرسش فعلی", description: "سوال واقعی کاربر", color: "amber" },
+  { label: "پاسخ هوش مصنوعی", description: "پاسخ (این هم جزو محدودیت حساب می‌شود!)", color: "rose" },
 ]} />
 
-## AI is Stateless
+## هوش مصنوعی بدون حالت است
 
-<Callout type="warning" title="Important Concept">
-AI doesn't remember anything between conversations. Every API call starts fresh. If you want the AI to "remember" something, YOU have to include it in the context every time.
+<Callout type="warning" title="مفهوم مهم">
+هوش مصنوعی چیزی را بین مکالمات به یاد نمی‌آورد. هر فراخوانی API از صفر شروع می‌شود. اگر می‌خواهید هوش مصنوعی چیزی را «به یاد بیاورد»، شما باید هر بار آن را در زمینه قرار دهید.
 </Callout>
 
-This is why chatbots send your entire conversation history with each message. It's not that the AI remembers - it's that the app re-sends everything.
+به همین دلیل چت‌بات‌ها کل تاریخچه مکالمه شما را با هر پیام ارسال می‌کنند. این نیست که هوش مصنوعی به یاد می‌آورد - این است که برنامه همه چیز را دوباره ارسال می‌کند.
 
-<TryIt compact prompt={`Pretend this is a new conversation with no history.
+<TryIt compact prompt={`فرض کنید این یک مکالمه جدید بدون تاریخچه است.
 
-What did I just ask you about?`} />
+همین الان درباره چه چیزی از شما پرسیدم؟`} />
 
-The AI will say it doesn't know because it truly doesn't have access to any previous context.
+هوش مصنوعی خواهد گفت که نمی‌داند زیرا واقعاً به هیچ زمینه قبلی دسترسی ندارد.
 
-## RAG: Retrieval-Augmented Generation
+## RAG: تولید تقویت‌شده با بازیابی
 
-RAG is a technique for giving AI access to knowledge it wasn't trained on. Instead of trying to fit everything into the AI's training, you:
+RAG یک تکنیک برای دادن دسترسی به دانشی است که هوش مصنوعی روی آن آموزش ندیده. به جای تلاش برای گنجاندن همه چیز در آموزش هوش مصنوعی، شما:
 
-1. **Store** your documents in a searchable database
-2. **Search** for relevant documents when a user asks a question
-3. **Retrieve** the most relevant pieces
-4. **Augment** your prompt with those pieces
-5. **Generate** an answer using that context
+1. **ذخیره** می‌کنید اسناد خود را در یک پایگاه داده قابل جستجو
+2. **جستجو** می‌کنید برای اسناد مرتبط وقتی کاربر سوالی می‌پرسد
+3. **بازیابی** می‌کنید مرتبط‌ترین قسمت‌ها را
+4. **تقویت** می‌کنید پرامپت خود را با آن قسمت‌ها
+5. **تولید** می‌کنید پاسخی با استفاده از آن زمینه
 
 <div className="my-6 p-4 border rounded-lg bg-muted/30">
-  <p className="font-semibold mb-3">How RAG Works:</p>
+  <p className="font-semibold mb-3">RAG چگونه کار می‌کند:</p>
   <div className="flex flex-col gap-2 text-sm">
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">1</span>
-      <span>User asks: "What's our refund policy?"</span>
+      <span>کاربر می‌پرسد: «سیاست بازپرداخت ما چیست؟»</span>
     </div>
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">2</span>
-      <span>System searches your documents for "refund policy"</span>
+      <span>سیستم اسناد شما را برای «سیاست بازپرداخت» جستجو می‌کند</span>
     </div>
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">3</span>
-      <span>Finds relevant section from your policy document</span>
+      <span>بخش مرتبط را از سند سیاست شما پیدا می‌کند</span>
     </div>
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">4</span>
-      <span>Sends to AI: "Based on this policy: [text], answer: What's our refund policy?"</span>
+      <span>به هوش مصنوعی ارسال می‌کند: «بر اساس این سیاست: [متن]، پاسخ بده: سیاست بازپرداخت ما چیست؟»</span>
     </div>
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center text-green-600 font-bold">5</span>
-      <span>AI generates accurate answer using your actual policy</span>
+      <span>هوش مصنوعی پاسخ دقیقی با استفاده از سیاست واقعی شما تولید می‌کند</span>
     </div>
   </div>
 </div>
 
-### Why RAG?
+### چرا RAG؟
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="p-4 border rounded-lg">
-    <p className="font-semibold text-green-600 dark:text-green-400 mb-2 flex items-center gap-2"><IconCheck className="text-green-600" /> RAG Advantages</p>
+    <p className="font-semibold text-green-600 dark:text-green-400 mb-2 flex items-center gap-2"><IconCheck className="text-green-600" /> مزایای RAG</p>
     <ul className="text-sm space-y-1 text-muted-foreground">
-      <li>Uses your actual, current data</li>
-      <li>Reduces hallucinations</li>
-      <li>Can cite sources</li>
-      <li>Easy to update (just update documents)</li>
-      <li>No expensive fine-tuning needed</li>
+      <li>از داده‌های واقعی و فعلی شما استفاده می‌کند</li>
+      <li>توهمات را کاهش می‌دهد</li>
+      <li>می‌تواند به منابع استناد کند</li>
+      <li>به‌روزرسانی آسان (فقط اسناد را به‌روز کنید)</li>
+      <li>نیازی به fine-tuning گران‌قیمت نیست</li>
     </ul>
   </div>
   <div className="p-4 border rounded-lg">
-    <p className="font-semibold text-amber-600 dark:text-amber-400 mb-2 flex items-center gap-2"><IconLightbulb className="text-amber-600" /> When to Use RAG</p>
+    <p className="font-semibold text-amber-600 dark:text-amber-400 mb-2 flex items-center gap-2"><IconLightbulb className="text-amber-600" /> چه زمانی از RAG استفاده کنیم</p>
     <ul className="text-sm space-y-1 text-muted-foreground">
-      <li>Customer support bots</li>
-      <li>Documentation search</li>
-      <li>Internal knowledge bases</li>
-      <li>Any domain-specific Q&A</li>
-      <li>When accuracy matters</li>
+      <li>ربات‌های پشتیبانی مشتری</li>
+      <li>جستجوی مستندات</li>
+      <li>پایگاه‌های دانش داخلی</li>
+      <li>هر پرسش و پاسخ تخصصی دامنه</li>
+      <li>وقتی دقت مهم است</li>
     </ul>
   </div>
 </div>
 
-## Embeddings: How Search Works
+## Embeddings: جستجو چگونه کار می‌کند
 
-How does RAG know which documents are "relevant"? It uses **embeddings** - a way to turn text into numbers that capture meaning.
+RAG چگونه می‌داند کدام اسناد «مرتبط» هستند؟ از **embeddings** استفاده می‌کند - روشی برای تبدیل متن به اعدادی که معنا را ضبط می‌کنند.
 
-### What Are Embeddings?
+### Embeddings چیست؟
 
-An embedding is a list of numbers (a "vector") that represents the meaning of text. Similar meanings = similar numbers.
+یک embedding فهرستی از اعداد (یک «بردار») است که معنای متن را نشان می‌دهد. معناهای مشابه = اعداد مشابه.
 
 <EmbeddingsDemo />
 
-### Semantic Search
+### جستجوی معنایی
 
-With embeddings, you can search by meaning, not just keywords:
+با embeddings، می‌توانید بر اساس معنا جستجو کنید، نه فقط کلمات کلیدی:
 
 <Compare 
-  before={{ label: "Keyword Search", content: "Query: 'return policy'\nFinds: Documents containing 'return' and 'policy'\nMisses: 'How to get a refund'" }}
-  after={{ label: "Semantic Search", content: "Query: 'return policy'\nFinds: All related documents including:\n- 'Refund guidelines'\n- 'How to send items back'\n- 'Money-back guarantee'" }}
+  before={{ label: "جستجوی کلمه کلیدی", content: "پرسش: 'سیاست بازگشت'\nپیدا می‌کند: اسنادی که شامل 'بازگشت' و 'سیاست' هستند\nاز دست می‌دهد: 'چگونه بازپرداخت بگیرم'" }}
+  after={{ label: "جستجوی معنایی", content: "پرسش: 'سیاست بازگشت'\nپیدا می‌کند: همه اسناد مرتبط شامل:\n- 'راهنمای بازپرداخت'\n- 'چگونه کالاها را برگردانم'\n- 'ضمانت بازگشت پول'" }}
 />
 
-This is why RAG is so powerful - it finds relevant information even when the exact words don't match.
+به همین دلیل RAG بسیار قدرتمند است - اطلاعات مرتبط را حتی وقتی کلمات دقیق مطابقت ندارند پیدا می‌کند.
 
-## Function Calling / Tool Use
+## فراخوانی تابع / استفاده از ابزار
 
-Function calling lets AI use external tools - like searching the web, checking a database, or calling an API.
+فراخوانی تابع به هوش مصنوعی اجازه می‌دهد از ابزارهای خارجی استفاده کند - مانند جستجو در وب، بررسی پایگاه داده، یا فراخوانی یک API.
 
-<Callout type="tip" title="Also Called">
-Different AI providers call this different things: "function calling" (OpenAI), "tool use" (Anthropic/Claude), or "tools" (general term). They all mean the same thing.
+<Callout type="tip" title="نام‌های دیگر">
+ارائه‌دهندگان مختلف هوش مصنوعی این را به نام‌های مختلف می‌خوانند: «function calling» (OpenAI)، «tool use» (Anthropic/Claude)، یا «tools» (اصطلاح عمومی). همه آن‌ها یک معنا دارند.
 </Callout>
 
-### How It Works
+### چگونه کار می‌کند
 
-1. You tell the AI what tools are available
-2. AI decides if it needs a tool to answer
-3. AI outputs a structured request for the tool
-4. Your code runs the tool and returns results
-5. AI uses the results to form its answer
+1. شما به هوش مصنوعی می‌گویید چه ابزارهایی در دسترس هستند
+2. هوش مصنوعی تصمیم می‌گیرد آیا برای پاسخ به ابزاری نیاز دارد
+3. هوش مصنوعی یک درخواست ساختاریافته برای ابزار خروجی می‌دهد
+4. کد شما ابزار را اجرا می‌کند و نتایج را برمی‌گرداند
+5. هوش مصنوعی از نتایج برای شکل دادن پاسخ خود استفاده می‌کند
 
 <TryIt 
-  title="Function Calling Example"
-  description="This prompt shows how AI decides to use a tool:"
-  prompt={`You have access to these tools:
+  title="مثال فراخوانی تابع"
+  description="این پرامپت نشان می‌دهد چگونه هوش مصنوعی تصمیم به استفاده از ابزار می‌گیرد:"
+  prompt={`شما به این ابزارها دسترسی دارید:
 
-1. get_weather(city: string) - Get current weather for a city
-2. search_web(query: string) - Search the internet
-3. calculate(expression: string) - Do math calculations
+1. get_weather(city: string) - دریافت آب و هوای فعلی برای یک شهر
+2. search_web(query: string) - جستجو در اینترنت
+3. calculate(expression: string) - انجام محاسبات ریاضی
 
-User: What's the weather like in Tokyo right now?
+کاربر: آب و هوای توکیو الان چطور است؟
 
-Think step by step: Do you need a tool? Which one? What parameters?`}
+قدم به قدم فکر کنید: آیا به ابزاری نیاز دارید؟ کدام یک؟ چه پارامترهایی؟`}
 />
 
-## Summarization: Managing Long Conversations
+## خلاصه‌سازی: مدیریت مکالمات طولانی
 
-As conversations get longer, you'll hit the context window limit. Since AI is stateless (it doesn't remember anything), long conversations can overflow. The solution? **Summarization**.
+با طولانی‌تر شدن مکالمات، به محدودیت پنجره زمینه برخورد خواهید کرد. از آنجا که هوش مصنوعی بدون حالت است (چیزی به یاد نمی‌آورد)، مکالمات طولانی می‌توانند سرریز کنند. راه‌حل؟ **خلاصه‌سازی**.
 
-### The Problem
+### مشکل
 
 <Compare 
-  before={{ label: "Without Summarization", content: "Message 1 (500 tokens)\nMessage 2 (800 tokens)\nMessage 3 (600 tokens)\n... 50 more messages ...\n────────────────────\n= 40,000+ tokens\n= OVER THE LIMIT!" }}
-  after={{ label: "With Summarization", content: "[Summary]: 200 tokens\nRecent messages: 2,000 tokens\nCurrent query: 100 tokens\n────────────────────\n= 2,300 tokens\n= Fits perfectly!" }}
+  before={{ label: "بدون خلاصه‌سازی", content: "پیام ۱ (۵۰۰ توکن)\nپیام ۲ (۸۰۰ توکن)\nپیام ۳ (۶۰۰ توکن)\n... ۵۰ پیام دیگر ...\n────────────────────\n= بیش از ۴۰,۰۰۰ توکن\n= از محدودیت گذشت!" }}
+  after={{ label: "با خلاصه‌سازی", content: "[خلاصه]: ۲۰۰ توکن\nپیام‌های اخیر: ۲,۰۰۰ توکن\nپرسش فعلی: ۱۰۰ توکن\n────────────────────\n= ۲,۳۰۰ توکن\n= کاملاً جا می‌شود!" }}
 />
 
-### Summarization Strategies
+### استراتژی‌های خلاصه‌سازی
 
-Different approaches work for different use cases. Click each strategy to see how it processes the same conversation:
+رویکردهای مختلف برای موارد استفاده مختلف کار می‌کنند. روی هر استراتژی کلیک کنید تا ببینید چگونه همان مکالمه را پردازش می‌کند:
 
 <SummarizationDemo />
 
-### What to Capture in Summaries
+### چه چیزی را در خلاصه‌ها ثبت کنیم
 
-A good conversation summary preserves what matters:
+یک خلاصه مکالمه خوب آنچه مهم است را حفظ می‌کند:
 
 <Checklist 
-  title="Summary Checklist"
+  title="چک‌لیست خلاصه"
   items={[
-    { text: "Key decisions made" },
-    { text: "Important facts mentioned" },
-    { text: "User preferences discovered" },
-    { text: "Current task or goal" },
-    { text: "Any pending questions" },
-    { text: "Tone and formality level" }
+    { text: "تصمیمات کلیدی گرفته شده" },
+    { text: "حقایق مهم ذکر شده" },
+    { text: "ترجیحات کاربر که کشف شده" },
+    { text: "وظیفه یا هدف فعلی" },
+    { text: "هر سوال معلق" },
+    { text: "لحن و سطح رسمیت" }
   ]}
 />
 
-### Try It: Create a Summary
+### امتحان کنید: یک خلاصه بسازید
 
 <TryIt 
-  title="Conversation Summarizer"
-  description="Practice creating a context-preserving summary from this conversation:"
-  prompt={`Summarize this conversation for context management. The summary will replace the full conversation in the AI's memory.
+  title="خلاصه‌ساز مکالمه"
+  description="ساخت یک خلاصه حفظ‌کننده زمینه از این مکالمه را تمرین کنید:"
+  prompt={`این مکالمه را برای مدیریت زمینه خلاصه کنید. خلاصه جایگزین کل مکالمه در حافظه هوش مصنوعی خواهد شد.
 
-CONVERSATION:
-User: Hi, I'm learning Python for data analysis
-Assistant: Welcome! Python is great for data analysis. What's your current experience level?
-User: I know basic Excel. Complete beginner with programming.
-Assistant: Perfect starting point! Let's begin with variables - they're like Excel cells that store data.
-User: Can you explain variables?
-Assistant: Variables are containers for storing data. In Python: name = "Alice" or age = 25
-User: What about lists? I need to handle multiple values.
-Assistant: Lists are like Excel columns! Create one like: prices = [10, 20, 30]. Access items with prices[0].
-User: Can I do calculations on lists?
-Assistant: Yes! Use sum(prices), len(prices), or max(prices). For complex analysis, we'll use pandas later.
-User: What's pandas?
-Assistant: Pandas is a library for data analysis - think "Excel on steroids". It has DataFrames (like spreadsheets).
+مکالمه:
+کاربر: سلام، دارم Python را برای تحلیل داده یاد می‌گیرم
+دستیار: خوش آمدید! Python برای تحلیل داده عالی است. سطح تجربه فعلی شما چیست؟
+کاربر: Excel پایه بلدم. مبتدی کامل در برنامه‌نویسی هستم.
+دستیار: نقطه شروع عالی! بیایید با متغیرها شروع کنیم - آن‌ها مثل سلول‌های Excel هستند که داده ذخیره می‌کنند.
+کاربر: می‌توانید متغیرها را توضیح دهید؟
+دستیار: متغیرها ظرف‌هایی برای ذخیره داده هستند. در Python: name = "Alice" یا age = 25
+کاربر: لیست‌ها چطور؟ باید چندین مقدار را مدیریت کنم.
+دستیار: لیست‌ها مثل ستون‌های Excel هستند! یکی بسازید مثل: prices = [10, 20, 30]. به آیتم‌ها با prices[0] دسترسی پیدا کنید.
+کاربر: می‌توانم روی لیست‌ها محاسبه انجام دهم؟
+دستیار: بله! از sum(prices)، len(prices)، یا max(prices) استفاده کنید. برای تحلیل پیچیده، بعداً pandas را استفاده خواهیم کرد.
+کاربر: pandas چیست؟
+دستیار: Pandas یک کتابخانه برای تحلیل داده است - به آن «Excel روی استروئید» فکر کنید. دارای DataFrames است (مثل صفحات گسترده).
 
-CREATE A SUMMARY that captures:
-1. User's goal and background (1 sentence)
-2. Topics covered so far (1 sentence)  
-3. User's learning style/preferences (1 sentence)
-4. What to cover next (1 sentence)`}
+یک خلاصه بسازید که شامل موارد زیر باشد:
+1. هدف و پیش‌زمینه کاربر (۱ جمله)
+2. موضوعات پوشش داده شده تا کنون (۱ جمله)  
+3. سبک/ترجیحات یادگیری کاربر (۱ جمله)
+4. چه چیزی را بعداً پوشش دهیم (۱ جمله)`}
 />
 
-### When to Summarize
+### چه زمانی خلاصه‌سازی کنیم
 
-<TryIt compact prompt={`You are managing a conversation's context window. Given these conditions, decide when to trigger summarization:
+<TryIt compact prompt={`شما در حال مدیریت پنجره زمینه یک مکالمه هستید. با توجه به این شرایط، تصمیم بگیرید چه زمانی خلاصه‌سازی را فعال کنید:
 
-CONTEXT WINDOW: 8,000 tokens max
-CURRENT USAGE:
-- System prompt: 500 tokens
-- Conversation history: 6,200 tokens  
-- Buffer for response: 1,500 tokens
+پنجره زمینه: حداکثر ۸,۰۰۰ توکن
+استفاده فعلی:
+- پرامپت سیستم: ۵۰۰ توکن
+- تاریخچه مکالمه: ۶,۲۰۰ توکن  
+- بافر برای پاسخ: ۱,۵۰۰ توکن
 
-RULES:
-- Summarize when history exceeds 70% of available space
-- Keep last 5 messages intact
-- Preserve all user preferences and decisions
+قوانین:
+- وقتی تاریخچه از ۷۰٪ فضای موجود بیشتر شد خلاصه‌سازی کنید
+- ۵ پیام آخر را دست‌نخورده نگه دارید
+- همه ترجیحات و تصمیمات کاربر را حفظ کنید
 
-Should you summarize now? If yes, what messages should be summarized vs kept intact?`} />
+آیا الان باید خلاصه‌سازی کنید؟ اگر بله، کدام پیام‌ها باید خلاصه شوند در مقابل دست‌نخورده بمانند؟`} />
 
-## MCP: Model Context Protocol
+## MCP: پروتکل زمینه مدل
 
-MCP (Model Context Protocol) is a standard way to connect AI to external data and tools. Instead of building custom integrations for each AI provider, MCP provides a universal interface.
+MCP (Model Context Protocol) یک روش استاندارد برای اتصال هوش مصنوعی به داده‌ها و ابزارهای خارجی است. به جای ساخت یکپارچه‌سازی‌های سفارشی برای هر ارائه‌دهنده هوش مصنوعی، MCP یک رابط جهانی فراهم می‌کند.
 
-### Why MCP?
+### چرا MCP؟
 
 <InfoGrid columns={2} items={[
-  { label: "Without MCP", description: "Build separate integrations for ChatGPT, Claude, Gemini... Maintain multiple codebases. Break when APIs change.", color: "red" },
-  { label: "With MCP", description: "Build once, works everywhere. Standard protocol. AI can discover and use your tools automatically.", color: "green" },
+  { label: "بدون MCP", description: "یکپارچه‌سازی‌های جداگانه برای ChatGPT، Claude، Gemini بسازید... چندین کدبیس را نگهداری کنید. وقتی APIها تغییر کنند خراب شود.", color: "red" },
+  { label: "با MCP", description: "یک بار بسازید، همه جا کار می‌کند. پروتکل استاندارد. هوش مصنوعی می‌تواند به طور خودکار ابزارهای شما را کشف و استفاده کند.", color: "green" },
 ]} />
 
-### MCP Provides
+### MCP فراهم می‌کند
 
-- **Resources**: Data the AI can read (files, database records, API responses)
-- **Tools**: Actions the AI can take (search, create, update, delete)
-- **Prompts**: Pre-built prompt templates
+- **Resources**: داده‌هایی که هوش مصنوعی می‌تواند بخواند (فایل‌ها، رکوردهای پایگاه داده، پاسخ‌های API)
+- **Tools**: اقداماتی که هوش مصنوعی می‌تواند انجام دهد (جستجو، ایجاد، به‌روزرسانی، حذف)
+- **Prompts**: قالب‌های پرامپت از پیش ساخته شده
 
-<Callout type="info" title="prompts.chat Uses MCP">
-This platform has an MCP server! You can connect it to Claude Desktop or other MCP-compatible clients to search and use prompts directly from your AI assistant.
+<Callout type="info" title="prompts.chat از MCP استفاده می‌کند">
+این پلتفرم یک سرور MCP دارد! می‌توانید آن را به Claude Desktop یا سایر کلاینت‌های سازگار با MCP متصل کنید تا مستقیماً از دستیار هوش مصنوعی خود پرامپت‌ها را جستجو و استفاده کنید.
 </Callout>
 
-## Building Context: The Complete Picture
+## ساخت زمینه: تصویر کامل
 
 <ContextPlayground />
 
-## Best Practices
+## بهترین شیوه‌ها
 
 <Checklist 
-  title="Context Engineering Checklist"
+  title="چک‌لیست مهندسی زمینه"
   items={[
-    { text: "Keep system prompts concise but complete" },
-    { text: "Only include relevant context (not everything)" },
-    { text: "Summarize long conversations" },
-    { text: "Use RAG for domain-specific knowledge" },
-    { text: "Give AI tools for real-time data" },
-    { text: "Monitor token usage to stay within limits" },
-    { text: "Test with edge cases (very long inputs, etc.)" }
+    { text: "پرامپت‌های سیستم را مختصر اما کامل نگه دارید" },
+    { text: "فقط زمینه مرتبط را شامل کنید (نه همه چیز)" },
+    { text: "مکالمات طولانی را خلاصه کنید" },
+    { text: "از RAG برای دانش تخصصی دامنه استفاده کنید" },
+    { text: "به هوش مصنوعی ابزارهایی برای داده‌های بلادرنگ بدهید" },
+    { text: "استفاده از توکن را نظارت کنید تا در محدودیت‌ها بمانید" },
+    { text: "با موارد لبه تست کنید (ورودی‌های خیلی طولانی و غیره)" }
   ]}
 />
 
-## Summary
+## خلاصه
 
-Context engineering is about giving AI the right information:
+مهندسی زمینه درباره دادن اطلاعات درست به هوش مصنوعی است:
 
-- **AI is stateless** - include everything it needs every time
-- **RAG** retrieves relevant documents to augment prompts
-- **Embeddings** enable semantic search (meaning, not just keywords)
-- **Function calling** lets AI use external tools
-- **Summarization** manages long conversations
-- **MCP** standardizes how AI connects to data and tools
+- **هوش مصنوعی بدون حالت است** - هر بار همه چیزهایی که نیاز دارد را شامل کنید
+- **RAG** اسناد مرتبط را برای تقویت پرامپت‌ها بازیابی می‌کند
+- **Embeddings** جستجوی معنایی را ممکن می‌سازند (معنا، نه فقط کلمات کلیدی)
+- **فراخوانی تابع** به هوش مصنوعی اجازه استفاده از ابزارهای خارجی را می‌دهد
+- **خلاصه‌سازی** مکالمات طولانی را مدیریت می‌کند
+- **MCP** نحوه اتصال هوش مصنوعی به داده‌ها و ابزارها را استانداردسازی می‌کند
 
-<Callout type="tip" title="Remember">
-The quality of AI output depends on the quality of context you provide. Better context = better answers.
+<Callout type="tip" title="به یاد داشته باشید">
+کیفیت خروجی هوش مصنوعی به کیفیت زمینه‌ای که ارائه می‌دهید بستگی دارد. زمینه بهتر = پاسخ‌های بهتر.
 </Callout>

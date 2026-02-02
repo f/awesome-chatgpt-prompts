@@ -1,373 +1,373 @@
-Even experienced prompt engineers fall into predictable traps. The good news? Once you recognize these patterns, they're easy to avoid. This chapter walks through the most common pitfalls, explains why they happen, and gives you concrete strategies to sidestep them.
+حتی مهندسان پرامپت با تجربه نیز در دام‌های قابل پیش‌بینی گرفتار می‌شوند. خبر خوب این است که وقتی این الگوها را بشناسید، اجتناب از آن‌ها آسان است. این فصل رایج‌ترین دام‌ها را بررسی می‌کند، توضیح می‌دهد که چرا رخ می‌دهند و استراتژی‌های عملی برای دوری از آن‌ها ارائه می‌دهد.
 
-<Callout type="warning" title="Why Pitfalls Matter">
-A single pitfall can turn a powerful AI into a frustrating tool. Understanding these patterns is often the difference between "AI doesn't work for me" and "AI transformed my workflow."
+<Callout type="warning" title="چرا دام‌ها اهمیت دارند">
+یک دام واحد می‌تواند یک هوش مصنوعی قدرتمند را به ابزاری ناامیدکننده تبدیل کند. درک این الگوها اغلب تفاوت بین «هوش مصنوعی برای من کار نمی‌کند» و «هوش مصنوعی جریان کارم را متحول کرد» است.
 </Callout>
 
-## The Vagueness Trap
+## دام ابهام
 
-**The Pattern**: You know what you want, so you assume the AI will figure it out too. But vague prompts produce vague results.
+**الگو**: شما می‌دانید چه می‌خواهید، بنابراین فرض می‌کنید هوش مصنوعی هم متوجه خواهد شد. اما پرامپت‌های مبهم نتایج مبهم تولید می‌کنند.
 
 <Compare 
-  before={{ label: "Vague prompt", content: "Write something about marketing." }}
-  after={{ label: "Specific prompt", content: "Write a 300-word LinkedIn post about the importance of brand consistency for B2B SaaS companies, targeting marketing managers. Use a professional but approachable tone. Include one concrete example." }}
+  before={{ label: "پرامپت مبهم", content: "چیزی درباره بازاریابی بنویس." }}
+  after={{ label: "پرامپت مشخص", content: "یک پست ۳۰۰ کلمه‌ای برای LinkedIn درباره اهمیت یکپارچگی برند برای شرکت‌های B2B SaaS بنویس که مدیران بازاریابی را هدف قرار می‌دهد. از لحن حرفه‌ای اما صمیمی استفاده کن. یک مثال عملی هم بیاور." }}
 />
 
-**Why it happens**: We naturally skip details when we think they're "obvious." But what's obvious to you isn't obvious to a model that has no context about your situation, audience, or goals.
+**چرا این اتفاق می‌افتد**: ما طبیعتاً جزئیاتی را که فکر می‌کنیم «واضح» هستند نادیده می‌گیریم. اما آنچه برای شما واضح است، برای مدلی که هیچ زمینه‌ای درباره موقعیت، مخاطبان یا اهداف شما ندارد، واضح نیست.
 
 <TryIt 
-  title="Specificity Improver"
-  description="Take a vague prompt and make it specific. Notice how adding details transforms the quality of results."
-  prompt={`I have a vague prompt that needs improvement.
+  title="بهبوددهنده دقت"
+  description="یک پرامپت مبهم را بگیرید و آن را مشخص کنید. توجه کنید که چگونه افزودن جزئیات کیفیت نتایج را متحول می‌کند."
+  prompt={`من یک پرامپت مبهم دارم که نیاز به بهبود دارد.
 
-Original vague prompt: "\${vaguePrompt}"
+پرامپت مبهم اصلی: "\${vaguePrompt}"
 
-Make this prompt specific by adding:
-1. **Audience**: Who will read/use this?
-2. **Format**: What structure should it have?
-3. **Length**: How long should it be?
-4. **Tone**: What voice or style?
-5. **Context**: What's the situation or purpose?
-6. **Constraints**: Any must-haves or must-avoids?
+این پرامپت را با افزودن موارد زیر مشخص کنید:
+1. **مخاطب**: چه کسی این را خواهد خواند/استفاده خواهد کرد؟
+2. **قالب**: چه ساختاری باید داشته باشد؟
+3. **طول**: چقدر باید باشد؟
+4. **لحن**: چه صدا یا سبکی؟
+5. **زمینه**: موقعیت یا هدف چیست؟
+6. **محدودیت‌ها**: چه چیزهایی حتماً باید باشد یا نباید باشد؟
 
-Rewrite the prompt with all these details included.`}
+پرامپت را با تمام این جزئیات بازنویسی کنید.`}
 />
 
-## The Overloading Trap
+## دام بارگذاری بیش از حد
 
-**The Pattern**: You try to get everything in one prompt—comprehensive, funny, professional, beginner-friendly, advanced, SEO-optimized, and short. The result? The AI misses half your requirements or produces a confused mess.
+**الگو**: شما سعی می‌کنید همه چیز را در یک پرامپت جای دهید—جامع، خنده‌دار، حرفه‌ای، مناسب مبتدیان، پیشرفته، بهینه‌سازی شده برای SEO، و کوتاه. نتیجه؟ هوش مصنوعی نیمی از الزامات شما را از دست می‌دهد یا یک آشفتگی گیج‌کننده تولید می‌کند.
 
 <Compare 
-  before={{ label: "Overloaded prompt", content: "Write a blog post about AI that's SEO optimized and includes code examples and is funny but professional and targets beginners but also has advanced tips and should be 500 words but comprehensive and mentions our product and has a call to action..." }}
-  after={{ label: "Focused prompt", content: "Write a 500-word blog post introducing AI to beginners.\n\nRequirements:\n1. Explain one core concept clearly\n2. Include one simple code example\n3. End with a call to action\n\nTone: Professional but approachable" }}
+  before={{ label: "پرامپت بارگذاری شده", content: "یک پست وبلاگ درباره هوش مصنوعی بنویس که SEO بهینه باشد و مثال‌های کد داشته باشد و خنده‌دار باشد اما حرفه‌ای و مبتدیان را هدف قرار دهد اما نکات پیشرفته هم داشته باشد و باید ۵۰۰ کلمه باشد اما جامع و محصول ما را ذکر کند و دعوت به اقدام داشته باشد..." }}
+  after={{ label: "پرامپت متمرکز", content: "یک پست وبلاگ ۵۰۰ کلمه‌ای بنویس که هوش مصنوعی را به مبتدیان معرفی می‌کند.\n\nالزامات:\n۱. یک مفهوم اصلی را واضح توضیح بده\n۲. یک مثال کد ساده بیاور\n۳. با یک دعوت به اقدام تمام کن\n\nلحن: حرفه‌ای اما صمیمی" }}
 />
 
-**Why it happens**: Fear of multiple interactions, or wanting to "get it all out" in one go. But cognitive overload affects AI just like it affects humans—too many competing requirements leads to dropped balls.
+**چرا این اتفاق می‌افتد**: ترس از تعاملات متعدد، یا تمایل به «بیرون ریختن همه چیز» در یک بار. اما بار شناختی بیش از حد بر هوش مصنوعی همان تأثیری را دارد که بر انسان‌ها دارد—الزامات رقابتی بیش از حد منجر به از دست دادن موارد می‌شود.
 
 <InfoGrid items={[
-  { label: "Limit Requirements", description: "Stick to 3-5 key requirements per prompt", example: "Focus on: audience, format, length, one key constraint", exampleType: "text", color: "green" },
-  { label: "Use Numbered Lists", description: "Structure makes priorities clear", example: "1. Must have X, 2. Should have Y, 3. Nice to have Z", exampleType: "text", color: "green" },
-  { label: "Chain Prompts", description: "Break complex tasks into steps", example: "First: outline. Then: draft section 1. Then: draft section 2.", exampleType: "text", color: "green" },
-  { label: "Prioritize Ruthlessly", description: "What's essential vs. nice-to-have?", example: "If I could only get ONE thing right, what would it be?", color: "green" }
+  { label: "محدود کردن الزامات", description: "در هر پرامپت به ۳ تا ۵ الزام کلیدی بچسبید", example: "تمرکز بر: مخاطب، قالب، طول، یک محدودیت کلیدی", exampleType: "text", color: "green" },
+  { label: "استفاده از لیست‌های شماره‌دار", description: "ساختار اولویت‌ها را واضح می‌کند", example: "۱. باید X داشته باشد، ۲. باید Y داشته باشد، ۳. خوب است Z داشته باشد", exampleType: "text", color: "green" },
+  { label: "زنجیره کردن پرامپت‌ها", description: "وظایف پیچیده را به مراحل تقسیم کنید", example: "اول: طرح کلی. سپس: پیش‌نویس بخش ۱. سپس: پیش‌نویس بخش ۲.", exampleType: "text", color: "green" },
+  { label: "اولویت‌بندی بی‌رحمانه", description: "چه چیزی ضروری است در مقابل چه چیزی خوب است داشته باشیم؟", example: "اگر فقط می‌توانستم یک چیز را درست انجام دهم، چه می‌بود؟", color: "green" }
 ]} />
 
-<Callout type="tip" title="Learn Prompt Chaining">
-When a single prompt gets overloaded, [prompt chaining](/book/11-prompt-chaining) is often the solution. Break complex tasks into a sequence of focused prompts, where each step builds on the previous one.
+<Callout type="tip" title="زنجیره‌سازی پرامپت را یاد بگیرید">
+وقتی یک پرامپت واحد بیش از حد بارگذاری می‌شود، [زنجیره‌سازی پرامپت](/book/11-prompt-chaining) اغلب راه‌حل است. وظایف پیچیده را به توالی از پرامپت‌های متمرکز تقسیم کنید، جایی که هر مرحله بر مرحله قبلی بنا می‌شود.
 </Callout>
 
-## The Assumption Trap
+## دام فرض
 
-**The Pattern**: You reference something "from earlier" or assume the AI knows your project, your company, or your previous conversations. It doesn't.
+**الگو**: شما به چیزی «از قبل» اشاره می‌کنید یا فرض می‌کنید هوش مصنوعی پروژه، شرکت، یا مکالمات قبلی شما را می‌شناسد. این‌طور نیست.
 
 <Compare 
-  before={{ label: "Assumes context", content: "Update the function I showed you earlier to add error handling." }}
-  after={{ label: "Provides context", content: "Update this function to add error handling:\n\n```python\ndef calculate_total(items):\n    return sum(item.price for item in items)\n```\n\nAdd try/except for empty lists and invalid items." }}
+  before={{ label: "فرض زمینه", content: "تابعی که قبلاً نشانت دادم را برای افزودن مدیریت خطا به‌روزرسانی کن." }}
+  after={{ label: "ارائه زمینه", content: "این تابع را برای افزودن مدیریت خطا به‌روزرسانی کن:\n\n```python\ndef calculate_total(items):\n    return sum(item.price for item in items)\n```\n\ntry/except برای لیست‌های خالی و آیتم‌های نامعتبر اضافه کن." }}
 />
 
-**Why it happens**: AI conversations feel like talking to a colleague. But unlike colleagues, most AI models have no persistent memory between sessions—each conversation starts fresh.
+**چرا این اتفاق می‌افتد**: مکالمات هوش مصنوعی مثل صحبت با یک همکار احساس می‌شود. اما برخلاف همکاران، اکثر مدل‌های هوش مصنوعی حافظه پایدار بین جلسات ندارند—هر مکالمه از صفر شروع می‌شود.
 
 <TryIt 
-  title="Context Completeness Check"
-  description="Use this to verify your prompt contains all necessary context before sending."
-  prompt={`Review this prompt for missing context:
+  title="بررسی کامل بودن زمینه"
+  description="از این استفاده کنید تا قبل از ارسال، تأیید کنید که پرامپت شما تمام زمینه‌های لازم را دارد."
+  prompt={`این پرامپت را برای زمینه‌های گمشده بررسی کنید:
 
 "\${promptToCheck}"
 
-Check for:
-1. **Referenced but not included**: Does it mention "the code," "the document," "earlier," or "above" without including the actual content?
+بررسی کنید:
+1. **ارجاع داده شده اما شامل نشده**: آیا به «کد»، «سند»، «قبلاً» یا «بالا» اشاره می‌کند بدون اینکه محتوای واقعی را شامل شود؟
 
-2. **Assumed knowledge**: Does it assume knowledge about a specific project, company, or situation?
+2. **دانش فرض شده**: آیا دانش درباره یک پروژه، شرکت یا موقعیت خاص را فرض می‌کند؟
 
-3. **Implicit requirements**: Are there unstated expectations about format, length, or style?
+3. **الزامات ضمنی**: آیا انتظارات نگفته‌ای درباره قالب، طول یا سبک وجود دارد؟
 
-4. **Missing background**: Would a smart stranger understand what's being asked?
+4. **پیش‌زمینه گمشده**: آیا یک غریبه باهوش متوجه خواهد شد چه چیزی خواسته می‌شود؟
 
-List what's missing and suggest how to add it.`}
+آنچه گمشده است را لیست کنید و پیشنهاد دهید چگونه اضافه شود.`}
 />
 
-## The Leading Question Trap
+## دام سؤال جهت‌دار
 
-**The Pattern**: You phrase your question in a way that embeds your assumption, getting back confirmation rather than insight.
+**الگو**: شما سؤال خود را به گونه‌ای بیان می‌کنید که فرض شما در آن جاسازی شده است، و به جای بینش، تأیید دریافت می‌کنید.
 
 <Compare 
-  before={{ label: "Leading question", content: "Why is Python the best programming language for data science?" }}
-  after={{ label: "Neutral question", content: "Compare Python, R, and Julia for data science work. What are the strengths and weaknesses of each? When would you choose one over the others?" }}
+  before={{ label: "سؤال جهت‌دار", content: "چرا Python بهترین زبان برنامه‌نویسی برای علم داده است؟" }}
+  after={{ label: "سؤال بی‌طرف", content: "Python، R و Julia را برای کار علم داده مقایسه کن. نقاط قوت و ضعف هر کدام چیست؟ چه زمانی یکی را بر دیگری ترجیح می‌دهید؟" }}
 />
 
-**Why it happens**: We often seek confirmation, not information. Our phrasing unconsciously pushes toward the answer we expect or want.
+**چرا این اتفاق می‌افتد**: ما اغلب به دنبال تأیید هستیم، نه اطلاعات. بیان ما به طور ناخودآگاه به سمت پاسخی که انتظار داریم یا می‌خواهیم هل می‌دهد.
 
 <TryIt 
-  title="Bias Detector"
-  description="Check your prompts for hidden biases and leading language."
-  prompt={`Analyze this prompt for bias and leading language:
+  title="آشکارساز تعصب"
+  description="پرامپت‌های خود را برای تعصبات پنهان و زبان جهت‌دار بررسی کنید."
+  prompt={`این پرامپت را برای تعصب و زبان جهت‌دار تحلیل کنید:
 
 "\${promptToAnalyze}"
 
-Check for:
-1. **Embedded assumptions**: Does the question assume something is true?
-2. **Leading phrasing**: Does "Why is X good?" assume X is good?
-3. **Missing alternatives**: Does it ignore other possibilities?
-4. **Confirmation seeking**: Is it asking for validation rather than analysis?
+بررسی کنید:
+1. **فرض‌های جاسازی شده**: آیا سؤال چیزی را درست فرض می‌کند؟
+2. **بیان جهت‌دار**: آیا «چرا X خوب است؟» فرض می‌کند X خوب است؟
+3. **جایگزین‌های گمشده**: آیا امکانات دیگر را نادیده می‌گیرد؟
+4. **تأیید‌طلبی**: آیا به جای تحلیل، اعتبارسنجی می‌خواهد؟
 
-Rewrite the prompt to be neutral and open-ended.`}
+پرامپت را بازنویسی کنید تا بی‌طرف و باز باشد.`}
 />
 
-## The Trust Everything Trap
+## دام اعتماد به همه چیز
 
-**The Pattern**: AI responses sound confident and authoritative, so you accept them without verification. But confidence doesn't equal accuracy.
+**الگو**: پاسخ‌های هوش مصنوعی مطمئن و معتبر به نظر می‌رسند، بنابراین شما آن‌ها را بدون تأیید می‌پذیرید. اما اطمینان برابر با دقت نیست.
 
 <InfoGrid items={[
-  { label: "Unreviewed Content", description: "Publishing AI-generated text without fact-checking", example: "Blog posts with invented statistics or fake quotes", exampleType: "text", color: "red" },
-  { label: "Untested Code", description: "Using AI code in production without testing", example: "Security vulnerabilities, edge case failures, subtle bugs", exampleType: "text", color: "red" },
-  { label: "Blind Decisions", description: "Making important choices based solely on AI analysis", example: "Business strategy based on hallucinated market data", exampleType: "text", color: "red" }
+  { label: "محتوای بررسی نشده", description: "انتشار متن تولید شده توسط هوش مصنوعی بدون بررسی واقعیت", example: "پست‌های وبلاگ با آمارهای ساختگی یا نقل‌قول‌های جعلی", exampleType: "text", color: "red" },
+  { label: "کد تست نشده", description: "استفاده از کد هوش مصنوعی در تولید بدون تست", example: "آسیب‌پذیری‌های امنیتی، خرابی‌های موارد لبه‌ای، باگ‌های ظریف", exampleType: "text", color: "red" },
+  { label: "تصمیمات کورکورانه", description: "گرفتن تصمیمات مهم فقط بر اساس تحلیل هوش مصنوعی", example: "استراتژی کسب‌وکار بر اساس داده‌های بازار توهم‌زده", exampleType: "text", color: "red" }
 ]} />
 
-**Why it happens**: AI sounds confident even when completely wrong. We're also prone to "automation bias"—the tendency to trust computer outputs more than we should.
+**چرا این اتفاق می‌افتد**: هوش مصنوعی حتی وقتی کاملاً اشتباه است هم مطمئن به نظر می‌رسد. ما همچنین مستعد «تعصب اتوماسیون» هستیم—تمایل به اعتماد بیش از حد به خروجی‌های کامپیوتر.
 
 <TryIt 
-  title="Verification Prompt"
-  description="Use this to get the AI to flag its own uncertainties and potential errors."
-  prompt={`I need you to provide information about: \${topic}
+  title="پرامپت تأیید"
+  description="از این استفاده کنید تا هوش مصنوعی عدم قطعیت‌ها و خطاهای احتمالی خود را علامت‌گذاری کند."
+  prompt={`من به اطلاعاتی درباره این موضوع نیاز دارم: \${topic}
 
-IMPORTANT: After your response, add a section called "Verification Notes" that includes:
+مهم: بعد از پاسخ خود، بخشی به نام «یادداشت‌های تأیید» اضافه کنید که شامل موارد زیر باشد:
 
-1. **Confidence Level**: How certain are you about this information? (High/Medium/Low)
+1. **سطح اطمینان**: چقدر درباره این اطلاعات مطمئن هستید؟ (بالا/متوسط/پایین)
 
-2. **Potential Errors**: What parts of this response are most likely to be wrong or outdated?
+2. **خطاهای احتمالی**: کدام بخش‌های این پاسخ احتمالاً اشتباه یا قدیمی هستند؟
 
-3. **What to Verify**: What specific claims should the user fact-check independently?
+3. **چه چیزی تأیید شود**: کدام ادعاهای خاص را کاربر باید مستقلاً بررسی کند؟
 
-4. **Sources to Check**: Where could the user verify this information?
+4. **منابع برای بررسی**: کاربر کجا می‌تواند این اطلاعات را تأیید کند؟
 
-Be honest about limitations. It's better to flag uncertainty than to sound confident about something wrong.`}
+درباره محدودیت‌ها صادق باشید. بهتر است عدم قطعیت را علامت‌گذاری کنید تا اینکه درباره چیز اشتباهی مطمئن به نظر برسید.`}
 />
 
-## The One-Shot Trap
+## دام تک‌تلاش
 
-**The Pattern**: You send one prompt, get a mediocre result, and conclude that AI "doesn't work" for your use case. But great results almost always require iteration.
+**الگو**: شما یک پرامپت می‌فرستید، نتیجه متوسطی می‌گیرید، و نتیجه می‌گیرید که هوش مصنوعی «برای مورد استفاده شما کار نمی‌کند». اما نتایج عالی تقریباً همیشه نیاز به تکرار دارند.
 
 <Compare 
-  before={{ label: "One-shot thinking", content: "Mediocre output → \"AI can't do this\" → Give up" }}
-  after={{ label: "Iterative thinking", content: "Mediocre output → Analyze what's wrong → Refine prompt → Better output → Refine again → Excellent output" }}
+  before={{ label: "تفکر تک‌تلاش", content: "خروجی متوسط → «هوش مصنوعی نمی‌تواند این کار را انجام دهد» → تسلیم شدن" }}
+  after={{ label: "تفکر تکراری", content: "خروجی متوسط → تحلیل اشکال → اصلاح پرامپت → خروجی بهتر → اصلاح مجدد → خروجی عالی" }}
 />
 
-**Why it happens**: We expect AI to read our minds on the first try. We don't expect to iterate with Google searches, but somehow expect perfection from AI.
+**چرا این اتفاق می‌افتد**: ما انتظار داریم هوش مصنوعی در اولین تلاش ذهن ما را بخواند. ما انتظار نداریم با جستجوهای Google تکرار کنیم، اما به نوعی از هوش مصنوعی انتظار کمال داریم.
 
 <TryIt 
-  title="Iteration Helper"
-  description="When your first result isn't right, use this to systematically improve it."
-  prompt={`My original prompt was:
+  title="کمک‌کننده تکرار"
+  description="وقتی نتیجه اول درست نیست، از این برای بهبود سیستماتیک استفاده کنید."
+  prompt={`پرامپت اصلی من این بود:
 "\${originalPrompt}"
 
-The output I got was:
+خروجی‌ای که گرفتم این بود:
 "\${outputReceived}"
 
-What's wrong with it:
+مشکل آن:
 "\${whatIsWrong}"
 
-Help me iterate:
+کمکم کنید تکرار کنم:
 
-1. **Diagnosis**: Why did the original prompt produce this result?
+1. **تشخیص**: چرا پرامپت اصلی این نتیجه را تولید کرد؟
 
-2. **Missing Elements**: What was I not explicit about that I should have been?
+2. **عناصر گمشده**: درباره چه چیزی صریح نبودم که باید می‌بودم؟
 
-3. **Revised Prompt**: Rewrite my prompt to address these issues.
+3. **پرامپت اصلاح‌شده**: پرامپت من را برای رفع این مشکلات بازنویسی کنید.
 
-4. **What to Watch For**: What should I check in the new output?`}
+4. **چه چیزی را بررسی کنم**: در خروجی جدید چه چیزی را باید بررسی کنم؟`}
 />
 
-## The Format Neglect Trap
+## دام غفلت از قالب
 
-**The Pattern**: You focus on what you want the AI to say, but forget to specify how it should be formatted. Then you get prose when you needed JSON, or a wall of text when you needed bullet points.
+**الگو**: شما بر آنچه می‌خواهید هوش مصنوعی بگوید تمرکز می‌کنید، اما فراموش می‌کنید مشخص کنید چگونه قالب‌بندی شود. سپس وقتی به JSON نیاز داشتید نثر می‌گیرید، یا وقتی به نقاط گلوله‌ای نیاز داشتید دیواری از متن می‌گیرید.
 
 <Compare 
-  before={{ label: "No format specified", content: "Extract the key data from this text." }}
-  after={{ label: "Format specified", content: "Extract the key data from this text as JSON:\n\n{\n  \"name\": string,\n  \"date\": \"YYYY-MM-DD\",\n  \"amount\": number,\n  \"category\": string\n}\n\nReturn ONLY the JSON, no explanation." }}
+  before={{ label: "قالب مشخص نشده", content: "داده‌های کلیدی را از این متن استخراج کن." }}
+  after={{ label: "قالب مشخص شده", content: "داده‌های کلیدی را از این متن به صورت JSON استخراج کن:\n\n{\n  \"name\": string,\n  \"date\": \"YYYY-MM-DD\",\n  \"amount\": number,\n  \"category\": string\n}\n\nفقط JSON را برگردان، بدون توضیح." }}
 />
 
-**Why it happens**: We focus on content over structure. But if you need to parse the output programmatically, or paste it somewhere specific, format matters as much as content.
+**چرا این اتفاق می‌افتد**: ما بر محتوا تمرکز می‌کنیم نه ساختار. اما اگر نیاز دارید خروجی را به صورت برنامه‌نویسی تجزیه کنید، یا در جایی خاص بچسبانید، قالب به اندازه محتوا مهم است.
 
 <TryIt 
-  title="Format Specification Builder"
-  description="Generate clear format specifications for any output type you need."
-  prompt={`I need AI output in a specific format.
+  title="سازنده مشخصات قالب"
+  description="مشخصات قالب واضح برای هر نوع خروجی که نیاز دارید تولید کنید."
+  prompt={`من به خروجی هوش مصنوعی در قالب خاصی نیاز دارم.
 
-**What I'm asking for**: \${taskDescription}
-**How I'll use the output**: \${intendedUse}
-**Preferred format**: \${formatType} (JSON, Markdown, CSV, bullet points, etc.)
+**آنچه می‌خواهم**: \${taskDescription}
+**نحوه استفاده از خروجی**: \${intendedUse}
+**قالب ترجیحی**: \${formatType} (JSON، Markdown، CSV، نقاط گلوله‌ای و غیره)
 
-Generate a format specification I can add to my prompt, including:
+یک مشخصات قالب تولید کنید که بتوانم به پرامپت خود اضافه کنم، شامل:
 
-1. **Exact structure** with field names and types
-2. **Example output** showing the format
-3. **Constraints** (e.g., "Return ONLY the JSON, no explanation")
-4. **Edge cases** (what to output if data is missing)`}
+1. **ساختار دقیق** با نام فیلدها و انواع
+2. **خروجی نمونه** که قالب را نشان می‌دهد
+3. **محدودیت‌ها** (مثلاً «فقط JSON را برگردان، بدون توضیح»)
+4. **موارد لبه‌ای** (اگر داده‌ای گم باشد چه چیزی خروجی شود)`}
 />
 
-## The Context Window Trap
+## دام پنجره زمینه
 
-**The Pattern**: You paste an enormous document and expect comprehensive analysis. But models have limits—they may truncate, lose focus, or miss important details in long inputs.
+**الگو**: شما یک سند بسیار بزرگ می‌چسبانید و انتظار تحلیل جامع دارید. اما مدل‌ها محدودیت دارند—ممکن است برش دهند، تمرکز را از دست بدهند، یا جزئیات مهم در ورودی‌های طولانی را از دست بدهند.
 
 <InfoGrid items={[
-  { label: "Know Your Limits", description: "Different models have different context windows", example: "GPT-4: 128K tokens, Claude: 200K tokens, Gemini: 1M tokens", exampleType: "text", color: "blue" },
-  { label: "Chunk Large Inputs", description: "Break documents into manageable sections", example: "Analyze chapters separately, then synthesize", exampleType: "text", color: "blue" },
-  { label: "Front-Load Important Info", description: "Put critical context early in the prompt", example: "Key requirements first, background details later", exampleType: "text", color: "blue" },
-  { label: "Trim the Fat", description: "Remove unnecessary context", example: "Do you really need the entire doc, or just relevant sections?", exampleType: "text", color: "blue" }
+  { label: "محدودیت‌های خود را بشناسید", description: "مدل‌های مختلف پنجره‌های زمینه متفاوتی دارند", example: "GPT-4: ۱۲۸ هزار توکن، Claude: ۲۰۰ هزار توکن، Gemini: ۱ میلیون توکن", exampleType: "text", color: "blue" },
+  { label: "ورودی‌های بزرگ را تکه کنید", description: "اسناد را به بخش‌های قابل مدیریت تقسیم کنید", example: "فصل‌ها را جداگانه تحلیل کنید، سپس ترکیب کنید", exampleType: "text", color: "blue" },
+  { label: "اطلاعات مهم را جلو بیاورید", description: "زمینه حیاتی را در ابتدای پرامپت قرار دهید", example: "الزامات کلیدی اول، جزئیات پیش‌زمینه بعد", exampleType: "text", color: "blue" },
+  { label: "چربی را حذف کنید", description: "زمینه غیرضروری را حذف کنید", example: "آیا واقعاً به کل سند نیاز دارید، یا فقط بخش‌های مربوطه؟", exampleType: "text", color: "blue" }
 ]} />
 
 <TryIt 
-  title="Document Chunking Strategy"
-  description="Get a strategy for processing documents that exceed context limits."
-  prompt={`I have a large document to analyze:
+  title="استراتژی تکه‌کردن سند"
+  description="یک استراتژی برای پردازش اسنادی که از محدودیت‌های زمینه فراتر می‌روند بگیرید."
+  prompt={`من یک سند بزرگ برای تحلیل دارم:
 
-**Document type**: \${documentType}
-**Approximate length**: \${documentLength}
-**What I need to extract/analyze**: \${analysisGoal}
-**Model I'm using**: \${modelName}
+**نوع سند**: \${documentType}
+**طول تقریبی**: \${documentLength}
+**آنچه باید استخراج/تحلیل کنم**: \${analysisGoal}
+**مدلی که استفاده می‌کنم**: \${modelName}
 
-Create a chunking strategy:
+یک استراتژی تکه‌کردن ایجاد کنید:
 
-1. **How to divide**: Logical break points for this document type
-2. **What to include in each chunk**: Context needed for standalone analysis
-3. **How to synthesize**: Combining results from multiple chunks
-4. **What to watch for**: Information that might span chunks`}
+1. **نحوه تقسیم**: نقاط شکست منطقی برای این نوع سند
+2. **چه چیزی در هر تکه باشد**: زمینه لازم برای تحلیل مستقل
+3. **نحوه ترکیب**: ترکیب نتایج از تکه‌های متعدد
+4. **چه چیزی را بپایید**: اطلاعاتی که ممکن است بین تکه‌ها پخش شوند`}
 />
 
-## The Anthropomorphization Trap
+## دام انسان‌انگاری
 
-**The Pattern**: You treat AI like a human colleague—expecting it to "enjoy" tasks, remember you, or care about outcomes. It doesn't.
+**الگو**: شما با هوش مصنوعی مثل یک همکار انسانی رفتار می‌کنید—انتظار دارید که از وظایف «لذت ببرد»، شما را به یاد بیاورد، یا به نتایج اهمیت دهد. این‌طور نیست.
 
 <Compare 
-  before={{ label: "Anthropomorphized", content: "I'm sure you'll enjoy this creative project! I know you love helping people, and this is really important to me personally." }}
-  after={{ label: "Clear and direct", content: "Write a creative short story with these specifications:\n- Genre: Science fiction\n- Length: 500 words\n- Tone: Hopeful\n- Must include: A twist ending" }}
+  before={{ label: "انسان‌انگاری شده", content: "مطمئنم از این پروژه خلاقانه لذت خواهی برد! می‌دانم که عاشق کمک به مردم هستی، و این واقعاً برای من شخصاً مهم است." }}
+  after={{ label: "واضح و مستقیم", content: "یک داستان کوتاه خلاقانه با این مشخصات بنویس:\n- ژانر: علمی-تخیلی\n- طول: ۵۰۰ کلمه\n- لحن: امیدوار\n- باید شامل باشد: یک پایان غافلگیرکننده" }}
 />
 
-**Why it happens**: AI responses are so human-like that we naturally slip into social patterns. But emotional appeals don't make the AI try harder—clear instructions do.
+**چرا این اتفاق می‌افتد**: پاسخ‌های هوش مصنوعی آنقدر شبیه انسان هستند که طبیعتاً به الگوهای اجتماعی می‌لغزیم. اما درخواست‌های احساسی هوش مصنوعی را وادار به تلاش بیشتر نمی‌کنند—دستورالعمل‌های واضح این کار را می‌کنند.
 
-<Callout type="info" title="What Actually Helps">
-Instead of emotional appeals, focus on: clear requirements, good examples, specific constraints, and explicit success criteria. These improve outputs. "Please try really hard" doesn't.
+<Callout type="info" title="چه چیزی واقعاً کمک می‌کند">
+به جای درخواست‌های احساسی، بر این موارد تمرکز کنید: الزامات واضح، مثال‌های خوب، محدودیت‌های خاص، و معیارهای موفقیت صریح. اینها خروجی‌ها را بهبود می‌دهند. «لطفاً واقعاً سخت تلاش کن» این کار را نمی‌کند.
 </Callout>
 
-## The Security Neglect Trap
+## دام غفلت از امنیت
 
-**The Pattern**: In the rush to get things working, you include sensitive information in prompts—API keys, passwords, personal data, or proprietary information.
+**الگو**: در عجله برای کار کردن چیزها، اطلاعات حساس را در پرامپت‌ها شامل می‌کنید—کلیدهای API، رمزهای عبور، داده‌های شخصی، یا اطلاعات اختصاصی.
 
 <InfoGrid items={[
-  { label: "Secrets in Prompts", description: "API keys, passwords, tokens pasted into prompts", example: "\"Use this API key: sk-abc123...\"", color: "red" },
-  { label: "Personal Data", description: "Including PII that gets sent to third-party servers", example: "Customer names, emails, addresses in prompts", exampleType: "text", color: "red" },
-  { label: "Unsanitized User Input", description: "Passing user input directly into prompts", example: "Prompt injection vulnerabilities", exampleType: "text", color: "red" },
-  { label: "Proprietary Information", description: "Trade secrets or confidential data", example: "Internal strategies, unreleased product details", exampleType: "text", color: "red" }
+  { label: "اسرار در پرامپت‌ها", description: "کلیدهای API، رمزهای عبور، توکن‌ها در پرامپت‌ها چسبانده شده", example: "\"از این کلید API استفاده کن: sk-abc123...\"", color: "red" },
+  { label: "داده‌های شخصی", description: "شامل اطلاعات شخصی که به سرورهای شخص ثالث فرستاده می‌شود", example: "نام‌های مشتری، ایمیل‌ها، آدرس‌ها در پرامپت‌ها", exampleType: "text", color: "red" },
+  { label: "ورودی کاربر بدون پاکسازی", description: "ارسال مستقیم ورودی کاربر به پرامپت‌ها", example: "آسیب‌پذیری‌های تزریق پرامپت", exampleType: "text", color: "red" },
+  { label: "اطلاعات اختصاصی", description: "اسرار تجاری یا داده‌های محرمانه", example: "استراتژی‌های داخلی، جزئیات محصول منتشر نشده", exampleType: "text", color: "red" }
 ]} />
 
-**Why it happens**: Focus on functionality over security. But remember: prompts often go to external servers, may be logged, and could be used for training.
+**چرا این اتفاق می‌افتد**: تمرکز بر عملکرد به جای امنیت. اما به یاد داشته باشید: پرامپت‌ها اغلب به سرورهای خارجی می‌روند، ممکن است ثبت شوند، و می‌توانند برای آموزش استفاده شوند.
 
 <TryIt 
-  title="Security Review"
-  description="Check your prompt for security issues before sending."
-  prompt={`Review this prompt for security concerns:
+  title="بررسی امنیتی"
+  description="پرامپت خود را برای مسائل امنیتی قبل از ارسال بررسی کنید."
+  prompt={`این پرامپت را برای نگرانی‌های امنیتی بررسی کنید:
 
 "\${promptToReview}"
 
-Check for:
+بررسی کنید:
 
-1. **Exposed Secrets**: API keys, passwords, tokens, credentials
-2. **Personal Data**: Names, emails, addresses, phone numbers, SSNs
-3. **Proprietary Info**: Trade secrets, internal strategies, confidential data
-4. **Injection Risks**: User input that could manipulate the prompt
+1. **اسرار فاش شده**: کلیدهای API، رمزهای عبور، توکن‌ها، اعتبارنامه‌ها
+2. **داده‌های شخصی**: نام‌ها، ایمیل‌ها، آدرس‌ها، شماره تلفن‌ها، شماره‌های ملی
+3. **اطلاعات اختصاصی**: اسرار تجاری، استراتژی‌های داخلی، داده‌های محرمانه
+4. **خطرات تزریق**: ورودی کاربر که می‌تواند پرامپت را دستکاری کند
 
-For each issue found:
-- Explain the risk
-- Suggest how to redact or protect the information
-- Recommend safer alternatives`}
+برای هر مشکل یافت شده:
+- خطر را توضیح دهید
+- پیشنهاد دهید چگونه اطلاعات را سانسور یا محافظت کنید
+- جایگزین‌های امن‌تر توصیه کنید`}
 />
 
-## The Hallucination Ignorance Trap
+## دام نادیده گرفتن توهم
 
-**The Pattern**: You ask for citations, statistics, or specific facts, and assume they're real because the AI stated them confidently. But AI regularly invents plausible-sounding information.
+**الگو**: شما استنادات، آمار، یا حقایق خاص می‌خواهید، و فرض می‌کنید واقعی هستند چون هوش مصنوعی آن‌ها را با اطمینان بیان کرد. اما هوش مصنوعی مرتباً اطلاعات باورپذیر می‌سازد.
 
 <Compare 
-  before={{ label: "Trusting blindly", content: "Give me 5 statistics about remote work productivity with sources." }}
-  after={{ label: "Acknowledging limitations", content: "What do we know about remote work productivity? For any statistics you mention, note whether they're well-established findings or more uncertain. I will verify any specific numbers independently." }}
+  before={{ label: "اعتماد کورکورانه", content: "۵ آمار درباره بهره‌وری کار از راه دور با منابع بده." }}
+  after={{ label: "پذیرش محدودیت‌ها", content: "درباره بهره‌وری کار از راه دور چه می‌دانیم؟ برای هر آماری که ذکر می‌کنی، مشخص کن آیا یافته‌های تثبیت شده هستند یا نامطمئن‌تر. من هر عدد خاصی را مستقلاً تأیید خواهم کرد." }}
 />
 
-**Why it happens**: AI generates text that sounds authoritative. It doesn't "know" when it's making things up—it's predicting likely text, not retrieving verified facts.
+**چرا این اتفاق می‌افتد**: هوش مصنوعی متنی تولید می‌کند که معتبر به نظر می‌رسد. نمی‌«داند» که چه زمانی چیزها را می‌سازد—متن محتمل را پیش‌بینی می‌کند، نه حقایق تأیید شده را بازیابی می‌کند.
 
 <TryIt 
-  title="Hallucination-Resistant Query"
-  description="Structure your prompt to minimize hallucination risk and flag uncertainties."
-  prompt={`I need information about: \${topic}
+  title="پرسش مقاوم در برابر توهم"
+  description="پرامپت خود را ساختار دهید تا خطر توهم را به حداقل برسانید و عدم قطعیت‌ها را علامت‌گذاری کنید."
+  prompt={`من به اطلاعاتی درباره این موضوع نیاز دارم: \${topic}
 
-Please follow these guidelines to minimize errors:
+لطفاً این راهنماها را برای به حداقل رساندن خطاها دنبال کنید:
 
-1. **Stick to well-established facts**. Avoid obscure claims that are hard to verify.
+1. **به حقایق تثبیت شده بچسبید**. از ادعاهای مبهم که تأیید آن‌ها سخت است اجتناب کنید.
 
-2. **Flag uncertainty**. If you're not confident about something, say "I believe..." or "This may need verification..."
+2. **عدم قطعیت را علامت‌گذاری کنید**. اگر درباره چیزی مطمئن نیستید، بگویید «من فکر می‌کنم...» یا «این ممکن است نیاز به تأیید داشته باشد...»
 
-3. **No invented sources**. Don't cite specific papers, books, or URLs unless you're certain they exist. Instead, describe where to find this type of information.
+3. **منابع ساختگی نیاورید**. مقالات، کتاب‌ها یا URLهای خاص را استناد نکنید مگر مطمئن باشید وجود دارند. در عوض، توصیف کنید این نوع اطلاعات کجا پیدا می‌شود.
 
-4. **Acknowledge knowledge limits**. If my question is about events after your training data, say so.
+4. **محدودیت‌های دانش را بپذیرید**. اگر سؤال من درباره رویدادهای بعد از داده‌های آموزشی شماست، بگویید.
 
-5. **Separate fact from inference**. Clearly distinguish between "X is true" and "Based on Y, X is likely true."
+5. **حقیقت را از استنتاج جدا کنید**. به وضوح بین «X درست است» و «بر اساس Y، X احتمالاً درست است» تمایز قائل شوید.
 
-Now, with these guidelines in mind: \${actualQuestion}`}
+حالا، با در نظر گرفتن این راهنماها: \${actualQuestion}`}
 />
 
-## Pre-Send Checklist
+## چک‌لیست قبل از ارسال
 
-Before sending any important prompt, run through this quick checklist:
+قبل از ارسال هر پرامپت مهمی، این چک‌لیست سریع را مرور کنید:
 
 <Checklist 
-  title="Prompt Quality Check"
+  title="بررسی کیفیت پرامپت"
   items={[
-    { text: "Is it specific enough? (Not vague)" },
-    { text: "Is it focused? (Not overloaded with requirements)" },
-    { text: "Does it include all necessary context?" },
-    { text: "Is the question neutral? (Not leading)" },
-    { text: "Have I specified the output format?" },
-    { text: "Is the input within context limits?" },
-    { text: "Are there any security concerns?" },
-    { text: "Am I prepared to verify the output?" },
-    { text: "Am I prepared to iterate if needed?" }
+    { text: "آیا به اندازه کافی مشخص است؟ (نه مبهم)" },
+    { text: "آیا متمرکز است؟ (بارگذاری بیش از حد با الزامات نیست)" },
+    { text: "آیا تمام زمینه‌های لازم را شامل می‌شود؟" },
+    { text: "آیا سؤال بی‌طرف است؟ (جهت‌دار نیست)" },
+    { text: "آیا قالب خروجی را مشخص کرده‌ام؟" },
+    { text: "آیا ورودی در محدوده زمینه است؟" },
+    { text: "آیا نگرانی امنیتی وجود دارد؟" },
+    { text: "آیا آماده تأیید خروجی هستم؟" },
+    { text: "آیا در صورت نیاز آماده تکرار هستم؟" }
   ]}
 />
 
 <Quiz 
-  question="What's the most dangerous pitfall when using AI for important decisions?"
+  question="خطرناک‌ترین دام هنگام استفاده از هوش مصنوعی برای تصمیمات مهم چیست؟"
   options={[
-    "Using vague prompts",
-    "Trusting AI outputs without verification",
-    "Not specifying output format",
-    "Overloading prompts with requirements"
+    "استفاده از پرامپت‌های مبهم",
+    "اعتماد به خروجی‌های هوش مصنوعی بدون تأیید",
+    "مشخص نکردن قالب خروجی",
+    "بارگذاری بیش از حد پرامپت‌ها با الزامات"
   ]}
   correctIndex={1}
-  explanation="While all pitfalls cause problems, trusting AI outputs without verification is the most dangerous because it can lead to publishing false information, deploying buggy code, or making decisions based on hallucinated data. AI sounds confident even when completely wrong, making verification essential for any important use case."
+  explanation="در حالی که همه دام‌ها مشکل ایجاد می‌کنند، اعتماد به خروجی‌های هوش مصنوعی بدون تأیید خطرناک‌ترین است زیرا می‌تواند منجر به انتشار اطلاعات نادرست، استقرار کد باگ‌دار، یا تصمیم‌گیری بر اساس داده‌های توهم‌زده شود. هوش مصنوعی حتی وقتی کاملاً اشتباه است هم مطمئن به نظر می‌رسد، که تأیید را برای هر مورد استفاده مهمی ضروری می‌کند."
 />
 
-## Analyze Your Prompts
+## پرامپت‌های خود را تحلیل کنید
 
-Use AI to get instant feedback on your prompt quality. Paste any prompt and get a detailed analysis:
+از هوش مصنوعی برای دریافت بازخورد فوری درباره کیفیت پرامپت خود استفاده کنید. هر پرامپتی را بچسبانید و تحلیل دقیق بگیرید:
 
 <PromptAnalyzer 
-  title="Prompt Quality Analyzer"
-  description="Get AI-powered feedback on clarity, specificity, and suggestions for improvement"
-  defaultPrompt="Help me with my code"
+  title="تحلیل‌گر کیفیت پرامپت"
+  description="بازخورد مبتنی بر هوش مصنوعی درباره وضوح، دقت، و پیشنهادات برای بهبود بگیرید"
+  defaultPrompt="کمکم کن با کدم"
 />
 
-## Debug This Prompt
+## این پرامپت را عیب‌یابی کنید
 
-Can you spot what's wrong with this prompt?
+می‌توانید تشخیص دهید این پرامپت چه مشکلی دارد؟
 
 <PromptDebugger
-  title="Find the Pitfall"
-  badPrompt="Write a blog post about technology that's SEO optimized with keywords and also funny but professional and includes code examples and targets beginners but has advanced tips and mentions our product TechCo and has social proof and a call to action and is 500 words but comprehensive."
-  badOutput="Here's a draft blog post about technology...
+  title="دام را پیدا کنید"
+  badPrompt="یک پست وبلاگ درباره فناوری بنویس که SEO بهینه با کلمات کلیدی باشد و همچنین خنده‌دار اما حرفه‌ای باشد و مثال‌های کد داشته باشد و مبتدیان را هدف قرار دهد اما نکات پیشرفته داشته باشد و محصول ما TechCo را ذکر کند و اثبات اجتماعی و دعوت به اقدام داشته باشد و ۵۰۰ کلمه باشد اما جامع."
+  badOutput="اینجا یک پیش‌نویس پست وبلاگ درباره فناوری است...
 
-[Generic, unfocused content that tries to do everything but accomplishes nothing well. Tone shifts awkwardly between casual and technical. Missing half the requirements.]"
+[محتوای عمومی و بدون تمرکز که سعی می‌کند همه کار را انجام دهد اما هیچ کاری را خوب انجام نمی‌دهد. لحن به طرز ناشیانه‌ای بین غیررسمی و فنی تغییر می‌کند. نیمی از الزامات گمشده است.]"
   options={[
-    { id: "vague", label: "The prompt is too vague", isCorrect: false, explanation: "Actually, the prompt has many specific requirements. The problem is the opposite—too many requirements, not too few." },
-    { id: "overload", label: "The prompt is overloaded with too many competing requirements", isCorrect: true, explanation: "Correct! This prompt asks for SEO + funny + professional + code + beginners + advanced + product mention + social proof + CTA + length constraint. That's 10+ competing requirements! The AI can't satisfy them all, so it does a mediocre job on everything. Solution: break this into multiple focused prompts." },
-    { id: "format", label: "The output format isn't specified", isCorrect: false, explanation: "While a more specific format would help, the main issue is requirement overload. You can't format your way out of asking for too much." },
-    { id: "context", label: "There's not enough context", isCorrect: false, explanation: "The prompt actually has a lot of context—maybe too much! The problem is that it's trying to satisfy too many goals at once." }
+    { id: "vague", label: "پرامپت خیلی مبهم است", isCorrect: false, explanation: "در واقع، پرامپت الزامات خاص زیادی دارد. مشکل برعکس است—الزامات خیلی زیاد، نه خیلی کم." },
+    { id: "overload", label: "پرامپت با الزامات رقابتی بیش از حد بارگذاری شده", isCorrect: true, explanation: "درست است! این پرامپت SEO + خنده‌دار + حرفه‌ای + کد + مبتدیان + پیشرفته + ذکر محصول + اثبات اجتماعی + دعوت به اقدام + محدودیت طول می‌خواهد. این بیش از ۱۰ الزام رقابتی است! هوش مصنوعی نمی‌تواند همه را برآورده کند، بنابراین روی همه چیز کار متوسطی انجام می‌دهد. راه‌حل: این را به چند پرامپت متمرکز تقسیم کنید." },
+    { id: "format", label: "قالب خروجی مشخص نشده", isCorrect: false, explanation: "در حالی که قالب مشخص‌تر کمک می‌کرد، مشکل اصلی بارگذاری بیش از حد الزامات است. نمی‌توانید با قالب‌بندی از خواستن بیش از حد فرار کنید." },
+    { id: "context", label: "زمینه کافی وجود ندارد", isCorrect: false, explanation: "پرامپت در واقع زمینه زیادی دارد—شاید بیش از حد! مشکل این است که سعی می‌کند همزمان اهداف زیادی را برآورده کند." }
   ]}
-  hint="Count how many different requirements are packed into this single prompt."
+  hint="بشمارید چند الزام مختلف در این پرامپت واحد جای گرفته است."
 />

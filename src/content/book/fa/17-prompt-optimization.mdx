@@ -1,40 +1,40 @@
-A good prompt gets the job done. An optimized prompt gets the job done efficiently—faster, cheaper, more consistently. This chapter teaches you how to systematically improve prompts across multiple dimensions.
+یک پرامپت خوب کار را انجام می‌دهد. یک پرامپت بهینه‌شده کار را به شکل کارآمد انجام می‌دهد—سریع‌تر، ارزان‌تر، با ثبات بیشتر. این فصل به شما می‌آموزد چگونه پرامپت‌ها را به صورت سیستماتیک در ابعاد مختلف بهبود دهید.
 
-<Callout type="tip" title="Try the Prompt Enhancer">
-Want to optimize your prompts automatically? Use our [Prompt Enhancer](/developers#enhancer) tool. It analyzes your prompt, applies optimization techniques, and shows you similar community prompts for inspiration.
+<Callout type="tip" title="بهبوددهنده پرامپت را امتحان کنید">
+می‌خواهید پرامپت‌های خود را به صورت خودکار بهینه کنید؟ از ابزار [بهبوددهنده پرامپت](/developers#enhancer) ما استفاده کنید. این ابزار پرامپت شما را تحلیل می‌کند، تکنیک‌های بهینه‌سازی را اعمال می‌کند، و پرامپت‌های مشابه جامعه را برای الهام‌گیری نشان می‌دهد.
 </Callout>
 
-## The Optimization Trade-offs
+## مصالحه‌های بهینه‌سازی
 
-Every optimization involves trade-offs. Understanding these helps you make intentional choices:
-
-<InfoGrid items={[
-  { label: "Quality vs. Cost", description: "Higher quality often requires more tokens or better models", example: "Adding examples improves accuracy but increases token count", exampleType: "text", color: "blue" },
-  { label: "Speed vs. Quality", description: "Faster models may sacrifice some capability", example: "GPT-4 is smarter but slower than GPT-4o-mini", exampleType: "text", color: "purple" },
-  { label: "Consistency vs. Creativity", description: "Lower temperature = more predictable but less creative", example: "Temperature 0.2 for facts, 0.8 for brainstorming", exampleType: "text", color: "green" },
-  { label: "Simplicity vs. Robustness", description: "Edge case handling adds complexity", example: "Simple prompts fail on unusual inputs", exampleType: "text", color: "amber" }
-]} />
-
-## Measuring What Matters
-
-Before optimizing, define success. What does "better" mean for your use case?
+هر بهینه‌سازی شامل مصالحه‌هایی است. درک این موارد به شما کمک می‌کند تصمیمات آگاهانه بگیرید:
 
 <InfoGrid items={[
-  { label: "Accuracy", description: "How often is the output correct?", example: "90% of code suggestions compile without errors", exampleType: "text", color: "blue" },
-  { label: "Relevance", description: "Does it address what was actually asked?", example: "Response directly answers the question vs. tangents", exampleType: "text", color: "blue" },
-  { label: "Completeness", description: "Are all requirements covered?", example: "All 5 requested sections included in output", exampleType: "text", color: "blue" },
-  { label: "Latency", description: "How long until the response arrives?", example: "p50 < 2s, p95 < 5s for chat applications", exampleType: "text", color: "purple" },
-  { label: "Token Efficiency", description: "How many tokens for the same result?", example: "500 tokens vs. 1500 tokens for equivalent output", exampleType: "text", color: "purple" },
-  { label: "Consistency", description: "How similar are outputs for similar inputs?", example: "Same question gets structurally similar answers", exampleType: "text", color: "green" }
+  { label: "کیفیت در مقابل هزینه", description: "کیفیت بالاتر اغلب به توکن‌های بیشتر یا مدل‌های بهتر نیاز دارد", example: "افزودن مثال‌ها دقت را بهبود می‌بخشد اما تعداد توکن‌ها را افزایش می‌دهد", exampleType: "text", color: "blue" },
+  { label: "سرعت در مقابل کیفیت", description: "مدل‌های سریع‌تر ممکن است برخی قابلیت‌ها را قربانی کنند", example: "GPT-4 باهوش‌تر اما کندتر از GPT-4o-mini است", exampleType: "text", color: "purple" },
+  { label: "ثبات در مقابل خلاقیت", description: "دمای پایین‌تر = قابل پیش‌بینی‌تر اما کمتر خلاق", example: "دمای 0.2 برای حقایق، 0.8 برای طوفان فکری", exampleType: "text", color: "green" },
+  { label: "سادگی در مقابل استحکام", description: "مدیریت موارد لبه‌ای پیچیدگی اضافه می‌کند", example: "پرامپت‌های ساده در ورودی‌های غیرعادی شکست می‌خورند", exampleType: "text", color: "amber" }
 ]} />
 
-<Callout type="info" title="What Do p50 and p95 Mean?">
-Percentile metrics show response time distribution. **p50** (median) means 50% of requests are faster than this value. **p95** means 95% are faster—it catches slow outliers. If your p50 is 1s but p95 is 10s, most users are happy but 5% experience frustrating delays.
+## اندازه‌گیری آنچه اهمیت دارد
+
+قبل از بهینه‌سازی، موفقیت را تعریف کنید. «بهتر» برای کاربرد شما به چه معناست؟
+
+<InfoGrid items={[
+  { label: "دقت", description: "خروجی چند بار درست است؟", example: "۹۰٪ پیشنهادات کد بدون خطا کامپایل می‌شوند", exampleType: "text", color: "blue" },
+  { label: "مرتبط بودن", description: "آیا به آنچه واقعاً پرسیده شده پاسخ می‌دهد؟", example: "پاسخ مستقیماً سؤال را جواب می‌دهد در مقابل انحراف از موضوع", exampleType: "text", color: "blue" },
+  { label: "کامل بودن", description: "آیا همه الزامات پوشش داده شده‌اند؟", example: "هر ۵ بخش درخواست‌شده در خروجی گنجانده شده‌اند", exampleType: "text", color: "blue" },
+  { label: "تأخیر", description: "چقدر طول می‌کشد تا پاسخ برسد؟", example: "p50 < 2s، p95 < 5s برای برنامه‌های چت", exampleType: "text", color: "purple" },
+  { label: "بهره‌وری توکن", description: "چند توکن برای همان نتیجه؟", example: "۵۰۰ توکن در مقابل ۱۵۰۰ توکن برای خروجی معادل", exampleType: "text", color: "purple" },
+  { label: "ثبات", description: "خروجی‌ها برای ورودی‌های مشابه چقدر مشابه هستند؟", example: "همان سؤال پاسخ‌های ساختاری مشابه دریافت می‌کند", exampleType: "text", color: "green" }
+]} />
+
+<Callout type="info" title="p50 و p95 به چه معناست؟">
+معیارهای صدک توزیع زمان پاسخ را نشان می‌دهند. **p50** (میانه) یعنی ۵۰٪ درخواست‌ها سریع‌تر از این مقدار هستند. **p95** یعنی ۹۵٪ سریع‌تر هستند—این موارد کند استثنایی را شناسایی می‌کند. اگر p50 شما ۱ ثانیه اما p95 شما ۱۰ ثانیه باشد، اکثر کاربران راضی هستند اما ۵٪ تأخیرهای ناامیدکننده را تجربه می‌کنند.
 </Callout>
 
 <TryIt 
-  title="Define Your Success Metrics"
-  description="Use this template to clarify what you're optimizing for before making changes."
+  title="معیارهای موفقیت خود را تعریف کنید"
+  description="از این قالب برای روشن کردن آنچه قبل از ایجاد تغییرات بهینه می‌کنید استفاده کنید."
   prompt={`Help me define success metrics for my prompt optimization.
 
 **My use case**: \${useCase}
@@ -49,31 +49,31 @@ For this use case, help me define:
 5. **How to measure**: Practical ways to evaluate each metric`}
 />
 
-## Token Optimization
+## بهینه‌سازی توکن
 
-Tokens cost money and add latency. Here's how to say the same thing with fewer tokens.
+توکن‌ها هزینه دارند و تأخیر اضافه می‌کنند. در اینجا نحوه گفتن همان چیز با توکن‌های کمتر آمده است.
 
-### The Compression Principle
+### اصل فشرده‌سازی
 
 <Compare 
-  before={{ label: "Verbose (67 tokens)", content: "I would like you to please help me with the following task. I need you to take the text that I'm going to provide below and create a summary of it. The summary should capture the main points and be concise. Please make sure to include all the important information. Here is the text:\n\n[text]" }}
-  after={{ label: "Concise (12 tokens)", content: "Summarize this text, capturing main points concisely:\n\n[text]" }}
+  before={{ label: "پرگو (۶۷ توکن)", content: "I would like you to please help me with the following task. I need you to take the text that I'm going to provide below and create a summary of it. The summary should capture the main points and be concise. Please make sure to include all the important information. Here is the text:\n\n[text]" }}
+  after={{ label: "مختصر (۱۲ توکن)", content: "Summarize this text, capturing main points concisely:\n\n[text]" }}
 />
 
-**Same result, 82% fewer tokens.**
+**همان نتیجه، ۸۲٪ توکن کمتر.**
 
-### Token-Saving Techniques
+### تکنیک‌های صرفه‌جویی در توکن
 
 <InfoGrid items={[
-  { label: "Cut Pleasantries", description: "\"Please\" and \"Thank you\" add tokens without improving output", example: "\"Please summarize\" → \"Summarize\"", color: "green" },
-  { label: "Eliminate Redundancy", description: "Don't repeat yourself or state the obvious", example: "\"Write a summary that summarizes\" → \"Summarize\"", color: "green" },
-  { label: "Use Abbreviations", description: "Where meaning is clear, abbreviate", example: "\"for example\" → \"e.g.\"", color: "green" },
-  { label: "Reference by Position", description: "Point to content instead of repeating it", example: "\"the text above\" instead of re-quoting", color: "green" }
+  { label: "حذف تعارفات", description: "«لطفاً» و «متشکرم» توکن اضافه می‌کنند بدون بهبود خروجی", example: "\"Please summarize\" → \"Summarize\"", color: "green" },
+  { label: "حذف تکرار", description: "خودتان را تکرار نکنید یا چیز واضح را بیان نکنید", example: "\"Write a summary that summarizes\" → \"Summarize\"", color: "green" },
+  { label: "استفاده از اختصارات", description: "جایی که معنی واضح است، اختصار کنید", example: "\"for example\" → \"e.g.\"", color: "green" },
+  { label: "ارجاع با موقعیت", description: "به جای تکرار، به محتوا اشاره کنید", example: "\"the text above\" به جای نقل قول مجدد", color: "green" }
 ]} />
 
 <TryIt 
-  title="Prompt Compressor"
-  description="Paste a verbose prompt to get a token-optimized version."
+  title="فشرده‌ساز پرامپت"
+  description="یک پرامپت پرگو را جایگذاری کنید تا نسخه بهینه‌شده از نظر توکن دریافت کنید."
   prompt={`Compress this prompt while preserving its meaning and effectiveness:
 
 Original prompt:
@@ -92,31 +92,31 @@ Provide:
 - **What was cut**: Brief explanation of what was removed and why it was safe to remove`}
 />
 
-## Quality Optimization
+## بهینه‌سازی کیفیت
 
-Sometimes you need better outputs, not cheaper ones. Here's how to improve quality.
+گاهی اوقات به خروجی‌های بهتر نیاز دارید، نه ارزان‌تر. در اینجا نحوه بهبود کیفیت آمده است.
 
-### Accuracy Boosters
+### افزایش‌دهنده‌های دقت
 
 <InfoGrid items={[
-  { label: "Add Verification", description: "Ask the model to check its own work", example: "\"...then verify your answer is correct\"", color: "blue" },
-  { label: "Request Confidence", description: "Make uncertainty explicit", example: "\"Rate your confidence 1-10 and explain any uncertainty\"", color: "blue" },
-  { label: "Multiple Approaches", description: "Get different perspectives, then choose", example: "\"Provide 3 approaches and recommend the best one\"", color: "blue" },
-  { label: "Explicit Reasoning", description: "Force step-by-step thinking", example: "\"Think step by step and show your reasoning\"", color: "blue" }
+  { label: "افزودن تأیید", description: "از مدل بخواهید کار خود را بررسی کند", example: "\"...then verify your answer is correct\"", color: "blue" },
+  { label: "درخواست اطمینان", description: "عدم قطعیت را صریح کنید", example: "\"Rate your confidence 1-10 and explain any uncertainty\"", color: "blue" },
+  { label: "رویکردهای متعدد", description: "دیدگاه‌های مختلف بگیرید، سپس انتخاب کنید", example: "\"Provide 3 approaches and recommend the best one\"", color: "blue" },
+  { label: "استدلال صریح", description: "تفکر مرحله به مرحله را اجباری کنید", example: "\"Think step by step and show your reasoning\"", color: "blue" }
 ]} />
 
-### Consistency Boosters
+### افزایش‌دهنده‌های ثبات
 
 <InfoGrid items={[
-  { label: "Detailed Format Specs", description: "Show exactly what output should look like", example: "Include a template or schema", exampleType: "text", color: "purple" },
-  { label: "Few-Shot Examples", description: "Provide 2-3 examples of ideal output", example: "\"Here's what good looks like: [examples]\"", color: "purple" },
-  { label: "Lower Temperature", description: "Reduce randomness for more predictable output", example: "Temperature 0.3-0.5 for consistent results", exampleType: "text", color: "purple" },
-  { label: "Output Validation", description: "Add a validation step for critical fields", example: "\"Verify all required fields are present\"", color: "purple" }
+  { label: "مشخصات فرمت دقیق", description: "دقیقاً نشان دهید خروجی باید چگونه باشد", example: "شامل یک قالب یا schema", exampleType: "text", color: "purple" },
+  { label: "مثال‌های Few-Shot", description: "۲-۳ مثال از خروجی ایده‌آل ارائه دهید", example: "\"Here's what good looks like: [examples]\"", color: "purple" },
+  { label: "دمای پایین‌تر", description: "تصادفی بودن را برای خروجی قابل پیش‌بینی‌تر کاهش دهید", example: "دمای 0.3-0.5 برای نتایج ثابت", exampleType: "text", color: "purple" },
+  { label: "اعتبارسنجی خروجی", description: "یک مرحله اعتبارسنجی برای فیلدهای حیاتی اضافه کنید", example: "\"Verify all required fields are present\"", color: "purple" }
 ]} />
 
 <TryIt 
-  title="Quality Enhancer"
-  description="Add quality-improving elements to your prompt."
+  title="افزایش‌دهنده کیفیت"
+  description="عناصر بهبوددهنده کیفیت را به پرامپت خود اضافه کنید."
   prompt={`Enhance this prompt for higher quality outputs:
 
 Original prompt:
@@ -133,66 +133,66 @@ Add appropriate quality boosters:
 Provide the enhanced prompt with explanations for each addition.`}
 />
 
-## Latency Optimization
+## بهینه‌سازی تأخیر
 
-When speed matters, every millisecond counts.
+وقتی سرعت اهمیت دارد، هر میلی‌ثانیه مهم است.
 
-### Model Selection by Speed Need
-
-<InfoGrid items={[
-  { label: "Real-time (< 500ms)", description: "Use smallest effective model + aggressive caching", example: "GPT-4o-mini, Claude Haiku, cached responses", exampleType: "text", color: "red" },
-  { label: "Interactive (< 2s)", description: "Fast models, streaming enabled", example: "GPT-4o-mini with streaming", exampleType: "text", color: "amber" },
-  { label: "Tolerant (< 10s)", description: "Mid-tier models, balance quality/speed", example: "GPT-4o, Claude Sonnet", exampleType: "text", color: "green" },
-  { label: "Async/Batch", description: "Use best model, process in background", example: "GPT-4, Claude Opus for offline processing", exampleType: "text", color: "blue" }
-]} />
-
-### Speed Techniques
+### انتخاب مدل بر اساس نیاز سرعت
 
 <InfoGrid items={[
-  { label: "Shorter Prompts", description: "Fewer input tokens = faster processing", example: "Compress prompts, remove unnecessary context", exampleType: "text", color: "cyan" },
-  { label: "Limit Output", description: "Set max_tokens to prevent runaway responses", example: "max_tokens: 500 for summaries", exampleType: "text", color: "cyan" },
-  { label: "Use Streaming", description: "Get first tokens faster, better UX", example: "Stream for any response > 100 tokens", exampleType: "text", color: "cyan" },
-  { label: "Cache Aggressively", description: "Don't recompute identical queries", example: "Cache common questions, template outputs", exampleType: "text", color: "cyan" }
+  { label: "بلادرنگ (< 500ms)", description: "از کوچک‌ترین مدل مؤثر + کش تهاجمی استفاده کنید", example: "GPT-4o-mini، Claude Haiku، پاسخ‌های کش‌شده", exampleType: "text", color: "red" },
+  { label: "تعاملی (< 2s)", description: "مدل‌های سریع، streaming فعال", example: "GPT-4o-mini با streaming", exampleType: "text", color: "amber" },
+  { label: "تحمل‌پذیر (< 10s)", description: "مدل‌های میان‌رده، تعادل کیفیت/سرعت", example: "GPT-4o، Claude Sonnet", exampleType: "text", color: "green" },
+  { label: "غیرهمزمان/دسته‌ای", description: "از بهترین مدل استفاده کنید، در پس‌زمینه پردازش کنید", example: "GPT-4، Claude Opus برای پردازش آفلاین", exampleType: "text", color: "blue" }
 ]} />
 
-## Cost Optimization
+### تکنیک‌های سرعت
 
-At scale, small savings multiply into significant budget impact.
+<InfoGrid items={[
+  { label: "پرامپت‌های کوتاه‌تر", description: "توکن‌های ورودی کمتر = پردازش سریع‌تر", example: "پرامپت‌ها را فشرده کنید، زمینه غیرضروری را حذف کنید", exampleType: "text", color: "cyan" },
+  { label: "محدود کردن خروجی", description: "max_tokens را تنظیم کنید تا از پاسخ‌های طولانی جلوگیری شود", example: "max_tokens: 500 برای خلاصه‌ها", exampleType: "text", color: "cyan" },
+  { label: "استفاده از Streaming", description: "توکن‌های اول را سریع‌تر دریافت کنید، UX بهتر", example: "Streaming برای هر پاسخ > 100 توکن", exampleType: "text", color: "cyan" },
+  { label: "کش تهاجمی", description: "کوئری‌های یکسان را دوباره محاسبه نکنید", example: "سؤالات رایج را کش کنید، خروجی‌های قالبی", exampleType: "text", color: "cyan" }
+]} />
 
-### Understanding Costs
+## بهینه‌سازی هزینه
 
-Use this calculator to estimate your API costs across different models:
+در مقیاس بزرگ، صرفه‌جویی‌های کوچک به تأثیر بودجه‌ای قابل توجه تبدیل می‌شوند.
+
+### درک هزینه‌ها
+
+از این ماشین‌حساب برای تخمین هزینه‌های API خود در مدل‌های مختلف استفاده کنید:
 
 <CostCalculatorDemo />
 
-### Cost Reduction Strategies
+### راهبردهای کاهش هزینه
 
 <InfoGrid items={[
-  { label: "Model Routing", description: "Use expensive models only when needed", example: "Simple questions → GPT-4o-mini, Complex → GPT-4", exampleType: "text", color: "green" },
-  { label: "Prompt Efficiency", description: "Shorter prompts = lower cost per request", example: "Cut 50% of tokens = 50% input cost savings", exampleType: "text", color: "green" },
-  { label: "Output Control", description: "Limit response length when full detail isn't needed", example: "\"Answer in 2-3 sentences\" vs. unlimited", color: "green" },
-  { label: "Batching", description: "Combine related queries into single requests", example: "Analyze 10 items in one prompt vs. 10 separate calls", exampleType: "text", color: "green" },
-  { label: "Pre-filtering", description: "Don't send requests that don't need AI", example: "Keyword matching before expensive classification", exampleType: "text", color: "green" }
+  { label: "مسیریابی مدل", description: "فقط در صورت نیاز از مدل‌های گران استفاده کنید", example: "سؤالات ساده → GPT-4o-mini، پیچیده → GPT-4", exampleType: "text", color: "green" },
+  { label: "بهره‌وری پرامپت", description: "پرامپت‌های کوتاه‌تر = هزینه کمتر در هر درخواست", example: "کاهش ۵۰٪ توکن = ۵۰٪ صرفه‌جویی در هزینه ورودی", exampleType: "text", color: "green" },
+  { label: "کنترل خروجی", description: "طول پاسخ را محدود کنید وقتی جزئیات کامل لازم نیست", example: "\"Answer in 2-3 sentences\" در مقابل نامحدود", color: "green" },
+  { label: "دسته‌بندی", description: "کوئری‌های مرتبط را در درخواست‌های تکی ترکیب کنید", example: "تحلیل ۱۰ مورد در یک پرامپت در مقابل ۱۰ فراخوانی جداگانه", exampleType: "text", color: "green" },
+  { label: "پیش‌فیلتر کردن", description: "درخواست‌هایی که نیاز به AI ندارند را ارسال نکنید", example: "تطبیق کلمات کلیدی قبل از طبقه‌بندی گران", exampleType: "text", color: "green" }
 ]} />
 
-## The Optimization Loop
+## حلقه بهینه‌سازی
 
-Optimization is iterative. Here's a systematic process:
+بهینه‌سازی تکراری است. در اینجا یک فرآیند سیستماتیک آمده است:
 
-### Step 1: Establish Baseline
+### مرحله ۱: ایجاد خط پایه
 
-You can't improve what you don't measure. Before changing anything, document your starting point rigorously.
+نمی‌توانید چیزی را که اندازه‌گیری نمی‌کنید بهبود دهید. قبل از تغییر هر چیزی، نقطه شروع خود را به دقت مستند کنید.
 
 <InfoGrid items={[
-  { label: "Prompt Documentation", description: "Save the exact prompt text, including system prompts and any templates", example: "Version control your prompts like code", exampleType: "text", color: "blue" },
-  { label: "Test Set", description: "Create 20-50 representative inputs that cover common cases and edge cases", example: "Include easy, medium, and hard examples", exampleType: "text", color: "blue" },
-  { label: "Quality Metrics", description: "Score each output against your success criteria", example: "Accuracy %, relevance score, format compliance", exampleType: "text", color: "purple" },
-  { label: "Performance Metrics", description: "Measure tokens and timing for each test case", example: "Avg input: 450 tokens, Avg output: 200 tokens, p50 latency: 1.2s", exampleType: "text", color: "purple" }
+  { label: "مستندسازی پرامپت", description: "متن دقیق پرامپت را ذخیره کنید، شامل system prompt ها و هر قالبی", example: "پرامپت‌های خود را مانند کد نسخه‌بندی کنید", exampleType: "text", color: "blue" },
+  { label: "مجموعه تست", description: "۲۰-۵۰ ورودی نمایانگر ایجاد کنید که موارد رایج و لبه‌ای را پوشش دهند", example: "شامل مثال‌های آسان، متوسط و سخت", exampleType: "text", color: "blue" },
+  { label: "معیارهای کیفیت", description: "هر خروجی را در برابر معیارهای موفقیت خود امتیازدهی کنید", example: "درصد دقت، امتیاز مرتبط بودن، انطباق با فرمت", exampleType: "text", color: "purple" },
+  { label: "معیارهای عملکرد", description: "توکن‌ها و زمان‌بندی را برای هر مورد تست اندازه‌گیری کنید", example: "میانگین ورودی: ۴۵۰ توکن، میانگین خروجی: ۲۰۰ توکن، تأخیر p50: 1.2s", exampleType: "text", color: "purple" }
 ]} />
 
 <TryIt 
-  title="Baseline Documentation Template"
-  description="Use this to create a comprehensive baseline before optimizing."
+  title="قالب مستندسازی خط پایه"
+  description="از این برای ایجاد یک مستند خط پایه جامع قبل از بهینه‌سازی استفاده کنید."
   prompt={`Create a baseline documentation for my prompt optimization project.
 
 **Current prompt**:
@@ -221,49 +221,49 @@ Generate a baseline documentation template with:
 5. **Success Criteria**: What numbers would make me satisfied with optimization?`}
 />
 
-### Step 2: Form a Hypothesis
+### مرحله ۲: تشکیل یک فرضیه
 
 <Compare 
-  before={{ label: "Vague goal", content: "I want to make my prompt better." }}
-  after={{ label: "Testable hypothesis", content: "If I add 2 few-shot examples, accuracy will improve from 75% to 85% because the model will learn the expected pattern." }}
+  before={{ label: "هدف مبهم", content: "می‌خواهم پرامپتم را بهتر کنم." }}
+  after={{ label: "فرضیه قابل آزمون", content: "اگر ۲ مثال few-shot اضافه کنم، دقت از ۷۵٪ به ۸۵٪ بهبود می‌یابد زیرا مدل الگوی مورد انتظار را یاد می‌گیرد." }}
 />
 
-### Step 3: Test One Change
+### مرحله ۳: یک تغییر را آزمایش کنید
 
-Change one thing at a time. Run both versions on the same test inputs. Measure the metrics that matter.
+هر بار یک چیز را تغییر دهید. هر دو نسخه را روی همان ورودی‌های تست اجرا کنید. معیارهایی که اهمیت دارند را اندازه‌گیری کنید.
 
-### Step 4: Analyze and Decide
+### مرحله ۴: تحلیل و تصمیم‌گیری
 
-Did it work? Keep the change. Did it hurt? Revert. Was it neutral? Revert (simpler is better).
+آیا کار کرد؟ تغییر را نگه دارید. آیا آسیب رساند؟ برگردانید. آیا خنثی بود؟ برگردانید (ساده‌تر بهتر است).
 
-### Step 5: Repeat
+### مرحله ۵: تکرار کنید
 
-Generate new hypotheses based on what you learned. Keep iterating until you hit your targets or reach diminishing returns.
+بر اساس آنچه آموختید فرضیه‌های جدید تولید کنید. به تکرار ادامه دهید تا به اهداف خود برسید یا به بازده نزولی برسید.
 
-## Optimization Checklist
+## چک‌لیست بهینه‌سازی
 
 <Checklist 
-  title="Before Deploying an Optimized Prompt"
+  title="قبل از استقرار یک پرامپت بهینه‌شده"
   items={[
-    { text: "Defined clear success metrics" },
-    { text: "Measured baseline performance" },
-    { text: "Tested changes on representative inputs" },
-    { text: "Verified quality didn't regress" },
-    { text: "Checked edge case handling" },
-    { text: "Calculated cost at expected scale" },
-    { text: "Tested latency under load" },
-    { text: "Documented what changed and why" }
+    { text: "معیارهای موفقیت واضح تعریف شده" },
+    { text: "عملکرد خط پایه اندازه‌گیری شده" },
+    { text: "تغییرات روی ورودی‌های نمایانگر آزمایش شده" },
+    { text: "تأیید شده که کیفیت کاهش نیافته" },
+    { text: "مدیریت موارد لبه‌ای بررسی شده" },
+    { text: "هزینه در مقیاس مورد انتظار محاسبه شده" },
+    { text: "تأخیر تحت بار آزمایش شده" },
+    { text: "آنچه تغییر کرد و چرا مستند شده" }
   ]}
 />
 
 <Quiz 
-  question="You have a prompt that works well but costs too much at scale. What's the FIRST thing you should do?"
+  question="شما یک پرامپت دارید که خوب کار می‌کند اما در مقیاس بزرگ هزینه زیادی دارد. اولین کاری که باید انجام دهید چیست؟"
   options={[
-    "Switch to a cheaper model immediately",
-    "Remove words from the prompt to reduce tokens",
-    "Measure which part of the prompt is using the most tokens",
-    "Add caching for all requests"
+    "فوراً به یک مدل ارزان‌تر تغییر دهید",
+    "کلمات را از پرامپت حذف کنید تا توکن‌ها کاهش یابند",
+    "اندازه‌گیری کنید کدام بخش پرامپت بیشترین توکن را استفاده می‌کند",
+    "کش را برای همه درخواست‌ها اضافه کنید"
   ]}
   correctIndex={2}
-  explanation="Before optimizing, measure. You need to understand where the tokens are going before you can effectively reduce them. The prompt might have unnecessary context, verbose instructions, or generate longer outputs than needed. Measurement tells you where to focus your optimization efforts."
+  explanation="قبل از بهینه‌سازی، اندازه‌گیری کنید. باید بفهمید توکن‌ها کجا می‌روند قبل از اینکه بتوانید به طور مؤثر آنها را کاهش دهید. پرامپت ممکن است زمینه غیرضروری، دستورالعمل‌های پرگو داشته باشد، یا خروجی‌های طولانی‌تر از حد نیاز تولید کند. اندازه‌گیری به شما می‌گوید تلاش‌های بهینه‌سازی خود را کجا متمرکز کنید."
 />

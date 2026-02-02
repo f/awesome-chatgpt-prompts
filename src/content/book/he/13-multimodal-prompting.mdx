@@ -1,173 +1,173 @@
-For most of history, computers worked with one type of data at a time: text in one program, images in another, audio somewhere else. But humans don't experience the world this way. We see, hear, read, and speak simultaneously, combining all these inputs to understand our environment.
+במשך רוב ההיסטוריה, מחשבים עבדו עם סוג אחד של נתונים בכל פעם: טקסט בתוכנית אחת, תמונות באחרת, שמע במקום אחר. אך בני אדם לא חווים את העולם כך. אנחנו רואים, שומעים, קוראים ומדברים בו-זמנית, משלבים את כל הקלטים האלה כדי להבין את הסביבה שלנו.
 
-**Multimodal AI** changes everything. These models can process multiple types of information together—analyzing an image while reading your question about it, or generating images from your text descriptions. This chapter teaches you how to communicate effectively with these powerful systems.
+**בינה מלאכותית רב-מודאלית** משנה הכל. מודלים אלה יכולים לעבד מספר סוגי מידע יחד—לנתח תמונה תוך כדי קריאת השאלה שלך עליה, או ליצור תמונות מתיאורי הטקסט שלך. פרק זה מלמד אותך כיצד לתקשר ביעילות עם מערכות חזקות אלה.
 
-<Callout type="info" title="What Does Multimodal Mean?">
-"Multi" means many, and "modal" refers to modes or types of data. A multimodal model can work with multiple modalities: text, images, audio, video, or even code. Instead of separate tools for each type, one model understands them all together.
+<Callout type="info" title="מה המשמעות של רב-מודאלי?">
+"רב" פירושו הרבה, ו"מודאלי" מתייחס למצבים או סוגי נתונים. מודל רב-מודאלי יכול לעבוד עם מודאליות מרובות: טקסט, תמונות, שמע, וידאו, או אפילו קוד. במקום כלים נפרדים לכל סוג, מודל אחד מבין את כולם יחד.
 </Callout>
 
-## Why Multimodal Matters
+## מדוע רב-מודאליות חשובה
 
-Traditional AI required you to describe everything in words. Want to ask about an image? You'd have to describe it first. Want to analyze a document? You'd need to transcribe it manually. Multimodal models eliminate these barriers.
+בינה מלאכותית מסורתית דרשה ממך לתאר הכל במילים. רוצה לשאול על תמונה? היית צריך לתאר אותה קודם. רוצה לנתח מסמך? היית צריך לתמלל אותו ידנית. מודלים רב-מודאליים מסירים את המחסומים האלה.
 
 <InfoGrid items={[
-  { label: "See and Understand", description: "Upload an image and ask questions about it directly—no description needed", example: "\"What's wrong with this circuit diagram?\"", color: "blue" },
-  { label: "Create from Words", description: "Describe what you want and generate images, audio, or video", example: "\"A sunset over mountains in watercolor style\"", color: "purple" },
-  { label: "Combine Everything", description: "Mix text, images, and other media in a single conversation", example: "\"Compare these two designs and tell me which is better for mobile\"", color: "green" },
-  { label: "Analyze Documents", description: "Extract information from photos of documents, receipts, or screenshots", example: "\"Extract all the line items from this invoice photo\"", color: "amber" }
+  { label: "לראות ולהבין", description: "העלה תמונה ושאל שאלות עליה ישירות—ללא צורך בתיאור", example: "\"מה הבעיה בתרשים המעגל הזה?\"", color: "blue" },
+  { label: "ליצור ממילים", description: "תאר מה שאתה רוצה וצור תמונות, שמע או וידאו", example: "\"שקיעה מעל הרים בסגנון צבעי מים\"", color: "purple" },
+  { label: "לשלב הכל", description: "ערבב טקסט, תמונות ומדיה אחרת בשיחה אחת", example: "\"השווה בין שני העיצובים האלה ואמור לי איזה טוב יותר למובייל\"", color: "green" },
+  { label: "לנתח מסמכים", description: "חלץ מידע מתמונות של מסמכים, קבלות או צילומי מסך", example: "\"חלץ את כל פריטי השורה מתמונת החשבונית הזו\"", color: "amber" }
 ]} />
 
-## Why Prompting Matters Even More for Multimodal
+## מדוע הנחיות חשובות אף יותר עבור רב-מודאליות
 
-With text-only models, the AI receives exactly what you type. But with multimodal models, the AI must interpret visual or audio information—and interpretation requires guidance.
+עם מודלים של טקסט בלבד, הבינה המלאכותית מקבלת בדיוק את מה שאתה מקליד. אך עם מודלים רב-מודאליים, הבינה המלאכותית חייבת לפרש מידע חזותי או קולי—ופרשנות דורשת הדרכה.
 
 <Compare 
-  before={{ label: "Vague multimodal prompt", content: "What do you see in this image?\n\n[image of a complex dashboard]" }}
-  after={{ label: "Guided multimodal prompt", content: "This is a screenshot of our analytics dashboard. Focus on:\n1. The conversion rate graph in the top-right\n2. Any error indicators or warnings\n3. Whether the data looks normal or anomalous\n\n[image of a complex dashboard]" }}
+  before={{ label: "הנחיה רב-מודאלית מעורפלת", content: "מה אתה רואה בתמונה הזו?\n\n[תמונה של לוח בקרה מורכב]" }}
+  after={{ label: "הנחיה רב-מודאלית מכוונת", content: "זהו צילום מסך של לוח הבקרה האנליטי שלנו. התמקד ב:\n1. גרף שיעור ההמרה בפינה הימנית העליונה\n2. כל אינדיקטורים של שגיאות או אזהרות\n3. האם הנתונים נראים תקינים או חריגים\n\n[תמונה של לוח בקרה מורכב]" }}
 />
 
-**Without guidance**, the model might describe colors, layout, or irrelevant details. **With guidance**, it focuses on what actually matters to you.
+**ללא הדרכה**, המודל עלול לתאר צבעים, פריסה, או פרטים לא רלוונטיים. **עם הדרכה**, הוא מתמקד במה שבאמת חשוב לך.
 
-<Callout type="warning" title="The Interpretation Gap">
-When you look at an image, you instantly know what's important based on your context and goals. The AI doesn't have this context unless you provide it. A photo of a crack in a wall could be: a structural engineering concern, an artistic texture, or irrelevant background. Your prompt determines how the AI interprets it.
+<Callout type="warning" title="פער הפרשנות">
+כשאתה מסתכל על תמונה, אתה יודע מיד מה חשוב בהתבסס על ההקשר והמטרות שלך. לבינה המלאכותית אין הקשר זה אלא אם אתה מספק אותו. תמונה של סדק בקיר יכולה להיות: דאגה להנדסת מבנים, טקסטורה אמנותית, או רקע לא רלוונטי. ההנחיה שלך קובעת כיצד הבינה המלאכותית מפרשת אותה.
 </Callout>
 
-## The Multimodal Landscape
+## הנוף הרב-מודאלי
 
-Different models have different capabilities. Here's what's available in 2025:
+למודלים שונים יש יכולות שונות. הנה מה שזמין ב-2025:
 
-### Understanding Models (Input → Analysis)
+### מודלים להבנה (קלט → ניתוח)
 
-These models accept various media types and produce text analysis or responses.
-
-<InfoGrid items={[
-  { label: "GPT-4o / GPT-5", description: "Text + Images + Audio → Text. OpenAI's flagship with 128K context, strong creative and reasoning abilities, reduced hallucination rates.", color: "green" },
-  { label: "Claude 4 Sonnet/Opus", description: "Text + Images → Text. Anthropic's safety-focused model with advanced reasoning, excellent for coding and complex multi-step tasks.", color: "purple" },
-  { label: "Gemini 2.5", description: "Text + Images + Audio + Video → Text. Google's model with 1M token context, self-fact-checking, fast processing for coding and research.", color: "blue" },
-  { label: "LLaMA 4 Scout", description: "Text + Images + Video → Text. Meta's open-source model with massive 10M token context for long documents and codebases.", color: "cyan" },
-  { label: "Grok 4", description: "Text + Images → Text. xAI's model with real-time data access and social media integration for up-to-date responses.", color: "red" }
-]} />
-
-### Generation Models (Text → Media)
-
-These models create images, audio, or video from text descriptions.
+מודלים אלה מקבלים סוגי מדיה שונים ומייצרים ניתוח טקסטואלי או תגובות.
 
 <InfoGrid items={[
-  { label: "DALL-E 3", description: "Text → Images. OpenAI's image generator with high accuracy to prompt descriptions.", color: "amber" },
-  { label: "Midjourney", description: "Text + Images → Images. Known for artistic quality, style control, and aesthetic outputs.", color: "pink" },
-  { label: "Sora", description: "Text → Video. OpenAI's video generation model for creating clips from descriptions.", color: "red" },
-  { label: "Whisper", description: "Audio → Text. OpenAI's speech-to-text with high accuracy across languages.", color: "cyan" }
+  { label: "GPT-4o / GPT-5", description: "טקסט + תמונות + שמע → טקסט. דגל הדגל של OpenAI עם הקשר של 128K, יכולות יצירתיות וחשיבה חזקות, שיעורי הזיות מופחתים.", color: "green" },
+  { label: "Claude 4 Sonnet/Opus", description: "טקסט + תמונות → טקסט. המודל של Anthropic הממוקד בבטיחות עם חשיבה מתקדמת, מצוין לתכנות ומשימות רב-שלביות מורכבות.", color: "purple" },
+  { label: "Gemini 2.5", description: "טקסט + תמונות + שמע + וידאו → טקסט. המודל של Google עם הקשר של 1M טוקנים, בדיקת עובדות עצמית, עיבוד מהיר לתכנות ומחקר.", color: "blue" },
+  { label: "LLaMA 4 Scout", description: "טקסט + תמונות + וידאו → טקסט. המודל הפתוח של Meta עם הקשר עצום של 10M טוקנים למסמכים ארוכים ובסיסי קוד.", color: "cyan" },
+  { label: "Grok 4", description: "טקסט + תמונות → טקסט. המודל של xAI עם גישה לנתונים בזמן אמת ואינטגרציה עם רשתות חברתיות לתגובות עדכניות.", color: "red" }
 ]} />
 
-<Callout type="info" title="Rapid Evolution">
-The multimodal landscape changes quickly. New models launch frequently, and existing models gain capabilities through updates. Always check the latest documentation for current features and limitations.
+### מודלים ליצירה (טקסט → מדיה)
+
+מודלים אלה יוצרים תמונות, שמע או וידאו מתיאורי טקסט.
+
+<InfoGrid items={[
+  { label: "DALL-E 3", description: "טקסט → תמונות. מחולל התמונות של OpenAI עם דיוק גבוה לתיאורי ההנחיות.", color: "amber" },
+  { label: "Midjourney", description: "טקסט + תמונות → תמונות. ידוע באיכות אמנותית, שליטה בסגנון ותוצרים אסתטיים.", color: "pink" },
+  { label: "Sora", description: "טקסט → וידאו. מודל יצירת הווידאו של OpenAI ליצירת קליפים מתיאורים.", color: "red" },
+  { label: "Whisper", description: "שמע → טקסט. תמלול דיבור לטקסט של OpenAI עם דיוק גבוה במגוון שפות.", color: "cyan" }
+]} />
+
+<Callout type="info" title="התפתחות מהירה">
+הנוף הרב-מודאלי משתנה במהירות. מודלים חדשים מושקים לעתים קרובות, ומודלים קיימים רוכשים יכולות באמצעות עדכונים. תמיד בדוק את התיעוד העדכני ביותר עבור תכונות ומגבלות נוכחיות.
 </Callout>
 
-## Image Understanding Prompts
+## הנחיות להבנת תמונות
 
-The most common multimodal use case is asking AI to analyze images. The key is providing context about what you need.
+מקרה השימוש הרב-מודאלי הנפוץ ביותר הוא לבקש מבינה מלאכותית לנתח תמונות. המפתח הוא לספק הקשר על מה שאתה צריך.
 
-### Basic Image Analysis
+### ניתוח תמונה בסיסי
 
-Start with a clear request structure. Tell the model what aspects to focus on.
+התחל עם מבנה בקשה ברור. אמור למודל על אילו היבטים להתמקד.
 
 <TryIt 
-  title="Structured Image Analysis"
-  description="This prompt provides a clear framework for image analysis. The model knows exactly what information you need."
-  prompt={`Analyze this image and describe:
+  title="ניתוח תמונה מובנה"
+  description="הנחיה זו מספקת מסגרת ברורה לניתוח תמונות. המודל יודע בדיוק איזה מידע אתה צריך."
+  prompt={`נתח את התמונה הזו ותאר:
 
-1. **Main Subject**: What is the primary focus of this image?
-2. **Setting**: Where does this appear to be? (indoor/outdoor, location type)
-3. **Mood**: What emotional tone or atmosphere does it convey?
-4. **Text Content**: Any visible text, signs, or labels?
-5. **Notable Details**: What might someone miss at first glance?
-6. **Technical Quality**: How is the lighting, focus, and composition?
+1. **נושא מרכזי**: מהו המוקד העיקרי של תמונה זו?
+2. **הגדרה**: איפה זה נראה שקורה? (פנים/חוץ, סוג מיקום)
+3. **מצב רוח**: איזה טון רגשי או אווירה היא משדרת?
+4. **תוכן טקסטואלי**: האם יש טקסט גלוי, שלטים או תוויות?
+5. **פרטים בולטים**: מה מישהו עלול לפספס במבט ראשון?
+6. **איכות טכנית**: מה מצב התאורה, המיקוד והקומפוזיציה?
 
-[Paste or describe the image you want to analyze]
+[הדבק או תאר את התמונה שברצונך לנתח]
 
-Image description or URL: \${imageDescription}`}
+תיאור תמונה או URL: \${imageDescription}`}
 />
 
-### Structured Output for Images
+### פלט מובנה לתמונות
 
-When you need to process image analysis programmatically, request JSON output.
+כשאתה צריך לעבד ניתוח תמונה באופן תוכניתי, בקש פלט JSON.
 
 <TryIt 
-  title="JSON Image Analysis"
-  description="Get structured data from image analysis that's easy to parse and use in applications."
-  prompt={`Analyze this image and return a JSON object with the following structure:
+  title="ניתוח תמונה ב-JSON"
+  description="קבל נתונים מובנים מניתוח תמונות שקל לפרסר ולהשתמש בהם באפליקציות."
+  prompt={`נתח את התמונה הזו והחזר אובייקט JSON עם המבנה הבא:
 
 {
-  "summary": "One sentence description",
-  "objects": ["List of main objects visible"],
+  "summary": "תיאור במשפט אחד",
+  "objects": ["רשימת אובייקטים עיקריים גלויים"],
   "people": {
-    "count": "number or 'none'",
-    "activities": ["What they're doing, if any"]
+    "count": "מספר או 'אין'",
+    "activities": ["מה הם עושים, אם בכלל"]
   },
-  "text_detected": ["Any text visible in the image"],
+  "text_detected": ["כל טקסט גלוי בתמונה"],
   "colors": {
-    "dominant": ["Top 3 colors"],
-    "mood": "Warm/Cool/Neutral"
+    "dominant": ["3 הצבעים המובילים"],
+    "mood": "חם/קר/ניטרלי"
   },
   "setting": {
-    "type": "indoor/outdoor/unknown",
-    "description": "More specific location description"
+    "type": "פנים/חוץ/לא ידוע",
+    "description": "תיאור מיקום ספציפי יותר"
   },
   "technical": {
-    "quality": "high/medium/low",
-    "lighting": "Description of lighting",
-    "composition": "Description of framing/composition"
+    "quality": "גבוה/בינוני/נמוך",
+    "lighting": "תיאור התאורה",
+    "composition": "תיאור המסגור/קומפוזיציה"
   },
-  "confidence": "high/medium/low"
+  "confidence": "גבוה/בינוני/נמוך"
 }
 
-Image to analyze: \${imageDescription}`}
+תמונה לניתוח: \${imageDescription}`}
 />
 
-### Comparative Analysis
+### ניתוח השוואתי
 
-Comparing multiple images requires clear labeling and specific comparison criteria.
+השוואת מספר תמונות דורשת תיוג ברור וקריטריונים ספציפיים להשוואה.
 
 <TryIt 
-  title="Image Comparison"
-  description="Compare two or more images with specific criteria that matter to your decision."
-  prompt={`Compare these images for \${purpose}:
+  title="השוואת תמונות"
+  description="השווה בין שתי תמונות או יותר עם קריטריונים ספציפיים שחשובים להחלטה שלך."
+  prompt={`השווה בין התמונות האלה עבור \${purpose}:
 
-**Image A**: \${imageA}
-**Image B**: \${imageB}
+**תמונה A**: \${imageA}
+**תמונה B**: \${imageB}
 
-Analyze each image on these criteria:
-1. \${criterion1} (importance: high)
-2. \${criterion2} (importance: medium)  
-3. \${criterion3} (importance: low)
+נתח כל תמונה לפי הקריטריונים האלה:
+1. \${criterion1} (חשיבות: גבוהה)
+2. \${criterion2} (חשיבות: בינונית)  
+3. \${criterion3} (חשיבות: נמוכה)
 
-Provide:
-- Side-by-side comparison for each criterion
-- Strengths and weaknesses of each
-- Clear recommendation with reasoning
-- Any concerns or caveats`}
+ספק:
+- השוואה זה לצד זה לכל קריטריון
+- חוזקות וחולשות של כל אחת
+- המלצה ברורה עם נימוק
+- כל חששות או הסתייגויות`}
 />
 
-## Document and Screenshot Analysis
+## ניתוח מסמכים וצילומי מסך
 
-One of the most practical applications of multimodal AI is analyzing documents, screenshots, and UI elements. This saves hours of manual transcription and review.
+אחד היישומים המעשיים ביותר של בינה מלאכותית רב-מודאלית הוא ניתוח מסמכים, צילומי מסך ורכיבי ממשק משתמש. זה חוסך שעות של תמלול וסקירה ידניים.
 
-### Document Extraction
+### חילוץ מסמכים
 
-Scanned documents, photos of receipts, and PDFs as images can all be processed. The key is telling the model what type of document it is and what information you need.
+מסמכים סרוקים, תמונות של קבלות ו-PDF כתמונות יכולים כולם להיות מעובדים. המפתח הוא לספר למודל איזה סוג מסמך זה ואיזה מידע אתה צריך.
 
 <TryIt 
-  title="Document Data Extractor"
-  description="Extract structured data from photos of documents, receipts, invoices, or forms."
-  prompt={`This is a photo/scan of a \${documentType}.
+  title="מחלץ נתוני מסמכים"
+  description="חלץ נתונים מובנים מתמונות של מסמכים, קבלות, חשבוניות או טפסים."
+  prompt={`זו תמונה/סריקה של \${documentType}.
 
-Extract all information into structured JSON format:
+חלץ את כל המידע לפורמט JSON מובנה:
 
 {
-  "document_type": "detected type",
-  "date": "if present",
+  "document_type": "סוג שזוהה",
+  "date": "אם קיים",
   "key_fields": {
-    "field_name": "value"
+    "שם_שדה": "ערך"
   },
   "line_items": [
     {"description": "", "amount": ""}
@@ -177,489 +177,489 @@ Extract all information into structured JSON format:
     "tax": "",
     "total": ""
   },
-  "handwritten_notes": ["any handwritten text"],
-  "unclear_sections": ["areas that were hard to read"],
-  "confidence": "high/medium/low"
+  "handwritten_notes": ["כל טקסט בכתב יד"],
+  "unclear_sections": ["אזורים שהיה קשה לקרוא"],
+  "confidence": "גבוה/בינוני/נמוך"
 }
 
-IMPORTANT: If any text is unclear, note it in "unclear_sections" rather than guessing. Mark confidence as "low" if significant portions were hard to read.
+חשוב: אם טקסט כלשהו לא ברור, ציין זאת ב-"unclear_sections" במקום לנחש. סמן ביטחון כ-"נמוך" אם חלקים משמעותיים היו קשים לקריאה.
 
-Document description: \${documentDescription}`}
+תיאור מסמך: \${documentDescription}`}
 />
 
-### Screenshot and UI Analysis
+### ניתוח צילומי מסך וממשק משתמש
 
-Screenshots are goldmines for debugging, UX review, and documentation. Guide the AI to focus on what matters.
+צילומי מסך הם מכרה זהב לניפוי באגים, סקירת UX ותיעוד. הדרך את הבינה המלאכותית להתמקד במה שחשוב.
 
 <TryIt 
-  title="UI/UX Screenshot Analyzer"
-  description="Get detailed analysis of screenshots for debugging, UX review, or documentation."
-  prompt={`This is a screenshot of \${applicationName}.
+  title="מנתח צילומי מסך UI/UX"
+  description="קבל ניתוח מפורט של צילומי מסך לניפוי באגים, סקירת UX או תיעוד."
+  prompt={`זהו צילום מסך של \${applicationName}.
 
-Analyze this interface:
+נתח את הממשק הזה:
 
-**Identification**
-- What screen/page/state is this?
-- What is the user likely trying to accomplish here?
+**זיהוי**
+- איזה מסך/עמוד/מצב זה?
+- מה המשתמש כנראה מנסה להשיג כאן?
 
-**UI Elements**
-- Key interactive elements (buttons, forms, menus)
-- Current state (anything selected, filled in, or expanded?)
-- Any error messages, warnings, or notifications?
+**רכיבי ממשק**
+- רכיבים אינטראקטיביים מרכזיים (כפתורים, טפסים, תפריטים)
+- מצב נוכחי (האם משהו נבחר, מולא, או מורחב?)
+- האם יש הודעות שגיאה, אזהרות או התראות?
 
-**UX Assessment**
-- Is the layout clear and intuitive?
-- Any confusing elements or unclear labels?
-- Accessibility concerns (contrast, text size, etc.)?
+**הערכת UX**
+- האם הפריסה ברורה ואינטואיטיבית?
+- האם יש רכיבים מבלבלים או תוויות לא ברורות?
+- חששות נגישות (ניגודיות, גודל טקסט וכו')?
 
-**Issues Detected**
-- Visual bugs or misalignments?
-- Truncated text or overflow issues?
-- Inconsistent styling?
+**בעיות שזוהו**
+- באגים חזותיים או חוסר יישור?
+- טקסט חתוך או בעיות גלישה?
+- עיצוב לא עקבי?
 
-Screenshot description: \${screenshotDescription}`}
+תיאור צילום מסך: \${screenshotDescription}`}
 />
 
-### Error Message Analysis
+### ניתוח הודעות שגיאה
 
-When you encounter an error, a screenshot often contains more context than copying the error text alone.
+כשאתה נתקל בשגיאה, צילום מסך לעתים קרובות מכיל יותר הקשר מאשר העתקת טקסט השגיאה בלבד.
 
 <TryIt 
-  title="Error Diagnosis from Screenshot"
-  description="Get plain-language explanations and fixes for error messages in screenshots."
-  prompt={`I'm seeing this error in \${context}.
+  title="אבחון שגיאה מצילום מסך"
+  description="קבל הסברים בשפה פשוטה ותיקונים להודעות שגיאה בצילומי מסך."
+  prompt={`אני רואה את השגיאה הזו ב-\${context}.
 
-[Describe or paste the error message/screenshot]
-Error details: \${errorDetails}
+[תאר או הדבק את הודעת השגיאה/צילום מסך]
+פרטי שגיאה: \${errorDetails}
 
-Please provide:
+אנא ספק:
 
-1. **Plain Language Explanation**: What does this error actually mean?
+1. **הסבר בשפה פשוטה**: מה השגיאה הזו באמת אומרת?
 
-2. **Likely Causes** (ranked by probability):
-   - Most likely: 
-   - Also possible:
-   - Less common:
+2. **סיבות אפשריות** (מדורגות לפי הסתברות):
+   - סביר ביותר: 
+   - גם אפשרי:
+   - פחות נפוץ:
 
-3. **Step-by-Step Fix**:
-   - First, try...
-   - If that doesn't work...
-   - As a last resort...
+3. **תיקון צעד אחר צעד**:
+   - קודם, נסה...
+   - אם זה לא עובד...
+   - כמוצא אחרון...
 
-4. **Prevention**: How to avoid this error in the future
+4. **מניעה**: כיצד להימנע משגיאה זו בעתיד
 
-5. **Red Flags**: When this error might indicate a more serious problem`}
+5. **דגלים אדומים**: מתי שגיאה זו עלולה להצביע על בעיה חמורה יותר`}
 />
 
-## Image Generation Prompts
+## הנחיות ליצירת תמונות
 
-Generating images from text descriptions is an art form. The more specific and structured your prompt, the closer the result will match your vision.
+יצירת תמונות מתיאורי טקסט היא צורת אמנות. ככל שההנחיה שלך ספציפית ומובנית יותר, כך התוצאה תתאים יותר לחזון שלך.
 
-### The Anatomy of an Image Prompt
+### האנטומיה של הנחיית תמונה
 
-Effective image generation prompts have several components:
+להנחיות יצירת תמונות יעילות יש מספר רכיבים:
 
 <InfoGrid items={[
-  { label: "Subject", description: "What is the main focus of the image?", example: "A golden retriever playing in autumn leaves", color: "blue" },
-  { label: "Style", description: "What artistic style or medium?", example: "Watercolor painting, digital art, photorealistic", color: "purple" },
-  { label: "Composition", description: "How is the scene arranged?", example: "Close-up portrait, wide landscape, bird's eye view", color: "green" },
-  { label: "Lighting", description: "What's the light source and quality?", example: "Soft morning light, dramatic shadows, neon glow", color: "amber" },
-  { label: "Mood", description: "What feeling should it evoke?", example: "Peaceful, energetic, mysterious, nostalgic", color: "pink" },
-  { label: "Details", description: "Specific elements to include or avoid", example: "Include: flowers. Avoid: text, watermarks", color: "cyan" }
+  { label: "נושא", description: "מהו המוקד העיקרי של התמונה?", example: "גולדן רטריבר משחק בעלי סתיו", color: "blue" },
+  { label: "סגנון", description: "איזה סגנון אמנותי או מדיום?", example: "ציור בצבעי מים, אמנות דיגיטלית, פוטוריאליסטי", color: "purple" },
+  { label: "קומפוזיציה", description: "כיצד הסצנה מסודרת?", example: "תקריב פורטרט, נוף רחב, מבט ממעוף הציפור", color: "green" },
+  { label: "תאורה", description: "מהו מקור האור ואיכותו?", example: "אור בוקר רך, צללים דרמטיים, זוהר ניאון", color: "amber" },
+  { label: "מצב רוח", description: "איזו תחושה היא צריכה לעורר?", example: "שלווה, אנרגטי, מסתורי, נוסטלגי", color: "pink" },
+  { label: "פרטים", description: "אלמנטים ספציפיים לכלול או להימנע", example: "לכלול: פרחים. להימנע: טקסט, סימני מים", color: "cyan" }
 ]} />
 
-### Basic Image Generation
+### יצירת תמונה בסיסית
 
 <TryIt 
-  title="Structured Image Prompt"
-  description="Use this template to create detailed, specific image generation prompts."
-  prompt={`Create an image with these specifications:
+  title="הנחיית תמונה מובנית"
+  description="השתמש בתבנית זו ליצירת הנחיות יצירת תמונה מפורטות וספציפיות."
+  prompt={`צור תמונה עם המפרטים האלה:
 
-**Subject**: \${subject}
+**נושא**: \${subject}
 
-**Style**: \${style}
-**Medium**: \${medium} (e.g., oil painting, digital art, photograph)
+**סגנון**: \${style}
+**מדיום**: \${medium} (למשל, ציור שמן, אמנות דיגיטלית, צילום)
 
-**Composition**:
-- Framing: \${framing} (close-up, medium shot, wide angle)
-- Perspective: \${perspective} (eye level, low angle, overhead)
-- Focus: \${focusArea}
+**קומפוזיציה**:
+- מסגור: \${framing} (תקריב, צילום בינוני, זווית רחבה)
+- פרספקטיבה: \${perspective} (גובה עיניים, זווית נמוכה, מלמעלה)
+- מוקד: \${focusArea}
 
-**Lighting**:
-- Source: \${lightSource}
-- Quality: \${lightQuality} (soft, harsh, diffused)
-- Time of day: \${timeOfDay}
+**תאורה**:
+- מקור: \${lightSource}
+- איכות: \${lightQuality} (רכה, חדה, מפוזרת)
+- שעה ביום: \${timeOfDay}
 
-**Color Palette**: \${colors}
+**לוח צבעים**: \${colors}
 
-**Mood/Atmosphere**: \${mood}
+**מצב רוח/אווירה**: \${mood}
 
-**Must Include**: \${includeElements}
-**Must Avoid**: \${avoidElements}
+**חובה לכלול**: \${includeElements}
+**חובה להימנע**: \${avoidElements}
 
-**Technical**: \${aspectRatio} aspect ratio, high quality`}
+**טכני**: יחס גובה-רוחב \${aspectRatio}, איכות גבוהה`}
 />
 
-### Scene Building
+### בניית סצנה
 
-For complex scenes, describe layers from foreground to background.
+עבור סצנות מורכבות, תאר שכבות מהקדמה לרקע.
 
 <TryIt 
-  title="Layered Scene Description"
-  description="Build complex scenes by describing what appears in each layer of depth."
-  prompt={`Generate a detailed scene:
+  title="תיאור סצנה בשכבות"
+  description="בנה סצנות מורכבות על ידי תיאור מה מופיע בכל שכבת עומק."
+  prompt={`צור סצנה מפורטת:
 
-**Setting**: \${setting}
+**הגדרה**: \${setting}
 
-**Foreground** (closest to viewer):
+**קדמה** (הקרוב ביותר לצופה):
 \${foreground}
 
-**Middle Ground** (main action area):
+**אמצע** (אזור הפעולה העיקרי):
 \${middleGround}
 
-**Background** (distant elements):
+**רקע** (אלמנטים רחוקים):
 \${background}
 
-**Atmospheric Details**:
-- Weather/Air: \${weather}
-- Lighting: \${lighting}
-- Time: \${timeOfDay}
+**פרטים אטמוספריים**:
+- מזג אוויר/אוויר: \${weather}
+- תאורה: \${lighting}
+- זמן: \${timeOfDay}
 
-**Style**: \${artisticStyle}
-**Mood**: \${mood}
-**Color Palette**: \${colors}
+**סגנון**: \${artisticStyle}
+**מצב רוח**: \${mood}
+**לוח צבעים**: \${colors}
 
-Additional details to include: \${additionalDetails}`}
+פרטים נוספים לכלול: \${additionalDetails}`}
 />
 
-## Audio Prompting
+## הנחיות לשמע
 
-Audio processing opens up transcription, analysis, and understanding of spoken content. The key is providing context about what the audio contains.
+עיבוד שמע פותח אפשרויות לתמלול, ניתוח והבנת תוכן מדובר. המפתח הוא לספק הקשר על מה שהשמע מכיל.
 
-### Enhanced Transcription
+### תמלול משופר
 
-Basic transcription is just the start. With good prompts, you can get speaker identification, timestamps, and domain-specific accuracy.
+תמלול בסיסי הוא רק ההתחלה. עם הנחיות טובות, אתה יכול לקבל זיהוי דוברים, חותמות זמן ודיוק ספציפי לתחום.
 
 <TryIt 
-  title="Smart Transcription"
-  description="Get accurate transcriptions with speaker labels, timestamps, and handling of unclear sections."
-  prompt={`Transcribe this audio recording.
+  title="תמלול חכם"
+  description="קבל תמלולים מדויקים עם תוויות דוברים, חותמות זמן וטיפול בקטעים לא ברורים."
+  prompt={`תמלל את הקלטת השמע הזו.
 
-**Context**: \${recordingType} (meeting, interview, podcast, lecture, etc.)
-**Expected Speakers**: \${speakerCount} (\${speakerRoles})
-**Domain**: \${domain} (technical terms to expect: \${technicalTerms})
+**הקשר**: \${recordingType} (פגישה, ראיון, פודקאסט, הרצאה וכו')
+**דוברים צפויים**: \${speakerCount} (\${speakerRoles})
+**תחום**: \${domain} (מונחים טכניים צפויים: \${technicalTerms})
 
-**Output Format**:
-[00:00] **Speaker 1 (Name/Role)**: Transcribed text here.
-[00:15] **Speaker 2 (Name/Role)**: Their response here.
+**פורמט פלט**:
+[00:00] **דובר 1 (שם/תפקיד)**: טקסט מתומלל כאן.
+[00:15] **דובר 2 (שם/תפקיד)**: התגובה שלהם כאן.
 
-**Instructions**:
-- Include timestamps at natural breaks (every 30-60 seconds or at speaker changes)
-- Mark unclear sections as [inaudible] or [unclear: best guess?]
-- Note non-speech sounds in brackets: [laughter], [phone ringing], [long pause]
-- Preserve filler words only if they're meaningful (um, uh can be removed)
-- Flag any action items or decisions with → symbol
+**הוראות**:
+- כלול חותמות זמן בהפסקות טבעיות (כל 30-60 שניות או בהחלפת דוברים)
+- סמן קטעים לא ברורים כ-[לא נשמע] או [לא ברור: ניחוש הכי טוב?]
+- ציין צלילים שאינם דיבור בסוגריים: [צחוק], [טלפון מצלצל], [הפסקה ארוכה]
+- שמור מילות מילוי רק אם הן משמעותיות (אממ, אה אפשר להסיר)
+- סמן כל פריטי פעולה או החלטות עם סמל →
 
-Audio description: \${audioDescription}`}
+תיאור שמע: \${audioDescription}`}
 />
 
-### Audio Content Analysis
+### ניתוח תוכן שמע
 
-Beyond transcription, AI can analyze the content, tone, and key moments in audio.
+מעבר לתמלול, בינה מלאכותית יכולה לנתח את התוכן, הטון והרגעים המרכזיים בשמע.
 
 <TryIt 
-  title="Audio Content Analyzer"
-  description="Get a comprehensive analysis of audio content including summary, key moments, and sentiment."
-  prompt={`Analyze this audio recording:
+  title="מנתח תוכן שמע"
+  description="קבל ניתוח מקיף של תוכן שמע כולל סיכום, רגעים מרכזיים וסנטימנט."
+  prompt={`נתח את הקלטת השמע הזו:
 
-Audio description: \${audioDescription}
+תיאור שמע: \${audioDescription}
 
-Provide:
+ספק:
 
-**1. Executive Summary** (2-3 sentences)
-What is this recording about? What's the main takeaway?
+**1. סיכום מנהלים** (2-3 משפטים)
+על מה ההקלטה הזו? מהו המסר העיקרי?
 
-**2. Speakers**
-- How many distinct speakers?
-- Characteristics (if discernible): tone, speaking style, expertise level
+**2. דוברים**
+- כמה דוברים נבדלים?
+- מאפיינים (אם ניתן להבחין): טון, סגנון דיבור, רמת מומחיות
 
-**3. Content Breakdown**
-- Main topics discussed (with approximate timestamps)
-- Key points made
-- Questions raised
+**3. פירוט תוכן**
+- נושאים עיקריים שנדונו (עם חותמות זמן משוערות)
+- נקודות מרכזיות שהועלו
+- שאלות שהועלו
 
-**4. Emotional Analysis**
-- Overall tone (formal, casual, tense, friendly)
-- Notable emotional moments
-- Energy level throughout
+**4. ניתוח רגשי**
+- טון כללי (פורמלי, לא פורמלי, מתוח, ידידותי)
+- רגעים רגשיים בולטים
+- רמת אנרגיה לאורך ההקלטה
 
-**5. Actionable Items**
-- Decisions made
-- Action items mentioned
-- Follow-ups needed
+**5. פריטים פעילים**
+- החלטות שהתקבלו
+- פריטי פעולה שהוזכרו
+- מעקבים נדרשים
 
-**6. Notable Quotes**
-Pull out 2-3 significant quotes with timestamps
+**6. ציטוטים בולטים**
+הוצא 2-3 ציטוטים משמעותיים עם חותמות זמן
 
-**7. Audio Quality**
-- Overall clarity
-- Any issues (background noise, interruptions, technical problems)`}
+**7. איכות שמע**
+- בהירות כללית
+- בעיות כלשהן (רעשי רקע, הפרעות, בעיות טכניות)`}
 />
 
-## Video Prompting
+## הנחיות לווידאו
 
-Video combines visual and audio analysis over time. The challenge is guiding the AI to focus on the relevant aspects across the entire duration.
+וידאו משלב ניתוח חזותי וקולי לאורך זמן. האתגר הוא להדריך את הבינה המלאכותית להתמקד בהיבטים הרלוונטיים לאורך כל משך הזמן.
 
-### Video Understanding
+### הבנת וידאו
 
 <TryIt 
-  title="Comprehensive Video Analysis"
-  description="Get a structured breakdown of video content including timeline, visual elements, and key moments."
-  prompt={`Analyze this video: \${videoDescription}
+  title="ניתוח וידאו מקיף"
+  description="קבל פירוט מובנה של תוכן וידאו כולל ציר זמן, אלמנטים חזותיים ורגעים מרכזיים."
+  prompt={`נתח את הווידאו הזה: \${videoDescription}
 
-Provide a comprehensive analysis:
+ספק ניתוח מקיף:
 
-**1. Overview** (2-3 sentences)
-What is this video about? What's the main message or purpose?
+**1. סקירה** (2-3 משפטים)
+על מה הווידאו הזה? מהו המסר או המטרה העיקריים?
 
-**2. Timeline of Key Moments**
-| Timestamp | Event | Significance |
-|-----------|-------|--------------|
+**2. ציר זמן של רגעים מרכזיים**
+| חותמת זמן | אירוע | משמעות |
+|-----------|-------|--------|
 | 0:00 | ... | ... |
 
-**3. Visual Analysis**
-- Setting/Location: Where does this take place?
-- People: Who appears? What are they doing?
-- Objects: Key items or props featured
-- Visual style: Quality, editing, graphics used
+**3. ניתוח חזותי**
+- הגדרה/מיקום: היכן זה מתרחש?
+- אנשים: מי מופיע? מה הם עושים?
+- אובייקטים: פריטים או אביזרים מרכזיים שמוצגים
+- סגנון חזותי: איכות, עריכה, גרפיקה בשימוש
 
-**4. Audio Analysis**
-- Speech: Main points made (if any dialogue)
-- Music: Type, mood, how it's used
-- Sound effects: Notable audio elements
+**4. ניתוח שמע**
+- דיבור: נקודות עיקריות שנאמרו (אם יש דיאלוג)
+- מוזיקה: סוג, מצב רוח, כיצד היא משמשת
+- אפקטים קוליים: אלמנטי שמע בולטים
 
-**5. Production Quality**
-- Video quality and editing
-- Pacing and structure
-- Effectiveness for its purpose
+**5. איכות הפקה**
+- איכות וידאו ועריכה
+- קצב ומבנה
+- יעילות למטרתו
 
-**6. Target Audience**
-Who is this video made for? Does it serve them well?
+**6. קהל יעד**
+למי הווידאו הזה מיועד? האם הוא משרת אותם היטב?
 
-**7. Key Takeaways**
-What should a viewer remember from this video?`}
+**7. מסקנות מרכזיות**
+מה צריך הצופה לזכור מהווידאו הזה?`}
 />
 
-### Video Content Extraction
+### חילוץ תוכן מווידאו
 
-For specific information extraction from videos, be precise about what you need.
+לחילוץ מידע ספציפי מווידאו, היה מדויק לגבי מה שאתה צריך.
 
 <TryIt 
-  title="Video Data Extractor"
-  description="Extract specific information from videos with timestamps and structured output."
-  prompt={`Extract specific information from this video:
+  title="מחלץ נתוני וידאו"
+  description="חלץ מידע ספציפי מווידאו עם חותמות זמן ופלט מובנה."
+  prompt={`חלץ מידע ספציפי מהווידאו הזה:
 
-Video type: \${videoType}
-Video description: \${videoDescription}
+סוג וידאו: \${videoType}
+תיאור וידאו: \${videoDescription}
 
-**Information to Extract**:
+**מידע לחילוץ**:
 1. \${extractItem1}
 2. \${extractItem2}
 3. \${extractItem3}
 
-**Output Format**:
+**פורמט פלט**:
 {
-  "video_summary": "Brief description",
-  "duration": "estimated length",
+  "video_summary": "תיאור קצר",
+  "duration": "אורך משוער",
   "extracted_data": [
     {
       "timestamp": "MM:SS",
-      "item": "What was found",
-      "details": "Additional context",
-      "confidence": "high/medium/low"
+      "item": "מה נמצא",
+      "details": "הקשר נוסף",
+      "confidence": "גבוה/בינוני/נמוך"
     }
   ],
-  "items_not_found": ["List anything requested but not present"],
-  "additional_observations": "Anything relevant not explicitly requested"
+  "items_not_found": ["רשום כל דבר שהתבקש אך לא נמצא"],
+  "additional_observations": "כל דבר רלוונטי שלא התבקש במפורש"
 }`}
 />
 
-## Multimodal Combinations
+## שילובים רב-מודאליים
 
-The real power of multimodal AI emerges when you combine different types of input. These combinations enable analysis that would be impossible with any single modality.
+הכוח האמיתי של בינה מלאכותית רב-מודאלית מתגלה כשאתה משלב סוגים שונים של קלט. שילובים אלה מאפשרים ניתוח שיהיה בלתי אפשרי עם מודאליות בודדת כלשהי.
 
-### Image + Text Verification
+### אימות תמונה + טקסט
 
-Check if images and their descriptions match—essential for e-commerce, content moderation, and quality assurance.
+בדוק אם תמונות והתיאורים שלהן תואמים—חיוני למסחר אלקטרוני, ניהול תוכן ואבטחת איכות.
 
 <TryIt 
-  title="Image-Text Alignment Checker"
-  description="Verify that images accurately represent their text descriptions and vice versa."
-  prompt={`Analyze this image and its accompanying text for alignment:
+  title="בודק התאמת תמונה-טקסט"
+  description="וודא שתמונות מייצגות במדויק את תיאורי הטקסט שלהן ולהיפך."
+  prompt={`נתח את התמונה הזו והטקסט הנלווה להתאמה:
 
-**Image**: \${imageDescription}
-**Text Description**: "\${textDescription}"
+**תמונה**: \${imageDescription}
+**תיאור טקסט**: "\${textDescription}"
 
-Evaluate:
+הערך:
 
-**1. Accuracy Match**
-- Does the image show what the text describes?
-- Score: [1-10] with explanation
+**1. התאמת דיוק**
+- האם התמונה מראה את מה שהטקסט מתאר?
+- ציון: [1-10] עם הסבר
 
-**2. Text Claims vs. Visual Reality**
-| Claim in Text | Visible in Image? | Notes |
-|---------------|-------------------|-------|
-| ... | Yes/No/Partial | ... |
+**2. טענות טקסט לעומת מציאות חזותית**
+| טענה בטקסט | גלוי בתמונה? | הערות |
+|------------|--------------|-------|
+| ... | כן/לא/חלקי | ... |
 
-**3. Visual Elements Not Mentioned**
-What's visible in the image but not described in the text?
+**3. אלמנטים חזותיים שלא הוזכרו**
+מה גלוי בתמונה אך לא מתואר בטקסט?
 
-**4. Text Claims Not Visible**
-What's described in text but can't be verified from the image?
+**4. טענות טקסט שאינן גלויות**
+מה מתואר בטקסט אך לא ניתן לאמת מהתמונה?
 
-**5. Recommendations**
-- For the text: [improvements to match image]
-- For the image: [improvements to match text]
+**5. המלצות**
+- עבור הטקסט: [שיפורים להתאמה לתמונה]
+- עבור התמונה: [שיפורים להתאמה לטקסט]
 
-**6. Overall Assessment**
-Is this image-text pair trustworthy for \${purpose}?`}
+**6. הערכה כוללת**
+האם זוג תמונה-טקסט זה אמין עבור \${purpose}?`}
 />
 
-### Screenshot + Code Debugging
+### צילום מסך + ניפוי באגים בקוד
 
-One of the most powerful combinations for developers: seeing the visual bug alongside the code.
+אחד השילובים החזקים ביותר למפתחים: לראות את הבאג החזותי לצד הקוד.
 
 <TryIt 
-  title="Visual Bug Debugger"
-  description="Debug UI issues by analyzing both the visual output and the source code together."
-  prompt={`I have a UI bug. Here's what I see and my code:
+  title="מנפה באגים חזותי"
+  description="נפה באגים בבעיות ממשק משתמש על ידי ניתוח הפלט החזותי וקוד המקור יחד."
+  prompt={`יש לי באג בממשק המשתמש. הנה מה שאני רואה והקוד שלי:
 
-**Screenshot Description**: \${screenshotDescription}
-**What's Wrong**: \${bugDescription}
-**Expected Behavior**: \${expectedBehavior}
+**תיאור צילום מסך**: \${screenshotDescription}
+**מה לא בסדר**: \${bugDescription}
+**התנהגות צפויה**: \${expectedBehavior}
 
-**Relevant Code**:
+**קוד רלוונטי**:
 \`\`\`\${language}
 \${code}
 \`\`\`
 
-Please help me:
+אנא עזור לי:
 
-**1. Root Cause Analysis**
-- What in the code is causing this visual issue?
-- Which specific line(s) are responsible?
+**1. ניתוח סיבת שורש**
+- מה בקוד גורם לבעיה החזותית הזו?
+- אילו שורות ספציפיות אחראיות?
 
-**2. Explanation**
-- Why does this code produce this visual result?
-- What's the underlying mechanism?
+**2. הסבר**
+- מדוע הקוד הזה מייצר את התוצאה החזותית הזו?
+- מהו המנגנון הבסיסי?
 
-**3. The Fix**
+**3. התיקון**
 \`\`\`\${language}
-// Corrected code here
+// קוד מתוקן כאן
 \`\`\`
 
-**4. Prevention**
-- How to avoid this type of bug in the future
-- Any related issues to check for`}
+**4. מניעה**
+- כיצד להימנע מסוג באג זה בעתיד
+- בעיות קשורות לבדוק`}
 />
 
-### Multi-Image Decision Making
+### קבלת החלטות מרובת תמונות
 
-When choosing between options, structured comparison helps make better decisions.
+כשבוחרים בין אפשרויות, השוואה מובנית עוזרת לקבל החלטות טובות יותר.
 
 <TryIt 
-  title="Visual Option Comparator"
-  description="Compare multiple images systematically against your criteria to make informed decisions."
-  prompt={`I'm choosing between these options for \${purpose}:
+  title="משווה אפשרויות חזותי"
+  description="השווה מספר תמונות באופן שיטתי מול הקריטריונים שלך כדי לקבל החלטות מושכלות."
+  prompt={`אני בוחר בין האפשרויות האלה עבור \${purpose}:
 
-**Option A**: \${optionA}
-**Option B**: \${optionB}
-**Option C**: \${optionC}
+**אפשרות A**: \${optionA}
+**אפשרות B**: \${optionB}
+**אפשרות C**: \${optionC}
 
-**My Criteria** (in order of importance):
-1. \${criterion1} (weight: high)
-2. \${criterion2} (weight: medium)
-3. \${criterion3} (weight: low)
+**הקריטריונים שלי** (לפי סדר חשיבות):
+1. \${criterion1} (משקל: גבוה)
+2. \${criterion2} (משקל: בינוני)
+3. \${criterion3} (משקל: נמוך)
 
-Provide:
+ספק:
 
-**Comparison Matrix**
-| Criterion | Option A | Option B | Option C |
-|-----------|----------|----------|----------|
-| \${criterion1} | Score + notes | ... | ... |
+**מטריצת השוואה**
+| קריטריון | אפשרות A | אפשרות B | אפשרות C |
+|----------|----------|----------|----------|
+| \${criterion1} | ציון + הערות | ... | ... |
 | \${criterion2} | ... | ... | ... |
 | \${criterion3} | ... | ... | ... |
 
-**Weighted Scores**
-- Option A: X/10
-- Option B: X/10
-- Option C: X/10
+**ציונים משוקללים**
+- אפשרות A: X/10
+- אפשרות B: X/10
+- אפשרות C: X/10
 
-**Recommendation**
-Based on your stated priorities, I recommend [Option] because...
+**המלצה**
+בהתבסס על העדיפויות שציינת, אני ממליץ על [אפשרות] כי...
 
-**Caveats**
-- If [condition], consider [alternative] instead
-- Watch out for [potential issue]`}
+**הסתייגויות**
+- אם [תנאי], שקול [חלופה] במקום
+- היזהר מ-[בעיה פוטנציאלית]`}
 />
 
-## Best Practices for Multimodal Prompts
+## שיטות עבודה מומלצות להנחיות רב-מודאליות
 
-Getting great results from multimodal AI requires understanding both its capabilities and limitations.
+קבלת תוצאות מצוינות מבינה מלאכותית רב-מודאלית דורשת הבנה של היכולות והמגבלות שלה כאחד.
 
-### What Makes Multimodal Prompts Effective
-
-<InfoGrid items={[
-  { label: "Provide Context", description: "Tell the model what the media is and why you're analyzing it", example: "\"This is a product photo for our e-commerce site...\"", color: "green" },
-  { label: "Be Specific", description: "Ask about particular elements rather than general impressions", example: "\"Focus on the pricing table in the top-right corner\"", color: "green" },
-  { label: "Reference Locations", description: "Point to specific areas using spatial language", example: "\"In the bottom-left quadrant...\"", color: "green" },
-  { label: "State Your Goal", description: "Explain what you'll use the analysis for", example: "\"I need to decide if this image works for our mobile app\"", color: "green" }
-]} />
-
-### Common Pitfalls to Avoid
+### מה הופך הנחיות רב-מודאליות ליעילות
 
 <InfoGrid items={[
-  { label: "Assuming Perfect Vision", description: "Models may miss small details, especially in low-resolution images", example: "Don't ask about 8pt text in a compressed screenshot", color: "red" },
-  { label: "Expecting Perfect OCR", description: "Handwriting, unusual fonts, and complex layouts can cause errors", example: "Verify extracted text from receipts and forms", color: "red" },
-  { label: "Ignoring Content Policies", description: "Models have restrictions on certain types of content", example: "Won't identify specific individuals or analyze inappropriate content", color: "red" },
-  { label: "Skipping Verification", description: "Always verify critical information extracted from media", example: "Double-check numbers, dates, and names from document extraction", color: "red" }
+  { label: "ספק הקשר", description: "אמור למודל מהי המדיה ומדוע אתה מנתח אותה", example: "\"זו תמונת מוצר לאתר המסחר האלקטרוני שלנו...\"", color: "green" },
+  { label: "היה ספציפי", description: "שאל על אלמנטים מסוימים במקום התרשמויות כלליות", example: "\"התמקד בטבלת המחירים בפינה הימנית העליונה\"", color: "green" },
+  { label: "התייחס למיקומים", description: "הצבע על אזורים ספציפיים באמצעות שפה מרחבית", example: "\"ברבע השמאלי התחתון...\"", color: "green" },
+  { label: "ציין את המטרה שלך", description: "הסבר למה תשתמש בניתוח", example: "\"אני צריך להחליט אם התמונה הזו מתאימה לאפליקציית המובייל שלנו\"", color: "green" }
 ]} />
 
-### Handling Limitations Gracefully
+### מלכודות נפוצות שיש להימנע מהן
+
+<InfoGrid items={[
+  { label: "הנחת ראייה מושלמת", description: "מודלים עלולים לפספס פרטים קטנים, במיוחד בתמונות ברזולוציה נמוכה", example: "אל תשאל על טקסט של 8 נקודות בצילום מסך דחוס", color: "red" },
+  { label: "ציפייה ל-OCR מושלם", description: "כתב יד, גופנים יוצאי דופן ופריסות מורכבות עלולים לגרום לשגיאות", example: "אמת טקסט שחולץ מקבלות וטפסים", color: "red" },
+  { label: "התעלמות ממדיניות תוכן", description: "למודלים יש הגבלות על סוגים מסוימים של תוכן", example: "לא יזהו אנשים ספציפיים או ינתחו תוכן לא הולם", color: "red" },
+  { label: "דילוג על אימות", description: "תמיד אמת מידע קריטי שחולץ ממדיה", example: "בדוק פעמיים מספרים, תאריכים ושמות מחילוץ מסמכים", color: "red" }
+]} />
+
+### טיפול במגבלות בחן
 
 <TryIt 
-  title="Uncertainty-Aware Image Analysis"
-  description="This prompt explicitly handles cases where the model can't see clearly or is uncertain."
-  prompt={`Analyze this image: \${imageDescription}
+  title="ניתוח תמונה מודע לאי-ודאות"
+  description="הנחיה זו מטפלת במפורש במקרים שבהם המודל לא יכול לראות בבירור או שאינו בטוח."
+  prompt={`נתח את התמונה הזו: \${imageDescription}
 
-**Instructions for Handling Uncertainty**:
+**הוראות לטיפול באי-ודאות**:
 
-IF YOU CAN'T SEE SOMETHING CLEARLY:
-- Don't guess or make up details
-- Say: "I can see [what's visible] but cannot clearly make out [unclear element]"
-- Suggest what additional information would help
+אם אתה לא יכול לראות משהו בבירור:
+- אל תנחש או תמציא פרטים
+- אמור: "אני יכול לראות [מה גלוי] אך לא יכול להבחין בבירור ב-[אלמנט לא ברור]"
+- הצע איזה מידע נוסף יעזור
 
-IF CONTENT SEEMS RESTRICTED:
-- Explain what you can and cannot analyze
-- Focus on permitted aspects of the analysis
+אם תוכן נראה מוגבל:
+- הסבר מה אתה יכול ומה אתה לא יכול לנתח
+- התמקד בהיבטים מותרים של הניתוח
 
-IF ASKED ABOUT PEOPLE:
-- Describe actions, positions, and general characteristics
-- Do not attempt to identify specific individuals
-- Focus on: number of people, activities, expressions, attire
+אם נשאל על אנשים:
+- תאר פעולות, מיקומים ומאפיינים כלליים
+- אל תנסה לזהות אנשים ספציפיים
+- התמקד ב: מספר אנשים, פעילויות, הבעות, לבוש
 
-**Your Analysis**:
-[Proceed with analysis, applying these guidelines]`}
+**הניתוח שלך**:
+[המשך עם הניתוח, תוך יישום הנחיות אלה]`}
 />
 
 <Quiz 
-  question="Why does prompting matter MORE for multimodal models than for text-only models?"
+  question="מדוע הנחיות חשובות יותר עבור מודלים רב-מודאליים מאשר עבור מודלים של טקסט בלבד?"
   options={[
-    "Multimodal models are less intelligent and need more help",
-    "Images and audio are inherently ambiguous—the AI needs context to know what aspects matter",
-    "Multimodal models can only process one type of input at a time",
-    "Text prompts don't work with multimodal models"
+    "מודלים רב-מודאליים פחות אינטליגנטיים וצריכים יותר עזרה",
+    "תמונות ושמע הם מטבעם דו-משמעיים—הבינה המלאכותית צריכה הקשר כדי לדעת אילו היבטים חשובים",
+    "מודלים רב-מודאליים יכולים לעבד רק סוג אחד של קלט בכל פעם",
+    "הנחיות טקסט לא עובדות עם מודלים רב-מודאליים"
   ]}
   correctIndex={1}
-  explanation="When you look at an image, you instantly know what's important based on your goals. The AI doesn't have this context—a photo of a wall crack could be an engineering concern, an artistic texture, or irrelevant background. Your prompt determines how the AI interprets and focuses on the media you provide."
+  explanation="כשאתה מסתכל על תמונה, אתה יודע מיד מה חשוב בהתבסס על המטרות שלך. לבינה המלאכותית אין הקשר זה—תמונה של סדק בקיר יכולה להיות דאגה הנדסית, טקסטורה אמנותית, או רקע לא רלוונטי. ההנחיה שלך קובעת כיצד הבינה המלאכותית מפרשת ומתמקדת במדיה שאתה מספק."
 />

@@ -1,173 +1,173 @@
-For most of history, computers worked with one type of data at a time: text in one program, images in another, audio somewhere else. But humans don't experience the world this way. We see, hear, read, and speak simultaneously, combining all these inputs to understand our environment.
+در بیشتر تاریخ، رایانه‌ها در هر لحظه با یک نوع داده کار می‌کردند: متن در یک برنامه، تصویر در برنامه‌ای دیگر، و صدا در جایی دیگر. اما انسان‌ها دنیا را این‌گونه تجربه نمی‌کنند. ما همزمان می‌بینیم، می‌شنویم، می‌خوانیم و صحبت می‌کنیم، و همه این ورودی‌ها را برای درک محیط اطرافمان ترکیب می‌کنیم.
 
-**Multimodal AI** changes everything. These models can process multiple types of information together—analyzing an image while reading your question about it, or generating images from your text descriptions. This chapter teaches you how to communicate effectively with these powerful systems.
+**هوش مصنوعی چندوجهی** همه چیز را تغییر می‌دهد. این مدل‌ها می‌توانند چندین نوع اطلاعات را با هم پردازش کنند—یک تصویر را در حین خواندن سؤال شما درباره آن تحلیل کنند، یا از توصیفات متنی شما تصویر تولید کنند. این فصل به شما یاد می‌دهد چگونه با این سیستم‌های قدرتمند به طور مؤثر ارتباط برقرار کنید.
 
-<Callout type="info" title="What Does Multimodal Mean?">
-"Multi" means many, and "modal" refers to modes or types of data. A multimodal model can work with multiple modalities: text, images, audio, video, or even code. Instead of separate tools for each type, one model understands them all together.
+<Callout type="info" title="چندوجهی به چه معناست؟">
+«چند» به معنای تعداد زیاد است و «وجهی» به حالت‌ها یا انواع داده اشاره دارد. یک مدل چندوجهی می‌تواند با چندین وجه کار کند: متن، تصویر، صدا، ویدیو، یا حتی کد. به جای ابزارهای جداگانه برای هر نوع، یک مدل همه آن‌ها را با هم درک می‌کند.
 </Callout>
 
-## Why Multimodal Matters
+## چرا چندوجهی اهمیت دارد
 
-Traditional AI required you to describe everything in words. Want to ask about an image? You'd have to describe it first. Want to analyze a document? You'd need to transcribe it manually. Multimodal models eliminate these barriers.
+هوش مصنوعی سنتی از شما می‌خواست همه چیز را با کلمات توصیف کنید. می‌خواهید درباره یک تصویر بپرسید؟ ابتدا باید آن را توصیف می‌کردید. می‌خواهید یک سند را تحلیل کنید؟ باید آن را به صورت دستی رونویسی می‌کردید. مدل‌های چندوجهی این موانع را از بین می‌برند.
 
 <InfoGrid items={[
-  { label: "See and Understand", description: "Upload an image and ask questions about it directly—no description needed", example: "\"What's wrong with this circuit diagram?\"", color: "blue" },
-  { label: "Create from Words", description: "Describe what you want and generate images, audio, or video", example: "\"A sunset over mountains in watercolor style\"", color: "purple" },
-  { label: "Combine Everything", description: "Mix text, images, and other media in a single conversation", example: "\"Compare these two designs and tell me which is better for mobile\"", color: "green" },
-  { label: "Analyze Documents", description: "Extract information from photos of documents, receipts, or screenshots", example: "\"Extract all the line items from this invoice photo\"", color: "amber" }
+  { label: "دیدن و درک کردن", description: "یک تصویر آپلود کنید و مستقیماً درباره آن سؤال بپرسید—نیازی به توصیف نیست", example: "\"مشکل این نمودار مدار چیست؟\"", color: "blue" },
+  { label: "خلق از کلمات", description: "آنچه می‌خواهید توصیف کنید و تصویر، صدا یا ویدیو تولید کنید", example: "\"غروب خورشید بر فراز کوه‌ها به سبک آبرنگ\"", color: "purple" },
+  { label: "ترکیب همه چیز", description: "متن، تصویر و سایر رسانه‌ها را در یک مکالمه ترکیب کنید", example: "\"این دو طراحی را مقایسه کن و بگو کدام برای موبایل بهتر است\"", color: "green" },
+  { label: "تحلیل اسناد", description: "اطلاعات را از عکس‌های اسناد، رسیدها یا تصاویر صفحه استخراج کنید", example: "\"همه اقلام این عکس فاکتور را استخراج کن\"", color: "amber" }
 ]} />
 
-## Why Prompting Matters Even More for Multimodal
+## چرا پرامپت‌نویسی برای چندوجهی اهمیت بیشتری دارد
 
-With text-only models, the AI receives exactly what you type. But with multimodal models, the AI must interpret visual or audio information—and interpretation requires guidance.
+با مدل‌های فقط متنی، هوش مصنوعی دقیقاً آنچه را تایپ می‌کنید دریافت می‌کند. اما با مدل‌های چندوجهی، هوش مصنوعی باید اطلاعات بصری یا صوتی را تفسیر کند—و تفسیر نیاز به راهنمایی دارد.
 
 <Compare 
-  before={{ label: "Vague multimodal prompt", content: "What do you see in this image?\n\n[image of a complex dashboard]" }}
-  after={{ label: "Guided multimodal prompt", content: "This is a screenshot of our analytics dashboard. Focus on:\n1. The conversion rate graph in the top-right\n2. Any error indicators or warnings\n3. Whether the data looks normal or anomalous\n\n[image of a complex dashboard]" }}
+  before={{ label: "پرامپت چندوجهی مبهم", content: "در این تصویر چه می‌بینی؟\n\n[تصویر یک داشبورد پیچیده]" }}
+  after={{ label: "پرامپت چندوجهی هدایت‌شده", content: "این یک تصویر از داشبورد تحلیلی ماست. تمرکز کن روی:\n1. نمودار نرخ تبدیل در گوشه بالا-راست\n2. هرگونه نشانگر خطا یا هشدار\n3. اینکه آیا داده‌ها عادی به نظر می‌رسند یا غیرعادی\n\n[تصویر یک داشبورد پیچیده]" }}
 />
 
-**Without guidance**, the model might describe colors, layout, or irrelevant details. **With guidance**, it focuses on what actually matters to you.
+**بدون راهنمایی**، مدل ممکن است رنگ‌ها، چیدمان یا جزئیات نامربوط را توصیف کند. **با راهنمایی**، روی آنچه واقعاً برای شما مهم است تمرکز می‌کند.
 
-<Callout type="warning" title="The Interpretation Gap">
-When you look at an image, you instantly know what's important based on your context and goals. The AI doesn't have this context unless you provide it. A photo of a crack in a wall could be: a structural engineering concern, an artistic texture, or irrelevant background. Your prompt determines how the AI interprets it.
+<Callout type="warning" title="شکاف تفسیر">
+وقتی به یک تصویر نگاه می‌کنید، فوراً می‌دانید چه چیزی بر اساس زمینه و اهدافتان مهم است. هوش مصنوعی این زمینه را ندارد مگر اینکه شما آن را فراهم کنید. یک عکس از ترک در دیوار می‌تواند: یک نگرانی مهندسی سازه، یک بافت هنری، یا پس‌زمینه نامربوط باشد. پرامپت شما تعیین می‌کند که هوش مصنوعی چگونه آن را تفسیر کند.
 </Callout>
 
-## The Multimodal Landscape
+## چشم‌انداز چندوجهی
 
-Different models have different capabilities. Here's what's available in 2025:
+مدل‌های مختلف قابلیت‌های متفاوتی دارند. در اینجا آنچه در سال ۲۰۲۵ در دسترس است آورده شده:
 
-### Understanding Models (Input → Analysis)
+### مدل‌های درک (ورودی ← تحلیل)
 
-These models accept various media types and produce text analysis or responses.
-
-<InfoGrid items={[
-  { label: "GPT-4o / GPT-5", description: "Text + Images + Audio → Text. OpenAI's flagship with 128K context, strong creative and reasoning abilities, reduced hallucination rates.", color: "green" },
-  { label: "Claude 4 Sonnet/Opus", description: "Text + Images → Text. Anthropic's safety-focused model with advanced reasoning, excellent for coding and complex multi-step tasks.", color: "purple" },
-  { label: "Gemini 2.5", description: "Text + Images + Audio + Video → Text. Google's model with 1M token context, self-fact-checking, fast processing for coding and research.", color: "blue" },
-  { label: "LLaMA 4 Scout", description: "Text + Images + Video → Text. Meta's open-source model with massive 10M token context for long documents and codebases.", color: "cyan" },
-  { label: "Grok 4", description: "Text + Images → Text. xAI's model with real-time data access and social media integration for up-to-date responses.", color: "red" }
-]} />
-
-### Generation Models (Text → Media)
-
-These models create images, audio, or video from text descriptions.
+این مدل‌ها انواع مختلف رسانه را می‌پذیرند و تحلیل یا پاسخ متنی تولید می‌کنند.
 
 <InfoGrid items={[
-  { label: "DALL-E 3", description: "Text → Images. OpenAI's image generator with high accuracy to prompt descriptions.", color: "amber" },
-  { label: "Midjourney", description: "Text + Images → Images. Known for artistic quality, style control, and aesthetic outputs.", color: "pink" },
-  { label: "Sora", description: "Text → Video. OpenAI's video generation model for creating clips from descriptions.", color: "red" },
-  { label: "Whisper", description: "Audio → Text. OpenAI's speech-to-text with high accuracy across languages.", color: "cyan" }
+  { label: "GPT-4o / GPT-5", description: "متن + تصویر + صدا ← متن. پرچم‌دار OpenAI با زمینه ۱۲۸K، توانایی‌های خلاقانه و استدلالی قوی، نرخ توهم کاهش‌یافته.", color: "green" },
+  { label: "Claude 4 Sonnet/Opus", description: "متن + تصویر ← متن. مدل متمرکز بر ایمنی Anthropic با استدلال پیشرفته، عالی برای کدنویسی و کارهای پیچیده چندمرحله‌ای.", color: "purple" },
+  { label: "Gemini 2.5", description: "متن + تصویر + صدا + ویدیو ← متن. مدل Google با زمینه ۱ میلیون توکن، خود-بررسی واقعیت، پردازش سریع برای کدنویسی و تحقیق.", color: "blue" },
+  { label: "LLaMA 4 Scout", description: "متن + تصویر + ویدیو ← متن. مدل متن‌باز Meta با زمینه عظیم ۱۰ میلیون توکن برای اسناد و کدبیس‌های طولانی.", color: "cyan" },
+  { label: "Grok 4", description: "متن + تصویر ← متن. مدل xAI با دسترسی به داده‌های بلادرنگ و یکپارچگی با شبکه‌های اجتماعی برای پاسخ‌های به‌روز.", color: "red" }
 ]} />
 
-<Callout type="info" title="Rapid Evolution">
-The multimodal landscape changes quickly. New models launch frequently, and existing models gain capabilities through updates. Always check the latest documentation for current features and limitations.
+### مدل‌های تولید (متن ← رسانه)
+
+این مدل‌ها تصاویر، صدا یا ویدیو را از توصیفات متنی ایجاد می‌کنند.
+
+<InfoGrid items={[
+  { label: "DALL-E 3", description: "متن ← تصاویر. تولیدکننده تصویر OpenAI با دقت بالا نسبت به توصیفات پرامپت.", color: "amber" },
+  { label: "Midjourney", description: "متن + تصویر ← تصاویر. معروف به کیفیت هنری، کنترل سبک و خروجی‌های زیبایی‌شناختی.", color: "pink" },
+  { label: "Sora", description: "متن ← ویدیو. مدل تولید ویدیوی OpenAI برای ایجاد کلیپ از توصیفات.", color: "red" },
+  { label: "Whisper", description: "صدا ← متن. تبدیل گفتار به متن OpenAI با دقت بالا در زبان‌های مختلف.", color: "cyan" }
+]} />
+
+<Callout type="info" title="تکامل سریع">
+چشم‌انداز چندوجهی به سرعت تغییر می‌کند. مدل‌های جدید مکرراً راه‌اندازی می‌شوند و مدل‌های موجود از طریق به‌روزرسانی‌ها قابلیت‌های جدیدی کسب می‌کنند. همیشه آخرین مستندات را برای ویژگی‌ها و محدودیت‌های فعلی بررسی کنید.
 </Callout>
 
-## Image Understanding Prompts
+## پرامپت‌های درک تصویر
 
-The most common multimodal use case is asking AI to analyze images. The key is providing context about what you need.
+رایج‌ترین کاربرد چندوجهی، درخواست از هوش مصنوعی برای تحلیل تصاویر است. کلید کار، ارائه زمینه درباره نیاز شماست.
 
-### Basic Image Analysis
+### تحلیل پایه تصویر
 
-Start with a clear request structure. Tell the model what aspects to focus on.
+با یک ساختار درخواست واضح شروع کنید. به مدل بگویید روی چه جنبه‌هایی تمرکز کند.
 
 <TryIt 
-  title="Structured Image Analysis"
-  description="This prompt provides a clear framework for image analysis. The model knows exactly what information you need."
-  prompt={`Analyze this image and describe:
+  title="تحلیل ساختاریافته تصویر"
+  description="این پرامپت یک چارچوب واضح برای تحلیل تصویر ارائه می‌دهد. مدل دقیقاً می‌داند چه اطلاعاتی نیاز دارید."
+  prompt={`این تصویر را تحلیل کن و توصیف کن:
 
-1. **Main Subject**: What is the primary focus of this image?
-2. **Setting**: Where does this appear to be? (indoor/outdoor, location type)
-3. **Mood**: What emotional tone or atmosphere does it convey?
-4. **Text Content**: Any visible text, signs, or labels?
-5. **Notable Details**: What might someone miss at first glance?
-6. **Technical Quality**: How is the lighting, focus, and composition?
+1. **موضوع اصلی**: تمرکز اولیه این تصویر چیست؟
+2. **محیط**: این کجا به نظر می‌رسد؟ (داخلی/خارجی، نوع مکان)
+3. **حال و هوا**: چه لحن عاطفی یا فضایی را منتقل می‌کند؟
+4. **محتوای متنی**: آیا متن، تابلو یا برچسب قابل مشاهده‌ای وجود دارد؟
+5. **جزئیات قابل توجه**: چه چیزی ممکن است در نگاه اول نادیده گرفته شود؟
+6. **کیفیت فنی**: نورپردازی، فوکوس و ترکیب‌بندی چگونه است؟
 
-[Paste or describe the image you want to analyze]
+[تصویری که می‌خواهید تحلیل شود را بچسبانید یا توصیف کنید]
 
-Image description or URL: \${imageDescription}`}
+توصیف یا URL تصویر: \${imageDescription}`}
 />
 
-### Structured Output for Images
+### خروجی ساختاریافته برای تصاویر
 
-When you need to process image analysis programmatically, request JSON output.
+وقتی نیاز دارید تحلیل تصویر را به صورت برنامه‌ای پردازش کنید، خروجی JSON درخواست کنید.
 
 <TryIt 
-  title="JSON Image Analysis"
-  description="Get structured data from image analysis that's easy to parse and use in applications."
-  prompt={`Analyze this image and return a JSON object with the following structure:
+  title="تحلیل تصویر JSON"
+  description="داده‌های ساختاریافته از تحلیل تصویر دریافت کنید که تجزیه و استفاده از آن در برنامه‌ها آسان است."
+  prompt={`این تصویر را تحلیل کن و یک شیء JSON با ساختار زیر برگردان:
 
 {
-  "summary": "One sentence description",
-  "objects": ["List of main objects visible"],
+  "summary": "توصیف یک جمله‌ای",
+  "objects": ["لیست اشیاء اصلی قابل مشاهده"],
   "people": {
-    "count": "number or 'none'",
-    "activities": ["What they're doing, if any"]
+    "count": "تعداد یا 'هیچ'",
+    "activities": ["در صورت وجود، چه کاری انجام می‌دهند"]
   },
-  "text_detected": ["Any text visible in the image"],
+  "text_detected": ["هرگونه متن قابل مشاهده در تصویر"],
   "colors": {
-    "dominant": ["Top 3 colors"],
-    "mood": "Warm/Cool/Neutral"
+    "dominant": ["۳ رنگ برتر"],
+    "mood": "گرم/سرد/خنثی"
   },
   "setting": {
-    "type": "indoor/outdoor/unknown",
-    "description": "More specific location description"
+    "type": "داخلی/خارجی/نامشخص",
+    "description": "توصیف دقیق‌تر مکان"
   },
   "technical": {
-    "quality": "high/medium/low",
-    "lighting": "Description of lighting",
-    "composition": "Description of framing/composition"
+    "quality": "بالا/متوسط/پایین",
+    "lighting": "توصیف نورپردازی",
+    "composition": "توصیف قاب‌بندی/ترکیب‌بندی"
   },
-  "confidence": "high/medium/low"
+  "confidence": "بالا/متوسط/پایین"
 }
 
-Image to analyze: \${imageDescription}`}
+تصویر برای تحلیل: \${imageDescription}`}
 />
 
-### Comparative Analysis
+### تحلیل مقایسه‌ای
 
-Comparing multiple images requires clear labeling and specific comparison criteria.
+مقایسه چند تصویر نیاز به برچسب‌گذاری واضح و معیارهای مقایسه مشخص دارد.
 
 <TryIt 
-  title="Image Comparison"
-  description="Compare two or more images with specific criteria that matter to your decision."
-  prompt={`Compare these images for \${purpose}:
+  title="مقایسه تصاویر"
+  description="دو یا چند تصویر را با معیارهای خاصی که برای تصمیم‌گیری شما مهم هستند مقایسه کنید."
+  prompt={`این تصاویر را برای \${purpose} مقایسه کن:
 
-**Image A**: \${imageA}
-**Image B**: \${imageB}
+**تصویر A**: \${imageA}
+**تصویر B**: \${imageB}
 
-Analyze each image on these criteria:
-1. \${criterion1} (importance: high)
-2. \${criterion2} (importance: medium)  
-3. \${criterion3} (importance: low)
+هر تصویر را بر اساس این معیارها تحلیل کن:
+1. \${criterion1} (اهمیت: بالا)
+2. \${criterion2} (اهمیت: متوسط)  
+3. \${criterion3} (اهمیت: پایین)
 
-Provide:
-- Side-by-side comparison for each criterion
-- Strengths and weaknesses of each
-- Clear recommendation with reasoning
-- Any concerns or caveats`}
+ارائه بده:
+- مقایسه کنار هم برای هر معیار
+- نقاط قوت و ضعف هر کدام
+- توصیه واضح با استدلال
+- هرگونه نگرانی یا نکته احتیاطی`}
 />
 
-## Document and Screenshot Analysis
+## تحلیل اسناد و تصاویر صفحه
 
-One of the most practical applications of multimodal AI is analyzing documents, screenshots, and UI elements. This saves hours of manual transcription and review.
+یکی از کاربردی‌ترین کاربردهای هوش مصنوعی چندوجهی، تحلیل اسناد، تصاویر صفحه و عناصر رابط کاربری است. این کار ساعت‌ها رونویسی و بررسی دستی را صرفه‌جویی می‌کند.
 
-### Document Extraction
+### استخراج از اسناد
 
-Scanned documents, photos of receipts, and PDFs as images can all be processed. The key is telling the model what type of document it is and what information you need.
+اسناد اسکن‌شده، عکس‌های رسید و فایل‌های PDF به عنوان تصویر همگی قابل پردازش هستند. کلید کار این است که به مدل بگویید چه نوع سندی است و چه اطلاعاتی نیاز دارید.
 
 <TryIt 
-  title="Document Data Extractor"
-  description="Extract structured data from photos of documents, receipts, invoices, or forms."
-  prompt={`This is a photo/scan of a \${documentType}.
+  title="استخراج‌کننده داده از اسناد"
+  description="داده‌های ساختاریافته را از عکس‌های اسناد، رسیدها، فاکتورها یا فرم‌ها استخراج کنید."
+  prompt={`این یک عکس/اسکن از یک \${documentType} است.
 
-Extract all information into structured JSON format:
+همه اطلاعات را به فرمت JSON ساختاریافته استخراج کن:
 
 {
-  "document_type": "detected type",
-  "date": "if present",
+  "document_type": "نوع تشخیص داده شده",
+  "date": "در صورت وجود",
   "key_fields": {
-    "field_name": "value"
+    "نام_فیلد": "مقدار"
   },
   "line_items": [
     {"description": "", "amount": ""}
@@ -177,489 +177,489 @@ Extract all information into structured JSON format:
     "tax": "",
     "total": ""
   },
-  "handwritten_notes": ["any handwritten text"],
-  "unclear_sections": ["areas that were hard to read"],
-  "confidence": "high/medium/low"
+  "handwritten_notes": ["هرگونه متن دست‌نویس"],
+  "unclear_sections": ["بخش‌هایی که خواندنشان سخت بود"],
+  "confidence": "بالا/متوسط/پایین"
 }
 
-IMPORTANT: If any text is unclear, note it in "unclear_sections" rather than guessing. Mark confidence as "low" if significant portions were hard to read.
+مهم: اگر هر متنی نامشخص است، آن را در "unclear_sections" ذکر کن به جای حدس زدن. اگر بخش‌های قابل توجهی سخت خوانده شدند، اطمینان را "پایین" علامت بزن.
 
-Document description: \${documentDescription}`}
+توصیف سند: \${documentDescription}`}
 />
 
-### Screenshot and UI Analysis
+### تحلیل تصویر صفحه و رابط کاربری
 
-Screenshots are goldmines for debugging, UX review, and documentation. Guide the AI to focus on what matters.
+تصاویر صفحه گنجینه‌هایی برای اشکال‌زدایی، بررسی UX و مستندسازی هستند. هوش مصنوعی را هدایت کنید تا روی آنچه مهم است تمرکز کند.
 
 <TryIt 
-  title="UI/UX Screenshot Analyzer"
-  description="Get detailed analysis of screenshots for debugging, UX review, or documentation."
-  prompt={`This is a screenshot of \${applicationName}.
+  title="تحلیل‌گر تصویر صفحه UI/UX"
+  description="تحلیل دقیق تصاویر صفحه برای اشکال‌زدایی، بررسی UX یا مستندسازی دریافت کنید."
+  prompt={`این یک تصویر صفحه از \${applicationName} است.
 
-Analyze this interface:
+این رابط را تحلیل کن:
 
-**Identification**
-- What screen/page/state is this?
-- What is the user likely trying to accomplish here?
+**شناسایی**
+- این چه صفحه/نما/وضعیتی است؟
+- کاربر احتمالاً در اینجا چه کاری می‌خواهد انجام دهد؟
 
-**UI Elements**
-- Key interactive elements (buttons, forms, menus)
-- Current state (anything selected, filled in, or expanded?)
-- Any error messages, warnings, or notifications?
+**عناصر UI**
+- عناصر تعاملی کلیدی (دکمه‌ها، فرم‌ها، منوها)
+- وضعیت فعلی (آیا چیزی انتخاب، پر یا باز شده؟)
+- آیا پیام خطا، هشدار یا اعلانی وجود دارد؟
 
-**UX Assessment**
-- Is the layout clear and intuitive?
-- Any confusing elements or unclear labels?
-- Accessibility concerns (contrast, text size, etc.)?
+**ارزیابی UX**
+- آیا چیدمان واضح و شهودی است؟
+- آیا عناصر گیج‌کننده یا برچسب‌های نامشخصی وجود دارد؟
+- نگرانی‌های دسترسی‌پذیری (کنتراست، اندازه متن و غیره)؟
 
-**Issues Detected**
-- Visual bugs or misalignments?
-- Truncated text or overflow issues?
-- Inconsistent styling?
+**مشکلات شناسایی‌شده**
+- باگ‌های بصری یا عدم تراز؟
+- متن بریده‌شده یا مشکلات سرریز؟
+- سبک‌دهی ناسازگار؟
 
-Screenshot description: \${screenshotDescription}`}
+توصیف تصویر صفحه: \${screenshotDescription}`}
 />
 
-### Error Message Analysis
+### تحلیل پیام خطا
 
-When you encounter an error, a screenshot often contains more context than copying the error text alone.
+وقتی با خطایی مواجه می‌شوید، یک تصویر صفحه اغلب زمینه بیشتری نسبت به کپی کردن فقط متن خطا دارد.
 
 <TryIt 
-  title="Error Diagnosis from Screenshot"
-  description="Get plain-language explanations and fixes for error messages in screenshots."
-  prompt={`I'm seeing this error in \${context}.
+  title="تشخیص خطا از تصویر صفحه"
+  description="توضیحات ساده و راه‌حل‌ها برای پیام‌های خطا در تصاویر صفحه دریافت کنید."
+  prompt={`این خطا را در \${context} می‌بینم.
 
-[Describe or paste the error message/screenshot]
-Error details: \${errorDetails}
+[پیام خطا/تصویر صفحه را توصیف یا بچسبانید]
+جزئیات خطا: \${errorDetails}
 
-Please provide:
+لطفاً ارائه بده:
 
-1. **Plain Language Explanation**: What does this error actually mean?
+1. **توضیح به زبان ساده**: این خطا واقعاً چه معنایی دارد؟
 
-2. **Likely Causes** (ranked by probability):
-   - Most likely: 
-   - Also possible:
-   - Less common:
+2. **علل محتمل** (رتبه‌بندی بر اساس احتمال):
+   - محتمل‌ترین: 
+   - همچنین ممکن:
+   - کمتر رایج:
 
-3. **Step-by-Step Fix**:
-   - First, try...
-   - If that doesn't work...
-   - As a last resort...
+3. **رفع گام به گام**:
+   - ابتدا، امتحان کن...
+   - اگر کار نکرد...
+   - به عنوان آخرین راه‌حل...
 
-4. **Prevention**: How to avoid this error in the future
+4. **پیشگیری**: چگونه از این خطا در آینده جلوگیری کنیم
 
-5. **Red Flags**: When this error might indicate a more serious problem`}
+5. **پرچم‌های قرمز**: چه زمانی این خطا ممکن است نشان‌دهنده مشکل جدی‌تری باشد`}
 />
 
-## Image Generation Prompts
+## پرامپت‌های تولید تصویر
 
-Generating images from text descriptions is an art form. The more specific and structured your prompt, the closer the result will match your vision.
+تولید تصاویر از توصیفات متنی یک هنر است. هرچه پرامپت شما مشخص‌تر و ساختاریافته‌تر باشد، نتیجه به دیدگاه شما نزدیک‌تر خواهد بود.
 
-### The Anatomy of an Image Prompt
+### آناتومی یک پرامپت تصویر
 
-Effective image generation prompts have several components:
+پرامپت‌های مؤثر تولید تصویر چندین مؤلفه دارند:
 
 <InfoGrid items={[
-  { label: "Subject", description: "What is the main focus of the image?", example: "A golden retriever playing in autumn leaves", color: "blue" },
-  { label: "Style", description: "What artistic style or medium?", example: "Watercolor painting, digital art, photorealistic", color: "purple" },
-  { label: "Composition", description: "How is the scene arranged?", example: "Close-up portrait, wide landscape, bird's eye view", color: "green" },
-  { label: "Lighting", description: "What's the light source and quality?", example: "Soft morning light, dramatic shadows, neon glow", color: "amber" },
-  { label: "Mood", description: "What feeling should it evoke?", example: "Peaceful, energetic, mysterious, nostalgic", color: "pink" },
-  { label: "Details", description: "Specific elements to include or avoid", example: "Include: flowers. Avoid: text, watermarks", color: "cyan" }
+  { label: "موضوع", description: "تمرکز اصلی تصویر چیست؟", example: "یک سگ گلدن رتریور در حال بازی در برگ‌های پاییزی", color: "blue" },
+  { label: "سبک", description: "چه سبک هنری یا رسانه‌ای؟", example: "نقاشی آبرنگ، هنر دیجیتال، فوتورئالیستیک", color: "purple" },
+  { label: "ترکیب‌بندی", description: "صحنه چگونه آرایش یافته؟", example: "پرتره نزدیک، منظره گسترده، نمای پرنده", color: "green" },
+  { label: "نورپردازی", description: "منبع و کیفیت نور چیست؟", example: "نور ملایم صبحگاهی، سایه‌های دراماتیک، درخشش نئون", color: "amber" },
+  { label: "حال و هوا", description: "باید چه احساسی را برانگیزد؟", example: "آرام، پرانرژی، مرموز، نوستالژیک", color: "pink" },
+  { label: "جزئیات", description: "عناصر خاص برای شامل شدن یا اجتناب", example: "شامل: گل‌ها. اجتناب: متن، واترمارک", color: "cyan" }
 ]} />
 
-### Basic Image Generation
+### تولید پایه تصویر
 
 <TryIt 
-  title="Structured Image Prompt"
-  description="Use this template to create detailed, specific image generation prompts."
-  prompt={`Create an image with these specifications:
+  title="پرامپت ساختاریافته تصویر"
+  description="از این قالب برای ایجاد پرامپت‌های دقیق و مشخص تولید تصویر استفاده کنید."
+  prompt={`یک تصویر با این مشخصات ایجاد کن:
 
-**Subject**: \${subject}
+**موضوع**: \${subject}
 
-**Style**: \${style}
-**Medium**: \${medium} (e.g., oil painting, digital art, photograph)
+**سبک**: \${style}
+**رسانه**: \${medium} (مثلاً نقاشی رنگ روغن، هنر دیجیتال، عکس)
 
-**Composition**:
-- Framing: \${framing} (close-up, medium shot, wide angle)
-- Perspective: \${perspective} (eye level, low angle, overhead)
-- Focus: \${focusArea}
+**ترکیب‌بندی**:
+- قاب‌بندی: \${framing} (نزدیک، متوسط، زاویه گسترده)
+- پرسپکتیو: \${perspective} (سطح چشم، زاویه پایین، از بالا)
+- تمرکز: \${focusArea}
 
-**Lighting**:
-- Source: \${lightSource}
-- Quality: \${lightQuality} (soft, harsh, diffused)
-- Time of day: \${timeOfDay}
+**نورپردازی**:
+- منبع: \${lightSource}
+- کیفیت: \${lightQuality} (ملایم، سخت، پخش‌شده)
+- زمان روز: \${timeOfDay}
 
-**Color Palette**: \${colors}
+**پالت رنگ**: \${colors}
 
-**Mood/Atmosphere**: \${mood}
+**حال و هوا/فضا**: \${mood}
 
-**Must Include**: \${includeElements}
-**Must Avoid**: \${avoidElements}
+**باید شامل شود**: \${includeElements}
+**باید اجتناب شود**: \${avoidElements}
 
-**Technical**: \${aspectRatio} aspect ratio, high quality`}
+**فنی**: نسبت تصویر \${aspectRatio}، کیفیت بالا`}
 />
 
-### Scene Building
+### ساخت صحنه
 
-For complex scenes, describe layers from foreground to background.
+برای صحنه‌های پیچیده، لایه‌ها را از پیش‌زمینه تا پس‌زمینه توصیف کنید.
 
 <TryIt 
-  title="Layered Scene Description"
-  description="Build complex scenes by describing what appears in each layer of depth."
-  prompt={`Generate a detailed scene:
+  title="توصیف صحنه لایه‌ای"
+  description="صحنه‌های پیچیده را با توصیف آنچه در هر لایه عمق ظاهر می‌شود بسازید."
+  prompt={`یک صحنه مفصل تولید کن:
 
-**Setting**: \${setting}
+**محیط**: \${setting}
 
-**Foreground** (closest to viewer):
+**پیش‌زمینه** (نزدیک‌ترین به بیننده):
 \${foreground}
 
-**Middle Ground** (main action area):
+**میان‌زمینه** (ناحیه عمل اصلی):
 \${middleGround}
 
-**Background** (distant elements):
+**پس‌زمینه** (عناصر دور):
 \${background}
 
-**Atmospheric Details**:
-- Weather/Air: \${weather}
-- Lighting: \${lighting}
-- Time: \${timeOfDay}
+**جزئیات جوی**:
+- آب‌وهوا/هوا: \${weather}
+- نورپردازی: \${lighting}
+- زمان: \${timeOfDay}
 
-**Style**: \${artisticStyle}
-**Mood**: \${mood}
-**Color Palette**: \${colors}
+**سبک**: \${artisticStyle}
+**حال و هوا**: \${mood}
+**پالت رنگ**: \${colors}
 
-Additional details to include: \${additionalDetails}`}
+جزئیات اضافی برای شامل شدن: \${additionalDetails}`}
 />
 
-## Audio Prompting
+## پرامپت‌نویسی صوتی
 
-Audio processing opens up transcription, analysis, and understanding of spoken content. The key is providing context about what the audio contains.
+پردازش صوتی امکان رونویسی، تحلیل و درک محتوای گفتاری را فراهم می‌کند. کلید کار ارائه زمینه درباره محتوای صوتی است.
 
-### Enhanced Transcription
+### رونویسی پیشرفته
 
-Basic transcription is just the start. With good prompts, you can get speaker identification, timestamps, and domain-specific accuracy.
+رونویسی پایه فقط شروع است. با پرامپت‌های خوب، می‌توانید شناسایی گوینده، برچسب‌های زمانی و دقت مختص حوزه را دریافت کنید.
 
 <TryIt 
-  title="Smart Transcription"
-  description="Get accurate transcriptions with speaker labels, timestamps, and handling of unclear sections."
-  prompt={`Transcribe this audio recording.
+  title="رونویسی هوشمند"
+  description="رونویسی‌های دقیق با برچسب‌های گوینده، برچسب‌های زمانی و مدیریت بخش‌های نامشخص دریافت کنید."
+  prompt={`این ضبط صوتی را رونویسی کن.
 
-**Context**: \${recordingType} (meeting, interview, podcast, lecture, etc.)
-**Expected Speakers**: \${speakerCount} (\${speakerRoles})
-**Domain**: \${domain} (technical terms to expect: \${technicalTerms})
+**زمینه**: \${recordingType} (جلسه، مصاحبه، پادکست، سخنرانی و غیره)
+**گویندگان مورد انتظار**: \${speakerCount} (\${speakerRoles})
+**حوزه**: \${domain} (اصطلاحات فنی مورد انتظار: \${technicalTerms})
 
-**Output Format**:
-[00:00] **Speaker 1 (Name/Role)**: Transcribed text here.
-[00:15] **Speaker 2 (Name/Role)**: Their response here.
+**فرمت خروجی**:
+[00:00] **گوینده ۱ (نام/نقش)**: متن رونویسی‌شده اینجا.
+[00:15] **گوینده ۲ (نام/نقش)**: پاسخ آن‌ها اینجا.
 
-**Instructions**:
-- Include timestamps at natural breaks (every 30-60 seconds or at speaker changes)
-- Mark unclear sections as [inaudible] or [unclear: best guess?]
-- Note non-speech sounds in brackets: [laughter], [phone ringing], [long pause]
-- Preserve filler words only if they're meaningful (um, uh can be removed)
-- Flag any action items or decisions with → symbol
+**دستورالعمل‌ها**:
+- برچسب‌های زمانی را در وقفه‌های طبیعی اضافه کن (هر ۳۰-۶۰ ثانیه یا در تغییر گوینده)
+- بخش‌های نامشخص را به عنوان [ناشنوا] یا [نامشخص: بهترین حدس؟] علامت بزن
+- صداهای غیرگفتاری را در براکت بنویس: [خنده]، [زنگ تلفن]، [مکث طولانی]
+- کلمات پرکننده را فقط اگر معنادار هستند حفظ کن (اوم، آه می‌توانند حذف شوند)
+- هرگونه موارد اقدام یا تصمیمات را با نماد ← علامت‌گذاری کن
 
-Audio description: \${audioDescription}`}
+توصیف صوتی: \${audioDescription}`}
 />
 
-### Audio Content Analysis
+### تحلیل محتوای صوتی
 
-Beyond transcription, AI can analyze the content, tone, and key moments in audio.
+فراتر از رونویسی، هوش مصنوعی می‌تواند محتوا، لحن و لحظات کلیدی در صوت را تحلیل کند.
 
 <TryIt 
-  title="Audio Content Analyzer"
-  description="Get a comprehensive analysis of audio content including summary, key moments, and sentiment."
-  prompt={`Analyze this audio recording:
+  title="تحلیل‌گر محتوای صوتی"
+  description="تحلیل جامع محتوای صوتی شامل خلاصه، لحظات کلیدی و احساسات دریافت کنید."
+  prompt={`این ضبط صوتی را تحلیل کن:
 
-Audio description: \${audioDescription}
+توصیف صوتی: \${audioDescription}
 
-Provide:
+ارائه بده:
 
-**1. Executive Summary** (2-3 sentences)
-What is this recording about? What's the main takeaway?
+**۱. خلاصه اجرایی** (۲-۳ جمله)
+این ضبط درباره چیست؟ نکته اصلی چیست؟
 
-**2. Speakers**
-- How many distinct speakers?
-- Characteristics (if discernible): tone, speaking style, expertise level
+**۲. گویندگان**
+- چند گوینده متمایز وجود دارد؟
+- ویژگی‌ها (در صورت قابل تشخیص): لحن، سبک صحبت، سطح تخصص
 
-**3. Content Breakdown**
-- Main topics discussed (with approximate timestamps)
-- Key points made
-- Questions raised
+**۳. تجزیه محتوا**
+- موضوعات اصلی مورد بحث (با برچسب‌های زمانی تقریبی)
+- نکات کلیدی مطرح‌شده
+- سؤالات مطرح‌شده
 
-**4. Emotional Analysis**
-- Overall tone (formal, casual, tense, friendly)
-- Notable emotional moments
-- Energy level throughout
+**۴. تحلیل احساسی**
+- لحن کلی (رسمی، غیررسمی، تنش‌آلود، دوستانه)
+- لحظات احساسی قابل توجه
+- سطح انرژی در طول ضبط
 
-**5. Actionable Items**
-- Decisions made
-- Action items mentioned
-- Follow-ups needed
+**۵. موارد قابل اقدام**
+- تصمیمات گرفته‌شده
+- موارد اقدام ذکرشده
+- پیگیری‌های مورد نیاز
 
-**6. Notable Quotes**
-Pull out 2-3 significant quotes with timestamps
+**۶. نقل قول‌های قابل توجه**
+۲-۳ نقل قول مهم با برچسب زمانی استخراج کن
 
-**7. Audio Quality**
-- Overall clarity
-- Any issues (background noise, interruptions, technical problems)`}
+**۷. کیفیت صوت**
+- وضوح کلی
+- هرگونه مشکل (نویز پس‌زمینه، وقفه‌ها، مشکلات فنی)`}
 />
 
-## Video Prompting
+## پرامپت‌نویسی ویدیویی
 
-Video combines visual and audio analysis over time. The challenge is guiding the AI to focus on the relevant aspects across the entire duration.
+ویدیو تحلیل بصری و صوتی را در طول زمان ترکیب می‌کند. چالش، هدایت هوش مصنوعی برای تمرکز بر جنبه‌های مرتبط در کل مدت زمان است.
 
-### Video Understanding
+### درک ویدیو
 
 <TryIt 
-  title="Comprehensive Video Analysis"
-  description="Get a structured breakdown of video content including timeline, visual elements, and key moments."
-  prompt={`Analyze this video: \${videoDescription}
+  title="تحلیل جامع ویدیو"
+  description="تجزیه ساختاریافته محتوای ویدیو شامل خط زمانی، عناصر بصری و لحظات کلیدی دریافت کنید."
+  prompt={`این ویدیو را تحلیل کن: \${videoDescription}
 
-Provide a comprehensive analysis:
+یک تحلیل جامع ارائه بده:
 
-**1. Overview** (2-3 sentences)
-What is this video about? What's the main message or purpose?
+**۱. نمای کلی** (۲-۳ جمله)
+این ویدیو درباره چیست؟ پیام یا هدف اصلی چیست؟
 
-**2. Timeline of Key Moments**
-| Timestamp | Event | Significance |
-|-----------|-------|--------------|
+**۲. خط زمانی لحظات کلیدی**
+| برچسب زمانی | رویداد | اهمیت |
+|-------------|--------|-------|
 | 0:00 | ... | ... |
 
-**3. Visual Analysis**
-- Setting/Location: Where does this take place?
-- People: Who appears? What are they doing?
-- Objects: Key items or props featured
-- Visual style: Quality, editing, graphics used
+**۳. تحلیل بصری**
+- محیط/مکان: این کجا اتفاق می‌افتد؟
+- افراد: چه کسی ظاهر می‌شود؟ چه کاری انجام می‌دهند؟
+- اشیاء: اقلام یا وسایل کلیدی نمایش داده‌شده
+- سبک بصری: کیفیت، ویرایش، گرافیک‌های استفاده‌شده
 
-**4. Audio Analysis**
-- Speech: Main points made (if any dialogue)
-- Music: Type, mood, how it's used
-- Sound effects: Notable audio elements
+**۴. تحلیل صوتی**
+- گفتار: نکات اصلی مطرح‌شده (در صورت وجود دیالوگ)
+- موسیقی: نوع، حال و هوا، نحوه استفاده
+- جلوه‌های صوتی: عناصر صوتی قابل توجه
 
-**5. Production Quality**
-- Video quality and editing
-- Pacing and structure
-- Effectiveness for its purpose
+**۵. کیفیت تولید**
+- کیفیت ویدیو و ویرایش
+- ریتم و ساختار
+- اثربخشی برای هدفش
 
-**6. Target Audience**
-Who is this video made for? Does it serve them well?
+**۶. مخاطب هدف**
+این ویدیو برای چه کسی ساخته شده؟ آیا به خوبی به آن‌ها خدمت می‌کند؟
 
-**7. Key Takeaways**
-What should a viewer remember from this video?`}
+**۷. نکات کلیدی**
+بیننده باید چه چیزی از این ویدیو به خاطر بسپارد؟`}
 />
 
-### Video Content Extraction
+### استخراج محتوای ویدیو
 
-For specific information extraction from videos, be precise about what you need.
+برای استخراج اطلاعات خاص از ویدیوها، دقیقاً بگویید چه چیزی نیاز دارید.
 
 <TryIt 
-  title="Video Data Extractor"
-  description="Extract specific information from videos with timestamps and structured output."
-  prompt={`Extract specific information from this video:
+  title="استخراج‌کننده داده ویدیو"
+  description="اطلاعات خاص را از ویدیوها با برچسب‌های زمانی و خروجی ساختاریافته استخراج کنید."
+  prompt={`اطلاعات خاص را از این ویدیو استخراج کن:
 
-Video type: \${videoType}
-Video description: \${videoDescription}
+نوع ویدیو: \${videoType}
+توصیف ویدیو: \${videoDescription}
 
-**Information to Extract**:
+**اطلاعات برای استخراج**:
 1. \${extractItem1}
 2. \${extractItem2}
 3. \${extractItem3}
 
-**Output Format**:
+**فرمت خروجی**:
 {
-  "video_summary": "Brief description",
-  "duration": "estimated length",
+  "video_summary": "توصیف مختصر",
+  "duration": "طول تخمینی",
   "extracted_data": [
     {
       "timestamp": "MM:SS",
-      "item": "What was found",
-      "details": "Additional context",
-      "confidence": "high/medium/low"
+      "item": "چه چیزی پیدا شد",
+      "details": "زمینه اضافی",
+      "confidence": "بالا/متوسط/پایین"
     }
   ],
-  "items_not_found": ["List anything requested but not present"],
-  "additional_observations": "Anything relevant not explicitly requested"
+  "items_not_found": ["لیست مواردی که درخواست شد اما وجود نداشت"],
+  "additional_observations": "هر چیز مرتبطی که صریحاً درخواست نشده"
 }`}
 />
 
-## Multimodal Combinations
+## ترکیبات چندوجهی
 
-The real power of multimodal AI emerges when you combine different types of input. These combinations enable analysis that would be impossible with any single modality.
+قدرت واقعی هوش مصنوعی چندوجهی زمانی ظاهر می‌شود که انواع مختلف ورودی را ترکیب کنید. این ترکیبات تحلیلی را ممکن می‌سازند که با هیچ وجه منفردی امکان‌پذیر نیست.
 
-### Image + Text Verification
+### تأیید تصویر + متن
 
-Check if images and their descriptions match—essential for e-commerce, content moderation, and quality assurance.
+بررسی کنید که آیا تصاویر و توصیفاتشان مطابقت دارند—ضروری برای تجارت الکترونیک، نظارت بر محتوا و تضمین کیفیت.
 
 <TryIt 
-  title="Image-Text Alignment Checker"
-  description="Verify that images accurately represent their text descriptions and vice versa."
-  prompt={`Analyze this image and its accompanying text for alignment:
+  title="بررسی‌کننده تطابق تصویر-متن"
+  description="تأیید کنید که تصاویر به درستی توصیفات متنی خود را نشان می‌دهند و بالعکس."
+  prompt={`این تصویر و متن همراه آن را برای تطابق تحلیل کن:
 
-**Image**: \${imageDescription}
-**Text Description**: "\${textDescription}"
+**تصویر**: \${imageDescription}
+**توصیف متنی**: "\${textDescription}"
 
-Evaluate:
+ارزیابی کن:
 
-**1. Accuracy Match**
-- Does the image show what the text describes?
-- Score: [1-10] with explanation
+**۱. تطابق دقت**
+- آیا تصویر آنچه متن توصیف می‌کند را نشان می‌دهد؟
+- امتیاز: [۱-۱۰] با توضیح
 
-**2. Text Claims vs. Visual Reality**
-| Claim in Text | Visible in Image? | Notes |
-|---------------|-------------------|-------|
-| ... | Yes/No/Partial | ... |
+**۲. ادعاهای متن در مقابل واقعیت بصری**
+| ادعا در متن | قابل مشاهده در تصویر؟ | یادداشت‌ها |
+|-------------|------------------------|-----------|
+| ... | بله/خیر/جزئی | ... |
 
-**3. Visual Elements Not Mentioned**
-What's visible in the image but not described in the text?
+**۳. عناصر بصری ذکرنشده**
+چه چیزی در تصویر قابل مشاهده است اما در متن توصیف نشده؟
 
-**4. Text Claims Not Visible**
-What's described in text but can't be verified from the image?
+**۴. ادعاهای متن غیرقابل مشاهده**
+چه چیزی در متن توصیف شده اما از تصویر قابل تأیید نیست؟
 
-**5. Recommendations**
-- For the text: [improvements to match image]
-- For the image: [improvements to match text]
+**۵. توصیه‌ها**
+- برای متن: [بهبودها برای مطابقت با تصویر]
+- برای تصویر: [بهبودها برای مطابقت با متن]
 
-**6. Overall Assessment**
-Is this image-text pair trustworthy for \${purpose}?`}
+**۶. ارزیابی کلی**
+آیا این جفت تصویر-متن برای \${purpose} قابل اعتماد است؟`}
 />
 
-### Screenshot + Code Debugging
+### اشکال‌زدایی تصویر صفحه + کد
 
-One of the most powerful combinations for developers: seeing the visual bug alongside the code.
+یکی از قدرتمندترین ترکیبات برای توسعه‌دهندگان: دیدن باگ بصری در کنار کد.
 
 <TryIt 
-  title="Visual Bug Debugger"
-  description="Debug UI issues by analyzing both the visual output and the source code together."
-  prompt={`I have a UI bug. Here's what I see and my code:
+  title="اشکال‌زدای باگ بصری"
+  description="مشکلات UI را با تحلیل همزمان خروجی بصری و کد منبع اشکال‌زدایی کنید."
+  prompt={`یک باگ UI دارم. این چیزی است که می‌بینم و کدم:
 
-**Screenshot Description**: \${screenshotDescription}
-**What's Wrong**: \${bugDescription}
-**Expected Behavior**: \${expectedBehavior}
+**توصیف تصویر صفحه**: \${screenshotDescription}
+**مشکل چیست**: \${bugDescription}
+**رفتار مورد انتظار**: \${expectedBehavior}
 
-**Relevant Code**:
+**کد مرتبط**:
 \`\`\`\${language}
 \${code}
 \`\`\`
 
-Please help me:
+لطفاً کمکم کن:
 
-**1. Root Cause Analysis**
-- What in the code is causing this visual issue?
-- Which specific line(s) are responsible?
+**۱. تحلیل علت ریشه‌ای**
+- چه چیزی در کد باعث این مشکل بصری می‌شود؟
+- کدام خط(های) خاص مسئول هستند؟
 
-**2. Explanation**
-- Why does this code produce this visual result?
-- What's the underlying mechanism?
+**۲. توضیح**
+- چرا این کد این نتیجه بصری را تولید می‌کند؟
+- مکانیزم زیربنایی چیست؟
 
-**3. The Fix**
+**۳. رفع**
 \`\`\`\${language}
-// Corrected code here
+// کد اصلاح‌شده اینجا
 \`\`\`
 
-**4. Prevention**
-- How to avoid this type of bug in the future
-- Any related issues to check for`}
+**۴. پیشگیری**
+- چگونه از این نوع باگ در آینده جلوگیری کنیم
+- هرگونه مشکل مرتبط برای بررسی`}
 />
 
-### Multi-Image Decision Making
+### تصمیم‌گیری چند تصویره
 
-When choosing between options, structured comparison helps make better decisions.
+هنگام انتخاب بین گزینه‌ها، مقایسه ساختاریافته به تصمیم‌گیری بهتر کمک می‌کند.
 
 <TryIt 
-  title="Visual Option Comparator"
-  description="Compare multiple images systematically against your criteria to make informed decisions."
-  prompt={`I'm choosing between these options for \${purpose}:
+  title="مقایسه‌کننده گزینه‌های بصری"
+  description="چند تصویر را به طور سیستماتیک با معیارهای خود مقایسه کنید تا تصمیمات آگاهانه بگیرید."
+  prompt={`بین این گزینه‌ها برای \${purpose} انتخاب می‌کنم:
 
-**Option A**: \${optionA}
-**Option B**: \${optionB}
-**Option C**: \${optionC}
+**گزینه A**: \${optionA}
+**گزینه B**: \${optionB}
+**گزینه C**: \${optionC}
 
-**My Criteria** (in order of importance):
-1. \${criterion1} (weight: high)
-2. \${criterion2} (weight: medium)
-3. \${criterion3} (weight: low)
+**معیارهای من** (به ترتیب اهمیت):
+1. \${criterion1} (وزن: بالا)
+2. \${criterion2} (وزن: متوسط)
+3. \${criterion3} (وزن: پایین)
 
-Provide:
+ارائه بده:
 
-**Comparison Matrix**
-| Criterion | Option A | Option B | Option C |
-|-----------|----------|----------|----------|
-| \${criterion1} | Score + notes | ... | ... |
+**ماتریس مقایسه**
+| معیار | گزینه A | گزینه B | گزینه C |
+|-------|---------|---------|---------|
+| \${criterion1} | امتیاز + یادداشت‌ها | ... | ... |
 | \${criterion2} | ... | ... | ... |
 | \${criterion3} | ... | ... | ... |
 
-**Weighted Scores**
-- Option A: X/10
-- Option B: X/10
-- Option C: X/10
+**امتیازات وزن‌دار**
+- گزینه A: X/10
+- گزینه B: X/10
+- گزینه C: X/10
 
-**Recommendation**
-Based on your stated priorities, I recommend [Option] because...
+**توصیه**
+بر اساس اولویت‌های اعلام‌شده شما، [گزینه] را توصیه می‌کنم چون...
 
-**Caveats**
-- If [condition], consider [alternative] instead
-- Watch out for [potential issue]`}
+**نکات احتیاطی**
+- اگر [شرط]، [جایگزین] را در نظر بگیرید
+- مراقب [مشکل بالقوه] باشید`}
 />
 
-## Best Practices for Multimodal Prompts
+## بهترین روش‌ها برای پرامپت‌های چندوجهی
 
-Getting great results from multimodal AI requires understanding both its capabilities and limitations.
+گرفتن نتایج عالی از هوش مصنوعی چندوجهی نیاز به درک هم قابلیت‌ها و هم محدودیت‌های آن دارد.
 
-### What Makes Multimodal Prompts Effective
-
-<InfoGrid items={[
-  { label: "Provide Context", description: "Tell the model what the media is and why you're analyzing it", example: "\"This is a product photo for our e-commerce site...\"", color: "green" },
-  { label: "Be Specific", description: "Ask about particular elements rather than general impressions", example: "\"Focus on the pricing table in the top-right corner\"", color: "green" },
-  { label: "Reference Locations", description: "Point to specific areas using spatial language", example: "\"In the bottom-left quadrant...\"", color: "green" },
-  { label: "State Your Goal", description: "Explain what you'll use the analysis for", example: "\"I need to decide if this image works for our mobile app\"", color: "green" }
-]} />
-
-### Common Pitfalls to Avoid
+### چه چیزی پرامپت‌های چندوجهی را مؤثر می‌کند
 
 <InfoGrid items={[
-  { label: "Assuming Perfect Vision", description: "Models may miss small details, especially in low-resolution images", example: "Don't ask about 8pt text in a compressed screenshot", color: "red" },
-  { label: "Expecting Perfect OCR", description: "Handwriting, unusual fonts, and complex layouts can cause errors", example: "Verify extracted text from receipts and forms", color: "red" },
-  { label: "Ignoring Content Policies", description: "Models have restrictions on certain types of content", example: "Won't identify specific individuals or analyze inappropriate content", color: "red" },
-  { label: "Skipping Verification", description: "Always verify critical information extracted from media", example: "Double-check numbers, dates, and names from document extraction", color: "red" }
+  { label: "زمینه ارائه دهید", description: "به مدل بگویید رسانه چیست و چرا آن را تحلیل می‌کنید", example: "\"این یک عکس محصول برای سایت تجارت الکترونیک ماست...\"", color: "green" },
+  { label: "مشخص باشید", description: "درباره عناصر خاص بپرسید نه برداشت‌های کلی", example: "\"روی جدول قیمت‌گذاری در گوشه بالا-راست تمرکز کن\"", color: "green" },
+  { label: "به مکان‌ها اشاره کنید", description: "با استفاده از زبان مکانی به نواحی خاص اشاره کنید", example: "\"در ربع پایین-چپ...\"", color: "green" },
+  { label: "هدفتان را بیان کنید", description: "توضیح دهید تحلیل را برای چه استفاده می‌کنید", example: "\"باید تصمیم بگیرم آیا این تصویر برای اپ موبایل ما کار می‌کند\"", color: "green" }
 ]} />
 
-### Handling Limitations Gracefully
+### دام‌های رایج برای اجتناب
+
+<InfoGrid items={[
+  { label: "فرض بینایی کامل", description: "مدل‌ها ممکن است جزئیات کوچک را از دست بدهند، به خصوص در تصاویر با وضوح پایین", example: "درباره متن ۸ پوینتی در یک تصویر فشرده نپرسید", color: "red" },
+  { label: "انتظار OCR کامل", description: "دست‌خط، فونت‌های غیرمعمول و چیدمان‌های پیچیده می‌توانند باعث خطا شوند", example: "متن استخراج‌شده از رسیدها و فرم‌ها را تأیید کنید", color: "red" },
+  { label: "نادیده گرفتن سیاست‌های محتوا", description: "مدل‌ها محدودیت‌هایی برای انواع خاصی از محتوا دارند", example: "افراد خاص را شناسایی نمی‌کند یا محتوای نامناسب را تحلیل نمی‌کند", color: "red" },
+  { label: "رد شدن از تأیید", description: "همیشه اطلاعات حیاتی استخراج‌شده از رسانه را تأیید کنید", example: "اعداد، تاریخ‌ها و نام‌ها از استخراج سند را دوباره بررسی کنید", color: "red" }
+]} />
+
+### مدیریت محدودیت‌ها با ظرافت
 
 <TryIt 
-  title="Uncertainty-Aware Image Analysis"
-  description="This prompt explicitly handles cases where the model can't see clearly or is uncertain."
-  prompt={`Analyze this image: \${imageDescription}
+  title="تحلیل تصویر با آگاهی از عدم قطعیت"
+  description="این پرامپت به صراحت مواردی را که مدل نمی‌تواند واضح ببیند یا مطمئن نیست مدیریت می‌کند."
+  prompt={`این تصویر را تحلیل کن: \${imageDescription}
 
-**Instructions for Handling Uncertainty**:
+**دستورالعمل‌ها برای مدیریت عدم قطعیت**:
 
-IF YOU CAN'T SEE SOMETHING CLEARLY:
-- Don't guess or make up details
-- Say: "I can see [what's visible] but cannot clearly make out [unclear element]"
-- Suggest what additional information would help
+اگر چیزی را واضح نمی‌بینی:
+- حدس نزن یا جزئیات جعل نکن
+- بگو: "[آنچه قابل مشاهده است] را می‌بینم اما نمی‌توانم [عنصر نامشخص] را واضح تشخیص دهم"
+- پیشنهاد بده چه اطلاعات اضافی کمک می‌کند
 
-IF CONTENT SEEMS RESTRICTED:
-- Explain what you can and cannot analyze
-- Focus on permitted aspects of the analysis
+اگر محتوا محدود به نظر می‌رسد:
+- توضیح بده چه چیزی را می‌توانی و چه چیزی را نمی‌توانی تحلیل کنی
+- روی جنبه‌های مجاز تحلیل تمرکز کن
 
-IF ASKED ABOUT PEOPLE:
-- Describe actions, positions, and general characteristics
-- Do not attempt to identify specific individuals
-- Focus on: number of people, activities, expressions, attire
+اگر درباره افراد سؤال شد:
+- اقدامات، موقعیت‌ها و ویژگی‌های کلی را توصیف کن
+- تلاش نکن افراد خاص را شناسایی کنی
+- تمرکز کن بر: تعداد افراد، فعالیت‌ها، حالات چهره، پوشش
 
-**Your Analysis**:
-[Proceed with analysis, applying these guidelines]`}
+**تحلیل شما**:
+[با تحلیل ادامه بده، این دستورالعمل‌ها را اعمال کن]`}
 />
 
 <Quiz 
-  question="Why does prompting matter MORE for multimodal models than for text-only models?"
+  question="چرا پرامپت‌نویسی برای مدل‌های چندوجهی بیشتر از مدل‌های فقط متنی اهمیت دارد؟"
   options={[
-    "Multimodal models are less intelligent and need more help",
-    "Images and audio are inherently ambiguous—the AI needs context to know what aspects matter",
-    "Multimodal models can only process one type of input at a time",
-    "Text prompts don't work with multimodal models"
+    "مدل‌های چندوجهی کمتر هوشمند هستند و به کمک بیشتری نیاز دارند",
+    "تصاویر و صدا ذاتاً مبهم هستند—هوش مصنوعی نیاز به زمینه دارد تا بداند چه جنبه‌هایی مهم هستند",
+    "مدل‌های چندوجهی فقط می‌توانند یک نوع ورودی را در هر لحظه پردازش کنند",
+    "پرامپت‌های متنی با مدل‌های چندوجهی کار نمی‌کنند"
   ]}
   correctIndex={1}
-  explanation="When you look at an image, you instantly know what's important based on your goals. The AI doesn't have this context—a photo of a wall crack could be an engineering concern, an artistic texture, or irrelevant background. Your prompt determines how the AI interprets and focuses on the media you provide."
+  explanation="وقتی به یک تصویر نگاه می‌کنید، فوراً می‌دانید چه چیزی بر اساس اهدافتان مهم است. هوش مصنوعی این زمینه را ندارد—یک عکس از ترک دیوار می‌تواند نگرانی مهندسی، بافت هنری یا پس‌زمینه نامربوط باشد. پرامپت شما تعیین می‌کند که هوش مصنوعی چگونه رسانه‌ای که ارائه می‌دهید را تفسیر کرده و روی آن تمرکز کند."
 />

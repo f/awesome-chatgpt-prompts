@@ -21,7 +21,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "lint:mdx": "node scripts/lint-mdx.js"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.11.1",

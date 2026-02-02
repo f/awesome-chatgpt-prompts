@@ -278,134 +278,134 @@ Tagline: _______________
 Κείμενο: "Ο Tim Cook ανακοίνωσε ότι η Apple θα επενδύσει 1 δισεκατομμύριο δολάρια σε νέα εγκατάσταση στο Austin μέχρι τον Δεκέμβριο 2024."`}
 />
 
-## Multi-Part Structured Responses
+## Πολυμερείς Δομημένες Απαντήσεις
 
-When you need comprehensive output covering multiple aspects, define distinct parts with clear boundaries. Specify exactly what goes in each part—format, length, and content type. This prevents the model from blending sections or omitting parts.
+Όταν χρειάζεστε ολοκληρωμένη έξοδο που καλύπτει πολλαπλές πτυχές, ορίστε ξεχωριστά μέρη με σαφή όρια. Καθορίστε ακριβώς τι πηγαίνει σε κάθε μέρος—μορφή, μήκος, και τύπος περιεχομένου. Αυτό αποτρέπει το μοντέλο από το να αναμιγνύει ενότητες ή να παραλείπει μέρη.
 
 ```
-Research this topic and provide:
+Ερεύνησε αυτό το θέμα και δώσε:
 
-### PART 1: EXECUTIVE SUMMARY
-[2-3 sentence overview]
+### ΜΕΡΟΣ 1: ΕΚΤΕΛΕΣΤΙΚΗ ΣΥΝΟΨΗ
+[Επισκόπηση 2-3 προτάσεων]
 
-### PART 2: KEY FINDINGS
-[Exactly 5 bullet points]
+### ΜΕΡΟΣ 2: ΒΑΣΙΚΑ ΕΥΡΗΜΑΤΑ
+[Ακριβώς 5 κουκκίδες]
 
-### PART 3: DATA TABLE
-| Metric | Value | Source |
-|--------|-------|--------|
-[Include 5 rows minimum]
+### ΜΕΡΟΣ 3: ΠΙΝΑΚΑΣ ΔΕΔΟΜΕΝΩΝ
+| Μετρική | Τιμή | Πηγή |
+|---------|------|------|
+[Συμπερίλαβε τουλάχιστον 5 σειρές]
 
-### PART 4: RECOMMENDATIONS
-[Numbered list of 3 actionable recommendations]
+### ΜΕΡΟΣ 4: ΣΥΣΤΑΣΕΙΣ
+[Αριθμημένη λίστα 3 πρακτικών συστάσεων]
 
-### PART 5: FURTHER READING
-[3 suggested resources with brief descriptions]
+### ΜΕΡΟΣ 5: ΠΕΡΑΙΤΕΡΩ ΑΝΑΓΝΩΣΗ
+[3 προτεινόμενοι πόροι με σύντομες περιγραφές]
 ```
 
-## Conditional Formatting
+## Υπό Συνθήκη Μορφοποίηση
 
-Conditional formatting lets you define different output formats based on the input's characteristics. This is powerful for classification, triage, and routing systems where the response format should vary based on what the model detects. Use clear if/then logic with explicit output templates for each case.
+Η υπό συνθήκη μορφοποίηση σας επιτρέπει να ορίσετε διαφορετικές μορφές εξόδου βάσει των χαρακτηριστικών της εισόδου. Αυτό είναι ισχυρό για συστήματα ταξινόμησης, διαλογής, και δρομολόγησης όπου η μορφή απάντησης πρέπει να ποικίλει βάσει του τι ανιχνεύει το μοντέλο. Χρησιμοποιήστε σαφή λογική if/then με ρητά templates εξόδου για κάθε περίπτωση.
 
 <TryIt 
   compact
-  title="Ticket Classification"
-  prompt={`Classify this support ticket.
+  title="Ταξινόμηση Αιτημάτων"
+  prompt={`Ταξινόμησε αυτό το αίτημα υποστήριξης.
 
-If URGENT (system down, security issue, data loss):
-  Return: 🔴 URGENT | [Category] | [Suggested Action]
+Αν ΕΠΕΙΓΟΝ (σύστημα κάτω, ζήτημα ασφαλείας, απώλεια δεδομένων):
+  Επέστρεψε: 🔴 ΕΠΕΙΓΟΝ | [Κατηγορία] | [Προτεινόμενη Ενέργεια]
 
-If HIGH (affects multiple users, revenue impact):
-  Return: 🟠 HIGH | [Category] | [Suggested Action]
+Αν ΥΨΗΛΟ (επηρεάζει πολλούς χρήστες, επίπτωση σε έσοδα):
+  Επέστρεψε: 🟠 ΥΨΗΛΟ | [Κατηγορία] | [Προτεινόμενη Ενέργεια]
 
-If MEDIUM (single user affected, workaround exists):
-  Return: 🟡 MEDIUM | [Category] | [Suggested Action]
+Αν ΜΕΣΑΙΟ (επηρεάζεται μόνος χρήστης, υπάρχει workaround):
+  Επέστρεψε: 🟡 ΜΕΣΑΙΟ | [Κατηγορία] | [Προτεινόμενη Ενέργεια]
 
-If LOW (questions, feature requests):
-  Return: 🟢 LOW | [Category] | [Suggested Action]
+Αν ΧΑΜΗΛΟ (ερωτήσεις, αιτήματα χαρακτηριστικών):
+  Επέστρεψε: 🟢 ΧΑΜΗΛΟ | [Κατηγορία] | [Προτεινόμενη Ενέργεια]
 
-Ticket: "I can't login to my account. I've tried resetting my password twice but still getting an error. This is blocking my entire team from accessing the dashboard."`}
+Αίτημα: "Δεν μπορώ να συνδεθώ στον λογαριασμό μου. Έχω δοκιμάσει να επαναφέρω τον κωδικό πρόσβασής μου δύο φορές αλλά συνεχίζω να παίρνω σφάλμα. Αυτό εμποδίζει όλη την ομάδα μου από την πρόσβαση στο dashboard."`}
 />
 
-## Arrays and Lists in JSON
+## Πίνακες και Λίστες σε JSON
 
-Extracting multiple items into arrays requires careful schema definition. Specify the array structure, what each item should contain, and how to handle edge cases (empty arrays, single items). Including a count field helps verify completeness.
+Η εξαγωγή πολλαπλών στοιχείων σε πίνακες απαιτεί προσεκτικό ορισμό schema. Καθορίστε τη δομή πίνακα, τι πρέπει να περιέχει κάθε στοιχείο, και πώς να χειριστείτε ακραίες περιπτώσεις (κενοί πίνακες, μονά στοιχεία). Η συμπερίληψη πεδίου count βοηθά στην επαλήθευση πληρότητας.
 
 ```
-Extract all action items from this meeting transcript.
+Εξαγάγε όλα τα action items από αυτό το πρακτικό συνάντησης.
 
-Return as JSON array:
+Επέστρεψε ως JSON array:
 {
   "action_items": [
     {
-      "task": "string describing the task",
-      "assignee": "person name or 'Unassigned'",
-      "deadline": "date if mentioned, else null",
+      "task": "string που περιγράφει την εργασία",
+      "assignee": "όνομα ατόμου ή 'Μη ανατεθειμένο'",
+      "deadline": "ημερομηνία αν αναφέρεται, αλλιώς null",
       "priority": "high" | "medium" | "low",
-      "context": "relevant quote from transcript"
+      "context": "σχετικό απόσπασμα από πρακτικό"
     }
   ],
   "total_count": number
 }
 
-Transcript: "[meeting transcript]"
+Πρακτικό: "[πρακτικό συνάντησης]"
 ```
 
-## Validation Instructions
+## Οδηγίες Επικύρωσης
 
-Self-validation prompts the model to check its own output before responding. This catches common issues like missing sections, placeholder text, or constraint violations. The model will iterate internally to fix problems, improving output quality without additional API calls.
-
-```
-Generate the report, then:
-
-VALIDATION CHECKLIST:
-□ All required sections present
-□ No placeholder text remaining
-□ All statistics include sources
-□ Word count within 500-700 words
-□ Conclusion ties back to introduction
-
-If any check fails, fix before responding.
-```
-
-## Handling Optional Fields
-
-Real-world data often has missing values. Explicitly instruct the model on how to handle optional fields—using `null` is cleaner than empty strings and easier to process programmatically. Also prevent "hallucination" of missing data by emphasizing that the model should never invent information.
+Η αυτο-επικύρωση προτρέπει το μοντέλο να ελέγξει τη δική του έξοδο πριν απαντήσει. Αυτό πιάνει κοινά προβλήματα όπως ελλείπουσες ενότητες, κείμενο placeholder, ή παραβιάσεις περιορισμών. Το μοντέλο θα επαναλάβει εσωτερικά για να διορθώσει προβλήματα, βελτιώνοντας την ποιότητα εξόδου χωρίς επιπλέον API κλήσεις.
 
 ```
-Extract contact information. Use null for missing fields.
+Δημιούργησε την αναφορά, μετά:
+
+ΛΙΣΤΑ ΕΛΕΓΧΟΥ ΕΠΙΚΥΡΩΣΗΣ:
+□ Όλες οι απαιτούμενες ενότητες παρούσες
+□ Κανένα κείμενο placeholder δεν απομένει
+□ Όλα τα στατιστικά περιλαμβάνουν πηγές
+□ Αριθμός λέξεων εντός 500-700 λέξεων
+□ Το συμπέρασμα συνδέεται με την εισαγωγή
+
+Αν οποιοσδήποτε έλεγχος αποτύχει, διόρθωσε πριν απαντήσεις.
+```
+
+## Χειρισμός Προαιρετικών Πεδίων
+
+Τα δεδομένα πραγματικού κόσμου συχνά έχουν ελλείπουσες τιμές. Δώστε ρητές οδηγίες στο μοντέλο για το πώς να χειριστεί προαιρετικά πεδία—η χρήση `null` είναι καθαρότερη από κενά strings και ευκολότερη στην προγραμματική επεξεργασία. Επίσης αποτρέψτε την "παραισθησιογένεση" ελλειπόντων δεδομένων τονίζοντας ότι το μοντέλο δεν πρέπει ποτέ να επινοεί πληροφορίες.
+
+```
+Εξαγάγε στοιχεία επικοινωνίας. Χρησιμοποίησε null για ελλείποντα πεδία.
 
 {
-  "name": "string (required)",
-  "email": "string or null",
-  "phone": "string or null", 
-  "company": "string or null",
-  "role": "string or null",
-  "linkedin": "URL string or null"
+  "name": "string (απαιτούμενο)",
+  "email": "string ή null",
+  "phone": "string ή null", 
+  "company": "string ή null",
+  "role": "string ή null",
+  "linkedin": "URL string ή null"
 }
 
-IMPORTANT: 
-- Never invent information not in the source
-- Use null, not empty strings, for missing data
-- Phone numbers in E.164 format if possible
+ΣΗΜΑΝΤΙΚΟ: 
+- Ποτέ μην επινοείς πληροφορίες που δεν υπάρχουν στην πηγή
+- Χρησιμοποίησε null, όχι κενά strings, για ελλείποντα δεδομένα
+- Αριθμοί τηλεφώνου σε μορφή E.164 αν είναι δυνατόν
 ```
 
-## Summary
+## Σύνοψη
 
-<Callout type="tip" title="Key Techniques">
-Be explicit about format, use examples, specify types, handle edge cases with null values, and ask the model to validate its own output.
+<Callout type="tip" title="Βασικές Τεχνικές">
+Να είστε ρητοί για τη μορφή, χρησιμοποιήστε παραδείγματα, καθορίστε τύπους, χειριστείτε ακραίες περιπτώσεις με null τιμές, και ζητήστε από το μοντέλο να επικυρώσει τη δική του έξοδο.
 </Callout>
 
 <Quiz 
-  question="What's the main advantage of structured output over unstructured text?"
+  question="Ποιο είναι το κύριο πλεονέκτημα της δομημένης εξόδου έναντι του μη δομημένου κειμένου;"
   options={[
-    "It uses fewer tokens",
-    "It's easier for the AI to generate",
-    "It can be parsed programmatically and validated",
-    "It always produces correct information"
+    "Χρησιμοποιεί λιγότερα tokens",
+    "Είναι ευκολότερο για την AI να δημιουργήσει",
+    "Μπορεί να αναλυθεί προγραμματικά και να επικυρωθεί",
+    "Παράγει πάντα σωστές πληροφορίες"
   ]}
   correctIndex={2}
-  explanation="Structured outputs like JSON can be parsed by code, compared across queries, integrated into workflows, and validated for completeness—things that are difficult or impossible with freeform text."
+  explanation="Δομημένες εξόδοι όπως το JSON μπορούν να αναλυθούν από κώδικα, να συγκριθούν μεταξύ queries, να ενσωματωθούν σε ροές εργασίας, και να επικυρωθούν για πληρότητα—πράγματα που είναι δύσκολα ή αδύνατα με ελεύθερο κείμενο."
 />
 
-Structured outputs are essential for building reliable AI-powered applications. In the next chapter, we'll explore chain-of-thought prompting for complex reasoning tasks.
+Οι δομημένες εξόδοι είναι απαραίτητες για τη δημιουργία αξιόπιστων εφαρμογών με AI. Στο επόμενο κεφάλαιο, θα εξερευνήσουμε το chain-of-thought prompting για πολύπλοκες εργασίες συλλογισμού.

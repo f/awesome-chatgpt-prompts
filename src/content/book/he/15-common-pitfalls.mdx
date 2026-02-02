@@ -1,373 +1,373 @@
-Even experienced prompt engineers fall into predictable traps. The good news? Once you recognize these patterns, they're easy to avoid. This chapter walks through the most common pitfalls, explains why they happen, and gives you concrete strategies to sidestep them.
+גם מהנדסי פרומפטים מנוסים נופלים למלכודות צפויות. החדשות הטובות? ברגע שתזהו את הדפוסים האלה, קל להימנע מהם. פרק זה עובר על המלכודות הנפוצות ביותר, מסביר מדוע הן קורות, ונותן לכם אסטרטגיות קונקרטיות להתחמק מהן.
 
-<Callout type="warning" title="Why Pitfalls Matter">
-A single pitfall can turn a powerful AI into a frustrating tool. Understanding these patterns is often the difference between "AI doesn't work for me" and "AI transformed my workflow."
+<Callout type="warning" title="מדוע מלכודות חשובות">
+מלכודת בודדת יכולה להפוך בינה מלאכותית חזקה לכלי מתסכל. הבנת הדפוסים האלה היא לעתים קרובות ההבדל בין "בינה מלאכותית לא עובדת בשבילי" לבין "בינה מלאכותית שינתה את זרימת העבודה שלי."
 </Callout>
 
-## The Vagueness Trap
+## מלכודת העמימות
 
-**The Pattern**: You know what you want, so you assume the AI will figure it out too. But vague prompts produce vague results.
+**הדפוס**: אתם יודעים מה אתם רוצים, אז אתם מניחים שהבינה המלאכותית תבין גם. אבל פרומפטים עמומים מייצרים תוצאות עמומות.
 
 <Compare 
-  before={{ label: "Vague prompt", content: "Write something about marketing." }}
-  after={{ label: "Specific prompt", content: "Write a 300-word LinkedIn post about the importance of brand consistency for B2B SaaS companies, targeting marketing managers. Use a professional but approachable tone. Include one concrete example." }}
+  before={{ label: "פרומפט עמום", content: "כתוב משהו על שיווק." }}
+  after={{ label: "פרומפט ספציפי", content: "כתוב פוסט של 300 מילים ל-LinkedIn על חשיבות עקביות המותג עבור חברות B2B SaaS, המיועד למנהלי שיווק. השתמש בטון מקצועי אך נגיש. כלול דוגמה קונקרטית אחת." }}
 />
 
-**Why it happens**: We naturally skip details when we think they're "obvious." But what's obvious to you isn't obvious to a model that has no context about your situation, audience, or goals.
+**מדוע זה קורה**: אנחנו באופן טבעי מדלגים על פרטים כשאנחנו חושבים שהם "ברורים מאליהם." אבל מה שברור לכם לא ברור למודל שאין לו שום הקשר על המצב, הקהל או המטרות שלכם.
 
 <TryIt 
-  title="Specificity Improver"
-  description="Take a vague prompt and make it specific. Notice how adding details transforms the quality of results."
-  prompt={`I have a vague prompt that needs improvement.
+  title="משפר ספציפיות"
+  description="קחו פרומפט עמום והפכו אותו לספציפי. שימו לב כיצד הוספת פרטים משנה את איכות התוצאות."
+  prompt={`יש לי פרומפט עמום שצריך שיפור.
 
-Original vague prompt: "\${vaguePrompt}"
+הפרומפט העמום המקורי: "\${vaguePrompt}"
 
-Make this prompt specific by adding:
-1. **Audience**: Who will read/use this?
-2. **Format**: What structure should it have?
-3. **Length**: How long should it be?
-4. **Tone**: What voice or style?
-5. **Context**: What's the situation or purpose?
-6. **Constraints**: Any must-haves or must-avoids?
+הפוך את הפרומפט הזה לספציפי על ידי הוספת:
+1. **קהל יעד**: מי יקרא/ישתמש בזה?
+2. **פורמט**: איזו מבנה צריך להיות לו?
+3. **אורך**: כמה ארוך הוא צריך להיות?
+4. **טון**: איזה קול או סגנון?
+5. **הקשר**: מה המצב או המטרה?
+6. **מגבלות**: האם יש דברים שחייבים לכלול או להימנע מהם?
 
-Rewrite the prompt with all these details included.`}
+כתוב מחדש את הפרומפט עם כל הפרטים האלה כלולים.`}
 />
 
-## The Overloading Trap
+## מלכודת העומס
 
-**The Pattern**: You try to get everything in one prompt—comprehensive, funny, professional, beginner-friendly, advanced, SEO-optimized, and short. The result? The AI misses half your requirements or produces a confused mess.
+**הדפוס**: אתם מנסים לקבל הכל בפרומפט אחד—מקיף, מצחיק, מקצועי, ידידותי למתחילים, מתקדם, ממוטב ל-SEO, וקצר. התוצאה? הבינה המלאכותית מפספסת מחצית מהדרישות שלכם או מייצרת בלגן מבולבל.
 
 <Compare 
-  before={{ label: "Overloaded prompt", content: "Write a blog post about AI that's SEO optimized and includes code examples and is funny but professional and targets beginners but also has advanced tips and should be 500 words but comprehensive and mentions our product and has a call to action..." }}
-  after={{ label: "Focused prompt", content: "Write a 500-word blog post introducing AI to beginners.\n\nRequirements:\n1. Explain one core concept clearly\n2. Include one simple code example\n3. End with a call to action\n\nTone: Professional but approachable" }}
+  before={{ label: "פרומפט עמוס", content: "כתוב פוסט בלוג על בינה מלאכותית שהוא ממוטב ל-SEO וכולל דוגמאות קוד והוא מצחיק אבל מקצועי ומיועד למתחילים אבל גם יש בו טיפים מתקדמים וצריך להיות 500 מילים אבל מקיף ומזכיר את המוצר שלנו ויש בו קריאה לפעולה..." }}
+  after={{ label: "פרומפט ממוקד", content: "כתוב פוסט בלוג של 500 מילים המציג בינה מלאכותית למתחילים.\n\nדרישות:\n1. הסבר מושג מרכזי אחד בבהירות\n2. כלול דוגמת קוד פשוטה אחת\n3. סיים עם קריאה לפעולה\n\nטון: מקצועי אך נגיש" }}
 />
 
-**Why it happens**: Fear of multiple interactions, or wanting to "get it all out" in one go. But cognitive overload affects AI just like it affects humans—too many competing requirements leads to dropped balls.
+**מדוע זה קורה**: פחד מאינטראקציות מרובות, או רצון "להוציא הכל" בבת אחת. אבל עומס קוגניטיבי משפיע על בינה מלאכותית בדיוק כמו שהוא משפיע על בני אדם—יותר מדי דרישות מתחרות מובילות להחמצות.
 
 <InfoGrid items={[
-  { label: "Limit Requirements", description: "Stick to 3-5 key requirements per prompt", example: "Focus on: audience, format, length, one key constraint", exampleType: "text", color: "green" },
-  { label: "Use Numbered Lists", description: "Structure makes priorities clear", example: "1. Must have X, 2. Should have Y, 3. Nice to have Z", exampleType: "text", color: "green" },
-  { label: "Chain Prompts", description: "Break complex tasks into steps", example: "First: outline. Then: draft section 1. Then: draft section 2.", exampleType: "text", color: "green" },
-  { label: "Prioritize Ruthlessly", description: "What's essential vs. nice-to-have?", example: "If I could only get ONE thing right, what would it be?", color: "green" }
+  { label: "הגבילו דרישות", description: "היצמדו ל-3-5 דרישות מפתח לכל פרומפט", example: "התמקדו ב: קהל יעד, פורמט, אורך, מגבלה מרכזית אחת", exampleType: "text", color: "green" },
+  { label: "השתמשו ברשימות ממוספרות", description: "מבנה מבהיר את סדרי העדיפויות", example: "1. חובה X, 2. רצוי Y, 3. נחמד שיהיה Z", exampleType: "text", color: "green" },
+  { label: "שרשרו פרומפטים", description: "פרקו משימות מורכבות לשלבים", example: "ראשית: מתאר. אז: טיוטה של חלק 1. אז: טיוטה של חלק 2.", exampleType: "text", color: "green" },
+  { label: "תעדפו בחוסר רחמים", description: "מה חיוני לעומת נחמד שיהיה?", example: "אם הייתי יכול לקבל רק דבר אחד נכון, מה זה היה?", color: "green" }
 ]} />
 
-<Callout type="tip" title="Learn Prompt Chaining">
-When a single prompt gets overloaded, [prompt chaining](/book/11-prompt-chaining) is often the solution. Break complex tasks into a sequence of focused prompts, where each step builds on the previous one.
+<Callout type="tip" title="למדו שרשור פרומפטים">
+כאשר פרומפט בודד נעשה עמוס מדי, [שרשור פרומפטים](/book/11-prompt-chaining) הוא לעתים קרובות הפתרון. פרקו משימות מורכבות לרצף של פרומפטים ממוקדים, כאשר כל שלב בונה על הקודם.
 </Callout>
 
-## The Assumption Trap
+## מלכודת ההנחות
 
-**The Pattern**: You reference something "from earlier" or assume the AI knows your project, your company, or your previous conversations. It doesn't.
+**הדפוס**: אתם מתייחסים למשהו "מקודם" או מניחים שהבינה המלאכותית מכירה את הפרויקט שלכם, החברה שלכם, או השיחות הקודמות שלכם. היא לא מכירה.
 
 <Compare 
-  before={{ label: "Assumes context", content: "Update the function I showed you earlier to add error handling." }}
-  after={{ label: "Provides context", content: "Update this function to add error handling:\n\n```python\ndef calculate_total(items):\n    return sum(item.price for item in items)\n```\n\nAdd try/except for empty lists and invalid items." }}
+  before={{ label: "מניח הקשר", content: "עדכן את הפונקציה שהראיתי לך קודם כדי להוסיף טיפול בשגיאות." }}
+  after={{ label: "מספק הקשר", content: "עדכן את הפונקציה הזו כדי להוסיף טיפול בשגיאות:\n\n```python\ndef calculate_total(items):\n    return sum(item.price for item in items)\n```\n\nהוסף try/except עבור רשימות ריקות ופריטים לא תקינים." }}
 />
 
-**Why it happens**: AI conversations feel like talking to a colleague. But unlike colleagues, most AI models have no persistent memory between sessions—each conversation starts fresh.
+**מדוע זה קורה**: שיחות עם בינה מלאכותית מרגישות כמו לדבר עם עמית. אבל בניגוד לעמיתים, לרוב מודלי הבינה המלאכותית אין זיכרון מתמשך בין סשנים—כל שיחה מתחילה מחדש.
 
 <TryIt 
-  title="Context Completeness Check"
-  description="Use this to verify your prompt contains all necessary context before sending."
-  prompt={`Review this prompt for missing context:
+  title="בדיקת שלמות הקשר"
+  description="השתמשו בזה כדי לוודא שהפרומפט שלכם מכיל את כל ההקשר הנחוץ לפני שליחה."
+  prompt={`בדוק את הפרומפט הזה עבור הקשר חסר:
 
 "\${promptToCheck}"
 
-Check for:
-1. **Referenced but not included**: Does it mention "the code," "the document," "earlier," or "above" without including the actual content?
+בדוק עבור:
+1. **מוזכר אך לא כלול**: האם הוא מזכיר "הקוד," "המסמך," "קודם," או "למעלה" מבלי לכלול את התוכן בפועל?
 
-2. **Assumed knowledge**: Does it assume knowledge about a specific project, company, or situation?
+2. **ידע מונח**: האם הוא מניח ידע על פרויקט, חברה או מצב ספציפי?
 
-3. **Implicit requirements**: Are there unstated expectations about format, length, or style?
+3. **דרישות מרומזות**: האם יש ציפיות לא מוצהרות לגבי פורמט, אורך או סגנון?
 
-4. **Missing background**: Would a smart stranger understand what's being asked?
+4. **רקע חסר**: האם זר חכם היה מבין מה מבקשים?
 
-List what's missing and suggest how to add it.`}
+פרט מה חסר והצע כיצד להוסיף זאת.`}
 />
 
-## The Leading Question Trap
+## מלכודת השאלה המובילה
 
-**The Pattern**: You phrase your question in a way that embeds your assumption, getting back confirmation rather than insight.
+**הדפוס**: אתם מנסחים את השאלה שלכם בצורה שמטמיעה את ההנחה שלכם, ומקבלים בחזרה אישור במקום תובנה.
 
 <Compare 
-  before={{ label: "Leading question", content: "Why is Python the best programming language for data science?" }}
-  after={{ label: "Neutral question", content: "Compare Python, R, and Julia for data science work. What are the strengths and weaknesses of each? When would you choose one over the others?" }}
+  before={{ label: "שאלה מובילה", content: "מדוע Python היא שפת התכנות הטובה ביותר למדעי הנתונים?" }}
+  after={{ label: "שאלה ניטרלית", content: "השווה בין Python, R ו-Julia לעבודת מדעי נתונים. מהן החוזקות והחולשות של כל אחת? מתי היית בוחר באחת על פני האחרות?" }}
 />
 
-**Why it happens**: We often seek confirmation, not information. Our phrasing unconsciously pushes toward the answer we expect or want.
+**מדוע זה קורה**: אנחנו לעתים קרובות מחפשים אישור, לא מידע. הניסוח שלנו דוחף באופן לא מודע לכיוון התשובה שאנחנו מצפים או רוצים.
 
 <TryIt 
-  title="Bias Detector"
-  description="Check your prompts for hidden biases and leading language."
-  prompt={`Analyze this prompt for bias and leading language:
+  title="גלאי הטיות"
+  description="בדקו את הפרומפטים שלכם עבור הטיות נסתרות ושפה מובילה."
+  prompt={`נתח את הפרומפט הזה עבור הטיות ושפה מובילה:
 
 "\${promptToAnalyze}"
 
-Check for:
-1. **Embedded assumptions**: Does the question assume something is true?
-2. **Leading phrasing**: Does "Why is X good?" assume X is good?
-3. **Missing alternatives**: Does it ignore other possibilities?
-4. **Confirmation seeking**: Is it asking for validation rather than analysis?
+בדוק עבור:
+1. **הנחות מוטמעות**: האם השאלה מניחה שמשהו נכון?
+2. **ניסוח מוביל**: האם "מדוע X טוב?" מניח ש-X טוב?
+3. **חלופות חסרות**: האם זה מתעלם מאפשרויות אחרות?
+4. **חיפוש אישור**: האם זה מבקש אישור במקום ניתוח?
 
-Rewrite the prompt to be neutral and open-ended.`}
+כתוב מחדש את הפרומפט כך שיהיה ניטרלי ופתוח.`}
 />
 
-## The Trust Everything Trap
+## מלכודת האמון העיוור
 
-**The Pattern**: AI responses sound confident and authoritative, so you accept them without verification. But confidence doesn't equal accuracy.
+**הדפוס**: תגובות בינה מלאכותית נשמעות בטוחות וסמכותיות, אז אתם מקבלים אותן ללא אימות. אבל ביטחון לא שווה דיוק.
 
 <InfoGrid items={[
-  { label: "Unreviewed Content", description: "Publishing AI-generated text without fact-checking", example: "Blog posts with invented statistics or fake quotes", exampleType: "text", color: "red" },
-  { label: "Untested Code", description: "Using AI code in production without testing", example: "Security vulnerabilities, edge case failures, subtle bugs", exampleType: "text", color: "red" },
-  { label: "Blind Decisions", description: "Making important choices based solely on AI analysis", example: "Business strategy based on hallucinated market data", exampleType: "text", color: "red" }
+  { label: "תוכן לא מבוקר", description: "פרסום טקסט שנוצר על ידי בינה מלאכותית ללא בדיקת עובדות", example: "פוסטים בבלוג עם סטטיסטיקות בדויות או ציטוטים מזויפים", exampleType: "text", color: "red" },
+  { label: "קוד לא נבדק", description: "שימוש בקוד של בינה מלאכותית בסביבת הייצור ללא בדיקה", example: "פרצות אבטחה, כשלים במקרי קצה, באגים עדינים", exampleType: "text", color: "red" },
+  { label: "החלטות עיוורות", description: "קבלת החלטות חשובות על סמך ניתוח בינה מלאכותית בלבד", example: "אסטרטגיה עסקית מבוססת על נתוני שוק שהומצאו", exampleType: "text", color: "red" }
 ]} />
 
-**Why it happens**: AI sounds confident even when completely wrong. We're also prone to "automation bias"—the tendency to trust computer outputs more than we should.
+**מדוע זה קורה**: בינה מלאכותית נשמעת בטוחה גם כשהיא טועה לחלוטין. אנחנו גם נוטים ל"הטיית אוטומציה"—הנטייה לסמוך על פלטי מחשב יותר משצריך.
 
 <TryIt 
-  title="Verification Prompt"
-  description="Use this to get the AI to flag its own uncertainties and potential errors."
-  prompt={`I need you to provide information about: \${topic}
+  title="פרומפט אימות"
+  description="השתמשו בזה כדי לגרום לבינה המלאכותית לסמן את אי-הוודאויות והשגיאות הפוטנציאליות שלה."
+  prompt={`אני צריך שתספק מידע על: \${topic}
 
-IMPORTANT: After your response, add a section called "Verification Notes" that includes:
+חשוב: לאחר התגובה שלך, הוסף קטע בשם "הערות אימות" שכולל:
 
-1. **Confidence Level**: How certain are you about this information? (High/Medium/Low)
+1. **רמת ביטחון**: כמה אתה בטוח במידע הזה? (גבוהה/בינונית/נמוכה)
 
-2. **Potential Errors**: What parts of this response are most likely to be wrong or outdated?
+2. **שגיאות פוטנציאליות**: אילו חלקים בתגובה הזו סביר להניח שהם שגויים או מיושנים?
 
-3. **What to Verify**: What specific claims should the user fact-check independently?
+3. **מה לאמת**: אילו טענות ספציפיות המשתמש צריך לבדוק באופן עצמאי?
 
-4. **Sources to Check**: Where could the user verify this information?
+4. **מקורות לבדיקה**: היכן המשתמש יכול לאמת מידע זה?
 
-Be honest about limitations. It's better to flag uncertainty than to sound confident about something wrong.`}
+היה כנה לגבי מגבלות. עדיף לסמן אי-ודאות מאשר להישמע בטוח לגבי משהו שגוי.`}
 />
 
-## The One-Shot Trap
+## מלכודת הניסיון הבודד
 
-**The Pattern**: You send one prompt, get a mediocre result, and conclude that AI "doesn't work" for your use case. But great results almost always require iteration.
+**הדפוס**: אתם שולחים פרומפט אחד, מקבלים תוצאה בינונית, ומסיקים שבינה מלאכותית "לא עובדת" למקרה השימוש שלכם. אבל תוצאות מצוינות כמעט תמיד דורשות איטרציה.
 
 <Compare 
-  before={{ label: "One-shot thinking", content: "Mediocre output → \"AI can't do this\" → Give up" }}
-  after={{ label: "Iterative thinking", content: "Mediocre output → Analyze what's wrong → Refine prompt → Better output → Refine again → Excellent output" }}
+  before={{ label: "חשיבת ניסיון בודד", content: "פלט בינוני → \"בינה מלאכותית לא יכולה לעשות את זה\" → לוותר" }}
+  after={{ label: "חשיבה איטרטיבית", content: "פלט בינוני → ניתוח מה לא בסדר → שיפור הפרומפט → פלט טוב יותר → שיפור נוסף → פלט מצוין" }}
 />
 
-**Why it happens**: We expect AI to read our minds on the first try. We don't expect to iterate with Google searches, but somehow expect perfection from AI.
+**מדוע זה קורה**: אנחנו מצפים שבינה מלאכותית תקרא את המחשבות שלנו בניסיון הראשון. אנחנו לא מצפים לבצע איטרציה עם חיפושי Google, אבל איכשהו מצפים לשלמות מבינה מלאכותית.
 
 <TryIt 
-  title="Iteration Helper"
-  description="When your first result isn't right, use this to systematically improve it."
-  prompt={`My original prompt was:
+  title="עוזר איטרציה"
+  description="כאשר התוצאה הראשונה לא נכונה, השתמשו בזה כדי לשפר באופן שיטתי."
+  prompt={`הפרומפט המקורי שלי היה:
 "\${originalPrompt}"
 
-The output I got was:
+הפלט שקיבלתי היה:
 "\${outputReceived}"
 
-What's wrong with it:
+מה לא בסדר בו:
 "\${whatIsWrong}"
 
-Help me iterate:
+עזור לי לבצע איטרציה:
 
-1. **Diagnosis**: Why did the original prompt produce this result?
+1. **אבחון**: מדוע הפרומפט המקורי הניב תוצאה זו?
 
-2. **Missing Elements**: What was I not explicit about that I should have been?
+2. **אלמנטים חסרים**: לגבי מה לא הייתי מפורש שהייתי צריך להיות?
 
-3. **Revised Prompt**: Rewrite my prompt to address these issues.
+3. **פרומפט משופר**: כתוב מחדש את הפרומפט שלי כדי לטפל בבעיות האלה.
 
-4. **What to Watch For**: What should I check in the new output?`}
+4. **על מה לשים לב**: מה עליי לבדוק בפלט החדש?`}
 />
 
-## The Format Neglect Trap
+## מלכודת הזנחת הפורמט
 
-**The Pattern**: You focus on what you want the AI to say, but forget to specify how it should be formatted. Then you get prose when you needed JSON, or a wall of text when you needed bullet points.
+**הדפוס**: אתם מתמקדים במה שאתם רוצים שהבינה המלאכותית תגיד, אבל שוכחים לציין כיצד זה צריך להיות מעוצב. אז אתם מקבלים פרוזה כשהייתם צריכים JSON, או קיר של טקסט כשהייתם צריכים נקודות תבליט.
 
 <Compare 
-  before={{ label: "No format specified", content: "Extract the key data from this text." }}
-  after={{ label: "Format specified", content: "Extract the key data from this text as JSON:\n\n{\n  \"name\": string,\n  \"date\": \"YYYY-MM-DD\",\n  \"amount\": number,\n  \"category\": string\n}\n\nReturn ONLY the JSON, no explanation." }}
+  before={{ label: "לא צוין פורמט", content: "חלץ את הנתונים המרכזיים מהטקסט הזה." }}
+  after={{ label: "פורמט צוין", content: "חלץ את הנתונים המרכזיים מהטקסט הזה כ-JSON:\n\n{\n  \"name\": string,\n  \"date\": \"YYYY-MM-DD\",\n  \"amount\": number,\n  \"category\": string\n}\n\nהחזר רק את ה-JSON, ללא הסבר." }}
 />
 
-**Why it happens**: We focus on content over structure. But if you need to parse the output programmatically, or paste it somewhere specific, format matters as much as content.
+**מדוע זה קורה**: אנחנו מתמקדים בתוכן על פני מבנה. אבל אם אתם צריכים לנתח את הפלט באופן תוכניתי, או להדביק אותו במקום ספציפי, הפורמט חשוב לא פחות מהתוכן.
 
 <TryIt 
-  title="Format Specification Builder"
-  description="Generate clear format specifications for any output type you need."
-  prompt={`I need AI output in a specific format.
+  title="בונה מפרט פורמט"
+  description="צרו מפרטי פורמט ברורים לכל סוג פלט שאתם צריכים."
+  prompt={`אני צריך פלט בינה מלאכותית בפורמט ספציפי.
 
-**What I'm asking for**: \${taskDescription}
-**How I'll use the output**: \${intendedUse}
-**Preferred format**: \${formatType} (JSON, Markdown, CSV, bullet points, etc.)
+**מה אני מבקש**: \${taskDescription}
+**כיצד אשתמש בפלט**: \${intendedUse}
+**פורמט מועדף**: \${formatType} (JSON, Markdown, CSV, נקודות תבליט, וכו')
 
-Generate a format specification I can add to my prompt, including:
+צור מפרט פורמט שאוכל להוסיף לפרומפט שלי, כולל:
 
-1. **Exact structure** with field names and types
-2. **Example output** showing the format
-3. **Constraints** (e.g., "Return ONLY the JSON, no explanation")
-4. **Edge cases** (what to output if data is missing)`}
+1. **מבנה מדויק** עם שמות שדות וסוגים
+2. **פלט לדוגמה** המציג את הפורמט
+3. **מגבלות** (לדוגמה, "החזר רק את ה-JSON, ללא הסבר")
+4. **מקרי קצה** (מה לפלוט אם נתונים חסרים)`}
 />
 
-## The Context Window Trap
+## מלכודת חלון ההקשר
 
-**The Pattern**: You paste an enormous document and expect comprehensive analysis. But models have limits—they may truncate, lose focus, or miss important details in long inputs.
+**הדפוס**: אתם מדביקים מסמך עצום ומצפים לניתוח מקיף. אבל למודלים יש מגבלות—הם עשויים לקצר, לאבד מיקוד, או לפספס פרטים חשובים בקלטים ארוכים.
 
 <InfoGrid items={[
-  { label: "Know Your Limits", description: "Different models have different context windows", example: "GPT-4: 128K tokens, Claude: 200K tokens, Gemini: 1M tokens", exampleType: "text", color: "blue" },
-  { label: "Chunk Large Inputs", description: "Break documents into manageable sections", example: "Analyze chapters separately, then synthesize", exampleType: "text", color: "blue" },
-  { label: "Front-Load Important Info", description: "Put critical context early in the prompt", example: "Key requirements first, background details later", exampleType: "text", color: "blue" },
-  { label: "Trim the Fat", description: "Remove unnecessary context", example: "Do you really need the entire doc, or just relevant sections?", exampleType: "text", color: "blue" }
+  { label: "הכירו את המגבלות", description: "למודלים שונים יש חלונות הקשר שונים", example: "GPT-4: 128K טוקנים, Claude: 200K טוקנים, Gemini: 1M טוקנים", exampleType: "text", color: "blue" },
+  { label: "חלקו קלטים גדולים", description: "פרקו מסמכים לקטעים ניתנים לניהול", example: "נתחו פרקים בנפרד, ואז סנתזו", exampleType: "text", color: "blue" },
+  { label: "שימו מידע חשוב בהתחלה", description: "שימו הקשר קריטי בתחילת הפרומפט", example: "דרישות מפתח ראשונות, פרטי רקע אחר כך", exampleType: "text", color: "blue" },
+  { label: "קצצו את העודף", description: "הסירו הקשר מיותר", example: "האם באמת צריך את כל המסמך, או רק חלקים רלוונטיים?", exampleType: "text", color: "blue" }
 ]} />
 
 <TryIt 
-  title="Document Chunking Strategy"
-  description="Get a strategy for processing documents that exceed context limits."
-  prompt={`I have a large document to analyze:
+  title="אסטרטגיית חלוקת מסמכים"
+  description="קבלו אסטרטגיה לעיבוד מסמכים שחורגים ממגבלות ההקשר."
+  prompt={`יש לי מסמך גדול לניתוח:
 
-**Document type**: \${documentType}
-**Approximate length**: \${documentLength}
-**What I need to extract/analyze**: \${analysisGoal}
-**Model I'm using**: \${modelName}
+**סוג מסמך**: \${documentType}
+**אורך משוער**: \${documentLength}
+**מה אני צריך לחלץ/לנתח**: \${analysisGoal}
+**המודל שאני משתמש בו**: \${modelName}
 
-Create a chunking strategy:
+צור אסטרטגיית חלוקה:
 
-1. **How to divide**: Logical break points for this document type
-2. **What to include in each chunk**: Context needed for standalone analysis
-3. **How to synthesize**: Combining results from multiple chunks
-4. **What to watch for**: Information that might span chunks`}
+1. **כיצד לחלק**: נקודות שבירה לוגיות לסוג מסמך זה
+2. **מה לכלול בכל חלק**: הקשר הנדרש לניתוח עצמאי
+3. **כיצד לסנתז**: שילוב תוצאות ממספר חלקים
+4. **על מה לשים לב**: מידע שעשוי להשתרע על פני חלקים`}
 />
 
-## The Anthropomorphization Trap
+## מלכודת האנתרופומורפיזציה
 
-**The Pattern**: You treat AI like a human colleague—expecting it to "enjoy" tasks, remember you, or care about outcomes. It doesn't.
+**הדפוס**: אתם מתייחסים לבינה מלאכותית כמו לעמית אנושי—מצפים שהיא "תיהנה" ממשימות, תזכור אתכם, או תאכפת מהתוצאות. היא לא.
 
 <Compare 
-  before={{ label: "Anthropomorphized", content: "I'm sure you'll enjoy this creative project! I know you love helping people, and this is really important to me personally." }}
-  after={{ label: "Clear and direct", content: "Write a creative short story with these specifications:\n- Genre: Science fiction\n- Length: 500 words\n- Tone: Hopeful\n- Must include: A twist ending" }}
+  before={{ label: "מואנש", content: "אני בטוח שתיהנה מהפרויקט היצירתי הזה! אני יודע שאתה אוהב לעזור לאנשים, וזה באמת חשוב לי אישית." }}
+  after={{ label: "ברור וישיר", content: "כתוב סיפור קצר יצירתי עם המפרטים הבאים:\n- ז'אנר: מדע בדיוני\n- אורך: 500 מילים\n- טון: מלא תקווה\n- חובה לכלול: סוף מפתיע" }}
 />
 
-**Why it happens**: AI responses are so human-like that we naturally slip into social patterns. But emotional appeals don't make the AI try harder—clear instructions do.
+**מדוע זה קורה**: תגובות בינה מלאכותית כל כך דמויות אדם שאנחנו באופן טבעי נגררים לדפוסים חברתיים. אבל פניות רגשיות לא גורמות לבינה המלאכותית להתאמץ יותר—הוראות ברורות כן.
 
-<Callout type="info" title="What Actually Helps">
-Instead of emotional appeals, focus on: clear requirements, good examples, specific constraints, and explicit success criteria. These improve outputs. "Please try really hard" doesn't.
+<Callout type="info" title="מה באמת עוזר">
+במקום פניות רגשיות, התמקדו ב: דרישות ברורות, דוגמאות טובות, מגבלות ספציפיות, וקריטריונים מפורשים להצלחה. אלה משפרים את הפלט. "בבקשה נסה ממש חזק" לא משפר.
 </Callout>
 
-## The Security Neglect Trap
+## מלכודת הזנחת האבטחה
 
-**The Pattern**: In the rush to get things working, you include sensitive information in prompts—API keys, passwords, personal data, or proprietary information.
+**הדפוס**: בחיפזון לגרום לדברים לעבוד, אתם כוללים מידע רגיש בפרומפטים—מפתחות API, סיסמאות, נתונים אישיים, או מידע קנייני.
 
 <InfoGrid items={[
-  { label: "Secrets in Prompts", description: "API keys, passwords, tokens pasted into prompts", example: "\"Use this API key: sk-abc123...\"", color: "red" },
-  { label: "Personal Data", description: "Including PII that gets sent to third-party servers", example: "Customer names, emails, addresses in prompts", exampleType: "text", color: "red" },
-  { label: "Unsanitized User Input", description: "Passing user input directly into prompts", example: "Prompt injection vulnerabilities", exampleType: "text", color: "red" },
-  { label: "Proprietary Information", description: "Trade secrets or confidential data", example: "Internal strategies, unreleased product details", exampleType: "text", color: "red" }
+  { label: "סודות בפרומפטים", description: "מפתחות API, סיסמאות, טוקנים מודבקים בפרומפטים", example: "\"השתמש במפתח API הזה: sk-abc123...\"", color: "red" },
+  { label: "נתונים אישיים", description: "כולל מידע מזהה אישית שנשלח לשרתי צד שלישי", example: "שמות לקוחות, אימיילים, כתובות בפרומפטים", exampleType: "text", color: "red" },
+  { label: "קלט משתמש לא מסונן", description: "העברת קלט משתמש ישירות לפרומפטים", example: "פרצות הזרקת פרומפט", exampleType: "text", color: "red" },
+  { label: "מידע קנייני", description: "סודות מסחריים או נתונים חסויים", example: "אסטרטגיות פנימיות, פרטי מוצר שטרם שוחררו", exampleType: "text", color: "red" }
 ]} />
 
-**Why it happens**: Focus on functionality over security. But remember: prompts often go to external servers, may be logged, and could be used for training.
+**מדוע זה קורה**: התמקדות בפונקציונליות על חשבון אבטחה. אבל זכרו: פרומפטים הולכים לעתים קרובות לשרתים חיצוניים, עשויים להירשם ביומן, ויכולים לשמש לאימון.
 
 <TryIt 
-  title="Security Review"
-  description="Check your prompt for security issues before sending."
-  prompt={`Review this prompt for security concerns:
+  title="סקירת אבטחה"
+  description="בדקו את הפרומפט שלכם עבור בעיות אבטחה לפני שליחה."
+  prompt={`בדוק את הפרומפט הזה עבור חששות אבטחה:
 
 "\${promptToReview}"
 
-Check for:
+בדוק עבור:
 
-1. **Exposed Secrets**: API keys, passwords, tokens, credentials
-2. **Personal Data**: Names, emails, addresses, phone numbers, SSNs
-3. **Proprietary Info**: Trade secrets, internal strategies, confidential data
-4. **Injection Risks**: User input that could manipulate the prompt
+1. **סודות חשופים**: מפתחות API, סיסמאות, טוקנים, אישורי גישה
+2. **נתונים אישיים**: שמות, אימיילים, כתובות, מספרי טלפון, מספרי זהות
+3. **מידע קנייני**: סודות מסחריים, אסטרטגיות פנימיות, נתונים חסויים
+4. **סיכוני הזרקה**: קלט משתמש שיכול לתמרן את הפרומפט
 
-For each issue found:
-- Explain the risk
-- Suggest how to redact or protect the information
-- Recommend safer alternatives`}
+עבור כל בעיה שנמצאה:
+- הסבר את הסיכון
+- הצע כיצד לצנזר או להגן על המידע
+- המלץ על חלופות בטוחות יותר`}
 />
 
-## The Hallucination Ignorance Trap
+## מלכודת התעלמות מהזיות
 
-**The Pattern**: You ask for citations, statistics, or specific facts, and assume they're real because the AI stated them confidently. But AI regularly invents plausible-sounding information.
+**הדפוס**: אתם מבקשים ציטוטים, סטטיסטיקות, או עובדות ספציפיות, ומניחים שהם אמיתיים כי הבינה המלאכותית ציינה אותם בביטחון. אבל בינה מלאכותית ממציאה באופן קבוע מידע שנשמע סביר.
 
 <Compare 
-  before={{ label: "Trusting blindly", content: "Give me 5 statistics about remote work productivity with sources." }}
-  after={{ label: "Acknowledging limitations", content: "What do we know about remote work productivity? For any statistics you mention, note whether they're well-established findings or more uncertain. I will verify any specific numbers independently." }}
+  before={{ label: "סומכים בעיוורון", content: "תן לי 5 סטטיסטיקות על פרודוקטיביות בעבודה מרחוק עם מקורות." }}
+  after={{ label: "מכירים במגבלות", content: "מה ידוע על פרודוקטיביות בעבודה מרחוק? עבור כל סטטיסטיקה שתזכיר, ציין האם אלה ממצאים מבוססים היטב או יותר לא וודאיים. אאמת כל מספרים ספציפיים באופן עצמאי." }}
 />
 
-**Why it happens**: AI generates text that sounds authoritative. It doesn't "know" when it's making things up—it's predicting likely text, not retrieving verified facts.
+**מדוע זה קורה**: בינה מלאכותית מייצרת טקסט שנשמע סמכותי. היא לא "יודעת" כשהיא ממציאה דברים—היא מנבאת טקסט סביר, לא מאחזרת עובדות מאומתות.
 
 <TryIt 
-  title="Hallucination-Resistant Query"
-  description="Structure your prompt to minimize hallucination risk and flag uncertainties."
-  prompt={`I need information about: \${topic}
+  title="שאילתה עמידה להזיות"
+  description="מבנו את הפרומפט שלכם כדי למזער סיכון להזיות ולסמן אי-ודאויות."
+  prompt={`אני צריך מידע על: \${topic}
 
-Please follow these guidelines to minimize errors:
+אנא עקוב אחר ההנחיות האלה כדי למזער שגיאות:
 
-1. **Stick to well-established facts**. Avoid obscure claims that are hard to verify.
+1. **היצמד לעובדות מבוססות היטב**. הימנע מטענות עמומות שקשה לאמת.
 
-2. **Flag uncertainty**. If you're not confident about something, say "I believe..." or "This may need verification..."
+2. **סמן אי-ודאות**. אם אתה לא בטוח במשהו, אמור "אני מאמין ש..." או "זה עשוי לדרוש אימות..."
 
-3. **No invented sources**. Don't cite specific papers, books, or URLs unless you're certain they exist. Instead, describe where to find this type of information.
+3. **אל תמציא מקורות**. אל תצטט מאמרים, ספרים או כתובות URL ספציפיים אלא אם אתה בטוח שהם קיימים. במקום זאת, תאר היכן למצוא סוג זה של מידע.
 
-4. **Acknowledge knowledge limits**. If my question is about events after your training data, say so.
+4. **הכר במגבלות ידע**. אם השאלה שלי עוסקת באירועים לאחר נתוני האימון שלך, אמור זאת.
 
-5. **Separate fact from inference**. Clearly distinguish between "X is true" and "Based on Y, X is likely true."
+5. **הפרד עובדה מהסקה**. הבחן בבירור בין "X נכון" לבין "בהתבסס על Y, X כנראה נכון."
 
-Now, with these guidelines in mind: \${actualQuestion}`}
+כעת, עם ההנחיות האלה בראש: \${actualQuestion}`}
 />
 
-## Pre-Send Checklist
+## רשימת ביקורת לפני שליחה
 
-Before sending any important prompt, run through this quick checklist:
+לפני שליחת כל פרומפט חשוב, עברו על רשימת הביקורת המהירה הזו:
 
 <Checklist 
-  title="Prompt Quality Check"
+  title="בדיקת איכות פרומפט"
   items={[
-    { text: "Is it specific enough? (Not vague)" },
-    { text: "Is it focused? (Not overloaded with requirements)" },
-    { text: "Does it include all necessary context?" },
-    { text: "Is the question neutral? (Not leading)" },
-    { text: "Have I specified the output format?" },
-    { text: "Is the input within context limits?" },
-    { text: "Are there any security concerns?" },
-    { text: "Am I prepared to verify the output?" },
-    { text: "Am I prepared to iterate if needed?" }
+    { text: "האם זה ספציפי מספיק? (לא עמום)" },
+    { text: "האם זה ממוקד? (לא עמוס בדרישות)" },
+    { text: "האם זה כולל את כל ההקשר הנחוץ?" },
+    { text: "האם השאלה ניטרלית? (לא מובילה)" },
+    { text: "האם ציינתי את פורמט הפלט?" },
+    { text: "האם הקלט בתוך מגבלות ההקשר?" },
+    { text: "האם יש חששות אבטחה?" },
+    { text: "האם אני מוכן לאמת את הפלט?" },
+    { text: "האם אני מוכן לבצע איטרציה אם יהיה צורך?" }
   ]}
 />
 
 <Quiz 
-  question="What's the most dangerous pitfall when using AI for important decisions?"
+  question="מהי המלכודת המסוכנת ביותר בעת שימוש בבינה מלאכותית להחלטות חשובות?"
   options={[
-    "Using vague prompts",
-    "Trusting AI outputs without verification",
-    "Not specifying output format",
-    "Overloading prompts with requirements"
+    "שימוש בפרומפטים עמומים",
+    "אמון בפלטי בינה מלאכותית ללא אימות",
+    "אי-ציון פורמט פלט",
+    "העמסת פרומפטים בדרישות"
   ]}
   correctIndex={1}
-  explanation="While all pitfalls cause problems, trusting AI outputs without verification is the most dangerous because it can lead to publishing false information, deploying buggy code, or making decisions based on hallucinated data. AI sounds confident even when completely wrong, making verification essential for any important use case."
+  explanation="בעוד שכל המלכודות גורמות לבעיות, אמון בפלטי בינה מלאכותית ללא אימות הוא המסוכן ביותר כי זה יכול להוביל לפרסום מידע שגוי, פריסת קוד עם באגים, או קבלת החלטות על סמך נתונים שהומצאו. בינה מלאכותית נשמעת בטוחה גם כשהיא טועה לחלוטין, מה שהופך אימות לחיוני לכל מקרה שימוש חשוב."
 />
 
-## Analyze Your Prompts
+## נתחו את הפרומפטים שלכם
 
-Use AI to get instant feedback on your prompt quality. Paste any prompt and get a detailed analysis:
+השתמשו בבינה מלאכותית כדי לקבל משוב מיידי על איכות הפרומפט שלכם. הדביקו כל פרומפט וקבלו ניתוח מפורט:
 
 <PromptAnalyzer 
-  title="Prompt Quality Analyzer"
-  description="Get AI-powered feedback on clarity, specificity, and suggestions for improvement"
-  defaultPrompt="Help me with my code"
+  title="מנתח איכות פרומפט"
+  description="קבלו משוב מונע בינה מלאכותית על בהירות, ספציפיות, והצעות לשיפור"
+  defaultPrompt="עזור לי עם הקוד שלי"
 />
 
-## Debug This Prompt
+## דבגו את הפרומפט הזה
 
-Can you spot what's wrong with this prompt?
+האם אתם יכולים לזהות מה לא בסדר בפרומפט הזה?
 
 <PromptDebugger
-  title="Find the Pitfall"
-  badPrompt="Write a blog post about technology that's SEO optimized with keywords and also funny but professional and includes code examples and targets beginners but has advanced tips and mentions our product TechCo and has social proof and a call to action and is 500 words but comprehensive."
-  badOutput="Here's a draft blog post about technology...
+  title="מצאו את המלכודת"
+  badPrompt="כתוב פוסט בלוג על טכנולוגיה שהוא ממוטב ל-SEO עם מילות מפתח וגם מצחיק אבל מקצועי וכולל דוגמאות קוד ומיועד למתחילים אבל יש בו טיפים מתקדמים ומזכיר את המוצר שלנו TechCo ויש בו הוכחה חברתית וקריאה לפעולה והוא 500 מילים אבל מקיף."
+  badOutput="הנה טיוטת פוסט בלוג על טכנולוגיה...
 
-[Generic, unfocused content that tries to do everything but accomplishes nothing well. Tone shifts awkwardly between casual and technical. Missing half the requirements.]"
+[תוכן גנרי, לא ממוקד שמנסה לעשות הכל אבל לא משיג כלום היטב. הטון עובר בצורה מביכה בין קז'ואל לטכני. חסרות מחצית מהדרישות.]"
   options={[
-    { id: "vague", label: "The prompt is too vague", isCorrect: false, explanation: "Actually, the prompt has many specific requirements. The problem is the opposite—too many requirements, not too few." },
-    { id: "overload", label: "The prompt is overloaded with too many competing requirements", isCorrect: true, explanation: "Correct! This prompt asks for SEO + funny + professional + code + beginners + advanced + product mention + social proof + CTA + length constraint. That's 10+ competing requirements! The AI can't satisfy them all, so it does a mediocre job on everything. Solution: break this into multiple focused prompts." },
-    { id: "format", label: "The output format isn't specified", isCorrect: false, explanation: "While a more specific format would help, the main issue is requirement overload. You can't format your way out of asking for too much." },
-    { id: "context", label: "There's not enough context", isCorrect: false, explanation: "The prompt actually has a lot of context—maybe too much! The problem is that it's trying to satisfy too many goals at once." }
+    { id: "vague", label: "הפרומפט עמום מדי", isCorrect: false, explanation: "למעשה, לפרומפט יש הרבה דרישות ספציפיות. הבעיה היא הפוכה—יותר מדי דרישות, לא מעט מדי." },
+    { id: "overload", label: "הפרומפט עמוס ביותר מדי דרישות מתחרות", isCorrect: true, explanation: "נכון! הפרומפט הזה מבקש SEO + מצחיק + מקצועי + קוד + מתחילים + מתקדם + אזכור מוצר + הוכחה חברתית + קריאה לפעולה + מגבלת אורך. זה יותר מ-10 דרישות מתחרות! הבינה המלאכותית לא יכולה לספק את כולן, אז היא עושה עבודה בינונית על הכל. הפתרון: לפרק את זה לפרומפטים ממוקדים מרובים." },
+    { id: "format", label: "פורמט הפלט לא צוין", isCorrect: false, explanation: "בעוד שפורמט ספציפי יותר היה עוזר, הבעיה העיקרית היא עומס דרישות. אתם לא יכולים לפתור את הבעיה של לבקש יותר מדי עם עיצוב." },
+    { id: "context", label: "אין מספיק הקשר", isCorrect: false, explanation: "לפרומפט למעשה יש הרבה הקשר—אולי יותר מדי! הבעיה היא שהוא מנסה לספק יותר מדי מטרות בבת אחת." }
   ]}
-  hint="Count how many different requirements are packed into this single prompt."
+  hint="ספרו כמה דרישות שונות ארוזות בפרומפט הבודד הזה."
 />

@@ -1,226 +1,226 @@
-Chain of Thought (CoT) prompting is a technique that dramatically improves AI performance on complex reasoning tasks by asking the model to show its work step by step.
+Το Chain of Thought (CoT) prompting είναι μια τεχνική που βελτιώνει δραματικά την απόδοση της AI σε πολύπλοκες εργασίες συλλογισμού ζητώντας από το μοντέλο να δείξει τη δουλειά του βήμα-βήμα.
 
-<Callout type="info" title="Show Your Work">
-Just like a math teacher asking students to show their work, CoT prompting asks the AI to make its reasoning visible.
+<Callout type="info" title="Δείξε τη Δουλειά Σου">
+Ακριβώς όπως ένας καθηγητής μαθηματικών ζητά από τους μαθητές να δείξουν τη δουλειά τους, το CoT prompting ζητά από την AI να κάνει τον συλλογισμό της ορατό.
 </Callout>
 
-## The Problem CoT Solves
+## Το Πρόβλημα που Λύνει το CoT
 
-AI models can struggle with multi-step reasoning when asked to jump directly to an answer.
+Τα μοντέλα AI μπορεί να δυσκολεύονται με τον πολυβήματο συλλογισμό όταν τους ζητείται να πηδήξουν απευθείας στην απάντηση.
 
 <Compare 
-  before={{ label: "Direct Answer (Often Wrong)", content: "Question: A store sells apples for $2 each. If you buy 5 or more, you get 20% off. How much do 7 apples cost?\n\nAnswer: $14 ❌" }}
-  after={{ label: "Chain of Thought (Correct)", content: "Question: A store sells apples for $2 each. If you buy 5 or more, you get 20% off. How much do 7 apples cost?\n\nLet's work through this step by step:\n1. Regular price per apple: $2\n2. Number of apples: 7\n3. Since 7 ≥ 5, the discount applies\n4. Regular total: 7 × $2 = $14\n5. Discount: 20% of $14 = $2.80\n6. Final price: $14 - $2.80 = $11.20\n\nAnswer: $11.20 ✓" }}
+  before={{ label: "Άμεση Απάντηση (Συχνά Λάθος)", content: "Ερώτηση: Ένα κατάστημα πουλάει μήλα για 2€ το καθένα. Αν αγοράσεις 5 ή περισσότερα, παίρνεις 20% έκπτωση. Πόσο κοστίζουν 7 μήλα;\n\nΑπάντηση: 14€ ❌" }}
+  after={{ label: "Chain of Thought (Σωστό)", content: "Ερώτηση: Ένα κατάστημα πουλάει μήλα για 2€ το καθένα. Αν αγοράσεις 5 ή περισσότερα, παίρνεις 20% έκπτωση. Πόσο κοστίζουν 7 μήλα;\n\nΑς το δουλέψουμε βήμα-βήμα:\n1. Κανονική τιμή ανά μήλο: 2€\n2. Αριθμός μήλων: 7\n3. Επειδή 7 ≥ 5, ισχύει η έκπτωση\n4. Κανονικό σύνολο: 7 × 2€ = 14€\n5. Έκπτωση: 20% των 14€ = 2,80€\n6. Τελική τιμή: 14€ - 2,80€ = 11,20€\n\nΑπάντηση: 11,20€ ✓" }}
 />
 
-## Basic CoT Prompts
+## Βασικά CoT Prompts
 
-### Simple Trigger Phrases
+### Απλές Φράσεις-Κλειδιά
 
-Add one of these to your prompts:
+Προσθέστε μία από αυτές στα prompts σας:
 
 <div className="my-4 grid gap-2">
-  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Let's think step by step."</div>
-  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Think through this carefully."</div>
-  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Work through this problem methodically."</div>
-  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Show your reasoning at each step."</div>
-  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Explain your thought process."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Ας σκεφτούμε βήμα-βήμα."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Σκέψου αυτό προσεκτικά."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Δούλεψε αυτό το πρόβλημα μεθοδικά."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Δείξε τον συλλογισμό σου σε κάθε βήμα."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Εξήγησε τη διαδικασία σκέψης σου."</div>
 </div>
 
-### Explicit Step Request
+### Ρητό Αίτημα Βημάτων
 
 <TryIt 
-  title="Try Chain of Thought"
-  description="Ask the AI to solve a problem step by step."
-  prompt={`Solve this problem:
+  title="Δοκίμασε Chain of Thought"
+  description="Ζήτα από την AI να λύσει ένα πρόβλημα βήμα-βήμα."
+  prompt={`Λύσε αυτό το πρόβλημα:
 
-A car rental costs $40 per day plus $0.25 per mile. If someone rents a car for 3 days and drives 200 miles, what is the total cost?
+Μια ενοικίαση αυτοκινήτου κοστίζει 40€ την ημέρα συν 0,25€ ανά χιλιόμετρο. Αν κάποιος νοικιάσει αυτοκίνητο για 3 ημέρες και οδηγήσει 200 χιλιόμετρα, ποιο είναι το συνολικό κόστος;
 
-Before giving your final answer:
-1. Identify what information is given
-2. Determine what we need to find
-3. Plan your approach
-4. Execute each step, showing work
-5. Verify your answer`}
+Πριν δώσεις την τελική σου απάντηση:
+1. Προσδιόρισε ποιες πληροφορίες δίνονται
+2. Καθόρισε τι πρέπει να βρούμε
+3. Σχεδίασε την προσέγγισή σου
+4. Εκτέλεσε κάθε βήμα, δείχνοντας τη δουλειά
+5. Επαλήθευσε την απάντησή σου`}
 />
 
 ## Zero-Shot vs Few-Shot CoT
 
-There are two main approaches to Chain of Thought prompting, each with different trade-offs between simplicity and control.
+Υπάρχουν δύο κύριες προσεγγίσεις στο Chain of Thought prompting, κάθε μία με διαφορετικές ανταλλαγές μεταξύ απλότητας και ελέγχου.
 
 ### Zero-Shot CoT
 
-The simplest approach—just add a trigger phrase and let the model figure out how to reason. No examples needed. This works surprisingly well for many problems, though you have less control over the reasoning format.
+Η απλούστερη προσέγγιση—απλά πρόσθεσε μια φράση-κλειδί και άφησε το μοντέλο να βρει πώς να συλλογιστεί. Δεν χρειάζονται παραδείγματα. Αυτό λειτουργεί εκπληκτικά καλά για πολλά προβλήματα, αν και έχεις λιγότερο έλεγχο στη μορφή συλλογισμού.
 
 <TryIt 
   compact
   title="Zero-Shot CoT"
-  prompt={`If John has 3 apples and gives half to Mary, then buys 4 more, how many does he have?
+  prompt={`Αν ο Γιάννης έχει 3 μήλα και δίνει τα μισά στη Μαρία, μετά αγοράζει 4 ακόμα, πόσα έχει;
 
-Let's think step by step.`}
+Ας σκεφτούμε βήμα-βήμα.`}
 />
 
-**Example Output:**
+**Παράδειγμα Εξόδου:**
 ```
-Let's think step by step.
-- John starts with 3 apples
-- Half of 3 is 1.5, but we can't split apples
-- If we round down: John gives 1 apple, keeps 2
-- After buying 4 more: 2 + 4 = 6 apples
+Ας σκεφτούμε βήμα-βήμα.
+- Ο Γιάννης ξεκινά με 3 μήλα
+- Τα μισά του 3 είναι 1,5, αλλά δεν μπορούμε να χωρίσουμε μήλα
+- Αν στρογγυλοποιήσουμε προς τα κάτω: Ο Γιάννης δίνει 1 μήλο, κρατά 2
+- Μετά την αγορά 4 ακόμα: 2 + 4 = 6 μήλα
 
-Answer: 6 apples
+Απάντηση: 6 μήλα
 ```
 
 ### Few-Shot CoT
 
-For more consistent results, show the model exactly how you want it to reason by providing worked examples. This gives you control over the reasoning style, format, and level of detail. The model will mimic your demonstrated pattern.
+Για πιο συνεπή αποτελέσματα, δείξε στο μοντέλο ακριβώς πώς θέλεις να συλλογιστεί παρέχοντας επεξεργασμένα παραδείγματα. Αυτό σου δίνει έλεγχο στο στυλ συλλογισμού, τη μορφή, και το επίπεδο λεπτομέρειας. Το μοντέλο θα μιμηθεί το μοτίβο που επέδειξες.
 
 <TryIt 
   compact
   title="Few-Shot CoT"
-  prompt={`Example 1:
-Q: A baker has 24 cupcakes. She puts them equally into 4 boxes. Then she eats 2 cupcakes from one box. How many cupcakes total remain?
+  prompt={`Παράδειγμα 1:
+Ε: Μια ζαχαροπλάστης έχει 24 cupcakes. Τα βάζει εξίσου σε 4 κουτιά. Μετά τρώει 2 cupcakes από ένα κουτί. Πόσα cupcakes απομένουν συνολικά;
 
-A: Let's work through this:
-- Total cupcakes: 24
-- Cupcakes per box: 24 ÷ 4 = 6
-- After eating 2 from one box: 6 - 2 = 4 cupcakes in that box
-- Total remaining: (3 boxes × 6) + 4 = 18 + 4 = 22 cupcakes
+Α: Ας το δουλέψουμε:
+- Σύνολο cupcakes: 24
+- Cupcakes ανά κουτί: 24 ÷ 4 = 6
+- Μετά το φαγητό 2 από ένα κουτί: 6 - 2 = 4 cupcakes σε εκείνο το κουτί
+- Σύνολο που απομένει: (3 κουτιά × 6) + 4 = 18 + 4 = 22 cupcakes
 
-Example 2:
-Q: A train travels at 60 mph for 2 hours, then 40 mph for 3 hours. What is its average speed?
+Παράδειγμα 2:
+Ε: Ένα τρένο ταξιδεύει με 60 χλμ/ώρα για 2 ώρες, μετά 40 χλμ/ώρα για 3 ώρες. Ποια είναι η μέση ταχύτητά του;
 
-A: Let's work through this:
-- Distance at 60 mph: 60 × 2 = 120 miles
-- Distance at 40 mph: 40 × 3 = 120 miles
-- Total distance: 120 + 120 = 240 miles
-- Total time: 2 + 3 = 5 hours
-- Average speed: 240 ÷ 5 = 48 mph
+Α: Ας το δουλέψουμε:
+- Απόσταση με 60 χλμ/ώρα: 60 × 2 = 120 χλμ
+- Απόσταση με 40 χλμ/ώρα: 40 × 3 = 120 χλμ
+- Συνολική απόσταση: 120 + 120 = 240 χλμ
+- Συνολικός χρόνος: 2 + 3 = 5 ώρες
+- Μέση ταχύτητα: 240 ÷ 5 = 48 χλμ/ώρα
 
-Now solve:
-Q: A store sells notebooks for $3 each. If you buy 10 or more, you get 25% off. How much do 12 notebooks cost?`}
+Τώρα λύσε:
+Ε: Ένα κατάστημα πουλάει τετράδια για 3€ το καθένα. Αν αγοράσεις 10 ή περισσότερα, παίρνεις 25% έκπτωση. Πόσο κοστίζουν 12 τετράδια;`}
 />
 
-**Example Output:**
+**Παράδειγμα Εξόδου:**
 ```
-A: Let's work through this:
-- Regular price: $3, Quantity: 12
-- Since 12 ≥ 10, the 25% discount applies
-- Regular total: 12 × $3 = $36
-- Discount: 25% of $36 = $9
-- Final price: $36 - $9 = $27
+Α: Ας το δουλέψουμε:
+- Κανονική τιμή: 3€, Ποσότητα: 12
+- Επειδή 12 ≥ 10, ισχύει η έκπτωση 25%
+- Κανονικό σύνολο: 12 × 3€ = 36€
+- Έκπτωση: 25% των 36€ = 9€
+- Τελική τιμή: 36€ - 9€ = 27€
 ```
 
-## Structured CoT Formats
+## Δομημένες Μορφές CoT
 
-For consistent, reproducible reasoning, use structured formats with named steps. These frameworks ensure the model doesn't skip important stages and makes outputs easier to parse and verify.
+Για συνεπή, αναπαραγώγιμο συλλογισμό, χρησιμοποίησε δομημένες μορφές με ονομασμένα βήματα. Αυτά τα πλαίσια διασφαλίζουν ότι το μοντέλο δεν παραλείπει σημαντικά στάδια και κάνει τις εξόδους ευκολότερες στην ανάλυση και επαλήθευση.
 
-### The BREAK Format
+### Η Μορφή BREAK
 
-A memorable acronym that guides the model through a complete problem-solving cycle, from understanding to verification.
+Ένα αξέχαστο ακρωνύμιο που καθοδηγεί το μοντέλο μέσα από έναν πλήρη κύκλο επίλυσης προβλήματος, από την κατανόηση μέχρι την επαλήθευση.
 
 <BREAKFramework />
 
-### The Reasoning Template
+### Το Template Συλλογισμού
 
-A more formal structure that separates inputs, goals, and execution. Excellent for technical problems where you need clear documentation of the solution process.
+Μια πιο επίσημη δομή που διαχωρίζει εισόδους, στόχους, και εκτέλεση. Εξαιρετική για τεχνικά προβλήματα όπου χρειάζεσαι σαφή τεκμηρίωση της διαδικασίας επίλυσης.
 
 <TryIt 
   compact
-  title="Reasoning Template"
-  prompt={`Use this template to solve the problem:
+  title="Template Συλλογισμού"
+  prompt={`Χρησιμοποίησε αυτό το template για να λύσεις το πρόβλημα:
 
-GIVEN: [List known information]
-GOAL: [What we need to find]
-APPROACH: [Strategy we'll use]
-STEPS:
-  1. [First step with reasoning]
-  2. [Second step with reasoning]
+ΔΕΔΟΜΕΝΑ: [Λίστα γνωστών πληροφοριών]
+ΣΤΟΧΟΣ: [Τι πρέπει να βρούμε]
+ΠΡΟΣΕΓΓΙΣΗ: [Στρατηγική που θα χρησιμοποιήσουμε]
+ΒΗΜΑΤΑ:
+  1. [Πρώτο βήμα με συλλογισμό]
+  2. [Δεύτερο βήμα με συλλογισμό]
   ...
-VERIFICATION: [Check the answer]
-ANSWER: [Final answer]
+ΕΠΑΛΗΘΕΥΣΗ: [Έλεγχος της απάντησης]
+ΑΠΑΝΤΗΣΗ: [Τελική απάντηση]
 
-Problem: A car uses 8 liters of fuel per 100 km. If the tank holds 45 liters and fuel costs $1.50 per liter, how much does it cost to drive 300 km?`}
+Πρόβλημα: Ένα αυτοκίνητο καταναλώνει 8 λίτρα καυσίμου ανά 100 χλμ. Αν το ρεζερβουάρ χωράει 45 λίτρα και το καύσιμο κοστίζει 1,50€ ανά λίτρο, πόσο κοστίζει να οδηγήσεις 300 χλμ;`}
 />
 
-**Example Output:**
+**Παράδειγμα Εξόδου:**
 ```
-GIVEN: 8L/100km, tank 45L, $1.50/L, drive 300km
-GOAL: Calculate fuel cost
-APPROACH: Fuel needed × cost per liter
-STEPS:
-1. Fuel = (300 ÷ 100) × 8 = 24 liters
-2. Cost = 24 × $1.50 = $36
-VERIFICATION: 24L < 45L tank ✓
-ANSWER: $36
+ΔΕΔΟΜΕΝΑ: 8L/100km, ρεζερβουάρ 45L, 1,50€/L, οδήγηση 300km
+ΣΤΟΧΟΣ: Υπολογισμός κόστους καυσίμου
+ΠΡΟΣΕΓΓΙΣΗ: Καύσιμο που χρειάζεται × κόστος ανά λίτρο
+ΒΗΜΑΤΑ:
+1. Καύσιμο = (300 ÷ 100) × 8 = 24 λίτρα
+2. Κόστος = 24 × 1,50€ = 36€
+ΕΠΑΛΗΘΕΥΣΗ: 24L < 45L ρεζερβουάρ ✓
+ΑΠΑΝΤΗΣΗ: 36€
 ```
 
-## CoT for Different Problem Types
+## CoT για Διαφορετικούς Τύπους Προβλημάτων
 
-Different problem types benefit from different CoT approaches. Here are patterns optimized for common scenarios.
+Διαφορετικοί τύποι προβλημάτων ωφελούνται από διαφορετικές προσεγγίσεις CoT. Εδώ είναι μοτίβα βελτιστοποιημένα για κοινά σενάρια.
 
-### Mathematical Reasoning
+### Μαθηματικός Συλλογισμός
 
-Math problems benefit most from CoT because each step builds on the previous one. Errors compound, so showing work helps catch mistakes early. The model should clearly label each calculation.
+Τα μαθηματικά προβλήματα ωφελούνται περισσότερο από το CoT επειδή κάθε βήμα χτίζει πάνω στο προηγούμενο. Τα σφάλματα πολλαπλασιάζονται, οπότε η επίδειξη δουλειάς βοηθά να πιαστούν λάθη νωρίς. Το μοντέλο πρέπει να επισημαίνει ξεκάθαρα κάθε υπολογισμό.
 
 <TryIt 
   compact
-  title="Math with CoT"
-  prompt={`A company's revenue was $1.2M in Q1. It grew 15% in Q2, declined 10% in Q3, and grew 25% in Q4. What was the total annual revenue?
+  title="Μαθηματικά με CoT"
+  prompt={`Τα έσοδα μιας εταιρείας ήταν 1,2 εκατ.€ στο Q1. Αυξήθηκαν 15% στο Q2, μειώθηκαν 10% στο Q3, και αυξήθηκαν 25% στο Q4. Ποια ήταν τα συνολικά ετήσια έσοδα;
 
-Think through each quarter, showing your calculations clearly.`}
+Σκέψου κάθε τρίμηνο, δείχνοντας τους υπολογισμούς σου ξεκάθαρα.`}
 />
 
-**Example Output:**
+**Παράδειγμα Εξόδου:**
 ```
-Q1: $1,200,000 (given)
-Q2: $1,200,000 × 1.15 = $1,380,000
-Q3: $1,380,000 × 0.90 = $1,242,000
-Q4: $1,242,000 × 1.25 = $1,552,500
+Q1: 1.200.000€ (δοσμένο)
+Q2: 1.200.000€ × 1,15 = 1.380.000€
+Q3: 1.380.000€ × 0,90 = 1.242.000€
+Q4: 1.242.000€ × 1,25 = 1.552.500€
 
-Total: $5,374,500
+Σύνολο: 5.374.500€
 ```
 
-### Logical Reasoning
+### Λογικός Συλλογισμός
 
-Logic puzzles require systematic elimination and hypothesis testing. CoT helps the model track constraints, test possibilities, and verify that all conditions are satisfied. The key is methodical exploration rather than guessing.
+Τα λογικά παζλ απαιτούν συστηματικό αποκλεισμό και δοκιμή υποθέσεων. Το CoT βοηθά το μοντέλο να παρακολουθεί περιορισμούς, να δοκιμάζει πιθανότητες, και να επαληθεύει ότι όλες οι συνθήκες ικανοποιούνται. Το κλειδί είναι η μεθοδική εξερεύνηση αντί της εικασίας.
 
 <TryIt 
   compact
-  title="Logic Puzzle"
-  prompt={`Three friends—Alice, Bob, and Carol—each have different pets (cat, dog, fish) and different jobs (teacher, engineer, doctor).
+  title="Λογικό Παζλ"
+  prompt={`Τρεις φίλοι—Αλίκη, Μπομπ, και Κάρολ—έχουν ο καθένας διαφορετικά κατοικίδια (γάτα, σκύλος, ψάρι) και διαφορετικές δουλειές (δάσκαλος, μηχανικός, γιατρός).
 
-Clues:
-1. Alice doesn't have a cat
-2. The engineer has a dog
-3. Bob is a teacher
-4. Carol doesn't have a fish
+Στοιχεία:
+1. Η Αλίκη δεν έχει γάτα
+2. Ο μηχανικός έχει σκύλο
+3. Ο Μπομπ είναι δάσκαλος
+4. Η Κάρολ δεν έχει ψάρι
 
-Who has which pet and job? Reason through this systematically, testing hypotheses and verifying against all clues.`}
+Ποιος έχει ποιο κατοικίδιο και δουλειά; Συλλογίσου συστηματικά, δοκιμάζοντας υποθέσεις και επαληθεύοντας έναντι όλων των στοιχείων.`}
 />
 
-**Example Output:**
+**Παράδειγμα Εξόδου:**
 ```
-From clue 3: Bob = teacher
-→ Alice and Carol are engineer/doctor
+Από το στοιχείο 3: Μπομπ = δάσκαλος
+→ Αλίκη και Κάρολ είναι μηχανικός/γιατρός
 
-If Carol = engineer:
-- Carol has dog (clue 2)
-- Alice = doctor, has fish (clue 1)
-- Bob has cat
+Αν Κάρολ = μηχανικός:
+- Κάρολ έχει σκύλο (στοιχείο 2)
+- Αλίκη = γιατρός, έχει ψάρι (στοιχείο 1)
+- Μπομπ έχει γάτα
 
-Verify: All 4 clues satisfied ✓
-Answer: Alice (doctor, fish), Bob (teacher, cat), Carol (engineer, dog)
+Επαλήθευση: Όλα τα 4 στοιχεία ικανοποιούνται ✓
+Απάντηση: Αλίκη (γιατρός, ψάρι), Μπομπ (δάσκαλος, γάτα), Κάρολ (μηχανικός, σκύλος)
 ```
 
-### Code Debugging
+### Αποσφαλμάτωση Κώδικα
 
-Debugging benefits from CoT because it forces the model to trace execution rather than guess at bugs. By walking through the code with concrete values, the actual behavior becomes visible and discrepancies with expected behavior are exposed.
+Η αποσφαλμάτωση ωφελείται από το CoT επειδή αναγκάζει το μοντέλο να ιχνηλατήσει την εκτέλεση αντί να μαντεύει bugs. Περπατώντας μέσα από τον κώδικα με συγκεκριμένες τιμές, η πραγματική συμπεριφορά γίνεται ορατή και οι αποκλίσεις από την αναμενόμενη συμπεριφορά εκτίθενται.
 
 <TryIt 
   compact
-  title="Debug with CoT"
-  prompt={`This function should return the sum of even numbers in a list, but it's returning wrong values. Debug step by step by tracing through with the input [2, 3, 4, 6]:
+  title="Αποσφαλμάτωση με CoT"
+  prompt={`Αυτή η συνάρτηση πρέπει να επιστρέφει το άθροισμα των ζυγών αριθμών σε μια λίστα, αλλά επιστρέφει λάθος τιμές. Αποσφαλμάτωσε βήμα-βήμα ιχνηλατώντας με την είσοδο [2, 3, 4, 6]:
 
 def sum_evens(numbers):
     total = 0
@@ -229,135 +229,135 @@ def sum_evens(numbers):
             total += 1
     return total
 
-Trace each step, find the bug, and provide the fix.`}
+Ιχνηλάτησε κάθε βήμα, βρες το bug, και δώσε τη διόρθωση.`}
 />
 
-**Example Output:**
+**Παράδειγμα Εξόδου:**
 ```
-Trace [2, 3, 4, 6]:
-n=2: total += 1 → 1 (wait, adding 1 not n!)
-n=3: skip (odd)
+Ιχνηλάτηση [2, 3, 4, 6]:
+n=2: total += 1 → 1 (περίμενε, προσθέτει 1 όχι n!)
+n=3: παράβλεψη (μονός)
 n=4: total = 2
 n=6: total = 3
 
-BUG: "total += 1" should be "total += n"
-Expected: 12, Got: 3
-Fix: Change to "total += n"
+BUG: "total += 1" πρέπει να είναι "total += n"
+Αναμενόμενο: 12, Πήρε: 3
+Διόρθωση: Άλλαξε σε "total += n"
 ```
 
-## Self-Consistency with CoT
+## Αυτο-συνέπεια με CoT
 
-For critical problems, don't rely on a single reasoning path. Generate multiple independent solutions and compare results. If different approaches converge on the same answer, confidence is high. Disagreement signals the need for careful review.
+Για κρίσιμα προβλήματα, μην βασίζεσαι σε ένα μόνο μονοπάτι συλλογισμού. Δημιούργησε πολλαπλές ανεξάρτητες λύσεις και σύγκρινε αποτελέσματα. Αν διαφορετικές προσεγγίσεις συγκλίνουν στην ίδια απάντηση, η εμπιστοσύνη είναι υψηλή. Η διαφωνία σηματοδοτεί την ανάγκη για προσεκτική αναθεώρηση.
 
 <TryIt 
   compact
-  title="Self-Consistency"
-  prompt={`Solve this problem 3 different ways, then give your final answer based on which solution appears most correct:
+  title="Αυτο-συνέπεια"
+  prompt={`Λύσε αυτό το πρόβλημα με 3 διαφορετικούς τρόπους, μετά δώσε την τελική σου απάντηση βάσει ποια λύση φαίνεται πιο σωστή:
 
-Problem: A farmer has chickens and cows. Together they have 30 heads and 74 legs. How many chickens and how many cows does the farmer have?
+Πρόβλημα: Ένας αγρότης έχει κότες και αγελάδες. Μαζί έχουν 30 κεφάλια και 74 πόδια. Πόσες κότες και πόσες αγελάδες έχει ο αγρότης;
 
-Approach 1: Algebra
-Approach 2: Guess and check
-Approach 3: Logical reasoning
+Προσέγγιση 1: Άλγεβρα
+Προσέγγιση 2: Δοκιμή και έλεγχος
+Προσέγγιση 3: Λογικός συλλογισμός
 
-Then compare and give your final answer.`}
+Μετά σύγκρινε και δώσε την τελική σου απάντηση.`}
 />
 
-**Example Output:**
+**Παράδειγμα Εξόδου:**
 ```
-Approach 1 (Algebra): c + w = 30, 2c + 4w = 74 → c=23, w=7
-Approach 2 (Guess): Try 23/7 → 46 + 28 = 74 ✓
-Approach 3 (Logic): 30 chickens = 60 legs, need 14 more → 7 cows
+Προσέγγιση 1 (Άλγεβρα): κ + α = 30, 2κ + 4α = 74 → κ=23, α=7
+Προσέγγιση 2 (Δοκιμή): Δοκίμασε 23/7 → 46 + 28 = 74 ✓
+Προσέγγιση 3 (Λογική): 30 κότες = 60 πόδια, χρειάζονται 14 ακόμα → 7 αγελάδες
 
-All agree: 23 chickens, 7 cows
+Όλες συμφωνούν: 23 κότες, 7 αγελάδες
 ```
 
-## CoT for Decision Making
+## CoT για Λήψη Αποφάσεων
 
-Decisions involve weighing trade-offs across multiple dimensions. CoT ensures all relevant factors are considered systematically rather than jumping to conclusions. This structured approach also documents the reasoning for future reference.
+Οι αποφάσεις περιλαμβάνουν στάθμιση ανταλλαγών σε πολλαπλές διαστάσεις. Το CoT διασφαλίζει ότι όλοι οι σχετικοί παράγοντες εξετάζονται συστηματικά αντί να πηδάμε σε συμπεράσματα. Αυτή η δομημένη προσέγγιση επίσης τεκμηριώνει τον συλλογισμό για μελλοντική αναφορά.
 
 <TryIt 
   compact
-  title="Decision Analysis"
-  prompt={`Should we adopt microservices architecture for our application?
+  title="Ανάλυση Απόφασης"
+  prompt={`Πρέπει να υιοθετήσουμε αρχιτεκτονική microservices για την εφαρμογή μας;
 
-Context:
-- Monolithic application with 50,000 lines of code
-- Team of 5 developers
-- 100 daily active users
-- Planning for 10x growth in 2 years
+Πλαίσιο:
+- Μονολιθική εφαρμογή με 50.000 γραμμές κώδικα
+- Ομάδα 5 developers
+- 100 ημερήσιοι ενεργοί χρήστες
+- Σχεδιάζουμε 10x ανάπτυξη σε 2 χρόνια
 
-Think through this systematically:
-1. List the current state
-2. Identify factors to consider (team size, scale, velocity, future growth)
-3. Weigh each factor as for/against
-4. Give a recommendation with reasoning`}
+Σκέψου αυτό συστηματικά:
+1. Κατονόμασε την τρέχουσα κατάσταση
+2. Προσδιόρισε παράγοντες προς εξέταση (μέγεθος ομάδας, κλίμακα, ταχύτητα, μελλοντική ανάπτυξη)
+3. Στάθμισε κάθε παράγοντα ως υπέρ/κατά
+4. Δώσε σύσταση με συλλογισμό`}
 />
 
-**Example Output:**
+**Παράδειγμα Εξόδου:**
 ```
-FACTORS:
-- Team size (5): Too small for microservices ❌
-- Scale (100 DAU): No scaling need ❌  
-- Velocity: Monolith = faster iteration ❌
-- Future growth: Uncertain timeline ⚠️
+ΠΑΡΑΓΟΝΤΕΣ:
+- Μέγεθος ομάδας (5): Πολύ μικρό για microservices ❌
+- Κλίμακα (100 DAU): Καμία ανάγκη κλιμάκωσης ❌  
+- Ταχύτητα: Monolith = γρηγορότερη επανάληψη ❌
+- Μελλοντική ανάπτυξη: Αβέβαιο χρονοδιάγραμμα ⚠️
 
-WEIGHING: 3 strong against, 1 weak for
+ΣΤΑΘΜΙΣΗ: 3 ισχυρά κατά, 1 αδύναμο υπέρ
 
-RECOMMENDATION: Stay monolith, use clear module 
-boundaries to ease future transition.
+ΣΥΣΤΑΣΗ: Μείνε monolith, χρησιμοποίησε σαφή όρια 
+modules για να διευκολύνεις μελλοντική μετάβαση.
 ```
 
-## When to Use CoT
+## Πότε να Χρησιμοποιήσεις CoT
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Use CoT For</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Χρησιμοποίησε CoT Για</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">**Math problems** — Reduces calculation errors</p>
-      <p className="m-0!">**Logic puzzles** — Prevents skipped steps</p>
-      <p className="m-0!">**Complex analysis** — Organizes thinking</p>
-      <p className="m-0!">**Code debugging** — Traces execution</p>
-      <p className="m-0!">**Decision making** — Weighs trade-offs</p>
+      <p className="m-0!">**Μαθηματικά προβλήματα** — Μειώνει σφάλματα υπολογισμού</p>
+      <p className="m-0!">**Λογικά παζλ** — Αποτρέπει παραλειπόμενα βήματα</p>
+      <p className="m-0!">**Πολύπλοκη ανάλυση** — Οργανώνει τη σκέψη</p>
+      <p className="m-0!">**Αποσφαλμάτωση κώδικα** — Ιχνηλατεί εκτέλεση</p>
+      <p className="m-0!">**Λήψη αποφάσεων** — Σταθμίζει ανταλλαγές</p>
     </div>
   </div>
   <div className="border rounded-lg bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900">
-    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Skip CoT For</p>
+    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Παράλειψε CoT Για</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">**Simple Q&A** — Unnecessary overhead</p>
-      <p className="m-0!">**Creative writing** — Can constrain creativity</p>
-      <p className="m-0!">**Factual lookups** — No reasoning needed</p>
-      <p className="m-0!">**Translation** — Direct task</p>
-      <p className="m-0!">**Summarization** — Usually straightforward</p>
+      <p className="m-0!">**Απλές Ερωτοαπαντήσεις** — Περιττή επιβάρυνση</p>
+      <p className="m-0!">**Δημιουργική γραφή** — Μπορεί να περιορίσει δημιουργικότητα</p>
+      <p className="m-0!">**Αναζήτηση γεγονότων** — Δεν χρειάζεται συλλογισμός</p>
+      <p className="m-0!">**Μετάφραση** — Άμεση εργασία</p>
+      <p className="m-0!">**Σύνοψη** — Συνήθως απλή</p>
     </div>
   </div>
 </div>
 
-## CoT Limitations
+## Περιορισμοί CoT
 
-While powerful, Chain of Thought isn't a silver bullet. Understanding its limitations helps you apply it appropriately.
+Αν και ισχυρό, το Chain of Thought δεν είναι πανάκεια. Η κατανόηση των περιορισμών του βοηθά να το εφαρμόσεις κατάλληλα.
 
-1. **Increased token usage** — More output means higher costs
-2. **Not always needed** — Simple tasks don't benefit
-3. **Can be verbose** — May need to ask for conciseness
-4. **Reasoning can be flawed** — CoT doesn't guarantee correctness
+1. **Αυξημένη χρήση tokens** — Περισσότερη έξοδος σημαίνει υψηλότερο κόστος
+2. **Δεν χρειάζεται πάντα** — Απλές εργασίες δεν ωφελούνται
+3. **Μπορεί να είναι φλύαρο** — Μπορεί να χρειαστεί να ζητήσεις συνοπτικότητα
+4. **Ο συλλογισμός μπορεί να είναι λάθος** — Το CoT δεν εγγυάται ορθότητα
 
-## Summary
+## Σύνοψη
 
-<Callout type="tip" title="Key Takeaways">
-CoT dramatically improves complex reasoning by making implicit steps explicit. Use it for math, logic, analysis, and debugging. Trade-off: better accuracy for more tokens.
+<Callout type="tip" title="Βασικά Συμπεράσματα">
+Το CoT βελτιώνει δραματικά τον πολύπλοκο συλλογισμό κάνοντας τα σιωπηρά βήματα ρητά. Χρησιμοποίησέ το για μαθηματικά, λογική, ανάλυση, και αποσφαλμάτωση. Ανταλλαγή: καλύτερη ακρίβεια για περισσότερα tokens.
 </Callout>
 
 <Quiz 
-  question="When should you NOT use Chain of Thought prompting?"
+  question="Πότε ΔΕΝ πρέπει να χρησιμοποιήσεις Chain of Thought prompting;"
   options={[
-    "Math problems requiring multiple steps",
-    "Simple factual questions like 'What is the capital of France?'",
-    "Debugging code with complex logic",
-    "Analyzing a business decision"
+    "Μαθηματικά προβλήματα που απαιτούν πολλαπλά βήματα",
+    "Απλές πραγματολογικές ερωτήσεις όπως 'Ποια είναι η πρωτεύουσα της Γαλλίας;'",
+    "Αποσφαλμάτωση κώδικα με πολύπλοκη λογική",
+    "Ανάλυση επιχειρηματικής απόφασης"
   ]}
   correctIndex={1}
-  explanation="Chain of Thought adds unnecessary overhead for simple Q&A. It's best reserved for complex reasoning tasks like math, logic puzzles, code debugging, and analysis where showing work improves accuracy."
+  explanation="Το Chain of Thought προσθέτει περιττή επιβάρυνση για απλές ερωτοαπαντήσεις. Είναι καλύτερα κρατημένο για πολύπλοκες εργασίες συλλογισμού όπως μαθηματικά, λογικά παζλ, αποσφαλμάτωση κώδικα, και ανάλυση όπου η επίδειξη δουλειάς βελτιώνει την ακρίβεια."
 />
 
-In the next chapter, we'll explore few-shot learning—teaching the model through examples.
+Στο επόμενο κεφάλαιο, θα εξερευνήσουμε το few-shot learning—διδάσκοντας το μοντέλο μέσω παραδειγμάτων.

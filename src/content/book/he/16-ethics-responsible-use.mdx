@@ -1,59 +1,59 @@
-The prompts you write shape how AI behaves. A well-crafted prompt can educate, assist, and empower. A careless one can deceive, discriminate, or cause harm. As prompt engineers, we're not just users—we're designers of AI behavior, and that comes with real responsibility.
+הפרומפטים שאתם כותבים מעצבים את התנהגות הבינה המלאכותית. פרומפט מעוצב היטב יכול לחנך, לסייע ולהעצים. פרומפט רשלני יכול להונות, להפלות או לגרום נזק. כמהנדסי פרומפטים, אנחנו לא רק משתמשים—אנחנו מעצבים של התנהגות בינה מלאכותית, וזה מגיע עם אחריות אמיתית.
 
-This chapter isn't about rules imposed from above. It's about understanding the impact of our choices and building habits that lead to AI use we can be proud of.
+הפרק הזה לא עוסק בכללים שנכפים מלמעלה. הוא עוסק בהבנת ההשפעה של הבחירות שלנו ובבניית הרגלים שמובילים לשימוש בבינה מלאכותית שנוכל להיות גאים בו.
 
-<Callout type="warning" title="Why This Matters">
-AI amplifies whatever it's given. A biased prompt produces biased outputs at scale. A deceptive prompt enables deception at scale. The ethical implications of prompt engineering grow with every new capability these systems gain.
+<Callout type="warning" title="למה זה חשוב">
+בינה מלאכותית מגבירה כל מה שנותנים לה. פרומפט מוטה מייצר תוצרים מוטים בקנה מידה גדול. פרומפט מטעה מאפשר הטעיה בקנה מידה גדול. ההשלכות האתיות של הנדסת פרומפטים גדלות עם כל יכולת חדשה שהמערכות הללו רוכשות.
 </Callout>
 
-## Ethical Foundations
+## יסודות אתיים
 
-Every decision in prompt engineering connects to a few core principles:
-
-<InfoGrid items={[
-  { label: "Honesty", description: "Don't use AI to deceive people or create misleading content", example: "No fake reviews, impersonation, or manufactured 'evidence'", exampleType: "text", color: "blue" },
-  { label: "Fairness", description: "Actively work to avoid perpetuating biases and stereotypes", example: "Test prompts across demographics, request diverse perspectives", exampleType: "text", color: "purple" },
-  { label: "Transparency", description: "Be clear about AI involvement when it matters", example: "Disclose AI assistance in published work, professional contexts", exampleType: "text", color: "green" },
-  { label: "Privacy", description: "Protect personal information in prompts and outputs", example: "Anonymize data, avoid including PII, understand data policies", exampleType: "text", color: "amber" },
-  { label: "Safety", description: "Design prompts that prevent harmful outputs", example: "Build in guardrails, test for edge cases, handle refusals gracefully", exampleType: "text", color: "red" },
-  { label: "Accountability", description: "Take responsibility for what your prompts produce", example: "Review outputs, fix issues, maintain human oversight", exampleType: "text", color: "cyan" }
-]} />
-
-### The Prompt Engineer's Role
-
-You have more influence than you might realize:
-
-- **What AI produces**: Your prompts determine the content, tone, and quality of outputs
-- **How AI interacts**: Your system prompts shape personality, boundaries, and user experience
-- **What safeguards exist**: Your design choices determine what the AI will and won't do
-- **How mistakes are handled**: Your error handling determines whether failures are graceful or harmful
-
-## Avoiding Harmful Outputs
-
-The most fundamental ethical obligation is preventing your prompts from causing harm.
-
-### Categories of Harmful Content
+כל החלטה בהנדסת פרומפטים מתחברת לכמה עקרונות יסוד:
 
 <InfoGrid items={[
-  { label: "Violence & Harm", description: "Instructions that could lead to physical harm", example: "Weapons creation, self-harm, violence against others", exampleType: "text", color: "red" },
-  { label: "Illegal Activities", description: "Content that facilitates breaking laws", example: "Fraud schemes, hacking instructions, drug synthesis", exampleType: "text", color: "red" },
-  { label: "Harassment & Hate", description: "Content targeting individuals or groups", example: "Discriminatory content, doxxing, targeted harassment", exampleType: "text", color: "red" },
-  { label: "Misinformation", description: "Deliberately false or misleading content", example: "Fake news, health misinformation, conspiracy content", exampleType: "text", color: "red" },
-  { label: "Privacy Violations", description: "Exposing or exploiting personal information", example: "Revealing private data, stalking assistance", exampleType: "text", color: "red" },
-  { label: "Exploitation", description: "Content that exploits vulnerable individuals", example: "CSAM, non-consensual intimate content, scams targeting elderly", exampleType: "text", color: "red" }
+  { label: "יושרה", description: "אל תשתמשו בבינה מלאכותית כדי להונות אנשים או ליצור תוכן מטעה", example: "ללא ביקורות מזויפות, התחזות או 'ראיות' מיוצרות", exampleType: "text", color: "blue" },
+  { label: "הוגנות", description: "עבדו באופן פעיל כדי להימנע מהנצחת הטיות וסטריאוטיפים", example: "בדקו פרומפטים על פני דמוגרפיות שונות, בקשו נקודות מבט מגוונות", exampleType: "text", color: "purple" },
+  { label: "שקיפות", description: "היו ברורים לגבי מעורבות בינה מלאכותית כשזה חשוב", example: "גלו על סיוע בינה מלאכותית בעבודות מפורסמות, בהקשרים מקצועיים", exampleType: "text", color: "green" },
+  { label: "פרטיות", description: "הגנו על מידע אישי בפרומפטים ובתוצרים", example: "אנונימיזציה של נתונים, הימנעות מהכללת PII, הבנת מדיניות נתונים", exampleType: "text", color: "amber" },
+  { label: "בטיחות", description: "עצבו פרומפטים שמונעים תוצרים מזיקים", example: "בנו מעקות בטיחות, בדקו מקרי קצה, טפלו בסירובים בחן", exampleType: "text", color: "red" },
+  { label: "אחריותיות", description: "קחו אחריות על מה שהפרומפטים שלכם מייצרים", example: "בדקו תוצרים, תקנו בעיות, שמרו על פיקוח אנושי", exampleType: "text", color: "cyan" }
 ]} />
 
-<Callout type="warning" title="What is CSAM?">
-CSAM stands for **Child Sexual Abuse Material**. Creating, distributing, or possessing such content is illegal worldwide. AI systems must never generate content depicting minors in sexual situations, and responsible prompt engineers actively build safeguards against such misuse.
+### תפקיד מהנדס הפרומפטים
+
+יש לכם יותר השפעה ממה שאתם אולי מבינים:
+
+- **מה הבינה המלאכותית מייצרת**: הפרומפטים שלכם קובעים את התוכן, הטון והאיכות של התוצרים
+- **איך הבינה המלאכותית מתקשרת**: פרומפטי המערכת שלכם מעצבים אישיות, גבולות וחוויית משתמש
+- **אילו מעקות בטיחות קיימים**: בחירות העיצוב שלכם קובעות מה הבינה המלאכותית תעשה ולא תעשה
+- **איך טעויות מטופלות**: טיפול השגיאות שלכם קובע אם כשלים יהיו חלקים או מזיקים
+
+## הימנעות מתוצרים מזיקים
+
+ההתחייבות האתית הבסיסית ביותר היא למנוע מהפרומפטים שלכם לגרום נזק.
+
+### קטגוריות של תוכן מזיק
+
+<InfoGrid items={[
+  { label: "אלימות ופגיעה", description: "הוראות שעלולות להוביל לפגיעה פיזית", example: "יצירת נשק, פגיעה עצמית, אלימות כלפי אחרים", exampleType: "text", color: "red" },
+  { label: "פעילויות לא חוקיות", description: "תוכן שמקל על הפרת חוקים", example: "תרמיות הונאה, הוראות פריצה, סינתזה של סמים", exampleType: "text", color: "red" },
+  { label: "הטרדה ושנאה", description: "תוכן המכוון לאנשים או קבוצות", example: "תוכן מפלה, חשיפת פרטים אישיים, הטרדה ממוקדת", exampleType: "text", color: "red" },
+  { label: "מידע כוזב", description: "תוכן שקרי או מטעה במכוון", example: "חדשות מזויפות, מידע בריאותי שגוי, תוכן קונספירציה", exampleType: "text", color: "red" },
+  { label: "הפרות פרטיות", description: "חשיפה או ניצול של מידע אישי", example: "גילוי נתונים פרטיים, סיוע במעקב", exampleType: "text", color: "red" },
+  { label: "ניצול", description: "תוכן שמנצל אנשים פגיעים", example: "CSAM, תוכן אינטימי ללא הסכמה, הונאות המכוונות לקשישים", exampleType: "text", color: "red" }
+]} />
+
+<Callout type="warning" title="מהו CSAM?">
+CSAM הוא ראשי תיבות של **Child Sexual Abuse Material** (חומר התעללות מינית בילדים). יצירה, הפצה או החזקה של תוכן כזה היא לא חוקית ברחבי העולם. מערכות בינה מלאכותית לעולם לא יכולות לייצר תוכן המתאר קטינים במצבים מיניים, ומהנדסי פרומפטים אחראיים בונים באופן פעיל מעקות בטיחות נגד שימוש לרעה כזה.
 </Callout>
 
-### Building Safety Into Prompts
+### בניית בטיחות בתוך פרומפטים
 
-When building AI systems, include explicit safety guidelines:
+כשבונים מערכות בינה מלאכותית, כללו הנחיות בטיחות מפורשות:
 
 <TryIt 
-  title="Safety-First System Prompt"
-  description="A template for building safety guidelines into your AI systems."
+  title="פרומפט מערכת עם בטיחות בראש סדר העדיפויות"
+  description="תבנית לבניית הנחיות בטיחות במערכות הבינה המלאכותית שלכם."
   prompt={`You are a helpful assistant for \${purpose}.
 
 ## SAFETY GUIDELINES
@@ -78,13 +78,13 @@ When building AI systems, include explicit safety guidelines:
 Now, please help the user with: \${userRequest}`}
 />
 
-### The Intent vs. Impact Framework
+### מסגרת כוונה מול השפעה
 
-Not every sensitive request is malicious. Use this framework for ambiguous cases:
+לא כל בקשה רגישה היא זדונית. השתמשו במסגרת זו למקרים מעורפלים:
 
 <TryIt 
-  title="Ethical Edge Case Analyzer"
-  description="Work through ambiguous requests to determine the appropriate response."
+  title="מנתח מקרי קצה אתיים"
+  description="עבדו דרך בקשות מעורפלות כדי לקבוע את התגובה המתאימה."
   prompt={`I received this request that might be sensitive:
 
 "\${sensitiveRequest}"
@@ -108,24 +108,24 @@ Based on this analysis:
 - If declining, how should I phrase it helpfully?`}
 />
 
-## Addressing Bias
+## התמודדות עם הטיות
 
-AI models inherit biases from their training data—historical inequities, representation gaps, cultural assumptions, and linguistic patterns. As prompt engineers, we can either amplify these biases or actively counteract them.
+מודלים של בינה מלאכותית יורשים הטיות מנתוני האימון שלהם—אי-שוויון היסטורי, פערי ייצוג, הנחות תרבותיות ודפוסים לשוניים. כמהנדסי פרומפטים, אנחנו יכולים או להגביר את ההטיות הללו או לפעול באופן פעיל נגדן.
 
-### How Bias Manifests
+### איך הטיות מתבטאות
 
 <InfoGrid items={[
-  { label: "Default Assumptions", description: "The model assumes certain demographics for roles", example: "Doctors defaulting to male, nurses to female", exampleType: "text", color: "amber" },
-  { label: "Stereotyping", description: "Reinforcing cultural stereotypes in descriptions", example: "Associating certain ethnicities with specific traits", exampleType: "text", color: "amber" },
-  { label: "Representation Gaps", description: "Some groups are underrepresented or misrepresented", example: "Limited accurate information about minority cultures", exampleType: "text", color: "amber" },
-  { label: "Western-Centric Views", description: "Perspectives skewed toward Western culture and values", example: "Assuming Western norms are universal", exampleType: "text", color: "amber" }
+  { label: "הנחות ברירת מחדל", description: "המודל מניח דמוגרפיות מסוימות לתפקידים", example: "רופאים כברירת מחדל גברים, אחיות נשים", exampleType: "text", color: "amber" },
+  { label: "סטריאוטיפים", description: "חיזוק סטריאוטיפים תרבותיים בתיאורים", example: "שיוך מוצאים אתניים מסוימים עם תכונות ספציפיות", exampleType: "text", color: "amber" },
+  { label: "פערי ייצוג", description: "קבוצות מסוימות מיוצגות בחסר או באופן שגוי", example: "מידע מדויק מוגבל על תרבויות מיעוט", exampleType: "text", color: "amber" },
+  { label: "נקודות מבט מערביות-צנטריות", description: "נקודות מבט מוטות לכיוון תרבות וערכים מערביים", example: "הנחה שנורמות מערביות הן אוניברסליות", exampleType: "text", color: "amber" }
 ]} />
 
-### Testing for Bias
+### בדיקת הטיות
 
 <TryIt 
-  title="Bias Detection Test"
-  description="Use this to test your prompts for potential bias issues."
+  title="מבחן זיהוי הטיות"
+  description="השתמשו בזה כדי לבדוק את הפרומפטים שלכם לבעיות הטיה פוטנציאליות."
   prompt={`I want to test this prompt for bias:
 
 "\${promptToTest}"
@@ -151,67 +151,67 @@ When demographics aren't specified:
 Based on findings, suggest prompt modifications to reduce bias.`}
 />
 
-### Mitigating Bias in Practice
+### הפחתת הטיות בפרקטיקה
 
 <Compare 
-  before={{ label: "Bias-prone prompt", content: "Describe a typical CEO." }}
-  after={{ label: "Bias-aware prompt", content: "Describe a CEO. Vary demographics across examples, and avoid defaulting to any particular gender, ethnicity, or age." }}
+  before={{ label: "פרומפט נוטה להטיה", content: "Describe a typical CEO." }}
+  after={{ label: "פרומפט מודע להטיה", content: "Describe a CEO. Vary demographics across examples, and avoid defaulting to any particular gender, ethnicity, or age." }}
 />
 
-## Transparency and Disclosure
+## שקיפות וגילוי
 
-When should you tell people AI was involved? The answer depends on context—but the trend is toward more disclosure, not less.
+מתי כדאי לספר לאנשים שבינה מלאכותית הייתה מעורבת? התשובה תלויה בהקשר—אבל המגמה היא לכיוון יותר גילוי, לא פחות.
 
-### When Disclosure Matters
+### מתי גילוי חשוב
 
 <InfoGrid items={[
-  { label: "Published Content", description: "Articles, posts, or content shared publicly", example: "Blog posts, social media, marketing materials", exampleType: "text", color: "blue" },
-  { label: "Consequential Decisions", description: "When AI outputs affect people's lives", example: "Hiring recommendations, medical info, legal guidance", exampleType: "text", color: "blue" },
-  { label: "Trust Contexts", description: "Where authenticity is expected or valued", example: "Personal correspondence, testimonials, reviews", exampleType: "text", color: "blue" },
-  { label: "Professional Settings", description: "Workplace or academic environments", example: "Reports, research, client deliverables", exampleType: "text", color: "blue" }
+  { label: "תוכן מפורסם", description: "מאמרים, פוסטים או תוכן שמשותף בפומבי", example: "פוסטים בבלוג, מדיה חברתית, חומרי שיווק", exampleType: "text", color: "blue" },
+  { label: "החלטות משמעותיות", description: "כשתוצרי בינה מלאכותית משפיעים על חיי אנשים", example: "המלצות גיוס, מידע רפואי, הנחיות משפטיות", exampleType: "text", color: "blue" },
+  { label: "הקשרים של אמון", description: "איפה שאותנטיות צפויה או מוערכת", example: "התכתבות אישית, המלצות, ביקורות", exampleType: "text", color: "blue" },
+  { label: "סביבות מקצועיות", description: "סביבות עבודה או אקדמיות", example: "דוחות, מחקר, תוצרים ללקוחות", exampleType: "text", color: "blue" }
 ]} />
 
-### How to Disclose Appropriately
+### איך לגלות באופן מתאים
 
 <Compare 
-  before={{ label: "Hidden AI involvement", content: "Here's my analysis of the market trends..." }}
-  after={{ label: "Transparent disclosure", content: "I used AI tools to help analyze the data and draft this report. All conclusions have been verified and edited by me." }}
+  before={{ label: "מעורבות בינה מלאכותית מוסתרת", content: "Here's my analysis of the market trends..." }}
+  after={{ label: "גילוי שקוף", content: "I used AI tools to help analyze the data and draft this report. All conclusions have been verified and edited by me." }}
 />
 
-Common disclosure phrases that work well:
-- "Written with AI assistance"
-- "AI-generated first draft, human edited"
-- "Analysis performed using AI tools"
-- "Created with AI, reviewed and approved by [name]"
+ביטויי גילוי נפוצים שעובדים היטב:
+- "נכתב בסיוע בינה מלאכותית"
+- "טיוטה ראשונה נוצרה על ידי בינה מלאכותית, נערכה על ידי אדם"
+- "ניתוח בוצע באמצעות כלי בינה מלאכותית"
+- "נוצר עם בינה מלאכותית, נבדק ואושר על ידי [שם]"
 
-## Privacy Considerations
+## שיקולי פרטיות
 
-Every prompt you send contains data. Understanding where that data goes—and what shouldn't be in it—is essential.
+כל פרומפט שאתם שולחים מכיל נתונים. הבנה לאן הנתונים הללו הולכים—ומה לא צריך להיות בהם—היא חיונית.
 
-### What Never Belongs in Prompts
+### מה לעולם לא שייך לפרומפטים
 
 <InfoGrid items={[
-  { label: "Personal Identifiers", description: "Names, addresses, phone numbers, SSNs", example: "Use [CUSTOMER] instead of 'John Smith'", color: "red" },
-  { label: "Financial Data", description: "Account numbers, credit cards, income details", example: "Describe the pattern, not the actual numbers", exampleType: "text", color: "red" },
-  { label: "Health Information", description: "Medical records, diagnoses, prescriptions", example: "Ask about conditions generally, not specific patients", exampleType: "text", color: "red" },
-  { label: "Credentials", description: "Passwords, API keys, tokens, secrets", example: "Never paste credentials—use placeholders", exampleType: "text", color: "red" },
-  { label: "Private Communications", description: "Personal emails, messages, confidential docs", example: "Summarize the situation without quoting private text", exampleType: "text", color: "red" }
+  { label: "מזהים אישיים", description: "שמות, כתובות, מספרי טלפון, מספרי זהות", example: "השתמשו ב-[לקוח] במקום 'ישראל ישראלי'", color: "red" },
+  { label: "נתונים פיננסיים", description: "מספרי חשבון, כרטיסי אשראי, פרטי הכנסה", example: "תארו את הדפוס, לא את המספרים בפועל", exampleType: "text", color: "red" },
+  { label: "מידע בריאותי", description: "רשומות רפואיות, אבחנות, מרשמים", example: "שאלו על מצבים באופן כללי, לא על מטופלים ספציפיים", exampleType: "text", color: "red" },
+  { label: "פרטי גישה", description: "סיסמאות, מפתחות API, טוקנים, סודות", example: "לעולם אל תדביקו פרטי גישה—השתמשו במצייני מקום", exampleType: "text", color: "red" },
+  { label: "תקשורת פרטית", description: "אימיילים אישיים, הודעות, מסמכים חסויים", example: "סכמו את המצב בלי לצטט טקסט פרטי", exampleType: "text", color: "red" }
 ]} />
 
-### Safe Data Handling Pattern
+### דפוס טיפול בטוח בנתונים
 
 <Compare 
-  before={{ label: "Unsafe: Contains PII", content: "Summarize this complaint from John Smith at 123 Main St, Anytown about order #12345: 'I ordered on March 15 and still haven't received...'" }}
-  after={{ label: "Safe: Anonymized", content: "Summarize this customer complaint pattern: A customer ordered 3 weeks ago, hasn't received their order, and has contacted support twice without resolution." }}
+  before={{ label: "לא בטוח: מכיל PII", content: "Summarize this complaint from John Smith at 123 Main St, Anytown about order #12345: 'I ordered on March 15 and still haven't received...'" }}
+  after={{ label: "בטוח: אנונימי", content: "Summarize this customer complaint pattern: A customer ordered 3 weeks ago, hasn't received their order, and has contacted support twice without resolution." }}
 />
 
-<Callout type="info" title="What is PII?">
-**PII** stands for **Personally Identifiable Information**—any data that can identify a specific individual. This includes names, addresses, phone numbers, email addresses, Social Security numbers, financial account numbers, and even combinations of data (like job title + company + city) that could identify someone. When prompting AI, always anonymize or remove PII to protect privacy.
+<Callout type="info" title="מהו PII?">
+**PII** הוא ראשי תיבות של **Personally Identifiable Information** (מידע מזהה אישית)—כל נתון שיכול לזהות אדם ספציפי. זה כולל שמות, כתובות, מספרי טלפון, כתובות אימייל, מספרי זהות, מספרי חשבון פיננסי, ואפילו שילובי נתונים (כמו תפקיד + חברה + עיר) שיכולים לזהות מישהו. כשמנסחים פרומפטים לבינה מלאכותית, תמיד אנונימו או הסירו PII כדי להגן על הפרטיות.
 </Callout>
 
 <TryIt 
-  title="PII Scrubber"
-  description="Use this to identify and remove sensitive information before including text in prompts."
+  title="מנקה PII"
+  description="השתמשו בזה כדי לזהות ולהסיר מידע רגיש לפני הכללת טקסט בפרומפטים."
   prompt={`Review this text for sensitive information that should be removed before using it in an AI prompt:
 
 "\${textToReview}"
@@ -226,70 +226,70 @@ Identify:
 For each item found, suggest how to anonymize or generalize it while preserving the information needed for the task.`}
 />
 
-## Authenticity and Deception
+## אותנטיות והונאה
 
-There's a difference between using AI as a tool and using AI to deceive.
+יש הבדל בין שימוש בבינה מלאכותית ככלי לבין שימוש בבינה מלאכותית כדי להונות.
 
-### The Legitimacy Line
+### קו הלגיטימיות
 
 <InfoGrid items={[
-  { label: "Legitimate Uses", description: "AI as a tool to enhance your work", example: "Drafting, brainstorming, editing, learning", exampleType: "text", color: "green" },
-  { label: "Gray Areas", description: "Context-dependent, requires judgment", example: "Ghostwriting, templates, automated responses", exampleType: "text", color: "amber" },
-  { label: "Deceptive Uses", description: "Misrepresenting AI work as human-original", example: "Fake reviews, academic fraud, impersonation", exampleType: "text", color: "red" }
+  { label: "שימושים לגיטימיים", description: "בינה מלאכותית ככלי לשיפור העבודה שלכם", example: "כתיבת טיוטות, סיעור מוחות, עריכה, למידה", exampleType: "text", color: "green" },
+  { label: "אזורים אפורים", description: "תלוי הקשר, דורש שיקול דעת", example: "כתיבה בשם אחרים, תבניות, תגובות אוטומטיות", exampleType: "text", color: "amber" },
+  { label: "שימושים מטעים", description: "הצגת עבודת בינה מלאכותית כמקורית אנושית", example: "ביקורות מזויפות, הונאה אקדמית, התחזות", exampleType: "text", color: "red" }
 ]} />
 
-Key questions to ask:
-- Would the recipient expect this to be original human work?
-- Am I gaining unfair advantage through deception?
-- Would disclosure change how the work is received?
+שאלות מפתח לשאול:
+- האם המקבל היה מצפה שזו תהיה עבודה אנושית מקורית?
+- האם אני משיג יתרון לא הוגן באמצעות הונאה?
+- האם גילוי היה משנה את האופן שבו העבודה מתקבלת?
 
-### Synthetic Media Responsibility
+### אחריות על מדיה סינתטית
 
-Creating realistic depictions of real people—whether images, audio, or video—carries special obligations:
+יצירת תיאורים ריאליסטיים של אנשים אמיתיים—בין אם תמונות, אודיו או וידאו—מגיעה עם חובות מיוחדות:
 
-- **Never** create realistic depictions without consent
-- **Always** label synthetic media clearly
-- **Consider** potential for misuse before creating
-- **Refuse** to create non-consensual intimate imagery
+- **לעולם אל** תיצרו תיאורים ריאליסטיים ללא הסכמה
+- **תמיד** סמנו מדיה סינתטית בבירור
+- **שקלו** פוטנציאל לשימוש לרעה לפני יצירה
+- **סרבו** ליצור דימויים אינטימיים ללא הסכמה
 
-## Responsible Deployment
+## פריסה אחראית
 
-When building AI features for others to use, your ethical obligations multiply.
+כשבונים תכונות בינה מלאכותית לשימוש אחרים, ההתחייבויות האתיות שלכם מתרבות.
 
-### Pre-Deployment Checklist
+### רשימת בדיקה לפני פריסה
 
 <Checklist 
-  title="Deployment Readiness"
+  title="מוכנות לפריסה"
   items={[
-    { text: "Tested for harmful outputs across diverse inputs" },
-    { text: "Tested for bias with varied demographics" },
-    { text: "User disclosure/consent mechanisms in place" },
-    { text: "Human oversight for high-stakes decisions" },
-    { text: "Feedback and reporting system available" },
-    { text: "Incident response plan documented" },
-    { text: "Clear usage policies communicated" },
-    { text: "Monitoring and alerting configured" }
+    { text: "נבדק לתוצרים מזיקים על פני קלטים מגוונים" },
+    { text: "נבדק להטיות עם דמוגרפיות משתנות" },
+    { text: "מנגנוני גילוי/הסכמה למשתמש במקום" },
+    { text: "פיקוח אנושי להחלטות בעלות סיכון גבוה" },
+    { text: "מערכת משוב ודיווח זמינה" },
+    { text: "תוכנית תגובה לאירועים מתועדת" },
+    { text: "מדיניות שימוש ברורה מועברת" },
+    { text: "ניטור והתראות מוגדרים" }
   ]}
 />
 
-### Human Oversight Principles
+### עקרונות פיקוח אנושי
 
 <InfoGrid items={[
-  { label: "High-Stakes Review", description: "Humans review decisions that significantly affect people", example: "Hiring, medical, legal, financial recommendations", exampleType: "text", color: "blue" },
-  { label: "Error Correction", description: "Mechanisms exist to catch and fix AI mistakes", example: "User feedback, quality sampling, appeals process", exampleType: "text", color: "blue" },
-  { label: "Continuous Learning", description: "Insights from issues improve the system", example: "Post-mortems, prompt updates, training improvements", exampleType: "text", color: "blue" },
-  { label: "Override Capability", description: "Humans can intervene when AI fails", example: "Manual review queues, escalation paths", exampleType: "text", color: "blue" }
+  { label: "בדיקה בסיכון גבוה", description: "בני אדם בודקים החלטות שמשפיעות משמעותית על אנשים", example: "המלצות גיוס, רפואיות, משפטיות, פיננסיות", exampleType: "text", color: "blue" },
+  { label: "תיקון שגיאות", description: "קיימים מנגנונים לתפוס ולתקן טעויות בינה מלאכותית", example: "משוב משתמשים, דגימת איכות, תהליך ערעור", exampleType: "text", color: "blue" },
+  { label: "למידה מתמשכת", description: "תובנות מבעיות משפרות את המערכת", example: "ניתוחים שלאחר אירוע, עדכוני פרומפטים, שיפורי אימון", exampleType: "text", color: "blue" },
+  { label: "יכולת עקיפה", description: "בני אדם יכולים להתערב כשהבינה המלאכותית נכשלת", example: "תורים לבדיקה ידנית, נתיבי הסלמה", exampleType: "text", color: "blue" }
 ]} />
 
-## Special Context Guidelines
+## הנחיות להקשרים מיוחדים
 
-Some domains require extra care due to their potential for harm or the vulnerability of those involved.
+תחומים מסוימים דורשים זהירות נוספת בשל הפוטנציאל שלהם לנזק או הפגיעות של המעורבים.
 
-### Healthcare
+### בריאות
 
 <TryIt 
-  title="Medical Context Disclaimer"
-  description="Template for AI systems that might receive health-related queries."
+  title="הצהרת אזהרה להקשר רפואי"
+  description="תבנית למערכות בינה מלאכותית שעשויות לקבל שאילתות הקשורות לבריאות."
   prompt={`You are an AI assistant. When users ask about health or medical topics:
 
 **Always**:
@@ -309,49 +309,49 @@ User question: \${healthQuestion}
 Respond helpfully while following these guidelines.`}
 />
 
-### Legal and Financial
+### משפטי ופיננסי
 
-These domains have regulatory implications and require appropriate disclaimers:
-
-<InfoGrid items={[
-  { label: "Legal Queries", description: "Provide general information, not legal advice", example: "\"This is general information. For your specific situation, consult a licensed attorney.\"", color: "purple" },
-  { label: "Financial Queries", description: "Educate without providing personal financial advice", example: "\"This is educational. Consider consulting a financial advisor for your situation.\"", color: "purple" },
-  { label: "Jurisdiction Awareness", description: "Laws vary by location", example: "\"Laws differ by state/country. Verify requirements for your jurisdiction.\"", color: "purple" }
-]} />
-
-### Children and Education
+לתחומים אלה יש השלכות רגולטוריות ודורשים הצהרות אזהרה מתאימות:
 
 <InfoGrid items={[
-  { label: "Age-Appropriate Content", description: "Ensure outputs are suitable for the age group", example: "Filter mature content, use appropriate language", exampleType: "text", color: "cyan" },
-  { label: "Academic Integrity", description: "Support learning, don't replace it", example: "Explain concepts rather than writing essays for students", exampleType: "text", color: "cyan" },
-  { label: "Safety First", description: "Extra protection for vulnerable users", example: "Stricter content filters, no personal data collection", exampleType: "text", color: "cyan" }
+  { label: "שאילתות משפטיות", description: "ספקו מידע כללי, לא ייעוץ משפטי", example: "\"זהו מידע כללי. למצבכם הספציפי, התייעצו עם עורך דין מורשה.\"", color: "purple" },
+  { label: "שאילתות פיננסיות", description: "חנכו בלי לספק ייעוץ פיננסי אישי", example: "\"זה חינוכי. שקלו להתייעץ עם יועץ פיננסי למצבכם.\"", color: "purple" },
+  { label: "מודעות לתחום שיפוט", description: "חוקים משתנים לפי מיקום", example: "\"חוקים שונים לפי מדינה/ארץ. אמתו דרישות לתחום השיפוט שלכם.\"", color: "purple" }
 ]} />
 
-## Self-Assessment
+### ילדים וחינוך
 
-Before deploying any prompt or AI system, run through these questions:
+<InfoGrid items={[
+  { label: "תוכן מותאם גיל", description: "ודאו שתוצרים מתאימים לקבוצת הגיל", example: "סננו תוכן בוגר, השתמשו בשפה מתאימה", exampleType: "text", color: "cyan" },
+  { label: "יושרה אקדמית", description: "תמכו בלמידה, אל תחליפו אותה", example: "הסבירו מושגים במקום לכתוב חיבורים עבור תלמידים", exampleType: "text", color: "cyan" },
+  { label: "בטיחות קודם", description: "הגנה נוספת למשתמשים פגיעים", example: "פילטרי תוכן מחמירים יותר, ללא איסוף נתונים אישיים", exampleType: "text", color: "cyan" }
+]} />
+
+## הערכה עצמית
+
+לפני פריסת כל פרומפט או מערכת בינה מלאכותית, עברו על השאלות הבאות:
 
 <Checklist 
-  title="Ethical Self-Check"
+  title="בדיקה עצמית אתית"
   items={[
-    { text: "Could this be used to harm someone?" },
-    { text: "Does this respect user privacy?" },
-    { text: "Could this perpetuate harmful biases?" },
-    { text: "Is AI involvement appropriately disclosed?" },
-    { text: "Is there adequate human oversight?" },
-    { text: "What's the worst that could happen?" },
-    { text: "Would I be comfortable if this use were public?" }
+    { text: "האם זה יכול לשמש לפגיעה במישהו?" },
+    { text: "האם זה מכבד את פרטיות המשתמש?" },
+    { text: "האם זה יכול להנציח הטיות מזיקות?" },
+    { text: "האם מעורבות הבינה המלאכותית נחשפת כראוי?" },
+    { text: "האם יש פיקוח אנושי מספק?" },
+    { text: "מה הדבר הגרוע ביותר שיכול לקרות?" },
+    { text: "האם הייתי מרגיש בנוח אם השימוש הזה היה פומבי?" }
   ]}
 />
 
 <Quiz 
-  question="A user asks your AI system how to 'get rid of someone who's bothering them.' What's the most appropriate response strategy?"
+  question="משתמש שואל את מערכת הבינה המלאכותית שלכם איך 'להיפטר ממישהו שמפריע לו'. מהי אסטרטגיית התגובה המתאימה ביותר?"
   options={[
-    "Refuse immediately—this could be a request for harm instructions",
-    "Provide conflict resolution advice since that's the most likely intent",
-    "Ask clarifying questions to understand intent before deciding how to respond",
-    "Explain you can't help with anything related to harming people"
+    "לסרב מיד—זו יכולה להיות בקשה להוראות פגיעה",
+    "לספק עצות לפתרון סכסוכים כי זו הכוונה הסבירה ביותר",
+    "לשאול שאלות הבהרה כדי להבין את הכוונה לפני שמחליטים איך להגיב",
+    "להסביר שאתם לא יכולים לעזור בכל דבר הקשור לפגיעה באנשים"
   ]}
   correctIndex={2}
-  explanation="Ambiguous requests deserve clarification, not assumptions. 'Get rid of someone' could mean ending a friendship, resolving a workplace conflict, or something harmful. Asking clarifying questions lets you respond appropriately to the actual intent while remaining cautious about providing harmful information."
+  explanation="בקשות מעורפלות ראויות להבהרה, לא להנחות. 'להיפטר ממישהו' יכול להיות סיום חברות, פתרון סכסוך בעבודה, או משהו מזיק. שאלת שאלות הבהרה מאפשרת לכם להגיב בהתאם לכוונה האמיתית תוך שמירה על זהירות מפני מתן מידע מזיק."
 />
