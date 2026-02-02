@@ -1,4 +1,4 @@
-As AI systems evolve from simple question-answering to autonomous task execution, understanding **agents** and **skills** becomes essential. This chapter explores how prompts serve as the fundamental building blocks for AI agents, and how skills package expertise into reusable, comprehensive instruction sets.
+Καθώς τα συστήματα AI εξελίσσονται από απλή απάντηση ερωτήσεων σε αυτόνομη εκτέλεση εργασιών, η κατανόηση των **agents** και **skills** γίνεται απαραίτητη. Αυτό το κεφάλαιο εξερευνά πώς τα prompts λειτουργούν ως τα θεμελιώδη δομικά στοιχεία για AI agents, και πώς τα skills πακετάρουν την εμπειρογνωμοσύνη σε επαναχρησιμοποιήσιμα, ολοκληρωμένα σύνολα οδηγιών.
 
 <div className="my-8 p-6 bg-muted/20 rounded-xl border">
   <div className="flex flex-col items-center gap-6">
@@ -7,10 +7,10 @@ As AI systems evolve from simple question-answering to autonomous task execution
         <IconSettings className="w-10 h-10 text-blue-600 dark:text-blue-400" />
       </div>
       <p className="font-semibold mt-2 m-0!">Agent</p>
-      <p className="text-xs text-muted-foreground m-0!">Autonomous AI system</p>
+      <p className="text-xs text-muted-foreground m-0!">Αυτόνομο σύστημα AI</p>
     </div>
     <div className="flex items-center gap-2 text-muted-foreground text-sm">
-      <span>powered by</span>
+      <span>τροφοδοτείται από</span>
       <span>↓</span>
     </div>
     <div className="flex flex-wrap justify-center gap-4">
@@ -19,25 +19,25 @@ As AI systems evolve from simple question-answering to autonomous task execution
           <IconStar className="w-8 h-8 text-purple-600 dark:text-purple-400" />
         </div>
         <p className="font-medium text-sm mt-2 m-0!">Skill</p>
-        <p className="text-xs text-muted-foreground m-0!">Reusable expertise</p>
+        <p className="text-xs text-muted-foreground m-0!">Επαναχρησιμοποιήσιμη εμπειρογνωμοσύνη</p>
       </div>
       <div className="text-center">
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-lg bg-purple-100 dark:bg-purple-900/50 border-2 border-purple-300 dark:border-purple-700">
           <IconStar className="w-8 h-8 text-purple-600 dark:text-purple-400" />
         </div>
         <p className="font-medium text-sm mt-2 m-0!">Skill</p>
-        <p className="text-xs text-muted-foreground m-0!">Reusable expertise</p>
+        <p className="text-xs text-muted-foreground m-0!">Επαναχρησιμοποιήσιμη εμπειρογνωμοσύνη</p>
       </div>
       <div className="text-center">
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-lg bg-purple-100 dark:bg-purple-900/50 border-2 border-purple-300 dark:border-purple-700">
           <IconStar className="w-8 h-8 text-purple-600 dark:text-purple-400" />
         </div>
         <p className="font-medium text-sm mt-2 m-0!">Skill</p>
-        <p className="text-xs text-muted-foreground m-0!">Reusable expertise</p>
+        <p className="text-xs text-muted-foreground m-0!">Επαναχρησιμοποιήσιμη εμπειρογνωμοσύνη</p>
       </div>
     </div>
     <div className="flex items-center gap-2 text-muted-foreground text-sm">
-      <span>composed of</span>
+      <span>αποτελούμενο από</span>
       <span>↓</span>
     </div>
     <div className="flex flex-wrap justify-center gap-2">
@@ -62,173 +62,173 @@ As AI systems evolve from simple question-answering to autonomous task execution
         <span className="text-xs font-medium">Prompt</span>
       </div>
     </div>
-    <p className="text-xs text-muted-foreground text-center m-0! mt-2">Prompts are atoms → Skills are molecules → Agents are complete structures</p>
+    <p className="text-xs text-muted-foreground text-center m-0! mt-2">Τα Prompts είναι άτομα → Τα Skills είναι μόρια → Οι Agents είναι πλήρεις δομές</p>
   </div>
 </div>
 
-## What Are AI Agents?
+## Τι Είναι οι AI Agents;
 
-An **AI agent** is an AI system that can autonomously plan, execute, and iterate on tasks. Unlike simple prompt-response interactions, agents can:
+Ένας **AI agent** είναι ένα σύστημα AI που μπορεί αυτόνομα να σχεδιάζει, εκτελεί, και επαναλαμβάνει εργασίες. Σε αντίθεση με απλές αλληλεπιδράσεις prompt-απάντησης, οι agents μπορούν:
 
-- **Plan** - Break down complex goals into actionable steps
-- **Execute** - Use tools and take actions in the real world
-- **Observe** - Process feedback from their actions
-- **Adapt** - Adjust their approach based on results
-- **Persist** - Maintain context and memory across interactions
+- **Σχεδιασμός** - Ανάλυση σύνθετων στόχων σε εφαρμόσιμα βήματα
+- **Εκτέλεση** - Χρήση εργαλείων και ανάληψη δράσεων στον πραγματικό κόσμο
+- **Παρατήρηση** - Επεξεργασία ανατροφοδότησης από τις δράσεις τους
+- **Προσαρμογή** - Ρύθμιση της προσέγγισής τους βάσει αποτελεσμάτων
+- **Επιμονή** - Διατήρηση context και μνήμης σε αλληλεπιδράσεις
 
 <div className="my-6 flex items-center justify-center p-6 bg-muted/30 rounded-lg">
   <div className="relative">
     <div className="flex items-center gap-3">
       <div className="px-4 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center text-sm">
-        <p className="font-medium text-blue-700 dark:text-blue-300 m-0!">Goal</p>
+        <p className="font-medium text-blue-700 dark:text-blue-300 m-0!">Στόχος</p>
       </div>
       <div className="text-muted-foreground">→</div>
       <div className="flex flex-col items-center gap-2">
         <div className="flex items-center gap-2 px-4 py-3 bg-muted/50 border border-dashed rounded-lg">
           <div className="px-3 py-2 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded text-center text-sm">
-            <p className="font-medium text-purple-700 dark:text-purple-300 m-0!">Plan</p>
+            <p className="font-medium text-purple-700 dark:text-purple-300 m-0!">Σχεδίασε</p>
           </div>
           <div className="text-muted-foreground">→</div>
           <div className="px-3 py-2 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded text-center text-sm">
-            <p className="font-medium text-amber-700 dark:text-amber-300 m-0!">Execute</p>
+            <p className="font-medium text-amber-700 dark:text-amber-300 m-0!">Εκτέλεσε</p>
           </div>
           <div className="text-muted-foreground">→</div>
           <div className="px-3 py-2 bg-teal-100 dark:bg-teal-900/50 border border-teal-200 dark:border-teal-800 rounded text-center text-sm">
-            <p className="font-medium text-teal-700 dark:text-teal-300 m-0!">Observe</p>
+            <p className="font-medium text-teal-700 dark:text-teal-300 m-0!">Παρατήρησε</p>
           </div>
           <div className="text-muted-foreground">→</div>
           <div className="px-3 py-2 bg-rose-100 dark:bg-rose-900/50 border border-rose-200 dark:border-rose-800 rounded text-center text-sm">
-            <p className="font-medium text-rose-700 dark:text-rose-300 m-0!">Adapt</p>
+            <p className="font-medium text-rose-700 dark:text-rose-300 m-0!">Προσαρμόσου</p>
           </div>
         </div>
         <div className="text-xs text-muted-foreground flex items-center gap-1">
-          <span>↺</span> Loop until complete
+          <span>↺</span> Επανάληψη μέχρι ολοκλήρωσης
         </div>
       </div>
       <div className="text-muted-foreground">→</div>
       <div className="px-4 py-3 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg text-center text-sm">
-        <p className="font-medium text-green-700 dark:text-green-300 m-0!">Done</p>
+        <p className="font-medium text-green-700 dark:text-green-300 m-0!">Τέλος</p>
       </div>
     </div>
   </div>
 </div>
 
-## Prompts as Building Blocks
+## Prompts ως Δομικά Στοιχεία
 
-Every agent, no matter how sophisticated, is built from prompts. Just as atoms combine to form molecules, and molecules combine to form complex structures, prompts combine to create intelligent agent behavior.
+Κάθε agent, όσο εξελιγμένος και αν είναι, χτίζεται από prompts. Όπως τα άτομα συνδυάζονται για να σχηματίσουν μόρια, και τα μόρια συνδυάζονται για να σχηματίσουν σύνθετες δομές, τα prompts συνδυάζονται για να δημιουργήσουν έξυπνη συμπεριφορά agent.
 
 <div className="my-6 grid md:grid-cols-4 gap-3 text-center text-sm">
   <div className="border rounded-lg p-4 bg-blue-50/50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-900">
     <p className="font-semibold text-blue-700 dark:text-blue-300 m-0!">System Prompts</p>
-    <p className="text-xs text-blue-600 dark:text-blue-400 m-0! mt-1">Identity & Role</p>
+    <p className="text-xs text-blue-600 dark:text-blue-400 m-0! mt-1">Ταυτότητα & Ρόλος</p>
   </div>
   <div className="border rounded-lg p-4 bg-purple-50/50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-900">
     <p className="font-semibold text-purple-700 dark:text-purple-300 m-0!">Planning Prompts</p>
-    <p className="text-xs text-purple-600 dark:text-purple-400 m-0! mt-1">How to Think</p>
+    <p className="text-xs text-purple-600 dark:text-purple-400 m-0! mt-1">Πώς να Σκέφτεσαι</p>
   </div>
   <div className="border rounded-lg p-4 bg-amber-50/50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900">
     <p className="font-semibold text-amber-700 dark:text-amber-300 m-0!">Tool Prompts</p>
-    <p className="text-xs text-amber-600 dark:text-amber-400 m-0! mt-1">How to Act</p>
+    <p className="text-xs text-amber-600 dark:text-amber-400 m-0! mt-1">Πώς να Ενεργείς</p>
   </div>
   <div className="border rounded-lg p-4 bg-rose-50/50 dark:bg-rose-950/20 border-rose-200 dark:border-rose-900">
     <p className="font-semibold text-rose-700 dark:text-rose-300 m-0!">Recovery Prompts</p>
-    <p className="text-xs text-rose-600 dark:text-rose-400 m-0! mt-1">How to Recover</p>
+    <p className="text-xs text-rose-600 dark:text-rose-400 m-0! mt-1">Πώς να Ανακάμπτεις</p>
   </div>
 </div>
 
-These prompt types stack together to form complete agent behavior:
+Αυτοί οι τύποι prompts στοιβάζονται μαζί για να σχηματίσουν πλήρη συμπεριφορά agent:
 
-### System Prompts (The Agent's Identity)
+### System Prompts (Η Ταυτότητα του Agent)
 
-The foundational prompt that establishes who the agent is and how it behaves:
-
-```markdown
-You are a code review assistant. Your role is to:
-- Analyze code for bugs, security issues, and performance problems
-- Suggest improvements following best practices
-- Explain your reasoning clearly
-- Be constructive and educational in feedback
-
-You have access to tools for reading files, searching code, and running tests.
-```
-
-### Planning Prompts (How to Think)
-
-Instructions that guide the agent's reasoning and planning process:
+Το θεμελιώδες prompt που καθιερώνει ποιος είναι ο agent και πώς συμπεριφέρεται:
 
 ```markdown
-Before taking action, always:
-1. Understand the complete request
-2. Break it into smaller, verifiable steps
-3. Identify which tools you'll need
-4. Consider edge cases and potential issues
-5. Execute step by step, validating as you go
+Είσαι βοηθός αξιολόγησης κώδικα. Ο ρόλος σου είναι να:
+- Αναλύεις κώδικα για bugs, ζητήματα ασφάλειας, και προβλήματα απόδοσης
+- Προτείνεις βελτιώσεις ακολουθώντας βέλτιστες πρακτικές
+- Εξηγείς τη συλλογιστική σου ξεκάθαρα
+- Είσαι εποικοδομητικός και εκπαιδευτικός στην ανατροφοδότηση
+
+Έχεις πρόσβαση σε εργαλεία για ανάγνωση αρχείων, αναζήτηση κώδικα, και εκτέλεση τεστ.
 ```
 
-### Tool-Use Prompts (How to Act)
+### Planning Prompts (Πώς να Σκέφτεσαι)
 
-Guidance on when and how to use available tools:
+Οδηγίες που καθοδηγούν τη συλλογιστική και τη διαδικασία σχεδιασμού του agent:
 
 ```markdown
-When you need to understand a codebase:
-- Use grep_search for finding specific patterns
-- Use read_file to examine file contents
-- Use list_dir to explore directory structure
-- Always verify your understanding before making changes
+Πριν αναλάβεις δράση, πάντα:
+1. Κατανόησε το πλήρες αίτημα
+2. Ανάλυσέ το σε μικρότερα, επαληθεύσιμα βήματα
+3. Αναγνώρισε ποια εργαλεία θα χρειαστείς
+4. Εξέτασε ακραίες περιπτώσεις και πιθανά ζητήματα
+5. Εκτέλεσε βήμα προς βήμα, επαληθεύοντας καθώς προχωράς
 ```
 
-### Recovery Prompts (How to Handle Failure)
+### Tool-Use Prompts (Πώς να Ενεργείς)
 
-Instructions for when things go wrong:
+Καθοδήγηση για το πότε και πώς να χρησιμοποιείς διαθέσιμα εργαλεία:
 
 ```markdown
-If an action fails:
-1. Analyze the error message carefully
-2. Consider alternative approaches
-3. Ask for clarification if the task is ambiguous
-4. Never repeat the same failed action without changes
+Όταν χρειάζεσαι να κατανοήσεις μια βάση κώδικα:
+- Χρησιμοποίησε grep_search για εύρεση συγκεκριμένων μοτίβων
+- Χρησιμοποίησε read_file για εξέταση περιεχομένων αρχείου
+- Χρησιμοποίησε list_dir για εξερεύνηση δομής καταλόγου
+- Πάντα επαλήθευε την κατανόησή σου πριν κάνεις αλλαγές
 ```
 
-<Callout type="info" title="The Prompt Stack">
-An agent's behavior emerges from layers of prompts working together. The system prompt sets the foundation, planning prompts guide reasoning, tool prompts enable action, and recovery prompts handle failures. Together, they create coherent, capable behavior.
+### Recovery Prompts (Πώς να Χειρίζεσαι Αποτυχίες)
+
+Οδηγίες για όταν τα πράγματα πάνε στραβά:
+
+```markdown
+Αν μια ενέργεια αποτύχει:
+1. Ανάλυσε το μήνυμα σφάλματος προσεκτικά
+2. Εξέτασε εναλλακτικές προσεγγίσεις
+3. Ζήτα διευκρίνιση αν η εργασία είναι ασαφής
+4. Ποτέ μην επαναλαμβάνεις την ίδια αποτυχημένη ενέργεια χωρίς αλλαγές
+```
+
+<Callout type="info" title="Η Στοίβα Prompts">
+Η συμπεριφορά ενός agent αναδύεται από στρώματα prompts που δουλεύουν μαζί. Το system prompt θέτει το θεμέλιο, τα planning prompts καθοδηγούν τη συλλογιστική, τα tool prompts επιτρέπουν δράση, και τα recovery prompts χειρίζονται αποτυχίες. Μαζί, δημιουργούν συνεκτική, ικανή συμπεριφορά.
 </Callout>
 
-## What Are Skills?
+## Τι Είναι τα Skills;
 
-If prompts are the atoms, **skills are the molecules**—reusable building blocks that give agents specific capabilities.
+Αν τα prompts είναι τα άτομα, **τα skills είναι τα μόρια**—επαναχρησιμοποιήσιμα δομικά στοιχεία που δίνουν στους agents συγκεκριμένες δυνατότητες.
 
-A **skill** is a comprehensive, portable package of instructions that gives an AI agent expertise in a specific domain or task. Skills are the reusable blocks of agents: you build them once, and any agent can use them.
+Ένα **skill** είναι ένα ολοκληρωμένο, φορητό πακέτο οδηγιών που δίνει σε έναν AI agent εμπειρογνωμοσύνη σε έναν συγκεκριμένο τομέα ή εργασία. Τα skills είναι τα επαναχρησιμοποιήσιμα blocks των agents: τα χτίζεις μια φορά, και κάθε agent μπορεί να τα χρησιμοποιήσει.
 
-<Callout type="tip" title="Skills = Reusable Agent Blocks">
-Write a skill for code review once. Now every coding agent—whether it's for Python, JavaScript, or Rust—can instantly become an expert code reviewer by loading that skill. Skills let you build agent capabilities like LEGO blocks.
+<Callout type="tip" title="Skills = Επαναχρησιμοποιήσιμα Blocks Agents">
+Γράψε ένα skill για αξιολόγηση κώδικα μια φορά. Τώρα κάθε coding agent—είτε για Python, JavaScript, ή Rust—μπορεί αμέσως να γίνει εμπειρογνώμονας αξιολόγησης κώδικα φορτώνοντας αυτό το skill. Τα skills σε αφήνουν να χτίζεις δυνατότητες agents σαν τουβλάκια LEGO.
 </Callout>
 
-### Anatomy of a Skill
+### Ανατομία ενός Skill
 
-A well-designed skill typically includes:
+Ένα καλά σχεδιασμένο skill συνήθως περιλαμβάνει:
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg p-4 bg-muted/30">
-    <p className="font-semibold text-sm m-0! mb-2">📄 SKILL.md (Required)</p>
-    <p className="text-sm text-muted-foreground m-0!">The main instruction file. Contains the core expertise, guidelines, and behaviors that define the skill.</p>
+    <p className="font-semibold text-sm m-0! mb-2">📄 SKILL.md (Απαιτείται)</p>
+    <p className="text-sm text-muted-foreground m-0!">Το κύριο αρχείο οδηγιών. Περιέχει την κεντρική εμπειρογνωμοσύνη, οδηγίες, και συμπεριφορές που ορίζουν το skill.</p>
   </div>
   <div className="border rounded-lg p-4 bg-muted/30">
-    <p className="font-semibold text-sm m-0! mb-2">📚 Reference Docs</p>
-    <p className="text-sm text-muted-foreground m-0!">Supporting documentation, examples, and context the agent can reference while working.</p>
+    <p className="font-semibold text-sm m-0! mb-2">📚 Έγγραφα Αναφοράς</p>
+    <p className="text-sm text-muted-foreground m-0!">Υποστηρικτική τεκμηρίωση, παραδείγματα, και πλαίσιο που ο agent μπορεί να αναφέρεται ενώ εργάζεται.</p>
   </div>
   <div className="border rounded-lg p-4 bg-muted/30">
-    <p className="font-semibold text-sm m-0! mb-2">🔧 Scripts & Tools</p>
-    <p className="text-sm text-muted-foreground m-0!">Helper scripts, templates, or tool configurations that support the skill's functionality.</p>
+    <p className="font-semibold text-sm m-0! mb-2">🔧 Scripts & Εργαλεία</p>
+    <p className="text-sm text-muted-foreground m-0!">Βοηθητικά scripts, πρότυπα, ή ρυθμίσεις εργαλείων που υποστηρίζουν τη λειτουργικότητα του skill.</p>
   </div>
   <div className="border rounded-lg p-4 bg-muted/30">
-    <p className="font-semibold text-sm m-0! mb-2">⚙️ Configuration</p>
-    <p className="text-sm text-muted-foreground m-0!">Settings, parameters, and customization options for adapting the skill to different contexts.</p>
+    <p className="font-semibold text-sm m-0! mb-2">⚙️ Ρυθμίσεις</p>
+    <p className="text-sm text-muted-foreground m-0!">Ρυθμίσεις, παράμετροι, και επιλογές προσαρμογής για προσαρμογή του skill σε διαφορετικά πλαίσια.</p>
   </div>
 </div>
 
-### Example: Code Review Skill
+### Παράδειγμα: Skill Αξιολόγησης Κώδικα
 
-Here's what a code review skill might look like:
+Δες πώς θα μπορούσε να μοιάζει ένα skill αξιολόγησης κώδικα:
 
 <div className="my-6 border rounded-lg overflow-hidden bg-muted/20">
   <div className="px-3 py-2 bg-muted/50 border-b flex items-center gap-2">
@@ -239,17 +239,17 @@ Here's what a code review skill might look like:
     <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-muted/50">
       <span>📄</span>
       <span className="font-medium">SKILL.md</span>
-      <span className="text-muted-foreground text-xs ml-auto">Core review guidelines</span>
+      <span className="text-muted-foreground text-xs ml-auto">Βασικές οδηγίες αξιολόγησης</span>
     </div>
     <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-muted/50">
       <span>📄</span>
       <span>security-checklist.md</span>
-      <span className="text-muted-foreground text-xs ml-auto">Security patterns</span>
+      <span className="text-muted-foreground text-xs ml-auto">Μοτίβα ασφάλειας</span>
     </div>
     <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-muted/50">
       <span>📄</span>
       <span>performance-tips.md</span>
-      <span className="text-muted-foreground text-xs ml-auto">Optimization guide</span>
+      <span className="text-muted-foreground text-xs ml-auto">Οδηγός βελτιστοποίησης</span>
     </div>
     <div className="mt-2 border-t pt-2">
       <div className="flex items-center gap-2 px-2 py-1">
@@ -260,204 +260,204 @@ Here's what a code review skill might look like:
         <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-muted/50">
           <span>📄</span>
           <span>python.md</span>
-          <span className="text-muted-foreground text-xs ml-auto">Python best practices</span>
+          <span className="text-muted-foreground text-xs ml-auto">Βέλτιστες πρακτικές Python</span>
         </div>
         <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-muted/50">
           <span>📄</span>
           <span>javascript.md</span>
-          <span className="text-muted-foreground text-xs ml-auto">JavaScript patterns</span>
+          <span className="text-muted-foreground text-xs ml-auto">Μοτίβα JavaScript</span>
         </div>
         <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-muted/50">
           <span>📄</span>
           <span>rust.md</span>
-          <span className="text-muted-foreground text-xs ml-auto">Rust guidelines</span>
+          <span className="text-muted-foreground text-xs ml-auto">Οδηγίες Rust</span>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-The `SKILL.md` file defines the overall approach:
+Το αρχείο `SKILL.md` ορίζει τη συνολική προσέγγιση:
 
 ```markdown
 ---
 name: code-review
-description: Comprehensive code review with security, performance, and style analysis
+description: Ολοκληρωμένη αξιολόγηση κώδικα με ανάλυση ασφάλειας, απόδοσης, και στυλ
 ---
 
-# Code Review Skill
+# Skill Αξιολόγησης Κώδικα
 
-You are an expert code reviewer. When reviewing code:
+Είσαι εμπειρογνώμονας αξιολογητής κώδικα. Όταν αξιολογείς κώδικα:
 
-## Process
-1. **Understand Context** - What does this code do? What problem does it solve?
-2. **Check Correctness** - Does it work? Are there logic errors?
-3. **Security Scan** - Reference security-checklist.md for common vulnerabilities
-4. **Performance Review** - Check performance-tips.md for optimization opportunities
-5. **Style & Maintainability** - Is the code readable and maintainable?
+## Διαδικασία
+1. **Κατανόηση Πλαισίου** - Τι κάνει αυτός ο κώδικας; Ποιο πρόβλημα λύνει;
+2. **Έλεγχος Ορθότητας** - Λειτουργεί; Υπάρχουν λογικά σφάλματα;
+3. **Σάρωση Ασφάλειας** - Αναφέρσου στο security-checklist.md για κοινές ευπάθειες
+4. **Αξιολόγηση Απόδοσης** - Έλεγξε το performance-tips.md για ευκαιρίες βελτιστοποίησης
+5. **Στυλ & Συντηρησιμότητα** - Είναι ο κώδικας αναγνώσιμος και συντηρήσιμος;
 
-## Output Format
-Provide feedback in categories:
-- 🔴 **Critical** - Must fix before merge
-- 🟡 **Suggested** - Recommended improvements
-- 🟢 **Nice to have** - Optional enhancements
+## Μορφή Εξόδου
+Παρέχε ανατροφοδότηση σε κατηγορίες:
+- 🔴 **Κρίσιμο** - Πρέπει να διορθωθεί πριν το merge
+- 🟡 **Προτεινόμενο** - Συνιστώμενες βελτιώσεις
+- 🟢 **Καλό να έχεις** - Προαιρετικές βελτιώσεις
 
-Always explain *why* something is an issue, not just *what* is wrong.
+Πάντα εξήγα *γιατί* κάτι είναι πρόβλημα, όχι μόνο *τι* είναι λάθος.
 ```
 
-## Skills vs. Simple Prompts
+## Skills vs. Απλά Prompts
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-muted/30">
-    <p className="text-sm font-semibold px-4 pt-3 m-0!">Simple Prompt</p>
+    <p className="text-sm font-semibold px-4 pt-3 m-0!">Απλό Prompt</p>
     <div className="text-sm p-4 pt-2 space-y-2">
-      <p className="m-0!">Single instruction</p>
-      <p className="m-0!">One-off use</p>
-      <p className="m-0!">Limited context</p>
-      <p className="m-0!">Generic approach</p>
-      <p className="m-0!">No supporting materials</p>
+      <p className="m-0!">Μεμονωμένη οδηγία</p>
+      <p className="m-0!">Μιας χρήσης</p>
+      <p className="m-0!">Περιορισμένο πλαίσιο</p>
+      <p className="m-0!">Γενική προσέγγιση</p>
+      <p className="m-0!">Χωρίς υποστηρικτικό υλικό</p>
     </div>
   </div>
   <div className="border rounded-lg bg-primary/5 border-primary/20">
     <p className="text-sm font-semibold px-4 pt-3 m-0!">Skill</p>
     <div className="text-sm p-4 pt-2 space-y-2">
-      <p className="m-0!">Comprehensive instruction set</p>
-      <p className="m-0!">Reusable across projects</p>
-      <p className="m-0!">Rich context with references</p>
-      <p className="m-0!">Domain-specific expertise</p>
-      <p className="m-0!">Supporting docs, scripts, configs</p>
+      <p className="m-0!">Ολοκληρωμένο σύνολο οδηγιών</p>
+      <p className="m-0!">Επαναχρησιμοποιήσιμο σε projects</p>
+      <p className="m-0!">Πλούσιο πλαίσιο με αναφορές</p>
+      <p className="m-0!">Τομεακή εμπειρογνωμοσύνη</p>
+      <p className="m-0!">Υποστηρικτικά έγγραφα, scripts, ρυθμίσεις</p>
     </div>
   </div>
 </div>
 
-## Building Effective Skills
+## Χτίζοντας Αποτελεσματικά Skills
 
-### 1. Define the Expertise Clearly
+### 1. Όρισε την Εμπειρογνωμοσύνη Ξεκάθαρα
 
-Start with a clear description of what the skill enables:
+Ξεκίνα με σαφή περιγραφή του τι επιτρέπει το skill:
 
 ```markdown
 ---
 name: api-design
-description: Design RESTful APIs following industry best practices, 
-  including versioning, error handling, and documentation standards
+description: Σχεδίαση RESTful APIs ακολουθώντας βέλτιστες πρακτικές της βιομηχανίας, 
+  συμπεριλαμβανομένης εκδοσιοποίησης, χειρισμού σφαλμάτων, και προτύπων τεκμηρίωσης
 ---
 ```
 
-### 2. Structure Knowledge Hierarchically
+### 2. Δόμησε τη Γνώση Ιεραρχικά
 
-Organize information from general to specific:
+Οργάνωσε πληροφορίες από γενικές σε ειδικές:
 
 ```markdown
-# API Design Skill
+# Skill Σχεδίασης API
 
-## Core Principles
-- Resources should be nouns, not verbs
-- Use HTTP methods semantically
-- Version your APIs from day one
+## Βασικές Αρχές
+- Οι πόροι πρέπει να είναι ουσιαστικά, όχι ρήματα
+- Χρησιμοποίησε μεθόδους HTTP σημασιολογικά
+- Εκδοσιοποίησε τα APIs σου από την πρώτη μέρα
 
-## Detailed Guidelines
-[More specific rules...]
+## Λεπτομερείς Οδηγίες
+[Πιο ειδικοί κανόνες...]
 
-## Reference Materials
-- See `rest-conventions.md` for naming conventions
-- See `error-codes.md` for standard error responses
+## Υλικό Αναφοράς
+- Δες `rest-conventions.md` για συμβάσεις ονομασίας
+- Δες `error-codes.md` για τυπικές απαντήσεις σφαλμάτων
 ```
 
-### 3. Include Concrete Examples
+### 3. Συμπεριέλαβε Συγκεκριμένα Παραδείγματα
 
-Abstract rules become clear with examples:
+Οι αφηρημένοι κανόνες γίνονται σαφείς με παραδείγματα:
 
 ```markdown
-## Endpoint Naming
+## Ονομασία Endpoints
 
-✅ Good:
+✅ Καλό:
 - GET /users/{id}
 - POST /orders
 - DELETE /products/{id}/reviews/{reviewId}
 
-❌ Avoid:
+❌ Αποφυγή:
 - GET /getUser
 - POST /createNewOrder
 - DELETE /removeProductReview
 ```
 
-### 4. Provide Decision Frameworks
+### 4. Παρέχε Πλαίσια Αποφάσεων
 
-Help the agent make choices in ambiguous situations:
-
-```markdown
-## When to Use Pagination
-
-Use pagination when:
-- Collection could exceed 100 items
-- Response size impacts performance
-- Client may not need all items
-
-Use full response when:
-- Collection is always small (<20 items)
-- Client typically needs everything
-- Real-time consistency is critical
-```
-
-### 5. Add Recovery Patterns
-
-Anticipate what can go wrong:
+Βοήθησε τον agent να κάνει επιλογές σε ασαφείς καταστάσεις:
 
 ```markdown
-## Common Issues
+## Πότε να Χρησιμοποιείς Pagination
 
-**Problem**: Client needs fields not in standard response
-**Solution**: Implement field selection: GET /users?fields=id,name,email
+Χρησιμοποίησε pagination όταν:
+- Η συλλογή μπορεί να υπερβεί τα 100 στοιχεία
+- Το μέγεθος απάντησης επηρεάζει την απόδοση
+- Ο client μπορεί να μη χρειάζεται όλα τα στοιχεία
 
-**Problem**: Breaking changes needed
-**Solution**: Create new version, deprecate old with timeline
+Χρησιμοποίησε πλήρη απάντηση όταν:
+- Η συλλογή είναι πάντα μικρή (<20 στοιχεία)
+- Ο client συνήθως χρειάζεται τα πάντα
+- Η πραγματικού χρόνου συνέπεια είναι κρίσιμη
 ```
 
-## Composing Skills
+### 5. Πρόσθεσε Μοτίβα Ανάκαμψης
 
-Agents become powerful when multiple skills work together. Consider how skills can complement each other:
+Πρόβλεψε τι μπορεί να πάει στραβά:
+
+```markdown
+## Κοινά Ζητήματα
+
+**Πρόβλημα**: Ο client χρειάζεται πεδία που δεν είναι στην τυπική απάντηση
+**Λύση**: Υλοποίησε επιλογή πεδίων: GET /users?fields=id,name,email
+
+**Πρόβλημα**: Χρειάζονται αλλαγές που σπάνε συμβατότητα
+**Λύση**: Δημιούργησε νέα έκδοση, απόσυρε την παλιά με χρονοδιάγραμμα
+```
+
+## Σύνθεση Skills
+
+Οι agents γίνονται ισχυροί όταν πολλαπλά skills δουλεύουν μαζί. Εξέτασε πώς τα skills μπορούν να συμπληρώνουν το ένα το άλλο:
 
 <div className="my-6 flex flex-wrap items-center justify-center gap-4 p-6 bg-muted/30 rounded-lg">
   <div className="px-4 py-2 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-sm font-medium text-blue-700 dark:text-blue-300">
-    Code Review
+    Αξιολόγηση Κώδικα
   </div>
   <div className="text-xl">+</div>
   <div className="px-4 py-2 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg text-sm font-medium text-purple-700 dark:text-purple-300">
-    Security Audit
+    Έλεγχος Ασφάλειας
   </div>
   <div className="text-xl">+</div>
   <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg text-sm font-medium text-green-700 dark:text-green-300">
-    Documentation
+    Τεκμηρίωση
   </div>
   <div className="text-xl">=</div>
   <div className="px-4 py-2 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-lg text-sm font-medium text-amber-700 dark:text-amber-300">
-    Complete Code Quality Agent
+    Πλήρης Agent Ποιότητας Κώδικα
   </div>
 </div>
 
-When composing skills, ensure they don't conflict. Skills should be:
+Όταν συνθέτεις skills, βεβαιώσου ότι δεν συγκρούονται. Τα skills πρέπει να είναι:
 
-- **Modular** - Each skill handles one domain well
-- **Compatible** - Skills shouldn't give contradictory instructions
-- **Prioritized** - When skills overlap, define which takes precedence
+- **Αρθρωτά** - Κάθε skill χειρίζεται έναν τομέα καλά
+- **Συμβατά** - Τα skills δεν πρέπει να δίνουν αντικρουόμενες οδηγίες
+- **Με προτεραιότητα** - Όταν τα skills επικαλύπτονται, όρισε ποιο έχει προτεραιότητα
 
-## Sharing and Discovering Skills
+## Κοινοποίηση και Ανακάλυψη Skills
 
-Skills are most valuable when shared. Platforms like [prompts.chat](https://prompts.chat/skills) allow you to:
+Τα skills έχουν τη μεγαλύτερη αξία όταν μοιράζονται. Πλατφόρμες όπως το [prompts.chat](https://prompts.chat/skills) σου επιτρέπουν να:
 
-- **Discover** community-created skills for common tasks
-- **Download** skills directly to your projects
-- **Share** your own expertise as reusable skills
-- **Iterate** on skills based on real-world usage
+- **Ανακαλύψεις** skills που δημιουργήθηκαν από την κοινότητα για κοινές εργασίες
+- **Κατεβάσεις** skills απευθείας στα projects σου
+- **Μοιραστείς** τη δική σου εμπειρογνωμοσύνη ως επαναχρησιμοποιήσιμα skills
+- **Επαναλάβεις** σε skills βάσει χρήσης πραγματικού κόσμου
 
-<Callout type="tip" title="Start with Community Skills">
-Before building a skill from scratch, check if someone has already solved your problem. Community skills are battle-tested and often better than starting from zero.
+<Callout type="tip" title="Ξεκίνα με Skills Κοινότητας">
+Πριν χτίσεις ένα skill από το μηδέν, έλεγξε αν κάποιος έχει ήδη λύσει το πρόβλημά σου. Τα skills κοινότητας είναι δοκιμασμένα στη μάχη και συχνά καλύτερα από το να ξεκινάς από το μηδέν.
 </Callout>
 
-## The Agent-Skill Ecosystem
+## Το Οικοσύστημα Agent-Skill
 
-The relationship between agents and skills creates a powerful ecosystem:
+Η σχέση μεταξύ agents και skills δημιουργεί ένα ισχυρό οικοσύστημα:
 
 <div className="my-6 p-6 bg-muted/30 rounded-lg border">
   <div className="text-center mb-4">
@@ -465,15 +465,15 @@ The relationship between agents and skills creates a powerful ecosystem:
   </div>
   <div className="flex flex-wrap justify-center gap-3 mb-4">
     <div className="px-4 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
-      <p className="font-medium text-blue-700 dark:text-blue-300 text-sm m-0!">Code Review</p>
+      <p className="font-medium text-blue-700 dark:text-blue-300 text-sm m-0!">Αξιολόγηση Κώδικα</p>
       <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">Skill 1</p>
     </div>
     <div className="px-4 py-3 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg text-center">
-      <p className="font-medium text-purple-700 dark:text-purple-300 text-sm m-0!">API Design</p>
+      <p className="font-medium text-purple-700 dark:text-purple-300 text-sm m-0!">Σχεδίαση API</p>
       <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">Skill 2</p>
     </div>
     <div className="px-4 py-3 bg-teal-100 dark:bg-teal-900/50 border border-teal-200 dark:border-teal-800 rounded-lg text-center">
-      <p className="font-medium text-teal-700 dark:text-teal-300 text-sm m-0!">Test Writing</p>
+      <p className="font-medium text-teal-700 dark:text-teal-300 text-sm m-0!">Συγγραφή Tests</p>
       <p className="text-xs text-teal-600 dark:text-teal-400 m-0!">Skill 3</p>
     </div>
   </div>
@@ -482,70 +482,70 @@ The relationship between agents and skills creates a powerful ecosystem:
   </div>
   <div className="flex justify-center">
     <div className="px-6 py-4 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-lg text-center">
-      <p className="font-semibold text-amber-700 dark:text-amber-300 text-sm m-0!">Core Prompts</p>
-      <p className="text-xs text-amber-600 dark:text-amber-400 m-0!">Planning • Tools • Recovery • Memory</p>
+      <p className="font-semibold text-amber-700 dark:text-amber-300 text-sm m-0!">Βασικά Prompts</p>
+      <p className="text-xs text-amber-600 dark:text-amber-400 m-0!">Σχεδιασμός • Εργαλεία • Ανάκαμψη • Μνήμη</p>
     </div>
   </div>
 </div>
 
-The agent provides the execution framework—planning, tool use, and memory—while skills provide domain expertise. This separation means:
+Ο agent παρέχει το πλαίσιο εκτέλεσης—σχεδιασμός, χρήση εργαλείων, και μνήμη—ενώ τα skills παρέχουν τομεακή εμπειρογνωμοσύνη. Αυτός ο διαχωρισμός σημαίνει:
 
-- **Skills are portable** - The same skill works with different agents
-- **Agents are extensible** - Add new capabilities by adding skills
-- **Expertise is shareable** - Domain experts can contribute skills without building full agents
+- **Τα skills είναι φορητά** - Το ίδιο skill δουλεύει με διαφορετικούς agents
+- **Οι agents είναι επεκτάσιμοι** - Πρόσθεσε νέες δυνατότητες προσθέτοντας skills
+- **Η εμπειρογνωμοσύνη είναι κοινοποιήσιμη** - Ειδικοί τομέων μπορούν να συνεισφέρουν skills χωρίς να χτίζουν πλήρεις agents
 
-## Best Practices
+## Βέλτιστες Πρακτικές
 
-### For Building Skills
+### Για Χτίσιμο Skills
 
-1. **Start specific, then generalize** - Build a skill for your exact use case first, then abstract
-2. **Include failure cases** - Document what the skill can't do and how to handle it
-3. **Version your skills** - Track changes so agents can depend on stable versions
-4. **Test with real tasks** - Validate skills against actual work, not just theory
+1. **Ξεκίνα ειδικά, μετά γενίκευσε** - Χτίσε ένα skill για την ακριβή περίπτωση χρήσης σου πρώτα, μετά αφαίρεσε
+2. **Συμπεριέλαβε περιπτώσεις αποτυχίας** - Τεκμηρίωσε τι δεν μπορεί να κάνει το skill και πώς να το χειριστείς
+3. **Εκδοσιοποίησε τα skills σου** - Παρακολούθησε αλλαγές ώστε οι agents να μπορούν να εξαρτώνται από σταθερές εκδόσεις
+4. **Δοκίμασε με πραγματικές εργασίες** - Επαλήθευσε skills έναντι πραγματικής δουλειάς, όχι μόνο θεωρίας
 
-### For Using Skills with Agents
+### Για Χρήση Skills με Agents
 
-1. **Read the skill first** - Understand what a skill does before deploying it
-2. **Customize thoughtfully** - Override skill defaults only when necessary
-3. **Monitor performance** - Track how well skills perform in your context
-4. **Contribute improvements** - When you improve a skill, consider sharing back
+1. **Διάβασε το skill πρώτα** - Κατανόησε τι κάνει ένα skill πριν το αναπτύξεις
+2. **Προσάρμοσε στοχαστικά** - Παράκαμψε προεπιλογές skill μόνο όταν είναι απαραίτητο
+3. **Παρακολούθησε την απόδοση** - Παρακολούθησε πόσο καλά αποδίδουν τα skills στο πλαίσιό σου
+4. **Συνεισφέρε βελτιώσεις** - Όταν βελτιώνεις ένα skill, σκέψου να το μοιραστείς πίσω
 
-<Callout type="info" title="The Future is Composable">
-As AI agents become more capable, the ability to compose, share, and customize skills will become a core competency. The prompt engineers of tomorrow won't just write prompts—they'll architect skill ecosystems that make AI agents genuinely expert in specific domains.
+<Callout type="info" title="Το Μέλλον είναι Συνθέσιμο">
+Καθώς οι AI agents γίνονται πιο ικανοί, η ικανότητα σύνθεσης, κοινοποίησης, και προσαρμογής skills θα γίνει μια βασική ικανότητα. Οι prompt engineers του αύριο δεν θα γράφουν απλά prompts—θα αρχιτεκτονούν οικοσυστήματα skills που κάνουν τους AI agents γνήσιους ειδικούς σε συγκεκριμένους τομείς.
 </Callout>
 
 <Quiz 
-  question="What is the key difference between a simple prompt and a skill?"
+  question="Ποια είναι η βασική διαφορά μεταξύ ενός απλού prompt και ενός skill;"
   options={[
-    "Skills are longer than prompts",
-    "Skills are reusable, multi-file packages that give agents domain expertise",
-    "Skills only work with specific AI models",
-    "Skills don't require any prompts"
+    "Τα skills είναι μεγαλύτερα από τα prompts",
+    "Τα skills είναι επαναχρησιμοποιήσιμα, πακέτα πολλαπλών αρχείων που δίνουν στους agents τομεακή εμπειρογνωμοσύνη",
+    "Τα skills δουλεύουν μόνο με συγκεκριμένα μοντέλα AI",
+    "Τα skills δεν απαιτούν κανένα prompt"
   ]}
   correctIndex={1}
-  explanation="Skills are comprehensive, portable packages that combine multiple prompts, reference docs, scripts, and configuration. They're reusable building blocks that can be added to any agent to give it specific capabilities."
+  explanation="Τα skills είναι ολοκληρωμένα, φορητά πακέτα που συνδυάζουν πολλαπλά prompts, έγγραφα αναφοράς, scripts, και ρυθμίσεις. Είναι επαναχρησιμοποιήσιμα δομικά στοιχεία που μπορούν να προστεθούν σε οποιονδήποτε agent για να του δώσουν συγκεκριμένες δυνατότητες."
 />
 
 <Quiz 
-  question="What is the agent loop?"
+  question="Τι είναι ο βρόχος agent;"
   options={[
-    "A debugging technique for AI errors",
-    "Plan → Execute → Observe → Adapt, repeated until the goal is achieved",
-    "A way to chain multiple prompts together",
-    "A method for training new AI models"
+    "Μια τεχνική αποσφαλμάτωσης για σφάλματα AI",
+    "Σχεδίασε → Εκτέλεσε → Παρατήρησε → Προσαρμόσου, επαναλαμβανόμενο μέχρι να επιτευχθεί ο στόχος",
+    "Ένας τρόπος να αλυσοδέσεις πολλαπλά prompts μαζί",
+    "Μια μέθοδος για εκπαίδευση νέων μοντέλων AI"
   ]}
   correctIndex={1}
-  explanation="AI agents work in a continuous loop: they plan how to approach a task, execute actions, observe the results, and adapt their approach based on feedback—repeating until the goal is complete."
+  explanation="Οι AI agents δουλεύουν σε έναν συνεχή βρόχο: σχεδιάζουν πώς να προσεγγίσουν μια εργασία, εκτελούν ενέργειες, παρατηρούν τα αποτελέσματα, και προσαρμόζουν την προσέγγισή τους βάσει ανατροφοδότησης—επαναλαμβάνοντας μέχρι να ολοκληρωθεί ο στόχος."
 />
 
 <Quiz 
-  question="Why are skills described as 'reusable blocks of agents'?"
+  question="Γιατί τα skills περιγράφονται ως 'επαναχρησιμοποιήσιμα blocks agents';"
   options={[
-    "Because they can only be used once",
-    "Because they're written in a block programming language",
-    "Because any agent can load a skill to gain that capability instantly",
-    "Because skills replace the need for agents"
+    "Επειδή μπορούν να χρησιμοποιηθούν μόνο μια φορά",
+    "Επειδή είναι γραμμένα σε γλώσσα προγραμματισμού blocks",
+    "Επειδή οποιοσδήποτε agent μπορεί να φορτώσει ένα skill για να αποκτήσει αυτή τη δυνατότητα αμέσως",
+    "Επειδή τα skills αντικαθιστούν την ανάγκη για agents"
   ]}
   correctIndex={2}
-  explanation="Skills are portable expertise packages. Write a code review skill once, and any coding agent can become an expert code reviewer by loading that skill—like LEGO blocks that snap into any structure."
+  explanation="Τα skills είναι φορητά πακέτα εμπειρογνωμοσύνης. Γράψε ένα skill αξιολόγησης κώδικα μια φορά, και οποιοσδήποτε coding agent μπορεί να γίνει εμπειρογνώμονας αξιολογητής κώδικα φορτώνοντας αυτό το skill—σαν τουβλάκια LEGO που κουμπώνουν σε οποιαδήποτε δομή."
 />
