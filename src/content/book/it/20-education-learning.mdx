@@ -1,0 +1,345 @@
+AI is a powerful tool for both teaching and learning. This chapter covers prompts for educational contexts—from personalized tutoring to curriculum development.
+
+<Callout type="info" title="AI as Learning Partner">
+AI excels as a patient, adaptive tutor that can explain concepts multiple ways, generate unlimited practice problems, and provide instant feedback—available 24/7.
+</Callout>
+
+## Personalized Learning
+
+### Do's and Don'ts: Learning Prompts
+
+<Compare 
+  before={{ label: "❌ Passive request", content: "Explain quantum physics to me." }}
+  after={{ label: "✓ Context-rich request", content: "Explain quantum superposition to me.\n\nMy background: I understand basic chemistry and classical physics.\nLearning style: I learn best through analogies and examples.\nExplain with a simple analogy, then the core concept, then a practical example. Check my understanding with a question." }}
+/>
+
+### Concept Explanation
+
+<TryIt compact prompt={`Explain [concept] to me.
+
+My background:
+- Current level: [beginner/intermediate/advanced]
+- Related knowledge: [what I already know]
+- Learning style: [visual/examples/theoretical]
+
+Explain with:
+1. Simple analogy to something familiar
+2. Core concept in plain language
+3. How it connects to what I know
+4. A practical example
+5. Common misconceptions to avoid
+
+Then check my understanding with a question.`} />
+
+### Adaptive Tutoring
+
+<TryIt compact prompt={`You are my tutor for \${subject:calculus}. Teach me \${topic:derivatives} adaptively.
+
+Start with a diagnostic question to assess my level.
+Based on my response:
+- If correct: Move to more advanced aspects
+- If partially correct: Clarify the gap, then continue
+- If incorrect: Step back and build foundation
+
+After each explanation:
+- Check understanding with a question
+- Adjust difficulty based on my answers
+- Provide encouragement and track progress`} />
+
+### Learning Path Creation
+
+<TryIt compact prompt={`Create a learning path for \${goal:becoming a web developer}.
+
+My situation:
+- Current skill level: \${skillLevel:complete beginner}
+- Time available: \${timeAvailable:10 hours per week}
+- Target timeline: \${timeline:6 months}
+- Learning preferences: \${preferences:projects and tutorials}
+
+Provide:
+1. Prerequisites check (what I need first)
+2. Milestone breakdown (phases with goals)
+3. Resources for each phase (free when possible)
+4. Practice projects at each stage
+5. Assessment criteria (how to know I'm ready to advance)`} />
+
+## Study Assistance
+
+<Callout type="tip" title="Active Learning Principle">
+Don't just read AI explanations passively. Ask it to quiz you, generate problems, and check your understanding. **Active recall beats passive review.**
+</Callout>
+
+### Summary Generation
+
+<TryIt compact prompt={`Summarize this \${contentType:chapter} for study purposes.
+
+Content:
+\${content:paste your content here}
+
+Provide:
+1. **Key Concepts** (5-7 main ideas)
+2. **Important Terms** (with brief definitions)
+3. **Relationships** (how concepts connect)
+4. **Study Questions** (to test understanding)
+5. **Memory Aids** (mnemonics or associations)
+
+Format for easy review and memorization.`} />
+
+### Flashcard Generation
+
+<TryIt compact prompt={`Create flashcards for studying \${topic:World War II}.
+
+Source material:
+\${content:paste your study material here}
+
+Format each card:
+Front: Question or term
+Back: Answer or definition
+Hint: Optional memory aid
+
+Categories to cover:
+- Definitions (key terms)
+- Concepts (main ideas)
+- Relationships (how things connect)
+- Applications (real-world uses)
+
+Generate \${numberOfCards:20} cards, balanced across categories.`} />
+
+### Practice Problems
+
+<TryIt compact prompt={`Generate practice problems for \${topic:quadratic equations}.
+
+Difficulty levels:
+- 3 Basic (test fundamental understanding)
+- 3 Intermediate (require application)
+- 2 Advanced (require synthesis/analysis)
+
+For each problem:
+1. Clear problem statement
+2. Space for student work
+3. Hints available on request
+4. Detailed solution with explanation
+
+Include variety: \${problemTypes:calculation, conceptual, application}`} />
+
+## Teaching Tools
+
+### Lesson Plan Creation
+
+<TryIt compact prompt={`Create a lesson plan for teaching \${topic:photosynthesis}.
+
+Context:
+- Grade/Level: \${audience:8th grade science}
+- Class duration: \${duration:50 minutes}
+- Class size: \${classSize:25 students}
+- Prior knowledge: \${prerequisites:basic cell structure}
+
+Include:
+1. **Learning Objectives** (SMART format)
+2. **Opening Hook** (5 min) - engagement activity
+3. **Instruction** (15-20 min) - core content delivery
+4. **Guided Practice** (10 min) - work with students
+5. **Independent Practice** (10 min) - students work alone
+6. **Assessment** (5 min) - check understanding
+7. **Closure** - summarize and preview
+
+Materials needed: list
+Differentiation strategies: for various learners`} />
+
+### Assignment Design
+
+<TryIt compact prompt={`Design an assignment for \${learningObjective:analyzing primary sources}.
+
+Parameters:
+- Course: \${course:AP US History}
+- Due in: \${dueIn:2 weeks}
+- Individual/Group: \${grouping:individual}
+- Weight: \${weight:15% of grade}
+
+Include:
+1. Clear instructions
+2. Grading rubric with criteria
+3. Example of expected quality
+4. Submission requirements
+5. Academic integrity reminders
+
+The assignment should:
+- Assess \${skills:critical thinking and source evaluation}
+- Allow for \${allowFor:analysis and interpretation}
+- Be completable in approximately \${hours:8 hours}`} />
+
+### Quiz Generation
+
+<TryIt compact prompt={`Create a quiz on \${topic:the American Revolution}.
+
+Format:
+- [X] Multiple choice questions (4 options each)
+- [X] True/False questions
+- [X] Short answer questions
+- [X] One essay question
+
+Specifications:
+- Cover all key learning objectives
+- Range from recall to analysis
+- Include answer key with explanations
+- Time estimate: \${timeEstimate:30 minutes}
+- Point values for each section`} />
+
+## Specialized Learning Contexts
+
+### Language Learning
+
+<TryIt compact prompt={`Help me learn \${language:Spanish}.
+
+Current level: \${currentLevel:A2 - elementary}
+Native language: \${nativeLanguage:English}
+Goals: \${goals:conversation for travel}
+
+Today's lesson: \${focusArea:ordering food at restaurants}
+
+Include:
+1. New vocabulary (5-10 words) with:
+   - Pronunciation guide
+   - Example sentences
+   - Common usage notes
+2. Grammar point with clear explanation
+3. Practice exercises
+4. Cultural context note
+5. Conversation practice scenario`} />
+
+### Skill Development
+
+<TryIt compact prompt={`I want to learn \${skill:guitar}. Be my coach.
+
+My current level: \${currentLevel:complete beginner}
+Goal: \${goal:play 5 songs by ear}
+Practice time available: \${practiceTime:30 minutes per day}
+
+Provide:
+1. Assessment of starting point
+2. Breakdown of sub-skills needed
+3. Practice routine (specific exercises)
+4. Progress markers (how to measure improvement)
+5. Common plateaus and how to overcome them
+6. First week's practice plan in detail`} />
+
+### Exam Preparation
+
+<TryIt compact prompt={`Help me prepare for \${examName:the GRE}.
+
+Exam format: \${examFormat:Verbal, Quantitative, Writing sections}
+Time until exam: \${timeUntilExam:8 weeks}
+My weak areas: \${weakAreas:reading comprehension, geometry}
+Target score: \${targetScore:320+}
+
+Create a study plan:
+1. Topics to cover (prioritized)
+2. Daily study schedule
+3. Practice test strategy
+4. Key formulas/facts to memorize
+5. Test-taking tips specific to this exam
+6. Day-before and day-of recommendations`} />
+
+## Prompt Templates from prompts.chat
+
+### Act as a Socratic Tutor
+
+<TryIt compact prompt={`I want you to act as a Socratic tutor. You will help me learn by asking probing questions rather than giving direct answers. When I ask about a topic, respond with questions that guide me to discover the answer myself. If I'm stuck, provide hints but not solutions. Help me develop critical thinking skills.`} />
+
+### Act as an Educational Content Creator
+
+<TryIt compact prompt={`I want you to act as an educational content creator. You will create engaging, accurate educational materials for \${subject:biology}. Make complex topics accessible without oversimplifying. Use analogies, examples, and visual descriptions. Include knowledge checks and encourage active learning.`} />
+
+### Act as a Study Buddy
+
+<TryIt compact prompt={`I want you to act as my study buddy. We're studying \${subject:organic chemistry} together. Quiz me on concepts, discuss ideas, help me work through problems, and keep me motivated. Be encouraging but also challenge me to think deeper. Let's make studying interactive and effective.`} />
+
+## Accessibility in Education
+
+### Content Adaptation
+
+<TryIt compact prompt={`Adapt this educational content for \${accessibilityNeed:dyslexia-friendly format}:
+
+Original content:
+\${content:paste your content here}
+
+Adaptation needed:
+- [ ] Simplified language (lower reading level)
+- [ ] Visual descriptions (for text-to-speech)
+- [ ] Structured format (for cognitive accessibility)
+- [ ] Extended time considerations
+- [ ] Alternative explanations
+
+Maintain:
+- All key learning objectives
+- Accuracy of content
+- Assessment equivalence`} />
+
+### Multiple Modalities
+
+<TryIt compact prompt={`Present \${concept:photosynthesis} in multiple ways:
+
+1. **Text explanation** (clear prose)
+2. **Visual description** (describe a diagram)
+3. **Analogy** (relate to everyday experience)
+4. **Story/Narrative** (embed in a scenario)
+5. **Q&A format** (question and answer)
+
+This allows learners to engage with their preferred style.`} />
+
+## Assessment & Feedback
+
+### Providing Feedback
+
+<TryIt compact prompt={`Provide educational feedback on this student work:
+
+Assignment: \${assignment:5-paragraph essay on climate change}
+Student submission: \${work:paste student work here}
+Rubric: \${rubric:thesis clarity, evidence, organization, grammar}
+
+Feedback format:
+1. **Strengths** - What they did well (specific)
+2. **Areas for improvement** - What needs work (constructive)
+3. **Suggestions** - How to improve (actionable)
+4. **Grade/Score** - Based on rubric
+5. **Encouragement** - Motivational closing
+
+Tone: Supportive, specific, growth-oriented`} />
+
+### Self-Assessment Prompts
+
+<TryIt compact prompt={`Help me assess my understanding of \${topic:the French Revolution}.
+
+Ask me 5 questions that test:
+1. Basic recall
+2. Understanding
+3. Application
+4. Analysis
+5. Synthesis/Creation
+
+After each answer, tell me:
+- What I demonstrated understanding of
+- What I should review
+- How to deepen my knowledge
+
+Be honest but encouraging.`} />
+
+## Summary
+
+<Callout type="tip" title="Key Techniques">
+Adapt to the learner's level, break complex topics into steps, include active practice (not just explanation), provide varied approaches, check understanding regularly, and give constructive feedback.
+</Callout>
+
+<Quiz 
+  question="What's the most effective way to use AI for learning?"
+  options={[
+    "Read AI explanations passively like a textbook",
+    "Ask AI to quiz you and generate practice problems",
+    "Only use AI for homework answers",
+    "Avoid AI for learning entirely"
+  ]}
+  correctIndex={1}
+  explanation="Active recall beats passive review. Have AI quiz you, generate problems, and check your understanding—this builds stronger memory than just reading explanations."
+/>
+
+AI is a patient, always-available learning partner—use it to supplement, not replace, human instruction.

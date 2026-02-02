@@ -1,0 +1,323 @@
+La IA puede acelerar flujos de trabajo de investigación desde revisión de literatura hasta análisis de datos. Este capítulo cubre técnicas de prompting para investigación académica y profesional.
+
+<Callout type="info" title="IA en Investigación">
+La IA puede asistir con síntesis, análisis y escritura—pero no puede reemplazar el pensamiento crítico, juicio ético o experiencia de dominio. Siempre verifica las afirmaciones y cita fuentes originales.
+</Callout>
+
+## Revisión de Literatura e Información
+
+### Qué Hacer y Qué No: Prompts de Investigación
+
+<Compare 
+  before={{ label: "❌ Solicitud vaga", content: "Resume este artículo para mí." }}
+  after={{ label: "✓ Solicitud estructurada", content: "Resume este artículo para mi revisión de literatura sobre aprendizaje automático en salud.\n\nProporciona:\n1. Tesis principal (1-2 oraciones)\n2. Metodología\n3. Hallazgos clave (viñetas)\n4. Limitaciones\n5. Relevancia para mi investigación\n\nNivel de lectura: Estudiante de posgrado" }}
+/>
+
+### Resumen de Artículos
+
+<TryIt compact prompt={`Resume este artículo académico:
+
+[resumen o texto completo del artículo]
+
+Proporciona:
+1. **Tesis principal** - Argumento central (1-2 oraciones)
+2. **Metodología** - Cómo lo abordaron
+3. **Hallazgos clave** - Resultados más importantes (viñetas)
+4. **Contribuciones** - Qué es nuevo/significativo
+5. **Limitaciones** - Debilidades reconocidas o aparentes
+6. **Relevancia para [mi tema de investigación]** - Cómo conecta
+
+Nivel de lectura: \${readingLevel:posgrado}`} />
+
+### Síntesis de Literatura
+
+<TryIt compact prompt={`Sintetiza estos artículos sobre \${topic:la efectividad del trabajo remoto}:
+
+Artículo 1: \${paper1:Smith 2021 - encontró que la productividad aumentó 15%}
+Artículo 2: \${paper2:Jones 2022 - notó desafíos de colaboración}
+Artículo 3: \${paper3:Chen 2023 - modelo híbrido mostró mejores resultados}
+
+Analiza:
+1. **Temas comunes** - ¿En qué coinciden?
+2. **Contradicciones** - ¿Dónde difieren?
+3. **Brechas** - ¿Qué no se aborda?
+4. **Evolución** - ¿Cómo ha progresado el pensamiento?
+5. **Síntesis** - Comprensión integrada
+
+Formato como: Párrafo de revisión de literatura adecuado para \${outputType:tesis}`} />
+
+### Desarrollo de Preguntas de Investigación
+
+<TryIt compact prompt={`Ayúdame a desarrollar preguntas de investigación para \${topic:adopción de IA en salud}.
+
+Contexto:
+- Campo: \${field:informática de salud}
+- Conocimiento actual: \${currentKnowledge:existen herramientas de IA pero la adopción es lenta}
+- Brecha identificada: \${gap:comprensión limitada de factores de resistencia de médicos}
+- Mi interés: \${interest:gestión del cambio organizacional}
+
+Genera:
+1. **Pregunta de investigación primaria** - Pregunta principal a responder
+2. **Sub-preguntas** - Indagaciones de apoyo (3-4)
+3. **Hipótesis** - Predicciones comprobables (si aplica)
+
+Criterios: Las preguntas deben ser:
+- Respondibles con métodos disponibles
+- Significativas para el campo
+- Con alcance apropiado`} />
+
+## Análisis de Datos
+
+<Callout type="warning" title="La IA No Puede Analizar Tus Datos Reales">
+La IA puede guiar la metodología y ayudar a interpretar resultados, pero no puede acceder o procesar tus conjuntos de datos reales. Nunca pegues datos de investigación sensibles en prompts. Usa la IA para **orientación**, no para cómputo.
+</Callout>
+
+### Orientación de Análisis Estadístico
+
+<TryIt compact prompt={`Ayúdame a analizar estos datos:
+
+Descripción de datos:
+- Variables: \${variables:edad (continua), grupo de tratamiento (categórica: A/B/C), puntuación de resultado (continua)}
+- Tamaño de muestra: \${sampleSize:n=150 (50 por grupo)}
+- Pregunta de investigación: \${researchQuestion:¿El tipo de tratamiento afecta las puntuaciones de resultado?}
+- Características de datos: \${characteristics:distribución normal, sin valores faltantes}
+
+Aconseja sobre:
+1. **Pruebas apropiadas** - Qué pruebas estadísticas usar
+2. **Supuestos a verificar** - Prerrequisitos
+3. **Cómo interpretar resultados** - Qué significan diferentes resultados
+4. **Tamaño del efecto** - Significancia práctica
+5. **Reporte** - Cómo presentar hallazgos
+
+Nota: Guía mi análisis, no fabriques resultados.`} />
+
+### Análisis Cualitativo
+
+<TryIt compact prompt={`Ayúdame a analizar estas respuestas cualitativas:
+
+Respuestas:
+\${responses:pega extractos de entrevistas o respuestas de encuestas aquí}
+
+Usando \${method:análisis temático}:
+
+1. **Códigos iniciales** - Identifica conceptos recurrentes
+2. **Categorías** - Agrupa códigos relacionados
+3. **Temas** - Patrones generales
+4. **Relaciones** - Cómo conectan los temas
+5. **Citas representativas** - Evidencia para cada tema
+
+Mantener: Voz del participante y contexto`} />
+
+### Interpretación de Datos
+
+<TryIt compact prompt={`Ayúdame a interpretar estos hallazgos:
+
+Resultados:
+\${results:pega salida estadística o resumen de datos aquí}
+
+Contexto:
+- Pregunta de investigación: \${researchQuestion:¿X predice Y?}
+- Hipótesis: \${hypothesis:X predice positivamente Y}
+- Resultados esperados: \${expectedResults:correlación positiva significativa}
+
+Proporciona:
+1. **Interpretación en lenguaje simple** - ¿Qué significa esto?
+2. **Significancia estadística** - Qué nos dicen los valores p
+3. **Significancia práctica** - Significado en el mundo real
+4. **Comparación con literatura** - ¿Cómo encaja esto?
+5. **Explicaciones alternativas** - Otras interpretaciones
+6. **Limitaciones de la interpretación**`} />
+
+## Marcos de Análisis Estructurado
+
+### Análisis PESTLE
+
+<TryIt compact prompt={`Realiza un análisis PESTLE para \${subject:industria de vehículos eléctricos en Europa}.
+
+Factores **Políticos**:
+- Políticas gubernamentales, regulaciones, estabilidad política
+
+Factores **Económicos**:
+- Crecimiento económico, inflación, tasas de cambio, desempleo
+
+Factores **Sociales**:
+- Demografía, tendencias culturales, cambios de estilo de vida
+
+Factores **Tecnológicos**:
+- Innovación, I+D, automatización, cambios tecnológicos
+
+Factores **Legales**:
+- Legislación, organismos reguladores, derecho laboral
+
+Factores **Ambientales**:
+- Clima, sostenibilidad, regulaciones ambientales
+
+Para cada uno: Estado actual + tendencias + implicaciones`} />
+
+### Análisis de Causa Raíz
+
+<TryIt compact prompt={`Realiza análisis de causa raíz para \${problem:la rotación de clientes aumentó 20% el último trimestre}.
+
+Declaración del problema:
+\${problemStatement:La tasa de rotación mensual subió de 3% a 3.6% entre Q3 y Q4}
+
+Usando los 5 Por Qués:
+1. ¿Por qué? Causa de primer nivel
+   2. ¿Por qué? Causa más profunda
+      3. ¿Por qué? Más profundo aún
+         4. ¿Por qué? Acercándose a la raíz
+            5. ¿Por qué? Causa raíz
+
+Alternativa: Categorías de diagrama de espina de pescado
+- Personas
+- Proceso
+- Equipo
+- Materiales
+- Ambiente
+- Gestión
+
+Proporciona: Causa(s) raíz + acciones recomendadas`} />
+
+### Análisis de Brechas
+
+<TryIt compact prompt={`Realiza un análisis de brechas para \${subject:nuestras operaciones de soporte al cliente}.
+
+**Estado Actual:**
+- \${currentState:Tiempo de respuesta promedio 24 horas, CSAT 3.2/5}
+
+**Estado Deseado:**
+- \${desiredState:Tiempo de respuesta bajo 4 horas, CSAT 4.5/5}
+
+**Identificación de Brechas:**
+| Área | Actual | Deseado | Brecha | Prioridad |
+|------|--------|---------|--------|-----------|
+| ... | ... | ... | ... | A/M/B |
+
+**Plan de Acción:**
+Para cada brecha de alta prioridad:
+- Acciones específicas
+- Recursos necesarios
+- Línea de tiempo
+- Métricas de éxito`} />
+
+## Apoyo a Escritura Académica
+
+### Estructura de Argumento
+
+<TryIt compact prompt={`Ayúdame a estructurar un argumento para \${topic:por qué el trabajo remoto debería convertirse en política permanente}.
+
+Afirmación principal: \${thesis:Las organizaciones deberían adoptar políticas permanentes de trabajo remoto/híbrido para trabajadores del conocimiento}
+
+Requerido:
+1. **Premisas** - Afirmaciones de apoyo que llevan a la conclusión
+2. **Evidencia** - Datos/fuentes para cada premisa
+3. **Contraargumentos** - Puntos de vista opuestos
+4. **Refutaciones** - Respuestas a contraargumentos
+5. **Flujo lógico** - Cómo conecta todo
+
+Verificar:
+- Falacias lógicas
+- Afirmaciones no respaldadas
+- Brechas en el razonamiento`} />
+
+### Sección de Métodos
+
+<TryIt compact prompt={`Ayúdame a escribir una sección de métodos para:
+
+Tipo de estudio: \${studyType:encuesta}
+Participantes: \${participants:200 estudiantes universitarios, muestreo por conveniencia}
+Materiales: \${materials:cuestionario en línea con escalas Likert}
+Procedimiento: \${procedure:participantes completaron encuesta de 20 minutos en línea}
+Análisis: \${analysis:estadística descriptiva y análisis de regresión}
+
+Estándares: Seguir directrices \${standards:APA 7ma edición}
+Incluir: Suficiente detalle para replicación
+Tono: Voz pasiva, tiempo pasado`} />
+
+### Sección de Discusión
+
+<TryIt compact prompt={`Ayúdame a escribir una sección de discusión.
+
+Hallazgos clave:
+\${findings:1. Correlación positiva significativa (r=0.45) entre X e Y\n2. Sin diferencia significativa entre grupos en medida secundaria}
+
+Estructura:
+1. **Resumen** - Breve replanteamiento de hallazgos principales
+2. **Interpretación** - Qué significan los hallazgos
+3. **Contexto** - Cómo los hallazgos se relacionan con literatura existente
+4. **Implicaciones** - Significancia teórica y práctica
+5. **Limitaciones** - Debilidades del estudio
+6. **Direcciones futuras** - Qué investigación debería seguir
+7. **Conclusión** - Mensaje principal
+
+Evitar: Exagerar hallazgos o introducir resultados nuevos`} />
+
+## Análisis Crítico
+
+### Evaluación de Fuentes
+
+<TryIt compact prompt={`Evalúa esta fuente para uso académico:
+
+Fuente: \${source:pega cita o enlace aquí}
+Resumen del contenido: \${summary:breve descripción de lo que afirma la fuente}
+
+Evalúa usando criterios CRAAP:
+- **Actualidad**: ¿Cuándo se publicó? ¿Actualizado? ¿Suficientemente actual?
+- **Relevancia**: ¿Se relaciona con mi tema? ¿Nivel apropiado?
+- **Autoridad**: ¿Credenciales del autor? ¿Reputación del editor?
+- **Precisión**: ¿Respaldado por evidencia? ¿Revisado por pares?
+- **Propósito**: ¿Por qué fue escrito? ¿Sesgo evidente?
+
+Veredicto: Altamente creíble / Usar con precaución / Evitar
+Cómo usar: Recomendaciones para incorporación`} />
+
+### Análisis de Argumentos
+
+<TryIt compact prompt={`Analiza el argumento en este texto:
+
+\${text:pega el texto que quieres analizar}
+
+Identifica:
+1. **Afirmación principal** - Qué se está argumentando
+2. **Evidencia de apoyo** - Qué lo respalda
+3. **Supuestos** - Premisas no declaradas
+4. **Estructura lógica** - Cómo sigue la conclusión
+5. **Fortalezas** - Qué es convincente
+6. **Debilidades** - Brechas lógicas o falacias
+7. **Interpretaciones alternativas**
+
+Proporciona: Evaluación justa y equilibrada`} />
+
+## Plantillas de Prompts de prompts.chat
+
+### Actúa como Asistente de Investigación
+
+<TryIt compact prompt={`Quiero que actúes como un asistente de investigación. Ayúdame a explorar temas, encontrar información, sintetizar fuentes, y desarrollar argumentos. Haz preguntas clarificadoras, sugiere áreas relevantes para investigar, y ayúdame a pensar críticamente sobre la evidencia. Sé exhaustivo pero reconoce los límites de tu conocimiento.`} />
+
+### Actúa como Analista de Datos
+
+<TryIt compact prompt={`Quiero que actúes como un analista de datos. Describiré conjuntos de datos y preguntas de investigación, y sugerirás enfoques de análisis, ayudarás a interpretar resultados, e identificarás problemas potenciales. Enfócate en metodología sólida y comunicación clara de hallazgos.`} />
+
+### Actúa como Revisor de Pares
+
+<TryIt compact prompt={`Quiero que actúes como un revisor de pares académico. Compartiré manuscritos o secciones, y proporcionarás retroalimentación constructiva sobre metodología, argumento, escritura, y contribución al campo. Sé riguroso pero de apoyo, notando tanto fortalezas como áreas de mejora.`} />
+
+## Resumen
+
+<Callout type="tip" title="Técnicas Clave">
+Declara claramente el contexto y metas de investigación, especifica el marco analítico a usar, solicita reconocimiento de limitaciones, pide razonamiento basado en evidencia, y mantén rigor y honestidad académica.
+</Callout>
+
+<Quiz 
+  question="¿Qué es lo más importante a recordar cuando usas IA para investigación?"
+  options={[
+    "La IA puede reemplazar la necesidad de fuentes primarias",
+    "El análisis de IA siempre es preciso y actualizado",
+    "Siempre verifica afirmaciones de IA independientemente y cita fuentes originales",
+    "La IA puede acceder y analizar tus conjuntos de datos reales"
+  ]}
+  correctIndex={2}
+  explanation="La IA puede asistir con síntesis y estructura, pero puede alucinar citas, tener información desactualizada, y no puede acceder a tus datos reales. Siempre verifica afirmaciones contra fuentes primarias y mantén integridad académica."
+/>
+
+Recuerda: La IA puede asistir la investigación pero no puede reemplazar el pensamiento crítico, juicio ético o experiencia de dominio. Siempre verifica afirmaciones independientemente.

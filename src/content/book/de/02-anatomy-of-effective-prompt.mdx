@@ -1,0 +1,343 @@
+Jeder großartige Prompt teilt gemeinsame strukturelle Elemente. Das Verstehen dieser Komponenten ermöglicht es dir, Prompts systematisch zu konstruieren, anstatt durch Versuch und Irrtum.
+
+<Callout type="tip" title="Die Bausteine">
+Denke an diese Komponenten wie LEGO-Steine. Du brauchst nicht alle für jeden Prompt, aber zu wissen, was verfügbar ist, hilft dir, genau das zu bauen, was du brauchst.
+</Callout>
+
+## Die Kernkomponenten
+
+Ein effektiver Prompt enthält typischerweise einige oder alle dieser Elemente:
+
+<PromptBreakdown parts={[
+  { label: "Rolle", text: "Du bist ein Senior Softwareentwickler" },
+  { label: "Kontext", text: "der an einer React-Anwendung arbeitet." },
+  { label: "Aufgabe", text: "Überprüfe diesen Code auf Fehler" },
+  { label: "Einschränkungen", text: "und konzentriere dich nur auf Sicherheitsprobleme." },
+  { label: "Format", text: "Gib die Ergebnisse als nummerierte Liste zurück." },
+  { label: "Beispiel", text: "Wie: 1. SQL-Injection-Risiko in Zeile 42" }
+]} />
+
+Lass uns jede Komponente im Detail untersuchen.
+
+## 1. Rolle / Persona
+
+Das Setzen einer Rolle fokussiert die Antworten des Modells durch die Linse einer spezifischen Expertise oder Perspektive.
+
+<Compare 
+  before={{ label: "Ohne Rolle", content: "Erkläre Quantencomputing." }}
+  after={{ label: "Mit Rolle", content: "Du bist ein Physikprofessor, der sich darauf spezialisiert hat, komplexe Themen für Anfänger zugänglich zu machen. Erkläre Quantencomputing." }}
+/>
+
+Die Rolle bereitet das Modell darauf vor:
+- Angemessenes Vokabular zu verwenden
+- Relevante Expertise anzuwenden
+- Eine konsistente Perspektive beizubehalten
+- Das Publikum angemessen zu berücksichtigen
+
+### Effektive Rollenmuster
+
+```
+"Du bist ein [Beruf] mit [X Jahren] Erfahrung in [Spezialgebiet]"
+"Handle als ein [Rolle], der [Eigenschaft] ist"
+"Du bist ein Experte für [Bereich], der einem [Publikumstyp] hilft"
+```
+
+## 2. Kontext / Hintergrund
+
+Kontext liefert die Informationen, die das Modell braucht, um deine Situation zu verstehen. Denk daran: Das Modell weiß nichts über dich, dein Projekt oder deine Ziele, es sei denn, du sagst es ihm.
+
+<Compare 
+  before={{ label: "Schwacher Kontext", content: "Behebe diesen Fehler in meinem Code." }}
+  after={{ label: "Starker Kontext", content: "Ich baue eine Node.js REST-API mit Express.js. Die API handhabt Benutzerauthentifizierung mit JWT-Tokens. Wenn ein Benutzer versucht, auf eine geschützte Route zuzugreifen, bekommt er einen 403-Fehler, obwohl er ein gültiges Token hat. Hier ist der relevante Code: [code]" }}
+/>
+
+### Was in den Kontext gehört
+
+- **Projektdetails** — Technologie-Stack, Architektur, Einschränkungen
+- **Aktueller Stand** — Was du versucht hast, was funktioniert, was nicht
+- **Ziele** — Was du letztendlich erreichen willst
+- **Einschränkungen** — Zeitlimits, technische Anforderungen, Stilrichtlinien
+
+## 3. Aufgabe / Anweisung
+
+Die Aufgabe ist das Herzstück deines Prompts – was du willst, dass das Modell tut. Sei spezifisch und eindeutig.
+
+### Das Spezifitätsspektrum
+
+<SpecificitySpectrum levels={[
+  { level: "Vage", text: "Hilf mir bei diesem Aufsatz" },
+  { level: "Besser", text: "Bearbeite diesen Aufsatz" },
+  { level: "Gut", text: "Bearbeite diesen Aufsatz auf Grammatik und Klarheit" },
+  { level: "Am besten", text: "Bearbeite diesen Aufsatz auf Grammatik und Klarheit, behalte den ursprünglichen Ton bei, aber reduziere die Weitschweifigkeit um 20%" }
+]} />
+
+### Handlungsverben, die gut funktionieren
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Erstellung</span>
+    <span className="text-muted-foreground">Schreibe, Erstelle, Generiere, Verfasse, Entwirf</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Analyse</span>
+    <span className="text-muted-foreground">Analysiere, Bewerte, Vergleiche, Beurteile, Überprüfe</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Transformation</span>
+    <span className="text-muted-foreground">Konvertiere, Übersetze, Formatiere um, Fasse zusammen, Erweitere</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Erklärung</span>
+    <span className="text-muted-foreground">Erkläre, Beschreibe, Kläre, Definiere, Veranschauliche</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Problemlösung</span>
+    <span className="text-muted-foreground">Löse, Debugge, Behebe, Optimiere, Verbessere</span>
+  </div>
+</div>
+
+## 4. Einschränkungen / Regeln
+
+Einschränkungen begrenzen die Ausgabe des Modells. Sie verhindern häufige Probleme und stellen Relevanz sicher.
+
+### Arten von Einschränkungen
+
+**Längeneinschränkungen:**
+```
+"Halte deine Antwort unter 200 Wörtern"
+"Gib genau 5 Vorschläge"
+"Schreibe 3-4 Absätze"
+```
+
+**Inhaltseinschränkungen:**
+```
+"Füge keine Code-Beispiele hinzu"
+"Konzentriere dich nur auf die technischen Aspekte"
+"Vermeide Marketingsprache"
+```
+
+**Stileinschränkungen:**
+```
+"Verwende einen formellen, akademischen Ton"
+"Schreibe, als würdest du mit einem 10-Jährigen sprechen"
+"Sei direkt und vermeide ausweichende Sprache"
+```
+
+**Bereichseinschränkungen:**
+```
+"Berücksichtige nur Optionen, die in Python 3.10+ verfügbar sind"
+"Beschränke Vorschläge auf kostenlose Tools"
+"Konzentriere dich auf Lösungen, die keine zusätzlichen Abhängigkeiten erfordern"
+```
+
+## 5. Ausgabeformat
+
+Das Spezifizieren des Ausgabeformats stellt sicher, dass du Antworten in einer nutzbaren Struktur erhältst.
+
+### Gängige Formate
+
+**Listen:**
+```
+"Gib als Aufzählungsliste zurück"
+"Liefere eine nummerierte Liste von Schritten"
+```
+
+**Strukturierte Daten:**
+```
+"Gib als JSON mit Schlüsseln zurück: title, description, priority"
+"Formatiere als Markdown-Tabelle mit Spalten: Feature, Vorteile, Nachteile"
+```
+
+**Spezifische Strukturen:**
+```
+"Strukturiere deine Antwort als:
+ ## Zusammenfassung
+ ## Kernpunkte
+ ## Empfehlungen"
+```
+
+### JSON-Ausgabebeispiel
+
+```
+Analysiere diese Kundenbewertung und gib JSON zurück:
+{
+  "sentiment": "positive" | "negative" | "neutral",
+  "topics": ["Array der Hauptthemen"],
+  "rating_prediction": 1-5,
+  "key_phrases": ["bemerkenswerte Phrasen"]
+}
+
+Bewertung: "Das Produkt kam schnell an und funktioniert super, aber 
+die Anleitung war verwirrend."
+```
+
+## 6. Beispiele (Few-Shot-Learning)
+
+Beispiele sind der mächtigste Weg, dem Modell genau zu zeigen, was du willst.
+
+### One-Shot-Beispiel
+
+```
+Wandle diese Sätze in die Vergangenheitsform um.
+
+Beispiel:
+Eingabe: "Sie geht zum Laden"
+Ausgabe: "Sie ging zum Laden"
+
+Jetzt umwandeln:
+Eingabe: "Sie laufen jeden Morgen"
+```
+
+### Few-Shot-Beispiel
+
+```
+Klassifiziere diese Support-Tickets nach Dringlichkeit.
+
+Beispiele:
+"Mein Konto wurde gehackt" → Kritisch
+"Wie ändere ich mein Passwort?" → Niedrig
+"Zahlung fehlgeschlagen, aber ich wurde belastet" → Hoch
+
+Klassifiziere: "Die App stürzt ab, wenn ich die Einstellungen öffne"
+```
+
+## Alles zusammenfügen
+
+Hier ist ein vollständiger Prompt mit allen Komponenten:
+
+<TryIt 
+  title="Vollständiges Prompt-Beispiel"
+  description="Dieser Prompt demonstriert alle sechs Komponenten, die zusammenarbeiten. Probiere ihn aus, um zu sehen, wie strukturierte Prompts professionelle Ergebnisse liefern."
+  prompt={`# Rolle
+Du bist ein Senior Technical Writer mit 10 Jahren Erfahrung in der Erstellung von Entwicklerdokumentation.
+
+# Kontext
+Ich dokumentiere eine REST-API für einen Zahlungsverarbeitungsdienst. Die Zielgruppe sind Entwickler, die unsere API in ihre Anwendungen integrieren. Sie haben fortgeschrittene Programmierkenntnisse, sind aber möglicherweise neu bei Zahlungsverarbeitungskonzepten.
+
+# Aufgabe
+Schreibe Dokumentation für den folgenden API-Endpunkt, der eine neue Zahlungsabsicht erstellt.
+
+# Einschränkungen
+- Verwende klare, prägnante Sprache
+- Füge häufige Fehlerszenarien hinzu
+- Füge keine Implementierungsdetails über unser Backend hinzu
+- Gehe davon aus, dass Leser HTTP- und JSON-Grundlagen verstehen
+
+# Ausgabeformat
+Strukturiere die Dokumentation als:
+1. Endpunkt-Übersicht (2-3 Sätze)
+2. Anfrage (Methode, URL, Header, Body mit Beispiel)
+3. Antwort (Erfolgs- und Fehlerbeispiele)
+4. Code-Beispiel (in JavaScript/Node.js)
+
+# Endpunkt-Details
+POST /v1/payments/intents
+Body: { "amount": 1000, "currency": "eur", "description": "Bestellung #1234" }`}
+/>
+
+## Der minimal effektive Prompt
+
+Nicht jeder Prompt braucht alle Komponenten. Für einfache Aufgaben kann eine klare Anweisung ausreichen:
+
+```
+Übersetze "Hallo, wie geht es dir?" ins Englische.
+```
+
+Verwende zusätzliche Komponenten, wenn:
+- Die Aufgabe komplex oder mehrdeutig ist
+- Du spezifische Formatierung brauchst
+- Ergebnisse nicht den Erwartungen entsprechen
+- Konsistenz über mehrere Abfragen hinweg wichtig ist
+
+## Häufige Prompt-Muster
+
+Diese Frameworks geben dir eine einfache Checkliste, der du beim Schreiben von Prompts folgen kannst. Klicke auf jeden Schritt, um ein Beispiel zu sehen.
+
+<CRISPEFramework />
+
+<RTFFramework />
+
+## Zusammenfassung
+
+Effektive Prompts werden konstruiert, nicht entdeckt. Durch das Verstehen und Anwenden dieser strukturellen Komponenten kannst du:
+
+- Beim ersten Versuch bessere Ergebnisse erzielen
+- Prompts debuggen, die nicht funktionieren
+- Wiederverwendbare Prompt-Vorlagen erstellen
+- Deine Absichten klar kommunizieren
+
+<Quiz 
+  question="Welche Komponente hat den größten Einfluss auf die Antwortqualität?"
+  options={[
+    "Immer die Rolle/Persona",
+    "Immer das Ausgabeformat",
+    "Es hängt von der Aufgabe ab",
+    "Die Länge des Prompts"
+  ]}
+  correctIndex={2}
+  explanation="Verschiedene Aufgaben profitieren von verschiedenen Komponenten. Eine einfache Übersetzung braucht minimale Struktur, während eine komplexe Analyse von detaillierten Rollen-, Kontext- und Formatspezifikationen profitiert."
+/>
+
+<TryIt 
+  prompt={`Du bist ein Senior Product Manager mit 10 Jahren Erfahrung in SaaS-Produkten.
+
+Kontext: Ich baue eine Aufgabenverwaltungs-App für Remote-Teams. Wir sind ein kleines Startup mit begrenzten Engineering-Ressourcen.
+
+Aufgabe: Schlage 3 Features vor, die wir für unser MVP priorisieren sollten.
+
+Einschränkungen:
+- Features müssen von einem Team von 2 Entwicklern in 4 Wochen implementierbar sein
+- Konzentriere dich auf das, was uns von Trello und Asana unterscheidet
+
+Format: Für jedes Feature, liefere:
+1. Feature-Name
+2. Ein-Satz-Beschreibung
+3. Warum es für Remote-Teams wichtig ist`}
+  description="Dieser Prompt verwendet alle sechs Komponenten. Probiere ihn aus und sieh, wie der strukturierte Ansatz fokussierte, umsetzbare Ergebnisse liefert."
+/>
+
+## Baue deinen eigenen Prompt
+
+Jetzt bist du dran! Verwende diesen interaktiven Prompt-Builder, um deinen eigenen Prompt mit den Komponenten zu konstruieren, die du gelernt hast:
+
+<PromptBuilder 
+  title="Interaktiver Prompt-Builder"
+  description="Fülle jeden Abschnitt aus, um einen vollständigen, gut strukturierten Prompt zu erstellen"
+/>
+
+<PromptChallenge
+  title="Kapitel-Herausforderung: Erstelle einen Code-Review-Prompt"
+  task="Schreibe einen Prompt, der eine KI bittet, Code auf Sicherheitslücken zu überprüfen. Dein Prompt sollte spezifisch genug sein, um umsetzbares Feedback zu erhalten."
+  criteria={[
+    "Enthält eine klare Rolle oder Expertise-Stufe",
+    "Spezifiziert, welche Art von Code-Review (Sicherheitsfokus)",
+    "Definiert das erwartete Ausgabeformat",
+    "Setzt angemessene Einschränkungen oder Umfang"
+  ]}
+  hints={[
+    "Denke darüber nach, welche Expertise ein Code-Reviewer haben sollte",
+    "Sei spezifisch darüber, nach welchen Sicherheitsproblemen gesucht werden soll",
+    "Erwäge, nach einem strukturierten Antwortformat zu fragen"
+  ]}
+  exampleSolution={`Du bist ein Senior Security Engineer mit Expertise in Webanwendungssicherheit und OWASP Top 10 Schwachstellen.
+
+Aufgabe: Überprüfe den folgenden Code auf Sicherheitslücken.
+
+Fokussiere dich auf:
+- SQL-Injection-Risiken
+- XSS-Schwachstellen
+- Authentifizierungs-/Autorisierungsprobleme
+- Eingabevalidierungslücken
+
+Ausgabeformat:
+Für jedes gefundene Problem:
+1. Zeilennummer(n)
+2. Schwachstellentyp
+3. Risikostufe (Hoch/Mittel/Niedrig)
+4. Empfohlene Behebung
+
+[ZU ÜBERPRÜFENDER CODE]`}
+  difficulty="intermediate"
+/>
+
+Im nächsten Kapitel werden wir die Kernprinzipien erkunden, die Prompt-Konstruktionsentscheidungen leiten.

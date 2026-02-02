@@ -1,0 +1,411 @@
+Obtener salidas consistentes y bien formateadas es esencial para aplicaciones de producción y flujos de trabajo eficientes. Este capítulo cubre técnicas para controlar exactamente cómo los modelos de IA formatean sus respuestas.
+
+<Callout type="info" title="De Prosa a Datos">
+La salida estructurada transforma las respuestas de IA de texto libre en datos accionables y parseables.
+</Callout>
+
+## Por Qué Importa la Estructura
+
+<StructuredOutputDemo />
+
+## Técnicas Básicas de Formateo
+
+### Listas
+
+Las listas son perfectas para instrucciones paso a paso, elementos clasificados o colecciones de puntos relacionados. Son fáciles de escanear y parsear. Usa **listas numeradas** cuando el orden importa (pasos, rankings) y **viñetas** para colecciones sin orden.
+
+<TryIt 
+  compact
+  title="Formato de Lista"
+  prompt={`Proporciona 5 consejos para dormir mejor.
+
+Formato: Lista numerada con una breve explicación para cada uno.
+Cada consejo debe estar en negrita, seguido de un guión y explicación.`}
+/>
+
+<Callout type="tip" title="Mejores Prácticas para Listas">
+Especifica el número exacto de elementos que quieres, si incluir explicaciones, y si los elementos deben estar en negrita o tener una estructura específica.
+</Callout>
+
+### Tablas
+
+Las tablas sobresalen al comparar múltiples elementos a través de las mismas dimensiones. Son ideales para comparaciones de características, resúmenes de datos y cualquier información con atributos consistentes. Siempre define tus encabezados de columna explícitamente.
+
+<TryIt 
+  compact
+  title="Formato de Tabla"
+  prompt={`Compara los 4 principales frameworks web de Python.
+
+Formatea como una tabla markdown con columnas:
+| Framework | Mejor Para | Curva de Aprendizaje | Rendimiento |`}
+/>
+
+<Callout type="tip" title="Mejores Prácticas para Tablas">
+Especifica nombres de columnas, tipos de datos esperados (texto, números, calificaciones) y cuántas filas necesitas. Para comparaciones complejas, limita a 4-6 columnas para legibilidad.
+</Callout>
+
+### Encabezados y Secciones
+
+Los encabezados crean una estructura de documento clara, haciendo las respuestas largas escaneables y organizadas. Úsalos para informes, análisis o cualquier respuesta de múltiples partes. Los encabezados jerárquicos (##, ###) muestran relaciones entre secciones.
+
+```
+Analiza esta propuesta de negocio.
+
+Estructura tu respuesta con estas secciones:
+## Resumen Ejecutivo
+## Fortalezas
+## Debilidades
+## Recomendaciones
+## Evaluación de Riesgos
+```
+
+<Callout type="tip" title="Mejores Prácticas para Secciones">
+Lista tus secciones en el orden que las quieres. Para consistencia, especifica qué debe contener cada sección (ej., "Resumen Ejecutivo: solo 2-3 oraciones").
+</Callout>
+
+### Énfasis con Directivas en Mayúsculas
+
+Las palabras en mayúsculas actúan como señales fuertes para el modelo, enfatizando restricciones o requisitos críticos. Úsalas con moderación para máximo impacto—el uso excesivo diluye su efectividad.
+
+**Directivas en Mayúsculas Comunes:**
+
+<InfoGrid items={[
+  { label: "NUNCA", description: "Prohibición absoluta: \"NUNCA incluyas opiniones personales\"", color: "red" },
+  { label: "SIEMPRE", description: "Requisito obligatorio: \"SIEMPRE cita fuentes\"", color: "green" },
+  { label: "IMPORTANTE", description: "Instrucción crítica: \"IMPORTANTE: Mantén las respuestas bajo 100 palabras\"", color: "amber" },
+  { label: "NO", description: "Prohibición fuerte: \"NO inventes estadísticas\"", color: "red" },
+  { label: "DEBE", description: "Acción requerida: \"La salida DEBE ser JSON válido\"", color: "blue" },
+  { label: "SOLO", description: "Restricción: \"Devuelve SOLO el código, sin explicaciones\"", color: "purple" },
+]} />
+
+```
+Resume este artículo.
+
+IMPORTANTE: Mantén el resumen bajo 100 palabras.
+NUNCA agregues información que no esté presente en el original.
+SIEMPRE mantén el tono y perspectiva original.
+NO incluyas tus propias opiniones o análisis.
+```
+
+<Callout type="warning" title="Usa con Moderación">
+Si todo está en mayúsculas o marcado como crítico, nada destaca. Reserva estas directivas para restricciones genuinamente importantes.
+</Callout>
+
+## Salida JSON
+
+JSON (JavaScript Object Notation) es el formato más popular para salida estructurada de IA. Es legible por máquinas, ampliamente soportado por lenguajes de programación, y perfecto para APIs, bases de datos y flujos de trabajo de automatización. La clave para JSON confiable es proporcionar un esquema claro.
+
+### Solicitud JSON Básica
+
+Comienza con una plantilla mostrando la estructura exacta que quieres. Incluye nombres de campos, tipos de datos y valores de ejemplo. Esto actúa como un contrato que el modelo seguirá.
+
+<TryIt 
+  title="Extracción JSON"
+  description="Extrae datos estructurados de texto no estructurado."
+  prompt={`Extrae información de este texto y devuelve como JSON:
+
+{
+    "nombre_empresa": "string",
+    "año_fundacion": number,
+    "sede": "string",
+    "empleados": number,
+    "industria": "string"
+}
+
+Texto: "Apple Inc., fundada en 1976, tiene su sede en Cupertino, California. El gigante tecnológico emplea aproximadamente 164,000 personas en todo el mundo."`}
+/>
+
+### Estructuras JSON Complejas
+
+Para datos anidados, usa JSON jerárquico con objetos dentro de objetos, arrays de objetos y tipos mixtos. Define cada nivel claramente y usa anotaciones estilo TypeScript (`"positivo" | "negativo"`) para restringir valores.
+
+```
+Analiza esta reseña de producto y devuelve JSON:
+
+{
+  "id_resena": "string (genera único)",
+  "sentimiento": {
+    "general": "positivo" | "negativo" | "mixto" | "neutral",
+    "puntuacion": 0.0-1.0
+  },
+  "aspectos": [
+    {
+      "aspecto": "string (ej., 'precio', 'calidad')",
+      "sentimiento": "positivo" | "negativo" | "neutral",
+      "menciones": ["citas exactas de la reseña"]
+    }
+  ],
+  "intencion_compra": {
+    "recomendaria": boolean,
+    "confianza": 0.0-1.0
+  },
+  "frases_clave": ["array de strings de frases notables"]
+}
+
+Devuelve SOLO JSON válido, sin texto adicional.
+
+Reseña: "[texto de reseña]"
+```
+
+### Asegurando JSON Válido
+
+Los modelos a veces agregan texto explicativo o formato markdown alrededor del JSON. Previene esto con instrucciones explícitas sobre el formato de salida. Puedes solicitar JSON crudo o JSON dentro de bloques de código—elige según tus necesidades de parsing.
+
+Agrega instrucciones explícitas:
+
+```
+IMPORTANTE:
+- Devuelve SOLO el objeto JSON, sin bloques de código markdown
+- Asegura que todos los strings estén correctamente escapados
+- Usa null para valores faltantes, no undefined
+- Valida que la salida sea JSON parseable
+```
+
+O solicita bloques de código pidiendo al modelo que envuelva su salida:
+
+````
+Devuelve el resultado como un bloque de código JSON:
+```json
+{ ... }
+```
+````
+
+## Salida YAML
+
+YAML es más legible para humanos que JSON, usando indentación en lugar de corchetes. Es el estándar para archivos de configuración (Docker, Kubernetes, GitHub Actions) y funciona bien cuando la salida será leída por humanos o usada en contextos DevOps. YAML es sensible a la indentación, así que sé específico sobre los requisitos de formato.
+
+<TryIt 
+  compact
+  title="Generación YAML"
+  prompt={`Genera un workflow de GitHub Actions para un proyecto Node.js.
+
+Devuelve como YAML válido:
+- Incluye: etapas de instalación, lint, test, build
+- Usa Node.js 18
+- Cachea dependencias npm
+- Ejecuta en push a main y pull requests`}
+/>
+
+## Salida XML
+
+XML todavía es requerido para muchos sistemas empresariales, APIs SOAP e integraciones legacy. Es más verboso que JSON pero ofrece características como atributos, namespaces y secciones CDATA para datos complejos. Especifica nombres de elementos, estructura de anidación, y dónde usar atributos vs. elementos hijos.
+
+```
+Convierte estos datos a formato XML:
+
+Requisitos:
+- Elemento raíz: <catalogo>
+- Cada elemento en elemento <libro>
+- Incluye atributos donde sea apropiado
+- Usa CDATA para texto de descripción
+
+Datos: [datos de libro]
+```
+
+## Formatos Personalizados
+
+A veces los formatos estándar no se ajustan a tus necesidades. Puedes definir cualquier formato personalizado proporcionando una plantilla clara. Los formatos personalizados funcionan bien para informes, logs, o salidas específicas de dominio que serán leídas por humanos.
+
+### Formato de Análisis Estructurado
+
+Usa delimitadores (===, ---, [SECCIÓN]) para crear documentos escaneables con límites claros entre secciones. Este formato es excelente para revisiones de código, auditorías y análisis.
+
+```
+Analiza este código usando este formato exacto:
+
+=== ANÁLISIS DE CÓDIGO ===
+
+[RESUMEN]
+Un párrafo de resumen
+
+[PROBLEMAS]
+• CRÍTICO: [problema] — [archivo:línea]
+• ADVERTENCIA: [problema] — [archivo:línea]  
+• INFO: [problema] — [archivo:línea]
+
+[MÉTRICAS]
+Complejidad: [Baja/Media/Alta]
+Mantenibilidad: [puntuación]/10
+Cobertura de Tests: [% estimado]
+
+[RECOMENDACIONES]
+1. [Recomendación prioridad 1]
+2. [Recomendación prioridad 2]
+
+=== FIN ANÁLISIS ===
+```
+
+### Formato de Completar Espacios en Blanco
+
+Las plantillas con espacios en blanco (___) guían al modelo a llenar campos específicos mientras mantienen el formato exacto. Este enfoque es excelente para formularios, briefs y documentos estandarizados donde la consistencia importa.
+
+```
+Completa esta plantilla para el producto dado:
+
+BRIEF DE PRODUCTO
+─────────────
+Nombre: _______________
+Eslogan: _______________
+Usuario Objetivo: _______________
+Problema que Resuelve: _______________
+Características Clave:
+  1. _______________
+  2. _______________
+  3. _______________
+Diferenciador: _______________
+
+Producto: [descripción del producto]
+```
+
+## Respuestas Tipadas
+
+Las respuestas tipadas definen categorías o tipos de entidad que el modelo debe reconocer y etiquetar. Esta técnica es esencial para el Reconocimiento de Entidades Nombradas (NER), tareas de clasificación, y cualquier extracción donde necesites categorizar información consistentemente. Define tus tipos claramente con ejemplos.
+
+<TryIt 
+  compact
+  title="Extracción de Entidades"
+  prompt={`Extrae entidades de este texto.
+
+Tipos de Entidad:
+- PERSONA: Nombres completos de personas
+- ORG: Nombres de organizaciones/empresas
+- UBICACIÓN: Ciudades, países, direcciones
+- FECHA: Fechas en formato ISO (YYYY-MM-DD)
+- DINERO: Cantidades monetarias con moneda
+
+Formatea cada una como: [TIPO]: [valor]
+
+Texto: "Tim Cook anunció que Apple invertirá 1.000 millones de euros en una nueva instalación en Madrid para diciembre de 2024."`}
+/>
+
+## Respuestas Estructuradas de Múltiples Partes
+
+Cuando necesitas salida comprensiva cubriendo múltiples aspectos, define partes distintas con límites claros. Especifica exactamente qué va en cada parte—formato, longitud y tipo de contenido. Esto previene que el modelo mezcle secciones u omita partes.
+
+```
+Investiga este tema y proporciona:
+
+### PARTE 1: RESUMEN EJECUTIVO
+[Resumen de 2-3 oraciones]
+
+### PARTE 2: HALLAZGOS CLAVE
+[Exactamente 5 viñetas]
+
+### PARTE 3: TABLA DE DATOS
+| Métrica | Valor | Fuente |
+|---------|-------|--------|
+[Incluye 5 filas mínimo]
+
+### PARTE 4: RECOMENDACIONES
+[Lista numerada de 3 recomendaciones accionables]
+
+### PARTE 5: LECTURA ADICIONAL
+[3 recursos sugeridos con breves descripciones]
+```
+
+## Formato Condicional
+
+El formato condicional te permite definir diferentes formatos de salida basados en las características de la entrada. Esto es poderoso para clasificación, triaje y sistemas de enrutamiento donde el formato de respuesta debe variar según lo que detecte el modelo. Usa lógica si/entonces clara con plantillas de salida explícitas para cada caso.
+
+<TryIt 
+  compact
+  title="Clasificación de Tickets"
+  prompt={`Clasifica este ticket de soporte.
+
+Si URGENTE (sistema caído, problema de seguridad, pérdida de datos):
+  Devuelve: 🔴 URGENTE | [Categoría] | [Acción Sugerida]
+
+Si ALTO (afecta a múltiples usuarios, impacto en ingresos):
+  Devuelve: 🟠 ALTO | [Categoría] | [Acción Sugerida]
+
+Si MEDIO (un solo usuario afectado, existe solución alternativa):
+  Devuelve: 🟡 MEDIO | [Categoría] | [Acción Sugerida]
+
+Si BAJO (preguntas, solicitudes de funciones):
+  Devuelve: 🟢 BAJO | [Categoría] | [Acción Sugerida]
+
+Ticket: "No puedo iniciar sesión en mi cuenta. He intentado restablecer mi contraseña dos veces pero sigo recibiendo un error. Esto está bloqueando a todo mi equipo de acceder al panel de control."`}
+/>
+
+## Arrays y Listas en JSON
+
+Extraer múltiples elementos en arrays requiere definición cuidadosa del esquema. Especifica la estructura del array, qué debe contener cada elemento, y cómo manejar casos límite (arrays vacíos, elementos únicos). Incluir un campo de conteo ayuda a verificar completitud.
+
+```
+Extrae todos los elementos de acción de esta transcripción de reunión.
+
+Devuelve como array JSON:
+{
+  "elementos_accion": [
+    {
+      "tarea": "string describiendo la tarea",
+      "asignado": "nombre de persona o 'Sin asignar'",
+      "fecha_limite": "fecha si se menciona, sino null",
+      "prioridad": "alta" | "media" | "baja",
+      "contexto": "cita relevante de la transcripción"
+    }
+  ],
+  "conteo_total": number
+}
+
+Transcripción: "[transcripción de reunión]"
+```
+
+## Instrucciones de Validación
+
+La auto-validación hace que el modelo verifique su propia salida antes de responder. Esto captura problemas comunes como secciones faltantes, texto de marcador de posición, o violaciones de restricciones. El modelo iterará internamente para arreglar problemas, mejorando la calidad de salida sin llamadas API adicionales.
+
+```
+Genera el informe, luego:
+
+LISTA DE VERIFICACIÓN DE VALIDACIÓN:
+□ Todas las secciones requeridas presentes
+□ Sin texto de marcador de posición restante
+□ Todas las estadísticas incluyen fuentes
+□ Conteo de palabras dentro de 500-700 palabras
+□ Conclusión conecta con la introducción
+
+Si alguna verificación falla, arregla antes de responder.
+```
+
+## Manejo de Campos Opcionales
+
+Los datos del mundo real a menudo tienen valores faltantes. Instruye explícitamente al modelo sobre cómo manejar campos opcionales—usar `null` es más limpio que strings vacíos y más fácil de procesar programáticamente. También previene "alucinaciones" de datos faltantes enfatizando que el modelo nunca debe inventar información.
+
+```
+Extrae información de contacto. Usa null para campos faltantes.
+
+{
+  "nombre": "string (requerido)",
+  "email": "string o null",
+  "telefono": "string o null", 
+  "empresa": "string o null",
+  "rol": "string o null",
+  "linkedin": "string URL o null"
+}
+
+IMPORTANTE: 
+- Nunca inventes información que no esté en la fuente
+- Usa null, no strings vacíos, para datos faltantes
+- Números de teléfono en formato E.164 si es posible
+```
+
+## Resumen
+
+<Callout type="tip" title="Técnicas Clave">
+Sé explícito sobre el formato, usa ejemplos, especifica tipos, maneja casos límite con valores null, y pide al modelo que valide su propia salida.
+</Callout>
+
+<Quiz 
+  question="¿Cuál es la principal ventaja de la salida estructurada sobre el texto no estructurado?"
+  options={[
+    "Usa menos tokens",
+    "Es más fácil para la IA generarla",
+    "Puede ser parseada programáticamente y validada",
+    "Siempre produce información correcta"
+  ]}
+  correctIndex={2}
+  explanation="Las salidas estructuradas como JSON pueden ser parseadas por código, comparadas entre consultas, integradas en flujos de trabajo, y validadas para completitud—cosas que son difíciles o imposibles con texto de forma libre."
+/>
+
+Las salidas estructuradas son esenciales para construir aplicaciones confiables impulsadas por IA. En el próximo capítulo, exploraremos el prompting de cadena de pensamiento para tareas de razonamiento complejas.

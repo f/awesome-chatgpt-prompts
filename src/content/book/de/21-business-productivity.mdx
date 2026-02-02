@@ -1,0 +1,335 @@
+KI kann die berufliche Produktivität dramatisch steigern. Dieses Kapitel behandelt Prompts für Geschäftskommunikation, Analyse, Planung und Workflow-Optimierung.
+
+<Callout type="info" title="KI für Business">
+KI zeichnet sich bei Entwürfen, Analyse und Strukturierung aus – und befreit dich, um dich auf Strategie, Beziehungen und Entscheidungen zu konzentrieren, die menschliches Urteilsvermögen erfordern.
+</Callout>
+
+## Geschäftskommunikation
+
+### Dos and Don'ts: Geschäfts-E-Mails
+
+<Compare 
+  before={{ label: "❌ Vage Anfrage", content: "Schreib eine E-Mail an meinen Chef über das Projekt." }}
+  after={{ label: "✓ Vollständiger Kontext", content: "Schreib eine E-Mail an meine Managerin (Sarah), die sie über das Q4-Marketing-Projekt informiert.\n\nSchlüsselpunkte: Wir sind auf Kurs für die Deadline 15. Nov., haben das Lieferantenproblem gelöst, brauchen ihre Genehmigung für die 5.000€ Budgeterhöhung.\nTon: Professionell aber freundlich (wir haben eine gute Beziehung)\nHalte unter 150 Wörtern mit einer klaren Bitte am Ende." }}
+/>
+
+### E-Mail-Entwurf
+
+<TryIt compact prompt={`Schreib eine professionelle E-Mail.
+
+Kontext:
+- An: [Empfänger und Beziehung]
+- Zweck: [Anfrage/Informieren/Nachfassen/Entschuldigen]
+- Schlüsselpunkte: [was kommuniziert werden muss]
+- Ton: [formal/freundlich professionell/dringend]
+
+Einschränkungen:
+- Halte unter [X] Sätzen
+- Klarer Call-to-Action
+- Betreffzeile enthalten`} />
+
+**Beispiele nach Zweck:**
+
+<TryIt compact prompt={`\${emailType:Meeting-Anfrage}: Schreib eine E-Mail, die ein Meeting mit einem potenziellen Kunden anfragt, um Partnerschaftsmöglichkeiten zu besprechen. Halte es kurz und mache es einfach, Ja zu sagen.`} />
+
+<TryIt compact prompt={`\${emailType:Schwieriges Gespräch}: Schreib eine E-Mail, die das Angebot eines Lieferanten ablehnt, während die Beziehung für zukünftige Möglichkeiten erhalten bleibt. Sei klar aber diplomatisch.`} />
+
+<TryIt compact prompt={`\${emailType:Status-Update}: Schreib eine Projektstatus-E-Mail an Stakeholder. Das Projekt ist 2 Wochen hinter dem Zeitplan aufgrund von Scope-Änderungen. Präsentiere die Situation professionell mit einem Erholungsplan.`} />
+
+### Präsentations-Inhalt
+
+<TryIt compact prompt={`Erstelle Präsentations-Inhalt für \${topic:Q4-Verkaufsstrategie}.
+
+Zielgruppe: \${audience:Geschäftsführung}
+Dauer: \${duration:15 Minuten}
+Ziel: \${goal:überzeugen, Budgeterhöhung zu genehmigen}
+
+Liefere für jede Folie:
+- Titel
+- Kernbotschaft (ein Hauptpunkt)
+- Unterstützende Punkte (max. 3)
+- Sprechernotizen (was zu sagen ist)
+- Visual-Vorschlag (Diagramm/Bild/Grafik)
+
+Struktur:
+1. Hook/Aufmerksamkeitsfänger
+2. Problem/Chance
+3. Lösung/Empfehlung
+4. Beweise/Unterstützung
+5. Call-to-Action`} />
+
+### Bericht schreiben
+
+<TryIt compact prompt={`Schreib einen \${reportType:Empfehlungs}-Bericht über \${topic:Expansion in europäische Märkte}.
+
+Berichtstyp: \${type:Empfehlung}
+Zielgruppe: \${audience:Geschäftsleitung}
+Länge: \${length:5 Seiten}
+
+Struktur:
+1. Executive Summary (Schlüsselerkenntnisse, 1 Absatz)
+2. Hintergrund/Kontext
+3. Methodik (falls zutreffend)
+4. Erkenntnisse
+5. Analyse
+6. Empfehlungen
+7. Nächste Schritte
+
+Enthalten: Datenvisualisierungs-Vorschläge, wo relevant
+Ton: \${tone:formell geschäftlich}`} />
+
+## Analyse & Entscheidungsfindung
+
+<Callout type="tip" title="Analyse-Prinzip">
+KI kann dein Denken strukturieren, aber **du lieferst den realen Kontext**. Die besten Analysen kombinieren KIs Frameworks mit deinem Domänenwissen.
+</Callout>
+
+### SWOT-Analyse
+
+<TryIt compact prompt={`Führe eine SWOT-Analyse für \${subject:Einführung einer neuen mobilen App} durch.
+
+Kontext:
+\${context:Wir sind ein mittelgroßes Fintech-Unternehmen, das eine Consumer-Banking-App erwägt}
+
+Liefere:
+
+**Stärken** (interne Positive)
+- Mindestens 4 Punkte mit kurzen Erklärungen
+
+**Schwächen** (interne Negative)
+- Mindestens 4 Punkte mit kurzen Erklärungen
+
+**Chancen** (externe Positive)
+- Mindestens 4 Punkte mit kurzen Erklärungen
+
+**Risiken** (externe Negative)
+- Mindestens 4 Punkte mit kurzen Erklärungen
+
+**Strategische Implikationen**
+- Schlüsselerkenntnis aus Analyse
+- Empfohlene Prioritäten`} />
+
+### Entscheidungs-Framework
+
+<TryIt compact prompt={`Hilf mir, eine Entscheidung über \${decision:welches CRM wählen} zu treffen.
+
+Optionen:
+1. \${optionA:Salesforce}
+2. \${optionB:HubSpot}
+3. \${optionC:Pipedrive}
+
+Kriterien, die mir wichtig sind:
+- \${criterion1:Benutzerfreundlichkeit} (Gewichtung: hoch)
+- \${criterion2:Integration mit bestehenden Tools} (Gewichtung: hoch)
+- \${criterion3:Kosten} (Gewichtung: mittel)
+
+Liefere:
+1. Bewerte jede Option gegen jedes Kriterium (1-5)
+2. Gewichtete Analyse
+3. Pro/Contra-Zusammenfassung für jede
+4. Risikobewertung
+5. Empfehlung mit Begründung
+6. Fragen vor der Entscheidung zu bedenken`} />
+
+### Wettbewerbsanalyse
+
+<TryIt compact prompt={`Analysiere \${competitor:Slack} im Vergleich zu \${ourProduct:unserem Team-Kommunikationstool}.
+
+Recherchiere deren:
+1. **Produkte/Services** - Angebote, Preise, Positionierung
+2. **Stärken** - was sie gut machen
+3. **Schwächen** - wo sie hinterherhinken
+4. **Marktposition** - Zielsegmente, Marktanteil
+5. **Strategie** - erkennbare Richtung und Fokus
+
+Vergleiche mit uns:
+- Wo wir stärker sind
+- Wo sie stärker sind
+- Chancenlücken
+- Wettbewerbsbedrohungen
+
+Empfehle: Aktionen zur Verbesserung unserer Wettbewerbsposition`} />
+
+## Planung & Strategie
+
+### Zielsetzung (OKRs)
+
+<TryIt compact prompt={`Hilf mir, OKRs für \${scope:Q1 Marketing-Team} zu setzen.
+
+Kontext:
+- Unternehmensziele: \${companyGoals:Umsatz um 25% YoY steigern}
+- Aktuelle Situation: \${currentState:Markenbekanntheit ist niedrig in neuen Märkten}
+- Schlüsselprioritäten: \${priorities:Lead-Generierung, Content-Marketing}
+
+Erstelle 3 Objectives mit jeweils 3-4 Key Results.
+
+Format:
+**Objective 1:** Qualitatives Ziel - inspirierend
+- KR 1.1: Quantitative Messung (Aktuell: X → Ziel: Y)
+- KR 1.2: Quantitative Messung (Aktuell: X → Ziel: Y)
+- KR 1.3: Quantitative Messung (Aktuell: X → Ziel: Y)
+
+Stelle sicher, dass KRs sind:
+- Messbar
+- Ambitioniert aber erreichbar
+- Zeitgebunden
+- Ergebnisorientiert (keine Aufgaben)`} />
+
+### Projektplanung
+
+<TryIt compact prompt={`Erstelle einen Projektplan für \${project:Website-Redesign}.
+
+Scope: \${scope:neue Startseite, Produktseiten, Checkout-Flow}
+Zeitrahmen: \${timeline:3 Monate}
+Team: \${team:2 Entwickler, 1 Designer, 1 PM}
+Budget: \${budget:50.000€}
+
+Liefere:
+1. **Projektphasen** mit Meilensteinen
+2. **Projektstrukturplan** (Hauptaufgaben)
+3. **Zeitplan** (Gantt-artige Beschreibung)
+4. **Abhängigkeiten** (was blockiert was)
+5. **Risiken** (potenzielle Probleme und Minderung)
+6. **Erfolgskriterien** (wie wir wissen, dass wir fertig sind)`} />
+
+### Meeting-Agenda
+
+<TryIt compact prompt={`Erstelle eine Agenda für \${meetingType:Quartalsplanung}.
+
+Zweck: \${purpose:Abstimmung auf Q2-Prioritäten und Ressourcenallokation}
+Teilnehmer: \${attendees:Abteilungsleiter, CEO, COO}
+Dauer: \${duration:90 Minuten}
+
+Format:
+| Zeit | Thema | Verantwortlich | Ziel |
+|------|-------|----------------|------|
+| 5 Min. | Eröffnung | Moderator | Kontext |
+| ... | ... | ... | ... |
+
+Enthalten:
+- Zeitallokationen
+- Klarer Verantwortlicher für jeden Punkt
+- Erwartete spezifische Ergebnisse
+- Erforderliche Vorbereitung
+- Vorlage für Folge-Aktionspunkte`} />
+
+## Produktivitäts-Workflows
+
+### Aufgaben-Priorisierung
+
+<TryIt compact prompt={`Hilf mir, meine Aufgaben mit der Eisenhower-Matrix zu priorisieren.
+
+Meine Aufgaben:
+\${tasks:1. Quartalsbericht vorbereiten (fällig Freitag)\n2. Bewerbungen durchsehen\n3. Lieferanten-E-Mails beantworten\n4. Team-Offsite planen\n5. LinkedIn-Profil aktualisieren}
+
+Kategorisiere jede in:
+1. **Dringend + Wichtig** (Zuerst tun)
+2. **Wichtig, nicht Dringend** (Einplanen)
+3. **Dringend, nicht Wichtig** (Delegieren)
+4. **Keines** (Eliminieren)
+
+Dann liefere:
+- Empfohlene Ausführungsreihenfolge
+- Zeitschätzungen
+- Vorschläge für Delegation oder Eliminierung`} />
+
+### Prozess-Dokumentation
+
+<TryIt compact prompt={`Dokumentiere diesen Geschäftsprozess: \${processName:Kunden-Erstattungsanfrage}.
+
+Erstelle:
+1. **Prozessübersicht** (1 Absatz)
+2. **Auslöser** (was diesen Prozess startet)
+3. **Schritte** (nummeriert, mit verantwortlicher Partei)
+4. **Entscheidungspunkte** (wenn X dann Y Format)
+5. **Outputs** (was dieser Prozess produziert)
+6. **Beteiligte Systeme** (Tools/Software)
+7. **Ausnahmen** (Edge Cases und Behandlung)
+
+Format: Klar genug, dass ein neuer Mitarbeiter folgen kann`} />
+
+### Standard Operating Procedure
+
+<TryIt compact prompt={`Schreib ein SOP für \${task:Onboarding neuer Mitarbeiter in Slack}.
+
+Zielgruppe: \${audience:HR-Administratoren}
+Komplexität: \${complexity:Basis-Benutzer}
+
+Enthalten:
+1. Zweck und Geltungsbereich
+2. Voraussetzungen/Anforderungen
+3. Schritt-für-Schritt-Anweisungen
+4. Screenshots/visuelle Platzhalter
+5. Qualitätsprüfpunkte
+6. Häufige Fehler und Fehlerbehebung
+7. Verwandte SOPs/Dokumente
+8. Versionshistorie`} />
+
+## Kommunikations-Vorlagen
+
+### Stakeholder-Update
+
+<TryIt compact prompt={`Schreib ein Stakeholder-Update für \${project:CRM-Migrationsprojekt}.
+
+Status: \${status:gefährdet}
+Zeitraum: \${period:Woche vom 6.-10. Jan.}
+
+Format:
+## Projektname Update
+
+**Status:** 🟢/🟡/🔴
+
+**Fortschritt diese Periode:**
+- Erfolg 1
+- Erfolg 2
+
+**Ziele nächste Periode:**
+- Ziel 1
+- Ziel 2
+
+**Risiken/Blocker:**
+- Falls vorhanden
+
+**Entscheidungen benötigt:**
+- Falls vorhanden`} />
+
+### Feedback-Anfrage
+
+<TryIt compact prompt={`Schreib eine Nachricht, die Feedback zu \${deliverable:dem neuen Produkt-Roadmap-Dokument} anfragt.
+
+Kontext: \${context:Das wird unsere Q2-Prioritäten leiten, ich will sicherstellen, dass ich nichts übersehen habe}
+Spezifische Bereiche für Feedback: \${feedbackAreas:Timeline-Machbarkeit, Ressourcenallokation, fehlende Features}
+Zeitrahmen: \${deadline:bis Freitag EOD}
+
+Ton: Professionell aber nicht übermäßig formal
+Mache es einfach zu antworten mit spezifischen Fragen`} />
+
+## Prompt-Vorlagen von prompts.chat
+
+### Agiere als Unternehmensberater
+
+<TryIt compact prompt={`Ich möchte, dass du als Unternehmensberater agierst. Ich werde Geschäftssituationen und Herausforderungen beschreiben, und du wirst strategische Beratung, Frameworks zum Nachdenken über Probleme und umsetzbare Empfehlungen liefern. Greife auf etablierte Geschäftsprinzipien zurück, während du praktisch und spezifisch bist.`} />
+
+### Agiere als Meeting-Moderator
+
+<TryIt compact prompt={`Ich möchte, dass du als Meeting-Moderator agierst. Hilf mir, effektive Meetings zu planen und durchzuführen. Erstelle Agenden, schlage Diskussions-Frameworks vor, hilf Gespräche zu synthetisieren und entwirf Follow-up-Kommunikation. Fokussiere darauf, Meetings produktiv und handlungsorientiert zu machen.`} />
+
+## Zusammenfassung
+
+<Callout type="tip" title="Schlüsseltechniken">
+Spezifiziere die Zielgruppe und ihre Bedürfnisse, definiere das gewünschte Ergebnis klar, füge relevanten Kontext und Einschränkungen ein, fordere spezifische Formate und Strukturen an und beachte professionelle Ton-Anforderungen.
+</Callout>
+
+<Quiz 
+  question="Was solltest du immer einschließen, wenn du KI bittest, eine Geschäfts-E-Mail zu schreiben?"
+  options={[
+    "Nur das Thema, das du besprechen willst",
+    "Empfänger, Zweck, Schlüsselpunkte und gewünschten Ton",
+    "Nur den Namen des Empfängers",
+    "Eine Vorlage aus dem Internet"
+  ]}
+  correctIndex={1}
+  explanation="Effektive Geschäfts-E-Mails brauchen Kontext: an wen du schreibst, warum, was kommuniziert werden muss und den angemessenen Ton. KI kann deine professionellen Beziehungen oder organisatorischen Kontext nicht ableiten."
+/>
+
+KI kann Routine-Geschäftskommunikation übernehmen, während du dich auf Strategie und Beziehungen konzentrierst.

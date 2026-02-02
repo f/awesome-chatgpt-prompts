@@ -1,0 +1,477 @@
+Few-Shot-Learning ist eine der mächtigsten Prompting-Techniken. Indem du Beispiele dessen lieferst, was du willst, kannst du dem Modell komplexe Aufgaben beibringen, ohne Feinabstimmung.
+
+<Callout type="info" title="Lernen durch Beispiele">
+Genau wie Menschen durch Beispiele lernen, können KI-Modelle Muster aus den Beispielen lernen, die du in deinem Prompt lieferst.
+</Callout>
+
+## Was ist Few-Shot-Learning?
+
+Few-Shot-Learning zeigt dem Modell Beispiele von Eingabe-Ausgabe-Paaren, bevor du es bittest, dieselbe Aufgabe auszuführen. Das Modell lernt das Muster aus deinen Beispielen und wendet es auf neue Eingaben an.
+
+<Compare 
+  before={{ 
+    label: "Zero-Shot (Keine Beispiele)", 
+    content: `Klassifiziere diese Bewertung als positiv oder negativ:
+
+"Der Akku hält ewig, aber der Bildschirm ist zu dunkel."
+
+→ Modell kann bei Grenzfällen inkonsistent sein` 
+  }}
+  after={{ 
+    label: "Few-Shot (Mit Beispielen)", 
+    content: `"Liebe es!" → Positiv
+"Schreckliche Qualität" → Negativ  
+"Gut, aber teuer" → Gemischt
+
+Jetzt klassifiziere:
+"Der Akku hält ewig, aber der Bildschirm ist zu dunkel."
+
+→ Modell lernt deine exakten Kategorien` 
+  }}
+/>
+
+<div className="my-4 grid grid-cols-2 md:grid-cols-4 gap-2">
+  <div className="p-3 bg-muted/50 rounded-lg text-center">
+    <div className="text-2xl font-bold">0</div>
+    <div className="text-xs text-muted-foreground">Zero-Shot</div>
+  </div>
+  <div className="p-3 bg-muted/50 rounded-lg text-center">
+    <div className="text-2xl font-bold">1</div>
+    <div className="text-xs text-muted-foreground">One-Shot</div>
+  </div>
+  <div className="p-3 bg-primary/10 rounded-lg text-center border-2 border-primary">
+    <div className="text-2xl font-bold">2-5</div>
+    <div className="text-xs text-muted-foreground">Few-Shot</div>
+  </div>
+  <div className="p-3 bg-muted/50 rounded-lg text-center">
+    <div className="text-2xl font-bold">5+</div>
+    <div className="text-xs text-muted-foreground">Many-Shot</div>
+  </div>
+</div>
+
+## Warum Beispiele funktionieren
+
+<FewShotDemo />
+
+Beispiele kommunizieren:
+- **Format**: Wie die Ausgabe strukturiert sein sollte
+- **Stil**: Ton, Länge, Vokabular
+- **Logik**: Das zu befolgende Denkmuster
+- **Grenzfälle**: Wie Sondersituationen behandelt werden
+
+## Grundlegendes Few-Shot-Muster
+
+Die grundlegende Struktur des Few-Shot-Promptings folgt einem einfachen Muster: zeige Beispiele, dann frage nach der neuen Aufgabe. Konsistenz in der Formatierung zwischen Beispielen ist entscheidend. Das Modell lernt aus dem Muster, das du etablierst.
+
+```
+[Beispiel 1]
+Eingabe: [Eingabe 1]
+Ausgabe: [Ausgabe 1]
+
+[Beispiel 2]
+Eingabe: [Eingabe 2]
+Ausgabe: [Ausgabe 2]
+
+[Beispiel 3]
+Eingabe: [Eingabe 3]
+Ausgabe: [Ausgabe 3]
+
+Jetzt mach dieses:
+Eingabe: [neue Eingabe]
+Ausgabe:
+```
+
+## Few-Shot für Klassifikation
+
+Klassifikation ist einer der stärksten Anwendungsfälle für Few-Shot-Learning. Indem du Beispiele jeder Kategorie zeigst, definierst du die Grenzen zwischen Klassen präziser, als Anweisungen allein es könnten.
+
+### Sentimentanalyse
+
+<Callout type="info" title="Was ist Sentimentanalyse?">
+Sentimentanalyse klassifiziert Text nach emotionalem Ton: positiv, negativ, neutral oder gemischt. Sie wird häufig für Kundenfeedback, Social-Media-Monitoring und Markenwahrnehmungs-Tracking verwendet.
+</Callout>
+
+Sentiment-Klassifikation profitiert davon, Beispiele jedes Sentiment-Typs zu zeigen, besonders Grenzfälle wie „gemischtes" Sentiment, das mehrdeutig sein könnte.
+
+<TryIt compact prompt={`Klassifiziere das Sentiment dieser Kundenbewertungen.
+
+Bewertung: "Dieses Produkt hat alle meine Erwartungen übertroffen! Werde wieder kaufen."
+Sentiment: Positiv
+
+Bewertung: "Kam kaputt an und der Kundenservice war nicht hilfreich."
+Sentiment: Negativ
+
+Bewertung: "Funktioniert gut, nichts Besonderes, aber erfüllt seinen Zweck."
+Sentiment: Neutral
+
+Bewertung: "Die Qualität ist erstaunlich, aber der Versand hat ewig gedauert."
+Sentiment: Gemischt
+
+Jetzt klassifiziere:
+Bewertung: "Liebe das Design, aber die Akkulaufzeit ist enttäuschend."
+Sentiment:`} />
+
+### Themenklassifikation
+
+Für Mehrklassen-Kategorisierung füge mindestens ein Beispiel pro Kategorie hinzu. Das hilft dem Modell, deine spezifische Taxonomie zu verstehen, die von seinem Standardverständnis abweichen kann.
+
+<TryIt compact prompt={`Kategorisiere diese Support-Tickets.
+
+Ticket: "Ich kann mich nicht in mein Konto einloggen, Passwort-Reset funktioniert nicht"
+Kategorie: Authentifizierung
+
+Ticket: "Wie kann ich zum Premium-Plan upgraden?"
+Kategorie: Abrechnung
+
+Ticket: "Die App stürzt ab, wenn ich versuche, Daten zu exportieren"
+Kategorie: Fehlerbericht
+
+Ticket: "Könnt ihr einen Dunkelmodus zur mobilen App hinzufügen?"
+Kategorie: Feature-Anfrage
+
+Jetzt kategorisiere:
+Ticket: "Meine Zahlung wurde abgelehnt, aber ich sehe die Abbuchung auf meiner Karte"
+Kategorie:`} />
+
+## Few-Shot für Transformation
+
+Transformationsaufgaben konvertieren Eingabe von einer Form in eine andere, während die Bedeutung erhalten bleibt. Beispiele sind hier essenziell, weil sie genau definieren, was „Transformation" für deinen Anwendungsfall bedeutet.
+
+### Textumschreibung
+
+Stiltransformation erfordert Beispiele, die den genauen gewünschten Tonwechsel zeigen. Abstrakte Anweisungen wie „mach es professioneller" werden unterschiedlich interpretiert. Beispiele machen es konkret.
+
+<TryIt compact prompt={`Schreibe diese Sätze in einem professionellen Ton um.
+
+Locker: "Hey, wollte nur checken, ob du meine E-Mail bekommen hast?"
+Professionell: "Ich wollte bezüglich meiner vorherigen E-Mail nachfassen."
+
+Locker: "Das ist mega wichtig und muss ASAP erledigt werden!"
+Professionell: "Diese Angelegenheit erfordert dringende Aufmerksamkeit und promptes Handeln."
+
+Locker: "Sorry für die späte Antwort, war total im Stress!"
+Professionell: "Ich entschuldige mich für die verspätete Antwort. Ich hatte einen besonders anspruchsvollen Zeitplan."
+
+Jetzt umschreiben:
+Locker: "Schaff's nicht zum Meeting, ist was dazwischengekommen."
+Professionell:`} />
+
+### Formatkonvertierung
+
+Formatkonvertierungsaufgaben profitieren von Beispielen, die Grenzfälle und mehrdeutige Eingaben zeigen. Das Modell lernt deine spezifischen Konventionen für den Umgang mit kniffligen Fällen.
+
+<TryIt compact prompt={`Konvertiere diese natürlichsprachlichen Daten ins ISO-Format.
+
+Eingabe: "nächsten Dienstag"
+Ausgabe: 2024-01-16 (angenommen heute ist 2024-01-11, Donnerstag)
+
+Eingabe: "übermorgen"
+Ausgabe: 2024-01-13
+
+Eingabe: "letzter Tag dieses Monats"
+Ausgabe: 2024-01-31
+
+Eingabe: "in zwei Wochen"
+Ausgabe: 2024-01-25
+
+Jetzt konvertiere:
+Eingabe: "der erste Montag nächsten Monats"
+Ausgabe:`} />
+
+## Few-Shot für Generierung
+
+Generierungsaufgaben erstellen neue Inhalte nach einem gelernten Muster. Beispiele etablieren Länge, Struktur, Ton und welche Details hervorgehoben werden sollen. Diese sind schwer in Anweisungen allein zu spezifizieren.
+
+### Produktbeschreibungen
+
+Marketingtexte profitieren enorm von Beispielen, weil sie Markenstimme, Feature-Betonung und überzeugende Techniken einfangen, die abstrakt schwer zu beschreiben sind.
+
+<TryIt compact prompt={`Schreibe Produktbeschreibungen in diesem Stil:
+
+Produkt: Kabellose Bluetooth-Kopfhörer
+Beschreibung: Tauche ein in kristallklaren Sound mit unseren leichten kabellosen Kopfhörern. Mit 40 Stunden Akkulaufzeit, aktiver Geräuschunterdrückung und weichen Memory-Foam-Ohrpolstern für ganztägigen Komfort.
+
+Produkt: Edelstahl-Wasserflasche
+Beschreibung: Bleibe stilvoll hydriert mit unserer doppelwandigen isolierten Flasche. Hält Getränke 24 Stunden kalt oder 12 Stunden heiß. Mit auslaufsicherem Deckel und passend für Standard-Getränkehalter.
+
+Produkt: Ergonomischer Bürostuhl
+Beschreibung: Verwandle deinen Arbeitsplatz mit unserem verstellbaren ergonomischen Stuhl. Atmungsaktive Netzrückenlehne, Lordosenstütze und 360°-Drehung kombinieren sich für Komfort bei langen Arbeitssitzungen.
+
+Jetzt schreibe:
+Produkt: Tragbares Handy-Ladegerät
+Beschreibung:`} />
+
+### Code-Dokumentation
+
+<Callout type="info" title="Warum Code dokumentieren?">
+Gute Dokumentation erklärt, was Code macht, seine Parameter, Rückgabewerte und Nutzungsbeispiele. Konsistente Docstrings ermöglichen automatisch generierte API-Dokumentation und helfen IDEs, bessere Code-Vervollständigung zu bieten.
+</Callout>
+
+Dokumentationsstil variiert stark zwischen Projekten. Beispiele lehren dein spezifisches Format, was enthalten sein soll (args, returns, Beispiele) und das erwartete Detailniveau.
+
+<TryIt compact prompt={`Schreibe Dokumentationskommentare für diese Funktionen:
+
+Funktion:
+def calculate_bmi(weight_kg, height_m):
+    return weight_kg / (height_m ** 2)
+
+Dokumentation:
+"""
+Berechnet den Body-Mass-Index (BMI) aus Gewicht und Größe.
+
+Args:
+    weight_kg (float): Gewicht in Kilogramm
+    height_m (float): Größe in Metern
+
+Returns:
+    float: BMI-Wert (Gewicht/Größe²)
+
+Beispiel:
+    >>> calculate_bmi(70, 1.75)
+    22.86
+"""
+
+Jetzt dokumentiere:
+Funktion:
+def is_palindrome(text):
+    cleaned = ''.join(c.lower() for c in text if c.isalnum())
+    return cleaned == cleaned[::-1]
+
+Dokumentation:`} />
+
+## Few-Shot für Extraktion
+
+Extraktionsaufgaben ziehen strukturierte Informationen aus unstrukturiertem Text. Beispiele definieren, welche Entitäten wichtig sind, wie die Ausgabe formatiert werden soll und wie Fälle behandelt werden, bei denen Informationen fehlen oder mehrdeutig sind.
+
+### Entitätsextraktion
+
+<Callout type="info" title="Was ist Named Entity Recognition?">
+Named Entity Recognition (NER) identifiziert und klassifiziert benannte Entitäten in Text in Kategorien wie Personen, Organisationen, Orte, Daten und Produkte. Sie ist fundamental für Information Retrieval und Wissensgraphen.
+</Callout>
+
+NER profitiert von Beispielen, die deine spezifischen Entitätstypen zeigen und wie Entitäten behandelt werden, die in mehrere Kategorien passen könnten.
+
+<TryIt compact prompt={`Extrahiere benannte Entitäten aus diesen Sätzen.
+
+Text: "Der Siemens-CEO Roland Busch kündigte neue Produkte in München an."
+Entitäten:
+- UNTERNEHMEN: Siemens
+- PERSON: Roland Busch
+- ORT: München
+
+Text: "Die Europäische Union verhängte gegen Google 2018 eine Strafe von 4,34 Milliarden Euro."
+Entitäten:
+- ORGANISATION: Europäische Union
+- UNTERNEHMEN: Google
+- GELD: 4,34 Milliarden Euro
+- DATUM: 2018
+
+Jetzt extrahiere aus:
+Text: "Elon Musks SpaceX startete 23 Starlink-Satelliten von Cape Canaveral am 3. Dezember."
+Entitäten:`} />
+
+### Strukturierte Datenextraktion
+
+Das Extrahieren strukturierter Daten aus natürlicher Sprache erfordert Beispiele, die zeigen, wie fehlende Felder, implizite Informationen und variierende Eingabeformate behandelt werden.
+
+<TryIt compact prompt={`Extrahiere Meeting-Details in strukturiertes Format.
+
+E-Mail: "Lass uns morgen um 15 Uhr im Konferenzraum B treffen, um das Q4-Budget zu besprechen. Bitte bring deinen Laptop mit."
+
+Meeting:
+- Datum: [morgiges Datum]
+- Zeit: 15:00 Uhr
+- Ort: Konferenzraum B
+- Thema: Q4-Budget-Besprechung
+- Anforderungen: Laptop mitbringen
+
+E-Mail: "Team-Sync auf Freitag 10 Uhr verschoben, wir nutzen stattdessen Zoom. Link im Kalendereinladung. Maximal 30 Minuten."
+
+Meeting:
+- Datum: Freitag
+- Zeit: 10:00 Uhr
+- Ort: Zoom (virtuell)
+- Thema: Team-Sync
+- Dauer: 30 Minuten
+
+Jetzt extrahiere aus:
+E-Mail: "Können wir Montag früh gegen 9:30 kurz telefonieren, um die Kundenpräsentation durchzugehen? Ich schicke einen Teams-Link."
+
+Meeting:`} />
+
+## Fortgeschrittene Few-Shot-Techniken
+
+Über grundlegendes Few-Shot hinaus können mehrere Techniken die Ergebnisse für komplexe Aufgaben verbessern.
+
+### Diverse Beispiele
+
+Diversität in Beispielen ist wertvoller als Quantität. Decke verschiedene Szenarien, Grenzfälle und potenzielle Mehrdeutigkeiten ab, statt ähnliche Beispiele wiederholt zu zeigen.
+
+<TryIt compact prompt={`Antworte auf Kundenbeschwerden.
+
+Beispiel 1 (Produktproblem):
+Kunde: "Meine Bestellung kam beschädigt an."
+Antwort: "Ich entschuldige mich aufrichtig für die beschädigte Lieferung. Ich werde sofort einen kostenlosen Ersatz senden. Sie müssen den beschädigten Artikel nicht zurückschicken. Darf ich Ihre Lieferadresse bestätigen?"
+
+Beispiel 2 (Serviceproblem):
+Kunde: "Ich war 2 Stunden in der Warteschleife!"
+Antwort: "Es tut mir sehr leid für die lange Wartezeit. Das ist inakzeptabel. Ich bin jetzt hier und werde persönlich sicherstellen, dass Ihr Problem gelöst wird. Wie kann ich Ihnen heute helfen?"
+
+Beispiel 3 (Abrechnungsproblem):
+Kunde: "Ihr habt mir zweimal für dieselbe Bestellung abgebucht!"
+Antwort: "Ich entschuldige mich für diesen Abrechnungsfehler. Ich habe die doppelte Abbuchung verifiziert und eine Rückerstattung von XX,XX€ auf Ihre ursprüngliche Zahlungsmethode veranlasst. Sie sollten sie innerhalb von 3-5 Werktagen sehen."
+
+Jetzt antworte auf:
+Kunde: "Das Produkt entspricht nicht dem, was auf der Website gezeigt wurde."
+Antwort:`} />
+
+### Negative Beispiele
+
+<Callout type="tip" title="Kontrastives Lernen">
+Das Zeigen von „guten" vs. „schlechten" Beispielen nennt man kontrastives Lernen. Es hilft dem Modell zu verstehen, nicht nur was du willst, sondern was zu vermeiden ist. Das ist besonders nützlich für Stil- und Qualitätsurteile.
+</Callout>
+
+Manchmal ist das Zeigen, was *nicht* zu tun ist, genauso wertvoll wie das Zeigen korrekter Beispiele. Negative Beispiele helfen dem Modell, Grenzen zu verstehen und häufige Fehler zu vermeiden.
+
+<TryIt compact prompt={`Schreibe prägnante E-Mail-Betreffzeilen.
+
+Gut: "Q3-Bericht bereit zur Überprüfung"
+Schlecht: "Hey, hab das Berichtsding fertig, über das wir gesprochen haben"
+
+Gut: "Aktion erforderlich: Urlaubsantrag bis Freitag genehmigen"
+Schlecht: "Ich brauch dass du was für mich machst bitte lies das"
+
+Gut: "Meeting verschoben: Projekt-Sync → Donnerstag 14 Uhr"
+Schlecht: "Planänderung!!!!!"
+
+Jetzt schreibe eine Betreffzeile für:
+E-Mail über: Feedback zu einem Entwurf eines Vorschlags anfordern
+Betreff:`} />
+
+### Grenzfall-Beispiele
+
+Grenzfälle bestimmen oft, ob eine Lösung in der Produktion funktioniert. Das Einbeziehen ungewöhnlicher Eingaben in deine Beispiele verhindert, dass das Modell bei realen Daten versagt, die nicht zum „Happy Path" passen.
+
+<TryIt compact prompt={`Parse Namen in strukturiertes Format.
+
+Eingabe: "Hans Müller"
+Ausgabe: {"first": "Hans", "last": "Müller", "middle": null, "suffix": null}
+
+Eingabe: "Maria Anna Schmidt-Weber"
+Ausgabe: {"first": "Maria", "middle": "Anna", "last": "Schmidt-Weber", "suffix": null}
+
+Eingabe: "Dr. Martin Luther King Jr."
+Ausgabe: {"prefix": "Dr.", "first": "Martin", "middle": "Luther", "last": "King", "suffix": "Jr."}
+
+Eingabe: "Madonna"
+Ausgabe: {"first": "Madonna", "last": null, "middle": null, "suffix": null, "mononym": true}
+
+Jetzt parse:
+Eingabe: "Prof. Dr. Angela Merkel"
+Ausgabe:`} />
+
+## Wie viele Beispiele?
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-40">Einfache Klassifikation</span>
+    <span className="text-primary font-mono">2-3</span>
+    <span className="text-muted-foreground">Mindestens eines pro Kategorie</span>
+  </div>
+  <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-40">Komplexe Formatierung</span>
+    <span className="text-primary font-mono">3-5</span>
+    <span className="text-muted-foreground">Zeige Variationen</span>
+  </div>
+  <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-40">Nuancierter Stil</span>
+    <span className="text-primary font-mono">4-6</span>
+    <span className="text-muted-foreground">Erfasse volle Bandbreite</span>
+  </div>
+  <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-40">Grenzfälle</span>
+    <span className="text-primary font-mono">1-2</span>
+    <span className="text-muted-foreground">Neben normalen Beispielen</span>
+  </div>
+</div>
+
+## Beispielqualität zählt
+
+<Compare 
+  before={{ 
+    label: "Schlechte Beispiele", 
+    content: `"Nettes Produkt" → Gut
+"Netter Service" → Gut
+"Netter Preis" → Gut
+
+✗ Alle zu ähnlich
+✗ Gleiches Wort wiederholt
+✗ Keine Grenzfälle gezeigt` 
+  }}
+  after={{ 
+    label: "Gute Beispiele", 
+    content: `"Erwartungen übertroffen!" → Positiv
+"Kaputt bei Ankunft" → Negativ
+"Funktioniert gut, nichts Besonderes" → Neutral
+"Tolle Qualität, aber überteuert" → Gemischt
+
+✓ Diverse Szenarien
+✓ Klare Grenzen
+✓ Deckt Grenzfälle ab` 
+  }}
+/>
+
+## Few-Shot mit anderen Techniken kombinieren
+
+Few-Shot-Learning kombiniert sich kraftvoll mit anderen Prompting-Techniken. Die Beispiele liefern das „Was", während andere Techniken Kontext, Begründung oder Struktur hinzufügen können.
+
+### Few-Shot + Rolle
+
+Das Hinzufügen einer Rolle gibt dem Modell Kontext dafür, *warum* es die Aufgabe ausführt, was Qualität und Konsistenz verbessern kann.
+
+```
+Du bist ein Prüfer für juristische Verträge.
+
+[Beispiele von Vertragsklausel-Analysen]
+
+Jetzt analysiere: [neue Klausel]
+```
+
+### Few-Shot + CoT
+
+Die Kombination von Few-Shot mit Chain of Thought zeigt nicht nur, *welche* Antwort zu geben ist, sondern *wie* man zur Antwort gelangt. Das ist mächtig für Aufgaben, die Urteilsvermögen erfordern.
+
+```
+Klassifiziere und erkläre die Begründung.
+
+Bewertung: "Tolle Features, aber überteuert"
+Denken: Die Bewertung erwähnt positive Aspekte ("tolle Features") 
+aber auch ein signifikantes Negativ ("überteuert"). Das Negative scheint 
+das Positive zu überwiegen, basierend auf der "aber"-Konjunktion.
+Klassifikation: Gemischt-Negativ
+
+[weitere Beispiele mit Begründung]
+
+Jetzt klassifiziere mit Begründung:
+Bewertung: "Genau was ich brauchte, kam schneller als erwartet an"
+```
+
+## Zusammenfassung
+
+<Callout type="tip" title="Kernpunkte">
+Few-Shot-Learning lehrt durch Demonstration und ist oft effektiver als Anweisungen allein. Verwende 2-5 diverse, korrekte Beispiele und kombiniere mit anderen Techniken für beste Ergebnisse.
+</Callout>
+
+<Quiz 
+  question="Wie viele Beispiele solltest du typischerweise bei Few-Shot-Learning liefern?"
+  options={[
+    "So viele wie möglich (10+)",
+    "Nur 1 Beispiel reicht immer",
+    "2-5 diverse, korrekte Beispiele",
+    "Beispiele sind nicht nötig, wenn Anweisungen klar sind"
+  ]}
+  correctIndex={2}
+  explanation="2-5 diverse, korrekte Beispiele funktionieren typischerweise am besten. Zu wenige erfassen möglicherweise das Muster nicht, während zu viele Tokens verschwenden und das Modell verwirren können. Qualität und Diversität zählen mehr als Quantität."
+/>
+
+Im nächsten Kapitel werden wir iterative Verfeinerung erkunden: die Kunst, Prompts durch aufeinanderfolgende Versuche zu verbessern.

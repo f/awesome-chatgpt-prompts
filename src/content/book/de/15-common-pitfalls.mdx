@@ -1,0 +1,373 @@
+Selbst erfahrene Prompt Engineers fallen in vorhersehbare Fallen. Die gute Nachricht? Sobald du diese Muster erkennst, sind sie leicht zu vermeiden. Dieses Kapitel führt durch die häufigsten Fallstricke, erklärt warum sie passieren und gibt dir konkrete Strategien, um sie zu umgehen.
+
+<Callout type="warning" title="Warum Fallstricke wichtig sind">
+Ein einzelner Fallstrick kann eine leistungsstarke KI in ein frustrierendes Werkzeug verwandeln. Diese Muster zu verstehen ist oft der Unterschied zwischen „KI funktioniert nicht für mich" und „KI hat meinen Workflow transformiert."
+</Callout>
+
+## Die Vagheits-Falle
+
+**Das Muster**: Du weißt, was du willst, also nimmst du an, die KI wird es auch herausfinden. Aber vage Prompts produzieren vage Ergebnisse.
+
+<Compare 
+  before={{ label: "Vager Prompt", content: "Schreib etwas über Marketing." }}
+  after={{ label: "Spezifischer Prompt", content: "Schreib einen 300-Wörter-LinkedIn-Post über die Bedeutung von Markenkonsistenz für B2B-SaaS-Unternehmen, gerichtet an Marketing-Manager. Verwende einen professionellen aber zugänglichen Ton. Füge ein konkretes Beispiel ein." }}
+/>
+
+**Warum es passiert**: Wir überspringen natürlich Details, wenn wir denken, sie sind „offensichtlich". Aber was für dich offensichtlich ist, ist nicht offensichtlich für ein Modell, das keinen Kontext über deine Situation, Zielgruppe oder Ziele hat.
+
+<TryIt 
+  title="Spezifizitäts-Verbesserer"
+  description="Nimm einen vagen Prompt und mach ihn spezifisch. Beachte, wie das Hinzufügen von Details die Qualität der Ergebnisse transformiert."
+  prompt={`Ich habe einen vagen Prompt, der Verbesserung braucht.
+
+Ursprünglicher vager Prompt: "\${vaguePrompt}"
+
+Mache diesen Prompt spezifisch, indem du hinzufügst:
+1. **Zielgruppe**: Wer wird das lesen/verwenden?
+2. **Format**: Welche Struktur sollte es haben?
+3. **Länge**: Wie lang sollte es sein?
+4. **Ton**: Welche Stimme oder welcher Stil?
+5. **Kontext**: Was ist die Situation oder der Zweck?
+6. **Einschränkungen**: Muss-haben oder Muss-vermeiden?
+
+Schreibe den Prompt mit all diesen Details neu.`}
+/>
+
+## Die Überladungs-Falle
+
+**Das Muster**: Du versuchst, alles in einem Prompt zu bekommen – umfassend, witzig, professionell, anfängerfreundlich, fortgeschritten, SEO-optimiert und kurz. Das Ergebnis? Die KI verpasst die Hälfte deiner Anforderungen oder produziert ein verwirrendes Durcheinander.
+
+<Compare 
+  before={{ label: "Überladener Prompt", content: "Schreib einen Blogpost über KI, der SEO-optimiert ist und Codebeispiele enthält und lustig aber professionell ist und Anfänger anspricht aber auch fortgeschrittene Tipps hat und 500 Wörter sein sollte aber umfassend und unser Produkt erwähnt und einen Call-to-Action hat..." }}
+  after={{ label: "Fokussierter Prompt", content: "Schreib einen 500-Wörter-Blogpost, der Anfängern KI vorstellt.\n\nAnforderungen:\n1. Erkläre ein Kernkonzept klar\n2. Füge ein einfaches Codebeispiel ein\n3. Ende mit einem Call-to-Action\n\nTon: Professionell aber zugänglich" }}
+/>
+
+**Warum es passiert**: Angst vor mehreren Interaktionen oder der Wunsch, „alles auf einmal rauszubekommen". Aber kognitive Überlastung betrifft KI genauso wie Menschen – zu viele konkurrierende Anforderungen führen zu verpassten Punkten.
+
+<InfoGrid items={[
+  { label: "Anforderungen begrenzen", description: "Bleibe bei 3-5 Schlüsselanforderungen pro Prompt", example: "Fokus auf: Zielgruppe, Format, Länge, eine Haupteinschränkung", exampleType: "text", color: "green" },
+  { label: "Nummerierte Listen verwenden", description: "Struktur macht Prioritäten klar", example: "1. Muss X haben, 2. Sollte Y haben, 3. Wäre schön Z zu haben", exampleType: "text", color: "green" },
+  { label: "Prompts verketten", description: "Zerlege komplexe Aufgaben in Schritte", example: "Zuerst: Gliederung. Dann: Abschnitt 1 entwerfen. Dann: Abschnitt 2 entwerfen.", exampleType: "text", color: "green" },
+  { label: "Gnadenlos priorisieren", description: "Was ist essenziell vs. nice-to-have?", example: "Wenn ich nur EINE Sache richtig machen könnte, was wäre es?", color: "green" }
+]} />
+
+<Callout type="tip" title="Lerne Prompt Chaining">
+Wenn ein einzelner Prompt überladen wird, ist [Prompt Chaining](/book/11-prompt-chaining) oft die Lösung. Zerlege komplexe Aufgaben in eine Sequenz fokussierter Prompts, wobei jeder Schritt auf dem vorherigen aufbaut.
+</Callout>
+
+## Die Annahme-Falle
+
+**Das Muster**: Du referenzierst etwas „von vorhin" oder nimmst an, die KI kennt dein Projekt, dein Unternehmen oder deine vorherigen Gespräche. Tut sie nicht.
+
+<Compare 
+  before={{ label: "Nimmt Kontext an", content: "Aktualisiere die Funktion, die ich dir vorhin gezeigt habe, um Fehlerbehandlung hinzuzufügen." }}
+  after={{ label: "Liefert Kontext", content: "Aktualisiere diese Funktion, um Fehlerbehandlung hinzuzufügen:\n\n```python\ndef calculate_total(items):\n    return sum(item.price for item in items)\n```\n\nFüge try/except für leere Listen und ungültige Elemente hinzu." }}
+/>
+
+**Warum es passiert**: KI-Gespräche fühlen sich an wie mit einem Kollegen zu reden. Aber anders als Kollegen haben die meisten KI-Modelle kein persistentes Gedächtnis zwischen Sitzungen – jedes Gespräch beginnt frisch.
+
+<TryIt 
+  title="Kontext-Vollständigkeitsprüfung"
+  description="Verwende das, um zu verifizieren, dass dein Prompt allen notwendigen Kontext enthält, bevor du ihn sendest."
+  prompt={`Überprüfe diesen Prompt auf fehlenden Kontext:
+
+"\${promptToCheck}"
+
+Prüfe auf:
+1. **Referenziert aber nicht enthalten**: Erwähnt er „den Code", „das Dokument", „vorhin" oder „oben", ohne den tatsächlichen Inhalt einzuschließen?
+
+2. **Angenommenes Wissen**: Nimmt er Wissen über ein spezifisches Projekt, Unternehmen oder eine Situation an?
+
+3. **Implizite Anforderungen**: Gibt es unausgesprochene Erwartungen an Format, Länge oder Stil?
+
+4. **Fehlender Hintergrund**: Würde ein kluger Fremder verstehen, was gefragt wird?
+
+Liste auf, was fehlt, und schlage vor, wie es hinzugefügt werden kann.`}
+/>
+
+## Die Suggestivfragen-Falle
+
+**Das Muster**: Du formulierst deine Frage so, dass sie deine Annahme einbettet und Bestätigung statt Erkenntnis zurückbekommst.
+
+<Compare 
+  before={{ label: "Suggestivfrage", content: "Warum ist Python die beste Programmiersprache für Data Science?" }}
+  after={{ label: "Neutrale Frage", content: "Vergleiche Python, R und Julia für Data-Science-Arbeit. Was sind die Stärken und Schwächen von jedem? Wann würdest du eines den anderen vorziehen?" }}
+/>
+
+**Warum es passiert**: Wir suchen oft Bestätigung, nicht Information. Unsere Formulierung drängt unbewusst zur Antwort, die wir erwarten oder wollen.
+
+<TryIt 
+  title="Bias-Detektor"
+  description="Prüfe deine Prompts auf versteckte Voreingenommenheit und Suggestivsprache."
+  prompt={`Analysiere diesen Prompt auf Bias und Suggestivsprache:
+
+"\${promptToAnalyze}"
+
+Prüfe auf:
+1. **Eingebettete Annahmen**: Nimmt die Frage an, dass etwas wahr ist?
+2. **Suggestive Formulierung**: Nimmt „Warum ist X gut?" an, dass X gut ist?
+3. **Fehlende Alternativen**: Ignoriert sie andere Möglichkeiten?
+4. **Bestätigungssuche**: Fragt sie nach Validierung statt Analyse?
+
+Schreibe den Prompt neutral und offen um.`}
+/>
+
+## Die Allem-Vertrauen-Falle
+
+**Das Muster**: KI-Antworten klingen selbstsicher und autoritativ, also akzeptierst du sie ohne Verifizierung. Aber Selbstsicherheit bedeutet nicht Genauigkeit.
+
+<InfoGrid items={[
+  { label: "Ungeprüfter Inhalt", description: "KI-generierten Text ohne Faktencheck veröffentlichen", example: "Blogposts mit erfundenen Statistiken oder falschen Zitaten", exampleType: "text", color: "red" },
+  { label: "Ungetesteter Code", description: "KI-Code in Produktion ohne Testen verwenden", example: "Sicherheitslücken, Edge-Case-Fehler, subtile Bugs", exampleType: "text", color: "red" },
+  { label: "Blinde Entscheidungen", description: "Wichtige Entscheidungen nur auf KI-Analyse basieren", example: "Geschäftsstrategie basierend auf halluzinierten Marktdaten", exampleType: "text", color: "red" }
+]} />
+
+**Warum es passiert**: KI klingt selbstsicher, auch wenn sie komplett falsch liegt. Wir neigen auch zu „Automatisierungs-Bias" – der Tendenz, Computer-Ausgaben mehr zu vertrauen, als wir sollten.
+
+<TryIt 
+  title="Verifizierungs-Prompt"
+  description="Verwende das, um die KI dazu zu bringen, ihre eigenen Unsicherheiten und potenziellen Fehler zu markieren."
+  prompt={`Ich brauche Informationen über: \${topic}
+
+WICHTIG: Nach deiner Antwort, füge einen Abschnitt namens „Verifizierungshinweise" hinzu, der enthält:
+
+1. **Konfidenz-Level**: Wie sicher bist du über diese Information? (Hoch/Mittel/Niedrig)
+
+2. **Potenzielle Fehler**: Welche Teile dieser Antwort sind am wahrscheinlichsten falsch oder veraltet?
+
+3. **Was zu verifizieren**: Welche spezifischen Behauptungen sollte der Benutzer unabhängig überprüfen?
+
+4. **Quellen zum Prüfen**: Wo könnte der Benutzer diese Information verifizieren?
+
+Sei ehrlich über Einschränkungen. Es ist besser, Unsicherheit zu markieren, als selbstsicher über etwas Falsches zu klingen.`}
+/>
+
+## Die Ein-Versuch-Falle
+
+**Das Muster**: Du sendest einen Prompt, bekommst ein mittelmäßiges Ergebnis und schließt, dass KI für deinen Anwendungsfall „nicht funktioniert". Aber großartige Ergebnisse erfordern fast immer Iteration.
+
+<Compare 
+  before={{ label: "Ein-Versuch-Denken", content: "Mittelmäßige Ausgabe → 'KI kann das nicht' → Aufgeben" }}
+  after={{ label: "Iteratives Denken", content: "Mittelmäßige Ausgabe → Analysieren, was falsch ist → Prompt verfeinern → Bessere Ausgabe → Erneut verfeinern → Exzellente Ausgabe" }}
+/>
+
+**Warum es passiert**: Wir erwarten, dass KI beim ersten Versuch unsere Gedanken liest. Wir erwarten keine Iteration bei Google-Suchen, aber irgendwie erwarten wir Perfektion von KI.
+
+<TryIt 
+  title="Iterations-Helfer"
+  description="Wenn dein erstes Ergebnis nicht stimmt, verwende das, um es systematisch zu verbessern."
+  prompt={`Mein ursprünglicher Prompt war:
+"\${originalPrompt}"
+
+Die Ausgabe, die ich bekam, war:
+"\${outputReceived}"
+
+Was daran falsch ist:
+"\${whatIsWrong}"
+
+Hilf mir zu iterieren:
+
+1. **Diagnose**: Warum hat der ursprüngliche Prompt dieses Ergebnis produziert?
+
+2. **Fehlende Elemente**: Worüber war ich nicht explizit, was ich hätte sein sollen?
+
+3. **Überarbeiteter Prompt**: Schreibe meinen Prompt um, um diese Probleme anzugehen.
+
+4. **Worauf achten**: Was sollte ich in der neuen Ausgabe prüfen?`}
+/>
+
+## Die Format-Vernachlässigungs-Falle
+
+**Das Muster**: Du konzentrierst dich darauf, was die KI sagen soll, vergisst aber zu spezifizieren, wie es formatiert sein soll. Dann bekommst du Prosa, wenn du JSON brauchtest, oder eine Textwand, wenn du Aufzählungspunkte brauchtest.
+
+<Compare 
+  before={{ label: "Kein Format spezifiziert", content: "Extrahiere die Schlüsseldaten aus diesem Text." }}
+  after={{ label: "Format spezifiziert", content: "Extrahiere die Schlüsseldaten aus diesem Text als JSON:\n\n{\n  \"name\": string,\n  \"date\": \"YYYY-MM-DD\",\n  \"amount\": number,\n  \"category\": string\n}\n\nGib NUR das JSON zurück, keine Erklärung." }}
+/>
+
+**Warum es passiert**: Wir konzentrieren uns auf Inhalt statt Struktur. Aber wenn du die Ausgabe programmatisch parsen musst oder sie irgendwo spezifisch einfügen willst, ist Format genauso wichtig wie Inhalt.
+
+<TryIt 
+  title="Format-Spezifikations-Builder"
+  description="Generiere klare Format-Spezifikationen für jeden Ausgabetyp, den du brauchst."
+  prompt={`Ich brauche KI-Ausgabe in einem spezifischen Format.
+
+**Worum ich bitte**: \${taskDescription}
+**Wie ich die Ausgabe verwenden werde**: \${intendedUse}
+**Bevorzugtes Format**: \${formatType} (JSON, Markdown, CSV, Aufzählungspunkte, etc.)
+
+Generiere eine Format-Spezifikation, die ich meinem Prompt hinzufügen kann, inklusive:
+
+1. **Exakte Struktur** mit Feldnamen und Typen
+2. **Beispiel-Ausgabe**, die das Format zeigt
+3. **Einschränkungen** (z.B. „Gib NUR das JSON zurück, keine Erklärung")
+4. **Grenzfälle** (was ausgegeben werden soll, wenn Daten fehlen)`}
+/>
+
+## Die Kontextfenster-Falle
+
+**Das Muster**: Du fügst ein riesiges Dokument ein und erwartest umfassende Analyse. Aber Modelle haben Limits – sie können kürzen, den Fokus verlieren oder wichtige Details in langen Eingaben verpassen.
+
+<InfoGrid items={[
+  { label: "Kenne deine Limits", description: "Verschiedene Modelle haben verschiedene Kontextfenster", example: "GPT-4: 128K Tokens, Claude: 200K Tokens, Gemini: 1M Tokens", exampleType: "text", color: "blue" },
+  { label: "Große Eingaben aufteilen", description: "Zerlege Dokumente in handhabbare Abschnitte", example: "Analysiere Kapitel separat, dann synthetisiere", exampleType: "text", color: "blue" },
+  { label: "Wichtige Info vorne", description: "Setze kritischen Kontext früh in den Prompt", example: "Schlüsselanforderungen zuerst, Hintergrunddetails später", exampleType: "text", color: "blue" },
+  { label: "Überflüssiges entfernen", description: "Entferne unnötigen Kontext", example: "Brauchst du wirklich das ganze Dokument, oder nur relevante Abschnitte?", exampleType: "text", color: "blue" }
+]} />
+
+<TryIt 
+  title="Dokument-Chunking-Strategie"
+  description="Erhalte eine Strategie für die Verarbeitung von Dokumenten, die Kontextlimits überschreiten."
+  prompt={`Ich habe ein großes Dokument zu analysieren:
+
+**Dokumenttyp**: \${documentType}
+**Ungefähre Länge**: \${documentLength}
+**Was ich extrahieren/analysieren muss**: \${analysisGoal}
+**Modell, das ich verwende**: \${modelName}
+
+Erstelle eine Chunking-Strategie:
+
+1. **Wie aufteilen**: Logische Trennpunkte für diesen Dokumenttyp
+2. **Was in jeden Chunk einschließen**: Kontext, der für eigenständige Analyse benötigt wird
+3. **Wie synthetisieren**: Ergebnisse aus mehreren Chunks kombinieren
+4. **Worauf achten**: Informationen, die über Chunks hinweg reichen könnten`}
+/>
+
+## Die Vermenschlichungs-Falle
+
+**Das Muster**: Du behandelst KI wie einen menschlichen Kollegen – erwartest, dass sie Aufgaben „genießt", sich an dich erinnert oder sich um Ergebnisse kümmert. Tut sie nicht.
+
+<Compare 
+  before={{ label: "Vermenschlicht", content: "Ich bin sicher, du wirst dieses kreative Projekt genießen! Ich weiß, du liebst es, Menschen zu helfen, und das ist mir persönlich wirklich wichtig." }}
+  after={{ label: "Klar und direkt", content: "Schreibe eine kreative Kurzgeschichte mit diesen Spezifikationen:\n- Genre: Science-Fiction\n- Länge: 500 Wörter\n- Ton: Hoffnungsvoll\n- Muss enthalten: Ein überraschendes Ende" }}
+/>
+
+**Warum es passiert**: KI-Antworten sind so menschenähnlich, dass wir natürlich in soziale Muster verfallen. Aber emotionale Appelle lassen die KI nicht härter versuchen – klare Anweisungen schon.
+
+<Callout type="info" title="Was tatsächlich hilft">
+Statt emotionaler Appelle, konzentriere dich auf: klare Anforderungen, gute Beispiele, spezifische Einschränkungen und explizite Erfolgskriterien. Diese verbessern Ausgaben. „Bitte versuch wirklich hart" nicht.
+</Callout>
+
+## Die Sicherheits-Vernachlässigungs-Falle
+
+**Das Muster**: Im Drang, Dinge zum Laufen zu bringen, schließt du sensible Informationen in Prompts ein – API-Schlüssel, Passwörter, persönliche Daten oder proprietäre Informationen.
+
+<InfoGrid items={[
+  { label: "Geheimnisse in Prompts", description: "API-Schlüssel, Passwörter, Tokens in Prompts eingefügt", example: "\"Verwende diesen API-Schlüssel: sk-abc123...\"", color: "red" },
+  { label: "Persönliche Daten", description: "PII einschließen, die an Drittanbieter-Server gesendet werden", example: "Kundennamen, E-Mails, Adressen in Prompts", exampleType: "text", color: "red" },
+  { label: "Unbereinigte Benutzereingabe", description: "Benutzereingabe direkt in Prompts übergeben", example: "Prompt-Injektions-Schwachstellen", exampleType: "text", color: "red" },
+  { label: "Proprietäre Informationen", description: "Geschäftsgeheimnisse oder vertrauliche Daten", example: "Interne Strategien, unveröffentlichte Produktdetails", exampleType: "text", color: "red" }
+]} />
+
+**Warum es passiert**: Fokus auf Funktionalität statt Sicherheit. Aber bedenke: Prompts gehen oft an externe Server, können geloggt werden und könnten für Training verwendet werden.
+
+<TryIt 
+  title="Sicherheitsüberprüfung"
+  description="Prüfe deinen Prompt auf Sicherheitsprobleme vor dem Senden."
+  prompt={`Überprüfe diesen Prompt auf Sicherheitsbedenken:
+
+"\${promptToReview}"
+
+Prüfe auf:
+
+1. **Exponierte Geheimnisse**: API-Schlüssel, Passwörter, Tokens, Anmeldedaten
+2. **Persönliche Daten**: Namen, E-Mails, Adressen, Telefonnummern, Ausweisnummern
+3. **Proprietäre Info**: Geschäftsgeheimnisse, interne Strategien, vertrauliche Daten
+4. **Injektionsrisiken**: Benutzereingabe, die den Prompt manipulieren könnte
+
+Für jedes gefundene Problem:
+- Erkläre das Risiko
+- Schlage vor, wie die Information zu schwärzen oder zu schützen
+- Empfehle sicherere Alternativen`}
+/>
+
+## Die Halluzinations-Ignoranz-Falle
+
+**Das Muster**: Du bittest um Zitate, Statistiken oder spezifische Fakten und nimmst an, sie sind real, weil die KI sie selbstsicher angegeben hat. Aber KI erfindet regelmäßig plausibel klingende Informationen.
+
+<Compare 
+  before={{ label: "Blind vertrauen", content: "Gib mir 5 Statistiken über Remote-Arbeit-Produktivität mit Quellen." }}
+  after={{ label: "Einschränkungen anerkennen", content: "Was wissen wir über Remote-Arbeit-Produktivität? Für alle Statistiken, die du erwähnst, notiere, ob es gut etablierte Erkenntnisse oder eher unsichere sind. Ich werde spezifische Zahlen unabhängig verifizieren." }}
+/>
+
+**Warum es passiert**: KI generiert Text, der autoritativ klingt. Sie „weiß" nicht, wenn sie Dinge erfindet – sie sagt wahrscheinlichen Text voraus, nicht verifizierte Fakten abrufen.
+
+<TryIt 
+  title="Halluzinations-resistente Anfrage"
+  description="Strukturiere deinen Prompt, um Halluzinationsrisiko zu minimieren und Unsicherheiten zu markieren."
+  prompt={`Ich brauche Informationen über: \${topic}
+
+Bitte folge diesen Richtlinien, um Fehler zu minimieren:
+
+1. **Bleibe bei gut etablierten Fakten**. Vermeide obskure Behauptungen, die schwer zu verifizieren sind.
+
+2. **Markiere Unsicherheit**. Wenn du dir nicht sicher bist, sage „Ich glaube..." oder „Das muss möglicherweise verifiziert werden..."
+
+3. **Keine erfundenen Quellen**. Zitiere keine spezifischen Papers, Bücher oder URLs, es sei denn, du bist sicher, dass sie existieren. Beschreibe stattdessen, wo diese Art von Information zu finden ist.
+
+4. **Erkenne Wissensgrenzen an**. Wenn meine Frage Ereignisse nach deinen Trainingsdaten betrifft, sage das.
+
+5. **Trenne Fakt von Schlussfolgerung**. Unterscheide klar zwischen „X ist wahr" und „Basierend auf Y ist X wahrscheinlich wahr."
+
+Jetzt, mit diesen Richtlinien im Kopf: \${actualQuestion}`}
+/>
+
+## Vor-dem-Senden-Checkliste
+
+Bevor du einen wichtigen Prompt sendest, gehe diese schnelle Checkliste durch:
+
+<Checklist 
+  title="Prompt-Qualitätsprüfung"
+  items={[
+    { text: "Ist er spezifisch genug? (Nicht vage)" },
+    { text: "Ist er fokussiert? (Nicht überladen mit Anforderungen)" },
+    { text: "Enthält er allen notwendigen Kontext?" },
+    { text: "Ist die Frage neutral? (Nicht suggestiv)" },
+    { text: "Habe ich das Ausgabeformat spezifiziert?" },
+    { text: "Ist die Eingabe innerhalb der Kontextlimits?" },
+    { text: "Gibt es Sicherheitsbedenken?" },
+    { text: "Bin ich bereit, die Ausgabe zu verifizieren?" },
+    { text: "Bin ich bereit zu iterieren, wenn nötig?" }
+  ]}
+/>
+
+<Quiz 
+  question="Was ist der gefährlichste Fallstrick bei der Verwendung von KI für wichtige Entscheidungen?"
+  options={[
+    "Vage Prompts verwenden",
+    "KI-Ausgaben ohne Verifizierung vertrauen",
+    "Ausgabeformat nicht spezifizieren",
+    "Prompts mit Anforderungen überladen"
+  ]}
+  correctIndex={1}
+  explanation="Während alle Fallstricke Probleme verursachen, ist KI-Ausgaben ohne Verifizierung zu vertrauen am gefährlichsten, weil es dazu führen kann, falsche Informationen zu veröffentlichen, fehlerhaften Code zu deployen oder Entscheidungen basierend auf halluzinierten Daten zu treffen. KI klingt selbstsicher, auch wenn sie komplett falsch liegt, was Verifizierung essenziell für jeden wichtigen Anwendungsfall macht."
+/>
+
+## Analysiere deine Prompts
+
+Verwende KI, um sofortiges Feedback zu deiner Prompt-Qualität zu bekommen. Füge jeden Prompt ein und erhalte eine detaillierte Analyse:
+
+<PromptAnalyzer 
+  title="Prompt-Qualitäts-Analysator"
+  description="Erhalte KI-gestütztes Feedback zu Klarheit, Spezifität und Verbesserungsvorschläge"
+  defaultPrompt="Hilf mir mit meinem Code"
+/>
+
+## Debugge diesen Prompt
+
+Kannst du erkennen, was an diesem Prompt falsch ist?
+
+<PromptDebugger
+  title="Finde den Fallstrick"
+  badPrompt="Schreib einen Blogpost über Technologie, der SEO-optimiert ist mit Keywords und auch lustig aber professionell und Codebeispiele enthält und Anfänger anspricht aber fortgeschrittene Tipps hat und unser Produkt TechCo erwähnt und Social Proof hat und einen Call-to-Action und 500 Wörter ist aber umfassend."
+  badOutput="Hier ist ein Entwurf für einen Blogpost über Technologie...
+
+[Generischer, unfokussierter Inhalt, der versucht alles zu machen, aber nichts gut schafft. Ton wechselt unbeholfen zwischen locker und technisch. Die Hälfte der Anforderungen fehlt.]"
+  options={[
+    { id: "vague", label: "Der Prompt ist zu vage", isCorrect: false, explanation: "Eigentlich hat der Prompt viele spezifische Anforderungen. Das Problem ist das Gegenteil – zu viele Anforderungen, nicht zu wenige." },
+    { id: "overload", label: "Der Prompt ist überladen mit zu vielen konkurrierenden Anforderungen", isCorrect: true, explanation: "Richtig! Dieser Prompt bittet um SEO + lustig + professionell + Code + Anfänger + fortgeschritten + Produkterwähnung + Social Proof + CTA + Längenbeschränkung. Das sind 10+ konkurrierende Anforderungen! Die KI kann nicht alle erfüllen, also macht sie bei allem einen mittelmäßigen Job. Lösung: in mehrere fokussierte Prompts aufteilen." },
+    { id: "format", label: "Das Ausgabeformat ist nicht spezifiziert", isCorrect: false, explanation: "Während ein spezifischeres Format helfen würde, ist das Hauptproblem die Anforderungsüberladung. Du kannst dich nicht aus zu viel Verlangen herausformatieren." },
+    { id: "context", label: "Es gibt nicht genug Kontext", isCorrect: false, explanation: "Der Prompt hat eigentlich viel Kontext – vielleicht zu viel! Das Problem ist, dass er versucht, zu viele Ziele auf einmal zu erfüllen." }
+  ]}
+  hint="Zähle, wie viele verschiedene Anforderungen in diesen einzelnen Prompt gepackt sind."
+/>

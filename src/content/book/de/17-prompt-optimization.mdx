@@ -1,0 +1,269 @@
+Ein guter Prompt erledigt die Arbeit. Ein optimierter Prompt erledigt die Arbeit effizient – schneller, günstiger, konsistenter. Dieses Kapitel lehrt dich, wie du Prompts systematisch über mehrere Dimensionen hinweg verbessern kannst.
+
+<Callout type="tip" title="Probiere den Prompt Enhancer">
+Möchtest du deine Prompts automatisch optimieren? Verwende unser [Prompt Enhancer](/developers#enhancer)-Tool. Es analysiert deinen Prompt, wendet Optimierungstechniken an und zeigt dir ähnliche Community-Prompts zur Inspiration.
+</Callout>
+
+## Die Optimierungs-Trade-offs
+
+Jede Optimierung beinhaltet Trade-offs. Diese zu verstehen hilft dir, bewusste Entscheidungen zu treffen:
+
+<InfoGrid items={[
+  { label: "Qualität vs. Kosten", description: "Höhere Qualität erfordert oft mehr Tokens oder bessere Modelle", example: "Beispiele hinzufügen verbessert Genauigkeit, erhöht aber Token-Anzahl", exampleType: "text", color: "blue" },
+  { label: "Geschwindigkeit vs. Qualität", description: "Schnellere Modelle opfern möglicherweise etwas Fähigkeit", example: "GPT-4 ist klüger aber langsamer als GPT-4o-mini", exampleType: "text", color: "purple" },
+  { label: "Konsistenz vs. Kreativität", description: "Niedrigere Temperatur = vorhersehbarer aber weniger kreativ", example: "Temperatur 0.2 für Fakten, 0.8 für Brainstorming", exampleType: "text", color: "green" },
+  { label: "Einfachheit vs. Robustheit", description: "Grenzfall-Behandlung fügt Komplexität hinzu", example: "Einfache Prompts scheitern bei ungewöhnlichen Eingaben", exampleType: "text", color: "amber" }
+]} />
+
+## Messen, was zählt
+
+Vor der Optimierung, definiere Erfolg. Was bedeutet „besser" für deinen Anwendungsfall?
+
+<InfoGrid items={[
+  { label: "Genauigkeit", description: "Wie oft ist die Ausgabe korrekt?", example: "90% der Code-Vorschläge kompilieren ohne Fehler", exampleType: "text", color: "blue" },
+  { label: "Relevanz", description: "Adressiert sie, was tatsächlich gefragt wurde?", example: "Antwort beantwortet direkt die Frage vs. Abschweifungen", exampleType: "text", color: "blue" },
+  { label: "Vollständigkeit", description: "Sind alle Anforderungen abgedeckt?", example: "Alle 5 angeforderten Abschnitte in der Ausgabe enthalten", exampleType: "text", color: "blue" },
+  { label: "Latenz", description: "Wie lange bis die Antwort ankommt?", example: "p50 < 2s, p95 < 5s für Chat-Anwendungen", exampleType: "text", color: "purple" },
+  { label: "Token-Effizienz", description: "Wie viele Tokens für dasselbe Ergebnis?", example: "500 Tokens vs. 1500 Tokens für gleichwertige Ausgabe", exampleType: "text", color: "purple" },
+  { label: "Konsistenz", description: "Wie ähnlich sind Ausgaben für ähnliche Eingaben?", example: "Dieselbe Frage bekommt strukturell ähnliche Antworten", exampleType: "text", color: "green" }
+]} />
+
+<Callout type="info" title="Was bedeuten p50 und p95?">
+Perzentil-Metriken zeigen die Antwortzeit-Verteilung. **p50** (Median) bedeutet, 50% der Anfragen sind schneller als dieser Wert. **p95** bedeutet, 95% sind schneller – es fängt langsame Ausreißer. Wenn dein p50 1s ist, aber p95 10s, sind die meisten Benutzer zufrieden, aber 5% erleben frustrierende Verzögerungen.
+</Callout>
+
+<TryIt 
+  title="Definiere deine Erfolgsmetriken"
+  description="Verwende diese Vorlage, um zu klären, wofür du optimierst, bevor du Änderungen vornimmst."
+  prompt={`Hilf mir, Erfolgsmetriken für meine Prompt-Optimierung zu definieren.
+
+**Mein Anwendungsfall**: \${useCase}
+**Aktuelle Schmerzpunkte**: \${painPoints}
+
+Für diesen Anwendungsfall, hilf mir zu definieren:
+
+1. **Primäre Metrik**: Welche einzelne Metrik zählt am meisten?
+2. **Sekundäre Metriken**: Was sollte ich sonst noch verfolgen?
+3. **Akzeptable Trade-offs**: Was kann ich für die primäre Metrik opfern?
+4. **Rote Linien**: Welches Qualitätsniveau ist inakzeptabel?
+5. **Wie messen**: Praktische Wege, jede Metrik zu bewerten`}
+/>
+
+## Token-Optimierung
+
+Tokens kosten Geld und fügen Latenz hinzu. Hier erfährst du, wie du dasselbe mit weniger Tokens sagen kannst.
+
+### Das Kompressionsprinzip
+
+<Compare 
+  before={{ label: "Ausführlich (67 Tokens)", content: "Ich möchte dich bitte bitten, mir bei der folgenden Aufgabe zu helfen. Ich brauche, dass du den Text, den ich unten bereitstellen werde, nimmst und eine Zusammenfassung davon erstellst. Die Zusammenfassung sollte die Hauptpunkte erfassen und prägnant sein. Bitte stelle sicher, alle wichtigen Informationen einzuschließen. Hier ist der Text:\n\n[text]" }}
+  after={{ label: "Prägnant (12 Tokens)", content: "Fasse diesen Text zusammen, erfasse Hauptpunkte prägnant:\n\n[text]" }}
+/>
+
+**Gleiches Ergebnis, 82% weniger Tokens.**
+
+### Token-Spar-Techniken
+
+<InfoGrid items={[
+  { label: "Höflichkeiten streichen", description: "\"Bitte\" und \"Danke\" fügen Tokens hinzu, ohne die Ausgabe zu verbessern", example: "\"Bitte fasse zusammen\" → \"Fasse zusammen\"", color: "green" },
+  { label: "Redundanz eliminieren", description: "Wiederhole dich nicht oder sage Offensichtliches", example: "\"Schreibe eine Zusammenfassung, die zusammenfasst\" → \"Fasse zusammen\"", color: "green" },
+  { label: "Abkürzungen verwenden", description: "Wo die Bedeutung klar ist, kürze ab", example: "\"zum Beispiel\" → \"z.B.\"", color: "green" },
+  { label: "Nach Position referenzieren", description: "Zeige auf Inhalt statt ihn zu wiederholen", example: "\"der Text oben\" statt erneut zu zitieren", color: "green" }
+]} />
+
+<TryIt 
+  title="Prompt-Kompressor"
+  description="Füge einen ausführlichen Prompt ein, um eine token-optimierte Version zu erhalten."
+  prompt={`Komprimiere diesen Prompt unter Beibehaltung seiner Bedeutung und Effektivität:
+
+Ursprünglicher Prompt:
+"\${verbosePrompt}"
+
+Anweisungen:
+1. Entferne unnötige Höflichkeiten und Füllwörter
+2. Eliminiere Redundanz
+3. Verwende prägnante Formulierung
+4. Behalte alle wesentlichen Anweisungen und Einschränkungen
+5. Erhalte Klarheit – opfere nicht Verständnis für Kürze
+
+Liefere:
+- **Komprimierte Version**: Der optimierte Prompt
+- **Token-Reduktion**: Geschätzte eingesparte Prozent
+- **Was geschnitten wurde**: Kurze Erklärung, was entfernt wurde und warum es sicher war zu entfernen`}
+/>
+
+## Qualitäts-Optimierung
+
+Manchmal brauchst du bessere Ausgaben, nicht günstigere. Hier erfährst du, wie du Qualität verbesserst.
+
+### Genauigkeits-Booster
+
+<InfoGrid items={[
+  { label: "Verifizierung hinzufügen", description: "Bitte das Modell, seine eigene Arbeit zu prüfen", example: "\"...dann verifiziere, dass deine Antwort korrekt ist\"", color: "blue" },
+  { label: "Konfidenz anfordern", description: "Mache Unsicherheit explizit", example: "\"Bewerte deine Konfidenz 1-10 und erkläre jede Unsicherheit\"", color: "blue" },
+  { label: "Mehrere Ansätze", description: "Hole verschiedene Perspektiven, dann wähle", example: "\"Liefere 3 Ansätze und empfehle den besten\"", color: "blue" },
+  { label: "Explizites Reasoning", description: "Erzwinge schrittweises Denken", example: "\"Denke Schritt für Schritt und zeige dein Reasoning\"", color: "blue" }
+]} />
+
+### Konsistenz-Booster
+
+<InfoGrid items={[
+  { label: "Detaillierte Format-Spezifikationen", description: "Zeige genau, wie die Ausgabe aussehen soll", example: "Füge eine Vorlage oder ein Schema ein", exampleType: "text", color: "purple" },
+  { label: "Few-Shot-Beispiele", description: "Liefere 2-3 Beispiele idealer Ausgabe", example: "\"So sieht gut aus: [Beispiele]\"", color: "purple" },
+  { label: "Niedrigere Temperatur", description: "Reduziere Zufälligkeit für vorhersehbarere Ausgabe", example: "Temperatur 0.3-0.5 für konsistente Ergebnisse", exampleType: "text", color: "purple" },
+  { label: "Ausgabe-Validierung", description: "Füge einen Validierungsschritt für kritische Felder hinzu", example: "\"Verifiziere, dass alle erforderlichen Felder vorhanden sind\"", color: "purple" }
+]} />
+
+<TryIt 
+  title="Qualitäts-Enhancer"
+  description="Füge qualitätsverbessernde Elemente zu deinem Prompt hinzu."
+  prompt={`Verbessere diesen Prompt für höhere Qualitätsausgaben:
+
+Ursprünglicher Prompt:
+"\${originalPrompt}"
+
+**Welches Qualitätsproblem ich sehe**: \${qualityIssue}
+
+Füge geeignete Qualitäts-Booster hinzu:
+1. Wenn Genauigkeit das Problem ist → füge Verifizierungsschritte hinzu
+2. Wenn Konsistenz das Problem ist → füge Format-Spezifikationen oder Beispiele hinzu
+3. Wenn Relevanz das Problem ist → füge Kontext und Einschränkungen hinzu
+4. Wenn Vollständigkeit das Problem ist → füge explizite Anforderungen hinzu
+
+Liefere den verbesserten Prompt mit Erklärungen für jede Ergänzung.`}
+/>
+
+## Latenz-Optimierung
+
+Wenn Geschwindigkeit zählt, zählt jede Millisekunde.
+
+### Modellauswahl nach Geschwindigkeitsbedarf
+
+<InfoGrid items={[
+  { label: "Echtzeit (< 500ms)", description: "Kleinstes effektives Modell + aggressives Caching verwenden", example: "GPT-4o-mini, Claude Haiku, gecachte Antworten", exampleType: "text", color: "red" },
+  { label: "Interaktiv (< 2s)", description: "Schnelle Modelle, Streaming aktiviert", example: "GPT-4o-mini mit Streaming", exampleType: "text", color: "amber" },
+  { label: "Tolerant (< 10s)", description: "Mittelklasse-Modelle, Balance Qualität/Geschwindigkeit", example: "GPT-4o, Claude Sonnet", exampleType: "text", color: "green" },
+  { label: "Async/Batch", description: "Bestes Modell verwenden, im Hintergrund verarbeiten", example: "GPT-4, Claude Opus für Offline-Verarbeitung", exampleType: "text", color: "blue" }
+]} />
+
+### Geschwindigkeitstechniken
+
+<InfoGrid items={[
+  { label: "Kürzere Prompts", description: "Weniger Eingabe-Tokens = schnellere Verarbeitung", example: "Prompts komprimieren, unnötigen Kontext entfernen", exampleType: "text", color: "cyan" },
+  { label: "Ausgabe begrenzen", description: "Setze max_tokens, um unkontrollierte Antworten zu verhindern", example: "max_tokens: 500 für Zusammenfassungen", exampleType: "text", color: "cyan" },
+  { label: "Streaming verwenden", description: "Erste Tokens schneller bekommen, bessere UX", example: "Streame für jede Antwort > 100 Tokens", exampleType: "text", color: "cyan" },
+  { label: "Aggressiv cachen", description: "Identische Anfragen nicht neu berechnen", example: "Häufige Fragen cachen, Vorlagen-Ausgaben", exampleType: "text", color: "cyan" }
+]} />
+
+## Kosten-Optimierung
+
+Im großen Maßstab multiplizieren sich kleine Einsparungen zu signifikantem Budget-Einfluss.
+
+### Kosten verstehen
+
+Verwende diesen Rechner, um deine API-Kosten über verschiedene Modelle zu schätzen:
+
+<CostCalculatorDemo />
+
+### Kosten-Reduktions-Strategien
+
+<InfoGrid items={[
+  { label: "Modell-Routing", description: "Teure Modelle nur bei Bedarf verwenden", example: "Einfache Fragen → GPT-4o-mini, Komplex → GPT-4", exampleType: "text", color: "green" },
+  { label: "Prompt-Effizienz", description: "Kürzere Prompts = niedrigere Kosten pro Anfrage", example: "50% der Tokens kürzen = 50% Eingabekosten-Ersparnis", exampleType: "text", color: "green" },
+  { label: "Ausgabe-Kontrolle", description: "Antwortlänge begrenzen, wenn volle Details nicht nötig sind", example: "\"Antworte in 2-3 Sätzen\" vs. unbegrenzt", color: "green" },
+  { label: "Batching", description: "Verwandte Anfragen in einzelne Requests kombinieren", example: "10 Items in einem Prompt analysieren vs. 10 separate Aufrufe", exampleType: "text", color: "green" },
+  { label: "Vorfilterung", description: "Sende keine Anfragen, die keine KI brauchen", example: "Keyword-Matching vor teurer Klassifizierung", exampleType: "text", color: "green" }
+]} />
+
+## Die Optimierungsschleife
+
+Optimierung ist iterativ. Hier ist ein systematischer Prozess:
+
+### Schritt 1: Baseline etablieren
+
+Du kannst nicht verbessern, was du nicht misst. Bevor du etwas änderst, dokumentiere deinen Ausgangspunkt rigoros.
+
+<InfoGrid items={[
+  { label: "Prompt-Dokumentation", description: "Speichere den exakten Prompt-Text, einschließlich System Prompts und Vorlagen", example: "Versioniere deine Prompts wie Code", exampleType: "text", color: "blue" },
+  { label: "Test-Set", description: "Erstelle 20-50 repräsentative Eingaben, die häufige Fälle und Grenzfälle abdecken", example: "Schließe einfache, mittlere und schwere Beispiele ein", exampleType: "text", color: "blue" },
+  { label: "Qualitätsmetriken", description: "Bewerte jede Ausgabe gegen deine Erfolgskriterien", example: "Genauigkeit %, Relevanz-Score, Format-Compliance", exampleType: "text", color: "purple" },
+  { label: "Performance-Metriken", description: "Miss Tokens und Timing für jeden Testfall", example: "Durchschn. Eingabe: 450 Tokens, Durchschn. Ausgabe: 200 Tokens, p50 Latenz: 1.2s", exampleType: "text", color: "purple" }
+]} />
+
+<TryIt 
+  title="Baseline-Dokumentationsvorlage"
+  description="Verwende das, um eine umfassende Baseline vor der Optimierung zu erstellen."
+  prompt={`Erstelle eine Baseline-Dokumentation für mein Prompt-Optimierungsprojekt.
+
+**Aktueller Prompt**:
+"\${currentPrompt}"
+
+**Was der Prompt macht**: \${promptPurpose}
+
+**Aktuelle Probleme, die ich sehe**: \${currentIssues}
+
+Generiere eine Baseline-Dokumentationsvorlage mit:
+
+1. **Prompt-Snapshot**: Der exakte Prompt-Text (für Versionskontrolle)
+
+2. **Testfälle**: Schlage 10 repräsentative Test-Eingaben vor, die ich verwenden sollte, abdeckend:
+   - 3 typische/einfache Fälle
+   - 4 mittlere Komplexitätsfälle  
+   - 3 Grenzfälle oder schwierige Eingaben
+
+3. **Zu verfolgende Metriken**:
+   - Qualitätsmetriken spezifisch für diesen Anwendungsfall
+   - Effizienzmetriken (Tokens, Latenz)
+   - Wie jede Metrik bewertet wird
+
+4. **Baseline-Hypothese**: Was erwarte ich, dass die aktuelle Performance ist?
+
+5. **Erfolgskriterien**: Welche Zahlen würden mich mit der Optimierung zufrieden machen?`}
+/>
+
+### Schritt 2: Eine Hypothese bilden
+
+<Compare 
+  before={{ label: "Vages Ziel", content: "Ich will meinen Prompt besser machen." }}
+  after={{ label: "Testbare Hypothese", content: "Wenn ich 2 Few-Shot-Beispiele hinzufüge, wird die Genauigkeit von 75% auf 85% verbessern, weil das Modell das erwartete Muster lernen wird." }}
+/>
+
+### Schritt 3: Eine Änderung testen
+
+Ändere eine Sache auf einmal. Führe beide Versionen mit denselben Test-Eingaben aus. Miss die Metriken, die zählen.
+
+### Schritt 4: Analysieren und entscheiden
+
+Hat es funktioniert? Behalte die Änderung. Hat es geschadet? Mache rückgängig. War es neutral? Mache rückgängig (einfacher ist besser).
+
+### Schritt 5: Wiederholen
+
+Generiere neue Hypothesen basierend auf dem, was du gelernt hast. Iteriere weiter, bis du deine Ziele erreichst oder abnehmende Erträge erreichst.
+
+## Optimierungs-Checkliste
+
+<Checklist 
+  title="Vor dem Deployen eines optimierten Prompts"
+  items={[
+    { text: "Klare Erfolgsmetriken definiert" },
+    { text: "Baseline-Performance gemessen" },
+    { text: "Änderungen auf repräsentativen Eingaben getestet" },
+    { text: "Verifiziert, dass Qualität nicht regrediert hat" },
+    { text: "Grenzfall-Behandlung geprüft" },
+    { text: "Kosten bei erwarteter Skalierung berechnet" },
+    { text: "Latenz unter Last getestet" },
+    { text: "Dokumentiert, was sich geändert hat und warum" }
+  ]}
+/>
+
+<Quiz 
+  question="Du hast einen Prompt, der gut funktioniert, aber im großen Maßstab zu viel kostet. Was ist das ERSTE, das du tun solltest?"
+  options={[
+    "Sofort zu einem günstigeren Modell wechseln",
+    "Wörter aus dem Prompt entfernen, um Tokens zu reduzieren",
+    "Messen, welcher Teil des Prompts die meisten Tokens verwendet",
+    "Caching für alle Anfragen hinzufügen"
+  ]}
+  correctIndex={2}
+  explanation="Vor der Optimierung, messen. Du musst verstehen, wohin die Tokens gehen, bevor du sie effektiv reduzieren kannst. Der Prompt könnte unnötigen Kontext, ausführliche Anweisungen haben oder längere Ausgaben als nötig generieren. Messung sagt dir, worauf du deine Optimierungsbemühungen fokussieren sollst."
+/>

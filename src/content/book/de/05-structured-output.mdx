@@ -1,0 +1,411 @@
+Konsistente, gut formatierte Ausgaben zu bekommen ist essenziell für Produktionsanwendungen und effiziente Workflows. Dieses Kapitel behandelt Techniken zur genauen Kontrolle, wie KI-Modelle ihre Antworten formatieren.
+
+<Callout type="info" title="Von Prosa zu Daten">
+Strukturierte Ausgabe transformiert KI-Antworten von Freitext in handlungsfähige, parsierbare Daten.
+</Callout>
+
+## Warum Struktur wichtig ist
+
+<StructuredOutputDemo />
+
+## Grundlegende Formatierungstechniken
+
+### Listen
+
+Listen sind perfekt für Schritt-für-Schritt-Anleitungen, Ranglisten oder Sammlungen verwandter Punkte. Sie sind leicht zu scannen und zu parsen. Verwende **nummerierte Listen**, wenn die Reihenfolge wichtig ist (Schritte, Rankings), und **Aufzählungspunkte** für ungeordnete Sammlungen.
+
+<TryIt 
+  compact
+  title="Listenformatierung"
+  prompt={`Gib 5 Tipps für besseren Schlaf.
+
+Format: Nummerierte Liste mit einer kurzen Erklärung für jeden.
+Jeder Tipp sollte fett sein, gefolgt von einem Bindestrich und Erklärung.`}
+/>
+
+<Callout type="tip" title="Listen-Best-Practices">
+Spezifiziere die genaue Anzahl der gewünschten Elemente, ob Erklärungen enthalten sein sollen und ob Elemente fett oder mit einer bestimmten Struktur sein sollen.
+</Callout>
+
+### Tabellen
+
+Tabellen sind hervorragend zum Vergleichen mehrerer Elemente über dieselben Dimensionen. Sie sind ideal für Feature-Vergleiche, Datenzusammenfassungen und alle Informationen mit konsistenten Attributen. Definiere deine Spaltenüberschriften immer explizit.
+
+<TryIt 
+  compact
+  title="Tabellenformatierung"
+  prompt={`Vergleiche die Top 4 Python-Web-Frameworks.
+
+Formatiere als Markdown-Tabelle mit Spalten:
+| Framework | Am besten für | Lernkurve | Performance |`}
+/>
+
+<Callout type="tip" title="Tabellen-Best-Practices">
+Spezifiziere Spaltennamen, erwartete Datentypen (Text, Zahlen, Bewertungen) und wie viele Zeilen du brauchst. Für komplexe Vergleiche beschränke dich auf 4-6 Spalten für Lesbarkeit.
+</Callout>
+
+### Überschriften und Abschnitte
+
+Überschriften schaffen eine klare Dokumentstruktur, machen lange Antworten scannbar und organisiert. Verwende sie für Berichte, Analysen oder jede mehrteilige Antwort. Hierarchische Überschriften (##, ###) zeigen Beziehungen zwischen Abschnitten.
+
+```
+Analysiere diesen Geschäftsvorschlag.
+
+Strukturiere deine Antwort mit diesen Abschnitten:
+## Zusammenfassung
+## Stärken
+## Schwächen
+## Empfehlungen
+## Risikobewertung
+```
+
+<Callout type="tip" title="Abschnitts-Best-Practices">
+Liste deine Abschnitte in der gewünschten Reihenfolge auf. Für Konsistenz spezifiziere, was jeder Abschnitt enthalten soll (z.B. „Zusammenfassung: nur 2-3 Sätze").
+</Callout>
+
+### Betonung mit Großbuchstaben-Direktiven
+
+Großbuchstaben-Wörter wirken als starke Signale an das Modell und betonen kritische Einschränkungen oder Anforderungen. Verwende sie sparsam für maximale Wirkung – Übernutzung verwässert ihre Effektivität.
+
+**Häufige Großbuchstaben-Direktiven:**
+
+<InfoGrid items={[
+  { label: "NIEMALS", description: "Absolutes Verbot: 'NIEMALS persönliche Meinungen einschließen'", color: "red" },
+  { label: "IMMER", description: "Pflichtanforderung: 'IMMER Quellen zitieren'", color: "green" },
+  { label: "WICHTIG", description: "Kritische Anweisung: 'WICHTIG: Antworten unter 100 Wörtern halten'", color: "amber" },
+  { label: "NICHT", description: "Starkes Verbot: 'Statistiken NICHT erfinden'", color: "red" },
+  { label: "MUSS", description: "Erforderliche Aktion: 'Ausgabe MUSS gültiges JSON sein'", color: "blue" },
+  { label: "NUR", description: "Einschränkung: 'NUR den Code zurückgeben, keine Erklärungen'", color: "purple" },
+]} />
+
+```
+Fasse diesen Artikel zusammen.
+
+WICHTIG: Halte die Zusammenfassung unter 100 Wörtern.
+NIEMALS Informationen hinzufügen, die nicht im Original vorhanden sind.
+IMMER den ursprünglichen Ton und die Perspektive beibehalten.
+Eigene Meinungen oder Analysen NICHT einschließen.
+```
+
+<Callout type="warning" title="Sparsam verwenden">
+Wenn alles großgeschrieben oder als kritisch markiert ist, sticht nichts hervor. Reserviere diese Direktiven für wirklich wichtige Einschränkungen.
+</Callout>
+
+## JSON-Ausgabe
+
+JSON (JavaScript Object Notation) ist das beliebteste Format für strukturierte KI-Ausgaben. Es ist maschinenlesbar, von Programmiersprachen weit unterstützt und perfekt für APIs, Datenbanken und Automatisierungs-Workflows. Der Schlüssel zu zuverlässigem JSON ist die Bereitstellung eines klaren Schemas.
+
+### Grundlegende JSON-Anfrage
+
+Beginne mit einer Vorlage, die die genaue gewünschte Struktur zeigt. Füge Feldnamen, Datentypen und Beispielwerte hinzu. Dies fungiert als Vertrag, dem das Modell folgen wird.
+
+<TryIt 
+  title="JSON-Extraktion"
+  description="Extrahiere strukturierte Daten aus unstrukturiertem Text."
+  prompt={`Extrahiere Informationen aus diesem Text und gib sie als JSON zurück:
+
+{
+    "company_name": "string",
+    "founding_year": number,
+    "headquarters": "string",
+    "employees": number,
+    "industry": "string"
+}
+
+Text: "Die Siemens AG, gegründet 1847, hat ihren Hauptsitz in München, Deutschland. Der Technologiekonzern beschäftigt weltweit etwa 311.000 Mitarbeiter."`}
+/>
+
+### Komplexe JSON-Strukturen
+
+Für verschachtelte Daten verwende hierarchisches JSON mit Objekten in Objekten, Arrays von Objekten und gemischten Typen. Definiere jede Ebene klar und verwende TypeScript-Stil-Annotationen (`"positive" | "negative"`), um Werte einzuschränken.
+
+```
+Analysiere diese Produktbewertung und gib JSON zurück:
+
+{
+  "review_id": "string (generiere eindeutig)",
+  "sentiment": {
+    "overall": "positive" | "negative" | "mixed" | "neutral",
+    "score": 0.0-1.0
+  },
+  "aspects": [
+    {
+      "aspect": "string (z.B. 'Preis', 'Qualität')",
+      "sentiment": "positive" | "negative" | "neutral",
+      "mentions": ["exakte Zitate aus der Bewertung"]
+    }
+  ],
+  "purchase_intent": {
+    "would_recommend": boolean,
+    "confidence": 0.0-1.0
+  },
+  "key_phrases": ["String-Array bemerkenswerter Phrasen"]
+}
+
+Gib NUR gültiges JSON zurück, keinen zusätzlichen Text.
+
+Bewertung: "[Bewertungstext]"
+```
+
+### Gültiges JSON sicherstellen
+
+Modelle fügen manchmal erklärenden Text oder Markdown-Formatierung um JSON hinzu. Verhindere dies mit expliziten Anweisungen zum Ausgabeformat. Du kannst rohes JSON oder JSON in Code-Blöcken anfordern – wähle basierend auf deinen Parsing-Bedürfnissen.
+
+Füge explizite Anweisungen hinzu:
+
+```
+WICHTIG:
+- Gib NUR das JSON-Objekt zurück, keine Markdown-Code-Blöcke
+- Stelle sicher, dass alle Strings korrekt escaped sind
+- Verwende null für fehlende Werte, nicht undefined
+- Validiere, dass die Ausgabe parsebares JSON ist
+```
+
+Oder fordere Code-Blöcke an, indem du das Modell bittest, seine Ausgabe zu wrappen:
+
+````
+Gib das Ergebnis als JSON-Code-Block zurück:
+```json
+{ ... }
+```
+````
+
+## YAML-Ausgabe
+
+YAML ist menschenlesbarer als JSON und verwendet Einrückung statt Klammern. Es ist der Standard für Konfigurationsdateien (Docker, Kubernetes, GitHub Actions) und funktioniert gut, wenn die Ausgabe von Menschen gelesen oder in DevOps-Kontexten verwendet wird. YAML ist empfindlich bei Einrückung, also sei spezifisch über Formatierungsanforderungen.
+
+<TryIt 
+  compact
+  title="YAML-Generierung"
+  prompt={`Generiere einen GitHub Actions Workflow für ein Node.js-Projekt.
+
+Gib als gültiges YAML zurück:
+- Enthält: install, lint, test, build Stufen
+- Verwende Node.js 18
+- Cache npm-Abhängigkeiten
+- Laufe bei Push zu main und Pull Requests`}
+/>
+
+## XML-Ausgabe
+
+XML wird immer noch für viele Enterprise-Systeme, SOAP-APIs und Legacy-Integrationen benötigt. Es ist ausführlicher als JSON, bietet aber Features wie Attribute, Namespaces und CDATA-Abschnitte für komplexe Daten. Spezifiziere Elementnamen, Verschachtelungsstruktur und wo Attribute vs. Kindelemente verwendet werden sollen.
+
+```
+Konvertiere diese Daten ins XML-Format:
+
+Anforderungen:
+- Wurzelelement: <catalog>
+- Jedes Element in <book>-Element
+- Füge Attribute ein, wo angemessen
+- Verwende CDATA für Beschreibungstext
+
+Daten: [Buchdaten]
+```
+
+## Benutzerdefinierte Formate
+
+Manchmal passen Standardformate nicht zu deinen Bedürfnissen. Du kannst jedes benutzerdefinierte Format definieren, indem du eine klare Vorlage bereitstellst. Benutzerdefinierte Formate funktionieren gut für Berichte, Logs oder domänenspezifische Ausgaben, die von Menschen gelesen werden.
+
+### Strukturiertes Analyseformat
+
+Verwende Trennzeichen (===, ---, [ABSCHNITT]), um scannbare Dokumente mit klaren Grenzen zwischen Abschnitten zu erstellen. Dieses Format ist großartig für Code-Reviews, Audits und Analysen.
+
+```
+Analysiere diesen Code mit diesem exakten Format:
+
+=== CODE-ANALYSE ===
+
+[ZUSAMMENFASSUNG]
+Ein Absatz Überblick
+
+[PROBLEME]
+• KRITISCH: [Problem] — [Datei:Zeile]
+• WARNUNG: [Problem] — [Datei:Zeile]  
+• INFO: [Problem] — [Datei:Zeile]
+
+[METRIKEN]
+Komplexität: [Niedrig/Mittel/Hoch]
+Wartbarkeit: [Punktzahl]/10
+Testabdeckung: [geschätzt %]
+
+[EMPFEHLUNGEN]
+1. [Priorität 1 Empfehlung]
+2. [Priorität 2 Empfehlung]
+
+=== ENDE ANALYSE ===
+```
+
+### Lückentext-Format
+
+Vorlagen mit Lücken (___) leiten das Modell an, spezifische Felder auszufüllen, während die exakte Formatierung beibehalten wird. Dieser Ansatz ist ausgezeichnet für Formulare, Briefs und standardisierte Dokumente, bei denen Konsistenz wichtig ist.
+
+```
+Vervollständige diese Vorlage für das gegebene Produkt:
+
+PRODUKT-BRIEF
+─────────────
+Name: _______________
+Slogan: _______________
+Zielnutzer: _______________
+Gelöstes Problem: _______________
+Schlüsselfeatures:
+  1. _______________
+  2. _______________
+  3. _______________
+Differenzierungsmerkmal: _______________
+
+Produkt: [Produktbeschreibung]
+```
+
+## Typisierte Antworten
+
+Typisierte Antworten definieren Kategorien oder Entitätstypen, die das Modell erkennen und beschriften soll. Diese Technik ist essenziell für Named Entity Recognition (NER), Klassifikationsaufgaben und jede Extraktion, bei der du Informationen konsistent kategorisieren musst. Definiere deine Typen klar mit Beispielen.
+
+<TryIt 
+  compact
+  title="Entitätsextraktion"
+  prompt={`Extrahiere Entitäten aus diesem Text.
+
+Entitätstypen:
+- PERSON: Vollständige Namen von Personen
+- ORG: Organisations-/Firmennamen
+- ORT: Städte, Länder, Adressen
+- DATUM: Daten im ISO-Format (JJJJ-MM-TT)
+- GELD: Geldbeträge mit Währung
+
+Formatiere jeden als: [TYP]: [Wert]
+
+Text: "Tim Cook kündigte an, dass Apple bis Dezember 2024 1 Milliarde Dollar in eine neue Anlage in Austin investieren wird."`}
+/>
+
+## Mehrteilige strukturierte Antworten
+
+Wenn du umfassende Ausgaben brauchst, die mehrere Aspekte abdecken, definiere unterschiedliche Teile mit klaren Grenzen. Spezifiziere genau, was in jeden Teil gehört – Format, Länge und Inhaltstyp. Dies verhindert, dass das Modell Abschnitte vermischt oder weglässt.
+
+```
+Recherchiere dieses Thema und liefere:
+
+### TEIL 1: ZUSAMMENFASSUNG
+[2-3 Sätze Überblick]
+
+### TEIL 2: SCHLÜSSELERKENNTNISSE
+[Genau 5 Stichpunkte]
+
+### TEIL 3: DATENTABELLE
+| Metrik | Wert | Quelle |
+|--------|------|--------|
+[Mindestens 5 Zeilen einschließen]
+
+### TEIL 4: EMPFEHLUNGEN
+[Nummerierte Liste von 3 umsetzbaren Empfehlungen]
+
+### TEIL 5: WEITERFÜHRENDE LEKTÜRE
+[3 vorgeschlagene Ressourcen mit kurzen Beschreibungen]
+```
+
+## Bedingte Formatierung
+
+Bedingte Formatierung ermöglicht dir, verschiedene Ausgabeformate basierend auf den Eigenschaften der Eingabe zu definieren. Dies ist mächtig für Klassifikation, Triage und Routing-Systeme, bei denen das Antwortformat je nach dem variieren sollte, was das Modell erkennt. Verwende klare wenn/dann-Logik mit expliziten Ausgabevorlagen für jeden Fall.
+
+<TryIt 
+  compact
+  title="Ticket-Klassifikation"
+  prompt={`Klassifiziere dieses Support-Ticket.
+
+Wenn DRINGEND (System ausgefallen, Sicherheitsproblem, Datenverlust):
+  Gib zurück: 🔴 DRINGEND | [Kategorie] | [Vorgeschlagene Aktion]
+
+Wenn HOCH (betrifft mehrere Nutzer, Umsatzauswirkung):
+  Gib zurück: 🟠 HOCH | [Kategorie] | [Vorgeschlagene Aktion]
+
+Wenn MITTEL (einzelner Nutzer betroffen, Workaround existiert):
+  Gib zurück: 🟡 MITTEL | [Kategorie] | [Vorgeschlagene Aktion]
+
+Wenn NIEDRIG (Fragen, Feature-Anfragen):
+  Gib zurück: 🟢 NIEDRIG | [Kategorie] | [Vorgeschlagene Aktion]
+
+Ticket: "Ich kann mich nicht in mein Konto einloggen. Ich habe zweimal versucht, mein Passwort zurückzusetzen, bekomme aber immer noch einen Fehler. Das blockiert mein gesamtes Team beim Zugriff auf das Dashboard."`}
+/>
+
+## Arrays und Listen in JSON
+
+Das Extrahieren mehrerer Elemente in Arrays erfordert sorgfältige Schema-Definition. Spezifiziere die Array-Struktur, was jedes Element enthalten soll und wie Randfälle behandelt werden (leere Arrays, einzelne Elemente). Ein Zählfeld hilft, Vollständigkeit zu verifizieren.
+
+```
+Extrahiere alle Aktionspunkte aus diesem Meeting-Protokoll.
+
+Gib als JSON-Array zurück:
+{
+  "action_items": [
+    {
+      "task": "String, der die Aufgabe beschreibt",
+      "assignee": "Personenname oder 'Nicht zugewiesen'",
+      "deadline": "Datum wenn erwähnt, sonst null",
+      "priority": "high" | "medium" | "low",
+      "context": "relevantes Zitat aus dem Protokoll"
+    }
+  ],
+  "total_count": number
+}
+
+Protokoll: "[Meeting-Protokoll]"
+```
+
+## Validierungsanweisungen
+
+Selbstvalidierung fordert das Modell auf, seine eigene Ausgabe vor dem Antworten zu prüfen. Dies fängt häufige Probleme wie fehlende Abschnitte, Platzhaltertext oder Constraint-Verletzungen ab. Das Modell wird intern iterieren, um Probleme zu beheben, was die Ausgabequalität ohne zusätzliche API-Aufrufe verbessert.
+
+```
+Generiere den Bericht, dann:
+
+VALIDIERUNGS-CHECKLISTE:
+□ Alle erforderlichen Abschnitte vorhanden
+□ Kein Platzhaltertext verbleibend
+□ Alle Statistiken enthalten Quellen
+□ Wortanzahl innerhalb von 500-700 Wörtern
+□ Fazit bezieht sich zurück auf Einleitung
+
+Wenn eine Prüfung fehlschlägt, vor dem Antworten beheben.
+```
+
+## Umgang mit optionalen Feldern
+
+Reale Daten haben oft fehlende Werte. Weise das Modell explizit an, wie optionale Felder behandelt werden sollen – die Verwendung von `null` ist sauberer als leere Strings und einfacher programmatisch zu verarbeiten. Verhindere auch „Halluzination" fehlender Daten, indem du betonst, dass das Modell niemals Informationen erfinden soll.
+
+```
+Extrahiere Kontaktinformationen. Verwende null für fehlende Felder.
+
+{
+  "name": "string (erforderlich)",
+  "email": "string oder null",
+  "phone": "string oder null", 
+  "company": "string oder null",
+  "role": "string oder null",
+  "linkedin": "URL-String oder null"
+}
+
+WICHTIG: 
+- Niemals Informationen erfinden, die nicht in der Quelle sind
+- Verwende null, nicht leere Strings, für fehlende Daten
+- Telefonnummern im E.164-Format wenn möglich
+```
+
+## Zusammenfassung
+
+<Callout type="tip" title="Schlüsseltechniken">
+Sei explizit über das Format, verwende Beispiele, spezifiziere Typen, behandle Randfälle mit null-Werten und bitte das Modell, seine eigene Ausgabe zu validieren.
+</Callout>
+
+<Quiz 
+  question="Was ist der Hauptvorteil strukturierter Ausgabe gegenüber unstrukturiertem Text?"
+  options={[
+    "Es verwendet weniger Tokens",
+    "Es ist einfacher für die KI zu generieren",
+    "Es kann programmatisch geparst und validiert werden",
+    "Es produziert immer korrekte Informationen"
+  ]}
+  correctIndex={2}
+  explanation="Strukturierte Ausgaben wie JSON können von Code geparst, über Abfragen hinweg verglichen, in Workflows integriert und auf Vollständigkeit validiert werden – Dinge, die mit Freitext schwierig oder unmöglich sind."
+/>
+
+Strukturierte Ausgaben sind essenziell für den Aufbau zuverlässiger KI-gestützter Anwendungen. Im nächsten Kapitel werden wir Chain-of-Thought-Prompting für komplexe Denkaufgaben erkunden.

@@ -1,0 +1,445 @@
+A medida que la IA continúa evolucionando a un ritmo sin precedentes, también lo hará el arte y la ciencia del prompting. Este capítulo final explora tendencias emergentes, el panorama cambiante de la colaboración humano-IA, y cómo mantenerse adelante mientras el campo se transforma.
+
+<Callout type="info" title="Un Objetivo en Movimiento">
+Las técnicas en este libro representan mejores prácticas actuales, pero las capacidades de IA cambian rápidamente. Los principios de comunicación clara, pensamiento estructurado y refinamiento iterativo seguirán siendo valiosos incluso mientras las tácticas específicas evolucionan.
+</Callout>
+
+## El Panorama en Evolución
+
+### De Prompts a Conversaciones
+
+El prompting temprano era transaccional—una entrada única produciendo una salida única. La interacción moderna con IA es cada vez más **conversacional y colaborativa**:
+
+- **Refinamiento multi-turno** - Construyendo comprensión a través de intercambios
+- **Contexto persistente** - Sistemas que recuerdan y aprenden de interacciones
+- **Flujos de trabajo agénticos** - IA que puede planificar, ejecutar e iterar autónomamente
+- **Uso de herramientas** - Modelos que pueden buscar, calcular e interactuar con sistemas externos
+
+<TryIt compact prompt={`Trabajemos juntos en \${task:escribir una publicación técnica de blog}.
+
+Me gustaría desarrollar esto iterativamente:
+1. Primero, ayúdame a generar ideas de enfoques
+2. Luego haremos el esquema juntos
+3. Redactaré secciones y obtendré tu retroalimentación
+4. Finalmente, puliremos la versión final
+
+Comienza preguntándome sobre mi audiencia objetivo y mensaje clave.`} />
+
+### El Auge de la Ingeniería de Contexto
+
+Como se cubrió en el Capítulo 14, el prompting se está expandiendo más allá de instrucciones individuales para abarcar **ingeniería de contexto**—la gestión estratégica de qué información puede acceder una IA:
+
+- **RAG (Generación Aumentada por Recuperación)** - Recuperación dinámica de conocimiento
+- **Llamadas a funciones** - Integración estructurada de herramientas
+- **MCP (Protocolo de Contexto de Modelo)** - Compartición estandarizada de contexto
+- **Sistemas de memoria** - Conocimiento persistente entre sesiones
+
+El ingeniero de prompts del futuro piensa no solo en *qué decir* sino en *qué contexto proporcionar*.
+
+### Multimodal por Defecto
+
+La interacción solo de texto se está convirtiendo en la excepción. Los sistemas de IA del futuro manejarán sin problemas:
+
+- **Imágenes y video** - Comprensión y generación de contenido visual
+- **Audio y voz** - Interacción natural por habla
+- **Documentos y archivos** - Procesamiento directo de materiales complejos
+- **Interacción con el mundo real** - Robótica y sistemas físicos
+
+Las habilidades de prompting se extenderán a guiar la percepción de IA y la acción física.
+
+## El Futuro Agéntico
+
+El cambio más significativo en IA es el auge de los **agentes**—sistemas de IA que no solo responden a prompts sino que persiguen activamente objetivos, toman decisiones y realizan acciones en el mundo.
+
+### ¿Qué Son los Agentes de IA?
+
+Un agente de IA es un sistema que:
+
+- **Percibe** su entorno a través de entradas (texto, imágenes, datos, APIs)
+- **Razona** sobre qué hacer usando un LLM como su "cerebro"
+- **Actúa** llamando herramientas, escribiendo código o interactuando con sistemas
+- **Aprende** de la retroalimentación y ajusta su enfoque
+
+<Callout type="info" title="De Chatbots a Agentes">
+Los chatbots tradicionales esperan entrada y responden. Los agentes toman iniciativa—planifican tareas de múltiples pasos, usan herramientas autónomamente, se recuperan de errores, y persisten hasta que los objetivos se logran.
+</Callout>
+
+### El Rol de los Prompts en Agentes
+
+En un mundo agéntico, los prompts se vuelven aún más críticos—pero sirven propósitos diferentes:
+
+<div className="my-6 grid md:grid-cols-2 gap-4">
+  <div className="border rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-900 p-4">
+    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 m-0!">Prompts de Sistema</p>
+    <p className="text-sm text-muted-foreground mt-2 m-0!">Definen la identidad, capacidades, restricciones y directrices de comportamiento del agente. Estos son la "constitución" del agente.</p>
+  </div>
+  <div className="border rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-900 p-4">
+    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 m-0!">Prompts de Planificación</p>
+    <p className="text-sm text-muted-foreground mt-2 m-0!">Guían cómo los agentes descomponen objetivos complejos en pasos accionables. Críticos para razonamiento multi-paso.</p>
+  </div>
+  <div className="border rounded-lg bg-amber-50/50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900 p-4">
+    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 m-0!">Prompts de Uso de Herramientas</p>
+    <p className="text-sm text-muted-foreground mt-2 m-0!">Describen herramientas disponibles y cuándo/cómo usarlas. Los agentes deben entender sus capacidades.</p>
+  </div>
+  <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900 p-4">
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 m-0!">Prompts de Reflexión</p>
+    <p className="text-sm text-muted-foreground mt-2 m-0!">Permiten a los agentes evaluar sus propias salidas, detectar errores, y mejorar iterativamente.</p>
+  </div>
+</div>
+
+### Patrones de Arquitectura de Agentes
+
+Los agentes modernos siguen patrones reconocibles. Entender estos te ayuda a diseñar sistemas de agentes efectivos:
+
+**ReAct (Razonamiento + Acción)**
+
+El agente alterna entre razonar sobre qué hacer y tomar acciones:
+
+<div className="my-6 flex flex-col items-center gap-2 p-6 bg-muted/30 rounded-lg">
+  <div className="flex items-center gap-4">
+    <div className="px-4 py-2 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg">
+      <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Pensar</p>
+    </div>
+    <div className="text-slate-400">→</div>
+    <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
+      <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">Actuar</p>
+    </div>
+    <div className="text-slate-400">→</div>
+    <div className="px-4 py-2 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg">
+      <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">Observar</p>
+    </div>
+    <div className="text-slate-400">→</div>
+    <div className="text-muted-foreground text-sm">(repetir)</div>
+  </div>
+</div>
+
+**Planificar-y-Ejecutar**
+
+El agente crea un plan completo primero, luego ejecuta los pasos:
+
+<div className="my-6 flex flex-col items-center gap-2 p-6 bg-muted/30 rounded-lg">
+  <div className="px-6 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
+    <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Crear Plan</p>
+    <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">Dividir objetivo en pasos</p>
+  </div>
+  <div className="text-blue-400 dark:text-blue-500 text-lg">↓</div>
+  <div className="flex items-center gap-3">
+    <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
+      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Paso 1</p>
+    </div>
+    <div className="text-slate-400">→</div>
+    <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
+      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Paso 2</p>
+    </div>
+    <div className="text-slate-400">→</div>
+    <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
+      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Paso 3</p>
+    </div>
+    <div className="text-slate-400">→</div>
+    <div className="text-muted-foreground text-sm">...</div>
+  </div>
+  <div className="text-green-400 dark:text-green-500 text-lg">↓</div>
+  <div className="px-6 py-3 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-lg text-center">
+    <p className="text-sm font-medium text-amber-700 dark:text-amber-300 m-0!">Revisar si es Necesario</p>
+    <p className="text-xs text-amber-600 dark:text-amber-400 m-0!">Adaptar plan basado en resultados</p>
+  </div>
+</div>
+
+### Prompting para Agentes
+
+Al diseñar prompts para sistemas de agentes, considera:
+
+<TryIt compact prompt={`Eres un agente de investigación autónomo. Tu objetivo es \${goal:encontrar las últimas estadísticas sobre adopción de energía renovable}.
+
+**Tus capacidades:**
+- Buscar en la web información
+- Leer y analizar documentos
+- Tomar notas y sintetizar hallazgos
+- Hacer preguntas clarificadoras si es necesario
+
+**Tu enfoque:**
+1. Primero, planifica tu estrategia de investigación
+2. Ejecuta búsquedas sistemáticamente
+3. Evalúa credibilidad de fuentes
+4. Sintetiza hallazgos en un reporte coherente
+5. Cita todas las fuentes
+
+**Restricciones:**
+- Mantente enfocado en el objetivo
+- Reconoce la incertidumbre
+- Nunca fabriques información
+- Detente y pregunta si estás atascado
+
+Comienza delineando tu plan de investigación.`} />
+
+### Sistemas Multi-Agente
+
+El futuro involucra equipos de agentes especializados trabajando juntos:
+
+<div className="my-6 p-6 bg-muted/30 rounded-lg">
+  <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+    <div className="flex flex-col items-center gap-2">
+      <div className="px-4 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
+        <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Coordinador</p>
+        <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">Gestiona flujo de trabajo</p>
+      </div>
+    </div>
+    <div className="hidden md:block text-slate-400 text-2xl">⟷</div>
+    <div className="md:hidden text-slate-400 text-2xl">↕</div>
+    <div className="flex flex-wrap justify-center gap-3">
+      <div className="px-3 py-2 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg">
+        <p className="text-xs font-medium text-purple-700 dark:text-purple-300 m-0!">Investigador</p>
+      </div>
+      <div className="px-3 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
+        <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Escritor</p>
+      </div>
+      <div className="px-3 py-2 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-lg">
+        <p className="text-xs font-medium text-amber-700 dark:text-amber-300 m-0!">Crítico</p>
+      </div>
+      <div className="px-3 py-2 bg-red-100 dark:bg-red-900/50 border border-red-200 dark:border-red-800 rounded-lg">
+        <p className="text-xs font-medium text-red-700 dark:text-red-300 m-0!">Programador</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+Cada agente tiene su propio prompt de sistema definiendo su rol, y se comunican a través de mensajes estructurados. El trabajo del ingeniero de prompts se convierte en **diseñar el equipo**—definiendo roles, protocolos de comunicación y estrategias de coordinación.
+
+<Callout type="tip" title="El Ingeniero de Prompts como Arquitecto">
+En un futuro agéntico, los ingenieros de prompts se convierten en arquitectos de sistemas. No solo estás escribiendo instrucciones—estás diseñando sistemas autónomos que pueden razonar, planificar y actuar. Las habilidades que has aprendido en este libro son la base para esta nueva disciplina.
+</Callout>
+
+## Patrones Emergentes
+
+### Orquestación de Prompts
+
+Los prompts individuales están dando paso a **sistemas orquestados**:
+
+<div className="my-6 flex flex-col items-center gap-2 p-6 bg-muted/30 rounded-lg">
+  <div className="px-6 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg text-center">
+    <p className="text-sm font-medium text-slate-700 dark:text-slate-300 m-0!">Solicitud del Usuario</p>
+  </div>
+  <div className="text-slate-400 dark:text-slate-500 text-lg">↓</div>
+  <div className="px-6 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
+    <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Agente Planificador</p>
+    <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">Descompone la tarea</p>
+  </div>
+  <div className="text-blue-400 dark:text-blue-500 text-lg">↓</div>
+  <div className="px-6 py-3 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg text-center">
+    <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">Agente Investigador</p>
+    <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">Recopila información</p>
+  </div>
+  <div className="text-purple-400 dark:text-purple-500 text-lg">↓</div>
+  <div className="px-6 py-3 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-lg text-center">
+    <p className="text-sm font-medium text-amber-700 dark:text-amber-300 m-0!">Agente Escritor</p>
+    <p className="text-xs text-amber-600 dark:text-amber-400 m-0!">Crea contenido</p>
+  </div>
+  <div className="text-amber-400 dark:text-amber-500 text-lg">↓</div>
+  <div className="px-6 py-3 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg text-center">
+    <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">Agente Revisor</p>
+    <p className="text-xs text-green-600 dark:text-green-400 m-0!">Verificación de calidad</p>
+  </div>
+  <div className="text-green-400 dark:text-green-500 text-lg">↓</div>
+  <div className="px-6 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg text-center">
+    <p className="text-sm font-medium text-slate-700 dark:text-slate-300 m-0!">Salida Final</p>
+  </div>
+</div>
+
+Los profesionales del futuro diseñarán *sistemas* de prompts en lugar de prompts individuales.
+
+### Prompts Auto-Mejorables
+
+Los sistemas de IA están comenzando a:
+
+- **Optimizar sus propios prompts** - Meta-aprendizaje para mejores instrucciones
+- **Aprender de retroalimentación** - Adaptándose basándose en resultados
+- **Generar datos de entrenamiento** - Creando ejemplos para ajuste fino
+- **Evaluarse a sí mismos** - Incorporando evaluación de calidad
+
+<TryIt compact prompt={`Analiza este prompt y sugiere mejoras:
+
+Original: "\${originalPrompt:Escribe una historia sobre un robot}"
+
+Considera:
+1. **Claridad** - ¿Es clara la intención?
+2. **Especificidad** - ¿Qué detalles faltan?
+3. **Estructura** - ¿Cómo podría organizarse mejor la salida?
+4. **Casos límite** - ¿Qué podría salir mal?
+
+Proporciona: Versión mejorada con explicación de cambios`} />
+
+### Programación en Lenguaje Natural
+
+La línea entre prompting y programación se está difuminando:
+
+- **Prompts como código** - Versionados, probados, desplegados
+- **LLMs como intérpretes** - Lenguaje natural como instrucciones ejecutables
+- **Sistemas híbridos** - Combinando código tradicional con razonamiento de IA
+- **Desarrollo asistido por IA** - Modelos que escriben y depuran código
+
+Entender prompting significa cada vez más entender desarrollo de software.
+
+## Habilidades para el Futuro
+
+### Lo Que Seguirá Siendo Valioso
+
+Ciertas habilidades seguirán siendo esenciales sin importar cómo evolucione la IA:
+
+1. **Pensamiento claro** - Saber lo que realmente quieres
+2. **Experiencia de dominio** - Entender el espacio del problema
+3. **Evaluación crítica** - Evaluar la calidad de salida de IA
+4. **Juicio ético** - Saber lo que *debería* hacerse
+5. **Refinamiento iterativo** - Mentalidad de mejora continua
+
+### Lo Que Cambiará
+
+Otros aspectos cambiarán significativamente:
+
+<div className="my-6 overflow-x-auto">
+  <table className="w-full border-collapse text-sm">
+    <thead>
+      <tr className="border-b border-border">
+        <th className="text-left py-3 px-4 font-semibold text-muted-foreground">Hoy</th>
+        <th className="text-left py-3 px-4 font-semibold text-muted-foreground">Mañana</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="border-b border-border/50">
+        <td className="py-3 px-4">Escribir prompts detallados</td>
+        <td className="py-3 px-4 text-primary font-medium">Diseñar sistemas de agentes</td>
+      </tr>
+      <tr className="border-b border-border/50">
+        <td className="py-3 px-4">Optimización manual de prompts</td>
+        <td className="py-3 px-4 text-primary font-medium">Ajuste automatizado de prompts</td>
+      </tr>
+      <tr className="border-b border-border/50">
+        <td className="py-3 px-4">Experiencia en un solo modelo</td>
+        <td className="py-3 px-4 text-primary font-medium">Orquestación multi-modelo</td>
+      </tr>
+      <tr className="border-b border-border/50">
+        <td className="py-3 px-4">Interacción enfocada en texto</td>
+        <td className="py-3 px-4 text-primary font-medium">Fluidez multimodal</td>
+      </tr>
+      <tr>
+        <td className="py-3 px-4">Productividad individual</td>
+        <td className="py-3 px-4 text-primary font-medium">Colaboración equipo-IA</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Manteniéndose Actualizado
+
+Para mantener tus habilidades relevantes:
+
+- **Experimenta continuamente** - Prueba nuevos modelos y características cuando se lancen
+- **Sigue la investigación** - Mantente al tanto de desarrollos académicos
+- **Únete a comunidades** - Aprende de otros profesionales
+- **Construye proyectos** - Aplica habilidades a problemas reales
+- **Enseña a otros** - Solidifica comprensión explicando
+
+## El Elemento Humano
+
+### IA como Amplificador
+
+En su mejor momento, la IA amplifica la capacidad humana en lugar de reemplazarla:
+
+- **Los expertos se vuelven más expertos** - IA maneja trabajo rutinario, humanos se enfocan en insight
+- **La creatividad se expande** - Más ideas exploradas, más posibilidades probadas
+- **El acceso se democratiza** - Capacidades que antes requerían especialistas están disponibles para todos
+- **La colaboración se profundiza** - Equipos humano-IA superan a cualquiera por separado
+
+### El Humano Irremplazable
+
+Ciertas cualidades siguen siendo distintivamente humanas:
+
+- **Experiencia original** - Vivir en el mundo, tener emociones y relaciones
+- **Valores y ética** - Decidir qué importa y qué es correcto
+- **Responsabilidad** - Asumir responsabilidad por los resultados
+- **Creación de significado** - Entender *por qué* algo importa
+- **Creatividad genuina** - Verdadera novedad nacida de perspectiva única
+
+<Callout type="tip" title="Tu Valor Único">
+A medida que la IA maneja más tareas cognitivas rutinarias, tu valor único reside en juicio, creatividad, experiencia de dominio, y las conexiones humanas que la IA no puede replicar. Invierte en lo que te hace irremplazable.
+</Callout>
+
+## Reflexiones Finales
+
+### Lo Que Hemos Aprendido
+
+A lo largo de este libro, hemos explorado:
+
+- **Fundamentos** - Cómo funcionan los modelos de IA y qué hace efectivos a los prompts
+- **Técnicas** - Prompting basado en roles, cadena de pensamiento, aprendizaje few-shot, y más
+- **Estrategias avanzadas** - Prompts de sistema, encadenamiento de prompts, interacción multimodal
+- **Mejores prácticas** - Evitar errores, consideraciones éticas, optimización
+- **Aplicaciones** - Escritura, programación, educación, negocios, creatividad, investigación
+
+Estas técnicas comparten hilos comunes:
+
+1. **Sé claro y específico** - Sabe lo que quieres y comunícalo con precisión
+2. **Proporciona contexto** - Dale a la IA la información que necesita
+3. **Estructura tus solicitudes** - La organización mejora las salidas
+4. **Itera y refina** - Los primeros intentos son puntos de partida, no puntos finales
+5. **Evalúa críticamente** - La salida de IA requiere juicio humano
+
+### El Arte y la Ciencia
+
+El prompting es tanto **arte como ciencia**:
+
+- **Ciencia**: Hipótesis comprobables, resultados medibles, técnicas reproducibles
+- **Arte**: Intuición, creatividad, saber cuándo romper las reglas
+
+Los mejores profesionales combinan metodología rigurosa con experimentación creativa. Prueban sistemáticamente pero también confían en sus instintos. Siguen mejores prácticas pero saben cuándo desviarse.
+
+### Un Llamado a Crear
+
+Este libro te ha dado herramientas. Lo que construyas con ellas depende de ti.
+
+- **Resuelve problemas** que te importen a ti y a otros
+- **Crea cosas** que no existían antes
+- **Ayuda a personas** a hacer cosas que no podían hacer solas
+- **Empuja límites** de lo que es posible
+- **Mantente curioso** mientras el campo evoluciona
+
+La era de la IA apenas está comenzando. Las aplicaciones más importantes aún no se han inventado. Las técnicas más poderosas aún no se han descubierto. El futuro se está escribiendo ahora—por personas como tú, un prompt a la vez.
+
+## Mirando Hacia Adelante
+
+<TryIt compact prompt={`Acabo de terminar de leer "El Libro Interactivo de Prompting" y quiero desarrollar un plan de práctica personal.
+
+Mi trasfondo: \${background:describe tu nivel de experiencia y caso de uso principal}
+Mis metas: \${goals:¿qué quieres lograr con IA?}
+Tiempo disponible: \${time:¿cuánto tiempo puedes dedicar semanalmente?}
+
+Crea un plan de práctica de 30 días que:
+1. Construya habilidades progresivamente
+2. Incluya ejercicios específicos
+3. Se aplique a mi trabajo real
+4. Mida la mejora
+
+Incluir: Hitos, recursos, y criterios de éxito`} />
+
+<Callout type="tip" title="Sigue Aprendiendo">
+Visita [prompts.chat](https://prompts.chat) para prompts de la comunidad, nuevas técnicas, y para compartir tus propios descubrimientos. El mejor aprendizaje sucede en comunidad.
+</Callout>
+
+## Resumen
+
+<Callout type="info" title="Puntos Clave">
+La IA continuará evolucionando rápidamente, pero las habilidades centrales de comunicación clara, pensamiento crítico, y refinamiento iterativo siguen siendo valiosas. Enfócate en lo que te hace irremplazable: juicio, creatividad, ética, y conexión humana genuina. El futuro del prompting es colaborativo, multimodal, e integrado en sistemas más grandes. Mantente curioso, sigue experimentando, y construye cosas que importen.
+</Callout>
+
+<Quiz 
+  question="¿Cuál es la habilidad más importante a desarrollar a medida que la IA continúa evolucionando?"
+  options={[
+    "Memorizar plantillas de prompts específicas",
+    "Aprender la sintaxis específica de cada nuevo modelo",
+    "Pensamiento claro y evaluación crítica de la salida de IA",
+    "Evitar la IA completamente para preservar habilidades humanas"
+  ]}
+  correctIndex={2}
+  explanation="Mientras las técnicas específicas cambian, la capacidad de pensar claramente sobre lo que quieres, comunicarlo efectivamente, y evaluar críticamente la salida de IA sigue siendo valiosa sin importar cómo evolucione la IA. Estas meta-habilidades se transfieren entre modelos y aplicaciones."
+/>
+
+Gracias por leer *El Libro Interactivo de Prompting*. Ahora ve y crea algo asombroso.

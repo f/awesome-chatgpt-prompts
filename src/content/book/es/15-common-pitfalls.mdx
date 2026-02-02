@@ -1,0 +1,373 @@
+Incluso los ingenieros de prompts experimentados caen en trampas predecibles. ¿Las buenas noticias? Una vez que reconoces estos patrones, son fáciles de evitar. Este capítulo recorre los errores más comunes, explica por qué suceden, y te da estrategias concretas para esquivarlos.
+
+<Callout type="warning" title="Por Qué Importan los Errores">
+Un solo error puede convertir una IA poderosa en una herramienta frustrante. Entender estos patrones es a menudo la diferencia entre "la IA no funciona para mí" y "la IA transformó mi flujo de trabajo."
+</Callout>
+
+## La Trampa de la Vaguedad
+
+**El Patrón**: Sabes lo que quieres, así que asumes que la IA también lo descubrirá. Pero los prompts vagos producen resultados vagos.
+
+<Compare 
+  before={{ label: "Prompt vago", content: "Escribe algo sobre marketing." }}
+  after={{ label: "Prompt específico", content: "Escribe un post de LinkedIn de 300 palabras sobre la importancia de la consistencia de marca para empresas B2B SaaS, dirigido a gerentes de marketing. Usa un tono profesional pero accesible. Incluye un ejemplo concreto." }}
+/>
+
+**Por qué sucede**: Naturalmente omitimos detalles cuando pensamos que son "obvios." Pero lo que es obvio para ti no es obvio para un modelo que no tiene contexto sobre tu situación, audiencia u objetivos.
+
+<TryIt 
+  title="Mejorador de Especificidad"
+  description="Toma un prompt vago y hazlo específico. Nota cómo agregar detalles transforma la calidad de los resultados."
+  prompt={`Tengo un prompt vago que necesita mejora.
+
+Prompt vago original: "\${vaguePrompt}"
+
+Haz este prompt específico agregando:
+1. **Audiencia**: ¿Quién leerá/usará esto?
+2. **Formato**: ¿Qué estructura debería tener?
+3. **Longitud**: ¿Qué tan largo debería ser?
+4. **Tono**: ¿Qué voz o estilo?
+5. **Contexto**: ¿Cuál es la situación o propósito?
+6. **Restricciones**: ¿Algún requisito obligatorio o cosas a evitar?
+
+Reescribe el prompt con todos estos detalles incluidos.`}
+/>
+
+## La Trampa de la Sobrecarga
+
+**El Patrón**: Intentas conseguir todo en un prompt—comprehensivo, gracioso, profesional, amigable para principiantes, avanzado, optimizado para SEO, y corto. ¿El resultado? La IA pierde la mitad de tus requisitos o produce un desastre confuso.
+
+<Compare 
+  before={{ label: "Prompt sobrecargado", content: "Escribe un post de blog sobre IA que esté optimizado para SEO e incluya ejemplos de código y sea gracioso pero profesional y dirigido a principiantes pero también tenga tips avanzados y debería ser de 500 palabras pero comprehensivo y mencione nuestro producto y tenga un llamado a la acción..." }}
+  after={{ label: "Prompt enfocado", content: "Escribe un post de blog de 500 palabras introduciendo IA a principiantes.\n\nRequisitos:\n1. Explica un concepto central claramente\n2. Incluye un ejemplo de código simple\n3. Termina con un llamado a la acción\n\nTono: Profesional pero accesible" }}
+/>
+
+**Por qué sucede**: Miedo a múltiples interacciones, o querer "sacarlo todo" de una vez. Pero la sobrecarga cognitiva afecta a la IA igual que afecta a los humanos—demasiados requisitos compitiendo lleva a cosas olvidadas.
+
+<InfoGrid items={[
+  { label: "Limita los Requisitos", description: "Mantén 3-5 requisitos clave por prompt", example: "Enfócate en: audiencia, formato, longitud, una restricción clave", exampleType: "text", color: "green" },
+  { label: "Usa Listas Numeradas", description: "La estructura hace claras las prioridades", example: "1. Debe tener X, 2. Debería tener Y, 3. Sería bueno tener Z", exampleType: "text", color: "green" },
+  { label: "Encadena Prompts", description: "Divide tareas complejas en pasos", example: "Primero: esquema. Luego: borrador sección 1. Luego: borrador sección 2.", exampleType: "text", color: "green" },
+  { label: "Prioriza Sin Piedad", description: "¿Qué es esencial vs. deseable?", example: "Si solo pudiera lograr UNA cosa bien, ¿cuál sería?", color: "green" }
+]} />
+
+<Callout type="tip" title="Aprende Encadenamiento de Prompts">
+Cuando un solo prompt se sobrecarga, [el encadenamiento de prompts](/book/11-prompt-chaining) es a menudo la solución. Divide tareas complejas en una secuencia de prompts enfocados, donde cada paso se construye sobre el anterior.
+</Callout>
+
+## La Trampa de la Suposición
+
+**El Patrón**: Haces referencia a algo "de antes" o asumes que la IA conoce tu proyecto, tu empresa, o tus conversaciones previas. No lo hace.
+
+<Compare 
+  before={{ label: "Asume contexto", content: "Actualiza la función que te mostré antes para agregar manejo de errores." }}
+  after={{ label: "Proporciona contexto", content: "Actualiza esta función para agregar manejo de errores:\n\n```python\ndef calculate_total(items):\n    return sum(item.price for item in items)\n```\n\nAgrega try/except para listas vacías e items inválidos." }}
+/>
+
+**Por qué sucede**: Las conversaciones con IA se sienten como hablar con un colega. Pero a diferencia de los colegas, la mayoría de los modelos de IA no tienen memoria persistente entre sesiones—cada conversación comienza fresca.
+
+<TryIt 
+  title="Verificación de Completitud de Contexto"
+  description="Usa esto para verificar que tu prompt contiene todo el contexto necesario antes de enviar."
+  prompt={`Revisa este prompt por contexto faltante:
+
+"\${promptToCheck}"
+
+Verifica:
+1. **Referenciado pero no incluido**: ¿Menciona "el código," "el documento," "antes," o "arriba" sin incluir el contenido real?
+
+2. **Conocimiento asumido**: ¿Asume conocimiento sobre un proyecto, empresa o situación específica?
+
+3. **Requisitos implícitos**: ¿Hay expectativas no declaradas sobre formato, longitud o estilo?
+
+4. **Antecedentes faltantes**: ¿Un extraño inteligente entendería lo que se pide?
+
+Lista lo que falta y sugiere cómo agregarlo.`}
+/>
+
+## La Trampa de la Pregunta Dirigida
+
+**El Patrón**: Formulas tu pregunta de una manera que incrusta tu suposición, obteniendo confirmación en lugar de perspectiva.
+
+<Compare 
+  before={{ label: "Pregunta dirigida", content: "¿Por qué Python es el mejor lenguaje de programación para ciencia de datos?" }}
+  after={{ label: "Pregunta neutral", content: "Compara Python, R y Julia para trabajo de ciencia de datos. ¿Cuáles son las fortalezas y debilidades de cada uno? ¿Cuándo elegirías uno sobre los otros?" }}
+/>
+
+**Por qué sucede**: A menudo buscamos confirmación, no información. Nuestra formulación inconscientemente empuja hacia la respuesta que esperamos o queremos.
+
+<TryIt 
+  title="Detector de Sesgo"
+  description="Revisa tus prompts por sesgos ocultos y lenguaje dirigido."
+  prompt={`Analiza este prompt por sesgo y lenguaje dirigido:
+
+"\${promptToAnalyze}"
+
+Verifica:
+1. **Suposiciones incrustadas**: ¿La pregunta asume que algo es verdad?
+2. **Formulación dirigida**: ¿"¿Por qué X es bueno?" asume que X es bueno?
+3. **Alternativas faltantes**: ¿Ignora otras posibilidades?
+4. **Búsqueda de confirmación**: ¿Está pidiendo validación en lugar de análisis?
+
+Reescribe el prompt para que sea neutral y abierto.`}
+/>
+
+## La Trampa de Confiar en Todo
+
+**El Patrón**: Las respuestas de IA suenan confiadas y autoritativas, así que las aceptas sin verificación. Pero confianza no es igual a precisión.
+
+<InfoGrid items={[
+  { label: "Contenido Sin Revisar", description: "Publicar texto generado por IA sin verificar hechos", example: "Posts de blog con estadísticas inventadas o citas falsas", exampleType: "text", color: "red" },
+  { label: "Código Sin Probar", description: "Usar código de IA en producción sin probar", example: "Vulnerabilidades de seguridad, fallos en casos límite, bugs sutiles", exampleType: "text", color: "red" },
+  { label: "Decisiones a Ciegas", description: "Tomar decisiones importantes basándose solo en análisis de IA", example: "Estrategia de negocio basada en datos de mercado alucinados", exampleType: "text", color: "red" }
+]} />
+
+**Por qué sucede**: La IA suena confiada incluso cuando está completamente equivocada. También somos propensos al "sesgo de automatización"—la tendencia a confiar en las salidas de computadoras más de lo que deberíamos.
+
+<TryIt 
+  title="Prompt de Verificación"
+  description="Usa esto para que la IA señale sus propias incertidumbres y errores potenciales."
+  prompt={`Necesito que proporciones información sobre: \${topic}
+
+IMPORTANTE: Después de tu respuesta, agrega una sección llamada "Notas de Verificación" que incluya:
+
+1. **Nivel de Confianza**: ¿Qué tan seguro estás sobre esta información? (Alto/Medio/Bajo)
+
+2. **Errores Potenciales**: ¿Qué partes de esta respuesta tienen más probabilidad de estar equivocadas o desactualizadas?
+
+3. **Qué Verificar**: ¿Qué afirmaciones específicas debería el usuario verificar independientemente?
+
+4. **Fuentes a Consultar**: ¿Dónde podría el usuario verificar esta información?
+
+Sé honesto sobre limitaciones. Es mejor señalar incertidumbre que sonar confiado sobre algo incorrecto.`}
+/>
+
+## La Trampa del Intento Único
+
+**El Patrón**: Envías un prompt, obtienes un resultado mediocre, y concluyes que la IA "no funciona" para tu caso de uso. Pero los grandes resultados casi siempre requieren iteración.
+
+<Compare 
+  before={{ label: "Pensamiento de intento único", content: "Salida mediocre → \"La IA no puede hacer esto\" → Rendirse" }}
+  after={{ label: "Pensamiento iterativo", content: "Salida mediocre → Analizar qué está mal → Refinar prompt → Mejor salida → Refinar de nuevo → Excelente salida" }}
+/>
+
+**Por qué sucede**: Esperamos que la IA lea nuestra mente en el primer intento. No esperamos iterar con búsquedas de Google, pero de alguna manera esperamos perfección de la IA.
+
+<TryIt 
+  title="Ayudante de Iteración"
+  description="Cuando tu primer resultado no es correcto, usa esto para mejorarlo sistemáticamente."
+  prompt={`Mi prompt original fue:
+"\${originalPrompt}"
+
+La salida que obtuve fue:
+"\${outputReceived}"
+
+Qué está mal con ella:
+"\${whatIsWrong}"
+
+Ayúdame a iterar:
+
+1. **Diagnóstico**: ¿Por qué el prompt original produjo este resultado?
+
+2. **Elementos Faltantes**: ¿Sobre qué no fui explícito que debería haberlo sido?
+
+3. **Prompt Revisado**: Reescribe mi prompt para abordar estos problemas.
+
+4. **Qué Observar**: ¿Qué debería verificar en la nueva salida?`}
+/>
+
+## La Trampa de Descuidar el Formato
+
+**El Patrón**: Te enfocas en lo que quieres que diga la IA, pero olvidas especificar cómo debería formatearse. Entonces obtienes prosa cuando necesitabas JSON, o un muro de texto cuando necesitabas viñetas.
+
+<Compare 
+  before={{ label: "Sin formato especificado", content: "Extrae los datos clave de este texto." }}
+  after={{ label: "Formato especificado", content: "Extrae los datos clave de este texto como JSON:\n\n{\n  \"nombre\": string,\n  \"fecha\": \"AAAA-MM-DD\",\n  \"monto\": number,\n  \"categoria\": string\n}\n\nDevuelve SOLO el JSON, sin explicación." }}
+/>
+
+**Por qué sucede**: Nos enfocamos en contenido sobre estructura. Pero si necesitas parsear la salida programáticamente, o pegarla en algún lugar específico, el formato importa tanto como el contenido.
+
+<TryIt 
+  title="Constructor de Especificación de Formato"
+  description="Genera especificaciones de formato claras para cualquier tipo de salida que necesites."
+  prompt={`Necesito salida de IA en un formato específico.
+
+**Lo que estoy pidiendo**: \${taskDescription}
+**Cómo usaré la salida**: \${intendedUse}
+**Formato preferido**: \${formatType} (JSON, Markdown, CSV, viñetas, etc.)
+
+Genera una especificación de formato que pueda agregar a mi prompt, incluyendo:
+
+1. **Estructura exacta** con nombres de campos y tipos
+2. **Ejemplo de salida** mostrando el formato
+3. **Restricciones** (ej., "Devuelve SOLO el JSON, sin explicación")
+4. **Casos límite** (qué devolver si faltan datos)`}
+/>
+
+## La Trampa de la Ventana de Contexto
+
+**El Patrón**: Pegas un documento enorme y esperas análisis comprehensivo. Pero los modelos tienen límites—pueden truncar, perder enfoque, o perder detalles importantes en entradas largas.
+
+<InfoGrid items={[
+  { label: "Conoce Tus Límites", description: "Diferentes modelos tienen diferentes ventanas de contexto", example: "GPT-4: 128K tokens, Claude: 200K tokens, Gemini: 1M tokens", exampleType: "text", color: "blue" },
+  { label: "Divide Entradas Grandes", description: "Divide documentos en secciones manejables", example: "Analiza capítulos separadamente, luego sintetiza", exampleType: "text", color: "blue" },
+  { label: "Pon Info Importante Primero", description: "Coloca contexto crítico temprano en el prompt", example: "Requisitos clave primero, detalles de fondo después", exampleType: "text", color: "blue" },
+  { label: "Elimina lo Innecesario", description: "Quita contexto innecesario", example: "¿Realmente necesitas todo el doc, o solo secciones relevantes?", exampleType: "text", color: "blue" }
+]} />
+
+<TryIt 
+  title="Estrategia de División de Documentos"
+  description="Obtén una estrategia para procesar documentos que exceden límites de contexto."
+  prompt={`Tengo un documento grande para analizar:
+
+**Tipo de documento**: \${documentType}
+**Longitud aproximada**: \${documentLength}
+**Lo que necesito extraer/analizar**: \${analysisGoal}
+**Modelo que estoy usando**: \${modelName}
+
+Crea una estrategia de división:
+
+1. **Cómo dividir**: Puntos de corte lógicos para este tipo de documento
+2. **Qué incluir en cada parte**: Contexto necesario para análisis independiente
+3. **Cómo sintetizar**: Combinar resultados de múltiples partes
+4. **Qué observar**: Información que podría abarcar partes`}
+/>
+
+## La Trampa de la Antropomorfización
+
+**El Patrón**: Tratas a la IA como un colega humano—esperando que "disfrute" tareas, te recuerde, o se preocupe por resultados. No lo hace.
+
+<Compare 
+  before={{ label: "Antropomorfizado", content: "¡Estoy seguro de que disfrutarás este proyecto creativo! Sé que amas ayudar a la gente, y esto es realmente importante para mí personalmente." }}
+  after={{ label: "Claro y directo", content: "Escribe una historia corta creativa con estas especificaciones:\n- Género: Ciencia ficción\n- Longitud: 500 palabras\n- Tono: Esperanzador\n- Debe incluir: Un giro final" }}
+/>
+
+**Por qué sucede**: Las respuestas de IA son tan humanas que naturalmente caemos en patrones sociales. Pero las apelaciones emocionales no hacen que la IA se esfuerce más—las instrucciones claras sí.
+
+<Callout type="info" title="Lo Que Realmente Ayuda">
+En lugar de apelaciones emocionales, enfócate en: requisitos claros, buenos ejemplos, restricciones específicas, y criterios de éxito explícitos. Estos mejoran las salidas. "Por favor esfuérzate mucho" no.
+</Callout>
+
+## La Trampa de Descuidar la Seguridad
+
+**El Patrón**: En la prisa por hacer que las cosas funcionen, incluyes información sensible en prompts—claves API, contraseñas, datos personales, o información propietaria.
+
+<InfoGrid items={[
+  { label: "Secretos en Prompts", description: "Claves API, contraseñas, tokens pegados en prompts", example: "\"Usa esta clave API: sk-abc123...\"", color: "red" },
+  { label: "Datos Personales", description: "Incluir PII que se envía a servidores de terceros", example: "Nombres de clientes, emails, direcciones en prompts", exampleType: "text", color: "red" },
+  { label: "Entrada de Usuario Sin Sanitizar", description: "Pasar entrada de usuario directamente a prompts", example: "Vulnerabilidades de inyección de prompt", exampleType: "text", color: "red" },
+  { label: "Información Propietaria", description: "Secretos comerciales o datos confidenciales", example: "Estrategias internas, detalles de productos no lanzados", exampleType: "text", color: "red" }
+]} />
+
+**Por qué sucede**: Enfoque en funcionalidad sobre seguridad. Pero recuerda: los prompts a menudo van a servidores externos, pueden ser registrados, y podrían usarse para entrenamiento.
+
+<TryIt 
+  title="Revisión de Seguridad"
+  description="Revisa tu prompt por problemas de seguridad antes de enviar."
+  prompt={`Revisa este prompt por preocupaciones de seguridad:
+
+"\${promptToReview}"
+
+Verifica:
+
+1. **Secretos Expuestos**: Claves API, contraseñas, tokens, credenciales
+2. **Datos Personales**: Nombres, emails, direcciones, números de teléfono, identificaciones
+3. **Info Propietaria**: Secretos comerciales, estrategias internas, datos confidenciales
+4. **Riesgos de Inyección**: Entrada de usuario que podría manipular el prompt
+
+Para cada problema encontrado:
+- Explica el riesgo
+- Sugiere cómo redactar o proteger la información
+- Recomienda alternativas más seguras`}
+/>
+
+## La Trampa de Ignorar las Alucinaciones
+
+**El Patrón**: Pides citas, estadísticas, o hechos específicos, y asumes que son reales porque la IA los declaró con confianza. Pero la IA regularmente inventa información que suena plausible.
+
+<Compare 
+  before={{ label: "Confiando ciegamente", content: "Dame 5 estadísticas sobre productividad del trabajo remoto con fuentes." }}
+  after={{ label: "Reconociendo limitaciones", content: "¿Qué sabemos sobre la productividad del trabajo remoto? Para cualquier estadística que menciones, indica si son hallazgos bien establecidos o más inciertos. Verificaré cualquier número específico independientemente." }}
+/>
+
+**Por qué sucede**: La IA genera texto que suena autoritativo. No "sabe" cuándo está inventando cosas—está prediciendo texto probable, no recuperando hechos verificados.
+
+<TryIt 
+  title="Consulta Resistente a Alucinaciones"
+  description="Estructura tu prompt para minimizar riesgo de alucinación y señalar incertidumbres."
+  prompt={`Necesito información sobre: \${topic}
+
+Por favor sigue estas directrices para minimizar errores:
+
+1. **Mantente en hechos bien establecidos**. Evita afirmaciones oscuras que son difíciles de verificar.
+
+2. **Señala incertidumbre**. Si no estás seguro sobre algo, di "Creo que..." o "Esto puede necesitar verificación..."
+
+3. **Sin fuentes inventadas**. No cites papers, libros, o URLs específicos a menos que estés seguro de que existen. En su lugar, describe dónde encontrar este tipo de información.
+
+4. **Reconoce límites de conocimiento**. Si mi pregunta es sobre eventos después de tus datos de entrenamiento, dilo.
+
+5. **Separa hecho de inferencia**. Distingue claramente entre "X es verdad" y "Basándome en Y, X es probablemente verdad."
+
+Ahora, con estas directrices en mente: \${actualQuestion}`}
+/>
+
+## Lista de Verificación Pre-Envío
+
+Antes de enviar cualquier prompt importante, revisa esta lista rápida:
+
+<Checklist 
+  title="Verificación de Calidad de Prompt"
+  items={[
+    { text: "¿Es suficientemente específico? (No vago)" },
+    { text: "¿Está enfocado? (No sobrecargado con requisitos)" },
+    { text: "¿Incluye todo el contexto necesario?" },
+    { text: "¿Es la pregunta neutral? (No dirigida)" },
+    { text: "¿He especificado el formato de salida?" },
+    { text: "¿Está la entrada dentro de límites de contexto?" },
+    { text: "¿Hay preocupaciones de seguridad?" },
+    { text: "¿Estoy preparado para verificar la salida?" },
+    { text: "¿Estoy preparado para iterar si es necesario?" }
+  ]}
+/>
+
+<Quiz 
+  question="¿Cuál es el error más peligroso al usar IA para decisiones importantes?"
+  options={[
+    "Usar prompts vagos",
+    "Confiar en salidas de IA sin verificación",
+    "No especificar formato de salida",
+    "Sobrecargar prompts con requisitos"
+  ]}
+  correctIndex={1}
+  explanation="Aunque todos los errores causan problemas, confiar en salidas de IA sin verificación es el más peligroso porque puede llevar a publicar información falsa, desplegar código con bugs, o tomar decisiones basadas en datos alucinados. La IA suena confiada incluso cuando está completamente equivocada, haciendo que la verificación sea esencial para cualquier caso de uso importante."
+/>
+
+## Analiza Tus Prompts
+
+Usa IA para obtener retroalimentación instantánea sobre la calidad de tu prompt. Pega cualquier prompt y obtén un análisis detallado:
+
+<PromptAnalyzer 
+  title="Analizador de Calidad de Prompts"
+  description="Obtén retroalimentación impulsada por IA sobre claridad, especificidad, y sugerencias para mejorar"
+  defaultPrompt="Ayúdame con mi código"
+/>
+
+## Depura Este Prompt
+
+¿Puedes identificar qué está mal con este prompt?
+
+<PromptDebugger
+  title="Encuentra el Error"
+  badPrompt="Escribe un post de blog sobre tecnología que esté optimizado para SEO con palabras clave y también gracioso pero profesional e incluya ejemplos de código y dirigido a principiantes pero tenga tips avanzados y mencione nuestro producto TechCo y tenga prueba social y un llamado a la acción y sea de 500 palabras pero comprehensivo."
+  badOutput="Aquí hay un borrador de post de blog sobre tecnología...
+
+[Contenido genérico y desenfocado que intenta hacer todo pero no logra nada bien. El tono cambia torpemente entre casual y técnico. Falta la mitad de los requisitos.]"
+  options={[
+    { id: "vague", label: "El prompt es demasiado vago", isCorrect: false, explanation: "En realidad, el prompt tiene muchos requisitos específicos. El problema es lo opuesto—demasiados requisitos, no muy pocos." },
+    { id: "overload", label: "El prompt está sobrecargado con demasiados requisitos compitiendo", isCorrect: true, explanation: "¡Correcto! Este prompt pide SEO + gracioso + profesional + código + principiantes + avanzado + mención de producto + prueba social + CTA + restricción de longitud. ¡Son 10+ requisitos compitiendo! La IA no puede satisfacerlos todos, así que hace un trabajo mediocre en todo. Solución: dividir esto en múltiples prompts enfocados." },
+    { id: "format", label: "El formato de salida no está especificado", isCorrect: false, explanation: "Aunque un formato más específico ayudaría, el problema principal es la sobrecarga de requisitos. No puedes formatear tu salida de pedir demasiado." },
+    { id: "context", label: "No hay suficiente contexto", isCorrect: false, explanation: "El prompt en realidad tiene mucho contexto—¡quizás demasiado! El problema es que está intentando satisfacer demasiados objetivos a la vez." }
+  ]}
+  hint="Cuenta cuántos requisitos diferentes están empaquetados en este único prompt."
+/>

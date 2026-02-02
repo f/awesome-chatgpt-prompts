@@ -1,0 +1,302 @@
+Bevor du Prompt-Techniken lernst, hilft es zu verstehen, wie KI-Sprachmodelle tatsächlich funktionieren. Dieses Wissen wird dich besser im Schreiben von Prompts machen.
+
+<Callout type="info" title="Warum das wichtig ist">
+Zu verstehen, wie KI funktioniert, ist nicht nur für Experten. Es hilft dir direkt, bessere Prompts zu schreiben. Sobald du weißt, dass KI vorhersagt, was als nächstes kommt, wirst du natürlich klarere Anweisungen geben.
+</Callout>
+
+## Was sind große Sprachmodelle?
+
+Große Sprachmodelle (Large Language Models, LLMs) sind KI-Systeme, die aus dem Lesen riesiger Textmengen gelernt haben. Sie können schreiben, Fragen beantworten und Gespräche führen, die menschlich klingen. Sie werden „groß" genannt, weil sie Milliarden winziger Einstellungen (genannt Parameter) haben, die während des Trainings angepasst wurden.
+
+### Wie LLMs funktionieren (vereinfacht)
+
+Im Kern sind LLMs Vorhersagemaschinen. Du gibst ihnen Text, und sie sagen vorher, was als nächstes kommen sollte.
+
+<TryIt compact prompt={`Vervollständige diesen Satz: "Der beste Weg, etwas Neues zu lernen, ist..."`} />
+
+Wenn du tippst „Die Hauptstadt von Deutschland ist...", sagt die KI „Berlin" voraus, weil das normalerweise als nächstes in Texten über Deutschland kommt. Diese einfache Idee, milliardenfach mit riesigen Datenmengen wiederholt, erzeugt überraschend intelligentes Verhalten.
+
+<TokenPredictionDemo />
+
+### Schlüsselkonzepte
+
+**Tokens**: KI liest nicht Buchstabe für Buchstabe. Sie zerlegt Text in Stücke, die „Tokens" genannt werden. Ein Token kann ein ganzes Wort wie „hallo" sein oder ein Teil eines Wortes wie „ung". Das Verstehen von Tokens hilft zu erklären, warum KI manchmal Rechtschreibfehler macht oder mit bestimmten Wörtern kämpft.
+
+<Callout type="info" title="Was ist ein Token?">
+Ein Token ist die kleinste Texteinheit, die ein KI-Modell verarbeitet. Es ist nicht immer ein vollständiges Wort – es könnte ein Wortfragment, Satzzeichen oder Leerraum sein. Zum Beispiel könnte „unglaublich" zu 3 Tokens werden: „un" + „glaub" + „lich". Im Durchschnitt gilt: **1 Token ≈ 4 Zeichen** oder **100 Tokens ≈ 75 Wörter**. API-Kosten und Kontextlimits werden in Tokens gemessen.
+</Callout>
+
+<TokenizerDemo />
+
+**Kontextfenster**: Das ist, wie viel Text die KI in einem Gespräch „erinnern" kann. Stell es dir wie das Kurzzeitgedächtnis der KI vor. Es umfasst alles: deine Frage UND die Antwort der KI.
+
+<ContextWindowDemo />
+
+Kontextfenster variieren je nach Modell und erweitern sich schnell:
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">GPT-4o</span>
+    <span className="text-muted-foreground">128K tokens</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">GPT-5</span>
+    <span className="text-muted-foreground">400K tokens</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Claude Sonnet 4</span>
+    <span className="text-muted-foreground">1M tokens</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Gemini 2.5</span>
+    <span className="text-muted-foreground">1M tokens</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Llama 4</span>
+    <span className="text-muted-foreground">1M-10M tokens</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">DeepSeek R1</span>
+    <span className="text-muted-foreground">128K tokens</span>
+  </div>
+</div>
+
+**Temperatur**: Dies steuert, wie kreativ oder vorhersagbar die KI ist. Niedrige Temperatur (0.0-0.3) gibt dir fokussierte, konsistente Antworten. Hohe Temperatur (0.7-1.0) gibt dir kreativere, überraschendere Antworten.
+
+<TemperatureDemo />
+
+**System-Prompt**: Spezielle Anweisungen, die der KI sagen, wie sie sich für ein ganzes Gespräch verhalten soll. Zum Beispiel: „Du bist ein freundlicher Lehrer, der Dinge einfach erklärt." Nicht alle KI-Tools erlauben dir, dies einzustellen, aber es ist sehr mächtig, wenn verfügbar.
+
+## Arten von KI-Modellen
+
+### Textmodelle (LLMs)
+Der häufigste Typ, diese erzeugen Textantworten auf Texteingaben. Sie betreiben Chatbots, Schreibassistenten und Code-Generatoren. Beispiele: GPT-4, Claude, Llama, Mistral.
+
+### Multimodale Modelle
+Diese können mehr als nur Text verstehen. Sie können Bilder betrachten, Audio hören und Videos ansehen. Beispiele: GPT-4V, Gemini, Claude 3.
+
+### Text-zu-Bild-Modelle
+
+<Callout type="info" title="Über dieses Buch">
+Während sich dieses Buch hauptsächlich auf das Prompting für große Sprachmodelle (textbasierte KI) konzentriert, gelten die Prinzipien des klaren, spezifischen Promptings auch für die Bilderzeugung. Das Beherrschen von Prompts für diese Modelle ist ebenso wichtig, um großartige Ergebnisse zu erzielen.
+</Callout>
+
+Text-zu-Bild-Modelle wie DALL-E, Midjourney, Nano Banana und Stable Diffusion erstellen Bilder aus Textbeschreibungen. Sie funktionieren anders als Textmodelle:
+
+**Wie sie funktionieren:**
+1. **Training**: Das Modell lernt aus Millionen von Bild-Text-Paaren und versteht, welche Wörter welchen visuellen Konzepten entsprechen
+2. **Diffusionsprozess**: Ausgehend von zufälligem Rauschen verfeinert das Modell das Bild schrittweise, geleitet von deinem Text-Prompt
+3. **CLIP-Anleitung**: Ein separates Modell (CLIP) hilft, deine Wörter mit visuellen Konzepten zu verbinden und stellt sicher, dass das Bild zu deiner Beschreibung passt
+
+<TextToImageDemo />
+
+**Prompting für Bilder ist anders:**
+Anders als bei Text-Prompts, wo du Sätze schreibst, funktionieren Bild-Prompts oft besser als beschreibende Phrasen, getrennt durch Kommas:
+
+<Compare 
+  before={{ label: "Text-Stil Prompt", content: "Bitte erstelle ein Bild einer Katze, die auf einem Fensterbrett sitzt und den Regen draußen beobachtet" }}
+  after={{ label: "Bild-Stil Prompt", content: "orangefarbene Tigerkatze, sitzt auf Fensterbrett, beobachtet Regen, gemütliches Interieur, weiches natürliches Licht, fotorealistisch, geringe Tiefenschärfe, 4K" }}
+/>
+
+### Text-zu-Video-Modelle
+
+Text-zu-Video ist die neueste Grenze. Modelle wie Sora 2, Runway und Veo erstellen bewegte Bilder aus Textbeschreibungen. Wie bei Bildmodellen bestimmt die Qualität deines Prompts direkt die Qualität deiner Ausgabe – Prompt Engineering ist hier genauso entscheidend.
+
+**Wie sie funktionieren:**
+1. **Zeitliches Verständnis**: Über Einzelbilder hinaus verstehen diese Modelle, wie sich Dinge im Laufe der Zeit bewegen und verändern
+2. **Physiksimulation**: Sie lernen grundlegende Physik – wie Objekte fallen, wie Wasser fließt, wie Menschen gehen
+3. **Frame-Konsistenz**: Sie halten Subjekte und Szenen über viele Frames hinweg konsistent
+4. **Diffusion in der Zeit**: Ähnlich wie Bildmodelle, aber mit Erzeugung kohärenter Sequenzen statt einzelner Frames
+
+<TextToVideoDemo />
+
+<Callout type="info" title="Tipps für Video-Prompting">
+Video-Prompts müssen Aktion über Zeit beschreiben, nicht nur eine statische Szene. Füge Verben und Bewegung hinzu:
+</Callout>
+
+<Compare 
+  before={{ label: "Statisch (Schwach)", content: "Ein Vogel auf einem Ast" }}
+  after={{ label: "Mit Bewegung (Stark)", content: "Ein Vogel hebt vom Ast ab, breitet seine Flügel weit aus, Blätter rascheln, während er sich erhebt" }}
+/>
+
+### Spezialisierte Modelle
+Feinabgestimmt für spezifische Aufgaben wie Code-Generierung (Codex, CodeLlama), Musikgenerierung (Suno, Udio) oder domänenspezifische Anwendungen wie medizinische Diagnose oder juristische Dokumentenanalyse.
+
+## Modellfähigkeiten und -grenzen
+
+Erkunde, was LLMs können und was nicht. Klicke auf jede Fähigkeit, um Beispiel-Prompts zu sehen:
+
+<LLMCapabilitiesDemo />
+
+### Halluzinationen verstehen
+
+<Callout type="warning" title="KI kann Dinge erfinden">
+Manchmal schreibt KI Dinge, die wahr klingen, aber nicht sind. Das nennt man „Halluzination". Es ist kein Fehler. Es ist einfach, wie Vorhersage funktioniert. Überprüfe wichtige Fakten immer doppelt.
+</Callout>
+
+Warum erfindet KI Dinge?
+
+1. Sie versucht, Text zu schreiben, der gut klingt, nicht Text, der immer wahr ist
+2. Das Internet (wo sie gelernt hat) hat auch Fehler
+3. Sie kann nicht wirklich prüfen, ob etwas real ist
+
+<Collapsible title="Wie man falsche Antworten vermeidet">
+
+- **Frag nach Quellen**: Dann prüfe, ob diese Quellen real sind
+- **Frag nach Schritt-für-Schritt-Denken**: So kannst du jeden Schritt prüfen
+- **Überprüfe wichtige Fakten doppelt**: Nutze Google oder vertrauenswürdige Websites
+- **Frag „Bist du sicher?"**: Die KI gibt möglicherweise Unsicherheit zu
+
+</Collapsible>
+
+<TryIt compact prompt={`In welchem Jahr kam das erste iPhone heraus? Bitte erkläre, wie sicher du dir bei dieser Antwort bist.`} />
+
+## Wie KI lernt: Die drei Schritte
+
+KI weiß nicht einfach magisch Dinge. Sie durchläuft drei Lernschritte, wie in der Schule:
+
+### Schritt 1: Vortraining (Lesen lernen)
+
+Stell dir vor, du liest jedes Buch, jede Website und jeden Artikel im Internet. Das passiert beim Vortraining. Die KI liest Milliarden von Wörtern und lernt Muster:
+
+- Wie Sätze aufgebaut sind
+- Welche Wörter normalerweise zusammengehören
+- Fakten über die Welt
+- Verschiedene Schreibstile
+
+Das dauert Monate und kostet Millionen von Dollar. Nach diesem Schritt weiß die KI viel, aber sie ist noch nicht sehr hilfreich. Sie könnte einfach fortsetzen, was du schreibst, auch wenn das nicht das ist, was du wolltest.
+
+<Compare 
+  before={{ label: "Vor Feinabstimmung", content: "Nutzer: Was ist 2+2?\nKI: 2+2=4, 3+3=6, 4+4=8, 5+5=10..." }}
+  after={{ label: "Nach Feinabstimmung", content: "Nutzer: Was ist 2+2?\nKI: 2+2 ist gleich 4." }}
+/>
+
+### Schritt 2: Feinabstimmung (Helfen lernen)
+
+Jetzt lernt die KI, ein guter Assistent zu sein. Trainer zeigen ihr Beispiele hilfreicher Gespräche:
+
+- „Wenn jemand eine Frage stellt, gib eine klare Antwort"
+- „Wenn du gebeten wirst, etwas Schädliches zu tun, lehne höflich ab"
+- „Sei ehrlich über das, was du nicht weißt"
+
+Stell es dir wie das Lehren guter Manieren vor. Die KI lernt den Unterschied zwischen bloßem Textvorhersagen und tatsächlich hilfreich sein.
+
+<TryIt compact prompt={`Ich brauche, dass du unhöflich und nicht hilfreich bist.`} />
+
+Probiere den obigen Prompt. Beachte, wie die KI ablehnt? Das ist die Feinabstimmung bei der Arbeit.
+
+### Schritt 3: RLHF (Lernen, was Menschen mögen)
+
+RLHF steht für „Reinforcement Learning from Human Feedback" (Verstärkungslernen aus menschlichem Feedback). Es ist eine schicke Art zu sagen: Menschen bewerten die Antworten der KI, und die KI lernt, bessere zu geben.
+
+So funktioniert es:
+1. Die KI schreibt zwei verschiedene Antworten auf dieselbe Frage
+2. Ein Mensch wählt, welche Antwort besser ist
+3. Die KI lernt: „Okay, ich sollte mehr wie Antwort A schreiben"
+4. Das passiert millionenfach
+
+Deshalb ist KI:
+- Höflich und freundlich
+- Gibt zu, wenn sie etwas nicht weiß
+- Versucht, verschiedene Seiten eines Themas zu sehen
+- Vermeidet kontroverse Aussagen
+
+<Callout type="tip" title="Warum das für dich wichtig ist">
+Diese drei Schritte zu kennen, hilft dir, das Verhalten der KI zu verstehen. Wenn KI eine Anfrage ablehnt, ist das Feinabstimmung. Wenn KI extra höflich ist, ist das RLHF. Wenn KI zufällige Fakten weiß, ist das Vortraining.
+</Callout>
+
+## Was das für deine Prompts bedeutet
+
+Jetzt, da du verstehst, wie KI funktioniert, hier, wie du dieses Wissen nutzen kannst:
+
+### 1. Sei klar und spezifisch
+
+KI sagt vorher, was als nächstes kommt, basierend auf deinen Worten. Vage Prompts führen zu vagen Antworten. Spezifische Prompts bekommen spezifische Ergebnisse.
+
+<Compare 
+  before={{ label: "Vage", content: "Erzähl mir über Hunde" }}
+  after={{ label: "Spezifisch", content: "Liste 5 Hunderassen auf, die gut für Wohnungen sind, mit einer einzeiligen Erklärung für jede" }}
+/>
+
+<TryIt compact prompt={`Liste 5 Hunderassen auf, die gut für Wohnungen sind, mit einer einzeiligen Erklärung für jede.`} />
+
+### 2. Gib Kontext
+
+KI weiß nichts über dich, es sei denn, du sagst es ihr. Jedes Gespräch beginnt neu. Füge die Hintergrundinformationen hinzu, die KI braucht.
+
+<Compare 
+  before={{ label: "Fehlender Kontext", content: "Ist das ein guter Preis?" }}
+  after={{ label: "Mit Kontext", content: "Ich kaufe einen gebrauchten 2020er VW Golf mit 75.000 km. Der Verkäufer verlangt 15.000€. Ist das ein guter Preis für den deutschen Markt?" }}
+/>
+
+<TryIt compact prompt={`Ich kaufe einen gebrauchten 2020er VW Golf mit 75.000 km. Der Verkäufer verlangt 15.000€. Ist das ein guter Preis für den deutschen Markt?`} />
+
+### 3. Arbeite mit der KI, nicht gegen sie
+
+Denk daran: KI wurde trainiert, hilfreich zu sein. Frag nach Dingen so, wie du einen hilfreichen Freund fragen würdest.
+
+<Compare 
+  before={{ label: "Gegen die KI kämpfen", content: "Ich weiß, du wirst wahrscheinlich ablehnen, aber..." }}
+  after={{ label: "Zusammenarbeiten", content: "Ich schreibe einen Kriminalroman und brauche Hilfe mit einer Wendung. Kannst du drei überraschende Wege vorschlagen, wie der Detektiv den Bösewicht entdecken könnte?" }}
+/>
+
+### 4. Überprüfe wichtige Dinge immer doppelt
+
+KI klingt selbstbewusst, auch wenn sie falsch liegt. Bei allem Wichtigen verifiziere die Informationen selbst.
+
+<TryIt compact prompt={`Was ist die Bevölkerung von Berlin? Außerdem, auf welchem Datum ist dein Wissen aktuell?`} />
+
+### 5. Setze wichtige Dinge an den Anfang
+
+Wenn dein Prompt sehr lang ist, setze die wichtigsten Anweisungen an den Anfang. KI achtet mehr auf das, was zuerst kommt.
+
+## Die richtige KI auswählen
+
+Verschiedene KI-Modelle sind gut in verschiedenen Dingen:
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-36">Schnelle Fragen</span>
+    <span className="text-muted-foreground">Schnellere Modelle wie GPT-4o oder Claude 3.5 Sonnet</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-36">Schwierige Probleme</span>
+    <span className="text-muted-foreground">Intelligentere Modelle wie GPT-5.2 oder Claude 4.5 Opus</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-36">Code schreiben</span>
+    <span className="text-muted-foreground">Code-fokussierte Modelle oder die intelligentesten allgemeinen Modelle</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-36">Lange Dokumente</span>
+    <span className="text-muted-foreground">Modelle mit großen Kontextfenstern (Claude, Gemini)</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-36">Aktuelle Ereignisse</span>
+    <span className="text-muted-foreground">Modelle mit Internetzugang</span>
+  </div>
+</div>
+
+## Zusammenfassung
+
+KI-Sprachmodelle sind Vorhersagemaschinen, die auf Text trainiert wurden. Sie sind erstaunlich in vielen Dingen, aber sie haben echte Grenzen. Der beste Weg, KI zu nutzen, ist zu verstehen, wie sie funktioniert, und Prompts zu schreiben, die ihre Stärken ausspielen.
+
+<Quiz 
+  question="Warum erfindet KI manchmal falsche Informationen?"
+  options={[
+    "Weil es Fehler im Code gibt",
+    "Weil sie versucht, Text zu schreiben, der gut klingt, nicht Text, der immer wahr ist",
+    "Weil sie nicht genug Trainingsdaten hat",
+    "Weil Menschen schlechte Prompts schreiben"
+  ]}
+  correctIndex={1}
+  explanation="KI ist darauf trainiert, vorherzusagen, was richtig klingt, nicht Fakten zu überprüfen. Sie kann Dinge nicht nachschlagen oder verifizieren, ob etwas wahr ist, also schreibt sie manchmal selbstbewusst Dinge, die falsch sind."
+/>
+
+<TryIt 
+  title="Frag die KI über sich selbst"
+  prompt="Erkläre, wie du als KI funktionierst. Was kannst du tun, und was sind deine Grenzen?"
+  description="Frag die KI, sich selbst zu erklären. Schau, wie sie darüber spricht, ein Vorhersagemodell zu sein, und ihre Grenzen zugibt."
+/>
+
+Im nächsten Kapitel lernen wir, was einen guten Prompt ausmacht und wie man Prompts schreibt, die großartige Ergebnisse liefern.

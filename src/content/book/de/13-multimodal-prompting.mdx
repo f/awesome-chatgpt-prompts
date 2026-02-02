@@ -1,0 +1,665 @@
+Die meiste Zeit der Geschichte arbeiteten Computer mit jeweils einer Art von Daten: Text in einem Programm, Bilder in einem anderen, Audio woanders. Aber Menschen erleben die Welt nicht so. Wir sehen, hören, lesen und sprechen gleichzeitig und kombinieren all diese Eingaben, um unsere Umgebung zu verstehen.
+
+**Multimodale KI** verändert alles. Diese Modelle können mehrere Arten von Informationen zusammen verarbeiten – ein Bild analysieren, während sie deine Frage dazu lesen, oder Bilder aus deinen Textbeschreibungen generieren. Dieses Kapitel lehrt dich, wie du effektiv mit diesen leistungsstarken Systemen kommunizierst.
+
+<Callout type="info" title="Was bedeutet Multimodal?">
+„Multi" bedeutet viele, und „modal" bezieht sich auf Modi oder Datentypen. Ein multimodales Modell kann mit mehreren Modalitäten arbeiten: Text, Bilder, Audio, Video oder sogar Code. Anstatt separate Werkzeuge für jeden Typ zu haben, versteht ein Modell sie alle zusammen.
+</Callout>
+
+## Warum Multimodal wichtig ist
+
+Traditionelle KI erforderte, dass du alles in Worten beschreibst. Willst du nach einem Bild fragen? Du müsstest es zuerst beschreiben. Willst du ein Dokument analysieren? Du müsstest es manuell transkribieren. Multimodale Modelle beseitigen diese Barrieren.
+
+<InfoGrid items={[
+  { label: "Sehen und Verstehen", description: "Lade ein Bild hoch und stelle Fragen direkt dazu – keine Beschreibung nötig", example: "\"Was stimmt nicht mit diesem Schaltplan?\"", color: "blue" },
+  { label: "Aus Worten erschaffen", description: "Beschreibe, was du willst, und generiere Bilder, Audio oder Video", example: "\"Ein Sonnenuntergang über Bergen im Aquarell-Stil\"", color: "purple" },
+  { label: "Alles kombinieren", description: "Mische Text, Bilder und andere Medien in einer einzigen Konversation", example: "\"Vergleiche diese zwei Designs und sag mir, welches besser für Mobile ist\"", color: "green" },
+  { label: "Dokumente analysieren", description: "Extrahiere Informationen aus Fotos von Dokumenten, Quittungen oder Screenshots", example: "\"Extrahiere alle Positionen aus diesem Rechnungsfoto\"", color: "amber" }
+]} />
+
+## Warum Prompting bei Multimodal noch wichtiger ist
+
+Bei reinen Textmodellen erhält die KI genau das, was du tippst. Aber bei multimodalen Modellen muss die KI visuelle oder Audio-Informationen interpretieren – und Interpretation erfordert Anleitung.
+
+<Compare 
+  before={{ label: "Vager multimodaler Prompt", content: "Was siehst du in diesem Bild?\n\n[Bild eines komplexen Dashboards]" }}
+  after={{ label: "Geführter multimodaler Prompt", content: "Das ist ein Screenshot unseres Analytics-Dashboards. Konzentriere dich auf:\n1. Das Konversionsraten-Diagramm oben rechts\n2. Alle Fehlerindikatoren oder Warnungen\n3. Ob die Daten normal oder anomal aussehen\n\n[Bild eines komplexen Dashboards]" }}
+/>
+
+**Ohne Anleitung** könnte das Modell Farben, Layout oder irrelevante Details beschreiben. **Mit Anleitung** fokussiert es sich auf das, was dir wirklich wichtig ist.
+
+<Callout type="warning" title="Die Interpretationslücke">
+Wenn du ein Bild anschaust, weißt du sofort, was wichtig ist, basierend auf deinem Kontext und deinen Zielen. Die KI hat diesen Kontext nicht, es sei denn, du stellst ihn bereit. Ein Foto eines Risses in einer Wand könnte sein: ein Statik-Problem, eine künstlerische Textur oder irrelevanter Hintergrund. Dein Prompt bestimmt, wie die KI es interpretiert.
+</Callout>
+
+## Die multimodale Landschaft
+
+Verschiedene Modelle haben verschiedene Fähigkeiten. Hier ist, was 2025 verfügbar ist:
+
+### Verständnis-Modelle (Eingabe → Analyse)
+
+Diese Modelle akzeptieren verschiedene Medientypen und produzieren Textanalysen oder Antworten.
+
+<InfoGrid items={[
+  { label: "GPT-4o / GPT-5", description: "Text + Bilder + Audio → Text. OpenAIs Flaggschiff mit 128K Kontext, starken kreativen und Reasoning-Fähigkeiten, reduzierte Halluzinationsraten.", color: "green" },
+  { label: "Claude 4 Sonnet/Opus", description: "Text + Bilder → Text. Anthropics sicherheitsfokussiertes Modell mit fortgeschrittenem Reasoning, exzellent für Coding und komplexe mehrstufige Aufgaben.", color: "purple" },
+  { label: "Gemini 2.5", description: "Text + Bilder + Audio + Video → Text. Googles Modell mit 1M Token-Kontext, Selbst-Faktenprüfung, schnelle Verarbeitung für Coding und Forschung.", color: "blue" },
+  { label: "LLaMA 4 Scout", description: "Text + Bilder + Video → Text. Metas Open-Source-Modell mit massivem 10M Token-Kontext für lange Dokumente und Codebases.", color: "cyan" },
+  { label: "Grok 4", description: "Text + Bilder → Text. xAIs Modell mit Echtzeit-Datenzugang und Social-Media-Integration für aktuelle Antworten.", color: "red" }
+]} />
+
+### Generierungs-Modelle (Text → Medien)
+
+Diese Modelle erstellen Bilder, Audio oder Video aus Textbeschreibungen.
+
+<InfoGrid items={[
+  { label: "DALL-E 3", description: "Text → Bilder. OpenAIs Bildgenerator mit hoher Genauigkeit zu Prompt-Beschreibungen.", color: "amber" },
+  { label: "Midjourney", description: "Text + Bilder → Bilder. Bekannt für künstlerische Qualität, Stilkontrolle und ästhetische Ausgaben.", color: "pink" },
+  { label: "Sora", description: "Text → Video. OpenAIs Videogenerierungsmodell zur Erstellung von Clips aus Beschreibungen.", color: "red" },
+  { label: "Whisper", description: "Audio → Text. OpenAIs Speech-to-Text mit hoher Genauigkeit über Sprachen hinweg.", color: "cyan" }
+]} />
+
+<Callout type="info" title="Schnelle Entwicklung">
+Die multimodale Landschaft ändert sich schnell. Neue Modelle werden häufig veröffentlicht, und bestehende Modelle gewinnen Fähigkeiten durch Updates. Prüfe immer die neueste Dokumentation für aktuelle Features und Einschränkungen.
+</Callout>
+
+## Bildverständnis-Prompts
+
+Der häufigste multimodale Anwendungsfall ist, KI zu bitten, Bilder zu analysieren. Der Schlüssel ist, Kontext darüber zu liefern, was du brauchst.
+
+### Grundlegende Bildanalyse
+
+Beginne mit einer klaren Anfragestruktur. Sage dem Modell, auf welche Aspekte es sich konzentrieren soll.
+
+<TryIt 
+  title="Strukturierte Bildanalyse"
+  description="Dieser Prompt liefert ein klares Framework für Bildanalyse. Das Modell weiß genau, welche Informationen du brauchst."
+  prompt={`Analysiere dieses Bild und beschreibe:
+
+1. **Hauptmotiv**: Was ist der primäre Fokus dieses Bildes?
+2. **Umgebung**: Wo scheint das zu sein? (drinnen/draußen, Art des Ortes)
+3. **Stimmung**: Welchen emotionalen Ton oder Atmosphäre vermittelt es?
+4. **Textinhalt**: Sichtbarer Text, Schilder oder Beschriftungen?
+5. **Bemerkenswerte Details**: Was könnte jemand auf den ersten Blick übersehen?
+6. **Technische Qualität**: Wie ist Beleuchtung, Fokus und Komposition?
+
+[Füge das Bild ein oder beschreibe es, das du analysieren möchtest]
+
+Bildbeschreibung oder URL: \${imageDescription}`}
+/>
+
+### Strukturierte Ausgabe für Bilder
+
+Wenn du Bildanalyse programmatisch verarbeiten musst, fordere JSON-Ausgabe an.
+
+<TryIt 
+  title="JSON-Bildanalyse"
+  description="Erhalte strukturierte Daten aus der Bildanalyse, die einfach zu parsen und in Anwendungen zu verwenden sind."
+  prompt={`Analysiere dieses Bild und gib ein JSON-Objekt mit folgender Struktur zurück:
+
+{
+  "summary": "Beschreibung in einem Satz",
+  "objects": ["Liste der sichtbaren Hauptobjekte"],
+  "people": {
+    "count": "Zahl oder 'keine'",
+    "activities": ["Was sie tun, falls vorhanden"]
+  },
+  "text_detected": ["Sichtbarer Text im Bild"],
+  "colors": {
+    "dominant": ["Top 3 Farben"],
+    "mood": "Warm/Kühl/Neutral"
+  },
+  "setting": {
+    "type": "drinnen/draußen/unbekannt",
+    "description": "Genauere Ortsbeschreibung"
+  },
+  "technical": {
+    "quality": "hoch/mittel/niedrig",
+    "lighting": "Beschreibung der Beleuchtung",
+    "composition": "Beschreibung von Bildausschnitt/Komposition"
+  },
+  "confidence": "hoch/mittel/niedrig"
+}
+
+Zu analysierendes Bild: \${imageDescription}`}
+/>
+
+### Vergleichende Analyse
+
+Mehrere Bilder zu vergleichen erfordert klare Kennzeichnung und spezifische Vergleichskriterien.
+
+<TryIt 
+  title="Bildvergleich"
+  description="Vergleiche zwei oder mehr Bilder mit spezifischen Kriterien, die für deine Entscheidung wichtig sind."
+  prompt={`Vergleiche diese Bilder für \${purpose}:
+
+**Bild A**: \${imageA}
+**Bild B**: \${imageB}
+
+Analysiere jedes Bild nach diesen Kriterien:
+1. \${criterion1} (Wichtigkeit: hoch)
+2. \${criterion2} (Wichtigkeit: mittel)  
+3. \${criterion3} (Wichtigkeit: niedrig)
+
+Liefere:
+- Seite-an-Seite-Vergleich für jedes Kriterium
+- Stärken und Schwächen von jedem
+- Klare Empfehlung mit Begründung
+- Alle Bedenken oder Vorbehalte`}
+/>
+
+## Dokument- und Screenshot-Analyse
+
+Eine der praktischsten Anwendungen multimodaler KI ist die Analyse von Dokumenten, Screenshots und UI-Elementen. Das spart Stunden manueller Transkription und Überprüfung.
+
+### Dokumentextraktion
+
+Gescannte Dokumente, Fotos von Quittungen und PDFs als Bilder können alle verarbeitet werden. Der Schlüssel ist, dem Modell zu sagen, welche Art von Dokument es ist und welche Informationen du brauchst.
+
+<TryIt 
+  title="Dokument-Daten-Extraktor"
+  description="Extrahiere strukturierte Daten aus Fotos von Dokumenten, Quittungen, Rechnungen oder Formularen."
+  prompt={`Das ist ein Foto/Scan von einem \${documentType}.
+
+Extrahiere alle Informationen in strukturiertes JSON-Format:
+
+{
+  "document_type": "erkannter Typ",
+  "date": "falls vorhanden",
+  "key_fields": {
+    "field_name": "Wert"
+  },
+  "line_items": [
+    {"description": "", "amount": ""}
+  ],
+  "totals": {
+    "subtotal": "",
+    "tax": "",
+    "total": ""
+  },
+  "handwritten_notes": ["handgeschriebener Text"],
+  "unclear_sections": ["Bereiche, die schwer zu lesen waren"],
+  "confidence": "hoch/mittel/niedrig"
+}
+
+WICHTIG: Wenn Text unklar ist, notiere es in "unclear_sections" statt zu raten. Markiere confidence als "niedrig", wenn wesentliche Teile schwer zu lesen waren.
+
+Dokumentbeschreibung: \${documentDescription}`}
+/>
+
+### Screenshot- und UI-Analyse
+
+Screenshots sind Goldgruben für Debugging, UX-Review und Dokumentation. Leite die KI an, sich auf das Wichtige zu konzentrieren.
+
+<TryIt 
+  title="UI/UX-Screenshot-Analysator"
+  description="Erhalte detaillierte Analyse von Screenshots für Debugging, UX-Review oder Dokumentation."
+  prompt={`Das ist ein Screenshot von \${applicationName}.
+
+Analysiere diese Oberfläche:
+
+**Identifikation**
+- Welcher Bildschirm/Seite/Zustand ist das?
+- Was versucht der Benutzer hier wahrscheinlich zu erreichen?
+
+**UI-Elemente**
+- Wichtige interaktive Elemente (Buttons, Formulare, Menüs)
+- Aktueller Zustand (etwas ausgewählt, ausgefüllt oder erweitert?)
+- Fehlermeldungen, Warnungen oder Benachrichtigungen?
+
+**UX-Bewertung**
+- Ist das Layout klar und intuitiv?
+- Verwirrende Elemente oder unklare Beschriftungen?
+- Barrierefreiheits-Bedenken (Kontrast, Textgröße, etc.)?
+
+**Erkannte Probleme**
+- Visuelle Bugs oder Fehlausrichtungen?
+- Abgeschnittener Text oder Overflow-Probleme?
+- Inkonsistentes Styling?
+
+Screenshot-Beschreibung: \${screenshotDescription}`}
+/>
+
+### Fehlermeldungs-Analyse
+
+Wenn du einen Fehler antriffst, enthält ein Screenshot oft mehr Kontext als nur den Fehlertext zu kopieren.
+
+<TryIt 
+  title="Fehlerdiagnose aus Screenshot"
+  description="Erhalte verständliche Erklärungen und Lösungen für Fehlermeldungen in Screenshots."
+  prompt={`Ich sehe diesen Fehler in \${context}.
+
+[Beschreibe oder füge die Fehlermeldung/Screenshot ein]
+Fehlerdetails: \${errorDetails}
+
+Bitte liefere:
+
+1. **Verständliche Erklärung**: Was bedeutet dieser Fehler eigentlich?
+
+2. **Wahrscheinliche Ursachen** (nach Wahrscheinlichkeit geordnet):
+   - Am wahrscheinlichsten: 
+   - Auch möglich:
+   - Weniger häufig:
+
+3. **Schritt-für-Schritt-Lösung**:
+   - Zuerst versuche...
+   - Wenn das nicht funktioniert...
+   - Als letzten Ausweg...
+
+4. **Prävention**: Wie dieser Fehler in Zukunft vermieden werden kann
+
+5. **Warnsignale**: Wann dieser Fehler auf ein schwerwiegenderes Problem hinweisen könnte`}
+/>
+
+## Bildgenerierungs-Prompts
+
+Bilder aus Textbeschreibungen zu generieren ist eine Kunstform. Je spezifischer und strukturierter dein Prompt, desto näher wird das Ergebnis deiner Vision entsprechen.
+
+### Die Anatomie eines Bild-Prompts
+
+Effektive Bildgenerierungs-Prompts haben mehrere Komponenten:
+
+<InfoGrid items={[
+  { label: "Motiv", description: "Was ist der Hauptfokus des Bildes?", example: "Ein Golden Retriever, der im Herbstlaub spielt", color: "blue" },
+  { label: "Stil", description: "Welcher künstlerische Stil oder welches Medium?", example: "Aquarellmalerei, digitale Kunst, fotorealistisch", color: "purple" },
+  { label: "Komposition", description: "Wie ist die Szene angeordnet?", example: "Nahaufnahme-Porträt, weite Landschaft, Vogelperspektive", color: "green" },
+  { label: "Beleuchtung", description: "Was ist die Lichtquelle und -qualität?", example: "Weiches Morgenlicht, dramatische Schatten, Neon-Glühen", color: "amber" },
+  { label: "Stimmung", description: "Welches Gefühl soll es hervorrufen?", example: "Friedlich, energetisch, geheimnisvoll, nostalgisch", color: "pink" },
+  { label: "Details", description: "Spezifische Elemente zum Einschließen oder Vermeiden", example: "Einschließen: Blumen. Vermeiden: Text, Wasserzeichen", color: "cyan" }
+]} />
+
+### Grundlegende Bildgenerierung
+
+<TryIt 
+  title="Strukturierter Bild-Prompt"
+  description="Verwende diese Vorlage, um detaillierte, spezifische Bildgenerierungs-Prompts zu erstellen."
+  prompt={`Erstelle ein Bild mit diesen Spezifikationen:
+
+**Motiv**: \${subject}
+
+**Stil**: \${style}
+**Medium**: \${medium} (z.B. Ölgemälde, digitale Kunst, Fotografie)
+
+**Komposition**:
+- Bildausschnitt: \${framing} (Nahaufnahme, Halbtotale, Weitwinkel)
+- Perspektive: \${perspective} (Augenhöhe, Froschperspektive, Draufsicht)
+- Fokus: \${focusArea}
+
+**Beleuchtung**:
+- Quelle: \${lightSource}
+- Qualität: \${lightQuality} (weich, hart, diffus)
+- Tageszeit: \${timeOfDay}
+
+**Farbpalette**: \${colors}
+
+**Stimmung/Atmosphäre**: \${mood}
+
+**Muss enthalten**: \${includeElements}
+**Muss vermeiden**: \${avoidElements}
+
+**Technisch**: \${aspectRatio} Seitenverhältnis, hohe Qualität`}
+/>
+
+### Szenenaufbau
+
+Für komplexe Szenen, beschreibe Ebenen von Vordergrund bis Hintergrund.
+
+<TryIt 
+  title="Geschichtete Szenenbeschreibung"
+  description="Baue komplexe Szenen auf, indem du beschreibst, was in jeder Tiefenebene erscheint."
+  prompt={`Generiere eine detaillierte Szene:
+
+**Umgebung**: \${setting}
+
+**Vordergrund** (am nächsten zum Betrachter):
+\${foreground}
+
+**Mittelgrund** (Hauptaktionsbereich):
+\${middleGround}
+
+**Hintergrund** (entfernte Elemente):
+\${background}
+
+**Atmosphärische Details**:
+- Wetter/Luft: \${weather}
+- Beleuchtung: \${lighting}
+- Zeit: \${timeOfDay}
+
+**Stil**: \${artisticStyle}
+**Stimmung**: \${mood}
+**Farbpalette**: \${colors}
+
+Zusätzliche Details zum Einschließen: \${additionalDetails}`}
+/>
+
+## Audio-Prompting
+
+Audio-Verarbeitung eröffnet Transkription, Analyse und Verständnis gesprochener Inhalte. Der Schlüssel ist, Kontext darüber zu liefern, was das Audio enthält.
+
+### Erweiterte Transkription
+
+Grundlegende Transkription ist nur der Anfang. Mit guten Prompts kannst du Sprecheridentifikation, Zeitstempel und domänenspezifische Genauigkeit erhalten.
+
+<TryIt 
+  title="Intelligente Transkription"
+  description="Erhalte genaue Transkriptionen mit Sprecherlabels, Zeitstempeln und Behandlung unklarer Abschnitte."
+  prompt={`Transkribiere diese Audioaufnahme.
+
+**Kontext**: \${recordingType} (Meeting, Interview, Podcast, Vorlesung, etc.)
+**Erwartete Sprecher**: \${speakerCount} (\${speakerRoles})
+**Domäne**: \${domain} (zu erwartende Fachbegriffe: \${technicalTerms})
+
+**Ausgabeformat**:
+[00:00] **Sprecher 1 (Name/Rolle)**: Transkribierter Text hier.
+[00:15] **Sprecher 2 (Name/Rolle)**: Ihre Antwort hier.
+
+**Anweisungen**:
+- Füge Zeitstempel bei natürlichen Pausen ein (alle 30-60 Sekunden oder bei Sprecherwechseln)
+- Markiere unklare Abschnitte als [unverständlich] oder [unklar: beste Vermutung?]
+- Notiere Nicht-Sprach-Geräusche in Klammern: [Lachen], [Telefon klingelt], [lange Pause]
+- Behalte Füllwörter nur bei, wenn sie bedeutsam sind (äh, ähm können entfernt werden)
+- Markiere alle Aktionspunkte oder Entscheidungen mit → Symbol
+
+Audiobeschreibung: \${audioDescription}`}
+/>
+
+### Audio-Inhaltsanalyse
+
+Über Transkription hinaus kann KI Inhalt, Ton und Schlüsselmomente im Audio analysieren.
+
+<TryIt 
+  title="Audio-Inhalts-Analysator"
+  description="Erhalte eine umfassende Analyse von Audio-Inhalten inklusive Zusammenfassung, Schlüsselmomenten und Sentiment."
+  prompt={`Analysiere diese Audioaufnahme:
+
+Audiobeschreibung: \${audioDescription}
+
+Liefere:
+
+**1. Zusammenfassung** (2-3 Sätze)
+Worum geht es in dieser Aufnahme? Was ist die Haupterkenntnis?
+
+**2. Sprecher**
+- Wie viele verschiedene Sprecher?
+- Charakteristiken (falls erkennbar): Ton, Sprechstil, Expertise-Level
+
+**3. Inhaltsaufschlüsselung**
+- Besprochene Hauptthemen (mit ungefähren Zeitstempeln)
+- Gemachte Hauptpunkte
+- Aufgeworfene Fragen
+
+**4. Emotionale Analyse**
+- Gesamtton (formell, locker, angespannt, freundlich)
+- Bemerkenswerte emotionale Momente
+- Energielevel durchgehend
+
+**5. Umsetzbare Punkte**
+- Getroffene Entscheidungen
+- Erwähnte Aktionspunkte
+- Benötigte Folgemaßnahmen
+
+**6. Bemerkenswerte Zitate**
+Ziehe 2-3 bedeutsame Zitate mit Zeitstempeln heraus
+
+**7. Audioqualität**
+- Gesamtklarheit
+- Probleme (Hintergrundgeräusche, Unterbrechungen, technische Probleme)`}
+/>
+
+## Video-Prompting
+
+Video kombiniert visuelle und Audio-Analyse über Zeit. Die Herausforderung ist, die KI anzuleiten, sich auf die relevanten Aspekte über die gesamte Dauer zu konzentrieren.
+
+### Video-Verständnis
+
+<TryIt 
+  title="Umfassende Video-Analyse"
+  description="Erhalte eine strukturierte Aufschlüsselung von Video-Inhalten inklusive Timeline, visueller Elemente und Schlüsselmomente."
+  prompt={`Analysiere dieses Video: \${videoDescription}
+
+Liefere eine umfassende Analyse:
+
+**1. Überblick** (2-3 Sätze)
+Worum geht es in diesem Video? Was ist die Hauptbotschaft oder der Zweck?
+
+**2. Timeline der Schlüsselmomente**
+| Zeitstempel | Ereignis | Bedeutung |
+|-------------|----------|-----------|
+| 0:00 | ... | ... |
+
+**3. Visuelle Analyse**
+- Umgebung/Ort: Wo findet das statt?
+- Personen: Wer erscheint? Was tun sie?
+- Objekte: Wichtige Gegenstände oder Requisiten
+- Visueller Stil: Qualität, Schnitt, verwendete Grafiken
+
+**4. Audio-Analyse**
+- Sprache: Hauptpunkte (falls Dialog vorhanden)
+- Musik: Art, Stimmung, wie sie verwendet wird
+- Soundeffekte: Bemerkenswerte Audio-Elemente
+
+**5. Produktionsqualität**
+- Videoqualität und Schnitt
+- Tempo und Struktur
+- Effektivität für den Zweck
+
+**6. Zielgruppe**
+Für wen ist dieses Video gemacht? Dient es ihnen gut?
+
+**7. Haupterkenntnisse**
+Was sollte ein Zuschauer von diesem Video behalten?`}
+/>
+
+### Video-Inhaltsextraktion
+
+Für spezifische Informationsextraktion aus Videos, sei präzise darüber, was du brauchst.
+
+<TryIt 
+  title="Video-Daten-Extraktor"
+  description="Extrahiere spezifische Informationen aus Videos mit Zeitstempeln und strukturierter Ausgabe."
+  prompt={`Extrahiere spezifische Informationen aus diesem Video:
+
+Videotyp: \${videoType}
+Videobeschreibung: \${videoDescription}
+
+**Zu extrahierende Informationen**:
+1. \${extractItem1}
+2. \${extractItem2}
+3. \${extractItem3}
+
+**Ausgabeformat**:
+{
+  "video_summary": "Kurze Beschreibung",
+  "duration": "geschätzte Länge",
+  "extracted_data": [
+    {
+      "timestamp": "MM:SS",
+      "item": "Was gefunden wurde",
+      "details": "Zusätzlicher Kontext",
+      "confidence": "hoch/mittel/niedrig"
+    }
+  ],
+  "items_not_found": ["Liste alles Angefragte, das nicht vorhanden ist"],
+  "additional_observations": "Alles Relevante, das nicht explizit angefragt wurde"
+}`}
+/>
+
+## Multimodale Kombinationen
+
+Die wahre Kraft multimodaler KI entfaltet sich, wenn du verschiedene Eingabetypen kombinierst. Diese Kombinationen ermöglichen Analysen, die mit jeder einzelnen Modalität unmöglich wären.
+
+### Bild + Text-Verifizierung
+
+Prüfe, ob Bilder und ihre Beschreibungen übereinstimmen – essenziell für E-Commerce, Content-Moderation und Qualitätssicherung.
+
+<TryIt 
+  title="Bild-Text-Übereinstimmungs-Prüfer"
+  description="Verifiziere, dass Bilder ihre Textbeschreibungen genau repräsentieren und umgekehrt."
+  prompt={`Analysiere dieses Bild und seinen begleitenden Text auf Übereinstimmung:
+
+**Bild**: \${imageDescription}
+**Textbeschreibung**: "\${textDescription}"
+
+Bewerte:
+
+**1. Genauigkeitsübereinstimmung**
+- Zeigt das Bild, was der Text beschreibt?
+- Punktzahl: [1-10] mit Erklärung
+
+**2. Text-Behauptungen vs. visuelle Realität**
+| Behauptung im Text | Im Bild sichtbar? | Notizen |
+|--------------------|-------------------|---------|
+| ... | Ja/Nein/Teilweise | ... |
+
+**3. Nicht erwähnte visuelle Elemente**
+Was ist im Bild sichtbar, aber nicht im Text beschrieben?
+
+**4. Nicht sichtbare Text-Behauptungen**
+Was ist im Text beschrieben, aber kann nicht vom Bild verifiziert werden?
+
+**5. Empfehlungen**
+- Für den Text: [Verbesserungen zur Bildübereinstimmung]
+- Für das Bild: [Verbesserungen zur Textübereinstimmung]
+
+**6. Gesamtbewertung**
+Ist dieses Bild-Text-Paar vertrauenswürdig für \${purpose}?`}
+/>
+
+### Screenshot + Code-Debugging
+
+Eine der mächtigsten Kombinationen für Entwickler: den visuellen Bug zusammen mit dem Code sehen.
+
+<TryIt 
+  title="Visueller Bug-Debugger"
+  description="Debugge UI-Probleme, indem du sowohl die visuelle Ausgabe als auch den Quellcode zusammen analysierst."
+  prompt={`Ich habe einen UI-Bug. Hier ist, was ich sehe und mein Code:
+
+**Screenshot-Beschreibung**: \${screenshotDescription}
+**Was ist falsch**: \${bugDescription}
+**Erwartetes Verhalten**: \${expectedBehavior}
+
+**Relevanter Code**:
+\`\`\`\${language}
+\${code}
+\`\`\`
+
+Bitte hilf mir:
+
+**1. Ursachenanalyse**
+- Was im Code verursacht dieses visuelle Problem?
+- Welche spezifische(n) Zeile(n) sind verantwortlich?
+
+**2. Erklärung**
+- Warum produziert dieser Code dieses visuelle Ergebnis?
+- Was ist der zugrundeliegende Mechanismus?
+
+**3. Die Lösung**
+\`\`\`\${language}
+// Korrigierter Code hier
+\`\`\`
+
+**4. Prävention**
+- Wie diese Art von Bug in Zukunft vermieden werden kann
+- Verwandte Probleme zum Überprüfen`}
+/>
+
+### Multi-Bild-Entscheidungsfindung
+
+Bei der Wahl zwischen Optionen hilft strukturierter Vergleich, bessere Entscheidungen zu treffen.
+
+<TryIt 
+  title="Visueller Optionen-Vergleicher"
+  description="Vergleiche mehrere Bilder systematisch gegen deine Kriterien, um fundierte Entscheidungen zu treffen."
+  prompt={`Ich wähle zwischen diesen Optionen für \${purpose}:
+
+**Option A**: \${optionA}
+**Option B**: \${optionB}
+**Option C**: \${optionC}
+
+**Meine Kriterien** (nach Wichtigkeit geordnet):
+1. \${criterion1} (Gewichtung: hoch)
+2. \${criterion2} (Gewichtung: mittel)
+3. \${criterion3} (Gewichtung: niedrig)
+
+Liefere:
+
+**Vergleichsmatrix**
+| Kriterium | Option A | Option B | Option C |
+|-----------|----------|----------|----------|
+| \${criterion1} | Punktzahl + Notizen | ... | ... |
+| \${criterion2} | ... | ... | ... |
+| \${criterion3} | ... | ... | ... |
+
+**Gewichtete Punktzahlen**
+- Option A: X/10
+- Option B: X/10
+- Option C: X/10
+
+**Empfehlung**
+Basierend auf deinen genannten Prioritäten empfehle ich [Option] weil...
+
+**Vorbehalte**
+- Wenn [Bedingung], erwäge [Alternative] stattdessen
+- Achte auf [potenzielles Problem]`}
+/>
+
+## Best Practices für multimodale Prompts
+
+Großartige Ergebnisse von multimodaler KI zu erhalten erfordert Verständnis sowohl ihrer Fähigkeiten als auch Einschränkungen.
+
+### Was multimodale Prompts effektiv macht
+
+<InfoGrid items={[
+  { label: "Kontext liefern", description: "Sage dem Modell, was das Medium ist und warum du es analysierst", example: "\"Das ist ein Produktfoto für unseren E-Commerce-Shop...\"", color: "green" },
+  { label: "Spezifisch sein", description: "Frage nach bestimmten Elementen statt allgemeinen Eindrücken", example: "\"Konzentriere dich auf die Preistabelle oben rechts\"", color: "green" },
+  { label: "Orte referenzieren", description: "Zeige auf bestimmte Bereiche mit räumlicher Sprache", example: "\"Im unteren linken Quadranten...\"", color: "green" },
+  { label: "Ziel nennen", description: "Erkläre, wofür du die Analyse verwenden wirst", example: "\"Ich muss entscheiden, ob dieses Bild für unsere Mobile-App funktioniert\"", color: "green" }
+]} />
+
+### Häufige Fallstricke vermeiden
+
+<InfoGrid items={[
+  { label: "Perfektes Sehen annehmen", description: "Modelle können kleine Details übersehen, besonders bei niedrig aufgelösten Bildern", example: "Frage nicht nach 8pt-Text in einem komprimierten Screenshot", color: "red" },
+  { label: "Perfekte OCR erwarten", description: "Handschrift, ungewöhnliche Schriftarten und komplexe Layouts können Fehler verursachen", example: "Verifiziere extrahierten Text aus Quittungen und Formularen", color: "red" },
+  { label: "Inhaltsrichtlinien ignorieren", description: "Modelle haben Einschränkungen bei bestimmten Inhaltstypen", example: "Identifiziert keine bestimmten Personen oder analysiert unangemessene Inhalte", color: "red" },
+  { label: "Verifizierung überspringen", description: "Verifiziere immer kritische Informationen, die aus Medien extrahiert wurden", example: "Überprüfe Zahlen, Daten und Namen aus Dokumentextraktion doppelt", color: "red" }
+]} />
+
+### Einschränkungen elegant handhaben
+
+<TryIt 
+  title="Unsicherheits-bewusste Bildanalyse"
+  description="Dieser Prompt behandelt explizit Fälle, in denen das Modell nicht klar sehen kann oder unsicher ist."
+  prompt={`Analysiere dieses Bild: \${imageDescription}
+
+**Anweisungen für den Umgang mit Unsicherheit**:
+
+WENN DU ETWAS NICHT KLAR SEHEN KANNST:
+- Rate nicht oder erfinde keine Details
+- Sage: "Ich kann sehen [was sichtbar ist] aber kann [unklares Element] nicht klar erkennen"
+- Schlage vor, welche zusätzlichen Informationen helfen würden
+
+WENN INHALT EINGESCHRÄNKT ERSCHEINT:
+- Erkläre, was du analysieren kannst und was nicht
+- Konzentriere dich auf erlaubte Aspekte der Analyse
+
+WENN NACH PERSONEN GEFRAGT:
+- Beschreibe Aktionen, Positionen und allgemeine Charakteristiken
+- Versuche nicht, bestimmte Personen zu identifizieren
+- Konzentriere dich auf: Anzahl der Personen, Aktivitäten, Ausdrücke, Kleidung
+
+**Deine Analyse**:
+[Fahre mit der Analyse fort unter Anwendung dieser Richtlinien]`}
+/>
+
+<Quiz 
+  question="Warum ist Prompting bei multimodalen Modellen WICHTIGER als bei reinen Textmodellen?"
+  options={[
+    "Multimodale Modelle sind weniger intelligent und brauchen mehr Hilfe",
+    "Bilder und Audio sind inhärent mehrdeutig – die KI braucht Kontext, um zu wissen, welche Aspekte wichtig sind",
+    "Multimodale Modelle können nur einen Eingabetyp gleichzeitig verarbeiten",
+    "Text-Prompts funktionieren nicht mit multimodalen Modellen"
+  ]}
+  correctIndex={1}
+  explanation="Wenn du ein Bild anschaust, weißt du sofort, was wichtig ist, basierend auf deinen Zielen. Die KI hat diesen Kontext nicht – ein Foto eines Wandrisses könnte ein Statik-Problem, eine künstlerische Textur oder irrelevanter Hintergrund sein. Dein Prompt bestimmt, wie die KI die Medien interpretiert und worauf sie sich konzentriert."
+/>

@@ -1,0 +1,357 @@
+The prompts you write shape how AI behaves. A well-crafted prompt can educate, assist, and empower. A careless one can deceive, discriminate, or cause harm. As prompt engineers, we're not just users—we're designers of AI behavior, and that comes with real responsibility.
+
+This chapter isn't about rules imposed from above. It's about understanding the impact of our choices and building habits that lead to AI use we can be proud of.
+
+<Callout type="warning" title="Why This Matters">
+AI amplifies whatever it's given. A biased prompt produces biased outputs at scale. A deceptive prompt enables deception at scale. The ethical implications of prompt engineering grow with every new capability these systems gain.
+</Callout>
+
+## Ethical Foundations
+
+Every decision in prompt engineering connects to a few core principles:
+
+<InfoGrid items={[
+  { label: "Honesty", description: "Don't use AI to deceive people or create misleading content", example: "No fake reviews, impersonation, or manufactured 'evidence'", exampleType: "text", color: "blue" },
+  { label: "Fairness", description: "Actively work to avoid perpetuating biases and stereotypes", example: "Test prompts across demographics, request diverse perspectives", exampleType: "text", color: "purple" },
+  { label: "Transparency", description: "Be clear about AI involvement when it matters", example: "Disclose AI assistance in published work, professional contexts", exampleType: "text", color: "green" },
+  { label: "Privacy", description: "Protect personal information in prompts and outputs", example: "Anonymize data, avoid including PII, understand data policies", exampleType: "text", color: "amber" },
+  { label: "Safety", description: "Design prompts that prevent harmful outputs", example: "Build in guardrails, test for edge cases, handle refusals gracefully", exampleType: "text", color: "red" },
+  { label: "Accountability", description: "Take responsibility for what your prompts produce", example: "Review outputs, fix issues, maintain human oversight", exampleType: "text", color: "cyan" }
+]} />
+
+### The Prompt Engineer's Role
+
+You have more influence than you might realize:
+
+- **What AI produces**: Your prompts determine the content, tone, and quality of outputs
+- **How AI interacts**: Your system prompts shape personality, boundaries, and user experience
+- **What safeguards exist**: Your design choices determine what the AI will and won't do
+- **How mistakes are handled**: Your error handling determines whether failures are graceful or harmful
+
+## Avoiding Harmful Outputs
+
+The most fundamental ethical obligation is preventing your prompts from causing harm.
+
+### Categories of Harmful Content
+
+<InfoGrid items={[
+  { label: "Violence & Harm", description: "Instructions that could lead to physical harm", example: "Weapons creation, self-harm, violence against others", exampleType: "text", color: "red" },
+  { label: "Illegal Activities", description: "Content that facilitates breaking laws", example: "Fraud schemes, hacking instructions, drug synthesis", exampleType: "text", color: "red" },
+  { label: "Harassment & Hate", description: "Content targeting individuals or groups", example: "Discriminatory content, doxxing, targeted harassment", exampleType: "text", color: "red" },
+  { label: "Misinformation", description: "Deliberately false or misleading content", example: "Fake news, health misinformation, conspiracy content", exampleType: "text", color: "red" },
+  { label: "Privacy Violations", description: "Exposing or exploiting personal information", example: "Revealing private data, stalking assistance", exampleType: "text", color: "red" },
+  { label: "Exploitation", description: "Content that exploits vulnerable individuals", example: "CSAM, non-consensual intimate content, scams targeting elderly", exampleType: "text", color: "red" }
+]} />
+
+<Callout type="warning" title="What is CSAM?">
+CSAM stands for **Child Sexual Abuse Material**. Creating, distributing, or possessing such content is illegal worldwide. AI systems must never generate content depicting minors in sexual situations, and responsible prompt engineers actively build safeguards against such misuse.
+</Callout>
+
+### Building Safety Into Prompts
+
+When building AI systems, include explicit safety guidelines:
+
+<TryIt 
+  title="Safety-First System Prompt"
+  description="A template for building safety guidelines into your AI systems."
+  prompt={`You are a helpful assistant for \${purpose}.
+
+## SAFETY GUIDELINES
+
+**Content Restrictions**:
+- Never provide instructions that could cause physical harm
+- Decline requests for illegal information or activities
+- Don't generate discriminatory or hateful content
+- Don't create deliberately misleading information
+
+**When You Must Decline**:
+- Acknowledge you understood the request
+- Briefly explain why you can't help with this specific thing
+- Offer constructive alternatives when possible
+- Be respectful—don't lecture or be preachy
+
+**When Uncertain**:
+- Ask clarifying questions about intent
+- Err on the side of caution
+- Suggest the user consult appropriate professionals
+
+Now, please help the user with: \${userRequest}`}
+/>
+
+### The Intent vs. Impact Framework
+
+Not every sensitive request is malicious. Use this framework for ambiguous cases:
+
+<TryIt 
+  title="Ethical Edge Case Analyzer"
+  description="Work through ambiguous requests to determine the appropriate response."
+  prompt={`I received this request that might be sensitive:
+
+"\${sensitiveRequest}"
+
+Help me think through whether and how to respond:
+
+**1. Intent Analysis**
+- What are the most likely reasons someone would ask this?
+- Could this be legitimate? (research, fiction, education, professional need)
+- Are there red flags suggesting malicious intent?
+
+**2. Impact Assessment**
+- What's the worst case if this information is misused?
+- How accessible is this information elsewhere?
+- Does providing it meaningfully increase risk?
+
+**3. Recommendation**
+Based on this analysis:
+- Should I respond, decline, or ask for clarification?
+- If responding, what safeguards should I include?
+- If declining, how should I phrase it helpfully?`}
+/>
+
+## Addressing Bias
+
+AI models inherit biases from their training data—historical inequities, representation gaps, cultural assumptions, and linguistic patterns. As prompt engineers, we can either amplify these biases or actively counteract them.
+
+### How Bias Manifests
+
+<InfoGrid items={[
+  { label: "Default Assumptions", description: "The model assumes certain demographics for roles", example: "Doctors defaulting to male, nurses to female", exampleType: "text", color: "amber" },
+  { label: "Stereotyping", description: "Reinforcing cultural stereotypes in descriptions", example: "Associating certain ethnicities with specific traits", exampleType: "text", color: "amber" },
+  { label: "Representation Gaps", description: "Some groups are underrepresented or misrepresented", example: "Limited accurate information about minority cultures", exampleType: "text", color: "amber" },
+  { label: "Western-Centric Views", description: "Perspectives skewed toward Western culture and values", example: "Assuming Western norms are universal", exampleType: "text", color: "amber" }
+]} />
+
+### Testing for Bias
+
+<TryIt 
+  title="Bias Detection Test"
+  description="Use this to test your prompts for potential bias issues."
+  prompt={`I want to test this prompt for bias:
+
+"\${promptToTest}"
+
+Run these bias checks:
+
+**1. Demographic Variation Test**
+Run the prompt with different demographic descriptors (gender, ethnicity, age, etc.) and note any differences in:
+- Tone or respect level
+- Assumed competence or capabilities
+- Stereotypical associations
+
+**2. Default Assumption Check**
+When demographics aren't specified:
+- What does the model assume?
+- Are these assumptions problematic?
+
+**3. Representation Analysis**
+- Are different groups represented fairly?
+- Are any groups missing or marginalized?
+
+**4. Recommendations**
+Based on findings, suggest prompt modifications to reduce bias.`}
+/>
+
+### Mitigating Bias in Practice
+
+<Compare 
+  before={{ label: "Bias-prone prompt", content: "Describe a typical CEO." }}
+  after={{ label: "Bias-aware prompt", content: "Describe a CEO. Vary demographics across examples, and avoid defaulting to any particular gender, ethnicity, or age." }}
+/>
+
+## Transparency and Disclosure
+
+When should you tell people AI was involved? The answer depends on context—but the trend is toward more disclosure, not less.
+
+### When Disclosure Matters
+
+<InfoGrid items={[
+  { label: "Published Content", description: "Articles, posts, or content shared publicly", example: "Blog posts, social media, marketing materials", exampleType: "text", color: "blue" },
+  { label: "Consequential Decisions", description: "When AI outputs affect people's lives", example: "Hiring recommendations, medical info, legal guidance", exampleType: "text", color: "blue" },
+  { label: "Trust Contexts", description: "Where authenticity is expected or valued", example: "Personal correspondence, testimonials, reviews", exampleType: "text", color: "blue" },
+  { label: "Professional Settings", description: "Workplace or academic environments", example: "Reports, research, client deliverables", exampleType: "text", color: "blue" }
+]} />
+
+### How to Disclose Appropriately
+
+<Compare 
+  before={{ label: "Hidden AI involvement", content: "Here's my analysis of the market trends..." }}
+  after={{ label: "Transparent disclosure", content: "I used AI tools to help analyze the data and draft this report. All conclusions have been verified and edited by me." }}
+/>
+
+Common disclosure phrases that work well:
+- "Written with AI assistance"
+- "AI-generated first draft, human edited"
+- "Analysis performed using AI tools"
+- "Created with AI, reviewed and approved by [name]"
+
+## Privacy Considerations
+
+Every prompt you send contains data. Understanding where that data goes—and what shouldn't be in it—is essential.
+
+### What Never Belongs in Prompts
+
+<InfoGrid items={[
+  { label: "Personal Identifiers", description: "Names, addresses, phone numbers, SSNs", example: "Use [CUSTOMER] instead of 'John Smith'", color: "red" },
+  { label: "Financial Data", description: "Account numbers, credit cards, income details", example: "Describe the pattern, not the actual numbers", exampleType: "text", color: "red" },
+  { label: "Health Information", description: "Medical records, diagnoses, prescriptions", example: "Ask about conditions generally, not specific patients", exampleType: "text", color: "red" },
+  { label: "Credentials", description: "Passwords, API keys, tokens, secrets", example: "Never paste credentials—use placeholders", exampleType: "text", color: "red" },
+  { label: "Private Communications", description: "Personal emails, messages, confidential docs", example: "Summarize the situation without quoting private text", exampleType: "text", color: "red" }
+]} />
+
+### Safe Data Handling Pattern
+
+<Compare 
+  before={{ label: "Unsafe: Contains PII", content: "Summarize this complaint from John Smith at 123 Main St, Anytown about order #12345: 'I ordered on March 15 and still haven't received...'" }}
+  after={{ label: "Safe: Anonymized", content: "Summarize this customer complaint pattern: A customer ordered 3 weeks ago, hasn't received their order, and has contacted support twice without resolution." }}
+/>
+
+<Callout type="info" title="What is PII?">
+**PII** stands for **Personally Identifiable Information**—any data that can identify a specific individual. This includes names, addresses, phone numbers, email addresses, Social Security numbers, financial account numbers, and even combinations of data (like job title + company + city) that could identify someone. When prompting AI, always anonymize or remove PII to protect privacy.
+</Callout>
+
+<TryIt 
+  title="PII Scrubber"
+  description="Use this to identify and remove sensitive information before including text in prompts."
+  prompt={`Review this text for sensitive information that should be removed before using it in an AI prompt:
+
+"\${textToReview}"
+
+Identify:
+1. **Personal Identifiers**: Names, addresses, phone numbers, emails, SSNs
+2. **Financial Data**: Account numbers, amounts that could identify someone
+3. **Health Information**: Medical details, conditions, prescriptions
+4. **Credentials**: Any passwords, keys, or tokens
+5. **Private Details**: Information someone would reasonably expect to be confidential
+
+For each item found, suggest how to anonymize or generalize it while preserving the information needed for the task.`}
+/>
+
+## Authenticity and Deception
+
+There's a difference between using AI as a tool and using AI to deceive.
+
+### The Legitimacy Line
+
+<InfoGrid items={[
+  { label: "Legitimate Uses", description: "AI as a tool to enhance your work", example: "Drafting, brainstorming, editing, learning", exampleType: "text", color: "green" },
+  { label: "Gray Areas", description: "Context-dependent, requires judgment", example: "Ghostwriting, templates, automated responses", exampleType: "text", color: "amber" },
+  { label: "Deceptive Uses", description: "Misrepresenting AI work as human-original", example: "Fake reviews, academic fraud, impersonation", exampleType: "text", color: "red" }
+]} />
+
+Key questions to ask:
+- Would the recipient expect this to be original human work?
+- Am I gaining unfair advantage through deception?
+- Would disclosure change how the work is received?
+
+### Synthetic Media Responsibility
+
+Creating realistic depictions of real people—whether images, audio, or video—carries special obligations:
+
+- **Never** create realistic depictions without consent
+- **Always** label synthetic media clearly
+- **Consider** potential for misuse before creating
+- **Refuse** to create non-consensual intimate imagery
+
+## Responsible Deployment
+
+When building AI features for others to use, your ethical obligations multiply.
+
+### Pre-Deployment Checklist
+
+<Checklist 
+  title="Deployment Readiness"
+  items={[
+    { text: "Tested for harmful outputs across diverse inputs" },
+    { text: "Tested for bias with varied demographics" },
+    { text: "User disclosure/consent mechanisms in place" },
+    { text: "Human oversight for high-stakes decisions" },
+    { text: "Feedback and reporting system available" },
+    { text: "Incident response plan documented" },
+    { text: "Clear usage policies communicated" },
+    { text: "Monitoring and alerting configured" }
+  ]}
+/>
+
+### Human Oversight Principles
+
+<InfoGrid items={[
+  { label: "High-Stakes Review", description: "Humans review decisions that significantly affect people", example: "Hiring, medical, legal, financial recommendations", exampleType: "text", color: "blue" },
+  { label: "Error Correction", description: "Mechanisms exist to catch and fix AI mistakes", example: "User feedback, quality sampling, appeals process", exampleType: "text", color: "blue" },
+  { label: "Continuous Learning", description: "Insights from issues improve the system", example: "Post-mortems, prompt updates, training improvements", exampleType: "text", color: "blue" },
+  { label: "Override Capability", description: "Humans can intervene when AI fails", example: "Manual review queues, escalation paths", exampleType: "text", color: "blue" }
+]} />
+
+## Special Context Guidelines
+
+Some domains require extra care due to their potential for harm or the vulnerability of those involved.
+
+### Healthcare
+
+<TryIt 
+  title="Medical Context Disclaimer"
+  description="Template for AI systems that might receive health-related queries."
+  prompt={`You are an AI assistant. When users ask about health or medical topics:
+
+**Always**:
+- Recommend consulting a qualified healthcare provider for personal medical decisions
+- Provide general educational information, not personalized medical advice
+- Include disclaimers that you cannot diagnose conditions
+- Suggest emergency services (911) for urgent situations
+
+**Never**:
+- Provide specific diagnoses
+- Recommend specific medications or dosages
+- Discourage someone from seeking professional care
+- Make claims about treatments without noting uncertainty
+
+User question: \${healthQuestion}
+
+Respond helpfully while following these guidelines.`}
+/>
+
+### Legal and Financial
+
+These domains have regulatory implications and require appropriate disclaimers:
+
+<InfoGrid items={[
+  { label: "Legal Queries", description: "Provide general information, not legal advice", example: "\"This is general information. For your specific situation, consult a licensed attorney.\"", color: "purple" },
+  { label: "Financial Queries", description: "Educate without providing personal financial advice", example: "\"This is educational. Consider consulting a financial advisor for your situation.\"", color: "purple" },
+  { label: "Jurisdiction Awareness", description: "Laws vary by location", example: "\"Laws differ by state/country. Verify requirements for your jurisdiction.\"", color: "purple" }
+]} />
+
+### Children and Education
+
+<InfoGrid items={[
+  { label: "Age-Appropriate Content", description: "Ensure outputs are suitable for the age group", example: "Filter mature content, use appropriate language", exampleType: "text", color: "cyan" },
+  { label: "Academic Integrity", description: "Support learning, don't replace it", example: "Explain concepts rather than writing essays for students", exampleType: "text", color: "cyan" },
+  { label: "Safety First", description: "Extra protection for vulnerable users", example: "Stricter content filters, no personal data collection", exampleType: "text", color: "cyan" }
+]} />
+
+## Self-Assessment
+
+Before deploying any prompt or AI system, run through these questions:
+
+<Checklist 
+  title="Ethical Self-Check"
+  items={[
+    { text: "Could this be used to harm someone?" },
+    { text: "Does this respect user privacy?" },
+    { text: "Could this perpetuate harmful biases?" },
+    { text: "Is AI involvement appropriately disclosed?" },
+    { text: "Is there adequate human oversight?" },
+    { text: "What's the worst that could happen?" },
+    { text: "Would I be comfortable if this use were public?" }
+  ]}
+/>
+
+<Quiz 
+  question="A user asks your AI system how to 'get rid of someone who's bothering them.' What's the most appropriate response strategy?"
+  options={[
+    "Refuse immediately—this could be a request for harm instructions",
+    "Provide conflict resolution advice since that's the most likely intent",
+    "Ask clarifying questions to understand intent before deciding how to respond",
+    "Explain you can't help with anything related to harming people"
+  ]}
+  correctIndex={2}
+  explanation="Ambiguous requests deserve clarification, not assumptions. 'Get rid of someone' could mean ending a friendship, resolving a workplace conflict, or something harmful. Asking clarifying questions lets you respond appropriately to the actual intent while remaining cautious about providing harmful information."
+/>

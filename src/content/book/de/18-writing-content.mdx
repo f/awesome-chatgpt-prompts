@@ -1,0 +1,393 @@
+KI zeichnet sich bei Schreibaufgaben aus, wenn sie richtig geprompted wird. Dieses Kapitel behandelt Techniken für verschiedene Content-Erstellungs-Szenarien.
+
+<Callout type="info" title="KI als Schreibpartner">
+KI funktioniert am besten als kollaboratives Schreibwerkzeug – verwende sie, um Entwürfe zu generieren, dann verfeinere mit deiner Expertise und Stimme.
+</Callout>
+
+## Blogposts und Artikel
+
+### Dos and Don'ts: Schreib-Prompts
+
+<Compare 
+  before={{ label: "❌ Vage Anfrage", content: "Schreib einen Blogpost über Produktivität." }}
+  after={{ label: "✓ Spezifisches Briefing", content: "Schreib einen 800-Wörter-Blogpost über Produktivität für Remote-Arbeiter.\n\nZielgruppe: Tech-Fachleute, die von zu Hause arbeiten\nTon: Konversationell aber umsetzbar\nEnthält: 3 spezifische Techniken mit Beispielen\nKeyword: 'Remote-Produktivitätstipps'" }}
+/>
+
+### Blogpost-Framework
+
+<TryIt 
+  title="Blogpost-Generator"
+  description="Generiere einen strukturierten Blogpost mit SEO-Optimierung."
+  prompt={`Schreib einen Blogpost über \${topic}.
+
+Spezifikationen:
+- Länge: \${wordCount:800-1000} Wörter
+- Zielgruppe: \${audience}
+- Ton: \${tone:konversationell}
+- Zweck: \${purpose:informieren und umsetzbare Ratschläge geben}
+
+Struktur:
+1. Hook-Eröffnung (Aufmerksamkeit in den ersten 2 Sätzen gewinnen)
+2. Einleitung (Problem/Gelegenheit benennen)
+3. Hauptinhalt (3-4 Schlüsselpunkte mit Beispielen)
+4. Praktische Takeaways (umsetzbare Ratschläge)
+5. Fazit mit Call-to-Action
+
+SEO-Anforderungen:
+- Keyword "\${keyword}" natürlich 3-5 mal einbauen
+- H2-Überschriften für Hauptabschnitte verwenden
+- Meta-Beschreibung einfügen (155 Zeichen)`}
+/>
+
+### Artikeltypen
+
+**How-To-Artikel:**
+<TryIt compact prompt={`Schreib einen Schritt-für-Schritt-How-To-Artikel über \${topic}.
+
+Anforderungen:
+- Klare nummerierte Schritte
+- Jeder Schritt: Aktion + Erklärung + Tipp
+- "Was du brauchst"-Abschnitt einfügen
+- Fehlerbehebungs-Abschnitt für häufige Probleme hinzufügen
+- Geschätzte Zeit zum Abschließen`} />
+
+**Listicle:**
+<TryIt compact prompt={`Schreib einen Listicle: "\${count} \${topic} Tipps/Tools/Ideen"
+
+Für jeden Punkt:
+- Einprägsame Unterüberschrift
+- 2-3 Sätze Erklärung
+- Konkretes Beispiel oder Anwendungsfall
+- Pro-Tipp oder Vorbehalt
+
+Sortiert nach: \${ordering:wichtigstes zuerst}`} />
+
+## Marketing Copy
+
+<Callout type="tip" title="Marketing Copy Prinzip">
+Fokussiere auf **Nutzen statt Features**. Statt „Unsere Software verwendet KI-Algorithmen", schreibe „Spare 10 Stunden pro Woche mit automatisierten Berichten." Zeige Lesern, wie ihr Leben verbessert wird.
+</Callout>
+
+### Landing Page Copy
+
+<TryIt compact prompt={`Schreib Landing Page Copy für \${product}.
+
+Benötigte Abschnitte:
+1. Hero: Headline (max. 10 Wörter) + Subheadline + CTA-Button-Text
+2. Problem: Pain Points, denen die Zielgruppe gegenübersteht (3 Stichpunkte)
+3. Lösung: Wie dein Produkt diese löst (mit Nutzen, nicht Features)
+4. Social Proof: Platzhalter für Testimonials
+5. Features: 3 Schlüssel-Features mit nutzenfokussierten Beschreibungen
+6. CTA: Finaler Call-to-Action mit Dringlichkeit
+
+Stimme: \${brandVoice}
+Zielgruppe: \${targetAudience}
+Hauptunterscheidungsmerkmal: \${differentiator}`} />
+
+### E-Mail-Sequenzen
+
+<TryIt compact prompt={`Schreib eine 5-E-Mail-Willkommenssequenz für neue Abonnenten.
+
+Marke: \${brand}
+Ziel: \${goal:zu zahlend konvertieren}
+
+Für jede E-Mail liefere:
+- Betreffzeile (+ 1 Alternative)
+- Vorschautext
+- Body (150-200 Wörter)
+- CTA
+
+Sequenz-Ablauf:
+E-Mail 1 (Tag 0): Willkommen + sofortiger Wert
+E-Mail 2 (Tag 2): Geschichte/Mission teilen
+E-Mail 3 (Tag 4): Bildungsinhalt
+E-Mail 4 (Tag 7): Social Proof + sanfter Pitch
+E-Mail 5 (Tag 10): Direktes Angebot mit Dringlichkeit`} />
+
+### Social Media Posts
+
+<TryIt compact prompt={`Erstelle Social-Media-Inhalt für \${topic}.
+
+Plattform-spezifische Versionen:
+
+Twitter/X (280 Zeichen):
+- Hook + Schlüsselpunkt + Hashtags
+- Thread-Option (5 Tweets) für komplexe Themen
+
+LinkedIn (1300 Zeichen):
+- Professioneller Blickwinkel
+- Story-Struktur
+- Ende mit Frage für Engagement
+
+Instagram-Caption:
+- Eröffnungs-Hook (zeigt vor „mehr")
+- Wertvoller Body
+- CTA
+- Hashtags (20-30 relevante)`} />
+
+## Technisches Schreiben
+
+<Callout type="info" title="Technisches Schreiben Prinzip">
+**Klarheit vor Cleverness.** Verwende einfache Wörter, kurze Sätze und aktive Stimme. Jeder Satz sollte eine Aufgabe haben. Wenn Leser etwas erneut lesen müssen, vereinfache es.
+</Callout>
+
+### Dokumentation
+
+<TryIt compact prompt={`Schreib Dokumentation für \${feature}.
+
+Struktur:
+## Übersicht
+Kurze Beschreibung, was es macht und warum du es verwenden würdest.
+
+## Schnellstart
+Minimales Beispiel, um in unter 2 Minuten loszulegen.
+
+## Installation/Setup
+Schritt-für-Schritt-Setup-Anweisungen.
+
+## Verwendung
+Detaillierte Verwendung mit Beispielen.
+
+## API-Referenz
+Parameter, Rückgabewerte, Typen.
+
+## Beispiele
+3-4 reale Anwendungsbeispiele.
+
+## Fehlerbehebung
+Häufige Probleme und Lösungen.
+
+Stil: 
+- Zweite Person („du")
+- Präsens
+- Aktive Stimme
+- Code-Beispiele für jedes Konzept`} />
+
+### README-Dateien
+
+<TryIt 
+  title="README-Generator"
+  description="Generiere eine professionelle README.md für dein Projekt."
+  prompt={`Schreib eine README.md für \${project}.
+
+Füge diese Abschnitte ein:
+# Projektname - Einzeilige Beschreibung
+
+## Features
+- Stichpunktliste der Schlüssel-Features
+
+## Installation
+(bash Installations-Befehle)
+
+## Schnellstart
+(minimales funktionierendes Beispiel)
+
+## Konfiguration
+Wichtige Konfigurationsoptionen
+
+## Dokumentation
+Link zur vollständigen Doku
+
+## Beitragen
+Kurze Beitragsrichtlinien
+
+## Lizenz
+Lizenztyp`}
+/>
+
+## Kreatives Schreiben
+
+### Dos and Don'ts: Kreative Prompts
+
+<Compare 
+  before={{ label: "❌ Zu offen", content: "Schreib mir eine Geschichte." }}
+  after={{ label: "✓ Reich an Einschränkungen", content: "Schreib eine 1000-Wörter-Krimi-Geschichte in einer kleinen Küstenstadt. Der Protagonist ist ein pensionierter Detektiv. Füge ein überraschendes Ende ein, bei dem das Opfer nicht der ist, für den wir es hielten. Ton: Noir mit dunklem Humor." }}
+/>
+
+### Story-Elemente
+
+<TryIt compact prompt={`Schreib eine \${genre} Kurzgeschichte.
+
+Einzuschließende Elemente:
+- Protagonist: \${protagonist}
+- Setting: \${setting}
+- Zentraler Konflikt: \${conflict}
+- Thema: \${theme}
+- Wortanzahl: \${wordCount:1000}
+
+Stil-Präferenzen:
+- POV: \${pov:dritte Person}
+- Tempus: \${tense:Vergangenheit}
+- Ton: \${tone:spannend}
+
+Beginne mit: \${openingHook}`} />
+
+### Charakterentwicklung
+
+<TryIt compact prompt={`Erstelle ein detailliertes Charakterprofil für \${characterName}.
+
+Grundinformationen:
+- Name, Alter, Beruf
+- Physische Beschreibung
+- Hintergrund/Geschichte
+
+Persönlichkeit:
+- 3 Kerneigenschaften
+- Stärken und Schwächen
+- Ängste und Wünsche
+- Wie sie sprechen (verbale Ticks, Vokabular-Level)
+
+Beziehungen:
+- Schlüsselbeziehungen
+- Wie sie Fremde vs. Freunde behandeln
+
+Charakterbogen:
+- Ausgangszustand
+- Was sie lernen müssen
+- Potenzielle Transformation`} />
+
+## Bearbeiten und Umschreiben
+
+### Umfassendes Lektorat
+
+<TryIt compact prompt={`Bearbeite diesen Text für \${purpose}.
+
+Prüfe und verbessere:
+□ Grammatik und Rechtschreibung
+□ Satzstruktur-Variation
+□ Wortwahl (eliminiere schwache Wörter)
+□ Fluss und Übergänge
+□ Klarheit und Prägnanz
+□ Ton-Konsistenz
+
+Liefere:
+1. Bearbeitete Version
+2. Zusammenfassung der wichtigsten Änderungen
+3. Vorschläge für weitere Verbesserung
+
+Originaltext:
+\${text}`} />
+
+### Stiltransformation
+
+<Compare 
+  before={{ label: "Technisch/Formal", content: "Die Implementierung des neuen Algorithmus resultierte in einer 47%igen Reduktion des Rechenaufwands, wodurch der Systemdurchsatz signifikant erhöht und die Latenzmetriken über alle gemessenen Endpunkte hinweg reduziert wurden." }}
+  after={{ label: "Locker/Zugänglich", content: "Wir haben das System viel schneller gemacht! Der neue Ansatz hat die Verarbeitungszeit fast halbiert, was bedeutet, dass alles für dich schneller lädt." }}
+/>
+
+<TryIt compact prompt={`Schreibe diesen Text in einem anderen Stil um.
+
+Ursprünglicher Stil: \${originalStyle}
+Zielstil: \${targetStyle}
+
+Beibehalten:
+- Kernbedeutung und Information
+- Schlüsselterminologie
+- Eigennamen
+
+Ändern:
+- Satzlänge und -struktur
+- Vokabular-Level
+- Ton und Formalität
+- Rhetorische Mittel
+
+Original:
+\${text}`} />
+
+### Vereinfachung
+
+<TryIt compact prompt={`Vereinfache diesen Text für \${audience}.
+
+Ziel-Leseniveau: \${readingLevel:8. Klasse}
+
+Richtlinien:
+- Ersetze Fachjargon durch einfache Sprache
+- Kürze Sätze (strebe 15-20 Wörter im Durchschnitt an)
+- Verwende gängige Wörter
+- Füge Erklärungen für notwendige Fachbegriffe hinzu
+- Zerlege komplexe Ideen in Schritte
+
+Original:
+\${text}`} />
+
+## Prompt-Vorlagen von prompts.chat
+
+Hier sind beliebte Schreib-Prompts aus der prompts.chat Community:
+
+### Agiere als Copywriter
+
+<TryIt compact prompt={`Ich möchte, dass du als Copywriter agierst. Ich werde dir ein Produkt oder eine Dienstleistung nennen, und du wirst überzeugende Copy erstellen, die deren Vorteile hervorhebt und potenzielle Kunden zur Handlung bewegt. Deine Copy sollte kreativ, aufmerksamkeitserregend und auf die Zielgruppe zugeschnitten sein.
+
+Produkt/Dienstleistung: \${product}`} />
+
+### Agiere als Technical Writer
+
+<TryIt compact prompt={`Ich möchte, dass du als Technical Writer agierst. Du wirst klare, prägnante Dokumentation für Softwareprodukte erstellen. Ich werde dir technische Informationen geben, und du wirst diese in benutzerfreundliche Dokumentation umwandeln, die sowohl für technische als auch nicht-technische Zielgruppen leicht zu verstehen ist.
+
+Thema: \${topic}`} />
+
+### Agiere als Geschichtenerzähler
+
+<TryIt compact prompt={`Ich möchte, dass du als Geschichtenerzähler agierst. Du wirst unterhaltsame Geschichten entwickeln, die fesselnd, fantasievoll und faszinierend für das Publikum sind. Es können Märchen, Lehrgeschichten oder jede andere Art von Geschichte sein, die das Potenzial hat, die Aufmerksamkeit und Fantasie der Menschen zu fesseln.
+
+Geschichte-Thema: \${theme}`} />
+
+## Schreib-Workflow-Tipps
+
+### 1. Zuerst Gliederung
+
+<TryIt compact prompt={`Vor dem Schreiben, erstelle eine Gliederung:
+
+Thema: \${topic}
+
+1. Generiere 5 mögliche Blickwinkel
+2. Wähle den besten Blickwinkel und erkläre warum
+3. Erstelle detaillierte Gliederung mit:
+   - Hauptabschnitte
+   - Schlüsselpunkte pro Abschnitt
+   - Benötigte unterstützende Belege/Beispiele
+4. Identifiziere Lücken, die Recherche erfordern`} />
+
+### 2. Erst entwerfen, dann verfeinern
+
+<TryIt compact prompt={`Phase 1 - Entwurf:
+"Schreib einen Rohentwurf mit Fokus darauf, Ideen festzuhalten. Mach dir keine Sorgen über Perfektion. Erfasse einfach die Schlüsselpunkte."
+
+Phase 2 - Verfeinern:
+"Jetzt verbessere diesen Entwurf: straffe Sätze, füge Übergänge hinzu, stärke Anfang und Ende."
+
+Phase 3 - Polieren:
+"Letzter Durchgang: prüfe Grammatik, variiere Satzstruktur, stelle konsistenten Ton sicher."
+
+Thema: \${topic}`} />
+
+### 3. Stimme anpassen
+
+<TryIt compact prompt={`Analysiere diese Schreibprobe auf Stimm-Charakteristiken:
+\${sample}
+
+Dann schreibe \${newContent} passend zu:
+- Satzlängen-Muster
+- Vokabular-Level
+- Verwendete rhetorische Mittel
+- Ton und Persönlichkeit`} />
+
+## Zusammenfassung
+
+<Callout type="tip" title="Schlüsseltechniken">
+Spezifiziere Zielgruppe und Zweck klar, definiere Struktur und Format, füge Stilrichtlinien ein, liefere Beispiele wenn möglich und fordere spezifische Ergebnisse an.
+</Callout>
+
+<Quiz 
+  question="Was ist der effektivste Weg, KI für Schreibaufgaben zu nutzen?"
+  options={[
+    "KI die finale Version ohne Bearbeitung schreiben lassen",
+    "KI verwenden, um Entwürfe zu generieren, dann mit deiner Expertise verfeinern",
+    "KI nur für Grammatikprüfung verwenden",
+    "KI für kreatives Schreiben komplett vermeiden"
+  ]}
+  correctIndex={1}
+  explanation="KI funktioniert am besten als kollaboratives Schreibwerkzeug. Verwende sie, um Entwürfe und Ideen zu generieren, dann wende deine Expertise, Stimme und Urteilsvermögen an, um die Ausgabe zu verfeinern."
+/>
+
+Schreiben mit KI funktioniert am besten als Zusammenarbeit – lass KI Entwürfe generieren, dann verfeinere mit deiner Expertise und Stimme.

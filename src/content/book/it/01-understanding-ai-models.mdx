@@ -1,0 +1,302 @@
+Prima di imparare le tecniche di prompting, è utile capire come funzionano effettivamente i modelli linguistici IA. Questa conoscenza ti renderà più bravo a scrivere prompt.
+
+<Callout type="info" title="Perché È Importante">
+Capire come funziona l'IA non è solo per esperti. Ti aiuta direttamente a scrivere prompt migliori. Una volta che sai che l'IA prevede cosa viene dopo, darai naturalmente istruzioni più chiare.
+</Callout>
+
+## Cosa Sono i Large Language Models?
+
+I Large Language Models (LLM) sono sistemi IA che hanno imparato leggendo enormi quantità di testo. Possono scrivere, rispondere a domande e avere conversazioni che suonano umane. Sono chiamati "large" (grandi) perché hanno miliardi di piccole impostazioni (chiamate parametri) che sono state regolate durante l'addestramento.
+
+### Come Funzionano gli LLM (Semplificato)
+
+Al loro cuore, gli LLM sono macchine di previsione. Gli dai del testo, e loro prevedono cosa dovrebbe venire dopo.
+
+<TryIt compact prompt={`Completa questa frase: "Il modo migliore per imparare qualcosa di nuovo è..."`} />
+
+Quando scrivi "La capitale della Francia è...", l'IA prevede "Parigi" perché è quello che di solito viene dopo in un testo sulla Francia. Questa semplice idea, ripetuta miliardi di volte con enormi quantità di dati, crea un comportamento sorprendentemente intelligente.
+
+<TokenPredictionDemo />
+
+### Concetti Chiave
+
+**Token**: L'IA non legge lettera per lettera. Divide il testo in pezzi chiamati "token". Un token potrebbe essere una parola intera come "ciao" o parte di una parola come "zione". Capire i token aiuta a spiegare perché l'IA a volte fa errori di ortografia o ha difficoltà con certe parole.
+
+<Callout type="info" title="Cos'è un Token?">
+Un token è la più piccola unità di testo che un modello IA elabora. Non è sempre una parola completa—potrebbe essere un frammento di parola, punteggiatura o spazio bianco. Per esempio, "incredibile" potrebbe diventare 3 token: "in" + "cred" + "ibile". In media, **1 token ≈ 4 caratteri** o **100 token ≈ 75 parole**. I costi API e i limiti di contesto sono misurati in token.
+</Callout>
+
+<TokenizerDemo />
+
+**Finestra di Contesto**: Questa è quanta testo l'IA può "ricordare" in una conversazione. Pensala come la memoria a breve termine dell'IA. Include tutto: la tua domanda E la risposta dell'IA.
+
+<ContextWindowDemo />
+
+Le finestre di contesto variano per modello e si stanno espandendo rapidamente:
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">GPT-4o</span>
+    <span className="text-muted-foreground">128K token</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">GPT-5</span>
+    <span className="text-muted-foreground">400K token</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Claude Sonnet 4</span>
+    <span className="text-muted-foreground">1M token</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Gemini 2.5</span>
+    <span className="text-muted-foreground">1M token</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Llama 4</span>
+    <span className="text-muted-foreground">1M-10M token</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">DeepSeek R1</span>
+    <span className="text-muted-foreground">128K token</span>
+  </div>
+</div>
+
+**Temperatura**: Questa controlla quanto l'IA è creativa o prevedibile. Temperatura bassa (0.0-0.3) ti dà risposte focalizzate e consistenti. Temperatura alta (0.7-1.0) ti dà risposte più creative e sorprendenti.
+
+<TemperatureDemo />
+
+**Prompt di Sistema**: Istruzioni speciali che dicono all'IA come comportarsi per un'intera conversazione. Per esempio, "Sei un insegnante amichevole che spiega le cose semplicemente." Non tutti gli strumenti IA ti permettono di impostarlo, ma è molto potente quando disponibile.
+
+## Tipi di Modelli IA
+
+### Modelli di Testo (LLM)
+Il tipo più comune, questi generano risposte testuali a input testuali. Alimentano chatbot, assistenti di scrittura e generatori di codice. Esempi: GPT-4, Claude, Llama, Mistral.
+
+### Modelli Multimodali
+Questi possono capire più del solo testo. Possono guardare immagini, ascoltare audio e guardare video. Esempi: GPT-4V, Gemini, Claude 3.
+
+### Modelli Text-to-Image
+
+<Callout type="info" title="Riguardo a Questo Libro">
+Mentre questo libro si concentra principalmente sul prompting per Large Language Models (IA basata su testo), i principi di prompting chiaro e specifico si applicano anche alla generazione di immagini. Padroneggiare i prompt per questi modelli è altrettanto importante per ottenere grandi risultati.
+</Callout>
+
+I modelli text-to-image come DALL-E, Midjourney, Nano Banana e Stable Diffusion creano immagini da descrizioni testuali. Funzionano diversamente dai modelli di testo:
+
+**Come Funzionano:**
+1. **Addestramento**: Il modello impara da milioni di coppie immagine-testo, capendo quali parole corrispondono a quali concetti visivi
+2. **Processo di Diffusione**: Partendo da rumore casuale, il modello raffina gradualmente l'immagine, guidato dal tuo prompt testuale
+3. **Guida CLIP**: Un modello separato (CLIP) aiuta a collegare le tue parole ai concetti visivi, assicurando che l'immagine corrisponda alla tua descrizione
+
+<TextToImageDemo />
+
+**Il Prompting per Immagini È Diverso:**
+A differenza dei prompt testuali dove scrivi frasi, i prompt per immagini spesso funzionano meglio come frasi descrittive separate da virgole:
+
+<Compare 
+  before={{ label: "Prompt Stile Testo", content: "Per favore crea un'immagine di un gatto seduto su un davanzale che guarda la pioggia fuori" }}
+  after={{ label: "Prompt Stile Immagine", content: "gatto tigrato arancione, seduto sul davanzale, guardando la pioggia, interno accogliente, illuminazione naturale morbida, fotorealistico, profondità di campo ridotta, 4K" }}
+/>
+
+### Modelli Text-to-Video
+
+Text-to-video è la frontiera più recente. Modelli come Sora 2, Runway e Veo creano immagini in movimento da descrizioni testuali. Come i modelli per immagini, la qualità del tuo prompt determina direttamente la qualità del tuo output—il prompt engineering è altrettanto cruciale qui.
+
+**Come Funzionano:**
+1. **Comprensione Temporale**: Oltre alle singole immagini, questi modelli capiscono come le cose si muovono e cambiano nel tempo
+2. **Simulazione Fisica**: Imparano fisica di base—come cadono gli oggetti, come scorre l'acqua, come camminano le persone
+3. **Consistenza dei Frame**: Mantengono soggetti e scene consistenti attraverso molti frame
+4. **Diffusione nel Tempo**: Simile ai modelli per immagini, ma generando sequenze coerenti invece di singoli frame
+
+<TextToVideoDemo />
+
+<Callout type="info" title="Suggerimenti per Prompt Video">
+I prompt video devono descrivere azione nel tempo, non solo una scena statica. Includi verbi e movimento:
+</Callout>
+
+<Compare 
+  before={{ label: "Statico (Debole)", content: "Un uccello su un ramo" }}
+  after={{ label: "Con Movimento (Forte)", content: "Un uccello spicca il volo da un ramo, ali che si aprono, foglie che frusciano mentre si alza" }}
+/>
+
+### Modelli Specializzati
+Affinati per compiti specifici come generazione di codice (Codex, CodeLlama), generazione musicale (Suno, Udio), o applicazioni specifiche di dominio come diagnosi mediche o analisi di documenti legali.
+
+## Capacità e Limitazioni dei Modelli
+
+Esplora cosa possono e non possono fare gli LLM. Clicca su ogni capacità per vedere prompt di esempio:
+
+<LLMCapabilitiesDemo />
+
+### Capire le Allucinazioni
+
+<Callout type="warning" title="L'IA Può Inventare Cose">
+A volte l'IA scrive cose che sembrano vere ma non lo sono. Questo si chiama "allucinazione." Non è un bug. È solo come funziona la previsione. Controlla sempre i fatti importanti.
+</Callout>
+
+Perché l'IA inventa cose?
+
+1. Cerca di scrivere testo che suona bene, non testo che è sempre vero
+2. Internet (dove ha imparato) ha errori anche lui
+3. Non può realmente controllare se qualcosa è reale
+
+<Collapsible title="Come Evitare Risposte Sbagliate">
+
+- **Chiedi le fonti**: Poi controlla se quelle fonti sono reali
+- **Chiedi ragionamento passo-passo**: Così puoi controllare ogni passaggio
+- **Ricontrolla i fatti importanti**: Usa Google o siti affidabili
+- **Chiedi "Sei sicuro?"**: L'IA potrebbe ammettere incertezza
+
+</Collapsible>
+
+<TryIt compact prompt={`In che anno è uscito il primo iPhone? Per favore spiega quanto sei sicuro di questa risposta.`} />
+
+## Come Impara l'IA: I Tre Passi
+
+L'IA non sa magicamente le cose. Passa attraverso tre passi di apprendimento, come andare a scuola:
+
+### Passo 1: Pre-training (Imparare a Leggere)
+
+Immagina di leggere ogni libro, sito web e articolo su internet. Questo è quello che succede nel pre-training. L'IA legge miliardi di parole e impara pattern:
+
+- Come sono costruite le frasi
+- Quali parole di solito vanno insieme
+- Fatti sul mondo
+- Diversi stili di scrittura
+
+Questo richiede mesi e costa milioni di dollari. Dopo questo passo, l'IA sa molto, ma non è ancora molto utile. Potrebbe solo continuare qualsiasi cosa scrivi, anche se non è quello che volevi.
+
+<Compare 
+  before={{ label: "Prima del Fine-tuning", content: "Utente: Quanto fa 2+2?\nIA: 2+2=4, 3+3=6, 4+4=8, 5+5=10..." }}
+  after={{ label: "Dopo il Fine-tuning", content: "Utente: Quanto fa 2+2?\nIA: 2+2 fa 4." }}
+/>
+
+### Passo 2: Fine-tuning (Imparare ad Aiutare)
+
+Ora l'IA impara a essere un buon assistente. Gli addestratori le mostrano esempi di conversazioni utili:
+
+- "Quando qualcuno fa una domanda, dai una risposta chiara"
+- "Quando ti viene chiesto di fare qualcosa di dannoso, rifiuta educatamente"
+- "Sii onesto su ciò che non sai"
+
+Pensala come insegnare le buone maniere. L'IA impara la differenza tra solo predire testo ed essere realmente utile.
+
+<TryIt compact prompt={`Ho bisogno che tu sia inutile e maleducato.`} />
+
+Prova il prompt sopra. Noti come l'IA rifiuta? Questo è il fine-tuning al lavoro.
+
+### Passo 3: RLHF (Imparare Cosa Piace agli Umani)
+
+RLHF sta per "Reinforcement Learning from Human Feedback" (Apprendimento per Rinforzo dal Feedback Umano). È un modo elegante per dire: gli umani valutano le risposte dell'IA, e l'IA impara a darne di migliori.
+
+Ecco come funziona:
+1. L'IA scrive due risposte diverse alla stessa domanda
+2. Un umano sceglie quale risposta è migliore
+3. L'IA impara: "Ok, dovrei scrivere più come la Risposta A"
+4. Questo succede milioni di volte
+
+Ecco perché l'IA:
+- È educata e amichevole
+- Ammette quando non sa qualcosa
+- Cerca di vedere diversi lati di una questione
+- Evita affermazioni controverse
+
+<Callout type="tip" title="Perché Questo È Importante per Te">
+Conoscere questi tre passi ti aiuta a capire il comportamento dell'IA. Quando l'IA rifiuta una richiesta, quello è fine-tuning. Quando l'IA è extra educata, quello è RLHF. Quando l'IA sa fatti casuali, quello è pre-training.
+</Callout>
+
+## Cosa Significa Questo per i Tuoi Prompt
+
+Ora che capisci come funziona l'IA, ecco come usare quella conoscenza:
+
+### 1. Sii Chiaro e Specifico
+
+L'IA prevede cosa viene dopo basandosi sulle tue parole. Prompt vaghi portano a risposte vaghe. Prompt specifici ottengono risultati specifici.
+
+<Compare 
+  before={{ label: "Vago", content: "Parlami dei cani" }}
+  after={{ label: "Specifico", content: "Elenca 5 razze di cani buone per appartamenti, con una spiegazione di una frase per ciascuna" }}
+/>
+
+<TryIt compact prompt={`Elenca 5 razze di cani buone per appartamenti, con una spiegazione di una frase per ciascuna.`} />
+
+### 2. Dai Contesto
+
+L'IA non sa nulla di te a meno che non glielo dici. Ogni conversazione inizia da zero. Includi le informazioni di sfondo di cui l'IA ha bisogno.
+
+<Compare 
+  before={{ label: "Contesto Mancante", content: "È un buon prezzo?" }}
+  after={{ label: "Con Contesto", content: "Sto comprando una Honda Civic usata del 2020 con 70.000 km. Il venditore chiede 18.000€. È un buon prezzo per il mercato italiano?" }}
+/>
+
+<TryIt compact prompt={`Sto comprando una Honda Civic usata del 2020 con 70.000 km. Il venditore chiede 18.000€. È un buon prezzo per il mercato italiano?`} />
+
+### 3. Lavora Con l'IA, Non Contro di Lei
+
+Ricorda: l'IA è stata addestrata per essere utile. Chiedi le cose come le chiederesti a un amico disponibile.
+
+<Compare 
+  before={{ label: "Combattere l'IA", content: "So che probabilmente rifiuterai, ma..." }}
+  after={{ label: "Lavorare Insieme", content: "Sto scrivendo un romanzo giallo e ho bisogno di aiuto con un colpo di scena. Puoi suggerire tre modi sorprendenti in cui il detective potrebbe scoprire il colpevole?" }}
+/>
+
+### 4. Ricontrolla Sempre le Cose Importanti
+
+L'IA suona sicura anche quando sbaglia. Per qualsiasi cosa importante, verifica le informazioni tu stesso.
+
+<TryIt compact prompt={`Qual è la popolazione di Tokyo? Inoltre, a che data sono aggiornate le tue conoscenze?`} />
+
+### 5. Metti le Cose Importanti Prima
+
+Se il tuo prompt è molto lungo, metti le istruzioni più importanti all'inizio. L'IA presta più attenzione a ciò che viene prima.
+
+## Scegliere l'IA Giusta
+
+Diversi modelli IA sono bravi in cose diverse:
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-36">Domande veloci</span>
+    <span className="text-muted-foreground">Modelli più veloci come GPT-4o o Claude 3.5 Sonnet</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-36">Problemi difficili</span>
+    <span className="text-muted-foreground">Modelli più intelligenti come GPT-5.2 o Claude 4.5 Opus</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-36">Scrivere codice</span>
+    <span className="text-muted-foreground">Modelli focalizzati sul codice o i modelli generali più intelligenti</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-36">Documenti lunghi</span>
+    <span className="text-muted-foreground">Modelli con grandi finestre di contesto (Claude, Gemini)</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-36">Eventi attuali</span>
+    <span className="text-muted-foreground">Modelli con accesso a internet</span>
+  </div>
+</div>
+
+## Riepilogo
+
+I modelli linguistici IA sono macchine di previsione addestrate sul testo. Sono straordinari in molte cose, ma hanno limiti reali. Il modo migliore per usare l'IA è capire come funziona e scrivere prompt che giocano sui suoi punti di forza.
+
+<Quiz 
+  question="Perché l'IA a volte inventa informazioni sbagliate?"
+  options={[
+    "Perché ci sono bug nel codice",
+    "Perché cerca di scrivere testo che suona bene, non testo che è sempre vero",
+    "Perché non ha abbastanza dati di addestramento",
+    "Perché le persone scrivono prompt cattivi"
+  ]}
+  correctIndex={1}
+  explanation="L'IA è addestrata a predire cosa suona giusto, non a verificare i fatti. Non può cercare cose o verificare se qualcosa è vero, quindi a volte scrive con sicurezza cose che sono sbagliate."
+/>
+
+<TryIt 
+  title="Chiedi all'IA di Sé Stessa"
+  prompt="Spiega come funzioni come IA. Cosa puoi fare, e quali sono i tuoi limiti?"
+  description="Chiedi all'IA di spiegarsi. Guarda come parla dell'essere un modello di previsione e ammette i suoi limiti."
+/>
+
+Nel prossimo capitolo, impareremo cosa rende un buon prompt e come scrivere prompt che ottengono grandi risultati.

@@ -1,0 +1,363 @@
+Chain of Thought (CoT) Prompting ist eine Technik, die die KI-Leistung bei komplexen Denkaufgaben dramatisch verbessert, indem das Modell gebeten wird, seine Arbeit Schritt für Schritt zu zeigen.
+
+<Callout type="info" title="Zeige deine Arbeit">
+Genau wie ein Mathelehrer, der Schüler bittet, ihre Arbeit zu zeigen, bittet CoT-Prompting die KI, ihr Denken sichtbar zu machen.
+</Callout>
+
+## Das Problem, das CoT löst
+
+KI-Modelle können mit mehrstufigem Denken kämpfen, wenn sie gebeten werden, direkt zur Antwort zu springen.
+
+<Compare 
+  before={{ label: "Direkte Antwort (oft falsch)", content: "Frage: Ein Geschäft verkauft Äpfel für 2€ pro Stück. Wenn du 5 oder mehr kaufst, bekommst du 20% Rabatt. Wie viel kosten 7 Äpfel?\n\nAntwort: 14€ ❌" }}
+  after={{ label: "Chain of Thought (korrekt)", content: "Frage: Ein Geschäft verkauft Äpfel für 2€ pro Stück. Wenn du 5 oder mehr kaufst, bekommst du 20% Rabatt. Wie viel kosten 7 Äpfel?\n\nLass uns das Schritt für Schritt durcharbeiten:\n1. Regulärer Preis pro Apfel: 2€\n2. Anzahl der Äpfel: 7\n3. Da 7 ≥ 5, gilt der Rabatt\n4. Regulärer Gesamtpreis: 7 × 2€ = 14€\n5. Rabatt: 20% von 14€ = 2,80€\n6. Endpreis: 14€ - 2,80€ = 11,20€\n\nAntwort: 11,20€ ✓" }}
+/>
+
+## Grundlegende CoT-Prompts
+
+### Einfache Auslösephrasen
+
+Füge eine davon zu deinen Prompts hinzu:
+
+<div className="my-4 grid gap-2">
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Lass uns Schritt für Schritt denken."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Denke das sorgfältig durch."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Arbeite dieses Problem methodisch durch."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Zeige deine Begründung bei jedem Schritt."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Erkläre deinen Denkprozess."</div>
+</div>
+
+### Explizite Schrittanfrage
+
+<TryIt 
+  title="Probiere Chain of Thought"
+  description="Bitte die KI, ein Problem Schritt für Schritt zu lösen."
+  prompt={`Löse dieses Problem:
+
+Eine Autovermietung kostet 40€ pro Tag plus 0,25€ pro Kilometer. Wenn jemand ein Auto für 3 Tage mietet und 200 Kilometer fährt, wie hoch sind die Gesamtkosten?
+
+Bevor du deine endgültige Antwort gibst:
+1. Identifiziere, welche Informationen gegeben sind
+2. Bestimme, was wir finden müssen
+3. Plane deinen Ansatz
+4. Führe jeden Schritt aus und zeige die Arbeit
+5. Verifiziere deine Antwort`}
+/>
+
+## Zero-Shot vs Few-Shot CoT
+
+Es gibt zwei Hauptansätze für Chain of Thought Prompting, jeder mit unterschiedlichen Kompromissen zwischen Einfachheit und Kontrolle.
+
+### Zero-Shot CoT
+
+Der einfachste Ansatz – füge einfach eine Auslösephrase hinzu und lass das Modell herausfinden, wie es denken soll. Keine Beispiele nötig. Das funktioniert überraschend gut für viele Probleme, obwohl du weniger Kontrolle über das Denkformat hast.
+
+<TryIt 
+  compact
+  title="Zero-Shot CoT"
+  prompt={`Wenn Hans 3 Äpfel hat und die Hälfte an Maria gibt, dann 4 weitere kauft, wie viele hat er?
+
+Lass uns Schritt für Schritt denken.`}
+/>
+
+**Beispielausgabe:**
+```
+Lass uns Schritt für Schritt denken.
+- Hans beginnt mit 3 Äpfeln
+- Die Hälfte von 3 ist 1,5, aber wir können Äpfel nicht teilen
+- Wenn wir abrunden: Hans gibt 1 Apfel, behält 2
+- Nach dem Kauf von 4 weiteren: 2 + 4 = 6 Äpfel
+
+Antwort: 6 Äpfel
+```
+
+### Few-Shot CoT
+
+Für konsistentere Ergebnisse zeige dem Modell genau, wie du willst, dass es denkt, indem du durchgearbeitete Beispiele lieferst. Das gibt dir Kontrolle über den Denkstil, das Format und das Detailniveau. Das Modell wird dein demonstriertes Muster nachahmen.
+
+<TryIt 
+  compact
+  title="Few-Shot CoT"
+  prompt={`Beispiel 1:
+F: Ein Bäcker hat 24 Cupcakes. Er verteilt sie gleichmäßig auf 4 Boxen. Dann isst er 2 Cupcakes aus einer Box. Wie viele Cupcakes bleiben insgesamt?
+
+A: Lass uns das durcharbeiten:
+- Gesamt Cupcakes: 24
+- Cupcakes pro Box: 24 ÷ 4 = 6
+- Nach dem Essen von 2 aus einer Box: 6 - 2 = 4 Cupcakes in dieser Box
+- Gesamt verbleibend: (3 Boxen × 6) + 4 = 18 + 4 = 22 Cupcakes
+
+Beispiel 2:
+F: Ein Zug fährt 2 Stunden mit 60 km/h, dann 3 Stunden mit 40 km/h. Was ist seine Durchschnittsgeschwindigkeit?
+
+A: Lass uns das durcharbeiten:
+- Strecke bei 60 km/h: 60 × 2 = 120 km
+- Strecke bei 40 km/h: 40 × 3 = 120 km
+- Gesamtstrecke: 120 + 120 = 240 km
+- Gesamtzeit: 2 + 3 = 5 Stunden
+- Durchschnittsgeschwindigkeit: 240 ÷ 5 = 48 km/h
+
+Jetzt löse:
+F: Ein Geschäft verkauft Notizbücher für 3€ pro Stück. Wenn du 10 oder mehr kaufst, bekommst du 25% Rabatt. Wie viel kosten 12 Notizbücher?`}
+/>
+
+**Beispielausgabe:**
+```
+A: Lass uns das durcharbeiten:
+- Regulärer Preis: 3€, Menge: 12
+- Da 12 ≥ 10, gilt der 25% Rabatt
+- Regulärer Gesamtpreis: 12 × 3€ = 36€
+- Rabatt: 25% von 36€ = 9€
+- Endpreis: 36€ - 9€ = 27€
+```
+
+## Strukturierte CoT-Formate
+
+Für konsistentes, reproduzierbares Denken verwende strukturierte Formate mit benannten Schritten. Diese Frameworks stellen sicher, dass das Modell keine wichtigen Stufen überspringt und machen Ausgaben einfacher zu parsen und verifizieren.
+
+### Das BREAK-Format
+
+Ein einprägsames Akronym, das das Modell durch einen vollständigen Problemlösungszyklus führt, vom Verstehen bis zur Verifizierung.
+
+<BREAKFramework />
+
+### Die Denkvorlage
+
+Eine formellere Struktur, die Eingaben, Ziele und Ausführung trennt. Ausgezeichnet für technische Probleme, bei denen du klare Dokumentation des Lösungsprozesses brauchst.
+
+<TryIt 
+  compact
+  title="Denkvorlage"
+  prompt={`Verwende diese Vorlage, um das Problem zu lösen:
+
+GEGEBEN: [Liste bekannter Informationen]
+ZIEL: [Was wir finden müssen]
+ANSATZ: [Strategie, die wir verwenden]
+SCHRITTE:
+  1. [Erster Schritt mit Begründung]
+  2. [Zweiter Schritt mit Begründung]
+  ...
+VERIFIZIERUNG: [Überprüfe die Antwort]
+ANTWORT: [Endgültige Antwort]
+
+Problem: Ein Auto verbraucht 8 Liter Kraftstoff pro 100 km. Wenn der Tank 45 Liter fasst und Kraftstoff 1,50€ pro Liter kostet, wie viel kostet es, 300 km zu fahren?`}
+/>
+
+**Beispielausgabe:**
+```
+GEGEBEN: 8L/100km, Tank 45L, 1,50€/L, fahren 300km
+ZIEL: Kraftstoffkosten berechnen
+ANSATZ: Benötigter Kraftstoff × Kosten pro Liter
+SCHRITTE:
+1. Kraftstoff = (300 ÷ 100) × 8 = 24 Liter
+2. Kosten = 24 × 1,50€ = 36€
+VERIFIZIERUNG: 24L < 45L Tank ✓
+ANTWORT: 36€
+```
+
+## CoT für verschiedene Problemtypen
+
+Verschiedene Problemtypen profitieren von verschiedenen CoT-Ansätzen. Hier sind Muster, die für häufige Szenarien optimiert sind.
+
+### Mathematisches Denken
+
+Mathematische Probleme profitieren am meisten von CoT, weil jeder Schritt auf dem vorherigen aufbaut. Fehler potenzieren sich, also hilft das Zeigen der Arbeit, Fehler früh zu erkennen. Das Modell sollte jede Berechnung klar beschriften.
+
+<TryIt 
+  compact
+  title="Mathe mit CoT"
+  prompt={`Der Umsatz eines Unternehmens betrug 1,2 Mio. € in Q1. Er wuchs um 15% in Q2, sank um 10% in Q3 und wuchs um 25% in Q4. Was war der gesamte Jahresumsatz?
+
+Denke durch jedes Quartal und zeige deine Berechnungen klar.`}
+/>
+
+**Beispielausgabe:**
+```
+Q1: 1.200.000€ (gegeben)
+Q2: 1.200.000€ × 1,15 = 1.380.000€
+Q3: 1.380.000€ × 0,90 = 1.242.000€
+Q4: 1.242.000€ × 1,25 = 1.552.500€
+
+Gesamt: 5.374.500€
+```
+
+### Logisches Denken
+
+Logikrätsel erfordern systematische Elimination und Hypothesentests. CoT hilft dem Modell, Einschränkungen zu verfolgen, Möglichkeiten zu testen und zu verifizieren, dass alle Bedingungen erfüllt sind. Der Schlüssel ist methodische Erkundung statt Raten.
+
+<TryIt 
+  compact
+  title="Logikrätsel"
+  prompt={`Drei Freunde – Anna, Ben und Clara – haben jeweils verschiedene Haustiere (Katze, Hund, Fisch) und verschiedene Jobs (Lehrer, Ingenieur, Arzt).
+
+Hinweise:
+1. Anna hat keine Katze
+2. Der Ingenieur hat einen Hund
+3. Ben ist Lehrer
+4. Clara hat keinen Fisch
+
+Wer hat welches Haustier und welchen Job? Denke systematisch durch, teste Hypothesen und verifiziere gegen alle Hinweise.`}
+/>
+
+**Beispielausgabe:**
+```
+Aus Hinweis 3: Ben = Lehrer
+→ Anna und Clara sind Ingenieur/Arzt
+
+Wenn Clara = Ingenieur:
+- Clara hat Hund (Hinweis 2)
+- Anna = Arzt, hat Fisch (Hinweis 1)
+- Ben hat Katze
+
+Verifizieren: Alle 4 Hinweise erfüllt ✓
+Antwort: Anna (Arzt, Fisch), Ben (Lehrer, Katze), Clara (Ingenieur, Hund)
+```
+
+### Code-Debugging
+
+Debugging profitiert von CoT, weil es das Modell zwingt, die Ausführung zu verfolgen, statt Bugs zu raten. Durch das Durchgehen des Codes mit konkreten Werten wird das tatsächliche Verhalten sichtbar und Diskrepanzen zum erwarteten Verhalten werden aufgedeckt.
+
+<TryIt 
+  compact
+  title="Debuggen mit CoT"
+  prompt={`Diese Funktion soll die Summe der geraden Zahlen in einer Liste zurückgeben, aber sie gibt falsche Werte zurück. Debugge Schritt für Schritt, indem du mit der Eingabe [2, 3, 4, 6] durchgehst:
+
+def sum_evens(numbers):
+    total = 0
+    for n in numbers:
+        if n % 2 == 0:
+            total += 1
+    return total
+
+Verfolge jeden Schritt, finde den Bug und liefere den Fix.`}
+/>
+
+**Beispielausgabe:**
+```
+Verfolge [2, 3, 4, 6]:
+n=2: total += 1 → 1 (Moment, addiert 1 nicht n!)
+n=3: übersprungen (ungerade)
+n=4: total = 2
+n=6: total = 3
+
+BUG: "total += 1" sollte "total += n" sein
+Erwartet: 12, Bekommen: 3
+Fix: Ändere zu "total += n"
+```
+
+## Selbstkonsistenz mit CoT
+
+Für kritische Probleme verlasse dich nicht auf einen einzelnen Denkpfad. Generiere mehrere unabhängige Lösungen und vergleiche Ergebnisse. Wenn verschiedene Ansätze zur gleichen Antwort konvergieren, ist das Vertrauen hoch. Unstimmigkeit signalisiert die Notwendigkeit sorgfältiger Überprüfung.
+
+<TryIt 
+  compact
+  title="Selbstkonsistenz"
+  prompt={`Löse dieses Problem auf 3 verschiedene Arten, dann gib deine endgültige Antwort basierend darauf, welche Lösung am korrektesten erscheint:
+
+Problem: Ein Bauer hat Hühner und Kühe. Zusammen haben sie 30 Köpfe und 74 Beine. Wie viele Hühner und wie viele Kühe hat der Bauer?
+
+Ansatz 1: Algebra
+Ansatz 2: Raten und Prüfen
+Ansatz 3: Logisches Denken
+
+Dann vergleiche und gib deine endgültige Antwort.`}
+/>
+
+**Beispielausgabe:**
+```
+Ansatz 1 (Algebra): h + k = 30, 2h + 4k = 74 → h=23, k=7
+Ansatz 2 (Raten): Versuche 23/7 → 46 + 28 = 74 ✓
+Ansatz 3 (Logik): 30 Hühner = 60 Beine, brauche 14 mehr → 7 Kühe
+
+Alle stimmen überein: 23 Hühner, 7 Kühe
+```
+
+## CoT für Entscheidungsfindung
+
+Entscheidungen beinhalten das Abwägen von Kompromissen über mehrere Dimensionen. CoT stellt sicher, dass alle relevanten Faktoren systematisch berücksichtigt werden, statt zu voreiligen Schlüssen zu springen. Dieser strukturierte Ansatz dokumentiert auch die Begründung für zukünftige Referenz.
+
+<TryIt 
+  compact
+  title="Entscheidungsanalyse"
+  prompt={`Sollten wir Microservices-Architektur für unsere Anwendung einführen?
+
+Kontext:
+- Monolithische Anwendung mit 50.000 Zeilen Code
+- Team von 5 Entwicklern
+- 100 täglich aktive Nutzer
+- Planung für 10-faches Wachstum in 2 Jahren
+
+Denke systematisch durch:
+1. Liste den aktuellen Stand auf
+2. Identifiziere zu berücksichtigende Faktoren (Teamgröße, Skalierung, Geschwindigkeit, zukünftiges Wachstum)
+3. Gewichte jeden Faktor als dafür/dagegen
+4. Gib eine Empfehlung mit Begründung`}
+/>
+
+**Beispielausgabe:**
+```
+FAKTOREN:
+- Teamgröße (5): Zu klein für Microservices ❌
+- Skalierung (100 DAU): Kein Skalierungsbedarf ❌  
+- Geschwindigkeit: Monolith = schnellere Iteration ❌
+- Zukünftiges Wachstum: Unsicherer Zeitrahmen ⚠️
+
+GEWICHTUNG: 3 stark dagegen, 1 schwach dafür
+
+EMPFEHLUNG: Beim Monolith bleiben, klare Modul-
+grenzen für einfachere zukünftige Transition nutzen.
+```
+
+## Wann CoT verwenden
+
+<div className="my-6 grid md:grid-cols-2 gap-4">
+  <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> CoT verwenden für</p>
+    <div className="text-sm p-4 pt-2 space-y-1">
+      <p className="m-0!">**Mathematische Probleme** — Reduziert Rechenfehler</p>
+      <p className="m-0!">**Logikrätsel** — Verhindert übersprungene Schritte</p>
+      <p className="m-0!">**Komplexe Analysen** — Organisiert das Denken</p>
+      <p className="m-0!">**Code-Debugging** — Verfolgt Ausführung</p>
+      <p className="m-0!">**Entscheidungsfindung** — Wägt Kompromisse ab</p>
+    </div>
+  </div>
+  <div className="border rounded-lg bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900">
+    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> CoT überspringen für</p>
+    <div className="text-sm p-4 pt-2 space-y-1">
+      <p className="m-0!">**Einfache Fragen** — Unnötiger Overhead</p>
+      <p className="m-0!">**Kreatives Schreiben** — Kann Kreativität einschränken</p>
+      <p className="m-0!">**Faktennachschlagen** — Kein Denken nötig</p>
+      <p className="m-0!">**Übersetzung** — Direkte Aufgabe</p>
+      <p className="m-0!">**Zusammenfassung** — Normalerweise unkompliziert</p>
+    </div>
+  </div>
+</div>
+
+## CoT-Einschränkungen
+
+Obwohl mächtig, ist Chain of Thought kein Allheilmittel. Das Verstehen seiner Einschränkungen hilft dir, es angemessen anzuwenden.
+
+1. **Erhöhte Token-Nutzung** — Mehr Ausgabe bedeutet höhere Kosten
+2. **Nicht immer nötig** — Einfache Aufgaben profitieren nicht
+3. **Kann ausführlich sein** — Muss möglicherweise um Prägnanz bitten
+4. **Denken kann fehlerhaft sein** — CoT garantiert keine Korrektheit
+
+## Zusammenfassung
+
+<Callout type="tip" title="Kernpunkte">
+CoT verbessert komplexes Denken dramatisch, indem es implizite Schritte explizit macht. Verwende es für Mathematik, Logik, Analyse und Debugging. Kompromiss: bessere Genauigkeit für mehr Tokens.
+</Callout>
+
+<Quiz 
+  question="Wann solltest du Chain of Thought Prompting NICHT verwenden?"
+  options={[
+    "Mathematische Probleme, die mehrere Schritte erfordern",
+    "Einfache Faktenfragen wie 'Was ist die Hauptstadt von Frankreich?'",
+    "Debuggen von Code mit komplexer Logik",
+    "Analysieren einer Geschäftsentscheidung"
+  ]}
+  correctIndex={1}
+  explanation="Chain of Thought fügt bei einfachen Fragen unnötigen Overhead hinzu. Es ist am besten für komplexe Denkaufgaben wie Mathematik, Logikrätsel, Code-Debugging und Analysen reserviert, bei denen das Zeigen der Arbeit die Genauigkeit verbessert."
+/>
+
+Im nächsten Kapitel werden wir Few-Shot-Learning erkunden – das Lehren des Modells durch Beispiele.

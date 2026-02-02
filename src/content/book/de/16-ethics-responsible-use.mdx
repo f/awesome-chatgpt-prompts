@@ -1,0 +1,357 @@
+Die Prompts, die du schreibst, formen, wie KI sich verhält. Ein gut gestalteter Prompt kann bilden, unterstützen und befähigen. Ein nachlässiger kann täuschen, diskriminieren oder Schaden verursachen. Als Prompt Engineers sind wir nicht nur Benutzer – wir sind Designer von KI-Verhalten, und das bringt echte Verantwortung mit sich.
+
+Dieses Kapitel handelt nicht von von oben auferlegten Regeln. Es geht darum, die Auswirkungen unserer Entscheidungen zu verstehen und Gewohnheiten zu entwickeln, die zu KI-Nutzung führen, auf die wir stolz sein können.
+
+<Callout type="warning" title="Warum das wichtig ist">
+KI verstärkt, was ihr gegeben wird. Ein voreingenommener Prompt produziert voreingenommene Ausgaben im großen Maßstab. Ein täuschender Prompt ermöglicht Täuschung im großen Maßstab. Die ethischen Implikationen des Prompt Engineering wachsen mit jeder neuen Fähigkeit, die diese Systeme gewinnen.
+</Callout>
+
+## Ethische Grundlagen
+
+Jede Entscheidung im Prompt Engineering verbindet sich mit einigen Kernprinzipien:
+
+<InfoGrid items={[
+  { label: "Ehrlichkeit", description: "Verwende KI nicht, um Menschen zu täuschen oder irreführende Inhalte zu erstellen", example: "Keine gefälschten Bewertungen, Identitätsnachahmung oder fabrizierte 'Beweise'", exampleType: "text", color: "blue" },
+  { label: "Fairness", description: "Arbeite aktiv daran, Vorurteile und Stereotypen nicht zu perpetuieren", example: "Teste Prompts über Demografien, fordere diverse Perspektiven an", exampleType: "text", color: "purple" },
+  { label: "Transparenz", description: "Sei klar über KI-Beteiligung, wenn es wichtig ist", example: "Lege KI-Unterstützung in veröffentlichten Arbeiten, professionellen Kontexten offen", exampleType: "text", color: "green" },
+  { label: "Datenschutz", description: "Schütze persönliche Informationen in Prompts und Ausgaben", example: "Anonymisiere Daten, vermeide PII, verstehe Datenrichtlinien", exampleType: "text", color: "amber" },
+  { label: "Sicherheit", description: "Gestalte Prompts, die schädliche Ausgaben verhindern", example: "Baue Leitplanken ein, teste auf Grenzfälle, handle Ablehnungen elegant", exampleType: "text", color: "red" },
+  { label: "Verantwortlichkeit", description: "Übernimm Verantwortung für das, was deine Prompts produzieren", example: "Überprüfe Ausgaben, behebe Probleme, erhalte menschliche Aufsicht", exampleType: "text", color: "cyan" }
+]} />
+
+### Die Rolle des Prompt Engineers
+
+Du hast mehr Einfluss, als du vielleicht realisierst:
+
+- **Was KI produziert**: Deine Prompts bestimmen Inhalt, Ton und Qualität der Ausgaben
+- **Wie KI interagiert**: Deine System Prompts formen Persönlichkeit, Grenzen und Benutzererfahrung
+- **Welche Schutzmaßnahmen existieren**: Deine Designentscheidungen bestimmen, was die KI tun wird und was nicht
+- **Wie Fehler behandelt werden**: Deine Fehlerbehandlung bestimmt, ob Fehler elegant oder schädlich sind
+
+## Schädliche Ausgaben vermeiden
+
+Die grundlegendste ethische Verpflichtung ist zu verhindern, dass deine Prompts Schaden verursachen.
+
+### Kategorien schädlicher Inhalte
+
+<InfoGrid items={[
+  { label: "Gewalt & Schaden", description: "Anweisungen, die zu physischem Schaden führen könnten", example: "Waffenherstellung, Selbstverletzung, Gewalt gegen andere", exampleType: "text", color: "red" },
+  { label: "Illegale Aktivitäten", description: "Inhalte, die Gesetzesverstöße ermöglichen", example: "Betrugsschemata, Hacking-Anleitungen, Drogenherstellung", exampleType: "text", color: "red" },
+  { label: "Belästigung & Hass", description: "Inhalte, die auf Einzelpersonen oder Gruppen abzielen", example: "Diskriminierende Inhalte, Doxxing, gezielte Belästigung", exampleType: "text", color: "red" },
+  { label: "Desinformation", description: "Absichtlich falsche oder irreführende Inhalte", example: "Falschnachrichten, Gesundheits-Desinformation, Verschwörungsinhalte", exampleType: "text", color: "red" },
+  { label: "Datenschutzverletzungen", description: "Offenlegung oder Ausnutzung persönlicher Informationen", example: "Private Daten enthüllen, Stalking-Unterstützung", exampleType: "text", color: "red" },
+  { label: "Ausbeutung", description: "Inhalte, die verletzliche Personen ausbeuten", example: "CSAM, nicht-einvernehmliche intime Inhalte, Betrug an Älteren", exampleType: "text", color: "red" }
+]} />
+
+<Callout type="warning" title="Was ist CSAM?">
+CSAM steht für **Child Sexual Abuse Material** (Material sexuellen Kindesmissbrauchs). Das Erstellen, Verbreiten oder Besitzen solcher Inhalte ist weltweit illegal. KI-Systeme dürfen niemals Inhalte generieren, die Minderjährige in sexuellen Situationen darstellen, und verantwortungsvolle Prompt Engineers bauen aktiv Schutzmaßnahmen gegen solchen Missbrauch ein.
+</Callout>
+
+### Sicherheit in Prompts einbauen
+
+Beim Bau von KI-Systemen, füge explizite Sicherheitsrichtlinien ein:
+
+<TryIt 
+  title="Sicherheit-Zuerst System Prompt"
+  description="Eine Vorlage zum Einbauen von Sicherheitsrichtlinien in deine KI-Systeme."
+  prompt={`Du bist ein hilfreicher Assistent für \${purpose}.
+
+## SICHERHEITSRICHTLINIEN
+
+**Inhaltsbeschränkungen**:
+- Gib niemals Anweisungen, die physischen Schaden verursachen könnten
+- Lehne Anfragen nach illegalen Informationen oder Aktivitäten ab
+- Generiere keine diskriminierenden oder hasserfüllten Inhalte
+- Erstelle keine absichtlich irreführenden Informationen
+
+**Wenn du ablehnen musst**:
+- Bestätige, dass du die Anfrage verstanden hast
+- Erkläre kurz, warum du bei dieser spezifischen Sache nicht helfen kannst
+- Biete konstruktive Alternativen an, wenn möglich
+- Sei respektvoll – predige oder belehre nicht
+
+**Wenn unsicher**:
+- Stelle klärende Fragen zur Absicht
+- Im Zweifel sei vorsichtig
+- Schlage vor, dass der Benutzer geeignete Fachleute konsultiert
+
+Jetzt hilf dem Benutzer bitte mit: \${userRequest}`}
+/>
+
+### Das Absicht-vs.-Auswirkung-Framework
+
+Nicht jede sensible Anfrage ist bösartig. Verwende dieses Framework für mehrdeutige Fälle:
+
+<TryIt 
+  title="Ethischer Grenzfall-Analysator"
+  description="Arbeite mehrdeutige Anfragen durch, um die angemessene Reaktion zu bestimmen."
+  prompt={`Ich habe diese Anfrage erhalten, die sensibel sein könnte:
+
+"\${sensitiveRequest}"
+
+Hilf mir durchzudenken, ob und wie ich antworten soll:
+
+**1. Absichtsanalyse**
+- Was sind die wahrscheinlichsten Gründe, warum jemand das fragen würde?
+- Könnte das legitim sein? (Forschung, Fiktion, Bildung, berufliches Bedürfnis)
+- Gibt es rote Flaggen, die bösartige Absicht nahelegen?
+
+**2. Auswirkungsbewertung**
+- Was ist der schlimmste Fall, wenn diese Information missbraucht wird?
+- Wie zugänglich ist diese Information anderswo?
+- Erhöht ihre Bereitstellung das Risiko bedeutsam?
+
+**3. Empfehlung**
+Basierend auf dieser Analyse:
+- Soll ich antworten, ablehnen oder um Klarstellung bitten?
+- Wenn ich antworte, welche Schutzmaßnahmen sollte ich einschließen?
+- Wenn ich ablehne, wie sollte ich das hilfreich formulieren?`}
+/>
+
+## Bias angehen
+
+KI-Modelle erben Voreingenommenheiten aus ihren Trainingsdaten – historische Ungleichheiten, Repräsentationslücken, kulturelle Annahmen und sprachliche Muster. Als Prompt Engineers können wir diese Voreingenommenheiten entweder verstärken oder aktiv ihnen entgegenwirken.
+
+### Wie sich Bias manifestiert
+
+<InfoGrid items={[
+  { label: "Standard-Annahmen", description: "Das Modell nimmt bestimmte Demografien für Rollen an", example: "Ärzte standardmäßig männlich, Krankenschwestern weiblich", exampleType: "text", color: "amber" },
+  { label: "Stereotypisierung", description: "Verstärkung kultureller Stereotypen in Beschreibungen", example: "Bestimmte Ethnien mit spezifischen Eigenschaften assoziieren", exampleType: "text", color: "amber" },
+  { label: "Repräsentationslücken", description: "Einige Gruppen sind unterrepräsentiert oder falsch dargestellt", example: "Begrenzte genaue Informationen über Minderheitenkulturen", exampleType: "text", color: "amber" },
+  { label: "Westlich-zentrierte Sichten", description: "Perspektiven auf westliche Kultur und Werte verzerrt", example: "Annahme, dass westliche Normen universell sind", exampleType: "text", color: "amber" }
+]} />
+
+### Auf Bias testen
+
+<TryIt 
+  title="Bias-Erkennungstest"
+  description="Verwende das, um deine Prompts auf potenzielle Bias-Probleme zu testen."
+  prompt={`Ich möchte diesen Prompt auf Bias testen:
+
+"\${promptToTest}"
+
+Führe diese Bias-Prüfungen durch:
+
+**1. Demografischer Variationstest**
+Führe den Prompt mit verschiedenen demografischen Deskriptoren (Geschlecht, Ethnizität, Alter, etc.) aus und notiere Unterschiede in:
+- Ton oder Respektlevel
+- Angenommene Kompetenz oder Fähigkeiten
+- Stereotype Assoziationen
+
+**2. Standard-Annahmen-Prüfung**
+Wenn Demografien nicht spezifiziert sind:
+- Was nimmt das Modell an?
+- Sind diese Annahmen problematisch?
+
+**3. Repräsentationsanalyse**
+- Werden verschiedene Gruppen fair repräsentiert?
+- Fehlen oder werden irgendwelche Gruppen marginalisiert?
+
+**4. Empfehlungen**
+Basierend auf den Erkenntnissen, schlage Prompt-Modifikationen vor, um Bias zu reduzieren.`}
+/>
+
+### Bias in der Praxis mindern
+
+<Compare 
+  before={{ label: "Bias-anfälliger Prompt", content: "Beschreibe einen typischen CEO." }}
+  after={{ label: "Bias-bewusster Prompt", content: "Beschreibe einen CEO. Variiere Demografien über Beispiele hinweg und vermeide es, auf ein bestimmtes Geschlecht, eine Ethnizität oder ein Alter zu standardisieren." }}
+/>
+
+## Transparenz und Offenlegung
+
+Wann solltest du Menschen sagen, dass KI beteiligt war? Die Antwort hängt vom Kontext ab – aber der Trend geht zu mehr Offenlegung, nicht weniger.
+
+### Wann Offenlegung wichtig ist
+
+<InfoGrid items={[
+  { label: "Veröffentlichte Inhalte", description: "Artikel, Posts oder öffentlich geteilte Inhalte", example: "Blogposts, Social Media, Marketingmaterialien", exampleType: "text", color: "blue" },
+  { label: "Folgenreiche Entscheidungen", description: "Wenn KI-Ausgaben das Leben von Menschen beeinflussen", example: "Einstellungsempfehlungen, medizinische Info, rechtliche Beratung", exampleType: "text", color: "blue" },
+  { label: "Vertrauenskontexte", description: "Wo Authentizität erwartet oder geschätzt wird", example: "Persönliche Korrespondenz, Testimonials, Bewertungen", exampleType: "text", color: "blue" },
+  { label: "Professionelle Settings", description: "Arbeitsplatz- oder akademische Umgebungen", example: "Berichte, Forschung, Kundenlieferungen", exampleType: "text", color: "blue" }
+]} />
+
+### Wie man angemessen offenlegt
+
+<Compare 
+  before={{ label: "Versteckte KI-Beteiligung", content: "Hier ist meine Analyse der Markttrends..." }}
+  after={{ label: "Transparente Offenlegung", content: "Ich habe KI-Tools verwendet, um bei der Analyse der Daten und dem Entwurf dieses Berichts zu helfen. Alle Schlussfolgerungen wurden von mir verifiziert und bearbeitet." }}
+/>
+
+Gängige Offenlegungsphrasen, die gut funktionieren:
+- „Mit KI-Unterstützung geschrieben"
+- „KI-generierter Erstentwurf, menschlich bearbeitet"
+- „Analyse mit KI-Tools durchgeführt"
+- „Mit KI erstellt, geprüft und genehmigt von [Name]"
+
+## Datenschutzüberlegungen
+
+Jeder Prompt, den du sendest, enthält Daten. Zu verstehen, wohin diese Daten gehen – und was nicht darin sein sollte – ist essenziell.
+
+### Was niemals in Prompts gehört
+
+<InfoGrid items={[
+  { label: "Persönliche Identifikatoren", description: "Namen, Adressen, Telefonnummern, Ausweisnummern", example: "Verwende [KUNDE] statt 'Max Mustermann'", color: "red" },
+  { label: "Finanzdaten", description: "Kontonummern, Kreditkarten, Einkommensdetails", example: "Beschreibe das Muster, nicht die tatsächlichen Zahlen", exampleType: "text", color: "red" },
+  { label: "Gesundheitsinformationen", description: "Krankenakten, Diagnosen, Verschreibungen", example: "Frage allgemein nach Zuständen, nicht nach spezifischen Patienten", exampleType: "text", color: "red" },
+  { label: "Anmeldedaten", description: "Passwörter, API-Schlüssel, Tokens, Geheimnisse", example: "Füge niemals Anmeldedaten ein – verwende Platzhalter", exampleType: "text", color: "red" },
+  { label: "Private Kommunikation", description: "Persönliche E-Mails, Nachrichten, vertrauliche Dokumente", example: "Fasse die Situation zusammen, ohne privaten Text zu zitieren", exampleType: "text", color: "red" }
+]} />
+
+### Sicheres Datenhandhabungsmuster
+
+<Compare 
+  before={{ label: "Unsicher: Enthält PII", content: "Fasse diese Beschwerde von Max Mustermann in Musterstraße 123, Musterstadt über Bestellung #12345 zusammen: 'Ich habe am 15. März bestellt und immer noch nicht erhalten...'" }}
+  after={{ label: "Sicher: Anonymisiert", content: "Fasse dieses Kundenbeschwerdemuster zusammen: Ein Kunde hat vor 3 Wochen bestellt, seine Bestellung nicht erhalten und den Support zweimal ohne Lösung kontaktiert." }}
+/>
+
+<Callout type="info" title="Was ist PII?">
+**PII** steht für **Personally Identifiable Information** (personenbezogene Daten) – alle Daten, die eine bestimmte Person identifizieren können. Dazu gehören Namen, Adressen, Telefonnummern, E-Mail-Adressen, Sozialversicherungsnummern, Finanzkontonummern und sogar Datenkombinationen (wie Jobtitel + Firma + Stadt), die jemanden identifizieren könnten. Beim Prompting von KI, anonymisiere oder entferne immer PII, um die Privatsphäre zu schützen.
+</Callout>
+
+<TryIt 
+  title="PII-Entferner"
+  description="Verwende das, um sensible Informationen zu identifizieren und zu entfernen, bevor Text in Prompts eingefügt wird."
+  prompt={`Überprüfe diesen Text auf sensible Informationen, die vor der Verwendung in einem KI-Prompt entfernt werden sollten:
+
+"\${textToReview}"
+
+Identifiziere:
+1. **Persönliche Identifikatoren**: Namen, Adressen, Telefonnummern, E-Mails, Ausweisnummern
+2. **Finanzdaten**: Kontonummern, Beträge, die jemanden identifizieren könnten
+3. **Gesundheitsinformationen**: Medizinische Details, Zustände, Verschreibungen
+4. **Anmeldedaten**: Alle Passwörter, Schlüssel oder Tokens
+5. **Private Details**: Informationen, die jemand vernünftigerweise als vertraulich erwarten würde
+
+Für jeden gefundenen Punkt, schlage vor, wie man ihn anonymisieren oder verallgemeinern kann, während die für die Aufgabe benötigten Informationen erhalten bleiben.`}
+/>
+
+## Authentizität und Täuschung
+
+Es gibt einen Unterschied zwischen KI als Werkzeug zu verwenden und KI zur Täuschung zu verwenden.
+
+### Die Legitimationsgrenze
+
+<InfoGrid items={[
+  { label: "Legitime Verwendungen", description: "KI als Werkzeug zur Verbesserung deiner Arbeit", example: "Entwürfe, Brainstorming, Bearbeitung, Lernen", exampleType: "text", color: "green" },
+  { label: "Grauzonen", description: "Kontextabhängig, erfordert Urteilsvermögen", example: "Ghostwriting, Vorlagen, automatisierte Antworten", exampleType: "text", color: "amber" },
+  { label: "Täuschende Verwendungen", description: "KI-Arbeit als menschlich-original darstellen", example: "Gefälschte Bewertungen, akademischer Betrug, Identitätsnachahmung", exampleType: "text", color: "red" }
+]} />
+
+Schlüsselfragen zu stellen:
+- Würde der Empfänger erwarten, dass das originale menschliche Arbeit ist?
+- Erlange ich einen unfairen Vorteil durch Täuschung?
+- Würde Offenlegung ändern, wie die Arbeit aufgenommen wird?
+
+### Verantwortung bei synthetischen Medien
+
+Realistische Darstellungen echter Menschen zu erstellen – ob Bilder, Audio oder Video – bringt besondere Verpflichtungen mit sich:
+
+- **Niemals** realistische Darstellungen ohne Einwilligung erstellen
+- **Immer** synthetische Medien klar kennzeichnen
+- **Bedenke** das Missbrauchspotenzial vor der Erstellung
+- **Weigere dich**, nicht-einvernehmliche intime Bilder zu erstellen
+
+## Verantwortungsvolle Bereitstellung
+
+Beim Bau von KI-Features für andere multiplizieren sich deine ethischen Verpflichtungen.
+
+### Vor-Bereitstellungs-Checkliste
+
+<Checklist 
+  title="Bereitstellungsbereitschaft"
+  items={[
+    { text: "Auf schädliche Ausgaben über diverse Eingaben getestet" },
+    { text: "Auf Bias mit variierten Demografien getestet" },
+    { text: "Benutzer-Offenlegungs-/Einwilligungsmechanismen vorhanden" },
+    { text: "Menschliche Aufsicht für folgenreiche Entscheidungen" },
+    { text: "Feedback- und Meldesystem verfügbar" },
+    { text: "Incident-Response-Plan dokumentiert" },
+    { text: "Klare Nutzungsrichtlinien kommuniziert" },
+    { text: "Monitoring und Alarmierung konfiguriert" }
+  ]}
+/>
+
+### Prinzipien menschlicher Aufsicht
+
+<InfoGrid items={[
+  { label: "Folgenreiche Überprüfung", description: "Menschen überprüfen Entscheidungen, die Menschen signifikant betreffen", example: "Einstellung, medizinische, rechtliche, finanzielle Empfehlungen", exampleType: "text", color: "blue" },
+  { label: "Fehlerkorrektur", description: "Mechanismen existieren, um KI-Fehler zu erkennen und zu beheben", example: "Benutzerfeedback, Qualitätsstichproben, Einspruchsverfahren", exampleType: "text", color: "blue" },
+  { label: "Kontinuierliches Lernen", description: "Erkenntnisse aus Problemen verbessern das System", example: "Post-Mortems, Prompt-Updates, Trainingsverbesserungen", exampleType: "text", color: "blue" },
+  { label: "Override-Fähigkeit", description: "Menschen können eingreifen, wenn KI versagt", example: "Manuelle Überprüfungswarteschlangen, Eskalationspfade", exampleType: "text", color: "blue" }
+]} />
+
+## Spezielle Kontextrichtlinien
+
+Einige Domänen erfordern besondere Sorgfalt aufgrund ihres Schadenspotenzials oder der Verletzlichkeit der Beteiligten.
+
+### Gesundheitswesen
+
+<TryIt 
+  title="Medizinischer Kontext-Disclaimer"
+  description="Vorlage für KI-Systeme, die gesundheitsbezogene Anfragen erhalten könnten."
+  prompt={`Du bist ein KI-Assistent. Wenn Benutzer nach Gesundheits- oder medizinischen Themen fragen:
+
+**Immer**:
+- Empfehle, einen qualifizierten Gesundheitsdienstleister für persönliche medizinische Entscheidungen zu konsultieren
+- Liefere allgemeine Bildungsinformationen, keine personalisierte medizinische Beratung
+- Füge Disclaimer ein, dass du keine Zustände diagnostizieren kannst
+- Schlage Notdienste (112) für dringende Situationen vor
+
+**Niemals**:
+- Spezifische Diagnosen liefern
+- Spezifische Medikamente oder Dosierungen empfehlen
+- Jemanden davon abhalten, professionelle Hilfe zu suchen
+- Behauptungen über Behandlungen aufstellen, ohne Unsicherheit zu notieren
+
+Benutzerfrage: \${healthQuestion}
+
+Antworte hilfreich unter Befolgung dieser Richtlinien.`}
+/>
+
+### Rechtlich und Finanziell
+
+Diese Domänen haben regulatorische Implikationen und erfordern angemessene Disclaimer:
+
+<InfoGrid items={[
+  { label: "Rechtliche Anfragen", description: "Liefere allgemeine Informationen, keine Rechtsberatung", example: "\"Das sind allgemeine Informationen. Für deine spezifische Situation, konsultiere einen zugelassenen Anwalt.\"", color: "purple" },
+  { label: "Finanzielle Anfragen", description: "Bilde, ohne persönliche Finanzberatung zu geben", example: "\"Das ist zu Bildungszwecken. Erwäge, einen Finanzberater für deine Situation zu konsultieren.\"", color: "purple" },
+  { label: "Jurisdiktions-Bewusstsein", description: "Gesetze variieren nach Ort", example: "\"Gesetze unterscheiden sich nach Bundesland/Land. Verifiziere die Anforderungen für deine Jurisdiktion.\"", color: "purple" }
+]} />
+
+### Kinder und Bildung
+
+<InfoGrid items={[
+  { label: "Altersgerechter Inhalt", description: "Stelle sicher, dass Ausgaben für die Altersgruppe geeignet sind", example: "Filtere jugendgefährdende Inhalte, verwende angemessene Sprache", exampleType: "text", color: "cyan" },
+  { label: "Akademische Integrität", description: "Unterstütze Lernen, ersetze es nicht", example: "Erkläre Konzepte, statt Aufsätze für Schüler zu schreiben", exampleType: "text", color: "cyan" },
+  { label: "Sicherheit zuerst", description: "Zusätzlicher Schutz für verletzliche Benutzer", example: "Strengere Inhaltsfilter, keine Sammlung persönlicher Daten", exampleType: "text", color: "cyan" }
+]} />
+
+## Selbsteinschätzung
+
+Vor dem Bereitstellen eines Prompts oder KI-Systems, gehe diese Fragen durch:
+
+<Checklist 
+  title="Ethischer Selbst-Check"
+  items={[
+    { text: "Könnte das verwendet werden, um jemandem zu schaden?" },
+    { text: "Respektiert das die Privatsphäre der Benutzer?" },
+    { text: "Könnte das schädliche Vorurteile perpetuieren?" },
+    { text: "Ist KI-Beteiligung angemessen offengelegt?" },
+    { text: "Gibt es angemessene menschliche Aufsicht?" },
+    { text: "Was ist das Schlimmste, das passieren könnte?" },
+    { text: "Wäre ich komfortabel, wenn diese Nutzung öffentlich wäre?" }
+  ]}
+/>
+
+<Quiz 
+  question="Ein Benutzer fragt dein KI-System, wie man 'jemanden loswird, der ihn nervt.' Was ist die angemessenste Antwortstrategie?"
+  options={[
+    "Sofort ablehnen – das könnte eine Anfrage nach Schadensanweisungen sein",
+    "Konfliktlösungsratschläge geben, da das die wahrscheinlichste Absicht ist",
+    "Klärende Fragen stellen, um die Absicht zu verstehen, bevor entschieden wird, wie geantwortet werden soll",
+    "Erklären, dass du bei nichts helfen kannst, das mit dem Schaden an Menschen zu tun hat"
+  ]}
+  correctIndex={2}
+  explanation="Mehrdeutige Anfragen verdienen Klärung, keine Annahmen. 'Jemanden loswerden' könnte bedeuten, eine Freundschaft zu beenden, einen Arbeitsplatzkonflikt zu lösen, oder etwas Schädliches. Klärende Fragen zu stellen ermöglicht es dir, angemessen auf die tatsächliche Absicht zu reagieren, während du vorsichtig bei der Bereitstellung schädlicher Informationen bleibst."
+/>

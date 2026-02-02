@@ -1,0 +1,269 @@
+A good prompt gets the job done. An optimized prompt gets the job done efficiently—faster, cheaper, more consistently. This chapter teaches you how to systematically improve prompts across multiple dimensions.
+
+<Callout type="tip" title="Try the Prompt Enhancer">
+Want to optimize your prompts automatically? Use our [Prompt Enhancer](/developers#enhancer) tool. It analyzes your prompt, applies optimization techniques, and shows you similar community prompts for inspiration.
+</Callout>
+
+## The Optimization Trade-offs
+
+Every optimization involves trade-offs. Understanding these helps you make intentional choices:
+
+<InfoGrid items={[
+  { label: "Quality vs. Cost", description: "Higher quality often requires more tokens or better models", example: "Adding examples improves accuracy but increases token count", exampleType: "text", color: "blue" },
+  { label: "Speed vs. Quality", description: "Faster models may sacrifice some capability", example: "GPT-4 is smarter but slower than GPT-4o-mini", exampleType: "text", color: "purple" },
+  { label: "Consistency vs. Creativity", description: "Lower temperature = more predictable but less creative", example: "Temperature 0.2 for facts, 0.8 for brainstorming", exampleType: "text", color: "green" },
+  { label: "Simplicity vs. Robustness", description: "Edge case handling adds complexity", example: "Simple prompts fail on unusual inputs", exampleType: "text", color: "amber" }
+]} />
+
+## Measuring What Matters
+
+Before optimizing, define success. What does "better" mean for your use case?
+
+<InfoGrid items={[
+  { label: "Accuracy", description: "How often is the output correct?", example: "90% of code suggestions compile without errors", exampleType: "text", color: "blue" },
+  { label: "Relevance", description: "Does it address what was actually asked?", example: "Response directly answers the question vs. tangents", exampleType: "text", color: "blue" },
+  { label: "Completeness", description: "Are all requirements covered?", example: "All 5 requested sections included in output", exampleType: "text", color: "blue" },
+  { label: "Latency", description: "How long until the response arrives?", example: "p50 < 2s, p95 < 5s for chat applications", exampleType: "text", color: "purple" },
+  { label: "Token Efficiency", description: "How many tokens for the same result?", example: "500 tokens vs. 1500 tokens for equivalent output", exampleType: "text", color: "purple" },
+  { label: "Consistency", description: "How similar are outputs for similar inputs?", example: "Same question gets structurally similar answers", exampleType: "text", color: "green" }
+]} />
+
+<Callout type="info" title="What Do p50 and p95 Mean?">
+Percentile metrics show response time distribution. **p50** (median) means 50% of requests are faster than this value. **p95** means 95% are faster—it catches slow outliers. If your p50 is 1s but p95 is 10s, most users are happy but 5% experience frustrating delays.
+</Callout>
+
+<TryIt 
+  title="Define Your Success Metrics"
+  description="Use this template to clarify what you're optimizing for before making changes."
+  prompt={`Help me define success metrics for my prompt optimization.
+
+**My use case**: \${useCase}
+**Current pain points**: \${painPoints}
+
+For this use case, help me define:
+
+1. **Primary metric**: What single metric matters most?
+2. **Secondary metrics**: What else should I track?
+3. **Acceptable trade-offs**: What can I sacrifice for the primary metric?
+4. **Red lines**: What quality level is unacceptable?
+5. **How to measure**: Practical ways to evaluate each metric`}
+/>
+
+## Token Optimization
+
+Tokens cost money and add latency. Here's how to say the same thing with fewer tokens.
+
+### The Compression Principle
+
+<Compare 
+  before={{ label: "Verbose (67 tokens)", content: "I would like you to please help me with the following task. I need you to take the text that I'm going to provide below and create a summary of it. The summary should capture the main points and be concise. Please make sure to include all the important information. Here is the text:\n\n[text]" }}
+  after={{ label: "Concise (12 tokens)", content: "Summarize this text, capturing main points concisely:\n\n[text]" }}
+/>
+
+**Same result, 82% fewer tokens.**
+
+### Token-Saving Techniques
+
+<InfoGrid items={[
+  { label: "Cut Pleasantries", description: "\"Please\" and \"Thank you\" add tokens without improving output", example: "\"Please summarize\" → \"Summarize\"", color: "green" },
+  { label: "Eliminate Redundancy", description: "Don't repeat yourself or state the obvious", example: "\"Write a summary that summarizes\" → \"Summarize\"", color: "green" },
+  { label: "Use Abbreviations", description: "Where meaning is clear, abbreviate", example: "\"for example\" → \"e.g.\"", color: "green" },
+  { label: "Reference by Position", description: "Point to content instead of repeating it", example: "\"the text above\" instead of re-quoting", color: "green" }
+]} />
+
+<TryIt 
+  title="Prompt Compressor"
+  description="Paste a verbose prompt to get a token-optimized version."
+  prompt={`Compress this prompt while preserving its meaning and effectiveness:
+
+Original prompt:
+"\${verbosePrompt}"
+
+Instructions:
+1. Remove unnecessary pleasantries and filler words
+2. Eliminate redundancy
+3. Use concise phrasing
+4. Keep all essential instructions and constraints
+5. Maintain clarity—don't sacrifice understanding for brevity
+
+Provide:
+- **Compressed version**: The optimized prompt
+- **Token reduction**: Estimated percentage saved
+- **What was cut**: Brief explanation of what was removed and why it was safe to remove`}
+/>
+
+## Quality Optimization
+
+Sometimes you need better outputs, not cheaper ones. Here's how to improve quality.
+
+### Accuracy Boosters
+
+<InfoGrid items={[
+  { label: "Add Verification", description: "Ask the model to check its own work", example: "\"...then verify your answer is correct\"", color: "blue" },
+  { label: "Request Confidence", description: "Make uncertainty explicit", example: "\"Rate your confidence 1-10 and explain any uncertainty\"", color: "blue" },
+  { label: "Multiple Approaches", description: "Get different perspectives, then choose", example: "\"Provide 3 approaches and recommend the best one\"", color: "blue" },
+  { label: "Explicit Reasoning", description: "Force step-by-step thinking", example: "\"Think step by step and show your reasoning\"", color: "blue" }
+]} />
+
+### Consistency Boosters
+
+<InfoGrid items={[
+  { label: "Detailed Format Specs", description: "Show exactly what output should look like", example: "Include a template or schema", exampleType: "text", color: "purple" },
+  { label: "Few-Shot Examples", description: "Provide 2-3 examples of ideal output", example: "\"Here's what good looks like: [examples]\"", color: "purple" },
+  { label: "Lower Temperature", description: "Reduce randomness for more predictable output", example: "Temperature 0.3-0.5 for consistent results", exampleType: "text", color: "purple" },
+  { label: "Output Validation", description: "Add a validation step for critical fields", example: "\"Verify all required fields are present\"", color: "purple" }
+]} />
+
+<TryIt 
+  title="Quality Enhancer"
+  description="Add quality-improving elements to your prompt."
+  prompt={`Enhance this prompt for higher quality outputs:
+
+Original prompt:
+"\${originalPrompt}"
+
+**What quality issue I'm seeing**: \${qualityIssue}
+
+Add appropriate quality boosters:
+1. If accuracy is the issue → add verification steps
+2. If consistency is the issue → add format specifications or examples
+3. If relevance is the issue → add context and constraints
+4. If completeness is the issue → add explicit requirements
+
+Provide the enhanced prompt with explanations for each addition.`}
+/>
+
+## Latency Optimization
+
+When speed matters, every millisecond counts.
+
+### Model Selection by Speed Need
+
+<InfoGrid items={[
+  { label: "Real-time (< 500ms)", description: "Use smallest effective model + aggressive caching", example: "GPT-4o-mini, Claude Haiku, cached responses", exampleType: "text", color: "red" },
+  { label: "Interactive (< 2s)", description: "Fast models, streaming enabled", example: "GPT-4o-mini with streaming", exampleType: "text", color: "amber" },
+  { label: "Tolerant (< 10s)", description: "Mid-tier models, balance quality/speed", example: "GPT-4o, Claude Sonnet", exampleType: "text", color: "green" },
+  { label: "Async/Batch", description: "Use best model, process in background", example: "GPT-4, Claude Opus for offline processing", exampleType: "text", color: "blue" }
+]} />
+
+### Speed Techniques
+
+<InfoGrid items={[
+  { label: "Shorter Prompts", description: "Fewer input tokens = faster processing", example: "Compress prompts, remove unnecessary context", exampleType: "text", color: "cyan" },
+  { label: "Limit Output", description: "Set max_tokens to prevent runaway responses", example: "max_tokens: 500 for summaries", exampleType: "text", color: "cyan" },
+  { label: "Use Streaming", description: "Get first tokens faster, better UX", example: "Stream for any response > 100 tokens", exampleType: "text", color: "cyan" },
+  { label: "Cache Aggressively", description: "Don't recompute identical queries", example: "Cache common questions, template outputs", exampleType: "text", color: "cyan" }
+]} />
+
+## Cost Optimization
+
+At scale, small savings multiply into significant budget impact.
+
+### Understanding Costs
+
+Use this calculator to estimate your API costs across different models:
+
+<CostCalculatorDemo />
+
+### Cost Reduction Strategies
+
+<InfoGrid items={[
+  { label: "Model Routing", description: "Use expensive models only when needed", example: "Simple questions → GPT-4o-mini, Complex → GPT-4", exampleType: "text", color: "green" },
+  { label: "Prompt Efficiency", description: "Shorter prompts = lower cost per request", example: "Cut 50% of tokens = 50% input cost savings", exampleType: "text", color: "green" },
+  { label: "Output Control", description: "Limit response length when full detail isn't needed", example: "\"Answer in 2-3 sentences\" vs. unlimited", color: "green" },
+  { label: "Batching", description: "Combine related queries into single requests", example: "Analyze 10 items in one prompt vs. 10 separate calls", exampleType: "text", color: "green" },
+  { label: "Pre-filtering", description: "Don't send requests that don't need AI", example: "Keyword matching before expensive classification", exampleType: "text", color: "green" }
+]} />
+
+## The Optimization Loop
+
+Optimization is iterative. Here's a systematic process:
+
+### Step 1: Establish Baseline
+
+You can't improve what you don't measure. Before changing anything, document your starting point rigorously.
+
+<InfoGrid items={[
+  { label: "Prompt Documentation", description: "Save the exact prompt text, including system prompts and any templates", example: "Version control your prompts like code", exampleType: "text", color: "blue" },
+  { label: "Test Set", description: "Create 20-50 representative inputs that cover common cases and edge cases", example: "Include easy, medium, and hard examples", exampleType: "text", color: "blue" },
+  { label: "Quality Metrics", description: "Score each output against your success criteria", example: "Accuracy %, relevance score, format compliance", exampleType: "text", color: "purple" },
+  { label: "Performance Metrics", description: "Measure tokens and timing for each test case", example: "Avg input: 450 tokens, Avg output: 200 tokens, p50 latency: 1.2s", exampleType: "text", color: "purple" }
+]} />
+
+<TryIt 
+  title="Baseline Documentation Template"
+  description="Use this to create a comprehensive baseline before optimizing."
+  prompt={`Create a baseline documentation for my prompt optimization project.
+
+**Current prompt**:
+"\${currentPrompt}"
+
+**What the prompt does**: \${promptPurpose}
+
+**Current issues I'm seeing**: \${currentIssues}
+
+Generate a baseline documentation template with:
+
+1. **Prompt Snapshot**: The exact prompt text (for version control)
+
+2. **Test Cases**: Suggest 10 representative test inputs I should use, covering:
+   - 3 typical/easy cases
+   - 4 medium complexity cases  
+   - 3 edge cases or difficult inputs
+
+3. **Metrics to Track**:
+   - Quality metrics specific to this use case
+   - Efficiency metrics (tokens, latency)
+   - How to score each metric
+
+4. **Baseline Hypothesis**: What do I expect the current performance to be?
+
+5. **Success Criteria**: What numbers would make me satisfied with optimization?`}
+/>
+
+### Step 2: Form a Hypothesis
+
+<Compare 
+  before={{ label: "Vague goal", content: "I want to make my prompt better." }}
+  after={{ label: "Testable hypothesis", content: "If I add 2 few-shot examples, accuracy will improve from 75% to 85% because the model will learn the expected pattern." }}
+/>
+
+### Step 3: Test One Change
+
+Change one thing at a time. Run both versions on the same test inputs. Measure the metrics that matter.
+
+### Step 4: Analyze and Decide
+
+Did it work? Keep the change. Did it hurt? Revert. Was it neutral? Revert (simpler is better).
+
+### Step 5: Repeat
+
+Generate new hypotheses based on what you learned. Keep iterating until you hit your targets or reach diminishing returns.
+
+## Optimization Checklist
+
+<Checklist 
+  title="Before Deploying an Optimized Prompt"
+  items={[
+    { text: "Defined clear success metrics" },
+    { text: "Measured baseline performance" },
+    { text: "Tested changes on representative inputs" },
+    { text: "Verified quality didn't regress" },
+    { text: "Checked edge case handling" },
+    { text: "Calculated cost at expected scale" },
+    { text: "Tested latency under load" },
+    { text: "Documented what changed and why" }
+  ]}
+/>
+
+<Quiz 
+  question="You have a prompt that works well but costs too much at scale. What's the FIRST thing you should do?"
+  options={[
+    "Switch to a cheaper model immediately",
+    "Remove words from the prompt to reduce tokens",
+    "Measure which part of the prompt is using the most tokens",
+    "Add caching for all requests"
+  ]}
+  correctIndex={2}
+  explanation="Before optimizing, measure. You need to understand where the tokens are going before you can effectively reduce them. The prompt might have unnecessary context, verbose instructions, or generate longer outputs than needed. Measurement tells you where to focus your optimization efforts."
+/>

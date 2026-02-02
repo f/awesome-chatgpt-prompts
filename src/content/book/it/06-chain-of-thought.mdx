@@ -1,0 +1,363 @@
+Il prompting Chain of Thought (CoT) è una tecnica che migliora drasticamente le prestazioni dell'IA su compiti di ragionamento complesso chiedendo al modello di mostrare il suo lavoro passo dopo passo.
+
+<Callout type="info" title="Mostra il Tuo Lavoro">
+Proprio come un insegnante di matematica che chiede agli studenti di mostrare il loro lavoro, il prompting CoT chiede all'IA di rendere visibile il suo ragionamento.
+</Callout>
+
+## Il Problema che CoT Risolve
+
+I modelli IA possono avere difficoltà con il ragionamento multi-step quando viene chiesto di saltare direttamente a una risposta.
+
+<Compare 
+  before={{ label: "Risposta Diretta (Spesso Sbagliata)", content: "Domanda: Un negozio vende mele a 2€ ciascuna. Se ne compri 5 o più, ottieni il 20% di sconto. Quanto costano 7 mele?\n\nRisposta: 14€ ❌" }}
+  after={{ label: "Chain of Thought (Corretto)", content: "Domanda: Un negozio vende mele a 2€ ciascuna. Se ne compri 5 o più, ottieni il 20% di sconto. Quanto costano 7 mele?\n\nRagioniamo passo dopo passo:\n1. Prezzo normale per mela: 2€\n2. Numero di mele: 7\n3. Dato che 7 ≥ 5, lo sconto si applica\n4. Totale normale: 7 × 2€ = 14€\n5. Sconto: 20% di 14€ = 2,80€\n6. Prezzo finale: 14€ - 2,80€ = 11,20€\n\nRisposta: 11,20€ ✓" }}
+/>
+
+## Prompt CoT Base
+
+### Frasi Trigger Semplici
+
+Aggiungi una di queste ai tuoi prompt:
+
+<div className="my-4 grid gap-2">
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Pensiamo passo dopo passo."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Ragiona su questo con attenzione."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Lavora su questo problema metodicamente."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Mostra il tuo ragionamento ad ogni passo."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Spiega il tuo processo di pensiero."</div>
+</div>
+
+### Richiesta di Passi Esplicita
+
+<TryIt 
+  title="Prova Chain of Thought"
+  description="Chiedi all'IA di risolvere un problema passo dopo passo."
+  prompt={`Risolvi questo problema:
+
+Un noleggio auto costa 40€ al giorno più 0,25€ per chilometro. Se qualcuno noleggia un'auto per 3 giorni e guida 200 km, qual è il costo totale?
+
+Prima di dare la tua risposta finale:
+1. Identifica quali informazioni sono date
+2. Determina cosa dobbiamo trovare
+3. Pianifica il tuo approccio
+4. Esegui ogni passo, mostrando il lavoro
+5. Verifica la tua risposta`}
+/>
+
+## CoT Zero-Shot vs Few-Shot
+
+Ci sono due approcci principali al prompting Chain of Thought, ciascuno con trade-off diversi tra semplicità e controllo.
+
+### CoT Zero-Shot
+
+L'approccio più semplice—aggiungi solo una frase trigger e lascia che il modello capisca come ragionare. Nessun esempio necessario. Funziona sorprendentemente bene per molti problemi, anche se hai meno controllo sul formato del ragionamento.
+
+<TryIt 
+  compact
+  title="CoT Zero-Shot"
+  prompt={`Se Giovanni ha 3 mele e ne dà metà a Maria, poi ne compra altre 4, quante ne ha?
+
+Pensiamo passo dopo passo.`}
+/>
+
+**Output di Esempio:**
+```
+Pensiamo passo dopo passo.
+- Giovanni inizia con 3 mele
+- Metà di 3 è 1,5, ma non possiamo dividere le mele
+- Se arrotondiamo per difetto: Giovanni dà 1 mela, tiene 2
+- Dopo aver comprato 4 altre: 2 + 4 = 6 mele
+
+Risposta: 6 mele
+```
+
+### CoT Few-Shot
+
+Per risultati più consistenti, mostra al modello esattamente come vuoi che ragioni fornendo esempi svolti. Questo ti dà controllo sullo stile di ragionamento, formato e livello di dettaglio. Il modello imiterà il pattern che hai dimostrato.
+
+<TryIt 
+  compact
+  title="CoT Few-Shot"
+  prompt={`Esempio 1:
+D: Un pasticcere ha 24 cupcake. Li mette equamente in 4 scatole. Poi mangia 2 cupcake da una scatola. Quanti cupcake rimangono in totale?
+
+R: Ragioniamo su questo:
+- Cupcake totali: 24
+- Cupcake per scatola: 24 ÷ 4 = 6
+- Dopo aver mangiato 2 da una scatola: 6 - 2 = 4 cupcake in quella scatola
+- Totale rimanente: (3 scatole × 6) + 4 = 18 + 4 = 22 cupcake
+
+Esempio 2:
+D: Un treno viaggia a 60 km/h per 2 ore, poi a 40 km/h per 3 ore. Qual è la sua velocità media?
+
+R: Ragioniamo su questo:
+- Distanza a 60 km/h: 60 × 2 = 120 km
+- Distanza a 40 km/h: 40 × 3 = 120 km
+- Distanza totale: 120 + 120 = 240 km
+- Tempo totale: 2 + 3 = 5 ore
+- Velocità media: 240 ÷ 5 = 48 km/h
+
+Ora risolvi:
+D: Un negozio vende quaderni a 3€ ciascuno. Se ne compri 10 o più, ottieni il 25% di sconto. Quanto costano 12 quaderni?`}
+/>
+
+**Output di Esempio:**
+```
+R: Ragioniamo su questo:
+- Prezzo normale: 3€, Quantità: 12
+- Dato che 12 ≥ 10, si applica lo sconto del 25%
+- Totale normale: 12 × 3€ = 36€
+- Sconto: 25% di 36€ = 9€
+- Prezzo finale: 36€ - 9€ = 27€
+```
+
+## Formati CoT Strutturati
+
+Per ragionamento consistente e riproducibile, usa formati strutturati con passi nominati. Questi framework assicurano che il modello non salti fasi importanti e rendono gli output più facili da parsare e verificare.
+
+### Il Formato BREAK
+
+Un acronimo memorabile che guida il modello attraverso un ciclo completo di problem-solving, dalla comprensione alla verifica.
+
+<BREAKFramework />
+
+### Il Template di Ragionamento
+
+Una struttura più formale che separa input, obiettivi ed esecuzione. Eccellente per problemi tecnici dove hai bisogno di documentazione chiara del processo di soluzione.
+
+<TryIt 
+  compact
+  title="Template di Ragionamento"
+  prompt={`Usa questo template per risolvere il problema:
+
+DATO: [Elenca informazioni note]
+OBIETTIVO: [Cosa dobbiamo trovare]
+APPROCCIO: [Strategia che useremo]
+PASSI:
+  1. [Primo passo con ragionamento]
+  2. [Secondo passo con ragionamento]
+  ...
+VERIFICA: [Controlla la risposta]
+RISPOSTA: [Risposta finale]
+
+Problema: Un'auto consuma 8 litri di carburante per 100 km. Se il serbatoio contiene 45 litri e il carburante costa 1,50€ al litro, quanto costa guidare 300 km?`}
+/>
+
+**Output di Esempio:**
+```
+DATO: 8L/100km, serbatoio 45L, 1,50€/L, guidare 300km
+OBIETTIVO: Calcolare costo carburante
+APPROCCIO: Carburante necessario × costo per litro
+PASSI:
+1. Carburante = (300 ÷ 100) × 8 = 24 litri
+2. Costo = 24 × 1,50€ = 36€
+VERIFICA: 24L < 45L serbatoio ✓
+RISPOSTA: 36€
+```
+
+## CoT per Diversi Tipi di Problema
+
+Tipi di problema diversi beneficiano di approcci CoT diversi. Ecco pattern ottimizzati per scenari comuni.
+
+### Ragionamento Matematico
+
+I problemi matematici beneficiano maggiormente dal CoT perché ogni passo si costruisce sul precedente. Gli errori si accumulano, quindi mostrare il lavoro aiuta a catturare errori presto. Il modello dovrebbe etichettare chiaramente ogni calcolo.
+
+<TryIt 
+  compact
+  title="Matematica con CoT"
+  prompt={`Il fatturato di un'azienda era 1,2M€ nel Q1. È cresciuto del 15% nel Q2, calato del 10% nel Q3 e cresciuto del 25% nel Q4. Qual era il fatturato annuale totale?
+
+Ragiona su ogni trimestre, mostrando i tuoi calcoli chiaramente.`}
+/>
+
+**Output di Esempio:**
+```
+Q1: 1.200.000€ (dato)
+Q2: 1.200.000€ × 1,15 = 1.380.000€
+Q3: 1.380.000€ × 0,90 = 1.242.000€
+Q4: 1.242.000€ × 1,25 = 1.552.500€
+
+Totale: 5.374.500€
+```
+
+### Ragionamento Logico
+
+I puzzle logici richiedono eliminazione sistematica e test di ipotesi. CoT aiuta il modello a tracciare i vincoli, testare possibilità e verificare che tutte le condizioni siano soddisfatte. La chiave è l'esplorazione metodica piuttosto che indovinare.
+
+<TryIt 
+  compact
+  title="Puzzle Logico"
+  prompt={`Tre amici—Alice, Bob e Carol—hanno ciascuno animali diversi (gatto, cane, pesce) e lavori diversi (insegnante, ingegnere, dottore).
+
+Indizi:
+1. Alice non ha un gatto
+2. L'ingegnere ha un cane
+3. Bob è insegnante
+4. Carol non ha un pesce
+
+Chi ha quale animale e lavoro? Ragiona su questo sistematicamente, testando ipotesi e verificando contro tutti gli indizi.`}
+/>
+
+**Output di Esempio:**
+```
+Dall'indizio 3: Bob = insegnante
+→ Alice e Carol sono ingegnere/dottore
+
+Se Carol = ingegnere:
+- Carol ha cane (indizio 2)
+- Alice = dottore, ha pesce (indizio 1)
+- Bob ha gatto
+
+Verifica: Tutti e 4 gli indizi soddisfatti ✓
+Risposta: Alice (dottore, pesce), Bob (insegnante, gatto), Carol (ingegnere, cane)
+```
+
+### Debug del Codice
+
+Il debugging beneficia dal CoT perché forza il modello a tracciare l'esecuzione invece di indovinare i bug. Camminando attraverso il codice con valori concreti, il comportamento effettivo diventa visibile e le discrepanze con il comportamento atteso vengono esposte.
+
+<TryIt 
+  compact
+  title="Debug con CoT"
+  prompt={`Questa funzione dovrebbe restituire la somma dei numeri pari in una lista, ma sta restituendo valori sbagliati. Fai debug passo per passo tracciando con l'input [2, 3, 4, 6]:
+
+def sum_evens(numbers):
+    total = 0
+    for n in numbers:
+        if n % 2 == 0:
+            total += 1
+    return total
+
+Traccia ogni passo, trova il bug e fornisci il fix.`}
+/>
+
+**Output di Esempio:**
+```
+Traccia [2, 3, 4, 6]:
+n=2: total += 1 → 1 (aspetta, aggiunge 1 non n!)
+n=3: salta (dispari)
+n=4: total = 2
+n=6: total = 3
+
+BUG: "total += 1" dovrebbe essere "total += n"
+Atteso: 12, Ottenuto: 3
+Fix: Cambia in "total += n"
+```
+
+## Auto-Consistenza con CoT
+
+Per problemi critici, non affidarti a un singolo percorso di ragionamento. Genera molteplici soluzioni indipendenti e confronta i risultati. Se approcci diversi convergono sulla stessa risposta, la confidenza è alta. Il disaccordo segnala la necessità di revisione attenta.
+
+<TryIt 
+  compact
+  title="Auto-Consistenza"
+  prompt={`Risolvi questo problema in 3 modi diversi, poi dai la tua risposta finale basandoti su quale soluzione appare più corretta:
+
+Problema: Un contadino ha galline e mucche. Insieme hanno 30 teste e 74 zampe. Quante galline e quante mucche ha il contadino?
+
+Approccio 1: Algebra
+Approccio 2: Prova e verifica
+Approccio 3: Ragionamento logico
+
+Poi confronta e dai la tua risposta finale.`}
+/>
+
+**Output di Esempio:**
+```
+Approccio 1 (Algebra): g + m = 30, 2g + 4m = 74 → g=23, m=7
+Approccio 2 (Prova): Prova 23/7 → 46 + 28 = 74 ✓
+Approccio 3 (Logica): 30 galline = 60 zampe, servono 14 in più → 7 mucche
+
+Tutti concordano: 23 galline, 7 mucche
+```
+
+## CoT per il Processo Decisionale
+
+Le decisioni coinvolgono la valutazione di trade-off su molteplici dimensioni. CoT assicura che tutti i fattori rilevanti siano considerati sistematicamente invece di saltare alle conclusioni. Questo approccio strutturato documenta anche il ragionamento per riferimento futuro.
+
+<TryIt 
+  compact
+  title="Analisi Decisionale"
+  prompt={`Dovremmo adottare l'architettura a microservizi per la nostra applicazione?
+
+Contesto:
+- Applicazione monolitica con 50.000 righe di codice
+- Team di 5 sviluppatori
+- 100 utenti attivi giornalieri
+- Pianificazione per crescita 10x in 2 anni
+
+Ragiona su questo sistematicamente:
+1. Elenca lo stato attuale
+2. Identifica i fattori da considerare (dimensione team, scala, velocità, crescita futura)
+3. Valuta ogni fattore come pro/contro
+4. Dai una raccomandazione con ragionamento`}
+/>
+
+**Output di Esempio:**
+```
+FATTORI:
+- Dimensione team (5): Troppo piccolo per microservizi ❌
+- Scala (100 DAU): Nessun bisogno di scaling ❌  
+- Velocità: Monolite = iterazione più veloce ❌
+- Crescita futura: Timeline incerta ⚠️
+
+VALUTAZIONE: 3 forti contro, 1 debole a favore
+
+RACCOMANDAZIONE: Restare monolite, usare confini di modulo 
+chiari per facilitare transizione futura.
+```
+
+## Quando Usare CoT
+
+<div className="my-6 grid md:grid-cols-2 gap-4">
+  <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Usa CoT Per</p>
+    <div className="text-sm p-4 pt-2 space-y-1">
+      <p className="m-0!">**Problemi matematici** — Riduce errori di calcolo</p>
+      <p className="m-0!">**Puzzle logici** — Previene passi saltati</p>
+      <p className="m-0!">**Analisi complesse** — Organizza il pensiero</p>
+      <p className="m-0!">**Debug del codice** — Traccia l'esecuzione</p>
+      <p className="m-0!">**Processo decisionale** — Valuta trade-off</p>
+    </div>
+  </div>
+  <div className="border rounded-lg bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900">
+    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Salta CoT Per</p>
+    <div className="text-sm p-4 pt-2 space-y-1">
+      <p className="m-0!">**Q&A semplice** — Overhead non necessario</p>
+      <p className="m-0!">**Scrittura creativa** — Può limitare la creatività</p>
+      <p className="m-0!">**Ricerche fattuali** — Nessun ragionamento necessario</p>
+      <p className="m-0!">**Traduzione** — Compito diretto</p>
+      <p className="m-0!">**Riassunti** — Di solito semplici</p>
+    </div>
+  </div>
+</div>
+
+## Limitazioni di CoT
+
+Sebbene potente, Chain of Thought non è una soluzione magica. Capire le sue limitazioni ti aiuta ad applicarlo appropriatamente.
+
+1. **Uso token aumentato** — Più output significa costi più alti
+2. **Non sempre necessario** — Compiti semplici non ne beneficiano
+3. **Può essere prolisso** — Potrebbe essere necessario chiedere concisione
+4. **Il ragionamento può essere difettoso** — CoT non garantisce correttezza
+
+## Riepilogo
+
+<Callout type="tip" title="Punti Chiave">
+CoT migliora drasticamente il ragionamento complesso rendendo espliciti i passi impliciti. Usalo per matematica, logica, analisi e debug. Trade-off: migliore accuratezza per più token.
+</Callout>
+
+<Quiz 
+  question="Quando NON dovresti usare il prompting Chain of Thought?"
+  options={[
+    "Problemi matematici che richiedono molteplici passi",
+    "Domande fattuali semplici come 'Qual è la capitale della Francia?'",
+    "Debug di codice con logica complessa",
+    "Analizzare una decisione business"
+  ]}
+  correctIndex={1}
+  explanation="Chain of Thought aggiunge overhead non necessario per Q&A semplice. È meglio riservarlo per compiti di ragionamento complesso come matematica, puzzle logici, debug del codice e analisi dove mostrare il lavoro migliora l'accuratezza."
+/>
+
+Nel prossimo capitolo, esploreremo il few-shot learning—insegnare al modello attraverso esempi.

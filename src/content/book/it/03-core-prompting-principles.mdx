@@ -1,0 +1,373 @@
+Oltre alla struttura, il prompt engineering efficace è guidato da principi—verità fondamentali che si applicano a modelli, compiti e contesti. Padroneggia questi principi, e sarai in grado di adattarti a qualsiasi sfida di prompting.
+
+<Callout type="info" title="Gli 8 Principi Fondamentali">
+Questi principi si applicano a ogni modello IA e ogni compito. Imparali una volta, usali ovunque.
+</Callout>
+
+## Principio 1: Chiarezza Prima dell'Astuzia
+
+I migliori prompt sono chiari, non astuti. I modelli IA sono interpreti letterali—lavorano esattamente con ciò che gli dai.
+
+### Sii Esplicito
+
+<Compare 
+  before={{ label: "Implicito (problematico)", content: "Migliora questo." }}
+  after={{ label: "Esplicito (efficace)", content: "Migliora questa email:\n1. Rendendo l'oggetto più accattivante\n2. Accorciando i paragrafi a 2-3 frasi max\n3. Aggiungendo una chiara call-to-action alla fine" }}
+/>
+
+### Evita l'Ambiguità
+
+Le parole possono avere molteplici significati. Scegli un linguaggio preciso.
+
+<Compare 
+  before={{ label: "Ambiguo", content: "Dammi un breve riassunto.\n(Quanto breve? 1 frase? 1 paragrafo? 1 pagina?)" }}
+  after={{ label: "Preciso", content: "Riassumi in esattamente 3 punti elenco, ciascuno sotto 20 parole." }}
+/>
+
+### Dichiara l'Ovvio
+
+Ciò che è ovvio per te non è ovvio per il modello. Esplicita le assunzioni.
+
+```
+Mi stai aiutando a scrivere una lettera di presentazione.
+
+Contesto importante:
+- Mi sto candidando per una posizione di Software Engineer in Google
+- Ho 5 anni di esperienza in Python e sistemi distribuiti
+- Il ruolo richiede esperienza di leadership (ho guidato un team di 4)
+- Voglio enfatizzare i miei contributi open-source
+```
+
+## Principio 2: La Specificità Produce Qualità
+
+Input vaghi producono output vaghi. Input specifici producono output specifici e utili.
+
+### La Scala della Specificità
+
+<SpecificitySpectrum levels={[
+  { level: "Livello 1", text: "Scrivi sul cambiamento climatico" },
+  { level: "Livello 2", text: "Scrivi un articolo sugli effetti del cambiamento climatico" },
+  { level: "Livello 3", text: "Scrivi un articolo di 500 parole su come il cambiamento climatico colpisce le barriere coralline" },
+  { level: "Livello 4", text: "Scrivi un articolo di 500 parole che spiega come l'aumento delle temperature oceaniche causa lo sbiancamento dei coralli, rivolto a studenti delle superiori, con 2 esempi specifici dalla Grande Barriera Corallina, in un tono coinvolgente ma scientificamente accurato" }
+]} />
+
+Ogni livello aggiunge specificità e migliora drasticamente la qualità dell'output.
+
+### Specifica Questi Elementi
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Pubblico</span>
+    <span className="text-muted-foreground">Chi leggerà/userà questo?</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Lunghezza</span>
+    <span className="text-muted-foreground">Quanto lungo/corto dovrebbe essere?</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Tono</span>
+    <span className="text-muted-foreground">Formale? Informale? Tecnico?</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Formato</span>
+    <span className="text-muted-foreground">Prosa? Lista? Tabella? Codice?</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Ambito</span>
+    <span className="text-muted-foreground">Cosa includere/escludere?</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-24">Scopo</span>
+    <span className="text-muted-foreground">Cosa dovrebbe realizzare questo?</span>
+  </div>
+</div>
+
+## Principio 3: Il Contesto È Re
+
+I modelli non hanno memoria, nessun accesso ai tuoi file e nessuna conoscenza della tua situazione. Tutto ciò che è rilevante deve essere nel prompt.
+
+### Fornisci Contesto Sufficiente
+
+<Compare 
+  before={{ label: "Contesto insufficiente", content: "Perché la mia funzione non funziona?" }}
+  after={{ label: "Contesto sufficiente", content: "Ho una funzione Python che dovrebbe filtrare una lista di dizionari per un valore di chiave specifico. Sta restituendo una lista vuota quando dovrebbe restituire 3 elementi.\n\nFunzione:\ndef filter_items(items, key, value):\n    return [item for item in items if item[key] = value]\n\nChiamata: filter_items(items, 'status', 'active')\nAtteso: 2 elementi, Ottenuto: lista vuota" }}
+/>
+
+### La Checklist del Contesto
+
+<Callout type="tip" title="Prima di Inviare">
+Chiediti: Uno sconosciuto intelligente capirebbe questa richiesta? Se no, aggiungi più contesto.
+</Callout>
+
+<Checklist 
+  title="Checklist del Contesto"
+  items={[
+    { text: "Il modello sa su cosa sto lavorando?" },
+    { text: "Conosce il mio obiettivo?" },
+    { text: "Ha tutte le informazioni necessarie?" },
+    { text: "Capisce i vincoli?" },
+    { text: "Uno sconosciuto intelligente capirebbe questa richiesta?" }
+  ]}
+/>
+
+## Principio 4: Guida, Non Solo Chiedere
+
+Non solo chiedere una risposta—guida il modello verso la risposta che vuoi.
+
+### Usa l'Inquadramento Istruttivo
+
+<Compare 
+  before={{ label: "Solo Chiedere", content: "Quali sono i pro e i contro dei microservizi?" }}
+  after={{ label: "Guidare", content: "Elenca 5 vantaggi e 5 svantaggi dell'architettura a microservizi.\n\nPer ogni punto:\n- Dichiara il punto chiaramente in una frase\n- Fornisci una breve spiegazione (2-3 frasi)\n- Dai un esempio concreto\n\nConsidera le prospettive di: piccole startup, grandi imprese e team in transizione da monoliti." }}
+/>
+
+### Fornisci Impalcature di Ragionamento
+
+Per compiti complessi, guida il processo di ragionamento:
+
+<TryIt 
+  title="Esempio di Impalcatura di Ragionamento"
+  description="Questo prompt guida l'IA attraverso un processo decisionale sistematico."
+  prompt={`Devo scegliere tra PostgreSQL e MongoDB per il mio progetto e-commerce.
+
+Ragiona su questo sistematicamente:
+1. Prima, elenca i requisiti tipici per un database e-commerce
+2. Poi, valuta ogni database rispetto a ogni requisito
+3. Considera i trade-off specifici per il mio caso d'uso
+4. Fai una raccomandazione con giustificazione chiara`}
+/>
+
+## Principio 5: Itera e Raffina
+
+Il prompt engineering è un processo iterativo. Il tuo primo prompt è raramente il migliore.
+
+### Il Ciclo di Iterazione
+
+```
+1. Scrivi il prompt iniziale
+2. Rivedi l'output
+3. Identifica lacune o problemi
+4. Raffina il prompt
+5. Ripeti finché soddisfatto
+```
+
+### Raffinamenti Comuni
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Troppo prolisso</span>
+    <span className="text-muted-foreground">Aggiungi "Sii conciso" o limiti di lunghezza</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Troppo vago</span>
+    <span className="text-muted-foreground">Aggiungi esempi specifici o vincoli</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Formato sbagliato</span>
+    <span className="text-muted-foreground">Specifica la struttura esatta dell'output</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Aspetti mancanti</span>
+    <span className="text-muted-foreground">Aggiungi "Assicurati di includere..."</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Tono sbagliato</span>
+    <span className="text-muted-foreground">Specifica pubblico e stile</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Impreciso</span>
+    <span className="text-muted-foreground">Richiedi citazioni o ragionamento passo-passo</span>
+  </div>
+</div>
+
+### Tieni un Diario dei Prompt
+
+Documenta cosa funziona:
+```
+Compito: Code review
+Versione 1: "Rivedi questo codice" → Troppo generico
+Versione 2: Aggiunti criteri di review specifici → Meglio
+Versione 3: Aggiunto esempio di buona review → Eccellente
+Finale: [Salva il prompt di successo come template]
+```
+
+## Principio 6: Sfrutta i Punti di Forza del Modello
+
+Lavora con come i modelli sono addestrati, non contro.
+
+### I Modelli Vogliono Essere Utili
+
+Inquadra le richieste come cose che un assistente utile farebbe naturalmente:
+
+<Compare 
+  before={{ label: "Contro corrente", content: "So che non puoi farlo, ma prova a..." }}
+  after={{ label: "A favore di corrente", content: "Aiutami a capire...\nSto lavorando su X e ho bisogno di assistenza con...\nPotresti guidarmi attraverso..." }}
+/>
+
+### I Modelli Eccellono nei Pattern
+
+Se hai bisogno di output consistente, mostra il pattern:
+
+<TryIt 
+  title="Esempio di Pattern"
+  description="Questo prompt mostra all'IA esattamente quale formato vuoi per le raccomandazioni di libri."
+  prompt={`Raccomanda 3 libri di fantascienza. Formatta ogni raccomandazione come:
+
+📚 **[Titolo]** di [Autore]
+*[Genere] | [Anno di Pubblicazione]*
+[Descrizione di 2 frasi]
+Perché ti piacerà: [gancio di 1 frase]
+
+---`}
+/>
+
+### I Modelli Possono Fare Role-Play
+
+Usa le persona per accedere a diverse "modalità" di risposta:
+
+```
+Come avvocato del diavolo, argomenta contro la mia proposta...
+Come mentore di supporto, aiutami a migliorare...
+Come investitore scettico, metti in discussione questo business plan...
+```
+
+## Principio 7: Controlla la Struttura dell'Output
+
+Gli output strutturati sono più utili del testo libero.
+
+### Richiedi Formati Specifici
+
+```
+Restituisci la tua analisi come:
+
+RIEPILOGO: [1 frase]
+
+RISULTATI CHIAVE:
+• [Risultato 1]
+• [Risultato 2]
+• [Risultato 3]
+
+RACCOMANDAZIONE: [1-2 frasi]
+
+CONFIDENZA: [Bassa/Media/Alta] perché [motivo]
+```
+
+### Usa Delimitatori
+
+Separa chiaramente le sezioni del tuo prompt:
+
+```
+### CONTESTO ###
+[Il tuo contesto qui]
+
+### COMPITO ###
+[Il tuo compito qui]
+
+### FORMATO ###
+[Formato desiderato qui]
+```
+
+### Richiedi Output Leggibile da Macchina
+
+Per uso programmatico:
+
+```
+Restituisci solo JSON valido, nessuna spiegazione:
+{
+  "decisione": "approva" | "rifiuta" | "rivedi",
+  "confidenza": 0.0-1.0,
+  "motivi": ["array di stringhe"]
+}
+```
+
+## Principio 8: Verifica e Valida
+
+Non fidarti ciecamente degli output del modello, specialmente per compiti importanti.
+
+### Chiedi il Ragionamento
+
+```
+Risolvi questo problema e mostra il tuo lavoro passo dopo passo.
+Dopo aver risolto, verifica la tua risposta con [metodo di controllo].
+```
+
+### Richiedi Molteplici Prospettive
+
+```
+Dammi tre approcci diversi per risolvere questo problema.
+Per ciascuno, spiega i trade-off.
+```
+
+### Costruisci Auto-Controlli
+
+```
+Dopo aver generato il codice, rivedilo per:
+- Errori di sintassi
+- Casi limite
+- Vulnerabilità di sicurezza
+Elenca tutti i problemi trovati.
+```
+
+## Riepilogo: I Principi in Sintesi
+
+<PrinciplesSummary />
+
+<Quiz 
+  question="Quale principio suggerisce di includere tutte le informazioni di background rilevanti nel tuo prompt?"
+  options={[
+    "Chiarezza Prima dell'Astuzia",
+    "La Specificità Produce Qualità",
+    "Il Contesto È Re",
+    "Itera e Raffina"
+  ]}
+  correctIndex={2}
+  explanation="Il Contesto È Re enfatizza che i modelli IA non hanno memoria tra le sessioni e non possono leggere la tua mente. Includere background rilevante, vincoli e obiettivi aiuta il modello a capire le tue esigenze."
+/>
+
+## Pratica: Riempi gli Spazi Vuoti
+
+Testa la tua comprensione dei principi fondamentali completando questo template di prompt:
+
+<FillInTheBlank
+  title="Applica i Principi"
+  description="Riempi gli spazi vuoti per creare un prompt ben strutturato — scrivi quello che vuoi!"
+  useAI={true}
+  openEnded={true}
+  template={`Sei un {{role}} con competenza in {{expertise}}.
+
+Contesto: Sto lavorando su {{context}}.
+
+Compito: {{task}}
+
+Vincoli:
+- Mantieni la tua risposta sotto {{length}} parole
+- Concentrati solo su {{focus}}
+
+Formato: Restituisci la tua risposta come {{format}}.`}
+  blanks={[
+    { id: "role", correctAnswers: [], hint: "Quale ruolo professionale dovrebbe assumere l'IA?", context: "Un titolo lavorativo o ruolo professionale" },
+    { id: "expertise", correctAnswers: [], hint: "Quale conoscenza di dominio specifica è necessaria?", context: "Una competenza o dominio che corrisponde al ruolo" },
+    { id: "context", correctAnswers: [], hint: "Qual è il progetto o la situazione?", context: "Un progetto su cui qualcuno con questa competenza lavorerebbe" },
+    { id: "task", correctAnswers: [], hint: "Quale azione specifica dovrebbe compiere l'IA?", context: "Un'azione appropriata per il ruolo e il contesto" },
+    { id: "length", correctAnswers: [], hint: "Quanto lunga dovrebbe essere la risposta?", context: "Un numero (conteggio parole)" },
+    { id: "focus", correctAnswers: [], hint: "Quale aspetto dovrebbe essere prioritizzato?", context: "Una qualità o aspetto rilevante per il compito" },
+    { id: "format", correctAnswers: [], hint: "Come dovrebbe essere strutturato l'output?", context: "Un tipo di formato di output" }
+  ]}
+  explanation="Un prompt ben strutturato include: un ruolo chiaro (Principio 1), contesto sufficiente (Principio 3), compito specifico (Principio 2), vincoli (Principio 4) e formato di output (Principio 5). L'IA controlla se le tue scelte sono internamente coerenti."
+/>
+
+<InteractiveChecklist
+  title="Checklist dei Principi"
+  items={[
+    { id: "clarity", label: "Chiarezza Prima dell'Astuzia", description: "Il tuo prompt è esplicito e non ambiguo?" },
+    { id: "specificity", label: "La Specificità Produce Qualità", description: "Hai incluso pubblico, lunghezza, tono e formato?" },
+    { id: "context", label: "Il Contesto È Re", description: "Il prompt include tutte le informazioni di background necessarie?" },
+    { id: "examples", label: "Gli Esempi Battono le Spiegazioni", description: "Hai mostrato cosa vuoi, non solo descritto?" },
+    { id: "constraints", label: "I Vincoli Focalizzano l'Output", description: "Ci sono confini chiari su ambito e formato?" },
+    { id: "iteration", label: "Itera e Raffina", description: "Sei pronto a migliorare basandoti sui risultati?" },
+    { id: "persona", label: "La Persona Modella la Prospettiva", description: "L'IA sa quale ruolo interpretare?" },
+    { id: "verify", label: "Verifica e Valida", description: "Hai incorporato controlli per l'accuratezza?" }
+  ]}
+/>
+
+Questi principi formano la base per tutto ciò che segue. Nella Parte II, li applicheremo a tecniche specifiche che migliorano drasticamente l'efficacia dei prompt.

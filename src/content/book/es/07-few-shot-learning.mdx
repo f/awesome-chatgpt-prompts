@@ -1,0 +1,478 @@
+El aprendizaje de pocos ejemplos es una de las técnicas de prompting más poderosas. Al proporcionar ejemplos de lo que quieres, puedes enseñar al modelo tareas complejas sin ningún ajuste fino.
+
+<Callout type="info" title="Aprender con Ejemplos">
+Al igual que los humanos aprenden viendo ejemplos, los modelos de IA pueden aprender patrones de los ejemplos que proporcionas en tu prompt.
+</Callout>
+
+## ¿Qué es el Aprendizaje de Pocos Ejemplos?
+
+El aprendizaje de pocos ejemplos muestra al modelo ejemplos de pares entrada-salida antes de pedirle que realice la misma tarea. El modelo aprende el patrón de tus ejemplos y lo aplica a nuevas entradas.
+
+<Compare 
+  before={{ 
+    label: "Cero Ejemplos (Sin Ejemplos)", 
+    content: `Clasifica esta reseña como positiva o negativa:
+
+"La batería dura eternamente pero la pantalla es muy tenue."
+
+→ El modelo puede ser inconsistente con casos límite` 
+  }}
+  after={{ 
+    label: "Pocos Ejemplos (Con Ejemplos)", 
+    content: `"¡Me encanta!" → Positivo
+"Calidad terrible" → Negativo  
+"Bueno pero caro" → Mixto
+
+Ahora clasifica:
+"La batería dura eternamente pero la pantalla es muy tenue."
+
+→ El modelo aprende tus categorías exactas` 
+  }}
+/>
+
+<div className="my-4 grid grid-cols-2 md:grid-cols-4 gap-2">
+  <div className="p-3 bg-muted/50 rounded-lg text-center">
+    <div className="text-2xl font-bold">0</div>
+    <div className="text-xs text-muted-foreground">Cero ejemplos</div>
+  </div>
+  <div className="p-3 bg-muted/50 rounded-lg text-center">
+    <div className="text-2xl font-bold">1</div>
+    <div className="text-xs text-muted-foreground">Un ejemplo</div>
+  </div>
+  <div className="p-3 bg-primary/10 rounded-lg text-center border-2 border-primary">
+    <div className="text-2xl font-bold">2-5</div>
+    <div className="text-xs text-muted-foreground">Pocos ejemplos</div>
+  </div>
+  <div className="p-3 bg-muted/50 rounded-lg text-center">
+    <div className="text-2xl font-bold">5+</div>
+    <div className="text-xs text-muted-foreground">Muchos ejemplos</div>
+  </div>
+</div>
+
+## Por Qué Funcionan los Ejemplos
+
+<FewShotDemo />
+
+Los ejemplos comunican:
+- **Formato**: Cómo debe estructurarse la salida
+- **Estilo**: Tono, longitud, vocabulario
+- **Lógica**: El patrón de razonamiento a seguir
+- **Casos límite**: Cómo manejar situaciones especiales
+
+## Patrón Básico de Pocos Ejemplos
+
+La estructura fundamental del prompting de pocos ejemplos sigue un patrón simple: mostrar ejemplos, luego pedir la nueva tarea. La consistencia en el formateo entre ejemplos es crucial. El modelo aprende del patrón que estableces.
+
+```
+[Ejemplo 1]
+Entrada: [entrada 1]
+Salida: [salida 1]
+
+[Ejemplo 2]
+Entrada: [entrada 2]
+Salida: [salida 2]
+
+[Ejemplo 3]
+Entrada: [entrada 3]
+Salida: [salida 3]
+
+Ahora haz este:
+Entrada: [nueva entrada]
+Salida:
+```
+
+## Pocos Ejemplos para Clasificación
+
+La clasificación es uno de los casos de uso más fuertes para el aprendizaje de pocos ejemplos. Al mostrar ejemplos de cada categoría, defines los límites entre clases más precisamente de lo que las instrucciones solas podrían lograr.
+
+### Análisis de Sentimiento
+
+<Callout type="info" title="¿Qué es el Análisis de Sentimiento?">
+El análisis de sentimiento clasifica texto por tono emocional: positivo, negativo, neutral o mixto. Se usa ampliamente para retroalimentación de clientes, monitoreo de redes sociales y seguimiento de percepción de marca.
+</Callout>
+
+La clasificación de sentimiento se beneficia de mostrar ejemplos de cada tipo de sentimiento, especialmente casos límite como sentimiento "mixto" que podría ser ambiguo.
+
+<TryIt compact prompt={`Clasifica el sentimiento de estas reseñas de clientes.
+
+Reseña: "¡Este producto superó todas mis expectativas! Compraré de nuevo."
+Sentimiento: Positivo
+
+Reseña: "Llegó roto y el servicio al cliente no fue útil."
+Sentimiento: Negativo
+
+Reseña: "Funciona bien, nada especial pero hace el trabajo."
+Sentimiento: Neutral
+
+Reseña: "La calidad es increíble pero el envío tardó eternamente."
+Sentimiento: Mixto
+
+Ahora clasifica:
+Reseña: "Me encanta el diseño pero la duración de la batería es decepcionante."
+Sentimiento:`} />
+
+### Clasificación por Tema
+
+Para categorización de múltiples clases, incluye al menos un ejemplo por categoría. Esto ayuda al modelo a entender tu taxonomía específica, que puede diferir de su comprensión predeterminada.
+
+<TryIt compact prompt={`Categoriza estos tickets de soporte.
+
+Ticket: "No puedo iniciar sesión en mi cuenta, el restablecimiento de contraseña no funciona"
+Categoría: Autenticación
+
+Ticket: "¿Cómo actualizo al plan premium?"
+Categoría: Facturación
+
+Ticket: "La app se cierra cuando intento exportar datos"
+Categoría: Reporte de Error
+
+Ticket: "¿Pueden agregar modo oscuro a la app móvil?"
+Categoría: Solicitud de Función
+
+Ahora categoriza:
+Ticket: "Mi pago fue rechazado pero veo el cargo en mi tarjeta"
+Categoría:`} />
+
+## Pocos Ejemplos para Transformación
+
+Las tareas de transformación convierten la entrada de una forma a otra mientras preservan el significado. Los ejemplos son esenciales aquí porque definen exactamente qué significa "transformación" para tu caso de uso.
+
+### Reescritura de Texto
+
+La transformación de estilo requiere ejemplos que muestren el cambio de tono exacto que quieres. Instrucciones abstractas como "hazlo profesional" se interpretan de manera diferente. Los ejemplos lo hacen concreto.
+
+<TryIt compact prompt={`Reescribe estas oraciones en un tono profesional.
+
+Casual: "Oye, solo quería saber si recibiste mi correo?"
+Profesional: "Quería dar seguimiento respecto a mi correo anterior."
+
+Casual: "¡Esto es súper importante y hay que hacerlo YA!"
+Profesional: "Este asunto requiere atención urgente y acción pronta."
+
+Casual: "Perdón por la respuesta tardía, ¡he estado muy ocupado!"
+Profesional: "Me disculpo por la demora en responder. He tenido una agenda particularmente exigente."
+
+Ahora reescribe:
+Casual: "No puedo ir a la reunión, me surgió algo."
+Profesional:`} />
+
+### Conversión de Formato
+
+Las tareas de conversión de formato se benefician de ejemplos que muestran casos límite y entradas ambiguas. El modelo aprende tus convenciones específicas para manejar casos difíciles.
+
+<TryIt compact prompt={`Convierte estas fechas en lenguaje natural a formato ISO.
+
+Entrada: "el próximo martes"
+Salida: 2024-01-16 (asumiendo que hoy es 2024-01-11, jueves)
+
+Entrada: "pasado mañana"
+Salida: 2024-01-13
+
+Entrada: "el último día de este mes"
+Salida: 2024-01-31
+
+Entrada: "en dos semanas"
+Salida: 2024-01-25
+
+Ahora convierte:
+Entrada: "el primer lunes del próximo mes"
+Salida:`} />
+
+## Pocos Ejemplos para Generación
+
+Las tareas de generación crean nuevo contenido siguiendo un patrón aprendido. Los ejemplos establecen longitud, estructura, tono y qué detalles resaltar. Estos son difíciles de especificar solo con instrucciones.
+
+### Descripciones de Productos
+
+El texto de marketing se beneficia enormemente de ejemplos porque capturan la voz de marca, énfasis en características y técnicas persuasivas que son difíciles de describir abstractamente.
+
+<TryIt compact prompt={`Escribe descripciones de productos en este estilo:
+
+Producto: Auriculares Inalámbricos Bluetooth
+Descripción: Sumérgete en un sonido cristalino con nuestros auriculares inalámbricos ligeros. Con 40 horas de batería, cancelación activa de ruido y almohadillas de espuma viscoelástica para comodidad todo el día.
+
+Producto: Botella de Agua de Acero Inoxidable
+Descripción: Mantente hidratado con estilo con nuestra botella aislada de doble pared. Mantiene bebidas frías por 24 horas o calientes por 12. Incluye tapa a prueba de fugas y cabe en portavasos estándar.
+
+Producto: Silla de Oficina Ergonómica
+Descripción: Transforma tu espacio de trabajo con nuestra silla ergonómica ajustable. Respaldo de malla transpirable, soporte lumbar y giro de 360° se combinan para mantenerte cómodo durante largas sesiones de trabajo.
+
+Ahora escribe:
+Producto: Cargador Portátil para Teléfono
+Descripción:`} />
+
+### Documentación de Código
+
+<Callout type="info" title="¿Por Qué Documentar Código?">
+La buena documentación explica qué hace el código, sus parámetros, valores de retorno y ejemplos de uso. Los docstrings consistentes permiten documentación de API auto-generada y ayudan a los IDEs a proporcionar mejor autocompletado de código.
+</Callout>
+
+El estilo de documentación varía ampliamente entre proyectos. Los ejemplos enseñan tu formato específico, qué incluir (args, returns, ejemplos) y el nivel de detalle esperado.
+
+<TryIt compact prompt={`Escribe comentarios de documentación para estas funciones:
+
+Función:
+def calcular_imc(peso_kg, altura_m):
+    return peso_kg / (altura_m ** 2)
+
+Documentación:
+"""
+Calcula el Índice de Masa Corporal (IMC) a partir del peso y altura.
+
+Args:
+    peso_kg (float): Peso en kilogramos
+    altura_m (float): Altura en metros
+
+Returns:
+    float: Valor de IMC (peso/altura²)
+
+Ejemplo:
+    >>> calcular_imc(70, 1.75)
+    22.86
+"""
+
+Ahora documenta:
+Función:
+def es_palindromo(texto):
+    limpio = ''.join(c.lower() for c in texto if c.isalnum())
+    return limpio == limpio[::-1]
+
+Documentación:`} />
+
+## Pocos Ejemplos para Extracción
+
+Las tareas de extracción extraen información estructurada de texto no estructurado. Los ejemplos definen qué entidades importan, cómo formatear la salida, y cómo manejar casos donde la información falta o es ambigua.
+
+### Extracción de Entidades
+
+<Callout type="info" title="¿Qué es el Reconocimiento de Entidades Nombradas?">
+El Reconocimiento de Entidades Nombradas (NER) identifica y clasifica entidades nombradas en texto en categorías como personas, organizaciones, ubicaciones, fechas y productos. Es fundamental para recuperación de información y grafos de conocimiento.
+</Callout>
+
+NER se beneficia de ejemplos que muestran tus tipos de entidad específicos y cómo manejar entidades que podrían encajar en múltiples categorías.
+
+<TryIt compact prompt={`Extrae entidades nombradas de estas oraciones.
+
+Texto: "El CEO de Apple, Tim Cook, anunció el iPhone 15 en Cupertino."
+Entidades:
+- EMPRESA: Apple
+- PERSONA: Tim Cook
+- PRODUCTO: iPhone 15
+- UBICACIÓN: Cupertino
+
+Texto: "La Unión Europea multó a Google con 4.340 millones de euros en 2018."
+Entidades:
+- ORGANIZACIÓN: Unión Europea
+- EMPRESA: Google
+- DINERO: 4.340 millones de euros
+- FECHA: 2018
+
+Ahora extrae de:
+Texto: "SpaceX de Elon Musk lanzó 23 satélites Starlink desde Cabo Cañaveral el 3 de diciembre."
+Entidades:`} />
+
+### Extracción de Datos Estructurados
+
+Extraer datos estructurados de lenguaje natural requiere ejemplos que muestren cómo manejar campos faltantes, información implícita y formatos de entrada variados.
+
+<TryIt compact prompt={`Extrae detalles de reunión en formato estructurado.
+
+Correo: "Reunámonos mañana a las 3pm en la Sala de Conferencias B para discutir el presupuesto de Q4. Por favor trae tu portátil."
+
+Reunión:
+- Fecha: [fecha de mañana]
+- Hora: 3:00 PM
+- Ubicación: Sala de Conferencias B
+- Tema: Discusión de presupuesto Q4
+- Requisitos: Traer portátil
+
+Correo: "Sincronización de equipo movida al viernes 10am, usaremos Zoom en su lugar. Link en la invitación del calendario. 30 minutos máximo."
+
+Reunión:
+- Fecha: Viernes
+- Hora: 10:00 AM
+- Ubicación: Zoom (virtual)
+- Tema: Sincronización de equipo
+- Duración: 30 minutos
+
+Ahora extrae de:
+Correo: "¿Podemos hacer una llamada rápida el lunes por la mañana alrededor de las 9:30 para repasar la presentación del cliente? Te enviaré un enlace de Teams."
+
+Reunión:`} />
+
+## Técnicas Avanzadas de Pocos Ejemplos
+
+Más allá de los pocos ejemplos básicos, varias técnicas pueden mejorar los resultados para tareas complejas.
+
+### Ejemplos Diversos
+
+La diversidad en los ejemplos es más valiosa que la cantidad. Cubre diferentes escenarios, casos límite y posibles ambigüedades en lugar de mostrar ejemplos similares repetidamente.
+
+<TryIt compact prompt={`Responde a quejas de clientes.
+
+Ejemplo 1 (Problema de Producto):
+Cliente: "Mi pedido llegó dañado."
+Respuesta: "Le pido sinceras disculpas por la entrega dañada. Enviaré inmediatamente un reemplazo sin cargo. No necesita devolver el artículo dañado. ¿Puedo confirmar su dirección de envío?"
+
+Ejemplo 2 (Problema de Servicio):
+Cliente: "¡He estado en espera por 2 horas!"
+Respuesta: "Lamento mucho el largo tiempo de espera. Eso es inaceptable. Estoy aquí ahora y personalmente me aseguraré de que su problema se resuelva. ¿En qué puedo ayudarle hoy?"
+
+Ejemplo 3 (Problema de Facturación):
+Cliente: "¡Me cobraron dos veces por el mismo pedido!"
+Respuesta: "Me disculpo por este error de facturación. He verificado el cargo duplicado e iniciado un reembolso de XX€ a su método de pago original. Debería verlo dentro de 3-5 días hábiles."
+
+Ahora responde a:
+Cliente: "El producto no coincide con lo que se mostraba en el sitio web."
+Respuesta:`} />
+
+### Ejemplos Negativos
+
+<Callout type="tip" title="Aprendizaje Contrastivo">
+Mostrar ejemplos "buenos" vs "malos" se llama aprendizaje contrastivo. Ayuda al modelo a entender no solo lo que quieres, sino lo que debe evitar. Esto es especialmente útil para juicios de estilo y calidad.
+</Callout>
+
+A veces mostrar lo que *no* hacer es tan valioso como mostrar ejemplos correctos. Los ejemplos negativos ayudan al modelo a entender límites y evitar errores comunes.
+
+<TryIt compact prompt={`Escribe líneas de asunto de correo concisas.
+
+Bueno: "Informe Q3 Listo para Revisión"
+Malo: "Oye, terminé ese informe del que hablamos"
+
+Bueno: "Acción Requerida: Aprobar Vacaciones antes del Viernes"
+Malo: "Necesito que hagas algo por mí por favor lee esto"
+
+Bueno: "Reunión Reprogramada: Sincronización de Proyecto → Jueves 2pm"
+Malo: "¡¡¡¡¡Cambio de planes!!!!!"
+
+Ahora escribe una línea de asunto para:
+Correo sobre: Solicitar retroalimentación sobre un borrador de propuesta
+Asunto:`} />
+
+### Ejemplos de Casos Límite
+
+Los casos límite a menudo determinan si una solución funciona en producción. Incluir entradas inusuales en tus ejemplos previene que el modelo falle con datos del mundo real que no encajan en el "camino feliz."
+
+<TryIt compact prompt={`Parsea nombres en formato estructurado.
+
+Entrada: "Juan García"
+Salida: {"nombre": "Juan", "apellido": "García", "segundo_nombre": null, "sufijo": null}
+
+Entrada: "María José Rodríguez-López"
+Salida: {"nombre": "María", "segundo_nombre": "José", "apellido": "Rodríguez-López", "sufijo": null}
+
+Entrada: "Dr. Martín Pérez Sánchez Jr."
+Salida: {"prefijo": "Dr.", "nombre": "Martín", "segundo_nombre": "Pérez", "apellido": "Sánchez", "sufijo": "Jr."}
+
+Entrada: "Shakira"
+Salida: {"nombre": "Shakira", "apellido": null, "segundo_nombre": null, "sufijo": null, "mononimo": true}
+
+Ahora parsea:
+Entrada: "Don Antonio Banderas III"
+Salida:`} />
+
+## ¿Cuántos Ejemplos?
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-40">Clasificación simple</span>
+    <span className="text-primary font-mono">2-3</span>
+    <span className="text-muted-foreground">Uno por categoría mínimo</span>
+  </div>
+  <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-40">Formateo complejo</span>
+    <span className="text-primary font-mono">3-5</span>
+    <span className="text-muted-foreground">Muestra variaciones</span>
+  </div>
+  <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-40">Estilo matizado</span>
+    <span className="text-primary font-mono">4-6</span>
+    <span className="text-muted-foreground">Captura el rango completo</span>
+  </div>
+  <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-40">Casos límite</span>
+    <span className="text-primary font-mono">1-2</span>
+    <span className="text-muted-foreground">Junto con ejemplos normales</span>
+  </div>
+</div>
+
+## La Calidad de los Ejemplos Importa
+
+<Compare 
+  before={{ 
+    label: "Ejemplos Malos", 
+    content: `"Buen producto" → Bueno
+"Buen servicio" → Bueno
+"Buen precio" → Bueno
+
+✗ Todos muy similares
+✗ Misma palabra repetida
+✗ Sin casos límite mostrados` 
+  }}
+  after={{ 
+    label: "Ejemplos Buenos", 
+    content: `"¡Superó las expectativas!" → Positivo
+"Llegó roto" → Negativo
+"Funciona bien, nada especial" → Neutral
+"Gran calidad pero muy caro" → Mixto
+
+✓ Escenarios diversos
+✓ Límites claros
+✓ Cubre casos límite` 
+  }}
+/>
+
+## Combinando Pocos Ejemplos con Otras Técnicas
+
+El aprendizaje de pocos ejemplos se combina poderosamente con otras técnicas de prompting. Los ejemplos proporcionan el "qué" mientras otras técnicas pueden agregar contexto, razonamiento o estructura.
+
+### Pocos Ejemplos + Rol
+
+Agregar un rol da al modelo contexto de *por qué* está haciendo la tarea, lo que puede mejorar calidad y consistencia.
+
+```
+Eres un revisor de contratos legales.
+
+[ejemplos de análisis de cláusulas de contrato]
+
+Ahora analiza: [nueva cláusula]
+```
+
+### Pocos Ejemplos + CoT
+
+Combinar pocos ejemplos con Cadena de Pensamiento muestra no solo *qué* respuesta dar, sino *cómo* razonar hasta esa respuesta. Esto es poderoso para tareas que requieren juicio.
+
+```
+Clasifica y explica el razonamiento.
+
+Reseña: "Grandes características pero muy caro"
+Pensando: La reseña menciona aspectos positivos ("grandes características") 
+pero también un negativo significativo ("muy caro"). Lo negativo parece 
+superar lo positivo basándose en la conjunción "pero".
+Clasificación: Mixto-Negativo
+
+[más ejemplos con razonamiento]
+
+Ahora clasifica con razonamiento:
+Reseña: "Exactamente lo que necesitaba, llegó más rápido de lo esperado"
+```
+
+## Resumen
+
+<Callout type="tip" title="Puntos Clave">
+El aprendizaje de pocos ejemplos enseña a través de demostración y a menudo es más efectivo que las instrucciones solas. Usa 2-5 ejemplos diversos y correctos y combina con otras técnicas para mejores resultados.
+</Callout>
+
+<Quiz 
+  question="¿Cuántos ejemplos deberías proporcionar típicamente en el aprendizaje de pocos ejemplos?"
+  options={[
+    "Tantos como sea posible (10+)",
+    "Solo 1 ejemplo siempre es suficiente",
+    "2-5 ejemplos diversos y correctos",
+    "Los ejemplos no son necesarios si las instrucciones son claras"
+  ]}
+  correctIndex={2}
+  explanation="2-5 ejemplos diversos y correctos típicamente funcionan mejor. Muy pocos pueden no capturar el patrón, mientras que muchos desperdician tokens y pueden confundir al modelo. La calidad y diversidad importan más que la cantidad."
+/>
+
+En el próximo capítulo, exploraremos el refinamiento iterativo: el arte de mejorar prompts a través de intentos sucesivos.

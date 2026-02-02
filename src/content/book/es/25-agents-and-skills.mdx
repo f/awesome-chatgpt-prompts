@@ -1,0 +1,551 @@
+A medida que los sistemas de IA evolucionan de simples respuestas a preguntas hacia la ejecución autónoma de tareas, entender los **agentes** y las **habilidades (skills)** se vuelve esencial. Este capítulo explora cómo los prompts sirven como los bloques de construcción fundamentales para agentes de IA, y cómo las habilidades empaquetan experiencia en conjuntos de instrucciones reutilizables y completos.
+
+<div className="my-8 p-6 bg-muted/20 rounded-xl border">
+  <div className="flex flex-col items-center gap-6">
+    <div className="text-center">
+      <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-100 dark:bg-blue-900/50 border-2 border-blue-300 dark:border-blue-700">
+        <IconSettings className="w-10 h-10 text-blue-600 dark:text-blue-400" />
+      </div>
+      <p className="font-semibold mt-2 m-0!">Agente</p>
+      <p className="text-xs text-muted-foreground m-0!">Sistema de IA autónomo</p>
+    </div>
+    <div className="flex items-center gap-2 text-muted-foreground text-sm">
+      <span>impulsado por</span>
+      <span>↓</span>
+    </div>
+    <div className="flex flex-wrap justify-center gap-4">
+      <div className="text-center">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-lg bg-purple-100 dark:bg-purple-900/50 border-2 border-purple-300 dark:border-purple-700">
+          <IconStar className="w-8 h-8 text-purple-600 dark:text-purple-400" />
+        </div>
+        <p className="font-medium text-sm mt-2 m-0!">Skill</p>
+        <p className="text-xs text-muted-foreground m-0!">Experiencia reutilizable</p>
+      </div>
+      <div className="text-center">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-lg bg-purple-100 dark:bg-purple-900/50 border-2 border-purple-300 dark:border-purple-700">
+          <IconStar className="w-8 h-8 text-purple-600 dark:text-purple-400" />
+        </div>
+        <p className="font-medium text-sm mt-2 m-0!">Skill</p>
+        <p className="text-xs text-muted-foreground m-0!">Experiencia reutilizable</p>
+      </div>
+      <div className="text-center">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-lg bg-purple-100 dark:bg-purple-900/50 border-2 border-purple-300 dark:border-purple-700">
+          <IconStar className="w-8 h-8 text-purple-600 dark:text-purple-400" />
+        </div>
+        <p className="font-medium text-sm mt-2 m-0!">Skill</p>
+        <p className="text-xs text-muted-foreground m-0!">Experiencia reutilizable</p>
+      </div>
+    </div>
+    <div className="flex items-center gap-2 text-muted-foreground text-sm">
+      <span>compuesto de</span>
+      <span>↓</span>
+    </div>
+    <div className="flex flex-wrap justify-center gap-2">
+      <div className="px-3 py-2 rounded bg-amber-100 dark:bg-amber-900/50 border border-amber-300 dark:border-amber-700 flex items-center gap-1">
+        <IconClipboard className="w-3 h-3 text-amber-600 dark:text-amber-400" />
+        <span className="text-xs font-medium">Prompt</span>
+      </div>
+      <div className="px-3 py-2 rounded bg-amber-100 dark:bg-amber-900/50 border border-amber-300 dark:border-amber-700 flex items-center gap-1">
+        <IconClipboard className="w-3 h-3 text-amber-600 dark:text-amber-400" />
+        <span className="text-xs font-medium">Prompt</span>
+      </div>
+      <div className="px-3 py-2 rounded bg-amber-100 dark:bg-amber-900/50 border border-amber-300 dark:border-amber-700 flex items-center gap-1">
+        <IconClipboard className="w-3 h-3 text-amber-600 dark:text-amber-400" />
+        <span className="text-xs font-medium">Prompt</span>
+      </div>
+      <div className="px-3 py-2 rounded bg-amber-100 dark:bg-amber-900/50 border border-amber-300 dark:border-amber-700 flex items-center gap-1">
+        <IconClipboard className="w-3 h-3 text-amber-600 dark:text-amber-400" />
+        <span className="text-xs font-medium">Prompt</span>
+      </div>
+      <div className="px-3 py-2 rounded bg-amber-100 dark:bg-amber-900/50 border border-amber-300 dark:border-amber-700 flex items-center gap-1">
+        <IconClipboard className="w-3 h-3 text-amber-600 dark:text-amber-400" />
+        <span className="text-xs font-medium">Prompt</span>
+      </div>
+    </div>
+    <p className="text-xs text-muted-foreground text-center m-0! mt-2">Los Prompts son átomos → Los Skills son moléculas → Los Agentes son estructuras completas</p>
+  </div>
+</div>
+
+## ¿Qué Son los Agentes de IA?
+
+Un **agente de IA** es un sistema de IA que puede planificar, ejecutar e iterar autónomamente sobre tareas. A diferencia de las interacciones simples de prompt-respuesta, los agentes pueden:
+
+- **Planificar** - Descomponer objetivos complejos en pasos accionables
+- **Ejecutar** - Usar herramientas y tomar acciones en el mundo real
+- **Observar** - Procesar retroalimentación de sus acciones
+- **Adaptar** - Ajustar su enfoque basándose en resultados
+- **Persistir** - Mantener contexto y memoria entre interacciones
+
+<div className="my-6 flex items-center justify-center p-6 bg-muted/30 rounded-lg">
+  <div className="relative">
+    <div className="flex items-center gap-3">
+      <div className="px-4 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center text-sm">
+        <p className="font-medium text-blue-700 dark:text-blue-300 m-0!">Objetivo</p>
+      </div>
+      <div className="text-muted-foreground">→</div>
+      <div className="flex flex-col items-center gap-2">
+        <div className="flex items-center gap-2 px-4 py-3 bg-muted/50 border border-dashed rounded-lg">
+          <div className="px-3 py-2 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded text-center text-sm">
+            <p className="font-medium text-purple-700 dark:text-purple-300 m-0!">Planificar</p>
+          </div>
+          <div className="text-muted-foreground">→</div>
+          <div className="px-3 py-2 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded text-center text-sm">
+            <p className="font-medium text-amber-700 dark:text-amber-300 m-0!">Ejecutar</p>
+          </div>
+          <div className="text-muted-foreground">→</div>
+          <div className="px-3 py-2 bg-teal-100 dark:bg-teal-900/50 border border-teal-200 dark:border-teal-800 rounded text-center text-sm">
+            <p className="font-medium text-teal-700 dark:text-teal-300 m-0!">Observar</p>
+          </div>
+          <div className="text-muted-foreground">→</div>
+          <div className="px-3 py-2 bg-rose-100 dark:bg-rose-900/50 border border-rose-200 dark:border-rose-800 rounded text-center text-sm">
+            <p className="font-medium text-rose-700 dark:text-rose-300 m-0!">Adaptar</p>
+          </div>
+        </div>
+        <div className="text-xs text-muted-foreground flex items-center gap-1">
+          <span>↺</span> Repetir hasta completar
+        </div>
+      </div>
+      <div className="text-muted-foreground">→</div>
+      <div className="px-4 py-3 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg text-center text-sm">
+        <p className="font-medium text-green-700 dark:text-green-300 m-0!">Listo</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+## Prompts como Bloques de Construcción
+
+Cada agente, sin importar cuán sofisticado sea, está construido de prompts. Así como los átomos se combinan para formar moléculas, y las moléculas se combinan para formar estructuras complejas, los prompts se combinan para crear comportamiento inteligente de agentes.
+
+<div className="my-6 grid md:grid-cols-4 gap-3 text-center text-sm">
+  <div className="border rounded-lg p-4 bg-blue-50/50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-900">
+    <p className="font-semibold text-blue-700 dark:text-blue-300 m-0!">Prompts de Sistema</p>
+    <p className="text-xs text-blue-600 dark:text-blue-400 m-0! mt-1">Identidad y Rol</p>
+  </div>
+  <div className="border rounded-lg p-4 bg-purple-50/50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-900">
+    <p className="font-semibold text-purple-700 dark:text-purple-300 m-0!">Prompts de Planificación</p>
+    <p className="text-xs text-purple-600 dark:text-purple-400 m-0! mt-1">Cómo Pensar</p>
+  </div>
+  <div className="border rounded-lg p-4 bg-amber-50/50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900">
+    <p className="font-semibold text-amber-700 dark:text-amber-300 m-0!">Prompts de Herramientas</p>
+    <p className="text-xs text-amber-600 dark:text-amber-400 m-0! mt-1">Cómo Actuar</p>
+  </div>
+  <div className="border rounded-lg p-4 bg-rose-50/50 dark:bg-rose-950/20 border-rose-200 dark:border-rose-900">
+    <p className="font-semibold text-rose-700 dark:text-rose-300 m-0!">Prompts de Recuperación</p>
+    <p className="text-xs text-rose-600 dark:text-rose-400 m-0! mt-1">Cómo Recuperarse</p>
+  </div>
+</div>
+
+Estos tipos de prompts se apilan juntos para formar el comportamiento completo del agente:
+
+### Prompts de Sistema (La Identidad del Agente)
+
+El prompt fundamental que establece quién es el agente y cómo se comporta:
+
+```markdown
+Eres un asistente de revisión de código. Tu rol es:
+- Analizar código buscando bugs, problemas de seguridad y de rendimiento
+- Sugerir mejoras siguiendo mejores prácticas
+- Explicar tu razonamiento claramente
+- Ser constructivo y educativo en la retroalimentación
+
+Tienes acceso a herramientas para leer archivos, buscar código y ejecutar pruebas.
+```
+
+### Prompts de Planificación (Cómo Pensar)
+
+Instrucciones que guían el proceso de razonamiento y planificación del agente:
+
+```markdown
+Antes de tomar acción, siempre:
+1. Entiende la solicitud completa
+2. Divídela en pasos más pequeños y verificables
+3. Identifica qué herramientas necesitarás
+4. Considera casos límite y problemas potenciales
+5. Ejecuta paso a paso, validando mientras avanzas
+```
+
+### Prompts de Uso de Herramientas (Cómo Actuar)
+
+Orientación sobre cuándo y cómo usar las herramientas disponibles:
+
+```markdown
+Cuando necesites entender un código base:
+- Usa grep_search para encontrar patrones específicos
+- Usa read_file para examinar contenidos de archivos
+- Usa list_dir para explorar estructura de directorios
+- Siempre verifica tu comprensión antes de hacer cambios
+```
+
+### Prompts de Recuperación (Cómo Manejar Fallos)
+
+Instrucciones para cuando las cosas salen mal:
+
+```markdown
+Si una acción falla:
+1. Analiza el mensaje de error cuidadosamente
+2. Considera enfoques alternativos
+3. Pide clarificación si la tarea es ambigua
+4. Nunca repitas la misma acción fallida sin cambios
+```
+
+<Callout type="info" title="La Pila de Prompts">
+El comportamiento de un agente emerge de capas de prompts trabajando juntos. El prompt de sistema establece la base, los prompts de planificación guían el razonamiento, los prompts de herramientas habilitan la acción, y los prompts de recuperación manejan los fallos. Juntos, crean comportamiento coherente y capaz.
+</Callout>
+
+## ¿Qué Son los Skills?
+
+Si los prompts son los átomos, **los skills son las moléculas**—bloques de construcción reutilizables que dan a los agentes capacidades específicas.
+
+Un **skill** es un paquete completo y portátil de instrucciones que da a un agente de IA experiencia en un dominio o tarea específica. Los skills son los bloques reutilizables de los agentes: los construyes una vez, y cualquier agente puede usarlos.
+
+<Callout type="tip" title="Skills = Bloques de Agentes Reutilizables">
+Escribe un skill para revisión de código una vez. Ahora cada agente de programación—ya sea para Python, JavaScript o Rust—puede convertirse instantáneamente en un revisor de código experto cargando ese skill. Los skills te permiten construir capacidades de agentes como bloques LEGO.
+</Callout>
+
+### Anatomía de un Skill
+
+Un skill bien diseñado típicamente incluye:
+
+<div className="my-6 grid md:grid-cols-2 gap-4">
+  <div className="border rounded-lg p-4 bg-muted/30">
+    <p className="font-semibold text-sm m-0! mb-2">📄 SKILL.md (Requerido)</p>
+    <p className="text-sm text-muted-foreground m-0!">El archivo de instrucciones principal. Contiene la experiencia central, directrices y comportamientos que definen el skill.</p>
+  </div>
+  <div className="border rounded-lg p-4 bg-muted/30">
+    <p className="font-semibold text-sm m-0! mb-2">📚 Documentación de Referencia</p>
+    <p className="text-sm text-muted-foreground m-0!">Documentación de apoyo, ejemplos y contexto que el agente puede referenciar mientras trabaja.</p>
+  </div>
+  <div className="border rounded-lg p-4 bg-muted/30">
+    <p className="font-semibold text-sm m-0! mb-2">🔧 Scripts y Herramientas</p>
+    <p className="text-sm text-muted-foreground m-0!">Scripts auxiliares, plantillas o configuraciones de herramientas que apoyan la funcionalidad del skill.</p>
+  </div>
+  <div className="border rounded-lg p-4 bg-muted/30">
+    <p className="font-semibold text-sm m-0! mb-2">⚙️ Configuración</p>
+    <p className="text-sm text-muted-foreground m-0!">Ajustes, parámetros y opciones de personalización para adaptar el skill a diferentes contextos.</p>
+  </div>
+</div>
+
+### Ejemplo: Skill de Revisión de Código
+
+Así es como podría verse un skill de revisión de código:
+
+<div className="my-6 border rounded-lg overflow-hidden bg-muted/20">
+  <div className="px-3 py-2 bg-muted/50 border-b flex items-center gap-2">
+    <span className="text-sm">📁</span>
+    <span className="text-sm font-medium">code-review-skill/</span>
+  </div>
+  <div className="p-3 space-y-1 text-sm font-mono">
+    <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-muted/50">
+      <span>📄</span>
+      <span className="font-medium">SKILL.md</span>
+      <span className="text-muted-foreground text-xs ml-auto">Directrices de revisión</span>
+    </div>
+    <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-muted/50">
+      <span>📄</span>
+      <span>security-checklist.md</span>
+      <span className="text-muted-foreground text-xs ml-auto">Patrones de seguridad</span>
+    </div>
+    <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-muted/50">
+      <span>📄</span>
+      <span>performance-tips.md</span>
+      <span className="text-muted-foreground text-xs ml-auto">Guía de optimización</span>
+    </div>
+    <div className="mt-2 border-t pt-2">
+      <div className="flex items-center gap-2 px-2 py-1">
+        <span>📁</span>
+        <span className="font-medium">language-specific/</span>
+      </div>
+      <div className="ml-6 space-y-1">
+        <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-muted/50">
+          <span>📄</span>
+          <span>python.md</span>
+          <span className="text-muted-foreground text-xs ml-auto">Mejores prácticas Python</span>
+        </div>
+        <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-muted/50">
+          <span>📄</span>
+          <span>javascript.md</span>
+          <span className="text-muted-foreground text-xs ml-auto">Patrones JavaScript</span>
+        </div>
+        <div className="flex items-center gap-2 px-2 py-1 rounded hover:bg-muted/50">
+          <span>📄</span>
+          <span>rust.md</span>
+          <span className="text-muted-foreground text-xs ml-auto">Directrices Rust</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+El archivo `SKILL.md` define el enfoque general:
+
+```markdown
+---
+name: code-review
+description: Revisión de código completa con análisis de seguridad, rendimiento y estilo
+---
+
+# Skill de Revisión de Código
+
+Eres un revisor de código experto. Al revisar código:
+
+## Proceso
+1. **Entender Contexto** - ¿Qué hace este código? ¿Qué problema resuelve?
+2. **Verificar Corrección** - ¿Funciona? ¿Hay errores lógicos?
+3. **Escaneo de Seguridad** - Referencia security-checklist.md para vulnerabilidades comunes
+4. **Revisión de Rendimiento** - Revisa performance-tips.md para oportunidades de optimización
+5. **Estilo y Mantenibilidad** - ¿Es el código legible y mantenible?
+
+## Formato de Salida
+Proporciona retroalimentación en categorías:
+- 🔴 **Crítico** - Debe corregirse antes de merge
+- 🟡 **Sugerido** - Mejoras recomendadas
+- 🟢 **Opcional** - Mejoras opcionales
+
+Siempre explica *por qué* algo es un problema, no solo *qué* está mal.
+```
+
+## Skills vs. Prompts Simples
+
+<div className="my-6 grid md:grid-cols-2 gap-4">
+  <div className="border rounded-lg bg-muted/30">
+    <p className="text-sm font-semibold px-4 pt-3 m-0!">Prompt Simple</p>
+    <div className="text-sm p-4 pt-2 space-y-2">
+      <p className="m-0!">Instrucción única</p>
+      <p className="m-0!">Uso de una sola vez</p>
+      <p className="m-0!">Contexto limitado</p>
+      <p className="m-0!">Enfoque genérico</p>
+      <p className="m-0!">Sin materiales de apoyo</p>
+    </div>
+  </div>
+  <div className="border rounded-lg bg-primary/5 border-primary/20">
+    <p className="text-sm font-semibold px-4 pt-3 m-0!">Skill</p>
+    <div className="text-sm p-4 pt-2 space-y-2">
+      <p className="m-0!">Conjunto completo de instrucciones</p>
+      <p className="m-0!">Reutilizable entre proyectos</p>
+      <p className="m-0!">Contexto rico con referencias</p>
+      <p className="m-0!">Experiencia específica de dominio</p>
+      <p className="m-0!">Docs, scripts, configs de apoyo</p>
+    </div>
+  </div>
+</div>
+
+## Construyendo Skills Efectivos
+
+### 1. Define la Experiencia Claramente
+
+Comienza con una descripción clara de lo que habilita el skill:
+
+```markdown
+---
+name: api-design
+description: Diseña APIs RESTful siguiendo mejores prácticas de la industria, 
+  incluyendo versionado, manejo de errores, y estándares de documentación
+---
+```
+
+### 2. Estructura el Conocimiento Jerárquicamente
+
+Organiza la información de lo general a lo específico:
+
+```markdown
+# Skill de Diseño de API
+
+## Principios Centrales
+- Los recursos deben ser sustantivos, no verbos
+- Usa métodos HTTP semánticamente
+- Versiona tus APIs desde el día uno
+
+## Directrices Detalladas
+[Reglas más específicas...]
+
+## Materiales de Referencia
+- Ver `rest-conventions.md` para convenciones de nombres
+- Ver `error-codes.md` para respuestas de error estándar
+```
+
+### 3. Incluye Ejemplos Concretos
+
+Las reglas abstractas se aclaran con ejemplos:
+
+```markdown
+## Nombres de Endpoints
+
+✅ Bueno:
+- GET /users/{id}
+- POST /orders
+- DELETE /products/{id}/reviews/{reviewId}
+
+❌ Evitar:
+- GET /getUser
+- POST /createNewOrder
+- DELETE /removeProductReview
+```
+
+### 4. Proporciona Marcos de Decisión
+
+Ayuda al agente a tomar decisiones en situaciones ambiguas:
+
+```markdown
+## Cuándo Usar Paginación
+
+Usa paginación cuando:
+- La colección podría exceder 100 elementos
+- El tamaño de respuesta impacta el rendimiento
+- El cliente puede no necesitar todos los elementos
+
+Usa respuesta completa cuando:
+- La colección siempre es pequeña (<20 elementos)
+- El cliente típicamente necesita todo
+- La consistencia en tiempo real es crítica
+```
+
+### 5. Añade Patrones de Recuperación
+
+Anticipa qué puede salir mal:
+
+```markdown
+## Problemas Comunes
+
+**Problema**: El cliente necesita campos que no están en la respuesta estándar
+**Solución**: Implementa selección de campos: GET /users?fields=id,name,email
+
+**Problema**: Se necesitan cambios incompatibles
+**Solución**: Crea nueva versión, depreca la anterior con línea de tiempo
+```
+
+## Componiendo Skills
+
+Los agentes se vuelven poderosos cuando múltiples skills trabajan juntos. Considera cómo los skills pueden complementarse entre sí:
+
+<div className="my-6 flex flex-wrap items-center justify-center gap-4 p-6 bg-muted/30 rounded-lg">
+  <div className="px-4 py-2 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-sm font-medium text-blue-700 dark:text-blue-300">
+    Revisión de Código
+  </div>
+  <div className="text-xl">+</div>
+  <div className="px-4 py-2 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg text-sm font-medium text-purple-700 dark:text-purple-300">
+    Auditoría de Seguridad
+  </div>
+  <div className="text-xl">+</div>
+  <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg text-sm font-medium text-green-700 dark:text-green-300">
+    Documentación
+  </div>
+  <div className="text-xl">=</div>
+  <div className="px-4 py-2 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-lg text-sm font-medium text-amber-700 dark:text-amber-300">
+    Agente de Calidad de Código Completo
+  </div>
+</div>
+
+Al componer skills, asegúrate de que no entren en conflicto. Los skills deben ser:
+
+- **Modulares** - Cada skill maneja bien un dominio
+- **Compatibles** - Los skills no deben dar instrucciones contradictorias
+- **Priorizados** - Cuando los skills se superponen, define cuál tiene precedencia
+
+## Compartiendo y Descubriendo Skills
+
+Los skills son más valiosos cuando se comparten. Plataformas como [prompts.chat](https://prompts.chat/skills) te permiten:
+
+- **Descubrir** skills creados por la comunidad para tareas comunes
+- **Descargar** skills directamente a tus proyectos
+- **Compartir** tu propia experiencia como skills reutilizables
+- **Iterar** en skills basándote en uso del mundo real
+
+<Callout type="tip" title="Comienza con Skills de la Comunidad">
+Antes de construir un skill desde cero, verifica si alguien ya resolvió tu problema. Los skills de la comunidad están probados en batalla y a menudo son mejores que empezar de cero.
+</Callout>
+
+## El Ecosistema Agente-Skill
+
+La relación entre agentes y skills crea un ecosistema poderoso:
+
+<div className="my-6 p-6 bg-muted/30 rounded-lg border">
+  <div className="text-center mb-4">
+    <span className="text-sm font-semibold text-muted-foreground">Agente de IA</span>
+  </div>
+  <div className="flex flex-wrap justify-center gap-3 mb-4">
+    <div className="px-4 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
+      <p className="font-medium text-blue-700 dark:text-blue-300 text-sm m-0!">Revisión de Código</p>
+      <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">Skill 1</p>
+    </div>
+    <div className="px-4 py-3 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg text-center">
+      <p className="font-medium text-purple-700 dark:text-purple-300 text-sm m-0!">Diseño de API</p>
+      <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">Skill 2</p>
+    </div>
+    <div className="px-4 py-3 bg-teal-100 dark:bg-teal-900/50 border border-teal-200 dark:border-teal-800 rounded-lg text-center">
+      <p className="font-medium text-teal-700 dark:text-teal-300 text-sm m-0!">Escritura de Tests</p>
+      <p className="text-xs text-teal-600 dark:text-teal-400 m-0!">Skill 3</p>
+    </div>
+  </div>
+  <div className="flex justify-center mb-3">
+    <div className="text-muted-foreground">↓</div>
+  </div>
+  <div className="flex justify-center">
+    <div className="px-6 py-4 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-lg text-center">
+      <p className="font-semibold text-amber-700 dark:text-amber-300 text-sm m-0!">Prompts Centrales</p>
+      <p className="text-xs text-amber-600 dark:text-amber-400 m-0!">Planificación • Herramientas • Recuperación • Memoria</p>
+    </div>
+  </div>
+</div>
+
+El agente proporciona el marco de ejecución—planificación, uso de herramientas y memoria—mientras los skills proporcionan experiencia de dominio. Esta separación significa:
+
+- **Los skills son portátiles** - El mismo skill funciona con diferentes agentes
+- **Los agentes son extensibles** - Añade nuevas capacidades agregando skills
+- **La experiencia es compartible** - Expertos de dominio pueden contribuir skills sin construir agentes completos
+
+## Mejores Prácticas
+
+### Para Construir Skills
+
+1. **Empieza específico, luego generaliza** - Construye un skill para tu caso de uso exacto primero, luego abstrae
+2. **Incluye casos de fallo** - Documenta lo que el skill no puede hacer y cómo manejarlo
+3. **Versiona tus skills** - Rastrea cambios para que los agentes puedan depender de versiones estables
+4. **Prueba con tareas reales** - Valida skills contra trabajo real, no solo teoría
+
+### Para Usar Skills con Agentes
+
+1. **Lee el skill primero** - Entiende lo que hace un skill antes de desplegarlo
+2. **Personaliza con cuidado** - Sobrescribe valores predeterminados del skill solo cuando sea necesario
+3. **Monitorea el rendimiento** - Rastrea qué tan bien funcionan los skills en tu contexto
+4. **Contribuye mejoras** - Cuando mejores un skill, considera compartirlo
+
+<Callout type="info" title="El Futuro es Componible">
+A medida que los agentes de IA se vuelven más capaces, la habilidad de componer, compartir y personalizar skills se convertirá en una competencia central. Los ingenieros de prompts del mañana no solo escribirán prompts—arquitecturarán ecosistemas de skills que hagan a los agentes de IA genuinamente expertos en dominios específicos.
+</Callout>
+
+<Quiz 
+  question="¿Cuál es la diferencia clave entre un prompt simple y un skill?"
+  options={[
+    "Los skills son más largos que los prompts",
+    "Los skills son paquetes reutilizables de múltiples archivos que dan experiencia de dominio a los agentes",
+    "Los skills solo funcionan con modelos de IA específicos",
+    "Los skills no requieren ningún prompt"
+  ]}
+  correctIndex={1}
+  explanation="Los skills son paquetes completos y portátiles que combinan múltiples prompts, documentación de referencia, scripts y configuración. Son bloques de construcción reutilizables que pueden agregarse a cualquier agente para darle capacidades específicas."
+/>
+
+<Quiz 
+  question="¿Qué es el bucle del agente?"
+  options={[
+    "Una técnica de depuración para errores de IA",
+    "Planificar → Ejecutar → Observar → Adaptar, repetido hasta lograr el objetivo",
+    "Una forma de encadenar múltiples prompts juntos",
+    "Un método para entrenar nuevos modelos de IA"
+  ]}
+  correctIndex={1}
+  explanation="Los agentes de IA trabajan en un bucle continuo: planifican cómo abordar una tarea, ejecutan acciones, observan los resultados, y adaptan su enfoque basándose en retroalimentación—repitiendo hasta completar el objetivo."
+/>
+
+<Quiz 
+  question="¿Por qué se describen los skills como 'bloques reutilizables de agentes'?"
+  options={[
+    "Porque solo pueden usarse una vez",
+    "Porque están escritos en un lenguaje de programación por bloques",
+    "Porque cualquier agente puede cargar un skill para ganar esa capacidad instantáneamente",
+    "Porque los skills reemplazan la necesidad de agentes"
+  ]}
+  correctIndex={2}
+  explanation="Los skills son paquetes de experiencia portátiles. Escribe un skill de revisión de código una vez, y cualquier agente de programación puede convertirse en un revisor de código experto cargando ese skill—como bloques LEGO que encajan en cualquier estructura."
+/>

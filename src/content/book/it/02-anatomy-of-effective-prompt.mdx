@@ -1,0 +1,343 @@
+Ogni grande prompt condivide elementi strutturali comuni. Comprendere questi componenti ti permette di costruire prompt sistematicamente invece che per tentativi ed errori.
+
+<Callout type="tip" title="I Blocchi di Costruzione">
+Pensa a questi componenti come mattoncini LEGO. Non ne hai bisogno tutti per ogni prompt, ma sapere cosa è disponibile ti aiuta a costruire esattamente ciò di cui hai bisogno.
+</Callout>
+
+## I Componenti Principali
+
+Un prompt efficace tipicamente include alcuni o tutti questi elementi:
+
+<PromptBreakdown parts={[
+  { label: "Ruolo", text: "Sei un ingegnere software senior" },
+  { label: "Contesto", text: "che lavora su un'applicazione React." },
+  { label: "Compito", text: "Rivedi questo codice per bug" },
+  { label: "Vincoli", text: "e concentrati solo sui problemi di sicurezza." },
+  { label: "Formato", text: "Restituisci i risultati come lista numerata." },
+  { label: "Esempio", text: "Tipo: 1. Rischio SQL injection alla riga 42" }
+]} />
+
+Esaminiamo ogni componente in dettaglio.
+
+## 1. Ruolo / Persona
+
+Impostare un ruolo focalizza le risposte del modello attraverso la lente di una competenza o prospettiva specifica.
+
+<Compare 
+  before={{ label: "Senza Ruolo", content: "Spiega il calcolo quantistico." }}
+  after={{ label: "Con Ruolo", content: "Sei un professore di fisica specializzato nel rendere argomenti complessi accessibili ai principianti. Spiega il calcolo quantistico." }}
+/>
+
+Il ruolo prepara il modello a:
+- Usare vocabolario appropriato
+- Applicare competenze rilevanti
+- Mantenere una prospettiva consistente
+- Considerare il pubblico appropriatamente
+
+### Pattern di Ruolo Efficaci
+
+```
+"Sei un [professione] con [X anni] di esperienza in [specialità]"
+"Agisci come un [ruolo] che è [caratteristica]"
+"Sei un esperto [campo] che aiuta un [tipo di pubblico]"
+```
+
+## 2. Contesto / Background
+
+Il contesto fornisce le informazioni di cui il modello ha bisogno per capire la tua situazione. Ricorda: il modello non sa nulla di te, del tuo progetto o dei tuoi obiettivi a meno che non glielo dici.
+
+<Compare 
+  before={{ label: "Contesto Debole", content: "Correggi questo bug nel mio codice." }}
+  after={{ label: "Contesto Forte", content: "Sto costruendo un'API REST Node.js usando Express.js. L'API gestisce l'autenticazione utente con token JWT. Quando un utente prova ad accedere a una route protetta, riceve un errore 403 anche con un token valido. Ecco il codice rilevante: [codice]" }}
+/>
+
+### Cosa Includere nel Contesto
+
+- **Dettagli del progetto** — Stack tecnologico, architettura, vincoli
+- **Stato attuale** — Cosa hai provato, cosa funziona, cosa no
+- **Obiettivi** — Cosa stai cercando di raggiungere in definitiva
+- **Vincoli** — Limiti di tempo, requisiti tecnici, guide di stile
+
+## 3. Compito / Istruzione
+
+Il compito è il cuore del tuo prompt—ciò che vuoi che il modello faccia. Sii specifico e non ambiguo.
+
+### Lo Spettro della Specificità
+
+<SpecificitySpectrum levels={[
+  { level: "Vago", text: "Aiutami con questo saggio" },
+  { level: "Meglio", text: "Modifica questo saggio" },
+  { level: "Buono", text: "Modifica questo saggio per grammatica e chiarezza" },
+  { level: "Ottimo", text: "Modifica questo saggio per grammatica e chiarezza, mantenendo il tono originale ma riducendo la prolissità del 20%" }
+]} />
+
+### Verbi d'Azione Che Funzionano Bene
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Creazione</span>
+    <span className="text-muted-foreground">Scrivi, Crea, Genera, Componi, Progetta</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Analisi</span>
+    <span className="text-muted-foreground">Analizza, Valuta, Confronta, Esamina, Rivedi</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Trasformazione</span>
+    <span className="text-muted-foreground">Converti, Traduci, Riformatta, Riassumi, Espandi</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Spiegazione</span>
+    <span className="text-muted-foreground">Spiega, Descrivi, Chiarisci, Definisci, Illustra</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Risoluzione Problemi</span>
+    <span className="text-muted-foreground">Risolvi, Debug, Correggi, Ottimizza, Migliora</span>
+  </div>
+</div>
+
+## 4. Vincoli / Regole
+
+I vincoli delimitano l'output del modello. Prevengono problemi comuni e assicurano rilevanza.
+
+### Tipi di Vincoli
+
+**Vincoli di lunghezza:**
+```
+"Mantieni la tua risposta sotto 200 parole"
+"Fornisci esattamente 5 suggerimenti"
+"Scrivi 3-4 paragrafi"
+```
+
+**Vincoli di contenuto:**
+```
+"Non includere esempi di codice"
+"Concentrati solo sugli aspetti tecnici"
+"Evita linguaggio da marketing"
+```
+
+**Vincoli di stile:**
+```
+"Usa un tono formale e accademico"
+"Scrivi come se stessi parlando a un bambino di 10 anni"
+"Sii diretto ed evita linguaggio incerto"
+```
+
+**Vincoli di ambito:**
+```
+"Considera solo opzioni disponibili in Python 3.10+"
+"Limita i suggerimenti a strumenti gratuiti"
+"Concentrati su soluzioni che non richiedono dipendenze aggiuntive"
+```
+
+## 5. Formato di Output
+
+Specificare il formato di output assicura che ricevi risposte in una struttura utilizzabile.
+
+### Formati Comuni
+
+**Liste:**
+```
+"Restituisci come lista puntata"
+"Fornisci una lista numerata di passaggi"
+```
+
+**Dati strutturati:**
+```
+"Restituisci come JSON con chiavi: titolo, descrizione, priorità"
+"Formatta come tabella markdown con colonne: Funzionalità, Pro, Contro"
+```
+
+**Strutture specifiche:**
+```
+"Struttura la tua risposta come:
+ ## Riepilogo
+ ## Punti Chiave
+ ## Raccomandazioni"
+```
+
+### Esempio Output JSON
+
+```
+Analizza questa recensione cliente e restituisci JSON:
+{
+  "sentiment": "positivo" | "negativo" | "neutro",
+  "argomenti": ["array di argomenti principali"],
+  "previsione_valutazione": 1-5,
+  "frasi_chiave": ["frasi notevoli"]
+}
+
+Recensione: "Il prodotto è arrivato velocemente e funziona benissimo, ma 
+le istruzioni erano confuse."
+```
+
+## 6. Esempi (Few-Shot Learning)
+
+Gli esempi sono il modo più potente per mostrare al modello esattamente cosa vuoi.
+
+### Esempio One-Shot
+
+```
+Converti queste frasi al passato.
+
+Esempio:
+Input: "Lei cammina verso il negozio"
+Output: "Lei camminò verso il negozio"
+
+Ora converti:
+Input: "Loro corrono ogni mattina"
+```
+
+### Esempio Few-Shot
+
+```
+Classifica questi ticket di supporto per urgenza.
+
+Esempi:
+"Il mio account è stato hackerato" → Critico
+"Come cambio la password?" → Basso
+"Il pagamento è fallito ma mi è stato addebitato" → Alto
+
+Classifica: "L'app si blocca quando apro le impostazioni"
+```
+
+## Mettere Tutto Insieme
+
+Ecco un prompt completo che usa tutti i componenti:
+
+<TryIt 
+  title="Esempio di Prompt Completo"
+  description="Questo prompt dimostra tutti e sei i componenti che lavorano insieme. Provalo per vedere come i prompt strutturati producono risultati professionali."
+  prompt={`# Ruolo
+Sei un technical writer senior con 10 anni di esperienza nella creazione di documentazione per sviluppatori.
+
+# Contesto
+Sto documentando un'API REST per un servizio di elaborazione pagamenti. Il pubblico sono sviluppatori che integrano la nostra API nelle loro applicazioni. Hanno conoscenze di programmazione intermedie ma potrebbero essere nuovi ai concetti di elaborazione pagamenti.
+
+# Compito
+Scrivi la documentazione per il seguente endpoint API che crea un nuovo payment intent.
+
+# Vincoli
+- Usa un linguaggio chiaro e conciso
+- Includi scenari di errore comuni
+- Non includere dettagli implementativi del nostro backend
+- Assumi che i lettori capiscano le basi di HTTP e JSON
+
+# Formato di Output
+Struttura la documentazione come:
+1. Panoramica Endpoint (2-3 frasi)
+2. Richiesta (metodo, URL, header, body con esempio)
+3. Risposta (esempi di successo e errore)
+4. Esempio di Codice (in JavaScript/Node.js)
+
+# Dettagli Endpoint
+POST /v1/payments/intents
+Body: { "amount": 1000, "currency": "eur", "description": "Ordine #1234" }`}
+/>
+
+## Il Prompt Minimo Efficace
+
+Non ogni prompt ha bisogno di tutti i componenti. Per compiti semplici, un'istruzione chiara può bastare:
+
+```
+Traduci "Ciao, come stai?" in inglese.
+```
+
+Usa componenti aggiuntivi quando:
+- Il compito è complesso o ambiguo
+- Hai bisogno di formattazione specifica
+- I risultati non corrispondono alle aspettative
+- La consistenza tra molteplici query è importante
+
+## Pattern di Prompt Comuni
+
+Questi framework ti danno una semplice checklist da seguire quando scrivi prompt. Clicca su ogni passo per vedere un esempio.
+
+<CRISPEFramework />
+
+<RTFFramework />
+
+## Riepilogo
+
+I prompt efficaci sono costruiti, non scoperti. Comprendendo e applicando questi componenti strutturali, puoi:
+
+- Ottenere risultati migliori al primo tentativo
+- Fare debug di prompt che non funzionano
+- Creare template di prompt riutilizzabili
+- Comunicare le tue intenzioni chiaramente
+
+<Quiz 
+  question="Quale componente ha il maggiore impatto sulla qualità della risposta?"
+  options={[
+    "Sempre il ruolo/persona",
+    "Sempre il formato di output",
+    "Dipende dal compito",
+    "La lunghezza del prompt"
+  ]}
+  correctIndex={2}
+  explanation="Compiti diversi beneficiano di componenti diversi. Una traduzione semplice ha bisogno di struttura minima, mentre un'analisi complessa beneficia di specifiche dettagliate di ruolo, contesto e formato."
+/>
+
+<TryIt 
+  prompt={`Sei un product manager senior con 10 anni di esperienza in prodotti SaaS.
+
+Contesto: Sto costruendo un'app di gestione attività per team remoti. Siamo una piccola startup con risorse ingegneristiche limitate.
+
+Compito: Suggerisci 3 funzionalità che dovremmo prioritizzare per il nostro MVP.
+
+Vincoli:
+- Le funzionalità devono essere implementabili da un team di 2 sviluppatori in 4 settimane
+- Concentrati su ciò che ci differenzia da Trello e Asana
+
+Formato: Per ogni funzionalità, fornisci:
+1. Nome della funzionalità
+2. Descrizione in una frase
+3. Perché è importante per i team remoti`}
+  description="Questo prompt usa tutti e sei i componenti. Provalo e guarda come l'approccio strutturato produce risultati focalizzati e azionabili."
+/>
+
+## Costruisci il Tuo Prompt
+
+Ora tocca a te! Usa questo costruttore di prompt interattivo per creare il tuo prompt usando i componenti che hai imparato:
+
+<PromptBuilder 
+  title="Costruttore di Prompt Interattivo"
+  description="Compila ogni sezione per costruire un prompt completo e ben strutturato"
+/>
+
+<PromptChallenge
+  title="Sfida del Capitolo: Costruisci un Prompt per Code Review"
+  task="Scrivi un prompt che chiede a un'IA di revisionare codice per vulnerabilità di sicurezza. Il tuo prompt dovrebbe essere abbastanza specifico da ottenere feedback azionabile."
+  criteria={[
+    "Include un ruolo o livello di competenza chiaro",
+    "Specifica che tipo di code review (focus sulla sicurezza)",
+    "Definisce il formato di output atteso",
+    "Imposta vincoli o ambito appropriati"
+  ]}
+  hints={[
+    "Pensa a quale competenza dovrebbe avere un code reviewer",
+    "Sii specifico su quali problemi di sicurezza cercare",
+    "Considera di chiedere un formato di risposta strutturato"
+  ]}
+  exampleSolution={`Sei un security engineer senior con competenza in sicurezza delle applicazioni web e vulnerabilità OWASP Top 10.
+
+Compito: Rivedi il seguente codice per vulnerabilità di sicurezza.
+
+Concentrati su:
+- Rischi di SQL injection
+- Vulnerabilità XSS
+- Problemi di autenticazione/autorizzazione
+- Lacune nella validazione input
+
+Formato di output:
+Per ogni problema trovato:
+1. Numero/i di riga
+2. Tipo di vulnerabilità
+3. Livello di rischio (Alto/Medio/Basso)
+4. Fix raccomandato
+
+[CODICE DA REVISIONARE]`}
+  difficulty="intermediate"
+/>
+
+Nel prossimo capitolo, esploreremo i principi fondamentali che guidano le decisioni di costruzione dei prompt.

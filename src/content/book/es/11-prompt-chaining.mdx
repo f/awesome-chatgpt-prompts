@@ -1,0 +1,379 @@
+El encadenamiento de prompts divide tareas complejas en secuencias de prompts más simples, donde la salida de cada paso alimenta al siguiente. Esta técnica mejora dramáticamente la confiabilidad y habilita flujos de trabajo sofisticados que serían imposibles con un solo prompt.
+
+<Callout type="tip" title="Piensa en Líneas de Ensamblaje">
+Así como una línea de ensamblaje de fábrica divide la manufactura en estaciones especializadas, el encadenamiento de prompts divide las tareas de IA en pasos especializados. Cada paso hace una cosa bien, y la salida combinada es mucho mejor que intentar hacer todo a la vez.
+</Callout>
+
+## ¿Por Qué Encadenar Prompts?
+
+Los prompts individuales luchan con tareas complejas porque intentan hacer demasiado a la vez. La IA tiene que simultáneamente entender, analizar, planificar y generar, lo que lleva a errores e inconsistencias.
+
+<div className="my-6 grid md:grid-cols-2 gap-4">
+  <div className="border rounded-lg bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900">
+    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Problemas del Prompt Único</p>
+    <div className="text-sm p-4 pt-2 space-y-1">
+      <p className="m-0!">El razonamiento de múltiples pasos se confunde</p>
+      <p className="m-0!">Diferentes "modos" de pensamiento chocan</p>
+      <p className="m-0!">Las salidas complejas carecen de consistencia</p>
+      <p className="m-0!">Sin oportunidad para control de calidad</p>
+    </div>
+  </div>
+  <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> El Encadenamiento Resuelve Esto</p>
+    <div className="text-sm p-4 pt-2 space-y-1">
+      <p className="m-0!">Cada paso se enfoca en una tarea</p>
+      <p className="m-0!">Prompts especializados para cada modo</p>
+      <p className="m-0!">Validar entre pasos</p>
+      <p className="m-0!">Depurar y mejorar pasos individuales</p>
+    </div>
+  </div>
+</div>
+
+## Patrón Básico de Encadenamiento
+
+La cadena más simple pasa la salida de un prompt directamente al siguiente. Cada paso tiene un propósito claro y enfocado.
+
+<div className="my-6 flex items-center justify-center gap-3 p-6 bg-muted/30 rounded-lg overflow-x-auto">
+  <div className="flex flex-col items-center">
+    <div className="px-4 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
+      <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Prompt 1</p>
+      <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">(Extraer)</p>
+    </div>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">Entrada</p>
+  </div>
+  <div className="text-blue-400 dark:text-blue-500">→</div>
+  <div className="flex flex-col items-center">
+    <div className="px-4 py-3 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg text-center">
+      <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">Prompt 2</p>
+      <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">(Analizar)</p>
+    </div>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">Intermedio</p>
+  </div>
+  <div className="text-purple-400 dark:text-purple-500">→</div>
+  <div className="flex flex-col items-center">
+    <div className="px-4 py-3 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg text-center">
+      <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">Prompt 3</p>
+      <p className="text-xs text-green-600 dark:text-green-400 m-0!">(Generar)</p>
+    </div>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">Salida</p>
+  </div>
+</div>
+
+<Callout type="info" title="El Patrón ETG">
+El patrón de cadena más común es **Extraer → Transformar → Generar**. Primero extrae datos crudos, luego reformatea para tu propósito, después genera la salida final. Este patrón funciona para casi cualquier tarea de contenido.
+</Callout>
+
+## Tipos de Cadenas
+
+Diferentes tareas requieren diferentes arquitecturas de cadenas. Elige el patrón que coincida con tu flujo de trabajo.
+
+<ChainFlowDemo />
+
+### Cadena Secuencial
+
+El patrón más directo: cada paso depende del anterior. Piensa en ello como una carrera de relevos donde cada corredor pasa el testigo al siguiente.
+
+<ChainExample 
+  type="sequential"
+  steps={[
+    { step: "Paso 1: Extraer", prompt: "Extrae todas las fechas, nombres y números de: [texto]", output: '{ fechas: ["2024-01-15", "2024-02-20"], nombres: ["Juan García", "Acme Corp"], numeros: [15000, 42] }' },
+    { step: "Paso 2: Analizar", prompt: "Dados estos datos extraídos: [salida_paso1], identifica relaciones y patrones.", output: '{ patrones: ["Reuniones mensuales programadas"], relaciones: ["Juan García trabaja en Acme Corp"] }' },
+    { step: "Paso 3: Generar", prompt: "Usando estos patrones: [salida_paso2], escribe un informe resumen destacando los hallazgos más significativos.", output: "Informe Resumen: El análisis del documento revela una relación comercial entre Juan García y Acme Corp, con reuniones mensuales programadas..." }
+  ]}
+/>
+
+### Cadena Paralela
+
+Cuando necesitas múltiples perspectivas sobre la misma entrada, ejecuta prompts en paralelo y combina resultados. Esto es más rápido que las cadenas secuenciales y proporciona un análisis más rico.
+
+<ChainExample 
+  type="parallel"
+  steps={[
+    { step: "Entrada", prompt: "Texto de reseña de producto", output: '"¡Me encantan estos auriculares! La batería dura eternamente y la pantalla en el estuche es muy conveniente. Perfectos para mi viaje diario."' },
+    { step: "Rama A: Sentimiento", prompt: "Analiza sentimiento: [texto]", output: '{ sentimiento: "positivo", puntuacion: 0.85 }' },
+    { step: "Rama B: Características", prompt: "Extrae características mencionadas: [texto]", output: '{ caracteristicas: ["batería", "pantalla"] }' },
+    { step: "Rama C: Persona", prompt: "Identifica persona del usuario: [texto]", output: '{ persona: "viajero" }' },
+    { step: "Combinar", prompt: "Combina análisis en informe unificado", output: "Informe Unificado: Reseña positiva de un viajero destacando batería y pantalla." }
+  ]}
+/>
+
+### Cadena Condicional
+
+Enruta entradas a través de diferentes caminos basándose en clasificación. Esto es como un árbol de decisiones donde la IA primero categoriza la entrada, luego maneja cada categoría diferentemente.
+
+<ChainExample 
+  type="conditional"
+  steps={[
+    { step: "Clasificar Entrada", prompt: "Clasifica este mensaje de cliente como: queja, pregunta, feedback, u otro.\n\nMensaje: [texto]", output: '{ clasificacion: "queja", confianza: 0.92 }' },
+    { step: "Ruta: Pregunta (omitida)", prompt: "Identifica qué información se necesita", output: "Omitido - entrada clasificada como queja" },
+    { step: "Ruta: Queja", prompt: "Identifica el problema y severidad: [texto]", output: '{ problema: "envío retrasado", severidad: "media" }' },
+    { step: "Generar Respuesta", prompt: "Genera respuesta empática con resolución: [análisis]", output: "Estimado Cliente, Le pedimos disculpas sinceramente por el retraso. Su pedido ha sido expeditado..." }
+  ]}
+/>
+
+### Cadena Iterativa
+
+Sigue refinando la salida hasta que cumpla estándares de calidad. La IA genera, evalúa y mejora en un bucle hasta estar satisfecha o alcanzar el máximo de iteraciones.
+
+<Callout type="warning" title="Establece Límites de Iteración">
+Siempre establece un número máximo de iteraciones (típicamente 3-5) para prevenir bucles infinitos y controlar costos. La ley de rendimientos decrecientes aplica: la mayoría de la mejora sucede en las primeras 2-3 iteraciones.
+</Callout>
+
+<ChainExample 
+  type="iterative"
+  steps={[
+    { step: "Generar Borrador", prompt: "Escribe una descripción de producto para: [auriculares inalámbricos]", output: "Estos auriculares inalámbricos ofrecen buena calidad de sonido y ajuste cómodo para uso diario." },
+    { step: "Evaluar (Puntuación: 5)", prompt: "Califica esta descripción 1-10 en: claridad, persuasión, precisión.\n\nDescripción: [borrador_actual]", output: '{ puntuacion: 5, mejoras: ["Agregar características específicas", "Incluir beneficios emocionales", "Mencionar duración de batería", "Agregar llamada a la acción"] }' },
+    { step: "Mejorar Borrador", prompt: "Mejora esta descripción basándote en este feedback:\n\nActual: [borrador_actual]\nFeedback: [mejoras]", output: "Experimenta audio cristalino con nuestros auriculares inalámbricos premium. Con 30 horas de batería, cancelación activa de ruido, y un diseño ergonómico que permanece cómodo todo el día. Perfectos para amantes de la música y profesionales por igual. Ordena ahora y transforma tu experiencia auditiva." },
+    { step: "Evaluar (Puntuación: 8)", prompt: "Califica esta descripción 1-10 en: claridad, persuasión, precisión.\n\nDescripción: [borrador_mejorado]", output: '{ puntuacion: 8, mejoras: ["Menor: Podría agregar info de garantía"] }\n\n✓ Puntuación >= 8: SALIR DEL BUCLE' }
+  ]}
+/>
+
+## Patrones Comunes de Cadenas
+
+Estos patrones probados en batalla resuelven problemas comunes. Úsalos como puntos de partida y adapta a tus necesidades.
+
+### Extraer → Transformar → Generar
+
+El caballo de batalla del procesamiento de contenido. Extrae datos, reformatea, luego crea algo nuevo.
+
+<div className="mb-4 p-3 rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800">
+  <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 m-0!">Mejor Para</p>
+  <p className="text-sm text-blue-600 dark:text-blue-400 m-0!">Resumen de documentos, generación de informes, reutilización de contenido, conversión de datos a narrativa</p>
+</div>
+
+<ChainExample 
+  type="sequential"
+  steps={[
+    { step: "Extraer", prompt: "De este documento, extrae:\n- Tema principal\n- Argumentos clave (lista)\n- Evidencia de apoyo (lista)\n- Conclusiones\nDevuelve como JSON.", output: '{ "tema": "Impactos del cambio climático", "argumentos": ["Aumento de temperaturas", "Subida del nivel del mar"], "evidencia": ["Datos de NASA", "Informes del IPCC"], "conclusiones": ["Acción urgente necesaria"] }' },
+    { step: "Transformar", prompt: "Reorganiza esta información para [ejecutivos de negocios]:\n[datos_extraidos]\nEnfócate en: implicaciones económicas\nElimina: jerga técnica", output: '{ "resumen": "Riesgos climáticos para negocios", "puntos_clave": ["Interrupción de cadena de suministro", "Costos de seguros aumentando"], "acciones": ["Evaluar vulnerabilidades", "Planificar adaptaciones"] }' },
+    { step: "Generar", prompt: "Usando esta información reestructurada, escribe un [resumen ejecutivo]:\n[datos_transformados]\nTono: profesional\nLongitud: 200 palabras", output: "Resumen Ejecutivo: El cambio climático presenta riesgos operacionales significativos para nuestro negocio. Las preocupaciones clave incluyen interrupciones en la cadena de suministro por eventos climáticos extremos y aumento de primas de seguros. Recomendamos evaluación inmediata de vulnerabilidades de instalaciones y desarrollo de estrategias de adaptación..." }
+  ]}
+/>
+
+### Analizar → Planificar → Ejecutar
+
+Perfecto para refactorización de código, planificación de proyectos, o cualquier tarea donde necesites entender antes de actuar.
+
+<div className="mb-4 p-3 rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border border-purple-200 dark:border-purple-800">
+  <p className="text-xs font-semibold text-purple-700 dark:text-purple-300 mb-1 m-0!">Mejor Para</p>
+  <p className="text-sm text-purple-600 dark:text-purple-400 m-0!">Refactorización de código, planificación de proyectos, resolución de problemas, toma de decisiones estratégicas, resolución de problemas complejos</p>
+</div>
+
+<ChainExample 
+  type="sequential"
+  steps={[
+    { step: "Analizar", prompt: "Analiza esta estructura de código e identifica:\n- Patrón de arquitectura\n- Componentes principales\n- Dependencias\n- Problemas potenciales\n[código]", output: '{ "patron": "MVC", "componentes": ["UserController", "AuthService", "Database"], "dependencias": ["express", "mongoose"], "problemas": ["Sin validación de entrada", "Secretos hardcodeados"] }' },
+    { step: "Planificar", prompt: "Basándote en este análisis, crea un plan de refactorización:\n[salida_analisis]\nObjetivo: mejorar seguridad\nRestricciones: sin cambios que rompan compatibilidad", output: '{ "pasos": ["1. Agregar middleware de validación de entrada", "2. Mover secretos a variables de entorno", "3. Agregar límite de tasa"], "prioridad": "alta", "tiempo_estimado": "4 horas" }' },
+    { step: "Ejecutar", prompt: "Implementa el paso 1 de este plan:\n[salida_plan]\nMuestra el código refactorizado con explicaciones.", output: "// Middleware de validación agregado\nconst validateInput = (req, res, next) => {\n  const { email, password } = req.body;\n  if (!email || !isValidEmail(email)) {\n    return res.status(400).json({ error: 'Email inválido' });\n  }\n  next();\n};" }
+  ]}
+/>
+
+### Generar → Criticar → Refinar
+
+El bucle de auto-mejora. Genera contenido, haz que la IA lo evalúe críticamente, luego mejora basándote en ese feedback. Esto imita cómo trabajan juntos escritores y editores profesionales.
+
+<div className="mb-4 p-3 rounded-lg bg-green-50/50 dark:bg-green-950/20 border border-green-200 dark:border-green-800">
+  <p className="text-xs font-semibold text-green-700 dark:text-green-300 mb-1 m-0!">Mejor Para</p>
+  <p className="text-sm text-green-600 dark:text-green-400 m-0!">Copy de marketing, escritura creativa, borradores de email, presentaciones, cualquier contenido que se beneficie de revisión</p>
+</div>
+
+<ChainExample 
+  type="iterative"
+  steps={[
+    { step: "Generar", prompt: "Escribe un email de marketing para [app de fitness] dirigido a [profesionales ocupados].", output: "Asunto: ¡Ponte en Forma Rápido!\n\n¡Hola! Nuestra app te ayuda a ejercitarte. Descárgala hoy y comienza tu viaje fitness. ¡Gracias!" },
+    { step: "Criticar", prompt: "Como experto en marketing, critica este email:\n[email_generado]\nEvalúa: línea de asunto, gancho, propuesta de valor, CTA, tono\nCalifica cada uno 1-10.", output: '{ "linea_asunto": 4, "gancho": 3, "propuesta_valor": 2, "cta": 5, "tono": 4, "feedback": "Muy genérico, sin beneficios específicos, urgencia débil" }' },
+    { step: "Refinar", prompt: "Reescribe el email abordando este feedback:\nOriginal: [email_generado]\nCrítica: [salida_critica]\nEnfócate en los elementos con menor puntuación.", output: "Asunto: Entrenamientos de 15 Min para Tu Hora de Almuerzo\n\n¿Agenda apretada? Lo entendemos. Nuestra app entrega entrenamientos respaldados por ciencia diseñados para profesionales que no tienen tiempo que perder. Únete a más de 50,000 ejecutivos que transformaron su salud en solo 15 minutos al día. Comienza tu prueba gratis ahora—tu yo futuro te lo agradecerá." },
+    { step: "Puntuación Final", prompt: "Re-evalúa el email refinado.", output: '{ "linea_asunto": 8, "gancho": 8, "propuesta_valor": 9, "cta": 8, "tono": 9, "mejora": "+23 puntos en total" }' }
+  ]}
+/>
+
+## Implementando Cadenas
+
+Puedes implementar cadenas manualmente para experimentación, o programáticamente para sistemas de producción. Comienza simple y agrega complejidad según se necesite.
+
+### Encadenamiento Manual
+
+El enfoque de copiar y pegar es perfecto para prototipado y experimentación. Ejecuta cada prompt manualmente, examina la salida, y pégala en el siguiente prompt.
+
+<CodeEditor 
+  language="python"
+  filename="manual_chain.py"
+  code={`# Pseudocódigo para encadenamiento manual
+salida_paso1 = call_ai("Extrae entidades de: " + texto_entrada)
+salida_paso2 = call_ai("Analiza relaciones: " + salida_paso1)
+salida_final = call_ai("Genera informe: " + salida_paso2)`}
+/>
+
+### Encadenamiento Programático
+
+Para sistemas de producción, automatiza la cadena con código. Esto habilita manejo de errores, logging e integración con tu aplicación.
+
+<CodeEditor 
+  language="python"
+  filename="chain.py"
+  code={`def cadena_analisis(documento):
+    # Paso 1: Resumir
+    resumen = call_ai(f"""
+        Resume los puntos clave de este documento en 5 viñetas:
+        {documento}
+    """)
+    
+    # Paso 2: Extraer entidades
+    entidades = call_ai(f"""
+        Extrae entidades nombradas (personas, organizaciones, lugares) 
+        de este resumen. Devuelve como JSON.
+        {resumen}
+    """)
+    
+    # Paso 3: Generar insights
+    insights = call_ai(f"""
+        Basándote en este resumen y entidades, genera 3 insights 
+        accionables para un analista de negocios.
+        Resumen: {resumen}
+        Entidades: {entidades}
+    """)
+    
+    return {
+        "resumen": resumen,
+        "entidades": json.loads(entidades),
+        "insights": insights
+    }`}
+/>
+
+### Usando Plantillas de Cadenas
+
+Define cadenas como archivos de configuración para reutilización y modificación fácil. Esto separa la lógica de prompts del código de aplicación.
+
+<CodeEditor 
+  language="yaml"
+  filename="chain_template.yaml"
+  code={`name: "Cadena de Análisis de Documentos"
+steps:
+  - name: "extraer"
+    prompt: |
+      Extrae información clave de este documento:
+      {input}
+      Devuelve JSON con: temas, entidades, fechas, números
+    
+  - name: "analizar"
+    prompt: |
+      Analiza estos datos extraídos buscando patrones:
+      {extraer.output}
+      Identifica: tendencias, anomalías, relaciones
+    
+  - name: "informe"
+    prompt: |
+      Genera un resumen ejecutivo basado en:
+      Datos: {extraer.output}
+      Análisis: {analizar.output}
+      Formato: 3 párrafos, tono de negocios`}
+/>
+
+## Manejo de Errores en Cadenas
+
+Las cadenas pueden fallar en cualquier paso. Incorpora validación, reintentos y alternativas para hacer tus cadenas robustas.
+
+<ChainErrorDemo />
+
+<Callout type="warning" title="Basura Entra, Basura Sale">
+Si un paso produce mala salida, cada paso siguiente se verá afectado. Siempre valida resultados intermedios críticos antes de pasarlos adelante.
+</Callout>
+
+### Validación Entre Pasos
+
+Agrega un paso de validación después de cualquier paso que produzca datos estructurados. Esto captura errores temprano antes de que se propaguen.
+
+<ValidationDemo />
+
+### Cadenas de Respaldo
+
+Cuando tu enfoque principal falla, ten un respaldo más simple listo. Intercambia capacidad por confiabilidad.
+
+<FallbackDemo />
+
+## Optimización de Cadenas
+
+Una vez que tu cadena funciona, optimiza para velocidad, costo y confiabilidad. Estos a menudo tienen compensaciones entre sí.
+
+<div className="my-6 grid md:grid-cols-3 gap-4">
+  <div className="border rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-900 p-4">
+    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 mb-2 m-0!">Reduciendo Latencia</p>
+    <div className="text-sm space-y-1">
+      <p className="m-0!">Paraleliza pasos independientes</p>
+      <p className="m-0!">Cachea resultados intermedios</p>
+      <p className="m-0!">Usa modelos más pequeños para pasos simples</p>
+      <p className="m-0!">Agrupa operaciones similares</p>
+    </div>
+  </div>
+  <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900 p-4">
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 mb-2 m-0!">Reduciendo Costo</p>
+    <div className="text-sm space-y-1">
+      <p className="m-0!">Usa modelos más baratos para clasificación</p>
+      <p className="m-0!">Limita iteraciones en bucles</p>
+      <p className="m-0!">Cortocircuita cuando sea posible</p>
+      <p className="m-0!">Cachea consultas repetidas</p>
+    </div>
+  </div>
+  <div className="border rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-900 p-4">
+    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 mb-2 m-0!">Mejorando Confiabilidad</p>
+    <div className="text-sm space-y-1">
+      <p className="m-0!">Agrega validación entre pasos</p>
+      <p className="m-0!">Incluye lógica de reintentos</p>
+      <p className="m-0!">Registra resultados intermedios</p>
+      <p className="m-0!">Implementa rutas de respaldo</p>
+    </div>
+  </div>
+</div>
+
+## Ejemplo de Cadena del Mundo Real
+
+Repasemos una cadena de producción completa. Este pipeline de contenido transforma una idea cruda en un paquete de artículo pulido.
+
+### Cadena de Pipeline de Contenido
+
+<ContentPipelineDemo />
+
+## Resumen
+
+El encadenamiento de prompts transforma lo que la IA puede lograr al dividir tareas imposibles en pasos alcanzables.
+
+<div className="my-6 grid md:grid-cols-2 gap-4">
+  <div className="border rounded-lg bg-amber-50/50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900 p-4">
+    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 mb-2 m-0!">El Encadenamiento Habilita</p>
+    <div className="text-sm space-y-1">
+      <p className="m-0!">Flujos de trabajo complejos de múltiples pasos</p>
+      <p className="m-0!">Mayor calidad a través de especialización</p>
+      <p className="m-0!">Mejor manejo de errores y validación</p>
+      <p className="m-0!">Componentes de prompts modulares y reutilizables</p>
+    </div>
+  </div>
+  <div className="border rounded-lg bg-cyan-50/50 dark:bg-cyan-950/20 border-cyan-200 dark:border-cyan-900 p-4">
+    <p className="text-sm font-semibold text-cyan-700 dark:text-cyan-400 mb-2 m-0!">Principios Clave</p>
+    <div className="text-sm space-y-1">
+      <p className="m-0!">Divide tareas complejas en pasos simples</p>
+      <p className="m-0!">Diseña interfaces claras entre pasos</p>
+      <p className="m-0!">Valida salidas intermedias</p>
+      <p className="m-0!">Incorpora manejo de errores y respaldos</p>
+      <p className="m-0!">Optimiza para tus restricciones</p>
+    </div>
+  </div>
+</div>
+
+<Callout type="tip" title="Empieza Simple">
+Comienza con una cadena secuencial de 2-3 pasos. Haz que funcione confiablemente antes de agregar complejidad. La mayoría de las tareas no necesitan arquitecturas de cadenas elaboradas.
+</Callout>
+
+<Quiz 
+  question="¿Cuál es la principal ventaja del encadenamiento de prompts sobre un solo prompt complejo?"
+  options={[
+    "Usa menos tokens en total",
+    "Es más rápido de ejecutar",
+    "Cada paso puede especializarse, mejorando la calidad y habilitando manejo de errores",
+    "Requiere menos planificación"
+  ]}
+  correctIndex={2}
+  explanation="El encadenamiento de prompts divide tareas complejas en pasos especializados. Cada paso puede enfocarse en una cosa bien, los resultados intermedios pueden validarse, los errores pueden capturarse y reintentarse, y la calidad general mejora a través de la especialización."
+/>
+
+En el próximo capítulo, exploraremos el prompting multimodal: trabajando con imágenes, audio y otro contenido no textual.

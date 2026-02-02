@@ -1,0 +1,287 @@
+Kontext zu verstehen ist essenziell für den Bau von KI-Anwendungen, die tatsächlich funktionieren. Dieses Kapitel behandelt alles, was du wissen musst, um KI die richtigen Informationen zur richtigen Zeit zu geben.
+
+<Callout type="info" title="Warum Kontext wichtig ist">
+KI-Modelle sind zustandslos. Sie erinnern sich nicht an vergangene Gespräche. Jedes Mal, wenn du eine Nachricht sendest, musst du alles einschließen, was die KI wissen muss. Das nennt man „Context Engineering".
+</Callout>
+
+## Was ist Kontext?
+
+Kontext sind alle Informationen, die du der KI zusammen mit deiner Frage gibst. Denke daran so:
+
+<Compare 
+  before={{ label: "Ohne Kontext", content: "Was ist der Status?" }}
+  after={{ label: "Mit Kontext", content: "Du bist ein Projektmanager-Assistent. Der Benutzer arbeitet an Projekt Alpha, das am Freitag fällig ist. Das letzte Update war: 'Backend fertig, Frontend 80% erledigt.'\n\nBenutzer: Was ist der Status?" }}
+/>
+
+Ohne Kontext hat die KI keine Ahnung, nach welchem „Status" du fragst. Mit Kontext kann sie eine nützliche Antwort geben.
+
+### Das Kontextfenster
+
+Erinnere dich aus früheren Kapiteln: KI hat ein begrenztes „Kontextfenster" – die maximale Textmenge, die sie auf einmal sehen kann. Das beinhaltet:
+
+<InfoGrid items={[
+  { label: "System Prompt", description: "Anweisungen, die das KI-Verhalten definieren", color: "purple" },
+  { label: "Gesprächsverlauf", description: "Vorherige Nachrichten in diesem Chat", color: "blue" },
+  { label: "Abgerufene Informationen", description: "Dokumente, Daten oder Wissen, das für diese Anfrage geholt wurde", color: "green" },
+  { label: "Aktuelle Anfrage", description: "Die tatsächliche Frage des Benutzers", color: "amber" },
+  { label: "KI-Antwort", description: "Die Antwort (zählt auch zum Limit!)", color: "rose" },
+]} />
+
+## KI ist zustandslos
+
+<Callout type="warning" title="Wichtiges Konzept">
+KI erinnert sich an nichts zwischen Gesprächen. Jeder API-Aufruf beginnt frisch. Wenn du willst, dass die KI sich an etwas „erinnert", MUSST DU es jedes Mal in den Kontext einschließen.
+</Callout>
+
+Deshalb senden Chatbots deinen gesamten Gesprächsverlauf mit jeder Nachricht. Die KI erinnert sich nicht – die App sendet einfach alles erneut.
+
+<TryIt compact prompt={`Tu so, als wäre das ein neues Gespräch ohne Verlauf.
+
+Wonach habe ich dich gerade gefragt?`} />
+
+Die KI wird sagen, dass sie es nicht weiß, weil sie wirklich keinen Zugang zu vorherigem Kontext hat.
+
+## RAG: Retrieval-Augmented Generation
+
+RAG ist eine Technik, um KI Zugang zu Wissen zu geben, auf das sie nicht trainiert wurde. Anstatt zu versuchen, alles ins KI-Training zu packen, machst du:
+
+1. **Speichere** deine Dokumente in einer durchsuchbaren Datenbank
+2. **Suche** nach relevanten Dokumenten, wenn ein Benutzer eine Frage stellt
+3. **Hole** die relevantesten Teile ab
+4. **Ergänze** deinen Prompt mit diesen Teilen
+5. **Generiere** eine Antwort mit diesem Kontext
+
+<div className="my-6 p-4 border rounded-lg bg-muted/30">
+  <p className="font-semibold mb-3">Wie RAG funktioniert:</p>
+  <div className="flex flex-col gap-2 text-sm">
+    <div className="flex items-center gap-3">
+      <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">1</span>
+      <span>Benutzer fragt: „Was ist unsere Rückgaberichtlinie?"</span>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">2</span>
+      <span>System durchsucht deine Dokumente nach „Rückgaberichtlinie"</span>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">3</span>
+      <span>Findet relevanten Abschnitt aus deinem Richtlinien-Dokument</span>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">4</span>
+      <span>Sendet an KI: „Basierend auf dieser Richtlinie: [Text], beantworte: Was ist unsere Rückgaberichtlinie?"</span>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center text-green-600 font-bold">5</span>
+      <span>KI generiert genaue Antwort mit deiner tatsächlichen Richtlinie</span>
+    </div>
+  </div>
+</div>
+
+### Warum RAG?
+
+<div className="my-6 grid md:grid-cols-2 gap-4">
+  <div className="p-4 border rounded-lg">
+    <p className="font-semibold text-green-600 dark:text-green-400 mb-2 flex items-center gap-2"><IconCheck className="text-green-600" /> RAG-Vorteile</p>
+    <ul className="text-sm space-y-1 text-muted-foreground">
+      <li>Verwendet deine tatsächlichen, aktuellen Daten</li>
+      <li>Reduziert Halluzinationen</li>
+      <li>Kann Quellen zitieren</li>
+      <li>Einfach zu aktualisieren (einfach Dokumente aktualisieren)</li>
+      <li>Kein teures Fine-Tuning nötig</li>
+    </ul>
+  </div>
+  <div className="p-4 border rounded-lg">
+    <p className="font-semibold text-amber-600 dark:text-amber-400 mb-2 flex items-center gap-2"><IconLightbulb className="text-amber-600" /> Wann RAG verwenden</p>
+    <ul className="text-sm space-y-1 text-muted-foreground">
+      <li>Kundensupport-Bots</li>
+      <li>Dokumentationssuche</li>
+      <li>Interne Wissensdatenbanken</li>
+      <li>Jede domänenspezifische Q&A</li>
+      <li>Wenn Genauigkeit wichtig ist</li>
+    </ul>
+  </div>
+</div>
+
+## Embeddings: Wie Suche funktioniert
+
+Woher weiß RAG, welche Dokumente „relevant" sind? Es verwendet **Embeddings** – eine Methode, um Text in Zahlen zu verwandeln, die Bedeutung erfassen.
+
+### Was sind Embeddings?
+
+Ein Embedding ist eine Liste von Zahlen (ein „Vektor"), die die Bedeutung von Text repräsentiert. Ähnliche Bedeutungen = ähnliche Zahlen.
+
+<EmbeddingsDemo />
+
+### Semantische Suche
+
+Mit Embeddings kannst du nach Bedeutung suchen, nicht nur nach Schlüsselwörtern:
+
+<Compare 
+  before={{ label: "Schlüsselwort-Suche", content: "Anfrage: 'Rückgaberichtlinie'\nFindet: Dokumente, die 'Rückgabe' und 'Richtlinie' enthalten\nVerpasst: 'Wie bekomme ich eine Erstattung'" }}
+  after={{ label: "Semantische Suche", content: "Anfrage: 'Rückgaberichtlinie'\nFindet: Alle verwandten Dokumente inklusive:\n- 'Erstattungsrichtlinien'\n- 'Wie Artikel zurücksenden'\n- 'Geld-zurück-Garantie'" }}
+/>
+
+Deshalb ist RAG so mächtig – es findet relevante Informationen, auch wenn die genauen Wörter nicht übereinstimmen.
+
+## Function Calling / Tool Use
+
+Function Calling lässt KI externe Werkzeuge nutzen – wie das Web durchsuchen, eine Datenbank prüfen oder eine API aufrufen.
+
+<Callout type="tip" title="Auch genannt">
+Verschiedene KI-Anbieter nennen das unterschiedlich: „function calling" (OpenAI), „tool use" (Anthropic/Claude) oder „tools" (allgemeiner Begriff). Sie meinen alle dasselbe.
+</Callout>
+
+### Wie es funktioniert
+
+1. Du sagst der KI, welche Werkzeuge verfügbar sind
+2. KI entscheidet, ob sie ein Werkzeug braucht, um zu antworten
+3. KI gibt eine strukturierte Anfrage für das Werkzeug aus
+4. Dein Code führt das Werkzeug aus und gibt Ergebnisse zurück
+5. KI verwendet die Ergebnisse, um ihre Antwort zu formulieren
+
+<TryIt 
+  title="Function Calling Beispiel"
+  description="Dieser Prompt zeigt, wie KI entscheidet, ein Werkzeug zu verwenden:"
+  prompt={`Du hast Zugang zu diesen Werkzeugen:
+
+1. get_weather(city: string) - Aktuelles Wetter für eine Stadt abrufen
+2. search_web(query: string) - Das Internet durchsuchen
+3. calculate(expression: string) - Mathematische Berechnungen durchführen
+
+Benutzer: Wie ist das Wetter gerade in Tokio?
+
+Denke Schritt für Schritt: Brauchst du ein Werkzeug? Welches? Welche Parameter?`}
+/>
+
+## Zusammenfassung: Lange Gespräche verwalten
+
+Wenn Gespräche länger werden, erreichst du das Kontextfenster-Limit. Da KI zustandslos ist (sie erinnert sich an nichts), können lange Gespräche überlaufen. Die Lösung? **Zusammenfassung**.
+
+### Das Problem
+
+<Compare 
+  before={{ label: "Ohne Zusammenfassung", content: "Nachricht 1 (500 Tokens)\nNachricht 2 (800 Tokens)\nNachricht 3 (600 Tokens)\n... 50 weitere Nachrichten ...\n────────────────────\n= 40.000+ Tokens\n= ÜBER DEM LIMIT!" }}
+  after={{ label: "Mit Zusammenfassung", content: "[Zusammenfassung]: 200 Tokens\nAktuelle Nachrichten: 2.000 Tokens\nAktuelle Anfrage: 100 Tokens\n────────────────────\n= 2.300 Tokens\n= Passt perfekt!" }}
+/>
+
+### Zusammenfassungsstrategien
+
+Verschiedene Ansätze funktionieren für verschiedene Anwendungsfälle. Klicke auf jede Strategie, um zu sehen, wie sie dasselbe Gespräch verarbeitet:
+
+<SummarizationDemo />
+
+### Was in Zusammenfassungen erfasst werden sollte
+
+Eine gute Gesprächszusammenfassung bewahrt, was wichtig ist:
+
+<Checklist 
+  title="Zusammenfassungs-Checkliste"
+  items={[
+    { text: "Getroffene Schlüsselentscheidungen" },
+    { text: "Erwähnte wichtige Fakten" },
+    { text: "Entdeckte Benutzerpräferenzen" },
+    { text: "Aktuelle Aufgabe oder Ziel" },
+    { text: "Offene Fragen" },
+    { text: "Ton und Formalitätsgrad" }
+  ]}
+/>
+
+### Probiere es: Erstelle eine Zusammenfassung
+
+<TryIt 
+  title="Gesprächszusammenfasser"
+  description="Übe das Erstellen einer kontextbewahrenden Zusammenfassung aus diesem Gespräch:"
+  prompt={`Fasse dieses Gespräch für Kontextverwaltung zusammen. Die Zusammenfassung wird das vollständige Gespräch im KI-Speicher ersetzen.
+
+GESPRÄCH:
+Benutzer: Hi, ich lerne Python für Datenanalyse
+Assistent: Willkommen! Python ist großartig für Datenanalyse. Was ist dein aktuelles Erfahrungsniveau?
+Benutzer: Ich kenne grundlegendes Excel. Kompletter Anfänger bei Programmierung.
+Assistent: Perfekter Ausgangspunkt! Lass uns mit Variablen beginnen – sie sind wie Excel-Zellen, die Daten speichern.
+Benutzer: Kannst du Variablen erklären?
+Assistent: Variablen sind Container zum Speichern von Daten. In Python: name = "Alice" oder alter = 25
+Benutzer: Was ist mit Listen? Ich muss mehrere Werte verarbeiten.
+Assistent: Listen sind wie Excel-Spalten! Erstelle eine so: preise = [10, 20, 30]. Greife auf Elemente mit preise[0] zu.
+Benutzer: Kann ich Berechnungen auf Listen durchführen?
+Assistent: Ja! Verwende sum(preise), len(preise) oder max(preise). Für komplexe Analyse werden wir später pandas verwenden.
+Benutzer: Was ist pandas?
+Assistent: Pandas ist eine Bibliothek für Datenanalyse – denke an „Excel auf Steroiden". Es hat DataFrames (wie Tabellen).
+
+ERSTELLE EINE ZUSAMMENFASSUNG, die erfasst:
+1. Ziel und Hintergrund des Benutzers (1 Satz)
+2. Bisher behandelte Themen (1 Satz)  
+3. Lernstil/Präferenzen des Benutzers (1 Satz)
+4. Was als nächstes behandelt werden soll (1 Satz)`}
+/>
+
+### Wann zusammenfassen
+
+<TryIt compact prompt={`Du verwaltest das Kontextfenster eines Gesprächs. Entscheide bei diesen Bedingungen, wann Zusammenfassung ausgelöst werden soll:
+
+KONTEXTFENSTER: 8.000 Tokens max
+AKTUELLE NUTZUNG:
+- System Prompt: 500 Tokens
+- Gesprächsverlauf: 6.200 Tokens  
+- Puffer für Antwort: 1.500 Tokens
+
+REGELN:
+- Zusammenfassen, wenn Verlauf 70% des verfügbaren Platzes überschreitet
+- Die letzten 5 Nachrichten intakt halten
+- Alle Benutzerpräferenzen und Entscheidungen bewahren
+
+Solltest du jetzt zusammenfassen? Wenn ja, welche Nachrichten sollten zusammengefasst vs. intakt gehalten werden?`} />
+
+## MCP: Model Context Protocol
+
+MCP (Model Context Protocol) ist ein Standard, um KI mit externen Daten und Werkzeugen zu verbinden. Anstatt benutzerdefinierte Integrationen für jeden KI-Anbieter zu bauen, bietet MCP eine universelle Schnittstelle.
+
+### Warum MCP?
+
+<InfoGrid columns={2} items={[
+  { label: "Ohne MCP", description: "Separate Integrationen für ChatGPT, Claude, Gemini bauen... Mehrere Codebases pflegen. Brechen, wenn APIs sich ändern.", color: "red" },
+  { label: "Mit MCP", description: "Einmal bauen, funktioniert überall. Standardprotokoll. KI kann deine Werkzeuge automatisch entdecken und verwenden.", color: "green" },
+]} />
+
+### MCP bietet
+
+- **Ressourcen**: Daten, die die KI lesen kann (Dateien, Datenbankeinträge, API-Antworten)
+- **Werkzeuge**: Aktionen, die die KI ausführen kann (suchen, erstellen, aktualisieren, löschen)
+- **Prompts**: Vorgefertigte Prompt-Vorlagen
+
+<Callout type="info" title="prompts.chat verwendet MCP">
+Diese Plattform hat einen MCP-Server! Du kannst ihn mit Claude Desktop oder anderen MCP-kompatiblen Clients verbinden, um Prompts direkt von deinem KI-Assistenten zu suchen und zu verwenden.
+</Callout>
+
+## Kontext aufbauen: Das vollständige Bild
+
+<ContextPlayground />
+
+## Best Practices
+
+<Checklist 
+  title="Context Engineering Checkliste"
+  items={[
+    { text: "System Prompts prägnant aber vollständig halten" },
+    { text: "Nur relevanten Kontext einschließen (nicht alles)" },
+    { text: "Lange Gespräche zusammenfassen" },
+    { text: "RAG für domänenspezifisches Wissen verwenden" },
+    { text: "KI Werkzeuge für Echtzeit-Daten geben" },
+    { text: "Token-Nutzung überwachen, um in Limits zu bleiben" },
+    { text: "Mit Grenzfällen testen (sehr lange Eingaben, etc.)" }
+  ]}
+/>
+
+## Zusammenfassung
+
+Context Engineering dreht sich darum, KI die richtigen Informationen zu geben:
+
+- **KI ist zustandslos** – schließe alles ein, was sie jedes Mal braucht
+- **RAG** holt relevante Dokumente ab, um Prompts zu ergänzen
+- **Embeddings** ermöglichen semantische Suche (Bedeutung, nicht nur Schlüsselwörter)
+- **Function Calling** lässt KI externe Werkzeuge verwenden
+- **Zusammenfassung** verwaltet lange Gespräche
+- **MCP** standardisiert, wie KI sich mit Daten und Werkzeugen verbindet
+
+<Callout type="tip" title="Merke">
+Die Qualität der KI-Ausgabe hängt von der Qualität des Kontexts ab, den du bereitstellst. Besserer Kontext = bessere Antworten.
+</Callout>

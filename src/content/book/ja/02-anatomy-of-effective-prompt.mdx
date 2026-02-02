@@ -1,0 +1,343 @@
+Every great prompt shares common structural elements. Understanding these components allows you to construct prompts systematically rather than through trial and error.
+
+<Callout type="tip" title="The Building Blocks">
+Think of these components like LEGO bricks. You don't need all of them for every prompt, but knowing what's available helps you build exactly what you need.
+</Callout>
+
+## The Core Components
+
+An effective prompt typically includes some or all of these elements:
+
+<PromptBreakdown parts={[
+  { label: "Role", text: "You are a senior software engineer" },
+  { label: "Context", text: "working on a React application." },
+  { label: "Task", text: "Review this code for bugs" },
+  { label: "Constraints", text: "and focus only on security issues." },
+  { label: "Format", text: "Return findings as a numbered list." },
+  { label: "Example", text: "Like: 1. SQL injection risk on line 42" }
+]} />
+
+Let's examine each component in detail.
+
+## 1. Role / Persona
+
+Setting a role focuses the model's responses through the lens of a specific expertise or perspective.
+
+<Compare 
+  before={{ label: "Without Role", content: "Explain quantum computing." }}
+  after={{ label: "With Role", content: "You are a physics professor who specializes in making complex topics accessible to beginners. Explain quantum computing." }}
+/>
+
+The role primes the model to:
+- Use appropriate vocabulary
+- Apply relevant expertise
+- Maintain a consistent perspective
+- Consider the audience appropriately
+
+### Effective Role Patterns
+
+```
+"You are a [profession] with [X years] of experience in [specialty]"
+"Act as a [role] who is [characteristic]"
+"You are an expert [field] helping a [audience type]"
+```
+
+## 2. Context / Background
+
+Context provides the information the model needs to understand your situation. Remember: the model knows nothing about you, your project, or your goals unless you tell it.
+
+<Compare 
+  before={{ label: "Weak Context", content: "Fix this bug in my code." }}
+  after={{ label: "Strong Context", content: "I'm building a Node.js REST API using Express.js. The API handles user authentication with JWT tokens. When a user tries to access a protected route, they're getting a 403 error even with a valid token. Here's the relevant code: [code]" }}
+/>
+
+### What to Include in Context
+
+- **Project details** — Technology stack, architecture, constraints
+- **Current state** — What you've tried, what's working, what isn't
+- **Goals** — What you're ultimately trying to achieve
+- **Constraints** — Time limits, technical requirements, style guides
+
+## 3. Task / Instruction
+
+The task is the heart of your prompt—what you want the model to do. Be specific and unambiguous.
+
+### The Specificity Spectrum
+
+<SpecificitySpectrum levels={[
+  { level: "Vague", text: "Help me with this essay" },
+  { level: "Better", text: "Edit this essay" },
+  { level: "Good", text: "Edit this essay for grammar and clarity" },
+  { level: "Best", text: "Edit this essay for grammar and clarity, maintaining the original tone but reducing wordiness by 20%" }
+]} />
+
+### Action Verbs That Work Well
+
+<div className="my-4 grid gap-2">
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Creation</span>
+    <span className="text-muted-foreground">Write, Create, Generate, Compose, Design</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Analysis</span>
+    <span className="text-muted-foreground">Analyze, Evaluate, Compare, Assess, Review</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Transformation</span>
+    <span className="text-muted-foreground">Convert, Translate, Reformat, Summarize, Expand</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Explanation</span>
+    <span className="text-muted-foreground">Explain, Describe, Clarify, Define, Illustrate</span>
+  </div>
+  <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
+    <span className="font-semibold min-w-32">Problem-solving</span>
+    <span className="text-muted-foreground">Solve, Debug, Fix, Optimize, Improve</span>
+  </div>
+</div>
+
+## 4. Constraints / Rules
+
+Constraints bound the model's output. They prevent common issues and ensure relevance.
+
+### Types of Constraints
+
+**Length constraints:**
+```
+"Keep your response under 200 words"
+"Provide exactly 5 suggestions"
+"Write 3-4 paragraphs"
+```
+
+**Content constraints:**
+```
+"Do not include any code examples"
+"Focus only on the technical aspects"
+"Avoid marketing language"
+```
+
+**Style constraints:**
+```
+"Use a formal, academic tone"
+"Write as if speaking to a 10-year-old"
+"Be direct and avoid hedging language"
+```
+
+**Scope constraints:**
+```
+"Only consider options available in Python 3.10+"
+"Limit suggestions to free tools"
+"Focus on solutions that don't require additional dependencies"
+```
+
+## 5. Output Format
+
+Specifying the output format ensures you get responses in a usable structure.
+
+### Common Formats
+
+**Lists:**
+```
+"Return as a bulleted list"
+"Provide a numbered list of steps"
+```
+
+**Structured data:**
+```
+"Return as JSON with keys: title, description, priority"
+"Format as a markdown table with columns: Feature, Pros, Cons"
+```
+
+**Specific structures:**
+```
+"Structure your response as:
+ ## Summary
+ ## Key Points
+ ## Recommendations"
+```
+
+### JSON Output Example
+
+```
+Analyze this customer review and return JSON:
+{
+  "sentiment": "positive" | "negative" | "neutral",
+  "topics": ["array of main topics"],
+  "rating_prediction": 1-5,
+  "key_phrases": ["notable phrases"]
+}
+
+Review: "The product arrived quickly and works great, but 
+the instructions were confusing."
+```
+
+## 6. Examples (Few-Shot Learning)
+
+Examples are the most powerful way to show the model exactly what you want.
+
+### One-Shot Example
+
+```
+Convert these sentences to past tense.
+
+Example:
+Input: "She walks to the store"
+Output: "She walked to the store"
+
+Now convert:
+Input: "They run every morning"
+```
+
+### Few-Shot Example
+
+```
+Classify these support tickets by urgency.
+
+Examples:
+"My account was hacked" → Critical
+"How do I change my password?" → Low
+"Payment failed but I was charged" → High
+
+Classify: "The app crashes when I open settings"
+```
+
+## Putting It All Together
+
+Here's a complete prompt using all components:
+
+<TryIt 
+  title="Complete Prompt Example"
+  description="This prompt demonstrates all six components working together. Try it to see how structured prompts produce professional results."
+  prompt={`# Role
+You are a senior technical writer with 10 years of experience creating developer documentation.
+
+# Context
+I'm documenting a REST API for a payment processing service. The audience is developers integrating our API into their applications. They have intermediate programming knowledge but may be new to payment processing concepts.
+
+# Task
+Write documentation for the following API endpoint that creates a new payment intent.
+
+# Constraints
+- Use clear, concise language
+- Include common error scenarios
+- Do not include implementation details about our backend
+- Assume readers understand HTTP and JSON basics
+
+# Output Format
+Structure the documentation as:
+1. Endpoint Overview (2-3 sentences)
+2. Request (method, URL, headers, body with example)
+3. Response (success and error examples)
+4. Code Example (in JavaScript/Node.js)
+
+# Endpoint Details
+POST /v1/payments/intents
+Body: { "amount": 1000, "currency": "usd", "description": "Order #1234" }`}
+/>
+
+## The Minimal Effective Prompt
+
+Not every prompt needs all components. For simple tasks, a clear instruction may suffice:
+
+```
+Translate "Hello, how are you?" to Spanish.
+```
+
+Use additional components when:
+- The task is complex or ambiguous
+- You need specific formatting
+- Results aren't matching expectations
+- Consistency across multiple queries matters
+
+## Common Prompt Patterns
+
+These frameworks give you a simple checklist to follow when writing prompts. Click on each step to see an example.
+
+<CRISPEFramework />
+
+<RTFFramework />
+
+## Summary
+
+Effective prompts are constructed, not discovered. By understanding and applying these structural components, you can:
+
+- Get better results on the first try
+- Debug prompts that aren't working
+- Create reusable prompt templates
+- Communicate your intentions clearly
+
+<Quiz 
+  question="Which component has the biggest impact on response quality?"
+  options={[
+    "Always the role/persona",
+    "Always the output format",
+    "It depends on the task",
+    "The length of the prompt"
+  ]}
+  correctIndex={2}
+  explanation="Different tasks benefit from different components. A simple translation needs minimal structure, while a complex analysis benefits from detailed role, context, and format specifications."
+/>
+
+<TryIt 
+  prompt={`You are a senior product manager with 10 years of experience in SaaS products.
+
+Context: I'm building a task management app for remote teams. We're a small startup with limited engineering resources.
+
+Task: Suggest 3 features we should prioritize for our MVP.
+
+Constraints:
+- Features must be implementable by a team of 2 developers in 4 weeks
+- Focus on what differentiates us from Trello and Asana
+
+Format: For each feature, provide:
+1. Feature name
+2. One-sentence description  
+3. Why it matters for remote teams`}
+  description="This prompt uses all six components. Try it and see how the structured approach produces focused, actionable results."
+/>
+
+## Build Your Own Prompt
+
+Now it's your turn! Use this interactive prompt builder to construct your own prompt using the components you've learned:
+
+<PromptBuilder 
+  title="Interactive Prompt Builder"
+  description="Fill in each section to build a complete, well-structured prompt"
+/>
+
+<PromptChallenge
+  title="Chapter Challenge: Build a Code Review Prompt"
+  task="Write a prompt that asks an AI to review code for security vulnerabilities. Your prompt should be specific enough to get actionable feedback."
+  criteria={[
+    "Includes a clear role or expertise level",
+    "Specifies what type of code review (security focus)",
+    "Defines the expected output format",
+    "Sets appropriate constraints or scope"
+  ]}
+  hints={[
+    "Think about what expertise a code reviewer should have",
+    "Be specific about what security issues to look for",
+    "Consider asking for a structured response format"
+  ]}
+  exampleSolution={`You are a senior security engineer with expertise in web application security and OWASP Top 10 vulnerabilities.
+
+Task: Review the following code for security vulnerabilities.
+
+Focus on:
+- SQL injection risks
+- XSS vulnerabilities  
+- Authentication/authorization issues
+- Input validation gaps
+
+Output format:
+For each issue found:
+1. Line number(s)
+2. Vulnerability type
+3. Risk level (High/Medium/Low)
+4. Recommended fix
+
+[CODE TO REVIEW]`}
+  difficulty="intermediate"
+/>
+
+In the next chapter, we'll explore the core principles that guide prompt construction decisions.

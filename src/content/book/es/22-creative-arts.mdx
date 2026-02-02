@@ -1,0 +1,327 @@
+La IA es un poderoso colaborador creativo. Este capítulo cubre técnicas de prompting para artes visuales, música, diseño de juegos y otros dominios creativos.
+
+<Callout type="info" title="IA como Compañera Creativa">
+La IA expande tus posibilidades creativas—úsala para explorar variaciones, superar bloqueos y generar opciones. La visión creativa y las decisiones finales siguen siendo tuyas.
+</Callout>
+
+## Arte Visual y Diseño
+
+### Qué Hacer y Qué No: Prompts de Imagen
+
+<Compare 
+  before={{ label: "❌ Prompt vago", content: "Un mago en una biblioteca" }}
+  after={{ label: "✓ Descripción rica", content: "Un sabio mago anciano leyendo un tomo antiguo, sentado en una biblioteca de torre al atardecer, estilo de arte fantástico, iluminación dorada cálida, estado de ánimo contemplativo, altamente detallado, 4K, por Greg Rutkowski" }}
+/>
+
+### Elaboración de Prompts de Imagen
+
+Al trabajar con modelos de generación de imágenes (DALL-E, Midjourney, Stable Diffusion):
+
+<TryIt compact prompt={`Crea un prompt de imagen para [concepto].
+
+Estructura:
+[Sujeto] + [Acción/Pose] + [Escenario/Fondo] + [Estilo] + 
+[Iluminación] + [Estado de ánimo] + [Especificaciones técnicas]
+
+Ejemplo:
+"Un sabio mago anciano leyendo un tomo antiguo, sentado en una 
+biblioteca de torre al atardecer, estilo de arte fantástico, 
+iluminación dorada cálida, estado de ánimo contemplativo, 
+altamente detallado, 4K"`} />
+
+### Dirección de Arte
+
+<TryIt compact prompt={`Describe obra de arte para \${project:portada de libro de fantasía}.
+
+Incluir:
+1. **Composición** - arreglo de elementos
+2. **Paleta de colores** - colores específicos y sus relaciones
+3. **Referencia de estilo** - artistas/obras/movimientos similares
+4. **Punto focal** - hacia dónde debe dirigirse la mirada
+5. **Atmósfera/Ambiente** - cualidad emocional
+6. **Enfoque técnico** - medio, técnica
+
+Propósito: \${purpose:ilustración para portada de libro}`} />
+
+### Crítica de Diseño
+
+<TryIt compact prompt={`Critica este diseño desde una perspectiva profesional.
+
+Diseño: \${design:una landing page con sección hero, grid de características y testimonios}
+Contexto: \${context:producto SaaS para gestión de proyectos}
+
+Evalúa:
+1. **Jerarquía visual** - ¿Es clara la importancia?
+2. **Balance** - ¿Es visualmente estable?
+3. **Contraste** - ¿Los elementos destacan apropiadamente?
+4. **Alineación** - ¿Está organizado?
+5. **Repetición** - ¿Hay consistencia?
+6. **Proximidad** - ¿Están agrupados los elementos relacionados?
+
+Proporciona:
+- Fortalezas específicas
+- Áreas de mejora
+- Sugerencias accionables`} />
+
+## Escritura Creativa
+
+<Callout type="tip" title="Principio de Restricción Creativa">
+**Las restricciones alimentan la creatividad.** Un prompt como "escribe cualquier cosa" produce resultados genéricos. Restricciones específicas como género, tono y estructura fuerzan soluciones inesperadas e interesantes.
+</Callout>
+
+### Construcción de Mundos
+
+<TryIt compact prompt={`Ayúdame a construir un mundo para \${project:una novela de fantasía}.
+
+Género: \${genre:fantasía oscura}
+Alcance: \${scope:un reino}
+
+Desarrolla:
+1. **Geografía** - ambiente físico
+2. **Historia** - eventos clave que formaron este mundo
+3. **Cultura** - costumbres, valores, vida diaria
+4. **Estructuras de poder** - quién gobierna, cómo
+5. **Economía** - cómo sobrevive la gente
+6. **Conflicto** - fuentes de tensión
+7. **Elemento único** - qué hace especial a este mundo
+
+Comienza con trazos amplios, luego detalla un aspecto profundamente.`} />
+
+### Desarrollo de Trama
+
+<TryIt compact prompt={`Ayúdame a desarrollar una trama para \${storyConcept:un robo que sale mal}.
+
+Género: \${genre:thriller}
+Tono: \${tone:oscuro con momentos de humor negro}
+Longitud: \${length:novela}
+
+Usando estructura de \${structure:tres actos}:
+
+1. **Configuración** - mundo, personaje, vida normal
+2. **Incidente incitador** - qué interrumpe la normalidad
+3. **Acción ascendente** - desafíos escalando
+4. **Punto medio** - cambio o revelación mayor
+5. **Crisis** - momento más oscuro
+6. **Clímax** - confrontación
+7. **Resolución** - nueva normalidad
+
+Para cada punto, sugiere escenas específicas.`} />
+
+### Escritura de Diálogo
+
+<TryIt compact prompt={`Escribe diálogo entre \${characters:dos hermanos} sobre \${topic:el regreso de su padre distanciado}.
+
+Personaje A: \${characterA:hermana mayor, protectora, pragmática, quiere seguir adelante}
+Personaje B: \${characterB:hermano menor, esperanzado, emocional, quiere reconectarse}
+Relación: \${relationship:cercana pero con diferentes estilos de afrontamiento}
+Subtexto: \${subtext:resentimiento no expresado sobre quién cargó más peso}
+
+Directrices:
+- Cada personaje tiene voz distintiva
+- El diálogo revela carácter, no solo información
+- Incluye beats (acciones/reacciones)
+- Construye tensión o desarrolla la relación
+- Muestra, no cuentes emociones`} />
+
+## Música y Audio
+
+### Estructura de Canción
+
+<TryIt compact prompt={`Ayúdame a estructurar una canción.
+
+Género: \${genre:folk indie}
+Estado de ánimo: \${mood:nostalgia agridulce}
+Tempo: \${tempo:moderado, alrededor de 90 BPM}
+Tema/Mensaje: \${theme:mirando atrás a un pueblo natal que has superado}
+
+Proporciona:
+1. **Estructura** - arreglo verso/coro/puente
+2. **Verso 1** - concepto lírico, 4-8 líneas
+3. **Coro** - concepto del gancho, 4 líneas
+4. **Verso 2** - desarrollo, 4-8 líneas
+5. **Puente** - contraste/cambio, 4 líneas
+6. **Sugerencia de progresión de acordes**
+7. **Notas de dirección melódica**`} />
+
+### Descripción de Diseño de Sonido
+
+<TryIt compact prompt={`Describe un diseño de sonido para \${scene:un personaje entrando a una estación espacial abandonada}.
+
+Contexto: \${context:el protagonista descubre que la estación ha estado vacía por décadas}
+Emoción a evocar: \${emotion:asombro inquietante mezclado con temor}
+Medio: \${medium:videojuego}
+
+Capa por capa:
+1. **Fundación** - ambiente/fondo
+2. **Plano medio** - sonidos ambientales
+3. **Primer plano** - sonidos focales
+4. **Acentos** - sonidos de puntuación
+5. **Música** - sugerencias de banda sonora
+
+Describe sonidos en términos evocativos, no solo nombres.`} />
+
+## Diseño de Juegos
+
+### Diseño de Mecánica de Juego
+
+<TryIt compact prompt={`Diseña una mecánica de juego para \${gameType:un juego de plataformas y puzzles}.
+
+Bucle central: \${coreLoop:manipular la gravedad para resolver puzzles espaciales}
+Motivación del jugador: \${motivation:maestría y descubrimiento}
+Habilidad involucrada: \${skill:razonamiento espacial y timing}
+
+Describe:
+1. **La mecánica** - cómo funciona
+2. **Input del jugador** - qué controlan
+3. **Retroalimentación** - cómo saben el resultado
+4. **Progresión** - cómo evoluciona/profundiza
+5. **Consideraciones de balance**
+6. **Casos límite** - escenarios inusuales`} />
+
+### Diseño de Niveles
+
+<TryIt compact prompt={`Diseña un nivel para \${gameType:un juego de acción y sigilo}.
+
+Escenario: \${setting:sede corporativa de noche}
+Objetivos: \${objectives:infiltrar la sala de servidores y extraer datos}
+Dificultad: \${difficulty:mitad del juego, jugador tiene habilidades básicas}
+
+Incluir:
+1. **Vista general del diseño** - descripción espacial
+2. **Gráfico de ritmo** - tensión a lo largo del tiempo
+3. **Desafíos** - obstáculos y cómo superarlos
+4. **Recompensas** - qué gana el jugador
+5. **Secretos** - descubrimientos opcionales
+6. **Momentos de enseñanza** - introducción de habilidades
+7. **Narrativa ambiental** - narrativa a través del diseño`} />
+
+### Diseño de Personaje/Enemigo
+
+<TryIt compact prompt={`Diseña un \${entityType:jefe enemigo} para \${game:un RPG de acción de fantasía oscura}.
+
+Rol: \${role:jefe de mitad de juego}
+Contexto: \${context:custodia un templo del bosque corrompido}
+
+Define:
+1. **Concepto visual** - descripción de apariencia
+2. **Habilidades** - qué pueden hacer
+3. **Patrones de comportamiento** - cómo actúan
+4. **Debilidades** - vulnerabilidades
+5. **Personalidad** - si es relevante
+6. **Trasfondo/Historia** - integración al mundo
+7. **Estrategia del jugador** - cómo interactuar/derrotar`} />
+
+## Lluvia de Ideas e Ideación
+
+### Lluvia de Ideas Creativa
+
+<TryIt compact prompt={`Genera ideas para \${project:un juego móvil sobre mindfulness}.
+
+Restricciones:
+- \${constraint1:debe ser jugable en sesiones de 2 minutos}
+- \${constraint2:sin violencia ni competencia}
+- \${constraint3:temas de naturaleza}
+
+Genera:
+1. **10 ideas convencionales** - sólidas, esperadas
+2. **5 ideas inusuales** - ángulos inesperados
+3. **3 ideas salvajes** - que empujan límites
+4. **1 combinación** - fusiona mejores elementos
+
+Para cada una, descripción de una oración + por qué funciona.
+No te autocensures—cantidad sobre calidad primero.`} />
+
+### Restricciones Creativas
+
+<TryIt compact prompt={`Dame restricciones creativas para \${projectType:escribir un cuento corto}.
+
+Quiero restricciones que:
+- Fuercen elecciones inesperadas
+- Eliminen soluciones obvias
+- Creen limitaciones productivas
+
+Formato:
+1. Restricción - Por qué ayuda a la creatividad
+2. ...
+
+Luego muestra un ejemplo de cómo aplicar estas restricciones 
+transforma un concepto genérico en algo interesante.`} />
+
+### Exploración de Estilos
+
+<TryIt compact prompt={`Explora diferentes estilos para \${concept:un logo de cafetería}.
+
+Muestra cómo se manifestaría este concepto en:
+1. **Minimalista** - reducido a la esencia
+2. **Maximalista** - abundante y detallado
+3. **Retro 1950s** - específico de la época
+4. **Futurista** - con visión de futuro
+5. **Folk/Tradicional** - raíces culturales
+6. **Abstracto** - no representacional
+7. **Surrealista** - lógica onírica
+
+Para cada uno, describe características clave y ejemplo.`} />
+
+## Plantillas de Prompts de prompts.chat
+
+### Actúa como Director Creativo
+
+<TryIt compact prompt={`Quiero que actúes como un director creativo. Describiré proyectos creativos y desarrollarás visiones creativas, guiarás decisiones estéticas, y asegurarás coherencia conceptual. Basate en historia del arte, principios de diseño, y tendencias culturales. Ayúdame a tomar decisiones creativas audaces con justificación clara.`} />
+
+### Actúa como Constructor de Mundos
+
+<TryIt compact prompt={`Quiero que actúes como un constructor de mundos. Ayúdame a crear mundos ficticios ricos y consistentes con historias, culturas y sistemas detallados. Haz preguntas profundas para enriquecer el mundo. Señala inconsistencias y sugiere soluciones. Haz que el mundo se sienta habitado y creíble.`} />
+
+### Actúa como Dungeon Master
+
+<TryIt compact prompt={`Quiero que actúes como un Dungeon Master para un RPG de mesa. Crea escenarios atractivos, describe escenarios vívidos, interpreta NPCs con personalidades distintivas, y responde dinámicamente a las elecciones de los jugadores. Balancea desafío con diversión, y mantén la narrativa cautivadora.`} />
+
+## Consejos de Colaboración Creativa
+
+### Construyendo sobre Ideas
+
+<TryIt compact prompt={`Tengo esta idea creativa: \${idea:una novela de misterio ambientada en una estación espacial donde la IA es el detective}
+
+Ayúdame a desarrollarla:
+1. Qué está funcionando bien
+2. Preguntas para explorar
+3. Direcciones inesperadas
+4. Desafíos potenciales
+5. Primeros tres pasos de desarrollo
+
+No reemplaces mi visión—mejórala.`} />
+
+### Retroalimentación Creativa
+
+<TryIt compact prompt={`Dame retroalimentación sobre este trabajo creativo:
+
+\${work:pega tu trabajo creativo aquí}
+
+Como un \${perspective:colega creador}:
+1. Qué resuena más fuertemente
+2. Qué se siente subdesarrollado
+3. Qué es confuso o poco claro
+4. Una sugerencia audaz
+5. Qué haría esto inolvidable
+
+Sé honesto pero constructivo.`} />
+
+## Resumen
+
+<Callout type="tip" title="Técnicas Clave">
+Proporciona suficiente estructura para guiar sin restringir, abraza la especificidad (vago = genérico), incluye referencias e inspiraciones, solicita variaciones y alternativas, y mantén tu visión creativa mientras exploras posibilidades.
+</Callout>
+
+<Quiz 
+  question="¿Por qué las restricciones específicas a menudo producen mejores resultados creativos que los prompts abiertos?"
+  options={[
+    "La IA solo puede seguir instrucciones estrictas",
+    "Las restricciones fuerzan soluciones inesperadas y eliminan opciones obvias",
+    "Los prompts abiertos son muy difíciles para la IA",
+    "Las restricciones hacen la salida más corta"
+  ]}
+  correctIndex={1}
+  explanation="Paradójicamente, las limitaciones estimulan la creatividad. Cuando se eliminan las soluciones obvias, te ves forzado a explorar direcciones inesperadas. 'Escribe una historia' produce clichés; 'Escribe un misterio en un submarino, contado hacia atrás, en menos de 500 palabras' produce algo único."
+/>
+
+La IA es una colaboradora, no un reemplazo de la visión creativa. Úsala para explorar, generar opciones y superar bloqueos—pero las decisiones creativas siguen siendo tuyas.
