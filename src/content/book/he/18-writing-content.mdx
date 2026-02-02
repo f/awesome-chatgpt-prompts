@@ -1,393 +1,393 @@
-AI excels at writing tasks when properly prompted. This chapter covers techniques for various content creation scenarios.
+AI מצטיין במשימות כתיבה כאשר מנחים אותו כראוי. פרק זה מכסה טכניקות לתרחישי יצירת תוכן שונים.
 
-<Callout type="info" title="AI as Writing Partner">
-AI works best as a collaborative writing tool—use it to generate drafts, then refine with your expertise and voice.
+<Callout type="info" title="AI כשותף לכתיבה">
+AI עובד הכי טוב ככלי כתיבה שיתופי—השתמשו בו ליצירת טיוטות, ואז שפרו עם המומחיות והקול הייחודי שלכם.
 </Callout>
 
-## Blog Posts and Articles
+## פוסטים בבלוג ומאמרים
 
-### Do's and Don'ts: Writing Prompts
+### מה לעשות ומה לא: הנחיות לכתיבה
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Write a blog post about productivity." }}
-  after={{ label: "✓ Specific brief", content: "Write an 800-word blog post about productivity for remote workers.\n\nAudience: Tech professionals working from home\nTone: Conversational but actionable\nInclude: 3 specific techniques with examples\nKeyword: 'remote productivity tips'" }}
+  before={{ label: "❌ בקשה מעורפלת", content: "כתוב פוסט בבלוג על פרודוקטיביות." }}
+  after={{ label: "✓ תקציר מפורט", content: "כתוב פוסט בבלוג באורך 800 מילים על פרודוקטיביות לעובדים מרחוק.\n\nקהל יעד: אנשי מקצוע בתחום הטכנולוגיה שעובדים מהבית\nטון: שיחתי אך מעשי\nכלול: 3 טכניקות ספציפיות עם דוגמאות\nמילת מפתח: 'טיפים לפרודוקטיביות בעבודה מרחוק'" }}
 />
 
-### Blog Post Framework
+### מסגרת לפוסט בבלוג
 
 <TryIt 
-  title="Blog Post Generator"
-  description="Generate a structured blog post with SEO optimization."
-  prompt={`Write a blog post about \${topic}.
+  title="מחולל פוסטים לבלוג"
+  description="צרו פוסט בלוג מובנה עם אופטימיזציה ל-SEO."
+  prompt={`כתוב פוסט בלוג על \${topic}.
 
-Specifications:
-- Length: \${wordCount:800-1000} words
-- Audience: \${audience}
-- Tone: \${tone:conversational}
-- Purpose: \${purpose:inform and provide actionable advice}
+מפרטים:
+- אורך: \${wordCount:800-1000} מילים
+- קהל יעד: \${audience}
+- טון: \${tone:שיחתי}
+- מטרה: \${purpose:ליידע ולספק עצות מעשיות}
 
-Structure:
-1. Hook opening (grab attention in first 2 sentences)
-2. Introduction (state the problem/opportunity)
-3. Main content (3-4 key points with examples)
-4. Practical takeaways (actionable advice)
-5. Conclusion with call-to-action
+מבנה:
+1. פתיחה מושכת (תפוס את תשומת הלב בשני המשפטים הראשונים)
+2. הקדמה (הצג את הבעיה/הזדמנות)
+3. תוכן עיקרי (3-4 נקודות מפתח עם דוגמאות)
+4. מסקנות מעשיות (עצות ישימות)
+5. סיכום עם קריאה לפעולה
 
-SEO Requirements:
-- Include keyword "\${keyword}" naturally 3-5 times
-- Use H2 headers for main sections
-- Include a meta description (155 chars)`}
+דרישות SEO:
+- כלול את מילת המפתח "\${keyword}" באופן טבעי 3-5 פעמים
+- השתמש בכותרות H2 לסעיפים עיקריים
+- כלול תיאור מטא (155 תווים)`}
 />
 
-### Article Types
+### סוגי מאמרים
 
-**How-To Article:**
-<TryIt compact prompt={`Write a step-by-step how-to article on \${topic}.
+**מאמר מסוג How-To:**
+<TryIt compact prompt={`כתוב מאמר מדריך צעד-אחר-צעד בנושא \${topic}.
 
-Requirements:
-- Clear numbered steps
-- Each step: action + explanation + tip
-- Include "what you'll need" section
-- Add troubleshooting section for common issues
-- Estimated time to complete`} />
+דרישות:
+- צעדים ממוספרים ברורים
+- כל צעד: פעולה + הסבר + טיפ
+- כלול סעיף "מה תצטרכו"
+- הוסף סעיף פתרון בעיות לתקלות נפוצות
+- זמן משוער להשלמה`} />
 
-**Listicle:**
-<TryIt compact prompt={`Write a listicle: "\${count} \${topic} Tips/Tools/Ideas"
+**רשימה:**
+<TryIt compact prompt={`כתוב רשימה: "\${count} טיפים/כלים/רעיונות בנושא \${topic}"
 
-For each item:
-- Catchy subheading
-- 2-3 sentence explanation
-- Concrete example or use case
-- Pro tip or caveat
+לכל פריט:
+- כותרת משנה קליטה
+- הסבר של 2-3 משפטים
+- דוגמה קונקרטית או מקרה שימוש
+- טיפ מקצועי או הסתייגות
 
-Order by: \${ordering:most important first}`} />
+סדר לפי: \${ordering:החשוב ביותר קודם}`} />
 
-## Marketing Copy
+## טקסט שיווקי
 
-<Callout type="tip" title="Marketing Copy Principle">
-Focus on **benefits over features**. Instead of "Our software uses AI algorithms," write "Save 10 hours a week with automated reports." Show readers how their lives improve.
+<Callout type="tip" title="עקרון הטקסט השיווקי">
+התמקדו ב**יתרונות ולא בתכונות**. במקום "התוכנה שלנו משתמשת באלגוריתמי AI," כתבו "חסכו 10 שעות בשבוע עם דוחות אוטומטיים." הראו לקוראים כיצד חייהם ישתפרו.
 </Callout>
 
-### Landing Page Copy
+### טקסט לדף נחיתה
 
-<TryIt compact prompt={`Write landing page copy for \${product}.
+<TryIt compact prompt={`כתוב טקסט לדף נחיתה עבור \${product}.
 
-Sections needed:
-1. Hero: Headline (10 words max) + subheadline + CTA button text
-2. Problem: Pain points the audience faces (3 bullet points)
-3. Solution: How your product solves these (with benefits, not features)
-4. Social proof: Placeholder for testimonials
-5. Features: 3 key features with benefit-focused descriptions
-6. CTA: Final call-to-action with urgency
+סעיפים נדרשים:
+1. Hero: כותרת (מקסימום 10 מילים) + כותרת משנה + טקסט לכפתור CTA
+2. בעיה: נקודות כאב שקהל היעד חווה (3 נקודות)
+3. פתרון: כיצד המוצר שלכם פותר אותן (עם יתרונות, לא תכונות)
+4. הוכחה חברתית: מקום שמור להמלצות
+5. תכונות: 3 תכונות מפתח עם תיאורים ממוקדי יתרונות
+6. CTA: קריאה סופית לפעולה עם דחיפות
 
-Voice: \${brandVoice}
-Target audience: \${targetAudience}
-Key differentiator: \${differentiator}`} />
+קול המותג: \${brandVoice}
+קהל יעד: \${targetAudience}
+גורם מבדל מרכזי: \${differentiator}`} />
 
-### Email Sequences
+### רצפי אימיילים
 
-<TryIt compact prompt={`Write a 5-email welcome sequence for new subscribers.
+<TryIt compact prompt={`כתוב רצף של 5 אימיילים לקבלת פנים למנויים חדשים.
 
-Brand: \${brand}
-Goal: \${goal:convert to paid}
+מותג: \${brand}
+מטרה: \${goal:המרה למנויים בתשלום}
 
-For each email provide:
-- Subject line (+ 1 alternative)
-- Preview text
-- Body (150-200 words)
+לכל אימייל ספק:
+- שורת נושא (+ חלופה אחת)
+- טקסט תצוגה מקדימה
+- גוף (150-200 מילים)
 - CTA
 
-Sequence flow:
-Email 1 (Day 0): Welcome + immediate value
-Email 2 (Day 2): Share story/mission
-Email 3 (Day 4): Educational content
-Email 4 (Day 7): Social proof + soft pitch
-Email 5 (Day 10): Direct offer with urgency`} />
+זרימת הרצף:
+אימייל 1 (יום 0): ברוכים הבאים + ערך מיידי
+אימייל 2 (יום 2): שתפו סיפור/משימה
+אימייל 3 (יום 4): תוכן חינוכי
+אימייל 4 (יום 7): הוכחה חברתית + הצעה עדינה
+אימייל 5 (יום 10): הצעה ישירה עם דחיפות`} />
 
-### Social Media Posts
+### פוסטים ברשתות חברתיות
 
-<TryIt compact prompt={`Create social media content for \${topic}.
+<TryIt compact prompt={`צרו תוכן לרשתות חברתיות בנושא \${topic}.
 
-Platform-specific versions:
+גרסאות ספציפיות לפלטפורמה:
 
-Twitter/X (280 chars):
-- Hook + key point + hashtags
-- Thread option (5 tweets) for complex topics
+Twitter/X (280 תווים):
+- פתיח + נקודה מרכזית + האשטאגים
+- אפשרות לשרשור (5 ציוצים) לנושאים מורכבים
 
-LinkedIn (1300 chars):
-- Professional angle
-- Story structure
-- End with question for engagement
+LinkedIn (1300 תווים):
+- זווית מקצועית
+- מבנה סיפורי
+- סיימו בשאלה ליצירת מעורבות
 
-Instagram caption:
-- Opening hook (shows before "more")
-- Value-packed body
+כיתוב לאינסטגרם:
+- פתיח מושך (מופיע לפני "עוד")
+- גוף עשיר בערך
 - CTA
-- Hashtags (20-30 relevant)`} />
+- האשטאגים (20-30 רלוונטיים)`} />
 
-## Technical Writing
+## כתיבה טכנית
 
-<Callout type="info" title="Technical Writing Principle">
-**Clarity over cleverness.** Use simple words, short sentences, and active voice. Every sentence should have one job. If readers have to re-read something, simplify it.
+<Callout type="info" title="עקרון הכתיבה הטכנית">
+**בהירות על פני חכמה.** השתמשו במילים פשוטות, משפטים קצרים וקול פעיל. לכל משפט צריכה להיות משימה אחת. אם הקוראים צריכים לקרוא משהו שוב, פשטו אותו.
 </Callout>
 
-### Documentation
+### תיעוד
 
-<TryIt compact prompt={`Write documentation for \${feature}.
+<TryIt compact prompt={`כתוב תיעוד עבור \${feature}.
 
-Structure:
-## Overview
-Brief description of what it does and why you'd use it.
+מבנה:
+## סקירה כללית
+תיאור קצר של מה זה עושה ולמה כדאי להשתמש בזה.
 
-## Quick Start
-Minimal example to get started in under 2 minutes.
+## התחלה מהירה
+דוגמה מינימלית להתחלה תוך פחות מ-2 דקות.
 
-## Installation/Setup
-Step-by-step setup instructions.
+## התקנה/הגדרה
+הוראות הגדרה צעד-אחר-צעד.
 
-## Usage
-Detailed usage with examples.
+## שימוש
+שימוש מפורט עם דוגמאות.
 
-## API Reference
-Parameters, return values, types.
+## הפניה ל-API
+פרמטרים, ערכי החזרה, טיפוסים.
 
-## Examples
-3-4 real-world usage examples.
+## דוגמאות
+3-4 דוגמאות שימוש מהעולם האמיתי.
 
-## Troubleshooting
-Common issues and solutions.
+## פתרון בעיות
+בעיות נפוצות ופתרונות.
 
-Style: 
-- Second person ("you")
-- Present tense
-- Active voice
-- Code examples for every concept`} />
+סגנון: 
+- גוף שני ("אתה/אתם")
+- זמן הווה
+- קול פעיל
+- דוגמאות קוד לכל מושג`} />
 
-### README Files
+### קבצי README
 
 <TryIt 
-  title="README Generator"
-  description="Generate a professional README.md for your project."
-  prompt={`Write a README.md for \${project}.
+  title="מחולל README"
+  description="צרו קובץ README.md מקצועי לפרויקט שלכם."
+  prompt={`כתוב README.md עבור \${project}.
 
-Include these sections:
-# Project Name - One-line description
+כלול את הסעיפים הבאים:
+# שם הפרויקט - תיאור בשורה אחת
 
-## Features
-- Bullet list of key features
+## תכונות
+- רשימת תבליטים של תכונות מפתח
 
-## Installation
-(bash installation commands)
+## התקנה
+(פקודות התקנה ב-bash)
 
-## Quick Start
-(minimal working example)
+## התחלה מהירה
+(דוגמה עובדת מינימלית)
 
-## Configuration
-Key configuration options
+## הגדרות
+אפשרויות הגדרה מרכזיות
 
-## Documentation
-Link to full docs
+## תיעוד
+קישור לתיעוד המלא
 
-## Contributing
-Brief contribution guidelines
+## תרומה
+הנחיות תרומה קצרות
 
-## License
-License type`}
+## רישיון
+סוג הרישיון`}
 />
 
-## Creative Writing
+## כתיבה יצירתית
 
-### Do's and Don'ts: Creative Prompts
+### מה לעשות ומה לא: הנחיות יצירתיות
 
 <Compare 
-  before={{ label: "❌ Too open-ended", content: "Write me a story." }}
-  after={{ label: "✓ Rich with constraints", content: "Write a 1000-word mystery story set in a small coastal town. The protagonist is a retired detective. Include a twist ending where the victim isn't who we thought. Tone: noir with dark humor." }}
+  before={{ label: "❌ פתוח מדי", content: "כתוב לי סיפור." }}
+  after={{ label: "✓ עשיר באילוצים", content: "כתוב סיפור מסתורין באורך 1000 מילים המתרחש בעיירת חוף קטנה. הגיבור הוא בלש בדימוס. כלול סיום מפתיע שבו הקורבן אינו מי שחשבנו. טון: נואר עם הומור שחור." }}
 />
 
-### Story Elements
+### אלמנטים סיפוריים
 
-<TryIt compact prompt={`Write a \${genre} short story.
+<TryIt compact prompt={`כתוב סיפור קצר בז'אנר \${genre}.
 
-Elements to include:
-- Protagonist: \${protagonist}
-- Setting: \${setting}
-- Central conflict: \${conflict}
-- Theme: \${theme}
-- Word count: \${wordCount:1000}
+אלמנטים לכלול:
+- גיבור: \${protagonist}
+- סביבה: \${setting}
+- קונפליקט מרכזי: \${conflict}
+- נושא: \${theme}
+- אורך: \${wordCount:1000} מילים
 
-Style preferences:
-- POV: \${pov:third person}
-- Tense: \${tense:past}
-- Tone: \${tone:suspenseful}
+העדפות סגנון:
+- נקודת מבט: \${pov:גוף שלישי}
+- זמן: \${tense:עבר}
+- טון: \${tone:מותח}
 
-Start with: \${openingHook}`} />
+התחל עם: \${openingHook}`} />
 
-### Character Development
+### פיתוח דמויות
 
-<TryIt compact prompt={`Create a detailed character profile for \${characterName}.
+<TryIt compact prompt={`צור פרופיל דמות מפורט עבור \${characterName}.
 
-Basic Information:
-- Name, age, occupation
-- Physical description
-- Background/history
+מידע בסיסי:
+- שם, גיל, מקצוע
+- תיאור חיצוני
+- רקע/היסטוריה
 
-Personality:
-- 3 core traits
-- Strengths and flaws
-- Fears and desires
-- How they speak (verbal tics, vocabulary level)
+אישיות:
+- 3 תכונות ליבה
+- חוזקות וחולשות
+- פחדים ורצונות
+- איך הם מדברים (הרגלי דיבור, רמת אוצר מילים)
 
-Relationships:
-- Key relationships
-- How they treat strangers vs friends
+מערכות יחסים:
+- קשרים מפתח
+- איך הם מתייחסים לזרים לעומת חברים
 
-Character arc:
-- Starting state
-- What they need to learn
-- Potential transformation`} />
+קשת הדמות:
+- מצב התחלתי
+- מה הם צריכים ללמוד
+- טרנספורמציה אפשרית`} />
 
-## Editing and Rewriting
+## עריכה ושכתוב
 
-### Comprehensive Edit
+### עריכה מקיפה
 
-<TryIt compact prompt={`Edit this text for \${purpose}.
+<TryIt compact prompt={`ערוך את הטקסט הזה עבור \${purpose}.
 
-Check and improve:
-□ Grammar and spelling
-□ Sentence structure variety
-□ Word choice (eliminate weak words)
-□ Flow and transitions
-□ Clarity and conciseness
-□ Tone consistency
+בדוק ושפר:
+□ דקדוק ואיות
+□ מגוון מבנה משפטים
+□ בחירת מילים (הסר מילים חלשות)
+□ זרימה ומעברים
+□ בהירות ותמציתיות
+□ עקביות טון
 
-Provide:
-1. Edited version
-2. Summary of major changes
-3. Suggestions for further improvement
+ספק:
+1. גרסה ערוכה
+2. סיכום השינויים העיקריים
+3. הצעות לשיפור נוסף
 
-Original text:
+טקסט מקורי:
 \${text}`} />
 
-### Style Transformation
+### טרנספורמציית סגנון
 
 <Compare 
-  before={{ label: "Technical/Formal", content: "The implementation of the new algorithm resulted in a 47% reduction in computational overhead, thereby significantly enhancing system throughput and reducing latency metrics across all measured endpoints." }}
-  after={{ label: "Casual/Accessible", content: "We made the system way faster! The new approach cut processing time nearly in half, which means everything loads quicker for you." }}
+  before={{ label: "טכני/רשמי", content: "יישום האלגוריתם החדש הביא להפחתה של 47% בעומס החישובי, ובכך שיפר משמעותית את תפוקת המערכת והפחית את מדדי ההשהיה בכל נקודות הקצה שנמדדו." }}
+  after={{ label: "יומיומי/נגיש", content: "עשינו את המערכת הרבה יותר מהירה! הגישה החדשה קיצצה את זמן העיבוד כמעט לחצי, מה שאומר שהכל נטען מהר יותר עבורכם." }}
 />
 
-<TryIt compact prompt={`Rewrite this text in a different style.
+<TryIt compact prompt={`שכתב את הטקסט הזה בסגנון אחר.
 
-Original style: \${originalStyle}
-Target style: \${targetStyle}
+סגנון מקורי: \${originalStyle}
+סגנון יעד: \${targetStyle}
 
-Preserve:
-- Core meaning and information
-- Key terminology
-- Proper nouns
+שמור על:
+- משמעות ומידע מרכזיים
+- טרמינולוגיה מפתח
+- שמות עצם פרטיים
 
-Change:
-- Sentence length and structure
-- Vocabulary level
-- Tone and formality
-- Rhetorical devices
+שנה:
+- אורך ומבנה משפטים
+- רמת אוצר מילים
+- טון ורשמיות
+- אמצעים רטוריים
 
-Original:
+מקור:
 \${text}`} />
 
-### Simplification
+### פישוט
 
-<TryIt compact prompt={`Simplify this text for \${audience}.
+<TryIt compact prompt={`פשט את הטקסט הזה עבור \${audience}.
 
-Target reading level: \${readingLevel:8th grade}
+רמת קריאה יעד: \${readingLevel:כיתה ח'}
 
-Guidelines:
-- Replace jargon with plain language
-- Shorten sentences (aim for 15-20 words average)
-- Use common words
-- Add explanations for necessary technical terms
-- Break complex ideas into steps
+הנחיות:
+- החלף ז'רגון בשפה פשוטה
+- קצר משפטים (שאפו לממוצע של 15-20 מילים)
+- השתמש במילים נפוצות
+- הוסף הסברים למונחים טכניים הכרחיים
+- פרק רעיונות מורכבים לצעדים
 
-Original:
+מקור:
 \${text}`} />
 
-## Prompt Templates from prompts.chat
+## תבניות הנחיות מ-prompts.chat
 
-Here are popular writing prompts from the prompts.chat community:
+הנה הנחיות כתיבה פופולריות מקהילת prompts.chat:
 
-### Act as a Copywriter
+### פעל כקופירייטר
 
-<TryIt compact prompt={`I want you to act as a copywriter. I will provide you with a product or service, and you will create compelling copy that highlights its benefits and persuades potential customers to take action. Your copy should be creative, attention-grabbing, and tailored to the target audience.
+<TryIt compact prompt={`אני רוצה שתפעל כקופירייטר. אספק לך מוצר או שירות, ואתה תיצור טקסט משכנע שמדגיש את היתרונות שלו ומשכנע לקוחות פוטנציאליים לפעול. הטקסט שלך צריך להיות יצירתי, מושך תשומת לב ומותאם לקהל היעד.
 
-Product/Service: \${product}`} />
+מוצר/שירות: \${product}`} />
 
-### Act as a Technical Writer
+### פעל ככותב טכני
 
-<TryIt compact prompt={`I want you to act as a technical writer. You will create clear, concise documentation for software products. I will provide you with technical information, and you will transform it into user-friendly documentation that is easy to understand for both technical and non-technical audiences.
+<TryIt compact prompt={`אני רוצה שתפעל ככותב טכני. תיצור תיעוד ברור ותמציתי למוצרי תוכנה. אספק לך מידע טכני, ואתה תהפוך אותו לתיעוד ידידותי למשתמש שקל להבין גם לקהל טכני וגם לקהל לא טכני.
 
-Topic: \${topic}`} />
+נושא: \${topic}`} />
 
-### Act as a Storyteller
+### פעל כמספר סיפורים
 
-<TryIt compact prompt={`I want you to act as a storyteller. You will come up with entertaining stories that are engaging, imaginative, and captivating for the audience. It can be fairy tales, educational stories, or any other type of story that has the potential to capture people's attention and imagination.
+<TryIt compact prompt={`אני רוצה שתפעל כמספר סיפורים. תמציא סיפורים מבדרים שהם מרתקים, דמיוניים ושובי לב עבור הקהל. אלה יכולים להיות אגדות, סיפורים חינוכיים או כל סוג אחר של סיפור שיש לו פוטנציאל לתפוס את תשומת הלב והדמיון של אנשים.
 
-Story theme: \${theme}`} />
+נושא הסיפור: \${theme}`} />
 
-## Writing Workflow Tips
+## טיפים לתהליך כתיבה
 
-### 1. Outline First
+### 1. מתווה קודם
 
-<TryIt compact prompt={`Before writing, create an outline:
+<TryIt compact prompt={`לפני הכתיבה, צור מתווה:
 
-Topic: \${topic}
+נושא: \${topic}
 
-1. Generate 5 possible angles
-2. Choose the best angle and explain why
-3. Create detailed outline with:
-   - Main sections
-   - Key points per section
-   - Supporting evidence/examples needed
-4. Identify gaps that need research`} />
+1. צור 5 זוויות אפשריות
+2. בחר את הזווית הטובה ביותר והסבר למה
+3. צור מתווה מפורט עם:
+   - סעיפים עיקריים
+   - נקודות מפתח לכל סעיף
+   - ראיות/דוגמאות תומכות נדרשות
+4. זהה פערים שדורשים מחקר`} />
 
-### 2. Draft Then Refine
+### 2. טיוטה ואז שיפור
 
-<TryIt compact prompt={`Phase 1 - Draft:
-"Write a rough draft focusing on getting ideas down. Don't worry about perfection. Just capture the key points."
+<TryIt compact prompt={`שלב 1 - טיוטה:
+"כתוב טיוטה ראשונית תוך התמקדות בהעלאת רעיונות. אל תדאג לשלמות. פשוט תפוס את הנקודות המרכזיות."
 
-Phase 2 - Refine:
-"Now improve this draft: tighten sentences, add transitions, strengthen the opening and closing."
+שלב 2 - שיפור:
+"עכשיו שפר את הטיוטה: הדק משפטים, הוסף מעברים, חזק את הפתיחה והסיום."
 
-Phase 3 - Polish:
-"Final pass: check grammar, vary sentence structure, ensure consistent tone."
+שלב 3 - ליטוש:
+"מעבר אחרון: בדוק דקדוק, גוון את מבנה המשפטים, וודא טון עקבי."
 
-Topic: \${topic}`} />
+נושא: \${topic}`} />
 
-### 3. Voice Matching
+### 3. התאמת קול
 
-<TryIt compact prompt={`Analyze this writing sample for voice characteristics:
+<TryIt compact prompt={`נתח את דגימת הכתיבה הזו עבור מאפייני קול:
 \${sample}
 
-Then write \${newContent} matching:
-- Sentence length patterns
-- Vocabulary level
-- Rhetorical devices used
-- Tone and personality`} />
+ואז כתוב \${newContent} תוך התאמה ל:
+- דפוסי אורך משפטים
+- רמת אוצר מילים
+- אמצעים רטוריים בשימוש
+- טון ואישיות`} />
 
-## Summary
+## סיכום
 
-<Callout type="tip" title="Key Techniques">
-Specify audience and purpose clearly, define structure and format, include style guidelines, provide examples when possible, and request specific deliverables.
+<Callout type="tip" title="טכניקות מפתח">
+ציינו קהל ומטרה בבירור, הגדירו מבנה ופורמט, כללו הנחיות סגנון, ספקו דוגמאות כשאפשר, ובקשו תוצרים ספציפיים.
 </Callout>
 
 <Quiz 
-  question="What's the most effective way to use AI for writing tasks?"
+  question="מהי הדרך היעילה ביותר להשתמש ב-AI למשימות כתיבה?"
   options={[
-    "Let AI write the final version without editing",
-    "Use AI to generate drafts, then refine with your expertise",
-    "Only use AI for grammar checking",
-    "Avoid AI for creative writing entirely"
+    "לתת ל-AI לכתוב את הגרסה הסופית ללא עריכה",
+    "להשתמש ב-AI ליצירת טיוטות, ואז לשפר עם המומחיות שלכם",
+    "להשתמש ב-AI רק לבדיקת דקדוק",
+    "להימנע מ-AI לכתיבה יצירתית לחלוטין"
   ]}
   correctIndex={1}
-  explanation="AI works best as a collaborative writing tool. Use it to generate drafts and ideas, then apply your expertise, voice, and judgment to refine the output."
+  explanation="AI עובד הכי טוב ככלי כתיבה שיתופי. השתמשו בו ליצירת טיוטות ורעיונות, ואז יישמו את המומחיות, הקול והשיקול שלכם כדי לשפר את הפלט."
 />
 
-Writing with AI works best as collaboration—let AI generate drafts, then refine with your expertise and voice.
+כתיבה עם AI עובדת הכי טוב כשיתוף פעולה—תנו ל-AI ליצור טיוטות, ואז שפרו עם המומחיות והקול הייחודי שלכם.

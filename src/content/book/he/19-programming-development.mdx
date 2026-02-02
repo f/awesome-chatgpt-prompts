@@ -1,413 +1,411 @@
-AI has transformed software development. This chapter covers prompting techniques for code generation, debugging, review, and development workflows.
+בינה מלאכותית שינתה את עולם פיתוח התוכנה. פרק זה עוסק בטכניקות פרומפטינג ליצירת קוד, איתור באגים, סקירת קוד ותהליכי פיתוח.
 
-<Callout type="info" title="AI as Coding Partner">
-AI excels at code generation, debugging, and documentation—but always review generated code for security, correctness, and maintainability. Never deploy AI code without testing.
+<Callout type="info" title="בינה מלאכותית כשותף לתכנות">
+בינה מלאכותית מצטיינת ביצירת קוד, איתור באגים ותיעוד—אך תמיד יש לבדוק קוד שנוצר לאבטחה, נכונות ותחזוקתיות. לעולם אל תפרסו קוד של בינה מלאכותית ללא בדיקות.
 </Callout>
 
-## Code Generation
+## יצירת קוד
 
-### Do's and Don'ts: Code Prompts
+### עשה ואל תעשה: פרומפטים לקוד
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Write a function to validate emails." }}
-  after={{ label: "✓ Complete specification", content: "Write a Python function that validates email addresses.\n\nInput: string (potential email)\nOutput: tuple[bool, str | None] - (is_valid, error_message)\nHandle: empty string, None, unicode chars\nUse regex, include type hints and docstring." }}
+  before={{ label: "❌ בקשה מעורפלת", content: "כתוב פונקציה לאימות אימיילים." }}
+  after={{ label: "✓ מפרט מלא", content: "כתוב פונקציית Python שמאמתת כתובות אימייל.\n\nקלט: מחרוזת (אימייל פוטנציאלי)\nפלט: tuple[bool, str | None] - (is_valid, error_message)\nטפל ב: מחרוזת ריקה, None, תווי unicode\nהשתמש ב-regex, כלול type hints ו-docstring." }}
 />
 
-### Function Generation
+### יצירת פונקציות
 
-<TryIt compact prompt={`Write a \${language:Python} function that \${description:validates email addresses}.
+<TryIt compact prompt={`כתוב פונקציית \${language:Python} ש\${description:מאמתת כתובות אימייל}.
 
-Requirements:
-- Input: \${inputTypes:string (potential email)}
-- Output: \${outputType:boolean and optional error message}
-- Handle edge cases: \${edgeCases:empty string, None, unicode characters}
-- Performance: \${performance:standard}
+דרישות:
+- קלט: \${inputTypes:מחרוזת (אימייל פוטנציאלי)}
+- פלט: \${outputType:ערך בוליאני והודעת שגיאה אופציונלית}
+- טפל במקרי קצה: \${edgeCases:מחרוזת ריקה, None, תווי unicode}
+- ביצועים: \${performance:רגילים}
 
-Include:
+כלול:
 - Type hints/annotations
-- Docstring with examples
-- Input validation
-- Error handling`} />
+- Docstring עם דוגמאות
+- אימות קלט
+- טיפול בשגיאות`} />
 
-### Class/Module Generation
+### יצירת מחלקות/מודולים
 
-<TryIt compact prompt={`Create a \${language:Python} class for \${purpose:managing user sessions}.
+<TryIt compact prompt={`צור מחלקת \${language:Python} עבור \${purpose:ניהול סשנים של משתמשים}.
 
-Class design:
-- Name: \${className:SessionManager}
-- Responsibility: \${responsibility:handle user session lifecycle}
-- Properties: \${properties:session_id, user_id, created_at, expires_at}
-- Methods: \${methods:create(), validate(), refresh(), destroy()}
+תכנון המחלקה:
+- שם: \${className:SessionManager}
+- אחריות: \${responsibility:טיפול במחזור החיים של סשן משתמש}
+- מאפיינים: \${properties:session_id, user_id, created_at, expires_at}
+- מתודות: \${methods:create(), validate(), refresh(), destroy()}
 
-Requirements:
-- Follow \${designPattern:Singleton} pattern
-- Include proper encapsulation
-- Add comprehensive docstrings
-- Include usage example
+דרישות:
+- עקוב אחרי דפוס \${designPattern:Singleton}
+- כלול אנקפסולציה נאותה
+- הוסף docstrings מקיפים
+- כלול דוגמת שימוש
 
-Testing:
-- Include unit test skeleton`} />
+בדיקות:
+- כלול שלד לבדיקות יחידה`} />
 
-### API Endpoint Generation
+### יצירת נקודת קצה API
 
-<TryIt compact prompt={`Create a REST API endpoint for \${resource:user profiles}.
+<TryIt compact prompt={`צור נקודת קצה REST API עבור \${resource:פרופילי משתמשים}.
 
 Framework: \${framework:FastAPI}
 Method: \${method:GET}
 Path: \${path:/api/users/{id}}
 
-Request:
+בקשה:
 - Headers: \${headers:Authorization Bearer token}
-- Body schema: \${bodySchema:N/A for GET}
+- Body schema: \${bodySchema:לא רלוונטי ל-GET}
 - Query params: \${queryParams:include_posts (boolean)}
 
-Response:
-- Success: \${successResponse:200 with user object}
-- Errors: \${errorResponses:401 Unauthorized, 404 Not Found}
+תגובה:
+- הצלחה: \${successResponse:200 עם אובייקט משתמש}
+- שגיאות: \${errorResponses:401 Unauthorized, 404 Not Found}
 
-Include:
-- Input validation
-- Authentication check
-- Error handling
-- Rate limiting consideration`} />
+כלול:
+- אימות קלט
+- בדיקת אימות
+- טיפול בשגיאות
+- התחשבות בהגבלת קצב`} />
 
-## Debugging
+## איתור באגים
 
-<Callout type="tip" title="Debugging Principle">
-Always include the **expected behavior**, **actual behavior**, and **error message** (if any). The more context you provide, the faster AI can identify the root cause.
+<Callout type="tip" title="עקרון איתור באגים">
+תמיד כללו את **ההתנהגות הצפויה**, **ההתנהגות בפועל**, ו**הודעת השגיאה** (אם יש). ככל שתספקו יותר הקשר, כך הבינה המלאכותית תוכל לזהות את שורש הבעיה מהר יותר.
 </Callout>
 
-### Bug Analysis
+### ניתוח באגים
 
-<TryIt compact prompt={`Debug this code. It should \${expectedBehavior:return the sum of all numbers} but instead \${actualBehavior:returns 0 for all inputs}.
+<TryIt compact prompt={`בצע דיבאג לקוד הזה. הוא אמור \${expectedBehavior:להחזיר את סכום כל המספרים} אבל במקום זאת \${actualBehavior:מחזיר 0 לכל הקלטים}.
 
-Code:
-\${code:paste your code here}
+קוד:
+\${code:הדבק את הקוד שלך כאן}
 
-Error message (if any):
-\${error:none}
+הודעת שגיאה (אם יש):
+\${error:אין}
 
-Steps to debug:
-1. Identify what the code is trying to do
-2. Trace through execution with the given input
-3. Find where expected and actual behavior diverge
-4. Explain the root cause
-5. Provide the fix with explanation`} />
+שלבים לדיבאג:
+1. זהה מה הקוד מנסה לעשות
+2. עקוב אחרי הביצוע עם הקלט הנתון
+3. מצא היכן ההתנהגות הצפויה והפועלת מתפצלות
+4. הסבר את שורש הבעיה
+5. ספק את התיקון עם הסבר`} />
 
-### Error Message Interpretation
+### פירוש הודעות שגיאה
 
-<TryIt compact prompt={`Explain this error and how to fix it:
+<TryIt compact prompt={`הסבר את השגיאה הזו ואיך לתקן אותה:
 
-Error:
-\${errorMessage:paste error message or stack trace here}
+שגיאה:
+\${errorMessage:הדבק הודעת שגיאה או stack trace כאן}
 
-Context:
-- Language/Framework: \${framework:Python 3.11}
-- What I was trying to do: \${action:reading a JSON file}
-- Relevant code: \${codeSnippet:paste relevant code}
+הקשר:
+- שפה/Framework: \${framework:Python 3.11}
+- מה ניסיתי לעשות: \${action:קריאת קובץ JSON}
+- קוד רלוונטי: \${codeSnippet:הדבק קוד רלוונטי}
 
-Provide:
-1. Plain English explanation of the error
-2. Root cause
-3. Step-by-step fix
-4. How to prevent this in the future`} />
+ספק:
+1. הסבר בשפה פשוטה של השגיאה
+2. שורש הבעיה
+3. תיקון צעד אחר צעד
+4. איך למנוע זאת בעתיד`} />
 
-### Performance Debugging
+### דיבאג ביצועים
 
-<TryIt compact prompt={`This code is slow. Analyze and optimize:
+<TryIt compact prompt={`הקוד הזה איטי. נתח ובצע אופטימיזציה:
 
-Code:
-\${code:paste your code here}
+קוד:
+\${code:הדבק את הקוד שלך כאן}
 
-Current performance: \${currentPerformance:takes 30 seconds for 1000 items}
-Target performance: \${targetPerformance:under 5 seconds}
-Constraints: \${constraints:memory limit 512MB}
+ביצועים נוכחיים: \${currentPerformance:לוקח 30 שניות ל-1000 פריטים}
+ביצועים יעד: \${targetPerformance:מתחת ל-5 שניות}
+מגבלות: \${constraints:מגבלת זיכרון 512MB}
 
-Provide:
-1. Identify bottlenecks
-2. Explain why each is slow
-3. Suggest optimizations (ranked by impact)
-4. Show optimized code
-5. Estimate improvement`} />
+ספק:
+1. זהה צווארי בקבוק
+2. הסבר למה כל אחד איטי
+3. הצע אופטימיזציות (מדורגות לפי השפעה)
+4. הצג קוד מאופטם
+5. העריך את השיפור`} />
 
-## Code Review
+## סקירת קוד
 
-### Do's and Don'ts: Code Review Prompts
+### עשה ואל תעשה: פרומפטים לסקירת קוד
 
 <Compare 
-  before={{ label: "❌ Generic request", content: "Review this code." }}
-  after={{ label: "✓ Specific criteria", content: "Review this code for a pull request.\n\nCheck for:\n1. Correctness: bugs, logic errors, edge cases\n2. Security: injection risks, auth issues\n3. Performance: N+1 queries, memory leaks\n4. Maintainability: naming, complexity\n\nFormat: 🔴 Critical / 🟡 Important / 🟢 Suggestion" }}
+  before={{ label: "❌ בקשה כללית", content: "סקור את הקוד הזה." }}
+  after={{ label: "✓ קריטריונים ספציפיים", content: "סקור את הקוד הזה עבור pull request.\n\nבדוק:\n1. נכונות: באגים, שגיאות לוגיות, מקרי קצה\n2. אבטחה: סיכוני injection, בעיות אימות\n3. ביצועים: שאילתות N+1, דליפות זיכרון\n4. תחזוקתיות: שמות, מורכבות\n\nפורמט: 🔴 קריטי / 🟡 חשוב / 🟢 הצעה" }}
 />
 
-### Comprehensive Review
+### סקירה מקיפה
 
-<TryIt compact prompt={`Review this code for a pull request.
+<TryIt compact prompt={`סקור את הקוד הזה עבור pull request.
 
-Code:
-\${code:paste your code here}
+קוד:
+\${code:הדבק את הקוד שלך כאן}
 
-Review for:
-1. **Correctness**: Bugs, logic errors, edge cases
-2. **Security**: Vulnerabilities, injection risks, auth issues
-3. **Performance**: Inefficiencies, N+1 queries, memory leaks
-4. **Maintainability**: Readability, naming, complexity
-5. **Best practices**: \${framework:Python/Django} conventions
+סקור עבור:
+1. **נכונות**: באגים, שגיאות לוגיות, מקרי קצה
+2. **אבטחה**: פגיעויות, סיכוני injection, בעיות אימות
+3. **ביצועים**: חוסר יעילות, שאילתות N+1, דליפות זיכרון
+4. **תחזוקתיות**: קריאות, שמות, מורכבות
+5. **שיטות עבודה מומלצות**: מוסכמות \${framework:Python/Django}
 
-Format your review as:
-🔴 Critical: must fix before merge
-🟡 Important: should fix
-🟢 Suggestion: nice to have
-💭 Question: clarification needed`} />
+פרמט את הסקירה שלך כ:
+🔴 קריטי: חובה לתקן לפני מיזוג
+🟡 חשוב: כדאי לתקן
+🟢 הצעה: נחמד שיהיה
+💭 שאלה: נדרש הבהרה`} />
 
-### Security Review
+### סקירת אבטחה
 
-<TryIt compact prompt={`Perform a security review of this code:
+<TryIt compact prompt={`בצע סקירת אבטחה לקוד הזה:
 
-Code:
-\${code:paste your code here}
+קוד:
+\${code:הדבק את הקוד שלך כאן}
 
-Check for:
-- [ ] Injection vulnerabilities (SQL, XSS, command)
-- [ ] Authentication/authorization flaws
-- [ ] Sensitive data exposure
-- [ ] Insecure dependencies
-- [ ] Cryptographic issues
-- [ ] Input validation gaps
-- [ ] Error handling that leaks info
+בדוק עבור:
+- [ ] פגיעויות Injection (SQL, XSS, command)
+- [ ] פגמים באימות/הרשאה
+- [ ] חשיפת מידע רגיש
+- [ ] תלויות לא מאובטחות
+- [ ] בעיות קריפטוגרפיות
+- [ ] פערים באימות קלט
+- [ ] טיפול בשגיאות שחושף מידע
 
-For each finding:
-- Severity: Critical/High/Medium/Low
-- Location: Line number or function
-- Issue: Description
-- Exploit: How it could be attacked
-- Fix: Recommended remediation`} />
+לכל ממצא:
+- חומרה: קריטי/גבוה/בינוני/נמוך
+- מיקום: מספר שורה או פונקציה
+- בעיה: תיאור
+- ניצול: איך ניתן לתקוף
+- תיקון: המלצה לתיקון`} />
 
-## Refactoring
+## שיפור קוד
 
-### Code Smell Detection
+### זיהוי ריחות קוד
 
-<TryIt compact prompt={`Analyze this code for code smells and refactoring opportunities:
+<TryIt compact prompt={`נתח את הקוד הזה עבור ריחות קוד והזדמנויות לשיפור:
 
-Code:
-\${code:paste your code here}
+קוד:
+\${code:הדבק את הקוד שלך כאן}
 
-Identify:
-1. Long methods (suggest extraction)
-2. Duplicate code (suggest DRY improvements)
-3. Complex conditionals (suggest simplification)
-4. Poor naming (suggest better names)
-5. Tight coupling (suggest decoupling)
+זהה:
+1. מתודות ארוכות (הצע חילוץ)
+2. קוד כפול (הצע שיפורי DRY)
+3. תנאים מורכבים (הצע פישוט)
+4. שמות גרועים (הצע שמות טובים יותר)
+5. צימוד הדוק (הצע הפרדה)
 
-For each issue, show before/after code.`} />
+לכל בעיה, הצג קוד לפני/אחרי.`} />
 
-### Design Pattern Application
+### יישום דפוסי עיצוב
 
-<TryIt compact prompt={`Refactor this code using the \${patternName:Factory} pattern.
+<TryIt compact prompt={`שפר את הקוד הזה באמצעות דפוס \${patternName:Factory}.
 
-Current code:
-\${code:paste your code here}
+קוד נוכחי:
+\${code:הדבק את הקוד שלך כאן}
 
-Goals:
-- \${whyPattern:decouple object creation from usage}
-- \${benefits:easier testing and extensibility}
+מטרות:
+- \${whyPattern:הפרדת יצירת אובייקטים מהשימוש}
+- \${benefits:בדיקות והרחבה קלים יותר}
 
-Provide:
-1. Explanation of the pattern
-2. How it applies here
-3. Refactored code
-4. Trade-offs to consider`} />
+ספק:
+1. הסבר על הדפוס
+2. איך הוא מתאים כאן
+3. קוד משופר
+4. שיקולים ופשרות`} />
 
-## Testing
+## בדיקות
 
-### Unit Test Generation
+### יצירת בדיקות יחידה
 
-<TryIt compact prompt={`Write unit tests for this function:
+<TryIt compact prompt={`כתוב בדיקות יחידה לפונקציה הזו:
 
-Function:
-\${code:paste your function here}
+פונקציה:
+\${code:הדבק את הפונקציה שלך כאן}
 
 Testing framework: \${testFramework:pytest}
 
-Cover:
-- Happy path (normal inputs)
-- Edge cases (empty, null, boundary values)
-- Error cases (invalid inputs)
-- \${specificScenarios:concurrent access, large inputs}
+כסה:
+- מסלול רגיל (קלטים נורמליים)
+- מקרי קצה (ריק, null, ערכי גבול)
+- מקרי שגיאה (קלטים לא תקינים)
+- \${specificScenarios:גישה מקבילית, קלטים גדולים}
 
-Format: Arrange-Act-Assert pattern
-Include: Descriptive test names`} />
+פורמט: דפוס Arrange-Act-Assert
+כלול: שמות בדיקה תיאוריים`} />
 
-### Test Case Generation
+### יצירת מקרי בדיקה
 
-<TryIt compact prompt={`Generate test cases for this feature:
+<TryIt compact prompt={`צור מקרי בדיקה לתכונה הזו:
 
-Feature: \${featureDescription:user registration with email verification}
-Acceptance criteria: \${acceptanceCriteria:user can sign up, receives email, can verify account}
+תכונה: \${featureDescription:הרשמת משתמש עם אימות אימייל}
+קריטריונים לקבלה: \${acceptanceCriteria:משתמש יכול להירשם, מקבל אימייל, יכול לאמת חשבון}
 
-Provide test cases in this format:
+ספק מקרי בדיקה בפורמט הזה:
 
-| ID | Scenario | Given | When | Then | Priority |
-|----|----------|-------|------|------|----------|
-| TC01 | ... | ... | ... | ... | High |`} />
+| מזהה | תרחיש | בהינתן | כאשר | אז | עדיפות |
+|------|-------|--------|------|-------|--------|
+| TC01 | ... | ... | ... | ... | גבוהה |`} />
 
-## Architecture & Design
+## ארכיטקטורה ועיצוב
 
-### System Design
+### עיצוב מערכת
 
-<TryIt compact prompt={`Design a system for \${requirement:real-time chat application}.
+<TryIt compact prompt={`תכנן מערכת עבור \${requirement:אפליקציית צ'אט בזמן אמת}.
 
-Constraints:
-- Expected load: \${expectedLoad:10,000 concurrent users}
-- Latency requirements: \${latency:< 100ms message delivery}
-- Availability: \${availability:99.9%}
-- Budget: \${budget:moderate, prefer open source}
+מגבלות:
+- עומס צפוי: \${expectedLoad:10,000 משתמשים בו-זמנית}
+- דרישות השהיה: \${latency:< 100ms למסירת הודעה}
+- זמינות: \${availability:99.9%}
+- תקציב: \${budget:בינוני, העדפה לקוד פתוח}
 
-Provide:
-1. High-level architecture diagram (ASCII/text)
-2. Component descriptions
-3. Data flow
-4. Technology choices with rationale
-5. Scaling strategy
-6. Trade-offs and alternatives considered`} />
+ספק:
+1. תרשים ארכיטקטורה ברמה גבוהה (ASCII/טקסט)
+2. תיאורי רכיבים
+3. זרימת נתונים
+4. בחירות טכנולוגיות עם נימוקים
+5. אסטרטגיית סקיילינג
+6. פשרות ואלטרנטיבות שנשקלו`} />
 
-### Database Schema Design
+### עיצוב סכמת מסד נתונים
 
-<TryIt compact prompt={`Design a database schema for \${application:e-commerce platform}.
+<TryIt compact prompt={`תכנן סכמת מסד נתונים עבור \${application:פלטפורמת מסחר אלקטרוני}.
 
-Requirements:
-- \${feature1:User accounts with profiles and addresses}
-- \${feature2:Product catalog with categories and variants}
-- \${feature3:Orders with line items and payment tracking}
+דרישות:
+- \${feature1:חשבונות משתמשים עם פרופילים וכתובות}
+- \${feature2:קטלוג מוצרים עם קטגוריות וריאציות}
+- \${feature3:הזמנות עם פריטי שורה ומעקב תשלומים}
 
-Provide:
-1. Entity-relationship description
-2. Table definitions with columns and types
-3. Indexes for common queries
-4. Foreign key relationships
-5. Sample queries for key operations`} />
+ספק:
+1. תיאור ישויות וקשרים
+2. הגדרות טבלאות עם עמודות וסוגים
+3. אינדקסים לשאילתות נפוצות
+4. קשרי מפתח זר
+5. שאילתות לדוגמה לפעולות מפתח`} />
 
-## Documentation Generation
+## יצירת תיעוד
 
-### API Documentation
+### תיעוד API
 
-<TryIt compact prompt={`Generate API documentation from this code:
+<TryIt compact prompt={`צור תיעוד API מהקוד הזה:
 
-Code:
-\${code:paste your endpoint code here}
+קוד:
+\${code:הדבק את קוד נקודת הקצה שלך כאן}
 
-Format: \${format:OpenAPI/Swagger YAML}
+פורמט: \${format:OpenAPI/Swagger YAML}
 
-Include:
-- Endpoint description
-- Request/response schemas
-- Example requests/responses
-- Error codes
-- Authentication requirements`} />
+כלול:
+- תיאור נקודת קצה
+- סכמות בקשה/תגובה
+- דוגמאות בקשות/תגובות
+- קודי שגיאה
+- דרישות אימות`} />
 
-### Inline Documentation
+### תיעוד בתוך הקוד
 
-<TryIt compact prompt={`Add comprehensive documentation to this code:
+<TryIt compact prompt={`הוסף תיעוד מקיף לקוד הזה:
 
-Code:
-\${code:paste your code here}
+קוד:
+\${code:הדבק את הקוד שלך כאן}
 
-Add:
-- File/module docstring (purpose, usage)
-- Function/method docstrings (params, returns, raises, examples)
-- Inline comments for complex logic only
-- Type hints if missing
+הוסף:
+- Docstring לקובץ/מודול (מטרה, שימוש)
+- Docstrings לפונקציות/מתודות (פרמטרים, ערכי החזרה, חריגות, דוגמאות)
+- הערות inline ללוגיקה מורכבת בלבד
+- Type hints אם חסרים
 
-Style: \${docStyle:Google}`} />
+סגנון: \${docStyle:Google}`} />
 
-## Prompt Templates from prompts.chat
+## תבניות פרומפט מ-prompts.chat
 
-### Act as a Senior Developer
-
-```
-I want you to act as a senior software developer. I will provide 
-code and ask questions about it. You will review the code, suggest 
-improvements, explain concepts, and help debug issues. Your 
-responses should be educational and help me become a better 
-developer.
-```
-
-### Act as a Code Reviewer
+### פעל כמפתח בכיר
 
 ```
-I want you to act as a code reviewer. I will provide pull requests 
-with code changes, and you will review them thoroughly. Check for 
-bugs, security issues, performance problems, and adherence to best 
-practices. Provide constructive feedback that helps the developer 
-improve.
+אני רוצה שתפעל כמפתח תוכנה בכיר. אספק קוד ואשאל 
+שאלות לגביו. תסקור את הקוד, תציע שיפורים, תסביר 
+מושגים ותעזור באיתור באגים. התגובות שלך צריכות 
+להיות חינוכיות ולעזור לי להפוך למפתח טוב יותר.
 ```
 
-### Act as a Software Architect
+### פעל כסוקר קוד
 
 ```
-I want you to act as a software architect. I will describe system 
-requirements and constraints, and you will design scalable, 
-maintainable architectures. Explain your design decisions, 
-trade-offs, and provide diagrams where helpful.
+אני רוצה שתפעל כסוקר קוד. אספק pull requests עם 
+שינויי קוד, ואתה תסקור אותם ביסודיות. בדוק באגים, 
+בעיות אבטחה, בעיות ביצועים והקפדה על שיטות עבודה 
+מומלצות. ספק משוב בונה שעוזר למפתח להשתפר.
 ```
 
-## Development Workflow Integration
+### פעל כארכיטקט תוכנה
 
-### Commit Message Generation
+```
+אני רוצה שתפעל כארכיטקט תוכנה. אתאר דרישות 
+ומגבלות מערכת, ואתה תתכנן ארכיטקטורות סקיילביליות 
+וניתנות לתחזוקה. הסבר את החלטות העיצוב שלך, 
+פשרות, וספק תרשימים כשזה עוזר.
+```
 
-<TryIt compact prompt={`Generate a commit message for these changes:
+## אינטגרציה בתהליך הפיתוח
+
+### יצירת הודעות commit
+
+<TryIt compact prompt={`צור הודעת commit לשינויים האלה:
 
 Diff:
-\${diff:paste git diff here}
+\${diff:הדבק git diff כאן}
 
-Format: Conventional Commits
-Type: \${commitType:feat}
+פורמט: Conventional Commits
+סוג: \${commitType:feat}
 
-Provide:
-- Subject line (50 chars max, imperative mood)
-- Body (what and why, wrapped at 72 chars)
-- Footer (references issues if applicable)`} />
+ספק:
+- שורת נושא (מקסימום 50 תווים, במצב ציווי)
+- גוף (מה ולמה, שבירת שורות ב-72 תווים)
+- כותרת תחתונה (הפניות ל-issues אם רלוונטי)`} />
 
-### PR Description Generation
+### יצירת תיאור PR
 
-<TryIt compact prompt={`Generate a pull request description:
+<TryIt compact prompt={`צור תיאור pull request:
 
-Changes:
-\${changes:list your changes or paste diff summary}
+שינויים:
+\${changes:רשום את השינויים שלך או הדבק סיכום diff}
 
-Template:
-## Summary
-Brief description of changes
+תבנית:
+## סיכום
+תיאור קצר של השינויים
 
-## Changes Made
-- Change 1
-- Change 2
+## שינויים שבוצעו
+- שינוי 1
+- שינוי 2
 
-## Testing
-- [ ] Unit tests added/updated
-- [ ] Manual testing completed
+## בדיקות
+- [ ] בדיקות יחידה נוספו/עודכנו
+- [ ] בדיקה ידנית הושלמה
 
-## Screenshots (if UI changes)
+## צילומי מסך (אם שינויי UI)
 placeholder
 
-## Related Issues
-Closes #\${issueNumber:123}`} />
+## Issues קשורים
+סוגר #\${issueNumber:123}`} />
 
-## Summary
+## סיכום
 
-<Callout type="tip" title="Key Techniques">
-Include full context (language, framework, constraints), specify requirements precisely, request specific output formats, ask for explanations alongside code, and include edge cases to handle.
+<Callout type="tip" title="טכניקות מפתח">
+כללו הקשר מלא (שפה, framework, מגבלות), ציינו דרישות במדויק, בקשו פורמטי פלט ספציפיים, בקשו הסברים לצד הקוד, וכללו מקרי קצה לטיפול.
 </Callout>
 
 <Quiz 
-  question="What's the most important element to include when asking AI to debug code?"
+  question="מהו האלמנט החשוב ביותר לכלול כשמבקשים מבינה מלאכותית לבצע דיבאג לקוד?"
   options={[
-    "The programming language only",
-    "Expected behavior, actual behavior, and error message",
-    "Just the code snippet",
-    "The file name"
+    "שפת התכנות בלבד",
+    "התנהגות צפויה, התנהגות בפועל, והודעת שגיאה",
+    "רק קטע הקוד",
+    "שם הקובץ"
   ]}
   correctIndex={1}
-  explanation="Debugging requires context: what should happen vs. what actually happens. Error messages and stack traces help AI pinpoint the exact issue quickly."
+  explanation="דיבאג דורש הקשר: מה אמור לקרות מול מה קורה בפועל. הודעות שגיאה ו-stack traces עוזרים לבינה המלאכותית לאתר את הבעיה המדויקת במהירות."
 />
 
-AI is a powerful coding partner—use it for generation, review, debugging, and documentation while maintaining your architectural judgment.
+בינה מלאכותית היא שותף תכנות חזק—השתמשו בה ליצירה, סקירה, דיבאג ותיעוד תוך שמירה על שיקול הדעת הארכיטקטוני שלכם.

@@ -1,413 +1,413 @@
-AI has transformed software development. This chapter covers prompting techniques for code generation, debugging, review, and development workflows.
+هوش مصنوعی توسعه نرم‌افزار را متحول کرده است. این فصل تکنیک‌های پرامپت‌نویسی برای تولید کد، اشکال‌زدایی، بازبینی و گردش‌های کاری توسعه را پوشش می‌دهد.
 
-<Callout type="info" title="AI as Coding Partner">
-AI excels at code generation, debugging, and documentation—but always review generated code for security, correctness, and maintainability. Never deploy AI code without testing.
+<Callout type="info" title="هوش مصنوعی به عنوان شریک برنامه‌نویسی">
+هوش مصنوعی در تولید کد، اشکال‌زدایی و مستندسازی عالی عمل می‌کند—اما همیشه کد تولیدشده را از نظر امنیت، صحت و قابلیت نگهداری بررسی کنید. هرگز کد هوش مصنوعی را بدون آزمایش مستقر نکنید.
 </Callout>
 
-## Code Generation
+## تولید کد
 
-### Do's and Don'ts: Code Prompts
+### بایدها و نبایدها: پرامپت‌های کد
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Write a function to validate emails." }}
-  after={{ label: "✓ Complete specification", content: "Write a Python function that validates email addresses.\n\nInput: string (potential email)\nOutput: tuple[bool, str | None] - (is_valid, error_message)\nHandle: empty string, None, unicode chars\nUse regex, include type hints and docstring." }}
+  before={{ label: "❌ درخواست مبهم", content: "یک تابع برای اعتبارسنجی ایمیل بنویس." }}
+  after={{ label: "✓ مشخصات کامل", content: "یک تابع Python بنویس که آدرس‌های ایمیل را اعتبارسنجی کند.\n\nورودی: string (ایمیل احتمالی)\nخروجی: tuple[bool, str | None] - (is_valid, error_message)\nمدیریت کن: رشته خالی، None، کاراکترهای یونیکد\nاز regex استفاده کن، type hints و docstring را شامل کن." }}
 />
 
-### Function Generation
+### تولید تابع
 
-<TryIt compact prompt={`Write a \${language:Python} function that \${description:validates email addresses}.
+<TryIt compact prompt={`یک تابع \${language:Python} بنویس که \${description:آدرس‌های ایمیل را اعتبارسنجی کند}.
 
-Requirements:
-- Input: \${inputTypes:string (potential email)}
-- Output: \${outputType:boolean and optional error message}
-- Handle edge cases: \${edgeCases:empty string, None, unicode characters}
-- Performance: \${performance:standard}
+الزامات:
+- ورودی: \${inputTypes:string (ایمیل احتمالی)}
+- خروجی: \${outputType:boolean و پیام خطای اختیاری}
+- موارد حاشیه‌ای را مدیریت کن: \${edgeCases:رشته خالی، None، کاراکترهای یونیکد}
+- عملکرد: \${performance:استاندارد}
 
-Include:
+شامل کن:
 - Type hints/annotations
-- Docstring with examples
-- Input validation
-- Error handling`} />
+- Docstring با مثال‌ها
+- اعتبارسنجی ورودی
+- مدیریت خطا`} />
 
-### Class/Module Generation
+### تولید کلاس/ماژول
 
-<TryIt compact prompt={`Create a \${language:Python} class for \${purpose:managing user sessions}.
+<TryIt compact prompt={`یک کلاس \${language:Python} برای \${purpose:مدیریت جلسات کاربر} ایجاد کن.
 
-Class design:
-- Name: \${className:SessionManager}
-- Responsibility: \${responsibility:handle user session lifecycle}
-- Properties: \${properties:session_id, user_id, created_at, expires_at}
-- Methods: \${methods:create(), validate(), refresh(), destroy()}
+طراحی کلاس:
+- نام: \${className:SessionManager}
+- مسئولیت: \${responsibility:مدیریت چرخه حیات جلسه کاربر}
+- ویژگی‌ها: \${properties:session_id, user_id, created_at, expires_at}
+- متدها: \${methods:create(), validate(), refresh(), destroy()}
 
-Requirements:
-- Follow \${designPattern:Singleton} pattern
-- Include proper encapsulation
-- Add comprehensive docstrings
-- Include usage example
+الزامات:
+- از الگوی \${designPattern:Singleton} پیروی کن
+- کپسوله‌سازی مناسب را شامل کن
+- docstring های جامع اضافه کن
+- مثال استفاده را شامل کن
 
-Testing:
-- Include unit test skeleton`} />
+آزمایش:
+- اسکلت unit test را شامل کن`} />
 
-### API Endpoint Generation
+### تولید API Endpoint
 
-<TryIt compact prompt={`Create a REST API endpoint for \${resource:user profiles}.
+<TryIt compact prompt={`یک REST API endpoint برای \${resource:پروفایل‌های کاربر} ایجاد کن.
 
-Framework: \${framework:FastAPI}
-Method: \${method:GET}
-Path: \${path:/api/users/{id}}
+فریم‌ورک: \${framework:FastAPI}
+متد: \${method:GET}
+مسیر: \${path:/api/users/{id}}
 
-Request:
+درخواست:
 - Headers: \${headers:Authorization Bearer token}
-- Body schema: \${bodySchema:N/A for GET}
+- Body schema: \${bodySchema:برای GET کاربردی ندارد}
 - Query params: \${queryParams:include_posts (boolean)}
 
-Response:
-- Success: \${successResponse:200 with user object}
-- Errors: \${errorResponses:401 Unauthorized, 404 Not Found}
+پاسخ:
+- موفقیت: \${successResponse:200 با آبجکت کاربر}
+- خطاها: \${errorResponses:401 Unauthorized, 404 Not Found}
 
-Include:
-- Input validation
-- Authentication check
-- Error handling
-- Rate limiting consideration`} />
+شامل کن:
+- اعتبارسنجی ورودی
+- بررسی احراز هویت
+- مدیریت خطا
+- ملاحظات rate limiting`} />
 
-## Debugging
+## اشکال‌زدایی
 
-<Callout type="tip" title="Debugging Principle">
-Always include the **expected behavior**, **actual behavior**, and **error message** (if any). The more context you provide, the faster AI can identify the root cause.
+<Callout type="tip" title="اصل اشکال‌زدایی">
+همیشه **رفتار مورد انتظار**، **رفتار واقعی** و **پیام خطا** (در صورت وجود) را شامل کنید. هرچه زمینه بیشتری ارائه دهید، هوش مصنوعی سریع‌تر می‌تواند علت اصلی را شناسایی کند.
 </Callout>
 
-### Bug Analysis
+### تحلیل باگ
 
-<TryIt compact prompt={`Debug this code. It should \${expectedBehavior:return the sum of all numbers} but instead \${actualBehavior:returns 0 for all inputs}.
+<TryIt compact prompt={`این کد را اشکال‌زدایی کن. باید \${expectedBehavior:مجموع همه اعداد را برگرداند} اما در عوض \${actualBehavior:برای همه ورودی‌ها 0 برمی‌گرداند}.
 
-Code:
-\${code:paste your code here}
+کد:
+\${code:کد خود را اینجا قرار دهید}
 
-Error message (if any):
-\${error:none}
+پیام خطا (در صورت وجود):
+\${error:هیچ}
 
-Steps to debug:
-1. Identify what the code is trying to do
-2. Trace through execution with the given input
-3. Find where expected and actual behavior diverge
-4. Explain the root cause
-5. Provide the fix with explanation`} />
+مراحل اشکال‌زدایی:
+1. شناسایی کن که کد چه کاری می‌خواهد انجام دهد
+2. اجرا را با ورودی داده‌شده دنبال کن
+3. پیدا کن کجا رفتار مورد انتظار و واقعی از هم جدا می‌شوند
+4. علت اصلی را توضیح بده
+5. راه‌حل را با توضیح ارائه بده`} />
 
-### Error Message Interpretation
+### تفسیر پیام خطا
 
-<TryIt compact prompt={`Explain this error and how to fix it:
+<TryIt compact prompt={`این خطا را توضیح بده و نحوه رفع آن را بگو:
 
-Error:
-\${errorMessage:paste error message or stack trace here}
+خطا:
+\${errorMessage:پیام خطا یا stack trace را اینجا قرار دهید}
 
-Context:
-- Language/Framework: \${framework:Python 3.11}
-- What I was trying to do: \${action:reading a JSON file}
-- Relevant code: \${codeSnippet:paste relevant code}
+زمینه:
+- زبان/فریم‌ورک: \${framework:Python 3.11}
+- کاری که می‌خواستم انجام دهم: \${action:خواندن یک فایل JSON}
+- کد مرتبط: \${codeSnippet:کد مرتبط را قرار دهید}
 
-Provide:
-1. Plain English explanation of the error
-2. Root cause
-3. Step-by-step fix
-4. How to prevent this in the future`} />
+ارائه بده:
+1. توضیح ساده خطا
+2. علت اصلی
+3. راه‌حل گام‌به‌گام
+4. نحوه جلوگیری از این مشکل در آینده`} />
 
-### Performance Debugging
+### اشکال‌زدایی عملکرد
 
-<TryIt compact prompt={`This code is slow. Analyze and optimize:
+<TryIt compact prompt={`این کد کند است. تحلیل و بهینه‌سازی کن:
 
-Code:
-\${code:paste your code here}
+کد:
+\${code:کد خود را اینجا قرار دهید}
 
-Current performance: \${currentPerformance:takes 30 seconds for 1000 items}
-Target performance: \${targetPerformance:under 5 seconds}
-Constraints: \${constraints:memory limit 512MB}
+عملکرد فعلی: \${currentPerformance:برای 1000 آیتم 30 ثانیه طول می‌کشد}
+عملکرد هدف: \${targetPerformance:زیر 5 ثانیه}
+محدودیت‌ها: \${constraints:محدودیت حافظه 512MB}
 
-Provide:
-1. Identify bottlenecks
-2. Explain why each is slow
-3. Suggest optimizations (ranked by impact)
-4. Show optimized code
-5. Estimate improvement`} />
+ارائه بده:
+1. شناسایی گلوگاه‌ها
+2. توضیح بده چرا هر کدام کند است
+3. بهینه‌سازی‌ها را پیشنهاد بده (رتبه‌بندی‌شده بر اساس تأثیر)
+4. کد بهینه‌شده را نشان بده
+5. بهبود را تخمین بزن`} />
 
-## Code Review
+## بازبینی کد
 
-### Do's and Don'ts: Code Review Prompts
+### بایدها و نبایدها: پرامپت‌های بازبینی کد
 
 <Compare 
-  before={{ label: "❌ Generic request", content: "Review this code." }}
-  after={{ label: "✓ Specific criteria", content: "Review this code for a pull request.\n\nCheck for:\n1. Correctness: bugs, logic errors, edge cases\n2. Security: injection risks, auth issues\n3. Performance: N+1 queries, memory leaks\n4. Maintainability: naming, complexity\n\nFormat: 🔴 Critical / 🟡 Important / 🟢 Suggestion" }}
+  before={{ label: "❌ درخواست کلی", content: "این کد را بررسی کن." }}
+  after={{ label: "✓ معیارهای مشخص", content: "این کد را برای یک pull request بررسی کن.\n\nبررسی کن برای:\n1. صحت: باگ‌ها، خطاهای منطقی، موارد حاشیه‌ای\n2. امنیت: خطرات تزریق، مشکلات احراز هویت\n3. عملکرد: کوئری‌های N+1، نشت حافظه\n4. قابلیت نگهداری: نام‌گذاری، پیچیدگی\n\nفرمت: 🔴 بحرانی / 🟡 مهم / 🟢 پیشنهاد" }}
 />
 
-### Comprehensive Review
+### بازبینی جامع
 
-<TryIt compact prompt={`Review this code for a pull request.
+<TryIt compact prompt={`این کد را برای یک pull request بررسی کن.
 
-Code:
-\${code:paste your code here}
+کد:
+\${code:کد خود را اینجا قرار دهید}
 
-Review for:
-1. **Correctness**: Bugs, logic errors, edge cases
-2. **Security**: Vulnerabilities, injection risks, auth issues
-3. **Performance**: Inefficiencies, N+1 queries, memory leaks
-4. **Maintainability**: Readability, naming, complexity
-5. **Best practices**: \${framework:Python/Django} conventions
+بررسی کن برای:
+1. **صحت**: باگ‌ها، خطاهای منطقی، موارد حاشیه‌ای
+2. **امنیت**: آسیب‌پذیری‌ها، خطرات تزریق، مشکلات احراز هویت
+3. **عملکرد**: ناکارآمدی‌ها، کوئری‌های N+1، نشت حافظه
+4. **قابلیت نگهداری**: خوانایی، نام‌گذاری، پیچیدگی
+5. **بهترین روش‌ها**: قراردادهای \${framework:Python/Django}
 
-Format your review as:
-🔴 Critical: must fix before merge
-🟡 Important: should fix
-🟢 Suggestion: nice to have
-💭 Question: clarification needed`} />
+بازبینی خود را به این فرمت ارائه بده:
+🔴 بحرانی: باید قبل از merge رفع شود
+🟡 مهم: باید رفع شود
+🟢 پیشنهاد: خوب است داشته باشیم
+💭 سؤال: نیاز به توضیح`} />
 
-### Security Review
+### بازبینی امنیتی
 
-<TryIt compact prompt={`Perform a security review of this code:
+<TryIt compact prompt={`یک بازبینی امنیتی از این کد انجام بده:
 
-Code:
-\${code:paste your code here}
+کد:
+\${code:کد خود را اینجا قرار دهید}
 
-Check for:
-- [ ] Injection vulnerabilities (SQL, XSS, command)
-- [ ] Authentication/authorization flaws
-- [ ] Sensitive data exposure
-- [ ] Insecure dependencies
-- [ ] Cryptographic issues
-- [ ] Input validation gaps
-- [ ] Error handling that leaks info
+بررسی کن برای:
+- [ ] آسیب‌پذیری‌های تزریق (SQL، XSS، command)
+- [ ] نقص‌های احراز هویت/مجوزدهی
+- [ ] افشای داده‌های حساس
+- [ ] وابستگی‌های ناامن
+- [ ] مشکلات رمزنگاری
+- [ ] شکاف‌های اعتبارسنجی ورودی
+- [ ] مدیریت خطایی که اطلاعات افشا می‌کند
 
-For each finding:
-- Severity: Critical/High/Medium/Low
-- Location: Line number or function
-- Issue: Description
-- Exploit: How it could be attacked
-- Fix: Recommended remediation`} />
+برای هر یافته:
+- شدت: بحرانی/بالا/متوسط/پایین
+- مکان: شماره خط یا تابع
+- مشکل: توضیحات
+- سوءاستفاده: چگونه می‌تواند مورد حمله قرار گیرد
+- راه‌حل: اصلاح پیشنهادی`} />
 
-## Refactoring
+## بازسازی
 
-### Code Smell Detection
+### شناسایی بوی کد
 
-<TryIt compact prompt={`Analyze this code for code smells and refactoring opportunities:
+<TryIt compact prompt={`این کد را برای بوی کد و فرصت‌های بازسازی تحلیل کن:
 
-Code:
-\${code:paste your code here}
+کد:
+\${code:کد خود را اینجا قرار دهید}
 
-Identify:
-1. Long methods (suggest extraction)
-2. Duplicate code (suggest DRY improvements)
-3. Complex conditionals (suggest simplification)
-4. Poor naming (suggest better names)
-5. Tight coupling (suggest decoupling)
+شناسایی کن:
+1. متدهای طولانی (استخراج را پیشنهاد بده)
+2. کد تکراری (بهبودهای DRY را پیشنهاد بده)
+3. شرط‌های پیچیده (ساده‌سازی را پیشنهاد بده)
+4. نام‌گذاری ضعیف (نام‌های بهتر پیشنهاد بده)
+5. وابستگی تنگاتنگ (جداسازی را پیشنهاد بده)
 
-For each issue, show before/after code.`} />
+برای هر مشکل، کد قبل/بعد را نشان بده.`} />
 
-### Design Pattern Application
+### اعمال الگوی طراحی
 
-<TryIt compact prompt={`Refactor this code using the \${patternName:Factory} pattern.
+<TryIt compact prompt={`این کد را با استفاده از الگوی \${patternName:Factory} بازسازی کن.
 
-Current code:
-\${code:paste your code here}
+کد فعلی:
+\${code:کد خود را اینجا قرار دهید}
 
-Goals:
-- \${whyPattern:decouple object creation from usage}
-- \${benefits:easier testing and extensibility}
+اهداف:
+- \${whyPattern:جداسازی ایجاد آبجکت از استفاده}
+- \${benefits:آزمایش و توسعه‌پذیری آسان‌تر}
 
-Provide:
-1. Explanation of the pattern
-2. How it applies here
-3. Refactored code
-4. Trade-offs to consider`} />
+ارائه بده:
+1. توضیح الگو
+2. چگونه اینجا اعمال می‌شود
+3. کد بازسازی‌شده
+4. مصالحه‌های قابل توجه`} />
 
-## Testing
+## آزمایش
 
-### Unit Test Generation
+### تولید Unit Test
 
-<TryIt compact prompt={`Write unit tests for this function:
+<TryIt compact prompt={`برای این تابع unit test بنویس:
 
-Function:
-\${code:paste your function here}
+تابع:
+\${code:تابع خود را اینجا قرار دهید}
 
-Testing framework: \${testFramework:pytest}
+فریم‌ورک آزمایش: \${testFramework:pytest}
 
-Cover:
-- Happy path (normal inputs)
-- Edge cases (empty, null, boundary values)
-- Error cases (invalid inputs)
-- \${specificScenarios:concurrent access, large inputs}
+پوشش بده:
+- مسیر موفق (ورودی‌های عادی)
+- موارد حاشیه‌ای (خالی، null، مقادیر مرزی)
+- موارد خطا (ورودی‌های نامعتبر)
+- \${specificScenarios:دسترسی همزمان، ورودی‌های بزرگ}
 
-Format: Arrange-Act-Assert pattern
-Include: Descriptive test names`} />
+فرمت: الگوی Arrange-Act-Assert
+شامل کن: نام‌های توصیفی تست`} />
 
-### Test Case Generation
+### تولید موارد تست
 
-<TryIt compact prompt={`Generate test cases for this feature:
+<TryIt compact prompt={`موارد تست برای این قابلیت تولید کن:
 
-Feature: \${featureDescription:user registration with email verification}
-Acceptance criteria: \${acceptanceCriteria:user can sign up, receives email, can verify account}
+قابلیت: \${featureDescription:ثبت‌نام کاربر با تأیید ایمیل}
+معیارهای پذیرش: \${acceptanceCriteria:کاربر می‌تواند ثبت‌نام کند، ایمیل دریافت کند، حساب را تأیید کند}
 
-Provide test cases in this format:
+موارد تست را به این فرمت ارائه بده:
 
-| ID | Scenario | Given | When | Then | Priority |
-|----|----------|-------|------|------|----------|
-| TC01 | ... | ... | ... | ... | High |`} />
+| شناسه | سناریو | فرض | وقتی | آنگاه | اولویت |
+|-------|--------|-----|------|-------|--------|
+| TC01 | ... | ... | ... | ... | بالا |`} />
 
-## Architecture & Design
+## معماری و طراحی
 
-### System Design
+### طراحی سیستم
 
-<TryIt compact prompt={`Design a system for \${requirement:real-time chat application}.
+<TryIt compact prompt={`یک سیستم برای \${requirement:برنامه چت بلادرنگ} طراحی کن.
 
-Constraints:
-- Expected load: \${expectedLoad:10,000 concurrent users}
-- Latency requirements: \${latency:< 100ms message delivery}
-- Availability: \${availability:99.9%}
-- Budget: \${budget:moderate, prefer open source}
+محدودیت‌ها:
+- بار مورد انتظار: \${expectedLoad:10,000 کاربر همزمان}
+- الزامات تأخیر: \${latency:کمتر از 100 میلی‌ثانیه تحویل پیام}
+- در دسترس بودن: \${availability:99.9%}
+- بودجه: \${budget:متوسط، ترجیح منبع باز}
 
-Provide:
-1. High-level architecture diagram (ASCII/text)
-2. Component descriptions
-3. Data flow
-4. Technology choices with rationale
-5. Scaling strategy
-6. Trade-offs and alternatives considered`} />
+ارائه بده:
+1. نمودار معماری سطح بالا (ASCII/متن)
+2. توضیحات اجزا
+3. جریان داده
+4. انتخاب‌های فناوری با دلیل
+5. استراتژی مقیاس‌پذیری
+6. مصالحه‌ها و جایگزین‌های بررسی‌شده`} />
 
-### Database Schema Design
+### طراحی Schema پایگاه داده
 
-<TryIt compact prompt={`Design a database schema for \${application:e-commerce platform}.
+<TryIt compact prompt={`یک schema پایگاه داده برای \${application:پلتفرم تجارت الکترونیک} طراحی کن.
 
-Requirements:
-- \${feature1:User accounts with profiles and addresses}
-- \${feature2:Product catalog with categories and variants}
-- \${feature3:Orders with line items and payment tracking}
+الزامات:
+- \${feature1:حساب‌های کاربری با پروفایل‌ها و آدرس‌ها}
+- \${feature2:کاتالوگ محصول با دسته‌بندی‌ها و انواع}
+- \${feature3:سفارشات با آیتم‌ها و ردیابی پرداخت}
 
-Provide:
-1. Entity-relationship description
-2. Table definitions with columns and types
-3. Indexes for common queries
-4. Foreign key relationships
-5. Sample queries for key operations`} />
+ارائه بده:
+1. توضیح رابطه موجودیت‌ها
+2. تعریف جداول با ستون‌ها و انواع
+3. ایندکس‌ها برای کوئری‌های رایج
+4. روابط کلید خارجی
+5. نمونه کوئری‌ها برای عملیات‌های کلیدی`} />
 
-## Documentation Generation
+## تولید مستندات
 
-### API Documentation
+### مستندات API
 
-<TryIt compact prompt={`Generate API documentation from this code:
+<TryIt compact prompt={`مستندات API از این کد تولید کن:
 
-Code:
-\${code:paste your endpoint code here}
+کد:
+\${code:کد endpoint خود را اینجا قرار دهید}
 
-Format: \${format:OpenAPI/Swagger YAML}
+فرمت: \${format:OpenAPI/Swagger YAML}
 
-Include:
-- Endpoint description
-- Request/response schemas
-- Example requests/responses
-- Error codes
-- Authentication requirements`} />
+شامل کن:
+- توضیح endpoint
+- schemaهای درخواست/پاسخ
+- نمونه درخواست‌ها/پاسخ‌ها
+- کدهای خطا
+- الزامات احراز هویت`} />
 
-### Inline Documentation
+### مستندات درون‌خطی
 
-<TryIt compact prompt={`Add comprehensive documentation to this code:
+<TryIt compact prompt={`مستندات جامع به این کد اضافه کن:
 
-Code:
-\${code:paste your code here}
+کد:
+\${code:کد خود را اینجا قرار دهید}
 
-Add:
-- File/module docstring (purpose, usage)
-- Function/method docstrings (params, returns, raises, examples)
-- Inline comments for complex logic only
-- Type hints if missing
+اضافه کن:
+- docstring فایل/ماژول (هدف، استفاده)
+- docstringهای تابع/متد (params، returns، raises، مثال‌ها)
+- کامنت‌های درون‌خطی فقط برای منطق پیچیده
+- type hints در صورت نبود
 
-Style: \${docStyle:Google}`} />
+سبک: \${docStyle:Google}`} />
 
-## Prompt Templates from prompts.chat
+## قالب‌های پرامپت از prompts.chat
 
-### Act as a Senior Developer
-
-```
-I want you to act as a senior software developer. I will provide 
-code and ask questions about it. You will review the code, suggest 
-improvements, explain concepts, and help debug issues. Your 
-responses should be educational and help me become a better 
-developer.
-```
-
-### Act as a Code Reviewer
+### نقش توسعه‌دهنده ارشد
 
 ```
-I want you to act as a code reviewer. I will provide pull requests 
-with code changes, and you will review them thoroughly. Check for 
-bugs, security issues, performance problems, and adherence to best 
-practices. Provide constructive feedback that helps the developer 
-improve.
+می‌خواهم نقش یک توسعه‌دهنده ارشد نرم‌افزار را ایفا کنی. من کد 
+ارائه می‌دهم و درباره آن سؤال می‌کنم. تو کد را بررسی می‌کنی، 
+بهبودها پیشنهاد می‌دهی، مفاهیم را توضیح می‌دهی و به 
+اشکال‌زدایی کمک می‌کنی. پاسخ‌هایت باید آموزنده باشد و به 
+من کمک کند توسعه‌دهنده بهتری شوم.
 ```
 
-### Act as a Software Architect
+### نقش بازبین کد
 
 ```
-I want you to act as a software architect. I will describe system 
-requirements and constraints, and you will design scalable, 
-maintainable architectures. Explain your design decisions, 
-trade-offs, and provide diagrams where helpful.
+می‌خواهم نقش یک بازبین کد را ایفا کنی. من pull requestها 
+با تغییرات کد ارائه می‌دهم و تو آن‌ها را به‌طور کامل بررسی 
+می‌کنی. باگ‌ها، مشکلات امنیتی، مسائل عملکردی و پایبندی 
+به بهترین روش‌ها را بررسی کن. بازخورد سازنده‌ای ارائه بده 
+که به توسعه‌دهنده کمک کند پیشرفت کند.
 ```
 
-## Development Workflow Integration
+### نقش معمار نرم‌افزار
 
-### Commit Message Generation
+```
+می‌خواهم نقش یک معمار نرم‌افزار را ایفا کنی. من الزامات 
+و محدودیت‌های سیستم را توصیف می‌کنم و تو معماری‌های 
+مقیاس‌پذیر و قابل نگهداری طراحی می‌کنی. تصمیمات طراحی، 
+مصالحه‌ها را توضیح بده و در صورت کمک، نمودار ارائه بده.
+```
 
-<TryIt compact prompt={`Generate a commit message for these changes:
+## یکپارچه‌سازی با گردش کار توسعه
+
+### تولید پیام Commit
+
+<TryIt compact prompt={`یک پیام commit برای این تغییرات تولید کن:
 
 Diff:
-\${diff:paste git diff here}
+\${diff:git diff را اینجا قرار دهید}
 
-Format: Conventional Commits
-Type: \${commitType:feat}
+فرمت: Conventional Commits
+نوع: \${commitType:feat}
 
-Provide:
-- Subject line (50 chars max, imperative mood)
-- Body (what and why, wrapped at 72 chars)
-- Footer (references issues if applicable)`} />
+ارائه بده:
+- خط موضوع (حداکثر 50 کاراکتر، حالت امری)
+- بدنه (چه و چرا، با شکستن خط در 72 کاراکتر)
+- پاورقی (ارجاع به issueها در صورت کاربرد)`} />
 
-### PR Description Generation
+### تولید توضیحات PR
 
-<TryIt compact prompt={`Generate a pull request description:
+<TryIt compact prompt={`توضیحات pull request تولید کن:
 
-Changes:
-\${changes:list your changes or paste diff summary}
+تغییرات:
+\${changes:تغییرات خود را لیست کن یا خلاصه diff را قرار بده}
 
-Template:
-## Summary
-Brief description of changes
+قالب:
+## خلاصه
+توضیح مختصر تغییرات
 
-## Changes Made
-- Change 1
-- Change 2
+## تغییرات انجام‌شده
+- تغییر 1
+- تغییر 2
 
-## Testing
-- [ ] Unit tests added/updated
-- [ ] Manual testing completed
+## آزمایش
+- [ ] unit testها اضافه/به‌روزرسانی شد
+- [ ] آزمایش دستی انجام شد
 
-## Screenshots (if UI changes)
+## تصاویر (اگر تغییرات UI)
 placeholder
 
-## Related Issues
-Closes #\${issueNumber:123}`} />
+## Issueهای مرتبط
+بسته می‌شود #\${issueNumber:123}`} />
 
-## Summary
+## خلاصه
 
-<Callout type="tip" title="Key Techniques">
-Include full context (language, framework, constraints), specify requirements precisely, request specific output formats, ask for explanations alongside code, and include edge cases to handle.
+<Callout type="tip" title="تکنیک‌های کلیدی">
+زمینه کامل (زبان، فریم‌ورک، محدودیت‌ها) را شامل کنید، الزامات را دقیقاً مشخص کنید، فرمت‌های خروجی مشخص درخواست کنید، توضیحات را همراه کد بخواهید و موارد حاشیه‌ای را برای مدیریت شامل کنید.
 </Callout>
 
 <Quiz 
-  question="What's the most important element to include when asking AI to debug code?"
+  question="مهم‌ترین عنصری که هنگام درخواست اشکال‌زدایی کد از هوش مصنوعی باید شامل کنید چیست؟"
   options={[
-    "The programming language only",
-    "Expected behavior, actual behavior, and error message",
-    "Just the code snippet",
-    "The file name"
+    "فقط زبان برنامه‌نویسی",
+    "رفتار مورد انتظار، رفتار واقعی و پیام خطا",
+    "فقط قطعه کد",
+    "نام فایل"
   ]}
   correctIndex={1}
-  explanation="Debugging requires context: what should happen vs. what actually happens. Error messages and stack traces help AI pinpoint the exact issue quickly."
+  explanation="اشکال‌زدایی نیاز به زمینه دارد: چه باید اتفاق بیفتد در مقابل چه واقعاً اتفاق می‌افتد. پیام‌های خطا و stack trace به هوش مصنوعی کمک می‌کند مشکل دقیق را سریعاً شناسایی کند."
 />
 
-AI is a powerful coding partner—use it for generation, review, debugging, and documentation while maintaining your architectural judgment.
+هوش مصنوعی یک شریک قدرتمند برنامه‌نویسی است—از آن برای تولید، بازبینی، اشکال‌زدایی و مستندسازی استفاده کنید در حالی که قضاوت معماری خود را حفظ می‌کنید.
