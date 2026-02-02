@@ -1,16 +1,16 @@
-Few-shot learning is one of the most powerful prompting techniques. By providing examples of what you want, you can teach the model complex tasks without any fine-tuning.
+یادگیری few-shot یکی از قدرتمندترین تکنیک‌های پرامپت‌نویسی است. با ارائه نمونه‌هایی از آنچه می‌خواهید، می‌توانید وظایف پیچیده را بدون هیچگونه fine-tuning به مدل آموزش دهید.
 
-<Callout type="info" title="Learn by Example">
-Just like humans learn by seeing examples, AI models can learn patterns from the examples you provide in your prompt.
+<Callout type="info" title="یادگیری از طریق مثال">
+همانطور که انسان‌ها از طریق دیدن مثال‌ها یاد می‌گیرند، مدل‌های هوش مصنوعی نیز می‌توانند الگوها را از مثال‌هایی که در پرامپت خود ارائه می‌دهید، یاد بگیرند.
 </Callout>
 
-## What is Few-Shot Learning?
+## یادگیری Few-Shot چیست؟
 
-Few-shot learning shows the model examples of input-output pairs before asking it to perform the same task. The model learns the pattern from your examples and applies it to new inputs.
+یادگیری few-shot قبل از درخواست انجام همان وظیفه، نمونه‌هایی از جفت‌های ورودی-خروجی را به مدل نشان می‌دهد. مدل الگو را از مثال‌های شما یاد می‌گیرد و آن را روی ورودی‌های جدید اعمال می‌کند.
 
 <Compare 
   before={{ 
-    label: "Zero-Shot (No Examples)", 
+    label: "Zero-Shot (بدون مثال)", 
     content: `Classify this review as positive or negative:
 
 "The battery lasts forever but the screen is too dim."
@@ -18,7 +18,7 @@ Few-shot learning shows the model examples of input-output pairs before asking i
 → Model may be inconsistent with edge cases` 
   }}
   after={{ 
-    label: "Few-Shot (With Examples)", 
+    label: "Few-Shot (با مثال)", 
     content: `"Love it!" → Positive
 "Terrible quality" → Negative  
 "Good but expensive" → Mixed
@@ -49,19 +49,19 @@ Now classify:
   </div>
 </div>
 
-## Why Examples Work
+## چرا مثال‌ها کار می‌کنند
 
 <FewShotDemo />
 
-Examples communicate:
-- **Format**: How output should be structured
-- **Style**: Tone, length, vocabulary
-- **Logic**: The reasoning pattern to follow
-- **Edge cases**: How to handle special situations
+مثال‌ها موارد زیر را منتقل می‌کنند:
+- **قالب**: خروجی چگونه باید ساختاربندی شود
+- **سبک**: لحن، طول، واژگان
+- **منطق**: الگوی استدلالی که باید دنبال شود
+- **موارد خاص**: نحوه برخورد با موقعیت‌های ویژه
 
-## Basic Few-Shot Pattern
+## الگوی پایه Few-Shot
 
-The fundamental structure of few-shot prompting follows a simple pattern: show examples, then ask for the new task. Consistency in formatting between examples is crucial. The model learns from the pattern you establish.
+ساختار اساسی پرامپت‌نویسی few-shot از یک الگوی ساده پیروی می‌کند: نشان دادن مثال‌ها، سپس درخواست وظیفه جدید. یکپارچگی در قالب‌بندی بین مثال‌ها بسیار مهم است. مدل از الگویی که شما ایجاد می‌کنید یاد می‌گیرد.
 
 ```
 [Example 1]
@@ -81,17 +81,17 @@ Input: [new input]
 Output:
 ```
 
-## Few-Shot for Classification
+## Few-Shot برای طبقه‌بندی
 
-Classification is one of the strongest use cases for few-shot learning. By showing examples of each category, you define the boundaries between classes more precisely than instructions alone could achieve.
+طبقه‌بندی یکی از قوی‌ترین موارد استفاده برای یادگیری few-shot است. با نشان دادن مثال‌هایی از هر دسته، مرزهای بین کلاس‌ها را دقیق‌تر از آنچه دستورالعمل‌ها به تنهایی می‌توانند انجام دهند، تعریف می‌کنید.
 
-### Sentiment Analysis
+### تحلیل احساسات
 
-<Callout type="info" title="What is Sentiment Analysis?">
-Sentiment analysis classifies text by emotional tone: positive, negative, neutral, or mixed. It's widely used for customer feedback, social media monitoring, and brand perception tracking.
+<Callout type="info" title="تحلیل احساسات چیست؟">
+تحلیل احساسات متن را بر اساس لحن عاطفی طبقه‌بندی می‌کند: مثبت، منفی، خنثی، یا مختلط. این روش به طور گسترده برای بازخورد مشتریان، نظارت بر شبکه‌های اجتماعی و ردیابی ادراک برند استفاده می‌شود.
 </Callout>
 
-Sentiment classification benefits from showing examples of each sentiment type, especially edge cases like "mixed" sentiment that might be ambiguous.
+طبقه‌بندی احساسات از نشان دادن مثال‌هایی از هر نوع احساس بهره می‌برد، به ویژه موارد خاص مانند احساس "مختلط" که ممکن است مبهم باشد.
 
 <TryIt compact prompt={`Classify the sentiment of these customer reviews.
 
@@ -111,9 +111,9 @@ Now classify:
 Review: "Love the design but the battery life is disappointing."
 Sentiment:`} />
 
-### Topic Classification
+### طبقه‌بندی موضوعی
 
-For multi-class categorization, include at least one example per category. This helps the model understand your specific taxonomy, which may differ from its default understanding.
+برای دسته‌بندی چند کلاسه، حداقل یک مثال برای هر دسته قرار دهید. این به مدل کمک می‌کند تا طبقه‌بندی خاص شما را درک کند، که ممکن است با درک پیش‌فرض آن متفاوت باشد.
 
 <TryIt compact prompt={`Categorize these support tickets.
 
@@ -133,13 +133,13 @@ Now categorize:
 Ticket: "My payment was declined but I see the charge on my card"
 Category:`} />
 
-## Few-Shot for Transformation
+## Few-Shot برای تبدیل
 
-Transformation tasks convert input from one form to another while preserving meaning. Examples are essential here because they define exactly what "transformation" means for your use case.
+وظایف تبدیل، ورودی را از یک شکل به شکل دیگر تبدیل می‌کنند در حالی که معنا را حفظ می‌کنند. مثال‌ها در اینجا ضروری هستند زیرا دقیقاً مشخص می‌کنند که "تبدیل" برای مورد استفاده شما به چه معناست.
 
-### Text Rewriting
+### بازنویسی متن
 
-Style transformation requires examples that show the exact tone shift you want. Abstract instructions like "make it professional" are interpreted differently. Examples make it concrete.
+تبدیل سبک نیاز به مثال‌هایی دارد که دقیقاً تغییر لحن مورد نظر شما را نشان دهند. دستورالعمل‌های انتزاعی مانند "حرفه‌ای‌ترش کن" به طور متفاوتی تفسیر می‌شوند. مثال‌ها آن را ملموس می‌کنند.
 
 <TryIt compact prompt={`Rewrite these sentences in a professional tone.
 
@@ -156,9 +156,9 @@ Now rewrite:
 Casual: "Can't make it to the meeting, something came up."
 Professional:`} />
 
-### Format Conversion
+### تبدیل قالب
 
-Format conversion tasks benefit from examples showing edge cases and ambiguous inputs. The model learns your specific conventions for handling tricky cases.
+وظایف تبدیل قالب از مثال‌هایی که موارد خاص و ورودی‌های مبهم را نشان می‌دهند بهره می‌برند. مدل قراردادهای خاص شما را برای برخورد با موارد پیچیده یاد می‌گیرد.
 
 <TryIt compact prompt={`Convert these natural language dates to ISO format.
 
@@ -178,13 +178,13 @@ Now convert:
 Input: "the first Monday of next month"
 Output:`} />
 
-## Few-Shot for Generation
+## Few-Shot برای تولید محتوا
 
-Generation tasks create new content following a learned pattern. Examples establish length, structure, tone, and what details to highlight. These are hard to specify in instructions alone.
+وظایف تولید، محتوای جدید را با پیروی از یک الگوی یاد گرفته شده ایجاد می‌کنند. مثال‌ها طول، ساختار، لحن و جزئیاتی که باید برجسته شوند را تعیین می‌کنند. مشخص کردن این موارد فقط با دستورالعمل‌ها دشوار است.
 
-### Product Descriptions
+### توضیحات محصول
 
-Marketing copy benefits enormously from examples because they capture brand voice, feature emphasis, and persuasive techniques that are difficult to describe abstractly.
+متن بازاریابی به شدت از مثال‌ها بهره می‌برد زیرا آنها صدای برند، تأکید بر ویژگی‌ها و تکنیک‌های متقاعدکننده را که توصیف انتزاعی آنها دشوار است، منتقل می‌کنند.
 
 <TryIt compact prompt={`Write product descriptions in this style:
 
@@ -201,13 +201,13 @@ Now write:
 Product: Portable Phone Charger
 Description:`} />
 
-### Code Documentation
+### مستندسازی کد
 
-<Callout type="info" title="Why Document Code?">
-Good documentation explains what code does, its parameters, return values, and usage examples. Consistent docstrings enable auto-generated API docs and help IDEs provide better code completion.
+<Callout type="info" title="چرا کد را مستند کنیم؟">
+مستندات خوب توضیح می‌دهد که کد چه کاری انجام می‌دهد، پارامترها، مقادیر بازگشتی و مثال‌های استفاده آن چیست. docstring‌های یکپارچه امکان تولید خودکار مستندات API را فراهم می‌کنند و به IDE‌ها کمک می‌کنند تا تکمیل کد بهتری ارائه دهند.
 </Callout>
 
-Documentation style varies widely between projects. Examples teach your specific format, what to include (args, returns, examples), and the level of detail expected.
+سبک مستندسازی بین پروژه‌ها بسیار متفاوت است. مثال‌ها قالب خاص شما، آنچه باید شامل شود (args، returns، examples) و سطح جزئیات مورد انتظار را آموزش می‌دهند.
 
 <TryIt compact prompt={`Write documentation comments for these functions:
 
@@ -239,17 +239,17 @@ def is_palindrome(text):
 
 Documentation:`} />
 
-## Few-Shot for Extraction
+## Few-Shot برای استخراج
 
-Extraction tasks pull structured information from unstructured text. Examples define which entities matter, how to format output, and how to handle cases where information is missing or ambiguous.
+وظایف استخراج، اطلاعات ساختاریافته را از متن غیرساختاریافته بیرون می‌کشند. مثال‌ها مشخص می‌کنند کدام موجودیت‌ها مهم هستند، خروجی چگونه قالب‌بندی شود و چگونه با مواردی که اطلاعات گم شده یا مبهم است برخورد شود.
 
-### Entity Extraction
+### استخراج موجودیت
 
-<Callout type="info" title="What is Named Entity Recognition?">
-Named Entity Recognition (NER) identifies and classifies named entities in text into categories like persons, organizations, locations, dates, and products. It's fundamental for information retrieval and knowledge graphs.
+<Callout type="info" title="تشخیص موجودیت نامدار چیست؟">
+تشخیص موجودیت نامدار (NER) موجودیت‌های نامدار را در متن شناسایی کرده و در دسته‌هایی مانند اشخاص، سازمان‌ها، مکان‌ها، تاریخ‌ها و محصولات طبقه‌بندی می‌کند. این روش برای بازیابی اطلاعات و گراف‌های دانش اساسی است.
 </Callout>
 
-NER benefits from examples showing your specific entity types and how to handle entities that could fit multiple categories.
+NER از مثال‌هایی که انواع موجودیت خاص شما و نحوه برخورد با موجودیت‌هایی که می‌توانند در چند دسته قرار گیرند بهره می‌برد.
 
 <TryIt compact prompt={`Extract named entities from these sentences.
 
@@ -271,9 +271,9 @@ Now extract from:
 Text: "Elon Musk's SpaceX launched 23 Starlink satellites from Cape Canaveral on December 3rd."
 Entities:`} />
 
-### Structured Data Extraction
+### استخراج داده‌های ساختاریافته
 
-Extracting structured data from natural language requires examples showing how to handle missing fields, implicit information, and varying input formats.
+استخراج داده‌های ساختاریافته از زبان طبیعی نیاز به مثال‌هایی دارد که نحوه برخورد با فیلدهای گمشده، اطلاعات ضمنی و قالب‌های ورودی متفاوت را نشان دهند.
 
 <TryIt compact prompt={`Extract meeting details into structured format.
 
@@ -300,13 +300,13 @@ Email: "Can we do a quick call Monday morning around 9:30 to go over the client 
 
 Meeting:`} />
 
-## Advanced Few-Shot Techniques
+## تکنیک‌های پیشرفته Few-Shot
 
-Beyond basic few-shot, several techniques can improve results for complex tasks.
+فراتر از few-shot پایه، چندین تکنیک می‌توانند نتایج را برای وظایف پیچیده بهبود بخشند.
 
-### Diverse Examples
+### مثال‌های متنوع
 
-Diversity in examples is more valuable than quantity. Cover different scenarios, edge cases, and potential ambiguities rather than showing similar examples repeatedly.
+تنوع در مثال‌ها ارزشمندتر از تعداد است. سناریوهای مختلف، موارد خاص و ابهامات احتمالی را پوشش دهید به جای اینکه مثال‌های مشابه را به طور مکرر نشان دهید.
 
 <TryIt compact prompt={`Respond to customer complaints.
 
@@ -326,13 +326,13 @@ Now respond to:
 Customer: "The product doesn't match what was shown on the website."
 Response:`} />
 
-### Negative Examples
+### مثال‌های منفی
 
-<Callout type="tip" title="Contrastive Learning">
-Showing "good" vs "bad" examples is called contrastive learning. It helps the model understand not just what you want, but what to avoid. This is especially useful for style and quality judgments.
+<Callout type="tip" title="یادگیری تقابلی">
+نشان دادن مثال‌های "خوب" در مقابل "بد" یادگیری تقابلی نامیده می‌شود. این به مدل کمک می‌کند نه تنها آنچه می‌خواهید را درک کند، بلکه آنچه باید اجتناب شود را نیز بفهمد. این روش به ویژه برای قضاوت‌های سبک و کیفیت مفید است.
 </Callout>
 
-Sometimes showing what *not* to do is as valuable as showing correct examples. Negative examples help the model understand boundaries and avoid common mistakes.
+گاهی نشان دادن آنچه *نباید* انجام داد به اندازه نشان دادن مثال‌های صحیح ارزشمند است. مثال‌های منفی به مدل کمک می‌کنند مرزها را درک کند و از اشتباهات رایج اجتناب کند.
 
 <TryIt compact prompt={`Write concise email subject lines.
 
@@ -349,9 +349,9 @@ Now write a subject line for:
 Email about: Requesting feedback on a proposal draft
 Subject:`} />
 
-### Edge Case Examples
+### مثال‌های موارد خاص
 
-Edge cases often determine whether a solution works in production. Including unusual inputs in your examples prevents the model from failing on real-world data that doesn't fit the "happy path."
+موارد خاص اغلب تعیین می‌کنند که آیا یک راه‌حل در محیط واقعی کار می‌کند یا خیر. گنجاندن ورودی‌های غیرمعمول در مثال‌های شما از شکست مدل روی داده‌های دنیای واقعی که با "مسیر خوشحال" مطابقت ندارند جلوگیری می‌کند.
 
 <TryIt compact prompt={`Parse names into structured format.
 
@@ -371,36 +371,36 @@ Now parse:
 Input: "Sir Patrick Stewart III"
 Output:`} />
 
-## How Many Examples?
+## چند مثال؟
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Simple classification</span>
+    <span className="font-semibold min-w-40">طبقه‌بندی ساده</span>
     <span className="text-primary font-mono">2-3</span>
-    <span className="text-muted-foreground">One per category minimum</span>
+    <span className="text-muted-foreground">حداقل یکی برای هر دسته</span>
   </div>
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Complex formatting</span>
+    <span className="font-semibold min-w-40">قالب‌بندی پیچیده</span>
     <span className="text-primary font-mono">3-5</span>
-    <span className="text-muted-foreground">Show variations</span>
+    <span className="text-muted-foreground">تنوع را نشان دهید</span>
   </div>
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Nuanced style</span>
+    <span className="font-semibold min-w-40">سبک ظریف</span>
     <span className="text-primary font-mono">4-6</span>
-    <span className="text-muted-foreground">Capture full range</span>
+    <span className="text-muted-foreground">دامنه کامل را پوشش دهید</span>
   </div>
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Edge cases</span>
+    <span className="font-semibold min-w-40">موارد خاص</span>
     <span className="text-primary font-mono">1-2</span>
-    <span className="text-muted-foreground">Alongside normal examples</span>
+    <span className="text-muted-foreground">در کنار مثال‌های معمولی</span>
   </div>
 </div>
 
-## Example Quality Matters
+## کیفیت مثال‌ها مهم است
 
 <Compare 
   before={{ 
-    label: "Bad Examples", 
+    label: "مثال‌های بد", 
     content: `"Nice product" → Good
 "Nice service" → Good
 "Nice price" → Good
@@ -410,7 +410,7 @@ Output:`} />
 ✗ No edge cases shown` 
   }}
   after={{ 
-    label: "Good Examples", 
+    label: "مثال‌های خوب", 
     content: `"Exceeded expectations!" → Positive
 "Broken on arrival" → Negative
 "Works fine, nothing special" → Neutral
@@ -422,13 +422,13 @@ Output:`} />
   }}
 />
 
-## Combining Few-Shot with Other Techniques
+## ترکیب Few-Shot با تکنیک‌های دیگر
 
-Few-shot learning combines powerfully with other prompting techniques. The examples provide the "what" while other techniques can add context, reasoning, or structure.
+یادگیری few-shot به طور قدرتمندی با تکنیک‌های دیگر پرامپت‌نویسی ترکیب می‌شود. مثال‌ها "چه چیزی" را فراهم می‌کنند در حالی که تکنیک‌های دیگر می‌توانند زمینه، استدلال یا ساختار اضافه کنند.
 
-### Few-Shot + Role
+### Few-Shot + نقش
 
-Adding a role gives the model context for *why* it's doing the task, which can improve quality and consistency.
+افزودن یک نقش به مدل زمینه می‌دهد که *چرا* این وظیفه را انجام می‌دهد، که می‌تواند کیفیت و یکپارچگی را بهبود بخشد.
 
 ```
 You are a legal contract reviewer.
@@ -440,7 +440,7 @@ Now analyze: [new clause]
 
 ### Few-Shot + CoT
 
-Combining few-shot with Chain of Thought shows not just *what* answer to give, but *how* to reason through to that answer. This is powerful for tasks requiring judgment.
+ترکیب few-shot با Chain of Thought نه تنها *چه* پاسخی باید داده شود، بلکه *چگونه* باید به آن پاسخ رسید را نشان می‌دهد. این برای وظایفی که نیاز به قضاوت دارند قدرتمند است.
 
 ```
 Classify and explain reasoning.
@@ -457,22 +457,22 @@ Now classify with reasoning:
 Review: "Exactly what I needed, arrived faster than expected"
 ```
 
-## Summary
+## خلاصه
 
-<Callout type="tip" title="Key Takeaways">
-Few-shot learning teaches through demonstration and is often more effective than instructions alone. Use 2-5 diverse, correct examples and combine with other techniques for best results.
+<Callout type="tip" title="نکات کلیدی">
+یادگیری few-shot از طریق نمایش آموزش می‌دهد و اغلب مؤثرتر از دستورالعمل‌ها به تنهایی است. از ۲ تا ۵ مثال متنوع و صحیح استفاده کنید و برای بهترین نتایج با تکنیک‌های دیگر ترکیب کنید.
 </Callout>
 
 <Quiz 
-  question="How many examples should you typically provide in few-shot learning?"
+  question="معمولاً چند مثال باید در یادگیری few-shot ارائه دهید؟"
   options={[
-    "As many as possible (10+)",
-    "Just 1 example is always enough",
-    "2-5 diverse, correct examples",
-    "Examples aren't necessary if instructions are clear"
+    "هرچه بیشتر بهتر (۱۰+)",
+    "فقط ۱ مثال همیشه کافی است",
+    "۲ تا ۵ مثال متنوع و صحیح",
+    "اگر دستورالعمل‌ها واضح باشند، مثال لازم نیست"
   ]}
   correctIndex={2}
-  explanation="2-5 diverse, correct examples typically work best. Too few may not capture the pattern, while too many waste tokens and may confuse the model. Quality and diversity matter more than quantity."
+  explanation="۲ تا ۵ مثال متنوع و صحیح معمولاً بهترین عملکرد را دارند. تعداد کم ممکن است الگو را منتقل نکند، در حالی که تعداد زیاد توکن‌ها را هدر می‌دهد و ممکن است مدل را گیج کند. کیفیت و تنوع مهم‌تر از تعداد است."
 />
 
-In the next chapter, we'll explore iterative refinement: the art of improving prompts through successive attempts.
+در فصل بعدی، اصلاح تکراری را بررسی خواهیم کرد: هنر بهبود پرامپت‌ها از طریق تلاش‌های متوالی.

@@ -137,142 +137,142 @@
 4. Κάνε μια σύσταση με σαφή αιτιολόγηση`}
 />
 
-## Principle 5: Iterate and Refine
+## Αρχή 5: Επαναλάβετε και Βελτιώστε
 
-Prompt engineering is an iterative process. Your first prompt is rarely your best.
+Το prompt engineering είναι μια επαναληπτική διαδικασία. Το πρώτο σας prompt σπάνια είναι το καλύτερό σας.
 
-### The Iteration Cycle
+### Ο Κύκλος Επανάληψης
 
 ```
-1. Write initial prompt
-2. Review output
-3. Identify gaps or issues
-4. Refine prompt
-5. Repeat until satisfied
+1. Γράψτε αρχικό prompt
+2. Αξιολογήστε την έξοδο
+3. Εντοπίστε κενά ή προβλήματα
+4. Βελτιώστε το prompt
+5. Επαναλάβετε μέχρι να είστε ικανοποιημένοι
 ```
 
-### Common Refinements
+### Κοινές Βελτιώσεις
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Too verbose</span>
-    <span className="text-muted-foreground">Add "Be concise" or length limits</span>
+    <span className="font-semibold min-w-32">Πολύ μακροσκελές</span>
+    <span className="text-muted-foreground">Προσθέστε "Να είσαι συνοπτικός" ή όρια μήκους</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Too vague</span>
-    <span className="text-muted-foreground">Add specific examples or constraints</span>
+    <span className="font-semibold min-w-32">Πολύ αόριστο</span>
+    <span className="text-muted-foreground">Προσθέστε συγκεκριμένα παραδείγματα ή περιορισμούς</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Wrong format</span>
-    <span className="text-muted-foreground">Specify exact output structure</span>
+    <span className="font-semibold min-w-32">Λάθος μορφή</span>
+    <span className="text-muted-foreground">Καθορίστε ακριβή δομή εξόδου</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Missing aspects</span>
-    <span className="text-muted-foreground">Add "Make sure to include..."</span>
+    <span className="font-semibold min-w-32">Λείπουν πτυχές</span>
+    <span className="text-muted-foreground">Προσθέστε "Σιγουρέψου να συμπεριλάβεις..."</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Wrong tone</span>
-    <span className="text-muted-foreground">Specify audience and style</span>
+    <span className="font-semibold min-w-32">Λάθος τόνος</span>
+    <span className="text-muted-foreground">Καθορίστε κοινό και στυλ</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Inaccurate</span>
-    <span className="text-muted-foreground">Request citations or step-by-step reasoning</span>
+    <span className="font-semibold min-w-32">Ανακριβές</span>
+    <span className="text-muted-foreground">Ζητήστε αναφορές ή βήμα-βήμα συλλογισμό</span>
   </div>
 </div>
 
-### Keep a Prompt Journal
+### Κρατήστε Ημερολόγιο Prompts
 
-Document what works:
+Καταγράψτε τι λειτουργεί:
 ```
-Task: Code review
-Version 1: "Review this code" → Too generic
-Version 2: Added specific review criteria → Better
-Version 3: Added example of good review → Excellent
-Final: [Save successful prompt as template]
+Εργασία: Αναθεώρηση κώδικα
+Έκδοση 1: "Αναθεώρησε αυτόν τον κώδικα" → Πολύ γενικό
+Έκδοση 2: Προστέθηκαν συγκεκριμένα κριτήρια αναθεώρησης → Καλύτερο
+Έκδοση 3: Προστέθηκε παράδειγμα καλής αναθεώρησης → Εξαιρετικό
+Τελικό: [Αποθηκεύστε επιτυχημένο prompt ως template]
 ```
 
-## Principle 6: Leverage the Model's Strengths
+## Αρχή 6: Αξιοποιήστε τα Δυνατά Σημεία του Μοντέλου
 
-Work with how models are trained, not against them.
+Δουλέψτε με το πώς εκπαιδεύονται τα μοντέλα, όχι εναντίον τους.
 
-### Models Want to Be Helpful
+### Τα Μοντέλα Θέλουν να Βοηθήσουν
 
-Frame requests as things a helpful assistant would naturally do:
+Πλαισιώστε τα αιτήματα ως πράγματα που ένας βοηθητικός βοηθός θα έκανε φυσικά:
 
 <Compare 
-  before={{ label: "Against the grain", content: "I know you can't do this, but try to..." }}
-  after={{ label: "With the grain", content: "Help me understand...\nI'm working on X and need assistance with...\nCould you walk me through..." }}
+  before={{ label: "Κόντρα στο ρεύμα", content: "Ξέρω ότι δεν μπορείς να το κάνεις αυτό, αλλά προσπάθησε να..." }}
+  after={{ label: "Με το ρεύμα", content: "Βοήθησέ με να καταλάβω...\nΔουλεύω στο Χ και χρειάζομαι βοήθεια με...\nΜπορείς να με καθοδηγήσεις..." }}
 />
 
-### Models Excel at Patterns
+### Τα Μοντέλα Υπερέχουν σε Μοτίβα
 
-If you need consistent output, show the pattern:
+Αν χρειάζεστε συνεπή έξοδο, δείξτε το μοτίβο:
 
 <TryIt 
-  title="Pattern Example"
-  description="This prompt shows the AI exactly what format you want for book recommendations."
-  prompt={`Recommend 3 science fiction books. Format each recommendation as:
+  title="Παράδειγμα Μοτίβου"
+  description="Αυτό το prompt δείχνει στην AI ακριβώς τη μορφή που θέλετε για προτάσεις βιβλίων."
+  prompt={`Πρότεινε 3 βιβλία επιστημονικής φαντασίας. Μορφοποίησε κάθε πρόταση ως:
 
-📚 **[Title]** by [Author]
-*[Genre] | [Publication Year]*
-[2-sentence description]
-Why you'll love it: [1 sentence hook]
+📚 **[Τίτλος]** από [Συγγραφέας]
+*[Είδος] | [Έτος Δημοσίευσης]*
+[Περιγραφή 2 προτάσεων]
+Γιατί θα σου αρέσει: [1 πρόταση hook]
 
 ---`}
 />
 
-### Models Can Role-Play
+### Τα Μοντέλα Μπορούν να Παίξουν Ρόλους
 
-Use personas to access different "modes" of response:
-
-```
-As a devil's advocate, argue against my proposal...
-As a supportive mentor, help me improve...
-As a skeptical investor, question this business plan...
-```
-
-## Principle 7: Control Output Structure
-
-Structured outputs are more useful than free-form text.
-
-### Request Specific Formats
+Χρησιμοποιήστε personas για πρόσβαση σε διαφορετικούς "τρόπους" απάντησης:
 
 ```
-Return your analysis as:
-
-SUMMARY: [1 sentence]
-
-KEY FINDINGS:
-• [Finding 1]
-• [Finding 2]
-• [Finding 3]
-
-RECOMMENDATION: [1-2 sentences]
-
-CONFIDENCE: [Low/Medium/High] because [reason]
+Ως συνήγορος του διαβόλου, επιχειρηματολόγησε εναντίον της πρότασής μου...
+Ως υποστηρικτικός μέντορας, βοήθησέ με να βελτιωθώ...
+Ως σκεπτικός επενδυτής, αμφισβήτησε αυτό το επιχειρηματικό σχέδιο...
 ```
 
-### Use Delimiters
+## Αρχή 7: Ελέγξτε τη Δομή Εξόδου
 
-Clearly separate sections of your prompt:
+Οι δομημένες εξόδοι είναι πιο χρήσιμες από το ελεύθερο κείμενο.
 
-```
-### CONTEXT ###
-[Your context here]
-
-### TASK ###
-[Your task here]
-
-### FORMAT ###
-[Desired format here]
-```
-
-### Request Machine-Readable Output
-
-For programmatic use:
+### Ζητήστε Συγκεκριμένες Μορφές
 
 ```
-Return only valid JSON, no explanation:
+Επέστρεψε την ανάλυσή σου ως:
+
+ΣΥΝΟΨΗ: [1 πρόταση]
+
+ΒΑΣΙΚΑ ΕΥΡΗΜΑΤΑ:
+• [Εύρημα 1]
+• [Εύρημα 2]
+• [Εύρημα 3]
+
+ΣΥΣΤΑΣΗ: [1-2 προτάσεις]
+
+ΕΜΠΙΣΤΟΣΥΝΗ: [Χαμηλή/Μέση/Υψηλή] επειδή [λόγος]
+```
+
+### Χρησιμοποιήστε Διαχωριστές
+
+Διαχωρίστε ξεκάθαρα τις ενότητες του prompt σας:
+
+```
+### ΠΛΑΙΣΙΟ ###
+[Το πλαίσιό σας εδώ]
+
+### ΕΡΓΑΣΙΑ ###
+[Η εργασία σας εδώ]
+
+### ΜΟΡΦΗ ###
+[Επιθυμητή μορφή εδώ]
+```
+
+### Ζητήστε Έξοδο Αναγνώσιμη από Μηχανή
+
+Για προγραμματιστική χρήση:
+
+```
+Επέστρεψε μόνο έγκυρο JSON, χωρίς εξήγηση:
 {
   "decision": "approve" | "reject" | "review",
   "confidence": 0.0-1.0,
@@ -280,94 +280,94 @@ Return only valid JSON, no explanation:
 }
 ```
 
-## Principle 8: Verify and Validate
+## Αρχή 8: Επαληθεύστε και Επικυρώστε
 
-Never blindly trust model outputs, especially for important tasks.
+Μην εμπιστεύεστε τυφλά τις εξόδους του μοντέλου, ειδικά για σημαντικές εργασίες.
 
-### Ask for Reasoning
-
-```
-Solve this problem and show your work step by step.
-After solving, verify your answer by [checking method].
-```
-
-### Request Multiple Perspectives
+### Ζητήστε Συλλογισμό
 
 ```
-Give me three different approaches to solve this problem.
-For each, explain the trade-offs.
+Λύσε αυτό το πρόβλημα και δείξε τη δουλειά σου βήμα-βήμα.
+Μετά τη λύση, επαλήθευσε την απάντησή σου με [μέθοδος ελέγχου].
 ```
 
-### Build in Self-Checking
+### Ζητήστε Πολλαπλές Προοπτικές
 
 ```
-After generating the code, review it for:
-- Syntax errors
-- Edge cases
-- Security vulnerabilities
-List any issues found.
+Δώσε μου τρεις διαφορετικές προσεγγίσεις για να λύσω αυτό το πρόβλημα.
+Για καθεμία, εξήγησε τα trade-offs.
 ```
 
-## Summary: The Principles at a Glance
+### Ενσωματώστε Αυτο-έλεγχο
+
+```
+Μετά τη δημιουργία του κώδικα, αναθεώρησέ τον για:
+- Συντακτικά λάθη
+- Ακραίες περιπτώσεις
+- Ευπάθειες ασφαλείας
+Κατονόμασε τυχόν προβλήματα που βρέθηκαν.
+```
+
+## Σύνοψη: Οι Αρχές με μια Ματιά
 
 <PrinciplesSummary />
 
 <Quiz 
-  question="Which principle suggests you should include all relevant background information in your prompt?"
+  question="Ποια αρχή προτείνει να συμπεριλάβετε όλες τις σχετικές πληροφορίες υποβάθρου στο prompt σας;"
   options={[
-    "Clarity Over Cleverness",
-    "Specificity Yields Quality",
-    "Context Is King",
-    "Iterate and Refine"
+    "Σαφήνεια πάνω από Εξυπνάδα",
+    "Η Εξειδίκευση Αποδίδει Ποιότητα",
+    "Το Πλαίσιο Είναι Βασιλιάς",
+    "Επαναλάβετε και Βελτιώστε"
   ]}
   correctIndex={2}
-  explanation="Context Is King emphasizes that AI models have no memory between sessions and cannot read your mind. Including relevant background, constraints, and goals helps the model understand your needs."
+  explanation="Το Πλαίσιο Είναι Βασιλιάς τονίζει ότι τα μοντέλα AI δεν έχουν μνήμη μεταξύ συνεδριών και δεν μπορούν να διαβάσουν τη σκέψη σας. Η συμπερίληψη σχετικού υποβάθρου, περιορισμών, και στόχων βοηθά το μοντέλο να κατανοήσει τις ανάγκες σας."
 />
 
-## Practice: Fill in the Blanks
+## Εξάσκηση: Συμπληρώστε τα Κενά
 
-Test your understanding of the core principles by completing this prompt template:
+Δοκιμάστε την κατανόησή σας των βασικών αρχών συμπληρώνοντας αυτό το template prompt:
 
 <FillInTheBlank
-  title="Apply the Principles"
-  description="Fill in the blanks to create a well-structured prompt — write anything you want!"
+  title="Εφαρμόστε τις Αρχές"
+  description="Συμπληρώστε τα κενά για να δημιουργήσετε ένα καλά δομημένο prompt — γράψτε ό,τι θέλετε!"
   useAI={true}
   openEnded={true}
-  template={`You are a {{role}} with expertise in {{expertise}}.
+  template={`Είσαι {{role}} με τεχνογνωσία στο {{expertise}}.
 
-Context: I'm working on {{context}}.
+Πλαίσιο: Δουλεύω στο {{context}}.
 
-Task: {{task}}
+Εργασία: {{task}}
 
-Constraints:
-- Keep your response under {{length}} words
-- Focus only on {{focus}}
+Περιορισμοί:
+- Κράτα την απάντησή σου κάτω από {{length}} λέξεις
+- Εστίασε μόνο στο {{focus}}
 
-Format: Return your answer as {{format}}.`}
+Μορφή: Επέστρεψε την απάντησή σου ως {{format}}.`}
   blanks={[
-    { id: "role", correctAnswers: [], hint: "What professional role should the AI assume?", context: "A job title or professional role" },
-    { id: "expertise", correctAnswers: [], hint: "What specific domain knowledge is needed?", context: "A skill or domain that matches the role" },
-    { id: "context", correctAnswers: [], hint: "What's the project or situation?", context: "A project that someone with this expertise would work on" },
-    { id: "task", correctAnswers: [], hint: "What specific action should the AI take?", context: "An action appropriate for the role and context" },
-    { id: "length", correctAnswers: [], hint: "How long should the response be?", context: "A number (word count)" },
-    { id: "focus", correctAnswers: [], hint: "What aspect should be prioritized?", context: "A quality or aspect relevant to the task" },
-    { id: "format", correctAnswers: [], hint: "How should the output be structured?", context: "An output format type" }
+    { id: "role", correctAnswers: [], hint: "Ποιον επαγγελματικό ρόλο πρέπει να αναλάβει η AI;", context: "Τίτλος εργασίας ή επαγγελματικός ρόλος" },
+    { id: "expertise", correctAnswers: [], hint: "Ποια συγκεκριμένη γνώση τομέα χρειάζεται;", context: "Δεξιότητα ή τομέας που ταιριάζει με τον ρόλο" },
+    { id: "context", correctAnswers: [], hint: "Ποιο είναι το project ή η κατάσταση;", context: "Ένα project που κάποιος με αυτή την τεχνογνωσία θα δούλευε" },
+    { id: "task", correctAnswers: [], hint: "Ποια συγκεκριμένη ενέργεια πρέπει να κάνει η AI;", context: "Μια ενέργεια κατάλληλη για τον ρόλο και το πλαίσιο" },
+    { id: "length", correctAnswers: [], hint: "Πόσο μεγάλη πρέπει να είναι η απάντηση;", context: "Ένας αριθμός (αριθμός λέξεων)" },
+    { id: "focus", correctAnswers: [], hint: "Ποια πτυχή πρέπει να έχει προτεραιότητα;", context: "Μια ποιότητα ή πτυχή σχετική με την εργασία" },
+    { id: "format", correctAnswers: [], hint: "Πώς πρέπει να δομηθεί η έξοδος;", context: "Τύπος μορφής εξόδου" }
   ]}
-  explanation="A well-structured prompt includes: a clear role (Principle 1), sufficient context (Principle 3), specific task (Principle 2), constraints (Principle 4), and output format (Principle 5). The AI checks if your choices are internally consistent."
+  explanation="Ένα καλά δομημένο prompt περιλαμβάνει: σαφή ρόλο (Αρχή 1), επαρκές πλαίσιο (Αρχή 3), συγκεκριμένη εργασία (Αρχή 2), περιορισμούς (Αρχή 4), και μορφή εξόδου (Αρχή 5). Η AI ελέγχει αν οι επιλογές σας είναι εσωτερικά συνεπείς."
 />
 
 <InteractiveChecklist
-  title="Principles Checklist"
+  title="Λίστα Ελέγχου Αρχών"
   items={[
-    { id: "clarity", label: "Clarity Over Cleverness", description: "Is your prompt explicit and unambiguous?" },
-    { id: "specificity", label: "Specificity Yields Quality", description: "Have you included audience, length, tone, and format?" },
-    { id: "context", label: "Context Is King", description: "Does the prompt include all necessary background information?" },
-    { id: "examples", label: "Examples Beat Explanations", description: "Have you shown what you want, not just described it?" },
-    { id: "constraints", label: "Constraints Focus Output", description: "Are there clear boundaries on scope and format?" },
-    { id: "iteration", label: "Iterate and Refine", description: "Are you prepared to improve based on results?" },
-    { id: "persona", label: "Persona Shapes Perspective", description: "Does the AI know what role to play?" },
-    { id: "verify", label: "Verify and Validate", description: "Have you built in checks for accuracy?" }
+    { id: "clarity", label: "Σαφήνεια πάνω από Εξυπνάδα", description: "Είναι το prompt σας ρητό και αδιαμφισβήτητο;" },
+    { id: "specificity", label: "Η Εξειδίκευση Αποδίδει Ποιότητα", description: "Έχετε συμπεριλάβει κοινό, μήκος, τόνο, και μορφή;" },
+    { id: "context", label: "Το Πλαίσιο Είναι Βασιλιάς", description: "Περιλαμβάνει το prompt όλες τις απαραίτητες πληροφορίες υποβάθρου;" },
+    { id: "examples", label: "Τα Παραδείγματα Νικούν τις Εξηγήσεις", description: "Έχετε δείξει τι θέλετε, όχι απλά το περιγράψατε;" },
+    { id: "constraints", label: "Οι Περιορισμοί Εστιάζουν την Έξοδο", description: "Υπάρχουν σαφή όρια στο εύρος και τη μορφή;" },
+    { id: "iteration", label: "Επαναλάβετε και Βελτιώστε", description: "Είστε έτοιμοι να βελτιωθείτε βάσει αποτελεσμάτων;" },
+    { id: "persona", label: "Η Persona Διαμορφώνει την Προοπτική", description: "Ξέρει η AI ποιον ρόλο να παίξει;" },
+    { id: "verify", label: "Επαληθεύστε και Επικυρώστε", description: "Έχετε ενσωματώσει ελέγχους για ακρίβεια;" }
   ]}
 />
 
-These principles form the foundation for everything that follows. In Part II, we'll apply them to specific techniques that dramatically enhance prompt effectiveness.
+Αυτές οι αρχές αποτελούν τη βάση για ό,τι ακολουθεί. Στο Μέρος ΙΙ, θα τις εφαρμόσουμε σε συγκεκριμένες τεχνικές που ενισχύουν δραματικά την αποτελεσματικότητα των prompts.

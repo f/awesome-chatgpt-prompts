@@ -1,32 +1,32 @@
-Few-shot learning is one of the most powerful prompting techniques. By providing examples of what you want, you can teach the model complex tasks without any fine-tuning.
+למידת few-shot היא אחת מטכניקות ההנחיה החזקות ביותר. על ידי מתן דוגמאות למה שאתם רוצים, תוכלו ללמד את המודל משימות מורכבות ללא כל כוונון עדין.
 
-<Callout type="info" title="Learn by Example">
-Just like humans learn by seeing examples, AI models can learn patterns from the examples you provide in your prompt.
+<Callout type="info" title="למידה מדוגמאות">
+בדיוק כמו שבני אדם לומדים מצפייה בדוגמאות, מודלי בינה מלאכותית יכולים ללמוד דפוסים מהדוגמאות שאתם מספקים בהנחיה שלכם.
 </Callout>
 
-## What is Few-Shot Learning?
+## מהי למידת Few-Shot?
 
-Few-shot learning shows the model examples of input-output pairs before asking it to perform the same task. The model learns the pattern from your examples and applies it to new inputs.
+למידת few-shot מציגה למודל דוגמאות של זוגות קלט-פלט לפני שמבקשים ממנו לבצע את אותה משימה. המודל לומד את הדפוס מהדוגמאות שלכם ומיישם אותו על קלטים חדשים.
 
 <Compare 
   before={{ 
-    label: "Zero-Shot (No Examples)", 
-    content: `Classify this review as positive or negative:
+    label: "Zero-Shot (ללא דוגמאות)", 
+    content: `סווג את הביקורת הזו כחיובית או שלילית:
 
-"The battery lasts forever but the screen is too dim."
+"הסוללה מחזיקה לנצח אבל המסך חשוך מדי."
 
-→ Model may be inconsistent with edge cases` 
+→ המודל עלול להיות לא עקבי במקרי קצה` 
   }}
   after={{ 
-    label: "Few-Shot (With Examples)", 
-    content: `"Love it!" → Positive
-"Terrible quality" → Negative  
-"Good but expensive" → Mixed
+    label: "Few-Shot (עם דוגמאות)", 
+    content: `"אהבתי!" → חיובי
+"איכות נוראית" → שלילי  
+"טוב אבל יקר" → מעורב
 
-Now classify:
-"The battery lasts forever but the screen is too dim."
+עכשיו סווג:
+"הסוללה מחזיקה לנצח אבל המסך חשוך מדי."
 
-→ Model learns your exact categories` 
+→ המודל לומד את הקטגוריות המדויקות שלכם` 
   }}
 />
 
@@ -49,430 +49,430 @@ Now classify:
   </div>
 </div>
 
-## Why Examples Work
+## למה דוגמאות עובדות
 
 <FewShotDemo />
 
-Examples communicate:
-- **Format**: How output should be structured
-- **Style**: Tone, length, vocabulary
-- **Logic**: The reasoning pattern to follow
-- **Edge cases**: How to handle special situations
+דוגמאות מתקשרות:
+- **פורמט**: איך הפלט צריך להיות מובנה
+- **סגנון**: טון, אורך, אוצר מילים
+- **לוגיקה**: דפוס ההיגיון שיש לעקוב אחריו
+- **מקרי קצה**: איך להתמודד עם מצבים מיוחדים
 
-## Basic Few-Shot Pattern
+## דפוס Few-Shot בסיסי
 
-The fundamental structure of few-shot prompting follows a simple pattern: show examples, then ask for the new task. Consistency in formatting between examples is crucial. The model learns from the pattern you establish.
+המבנה היסודי של הנחיית few-shot עוקב אחר דפוס פשוט: הציגו דוגמאות, ואז בקשו את המשימה החדשה. עקביות בפורמט בין הדוגמאות היא קריטית. המודל לומד מהדפוס שאתם קובעים.
 
 ```
-[Example 1]
-Input: [input 1]
-Output: [output 1]
+[דוגמה 1]
+קלט: [קלט 1]
+פלט: [פלט 1]
 
-[Example 2]
-Input: [input 2]
-Output: [output 2]
+[דוגמה 2]
+קלט: [קלט 2]
+פלט: [פלט 2]
 
-[Example 3]
-Input: [input 3]
-Output: [output 3]
+[דוגמה 3]
+קלט: [קלט 3]
+פלט: [פלט 3]
 
-Now do this one:
-Input: [new input]
-Output:
+עכשיו עשה את זה:
+קלט: [קלט חדש]
+פלט:
 ```
 
-## Few-Shot for Classification
+## Few-Shot לסיווג
 
-Classification is one of the strongest use cases for few-shot learning. By showing examples of each category, you define the boundaries between classes more precisely than instructions alone could achieve.
+סיווג הוא אחד ממקרי השימוש החזקים ביותר ללמידת few-shot. על ידי הצגת דוגמאות מכל קטגוריה, אתם מגדירים את הגבולות בין המחלקות בצורה מדויקת יותר ממה שהוראות לבדן יכולות להשיג.
 
-### Sentiment Analysis
+### ניתוח סנטימנט
 
-<Callout type="info" title="What is Sentiment Analysis?">
-Sentiment analysis classifies text by emotional tone: positive, negative, neutral, or mixed. It's widely used for customer feedback, social media monitoring, and brand perception tracking.
+<Callout type="info" title="מהו ניתוח סנטימנט?">
+ניתוח סנטימנט מסווג טקסט לפי טון רגשי: חיובי, שלילי, ניטרלי או מעורב. הוא נמצא בשימוש נרחב למשוב לקוחות, מעקב ברשתות חברתיות ומעקב אחר תפיסת מותג.
 </Callout>
 
-Sentiment classification benefits from showing examples of each sentiment type, especially edge cases like "mixed" sentiment that might be ambiguous.
+סיווג סנטימנט מרוויח מהצגת דוגמאות מכל סוג סנטימנט, במיוחד מקרי קצה כמו סנטימנט "מעורב" שעשוי להיות מעורפל.
 
-<TryIt compact prompt={`Classify the sentiment of these customer reviews.
+<TryIt compact prompt={`סווג את הסנטימנט של ביקורות הלקוחות הבאות.
 
-Review: "This product exceeded all my expectations! Will buy again."
-Sentiment: Positive
+ביקורת: "המוצר הזה עלה על כל הציפיות שלי! אקנה שוב."
+סנטימנט: חיובי
 
-Review: "Arrived broken and customer service was unhelpful."
-Sentiment: Negative
+ביקורת: "הגיע שבור ושירות הלקוחות לא היה מועיל."
+סנטימנט: שלילי
 
-Review: "It works fine, nothing special but does the job."
-Sentiment: Neutral
+ביקורת: "זה עובד בסדר, שום דבר מיוחד אבל עושה את העבודה."
+סנטימנט: ניטרלי
 
-Review: "The quality is amazing but shipping took forever."
-Sentiment: Mixed
+ביקורת: "האיכות מדהימה אבל המשלוח לקח נצח."
+סנטימנט: מעורב
 
-Now classify:
-Review: "Love the design but the battery life is disappointing."
-Sentiment:`} />
+עכשיו סווג:
+ביקורת: "אוהב את העיצוב אבל חיי הסוללה מאכזבים."
+סנטימנט:`} />
 
-### Topic Classification
+### סיווג נושאים
 
-For multi-class categorization, include at least one example per category. This helps the model understand your specific taxonomy, which may differ from its default understanding.
+לקטגוריזציה מרובת מחלקות, כללו לפחות דוגמה אחת לכל קטגוריה. זה עוזר למודל להבין את הטקסונומיה הספציפית שלכם, שעשויה להיות שונה מההבנה המוגדרת כברירת מחדל שלו.
 
-<TryIt compact prompt={`Categorize these support tickets.
+<TryIt compact prompt={`קטגר את פניות התמיכה הבאות.
 
-Ticket: "I can't log into my account, password reset not working"
-Category: Authentication
+פנייה: "אני לא מצליח להיכנס לחשבון שלי, איפוס הסיסמה לא עובד"
+קטגוריה: אימות
 
-Ticket: "How do I upgrade to the premium plan?"
-Category: Billing
+פנייה: "איך אני משדרג לתוכנית הפרימיום?"
+קטגוריה: חיוב
 
-Ticket: "The app crashes when I try to export data"
-Category: Bug Report
+פנייה: "האפליקציה קורסת כשאני מנסה לייצא נתונים"
+קטגוריה: דיווח על באג
 
-Ticket: "Can you add dark mode to the mobile app?"
-Category: Feature Request
+פנייה: "אתם יכולים להוסיף מצב כהה לאפליקציה הניידת?"
+קטגוריה: בקשת תכונה
 
-Now categorize:
-Ticket: "My payment was declined but I see the charge on my card"
-Category:`} />
+עכשיו קטגר:
+פנייה: "התשלום שלי נדחה אבל אני רואה את החיוב בכרטיס"
+קטגוריה:`} />
 
-## Few-Shot for Transformation
+## Few-Shot להמרה
 
-Transformation tasks convert input from one form to another while preserving meaning. Examples are essential here because they define exactly what "transformation" means for your use case.
+משימות המרה ממירות קלט מצורה אחת לאחרת תוך שמירה על המשמעות. דוגמאות חיוניות כאן כי הן מגדירות בדיוק מה "המרה" אומרת עבור מקרה השימוש שלכם.
 
-### Text Rewriting
+### שכתוב טקסט
 
-Style transformation requires examples that show the exact tone shift you want. Abstract instructions like "make it professional" are interpreted differently. Examples make it concrete.
+המרת סגנון דורשת דוגמאות שמראות את השינוי המדויק בטון שאתם רוצים. הוראות מופשטות כמו "עשה את זה מקצועי" מתפרשות בצורות שונות. דוגמאות הופכות את זה לקונקרטי.
 
-<TryIt compact prompt={`Rewrite these sentences in a professional tone.
+<TryIt compact prompt={`שכתב את המשפטים הבאים בטון מקצועי.
 
-Casual: "Hey, just wanted to check if you got my email?"
-Professional: "I wanted to follow up regarding my previous email."
+יומיומי: "היי, רק רציתי לבדוק אם קיבלת את המייל שלי?"
+מקצועי: "רציתי לעקוב בנוגע למייל הקודם שלי."
 
-Casual: "This is super important and needs to be done ASAP!"
-Professional: "This matter requires urgent attention and prompt action."
+יומיומי: "זה סופר חשוב וצריך לעשות את זה כמה שיותר מהר!"
+מקצועי: "עניין זה דורש תשומת לב דחופה ופעולה מיידית."
 
-Casual: "Sorry for the late reply, been swamped!"
-Professional: "I apologize for the delayed response. I've had a particularly demanding schedule."
+יומיומי: "סליחה על התגובה המאוחרת, הייתי טבוע בעבודה!"
+מקצועי: "אני מתנצל על התגובה המאוחרת. היה לי לוח זמנים תובעני במיוחד."
 
-Now rewrite:
-Casual: "Can't make it to the meeting, something came up."
-Professional:`} />
+עכשיו שכתב:
+יומיומי: "לא יכול להגיע לפגישה, משהו צץ."
+מקצועי:`} />
 
-### Format Conversion
+### המרת פורמט
 
-Format conversion tasks benefit from examples showing edge cases and ambiguous inputs. The model learns your specific conventions for handling tricky cases.
+משימות המרת פורמט מרוויחות מדוגמאות שמראות מקרי קצה וקלטים מעורפלים. המודל לומד את המוסכמות הספציפיות שלכם להתמודדות עם מקרים מסובכים.
 
-<TryIt compact prompt={`Convert these natural language dates to ISO format.
+<TryIt compact prompt={`המר את התאריכים בשפה טבעית לפורמט ISO.
 
-Input: "next Tuesday"
-Output: 2024-01-16 (assuming today is 2024-01-11, Thursday)
+קלט: "יום שלישי הבא"
+פלט: 2024-01-16 (בהנחה שהיום הוא 2024-01-11, יום חמישי)
 
-Input: "the day after tomorrow"
-Output: 2024-01-13
+קלט: "מחרתיים"
+פלט: 2024-01-13
 
-Input: "last day of this month"
-Output: 2024-01-31
+קלט: "היום האחרון של החודש הזה"
+פלט: 2024-01-31
 
-Input: "two weeks from now"
-Output: 2024-01-25
+קלט: "עוד שבועיים"
+פלט: 2024-01-25
 
-Now convert:
-Input: "the first Monday of next month"
-Output:`} />
+עכשיו המר:
+קלט: "יום שני הראשון של החודש הבא"
+פלט:`} />
 
-## Few-Shot for Generation
+## Few-Shot ליצירה
 
-Generation tasks create new content following a learned pattern. Examples establish length, structure, tone, and what details to highlight. These are hard to specify in instructions alone.
+משימות יצירה מייצרות תוכן חדש בעקבות דפוס נלמד. דוגמאות קובעות אורך, מבנה, טון ואילו פרטים להדגיש. אלה קשים לציין בהוראות לבד.
 
-### Product Descriptions
+### תיאורי מוצרים
 
-Marketing copy benefits enormously from examples because they capture brand voice, feature emphasis, and persuasive techniques that are difficult to describe abstractly.
+טקסט שיווקי מרוויח מאוד מדוגמאות כי הן לוכדות קול מותג, הדגשת תכונות וטכניקות שכנוע שקשה לתאר בצורה מופשטת.
 
-<TryIt compact prompt={`Write product descriptions in this style:
+<TryIt compact prompt={`כתוב תיאורי מוצרים בסגנון הזה:
 
-Product: Wireless Bluetooth Headphones
-Description: Immerse yourself in crystal-clear sound with our lightweight wireless headphones. Featuring 40-hour battery life, active noise cancellation, and plush memory foam ear cushions for all-day comfort.
+מוצר: אוזניות אלחוטיות Bluetooth
+תיאור: שקעו בצליל צלול כבדולח עם האוזניות האלחוטיות הקלות שלנו. כוללות חיי סוללה של 40 שעות, ביטול רעשים אקטיבי וכריות אוזניים מקצף זיכרון רכות לנוחות כל היום.
 
-Product: Stainless Steel Water Bottle
-Description: Stay hydrated in style with our double-walled insulated bottle. Keeps drinks cold for 24 hours or hot for 12. Features a leak-proof lid and fits standard cup holders.
+מוצר: בקבוק מים מנירוסטה
+תיאור: שמרו על הידרציה בסטייל עם הבקבוק המבודד בעל הדופן הכפולה שלנו. שומר על משקאות קרים למשך 24 שעות או חמים למשך 12. כולל מכסה אטום לדליפות ומתאים למתקני כוסות סטנדרטיים.
 
-Product: Ergonomic Office Chair
-Description: Transform your workspace with our adjustable ergonomic chair. Breathable mesh back, lumbar support, and 360° swivel combine to keep you comfortable during long work sessions.
+מוצר: כיסא משרדי ארגונומי
+תיאור: שנו את סביבת העבודה שלכם עם הכיסא הארגונומי המתכוונן שלנו. גב רשת נושם, תמיכה אזורית לגב התחתון וסיבוב 360° משתלבים לשמור אתכם נוחים במהלך שעות עבודה ארוכות.
 
-Now write:
-Product: Portable Phone Charger
-Description:`} />
+עכשיו כתוב:
+מוצר: מטען נייד לטלפון
+תיאור:`} />
 
-### Code Documentation
+### תיעוד קוד
 
-<Callout type="info" title="Why Document Code?">
-Good documentation explains what code does, its parameters, return values, and usage examples. Consistent docstrings enable auto-generated API docs and help IDEs provide better code completion.
+<Callout type="info" title="למה לתעד קוד?">
+תיעוד טוב מסביר מה הקוד עושה, את הפרמטרים שלו, ערכי החזרה ודוגמאות שימוש. מחרוזות תיעוד עקביות מאפשרות יצירה אוטומטית של תיעוד API ועוזרות ל-IDE לספק השלמת קוד טובה יותר.
 </Callout>
 
-Documentation style varies widely between projects. Examples teach your specific format, what to include (args, returns, examples), and the level of detail expected.
+סגנון תיעוד משתנה מאוד בין פרויקטים. דוגמאות מלמדות את הפורמט הספציפי שלכם, מה לכלול (ארגומנטים, ערכי החזרה, דוגמאות) ורמת הפירוט הצפויה.
 
-<TryIt compact prompt={`Write documentation comments for these functions:
+<TryIt compact prompt={`כתוב הערות תיעוד לפונקציות הבאות:
 
-Function:
+פונקציה:
 def calculate_bmi(weight_kg, height_m):
     return weight_kg / (height_m ** 2)
 
-Documentation:
+תיעוד:
 """
-Calculate Body Mass Index (BMI) from weight and height.
+חשב מדד מסת גוף (BMI) ממשקל וגובה.
 
 Args:
-    weight_kg (float): Weight in kilograms
-    height_m (float): Height in meters
+    weight_kg (float): משקל בקילוגרמים
+    height_m (float): גובה במטרים
 
 Returns:
-    float: BMI value (weight/height²)
+    float: ערך BMI (משקל/גובה²)
 
 Example:
     >>> calculate_bmi(70, 1.75)
     22.86
 """
 
-Now document:
-Function:
+עכשיו תעד:
+פונקציה:
 def is_palindrome(text):
     cleaned = ''.join(c.lower() for c in text if c.isalnum())
     return cleaned == cleaned[::-1]
 
-Documentation:`} />
+תיעוד:`} />
 
-## Few-Shot for Extraction
+## Few-Shot לחילוץ
 
-Extraction tasks pull structured information from unstructured text. Examples define which entities matter, how to format output, and how to handle cases where information is missing or ambiguous.
+משימות חילוץ שולפות מידע מובנה מטקסט לא מובנה. דוגמאות מגדירות אילו ישויות חשובות, איך לפרמט פלט ואיך להתמודד עם מקרים שבהם מידע חסר או מעורפל.
 
-### Entity Extraction
+### חילוץ ישויות
 
-<Callout type="info" title="What is Named Entity Recognition?">
-Named Entity Recognition (NER) identifies and classifies named entities in text into categories like persons, organizations, locations, dates, and products. It's fundamental for information retrieval and knowledge graphs.
+<Callout type="info" title="מהו זיהוי ישויות מכונות?">
+זיהוי ישויות מכונות (NER) מזהה ומסווג ישויות מכונות בטקסט לקטגוריות כמו אנשים, ארגונים, מיקומים, תאריכים ומוצרים. זה יסודי לאחזור מידע וגרפי ידע.
 </Callout>
 
-NER benefits from examples showing your specific entity types and how to handle entities that could fit multiple categories.
+NER מרוויח מדוגמאות שמראות את סוגי הישויות הספציפיים שלכם ואיך להתמודד עם ישויות שיכולות להתאים למספר קטגוריות.
 
-<TryIt compact prompt={`Extract named entities from these sentences.
+<TryIt compact prompt={`חלץ ישויות מכונות מהמשפטים הבאים.
 
-Text: "Apple CEO Tim Cook announced the iPhone 15 in Cupertino."
-Entities:
-- COMPANY: Apple
-- PERSON: Tim Cook
-- PRODUCT: iPhone 15
-- LOCATION: Cupertino
+טקסט: "מנכ"ל Apple טים קוק הכריז על iPhone 15 בקופרטינו."
+ישויות:
+- חברה: Apple
+- אדם: טים קוק
+- מוצר: iPhone 15
+- מיקום: קופרטינו
 
-Text: "The European Union fined Google €4.34 billion in 2018."
-Entities:
-- ORGANIZATION: European Union
-- COMPANY: Google
-- MONEY: €4.34 billion
-- DATE: 2018
+טקסט: "האיחוד האירופי קנס את Google ב-4.34 מיליארד אירו ב-2018."
+ישויות:
+- ארגון: האיחוד האירופי
+- חברה: Google
+- כסף: 4.34 מיליארד אירו
+- תאריך: 2018
 
-Now extract from:
-Text: "Elon Musk's SpaceX launched 23 Starlink satellites from Cape Canaveral on December 3rd."
-Entities:`} />
+עכשיו חלץ מ:
+טקסט: "SpaceX של אילון מאסק שיגרה 23 לווייני Starlink מקייפ קנוורל ב-3 בדצמבר."
+ישויות:`} />
 
-### Structured Data Extraction
+### חילוץ נתונים מובנים
 
-Extracting structured data from natural language requires examples showing how to handle missing fields, implicit information, and varying input formats.
+חילוץ נתונים מובנים משפה טבעית דורש דוגמאות שמראות איך להתמודד עם שדות חסרים, מידע מרומז ופורמטים משתנים של קלט.
 
-<TryIt compact prompt={`Extract meeting details into structured format.
+<TryIt compact prompt={`חלץ פרטי פגישה לפורמט מובנה.
 
-Email: "Let's meet tomorrow at 3pm in Conference Room B to discuss the Q4 budget. Please bring your laptop."
+אימייל: "בוא ניפגש מחר ב-3 אחר הצהריים בחדר ישיבות ב' לדון בתקציב רבעון 4. בבקשה הבא עם הלפטופ."
 
-Meeting:
-- Date: [tomorrow's date]
-- Time: 3:00 PM
-- Location: Conference Room B
-- Topic: Q4 budget discussion
-- Requirements: Bring laptop
+פגישה:
+- תאריך: [תאריך מחר]
+- שעה: 15:00
+- מיקום: חדר ישיבות ב'
+- נושא: דיון בתקציב רבעון 4
+- דרישות: להביא לפטופ
 
-Email: "Team sync moved to Friday 10am, we'll use Zoom instead. Link in calendar invite. 30 minutes max."
+אימייל: "סנכרון הצוות הועבר ליום שישי 10 בבוקר, נשתמש ב-Zoom במקום. הקישור בהזמנה בלוח השנה. מקסימום 30 דקות."
 
-Meeting:
-- Date: Friday
-- Time: 10:00 AM
-- Location: Zoom (virtual)
-- Topic: Team sync
-- Duration: 30 minutes
+פגישה:
+- תאריך: יום שישי
+- שעה: 10:00
+- מיקום: Zoom (וירטואלי)
+- נושא: סנכרון צוות
+- משך: 30 דקות
 
-Now extract from:
-Email: "Can we do a quick call Monday morning around 9:30 to go over the client presentation? I'll send a Teams link."
+עכשיו חלץ מ:
+אימייל: "אפשר לעשות שיחה מהירה ביום שני בבוקר בסביבות 9:30 לעבור על מצגת הלקוח? אשלח קישור Teams."
 
-Meeting:`} />
+פגישה:`} />
 
-## Advanced Few-Shot Techniques
+## טכניקות Few-Shot מתקדמות
 
-Beyond basic few-shot, several techniques can improve results for complex tasks.
+מעבר ל-few-shot בסיסי, מספר טכניקות יכולות לשפר תוצאות למשימות מורכבות.
 
-### Diverse Examples
+### דוגמאות מגוונות
 
-Diversity in examples is more valuable than quantity. Cover different scenarios, edge cases, and potential ambiguities rather than showing similar examples repeatedly.
+מגוון בדוגמאות הוא בעל ערך רב יותר מכמות. כסו תרחישים שונים, מקרי קצה ועמימויות פוטנציאליות במקום להציג דוגמאות דומות שוב ושוב.
 
-<TryIt compact prompt={`Respond to customer complaints.
+<TryIt compact prompt={`הגב לתלונות לקוחות.
 
-Example 1 (Product Issue):
-Customer: "My order arrived damaged."
-Response: "I sincerely apologize for the damaged delivery. I'll immediately send a replacement at no charge. You don't need to return the damaged item. May I confirm your shipping address?"
+דוגמה 1 (בעיית מוצר):
+לקוח: "ההזמנה שלי הגיעה פגומה."
+תגובה: "אני מתנצל בכנות על המשלוח הפגום. אשלח מיד תחליף ללא חיוב. אין צורך להחזיר את הפריט הפגום. האם אוכל לאשר את כתובת המשלוח שלך?"
 
-Example 2 (Service Issue):
-Customer: "I've been on hold for 2 hours!"
-Response: "I'm very sorry for the long wait time. That's unacceptable. I'm here now and will personally ensure your issue is resolved. What can I help you with today?"
+דוגמה 2 (בעיית שירות):
+לקוח: "חיכיתי על הקו שעתיים!"
+תגובה: "אני מצטער מאוד על זמן ההמתנה הארוך. זה בלתי מקובל. אני כאן עכשיו ואוודא באופן אישי שהבעיה שלך תיפתר. במה אוכל לעזור לך היום?"
 
-Example 3 (Billing Issue):
-Customer: "You charged me twice for the same order!"
-Response: "I apologize for this billing error. I've verified the duplicate charge and initiated a refund of $XX.XX to your original payment method. You should see it within 3-5 business days."
+דוגמה 3 (בעיית חיוב):
+לקוח: "חייבתם אותי פעמיים על אותה הזמנה!"
+תגובה: "אני מתנצל על טעות החיוב הזו. אימתתי את החיוב הכפול והתחלתי החזר של XX.XX ש"ח לאמצעי התשלום המקורי שלך. אתה אמור לראות אותו תוך 3-5 ימי עסקים."
 
-Now respond to:
-Customer: "The product doesn't match what was shown on the website."
-Response:`} />
+עכשיו הגב ל:
+לקוח: "המוצר לא תואם למה שהוצג באתר."
+תגובה:`} />
 
-### Negative Examples
+### דוגמאות שליליות
 
-<Callout type="tip" title="Contrastive Learning">
-Showing "good" vs "bad" examples is called contrastive learning. It helps the model understand not just what you want, but what to avoid. This is especially useful for style and quality judgments.
+<Callout type="tip" title="למידה מנוגדת">
+הצגת דוגמאות "טובות" מול "רעות" נקראת למידה מנוגדת. זה עוזר למודל להבין לא רק מה אתם רוצים, אלא מה להימנע ממנו. זה שימושי במיוחד לשיפוטי סגנון ואיכות.
 </Callout>
 
-Sometimes showing what *not* to do is as valuable as showing correct examples. Negative examples help the model understand boundaries and avoid common mistakes.
+לפעמים להראות מה *לא* לעשות הוא בעל ערך כמו להראות דוגמאות נכונות. דוגמאות שליליות עוזרות למודל להבין גבולות ולהימנע מטעויות נפוצות.
 
-<TryIt compact prompt={`Write concise email subject lines.
+<TryIt compact prompt={`כתוב שורות נושא תמציתיות לאימייל.
 
-Good: "Q3 Report Ready for Review"
-Bad: "Hey, I finished that report thing we talked about"
+טוב: "דוח רבעון 3 מוכן לסקירה"
+רע: "היי, סיימתי את הדוח ההוא שדיברנו עליו"
 
-Good: "Action Required: Approve PTO by Friday"
-Bad: "I need you to do something for me please read this"
+טוב: "נדרשת פעולה: אשר חופשה עד יום שישי"
+רע: "אני צריך שתעשה משהו בשבילי בבקשה תקרא את זה"
 
-Good: "Meeting Rescheduled: Project Sync → Thursday 2pm"
-Bad: "Change of plans!!!!!"
+טוב: "פגישה נדחתה: סנכרון פרויקט → יום חמישי 14:00"
+רע: "שינוי תוכניות!!!!!"
 
-Now write a subject line for:
-Email about: Requesting feedback on a proposal draft
-Subject:`} />
+עכשיו כתוב שורת נושא עבור:
+אימייל על: בקשת משוב על טיוטת הצעה
+נושא:`} />
 
-### Edge Case Examples
+### דוגמאות מקרי קצה
 
-Edge cases often determine whether a solution works in production. Including unusual inputs in your examples prevents the model from failing on real-world data that doesn't fit the "happy path."
+מקרי קצה לעתים קרובות קובעים האם פתרון עובד בייצור. הכללת קלטים חריגים בדוגמאות שלכם מונעת מהמודל להיכשל על נתונים מהעולם האמיתי שלא מתאימים ל"נתיב המאושר".
 
-<TryIt compact prompt={`Parse names into structured format.
+<TryIt compact prompt={`נתח שמות לפורמט מובנה.
 
-Input: "John Smith"
-Output: {"first": "John", "last": "Smith", "middle": null, "suffix": null}
+קלט: "John Smith"
+פלט: {"first": "John", "last": "Smith", "middle": null, "suffix": null}
 
-Input: "Mary Jane Watson-Parker"
-Output: {"first": "Mary", "middle": "Jane", "last": "Watson-Parker", "suffix": null}
+קלט: "Mary Jane Watson-Parker"
+פלט: {"first": "Mary", "middle": "Jane", "last": "Watson-Parker", "suffix": null}
 
-Input: "Dr. Martin Luther King Jr."
-Output: {"prefix": "Dr.", "first": "Martin", "middle": "Luther", "last": "King", "suffix": "Jr."}
+קלט: "Dr. Martin Luther King Jr."
+פלט: {"prefix": "Dr.", "first": "Martin", "middle": "Luther", "last": "King", "suffix": "Jr."}
 
-Input: "Madonna"
-Output: {"first": "Madonna", "last": null, "middle": null, "suffix": null, "mononym": true}
+קלט: "Madonna"
+פלט: {"first": "Madonna", "last": null, "middle": null, "suffix": null, "mononym": true}
 
-Now parse:
-Input: "Sir Patrick Stewart III"
-Output:`} />
+עכשיו נתח:
+קלט: "Sir Patrick Stewart III"
+פלט:`} />
 
-## How Many Examples?
+## כמה דוגמאות?
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Simple classification</span>
+    <span className="font-semibold min-w-40">סיווג פשוט</span>
     <span className="text-primary font-mono">2-3</span>
-    <span className="text-muted-foreground">One per category minimum</span>
+    <span className="text-muted-foreground">לפחות אחת לכל קטגוריה</span>
   </div>
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Complex formatting</span>
+    <span className="font-semibold min-w-40">פורמט מורכב</span>
     <span className="text-primary font-mono">3-5</span>
-    <span className="text-muted-foreground">Show variations</span>
+    <span className="text-muted-foreground">הראו וריאציות</span>
   </div>
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Nuanced style</span>
+    <span className="font-semibold min-w-40">סגנון מורכב</span>
     <span className="text-primary font-mono">4-6</span>
-    <span className="text-muted-foreground">Capture full range</span>
+    <span className="text-muted-foreground">לכדו את הטווח המלא</span>
   </div>
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Edge cases</span>
+    <span className="font-semibold min-w-40">מקרי קצה</span>
     <span className="text-primary font-mono">1-2</span>
-    <span className="text-muted-foreground">Alongside normal examples</span>
+    <span className="text-muted-foreground">לצד דוגמאות רגילות</span>
   </div>
 </div>
 
-## Example Quality Matters
+## איכות הדוגמאות חשובה
 
 <Compare 
   before={{ 
-    label: "Bad Examples", 
-    content: `"Nice product" → Good
-"Nice service" → Good
-"Nice price" → Good
+    label: "דוגמאות גרועות", 
+    content: `"מוצר נחמד" → טוב
+"שירות נחמד" → טוב
+"מחיר נחמד" → טוב
 
-✗ All too similar
-✗ Same word repeated
-✗ No edge cases shown` 
+✗ כולן דומות מדי
+✗ אותה מילה חוזרת
+✗ אין מקרי קצה` 
   }}
   after={{ 
-    label: "Good Examples", 
-    content: `"Exceeded expectations!" → Positive
-"Broken on arrival" → Negative
-"Works fine, nothing special" → Neutral
-"Great quality but overpriced" → Mixed
+    label: "דוגמאות טובות", 
+    content: `"עלה על הציפיות!" → חיובי
+"הגיע שבור" → שלילי
+"עובד בסדר, שום דבר מיוחד" → ניטרלי
+"איכות מעולה אבל יקר מדי" → מעורב
 
-✓ Diverse scenarios
-✓ Clear boundaries
-✓ Covers edge cases` 
+✓ תרחישים מגוונים
+✓ גבולות ברורים
+✓ מכסה מקרי קצה` 
   }}
 />
 
-## Combining Few-Shot with Other Techniques
+## שילוב Few-Shot עם טכניקות אחרות
 
-Few-shot learning combines powerfully with other prompting techniques. The examples provide the "what" while other techniques can add context, reasoning, or structure.
+למידת few-shot משתלבת בעוצמה עם טכניקות הנחיה אחרות. הדוגמאות מספקות את ה"מה" בעוד שטכניקות אחרות יכולות להוסיף הקשר, היגיון או מבנה.
 
-### Few-Shot + Role
+### Few-Shot + תפקיד
 
-Adding a role gives the model context for *why* it's doing the task, which can improve quality and consistency.
+הוספת תפקיד נותנת למודל הקשר ל*למה* הוא עושה את המשימה, מה שיכול לשפר איכות ועקביות.
 
 ```
-You are a legal contract reviewer.
+אתה סוקר חוזים משפטיים.
 
-[examples of contract clause analysis]
+[דוגמאות לניתוח סעיפי חוזה]
 
-Now analyze: [new clause]
+עכשיו נתח: [סעיף חדש]
 ```
 
 ### Few-Shot + CoT
 
-Combining few-shot with Chain of Thought shows not just *what* answer to give, but *how* to reason through to that answer. This is powerful for tasks requiring judgment.
+שילוב few-shot עם שרשרת מחשבה מראה לא רק *איזו* תשובה לתת, אלא *איך* להגיע לתשובה הזו. זה עוצמתי למשימות שדורשות שיפוט.
 
 ```
-Classify and explain reasoning.
+סווג והסבר היגיון.
 
-Review: "Great features but overpriced"
-Thinking: The review mentions positive aspects ("great features") 
-but also a significant negative ("overpriced"). The negative seems 
-to outweigh the positive based on the "but" conjunction.
-Classification: Mixed-Negative
+ביקורת: "תכונות נהדרות אבל יקר מדי"
+חשיבה: הביקורת מזכירה היבטים חיוביים ("תכונות נהדרות") 
+אבל גם שלילי משמעותי ("יקר מדי"). השלילי נראה 
+כמשקל יותר מהחיובי בהתבסס על מילת הקישור "אבל".
+סיווג: מעורב-שלילי
 
-[more examples with reasoning]
+[עוד דוגמאות עם היגיון]
 
-Now classify with reasoning:
-Review: "Exactly what I needed, arrived faster than expected"
+עכשיו סווג עם היגיון:
+ביקורת: "בדיוק מה שהייתי צריך, הגיע מהר מהצפוי"
 ```
 
-## Summary
+## סיכום
 
-<Callout type="tip" title="Key Takeaways">
-Few-shot learning teaches through demonstration and is often more effective than instructions alone. Use 2-5 diverse, correct examples and combine with other techniques for best results.
+<Callout type="tip" title="נקודות מפתח">
+למידת few-shot מלמדת באמצעות הדגמה ולעתים קרובות יעילה יותר מהוראות לבד. השתמשו ב-2-5 דוגמאות מגוונות ונכונות ושלבו עם טכניקות אחרות לתוצאות הטובות ביותר.
 </Callout>
 
 <Quiz 
-  question="How many examples should you typically provide in few-shot learning?"
+  question="כמה דוגמאות כדאי בדרך כלל לספק בלמידת few-shot?"
   options={[
-    "As many as possible (10+)",
-    "Just 1 example is always enough",
-    "2-5 diverse, correct examples",
-    "Examples aren't necessary if instructions are clear"
+    "כמה שיותר (10+)",
+    "רק דוגמה אחת תמיד מספיקה",
+    "2-5 דוגמאות מגוונות ונכונות",
+    "דוגמאות אינן נחוצות אם ההוראות ברורות"
   ]}
   correctIndex={2}
-  explanation="2-5 diverse, correct examples typically work best. Too few may not capture the pattern, while too many waste tokens and may confuse the model. Quality and diversity matter more than quantity."
+  explanation="2-5 דוגמאות מגוונות ונכונות בדרך כלל עובדות הכי טוב. מעט מדי עלולות לא ללכוד את הדפוס, בעוד שיותר מדי מבזבזות טוקנים ועלולות לבלבל את המודל. איכות ומגוון חשובים יותר מכמות."
 />
 
-In the next chapter, we'll explore iterative refinement: the art of improving prompts through successive attempts.
+בפרק הבא, נחקור שיפור איטרטיבי: אמנות שיפור ההנחיות באמצעות ניסיונות עוקבים.
