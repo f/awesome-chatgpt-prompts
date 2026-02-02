@@ -1,323 +1,323 @@
-AI can accelerate research workflows from literature review to data analysis. This chapter covers prompting techniques for academic and professional research.
+Το AI μπορεί να επιταχύνει τις ροές εργασίας έρευνας από βιβλιογραφική ανασκόπηση μέχρι ανάλυση δεδομένων. Αυτό το κεφάλαιο καλύπτει τεχνικές prompting για ακαδημαϊκή και επαγγελματική έρευνα.
 
-<Callout type="info" title="AI in Research">
-AI can assist with synthesis, analysis, and writing—but cannot replace critical thinking, ethical judgment, or domain expertise. Always verify claims and cite original sources.
+<Callout type="info" title="AI στην Έρευνα">
+Το AI μπορεί να βοηθήσει με σύνθεση, ανάλυση, και συγγραφή—αλλά δεν μπορεί να αντικαταστήσει κριτική σκέψη, ηθική κρίση, ή τομεακή εμπειρογνωμοσύνη. Πάντα επαλήθευε ισχυρισμούς και παράθετε αρχικές πηγές.
 </Callout>
 
-## Literature & Information Review
+## Βιβλιογραφία & Ανασκόπηση Πληροφοριών
 
-### Do's and Don'ts: Research Prompts
+### Τι να Κάνεις και Τι Όχι: Prompts Έρευνας
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Summarize this paper for me." }}
-  after={{ label: "✓ Structured request", content: "Summarize this paper for my literature review on machine learning in healthcare.\n\nProvide:\n1. Main thesis (1-2 sentences)\n2. Methodology\n3. Key findings (bullets)\n4. Limitations\n5. Relevance to my research\n\nReading level: Graduate student" }}
+  before={{ label: "❌ Ασαφές αίτημα", content: "Συνόψισέ μου αυτό το paper." }}
+  after={{ label: "✓ Δομημένο αίτημα", content: "Συνόψισε αυτό το paper για τη βιβλιογραφική μου ανασκόπηση για machine learning στην υγεία.\n\nΠαρέχε:\n1. Κύρια θέση (1-2 προτάσεις)\n2. Μεθοδολογία\n3. Βασικά ευρήματα (κουκκίδες)\n4. Περιορισμοί\n5. Σχετικότητα με την έρευνά μου\n\nΕπίπεδο ανάγνωσης: Μεταπτυχιακός φοιτητής" }}
 />
 
-### Paper Summarization
+### Σύνοψη Paper
 
-<TryIt compact prompt={`Summarize this academic paper:
+<TryIt compact prompt={`Συνόψισε αυτό το ακαδημαϊκό paper:
 
-[paper abstract or full text]
+[περίληψη ή πλήρες κείμενο paper]
 
-Provide:
-1. **Main thesis** - Central argument (1-2 sentences)
-2. **Methodology** - How they approached it
-3. **Key findings** - Most important results (bullet points)
-4. **Contributions** - What's new/significant
-5. **Limitations** - Acknowledged or apparent weaknesses
-6. **Relevance to [my research topic]** - How it connects
+Παρέχε:
+1. **Κύρια θέση** - Κεντρικό επιχείρημα (1-2 προτάσεις)
+2. **Μεθοδολογία** - Πώς το προσέγγισαν
+3. **Βασικά ευρήματα** - Σημαντικότερα αποτελέσματα (κουκκίδες)
+4. **Συνεισφορές** - Τι είναι νέο/σημαντικό
+5. **Περιορισμοί** - Αναγνωρισμένες ή φαινόμενες αδυναμίες
+6. **Σχετικότητα με [θέμα έρευνάς μου]** - Πώς συνδέεται
 
-Reading level: \${readingLevel:graduate}`} />
+Επίπεδο ανάγνωσης: \${readingLevel:μεταπτυχιακό}`} />
 
-### Literature Synthesis
+### Σύνθεση Βιβλιογραφίας
 
-<TryIt compact prompt={`Synthesize these papers on \${topic:the effectiveness of remote work}:
+<TryIt compact prompt={`Σύνθεσε αυτά τα papers για \${topic:την αποτελεσματικότητα της τηλεργασίας}:
 
-Paper 1: \${paper1:Smith 2021 - found productivity increased 15%}
-Paper 2: \${paper2:Jones 2022 - noted collaboration challenges}
-Paper 3: \${paper3:Chen 2023 - hybrid model showed best outcomes}
+Paper 1: \${paper1:Smith 2021 - βρήκε αύξηση παραγωγικότητας 15%}
+Paper 2: \${paper2:Jones 2022 - σημείωσε προκλήσεις συνεργασίας}
+Paper 3: \${paper3:Chen 2023 - το υβριδικό μοντέλο έδειξε καλύτερα αποτελέσματα}
 
-Analyze:
-1. **Common themes** - What do they agree on?
-2. **Contradictions** - Where do they disagree?
-3. **Gaps** - What's not addressed?
-4. **Evolution** - How has thinking progressed?
-5. **Synthesis** - Integrated understanding
+Ανάλυσε:
+1. **Κοινά θέματα** - Σε τι συμφωνούν;
+2. **Αντιφάσεις** - Πού διαφωνούν;
+3. **Κενά** - Τι δεν καλύπτεται;
+4. **Εξέλιξη** - Πώς έχει προοδεύσει η σκέψη;
+5. **Σύνθεση** - Ολοκληρωμένη κατανόηση
 
-Format as: Literature review paragraph suitable for \${outputType:thesis}`} />
+Μορφοποίηση ως: Παράγραφος βιβλιογραφικής ανασκόπησης κατάλληλη για \${outputType:διατριβή}`} />
 
-### Research Question Development
+### Ανάπτυξη Ερευνητικών Ερωτημάτων
 
-<TryIt compact prompt={`Help me develop research questions for \${topic:AI adoption in healthcare}.
+<TryIt compact prompt={`Βοήθησέ με να αναπτύξω ερευνητικά ερωτήματα για \${topic:υιοθέτηση AI στην υγεία}.
 
-Context:
-- Field: \${field:health informatics}
-- Current knowledge: \${currentKnowledge:AI tools exist but adoption is slow}
-- Gap identified: \${gap:limited understanding of physician resistance factors}
-- My interest: \${interest:organizational change management}
+Πλαίσιο:
+- Τομέας: \${field:πληροφορική υγείας}
+- Τρέχουσα γνώση: \${currentKnowledge:υπάρχουν εργαλεία AI αλλά η υιοθέτηση είναι αργή}
+- Κενό που εντοπίστηκε: \${gap:περιορισμένη κατανόηση παραγόντων αντίστασης γιατρών}
+- Ενδιαφέρον μου: \${interest:διαχείριση οργανωσιακής αλλαγής}
 
-Generate:
-1. **Primary RQ** - Main question to answer
-2. **Sub-questions** - Supporting inquiries (3-4)
-3. **Hypotheses** - Testable predictions (if applicable)
+Δημιούργησε:
+1. **Πρωτεύον ΕΕ** - Κύριο ερώτημα να απαντηθεί
+2. **Υπο-ερωτήματα** - Υποστηρικτικές διερευνήσεις (3-4)
+3. **Υποθέσεις** - Ελέγξιμες προβλέψεις (αν εφαρμόζεται)
 
-Criteria: Questions should be:
-- Answerable with available methods
-- Significant to the field
-- Appropriately scoped`} />
+Κριτήρια: Τα ερωτήματα πρέπει να είναι:
+- Απαντήσιμα με διαθέσιμες μεθόδους
+- Σημαντικά για τον τομέα
+- Κατάλληλα σε εύρος`} />
 
-## Data Analysis
+## Ανάλυση Δεδομένων
 
-<Callout type="warning" title="AI Cannot Analyze Your Actual Data">
-AI can guide methodology and help interpret results, but it cannot access or process your actual datasets. Never paste sensitive research data into prompts. Use AI for **guidance**, not computation.
+<Callout type="warning" title="Το AI Δεν Μπορεί να Αναλύσει τα Πραγματικά Δεδομένα σου">
+Το AI μπορεί να καθοδηγήσει τη μεθοδολογία και να βοηθήσει στην ερμηνεία αποτελεσμάτων, αλλά δεν μπορεί να έχει πρόσβαση ή να επεξεργαστεί τα πραγματικά σύνολα δεδομένων σου. Ποτέ μην επικολλάς ευαίσθητα ερευνητικά δεδομένα σε prompts. Χρησιμοποίησε AI για **καθοδήγηση**, όχι υπολογισμό.
 </Callout>
 
-### Statistical Analysis Guidance
+### Καθοδήγηση Στατιστικής Ανάλυσης
 
-<TryIt compact prompt={`Help me analyze this data:
+<TryIt compact prompt={`Βοήθησέ με να αναλύσω αυτά τα δεδομένα:
 
-Data description:
-- Variables: \${variables:age (continuous), treatment group (categorical: A/B/C), outcome score (continuous)}
-- Sample size: \${sampleSize:n=150 (50 per group)}
-- Research question: \${researchQuestion:Does treatment type affect outcome scores?}
-- Data characteristics: \${characteristics:normally distributed, no missing values}
+Περιγραφή δεδομένων:
+- Μεταβλητές: \${variables:ηλικία (συνεχής), ομάδα θεραπείας (κατηγορική: A/B/C), σκορ αποτελέσματος (συνεχής)}
+- Μέγεθος δείγματος: \${sampleSize:n=150 (50 ανά ομάδα)}
+- Ερευνητικό ερώτημα: \${researchQuestion:Επηρεάζει ο τύπος θεραπείας τα σκορ αποτελεσμάτων;}
+- Χαρακτηριστικά δεδομένων: \${characteristics:κανονικά κατανεμημένα, χωρίς ελλείπουσες τιμές}
 
-Advise on:
-1. **Appropriate tests** - Which statistical tests to use
-2. **Assumptions to check** - Prerequisites
-3. **How to interpret results** - What different outcomes mean
-4. **Effect size** - Practical significance
-5. **Reporting** - How to present findings
+Συμβούλεψε για:
+1. **Κατάλληλα τεστ** - Ποια στατιστικά τεστ να χρησιμοποιήσω
+2. **Υποθέσεις για έλεγχο** - Προϋποθέσεις
+3. **Πώς να ερμηνεύσω αποτελέσματα** - Τι σημαίνουν διαφορετικά αποτελέσματα
+4. **Μέγεθος επίδρασης** - Πρακτική σημαντικότητα
+5. **Αναφορά** - Πώς να παρουσιάσω ευρήματα
 
-Note: Guide my analysis, don't fabricate results.`} />
+Σημείωση: Καθοδήγησε την ανάλυσή μου, μην κατασκευάζεις αποτελέσματα.`} />
 
-### Qualitative Analysis
+### Ποιοτική Ανάλυση
 
-<TryIt compact prompt={`Help me analyze these qualitative responses:
+<TryIt compact prompt={`Βοήθησέ με να αναλύσω αυτές τις ποιοτικές απαντήσεις:
 
-Responses:
-\${responses:paste interview excerpts or survey responses here}
+Απαντήσεις:
+\${responses:επικόλλησε αποσπάσματα συνέντευξης ή απαντήσεις ερωτηματολογίου εδώ}
 
-Using \${method:thematic analysis}:
+Χρησιμοποιώντας \${method:θεματική ανάλυση}:
 
-1. **Initial codes** - Identify recurring concepts
-2. **Categories** - Group related codes
-3. **Themes** - Overarching patterns
-4. **Relationships** - How themes connect
-5. **Representative quotes** - Evidence for each theme
+1. **Αρχικοί κωδικοί** - Εντόπισε επαναλαμβανόμενες έννοιες
+2. **Κατηγορίες** - Ομαδοποίησε σχετικούς κωδικούς
+3. **Θέματα** - Υπερκείμενα μοτίβα
+4. **Σχέσεις** - Πώς συνδέονται τα θέματα
+5. **Αντιπροσωπευτικά αποσπάσματα** - Τεκμήρια για κάθε θέμα
 
-Maintain: Participant voice and context`} />
+Διατήρησε: Φωνή και πλαίσιο συμμετέχοντα`} />
 
-### Data Interpretation
+### Ερμηνεία Δεδομένων
 
-<TryIt compact prompt={`Help me interpret these findings:
+<TryIt compact prompt={`Βοήθησέ με να ερμηνεύσω αυτά τα ευρήματα:
 
-Results:
-\${results:paste statistical output or data summary here}
+Αποτελέσματα:
+\${results:επικόλλησε στατιστική έξοδο ή σύνοψη δεδομένων εδώ}
 
-Context:
-- Research question: \${researchQuestion:Does X predict Y?}
-- Hypothesis: \${hypothesis:X positively predicts Y}
-- Expected results: \${expectedResults:significant positive correlation}
+Πλαίσιο:
+- Ερευνητικό ερώτημα: \${researchQuestion:Προβλέπει το X το Y;}
+- Υπόθεση: \${hypothesis:Το X προβλέπει θετικά το Y}
+- Αναμενόμενα αποτελέσματα: \${expectedResults:σημαντική θετική συσχέτιση}
 
-Provide:
-1. **Plain language interpretation** - What does this mean?
-2. **Statistical significance** - What the p-values tell us
-3. **Practical significance** - Real-world meaning
-4. **Comparison to literature** - How does this fit?
-5. **Alternative explanations** - Other interpretations
-6. **Limitations of interpretation**`} />
+Παρέχε:
+1. **Ερμηνεία σε απλή γλώσσα** - Τι σημαίνει αυτό;
+2. **Στατιστική σημαντικότητα** - Τι μας λένε τα p-values
+3. **Πρακτική σημαντικότητα** - Νόημα πραγματικού κόσμου
+4. **Σύγκριση με βιβλιογραφία** - Πώς ταιριάζει;
+5. **Εναλλακτικές εξηγήσεις** - Άλλες ερμηνείες
+6. **Περιορισμοί ερμηνείας**`} />
 
-## Structured Analysis Frameworks
+## Δομημένα Πλαίσια Ανάλυσης
 
-### PESTLE Analysis
+### Ανάλυση PESTLE
 
-<TryIt compact prompt={`Conduct a PESTLE analysis for \${subject:electric vehicle industry in Europe}.
+<TryIt compact prompt={`Διεξήγαγε ανάλυση PESTLE για \${subject:βιομηχανία ηλεκτρικών οχημάτων στην Ευρώπη}.
 
-**Political** factors:
-- Government policies, regulations, political stability
+**Πολιτικοί** παράγοντες:
+- Κυβερνητικές πολιτικές, κανονισμοί, πολιτική σταθερότητα
 
-**Economic** factors:
-- Economic growth, inflation, exchange rates, unemployment
+**Οικονομικοί** παράγοντες:
+- Οικονομική ανάπτυξη, πληθωρισμός, συναλλαγματικές ισοτιμίες, ανεργία
 
-**Social** factors:
-- Demographics, cultural trends, lifestyle changes
+**Κοινωνικοί** παράγοντες:
+- Δημογραφικά, πολιτιστικές τάσεις, αλλαγές τρόπου ζωής
 
-**Technological** factors:
-- Innovation, R&D, automation, technology changes
+**Τεχνολογικοί** παράγοντες:
+- Καινοτομία, Ε&Α, αυτοματοποίηση, τεχνολογικές αλλαγές
 
-**Legal** factors:
-- Legislation, regulatory bodies, employment law
+**Νομικοί** παράγοντες:
+- Νομοθεσία, ρυθμιστικοί φορείς, εργατικό δίκαιο
 
-**Environmental** factors:
-- Climate, sustainability, environmental regulations
+**Περιβαλλοντικοί** παράγοντες:
+- Κλίμα, βιωσιμότητα, περιβαλλοντικοί κανονισμοί
 
-For each: Current state + trends + implications`} />
+Για καθένα: Τρέχουσα κατάσταση + τάσεις + επιπτώσεις`} />
 
-### Root Cause Analysis
+### Ανάλυση Ριζικών Αιτιών
 
-<TryIt compact prompt={`Perform root cause analysis for \${problem:customer churn increased 20% last quarter}.
+<TryIt compact prompt={`Εκτέλεσε ανάλυση ριζικών αιτιών για \${problem:η απώλεια πελατών αυξήθηκε 20% το προηγούμενο τρίμηνο}.
 
-Problem statement:
-\${problemStatement:Monthly churn rate rose from 3% to 3.6% between Q3 and Q4}
+Δήλωση προβλήματος:
+\${problemStatement:Το μηνιαίο ποσοστό απώλειας αυξήθηκε από 3% σε 3.6% μεταξύ Q3 και Q4}
 
-Using 5 Whys:
-1. Why? First level cause
-   2. Why? Deeper cause
-      3. Why? Deeper still
-         4. Why? Approaching root
-            5. Why? Root cause
+Χρησιμοποιώντας 5 Γιατί:
+1. Γιατί; Αιτία πρώτου επιπέδου
+   2. Γιατί; Βαθύτερη αιτία
+      3. Γιατί; Ακόμα βαθύτερα
+         4. Γιατί; Πλησιάζοντας τη ρίζα
+            5. Γιατί; Ριζική αιτία
 
-Alternative: Fishbone diagram categories
-- People
-- Process
-- Equipment
-- Materials
-- Environment
-- Management
+Εναλλακτικά: Κατηγορίες διαγράμματος ψαροκόκαλο
+- Άνθρωποι
+- Διαδικασία
+- Εξοπλισμός
+- Υλικά
+- Περιβάλλον
+- Διοίκηση
 
-Provide: Root cause(s) + recommended actions`} />
+Παρέχε: Ριζική αιτία(-ες) + συνιστώμενες ενέργειες`} />
 
-### Gap Analysis
+### Ανάλυση Κενών
 
-<TryIt compact prompt={`Conduct a gap analysis for \${subject:our customer support operations}.
+<TryIt compact prompt={`Διεξήγαγε ανάλυση κενών για \${subject:τις λειτουργίες υποστήριξης πελατών μας}.
 
-**Current State:**
-- \${currentState:Average response time 24 hours, CSAT 3.2/5}
+**Τρέχουσα Κατάσταση:**
+- \${currentState:Μέσος χρόνος απόκρισης 24 ώρες, CSAT 3.2/5}
 
-**Desired State:**
-- \${desiredState:Response time under 4 hours, CSAT 4.5/5}
+**Επιθυμητή Κατάσταση:**
+- \${desiredState:Χρόνος απόκρισης κάτω από 4 ώρες, CSAT 4.5/5}
 
-**Gap Identification:**
-| Area | Current | Desired | Gap | Priority |
-|------|---------|---------|-----|----------|
-| ... | ... | ... | ... | H/M/L |
+**Αναγνώριση Κενών:**
+| Περιοχή | Τρέχον | Επιθυμητό | Κενό | Προτεραιότητα |
+|---------|--------|-----------|------|---------------|
+| ... | ... | ... | ... | Υ/Μ/Χ |
 
-**Action Plan:**
-For each high-priority gap:
-- Specific actions
-- Resources needed
-- Timeline
-- Success metrics`} />
+**Πλάνο Δράσης:**
+Για κάθε κενό υψηλής προτεραιότητας:
+- Συγκεκριμένες ενέργειες
+- Απαιτούμενοι πόροι
+- Χρονοδιάγραμμα
+- Μετρικές επιτυχίας`} />
 
-## Academic Writing Support
+## Υποστήριξη Ακαδημαϊκής Συγγραφής
 
-### Argument Structure
+### Δομή Επιχειρήματος
 
-<TryIt compact prompt={`Help me structure an argument for \${topic:why remote work should become permanent policy}.
+<TryIt compact prompt={`Βοήθησέ με να δομήσω επιχείρημα για \${topic:γιατί η τηλεργασία πρέπει να γίνει μόνιμη πολιτική}.
 
-Main claim: \${thesis:Organizations should adopt permanent remote/hybrid policies for knowledge workers}
+Κύριος ισχυρισμός: \${thesis:Οι οργανισμοί πρέπει να υιοθετήσουν μόνιμες πολιτικές τηλεργασίας/υβριδικής για εργαζόμενους γνώσης}
 
-Required:
-1. **Premises** - Supporting claims that lead to conclusion
-2. **Evidence** - Data/sources for each premise
-3. **Counterarguments** - Opposing views
-4. **Rebuttals** - Responses to counterarguments
-5. **Logical flow** - How it all connects
+Απαιτείται:
+1. **Προκείμενες** - Υποστηρικτικοί ισχυρισμοί που οδηγούν στο συμπέρασμα
+2. **Τεκμήρια** - Δεδομένα/πηγές για κάθε προκείμενη
+3. **Αντεπιχειρήματα** - Αντίθετες απόψεις
+4. **Αντικρούσεις** - Απαντήσεις στα αντεπιχειρήματα
+5. **Λογική ροή** - Πώς συνδέονται όλα
 
-Check for:
-- Logical fallacies
-- Unsupported claims
-- Gaps in reasoning`} />
+Έλεγξε για:
+- Λογικά σφάλματα
+- Μη τεκμηριωμένους ισχυρισμούς
+- Κενά στη συλλογιστική`} />
 
-### Methods Section
+### Ενότητα Μεθόδων
 
-<TryIt compact prompt={`Help me write a methods section for:
+<TryIt compact prompt={`Βοήθησέ με να γράψω ενότητα μεθόδων για:
 
-Study type: \${studyType:survey}
-Participants: \${participants:200 undergraduate students, convenience sampling}
-Materials: \${materials:online questionnaire with Likert scales}
-Procedure: \${procedure:participants completed 20-minute survey online}
-Analysis: \${analysis:descriptive statistics and regression analysis}
+Τύπος μελέτης: \${studyType:έρευνα με ερωτηματολόγιο}
+Συμμετέχοντες: \${participants:200 προπτυχιακοί φοιτητές, δειγματοληψία ευκολίας}
+Υλικά: \${materials:διαδικτυακό ερωτηματολόγιο με κλίμακες Likert}
+Διαδικασία: \${procedure:οι συμμετέχοντες ολοκλήρωσαν 20-λεπτο ερωτηματολόγιο διαδικτυακά}
+Ανάλυση: \${analysis:περιγραφική στατιστική και ανάλυση παλινδρόμησης}
 
-Standards: Follow \${standards:APA 7th edition} guidelines
-Include: Enough detail for replication
-Tone: Passive voice, past tense`} />
+Πρότυπα: Ακολούθησε οδηγίες \${standards:APA 7η έκδοση}
+Συμπεριέλαβε: Αρκετή λεπτομέρεια για αναπαραγωγή
+Τόνος: Παθητική φωνή, παρελθοντικός χρόνος`} />
 
-### Discussion Section
+### Ενότητα Συζήτησης
 
-<TryIt compact prompt={`Help me write a discussion section.
+<TryIt compact prompt={`Βοήθησέ με να γράψω ενότητα συζήτησης.
 
-Key findings:
-\${findings:1. Significant positive correlation (r=0.45) between X and Y\n2. No significant difference between groups on secondary measure}
+Βασικά ευρήματα:
+\${findings:1. Σημαντική θετική συσχέτιση (r=0.45) μεταξύ X και Y\n2. Καμία σημαντική διαφορά μεταξύ ομάδων στο δευτερεύον μέτρο}
 
-Structure:
-1. **Summary** - Brief restatement of main findings
-2. **Interpretation** - What the findings mean
-3. **Context** - How findings relate to existing literature
-4. **Implications** - Theoretical and practical significance
-5. **Limitations** - Study weaknesses
-6. **Future directions** - What research should follow
-7. **Conclusion** - Take-home message
+Δομή:
+1. **Σύνοψη** - Σύντομη επαναδιατύπωση κύριων ευρημάτων
+2. **Ερμηνεία** - Τι σημαίνουν τα ευρήματα
+3. **Πλαίσιο** - Πώς τα ευρήματα σχετίζονται με υπάρχουσα βιβλιογραφία
+4. **Επιπτώσεις** - Θεωρητική και πρακτική σημασία
+5. **Περιορισμοί** - Αδυναμίες μελέτης
+6. **Μελλοντικές κατευθύνσεις** - Τι έρευνα πρέπει να ακολουθήσει
+7. **Συμπέρασμα** - Βασικό μήνυμα
 
-Avoid: Overstating findings or introducing new results`} />
+Απόφυγε: Υπερεκτίμηση ευρημάτων ή εισαγωγή νέων αποτελεσμάτων`} />
 
-## Critical Analysis
+## Κριτική Ανάλυση
 
-### Source Evaluation
+### Αξιολόγηση Πηγής
 
-<TryIt compact prompt={`Evaluate this source for academic use:
+<TryIt compact prompt={`Αξιολόγησε αυτή την πηγή για ακαδημαϊκή χρήση:
 
-Source: \${source:paste citation or link here}
-Content summary: \${summary:brief description of what the source claims}
+Πηγή: \${source:επικόλλησε παραπομπή ή σύνδεσμο εδώ}
+Σύνοψη περιεχομένου: \${summary:σύντομη περιγραφή τι ισχυρίζεται η πηγή}
 
-Assess using CRAAP criteria:
-- **Currency**: When published? Updated? Current enough?
-- **Relevance**: Relates to my topic? Appropriate level?
-- **Authority**: Author credentials? Publisher reputation?
-- **Accuracy**: Supported by evidence? Peer-reviewed?
-- **Purpose**: Why was it written? Bias evident?
+Αξιολόγησε χρησιμοποιώντας κριτήρια CRAAP:
+- **Επικαιρότητα**: Πότε δημοσιεύτηκε; Ενημερώθηκε; Αρκετά τρέχουσα;
+- **Σχετικότητα**: Σχετίζεται με το θέμα μου; Κατάλληλο επίπεδο;
+- **Αυθεντία**: Διαπιστευτήρια συγγραφέα; Φήμη εκδότη;
+- **Ακρίβεια**: Υποστηρίζεται από τεκμήρια; Αξιολογημένο από ομότιμους;
+- **Σκοπός**: Γιατί γράφτηκε; Εμφανής μεροληψία;
 
-Verdict: Highly credible / Use with caution / Avoid
-How to use: Recommendations for incorporation`} />
+Ετυμηγορία: Υψηλά αξιόπιστη / Χρήση με προσοχή / Αποφυγή
+Πώς να χρησιμοποιηθεί: Συστάσεις για ενσωμάτωση`} />
 
-### Argument Analysis
+### Ανάλυση Επιχειρήματος
 
-<TryIt compact prompt={`Analyze the argument in this text:
+<TryIt compact prompt={`Ανάλυσε το επιχείρημα σε αυτό το κείμενο:
 
-\${text:paste the text you want to analyze}
+\${text:επικόλλησε το κείμενο που θέλεις να αναλύσεις}
 
-Identify:
-1. **Main claim** - What's being argued
-2. **Supporting evidence** - What backs it up
-3. **Assumptions** - Unstated premises
-4. **Logical structure** - How conclusion follows
-5. **Strengths** - What's compelling
-6. **Weaknesses** - Logical gaps or fallacies
-7. **Alternative interpretations**
+Αναγνώρισε:
+1. **Κύριος ισχυρισμός** - Τι υποστηρίζεται
+2. **Υποστηρικτικά τεκμήρια** - Τι το υποστηρίζει
+3. **Υποθέσεις** - Μη δηλωμένες προκείμενες
+4. **Λογική δομή** - Πώς ακολουθεί το συμπέρασμα
+5. **Δυνατά σημεία** - Τι είναι πειστικό
+6. **Αδυναμίες** - Λογικά κενά ή σφάλματα
+7. **Εναλλακτικές ερμηνείες**
 
-Provide: Fair, balanced assessment`} />
+Παρέχε: Δίκαιη, ισορροπημένη αξιολόγηση`} />
 
-## Prompt Templates from prompts.chat
+## Πρότυπα Prompts από το prompts.chat
 
-### Act as a Research Assistant
+### Ενέργησε ως Ερευνητικός Βοηθός
 
-<TryIt compact prompt={`I want you to act as a research assistant. Help me explore topics, find information, synthesize sources, and develop arguments. Ask clarifying questions, suggest relevant areas to investigate, and help me think critically about evidence. Be thorough but acknowledge the limits of your knowledge.`} />
+<TryIt compact prompt={`Θέλω να ενεργήσεις ως ερευνητικός βοηθός. Βοήθησέ με να εξερευνήσω θέματα, να βρω πληροφορίες, να συνθέσω πηγές, και να αναπτύξω επιχειρήματα. Κάνε διευκρινιστικές ερωτήσεις, πρότεινε σχετικές περιοχές για διερεύνηση, και βοήθησέ με να σκεφτώ κριτικά για τεκμήρια. Να είσαι διεξοδικός αλλά αναγνώρισε τα όρια της γνώσης σου.`} />
 
-### Act as a Data Analyst
+### Ενέργησε ως Αναλυτής Δεδομένων
 
-<TryIt compact prompt={`I want you to act as a data analyst. I will describe datasets and research questions, and you will suggest analysis approaches, help interpret results, and identify potential issues. Focus on sound methodology and clear communication of findings.`} />
+<TryIt compact prompt={`Θέλω να ενεργήσεις ως αναλυτής δεδομένων. Θα περιγράφω σύνολα δεδομένων και ερευνητικά ερωτήματα, και θα προτείνεις προσεγγίσεις ανάλυσης, θα βοηθάς στην ερμηνεία αποτελεσμάτων, και θα εντοπίζεις πιθανά ζητήματα. Εστίασε σε υγιή μεθοδολογία και σαφή επικοινωνία ευρημάτων.`} />
 
-### Act as a Peer Reviewer
+### Ενέργησε ως Κριτής Ομότιμων
 
-<TryIt compact prompt={`I want you to act as an academic peer reviewer. I will share manuscripts or sections, and you will provide constructive feedback on methodology, argument, writing, and contribution to the field. Be rigorous but supportive, noting both strengths and areas for improvement.`} />
+<TryIt compact prompt={`Θέλω να ενεργήσεις ως ακαδημαϊκός κριτής ομότιμων. Θα μοιράζομαι χειρόγραφα ή ενότητες, και θα παρέχεις εποικοδομητική ανατροφοδότηση για μεθοδολογία, επιχείρημα, συγγραφή, και συνεισφορά στον τομέα. Να είσαι αυστηρός αλλά υποστηρικτικός, σημειώνοντας τόσο δυνατά σημεία όσο και περιοχές για βελτίωση.`} />
 
-## Summary
+## Σύνοψη
 
-<Callout type="tip" title="Key Techniques">
-Clearly state research context and goals, specify the analytical framework to use, request acknowledgment of limitations, ask for evidence-based reasoning, and maintain academic rigor and honesty.
+<Callout type="tip" title="Βασικές Τεχνικές">
+Δήλωσε ξεκάθαρα το ερευνητικό πλαίσιο και τους στόχους, καθόρισε το αναλυτικό πλαίσιο να χρησιμοποιηθεί, ζήτα αναγνώριση περιορισμών, ζήτα συλλογιστική βασισμένη σε τεκμήρια, και διατήρησε ακαδημαϊκή αυστηρότητα και τιμιότητα.
 </Callout>
 
 <Quiz 
-  question="What's the most important thing to remember when using AI for research?"
+  question="Ποιο είναι το πιο σημαντικό πράγμα να θυμάσαι όταν χρησιμοποιείς AI για έρευνα;"
   options={[
-    "AI can replace the need for primary sources",
-    "AI analysis is always accurate and up-to-date",
-    "Always verify AI claims independently and cite original sources",
-    "AI can access and analyze your actual datasets"
+    "Το AI μπορεί να αντικαταστήσει την ανάγκη για πρωτογενείς πηγές",
+    "Η ανάλυση AI είναι πάντα ακριβής και ενημερωμένη",
+    "Πάντα επαλήθευε τους ισχυρισμούς AI ανεξάρτητα και παράθετε αρχικές πηγές",
+    "Το AI μπορεί να έχει πρόσβαση και να αναλύσει τα πραγματικά σύνολα δεδομένων σου"
   ]}
   correctIndex={2}
-  explanation="AI can assist with synthesis and structure, but it can hallucinate citations, have outdated information, and cannot access your actual data. Always verify claims against primary sources and maintain academic integrity."
+  explanation="Το AI μπορεί να βοηθήσει με σύνθεση και δομή, αλλά μπορεί να παραισθαίνει παραπομπές, να έχει ξεπερασμένες πληροφορίες, και δεν μπορεί να έχει πρόσβαση στα πραγματικά δεδομένα σου. Πάντα επαλήθευε ισχυρισμούς έναντι πρωτογενών πηγών και διατήρησε ακαδημαϊκή ακεραιότητα."
 />
 
-Remember: AI can assist research but cannot replace critical thinking, ethical judgment, or domain expertise. Always verify claims independently.
+Θυμήσου: Το AI μπορεί να βοηθήσει την έρευνα αλλά δεν μπορεί να αντικαταστήσει κριτική σκέψη, ηθική κρίση, ή τομεακή εμπειρογνωμοσύνη. Πάντα επαλήθευε ισχυρισμούς ανεξάρτητα.

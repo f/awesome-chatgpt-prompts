@@ -1,345 +1,345 @@
-AI is a powerful tool for both teaching and learning. This chapter covers prompts for educational contexts—from personalized tutoring to curriculum development.
+Το AI είναι ένα ισχυρό εργαλείο τόσο για διδασκαλία όσο και για μάθηση. Αυτό το κεφάλαιο καλύπτει prompts για εκπαιδευτικά πλαίσια—από εξατομικευμένη διδασκαλία μέχρι ανάπτυξη προγράμματος σπουδών.
 
-<Callout type="info" title="AI as Learning Partner">
-AI excels as a patient, adaptive tutor that can explain concepts multiple ways, generate unlimited practice problems, and provide instant feedback—available 24/7.
+<Callout type="info" title="AI ως Συνεργάτης Μάθησης">
+Το AI διαπρέπει ως υπομονετικός, προσαρμοστικός δάσκαλος που μπορεί να εξηγήσει έννοιες με πολλούς τρόπους, να δημιουργήσει απεριόριστες ασκήσεις πρακτικής, και να παρέχει άμεση ανατροφοδότηση—διαθέσιμο 24/7.
 </Callout>
 
-## Personalized Learning
+## Εξατομικευμένη Μάθηση
 
-### Do's and Don'ts: Learning Prompts
+### Τι να Κάνεις και Τι Όχι: Prompts Μάθησης
 
 <Compare 
-  before={{ label: "❌ Passive request", content: "Explain quantum physics to me." }}
-  after={{ label: "✓ Context-rich request", content: "Explain quantum superposition to me.\n\nMy background: I understand basic chemistry and classical physics.\nLearning style: I learn best through analogies and examples.\nExplain with a simple analogy, then the core concept, then a practical example. Check my understanding with a question." }}
+  before={{ label: "❌ Παθητικό αίτημα", content: "Εξήγησέ μου την κβαντική φυσική." }}
+  after={{ label: "✓ Αίτημα πλούσιο σε context", content: "Εξήγησέ μου την κβαντική υπέρθεση.\n\nΤο υπόβαθρό μου: Κατανοώ βασική χημεία και κλασική φυσική.\nΣτυλ μάθησης: Μαθαίνω καλύτερα μέσω αναλογιών και παραδειγμάτων.\nΕξήγησε με μια απλή αναλογία, μετά τη βασική έννοια, μετά ένα πρακτικό παράδειγμα. Έλεγξε την κατανόησή μου με μια ερώτηση." }}
 />
 
-### Concept Explanation
+### Εξήγηση Έννοιας
 
-<TryIt compact prompt={`Explain [concept] to me.
+<TryIt compact prompt={`Εξήγησέ μου [έννοια].
 
-My background:
-- Current level: [beginner/intermediate/advanced]
-- Related knowledge: [what I already know]
-- Learning style: [visual/examples/theoretical]
+Το υπόβαθρό μου:
+- Τρέχον επίπεδο: [αρχάριος/μέτριος/προχωρημένος]
+- Σχετική γνώση: [τι ήδη ξέρω]
+- Στυλ μάθησης: [οπτικό/παραδείγματα/θεωρητικό]
 
-Explain with:
-1. Simple analogy to something familiar
-2. Core concept in plain language
-3. How it connects to what I know
-4. A practical example
-5. Common misconceptions to avoid
+Εξήγησε με:
+1. Απλή αναλογία με κάτι οικείο
+2. Βασική έννοια σε απλή γλώσσα
+3. Πώς συνδέεται με αυτό που ξέρω
+4. Ένα πρακτικό παράδειγμα
+5. Κοινές παρανοήσεις να αποφύγω
 
-Then check my understanding with a question.`} />
+Μετά έλεγξε την κατανόησή μου με μια ερώτηση.`} />
 
-### Adaptive Tutoring
+### Προσαρμοστική Διδασκαλία
 
-<TryIt compact prompt={`You are my tutor for \${subject:calculus}. Teach me \${topic:derivatives} adaptively.
+<TryIt compact prompt={`Είσαι ο δάσκαλός μου για \${subject:λογισμό}. Δίδαξέ μου \${topic:παραγώγους} προσαρμοστικά.
 
-Start with a diagnostic question to assess my level.
-Based on my response:
-- If correct: Move to more advanced aspects
-- If partially correct: Clarify the gap, then continue
-- If incorrect: Step back and build foundation
+Ξεκίνα με μια διαγνωστική ερώτηση για να αξιολογήσεις το επίπεδό μου.
+Με βάση την απάντησή μου:
+- Αν σωστή: Προχώρα σε πιο προχωρημένες πτυχές
+- Αν μερικώς σωστή: Διευκρίνισε το κενό, μετά συνέχισε
+- Αν λάθος: Κάνε βήμα πίσω και χτίσε θεμέλια
 
-After each explanation:
-- Check understanding with a question
-- Adjust difficulty based on my answers
-- Provide encouragement and track progress`} />
+Μετά από κάθε εξήγηση:
+- Έλεγξε κατανόηση με μια ερώτηση
+- Προσάρμοσε δυσκολία βάσει των απαντήσεών μου
+- Παρέχε ενθάρρυνση και παρακολούθησε πρόοδο`} />
 
-### Learning Path Creation
+### Δημιουργία Διαδρομής Μάθησης
 
-<TryIt compact prompt={`Create a learning path for \${goal:becoming a web developer}.
+<TryIt compact prompt={`Δημιούργησε διαδρομή μάθησης για \${goal:να γίνω web developer}.
 
-My situation:
-- Current skill level: \${skillLevel:complete beginner}
-- Time available: \${timeAvailable:10 hours per week}
-- Target timeline: \${timeline:6 months}
-- Learning preferences: \${preferences:projects and tutorials}
+Η κατάστασή μου:
+- Τρέχον επίπεδο δεξιοτήτων: \${skillLevel:εντελώς αρχάριος}
+- Διαθέσιμος χρόνος: \${timeAvailable:10 ώρες την εβδομάδα}
+- Στόχος χρονοδιάγραμμα: \${timeline:6 μήνες}
+- Προτιμήσεις μάθησης: \${preferences:projects και tutorials}
 
-Provide:
-1. Prerequisites check (what I need first)
-2. Milestone breakdown (phases with goals)
-3. Resources for each phase (free when possible)
-4. Practice projects at each stage
-5. Assessment criteria (how to know I'm ready to advance)`} />
+Παρέχε:
+1. Έλεγχος προαπαιτούμενων (τι χρειάζομαι πρώτα)
+2. Ανάλυση ορόσημων (φάσεις με στόχους)
+3. Πόροι για κάθε φάση (δωρεάν όταν είναι δυνατόν)
+4. Projects πρακτικής σε κάθε στάδιο
+5. Κριτήρια αξιολόγησης (πώς να ξέρω ότι είμαι έτοιμος να προχωρήσω)`} />
 
-## Study Assistance
+## Βοήθεια Μελέτης
 
-<Callout type="tip" title="Active Learning Principle">
-Don't just read AI explanations passively. Ask it to quiz you, generate problems, and check your understanding. **Active recall beats passive review.**
+<Callout type="tip" title="Αρχή Ενεργητικής Μάθησης">
+Μη διαβάζεις απλά τις εξηγήσεις AI παθητικά. Ζήτα να σε εξετάσει, να δημιουργήσει προβλήματα, και να ελέγξει την κατανόησή σου. **Η ενεργητική ανάκληση νικά την παθητική επανάληψη.**
 </Callout>
 
-### Summary Generation
+### Δημιουργία Περίληψης
 
-<TryIt compact prompt={`Summarize this \${contentType:chapter} for study purposes.
+<TryIt compact prompt={`Συνόψισε αυτό το \${contentType:κεφάλαιο} για σκοπούς μελέτης.
 
-Content:
-\${content:paste your content here}
+Περιεχόμενο:
+\${content:επικόλλησε το περιεχόμενό σου εδώ}
 
-Provide:
-1. **Key Concepts** (5-7 main ideas)
-2. **Important Terms** (with brief definitions)
-3. **Relationships** (how concepts connect)
-4. **Study Questions** (to test understanding)
-5. **Memory Aids** (mnemonics or associations)
+Παρέχε:
+1. **Βασικές Έννοιες** (5-7 κύριες ιδέες)
+2. **Σημαντικοί Όροι** (με σύντομους ορισμούς)
+3. **Σχέσεις** (πώς συνδέονται οι έννοιες)
+4. **Ερωτήσεις Μελέτης** (για έλεγχο κατανόησης)
+5. **Βοηθήματα Μνήμης** (μνημονικοί κανόνες ή συσχετίσεις)
 
-Format for easy review and memorization.`} />
+Μορφοποίηση για εύκολη επανάληψη και απομνημόνευση.`} />
 
-### Flashcard Generation
+### Δημιουργία Flashcards
 
-<TryIt compact prompt={`Create flashcards for studying \${topic:World War II}.
+<TryIt compact prompt={`Δημιούργησε flashcards για μελέτη \${topic:Β' Παγκόσμιου Πολέμου}.
 
-Source material:
-\${content:paste your study material here}
+Υλικό πηγής:
+\${content:επικόλλησε το υλικό μελέτης σου εδώ}
 
-Format each card:
-Front: Question or term
-Back: Answer or definition
-Hint: Optional memory aid
+Μορφή κάθε κάρτας:
+Μπροστά: Ερώτηση ή όρος
+Πίσω: Απάντηση ή ορισμός
+Υπόδειξη: Προαιρετικό βοήθημα μνήμης
 
-Categories to cover:
-- Definitions (key terms)
-- Concepts (main ideas)
-- Relationships (how things connect)
-- Applications (real-world uses)
+Κατηγορίες να καλυφθούν:
+- Ορισμοί (βασικοί όροι)
+- Έννοιες (κύριες ιδέες)
+- Σχέσεις (πώς συνδέονται τα πράγματα)
+- Εφαρμογές (χρήσεις πραγματικού κόσμου)
 
-Generate \${numberOfCards:20} cards, balanced across categories.`} />
+Δημιούργησε \${numberOfCards:20} κάρτες, ισορροπημένες σε κατηγορίες.`} />
 
-### Practice Problems
+### Ασκήσεις Πρακτικής
 
-<TryIt compact prompt={`Generate practice problems for \${topic:quadratic equations}.
+<TryIt compact prompt={`Δημιούργησε ασκήσεις πρακτικής για \${topic:δευτεροβάθμιες εξισώσεις}.
 
-Difficulty levels:
-- 3 Basic (test fundamental understanding)
-- 3 Intermediate (require application)
-- 2 Advanced (require synthesis/analysis)
+Επίπεδα δυσκολίας:
+- 3 Βασικές (ελέγχουν θεμελιώδη κατανόηση)
+- 3 Μέτριες (απαιτούν εφαρμογή)
+- 2 Προχωρημένες (απαιτούν σύνθεση/ανάλυση)
 
-For each problem:
-1. Clear problem statement
-2. Space for student work
-3. Hints available on request
-4. Detailed solution with explanation
+Για κάθε πρόβλημα:
+1. Σαφής δήλωση προβλήματος
+2. Χώρος για εργασία μαθητή
+3. Υποδείξεις διαθέσιμες κατόπιν αιτήματος
+4. Λεπτομερής λύση με εξήγηση
 
-Include variety: \${problemTypes:calculation, conceptual, application}`} />
+Συμπεριέλαβε ποικιλία: \${problemTypes:υπολογισμός, εννοιολογικά, εφαρμογή}`} />
 
-## Teaching Tools
+## Εργαλεία Διδασκαλίας
 
-### Lesson Plan Creation
+### Δημιουργία Σχεδίου Μαθήματος
 
-<TryIt compact prompt={`Create a lesson plan for teaching \${topic:photosynthesis}.
+<TryIt compact prompt={`Δημιούργησε σχέδιο μαθήματος για διδασκαλία \${topic:φωτοσύνθεσης}.
 
-Context:
-- Grade/Level: \${audience:8th grade science}
-- Class duration: \${duration:50 minutes}
-- Class size: \${classSize:25 students}
-- Prior knowledge: \${prerequisites:basic cell structure}
+Πλαίσιο:
+- Τάξη/Επίπεδο: \${audience:Β' Γυμνασίου φυσικές επιστήμες}
+- Διάρκεια μαθήματος: \${duration:50 λεπτά}
+- Μέγεθος τάξης: \${classSize:25 μαθητές}
+- Προηγούμενη γνώση: \${prerequisites:βασική δομή κυττάρου}
 
-Include:
-1. **Learning Objectives** (SMART format)
-2. **Opening Hook** (5 min) - engagement activity
-3. **Instruction** (15-20 min) - core content delivery
-4. **Guided Practice** (10 min) - work with students
-5. **Independent Practice** (10 min) - students work alone
-6. **Assessment** (5 min) - check understanding
-7. **Closure** - summarize and preview
+Συμπεριέλαβε:
+1. **Μαθησιακοί Στόχοι** (SMART format)
+2. **Αρχικό Hook** (5 λεπτά) - δραστηριότητα εμπλοκής
+3. **Διδασκαλία** (15-20 λεπτά) - παράδοση βασικού περιεχομένου
+4. **Καθοδηγούμενη Πρακτική** (10 λεπτά) - εργασία με μαθητές
+5. **Ανεξάρτητη Πρακτική** (10 λεπτά) - μαθητές δουλεύουν μόνοι
+6. **Αξιολόγηση** (5 λεπτά) - έλεγχος κατανόησης
+7. **Κλείσιμο** - σύνοψη και προεπισκόπηση
 
-Materials needed: list
-Differentiation strategies: for various learners`} />
+Απαιτούμενα υλικά: λίστα
+Στρατηγικές διαφοροποίησης: για διάφορους μαθητές`} />
 
-### Assignment Design
+### Σχεδιασμός Εργασίας
 
-<TryIt compact prompt={`Design an assignment for \${learningObjective:analyzing primary sources}.
+<TryIt compact prompt={`Σχεδίασε εργασία για \${learningObjective:ανάλυση πρωτογενών πηγών}.
 
-Parameters:
-- Course: \${course:AP US History}
-- Due in: \${dueIn:2 weeks}
-- Individual/Group: \${grouping:individual}
-- Weight: \${weight:15% of grade}
+Παράμετροι:
+- Μάθημα: \${course:Ιστορία Λυκείου}
+- Παράδοση σε: \${dueIn:2 εβδομάδες}
+- Ατομική/Ομαδική: \${grouping:ατομική}
+- Βαρύτητα: \${weight:15% του βαθμού}
 
-Include:
-1. Clear instructions
-2. Grading rubric with criteria
-3. Example of expected quality
-4. Submission requirements
-5. Academic integrity reminders
+Συμπεριέλαβε:
+1. Σαφείς οδηγίες
+2. Ρουμπρίκα βαθμολόγησης με κριτήρια
+3. Παράδειγμα αναμενόμενης ποιότητας
+4. Απαιτήσεις υποβολής
+5. Υπενθυμίσεις ακαδημαϊκής ακεραιότητας
 
-The assignment should:
-- Assess \${skills:critical thinking and source evaluation}
-- Allow for \${allowFor:analysis and interpretation}
-- Be completable in approximately \${hours:8 hours}`} />
+Η εργασία πρέπει να:
+- Αξιολογεί \${skills:κριτική σκέψη και αξιολόγηση πηγών}
+- Επιτρέπει \${allowFor:ανάλυση και ερμηνεία}
+- Ολοκληρώνεται σε περίπου \${hours:8 ώρες}`} />
 
-### Quiz Generation
+### Δημιουργία Quiz
 
-<TryIt compact prompt={`Create a quiz on \${topic:the American Revolution}.
+<TryIt compact prompt={`Δημιούργησε quiz για \${topic:την Αμερικανική Επανάσταση}.
 
-Format:
-- [X] Multiple choice questions (4 options each)
-- [X] True/False questions
-- [X] Short answer questions
-- [X] One essay question
+Μορφή:
+- [X] Ερωτήσεις πολλαπλής επιλογής (4 επιλογές η καθεμία)
+- [X] Ερωτήσεις Σωστό/Λάθος
+- [X] Ερωτήσεις σύντομης απάντησης
+- [X] Μία ερώτηση δοκιμίου
 
-Specifications:
-- Cover all key learning objectives
-- Range from recall to analysis
-- Include answer key with explanations
-- Time estimate: \${timeEstimate:30 minutes}
-- Point values for each section`} />
+Προδιαγραφές:
+- Κάλυψε όλους τους βασικούς μαθησιακούς στόχους
+- Εύρος από ανάκληση μέχρι ανάλυση
+- Συμπεριέλαβε κλειδί απαντήσεων με εξηγήσεις
+- Εκτίμηση χρόνου: \${timeEstimate:30 λεπτά}
+- Μοριοδότηση για κάθε ενότητα`} />
 
-## Specialized Learning Contexts
+## Εξειδικευμένα Πλαίσια Μάθησης
 
-### Language Learning
+### Εκμάθηση Γλώσσας
 
-<TryIt compact prompt={`Help me learn \${language:Spanish}.
+<TryIt compact prompt={`Βοήθησέ με να μάθω \${language:Ισπανικά}.
 
-Current level: \${currentLevel:A2 - elementary}
-Native language: \${nativeLanguage:English}
-Goals: \${goals:conversation for travel}
+Τρέχον επίπεδο: \${currentLevel:A2 - στοιχειώδες}
+Μητρική γλώσσα: \${nativeLanguage:Ελληνικά}
+Στόχοι: \${goals:συνομιλία για ταξίδια}
 
-Today's lesson: \${focusArea:ordering food at restaurants}
+Σημερινό μάθημα: \${focusArea:παραγγελία φαγητού σε εστιατόρια}
 
-Include:
-1. New vocabulary (5-10 words) with:
-   - Pronunciation guide
-   - Example sentences
-   - Common usage notes
-2. Grammar point with clear explanation
-3. Practice exercises
-4. Cultural context note
-5. Conversation practice scenario`} />
+Συμπεριέλαβε:
+1. Νέο λεξιλόγιο (5-10 λέξεις) με:
+   - Οδηγό προφοράς
+   - Παραδείγματα προτάσεων
+   - Σημειώσεις κοινής χρήσης
+2. Γραμματικό σημείο με σαφή εξήγηση
+3. Ασκήσεις πρακτικής
+4. Σημείωση πολιτιστικού πλαισίου
+5. Σενάριο πρακτικής συνομιλίας`} />
 
-### Skill Development
+### Ανάπτυξη Δεξιοτήτων
 
-<TryIt compact prompt={`I want to learn \${skill:guitar}. Be my coach.
+<TryIt compact prompt={`Θέλω να μάθω \${skill:κιθάρα}. Γίνε ο προπονητής μου.
 
-My current level: \${currentLevel:complete beginner}
-Goal: \${goal:play 5 songs by ear}
-Practice time available: \${practiceTime:30 minutes per day}
+Το τρέχον επίπεδό μου: \${currentLevel:εντελώς αρχάριος}
+Στόχος: \${goal:παίξω 5 τραγούδια με το αυτί}
+Διαθέσιμος χρόνος πρακτικής: \${practiceTime:30 λεπτά την ημέρα}
 
-Provide:
-1. Assessment of starting point
-2. Breakdown of sub-skills needed
-3. Practice routine (specific exercises)
-4. Progress markers (how to measure improvement)
-5. Common plateaus and how to overcome them
-6. First week's practice plan in detail`} />
+Παρέχε:
+1. Αξιολόγηση σημείου εκκίνησης
+2. Ανάλυση απαιτούμενων υπο-δεξιοτήτων
+3. Ρουτίνα πρακτικής (συγκεκριμένες ασκήσεις)
+4. Δείκτες προόδου (πώς να μετρήσω βελτίωση)
+5. Κοινές στασιμότητες και πώς να τις ξεπεράσω
+6. Πλάνο πρακτικής πρώτης εβδομάδας αναλυτικά`} />
 
-### Exam Preparation
+### Προετοιμασία Εξετάσεων
 
-<TryIt compact prompt={`Help me prepare for \${examName:the GRE}.
+<TryIt compact prompt={`Βοήθησέ με να προετοιμαστώ για \${examName:τις Πανελλήνιες}.
 
-Exam format: \${examFormat:Verbal, Quantitative, Writing sections}
-Time until exam: \${timeUntilExam:8 weeks}
-My weak areas: \${weakAreas:reading comprehension, geometry}
-Target score: \${targetScore:320+}
+Μορφή εξέτασης: \${examFormat:Νεοελληνική Γλώσσα, Μαθηματικά, ειδικά μαθήματα}
+Χρόνος μέχρι εξέταση: \${timeUntilExam:8 εβδομάδες}
+Αδύναμα σημεία μου: \${weakAreas:κατανόηση κειμένου, γεωμετρία}
+Στόχος βαθμός: \${targetScore:18.000+}
 
-Create a study plan:
-1. Topics to cover (prioritized)
-2. Daily study schedule
-3. Practice test strategy
-4. Key formulas/facts to memorize
-5. Test-taking tips specific to this exam
-6. Day-before and day-of recommendations`} />
+Δημιούργησε πλάνο μελέτης:
+1. Θέματα να καλυφθούν (κατά προτεραιότητα)
+2. Ημερήσιο πρόγραμμα μελέτης
+3. Στρατηγική δοκιμαστικών τεστ
+4. Βασικοί τύποι/γεγονότα να απομνημονεύσω
+5. Συμβουλές εξέτασης συγκεκριμένες για αυτήν
+6. Συστάσεις για την προηγούμενη μέρα και την ημέρα της εξέτασης`} />
 
-## Prompt Templates from prompts.chat
+## Πρότυπα Prompts από το prompts.chat
 
-### Act as a Socratic Tutor
+### Ενέργησε ως Σωκρατικός Δάσκαλος
 
-<TryIt compact prompt={`I want you to act as a Socratic tutor. You will help me learn by asking probing questions rather than giving direct answers. When I ask about a topic, respond with questions that guide me to discover the answer myself. If I'm stuck, provide hints but not solutions. Help me develop critical thinking skills.`} />
+<TryIt compact prompt={`Θέλω να ενεργήσεις ως Σωκρατικός δάσκαλος. Θα με βοηθάς να μαθαίνω κάνοντας διερευνητικές ερωτήσεις αντί να δίνεις άμεσες απαντήσεις. Όταν ρωτάω για ένα θέμα, απάντα με ερωτήσεις που με καθοδηγούν να ανακαλύψω την απάντηση μόνος μου. Αν κολλήσω, δώσε υποδείξεις αλλά όχι λύσεις. Βοήθησέ με να αναπτύξω δεξιότητες κριτικής σκέψης.`} />
 
-### Act as an Educational Content Creator
+### Ενέργησε ως Δημιουργός Εκπαιδευτικού Περιεχομένου
 
-<TryIt compact prompt={`I want you to act as an educational content creator. You will create engaging, accurate educational materials for \${subject:biology}. Make complex topics accessible without oversimplifying. Use analogies, examples, and visual descriptions. Include knowledge checks and encourage active learning.`} />
+<TryIt compact prompt={`Θέλω να ενεργήσεις ως δημιουργός εκπαιδευτικού περιεχομένου. Θα δημιουργείς ελκυστικά, ακριβή εκπαιδευτικά υλικά για \${subject:βιολογία}. Κάνε πολύπλοκα θέματα προσβάσιμα χωρίς υπεραπλούστευση. Χρησιμοποίησε αναλογίες, παραδείγματα, και οπτικές περιγραφές. Συμπεριέλαβε ελέγχους γνώσης και ενθάρρυνε ενεργητική μάθηση.`} />
 
-### Act as a Study Buddy
+### Ενέργησε ως Συμμαθητής
 
-<TryIt compact prompt={`I want you to act as my study buddy. We're studying \${subject:organic chemistry} together. Quiz me on concepts, discuss ideas, help me work through problems, and keep me motivated. Be encouraging but also challenge me to think deeper. Let's make studying interactive and effective.`} />
+<TryIt compact prompt={`Θέλω να ενεργήσεις ως συμμαθητής μου. Μελετάμε \${subject:οργανική χημεία} μαζί. Εξέτασέ με σε έννοιες, συζήτα ιδέες, βοήθησέ με να δουλέψω προβλήματα, και κράτα με με κίνητρα. Να είσαι ενθαρρυντικός αλλά επίσης να με προκαλείς να σκέφτομαι βαθύτερα. Ας κάνουμε τη μελέτη διαδραστική και αποτελεσματική.`} />
 
-## Accessibility in Education
+## Προσβασιμότητα στην Εκπαίδευση
 
-### Content Adaptation
+### Προσαρμογή Περιεχομένου
 
-<TryIt compact prompt={`Adapt this educational content for \${accessibilityNeed:dyslexia-friendly format}:
+<TryIt compact prompt={`Προσάρμοσε αυτό το εκπαιδευτικό περιεχόμενο για \${accessibilityNeed:μορφή φιλική στη δυσλεξία}:
 
-Original content:
-\${content:paste your content here}
+Αρχικό περιεχόμενο:
+\${content:επικόλλησε το περιεχόμενό σου εδώ}
 
-Adaptation needed:
-- [ ] Simplified language (lower reading level)
-- [ ] Visual descriptions (for text-to-speech)
-- [ ] Structured format (for cognitive accessibility)
-- [ ] Extended time considerations
-- [ ] Alternative explanations
+Απαιτούμενη προσαρμογή:
+- [ ] Απλοποιημένη γλώσσα (χαμηλότερο επίπεδο ανάγνωσης)
+- [ ] Οπτικές περιγραφές (για text-to-speech)
+- [ ] Δομημένη μορφή (για γνωστική προσβασιμότητα)
+- [ ] Εκτιμήσεις επεκταμένου χρόνου
+- [ ] Εναλλακτικές εξηγήσεις
 
-Maintain:
-- All key learning objectives
-- Accuracy of content
-- Assessment equivalence`} />
+Διατήρησε:
+- Όλους τους βασικούς μαθησιακούς στόχους
+- Ακρίβεια περιεχομένου
+- Ισοδυναμία αξιολόγησης`} />
 
-### Multiple Modalities
+### Πολλαπλοί Τρόποι
 
-<TryIt compact prompt={`Present \${concept:photosynthesis} in multiple ways:
+<TryIt compact prompt={`Παρουσίασε \${concept:τη φωτοσύνθεση} με πολλούς τρόπους:
 
-1. **Text explanation** (clear prose)
-2. **Visual description** (describe a diagram)
-3. **Analogy** (relate to everyday experience)
-4. **Story/Narrative** (embed in a scenario)
-5. **Q&A format** (question and answer)
+1. **Κειμενική εξήγηση** (σαφής πεζογραφία)
+2. **Οπτική περιγραφή** (περίγραψε ένα διάγραμμα)
+3. **Αναλογία** (σύνδεσε με καθημερινή εμπειρία)
+4. **Ιστορία/Αφήγηση** (ενσωμάτωσε σε σενάριο)
+5. **Μορφή Ε&Α** (ερώτηση και απάντηση)
 
-This allows learners to engage with their preferred style.`} />
+Αυτό επιτρέπει στους μαθητές να εμπλακούν με το προτιμώμενο στυλ τους.`} />
 
-## Assessment & Feedback
+## Αξιολόγηση & Ανατροφοδότηση
 
-### Providing Feedback
+### Παροχή Ανατροφοδότησης
 
-<TryIt compact prompt={`Provide educational feedback on this student work:
+<TryIt compact prompt={`Παρέχε εκπαιδευτική ανατροφοδότηση σε αυτή την εργασία μαθητή:
 
-Assignment: \${assignment:5-paragraph essay on climate change}
-Student submission: \${work:paste student work here}
-Rubric: \${rubric:thesis clarity, evidence, organization, grammar}
+Εργασία: \${assignment:δοκίμιο 5 παραγράφων για την κλιματική αλλαγή}
+Υποβολή μαθητή: \${work:επικόλλησε εργασία μαθητή εδώ}
+Ρουμπρίκα: \${rubric:σαφήνεια θέσης, τεκμηρίωση, οργάνωση, γραμματική}
 
-Feedback format:
-1. **Strengths** - What they did well (specific)
-2. **Areas for improvement** - What needs work (constructive)
-3. **Suggestions** - How to improve (actionable)
-4. **Grade/Score** - Based on rubric
-5. **Encouragement** - Motivational closing
+Μορφή ανατροφοδότησης:
+1. **Δυνατά σημεία** - Τι έκαναν καλά (συγκεκριμένα)
+2. **Περιοχές για βελτίωση** - Τι χρειάζεται δουλειά (εποικοδομητικά)
+3. **Προτάσεις** - Πώς να βελτιωθούν (εφαρμόσιμες)
+4. **Βαθμός/Σκορ** - Βάσει ρουμπρίκας
+5. **Ενθάρρυνση** - Κινητοποιητικό κλείσιμο
 
-Tone: Supportive, specific, growth-oriented`} />
+Τόνος: Υποστηρικτικός, συγκεκριμένος, προσανατολισμένος στην ανάπτυξη`} />
 
-### Self-Assessment Prompts
+### Prompts Αυτοαξιολόγησης
 
-<TryIt compact prompt={`Help me assess my understanding of \${topic:the French Revolution}.
+<TryIt compact prompt={`Βοήθησέ με να αξιολογήσω την κατανόησή μου για \${topic:τη Γαλλική Επανάσταση}.
 
-Ask me 5 questions that test:
-1. Basic recall
-2. Understanding
-3. Application
-4. Analysis
-5. Synthesis/Creation
+Κάνε μου 5 ερωτήσεις που ελέγχουν:
+1. Βασική ανάκληση
+2. Κατανόηση
+3. Εφαρμογή
+4. Ανάλυση
+5. Σύνθεση/Δημιουργία
 
-After each answer, tell me:
-- What I demonstrated understanding of
-- What I should review
-- How to deepen my knowledge
+Μετά από κάθε απάντηση, πες μου:
+- Τι κατανόηση επέδειξα
+- Τι πρέπει να επαναλάβω
+- Πώς να εμβαθύνω τη γνώση μου
 
-Be honest but encouraging.`} />
+Να είσαι ειλικρινής αλλά ενθαρρυντικός.`} />
 
-## Summary
+## Σύνοψη
 
-<Callout type="tip" title="Key Techniques">
-Adapt to the learner's level, break complex topics into steps, include active practice (not just explanation), provide varied approaches, check understanding regularly, and give constructive feedback.
+<Callout type="tip" title="Βασικές Τεχνικές">
+Προσαρμόσου στο επίπεδο του μαθητή, σπάσε πολύπλοκα θέματα σε βήματα, συμπεριέλαβε ενεργητική πρακτική (όχι μόνο εξήγηση), παρέχε ποικίλες προσεγγίσεις, έλεγχε κατανόηση τακτικά, και δώσε εποικοδομητική ανατροφοδότηση.
 </Callout>
 
 <Quiz 
-  question="What's the most effective way to use AI for learning?"
+  question="Ποιος είναι ο πιο αποτελεσματικός τρόπος χρήσης AI για μάθηση;"
   options={[
-    "Read AI explanations passively like a textbook",
-    "Ask AI to quiz you and generate practice problems",
-    "Only use AI for homework answers",
-    "Avoid AI for learning entirely"
+    "Διάβασε εξηγήσεις AI παθητικά σαν βιβλίο",
+    "Ζήτα από το AI να σε εξετάσει και να δημιουργήσει ασκήσεις πρακτικής",
+    "Χρησιμοποίησε AI μόνο για απαντήσεις εργασιών",
+    "Απόφυγε εντελώς το AI για μάθηση"
   ]}
   correctIndex={1}
-  explanation="Active recall beats passive review. Have AI quiz you, generate problems, and check your understanding—this builds stronger memory than just reading explanations."
+  explanation="Η ενεργητική ανάκληση νικά την παθητική επανάληψη. Ζήτα από το AI να σε εξετάσει, να δημιουργήσει προβλήματα, και να ελέγξει την κατανόησή σου—αυτό χτίζει ισχυρότερη μνήμη από το απλά να διαβάζεις εξηγήσεις."
 />
 
-AI is a patient, always-available learning partner—use it to supplement, not replace, human instruction.
+Το AI είναι ένας υπομονετικός, πάντα-διαθέσιμος συνεργάτης μάθησης—χρησιμοποίησέ το για να συμπληρώσεις, όχι να αντικαταστήσεις, την ανθρώπινη διδασκαλία.

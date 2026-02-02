@@ -1,335 +1,335 @@
-AI can dramatically enhance professional productivity. This chapter covers prompts for business communication, analysis, planning, and workflow optimization.
+Το AI μπορεί να ενισχύσει δραματικά την επαγγελματική παραγωγικότητα. Αυτό το κεφάλαιο καλύπτει prompts για επιχειρηματική επικοινωνία, ανάλυση, σχεδιασμό, και βελτιστοποίηση ροής εργασίας.
 
-<Callout type="info" title="AI for Business">
-AI excels at drafting, analysis, and structuring—freeing you to focus on strategy, relationships, and decisions that require human judgment.
+<Callout type="info" title="AI για Επιχειρήσεις">
+Το AI διαπρέπει στη σύνταξη, ανάλυση, και δόμηση—απελευθερώνοντάς σε να εστιάσεις στη στρατηγική, τις σχέσεις, και τις αποφάσεις που απαιτούν ανθρώπινη κρίση.
 </Callout>
 
-## Business Communication
+## Επιχειρηματική Επικοινωνία
 
-### Do's and Don'ts: Business Emails
+### Τι να Κάνεις και Τι Όχι: Επαγγελματικά Emails
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Write an email to my boss about the project." }}
-  after={{ label: "✓ Complete context", content: "Write an email to my manager (Sarah) updating her on the Q4 marketing project.\n\nKey points: We're on track for the Nov 15 deadline, resolved the vendor issue, need her approval on the $5K budget increase.\nTone: Professional but friendly (we have a good relationship)\nKeep under 150 words with a clear ask at the end." }}
+  before={{ label: "❌ Ασαφές αίτημα", content: "Γράψε ένα email στο αφεντικό μου για το έργο." }}
+  after={{ label: "✓ Πλήρες context", content: "Γράψε ένα email στη διευθύντριά μου (Μαρία) ενημερώνοντάς την για το marketing project Q4.\n\nΒασικά σημεία: Είμαστε στο πρόγραμμα για την προθεσμία 15 Νοεμβρίου, λύσαμε το ζήτημα του προμηθευτή, χρειαζόμαστε την έγκρισή της για αύξηση budget 5.000€.\nΤόνος: Επαγγελματικός αλλά φιλικός (έχουμε καλή σχέση)\nΚράτα κάτω από 150 λέξεις με ξεκάθαρο αίτημα στο τέλος." }}
 />
 
-### Email Drafting
+### Σύνταξη Email
 
-<TryIt compact prompt={`Write a professional email.
+<TryIt compact prompt={`Γράψε ένα επαγγελματικό email.
 
 Context:
-- To: [recipient and relationship]
-- Purpose: [request/inform/follow-up/apologize]
-- Key points: [what must be communicated]
-- Tone: [formal/friendly professional/urgent]
+- Προς: [παραλήπτης και σχέση]
+- Σκοπός: [αίτημα/ενημέρωση/follow-up/συγγνώμη]
+- Βασικά σημεία: [τι πρέπει να επικοινωνηθεί]
+- Τόνος: [τυπικός/φιλικά επαγγελματικός/επείγων]
 
-Constraints:
-- Keep under [X] sentences
-- Clear call-to-action
-- Subject line included`} />
+Περιορισμοί:
+- Κράτα κάτω από [X] προτάσεις
+- Σαφές call-to-action
+- Θέμα συμπεριλαμβανόμενο`} />
 
-**Examples by purpose:**
+**Παραδείγματα ανά σκοπό:**
 
-<TryIt compact prompt={`\${emailType:Meeting Request}: Write an email requesting a meeting with a potential client to discuss partnership opportunities. Keep it brief and make it easy for them to say yes.`} />
+<TryIt compact prompt={`\${emailType:Αίτημα Συνάντησης}: Γράψε email ζητώντας συνάντηση με πιθανό πελάτη για συζήτηση ευκαιριών συνεργασίας. Κράτα το σύντομο και κάνε εύκολο να πουν ναι.`} />
 
-<TryIt compact prompt={`\${emailType:Difficult Conversation}: Write an email declining a vendor's proposal while maintaining the relationship for future opportunities. Be clear but diplomatic.`} />
+<TryIt compact prompt={`\${emailType:Δύσκολη Συνομιλία}: Γράψε email απορρίπτοντας πρόταση προμηθευτή διατηρώντας τη σχέση για μελλοντικές ευκαιρίες. Να είσαι σαφής αλλά διπλωματικός.`} />
 
-<TryIt compact prompt={`\${emailType:Status Update}: Write a project status email to stakeholders. The project is 2 weeks behind schedule due to scope changes. Present the situation professionally with a recovery plan.`} />
+<TryIt compact prompt={`\${emailType:Ενημέρωση Κατάστασης}: Γράψε email κατάστασης project σε stakeholders. Το project καθυστερεί 2 εβδομάδες λόγω αλλαγών εύρους. Παρουσίασε την κατάσταση επαγγελματικά με πλάνο ανάκαμψης.`} />
 
-### Presentation Content
+### Περιεχόμενο Παρουσίασης
 
-<TryIt compact prompt={`Create presentation content for \${topic:Q4 sales strategy}.
+<TryIt compact prompt={`Δημιούργησε περιεχόμενο παρουσίασης για \${topic:στρατηγική πωλήσεων Q4}.
 
-Audience: \${audience:executive leadership}
-Duration: \${duration:15 minutes}
-Goal: \${goal:persuade to approve budget increase}
+Κοινό: \${audience:εκτελεστική ηγεσία}
+Διάρκεια: \${duration:15 λεπτά}
+Στόχος: \${goal:πείσε να εγκρίνουν αύξηση budget}
 
-Provide for each slide:
-- Title
-- Key message (one main point)
-- Supporting points (3 max)
-- Speaker notes (what to say)
-- Visual suggestion (chart/image/diagram)
+Παρέχε για κάθε slide:
+- Τίτλος
+- Βασικό μήνυμα (ένα κύριο σημείο)
+- Υποστηρικτικά σημεία (μέχρι 3)
+- Σημειώσεις ομιλητή (τι να πεις)
+- Πρόταση οπτικού (γράφημα/εικόνα/διάγραμμα)
 
-Structure:
-1. Hook/Attention grabber
-2. Problem/Opportunity
-3. Solution/Recommendation
-4. Evidence/Support
+Δομή:
+1. Hook/Τράβηγμα προσοχής
+2. Πρόβλημα/Ευκαιρία
+3. Λύση/Σύσταση
+4. Αποδεικτικά/Υποστήριξη
 5. Call to action`} />
 
-### Report Writing
+### Συγγραφή Αναφοράς
 
-<TryIt compact prompt={`Write a \${reportType:recommendation} report on \${topic:expanding into European markets}.
+<TryIt compact prompt={`Γράψε αναφορά \${reportType:σύστασης} για \${topic:επέκταση σε Ευρωπαϊκές αγορές}.
 
-Report type: \${type:recommendation}
-Audience: \${audience:C-suite}
-Length: \${length:5 pages}
+Τύπος αναφοράς: \${type:σύσταση}
+Κοινό: \${audience:C-suite}
+Μήκος: \${length:5 σελίδες}
 
-Structure:
-1. Executive Summary (key findings, 1 paragraph)
-2. Background/Context
-3. Methodology (if applicable)
-4. Findings
-5. Analysis
-6. Recommendations
-7. Next Steps
+Δομή:
+1. Εκτελεστική Περίληψη (βασικά ευρήματα, 1 παράγραφος)
+2. Υπόβαθρο/Πλαίσιο
+3. Μεθοδολογία (αν εφαρμόζεται)
+4. Ευρήματα
+5. Ανάλυση
+6. Συστάσεις
+7. Επόμενα Βήματα
 
-Include: Data visualization suggestions where relevant
-Tone: \${tone:formal business}`} />
+Συμπεριέλαβε: Προτάσεις οπτικοποίησης δεδομένων όπου σχετικό
+Τόνος: \${tone:τυπικός επιχειρηματικός}`} />
 
-## Analysis & Decision-Making
+## Ανάλυση & Λήψη Αποφάσεων
 
-<Callout type="tip" title="Analysis Principle">
-AI can structure your thinking, but **you provide the real-world context**. The best analyses combine AI's frameworks with your domain knowledge.
+<Callout type="tip" title="Αρχή Ανάλυσης">
+Το AI μπορεί να δομήσει τη σκέψη σου, αλλά **εσύ παρέχεις το context πραγματικού κόσμου**. Οι καλύτερες αναλύσεις συνδυάζουν τα frameworks του AI με τη γνώση τομέα σου.
 </Callout>
 
-### SWOT Analysis
+### Ανάλυση SWOT
 
-<TryIt compact prompt={`Conduct a SWOT analysis for \${subject:launching a new mobile app}.
+<TryIt compact prompt={`Διεξήγαγε ανάλυση SWOT για \${subject:λανσάρισμα νέας mobile εφαρμογής}.
 
-Context:
-\${context:We're a mid-size fintech company considering a consumer banking app}
+Πλαίσιο:
+\${context:Είμαστε μεσαίου μεγέθους fintech εταιρεία που εξετάζει consumer banking app}
 
-Provide:
+Παρέχε:
 
-**Strengths** (internal positives)
-- At least 4 points with brief explanations
+**Δυνατά Σημεία** (εσωτερικά θετικά)
+- Τουλάχιστον 4 σημεία με σύντομες εξηγήσεις
 
-**Weaknesses** (internal negatives)
-- At least 4 points with brief explanations
+**Αδυναμίες** (εσωτερικά αρνητικά)
+- Τουλάχιστον 4 σημεία με σύντομες εξηγήσεις
 
-**Opportunities** (external positives)
-- At least 4 points with brief explanations
+**Ευκαιρίες** (εξωτερικά θετικά)
+- Τουλάχιστον 4 σημεία με σύντομες εξηγήσεις
 
-**Threats** (external negatives)
-- At least 4 points with brief explanations
+**Απειλές** (εξωτερικά αρνητικά)
+- Τουλάχιστον 4 σημεία με σύντομες εξηγήσεις
 
-**Strategic Implications**
-- Key insight from analysis
-- Recommended priorities`} />
+**Στρατηγικές Επιπτώσεις**
+- Βασική εικόνα από ανάλυση
+- Συνιστώμενες προτεραιότητες`} />
 
-### Decision Framework
+### Πλαίσιο Απόφασης
 
-<TryIt compact prompt={`Help me make a decision about \${decision:which CRM to choose}.
+<TryIt compact prompt={`Βοήθησέ με να πάρω απόφαση για \${decision:ποιο CRM να επιλέξω}.
 
-Options:
+Επιλογές:
 1. \${optionA:Salesforce}
 2. \${optionB:HubSpot}
 3. \${optionC:Pipedrive}
 
-Criteria that matter to me:
-- \${criterion1:ease of use} (weight: high)
-- \${criterion2:integration with existing tools} (weight: high)
-- \${criterion3:cost} (weight: medium)
+Κριτήρια που με ενδιαφέρουν:
+- \${criterion1:ευκολία χρήσης} (βάρος: υψηλό)
+- \${criterion2:ενσωμάτωση με υπάρχοντα εργαλεία} (βάρος: υψηλό)
+- \${criterion3:κόστος} (βάρος: μέτριο)
 
-Provide:
-1. Score each option against each criterion (1-5)
-2. Weighted analysis
-3. Pros/cons summary for each
-4. Risk assessment
-5. Recommendation with rationale
-6. Questions to consider before deciding`} />
+Παρέχε:
+1. Βαθμολόγησε κάθε επιλογή σε κάθε κριτήριο (1-5)
+2. Σταθμισμένη ανάλυση
+3. Περίληψη πλεονεκτημάτων/μειονεκτημάτων για καθεμία
+4. Αξιολόγηση κινδύνου
+5. Σύσταση με αιτιολόγηση
+6. Ερωτήσεις να εξετάσεις πριν αποφασίσεις`} />
 
-### Competitive Analysis
+### Ανάλυση Ανταγωνισμού
 
-<TryIt compact prompt={`Analyze \${competitor:Slack} compared to \${ourProduct:our team communication tool}.
+<TryIt compact prompt={`Ανάλυσε \${competitor:Slack} σε σύγκριση με \${ourProduct:το εργαλείο ομαδικής επικοινωνίας μας}.
 
-Research their:
-1. **Products/Services** - offerings, pricing, positioning
-2. **Strengths** - what they do well
-3. **Weaknesses** - where they fall short
-4. **Market position** - target segments, market share
-5. **Strategy** - apparent direction and focus
+Ερεύνησε:
+1. **Προϊόντα/Υπηρεσίες** - προσφορές, τιμολόγηση, τοποθέτηση
+2. **Δυνατά σημεία** - σε τι τα καταφέρνουν καλά
+3. **Αδυναμίες** - πού υστερούν
+4. **Θέση αγοράς** - στόχος τμήματα, μερίδιο αγοράς
+5. **Στρατηγική** - φαινόμενη κατεύθυνση και εστίαση
 
-Compare to us:
-- Where we're stronger
-- Where they're stronger
-- Opportunity gaps
-- Competitive threats
+Σύγκρινε με εμάς:
+- Πού είμαστε ισχυρότεροι
+- Πού είναι ισχυρότεροι
+- Κενά ευκαιρίας
+- Ανταγωνιστικές απειλές
 
-Recommend: Actions to improve our competitive position`} />
+Σύστησε: Ενέργειες για βελτίωση της ανταγωνιστικής θέσης μας`} />
 
-## Planning & Strategy
+## Σχεδιασμός & Στρατηγική
 
-### Goal Setting (OKRs)
+### Καθορισμός Στόχων (OKRs)
 
-<TryIt compact prompt={`Help me set OKRs for \${scope:Q1 marketing team}.
+<TryIt compact prompt={`Βοήθησέ με να ορίσω OKRs για \${scope:ομάδα marketing Q1}.
 
-Context:
-- Company goals: \${companyGoals:increase revenue 25% YoY}
-- Current situation: \${currentState:brand awareness is low in new markets}
-- Key priorities: \${priorities:lead generation, content marketing}
+Πλαίσιο:
+- Εταιρικοί στόχοι: \${companyGoals:αύξηση εσόδων 25% YoY}
+- Τρέχουσα κατάσταση: \${currentState:η αναγνωρισιμότητα brand είναι χαμηλή σε νέες αγορές}
+- Βασικές προτεραιότητες: \${priorities:lead generation, content marketing}
 
-Create 3 Objectives with 3-4 Key Results each.
+Δημιούργησε 3 Στόχους με 3-4 Βασικά Αποτελέσματα ο καθένας.
 
-Format:
-**Objective 1:** Qualitative goal - inspiring
-- KR 1.1: Quantitative measure (Current: X → Target: Y)
-- KR 1.2: Quantitative measure (Current: X → Target: Y)
-- KR 1.3: Quantitative measure (Current: X → Target: Y)
+Μορφή:
+**Στόχος 1:** Ποιοτικός στόχος - εμπνευστικός
+- KR 1.1: Ποσοτικό μέτρο (Τρέχον: X → Στόχος: Y)
+- KR 1.2: Ποσοτικό μέτρο (Τρέχον: X → Στόχος: Y)
+- KR 1.3: Ποσοτικό μέτρο (Τρέχον: X → Στόχος: Y)
 
-Ensure KRs are:
-- Measurable
-- Ambitious but achievable
-- Time-bound
-- Outcome-focused (not tasks)`} />
+Εξασφάλισε ότι τα KRs είναι:
+- Μετρήσιμα
+- Φιλόδοξα αλλά εφικτά
+- Χρονικά περιορισμένα
+- Εστιασμένα σε αποτέλεσμα (όχι εργασίες)`} />
 
-### Project Planning
+### Σχεδιασμός Project
 
-<TryIt compact prompt={`Create a project plan for \${project:website redesign}.
+<TryIt compact prompt={`Δημιούργησε πλάνο project για \${project:ανασχεδιασμό ιστοσελίδας}.
 
-Scope: \${scope:new homepage, product pages, checkout flow}
-Timeline: \${timeline:3 months}
-Team: \${team:2 developers, 1 designer, 1 PM}
-Budget: \${budget:$50,000}
+Εύρος: \${scope:νέα αρχική σελίδα, σελίδες προϊόντων, ροή checkout}
+Χρονοδιάγραμμα: \${timeline:3 μήνες}
+Ομάδα: \${team:2 developers, 1 designer, 1 PM}
+Budget: \${budget:50.000€}
 
-Provide:
-1. **Project phases** with milestones
-2. **Work breakdown structure** (major tasks)
-3. **Timeline** (Gantt-style description)
-4. **Dependencies** (what blocks what)
-5. **Risks** (potential issues and mitigation)
-6. **Success criteria** (how we know we're done)`} />
+Παρέχε:
+1. **Φάσεις project** με ορόσημα
+2. **Δομή ανάλυσης εργασίας** (κύριες εργασίες)
+3. **Χρονοδιάγραμμα** (περιγραφή τύπου Gantt)
+4. **Εξαρτήσεις** (τι μπλοκάρει τι)
+5. **Κίνδυνοι** (πιθανά ζητήματα και μετριασμός)
+6. **Κριτήρια επιτυχίας** (πώς ξέρουμε ότι τελειώσαμε)`} />
 
-### Meeting Agenda
+### Ατζέντα Συνάντησης
 
-<TryIt compact prompt={`Create an agenda for \${meetingType:quarterly planning}.
+<TryIt compact prompt={`Δημιούργησε ατζέντα για \${meetingType:τριμηνιαίο σχεδιασμό}.
 
-Purpose: \${purpose:align on Q2 priorities and resource allocation}
-Attendees: \${attendees:department heads, CEO, COO}
-Duration: \${duration:90 minutes}
+Σκοπός: \${purpose:ευθυγράμμιση σε προτεραιότητες Q2 και κατανομή πόρων}
+Συμμετέχοντες: \${attendees:επικεφαλής τμημάτων, CEO, COO}
+Διάρκεια: \${duration:90 λεπτά}
 
-Format:
-| Time | Topic | Owner | Goal |
-|------|-------|-------|------|
-| 5 min | Opening | Facilitator | Context |
+Μορφή:
+| Χρόνος | Θέμα | Υπεύθυνος | Στόχος |
+|--------|------|-----------|--------|
+| 5 λεπ | Άνοιγμα | Facilitator | Πλαίσιο |
 | ... | ... | ... | ... |
 
-Include:
-- Time allocations
-- Clear owner for each item
-- Specific outcomes expected
-- Pre-work required
-- Follow-up action item template`} />
+Συμπεριέλαβε:
+- Κατανομές χρόνου
+- Σαφής υπεύθυνος για κάθε στοιχείο
+- Συγκεκριμένα αναμενόμενα αποτελέσματα
+- Απαιτούμενη προεργασία
+- Πρότυπο action items για follow-up`} />
 
-## Productivity Workflows
+## Ροές Εργασίας Παραγωγικότητας
 
-### Task Prioritization
+### Προτεραιοποίηση Εργασιών
 
-<TryIt compact prompt={`Help me prioritize my tasks using the Eisenhower Matrix.
+<TryIt compact prompt={`Βοήθησέ με να προτεραιοποιήσω τις εργασίες μου χρησιμοποιώντας τη Μήτρα Eisenhower.
 
-My tasks:
-\${tasks:1. Prepare quarterly report (due Friday)\n2. Review job applications\n3. Reply to vendor emails\n4. Plan team offsite\n5. Update LinkedIn profile}
+Οι εργασίες μου:
+\${tasks:1. Προετοιμασία τριμηνιαίας αναφοράς (προθεσμία Παρασκευή)\n2. Αξιολόγηση αιτήσεων εργασίας\n3. Απάντηση σε emails προμηθευτών\n4. Σχεδιασμός team offsite\n5. Ενημέρωση προφίλ LinkedIn}
 
-Categorize each into:
-1. **Urgent + Important** (Do first)
-2. **Important, Not Urgent** (Schedule)
-3. **Urgent, Not Important** (Delegate)
-4. **Neither** (Eliminate)
+Κατηγοριοποίησε κάθε μία σε:
+1. **Επείγον + Σημαντικό** (Κάνε πρώτα)
+2. **Σημαντικό, Όχι Επείγον** (Προγραμμάτισε)
+3. **Επείγον, Όχι Σημαντικό** (Ανάθεσε)
+4. **Κανένα** (Εξάλειψε)
 
-Then provide:
-- Recommended order of execution
-- Time estimates
-- Suggestions for delegation or elimination`} />
+Μετά παρέχε:
+- Συνιστώμενη σειρά εκτέλεσης
+- Εκτιμήσεις χρόνου
+- Προτάσεις για ανάθεση ή εξάλειψη`} />
 
-### Process Documentation
+### Τεκμηρίωση Διαδικασίας
 
-<TryIt compact prompt={`Document this business process: \${processName:customer refund request}.
+<TryIt compact prompt={`Τεκμηρίωσε αυτή την επιχειρηματική διαδικασία: \${processName:αίτημα επιστροφής χρημάτων πελάτη}.
 
-Create:
-1. **Process overview** (1 paragraph)
-2. **Trigger** (what starts this process)
-3. **Steps** (numbered, with responsible party)
-4. **Decision points** (if X then Y format)
-5. **Outputs** (what this process produces)
-6. **Systems involved** (tools/software)
-7. **Exceptions** (edge cases and handling)
+Δημιούργησε:
+1. **Επισκόπηση διαδικασίας** (1 παράγραφος)
+2. **Έναρξη** (τι ξεκινά αυτή τη διαδικασία)
+3. **Βήματα** (αριθμημένα, με υπεύθυνο μέρος)
+4. **Σημεία απόφασης** (μορφή αν X τότε Y)
+5. **Εκροές** (τι παράγει αυτή η διαδικασία)
+6. **Συστήματα που εμπλέκονται** (εργαλεία/λογισμικό)
+7. **Εξαιρέσεις** (ακραίες περιπτώσεις και χειρισμός)
 
-Format: Clear enough for new employee to follow`} />
+Μορφή: Αρκετά σαφής ώστε νέος υπάλληλος να ακολουθήσει`} />
 
-### Standard Operating Procedure
+### Τυπική Διαδικασία Λειτουργίας
 
-<TryIt compact prompt={`Write an SOP for \${task:onboarding new employees to Slack}.
+<TryIt compact prompt={`Γράψε SOP για \${task:onboarding νέων υπαλλήλων στο Slack}.
 
-Audience: \${audience:HR administrators}
-Complexity: \${complexity:basic users}
+Κοινό: \${audience:διαχειριστές HR}
+Πολυπλοκότητα: \${complexity:βασικοί χρήστες}
 
-Include:
-1. Purpose and scope
-2. Prerequisites/requirements
-3. Step-by-step instructions
-4. Screenshots/visual placeholders
-5. Quality checkpoints
-6. Common errors and troubleshooting
-7. Related SOPs/documents
-8. Version history`} />
+Συμπεριέλαβε:
+1. Σκοπός και εύρος
+2. Προαπαιτούμενα/απαιτήσεις
+3. Οδηγίες βήμα-βήμα
+4. Screenshots/placeholders οπτικών
+5. Σημεία ελέγχου ποιότητας
+6. Κοινά σφάλματα και αντιμετώπιση
+7. Σχετικά SOPs/έγγραφα
+8. Ιστορικό εκδόσεων`} />
 
-## Communication Templates
+## Πρότυπα Επικοινωνίας
 
-### Stakeholder Update
+### Ενημέρωση Stakeholders
 
-<TryIt compact prompt={`Write a stakeholder update for \${project:CRM migration project}.
+<TryIt compact prompt={`Γράψε ενημέρωση stakeholders για \${project:project μετάβασης CRM}.
 
-Status: \${status:at risk}
-Period: \${period:Week of Jan 6-10}
+Κατάσταση: \${status:σε κίνδυνο}
+Περίοδος: \${period:Εβδομάδα 6-10 Ιανουαρίου}
 
-Format:
-## Project Name Update
+Μορφή:
+## Ενημέρωση Ονόματος Project
 
-**Status:** 🟢/🟡/🔴
+**Κατάσταση:** 🟢/🟡/🔴
 
-**Progress this period:**
-- Accomplishment 1
-- Accomplishment 2
+**Πρόοδος αυτής της περιόδου:**
+- Επίτευγμα 1
+- Επίτευγμα 2
 
-**Next period goals:**
-- Goal 1
-- Goal 2
+**Στόχοι επόμενης περιόδου:**
+- Στόχος 1
+- Στόχος 2
 
-**Risks/Blockers:**
-- If any
+**Κίνδυνοι/Εμπόδια:**
+- Αν υπάρχουν
 
-**Decisions needed:**
-- If any`} />
+**Αποφάσεις που χρειάζονται:**
+- Αν υπάρχουν`} />
 
-### Feedback Request
+### Αίτημα Ανατροφοδότησης
 
-<TryIt compact prompt={`Write a message requesting feedback on \${deliverable:the new product roadmap document}.
+<TryIt compact prompt={`Γράψε μήνυμα ζητώντας ανατροφοδότηση για \${deliverable:το νέο έγγραφο roadmap προϊόντος}.
 
-Context: \${context:This will guide our Q2 priorities, I want to make sure I haven't missed anything}
-Specific areas for feedback: \${feedbackAreas:timeline feasibility, resource allocation, missing features}
-Timeline: \${deadline:by Friday EOD}
+Πλαίσιο: \${context:Αυτό θα καθοδηγήσει τις προτεραιότητες Q2, θέλω να βεβαιωθώ ότι δεν έχασα τίποτα}
+Συγκεκριμένες περιοχές για ανατροφοδότηση: \${feedbackAreas:εφικτότητα χρονοδιαγράμματος, κατανομή πόρων, χαρακτηριστικά που λείπουν}
+Χρονοδιάγραμμα: \${deadline:μέχρι Παρασκευή τέλος ημέρας}
 
-Tone: Professional but not overly formal
-Make it easy to respond with specific questions`} />
+Τόνος: Επαγγελματικός αλλά όχι υπερβολικά τυπικός
+Κάνε εύκολο να απαντήσουν με συγκεκριμένες ερωτήσεις`} />
 
-## Prompt Templates from prompts.chat
+## Πρότυπα Prompts από το prompts.chat
 
-### Act as a Business Consultant
+### Ενέργησε ως Επιχειρηματικός Σύμβουλος
 
-<TryIt compact prompt={`I want you to act as a business consultant. I will describe business situations and challenges, and you will provide strategic advice, frameworks for thinking about problems, and actionable recommendations. Draw on established business principles while being practical and specific.`} />
+<TryIt compact prompt={`Θέλω να ενεργήσεις ως επιχειρηματικός σύμβουλος. Θα περιγράφω επιχειρηματικές καταστάσεις και προκλήσεις, και θα παρέχεις στρατηγικές συμβουλές, frameworks για σκέψη προβλημάτων, και εφαρμόσιμες συστάσεις. Αντλησε από καθιερωμένες επιχειρηματικές αρχές ενώ είσαι πρακτικός και συγκεκριμένος.`} />
 
-### Act as a Meeting Facilitator
+### Ενέργησε ως Facilitator Συνάντησης
 
-<TryIt compact prompt={`I want you to act as a meeting facilitator. Help me plan and run effective meetings. Create agendas, suggest discussion frameworks, help synthesize conversations, and draft follow-up communications. Focus on making meetings productive and action-oriented.`} />
+<TryIt compact prompt={`Θέλω να ενεργήσεις ως facilitator συνάντησης. Βοήθησέ με να σχεδιάσω και να τρέξω αποτελεσματικές συναντήσεις. Δημιούργησε ατζέντες, πρότεινε frameworks συζήτησης, βοήθησε στη σύνθεση συνομιλιών, και σύνταξε επικοινωνίες follow-up. Εστίασε στο να κάνεις τις συναντήσεις παραγωγικές και προσανατολισμένες στη δράση.`} />
 
-## Summary
+## Σύνοψη
 
-<Callout type="tip" title="Key Techniques">
-Specify the audience and their needs, define the desired outcome clearly, include relevant context and constraints, request specific formats and structures, and consider professional tone requirements.
+<Callout type="tip" title="Βασικές Τεχνικές">
+Καθόρισε το κοινό και τις ανάγκες του, όρισε το επιθυμητό αποτέλεσμα ξεκάθαρα, συμπεριέλαβε σχετικό context και περιορισμούς, ζήτα συγκεκριμένες μορφές και δομές, και εξέτασε απαιτήσεις επαγγελματικού τόνου.
 </Callout>
 
 <Quiz 
-  question="What should you always include when asking AI to write a business email?"
+  question="Τι πρέπει να συμπεριλαμβάνεις πάντα όταν ζητάς από το AI να γράψει επαγγελματικό email;"
   options={[
-    "Just the topic you want to discuss",
-    "Recipient, purpose, key points, and desired tone",
-    "Only the recipient's name",
-    "A template from the internet"
+    "Μόνο το θέμα που θέλεις να συζητήσεις",
+    "Παραλήπτης, σκοπός, βασικά σημεία, και επιθυμητός τόνος",
+    "Μόνο το όνομα του παραλήπτη",
+    "Ένα πρότυπο από το internet"
   ]}
   correctIndex={1}
-  explanation="Effective business emails need context: who you're writing to, why, what must be communicated, and the appropriate tone. AI can't infer your professional relationships or organizational context."
+  explanation="Τα αποτελεσματικά επαγγελματικά emails χρειάζονται context: σε ποιον γράφεις, γιατί, τι πρέπει να επικοινωνηθεί, και τον κατάλληλο τόνο. Το AI δεν μπορεί να συμπεράνει τις επαγγελματικές σχέσεις σου ή το οργανωτικό πλαίσιο."
 />
 
-AI can handle routine business communication while you focus on strategy and relationships.
+Το AI μπορεί να χειριστεί ρουτινιέρα επιχειρηματική επικοινωνία ενώ εσύ εστιάζεις σε στρατηγική και σχέσεις.

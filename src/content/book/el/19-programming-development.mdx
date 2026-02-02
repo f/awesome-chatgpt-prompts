@@ -286,128 +286,129 @@ Feature: \${featureDescription:εγγραφή χρήστη με επαλήθευ
 4. Σχέσεις foreign key
 5. Δείγματα queries για βασικές λειτουργίες`} />
 
-## Documentation Generation
+## Δημιουργία Τεκμηρίωσης
 
 ### API Documentation
 
-<TryIt compact prompt={`Generate API documentation from this code:
+<TryIt compact prompt={`Δημιούργησε API documentation από αυτόν τον κώδικα:
 
-Code:
-\${code:paste your endpoint code here}
+Κώδικας:
+\${code:επικόλλησε τον κώδικα endpoint εδώ}
 
 Format: \${format:OpenAPI/Swagger YAML}
 
-Include:
-- Endpoint description
+Συμπεριέλαβε:
+- Περιγραφή endpoint
 - Request/response schemas
-- Example requests/responses
-- Error codes
-- Authentication requirements`} />
+- Παραδείγματα requests/responses
+- Κωδικοί σφαλμάτων
+- Απαιτήσεις authentication`} />
 
 ### Inline Documentation
 
-<TryIt compact prompt={`Add comprehensive documentation to this code:
+<TryIt compact prompt={`Πρόσθεσε ολοκληρωμένη τεκμηρίωση σε αυτόν τον κώδικα:
 
-Code:
-\${code:paste your code here}
+Κώδικας:
+\${code:επικόλλησε τον κώδικά σου εδώ}
 
-Add:
-- File/module docstring (purpose, usage)
+Πρόσθεσε:
+- File/module docstring (σκοπός, χρήση)
 - Function/method docstrings (params, returns, raises, examples)
-- Inline comments for complex logic only
-- Type hints if missing
+- Inline comments μόνο για πολύπλοκη λογική
+- Type hints αν λείπουν
 
-Style: \${docStyle:Google}`} />
+Στυλ: \${docStyle:Google}`} />
 
-## Prompt Templates from prompts.chat
+## Πρότυπα Prompts από το prompts.chat
 
-### Act as a Senior Developer
-
-```
-I want you to act as a senior software developer. I will provide 
-code and ask questions about it. You will review the code, suggest 
-improvements, explain concepts, and help debug issues. Your 
-responses should be educational and help me become a better 
-developer.
-```
-
-### Act as a Code Reviewer
+### Ενέργησε ως Senior Developer
 
 ```
-I want you to act as a code reviewer. I will provide pull requests 
-with code changes, and you will review them thoroughly. Check for 
-bugs, security issues, performance problems, and adherence to best 
-practices. Provide constructive feedback that helps the developer 
-improve.
+Θέλω να ενεργήσεις ως senior software developer. Θα παρέχω 
+κώδικα και θα κάνω ερωτήσεις σχετικά με αυτόν. Θα αναθεωρείς 
+τον κώδικα, θα προτείνεις βελτιώσεις, θα εξηγείς έννοιες, και 
+θα βοηθάς στο debug ζητημάτων. Οι απαντήσεις σου πρέπει να 
+είναι εκπαιδευτικές και να με βοηθούν να γίνω καλύτερος developer.
 ```
 
-### Act as a Software Architect
+### Ενέργησε ως Code Reviewer
 
 ```
-I want you to act as a software architect. I will describe system 
-requirements and constraints, and you will design scalable, 
-maintainable architectures. Explain your design decisions, 
-trade-offs, and provide diagrams where helpful.
+Θέλω να ενεργήσεις ως code reviewer. Θα παρέχω pull requests 
+με αλλαγές κώδικα, και θα τα αναθεωρείς ενδελεχώς. Έλεγχε για 
+bugs, ζητήματα ασφαλείας, προβλήματα απόδοσης, και τήρηση 
+βέλτιστων πρακτικών. Παρέχε εποικοδομητική ανατροφοδότηση 
+που βοηθά τον developer να βελτιωθεί.
 ```
 
-## Development Workflow Integration
+### Ενέργησε ως Software Architect
 
-### Commit Message Generation
+```
+Θέλω να ενεργήσεις ως software architect. Θα περιγράφω 
+απαιτήσεις και περιορισμούς συστήματος, και θα σχεδιάζεις 
+κλιμακούμενες, συντηρήσιμες αρχιτεκτονικές. Εξήγησε τις 
+αποφάσεις σχεδιασμού σου, ανταλλαγές, και παρέχε διαγράμματα 
+όπου βοηθάει.
+```
 
-<TryIt compact prompt={`Generate a commit message for these changes:
+## Ενσωμάτωση Ροής Εργασίας Ανάπτυξης
+
+### Δημιουργία Commit Message
+
+<TryIt compact prompt={`Δημιούργησε commit message για αυτές τις αλλαγές:
 
 Diff:
-\${diff:paste git diff here}
+\${diff:επικόλλησε git diff εδώ}
 
 Format: Conventional Commits
 Type: \${commitType:feat}
 
-Provide:
-- Subject line (50 chars max, imperative mood)
-- Body (what and why, wrapped at 72 chars)
-- Footer (references issues if applicable)`} />
+Παρέχε:
+- Γραμμή θέματος (μέχρι 50 χαρακτήρες, προστακτική)
+- Σώμα (τι και γιατί, wrapped στους 72 χαρακτήρες)
+- Footer (αναφορές σε issues αν εφαρμόζεται)`} />
 
-### PR Description Generation
+### Δημιουργία PR Description
 
-<TryIt compact prompt={`Generate a pull request description:
+<TryIt compact prompt={`Δημιούργησε περιγραφή pull request:
 
-Changes:
-\${changes:list your changes or paste diff summary}
+Αλλαγές:
+\${changes:λίστα αλλαγών ή επικόλλησε περίληψη diff}
 
-Template:
-## Summary
-Brief description of changes
+Πρότυπο:
+## Περίληψη
+Σύντομη περιγραφή αλλαγών
 
-## Changes Made
-- Change 1
-- Change 2
+## Αλλαγές που Έγιναν
+- Αλλαγή 1
+- Αλλαγή 2
 
-## Testing
-- [ ] Unit tests added/updated
-- [ ] Manual testing completed
+## Δοκιμές
+- [ ] Unit tests προστέθηκαν/ενημερώθηκαν
+- [ ] Χειροκίνητη δοκιμή ολοκληρώθηκε
 
-## Screenshots (if UI changes)
+## Screenshots (αν αλλαγές UI)
 placeholder
 
-## Related Issues
-Closes #\${issueNumber:123}`} />
+## Σχετικά Issues
+Κλείνει #\${issueNumber:123}`} />
 
-## Summary
+## Σύνοψη
 
-<Callout type="tip" title="Key Techniques">
-Include full context (language, framework, constraints), specify requirements precisely, request specific output formats, ask for explanations alongside code, and include edge cases to handle.
+<Callout type="tip" title="Βασικές Τεχνικές">
+Συμπεριέλαβε πλήρες context (γλώσσα, framework, περιορισμούς), καθόρισε απαιτήσεις με ακρίβεια, ζήτα συγκεκριμένες μορφές εξόδου, ζήτα εξηγήσεις μαζί με κώδικα, και συμπεριέλαβε ακραίες περιπτώσεις να χειριστείς.
 </Callout>
 
 <Quiz 
-  question="What's the most important element to include when asking AI to debug code?"
+  question="Ποιο είναι το πιο σημαντικό στοιχείο να συμπεριλάβεις όταν ζητάς από το AI να κάνει debug κώδικα;"
   options={[
-    "The programming language only",
-    "Expected behavior, actual behavior, and error message",
-    "Just the code snippet",
-    "The file name"
+    "Μόνο η γλώσσα προγραμματισμού",
+    "Αναμενόμενη συμπεριφορά, πραγματική συμπεριφορά, και μήνυμα σφάλματος",
+    "Μόνο το κομμάτι κώδικα",
+    "Το όνομα αρχείου"
   ]}
   correctIndex={1}
-  explanation="Debugging requires context: what should happen vs. what actually happens. Error messages and stack traces help AI pinpoint the exact issue quickly."
+  explanation="Το debugging απαιτεί context: τι πρέπει να γίνει vs. τι πραγματικά γίνεται. Μηνύματα σφάλματος και stack traces βοηθούν το AI να εντοπίσει το ακριβές ζήτημα γρήγορα."
 />
 
-AI is a powerful coding partner—use it for generation, review, debugging, and documentation while maintaining your architectural judgment.
+Το AI είναι ένας ισχυρός συνεργάτης κωδικοποίησης—χρησιμοποίησέ το για δημιουργία, review, debugging, και τεκμηρίωση διατηρώντας την αρχιτεκτονική κρίση σου.
