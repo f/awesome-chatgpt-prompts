@@ -1,323 +1,323 @@
-AI can accelerate research workflows from literature review to data analysis. This chapter covers prompting techniques for academic and professional research.
+AI는 문헌 검토부터 데이터 분석까지 연구 워크플로우를 가속화할 수 있습니다. 이 장에서는 학술 및 전문 연구를 위한 프롬프팅 기법을 다룹니다.
 
-<Callout type="info" title="AI in Research">
-AI can assist with synthesis, analysis, and writing—but cannot replace critical thinking, ethical judgment, or domain expertise. Always verify claims and cite original sources.
+<Callout type="info" title="연구에서의 AI">
+AI는 종합, 분석 및 작성을 지원할 수 있지만, 비판적 사고, 윤리적 판단 또는 전문 지식을 대체할 수는 없습니다. 항상 주장을 검증하고 원본 출처를 인용하세요.
 </Callout>
 
-## Literature & Information Review
+## 문헌 및 정보 검토
 
-### Do's and Don'ts: Research Prompts
+### 해야 할 것과 하지 말아야 할 것: 연구 프롬프트
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Summarize this paper for me." }}
-  after={{ label: "✓ Structured request", content: "Summarize this paper for my literature review on machine learning in healthcare.\n\nProvide:\n1. Main thesis (1-2 sentences)\n2. Methodology\n3. Key findings (bullets)\n4. Limitations\n5. Relevance to my research\n\nReading level: Graduate student" }}
+  before={{ label: "❌ 모호한 요청", content: "이 논문을 요약해 주세요." }}
+  after={{ label: "✓ 구조화된 요청", content: "의료 분야 머신러닝에 대한 문헌 검토를 위해 이 논문을 요약해 주세요.\n\n다음을 제공해 주세요:\n1. 주요 논지 (1-2문장)\n2. 방법론\n3. 핵심 발견 (글머리 기호)\n4. 한계점\n5. 내 연구와의 관련성\n\n독자 수준: 대학원생" }}
 />
 
-### Paper Summarization
+### 논문 요약
 
-<TryIt compact prompt={`Summarize this academic paper:
+<TryIt compact prompt={`이 학술 논문을 요약해 주세요:
 
-[paper abstract or full text]
+[논문 초록 또는 전문]
 
-Provide:
-1. **Main thesis** - Central argument (1-2 sentences)
-2. **Methodology** - How they approached it
-3. **Key findings** - Most important results (bullet points)
-4. **Contributions** - What's new/significant
-5. **Limitations** - Acknowledged or apparent weaknesses
-6. **Relevance to [my research topic]** - How it connects
+다음을 제공해 주세요:
+1. **주요 논지** - 핵심 주장 (1-2문장)
+2. **방법론** - 접근 방식
+3. **핵심 발견** - 가장 중요한 결과 (글머리 기호)
+4. **기여** - 새롭거나 중요한 점
+5. **한계점** - 인정된 또는 명백한 약점
+6. **[내 연구 주제]와의 관련성** - 연결점
 
-Reading level: \${readingLevel:graduate}`} />
+독자 수준: \${readingLevel:graduate}`} />
 
-### Literature Synthesis
+### 문헌 종합
 
-<TryIt compact prompt={`Synthesize these papers on \${topic:the effectiveness of remote work}:
+<TryIt compact prompt={`\${topic:원격 근무의 효과성}에 대한 논문들을 종합해 주세요:
 
-Paper 1: \${paper1:Smith 2021 - found productivity increased 15%}
-Paper 2: \${paper2:Jones 2022 - noted collaboration challenges}
-Paper 3: \${paper3:Chen 2023 - hybrid model showed best outcomes}
+논문 1: \${paper1:Smith 2021 - 생산성이 15% 증가했다고 발견}
+논문 2: \${paper2:Jones 2022 - 협업 문제점을 언급}
+논문 3: \${paper3:Chen 2023 - 하이브리드 모델이 최상의 결과를 보임}
 
-Analyze:
-1. **Common themes** - What do they agree on?
-2. **Contradictions** - Where do they disagree?
-3. **Gaps** - What's not addressed?
-4. **Evolution** - How has thinking progressed?
-5. **Synthesis** - Integrated understanding
+분석:
+1. **공통 주제** - 무엇에 동의하는가?
+2. **모순점** - 어디에서 의견이 다른가?
+3. **공백** - 다루어지지 않은 것은?
+4. **발전 과정** - 사고가 어떻게 진행되었는가?
+5. **종합** - 통합된 이해
 
-Format as: Literature review paragraph suitable for \${outputType:thesis}`} />
+형식: \${outputType:thesis}에 적합한 문헌 검토 단락`} />
 
-### Research Question Development
+### 연구 질문 개발
 
-<TryIt compact prompt={`Help me develop research questions for \${topic:AI adoption in healthcare}.
+<TryIt compact prompt={`\${topic:의료 분야 AI 도입}에 대한 연구 질문 개발을 도와주세요.
 
-Context:
-- Field: \${field:health informatics}
-- Current knowledge: \${currentKnowledge:AI tools exist but adoption is slow}
-- Gap identified: \${gap:limited understanding of physician resistance factors}
-- My interest: \${interest:organizational change management}
+맥락:
+- 분야: \${field:health informatics}
+- 현재 지식: \${currentKnowledge:AI 도구가 존재하지만 도입이 느림}
+- 확인된 공백: \${gap:의사 저항 요인에 대한 이해 부족}
+- 관심 분야: \${interest:조직 변화 관리}
 
-Generate:
-1. **Primary RQ** - Main question to answer
-2. **Sub-questions** - Supporting inquiries (3-4)
-3. **Hypotheses** - Testable predictions (if applicable)
+생성해 주세요:
+1. **주요 연구 질문** - 답해야 할 핵심 질문
+2. **하위 질문** - 보조 질문 (3-4개)
+3. **가설** - 검증 가능한 예측 (해당되는 경우)
 
-Criteria: Questions should be:
-- Answerable with available methods
-- Significant to the field
-- Appropriately scoped`} />
+기준: 질문은 다음과 같아야 합니다:
+- 가용한 방법으로 답변 가능
+- 해당 분야에서 중요
+- 적절한 범위`} />
 
-## Data Analysis
+## 데이터 분석
 
-<Callout type="warning" title="AI Cannot Analyze Your Actual Data">
-AI can guide methodology and help interpret results, but it cannot access or process your actual datasets. Never paste sensitive research data into prompts. Use AI for **guidance**, not computation.
+<Callout type="warning" title="AI는 실제 데이터를 분석할 수 없습니다">
+AI는 방법론을 안내하고 결과 해석을 도울 수 있지만, 실제 데이터셋에 접근하거나 처리할 수 없습니다. 민감한 연구 데이터를 프롬프트에 붙여넣지 마세요. AI를 **안내**용으로 사용하고, 계산용으로 사용하지 마세요.
 </Callout>
 
-### Statistical Analysis Guidance
+### 통계 분석 안내
 
-<TryIt compact prompt={`Help me analyze this data:
+<TryIt compact prompt={`이 데이터 분석을 도와주세요:
 
-Data description:
-- Variables: \${variables:age (continuous), treatment group (categorical: A/B/C), outcome score (continuous)}
-- Sample size: \${sampleSize:n=150 (50 per group)}
-- Research question: \${researchQuestion:Does treatment type affect outcome scores?}
-- Data characteristics: \${characteristics:normally distributed, no missing values}
+데이터 설명:
+- 변수: \${variables:나이 (연속형), 치료 그룹 (범주형: A/B/C), 결과 점수 (연속형)}
+- 표본 크기: \${sampleSize:n=150 (그룹당 50명)}
+- 연구 질문: \${researchQuestion:치료 유형이 결과 점수에 영향을 미치는가?}
+- 데이터 특성: \${characteristics:정규 분포, 결측값 없음}
 
-Advise on:
-1. **Appropriate tests** - Which statistical tests to use
-2. **Assumptions to check** - Prerequisites
-3. **How to interpret results** - What different outcomes mean
-4. **Effect size** - Practical significance
-5. **Reporting** - How to present findings
+다음에 대해 조언해 주세요:
+1. **적절한 검정** - 어떤 통계 검정을 사용해야 하는지
+2. **확인할 가정** - 전제 조건
+3. **결과 해석 방법** - 다양한 결과의 의미
+4. **효과 크기** - 실질적 유의성
+5. **보고** - 결과 제시 방법
 
-Note: Guide my analysis, don't fabricate results.`} />
+참고: 분석을 안내해 주시고, 결과를 조작하지 마세요.`} />
 
-### Qualitative Analysis
+### 질적 분석
 
-<TryIt compact prompt={`Help me analyze these qualitative responses:
+<TryIt compact prompt={`이 질적 응답을 분석하는 것을 도와주세요:
 
-Responses:
-\${responses:paste interview excerpts or survey responses here}
+응답:
+\${responses:인터뷰 발췌문이나 설문 응답을 여기에 붙여넣기}
 
-Using \${method:thematic analysis}:
+\${method:주제 분석}을 사용하여:
 
-1. **Initial codes** - Identify recurring concepts
-2. **Categories** - Group related codes
-3. **Themes** - Overarching patterns
-4. **Relationships** - How themes connect
-5. **Representative quotes** - Evidence for each theme
+1. **초기 코드** - 반복되는 개념 식별
+2. **범주** - 관련 코드 그룹화
+3. **주제** - 포괄적인 패턴
+4. **관계** - 주제들이 어떻게 연결되는지
+5. **대표 인용문** - 각 주제에 대한 증거
 
-Maintain: Participant voice and context`} />
+유지: 참가자의 목소리와 맥락`} />
 
-### Data Interpretation
+### 데이터 해석
 
-<TryIt compact prompt={`Help me interpret these findings:
+<TryIt compact prompt={`이 결과 해석을 도와주세요:
 
-Results:
-\${results:paste statistical output or data summary here}
+결과:
+\${results:통계 출력이나 데이터 요약을 여기에 붙여넣기}
 
-Context:
-- Research question: \${researchQuestion:Does X predict Y?}
-- Hypothesis: \${hypothesis:X positively predicts Y}
-- Expected results: \${expectedResults:significant positive correlation}
+맥락:
+- 연구 질문: \${researchQuestion:X가 Y를 예측하는가?}
+- 가설: \${hypothesis:X가 Y를 긍정적으로 예측한다}
+- 예상 결과: \${expectedResults:유의미한 양의 상관관계}
 
-Provide:
-1. **Plain language interpretation** - What does this mean?
-2. **Statistical significance** - What the p-values tell us
-3. **Practical significance** - Real-world meaning
-4. **Comparison to literature** - How does this fit?
-5. **Alternative explanations** - Other interpretations
-6. **Limitations of interpretation**`} />
+다음을 제공해 주세요:
+1. **평이한 해석** - 이것이 무엇을 의미하는가?
+2. **통계적 유의성** - p-값이 알려주는 것
+3. **실질적 유의성** - 실제 세계에서의 의미
+4. **문헌과의 비교** - 기존 연구와 어떻게 맞는가?
+5. **대안적 설명** - 다른 해석
+6. **해석의 한계점**`} />
 
-## Structured Analysis Frameworks
+## 구조화된 분석 프레임워크
 
-### PESTLE Analysis
+### PESTLE 분석
 
-<TryIt compact prompt={`Conduct a PESTLE analysis for \${subject:electric vehicle industry in Europe}.
+<TryIt compact prompt={`\${subject:유럽의 전기차 산업}에 대한 PESTLE 분석을 수행해 주세요.
 
-**Political** factors:
-- Government policies, regulations, political stability
+**정치적(Political)** 요인:
+- 정부 정책, 규제, 정치적 안정성
 
-**Economic** factors:
-- Economic growth, inflation, exchange rates, unemployment
+**경제적(Economic)** 요인:
+- 경제 성장, 인플레이션, 환율, 실업률
 
-**Social** factors:
-- Demographics, cultural trends, lifestyle changes
+**사회적(Social)** 요인:
+- 인구 통계, 문화적 트렌드, 라이프스타일 변화
 
-**Technological** factors:
-- Innovation, R&D, automation, technology changes
+**기술적(Technological)** 요인:
+- 혁신, R&D, 자동화, 기술 변화
 
-**Legal** factors:
-- Legislation, regulatory bodies, employment law
+**법적(Legal)** 요인:
+- 법률, 규제 기관, 고용법
 
-**Environmental** factors:
-- Climate, sustainability, environmental regulations
+**환경적(Environmental)** 요인:
+- 기후, 지속 가능성, 환경 규제
 
-For each: Current state + trends + implications`} />
+각 항목에 대해: 현재 상태 + 트렌드 + 시사점`} />
 
-### Root Cause Analysis
+### 근본 원인 분석
 
-<TryIt compact prompt={`Perform root cause analysis for \${problem:customer churn increased 20% last quarter}.
+<TryIt compact prompt={`\${problem:지난 분기 고객 이탈이 20% 증가}에 대한 근본 원인 분석을 수행해 주세요.
 
-Problem statement:
-\${problemStatement:Monthly churn rate rose from 3% to 3.6% between Q3 and Q4}
+문제 진술:
+\${problemStatement:월간 이탈률이 3분기와 4분기 사이에 3%에서 3.6%로 상승}
 
-Using 5 Whys:
-1. Why? First level cause
-   2. Why? Deeper cause
-      3. Why? Deeper still
-         4. Why? Approaching root
-            5. Why? Root cause
+5 Whys 사용:
+1. 왜? 첫 번째 수준 원인
+   2. 왜? 더 깊은 원인
+      3. 왜? 더욱 깊은 원인
+         4. 왜? 근본에 접근
+            5. 왜? 근본 원인
 
-Alternative: Fishbone diagram categories
-- People
-- Process
-- Equipment
-- Materials
-- Environment
-- Management
+대안: Fishbone 다이어그램 범주
+- 인력
+- 프로세스
+- 장비
+- 자재
+- 환경
+- 관리
 
-Provide: Root cause(s) + recommended actions`} />
+제공: 근본 원인 + 권장 조치`} />
 
-### Gap Analysis
+### 갭 분석
 
-<TryIt compact prompt={`Conduct a gap analysis for \${subject:our customer support operations}.
+<TryIt compact prompt={`\${subject:고객 지원 운영}에 대한 갭 분석을 수행해 주세요.
 
-**Current State:**
-- \${currentState:Average response time 24 hours, CSAT 3.2/5}
+**현재 상태:**
+- \${currentState:평균 응답 시간 24시간, CSAT 3.2/5}
 
-**Desired State:**
-- \${desiredState:Response time under 4 hours, CSAT 4.5/5}
+**목표 상태:**
+- \${desiredState:응답 시간 4시간 미만, CSAT 4.5/5}
 
-**Gap Identification:**
-| Area | Current | Desired | Gap | Priority |
+**갭 식별:**
+| 영역 | 현재 | 목표 | 갭 | 우선순위 |
 |------|---------|---------|-----|----------|
-| ... | ... | ... | ... | H/M/L |
+| ... | ... | ... | ... | 상/중/하 |
 
-**Action Plan:**
-For each high-priority gap:
-- Specific actions
-- Resources needed
-- Timeline
-- Success metrics`} />
+**실행 계획:**
+각 높은 우선순위 갭에 대해:
+- 구체적인 조치
+- 필요한 자원
+- 일정
+- 성공 지표`} />
 
-## Academic Writing Support
+## 학술 작문 지원
 
-### Argument Structure
+### 논증 구조
 
-<TryIt compact prompt={`Help me structure an argument for \${topic:why remote work should become permanent policy}.
+<TryIt compact prompt={`\${topic:원격 근무가 영구 정책이 되어야 하는 이유}에 대한 논증 구조화를 도와주세요.
 
-Main claim: \${thesis:Organizations should adopt permanent remote/hybrid policies for knowledge workers}
+주요 주장: \${thesis:조직은 지식 근로자를 위한 영구적인 원격/하이브리드 정책을 채택해야 한다}
 
-Required:
-1. **Premises** - Supporting claims that lead to conclusion
-2. **Evidence** - Data/sources for each premise
-3. **Counterarguments** - Opposing views
-4. **Rebuttals** - Responses to counterarguments
-5. **Logical flow** - How it all connects
+필수:
+1. **전제** - 결론으로 이끄는 뒷받침 주장
+2. **증거** - 각 전제에 대한 데이터/출처
+3. **반론** - 반대 견해
+4. **반박** - 반론에 대한 응답
+5. **논리적 흐름** - 모든 것이 어떻게 연결되는지
 
-Check for:
-- Logical fallacies
-- Unsupported claims
-- Gaps in reasoning`} />
+점검:
+- 논리적 오류
+- 뒷받침되지 않는 주장
+- 추론의 공백`} />
 
-### Methods Section
+### 방법론 섹션
 
-<TryIt compact prompt={`Help me write a methods section for:
+<TryIt compact prompt={`방법론 섹션 작성을 도와주세요:
 
-Study type: \${studyType:survey}
-Participants: \${participants:200 undergraduate students, convenience sampling}
-Materials: \${materials:online questionnaire with Likert scales}
-Procedure: \${procedure:participants completed 20-minute survey online}
-Analysis: \${analysis:descriptive statistics and regression analysis}
+연구 유형: \${studyType:설문조사}
+참가자: \${participants:200명의 학부생, 편의 표집}
+자료: \${materials:리커트 척도가 포함된 온라인 설문지}
+절차: \${procedure:참가자들이 온라인으로 20분 설문 완료}
+분석: \${analysis:기술 통계 및 회귀 분석}
 
-Standards: Follow \${standards:APA 7th edition} guidelines
-Include: Enough detail for replication
-Tone: Passive voice, past tense`} />
+기준: \${standards:APA 7판} 지침 준수
+포함: 재현에 충분한 세부 사항
+어조: 수동태, 과거 시제`} />
 
-### Discussion Section
+### 논의 섹션
 
-<TryIt compact prompt={`Help me write a discussion section.
+<TryIt compact prompt={`논의 섹션 작성을 도와주세요.
 
-Key findings:
-\${findings:1. Significant positive correlation (r=0.45) between X and Y\n2. No significant difference between groups on secondary measure}
+핵심 발견:
+\${findings:1. X와 Y 사이의 유의미한 양의 상관관계 (r=0.45)\n2. 이차 측정에서 그룹 간 유의미한 차이 없음}
 
-Structure:
-1. **Summary** - Brief restatement of main findings
-2. **Interpretation** - What the findings mean
-3. **Context** - How findings relate to existing literature
-4. **Implications** - Theoretical and practical significance
-5. **Limitations** - Study weaknesses
-6. **Future directions** - What research should follow
-7. **Conclusion** - Take-home message
+구조:
+1. **요약** - 주요 발견의 간략한 재진술
+2. **해석** - 발견의 의미
+3. **맥락** - 발견이 기존 문헌과 어떻게 관련되는지
+4. **시사점** - 이론적 및 실질적 중요성
+5. **한계점** - 연구의 약점
+6. **향후 방향** - 어떤 연구가 이어져야 하는지
+7. **결론** - 핵심 메시지
 
-Avoid: Overstating findings or introducing new results`} />
+피할 것: 발견을 과대 진술하거나 새로운 결과 도입`} />
 
-## Critical Analysis
+## 비판적 분석
 
-### Source Evaluation
+### 출처 평가
 
-<TryIt compact prompt={`Evaluate this source for academic use:
+<TryIt compact prompt={`이 출처의 학술적 사용 적합성을 평가해 주세요:
 
-Source: \${source:paste citation or link here}
-Content summary: \${summary:brief description of what the source claims}
+출처: \${source:인용이나 링크를 여기에 붙여넣기}
+내용 요약: \${summary:출처가 주장하는 내용의 간략한 설명}
 
-Assess using CRAAP criteria:
-- **Currency**: When published? Updated? Current enough?
-- **Relevance**: Relates to my topic? Appropriate level?
-- **Authority**: Author credentials? Publisher reputation?
-- **Accuracy**: Supported by evidence? Peer-reviewed?
-- **Purpose**: Why was it written? Bias evident?
+CRAAP 기준을 사용하여 평가:
+- **통용성(Currency)**: 언제 출판되었는가? 업데이트되었는가? 충분히 최신인가?
+- **관련성(Relevance)**: 내 주제와 관련이 있는가? 적절한 수준인가?
+- **권위(Authority)**: 저자 자격은? 출판사 평판은?
+- **정확성(Accuracy)**: 증거로 뒷받침되는가? 동료 검토를 받았는가?
+- **목적(Purpose)**: 왜 작성되었는가? 편향이 명백한가?
 
-Verdict: Highly credible / Use with caution / Avoid
-How to use: Recommendations for incorporation`} />
+판정: 매우 신뢰할 수 있음 / 주의하여 사용 / 피하기
+사용 방법: 통합에 대한 권장 사항`} />
 
-### Argument Analysis
+### 논증 분석
 
-<TryIt compact prompt={`Analyze the argument in this text:
+<TryIt compact prompt={`이 텍스트의 논증을 분석해 주세요:
 
-\${text:paste the text you want to analyze}
+\${text:분석하고 싶은 텍스트를 붙여넣기}
 
-Identify:
-1. **Main claim** - What's being argued
-2. **Supporting evidence** - What backs it up
-3. **Assumptions** - Unstated premises
-4. **Logical structure** - How conclusion follows
-5. **Strengths** - What's compelling
-6. **Weaknesses** - Logical gaps or fallacies
-7. **Alternative interpretations**
+식별:
+1. **주요 주장** - 무엇이 주장되고 있는가
+2. **뒷받침 증거** - 무엇이 뒷받침하는가
+3. **가정** - 진술되지 않은 전제
+4. **논리적 구조** - 결론이 어떻게 도출되는가
+5. **강점** - 설득력 있는 부분
+6. **약점** - 논리적 공백이나 오류
+7. **대안적 해석**
 
-Provide: Fair, balanced assessment`} />
+제공: 공정하고 균형 잡힌 평가`} />
 
-## Prompt Templates from prompts.chat
+## prompts.chat의 프롬프트 템플릿
 
-### Act as a Research Assistant
+### 연구 조교 역할
 
-<TryIt compact prompt={`I want you to act as a research assistant. Help me explore topics, find information, synthesize sources, and develop arguments. Ask clarifying questions, suggest relevant areas to investigate, and help me think critically about evidence. Be thorough but acknowledge the limits of your knowledge.`} />
+<TryIt compact prompt={`당신이 연구 조교 역할을 해주길 바랍니다. 주제를 탐구하고, 정보를 찾고, 출처를 종합하고, 논증을 개발하는 것을 도와주세요. 명확히 하는 질문을 하고, 조사할 관련 분야를 제안하고, 증거에 대해 비판적으로 생각하도록 도와주세요. 철저하되 당신 지식의 한계를 인정해 주세요.`} />
 
-### Act as a Data Analyst
+### 데이터 분석가 역할
 
-<TryIt compact prompt={`I want you to act as a data analyst. I will describe datasets and research questions, and you will suggest analysis approaches, help interpret results, and identify potential issues. Focus on sound methodology and clear communication of findings.`} />
+<TryIt compact prompt={`당신이 데이터 분석가 역할을 해주길 바랍니다. 데이터셋과 연구 질문을 설명하면, 분석 접근 방식을 제안하고, 결과 해석을 돕고, 잠재적인 문제를 식별해 주세요. 건전한 방법론과 발견의 명확한 커뮤니케이션에 집중해 주세요.`} />
 
-### Act as a Peer Reviewer
+### 동료 검토자 역할
 
-<TryIt compact prompt={`I want you to act as an academic peer reviewer. I will share manuscripts or sections, and you will provide constructive feedback on methodology, argument, writing, and contribution to the field. Be rigorous but supportive, noting both strengths and areas for improvement.`} />
+<TryIt compact prompt={`당신이 학술 동료 검토자 역할을 해주길 바랍니다. 원고나 섹션을 공유하면, 방법론, 논증, 작문 및 해당 분야에 대한 기여에 대해 건설적인 피드백을 제공해 주세요. 엄격하되 지지적으로, 강점과 개선이 필요한 부분 모두를 언급해 주세요.`} />
 
-## Summary
+## 요약
 
-<Callout type="tip" title="Key Techniques">
-Clearly state research context and goals, specify the analytical framework to use, request acknowledgment of limitations, ask for evidence-based reasoning, and maintain academic rigor and honesty.
+<Callout type="tip" title="핵심 기법">
+연구 맥락과 목표를 명확히 진술하고, 사용할 분석 프레임워크를 지정하고, 한계점의 인정을 요청하고, 증거 기반 추론을 요청하고, 학술적 엄격성과 정직성을 유지하세요.
 </Callout>
 
 <Quiz 
-  question="What's the most important thing to remember when using AI for research?"
+  question="연구에 AI를 사용할 때 기억해야 할 가장 중요한 점은 무엇입니까?"
   options={[
-    "AI can replace the need for primary sources",
-    "AI analysis is always accurate and up-to-date",
-    "Always verify AI claims independently and cite original sources",
-    "AI can access and analyze your actual datasets"
+    "AI가 1차 출처의 필요성을 대체할 수 있다",
+    "AI 분석은 항상 정확하고 최신이다",
+    "항상 AI 주장을 독립적으로 검증하고 원본 출처를 인용해야 한다",
+    "AI가 실제 데이터셋에 접근하고 분석할 수 있다"
   ]}
   correctIndex={2}
-  explanation="AI can assist with synthesis and structure, but it can hallucinate citations, have outdated information, and cannot access your actual data. Always verify claims against primary sources and maintain academic integrity."
+  explanation="AI는 종합과 구조화를 도울 수 있지만, 인용을 환각하거나, 구식 정보를 가지고 있거나, 실제 데이터에 접근할 수 없습니다. 항상 1차 출처에 대해 주장을 검증하고 학술적 무결성을 유지하세요."
 />
 
-Remember: AI can assist research but cannot replace critical thinking, ethical judgment, or domain expertise. Always verify claims independently.
+기억하세요: AI는 연구를 지원할 수 있지만 비판적 사고, 윤리적 판단 또는 전문 지식을 대체할 수 없습니다. 항상 주장을 독립적으로 검증하세요.

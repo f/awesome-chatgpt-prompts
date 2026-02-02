@@ -1,200 +1,200 @@
-Prompt chaining breaks complex tasks into sequences of simpler prompts, where each step's output feeds into the next. This technique dramatically improves reliability and enables sophisticated workflows that would be impossible with a single prompt.
+Цепочка промптов разбивает сложные задачи на последовательности более простых промптов, где выходные данные каждого шага передаются на следующий. Эта техника значительно повышает надёжность и позволяет создавать сложные рабочие процессы, которые были бы невозможны с одним промптом.
 
-<Callout type="tip" title="Think Assembly Lines">
-Just like a factory assembly line breaks manufacturing into specialized stations, prompt chaining breaks AI tasks into specialized steps. Each step does one thing well, and the combined output is far better than trying to do everything at once.
+<Callout type="tip" title="Представьте конвейер">
+Подобно тому, как заводской конвейер разбивает производство на специализированные станции, цепочка промптов разбивает задачи ИИ на специализированные этапы. Каждый этап хорошо выполняет одну задачу, а совокупный результат намного лучше, чем если бы всё делалось одновременно.
 </Callout>
 
-## Why Chain Prompts?
+## Зачем объединять промпты в цепочки?
 
-Single prompts struggle with complex tasks because they try to do too much at once. The AI has to simultaneously understand, analyze, plan, and generate, which leads to errors and inconsistencies.
+Одиночные промпты плохо справляются со сложными задачами, потому что пытаются сделать слишком много сразу. ИИ должен одновременно понимать, анализировать, планировать и генерировать, что приводит к ошибкам и несогласованности.
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900">
-    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Single Prompt Struggles</p>
+    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Проблемы одиночного промпта</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Multi-step reasoning gets confused</p>
-      <p className="m-0!">Different "modes" of thinking clash</p>
-      <p className="m-0!">Complex outputs lack consistency</p>
-      <p className="m-0!">No opportunity for quality control</p>
+      <p className="m-0!">Многоэтапные рассуждения путаются</p>
+      <p className="m-0!">Разные «режимы» мышления конфликтуют</p>
+      <p className="m-0!">Сложные выходные данные непоследовательны</p>
+      <p className="m-0!">Нет возможности контроля качества</p>
     </div>
   </div>
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Chaining Solves This</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Цепочки решают это</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Each step focuses on one task</p>
-      <p className="m-0!">Specialized prompts for each mode</p>
-      <p className="m-0!">Validate between steps</p>
-      <p className="m-0!">Debug and improve individual steps</p>
+      <p className="m-0!">Каждый этап фокусируется на одной задаче</p>
+      <p className="m-0!">Специализированные промпты для каждого режима</p>
+      <p className="m-0!">Валидация между этапами</p>
+      <p className="m-0!">Отладка и улучшение отдельных этапов</p>
     </div>
   </div>
 </div>
 
-## Basic Chaining Pattern
+## Базовый паттерн цепочки
 
-The simplest chain passes output from one prompt directly to the next. Each step has a clear, focused purpose.
+Простейшая цепочка передаёт выходные данные одного промпта непосредственно на следующий. Каждый этап имеет чёткую, сфокусированную цель.
 
 <div className="my-6 flex items-center justify-center gap-3 p-6 bg-muted/30 rounded-lg overflow-x-auto">
   <div className="flex flex-col items-center">
     <div className="px-4 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
-      <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Prompt 1</p>
-      <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">(Extract)</p>
+      <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Промпт 1</p>
+      <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">(Извлечь)</p>
     </div>
-    <p className="text-xs text-muted-foreground mt-1 m-0!">Input</p>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">Вход</p>
   </div>
   <div className="text-blue-400 dark:text-blue-500">→</div>
   <div className="flex flex-col items-center">
     <div className="px-4 py-3 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg text-center">
-      <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">Prompt 2</p>
-      <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">(Analyze)</p>
+      <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">Промпт 2</p>
+      <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">(Анализировать)</p>
     </div>
-    <p className="text-xs text-muted-foreground mt-1 m-0!">Intermediate</p>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">Промежуточный</p>
   </div>
   <div className="text-purple-400 dark:text-purple-500">→</div>
   <div className="flex flex-col items-center">
     <div className="px-4 py-3 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg text-center">
-      <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">Prompt 3</p>
-      <p className="text-xs text-green-600 dark:text-green-400 m-0!">(Generate)</p>
+      <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">Промпт 3</p>
+      <p className="text-xs text-green-600 dark:text-green-400 m-0!">(Сгенерировать)</p>
     </div>
-    <p className="text-xs text-muted-foreground mt-1 m-0!">Output</p>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">Выход</p>
   </div>
 </div>
 
-<Callout type="info" title="The ETG Pattern">
-The most common chain pattern is **Extract → Transform → Generate**. First extract raw data, then reshape it for your purpose, then generate the final output. This pattern works for almost any content task.
+<Callout type="info" title="Паттерн ETG">
+Наиболее распространённый паттерн цепочки — **Извлечь → Преобразовать → Сгенерировать** (Extract → Transform → Generate). Сначала извлеките необработанные данные, затем преобразуйте их для своих целей, а потом сгенерируйте конечный результат. Этот паттерн подходит почти для любой задачи с контентом.
 </Callout>
 
-## Chain Types
+## Типы цепочек
 
-Different tasks require different chain architectures. Choose the pattern that matches your workflow.
+Разные задачи требуют разных архитектур цепочек. Выберите паттерн, соответствующий вашему рабочему процессу.
 
 <ChainFlowDemo />
 
-### Sequential Chain
+### Последовательная цепочка
 
-The most straightforward pattern: each step depends on the previous. Think of it as a relay race where each runner passes the baton to the next.
+Наиболее простой паттерн: каждый этап зависит от предыдущего. Представьте это как эстафету, где каждый бегун передаёт эстафетную палочку следующему.
 
 <ChainExample 
   type="sequential"
   steps={[
-    { step: "Step 1: Extract", prompt: "Extract all dates, names, and numbers from: [text]", output: '{ dates: ["2024-01-15", "2024-02-20"], names: ["John Smith", "Acme Corp"], numbers: [15000, 42] }' },
-    { step: "Step 2: Analyze", prompt: "Given this extracted data: [step1_output], identify relationships and patterns.", output: '{ patterns: ["Monthly meetings scheduled"], relationships: ["John Smith works at Acme Corp"] }' },
-    { step: "Step 3: Generate", prompt: "Using these patterns: [step2_output], write a summary report highlighting the most significant findings.", output: "Summary Report: Analysis of the document reveals a business relationship between John Smith and Acme Corp, with scheduled monthly meetings..." }
+    { step: "Этап 1: Извлечение", prompt: "Извлеките все даты, имена и числа из: [текст]", output: '{ dates: ["2024-01-15", "2024-02-20"], names: ["Иван Петров", "ООО Ромашка"], numbers: [15000, 42] }' },
+    { step: "Этап 2: Анализ", prompt: "Учитывая эти извлечённые данные: [вывод_этапа1], определите связи и закономерности.", output: '{ patterns: ["Запланированы ежемесячные встречи"], relationships: ["Иван Петров работает в ООО Ромашка"] }' },
+    { step: "Этап 3: Генерация", prompt: "Используя эти закономерности: [вывод_этапа2], напишите краткий отчёт с выделением наиболее значимых результатов.", output: "Краткий отчёт: Анализ документа выявил деловые отношения между Иваном Петровым и ООО Ромашка, с запланированными ежемесячными встречами..." }
   ]}
 />
 
-### Parallel Chain
+### Параллельная цепочка
 
-When you need multiple perspectives on the same input, run prompts in parallel and merge results. This is faster than sequential chains and provides richer analysis.
+Когда вам нужны несколько точек зрения на одни и те же входные данные, запускайте промпты параллельно и объединяйте результаты. Это быстрее последовательных цепочек и обеспечивает более богатый анализ.
 
 <ChainExample 
   type="parallel"
   steps={[
-    { step: "Input", prompt: "Product review text", output: '"I love these earbuds! The battery lasts forever and the display on the case is so convenient. Perfect for my daily commute."' },
-    { step: "Branch A: Sentiment", prompt: "Analyze sentiment: [text]", output: '{ sentiment: "positive", score: 0.85 }' },
-    { step: "Branch B: Features", prompt: "Extract features mentioned: [text]", output: '{ features: ["battery", "display"] }' },
-    { step: "Branch C: Persona", prompt: "Identify user persona: [text]", output: '{ persona: "commuter" }' },
-    { step: "Merge", prompt: "Combine analyses into unified report", output: "Unified Report: Positive review from a commuter highlighting battery and display." }
+    { step: "Вход", prompt: "Текст отзыва о продукте", output: '"Я в восторге от этих наушников! Батарея держится вечно, а дисплей на чехле такой удобный. Идеально для ежедневных поездок на работу."' },
+    { step: "Ветка A: Тональность", prompt: "Проанализируйте тональность: [текст]", output: '{ sentiment: "positive", score: 0.85 }' },
+    { step: "Ветка B: Характеристики", prompt: "Извлеките упомянутые характеристики: [текст]", output: '{ features: ["батарея", "дисплей"] }' },
+    { step: "Ветка C: Персона", prompt: "Определите персону пользователя: [текст]", output: '{ persona: "человек, ездящий на работу" }' },
+    { step: "Объединение", prompt: "Объедините анализы в единый отчёт", output: "Единый отчёт: Положительный отзыв от человека, ездящего на работу, с акцентом на батарею и дисплей." }
   ]}
 />
 
-### Conditional Chain
+### Условная цепочка
 
-Route inputs through different paths based on classification. This is like a decision tree where the AI first categorizes the input, then handles each category differently.
+Направляйте входные данные по разным путям на основе классификации. Это похоже на дерево решений, где ИИ сначала категоризирует вход, а затем обрабатывает каждую категорию по-разному.
 
 <ChainExample 
   type="conditional"
   steps={[
-    { step: "Classify Input", prompt: "Classify this customer message as: complaint, question, feedback, or other.\n\nMessage: [text]", output: '{ classification: "complaint", confidence: 0.92 }' },
-    { step: "Route: Question (skipped)", prompt: "Identify what information is needed", output: "Skipped - input classified as complaint" },
-    { step: "Route: Complaint", prompt: "Identify the issue and severity: [text]", output: '{ issue: "delayed shipping", severity: "medium" }' },
-    { step: "Generate Response", prompt: "Generate empathetic response with resolution: [analysis]", output: "Dear Customer, We sincerely apologize for the delay. Your order has been expedited..." }
+    { step: "Классификация входа", prompt: "Классифицируйте это сообщение клиента как: жалоба, вопрос, отзыв или другое.\n\nСообщение: [текст]", output: '{ classification: "complaint", confidence: 0.92 }' },
+    { step: "Маршрут: Вопрос (пропущен)", prompt: "Определите, какая информация требуется", output: "Пропущено — вход классифицирован как жалоба" },
+    { step: "Маршрут: Жалоба", prompt: "Определите проблему и её серьёзность: [текст]", output: '{ issue: "задержка доставки", severity: "средняя" }' },
+    { step: "Генерация ответа", prompt: "Сгенерируйте сочувственный ответ с решением: [анализ]", output: "Уважаемый клиент, приносим искренние извинения за задержку. Ваш заказ отправлен в ускоренном режиме..." }
   ]}
 />
 
-### Iterative Chain
+### Итеративная цепочка
 
-Keep refining output until it meets quality standards. The AI generates, evaluates, and improves in a loop until satisfied or max iterations reached.
+Продолжайте улучшать результат, пока он не достигнет стандартов качества. ИИ генерирует, оценивает и улучшает в цикле, пока не будет удовлетворён или не достигнет максимального количества итераций.
 
-<Callout type="warning" title="Set Iteration Limits">
-Always set a maximum number of iterations (typically 3-5) to prevent infinite loops and control costs. The law of diminishing returns applies: most improvement happens in the first 2-3 iterations.
+<Callout type="warning" title="Установите лимит итераций">
+Всегда устанавливайте максимальное количество итераций (обычно 3-5), чтобы избежать бесконечных циклов и контролировать затраты. Действует закон убывающей отдачи: большая часть улучшений происходит в первых 2-3 итерациях.
 </Callout>
 
 <ChainExample 
   type="iterative"
   steps={[
-    { step: "Generate Draft", prompt: "Write a product description for: [wireless earbuds]", output: "These wireless earbuds offer good sound quality and comfortable fit for everyday use." },
-    { step: "Evaluate (Score: 5)", prompt: "Rate this description 1-10 on: clarity, persuasiveness, accuracy.\n\nDescription: [current_draft]", output: '{ score: 5, improvements: ["Add specific features", "Include emotional benefits", "Mention battery life", "Add call-to-action"] }' },
-    { step: "Improve Draft", prompt: "Improve this description based on this feedback:\n\nCurrent: [current_draft]\nFeedback: [improvements]", output: "Experience crystal-clear audio with our premium wireless earbuds. Featuring 30-hour battery life, active noise cancellation, and an ergonomic design that stays comfortable all day. Perfect for music lovers and professionals alike. Order now and transform your listening experience." },
-    { step: "Evaluate (Score: 8)", prompt: "Rate this description 1-10 on: clarity, persuasiveness, accuracy.\n\nDescription: [improved_draft]", output: '{ score: 8, improvements: ["Minor: Could add warranty info"] }\n\n✓ Score >= 8: EXIT LOOP' }
+    { step: "Создание черновика", prompt: "Напишите описание продукта для: [беспроводные наушники]", output: "Эти беспроводные наушники обеспечивают хорошее качество звука и удобную посадку для повседневного использования." },
+    { step: "Оценка (Балл: 5)", prompt: "Оцените это описание от 1 до 10 по: ясности, убедительности, точности.\n\nОписание: [текущий_черновик]", output: '{ score: 5, improvements: ["Добавить конкретные характеристики", "Включить эмоциональные преимущества", "Упомянуть время работы батареи", "Добавить призыв к действию"] }' },
+    { step: "Улучшение черновика", prompt: "Улучшите это описание на основе обратной связи:\n\nТекущее: [текущий_черновик]\nОбратная связь: [улучшения]", output: "Ощутите кристально чистый звук с нашими премиальными беспроводными наушниками. 30 часов работы от батареи, активное шумоподавление и эргономичный дизайн, обеспечивающий комфорт на весь день. Идеально для любителей музыки и профессионалов. Закажите сейчас и преобразите свой опыт прослушивания." },
+    { step: "Оценка (Балл: 8)", prompt: "Оцените это описание от 1 до 10 по: ясности, убедительности, точности.\n\nОписание: [улучшенный_черновик]", output: '{ score: 8, improvements: ["Незначительно: можно добавить информацию о гарантии"] }\n\n✓ Балл >= 8: ВЫХОД ИЗ ЦИКЛА' }
   ]}
 />
 
-## Common Chain Patterns
+## Распространённые паттерны цепочек
 
-These battle-tested patterns solve common problems. Use them as starting points and adapt to your needs.
+Эти проверенные паттерны решают типичные задачи. Используйте их как отправные точки и адаптируйте под свои нужды.
 
-### Extract → Transform → Generate
+### Извлечь → Преобразовать → Сгенерировать
 
-The workhorse of content processing. Pull data out, reshape it, then create something new.
+Рабочая лошадка обработки контента. Извлеките данные, преобразуйте их, затем создайте что-то новое.
 
 <div className="mb-4 p-3 rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800">
-  <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 m-0!">Best For</p>
-  <p className="text-sm text-blue-600 dark:text-blue-400 m-0!">Document summarization, report generation, content repurposing, data-to-narrative conversion</p>
+  <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 m-0!">Лучше всего подходит для</p>
+  <p className="text-sm text-blue-600 dark:text-blue-400 m-0!">Суммаризации документов, генерации отчётов, переработки контента, преобразования данных в повествование</p>
 </div>
 
 <ChainExample 
   type="sequential"
   steps={[
-    { step: "Extract", prompt: "From this document, extract:\n- Main topic\n- Key arguments (list)\n- Supporting evidence (list)\n- Conclusions\nReturn as JSON.", output: '{ "topic": "Climate change impacts", "arguments": ["Rising temperatures", "Sea level rise"], "evidence": ["NASA data", "IPCC reports"], "conclusions": ["Urgent action needed"] }' },
-    { step: "Transform", prompt: "Reorganize this information for [business executives]:\n[extracted_data]\nFocus on: economic implications\nRemove: technical jargon", output: '{ "summary": "Climate risks to business", "key_points": ["Supply chain disruption", "Insurance costs rising"], "action_items": ["Assess vulnerabilities", "Plan adaptations"] }' },
-    { step: "Generate", prompt: "Using this restructured information, write a [executive brief]:\n[transformed_data]\nTone: professional\nLength: 200 words", output: "Executive Brief: Climate change presents significant operational risks to our business. Key concerns include supply chain disruptions from extreme weather events and rising insurance premiums. We recommend immediate assessment of facility vulnerabilities and development of adaptation strategies..." }
+    { step: "Извлечение", prompt: "Из этого документа извлеките:\n- Основную тему\n- Ключевые аргументы (список)\n- Подтверждающие доказательства (список)\n- Выводы\nВерните в формате JSON.", output: '{ "topic": "Последствия изменения климата", "arguments": ["Повышение температуры", "Подъём уровня моря"], "evidence": ["Данные NASA", "Отчёты МГЭИК"], "conclusions": ["Необходимы срочные действия"] }' },
+    { step: "Преобразование", prompt: "Реорганизуйте эту информацию для [бизнес-руководителей]:\n[извлечённые_данные]\nФокус на: экономические последствия\nУдалить: технический жаргон", output: '{ "summary": "Климатические риски для бизнеса", "key_points": ["Нарушение цепочек поставок", "Рост страховых расходов"], "action_items": ["Оценить уязвимости", "Спланировать адаптацию"] }' },
+    { step: "Генерация", prompt: "Используя эту реструктурированную информацию, напишите [краткое резюме для руководства]:\n[преобразованные_данные]\nТон: профессиональный\nДлина: 200 слов", output: "Краткое резюме для руководства: Изменение климата представляет значительные операционные риски для нашего бизнеса. Ключевые проблемы включают нарушение цепочек поставок из-за экстремальных погодных явлений и рост страховых премий. Мы рекомендуем немедленно оценить уязвимости объектов и разработать стратегии адаптации..." }
   ]}
 />
 
-### Analyze → Plan → Execute
+### Анализировать → Планировать → Выполнять
 
-Perfect for code refactoring, project planning, or any task where you need to understand before acting.
+Идеально подходит для рефакторинга кода, планирования проектов или любой задачи, где нужно сначала понять, а потом действовать.
 
 <div className="mb-4 p-3 rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border border-purple-200 dark:border-purple-800">
-  <p className="text-xs font-semibold text-purple-700 dark:text-purple-300 mb-1 m-0!">Best For</p>
-  <p className="text-sm text-purple-600 dark:text-purple-400 m-0!">Code refactoring, project planning, troubleshooting, strategic decision-making, complex problem solving</p>
+  <p className="text-xs font-semibold text-purple-700 dark:text-purple-300 mb-1 m-0!">Лучше всего подходит для</p>
+  <p className="text-sm text-purple-600 dark:text-purple-400 m-0!">Рефакторинга кода, планирования проектов, устранения неполадок, стратегического принятия решений, решения сложных задач</p>
 </div>
 
 <ChainExample 
   type="sequential"
   steps={[
-    { step: "Analyze", prompt: "Analyze this codebase structure and identify:\n- Architecture pattern\n- Main components\n- Dependencies\n- Potential issues\n[code]", output: '{ "pattern": "MVC", "components": ["UserController", "AuthService", "Database"], "dependencies": ["express", "mongoose"], "issues": ["No input validation", "Hardcoded secrets"] }' },
-    { step: "Plan", prompt: "Based on this analysis, create a refactoring plan:\n[analysis_output]\nGoal: improve security\nConstraints: no breaking changes", output: '{ "steps": ["1. Add input validation middleware", "2. Move secrets to env vars", "3. Add rate limiting"], "priority": "high", "estimated_time": "4 hours" }' },
-    { step: "Execute", prompt: "Implement step 1 of this plan:\n[plan_output]\nShow the refactored code with explanations.", output: "// Added validation middleware\nconst validateInput = (req, res, next) => {\n  const { email, password } = req.body;\n  if (!email || !isValidEmail(email)) {\n    return res.status(400).json({ error: 'Invalid email' });\n  }\n  next();\n};" }
+    { step: "Анализ", prompt: "Проанализируйте структуру этой кодовой базы и определите:\n- Архитектурный паттерн\n- Основные компоненты\n- Зависимости\n- Потенциальные проблемы\n[код]", output: '{ "pattern": "MVC", "components": ["UserController", "AuthService", "Database"], "dependencies": ["express", "mongoose"], "issues": ["Нет валидации входных данных", "Захардкоженные секреты"] }' },
+    { step: "Планирование", prompt: "На основе этого анализа создайте план рефакторинга:\n[вывод_анализа]\nЦель: улучшить безопасность\nОграничения: без критических изменений", output: '{ "steps": ["1. Добавить middleware для валидации входных данных", "2. Перенести секреты в переменные окружения", "3. Добавить ограничение скорости запросов"], "priority": "высокий", "estimated_time": "4 часа" }' },
+    { step: "Выполнение", prompt: "Реализуйте шаг 1 этого плана:\n[вывод_плана]\nПокажите рефакторинг кода с пояснениями.", output: "// Добавлен middleware для валидации\nconst validateInput = (req, res, next) => {\n  const { email, password } = req.body;\n  if (!email || !isValidEmail(email)) {\n    return res.status(400).json({ error: 'Некорректный email' });\n  }\n  next();\n};" }
   ]}
 />
 
-### Generate → Critique → Refine
+### Сгенерировать → Критиковать → Улучшить
 
-The self-improvement loop. Generate content, have the AI evaluate it critically, then improve based on that feedback. This mimics how professional writers and editors work together.
+Цикл самоулучшения. Сгенерируйте контент, пусть ИИ критически оценит его, затем улучшите на основе обратной связи. Это имитирует совместную работу профессиональных писателей и редакторов.
 
 <div className="mb-4 p-3 rounded-lg bg-green-50/50 dark:bg-green-950/20 border border-green-200 dark:border-green-800">
-  <p className="text-xs font-semibold text-green-700 dark:text-green-300 mb-1 m-0!">Best For</p>
-  <p className="text-sm text-green-600 dark:text-green-400 m-0!">Marketing copy, creative writing, email drafts, presentations, any content that benefits from revision</p>
+  <p className="text-xs font-semibold text-green-700 dark:text-green-300 mb-1 m-0!">Лучше всего подходит для</p>
+  <p className="text-sm text-green-600 dark:text-green-400 m-0!">Маркетинговых текстов, творческого письма, черновиков электронных писем, презентаций, любого контента, который выигрывает от редактирования</p>
 </div>
 
 <ChainExample 
   type="iterative"
   steps={[
-    { step: "Generate", prompt: "Write a marketing email for [fitness app] targeting [busy professionals].", output: "Subject: Get Fit Fast!\n\nHey there! Our app helps you exercise. Download it today and start your fitness journey. Thanks!" },
-    { step: "Critique", prompt: "As a marketing expert, critique this email:\n[generated_email]\nEvaluate: subject line, hook, value proposition, CTA, tone\nScore each 1-10.", output: '{ "subject_line": 4, "hook": 3, "value_proposition": 2, "cta": 5, "tone": 4, "feedback": "Too generic, no specific benefits, weak urgency" }' },
-    { step: "Refine", prompt: "Rewrite the email addressing this feedback:\nOriginal: [generated_email]\nCritique: [critique_output]\nFocus on the lowest-scored elements.", output: "Subject: 15-Min Workouts for Your Lunch Break\n\nBusy schedule? We get it. Our app delivers science-backed workouts designed for professionals who have zero time to waste. Join 50,000+ executives who transformed their health in just 15 minutes a day. Start your free trial now—your future self will thank you." },
-    { step: "Final Score", prompt: "Re-evaluate the refined email.", output: '{ "subject_line": 8, "hook": 8, "value_proposition": 9, "cta": 8, "tone": 9, "improvement": "+23 points total" }' }
+    { step: "Генерация", prompt: "Напишите маркетинговое письмо для [фитнес-приложения], ориентированное на [занятых профессионалов].", output: "Тема: Быстро придите в форму!\n\nПривет! Наше приложение помогает заниматься спортом. Скачайте его сегодня и начните свой путь к фитнесу. Спасибо!" },
+    { step: "Критика", prompt: "Как эксперт по маркетингу, оцените это письмо:\n[сгенерированное_письмо]\nОцените: тему письма, зацепку, ценностное предложение, призыв к действию, тон\nОцените каждый пункт от 1 до 10.", output: '{ "subject_line": 4, "hook": 3, "value_proposition": 2, "cta": 5, "tone": 4, "feedback": "Слишком общее, нет конкретных преимуществ, слабая срочность" }' },
+    { step: "Улучшение", prompt: "Перепишите письмо с учётом этой обратной связи:\nОригинал: [сгенерированное_письмо]\nКритика: [вывод_критики]\nСосредоточьтесь на элементах с наименьшими оценками.", output: "Тема: 15-минутные тренировки для обеденного перерыва\n\nПлотный график? Мы понимаем. Наше приложение предлагает научно обоснованные тренировки, разработанные для профессионалов, у которых совершенно нет времени. Присоединяйтесь к 50 000+ руководителей, которые преобразили своё здоровье всего за 15 минут в день. Начните бесплатный пробный период прямо сейчас — ваше будущее «я» скажет вам спасибо." },
+    { step: "Финальная оценка", prompt: "Переоцените улучшенное письмо.", output: '{ "subject_line": 8, "hook": 8, "value_proposition": 9, "cta": 8, "tone": 9, "improvement": "+23 балла в сумме" }' }
   ]}
 />
 
-## Implementing Chains
+## Реализация цепочек
 
-You can implement chains manually for experimentation, or programmatically for production systems. Start simple and add complexity as needed.
+Вы можете реализовать цепочки вручную для экспериментов или программно для продакшн-систем. Начните с простого и добавляйте сложность по мере необходимости.
 
-### Manual Chaining
+### Ручное связывание
 
-The copy-paste approach is perfect for prototyping and experimentation. Run each prompt manually, examine the output, and paste it into the next prompt.
+Подход «скопировать и вставить» идеально подходит для прототипирования и экспериментов. Запустите каждый промпт вручную, изучите результат и вставьте его в следующий промпт.
 
 <CodeEditor 
   language="python"
@@ -205,9 +205,9 @@ step2_output = call_ai("Analyze relationships: " + step1_output)
 final_output = call_ai("Generate report: " + step2_output)`}
 />
 
-### Programmatic Chaining
+### Программное связывание
 
-For production systems, automate the chain with code. This enables error handling, logging, and integration with your application.
+Для продакшн-систем автоматизируйте цепочку с помощью кода. Это позволяет обрабатывать ошибки, вести логирование и интегрироваться с вашим приложением.
 
 <CodeEditor 
   language="python"
@@ -241,9 +241,9 @@ For production systems, automate the chain with code. This enables error handlin
     }`}
 />
 
-### Using Chain Templates
+### Использование шаблонов цепочек
 
-Define chains as configuration files for reusability and easy modification. This separates prompt logic from application code.
+Определяйте цепочки как конфигурационные файлы для повторного использования и лёгкой модификации. Это отделяет логику промптов от кода приложения.
 
 <CodeEditor 
   language="yaml"
@@ -270,110 +270,110 @@ steps:
       Format: 3 paragraphs, business tone`}
 />
 
-## Error Handling in Chains
+## Обработка ошибок в цепочках
 
-Chains can fail at any step. Build in validation, retries, and fallbacks to make your chains robust.
+Цепочки могут дать сбой на любом этапе. Встройте валидацию, повторные попытки и запасные варианты, чтобы сделать ваши цепочки надёжными.
 
 <ChainErrorDemo />
 
-<Callout type="warning" title="Garbage In, Garbage Out">
-If one step produces bad output, every following step will be affected. Always validate critical intermediate results before passing them forward.
+<Callout type="warning" title="Мусор на входе — мусор на выходе">
+Если один этап производит плохой результат, это повлияет на все последующие этапы. Всегда проверяйте критические промежуточные результаты перед их передачей дальше.
 </Callout>
 
-### Validation Between Steps
+### Валидация между этапами
 
-Add a validation step after any step that produces structured data. This catches errors early before they cascade.
+Добавьте этап валидации после любого этапа, который производит структурированные данные. Это позволяет выявлять ошибки на ранней стадии, пока они не распространились каскадом.
 
 <ValidationDemo />
 
-### Fallback Chains
+### Запасные цепочки
 
-When your primary approach fails, have a simpler backup ready. Trade capability for reliability.
+Когда ваш основной подход даёт сбой, имейте готовый более простой запасной вариант. Пожертвуйте возможностями ради надёжности.
 
 <FallbackDemo />
 
-## Chain Optimization
+## Оптимизация цепочек
 
-Once your chain works, optimize for speed, cost, and reliability. These often trade off against each other.
+После того как ваша цепочка заработает, оптимизируйте её по скорости, стоимости и надёжности. Часто между этими параметрами приходится выбирать.
 
 <div className="my-6 grid md:grid-cols-3 gap-4">
   <div className="border rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-900 p-4">
-    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 mb-2 m-0!">Reducing Latency</p>
+    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 mb-2 m-0!">Снижение задержки</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Parallelize independent steps</p>
-      <p className="m-0!">Cache intermediate results</p>
-      <p className="m-0!">Use smaller models for simple steps</p>
-      <p className="m-0!">Batch similar operations</p>
+      <p className="m-0!">Параллелизуйте независимые этапы</p>
+      <p className="m-0!">Кэшируйте промежуточные результаты</p>
+      <p className="m-0!">Используйте меньшие модели для простых этапов</p>
+      <p className="m-0!">Группируйте однотипные операции</p>
     </div>
   </div>
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900 p-4">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 mb-2 m-0!">Reducing Cost</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 mb-2 m-0!">Снижение затрат</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Use cheaper models for classification</p>
-      <p className="m-0!">Limit iterations in loops</p>
-      <p className="m-0!">Short-circuit when possible</p>
-      <p className="m-0!">Cache repeated queries</p>
+      <p className="m-0!">Используйте более дешёвые модели для классификации</p>
+      <p className="m-0!">Ограничьте итерации в циклах</p>
+      <p className="m-0!">Прерывайте выполнение досрочно, когда возможно</p>
+      <p className="m-0!">Кэшируйте повторяющиеся запросы</p>
     </div>
   </div>
   <div className="border rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-900 p-4">
-    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 mb-2 m-0!">Improving Reliability</p>
+    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 mb-2 m-0!">Повышение надёжности</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Add validation between steps</p>
-      <p className="m-0!">Include retry logic</p>
-      <p className="m-0!">Log intermediate results</p>
-      <p className="m-0!">Implement fallback paths</p>
+      <p className="m-0!">Добавьте валидацию между этапами</p>
+      <p className="m-0!">Включите логику повторных попыток</p>
+      <p className="m-0!">Логируйте промежуточные результаты</p>
+      <p className="m-0!">Реализуйте запасные пути</p>
     </div>
   </div>
 </div>
 
-## Real-World Chain Example
+## Пример цепочки из реального мира
 
-Let's walk through a complete production chain. This content pipeline transforms a raw idea into a polished article package.
+Давайте разберём полноценную продакшн-цепочку. Этот конвейер контента превращает сырую идею в отшлифованный пакет статьи.
 
-### Content Pipeline Chain
+### Конвейер контента
 
 <ContentPipelineDemo />
 
-## Summary
+## Резюме
 
-Prompt chaining transforms what AI can accomplish by breaking impossible tasks into achievable steps.
+Цепочка промптов трансформирует возможности ИИ, разбивая невыполнимые задачи на достижимые этапы.
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-amber-50/50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900 p-4">
-    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 mb-2 m-0!">Chaining Enables</p>
+    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 mb-2 m-0!">Цепочки позволяют</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Complex multi-step workflows</p>
-      <p className="m-0!">Higher quality through specialization</p>
-      <p className="m-0!">Better error handling and validation</p>
-      <p className="m-0!">Modular, reusable prompt components</p>
+      <p className="m-0!">Сложные многоэтапные рабочие процессы</p>
+      <p className="m-0!">Более высокое качество благодаря специализации</p>
+      <p className="m-0!">Лучшую обработку ошибок и валидацию</p>
+      <p className="m-0!">Модульные, многоразовые компоненты промптов</p>
     </div>
   </div>
   <div className="border rounded-lg bg-cyan-50/50 dark:bg-cyan-950/20 border-cyan-200 dark:border-cyan-900 p-4">
-    <p className="text-sm font-semibold text-cyan-700 dark:text-cyan-400 mb-2 m-0!">Key Principles</p>
+    <p className="text-sm font-semibold text-cyan-700 dark:text-cyan-400 mb-2 m-0!">Ключевые принципы</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Break complex tasks into simple steps</p>
-      <p className="m-0!">Design clear interfaces between steps</p>
-      <p className="m-0!">Validate intermediate outputs</p>
-      <p className="m-0!">Build in error handling and fallbacks</p>
-      <p className="m-0!">Optimize for your constraints</p>
+      <p className="m-0!">Разбивайте сложные задачи на простые этапы</p>
+      <p className="m-0!">Проектируйте чёткие интерфейсы между этапами</p>
+      <p className="m-0!">Валидируйте промежуточные результаты</p>
+      <p className="m-0!">Встраивайте обработку ошибок и запасные варианты</p>
+      <p className="m-0!">Оптимизируйте под ваши ограничения</p>
     </div>
   </div>
 </div>
 
-<Callout type="tip" title="Start Simple">
-Begin with a 2-3 step sequential chain. Get it working reliably before adding complexity. Most tasks don't need elaborate chain architectures.
+<Callout type="tip" title="Начинайте просто">
+Начните с последовательной цепочки из 2-3 этапов. Добейтесь её надёжной работы, прежде чем усложнять. Большинству задач не нужны сложные архитектуры цепочек.
 </Callout>
 
 <Quiz 
-  question="What is the main advantage of prompt chaining over a single complex prompt?"
+  question="В чём главное преимущество цепочки промптов по сравнению с одним сложным промптом?"
   options={[
-    "It uses fewer tokens overall",
-    "It's faster to execute",
-    "Each step can specialize, improving quality and enabling error handling",
-    "It requires less planning"
+    "Используется меньше токенов в целом",
+    "Выполнение происходит быстрее",
+    "Каждый этап может специализироваться, улучшая качество и позволяя обрабатывать ошибки",
+    "Требуется меньше планирования"
   ]}
   correctIndex={2}
-  explanation="Prompt chaining breaks complex tasks into specialized steps. Each step can focus on one thing well, intermediate results can be validated, errors can be caught and retried, and the overall quality improves through specialization."
+  explanation="Цепочка промптов разбивает сложные задачи на специализированные этапы. Каждый этап может хорошо выполнять одну задачу, промежуточные результаты можно валидировать, ошибки можно отлавливать и повторять попытки, а общее качество повышается благодаря специализации."
 />
 
-In the next chapter, we'll explore multimodal prompting: working with images, audio, and other non-text content.
+В следующей главе мы рассмотрим мультимодальное промптирование: работу с изображениями, аудио и другим нетекстовым контентом.

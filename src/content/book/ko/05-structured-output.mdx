@@ -1,108 +1,108 @@
-Getting consistent, well-formatted output is essential for production applications and efficient workflows. This chapter covers techniques for controlling exactly how AI models format their responses.
+프로덕션 애플리케이션과 효율적인 워크플로우를 위해서는 일관되고 잘 포맷된 출력을 얻는 것이 필수적입니다. 이 장에서는 AI 모델이 응답을 어떻게 포맷할지 정확하게 제어하는 기법을 다룹니다.
 
-<Callout type="info" title="From Prose to Data">
-Structured output transforms AI responses from freeform text into actionable, parseable data.
+<Callout type="info" title="산문에서 데이터로">
+구조화된 출력은 AI 응답을 자유 형식 텍스트에서 실행 가능하고 파싱 가능한 데이터로 변환합니다.
 </Callout>
 
-## Why Structure Matters
+## 구조가 중요한 이유
 
 <StructuredOutputDemo />
 
-## Basic Formatting Techniques
+## 기본 포맷팅 기법
 
-### Lists
+### 목록
 
-Lists are perfect for step-by-step instructions, ranked items, or collections of related points. They're easy to scan and parse. Use **numbered lists** when order matters (steps, rankings) and **bullet points** for unordered collections.
-
-<TryIt 
-  compact
-  title="List Formatting"
-  prompt={`Provide 5 tips for better sleep.
-
-Format: Numbered list with a brief explanation for each.
-Each tip should be bold, followed by a dash and explanation.`}
-/>
-
-<Callout type="tip" title="List Best Practices">
-Specify the exact number of items you want, whether to include explanations, and if items should be bold or have a specific structure.
-</Callout>
-
-### Tables
-
-Tables excel at comparing multiple items across the same dimensions. They're ideal for feature comparisons, data summaries, and any information with consistent attributes. Always define your column headers explicitly.
+목록은 단계별 지침, 순위가 있는 항목, 또는 관련 포인트의 모음에 완벽합니다. 스캔하고 파싱하기 쉽습니다. 순서가 중요할 때(단계, 순위)는 **번호 목록**을 사용하고, 순서가 없는 모음에는 **글머리 기호**를 사용하세요.
 
 <TryIt 
   compact
-  title="Table Formatting"
-  prompt={`Compare the top 4 Python web frameworks.
+  title="목록 포맷팅"
+  prompt={`더 나은 수면을 위한 5가지 팁을 제공하세요.
 
-Format as a markdown table with columns:
-| Framework | Best For | Learning Curve | Performance |`}
+형식: 각각에 대한 간략한 설명이 포함된 번호 목록.
+각 팁은 굵게 표시하고, 대시와 설명을 이어서 작성하세요.`}
 />
 
-<Callout type="tip" title="Table Best Practices">
-Specify column names, expected data types (text, numbers, ratings), and how many rows you need. For complex comparisons, limit to 4-6 columns for readability.
+<Callout type="tip" title="목록 모범 사례">
+원하는 항목의 정확한 개수, 설명 포함 여부, 항목을 굵게 표시할지 또는 특정 구조를 따를지 명시하세요.
 </Callout>
 
-### Headers and Sections
+### 표
 
-Headers create a clear document structure, making long responses scannable and organized. Use them for reports, analyses, or any multi-part response. Hierarchical headers (##, ###) show relationships between sections.
+표는 동일한 차원에서 여러 항목을 비교하는 데 탁월합니다. 기능 비교, 데이터 요약, 일관된 속성을 가진 모든 정보에 이상적입니다. 항상 열 헤더를 명시적으로 정의하세요.
 
-```
-Analyze this business proposal.
+<TryIt 
+  compact
+  title="표 포맷팅"
+  prompt={`상위 4개의 Python 웹 프레임워크를 비교하세요.
 
-Structure your response with these sections:
-## Executive Summary
-## Strengths
-## Weaknesses
-## Recommendations
-## Risk Assessment
-```
+다음 열로 마크다운 표 형식으로 작성하세요:
+| 프레임워크 | 적합한 용도 | 학습 곡선 | 성능 |`}
+/>
 
-<Callout type="tip" title="Section Best Practices">
-List your sections in the order you want them. For consistency, specify what each section should contain (e.g., "Executive Summary: 2-3 sentences only").
+<Callout type="tip" title="표 모범 사례">
+열 이름, 예상 데이터 유형(텍스트, 숫자, 등급), 필요한 행 수를 명시하세요. 복잡한 비교의 경우 가독성을 위해 4-6개 열로 제한하세요.
 </Callout>
 
-### Emphasis with Uppercase Directives
+### 제목과 섹션
 
-Uppercase words act as strong signals to the model, emphasizing critical constraints or requirements. Use them sparingly for maximum impact—overuse dilutes their effectiveness.
+제목은 명확한 문서 구조를 만들어 긴 응답을 스캔 가능하고 체계적으로 만듭니다. 보고서, 분석, 또는 여러 부분으로 된 응답에 사용하세요. 계층적 제목(##, ###)은 섹션 간의 관계를 보여줍니다.
 
-**Common Uppercase Directives:**
+```
+이 사업 제안서를 분석하세요.
+
+다음 섹션으로 응답을 구조화하세요:
+## 요약
+## 강점
+## 약점
+## 권장 사항
+## 위험 평가
+```
+
+<Callout type="tip" title="섹션 모범 사례">
+원하는 순서대로 섹션을 나열하세요. 일관성을 위해 각 섹션에 포함되어야 할 내용을 명시하세요(예: "요약: 2-3문장만").
+</Callout>
+
+### 대문자 지시어로 강조하기
+
+대문자 단어는 모델에게 중요한 제약이나 요구 사항을 강조하는 강력한 신호 역할을 합니다. 최대 효과를 위해 아껴서 사용하세요—과도하게 사용하면 효과가 희석됩니다.
+
+**일반적인 대문자 지시어:**
 
 <InfoGrid items={[
-  { label: "NEVER", description: "Absolute prohibition: \"NEVER include personal opinions\"", color: "red" },
-  { label: "ALWAYS", description: "Mandatory requirement: \"ALWAYS cite sources\"", color: "green" },
-  { label: "IMPORTANT", description: "Critical instruction: \"IMPORTANT: Keep responses under 100 words\"", color: "amber" },
-  { label: "DO NOT", description: "Strong prohibition: \"DO NOT make up statistics\"", color: "red" },
-  { label: "MUST", description: "Required action: \"Output MUST be valid JSON\"", color: "blue" },
-  { label: "ONLY", description: "Restriction: \"Return ONLY the code, no explanations\"", color: "purple" },
+  { label: "NEVER", description: "절대 금지: \"NEVER include personal opinions\"", color: "red" },
+  { label: "ALWAYS", description: "필수 요구: \"ALWAYS cite sources\"", color: "green" },
+  { label: "IMPORTANT", description: "중요 지침: \"IMPORTANT: Keep responses under 100 words\"", color: "amber" },
+  { label: "DO NOT", description: "강한 금지: \"DO NOT make up statistics\"", color: "red" },
+  { label: "MUST", description: "필수 동작: \"Output MUST be valid JSON\"", color: "blue" },
+  { label: "ONLY", description: "제한: \"Return ONLY the code, no explanations\"", color: "purple" },
 ]} />
 
 ```
-Summarize this article.
+이 기사를 요약하세요.
 
-IMPORTANT: Keep the summary under 100 words.
-NEVER add information not present in the original.
-ALWAYS maintain the original tone and perspective.
-DO NOT include your own opinions or analysis.
+IMPORTANT: 요약을 100단어 이내로 유지하세요.
+NEVER 원본에 없는 정보를 추가하세요.
+ALWAYS 원래의 어조와 관점을 유지하세요.
+DO NOT 자신의 의견이나 분석을 포함하세요.
 ```
 
-<Callout type="warning" title="Use Sparingly">
-If everything is uppercase or marked as critical, nothing stands out. Reserve these directives for genuinely important constraints.
+<Callout type="warning" title="아껴서 사용하세요">
+모든 것이 대문자이거나 중요하다고 표시되면 아무것도 두드러지지 않습니다. 이러한 지시어는 진정으로 중요한 제약에만 사용하세요.
 </Callout>
 
-## JSON Output
+## JSON 출력
 
-JSON (JavaScript Object Notation) is the most popular format for structured AI output. It's machine-readable, widely supported by programming languages, and perfect for APIs, databases, and automation workflows. The key to reliable JSON is providing a clear schema.
+JSON (JavaScript Object Notation)은 구조화된 AI 출력에 가장 인기 있는 형식입니다. 기계가 읽을 수 있고, 프로그래밍 언어에서 널리 지원되며, API, 데이터베이스, 자동화 워크플로우에 완벽합니다. 신뢰할 수 있는 JSON의 핵심은 명확한 스키마를 제공하는 것입니다.
 
-### Basic JSON Request
+### 기본 JSON 요청
 
-Start with a template showing the exact structure you want. Include field names, data types, and example values. This acts as a contract the model will follow.
+원하는 정확한 구조를 보여주는 템플릿으로 시작하세요. 필드 이름, 데이터 유형, 예시 값을 포함하세요. 이것은 모델이 따를 계약 역할을 합니다.
 
 <TryIt 
-  title="JSON Extraction"
-  description="Extract structured data from unstructured text."
-  prompt={`Extract information from this text and return as JSON:
+  title="JSON 추출"
+  description="비구조화된 텍스트에서 구조화된 데이터를 추출합니다."
+  prompt={`이 텍스트에서 정보를 추출하고 JSON으로 반환하세요:
 
 {
     "company_name": "string",
@@ -112,135 +112,135 @@ Start with a template showing the exact structure you want. Include field names,
     "industry": "string"
 }
 
-Text: "Apple Inc., founded in 1976, is headquartered in Cupertino, California. The technology giant employs approximately 164,000 people worldwide."`}
+텍스트: "Apple Inc., founded in 1976, is headquartered in Cupertino, California. The technology giant employs approximately 164,000 people worldwide."`}
 />
 
-### Complex JSON Structures
+### 복잡한 JSON 구조
 
-For nested data, use hierarchical JSON with objects inside objects, arrays of objects, and mixed types. Define each level clearly and use TypeScript-style annotations (`"positive" | "negative"`) to constrain values.
+중첩된 데이터의 경우, 객체 안의 객체, 객체 배열, 혼합 유형으로 계층적 JSON을 사용하세요. 각 수준을 명확하게 정의하고 TypeScript 스타일 주석(`"positive" | "negative"`)을 사용하여 값을 제한하세요.
 
 ```
-Analyze this product review and return JSON:
+이 제품 리뷰를 분석하고 JSON으로 반환하세요:
 
 {
-  "review_id": "string (generate unique)",
+  "review_id": "string (고유하게 생성)",
   "sentiment": {
     "overall": "positive" | "negative" | "mixed" | "neutral",
     "score": 0.0-1.0
   },
   "aspects": [
     {
-      "aspect": "string (e.g., 'price', 'quality')",
+      "aspect": "string (예: 'price', 'quality')",
       "sentiment": "positive" | "negative" | "neutral",
-      "mentions": ["exact quotes from review"]
+      "mentions": ["리뷰에서 정확한 인용"]
     }
   ],
   "purchase_intent": {
     "would_recommend": boolean,
     "confidence": 0.0-1.0
   },
-  "key_phrases": ["string array of notable phrases"]
+  "key_phrases": ["주목할 만한 문구의 string 배열"]
 }
 
-Return ONLY valid JSON, no additional text.
+유효한 JSON만 반환하고, 추가 텍스트는 없습니다.
 
-Review: "[review text]"
+리뷰: "[리뷰 텍스트]"
 ```
 
-### Ensuring Valid JSON
+### 유효한 JSON 보장하기
 
-Models sometimes add explanatory text or markdown formatting around JSON. Prevent this with explicit instructions about output format. You can request raw JSON or JSON inside code blocks—choose based on your parsing needs.
+모델은 때때로 JSON 주위에 설명 텍스트나 마크다운 포맷팅을 추가합니다. 출력 형식에 대한 명시적인 지침으로 이를 방지하세요. 원시 JSON 또는 코드 블록 안의 JSON을 요청할 수 있습니다—파싱 필요에 따라 선택하세요.
 
-Add explicit instructions:
+명시적인 지침을 추가하세요:
 
 ```
 IMPORTANT:
-- Return ONLY the JSON object, no markdown code blocks
-- Ensure all strings are properly escaped
-- Use null for missing values, not undefined
-- Validate that the output is parseable JSON
+- JSON 객체만 반환하고, 마크다운 코드 블록은 없습니다
+- 모든 문자열이 올바르게 이스케이프되었는지 확인하세요
+- 누락된 값에는 undefined가 아닌 null을 사용하세요
+- 출력이 파싱 가능한 JSON인지 검증하세요
 ```
 
-Or request code blocks by asking the model to wrap its output:
+또는 모델에게 출력을 감싸도록 요청하여 코드 블록을 요청하세요:
 
 ````
-Return the result as a JSON code block:
+결과를 JSON 코드 블록으로 반환하세요:
 ```json
 { ... }
 ```
 ````
 
-## YAML Output
+## YAML 출력
 
-YAML is more human-readable than JSON, using indentation instead of brackets. It's the standard for configuration files (Docker, Kubernetes, GitHub Actions) and works well when the output will be read by humans or used in DevOps contexts. YAML is sensitive to indentation, so be specific about formatting requirements.
+YAML은 괄호 대신 들여쓰기를 사용하여 JSON보다 사람이 읽기 쉽습니다. 구성 파일(Docker, Kubernetes, GitHub Actions)의 표준이며 출력이 사람이 읽거나 DevOps 컨텍스트에서 사용될 때 잘 작동합니다. YAML은 들여쓰기에 민감하므로 포맷팅 요구 사항을 구체적으로 명시하세요.
 
 <TryIt 
   compact
-  title="YAML Generation"
-  prompt={`Generate a GitHub Actions workflow for a Node.js project.
+  title="YAML 생성"
+  prompt={`Node.js 프로젝트를 위한 GitHub Actions 워크플로우를 생성하세요.
 
-Return as valid YAML:
-- Include: install, lint, test, build stages
-- Use Node.js 18
-- Cache npm dependencies
-- Run on push to main and pull requests`}
+유효한 YAML로 반환하세요:
+- 포함: install, lint, test, build 단계
+- Node.js 18 사용
+- npm 종속성 캐시
+- main으로 push와 pull request에서 실행`}
 />
 
-## XML Output
+## XML 출력
 
-XML is still required for many enterprise systems, SOAP APIs, and legacy integrations. It's more verbose than JSON but offers features like attributes, namespaces, and CDATA sections for complex data. Specify element names, nesting structure, and where to use attributes vs. child elements.
-
-```
-Convert this data to XML format:
-
-Requirements:
-- Root element: <catalog>
-- Each item in <book> element
-- Include attributes where appropriate
-- Use CDATA for description text
-
-Data: [book data]
-```
-
-## Custom Formats
-
-Sometimes standard formats don't fit your needs. You can define any custom format by providing a clear template. Custom formats work well for reports, logs, or domain-specific outputs that will be read by humans.
-
-### Structured Analysis Format
-
-Use delimiters (===, ---, [SECTION]) to create scannable documents with clear boundaries between sections. This format is great for code reviews, audits, and analyses.
+XML은 여전히 많은 엔터프라이즈 시스템, SOAP API, 레거시 통합에 필요합니다. JSON보다 더 장황하지만 복잡한 데이터를 위한 속성, 네임스페이스, CDATA 섹션 같은 기능을 제공합니다. 요소 이름, 중첩 구조, 속성 대 자식 요소를 사용할 위치를 명시하세요.
 
 ```
-Analyze this code using this exact format:
+이 데이터를 XML 형식으로 변환하세요:
+
+요구 사항:
+- 루트 요소: <catalog>
+- 각 항목은 <book> 요소에
+- 적절한 곳에 속성 포함
+- 설명 텍스트에 CDATA 사용
+
+데이터: [도서 데이터]
+```
+
+## 커스텀 형식
+
+때때로 표준 형식이 필요에 맞지 않을 수 있습니다. 명확한 템플릿을 제공하여 어떤 커스텀 형식이든 정의할 수 있습니다. 커스텀 형식은 보고서, 로그, 또는 사람이 읽을 도메인 특정 출력에 잘 작동합니다.
+
+### 구조화된 분석 형식
+
+구분자(===, ---, [SECTION])를 사용하여 섹션 간에 명확한 경계가 있는 스캔 가능한 문서를 만드세요. 이 형식은 코드 리뷰, 감사, 분석에 적합합니다.
+
+```
+이 코드를 다음 정확한 형식으로 분석하세요:
 
 === CODE ANALYSIS ===
 
 [SUMMARY]
-One paragraph overview
+한 단락 개요
 
 [ISSUES]
-• CRITICAL: [issue] — [file:line]
-• WARNING: [issue] — [file:line]  
-• INFO: [issue] — [file:line]
+• CRITICAL: [이슈] — [파일:라인]
+• WARNING: [이슈] — [파일:라인]  
+• INFO: [이슈] — [파일:라인]
 
 [METRICS]
 Complexity: [Low/Medium/High]
-Maintainability: [score]/10
-Test Coverage: [estimated %]
+Maintainability: [점수]/10
+Test Coverage: [추정 %]
 
 [RECOMMENDATIONS]
-1. [Priority 1 recommendation]
-2. [Priority 2 recommendation]
+1. [우선순위 1 권장 사항]
+2. [우선순위 2 권장 사항]
 
 === END ANALYSIS ===
 ```
 
-### Fill-in-the-Blank Format
+### 빈칸 채우기 형식
 
-Templates with blanks (___) guide the model to fill in specific fields while maintaining exact formatting. This approach is excellent for forms, briefs, and standardized documents where consistency matters.
+빈칸(___)이 있는 템플릿은 모델이 정확한 포맷팅을 유지하면서 특정 필드를 채우도록 안내합니다. 이 접근 방식은 일관성이 중요한 양식, 브리프, 표준화된 문서에 탁월합니다.
 
 ```
-Complete this template for the given product:
+주어진 제품에 대해 이 템플릿을 완성하세요:
 
 PRODUCT BRIEF
 ─────────────
@@ -254,158 +254,158 @@ Key Features:
   3. _______________
 Differentiator: _______________
 
-Product: [product description]
+제품: [제품 설명]
 ```
 
-## Typed Responses
+## 타입 지정 응답
 
-Typed responses define categories or entity types that the model should recognize and label. This technique is essential for Named Entity Recognition (NER), classification tasks, and any extraction where you need to categorize information consistently. Define your types clearly with examples.
+타입 지정 응답은 모델이 인식하고 레이블을 지정해야 하는 카테고리나 엔티티 유형을 정의합니다. 이 기법은 Named Entity Recognition (NER), 분류 작업, 정보를 일관되게 분류해야 하는 모든 추출에 필수적입니다. 예시와 함께 유형을 명확하게 정의하세요.
 
 <TryIt 
   compact
-  title="Entity Extraction"
-  prompt={`Extract entities from this text.
+  title="엔티티 추출"
+  prompt={`이 텍스트에서 엔티티를 추출하세요.
 
-Entity Types:
-- PERSON: Full names of people
-- ORG: Organization/company names
-- LOCATION: Cities, countries, addresses
-- DATE: Dates in ISO format (YYYY-MM-DD)
-- MONEY: Monetary amounts with currency
+엔티티 유형:
+- PERSON: 사람의 전체 이름
+- ORG: 조직/회사 이름
+- LOCATION: 도시, 국가, 주소
+- DATE: ISO 형식의 날짜 (YYYY-MM-DD)
+- MONEY: 통화가 포함된 금액
 
-Format each as: [TYPE]: [value]
+각각을 다음 형식으로: [TYPE]: [값]
 
-Text: "Tim Cook announced that Apple will invest $1 billion in a new Austin facility by December 2024."`}
+텍스트: "Tim Cook announced that Apple will invest $1 billion in a new Austin facility by December 2024."`}
 />
 
-## Multi-Part Structured Responses
+## 다중 파트 구조화 응답
 
-When you need comprehensive output covering multiple aspects, define distinct parts with clear boundaries. Specify exactly what goes in each part—format, length, and content type. This prevents the model from blending sections or omitting parts.
+여러 측면을 다루는 포괄적인 출력이 필요할 때, 명확한 경계를 가진 구별되는 파트를 정의하세요. 각 파트에 들어갈 내용—형식, 길이, 콘텐츠 유형—을 정확하게 명시하세요. 이렇게 하면 모델이 섹션을 혼합하거나 파트를 생략하는 것을 방지합니다.
 
 ```
-Research this topic and provide:
+이 주제를 조사하고 다음을 제공하세요:
 
-### PART 1: EXECUTIVE SUMMARY
-[2-3 sentence overview]
+### PART 1: 요약
+[2-3문장 개요]
 
-### PART 2: KEY FINDINGS
-[Exactly 5 bullet points]
+### PART 2: 주요 발견
+[정확히 5개의 글머리 기호]
 
-### PART 3: DATA TABLE
-| Metric | Value | Source |
-|--------|-------|--------|
-[Include 5 rows minimum]
+### PART 3: 데이터 표
+| 지표 | 값 | 출처 |
+|------|-----|------|
+[최소 5행 포함]
 
-### PART 4: RECOMMENDATIONS
-[Numbered list of 3 actionable recommendations]
+### PART 4: 권장 사항
+[실행 가능한 3가지 권장 사항의 번호 목록]
 
-### PART 5: FURTHER READING
-[3 suggested resources with brief descriptions]
+### PART 5: 추가 자료
+[간략한 설명이 있는 3개의 추천 리소스]
 ```
 
-## Conditional Formatting
+## 조건부 포맷팅
 
-Conditional formatting lets you define different output formats based on the input's characteristics. This is powerful for classification, triage, and routing systems where the response format should vary based on what the model detects. Use clear if/then logic with explicit output templates for each case.
+조건부 포맷팅을 사용하면 입력의 특성에 따라 다른 출력 형식을 정의할 수 있습니다. 이것은 모델이 감지한 내용에 따라 응답 형식이 달라져야 하는 분류, 트리아지, 라우팅 시스템에 강력합니다. 각 경우에 대한 명시적인 출력 템플릿과 함께 명확한 if/then 로직을 사용하세요.
 
 <TryIt 
   compact
-  title="Ticket Classification"
-  prompt={`Classify this support ticket.
+  title="티켓 분류"
+  prompt={`이 지원 티켓을 분류하세요.
 
-If URGENT (system down, security issue, data loss):
-  Return: 🔴 URGENT | [Category] | [Suggested Action]
+URGENT인 경우 (시스템 다운, 보안 이슈, 데이터 손실):
+  반환: 🔴 URGENT | [카테고리] | [제안 조치]
 
-If HIGH (affects multiple users, revenue impact):
-  Return: 🟠 HIGH | [Category] | [Suggested Action]
+HIGH인 경우 (여러 사용자 영향, 수익 영향):
+  반환: 🟠 HIGH | [카테고리] | [제안 조치]
 
-If MEDIUM (single user affected, workaround exists):
-  Return: 🟡 MEDIUM | [Category] | [Suggested Action]
+MEDIUM인 경우 (단일 사용자 영향, 해결 방법 있음):
+  반환: 🟡 MEDIUM | [카테고리] | [제안 조치]
 
-If LOW (questions, feature requests):
-  Return: 🟢 LOW | [Category] | [Suggested Action]
+LOW인 경우 (질문, 기능 요청):
+  반환: 🟢 LOW | [카테고리] | [제안 조치]
 
-Ticket: "I can't login to my account. I've tried resetting my password twice but still getting an error. This is blocking my entire team from accessing the dashboard."`}
+티켓: "I can't login to my account. I've tried resetting my password twice but still getting an error. This is blocking my entire team from accessing the dashboard."`}
 />
 
-## Arrays and Lists in JSON
+## JSON의 배열과 목록
 
-Extracting multiple items into arrays requires careful schema definition. Specify the array structure, what each item should contain, and how to handle edge cases (empty arrays, single items). Including a count field helps verify completeness.
+여러 항목을 배열로 추출하려면 신중한 스키마 정의가 필요합니다. 배열 구조, 각 항목에 포함되어야 할 내용, 엣지 케이스(빈 배열, 단일 항목) 처리 방법을 명시하세요. count 필드를 포함하면 완전성을 검증하는 데 도움이 됩니다.
 
 ```
-Extract all action items from this meeting transcript.
+이 회의 녹취록에서 모든 액션 항목을 추출하세요.
 
-Return as JSON array:
+JSON 배열로 반환하세요:
 {
   "action_items": [
     {
-      "task": "string describing the task",
-      "assignee": "person name or 'Unassigned'",
-      "deadline": "date if mentioned, else null",
+      "task": "작업을 설명하는 string",
+      "assignee": "사람 이름 또는 'Unassigned'",
+      "deadline": "언급된 경우 날짜, 아니면 null",
       "priority": "high" | "medium" | "low",
-      "context": "relevant quote from transcript"
+      "context": "녹취록에서 관련 인용"
     }
   ],
   "total_count": number
 }
 
-Transcript: "[meeting transcript]"
+녹취록: "[회의 녹취록]"
 ```
 
-## Validation Instructions
+## 검증 지침
 
-Self-validation prompts the model to check its own output before responding. This catches common issues like missing sections, placeholder text, or constraint violations. The model will iterate internally to fix problems, improving output quality without additional API calls.
+자체 검증은 모델이 응답하기 전에 자신의 출력을 확인하도록 프롬프트합니다. 이것은 누락된 섹션, 플레이스홀더 텍스트, 또는 제약 위반과 같은 일반적인 문제를 잡아냅니다. 모델은 내부적으로 반복하여 문제를 수정하고, 추가 API 호출 없이 출력 품질을 향상시킵니다.
 
 ```
-Generate the report, then:
+보고서를 생성한 후:
 
 VALIDATION CHECKLIST:
-□ All required sections present
-□ No placeholder text remaining
-□ All statistics include sources
-□ Word count within 500-700 words
-□ Conclusion ties back to introduction
+□ 모든 필수 섹션 존재
+□ 플레이스홀더 텍스트 없음
+□ 모든 통계에 출처 포함
+□ 단어 수 500-700단어 이내
+□ 결론이 서론과 연결됨
 
-If any check fails, fix before responding.
+검사 실패 시, 응답 전에 수정하세요.
 ```
 
-## Handling Optional Fields
+## 선택적 필드 처리
 
-Real-world data often has missing values. Explicitly instruct the model on how to handle optional fields—using `null` is cleaner than empty strings and easier to process programmatically. Also prevent "hallucination" of missing data by emphasizing that the model should never invent information.
+실제 데이터에는 종종 누락된 값이 있습니다. 선택적 필드를 처리하는 방법을 명시적으로 지시하세요—`null`을 사용하는 것이 빈 문자열보다 깔끔하고 프로그래밍적으로 처리하기 쉽습니다. 또한 모델이 절대로 정보를 지어내지 않아야 함을 강조하여 누락된 데이터의 "환각"을 방지하세요.
 
 ```
-Extract contact information. Use null for missing fields.
+연락처 정보를 추출하세요. 누락된 필드에는 null을 사용하세요.
 
 {
-  "name": "string (required)",
-  "email": "string or null",
-  "phone": "string or null", 
-  "company": "string or null",
-  "role": "string or null",
-  "linkedin": "URL string or null"
+  "name": "string (필수)",
+  "email": "string 또는 null",
+  "phone": "string 또는 null", 
+  "company": "string 또는 null",
+  "role": "string 또는 null",
+  "linkedin": "URL string 또는 null"
 }
 
 IMPORTANT: 
-- Never invent information not in the source
-- Use null, not empty strings, for missing data
-- Phone numbers in E.164 format if possible
+- 소스에 없는 정보를 절대로 지어내지 마세요
+- 누락된 데이터에는 빈 문자열이 아닌 null을 사용하세요
+- 가능하면 전화번호는 E.164 형식으로
 ```
 
-## Summary
+## 요약
 
-<Callout type="tip" title="Key Techniques">
-Be explicit about format, use examples, specify types, handle edge cases with null values, and ask the model to validate its own output.
+<Callout type="tip" title="핵심 기법">
+형식에 대해 명시적으로 작성하고, 예시를 사용하고, 유형을 명시하고, 엣지 케이스를 null 값으로 처리하고, 모델에게 자체 출력을 검증하도록 요청하세요.
 </Callout>
 
 <Quiz 
-  question="What's the main advantage of structured output over unstructured text?"
+  question="비구조화된 텍스트보다 구조화된 출력의 주요 장점은 무엇인가요?"
   options={[
-    "It uses fewer tokens",
-    "It's easier for the AI to generate",
-    "It can be parsed programmatically and validated",
-    "It always produces correct information"
+    "토큰을 더 적게 사용합니다",
+    "AI가 생성하기 더 쉽습니다",
+    "프로그래밍적으로 파싱하고 검증할 수 있습니다",
+    "항상 정확한 정보를 생성합니다"
   ]}
   correctIndex={2}
-  explanation="Structured outputs like JSON can be parsed by code, compared across queries, integrated into workflows, and validated for completeness—things that are difficult or impossible with freeform text."
+  explanation="JSON과 같은 구조화된 출력은 코드로 파싱할 수 있고, 쿼리 간에 비교할 수 있고, 워크플로우에 통합할 수 있으며, 완전성을 검증할 수 있습니다—자유 형식 텍스트로는 어렵거나 불가능한 것들입니다."
 />
 
-Structured outputs are essential for building reliable AI-powered applications. In the next chapter, we'll explore chain-of-thought prompting for complex reasoning tasks.
+구조화된 출력은 신뢰할 수 있는 AI 기반 애플리케이션을 구축하는 데 필수적입니다. 다음 장에서는 복잡한 추론 작업을 위한 사고 연쇄 프롬프팅을 탐구합니다.

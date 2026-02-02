@@ -1,55 +1,55 @@
-Prompt engineering is rarely a one-shot process. The best prompts emerge through iteration—testing, observing, and refining until you achieve the desired results.
+Промпт-инженерия редко бывает процессом с одной попытки. Лучшие промпты рождаются через итерации — тестирование, наблюдение и доработку до достижения желаемых результатов.
 
-<Callout type="info" title="First Draft, Not Final Draft">
-Think of your first prompt as a rough draft. Even experienced prompt engineers rarely nail it on the first try.
+<Callout type="info" title="Черновик, а не финальная версия">
+Думайте о своём первом промпте как о черновике. Даже опытные промпт-инженеры редко попадают в цель с первого раза.
 </Callout>
 
-## The Iteration Cycle
+## Цикл итерации
 
-Effective prompt refinement follows a predictable cycle: write, test, analyze, and improve. Each iteration brings you closer to a prompt that reliably produces the results you need.
+Эффективная доработка промптов следует предсказуемому циклу: написать, протестировать, проанализировать и улучшить. Каждая итерация приближает вас к промпту, который стабильно даёт нужные результаты.
 
 <IterativeRefinementDemo />
 
-## Common Refinement Patterns
+## Типичные паттерны доработки
 
-Most prompt failures fall into a handful of categories. Learning to recognize these patterns lets you quickly diagnose and fix issues without starting from scratch.
+Большинство неудачных промптов попадают в несколько категорий. Научившись распознавать эти паттерны, вы сможете быстро диагностировать и исправлять проблемы, не начиная с нуля.
 
-### Problem: Output Too Long
+### Проблема: слишком длинный ответ
 
-One of the most common issues. Without explicit constraints, models tend to be thorough rather than concise.
+Одна из самых частых проблем. Без явных ограничений модели склонны быть обстоятельными, а не краткими.
 
 <DiffView 
   before="Explain how photosynthesis works."
   after={`Explain how photosynthesis works in 3-4 sentences suitable for a 10-year-old.`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="Оригинал"
+  afterLabel="Доработанный"
 />
 
-### Problem: Output Too Vague
+### Проблема: слишком расплывчатый ответ
 
-Vague prompts produce vague outputs. The model can't read your mind about what "better" means or which aspects matter most to you.
+Расплывчатые промпты дают расплывчатые ответы. Модель не может прочитать ваши мысли о том, что значит «лучше» или какие аспекты для вас важнее всего.
 
 <DiffView 
   before="Give me tips for better presentations."
   after={`Give me 5 specific, actionable tips for improving technical presentations to non-technical stakeholders. For each tip, include a concrete example.`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="Оригинал"
+  afterLabel="Доработанный"
 />
 
-### Problem: Wrong Tone
+### Проблема: неправильный тон
 
-Tone is subjective and varies by context. What sounds "professional" to the model might not match your organization's voice or the relationship with your recipient.
+Тон субъективен и зависит от контекста. То, что модель считает «профессиональным», может не соответствовать голосу вашей организации или характеру отношений с получателем.
 
 <DiffView 
   before="Write an apology email for missing a deadline."
   after={`Write a professional but warm apology email for missing a project deadline. The tone should be accountable without being overly apologetic. Include a concrete plan to prevent future delays.`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="Оригинал"
+  afterLabel="Доработанный"
 />
 
-### Problem: Missing Key Information
+### Проблема: отсутствует ключевая информация
 
-Open-ended requests get open-ended responses. If you need specific types of feedback, you must ask for them explicitly.
+На открытые запросы вы получаете открытые ответы. Если вам нужны конкретные виды обратной связи, вы должны запросить их явно.
 
 <DiffView 
   before="Review this code."
@@ -62,13 +62,13 @@ Open-ended requests get open-ended responses. If you need specific types of feed
 For each issue found, explain the problem and suggest a fix.
 
 [code]`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="Оригинал"
+  afterLabel="Доработанный"
 />
 
-### Problem: Inconsistent Format
+### Проблема: непоследовательный формат
 
-Without a template, the model will structure each response differently, making comparison difficult and automation impossible.
+Без шаблона модель будет структурировать каждый ответ по-разному, что затрудняет сравнение и делает автоматизацию невозможной.
 
 <DiffView 
   before="Analyze these three products."
@@ -82,82 +82,82 @@ Without a template, the model will structure each response differently, making c
 **Rating:** X/10
 
 [products]`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="Оригинал"
+  afterLabel="Доработанный"
 />
 
-## Systematic Refinement Approach
+## Систематический подход к доработке
 
-Random changes waste time. A systematic approach helps you identify problems quickly and fix them efficiently.
+Случайные изменения — пустая трата времени. Систематический подход помогает быстро выявлять проблемы и эффективно их исправлять.
 
-### Step 1: Diagnose the Issue
+### Шаг 1: Диагностика проблемы
 
-Before changing anything, identify what's actually wrong. Use this diagnostic table to map symptoms to solutions:
+Прежде чем что-либо менять, определите, что именно не так. Используйте эту диагностическую таблицу для сопоставления симптомов с решениями:
 
 <div className="my-4 grid gap-2">
   <div className="grid grid-cols-3 gap-2 p-3 bg-muted/50 rounded-lg text-sm">
-    <span className="font-semibold">Symptom</span>
-    <span className="font-semibold">Likely Cause</span>
-    <span className="font-semibold">Solution</span>
+    <span className="font-semibold">Симптом</span>
+    <span className="font-semibold">Вероятная причина</span>
+    <span className="font-semibold">Решение</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Too long</span>
-    <span className="text-muted-foreground">No length constraint</span>
-    <span className="text-green-600 dark:text-green-400">Add word/sentence limits</span>
+    <span>Слишком длинно</span>
+    <span className="text-muted-foreground">Нет ограничения длины</span>
+    <span className="text-green-600 dark:text-green-400">Добавить лимит слов/предложений</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Too short</span>
-    <span className="text-muted-foreground">Lacks detail request</span>
-    <span className="text-green-600 dark:text-green-400">Ask for elaboration</span>
+    <span>Слишком коротко</span>
+    <span className="text-muted-foreground">Нет запроса деталей</span>
+    <span className="text-green-600 dark:text-green-400">Попросить раскрыть подробнее</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Off-topic</span>
-    <span className="text-muted-foreground">Vague instructions</span>
-    <span className="text-green-600 dark:text-green-400">Be more specific</span>
+    <span>Не по теме</span>
+    <span className="text-muted-foreground">Размытые инструкции</span>
+    <span className="text-green-600 dark:text-green-400">Быть конкретнее</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Wrong format</span>
-    <span className="text-muted-foreground">Format not specified</span>
-    <span className="text-green-600 dark:text-green-400">Define exact structure</span>
+    <span>Неправильный формат</span>
+    <span className="text-muted-foreground">Формат не указан</span>
+    <span className="text-green-600 dark:text-green-400">Определить точную структуру</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Wrong tone</span>
-    <span className="text-muted-foreground">Audience not clear</span>
-    <span className="text-green-600 dark:text-green-400">Specify audience/style</span>
+    <span>Неправильный тон</span>
+    <span className="text-muted-foreground">Аудитория не определена</span>
+    <span className="text-green-600 dark:text-green-400">Указать аудиторию/стиль</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Inconsistent</span>
-    <span className="text-muted-foreground">No examples provided</span>
-    <span className="text-green-600 dark:text-green-400">Add few-shot examples</span>
+    <span>Непоследовательно</span>
+    <span className="text-muted-foreground">Примеры не предоставлены</span>
+    <span className="text-green-600 dark:text-green-400">Добавить few-shot примеры</span>
   </div>
 </div>
 
-### Step 2: Make Targeted Changes
+### Шаг 2: Вносите точечные изменения
 
-Resist the urge to rewrite everything. Changing multiple variables at once makes it impossible to know what helped and what hurt. Make one change, test it, then proceed:
+Сопротивляйтесь желанию переписать всё заново. Изменение нескольких переменных одновременно делает невозможным понять, что помогло, а что навредило. Внесите одно изменение, протестируйте его, затем двигайтесь дальше:
 
 ```
-Iteration 1: Add length constraint
-Iteration 2: Specify format
-Iteration 3: Add example
-Iteration 4: Refine tone instructions
+Итерация 1: Добавить ограничение длины
+Итерация 2: Указать формат
+Итерация 3: Добавить пример
+Итерация 4: Уточнить инструкции по тону
 ```
 
-### Step 3: Document What Works
+### Шаг 3: Документируйте, что работает
 
-Prompt engineering knowledge is easily lost. Keep a log of what you tried and why. This saves time when you revisit the prompt later or face similar challenges:
+Знания о промпт-инженерии легко теряются. Ведите журнал того, что вы пробовали и почему. Это сэкономит время, когда вы вернётесь к промпту позже или столкнётесь с похожими задачами:
 
 ```markdown
-## Prompt: Customer Email Response
+## Промпт: Ответ клиенту по email
 
-### Version 1 (too formal)
+### Версия 1 (слишком формальная)
 "Write a response to this customer complaint."
 
-### Version 2 (better tone, still missing structure)
+### Версия 2 (тон лучше, но нет структуры)
 "Write a friendly but professional response to this complaint. 
 Show empathy first."
 
-### Version 3 (final - good results)
+### Версия 3 (финальная — хорошие результаты)
 "Write a response to this customer complaint. Structure:
 1. Acknowledge their frustration (1 sentence)
 2. Apologize specifically (1 sentence)  
@@ -167,25 +167,25 @@ Show empathy first."
 Tone: Friendly, professional, empathetic but not groveling."
 ```
 
-## Real-World Iteration Example
+## Реальный пример итерации
 
-Let's walk through a complete iteration cycle to see how each refinement builds on the last. Notice how each version addresses specific shortcomings of the previous one.
+Давайте пройдём через полный цикл итерации, чтобы увидеть, как каждая доработка строится на предыдущей. Обратите внимание, как каждая версия устраняет конкретные недостатки предыдущей.
 
-### Task: Generate Product Names
+### Задача: Генерация названий продуктов
 
 <VersionDiff versions={[
   {
-    label: "Version 1",
+    label: "Версия 1",
     content: "Generate names for a new productivity app.",
-    note: "Too generic, no context"
+    note: "Слишком общий, нет контекста"
   },
   {
-    label: "Version 2",
+    label: "Версия 2",
     content: `Generate names for a new productivity app. The app uses AI to automatically schedule your tasks based on energy levels and calendar availability.`,
-    note: "Added context, still generic"
+    note: "Добавлен контекст, всё ещё общий"
   },
   {
-    label: "Version 3",
+    label: "Версия 3",
     content: `Generate 10 unique, memorable names for a productivity app with these characteristics:
 - Uses AI to schedule tasks based on energy levels
 - Target audience: busy professionals aged 25-40
@@ -193,10 +193,10 @@ Let's walk through a complete iteration cycle to see how each refinement builds 
 - Avoid: generic words like "pro", "smart", "AI", "task"
 
 For each name, explain why it works.`,
-    note: "Added constraints and reasoning"
+    note: "Добавлены ограничения и обоснование"
   },
   {
-    label: "Version 4 (final)",
+    label: "Версия 4 (финальная)",
     content: `Generate 10 unique, memorable names for a productivity app.
 
 Context:
@@ -212,61 +212,61 @@ Requirements:
 
 Format:
 Name | Pronunciation | Why It Works | Domain Availability Guess`,
-    note: "Structured format, specific requirements"
+    note: "Структурированный формат, конкретные требования"
   }
 ]} />
 
-## Refinement Strategies by Task Type
+## Стратегии доработки по типам задач
 
-Different tasks fail in predictable ways. Knowing the common failure modes helps you diagnose and fix issues faster.
+Разные задачи ломаются предсказуемым образом. Знание типичных режимов отказа помогает быстрее диагностировать и исправлять проблемы.
 
-### For Content Generation
+### Для генерации контента
 
-Content generation often produces generic, off-target, or poorly formatted output. The fix usually involves being more specific about constraints, providing concrete examples, or defining your brand voice explicitly.
-
-<InfoGrid items={[
-  { icon: "target", title: "Too Generic", description: "Add specific constraints and context", example: "\"Write about dogs\" → \"Write about golden retrievers for first-time owners, focusing on training and exercise needs\"" },
-  { icon: "scissors", title: "Too Long", description: "Set word/paragraph limits", example: "Add: \"Keep response under 150 words\" or \"Maximum 3 paragraphs\"" },
-  { icon: "palette", title: "Wrong Style", description: "Provide style examples", example: "\"Write in the style of this example: [paste sample text]\"" },
-  { icon: "megaphone", title: "Off-Brand", description: "Include brand voice guidelines", example: "\"Use friendly, casual tone. Avoid jargon. Address reader as 'you'.\"" }
-]} />
-
-### For Code Generation
-
-Code output can fail technically (syntax errors, wrong language features) or architecturally (poor patterns, missing cases). Technical issues need version/environment specifics; architectural issues need design guidance.
+Генерация контента часто даёт общие, не попадающие в цель или плохо отформатированные результаты. Исправление обычно включает более конкретные ограничения, предоставление конкретных примеров или явное определение голоса вашего бренда.
 
 <InfoGrid items={[
-  { icon: "code", title: "Syntax Errors", description: "Specify language version", example: "\"Use Python 3.11+ syntax with type hints\" or \"ES2022 JavaScript\"" },
-  { icon: "git-branch", title: "Wrong Approach", description: "Describe preferred patterns", example: "\"Use functional approach, avoid classes\" or \"Follow repository pattern\"" },
-  { icon: "shield", title: "Missing Edge Cases", description: "List scenarios to handle", example: "\"Handle: empty input, null values, network timeouts, invalid formats\"" },
-  { icon: "tag", title: "Poor Naming", description: "Include naming conventions", example: "\"Use camelCase for variables, PascalCase for classes, UPPER_SNAKE for constants\"" }
+  { icon: "target", title: "Слишком общий", description: "Добавьте конкретные ограничения и контекст", example: "\"Write about dogs\" → \"Write about golden retrievers for first-time owners, focusing on training and exercise needs\"" },
+  { icon: "scissors", title: "Слишком длинный", description: "Установите лимиты слов/абзацев", example: "Добавьте: \"Keep response under 150 words\" или \"Maximum 3 paragraphs\"" },
+  { icon: "palette", title: "Неправильный стиль", description: "Предоставьте примеры стиля", example: "\"Write in the style of this example: [paste sample text]\"" },
+  { icon: "megaphone", title: "Не соответствует бренду", description: "Включите рекомендации по голосу бренда", example: "\"Use friendly, casual tone. Avoid jargon. Address reader as 'you'.\"" }
 ]} />
 
-### For Analysis
+### Для генерации кода
 
-Analysis tasks often produce surface-level or unstructured results. Guide the model with specific frameworks (SWOT, Porter's Five Forces), request multiple viewpoints, or provide a template for the output structure.
+Код может давать сбои технически (синтаксические ошибки, неправильные возможности языка) или архитектурно (плохие паттерны, пропущенные случаи). Технические проблемы требуют указания версии/окружения; архитектурные проблемы требуют руководства по проектированию.
 
 <InfoGrid items={[
-  { icon: "layers", title: "Too Shallow", description: "Ask for specific frameworks", example: "\"Analyze using SWOT framework\" or \"Apply Porter's Five Forces\"" },
-  { icon: "scale", title: "Biased", description: "Request multiple perspectives", example: "\"Present arguments for and against\" or \"Include skeptic's viewpoint\"" },
-  { icon: "database", title: "Missing Data", description: "Specify what to analyze", example: "\"Focus on: market size, growth rate, key players, entry barriers\"" },
-  { icon: "layout", title: "Unstructured", description: "Provide analysis template", example: "\"Format as: Summary → Key Findings → Implications → Recommendations\"" }
+  { icon: "code", title: "Синтаксические ошибки", description: "Укажите версию языка", example: "\"Use Python 3.11+ syntax with type hints\" или \"ES2022 JavaScript\"" },
+  { icon: "git-branch", title: "Неправильный подход", description: "Опишите предпочтительные паттерны", example: "\"Use functional approach, avoid classes\" или \"Follow repository pattern\"" },
+  { icon: "shield", title: "Пропущены крайние случаи", description: "Перечислите сценарии для обработки", example: "\"Handle: empty input, null values, network timeouts, invalid formats\"" },
+  { icon: "tag", title: "Плохие названия", description: "Включите соглашения об именовании", example: "\"Use camelCase for variables, PascalCase for classes, UPPER_SNAKE for constants\"" }
 ]} />
 
-### For Q&A
+### Для анализа
 
-Question-answering can be too terse or too verbose, and may lack confidence indicators or sources. Specify the detail level you need and whether you want citations or uncertainty expressed.
+Задачи анализа часто дают поверхностные или неструктурированные результаты. Направляйте модель с помощью конкретных фреймворков (SWOT, пять сил Портера), запрашивайте несколько точек зрения или предоставьте шаблон для структуры вывода.
 
 <InfoGrid items={[
-  { icon: "plus", title: "Too Short", description: "Ask for elaboration", example: "\"Explain in detail with examples\" or \"Elaborate on each point\"" },
-  { icon: "minus", title: "Too Long", description: "Request concise answer", example: "\"Answer in 2-3 sentences\" or \"Give me the TL;DR\"" },
-  { icon: "help-circle", title: "Uncertain", description: "Ask for confidence level", example: "\"Rate your confidence 1-10\" or \"Note any assumptions made\"" },
-  { icon: "link", title: "Unsourced", description: "Request citations", example: "\"Cite sources for claims\" or \"Include references where possible\"" }
+  { icon: "layers", title: "Слишком поверхностно", description: "Запросите конкретные фреймворки", example: "\"Analyze using SWOT framework\" или \"Apply Porter's Five Forces\"" },
+  { icon: "scale", title: "Предвзятость", description: "Запросите несколько точек зрения", example: "\"Present arguments for and against\" или \"Include skeptic's viewpoint\"" },
+  { icon: "database", title: "Недостаточно данных", description: "Укажите, что анализировать", example: "\"Focus on: market size, growth rate, key players, entry barriers\"" },
+  { icon: "layout", title: "Нет структуры", description: "Предоставьте шаблон анализа", example: "\"Format as: Summary → Key Findings → Implications → Recommendations\"" }
 ]} />
 
-## The Feedback Loop Technique
+### Для вопросов и ответов
 
-Here's a meta-technique: use the model itself to help improve your prompts. Share what you tried, what you got, and what you wanted. The model can often suggest improvements you hadn't considered.
+Ответы на вопросы могут быть слишком краткими или слишком многословными, и могут не содержать индикаторов уверенности или источников. Укажите нужный уровень детализации и нужны ли вам цитаты или выражение неопределённости.
+
+<InfoGrid items={[
+  { icon: "plus", title: "Слишком коротко", description: "Попросите раскрыть тему", example: "\"Explain in detail with examples\" или \"Elaborate on each point\"" },
+  { icon: "minus", title: "Слишком длинно", description: "Запросите краткий ответ", example: "\"Answer in 2-3 sentences\" или \"Give me the TL;DR\"" },
+  { icon: "help-circle", title: "Неопределённость", description: "Попросите указать уровень уверенности", example: "\"Rate your confidence 1-10\" или \"Note any assumptions made\"" },
+  { icon: "link", title: "Нет источников", description: "Запросите цитирование", example: "\"Cite sources for claims\" или \"Include references where possible\"" }
+]} />
+
+## Техника обратной связи
+
+Вот мета-техника: используйте саму модель, чтобы помочь улучшить ваши промпты. Поделитесь тем, что вы попробовали, что получили и что хотели. Модель часто может предложить улучшения, о которых вы не подумали.
 
 ```
 I used this prompt:
@@ -279,9 +279,9 @@ I wanted something more [describe gap]. How should I modify
 my prompt to get better results?
 ```
 
-## A/B Testing Prompts
+## A/B-тестирование промптов
 
-For prompts that will be used repeatedly or at scale, don't just pick the first one that works. Test variations to find the most reliable and highest-quality approach.
+Для промптов, которые будут использоваться многократно или в большом масштабе, не выбирайте просто первый работающий вариант. Тестируйте вариации, чтобы найти наиболее надёжный и качественный подход.
 
 ```
 Prompt A: "Summarize this article in 3 bullet points."
@@ -289,45 +289,45 @@ Prompt B: "Extract the 3 most important insights from this article."
 Prompt C: "What are the key takeaways from this article? List 3."
 ```
 
-Run each multiple times, compare:
-- Consistency of output
-- Quality of information
-- Relevance to your needs
+Запустите каждый несколько раз, сравните:
+- Стабильность вывода
+- Качество информации
+- Релевантность вашим потребностям
 
-## When to Stop Iterating
+## Когда остановить итерации
 
-Perfection is the enemy of good enough. Know when your prompt is ready for use and when you're just polishing for diminishing returns.
+Совершенство — враг достаточно хорошего. Знайте, когда ваш промпт готов к использованию и когда вы просто полируете его с убывающей отдачей.
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Ready to Ship</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Готово к запуску</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Output consistently meets requirements</p>
-      <p className="m-0!">Edge cases are handled appropriately</p>
-      <p className="m-0!">Format is reliable and parseable</p>
-      <p className="m-0!">Further improvements show diminishing returns</p>
+      <p className="m-0!">Вывод стабильно соответствует требованиям</p>
+      <p className="m-0!">Крайние случаи обрабатываются корректно</p>
+      <p className="m-0!">Формат надёжен и поддаётся парсингу</p>
+      <p className="m-0!">Дальнейшие улучшения дают убывающую отдачу</p>
     </div>
   </div>
   <div className="border rounded-lg bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900">
-    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Keep Iterating</p>
+    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Продолжайте итерации</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Output is inconsistent across runs</p>
-      <p className="m-0!">Edge cases cause failures</p>
-      <p className="m-0!">Critical requirements are missed</p>
-      <p className="m-0!">You haven't tested enough variations</p>
+      <p className="m-0!">Вывод нестабилен при разных запусках</p>
+      <p className="m-0!">Крайние случаи вызывают сбои</p>
+      <p className="m-0!">Критические требования не выполняются</p>
+      <p className="m-0!">Вы не протестировали достаточно вариаций</p>
     </div>
   </div>
 </div>
 
-## Version Control for Prompts
+## Контроль версий для промптов
 
-Prompts are code. For any prompt used in production, treat it with the same rigor: version control, changelogs, and the ability to roll back if something breaks.
+Промпты — это код. Для любого промпта, используемого в продакшене, относитесь к нему с той же строгостью: контроль версий, журналы изменений и возможность отката, если что-то сломается.
 
-<Callout type="tip" title="Built-in Versioning">
-prompts.chat includes automatic version history for your prompts. Every edit is saved, so you can compare versions and restore previous iterations with one click.
+<Callout type="tip" title="Встроенное версионирование">
+prompts.chat включает автоматическую историю версий для ваших промптов. Каждое редактирование сохраняется, так что вы можете сравнивать версии и восстанавливать предыдущие итерации одним кликом.
 </Callout>
 
-For self-managed prompts, use a folder structure:
+Для самостоятельно управляемых промптов используйте структуру папок:
 
 ```
 prompts/
@@ -339,30 +339,30 @@ prompts/
 └── changelog.md    # Document changes
 ```
 
-## Summary
+## Резюме
 
-<Callout type="tip" title="Key Takeaways">
-Start simple, observe carefully, change one thing at a time, document what works, and know when to stop. The best prompts aren't written—they're discovered through systematic iteration.
+<Callout type="tip" title="Ключевые выводы">
+Начинайте просто, внимательно наблюдайте, меняйте по одной вещи за раз, документируйте, что работает, и знайте, когда остановиться. Лучшие промпты не пишутся — они открываются через систематические итерации.
 </Callout>
 
 <Quiz 
-  question="What's the best approach when refining a prompt that's producing wrong results?"
+  question="Какой лучший подход при доработке промпта, который даёт неправильные результаты?"
   options={[
-    "Rewrite the entire prompt from scratch",
-    "Add more examples until it works",
-    "Change one thing at a time and test each change",
-    "Make the prompt as long as possible"
+    "Переписать весь промпт с нуля",
+    "Добавлять примеры, пока не заработает",
+    "Менять по одной вещи за раз и тестировать каждое изменение",
+    "Сделать промпт как можно длиннее"
   ]}
   correctIndex={2}
-  explanation="Changing one thing at a time lets you isolate what works and what doesn't. If you change multiple things at once, you won't know which change fixed the problem or which made it worse."
+  explanation="Изменение по одной вещи за раз позволяет определить, что работает, а что нет. Если вы меняете несколько вещей одновременно, вы не узнаете, какое изменение исправило проблему, а какое её усугубило."
 />
 
-## Practice: Improve This Prompt
+## Практика: Улучшите этот промпт
 
-Try improving this weak prompt yourself. Edit it, then use AI to compare your version with the original:
+Попробуйте сами улучшить этот слабый промпт. Отредактируйте его, затем используйте ИИ, чтобы сравнить вашу версию с оригиналом:
 
 <BeforeAfterEditor
-  title="Refine This Email Prompt"
+  title="Доработайте этот промпт для email"
   badPrompt="Write an email."
   idealPrompt={`You are a professional business writer.
 
@@ -381,7 +381,7 @@ Requirements:
 - Keep under 150 words
 
 Format: Subject line + email body`}
-  task="Transform this vague email prompt into something that will produce a professional, effective result."
+  task="Превратите этот расплывчатый промпт для email в нечто, что даст профессиональный, эффективный результат."
 />
 
-In the next chapter, we'll explore JSON and YAML prompting for structured data applications.
+В следующей главе мы рассмотрим промптинг с JSON и YAML для приложений со структурированными данными.

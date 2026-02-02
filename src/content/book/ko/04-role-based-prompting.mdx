@@ -1,242 +1,242 @@
-Role-based prompting is one of the most powerful and widely-used techniques in prompt engineering. By assigning a specific role or persona to the AI, you can dramatically influence the quality, style, and relevance of responses.
+역할 기반 프롬프팅은 프롬프트 엔지니어링에서 가장 강력하고 널리 사용되는 기법 중 하나입니다. AI에게 특정 역할이나 페르소나를 부여함으로써 응답의 품질, 스타일, 관련성을 크게 향상시킬 수 있습니다.
 
-<Callout type="tip" title="The Power of Personas">
-Think of roles as filters for AI's vast knowledge. The right role focuses responses like a lens focuses light.
+<Callout type="tip" title="페르소나의 힘">
+역할을 AI의 방대한 지식에 대한 필터로 생각하세요. 적절한 역할은 렌즈가 빛을 집중시키는 것처럼 응답을 집중시킵니다.
 </Callout>
 
-## Why Roles Work
+## 역할이 효과적인 이유
 
-When you assign a role, you're essentially telling the model: "Filter your vast knowledge through this specific lens." The model adjusts its:
+역할을 부여하면, 본질적으로 모델에게 "당신의 방대한 지식을 이 특정 렌즈를 통해 필터링하세요"라고 말하는 것입니다. 모델은 다음을 조정합니다:
 
-- **Vocabulary**: Using terminology appropriate to the role
-- **Perspective**: Considering problems from that viewpoint
-- **Expertise depth**: Providing role-appropriate detail levels
-- **Communication style**: Matching how that role would communicate
+- **어휘**: 역할에 적합한 용어 사용
+- **관점**: 해당 시각에서 문제 고려
+- **전문성 깊이**: 역할에 적합한 세부 수준 제공
+- **커뮤니케이션 스타일**: 해당 역할이 소통하는 방식에 맞춤
 
-### The Technical Explanation
+### 기술적 설명
 
-LLMs work by predicting the most likely next token based on the context they're given. When you specify a role, you're fundamentally changing what "likely" means.
+LLM은 주어진 컨텍스트를 기반으로 가장 가능성 높은 다음 토큰을 예측하는 방식으로 작동합니다. 역할을 지정하면, "가능성"의 의미 자체를 근본적으로 바꾸는 것입니다.
 
-**Activating Relevant Knowledge**: The role primes specific regions of the model's learned associations. Saying "You are a doctor" activates medical terminology, diagnostic reasoning patterns, and clinical communication styles from the training data.
+**관련 지식 활성화**: 역할은 모델이 학습한 연관성의 특정 영역을 준비시킵니다. "당신은 의사입니다"라고 말하면 훈련 데이터에서 의학 용어, 진단적 추론 패턴, 임상 커뮤니케이션 스타일이 활성화됩니다.
 
-**Statistical Conditioning**: LLMs learned from millions of documents written by real experts. When you assign a role, the model conditions its probability distributions to match patterns it saw from that type of author.
+**통계적 조건화**: LLM은 실제 전문가들이 작성한 수백만 개의 문서에서 학습했습니다. 역할을 부여하면, 모델은 해당 유형의 저자에게서 본 패턴과 일치하도록 확률 분포를 조건화합니다.
 
-**Reducing Ambiguity**: Without a role, the model averages across all possible responders. With a role, it narrows to a specific subset, making responses more focused and consistent.
+**모호성 감소**: 역할이 없으면, 모델은 가능한 모든 응답자에 걸쳐 평균을 냅니다. 역할이 있으면, 특정 하위 집합으로 범위를 좁혀 응답을 더 집중적이고 일관성 있게 만듭니다.
 
-**Context Anchoring**: The role creates a persistent context anchor throughout the conversation. Every subsequent response is influenced by this initial framing.
+**컨텍스트 앵커링**: 역할은 대화 전체에 걸쳐 지속적인 컨텍스트 앵커를 생성합니다. 이후의 모든 응답은 이 초기 프레이밍의 영향을 받습니다.
 
-Think of it this way: if you ask "What should I do about this cough?" the model could respond as a doctor, a friend, a pharmacist, or a worried parent. Each would give different advice. By specifying the role upfront, you're telling the model which "voice" to use from its training data.
+이렇게 생각해 보세요: "이 기침에 대해 어떻게 해야 하나요?"라고 물으면, 모델은 의사, 친구, 약사, 또는 걱정하는 부모로서 응답할 수 있습니다. 각각 다른 조언을 줄 것입니다. 역할을 미리 지정함으로써, 훈련 데이터에서 어떤 "목소리"를 사용할지 모델에게 알려주는 것입니다.
 
-<Callout type="info" title="Why This Matters">
-The model isn't pretending or role-playing in a theatrical sense. It's statistically biasing its outputs toward patterns it learned from real experts, professionals, and specialists during training. A "doctor" role activates medical knowledge pathways; a "poet" role activates literary patterns.
+<Callout type="info" title="이것이 중요한 이유">
+모델은 연극적인 의미에서 역할을 연기하는 것이 아닙니다. 훈련 중에 실제 전문가, 프로페셔널, 스페셜리스트로부터 학습한 패턴을 향해 출력을 통계적으로 편향시키는 것입니다. "의사" 역할은 의학 지식 경로를 활성화하고, "시인" 역할은 문학적 패턴을 활성화합니다.
 </Callout>
 
-## Basic Role Patterns
+## 기본 역할 패턴
 
-These foundational patterns work across most use cases. Start with these templates and customize them for your needs.
+이러한 기초 패턴은 대부분의 사용 사례에서 작동합니다. 이 템플릿으로 시작하여 필요에 맞게 커스터마이즈하세요.
 
-### The Expert Pattern
+### 전문가 패턴
 
-The most versatile pattern. Specify the field of expertise and years of experience to get authoritative, in-depth responses. Works well for technical questions, analysis, and professional advice.
+가장 다재다능한 패턴입니다. 전문 분야와 경력 연수를 지정하여 권위 있고 심도 있는 응답을 받으세요. 기술적 질문, 분석, 전문적 조언에 잘 작동합니다.
 
 <TryIt compact prompt={`You are an expert \${field} with \${years:10} years of experience in \${specialty}.
 
 \${task}`} />
 
-### The Professional Pattern
+### 프로페셔널 패턴
 
-Ground the role in a real-world context by specifying a job title and organization type. This adds institutional knowledge and professional norms to the response.
+직책과 조직 유형을 지정하여 역할을 실제 세계의 맥락에 기반시킵니다. 이를 통해 응답에 기관의 지식과 전문적 규범이 추가됩니다.
 
 <TryIt compact prompt={`You are a \${profession} working at \${organization}.
 
 \${task}`} />
 
-### The Teacher Pattern
+### 교사 패턴
 
-Perfect for learning and explanations. Specifying the audience level ensures the response matches the learner's background, from beginners to advanced practitioners.
+학습과 설명에 완벽합니다. 청중 수준을 지정하면 초보자부터 고급 실무자까지 학습자의 배경에 맞는 응답을 보장합니다.
 
 <TryIt compact prompt={`You are a \${subject} teacher who specializes in explaining complex concepts to \${audience}.
 
 \${task}`} />
 
-## Advanced Role Constructions
+## 고급 역할 구성
 
-### Compound Roles
+### 복합 역할
 
-Combine multiple identities to get responses that blend different perspectives. This pediatrician-parent combination produces advice that's both medically sound and practically tested.
+여러 정체성을 결합하여 다양한 관점을 혼합한 응답을 얻으세요. 이 소아과 의사-부모 조합은 의학적으로 건전하고 실제로 검증된 조언을 생성합니다.
 
 <TryIt compact prompt={`You are a pediatrician who is also a parent of three children. You understand both the medical and practical aspects of childhood health issues. You communicate with empathy and without medical jargon.
 
 \${question}`} />
 
-### Situational Roles
+### 상황적 역할
 
-Place the role in a specific scenario to shape both content and tone. Here, the code review context makes the AI constructive and educational rather than just critical.
+역할을 특정 시나리오에 배치하여 내용과 톤 모두를 형성합니다. 여기서 코드 리뷰 컨텍스트는 AI가 단순히 비판적이기보다 건설적이고 교육적이 되도록 합니다.
 
 <TryIt compact prompt={`You are a senior developer conducting a code review for a junior team member. You want to be helpful and educational, not critical. You explain not just what to fix, but why.
 
 Code to review:
 \${code}`} />
 
-### Perspective Roles
+### 관점 역할
 
-Get feedback from a specific stakeholder's point of view. A VC perspective evaluates viability and scalability differently than a customer or engineer would.
+특정 이해관계자의 관점에서 피드백을 받으세요. VC 관점은 고객이나 엔지니어와는 다르게 실현 가능성과 확장성을 평가합니다.
 
 <TryIt compact prompt={`You are a venture capitalist evaluating startup pitches. You've seen thousands of pitches and can quickly identify strengths, weaknesses, and red flags. Be direct but constructive.
 
 Pitch: \${pitch}`} />
 
-## Role Categories and Examples
+## 역할 카테고리 및 예시
 
-Different domains benefit from different types of roles. Here are proven examples organized by category that you can adapt for your tasks.
+다양한 도메인은 다양한 유형의 역할에서 이점을 얻습니다. 여기에 작업에 맞게 조정할 수 있는 카테고리별로 정리된 검증된 예시가 있습니다.
 
-### Technical Roles
+### 기술 역할
 
-**Software Architect**: Best for system design decisions, technology choices, and architectural trade-offs. The focus on maintainability steers responses toward practical, long-term solutions.
+**소프트웨어 아키텍트**: 시스템 설계 결정, 기술 선택, 아키텍처 트레이드오프에 가장 적합합니다. 유지보수성에 대한 초점은 응답을 실용적이고 장기적인 솔루션으로 이끕니다.
 
 <TryIt compact prompt={`You are a software architect specializing in scalable distributed systems. You prioritize maintainability, performance, and team productivity in your recommendations.
 
 \${question}`} />
 
-**Security Specialist**: The attacker mindset is key here. This role produces threat-focused analysis that identifies vulnerabilities a defensive-only perspective might miss.
+**보안 전문가**: 공격자 마인드셋이 여기서 핵심입니다. 이 역할은 방어적 관점만으로는 놓칠 수 있는 취약점을 식별하는 위협 중심 분석을 생성합니다.
 
 <TryIt compact prompt={`You are a cybersecurity specialist who conducts penetration testing. You think like an attacker to identify vulnerabilities.
 
 Analyze: \${target}`} />
 
-**DevOps Engineer**: Ideal for deployment, automation, and infrastructure questions. The emphasis on reliability ensures production-ready recommendations.
+**DevOps 엔지니어**: 배포, 자동화, 인프라 질문에 이상적입니다. 안정성에 대한 강조는 프로덕션 준비가 된 권장 사항을 보장합니다.
 
 <TryIt compact prompt={`You are a DevOps engineer focused on CI/CD pipelines and infrastructure as code. You value automation and reliability.
 
 \${question}`} />
 
-### Creative Roles
+### 크리에이티브 역할
 
-**Copywriter**: The "award-winning" qualifier and conversion focus produce punchy, persuasive copy rather than generic marketing text.
+**카피라이터**: "수상 경력이 있는"이라는 수식어와 전환 초점은 일반적인 마케팅 텍스트가 아닌 간결하고 설득력 있는 카피를 생성합니다.
 
 <TryIt compact prompt={`You are an award-winning copywriter known for creating compelling headlines and persuasive content that drives conversions.
 
 Write copy for: \${product}`} />
 
-**Screenwriter**: Activates knowledge of dramatic structure, pacing, and dialogue conventions. Great for any narrative writing that needs tension and character voice.
+**시나리오 작가**: 극적 구조, 페이싱, 대화 규칙에 대한 지식을 활성화합니다. 긴장감과 캐릭터 보이스가 필요한 모든 내러티브 글쓰기에 훌륭합니다.
 
 <TryIt compact prompt={`You are a screenwriter who has written for popular TV dramas. You understand story structure, dialogue, and character development.
 
 Write: \${scene}`} />
 
-**UX Writer**: A specialized role for interface text. The focus on brevity and user guidance produces concise, action-oriented copy.
+**UX 라이터**: 인터페이스 텍스트를 위한 전문화된 역할입니다. 간결함과 사용자 안내에 대한 초점은 간결하고 행동 지향적인 카피를 생성합니다.
 
 <TryIt compact prompt={`You are a UX writer specializing in microcopy. You make interfaces feel human and guide users with minimal text.
 
 Write microcopy for: \${element}`} />
 
-### Analytical Roles
+### 분석 역할
 
-**Business Analyst**: Bridges the gap between technical and non-technical stakeholders. Useful for requirement gathering, spec writing, and identifying gaps in project plans.
+**비즈니스 분석가**: 기술 팀과 비기술 이해관계자 사이의 다리 역할을 합니다. 요구사항 수집, 명세서 작성, 프로젝트 계획의 빈틈 식별에 유용합니다.
 
 <TryIt compact prompt={`You are a business analyst who translates between technical teams and stakeholders. You clarify requirements and identify edge cases.
 
 Analyze: \${requirement}`} />
 
-**Research Scientist**: The emphasis on evidence and uncertainty acknowledgment produces balanced, well-sourced responses that distinguish facts from speculation.
+**연구 과학자**: 증거와 불확실성 인정에 대한 강조는 사실과 추측을 구별하는 균형 잡히고 잘 인용된 응답을 생성합니다.
 
 <TryIt compact prompt={`You are a research scientist who values empirical evidence and acknowledges uncertainty. You distinguish between established facts and hypotheses.
 
 Research question: \${question}`} />
 
-**Financial Analyst**: Combines quantitative analysis with risk assessment. The dual focus on returns and risk produces more balanced investment perspectives.
+**금융 분석가**: 정량 분석과 리스크 평가를 결합합니다. 수익과 리스크에 대한 이중 초점은 더 균형 잡힌 투자 관점을 생성합니다.
 
 <TryIt compact prompt={`You are a financial analyst who evaluates investments using fundamental and technical analysis. You consider risk alongside potential returns.
 
 Evaluate: \${investment}`} />
 
-### Educational Roles
+### 교육 역할
 
-**Socratic Tutor**: Instead of giving answers, this role asks guiding questions. Excellent for deeper learning and helping students develop critical thinking skills.
+**소크라테스식 튜터**: 답을 주는 대신, 이 역할은 안내하는 질문을 합니다. 심층 학습과 학생들이 비판적 사고 능력을 개발하도록 돕는 데 탁월합니다.
 
 <TryIt compact prompt={`You are a tutor using the Socratic method. Instead of giving answers directly, you guide students to discover answers through thoughtful questions.
 
 Topic: \${topic}`} />
 
-**Instructional Designer**: Structures learning for maximum retention. Use this role when you need to break down complex topics into teachable chunks with clear progression.
+**인스트럭셔널 디자이너**: 최대한의 기억 유지를 위해 학습을 구조화합니다. 복잡한 주제를 명확한 진행 순서와 함께 학습 가능한 덩어리로 나눠야 할 때 이 역할을 사용하세요.
 
 <TryIt compact prompt={`You are an instructional designer who creates engaging learning experiences. You break complex topics into digestible modules with clear learning objectives.
 
 Create curriculum for: \${topic}`} />
 
-## The Role Stack Technique
+## 역할 스택 기법
 
-For complex tasks, combine multiple role aspects into a single, layered identity. This technique stacks expertise, audience awareness, and style guidelines to create highly specialized responses.
+복잡한 작업의 경우, 여러 역할 측면을 단일하고 계층화된 정체성으로 결합합니다. 이 기법은 전문성, 청중 인식, 스타일 가이드라인을 쌓아 매우 전문화된 응답을 생성합니다.
 
-This example layers three elements: domain expertise (API documentation), audience (junior developers), and style guide (Google's conventions). Each layer constrains the output further.
+이 예시는 세 가지 요소를 계층화합니다: 도메인 전문성(API 문서), 청중(주니어 개발자), 스타일 가이드(Google의 규칙). 각 레이어가 출력을 더욱 제한합니다.
 
 <TryIt compact prompt={`You are a technical writer with expertise in API documentation. You write for developers who are new to REST APIs. Follow the Google developer documentation style guide: use second person ("you"), active voice, present tense, and keep sentences under 26 words.
 
 Document: \${apiEndpoint}`} />
 
-## Roles for Different Tasks
+## 다양한 작업을 위한 역할
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Code review</span>
-    <span className="text-muted-foreground">Senior developer + mentor</span>
+    <span className="font-semibold min-w-40">코드 리뷰</span>
+    <span className="text-muted-foreground">시니어 개발자 + 멘토</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Writing feedback</span>
-    <span className="text-muted-foreground">Editor + target audience member</span>
+    <span className="font-semibold min-w-40">글쓰기 피드백</span>
+    <span className="text-muted-foreground">편집자 + 타겟 독자층</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Business strategy</span>
-    <span className="text-muted-foreground">Consultant + industry expert</span>
+    <span className="font-semibold min-w-40">비즈니스 전략</span>
+    <span className="text-muted-foreground">컨설턴트 + 업계 전문가</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Learning new topic</span>
-    <span className="text-muted-foreground">Patient teacher + practitioner</span>
+    <span className="font-semibold min-w-40">새로운 주제 학습</span>
+    <span className="text-muted-foreground">인내심 있는 교사 + 실무자</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Creative writing</span>
-    <span className="text-muted-foreground">Specific genre author</span>
+    <span className="font-semibold min-w-40">창작 글쓰기</span>
+    <span className="text-muted-foreground">특정 장르 작가</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Technical explanation</span>
-    <span className="text-muted-foreground">Expert + communicator</span>
+    <span className="font-semibold min-w-40">기술 설명</span>
+    <span className="text-muted-foreground">전문가 + 커뮤니케이터</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Problem-solving</span>
-    <span className="text-muted-foreground">Domain specialist + generalist</span>
+    <span className="font-semibold min-w-40">문제 해결</span>
+    <span className="text-muted-foreground">도메인 전문가 + 제너럴리스트</span>
   </div>
 </div>
 
-## Anti-Patterns to Avoid
+## 피해야 할 안티패턴
 
-### Overly Generic Roles
-
-<Compare 
-  before={{ label: "Weak", content: "You are a helpful assistant." }}
-  after={{ label: "Better", content: "You are a helpful assistant specializing in Python development, particularly web applications with Flask and Django." }}
-/>
-
-### Conflicting Roles
+### 지나치게 일반적인 역할
 
 <Compare 
-  before={{ label: "Problematic", content: "You are a creative writer who always follows strict templates." }}
-  after={{ label: "Better", content: "You are a creative writer who works within established story structures while adding original elements." }}
+  before={{ label: "약함", content: "당신은 도움이 되는 어시스턴트입니다." }}
+  after={{ label: "더 나음", content: "당신은 Python 개발, 특히 Flask와 Django를 사용한 웹 애플리케이션을 전문으로 하는 도움이 되는 어시스턴트입니다." }}
 />
 
-### Unrealistic Expertise
+### 상충되는 역할
 
 <Compare 
-  before={{ label: "Problematic", content: "You are an expert in everything." }}
-  after={{ label: "Better", content: "You are a T-shaped professional: deep expertise in machine learning with broad knowledge of software engineering practices." }}
+  before={{ label: "문제 있음", content: "당신은 항상 엄격한 템플릿을 따르는 창작 작가입니다." }}
+  after={{ label: "더 나음", content: "당신은 확립된 스토리 구조 내에서 작업하면서 독창적인 요소를 추가하는 창작 작가입니다." }}
 />
 
-## Real-World Prompt Examples
+### 비현실적인 전문성
 
-### Technical Documentation
+<Compare 
+  before={{ label: "문제 있음", content: "당신은 모든 것에 대한 전문가입니다." }}
+  after={{ label: "더 나음", content: "당신은 T자형 전문가입니다: 머신러닝에 대한 깊은 전문성과 소프트웨어 엔지니어링 실무에 대한 폭넓은 지식을 갖추고 있습니다." }}
+/>
+
+## 실제 프롬프트 예시
+
+### 기술 문서
 
 <TryIt 
-  title="Technical Writer Role"
-  description="Try this technical documentation prompt with your own API endpoint."
+  title="테크니컬 라이터 역할"
+  description="이 기술 문서 프롬프트를 자신의 API 엔드포인트로 시도해 보세요."
   prompt={`You are a senior technical writer at a developer tools company. You have 10 years of experience writing API documentation, SDK guides, and developer tutorials.
 
 Your documentation style:
@@ -249,11 +249,11 @@ Your documentation style:
 Document this API endpoint: GET /api/users/:id - Returns user profile data`}
 />
 
-### Creative Writing
+### 창작 글쓰기
 
 <TryIt 
-  title="Novelist Role"
-  description="This role combines genre expertise with specific stylistic traits."
+  title="소설가 역할"
+  description="이 역할은 장르 전문성과 특정 스타일적 특성을 결합합니다."
   prompt={`You are a novelist who writes in the style of literary fiction with elements of magical realism. Your prose is known for:
 - Lyrical but accessible language
 - Deep psychological character portraits
@@ -263,11 +263,11 @@ Document this API endpoint: GET /api/users/:id - Returns user profile data`}
 Write the opening scene of a story about a librarian who discovers that books in her library are slowly changing their endings.`}
 />
 
-### Business Communication
+### 비즈니스 커뮤니케이션
 
 <TryIt 
-  title="Executive Coach Role"
-  description="This role helps with sensitive business communications."
+  title="이그제큐티브 코치 역할"
+  description="이 역할은 민감한 비즈니스 커뮤니케이션에 도움이 됩니다."
   prompt={`You are an executive communications coach who has worked with Fortune 500 CEOs. You help leaders communicate complex ideas simply and build trust with their teams.
 
 Review this message for a team meeting about budget cuts. Suggest improvements that:
@@ -279,13 +279,13 @@ Review this message for a team meeting about budget cuts. Suggest improvements t
 Draft message: "Due to budget constraints, we need to reduce project scope. Some initiatives will be paused."`}
 />
 
-## Combining Roles with Other Techniques
+## 역할과 다른 기법의 결합
 
-Roles work even better when combined with other prompting techniques:
+역할은 다른 프롬프팅 기법과 결합할 때 더욱 효과적입니다:
 
-### Role + Few-Shot
+### 역할 + Few-Shot
 
-Combine a role with an example to show exactly how the role should respond. The example teaches tone and format while the role provides context and expertise.
+역할과 예시를 결합하여 역할이 어떻게 응답해야 하는지 정확히 보여주세요. 예시는 톤과 형식을 가르치고, 역할은 컨텍스트와 전문성을 제공합니다.
 
 <TryIt compact prompt={`You are a customer support specialist trained to de-escalate angry customers.
 
@@ -296,9 +296,9 @@ You: "I completely understand your frustration, and I apologize for the delay. L
 Now respond to:
 Customer: "\${customerMessage}"`} />
 
-### Role + Chain of Thought
+### 역할 + Chain of Thought
 
-The detective role naturally encourages step-by-step reasoning. Combining roles with chain-of-thought produces more transparent, verifiable problem-solving.
+탐정 역할은 자연스럽게 단계별 추론을 유도합니다. 역할과 chain-of-thought를 결합하면 더 투명하고 검증 가능한 문제 해결이 가능합니다.
 
 <TryIt compact prompt={`You are a detective solving a logic puzzle. Think through each clue methodically, stating your reasoning at each step.
 
@@ -307,22 +307,22 @@ Clues:
 
 Solve step by step, explaining your deductions.`} />
 
-## Summary
+## 요약
 
-<Callout type="info" title="Key Takeaways">
-Role-based prompting is powerful because it focuses the model's vast knowledge, sets expectations for tone and style, provides implicit context, and makes outputs more consistent.
+<Callout type="info" title="핵심 요점">
+역할 기반 프롬프팅은 모델의 방대한 지식을 집중시키고, 톤과 스타일에 대한 기대를 설정하고, 암묵적 컨텍스트를 제공하고, 출력을 더 일관성 있게 만들기 때문에 강력합니다.
 </Callout>
 
 <Quiz 
-  question="What makes a role-based prompt more effective?"
+  question="역할 기반 프롬프트를 더 효과적으로 만드는 것은 무엇일까요?"
   options={[
-    "Using generic role titles like 'expert'",
-    "Adding specific expertise, experience, and perspective details",
-    "Keeping the role description as short as possible",
-    "Asking the AI to switch roles frequently"
+    "'전문가' 같은 일반적인 역할 제목 사용하기",
+    "구체적인 전문성, 경험, 관점 세부사항 추가하기",
+    "역할 설명을 가능한 짧게 유지하기",
+    "AI에게 역할을 자주 바꾸도록 요청하기"
   ]}
   correctIndex={1}
-  explanation="The more detailed and realistic the role, the better the results. Specificity helps the model understand exactly what knowledge, tone, and perspective to apply."
+  explanation="역할이 더 상세하고 현실적일수록 결과가 더 좋습니다. 구체성은 모델이 어떤 지식, 톤, 관점을 적용해야 하는지 정확히 이해하는 데 도움이 됩니다."
 />
 
-The key is **specificity**: the more detailed and realistic the role, the better the results. In the next chapter, we'll explore how to get consistent, structured outputs from your prompts.
+핵심은 **구체성**입니다: 역할이 더 상세하고 현실적일수록 결과가 더 좋습니다. 다음 장에서는 프롬프트에서 일관되고 구조화된 출력을 얻는 방법을 살펴보겠습니다.

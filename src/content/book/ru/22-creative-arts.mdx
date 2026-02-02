@@ -1,326 +1,326 @@
-AI is a powerful creative collaborator. This chapter covers prompting techniques for visual arts, music, game design, and other creative domains.
+ИИ — мощный творческий соратник. В этой главе рассматриваются техники промптинга для визуального искусства, музыки, игрового дизайна и других творческих областей.
 
-<Callout type="info" title="AI as Creative Partner">
-AI expands your creative possibilities—use it to explore variations, overcome blocks, and generate options. The creative vision and final decisions remain yours.
+<Callout type="info" title="ИИ как творческий партнёр">
+ИИ расширяет ваши творческие возможности — используйте его для изучения вариаций, преодоления творческих блоков и генерации идей. Творческое видение и окончательные решения остаются за вами.
 </Callout>
 
-## Visual Art & Design
+## Визуальное искусство и дизайн
 
-### Do's and Don'ts: Image Prompts
+### Что делать и чего избегать: промпты для изображений
 
 <Compare 
-  before={{ label: "❌ Vague prompt", content: "A wizard in a library" }}
-  after={{ label: "✓ Rich description", content: "A wise elderly wizard reading an ancient tome, sitting in a tower library at sunset, fantasy art style, warm golden lighting, contemplative mood, highly detailed, 4K, by Greg Rutkowski" }}
+  before={{ label: "❌ Размытый промпт", content: "Волшебник в библиотеке" }}
+  after={{ label: "✓ Богатое описание", content: "Мудрый пожилой волшебник читает древний фолиант, сидя в библиотеке башни на закате, стиль фэнтези-арт, тёплое золотистое освещение, созерцательное настроение, высокая детализация, 4K, в стиле Greg Rutkowski" }}
 />
 
-### Image Prompt Crafting
+### Создание промптов для изображений
 
-When working with image generation models (DALL-E, Midjourney, Stable Diffusion):
+При работе с моделями генерации изображений (DALL-E, Midjourney, Stable Diffusion):
 
-<TryIt compact prompt={`Create an image prompt for [concept].
+<TryIt compact prompt={`Создай промпт для изображения [концепция].
 
-Structure:
-[Subject] + [Action/Pose] + [Setting/Background] + [Style] + 
-[Lighting] + [Mood] + [Technical specs]
+Структура:
+[Субъект] + [Действие/Поза] + [Окружение/Фон] + [Стиль] + 
+[Освещение] + [Настроение] + [Технические характеристики]
 
-Example:
-"A wise elderly wizard reading an ancient tome, sitting in a 
-tower library at sunset, fantasy art style, warm golden lighting, 
-contemplative mood, highly detailed, 4K"`} />
+Пример:
+"Мудрый пожилой волшебник читает древний фолиант, сидя в 
+библиотеке башни на закате, стиль фэнтези-арт, тёплое золотистое 
+освещение, созерцательное настроение, высокая детализация, 4K"`} />
 
-### Art Direction
+### Арт-дирекшн
 
-<TryIt compact prompt={`Describe artwork for \${project:fantasy book cover}.
+<TryIt compact prompt={`Опиши художественное произведение для \${project:обложка книги в жанре фэнтези}.
 
-Include:
-1. **Composition** - arrangement of elements
-2. **Color palette** - specific colors and their relationships
-3. **Style reference** - similar artists/works/movements
-4. **Focal point** - where the eye should be drawn
-5. **Mood/Atmosphere** - emotional quality
-6. **Technical approach** - medium, technique
+Включи:
+1. **Композиция** — расположение элементов
+2. **Цветовая палитра** — конкретные цвета и их взаимосвязи
+3. **Стилистическая референция** — похожие художники/работы/направления
+4. **Фокусная точка** — куда должен притягиваться взгляд
+5. **Настроение/Атмосфера** — эмоциональное качество
+6. **Технический подход** — медиум, техника
 
-Purpose: \${purpose:illustration for book cover}`} />
+Назначение: \${purpose:иллюстрация для обложки книги}`} />
 
-### Design Critique
+### Критика дизайна
 
-<TryIt compact prompt={`Critique this design from a professional perspective.
+<TryIt compact prompt={`Оцени этот дизайн с профессиональной точки зрения.
 
-Design: \${design:a landing page with hero section, feature grid, and testimonials}
-Context: \${context:SaaS product for project management}
+Дизайн: \${design:лендинг с hero-секцией, сеткой функций и отзывами}
+Контекст: \${context:SaaS-продукт для управления проектами}
 
-Evaluate:
-1. **Visual hierarchy** - Is importance clear?
-2. **Balance** - Is it visually stable?
-3. **Contrast** - Do elements stand out appropriately?
-4. **Alignment** - Is it organized?
-5. **Repetition** - Is there consistency?
-6. **Proximity** - Are related items grouped?
+Оцени:
+1. **Визуальная иерархия** — Ясна ли важность элементов?
+2. **Баланс** — Визуально стабилен?
+3. **Контраст** — Элементы выделяются уместно?
+4. **Выравнивание** — Организован?
+5. **Повторение** — Есть последовательность?
+6. **Близость** — Связанные элементы сгруппированы?
 
-Provide:
-- Specific strengths
-- Areas for improvement
-- Actionable suggestions`} />
+Предоставь:
+- Конкретные сильные стороны
+- Области для улучшения
+- Практические рекомендации`} />
 
-## Creative Writing
+## Творческое письмо
 
-<Callout type="tip" title="Creative Constraint Principle">
-**Constraints fuel creativity.** A prompt like "write anything" produces generic results. Specific constraints like genre, tone, and structure force unexpected, interesting solutions.
+<Callout type="tip" title="Принцип творческих ограничений">
+**Ограничения питают креативность.** Промпт типа «напиши что-нибудь» даёт шаблонные результаты. Конкретные ограничения вроде жанра, тона и структуры заставляют искать неожиданные, интересные решения.
 </Callout>
 
-### Worldbuilding
+### Создание миров
 
-<TryIt compact prompt={`Help me build a world for \${project:a fantasy novel}.
+<TryIt compact prompt={`Помоги мне создать мир для \${project:фэнтезийный роман}.
 
-Genre: \${genre:dark fantasy}
-Scope: \${scope:a kingdom}
+Жанр: \${genre:тёмное фэнтези}
+Масштаб: \${scope:королевство}
 
-Develop:
-1. **Geography** - physical environment
-2. **History** - key events that shaped this world
-3. **Culture** - customs, values, daily life
-4. **Power structures** - who rules, how
-5. **Economy** - how people survive
-6. **Conflict** - sources of tension
-7. **Unique element** - what makes this world special
+Разработай:
+1. **География** — физическая среда
+2. **История** — ключевые события, сформировавшие этот мир
+3. **Культура** — обычаи, ценности, повседневная жизнь
+4. **Структуры власти** — кто правит, как
+5. **Экономика** — как люди выживают
+6. **Конфликт** — источники напряжения
+7. **Уникальный элемент** — что делает этот мир особенным
 
-Start with broad strokes, then detail one aspect deeply.`} />
+Начни с общих штрихов, затем детально проработай один аспект.`} />
 
-### Plot Development
+### Разработка сюжета
 
-<TryIt compact prompt={`Help me develop a plot for \${storyConcept:a heist gone wrong}.
+<TryIt compact prompt={`Помоги мне разработать сюжет для \${storyConcept:ограбление, которое пошло не по плану}.
 
-Genre: \${genre:thriller}
-Tone: \${tone:dark with moments of dark humor}
-Length: \${length:novel}
+Жанр: \${genre:триллер}
+Тон: \${tone:мрачный с элементами чёрного юмора}
+Объём: \${length:роман}
 
-Using \${structure:three-act} structure:
+Используя \${structure:трёхактную} структуру:
 
-1. **Setup** - world, character, normal life
-2. **Inciting incident** - what disrupts normalcy
-3. **Rising action** - escalating challenges
-4. **Midpoint** - major shift or revelation
-5. **Crisis** - darkest moment
-6. **Climax** - confrontation
-7. **Resolution** - new normal
+1. **Завязка** — мир, персонаж, обычная жизнь
+2. **Завязывающее событие** — что нарушает обычный порядок
+3. **Развитие действия** — нарастающие испытания
+4. **Середина** — крупный поворот или откровение
+5. **Кризис** — самый тёмный момент
+6. **Кульминация** — противостояние
+7. **Развязка** — новая норма
 
-For each beat, suggest specific scenes.`} />
+Для каждого бита предложи конкретные сцены.`} />
 
-### Dialogue Writing
+### Написание диалогов
 
-<TryIt compact prompt={`Write dialogue between \${characters:two siblings} about \${topic:their estranged father returning}.
+<TryIt compact prompt={`Напиши диалог между \${characters:братом и сестрой} о \${topic:возвращении их отчуждённого отца}.
 
-Character A: \${characterA:older sister, protective, pragmatic, wants to move on}
-Character B: \${characterB:younger brother, hopeful, emotional, wants to reconnect}
-Relationship: \${relationship:close but with different coping styles}
-Subtext: \${subtext:unspoken resentment about who bore more burden}
+Персонаж А: \${characterA:старшая сестра, заботливая, прагматичная, хочет двигаться дальше}
+Персонаж Б: \${characterB:младший брат, надеющийся, эмоциональный, хочет восстановить связь}
+Отношения: \${relationship:близкие, но с разными стратегиями преодоления}
+Подтекст: \${subtext:невысказанная обида о том, кто нёс большее бремя}
 
-Guidelines:
-- Each character has distinct voice
-- Dialogue reveals character, not just information
-- Include beats (actions/reactions)
-- Build tension or develop relationship
-- Show, don't tell emotions`} />
+Рекомендации:
+- У каждого персонажа свой голос
+- Диалог раскрывает характер, а не просто передаёт информацию
+- Включи биты (действия/реакции)
+- Наращивай напряжение или развивай отношения
+- Показывай, а не рассказывай эмоции`} />
 
-## Music & Audio
+## Музыка и аудио
 
-### Song Structure
+### Структура песни
 
-<TryIt compact prompt={`Help me structure a song.
+<TryIt compact prompt={`Помоги мне структурировать песню.
 
-Genre: \${genre:indie folk}
-Mood: \${mood:bittersweet nostalgia}
-Tempo: \${tempo:moderate, around 90 BPM}
-Theme/Message: \${theme:looking back on a hometown you've outgrown}
+Жанр: \${genre:инди-фолк}
+Настроение: \${mood:горько-сладкая ностальгия}
+Темп: \${tempo:умеренный, около 90 BPM}
+Тема/Посыл: \${theme:оглядываясь на родной город, который ты перерос}
 
-Provide:
-1. **Structure** - verse/chorus/bridge arrangement
-2. **Verse 1** - lyrical concept, 4-8 lines
-3. **Chorus** - hook concept, 4 lines
-4. **Verse 2** - development, 4-8 lines
-5. **Bridge** - contrast/shift, 4 lines
-6. **Chord progression suggestion**
-7. **Melodic direction notes**`} />
+Предоставь:
+1. **Структура** — расположение куплет/припев/бридж
+2. **Куплет 1** — концепция текста, 4-8 строк
+3. **Припев** — концепция хука, 4 строки
+4. **Куплет 2** — развитие, 4-8 строк
+5. **Бридж** — контраст/смена, 4 строки
+6. **Предложение аккордовой прогрессии**
+7. **Заметки по мелодическому направлению**`} />
 
-### Sound Design Description
+### Описание звукового дизайна
 
-<TryIt compact prompt={`Describe a sound design for \${scene:a character entering an abandoned space station}.
+<TryIt compact prompt={`Опиши звуковой дизайн для \${scene:персонаж входит на заброшенную космическую станцию}.
 
-Context: \${context:protagonist discovers the station has been empty for decades}
-Emotion to evoke: \${emotion:eerie wonder mixed with dread}
-Medium: \${medium:video game}
+Контекст: \${context:главный герой обнаруживает, что станция пустовала десятилетиями}
+Эмоция для создания: \${emotion:жутковатое удивление, смешанное со страхом}
+Медиум: \${medium:видеоигра}
 
-Layer by layer:
-1. **Foundation** - ambient/background
-2. **Mid-ground** - environmental sounds
-3. **Foreground** - focal sounds
-4. **Accents** - punctuation sounds
-5. **Music** - score suggestions
+Послойно:
+1. **Основа** — эмбиент/фон
+2. **Средний план** — звуки окружения
+3. **Передний план** — фокусные звуки
+4. **Акценты** — пунктуационные звуки
+5. **Музыка** — предложения по партитуре
 
-Describe sounds in evocative terms, not just names.`} />
+Описывай звуки образными терминами, а не просто названиями.`} />
 
-## Game Design
+## Игровой дизайн
 
-### Game Mechanic Design
+### Дизайн игровой механики
 
-<TryIt compact prompt={`Design a game mechanic for \${gameType:a puzzle platformer}.
+<TryIt compact prompt={`Разработай игровую механику для \${gameType:головоломка-платформер}.
 
-Core loop: \${coreLoop:manipulate gravity to solve spatial puzzles}
-Player motivation: \${motivation:mastery and discovery}
-Skill involved: \${skill:spatial reasoning and timing}
+Основной цикл: \${coreLoop:манипулирование гравитацией для решения пространственных головоломок}
+Мотивация игрока: \${motivation:мастерство и открытия}
+Задействованный навык: \${skill:пространственное мышление и тайминг}
 
-Describe:
-1. **The mechanic** - how it works
-2. **Player input** - what they control
-3. **Feedback** - how they know the result
-4. **Progression** - how it evolves/deepens
-5. **Balance considerations**
-6. **Edge cases** - unusual scenarios`} />
+Опиши:
+1. **Механика** — как она работает
+2. **Ввод игрока** — что он контролирует
+3. **Обратная связь** — как он узнаёт результат
+4. **Прогрессия** — как она развивается/углубляется
+5. **Соображения по балансу**
+6. **Крайние случаи** — необычные сценарии`} />
 
-### Level Design
+### Дизайн уровней
 
-<TryIt compact prompt={`Design a level for \${gameType:a stealth action game}.
+<TryIt compact prompt={`Разработай уровень для \${gameType:стелс-экшн игра}.
 
-Setting: \${setting:corporate headquarters at night}
-Objectives: \${objectives:infiltrate the server room and extract data}
-Difficulty: \${difficulty:mid-game, player has basic abilities}
+Сеттинг: \${setting:штаб-квартира корпорации ночью}
+Цели: \${objectives:проникнуть в серверную и извлечь данные}
+Сложность: \${difficulty:середина игры, у игрока есть базовые способности}
 
-Include:
-1. **Layout overview** - spatial description
-2. **Pacing graph** - tension over time
-3. **Challenges** - obstacles and how to overcome
-4. **Rewards** - what player gains
-5. **Secrets** - optional discoveries
-6. **Teaching moments** - skill introduction
-7. **Environmental storytelling** - narrative through design`} />
+Включи:
+1. **Обзор планировки** — пространственное описание
+2. **График темпа** — напряжение во времени
+3. **Испытания** — препятствия и способы их преодоления
+4. **Награды** — что получает игрок
+5. **Секреты** — необязательные открытия
+6. **Обучающие моменты** — введение навыков
+7. **Повествование через окружение** — нарратив через дизайн`} />
 
-### Character/Enemy Design
+### Дизайн персонажей/врагов
 
-<TryIt compact prompt={`Design a \${entityType:boss enemy} for \${game:a dark fantasy action RPG}.
+<TryIt compact prompt={`Разработай \${entityType:босса-врага} для \${game:экшн-RPG в жанре тёмного фэнтези}.
 
-Role: \${role:mid-game boss}
-Context: \${context:guards a corrupted forest temple}
+Роль: \${role:босс середины игры}
+Контекст: \${context:охраняет осквернённый лесной храм}
 
-Define:
-1. **Visual concept** - appearance description
-2. **Abilities** - what they can do
-3. **Behavior patterns** - how they act
-4. **Weaknesses** - vulnerabilities
-5. **Personality** - if relevant
-6. **Lore/Backstory** - world integration
-7. **Player strategy** - how to interact/defeat`} />
+Определи:
+1. **Визуальная концепция** — описание внешности
+2. **Способности** — что он может делать
+3. **Паттерны поведения** — как он действует
+4. **Слабости** — уязвимости
+5. **Личность** — если уместно
+6. **Лор/Предыстория** — интеграция в мир
+7. **Стратегия игрока** — как взаимодействовать/победить`} />
 
-## Brainstorming & Ideation
+## Брейншторминг и генерация идей
 
-### Creative Brainstorm
+### Творческий брейншторм
 
-<TryIt compact prompt={`Brainstorm ideas for \${project:a mobile game about mindfulness}.
+<TryIt compact prompt={`Сгенерируй идеи для \${project:мобильная игра об осознанности}.
 
-Constraints:
-- \${constraint1:must be playable in 2-minute sessions}
-- \${constraint2:no violence or competition}
-- \${constraint3:nature themes}
+Ограничения:
+- \${constraint1:должна играться сессиями по 2 минуты}
+- \${constraint2:без насилия или соревнования}
+- \${constraint3:тематика природы}
 
-Generate:
-1. **10 conventional ideas** - solid, expected
-2. **5 unusual ideas** - unexpected angles
-3. **3 wild ideas** - boundary-pushing
-4. **1 combination** - merge best elements
+Сгенерируй:
+1. **10 обычных идей** — надёжные, ожидаемые
+2. **5 необычных идей** — неожиданные подходы
+3. **3 дикие идеи** — раздвигающие границы
+4. **1 комбинация** — объединение лучших элементов
 
-For each, one sentence description + why it works.
-Don't self-censor—quantity over quality first.`} />
+Для каждой — описание в одно предложение + почему это работает.
+Не занимайся самоцензурой — сначала количество, а не качество.`} />
 
-### Creative Constraints
+### Творческие ограничения
 
-<TryIt compact prompt={`Give me creative constraints for \${projectType:writing a short story}.
+<TryIt compact prompt={`Дай мне творческие ограничения для \${projectType:написание короткого рассказа}.
 
-I want constraints that:
-- Force unexpected choices
-- Eliminate obvious solutions
-- Create productive limitations
+Мне нужны ограничения, которые:
+- Заставляют делать неожиданный выбор
+- Исключают очевидные решения
+- Создают продуктивные рамки
 
-Format:
-1. Constraint - Why it helps creativity
+Формат:
+1. Ограничение — Почему оно помогает креативности
 2. ...
 
-Then show one example of how applying these constraints 
-transforms a generic concept into something interesting.`} />
+Затем покажи один пример того, как применение этих ограничений 
+превращает шаблонную концепцию в нечто интересное.`} />
 
-### Style Exploration
+### Исследование стилей
 
-<TryIt compact prompt={`Explore different styles for \${concept:a coffee shop logo}.
+<TryIt compact prompt={`Исследуй разные стили для \${concept:логотип кофейни}.
 
-Show how this concept would manifest in:
-1. **Minimalist** - stripped to essence
-2. **Maximalist** - abundant and detailed
-3. **Retro 1950s** - period-specific
-4. **Futuristic** - forward-looking
-5. **Folk/Traditional** - cultural roots
-6. **Abstract** - non-representational
-7. **Surrealist** - dreamlike logic
+Покажи, как эта концепция проявится в:
+1. **Минимализм** — сведённый к сути
+2. **Максимализм** — обильный и детальный
+3. **Ретро 1950-х** — специфичный для эпохи
+4. **Футуризм** — устремлённый в будущее
+5. **Фолк/Традиционный** — культурные корни
+6. **Абстрактный** — нерепрезентативный
+7. **Сюрреализм** — логика сновидений
 
-For each, describe key characteristics and example.`} />
+Для каждого опиши ключевые характеристики и пример.`} />
 
-## Prompt Templates from prompts.chat
+## Шаблоны промптов с prompts.chat
 
-### Act as a Creative Director
+### Выступи в роли креативного директора
 
-<TryIt compact prompt={`I want you to act as a creative director. I will describe creative projects and you will develop creative visions, guide aesthetic decisions, and ensure conceptual coherence. Draw on art history, design principles, and cultural trends. Help me make bold creative choices with clear rationale.`} />
+<TryIt compact prompt={`Я хочу, чтобы ты выступил в роли креативного директора. Я буду описывать творческие проекты, а ты будешь разрабатывать креативные концепции, направлять эстетические решения и обеспечивать концептуальную целостность. Опирайся на историю искусства, принципы дизайна и культурные тенденции. Помоги мне принимать смелые творческие решения с чётким обоснованием.`} />
 
-### Act as a Worldbuilder
+### Выступи в роли создателя миров
 
-<TryIt compact prompt={`I want you to act as a worldbuilder. Help me create rich, consistent fictional worlds with detailed histories, cultures, and systems. Ask probing questions to deepen the world. Point out inconsistencies and suggest solutions. Make the world feel lived-in and believable.`} />
+<TryIt compact prompt={`Я хочу, чтобы ты выступил в роли создателя миров. Помоги мне создавать богатые, последовательные вымышленные миры с детальной историей, культурами и системами. Задавай глубокие вопросы для углубления мира. Указывай на несоответствия и предлагай решения. Сделай мир живым и достоверным.`} />
 
-### Act as a Dungeon Master
+### Выступи в роли мастера подземелий
 
-<TryIt compact prompt={`I want you to act as a Dungeon Master for a tabletop RPG. Create engaging scenarios, describe vivid settings, roleplay NPCs with distinct personalities, and respond dynamically to player choices. Balance challenge with fun, and keep the narrative compelling.`} />
+<TryIt compact prompt={`Я хочу, чтобы ты выступил в роли мастера подземелий для настольной ролевой игры. Создавай увлекательные сценарии, описывай яркие локации, отыгрывай NPC с выраженными личностями и динамично реагируй на выбор игроков. Балансируй между сложностью и удовольствием, поддерживай захватывающий нарратив.`} />
 
-## Creative Collaboration Tips
+## Советы по творческому сотрудничеству
 
-### Building on Ideas
+### Развитие идей
 
-<TryIt compact prompt={`I have this creative idea: \${idea:a mystery novel set in a space station where the AI is the detective}
+<TryIt compact prompt={`У меня есть творческая идея: \${idea:детективный роман на космической станции, где ИИ является детективом}
 
-Help me develop it by:
-1. What's working well
-2. Questions to explore
-3. Unexpected directions
-4. Potential challenges
-5. First three development steps
+Помоги мне развить её:
+1. Что работает хорошо
+2. Вопросы для исследования
+3. Неожиданные направления
+4. Потенциальные сложности
+5. Первые три шага разработки
 
-Don't replace my vision—enhance it.`} />
+Не заменяй моё видение — улучши его.`} />
 
-### Creative Feedback
+### Творческая обратная связь
 
-<TryIt compact prompt={`Give me feedback on this creative work:
+<TryIt compact prompt={`Дай мне обратную связь по этой творческой работе:
 
-\${work:paste your creative work here}
+\${work:вставь сюда свою творческую работу}
 
-As a \${perspective:fellow creator}:
-1. What resonates most strongly
-2. What feels underdeveloped
-3. What's confusing or unclear
-4. One bold suggestion
-5. What would make this unforgettable
+С позиции \${perspective:коллеги-творца}:
+1. Что резонирует сильнее всего
+2. Что кажется недоработанным
+3. Что сбивает с толку или непонятно
+4. Одно смелое предложение
+5. Что сделало бы это незабываемым
 
-Be honest but constructive.`} />
+Будь честен, но конструктивен.`} />
 
-## Summary
+## Резюме
 
-<Callout type="tip" title="Key Techniques">
-Provide enough structure to guide without constraining, embrace specificity (vague = generic), include references and inspirations, request variations and alternatives, and maintain your creative vision while exploring possibilities.
+<Callout type="tip" title="Ключевые техники">
+Давайте достаточно структуры для направления без ограничения, принимайте специфичность (размытость = шаблонность), включайте референсы и источники вдохновения, запрашивайте варианты и альтернативы, и сохраняйте своё творческое видение, исследуя возможности.
 </Callout>
 
 <Quiz 
-  question="Why do specific constraints often produce better creative results than open-ended prompts?"
+  question="Почему конкретные ограничения часто дают лучшие творческие результаты, чем открытые промпты?"
   options={[
-    "AI can only follow strict instructions",
-    "Constraints force unexpected solutions and eliminate obvious choices",
-    "Open-ended prompts are too difficult for AI",
-    "Constraints make the output shorter"
+    "ИИ может следовать только строгим инструкциям",
+    "Ограничения заставляют искать неожиданные решения и исключают очевидный выбор",
+    "Открытые промпты слишком сложны для ИИ",
+    "Ограничения делают результат короче"
   ]}
   correctIndex={1}
-  explanation="Paradoxically, limitations spark creativity. When obvious solutions are eliminated, you're forced to explore unexpected directions. 'Write a story' produces clichés; 'Write a mystery set in a submarine, told backwards, in under 500 words' produces something unique."
+  explanation="Парадоксально, но ограничения разжигают креативность. Когда очевидные решения исключены, вы вынуждены исследовать неожиданные направления. «Напиши рассказ» даёт клише; «Напиши детектив на подводной лодке, рассказанный в обратном порядке, не более 500 слов» создаёт что-то уникальное."
 />
 
-AI is a collaborator, not a replacement for creative vision. Use it to explore, generate options, and overcome blocks—but the creative decisions remain yours.
+ИИ — это соратник, а не замена творческому видению. Используйте его для исследования, генерации вариантов и преодоления творческих блоков — но творческие решения остаются за вами.

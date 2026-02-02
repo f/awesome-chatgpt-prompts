@@ -1,373 +1,373 @@
-Beyond structure, effective prompt engineering is guided by principles—fundamental truths that apply across models, tasks, and contexts. Master these principles, and you'll be able to adapt to any prompting challenge.
+Помимо структуры, эффективная инженерия промптов руководствуется принципами — фундаментальными истинами, которые применимы ко всем моделям, задачам и контекстам. Освойте эти принципы, и вы сможете адаптироваться к любому вызову в составлении промптов.
 
-<Callout type="info" title="The 8 Core Principles">
-These principles apply to every AI model and every task. Learn them once, use them everywhere.
+<Callout type="info" title="8 ключевых принципов">
+Эти принципы применимы к любой модели ИИ и любой задаче. Изучите их один раз — используйте везде.
 </Callout>
 
-## Principle 1: Clarity Over Cleverness
+## Принцип 1: Ясность важнее изобретательности
 
-The best prompts are clear, not clever. AI models are literal interpreters—they work with exactly what you give them.
+Лучшие промпты ясные, а не хитроумные. Модели ИИ — буквальные интерпретаторы: они работают именно с тем, что вы им даёте.
 
-### Be Explicit
-
-<Compare 
-  before={{ label: "Implicit (problematic)", content: "Make this better." }}
-  after={{ label: "Explicit (effective)", content: "Improve this email by:\n1. Making the subject line more compelling\n2. Shortening paragraphs to 2-3 sentences max\n3. Adding a clear call-to-action at the end" }}
-/>
-
-### Avoid Ambiguity
-
-Words can have multiple meanings. Choose precise language.
+### Будьте явными
 
 <Compare 
-  before={{ label: "Ambiguous", content: "Give me a short summary.\n(How short? 1 sentence? 1 paragraph? 1 page?)" }}
-  after={{ label: "Precise", content: "Summarize in exactly 3 bullet points, each under 20 words." }}
+  before={{ label: "Неявно (проблематично)", content: "Сделай это лучше." }}
+  after={{ label: "Явно (эффективно)", content: "Улучши это письмо следующим образом:\n1. Сделай тему письма более привлекательной\n2. Сократи абзацы до 2-3 предложений максимум\n3. Добавь чёткий призыв к действию в конце" }}
 />
 
-### State the Obvious
+### Избегайте двусмысленности
 
-What's obvious to you isn't obvious to the model. Spell out assumptions.
+Слова могут иметь несколько значений. Выбирайте точные формулировки.
+
+<Compare 
+  before={{ label: "Двусмысленно", content: "Дай мне краткое резюме.\n(Насколько краткое? 1 предложение? 1 абзац? 1 страница?)" }}
+  after={{ label: "Точно", content: "Сделай резюме ровно из 3 пунктов, каждый не более 20 слов." }}
+/>
+
+### Проговаривайте очевидное
+
+То, что очевидно для вас, не очевидно для модели. Явно указывайте предположения.
 
 ```
-You're helping me write a cover letter.
+Ты помогаешь мне написать сопроводительное письмо.
 
-Important context:
-- I'm applying for a Software Engineer position at Google
-- I have 5 years of experience in Python and distributed systems
-- The role requires leadership experience (I've led a team of 4)
-- I want to emphasize my open-source contributions
+Важный контекст:
+- Я подаю заявку на должность Software Engineer в Google
+- У меня 5 лет опыта работы с Python и распределёнными системами
+- Должность требует опыта руководства (я руководил командой из 4 человек)
+- Я хочу подчеркнуть свой вклад в open-source проекты
 ```
 
-## Principle 2: Specificity Yields Quality
+## Принцип 2: Конкретность даёт качество
 
-Vague inputs produce vague outputs. Specific inputs produce specific, useful outputs.
+Расплывчатые запросы дают расплывчатые ответы. Конкретные запросы дают конкретные, полезные ответы.
 
-### The Specificity Ladder
+### Лестница конкретности
 
 <SpecificitySpectrum levels={[
-  { level: "Level 1", text: "Write about climate change" },
-  { level: "Level 2", text: "Write an article about climate change effects" },
-  { level: "Level 3", text: "Write a 500-word article about how climate change affects coral reefs" },
-  { level: "Level 4", text: "Write a 500-word article explaining how rising ocean temperatures cause coral bleaching, aimed at high school students, with 2 specific examples from the Great Barrier Reef, in an engaging but scientifically accurate tone" }
+  { level: "Уровень 1", text: "Напиши про изменение климата" },
+  { level: "Уровень 2", text: "Напиши статью о последствиях изменения климата" },
+  { level: "Уровень 3", text: "Напиши статью на 500 слов о том, как изменение климата влияет на коралловые рифы" },
+  { level: "Уровень 4", text: "Напиши статью на 500 слов, объясняющую, как повышение температуры океана вызывает обесцвечивание кораллов, для старшеклассников, с 2 конкретными примерами из Большого Барьерного рифа, в увлекательном, но научно точном тоне" }
 ]} />
 
-Each level adds specificity and dramatically improves output quality.
+Каждый уровень добавляет конкретности и значительно улучшает качество результата.
 
-### Specify These Elements
+### Указывайте эти элементы
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Audience</span>
-    <span className="text-muted-foreground">Who will read/use this?</span>
+    <span className="font-semibold min-w-24">Аудитория</span>
+    <span className="text-muted-foreground">Кто будет это читать/использовать?</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Length</span>
-    <span className="text-muted-foreground">How long/short should it be?</span>
+    <span className="font-semibold min-w-24">Объём</span>
+    <span className="text-muted-foreground">Какой длины должен быть текст?</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Tone</span>
-    <span className="text-muted-foreground">Formal? Casual? Technical?</span>
+    <span className="font-semibold min-w-24">Тон</span>
+    <span className="text-muted-foreground">Формальный? Неформальный? Технический?</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Format</span>
-    <span className="text-muted-foreground">Prose? List? Table? Code?</span>
+    <span className="font-semibold min-w-24">Формат</span>
+    <span className="text-muted-foreground">Текст? Список? Таблица? Код?</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Scope</span>
-    <span className="text-muted-foreground">What to include/exclude?</span>
+    <span className="font-semibold min-w-24">Охват</span>
+    <span className="text-muted-foreground">Что включить/исключить?</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Purpose</span>
-    <span className="text-muted-foreground">What should this accomplish?</span>
+    <span className="font-semibold min-w-24">Цель</span>
+    <span className="text-muted-foreground">Чего должен достичь результат?</span>
   </div>
 </div>
 
-## Principle 3: Context Is King
+## Принцип 3: Контекст — всему голова
 
-Models have no memory, no access to your files, and no knowledge of your situation. Everything relevant must be in the prompt.
+Модели не имеют памяти, доступа к вашим файлам и знания о вашей ситуации. Всё важное должно быть в промпте.
 
-### Provide Sufficient Context
+### Предоставляйте достаточный контекст
 
 <Compare 
-  before={{ label: "Insufficient context", content: "Why isn't my function working?" }}
-  after={{ label: "Sufficient context", content: "I have a Python function that should filter a list of dictionaries by a specific key value. It's returning an empty list when it should return 3 items.\n\nFunction:\ndef filter_items(items, key, value):\n    return [item for item in items if item[key] = value]\n\nCall: filter_items(items, 'status', 'active')\nExpected: 2 items, Got: empty list" }}
+  before={{ label: "Недостаточно контекста", content: "Почему моя функция не работает?" }}
+  after={{ label: "Достаточно контекста", content: "У меня есть функция на Python, которая должна фильтровать список словарей по определённому значению ключа. Она возвращает пустой список, хотя должна вернуть 3 элемента.\n\nФункция:\ndef filter_items(items, key, value):\n    return [item for item in items if item[key] = value]\n\nВызов: filter_items(items, 'status', 'active')\nОжидалось: 2 элемента, Получено: пустой список" }}
 />
 
-### The Context Checklist
+### Чек-лист контекста
 
-<Callout type="tip" title="Before You Submit">
-Ask yourself: Would a smart stranger understand this request? If not, add more context.
+<Callout type="tip" title="Перед отправкой">
+Спросите себя: поймёт ли умный незнакомец этот запрос? Если нет — добавьте больше контекста.
 </Callout>
 
 <Checklist 
-  title="Context Checklist"
+  title="Чек-лист контекста"
   items={[
-    { text: "Does the model know what I'm working on?" },
-    { text: "Does it know my goal?" },
-    { text: "Does it have all necessary information?" },
-    { text: "Does it understand the constraints?" },
-    { text: "Would a smart stranger understand this request?" }
+    { text: "Знает ли модель, над чем я работаю?" },
+    { text: "Знает ли она мою цель?" },
+    { text: "Есть ли у неё вся необходимая информация?" },
+    { text: "Понимает ли она ограничения?" },
+    { text: "Поймёт ли умный незнакомец этот запрос?" }
   ]}
 />
 
-## Principle 4: Guide, Don't Just Ask
+## Принцип 4: Направляйте, а не просто спрашивайте
 
-Don't just ask for an answer—guide the model toward the answer you want.
+Не просто просите ответ — направляйте модель к нужному вам результату.
 
-### Use Instructional Framing
+### Используйте инструктивную формулировку
 
 <Compare 
-  before={{ label: "Just Asking", content: "What are the pros and cons of microservices?" }}
-  after={{ label: "Guiding", content: "List 5 advantages and 5 disadvantages of microservices architecture.\n\nFor each point:\n- State the point clearly in one sentence\n- Provide a brief explanation (2-3 sentences)\n- Give a concrete example\n\nConsider perspectives of: small startups, large enterprises, and teams transitioning from monoliths." }}
+  before={{ label: "Просто вопрос", content: "Каковы плюсы и минусы микросервисов?" }}
+  after={{ label: "С направлением", content: "Перечисли 5 преимуществ и 5 недостатков микросервисной архитектуры.\n\nДля каждого пункта:\n- Сформулируй его чётко в одном предложении\n- Дай краткое объяснение (2-3 предложения)\n- Приведи конкретный пример\n\nУчти точки зрения: небольших стартапов, крупных предприятий и команд, переходящих с монолита." }}
 />
 
-### Provide Reasoning Scaffolds
+### Предоставляйте каркас для рассуждений
 
-For complex tasks, guide the reasoning process:
+Для сложных задач направляйте процесс рассуждения:
 
 <TryIt 
-  title="Reasoning Scaffold Example"
-  description="This prompt guides the AI through a systematic decision-making process."
-  prompt={`I need to choose between PostgreSQL and MongoDB for my e-commerce project.
+  title="Пример каркаса для рассуждений"
+  description="Этот промпт проводит ИИ через систематический процесс принятия решений."
+  prompt={`Мне нужно выбрать между PostgreSQL и MongoDB для моего проекта электронной коммерции.
 
-Think through this systematically:
-1. First, list the typical requirements for an e-commerce database
-2. Then, evaluate each database against each requirement
-3. Consider trade-offs specific to my use case
-4. Make a recommendation with clear justification`}
+Продумай это систематически:
+1. Сначала перечисли типичные требования к базе данных для электронной коммерции
+2. Затем оцени каждую базу данных по каждому требованию
+3. Рассмотри компромиссы, специфичные для моего случая
+4. Дай рекомендацию с чётким обоснованием`}
 />
 
-## Principle 5: Iterate and Refine
+## Принцип 5: Итерируйте и улучшайте
 
-Prompt engineering is an iterative process. Your first prompt is rarely your best.
+Инженерия промптов — итеративный процесс. Ваш первый промпт редко бывает лучшим.
 
-### The Iteration Cycle
+### Цикл итерации
 
 ```
-1. Write initial prompt
-2. Review output
-3. Identify gaps or issues
-4. Refine prompt
-5. Repeat until satisfied
+1. Напишите начальный промпт
+2. Изучите результат
+3. Определите пробелы или проблемы
+4. Улучшите промпт
+5. Повторяйте до удовлетворительного результата
 ```
 
-### Common Refinements
+### Типичные улучшения
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Too verbose</span>
-    <span className="text-muted-foreground">Add "Be concise" or length limits</span>
+    <span className="font-semibold min-w-32">Слишком многословно</span>
+    <span className="text-muted-foreground">Добавьте «Будь кратким» или ограничения по объёму</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Too vague</span>
-    <span className="text-muted-foreground">Add specific examples or constraints</span>
+    <span className="font-semibold min-w-32">Слишком расплывчато</span>
+    <span className="text-muted-foreground">Добавьте конкретные примеры или ограничения</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Wrong format</span>
-    <span className="text-muted-foreground">Specify exact output structure</span>
+    <span className="font-semibold min-w-32">Неправильный формат</span>
+    <span className="text-muted-foreground">Укажите точную структуру вывода</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Missing aspects</span>
-    <span className="text-muted-foreground">Add "Make sure to include..."</span>
+    <span className="font-semibold min-w-32">Упущены аспекты</span>
+    <span className="text-muted-foreground">Добавьте «Обязательно включи...»</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Wrong tone</span>
-    <span className="text-muted-foreground">Specify audience and style</span>
+    <span className="font-semibold min-w-32">Неправильный тон</span>
+    <span className="text-muted-foreground">Укажите аудиторию и стиль</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Inaccurate</span>
-    <span className="text-muted-foreground">Request citations or step-by-step reasoning</span>
+    <span className="font-semibold min-w-32">Неточно</span>
+    <span className="text-muted-foreground">Запросите ссылки или пошаговые рассуждения</span>
   </div>
 </div>
 
-### Keep a Prompt Journal
+### Ведите журнал промптов
 
-Document what works:
+Документируйте, что работает:
 ```
-Task: Code review
-Version 1: "Review this code" → Too generic
-Version 2: Added specific review criteria → Better
-Version 3: Added example of good review → Excellent
-Final: [Save successful prompt as template]
+Задача: Ревью кода
+Версия 1: "Сделай ревью этого кода" → Слишком общо
+Версия 2: Добавлены конкретные критерии ревью → Лучше
+Версия 3: Добавлен пример хорошего ревью → Отлично
+Финал: [Сохраните успешный промпт как шаблон]
 ```
 
-## Principle 6: Leverage the Model's Strengths
+## Принцип 6: Используйте сильные стороны модели
 
-Work with how models are trained, not against them.
+Работайте с тем, как модели обучены, а не против этого.
 
-### Models Want to Be Helpful
+### Модели хотят быть полезными
 
-Frame requests as things a helpful assistant would naturally do:
+Формулируйте запросы так, как бы это естественно делал полезный помощник:
 
 <Compare 
-  before={{ label: "Against the grain", content: "I know you can't do this, but try to..." }}
-  after={{ label: "With the grain", content: "Help me understand...\nI'm working on X and need assistance with...\nCould you walk me through..." }}
+  before={{ label: "Против природы модели", content: "Я знаю, что ты не можешь это сделать, но попробуй..." }}
+  after={{ label: "В согласии с моделью", content: "Помоги мне разобраться...\nЯ работаю над X и мне нужна помощь с...\nМожешь ли ты провести меня через..." }}
 />
 
-### Models Excel at Patterns
+### Модели отлично работают с паттернами
 
-If you need consistent output, show the pattern:
+Если вам нужен согласованный вывод, покажите паттерн:
 
 <TryIt 
-  title="Pattern Example"
-  description="This prompt shows the AI exactly what format you want for book recommendations."
-  prompt={`Recommend 3 science fiction books. Format each recommendation as:
+  title="Пример паттерна"
+  description="Этот промпт показывает ИИ точный формат, который вы хотите получить для рекомендаций книг."
+  prompt={`Порекомендуй 3 научно-фантастические книги. Оформи каждую рекомендацию так:
 
-📚 **[Title]** by [Author]
-*[Genre] | [Publication Year]*
-[2-sentence description]
-Why you'll love it: [1 sentence hook]
+📚 **[Название]** — [Автор]
+*[Жанр] | [Год публикации]*
+[Описание в 2 предложениях]
+Почему вам понравится: [1 предложение-крючок]
 
 ---`}
 />
 
-### Models Can Role-Play
+### Модели умеют играть роли
 
-Use personas to access different "modes" of response:
-
-```
-As a devil's advocate, argue against my proposal...
-As a supportive mentor, help me improve...
-As a skeptical investor, question this business plan...
-```
-
-## Principle 7: Control Output Structure
-
-Structured outputs are more useful than free-form text.
-
-### Request Specific Formats
+Используйте персоны для доступа к разным «режимам» ответа:
 
 ```
-Return your analysis as:
-
-SUMMARY: [1 sentence]
-
-KEY FINDINGS:
-• [Finding 1]
-• [Finding 2]
-• [Finding 3]
-
-RECOMMENDATION: [1-2 sentences]
-
-CONFIDENCE: [Low/Medium/High] because [reason]
+Как адвокат дьявола, выступи против моего предложения...
+Как поддерживающий наставник, помоги мне улучшить...
+Как скептически настроенный инвестор, подвергни сомнению этот бизнес-план...
 ```
 
-### Use Delimiters
+## Принцип 7: Контролируйте структуру вывода
 
-Clearly separate sections of your prompt:
+Структурированный вывод полезнее свободного текста.
 
-```
-### CONTEXT ###
-[Your context here]
-
-### TASK ###
-[Your task here]
-
-### FORMAT ###
-[Desired format here]
-```
-
-### Request Machine-Readable Output
-
-For programmatic use:
+### Запрашивайте конкретные форматы
 
 ```
-Return only valid JSON, no explanation:
+Верни свой анализ в таком виде:
+
+РЕЗЮМЕ: [1 предложение]
+
+КЛЮЧЕВЫЕ ВЫВОДЫ:
+• [Вывод 1]
+• [Вывод 2]
+• [Вывод 3]
+
+РЕКОМЕНДАЦИЯ: [1-2 предложения]
+
+УВЕРЕННОСТЬ: [Низкая/Средняя/Высокая], потому что [причина]
+```
+
+### Используйте разделители
+
+Чётко разделяйте секции вашего промпта:
+
+```
+### КОНТЕКСТ ###
+[Ваш контекст здесь]
+
+### ЗАДАЧА ###
+[Ваша задача здесь]
+
+### ФОРМАТ ###
+[Желаемый формат здесь]
+```
+
+### Запрашивайте машиночитаемый вывод
+
+Для программного использования:
+
+```
+Верни только валидный JSON, без объяснений:
 {
   "decision": "approve" | "reject" | "review",
   "confidence": 0.0-1.0,
-  "reasons": ["string array"]
+  "reasons": ["массив строк"]
 }
 ```
 
-## Principle 8: Verify and Validate
+## Принцип 8: Проверяйте и валидируйте
 
-Never blindly trust model outputs, especially for important tasks.
+Никогда не доверяйте слепо выводу модели, особенно для важных задач.
 
-### Ask for Reasoning
-
-```
-Solve this problem and show your work step by step.
-After solving, verify your answer by [checking method].
-```
-
-### Request Multiple Perspectives
+### Просите объяснить рассуждения
 
 ```
-Give me three different approaches to solve this problem.
-For each, explain the trade-offs.
+Реши эту задачу и покажи свою работу пошагово.
+После решения проверь свой ответ с помощью [метод проверки].
 ```
 
-### Build in Self-Checking
+### Запрашивайте несколько точек зрения
 
 ```
-After generating the code, review it for:
-- Syntax errors
-- Edge cases
-- Security vulnerabilities
-List any issues found.
+Дай мне три разных подхода к решению этой проблемы.
+Для каждого объясни компромиссы.
 ```
 
-## Summary: The Principles at a Glance
+### Встраивайте самопроверку
+
+```
+После генерации кода проверь его на:
+- Синтаксические ошибки
+- Граничные случаи
+- Уязвимости безопасности
+Перечисли найденные проблемы.
+```
+
+## Резюме: Принципы одним взглядом
 
 <PrinciplesSummary />
 
 <Quiz 
-  question="Which principle suggests you should include all relevant background information in your prompt?"
+  question="Какой принцип предлагает включать всю релевантную фоновую информацию в промпт?"
   options={[
-    "Clarity Over Cleverness",
-    "Specificity Yields Quality",
-    "Context Is King",
-    "Iterate and Refine"
+    "Ясность важнее изобретательности",
+    "Конкретность даёт качество",
+    "Контекст — всему голова",
+    "Итерируйте и улучшайте"
   ]}
   correctIndex={2}
-  explanation="Context Is King emphasizes that AI models have no memory between sessions and cannot read your mind. Including relevant background, constraints, and goals helps the model understand your needs."
+  explanation="Принцип «Контекст — всему голова» подчёркивает, что модели ИИ не имеют памяти между сессиями и не могут читать ваши мысли. Включение релевантного фона, ограничений и целей помогает модели понять ваши потребности."
 />
 
-## Practice: Fill in the Blanks
+## Практика: Заполните пропуски
 
-Test your understanding of the core principles by completing this prompt template:
+Проверьте своё понимание ключевых принципов, заполнив этот шаблон промпта:
 
 <FillInTheBlank
-  title="Apply the Principles"
-  description="Fill in the blanks to create a well-structured prompt — write anything you want!"
+  title="Применяем принципы"
+  description="Заполните пропуски, чтобы создать хорошо структурированный промпт — пишите что угодно!"
   useAI={true}
   openEnded={true}
-  template={`You are a {{role}} with expertise in {{expertise}}.
+  template={`Ты — {{role}} с экспертизой в {{expertise}}.
 
-Context: I'm working on {{context}}.
+Контекст: Я работаю над {{context}}.
 
-Task: {{task}}
+Задача: {{task}}
 
-Constraints:
-- Keep your response under {{length}} words
-- Focus only on {{focus}}
+Ограничения:
+- Держи ответ в пределах {{length}} слов
+- Сосредоточься только на {{focus}}
 
-Format: Return your answer as {{format}}.`}
+Формат: Верни ответ в виде {{format}}.`}
   blanks={[
-    { id: "role", correctAnswers: [], hint: "What professional role should the AI assume?", context: "A job title or professional role" },
-    { id: "expertise", correctAnswers: [], hint: "What specific domain knowledge is needed?", context: "A skill or domain that matches the role" },
-    { id: "context", correctAnswers: [], hint: "What's the project or situation?", context: "A project that someone with this expertise would work on" },
-    { id: "task", correctAnswers: [], hint: "What specific action should the AI take?", context: "An action appropriate for the role and context" },
-    { id: "length", correctAnswers: [], hint: "How long should the response be?", context: "A number (word count)" },
-    { id: "focus", correctAnswers: [], hint: "What aspect should be prioritized?", context: "A quality or aspect relevant to the task" },
-    { id: "format", correctAnswers: [], hint: "How should the output be structured?", context: "An output format type" }
+    { id: "role", correctAnswers: [], hint: "Какую профессиональную роль должен взять на себя ИИ?", context: "Должность или профессиональная роль" },
+    { id: "expertise", correctAnswers: [], hint: "Какие специфические знания в предметной области нужны?", context: "Навык или область, соответствующая роли" },
+    { id: "context", correctAnswers: [], hint: "Над каким проектом или ситуацией вы работаете?", context: "Проект, над которым работал бы человек с такой экспертизой" },
+    { id: "task", correctAnswers: [], hint: "Какое конкретное действие должен выполнить ИИ?", context: "Действие, подходящее для роли и контекста" },
+    { id: "length", correctAnswers: [], hint: "Какой длины должен быть ответ?", context: "Число (количество слов)" },
+    { id: "focus", correctAnswers: [], hint: "На каком аспекте следует сосредоточиться?", context: "Качество или аспект, релевантный задаче" },
+    { id: "format", correctAnswers: [], hint: "Как должен быть структурирован вывод?", context: "Тип формата вывода" }
   ]}
-  explanation="A well-structured prompt includes: a clear role (Principle 1), sufficient context (Principle 3), specific task (Principle 2), constraints (Principle 4), and output format (Principle 5). The AI checks if your choices are internally consistent."
+  explanation="Хорошо структурированный промпт включает: чёткую роль (Принцип 1), достаточный контекст (Принцип 3), конкретную задачу (Принцип 2), ограничения (Принцип 4) и формат вывода (Принцип 5). ИИ проверяет, согласуются ли ваши выборы между собой."
 />
 
 <InteractiveChecklist
-  title="Principles Checklist"
+  title="Чек-лист принципов"
   items={[
-    { id: "clarity", label: "Clarity Over Cleverness", description: "Is your prompt explicit and unambiguous?" },
-    { id: "specificity", label: "Specificity Yields Quality", description: "Have you included audience, length, tone, and format?" },
-    { id: "context", label: "Context Is King", description: "Does the prompt include all necessary background information?" },
-    { id: "examples", label: "Examples Beat Explanations", description: "Have you shown what you want, not just described it?" },
-    { id: "constraints", label: "Constraints Focus Output", description: "Are there clear boundaries on scope and format?" },
-    { id: "iteration", label: "Iterate and Refine", description: "Are you prepared to improve based on results?" },
-    { id: "persona", label: "Persona Shapes Perspective", description: "Does the AI know what role to play?" },
-    { id: "verify", label: "Verify and Validate", description: "Have you built in checks for accuracy?" }
+    { id: "clarity", label: "Ясность важнее изобретательности", description: "Ваш промпт явный и недвусмысленный?" },
+    { id: "specificity", label: "Конкретность даёт качество", description: "Вы указали аудиторию, объём, тон и формат?" },
+    { id: "context", label: "Контекст — всему голова", description: "Промпт включает всю необходимую фоновую информацию?" },
+    { id: "examples", label: "Примеры лучше объяснений", description: "Вы показали, что хотите, а не только описали?" },
+    { id: "constraints", label: "Ограничения фокусируют вывод", description: "Есть чёткие границы по охвату и формату?" },
+    { id: "iteration", label: "Итерируйте и улучшайте", description: "Вы готовы улучшать на основе результатов?" },
+    { id: "persona", label: "Персона формирует перспективу", description: "ИИ знает, какую роль играть?" },
+    { id: "verify", label: "Проверяйте и валидируйте", description: "Вы встроили проверки на точность?" }
   ]}
 />
 
-These principles form the foundation for everything that follows. In Part II, we'll apply them to specific techniques that dramatically enhance prompt effectiveness.
+Эти принципы составляют основу для всего последующего. Во второй части мы применим их к конкретным техникам, которые значительно повышают эффективность промптов.

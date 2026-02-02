@@ -1,59 +1,59 @@
-The prompts you write shape how AI behaves. A well-crafted prompt can educate, assist, and empower. A careless one can deceive, discriminate, or cause harm. As prompt engineers, we're not just users—we're designers of AI behavior, and that comes with real responsibility.
+여러분이 작성하는 프롬프트는 AI의 행동 방식을 형성합니다. 잘 만들어진 프롬프트는 교육하고, 지원하며, 역량을 강화할 수 있습니다. 부주의한 프롬프트는 속이고, 차별하거나, 해를 끼칠 수 있습니다. 프롬프트 엔지니어로서 우리는 단순한 사용자가 아니라 AI 행동의 설계자이며, 그에 따른 실질적인 책임이 있습니다.
 
-This chapter isn't about rules imposed from above. It's about understanding the impact of our choices and building habits that lead to AI use we can be proud of.
+이 장은 위에서 부과된 규칙에 관한 것이 아닙니다. 우리 선택의 영향을 이해하고, 자랑스러워할 수 있는 AI 사용으로 이끄는 습관을 구축하는 것에 관한 것입니다.
 
-<Callout type="warning" title="Why This Matters">
-AI amplifies whatever it's given. A biased prompt produces biased outputs at scale. A deceptive prompt enables deception at scale. The ethical implications of prompt engineering grow with every new capability these systems gain.
+<Callout type="warning" title="왜 중요한가">
+AI는 주어진 것을 증폭시킵니다. 편향된 프롬프트는 편향된 결과물을 대규모로 생산합니다. 기만적인 프롬프트는 대규모 기만을 가능하게 합니다. 프롬프트 엔지니어링의 윤리적 함의는 이러한 시스템이 새로운 기능을 얻을 때마다 커집니다.
 </Callout>
 
-## Ethical Foundations
+## 윤리적 기반
 
-Every decision in prompt engineering connects to a few core principles:
-
-<InfoGrid items={[
-  { label: "Honesty", description: "Don't use AI to deceive people or create misleading content", example: "No fake reviews, impersonation, or manufactured 'evidence'", exampleType: "text", color: "blue" },
-  { label: "Fairness", description: "Actively work to avoid perpetuating biases and stereotypes", example: "Test prompts across demographics, request diverse perspectives", exampleType: "text", color: "purple" },
-  { label: "Transparency", description: "Be clear about AI involvement when it matters", example: "Disclose AI assistance in published work, professional contexts", exampleType: "text", color: "green" },
-  { label: "Privacy", description: "Protect personal information in prompts and outputs", example: "Anonymize data, avoid including PII, understand data policies", exampleType: "text", color: "amber" },
-  { label: "Safety", description: "Design prompts that prevent harmful outputs", example: "Build in guardrails, test for edge cases, handle refusals gracefully", exampleType: "text", color: "red" },
-  { label: "Accountability", description: "Take responsibility for what your prompts produce", example: "Review outputs, fix issues, maintain human oversight", exampleType: "text", color: "cyan" }
-]} />
-
-### The Prompt Engineer's Role
-
-You have more influence than you might realize:
-
-- **What AI produces**: Your prompts determine the content, tone, and quality of outputs
-- **How AI interacts**: Your system prompts shape personality, boundaries, and user experience
-- **What safeguards exist**: Your design choices determine what the AI will and won't do
-- **How mistakes are handled**: Your error handling determines whether failures are graceful or harmful
-
-## Avoiding Harmful Outputs
-
-The most fundamental ethical obligation is preventing your prompts from causing harm.
-
-### Categories of Harmful Content
+프롬프트 엔지니어링의 모든 결정은 몇 가지 핵심 원칙과 연결됩니다:
 
 <InfoGrid items={[
-  { label: "Violence & Harm", description: "Instructions that could lead to physical harm", example: "Weapons creation, self-harm, violence against others", exampleType: "text", color: "red" },
-  { label: "Illegal Activities", description: "Content that facilitates breaking laws", example: "Fraud schemes, hacking instructions, drug synthesis", exampleType: "text", color: "red" },
-  { label: "Harassment & Hate", description: "Content targeting individuals or groups", example: "Discriminatory content, doxxing, targeted harassment", exampleType: "text", color: "red" },
-  { label: "Misinformation", description: "Deliberately false or misleading content", example: "Fake news, health misinformation, conspiracy content", exampleType: "text", color: "red" },
-  { label: "Privacy Violations", description: "Exposing or exploiting personal information", example: "Revealing private data, stalking assistance", exampleType: "text", color: "red" },
-  { label: "Exploitation", description: "Content that exploits vulnerable individuals", example: "CSAM, non-consensual intimate content, scams targeting elderly", exampleType: "text", color: "red" }
+  { label: "정직", description: "AI를 사용해 사람들을 속이거나 오해의 소지가 있는 콘텐츠를 만들지 마세요", example: "가짜 리뷰, 사칭, 조작된 '증거' 금지", exampleType: "text", color: "blue" },
+  { label: "공정성", description: "편견과 고정관념을 영속시키지 않도록 적극적으로 노력하세요", example: "다양한 인구 집단에서 프롬프트 테스트, 다양한 관점 요청", exampleType: "text", color: "purple" },
+  { label: "투명성", description: "중요한 상황에서 AI 참여에 대해 명확히 하세요", example: "출판물, 전문적 맥락에서 AI 지원 공개", exampleType: "text", color: "green" },
+  { label: "프라이버시", description: "프롬프트와 출력물에서 개인정보를 보호하세요", example: "데이터 익명화, PII 포함 금지, 데이터 정책 이해", exampleType: "text", color: "amber" },
+  { label: "안전", description: "유해한 출력을 방지하는 프롬프트를 설계하세요", example: "안전장치 구축, 엣지 케이스 테스트, 거부를 우아하게 처리", exampleType: "text", color: "red" },
+  { label: "책임", description: "프롬프트가 생성하는 것에 대해 책임을 지세요", example: "출력물 검토, 문제 수정, 인간 감독 유지", exampleType: "text", color: "cyan" }
 ]} />
 
-<Callout type="warning" title="What is CSAM?">
-CSAM stands for **Child Sexual Abuse Material**. Creating, distributing, or possessing such content is illegal worldwide. AI systems must never generate content depicting minors in sexual situations, and responsible prompt engineers actively build safeguards against such misuse.
+### 프롬프트 엔지니어의 역할
+
+여러분은 생각보다 더 많은 영향력을 가지고 있습니다:
+
+- **AI가 생산하는 것**: 여러분의 프롬프트가 출력물의 콘텐츠, 톤, 품질을 결정합니다
+- **AI가 상호작용하는 방식**: 여러분의 시스템 프롬프트가 성격, 경계, 사용자 경험을 형성합니다
+- **존재하는 안전장치**: 여러분의 설계 선택이 AI가 할 것과 하지 않을 것을 결정합니다
+- **실수 처리 방법**: 여러분의 오류 처리가 실패가 우아할지 해로울지를 결정합니다
+
+## 유해한 출력 피하기
+
+가장 근본적인 윤리적 의무는 프롬프트가 해를 끼치지 않도록 방지하는 것입니다.
+
+### 유해한 콘텐츠의 범주
+
+<InfoGrid items={[
+  { label: "폭력 및 피해", description: "신체적 해로 이어질 수 있는 지침", example: "무기 제작, 자해, 타인에 대한 폭력", exampleType: "text", color: "red" },
+  { label: "불법 활동", description: "법률 위반을 용이하게 하는 콘텐츠", example: "사기 계획, 해킹 지침, 약물 합성", exampleType: "text", color: "red" },
+  { label: "괴롭힘 및 혐오", description: "개인이나 집단을 대상으로 하는 콘텐츠", example: "차별적 콘텐츠, 신상 공개, 표적 괴롭힘", exampleType: "text", color: "red" },
+  { label: "허위정보", description: "의도적으로 거짓이거나 오해의 소지가 있는 콘텐츠", example: "가짜 뉴스, 건강 허위정보, 음모론 콘텐츠", exampleType: "text", color: "red" },
+  { label: "프라이버시 침해", description: "개인정보를 노출하거나 악용", example: "개인 데이터 공개, 스토킹 지원", exampleType: "text", color: "red" },
+  { label: "착취", description: "취약한 개인을 착취하는 콘텐츠", example: "CSAM, 비동의 친밀한 콘텐츠, 노인 대상 사기", exampleType: "text", color: "red" }
+]} />
+
+<Callout type="warning" title="CSAM이란 무엇인가?">
+CSAM은 **아동 성적 학대 자료(Child Sexual Abuse Material)**를 의미합니다. 이러한 콘텐츠의 생성, 배포 또는 소유는 전 세계적으로 불법입니다. AI 시스템은 미성년자를 성적 상황에서 묘사하는 콘텐츠를 절대 생성해서는 안 되며, 책임감 있는 프롬프트 엔지니어는 이러한 오용에 대한 안전장치를 적극적으로 구축합니다.
 </Callout>
 
-### Building Safety Into Prompts
+### 프롬프트에 안전 구축하기
 
-When building AI systems, include explicit safety guidelines:
+AI 시스템을 구축할 때 명시적인 안전 지침을 포함하세요:
 
 <TryIt 
-  title="Safety-First System Prompt"
-  description="A template for building safety guidelines into your AI systems."
+  title="안전 우선 시스템 프롬프트"
+  description="AI 시스템에 안전 지침을 구축하기 위한 템플릿입니다."
   prompt={`You are a helpful assistant for \${purpose}.
 
 ## SAFETY GUIDELINES
@@ -78,13 +78,13 @@ When building AI systems, include explicit safety guidelines:
 Now, please help the user with: \${userRequest}`}
 />
 
-### The Intent vs. Impact Framework
+### 의도 대 영향 프레임워크
 
-Not every sensitive request is malicious. Use this framework for ambiguous cases:
+모든 민감한 요청이 악의적인 것은 아닙니다. 모호한 경우에 이 프레임워크를 사용하세요:
 
 <TryIt 
-  title="Ethical Edge Case Analyzer"
-  description="Work through ambiguous requests to determine the appropriate response."
+  title="윤리적 엣지 케이스 분석기"
+  description="모호한 요청을 검토하여 적절한 응답을 결정합니다."
   prompt={`I received this request that might be sensitive:
 
 "\${sensitiveRequest}"
@@ -108,24 +108,24 @@ Based on this analysis:
 - If declining, how should I phrase it helpfully?`}
 />
 
-## Addressing Bias
+## 편향 다루기
 
-AI models inherit biases from their training data—historical inequities, representation gaps, cultural assumptions, and linguistic patterns. As prompt engineers, we can either amplify these biases or actively counteract them.
+AI 모델은 훈련 데이터에서 편향을 상속받습니다—역사적 불평등, 대표성 격차, 문화적 가정, 언어적 패턴. 프롬프트 엔지니어로서 우리는 이러한 편향을 증폭시키거나 적극적으로 대응할 수 있습니다.
 
-### How Bias Manifests
+### 편향이 나타나는 방식
 
 <InfoGrid items={[
-  { label: "Default Assumptions", description: "The model assumes certain demographics for roles", example: "Doctors defaulting to male, nurses to female", exampleType: "text", color: "amber" },
-  { label: "Stereotyping", description: "Reinforcing cultural stereotypes in descriptions", example: "Associating certain ethnicities with specific traits", exampleType: "text", color: "amber" },
-  { label: "Representation Gaps", description: "Some groups are underrepresented or misrepresented", example: "Limited accurate information about minority cultures", exampleType: "text", color: "amber" },
-  { label: "Western-Centric Views", description: "Perspectives skewed toward Western culture and values", example: "Assuming Western norms are universal", exampleType: "text", color: "amber" }
+  { label: "기본 가정", description: "모델이 역할에 대해 특정 인구 통계를 가정함", example: "의사는 기본적으로 남성, 간호사는 여성으로 가정", exampleType: "text", color: "amber" },
+  { label: "고정관념화", description: "설명에서 문화적 고정관념을 강화", example: "특정 민족을 특정 특성과 연관시킴", exampleType: "text", color: "amber" },
+  { label: "대표성 격차", description: "일부 집단이 과소 대표되거나 잘못 대표됨", example: "소수 문화에 대한 정확한 정보 부족", exampleType: "text", color: "amber" },
+  { label: "서구 중심적 관점", description: "서구 문화와 가치에 치우친 관점", example: "서구 규범이 보편적이라고 가정", exampleType: "text", color: "amber" }
 ]} />
 
-### Testing for Bias
+### 편향 테스트
 
 <TryIt 
-  title="Bias Detection Test"
-  description="Use this to test your prompts for potential bias issues."
+  title="편향 감지 테스트"
+  description="프롬프트의 잠재적 편향 문제를 테스트하는 데 사용하세요."
   prompt={`I want to test this prompt for bias:
 
 "\${promptToTest}"
@@ -151,67 +151,67 @@ When demographics aren't specified:
 Based on findings, suggest prompt modifications to reduce bias.`}
 />
 
-### Mitigating Bias in Practice
+### 실제로 편향 완화하기
 
 <Compare 
-  before={{ label: "Bias-prone prompt", content: "Describe a typical CEO." }}
-  after={{ label: "Bias-aware prompt", content: "Describe a CEO. Vary demographics across examples, and avoid defaulting to any particular gender, ethnicity, or age." }}
+  before={{ label: "편향에 취약한 프롬프트", content: "전형적인 CEO를 설명하세요." }}
+  after={{ label: "편향을 인식하는 프롬프트", content: "CEO를 설명하세요. 예시에서 인구 통계를 다양하게 하고, 특정 성별, 민족, 연령을 기본값으로 사용하지 마세요." }}
 />
 
-## Transparency and Disclosure
+## 투명성과 공개
 
-When should you tell people AI was involved? The answer depends on context—but the trend is toward more disclosure, not less.
+언제 사람들에게 AI가 관여했다고 말해야 할까요? 답은 상황에 따라 다르지만, 추세는 더 적은 공개가 아닌 더 많은 공개를 향해 가고 있습니다.
 
-### When Disclosure Matters
+### 공개가 중요한 경우
 
 <InfoGrid items={[
-  { label: "Published Content", description: "Articles, posts, or content shared publicly", example: "Blog posts, social media, marketing materials", exampleType: "text", color: "blue" },
-  { label: "Consequential Decisions", description: "When AI outputs affect people's lives", example: "Hiring recommendations, medical info, legal guidance", exampleType: "text", color: "blue" },
-  { label: "Trust Contexts", description: "Where authenticity is expected or valued", example: "Personal correspondence, testimonials, reviews", exampleType: "text", color: "blue" },
-  { label: "Professional Settings", description: "Workplace or academic environments", example: "Reports, research, client deliverables", exampleType: "text", color: "blue" }
+  { label: "출판 콘텐츠", description: "공개적으로 공유되는 기사, 게시물 또는 콘텐츠", example: "블로그 게시물, 소셜 미디어, 마케팅 자료", exampleType: "text", color: "blue" },
+  { label: "중대한 결정", description: "AI 출력이 사람들의 삶에 영향을 미칠 때", example: "채용 추천, 의료 정보, 법적 지침", exampleType: "text", color: "blue" },
+  { label: "신뢰 상황", description: "진정성이 기대되거나 가치 있는 곳", example: "개인 서신, 추천사, 리뷰", exampleType: "text", color: "blue" },
+  { label: "전문적 환경", description: "직장 또는 학술 환경", example: "보고서, 연구, 고객 산출물", exampleType: "text", color: "blue" }
 ]} />
 
-### How to Disclose Appropriately
+### 적절하게 공개하는 방법
 
 <Compare 
-  before={{ label: "Hidden AI involvement", content: "Here's my analysis of the market trends..." }}
-  after={{ label: "Transparent disclosure", content: "I used AI tools to help analyze the data and draft this report. All conclusions have been verified and edited by me." }}
+  before={{ label: "숨겨진 AI 참여", content: "제가 분석한 시장 동향은 다음과 같습니다..." }}
+  after={{ label: "투명한 공개", content: "저는 AI 도구를 사용하여 데이터를 분석하고 이 보고서 초안을 작성했습니다. 모든 결론은 제가 검증하고 편집했습니다." }}
 />
 
-Common disclosure phrases that work well:
-- "Written with AI assistance"
-- "AI-generated first draft, human edited"
-- "Analysis performed using AI tools"
-- "Created with AI, reviewed and approved by [name]"
+효과적인 일반적인 공개 문구:
+- "AI 지원으로 작성됨"
+- "AI가 생성한 초안, 인간이 편집함"
+- "AI 도구를 사용하여 수행된 분석"
+- "AI로 생성, [이름]이 검토 및 승인함"
 
-## Privacy Considerations
+## 프라이버시 고려사항
 
-Every prompt you send contains data. Understanding where that data goes—and what shouldn't be in it—is essential.
+보내는 모든 프롬프트에는 데이터가 포함되어 있습니다. 그 데이터가 어디로 가는지, 무엇이 포함되면 안 되는지 이해하는 것이 필수적입니다.
 
-### What Never Belongs in Prompts
+### 프롬프트에 절대 포함하면 안 되는 것
 
 <InfoGrid items={[
-  { label: "Personal Identifiers", description: "Names, addresses, phone numbers, SSNs", example: "Use [CUSTOMER] instead of 'John Smith'", color: "red" },
-  { label: "Financial Data", description: "Account numbers, credit cards, income details", example: "Describe the pattern, not the actual numbers", exampleType: "text", color: "red" },
-  { label: "Health Information", description: "Medical records, diagnoses, prescriptions", example: "Ask about conditions generally, not specific patients", exampleType: "text", color: "red" },
-  { label: "Credentials", description: "Passwords, API keys, tokens, secrets", example: "Never paste credentials—use placeholders", exampleType: "text", color: "red" },
-  { label: "Private Communications", description: "Personal emails, messages, confidential docs", example: "Summarize the situation without quoting private text", exampleType: "text", color: "red" }
+  { label: "개인 식별자", description: "이름, 주소, 전화번호, 주민등록번호", example: "'홍길동' 대신 [고객]을 사용", color: "red" },
+  { label: "금융 데이터", description: "계좌 번호, 신용카드, 소득 세부사항", example: "실제 숫자가 아닌 패턴을 설명", exampleType: "text", color: "red" },
+  { label: "건강 정보", description: "의료 기록, 진단, 처방전", example: "특정 환자가 아닌 일반적인 상태에 대해 질문", exampleType: "text", color: "red" },
+  { label: "자격 증명", description: "비밀번호, API 키, 토큰, 시크릿", example: "자격 증명을 절대 붙여넣지 말고 플레이스홀더 사용", exampleType: "text", color: "red" },
+  { label: "개인 통신", description: "개인 이메일, 메시지, 기밀 문서", example: "개인 텍스트를 인용하지 않고 상황을 요약", exampleType: "text", color: "red" }
 ]} />
 
-### Safe Data Handling Pattern
+### 안전한 데이터 처리 패턴
 
 <Compare 
-  before={{ label: "Unsafe: Contains PII", content: "Summarize this complaint from John Smith at 123 Main St, Anytown about order #12345: 'I ordered on March 15 and still haven't received...'" }}
-  after={{ label: "Safe: Anonymized", content: "Summarize this customer complaint pattern: A customer ordered 3 weeks ago, hasn't received their order, and has contacted support twice without resolution." }}
+  before={{ label: "안전하지 않음: PII 포함", content: "서울시 강남구 123번지의 홍길동 고객이 주문 #12345에 대해 제출한 불만을 요약하세요: '3월 15일에 주문했는데 아직 받지 못했습니다...'" }}
+  after={{ label: "안전함: 익명화됨", content: "이 고객 불만 패턴을 요약하세요: 고객이 3주 전에 주문했고, 주문을 받지 못했으며, 해결 없이 고객 지원에 두 번 연락했습니다." }}
 />
 
-<Callout type="info" title="What is PII?">
-**PII** stands for **Personally Identifiable Information**—any data that can identify a specific individual. This includes names, addresses, phone numbers, email addresses, Social Security numbers, financial account numbers, and even combinations of data (like job title + company + city) that could identify someone. When prompting AI, always anonymize or remove PII to protect privacy.
+<Callout type="info" title="PII란 무엇인가?">
+**PII**는 **개인 식별 정보(Personally Identifiable Information)**를 의미합니다—특정 개인을 식별할 수 있는 모든 데이터입니다. 여기에는 이름, 주소, 전화번호, 이메일 주소, 주민등록번호, 금융 계좌 번호, 그리고 누군가를 식별할 수 있는 데이터 조합(직책 + 회사 + 도시 등)이 포함됩니다. AI에 프롬프트를 작성할 때는 항상 프라이버시를 보호하기 위해 PII를 익명화하거나 제거하세요.
 </Callout>
 
 <TryIt 
-  title="PII Scrubber"
-  description="Use this to identify and remove sensitive information before including text in prompts."
+  title="PII 제거기"
+  description="프롬프트에 텍스트를 포함하기 전에 민감한 정보를 식별하고 제거하는 데 사용하세요."
   prompt={`Review this text for sensitive information that should be removed before using it in an AI prompt:
 
 "\${textToReview}"
@@ -226,70 +226,70 @@ Identify:
 For each item found, suggest how to anonymize or generalize it while preserving the information needed for the task.`}
 />
 
-## Authenticity and Deception
+## 진정성과 기만
 
-There's a difference between using AI as a tool and using AI to deceive.
+AI를 도구로 사용하는 것과 AI를 기만에 사용하는 것 사이에는 차이가 있습니다.
 
-### The Legitimacy Line
+### 적법성의 경계
 
 <InfoGrid items={[
-  { label: "Legitimate Uses", description: "AI as a tool to enhance your work", example: "Drafting, brainstorming, editing, learning", exampleType: "text", color: "green" },
-  { label: "Gray Areas", description: "Context-dependent, requires judgment", example: "Ghostwriting, templates, automated responses", exampleType: "text", color: "amber" },
-  { label: "Deceptive Uses", description: "Misrepresenting AI work as human-original", example: "Fake reviews, academic fraud, impersonation", exampleType: "text", color: "red" }
+  { label: "적법한 사용", description: "작업을 향상시키는 도구로서의 AI", example: "초안 작성, 브레인스토밍, 편집, 학습", exampleType: "text", color: "green" },
+  { label: "회색 영역", description: "상황에 따라 다르며 판단이 필요함", example: "대필, 템플릿, 자동화된 응답", exampleType: "text", color: "amber" },
+  { label: "기만적 사용", description: "AI 작업을 인간 원작으로 잘못 표현", example: "가짜 리뷰, 학술 사기, 사칭", exampleType: "text", color: "red" }
 ]} />
 
-Key questions to ask:
-- Would the recipient expect this to be original human work?
-- Am I gaining unfair advantage through deception?
-- Would disclosure change how the work is received?
+물어볼 핵심 질문:
+- 수신자가 이것이 원래 인간의 작업이라고 기대할까요?
+- 기만을 통해 불공정한 이점을 얻고 있나요?
+- 공개하면 작업이 받아들여지는 방식이 바뀔까요?
 
-### Synthetic Media Responsibility
+### 합성 미디어 책임
 
-Creating realistic depictions of real people—whether images, audio, or video—carries special obligations:
+실제 사람의 사실적인 묘사를 만드는 것—이미지, 오디오, 비디오 등—에는 특별한 의무가 따릅니다:
 
-- **Never** create realistic depictions without consent
-- **Always** label synthetic media clearly
-- **Consider** potential for misuse before creating
-- **Refuse** to create non-consensual intimate imagery
+- 동의 없이 사실적인 묘사를 **절대** 만들지 마세요
+- 합성 미디어를 **항상** 명확하게 라벨링하세요
+- 만들기 전에 오용 가능성을 **고려**하세요
+- 비동의 친밀한 이미지 생성을 **거부**하세요
 
-## Responsible Deployment
+## 책임감 있는 배포
 
-When building AI features for others to use, your ethical obligations multiply.
+다른 사람이 사용할 AI 기능을 구축할 때 윤리적 의무가 배가됩니다.
 
-### Pre-Deployment Checklist
+### 배포 전 체크리스트
 
 <Checklist 
-  title="Deployment Readiness"
+  title="배포 준비 상태"
   items={[
-    { text: "Tested for harmful outputs across diverse inputs" },
-    { text: "Tested for bias with varied demographics" },
-    { text: "User disclosure/consent mechanisms in place" },
-    { text: "Human oversight for high-stakes decisions" },
-    { text: "Feedback and reporting system available" },
-    { text: "Incident response plan documented" },
-    { text: "Clear usage policies communicated" },
-    { text: "Monitoring and alerting configured" }
+    { text: "다양한 입력에서 유해한 출력 테스트 완료" },
+    { text: "다양한 인구 통계로 편향 테스트 완료" },
+    { text: "사용자 공개/동의 메커니즘 마련" },
+    { text: "중대한 결정에 대한 인간 감독 마련" },
+    { text: "피드백 및 보고 시스템 사용 가능" },
+    { text: "사고 대응 계획 문서화" },
+    { text: "명확한 사용 정책 전달" },
+    { text: "모니터링 및 알림 구성" }
   ]}
 />
 
-### Human Oversight Principles
+### 인간 감독 원칙
 
 <InfoGrid items={[
-  { label: "High-Stakes Review", description: "Humans review decisions that significantly affect people", example: "Hiring, medical, legal, financial recommendations", exampleType: "text", color: "blue" },
-  { label: "Error Correction", description: "Mechanisms exist to catch and fix AI mistakes", example: "User feedback, quality sampling, appeals process", exampleType: "text", color: "blue" },
-  { label: "Continuous Learning", description: "Insights from issues improve the system", example: "Post-mortems, prompt updates, training improvements", exampleType: "text", color: "blue" },
-  { label: "Override Capability", description: "Humans can intervene when AI fails", example: "Manual review queues, escalation paths", exampleType: "text", color: "blue" }
+  { label: "중대한 검토", description: "사람에게 상당한 영향을 미치는 결정을 인간이 검토", example: "채용, 의료, 법적, 재정적 추천", exampleType: "text", color: "blue" },
+  { label: "오류 수정", description: "AI 실수를 포착하고 수정하는 메커니즘 존재", example: "사용자 피드백, 품질 샘플링, 이의 제기 절차", exampleType: "text", color: "blue" },
+  { label: "지속적 학습", description: "문제에서 얻은 통찰이 시스템을 개선", example: "사후 검토, 프롬프트 업데이트, 훈련 개선", exampleType: "text", color: "blue" },
+  { label: "재정의 기능", description: "AI가 실패할 때 인간이 개입 가능", example: "수동 검토 대기열, 에스컬레이션 경로", exampleType: "text", color: "blue" }
 ]} />
 
-## Special Context Guidelines
+## 특수 맥락 지침
 
-Some domains require extra care due to their potential for harm or the vulnerability of those involved.
+일부 영역은 해를 끼칠 가능성이나 관련된 사람들의 취약성으로 인해 추가적인 주의가 필요합니다.
 
-### Healthcare
+### 의료
 
 <TryIt 
-  title="Medical Context Disclaimer"
-  description="Template for AI systems that might receive health-related queries."
+  title="의료 맥락 면책 조항"
+  description="건강 관련 질문을 받을 수 있는 AI 시스템을 위한 템플릿입니다."
   prompt={`You are an AI assistant. When users ask about health or medical topics:
 
 **Always**:
@@ -309,49 +309,49 @@ User question: \${healthQuestion}
 Respond helpfully while following these guidelines.`}
 />
 
-### Legal and Financial
+### 법률 및 금융
 
-These domains have regulatory implications and require appropriate disclaimers:
-
-<InfoGrid items={[
-  { label: "Legal Queries", description: "Provide general information, not legal advice", example: "\"This is general information. For your specific situation, consult a licensed attorney.\"", color: "purple" },
-  { label: "Financial Queries", description: "Educate without providing personal financial advice", example: "\"This is educational. Consider consulting a financial advisor for your situation.\"", color: "purple" },
-  { label: "Jurisdiction Awareness", description: "Laws vary by location", example: "\"Laws differ by state/country. Verify requirements for your jurisdiction.\"", color: "purple" }
-]} />
-
-### Children and Education
+이러한 영역은 규제적 함의가 있으며 적절한 면책 조항이 필요합니다:
 
 <InfoGrid items={[
-  { label: "Age-Appropriate Content", description: "Ensure outputs are suitable for the age group", example: "Filter mature content, use appropriate language", exampleType: "text", color: "cyan" },
-  { label: "Academic Integrity", description: "Support learning, don't replace it", example: "Explain concepts rather than writing essays for students", exampleType: "text", color: "cyan" },
-  { label: "Safety First", description: "Extra protection for vulnerable users", example: "Stricter content filters, no personal data collection", exampleType: "text", color: "cyan" }
+  { label: "법률 질문", description: "법적 조언이 아닌 일반 정보 제공", example: "\"이것은 일반적인 정보입니다. 귀하의 특정 상황에 대해서는 면허가 있는 변호사와 상담하세요.\"", color: "purple" },
+  { label: "금융 질문", description: "개인 재정 조언 없이 교육", example: "\"이것은 교육 목적입니다. 귀하의 상황에 대해서는 재정 고문과 상담을 고려하세요.\"", color: "purple" },
+  { label: "관할권 인식", description: "법률은 지역에 따라 다름", example: "\"법률은 주/국가에 따라 다릅니다. 귀하의 관할권에 대한 요구사항을 확인하세요.\"", color: "purple" }
 ]} />
 
-## Self-Assessment
+### 아동 및 교육
 
-Before deploying any prompt or AI system, run through these questions:
+<InfoGrid items={[
+  { label: "연령에 적합한 콘텐츠", description: "출력이 연령 그룹에 적합한지 확인", example: "성인 콘텐츠 필터링, 적절한 언어 사용", exampleType: "text", color: "cyan" },
+  { label: "학문적 무결성", description: "학습을 지원하되 대체하지 않음", example: "학생을 위해 에세이를 작성하는 대신 개념 설명", exampleType: "text", color: "cyan" },
+  { label: "안전 우선", description: "취약한 사용자를 위한 추가 보호", example: "더 엄격한 콘텐츠 필터, 개인 데이터 수집 금지", exampleType: "text", color: "cyan" }
+]} />
+
+## 자기 평가
+
+프롬프트나 AI 시스템을 배포하기 전에 다음 질문들을 검토하세요:
 
 <Checklist 
-  title="Ethical Self-Check"
+  title="윤리적 자가 점검"
   items={[
-    { text: "Could this be used to harm someone?" },
-    { text: "Does this respect user privacy?" },
-    { text: "Could this perpetuate harmful biases?" },
-    { text: "Is AI involvement appropriately disclosed?" },
-    { text: "Is there adequate human oversight?" },
-    { text: "What's the worst that could happen?" },
-    { text: "Would I be comfortable if this use were public?" }
+    { text: "이것이 누군가에게 해를 끼치는 데 사용될 수 있나요?" },
+    { text: "이것이 사용자 프라이버시를 존중하나요?" },
+    { text: "이것이 해로운 편향을 영속시킬 수 있나요?" },
+    { text: "AI 참여가 적절히 공개되었나요?" },
+    { text: "적절한 인간 감독이 있나요?" },
+    { text: "일어날 수 있는 최악의 상황은 무엇인가요?" },
+    { text: "이 사용이 공개되어도 편안할까요?" }
   ]}
 />
 
 <Quiz 
-  question="A user asks your AI system how to 'get rid of someone who's bothering them.' What's the most appropriate response strategy?"
+  question="사용자가 AI 시스템에 '자신을 괴롭히는 사람을 어떻게 없앨 수 있는지' 묻습니다. 가장 적절한 응답 전략은 무엇인가요?"
   options={[
-    "Refuse immediately—this could be a request for harm instructions",
-    "Provide conflict resolution advice since that's the most likely intent",
-    "Ask clarifying questions to understand intent before deciding how to respond",
-    "Explain you can't help with anything related to harming people"
+    "즉시 거부—이것은 해를 끼치는 지침 요청일 수 있습니다",
+    "가장 가능성 높은 의도이므로 갈등 해결 조언을 제공합니다",
+    "응답 방법을 결정하기 전에 의도를 파악하기 위한 명확한 질문을 합니다",
+    "사람들을 해치는 것과 관련된 어떤 것도 도울 수 없다고 설명합니다"
   ]}
   correctIndex={2}
-  explanation="Ambiguous requests deserve clarification, not assumptions. 'Get rid of someone' could mean ending a friendship, resolving a workplace conflict, or something harmful. Asking clarifying questions lets you respond appropriately to the actual intent while remaining cautious about providing harmful information."
+  explanation="모호한 요청은 가정이 아닌 명확화를 필요로 합니다. '누군가를 없애다'는 우정을 끝내는 것, 직장 갈등을 해결하는 것, 또는 해로운 것을 의미할 수 있습니다. 명확한 질문을 하면 해로운 정보 제공에 주의를 기울이면서 실제 의도에 적절하게 대응할 수 있습니다."
 />

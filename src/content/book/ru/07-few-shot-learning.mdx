@@ -1,32 +1,32 @@
-Few-shot learning is one of the most powerful prompting techniques. By providing examples of what you want, you can teach the model complex tasks without any fine-tuning.
+Few-shot learning — одна из самых мощных техник промптинга. Предоставляя примеры того, что вы хотите получить, вы можете обучить модель сложным задачам без какой-либо дополнительной настройки.
 
-<Callout type="info" title="Learn by Example">
-Just like humans learn by seeing examples, AI models can learn patterns from the examples you provide in your prompt.
+<Callout type="info" title="Обучение на примерах">
+Подобно тому, как люди учатся, видя примеры, модели ИИ могут усваивать паттерны из примеров, которые вы предоставляете в своём промпте.
 </Callout>
 
-## What is Few-Shot Learning?
+## Что такое Few-Shot Learning?
 
-Few-shot learning shows the model examples of input-output pairs before asking it to perform the same task. The model learns the pattern from your examples and applies it to new inputs.
+Few-shot learning показывает модели примеры пар «вход-выход» перед тем, как попросить её выполнить аналогичную задачу. Модель изучает паттерн из ваших примеров и применяет его к новым входным данным.
 
 <Compare 
   before={{ 
-    label: "Zero-Shot (No Examples)", 
-    content: `Classify this review as positive or negative:
+    label: "Zero-Shot (без примеров)", 
+    content: `Классифицируй этот отзыв как положительный или отрицательный:
 
-"The battery lasts forever but the screen is too dim."
+"Батарея держит вечно, но экран слишком тусклый."
 
-→ Model may be inconsistent with edge cases` 
+→ Модель может быть непоследовательной в пограничных случаях` 
   }}
   after={{ 
-    label: "Few-Shot (With Examples)", 
-    content: `"Love it!" → Positive
-"Terrible quality" → Negative  
-"Good but expensive" → Mixed
+    label: "Few-Shot (с примерами)", 
+    content: `"Обожаю!" → Положительный
+"Ужасное качество" → Отрицательный  
+"Хорошо, но дорого" → Смешанный
 
-Now classify:
-"The battery lasts forever but the screen is too dim."
+Теперь классифицируй:
+"Батарея держит вечно, но экран слишком тусклый."
 
-→ Model learns your exact categories` 
+→ Модель усваивает ваши точные категории` 
   }}
 />
 
@@ -49,430 +49,430 @@ Now classify:
   </div>
 </div>
 
-## Why Examples Work
+## Почему примеры работают
 
 <FewShotDemo />
 
-Examples communicate:
-- **Format**: How output should be structured
-- **Style**: Tone, length, vocabulary
-- **Logic**: The reasoning pattern to follow
-- **Edge cases**: How to handle special situations
+Примеры передают:
+- **Формат**: Как должен быть структурирован вывод
+- **Стиль**: Тон, длина, словарный запас
+- **Логика**: Паттерн рассуждений, которому нужно следовать
+- **Пограничные случаи**: Как обрабатывать особые ситуации
 
-## Basic Few-Shot Pattern
+## Базовый паттерн Few-Shot
 
-The fundamental structure of few-shot prompting follows a simple pattern: show examples, then ask for the new task. Consistency in formatting between examples is crucial. The model learns from the pattern you establish.
+Фундаментальная структура few-shot промптинга следует простому паттерну: покажите примеры, затем задайте новую задачу. Последовательность в форматировании между примерами критически важна. Модель учится на установленном вами паттерне.
 
 ```
-[Example 1]
-Input: [input 1]
-Output: [output 1]
+[Пример 1]
+Вход: [вход 1]
+Выход: [выход 1]
 
-[Example 2]
-Input: [input 2]
-Output: [output 2]
+[Пример 2]
+Вход: [вход 2]
+Выход: [выход 2]
 
-[Example 3]
-Input: [input 3]
-Output: [output 3]
+[Пример 3]
+Вход: [вход 3]
+Выход: [выход 3]
 
-Now do this one:
-Input: [new input]
-Output:
+Теперь сделай это:
+Вход: [новый вход]
+Выход:
 ```
 
-## Few-Shot for Classification
+## Few-Shot для классификации
 
-Classification is one of the strongest use cases for few-shot learning. By showing examples of each category, you define the boundaries between classes more precisely than instructions alone could achieve.
+Классификация — один из самых сильных вариантов использования few-shot learning. Показывая примеры каждой категории, вы определяете границы между классами точнее, чем это могли бы сделать одни лишь инструкции.
 
-### Sentiment Analysis
+### Анализ тональности
 
-<Callout type="info" title="What is Sentiment Analysis?">
-Sentiment analysis classifies text by emotional tone: positive, negative, neutral, or mixed. It's widely used for customer feedback, social media monitoring, and brand perception tracking.
+<Callout type="info" title="Что такое анализ тональности?">
+Анализ тональности классифицирует текст по эмоциональному тону: положительный, отрицательный, нейтральный или смешанный. Он широко используется для анализа отзывов клиентов, мониторинга социальных сетей и отслеживания восприятия бренда.
 </Callout>
 
-Sentiment classification benefits from showing examples of each sentiment type, especially edge cases like "mixed" sentiment that might be ambiguous.
+Классификация тональности выигрывает от показа примеров каждого типа настроения, особенно пограничных случаев, таких как «смешанная» тональность, которая может быть неоднозначной.
 
-<TryIt compact prompt={`Classify the sentiment of these customer reviews.
+<TryIt compact prompt={`Классифицируй тональность этих отзывов клиентов.
 
-Review: "This product exceeded all my expectations! Will buy again."
-Sentiment: Positive
+Отзыв: "Этот продукт превзошёл все мои ожидания! Куплю ещё."
+Тональность: Положительная
 
-Review: "Arrived broken and customer service was unhelpful."
-Sentiment: Negative
+Отзыв: "Пришёл сломанным, и служба поддержки не помогла."
+Тональность: Отрицательная
 
-Review: "It works fine, nothing special but does the job."
-Sentiment: Neutral
+Отзыв: "Работает нормально, ничего особенного, но со своей задачей справляется."
+Тональность: Нейтральная
 
-Review: "The quality is amazing but shipping took forever."
-Sentiment: Mixed
+Отзыв: "Качество потрясающее, но доставка заняла целую вечность."
+Тональность: Смешанная
 
-Now classify:
-Review: "Love the design but the battery life is disappointing."
-Sentiment:`} />
+Теперь классифицируй:
+Отзыв: "Обожаю дизайн, но время работы батареи разочаровывает."
+Тональность:`} />
 
-### Topic Classification
+### Классификация по темам
 
-For multi-class categorization, include at least one example per category. This helps the model understand your specific taxonomy, which may differ from its default understanding.
+Для многоклассовой категоризации включите хотя бы один пример на каждую категорию. Это помогает модели понять вашу конкретную таксономию, которая может отличаться от её понимания по умолчанию.
 
-<TryIt compact prompt={`Categorize these support tickets.
+<TryIt compact prompt={`Категоризируй эти заявки в службу поддержки.
 
-Ticket: "I can't log into my account, password reset not working"
-Category: Authentication
+Заявка: "Не могу войти в свой аккаунт, сброс пароля не работает"
+Категория: Аутентификация
 
-Ticket: "How do I upgrade to the premium plan?"
-Category: Billing
+Заявка: "Как мне перейти на премиум-план?"
+Категория: Биллинг
 
-Ticket: "The app crashes when I try to export data"
-Category: Bug Report
+Заявка: "Приложение падает, когда я пытаюсь экспортировать данные"
+Категория: Отчёт об ошибке
 
-Ticket: "Can you add dark mode to the mobile app?"
-Category: Feature Request
+Заявка: "Можете добавить тёмную тему в мобильное приложение?"
+Категория: Запрос функции
 
-Now categorize:
-Ticket: "My payment was declined but I see the charge on my card"
-Category:`} />
+Теперь категоризируй:
+Заявка: "Платёж был отклонён, но я вижу списание на своей карте"
+Категория:`} />
 
-## Few-Shot for Transformation
+## Few-Shot для трансформации
 
-Transformation tasks convert input from one form to another while preserving meaning. Examples are essential here because they define exactly what "transformation" means for your use case.
+Задачи трансформации преобразуют входные данные из одной формы в другую, сохраняя смысл. Примеры здесь необходимы, потому что они точно определяют, что означает «трансформация» для вашего конкретного случая.
 
-### Text Rewriting
+### Переписывание текста
 
-Style transformation requires examples that show the exact tone shift you want. Abstract instructions like "make it professional" are interpreted differently. Examples make it concrete.
+Трансформация стиля требует примеров, показывающих точный сдвиг тона, который вы хотите. Абстрактные инструкции вроде «сделай более профессионально» интерпретируются по-разному. Примеры делают это конкретным.
 
-<TryIt compact prompt={`Rewrite these sentences in a professional tone.
+<TryIt compact prompt={`Перепиши эти предложения в профессиональном тоне.
 
-Casual: "Hey, just wanted to check if you got my email?"
-Professional: "I wanted to follow up regarding my previous email."
+Неформально: "Привет, просто хотел узнать, получил ли ты моё письмо?"
+Профессионально: "Хотел уточнить относительно моего предыдущего письма."
 
-Casual: "This is super important and needs to be done ASAP!"
-Professional: "This matter requires urgent attention and prompt action."
+Неформально: "Это супер важно и нужно сделать СРОЧНО!"
+Профессионально: "Данный вопрос требует безотлагательного внимания и оперативных действий."
 
-Casual: "Sorry for the late reply, been swamped!"
-Professional: "I apologize for the delayed response. I've had a particularly demanding schedule."
+Неформально: "Сорри за поздний ответ, был завален делами!"
+Профессионально: "Прошу прощения за задержку с ответом. У меня был особенно напряжённый график."
 
-Now rewrite:
-Casual: "Can't make it to the meeting, something came up."
-Professional:`} />
+Теперь перепиши:
+Неформально: "Не смогу прийти на встречу, кое-что случилось."
+Профессионально:`} />
 
-### Format Conversion
+### Преобразование формата
 
-Format conversion tasks benefit from examples showing edge cases and ambiguous inputs. The model learns your specific conventions for handling tricky cases.
+Задачи преобразования формата выигрывают от примеров, показывающих пограничные случаи и неоднозначные входные данные. Модель изучает ваши конкретные соглашения для обработки сложных случаев.
 
-<TryIt compact prompt={`Convert these natural language dates to ISO format.
+<TryIt compact prompt={`Преобразуй эти даты на естественном языке в формат ISO.
 
-Input: "next Tuesday"
-Output: 2024-01-16 (assuming today is 2024-01-11, Thursday)
+Вход: "в следующий вторник"
+Выход: 2024-01-16 (предполагая, что сегодня 2024-01-11, четверг)
 
-Input: "the day after tomorrow"
-Output: 2024-01-13
+Вход: "послезавтра"
+Выход: 2024-01-13
 
-Input: "last day of this month"
-Output: 2024-01-31
+Вход: "последний день этого месяца"
+Выход: 2024-01-31
 
-Input: "two weeks from now"
-Output: 2024-01-25
+Вход: "через две недели"
+Выход: 2024-01-25
 
-Now convert:
-Input: "the first Monday of next month"
-Output:`} />
+Теперь преобразуй:
+Вход: "первый понедельник следующего месяца"
+Выход:`} />
 
-## Few-Shot for Generation
+## Few-Shot для генерации
 
-Generation tasks create new content following a learned pattern. Examples establish length, structure, tone, and what details to highlight. These are hard to specify in instructions alone.
+Задачи генерации создают новый контент, следуя изученному паттерну. Примеры устанавливают длину, структуру, тон и то, на каких деталях нужно акцентировать внимание. Это трудно указать только в инструкциях.
 
-### Product Descriptions
+### Описания продуктов
 
-Marketing copy benefits enormously from examples because they capture brand voice, feature emphasis, and persuasive techniques that are difficult to describe abstractly.
+Маркетинговые тексты значительно выигрывают от примеров, потому что они передают голос бренда, акценты на характеристиках и техники убеждения, которые сложно описать абстрактно.
 
-<TryIt compact prompt={`Write product descriptions in this style:
+<TryIt compact prompt={`Напиши описания продуктов в этом стиле:
 
-Product: Wireless Bluetooth Headphones
-Description: Immerse yourself in crystal-clear sound with our lightweight wireless headphones. Featuring 40-hour battery life, active noise cancellation, and plush memory foam ear cushions for all-day comfort.
+Продукт: Беспроводные Bluetooth-наушники
+Описание: Погрузитесь в кристально чистый звук с нашими лёгкими беспроводными наушниками. 40 часов автономной работы, активное шумоподавление и мягкие амбушюры с эффектом памяти для комфорта в течение всего дня.
 
-Product: Stainless Steel Water Bottle
-Description: Stay hydrated in style with our double-walled insulated bottle. Keeps drinks cold for 24 hours or hot for 12. Features a leak-proof lid and fits standard cup holders.
+Продукт: Бутылка для воды из нержавеющей стали
+Описание: Поддерживайте водный баланс стильно с нашей термоизолированной бутылкой с двойными стенками. Сохраняет напитки холодными 24 часа или горячими 12. Герметичная крышка и совместимость со стандартными подстаканниками.
 
-Product: Ergonomic Office Chair
-Description: Transform your workspace with our adjustable ergonomic chair. Breathable mesh back, lumbar support, and 360° swivel combine to keep you comfortable during long work sessions.
+Продукт: Эргономичное офисное кресло
+Описание: Преобразите своё рабочее пространство с нашим регулируемым эргономичным креслом. Дышащая сетчатая спинка, поясничная поддержка и поворот на 360° обеспечат комфорт во время долгих рабочих сессий.
 
-Now write:
-Product: Portable Phone Charger
-Description:`} />
+Теперь напиши:
+Продукт: Портативное зарядное устройство для телефона
+Описание:`} />
 
-### Code Documentation
+### Документация кода
 
-<Callout type="info" title="Why Document Code?">
-Good documentation explains what code does, its parameters, return values, and usage examples. Consistent docstrings enable auto-generated API docs and help IDEs provide better code completion.
+<Callout type="info" title="Зачем документировать код?">
+Хорошая документация объясняет, что делает код, его параметры, возвращаемые значения и примеры использования. Единообразные докстринги позволяют автоматически генерировать документацию API и помогают IDE предоставлять лучшее автодополнение кода.
 </Callout>
 
-Documentation style varies widely between projects. Examples teach your specific format, what to include (args, returns, examples), and the level of detail expected.
+Стиль документации сильно варьируется между проектами. Примеры обучают вашему конкретному формату, тому, что включать (аргументы, возвращаемые значения, примеры), и ожидаемому уровню детализации.
 
-<TryIt compact prompt={`Write documentation comments for these functions:
+<TryIt compact prompt={`Напиши документационные комментарии для этих функций:
 
-Function:
+Функция:
 def calculate_bmi(weight_kg, height_m):
     return weight_kg / (height_m ** 2)
 
-Documentation:
+Документация:
 """
-Calculate Body Mass Index (BMI) from weight and height.
+Вычисляет индекс массы тела (ИМТ) по весу и росту.
 
 Args:
-    weight_kg (float): Weight in kilograms
-    height_m (float): Height in meters
+    weight_kg (float): Вес в килограммах
+    height_m (float): Рост в метрах
 
 Returns:
-    float: BMI value (weight/height²)
+    float: Значение ИМТ (вес/рост²)
 
 Example:
     >>> calculate_bmi(70, 1.75)
     22.86
 """
 
-Now document:
-Function:
+Теперь задокументируй:
+Функция:
 def is_palindrome(text):
     cleaned = ''.join(c.lower() for c in text if c.isalnum())
     return cleaned == cleaned[::-1]
 
-Documentation:`} />
+Документация:`} />
 
-## Few-Shot for Extraction
+## Few-Shot для извлечения данных
 
-Extraction tasks pull structured information from unstructured text. Examples define which entities matter, how to format output, and how to handle cases where information is missing or ambiguous.
+Задачи извлечения получают структурированную информацию из неструктурированного текста. Примеры определяют, какие сущности важны, как форматировать вывод и как обрабатывать случаи, когда информация отсутствует или неоднозначна.
 
-### Entity Extraction
+### Извлечение сущностей
 
-<Callout type="info" title="What is Named Entity Recognition?">
-Named Entity Recognition (NER) identifies and classifies named entities in text into categories like persons, organizations, locations, dates, and products. It's fundamental for information retrieval and knowledge graphs.
+<Callout type="info" title="Что такое распознавание именованных сущностей?">
+Распознавание именованных сущностей (NER) идентифицирует и классифицирует именованные сущности в тексте по категориям, таким как персоны, организации, места, даты и продукты. Это фундаментальная технология для информационного поиска и построения графов знаний.
 </Callout>
 
-NER benefits from examples showing your specific entity types and how to handle entities that could fit multiple categories.
+NER выигрывает от примеров, показывающих ваши конкретные типы сущностей и то, как обрабатывать сущности, которые могут относиться к нескольким категориям.
 
-<TryIt compact prompt={`Extract named entities from these sentences.
+<TryIt compact prompt={`Извлеки именованные сущности из этих предложений.
 
-Text: "Apple CEO Tim Cook announced the iPhone 15 in Cupertino."
-Entities:
-- COMPANY: Apple
-- PERSON: Tim Cook
-- PRODUCT: iPhone 15
-- LOCATION: Cupertino
+Текст: "Генеральный директор Apple Тим Кук представил iPhone 15 в Купертино."
+Сущности:
+- КОМПАНИЯ: Apple
+- ПЕРСОНА: Тим Кук
+- ПРОДУКТ: iPhone 15
+- МЕСТО: Купертино
 
-Text: "The European Union fined Google €4.34 billion in 2018."
-Entities:
-- ORGANIZATION: European Union
-- COMPANY: Google
-- MONEY: €4.34 billion
-- DATE: 2018
+Текст: "Европейский союз оштрафовал Google на €4,34 миллиарда в 2018 году."
+Сущности:
+- ОРГАНИЗАЦИЯ: Европейский союз
+- КОМПАНИЯ: Google
+- ДЕНЬГИ: €4,34 миллиарда
+- ДАТА: 2018
 
-Now extract from:
-Text: "Elon Musk's SpaceX launched 23 Starlink satellites from Cape Canaveral on December 3rd."
-Entities:`} />
+Теперь извлеки из:
+Текст: "SpaceX Илона Маска запустила 23 спутника Starlink с мыса Канаверал 3 декабря."
+Сущности:`} />
 
-### Structured Data Extraction
+### Извлечение структурированных данных
 
-Extracting structured data from natural language requires examples showing how to handle missing fields, implicit information, and varying input formats.
+Извлечение структурированных данных из естественного языка требует примеров, показывающих, как обрабатывать отсутствующие поля, неявную информацию и различные форматы ввода.
 
-<TryIt compact prompt={`Extract meeting details into structured format.
+<TryIt compact prompt={`Извлеки детали встречи в структурированный формат.
 
-Email: "Let's meet tomorrow at 3pm in Conference Room B to discuss the Q4 budget. Please bring your laptop."
+Письмо: "Давай встретимся завтра в 15:00 в Переговорной Б, чтобы обсудить бюджет на 4 квартал. Пожалуйста, возьми свой ноутбук."
 
-Meeting:
-- Date: [tomorrow's date]
-- Time: 3:00 PM
-- Location: Conference Room B
-- Topic: Q4 budget discussion
-- Requirements: Bring laptop
+Встреча:
+- Дата: [завтрашняя дата]
+- Время: 15:00
+- Место: Переговорная Б
+- Тема: Обсуждение бюджета на Q4
+- Требования: Принести ноутбук
 
-Email: "Team sync moved to Friday 10am, we'll use Zoom instead. Link in calendar invite. 30 minutes max."
+Письмо: "Командная синхронизация перенесена на пятницу 10:00, будем использовать Zoom вместо этого. Ссылка в приглашении в календаре. Максимум 30 минут."
 
-Meeting:
-- Date: Friday
-- Time: 10:00 AM
-- Location: Zoom (virtual)
-- Topic: Team sync
-- Duration: 30 minutes
+Встреча:
+- Дата: Пятница
+- Время: 10:00
+- Место: Zoom (виртуально)
+- Тема: Командная синхронизация
+- Продолжительность: 30 минут
 
-Now extract from:
-Email: "Can we do a quick call Monday morning around 9:30 to go over the client presentation? I'll send a Teams link."
+Теперь извлеки из:
+Письмо: "Можем созвониться в понедельник утром около 9:30, чтобы обсудить презентацию для клиента? Я пришлю ссылку на Teams."
 
-Meeting:`} />
+Встреча:`} />
 
-## Advanced Few-Shot Techniques
+## Продвинутые техники Few-Shot
 
-Beyond basic few-shot, several techniques can improve results for complex tasks.
+Помимо базового few-shot, существует несколько техник, которые могут улучшить результаты для сложных задач.
 
-### Diverse Examples
+### Разнообразные примеры
 
-Diversity in examples is more valuable than quantity. Cover different scenarios, edge cases, and potential ambiguities rather than showing similar examples repeatedly.
+Разнообразие примеров ценнее, чем их количество. Охватывайте разные сценарии, пограничные случаи и потенциальные неоднозначности вместо того, чтобы показывать похожие примеры многократно.
 
-<TryIt compact prompt={`Respond to customer complaints.
+<TryIt compact prompt={`Ответь на жалобы клиентов.
 
-Example 1 (Product Issue):
-Customer: "My order arrived damaged."
-Response: "I sincerely apologize for the damaged delivery. I'll immediately send a replacement at no charge. You don't need to return the damaged item. May I confirm your shipping address?"
+Пример 1 (Проблема с товаром):
+Клиент: "Мой заказ пришёл повреждённым."
+Ответ: "Искренне приношу извинения за повреждённую доставку. Я немедленно отправлю замену бесплатно. Вам не нужно возвращать повреждённый товар. Могу я уточнить ваш адрес доставки?"
 
-Example 2 (Service Issue):
-Customer: "I've been on hold for 2 hours!"
-Response: "I'm very sorry for the long wait time. That's unacceptable. I'm here now and will personally ensure your issue is resolved. What can I help you with today?"
+Пример 2 (Проблема с обслуживанием):
+Клиент: "Я ждал на линии 2 часа!"
+Ответ: "Мне очень жаль за долгое время ожидания. Это недопустимо. Я сейчас здесь и лично позабочусь о том, чтобы ваш вопрос был решён. Чем могу помочь сегодня?"
 
-Example 3 (Billing Issue):
-Customer: "You charged me twice for the same order!"
-Response: "I apologize for this billing error. I've verified the duplicate charge and initiated a refund of $XX.XX to your original payment method. You should see it within 3-5 business days."
+Пример 3 (Проблема с оплатой):
+Клиент: "Вы списали с меня дважды за один заказ!"
+Ответ: "Приношу извинения за эту ошибку в платеже. Я подтвердил двойное списание и инициировал возврат XX.XX₽ на ваш первоначальный способ оплаты. Вы должны увидеть его в течение 3-5 рабочих дней."
 
-Now respond to:
-Customer: "The product doesn't match what was shown on the website."
-Response:`} />
+Теперь ответь на:
+Клиент: "Товар не соответствует тому, что было показано на сайте."
+Ответ:`} />
 
-### Negative Examples
+### Отрицательные примеры
 
-<Callout type="tip" title="Contrastive Learning">
-Showing "good" vs "bad" examples is called contrastive learning. It helps the model understand not just what you want, but what to avoid. This is especially useful for style and quality judgments.
+<Callout type="tip" title="Контрастное обучение">
+Показ «хороших» и «плохих» примеров называется контрастным обучением. Это помогает модели понять не только то, что вы хотите, но и чего следует избегать. Это особенно полезно для оценки стиля и качества.
 </Callout>
 
-Sometimes showing what *not* to do is as valuable as showing correct examples. Negative examples help the model understand boundaries and avoid common mistakes.
+Иногда показать, чего *не* нужно делать, так же ценно, как показать правильные примеры. Отрицательные примеры помогают модели понять границы и избежать типичных ошибок.
 
-<TryIt compact prompt={`Write concise email subject lines.
+<TryIt compact prompt={`Напиши лаконичные темы писем.
 
-Good: "Q3 Report Ready for Review"
-Bad: "Hey, I finished that report thing we talked about"
+Хорошо: "Отчёт за Q3 готов к проверке"
+Плохо: "Привет, я закончил тот отчёт, о котором мы говорили"
 
-Good: "Action Required: Approve PTO by Friday"
-Bad: "I need you to do something for me please read this"
+Хорошо: "Требуется действие: Согласовать отпуск до пятницы"
+Плохо: "Мне нужно, чтобы ты кое-что сделал, пожалуйста, прочитай это"
 
-Good: "Meeting Rescheduled: Project Sync → Thursday 2pm"
-Bad: "Change of plans!!!!!"
+Хорошо: "Встреча перенесена: Синхронизация проекта → Четверг 14:00"
+Плохо: "Планы изменились!!!!!"
 
-Now write a subject line for:
-Email about: Requesting feedback on a proposal draft
-Subject:`} />
+Теперь напиши тему для:
+Письмо о: Запрос обратной связи по черновику предложения
+Тема:`} />
 
-### Edge Case Examples
+### Примеры пограничных случаев
 
-Edge cases often determine whether a solution works in production. Including unusual inputs in your examples prevents the model from failing on real-world data that doesn't fit the "happy path."
+Пограничные случаи часто определяют, будет ли решение работать в продакшене. Включение необычных входных данных в ваши примеры предотвращает сбои модели на реальных данных, которые не соответствуют «идеальному сценарию».
 
-<TryIt compact prompt={`Parse names into structured format.
+<TryIt compact prompt={`Разбери имена в структурированный формат.
 
-Input: "John Smith"
-Output: {"first": "John", "last": "Smith", "middle": null, "suffix": null}
+Вход: "Иван Петров"
+Выход: {"first": "Иван", "last": "Петров", "middle": null, "suffix": null}
 
-Input: "Mary Jane Watson-Parker"
-Output: {"first": "Mary", "middle": "Jane", "last": "Watson-Parker", "suffix": null}
+Вход: "Мария Ивановна Кузнецова-Смирнова"
+Выход: {"first": "Мария", "middle": "Ивановна", "last": "Кузнецова-Смирнова", "suffix": null}
 
-Input: "Dr. Martin Luther King Jr."
-Output: {"prefix": "Dr.", "first": "Martin", "middle": "Luther", "last": "King", "suffix": "Jr."}
+Вход: "Д-р Мартин Лютер Кинг мл."
+Выход: {"prefix": "Д-р", "first": "Мартин", "middle": "Лютер", "last": "Кинг", "suffix": "мл."}
 
-Input: "Madonna"
-Output: {"first": "Madonna", "last": null, "middle": null, "suffix": null, "mononym": true}
+Вход: "Мадонна"
+Выход: {"first": "Мадонна", "last": null, "middle": null, "suffix": null, "mononym": true}
 
-Now parse:
-Input: "Sir Patrick Stewart III"
-Output:`} />
+Теперь разбери:
+Вход: "Сэр Патрик Стюарт III"
+Выход:`} />
 
-## How Many Examples?
+## Сколько примеров нужно?
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Simple classification</span>
+    <span className="font-semibold min-w-40">Простая классификация</span>
     <span className="text-primary font-mono">2-3</span>
-    <span className="text-muted-foreground">One per category minimum</span>
+    <span className="text-muted-foreground">Минимум один на категорию</span>
   </div>
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Complex formatting</span>
+    <span className="font-semibold min-w-40">Сложное форматирование</span>
     <span className="text-primary font-mono">3-5</span>
-    <span className="text-muted-foreground">Show variations</span>
+    <span className="text-muted-foreground">Показать вариации</span>
   </div>
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Nuanced style</span>
+    <span className="font-semibold min-w-40">Нюансированный стиль</span>
     <span className="text-primary font-mono">4-6</span>
-    <span className="text-muted-foreground">Capture full range</span>
+    <span className="text-muted-foreground">Охватить полный диапазон</span>
   </div>
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Edge cases</span>
+    <span className="font-semibold min-w-40">Пограничные случаи</span>
     <span className="text-primary font-mono">1-2</span>
-    <span className="text-muted-foreground">Alongside normal examples</span>
+    <span className="text-muted-foreground">Наряду с обычными примерами</span>
   </div>
 </div>
 
-## Example Quality Matters
+## Качество примеров важно
 
 <Compare 
   before={{ 
-    label: "Bad Examples", 
-    content: `"Nice product" → Good
-"Nice service" → Good
-"Nice price" → Good
+    label: "Плохие примеры", 
+    content: `"Хороший продукт" → Хорошо
+"Хороший сервис" → Хорошо
+"Хорошая цена" → Хорошо
 
-✗ All too similar
-✗ Same word repeated
-✗ No edge cases shown` 
+✗ Все слишком похожи
+✗ Одно слово повторяется
+✗ Пограничные случаи не показаны` 
   }}
   after={{ 
-    label: "Good Examples", 
-    content: `"Exceeded expectations!" → Positive
-"Broken on arrival" → Negative
-"Works fine, nothing special" → Neutral
-"Great quality but overpriced" → Mixed
+    label: "Хорошие примеры", 
+    content: `"Превзошёл ожидания!" → Положительный
+"Пришёл сломанным" → Отрицательный
+"Работает нормально, ничего особенного" → Нейтральный
+"Отличное качество, но переоценён" → Смешанный
 
-✓ Diverse scenarios
-✓ Clear boundaries
-✓ Covers edge cases` 
+✓ Разнообразные сценарии
+✓ Чёткие границы
+✓ Охвачены пограничные случаи` 
   }}
 />
 
-## Combining Few-Shot with Other Techniques
+## Комбинирование Few-Shot с другими техниками
 
-Few-shot learning combines powerfully with other prompting techniques. The examples provide the "what" while other techniques can add context, reasoning, or structure.
+Few-shot learning мощно сочетается с другими техниками промптинга. Примеры обеспечивают «что», в то время как другие техники могут добавить контекст, рассуждения или структуру.
 
-### Few-Shot + Role
+### Few-Shot + Роль
 
-Adding a role gives the model context for *why* it's doing the task, which can improve quality and consistency.
+Добавление роли даёт модели контекст *почему* она выполняет задачу, что может улучшить качество и последовательность.
 
 ```
-You are a legal contract reviewer.
+Ты — рецензент юридических договоров.
 
-[examples of contract clause analysis]
+[примеры анализа пунктов договора]
 
-Now analyze: [new clause]
+Теперь проанализируй: [новый пункт]
 ```
 
 ### Few-Shot + CoT
 
-Combining few-shot with Chain of Thought shows not just *what* answer to give, but *how* to reason through to that answer. This is powerful for tasks requiring judgment.
+Сочетание few-shot с Chain of Thought показывает не только *какой* ответ дать, но и *как* рассуждать, чтобы прийти к этому ответу. Это эффективно для задач, требующих оценки.
 
 ```
-Classify and explain reasoning.
+Классифицируй и объясни рассуждение.
 
-Review: "Great features but overpriced"
-Thinking: The review mentions positive aspects ("great features") 
-but also a significant negative ("overpriced"). The negative seems 
-to outweigh the positive based on the "but" conjunction.
-Classification: Mixed-Negative
+Отзыв: "Отличные функции, но слишком дорого"
+Размышление: Отзыв упоминает положительные аспекты ("отличные функции"), 
+но также значительный негатив ("слишком дорого"). Негатив, кажется, 
+перевешивает позитив на основе союза "но".
+Классификация: Смешанно-негативный
 
-[more examples with reasoning]
+[больше примеров с рассуждениями]
 
-Now classify with reasoning:
-Review: "Exactly what I needed, arrived faster than expected"
+Теперь классифицируй с рассуждением:
+Отзыв: "Именно то, что мне было нужно, пришло быстрее, чем ожидалось"
 ```
 
-## Summary
+## Резюме
 
-<Callout type="tip" title="Key Takeaways">
-Few-shot learning teaches through demonstration and is often more effective than instructions alone. Use 2-5 diverse, correct examples and combine with other techniques for best results.
+<Callout type="tip" title="Ключевые выводы">
+Few-shot learning обучает через демонстрацию и часто более эффективен, чем одни лишь инструкции. Используйте 2-5 разнообразных, правильных примеров и комбинируйте с другими техниками для лучших результатов.
 </Callout>
 
 <Quiz 
-  question="How many examples should you typically provide in few-shot learning?"
+  question="Сколько примеров обычно следует предоставлять в few-shot learning?"
   options={[
-    "As many as possible (10+)",
-    "Just 1 example is always enough",
-    "2-5 diverse, correct examples",
-    "Examples aren't necessary if instructions are clear"
+    "Как можно больше (10+)",
+    "Одного примера всегда достаточно",
+    "2-5 разнообразных, правильных примеров",
+    "Примеры не нужны, если инструкции понятны"
   ]}
   correctIndex={2}
-  explanation="2-5 diverse, correct examples typically work best. Too few may not capture the pattern, while too many waste tokens and may confuse the model. Quality and diversity matter more than quantity."
+  explanation="2-5 разнообразных, правильных примеров обычно работают лучше всего. Слишком мало может не охватить паттерн, а слишком много тратит токены и может запутать модель. Качество и разнообразие важнее количества."
 />
 
-In the next chapter, we'll explore iterative refinement: the art of improving prompts through successive attempts.
+В следующей главе мы рассмотрим итеративное уточнение: искусство улучшения промптов через последовательные попытки.

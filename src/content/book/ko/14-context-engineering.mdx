@@ -1,287 +1,287 @@
-Understanding context is essential for building AI applications that actually work. This chapter covers everything you need to know about giving AI the right information at the right time.
+컨텍스트를 이해하는 것은 실제로 작동하는 AI 애플리케이션을 구축하는 데 필수적입니다. 이 장에서는 AI에게 적절한 시점에 적절한 정보를 제공하는 방법에 대해 알아야 할 모든 것을 다룹니다.
 
-<Callout type="info" title="Why Context Matters">
-AI models are stateless. They don't remember past conversations. Every time you send a message, you need to include everything the AI needs to know. This is called "context engineering."
+<Callout type="info" title="컨텍스트가 중요한 이유">
+AI 모델은 상태를 저장하지 않습니다. 이전 대화를 기억하지 못합니다. 메시지를 보낼 때마다 AI가 알아야 할 모든 것을 포함해야 합니다. 이것을 "컨텍스트 엔지니어링"이라고 합니다.
 </Callout>
 
-## What is Context?
+## 컨텍스트란 무엇인가?
 
-Context is all the information you give to AI alongside your question. Think of it like this:
+컨텍스트는 질문과 함께 AI에게 제공하는 모든 정보입니다. 다음과 같이 생각해 보세요:
 
 <Compare 
-  before={{ label: "No Context", content: "What's the status?" }}
-  after={{ label: "With Context", content: "You are a project manager assistant. The user is working on Project Alpha, which is due Friday. The last update was: 'Backend complete, frontend 80% done.'\n\nUser: What's the status?" }}
+  before={{ label: "컨텍스트 없음", content: "상태가 어떻게 되나요?" }}
+  after={{ label: "컨텍스트 포함", content: "당신은 프로젝트 관리자 어시스턴트입니다. 사용자는 금요일까지 마감인 프로젝트 알파를 진행 중입니다. 마지막 업데이트는: '백엔드 완료, 프론트엔드 80% 완료.'\n\n사용자: 상태가 어떻게 되나요?" }}
 />
 
-Without context, the AI has no idea what "status" you're asking about. With context, it can give a useful answer.
+컨텍스트가 없으면 AI는 어떤 "상태"를 묻는 것인지 전혀 알 수 없습니다. 컨텍스트가 있으면 유용한 답변을 제공할 수 있습니다.
 
-### The Context Window
+### 컨텍스트 윈도우
 
-Remember from earlier chapters: AI has a limited "context window" - the maximum amount of text it can see at once. This includes:
+이전 장에서 배운 것을 기억하세요: AI는 한 번에 볼 수 있는 텍스트의 최대 양인 제한된 "컨텍스트 윈도우"를 가지고 있습니다. 여기에는 다음이 포함됩니다:
 
 <InfoGrid items={[
-  { label: "System Prompt", description: "Instructions that define AI behavior", color: "purple" },
-  { label: "Conversation History", description: "Previous messages in this chat", color: "blue" },
-  { label: "Retrieved Information", description: "Documents, data, or knowledge fetched for this query", color: "green" },
-  { label: "Current Query", description: "The user's actual question", color: "amber" },
-  { label: "AI Response", description: "The answer (also counts toward the limit!)", color: "rose" },
+  { label: "시스템 프롬프트", description: "AI 동작을 정의하는 지침", color: "purple" },
+  { label: "대화 기록", description: "이 채팅의 이전 메시지들", color: "blue" },
+  { label: "검색된 정보", description: "이 쿼리를 위해 가져온 문서, 데이터 또는 지식", color: "green" },
+  { label: "현재 쿼리", description: "사용자의 실제 질문", color: "amber" },
+  { label: "AI 응답", description: "답변 (이것도 제한에 포함됩니다!)", color: "rose" },
 ]} />
 
-## AI is Stateless
+## AI는 상태를 저장하지 않습니다
 
-<Callout type="warning" title="Important Concept">
-AI doesn't remember anything between conversations. Every API call starts fresh. If you want the AI to "remember" something, YOU have to include it in the context every time.
+<Callout type="warning" title="중요한 개념">
+AI는 대화 사이에 아무것도 기억하지 못합니다. 모든 API 호출은 새로 시작됩니다. AI가 무언가를 "기억"하길 원한다면, 매번 컨텍스트에 직접 포함해야 합니다.
 </Callout>
 
-This is why chatbots send your entire conversation history with each message. It's not that the AI remembers - it's that the app re-sends everything.
+이것이 챗봇이 각 메시지와 함께 전체 대화 기록을 보내는 이유입니다. AI가 기억하는 것이 아니라 앱이 모든 것을 다시 보내는 것입니다.
 
-<TryIt compact prompt={`Pretend this is a new conversation with no history.
+<TryIt compact prompt={`기록이 없는 새 대화인 척하세요.
 
-What did I just ask you about?`} />
+방금 무엇에 대해 물어봤나요?`} />
 
-The AI will say it doesn't know because it truly doesn't have access to any previous context.
+AI는 이전 컨텍스트에 접근할 수 없기 때문에 정말로 모른다고 말할 것입니다.
 
-## RAG: Retrieval-Augmented Generation
+## RAG: 검색 증강 생성
 
-RAG is a technique for giving AI access to knowledge it wasn't trained on. Instead of trying to fit everything into the AI's training, you:
+RAG는 AI가 학습하지 않은 지식에 접근할 수 있게 해주는 기술입니다. 모든 것을 AI 학습 데이터에 넣으려고 하는 대신:
 
-1. **Store** your documents in a searchable database
-2. **Search** for relevant documents when a user asks a question
-3. **Retrieve** the most relevant pieces
-4. **Augment** your prompt with those pieces
-5. **Generate** an answer using that context
+1. **저장**: 문서를 검색 가능한 데이터베이스에 저장합니다
+2. **검색**: 사용자가 질문할 때 관련 문서를 검색합니다
+3. **추출**: 가장 관련성 높은 부분을 가져옵니다
+4. **증강**: 해당 부분으로 프롬프트를 보강합니다
+5. **생성**: 해당 컨텍스트를 사용하여 답변을 생성합니다
 
 <div className="my-6 p-4 border rounded-lg bg-muted/30">
-  <p className="font-semibold mb-3">How RAG Works:</p>
+  <p className="font-semibold mb-3">RAG 작동 방식:</p>
   <div className="flex flex-col gap-2 text-sm">
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">1</span>
-      <span>User asks: "What's our refund policy?"</span>
+      <span>사용자가 묻습니다: "환불 정책이 뭔가요?"</span>
     </div>
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">2</span>
-      <span>System searches your documents for "refund policy"</span>
+      <span>시스템이 "환불 정책"으로 문서를 검색합니다</span>
     </div>
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">3</span>
-      <span>Finds relevant section from your policy document</span>
+      <span>정책 문서에서 관련 섹션을 찾습니다</span>
     </div>
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">4</span>
-      <span>Sends to AI: "Based on this policy: [text], answer: What's our refund policy?"</span>
+      <span>AI에게 전송: "이 정책을 바탕으로: [텍스트], 답변: 환불 정책이 뭔가요?"</span>
     </div>
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center text-green-600 font-bold">5</span>
-      <span>AI generates accurate answer using your actual policy</span>
+      <span>AI가 실제 정책을 사용하여 정확한 답변을 생성합니다</span>
     </div>
   </div>
 </div>
 
-### Why RAG?
+### RAG를 사용하는 이유
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="p-4 border rounded-lg">
-    <p className="font-semibold text-green-600 dark:text-green-400 mb-2 flex items-center gap-2"><IconCheck className="text-green-600" /> RAG Advantages</p>
+    <p className="font-semibold text-green-600 dark:text-green-400 mb-2 flex items-center gap-2"><IconCheck className="text-green-600" /> RAG의 장점</p>
     <ul className="text-sm space-y-1 text-muted-foreground">
-      <li>Uses your actual, current data</li>
-      <li>Reduces hallucinations</li>
-      <li>Can cite sources</li>
-      <li>Easy to update (just update documents)</li>
-      <li>No expensive fine-tuning needed</li>
+      <li>실제 최신 데이터를 사용합니다</li>
+      <li>환각(hallucination)을 줄입니다</li>
+      <li>출처를 인용할 수 있습니다</li>
+      <li>업데이트가 쉽습니다 (문서만 업데이트하면 됩니다)</li>
+      <li>비용이 많이 드는 파인튜닝이 필요 없습니다</li>
     </ul>
   </div>
   <div className="p-4 border rounded-lg">
-    <p className="font-semibold text-amber-600 dark:text-amber-400 mb-2 flex items-center gap-2"><IconLightbulb className="text-amber-600" /> When to Use RAG</p>
+    <p className="font-semibold text-amber-600 dark:text-amber-400 mb-2 flex items-center gap-2"><IconLightbulb className="text-amber-600" /> RAG 사용 시기</p>
     <ul className="text-sm space-y-1 text-muted-foreground">
-      <li>Customer support bots</li>
-      <li>Documentation search</li>
-      <li>Internal knowledge bases</li>
-      <li>Any domain-specific Q&A</li>
-      <li>When accuracy matters</li>
+      <li>고객 지원 봇</li>
+      <li>문서 검색</li>
+      <li>내부 지식 기반</li>
+      <li>모든 도메인별 Q&A</li>
+      <li>정확성이 중요할 때</li>
     </ul>
   </div>
 </div>
 
-## Embeddings: How Search Works
+## Embeddings: 검색 작동 방식
 
-How does RAG know which documents are "relevant"? It uses **embeddings** - a way to turn text into numbers that capture meaning.
+RAG는 어떤 문서가 "관련성"이 있는지 어떻게 알까요? **embeddings**을 사용합니다 - 텍스트를 의미를 포착하는 숫자로 변환하는 방법입니다.
 
-### What Are Embeddings?
+### Embeddings란?
 
-An embedding is a list of numbers (a "vector") that represents the meaning of text. Similar meanings = similar numbers.
+embedding은 텍스트의 의미를 나타내는 숫자 목록(벡터)입니다. 비슷한 의미 = 비슷한 숫자입니다.
 
 <EmbeddingsDemo />
 
-### Semantic Search
+### 시맨틱 검색
 
-With embeddings, you can search by meaning, not just keywords:
+embeddings를 사용하면 키워드가 아닌 의미로 검색할 수 있습니다:
 
 <Compare 
-  before={{ label: "Keyword Search", content: "Query: 'return policy'\nFinds: Documents containing 'return' and 'policy'\nMisses: 'How to get a refund'" }}
-  after={{ label: "Semantic Search", content: "Query: 'return policy'\nFinds: All related documents including:\n- 'Refund guidelines'\n- 'How to send items back'\n- 'Money-back guarantee'" }}
+  before={{ label: "키워드 검색", content: "쿼리: '반품 정책'\n찾음: '반품'과 '정책'을 포함하는 문서\n놓침: '환불 받는 방법'" }}
+  after={{ label: "시맨틱 검색", content: "쿼리: '반품 정책'\n찾음: 관련된 모든 문서 포함:\n- '환불 가이드라인'\n- '제품 반송 방법'\n- '환불 보장'" }}
 />
 
-This is why RAG is so powerful - it finds relevant information even when the exact words don't match.
+이것이 RAG가 강력한 이유입니다 - 정확한 단어가 일치하지 않아도 관련 정보를 찾습니다.
 
 ## Function Calling / Tool Use
 
-Function calling lets AI use external tools - like searching the web, checking a database, or calling an API.
+Function calling은 AI가 웹 검색, 데이터베이스 확인, API 호출과 같은 외부 도구를 사용할 수 있게 해줍니다.
 
-<Callout type="tip" title="Also Called">
-Different AI providers call this different things: "function calling" (OpenAI), "tool use" (Anthropic/Claude), or "tools" (general term). They all mean the same thing.
+<Callout type="tip" title="다른 이름들">
+AI 제공업체마다 다르게 부릅니다: "function calling" (OpenAI), "tool use" (Anthropic/Claude), 또는 "tools" (일반적인 용어). 모두 같은 것을 의미합니다.
 </Callout>
 
-### How It Works
+### 작동 방식
 
-1. You tell the AI what tools are available
-2. AI decides if it needs a tool to answer
-3. AI outputs a structured request for the tool
-4. Your code runs the tool and returns results
-5. AI uses the results to form its answer
+1. AI에게 어떤 도구가 사용 가능한지 알려줍니다
+2. AI가 답변에 도구가 필요한지 결정합니다
+3. AI가 도구에 대한 구조화된 요청을 출력합니다
+4. 코드가 도구를 실행하고 결과를 반환합니다
+5. AI가 결과를 사용하여 답변을 만듭니다
 
 <TryIt 
-  title="Function Calling Example"
-  description="This prompt shows how AI decides to use a tool:"
-  prompt={`You have access to these tools:
+  title="Function Calling 예시"
+  description="이 프롬프트는 AI가 도구를 사용하기로 결정하는 방법을 보여줍니다:"
+  prompt={`다음 도구에 접근할 수 있습니다:
 
-1. get_weather(city: string) - Get current weather for a city
-2. search_web(query: string) - Search the internet
-3. calculate(expression: string) - Do math calculations
+1. get_weather(city: string) - 도시의 현재 날씨를 가져옵니다
+2. search_web(query: string) - 인터넷을 검색합니다
+3. calculate(expression: string) - 수학 계산을 수행합니다
 
-User: What's the weather like in Tokyo right now?
+사용자: 지금 도쿄 날씨가 어때요?
 
-Think step by step: Do you need a tool? Which one? What parameters?`}
+단계별로 생각해 보세요: 도구가 필요한가요? 어떤 도구인가요? 어떤 매개변수가 필요한가요?`}
 />
 
-## Summarization: Managing Long Conversations
+## 요약: 긴 대화 관리하기
 
-As conversations get longer, you'll hit the context window limit. Since AI is stateless (it doesn't remember anything), long conversations can overflow. The solution? **Summarization**.
+대화가 길어지면 컨텍스트 윈도우 제한에 도달합니다. AI는 상태를 저장하지 않으므로(아무것도 기억하지 못함) 긴 대화는 넘칠 수 있습니다. 해결책은? **요약**입니다.
 
-### The Problem
+### 문제
 
 <Compare 
-  before={{ label: "Without Summarization", content: "Message 1 (500 tokens)\nMessage 2 (800 tokens)\nMessage 3 (600 tokens)\n... 50 more messages ...\n────────────────────\n= 40,000+ tokens\n= OVER THE LIMIT!" }}
-  after={{ label: "With Summarization", content: "[Summary]: 200 tokens\nRecent messages: 2,000 tokens\nCurrent query: 100 tokens\n────────────────────\n= 2,300 tokens\n= Fits perfectly!" }}
+  before={{ label: "요약 없이", content: "메시지 1 (500 토큰)\n메시지 2 (800 토큰)\n메시지 3 (600 토큰)\n... 50개 이상의 메시지 ...\n────────────────────\n= 40,000+ 토큰\n= 제한 초과!" }}
+  after={{ label: "요약 포함", content: "[요약]: 200 토큰\n최근 메시지: 2,000 토큰\n현재 쿼리: 100 토큰\n────────────────────\n= 2,300 토큰\n= 완벽하게 맞음!" }}
 />
 
-### Summarization Strategies
+### 요약 전략
 
-Different approaches work for different use cases. Click each strategy to see how it processes the same conversation:
+다른 접근 방식은 다른 사용 사례에 적합합니다. 각 전략을 클릭하여 동일한 대화를 어떻게 처리하는지 확인하세요:
 
 <SummarizationDemo />
 
-### What to Capture in Summaries
+### 요약에서 캡처할 내용
 
-A good conversation summary preserves what matters:
+좋은 대화 요약은 중요한 것을 보존합니다:
 
 <Checklist 
-  title="Summary Checklist"
+  title="요약 체크리스트"
   items={[
-    { text: "Key decisions made" },
-    { text: "Important facts mentioned" },
-    { text: "User preferences discovered" },
-    { text: "Current task or goal" },
-    { text: "Any pending questions" },
-    { text: "Tone and formality level" }
+    { text: "내린 주요 결정" },
+    { text: "언급된 중요한 사실" },
+    { text: "발견된 사용자 선호도" },
+    { text: "현재 작업 또는 목표" },
+    { text: "보류 중인 질문" },
+    { text: "톤과 격식 수준" }
   ]}
 />
 
-### Try It: Create a Summary
+### 직접 해보기: 요약 만들기
 
 <TryIt 
-  title="Conversation Summarizer"
-  description="Practice creating a context-preserving summary from this conversation:"
-  prompt={`Summarize this conversation for context management. The summary will replace the full conversation in the AI's memory.
+  title="대화 요약기"
+  description="이 대화에서 컨텍스트를 보존하는 요약을 만드는 연습을 해보세요:"
+  prompt={`컨텍스트 관리를 위해 이 대화를 요약하세요. 요약은 AI 메모리의 전체 대화를 대체합니다.
 
-CONVERSATION:
-User: Hi, I'm learning Python for data analysis
-Assistant: Welcome! Python is great for data analysis. What's your current experience level?
-User: I know basic Excel. Complete beginner with programming.
-Assistant: Perfect starting point! Let's begin with variables - they're like Excel cells that store data.
-User: Can you explain variables?
-Assistant: Variables are containers for storing data. In Python: name = "Alice" or age = 25
-User: What about lists? I need to handle multiple values.
-Assistant: Lists are like Excel columns! Create one like: prices = [10, 20, 30]. Access items with prices[0].
-User: Can I do calculations on lists?
-Assistant: Yes! Use sum(prices), len(prices), or max(prices). For complex analysis, we'll use pandas later.
-User: What's pandas?
-Assistant: Pandas is a library for data analysis - think "Excel on steroids". It has DataFrames (like spreadsheets).
+대화:
+사용자: 안녕하세요, 데이터 분석을 위해 Python을 배우고 있어요
+어시스턴트: 환영합니다! Python은 데이터 분석에 훌륭합니다. 현재 경험 수준이 어떻게 되시나요?
+사용자: 기본 Excel은 알아요. 프로그래밍은 완전 초보예요.
+어시스턴트: 완벽한 시작점이에요! 변수부터 시작합시다 - 데이터를 저장하는 Excel 셀과 같습니다.
+사용자: 변수를 설명해 주시겠어요?
+어시스턴트: 변수는 데이터를 저장하는 컨테이너입니다. Python에서: name = "Alice" 또는 age = 25
+사용자: 리스트는요? 여러 값을 처리해야 해요.
+어시스턴트: 리스트는 Excel 열과 같습니다! 다음과 같이 만드세요: prices = [10, 20, 30]. prices[0]으로 항목에 접근합니다.
+사용자: 리스트에서 계산할 수 있나요?
+어시스턴트: 네! sum(prices), len(prices), 또는 max(prices)를 사용하세요. 복잡한 분석은 나중에 pandas를 사용합니다.
+사용자: pandas가 뭐예요?
+어시스턴트: Pandas는 데이터 분석을 위한 라이브러리입니다 - "스테로이드를 맞은 Excel"이라고 생각하세요. 스프레드시트 같은 DataFrame이 있습니다.
 
-CREATE A SUMMARY that captures:
-1. User's goal and background (1 sentence)
-2. Topics covered so far (1 sentence)  
-3. User's learning style/preferences (1 sentence)
-4. What to cover next (1 sentence)`}
+다음을 캡처하는 요약을 만드세요:
+1. 사용자의 목표와 배경 (1문장)
+2. 지금까지 다룬 주제 (1문장)  
+3. 사용자의 학습 스타일/선호도 (1문장)
+4. 다음에 다룰 내용 (1문장)`}
 />
 
-### When to Summarize
+### 요약 시점
 
-<TryIt compact prompt={`You are managing a conversation's context window. Given these conditions, decide when to trigger summarization:
+<TryIt compact prompt={`대화의 컨텍스트 윈도우를 관리하고 있습니다. 다음 조건이 주어졌을 때, 요약을 트리거할 시점을 결정하세요:
 
-CONTEXT WINDOW: 8,000 tokens max
-CURRENT USAGE:
-- System prompt: 500 tokens
-- Conversation history: 6,200 tokens  
-- Buffer for response: 1,500 tokens
+컨텍스트 윈도우: 최대 8,000 토큰
+현재 사용량:
+- 시스템 프롬프트: 500 토큰
+- 대화 기록: 6,200 토큰  
+- 응답용 버퍼: 1,500 토큰
 
-RULES:
-- Summarize when history exceeds 70% of available space
-- Keep last 5 messages intact
-- Preserve all user preferences and decisions
+규칙:
+- 기록이 사용 가능한 공간의 70%를 초과하면 요약
+- 마지막 5개 메시지는 그대로 유지
+- 모든 사용자 선호도와 결정 보존
 
-Should you summarize now? If yes, what messages should be summarized vs kept intact?`} />
+지금 요약해야 하나요? 그렇다면 어떤 메시지를 요약하고 어떤 메시지를 그대로 유지해야 하나요?`} />
 
 ## MCP: Model Context Protocol
 
-MCP (Model Context Protocol) is a standard way to connect AI to external data and tools. Instead of building custom integrations for each AI provider, MCP provides a universal interface.
+MCP (Model Context Protocol)는 AI를 외부 데이터 및 도구에 연결하는 표준 방법입니다. 각 AI 제공업체를 위한 사용자 정의 통합을 구축하는 대신 MCP는 범용 인터페이스를 제공합니다.
 
-### Why MCP?
+### MCP를 사용하는 이유
 
 <InfoGrid columns={2} items={[
-  { label: "Without MCP", description: "Build separate integrations for ChatGPT, Claude, Gemini... Maintain multiple codebases. Break when APIs change.", color: "red" },
-  { label: "With MCP", description: "Build once, works everywhere. Standard protocol. AI can discover and use your tools automatically.", color: "green" },
+  { label: "MCP 없이", description: "ChatGPT, Claude, Gemini용으로 별도의 통합을 구축... 여러 코드베이스 유지... API가 변경되면 중단됨.", color: "red" },
+  { label: "MCP 사용", description: "한 번 구축하면 어디서나 작동. 표준 프로토콜. AI가 자동으로 도구를 발견하고 사용 가능.", color: "green" },
 ]} />
 
-### MCP Provides
+### MCP가 제공하는 것
 
-- **Resources**: Data the AI can read (files, database records, API responses)
-- **Tools**: Actions the AI can take (search, create, update, delete)
-- **Prompts**: Pre-built prompt templates
+- **Resources**: AI가 읽을 수 있는 데이터 (파일, 데이터베이스 레코드, API 응답)
+- **Tools**: AI가 수행할 수 있는 작업 (검색, 생성, 업데이트, 삭제)
+- **Prompts**: 미리 만들어진 프롬프트 템플릿
 
-<Callout type="info" title="prompts.chat Uses MCP">
-This platform has an MCP server! You can connect it to Claude Desktop or other MCP-compatible clients to search and use prompts directly from your AI assistant.
+<Callout type="info" title="prompts.chat는 MCP를 사용합니다">
+이 플랫폼에는 MCP 서버가 있습니다! Claude Desktop 또는 다른 MCP 호환 클라이언트에 연결하여 AI 어시스턴트에서 직접 프롬프트를 검색하고 사용할 수 있습니다.
 </Callout>
 
-## Building Context: The Complete Picture
+## 컨텍스트 구축: 전체 그림
 
 <ContextPlayground />
 
-## Best Practices
+## 모범 사례
 
 <Checklist 
-  title="Context Engineering Checklist"
+  title="컨텍스트 엔지니어링 체크리스트"
   items={[
-    { text: "Keep system prompts concise but complete" },
-    { text: "Only include relevant context (not everything)" },
-    { text: "Summarize long conversations" },
-    { text: "Use RAG for domain-specific knowledge" },
-    { text: "Give AI tools for real-time data" },
-    { text: "Monitor token usage to stay within limits" },
-    { text: "Test with edge cases (very long inputs, etc.)" }
+    { text: "시스템 프롬프트를 간결하지만 완전하게 유지" },
+    { text: "관련 컨텍스트만 포함 (모든 것이 아님)" },
+    { text: "긴 대화 요약" },
+    { text: "도메인별 지식에 RAG 사용" },
+    { text: "실시간 데이터를 위해 AI에 도구 제공" },
+    { text: "제한 내에서 유지하기 위해 토큰 사용량 모니터링" },
+    { text: "엣지 케이스로 테스트 (매우 긴 입력 등)" }
   ]}
 />
 
-## Summary
+## 요약
 
-Context engineering is about giving AI the right information:
+컨텍스트 엔지니어링은 AI에게 적절한 정보를 제공하는 것입니다:
 
-- **AI is stateless** - include everything it needs every time
-- **RAG** retrieves relevant documents to augment prompts
-- **Embeddings** enable semantic search (meaning, not just keywords)
-- **Function calling** lets AI use external tools
-- **Summarization** manages long conversations
-- **MCP** standardizes how AI connects to data and tools
+- **AI는 상태를 저장하지 않음** - 매번 필요한 모든 것을 포함하세요
+- **RAG**는 프롬프트를 보강하기 위해 관련 문서를 검색합니다
+- **Embeddings**는 시맨틱 검색을 가능하게 합니다 (키워드가 아닌 의미)
+- **Function calling**은 AI가 외부 도구를 사용할 수 있게 합니다
+- **요약**은 긴 대화를 관리합니다
+- **MCP**는 AI가 데이터 및 도구에 연결하는 방법을 표준화합니다
 
-<Callout type="tip" title="Remember">
-The quality of AI output depends on the quality of context you provide. Better context = better answers.
+<Callout type="tip" title="기억하세요">
+AI 출력의 품질은 제공하는 컨텍스트의 품질에 따라 달라집니다. 더 좋은 컨텍스트 = 더 좋은 답변.
 </Callout>

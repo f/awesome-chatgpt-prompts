@@ -1,323 +1,323 @@
-AI can accelerate research workflows from literature review to data analysis. This chapter covers prompting techniques for academic and professional research.
+ИИ может ускорить исследовательские рабочие процессы — от обзора литературы до анализа данных. В этой главе рассматриваются техники промптинга для академических и профессиональных исследований.
 
-<Callout type="info" title="AI in Research">
-AI can assist with synthesis, analysis, and writing—but cannot replace critical thinking, ethical judgment, or domain expertise. Always verify claims and cite original sources.
+<Callout type="info" title="ИИ в исследованиях">
+ИИ может помочь с синтезом, анализом и написанием текстов, но не может заменить критическое мышление, этическую оценку или экспертизу в предметной области. Всегда проверяйте утверждения и цитируйте первоисточники.
 </Callout>
 
-## Literature & Information Review
+## Обзор литературы и информации
 
-### Do's and Don'ts: Research Prompts
+### Что делать и чего избегать: исследовательские промпты
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Summarize this paper for me." }}
-  after={{ label: "✓ Structured request", content: "Summarize this paper for my literature review on machine learning in healthcare.\n\nProvide:\n1. Main thesis (1-2 sentences)\n2. Methodology\n3. Key findings (bullets)\n4. Limitations\n5. Relevance to my research\n\nReading level: Graduate student" }}
+  before={{ label: "❌ Размытый запрос", content: "Обобщи эту статью для меня." }}
+  after={{ label: "✓ Структурированный запрос", content: "Обобщи эту статью для моего обзора литературы по машинному обучению в здравоохранении.\n\nПредоставь:\n1. Основной тезис (1-2 предложения)\n2. Методология\n3. Ключевые выводы (списком)\n4. Ограничения\n5. Релевантность для моего исследования\n\nУровень чтения: аспирант" }}
 />
 
-### Paper Summarization
+### Реферирование статей
 
-<TryIt compact prompt={`Summarize this academic paper:
+<TryIt compact prompt={`Обобщи эту академическую статью:
 
-[paper abstract or full text]
+[аннотация или полный текст статьи]
 
-Provide:
-1. **Main thesis** - Central argument (1-2 sentences)
-2. **Methodology** - How they approached it
-3. **Key findings** - Most important results (bullet points)
-4. **Contributions** - What's new/significant
-5. **Limitations** - Acknowledged or apparent weaknesses
-6. **Relevance to [my research topic]** - How it connects
+Предоставь:
+1. **Основной тезис** - Центральный аргумент (1-2 предложения)
+2. **Методология** - Как они подошли к исследованию
+3. **Ключевые выводы** - Наиболее важные результаты (списком)
+4. **Вклад** - Что нового/значимого
+5. **Ограничения** - Признанные или очевидные слабости
+6. **Релевантность для [моей темы исследования]** - Как это связано
 
-Reading level: \${readingLevel:graduate}`} />
+Уровень чтения: \${readingLevel:аспирант}`} />
 
-### Literature Synthesis
+### Синтез литературы
 
-<TryIt compact prompt={`Synthesize these papers on \${topic:the effectiveness of remote work}:
+<TryIt compact prompt={`Синтезируй эти статьи по теме \${topic:эффективность удалённой работы}:
 
-Paper 1: \${paper1:Smith 2021 - found productivity increased 15%}
-Paper 2: \${paper2:Jones 2022 - noted collaboration challenges}
-Paper 3: \${paper3:Chen 2023 - hybrid model showed best outcomes}
+Статья 1: \${paper1:Smith 2021 - обнаружил рост продуктивности на 15%}
+Статья 2: \${paper2:Jones 2022 - отметил проблемы с коллаборацией}
+Статья 3: \${paper3:Chen 2023 - гибридная модель показала лучшие результаты}
 
-Analyze:
-1. **Common themes** - What do they agree on?
-2. **Contradictions** - Where do they disagree?
-3. **Gaps** - What's not addressed?
-4. **Evolution** - How has thinking progressed?
-5. **Synthesis** - Integrated understanding
+Проанализируй:
+1. **Общие темы** - В чём авторы согласны?
+2. **Противоречия** - Где они расходятся?
+3. **Пробелы** - Что не рассмотрено?
+4. **Эволюция** - Как развивалась мысль?
+5. **Синтез** - Интегрированное понимание
 
-Format as: Literature review paragraph suitable for \${outputType:thesis}`} />
+Формат: параграф обзора литературы, подходящий для \${outputType:диссертации}`} />
 
-### Research Question Development
+### Разработка исследовательских вопросов
 
-<TryIt compact prompt={`Help me develop research questions for \${topic:AI adoption in healthcare}.
+<TryIt compact prompt={`Помоги мне разработать исследовательские вопросы для \${topic:внедрения ИИ в здравоохранении}.
 
-Context:
-- Field: \${field:health informatics}
-- Current knowledge: \${currentKnowledge:AI tools exist but adoption is slow}
-- Gap identified: \${gap:limited understanding of physician resistance factors}
-- My interest: \${interest:organizational change management}
+Контекст:
+- Область: \${field:медицинская информатика}
+- Текущие знания: \${currentKnowledge:инструменты ИИ существуют, но внедрение идёт медленно}
+- Выявленный пробел: \${gap:ограниченное понимание факторов сопротивления врачей}
+- Мой интерес: \${interest:управление организационными изменениями}
 
-Generate:
-1. **Primary RQ** - Main question to answer
-2. **Sub-questions** - Supporting inquiries (3-4)
-3. **Hypotheses** - Testable predictions (if applicable)
+Сгенерируй:
+1. **Основной исследовательский вопрос** - Главный вопрос для ответа
+2. **Подвопросы** - Вспомогательные вопросы (3-4)
+3. **Гипотезы** - Проверяемые предположения (если применимо)
 
-Criteria: Questions should be:
-- Answerable with available methods
-- Significant to the field
-- Appropriately scoped`} />
+Критерии: Вопросы должны быть:
+- Отвечаемыми с помощью доступных методов
+- Значимыми для области
+- Адекватными по охвату`} />
 
-## Data Analysis
+## Анализ данных
 
-<Callout type="warning" title="AI Cannot Analyze Your Actual Data">
-AI can guide methodology and help interpret results, but it cannot access or process your actual datasets. Never paste sensitive research data into prompts. Use AI for **guidance**, not computation.
+<Callout type="warning" title="ИИ не может анализировать ваши реальные данные">
+ИИ может помочь с методологией и интерпретацией результатов, но не может получить доступ к вашим реальным наборам данных или обработать их. Никогда не вставляйте конфиденциальные исследовательские данные в промпты. Используйте ИИ для **руководства**, а не для вычислений.
 </Callout>
 
-### Statistical Analysis Guidance
+### Руководство по статистическому анализу
 
-<TryIt compact prompt={`Help me analyze this data:
+<TryIt compact prompt={`Помоги мне проанализировать эти данные:
 
-Data description:
-- Variables: \${variables:age (continuous), treatment group (categorical: A/B/C), outcome score (continuous)}
-- Sample size: \${sampleSize:n=150 (50 per group)}
-- Research question: \${researchQuestion:Does treatment type affect outcome scores?}
-- Data characteristics: \${characteristics:normally distributed, no missing values}
+Описание данных:
+- Переменные: \${variables:возраст (непрерывная), группа лечения (категориальная: A/B/C), показатель результата (непрерывный)}
+- Размер выборки: \${sampleSize:n=150 (50 в каждой группе)}
+- Исследовательский вопрос: \${researchQuestion:Влияет ли тип лечения на показатели результата?}
+- Характеристики данных: \${characteristics:нормально распределены, нет пропущенных значений}
 
-Advise on:
-1. **Appropriate tests** - Which statistical tests to use
-2. **Assumptions to check** - Prerequisites
-3. **How to interpret results** - What different outcomes mean
-4. **Effect size** - Practical significance
-5. **Reporting** - How to present findings
+Дай совет по:
+1. **Подходящие тесты** - Какие статистические тесты использовать
+2. **Проверяемые предположения** - Предварительные условия
+3. **Как интерпретировать результаты** - Что означают разные исходы
+4. **Размер эффекта** - Практическая значимость
+5. **Отчётность** - Как представить выводы
 
-Note: Guide my analysis, don't fabricate results.`} />
+Примечание: Помоги с анализом, не выдумывай результаты.`} />
 
-### Qualitative Analysis
+### Качественный анализ
 
-<TryIt compact prompt={`Help me analyze these qualitative responses:
+<TryIt compact prompt={`Помоги мне проанализировать эти качественные ответы:
 
-Responses:
-\${responses:paste interview excerpts or survey responses here}
+Ответы:
+\${responses:вставьте выдержки из интервью или ответы опроса здесь}
 
-Using \${method:thematic analysis}:
+Используя \${method:тематический анализ}:
 
-1. **Initial codes** - Identify recurring concepts
-2. **Categories** - Group related codes
-3. **Themes** - Overarching patterns
-4. **Relationships** - How themes connect
-5. **Representative quotes** - Evidence for each theme
+1. **Начальные коды** - Выяви повторяющиеся концепции
+2. **Категории** - Сгруппируй связанные коды
+3. **Темы** - Общие паттерны
+4. **Связи** - Как темы соединяются
+5. **Репрезентативные цитаты** - Доказательства для каждой темы
 
-Maintain: Participant voice and context`} />
+Сохрани: Голос и контекст участников`} />
 
-### Data Interpretation
+### Интерпретация данных
 
-<TryIt compact prompt={`Help me interpret these findings:
+<TryIt compact prompt={`Помоги мне интерпретировать эти результаты:
 
-Results:
-\${results:paste statistical output or data summary here}
+Результаты:
+\${results:вставьте статистический вывод или сводку данных здесь}
 
-Context:
-- Research question: \${researchQuestion:Does X predict Y?}
-- Hypothesis: \${hypothesis:X positively predicts Y}
-- Expected results: \${expectedResults:significant positive correlation}
+Контекст:
+- Исследовательский вопрос: \${researchQuestion:Предсказывает ли X Y?}
+- Гипотеза: \${hypothesis:X положительно предсказывает Y}
+- Ожидаемые результаты: \${expectedResults:значимая положительная корреляция}
 
-Provide:
-1. **Plain language interpretation** - What does this mean?
-2. **Statistical significance** - What the p-values tell us
-3. **Practical significance** - Real-world meaning
-4. **Comparison to literature** - How does this fit?
-5. **Alternative explanations** - Other interpretations
-6. **Limitations of interpretation**`} />
+Предоставь:
+1. **Интерпретация простым языком** - Что это означает?
+2. **Статистическая значимость** - Что говорят p-значения
+3. **Практическая значимость** - Значение в реальном мире
+4. **Сравнение с литературой** - Как это вписывается?
+5. **Альтернативные объяснения** - Другие интерпретации
+6. **Ограничения интерпретации**`} />
 
-## Structured Analysis Frameworks
+## Структурированные аналитические фреймворки
 
-### PESTLE Analysis
+### PESTLE-анализ
 
-<TryIt compact prompt={`Conduct a PESTLE analysis for \${subject:electric vehicle industry in Europe}.
+<TryIt compact prompt={`Проведи PESTLE-анализ для \${subject:индустрии электромобилей в Европе}.
 
-**Political** factors:
-- Government policies, regulations, political stability
+**Политические** факторы:
+- Государственная политика, регулирование, политическая стабильность
 
-**Economic** factors:
-- Economic growth, inflation, exchange rates, unemployment
+**Экономические** факторы:
+- Экономический рост, инфляция, обменные курсы, безработица
 
-**Social** factors:
-- Demographics, cultural trends, lifestyle changes
+**Социальные** факторы:
+- Демография, культурные тренды, изменения образа жизни
 
-**Technological** factors:
-- Innovation, R&D, automation, technology changes
+**Технологические** факторы:
+- Инновации, НИОКР, автоматизация, технологические изменения
 
-**Legal** factors:
-- Legislation, regulatory bodies, employment law
+**Правовые** факторы:
+- Законодательство, регулирующие органы, трудовое право
 
-**Environmental** factors:
-- Climate, sustainability, environmental regulations
+**Экологические** факторы:
+- Климат, устойчивое развитие, экологические нормы
 
-For each: Current state + trends + implications`} />
+Для каждого: Текущее состояние + тренды + последствия`} />
 
-### Root Cause Analysis
+### Анализ коренных причин
 
-<TryIt compact prompt={`Perform root cause analysis for \${problem:customer churn increased 20% last quarter}.
+<TryIt compact prompt={`Проведи анализ коренных причин для \${problem:отток клиентов увеличился на 20% в прошлом квартале}.
 
-Problem statement:
-\${problemStatement:Monthly churn rate rose from 3% to 3.6% between Q3 and Q4}
+Формулировка проблемы:
+\${problemStatement:Ежемесячный показатель оттока вырос с 3% до 3,6% между Q3 и Q4}
 
-Using 5 Whys:
-1. Why? First level cause
-   2. Why? Deeper cause
-      3. Why? Deeper still
-         4. Why? Approaching root
-            5. Why? Root cause
+Используя метод 5 «Почему»:
+1. Почему? Причина первого уровня
+   2. Почему? Более глубокая причина
+      3. Почему? Ещё глубже
+         4. Почему? Приближаемся к корню
+            5. Почему? Коренная причина
 
-Alternative: Fishbone diagram categories
-- People
-- Process
-- Equipment
-- Materials
-- Environment
-- Management
+Альтернатива: Категории диаграммы Исикавы
+- Люди
+- Процесс
+- Оборудование
+- Материалы
+- Окружающая среда
+- Управление
 
-Provide: Root cause(s) + recommended actions`} />
+Предоставь: Коренную причину(ы) + рекомендуемые действия`} />
 
-### Gap Analysis
+### Gap-анализ
 
-<TryIt compact prompt={`Conduct a gap analysis for \${subject:our customer support operations}.
+<TryIt compact prompt={`Проведи gap-анализ для \${subject:нашей службы поддержки клиентов}.
 
-**Current State:**
-- \${currentState:Average response time 24 hours, CSAT 3.2/5}
+**Текущее состояние:**
+- \${currentState:Среднее время ответа 24 часа, CSAT 3.2/5}
 
-**Desired State:**
-- \${desiredState:Response time under 4 hours, CSAT 4.5/5}
+**Желаемое состояние:**
+- \${desiredState:Время ответа менее 4 часов, CSAT 4.5/5}
 
-**Gap Identification:**
-| Area | Current | Desired | Gap | Priority |
-|------|---------|---------|-----|----------|
-| ... | ... | ... | ... | H/M/L |
+**Выявление разрывов:**
+| Область | Текущее | Желаемое | Разрыв | Приоритет |
+|---------|---------|----------|--------|-----------|
+| ... | ... | ... | ... | В/С/Н |
 
-**Action Plan:**
-For each high-priority gap:
-- Specific actions
-- Resources needed
-- Timeline
-- Success metrics`} />
+**План действий:**
+Для каждого высокоприоритетного разрыва:
+- Конкретные действия
+- Необходимые ресурсы
+- Сроки
+- Метрики успеха`} />
 
-## Academic Writing Support
+## Поддержка академического письма
 
-### Argument Structure
+### Структура аргументации
 
-<TryIt compact prompt={`Help me structure an argument for \${topic:why remote work should become permanent policy}.
+<TryIt compact prompt={`Помоги мне структурировать аргумент для \${topic:почему удалённая работа должна стать постоянной политикой}.
 
-Main claim: \${thesis:Organizations should adopt permanent remote/hybrid policies for knowledge workers}
+Основное утверждение: \${thesis:Организации должны принять постоянную политику удалённой/гибридной работы для интеллектуальных работников}
 
-Required:
-1. **Premises** - Supporting claims that lead to conclusion
-2. **Evidence** - Data/sources for each premise
-3. **Counterarguments** - Opposing views
-4. **Rebuttals** - Responses to counterarguments
-5. **Logical flow** - How it all connects
+Требуется:
+1. **Посылки** - Поддерживающие утверждения, ведущие к выводу
+2. **Доказательства** - Данные/источники для каждой посылки
+3. **Контраргументы** - Противоположные точки зрения
+4. **Опровержения** - Ответы на контраргументы
+5. **Логический поток** - Как всё связано
 
-Check for:
-- Logical fallacies
-- Unsupported claims
-- Gaps in reasoning`} />
+Проверь на:
+- Логические ошибки
+- Неподтверждённые утверждения
+- Пробелы в рассуждениях`} />
 
-### Methods Section
+### Раздел методов
 
-<TryIt compact prompt={`Help me write a methods section for:
+<TryIt compact prompt={`Помоги мне написать раздел методов для:
 
-Study type: \${studyType:survey}
-Participants: \${participants:200 undergraduate students, convenience sampling}
-Materials: \${materials:online questionnaire with Likert scales}
-Procedure: \${procedure:participants completed 20-minute survey online}
-Analysis: \${analysis:descriptive statistics and regression analysis}
+Тип исследования: \${studyType:опрос}
+Участники: \${participants:200 студентов бакалавриата, выборка удобства}
+Материалы: \${materials:онлайн-анкета со шкалами Лайкерта}
+Процедура: \${procedure:участники заполняли 20-минутный опрос онлайн}
+Анализ: \${analysis:описательная статистика и регрессионный анализ}
 
-Standards: Follow \${standards:APA 7th edition} guidelines
-Include: Enough detail for replication
-Tone: Passive voice, past tense`} />
+Стандарты: Следуй рекомендациям \${standards:APA 7-е издание}
+Включи: Достаточно деталей для воспроизведения
+Стиль: Страдательный залог, прошедшее время`} />
 
-### Discussion Section
+### Раздел обсуждения
 
-<TryIt compact prompt={`Help me write a discussion section.
+<TryIt compact prompt={`Помоги мне написать раздел обсуждения.
 
-Key findings:
-\${findings:1. Significant positive correlation (r=0.45) between X and Y\n2. No significant difference between groups on secondary measure}
+Ключевые выводы:
+\${findings:1. Значимая положительная корреляция (r=0.45) между X и Y\n2. Нет значимых различий между группами по вторичному показателю}
 
-Structure:
-1. **Summary** - Brief restatement of main findings
-2. **Interpretation** - What the findings mean
-3. **Context** - How findings relate to existing literature
-4. **Implications** - Theoretical and practical significance
-5. **Limitations** - Study weaknesses
-6. **Future directions** - What research should follow
-7. **Conclusion** - Take-home message
+Структура:
+1. **Резюме** - Краткое повторение основных выводов
+2. **Интерпретация** - Что означают выводы
+3. **Контекст** - Как выводы соотносятся с существующей литературой
+4. **Импликации** - Теоретическая и практическая значимость
+5. **Ограничения** - Слабые стороны исследования
+6. **Направления будущих исследований** - Какие исследования должны последовать
+7. **Заключение** - Главный вывод
 
-Avoid: Overstating findings or introducing new results`} />
+Избегай: Преувеличения выводов или введения новых результатов`} />
 
-## Critical Analysis
+## Критический анализ
 
-### Source Evaluation
+### Оценка источников
 
-<TryIt compact prompt={`Evaluate this source for academic use:
+<TryIt compact prompt={`Оцени этот источник для академического использования:
 
-Source: \${source:paste citation or link here}
-Content summary: \${summary:brief description of what the source claims}
+Источник: \${source:вставьте цитату или ссылку здесь}
+Краткое содержание: \${summary:краткое описание того, что утверждает источник}
 
-Assess using CRAAP criteria:
-- **Currency**: When published? Updated? Current enough?
-- **Relevance**: Relates to my topic? Appropriate level?
-- **Authority**: Author credentials? Publisher reputation?
-- **Accuracy**: Supported by evidence? Peer-reviewed?
-- **Purpose**: Why was it written? Bias evident?
+Оцени по критериям CRAAP:
+- **Актуальность**: Когда опубликовано? Обновлялось? Достаточно актуально?
+- **Релевантность**: Относится к моей теме? Подходящий уровень?
+- **Авторитетность**: Квалификация автора? Репутация издателя?
+- **Точность**: Подкреплено доказательствами? Рецензировалось?
+- **Цель**: Зачем это было написано? Заметна предвзятость?
 
-Verdict: Highly credible / Use with caution / Avoid
-How to use: Recommendations for incorporation`} />
+Вердикт: Высоко достоверный / Использовать с осторожностью / Избегать
+Как использовать: Рекомендации по включению`} />
 
-### Argument Analysis
+### Анализ аргументации
 
-<TryIt compact prompt={`Analyze the argument in this text:
+<TryIt compact prompt={`Проанализируй аргументацию в этом тексте:
 
-\${text:paste the text you want to analyze}
+\${text:вставьте текст, который хотите проанализировать}
 
-Identify:
-1. **Main claim** - What's being argued
-2. **Supporting evidence** - What backs it up
-3. **Assumptions** - Unstated premises
-4. **Logical structure** - How conclusion follows
-5. **Strengths** - What's compelling
-6. **Weaknesses** - Logical gaps or fallacies
-7. **Alternative interpretations**
+Выяви:
+1. **Основное утверждение** - Что аргументируется
+2. **Подтверждающие доказательства** - Чем это подкрепляется
+3. **Допущения** - Неявные посылки
+4. **Логическая структура** - Как следует вывод
+5. **Сильные стороны** - Что убедительно
+6. **Слабые стороны** - Логические пробелы или ошибки
+7. **Альтернативные интерпретации**
 
-Provide: Fair, balanced assessment`} />
+Предоставь: Справедливую, сбалансированную оценку`} />
 
-## Prompt Templates from prompts.chat
+## Шаблоны промптов с prompts.chat
 
-### Act as a Research Assistant
+### Действуй как исследовательский ассистент
 
-<TryIt compact prompt={`I want you to act as a research assistant. Help me explore topics, find information, synthesize sources, and develop arguments. Ask clarifying questions, suggest relevant areas to investigate, and help me think critically about evidence. Be thorough but acknowledge the limits of your knowledge.`} />
+<TryIt compact prompt={`Я хочу, чтобы ты действовал как исследовательский ассистент. Помоги мне изучать темы, находить информацию, синтезировать источники и разрабатывать аргументы. Задавай уточняющие вопросы, предлагай релевантные области для исследования и помоги мне критически мыслить о доказательствах. Будь тщательным, но признавай пределы своих знаний.`} />
 
-### Act as a Data Analyst
+### Действуй как аналитик данных
 
-<TryIt compact prompt={`I want you to act as a data analyst. I will describe datasets and research questions, and you will suggest analysis approaches, help interpret results, and identify potential issues. Focus on sound methodology and clear communication of findings.`} />
+<TryIt compact prompt={`Я хочу, чтобы ты действовал как аналитик данных. Я буду описывать наборы данных и исследовательские вопросы, а ты будешь предлагать подходы к анализу, помогать интерпретировать результаты и выявлять потенциальные проблемы. Сосредоточься на надёжной методологии и ясном изложении выводов.`} />
 
-### Act as a Peer Reviewer
+### Действуй как рецензент
 
-<TryIt compact prompt={`I want you to act as an academic peer reviewer. I will share manuscripts or sections, and you will provide constructive feedback on methodology, argument, writing, and contribution to the field. Be rigorous but supportive, noting both strengths and areas for improvement.`} />
+<TryIt compact prompt={`Я хочу, чтобы ты действовал как академический рецензент. Я буду делиться рукописями или их разделами, а ты будешь предоставлять конструктивную обратную связь по методологии, аргументации, написанию и вкладу в область. Будь строгим, но поддерживающим, отмечая как сильные стороны, так и области для улучшения.`} />
 
-## Summary
+## Резюме
 
-<Callout type="tip" title="Key Techniques">
-Clearly state research context and goals, specify the analytical framework to use, request acknowledgment of limitations, ask for evidence-based reasoning, and maintain academic rigor and honesty.
+<Callout type="tip" title="Ключевые техники">
+Чётко формулируйте исследовательский контекст и цели, указывайте используемый аналитический фреймворк, запрашивайте признание ограничений, просите аргументацию на основе доказательств и поддерживайте академическую строгость и честность.
 </Callout>
 
 <Quiz 
-  question="What's the most important thing to remember when using AI for research?"
+  question="Что самое важное помнить при использовании ИИ для исследований?"
   options={[
-    "AI can replace the need for primary sources",
-    "AI analysis is always accurate and up-to-date",
-    "Always verify AI claims independently and cite original sources",
-    "AI can access and analyze your actual datasets"
+    "ИИ может заменить необходимость в первичных источниках",
+    "Анализ ИИ всегда точен и актуален",
+    "Всегда проверяйте утверждения ИИ независимо и цитируйте первоисточники",
+    "ИИ может получить доступ к вашим реальным наборам данных и анализировать их"
   ]}
   correctIndex={2}
-  explanation="AI can assist with synthesis and structure, but it can hallucinate citations, have outdated information, and cannot access your actual data. Always verify claims against primary sources and maintain academic integrity."
+  explanation="ИИ может помочь с синтезом и структурой, но может галлюцинировать цитаты, иметь устаревшую информацию и не может получить доступ к вашим реальным данным. Всегда проверяйте утверждения по первоисточникам и соблюдайте академическую честность."
 />
 
-Remember: AI can assist research but cannot replace critical thinking, ethical judgment, or domain expertise. Always verify claims independently.
+Помните: ИИ может помочь в исследованиях, но не может заменить критическое мышление, этическую оценку или экспертизу в предметной области. Всегда проверяйте утверждения независимо.

@@ -1,345 +1,345 @@
-AI is a powerful tool for both teaching and learning. This chapter covers prompts for educational contexts—from personalized tutoring to curriculum development.
+AI는 교육과 학습 모두에 강력한 도구입니다. 이 장에서는 개인화된 튜터링부터 교육과정 개발까지 교육적 맥락을 위한 프롬프트를 다룹니다.
 
-<Callout type="info" title="AI as Learning Partner">
-AI excels as a patient, adaptive tutor that can explain concepts multiple ways, generate unlimited practice problems, and provide instant feedback—available 24/7.
+<Callout type="info" title="학습 파트너로서의 AI">
+AI는 개념을 다양한 방식으로 설명하고, 무한한 연습 문제를 생성하며, 즉각적인 피드백을 제공할 수 있는 인내심 있고 적응력 있는 튜터로서 탁월합니다—24시간 언제든 이용 가능합니다.
 </Callout>
 
-## Personalized Learning
+## 개인화된 학습
 
-### Do's and Don'ts: Learning Prompts
+### 해야 할 것과 하지 말아야 할 것: 학습 프롬프트
 
 <Compare 
-  before={{ label: "❌ Passive request", content: "Explain quantum physics to me." }}
-  after={{ label: "✓ Context-rich request", content: "Explain quantum superposition to me.\n\nMy background: I understand basic chemistry and classical physics.\nLearning style: I learn best through analogies and examples.\nExplain with a simple analogy, then the core concept, then a practical example. Check my understanding with a question." }}
+  before={{ label: "❌ 수동적 요청", content: "양자 물리학을 설명해 주세요." }}
+  after={{ label: "✓ 맥락이 풍부한 요청", content: "양자 중첩을 설명해 주세요.\n\n제 배경: 기초 화학과 고전 물리학을 이해하고 있습니다.\n학습 스타일: 비유와 예시를 통해 가장 잘 배웁니다.\n간단한 비유로 시작해서 핵심 개념을 설명하고, 실용적인 예시를 들어주세요. 질문으로 제 이해도를 확인해 주세요." }}
 />
 
-### Concept Explanation
+### 개념 설명
 
-<TryIt compact prompt={`Explain [concept] to me.
+<TryIt compact prompt={`[개념]을 설명해 주세요.
 
-My background:
-- Current level: [beginner/intermediate/advanced]
-- Related knowledge: [what I already know]
-- Learning style: [visual/examples/theoretical]
+제 배경:
+- 현재 수준: [초급/중급/고급]
+- 관련 지식: [이미 알고 있는 것]
+- 학습 스타일: [시각적/예시/이론적]
 
-Explain with:
-1. Simple analogy to something familiar
-2. Core concept in plain language
-3. How it connects to what I know
-4. A practical example
-5. Common misconceptions to avoid
+다음을 포함해서 설명해 주세요:
+1. 익숙한 것에 대한 간단한 비유
+2. 쉬운 말로 된 핵심 개념
+3. 이미 알고 있는 것과의 연결
+4. 실용적인 예시
+5. 피해야 할 일반적인 오해
 
-Then check my understanding with a question.`} />
+그런 다음 질문으로 제 이해도를 확인해 주세요.`} />
 
-### Adaptive Tutoring
+### 적응형 튜터링
 
-<TryIt compact prompt={`You are my tutor for \${subject:calculus}. Teach me \${topic:derivatives} adaptively.
+<TryIt compact prompt={`당신은 \${subject:미적분}에 대한 제 튜터입니다. \${topic:미분}을 적응적으로 가르쳐 주세요.
 
-Start with a diagnostic question to assess my level.
-Based on my response:
-- If correct: Move to more advanced aspects
-- If partially correct: Clarify the gap, then continue
-- If incorrect: Step back and build foundation
+제 수준을 평가하기 위한 진단 질문으로 시작하세요.
+제 응답에 따라:
+- 정답인 경우: 더 고급 내용으로 이동
+- 부분적으로 맞은 경우: 부족한 부분을 명확히 한 후 계속
+- 틀린 경우: 한 걸음 물러나서 기초를 쌓기
 
-After each explanation:
-- Check understanding with a question
-- Adjust difficulty based on my answers
-- Provide encouragement and track progress`} />
+각 설명 후에:
+- 질문으로 이해도 확인
+- 제 답변에 따라 난이도 조정
+- 격려 제공 및 진행 상황 추적`} />
 
-### Learning Path Creation
+### 학습 경로 생성
 
-<TryIt compact prompt={`Create a learning path for \${goal:becoming a web developer}.
+<TryIt compact prompt={`\${goal:웹 개발자 되기}를 위한 학습 경로를 만들어 주세요.
 
-My situation:
-- Current skill level: \${skillLevel:complete beginner}
-- Time available: \${timeAvailable:10 hours per week}
-- Target timeline: \${timeline:6 months}
-- Learning preferences: \${preferences:projects and tutorials}
+제 상황:
+- 현재 기술 수준: \${skillLevel:완전 초보자}
+- 가용 시간: \${timeAvailable:주당 10시간}
+- 목표 기간: \${timeline:6개월}
+- 학습 선호도: \${preferences:프로젝트와 튜토리얼}
 
-Provide:
-1. Prerequisites check (what I need first)
-2. Milestone breakdown (phases with goals)
-3. Resources for each phase (free when possible)
-4. Practice projects at each stage
-5. Assessment criteria (how to know I'm ready to advance)`} />
+다음을 제공해 주세요:
+1. 선수 조건 확인 (먼저 필요한 것)
+2. 마일스톤 분석 (목표가 있는 단계)
+3. 각 단계별 자료 (가능하면 무료)
+4. 각 단계의 연습 프로젝트
+5. 평가 기준 (진행 준비가 됐는지 알 수 있는 방법)`} />
 
-## Study Assistance
+## 학습 보조
 
-<Callout type="tip" title="Active Learning Principle">
-Don't just read AI explanations passively. Ask it to quiz you, generate problems, and check your understanding. **Active recall beats passive review.**
+<Callout type="tip" title="능동적 학습 원칙">
+AI 설명을 수동적으로 읽지 마세요. AI에게 퀴즈를 내달라고 하고, 문제를 생성하게 하고, 이해도를 확인하세요. **능동적 회상이 수동적 복습보다 효과적입니다.**
 </Callout>
 
-### Summary Generation
+### 요약 생성
 
-<TryIt compact prompt={`Summarize this \${contentType:chapter} for study purposes.
+<TryIt compact prompt={`학습 목적으로 이 \${contentType:챕터}를 요약해 주세요.
 
-Content:
-\${content:paste your content here}
+내용:
+\${content:내용을 여기에 붙여넣기}
 
-Provide:
-1. **Key Concepts** (5-7 main ideas)
-2. **Important Terms** (with brief definitions)
-3. **Relationships** (how concepts connect)
-4. **Study Questions** (to test understanding)
-5. **Memory Aids** (mnemonics or associations)
+다음을 제공해 주세요:
+1. **핵심 개념** (5-7개의 주요 아이디어)
+2. **중요 용어** (간단한 정의 포함)
+3. **관계** (개념들이 어떻게 연결되는지)
+4. **학습 질문** (이해도 테스트용)
+5. **기억 도구** (니모닉 또는 연상)
 
-Format for easy review and memorization.`} />
+쉬운 복습과 암기를 위한 형식으로 작성해 주세요.`} />
 
-### Flashcard Generation
+### 플래시카드 생성
 
-<TryIt compact prompt={`Create flashcards for studying \${topic:World War II}.
+<TryIt compact prompt={`\${topic:제2차 세계대전} 학습을 위한 플래시카드를 만들어 주세요.
 
-Source material:
-\${content:paste your study material here}
+원본 자료:
+\${content:학습 자료를 여기에 붙여넣기}
 
-Format each card:
-Front: Question or term
-Back: Answer or definition
-Hint: Optional memory aid
+각 카드 형식:
+앞면: 질문 또는 용어
+뒷면: 답변 또는 정의
+힌트: 선택적 기억 도구
 
-Categories to cover:
-- Definitions (key terms)
-- Concepts (main ideas)
-- Relationships (how things connect)
-- Applications (real-world uses)
+다룰 카테고리:
+- 정의 (핵심 용어)
+- 개념 (주요 아이디어)
+- 관계 (사물이 어떻게 연결되는지)
+- 응용 (실제 사용)
 
-Generate \${numberOfCards:20} cards, balanced across categories.`} />
+카테고리 간 균형을 맞춰 \${numberOfCards:20}장의 카드를 생성해 주세요.`} />
 
-### Practice Problems
+### 연습 문제
 
-<TryIt compact prompt={`Generate practice problems for \${topic:quadratic equations}.
+<TryIt compact prompt={`\${topic:이차방정식}에 대한 연습 문제를 생성해 주세요.
 
-Difficulty levels:
-- 3 Basic (test fundamental understanding)
-- 3 Intermediate (require application)
-- 2 Advanced (require synthesis/analysis)
+난이도 수준:
+- 기본 3개 (기본적인 이해 테스트)
+- 중급 3개 (응용 필요)
+- 고급 2개 (종합/분석 필요)
 
-For each problem:
-1. Clear problem statement
-2. Space for student work
-3. Hints available on request
-4. Detailed solution with explanation
+각 문제에 대해:
+1. 명확한 문제 설명
+2. 학생 풀이 공간
+3. 요청 시 힌트 제공
+4. 설명이 포함된 상세한 풀이
 
-Include variety: \${problemTypes:calculation, conceptual, application}`} />
+다양성 포함: \${problemTypes:계산, 개념, 응용}`} />
 
-## Teaching Tools
+## 교수 도구
 
-### Lesson Plan Creation
+### 수업 계획 작성
 
-<TryIt compact prompt={`Create a lesson plan for teaching \${topic:photosynthesis}.
+<TryIt compact prompt={`\${topic:광합성}을 가르치기 위한 수업 계획을 만들어 주세요.
 
-Context:
-- Grade/Level: \${audience:8th grade science}
-- Class duration: \${duration:50 minutes}
-- Class size: \${classSize:25 students}
-- Prior knowledge: \${prerequisites:basic cell structure}
+맥락:
+- 학년/수준: \${audience:중학교 2학년 과학}
+- 수업 시간: \${duration:50분}
+- 학급 규모: \${classSize:25명}
+- 선수 지식: \${prerequisites:기본 세포 구조}
 
-Include:
-1. **Learning Objectives** (SMART format)
-2. **Opening Hook** (5 min) - engagement activity
-3. **Instruction** (15-20 min) - core content delivery
-4. **Guided Practice** (10 min) - work with students
-5. **Independent Practice** (10 min) - students work alone
-6. **Assessment** (5 min) - check understanding
-7. **Closure** - summarize and preview
+포함 내용:
+1. **학습 목표** (SMART 형식)
+2. **도입 활동** (5분) - 참여 활동
+3. **수업** (15-20분) - 핵심 내용 전달
+4. **안내된 연습** (10분) - 학생들과 함께 작업
+5. **독립 연습** (10분) - 학생들이 혼자 작업
+6. **평가** (5분) - 이해도 확인
+7. **마무리** - 요약 및 다음 내용 예고
 
-Materials needed: list
-Differentiation strategies: for various learners`} />
+필요한 자료: 목록
+차별화 전략: 다양한 학습자를 위해`} />
 
-### Assignment Design
+### 과제 설계
 
-<TryIt compact prompt={`Design an assignment for \${learningObjective:analyzing primary sources}.
+<TryIt compact prompt={`\${learningObjective:1차 사료 분석}을 위한 과제를 설계해 주세요.
 
-Parameters:
-- Course: \${course:AP US History}
-- Due in: \${dueIn:2 weeks}
-- Individual/Group: \${grouping:individual}
-- Weight: \${weight:15% of grade}
+매개변수:
+- 과목: \${course:한국사}
+- 제출 기한: \${dueIn:2주}
+- 개인/그룹: \${grouping:개인}
+- 비중: \${weight:성적의 15%}
 
-Include:
-1. Clear instructions
-2. Grading rubric with criteria
-3. Example of expected quality
-4. Submission requirements
-5. Academic integrity reminders
+포함 내용:
+1. 명확한 지시사항
+2. 기준이 있는 채점 루브릭
+3. 기대되는 품질의 예시
+4. 제출 요건
+5. 학문적 정직성 안내
 
-The assignment should:
-- Assess \${skills:critical thinking and source evaluation}
-- Allow for \${allowFor:analysis and interpretation}
-- Be completable in approximately \${hours:8 hours}`} />
+과제는 다음을 충족해야 합니다:
+- \${skills:비판적 사고와 사료 평가} 평가
+- \${allowFor:분석 및 해석} 허용
+- 약 \${hours:8시간} 내에 완료 가능`} />
 
-### Quiz Generation
+### 퀴즈 생성
 
-<TryIt compact prompt={`Create a quiz on \${topic:the American Revolution}.
+<TryIt compact prompt={`\${topic:한국 독립운동}에 대한 퀴즈를 만들어 주세요.
 
-Format:
-- [X] Multiple choice questions (4 options each)
-- [X] True/False questions
-- [X] Short answer questions
-- [X] One essay question
+형식:
+- [X] 객관식 문제 (각 4개 선택지)
+- [X] 참/거짓 문제
+- [X] 단답형 문제
+- [X] 서술형 문제 1개
 
-Specifications:
-- Cover all key learning objectives
-- Range from recall to analysis
-- Include answer key with explanations
-- Time estimate: \${timeEstimate:30 minutes}
-- Point values for each section`} />
+사양:
+- 모든 핵심 학습 목표 포함
+- 회상부터 분석까지 범위
+- 설명이 포함된 정답지 포함
+- 예상 시간: \${timeEstimate:30분}
+- 각 섹션별 배점`} />
 
-## Specialized Learning Contexts
+## 특수 학습 맥락
 
-### Language Learning
+### 언어 학습
 
-<TryIt compact prompt={`Help me learn \${language:Spanish}.
+<TryIt compact prompt={`\${language:스페인어}를 배우는 것을 도와주세요.
 
-Current level: \${currentLevel:A2 - elementary}
-Native language: \${nativeLanguage:English}
-Goals: \${goals:conversation for travel}
+현재 수준: \${currentLevel:A2 - 초급}
+모국어: \${nativeLanguage:한국어}
+목표: \${goals:여행을 위한 회화}
 
-Today's lesson: \${focusArea:ordering food at restaurants}
+오늘의 수업: \${focusArea:레스토랑에서 음식 주문하기}
 
-Include:
-1. New vocabulary (5-10 words) with:
-   - Pronunciation guide
-   - Example sentences
-   - Common usage notes
-2. Grammar point with clear explanation
-3. Practice exercises
-4. Cultural context note
-5. Conversation practice scenario`} />
+포함 내용:
+1. 새로운 어휘 (5-10개 단어):
+   - 발음 가이드
+   - 예문
+   - 일반적인 사용법 참고
+2. 명확한 설명이 있는 문법 포인트
+3. 연습 문제
+4. 문화적 맥락 참고
+5. 회화 연습 시나리오`} />
 
-### Skill Development
+### 기술 개발
 
-<TryIt compact prompt={`I want to learn \${skill:guitar}. Be my coach.
+<TryIt compact prompt={`\${skill:기타}를 배우고 싶습니다. 제 코치가 되어주세요.
 
-My current level: \${currentLevel:complete beginner}
-Goal: \${goal:play 5 songs by ear}
-Practice time available: \${practiceTime:30 minutes per day}
+현재 수준: \${currentLevel:완전 초보자}
+목표: \${goal:5곡을 귀로 듣고 연주하기}
+연습 가능 시간: \${practiceTime:하루 30분}
 
-Provide:
-1. Assessment of starting point
-2. Breakdown of sub-skills needed
-3. Practice routine (specific exercises)
-4. Progress markers (how to measure improvement)
-5. Common plateaus and how to overcome them
-6. First week's practice plan in detail`} />
+다음을 제공해 주세요:
+1. 시작점 평가
+2. 필요한 하위 기술 분석
+3. 연습 루틴 (구체적인 운동)
+4. 진행 지표 (향상 측정 방법)
+5. 일반적인 정체기와 극복 방법
+6. 첫 주 연습 계획 상세`} />
 
-### Exam Preparation
+### 시험 준비
 
-<TryIt compact prompt={`Help me prepare for \${examName:the GRE}.
+<TryIt compact prompt={`\${examName:토익}을 준비하는 것을 도와주세요.
 
-Exam format: \${examFormat:Verbal, Quantitative, Writing sections}
-Time until exam: \${timeUntilExam:8 weeks}
-My weak areas: \${weakAreas:reading comprehension, geometry}
-Target score: \${targetScore:320+}
+시험 형식: \${examFormat:리스닝, 리딩 섹션}
+시험까지 남은 시간: \${timeUntilExam:8주}
+약점 분야: \${weakAreas:독해, 문법}
+목표 점수: \${targetScore:900점 이상}
 
-Create a study plan:
-1. Topics to cover (prioritized)
-2. Daily study schedule
-3. Practice test strategy
-4. Key formulas/facts to memorize
-5. Test-taking tips specific to this exam
-6. Day-before and day-of recommendations`} />
+학습 계획을 만들어 주세요:
+1. 다룰 주제 (우선순위별)
+2. 일일 학습 일정
+3. 모의고사 전략
+4. 암기해야 할 핵심 공식/사실
+5. 이 시험에 특화된 응시 팁
+6. 시험 전날 및 당일 권장사항`} />
 
-## Prompt Templates from prompts.chat
+## prompts.chat의 프롬프트 템플릿
 
-### Act as a Socratic Tutor
+### 소크라테스식 튜터 역할
 
-<TryIt compact prompt={`I want you to act as a Socratic tutor. You will help me learn by asking probing questions rather than giving direct answers. When I ask about a topic, respond with questions that guide me to discover the answer myself. If I'm stuck, provide hints but not solutions. Help me develop critical thinking skills.`} />
+<TryIt compact prompt={`당신이 소크라테스식 튜터 역할을 해주세요. 직접적인 답변을 주는 대신 탐구적인 질문을 통해 제가 배우도록 도와주세요. 제가 주제에 대해 물으면 스스로 답을 발견하도록 안내하는 질문으로 응답하세요. 막히면 해답이 아닌 힌트를 제공하세요. 비판적 사고 능력을 개발하도록 도와주세요.`} />
 
-### Act as an Educational Content Creator
+### 교육 콘텐츠 제작자 역할
 
-<TryIt compact prompt={`I want you to act as an educational content creator. You will create engaging, accurate educational materials for \${subject:biology}. Make complex topics accessible without oversimplifying. Use analogies, examples, and visual descriptions. Include knowledge checks and encourage active learning.`} />
+<TryIt compact prompt={`당신이 교육 콘텐츠 제작자 역할을 해주세요. \${subject:생물학}에 대해 매력적이고 정확한 교육 자료를 만들어 주세요. 복잡한 주제를 지나치게 단순화하지 않으면서 접근하기 쉽게 만드세요. 비유, 예시, 시각적 설명을 사용하세요. 지식 확인을 포함하고 능동적 학습을 장려하세요.`} />
 
-### Act as a Study Buddy
+### 스터디 버디 역할
 
-<TryIt compact prompt={`I want you to act as my study buddy. We're studying \${subject:organic chemistry} together. Quiz me on concepts, discuss ideas, help me work through problems, and keep me motivated. Be encouraging but also challenge me to think deeper. Let's make studying interactive and effective.`} />
+<TryIt compact prompt={`당신이 제 스터디 버디 역할을 해주세요. 우리는 함께 \${subject:유기화학}을 공부하고 있습니다. 개념에 대해 퀴즈를 내고, 아이디어를 토론하고, 문제를 풀도록 도와주고, 동기를 유지하게 해주세요. 격려하면서도 더 깊이 생각하도록 도전하세요. 공부를 상호작용적이고 효과적으로 만들어 봅시다.`} />
 
-## Accessibility in Education
+## 교육의 접근성
 
-### Content Adaptation
+### 콘텐츠 적응
 
-<TryIt compact prompt={`Adapt this educational content for \${accessibilityNeed:dyslexia-friendly format}:
+<TryIt compact prompt={`이 교육 콘텐츠를 \${accessibilityNeed:난독증 친화적 형식}에 맞게 적응해 주세요:
 
-Original content:
-\${content:paste your content here}
+원본 콘텐츠:
+\${content:내용을 여기에 붙여넣기}
 
-Adaptation needed:
-- [ ] Simplified language (lower reading level)
-- [ ] Visual descriptions (for text-to-speech)
-- [ ] Structured format (for cognitive accessibility)
-- [ ] Extended time considerations
-- [ ] Alternative explanations
+필요한 적응:
+- [ ] 단순화된 언어 (낮은 독해 수준)
+- [ ] 시각적 설명 (텍스트 음성 변환용)
+- [ ] 구조화된 형식 (인지 접근성용)
+- [ ] 연장된 시간 고려
+- [ ] 대체 설명
 
-Maintain:
-- All key learning objectives
-- Accuracy of content
-- Assessment equivalence`} />
+유지할 것:
+- 모든 핵심 학습 목표
+- 콘텐츠의 정확성
+- 평가 동등성`} />
 
-### Multiple Modalities
+### 다양한 양식
 
-<TryIt compact prompt={`Present \${concept:photosynthesis} in multiple ways:
+<TryIt compact prompt={`\${concept:광합성}을 여러 방식으로 제시해 주세요:
 
-1. **Text explanation** (clear prose)
-2. **Visual description** (describe a diagram)
-3. **Analogy** (relate to everyday experience)
-4. **Story/Narrative** (embed in a scenario)
-5. **Q&A format** (question and answer)
+1. **텍스트 설명** (명확한 산문)
+2. **시각적 설명** (다이어그램 설명)
+3. **비유** (일상 경험과 연결)
+4. **스토리/내러티브** (시나리오에 삽입)
+5. **Q&A 형식** (질문과 답변)
 
-This allows learners to engage with their preferred style.`} />
+이를 통해 학습자가 선호하는 스타일로 참여할 수 있습니다.`} />
 
-## Assessment & Feedback
+## 평가 및 피드백
 
-### Providing Feedback
+### 피드백 제공
 
-<TryIt compact prompt={`Provide educational feedback on this student work:
+<TryIt compact prompt={`이 학생 작업에 대한 교육적 피드백을 제공해 주세요:
 
-Assignment: \${assignment:5-paragraph essay on climate change}
-Student submission: \${work:paste student work here}
-Rubric: \${rubric:thesis clarity, evidence, organization, grammar}
+과제: \${assignment:기후 변화에 대한 5문단 에세이}
+학생 제출물: \${work:학생 작업을 여기에 붙여넣기}
+루브릭: \${rubric:논지 명확성, 증거, 구성, 문법}
 
-Feedback format:
-1. **Strengths** - What they did well (specific)
-2. **Areas for improvement** - What needs work (constructive)
-3. **Suggestions** - How to improve (actionable)
-4. **Grade/Score** - Based on rubric
-5. **Encouragement** - Motivational closing
+피드백 형식:
+1. **강점** - 잘한 점 (구체적으로)
+2. **개선 영역** - 작업이 필요한 부분 (건설적으로)
+3. **제안** - 개선 방법 (실행 가능하게)
+4. **점수/등급** - 루브릭 기반
+5. **격려** - 동기 부여하는 마무리
 
-Tone: Supportive, specific, growth-oriented`} />
+톤: 지지적, 구체적, 성장 지향적`} />
 
-### Self-Assessment Prompts
+### 자기 평가 프롬프트
 
-<TryIt compact prompt={`Help me assess my understanding of \${topic:the French Revolution}.
+<TryIt compact prompt={`\${topic:프랑스 혁명}에 대한 제 이해도를 평가하는 것을 도와주세요.
 
-Ask me 5 questions that test:
-1. Basic recall
-2. Understanding
-3. Application
-4. Analysis
-5. Synthesis/Creation
+다음을 테스트하는 5개의 질문을 해주세요:
+1. 기본 회상
+2. 이해
+3. 응용
+4. 분석
+5. 종합/창작
 
-After each answer, tell me:
-- What I demonstrated understanding of
-- What I should review
-- How to deepen my knowledge
+각 답변 후에 알려주세요:
+- 이해한 것으로 보여준 내용
+- 복습해야 할 내용
+- 지식을 심화하는 방법
 
-Be honest but encouraging.`} />
+솔직하되 격려해 주세요.`} />
 
-## Summary
+## 요약
 
-<Callout type="tip" title="Key Techniques">
-Adapt to the learner's level, break complex topics into steps, include active practice (not just explanation), provide varied approaches, check understanding regularly, and give constructive feedback.
+<Callout type="tip" title="핵심 기법">
+학습자 수준에 맞게 조정하고, 복잡한 주제를 단계로 나누고, 능동적 연습을 포함하고(설명만 하지 말고), 다양한 접근법을 제공하고, 이해도를 정기적으로 확인하고, 건설적인 피드백을 제공하세요.
 </Callout>
 
 <Quiz 
-  question="What's the most effective way to use AI for learning?"
+  question="학습을 위해 AI를 가장 효과적으로 사용하는 방법은 무엇인가요?"
   options={[
-    "Read AI explanations passively like a textbook",
-    "Ask AI to quiz you and generate practice problems",
-    "Only use AI for homework answers",
-    "Avoid AI for learning entirely"
+    "교과서처럼 AI 설명을 수동적으로 읽기",
+    "AI에게 퀴즈를 내달라고 하고 연습 문제를 생성하게 하기",
+    "숙제 답변에만 AI 사용하기",
+    "학습에 AI를 전혀 사용하지 않기"
   ]}
   correctIndex={1}
-  explanation="Active recall beats passive review. Have AI quiz you, generate problems, and check your understanding—this builds stronger memory than just reading explanations."
+  explanation="능동적 회상이 수동적 복습보다 효과적입니다. AI에게 퀴즈를 내달라고 하고, 문제를 생성하게 하고, 이해도를 확인하세요—이것이 단순히 설명을 읽는 것보다 더 강한 기억을 형성합니다."
 />
 
-AI is a patient, always-available learning partner—use it to supplement, not replace, human instruction.
+AI는 인내심 있고 항상 이용 가능한 학습 파트너입니다—인간 교육을 대체하는 것이 아니라 보완하는 데 사용하세요.

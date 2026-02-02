@@ -1,373 +1,373 @@
-Beyond structure, effective prompt engineering is guided by principles—fundamental truths that apply across models, tasks, and contexts. Master these principles, and you'll be able to adapt to any prompting challenge.
+구조를 넘어서, 효과적인 프롬프트 엔지니어링은 원칙에 의해 안내됩니다—모델, 작업, 상황에 관계없이 적용되는 근본적인 진리입니다. 이 원칙들을 마스터하면 어떤 프롬프팅 도전에도 적응할 수 있습니다.
 
-<Callout type="info" title="The 8 Core Principles">
-These principles apply to every AI model and every task. Learn them once, use them everywhere.
+<Callout type="info" title="8가지 핵심 원칙">
+이 원칙들은 모든 AI 모델과 모든 작업에 적용됩니다. 한 번 배우면 어디서든 사용할 수 있습니다.
 </Callout>
 
-## Principle 1: Clarity Over Cleverness
+## 원칙 1: 명확함이 기교보다 중요합니다
 
-The best prompts are clear, not clever. AI models are literal interpreters—they work with exactly what you give them.
+최고의 프롬프트는 기교가 아닌 명확함을 추구합니다. AI 모델은 문자 그대로 해석합니다—여러분이 제공한 것을 정확히 그대로 처리합니다.
 
-### Be Explicit
-
-<Compare 
-  before={{ label: "Implicit (problematic)", content: "Make this better." }}
-  after={{ label: "Explicit (effective)", content: "Improve this email by:\n1. Making the subject line more compelling\n2. Shortening paragraphs to 2-3 sentences max\n3. Adding a clear call-to-action at the end" }}
-/>
-
-### Avoid Ambiguity
-
-Words can have multiple meanings. Choose precise language.
+### 명시적으로 작성하세요
 
 <Compare 
-  before={{ label: "Ambiguous", content: "Give me a short summary.\n(How short? 1 sentence? 1 paragraph? 1 page?)" }}
-  after={{ label: "Precise", content: "Summarize in exactly 3 bullet points, each under 20 words." }}
+  before={{ label: "암묵적 (문제 있음)", content: "이것 좀 더 좋게 만들어줘." }}
+  after={{ label: "명시적 (효과적)", content: "이 이메일을 다음과 같이 개선해주세요:\n1. 제목을 더 매력적으로 만들기\n2. 문단을 최대 2-3문장으로 줄이기\n3. 끝에 명확한 행동 유도 추가하기" }}
 />
 
-### State the Obvious
+### 모호함을 피하세요
 
-What's obvious to you isn't obvious to the model. Spell out assumptions.
+단어는 여러 의미를 가질 수 있습니다. 정확한 언어를 선택하세요.
+
+<Compare 
+  before={{ label: "모호함", content: "짧은 요약 좀 해줘.\n(얼마나 짧게? 1문장? 1문단? 1페이지?)" }}
+  after={{ label: "정확함", content: "정확히 3개의 글머리 기호로 요약해주세요. 각각 20단어 이내로 작성해주세요." }}
+/>
+
+### 당연한 것도 명시하세요
+
+여러분에게 당연한 것이 모델에게는 당연하지 않습니다. 가정을 명확히 밝히세요.
 
 ```
-You're helping me write a cover letter.
+자기소개서 작성을 도와주세요.
 
-Important context:
-- I'm applying for a Software Engineer position at Google
-- I have 5 years of experience in Python and distributed systems
-- The role requires leadership experience (I've led a team of 4)
-- I want to emphasize my open-source contributions
+중요한 맥락:
+- Google의 소프트웨어 엔지니어 직책에 지원합니다
+- Python과 분산 시스템에서 5년의 경험이 있습니다
+- 리더십 경험이 필요한 역할입니다 (4명 팀을 이끌었습니다)
+- 오픈소스 기여를 강조하고 싶습니다
 ```
 
-## Principle 2: Specificity Yields Quality
+## 원칙 2: 구체성이 품질을 결정합니다
 
-Vague inputs produce vague outputs. Specific inputs produce specific, useful outputs.
+모호한 입력은 모호한 출력을 만듭니다. 구체적인 입력은 구체적이고 유용한 출력을 만듭니다.
 
-### The Specificity Ladder
+### 구체성 단계
 
 <SpecificitySpectrum levels={[
-  { level: "Level 1", text: "Write about climate change" },
-  { level: "Level 2", text: "Write an article about climate change effects" },
-  { level: "Level 3", text: "Write a 500-word article about how climate change affects coral reefs" },
-  { level: "Level 4", text: "Write a 500-word article explaining how rising ocean temperatures cause coral bleaching, aimed at high school students, with 2 specific examples from the Great Barrier Reef, in an engaging but scientifically accurate tone" }
+  { level: "레벨 1", text: "기후 변화에 대해 써줘" },
+  { level: "레벨 2", text: "기후 변화 영향에 대한 글을 써줘" },
+  { level: "레벨 3", text: "기후 변화가 산호초에 미치는 영향에 대해 500단어 글을 써줘" },
+  { level: "레벨 4", text: "해수 온도 상승이 산호 백화현상을 일으키는 방법을 설명하는 500단어 글을 써줘. 고등학생 대상으로, 그레이트 배리어 리프의 구체적인 사례 2가지를 포함하고, 흥미롭지만 과학적으로 정확한 어조로 작성해줘" }
 ]} />
 
-Each level adds specificity and dramatically improves output quality.
+각 레벨은 구체성을 더하고 출력 품질을 극적으로 향상시킵니다.
 
-### Specify These Elements
+### 다음 요소들을 명시하세요
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Audience</span>
-    <span className="text-muted-foreground">Who will read/use this?</span>
+    <span className="font-semibold min-w-24">대상</span>
+    <span className="text-muted-foreground">누가 읽거나 사용할 것인가?</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Length</span>
-    <span className="text-muted-foreground">How long/short should it be?</span>
+    <span className="font-semibold min-w-24">길이</span>
+    <span className="text-muted-foreground">얼마나 길거나 짧아야 하는가?</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Tone</span>
-    <span className="text-muted-foreground">Formal? Casual? Technical?</span>
+    <span className="font-semibold min-w-24">어조</span>
+    <span className="text-muted-foreground">격식? 캐주얼? 기술적?</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Format</span>
-    <span className="text-muted-foreground">Prose? List? Table? Code?</span>
+    <span className="font-semibold min-w-24">형식</span>
+    <span className="text-muted-foreground">산문? 목록? 표? 코드?</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Scope</span>
-    <span className="text-muted-foreground">What to include/exclude?</span>
+    <span className="font-semibold min-w-24">범위</span>
+    <span className="text-muted-foreground">무엇을 포함하거나 제외할 것인가?</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Purpose</span>
-    <span className="text-muted-foreground">What should this accomplish?</span>
+    <span className="font-semibold min-w-24">목적</span>
+    <span className="text-muted-foreground">이것이 무엇을 달성해야 하는가?</span>
   </div>
 </div>
 
-## Principle 3: Context Is King
+## 원칙 3: 맥락이 가장 중요합니다
 
-Models have no memory, no access to your files, and no knowledge of your situation. Everything relevant must be in the prompt.
+모델은 기억이 없고, 여러분의 파일에 접근할 수 없으며, 여러분의 상황을 알지 못합니다. 관련된 모든 것이 프롬프트에 포함되어야 합니다.
 
-### Provide Sufficient Context
+### 충분한 맥락을 제공하세요
 
 <Compare 
-  before={{ label: "Insufficient context", content: "Why isn't my function working?" }}
-  after={{ label: "Sufficient context", content: "I have a Python function that should filter a list of dictionaries by a specific key value. It's returning an empty list when it should return 3 items.\n\nFunction:\ndef filter_items(items, key, value):\n    return [item for item in items if item[key] = value]\n\nCall: filter_items(items, 'status', 'active')\nExpected: 2 items, Got: empty list" }}
+  before={{ label: "맥락 부족", content: "내 함수가 왜 작동 안 해?" }}
+  after={{ label: "충분한 맥락", content: "특정 키 값으로 딕셔너리 목록을 필터링하는 Python 함수가 있습니다. 3개 항목을 반환해야 하는데 빈 리스트를 반환합니다.\n\n함수:\ndef filter_items(items, key, value):\n    return [item for item in items if item[key] = value]\n\n호출: filter_items(items, 'status', 'active')\n예상: 2개 항목, 결과: 빈 리스트" }}
 />
 
-### The Context Checklist
+### 맥락 체크리스트
 
-<Callout type="tip" title="Before You Submit">
-Ask yourself: Would a smart stranger understand this request? If not, add more context.
+<Callout type="tip" title="제출하기 전에">
+스스로에게 물어보세요: 모르는 똑똑한 사람이 이 요청을 이해할 수 있을까? 그렇지 않다면 더 많은 맥락을 추가하세요.
 </Callout>
 
 <Checklist 
-  title="Context Checklist"
+  title="맥락 체크리스트"
   items={[
-    { text: "Does the model know what I'm working on?" },
-    { text: "Does it know my goal?" },
-    { text: "Does it have all necessary information?" },
-    { text: "Does it understand the constraints?" },
-    { text: "Would a smart stranger understand this request?" }
+    { text: "모델이 내가 무엇을 작업하고 있는지 알고 있는가?" },
+    { text: "내 목표를 알고 있는가?" },
+    { text: "필요한 모든 정보를 가지고 있는가?" },
+    { text: "제약 조건을 이해하고 있는가?" },
+    { text: "모르는 똑똑한 사람이 이 요청을 이해할 수 있을까?" }
   ]}
 />
 
-## Principle 4: Guide, Don't Just Ask
+## 원칙 4: 단순히 묻지 말고 안내하세요
 
-Don't just ask for an answer—guide the model toward the answer you want.
+단순히 답을 요청하지 마세요—원하는 답을 향해 모델을 안내하세요.
 
-### Use Instructional Framing
+### 지시적 프레이밍을 사용하세요
 
 <Compare 
-  before={{ label: "Just Asking", content: "What are the pros and cons of microservices?" }}
-  after={{ label: "Guiding", content: "List 5 advantages and 5 disadvantages of microservices architecture.\n\nFor each point:\n- State the point clearly in one sentence\n- Provide a brief explanation (2-3 sentences)\n- Give a concrete example\n\nConsider perspectives of: small startups, large enterprises, and teams transitioning from monoliths." }}
+  before={{ label: "단순히 묻기", content: "마이크로서비스의 장단점이 뭐야?" }}
+  after={{ label: "안내하기", content: "마이크로서비스 아키텍처의 장점 5개와 단점 5개를 나열해주세요.\n\n각 항목에 대해:\n- 한 문장으로 명확하게 기술\n- 간단한 설명 제공 (2-3문장)\n- 구체적인 예시 제시\n\n다음 관점을 고려하세요: 소규모 스타트업, 대기업, 모놀리스에서 전환하는 팀." }}
 />
 
-### Provide Reasoning Scaffolds
+### 추론 구조를 제공하세요
 
-For complex tasks, guide the reasoning process:
+복잡한 작업의 경우, 추론 과정을 안내하세요:
 
 <TryIt 
-  title="Reasoning Scaffold Example"
-  description="This prompt guides the AI through a systematic decision-making process."
-  prompt={`I need to choose between PostgreSQL and MongoDB for my e-commerce project.
+  title="추론 구조 예시"
+  description="이 프롬프트는 AI가 체계적인 의사결정 과정을 거치도록 안내합니다."
+  prompt={`이커머스 프로젝트에서 PostgreSQL과 MongoDB 중 선택해야 합니다.
 
-Think through this systematically:
-1. First, list the typical requirements for an e-commerce database
-2. Then, evaluate each database against each requirement
-3. Consider trade-offs specific to my use case
-4. Make a recommendation with clear justification`}
+체계적으로 생각해주세요:
+1. 먼저, 이커머스 데이터베이스의 일반적인 요구사항을 나열하세요
+2. 그런 다음, 각 요구사항에 대해 각 데이터베이스를 평가하세요
+3. 내 사용 사례에 특화된 트레이드오프를 고려하세요
+4. 명확한 근거와 함께 추천해주세요`}
 />
 
-## Principle 5: Iterate and Refine
+## 원칙 5: 반복하고 개선하세요
 
-Prompt engineering is an iterative process. Your first prompt is rarely your best.
+프롬프트 엔지니어링은 반복적인 과정입니다. 첫 번째 프롬프트가 최선인 경우는 거의 없습니다.
 
-### The Iteration Cycle
+### 반복 주기
 
 ```
-1. Write initial prompt
-2. Review output
-3. Identify gaps or issues
-4. Refine prompt
-5. Repeat until satisfied
+1. 초기 프롬프트 작성
+2. 출력 검토
+3. 부족한 점이나 문제 파악
+4. 프롬프트 개선
+5. 만족할 때까지 반복
 ```
 
-### Common Refinements
+### 일반적인 개선 사항
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Too verbose</span>
-    <span className="text-muted-foreground">Add "Be concise" or length limits</span>
+    <span className="font-semibold min-w-32">너무 장황함</span>
+    <span className="text-muted-foreground">"간결하게" 또는 길이 제한 추가</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Too vague</span>
-    <span className="text-muted-foreground">Add specific examples or constraints</span>
+    <span className="font-semibold min-w-32">너무 모호함</span>
+    <span className="text-muted-foreground">구체적인 예시나 제약 조건 추가</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Wrong format</span>
-    <span className="text-muted-foreground">Specify exact output structure</span>
+    <span className="font-semibold min-w-32">잘못된 형식</span>
+    <span className="text-muted-foreground">정확한 출력 구조 지정</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Missing aspects</span>
-    <span className="text-muted-foreground">Add "Make sure to include..."</span>
+    <span className="font-semibold min-w-32">누락된 측면</span>
+    <span className="text-muted-foreground">"반드시 포함해주세요..." 추가</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Wrong tone</span>
-    <span className="text-muted-foreground">Specify audience and style</span>
+    <span className="font-semibold min-w-32">잘못된 어조</span>
+    <span className="text-muted-foreground">대상과 스타일 지정</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Inaccurate</span>
-    <span className="text-muted-foreground">Request citations or step-by-step reasoning</span>
+    <span className="font-semibold min-w-32">부정확함</span>
+    <span className="text-muted-foreground">인용 또는 단계별 추론 요청</span>
   </div>
 </div>
 
-### Keep a Prompt Journal
+### 프롬프트 일지를 유지하세요
 
-Document what works:
+효과적인 것을 문서화하세요:
 ```
-Task: Code review
-Version 1: "Review this code" → Too generic
-Version 2: Added specific review criteria → Better
-Version 3: Added example of good review → Excellent
-Final: [Save successful prompt as template]
+작업: 코드 리뷰
+버전 1: "이 코드 검토해줘" → 너무 일반적
+버전 2: 구체적인 리뷰 기준 추가 → 더 나음
+버전 3: 좋은 리뷰 예시 추가 → 훌륭함
+최종: [성공한 프롬프트를 템플릿으로 저장]
 ```
 
-## Principle 6: Leverage the Model's Strengths
+## 원칙 6: 모델의 강점을 활용하세요
 
-Work with how models are trained, not against them.
+모델이 훈련된 방식에 맞춰 작업하세요, 거스르지 마세요.
 
-### Models Want to Be Helpful
+### 모델은 도움이 되고 싶어합니다
 
-Frame requests as things a helpful assistant would naturally do:
+도움이 되는 어시스턴트가 자연스럽게 할 수 있는 것으로 요청을 구성하세요:
 
 <Compare 
-  before={{ label: "Against the grain", content: "I know you can't do this, but try to..." }}
-  after={{ label: "With the grain", content: "Help me understand...\nI'm working on X and need assistance with...\nCould you walk me through..." }}
+  before={{ label: "흐름을 거스름", content: "이건 못하는 거 알지만, 시도해봐..." }}
+  after={{ label: "흐름에 맞춤", content: "이해를 도와주세요...\nX 작업 중인데 도움이 필요해요...\n차근차근 설명해주시겠어요..." }}
 />
 
-### Models Excel at Patterns
+### 모델은 패턴에 뛰어납니다
 
-If you need consistent output, show the pattern:
+일관된 출력이 필요하면, 패턴을 보여주세요:
 
 <TryIt 
-  title="Pattern Example"
-  description="This prompt shows the AI exactly what format you want for book recommendations."
-  prompt={`Recommend 3 science fiction books. Format each recommendation as:
+  title="패턴 예시"
+  description="이 프롬프트는 AI에게 책 추천에서 원하는 정확한 형식을 보여줍니다."
+  prompt={`SF 소설 3권을 추천해주세요. 각 추천을 다음 형식으로 작성해주세요:
 
-📚 **[Title]** by [Author]
-*[Genre] | [Publication Year]*
-[2-sentence description]
-Why you'll love it: [1 sentence hook]
+📚 **[제목]** by [저자]
+*[장르] | [출판 연도]*
+[2문장 설명]
+이 책을 좋아할 이유: [1문장 훅]
 
 ---`}
 />
 
-### Models Can Role-Play
+### 모델은 역할극을 할 수 있습니다
 
-Use personas to access different "modes" of response:
-
-```
-As a devil's advocate, argue against my proposal...
-As a supportive mentor, help me improve...
-As a skeptical investor, question this business plan...
-```
-
-## Principle 7: Control Output Structure
-
-Structured outputs are more useful than free-form text.
-
-### Request Specific Formats
+페르소나를 사용하여 다양한 응답 "모드"에 접근하세요:
 
 ```
-Return your analysis as:
-
-SUMMARY: [1 sentence]
-
-KEY FINDINGS:
-• [Finding 1]
-• [Finding 2]
-• [Finding 3]
-
-RECOMMENDATION: [1-2 sentences]
-
-CONFIDENCE: [Low/Medium/High] because [reason]
+악마의 옹호자로서 내 제안에 반대 논거를 제시해줘...
+지지하는 멘토로서 개선을 도와줘...
+회의적인 투자자로서 이 사업 계획에 질문해줘...
 ```
 
-### Use Delimiters
+## 원칙 7: 출력 구조를 제어하세요
 
-Clearly separate sections of your prompt:
+구조화된 출력이 자유 형식 텍스트보다 더 유용합니다.
 
-```
-### CONTEXT ###
-[Your context here]
-
-### TASK ###
-[Your task here]
-
-### FORMAT ###
-[Desired format here]
-```
-
-### Request Machine-Readable Output
-
-For programmatic use:
+### 특정 형식을 요청하세요
 
 ```
-Return only valid JSON, no explanation:
+분석 결과를 다음과 같이 반환해주세요:
+
+요약: [1문장]
+
+핵심 발견사항:
+• [발견사항 1]
+• [발견사항 2]
+• [발견사항 3]
+
+권장사항: [1-2문장]
+
+신뢰도: [낮음/중간/높음] 이유: [이유]
+```
+
+### 구분자를 사용하세요
+
+프롬프트의 섹션을 명확히 구분하세요:
+
+```
+### 맥락 ###
+[여기에 맥락 입력]
+
+### 작업 ###
+[여기에 작업 입력]
+
+### 형식 ###
+[원하는 형식 입력]
+```
+
+### 기계가 읽을 수 있는 출력을 요청하세요
+
+프로그래밍 용도의 경우:
+
+```
+유효한 JSON만 반환하세요, 설명 없이:
 {
   "decision": "approve" | "reject" | "review",
   "confidence": 0.0-1.0,
-  "reasons": ["string array"]
+  "reasons": ["문자열 배열"]
 }
 ```
 
-## Principle 8: Verify and Validate
+## 원칙 8: 검증하고 확인하세요
 
-Never blindly trust model outputs, especially for important tasks.
+특히 중요한 작업에서는 모델 출력을 맹목적으로 신뢰하지 마세요.
 
-### Ask for Reasoning
-
-```
-Solve this problem and show your work step by step.
-After solving, verify your answer by [checking method].
-```
-
-### Request Multiple Perspectives
+### 추론 과정을 요청하세요
 
 ```
-Give me three different approaches to solve this problem.
-For each, explain the trade-offs.
+이 문제를 풀고 단계별로 과정을 보여주세요.
+풀이 후, [확인 방법]으로 답을 검증하세요.
 ```
 
-### Build in Self-Checking
+### 여러 관점을 요청하세요
 
 ```
-After generating the code, review it for:
-- Syntax errors
-- Edge cases
-- Security vulnerabilities
-List any issues found.
+이 문제를 해결하는 세 가지 다른 접근법을 알려주세요.
+각각에 대해 트레이드오프를 설명해주세요.
 ```
 
-## Summary: The Principles at a Glance
+### 자체 점검을 포함하세요
+
+```
+코드 생성 후, 다음을 검토해주세요:
+- 구문 오류
+- 에지 케이스
+- 보안 취약점
+발견된 문제를 나열해주세요.
+```
+
+## 요약: 원칙 한눈에 보기
 
 <PrinciplesSummary />
 
 <Quiz 
-  question="Which principle suggests you should include all relevant background information in your prompt?"
+  question="프롬프트에 모든 관련 배경 정보를 포함해야 한다고 제안하는 원칙은 무엇인가요?"
   options={[
-    "Clarity Over Cleverness",
-    "Specificity Yields Quality",
-    "Context Is King",
-    "Iterate and Refine"
+    "명확함이 기교보다 중요합니다",
+    "구체성이 품질을 결정합니다",
+    "맥락이 가장 중요합니다",
+    "반복하고 개선하세요"
   ]}
   correctIndex={2}
-  explanation="Context Is King emphasizes that AI models have no memory between sessions and cannot read your mind. Including relevant background, constraints, and goals helps the model understand your needs."
+  explanation="'맥락이 가장 중요합니다'는 AI 모델이 세션 간 기억이 없고 여러분의 마음을 읽을 수 없다는 것을 강조합니다. 관련 배경, 제약 조건, 목표를 포함하면 모델이 여러분의 필요를 이해하는 데 도움이 됩니다."
 />
 
-## Practice: Fill in the Blanks
+## 연습: 빈칸 채우기
 
-Test your understanding of the core principles by completing this prompt template:
+이 프롬프트 템플릿을 완성하여 핵심 원칙에 대한 이해를 테스트하세요:
 
 <FillInTheBlank
-  title="Apply the Principles"
-  description="Fill in the blanks to create a well-structured prompt — write anything you want!"
+  title="원칙 적용하기"
+  description="빈칸을 채워 잘 구조화된 프롬프트를 만들어보세요 — 원하는 것을 자유롭게 작성하세요!"
   useAI={true}
   openEnded={true}
-  template={`You are a {{role}} with expertise in {{expertise}}.
+  template={`당신은 {{expertise}} 전문 지식을 가진 {{role}}입니다.
 
-Context: I'm working on {{context}}.
+맥락: 저는 {{context}} 작업 중입니다.
 
-Task: {{task}}
+작업: {{task}}
 
-Constraints:
-- Keep your response under {{length}} words
-- Focus only on {{focus}}
+제약 조건:
+- 응답을 {{length}} 단어 이내로 유지하세요
+- {{focus}}에만 집중하세요
 
-Format: Return your answer as {{format}}.`}
+형식: {{format}}으로 답변을 반환하세요.`}
   blanks={[
-    { id: "role", correctAnswers: [], hint: "What professional role should the AI assume?", context: "A job title or professional role" },
-    { id: "expertise", correctAnswers: [], hint: "What specific domain knowledge is needed?", context: "A skill or domain that matches the role" },
-    { id: "context", correctAnswers: [], hint: "What's the project or situation?", context: "A project that someone with this expertise would work on" },
-    { id: "task", correctAnswers: [], hint: "What specific action should the AI take?", context: "An action appropriate for the role and context" },
-    { id: "length", correctAnswers: [], hint: "How long should the response be?", context: "A number (word count)" },
-    { id: "focus", correctAnswers: [], hint: "What aspect should be prioritized?", context: "A quality or aspect relevant to the task" },
-    { id: "format", correctAnswers: [], hint: "How should the output be structured?", context: "An output format type" }
+    { id: "role", correctAnswers: [], hint: "AI가 어떤 전문적 역할을 맡아야 하나요?", context: "직함이나 전문적 역할" },
+    { id: "expertise", correctAnswers: [], hint: "어떤 특정 도메인 지식이 필요한가요?", context: "역할에 맞는 기술이나 도메인" },
+    { id: "context", correctAnswers: [], hint: "프로젝트나 상황이 무엇인가요?", context: "이 전문성을 가진 사람이 작업할 프로젝트" },
+    { id: "task", correctAnswers: [], hint: "AI가 어떤 구체적인 행동을 취해야 하나요?", context: "역할과 맥락에 적합한 행동" },
+    { id: "length", correctAnswers: [], hint: "응답이 얼마나 길어야 하나요?", context: "숫자 (단어 수)" },
+    { id: "focus", correctAnswers: [], hint: "어떤 측면을 우선시해야 하나요?", context: "작업과 관련된 품질이나 측면" },
+    { id: "format", correctAnswers: [], hint: "출력은 어떻게 구조화되어야 하나요?", context: "출력 형식 유형" }
   ]}
-  explanation="A well-structured prompt includes: a clear role (Principle 1), sufficient context (Principle 3), specific task (Principle 2), constraints (Principle 4), and output format (Principle 5). The AI checks if your choices are internally consistent."
+  explanation="잘 구조화된 프롬프트는 다음을 포함합니다: 명확한 역할 (원칙 1), 충분한 맥락 (원칙 3), 구체적인 작업 (원칙 2), 제약 조건 (원칙 4), 출력 형식 (원칙 5). AI는 여러분의 선택이 내부적으로 일관성이 있는지 확인합니다."
 />
 
 <InteractiveChecklist
-  title="Principles Checklist"
+  title="원칙 체크리스트"
   items={[
-    { id: "clarity", label: "Clarity Over Cleverness", description: "Is your prompt explicit and unambiguous?" },
-    { id: "specificity", label: "Specificity Yields Quality", description: "Have you included audience, length, tone, and format?" },
-    { id: "context", label: "Context Is King", description: "Does the prompt include all necessary background information?" },
-    { id: "examples", label: "Examples Beat Explanations", description: "Have you shown what you want, not just described it?" },
-    { id: "constraints", label: "Constraints Focus Output", description: "Are there clear boundaries on scope and format?" },
-    { id: "iteration", label: "Iterate and Refine", description: "Are you prepared to improve based on results?" },
-    { id: "persona", label: "Persona Shapes Perspective", description: "Does the AI know what role to play?" },
-    { id: "verify", label: "Verify and Validate", description: "Have you built in checks for accuracy?" }
+    { id: "clarity", label: "명확함이 기교보다 중요합니다", description: "프롬프트가 명시적이고 모호하지 않은가요?" },
+    { id: "specificity", label: "구체성이 품질을 결정합니다", description: "대상, 길이, 어조, 형식을 포함했나요?" },
+    { id: "context", label: "맥락이 가장 중요합니다", description: "프롬프트에 필요한 모든 배경 정보가 포함되어 있나요?" },
+    { id: "examples", label: "예시가 설명보다 낫습니다", description: "원하는 것을 설명하기보다 보여주었나요?" },
+    { id: "constraints", label: "제약이 출력에 집중을 줍니다", description: "범위와 형식에 대한 명확한 경계가 있나요?" },
+    { id: "iteration", label: "반복하고 개선하세요", description: "결과에 따라 개선할 준비가 되어 있나요?" },
+    { id: "persona", label: "페르소나가 관점을 형성합니다", description: "AI가 어떤 역할을 해야 하는지 알고 있나요?" },
+    { id: "verify", label: "검증하고 확인하세요", description: "정확성을 위한 점검을 포함했나요?" }
   ]}
 />
 
-These principles form the foundation for everything that follows. In Part II, we'll apply them to specific techniques that dramatically enhance prompt effectiveness.
+이 원칙들은 앞으로 다룰 모든 내용의 기초가 됩니다. 파트 II에서는 프롬프트 효과를 극적으로 향상시키는 특정 기법에 이 원칙들을 적용합니다.

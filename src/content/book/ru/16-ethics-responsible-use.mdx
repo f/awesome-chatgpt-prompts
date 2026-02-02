@@ -1,59 +1,59 @@
-The prompts you write shape how AI behaves. A well-crafted prompt can educate, assist, and empower. A careless one can deceive, discriminate, or cause harm. As prompt engineers, we're not just users—we're designers of AI behavior, and that comes with real responsibility.
+Промпты, которые вы пишете, определяют поведение ИИ. Хорошо составленный промпт может обучать, помогать и расширять возможности. Небрежный — может вводить в заблуждение, дискриминировать или причинять вред. Как промпт-инженеры, мы не просто пользователи — мы проектировщики поведения ИИ, и это накладывает реальную ответственность.
 
-This chapter isn't about rules imposed from above. It's about understanding the impact of our choices and building habits that lead to AI use we can be proud of.
+Эта глава не о правилах, навязанных сверху. Она о понимании последствий наших решений и формировании привычек, которые ведут к использованию ИИ, которым можно гордиться.
 
-<Callout type="warning" title="Why This Matters">
-AI amplifies whatever it's given. A biased prompt produces biased outputs at scale. A deceptive prompt enables deception at scale. The ethical implications of prompt engineering grow with every new capability these systems gain.
+<Callout type="warning" title="Почему это важно">
+ИИ усиливает всё, что ему дают. Предвзятый промпт производит предвзятые результаты в масштабе. Обманчивый промпт позволяет обманывать в масштабе. Этические последствия промпт-инженерии растут с каждой новой возможностью, которую приобретают эти системы.
 </Callout>
 
-## Ethical Foundations
+## Этические основы
 
-Every decision in prompt engineering connects to a few core principles:
-
-<InfoGrid items={[
-  { label: "Honesty", description: "Don't use AI to deceive people or create misleading content", example: "No fake reviews, impersonation, or manufactured 'evidence'", exampleType: "text", color: "blue" },
-  { label: "Fairness", description: "Actively work to avoid perpetuating biases and stereotypes", example: "Test prompts across demographics, request diverse perspectives", exampleType: "text", color: "purple" },
-  { label: "Transparency", description: "Be clear about AI involvement when it matters", example: "Disclose AI assistance in published work, professional contexts", exampleType: "text", color: "green" },
-  { label: "Privacy", description: "Protect personal information in prompts and outputs", example: "Anonymize data, avoid including PII, understand data policies", exampleType: "text", color: "amber" },
-  { label: "Safety", description: "Design prompts that prevent harmful outputs", example: "Build in guardrails, test for edge cases, handle refusals gracefully", exampleType: "text", color: "red" },
-  { label: "Accountability", description: "Take responsibility for what your prompts produce", example: "Review outputs, fix issues, maintain human oversight", exampleType: "text", color: "cyan" }
-]} />
-
-### The Prompt Engineer's Role
-
-You have more influence than you might realize:
-
-- **What AI produces**: Your prompts determine the content, tone, and quality of outputs
-- **How AI interacts**: Your system prompts shape personality, boundaries, and user experience
-- **What safeguards exist**: Your design choices determine what the AI will and won't do
-- **How mistakes are handled**: Your error handling determines whether failures are graceful or harmful
-
-## Avoiding Harmful Outputs
-
-The most fundamental ethical obligation is preventing your prompts from causing harm.
-
-### Categories of Harmful Content
+Каждое решение в промпт-инженерии связано с несколькими ключевыми принципами:
 
 <InfoGrid items={[
-  { label: "Violence & Harm", description: "Instructions that could lead to physical harm", example: "Weapons creation, self-harm, violence against others", exampleType: "text", color: "red" },
-  { label: "Illegal Activities", description: "Content that facilitates breaking laws", example: "Fraud schemes, hacking instructions, drug synthesis", exampleType: "text", color: "red" },
-  { label: "Harassment & Hate", description: "Content targeting individuals or groups", example: "Discriminatory content, doxxing, targeted harassment", exampleType: "text", color: "red" },
-  { label: "Misinformation", description: "Deliberately false or misleading content", example: "Fake news, health misinformation, conspiracy content", exampleType: "text", color: "red" },
-  { label: "Privacy Violations", description: "Exposing or exploiting personal information", example: "Revealing private data, stalking assistance", exampleType: "text", color: "red" },
-  { label: "Exploitation", description: "Content that exploits vulnerable individuals", example: "CSAM, non-consensual intimate content, scams targeting elderly", exampleType: "text", color: "red" }
+  { label: "Честность", description: "Не используйте ИИ для обмана людей или создания вводящего в заблуждение контента", example: "Никаких фальшивых отзывов, выдачи себя за других или сфабрикованных «доказательств»", exampleType: "text", color: "blue" },
+  { label: "Справедливость", description: "Активно работайте над предотвращением распространения предубеждений и стереотипов", example: "Тестируйте промпты на разных демографических группах, запрашивайте разнообразные точки зрения", exampleType: "text", color: "purple" },
+  { label: "Прозрачность", description: "Будьте открыты об участии ИИ, когда это важно", example: "Раскрывайте помощь ИИ в публикуемых работах и профессиональных контекстах", exampleType: "text", color: "green" },
+  { label: "Конфиденциальность", description: "Защищайте личную информацию в промптах и результатах", example: "Анонимизируйте данные, избегайте включения PII, изучите политики работы с данными", exampleType: "text", color: "amber" },
+  { label: "Безопасность", description: "Создавайте промпты, предотвращающие вредоносные результаты", example: "Встраивайте защитные механизмы, тестируйте граничные случаи, корректно обрабатывайте отказы", exampleType: "text", color: "red" },
+  { label: "Ответственность", description: "Берите на себя ответственность за то, что производят ваши промпты", example: "Проверяйте результаты, исправляйте проблемы, поддерживайте человеческий контроль", exampleType: "text", color: "cyan" }
 ]} />
 
-<Callout type="warning" title="What is CSAM?">
-CSAM stands for **Child Sexual Abuse Material**. Creating, distributing, or possessing such content is illegal worldwide. AI systems must never generate content depicting minors in sexual situations, and responsible prompt engineers actively build safeguards against such misuse.
+### Роль промпт-инженера
+
+Вы имеете больше влияния, чем можете осознавать:
+
+- **Что производит ИИ**: Ваши промпты определяют содержание, тон и качество результатов
+- **Как ИИ взаимодействует**: Ваши системные промпты формируют личность, границы и пользовательский опыт
+- **Какие защитные механизмы существуют**: Ваши проектные решения определяют, что ИИ будет и не будет делать
+- **Как обрабатываются ошибки**: Ваша обработка ошибок определяет, будут ли сбои корректными или вредоносными
+
+## Предотвращение вредоносных результатов
+
+Самое фундаментальное этическое обязательство — не допустить, чтобы ваши промпты причиняли вред.
+
+### Категории вредоносного контента
+
+<InfoGrid items={[
+  { label: "Насилие и вред", description: "Инструкции, которые могут привести к физическому вреду", example: "Создание оружия, самоповреждение, насилие над другими", exampleType: "text", color: "red" },
+  { label: "Незаконная деятельность", description: "Контент, способствующий нарушению законов", example: "Мошеннические схемы, инструкции по взлому, синтез наркотиков", exampleType: "text", color: "red" },
+  { label: "Преследование и ненависть", description: "Контент, направленный против отдельных лиц или групп", example: "Дискриминационный контент, доксинг, целенаправленное преследование", exampleType: "text", color: "red" },
+  { label: "Дезинформация", description: "Намеренно ложный или вводящий в заблуждение контент", example: "Фейковые новости, медицинская дезинформация, конспирологический контент", exampleType: "text", color: "red" },
+  { label: "Нарушение конфиденциальности", description: "Раскрытие или эксплуатация личной информации", example: "Раскрытие частных данных, помощь в преследовании", exampleType: "text", color: "red" },
+  { label: "Эксплуатация", description: "Контент, эксплуатирующий уязвимых людей", example: "CSAM, интимный контент без согласия, мошенничество с пожилыми", exampleType: "text", color: "red" }
+]} />
+
+<Callout type="warning" title="Что такое CSAM?">
+CSAM означает **Child Sexual Abuse Material** (материалы сексуального насилия над детьми). Создание, распространение или хранение такого контента незаконно во всём мире. ИИ-системы никогда не должны генерировать контент, изображающий несовершеннолетних в сексуальных ситуациях, а ответственные промпт-инженеры активно создают защитные механизмы против такого злоупотребления.
 </Callout>
 
-### Building Safety Into Prompts
+### Встраивание безопасности в промпты
 
-When building AI systems, include explicit safety guidelines:
+При создании ИИ-систем включайте явные рекомендации по безопасности:
 
 <TryIt 
-  title="Safety-First System Prompt"
-  description="A template for building safety guidelines into your AI systems."
+  title="Системный промпт с приоритетом безопасности"
+  description="Шаблон для встраивания рекомендаций по безопасности в ваши ИИ-системы."
   prompt={`You are a helpful assistant for \${purpose}.
 
 ## SAFETY GUIDELINES
@@ -78,13 +78,13 @@ When building AI systems, include explicit safety guidelines:
 Now, please help the user with: \${userRequest}`}
 />
 
-### The Intent vs. Impact Framework
+### Фреймворк «Намерение vs. Последствия»
 
-Not every sensitive request is malicious. Use this framework for ambiguous cases:
+Не каждый деликатный запрос является злонамеренным. Используйте этот фреймворк для неоднозначных случаев:
 
 <TryIt 
-  title="Ethical Edge Case Analyzer"
-  description="Work through ambiguous requests to determine the appropriate response."
+  title="Анализатор этических пограничных случаев"
+  description="Проработайте неоднозначные запросы, чтобы определить подходящий ответ."
   prompt={`I received this request that might be sensitive:
 
 "\${sensitiveRequest}"
@@ -108,24 +108,24 @@ Based on this analysis:
 - If declining, how should I phrase it helpfully?`}
 />
 
-## Addressing Bias
+## Работа с предвзятостью
 
-AI models inherit biases from their training data—historical inequities, representation gaps, cultural assumptions, and linguistic patterns. As prompt engineers, we can either amplify these biases or actively counteract them.
+ИИ-модели наследуют предвзятость из обучающих данных — исторические неравенства, пробелы в представленности, культурные допущения и языковые паттерны. Как промпт-инженеры, мы можем либо усиливать эту предвзятость, либо активно ей противодействовать.
 
-### How Bias Manifests
+### Как проявляется предвзятость
 
 <InfoGrid items={[
-  { label: "Default Assumptions", description: "The model assumes certain demographics for roles", example: "Doctors defaulting to male, nurses to female", exampleType: "text", color: "amber" },
-  { label: "Stereotyping", description: "Reinforcing cultural stereotypes in descriptions", example: "Associating certain ethnicities with specific traits", exampleType: "text", color: "amber" },
-  { label: "Representation Gaps", description: "Some groups are underrepresented or misrepresented", example: "Limited accurate information about minority cultures", exampleType: "text", color: "amber" },
-  { label: "Western-Centric Views", description: "Perspectives skewed toward Western culture and values", example: "Assuming Western norms are universal", exampleType: "text", color: "amber" }
+  { label: "Допущения по умолчанию", description: "Модель предполагает определённую демографию для ролей", example: "Врачи по умолчанию мужчины, медсёстры — женщины", exampleType: "text", color: "amber" },
+  { label: "Стереотипизация", description: "Усиление культурных стереотипов в описаниях", example: "Связывание определённых этнических групп с конкретными чертами", exampleType: "text", color: "amber" },
+  { label: "Пробелы в представленности", description: "Некоторые группы недопредставлены или искажённо представлены", example: "Ограниченная точная информация о культурах меньшинств", exampleType: "text", color: "amber" },
+  { label: "Западоцентричный взгляд", description: "Перспективы смещены в сторону западной культуры и ценностей", example: "Предположение, что западные нормы универсальны", exampleType: "text", color: "amber" }
 ]} />
 
-### Testing for Bias
+### Тестирование на предвзятость
 
 <TryIt 
-  title="Bias Detection Test"
-  description="Use this to test your prompts for potential bias issues."
+  title="Тест на обнаружение предвзятости"
+  description="Используйте это для проверки ваших промптов на потенциальные проблемы с предвзятостью."
   prompt={`I want to test this prompt for bias:
 
 "\${promptToTest}"
@@ -151,67 +151,67 @@ When demographics aren't specified:
 Based on findings, suggest prompt modifications to reduce bias.`}
 />
 
-### Mitigating Bias in Practice
+### Снижение предвзятости на практике
 
 <Compare 
-  before={{ label: "Bias-prone prompt", content: "Describe a typical CEO." }}
-  after={{ label: "Bias-aware prompt", content: "Describe a CEO. Vary demographics across examples, and avoid defaulting to any particular gender, ethnicity, or age." }}
+  before={{ label: "Промпт, склонный к предвзятости", content: "Опишите типичного генерального директора." }}
+  after={{ label: "Промпт с учётом предвзятости", content: "Опишите генерального директора. Варьируйте демографические характеристики в примерах и избегайте установки по умолчанию какого-либо конкретного пола, этнической принадлежности или возраста." }}
 />
 
-## Transparency and Disclosure
+## Прозрачность и раскрытие информации
 
-When should you tell people AI was involved? The answer depends on context—but the trend is toward more disclosure, not less.
+Когда следует сообщать людям об участии ИИ? Ответ зависит от контекста, но тенденция направлена к большему раскрытию, а не меньшему.
 
-### When Disclosure Matters
+### Когда раскрытие важно
 
 <InfoGrid items={[
-  { label: "Published Content", description: "Articles, posts, or content shared publicly", example: "Blog posts, social media, marketing materials", exampleType: "text", color: "blue" },
-  { label: "Consequential Decisions", description: "When AI outputs affect people's lives", example: "Hiring recommendations, medical info, legal guidance", exampleType: "text", color: "blue" },
-  { label: "Trust Contexts", description: "Where authenticity is expected or valued", example: "Personal correspondence, testimonials, reviews", exampleType: "text", color: "blue" },
-  { label: "Professional Settings", description: "Workplace or academic environments", example: "Reports, research, client deliverables", exampleType: "text", color: "blue" }
+  { label: "Публикуемый контент", description: "Статьи, посты или контент, распространяемый публично", example: "Посты в блогах, социальные сети, маркетинговые материалы", exampleType: "text", color: "blue" },
+  { label: "Значимые решения", description: "Когда результаты ИИ влияют на жизнь людей", example: "Рекомендации по найму, медицинская информация, юридические консультации", exampleType: "text", color: "blue" },
+  { label: "Контексты доверия", description: "Где ожидается или ценится подлинность", example: "Личная переписка, отзывы, рецензии", exampleType: "text", color: "blue" },
+  { label: "Профессиональные условия", description: "Рабочая или академическая среда", example: "Отчёты, исследования, материалы для клиентов", exampleType: "text", color: "blue" }
 ]} />
 
-### How to Disclose Appropriately
+### Как правильно раскрывать информацию
 
 <Compare 
-  before={{ label: "Hidden AI involvement", content: "Here's my analysis of the market trends..." }}
-  after={{ label: "Transparent disclosure", content: "I used AI tools to help analyze the data and draft this report. All conclusions have been verified and edited by me." }}
+  before={{ label: "Скрытое участие ИИ", content: "Вот мой анализ рыночных тенденций..." }}
+  after={{ label: "Прозрачное раскрытие", content: "Я использовал инструменты ИИ для помощи в анализе данных и составлении этого отчёта. Все выводы были проверены и отредактированы мной." }}
 />
 
-Common disclosure phrases that work well:
-- "Written with AI assistance"
-- "AI-generated first draft, human edited"
-- "Analysis performed using AI tools"
-- "Created with AI, reviewed and approved by [name]"
+Распространённые фразы для раскрытия, которые хорошо работают:
+- «Написано с помощью ИИ»
+- «Первый черновик создан ИИ, отредактирован человеком»
+- «Анализ выполнен с использованием инструментов ИИ»
+- «Создано с ИИ, проверено и одобрено [имя]»
 
-## Privacy Considerations
+## Вопросы конфиденциальности
 
-Every prompt you send contains data. Understanding where that data goes—and what shouldn't be in it—is essential.
+Каждый отправляемый вами промпт содержит данные. Понимание того, куда идут эти данные и чего в них не должно быть, крайне важно.
 
-### What Never Belongs in Prompts
+### Чему никогда не место в промптах
 
 <InfoGrid items={[
-  { label: "Personal Identifiers", description: "Names, addresses, phone numbers, SSNs", example: "Use [CUSTOMER] instead of 'John Smith'", color: "red" },
-  { label: "Financial Data", description: "Account numbers, credit cards, income details", example: "Describe the pattern, not the actual numbers", exampleType: "text", color: "red" },
-  { label: "Health Information", description: "Medical records, diagnoses, prescriptions", example: "Ask about conditions generally, not specific patients", exampleType: "text", color: "red" },
-  { label: "Credentials", description: "Passwords, API keys, tokens, secrets", example: "Never paste credentials—use placeholders", exampleType: "text", color: "red" },
-  { label: "Private Communications", description: "Personal emails, messages, confidential docs", example: "Summarize the situation without quoting private text", exampleType: "text", color: "red" }
+  { label: "Персональные идентификаторы", description: "Имена, адреса, номера телефонов, SSN", example: "Используйте [КЛИЕНТ] вместо 'Иван Петров'", color: "red" },
+  { label: "Финансовые данные", description: "Номера счетов, кредитные карты, сведения о доходах", example: "Описывайте паттерн, а не фактические цифры", exampleType: "text", color: "red" },
+  { label: "Медицинская информация", description: "Медицинские записи, диагнозы, рецепты", example: "Спрашивайте о состояниях в общем, не о конкретных пациентах", exampleType: "text", color: "red" },
+  { label: "Учётные данные", description: "Пароли, API-ключи, токены, секреты", example: "Никогда не вставляйте учётные данные — используйте заполнители", exampleType: "text", color: "red" },
+  { label: "Частная переписка", description: "Личные письма, сообщения, конфиденциальные документы", example: "Опишите ситуацию, не цитируя частный текст", exampleType: "text", color: "red" }
 ]} />
 
-### Safe Data Handling Pattern
+### Паттерн безопасной работы с данными
 
 <Compare 
-  before={{ label: "Unsafe: Contains PII", content: "Summarize this complaint from John Smith at 123 Main St, Anytown about order #12345: 'I ordered on March 15 and still haven't received...'" }}
-  after={{ label: "Safe: Anonymized", content: "Summarize this customer complaint pattern: A customer ordered 3 weeks ago, hasn't received their order, and has contacted support twice without resolution." }}
+  before={{ label: "Небезопасно: содержит PII", content: "Подведите итог этой жалобы от Ивана Петрова по адресу ул. Ленина, 123, Москва по заказу #12345: «Я заказал 15 марта и до сих пор не получил...»" }}
+  after={{ label: "Безопасно: анонимизировано", content: "Подведите итог этого паттерна клиентских жалоб: Клиент сделал заказ 3 недели назад, не получил его и дважды связывался с поддержкой без решения проблемы." }}
 />
 
-<Callout type="info" title="What is PII?">
-**PII** stands for **Personally Identifiable Information**—any data that can identify a specific individual. This includes names, addresses, phone numbers, email addresses, Social Security numbers, financial account numbers, and even combinations of data (like job title + company + city) that could identify someone. When prompting AI, always anonymize or remove PII to protect privacy.
+<Callout type="info" title="Что такое PII?">
+**PII** означает **Personally Identifiable Information** (персональные идентифицирующие данные) — любые данные, которые могут идентифицировать конкретного человека. Это включает имена, адреса, номера телефонов, адреса электронной почты, номера социального страхования, номера финансовых счетов и даже комбинации данных (например, должность + компания + город), которые могут идентифицировать кого-либо. При работе с ИИ всегда анонимизируйте или удаляйте PII для защиты конфиденциальности.
 </Callout>
 
 <TryIt 
-  title="PII Scrubber"
-  description="Use this to identify and remove sensitive information before including text in prompts."
+  title="Очиститель PII"
+  description="Используйте это для выявления и удаления конфиденциальной информации перед включением текста в промпты."
   prompt={`Review this text for sensitive information that should be removed before using it in an AI prompt:
 
 "\${textToReview}"
@@ -226,70 +226,70 @@ Identify:
 For each item found, suggest how to anonymize or generalize it while preserving the information needed for the task.`}
 />
 
-## Authenticity and Deception
+## Подлинность и обман
 
-There's a difference between using AI as a tool and using AI to deceive.
+Есть разница между использованием ИИ как инструмента и использованием ИИ для обмана.
 
-### The Legitimacy Line
+### Граница легитимности
 
 <InfoGrid items={[
-  { label: "Legitimate Uses", description: "AI as a tool to enhance your work", example: "Drafting, brainstorming, editing, learning", exampleType: "text", color: "green" },
-  { label: "Gray Areas", description: "Context-dependent, requires judgment", example: "Ghostwriting, templates, automated responses", exampleType: "text", color: "amber" },
-  { label: "Deceptive Uses", description: "Misrepresenting AI work as human-original", example: "Fake reviews, academic fraud, impersonation", exampleType: "text", color: "red" }
+  { label: "Легитимное использование", description: "ИИ как инструмент для улучшения вашей работы", example: "Составление черновиков, мозговой штурм, редактирование, обучение", exampleType: "text", color: "green" },
+  { label: "Серые зоны", description: "Зависит от контекста, требует оценки", example: "Гострайтинг, шаблоны, автоматизированные ответы", exampleType: "text", color: "amber" },
+  { label: "Обманное использование", description: "Выдача работы ИИ за оригинальную человеческую", example: "Фальшивые отзывы, академическое мошенничество, выдача себя за других", exampleType: "text", color: "red" }
 ]} />
 
-Key questions to ask:
-- Would the recipient expect this to be original human work?
-- Am I gaining unfair advantage through deception?
-- Would disclosure change how the work is received?
+Ключевые вопросы, которые нужно задать:
+- Ожидает ли получатель, что это оригинальная человеческая работа?
+- Получаю ли я несправедливое преимущество через обман?
+- Изменит ли раскрытие восприятие работы?
 
-### Synthetic Media Responsibility
+### Ответственность за синтетические медиа
 
-Creating realistic depictions of real people—whether images, audio, or video—carries special obligations:
+Создание реалистичных изображений реальных людей — будь то изображения, аудио или видео — несёт особые обязательства:
 
-- **Never** create realistic depictions without consent
-- **Always** label synthetic media clearly
-- **Consider** potential for misuse before creating
-- **Refuse** to create non-consensual intimate imagery
+- **Никогда** не создавайте реалистичные изображения без согласия
+- **Всегда** чётко маркируйте синтетические медиа
+- **Подумайте** о потенциальном злоупотреблении перед созданием
+- **Откажитесь** создавать интимные изображения без согласия
 
-## Responsible Deployment
+## Ответственное развёртывание
 
-When building AI features for others to use, your ethical obligations multiply.
+При создании ИИ-функций для использования другими ваши этические обязательства возрастают многократно.
 
-### Pre-Deployment Checklist
+### Чек-лист перед развёртыванием
 
 <Checklist 
-  title="Deployment Readiness"
+  title="Готовность к развёртыванию"
   items={[
-    { text: "Tested for harmful outputs across diverse inputs" },
-    { text: "Tested for bias with varied demographics" },
-    { text: "User disclosure/consent mechanisms in place" },
-    { text: "Human oversight for high-stakes decisions" },
-    { text: "Feedback and reporting system available" },
-    { text: "Incident response plan documented" },
-    { text: "Clear usage policies communicated" },
-    { text: "Monitoring and alerting configured" }
+    { text: "Протестировано на вредоносные результаты с разнообразными входными данными" },
+    { text: "Протестировано на предвзятость с различными демографическими группами" },
+    { text: "Механизмы раскрытия/согласия пользователей на месте" },
+    { text: "Человеческий контроль для решений с высокими ставками" },
+    { text: "Система обратной связи и сообщений о проблемах доступна" },
+    { text: "План реагирования на инциденты задокументирован" },
+    { text: "Чёткие политики использования доведены до сведения" },
+    { text: "Мониторинг и оповещение настроены" }
   ]}
 />
 
-### Human Oversight Principles
+### Принципы человеческого контроля
 
 <InfoGrid items={[
-  { label: "High-Stakes Review", description: "Humans review decisions that significantly affect people", example: "Hiring, medical, legal, financial recommendations", exampleType: "text", color: "blue" },
-  { label: "Error Correction", description: "Mechanisms exist to catch and fix AI mistakes", example: "User feedback, quality sampling, appeals process", exampleType: "text", color: "blue" },
-  { label: "Continuous Learning", description: "Insights from issues improve the system", example: "Post-mortems, prompt updates, training improvements", exampleType: "text", color: "blue" },
-  { label: "Override Capability", description: "Humans can intervene when AI fails", example: "Manual review queues, escalation paths", exampleType: "text", color: "blue" }
+  { label: "Проверка решений с высокими ставками", description: "Люди проверяют решения, существенно влияющие на людей", example: "Рекомендации по найму, медицинские, юридические, финансовые", exampleType: "text", color: "blue" },
+  { label: "Исправление ошибок", description: "Существуют механизмы для выявления и исправления ошибок ИИ", example: "Обратная связь от пользователей, выборочная проверка качества, процесс апелляции", exampleType: "text", color: "blue" },
+  { label: "Непрерывное обучение", description: "Выводы из проблем улучшают систему", example: "Разборы инцидентов, обновление промптов, улучшение обучения", exampleType: "text", color: "blue" },
+  { label: "Возможность переопределения", description: "Люди могут вмешаться, когда ИИ даёт сбой", example: "Очереди на ручную проверку, пути эскалации", exampleType: "text", color: "blue" }
 ]} />
 
-## Special Context Guidelines
+## Рекомендации для особых контекстов
 
-Some domains require extra care due to their potential for harm or the vulnerability of those involved.
+Некоторые области требуют особой осторожности из-за потенциального вреда или уязвимости тех, кто в них участвует.
 
-### Healthcare
+### Здравоохранение
 
 <TryIt 
-  title="Medical Context Disclaimer"
-  description="Template for AI systems that might receive health-related queries."
+  title="Дисклеймер для медицинского контекста"
+  description="Шаблон для ИИ-систем, которые могут получать вопросы о здоровье."
   prompt={`You are an AI assistant. When users ask about health or medical topics:
 
 **Always**:
@@ -309,49 +309,49 @@ User question: \${healthQuestion}
 Respond helpfully while following these guidelines.`}
 />
 
-### Legal and Financial
+### Юридические и финансовые вопросы
 
-These domains have regulatory implications and require appropriate disclaimers:
-
-<InfoGrid items={[
-  { label: "Legal Queries", description: "Provide general information, not legal advice", example: "\"This is general information. For your specific situation, consult a licensed attorney.\"", color: "purple" },
-  { label: "Financial Queries", description: "Educate without providing personal financial advice", example: "\"This is educational. Consider consulting a financial advisor for your situation.\"", color: "purple" },
-  { label: "Jurisdiction Awareness", description: "Laws vary by location", example: "\"Laws differ by state/country. Verify requirements for your jurisdiction.\"", color: "purple" }
-]} />
-
-### Children and Education
+Эти области имеют регуляторные последствия и требуют соответствующих дисклеймеров:
 
 <InfoGrid items={[
-  { label: "Age-Appropriate Content", description: "Ensure outputs are suitable for the age group", example: "Filter mature content, use appropriate language", exampleType: "text", color: "cyan" },
-  { label: "Academic Integrity", description: "Support learning, don't replace it", example: "Explain concepts rather than writing essays for students", exampleType: "text", color: "cyan" },
-  { label: "Safety First", description: "Extra protection for vulnerable users", example: "Stricter content filters, no personal data collection", exampleType: "text", color: "cyan" }
+  { label: "Юридические вопросы", description: "Предоставляйте общую информацию, а не юридическую консультацию", example: "«Это общая информация. По вашей конкретной ситуации проконсультируйтесь с лицензированным адвокатом.»", color: "purple" },
+  { label: "Финансовые вопросы", description: "Обучайте, не давая персональных финансовых советов", example: "«Это образовательная информация. Рассмотрите возможность консультации с финансовым консультантом по вашей ситуации.»", color: "purple" },
+  { label: "Осведомлённость о юрисдикции", description: "Законы различаются в зависимости от местоположения", example: "«Законы отличаются в разных странах/регионах. Проверьте требования для вашей юрисдикции.»", color: "purple" }
 ]} />
 
-## Self-Assessment
+### Дети и образование
 
-Before deploying any prompt or AI system, run through these questions:
+<InfoGrid items={[
+  { label: "Контент, соответствующий возрасту", description: "Убедитесь, что результаты подходят для возрастной группы", example: "Фильтруйте контент для взрослых, используйте подходящий язык", exampleType: "text", color: "cyan" },
+  { label: "Академическая честность", description: "Поддерживайте обучение, не заменяйте его", example: "Объясняйте концепции, а не пишите эссе за студентов", exampleType: "text", color: "cyan" },
+  { label: "Безопасность прежде всего", description: "Дополнительная защита для уязвимых пользователей", example: "Более строгие фильтры контента, отсутствие сбора личных данных", exampleType: "text", color: "cyan" }
+]} />
+
+## Самооценка
+
+Перед развёртыванием любого промпта или ИИ-системы пройдитесь по этим вопросам:
 
 <Checklist 
-  title="Ethical Self-Check"
+  title="Этическая самопроверка"
   items={[
-    { text: "Could this be used to harm someone?" },
-    { text: "Does this respect user privacy?" },
-    { text: "Could this perpetuate harmful biases?" },
-    { text: "Is AI involvement appropriately disclosed?" },
-    { text: "Is there adequate human oversight?" },
-    { text: "What's the worst that could happen?" },
-    { text: "Would I be comfortable if this use were public?" }
+    { text: "Может ли это быть использовано для причинения вреда кому-либо?" },
+    { text: "Уважает ли это конфиденциальность пользователей?" },
+    { text: "Может ли это распространять вредные предубеждения?" },
+    { text: "Раскрыто ли участие ИИ надлежащим образом?" },
+    { text: "Есть ли адекватный человеческий контроль?" },
+    { text: "Что самое худшее может случиться?" },
+    { text: "Было бы мне комфортно, если бы это использование стало публичным?" }
   ]}
 />
 
 <Quiz 
-  question="A user asks your AI system how to 'get rid of someone who's bothering them.' What's the most appropriate response strategy?"
+  question="Пользователь просит вашу ИИ-систему рассказать, как «избавиться от кого-то, кто его беспокоит». Какая стратегия ответа наиболее уместна?"
   options={[
-    "Refuse immediately—this could be a request for harm instructions",
-    "Provide conflict resolution advice since that's the most likely intent",
-    "Ask clarifying questions to understand intent before deciding how to respond",
-    "Explain you can't help with anything related to harming people"
+    "Отказать немедленно — это может быть запрос на инструкции по причинению вреда",
+    "Предоставить советы по разрешению конфликтов, поскольку это наиболее вероятное намерение",
+    "Задать уточняющие вопросы, чтобы понять намерение, прежде чем решать, как ответить",
+    "Объяснить, что вы не можете помочь ни с чем, связанным с причинением вреда людям"
   ]}
   correctIndex={2}
-  explanation="Ambiguous requests deserve clarification, not assumptions. 'Get rid of someone' could mean ending a friendship, resolving a workplace conflict, or something harmful. Asking clarifying questions lets you respond appropriately to the actual intent while remaining cautious about providing harmful information."
+  explanation="Неоднозначные запросы заслуживают уточнения, а не предположений. «Избавиться от кого-то» может означать прекращение дружбы, разрешение рабочего конфликта или что-то вредоносное. Уточняющие вопросы позволяют отреагировать соответственно фактическому намерению, оставаясь осторожным в предоставлении вредоносной информации."
 />

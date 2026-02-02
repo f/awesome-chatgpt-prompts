@@ -1,23 +1,23 @@
-Chain of Thought (CoT) prompting is a technique that dramatically improves AI performance on complex reasoning tasks by asking the model to show its work step by step.
+Chain of Thought (CoT) 프롬프팅은 모델에게 단계별로 작업 과정을 보여달라고 요청함으로써 복잡한 추론 작업에서 AI 성능을 획기적으로 향상시키는 기법입니다.
 
-<Callout type="info" title="Show Your Work">
-Just like a math teacher asking students to show their work, CoT prompting asks the AI to make its reasoning visible.
+<Callout type="info" title="풀이 과정을 보여주세요">
+수학 선생님이 학생들에게 풀이 과정을 보여달라고 하는 것처럼, CoT 프롬프팅은 AI에게 추론 과정을 가시적으로 보여달라고 요청합니다.
 </Callout>
 
-## The Problem CoT Solves
+## CoT가 해결하는 문제
 
-AI models can struggle with multi-step reasoning when asked to jump directly to an answer.
+AI 모델은 답을 바로 도출하라고 요청받으면 다단계 추론에 어려움을 겪을 수 있습니다.
 
 <Compare 
-  before={{ label: "Direct Answer (Often Wrong)", content: "Question: A store sells apples for $2 each. If you buy 5 or more, you get 20% off. How much do 7 apples cost?\n\nAnswer: $14 ❌" }}
-  after={{ label: "Chain of Thought (Correct)", content: "Question: A store sells apples for $2 each. If you buy 5 or more, you get 20% off. How much do 7 apples cost?\n\nLet's work through this step by step:\n1. Regular price per apple: $2\n2. Number of apples: 7\n3. Since 7 ≥ 5, the discount applies\n4. Regular total: 7 × $2 = $14\n5. Discount: 20% of $14 = $2.80\n6. Final price: $14 - $2.80 = $11.20\n\nAnswer: $11.20 ✓" }}
+  before={{ label: "직접 답변 (종종 오답)", content: "Question: A store sells apples for $2 each. If you buy 5 or more, you get 20% off. How much do 7 apples cost?\n\nAnswer: $14 ❌" }}
+  after={{ label: "Chain of Thought (정답)", content: "Question: A store sells apples for $2 each. If you buy 5 or more, you get 20% off. How much do 7 apples cost?\n\nLet's work through this step by step:\n1. Regular price per apple: $2\n2. Number of apples: 7\n3. Since 7 ≥ 5, the discount applies\n4. Regular total: 7 × $2 = $14\n5. Discount: 20% of $14 = $2.80\n6. Final price: $14 - $2.80 = $11.20\n\nAnswer: $11.20 ✓" }}
 />
 
-## Basic CoT Prompts
+## 기본 CoT 프롬프트
 
-### Simple Trigger Phrases
+### 간단한 트리거 문구
 
-Add one of these to your prompts:
+프롬프트에 다음 중 하나를 추가하세요:
 
 <div className="my-4 grid gap-2">
   <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Let's think step by step."</div>
@@ -27,11 +27,11 @@ Add one of these to your prompts:
   <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Explain your thought process."</div>
 </div>
 
-### Explicit Step Request
+### 명시적 단계 요청
 
 <TryIt 
-  title="Try Chain of Thought"
-  description="Ask the AI to solve a problem step by step."
+  title="Chain of Thought 시도하기"
+  description="AI에게 문제를 단계별로 풀어달라고 요청해 보세요."
   prompt={`Solve this problem:
 
 A car rental costs $40 per day plus $0.25 per mile. If someone rents a car for 3 days and drives 200 miles, what is the total cost?
@@ -46,11 +46,11 @@ Before giving your final answer:
 
 ## Zero-Shot vs Few-Shot CoT
 
-There are two main approaches to Chain of Thought prompting, each with different trade-offs between simplicity and control.
+Chain of Thought 프롬프팅에는 두 가지 주요 접근법이 있으며, 각각 단순성과 제어 사이에서 서로 다른 균형점을 가집니다.
 
 ### Zero-Shot CoT
 
-The simplest approach—just add a trigger phrase and let the model figure out how to reason. No examples needed. This works surprisingly well for many problems, though you have less control over the reasoning format.
+가장 간단한 접근법으로, 트리거 문구만 추가하면 모델이 스스로 추론 방법을 알아냅니다. 예시가 필요 없습니다. 많은 문제에서 놀라울 정도로 잘 작동하지만, 추론 형식에 대한 제어력은 낮습니다.
 
 <TryIt 
   compact
@@ -60,7 +60,7 @@ The simplest approach—just add a trigger phrase and let the model figure out h
 Let's think step by step.`}
 />
 
-**Example Output:**
+**출력 예시:**
 ```
 Let's think step by step.
 - John starts with 3 apples
@@ -73,7 +73,7 @@ Answer: 6 apples
 
 ### Few-Shot CoT
 
-For more consistent results, show the model exactly how you want it to reason by providing worked examples. This gives you control over the reasoning style, format, and level of detail. The model will mimic your demonstrated pattern.
+더 일관된 결과를 위해, 작업된 예시를 제공하여 모델에게 원하는 추론 방식을 정확히 보여줍니다. 이를 통해 추론 스타일, 형식, 세부 수준을 제어할 수 있습니다. 모델은 제시된 패턴을 따라합니다.
 
 <TryIt 
   compact
@@ -101,7 +101,7 @@ Now solve:
 Q: A store sells notebooks for $3 each. If you buy 10 or more, you get 25% off. How much do 12 notebooks cost?`}
 />
 
-**Example Output:**
+**출력 예시:**
 ```
 A: Let's work through this:
 - Regular price: $3, Quantity: 12
@@ -111,23 +111,23 @@ A: Let's work through this:
 - Final price: $36 - $9 = $27
 ```
 
-## Structured CoT Formats
+## 구조화된 CoT 형식
 
-For consistent, reproducible reasoning, use structured formats with named steps. These frameworks ensure the model doesn't skip important stages and makes outputs easier to parse and verify.
+일관되고 재현 가능한 추론을 위해, 명명된 단계가 있는 구조화된 형식을 사용하세요. 이러한 프레임워크는 모델이 중요한 단계를 건너뛰지 않도록 보장하고, 출력을 파싱하고 검증하기 쉽게 만듭니다.
 
-### The BREAK Format
+### BREAK 형식
 
-A memorable acronym that guides the model through a complete problem-solving cycle, from understanding to verification.
+이해부터 검증까지 완전한 문제 해결 사이클을 안내하는 기억하기 쉬운 약어입니다.
 
 <BREAKFramework />
 
-### The Reasoning Template
+### 추론 템플릿
 
-A more formal structure that separates inputs, goals, and execution. Excellent for technical problems where you need clear documentation of the solution process.
+입력, 목표, 실행을 분리하는 더 형식적인 구조입니다. 솔루션 과정의 명확한 문서화가 필요한 기술적 문제에 탁월합니다.
 
 <TryIt 
   compact
-  title="Reasoning Template"
+  title="추론 템플릿"
   prompt={`Use this template to solve the problem:
 
 GIVEN: [List known information]
@@ -143,7 +143,7 @@ ANSWER: [Final answer]
 Problem: A car uses 8 liters of fuel per 100 km. If the tank holds 45 liters and fuel costs $1.50 per liter, how much does it cost to drive 300 km?`}
 />
 
-**Example Output:**
+**출력 예시:**
 ```
 GIVEN: 8L/100km, tank 45L, $1.50/L, drive 300km
 GOAL: Calculate fuel cost
@@ -155,23 +155,23 @@ VERIFICATION: 24L < 45L tank ✓
 ANSWER: $36
 ```
 
-## CoT for Different Problem Types
+## 문제 유형별 CoT
 
-Different problem types benefit from different CoT approaches. Here are patterns optimized for common scenarios.
+문제 유형에 따라 서로 다른 CoT 접근법이 효과적입니다. 다음은 일반적인 시나리오에 최적화된 패턴입니다.
 
-### Mathematical Reasoning
+### 수학적 추론
 
-Math problems benefit most from CoT because each step builds on the previous one. Errors compound, so showing work helps catch mistakes early. The model should clearly label each calculation.
+수학 문제는 각 단계가 이전 단계를 기반으로 하기 때문에 CoT의 효과가 가장 큽니다. 오류가 누적되므로 풀이 과정을 보여주면 실수를 조기에 발견할 수 있습니다. 모델은 각 계산에 명확하게 레이블을 붙여야 합니다.
 
 <TryIt 
   compact
-  title="Math with CoT"
+  title="CoT를 활용한 수학"
   prompt={`A company's revenue was $1.2M in Q1. It grew 15% in Q2, declined 10% in Q3, and grew 25% in Q4. What was the total annual revenue?
 
 Think through each quarter, showing your calculations clearly.`}
 />
 
-**Example Output:**
+**출력 예시:**
 ```
 Q1: $1,200,000 (given)
 Q2: $1,200,000 × 1.15 = $1,380,000
@@ -181,13 +181,13 @@ Q4: $1,242,000 × 1.25 = $1,552,500
 Total: $5,374,500
 ```
 
-### Logical Reasoning
+### 논리적 추론
 
-Logic puzzles require systematic elimination and hypothesis testing. CoT helps the model track constraints, test possibilities, and verify that all conditions are satisfied. The key is methodical exploration rather than guessing.
+논리 퍼즐은 체계적인 제거와 가설 검증이 필요합니다. CoT는 모델이 제약 조건을 추적하고, 가능성을 테스트하며, 모든 조건이 충족되었는지 검증하는 데 도움을 줍니다. 핵심은 추측이 아닌 체계적인 탐색입니다.
 
 <TryIt 
   compact
-  title="Logic Puzzle"
+  title="논리 퍼즐"
   prompt={`Three friends—Alice, Bob, and Carol—each have different pets (cat, dog, fish) and different jobs (teacher, engineer, doctor).
 
 Clues:
@@ -199,7 +199,7 @@ Clues:
 Who has which pet and job? Reason through this systematically, testing hypotheses and verifying against all clues.`}
 />
 
-**Example Output:**
+**출력 예시:**
 ```
 From clue 3: Bob = teacher
 → Alice and Carol are engineer/doctor
@@ -213,13 +213,13 @@ Verify: All 4 clues satisfied ✓
 Answer: Alice (doctor, fish), Bob (teacher, cat), Carol (engineer, dog)
 ```
 
-### Code Debugging
+### 코드 디버깅
 
-Debugging benefits from CoT because it forces the model to trace execution rather than guess at bugs. By walking through the code with concrete values, the actual behavior becomes visible and discrepancies with expected behavior are exposed.
+디버깅은 모델이 버그를 추측하지 않고 실행을 추적하도록 강제하기 때문에 CoT의 효과가 큽니다. 구체적인 값으로 코드를 따라가면 실제 동작이 가시화되고 예상 동작과의 차이가 드러납니다.
 
 <TryIt 
   compact
-  title="Debug with CoT"
+  title="CoT를 활용한 디버깅"
   prompt={`This function should return the sum of even numbers in a list, but it's returning wrong values. Debug step by step by tracing through with the input [2, 3, 4, 6]:
 
 def sum_evens(numbers):
@@ -232,7 +232,7 @@ def sum_evens(numbers):
 Trace each step, find the bug, and provide the fix.`}
 />
 
-**Example Output:**
+**출력 예시:**
 ```
 Trace [2, 3, 4, 6]:
 n=2: total += 1 → 1 (wait, adding 1 not n!)
@@ -245,9 +245,9 @@ Expected: 12, Got: 3
 Fix: Change to "total += n"
 ```
 
-## Self-Consistency with CoT
+## CoT를 활용한 Self-Consistency
 
-For critical problems, don't rely on a single reasoning path. Generate multiple independent solutions and compare results. If different approaches converge on the same answer, confidence is high. Disagreement signals the need for careful review.
+중요한 문제의 경우, 단일 추론 경로에 의존하지 마세요. 여러 개의 독립적인 솔루션을 생성하고 결과를 비교하세요. 서로 다른 접근법이 같은 답에 수렴하면 신뢰도가 높습니다. 불일치는 신중한 검토가 필요하다는 신호입니다.
 
 <TryIt 
   compact
@@ -263,7 +263,7 @@ Approach 3: Logical reasoning
 Then compare and give your final answer.`}
 />
 
-**Example Output:**
+**출력 예시:**
 ```
 Approach 1 (Algebra): c + w = 30, 2c + 4w = 74 → c=23, w=7
 Approach 2 (Guess): Try 23/7 → 46 + 28 = 74 ✓
@@ -272,13 +272,13 @@ Approach 3 (Logic): 30 chickens = 60 legs, need 14 more → 7 cows
 All agree: 23 chickens, 7 cows
 ```
 
-## CoT for Decision Making
+## 의사결정을 위한 CoT
 
-Decisions involve weighing trade-offs across multiple dimensions. CoT ensures all relevant factors are considered systematically rather than jumping to conclusions. This structured approach also documents the reasoning for future reference.
+의사결정은 여러 차원에서 트레이드오프를 저울질하는 것을 포함합니다. CoT는 성급하게 결론에 도달하지 않고 모든 관련 요소를 체계적으로 고려하도록 보장합니다. 이러한 구조화된 접근법은 또한 향후 참조를 위해 추론 과정을 문서화합니다.
 
 <TryIt 
   compact
-  title="Decision Analysis"
+  title="의사결정 분석"
   prompt={`Should we adopt microservices architecture for our application?
 
 Context:
@@ -294,7 +294,7 @@ Think through this systematically:
 4. Give a recommendation with reasoning`}
 />
 
-**Example Output:**
+**출력 예시:**
 ```
 FACTORS:
 - Team size (5): Too small for microservices ❌
@@ -308,56 +308,56 @@ RECOMMENDATION: Stay monolith, use clear module
 boundaries to ease future transition.
 ```
 
-## When to Use CoT
+## CoT 사용 시점
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Use CoT For</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> CoT 사용 권장</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">**Math problems** — Reduces calculation errors</p>
-      <p className="m-0!">**Logic puzzles** — Prevents skipped steps</p>
-      <p className="m-0!">**Complex analysis** — Organizes thinking</p>
-      <p className="m-0!">**Code debugging** — Traces execution</p>
-      <p className="m-0!">**Decision making** — Weighs trade-offs</p>
+      <p className="m-0!">**수학 문제** — 계산 오류 감소</p>
+      <p className="m-0!">**논리 퍼즐** — 단계 누락 방지</p>
+      <p className="m-0!">**복잡한 분석** — 사고 정리</p>
+      <p className="m-0!">**코드 디버깅** — 실행 추적</p>
+      <p className="m-0!">**의사결정** — 트레이드오프 저울질</p>
     </div>
   </div>
   <div className="border rounded-lg bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900">
-    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Skip CoT For</p>
+    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> CoT 사용 불필요</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">**Simple Q&A** — Unnecessary overhead</p>
-      <p className="m-0!">**Creative writing** — Can constrain creativity</p>
-      <p className="m-0!">**Factual lookups** — No reasoning needed</p>
-      <p className="m-0!">**Translation** — Direct task</p>
-      <p className="m-0!">**Summarization** — Usually straightforward</p>
+      <p className="m-0!">**간단한 Q&A** — 불필요한 오버헤드</p>
+      <p className="m-0!">**창작 글쓰기** — 창의성 제약 가능</p>
+      <p className="m-0!">**사실 조회** — 추론 불필요</p>
+      <p className="m-0!">**번역** — 직접적인 작업</p>
+      <p className="m-0!">**요약** — 대개 간단함</p>
     </div>
   </div>
 </div>
 
-## CoT Limitations
+## CoT의 한계
 
-While powerful, Chain of Thought isn't a silver bullet. Understanding its limitations helps you apply it appropriately.
+강력하지만, Chain of Thought는 만능이 아닙니다. 한계를 이해하면 적절하게 적용하는 데 도움이 됩니다.
 
-1. **Increased token usage** — More output means higher costs
-2. **Not always needed** — Simple tasks don't benefit
-3. **Can be verbose** — May need to ask for conciseness
-4. **Reasoning can be flawed** — CoT doesn't guarantee correctness
+1. **토큰 사용량 증가** — 출력이 많아지면 비용이 높아집니다
+2. **항상 필요하지 않음** — 간단한 작업에는 효과가 없습니다
+3. **장황해질 수 있음** — 간결함을 요청해야 할 수 있습니다
+4. **추론이 틀릴 수 있음** — CoT가 정확성을 보장하지 않습니다
 
-## Summary
+## 요약
 
-<Callout type="tip" title="Key Takeaways">
-CoT dramatically improves complex reasoning by making implicit steps explicit. Use it for math, logic, analysis, and debugging. Trade-off: better accuracy for more tokens.
+<Callout type="tip" title="핵심 요점">
+CoT는 암묵적인 단계를 명시적으로 만들어 복잡한 추론을 획기적으로 향상시킵니다. 수학, 논리, 분석, 디버깅에 사용하세요. 트레이드오프: 더 많은 토큰으로 더 나은 정확성을 얻습니다.
 </Callout>
 
 <Quiz 
-  question="When should you NOT use Chain of Thought prompting?"
+  question="Chain of Thought 프롬프팅을 사용하지 말아야 할 때는 언제입니까?"
   options={[
-    "Math problems requiring multiple steps",
-    "Simple factual questions like 'What is the capital of France?'",
-    "Debugging code with complex logic",
-    "Analyzing a business decision"
+    "여러 단계가 필요한 수학 문제",
+    "'프랑스의 수도는 어디입니까?'와 같은 간단한 사실 질문",
+    "복잡한 논리가 있는 코드 디버깅",
+    "비즈니스 의사결정 분석"
   ]}
   correctIndex={1}
-  explanation="Chain of Thought adds unnecessary overhead for simple Q&A. It's best reserved for complex reasoning tasks like math, logic puzzles, code debugging, and analysis where showing work improves accuracy."
+  explanation="Chain of Thought는 간단한 Q&A에 불필요한 오버헤드를 추가합니다. 풀이 과정을 보여주면 정확도가 향상되는 수학, 논리 퍼즐, 코드 디버깅, 분석과 같은 복잡한 추론 작업에 사용하는 것이 가장 좋습니다."
 />
 
-In the next chapter, we'll explore few-shot learning—teaching the model through examples.
+다음 장에서는 예시를 통해 모델을 가르치는 few-shot learning을 살펴봅니다.

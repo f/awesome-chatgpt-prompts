@@ -1,335 +1,335 @@
-AI can dramatically enhance professional productivity. This chapter covers prompts for business communication, analysis, planning, and workflow optimization.
+AI는 전문적인 생산성을 극적으로 향상시킬 수 있습니다. 이 장에서는 비즈니스 커뮤니케이션, 분석, 계획 수립, 워크플로우 최적화를 위한 프롬프트를 다룹니다.
 
-<Callout type="info" title="AI for Business">
-AI excels at drafting, analysis, and structuring—freeing you to focus on strategy, relationships, and decisions that require human judgment.
+<Callout type="info" title="비즈니스를 위한 AI">
+AI는 초안 작성, 분석, 구조화에 탁월하여 전략, 관계, 인간의 판단이 필요한 의사결정에 집중할 수 있도록 도와줍니다.
 </Callout>
 
-## Business Communication
+## 비즈니스 커뮤니케이션
 
-### Do's and Don'ts: Business Emails
+### Do's and Don'ts: 비즈니스 이메일
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Write an email to my boss about the project." }}
-  after={{ label: "✓ Complete context", content: "Write an email to my manager (Sarah) updating her on the Q4 marketing project.\n\nKey points: We're on track for the Nov 15 deadline, resolved the vendor issue, need her approval on the $5K budget increase.\nTone: Professional but friendly (we have a good relationship)\nKeep under 150 words with a clear ask at the end." }}
+  before={{ label: "❌ 모호한 요청", content: "상사에게 프로젝트에 대한 이메일을 작성해 주세요." }}
+  after={{ label: "✓ 완전한 맥락", content: "관리자(사라)에게 Q4 마케팅 프로젝트 진행 상황을 업데이트하는 이메일을 작성해 주세요.\n\n주요 사항: 11월 15일 마감일에 맞춰 진행 중이며, 벤더 문제를 해결했고, $5K 예산 증액에 대한 승인이 필요합니다.\n어조: 전문적이면서 친근하게 (좋은 관계를 유지하고 있습니다)\n150단어 이하로 작성하고 마지막에 명확한 요청을 포함해 주세요." }}
 />
 
-### Email Drafting
+### 이메일 초안 작성
 
-<TryIt compact prompt={`Write a professional email.
+<TryIt compact prompt={`전문적인 이메일을 작성해 주세요.
 
-Context:
-- To: [recipient and relationship]
-- Purpose: [request/inform/follow-up/apologize]
-- Key points: [what must be communicated]
-- Tone: [formal/friendly professional/urgent]
+맥락:
+- 수신자: [수신자 및 관계]
+- 목적: [요청/정보 전달/후속 연락/사과]
+- 주요 사항: [전달해야 할 내용]
+- 어조: [격식체/친근한 전문가적/긴급]
 
-Constraints:
-- Keep under [X] sentences
-- Clear call-to-action
-- Subject line included`} />
+제약 조건:
+- [X]문장 이하로 유지
+- 명확한 행동 유도
+- 제목 포함`} />
 
-**Examples by purpose:**
+**목적별 예시:**
 
-<TryIt compact prompt={`\${emailType:Meeting Request}: Write an email requesting a meeting with a potential client to discuss partnership opportunities. Keep it brief and make it easy for them to say yes.`} />
+<TryIt compact prompt={`\${emailType:회의 요청}: 파트너십 기회 논의를 위해 잠재 고객과의 회의를 요청하는 이메일을 작성해 주세요. 간결하게 작성하고 수락하기 쉽게 만들어 주세요.`} />
 
-<TryIt compact prompt={`\${emailType:Difficult Conversation}: Write an email declining a vendor's proposal while maintaining the relationship for future opportunities. Be clear but diplomatic.`} />
+<TryIt compact prompt={`\${emailType:어려운 대화}: 향후 기회를 위한 관계를 유지하면서 벤더의 제안을 거절하는 이메일을 작성해 주세요. 명확하되 외교적으로 작성해 주세요.`} />
 
-<TryIt compact prompt={`\${emailType:Status Update}: Write a project status email to stakeholders. The project is 2 weeks behind schedule due to scope changes. Present the situation professionally with a recovery plan.`} />
+<TryIt compact prompt={`\${emailType:상태 업데이트}: 이해관계자에게 프로젝트 상태 이메일을 작성해 주세요. 범위 변경으로 인해 프로젝트가 2주 지연되었습니다. 복구 계획과 함께 상황을 전문적으로 제시해 주세요.`} />
 
-### Presentation Content
+### 프레젠테이션 콘텐츠
 
-<TryIt compact prompt={`Create presentation content for \${topic:Q4 sales strategy}.
+<TryIt compact prompt={`\${topic:Q4 영업 전략}에 대한 프레젠테이션 콘텐츠를 작성해 주세요.
 
-Audience: \${audience:executive leadership}
-Duration: \${duration:15 minutes}
-Goal: \${goal:persuade to approve budget increase}
+청중: \${audience:경영진}
+소요 시간: \${duration:15분}
+목표: \${goal:예산 증액 승인 설득}
 
-Provide for each slide:
-- Title
-- Key message (one main point)
-- Supporting points (3 max)
-- Speaker notes (what to say)
-- Visual suggestion (chart/image/diagram)
+각 슬라이드에 대해 제공해 주세요:
+- 제목
+- 핵심 메시지 (하나의 주요 포인트)
+- 뒷받침하는 포인트 (최대 3개)
+- 발표자 노트 (말할 내용)
+- 시각적 제안 (차트/이미지/다이어그램)
 
-Structure:
-1. Hook/Attention grabber
-2. Problem/Opportunity
-3. Solution/Recommendation
-4. Evidence/Support
-5. Call to action`} />
+구조:
+1. 주목/관심 유도
+2. 문제/기회
+3. 솔루션/제안
+4. 증거/지원
+5. 행동 촉구`} />
 
-### Report Writing
+### 보고서 작성
 
-<TryIt compact prompt={`Write a \${reportType:recommendation} report on \${topic:expanding into European markets}.
+<TryIt compact prompt={`\${topic:유럽 시장 진출}에 대한 \${reportType:제안} 보고서를 작성해 주세요.
 
-Report type: \${type:recommendation}
-Audience: \${audience:C-suite}
-Length: \${length:5 pages}
+보고서 유형: \${type:제안}
+청중: \${audience:C-레벨 임원}
+길이: \${length:5페이지}
 
-Structure:
-1. Executive Summary (key findings, 1 paragraph)
-2. Background/Context
-3. Methodology (if applicable)
-4. Findings
-5. Analysis
-6. Recommendations
-7. Next Steps
+구조:
+1. 요약 (주요 발견 사항, 1문단)
+2. 배경/맥락
+3. 방법론 (해당하는 경우)
+4. 발견 사항
+5. 분석
+6. 제안
+7. 다음 단계
 
-Include: Data visualization suggestions where relevant
-Tone: \${tone:formal business}`} />
+포함 사항: 관련 부분에 데이터 시각화 제안
+어조: \${tone:격식 있는 비즈니스}`} />
 
-## Analysis & Decision-Making
+## 분석 및 의사결정
 
-<Callout type="tip" title="Analysis Principle">
-AI can structure your thinking, but **you provide the real-world context**. The best analyses combine AI's frameworks with your domain knowledge.
+<Callout type="tip" title="분석 원칙">
+AI는 사고를 구조화할 수 있지만, **실제 맥락은 여러분이 제공합니다**. 최고의 분석은 AI의 프레임워크와 여러분의 도메인 지식을 결합합니다.
 </Callout>
 
-### SWOT Analysis
+### SWOT 분석
 
-<TryIt compact prompt={`Conduct a SWOT analysis for \${subject:launching a new mobile app}.
+<TryIt compact prompt={`\${subject:새로운 모바일 앱 출시}에 대한 SWOT 분석을 수행해 주세요.
 
-Context:
-\${context:We're a mid-size fintech company considering a consumer banking app}
+맥락:
+\${context:우리는 소비자 뱅킹 앱을 고려하고 있는 중견 핀테크 회사입니다}
 
-Provide:
+제공해 주세요:
 
-**Strengths** (internal positives)
-- At least 4 points with brief explanations
+**강점** (내부 긍정적 요소)
+- 간단한 설명과 함께 최소 4가지 포인트
 
-**Weaknesses** (internal negatives)
-- At least 4 points with brief explanations
+**약점** (내부 부정적 요소)
+- 간단한 설명과 함께 최소 4가지 포인트
 
-**Opportunities** (external positives)
-- At least 4 points with brief explanations
+**기회** (외부 긍정적 요소)
+- 간단한 설명과 함께 최소 4가지 포인트
 
-**Threats** (external negatives)
-- At least 4 points with brief explanations
+**위협** (외부 부정적 요소)
+- 간단한 설명과 함께 최소 4가지 포인트
 
-**Strategic Implications**
-- Key insight from analysis
-- Recommended priorities`} />
+**전략적 시사점**
+- 분석에서 얻은 핵심 인사이트
+- 권장 우선순위`} />
 
-### Decision Framework
+### 의사결정 프레임워크
 
-<TryIt compact prompt={`Help me make a decision about \${decision:which CRM to choose}.
+<TryIt compact prompt={`\${decision:어떤 CRM을 선택할지}에 대한 결정을 도와주세요.
 
-Options:
+옵션:
 1. \${optionA:Salesforce}
 2. \${optionB:HubSpot}
 3. \${optionC:Pipedrive}
 
-Criteria that matter to me:
-- \${criterion1:ease of use} (weight: high)
-- \${criterion2:integration with existing tools} (weight: high)
-- \${criterion3:cost} (weight: medium)
+저에게 중요한 기준:
+- \${criterion1:사용 편의성} (가중치: 높음)
+- \${criterion2:기존 도구와의 통합} (가중치: 높음)
+- \${criterion3:비용} (가중치: 중간)
 
-Provide:
-1. Score each option against each criterion (1-5)
-2. Weighted analysis
-3. Pros/cons summary for each
-4. Risk assessment
-5. Recommendation with rationale
-6. Questions to consider before deciding`} />
+제공해 주세요:
+1. 각 기준에 대해 각 옵션 점수 매기기 (1-5)
+2. 가중치 분석
+3. 각 옵션의 장단점 요약
+4. 리스크 평가
+5. 근거와 함께 제안
+6. 결정 전 고려해야 할 질문`} />
 
-### Competitive Analysis
+### 경쟁사 분석
 
-<TryIt compact prompt={`Analyze \${competitor:Slack} compared to \${ourProduct:our team communication tool}.
+<TryIt compact prompt={`\${ourProduct:우리의 팀 커뮤니케이션 도구}와 비교하여 \${competitor:Slack}을 분석해 주세요.
 
-Research their:
-1. **Products/Services** - offerings, pricing, positioning
-2. **Strengths** - what they do well
-3. **Weaknesses** - where they fall short
-4. **Market position** - target segments, market share
-5. **Strategy** - apparent direction and focus
+다음을 조사해 주세요:
+1. **제품/서비스** - 제공 내용, 가격, 포지셔닝
+2. **강점** - 잘하는 부분
+3. **약점** - 부족한 부분
+4. **시장 지위** - 타겟 세그먼트, 시장 점유율
+5. **전략** - 명백한 방향과 집중 영역
 
-Compare to us:
-- Where we're stronger
-- Where they're stronger
-- Opportunity gaps
-- Competitive threats
+우리와 비교:
+- 우리가 더 강한 부분
+- 그들이 더 강한 부분
+- 기회 격차
+- 경쟁 위협
 
-Recommend: Actions to improve our competitive position`} />
+권장: 경쟁 지위를 개선하기 위한 조치`} />
 
-## Planning & Strategy
+## 계획 수립 및 전략
 
-### Goal Setting (OKRs)
+### 목표 설정 (OKRs)
 
-<TryIt compact prompt={`Help me set OKRs for \${scope:Q1 marketing team}.
+<TryIt compact prompt={`\${scope:Q1 마케팅 팀}의 OKR 설정을 도와주세요.
 
-Context:
-- Company goals: \${companyGoals:increase revenue 25% YoY}
-- Current situation: \${currentState:brand awareness is low in new markets}
-- Key priorities: \${priorities:lead generation, content marketing}
+맥락:
+- 회사 목표: \${companyGoals:전년 대비 매출 25% 증가}
+- 현재 상황: \${currentState:새로운 시장에서 브랜드 인지도가 낮음}
+- 주요 우선순위: \${priorities:리드 생성, 콘텐츠 마케팅}
 
-Create 3 Objectives with 3-4 Key Results each.
+각각 3-4개의 핵심 결과가 있는 3개의 목표를 작성해 주세요.
 
-Format:
-**Objective 1:** Qualitative goal - inspiring
-- KR 1.1: Quantitative measure (Current: X → Target: Y)
-- KR 1.2: Quantitative measure (Current: X → Target: Y)
-- KR 1.3: Quantitative measure (Current: X → Target: Y)
+형식:
+**목표 1:** 정성적 목표 - 영감을 주는
+- KR 1.1: 정량적 측정 (현재: X → 목표: Y)
+- KR 1.2: 정량적 측정 (현재: X → 목표: Y)
+- KR 1.3: 정량적 측정 (현재: X → 목표: Y)
 
-Ensure KRs are:
-- Measurable
-- Ambitious but achievable
-- Time-bound
-- Outcome-focused (not tasks)`} />
+KR이 다음을 충족하도록 해주세요:
+- 측정 가능한
+- 야심 찬 하지만 달성 가능한
+- 시간 제한이 있는
+- 결과 중심 (작업이 아닌)`} />
 
-### Project Planning
+### 프로젝트 계획
 
-<TryIt compact prompt={`Create a project plan for \${project:website redesign}.
+<TryIt compact prompt={`\${project:웹사이트 리디자인}에 대한 프로젝트 계획을 작성해 주세요.
 
-Scope: \${scope:new homepage, product pages, checkout flow}
-Timeline: \${timeline:3 months}
-Team: \${team:2 developers, 1 designer, 1 PM}
-Budget: \${budget:$50,000}
+범위: \${scope:새로운 홈페이지, 제품 페이지, 결제 플로우}
+일정: \${timeline:3개월}
+팀: \${team:개발자 2명, 디자이너 1명, PM 1명}
+예산: \${budget:$50,000}
 
-Provide:
-1. **Project phases** with milestones
-2. **Work breakdown structure** (major tasks)
-3. **Timeline** (Gantt-style description)
-4. **Dependencies** (what blocks what)
-5. **Risks** (potential issues and mitigation)
-6. **Success criteria** (how we know we're done)`} />
+제공해 주세요:
+1. **프로젝트 단계** 및 마일스톤
+2. **작업 분해 구조** (주요 작업)
+3. **일정** (간트 차트 형식 설명)
+4. **의존성** (무엇이 무엇을 차단하는지)
+5. **리스크** (잠재적 문제와 완화 방안)
+6. **성공 기준** (완료 여부 판단 방법)`} />
 
-### Meeting Agenda
+### 회의 안건
 
-<TryIt compact prompt={`Create an agenda for \${meetingType:quarterly planning}.
+<TryIt compact prompt={`\${meetingType:분기별 계획}을 위한 안건을 작성해 주세요.
 
-Purpose: \${purpose:align on Q2 priorities and resource allocation}
-Attendees: \${attendees:department heads, CEO, COO}
-Duration: \${duration:90 minutes}
+목적: \${purpose:Q2 우선순위 및 자원 배분 조율}
+참석자: \${attendees:부서장, CEO, COO}
+소요 시간: \${duration:90분}
 
-Format:
-| Time | Topic | Owner | Goal |
+형식:
+| 시간 | 주제 | 담당자 | 목표 |
 |------|-------|-------|------|
-| 5 min | Opening | Facilitator | Context |
+| 5분 | 오프닝 | 진행자 | 맥락 설명 |
 | ... | ... | ... | ... |
 
-Include:
-- Time allocations
-- Clear owner for each item
-- Specific outcomes expected
-- Pre-work required
-- Follow-up action item template`} />
+포함 사항:
+- 시간 배분
+- 각 항목의 명확한 담당자
+- 예상되는 구체적인 결과
+- 필요한 사전 작업
+- 후속 조치 항목 템플릿`} />
 
-## Productivity Workflows
+## 생산성 워크플로우
 
-### Task Prioritization
+### 작업 우선순위 지정
 
-<TryIt compact prompt={`Help me prioritize my tasks using the Eisenhower Matrix.
+<TryIt compact prompt={`아이젠하워 매트릭스를 사용하여 작업 우선순위를 지정하는 것을 도와주세요.
 
-My tasks:
-\${tasks:1. Prepare quarterly report (due Friday)\n2. Review job applications\n3. Reply to vendor emails\n4. Plan team offsite\n5. Update LinkedIn profile}
+내 작업:
+\${tasks:1. 분기 보고서 준비 (금요일까지)\n2. 입사 지원서 검토\n3. 벤더 이메일 답장\n4. 팀 워크숍 계획\n5. LinkedIn 프로필 업데이트}
 
-Categorize each into:
-1. **Urgent + Important** (Do first)
-2. **Important, Not Urgent** (Schedule)
-3. **Urgent, Not Important** (Delegate)
-4. **Neither** (Eliminate)
+각각을 다음으로 분류해 주세요:
+1. **긴급 + 중요** (먼저 수행)
+2. **중요하지만 긴급하지 않음** (일정 잡기)
+3. **긴급하지만 중요하지 않음** (위임)
+4. **둘 다 아님** (제거)
 
-Then provide:
-- Recommended order of execution
-- Time estimates
-- Suggestions for delegation or elimination`} />
+그런 다음 제공해 주세요:
+- 권장 실행 순서
+- 시간 추정
+- 위임 또는 제거 제안`} />
 
-### Process Documentation
+### 프로세스 문서화
 
-<TryIt compact prompt={`Document this business process: \${processName:customer refund request}.
+<TryIt compact prompt={`이 비즈니스 프로세스를 문서화해 주세요: \${processName:고객 환불 요청}.
 
-Create:
-1. **Process overview** (1 paragraph)
-2. **Trigger** (what starts this process)
-3. **Steps** (numbered, with responsible party)
-4. **Decision points** (if X then Y format)
-5. **Outputs** (what this process produces)
-6. **Systems involved** (tools/software)
-7. **Exceptions** (edge cases and handling)
+작성해 주세요:
+1. **프로세스 개요** (1문단)
+2. **트리거** (이 프로세스를 시작하는 것)
+3. **단계** (번호 매기기, 담당자 포함)
+4. **의사결정 포인트** (X이면 Y 형식)
+5. **출력** (이 프로세스가 생성하는 것)
+6. **관련 시스템** (도구/소프트웨어)
+7. **예외** (엣지 케이스 및 처리)
 
-Format: Clear enough for new employee to follow`} />
+형식: 신입 직원이 따라할 수 있을 정도로 명확하게`} />
 
-### Standard Operating Procedure
+### 표준 운영 절차
 
-<TryIt compact prompt={`Write an SOP for \${task:onboarding new employees to Slack}.
+<TryIt compact prompt={`\${task:신입 직원 Slack 온보딩}에 대한 SOP를 작성해 주세요.
 
-Audience: \${audience:HR administrators}
-Complexity: \${complexity:basic users}
+대상: \${audience:HR 관리자}
+복잡도: \${complexity:기본 사용자}
 
-Include:
-1. Purpose and scope
-2. Prerequisites/requirements
-3. Step-by-step instructions
-4. Screenshots/visual placeholders
-5. Quality checkpoints
-6. Common errors and troubleshooting
-7. Related SOPs/documents
-8. Version history`} />
+포함 사항:
+1. 목적 및 범위
+2. 전제 조건/요구 사항
+3. 단계별 지침
+4. 스크린샷/시각 자료 위치 표시
+5. 품질 체크포인트
+6. 일반적인 오류 및 문제 해결
+7. 관련 SOP/문서
+8. 버전 이력`} />
 
-## Communication Templates
+## 커뮤니케이션 템플릿
 
-### Stakeholder Update
+### 이해관계자 업데이트
 
-<TryIt compact prompt={`Write a stakeholder update for \${project:CRM migration project}.
+<TryIt compact prompt={`\${project:CRM 마이그레이션 프로젝트}에 대한 이해관계자 업데이트를 작성해 주세요.
 
-Status: \${status:at risk}
-Period: \${period:Week of Jan 6-10}
+상태: \${status:위험}
+기간: \${period:1월 6-10일 주간}
 
-Format:
-## Project Name Update
+형식:
+## 프로젝트명 업데이트
 
-**Status:** 🟢/🟡/🔴
+**상태:** 🟢/🟡/🔴
 
-**Progress this period:**
-- Accomplishment 1
-- Accomplishment 2
+**이번 기간 진행 상황:**
+- 성과 1
+- 성과 2
 
-**Next period goals:**
-- Goal 1
-- Goal 2
+**다음 기간 목표:**
+- 목표 1
+- 목표 2
 
-**Risks/Blockers:**
-- If any
+**리스크/차단 요소:**
+- 있는 경우
 
-**Decisions needed:**
-- If any`} />
+**필요한 결정:**
+- 있는 경우`} />
 
-### Feedback Request
+### 피드백 요청
 
-<TryIt compact prompt={`Write a message requesting feedback on \${deliverable:the new product roadmap document}.
+<TryIt compact prompt={`\${deliverable:새로운 제품 로드맵 문서}에 대한 피드백을 요청하는 메시지를 작성해 주세요.
 
-Context: \${context:This will guide our Q2 priorities, I want to make sure I haven't missed anything}
-Specific areas for feedback: \${feedbackAreas:timeline feasibility, resource allocation, missing features}
-Timeline: \${deadline:by Friday EOD}
+맥락: \${context:이것이 Q2 우선순위를 안내할 것이며, 빠뜨린 것이 없는지 확인하고 싶습니다}
+피드백 요청 영역: \${feedbackAreas:일정 실현 가능성, 자원 배분, 누락된 기능}
+기한: \${deadline:금요일 업무 종료까지}
 
-Tone: Professional but not overly formal
-Make it easy to respond with specific questions`} />
+어조: 전문적이지만 지나치게 격식적이지 않게
+구체적인 질문으로 답변하기 쉽게 만들어 주세요`} />
 
-## Prompt Templates from prompts.chat
+## prompts.chat의 프롬프트 템플릿
 
-### Act as a Business Consultant
+### 비즈니스 컨설턴트 역할
 
-<TryIt compact prompt={`I want you to act as a business consultant. I will describe business situations and challenges, and you will provide strategic advice, frameworks for thinking about problems, and actionable recommendations. Draw on established business principles while being practical and specific.`} />
+<TryIt compact prompt={`비즈니스 컨설턴트 역할을 해주세요. 비즈니스 상황과 과제를 설명할 것이며, 전략적 조언, 문제에 대한 사고 프레임워크, 실행 가능한 권장 사항을 제공해 주세요. 실용적이고 구체적으로 하면서 확립된 비즈니스 원칙을 활용해 주세요.`} />
 
-### Act as a Meeting Facilitator
+### 회의 진행자 역할
 
-<TryIt compact prompt={`I want you to act as a meeting facilitator. Help me plan and run effective meetings. Create agendas, suggest discussion frameworks, help synthesize conversations, and draft follow-up communications. Focus on making meetings productive and action-oriented.`} />
+<TryIt compact prompt={`회의 진행자 역할을 해주세요. 효과적인 회의를 계획하고 진행하는 것을 도와주세요. 안건을 작성하고, 토론 프레임워크를 제안하고, 대화를 종합하고, 후속 커뮤니케이션 초안을 작성해 주세요. 회의를 생산적이고 실행 지향적으로 만드는 데 집중해 주세요.`} />
 
-## Summary
+## 요약
 
-<Callout type="tip" title="Key Techniques">
-Specify the audience and their needs, define the desired outcome clearly, include relevant context and constraints, request specific formats and structures, and consider professional tone requirements.
+<Callout type="tip" title="핵심 기술">
+청중과 그들의 필요를 명시하고, 원하는 결과를 명확하게 정의하고, 관련 맥락과 제약 조건을 포함하고, 특정 형식과 구조를 요청하고, 전문적인 어조 요구 사항을 고려하세요.
 </Callout>
 
 <Quiz 
-  question="What should you always include when asking AI to write a business email?"
+  question="AI에게 비즈니스 이메일 작성을 요청할 때 항상 포함해야 하는 것은 무엇입니까?"
   options={[
-    "Just the topic you want to discuss",
-    "Recipient, purpose, key points, and desired tone",
-    "Only the recipient's name",
-    "A template from the internet"
+    "논의하고 싶은 주제만",
+    "수신자, 목적, 주요 사항, 원하는 어조",
+    "수신자 이름만",
+    "인터넷에서 가져온 템플릿"
   ]}
   correctIndex={1}
-  explanation="Effective business emails need context: who you're writing to, why, what must be communicated, and the appropriate tone. AI can't infer your professional relationships or organizational context."
+  explanation="효과적인 비즈니스 이메일에는 맥락이 필요합니다: 누구에게 쓰는지, 왜 쓰는지, 무엇을 전달해야 하는지, 적절한 어조가 무엇인지. AI는 여러분의 전문적인 관계나 조직적 맥락을 추론할 수 없습니다."
 />
 
-AI can handle routine business communication while you focus on strategy and relationships.
+AI는 일상적인 비즈니스 커뮤니케이션을 처리하여 여러분이 전략과 관계에 집중할 수 있도록 합니다.

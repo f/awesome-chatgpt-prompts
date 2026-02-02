@@ -1,269 +1,269 @@
-A good prompt gets the job done. An optimized prompt gets the job done efficiently—faster, cheaper, more consistently. This chapter teaches you how to systematically improve prompts across multiple dimensions.
+좋은 프롬프트는 작업을 완료합니다. 최적화된 프롬프트는 작업을 효율적으로 완료합니다—더 빠르게, 더 저렴하게, 더 일관되게. 이 장에서는 여러 차원에서 프롬프트를 체계적으로 개선하는 방법을 알려드립니다.
 
-<Callout type="tip" title="Try the Prompt Enhancer">
-Want to optimize your prompts automatically? Use our [Prompt Enhancer](/developers#enhancer) tool. It analyzes your prompt, applies optimization techniques, and shows you similar community prompts for inspiration.
+<Callout type="tip" title="프롬프트 향상 도구를 사용해 보세요">
+프롬프트를 자동으로 최적화하고 싶으신가요? [프롬프트 향상 도구](/developers#enhancer)를 사용해 보세요. 프롬프트를 분석하고, 최적화 기법을 적용하며, 영감을 위한 유사한 커뮤니티 프롬프트를 보여줍니다.
 </Callout>
 
-## The Optimization Trade-offs
+## 최적화의 트레이드오프
 
-Every optimization involves trade-offs. Understanding these helps you make intentional choices:
-
-<InfoGrid items={[
-  { label: "Quality vs. Cost", description: "Higher quality often requires more tokens or better models", example: "Adding examples improves accuracy but increases token count", exampleType: "text", color: "blue" },
-  { label: "Speed vs. Quality", description: "Faster models may sacrifice some capability", example: "GPT-4 is smarter but slower than GPT-4o-mini", exampleType: "text", color: "purple" },
-  { label: "Consistency vs. Creativity", description: "Lower temperature = more predictable but less creative", example: "Temperature 0.2 for facts, 0.8 for brainstorming", exampleType: "text", color: "green" },
-  { label: "Simplicity vs. Robustness", description: "Edge case handling adds complexity", example: "Simple prompts fail on unusual inputs", exampleType: "text", color: "amber" }
-]} />
-
-## Measuring What Matters
-
-Before optimizing, define success. What does "better" mean for your use case?
+모든 최적화에는 트레이드오프가 수반됩니다. 이를 이해하면 의도적인 선택을 할 수 있습니다:
 
 <InfoGrid items={[
-  { label: "Accuracy", description: "How often is the output correct?", example: "90% of code suggestions compile without errors", exampleType: "text", color: "blue" },
-  { label: "Relevance", description: "Does it address what was actually asked?", example: "Response directly answers the question vs. tangents", exampleType: "text", color: "blue" },
-  { label: "Completeness", description: "Are all requirements covered?", example: "All 5 requested sections included in output", exampleType: "text", color: "blue" },
-  { label: "Latency", description: "How long until the response arrives?", example: "p50 < 2s, p95 < 5s for chat applications", exampleType: "text", color: "purple" },
-  { label: "Token Efficiency", description: "How many tokens for the same result?", example: "500 tokens vs. 1500 tokens for equivalent output", exampleType: "text", color: "purple" },
-  { label: "Consistency", description: "How similar are outputs for similar inputs?", example: "Same question gets structurally similar answers", exampleType: "text", color: "green" }
+  { label: "품질 vs. 비용", description: "높은 품질은 종종 더 많은 토큰이나 더 좋은 모델을 필요로 합니다", example: "예시를 추가하면 정확도가 향상되지만 토큰 수가 증가합니다", exampleType: "text", color: "blue" },
+  { label: "속도 vs. 품질", description: "더 빠른 모델은 일부 기능을 희생할 수 있습니다", example: "GPT-4는 GPT-4o-mini보다 똑똒하지만 느립니다", exampleType: "text", color: "purple" },
+  { label: "일관성 vs. 창의성", description: "낮은 temperature = 더 예측 가능하지만 덜 창의적", example: "사실을 위해서는 Temperature 0.2, 브레인스토밍에는 0.8", exampleType: "text", color: "green" },
+  { label: "단순성 vs. 견고성", description: "엣지 케이스 처리는 복잡성을 추가합니다", example: "단순한 프롬프트는 비정상적인 입력에서 실패합니다", exampleType: "text", color: "amber" }
 ]} />
 
-<Callout type="info" title="What Do p50 and p95 Mean?">
-Percentile metrics show response time distribution. **p50** (median) means 50% of requests are faster than this value. **p95** means 95% are faster—it catches slow outliers. If your p50 is 1s but p95 is 10s, most users are happy but 5% experience frustrating delays.
+## 중요한 것을 측정하기
+
+최적화하기 전에 성공을 정의하세요. 여러분의 사용 사례에서 "더 좋은"이란 무엇을 의미합니까?
+
+<InfoGrid items={[
+  { label: "정확도", description: "출력이 얼마나 자주 정확합니까?", example: "코드 제안의 90%가 오류 없이 컴파일됩니다", exampleType: "text", color: "blue" },
+  { label: "관련성", description: "실제로 요청한 것을 다루고 있습니까?", example: "응답이 질문에 직접 답변 vs. 주제에서 벗어남", exampleType: "text", color: "blue" },
+  { label: "완전성", description: "모든 요구 사항이 충족되었습니까?", example: "요청된 5개 섹션이 모두 출력에 포함됨", exampleType: "text", color: "blue" },
+  { label: "지연 시간", description: "응답이 도착하기까지 얼마나 걸립니까?", example: "채팅 애플리케이션의 경우 p50 < 2초, p95 < 5초", exampleType: "text", color: "purple" },
+  { label: "토큰 효율성", description: "동일한 결과에 얼마나 많은 토큰이 필요합니까?", example: "동등한 출력에 500 토큰 vs. 1500 토큰", exampleType: "text", color: "purple" },
+  { label: "일관성", description: "유사한 입력에 대해 출력이 얼마나 유사합니까?", example: "같은 질문에 구조적으로 유사한 답변을 받음", exampleType: "text", color: "green" }
+]} />
+
+<Callout type="info" title="p50과 p95는 무엇을 의미합니까?">
+백분위수 지표는 응답 시간 분포를 보여줍니다. **p50**(중앙값)은 요청의 50%가 이 값보다 빠르다는 것을 의미합니다. **p95**는 95%가 더 빠르다는 것을 의미하며—느린 이상치를 잡아냅니다. p50이 1초이지만 p95가 10초라면, 대부분의 사용자는 만족하지만 5%는 불만족스러운 지연을 경험합니다.
 </Callout>
 
 <TryIt 
-  title="Define Your Success Metrics"
-  description="Use this template to clarify what you're optimizing for before making changes."
-  prompt={`Help me define success metrics for my prompt optimization.
+  title="성공 지표 정의하기"
+  description="변경하기 전에 무엇을 최적화하고 있는지 명확히 하기 위해 이 템플릿을 사용하세요."
+  prompt={`프롬프트 최적화를 위한 성공 지표를 정의하는 것을 도와주세요.
 
-**My use case**: \${useCase}
-**Current pain points**: \${painPoints}
+**사용 사례**: \${useCase}
+**현재 문제점**: \${painPoints}
 
-For this use case, help me define:
+이 사용 사례에 대해 다음을 정의해 주세요:
 
-1. **Primary metric**: What single metric matters most?
-2. **Secondary metrics**: What else should I track?
-3. **Acceptable trade-offs**: What can I sacrifice for the primary metric?
-4. **Red lines**: What quality level is unacceptable?
-5. **How to measure**: Practical ways to evaluate each metric`}
+1. **주요 지표**: 가장 중요한 단일 지표는 무엇입니까?
+2. **부차적 지표**: 그 외에 무엇을 추적해야 합니까?
+3. **허용 가능한 트레이드오프**: 주요 지표를 위해 무엇을 희생할 수 있습니까?
+4. **레드 라인**: 어떤 품질 수준이 허용되지 않습니까?
+5. **측정 방법**: 각 지표를 평가하는 실용적인 방법`}
 />
 
-## Token Optimization
+## 토큰 최적화
 
-Tokens cost money and add latency. Here's how to say the same thing with fewer tokens.
+토큰은 비용이 들고 지연 시간을 추가합니다. 더 적은 토큰으로 같은 내용을 말하는 방법은 다음과 같습니다.
 
-### The Compression Principle
+### 압축 원칙
 
 <Compare 
-  before={{ label: "Verbose (67 tokens)", content: "I would like you to please help me with the following task. I need you to take the text that I'm going to provide below and create a summary of it. The summary should capture the main points and be concise. Please make sure to include all the important information. Here is the text:\n\n[text]" }}
-  after={{ label: "Concise (12 tokens)", content: "Summarize this text, capturing main points concisely:\n\n[text]" }}
+  before={{ label: "장황함 (67 토큰)", content: "I would like you to please help me with the following task. I need you to take the text that I'm going to provide below and create a summary of it. The summary should capture the main points and be concise. Please make sure to include all the important information. Here is the text:\n\n[text]" }}
+  after={{ label: "간결함 (12 토큰)", content: "Summarize this text, capturing main points concisely:\n\n[text]" }}
 />
 
-**Same result, 82% fewer tokens.**
+**동일한 결과, 82% 적은 토큰.**
 
-### Token-Saving Techniques
+### 토큰 절약 기법
 
 <InfoGrid items={[
-  { label: "Cut Pleasantries", description: "\"Please\" and \"Thank you\" add tokens without improving output", example: "\"Please summarize\" → \"Summarize\"", color: "green" },
-  { label: "Eliminate Redundancy", description: "Don't repeat yourself or state the obvious", example: "\"Write a summary that summarizes\" → \"Summarize\"", color: "green" },
-  { label: "Use Abbreviations", description: "Where meaning is clear, abbreviate", example: "\"for example\" → \"e.g.\"", color: "green" },
-  { label: "Reference by Position", description: "Point to content instead of repeating it", example: "\"the text above\" instead of re-quoting", color: "green" }
+  { label: "인사말 생략", description: "\"Please\"와 \"Thank you\"는 출력을 개선하지 않으면서 토큰을 추가합니다", example: "\"Please summarize\" → \"Summarize\"", color: "green" },
+  { label: "중복 제거", description: "반복하거나 명백한 것을 언급하지 마세요", example: "\"Write a summary that summarizes\" → \"Summarize\"", color: "green" },
+  { label: "약어 사용", description: "의미가 명확한 경우 약어를 사용하세요", example: "\"for example\" → \"e.g.\"", color: "green" },
+  { label: "위치로 참조", description: "내용을 반복하는 대신 가리키세요", example: "다시 인용하는 대신 \"the text above\"", color: "green" }
 ]} />
 
 <TryIt 
-  title="Prompt Compressor"
-  description="Paste a verbose prompt to get a token-optimized version."
-  prompt={`Compress this prompt while preserving its meaning and effectiveness:
+  title="프롬프트 압축기"
+  description="장황한 프롬프트를 붙여넣어 토큰 최적화된 버전을 얻으세요."
+  prompt={`이 프롬프트의 의미와 효과를 유지하면서 압축하세요:
 
-Original prompt:
+원본 프롬프트:
 "\${verbosePrompt}"
 
-Instructions:
-1. Remove unnecessary pleasantries and filler words
-2. Eliminate redundancy
-3. Use concise phrasing
-4. Keep all essential instructions and constraints
-5. Maintain clarity—don't sacrifice understanding for brevity
+지침:
+1. 불필요한 인사말과 채움말 제거
+2. 중복 제거
+3. 간결한 표현 사용
+4. 모든 필수 지침과 제약 유지
+5. 명확성 유지—간결함을 위해 이해도를 희생하지 마세요
 
-Provide:
-- **Compressed version**: The optimized prompt
-- **Token reduction**: Estimated percentage saved
-- **What was cut**: Brief explanation of what was removed and why it was safe to remove`}
+제공할 내용:
+- **압축 버전**: 최적화된 프롬프트
+- **토큰 감소**: 예상 절감 비율
+- **제거된 내용**: 무엇이 제거되었고 왜 제거해도 안전했는지에 대한 간략한 설명`}
 />
 
-## Quality Optimization
+## 품질 최적화
 
-Sometimes you need better outputs, not cheaper ones. Here's how to improve quality.
+때로는 더 저렴한 출력이 아니라 더 나은 출력이 필요합니다. 품질을 개선하는 방법은 다음과 같습니다.
 
-### Accuracy Boosters
+### 정확도 향상 기법
 
 <InfoGrid items={[
-  { label: "Add Verification", description: "Ask the model to check its own work", example: "\"...then verify your answer is correct\"", color: "blue" },
-  { label: "Request Confidence", description: "Make uncertainty explicit", example: "\"Rate your confidence 1-10 and explain any uncertainty\"", color: "blue" },
-  { label: "Multiple Approaches", description: "Get different perspectives, then choose", example: "\"Provide 3 approaches and recommend the best one\"", color: "blue" },
-  { label: "Explicit Reasoning", description: "Force step-by-step thinking", example: "\"Think step by step and show your reasoning\"", color: "blue" }
+  { label: "검증 추가", description: "모델에게 자신의 작업을 확인하도록 요청하세요", example: "\"...then verify your answer is correct\"", color: "blue" },
+  { label: "신뢰도 요청", description: "불확실성을 명시적으로 만드세요", example: "\"Rate your confidence 1-10 and explain any uncertainty\"", color: "blue" },
+  { label: "다중 접근법", description: "여러 관점을 얻은 다음 선택하세요", example: "\"Provide 3 approaches and recommend the best one\"", color: "blue" },
+  { label: "명시적 추론", description: "단계별 사고를 강제하세요", example: "\"Think step by step and show your reasoning\"", color: "blue" }
 ]} />
 
-### Consistency Boosters
+### 일관성 향상 기법
 
 <InfoGrid items={[
-  { label: "Detailed Format Specs", description: "Show exactly what output should look like", example: "Include a template or schema", exampleType: "text", color: "purple" },
-  { label: "Few-Shot Examples", description: "Provide 2-3 examples of ideal output", example: "\"Here's what good looks like: [examples]\"", color: "purple" },
-  { label: "Lower Temperature", description: "Reduce randomness for more predictable output", example: "Temperature 0.3-0.5 for consistent results", exampleType: "text", color: "purple" },
-  { label: "Output Validation", description: "Add a validation step for critical fields", example: "\"Verify all required fields are present\"", color: "purple" }
+  { label: "상세한 형식 명세", description: "출력이 어떻게 보여야 하는지 정확히 보여주세요", example: "템플릿이나 스키마 포함", exampleType: "text", color: "purple" },
+  { label: "Few-Shot 예시", description: "이상적인 출력의 2-3개 예시를 제공하세요", example: "\"Here's what good looks like: [examples]\"", color: "purple" },
+  { label: "낮은 Temperature", description: "더 예측 가능한 출력을 위해 무작위성을 줄이세요", example: "일관된 결과를 위해 Temperature 0.3-0.5", exampleType: "text", color: "purple" },
+  { label: "출력 검증", description: "중요한 필드에 대한 검증 단계를 추가하세요", example: "\"Verify all required fields are present\"", color: "purple" }
 ]} />
 
 <TryIt 
-  title="Quality Enhancer"
-  description="Add quality-improving elements to your prompt."
-  prompt={`Enhance this prompt for higher quality outputs:
+  title="품질 향상기"
+  description="프롬프트에 품질 개선 요소를 추가하세요."
+  prompt={`더 높은 품질의 출력을 위해 이 프롬프트를 개선하세요:
 
-Original prompt:
+원본 프롬프트:
 "\${originalPrompt}"
 
-**What quality issue I'm seeing**: \${qualityIssue}
+**보고 있는 품질 문제**: \${qualityIssue}
 
-Add appropriate quality boosters:
-1. If accuracy is the issue → add verification steps
-2. If consistency is the issue → add format specifications or examples
-3. If relevance is the issue → add context and constraints
-4. If completeness is the issue → add explicit requirements
+적절한 품질 향상 기법을 추가하세요:
+1. 정확도가 문제라면 → 검증 단계 추가
+2. 일관성이 문제라면 → 형식 명세나 예시 추가
+3. 관련성이 문제라면 → 맥락과 제약 추가
+4. 완전성이 문제라면 → 명시적 요구 사항 추가
 
-Provide the enhanced prompt with explanations for each addition.`}
+각 추가 사항에 대한 설명과 함께 개선된 프롬프트를 제공하세요.`}
 />
 
-## Latency Optimization
+## 지연 시간 최적화
 
-When speed matters, every millisecond counts.
+속도가 중요할 때, 모든 밀리초가 중요합니다.
 
-### Model Selection by Speed Need
-
-<InfoGrid items={[
-  { label: "Real-time (< 500ms)", description: "Use smallest effective model + aggressive caching", example: "GPT-4o-mini, Claude Haiku, cached responses", exampleType: "text", color: "red" },
-  { label: "Interactive (< 2s)", description: "Fast models, streaming enabled", example: "GPT-4o-mini with streaming", exampleType: "text", color: "amber" },
-  { label: "Tolerant (< 10s)", description: "Mid-tier models, balance quality/speed", example: "GPT-4o, Claude Sonnet", exampleType: "text", color: "green" },
-  { label: "Async/Batch", description: "Use best model, process in background", example: "GPT-4, Claude Opus for offline processing", exampleType: "text", color: "blue" }
-]} />
-
-### Speed Techniques
+### 속도 요구에 따른 모델 선택
 
 <InfoGrid items={[
-  { label: "Shorter Prompts", description: "Fewer input tokens = faster processing", example: "Compress prompts, remove unnecessary context", exampleType: "text", color: "cyan" },
-  { label: "Limit Output", description: "Set max_tokens to prevent runaway responses", example: "max_tokens: 500 for summaries", exampleType: "text", color: "cyan" },
-  { label: "Use Streaming", description: "Get first tokens faster, better UX", example: "Stream for any response > 100 tokens", exampleType: "text", color: "cyan" },
-  { label: "Cache Aggressively", description: "Don't recompute identical queries", example: "Cache common questions, template outputs", exampleType: "text", color: "cyan" }
+  { label: "실시간 (< 500ms)", description: "가장 작은 효과적인 모델 + 적극적인 캐싱 사용", example: "GPT-4o-mini, Claude Haiku, 캐시된 응답", exampleType: "text", color: "red" },
+  { label: "대화형 (< 2s)", description: "빠른 모델, 스트리밍 활성화", example: "스트리밍이 있는 GPT-4o-mini", exampleType: "text", color: "amber" },
+  { label: "허용 가능 (< 10s)", description: "중간 계층 모델, 품질/속도 균형", example: "GPT-4o, Claude Sonnet", exampleType: "text", color: "green" },
+  { label: "비동기/배치", description: "최고의 모델 사용, 백그라운드에서 처리", example: "오프라인 처리를 위한 GPT-4, Claude Opus", exampleType: "text", color: "blue" }
 ]} />
 
-## Cost Optimization
+### 속도 기법
 
-At scale, small savings multiply into significant budget impact.
+<InfoGrid items={[
+  { label: "짧은 프롬프트", description: "입력 토큰 감소 = 더 빠른 처리", example: "프롬프트 압축, 불필요한 맥락 제거", exampleType: "text", color: "cyan" },
+  { label: "출력 제한", description: "max_tokens를 설정하여 끝없는 응답 방지", example: "요약을 위해 max_tokens: 500", exampleType: "text", color: "cyan" },
+  { label: "스트리밍 사용", description: "첫 토큰을 더 빨리 받아 더 나은 UX 제공", example: "100 토큰 이상의 응답에는 스트리밍", exampleType: "text", color: "cyan" },
+  { label: "적극적 캐싱", description: "동일한 쿼리를 다시 계산하지 마세요", example: "일반적인 질문, 템플릿 출력 캐싱", exampleType: "text", color: "cyan" }
+]} />
 
-### Understanding Costs
+## 비용 최적화
 
-Use this calculator to estimate your API costs across different models:
+대규모에서 작은 절감이 상당한 예산 영향으로 확대됩니다.
+
+### 비용 이해하기
+
+이 계산기를 사용하여 다양한 모델에서 API 비용을 추정하세요:
 
 <CostCalculatorDemo />
 
-### Cost Reduction Strategies
+### 비용 절감 전략
 
 <InfoGrid items={[
-  { label: "Model Routing", description: "Use expensive models only when needed", example: "Simple questions → GPT-4o-mini, Complex → GPT-4", exampleType: "text", color: "green" },
-  { label: "Prompt Efficiency", description: "Shorter prompts = lower cost per request", example: "Cut 50% of tokens = 50% input cost savings", exampleType: "text", color: "green" },
-  { label: "Output Control", description: "Limit response length when full detail isn't needed", example: "\"Answer in 2-3 sentences\" vs. unlimited", color: "green" },
-  { label: "Batching", description: "Combine related queries into single requests", example: "Analyze 10 items in one prompt vs. 10 separate calls", exampleType: "text", color: "green" },
-  { label: "Pre-filtering", description: "Don't send requests that don't need AI", example: "Keyword matching before expensive classification", exampleType: "text", color: "green" }
+  { label: "모델 라우팅", description: "필요할 때만 비싼 모델 사용", example: "간단한 질문 → GPT-4o-mini, 복잡한 질문 → GPT-4", exampleType: "text", color: "green" },
+  { label: "프롬프트 효율성", description: "짧은 프롬프트 = 요청당 낮은 비용", example: "토큰 50% 절감 = 입력 비용 50% 절감", exampleType: "text", color: "green" },
+  { label: "출력 제어", description: "전체 세부 사항이 필요하지 않을 때 응답 길이 제한", example: "\"Answer in 2-3 sentences\" vs. 무제한", color: "green" },
+  { label: "배칭", description: "관련 쿼리를 단일 요청으로 결합", example: "10개의 개별 호출 대신 하나의 프롬프트에서 10개 항목 분석", exampleType: "text", color: "green" },
+  { label: "사전 필터링", description: "AI가 필요 없는 요청은 보내지 마세요", example: "비싼 분류 전에 키워드 매칭", exampleType: "text", color: "green" }
 ]} />
 
-## The Optimization Loop
+## 최적화 루프
 
-Optimization is iterative. Here's a systematic process:
+최적화는 반복적입니다. 체계적인 프로세스는 다음과 같습니다:
 
-### Step 1: Establish Baseline
+### 1단계: 기준선 수립
 
-You can't improve what you don't measure. Before changing anything, document your starting point rigorously.
+측정하지 않는 것은 개선할 수 없습니다. 무엇이든 변경하기 전에 시작점을 철저히 문서화하세요.
 
 <InfoGrid items={[
-  { label: "Prompt Documentation", description: "Save the exact prompt text, including system prompts and any templates", example: "Version control your prompts like code", exampleType: "text", color: "blue" },
-  { label: "Test Set", description: "Create 20-50 representative inputs that cover common cases and edge cases", example: "Include easy, medium, and hard examples", exampleType: "text", color: "blue" },
-  { label: "Quality Metrics", description: "Score each output against your success criteria", example: "Accuracy %, relevance score, format compliance", exampleType: "text", color: "purple" },
-  { label: "Performance Metrics", description: "Measure tokens and timing for each test case", example: "Avg input: 450 tokens, Avg output: 200 tokens, p50 latency: 1.2s", exampleType: "text", color: "purple" }
+  { label: "프롬프트 문서화", description: "시스템 프롬프트와 템플릿을 포함한 정확한 프롬프트 텍스트 저장", example: "코드처럼 프롬프트를 버전 관리하세요", exampleType: "text", color: "blue" },
+  { label: "테스트 세트", description: "일반적인 케이스와 엣지 케이스를 다루는 20-50개의 대표적인 입력 생성", example: "쉬움, 중간, 어려움 예시 포함", exampleType: "text", color: "blue" },
+  { label: "품질 지표", description: "성공 기준에 대해 각 출력 점수 매기기", example: "정확도 %, 관련성 점수, 형식 준수", exampleType: "text", color: "purple" },
+  { label: "성능 지표", description: "각 테스트 케이스에 대한 토큰과 타이밍 측정", example: "평균 입력: 450 토큰, 평균 출력: 200 토큰, p50 지연: 1.2초", exampleType: "text", color: "purple" }
 ]} />
 
 <TryIt 
-  title="Baseline Documentation Template"
-  description="Use this to create a comprehensive baseline before optimizing."
-  prompt={`Create a baseline documentation for my prompt optimization project.
+  title="기준선 문서화 템플릿"
+  description="최적화하기 전에 포괄적인 기준선을 만들기 위해 이것을 사용하세요."
+  prompt={`프롬프트 최적화 프로젝트를 위한 기준선 문서를 생성하세요.
 
-**Current prompt**:
+**현재 프롬프트**:
 "\${currentPrompt}"
 
-**What the prompt does**: \${promptPurpose}
+**프롬프트의 기능**: \${promptPurpose}
 
-**Current issues I'm seeing**: \${currentIssues}
+**현재 보고 있는 문제**: \${currentIssues}
 
-Generate a baseline documentation template with:
+다음을 포함한 기준선 문서 템플릿을 생성하세요:
 
-1. **Prompt Snapshot**: The exact prompt text (for version control)
+1. **프롬프트 스냅샷**: 정확한 프롬프트 텍스트 (버전 관리용)
 
-2. **Test Cases**: Suggest 10 representative test inputs I should use, covering:
-   - 3 typical/easy cases
-   - 4 medium complexity cases  
-   - 3 edge cases or difficult inputs
+2. **테스트 케이스**: 다음을 커버하는 10개의 대표적인 테스트 입력 제안:
+   - 3개의 일반적/쉬운 케이스
+   - 4개의 중간 복잡도 케이스
+   - 3개의 엣지 케이스 또는 어려운 입력
 
-3. **Metrics to Track**:
-   - Quality metrics specific to this use case
-   - Efficiency metrics (tokens, latency)
-   - How to score each metric
+3. **추적할 지표**:
+   - 이 사용 사례에 특정한 품질 지표
+   - 효율성 지표 (토큰, 지연 시간)
+   - 각 지표의 점수 매기는 방법
 
-4. **Baseline Hypothesis**: What do I expect the current performance to be?
+4. **기준선 가설**: 현재 성능이 어떨 것으로 예상합니까?
 
-5. **Success Criteria**: What numbers would make me satisfied with optimization?`}
+5. **성공 기준**: 어떤 수치가 최적화에 만족스러울 것입니까?`}
 />
 
-### Step 2: Form a Hypothesis
+### 2단계: 가설 수립
 
 <Compare 
-  before={{ label: "Vague goal", content: "I want to make my prompt better." }}
-  after={{ label: "Testable hypothesis", content: "If I add 2 few-shot examples, accuracy will improve from 75% to 85% because the model will learn the expected pattern." }}
+  before={{ label: "모호한 목표", content: "프롬프트를 더 좋게 만들고 싶습니다." }}
+  after={{ label: "테스트 가능한 가설", content: "2개의 few-shot 예시를 추가하면 모델이 예상 패턴을 학습하여 정확도가 75%에서 85%로 향상될 것입니다." }}
 />
 
-### Step 3: Test One Change
+### 3단계: 하나의 변경 테스트
 
-Change one thing at a time. Run both versions on the same test inputs. Measure the metrics that matter.
+한 번에 하나만 변경하세요. 동일한 테스트 입력에서 두 버전을 실행하세요. 중요한 지표를 측정하세요.
 
-### Step 4: Analyze and Decide
+### 4단계: 분석 및 결정
 
-Did it work? Keep the change. Did it hurt? Revert. Was it neutral? Revert (simpler is better).
+효과가 있었습니까? 변경 사항을 유지하세요. 해가 되었습니까? 되돌리세요. 중립적이었습니까? 되돌리세요 (단순한 것이 더 좋습니다).
 
-### Step 5: Repeat
+### 5단계: 반복
 
-Generate new hypotheses based on what you learned. Keep iterating until you hit your targets or reach diminishing returns.
+배운 것을 바탕으로 새로운 가설을 생성하세요. 목표에 도달하거나 수익 체감에 도달할 때까지 계속 반복하세요.
 
-## Optimization Checklist
+## 최적화 체크리스트
 
 <Checklist 
-  title="Before Deploying an Optimized Prompt"
+  title="최적화된 프롬프트 배포 전"
   items={[
-    { text: "Defined clear success metrics" },
-    { text: "Measured baseline performance" },
-    { text: "Tested changes on representative inputs" },
-    { text: "Verified quality didn't regress" },
-    { text: "Checked edge case handling" },
-    { text: "Calculated cost at expected scale" },
-    { text: "Tested latency under load" },
-    { text: "Documented what changed and why" }
+    { text: "명확한 성공 지표 정의됨" },
+    { text: "기준선 성능 측정됨" },
+    { text: "대표적인 입력에서 변경 사항 테스트됨" },
+    { text: "품질이 저하되지 않았는지 확인됨" },
+    { text: "엣지 케이스 처리 확인됨" },
+    { text: "예상 규모에서 비용 계산됨" },
+    { text: "부하 상태에서 지연 시간 테스트됨" },
+    { text: "무엇이 변경되었고 왜 변경되었는지 문서화됨" }
   ]}
 />
 
 <Quiz 
-  question="You have a prompt that works well but costs too much at scale. What's the FIRST thing you should do?"
+  question="잘 작동하지만 대규모에서 비용이 너무 많이 드는 프롬프트가 있습니다. 가장 먼저 해야 할 일은 무엇입니까?"
   options={[
-    "Switch to a cheaper model immediately",
-    "Remove words from the prompt to reduce tokens",
-    "Measure which part of the prompt is using the most tokens",
-    "Add caching for all requests"
+    "즉시 더 저렴한 모델로 전환",
+    "토큰을 줄이기 위해 프롬프트에서 단어 제거",
+    "프롬프트의 어느 부분이 가장 많은 토큰을 사용하는지 측정",
+    "모든 요청에 캐싱 추가"
   ]}
   correctIndex={2}
-  explanation="Before optimizing, measure. You need to understand where the tokens are going before you can effectively reduce them. The prompt might have unnecessary context, verbose instructions, or generate longer outputs than needed. Measurement tells you where to focus your optimization efforts."
+  explanation="최적화하기 전에 측정하세요. 토큰을 효과적으로 줄이기 전에 토큰이 어디로 가는지 이해해야 합니다. 프롬프트에 불필요한 맥락, 장황한 지침이 있거나 필요 이상으로 긴 출력을 생성할 수 있습니다. 측정은 최적화 노력을 어디에 집중해야 하는지 알려줍니다."
 />

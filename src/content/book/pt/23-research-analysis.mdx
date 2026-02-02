@@ -1,323 +1,323 @@
-AI can accelerate research workflows from literature review to data analysis. This chapter covers prompting techniques for academic and professional research.
+IA pode acelerar fluxos de trabalho de pesquisa desde revisão de literatura até análise de dados. Este capítulo cobre técnicas de prompting para pesquisa acadêmica e profissional.
 
-<Callout type="info" title="AI in Research">
-AI can assist with synthesis, analysis, and writing—but cannot replace critical thinking, ethical judgment, or domain expertise. Always verify claims and cite original sources.
+<Callout type="info" title="IA na Pesquisa">
+IA pode assistir com síntese, análise e escrita—mas não pode substituir pensamento crítico, julgamento ético ou expertise de domínio. Sempre verifique afirmações e cite fontes originais.
 </Callout>
 
-## Literature & Information Review
+## Revisão de Literatura & Informação
 
-### Do's and Don'ts: Research Prompts
+### O Que Fazer e Não Fazer: Prompts de Pesquisa
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Summarize this paper for me." }}
-  after={{ label: "✓ Structured request", content: "Summarize this paper for my literature review on machine learning in healthcare.\n\nProvide:\n1. Main thesis (1-2 sentences)\n2. Methodology\n3. Key findings (bullets)\n4. Limitations\n5. Relevance to my research\n\nReading level: Graduate student" }}
+  before={{ label: "❌ Requisição vaga", content: "Resuma este artigo para mim." }}
+  after={{ label: "✓ Requisição estruturada", content: "Resuma este artigo para minha revisão de literatura sobre machine learning em saúde.\n\nForneça:\n1. Tese principal (1-2 frases)\n2. Metodologia\n3. Descobertas-chave (bullets)\n4. Limitações\n5. Relevância para minha pesquisa\n\nNível de leitura: Estudante de pós-graduação" }}
 />
 
-### Paper Summarization
+### Resumo de Artigo
 
-<TryIt compact prompt={`Summarize this academic paper:
+<TryIt compact prompt={`Resuma este artigo acadêmico:
 
-[paper abstract or full text]
+[resumo ou texto completo do artigo]
 
-Provide:
-1. **Main thesis** - Central argument (1-2 sentences)
-2. **Methodology** - How they approached it
-3. **Key findings** - Most important results (bullet points)
-4. **Contributions** - What's new/significant
-5. **Limitations** - Acknowledged or apparent weaknesses
-6. **Relevance to [my research topic]** - How it connects
+Forneça:
+1. **Tese principal** - Argumento central (1-2 frases)
+2. **Metodologia** - Como abordaram
+3. **Descobertas-chave** - Resultados mais importantes (bullet points)
+4. **Contribuições** - O que é novo/significativo
+5. **Limitações** - Fraquezas reconhecidas ou aparentes
+6. **Relevância para [meu tópico de pesquisa]** - Como se conecta
 
-Reading level: \${readingLevel:graduate}`} />
+Nível de leitura: \${nivelLeitura:pós-graduação}`} />
 
-### Literature Synthesis
+### Síntese de Literatura
 
-<TryIt compact prompt={`Synthesize these papers on \${topic:the effectiveness of remote work}:
+<TryIt compact prompt={`Sintetize estes artigos sobre \${topico:a eficácia do trabalho remoto}:
 
-Paper 1: \${paper1:Smith 2021 - found productivity increased 15%}
-Paper 2: \${paper2:Jones 2022 - noted collaboration challenges}
-Paper 3: \${paper3:Chen 2023 - hybrid model showed best outcomes}
+Artigo 1: \${artigo1:Smith 2021 - encontrou que produtividade aumentou 15%}
+Artigo 2: \${artigo2:Jones 2022 - notou desafios de colaboração}
+Artigo 3: \${artigo3:Chen 2023 - modelo híbrido mostrou melhores resultados}
 
-Analyze:
-1. **Common themes** - What do they agree on?
-2. **Contradictions** - Where do they disagree?
-3. **Gaps** - What's not addressed?
-4. **Evolution** - How has thinking progressed?
-5. **Synthesis** - Integrated understanding
+Analise:
+1. **Temas comuns** - Onde concordam?
+2. **Contradições** - Onde discordam?
+3. **Lacunas** - O que não é abordado?
+4. **Evolução** - Como o pensamento progrediu?
+5. **Síntese** - Entendimento integrado
 
-Format as: Literature review paragraph suitable for \${outputType:thesis}`} />
+Formate como: Parágrafo de revisão de literatura adequado para \${tipoSaida:tese}`} />
 
-### Research Question Development
+### Desenvolvimento de Pergunta de Pesquisa
 
-<TryIt compact prompt={`Help me develop research questions for \${topic:AI adoption in healthcare}.
+<TryIt compact prompt={`Me ajude a desenvolver perguntas de pesquisa para \${topico:adoção de IA em saúde}.
 
-Context:
-- Field: \${field:health informatics}
-- Current knowledge: \${currentKnowledge:AI tools exist but adoption is slow}
-- Gap identified: \${gap:limited understanding of physician resistance factors}
-- My interest: \${interest:organizational change management}
+Contexto:
+- Campo: \${campo:informática em saúde}
+- Conhecimento atual: \${conhecimentoAtual:ferramentas de IA existem mas adoção é lenta}
+- Lacuna identificada: \${lacuna:entendimento limitado dos fatores de resistência de médicos}
+- Meu interesse: \${interesse:gestão de mudança organizacional}
 
-Generate:
-1. **Primary RQ** - Main question to answer
-2. **Sub-questions** - Supporting inquiries (3-4)
-3. **Hypotheses** - Testable predictions (if applicable)
+Gere:
+1. **Pergunta de pesquisa principal** - Pergunta principal a responder
+2. **Sub-perguntas** - Inquirições de suporte (3-4)
+3. **Hipóteses** - Previsões testáveis (se aplicável)
 
-Criteria: Questions should be:
-- Answerable with available methods
-- Significant to the field
-- Appropriately scoped`} />
+Critérios: Perguntas devem ser:
+- Respondíveis com métodos disponíveis
+- Significativas para o campo
+- Adequadamente delimitadas`} />
 
-## Data Analysis
+## Análise de Dados
 
-<Callout type="warning" title="AI Cannot Analyze Your Actual Data">
-AI can guide methodology and help interpret results, but it cannot access or process your actual datasets. Never paste sensitive research data into prompts. Use AI for **guidance**, not computation.
+<Callout type="warning" title="IA Não Pode Analisar Seus Dados Reais">
+IA pode guiar metodologia e ajudar a interpretar resultados, mas não pode acessar ou processar seus conjuntos de dados reais. Nunca cole dados de pesquisa sensíveis em prompts. Use IA para **orientação**, não computação.
 </Callout>
 
-### Statistical Analysis Guidance
+### Orientação de Análise Estatística
 
-<TryIt compact prompt={`Help me analyze this data:
+<TryIt compact prompt={`Me ajude a analisar estes dados:
 
-Data description:
-- Variables: \${variables:age (continuous), treatment group (categorical: A/B/C), outcome score (continuous)}
-- Sample size: \${sampleSize:n=150 (50 per group)}
-- Research question: \${researchQuestion:Does treatment type affect outcome scores?}
-- Data characteristics: \${characteristics:normally distributed, no missing values}
+Descrição dos dados:
+- Variáveis: \${variaveis:idade (contínua), grupo de tratamento (categórica: A/B/C), score de resultado (contínuo)}
+- Tamanho da amostra: \${tamanhoAmostra:n=150 (50 por grupo)}
+- Pergunta de pesquisa: \${perguntaPesquisa:O tipo de tratamento afeta scores de resultado?}
+- Características dos dados: \${caracteristicas:normalmente distribuído, sem valores faltantes}
 
-Advise on:
-1. **Appropriate tests** - Which statistical tests to use
-2. **Assumptions to check** - Prerequisites
-3. **How to interpret results** - What different outcomes mean
-4. **Effect size** - Practical significance
-5. **Reporting** - How to present findings
+Aconselhe sobre:
+1. **Testes apropriados** - Quais testes estatísticos usar
+2. **Pressupostos a verificar** - Pré-requisitos
+3. **Como interpretar resultados** - O que diferentes resultados significam
+4. **Tamanho do efeito** - Significância prática
+5. **Relatório** - Como apresentar descobertas
 
-Note: Guide my analysis, don't fabricate results.`} />
+Nota: Guie minha análise, não fabrique resultados.`} />
 
-### Qualitative Analysis
+### Análise Qualitativa
 
-<TryIt compact prompt={`Help me analyze these qualitative responses:
+<TryIt compact prompt={`Me ajude a analisar estas respostas qualitativas:
 
-Responses:
-\${responses:paste interview excerpts or survey responses here}
+Respostas:
+\${respostas:cole trechos de entrevista ou respostas de pesquisa aqui}
 
-Using \${method:thematic analysis}:
+Usando \${metodo:análise temática}:
 
-1. **Initial codes** - Identify recurring concepts
-2. **Categories** - Group related codes
-3. **Themes** - Overarching patterns
-4. **Relationships** - How themes connect
-5. **Representative quotes** - Evidence for each theme
+1. **Códigos iniciais** - Identifique conceitos recorrentes
+2. **Categorias** - Agrupe códigos relacionados
+3. **Temas** - Padrões abrangentes
+4. **Relacionamentos** - Como temas se conectam
+5. **Citações representativas** - Evidência para cada tema
 
-Maintain: Participant voice and context`} />
+Mantenha: Voz e contexto do participante`} />
 
-### Data Interpretation
+### Interpretação de Dados
 
-<TryIt compact prompt={`Help me interpret these findings:
+<TryIt compact prompt={`Me ajude a interpretar estas descobertas:
 
-Results:
-\${results:paste statistical output or data summary here}
+Resultados:
+\${resultados:cole saída estatística ou resumo de dados aqui}
 
-Context:
-- Research question: \${researchQuestion:Does X predict Y?}
-- Hypothesis: \${hypothesis:X positively predicts Y}
-- Expected results: \${expectedResults:significant positive correlation}
+Contexto:
+- Pergunta de pesquisa: \${perguntaPesquisa:X prediz Y?}
+- Hipótese: \${hipotese:X prediz positivamente Y}
+- Resultados esperados: \${resultadosEsperados:correlação positiva significativa}
 
-Provide:
-1. **Plain language interpretation** - What does this mean?
-2. **Statistical significance** - What the p-values tell us
-3. **Practical significance** - Real-world meaning
-4. **Comparison to literature** - How does this fit?
-5. **Alternative explanations** - Other interpretations
-6. **Limitations of interpretation**`} />
+Forneça:
+1. **Interpretação em linguagem simples** - O que isso significa?
+2. **Significância estatística** - O que os p-values nos dizem
+3. **Significância prática** - Significado no mundo real
+4. **Comparação com literatura** - Como isso se encaixa?
+5. **Explicações alternativas** - Outras interpretações
+6. **Limitações da interpretação**`} />
 
-## Structured Analysis Frameworks
+## Frameworks de Análise Estruturada
 
-### PESTLE Analysis
+### Análise PESTLE
 
-<TryIt compact prompt={`Conduct a PESTLE analysis for \${subject:electric vehicle industry in Europe}.
+<TryIt compact prompt={`Conduza uma análise PESTLE para \${assunto:indústria de veículos elétricos na Europa}.
 
-**Political** factors:
-- Government policies, regulations, political stability
+Fatores **Políticos**:
+- Políticas governamentais, regulações, estabilidade política
 
-**Economic** factors:
-- Economic growth, inflation, exchange rates, unemployment
+Fatores **Econômicos**:
+- Crescimento econômico, inflação, taxas de câmbio, desemprego
 
-**Social** factors:
-- Demographics, cultural trends, lifestyle changes
+Fatores **Sociais**:
+- Demografia, tendências culturais, mudanças de estilo de vida
 
-**Technological** factors:
-- Innovation, R&D, automation, technology changes
+Fatores **Tecnológicos**:
+- Inovação, P&D, automação, mudanças tecnológicas
 
-**Legal** factors:
-- Legislation, regulatory bodies, employment law
+Fatores **Legais**:
+- Legislação, órgãos reguladores, lei trabalhista
 
-**Environmental** factors:
-- Climate, sustainability, environmental regulations
+Fatores **Ambientais**:
+- Clima, sustentabilidade, regulações ambientais
 
-For each: Current state + trends + implications`} />
+Para cada: Estado atual + tendências + implicações`} />
 
-### Root Cause Analysis
+### Análise de Causa Raiz
 
-<TryIt compact prompt={`Perform root cause analysis for \${problem:customer churn increased 20% last quarter}.
+<TryIt compact prompt={`Realize análise de causa raiz para \${problema:churn de clientes aumentou 20% no último trimestre}.
 
-Problem statement:
-\${problemStatement:Monthly churn rate rose from 3% to 3.6% between Q3 and Q4}
+Declaração do problema:
+\${declaracaoProblema:Taxa mensal de churn subiu de 3% para 3.6% entre Q3 e Q4}
 
-Using 5 Whys:
-1. Why? First level cause
-   2. Why? Deeper cause
-      3. Why? Deeper still
-         4. Why? Approaching root
-            5. Why? Root cause
+Usando 5 Porquês:
+1. Por quê? Causa de primeiro nível
+   2. Por quê? Causa mais profunda
+      3. Por quê? Mais profunda ainda
+         4. Por quê? Aproximando da raiz
+            5. Por quê? Causa raiz
 
-Alternative: Fishbone diagram categories
-- People
-- Process
-- Equipment
-- Materials
-- Environment
-- Management
+Alternativa: Categorias de diagrama espinha de peixe
+- Pessoas
+- Processo
+- Equipamento
+- Materiais
+- Ambiente
+- Gestão
 
-Provide: Root cause(s) + recommended actions`} />
+Forneça: Causa(s) raiz + ações recomendadas`} />
 
-### Gap Analysis
+### Análise de Lacunas
 
-<TryIt compact prompt={`Conduct a gap analysis for \${subject:our customer support operations}.
+<TryIt compact prompt={`Conduza uma análise de lacunas para \${assunto:nossas operações de suporte ao cliente}.
 
-**Current State:**
-- \${currentState:Average response time 24 hours, CSAT 3.2/5}
+**Estado Atual:**
+- \${estadoAtual:Tempo médio de resposta 24 horas, CSAT 3.2/5}
 
-**Desired State:**
-- \${desiredState:Response time under 4 hours, CSAT 4.5/5}
+**Estado Desejado:**
+- \${estadoDesejado:Tempo de resposta abaixo de 4 horas, CSAT 4.5/5}
 
-**Gap Identification:**
-| Area | Current | Desired | Gap | Priority |
-|------|---------|---------|-----|----------|
-| ... | ... | ... | ... | H/M/L |
+**Identificação de Lacunas:**
+| Área | Atual | Desejado | Lacuna | Prioridade |
+|------|-------|----------|--------|------------|
+| ... | ... | ... | ... | A/M/B |
 
-**Action Plan:**
-For each high-priority gap:
-- Specific actions
-- Resources needed
-- Timeline
-- Success metrics`} />
+**Plano de Ação:**
+Para cada lacuna de alta prioridade:
+- Ações específicas
+- Recursos necessários
+- Cronograma
+- Métricas de sucesso`} />
 
-## Academic Writing Support
+## Suporte à Escrita Acadêmica
 
-### Argument Structure
+### Estrutura de Argumento
 
-<TryIt compact prompt={`Help me structure an argument for \${topic:why remote work should become permanent policy}.
+<TryIt compact prompt={`Me ajude a estruturar um argumento para \${topico:por que trabalho remoto deveria se tornar política permanente}.
 
-Main claim: \${thesis:Organizations should adopt permanent remote/hybrid policies for knowledge workers}
+Afirmação principal: \${tese:Organizações deveriam adotar políticas permanentes de remoto/híbrido para trabalhadores do conhecimento}
 
-Required:
-1. **Premises** - Supporting claims that lead to conclusion
-2. **Evidence** - Data/sources for each premise
-3. **Counterarguments** - Opposing views
-4. **Rebuttals** - Responses to counterarguments
-5. **Logical flow** - How it all connects
+Necessário:
+1. **Premissas** - Afirmações de suporte que levam à conclusão
+2. **Evidência** - Dados/fontes para cada premissa
+3. **Contra-argumentos** - Visões opostas
+4. **Refutações** - Respostas aos contra-argumentos
+5. **Fluxo lógico** - Como tudo se conecta
 
-Check for:
-- Logical fallacies
-- Unsupported claims
-- Gaps in reasoning`} />
+Verifique:
+- Falácias lógicas
+- Afirmações não suportadas
+- Lacunas no raciocínio`} />
 
-### Methods Section
+### Seção de Métodos
 
-<TryIt compact prompt={`Help me write a methods section for:
+<TryIt compact prompt={`Me ajude a escrever uma seção de métodos para:
 
-Study type: \${studyType:survey}
-Participants: \${participants:200 undergraduate students, convenience sampling}
-Materials: \${materials:online questionnaire with Likert scales}
-Procedure: \${procedure:participants completed 20-minute survey online}
-Analysis: \${analysis:descriptive statistics and regression analysis}
+Tipo de estudo: \${tipoEstudo:pesquisa}
+Participantes: \${participantes:200 estudantes de graduação, amostragem por conveniência}
+Materiais: \${materiais:questionário online com escalas Likert}
+Procedimento: \${procedimento:participantes completaram pesquisa online de 20 minutos}
+Análise: \${analise:estatísticas descritivas e análise de regressão}
 
-Standards: Follow \${standards:APA 7th edition} guidelines
-Include: Enough detail for replication
-Tone: Passive voice, past tense`} />
+Padrões: Siga diretrizes \${padroes:APA 7ª edição}
+Inclua: Detalhe suficiente para replicação
+Tom: Voz passiva, tempo passado`} />
 
-### Discussion Section
+### Seção de Discussão
 
-<TryIt compact prompt={`Help me write a discussion section.
+<TryIt compact prompt={`Me ajude a escrever uma seção de discussão.
 
-Key findings:
-\${findings:1. Significant positive correlation (r=0.45) between X and Y\n2. No significant difference between groups on secondary measure}
+Descobertas-chave:
+\${descobertas:1. Correlação positiva significativa (r=0.45) entre X e Y\n2. Nenhuma diferença significativa entre grupos na medida secundária}
 
-Structure:
-1. **Summary** - Brief restatement of main findings
-2. **Interpretation** - What the findings mean
-3. **Context** - How findings relate to existing literature
-4. **Implications** - Theoretical and practical significance
-5. **Limitations** - Study weaknesses
-6. **Future directions** - What research should follow
-7. **Conclusion** - Take-home message
+Estrutura:
+1. **Resumo** - Breve reafirmação das descobertas principais
+2. **Interpretação** - O que as descobertas significam
+3. **Contexto** - Como descobertas se relacionam com literatura existente
+4. **Implicações** - Significância teórica e prática
+5. **Limitações** - Fraquezas do estudo
+6. **Direções futuras** - Que pesquisa deveria seguir
+7. **Conclusão** - Mensagem principal
 
-Avoid: Overstating findings or introducing new results`} />
+Evite: Superestimar descobertas ou introduzir novos resultados`} />
 
-## Critical Analysis
+## Análise Crítica
 
-### Source Evaluation
+### Avaliação de Fonte
 
-<TryIt compact prompt={`Evaluate this source for academic use:
+<TryIt compact prompt={`Avalie esta fonte para uso acadêmico:
 
-Source: \${source:paste citation or link here}
-Content summary: \${summary:brief description of what the source claims}
+Fonte: \${fonte:cole citação ou link aqui}
+Resumo do conteúdo: \${resumo:breve descrição do que a fonte afirma}
 
-Assess using CRAAP criteria:
-- **Currency**: When published? Updated? Current enough?
-- **Relevance**: Relates to my topic? Appropriate level?
-- **Authority**: Author credentials? Publisher reputation?
-- **Accuracy**: Supported by evidence? Peer-reviewed?
-- **Purpose**: Why was it written? Bias evident?
+Avalie usando critérios CRAAP:
+- **Atualidade**: Quando publicado? Atualizado? Atual o suficiente?
+- **Relevância**: Relaciona-se ao meu tópico? Nível apropriado?
+- **Autoridade**: Credenciais do autor? Reputação da editora?
+- **Precisão**: Suportado por evidência? Revisado por pares?
+- **Propósito**: Por que foi escrito? Viés evidente?
 
-Verdict: Highly credible / Use with caution / Avoid
-How to use: Recommendations for incorporation`} />
+Veredito: Altamente confiável / Use com cautela / Evite
+Como usar: Recomendações para incorporação`} />
 
-### Argument Analysis
+### Análise de Argumento
 
-<TryIt compact prompt={`Analyze the argument in this text:
+<TryIt compact prompt={`Analise o argumento neste texto:
 
-\${text:paste the text you want to analyze}
+\${texto:cole o texto que quer analisar}
 
-Identify:
-1. **Main claim** - What's being argued
-2. **Supporting evidence** - What backs it up
-3. **Assumptions** - Unstated premises
-4. **Logical structure** - How conclusion follows
-5. **Strengths** - What's compelling
-6. **Weaknesses** - Logical gaps or fallacies
-7. **Alternative interpretations**
+Identifique:
+1. **Afirmação principal** - O que está sendo argumentado
+2. **Evidência de suporte** - O que dá suporte
+3. **Pressupostos** - Premissas não declaradas
+4. **Estrutura lógica** - Como conclusão segue
+5. **Pontos fortes** - O que é convincente
+6. **Pontos fracos** - Lacunas lógicas ou falácias
+7. **Interpretações alternativas**
 
-Provide: Fair, balanced assessment`} />
+Forneça: Avaliação justa e equilibrada`} />
 
-## Prompt Templates from prompts.chat
+## Templates de Prompt do prompts.chat
 
-### Act as a Research Assistant
+### Aja como um Assistente de Pesquisa
 
-<TryIt compact prompt={`I want you to act as a research assistant. Help me explore topics, find information, synthesize sources, and develop arguments. Ask clarifying questions, suggest relevant areas to investigate, and help me think critically about evidence. Be thorough but acknowledge the limits of your knowledge.`} />
+<TryIt compact prompt={`Quero que você aja como um assistente de pesquisa. Me ajude a explorar tópicos, encontrar informação, sintetizar fontes e desenvolver argumentos. Faça perguntas esclarecedoras, sugira áreas relevantes para investigar e me ajude a pensar criticamente sobre evidências. Seja detalhado mas reconheça os limites do seu conhecimento.`} />
 
-### Act as a Data Analyst
+### Aja como um Analista de Dados
 
-<TryIt compact prompt={`I want you to act as a data analyst. I will describe datasets and research questions, and you will suggest analysis approaches, help interpret results, and identify potential issues. Focus on sound methodology and clear communication of findings.`} />
+<TryIt compact prompt={`Quero que você aja como um analista de dados. Vou descrever conjuntos de dados e perguntas de pesquisa, e você sugerirá abordagens de análise, ajudará a interpretar resultados e identificar problemas potenciais. Foque em metodologia sólida e comunicação clara de descobertas.`} />
 
-### Act as a Peer Reviewer
+### Aja como um Revisor por Pares
 
-<TryIt compact prompt={`I want you to act as an academic peer reviewer. I will share manuscripts or sections, and you will provide constructive feedback on methodology, argument, writing, and contribution to the field. Be rigorous but supportive, noting both strengths and areas for improvement.`} />
+<TryIt compact prompt={`Quero que você aja como um revisor por pares acadêmico. Vou compartilhar manuscritos ou seções, e você fornecerá feedback construtivo sobre metodologia, argumento, escrita e contribuição para o campo. Seja rigoroso mas apoiador, notando tanto pontos fortes quanto áreas para melhoria.`} />
 
-## Summary
+## Resumo
 
-<Callout type="tip" title="Key Techniques">
-Clearly state research context and goals, specify the analytical framework to use, request acknowledgment of limitations, ask for evidence-based reasoning, and maintain academic rigor and honesty.
+<Callout type="tip" title="Técnicas-Chave">
+Declare claramente contexto e objetivos de pesquisa, especifique o framework analítico a usar, solicite reconhecimento de limitações, peça raciocínio baseado em evidência, e mantenha rigor e honestidade acadêmica.
 </Callout>
 
 <Quiz 
-  question="What's the most important thing to remember when using AI for research?"
+  question="Qual é a coisa mais importante a lembrar ao usar IA para pesquisa?"
   options={[
-    "AI can replace the need for primary sources",
-    "AI analysis is always accurate and up-to-date",
-    "Always verify AI claims independently and cite original sources",
-    "AI can access and analyze your actual datasets"
+    "IA pode substituir a necessidade de fontes primárias",
+    "Análise de IA é sempre precisa e atualizada",
+    "Sempre verifique afirmações de IA independentemente e cite fontes originais",
+    "IA pode acessar e analisar seus conjuntos de dados reais"
   ]}
   correctIndex={2}
-  explanation="AI can assist with synthesis and structure, but it can hallucinate citations, have outdated information, and cannot access your actual data. Always verify claims against primary sources and maintain academic integrity."
+  explanation="IA pode assistir com síntese e estrutura, mas pode alucinar citações, ter informação desatualizada e não pode acessar seus dados reais. Sempre verifique afirmações contra fontes primárias e mantenha integridade acadêmica."
 />
 
-Remember: AI can assist research but cannot replace critical thinking, ethical judgment, or domain expertise. Always verify claims independently.
+Lembre-se: IA pode assistir pesquisa mas não pode substituir pensamento crítico, julgamento ético ou expertise de domínio. Sempre verifique afirmações independentemente.

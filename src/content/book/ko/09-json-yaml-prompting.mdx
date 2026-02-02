@@ -1,27 +1,27 @@
-Structured data formats like JSON and YAML are essential for building applications that consume AI outputs programmatically. This chapter covers techniques for reliable structured output generation.
+JSON과 YAML 같은 구조화된 데이터 형식은 AI 출력을 프로그래밍 방식으로 소비하는 애플리케이션을 구축하는 데 필수적입니다. 이 장에서는 신뢰할 수 있는 구조화된 출력 생성 기법을 다룹니다.
 
-<Callout type="info" title="From Text to Data">
-JSON and YAML transform AI outputs from freeform text into structured, type-safe data that code can consume directly.
+<Callout type="info" title="텍스트에서 데이터로">
+JSON과 YAML은 AI 출력을 자유 형식 텍스트에서 코드가 직접 소비할 수 있는 구조화되고 타입 안전한 데이터로 변환합니다.
 </Callout>
 
-## Why Structured Formats?
+## 구조화된 형식을 사용하는 이유
 
 <JsonYamlDemo />
 
-## JSON Prompting Basics
+## JSON 프롬프팅 기초
 
-JSON (JavaScript Object Notation) is the most common format for programmatic AI outputs. Its strict syntax makes it easy to parse, but also means small errors can break your entire pipeline.
+JSON(JavaScript Object Notation)은 프로그래밍 방식의 AI 출력에 가장 일반적으로 사용되는 형식입니다. 엄격한 구문 덕분에 파싱이 쉽지만, 작은 오류도 전체 파이프라인을 망칠 수 있습니다.
 
-### Do's and Don'ts: Requesting JSON
+### 해야 할 것과 하지 말아야 할 것: JSON 요청하기
 
 <Compare 
-  before={{ label: "❌ Don't: Vague request", content: "Give me the user info as JSON." }}
-  after={{ label: "✓ Do: Show the schema", content: "Extract user info as JSON matching this schema:\n\n{\n  \"name\": \"string\",\n  \"age\": number,\n  \"email\": \"string\"\n}\n\nReturn ONLY valid JSON, no markdown." }}
+  before={{ label: "❌ 하지 마세요: 모호한 요청", content: "사용자 정보를 JSON으로 주세요." }}
+  after={{ label: "✓ 이렇게 하세요: 스키마 보여주기", content: "이 스키마에 맞는 JSON으로 사용자 정보를 추출하세요:\n\n{\n  \"name\": \"string\",\n  \"age\": number,\n  \"email\": \"string\"\n}\n\n유효한 JSON만 반환하세요, 마크다운 없이." }}
 />
 
-### Simple JSON Output
+### 간단한 JSON 출력
 
-Start with a schema showing the expected structure. The model will fill in values based on the input text.
+예상되는 구조를 보여주는 스키마로 시작합니다. 모델은 입력 텍스트를 기반으로 값을 채웁니다.
 
 ```
 Extract the following information as JSON:
@@ -35,7 +35,7 @@ Extract the following information as JSON:
 Text: "Contact John Smith, 34 years old, at john@example.com"
 ```
 
-Output:
+출력:
 ```json
 {
   "name": "John Smith",
@@ -44,9 +44,9 @@ Output:
 }
 ```
 
-### Nested JSON Structures
+### 중첩된 JSON 구조
 
-Real-world data often has nested relationships. Define each level of your schema clearly, especially for arrays of objects.
+실제 데이터에는 종종 중첩된 관계가 있습니다. 특히 객체 배열의 경우 스키마의 각 레벨을 명확하게 정의하세요.
 
 ```
 Parse this order into JSON:
@@ -71,13 +71,13 @@ Order: "Order #12345 for Jane Doe (jane@email.com): 2x Widget ($10 each),
 1x Gadget ($25). Total: $45"
 ```
 
-### Ensuring Valid JSON
+### 유효한 JSON 보장하기
 
-<Callout type="warning" title="Common Failure Point">
-Models often wrap JSON in markdown code blocks or add explanatory text. Be explicit about wanting raw JSON only.
+<Callout type="warning" title="일반적인 실패 지점">
+모델은 종종 JSON을 마크다운 코드 블록으로 감싸거나 설명 텍스트를 추가합니다. 원시 JSON만 원한다는 것을 명시적으로 표현하세요.
 </Callout>
 
-Add explicit instructions:
+명시적인 지시사항을 추가하세요:
 
 ```
 CRITICAL: Return ONLY valid JSON. No markdown, no explanation, 
@@ -88,13 +88,13 @@ Ensure all strings are properly quoted and escaped.
 Numbers should not be quoted.
 ```
 
-## YAML Prompting Basics
+## YAML 프롬프팅 기초
 
-YAML is more human-readable than JSON and supports comments. It's the standard for configuration files, especially in DevOps (Docker, Kubernetes, GitHub Actions).
+YAML은 JSON보다 사람이 읽기 쉽고 주석을 지원합니다. DevOps(Docker, Kubernetes, GitHub Actions)에서 특히 구성 파일의 표준입니다.
 
-### Simple YAML Output
+### 간단한 YAML 출력
 
-YAML uses indentation instead of braces. Provide a template showing the expected structure.
+YAML은 중괄호 대신 들여쓰기를 사용합니다. 예상되는 구조를 보여주는 템플릿을 제공하세요.
 
 ```
 Generate a configuration file in YAML format:
@@ -110,7 +110,7 @@ database:
 Requirements: Production server on port 443 with SSL, PostgreSQL database
 ```
 
-Output:
+출력:
 ```yaml
 server:
   host: "0.0.0.0"
@@ -121,9 +121,9 @@ database:
   connection_string: "postgresql://user:pass@localhost:5432/prod"
 ```
 
-### Complex YAML Structures
+### 복잡한 YAML 구조
 
-For complex configurations, be specific about requirements. The model knows common patterns for tools like GitHub Actions, Docker Compose, and Kubernetes.
+복잡한 구성의 경우 요구사항을 구체적으로 명시하세요. 모델은 GitHub Actions, Docker Compose, Kubernetes와 같은 도구의 일반적인 패턴을 알고 있습니다.
 
 ```
 Generate a GitHub Actions workflow in YAML:
@@ -135,17 +135,17 @@ Requirements:
 - Cache npm dependencies
 ```
 
-## Type Definitions in Prompts
+## 프롬프트에서의 타입 정의
 
-Type definitions give the model a precise contract for output structure. They're more explicit than examples and easier to validate programmatically.
+타입 정의는 모델에게 출력 구조에 대한 정확한 계약을 제공합니다. 예제보다 더 명시적이며 프로그래밍 방식으로 검증하기 쉽습니다.
 
-### Using TypeScript-like Types
+### TypeScript 스타일 타입 사용하기
 
-TypeScript interfaces are familiar to developers and precisely describe optional fields, union types, and arrays. The prompts.chat platform uses this approach for structured prompts.
+TypeScript 인터페이스는 개발자에게 친숙하며 선택적 필드, 유니온 타입, 배열을 정확하게 설명합니다. prompts.chat 플랫폼은 구조화된 프롬프트에 이 접근 방식을 사용합니다.
 
 <TryIt 
-  title="TypeScript Interface Extraction"
-  description="Use a TypeScript interface to extract structured data."
+  title="TypeScript 인터페이스 추출"
+  description="TypeScript 인터페이스를 사용하여 구조화된 데이터를 추출합니다."
   prompt={`Extract data according to this type definition:
 
 interface ChatPersona {
@@ -162,13 +162,13 @@ Return as JSON matching this interface.
 Description: "A senior software engineer named Alex who reviews code. They're analytical and thorough, with expertise in backend systems and databases. Professional but approachable tone."`}
 />
 
-### JSON Schema Definition
+### JSON Schema 정의
 
-<Callout type="info" title="Industry Standard">
-JSON Schema is a formal specification for describing JSON structure. It's supported by many validation libraries and API tools.
+<Callout type="info" title="산업 표준">
+JSON Schema는 JSON 구조를 설명하기 위한 공식 명세입니다. 많은 검증 라이브러리와 API 도구에서 지원됩니다.
 </Callout>
 
-JSON Schema provides constraints like min/max values, required fields, and regex patterns:
+JSON Schema는 최소/최대 값, 필수 필드, 정규식 패턴과 같은 제약 조건을 제공합니다:
 
 ```
 Extract data according to this JSON Schema:
@@ -197,13 +197,13 @@ Book: "1984 by George Orwell (1949) - A dystopian masterpiece.
 Genres: Science Fiction, Political Fiction. Rated 4.8/5"
 ```
 
-## Handling Arrays
+## 배열 처리하기
 
-Arrays require special attention. Specify whether you need a fixed number of items or a variable-length list, and how to handle empty cases.
+배열은 특별한 주의가 필요합니다. 고정된 수의 항목이 필요한지 가변 길이 목록이 필요한지, 그리고 빈 경우를 어떻게 처리할지 명시하세요.
 
-### Fixed-Length Arrays
+### 고정 길이 배열
 
-When you need exactly N items, state it explicitly. The model will ensure the array has the right length.
+정확히 N개의 항목이 필요할 때 명시적으로 언급하세요. 모델은 배열이 올바른 길이를 갖도록 보장합니다.
 
 ```
 Extract exactly 3 key points as JSON:
@@ -219,9 +219,9 @@ Extract exactly 3 key points as JSON:
 Article: [article text]
 ```
 
-### Variable-Length Arrays
+### 가변 길이 배열
 
-For variable-length arrays, specify what to do when there are zero items. Including a count field helps verify extraction completeness.
+가변 길이 배열의 경우 항목이 0개일 때 어떻게 할지 명시하세요. 개수 필드를 포함하면 추출 완전성을 확인하는 데 도움이 됩니다.
 
 ```
 Extract all mentioned people as JSON:
@@ -241,20 +241,20 @@ If no people are mentioned, return empty array.
 Text: [text]
 ```
 
-## Enum Values and Constraints
+## Enum 값과 제약 조건
 
-Enums restrict values to a predefined set. This is crucial for classification tasks and anywhere you need consistent, predictable outputs.
+Enum은 값을 미리 정의된 집합으로 제한합니다. 이는 분류 작업과 일관되고 예측 가능한 출력이 필요한 모든 곳에서 중요합니다.
 
-### Do's and Don'ts: Enum Values
+### 해야 할 것과 하지 말아야 할 것: Enum 값
 
 <Compare 
-  before={{ label: "❌ Don't: Open-ended categories", content: "Classify this text into a category.\n\n{\n  \"category\": \"string\"\n}" }}
-  after={{ label: "✓ Do: Restrict to valid values", content: "Classify this text. Category MUST be exactly one of:\n- \"technical\"\n- \"business\"\n- \"creative\"\n- \"personal\"\n\n{\n  \"category\": \"one of the values above\"\n}" }}
+  before={{ label: "❌ 하지 마세요: 개방형 카테고리", content: "이 텍스트를 카테고리로 분류하세요.\n\n{\n  \"category\": \"string\"\n}" }}
+  after={{ label: "✓ 이렇게 하세요: 유효한 값으로 제한", content: "이 텍스트를 분류하세요. 카테고리는 반드시 다음 중 하나여야 합니다:\n- \"technical\"\n- \"business\"\n- \"creative\"\n- \"personal\"\n\n{\n  \"category\": \"위 값 중 하나\"\n}" }}
 />
 
-### String Enums
+### 문자열 Enum
 
-List allowed values explicitly. Use "MUST be one of" language to enforce strict matching.
+허용된 값을 명시적으로 나열하세요. 엄격한 매칭을 강제하기 위해 "반드시 다음 중 하나여야 합니다" 표현을 사용하세요.
 
 ```
 Classify this text. The category MUST be one of these exact values:
@@ -273,9 +273,9 @@ Return JSON:
 Text: [text to classify]
 ```
 
-### Validated Numbers
+### 검증된 숫자
 
-Numeric constraints prevent out-of-range values. Specify the type (integer vs float) and valid range.
+숫자 제약 조건은 범위를 벗어난 값을 방지합니다. 타입(정수 vs 부동소수점)과 유효 범위를 명시하세요.
 
 ```
 Rate these aspects. Each score MUST be an integer from 1 to 5.
@@ -290,20 +290,20 @@ Rate these aspects. Each score MUST be an integer from 1 to 5.
 Review: [review text]
 ```
 
-## Handling Missing Data
+## 누락된 데이터 처리하기
 
-Real-world text often lacks some information. Define how the model should handle missing data to avoid hallucinated values.
+실제 텍스트에는 종종 일부 정보가 없습니다. 환각된 값을 피하기 위해 모델이 누락된 데이터를 어떻게 처리해야 하는지 정의하세요.
 
-### Do's and Don'ts: Missing Information
+### 해야 할 것과 하지 말아야 할 것: 누락된 정보
 
 <Compare 
-  before={{ label: "❌ Don't: Let AI guess", content: "Extract all company details as JSON:\n{\n  \"revenue\": number,\n  \"employees\": number\n}" }}
-  after={{ label: "✓ Do: Explicitly allow null", content: "Extract company details. Use null for any field NOT explicitly mentioned. Do NOT invent or estimate values.\n\n{\n  \"revenue\": \"number or null\",\n  \"employees\": \"number or null\"\n}" }}
+  before={{ label: "❌ 하지 마세요: AI가 추측하게 하기", content: "모든 회사 세부사항을 JSON으로 추출하세요:\n{\n  \"revenue\": number,\n  \"employees\": number\n}" }}
+  after={{ label: "✓ 이렇게 하세요: 명시적으로 null 허용", content: "회사 세부사항을 추출하세요. 명시적으로 언급되지 않은 필드는 null을 사용하세요. 값을 지어내거나 추정하지 마세요.\n\n{\n  \"revenue\": \"number or null\",\n  \"employees\": \"number or null\"\n}" }}
 />
 
-### Null Values
+### Null 값
 
-Explicitly allow null and instruct the model not to invent information. This is safer than having the model guess.
+명시적으로 null을 허용하고 모델에게 정보를 지어내지 말라고 지시하세요. 이것이 모델이 추측하는 것보다 안전합니다.
 
 ```
 Extract information. Use null for any field that cannot be 
@@ -320,7 +320,7 @@ determined from the text. Do NOT invent information.
 Text: "Apple, headquartered in Cupertino, was founded in 1976."
 ```
 
-Output:
+출력:
 ```json
 {
   "company": "Apple",
@@ -331,9 +331,9 @@ Output:
 }
 ```
 
-### Default Values
+### 기본값
 
-When defaults make sense, specify them in the schema. This is common for configuration extraction.
+기본값이 의미 있을 때 스키마에 명시하세요. 이는 구성 추출에서 일반적입니다.
 
 ```
 Extract settings with these defaults if not specified:
@@ -348,13 +348,13 @@ Extract settings with these defaults if not specified:
 User preferences: "I want dark mode and larger text (18px)"
 ```
 
-## Multi-Object Responses
+## 다중 객체 응답
 
-Often you need to extract multiple items from a single input. Define the array structure and any sorting/grouping requirements.
+종종 단일 입력에서 여러 항목을 추출해야 합니다. 배열 구조와 정렬/그룹화 요구사항을 정의하세요.
 
-### Array of Objects
+### 객체 배열
 
-For lists of similar items, define the object schema once and specify it's an array.
+유사한 항목 목록의 경우 객체 스키마를 한 번 정의하고 배열임을 명시하세요.
 
 ```
 Parse this list into JSON array:
@@ -373,9 +373,9 @@ Todo list:
 - Review PR #123 (medium, due Friday)
 ```
 
-### Grouped Objects
+### 그룹화된 객체
 
-Grouping tasks require categorization logic. The model will sort items into the categories you define.
+그룹화 작업에는 분류 로직이 필요합니다. 모델은 정의한 카테고리에 항목을 정렬합니다.
 
 ```
 Categorize these items into JSON:
@@ -389,20 +389,20 @@ Categorize these items into JSON:
 Items: apple, carrot, bread, banana, broccoli, milk, orange, spinach
 ```
 
-## YAML for Configuration Generation
+## 구성 생성을 위한 YAML
 
-YAML shines for DevOps configurations. The model knows standard patterns for common tools and can generate production-ready configs.
+YAML은 DevOps 구성에서 빛을 발합니다. 모델은 일반적인 도구의 표준 패턴을 알고 있으며 프로덕션 수준의 구성을 생성할 수 있습니다.
 
-### Do's and Don'ts: YAML Configs
+### 해야 할 것과 하지 말아야 할 것: YAML 구성
 
 <Compare 
-  before={{ label: "❌ Don't: Vague requirements", content: "Generate a docker-compose file for my app." }}
-  after={{ label: "✓ Do: Specify components and needs", content: "Generate docker-compose.yml for:\n- Node.js app (port 3000)\n- PostgreSQL database\n- Redis cache\n\nInclude: health checks, volume persistence, environment from .env file" }}
+  before={{ label: "❌ 하지 마세요: 모호한 요구사항", content: "내 앱을 위한 docker-compose 파일을 생성해 주세요." }}
+  after={{ label: "✓ 이렇게 하세요: 컴포넌트와 요구사항 명시", content: "docker-compose.yml을 생성하세요:\n- Node.js 앱 (포트 3000)\n- PostgreSQL 데이터베이스\n- Redis 캐시\n\n포함 사항: 헬스 체크, 볼륨 영속성, .env 파일에서 환경변수" }}
 />
 
 ### Docker Compose
 
-Specify the services you need and any special requirements. The model will handle the YAML syntax and best practices.
+필요한 서비스와 특별한 요구사항을 명시하세요. 모델이 YAML 구문과 모범 사례를 처리합니다.
 
 ```
 Generate a docker-compose.yml for:
@@ -418,9 +418,9 @@ Include:
 - Network isolation
 ```
 
-### Kubernetes Manifests
+### Kubernetes 매니페스트
 
-Kubernetes manifests are verbose but follow predictable patterns. Provide the key parameters and the model will generate compliant YAML.
+Kubernetes 매니페스트는 장황하지만 예측 가능한 패턴을 따릅니다. 핵심 매개변수를 제공하면 모델이 규격에 맞는 YAML을 생성합니다.
 
 ```
 Generate Kubernetes deployment YAML:
@@ -436,13 +436,13 @@ Deployment:
 Also generate matching Service (ClusterIP, port 8080)
 ```
 
-## Validation and Error Handling
+## 검증 및 오류 처리
 
-For production systems, build validation into your prompts. This catches errors before they propagate through your pipeline.
+프로덕션 시스템에서는 프롬프트에 검증을 구축하세요. 이렇게 하면 오류가 파이프라인을 통해 전파되기 전에 잡을 수 있습니다.
 
-### Self-Validation Prompt
+### 자체 검증 프롬프트
 
-Ask the model to validate its own output against rules you specify. This catches format errors and invalid values.
+모델에게 지정한 규칙에 대해 자체 출력을 검증하도록 요청하세요. 이렇게 하면 형식 오류와 잘못된 값을 잡을 수 있습니다.
 
 ```
 Extract data as JSON, then validate your output.
@@ -464,9 +464,9 @@ If validation fails, fix the issues before responding.
 Text: [contact information]
 ```
 
-### Error Response Format
+### 오류 응답 형식
 
-Define separate success and error formats. This makes programmatic handling much easier.
+성공과 오류에 대해 별도의 형식을 정의하세요. 이렇게 하면 프로그래밍 방식의 처리가 훨씬 쉬워집니다.
 
 ```
 Attempt to extract data. If extraction fails, return error format:
@@ -485,34 +485,34 @@ Error format:
 }
 ```
 
-## JSON vs YAML: When to Use Which
+## JSON vs YAML: 언제 무엇을 사용할까
 
 <div className="my-4 grid md:grid-cols-2 gap-4">
   <div className="p-4 bg-amber-50 dark:bg-amber-950/30 rounded-lg border border-amber-200 dark:border-amber-800">
-    <div className="font-semibold text-amber-700 dark:text-amber-300 mb-2">Use JSON When</div>
+    <div className="font-semibold text-amber-700 dark:text-amber-300 mb-2">JSON을 사용할 때</div>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Programmatic parsing needed</p>
-      <p className="m-0!">API responses</p>
-      <p className="m-0!">Strict type requirements</p>
-      <p className="m-0!">JavaScript/Web integration</p>
-      <p className="m-0!">Compact representation</p>
+      <p className="m-0!">프로그래밍 방식 파싱이 필요할 때</p>
+      <p className="m-0!">API 응답</p>
+      <p className="m-0!">엄격한 타입 요구사항</p>
+      <p className="m-0!">JavaScript/웹 통합</p>
+      <p className="m-0!">컴팩트한 표현</p>
     </div>
   </div>
   <div className="p-4 bg-purple-50 dark:bg-purple-950/30 rounded-lg border border-purple-200 dark:border-purple-800">
-    <div className="font-semibold text-purple-700 dark:text-purple-300 mb-2">Use YAML When</div>
+    <div className="font-semibold text-purple-700 dark:text-purple-300 mb-2">YAML을 사용할 때</div>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Human readability matters</p>
-      <p className="m-0!">Configuration files</p>
-      <p className="m-0!">Comments are needed</p>
-      <p className="m-0!">DevOps/Infrastructure</p>
-      <p className="m-0!">Deep nested structures</p>
+      <p className="m-0!">사람이 읽기 쉬움이 중요할 때</p>
+      <p className="m-0!">구성 파일</p>
+      <p className="m-0!">주석이 필요할 때</p>
+      <p className="m-0!">DevOps/인프라</p>
+      <p className="m-0!">깊이 중첩된 구조</p>
     </div>
   </div>
 </div>
 
-## Prompts.chat Structured Prompts
+## Prompts.chat 구조화된 프롬프트
 
-On prompts.chat, you can create prompts with structured output formats:
+prompts.chat에서 구조화된 출력 형식으로 프롬프트를 만들 수 있습니다:
 
 ```
 When creating a prompt on prompts.chat, you can specify:
@@ -527,37 +527,37 @@ The platform will:
 - Support template variables in your schema
 ```
 
-## Common Pitfalls
+## 일반적인 함정
 
-<Callout type="warning" title="Debug These First">
-These three issues cause most JSON parsing failures. Check for them when your code can't parse AI output.
+<Callout type="warning" title="먼저 이것들을 디버그하세요">
+이 세 가지 문제가 대부분의 JSON 파싱 실패를 유발합니다. 코드가 AI 출력을 파싱할 수 없을 때 이것들을 확인하세요.
 </Callout>
 
-### 1. Markdown Code Blocks
+### 1. 마크다운 코드 블록
 
-**Problem:** Model wraps JSON in ```json blocks
+**문제:** 모델이 JSON을 ```json 블록으로 감쌈
 
-**Solution:** 
+**해결책:** 
 ```
 Return ONLY the JSON object. Do not wrap in markdown code blocks.
 Do not include ```json or ``` markers.
 ```
 
-### 2. Trailing Commas
+### 2. 후행 쉼표
 
-**Problem:** Invalid JSON due to trailing commas
+**문제:** 후행 쉼표로 인한 잘못된 JSON
 
-**Solution:**
+**해결책:**
 ```
 Ensure valid JSON syntax. No trailing commas after the last 
 element in arrays or objects.
 ```
 
-### 3. Unescaped Strings
+### 3. 이스케이프되지 않은 문자열
 
-**Problem:** Quotes or special characters break JSON
+**문제:** 따옴표나 특수 문자가 JSON을 깨뜨림
 
-**Solution:**
+**해결책:**
 ```
 Properly escape special characters in strings:
 - \" for quotes
@@ -565,22 +565,22 @@ Properly escape special characters in strings:
 - \n for newlines
 ```
 
-## Summary
+## 요약
 
-<Callout type="tip" title="Key Techniques">
-Define schemas explicitly using TypeScript interfaces or JSON Schema. Specify types and constraints, handle nulls and defaults, request self-validation, and choose the right format for your use case.
+<Callout type="tip" title="핵심 기법">
+TypeScript 인터페이스나 JSON Schema를 사용하여 스키마를 명시적으로 정의하세요. 타입과 제약 조건을 지정하고, null과 기본값을 처리하고, 자체 검증을 요청하고, 사용 사례에 맞는 올바른 형식을 선택하세요.
 </Callout>
 
 <Quiz 
-  question="When should you prefer YAML over JSON for AI outputs?"
+  question="AI 출력에서 JSON보다 YAML을 선호해야 하는 경우는 언제인가요?"
   options={[
-    "When building REST APIs",
-    "When the output needs to be human-readable and may include comments",
-    "When working with JavaScript applications",
-    "When you need the most compact representation"
+    "REST API를 구축할 때",
+    "출력이 사람이 읽기 쉬워야 하고 주석이 포함될 수 있을 때",
+    "JavaScript 애플리케이션으로 작업할 때",
+    "가장 컴팩트한 표현이 필요할 때"
   ]}
   correctIndex={1}
-  explanation="YAML is preferred when human readability matters, such as configuration files, DevOps manifests, and documentation. It also supports comments, unlike JSON."
+  explanation="YAML은 구성 파일, DevOps 매니페스트, 문서와 같이 사람이 읽기 쉬움이 중요할 때 선호됩니다. JSON과 달리 주석도 지원합니다."
 />
 
-This completes Part II on techniques. In Part III, we'll explore practical applications across different domains.
+이것으로 기법에 관한 제2부를 마칩니다. 제3부에서는 다양한 도메인에서의 실용적인 적용을 살펴보겠습니다.

@@ -1,55 +1,55 @@
-Prompt engineering is rarely a one-shot process. The best prompts emerge through iteration—testing, observing, and refining until you achieve the desired results.
+프롬프트 엔지니어링은 한 번에 완성되는 작업이 아닙니다. 최고의 프롬프트는 반복을 통해 탄생합니다—테스트하고, 관찰하고, 원하는 결과를 얻을 때까지 개선하는 과정을 거칩니다.
 
-<Callout type="info" title="First Draft, Not Final Draft">
-Think of your first prompt as a rough draft. Even experienced prompt engineers rarely nail it on the first try.
+<Callout type="info" title="초안이지, 최종본이 아닙니다">
+첫 번째 프롬프트를 초안이라고 생각하세요. 경험이 풍부한 프롬프트 엔지니어도 첫 시도에서 완벽하게 성공하는 경우는 드뭅니다.
 </Callout>
 
-## The Iteration Cycle
+## 반복 사이클
 
-Effective prompt refinement follows a predictable cycle: write, test, analyze, and improve. Each iteration brings you closer to a prompt that reliably produces the results you need.
+효과적인 프롬프트 개선은 예측 가능한 사이클을 따릅니다: 작성, 테스트, 분석, 그리고 개선. 각 반복은 필요한 결과를 안정적으로 생성하는 프롬프트에 한 걸음 더 가까워지게 합니다.
 
 <IterativeRefinementDemo />
 
-## Common Refinement Patterns
+## 일반적인 개선 패턴
 
-Most prompt failures fall into a handful of categories. Learning to recognize these patterns lets you quickly diagnose and fix issues without starting from scratch.
+대부분의 프롬프트 실패는 몇 가지 범주에 속합니다. 이러한 패턴을 인식하는 방법을 배우면 처음부터 다시 시작하지 않고도 문제를 빠르게 진단하고 수정할 수 있습니다.
 
-### Problem: Output Too Long
+### 문제: 출력이 너무 김
 
-One of the most common issues. Without explicit constraints, models tend to be thorough rather than concise.
+가장 흔한 문제 중 하나입니다. 명시적인 제약이 없으면 모델은 간결하기보다 철저하게 답변하는 경향이 있습니다.
 
 <DiffView 
   before="Explain how photosynthesis works."
   after={`Explain how photosynthesis works in 3-4 sentences suitable for a 10-year-old.`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="원본"
+  afterLabel="개선됨"
 />
 
-### Problem: Output Too Vague
+### 문제: 출력이 너무 모호함
 
-Vague prompts produce vague outputs. The model can't read your mind about what "better" means or which aspects matter most to you.
+모호한 프롬프트는 모호한 출력을 생성합니다. 모델은 "더 나은"이 무엇을 의미하는지 또는 어떤 측면이 가장 중요한지에 대해 여러분의 마음을 읽을 수 없습니다.
 
 <DiffView 
   before="Give me tips for better presentations."
   after={`Give me 5 specific, actionable tips for improving technical presentations to non-technical stakeholders. For each tip, include a concrete example.`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="원본"
+  afterLabel="개선됨"
 />
 
-### Problem: Wrong Tone
+### 문제: 잘못된 어조
 
-Tone is subjective and varies by context. What sounds "professional" to the model might not match your organization's voice or the relationship with your recipient.
+어조는 주관적이며 맥락에 따라 다릅니다. 모델이 "전문적"이라고 생각하는 것이 여러분 조직의 목소리나 수신자와의 관계와 맞지 않을 수 있습니다.
 
 <DiffView 
   before="Write an apology email for missing a deadline."
   after={`Write a professional but warm apology email for missing a project deadline. The tone should be accountable without being overly apologetic. Include a concrete plan to prevent future delays.`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="원본"
+  afterLabel="개선됨"
 />
 
-### Problem: Missing Key Information
+### 문제: 핵심 정보 누락
 
-Open-ended requests get open-ended responses. If you need specific types of feedback, you must ask for them explicitly.
+개방형 요청은 개방형 응답을 받습니다. 특정 유형의 피드백이 필요하다면 명시적으로 요청해야 합니다.
 
 <DiffView 
   before="Review this code."
@@ -62,13 +62,13 @@ Open-ended requests get open-ended responses. If you need specific types of feed
 For each issue found, explain the problem and suggest a fix.
 
 [code]`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="원본"
+  afterLabel="개선됨"
 />
 
-### Problem: Inconsistent Format
+### 문제: 일관성 없는 형식
 
-Without a template, the model will structure each response differently, making comparison difficult and automation impossible.
+템플릿이 없으면 모델은 각 응답을 다르게 구조화하여 비교가 어렵고 자동화가 불가능해집니다.
 
 <DiffView 
   before="Analyze these three products."
@@ -82,82 +82,82 @@ Without a template, the model will structure each response differently, making c
 **Rating:** X/10
 
 [products]`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="원본"
+  afterLabel="개선됨"
 />
 
-## Systematic Refinement Approach
+## 체계적인 개선 접근법
 
-Random changes waste time. A systematic approach helps you identify problems quickly and fix them efficiently.
+무작위 변경은 시간 낭비입니다. 체계적인 접근법은 문제를 빠르게 식별하고 효율적으로 수정하는 데 도움이 됩니다.
 
-### Step 1: Diagnose the Issue
+### 1단계: 문제 진단
 
-Before changing anything, identify what's actually wrong. Use this diagnostic table to map symptoms to solutions:
+무엇이든 변경하기 전에 실제로 무엇이 잘못되었는지 파악하세요. 이 진단 표를 사용하여 증상을 해결책에 매핑하세요:
 
 <div className="my-4 grid gap-2">
   <div className="grid grid-cols-3 gap-2 p-3 bg-muted/50 rounded-lg text-sm">
-    <span className="font-semibold">Symptom</span>
-    <span className="font-semibold">Likely Cause</span>
-    <span className="font-semibold">Solution</span>
+    <span className="font-semibold">증상</span>
+    <span className="font-semibold">가능한 원인</span>
+    <span className="font-semibold">해결책</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Too long</span>
-    <span className="text-muted-foreground">No length constraint</span>
-    <span className="text-green-600 dark:text-green-400">Add word/sentence limits</span>
+    <span>너무 김</span>
+    <span className="text-muted-foreground">길이 제약 없음</span>
+    <span className="text-green-600 dark:text-green-400">단어/문장 제한 추가</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Too short</span>
-    <span className="text-muted-foreground">Lacks detail request</span>
-    <span className="text-green-600 dark:text-green-400">Ask for elaboration</span>
+    <span>너무 짧음</span>
+    <span className="text-muted-foreground">세부 사항 요청 부족</span>
+    <span className="text-green-600 dark:text-green-400">상세 설명 요청</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Off-topic</span>
-    <span className="text-muted-foreground">Vague instructions</span>
-    <span className="text-green-600 dark:text-green-400">Be more specific</span>
+    <span>주제 벗어남</span>
+    <span className="text-muted-foreground">지침이 모호함</span>
+    <span className="text-green-600 dark:text-green-400">더 구체적으로 작성</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Wrong format</span>
-    <span className="text-muted-foreground">Format not specified</span>
-    <span className="text-green-600 dark:text-green-400">Define exact structure</span>
+    <span>잘못된 형식</span>
+    <span className="text-muted-foreground">형식 미지정</span>
+    <span className="text-green-600 dark:text-green-400">정확한 구조 정의</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Wrong tone</span>
-    <span className="text-muted-foreground">Audience not clear</span>
-    <span className="text-green-600 dark:text-green-400">Specify audience/style</span>
+    <span>잘못된 어조</span>
+    <span className="text-muted-foreground">대상 독자 불명확</span>
+    <span className="text-green-600 dark:text-green-400">대상/스타일 명시</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Inconsistent</span>
-    <span className="text-muted-foreground">No examples provided</span>
-    <span className="text-green-600 dark:text-green-400">Add few-shot examples</span>
+    <span>일관성 없음</span>
+    <span className="text-muted-foreground">예시 미제공</span>
+    <span className="text-green-600 dark:text-green-400">few-shot 예시 추가</span>
   </div>
 </div>
 
-### Step 2: Make Targeted Changes
+### 2단계: 대상 지정 변경
 
-Resist the urge to rewrite everything. Changing multiple variables at once makes it impossible to know what helped and what hurt. Make one change, test it, then proceed:
+모든 것을 다시 작성하고 싶은 충동을 억제하세요. 여러 변수를 한 번에 변경하면 무엇이 도움이 되었고 무엇이 해가 되었는지 알 수 없습니다. 한 가지를 변경하고 테스트한 다음 진행하세요:
 
 ```
-Iteration 1: Add length constraint
-Iteration 2: Specify format
-Iteration 3: Add example
-Iteration 4: Refine tone instructions
+반복 1: 길이 제약 추가
+반복 2: 형식 지정
+반복 3: 예시 추가
+반복 4: 어조 지침 개선
 ```
 
-### Step 3: Document What Works
+### 3단계: 효과가 있는 것 기록
 
-Prompt engineering knowledge is easily lost. Keep a log of what you tried and why. This saves time when you revisit the prompt later or face similar challenges:
+프롬프트 엔지니어링 지식은 쉽게 잊혀집니다. 무엇을 시도했고 왜 시도했는지 기록해 두세요. 나중에 프롬프트를 다시 검토하거나 유사한 과제에 직면했을 때 시간을 절약할 수 있습니다:
 
 ```markdown
-## Prompt: Customer Email Response
+## 프롬프트: 고객 이메일 응답
 
-### Version 1 (too formal)
+### 버전 1 (너무 격식체)
 "Write a response to this customer complaint."
 
-### Version 2 (better tone, still missing structure)
+### 버전 2 (어조 개선, 여전히 구조 부족)
 "Write a friendly but professional response to this complaint. 
 Show empathy first."
 
-### Version 3 (final - good results)
+### 버전 3 (최종 - 좋은 결과)
 "Write a response to this customer complaint. Structure:
 1. Acknowledge their frustration (1 sentence)
 2. Apologize specifically (1 sentence)  
@@ -167,25 +167,25 @@ Show empathy first."
 Tone: Friendly, professional, empathetic but not groveling."
 ```
 
-## Real-World Iteration Example
+## 실제 반복 예시
 
-Let's walk through a complete iteration cycle to see how each refinement builds on the last. Notice how each version addresses specific shortcomings of the previous one.
+완전한 반복 사이클을 살펴보며 각 개선이 이전 버전을 어떻게 기반으로 하는지 확인해 보겠습니다. 각 버전이 이전 버전의 특정 단점을 어떻게 해결하는지 주목하세요.
 
-### Task: Generate Product Names
+### 작업: 제품 이름 생성
 
 <VersionDiff versions={[
   {
-    label: "Version 1",
+    label: "버전 1",
     content: "Generate names for a new productivity app.",
-    note: "Too generic, no context"
+    note: "너무 일반적, 맥락 없음"
   },
   {
-    label: "Version 2",
+    label: "버전 2",
     content: `Generate names for a new productivity app. The app uses AI to automatically schedule your tasks based on energy levels and calendar availability.`,
-    note: "Added context, still generic"
+    note: "맥락 추가, 여전히 일반적"
   },
   {
-    label: "Version 3",
+    label: "버전 3",
     content: `Generate 10 unique, memorable names for a productivity app with these characteristics:
 - Uses AI to schedule tasks based on energy levels
 - Target audience: busy professionals aged 25-40
@@ -193,10 +193,10 @@ Let's walk through a complete iteration cycle to see how each refinement builds 
 - Avoid: generic words like "pro", "smart", "AI", "task"
 
 For each name, explain why it works.`,
-    note: "Added constraints and reasoning"
+    note: "제약 조건과 이유 추가"
   },
   {
-    label: "Version 4 (final)",
+    label: "버전 4 (최종)",
     content: `Generate 10 unique, memorable names for a productivity app.
 
 Context:
@@ -212,61 +212,61 @@ Requirements:
 
 Format:
 Name | Pronunciation | Why It Works | Domain Availability Guess`,
-    note: "Structured format, specific requirements"
+    note: "구조화된 형식, 구체적인 요구 사항"
   }
 ]} />
 
-## Refinement Strategies by Task Type
+## 작업 유형별 개선 전략
 
-Different tasks fail in predictable ways. Knowing the common failure modes helps you diagnose and fix issues faster.
+다른 작업은 예측 가능한 방식으로 실패합니다. 일반적인 실패 모드를 알면 문제를 더 빠르게 진단하고 수정할 수 있습니다.
 
-### For Content Generation
+### 콘텐츠 생성의 경우
 
-Content generation often produces generic, off-target, or poorly formatted output. The fix usually involves being more specific about constraints, providing concrete examples, or defining your brand voice explicitly.
-
-<InfoGrid items={[
-  { icon: "target", title: "Too Generic", description: "Add specific constraints and context", example: "\"Write about dogs\" → \"Write about golden retrievers for first-time owners, focusing on training and exercise needs\"" },
-  { icon: "scissors", title: "Too Long", description: "Set word/paragraph limits", example: "Add: \"Keep response under 150 words\" or \"Maximum 3 paragraphs\"" },
-  { icon: "palette", title: "Wrong Style", description: "Provide style examples", example: "\"Write in the style of this example: [paste sample text]\"" },
-  { icon: "megaphone", title: "Off-Brand", description: "Include brand voice guidelines", example: "\"Use friendly, casual tone. Avoid jargon. Address reader as 'you'.\"" }
-]} />
-
-### For Code Generation
-
-Code output can fail technically (syntax errors, wrong language features) or architecturally (poor patterns, missing cases). Technical issues need version/environment specifics; architectural issues need design guidance.
+콘텐츠 생성은 종종 일반적이거나, 목표에서 벗어났거나, 형식이 잘못된 출력을 생성합니다. 해결책은 보통 제약 조건을 더 구체적으로 지정하거나, 구체적인 예시를 제공하거나, 브랜드 목소리를 명시적으로 정의하는 것입니다.
 
 <InfoGrid items={[
-  { icon: "code", title: "Syntax Errors", description: "Specify language version", example: "\"Use Python 3.11+ syntax with type hints\" or \"ES2022 JavaScript\"" },
-  { icon: "git-branch", title: "Wrong Approach", description: "Describe preferred patterns", example: "\"Use functional approach, avoid classes\" or \"Follow repository pattern\"" },
-  { icon: "shield", title: "Missing Edge Cases", description: "List scenarios to handle", example: "\"Handle: empty input, null values, network timeouts, invalid formats\"" },
-  { icon: "tag", title: "Poor Naming", description: "Include naming conventions", example: "\"Use camelCase for variables, PascalCase for classes, UPPER_SNAKE for constants\"" }
+  { icon: "target", title: "너무 일반적", description: "구체적인 제약과 맥락 추가", example: "\"Write about dogs\" → \"Write about golden retrievers for first-time owners, focusing on training and exercise needs\"" },
+  { icon: "scissors", title: "너무 김", description: "단어/문단 제한 설정", example: "추가: \"Keep response under 150 words\" 또는 \"Maximum 3 paragraphs\"" },
+  { icon: "palette", title: "잘못된 스타일", description: "스타일 예시 제공", example: "\"Write in the style of this example: [paste sample text]\"" },
+  { icon: "megaphone", title: "브랜드와 맞지 않음", description: "브랜드 목소리 가이드라인 포함", example: "\"Use friendly, casual tone. Avoid jargon. Address reader as 'you'.\"" }
 ]} />
 
-### For Analysis
+### 코드 생성의 경우
 
-Analysis tasks often produce surface-level or unstructured results. Guide the model with specific frameworks (SWOT, Porter's Five Forces), request multiple viewpoints, or provide a template for the output structure.
+코드 출력은 기술적으로(구문 오류, 잘못된 언어 기능) 또는 아키텍처적으로(잘못된 패턴, 누락된 케이스) 실패할 수 있습니다. 기술적 문제는 버전/환경 세부 사항이 필요하고, 아키텍처 문제는 설계 지침이 필요합니다.
 
 <InfoGrid items={[
-  { icon: "layers", title: "Too Shallow", description: "Ask for specific frameworks", example: "\"Analyze using SWOT framework\" or \"Apply Porter's Five Forces\"" },
-  { icon: "scale", title: "Biased", description: "Request multiple perspectives", example: "\"Present arguments for and against\" or \"Include skeptic's viewpoint\"" },
-  { icon: "database", title: "Missing Data", description: "Specify what to analyze", example: "\"Focus on: market size, growth rate, key players, entry barriers\"" },
-  { icon: "layout", title: "Unstructured", description: "Provide analysis template", example: "\"Format as: Summary → Key Findings → Implications → Recommendations\"" }
+  { icon: "code", title: "구문 오류", description: "언어 버전 지정", example: "\"Use Python 3.11+ syntax with type hints\" 또는 \"ES2022 JavaScript\"" },
+  { icon: "git-branch", title: "잘못된 접근 방식", description: "선호하는 패턴 설명", example: "\"Use functional approach, avoid classes\" 또는 \"Follow repository pattern\"" },
+  { icon: "shield", title: "엣지 케이스 누락", description: "처리할 시나리오 나열", example: "\"Handle: empty input, null values, network timeouts, invalid formats\"" },
+  { icon: "tag", title: "잘못된 명명", description: "명명 규칙 포함", example: "\"Use camelCase for variables, PascalCase for classes, UPPER_SNAKE for constants\"" }
 ]} />
 
-### For Q&A
+### 분석의 경우
 
-Question-answering can be too terse or too verbose, and may lack confidence indicators or sources. Specify the detail level you need and whether you want citations or uncertainty expressed.
+분석 작업은 종종 피상적이거나 구조화되지 않은 결과를 생성합니다. 특정 프레임워크(SWOT, Porter's Five Forces)로 모델을 안내하거나, 여러 관점을 요청하거나, 출력 구조에 대한 템플릿을 제공하세요.
 
 <InfoGrid items={[
-  { icon: "plus", title: "Too Short", description: "Ask for elaboration", example: "\"Explain in detail with examples\" or \"Elaborate on each point\"" },
-  { icon: "minus", title: "Too Long", description: "Request concise answer", example: "\"Answer in 2-3 sentences\" or \"Give me the TL;DR\"" },
-  { icon: "help-circle", title: "Uncertain", description: "Ask for confidence level", example: "\"Rate your confidence 1-10\" or \"Note any assumptions made\"" },
-  { icon: "link", title: "Unsourced", description: "Request citations", example: "\"Cite sources for claims\" or \"Include references where possible\"" }
+  { icon: "layers", title: "너무 피상적", description: "특정 프레임워크 요청", example: "\"Analyze using SWOT framework\" 또는 \"Apply Porter's Five Forces\"" },
+  { icon: "scale", title: "편향됨", description: "여러 관점 요청", example: "\"Present arguments for and against\" 또는 \"Include skeptic's viewpoint\"" },
+  { icon: "database", title: "데이터 누락", description: "분석할 내용 지정", example: "\"Focus on: market size, growth rate, key players, entry barriers\"" },
+  { icon: "layout", title: "구조화되지 않음", description: "분석 템플릿 제공", example: "\"Format as: Summary → Key Findings → Implications → Recommendations\"" }
 ]} />
 
-## The Feedback Loop Technique
+### Q&A의 경우
 
-Here's a meta-technique: use the model itself to help improve your prompts. Share what you tried, what you got, and what you wanted. The model can often suggest improvements you hadn't considered.
+질문 답변은 너무 간결하거나 너무 장황할 수 있으며, 신뢰도 지표나 출처가 부족할 수 있습니다. 필요한 세부 수준과 인용이나 불확실성 표현을 원하는지 지정하세요.
+
+<InfoGrid items={[
+  { icon: "plus", title: "너무 짧음", description: "상세 설명 요청", example: "\"Explain in detail with examples\" 또는 \"Elaborate on each point\"" },
+  { icon: "minus", title: "너무 김", description: "간결한 답변 요청", example: "\"Answer in 2-3 sentences\" 또는 \"Give me the TL;DR\"" },
+  { icon: "help-circle", title: "불확실함", description: "신뢰도 수준 요청", example: "\"Rate your confidence 1-10\" 또는 \"Note any assumptions made\"" },
+  { icon: "link", title: "출처 없음", description: "인용 요청", example: "\"Cite sources for claims\" 또는 \"Include references where possible\"" }
+]} />
+
+## 피드백 루프 기법
+
+여기 메타 기법이 있습니다: 모델 자체를 사용하여 프롬프트를 개선하세요. 무엇을 시도했는지, 무엇을 얻었는지, 무엇을 원했는지 공유하세요. 모델은 종종 여러분이 생각하지 못한 개선 사항을 제안할 수 있습니다.
 
 ```
 I used this prompt:
@@ -279,9 +279,9 @@ I wanted something more [describe gap]. How should I modify
 my prompt to get better results?
 ```
 
-## A/B Testing Prompts
+## 프롬프트 A/B 테스트
 
-For prompts that will be used repeatedly or at scale, don't just pick the first one that works. Test variations to find the most reliable and highest-quality approach.
+반복적으로 또는 대규모로 사용될 프롬프트의 경우, 작동하는 첫 번째 프롬프트를 선택하지 마세요. 가장 안정적이고 고품질의 접근 방식을 찾기 위해 변형을 테스트하세요.
 
 ```
 Prompt A: "Summarize this article in 3 bullet points."
@@ -289,45 +289,45 @@ Prompt B: "Extract the 3 most important insights from this article."
 Prompt C: "What are the key takeaways from this article? List 3."
 ```
 
-Run each multiple times, compare:
-- Consistency of output
-- Quality of information
-- Relevance to your needs
+각각을 여러 번 실행하고 비교하세요:
+- 출력의 일관성
+- 정보의 품질
+- 필요에 대한 관련성
 
-## When to Stop Iterating
+## 반복을 멈춰야 할 때
 
-Perfection is the enemy of good enough. Know when your prompt is ready for use and when you're just polishing for diminishing returns.
+완벽함은 충분히 좋은 것의 적입니다. 프롬프트가 사용 준비가 되었을 때와 수확체감을 위해 다듬고만 있을 때를 알아야 합니다.
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Ready to Ship</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> 배포 준비 완료</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Output consistently meets requirements</p>
-      <p className="m-0!">Edge cases are handled appropriately</p>
-      <p className="m-0!">Format is reliable and parseable</p>
-      <p className="m-0!">Further improvements show diminishing returns</p>
+      <p className="m-0!">출력이 일관되게 요구 사항을 충족</p>
+      <p className="m-0!">엣지 케이스가 적절히 처리됨</p>
+      <p className="m-0!">형식이 안정적이고 파싱 가능</p>
+      <p className="m-0!">추가 개선이 수확체감을 보임</p>
     </div>
   </div>
   <div className="border rounded-lg bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900">
-    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Keep Iterating</p>
+    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> 계속 반복 필요</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Output is inconsistent across runs</p>
-      <p className="m-0!">Edge cases cause failures</p>
-      <p className="m-0!">Critical requirements are missed</p>
-      <p className="m-0!">You haven't tested enough variations</p>
+      <p className="m-0!">실행마다 출력이 일관되지 않음</p>
+      <p className="m-0!">엣지 케이스에서 실패 발생</p>
+      <p className="m-0!">중요한 요구 사항이 누락됨</p>
+      <p className="m-0!">충분한 변형을 테스트하지 않음</p>
     </div>
   </div>
 </div>
 
-## Version Control for Prompts
+## 프롬프트 버전 관리
 
-Prompts are code. For any prompt used in production, treat it with the same rigor: version control, changelogs, and the ability to roll back if something breaks.
+프롬프트는 코드입니다. 프로덕션에서 사용되는 모든 프롬프트에 대해 동일한 엄격함으로 다루세요: 버전 관리, 변경 로그, 그리고 문제가 발생하면 롤백할 수 있는 기능.
 
-<Callout type="tip" title="Built-in Versioning">
-prompts.chat includes automatic version history for your prompts. Every edit is saved, so you can compare versions and restore previous iterations with one click.
+<Callout type="tip" title="내장 버전 관리">
+prompts.chat은 프롬프트에 대한 자동 버전 기록을 포함합니다. 모든 편집이 저장되므로 버전을 비교하고 클릭 한 번으로 이전 반복을 복원할 수 있습니다.
 </Callout>
 
-For self-managed prompts, use a folder structure:
+자체 관리 프롬프트의 경우 폴더 구조를 사용하세요:
 
 ```
 prompts/
@@ -339,30 +339,30 @@ prompts/
 └── changelog.md    # Document changes
 ```
 
-## Summary
+## 요약
 
-<Callout type="tip" title="Key Takeaways">
-Start simple, observe carefully, change one thing at a time, document what works, and know when to stop. The best prompts aren't written—they're discovered through systematic iteration.
+<Callout type="tip" title="핵심 요점">
+간단하게 시작하고, 주의 깊게 관찰하고, 한 번에 한 가지씩 변경하고, 효과가 있는 것을 기록하고, 언제 멈춰야 하는지 알아야 합니다. 최고의 프롬프트는 작성되는 것이 아니라—체계적인 반복을 통해 발견됩니다.
 </Callout>
 
 <Quiz 
-  question="What's the best approach when refining a prompt that's producing wrong results?"
+  question="잘못된 결과를 생성하는 프롬프트를 개선할 때 가장 좋은 접근 방식은 무엇입니까?"
   options={[
-    "Rewrite the entire prompt from scratch",
-    "Add more examples until it works",
-    "Change one thing at a time and test each change",
-    "Make the prompt as long as possible"
+    "전체 프롬프트를 처음부터 다시 작성한다",
+    "작동할 때까지 예시를 더 추가한다",
+    "한 번에 한 가지씩 변경하고 각 변경 사항을 테스트한다",
+    "프롬프트를 가능한 한 길게 만든다"
   ]}
   correctIndex={2}
-  explanation="Changing one thing at a time lets you isolate what works and what doesn't. If you change multiple things at once, you won't know which change fixed the problem or which made it worse."
+  explanation="한 번에 한 가지씩 변경하면 무엇이 효과가 있고 무엇이 효과가 없는지 분리할 수 있습니다. 여러 가지를 한 번에 변경하면 어떤 변경이 문제를 해결했는지 또는 어떤 변경이 더 나쁘게 만들었는지 알 수 없습니다."
 />
 
-## Practice: Improve This Prompt
+## 연습: 이 프롬프트 개선하기
 
-Try improving this weak prompt yourself. Edit it, then use AI to compare your version with the original:
+이 약한 프롬프트를 직접 개선해 보세요. 편집한 다음 AI를 사용하여 여러분의 버전과 원본을 비교하세요:
 
 <BeforeAfterEditor
-  title="Refine This Email Prompt"
+  title="이 이메일 프롬프트 개선하기"
   badPrompt="Write an email."
   idealPrompt={`You are a professional business writer.
 
@@ -381,7 +381,7 @@ Requirements:
 - Keep under 150 words
 
 Format: Subject line + email body`}
-  task="Transform this vague email prompt into something that will produce a professional, effective result."
+  task="이 모호한 이메일 프롬프트를 전문적이고 효과적인 결과를 생성할 수 있는 것으로 변환하세요."
 />
 
-In the next chapter, we'll explore JSON and YAML prompting for structured data applications.
+다음 장에서는 구조화된 데이터 애플리케이션을 위한 JSON과 YAML 프롬프팅을 살펴보겠습니다.

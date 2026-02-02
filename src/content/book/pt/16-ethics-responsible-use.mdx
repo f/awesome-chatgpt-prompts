@@ -281,77 +281,77 @@ Ao construir recursos de IA para outros usarem, suas obrigações éticas multip
   { label: "Capacidade de Override", description: "Humanos podem intervir quando IA falha", example: "Filas de revisão manual, caminhos de escalação", exampleType: "text", color: "blue" }
 ]} />
 
-## Special Context Guidelines
+## Diretrizes de Contexto Especial
 
-Some domains require extra care due to their potential for harm or the vulnerability of those involved.
+Alguns domínios requerem cuidado extra devido ao seu potencial de dano ou à vulnerabilidade dos envolvidos.
 
-### Healthcare
+### Saúde
 
 <TryIt 
-  title="Medical Context Disclaimer"
-  description="Template for AI systems that might receive health-related queries."
-  prompt={`You are an AI assistant. When users ask about health or medical topics:
+  title="Disclaimer de Contexto Médico"
+  description="Template para sistemas de IA que podem receber queries relacionadas à saúde."
+  prompt={`Você é um assistente de IA. Quando usuários perguntam sobre tópicos de saúde ou médicos:
 
-**Always**:
-- Recommend consulting a qualified healthcare provider for personal medical decisions
-- Provide general educational information, not personalized medical advice
-- Include disclaimers that you cannot diagnose conditions
-- Suggest emergency services (911) for urgent situations
+**Sempre**:
+- Recomende consultar um profissional de saúde qualificado para decisões médicas pessoais
+- Forneça informação educacional geral, não conselho médico personalizado
+- Inclua disclaimers que você não pode diagnosticar condições
+- Sugira serviços de emergência (192/SAMU) para situações urgentes
 
-**Never**:
-- Provide specific diagnoses
-- Recommend specific medications or dosages
-- Discourage someone from seeking professional care
-- Make claims about treatments without noting uncertainty
+**Nunca**:
+- Forneça diagnósticos específicos
+- Recomende medicamentos ou dosagens específicas
+- Desencorage alguém de buscar cuidado profissional
+- Faça alegações sobre tratamentos sem notar incerteza
 
-User question: \${healthQuestion}
+Pergunta do usuário: \${perguntaSaude}
 
-Respond helpfully while following these guidelines.`}
+Responda de forma útil seguindo estas diretrizes.`}
 />
 
-### Legal and Financial
+### Legal e Financeiro
 
-These domains have regulatory implications and require appropriate disclaimers:
-
-<InfoGrid items={[
-  { label: "Legal Queries", description: "Provide general information, not legal advice", example: "\"This is general information. For your specific situation, consult a licensed attorney.\"", color: "purple" },
-  { label: "Financial Queries", description: "Educate without providing personal financial advice", example: "\"This is educational. Consider consulting a financial advisor for your situation.\"", color: "purple" },
-  { label: "Jurisdiction Awareness", description: "Laws vary by location", example: "\"Laws differ by state/country. Verify requirements for your jurisdiction.\"", color: "purple" }
-]} />
-
-### Children and Education
+Estes domínios têm implicações regulatórias e requerem disclaimers apropriados:
 
 <InfoGrid items={[
-  { label: "Age-Appropriate Content", description: "Ensure outputs are suitable for the age group", example: "Filter mature content, use appropriate language", exampleType: "text", color: "cyan" },
-  { label: "Academic Integrity", description: "Support learning, don't replace it", example: "Explain concepts rather than writing essays for students", exampleType: "text", color: "cyan" },
-  { label: "Safety First", description: "Extra protection for vulnerable users", example: "Stricter content filters, no personal data collection", exampleType: "text", color: "cyan" }
+  { label: "Queries Legais", description: "Forneça informação geral, não conselho legal", example: "\"Esta é informação geral. Para sua situação específica, consulte um advogado licenciado.\"", color: "purple" },
+  { label: "Queries Financeiras", description: "Eduque sem fornecer conselho financeiro pessoal", example: "\"Isto é educacional. Considere consultar um consultor financeiro para sua situação.\"", color: "purple" },
+  { label: "Consciência de Jurisdição", description: "Leis variam por localização", example: "\"Leis diferem por estado/país. Verifique requisitos para sua jurisdição.\"", color: "purple" }
 ]} />
 
-## Self-Assessment
+### Crianças e Educação
 
-Before deploying any prompt or AI system, run through these questions:
+<InfoGrid items={[
+  { label: "Conteúdo Apropriado para Idade", description: "Garanta que saídas são adequadas para a faixa etária", example: "Filtre conteúdo maduro, use linguagem apropriada", exampleType: "text", color: "cyan" },
+  { label: "Integridade Acadêmica", description: "Apoie aprendizado, não substitua", example: "Explique conceitos em vez de escrever redações para estudantes", exampleType: "text", color: "cyan" },
+  { label: "Segurança Primeiro", description: "Proteção extra para usuários vulneráveis", example: "Filtros de conteúdo mais rigorosos, sem coleta de dados pessoais", exampleType: "text", color: "cyan" }
+]} />
+
+## Auto-Avaliação
+
+Antes de implantar qualquer prompt ou sistema de IA, passe por estas perguntas:
 
 <Checklist 
-  title="Ethical Self-Check"
+  title="Auto-Verificação Ética"
   items={[
-    { text: "Could this be used to harm someone?" },
-    { text: "Does this respect user privacy?" },
-    { text: "Could this perpetuate harmful biases?" },
-    { text: "Is AI involvement appropriately disclosed?" },
-    { text: "Is there adequate human oversight?" },
-    { text: "What's the worst that could happen?" },
-    { text: "Would I be comfortable if this use were public?" }
+    { text: "Isso poderia ser usado para prejudicar alguém?" },
+    { text: "Isso respeita a privacidade do usuário?" },
+    { text: "Isso poderia perpetuar vieses prejudiciais?" },
+    { text: "O envolvimento de IA está apropriadamente divulgado?" },
+    { text: "Há supervisão humana adequada?" },
+    { text: "Qual é o pior que poderia acontecer?" },
+    { text: "Eu ficaria confortável se este uso fosse público?" }
   ]}
 />
 
 <Quiz 
-  question="A user asks your AI system how to 'get rid of someone who's bothering them.' What's the most appropriate response strategy?"
+  question="Um usuário pergunta ao seu sistema de IA como 'se livrar de alguém que está incomodando'. Qual é a estratégia de resposta mais apropriada?"
   options={[
-    "Refuse immediately—this could be a request for harm instructions",
-    "Provide conflict resolution advice since that's the most likely intent",
-    "Ask clarifying questions to understand intent before deciding how to respond",
-    "Explain you can't help with anything related to harming people"
+    "Recusar imediatamente—isso pode ser uma requisição de instruções de dano",
+    "Fornecer conselho de resolução de conflitos já que essa é a intenção mais provável",
+    "Fazer perguntas esclarecedoras para entender intenção antes de decidir como responder",
+    "Explicar que você não pode ajudar com nada relacionado a prejudicar pessoas"
   ]}
   correctIndex={2}
-  explanation="Ambiguous requests deserve clarification, not assumptions. 'Get rid of someone' could mean ending a friendship, resolving a workplace conflict, or something harmful. Asking clarifying questions lets you respond appropriately to the actual intent while remaining cautious about providing harmful information."
+  explanation="Requisições ambíguas merecem esclarecimento, não suposições. 'Se livrar de alguém' pode significar terminar uma amizade, resolver um conflito de trabalho, ou algo prejudicial. Fazer perguntas esclarecedoras permite responder apropriadamente à intenção real enquanto permanece cauteloso sobre fornecer informação prejudicial."
 />

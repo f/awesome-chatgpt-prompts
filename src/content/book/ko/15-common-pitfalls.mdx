@@ -1,373 +1,373 @@
-Even experienced prompt engineers fall into predictable traps. The good news? Once you recognize these patterns, they're easy to avoid. This chapter walks through the most common pitfalls, explains why they happen, and gives you concrete strategies to sidestep them.
+숙련된 프롬프트 엔지니어들도 예측 가능한 함정에 빠지곤 합니다. 좋은 소식은 이러한 패턴을 인식하면 쉽게 피할 수 있다는 것입니다. 이 장에서는 가장 흔한 함정들을 살펴보고, 왜 발생하는지 설명하며, 이를 피하기 위한 구체적인 전략을 제시합니다.
 
-<Callout type="warning" title="Why Pitfalls Matter">
-A single pitfall can turn a powerful AI into a frustrating tool. Understanding these patterns is often the difference between "AI doesn't work for me" and "AI transformed my workflow."
+<Callout type="warning" title="함정이 중요한 이유">
+하나의 함정만으로도 강력한 AI가 답답한 도구로 전락할 수 있습니다. 이러한 패턴을 이해하는 것이 "AI는 나한테 안 맞아"와 "AI가 내 업무 방식을 완전히 바꿨어" 사이의 차이를 만드는 경우가 많습니다.
 </Callout>
 
-## The Vagueness Trap
+## 모호함의 함정
 
-**The Pattern**: You know what you want, so you assume the AI will figure it out too. But vague prompts produce vague results.
+**패턴**: 자신이 원하는 것을 알고 있으니 AI도 알아낼 것이라고 가정합니다. 하지만 모호한 프롬프트는 모호한 결과를 만들어냅니다.
 
 <Compare 
-  before={{ label: "Vague prompt", content: "Write something about marketing." }}
-  after={{ label: "Specific prompt", content: "Write a 300-word LinkedIn post about the importance of brand consistency for B2B SaaS companies, targeting marketing managers. Use a professional but approachable tone. Include one concrete example." }}
+  before={{ label: "모호한 프롬프트", content: "마케팅에 대해 뭔가 써줘." }}
+  after={{ label: "구체적인 프롬프트", content: "마케팅 매니저를 대상으로 B2B SaaS 기업의 브랜드 일관성의 중요성에 관한 300단어 분량의 LinkedIn 게시물을 작성해주세요. 전문적이면서도 친근한 톤을 사용하고, 구체적인 예시를 하나 포함해주세요." }}
 />
 
-**Why it happens**: We naturally skip details when we think they're "obvious." But what's obvious to you isn't obvious to a model that has no context about your situation, audience, or goals.
+**왜 발생하는가**: 우리는 "당연한" 것으로 여겨지는 세부사항을 자연스럽게 생략합니다. 하지만 여러분에게 당연한 것이 여러분의 상황, 청중, 목표에 대한 맥락이 없는 모델에게는 당연하지 않습니다.
 
 <TryIt 
-  title="Specificity Improver"
-  description="Take a vague prompt and make it specific. Notice how adding details transforms the quality of results."
-  prompt={`I have a vague prompt that needs improvement.
+  title="구체성 향상 도구"
+  description="모호한 프롬프트를 구체적으로 만들어보세요. 세부사항을 추가하면 결과의 품질이 어떻게 변하는지 확인해보세요."
+  prompt={`개선이 필요한 모호한 프롬프트가 있습니다.
 
-Original vague prompt: "\${vaguePrompt}"
+원래의 모호한 프롬프트: "\${vaguePrompt}"
 
-Make this prompt specific by adding:
-1. **Audience**: Who will read/use this?
-2. **Format**: What structure should it have?
-3. **Length**: How long should it be?
-4. **Tone**: What voice or style?
-5. **Context**: What's the situation or purpose?
-6. **Constraints**: Any must-haves or must-avoids?
+다음을 추가하여 이 프롬프트를 구체적으로 만들어주세요:
+1. **청중**: 누가 이것을 읽거나 사용할 것인가?
+2. **형식**: 어떤 구조를 가져야 하는가?
+3. **길이**: 얼마나 길어야 하는가?
+4. **톤**: 어떤 목소리나 스타일인가?
+5. **맥락**: 상황이나 목적은 무엇인가?
+6. **제약조건**: 반드시 포함해야 할 것이나 피해야 할 것은 무엇인가?
 
-Rewrite the prompt with all these details included.`}
+이 모든 세부사항을 포함하여 프롬프트를 다시 작성해주세요.`}
 />
 
-## The Overloading Trap
+## 과부하의 함정
 
-**The Pattern**: You try to get everything in one prompt—comprehensive, funny, professional, beginner-friendly, advanced, SEO-optimized, and short. The result? The AI misses half your requirements or produces a confused mess.
+**패턴**: 한 번의 프롬프트로 모든 것을 얻으려고 합니다—포괄적이고, 재미있고, 전문적이고, 초보자 친화적이고, 고급이고, SEO 최적화되고, 짧은 것을 동시에 원합니다. 결과는? AI가 요구사항의 절반을 놓치거나 혼란스러운 결과물을 만들어냅니다.
 
 <Compare 
-  before={{ label: "Overloaded prompt", content: "Write a blog post about AI that's SEO optimized and includes code examples and is funny but professional and targets beginners but also has advanced tips and should be 500 words but comprehensive and mentions our product and has a call to action..." }}
-  after={{ label: "Focused prompt", content: "Write a 500-word blog post introducing AI to beginners.\n\nRequirements:\n1. Explain one core concept clearly\n2. Include one simple code example\n3. End with a call to action\n\nTone: Professional but approachable" }}
+  before={{ label: "과부하된 프롬프트", content: "AI에 대한 블로그 게시물을 써줘. SEO 최적화되어야 하고 코드 예시도 포함하고 재미있으면서도 전문적이고 초보자를 대상으로 하지만 고급 팁도 있어야 하고 500단어인데 포괄적이어야 하고 우리 제품도 언급하고 행동 촉구도 있어야 해..." }}
+  after={{ label: "집중된 프롬프트", content: "초보자에게 AI를 소개하는 500단어 분량의 블로그 게시물을 작성해주세요.\n\n요구사항:\n1. 하나의 핵심 개념을 명확하게 설명\n2. 간단한 코드 예시 하나 포함\n3. 행동 촉구로 마무리\n\n톤: 전문적이면서도 친근하게" }}
 />
 
-**Why it happens**: Fear of multiple interactions, or wanting to "get it all out" in one go. But cognitive overload affects AI just like it affects humans—too many competing requirements leads to dropped balls.
+**왜 발생하는가**: 여러 번의 상호작용에 대한 두려움, 또는 한 번에 "모든 것을 담고" 싶은 욕구 때문입니다. 하지만 인지 과부하는 인간에게 영향을 미치듯이 AI에게도 영향을 미칩니다—너무 많은 경쟁하는 요구사항은 누락된 항목으로 이어집니다.
 
 <InfoGrid items={[
-  { label: "Limit Requirements", description: "Stick to 3-5 key requirements per prompt", example: "Focus on: audience, format, length, one key constraint", exampleType: "text", color: "green" },
-  { label: "Use Numbered Lists", description: "Structure makes priorities clear", example: "1. Must have X, 2. Should have Y, 3. Nice to have Z", exampleType: "text", color: "green" },
-  { label: "Chain Prompts", description: "Break complex tasks into steps", example: "First: outline. Then: draft section 1. Then: draft section 2.", exampleType: "text", color: "green" },
-  { label: "Prioritize Ruthlessly", description: "What's essential vs. nice-to-have?", example: "If I could only get ONE thing right, what would it be?", color: "green" }
+  { label: "요구사항 제한하기", description: "프롬프트당 3-5개의 핵심 요구사항으로 제한하세요", example: "집중할 것: 청중, 형식, 길이, 하나의 핵심 제약조건", exampleType: "text", color: "green" },
+  { label: "번호 매긴 목록 사용", description: "구조가 우선순위를 명확하게 합니다", example: "1. 반드시 X가 있어야 함, 2. Y가 있으면 좋음, 3. Z는 선택사항", exampleType: "text", color: "green" },
+  { label: "프롬프트 연결", description: "복잡한 작업을 단계별로 나누세요", example: "먼저: 개요. 그다음: 섹션 1 초안. 그다음: 섹션 2 초안.", exampleType: "text", color: "green" },
+  { label: "무자비하게 우선순위 정하기", description: "필수적인 것 vs. 있으면 좋은 것은 무엇인가?", example: "단 하나만 제대로 할 수 있다면, 그것은 무엇일까?", color: "green" }
 ]} />
 
-<Callout type="tip" title="Learn Prompt Chaining">
-When a single prompt gets overloaded, [prompt chaining](/book/11-prompt-chaining) is often the solution. Break complex tasks into a sequence of focused prompts, where each step builds on the previous one.
+<Callout type="tip" title="프롬프트 체이닝 배우기">
+단일 프롬프트가 과부하될 때, [프롬프트 체이닝](/book/11-prompt-chaining)이 종종 해결책입니다. 복잡한 작업을 집중된 프롬프트의 연속으로 나누어 각 단계가 이전 단계를 기반으로 구축되도록 합니다.
 </Callout>
 
-## The Assumption Trap
+## 가정의 함정
 
-**The Pattern**: You reference something "from earlier" or assume the AI knows your project, your company, or your previous conversations. It doesn't.
+**패턴**: "이전에" 보여준 것을 참조하거나 AI가 여러분의 프로젝트, 회사, 또는 이전 대화를 알고 있다고 가정합니다. 하지만 AI는 알지 못합니다.
 
 <Compare 
-  before={{ label: "Assumes context", content: "Update the function I showed you earlier to add error handling." }}
-  after={{ label: "Provides context", content: "Update this function to add error handling:\n\n```python\ndef calculate_total(items):\n    return sum(item.price for item in items)\n```\n\nAdd try/except for empty lists and invalid items." }}
+  before={{ label: "맥락을 가정함", content: "이전에 보여준 함수에 에러 처리를 추가해줘." }}
+  after={{ label: "맥락을 제공함", content: "이 함수에 에러 처리를 추가해주세요:\n\n```python\ndef calculate_total(items):\n    return sum(item.price for item in items)\n```\n\n빈 리스트와 잘못된 항목에 대한 try/except를 추가해주세요." }}
 />
 
-**Why it happens**: AI conversations feel like talking to a colleague. But unlike colleagues, most AI models have no persistent memory between sessions—each conversation starts fresh.
+**왜 발생하는가**: AI 대화는 동료와 대화하는 것처럼 느껴집니다. 하지만 동료와 달리, 대부분의 AI 모델은 세션 간에 영구적인 기억이 없습니다—각 대화는 새로 시작됩니다.
 
 <TryIt 
-  title="Context Completeness Check"
-  description="Use this to verify your prompt contains all necessary context before sending."
-  prompt={`Review this prompt for missing context:
+  title="맥락 완전성 검사"
+  description="프롬프트를 보내기 전에 필요한 모든 맥락이 포함되어 있는지 확인하는 데 사용하세요."
+  prompt={`이 프롬프트에 누락된 맥락이 있는지 검토해주세요:
 
 "\${promptToCheck}"
 
-Check for:
-1. **Referenced but not included**: Does it mention "the code," "the document," "earlier," or "above" without including the actual content?
+다음을 확인해주세요:
+1. **참조되었지만 포함되지 않은 것**: "그 코드," "그 문서," "이전에," 또는 "위에"를 언급하면서 실제 내용은 포함하지 않았나요?
 
-2. **Assumed knowledge**: Does it assume knowledge about a specific project, company, or situation?
+2. **가정된 지식**: 특정 프로젝트, 회사, 또는 상황에 대한 지식을 가정하고 있나요?
 
-3. **Implicit requirements**: Are there unstated expectations about format, length, or style?
+3. **암묵적 요구사항**: 형식, 길이, 또는 스타일에 대해 명시되지 않은 기대가 있나요?
 
-4. **Missing background**: Would a smart stranger understand what's being asked?
+4. **누락된 배경**: 똑똑한 낯선 사람이 무엇을 요청하는지 이해할 수 있을까요?
 
-List what's missing and suggest how to add it.`}
+누락된 것을 나열하고 어떻게 추가할지 제안해주세요.`}
 />
 
-## The Leading Question Trap
+## 유도 질문의 함정
 
-**The Pattern**: You phrase your question in a way that embeds your assumption, getting back confirmation rather than insight.
+**패턴**: 여러분의 가정을 내포하는 방식으로 질문을 구성하여, 통찰력 대신 확인을 받게 됩니다.
 
 <Compare 
-  before={{ label: "Leading question", content: "Why is Python the best programming language for data science?" }}
-  after={{ label: "Neutral question", content: "Compare Python, R, and Julia for data science work. What are the strengths and weaknesses of each? When would you choose one over the others?" }}
+  before={{ label: "유도 질문", content: "왜 Python이 데이터 과학을 위한 최고의 프로그래밍 언어야?" }}
+  after={{ label: "중립적 질문", content: "데이터 과학 작업에 대해 Python, R, Julia를 비교해줘. 각각의 장단점은 무엇이야? 언제 하나를 다른 것보다 선택해야 할까?" }}
 />
 
-**Why it happens**: We often seek confirmation, not information. Our phrasing unconsciously pushes toward the answer we expect or want.
+**왜 발생하는가**: 우리는 종종 정보가 아닌 확인을 구합니다. 우리의 표현 방식이 무의식적으로 기대하거나 원하는 답으로 밀어붙입니다.
 
 <TryIt 
-  title="Bias Detector"
-  description="Check your prompts for hidden biases and leading language."
-  prompt={`Analyze this prompt for bias and leading language:
+  title="편향 감지기"
+  description="프롬프트에 숨겨진 편향과 유도 표현이 있는지 확인하세요."
+  prompt={`이 프롬프트의 편향과 유도 표현을 분석해주세요:
 
 "\${promptToAnalyze}"
 
-Check for:
-1. **Embedded assumptions**: Does the question assume something is true?
-2. **Leading phrasing**: Does "Why is X good?" assume X is good?
-3. **Missing alternatives**: Does it ignore other possibilities?
-4. **Confirmation seeking**: Is it asking for validation rather than analysis?
+다음을 확인해주세요:
+1. **내포된 가정**: 질문이 무언가가 사실이라고 가정하고 있나요?
+2. **유도적 표현**: "X가 왜 좋아?"는 X가 좋다고 가정하고 있지 않나요?
+3. **누락된 대안**: 다른 가능성을 무시하고 있나요?
+4. **확인 추구**: 분석이 아닌 검증을 요청하고 있나요?
 
-Rewrite the prompt to be neutral and open-ended.`}
+중립적이고 개방형으로 프롬프트를 다시 작성해주세요.`}
 />
 
-## The Trust Everything Trap
+## 모든 것을 신뢰하는 함정
 
-**The Pattern**: AI responses sound confident and authoritative, so you accept them without verification. But confidence doesn't equal accuracy.
+**패턴**: AI 응답이 자신감 있고 권위적으로 들리기 때문에 검증 없이 받아들입니다. 하지만 자신감이 정확성을 의미하지는 않습니다.
 
 <InfoGrid items={[
-  { label: "Unreviewed Content", description: "Publishing AI-generated text without fact-checking", example: "Blog posts with invented statistics or fake quotes", exampleType: "text", color: "red" },
-  { label: "Untested Code", description: "Using AI code in production without testing", example: "Security vulnerabilities, edge case failures, subtle bugs", exampleType: "text", color: "red" },
-  { label: "Blind Decisions", description: "Making important choices based solely on AI analysis", example: "Business strategy based on hallucinated market data", exampleType: "text", color: "red" }
+  { label: "검토되지 않은 콘텐츠", description: "팩트체크 없이 AI 생성 텍스트를 게시함", example: "조작된 통계나 가짜 인용문이 포함된 블로그 게시물", exampleType: "text", color: "red" },
+  { label: "테스트되지 않은 코드", description: "테스트 없이 프로덕션에서 AI 코드를 사용함", example: "보안 취약점, 엣지 케이스 실패, 미묘한 버그", exampleType: "text", color: "red" },
+  { label: "맹목적 결정", description: "AI 분석에만 기반하여 중요한 선택을 함", example: "환각으로 만들어진 시장 데이터에 기반한 비즈니스 전략", exampleType: "text", color: "red" }
 ]} />
 
-**Why it happens**: AI sounds confident even when completely wrong. We're also prone to "automation bias"—the tendency to trust computer outputs more than we should.
+**왜 발생하는가**: AI는 완전히 틀렸을 때도 자신감 있게 들립니다. 우리는 또한 "자동화 편향"—컴퓨터 출력을 실제보다 더 신뢰하는 경향에 취약합니다.
 
 <TryIt 
-  title="Verification Prompt"
-  description="Use this to get the AI to flag its own uncertainties and potential errors."
-  prompt={`I need you to provide information about: \${topic}
+  title="검증 프롬프트"
+  description="AI가 자체적인 불확실성과 잠재적 오류를 표시하도록 하는 데 사용하세요."
+  prompt={`다음에 대한 정보가 필요합니다: \${topic}
 
-IMPORTANT: After your response, add a section called "Verification Notes" that includes:
+중요: 응답 후에 다음을 포함하는 "검증 노트" 섹션을 추가해주세요:
 
-1. **Confidence Level**: How certain are you about this information? (High/Medium/Low)
+1. **신뢰도 수준**: 이 정보에 대해 얼마나 확신하시나요? (높음/중간/낮음)
 
-2. **Potential Errors**: What parts of this response are most likely to be wrong or outdated?
+2. **잠재적 오류**: 이 응답의 어떤 부분이 틀리거나 오래됐을 가능성이 가장 높나요?
 
-3. **What to Verify**: What specific claims should the user fact-check independently?
+3. **검증할 것**: 사용자가 독립적으로 팩트체크해야 할 구체적인 주장은 무엇인가요?
 
-4. **Sources to Check**: Where could the user verify this information?
+4. **확인할 출처**: 사용자가 이 정보를 어디서 검증할 수 있나요?
 
-Be honest about limitations. It's better to flag uncertainty than to sound confident about something wrong.`}
+한계에 대해 솔직해주세요. 틀린 것에 대해 자신감 있게 들리는 것보다 불확실성을 표시하는 것이 더 좋습니다.`}
 />
 
-## The One-Shot Trap
+## 한 번에 끝내기 함정
 
-**The Pattern**: You send one prompt, get a mediocre result, and conclude that AI "doesn't work" for your use case. But great results almost always require iteration.
+**패턴**: 하나의 프롬프트를 보내고, 평범한 결과를 받은 후 AI가 여러분의 사용 사례에는 "작동하지 않는다"고 결론 내립니다. 하지만 훌륭한 결과는 거의 항상 반복을 필요로 합니다.
 
 <Compare 
-  before={{ label: "One-shot thinking", content: "Mediocre output → \"AI can't do this\" → Give up" }}
-  after={{ label: "Iterative thinking", content: "Mediocre output → Analyze what's wrong → Refine prompt → Better output → Refine again → Excellent output" }}
+  before={{ label: "한 번에 끝내기 사고", content: "평범한 출력 → \"AI는 이걸 못해\" → 포기" }}
+  after={{ label: "반복적 사고", content: "평범한 출력 → 무엇이 잘못됐는지 분석 → 프롬프트 개선 → 더 나은 출력 → 다시 개선 → 훌륭한 출력" }}
 />
 
-**Why it happens**: We expect AI to read our minds on the first try. We don't expect to iterate with Google searches, but somehow expect perfection from AI.
+**왜 발생하는가**: 우리는 AI가 첫 번째 시도에서 우리의 마음을 읽기를 기대합니다. Google 검색으로 반복할 것을 기대하지 않으면서, 어떻게든 AI에게는 완벽을 기대합니다.
 
 <TryIt 
-  title="Iteration Helper"
-  description="When your first result isn't right, use this to systematically improve it."
-  prompt={`My original prompt was:
+  title="반복 도우미"
+  description="첫 번째 결과가 만족스럽지 않을 때, 체계적으로 개선하는 데 사용하세요."
+  prompt={`원래 프롬프트는:
 "\${originalPrompt}"
 
-The output I got was:
+받은 출력은:
 "\${outputReceived}"
 
-What's wrong with it:
+문제점:
 "\${whatIsWrong}"
 
-Help me iterate:
+반복을 도와주세요:
 
-1. **Diagnosis**: Why did the original prompt produce this result?
+1. **진단**: 왜 원래 프롬프트가 이런 결과를 만들었나요?
 
-2. **Missing Elements**: What was I not explicit about that I should have been?
+2. **누락된 요소**: 명시해야 했는데 명시하지 않은 것은 무엇인가요?
 
-3. **Revised Prompt**: Rewrite my prompt to address these issues.
+3. **수정된 프롬프트**: 이러한 문제를 해결하도록 프롬프트를 다시 작성해주세요.
 
-4. **What to Watch For**: What should I check in the new output?`}
+4. **주의할 점**: 새 출력에서 무엇을 확인해야 하나요?`}
 />
 
-## The Format Neglect Trap
+## 형식 무시의 함정
 
-**The Pattern**: You focus on what you want the AI to say, but forget to specify how it should be formatted. Then you get prose when you needed JSON, or a wall of text when you needed bullet points.
+**패턴**: AI가 무엇을 말해야 하는지에 집중하지만, 어떻게 형식화해야 하는지 명시하는 것을 잊습니다. 그러면 JSON이 필요할 때 산문을 받거나, 글머리 기호가 필요할 때 텍스트 벽을 받게 됩니다.
 
 <Compare 
-  before={{ label: "No format specified", content: "Extract the key data from this text." }}
-  after={{ label: "Format specified", content: "Extract the key data from this text as JSON:\n\n{\n  \"name\": string,\n  \"date\": \"YYYY-MM-DD\",\n  \"amount\": number,\n  \"category\": string\n}\n\nReturn ONLY the JSON, no explanation." }}
+  before={{ label: "형식 미지정", content: "이 텍스트에서 핵심 데이터를 추출해줘." }}
+  after={{ label: "형식 지정", content: "이 텍스트에서 핵심 데이터를 JSON으로 추출해주세요:\n\n{\n  \"name\": string,\n  \"date\": \"YYYY-MM-DD\",\n  \"amount\": number,\n  \"category\": string\n}\n\n설명 없이 JSON만 반환해주세요." }}
 />
 
-**Why it happens**: We focus on content over structure. But if you need to parse the output programmatically, or paste it somewhere specific, format matters as much as content.
+**왜 발생하는가**: 우리는 구조보다 내용에 집중합니다. 하지만 출력을 프로그래밍 방식으로 파싱하거나 특정 위치에 붙여넣어야 한다면, 형식은 내용만큼 중요합니다.
 
 <TryIt 
-  title="Format Specification Builder"
-  description="Generate clear format specifications for any output type you need."
-  prompt={`I need AI output in a specific format.
+  title="형식 명세 빌더"
+  description="필요한 모든 출력 유형에 대한 명확한 형식 명세를 생성합니다."
+  prompt={`특정 형식의 AI 출력이 필요합니다.
 
-**What I'm asking for**: \${taskDescription}
-**How I'll use the output**: \${intendedUse}
-**Preferred format**: \${formatType} (JSON, Markdown, CSV, bullet points, etc.)
+**요청하는 것**: \${taskDescription}
+**출력 사용 방법**: \${intendedUse}
+**선호하는 형식**: \${formatType} (JSON, Markdown, CSV, 글머리 기호 등)
 
-Generate a format specification I can add to my prompt, including:
+프롬프트에 추가할 수 있는 형식 명세를 생성해주세요, 다음을 포함하여:
 
-1. **Exact structure** with field names and types
-2. **Example output** showing the format
-3. **Constraints** (e.g., "Return ONLY the JSON, no explanation")
-4. **Edge cases** (what to output if data is missing)`}
+1. **정확한 구조** - 필드 이름과 타입 포함
+2. **예시 출력** - 형식을 보여주는 예시
+3. **제약조건** (예: "설명 없이 JSON만 반환")
+4. **엣지 케이스** (데이터가 누락된 경우 출력할 내용)`}
 />
 
-## The Context Window Trap
+## 컨텍스트 윈도우의 함정
 
-**The Pattern**: You paste an enormous document and expect comprehensive analysis. But models have limits—they may truncate, lose focus, or miss important details in long inputs.
+**패턴**: 방대한 문서를 붙여넣고 포괄적인 분석을 기대합니다. 하지만 모델에는 한계가 있습니다—긴 입력에서 잘리거나, 집중력을 잃거나, 중요한 세부사항을 놓칠 수 있습니다.
 
 <InfoGrid items={[
-  { label: "Know Your Limits", description: "Different models have different context windows", example: "GPT-4: 128K tokens, Claude: 200K tokens, Gemini: 1M tokens", exampleType: "text", color: "blue" },
-  { label: "Chunk Large Inputs", description: "Break documents into manageable sections", example: "Analyze chapters separately, then synthesize", exampleType: "text", color: "blue" },
-  { label: "Front-Load Important Info", description: "Put critical context early in the prompt", example: "Key requirements first, background details later", exampleType: "text", color: "blue" },
-  { label: "Trim the Fat", description: "Remove unnecessary context", example: "Do you really need the entire doc, or just relevant sections?", exampleType: "text", color: "blue" }
+  { label: "한계 파악하기", description: "모델마다 컨텍스트 윈도우가 다릅니다", example: "GPT-4: 128K 토큰, Claude: 200K 토큰, Gemini: 1M 토큰", exampleType: "text", color: "blue" },
+  { label: "큰 입력 분할하기", description: "문서를 관리 가능한 섹션으로 나누세요", example: "챕터를 별도로 분석한 다음 종합", exampleType: "text", color: "blue" },
+  { label: "중요한 정보 앞에 배치", description: "프롬프트 초반에 핵심 맥락을 넣으세요", example: "핵심 요구사항을 먼저, 배경 세부사항은 나중에", exampleType: "text", color: "blue" },
+  { label: "불필요한 것 제거", description: "불필요한 맥락을 삭제하세요", example: "전체 문서가 정말 필요한가요, 아니면 관련 섹션만 필요한가요?", exampleType: "text", color: "blue" }
 ]} />
 
 <TryIt 
-  title="Document Chunking Strategy"
-  description="Get a strategy for processing documents that exceed context limits."
-  prompt={`I have a large document to analyze:
+  title="문서 분할 전략"
+  description="컨텍스트 한계를 초과하는 문서를 처리하기 위한 전략을 얻으세요."
+  prompt={`분석할 큰 문서가 있습니다:
 
-**Document type**: \${documentType}
-**Approximate length**: \${documentLength}
-**What I need to extract/analyze**: \${analysisGoal}
-**Model I'm using**: \${modelName}
+**문서 유형**: \${documentType}
+**대략적인 길이**: \${documentLength}
+**추출/분석해야 할 것**: \${analysisGoal}
+**사용 중인 모델**: \${modelName}
 
-Create a chunking strategy:
+분할 전략을 만들어주세요:
 
-1. **How to divide**: Logical break points for this document type
-2. **What to include in each chunk**: Context needed for standalone analysis
-3. **How to synthesize**: Combining results from multiple chunks
-4. **What to watch for**: Information that might span chunks`}
+1. **나누는 방법**: 이 문서 유형에 대한 논리적 분할 지점
+2. **각 청크에 포함할 것**: 독립적 분석에 필요한 맥락
+3. **종합하는 방법**: 여러 청크의 결과를 결합하기
+4. **주의할 점**: 청크에 걸쳐 있을 수 있는 정보`}
 />
 
-## The Anthropomorphization Trap
+## 의인화의 함정
 
-**The Pattern**: You treat AI like a human colleague—expecting it to "enjoy" tasks, remember you, or care about outcomes. It doesn't.
+**패턴**: AI를 인간 동료처럼 대합니다—작업을 "즐길" 것으로 기대하거나, 여러분을 기억하거나, 결과에 관심을 가질 것으로 기대합니다. AI는 그렇지 않습니다.
 
 <Compare 
-  before={{ label: "Anthropomorphized", content: "I'm sure you'll enjoy this creative project! I know you love helping people, and this is really important to me personally." }}
-  after={{ label: "Clear and direct", content: "Write a creative short story with these specifications:\n- Genre: Science fiction\n- Length: 500 words\n- Tone: Hopeful\n- Must include: A twist ending" }}
+  before={{ label: "의인화됨", content: "이 창의적인 프로젝트를 즐길 거라고 확신해! 사람들을 돕는 것을 좋아한다는 걸 알아, 이건 개인적으로 정말 중요해." }}
+  after={{ label: "명확하고 직접적", content: "다음 사양으로 창의적인 단편 소설을 작성해주세요:\n- 장르: 공상과학\n- 길이: 500단어\n- 톤: 희망적\n- 필수 포함: 반전 결말" }}
 />
 
-**Why it happens**: AI responses are so human-like that we naturally slip into social patterns. But emotional appeals don't make the AI try harder—clear instructions do.
+**왜 발생하는가**: AI 응답이 너무 인간 같아서 우리는 자연스럽게 사회적 패턴에 빠집니다. 하지만 감정적 호소는 AI가 더 노력하게 만들지 않습니다—명확한 지시가 그렇게 합니다.
 
-<Callout type="info" title="What Actually Helps">
-Instead of emotional appeals, focus on: clear requirements, good examples, specific constraints, and explicit success criteria. These improve outputs. "Please try really hard" doesn't.
+<Callout type="info" title="실제로 도움이 되는 것">
+감정적 호소 대신 다음에 집중하세요: 명확한 요구사항, 좋은 예시, 구체적인 제약조건, 명시적인 성공 기준. 이것들이 출력을 개선합니다. "정말 열심히 해줘"는 그렇지 않습니다.
 </Callout>
 
-## The Security Neglect Trap
+## 보안 무시의 함정
 
-**The Pattern**: In the rush to get things working, you include sensitive information in prompts—API keys, passwords, personal data, or proprietary information.
+**패턴**: 작업을 완료하려는 급함에 프롬프트에 민감한 정보를 포함합니다—API 키, 비밀번호, 개인 데이터, 또는 독점 정보.
 
 <InfoGrid items={[
-  { label: "Secrets in Prompts", description: "API keys, passwords, tokens pasted into prompts", example: "\"Use this API key: sk-abc123...\"", color: "red" },
-  { label: "Personal Data", description: "Including PII that gets sent to third-party servers", example: "Customer names, emails, addresses in prompts", exampleType: "text", color: "red" },
-  { label: "Unsanitized User Input", description: "Passing user input directly into prompts", example: "Prompt injection vulnerabilities", exampleType: "text", color: "red" },
-  { label: "Proprietary Information", description: "Trade secrets or confidential data", example: "Internal strategies, unreleased product details", exampleType: "text", color: "red" }
+  { label: "프롬프트의 비밀", description: "API 키, 비밀번호, 토큰을 프롬프트에 붙여넣음", example: "\"이 API 키를 사용해: sk-abc123...\"", color: "red" },
+  { label: "개인 데이터", description: "서드파티 서버로 전송되는 PII를 포함함", example: "프롬프트에 고객 이름, 이메일, 주소 포함", exampleType: "text", color: "red" },
+  { label: "정제되지 않은 사용자 입력", description: "사용자 입력을 프롬프트에 직접 전달함", example: "프롬프트 인젝션 취약점", exampleType: "text", color: "red" },
+  { label: "독점 정보", description: "영업 비밀이나 기밀 데이터", example: "내부 전략, 미공개 제품 세부사항", exampleType: "text", color: "red" }
 ]} />
 
-**Why it happens**: Focus on functionality over security. But remember: prompts often go to external servers, may be logged, and could be used for training.
+**왜 발생하는가**: 보안보다 기능에 집중합니다. 하지만 기억하세요: 프롬프트는 종종 외부 서버로 전송되고, 로그될 수 있으며, 학습에 사용될 수 있습니다.
 
 <TryIt 
-  title="Security Review"
-  description="Check your prompt for security issues before sending."
-  prompt={`Review this prompt for security concerns:
+  title="보안 검토"
+  description="보내기 전에 프롬프트의 보안 문제를 확인하세요."
+  prompt={`이 프롬프트의 보안 문제를 검토해주세요:
 
 "\${promptToReview}"
 
-Check for:
+다음을 확인해주세요:
 
-1. **Exposed Secrets**: API keys, passwords, tokens, credentials
-2. **Personal Data**: Names, emails, addresses, phone numbers, SSNs
-3. **Proprietary Info**: Trade secrets, internal strategies, confidential data
-4. **Injection Risks**: User input that could manipulate the prompt
+1. **노출된 비밀**: API 키, 비밀번호, 토큰, 자격 증명
+2. **개인 데이터**: 이름, 이메일, 주소, 전화번호, 주민등록번호
+3. **독점 정보**: 영업 비밀, 내부 전략, 기밀 데이터
+4. **인젝션 위험**: 프롬프트를 조작할 수 있는 사용자 입력
 
-For each issue found:
-- Explain the risk
-- Suggest how to redact or protect the information
-- Recommend safer alternatives`}
+발견된 각 문제에 대해:
+- 위험 설명
+- 정보를 삭제하거나 보호하는 방법 제안
+- 더 안전한 대안 권장`}
 />
 
-## The Hallucination Ignorance Trap
+## 환각 무시의 함정
 
-**The Pattern**: You ask for citations, statistics, or specific facts, and assume they're real because the AI stated them confidently. But AI regularly invents plausible-sounding information.
+**패턴**: 인용, 통계, 또는 구체적인 사실을 요청하고 AI가 자신감 있게 말했기 때문에 그것이 진짜라고 가정합니다. 하지만 AI는 정기적으로 그럴듯하게 들리는 정보를 만들어냅니다.
 
 <Compare 
-  before={{ label: "Trusting blindly", content: "Give me 5 statistics about remote work productivity with sources." }}
-  after={{ label: "Acknowledging limitations", content: "What do we know about remote work productivity? For any statistics you mention, note whether they're well-established findings or more uncertain. I will verify any specific numbers independently." }}
+  before={{ label: "맹목적으로 신뢰", content: "출처와 함께 원격 근무 생산성에 대한 통계 5가지를 알려줘." }}
+  after={{ label: "한계 인정", content: "원격 근무 생산성에 대해 우리가 알고 있는 것은 무엇인가요? 언급하는 통계가 잘 확립된 발견인지 더 불확실한 것인지 알려주세요. 구체적인 숫자는 독립적으로 검증하겠습니다." }}
 />
 
-**Why it happens**: AI generates text that sounds authoritative. It doesn't "know" when it's making things up—it's predicting likely text, not retrieving verified facts.
+**왜 발생하는가**: AI는 권위 있게 들리는 텍스트를 생성합니다. AI는 자신이 만들어내고 있는지 "알지" 못합니다—검증된 사실을 검색하는 것이 아니라 가능성 있는 텍스트를 예측하고 있습니다.
 
 <TryIt 
-  title="Hallucination-Resistant Query"
-  description="Structure your prompt to minimize hallucination risk and flag uncertainties."
-  prompt={`I need information about: \${topic}
+  title="환각 방지 쿼리"
+  description="환각 위험을 최소화하고 불확실성을 표시하도록 프롬프트를 구성하세요."
+  prompt={`다음에 대한 정보가 필요합니다: \${topic}
 
-Please follow these guidelines to minimize errors:
+오류를 최소화하기 위해 다음 가이드라인을 따라주세요:
 
-1. **Stick to well-established facts**. Avoid obscure claims that are hard to verify.
+1. **잘 확립된 사실을 고수하세요**. 검증하기 어려운 모호한 주장을 피하세요.
 
-2. **Flag uncertainty**. If you're not confident about something, say "I believe..." or "This may need verification..."
+2. **불확실성을 표시하세요**. 확신이 없다면 "저는 ~라고 생각합니다..." 또는 "이것은 검증이 필요할 수 있습니다..."라고 말해주세요.
 
-3. **No invented sources**. Don't cite specific papers, books, or URLs unless you're certain they exist. Instead, describe where to find this type of information.
+3. **출처를 만들어내지 마세요**. 특정 논문, 책, 또는 URL이 존재한다고 확신하지 않는 한 인용하지 마세요. 대신 이러한 유형의 정보를 어디서 찾을 수 있는지 설명해주세요.
 
-4. **Acknowledge knowledge limits**. If my question is about events after your training data, say so.
+4. **지식 한계를 인정하세요**. 제 질문이 학습 데이터 이후의 사건에 관한 것이라면 그렇게 말해주세요.
 
-5. **Separate fact from inference**. Clearly distinguish between "X is true" and "Based on Y, X is likely true."
+5. **사실과 추론을 분리하세요**. "X는 사실이다"와 "Y를 기반으로 X가 사실일 가능성이 높다"를 명확하게 구분해주세요.
 
-Now, with these guidelines in mind: \${actualQuestion}`}
+이제 이 가이드라인을 염두에 두고: \${actualQuestion}`}
 />
 
-## Pre-Send Checklist
+## 전송 전 체크리스트
 
-Before sending any important prompt, run through this quick checklist:
+중요한 프롬프트를 보내기 전에 이 빠른 체크리스트를 실행하세요:
 
 <Checklist 
-  title="Prompt Quality Check"
+  title="프롬프트 품질 검사"
   items={[
-    { text: "Is it specific enough? (Not vague)" },
-    { text: "Is it focused? (Not overloaded with requirements)" },
-    { text: "Does it include all necessary context?" },
-    { text: "Is the question neutral? (Not leading)" },
-    { text: "Have I specified the output format?" },
-    { text: "Is the input within context limits?" },
-    { text: "Are there any security concerns?" },
-    { text: "Am I prepared to verify the output?" },
-    { text: "Am I prepared to iterate if needed?" }
+    { text: "충분히 구체적인가? (모호하지 않음)" },
+    { text: "집중되어 있는가? (요구사항이 과부하되지 않음)" },
+    { text: "필요한 모든 맥락이 포함되어 있는가?" },
+    { text: "질문이 중립적인가? (유도하지 않음)" },
+    { text: "출력 형식을 지정했는가?" },
+    { text: "입력이 컨텍스트 한계 내에 있는가?" },
+    { text: "보안 문제가 있는가?" },
+    { text: "출력을 검증할 준비가 되어 있는가?" },
+    { text: "필요하다면 반복할 준비가 되어 있는가?" }
   ]}
 />
 
 <Quiz 
-  question="What's the most dangerous pitfall when using AI for important decisions?"
+  question="중요한 결정에 AI를 사용할 때 가장 위험한 함정은 무엇인가요?"
   options={[
-    "Using vague prompts",
-    "Trusting AI outputs without verification",
-    "Not specifying output format",
-    "Overloading prompts with requirements"
+    "모호한 프롬프트 사용",
+    "검증 없이 AI 출력을 신뢰함",
+    "출력 형식을 지정하지 않음",
+    "요구사항으로 프롬프트를 과부하함"
   ]}
   correctIndex={1}
-  explanation="While all pitfalls cause problems, trusting AI outputs without verification is the most dangerous because it can lead to publishing false information, deploying buggy code, or making decisions based on hallucinated data. AI sounds confident even when completely wrong, making verification essential for any important use case."
+  explanation="모든 함정이 문제를 일으키지만, 검증 없이 AI 출력을 신뢰하는 것이 가장 위험합니다. 거짓 정보 게시, 버그가 있는 코드 배포, 또는 환각 데이터에 기반한 결정으로 이어질 수 있기 때문입니다. AI는 완전히 틀렸을 때도 자신감 있게 들리기 때문에, 중요한 사용 사례에서는 검증이 필수적입니다."
 />
 
-## Analyze Your Prompts
+## 프롬프트 분석하기
 
-Use AI to get instant feedback on your prompt quality. Paste any prompt and get a detailed analysis:
+AI를 사용하여 프롬프트 품질에 대한 즉각적인 피드백을 받으세요. 어떤 프롬프트든 붙여넣으면 상세한 분석을 받을 수 있습니다:
 
 <PromptAnalyzer 
-  title="Prompt Quality Analyzer"
-  description="Get AI-powered feedback on clarity, specificity, and suggestions for improvement"
-  defaultPrompt="Help me with my code"
+  title="프롬프트 품질 분석기"
+  description="명확성, 구체성, 개선 제안에 대한 AI 기반 피드백을 받으세요"
+  defaultPrompt="내 코드 좀 도와줘"
 />
 
-## Debug This Prompt
+## 이 프롬프트 디버깅하기
 
-Can you spot what's wrong with this prompt?
+이 프롬프트에서 무엇이 잘못되었는지 찾을 수 있나요?
 
 <PromptDebugger
-  title="Find the Pitfall"
-  badPrompt="Write a blog post about technology that's SEO optimized with keywords and also funny but professional and includes code examples and targets beginners but has advanced tips and mentions our product TechCo and has social proof and a call to action and is 500 words but comprehensive."
-  badOutput="Here's a draft blog post about technology...
+  title="함정 찾기"
+  badPrompt="기술에 대한 블로그 게시물을 써줘. 키워드로 SEO 최적화되어야 하고 재미있으면서도 전문적이고 코드 예시도 포함하고 초보자를 대상으로 하지만 고급 팁도 있어야 하고 우리 제품 TechCo도 언급하고 사회적 증거와 행동 촉구도 있어야 하고 500단어인데 포괄적이어야 해."
+  badOutput="여기 기술에 대한 블로그 게시물 초안이 있습니다...
 
-[Generic, unfocused content that tries to do everything but accomplishes nothing well. Tone shifts awkwardly between casual and technical. Missing half the requirements.]"
+[모든 것을 하려고 하지만 어느 것도 제대로 해내지 못하는 일반적이고 집중되지 않은 콘텐츠. 톤이 캐주얼과 기술적 사이에서 어색하게 전환됨. 요구사항의 절반이 누락됨.]"
   options={[
-    { id: "vague", label: "The prompt is too vague", isCorrect: false, explanation: "Actually, the prompt has many specific requirements. The problem is the opposite—too many requirements, not too few." },
-    { id: "overload", label: "The prompt is overloaded with too many competing requirements", isCorrect: true, explanation: "Correct! This prompt asks for SEO + funny + professional + code + beginners + advanced + product mention + social proof + CTA + length constraint. That's 10+ competing requirements! The AI can't satisfy them all, so it does a mediocre job on everything. Solution: break this into multiple focused prompts." },
-    { id: "format", label: "The output format isn't specified", isCorrect: false, explanation: "While a more specific format would help, the main issue is requirement overload. You can't format your way out of asking for too much." },
-    { id: "context", label: "There's not enough context", isCorrect: false, explanation: "The prompt actually has a lot of context—maybe too much! The problem is that it's trying to satisfy too many goals at once." }
+    { id: "vague", label: "프롬프트가 너무 모호함", isCorrect: false, explanation: "사실 이 프롬프트에는 많은 구체적인 요구사항이 있습니다. 문제는 반대입니다—너무 적은 요구사항이 아니라 너무 많은 요구사항입니다." },
+    { id: "overload", label: "프롬프트가 너무 많은 경쟁 요구사항으로 과부하됨", isCorrect: true, explanation: "정답입니다! 이 프롬프트는 SEO + 재미 + 전문적 + 코드 + 초보자 + 고급 + 제품 언급 + 사회적 증거 + CTA + 길이 제약을 요청합니다. 10개 이상의 경쟁하는 요구사항입니다! AI가 모두를 만족시킬 수 없어서 모든 것을 평범하게 합니다. 해결책: 이것을 여러 개의 집중된 프롬프트로 나누세요." },
+    { id: "format", label: "출력 형식이 지정되지 않음", isCorrect: false, explanation: "더 구체적인 형식이 도움이 되겠지만, 주요 문제는 요구사항 과부하입니다. 너무 많은 것을 요청하는 것을 형식으로 해결할 수 없습니다." },
+    { id: "context", label: "맥락이 충분하지 않음", isCorrect: false, explanation: "이 프롬프트에는 실제로 많은 맥락이 있습니다—어쩌면 너무 많을 수도 있습니다! 문제는 한 번에 너무 많은 목표를 달성하려고 한다는 것입니다." }
   ]}
-  hint="Count how many different requirements are packed into this single prompt."
+  hint="이 단일 프롬프트에 몇 개의 다른 요구사항이 담겨 있는지 세어보세요."
 />

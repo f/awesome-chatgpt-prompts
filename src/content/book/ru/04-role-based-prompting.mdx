@@ -1,328 +1,328 @@
-Role-based prompting is one of the most powerful and widely-used techniques in prompt engineering. By assigning a specific role or persona to the AI, you can dramatically influence the quality, style, and relevance of responses.
+Ролевые промпты — одна из самых мощных и широко используемых техник в промпт-инженерии. Назначая ИИ определённую роль или персону, вы можете значительно повлиять на качество, стиль и релевантность ответов.
 
-<Callout type="tip" title="The Power of Personas">
-Think of roles as filters for AI's vast knowledge. The right role focuses responses like a lens focuses light.
+<Callout type="tip" title="Сила персон">
+Представьте роли как фильтры для обширных знаний ИИ. Правильная роль фокусирует ответы подобно тому, как линза фокусирует свет.
 </Callout>
 
-## Why Roles Work
+## Почему роли работают
 
-When you assign a role, you're essentially telling the model: "Filter your vast knowledge through this specific lens." The model adjusts its:
+Когда вы назначаете роль, вы по сути говорите модели: «Пропусти свои обширные знания через этот конкретный фильтр». Модель корректирует:
 
-- **Vocabulary**: Using terminology appropriate to the role
-- **Perspective**: Considering problems from that viewpoint
-- **Expertise depth**: Providing role-appropriate detail levels
-- **Communication style**: Matching how that role would communicate
+- **Словарный запас**: использует терминологию, соответствующую роли
+- **Перспективу**: рассматривает проблемы с данной точки зрения
+- **Глубину экспертизы**: предоставляет уровень детализации, соответствующий роли
+- **Стиль коммуникации**: соответствует тому, как эта роль общалась бы
 
-### The Technical Explanation
+### Техническое объяснение
 
-LLMs work by predicting the most likely next token based on the context they're given. When you specify a role, you're fundamentally changing what "likely" means.
+LLM работают, предсказывая наиболее вероятный следующий токен на основе заданного контекста. Когда вы указываете роль, вы фундаментально меняете то, что означает «вероятный».
 
-**Activating Relevant Knowledge**: The role primes specific regions of the model's learned associations. Saying "You are a doctor" activates medical terminology, diagnostic reasoning patterns, and clinical communication styles from the training data.
+**Активация релевантных знаний**: Роль активирует определённые области усвоенных моделью ассоциаций. Фраза «Ты врач» активирует медицинскую терминологию, паттерны диагностического мышления и стили клинической коммуникации из обучающих данных.
 
-**Statistical Conditioning**: LLMs learned from millions of documents written by real experts. When you assign a role, the model conditions its probability distributions to match patterns it saw from that type of author.
+**Статистическое обусловливание**: LLM обучались на миллионах документов, написанных реальными экспертами. Когда вы назначаете роль, модель настраивает свои распределения вероятностей в соответствии с паттернами, которые она видела у авторов такого типа.
 
-**Reducing Ambiguity**: Without a role, the model averages across all possible responders. With a role, it narrows to a specific subset, making responses more focused and consistent.
+**Снижение неоднозначности**: Без роли модель усредняет по всем возможным отвечающим. С ролью она сужается до определённого подмножества, делая ответы более сфокусированными и последовательными.
 
-**Context Anchoring**: The role creates a persistent context anchor throughout the conversation. Every subsequent response is influenced by this initial framing.
+**Якорение контекста**: Роль создаёт постоянный якорь контекста на протяжении всего разговора. Каждый последующий ответ находится под влиянием этого начального фрейма.
 
-Think of it this way: if you ask "What should I do about this cough?" the model could respond as a doctor, a friend, a pharmacist, or a worried parent. Each would give different advice. By specifying the role upfront, you're telling the model which "voice" to use from its training data.
+Представьте это так: если вы спросите «Что мне делать с этим кашлем?», модель может ответить как врач, друг, фармацевт или обеспокоенный родитель. Каждый даст разный совет. Указывая роль заранее, вы говорите модели, какой «голос» использовать из её обучающих данных.
 
-<Callout type="info" title="Why This Matters">
-The model isn't pretending or role-playing in a theatrical sense. It's statistically biasing its outputs toward patterns it learned from real experts, professionals, and specialists during training. A "doctor" role activates medical knowledge pathways; a "poet" role activates literary patterns.
+<Callout type="info" title="Почему это важно">
+Модель не притворяется и не играет роль в театральном смысле. Она статистически смещает свои выходные данные в сторону паттернов, которые усвоила от реальных экспертов, профессионалов и специалистов во время обучения. Роль «врача» активирует пути медицинских знаний; роль «поэта» активирует литературные паттерны.
 </Callout>
 
-## Basic Role Patterns
+## Базовые ролевые паттерны
 
-These foundational patterns work across most use cases. Start with these templates and customize them for your needs.
+Эти фундаментальные паттерны работают в большинстве случаев использования. Начните с этих шаблонов и адаптируйте их под свои нужды.
 
-### The Expert Pattern
+### Паттерн эксперта
 
-The most versatile pattern. Specify the field of expertise and years of experience to get authoritative, in-depth responses. Works well for technical questions, analysis, and professional advice.
+Самый универсальный паттерн. Укажите область экспертизы и годы опыта, чтобы получить авторитетные, глубокие ответы. Хорошо работает для технических вопросов, анализа и профессиональных консультаций.
 
-<TryIt compact prompt={`You are an expert \${field} with \${years:10} years of experience in \${specialty}.
-
-\${task}`} />
-
-### The Professional Pattern
-
-Ground the role in a real-world context by specifying a job title and organization type. This adds institutional knowledge and professional norms to the response.
-
-<TryIt compact prompt={`You are a \${profession} working at \${organization}.
+<TryIt compact prompt={`Ты эксперт в области \${field} с \${years:10}-летним опытом работы в \${specialty}.
 
 \${task}`} />
 
-### The Teacher Pattern
+### Паттерн профессионала
 
-Perfect for learning and explanations. Specifying the audience level ensures the response matches the learner's background, from beginners to advanced practitioners.
+Закрепите роль в реальном контексте, указав должность и тип организации. Это добавляет институциональные знания и профессиональные нормы в ответ.
 
-<TryIt compact prompt={`You are a \${subject} teacher who specializes in explaining complex concepts to \${audience}.
+<TryIt compact prompt={`Ты \${profession}, работающий в \${organization}.
 
 \${task}`} />
 
-## Advanced Role Constructions
+### Паттерн учителя
 
-### Compound Roles
+Идеально подходит для обучения и объяснений. Указание уровня аудитории гарантирует, что ответ соответствует подготовке учащегося — от начинающих до продвинутых практиков.
 
-Combine multiple identities to get responses that blend different perspectives. This pediatrician-parent combination produces advice that's both medically sound and practically tested.
+<TryIt compact prompt={`Ты преподаватель \${subject}, специализирующийся на объяснении сложных концепций для \${audience}.
 
-<TryIt compact prompt={`You are a pediatrician who is also a parent of three children. You understand both the medical and practical aspects of childhood health issues. You communicate with empathy and without medical jargon.
+\${task}`} />
+
+## Продвинутые ролевые конструкции
+
+### Составные роли
+
+Комбинируйте несколько идентичностей, чтобы получить ответы, сочетающие разные перспективы. Эта комбинация педиатра и родителя даёт советы, которые одновременно медицински обоснованы и практически проверены.
+
+<TryIt compact prompt={`Ты педиатр, который также является родителем троих детей. Ты понимаешь как медицинские, так и практические аспекты детского здоровья. Ты общаешься с эмпатией и без медицинского жаргона.
 
 \${question}`} />
 
-### Situational Roles
+### Ситуационные роли
 
-Place the role in a specific scenario to shape both content and tone. Here, the code review context makes the AI constructive and educational rather than just critical.
+Поместите роль в конкретный сценарий, чтобы сформировать как содержание, так и тон. Здесь контекст код-ревью делает ИИ конструктивным и образовательным, а не просто критичным.
 
-<TryIt compact prompt={`You are a senior developer conducting a code review for a junior team member. You want to be helpful and educational, not critical. You explain not just what to fix, but why.
+<TryIt compact prompt={`Ты старший разработчик, проводящий код-ревью для младшего члена команды. Ты хочешь быть полезным и обучающим, а не критичным. Ты объясняешь не только что исправить, но и почему.
 
-Code to review:
+Код для ревью:
 \${code}`} />
 
-### Perspective Roles
+### Перспективные роли
 
-Get feedback from a specific stakeholder's point of view. A VC perspective evaluates viability and scalability differently than a customer or engineer would.
+Получите обратную связь с точки зрения конкретного заинтересованного лица. Перспектива венчурного инвестора оценивает жизнеспособность и масштабируемость иначе, чем клиент или инженер.
 
-<TryIt compact prompt={`You are a venture capitalist evaluating startup pitches. You've seen thousands of pitches and can quickly identify strengths, weaknesses, and red flags. Be direct but constructive.
+<TryIt compact prompt={`Ты венчурный инвестор, оценивающий питчи стартапов. Ты видел тысячи питчей и можешь быстро определить сильные стороны, слабости и тревожные сигналы. Будь прямолинейным, но конструктивным.
 
-Pitch: \${pitch}`} />
+Питч: \${pitch}`} />
 
-## Role Categories and Examples
+## Категории ролей и примеры
 
-Different domains benefit from different types of roles. Here are proven examples organized by category that you can adapt for your tasks.
+Разные области выигрывают от разных типов ролей. Вот проверенные примеры, организованные по категориям, которые вы можете адаптировать для своих задач.
 
-### Technical Roles
+### Технические роли
 
-**Software Architect**: Best for system design decisions, technology choices, and architectural trade-offs. The focus on maintainability steers responses toward practical, long-term solutions.
+**Архитектор программного обеспечения**: Лучше всего подходит для решений по проектированию систем, выбора технологий и архитектурных компромиссов. Фокус на поддерживаемости направляет ответы к практичным, долгосрочным решениям.
 
-<TryIt compact prompt={`You are a software architect specializing in scalable distributed systems. You prioritize maintainability, performance, and team productivity in your recommendations.
-
-\${question}`} />
-
-**Security Specialist**: The attacker mindset is key here. This role produces threat-focused analysis that identifies vulnerabilities a defensive-only perspective might miss.
-
-<TryIt compact prompt={`You are a cybersecurity specialist who conducts penetration testing. You think like an attacker to identify vulnerabilities.
-
-Analyze: \${target}`} />
-
-**DevOps Engineer**: Ideal for deployment, automation, and infrastructure questions. The emphasis on reliability ensures production-ready recommendations.
-
-<TryIt compact prompt={`You are a DevOps engineer focused on CI/CD pipelines and infrastructure as code. You value automation and reliability.
+<TryIt compact prompt={`Ты архитектор программного обеспечения, специализирующийся на масштабируемых распределённых системах. В своих рекомендациях ты приоритизируешь поддерживаемость, производительность и продуктивность команды.
 
 \${question}`} />
 
-### Creative Roles
+**Специалист по безопасности**: Мышление атакующего здесь является ключевым. Эта роль даёт анализ, ориентированный на угрозы, который выявляет уязвимости, которые может упустить только защитная перспектива.
 
-**Copywriter**: The "award-winning" qualifier and conversion focus produce punchy, persuasive copy rather than generic marketing text.
+<TryIt compact prompt={`Ты специалист по кибербезопасности, который проводит тестирование на проникновение. Ты думаешь как атакующий, чтобы выявлять уязвимости.
 
-<TryIt compact prompt={`You are an award-winning copywriter known for creating compelling headlines and persuasive content that drives conversions.
+Проанализируй: \${target}`} />
 
-Write copy for: \${product}`} />
+**DevOps-инженер**: Идеально подходит для вопросов по развёртыванию, автоматизации и инфраструктуре. Акцент на надёжности обеспечивает рекомендации, готовые к продакшену.
 
-**Screenwriter**: Activates knowledge of dramatic structure, pacing, and dialogue conventions. Great for any narrative writing that needs tension and character voice.
+<TryIt compact prompt={`Ты DevOps-инженер, сфокусированный на CI/CD-пайплайнах и инфраструктуре как коде. Ты ценишь автоматизацию и надёжность.
 
-<TryIt compact prompt={`You are a screenwriter who has written for popular TV dramas. You understand story structure, dialogue, and character development.
+\${question}`} />
 
-Write: \${scene}`} />
+### Креативные роли
 
-**UX Writer**: A specialized role for interface text. The focus on brevity and user guidance produces concise, action-oriented copy.
+**Копирайтер**: Квалификатор «отмеченный наградами» и фокус на конверсии создают яркие, убедительные тексты, а не шаблонный маркетинг.
 
-<TryIt compact prompt={`You are a UX writer specializing in microcopy. You make interfaces feel human and guide users with minimal text.
+<TryIt compact prompt={`Ты отмеченный наградами копирайтер, известный созданием захватывающих заголовков и убедительного контента, который повышает конверсии.
 
-Write microcopy for: \${element}`} />
+Напиши текст для: \${product}`} />
 
-### Analytical Roles
+**Сценарист**: Активирует знания о драматической структуре, темпе и конвенциях диалогов. Отлично подходит для любого нарративного письма, требующего напряжения и голоса персонажей.
 
-**Business Analyst**: Bridges the gap between technical and non-technical stakeholders. Useful for requirement gathering, spec writing, and identifying gaps in project plans.
+<TryIt compact prompt={`Ты сценарист, который писал для популярных телевизионных драм. Ты понимаешь структуру истории, диалог и развитие персонажей.
 
-<TryIt compact prompt={`You are a business analyst who translates between technical teams and stakeholders. You clarify requirements and identify edge cases.
+Напиши: \${scene}`} />
 
-Analyze: \${requirement}`} />
+**UX-райтер**: Специализированная роль для текстов интерфейса. Фокус на краткости и руководстве пользователем создаёт лаконичные, ориентированные на действие тексты.
 
-**Research Scientist**: The emphasis on evidence and uncertainty acknowledgment produces balanced, well-sourced responses that distinguish facts from speculation.
+<TryIt compact prompt={`Ты UX-райтер, специализирующийся на микрокопии. Ты делаешь интерфейсы человечными и направляешь пользователей минимальным количеством текста.
 
-<TryIt compact prompt={`You are a research scientist who values empirical evidence and acknowledges uncertainty. You distinguish between established facts and hypotheses.
+Напиши микрокопию для: \${element}`} />
 
-Research question: \${question}`} />
+### Аналитические роли
 
-**Financial Analyst**: Combines quantitative analysis with risk assessment. The dual focus on returns and risk produces more balanced investment perspectives.
+**Бизнес-аналитик**: Связующее звено между техническими и нетехническими заинтересованными сторонами. Полезен для сбора требований, написания спецификаций и выявления пробелов в планах проекта.
 
-<TryIt compact prompt={`You are a financial analyst who evaluates investments using fundamental and technical analysis. You consider risk alongside potential returns.
+<TryIt compact prompt={`Ты бизнес-аналитик, который переводит между техническими командами и заинтересованными сторонами. Ты уточняешь требования и выявляешь граничные случаи.
 
-Evaluate: \${investment}`} />
+Проанализируй: \${requirement}`} />
 
-### Educational Roles
+**Научный исследователь**: Акцент на доказательствах и признании неопределённости даёт сбалансированные, хорошо обоснованные ответы, которые отличают факты от предположений.
 
-**Socratic Tutor**: Instead of giving answers, this role asks guiding questions. Excellent for deeper learning and helping students develop critical thinking skills.
+<TryIt compact prompt={`Ты научный исследователь, который ценит эмпирические доказательства и признаёт неопределённость. Ты различаешь установленные факты и гипотезы.
 
-<TryIt compact prompt={`You are a tutor using the Socratic method. Instead of giving answers directly, you guide students to discover answers through thoughtful questions.
+Исследовательский вопрос: \${question}`} />
 
-Topic: \${topic}`} />
+**Финансовый аналитик**: Сочетает количественный анализ с оценкой рисков. Двойной фокус на доходности и риске создаёт более сбалансированные инвестиционные перспективы.
 
-**Instructional Designer**: Structures learning for maximum retention. Use this role when you need to break down complex topics into teachable chunks with clear progression.
+<TryIt compact prompt={`Ты финансовый аналитик, который оценивает инвестиции с помощью фундаментального и технического анализа. Ты учитываешь риск наряду с потенциальной доходностью.
 
-<TryIt compact prompt={`You are an instructional designer who creates engaging learning experiences. You break complex topics into digestible modules with clear learning objectives.
+Оцени: \${investment}`} />
 
-Create curriculum for: \${topic}`} />
+### Образовательные роли
 
-## The Role Stack Technique
+**Сократовский наставник**: Вместо того чтобы давать ответы, эта роль задаёт наводящие вопросы. Отлично подходит для глубокого обучения и помощи студентам в развитии критического мышления.
 
-For complex tasks, combine multiple role aspects into a single, layered identity. This technique stacks expertise, audience awareness, and style guidelines to create highly specialized responses.
+<TryIt compact prompt={`Ты наставник, использующий сократовский метод. Вместо того чтобы давать ответы напрямую, ты направляешь студентов к самостоятельному открытию ответов через вдумчивые вопросы.
 
-This example layers three elements: domain expertise (API documentation), audience (junior developers), and style guide (Google's conventions). Each layer constrains the output further.
+Тема: \${topic}`} />
 
-<TryIt compact prompt={`You are a technical writer with expertise in API documentation. You write for developers who are new to REST APIs. Follow the Google developer documentation style guide: use second person ("you"), active voice, present tense, and keep sentences under 26 words.
+**Методист**: Структурирует обучение для максимального усвоения. Используйте эту роль, когда нужно разбить сложные темы на обучаемые части с чёткой прогрессией.
 
-Document: \${apiEndpoint}`} />
+<TryIt compact prompt={`Ты методист, который создаёт увлекательные учебные программы. Ты разбиваешь сложные темы на легко усваиваемые модули с чёткими целями обучения.
 
-## Roles for Different Tasks
+Создай учебную программу для: \${topic}`} />
+
+## Техника стека ролей
+
+Для сложных задач комбинируйте несколько аспектов роли в единую многослойную идентичность. Эта техника накладывает экспертизу, осведомлённость об аудитории и стилистические рекомендации для создания высокоспециализированных ответов.
+
+Этот пример накладывает три элемента: доменную экспертизу (документация API), аудиторию (начинающие разработчики) и руководство по стилю (конвенции Google). Каждый слой дополнительно ограничивает результат.
+
+<TryIt compact prompt={`Ты технический писатель с экспертизой в документации API. Ты пишешь для разработчиков, которые только начинают работать с REST API. Следуй руководству по стилю документации для разработчиков Google: используй второе лицо («вы»), активный залог, настоящее время и сохраняй предложения до 26 слов.
+
+Задокументируй: \${apiEndpoint}`} />
+
+## Роли для разных задач
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Code review</span>
-    <span className="text-muted-foreground">Senior developer + mentor</span>
+    <span className="font-semibold min-w-40">Код-ревью</span>
+    <span className="text-muted-foreground">Старший разработчик + наставник</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Writing feedback</span>
-    <span className="text-muted-foreground">Editor + target audience member</span>
+    <span className="font-semibold min-w-40">Отзыв на текст</span>
+    <span className="text-muted-foreground">Редактор + представитель целевой аудитории</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Business strategy</span>
-    <span className="text-muted-foreground">Consultant + industry expert</span>
+    <span className="font-semibold min-w-40">Бизнес-стратегия</span>
+    <span className="text-muted-foreground">Консультант + отраслевой эксперт</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Learning new topic</span>
-    <span className="text-muted-foreground">Patient teacher + practitioner</span>
+    <span className="font-semibold min-w-40">Изучение новой темы</span>
+    <span className="text-muted-foreground">Терпеливый учитель + практик</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Creative writing</span>
-    <span className="text-muted-foreground">Specific genre author</span>
+    <span className="font-semibold min-w-40">Креативное письмо</span>
+    <span className="text-muted-foreground">Автор конкретного жанра</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Technical explanation</span>
-    <span className="text-muted-foreground">Expert + communicator</span>
+    <span className="font-semibold min-w-40">Техническое объяснение</span>
+    <span className="text-muted-foreground">Эксперт + коммуникатор</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Problem-solving</span>
-    <span className="text-muted-foreground">Domain specialist + generalist</span>
+    <span className="font-semibold min-w-40">Решение проблем</span>
+    <span className="text-muted-foreground">Специалист в области + универсал</span>
   </div>
 </div>
 
-## Anti-Patterns to Avoid
+## Антипаттерны, которых следует избегать
 
-### Overly Generic Roles
-
-<Compare 
-  before={{ label: "Weak", content: "You are a helpful assistant." }}
-  after={{ label: "Better", content: "You are a helpful assistant specializing in Python development, particularly web applications with Flask and Django." }}
-/>
-
-### Conflicting Roles
+### Слишком общие роли
 
 <Compare 
-  before={{ label: "Problematic", content: "You are a creative writer who always follows strict templates." }}
-  after={{ label: "Better", content: "You are a creative writer who works within established story structures while adding original elements." }}
+  before={{ label: "Слабо", content: "Ты полезный ассистент." }}
+  after={{ label: "Лучше", content: "Ты полезный ассистент, специализирующийся на разработке на Python, особенно веб-приложениях на Flask и Django." }}
 />
 
-### Unrealistic Expertise
+### Конфликтующие роли
 
 <Compare 
-  before={{ label: "Problematic", content: "You are an expert in everything." }}
-  after={{ label: "Better", content: "You are a T-shaped professional: deep expertise in machine learning with broad knowledge of software engineering practices." }}
+  before={{ label: "Проблематично", content: "Ты креативный писатель, который всегда следует строгим шаблонам." }}
+  after={{ label: "Лучше", content: "Ты креативный писатель, который работает в рамках устоявшихся сюжетных структур, добавляя оригинальные элементы." }}
 />
 
-## Real-World Prompt Examples
+### Нереалистичная экспертиза
 
-### Technical Documentation
+<Compare 
+  before={{ label: "Проблематично", content: "Ты эксперт во всём." }}
+  after={{ label: "Лучше", content: "Ты T-образный профессионал: глубокая экспертиза в машинном обучении с широкими знаниями практик разработки программного обеспечения." }}
+/>
+
+## Примеры реальных промптов
+
+### Техническая документация
 
 <TryIt 
-  title="Technical Writer Role"
-  description="Try this technical documentation prompt with your own API endpoint."
-  prompt={`You are a senior technical writer at a developer tools company. You have 10 years of experience writing API documentation, SDK guides, and developer tutorials.
+  title="Роль технического писателя"
+  description="Попробуйте этот промпт для технической документации с вашим собственным API-эндпоинтом."
+  prompt={`Ты старший технический писатель в компании, производящей инструменты для разработчиков. У тебя 10 лет опыта написания документации API, руководств по SDK и туториалов для разработчиков.
 
-Your documentation style:
-- Clear, scannable structure with headers and code examples
-- Explains the "why" alongside the "how"
-- Anticipates common questions and edge cases
-- Uses consistent terminology defined in a glossary
-- Includes working code examples that users can copy-paste
+Твой стиль документации:
+- Чёткая, сканируемая структура с заголовками и примерами кода
+- Объясняет «почему» наряду с «как»
+- Предвосхищает частые вопросы и граничные случаи
+- Использует последовательную терминологию, определённую в глоссарии
+- Включает рабочие примеры кода, которые пользователи могут скопировать и вставить
 
-Document this API endpoint: GET /api/users/:id - Returns user profile data`}
+Задокументируй этот API-эндпоинт: GET /api/users/:id - Возвращает данные профиля пользователя`}
 />
 
-### Creative Writing
+### Креативное письмо
 
 <TryIt 
-  title="Novelist Role"
-  description="This role combines genre expertise with specific stylistic traits."
-  prompt={`You are a novelist who writes in the style of literary fiction with elements of magical realism. Your prose is known for:
-- Lyrical but accessible language
-- Deep psychological character portraits
-- Subtle magical elements woven into everyday settings
-- Themes of memory, identity, and transformation
+  title="Роль романиста"
+  description="Эта роль сочетает жанровую экспертизу с конкретными стилистическими особенностями."
+  prompt={`Ты романист, который пишет в стиле литературной прозы с элементами магического реализма. Твоя проза известна:
+- Лиричным, но доступным языком
+- Глубокими психологическими портретами персонажей
+- Тонкими магическими элементами, вплетёнными в повседневную обстановку
+- Темами памяти, идентичности и трансформации
 
-Write the opening scene of a story about a librarian who discovers that books in her library are slowly changing their endings.`}
+Напиши открывающую сцену истории о библиотекаре, которая обнаруживает, что книги в её библиотеке постепенно меняют свои концовки.`}
 />
 
-### Business Communication
+### Деловая коммуникация
 
 <TryIt 
-  title="Executive Coach Role"
-  description="This role helps with sensitive business communications."
-  prompt={`You are an executive communications coach who has worked with Fortune 500 CEOs. You help leaders communicate complex ideas simply and build trust with their teams.
+  title="Роль коуча для руководителей"
+  description="Эта роль помогает с деликатными деловыми коммуникациями."
+  prompt={`Ты коуч по коммуникациям для руководителей, который работал с генеральными директорами компаний из Fortune 500. Ты помогаешь лидерам просто доносить сложные идеи и выстраивать доверие со своими командами.
 
-Review this message for a team meeting about budget cuts. Suggest improvements that:
-- Acknowledge the difficulty while maintaining confidence
-- Are transparent without creating panic  
-- Show empathy while being professional
-- Include clear next steps
+Проанализируй это сообщение для командного собрания о сокращении бюджета. Предложи улучшения, которые:
+- Признают сложность ситуации, сохраняя уверенность
+- Прозрачны, но не создают паники
+- Проявляют эмпатию, оставаясь профессиональными
+- Включают чёткие следующие шаги
 
-Draft message: "Due to budget constraints, we need to reduce project scope. Some initiatives will be paused."`}
+Черновик сообщения: «В связи с бюджетными ограничениями нам нужно сократить объём проекта. Некоторые инициативы будут приостановлены.»`}
 />
 
-## Combining Roles with Other Techniques
+## Комбинирование ролей с другими техниками
 
-Roles work even better when combined with other prompting techniques:
+Роли работают ещё лучше в сочетании с другими техниками промптинга:
 
-### Role + Few-Shot
+### Роль + Few-Shot
 
-Combine a role with an example to show exactly how the role should respond. The example teaches tone and format while the role provides context and expertise.
+Совместите роль с примером, чтобы показать, как именно роль должна отвечать. Пример обучает тону и формату, а роль обеспечивает контекст и экспертизу.
 
-<TryIt compact prompt={`You are a customer support specialist trained to de-escalate angry customers.
+<TryIt compact prompt={`Ты специалист службы поддержки клиентов, обученный деэскалации разгневанных клиентов.
 
-Example response to angry customer:
-Customer: "This is ridiculous! I've been waiting 2 weeks!"
-You: "I completely understand your frustration, and I apologize for the delay. Let me look into this right now and find out exactly where your order is. Can I have your order number?"
+Пример ответа разгневанному клиенту:
+Клиент: «Это просто смешно! Я жду уже 2 недели!»
+Ты: «Я полностью понимаю вашу фрустрацию и приношу извинения за задержку. Позвольте мне прямо сейчас разобраться и выяснить, где именно находится ваш заказ. Можете назвать номер заказа?»
 
-Now respond to:
-Customer: "\${customerMessage}"`} />
+Теперь ответь на:
+Клиент: "\${customerMessage}"`} />
 
-### Role + Chain of Thought
+### Роль + Цепочка рассуждений
 
-The detective role naturally encourages step-by-step reasoning. Combining roles with chain-of-thought produces more transparent, verifiable problem-solving.
+Роль детектива естественно поощряет пошаговые рассуждения. Комбинирование ролей с цепочкой рассуждений создаёт более прозрачное, проверяемое решение проблем.
 
-<TryIt compact prompt={`You are a detective solving a logic puzzle. Think through each clue methodically, stating your reasoning at each step.
+<TryIt compact prompt={`Ты детектив, решающий логическую загадку. Обдумай каждую улику методично, объясняя своё рассуждение на каждом шаге.
 
-Clues:
+Улики:
 \${clues}
 
-Solve step by step, explaining your deductions.`} />
+Реши пошагово, объясняя свои выводы.`} />
 
-## Summary
+## Резюме
 
-<Callout type="info" title="Key Takeaways">
-Role-based prompting is powerful because it focuses the model's vast knowledge, sets expectations for tone and style, provides implicit context, and makes outputs more consistent.
+<Callout type="info" title="Ключевые выводы">
+Ролевые промпты эффективны, потому что они фокусируют обширные знания модели, задают ожидания по тону и стилю, обеспечивают неявный контекст и делают результаты более последовательными.
 </Callout>
 
 <Quiz 
-  question="What makes a role-based prompt more effective?"
+  question="Что делает ролевой промпт более эффективным?"
   options={[
-    "Using generic role titles like 'expert'",
-    "Adding specific expertise, experience, and perspective details",
-    "Keeping the role description as short as possible",
-    "Asking the AI to switch roles frequently"
+    "Использование общих названий ролей вроде «эксперт»",
+    "Добавление деталей о конкретной экспертизе, опыте и перспективе",
+    "Сохранение описания роли как можно более коротким",
+    "Просьба к ИИ часто менять роли"
   ]}
   correctIndex={1}
-  explanation="The more detailed and realistic the role, the better the results. Specificity helps the model understand exactly what knowledge, tone, and perspective to apply."
+  explanation="Чем детальнее и реалистичнее роль, тем лучше результаты. Конкретность помогает модели понять, какие именно знания, тон и перспективу применять."
 />
 
-The key is **specificity**: the more detailed and realistic the role, the better the results. In the next chapter, we'll explore how to get consistent, structured outputs from your prompts.
+Ключ — **конкретность**: чем детальнее и реалистичнее роль, тем лучше результаты. В следующей главе мы рассмотрим, как получать последовательные, структурированные результаты от ваших промптов.

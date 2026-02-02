@@ -1,326 +1,326 @@
-AI is a powerful creative collaborator. This chapter covers prompting techniques for visual arts, music, game design, and other creative domains.
+AI는 강력한 창작 협력자입니다. 이 장에서는 시각 예술, 음악, 게임 디자인 및 기타 창작 분야를 위한 프롬프팅 기법을 다룹니다.
 
-<Callout type="info" title="AI as Creative Partner">
-AI expands your creative possibilities—use it to explore variations, overcome blocks, and generate options. The creative vision and final decisions remain yours.
+<Callout type="info" title="창작 파트너로서의 AI">
+AI는 창작 가능성을 확장해 줍니다—변형을 탐색하고, 창작 막힘을 극복하며, 옵션을 생성하는 데 활용하세요. 창작 비전과 최종 결정권은 여러분에게 있습니다.
 </Callout>
 
-## Visual Art & Design
+## 시각 예술 & 디자인
 
-### Do's and Don'ts: Image Prompts
+### 해야 할 것과 하지 말아야 할 것: 이미지 프롬프트
 
 <Compare 
-  before={{ label: "❌ Vague prompt", content: "A wizard in a library" }}
-  after={{ label: "✓ Rich description", content: "A wise elderly wizard reading an ancient tome, sitting in a tower library at sunset, fantasy art style, warm golden lighting, contemplative mood, highly detailed, 4K, by Greg Rutkowski" }}
+  before={{ label: "❌ 모호한 프롬프트", content: "도서관에 있는 마법사" }}
+  after={{ label: "✓ 풍부한 묘사", content: "일몰 무렵 탑 도서관에 앉아 고대 서적을 읽고 있는 현명한 노인 마법사, 판타지 아트 스타일, 따뜻한 황금빛 조명, 명상적인 분위기, 매우 정교함, 4K, by Greg Rutkowski" }}
 />
 
-### Image Prompt Crafting
+### 이미지 프롬프트 작성법
 
-When working with image generation models (DALL-E, Midjourney, Stable Diffusion):
+이미지 생성 모델(DALL-E, Midjourney, Stable Diffusion)을 사용할 때:
 
-<TryIt compact prompt={`Create an image prompt for [concept].
+<TryIt compact prompt={`[개념]에 대한 이미지 프롬프트를 만들어 주세요.
 
-Structure:
-[Subject] + [Action/Pose] + [Setting/Background] + [Style] + 
-[Lighting] + [Mood] + [Technical specs]
+구조:
+[주제] + [동작/포즈] + [배경/환경] + [스타일] + 
+[조명] + [분위기] + [기술 사양]
 
-Example:
-"A wise elderly wizard reading an ancient tome, sitting in a 
-tower library at sunset, fantasy art style, warm golden lighting, 
-contemplative mood, highly detailed, 4K"`} />
+예시:
+"일몰 무렵 탑 도서관에 앉아 고대 서적을 읽고 있는 현명한 
+노인 마법사, 판타지 아트 스타일, 따뜻한 황금빛 조명, 
+명상적인 분위기, 매우 정교함, 4K"`} />
 
-### Art Direction
+### 아트 디렉션
 
-<TryIt compact prompt={`Describe artwork for \${project:fantasy book cover}.
+<TryIt compact prompt={`\${project:판타지 책 표지}를 위한 아트워크를 설명해 주세요.
 
-Include:
-1. **Composition** - arrangement of elements
-2. **Color palette** - specific colors and their relationships
-3. **Style reference** - similar artists/works/movements
-4. **Focal point** - where the eye should be drawn
-5. **Mood/Atmosphere** - emotional quality
-6. **Technical approach** - medium, technique
+포함 사항:
+1. **구성** - 요소들의 배치
+2. **색상 팔레트** - 구체적인 색상과 그 관계
+3. **스타일 레퍼런스** - 유사한 아티스트/작품/사조
+4. **초점** - 시선이 향해야 할 곳
+5. **분위기/감성** - 감정적 특성
+6. **기술적 접근** - 매체, 기법
 
-Purpose: \${purpose:illustration for book cover}`} />
+목적: \${purpose:책 표지 일러스트레이션}`} />
 
-### Design Critique
+### 디자인 비평
 
-<TryIt compact prompt={`Critique this design from a professional perspective.
+<TryIt compact prompt={`이 디자인을 전문가 관점에서 비평해 주세요.
 
-Design: \${design:a landing page with hero section, feature grid, and testimonials}
-Context: \${context:SaaS product for project management}
+디자인: \${design:히어로 섹션, 기능 그리드, 고객 후기가 있는 랜딩 페이지}
+맥락: \${context:프로젝트 관리를 위한 SaaS 제품}
 
-Evaluate:
-1. **Visual hierarchy** - Is importance clear?
-2. **Balance** - Is it visually stable?
-3. **Contrast** - Do elements stand out appropriately?
-4. **Alignment** - Is it organized?
-5. **Repetition** - Is there consistency?
-6. **Proximity** - Are related items grouped?
+평가 항목:
+1. **시각적 위계** - 중요도가 명확한가?
+2. **균형** - 시각적으로 안정적인가?
+3. **대비** - 요소들이 적절히 구분되는가?
+4. **정렬** - 정돈되어 있는가?
+5. **반복** - 일관성이 있는가?
+6. **근접성** - 관련 항목들이 그룹화되어 있는가?
 
-Provide:
-- Specific strengths
-- Areas for improvement
-- Actionable suggestions`} />
+제공 사항:
+- 구체적인 장점
+- 개선이 필요한 부분
+- 실행 가능한 제안`} />
 
-## Creative Writing
+## 창작 글쓰기
 
-<Callout type="tip" title="Creative Constraint Principle">
-**Constraints fuel creativity.** A prompt like "write anything" produces generic results. Specific constraints like genre, tone, and structure force unexpected, interesting solutions.
+<Callout type="tip" title="창작 제약 원칙">
+**제약은 창의성을 촉진합니다.** "아무거나 써 주세요"와 같은 프롬프트는 평범한 결과를 낳습니다. 장르, 톤, 구조 같은 구체적인 제약은 예상치 못한 흥미로운 해결책을 이끌어냅니다.
 </Callout>
 
-### Worldbuilding
+### 세계관 구축
 
-<TryIt compact prompt={`Help me build a world for \${project:a fantasy novel}.
+<TryIt compact prompt={`\${project:판타지 소설}을 위한 세계관 구축을 도와주세요.
 
-Genre: \${genre:dark fantasy}
-Scope: \${scope:a kingdom}
+장르: \${genre:다크 판타지}
+범위: \${scope:하나의 왕국}
 
-Develop:
-1. **Geography** - physical environment
-2. **History** - key events that shaped this world
-3. **Culture** - customs, values, daily life
-4. **Power structures** - who rules, how
-5. **Economy** - how people survive
-6. **Conflict** - sources of tension
-7. **Unique element** - what makes this world special
+개발 항목:
+1. **지리** - 물리적 환경
+2. **역사** - 이 세계를 형성한 주요 사건들
+3. **문화** - 관습, 가치관, 일상생활
+4. **권력 구조** - 누가 어떻게 통치하는지
+5. **경제** - 사람들의 생존 방식
+6. **갈등** - 긴장의 원인
+7. **고유한 요소** - 이 세계만의 특별한 점
 
-Start with broad strokes, then detail one aspect deeply.`} />
+먼저 큰 그림을 그린 다음, 한 가지 측면을 깊이 파고들어 주세요.`} />
 
-### Plot Development
+### 플롯 개발
 
-<TryIt compact prompt={`Help me develop a plot for \${storyConcept:a heist gone wrong}.
+<TryIt compact prompt={`\${storyConcept:실패한 금고 털이}에 대한 플롯 개발을 도와주세요.
 
-Genre: \${genre:thriller}
-Tone: \${tone:dark with moments of dark humor}
-Length: \${length:novel}
+장르: \${genre:스릴러}
+톤: \${tone:블랙 유머가 섞인 어두운 분위기}
+길이: \${length:장편 소설}
 
-Using \${structure:three-act} structure:
+\${structure:3막} 구조 활용:
 
-1. **Setup** - world, character, normal life
-2. **Inciting incident** - what disrupts normalcy
-3. **Rising action** - escalating challenges
-4. **Midpoint** - major shift or revelation
-5. **Crisis** - darkest moment
-6. **Climax** - confrontation
-7. **Resolution** - new normal
+1. **설정** - 세계, 캐릭터, 일상
+2. **발단** - 일상을 뒤흔드는 사건
+3. **전개** - 고조되는 도전들
+4. **중간 전환점** - 큰 변화 또는 폭로
+5. **위기** - 가장 어두운 순간
+6. **절정** - 대결
+7. **결말** - 새로운 일상
 
-For each beat, suggest specific scenes.`} />
+각 단계에 대해 구체적인 장면을 제안해 주세요.`} />
 
-### Dialogue Writing
+### 대화 작성
 
-<TryIt compact prompt={`Write dialogue between \${characters:two siblings} about \${topic:their estranged father returning}.
+<TryIt compact prompt={`\${characters:두 남매}가 \${topic:소원해진 아버지의 귀환}에 대해 나누는 대화를 작성해 주세요.
 
-Character A: \${characterA:older sister, protective, pragmatic, wants to move on}
-Character B: \${characterB:younger brother, hopeful, emotional, wants to reconnect}
-Relationship: \${relationship:close but with different coping styles}
-Subtext: \${subtext:unspoken resentment about who bore more burden}
+캐릭터 A: \${characterA:언니, 보호적, 실용적, 앞으로 나아가고 싶어함}
+캐릭터 B: \${characterB:남동생, 희망적, 감성적, 다시 연결되고 싶어함}
+관계: \${relationship:가깝지만 대처 방식이 다름}
+이면: \${subtext:누가 더 많은 짐을 졌는지에 대한 말하지 않은 원망}
 
-Guidelines:
-- Each character has distinct voice
-- Dialogue reveals character, not just information
-- Include beats (actions/reactions)
-- Build tension or develop relationship
-- Show, don't tell emotions`} />
+가이드라인:
+- 각 캐릭터가 고유한 목소리를 가짐
+- 대화가 정보 전달이 아닌 캐릭터를 드러냄
+- 비트(행동/반응) 포함
+- 긴장감 형성 또는 관계 발전
+- 감정을 설명하지 말고 보여줌`} />
 
-## Music & Audio
+## 음악 & 오디오
 
-### Song Structure
+### 곡 구조
 
-<TryIt compact prompt={`Help me structure a song.
+<TryIt compact prompt={`곡 구조를 잡는 것을 도와주세요.
 
-Genre: \${genre:indie folk}
-Mood: \${mood:bittersweet nostalgia}
-Tempo: \${tempo:moderate, around 90 BPM}
-Theme/Message: \${theme:looking back on a hometown you've outgrown}
+장르: \${genre:인디 포크}
+분위기: \${mood:씁쓸한 향수}
+템포: \${tempo:중간 속도, 약 90 BPM}
+테마/메시지: \${theme:성장해서 떠나온 고향을 회상함}
 
-Provide:
-1. **Structure** - verse/chorus/bridge arrangement
-2. **Verse 1** - lyrical concept, 4-8 lines
-3. **Chorus** - hook concept, 4 lines
-4. **Verse 2** - development, 4-8 lines
-5. **Bridge** - contrast/shift, 4 lines
-6. **Chord progression suggestion**
-7. **Melodic direction notes**`} />
+제공 사항:
+1. **구조** - 벌스/코러스/브릿지 배열
+2. **벌스 1** - 가사 콘셉트, 4-8줄
+3. **코러스** - 훅 콘셉트, 4줄
+4. **벌스 2** - 전개, 4-8줄
+5. **브릿지** - 대비/전환, 4줄
+6. **코드 진행 제안**
+7. **멜로디 방향 노트**`} />
 
-### Sound Design Description
+### 사운드 디자인 설명
 
-<TryIt compact prompt={`Describe a sound design for \${scene:a character entering an abandoned space station}.
+<TryIt compact prompt={`\${scene:캐릭터가 버려진 우주 정거장에 들어가는 장면}에 대한 사운드 디자인을 설명해 주세요.
 
-Context: \${context:protagonist discovers the station has been empty for decades}
-Emotion to evoke: \${emotion:eerie wonder mixed with dread}
-Medium: \${medium:video game}
+맥락: \${context:주인공이 수십 년간 비어있던 정거장을 발견함}
+불러일으킬 감정: \${emotion:두려움이 섞인 기묘한 경이로움}
+매체: \${medium:비디오 게임}
 
-Layer by layer:
-1. **Foundation** - ambient/background
-2. **Mid-ground** - environmental sounds
-3. **Foreground** - focal sounds
-4. **Accents** - punctuation sounds
-5. **Music** - score suggestions
+레이어별:
+1. **기반** - 앰비언트/배경음
+2. **중경** - 환경음
+3. **전경** - 초점 사운드
+4. **악센트** - 강조 사운드
+5. **음악** - 스코어 제안
 
-Describe sounds in evocative terms, not just names.`} />
+사운드를 단순한 명칭이 아닌 감각적인 표현으로 묘사해 주세요.`} />
 
-## Game Design
+## 게임 디자인
 
-### Game Mechanic Design
+### 게임 메커닉 디자인
 
-<TryIt compact prompt={`Design a game mechanic for \${gameType:a puzzle platformer}.
+<TryIt compact prompt={`\${gameType:퍼즐 플랫포머}를 위한 게임 메커닉을 디자인해 주세요.
 
-Core loop: \${coreLoop:manipulate gravity to solve spatial puzzles}
-Player motivation: \${motivation:mastery and discovery}
-Skill involved: \${skill:spatial reasoning and timing}
+핵심 루프: \${coreLoop:중력을 조작하여 공간 퍼즐을 해결}
+플레이어 동기: \${motivation:숙달과 발견}
+필요 기술: \${skill:공간 추론과 타이밍}
 
-Describe:
-1. **The mechanic** - how it works
-2. **Player input** - what they control
-3. **Feedback** - how they know the result
-4. **Progression** - how it evolves/deepens
-5. **Balance considerations**
-6. **Edge cases** - unusual scenarios`} />
+설명 항목:
+1. **메커닉** - 작동 방식
+2. **플레이어 입력** - 조작하는 것
+3. **피드백** - 결과를 알 수 있는 방법
+4. **진행** - 발전/심화 방식
+5. **밸런스 고려사항**
+6. **엣지 케이스** - 예외적인 시나리오`} />
 
-### Level Design
+### 레벨 디자인
 
-<TryIt compact prompt={`Design a level for \${gameType:a stealth action game}.
+<TryIt compact prompt={`\${gameType:스텔스 액션 게임}을 위한 레벨을 디자인해 주세요.
 
-Setting: \${setting:corporate headquarters at night}
-Objectives: \${objectives:infiltrate the server room and extract data}
-Difficulty: \${difficulty:mid-game, player has basic abilities}
+배경: \${setting:야간의 기업 본사}
+목표: \${objectives:서버실에 잠입하여 데이터를 추출}
+난이도: \${difficulty:중반 게임, 플레이어가 기본 능력을 보유}
 
-Include:
-1. **Layout overview** - spatial description
-2. **Pacing graph** - tension over time
-3. **Challenges** - obstacles and how to overcome
-4. **Rewards** - what player gains
-5. **Secrets** - optional discoveries
-6. **Teaching moments** - skill introduction
-7. **Environmental storytelling** - narrative through design`} />
+포함 항목:
+1. **레이아웃 개요** - 공간 설명
+2. **페이싱 그래프** - 시간에 따른 긴장감
+3. **도전 요소** - 장애물과 극복 방법
+4. **보상** - 플레이어가 얻는 것
+5. **비밀** - 선택적 발견 요소
+6. **학습 순간** - 기술 소개
+7. **환경 스토리텔링** - 디자인을 통한 내러티브`} />
 
-### Character/Enemy Design
+### 캐릭터/적 디자인
 
-<TryIt compact prompt={`Design a \${entityType:boss enemy} for \${game:a dark fantasy action RPG}.
+<TryIt compact prompt={`\${game:다크 판타지 액션 RPG}를 위한 \${entityType:보스 적}을 디자인해 주세요.
 
-Role: \${role:mid-game boss}
-Context: \${context:guards a corrupted forest temple}
+역할: \${role:중반 보스}
+맥락: \${context:타락한 숲 사원을 지킴}
 
-Define:
-1. **Visual concept** - appearance description
-2. **Abilities** - what they can do
-3. **Behavior patterns** - how they act
-4. **Weaknesses** - vulnerabilities
-5. **Personality** - if relevant
-6. **Lore/Backstory** - world integration
-7. **Player strategy** - how to interact/defeat`} />
+정의 항목:
+1. **비주얼 콘셉트** - 외형 설명
+2. **능력** - 할 수 있는 것
+3. **행동 패턴** - 행동 방식
+4. **약점** - 취약점
+5. **성격** - 관련이 있다면
+6. **배경/스토리** - 세계관 통합
+7. **플레이어 전략** - 상호작용/처치 방법`} />
 
-## Brainstorming & Ideation
+## 브레인스토밍 & 아이디어 발상
 
-### Creative Brainstorm
+### 창작 브레인스토밍
 
-<TryIt compact prompt={`Brainstorm ideas for \${project:a mobile game about mindfulness}.
+<TryIt compact prompt={`\${project:마음챙김에 관한 모바일 게임}에 대한 아이디어를 브레인스토밍해 주세요.
 
-Constraints:
-- \${constraint1:must be playable in 2-minute sessions}
-- \${constraint2:no violence or competition}
-- \${constraint3:nature themes}
+제약 조건:
+- \${constraint1:2분 세션으로 플레이 가능해야 함}
+- \${constraint2:폭력이나 경쟁 없음}
+- \${constraint3:자연 테마}
 
-Generate:
-1. **10 conventional ideas** - solid, expected
-2. **5 unusual ideas** - unexpected angles
-3. **3 wild ideas** - boundary-pushing
-4. **1 combination** - merge best elements
+생성 항목:
+1. **10개의 평범한 아이디어** - 견고하고 예상 가능한
+2. **5개의 독특한 아이디어** - 예상치 못한 관점
+3. **3개의 파격적인 아이디어** - 경계를 넘는
+4. **1개의 조합** - 최고의 요소들을 병합
 
-For each, one sentence description + why it works.
-Don't self-censor—quantity over quality first.`} />
+각각에 대해 한 문장 설명 + 왜 효과적인지.
+자기 검열하지 마세요—먼저 양이 질보다 우선입니다.`} />
 
-### Creative Constraints
+### 창작 제약 조건
 
-<TryIt compact prompt={`Give me creative constraints for \${projectType:writing a short story}.
+<TryIt compact prompt={`\${projectType:단편 소설 쓰기}를 위한 창작 제약 조건을 주세요.
 
-I want constraints that:
-- Force unexpected choices
-- Eliminate obvious solutions
-- Create productive limitations
+원하는 제약 조건:
+- 예상치 못한 선택을 강제함
+- 뻔한 해결책을 제거함
+- 생산적인 제한을 만듦
 
-Format:
-1. Constraint - Why it helps creativity
+형식:
+1. 제약 조건 - 창의성에 도움이 되는 이유
 2. ...
 
-Then show one example of how applying these constraints 
-transforms a generic concept into something interesting.`} />
+그런 다음 이러한 제약 조건을 적용했을 때 평범한 콘셉트가 
+어떻게 흥미로운 것으로 변하는지 예시를 보여주세요.`} />
 
-### Style Exploration
+### 스타일 탐색
 
-<TryIt compact prompt={`Explore different styles for \${concept:a coffee shop logo}.
+<TryIt compact prompt={`\${concept:커피숍 로고}에 대한 다양한 스타일을 탐색해 주세요.
 
-Show how this concept would manifest in:
-1. **Minimalist** - stripped to essence
-2. **Maximalist** - abundant and detailed
-3. **Retro 1950s** - period-specific
-4. **Futuristic** - forward-looking
-5. **Folk/Traditional** - cultural roots
-6. **Abstract** - non-representational
-7. **Surrealist** - dreamlike logic
+이 콘셉트가 각 스타일에서 어떻게 표현되는지 보여주세요:
+1. **미니멀리스트** - 본질만 남김
+2. **맥시멀리스트** - 풍부하고 상세함
+3. **1950년대 레트로** - 시대 특유의
+4. **미래주의** - 앞을 내다보는
+5. **포크/전통** - 문화적 뿌리
+6. **추상** - 비재현적
+7. **초현실주의** - 꿈같은 논리
 
-For each, describe key characteristics and example.`} />
+각각에 대해 주요 특징과 예시를 설명해 주세요.`} />
 
-## Prompt Templates from prompts.chat
+## prompts.chat의 프롬프트 템플릿
 
-### Act as a Creative Director
+### 크리에이티브 디렉터 역할하기
 
-<TryIt compact prompt={`I want you to act as a creative director. I will describe creative projects and you will develop creative visions, guide aesthetic decisions, and ensure conceptual coherence. Draw on art history, design principles, and cultural trends. Help me make bold creative choices with clear rationale.`} />
+<TryIt compact prompt={`저는 당신이 크리에이티브 디렉터 역할을 해주셨으면 합니다. 제가 창작 프로젝트를 설명하면 창작 비전을 개발하고, 미적 결정을 안내하며, 개념적 일관성을 보장해 주세요. 미술사, 디자인 원칙, 문화적 트렌드를 활용해 주세요. 명확한 근거와 함께 과감한 창작 선택을 하도록 도와주세요.`} />
 
-### Act as a Worldbuilder
+### 세계관 구축가 역할하기
 
-<TryIt compact prompt={`I want you to act as a worldbuilder. Help me create rich, consistent fictional worlds with detailed histories, cultures, and systems. Ask probing questions to deepen the world. Point out inconsistencies and suggest solutions. Make the world feel lived-in and believable.`} />
+<TryIt compact prompt={`저는 당신이 세계관 구축가 역할을 해주셨으면 합니다. 상세한 역사, 문화, 시스템을 갖춘 풍부하고 일관된 허구의 세계를 만드는 것을 도와주세요. 세계관을 깊게 하기 위해 날카로운 질문을 해주세요. 모순점을 지적하고 해결책을 제안해 주세요. 세계가 실제로 살아 숨 쉬는 것처럼 느껴지게 만들어 주세요.`} />
 
-### Act as a Dungeon Master
+### 던전 마스터 역할하기
 
-<TryIt compact prompt={`I want you to act as a Dungeon Master for a tabletop RPG. Create engaging scenarios, describe vivid settings, roleplay NPCs with distinct personalities, and respond dynamically to player choices. Balance challenge with fun, and keep the narrative compelling.`} />
+<TryIt compact prompt={`저는 당신이 테이블탑 RPG의 던전 마스터 역할을 해주셨으면 합니다. 몰입감 있는 시나리오를 만들고, 생생한 배경을 묘사하며, 개성 있는 NPC를 연기하고, 플레이어의 선택에 역동적으로 반응해 주세요. 도전과 재미의 균형을 맞추고, 서사를 매력적으로 유지해 주세요.`} />
 
-## Creative Collaboration Tips
+## 창작 협업 팁
 
-### Building on Ideas
+### 아이디어 발전시키기
 
-<TryIt compact prompt={`I have this creative idea: \${idea:a mystery novel set in a space station where the AI is the detective}
+<TryIt compact prompt={`저에게 이런 창작 아이디어가 있습니다: \${idea:AI가 탐정인 우주 정거장을 배경으로 한 미스터리 소설}
 
-Help me develop it by:
-1. What's working well
-2. Questions to explore
-3. Unexpected directions
-4. Potential challenges
-5. First three development steps
+다음을 통해 발전시키는 것을 도와주세요:
+1. 잘 작동하는 부분
+2. 탐색할 질문들
+3. 예상치 못한 방향
+4. 잠재적인 도전 과제
+5. 처음 세 가지 개발 단계
 
-Don't replace my vision—enhance it.`} />
+제 비전을 대체하지 말고—향상시켜 주세요.`} />
 
-### Creative Feedback
+### 창작 피드백
 
-<TryIt compact prompt={`Give me feedback on this creative work:
+<TryIt compact prompt={`이 창작 작품에 대한 피드백을 주세요:
 
-\${work:paste your creative work here}
+\${work:여기에 창작 작품을 붙여넣으세요}
 
-As a \${perspective:fellow creator}:
-1. What resonates most strongly
-2. What feels underdeveloped
-3. What's confusing or unclear
-4. One bold suggestion
-5. What would make this unforgettable
+\${perspective:동료 창작자}로서:
+1. 가장 강하게 공감되는 부분
+2. 덜 발전된 느낌인 부분
+3. 혼란스럽거나 불명확한 부분
+4. 하나의 과감한 제안
+5. 이것을 잊을 수 없게 만들 요소
 
-Be honest but constructive.`} />
+솔직하지만 건설적으로 말해주세요.`} />
 
-## Summary
+## 요약
 
-<Callout type="tip" title="Key Techniques">
-Provide enough structure to guide without constraining, embrace specificity (vague = generic), include references and inspirations, request variations and alternatives, and maintain your creative vision while exploring possibilities.
+<Callout type="tip" title="핵심 기법">
+제약 없이 안내할 수 있는 충분한 구조를 제공하고, 구체성을 수용하며(모호함 = 평범함), 레퍼런스와 영감을 포함하고, 변형과 대안을 요청하며, 가능성을 탐색하면서도 창작 비전을 유지하세요.
 </Callout>
 
 <Quiz 
-  question="Why do specific constraints often produce better creative results than open-ended prompts?"
+  question="왜 구체적인 제약이 열린 프롬프트보다 더 나은 창작 결과를 만들어내는 경우가 많을까요?"
   options={[
-    "AI can only follow strict instructions",
-    "Constraints force unexpected solutions and eliminate obvious choices",
-    "Open-ended prompts are too difficult for AI",
-    "Constraints make the output shorter"
+    "AI는 엄격한 지시만 따를 수 있기 때문에",
+    "제약이 예상치 못한 해결책을 강제하고 뻔한 선택을 제거하기 때문에",
+    "열린 프롬프트는 AI에게 너무 어렵기 때문에",
+    "제약이 출력을 더 짧게 만들기 때문에"
   ]}
   correctIndex={1}
-  explanation="Paradoxically, limitations spark creativity. When obvious solutions are eliminated, you're forced to explore unexpected directions. 'Write a story' produces clichés; 'Write a mystery set in a submarine, told backwards, in under 500 words' produces something unique."
+  explanation="역설적으로, 제한이 창의성을 촉진합니다. 뻔한 해결책이 제거되면, 예상치 못한 방향을 탐색할 수밖에 없습니다. '이야기를 써 주세요'는 클리셰를 만들어내지만, '잠수함을 배경으로 한 미스터리를 역순으로, 500단어 이내로 써 주세요'는 독특한 결과물을 만들어냅니다."
 />
 
-AI is a collaborator, not a replacement for creative vision. Use it to explore, generate options, and overcome blocks—but the creative decisions remain yours.
+AI는 창작 비전을 대체하는 것이 아니라 협력자입니다. 탐색하고, 옵션을 생성하고, 막힘을 극복하는 데 활용하세요—하지만 창작 결정은 여전히 여러분의 몫입니다.

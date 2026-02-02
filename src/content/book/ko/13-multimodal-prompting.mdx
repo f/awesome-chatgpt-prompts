@@ -1,171 +1,171 @@
-For most of history, computers worked with one type of data at a time: text in one program, images in another, audio somewhere else. But humans don't experience the world this way. We see, hear, read, and speak simultaneously, combining all these inputs to understand our environment.
+역사의 대부분 동안, 컴퓨터는 한 번에 한 종류의 데이터만 처리했습니다: 한 프로그램에서는 텍스트, 다른 프로그램에서는 이미지, 또 다른 곳에서는 오디오. 하지만 인간은 세상을 이런 방식으로 경험하지 않습니다. 우리는 동시에 보고, 듣고, 읽고, 말하며 이 모든 입력을 결합하여 환경을 이해합니다.
 
-**Multimodal AI** changes everything. These models can process multiple types of information together—analyzing an image while reading your question about it, or generating images from your text descriptions. This chapter teaches you how to communicate effectively with these powerful systems.
+**멀티모달 AI**는 모든 것을 바꿉니다. 이러한 모델은 여러 유형의 정보를 함께 처리할 수 있습니다—이미지를 분석하면서 그것에 대한 질문을 읽거나, 텍스트 설명으로부터 이미지를 생성합니다. 이 장에서는 이러한 강력한 시스템과 효과적으로 소통하는 방법을 알려드립니다.
 
-<Callout type="info" title="What Does Multimodal Mean?">
-"Multi" means many, and "modal" refers to modes or types of data. A multimodal model can work with multiple modalities: text, images, audio, video, or even code. Instead of separate tools for each type, one model understands them all together.
+<Callout type="info" title="멀티모달이란 무엇인가요?">
+"멀티(Multi)"는 여러 가지를 의미하고, "모달(Modal)"은 데이터의 모드 또는 유형을 나타냅니다. 멀티모달 모델은 텍스트, 이미지, 오디오, 비디오, 심지어 코드까지 여러 모달리티로 작업할 수 있습니다. 각 유형에 대한 별도의 도구 대신, 하나의 모델이 모든 것을 함께 이해합니다.
 </Callout>
 
-## Why Multimodal Matters
+## 멀티모달이 중요한 이유
 
-Traditional AI required you to describe everything in words. Want to ask about an image? You'd have to describe it first. Want to analyze a document? You'd need to transcribe it manually. Multimodal models eliminate these barriers.
+전통적인 AI는 모든 것을 말로 설명해야 했습니다. 이미지에 대해 질문하고 싶으신가요? 먼저 설명해야 했습니다. 문서를 분석하고 싶으신가요? 수동으로 전사해야 했습니다. 멀티모달 모델은 이러한 장벽을 없앱니다.
 
 <InfoGrid items={[
-  { label: "See and Understand", description: "Upload an image and ask questions about it directly—no description needed", example: "\"What's wrong with this circuit diagram?\"", color: "blue" },
-  { label: "Create from Words", description: "Describe what you want and generate images, audio, or video", example: "\"A sunset over mountains in watercolor style\"", color: "purple" },
-  { label: "Combine Everything", description: "Mix text, images, and other media in a single conversation", example: "\"Compare these two designs and tell me which is better for mobile\"", color: "green" },
-  { label: "Analyze Documents", description: "Extract information from photos of documents, receipts, or screenshots", example: "\"Extract all the line items from this invoice photo\"", color: "amber" }
+  { label: "보고 이해하기", description: "이미지를 업로드하고 직접 질문하세요—설명이 필요 없습니다", example: "\"이 회로 다이어그램에서 뭐가 잘못됐나요?\"", color: "blue" },
+  { label: "말로 창작하기", description: "원하는 것을 설명하고 이미지, 오디오 또는 비디오를 생성하세요", example: "\"수채화 스타일의 산 위로 지는 석양\"", color: "purple" },
+  { label: "모든 것 결합하기", description: "텍스트, 이미지 및 기타 미디어를 단일 대화에서 혼합하세요", example: "\"이 두 디자인을 비교하고 모바일에 더 적합한 것을 알려주세요\"", color: "green" },
+  { label: "문서 분석하기", description: "문서, 영수증 또는 스크린샷 사진에서 정보를 추출하세요", example: "\"이 청구서 사진에서 모든 항목을 추출해 주세요\"", color: "amber" }
 ]} />
 
-## Why Prompting Matters Even More for Multimodal
+## 멀티모달에서 프롬프팅이 더욱 중요한 이유
 
-With text-only models, the AI receives exactly what you type. But with multimodal models, the AI must interpret visual or audio information—and interpretation requires guidance.
+텍스트 전용 모델에서 AI는 사용자가 입력한 것을 정확히 받습니다. 하지만 멀티모달 모델에서 AI는 시각적 또는 오디오 정보를 해석해야 하며—해석에는 안내가 필요합니다.
 
 <Compare 
-  before={{ label: "Vague multimodal prompt", content: "What do you see in this image?\n\n[image of a complex dashboard]" }}
-  after={{ label: "Guided multimodal prompt", content: "This is a screenshot of our analytics dashboard. Focus on:\n1. The conversion rate graph in the top-right\n2. Any error indicators or warnings\n3. Whether the data looks normal or anomalous\n\n[image of a complex dashboard]" }}
+  before={{ label: "모호한 멀티모달 프롬프트", content: "이 이미지에서 무엇이 보이나요?\n\n[복잡한 대시보드 이미지]" }}
+  after={{ label: "안내된 멀티모달 프롬프트", content: "이것은 저희 분석 대시보드의 스크린샷입니다. 다음에 집중해 주세요:\n1. 오른쪽 상단의 전환율 그래프\n2. 오류 표시기 또는 경고\n3. 데이터가 정상인지 비정상인지\n\n[복잡한 대시보드 이미지]" }}
 />
 
-**Without guidance**, the model might describe colors, layout, or irrelevant details. **With guidance**, it focuses on what actually matters to you.
+**안내 없이**, 모델은 색상, 레이아웃 또는 관련 없는 세부 사항을 설명할 수 있습니다. **안내가 있으면**, 실제로 중요한 것에 집중합니다.
 
-<Callout type="warning" title="The Interpretation Gap">
-When you look at an image, you instantly know what's important based on your context and goals. The AI doesn't have this context unless you provide it. A photo of a crack in a wall could be: a structural engineering concern, an artistic texture, or irrelevant background. Your prompt determines how the AI interprets it.
+<Callout type="warning" title="해석의 격차">
+이미지를 볼 때, 사용자는 맥락과 목표에 따라 무엇이 중요한지 즉시 알 수 있습니다. AI는 사용자가 제공하지 않으면 이 맥락을 가지고 있지 않습니다. 벽의 균열 사진은 구조 공학적 우려, 예술적 질감, 또는 관련 없는 배경일 수 있습니다. 프롬프트가 AI가 해석하는 방식을 결정합니다.
 </Callout>
 
-## The Multimodal Landscape
+## 멀티모달 환경
 
-Different models have different capabilities. Here's what's available in 2025:
+다른 모델들은 다른 기능을 가지고 있습니다. 2025년 현재 사용 가능한 것은 다음과 같습니다:
 
-### Understanding Models (Input → Analysis)
+### 이해 모델 (입력 → 분석)
 
-These models accept various media types and produce text analysis or responses.
-
-<InfoGrid items={[
-  { label: "GPT-4o / GPT-5", description: "Text + Images + Audio → Text. OpenAI's flagship with 128K context, strong creative and reasoning abilities, reduced hallucination rates.", color: "green" },
-  { label: "Claude 4 Sonnet/Opus", description: "Text + Images → Text. Anthropic's safety-focused model with advanced reasoning, excellent for coding and complex multi-step tasks.", color: "purple" },
-  { label: "Gemini 2.5", description: "Text + Images + Audio + Video → Text. Google's model with 1M token context, self-fact-checking, fast processing for coding and research.", color: "blue" },
-  { label: "LLaMA 4 Scout", description: "Text + Images + Video → Text. Meta's open-source model with massive 10M token context for long documents and codebases.", color: "cyan" },
-  { label: "Grok 4", description: "Text + Images → Text. xAI's model with real-time data access and social media integration for up-to-date responses.", color: "red" }
-]} />
-
-### Generation Models (Text → Media)
-
-These models create images, audio, or video from text descriptions.
+이러한 모델은 다양한 미디어 유형을 받아들이고 텍스트 분석 또는 응답을 생성합니다.
 
 <InfoGrid items={[
-  { label: "DALL-E 3", description: "Text → Images. OpenAI's image generator with high accuracy to prompt descriptions.", color: "amber" },
-  { label: "Midjourney", description: "Text + Images → Images. Known for artistic quality, style control, and aesthetic outputs.", color: "pink" },
-  { label: "Sora", description: "Text → Video. OpenAI's video generation model for creating clips from descriptions.", color: "red" },
-  { label: "Whisper", description: "Audio → Text. OpenAI's speech-to-text with high accuracy across languages.", color: "cyan" }
+  { label: "GPT-4o / GPT-5", description: "텍스트 + 이미지 + 오디오 → 텍스트. 128K 컨텍스트를 가진 OpenAI의 플래그십으로, 강력한 창작 및 추론 능력, 감소된 환각률을 제공합니다.", color: "green" },
+  { label: "Claude 4 Sonnet/Opus", description: "텍스트 + 이미지 → 텍스트. 고급 추론을 갖춘 Anthropic의 안전 중심 모델로, 코딩 및 복잡한 다단계 작업에 탁월합니다.", color: "purple" },
+  { label: "Gemini 2.5", description: "텍스트 + 이미지 + 오디오 + 비디오 → 텍스트. 1M 토큰 컨텍스트를 가진 Google의 모델로, 자체 팩트체킹, 코딩 및 연구를 위한 빠른 처리가 특징입니다.", color: "blue" },
+  { label: "LLaMA 4 Scout", description: "텍스트 + 이미지 + 비디오 → 텍스트. 긴 문서와 코드베이스를 위한 대규모 10M 토큰 컨텍스트를 가진 Meta의 오픈소스 모델입니다.", color: "cyan" },
+  { label: "Grok 4", description: "텍스트 + 이미지 → 텍스트. 최신 응답을 위한 실시간 데이터 접근 및 소셜 미디어 통합을 갖춘 xAI의 모델입니다.", color: "red" }
 ]} />
 
-<Callout type="info" title="Rapid Evolution">
-The multimodal landscape changes quickly. New models launch frequently, and existing models gain capabilities through updates. Always check the latest documentation for current features and limitations.
+### 생성 모델 (텍스트 → 미디어)
+
+이러한 모델은 텍스트 설명에서 이미지, 오디오 또는 비디오를 생성합니다.
+
+<InfoGrid items={[
+  { label: "DALL-E 3", description: "텍스트 → 이미지. 프롬프트 설명에 대한 높은 정확도를 가진 OpenAI의 이미지 생성기입니다.", color: "amber" },
+  { label: "Midjourney", description: "텍스트 + 이미지 → 이미지. 예술적 품질, 스타일 제어 및 미적 출력으로 유명합니다.", color: "pink" },
+  { label: "Sora", description: "텍스트 → 비디오. 설명에서 클립을 생성하는 OpenAI의 비디오 생성 모델입니다.", color: "red" },
+  { label: "Whisper", description: "오디오 → 텍스트. 여러 언어에서 높은 정확도를 가진 OpenAI의 음성-텍스트 변환 도구입니다.", color: "cyan" }
+]} />
+
+<Callout type="info" title="빠른 진화">
+멀티모달 환경은 빠르게 변화합니다. 새로운 모델이 자주 출시되고, 기존 모델은 업데이트를 통해 기능을 확보합니다. 현재 기능과 제한 사항에 대한 최신 문서를 항상 확인하세요.
 </Callout>
 
-## Image Understanding Prompts
+## 이미지 이해 프롬프트
 
-The most common multimodal use case is asking AI to analyze images. The key is providing context about what you need.
+가장 일반적인 멀티모달 사용 사례는 AI에게 이미지 분석을 요청하는 것입니다. 핵심은 필요한 것에 대한 맥락을 제공하는 것입니다.
 
-### Basic Image Analysis
+### 기본 이미지 분석
 
-Start with a clear request structure. Tell the model what aspects to focus on.
+명확한 요청 구조로 시작하세요. 모델에게 어떤 측면에 집중해야 하는지 알려주세요.
 
 <TryIt 
-  title="Structured Image Analysis"
-  description="This prompt provides a clear framework for image analysis. The model knows exactly what information you need."
-  prompt={`Analyze this image and describe:
+  title="구조화된 이미지 분석"
+  description="이 프롬프트는 이미지 분석을 위한 명확한 프레임워크를 제공합니다. 모델은 사용자가 필요로 하는 정보가 정확히 무엇인지 알 수 있습니다."
+  prompt={`이 이미지를 분석하고 다음을 설명해 주세요:
 
-1. **Main Subject**: What is the primary focus of this image?
-2. **Setting**: Where does this appear to be? (indoor/outdoor, location type)
-3. **Mood**: What emotional tone or atmosphere does it convey?
-4. **Text Content**: Any visible text, signs, or labels?
-5. **Notable Details**: What might someone miss at first glance?
-6. **Technical Quality**: How is the lighting, focus, and composition?
+1. **주요 대상**: 이 이미지의 주요 초점은 무엇인가요?
+2. **배경**: 이것은 어디인 것 같나요? (실내/실외, 장소 유형)
+3. **분위기**: 어떤 감정적 톤이나 분위기를 전달하나요?
+4. **텍스트 내용**: 보이는 텍스트, 표지판 또는 라벨이 있나요?
+5. **주목할 세부 사항**: 첫눈에 놓칠 수 있는 것은 무엇인가요?
+6. **기술적 품질**: 조명, 초점 및 구도는 어떤가요?
 
-[Paste or describe the image you want to analyze]
+[분석하고 싶은 이미지를 붙여넣거나 설명하세요]
 
-Image description or URL: \${imageDescription}`}
+이미지 설명 또는 URL: \${imageDescription}`}
 />
 
-### Structured Output for Images
+### 이미지에 대한 구조화된 출력
 
-When you need to process image analysis programmatically, request JSON output.
+이미지 분석을 프로그래밍 방식으로 처리해야 할 때는 JSON 출력을 요청하세요.
 
 <TryIt 
-  title="JSON Image Analysis"
-  description="Get structured data from image analysis that's easy to parse and use in applications."
-  prompt={`Analyze this image and return a JSON object with the following structure:
+  title="JSON 이미지 분석"
+  description="애플리케이션에서 쉽게 파싱하고 사용할 수 있는 이미지 분석에서 구조화된 데이터를 얻으세요."
+  prompt={`이 이미지를 분석하고 다음 구조의 JSON 객체를 반환해 주세요:
 
 {
-  "summary": "One sentence description",
-  "objects": ["List of main objects visible"],
+  "summary": "한 문장 설명",
+  "objects": ["보이는 주요 객체 목록"],
   "people": {
-    "count": "number or 'none'",
-    "activities": ["What they're doing, if any"]
+    "count": "숫자 또는 'none'",
+    "activities": ["그들이 하고 있는 것(있다면)"]
   },
-  "text_detected": ["Any text visible in the image"],
+  "text_detected": ["이미지에서 보이는 텍스트"],
   "colors": {
-    "dominant": ["Top 3 colors"],
-    "mood": "Warm/Cool/Neutral"
+    "dominant": ["상위 3가지 색상"],
+    "mood": "따뜻함/차가움/중립"
   },
   "setting": {
-    "type": "indoor/outdoor/unknown",
-    "description": "More specific location description"
+    "type": "실내/실외/알 수 없음",
+    "description": "더 구체적인 장소 설명"
   },
   "technical": {
-    "quality": "high/medium/low",
-    "lighting": "Description of lighting",
-    "composition": "Description of framing/composition"
+    "quality": "높음/중간/낮음",
+    "lighting": "조명에 대한 설명",
+    "composition": "프레이밍/구도에 대한 설명"
   },
-  "confidence": "high/medium/low"
+  "confidence": "높음/중간/낮음"
 }
 
-Image to analyze: \${imageDescription}`}
+분석할 이미지: \${imageDescription}`}
 />
 
-### Comparative Analysis
+### 비교 분석
 
-Comparing multiple images requires clear labeling and specific comparison criteria.
+여러 이미지를 비교하려면 명확한 라벨링과 구체적인 비교 기준이 필요합니다.
 
 <TryIt 
-  title="Image Comparison"
-  description="Compare two or more images with specific criteria that matter to your decision."
-  prompt={`Compare these images for \${purpose}:
+  title="이미지 비교"
+  description="결정에 중요한 구체적인 기준으로 두 개 이상의 이미지를 비교하세요."
+  prompt={`\${purpose}를 위해 이 이미지들을 비교해 주세요:
 
-**Image A**: \${imageA}
-**Image B**: \${imageB}
+**이미지 A**: \${imageA}
+**이미지 B**: \${imageB}
 
-Analyze each image on these criteria:
-1. \${criterion1} (importance: high)
-2. \${criterion2} (importance: medium)  
-3. \${criterion3} (importance: low)
+이 기준으로 각 이미지를 분석해 주세요:
+1. \${criterion1} (중요도: 높음)
+2. \${criterion2} (중요도: 중간)  
+3. \${criterion3} (중요도: 낮음)
 
-Provide:
-- Side-by-side comparison for each criterion
-- Strengths and weaknesses of each
-- Clear recommendation with reasoning
-- Any concerns or caveats`}
+다음을 제공해 주세요:
+- 각 기준에 대한 나란히 비교
+- 각각의 강점과 약점
+- 이유와 함께 명확한 추천
+- 모든 우려 사항 또는 주의점`}
 />
 
-## Document and Screenshot Analysis
+## 문서 및 스크린샷 분석
 
-One of the most practical applications of multimodal AI is analyzing documents, screenshots, and UI elements. This saves hours of manual transcription and review.
+멀티모달 AI의 가장 실용적인 응용 프로그램 중 하나는 문서, 스크린샷 및 UI 요소를 분석하는 것입니다. 이는 수동 전사 및 검토 시간을 절약합니다.
 
-### Document Extraction
+### 문서 추출
 
-Scanned documents, photos of receipts, and PDFs as images can all be processed. The key is telling the model what type of document it is and what information you need.
+스캔된 문서, 영수증 사진, 이미지로 된 PDF 모두 처리할 수 있습니다. 핵심은 모델에게 문서의 유형과 필요한 정보를 알려주는 것입니다.
 
 <TryIt 
-  title="Document Data Extractor"
-  description="Extract structured data from photos of documents, receipts, invoices, or forms."
-  prompt={`This is a photo/scan of a \${documentType}.
+  title="문서 데이터 추출기"
+  description="문서, 영수증, 청구서 또는 양식 사진에서 구조화된 데이터를 추출하세요."
+  prompt={`이것은 \${documentType}의 사진/스캔입니다.
 
-Extract all information into structured JSON format:
+모든 정보를 구조화된 JSON 형식으로 추출해 주세요:
 
 {
-  "document_type": "detected type",
-  "date": "if present",
+  "document_type": "감지된 유형",
+  "date": "있는 경우",
   "key_fields": {
     "field_name": "value"
   },
@@ -177,489 +177,489 @@ Extract all information into structured JSON format:
     "tax": "",
     "total": ""
   },
-  "handwritten_notes": ["any handwritten text"],
-  "unclear_sections": ["areas that were hard to read"],
-  "confidence": "high/medium/low"
+  "handwritten_notes": ["모든 손글씨 텍스트"],
+  "unclear_sections": ["읽기 어려운 영역"],
+  "confidence": "높음/중간/낮음"
 }
 
-IMPORTANT: If any text is unclear, note it in "unclear_sections" rather than guessing. Mark confidence as "low" if significant portions were hard to read.
+중요: 텍스트가 불분명한 경우, 추측하지 말고 "unclear_sections"에 기록하세요. 상당 부분을 읽기 어려웠다면 confidence를 "낮음"으로 표시하세요.
 
-Document description: \${documentDescription}`}
+문서 설명: \${documentDescription}`}
 />
 
-### Screenshot and UI Analysis
+### 스크린샷 및 UI 분석
 
-Screenshots are goldmines for debugging, UX review, and documentation. Guide the AI to focus on what matters.
+스크린샷은 디버깅, UX 검토 및 문서화를 위한 보물창고입니다. AI가 중요한 것에 집중하도록 안내하세요.
 
 <TryIt 
-  title="UI/UX Screenshot Analyzer"
-  description="Get detailed analysis of screenshots for debugging, UX review, or documentation."
-  prompt={`This is a screenshot of \${applicationName}.
+  title="UI/UX 스크린샷 분석기"
+  description="디버깅, UX 검토 또는 문서화를 위한 스크린샷의 상세한 분석을 얻으세요."
+  prompt={`이것은 \${applicationName}의 스크린샷입니다.
 
-Analyze this interface:
+이 인터페이스를 분석해 주세요:
 
-**Identification**
-- What screen/page/state is this?
-- What is the user likely trying to accomplish here?
+**식별**
+- 이것은 어떤 화면/페이지/상태인가요?
+- 사용자가 여기서 무엇을 달성하려고 하나요?
 
-**UI Elements**
-- Key interactive elements (buttons, forms, menus)
-- Current state (anything selected, filled in, or expanded?)
-- Any error messages, warnings, or notifications?
+**UI 요소**
+- 주요 인터랙티브 요소 (버튼, 폼, 메뉴)
+- 현재 상태 (선택됨, 채워짐 또는 확장된 것이 있나요?)
+- 오류 메시지, 경고 또는 알림이 있나요?
 
-**UX Assessment**
-- Is the layout clear and intuitive?
-- Any confusing elements or unclear labels?
-- Accessibility concerns (contrast, text size, etc.)?
+**UX 평가**
+- 레이아웃이 명확하고 직관적인가요?
+- 혼란스러운 요소나 불분명한 라벨이 있나요?
+- 접근성 우려 사항 (대비, 텍스트 크기 등)?
 
-**Issues Detected**
-- Visual bugs or misalignments?
-- Truncated text or overflow issues?
-- Inconsistent styling?
+**감지된 문제**
+- 시각적 버그나 정렬 오류?
+- 잘린 텍스트나 오버플로우 문제?
+- 일관성 없는 스타일링?
 
-Screenshot description: \${screenshotDescription}`}
+스크린샷 설명: \${screenshotDescription}`}
 />
 
-### Error Message Analysis
+### 오류 메시지 분석
 
-When you encounter an error, a screenshot often contains more context than copying the error text alone.
+오류가 발생했을 때, 스크린샷은 종종 오류 텍스트를 복사하는 것보다 더 많은 맥락을 포함합니다.
 
 <TryIt 
-  title="Error Diagnosis from Screenshot"
-  description="Get plain-language explanations and fixes for error messages in screenshots."
-  prompt={`I'm seeing this error in \${context}.
+  title="스크린샷에서 오류 진단"
+  description="스크린샷의 오류 메시지에 대한 쉬운 설명과 수정 방법을 얻으세요."
+  prompt={`\${context}에서 이 오류가 보입니다.
 
-[Describe or paste the error message/screenshot]
-Error details: \${errorDetails}
+[오류 메시지/스크린샷을 설명하거나 붙여넣으세요]
+오류 세부 정보: \${errorDetails}
 
-Please provide:
+다음을 제공해 주세요:
 
-1. **Plain Language Explanation**: What does this error actually mean?
+1. **쉬운 설명**: 이 오류가 실제로 무엇을 의미하나요?
 
-2. **Likely Causes** (ranked by probability):
-   - Most likely: 
-   - Also possible:
-   - Less common:
+2. **가능한 원인** (확률 순으로):
+   - 가장 가능성 높음: 
+   - 가능성 있음:
+   - 덜 흔함:
 
-3. **Step-by-Step Fix**:
-   - First, try...
-   - If that doesn't work...
-   - As a last resort...
+3. **단계별 수정**:
+   - 먼저, 시도해 보세요...
+   - 그래도 안 되면...
+   - 최후의 수단으로...
 
-4. **Prevention**: How to avoid this error in the future
+4. **예방**: 앞으로 이 오류를 피하는 방법
 
-5. **Red Flags**: When this error might indicate a more serious problem`}
+5. **경고 신호**: 이 오류가 더 심각한 문제를 나타낼 수 있는 경우`}
 />
 
-## Image Generation Prompts
+## 이미지 생성 프롬프트
 
-Generating images from text descriptions is an art form. The more specific and structured your prompt, the closer the result will match your vision.
+텍스트 설명에서 이미지를 생성하는 것은 예술입니다. 프롬프트가 더 구체적이고 구조화될수록, 결과가 원하는 비전에 더 가까워집니다.
 
-### The Anatomy of an Image Prompt
+### 이미지 프롬프트의 구조
 
-Effective image generation prompts have several components:
+효과적인 이미지 생성 프롬프트에는 여러 구성 요소가 있습니다:
 
 <InfoGrid items={[
-  { label: "Subject", description: "What is the main focus of the image?", example: "A golden retriever playing in autumn leaves", color: "blue" },
-  { label: "Style", description: "What artistic style or medium?", example: "Watercolor painting, digital art, photorealistic", color: "purple" },
-  { label: "Composition", description: "How is the scene arranged?", example: "Close-up portrait, wide landscape, bird's eye view", color: "green" },
-  { label: "Lighting", description: "What's the light source and quality?", example: "Soft morning light, dramatic shadows, neon glow", color: "amber" },
-  { label: "Mood", description: "What feeling should it evoke?", example: "Peaceful, energetic, mysterious, nostalgic", color: "pink" },
-  { label: "Details", description: "Specific elements to include or avoid", example: "Include: flowers. Avoid: text, watermarks", color: "cyan" }
+  { label: "주제", description: "이미지의 주요 초점은 무엇인가요?", example: "가을 낙엽 속에서 놀고 있는 골든 리트리버", color: "blue" },
+  { label: "스타일", description: "어떤 예술 스타일이나 매체인가요?", example: "수채화, 디지털 아트, 포토리얼리스틱", color: "purple" },
+  { label: "구도", description: "장면이 어떻게 배열되어 있나요?", example: "클로즈업 초상화, 넓은 풍경, 조감도", color: "green" },
+  { label: "조명", description: "광원과 품질은 무엇인가요?", example: "부드러운 아침 햇살, 극적인 그림자, 네온 빛", color: "amber" },
+  { label: "분위기", description: "어떤 느낌을 불러일으켜야 하나요?", example: "평화로운, 에너지 넘치는, 신비로운, 향수를 자극하는", color: "pink" },
+  { label: "세부 사항", description: "포함하거나 피해야 할 특정 요소", example: "포함: 꽃. 피하기: 텍스트, 워터마크", color: "cyan" }
 ]} />
 
-### Basic Image Generation
+### 기본 이미지 생성
 
 <TryIt 
-  title="Structured Image Prompt"
-  description="Use this template to create detailed, specific image generation prompts."
-  prompt={`Create an image with these specifications:
+  title="구조화된 이미지 프롬프트"
+  description="이 템플릿을 사용하여 상세하고 구체적인 이미지 생성 프롬프트를 만드세요."
+  prompt={`다음 사양으로 이미지를 생성해 주세요:
 
-**Subject**: \${subject}
+**주제**: \${subject}
 
-**Style**: \${style}
-**Medium**: \${medium} (e.g., oil painting, digital art, photograph)
+**스타일**: \${style}
+**매체**: \${medium} (예: 유화, 디지털 아트, 사진)
 
-**Composition**:
-- Framing: \${framing} (close-up, medium shot, wide angle)
-- Perspective: \${perspective} (eye level, low angle, overhead)
-- Focus: \${focusArea}
+**구도**:
+- 프레이밍: \${framing} (클로즈업, 미디엄 샷, 와이드 앵글)
+- 시점: \${perspective} (눈높이, 로우 앵글, 오버헤드)
+- 초점: \${focusArea}
 
-**Lighting**:
-- Source: \${lightSource}
-- Quality: \${lightQuality} (soft, harsh, diffused)
-- Time of day: \${timeOfDay}
+**조명**:
+- 광원: \${lightSource}
+- 품질: \${lightQuality} (부드러운, 강한, 확산된)
+- 시간대: \${timeOfDay}
 
-**Color Palette**: \${colors}
+**색상 팔레트**: \${colors}
 
-**Mood/Atmosphere**: \${mood}
+**분위기/대기**: \${mood}
 
-**Must Include**: \${includeElements}
-**Must Avoid**: \${avoidElements}
+**반드시 포함**: \${includeElements}
+**반드시 피하기**: \${avoidElements}
 
-**Technical**: \${aspectRatio} aspect ratio, high quality`}
+**기술적**: \${aspectRatio} 종횡비, 고품질`}
 />
 
-### Scene Building
+### 장면 구축
 
-For complex scenes, describe layers from foreground to background.
+복잡한 장면의 경우, 전경에서 배경까지 레이어를 설명하세요.
 
 <TryIt 
-  title="Layered Scene Description"
-  description="Build complex scenes by describing what appears in each layer of depth."
-  prompt={`Generate a detailed scene:
+  title="레이어별 장면 설명"
+  description="각 깊이 레이어에 무엇이 나타나는지 설명하여 복잡한 장면을 구축하세요."
+  prompt={`상세한 장면을 생성해 주세요:
 
-**Setting**: \${setting}
+**배경 설정**: \${setting}
 
-**Foreground** (closest to viewer):
+**전경** (관찰자에게 가장 가까움):
 \${foreground}
 
-**Middle Ground** (main action area):
+**중간 영역** (주요 액션 영역):
 \${middleGround}
 
-**Background** (distant elements):
+**배경** (먼 요소):
 \${background}
 
-**Atmospheric Details**:
-- Weather/Air: \${weather}
-- Lighting: \${lighting}
-- Time: \${timeOfDay}
+**대기 세부 사항**:
+- 날씨/공기: \${weather}
+- 조명: \${lighting}
+- 시간: \${timeOfDay}
 
-**Style**: \${artisticStyle}
-**Mood**: \${mood}
-**Color Palette**: \${colors}
+**스타일**: \${artisticStyle}
+**분위기**: \${mood}
+**색상 팔레트**: \${colors}
 
-Additional details to include: \${additionalDetails}`}
+포함할 추가 세부 사항: \${additionalDetails}`}
 />
 
-## Audio Prompting
+## 오디오 프롬프팅
 
-Audio processing opens up transcription, analysis, and understanding of spoken content. The key is providing context about what the audio contains.
+오디오 처리는 음성 콘텐츠의 전사, 분석 및 이해를 가능하게 합니다. 핵심은 오디오가 무엇을 포함하는지에 대한 맥락을 제공하는 것입니다.
 
-### Enhanced Transcription
+### 향상된 전사
 
-Basic transcription is just the start. With good prompts, you can get speaker identification, timestamps, and domain-specific accuracy.
+기본 전사는 시작일 뿐입니다. 좋은 프롬프트를 사용하면 화자 식별, 타임스탬프 및 도메인별 정확도를 얻을 수 있습니다.
 
 <TryIt 
-  title="Smart Transcription"
-  description="Get accurate transcriptions with speaker labels, timestamps, and handling of unclear sections."
-  prompt={`Transcribe this audio recording.
+  title="스마트 전사"
+  description="화자 라벨, 타임스탬프 및 불분명한 섹션 처리가 포함된 정확한 전사를 얻으세요."
+  prompt={`이 오디오 녹음을 전사해 주세요.
 
-**Context**: \${recordingType} (meeting, interview, podcast, lecture, etc.)
-**Expected Speakers**: \${speakerCount} (\${speakerRoles})
-**Domain**: \${domain} (technical terms to expect: \${technicalTerms})
+**맥락**: \${recordingType} (회의, 인터뷰, 팟캐스트, 강의 등)
+**예상 화자**: \${speakerCount} (\${speakerRoles})
+**도메인**: \${domain} (예상되는 전문 용어: \${technicalTerms})
 
-**Output Format**:
-[00:00] **Speaker 1 (Name/Role)**: Transcribed text here.
-[00:15] **Speaker 2 (Name/Role)**: Their response here.
+**출력 형식**:
+[00:00] **화자 1 (이름/역할)**: 전사된 텍스트.
+[00:15] **화자 2 (이름/역할)**: 그들의 응답.
 
-**Instructions**:
-- Include timestamps at natural breaks (every 30-60 seconds or at speaker changes)
-- Mark unclear sections as [inaudible] or [unclear: best guess?]
-- Note non-speech sounds in brackets: [laughter], [phone ringing], [long pause]
-- Preserve filler words only if they're meaningful (um, uh can be removed)
-- Flag any action items or decisions with → symbol
+**지침**:
+- 자연스러운 끊김에서 타임스탬프 포함 (30-60초마다 또는 화자 변경 시)
+- 불분명한 섹션은 [청취 불가] 또는 [불분명: 추측?]으로 표시
+- 비음성 소리는 괄호로 표시: [웃음], [전화벨], [긴 침묵]
+- 필러 단어는 의미 있는 경우에만 유지 (음, 어는 제거 가능)
+- 실행 항목이나 결정 사항은 → 기호로 표시
 
-Audio description: \${audioDescription}`}
+오디오 설명: \${audioDescription}`}
 />
 
-### Audio Content Analysis
+### 오디오 콘텐츠 분석
 
-Beyond transcription, AI can analyze the content, tone, and key moments in audio.
+전사 외에도, AI는 오디오의 내용, 톤 및 주요 순간을 분석할 수 있습니다.
 
 <TryIt 
-  title="Audio Content Analyzer"
-  description="Get a comprehensive analysis of audio content including summary, key moments, and sentiment."
-  prompt={`Analyze this audio recording:
+  title="오디오 콘텐츠 분석기"
+  description="요약, 주요 순간 및 감정을 포함한 오디오 콘텐츠의 종합적인 분석을 얻으세요."
+  prompt={`이 오디오 녹음을 분석해 주세요:
 
-Audio description: \${audioDescription}
+오디오 설명: \${audioDescription}
 
-Provide:
+다음을 제공해 주세요:
 
-**1. Executive Summary** (2-3 sentences)
-What is this recording about? What's the main takeaway?
+**1. 핵심 요약** (2-3문장)
+이 녹음은 무엇에 관한 것인가요? 주요 시사점은 무엇인가요?
 
-**2. Speakers**
-- How many distinct speakers?
-- Characteristics (if discernible): tone, speaking style, expertise level
+**2. 화자**
+- 구별되는 화자는 몇 명인가요?
+- 특성 (식별 가능한 경우): 톤, 말하는 스타일, 전문성 수준
 
-**3. Content Breakdown**
-- Main topics discussed (with approximate timestamps)
-- Key points made
-- Questions raised
+**3. 콘텐츠 분석**
+- 논의된 주요 주제 (대략적인 타임스탬프와 함께)
+- 제시된 핵심 포인트
+- 제기된 질문
 
-**4. Emotional Analysis**
-- Overall tone (formal, casual, tense, friendly)
-- Notable emotional moments
-- Energy level throughout
+**4. 감정 분석**
+- 전반적인 톤 (공식적, 캐주얼, 긴장된, 친근한)
+- 주목할 만한 감정적 순간
+- 전체적인 에너지 수준
 
-**5. Actionable Items**
-- Decisions made
-- Action items mentioned
-- Follow-ups needed
+**5. 실행 가능한 항목**
+- 내린 결정
+- 언급된 실행 항목
+- 필요한 후속 조치
 
-**6. Notable Quotes**
-Pull out 2-3 significant quotes with timestamps
+**6. 주목할 인용문**
+타임스탬프와 함께 2-3개의 중요한 인용문 추출
 
-**7. Audio Quality**
-- Overall clarity
-- Any issues (background noise, interruptions, technical problems)`}
+**7. 오디오 품질**
+- 전반적인 명료도
+- 문제점 (배경 소음, 중단, 기술적 문제)`}
 />
 
-## Video Prompting
+## 비디오 프롬프팅
 
-Video combines visual and audio analysis over time. The challenge is guiding the AI to focus on the relevant aspects across the entire duration.
+비디오는 시간에 따른 시각 및 오디오 분석을 결합합니다. 도전 과제는 전체 길이에 걸쳐 관련 측면에 집중하도록 AI를 안내하는 것입니다.
 
-### Video Understanding
+### 비디오 이해
 
 <TryIt 
-  title="Comprehensive Video Analysis"
-  description="Get a structured breakdown of video content including timeline, visual elements, and key moments."
-  prompt={`Analyze this video: \${videoDescription}
+  title="종합 비디오 분석"
+  description="타임라인, 시각적 요소 및 주요 순간을 포함한 비디오 콘텐츠의 구조화된 분석을 얻으세요."
+  prompt={`이 비디오를 분석해 주세요: \${videoDescription}
 
-Provide a comprehensive analysis:
+종합적인 분석을 제공해 주세요:
 
-**1. Overview** (2-3 sentences)
-What is this video about? What's the main message or purpose?
+**1. 개요** (2-3문장)
+이 비디오는 무엇에 관한 것인가요? 주요 메시지나 목적은 무엇인가요?
 
-**2. Timeline of Key Moments**
-| Timestamp | Event | Significance |
-|-----------|-------|--------------|
+**2. 주요 순간 타임라인**
+| 타임스탬프 | 이벤트 | 중요성 |
+|-----------|-------|--------|
 | 0:00 | ... | ... |
 
-**3. Visual Analysis**
-- Setting/Location: Where does this take place?
-- People: Who appears? What are they doing?
-- Objects: Key items or props featured
-- Visual style: Quality, editing, graphics used
+**3. 시각적 분석**
+- 배경/장소: 어디에서 촬영되었나요?
+- 사람들: 누가 등장하나요? 무엇을 하고 있나요?
+- 객체: 등장하는 주요 아이템이나 소품
+- 시각적 스타일: 품질, 편집, 사용된 그래픽
 
-**4. Audio Analysis**
-- Speech: Main points made (if any dialogue)
-- Music: Type, mood, how it's used
-- Sound effects: Notable audio elements
+**4. 오디오 분석**
+- 음성: 제시된 주요 포인트 (대화가 있는 경우)
+- 음악: 유형, 분위기, 사용 방식
+- 효과음: 주목할 만한 오디오 요소
 
-**5. Production Quality**
-- Video quality and editing
-- Pacing and structure
-- Effectiveness for its purpose
+**5. 제작 품질**
+- 비디오 품질 및 편집
+- 페이싱과 구조
+- 목적에 대한 효과
 
-**6. Target Audience**
-Who is this video made for? Does it serve them well?
+**6. 대상 청중**
+이 비디오는 누구를 위해 만들어졌나요? 그들에게 잘 맞나요?
 
-**7. Key Takeaways**
-What should a viewer remember from this video?`}
+**7. 주요 시사점**
+시청자가 이 비디오에서 기억해야 할 것은 무엇인가요?`}
 />
 
-### Video Content Extraction
+### 비디오 콘텐츠 추출
 
-For specific information extraction from videos, be precise about what you need.
+비디오에서 특정 정보를 추출할 때는 필요한 것을 정확히 지정하세요.
 
 <TryIt 
-  title="Video Data Extractor"
-  description="Extract specific information from videos with timestamps and structured output."
-  prompt={`Extract specific information from this video:
+  title="비디오 데이터 추출기"
+  description="타임스탬프와 구조화된 출력으로 비디오에서 특정 정보를 추출하세요."
+  prompt={`이 비디오에서 특정 정보를 추출해 주세요:
 
-Video type: \${videoType}
-Video description: \${videoDescription}
+비디오 유형: \${videoType}
+비디오 설명: \${videoDescription}
 
-**Information to Extract**:
+**추출할 정보**:
 1. \${extractItem1}
 2. \${extractItem2}
 3. \${extractItem3}
 
-**Output Format**:
+**출력 형식**:
 {
-  "video_summary": "Brief description",
-  "duration": "estimated length",
+  "video_summary": "간략한 설명",
+  "duration": "추정 길이",
   "extracted_data": [
     {
       "timestamp": "MM:SS",
-      "item": "What was found",
-      "details": "Additional context",
-      "confidence": "high/medium/low"
+      "item": "발견된 것",
+      "details": "추가 맥락",
+      "confidence": "높음/중간/낮음"
     }
   ],
-  "items_not_found": ["List anything requested but not present"],
-  "additional_observations": "Anything relevant not explicitly requested"
+  "items_not_found": ["요청했지만 존재하지 않는 항목 목록"],
+  "additional_observations": "명시적으로 요청하지 않았지만 관련 있는 것"
 }`}
 />
 
-## Multimodal Combinations
+## 멀티모달 조합
 
-The real power of multimodal AI emerges when you combine different types of input. These combinations enable analysis that would be impossible with any single modality.
+멀티모달 AI의 진정한 힘은 다양한 유형의 입력을 결합할 때 나타납니다. 이러한 조합은 단일 모달리티로는 불가능한 분석을 가능하게 합니다.
 
-### Image + Text Verification
+### 이미지 + 텍스트 검증
 
-Check if images and their descriptions match—essential for e-commerce, content moderation, and quality assurance.
+이미지와 설명이 일치하는지 확인하세요—이커머스, 콘텐츠 검토 및 품질 보증에 필수적입니다.
 
 <TryIt 
-  title="Image-Text Alignment Checker"
-  description="Verify that images accurately represent their text descriptions and vice versa."
-  prompt={`Analyze this image and its accompanying text for alignment:
+  title="이미지-텍스트 정합성 검사기"
+  description="이미지가 텍스트 설명을 정확하게 나타내는지, 그리고 그 반대도 확인하세요."
+  prompt={`이 이미지와 함께 제공된 텍스트의 정합성을 분석해 주세요:
 
-**Image**: \${imageDescription}
-**Text Description**: "\${textDescription}"
+**이미지**: \${imageDescription}
+**텍스트 설명**: "\${textDescription}"
 
-Evaluate:
+평가해 주세요:
 
-**1. Accuracy Match**
-- Does the image show what the text describes?
-- Score: [1-10] with explanation
+**1. 정확도 일치**
+- 이미지가 텍스트가 설명하는 것을 보여주나요?
+- 점수: [1-10] 및 설명
 
-**2. Text Claims vs. Visual Reality**
-| Claim in Text | Visible in Image? | Notes |
-|---------------|-------------------|-------|
-| ... | Yes/No/Partial | ... |
+**2. 텍스트 주장 vs. 시각적 현실**
+| 텍스트의 주장 | 이미지에서 보이나요? | 참고 |
+|---------------|---------------------|------|
+| ... | 예/아니오/부분적 | ... |
 
-**3. Visual Elements Not Mentioned**
-What's visible in the image but not described in the text?
+**3. 언급되지 않은 시각적 요소**
+이미지에서 보이지만 텍스트에 설명되지 않은 것은 무엇인가요?
 
-**4. Text Claims Not Visible**
-What's described in text but can't be verified from the image?
+**4. 보이지 않는 텍스트 주장**
+텍스트에 설명되었지만 이미지에서 확인할 수 없는 것은 무엇인가요?
 
-**5. Recommendations**
-- For the text: [improvements to match image]
-- For the image: [improvements to match text]
+**5. 권장 사항**
+- 텍스트에 대해: [이미지와 일치하도록 개선]
+- 이미지에 대해: [텍스트와 일치하도록 개선]
 
-**6. Overall Assessment**
-Is this image-text pair trustworthy for \${purpose}?`}
+**6. 전반적 평가**
+이 이미지-텍스트 쌍이 \${purpose}에 신뢰할 수 있나요?`}
 />
 
-### Screenshot + Code Debugging
+### 스크린샷 + 코드 디버깅
 
-One of the most powerful combinations for developers: seeing the visual bug alongside the code.
+개발자에게 가장 강력한 조합 중 하나: 코드와 함께 시각적 버그를 보는 것입니다.
 
 <TryIt 
-  title="Visual Bug Debugger"
-  description="Debug UI issues by analyzing both the visual output and the source code together."
-  prompt={`I have a UI bug. Here's what I see and my code:
+  title="시각적 버그 디버거"
+  description="시각적 출력과 소스 코드를 함께 분석하여 UI 문제를 디버그하세요."
+  prompt={`UI 버그가 있습니다. 보이는 것과 코드는 다음과 같습니다:
 
-**Screenshot Description**: \${screenshotDescription}
-**What's Wrong**: \${bugDescription}
-**Expected Behavior**: \${expectedBehavior}
+**스크린샷 설명**: \${screenshotDescription}
+**문제점**: \${bugDescription}
+**예상 동작**: \${expectedBehavior}
 
-**Relevant Code**:
+**관련 코드**:
 \`\`\`\${language}
 \${code}
 \`\`\`
 
-Please help me:
+도와주세요:
 
-**1. Root Cause Analysis**
-- What in the code is causing this visual issue?
-- Which specific line(s) are responsible?
+**1. 근본 원인 분석**
+- 코드에서 무엇이 이 시각적 문제를 일으키나요?
+- 어떤 특정 줄이 원인인가요?
 
-**2. Explanation**
-- Why does this code produce this visual result?
-- What's the underlying mechanism?
+**2. 설명**
+- 왜 이 코드가 이런 시각적 결과를 만드나요?
+- 기본 메커니즘은 무엇인가요?
 
-**3. The Fix**
+**3. 수정**
 \`\`\`\${language}
-// Corrected code here
+// 수정된 코드
 \`\`\`
 
-**4. Prevention**
-- How to avoid this type of bug in the future
-- Any related issues to check for`}
+**4. 예방**
+- 앞으로 이런 유형의 버그를 피하는 방법
+- 확인해야 할 관련 문제`}
 />
 
-### Multi-Image Decision Making
+### 다중 이미지 의사 결정
 
-When choosing between options, structured comparison helps make better decisions.
+옵션 중에서 선택할 때, 구조화된 비교가 더 나은 결정을 내리는 데 도움이 됩니다.
 
 <TryIt 
-  title="Visual Option Comparator"
-  description="Compare multiple images systematically against your criteria to make informed decisions."
-  prompt={`I'm choosing between these options for \${purpose}:
+  title="시각적 옵션 비교기"
+  description="기준에 따라 여러 이미지를 체계적으로 비교하여 정보에 입각한 결정을 내리세요."
+  prompt={`\${purpose}를 위해 이 옵션들 중에서 선택하고 있습니다:
 
-**Option A**: \${optionA}
-**Option B**: \${optionB}
-**Option C**: \${optionC}
+**옵션 A**: \${optionA}
+**옵션 B**: \${optionB}
+**옵션 C**: \${optionC}
 
-**My Criteria** (in order of importance):
-1. \${criterion1} (weight: high)
-2. \${criterion2} (weight: medium)
-3. \${criterion3} (weight: low)
+**내 기준** (중요도 순서):
+1. \${criterion1} (가중치: 높음)
+2. \${criterion2} (가중치: 중간)
+3. \${criterion3} (가중치: 낮음)
 
-Provide:
+다음을 제공해 주세요:
 
-**Comparison Matrix**
-| Criterion | Option A | Option B | Option C |
-|-----------|----------|----------|----------|
-| \${criterion1} | Score + notes | ... | ... |
+**비교 매트릭스**
+| 기준 | 옵션 A | 옵션 B | 옵션 C |
+|------|--------|--------|--------|
+| \${criterion1} | 점수 + 참고 | ... | ... |
 | \${criterion2} | ... | ... | ... |
 | \${criterion3} | ... | ... | ... |
 
-**Weighted Scores**
-- Option A: X/10
-- Option B: X/10
-- Option C: X/10
+**가중 점수**
+- 옵션 A: X/10
+- 옵션 B: X/10
+- 옵션 C: X/10
 
-**Recommendation**
-Based on your stated priorities, I recommend [Option] because...
+**권장 사항**
+명시된 우선순위에 따라, [옵션]을 추천합니다. 왜냐하면...
 
-**Caveats**
-- If [condition], consider [alternative] instead
-- Watch out for [potential issue]`}
+**주의 사항**
+- [조건]인 경우, 대신 [대안]을 고려하세요
+- [잠재적 문제]에 주의하세요`}
 />
 
-## Best Practices for Multimodal Prompts
+## 멀티모달 프롬프트 모범 사례
 
-Getting great results from multimodal AI requires understanding both its capabilities and limitations.
+멀티모달 AI에서 훌륭한 결과를 얻으려면 그 기능과 한계를 모두 이해해야 합니다.
 
-### What Makes Multimodal Prompts Effective
-
-<InfoGrid items={[
-  { label: "Provide Context", description: "Tell the model what the media is and why you're analyzing it", example: "\"This is a product photo for our e-commerce site...\"", color: "green" },
-  { label: "Be Specific", description: "Ask about particular elements rather than general impressions", example: "\"Focus on the pricing table in the top-right corner\"", color: "green" },
-  { label: "Reference Locations", description: "Point to specific areas using spatial language", example: "\"In the bottom-left quadrant...\"", color: "green" },
-  { label: "State Your Goal", description: "Explain what you'll use the analysis for", example: "\"I need to decide if this image works for our mobile app\"", color: "green" }
-]} />
-
-### Common Pitfalls to Avoid
+### 효과적인 멀티모달 프롬프트의 요소
 
 <InfoGrid items={[
-  { label: "Assuming Perfect Vision", description: "Models may miss small details, especially in low-resolution images", example: "Don't ask about 8pt text in a compressed screenshot", color: "red" },
-  { label: "Expecting Perfect OCR", description: "Handwriting, unusual fonts, and complex layouts can cause errors", example: "Verify extracted text from receipts and forms", color: "red" },
-  { label: "Ignoring Content Policies", description: "Models have restrictions on certain types of content", example: "Won't identify specific individuals or analyze inappropriate content", color: "red" },
-  { label: "Skipping Verification", description: "Always verify critical information extracted from media", example: "Double-check numbers, dates, and names from document extraction", color: "red" }
+  { label: "맥락 제공하기", description: "모델에게 미디어가 무엇이고 왜 분석하는지 알려주세요", example: "\"이것은 저희 이커머스 사이트용 제품 사진입니다...\"", color: "green" },
+  { label: "구체적으로 말하기", description: "일반적인 인상보다 특정 요소에 대해 질문하세요", example: "\"오른쪽 상단 모서리의 가격표에 집중해 주세요\"", color: "green" },
+  { label: "위치 참조하기", description: "공간적 언어를 사용하여 특정 영역을 가리키세요", example: "\"왼쪽 하단 사분면에서...\"", color: "green" },
+  { label: "목표 명시하기", description: "분석을 무엇에 사용할지 설명하세요", example: "\"이 이미지가 모바일 앱에 적합한지 결정해야 합니다\"", color: "green" }
 ]} />
 
-### Handling Limitations Gracefully
+### 피해야 할 일반적인 실수
+
+<InfoGrid items={[
+  { label: "완벽한 시각 가정하기", description: "모델은 특히 저해상도 이미지에서 작은 세부 사항을 놓칠 수 있습니다", example: "압축된 스크린샷의 8pt 텍스트에 대해 질문하지 마세요", color: "red" },
+  { label: "완벽한 OCR 기대하기", description: "손글씨, 특이한 글꼴 및 복잡한 레이아웃은 오류를 유발할 수 있습니다", example: "영수증과 양식에서 추출한 텍스트를 확인하세요", color: "red" },
+  { label: "콘텐츠 정책 무시하기", description: "모델은 특정 유형의 콘텐츠에 대한 제한이 있습니다", example: "특정 개인을 식별하거나 부적절한 콘텐츠를 분석하지 않습니다", color: "red" },
+  { label: "검증 건너뛰기", description: "미디어에서 추출한 중요한 정보는 항상 확인하세요", example: "문서 추출에서 숫자, 날짜 및 이름을 다시 확인하세요", color: "red" }
+]} />
+
+### 한계를 우아하게 처리하기
 
 <TryIt 
-  title="Uncertainty-Aware Image Analysis"
-  description="This prompt explicitly handles cases where the model can't see clearly or is uncertain."
-  prompt={`Analyze this image: \${imageDescription}
+  title="불확실성 인식 이미지 분석"
+  description="이 프롬프트는 모델이 명확하게 볼 수 없거나 불확실한 경우를 명시적으로 처리합니다."
+  prompt={`이 이미지를 분석해 주세요: \${imageDescription}
 
-**Instructions for Handling Uncertainty**:
+**불확실성 처리 지침**:
 
-IF YOU CAN'T SEE SOMETHING CLEARLY:
-- Don't guess or make up details
-- Say: "I can see [what's visible] but cannot clearly make out [unclear element]"
-- Suggest what additional information would help
+무언가를 명확하게 볼 수 없는 경우:
+- 추측하거나 세부 사항을 만들어내지 마세요
+- 말하세요: "[보이는 것]은 볼 수 있지만 [불분명한 요소]는 명확하게 파악할 수 없습니다"
+- 어떤 추가 정보가 도움이 될지 제안하세요
 
-IF CONTENT SEEMS RESTRICTED:
-- Explain what you can and cannot analyze
-- Focus on permitted aspects of the analysis
+콘텐츠가 제한된 것으로 보이는 경우:
+- 무엇을 분석할 수 있고 없는지 설명하세요
+- 분석의 허용된 측면에 집중하세요
 
-IF ASKED ABOUT PEOPLE:
-- Describe actions, positions, and general characteristics
-- Do not attempt to identify specific individuals
-- Focus on: number of people, activities, expressions, attire
+사람에 대해 질문받은 경우:
+- 행동, 위치 및 일반적인 특성을 설명하세요
+- 특정 개인을 식별하려고 시도하지 마세요
+- 집중할 것: 사람 수, 활동, 표정, 복장
 
-**Your Analysis**:
-[Proceed with analysis, applying these guidelines]`}
+**분석 결과**:
+[이 지침을 적용하여 분석을 진행하세요]`}
 />
 
 <Quiz 
-  question="Why does prompting matter MORE for multimodal models than for text-only models?"
+  question="멀티모달 모델에서 프롬프팅이 텍스트 전용 모델보다 더 중요한 이유는 무엇인가요?"
   options={[
-    "Multimodal models are less intelligent and need more help",
-    "Images and audio are inherently ambiguous—the AI needs context to know what aspects matter",
-    "Multimodal models can only process one type of input at a time",
-    "Text prompts don't work with multimodal models"
+    "멀티모달 모델이 덜 지능적이어서 더 많은 도움이 필요합니다",
+    "이미지와 오디오는 본질적으로 모호합니다—AI는 어떤 측면이 중요한지 알기 위해 맥락이 필요합니다",
+    "멀티모달 모델은 한 번에 한 가지 유형의 입력만 처리할 수 있습니다",
+    "텍스트 프롬프트는 멀티모달 모델에서 작동하지 않습니다"
   ]}
   correctIndex={1}
-  explanation="When you look at an image, you instantly know what's important based on your goals. The AI doesn't have this context—a photo of a wall crack could be an engineering concern, an artistic texture, or irrelevant background. Your prompt determines how the AI interprets and focuses on the media you provide."
+  explanation="이미지를 볼 때, 사용자는 목표에 따라 무엇이 중요한지 즉시 알 수 있습니다. AI는 이 맥락이 없습니다—벽의 균열 사진은 공학적 우려, 예술적 질감 또는 관련 없는 배경일 수 있습니다. 프롬프트가 AI가 제공된 미디어를 해석하고 집중하는 방식을 결정합니다."
 />

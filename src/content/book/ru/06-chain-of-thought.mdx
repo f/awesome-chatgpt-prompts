@@ -1,226 +1,226 @@
-Chain of Thought (CoT) prompting is a technique that dramatically improves AI performance on complex reasoning tasks by asking the model to show its work step by step.
+Chain of Thought (CoT) — это техника промптинга, которая значительно улучшает производительность ИИ при решении сложных задач, требующих рассуждений, путём просьбы к модели показывать свою работу шаг за шагом.
 
-<Callout type="info" title="Show Your Work">
-Just like a math teacher asking students to show their work, CoT prompting asks the AI to make its reasoning visible.
+<Callout type="info" title="Покажите свою работу">
+Подобно учителю математики, который просит учеников показывать решение, CoT-промптинг просит ИИ делать своё рассуждение видимым.
 </Callout>
 
-## The Problem CoT Solves
+## Проблема, которую решает CoT
 
-AI models can struggle with multi-step reasoning when asked to jump directly to an answer.
+Модели ИИ могут испытывать трудности с многоэтапными рассуждениями, когда их просят сразу перейти к ответу.
 
 <Compare 
-  before={{ label: "Direct Answer (Often Wrong)", content: "Question: A store sells apples for $2 each. If you buy 5 or more, you get 20% off. How much do 7 apples cost?\n\nAnswer: $14 ❌" }}
-  after={{ label: "Chain of Thought (Correct)", content: "Question: A store sells apples for $2 each. If you buy 5 or more, you get 20% off. How much do 7 apples cost?\n\nLet's work through this step by step:\n1. Regular price per apple: $2\n2. Number of apples: 7\n3. Since 7 ≥ 5, the discount applies\n4. Regular total: 7 × $2 = $14\n5. Discount: 20% of $14 = $2.80\n6. Final price: $14 - $2.80 = $11.20\n\nAnswer: $11.20 ✓" }}
+  before={{ label: "Прямой ответ (часто неверный)", content: "Вопрос: Магазин продаёт яблоки по $2 за штуку. При покупке 5 и более вы получаете скидку 20%. Сколько стоят 7 яблок?\n\nОтвет: $14 ❌" }}
+  after={{ label: "Chain of Thought (правильный)", content: "Вопрос: Магазин продаёт яблоки по $2 за штуку. При покупке 5 и более вы получаете скидку 20%. Сколько стоят 7 яблок?\n\nДавайте разберём это шаг за шагом:\n1. Обычная цена за яблоко: $2\n2. Количество яблок: 7\n3. Поскольку 7 ≥ 5, скидка применяется\n4. Обычная сумма: 7 × $2 = $14\n5. Скидка: 20% от $14 = $2.80\n6. Итоговая цена: $14 - $2.80 = $11.20\n\nОтвет: $11.20 ✓" }}
 />
 
-## Basic CoT Prompts
+## Базовые CoT-промпты
 
-### Simple Trigger Phrases
+### Простые триггерные фразы
 
-Add one of these to your prompts:
+Добавьте одну из этих фраз к вашим промптам:
 
 <div className="my-4 grid gap-2">
-  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Let's think step by step."</div>
-  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Think through this carefully."</div>
-  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Work through this problem methodically."</div>
-  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Show your reasoning at each step."</div>
-  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Explain your thought process."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Давайте подумаем шаг за шагом."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Обдумайте это внимательно."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Решите эту задачу методично."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Покажите своё рассуждение на каждом шаге."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Объясните ход своих мыслей."</div>
 </div>
 
-### Explicit Step Request
+### Явный запрос шагов
 
 <TryIt 
-  title="Try Chain of Thought"
-  description="Ask the AI to solve a problem step by step."
-  prompt={`Solve this problem:
+  title="Попробуйте Chain of Thought"
+  description="Попросите ИИ решить задачу шаг за шагом."
+  prompt={`Решите эту задачу:
 
-A car rental costs $40 per day plus $0.25 per mile. If someone rents a car for 3 days and drives 200 miles, what is the total cost?
+Аренда автомобиля стоит $40 в день плюс $0.25 за милю. Если кто-то арендует автомобиль на 3 дня и проезжает 200 миль, какова общая стоимость?
 
-Before giving your final answer:
-1. Identify what information is given
-2. Determine what we need to find
-3. Plan your approach
-4. Execute each step, showing work
-5. Verify your answer`}
+Прежде чем дать окончательный ответ:
+1. Определите, какая информация дана
+2. Определите, что нам нужно найти
+3. Спланируйте свой подход
+4. Выполните каждый шаг, показывая работу
+5. Проверьте свой ответ`}
 />
 
 ## Zero-Shot vs Few-Shot CoT
 
-There are two main approaches to Chain of Thought prompting, each with different trade-offs between simplicity and control.
+Существует два основных подхода к Chain of Thought промптингу, каждый с разными компромиссами между простотой и контролем.
 
 ### Zero-Shot CoT
 
-The simplest approach—just add a trigger phrase and let the model figure out how to reason. No examples needed. This works surprisingly well for many problems, though you have less control over the reasoning format.
+Самый простой подход — просто добавьте триггерную фразу и позвольте модели самой определить, как рассуждать. Примеры не нужны. Это удивительно хорошо работает для многих задач, хотя у вас меньше контроля над форматом рассуждений.
 
 <TryIt 
   compact
   title="Zero-Shot CoT"
-  prompt={`If John has 3 apples and gives half to Mary, then buys 4 more, how many does he have?
+  prompt={`Если у Джона 3 яблока и он отдаёт половину Мэри, а затем покупает ещё 4, сколько у него яблок?
 
-Let's think step by step.`}
+Давайте подумаем шаг за шагом.`}
 />
 
-**Example Output:**
+**Пример вывода:**
 ```
-Let's think step by step.
-- John starts with 3 apples
-- Half of 3 is 1.5, but we can't split apples
-- If we round down: John gives 1 apple, keeps 2
-- After buying 4 more: 2 + 4 = 6 apples
+Давайте подумаем шаг за шагом.
+- У Джона изначально 3 яблока
+- Половина от 3 — это 1.5, но яблоки нельзя разделить
+- Если округлить вниз: Джон отдаёт 1 яблоко, оставляет 2
+- После покупки ещё 4: 2 + 4 = 6 яблок
 
-Answer: 6 apples
+Ответ: 6 яблок
 ```
 
 ### Few-Shot CoT
 
-For more consistent results, show the model exactly how you want it to reason by providing worked examples. This gives you control over the reasoning style, format, and level of detail. The model will mimic your demonstrated pattern.
+Для более стабильных результатов покажите модели, как именно вы хотите, чтобы она рассуждала, предоставив готовые примеры. Это даёт вам контроль над стилем рассуждений, форматом и уровнем детализации. Модель будет имитировать продемонстрированный паттерн.
 
 <TryIt 
   compact
   title="Few-Shot CoT"
-  prompt={`Example 1:
-Q: A baker has 24 cupcakes. She puts them equally into 4 boxes. Then she eats 2 cupcakes from one box. How many cupcakes total remain?
+  prompt={`Пример 1:
+В: У пекаря 24 кекса. Она раскладывает их поровну в 4 коробки. Затем она съедает 2 кекса из одной коробки. Сколько всего кексов осталось?
 
-A: Let's work through this:
-- Total cupcakes: 24
-- Cupcakes per box: 24 ÷ 4 = 6
-- After eating 2 from one box: 6 - 2 = 4 cupcakes in that box
-- Total remaining: (3 boxes × 6) + 4 = 18 + 4 = 22 cupcakes
+О: Давайте разберём это:
+- Всего кексов: 24
+- Кексов в коробке: 24 ÷ 4 = 6
+- После съедания 2 из одной коробки: 6 - 2 = 4 кекса в этой коробке
+- Всего осталось: (3 коробки × 6) + 4 = 18 + 4 = 22 кекса
 
-Example 2:
-Q: A train travels at 60 mph for 2 hours, then 40 mph for 3 hours. What is its average speed?
+Пример 2:
+В: Поезд едет со скоростью 60 миль/ч в течение 2 часов, затем 40 миль/ч в течение 3 часов. Какова средняя скорость?
 
-A: Let's work through this:
-- Distance at 60 mph: 60 × 2 = 120 miles
-- Distance at 40 mph: 40 × 3 = 120 miles
-- Total distance: 120 + 120 = 240 miles
-- Total time: 2 + 3 = 5 hours
-- Average speed: 240 ÷ 5 = 48 mph
+О: Давайте разберём это:
+- Расстояние при 60 миль/ч: 60 × 2 = 120 миль
+- Расстояние при 40 миль/ч: 40 × 3 = 120 миль
+- Общее расстояние: 120 + 120 = 240 миль
+- Общее время: 2 + 3 = 5 часов
+- Средняя скорость: 240 ÷ 5 = 48 миль/ч
 
-Now solve:
-Q: A store sells notebooks for $3 each. If you buy 10 or more, you get 25% off. How much do 12 notebooks cost?`}
+Теперь решите:
+В: Магазин продаёт тетради по $3 за штуку. При покупке 10 и более вы получаете скидку 25%. Сколько стоят 12 тетрадей?`}
 />
 
-**Example Output:**
+**Пример вывода:**
 ```
-A: Let's work through this:
-- Regular price: $3, Quantity: 12
-- Since 12 ≥ 10, the 25% discount applies
-- Regular total: 12 × $3 = $36
-- Discount: 25% of $36 = $9
-- Final price: $36 - $9 = $27
+О: Давайте разберём это:
+- Обычная цена: $3, Количество: 12
+- Поскольку 12 ≥ 10, применяется скидка 25%
+- Обычная сумма: 12 × $3 = $36
+- Скидка: 25% от $36 = $9
+- Итоговая цена: $36 - $9 = $27
 ```
 
-## Structured CoT Formats
+## Структурированные форматы CoT
 
-For consistent, reproducible reasoning, use structured formats with named steps. These frameworks ensure the model doesn't skip important stages and makes outputs easier to parse and verify.
+Для последовательных, воспроизводимых рассуждений используйте структурированные форматы с именованными шагами. Эти фреймворки гарантируют, что модель не пропустит важные этапы, и делают выводы более лёгкими для разбора и проверки.
 
-### The BREAK Format
+### Формат BREAK
 
-A memorable acronym that guides the model through a complete problem-solving cycle, from understanding to verification.
+Запоминающаяся аббревиатура, которая проводит модель через полный цикл решения задачи, от понимания до проверки.
 
 <BREAKFramework />
 
-### The Reasoning Template
+### Шаблон рассуждений
 
-A more formal structure that separates inputs, goals, and execution. Excellent for technical problems where you need clear documentation of the solution process.
+Более формальная структура, которая разделяет входные данные, цели и выполнение. Отлично подходит для технических задач, где нужна чёткая документация процесса решения.
 
 <TryIt 
   compact
-  title="Reasoning Template"
-  prompt={`Use this template to solve the problem:
+  title="Шаблон рассуждений"
+  prompt={`Используйте этот шаблон для решения задачи:
 
-GIVEN: [List known information]
-GOAL: [What we need to find]
-APPROACH: [Strategy we'll use]
-STEPS:
-  1. [First step with reasoning]
-  2. [Second step with reasoning]
+ДАНО: [Перечислите известную информацию]
+ЦЕЛЬ: [Что нам нужно найти]
+ПОДХОД: [Стратегия, которую мы будем использовать]
+ШАГИ:
+  1. [Первый шаг с рассуждением]
+  2. [Второй шаг с рассуждением]
   ...
-VERIFICATION: [Check the answer]
-ANSWER: [Final answer]
+ПРОВЕРКА: [Проверьте ответ]
+ОТВЕТ: [Окончательный ответ]
 
-Problem: A car uses 8 liters of fuel per 100 km. If the tank holds 45 liters and fuel costs $1.50 per liter, how much does it cost to drive 300 km?`}
+Задача: Автомобиль расходует 8 литров топлива на 100 км. Если бак вмещает 45 литров, а топливо стоит $1.50 за литр, сколько стоит проехать 300 км?`}
 />
 
-**Example Output:**
+**Пример вывода:**
 ```
-GIVEN: 8L/100km, tank 45L, $1.50/L, drive 300km
-GOAL: Calculate fuel cost
-APPROACH: Fuel needed × cost per liter
-STEPS:
-1. Fuel = (300 ÷ 100) × 8 = 24 liters
-2. Cost = 24 × $1.50 = $36
-VERIFICATION: 24L < 45L tank ✓
-ANSWER: $36
+ДАНО: 8л/100км, бак 45л, $1.50/л, проехать 300км
+ЦЕЛЬ: Рассчитать стоимость топлива
+ПОДХОД: Необходимое топливо × стоимость литра
+ШАГИ:
+1. Топливо = (300 ÷ 100) × 8 = 24 литра
+2. Стоимость = 24 × $1.50 = $36
+ПРОВЕРКА: 24л < 45л бак ✓
+ОТВЕТ: $36
 ```
 
-## CoT for Different Problem Types
+## CoT для разных типов задач
 
-Different problem types benefit from different CoT approaches. Here are patterns optimized for common scenarios.
+Разные типы задач выигрывают от разных подходов CoT. Вот паттерны, оптимизированные для распространённых сценариев.
 
-### Mathematical Reasoning
+### Математические рассуждения
 
-Math problems benefit most from CoT because each step builds on the previous one. Errors compound, so showing work helps catch mistakes early. The model should clearly label each calculation.
+Математические задачи больше всего выигрывают от CoT, потому что каждый шаг строится на предыдущем. Ошибки накапливаются, поэтому показ работы помогает выявлять ошибки на ранних этапах. Модель должна чётко обозначать каждый расчёт.
 
 <TryIt 
   compact
-  title="Math with CoT"
-  prompt={`A company's revenue was $1.2M in Q1. It grew 15% in Q2, declined 10% in Q3, and grew 25% in Q4. What was the total annual revenue?
+  title="Математика с CoT"
+  prompt={`Выручка компании составила $1.2M в Q1. Она выросла на 15% в Q2, снизилась на 10% в Q3 и выросла на 25% в Q4. Какова общая годовая выручка?
 
-Think through each quarter, showing your calculations clearly.`}
+Продумайте каждый квартал, чётко показывая свои расчёты.`}
 />
 
-**Example Output:**
+**Пример вывода:**
 ```
-Q1: $1,200,000 (given)
+Q1: $1,200,000 (дано)
 Q2: $1,200,000 × 1.15 = $1,380,000
 Q3: $1,380,000 × 0.90 = $1,242,000
 Q4: $1,242,000 × 1.25 = $1,552,500
 
-Total: $5,374,500
+Итого: $5,374,500
 ```
 
-### Logical Reasoning
+### Логические рассуждения
 
-Logic puzzles require systematic elimination and hypothesis testing. CoT helps the model track constraints, test possibilities, and verify that all conditions are satisfied. The key is methodical exploration rather than guessing.
+Логические задачи требуют систематического исключения и проверки гипотез. CoT помогает модели отслеживать ограничения, проверять возможности и убеждаться, что все условия выполнены. Ключ — методичное исследование, а не угадывание.
 
 <TryIt 
   compact
-  title="Logic Puzzle"
-  prompt={`Three friends—Alice, Bob, and Carol—each have different pets (cat, dog, fish) and different jobs (teacher, engineer, doctor).
+  title="Логическая задача"
+  prompt={`Три друга — Алиса, Боб и Кэрол — имеют разных питомцев (кошка, собака, рыбка) и разные профессии (учитель, инженер, врач).
 
-Clues:
-1. Alice doesn't have a cat
-2. The engineer has a dog
-3. Bob is a teacher
-4. Carol doesn't have a fish
+Подсказки:
+1. У Алисы нет кошки
+2. У инженера есть собака
+3. Боб — учитель
+4. У Кэрол нет рыбки
 
-Who has which pet and job? Reason through this systematically, testing hypotheses and verifying against all clues.`}
+У кого какой питомец и какая профессия? Рассуждайте систематически, проверяя гипотезы и сверяя со всеми подсказками.`}
 />
 
-**Example Output:**
+**Пример вывода:**
 ```
-From clue 3: Bob = teacher
-→ Alice and Carol are engineer/doctor
+Из подсказки 3: Боб = учитель
+→ Алиса и Кэрол — инженер/врач
 
-If Carol = engineer:
-- Carol has dog (clue 2)
-- Alice = doctor, has fish (clue 1)
-- Bob has cat
+Если Кэрол = инженер:
+- У Кэрол собака (подсказка 2)
+- Алиса = врач, у неё рыбка (подсказка 1)
+- У Боба кошка
 
-Verify: All 4 clues satisfied ✓
-Answer: Alice (doctor, fish), Bob (teacher, cat), Carol (engineer, dog)
+Проверка: Все 4 подсказки выполнены ✓
+Ответ: Алиса (врач, рыбка), Боб (учитель, кошка), Кэрол (инженер, собака)
 ```
 
-### Code Debugging
+### Отладка кода
 
-Debugging benefits from CoT because it forces the model to trace execution rather than guess at bugs. By walking through the code with concrete values, the actual behavior becomes visible and discrepancies with expected behavior are exposed.
+Отладка выигрывает от CoT, потому что это заставляет модель прослеживать выполнение, а не угадывать ошибки. Пошаговое прохождение кода с конкретными значениями делает видимым фактическое поведение и выявляет расхождения с ожидаемым поведением.
 
 <TryIt 
   compact
-  title="Debug with CoT"
-  prompt={`This function should return the sum of even numbers in a list, but it's returning wrong values. Debug step by step by tracing through with the input [2, 3, 4, 6]:
+  title="Отладка с CoT"
+  prompt={`Эта функция должна возвращать сумму чётных чисел в списке, но она возвращает неправильные значения. Отладьте шаг за шагом, прослеживая выполнение с входными данными [2, 3, 4, 6]:
 
 def sum_evens(numbers):
     total = 0
@@ -229,135 +229,135 @@ def sum_evens(numbers):
             total += 1
     return total
 
-Trace each step, find the bug, and provide the fix.`}
+Проследите каждый шаг, найдите ошибку и предоставьте исправление.`}
 />
 
-**Example Output:**
+**Пример вывода:**
 ```
-Trace [2, 3, 4, 6]:
-n=2: total += 1 → 1 (wait, adding 1 not n!)
-n=3: skip (odd)
+Трассировка [2, 3, 4, 6]:
+n=2: total += 1 → 1 (стоп, добавляем 1, а не n!)
+n=3: пропуск (нечётное)
 n=4: total = 2
 n=6: total = 3
 
-BUG: "total += 1" should be "total += n"
-Expected: 12, Got: 3
-Fix: Change to "total += n"
+ОШИБКА: "total += 1" должно быть "total += n"
+Ожидалось: 12, Получено: 3
+Исправление: Изменить на "total += n"
 ```
 
-## Self-Consistency with CoT
+## Self-Consistency с CoT
 
-For critical problems, don't rely on a single reasoning path. Generate multiple independent solutions and compare results. If different approaches converge on the same answer, confidence is high. Disagreement signals the need for careful review.
+Для критически важных задач не полагайтесь на один путь рассуждений. Сгенерируйте несколько независимых решений и сравните результаты. Если разные подходы сходятся к одному ответу, уверенность высока. Расхождение сигнализирует о необходимости тщательной проверки.
 
 <TryIt 
   compact
   title="Self-Consistency"
-  prompt={`Solve this problem 3 different ways, then give your final answer based on which solution appears most correct:
+  prompt={`Решите эту задачу 3 разными способами, затем дайте окончательный ответ на основе того, какое решение кажется наиболее правильным:
 
-Problem: A farmer has chickens and cows. Together they have 30 heads and 74 legs. How many chickens and how many cows does the farmer have?
+Задача: У фермера есть куры и коровы. Вместе у них 30 голов и 74 ноги. Сколько кур и сколько коров у фермера?
 
-Approach 1: Algebra
-Approach 2: Guess and check
-Approach 3: Logical reasoning
+Подход 1: Алгебра
+Подход 2: Подбор
+Подход 3: Логическое рассуждение
 
-Then compare and give your final answer.`}
+Затем сравните и дайте окончательный ответ.`}
 />
 
-**Example Output:**
+**Пример вывода:**
 ```
-Approach 1 (Algebra): c + w = 30, 2c + 4w = 74 → c=23, w=7
-Approach 2 (Guess): Try 23/7 → 46 + 28 = 74 ✓
-Approach 3 (Logic): 30 chickens = 60 legs, need 14 more → 7 cows
+Подход 1 (Алгебра): к + р = 30, 2к + 4р = 74 → к=23, р=7
+Подход 2 (Подбор): Пробуем 23/7 → 46 + 28 = 74 ✓
+Подход 3 (Логика): 30 кур = 60 ног, нужно ещё 14 → 7 коров
 
-All agree: 23 chickens, 7 cows
+Все согласны: 23 курицы, 7 коров
 ```
 
-## CoT for Decision Making
+## CoT для принятия решений
 
-Decisions involve weighing trade-offs across multiple dimensions. CoT ensures all relevant factors are considered systematically rather than jumping to conclusions. This structured approach also documents the reasoning for future reference.
+Решения включают взвешивание компромиссов по нескольким измерениям. CoT обеспечивает систематическое рассмотрение всех релевантных факторов, а не поспешные выводы. Этот структурированный подход также документирует рассуждения для будущих справок.
 
 <TryIt 
   compact
-  title="Decision Analysis"
-  prompt={`Should we adopt microservices architecture for our application?
+  title="Анализ решения"
+  prompt={`Стоит ли нам переходить на микросервисную архитектуру для нашего приложения?
 
-Context:
-- Monolithic application with 50,000 lines of code
-- Team of 5 developers
-- 100 daily active users
-- Planning for 10x growth in 2 years
+Контекст:
+- Монолитное приложение с 50,000 строк кода
+- Команда из 5 разработчиков
+- 100 активных пользователей в день
+- Планируется 10-кратный рост за 2 года
 
-Think through this systematically:
-1. List the current state
-2. Identify factors to consider (team size, scale, velocity, future growth)
-3. Weigh each factor as for/against
-4. Give a recommendation with reasoning`}
+Продумайте это систематически:
+1. Перечислите текущее состояние
+2. Определите факторы для рассмотрения (размер команды, масштаб, скорость разработки, будущий рост)
+3. Оцените каждый фактор как за/против
+4. Дайте рекомендацию с обоснованием`}
 />
 
-**Example Output:**
+**Пример вывода:**
 ```
-FACTORS:
-- Team size (5): Too small for microservices ❌
-- Scale (100 DAU): No scaling need ❌  
-- Velocity: Monolith = faster iteration ❌
-- Future growth: Uncertain timeline ⚠️
+ФАКТОРЫ:
+- Размер команды (5): Слишком мало для микросервисов ❌
+- Масштаб (100 DAU): Нет необходимости в масштабировании ❌  
+- Скорость: Монолит = быстрее итерации ❌
+- Будущий рост: Неопределённые сроки ⚠️
 
-WEIGHING: 3 strong against, 1 weak for
+ВЗВЕШИВАНИЕ: 3 сильных против, 1 слабый за
 
-RECOMMENDATION: Stay monolith, use clear module 
-boundaries to ease future transition.
+РЕКОМЕНДАЦИЯ: Остаться на монолите, использовать чёткие 
+границы модулей для облегчения перехода в будущем.
 ```
 
-## When to Use CoT
+## Когда использовать CoT
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Use CoT For</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Используйте CoT для</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">**Math problems** — Reduces calculation errors</p>
-      <p className="m-0!">**Logic puzzles** — Prevents skipped steps</p>
-      <p className="m-0!">**Complex analysis** — Organizes thinking</p>
-      <p className="m-0!">**Code debugging** — Traces execution</p>
-      <p className="m-0!">**Decision making** — Weighs trade-offs</p>
+      <p className="m-0!">**Математических задач** — Уменьшает ошибки вычислений</p>
+      <p className="m-0!">**Логических головоломок** — Предотвращает пропуск шагов</p>
+      <p className="m-0!">**Сложного анализа** — Организует мышление</p>
+      <p className="m-0!">**Отладки кода** — Прослеживает выполнение</p>
+      <p className="m-0!">**Принятия решений** — Взвешивает компромиссы</p>
     </div>
   </div>
   <div className="border rounded-lg bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900">
-    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Skip CoT For</p>
+    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Пропустите CoT для</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">**Simple Q&A** — Unnecessary overhead</p>
-      <p className="m-0!">**Creative writing** — Can constrain creativity</p>
-      <p className="m-0!">**Factual lookups** — No reasoning needed</p>
-      <p className="m-0!">**Translation** — Direct task</p>
-      <p className="m-0!">**Summarization** — Usually straightforward</p>
+      <p className="m-0!">**Простых вопросов и ответов** — Ненужные накладные расходы</p>
+      <p className="m-0!">**Творческого письма** — Может ограничивать креативность</p>
+      <p className="m-0!">**Поиска фактов** — Рассуждения не нужны</p>
+      <p className="m-0!">**Перевода** — Прямая задача</p>
+      <p className="m-0!">**Суммаризации** — Обычно проста</p>
     </div>
   </div>
 </div>
 
-## CoT Limitations
+## Ограничения CoT
 
-While powerful, Chain of Thought isn't a silver bullet. Understanding its limitations helps you apply it appropriately.
+Хотя CoT и мощный инструмент, это не универсальное решение. Понимание его ограничений помогает применять его правильно.
 
-1. **Increased token usage** — More output means higher costs
-2. **Not always needed** — Simple tasks don't benefit
-3. **Can be verbose** — May need to ask for conciseness
-4. **Reasoning can be flawed** — CoT doesn't guarantee correctness
+1. **Увеличенное использование токенов** — Больше вывода означает более высокие затраты
+2. **Не всегда нужен** — Простые задачи не выигрывают
+3. **Может быть многословным** — Возможно, придётся просить краткости
+4. **Рассуждения могут быть ошибочными** — CoT не гарантирует правильность
 
-## Summary
+## Резюме
 
-<Callout type="tip" title="Key Takeaways">
-CoT dramatically improves complex reasoning by making implicit steps explicit. Use it for math, logic, analysis, and debugging. Trade-off: better accuracy for more tokens.
+<Callout type="tip" title="Ключевые выводы">
+CoT значительно улучшает сложные рассуждения, делая неявные шаги явными. Используйте его для математики, логики, анализа и отладки. Компромисс: лучшая точность за большее количество токенов.
 </Callout>
 
 <Quiz 
-  question="When should you NOT use Chain of Thought prompting?"
+  question="Когда НЕ следует использовать Chain of Thought промптинг?"
   options={[
-    "Math problems requiring multiple steps",
-    "Simple factual questions like 'What is the capital of France?'",
-    "Debugging code with complex logic",
-    "Analyzing a business decision"
+    "Математические задачи, требующие нескольких шагов",
+    "Простые фактические вопросы вроде 'Какая столица Франции?'",
+    "Отладка кода со сложной логикой",
+    "Анализ бизнес-решения"
   ]}
   correctIndex={1}
-  explanation="Chain of Thought adds unnecessary overhead for simple Q&A. It's best reserved for complex reasoning tasks like math, logic puzzles, code debugging, and analysis where showing work improves accuracy."
+  explanation="Chain of Thought добавляет ненужные накладные расходы для простых вопросов и ответов. Лучше приберечь его для сложных задач рассуждения, таких как математика, логические головоломки, отладка кода и анализ, где показ работы улучшает точность."
 />
 
-In the next chapter, we'll explore few-shot learning—teaching the model through examples.
+В следующей главе мы рассмотрим few-shot learning — обучение модели через примеры.

@@ -1,130 +1,130 @@
-Welcome to **The Interactive Book of Prompting**, your guide to communicating effectively with AI.
+Добро пожаловать в **Интерактивную книгу по промптингу** — ваш путеводитель по эффективному взаимодействию с ИИ.
 
-<Callout type="info" title="What You'll Learn">
-By the end of this book, you'll understand how AI works, how to write better prompts, and how to use these skills for writing, coding, research, and creative projects.
+<Callout type="info" title="Чему вы научитесь">
+К концу этой книги вы поймёте, как работает ИИ, как писать лучшие промпты и как применять эти навыки в написании текстов, программировании, исследованиях и творческих проектах.
 </Callout>
 
-<Callout type="tip" title="This Is an Interactive Book">
-Unlike traditional books, this guide is fully interactive. You'll find live demos, clickable examples, and "Try It" buttons throughout that let you test prompts instantly. Learning by doing makes complex concepts much easier to understand.
+<Callout type="tip" title="Это интерактивная книга">
+В отличие от традиционных книг, это руководство полностью интерактивно. Здесь вы найдёте живые демонстрации, кликабельные примеры и кнопки «Попробовать», которые позволяют мгновенно тестировать промпты. Обучение на практике делает сложные концепции гораздо понятнее.
 </Callout>
 
-## What is Prompt Engineering?
+## Что такое промпт-инженерия?
 
-Prompt engineering is the skill of writing good instructions for AI. When you type something to ChatGPT, Claude, Gemini, or other AI tools, that's called a "prompt." The better your prompt, the better the answer you get.
+Промпт-инженерия — это навык написания хороших инструкций для ИИ. Когда вы что-то пишете ChatGPT, Claude, Gemini или другим инструментам ИИ, это называется «промпт». Чем лучше ваш промпт, тем лучше ответ, который вы получите.
 
-Think of it like this: AI is a powerful helper that takes your words very literally. It will do exactly what you ask. The trick is learning how to ask for exactly what you want.
+Представьте это так: ИИ — это мощный помощник, который воспринимает ваши слова буквально. Он сделает именно то, что вы попросите. Хитрость в том, чтобы научиться просить именно то, что вам нужно.
 
 <Compare 
-  before={{ label: "Simple Prompt", content: "Write about dogs" }}
-  after={{ label: "Engineered Prompt", content: "Write a 200-word informative paragraph about the history of dog domestication, suitable for a middle school science textbook, with an engaging opening hook." }}
+  before={{ label: "Простой промпт", content: "Напиши о собаках" }}
+  after={{ label: "Проработанный промпт", content: "Напиши информативный абзац на 200 слов об истории одомашнивания собак, подходящий для учебника естествознания средней школы, с увлекательным вступлением." }}
 />
 
-The difference in output quality between these two prompts can be dramatic.
+Разница в качестве результатов между этими двумя промптами может быть колоссальной.
 
 <TryIt 
-  prompt="Write a 200-word informative paragraph about the history of dog domestication, suitable for a middle school science textbook, with an engaging opening hook."
-  description="Try this engineered prompt and compare the result to simply asking 'Write about dogs'."
+  prompt="Напиши информативный абзац на 200 слов об истории одомашнивания собак, подходящий для учебника естествознания средней школы, с увлекательным вступлением."
+  description="Попробуйте этот проработанный промпт и сравните результат с простым запросом «Напиши о собаках»."
 />
 
-## How Prompt Engineering Has Evolved
+## Как развивалась промпт-инженерия
 
-In just three years since ChatGPT launched, prompt engineering has evolved dramatically alongside the technology itself. What started as simply "writing better questions" has grown into something much broader.
+Всего за три года с момента запуска ChatGPT промпт-инженерия кардинально изменилась вместе с самой технологией. То, что начиналось как просто «написание лучших вопросов», превратилось в нечто гораздо более масштабное.
 
-Today, we understand that your prompt is just **one part of a larger context**. Modern AI systems work with multiple types of data simultaneously:
+Сегодня мы понимаем, что ваш промпт — это лишь **одна часть более широкого контекста**. Современные системы ИИ работают с несколькими типами данных одновременно:
 
-- **System prompts** that define the AI's behavior
-- **Conversation history** from previous messages
-- **Retrieved documents** pulled from databases (RAG)
-- **Tool definitions** that let AI take actions
-- **User preferences** and settings
-- **Your actual prompt** - the question you're asking right now
+- **Системные промпты**, определяющие поведение ИИ
+- **История диалога** из предыдущих сообщений
+- **Извлечённые документы** из баз данных (RAG)
+- **Определения инструментов**, позволяющие ИИ выполнять действия
+- **Пользовательские настройки** и предпочтения
+- **Ваш фактический промпт** — вопрос, который вы задаёте прямо сейчас
 
-This shift from "prompt engineering" to "context engineering" reflects how we now think about AI interactions. Your prompt matters, but so does everything else the AI sees. The best results come from carefully managing all these pieces together.
+Этот переход от «промпт-инженерии» к «контекст-инженерии» отражает то, как мы теперь думаем о взаимодействии с ИИ. Ваш промпт важен, но важно и всё остальное, что видит ИИ. Лучшие результаты достигаются при тщательном управлении всеми этими элементами вместе.
 
-We'll explore these concepts in depth throughout this book, especially in the [Context Engineering](/book/20-context-engineering) chapter.
+Мы подробно рассмотрим эти концепции на протяжении всей книги, особенно в главе [Контекст-инженерия](/book/20-context-engineering).
 
-## Why Does Prompt Engineering Matter?
+## Почему промпт-инженерия важна?
 
-### 1. Getting Better Answers
+### 1. Получение лучших ответов
 
-AI tools are incredibly capable, but they need clear instructions to unlock their full potential. The same AI that gives a mediocre response to a vague question can produce brilliant work when prompted correctly.
+Инструменты ИИ невероятно мощны, но им нужны чёткие инструкции, чтобы раскрыть весь свой потенциал. Тот же ИИ, который даёт посредственный ответ на расплывчатый вопрос, может выдать блестящий результат при правильном промпте.
 
 <Compare 
-  before={{ label: "Vague Prompt", content: "Help me with my resume" }}
-  after={{ label: "Engineered Prompt", content: "Review my resume for a senior software engineer position. Focus on: 1) Impact metrics, 2) Technical skills section, 3) ATS optimization. Suggest specific improvements with examples." }}
+  before={{ label: "Расплывчатый промпт", content: "Помоги мне с резюме" }}
+  after={{ label: "Проработанный промпт", content: "Проверь моё резюме на позицию старшего инженера-программиста. Сосредоточься на: 1) Метриках влияния, 2) Разделе технических навыков, 3) Оптимизации для ATS. Предложи конкретные улучшения с примерами." }}
 />
 
-### 2. Saving Time and Money
+### 2. Экономия времени и денег
 
-A well-crafted prompt gets results in one try instead of multiple back-and-forth exchanges. This matters even more when you're paying per token or working with rate limits. A 5-minute investment in writing a good prompt can save hours of iteration.
+Хорошо составленный промпт даёт результат с первой попытки вместо многократных уточнений. Это особенно важно, когда вы платите за токены или работаете с ограничениями на количество запросов. Пятиминутное вложение в написание хорошего промпта может сэкономить часы итераций.
 
-### 3. Getting Consistent, Reproducible Results
+### 3. Получение стабильных, воспроизводимых результатов
 
-Good prompts produce predictable outputs. This is critical for:
-- **Business workflows** where you need the same quality every time
-- **Automation** where prompts run without human review
-- **Teams** where multiple people need similar results
+Хорошие промпты дают предсказуемые результаты. Это критически важно для:
+- **Бизнес-процессов**, где нужно одинаковое качество каждый раз
+- **Автоматизации**, где промпты выполняются без участия человека
+- **Команд**, где нескольким людям нужны похожие результаты
 
-### 4. Unlocking Advanced Capabilities
+### 4. Раскрытие продвинутых возможностей
 
-Many powerful AI features only work when you know how to ask:
-- **Chain-of-thought reasoning** for complex problems
-- **Structured output** for data extraction
-- **Role-playing** for specialized expertise
-- **Few-shot learning** for custom tasks
+Многие мощные функции ИИ работают только тогда, когда вы знаете, как правильно попросить:
+- **Рассуждение по цепочке** для сложных задач
+- **Структурированный вывод** для извлечения данных
+- **Ролевая игра** для специализированной экспертизы
+- **Обучение на примерах** для нестандартных задач
 
-Without prompt engineering knowledge, you're only using a fraction of what AI can do.
+Без знания промпт-инженерии вы используете лишь малую часть возможностей ИИ.
 
-### 5. Staying Safe and Avoiding Pitfalls
+### 5. Безопасность и избежание ошибок
 
-Good prompting helps you:
-- Avoid hallucinations by asking for sources and verification
-- Get balanced perspectives instead of one-sided answers
-- Prevent the AI from making assumptions you didn't intend
-- Keep sensitive information out of your prompts
+Хороший промптинг помогает вам:
+- Избегать галлюцинаций, запрашивая источники и верификацию
+- Получать сбалансированные перспективы вместо однобоких ответов
+- Предотвращать нежелательные предположения со стороны ИИ
+- Не включать конфиденциальную информацию в промпты
 
-### 6. Future-Proofing Your Skills
+### 6. Инвестиция в будущее
 
-As AI becomes more integrated into work and life, prompt engineering becomes a fundamental literacy. The principles you learn here apply across all AI tools—ChatGPT, Claude, Gemini, image generators, and future models we haven't seen yet.
+По мере того как ИИ всё глубже интегрируется в работу и жизнь, промпт-инженерия становится фундаментальной грамотностью. Принципы, которые вы изучите здесь, применимы ко всем инструментам ИИ — ChatGPT, Claude, Gemini, генераторам изображений и будущим моделям, которых мы ещё не видели.
 
-## Who Is This Book For?
+## Для кого эта книга?
 
-This book is for everyone:
+Эта книга для всех:
 
-- **Beginners** who want to learn how to use AI tools better
-- **Students** working on homework, research, or creative projects
-- **Writers and creators** using AI for their work
-- **Developers** building apps with AI
-- **Business people** who want to use AI at work
-- **Anyone curious** about getting more out of AI assistants
+- **Новички**, которые хотят научиться лучше использовать инструменты ИИ
+- **Студенты**, работающие над домашними заданиями, исследованиями или творческими проектами
+- **Писатели и креаторы**, использующие ИИ в своей работе
+- **Разработчики**, создающие приложения с ИИ
+- **Бизнесмены**, желающие применять ИИ на работе
+- **Все любопытные**, кто хочет получить больше от ИИ-ассистентов
 
-## How This Book Is Organized
+## Структура книги
 
 <BookPartsNav />
 
-Plus an **Appendix** with templates, troubleshooting help, glossary, and extra resources.
+Плюс **Приложение** с шаблонами, помощью по устранению неполадок, глоссарием и дополнительными ресурсами.
 
-## A Note on AI Models
+## Примечание о моделях ИИ
 
-This book mostly uses examples from ChatGPT (since it's the most popular), but the ideas work with any AI tool like Claude, Gemini, or others. We'll mention when something only works with specific AI models.
+В этой книге в основном используются примеры из ChatGPT (поскольку он самый популярный), но изложенные идеи работают с любым инструментом ИИ, таким как Claude, Gemini или другими. Мы отметим, когда что-то работает только с определёнными моделями ИИ.
 
-AI is changing fast. What works today might be replaced by something better tomorrow. That's why this book focuses on core ideas that will stay useful no matter which AI you use.
+ИИ развивается быстро. То, что работает сегодня, завтра может быть заменено чем-то лучшим. Поэтому эта книга фокусируется на базовых идеях, которые останутся полезными независимо от того, какой ИИ вы используете.
 
-## Let's Begin
+## Начнём
 
-Writing good prompts is a skill that gets better with practice. As you read this book:
+Написание хороших промптов — это навык, который улучшается с практикой. Читая эту книгу:
 
-1. **Try things** - Test the examples, change them, see what happens
-2. **Keep trying** - Don't expect perfect results on your first attempt
-3. **Take notes** - Write down what works and what doesn't
-4. **Share** - Add your discoveries to [prompts.chat](https://prompts.chat)
+1. **Пробуйте** — Тестируйте примеры, изменяйте их, смотрите, что получится
+2. **Продолжайте пробовать** — Не ожидайте идеальных результатов с первой попытки
+3. **Делайте заметки** — Записывайте, что работает, а что нет
+4. **Делитесь** — Добавляйте свои открытия на [prompts.chat](https://prompts.chat)
 
-<Callout type="tip" title="Practice Makes Perfect">
-The best way to learn is by doing. Every chapter has examples you can try right away. Don't just read. Try it yourself!
+<Callout type="tip" title="Практика — путь к совершенству">
+Лучший способ учиться — делать. В каждой главе есть примеры, которые вы можете попробовать сразу. Не просто читайте — пробуйте сами!
 </Callout>
 
-Ready to transform how you work with AI? Turn the page and let's get started.
+Готовы изменить то, как вы работаете с ИИ? Переворачивайте страницу, и давайте начнём.
 
 ---
 
-*This book is part of the [Awesome ChatGPT Prompts](https://github.com/f/prompts.chat) project and is licensed under CC0 1.0 Universal (Public Domain).*
+*Эта книга является частью проекта [Awesome ChatGPT Prompts](https://github.com/f/prompts.chat) и распространяется под лицензией CC0 1.0 Universal (Public Domain).*

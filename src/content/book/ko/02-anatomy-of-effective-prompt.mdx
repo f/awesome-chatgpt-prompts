@@ -1,213 +1,213 @@
-Every great prompt shares common structural elements. Understanding these components allows you to construct prompts systematically rather than through trial and error.
+모든 훌륭한 프롬프트는 공통적인 구조적 요소를 공유합니다. 이러한 구성 요소를 이해하면 시행착오가 아닌 체계적인 방법으로 프롬프트를 작성할 수 있습니다.
 
-<Callout type="tip" title="The Building Blocks">
-Think of these components like LEGO bricks. You don't need all of them for every prompt, but knowing what's available helps you build exactly what you need.
+<Callout type="tip" title="구성 요소들">
+이러한 구성 요소를 레고 블록처럼 생각하세요. 모든 프롬프트에 모든 요소가 필요한 것은 아니지만, 무엇이 있는지 알면 필요한 것을 정확히 구축하는 데 도움이 됩니다.
 </Callout>
 
-## The Core Components
+## 핵심 구성 요소
 
-An effective prompt typically includes some or all of these elements:
+효과적인 프롬프트는 일반적으로 다음 요소의 일부 또는 전부를 포함합니다:
 
 <PromptBreakdown parts={[
-  { label: "Role", text: "You are a senior software engineer" },
-  { label: "Context", text: "working on a React application." },
-  { label: "Task", text: "Review this code for bugs" },
-  { label: "Constraints", text: "and focus only on security issues." },
-  { label: "Format", text: "Return findings as a numbered list." },
-  { label: "Example", text: "Like: 1. SQL injection risk on line 42" }
+  { label: "역할", text: "당신은 시니어 소프트웨어 엔지니어입니다" },
+  { label: "맥락", text: "React 애플리케이션을 작업하고 있습니다." },
+  { label: "작업", text: "이 코드의 버그를 검토해 주세요" },
+  { label: "제약 조건", text: "보안 문제에만 집중해 주세요." },
+  { label: "형식", text: "발견 사항을 번호 목록으로 반환해 주세요." },
+  { label: "예시", text: "예: 1. 42번 줄에 SQL 인젝션 위험" }
 ]} />
 
-Let's examine each component in detail.
+각 구성 요소를 자세히 살펴보겠습니다.
 
-## 1. Role / Persona
+## 1. 역할 / 페르소나
 
-Setting a role focuses the model's responses through the lens of a specific expertise or perspective.
-
-<Compare 
-  before={{ label: "Without Role", content: "Explain quantum computing." }}
-  after={{ label: "With Role", content: "You are a physics professor who specializes in making complex topics accessible to beginners. Explain quantum computing." }}
-/>
-
-The role primes the model to:
-- Use appropriate vocabulary
-- Apply relevant expertise
-- Maintain a consistent perspective
-- Consider the audience appropriately
-
-### Effective Role Patterns
-
-```
-"You are a [profession] with [X years] of experience in [specialty]"
-"Act as a [role] who is [characteristic]"
-"You are an expert [field] helping a [audience type]"
-```
-
-## 2. Context / Background
-
-Context provides the information the model needs to understand your situation. Remember: the model knows nothing about you, your project, or your goals unless you tell it.
+역할을 설정하면 모델의 응답이 특정 전문성이나 관점의 렌즈를 통해 집중됩니다.
 
 <Compare 
-  before={{ label: "Weak Context", content: "Fix this bug in my code." }}
-  after={{ label: "Strong Context", content: "I'm building a Node.js REST API using Express.js. The API handles user authentication with JWT tokens. When a user tries to access a protected route, they're getting a 403 error even with a valid token. Here's the relevant code: [code]" }}
+  before={{ label: "역할 없이", content: "양자 컴퓨팅을 설명해 주세요." }}
+  after={{ label: "역할 있음", content: "당신은 복잡한 주제를 초보자가 이해하기 쉽게 설명하는 것을 전문으로 하는 물리학 교수입니다. 양자 컴퓨팅을 설명해 주세요." }}
 />
 
-### What to Include in Context
+역할은 모델이 다음을 수행하도록 준비시킵니다:
+- 적절한 어휘 사용
+- 관련 전문 지식 적용
+- 일관된 관점 유지
+- 청중을 적절히 고려
 
-- **Project details** — Technology stack, architecture, constraints
-- **Current state** — What you've tried, what's working, what isn't
-- **Goals** — What you're ultimately trying to achieve
-- **Constraints** — Time limits, technical requirements, style guides
+### 효과적인 역할 패턴
 
-## 3. Task / Instruction
+```
+"당신은 [분야]에서 [X년]의 경험을 가진 [직업]입니다"
+"[특성]을 가진 [역할]처럼 행동하세요"
+"당신은 [청중 유형]을 돕는 [분야] 전문가입니다"
+```
 
-The task is the heart of your prompt—what you want the model to do. Be specific and unambiguous.
+## 2. 맥락 / 배경
 
-### The Specificity Spectrum
+맥락은 모델이 당신의 상황을 이해하는 데 필요한 정보를 제공합니다. 기억하세요: 모델은 당신이 말하지 않는 한 당신, 당신의 프로젝트, 또는 당신의 목표에 대해 아무것도 모릅니다.
+
+<Compare 
+  before={{ label: "약한 맥락", content: "내 코드의 버그를 수정해 주세요." }}
+  after={{ label: "강한 맥락", content: "저는 Express.js를 사용하여 Node.js REST API를 구축하고 있습니다. 이 API는 JWT 토큰으로 사용자 인증을 처리합니다. 사용자가 보호된 라우트에 접근하려고 할 때, 유효한 토큰이 있어도 403 오류가 발생합니다. 관련 코드는 다음과 같습니다: [코드]" }}
+/>
+
+### 맥락에 포함할 내용
+
+- **프로젝트 세부 사항** — 기술 스택, 아키텍처, 제약 조건
+- **현재 상태** — 시도한 것, 작동하는 것, 작동하지 않는 것
+- **목표** — 궁극적으로 달성하려는 것
+- **제약 조건** — 시간 제한, 기술 요구 사항, 스타일 가이드
+
+## 3. 작업 / 지시
+
+작업은 프롬프트의 핵심입니다—모델이 수행하기를 원하는 것입니다. 구체적이고 명확하게 작성하세요.
+
+### 구체성 스펙트럼
 
 <SpecificitySpectrum levels={[
-  { level: "Vague", text: "Help me with this essay" },
-  { level: "Better", text: "Edit this essay" },
-  { level: "Good", text: "Edit this essay for grammar and clarity" },
-  { level: "Best", text: "Edit this essay for grammar and clarity, maintaining the original tone but reducing wordiness by 20%" }
+  { level: "모호함", text: "이 에세이를 도와주세요" },
+  { level: "나음", text: "이 에세이를 편집해 주세요" },
+  { level: "좋음", text: "이 에세이의 문법과 명확성을 편집해 주세요" },
+  { level: "최고", text: "이 에세이의 문법과 명확성을 편집하되, 원래 톤은 유지하면서 장황함을 20% 줄여 주세요" }
 ]} />
 
-### Action Verbs That Work Well
+### 효과적인 동작 동사
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Creation</span>
+    <span className="font-semibold min-w-32">생성</span>
     <span className="text-muted-foreground">Write, Create, Generate, Compose, Design</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Analysis</span>
+    <span className="font-semibold min-w-32">분석</span>
     <span className="text-muted-foreground">Analyze, Evaluate, Compare, Assess, Review</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Transformation</span>
+    <span className="font-semibold min-w-32">변환</span>
     <span className="text-muted-foreground">Convert, Translate, Reformat, Summarize, Expand</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Explanation</span>
+    <span className="font-semibold min-w-32">설명</span>
     <span className="text-muted-foreground">Explain, Describe, Clarify, Define, Illustrate</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Problem-solving</span>
+    <span className="font-semibold min-w-32">문제 해결</span>
     <span className="text-muted-foreground">Solve, Debug, Fix, Optimize, Improve</span>
   </div>
 </div>
 
-## 4. Constraints / Rules
+## 4. 제약 조건 / 규칙
 
-Constraints bound the model's output. They prevent common issues and ensure relevance.
+제약 조건은 모델의 출력을 제한합니다. 일반적인 문제를 방지하고 관련성을 보장합니다.
 
-### Types of Constraints
+### 제약 조건의 유형
 
-**Length constraints:**
+**길이 제약:**
 ```
-"Keep your response under 200 words"
-"Provide exactly 5 suggestions"
-"Write 3-4 paragraphs"
-```
-
-**Content constraints:**
-```
-"Do not include any code examples"
-"Focus only on the technical aspects"
-"Avoid marketing language"
+"응답을 200단어 이내로 유지해 주세요"
+"정확히 5개의 제안을 제공해 주세요"
+"3-4개의 단락으로 작성해 주세요"
 ```
 
-**Style constraints:**
+**내용 제약:**
 ```
-"Use a formal, academic tone"
-"Write as if speaking to a 10-year-old"
-"Be direct and avoid hedging language"
-```
-
-**Scope constraints:**
-```
-"Only consider options available in Python 3.10+"
-"Limit suggestions to free tools"
-"Focus on solutions that don't require additional dependencies"
+"코드 예시를 포함하지 마세요"
+"기술적인 측면에만 집중해 주세요"
+"마케팅 언어를 피해 주세요"
 ```
 
-## 5. Output Format
-
-Specifying the output format ensures you get responses in a usable structure.
-
-### Common Formats
-
-**Lists:**
+**스타일 제약:**
 ```
-"Return as a bulleted list"
-"Provide a numbered list of steps"
+"격식 있는 학술적 톤을 사용해 주세요"
+"10살 어린이에게 말하듯이 작성해 주세요"
+"직접적으로 말하고 애매한 표현을 피해 주세요"
 ```
 
-**Structured data:**
+**범위 제약:**
 ```
-"Return as JSON with keys: title, description, priority"
-"Format as a markdown table with columns: Feature, Pros, Cons"
-```
-
-**Specific structures:**
-```
-"Structure your response as:
- ## Summary
- ## Key Points
- ## Recommendations"
+"Python 3.10+ 에서 사용 가능한 옵션만 고려해 주세요"
+"무료 도구로 제안을 제한해 주세요"
+"추가 종속성이 필요 없는 솔루션에 집중해 주세요"
 ```
 
-### JSON Output Example
+## 5. 출력 형식
+
+출력 형식을 지정하면 사용 가능한 구조로 응답을 받을 수 있습니다.
+
+### 일반적인 형식
+
+**목록:**
+```
+"글머리 기호 목록으로 반환해 주세요"
+"단계별 번호 목록을 제공해 주세요"
+```
+
+**구조화된 데이터:**
+```
+"title, description, priority 키를 가진 JSON으로 반환해 주세요"
+"Feature, Pros, Cons 열이 있는 마크다운 테이블로 형식화해 주세요"
+```
+
+**특정 구조:**
+```
+"다음과 같이 응답을 구조화해 주세요:
+ ## 요약
+ ## 핵심 포인트
+ ## 권장 사항"
+```
+
+### JSON 출력 예시
 
 ```
-Analyze this customer review and return JSON:
+이 고객 리뷰를 분석하고 JSON으로 반환해 주세요:
 {
   "sentiment": "positive" | "negative" | "neutral",
-  "topics": ["array of main topics"],
+  "topics": ["주요 주제 배열"],
   "rating_prediction": 1-5,
-  "key_phrases": ["notable phrases"]
+  "key_phrases": ["주목할 만한 문구"]
 }
 
-Review: "The product arrived quickly and works great, but 
-the instructions were confusing."
+리뷰: "제품이 빨리 도착했고 잘 작동하지만, 
+설명서가 혼란스러웠습니다."
 ```
 
-## 6. Examples (Few-Shot Learning)
+## 6. 예시 (Few-Shot Learning)
 
-Examples are the most powerful way to show the model exactly what you want.
+예시는 모델에게 원하는 것을 정확히 보여주는 가장 강력한 방법입니다.
 
-### One-Shot Example
-
-```
-Convert these sentences to past tense.
-
-Example:
-Input: "She walks to the store"
-Output: "She walked to the store"
-
-Now convert:
-Input: "They run every morning"
-```
-
-### Few-Shot Example
+### One-Shot 예시
 
 ```
-Classify these support tickets by urgency.
+이 문장들을 과거 시제로 변환해 주세요.
 
-Examples:
-"My account was hacked" → Critical
-"How do I change my password?" → Low
-"Payment failed but I was charged" → High
+예시:
+입력: "She walks to the store"
+출력: "She walked to the store"
 
-Classify: "The app crashes when I open settings"
+이제 변환해 주세요:
+입력: "They run every morning"
 ```
 
-## Putting It All Together
+### Few-Shot 예시
 
-Here's a complete prompt using all components:
+```
+이 지원 티켓들을 긴급도별로 분류해 주세요.
+
+예시:
+"내 계정이 해킹당했어요" → Critical
+"비밀번호는 어떻게 변경하나요?" → Low
+"결제가 실패했는데 청구되었어요" → High
+
+분류: "설정을 열면 앱이 충돌해요"
+```
+
+## 모든 요소 조합하기
+
+다음은 모든 구성 요소를 사용한 완전한 프롬프트입니다:
 
 <TryIt 
-  title="Complete Prompt Example"
-  description="This prompt demonstrates all six components working together. Try it to see how structured prompts produce professional results."
+  title="완전한 프롬프트 예시"
+  description="이 프롬프트는 6가지 구성 요소가 모두 함께 작동하는 것을 보여줍니다. 구조화된 프롬프트가 어떻게 전문적인 결과를 생성하는지 시도해 보세요."
   prompt={`# Role
 You are a senior technical writer with 10 years of experience creating developer documentation.
 
@@ -235,47 +235,47 @@ POST /v1/payments/intents
 Body: { "amount": 1000, "currency": "usd", "description": "Order #1234" }`}
 />
 
-## The Minimal Effective Prompt
+## 최소한의 효과적인 프롬프트
 
-Not every prompt needs all components. For simple tasks, a clear instruction may suffice:
+모든 프롬프트에 모든 구성 요소가 필요한 것은 아닙니다. 간단한 작업의 경우 명확한 지시만으로 충분할 수 있습니다:
 
 ```
-Translate "Hello, how are you?" to Spanish.
+"Hello, how are you?"를 스페인어로 번역해 주세요.
 ```
 
-Use additional components when:
-- The task is complex or ambiguous
-- You need specific formatting
-- Results aren't matching expectations
-- Consistency across multiple queries matters
+다음과 같은 경우 추가 구성 요소를 사용하세요:
+- 작업이 복잡하거나 모호한 경우
+- 특정 형식이 필요한 경우
+- 결과가 기대에 부합하지 않는 경우
+- 여러 쿼리에서 일관성이 중요한 경우
 
-## Common Prompt Patterns
+## 일반적인 프롬프트 패턴
 
-These frameworks give you a simple checklist to follow when writing prompts. Click on each step to see an example.
+이러한 프레임워크는 프롬프트를 작성할 때 따를 수 있는 간단한 체크리스트를 제공합니다. 각 단계를 클릭하면 예시를 볼 수 있습니다.
 
 <CRISPEFramework />
 
 <RTFFramework />
 
-## Summary
+## 요약
 
-Effective prompts are constructed, not discovered. By understanding and applying these structural components, you can:
+효과적인 프롬프트는 발견되는 것이 아니라 구성되는 것입니다. 이러한 구조적 구성 요소를 이해하고 적용하면 다음을 할 수 있습니다:
 
-- Get better results on the first try
-- Debug prompts that aren't working
-- Create reusable prompt templates
-- Communicate your intentions clearly
+- 첫 번째 시도에서 더 나은 결과 얻기
+- 작동하지 않는 프롬프트 디버깅하기
+- 재사용 가능한 프롬프트 템플릿 만들기
+- 의도를 명확하게 전달하기
 
 <Quiz 
-  question="Which component has the biggest impact on response quality?"
+  question="응답 품질에 가장 큰 영향을 미치는 구성 요소는 무엇입니까?"
   options={[
-    "Always the role/persona",
-    "Always the output format",
-    "It depends on the task",
-    "The length of the prompt"
+    "항상 역할/페르소나",
+    "항상 출력 형식",
+    "작업에 따라 다름",
+    "프롬프트의 길이"
   ]}
   correctIndex={2}
-  explanation="Different tasks benefit from different components. A simple translation needs minimal structure, while a complex analysis benefits from detailed role, context, and format specifications."
+  explanation="작업에 따라 다른 구성 요소가 도움이 됩니다. 간단한 번역은 최소한의 구조가 필요하지만, 복잡한 분석은 상세한 역할, 맥락, 형식 지정이 도움이 됩니다."
 />
 
 <TryIt 
@@ -293,31 +293,31 @@ Format: For each feature, provide:
 1. Feature name
 2. One-sentence description  
 3. Why it matters for remote teams`}
-  description="This prompt uses all six components. Try it and see how the structured approach produces focused, actionable results."
+  description="이 프롬프트는 6가지 구성 요소를 모두 사용합니다. 시도해 보고 구조화된 접근 방식이 어떻게 집중적이고 실행 가능한 결과를 생성하는지 확인하세요."
 />
 
-## Build Your Own Prompt
+## 나만의 프롬프트 만들기
 
-Now it's your turn! Use this interactive prompt builder to construct your own prompt using the components you've learned:
+이제 당신 차례입니다! 이 인터랙티브 프롬프트 빌더를 사용하여 배운 구성 요소로 나만의 프롬프트를 구성해 보세요:
 
 <PromptBuilder 
-  title="Interactive Prompt Builder"
-  description="Fill in each section to build a complete, well-structured prompt"
+  title="인터랙티브 프롬프트 빌더"
+  description="각 섹션을 채워 완전하고 잘 구조화된 프롬프트를 만드세요"
 />
 
 <PromptChallenge
-  title="Chapter Challenge: Build a Code Review Prompt"
-  task="Write a prompt that asks an AI to review code for security vulnerabilities. Your prompt should be specific enough to get actionable feedback."
+  title="챕터 챌린지: 코드 리뷰 프롬프트 만들기"
+  task="AI에게 보안 취약점에 대한 코드 리뷰를 요청하는 프롬프트를 작성하세요. 프롬프트는 실행 가능한 피드백을 받을 수 있을 만큼 구체적이어야 합니다."
   criteria={[
-    "Includes a clear role or expertise level",
-    "Specifies what type of code review (security focus)",
-    "Defines the expected output format",
-    "Sets appropriate constraints or scope"
+    "명확한 역할 또는 전문성 수준 포함",
+    "어떤 유형의 코드 리뷰인지 명시 (보안 중점)",
+    "예상 출력 형식 정의",
+    "적절한 제약 조건 또는 범위 설정"
   ]}
   hints={[
-    "Think about what expertise a code reviewer should have",
-    "Be specific about what security issues to look for",
-    "Consider asking for a structured response format"
+    "코드 리뷰어가 어떤 전문성을 가져야 하는지 생각해 보세요",
+    "어떤 보안 문제를 찾아야 하는지 구체적으로 명시하세요",
+    "구조화된 응답 형식을 요청하는 것을 고려하세요"
   ]}
   exampleSolution={`You are a senior security engineer with expertise in web application security and OWASP Top 10 vulnerabilities.
 
@@ -340,4 +340,4 @@ For each issue found:
   difficulty="intermediate"
 />
 
-In the next chapter, we'll explore the core principles that guide prompt construction decisions.
+다음 장에서는 프롬프트 구성 결정을 안내하는 핵심 원칙을 살펴보겠습니다.

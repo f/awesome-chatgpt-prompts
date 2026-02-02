@@ -1,19 +1,19 @@
-AI has transformed software development. This chapter covers prompting techniques for code generation, debugging, review, and development workflows.
+AI는 소프트웨어 개발을 혁신적으로 변화시켰습니다. 이 장에서는 코드 생성, 디버깅, 리뷰 및 개발 워크플로우를 위한 프롬프팅 기법을 다룹니다.
 
-<Callout type="info" title="AI as Coding Partner">
-AI excels at code generation, debugging, and documentation—but always review generated code for security, correctness, and maintainability. Never deploy AI code without testing.
+<Callout type="info" title="코딩 파트너로서의 AI">
+AI는 코드 생성, 디버깅, 문서화에 탁월하지만, 생성된 코드는 항상 보안성, 정확성, 유지보수성을 검토해야 합니다. 테스트 없이 AI 코드를 배포하지 마세요.
 </Callout>
 
-## Code Generation
+## 코드 생성
 
-### Do's and Don'ts: Code Prompts
+### 권장 사항과 주의 사항: 코드 프롬프트
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Write a function to validate emails." }}
-  after={{ label: "✓ Complete specification", content: "Write a Python function that validates email addresses.\n\nInput: string (potential email)\nOutput: tuple[bool, str | None] - (is_valid, error_message)\nHandle: empty string, None, unicode chars\nUse regex, include type hints and docstring." }}
+  before={{ label: "❌ 모호한 요청", content: "이메일을 검증하는 함수를 작성해줘." }}
+  after={{ label: "✓ 완전한 명세", content: "이메일 주소를 검증하는 Python 함수를 작성해주세요.\n\n입력: string (잠재적 이메일)\n출력: tuple[bool, str | None] - (is_valid, error_message)\n처리 항목: 빈 문자열, None, 유니코드 문자\n정규식 사용, 타입 힌트와 docstring 포함." }}
 />
 
-### Function Generation
+### 함수 생성
 
 <TryIt compact prompt={`Write a \${language:Python} function that \${description:validates email addresses}.
 
@@ -29,7 +29,7 @@ Include:
 - Input validation
 - Error handling`} />
 
-### Class/Module Generation
+### 클래스/모듈 생성
 
 <TryIt compact prompt={`Create a \${language:Python} class for \${purpose:managing user sessions}.
 
@@ -48,7 +48,7 @@ Requirements:
 Testing:
 - Include unit test skeleton`} />
 
-### API Endpoint Generation
+### API 엔드포인트 생성
 
 <TryIt compact prompt={`Create a REST API endpoint for \${resource:user profiles}.
 
@@ -71,13 +71,13 @@ Include:
 - Error handling
 - Rate limiting consideration`} />
 
-## Debugging
+## 디버깅
 
-<Callout type="tip" title="Debugging Principle">
-Always include the **expected behavior**, **actual behavior**, and **error message** (if any). The more context you provide, the faster AI can identify the root cause.
+<Callout type="tip" title="디버깅 원칙">
+항상 **예상 동작**, **실제 동작**, 그리고 **오류 메시지**(있는 경우)를 포함하세요. 더 많은 맥락을 제공할수록 AI가 근본 원인을 더 빨리 파악할 수 있습니다.
 </Callout>
 
-### Bug Analysis
+### 버그 분석
 
 <TryIt compact prompt={`Debug this code. It should \${expectedBehavior:return the sum of all numbers} but instead \${actualBehavior:returns 0 for all inputs}.
 
@@ -94,7 +94,7 @@ Steps to debug:
 4. Explain the root cause
 5. Provide the fix with explanation`} />
 
-### Error Message Interpretation
+### 오류 메시지 해석
 
 <TryIt compact prompt={`Explain this error and how to fix it:
 
@@ -112,7 +112,7 @@ Provide:
 3. Step-by-step fix
 4. How to prevent this in the future`} />
 
-### Performance Debugging
+### 성능 디버깅
 
 <TryIt compact prompt={`This code is slow. Analyze and optimize:
 
@@ -130,16 +130,16 @@ Provide:
 4. Show optimized code
 5. Estimate improvement`} />
 
-## Code Review
+## 코드 리뷰
 
-### Do's and Don'ts: Code Review Prompts
+### 권장 사항과 주의 사항: 코드 리뷰 프롬프트
 
 <Compare 
-  before={{ label: "❌ Generic request", content: "Review this code." }}
-  after={{ label: "✓ Specific criteria", content: "Review this code for a pull request.\n\nCheck for:\n1. Correctness: bugs, logic errors, edge cases\n2. Security: injection risks, auth issues\n3. Performance: N+1 queries, memory leaks\n4. Maintainability: naming, complexity\n\nFormat: 🔴 Critical / 🟡 Important / 🟢 Suggestion" }}
+  before={{ label: "❌ 일반적인 요청", content: "이 코드를 리뷰해줘." }}
+  after={{ label: "✓ 구체적인 기준", content: "풀 리퀘스트를 위해 이 코드를 리뷰해주세요.\n\n확인 사항:\n1. 정확성: 버그, 로직 오류, 엣지 케이스\n2. 보안: 인젝션 위험, 인증 문제\n3. 성능: N+1 쿼리, 메모리 누수\n4. 유지보수성: 네이밍, 복잡도\n\n형식: 🔴 치명적 / 🟡 중요 / 🟢 제안" }}
 />
 
-### Comprehensive Review
+### 종합 리뷰
 
 <TryIt compact prompt={`Review this code for a pull request.
 
@@ -159,7 +159,7 @@ Format your review as:
 🟢 Suggestion: nice to have
 💭 Question: clarification needed`} />
 
-### Security Review
+### 보안 리뷰
 
 <TryIt compact prompt={`Perform a security review of this code:
 
@@ -182,9 +182,9 @@ For each finding:
 - Exploit: How it could be attacked
 - Fix: Recommended remediation`} />
 
-## Refactoring
+## 리팩토링
 
-### Code Smell Detection
+### 코드 스멜 탐지
 
 <TryIt compact prompt={`Analyze this code for code smells and refactoring opportunities:
 
@@ -200,7 +200,7 @@ Identify:
 
 For each issue, show before/after code.`} />
 
-### Design Pattern Application
+### 디자인 패턴 적용
 
 <TryIt compact prompt={`Refactor this code using the \${patternName:Factory} pattern.
 
@@ -217,9 +217,9 @@ Provide:
 3. Refactored code
 4. Trade-offs to consider`} />
 
-## Testing
+## 테스팅
 
-### Unit Test Generation
+### 단위 테스트 생성
 
 <TryIt compact prompt={`Write unit tests for this function:
 
@@ -237,7 +237,7 @@ Cover:
 Format: Arrange-Act-Assert pattern
 Include: Descriptive test names`} />
 
-### Test Case Generation
+### 테스트 케이스 생성
 
 <TryIt compact prompt={`Generate test cases for this feature:
 
@@ -250,9 +250,9 @@ Provide test cases in this format:
 |----|----------|-------|------|------|----------|
 | TC01 | ... | ... | ... | ... | High |`} />
 
-## Architecture & Design
+## 아키텍처 및 설계
 
-### System Design
+### 시스템 설계
 
 <TryIt compact prompt={`Design a system for \${requirement:real-time chat application}.
 
@@ -270,7 +270,7 @@ Provide:
 5. Scaling strategy
 6. Trade-offs and alternatives considered`} />
 
-### Database Schema Design
+### 데이터베이스 스키마 설계
 
 <TryIt compact prompt={`Design a database schema for \${application:e-commerce platform}.
 
@@ -286,9 +286,9 @@ Provide:
 4. Foreign key relationships
 5. Sample queries for key operations`} />
 
-## Documentation Generation
+## 문서화 생성
 
-### API Documentation
+### API 문서화
 
 <TryIt compact prompt={`Generate API documentation from this code:
 
@@ -304,7 +304,7 @@ Include:
 - Error codes
 - Authentication requirements`} />
 
-### Inline Documentation
+### 인라인 문서화
 
 <TryIt compact prompt={`Add comprehensive documentation to this code:
 
@@ -319,40 +319,38 @@ Add:
 
 Style: \${docStyle:Google}`} />
 
-## Prompt Templates from prompts.chat
+## prompts.chat의 프롬프트 템플릿
 
-### Act as a Senior Developer
-
-```
-I want you to act as a senior software developer. I will provide 
-code and ask questions about it. You will review the code, suggest 
-improvements, explain concepts, and help debug issues. Your 
-responses should be educational and help me become a better 
-developer.
-```
-
-### Act as a Code Reviewer
+### 시니어 개발자로 활동하기
 
 ```
-I want you to act as a code reviewer. I will provide pull requests 
-with code changes, and you will review them thoroughly. Check for 
-bugs, security issues, performance problems, and adherence to best 
-practices. Provide constructive feedback that helps the developer 
-improve.
+당신이 시니어 소프트웨어 개발자로 활동해 주셨으면 합니다. 제가 코드를 
+제공하고 이에 대해 질문하겠습니다. 코드를 리뷰하고, 개선 사항을 제안하며, 
+개념을 설명하고, 문제를 디버깅하는 것을 도와주세요. 당신의 답변은 
+교육적이어야 하며, 제가 더 나은 개발자가 되도록 도와주세요.
 ```
 
-### Act as a Software Architect
+### 코드 리뷰어로 활동하기
 
 ```
-I want you to act as a software architect. I will describe system 
-requirements and constraints, and you will design scalable, 
-maintainable architectures. Explain your design decisions, 
-trade-offs, and provide diagrams where helpful.
+당신이 코드 리뷰어로 활동해 주셨으면 합니다. 제가 코드 변경 사항이 포함된 
+풀 리퀘스트를 제공하면, 철저하게 리뷰해 주세요. 버그, 보안 문제, 성능 
+문제, 모범 사례 준수 여부를 확인해 주세요. 개발자가 발전할 수 있도록 
+건설적인 피드백을 제공해 주세요.
 ```
 
-## Development Workflow Integration
+### 소프트웨어 아키텍트로 활동하기
 
-### Commit Message Generation
+```
+당신이 소프트웨어 아키텍트로 활동해 주셨으면 합니다. 제가 시스템 요구 
+사항과 제약 조건을 설명하면, 확장 가능하고 유지보수하기 쉬운 아키텍처를 
+설계해 주세요. 설계 결정, 트레이드오프를 설명하고, 필요한 경우 다이어그램을 
+제공해 주세요.
+```
+
+## 개발 워크플로우 통합
+
+### 커밋 메시지 생성
 
 <TryIt compact prompt={`Generate a commit message for these changes:
 
@@ -367,7 +365,7 @@ Provide:
 - Body (what and why, wrapped at 72 chars)
 - Footer (references issues if applicable)`} />
 
-### PR Description Generation
+### PR 설명 생성
 
 <TryIt compact prompt={`Generate a pull request description:
 
@@ -392,22 +390,22 @@ placeholder
 ## Related Issues
 Closes #\${issueNumber:123}`} />
 
-## Summary
+## 요약
 
-<Callout type="tip" title="Key Techniques">
-Include full context (language, framework, constraints), specify requirements precisely, request specific output formats, ask for explanations alongside code, and include edge cases to handle.
+<Callout type="tip" title="핵심 기법">
+전체 맥락(언어, 프레임워크, 제약 조건)을 포함하고, 요구 사항을 정확하게 명시하며, 특정 출력 형식을 요청하고, 코드와 함께 설명을 요청하며, 처리할 엣지 케이스를 포함하세요.
 </Callout>
 
 <Quiz 
-  question="What's the most important element to include when asking AI to debug code?"
+  question="AI에게 코드 디버깅을 요청할 때 가장 중요하게 포함해야 할 요소는 무엇인가요?"
   options={[
-    "The programming language only",
-    "Expected behavior, actual behavior, and error message",
-    "Just the code snippet",
-    "The file name"
+    "프로그래밍 언어만",
+    "예상 동작, 실제 동작, 오류 메시지",
+    "코드 스니펫만",
+    "파일 이름"
   ]}
   correctIndex={1}
-  explanation="Debugging requires context: what should happen vs. what actually happens. Error messages and stack traces help AI pinpoint the exact issue quickly."
+  explanation="디버깅에는 맥락이 필요합니다: 무엇이 일어나야 하는지 vs. 실제로 무엇이 일어나는지. 오류 메시지와 스택 트레이스는 AI가 정확한 문제를 빠르게 파악하는 데 도움이 됩니다."
 />
 
-AI is a powerful coding partner—use it for generation, review, debugging, and documentation while maintaining your architectural judgment.
+AI는 강력한 코딩 파트너입니다—코드 생성, 리뷰, 디버깅, 문서화에 활용하되 아키텍처적 판단은 직접 유지하세요.

@@ -1,269 +1,269 @@
-A good prompt gets the job done. An optimized prompt gets the job done efficiently—faster, cheaper, more consistently. This chapter teaches you how to systematically improve prompts across multiple dimensions.
+Хороший промпт выполняет задачу. Оптимизированный промпт выполняет задачу эффективно — быстрее, дешевле, стабильнее. В этой главе вы научитесь систематически улучшать промпты по нескольким направлениям.
 
-<Callout type="tip" title="Try the Prompt Enhancer">
-Want to optimize your prompts automatically? Use our [Prompt Enhancer](/developers#enhancer) tool. It analyzes your prompt, applies optimization techniques, and shows you similar community prompts for inspiration.
+<Callout type="tip" title="Попробуйте улучшитель промптов">
+Хотите автоматически оптимизировать свои промпты? Используйте наш инструмент [Улучшитель промптов](/developers#enhancer). Он анализирует ваш промпт, применяет техники оптимизации и показывает похожие промпты сообщества для вдохновения.
 </Callout>
 
-## The Optimization Trade-offs
+## Компромиссы оптимизации
 
-Every optimization involves trade-offs. Understanding these helps you make intentional choices:
-
-<InfoGrid items={[
-  { label: "Quality vs. Cost", description: "Higher quality often requires more tokens or better models", example: "Adding examples improves accuracy but increases token count", exampleType: "text", color: "blue" },
-  { label: "Speed vs. Quality", description: "Faster models may sacrifice some capability", example: "GPT-4 is smarter but slower than GPT-4o-mini", exampleType: "text", color: "purple" },
-  { label: "Consistency vs. Creativity", description: "Lower temperature = more predictable but less creative", example: "Temperature 0.2 for facts, 0.8 for brainstorming", exampleType: "text", color: "green" },
-  { label: "Simplicity vs. Robustness", description: "Edge case handling adds complexity", example: "Simple prompts fail on unusual inputs", exampleType: "text", color: "amber" }
-]} />
-
-## Measuring What Matters
-
-Before optimizing, define success. What does "better" mean for your use case?
+Каждая оптимизация предполагает компромиссы. Понимание этого поможет вам принимать осознанные решения:
 
 <InfoGrid items={[
-  { label: "Accuracy", description: "How often is the output correct?", example: "90% of code suggestions compile without errors", exampleType: "text", color: "blue" },
-  { label: "Relevance", description: "Does it address what was actually asked?", example: "Response directly answers the question vs. tangents", exampleType: "text", color: "blue" },
-  { label: "Completeness", description: "Are all requirements covered?", example: "All 5 requested sections included in output", exampleType: "text", color: "blue" },
-  { label: "Latency", description: "How long until the response arrives?", example: "p50 < 2s, p95 < 5s for chat applications", exampleType: "text", color: "purple" },
-  { label: "Token Efficiency", description: "How many tokens for the same result?", example: "500 tokens vs. 1500 tokens for equivalent output", exampleType: "text", color: "purple" },
-  { label: "Consistency", description: "How similar are outputs for similar inputs?", example: "Same question gets structurally similar answers", exampleType: "text", color: "green" }
+  { label: "Качество vs. Стоимость", description: "Более высокое качество часто требует больше токенов или лучших моделей", example: "Добавление примеров улучшает точность, но увеличивает количество токенов", exampleType: "text", color: "blue" },
+  { label: "Скорость vs. Качество", description: "Более быстрые модели могут уступать в возможностях", example: "GPT-4 умнее, но медленнее, чем GPT-4o-mini", exampleType: "text", color: "purple" },
+  { label: "Стабильность vs. Креативность", description: "Низкая температура = более предсказуемо, но менее креативно", example: "Температура 0.2 для фактов, 0.8 для мозгового штурма", exampleType: "text", color: "green" },
+  { label: "Простота vs. Надёжность", description: "Обработка крайних случаев добавляет сложность", example: "Простые промпты не справляются с необычными входными данными", exampleType: "text", color: "amber" }
 ]} />
 
-<Callout type="info" title="What Do p50 and p95 Mean?">
-Percentile metrics show response time distribution. **p50** (median) means 50% of requests are faster than this value. **p95** means 95% are faster—it catches slow outliers. If your p50 is 1s but p95 is 10s, most users are happy but 5% experience frustrating delays.
+## Измерение того, что важно
+
+Прежде чем оптимизировать, определите критерии успеха. Что значит «лучше» для вашего случая использования?
+
+<InfoGrid items={[
+  { label: "Точность", description: "Как часто результат правильный?", example: "90% предложений кода компилируются без ошибок", exampleType: "text", color: "blue" },
+  { label: "Релевантность", description: "Отвечает ли результат на то, что было спрошено?", example: "Ответ напрямую отвечает на вопрос, а не уходит в сторону", exampleType: "text", color: "blue" },
+  { label: "Полнота", description: "Все ли требования охвачены?", example: "Все 5 запрошенных разделов включены в результат", exampleType: "text", color: "blue" },
+  { label: "Задержка", description: "Сколько времени до получения ответа?", example: "p50 < 2с, p95 < 5с для чат-приложений", exampleType: "text", color: "purple" },
+  { label: "Эффективность токенов", description: "Сколько токенов нужно для того же результата?", example: "500 токенов против 1500 токенов для эквивалентного результата", exampleType: "text", color: "purple" },
+  { label: "Согласованность", description: "Насколько похожи результаты для похожих входных данных?", example: "Один и тот же вопрос получает структурно похожие ответы", exampleType: "text", color: "green" }
+]} />
+
+<Callout type="info" title="Что означают p50 и p95?">
+Перцентильные метрики показывают распределение времени отклика. **p50** (медиана) означает, что 50% запросов выполняются быстрее этого значения. **p95** означает, что 95% быстрее — это позволяет отследить медленные выбросы. Если ваш p50 равен 1с, но p95 равен 10с, большинство пользователей довольны, но 5% испытывают раздражающие задержки.
 </Callout>
 
 <TryIt 
-  title="Define Your Success Metrics"
-  description="Use this template to clarify what you're optimizing for before making changes."
-  prompt={`Help me define success metrics for my prompt optimization.
+  title="Определите ваши метрики успеха"
+  description="Используйте этот шаблон, чтобы уточнить, что вы оптимизируете, прежде чем вносить изменения."
+  prompt={`Помоги мне определить метрики успеха для оптимизации моего промпта.
 
-**My use case**: \${useCase}
-**Current pain points**: \${painPoints}
+**Мой случай использования**: \${useCase}
+**Текущие проблемы**: \${painPoints}
 
-For this use case, help me define:
+Для этого случая использования помоги мне определить:
 
-1. **Primary metric**: What single metric matters most?
-2. **Secondary metrics**: What else should I track?
-3. **Acceptable trade-offs**: What can I sacrifice for the primary metric?
-4. **Red lines**: What quality level is unacceptable?
-5. **How to measure**: Practical ways to evaluate each metric`}
+1. **Основная метрика**: Какая единственная метрика наиболее важна?
+2. **Второстепенные метрики**: Что ещё следует отслеживать?
+3. **Допустимые компромиссы**: Чем можно пожертвовать ради основной метрики?
+4. **Красные линии**: Какой уровень качества неприемлем?
+5. **Как измерять**: Практические способы оценки каждой метрики`}
 />
 
-## Token Optimization
+## Оптимизация токенов
 
-Tokens cost money and add latency. Here's how to say the same thing with fewer tokens.
+Токены стоят денег и увеличивают задержку. Вот как сказать то же самое меньшим количеством токенов.
 
-### The Compression Principle
+### Принцип сжатия
 
 <Compare 
-  before={{ label: "Verbose (67 tokens)", content: "I would like you to please help me with the following task. I need you to take the text that I'm going to provide below and create a summary of it. The summary should capture the main points and be concise. Please make sure to include all the important information. Here is the text:\n\n[text]" }}
-  after={{ label: "Concise (12 tokens)", content: "Summarize this text, capturing main points concisely:\n\n[text]" }}
+  before={{ label: "Многословно (67 токенов)", content: "I would like you to please help me with the following task. I need you to take the text that I'm going to provide below and create a summary of it. The summary should capture the main points and be concise. Please make sure to include all the important information. Here is the text:\n\n[text]" }}
+  after={{ label: "Лаконично (12 токенов)", content: "Summarize this text, capturing main points concisely:\n\n[text]" }}
 />
 
-**Same result, 82% fewer tokens.**
+**Тот же результат, на 82% меньше токенов.**
 
-### Token-Saving Techniques
+### Техники экономии токенов
 
 <InfoGrid items={[
-  { label: "Cut Pleasantries", description: "\"Please\" and \"Thank you\" add tokens without improving output", example: "\"Please summarize\" → \"Summarize\"", color: "green" },
-  { label: "Eliminate Redundancy", description: "Don't repeat yourself or state the obvious", example: "\"Write a summary that summarizes\" → \"Summarize\"", color: "green" },
-  { label: "Use Abbreviations", description: "Where meaning is clear, abbreviate", example: "\"for example\" → \"e.g.\"", color: "green" },
-  { label: "Reference by Position", description: "Point to content instead of repeating it", example: "\"the text above\" instead of re-quoting", color: "green" }
+  { label: "Уберите вежливости", description: "\"Please\" и \"Thank you\" добавляют токены, не улучшая результат", example: "\"Please summarize\" → \"Summarize\"", color: "green" },
+  { label: "Устраните избыточность", description: "Не повторяйтесь и не констатируйте очевидное", example: "\"Write a summary that summarizes\" → \"Summarize\"", color: "green" },
+  { label: "Используйте сокращения", description: "Где смысл понятен, сокращайте", example: "\"for example\" → \"e.g.\"", color: "green" },
+  { label: "Ссылайтесь по позиции", description: "Указывайте на контент вместо его повторения", example: "\"the text above\" вместо повторного цитирования", color: "green" }
 ]} />
 
 <TryIt 
-  title="Prompt Compressor"
-  description="Paste a verbose prompt to get a token-optimized version."
-  prompt={`Compress this prompt while preserving its meaning and effectiveness:
+  title="Компрессор промптов"
+  description="Вставьте многословный промпт, чтобы получить оптимизированную по токенам версию."
+  prompt={`Сожми этот промпт, сохраняя его смысл и эффективность:
 
-Original prompt:
+Исходный промпт:
 "\${verbosePrompt}"
 
-Instructions:
-1. Remove unnecessary pleasantries and filler words
-2. Eliminate redundancy
-3. Use concise phrasing
-4. Keep all essential instructions and constraints
-5. Maintain clarity—don't sacrifice understanding for brevity
+Инструкции:
+1. Удали ненужные вежливости и слова-заполнители
+2. Устрани избыточность
+3. Используй лаконичные формулировки
+4. Сохрани все существенные инструкции и ограничения
+5. Поддерживай ясность — не жертвуй пониманием ради краткости
 
-Provide:
-- **Compressed version**: The optimized prompt
-- **Token reduction**: Estimated percentage saved
-- **What was cut**: Brief explanation of what was removed and why it was safe to remove`}
+Предоставь:
+- **Сжатая версия**: Оптимизированный промпт
+- **Сокращение токенов**: Примерный процент экономии
+- **Что было удалено**: Краткое объяснение того, что было удалено и почему это было безопасно удалить`}
 />
 
-## Quality Optimization
+## Оптимизация качества
 
-Sometimes you need better outputs, not cheaper ones. Here's how to improve quality.
+Иногда вам нужны лучшие результаты, а не более дешёвые. Вот как улучшить качество.
 
-### Accuracy Boosters
+### Усилители точности
 
 <InfoGrid items={[
-  { label: "Add Verification", description: "Ask the model to check its own work", example: "\"...then verify your answer is correct\"", color: "blue" },
-  { label: "Request Confidence", description: "Make uncertainty explicit", example: "\"Rate your confidence 1-10 and explain any uncertainty\"", color: "blue" },
-  { label: "Multiple Approaches", description: "Get different perspectives, then choose", example: "\"Provide 3 approaches and recommend the best one\"", color: "blue" },
-  { label: "Explicit Reasoning", description: "Force step-by-step thinking", example: "\"Think step by step and show your reasoning\"", color: "blue" }
+  { label: "Добавьте проверку", description: "Попросите модель проверить свою работу", example: "\"...затем проверь, что твой ответ правильный\"", color: "blue" },
+  { label: "Запросите уверенность", description: "Сделайте неопределённость явной", example: "\"Оцени свою уверенность от 1 до 10 и объясни любую неопределённость\"", color: "blue" },
+  { label: "Несколько подходов", description: "Получите разные точки зрения, затем выберите", example: "\"Предложи 3 подхода и порекомендуй лучший\"", color: "blue" },
+  { label: "Явное рассуждение", description: "Заставьте думать пошагово", example: "\"Думай шаг за шагом и покажи своё рассуждение\"", color: "blue" }
 ]} />
 
-### Consistency Boosters
+### Усилители согласованности
 
 <InfoGrid items={[
-  { label: "Detailed Format Specs", description: "Show exactly what output should look like", example: "Include a template or schema", exampleType: "text", color: "purple" },
-  { label: "Few-Shot Examples", description: "Provide 2-3 examples of ideal output", example: "\"Here's what good looks like: [examples]\"", color: "purple" },
-  { label: "Lower Temperature", description: "Reduce randomness for more predictable output", example: "Temperature 0.3-0.5 for consistent results", exampleType: "text", color: "purple" },
-  { label: "Output Validation", description: "Add a validation step for critical fields", example: "\"Verify all required fields are present\"", color: "purple" }
+  { label: "Детальные спецификации формата", description: "Покажите точно, как должен выглядеть результат", example: "Включите шаблон или схему", exampleType: "text", color: "purple" },
+  { label: "Примеры few-shot", description: "Предоставьте 2-3 примера идеального результата", example: "\"Вот как выглядит хороший результат: [примеры]\"", color: "purple" },
+  { label: "Низкая температура", description: "Уменьшите случайность для более предсказуемого результата", example: "Температура 0.3-0.5 для стабильных результатов", exampleType: "text", color: "purple" },
+  { label: "Валидация результата", description: "Добавьте шаг проверки для критических полей", example: "\"Проверь, что все обязательные поля присутствуют\"", color: "purple" }
 ]} />
 
 <TryIt 
-  title="Quality Enhancer"
-  description="Add quality-improving elements to your prompt."
-  prompt={`Enhance this prompt for higher quality outputs:
+  title="Улучшитель качества"
+  description="Добавьте элементы, улучшающие качество, к вашему промпту."
+  prompt={`Улучши этот промпт для получения более качественных результатов:
 
-Original prompt:
+Исходный промпт:
 "\${originalPrompt}"
 
-**What quality issue I'm seeing**: \${qualityIssue}
+**Какую проблему качества я наблюдаю**: \${qualityIssue}
 
-Add appropriate quality boosters:
-1. If accuracy is the issue → add verification steps
-2. If consistency is the issue → add format specifications or examples
-3. If relevance is the issue → add context and constraints
-4. If completeness is the issue → add explicit requirements
+Добавь соответствующие усилители качества:
+1. Если проблема в точности → добавь шаги проверки
+2. Если проблема в согласованности → добавь спецификации формата или примеры
+3. Если проблема в релевантности → добавь контекст и ограничения
+4. Если проблема в полноте → добавь явные требования
 
-Provide the enhanced prompt with explanations for each addition.`}
+Предоставь улучшенный промпт с объяснениями для каждого добавления.`}
 />
 
-## Latency Optimization
+## Оптимизация задержки
 
-When speed matters, every millisecond counts.
+Когда скорость важна, каждая миллисекунда на счету.
 
-### Model Selection by Speed Need
-
-<InfoGrid items={[
-  { label: "Real-time (< 500ms)", description: "Use smallest effective model + aggressive caching", example: "GPT-4o-mini, Claude Haiku, cached responses", exampleType: "text", color: "red" },
-  { label: "Interactive (< 2s)", description: "Fast models, streaming enabled", example: "GPT-4o-mini with streaming", exampleType: "text", color: "amber" },
-  { label: "Tolerant (< 10s)", description: "Mid-tier models, balance quality/speed", example: "GPT-4o, Claude Sonnet", exampleType: "text", color: "green" },
-  { label: "Async/Batch", description: "Use best model, process in background", example: "GPT-4, Claude Opus for offline processing", exampleType: "text", color: "blue" }
-]} />
-
-### Speed Techniques
+### Выбор модели по потребности в скорости
 
 <InfoGrid items={[
-  { label: "Shorter Prompts", description: "Fewer input tokens = faster processing", example: "Compress prompts, remove unnecessary context", exampleType: "text", color: "cyan" },
-  { label: "Limit Output", description: "Set max_tokens to prevent runaway responses", example: "max_tokens: 500 for summaries", exampleType: "text", color: "cyan" },
-  { label: "Use Streaming", description: "Get first tokens faster, better UX", example: "Stream for any response > 100 tokens", exampleType: "text", color: "cyan" },
-  { label: "Cache Aggressively", description: "Don't recompute identical queries", example: "Cache common questions, template outputs", exampleType: "text", color: "cyan" }
+  { label: "Реальное время (< 500мс)", description: "Используйте самую маленькую эффективную модель + агрессивное кэширование", example: "GPT-4o-mini, Claude Haiku, кэшированные ответы", exampleType: "text", color: "red" },
+  { label: "Интерактивный (< 2с)", description: "Быстрые модели, включён стриминг", example: "GPT-4o-mini со стримингом", exampleType: "text", color: "amber" },
+  { label: "Толерантный (< 10с)", description: "Модели среднего уровня, баланс качества/скорости", example: "GPT-4o, Claude Sonnet", exampleType: "text", color: "green" },
+  { label: "Асинхронный/Пакетный", description: "Используйте лучшую модель, обрабатывайте в фоне", example: "GPT-4, Claude Opus для офлайн-обработки", exampleType: "text", color: "blue" }
 ]} />
 
-## Cost Optimization
+### Техники ускорения
 
-At scale, small savings multiply into significant budget impact.
+<InfoGrid items={[
+  { label: "Короткие промпты", description: "Меньше входных токенов = быстрее обработка", example: "Сжимайте промпты, удаляйте ненужный контекст", exampleType: "text", color: "cyan" },
+  { label: "Ограничьте вывод", description: "Установите max_tokens для предотвращения бесконтрольных ответов", example: "max_tokens: 500 для резюме", exampleType: "text", color: "cyan" },
+  { label: "Используйте стриминг", description: "Получайте первые токены быстрее, лучше UX", example: "Стриминг для любого ответа > 100 токенов", exampleType: "text", color: "cyan" },
+  { label: "Кэшируйте агрессивно", description: "Не пересчитывайте идентичные запросы", example: "Кэшируйте частые вопросы, шаблонные результаты", exampleType: "text", color: "cyan" }
+]} />
 
-### Understanding Costs
+## Оптимизация стоимости
 
-Use this calculator to estimate your API costs across different models:
+В масштабе небольшая экономия умножается в значительное влияние на бюджет.
+
+### Понимание затрат
+
+Используйте этот калькулятор для оценки ваших затрат на API для разных моделей:
 
 <CostCalculatorDemo />
 
-### Cost Reduction Strategies
+### Стратегии снижения затрат
 
 <InfoGrid items={[
-  { label: "Model Routing", description: "Use expensive models only when needed", example: "Simple questions → GPT-4o-mini, Complex → GPT-4", exampleType: "text", color: "green" },
-  { label: "Prompt Efficiency", description: "Shorter prompts = lower cost per request", example: "Cut 50% of tokens = 50% input cost savings", exampleType: "text", color: "green" },
-  { label: "Output Control", description: "Limit response length when full detail isn't needed", example: "\"Answer in 2-3 sentences\" vs. unlimited", color: "green" },
-  { label: "Batching", description: "Combine related queries into single requests", example: "Analyze 10 items in one prompt vs. 10 separate calls", exampleType: "text", color: "green" },
-  { label: "Pre-filtering", description: "Don't send requests that don't need AI", example: "Keyword matching before expensive classification", exampleType: "text", color: "green" }
+  { label: "Маршрутизация моделей", description: "Используйте дорогие модели только когда нужно", example: "Простые вопросы → GPT-4o-mini, Сложные → GPT-4", exampleType: "text", color: "green" },
+  { label: "Эффективность промптов", description: "Короткие промпты = меньше затрат на запрос", example: "Сократите 50% токенов = 50% экономии на входе", exampleType: "text", color: "green" },
+  { label: "Контроль вывода", description: "Ограничьте длину ответа, когда полная детализация не нужна", example: "\"Ответь в 2-3 предложениях\" вместо без ограничений", color: "green" },
+  { label: "Пакетирование", description: "Объединяйте связанные запросы в один", example: "Анализ 10 элементов в одном промпте вместо 10 отдельных вызовов", exampleType: "text", color: "green" },
+  { label: "Предварительная фильтрация", description: "Не отправляйте запросы, которые не требуют ИИ", example: "Сопоставление ключевых слов перед дорогой классификацией", exampleType: "text", color: "green" }
 ]} />
 
-## The Optimization Loop
+## Цикл оптимизации
 
-Optimization is iterative. Here's a systematic process:
+Оптимизация — это итеративный процесс. Вот систематический подход:
 
-### Step 1: Establish Baseline
+### Шаг 1: Установите базовый уровень
 
-You can't improve what you don't measure. Before changing anything, document your starting point rigorously.
+Нельзя улучшить то, что не измеряешь. Прежде чем что-то менять, тщательно задокументируйте начальную точку.
 
 <InfoGrid items={[
-  { label: "Prompt Documentation", description: "Save the exact prompt text, including system prompts and any templates", example: "Version control your prompts like code", exampleType: "text", color: "blue" },
-  { label: "Test Set", description: "Create 20-50 representative inputs that cover common cases and edge cases", example: "Include easy, medium, and hard examples", exampleType: "text", color: "blue" },
-  { label: "Quality Metrics", description: "Score each output against your success criteria", example: "Accuracy %, relevance score, format compliance", exampleType: "text", color: "purple" },
-  { label: "Performance Metrics", description: "Measure tokens and timing for each test case", example: "Avg input: 450 tokens, Avg output: 200 tokens, p50 latency: 1.2s", exampleType: "text", color: "purple" }
+  { label: "Документация промпта", description: "Сохраните точный текст промпта, включая системные промпты и шаблоны", example: "Версионируйте промпты как код", exampleType: "text", color: "blue" },
+  { label: "Тестовый набор", description: "Создайте 20-50 репрезентативных входных данных, охватывающих типичные и крайние случаи", example: "Включите лёгкие, средние и сложные примеры", exampleType: "text", color: "blue" },
+  { label: "Метрики качества", description: "Оцените каждый результат по вашим критериям успеха", example: "% точности, оценка релевантности, соответствие формату", exampleType: "text", color: "purple" },
+  { label: "Метрики производительности", description: "Измерьте токены и время для каждого тестового случая", example: "Сред. вход: 450 токенов, Сред. выход: 200 токенов, p50 задержка: 1.2с", exampleType: "text", color: "purple" }
 ]} />
 
 <TryIt 
-  title="Baseline Documentation Template"
-  description="Use this to create a comprehensive baseline before optimizing."
-  prompt={`Create a baseline documentation for my prompt optimization project.
+  title="Шаблон документации базового уровня"
+  description="Используйте это для создания всесторонней документации базового уровня перед оптимизацией."
+  prompt={`Создай документацию базового уровня для моего проекта оптимизации промптов.
 
-**Current prompt**:
+**Текущий промпт**:
 "\${currentPrompt}"
 
-**What the prompt does**: \${promptPurpose}
+**Что делает промпт**: \${promptPurpose}
 
-**Current issues I'm seeing**: \${currentIssues}
+**Текущие проблемы, которые я наблюдаю**: \${currentIssues}
 
-Generate a baseline documentation template with:
+Сгенерируй шаблон документации базового уровня с:
 
-1. **Prompt Snapshot**: The exact prompt text (for version control)
+1. **Снимок промпта**: Точный текст промпта (для контроля версий)
 
-2. **Test Cases**: Suggest 10 representative test inputs I should use, covering:
-   - 3 typical/easy cases
-   - 4 medium complexity cases  
-   - 3 edge cases or difficult inputs
+2. **Тестовые случаи**: Предложи 10 репрезентативных тестовых входных данных, которые я должен использовать, охватывающих:
+   - 3 типичных/лёгких случая
+   - 4 случая средней сложности  
+   - 3 крайних случая или сложных входных данных
 
-3. **Metrics to Track**:
-   - Quality metrics specific to this use case
-   - Efficiency metrics (tokens, latency)
-   - How to score each metric
+3. **Метрики для отслеживания**:
+   - Метрики качества, специфичные для этого случая использования
+   - Метрики эффективности (токены, задержка)
+   - Как оценивать каждую метрику
 
-4. **Baseline Hypothesis**: What do I expect the current performance to be?
+4. **Базовая гипотеза**: Какую производительность я ожидаю от текущего решения?
 
-5. **Success Criteria**: What numbers would make me satisfied with optimization?`}
+5. **Критерии успеха**: Какие показатели сделают меня удовлетворённым оптимизацией?`}
 />
 
-### Step 2: Form a Hypothesis
+### Шаг 2: Сформулируйте гипотезу
 
 <Compare 
-  before={{ label: "Vague goal", content: "I want to make my prompt better." }}
-  after={{ label: "Testable hypothesis", content: "If I add 2 few-shot examples, accuracy will improve from 75% to 85% because the model will learn the expected pattern." }}
+  before={{ label: "Размытая цель", content: "Я хочу сделать мой промпт лучше." }}
+  after={{ label: "Проверяемая гипотеза", content: "Если я добавлю 2 примера few-shot, точность улучшится с 75% до 85%, потому что модель научится ожидаемому паттерну." }}
 />
 
-### Step 3: Test One Change
+### Шаг 3: Тестируйте одно изменение
 
-Change one thing at a time. Run both versions on the same test inputs. Measure the metrics that matter.
+Меняйте одну вещь за раз. Запускайте обе версии на одних и тех же тестовых входных данных. Измеряйте важные метрики.
 
-### Step 4: Analyze and Decide
+### Шаг 4: Анализируйте и принимайте решение
 
-Did it work? Keep the change. Did it hurt? Revert. Was it neutral? Revert (simpler is better).
+Сработало? Оставьте изменение. Навредило? Откатите. Нейтрально? Откатите (проще — лучше).
 
-### Step 5: Repeat
+### Шаг 5: Повторяйте
 
-Generate new hypotheses based on what you learned. Keep iterating until you hit your targets or reach diminishing returns.
+Генерируйте новые гипотезы на основе того, что вы узнали. Продолжайте итерации, пока не достигнете целей или не дойдёте до убывающей отдачи.
 
-## Optimization Checklist
+## Чек-лист оптимизации
 
 <Checklist 
-  title="Before Deploying an Optimized Prompt"
+  title="Перед развёртыванием оптимизированного промпта"
   items={[
-    { text: "Defined clear success metrics" },
-    { text: "Measured baseline performance" },
-    { text: "Tested changes on representative inputs" },
-    { text: "Verified quality didn't regress" },
-    { text: "Checked edge case handling" },
-    { text: "Calculated cost at expected scale" },
-    { text: "Tested latency under load" },
-    { text: "Documented what changed and why" }
+    { text: "Определены чёткие метрики успеха" },
+    { text: "Измерена базовая производительность" },
+    { text: "Протестированы изменения на репрезентативных входных данных" },
+    { text: "Проверено, что качество не ухудшилось" },
+    { text: "Проверена обработка крайних случаев" },
+    { text: "Рассчитана стоимость при ожидаемом масштабе" },
+    { text: "Протестирована задержка под нагрузкой" },
+    { text: "Задокументировано, что изменилось и почему" }
   ]}
 />
 
 <Quiz 
-  question="You have a prompt that works well but costs too much at scale. What's the FIRST thing you should do?"
+  question="У вас есть промпт, который хорошо работает, но слишком дорог в масштабе. Что нужно сделать В ПЕРВУЮ ОЧЕРЕДЬ?"
   options={[
-    "Switch to a cheaper model immediately",
-    "Remove words from the prompt to reduce tokens",
-    "Measure which part of the prompt is using the most tokens",
-    "Add caching for all requests"
+    "Немедленно переключиться на более дешёвую модель",
+    "Удалить слова из промпта для сокращения токенов",
+    "Измерить, какая часть промпта использует больше всего токенов",
+    "Добавить кэширование для всех запросов"
   ]}
   correctIndex={2}
-  explanation="Before optimizing, measure. You need to understand where the tokens are going before you can effectively reduce them. The prompt might have unnecessary context, verbose instructions, or generate longer outputs than needed. Measurement tells you where to focus your optimization efforts."
+  explanation="Прежде чем оптимизировать, измеряйте. Вам нужно понять, куда уходят токены, прежде чем вы сможете эффективно их сократить. В промпте может быть ненужный контекст, многословные инструкции, или он может генерировать более длинные результаты, чем нужно. Измерение подскажет, на чём сосредоточить усилия по оптимизации."
 />

@@ -1,108 +1,108 @@
-Getting consistent, well-formatted output is essential for production applications and efficient workflows. This chapter covers techniques for controlling exactly how AI models format their responses.
+Получение согласованного, хорошо отформатированного вывода важно для production-приложений и эффективных рабочих процессов. В этой главе рассматриваются техники точного контроля форматирования ответов ИИ-моделей.
 
-<Callout type="info" title="From Prose to Data">
-Structured output transforms AI responses from freeform text into actionable, parseable data.
+<Callout type="info" title="От прозы к данным">
+Структурированный вывод преобразует ответы ИИ из свободного текста в обрабатываемые, парсируемые данные.
 </Callout>
 
-## Why Structure Matters
+## Почему структура важна
 
 <StructuredOutputDemo />
 
-## Basic Formatting Techniques
+## Базовые техники форматирования
 
-### Lists
+### Списки
 
-Lists are perfect for step-by-step instructions, ranked items, or collections of related points. They're easy to scan and parse. Use **numbered lists** when order matters (steps, rankings) and **bullet points** for unordered collections.
-
-<TryIt 
-  compact
-  title="List Formatting"
-  prompt={`Provide 5 tips for better sleep.
-
-Format: Numbered list with a brief explanation for each.
-Each tip should be bold, followed by a dash and explanation.`}
-/>
-
-<Callout type="tip" title="List Best Practices">
-Specify the exact number of items you want, whether to include explanations, and if items should be bold or have a specific structure.
-</Callout>
-
-### Tables
-
-Tables excel at comparing multiple items across the same dimensions. They're ideal for feature comparisons, data summaries, and any information with consistent attributes. Always define your column headers explicitly.
+Списки идеально подходят для пошаговых инструкций, ранжированных элементов или коллекций связанных пунктов. Их легко просматривать и обрабатывать. Используйте **нумерованные списки**, когда важен порядок (шаги, рейтинги), и **маркированные списки** для неупорядоченных коллекций.
 
 <TryIt 
   compact
-  title="Table Formatting"
-  prompt={`Compare the top 4 Python web frameworks.
+  title="Форматирование списка"
+  prompt={`Предоставьте 5 советов для улучшения сна.
 
-Format as a markdown table with columns:
-| Framework | Best For | Learning Curve | Performance |`}
+Формат: Нумерованный список с кратким объяснением для каждого пункта.
+Каждый совет должен быть выделен жирным шрифтом, за которым следует тире и объяснение.`}
 />
 
-<Callout type="tip" title="Table Best Practices">
-Specify column names, expected data types (text, numbers, ratings), and how many rows you need. For complex comparisons, limit to 4-6 columns for readability.
+<Callout type="tip" title="Лучшие практики для списков">
+Указывайте точное количество элементов, нужны ли объяснения, и должны ли элементы быть выделены жирным шрифтом или иметь определённую структуру.
 </Callout>
 
-### Headers and Sections
+### Таблицы
 
-Headers create a clear document structure, making long responses scannable and organized. Use them for reports, analyses, or any multi-part response. Hierarchical headers (##, ###) show relationships between sections.
+Таблицы отлично подходят для сравнения нескольких элементов по одинаковым параметрам. Они идеальны для сравнения функций, сводок данных и любой информации с единообразными атрибутами. Всегда явно определяйте заголовки столбцов.
 
-```
-Analyze this business proposal.
+<TryIt 
+  compact
+  title="Форматирование таблицы"
+  prompt={`Сравните 4 лучших веб-фреймворка для Python.
 
-Structure your response with these sections:
-## Executive Summary
-## Strengths
-## Weaknesses
-## Recommendations
-## Risk Assessment
-```
+Оформите в виде markdown-таблицы со столбцами:
+| Фреймворк | Лучше всего для | Кривая обучения | Производительность |`}
+/>
 
-<Callout type="tip" title="Section Best Practices">
-List your sections in the order you want them. For consistency, specify what each section should contain (e.g., "Executive Summary: 2-3 sentences only").
+<Callout type="tip" title="Лучшие практики для таблиц">
+Указывайте названия столбцов, ожидаемые типы данных (текст, числа, рейтинги) и количество необходимых строк. Для сложных сравнений ограничивайтесь 4-6 столбцами для удобства чтения.
 </Callout>
 
-### Emphasis with Uppercase Directives
+### Заголовки и разделы
 
-Uppercase words act as strong signals to the model, emphasizing critical constraints or requirements. Use them sparingly for maximum impact—overuse dilutes their effectiveness.
+Заголовки создают чёткую структуру документа, делая длинные ответы удобными для просмотра и организованными. Используйте их для отчётов, анализов или любых многокомпонентных ответов. Иерархические заголовки (##, ###) показывают связи между разделами.
 
-**Common Uppercase Directives:**
+```
+Проанализируйте это бизнес-предложение.
+
+Структурируйте свой ответ по следующим разделам:
+## Краткое резюме
+## Сильные стороны
+## Слабые стороны
+## Рекомендации
+## Оценка рисков
+```
+
+<Callout type="tip" title="Лучшие практики для разделов">
+Перечисляйте разделы в нужном порядке. Для единообразия указывайте, что должен содержать каждый раздел (например, «Краткое резюме: только 2-3 предложения»).
+</Callout>
+
+### Акцентирование с помощью директив в верхнем регистре
+
+Слова в верхнем регистре служат сильными сигналами для модели, подчёркивая критические ограничения или требования. Используйте их умеренно для максимального эффекта — чрезмерное использование снижает их действенность.
+
+**Распространённые директивы в верхнем регистре:**
 
 <InfoGrid items={[
-  { label: "NEVER", description: "Absolute prohibition: \"NEVER include personal opinions\"", color: "red" },
-  { label: "ALWAYS", description: "Mandatory requirement: \"ALWAYS cite sources\"", color: "green" },
-  { label: "IMPORTANT", description: "Critical instruction: \"IMPORTANT: Keep responses under 100 words\"", color: "amber" },
-  { label: "DO NOT", description: "Strong prohibition: \"DO NOT make up statistics\"", color: "red" },
-  { label: "MUST", description: "Required action: \"Output MUST be valid JSON\"", color: "blue" },
-  { label: "ONLY", description: "Restriction: \"Return ONLY the code, no explanations\"", color: "purple" },
+  { label: "NEVER", description: "Абсолютный запрет: «NEVER include personal opinions»", color: "red" },
+  { label: "ALWAYS", description: "Обязательное требование: «ALWAYS cite sources»", color: "green" },
+  { label: "IMPORTANT", description: "Критическая инструкция: «IMPORTANT: Keep responses under 100 words»", color: "amber" },
+  { label: "DO NOT", description: "Строгий запрет: «DO NOT make up statistics»", color: "red" },
+  { label: "MUST", description: "Обязательное действие: «Output MUST be valid JSON»", color: "blue" },
+  { label: "ONLY", description: "Ограничение: «Return ONLY the code, no explanations»", color: "purple" },
 ]} />
 
 ```
-Summarize this article.
+Обобщите эту статью.
 
-IMPORTANT: Keep the summary under 100 words.
-NEVER add information not present in the original.
-ALWAYS maintain the original tone and perspective.
-DO NOT include your own opinions or analysis.
+IMPORTANT: Держите резюме в пределах 100 слов.
+NEVER добавляйте информацию, отсутствующую в оригинале.
+ALWAYS сохраняйте оригинальный тон и точку зрения.
+DO NOT включайте собственные мнения или анализ.
 ```
 
-<Callout type="warning" title="Use Sparingly">
-If everything is uppercase or marked as critical, nothing stands out. Reserve these directives for genuinely important constraints.
+<Callout type="warning" title="Используйте умеренно">
+Если всё написано в верхнем регистре или помечено как критическое, ничего не выделяется. Сохраняйте эти директивы для действительно важных ограничений.
 </Callout>
 
-## JSON Output
+## Вывод в формате JSON
 
-JSON (JavaScript Object Notation) is the most popular format for structured AI output. It's machine-readable, widely supported by programming languages, and perfect for APIs, databases, and automation workflows. The key to reliable JSON is providing a clear schema.
+JSON (JavaScript Object Notation) — самый популярный формат для структурированного вывода ИИ. Он машиночитаем, широко поддерживается языками программирования и идеально подходит для API, баз данных и автоматизированных рабочих процессов. Ключ к надёжному JSON — предоставление чёткой схемы.
 
-### Basic JSON Request
+### Базовый запрос JSON
 
-Start with a template showing the exact structure you want. Include field names, data types, and example values. This acts as a contract the model will follow.
+Начните с шаблона, показывающего точную структуру, которую вы хотите получить. Включите названия полей, типы данных и примеры значений. Это служит контрактом, которому модель будет следовать.
 
 <TryIt 
-  title="JSON Extraction"
-  description="Extract structured data from unstructured text."
-  prompt={`Extract information from this text and return as JSON:
+  title="Извлечение JSON"
+  description="Извлечение структурированных данных из неструктурированного текста."
+  prompt={`Извлеките информацию из этого текста и верните в формате JSON:
 
 {
     "company_name": "string",
@@ -112,300 +112,300 @@ Start with a template showing the exact structure you want. Include field names,
     "industry": "string"
 }
 
-Text: "Apple Inc., founded in 1976, is headquartered in Cupertino, California. The technology giant employs approximately 164,000 people worldwide."`}
+Текст: "Apple Inc., основанная в 1976 году, имеет штаб-квартиру в Купертино, Калифорния. Технологический гигант насчитывает около 164 000 сотрудников по всему миру."`}
 />
 
-### Complex JSON Structures
+### Сложные структуры JSON
 
-For nested data, use hierarchical JSON with objects inside objects, arrays of objects, and mixed types. Define each level clearly and use TypeScript-style annotations (`"positive" | "negative"`) to constrain values.
+Для вложенных данных используйте иерархический JSON с объектами внутри объектов, массивами объектов и смешанными типами. Чётко определяйте каждый уровень и используйте аннотации в стиле TypeScript (`"positive" | "negative"`) для ограничения значений.
 
 ```
-Analyze this product review and return JSON:
+Проанализируйте этот отзыв о продукте и верните JSON:
 
 {
-  "review_id": "string (generate unique)",
+  "review_id": "string (сгенерировать уникальный)",
   "sentiment": {
     "overall": "positive" | "negative" | "mixed" | "neutral",
     "score": 0.0-1.0
   },
   "aspects": [
     {
-      "aspect": "string (e.g., 'price', 'quality')",
+      "aspect": "string (например, 'price', 'quality')",
       "sentiment": "positive" | "negative" | "neutral",
-      "mentions": ["exact quotes from review"]
+      "mentions": ["точные цитаты из отзыва"]
     }
   ],
   "purchase_intent": {
     "would_recommend": boolean,
     "confidence": 0.0-1.0
   },
-  "key_phrases": ["string array of notable phrases"]
+  "key_phrases": ["массив строк с примечательными фразами"]
 }
 
-Return ONLY valid JSON, no additional text.
+Верните ONLY валидный JSON, без дополнительного текста.
 
-Review: "[review text]"
+Отзыв: "[текст отзыва]"
 ```
 
-### Ensuring Valid JSON
+### Обеспечение валидности JSON
 
-Models sometimes add explanatory text or markdown formatting around JSON. Prevent this with explicit instructions about output format. You can request raw JSON or JSON inside code blocks—choose based on your parsing needs.
+Модели иногда добавляют пояснительный текст или markdown-форматирование вокруг JSON. Предотвратите это явными инструкциями о формате вывода. Вы можете запросить чистый JSON или JSON внутри блоков кода — выбирайте в зависимости от ваших потребностей парсинга.
 
-Add explicit instructions:
+Добавьте явные инструкции:
 
 ```
 IMPORTANT:
-- Return ONLY the JSON object, no markdown code blocks
-- Ensure all strings are properly escaped
-- Use null for missing values, not undefined
-- Validate that the output is parseable JSON
+- Верните ONLY объект JSON, без markdown-блоков кода
+- Убедитесь, что все строки правильно экранированы
+- Используйте null для отсутствующих значений, не undefined
+- Проверьте, что вывод является парсируемым JSON
 ```
 
-Or request code blocks by asking the model to wrap its output:
+Или запросите блоки кода, попросив модель обернуть вывод:
 
 ````
-Return the result as a JSON code block:
+Верните результат как блок кода JSON:
 ```json
 { ... }
 ```
 ````
 
-## YAML Output
+## Вывод в формате YAML
 
-YAML is more human-readable than JSON, using indentation instead of brackets. It's the standard for configuration files (Docker, Kubernetes, GitHub Actions) and works well when the output will be read by humans or used in DevOps contexts. YAML is sensitive to indentation, so be specific about formatting requirements.
+YAML более удобочитаем для человека, чем JSON, используя отступы вместо скобок. Это стандарт для конфигурационных файлов (Docker, Kubernetes, GitHub Actions) и хорошо работает, когда вывод будет читаться людьми или использоваться в DevOps-контекстах. YAML чувствителен к отступам, поэтому будьте конкретны в требованиях к форматированию.
 
 <TryIt 
   compact
-  title="YAML Generation"
-  prompt={`Generate a GitHub Actions workflow for a Node.js project.
+  title="Генерация YAML"
+  prompt={`Сгенерируйте workflow GitHub Actions для проекта на Node.js.
 
-Return as valid YAML:
-- Include: install, lint, test, build stages
-- Use Node.js 18
-- Cache npm dependencies
-- Run on push to main and pull requests`}
+Верните как валидный YAML:
+- Включите: этапы install, lint, test, build
+- Используйте Node.js 18
+- Кэшируйте npm-зависимости
+- Запускайте при push в main и pull requests`}
 />
 
-## XML Output
+## Вывод в формате XML
 
-XML is still required for many enterprise systems, SOAP APIs, and legacy integrations. It's more verbose than JSON but offers features like attributes, namespaces, and CDATA sections for complex data. Specify element names, nesting structure, and where to use attributes vs. child elements.
-
-```
-Convert this data to XML format:
-
-Requirements:
-- Root element: <catalog>
-- Each item in <book> element
-- Include attributes where appropriate
-- Use CDATA for description text
-
-Data: [book data]
-```
-
-## Custom Formats
-
-Sometimes standard formats don't fit your needs. You can define any custom format by providing a clear template. Custom formats work well for reports, logs, or domain-specific outputs that will be read by humans.
-
-### Structured Analysis Format
-
-Use delimiters (===, ---, [SECTION]) to create scannable documents with clear boundaries between sections. This format is great for code reviews, audits, and analyses.
+XML всё ещё требуется для многих корпоративных систем, SOAP API и устаревших интеграций. Он более многословен, чем JSON, но предлагает такие функции, как атрибуты, пространства имён и секции CDATA для сложных данных. Указывайте названия элементов, структуру вложенности и где использовать атрибуты, а где дочерние элементы.
 
 ```
-Analyze this code using this exact format:
+Преобразуйте эти данные в формат XML:
 
-=== CODE ANALYSIS ===
+Требования:
+- Корневой элемент: <catalog>
+- Каждый элемент в теге <book>
+- Используйте атрибуты где уместно
+- Используйте CDATA для текста описания
+
+Данные: [данные о книгах]
+```
+
+## Пользовательские форматы
+
+Иногда стандартные форматы не соответствуют вашим потребностям. Вы можете определить любой пользовательский формат, предоставив чёткий шаблон. Пользовательские форматы хорошо работают для отчётов, логов или специфичных для домена выводов, которые будут читаться людьми.
+
+### Формат структурированного анализа
+
+Используйте разделители (===, ---, [SECTION]) для создания легко просматриваемых документов с чёткими границами между разделами. Этот формат отлично подходит для код-ревью, аудитов и анализов.
+
+```
+Проанализируйте этот код, используя именно этот формат:
+
+=== АНАЛИЗ КОДА ===
 
 [SUMMARY]
-One paragraph overview
+Обзор в одном абзаце
 
 [ISSUES]
-• CRITICAL: [issue] — [file:line]
-• WARNING: [issue] — [file:line]  
-• INFO: [issue] — [file:line]
+• CRITICAL: [проблема] — [файл:строка]
+• WARNING: [проблема] — [файл:строка]  
+• INFO: [проблема] — [файл:строка]
 
 [METRICS]
-Complexity: [Low/Medium/High]
-Maintainability: [score]/10
-Test Coverage: [estimated %]
+Сложность: [Low/Medium/High]
+Поддерживаемость: [оценка]/10
+Покрытие тестами: [примерный %]
 
 [RECOMMENDATIONS]
-1. [Priority 1 recommendation]
-2. [Priority 2 recommendation]
+1. [Рекомендация приоритета 1]
+2. [Рекомендация приоритета 2]
 
-=== END ANALYSIS ===
+=== КОНЕЦ АНАЛИЗА ===
 ```
 
-### Fill-in-the-Blank Format
+### Формат заполнения пропусков
 
-Templates with blanks (___) guide the model to fill in specific fields while maintaining exact formatting. This approach is excellent for forms, briefs, and standardized documents where consistency matters.
+Шаблоны с пропусками (___) направляют модель на заполнение определённых полей при сохранении точного форматирования. Этот подход отлично работает для форм, брифов и стандартизированных документов, где важна согласованность.
 
 ```
-Complete this template for the given product:
+Заполните этот шаблон для данного продукта:
 
-PRODUCT BRIEF
+БРИФ ПРОДУКТА
 ─────────────
-Name: _______________
-Tagline: _______________
-Target User: _______________
-Problem Solved: _______________
-Key Features:
+Название: _______________
+Слоган: _______________
+Целевой пользователь: _______________
+Решаемая проблема: _______________
+Ключевые функции:
   1. _______________
   2. _______________
   3. _______________
-Differentiator: _______________
+Отличительная особенность: _______________
 
-Product: [product description]
+Продукт: [описание продукта]
 ```
 
-## Typed Responses
+## Типизированные ответы
 
-Typed responses define categories or entity types that the model should recognize and label. This technique is essential for Named Entity Recognition (NER), classification tasks, and any extraction where you need to categorize information consistently. Define your types clearly with examples.
+Типизированные ответы определяют категории или типы сущностей, которые модель должна распознавать и маркировать. Эта техника необходима для распознавания именованных сущностей (NER), задач классификации и любого извлечения, где нужно последовательно категоризировать информацию. Чётко определяйте ваши типы с примерами.
 
 <TryIt 
   compact
-  title="Entity Extraction"
-  prompt={`Extract entities from this text.
+  title="Извлечение сущностей"
+  prompt={`Извлеките сущности из этого текста.
 
-Entity Types:
-- PERSON: Full names of people
-- ORG: Organization/company names
-- LOCATION: Cities, countries, addresses
-- DATE: Dates in ISO format (YYYY-MM-DD)
-- MONEY: Monetary amounts with currency
+Типы сущностей:
+- PERSON: Полные имена людей
+- ORG: Названия организаций/компаний
+- LOCATION: Города, страны, адреса
+- DATE: Даты в формате ISO (YYYY-MM-DD)
+- MONEY: Денежные суммы с валютой
 
-Format each as: [TYPE]: [value]
+Форматируйте каждую как: [TYPE]: [значение]
 
-Text: "Tim Cook announced that Apple will invest $1 billion in a new Austin facility by December 2024."`}
+Текст: "Тим Кук объявил, что Apple инвестирует 1 миллиард долларов в новый объект в Остине к декабрю 2024 года."`}
 />
 
-## Multi-Part Structured Responses
+## Многокомпонентные структурированные ответы
 
-When you need comprehensive output covering multiple aspects, define distinct parts with clear boundaries. Specify exactly what goes in each part—format, length, and content type. This prevents the model from blending sections or omitting parts.
+Когда вам нужен всеобъемлющий вывод, охватывающий несколько аспектов, определите отдельные части с чёткими границами. Точно указывайте, что входит в каждую часть — формат, длину и тип содержимого. Это предотвращает смешивание разделов или пропуск частей моделью.
 
 ```
-Research this topic and provide:
+Исследуйте эту тему и предоставьте:
 
-### PART 1: EXECUTIVE SUMMARY
-[2-3 sentence overview]
+### ЧАСТЬ 1: КРАТКОЕ РЕЗЮМЕ
+[Обзор в 2-3 предложениях]
 
-### PART 2: KEY FINDINGS
-[Exactly 5 bullet points]
+### ЧАСТЬ 2: КЛЮЧЕВЫЕ ВЫВОДЫ
+[Ровно 5 пунктов списка]
 
-### PART 3: DATA TABLE
-| Metric | Value | Source |
-|--------|-------|--------|
-[Include 5 rows minimum]
+### ЧАСТЬ 3: ТАБЛИЦА ДАННЫХ
+| Метрика | Значение | Источник |
+|---------|----------|----------|
+[Минимум 5 строк]
 
-### PART 4: RECOMMENDATIONS
-[Numbered list of 3 actionable recommendations]
+### ЧАСТЬ 4: РЕКОМЕНДАЦИИ
+[Нумерованный список из 3 практических рекомендаций]
 
-### PART 5: FURTHER READING
-[3 suggested resources with brief descriptions]
+### ЧАСТЬ 5: ДОПОЛНИТЕЛЬНОЕ ЧТЕНИЕ
+[3 рекомендуемых ресурса с краткими описаниями]
 ```
 
-## Conditional Formatting
+## Условное форматирование
 
-Conditional formatting lets you define different output formats based on the input's characteristics. This is powerful for classification, triage, and routing systems where the response format should vary based on what the model detects. Use clear if/then logic with explicit output templates for each case.
+Условное форматирование позволяет определять различные форматы вывода в зависимости от характеристик входных данных. Это мощный инструмент для систем классификации, сортировки и маршрутизации, где формат ответа должен варьироваться в зависимости от того, что обнаружила модель. Используйте чёткую логику if/then с явными шаблонами вывода для каждого случая.
 
 <TryIt 
   compact
-  title="Ticket Classification"
-  prompt={`Classify this support ticket.
+  title="Классификация тикетов"
+  prompt={`Классифицируйте этот тикет поддержки.
 
-If URGENT (system down, security issue, data loss):
-  Return: 🔴 URGENT | [Category] | [Suggested Action]
+Если URGENT (система не работает, проблема безопасности, потеря данных):
+  Вернуть: 🔴 URGENT | [Категория] | [Предлагаемое действие]
 
-If HIGH (affects multiple users, revenue impact):
-  Return: 🟠 HIGH | [Category] | [Suggested Action]
+Если HIGH (затрагивает нескольких пользователей, влияет на выручку):
+  Вернуть: 🟠 HIGH | [Категория] | [Предлагаемое действие]
 
-If MEDIUM (single user affected, workaround exists):
-  Return: 🟡 MEDIUM | [Category] | [Suggested Action]
+Если MEDIUM (затронут один пользователь, есть обходной путь):
+  Вернуть: 🟡 MEDIUM | [Категория] | [Предлагаемое действие]
 
-If LOW (questions, feature requests):
-  Return: 🟢 LOW | [Category] | [Suggested Action]
+Если LOW (вопросы, запросы функций):
+  Вернуть: 🟢 LOW | [Категория] | [Предлагаемое действие]
 
-Ticket: "I can't login to my account. I've tried resetting my password twice but still getting an error. This is blocking my entire team from accessing the dashboard."`}
+Тикет: "Я не могу войти в свой аккаунт. Я дважды пытался сбросить пароль, но всё равно получаю ошибку. Это блокирует работу всей моей команды с панелью управления."`}
 />
 
-## Arrays and Lists in JSON
+## Массивы и списки в JSON
 
-Extracting multiple items into arrays requires careful schema definition. Specify the array structure, what each item should contain, and how to handle edge cases (empty arrays, single items). Including a count field helps verify completeness.
+Извлечение нескольких элементов в массивы требует тщательного определения схемы. Укажите структуру массива, что должен содержать каждый элемент и как обрабатывать граничные случаи (пустые массивы, единичные элементы). Включение поля count помогает проверить полноту.
 
 ```
-Extract all action items from this meeting transcript.
+Извлеките все пункты действий из этой стенограммы встречи.
 
-Return as JSON array:
+Верните как массив JSON:
 {
   "action_items": [
     {
-      "task": "string describing the task",
-      "assignee": "person name or 'Unassigned'",
-      "deadline": "date if mentioned, else null",
+      "task": "строка, описывающая задачу",
+      "assignee": "имя человека или 'Не назначено'",
+      "deadline": "дата, если упомянута, иначе null",
       "priority": "high" | "medium" | "low",
-      "context": "relevant quote from transcript"
+      "context": "релевантная цитата из стенограммы"
     }
   ],
   "total_count": number
 }
 
-Transcript: "[meeting transcript]"
+Стенограмма: "[стенограмма встречи]"
 ```
 
-## Validation Instructions
+## Инструкции по валидации
 
-Self-validation prompts the model to check its own output before responding. This catches common issues like missing sections, placeholder text, or constraint violations. The model will iterate internally to fix problems, improving output quality without additional API calls.
-
-```
-Generate the report, then:
-
-VALIDATION CHECKLIST:
-□ All required sections present
-□ No placeholder text remaining
-□ All statistics include sources
-□ Word count within 500-700 words
-□ Conclusion ties back to introduction
-
-If any check fails, fix before responding.
-```
-
-## Handling Optional Fields
-
-Real-world data often has missing values. Explicitly instruct the model on how to handle optional fields—using `null` is cleaner than empty strings and easier to process programmatically. Also prevent "hallucination" of missing data by emphasizing that the model should never invent information.
+Само-валидация побуждает модель проверять свой вывод перед ответом. Это выявляет распространённые проблемы, такие как отсутствующие разделы, текст-заполнитель или нарушения ограничений. Модель будет итеративно исправлять проблемы, улучшая качество вывода без дополнительных API-вызовов.
 
 ```
-Extract contact information. Use null for missing fields.
+Сгенерируйте отчёт, затем:
+
+ЧЕКЛИСТ ВАЛИДАЦИИ:
+□ Все обязательные разделы присутствуют
+□ Не осталось текста-заполнителя
+□ Все статистики включают источники
+□ Количество слов в пределах 500-700
+□ Заключение связано с введением
+
+Если какая-либо проверка не пройдена, исправьте перед ответом.
+```
+
+## Обработка необязательных полей
+
+Реальные данные часто имеют отсутствующие значения. Явно инструктируйте модель, как обрабатывать необязательные поля — использование `null` чище, чем пустые строки, и проще обрабатывается программно. Также предотвращайте «галлюцинацию» отсутствующих данных, подчёркивая, что модель никогда не должна придумывать информацию.
+
+```
+Извлеките контактную информацию. Используйте null для отсутствующих полей.
 
 {
-  "name": "string (required)",
-  "email": "string or null",
-  "phone": "string or null", 
-  "company": "string or null",
-  "role": "string or null",
-  "linkedin": "URL string or null"
+  "name": "string (обязательно)",
+  "email": "string или null",
+  "phone": "string или null", 
+  "company": "string или null",
+  "role": "string или null",
+  "linkedin": "URL string или null"
 }
 
 IMPORTANT: 
-- Never invent information not in the source
-- Use null, not empty strings, for missing data
-- Phone numbers in E.164 format if possible
+- Никогда не придумывайте информацию, отсутствующую в источнике
+- Используйте null, а не пустые строки, для отсутствующих данных
+- Номера телефонов в формате E.164, если возможно
 ```
 
-## Summary
+## Резюме
 
-<Callout type="tip" title="Key Techniques">
-Be explicit about format, use examples, specify types, handle edge cases with null values, and ask the model to validate its own output.
+<Callout type="tip" title="Ключевые техники">
+Будьте явными относительно формата, используйте примеры, указывайте типы, обрабатывайте граничные случаи с помощью null-значений и просите модель валидировать свой вывод.
 </Callout>
 
 <Quiz 
-  question="What's the main advantage of structured output over unstructured text?"
+  question="Каково главное преимущество структурированного вывода перед неструктурированным текстом?"
   options={[
-    "It uses fewer tokens",
-    "It's easier for the AI to generate",
-    "It can be parsed programmatically and validated",
-    "It always produces correct information"
+    "Он использует меньше токенов",
+    "ИИ легче его генерировать",
+    "Его можно программно парсить и валидировать",
+    "Он всегда выдаёт корректную информацию"
   ]}
   correctIndex={2}
-  explanation="Structured outputs like JSON can be parsed by code, compared across queries, integrated into workflows, and validated for completeness—things that are difficult or impossible with freeform text."
+  explanation="Структурированные выводы, такие как JSON, могут парситься кодом, сравниваться между запросами, интегрироваться в рабочие процессы и валидироваться на полноту — вещи, которые сложны или невозможны с произвольным текстом."
 />
 
-Structured outputs are essential for building reliable AI-powered applications. In the next chapter, we'll explore chain-of-thought prompting for complex reasoning tasks.
+Структурированные выводы необходимы для создания надёжных приложений на основе ИИ. В следующей главе мы рассмотрим промптинг с цепочкой рассуждений для сложных задач логического мышления.

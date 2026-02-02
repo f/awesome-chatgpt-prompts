@@ -1,445 +1,445 @@
-As AI continues to evolve at an unprecedented pace, so too will the art and science of prompting. This final chapter explores emerging trends, the shifting landscape of human-AI collaboration, and how to stay ahead as the field transforms.
+AI가 전례 없는 속도로 계속 진화함에 따라, 프롬프팅의 기술과 과학도 함께 진화할 것입니다. 이 마지막 장에서는 새로운 트렌드, 인간-AI 협업의 변화하는 환경, 그리고 이 분야가 변화하는 가운데 어떻게 앞서 나갈 수 있는지 탐구합니다.
 
-<Callout type="info" title="A Moving Target">
-The techniques in this book represent current best practices, but AI capabilities change rapidly. The principles of clear communication, structured thinking, and iterative refinement will remain valuable even as specific tactics evolve.
+<Callout type="info" title="움직이는 표적">
+이 책에서 소개한 기술들은 현재의 모범 사례를 나타내지만, AI 능력은 빠르게 변화합니다. 명확한 의사소통, 구조화된 사고, 반복적 개선의 원칙은 구체적인 전술이 진화하더라도 가치를 유지할 것입니다.
 </Callout>
 
-## The Evolving Landscape
+## 진화하는 환경
 
-### From Prompts to Conversations
+### 프롬프트에서 대화로
 
-Early prompting was transactional—a single input yielding a single output. Modern AI interaction is increasingly **conversational and collaborative**:
+초기 프롬프팅은 트랜잭션적이었습니다—하나의 입력이 하나의 출력을 만들어내는 방식이었습니다. 현대의 AI 상호작용은 점점 더 **대화적이고 협력적**으로 변하고 있습니다:
 
-- **Multi-turn refinement** - Building understanding across exchanges
-- **Persistent context** - Systems that remember and learn from interactions
-- **Agentic workflows** - AI that can plan, execute, and iterate autonomously
-- **Tool use** - Models that can search, compute, and interact with external systems
+- **다중 턴 개선** - 교환을 통해 이해 구축
+- **지속적 컨텍스트** - 상호작용을 기억하고 학습하는 시스템
+- **에이전트 워크플로우** - 자율적으로 계획, 실행, 반복할 수 있는 AI
+- **도구 사용** - 검색, 계산, 외부 시스템과 상호작용할 수 있는 모델
 
-<TryIt compact prompt={`Let's work together on \${task:writing a technical blog post}.
+<TryIt compact prompt={`\${task:기술 블로그 글 작성}에 대해 함께 작업해봅시다.
 
-I'd like to develop this iteratively:
-1. First, help me brainstorm angles
-2. Then we'll outline together
-3. I'll draft sections and get your feedback
-4. Finally, we'll polish the final version
+이것을 반복적으로 발전시키고 싶습니다:
+1. 먼저, 관점에 대해 브레인스토밍을 도와주세요
+2. 그런 다음 함께 개요를 작성합니다
+3. 제가 섹션을 초안 작성하고 피드백을 받겠습니다
+4. 마지막으로, 최종 버전을 다듬겠습니다
 
-Start by asking me about my target audience and key message.`} />
+먼저 타겟 독자와 핵심 메시지에 대해 질문해주세요.`} />
 
-### The Rise of Context Engineering
+### 컨텍스트 엔지니어링의 부상
 
-As covered in Chapter 14, prompting is expanding beyond single instructions to encompass **context engineering**—the strategic management of what information an AI can access:
+14장에서 다뤘듯이, 프롬프팅은 단일 지시를 넘어 **컨텍스트 엔지니어링**으로 확장되고 있습니다—AI가 접근할 수 있는 정보의 전략적 관리입니다:
 
-- **RAG (Retrieval-Augmented Generation)** - Dynamic knowledge retrieval
-- **Function calling** - Structured tool integration
-- **MCP (Model Context Protocol)** - Standardized context sharing
-- **Memory systems** - Persistent knowledge across sessions
+- **RAG (Retrieval-Augmented Generation)** - 동적 지식 검색
+- **Function calling** - 구조화된 도구 통합
+- **MCP (Model Context Protocol)** - 표준화된 컨텍스트 공유
+- **메모리 시스템** - 세션 간 지속되는 지식
 
-The future prompt engineer thinks not just about *what to say* but *what context to provide*.
+미래의 프롬프트 엔지니어는 *무엇을 말할지*뿐만 아니라 *어떤 컨텍스트를 제공할지*도 생각합니다.
 
-### Multimodal by Default
+### 기본값으로서의 멀티모달
 
-Text-only interaction is becoming the exception. Future AI systems will seamlessly handle:
+텍스트만의 상호작용은 예외가 되어가고 있습니다. 미래의 AI 시스템은 다음을 원활하게 처리할 것입니다:
 
-- **Images and video** - Understanding and generating visual content
-- **Audio and voice** - Natural speech interaction
-- **Documents and files** - Direct processing of complex materials
-- **Real-world interaction** - Robotics and physical systems
+- **이미지와 비디오** - 시각적 콘텐츠의 이해와 생성
+- **오디오와 음성** - 자연스러운 음성 상호작용
+- **문서와 파일** - 복잡한 자료의 직접 처리
+- **현실 세계 상호작용** - 로보틱스와 물리적 시스템
 
-Prompting skills will extend to guiding AI perception and physical action.
+프롬프팅 기술은 AI의 인식과 물리적 행동을 안내하는 것으로 확장될 것입니다.
 
-## The Agentic Future
+## 에이전트의 미래
 
-The most significant shift in AI is the rise of **agents**—AI systems that don't just respond to prompts but actively pursue goals, make decisions, and take actions in the world.
+AI에서 가장 중요한 변화는 **에이전트**의 부상입니다—프롬프트에 단순히 응답하는 것이 아니라 적극적으로 목표를 추구하고, 결정을 내리고, 세상에서 행동하는 AI 시스템입니다.
 
-### What Are AI Agents?
+### AI 에이전트란 무엇인가?
 
-An AI agent is a system that:
+AI 에이전트는 다음을 하는 시스템입니다:
 
-- **Perceives** its environment through inputs (text, images, data, APIs)
-- **Reasons** about what to do using an LLM as its "brain"
-- **Acts** by calling tools, writing code, or interacting with systems
-- **Learns** from feedback and adjusts its approach
+- **인식** - 입력(텍스트, 이미지, 데이터, API)을 통해 환경을 인식
+- **추론** - LLM을 "두뇌"로 사용하여 무엇을 할지 추론
+- **행동** - 도구 호출, 코드 작성, 시스템과 상호작용으로 행동
+- **학습** - 피드백에서 학습하고 접근 방식을 조정
 
-<Callout type="info" title="From Chatbots to Agents">
-Traditional chatbots wait for input and respond. Agents take initiative—they plan multi-step tasks, use tools autonomously, recover from errors, and persist until goals are achieved.
+<Callout type="info" title="챗봇에서 에이전트로">
+전통적인 챗봇은 입력을 기다리고 응답합니다. 에이전트는 주도적으로 행동합니다—다단계 작업을 계획하고, 도구를 자율적으로 사용하고, 오류에서 복구하고, 목표가 달성될 때까지 지속합니다.
 </Callout>
 
-### The Role of Prompts in Agents
+### 에이전트에서 프롬프트의 역할
 
-In an agentic world, prompts become even more critical—but they serve different purposes:
+에이전트 세계에서 프롬프트는 더욱 중요해지지만, 다른 목적을 수행합니다:
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-900 p-4">
-    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 m-0!">System Prompts</p>
-    <p className="text-sm text-muted-foreground mt-2 m-0!">Define the agent's identity, capabilities, constraints, and behavioral guidelines. These are the agent's "constitution."</p>
+    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 m-0!">시스템 프롬프트</p>
+    <p className="text-sm text-muted-foreground mt-2 m-0!">에이전트의 정체성, 능력, 제약, 행동 지침을 정의합니다. 이것은 에이전트의 "헌법"입니다.</p>
   </div>
   <div className="border rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-900 p-4">
-    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 m-0!">Planning Prompts</p>
-    <p className="text-sm text-muted-foreground mt-2 m-0!">Guide how agents break down complex goals into actionable steps. Critical for multi-step reasoning.</p>
+    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 m-0!">계획 프롬프트</p>
+    <p className="text-sm text-muted-foreground mt-2 m-0!">에이전트가 복잡한 목표를 실행 가능한 단계로 분해하는 방법을 안내합니다. 다단계 추론에 중요합니다.</p>
   </div>
   <div className="border rounded-lg bg-amber-50/50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900 p-4">
-    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 m-0!">Tool-Use Prompts</p>
-    <p className="text-sm text-muted-foreground mt-2 m-0!">Describe available tools and when/how to use them. Agents must understand their capabilities.</p>
+    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 m-0!">도구 사용 프롬프트</p>
+    <p className="text-sm text-muted-foreground mt-2 m-0!">사용 가능한 도구와 언제/어떻게 사용할지 설명합니다. 에이전트는 자신의 능력을 이해해야 합니다.</p>
   </div>
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900 p-4">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 m-0!">Reflection Prompts</p>
-    <p className="text-sm text-muted-foreground mt-2 m-0!">Enable agents to evaluate their own outputs, catch errors, and improve iteratively.</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 m-0!">반성 프롬프트</p>
+    <p className="text-sm text-muted-foreground mt-2 m-0!">에이전트가 자신의 출력을 평가하고, 오류를 잡아내고, 반복적으로 개선할 수 있게 합니다.</p>
   </div>
 </div>
 
-### Agent Architecture Patterns
+### 에이전트 아키텍처 패턴
 
-Modern agents follow recognizable patterns. Understanding these helps you design effective agent systems:
+현대 에이전트는 인식 가능한 패턴을 따릅니다. 이러한 패턴을 이해하면 효과적인 에이전트 시스템을 설계하는 데 도움이 됩니다:
 
 **ReAct (Reasoning + Acting)**
 
-The agent alternates between reasoning about what to do and taking actions:
+에이전트는 무엇을 할지 추론하는 것과 행동을 취하는 것을 번갈아 수행합니다:
 
 <div className="my-6 flex flex-col items-center gap-2 p-6 bg-muted/30 rounded-lg">
   <div className="flex items-center gap-4">
     <div className="px-4 py-2 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg">
-      <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Think</p>
+      <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">생각</p>
     </div>
     <div className="text-slate-400">→</div>
     <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
-      <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">Act</p>
+      <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">행동</p>
     </div>
     <div className="text-slate-400">→</div>
     <div className="px-4 py-2 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg">
-      <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">Observe</p>
+      <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">관찰</p>
     </div>
     <div className="text-slate-400">→</div>
-    <div className="text-muted-foreground text-sm">(repeat)</div>
+    <div className="text-muted-foreground text-sm">(반복)</div>
   </div>
 </div>
 
 **Plan-and-Execute**
 
-The agent creates a complete plan first, then executes steps:
+에이전트는 먼저 완전한 계획을 세운 다음 단계를 실행합니다:
 
 <div className="my-6 flex flex-col items-center gap-2 p-6 bg-muted/30 rounded-lg">
   <div className="px-6 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
-    <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Create Plan</p>
-    <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">Break goal into steps</p>
+    <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">계획 수립</p>
+    <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">목표를 단계로 분해</p>
   </div>
   <div className="text-blue-400 dark:text-blue-500 text-lg">↓</div>
   <div className="flex items-center gap-3">
     <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
-      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Step 1</p>
+      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">1단계</p>
     </div>
     <div className="text-slate-400">→</div>
     <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
-      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Step 2</p>
+      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">2단계</p>
     </div>
     <div className="text-slate-400">→</div>
     <div className="px-4 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
-      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Step 3</p>
+      <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">3단계</p>
     </div>
     <div className="text-slate-400">→</div>
     <div className="text-muted-foreground text-sm">...</div>
   </div>
   <div className="text-green-400 dark:text-green-500 text-lg">↓</div>
   <div className="px-6 py-3 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-lg text-center">
-    <p className="text-sm font-medium text-amber-700 dark:text-amber-300 m-0!">Revise if Needed</p>
-    <p className="text-xs text-amber-600 dark:text-amber-400 m-0!">Adapt plan based on results</p>
+    <p className="text-sm font-medium text-amber-700 dark:text-amber-300 m-0!">필요시 수정</p>
+    <p className="text-xs text-amber-600 dark:text-amber-400 m-0!">결과에 따라 계획 조정</p>
   </div>
 </div>
 
-### Prompting for Agents
+### 에이전트를 위한 프롬프팅
 
-When designing prompts for agent systems, consider:
+에이전트 시스템을 위한 프롬프트를 설계할 때 고려해야 할 사항:
 
-<TryIt compact prompt={`You are an autonomous research agent. Your goal is to \${goal:find the latest statistics on renewable energy adoption}.
+<TryIt compact prompt={`당신은 자율 연구 에이전트입니다. 목표는 \${goal:재생 에너지 도입에 관한 최신 통계 찾기}입니다.
 
-**Your capabilities:**
-- Search the web for information
-- Read and analyze documents
-- Take notes and synthesize findings
-- Ask clarifying questions if needed
+**당신의 능력:**
+- 웹에서 정보 검색
+- 문서 읽기 및 분석
+- 메모 작성 및 결과 종합
+- 필요시 명확화 질문
 
-**Your approach:**
-1. First, plan your research strategy
-2. Execute searches systematically
-3. Evaluate source credibility
-4. Synthesize findings into a coherent report
-5. Cite all sources
+**접근 방식:**
+1. 먼저, 연구 전략을 계획하세요
+2. 체계적으로 검색을 실행하세요
+3. 출처의 신뢰성을 평가하세요
+4. 결과를 일관된 보고서로 종합하세요
+5. 모든 출처를 인용하세요
 
-**Constraints:**
-- Stay focused on the goal
-- Acknowledge uncertainty
-- Never fabricate information
-- Stop and ask if you're stuck
+**제약 사항:**
+- 목표에 집중하세요
+- 불확실성을 인정하세요
+- 정보를 절대 조작하지 마세요
+- 막히면 멈추고 질문하세요
 
-Begin by outlining your research plan.`} />
+연구 계획을 개요로 작성하는 것부터 시작하세요.`} />
 
-### Multi-Agent Systems
+### 다중 에이전트 시스템
 
-The future involves teams of specialized agents working together:
+미래는 전문화된 에이전트 팀이 함께 일하는 것을 포함합니다:
 
 <div className="my-6 p-6 bg-muted/30 rounded-lg">
   <div className="flex flex-col md:flex-row items-center justify-center gap-6">
     <div className="flex flex-col items-center gap-2">
       <div className="px-4 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
-        <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Coordinator</p>
-        <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">Manages workflow</p>
+        <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">코디네이터</p>
+        <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">워크플로우 관리</p>
       </div>
     </div>
     <div className="hidden md:block text-slate-400 text-2xl">⟷</div>
     <div className="md:hidden text-slate-400 text-2xl">↕</div>
     <div className="flex flex-wrap justify-center gap-3">
       <div className="px-3 py-2 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg">
-        <p className="text-xs font-medium text-purple-700 dark:text-purple-300 m-0!">Researcher</p>
+        <p className="text-xs font-medium text-purple-700 dark:text-purple-300 m-0!">연구원</p>
       </div>
       <div className="px-3 py-2 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg">
-        <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">Writer</p>
+        <p className="text-xs font-medium text-green-700 dark:text-green-300 m-0!">작가</p>
       </div>
       <div className="px-3 py-2 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-lg">
-        <p className="text-xs font-medium text-amber-700 dark:text-amber-300 m-0!">Critic</p>
+        <p className="text-xs font-medium text-amber-700 dark:text-amber-300 m-0!">비평가</p>
       </div>
       <div className="px-3 py-2 bg-red-100 dark:bg-red-900/50 border border-red-200 dark:border-red-800 rounded-lg">
-        <p className="text-xs font-medium text-red-700 dark:text-red-300 m-0!">Coder</p>
+        <p className="text-xs font-medium text-red-700 dark:text-red-300 m-0!">코더</p>
       </div>
     </div>
   </div>
 </div>
 
-Each agent has its own system prompt defining its role, and they communicate through structured messages. The prompt engineer's job becomes **designing the team**—defining roles, communication protocols, and coordination strategies.
+각 에이전트는 역할을 정의하는 자체 시스템 프롬프트를 가지며, 구조화된 메시지를 통해 서로 통신합니다. 프롬프트 엔지니어의 역할은 **팀을 설계하는 것**—역할, 통신 프로토콜, 조정 전략을 정의하는 것입니다.
 
-<Callout type="tip" title="The Prompt Engineer as Architect">
-In an agentic future, prompt engineers become system architects. You're not just writing instructions—you're designing autonomous systems that can reason, plan, and act. The skills you've learned in this book are the foundation for this new discipline.
+<Callout type="tip" title="아키텍트로서의 프롬프트 엔지니어">
+에이전트 미래에서 프롬프트 엔지니어는 시스템 아키텍트가 됩니다. 단순히 지시를 작성하는 것이 아니라—추론하고, 계획하고, 행동할 수 있는 자율 시스템을 설계하는 것입니다. 이 책에서 배운 기술은 이 새로운 분야의 기초입니다.
 </Callout>
 
-## Emerging Patterns
+## 새로운 패턴
 
-### Prompt Orchestration
+### 프롬프트 오케스트레이션
 
-Single prompts are giving way to **orchestrated systems**:
+단일 프롬프트는 **오케스트레이션된 시스템**으로 대체되고 있습니다:
 
 <div className="my-6 flex flex-col items-center gap-2 p-6 bg-muted/30 rounded-lg">
   <div className="px-6 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg text-center">
-    <p className="text-sm font-medium text-slate-700 dark:text-slate-300 m-0!">User Request</p>
+    <p className="text-sm font-medium text-slate-700 dark:text-slate-300 m-0!">사용자 요청</p>
   </div>
   <div className="text-slate-400 dark:text-slate-500 text-lg">↓</div>
   <div className="px-6 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
-    <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Planner Agent</p>
-    <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">Breaks down task</p>
+    <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">플래너 에이전트</p>
+    <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">작업 분해</p>
   </div>
   <div className="text-blue-400 dark:text-blue-500 text-lg">↓</div>
   <div className="px-6 py-3 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg text-center">
-    <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">Researcher Agent</p>
-    <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">Gathers information</p>
+    <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">연구원 에이전트</p>
+    <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">정보 수집</p>
   </div>
   <div className="text-purple-400 dark:text-purple-500 text-lg">↓</div>
   <div className="px-6 py-3 bg-amber-100 dark:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-lg text-center">
-    <p className="text-sm font-medium text-amber-700 dark:text-amber-300 m-0!">Writer Agent</p>
-    <p className="text-xs text-amber-600 dark:text-amber-400 m-0!">Creates content</p>
+    <p className="text-sm font-medium text-amber-700 dark:text-amber-300 m-0!">작가 에이전트</p>
+    <p className="text-xs text-amber-600 dark:text-amber-400 m-0!">콘텐츠 생성</p>
   </div>
   <div className="text-amber-400 dark:text-amber-500 text-lg">↓</div>
   <div className="px-6 py-3 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg text-center">
-    <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">Reviewer Agent</p>
-    <p className="text-xs text-green-600 dark:text-green-400 m-0!">Quality checks</p>
+    <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">검토자 에이전트</p>
+    <p className="text-xs text-green-600 dark:text-green-400 m-0!">품질 검사</p>
   </div>
   <div className="text-green-400 dark:text-green-500 text-lg">↓</div>
   <div className="px-6 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg text-center">
-    <p className="text-sm font-medium text-slate-700 dark:text-slate-300 m-0!">Final Output</p>
+    <p className="text-sm font-medium text-slate-700 dark:text-slate-300 m-0!">최종 출력</p>
   </div>
 </div>
 
-Future practitioners will design prompt *systems* rather than individual prompts.
+미래의 실무자들은 개별 프롬프트가 아닌 프롬프트 *시스템*을 설계하게 될 것입니다.
 
-### Self-Improving Prompts
+### 자기 개선 프롬프트
 
-AI systems are beginning to:
+AI 시스템은 다음을 시작하고 있습니다:
 
-- **Optimize their own prompts** - Meta-learning for better instructions
-- **Learn from feedback** - Adapting based on outcomes
-- **Generate training data** - Creating examples for fine-tuning
-- **Evaluate themselves** - Building in quality assessment
+- **자체 프롬프트 최적화** - 더 나은 지시를 위한 메타 학습
+- **피드백에서 학습** - 결과에 따라 적응
+- **학습 데이터 생성** - 파인튜닝을 위한 예제 생성
+- **자체 평가** - 품질 평가 내장
 
-<TryIt compact prompt={`Analyze this prompt and suggest improvements:
+<TryIt compact prompt={`이 프롬프트를 분석하고 개선 사항을 제안하세요:
 
-Original: "\${originalPrompt:Write a story about a robot}"
+원본: "\${originalPrompt:로봇에 대한 이야기를 써줘}"
 
-Consider:
-1. **Clarity** - Is the intent clear?
-2. **Specificity** - What details are missing?
-3. **Structure** - How could output be better organized?
-4. **Edge cases** - What could go wrong?
+고려 사항:
+1. **명확성** - 의도가 명확한가요?
+2. **구체성** - 어떤 세부 사항이 누락되었나요?
+3. **구조** - 출력을 어떻게 더 잘 구성할 수 있나요?
+4. **엣지 케이스** - 무엇이 잘못될 수 있나요?
 
-Provide: Improved version with explanation of changes`} />
+제공: 변경 사항에 대한 설명과 함께 개선된 버전`} />
 
-### Natural Language Programming
+### 자연어 프로그래밍
 
-The line between prompting and programming is blurring:
+프롬프팅과 프로그래밍의 경계가 흐려지고 있습니다:
 
-- **Prompts as code** - Version-controlled, tested, deployed
-- **LLMs as interpreters** - Natural language as executable instructions
-- **Hybrid systems** - Combining traditional code with AI reasoning
-- **AI-assisted development** - Models that write and debug code
+- **코드로서의 프롬프트** - 버전 관리, 테스트, 배포
+- **인터프리터로서의 LLM** - 실행 가능한 지시로서의 자연어
+- **하이브리드 시스템** - 전통적인 코드와 AI 추론의 결합
+- **AI 지원 개발** - 코드를 작성하고 디버그하는 모델
 
-Understanding prompting increasingly means understanding software development.
+프롬프팅을 이해하는 것은 점점 더 소프트웨어 개발을 이해하는 것을 의미합니다.
 
-## Skills for the Future
+## 미래를 위한 기술
 
-### What Will Remain Valuable
+### 가치를 유지할 것들
 
-Certain skills will remain essential regardless of how AI evolves:
+AI가 어떻게 진화하든 특정 기술은 필수적으로 남을 것입니다:
 
-1. **Clear thinking** - Knowing what you actually want
-2. **Domain expertise** - Understanding the problem space
-3. **Critical evaluation** - Assessing AI output quality
-4. **Ethical judgment** - Knowing what *should* be done
-5. **Iterative refinement** - Continuous improvement mindset
+1. **명확한 사고** - 실제로 원하는 것이 무엇인지 아는 것
+2. **도메인 전문성** - 문제 공간의 이해
+3. **비판적 평가** - AI 출력 품질 평가
+4. **윤리적 판단** - 무엇을 *해야 하는지* 아는 것
+5. **반복적 개선** - 지속적인 개선 마인드셋
 
-### What Will Change
+### 변화할 것들
 
-Other aspects will shift significantly:
+다른 측면들은 크게 변화할 것입니다:
 
 <div className="my-6 overflow-x-auto">
   <table className="w-full border-collapse text-sm">
     <thead>
       <tr className="border-b border-border">
-        <th className="text-left py-3 px-4 font-semibold text-muted-foreground">Today</th>
-        <th className="text-left py-3 px-4 font-semibold text-muted-foreground">Tomorrow</th>
+        <th className="text-left py-3 px-4 font-semibold text-muted-foreground">오늘</th>
+        <th className="text-left py-3 px-4 font-semibold text-muted-foreground">내일</th>
       </tr>
     </thead>
     <tbody>
       <tr className="border-b border-border/50">
-        <td className="py-3 px-4">Writing detailed prompts</td>
-        <td className="py-3 px-4 text-primary font-medium">Designing agent systems</td>
+        <td className="py-3 px-4">상세한 프롬프트 작성</td>
+        <td className="py-3 px-4 text-primary font-medium">에이전트 시스템 설계</td>
       </tr>
       <tr className="border-b border-border/50">
-        <td className="py-3 px-4">Manual prompt optimization</td>
-        <td className="py-3 px-4 text-primary font-medium">Automated prompt tuning</td>
+        <td className="py-3 px-4">수동 프롬프트 최적화</td>
+        <td className="py-3 px-4 text-primary font-medium">자동화된 프롬프트 튜닝</td>
       </tr>
       <tr className="border-b border-border/50">
-        <td className="py-3 px-4">Single-model expertise</td>
-        <td className="py-3 px-4 text-primary font-medium">Multi-model orchestration</td>
+        <td className="py-3 px-4">단일 모델 전문성</td>
+        <td className="py-3 px-4 text-primary font-medium">다중 모델 오케스트레이션</td>
       </tr>
       <tr className="border-b border-border/50">
-        <td className="py-3 px-4">Text-focused interaction</td>
-        <td className="py-3 px-4 text-primary font-medium">Multimodal fluency</td>
+        <td className="py-3 px-4">텍스트 중심 상호작용</td>
+        <td className="py-3 px-4 text-primary font-medium">멀티모달 능숙함</td>
       </tr>
       <tr>
-        <td className="py-3 px-4">Individual productivity</td>
-        <td className="py-3 px-4 text-primary font-medium">Team-AI collaboration</td>
+        <td className="py-3 px-4">개인 생산성</td>
+        <td className="py-3 px-4 text-primary font-medium">팀-AI 협업</td>
       </tr>
     </tbody>
   </table>
 </div>
 
-### Staying Current
+### 최신 상태 유지하기
 
-To keep your skills relevant:
+기술의 관련성을 유지하려면:
 
-- **Experiment continuously** - Try new models and features as they release
-- **Follow research** - Stay aware of academic developments
-- **Join communities** - Learn from other practitioners
-- **Build projects** - Apply skills to real problems
-- **Teach others** - Solidify understanding by explaining
+- **지속적으로 실험하기** - 새로운 모델과 기능이 출시될 때 시도
+- **연구 팔로우하기** - 학술적 발전에 대해 인지
+- **커뮤니티 참여** - 다른 실무자들로부터 배우기
+- **프로젝트 구축** - 기술을 실제 문제에 적용
+- **다른 사람 가르치기** - 설명을 통해 이해 굳히기
 
-## The Human Element
+## 인간적 요소
 
-### AI as Amplifier
+### 증폭기로서의 AI
 
-At its best, AI amplifies human capability rather than replacing it:
+AI는 최선의 경우 인간의 능력을 대체하는 것이 아니라 증폭합니다:
 
-- **Experts become more expert** - AI handles routine work, humans focus on insight
-- **Creativity expands** - More ideas explored, more possibilities tested
-- **Access democratizes** - Capabilities once requiring specialists become available to all
-- **Collaboration deepens** - Human-AI teams exceed either alone
+- **전문가는 더 전문가가 됩니다** - AI가 일상적인 작업을 처리하고 인간은 통찰에 집중
+- **창의성이 확장됩니다** - 더 많은 아이디어 탐구, 더 많은 가능성 테스트
+- **접근이 민주화됩니다** - 한때 전문가가 필요했던 능력이 모두에게 제공
+- **협업이 깊어집니다** - 인간-AI 팀이 둘 중 하나보다 뛰어남
 
-### The Irreplaceable Human
+### 대체 불가능한 인간
 
-Certain qualities remain distinctly human:
+특정 자질은 여전히 인간 고유의 것입니다:
 
-- **Original experience** - Living in the world, having emotions and relationships
-- **Values and ethics** - Deciding what matters and what's right
-- **Accountability** - Taking responsibility for outcomes
-- **Meaning-making** - Understanding *why* something matters
-- **Genuine creativity** - True novelty born from unique perspective
+- **원초적 경험** - 세상에 살면서 감정과 관계를 갖는 것
+- **가치와 윤리** - 무엇이 중요하고 옳은지 결정
+- **책임** - 결과에 대해 책임지는 것
+- **의미 부여** - *왜* 무언가가 중요한지 이해
+- **진정한 창의성** - 독특한 관점에서 태어나는 진정한 참신함
 
-<Callout type="tip" title="Your Unique Value">
-As AI handles more routine cognitive tasks, your unique value lies in judgment, creativity, domain expertise, and the human connections AI cannot replicate. Invest in what makes you irreplaceable.
+<Callout type="tip" title="당신의 고유한 가치">
+AI가 더 많은 일상적인 인지 작업을 처리함에 따라, 당신의 고유한 가치는 판단, 창의성, 도메인 전문성, 그리고 AI가 복제할 수 없는 인간적 연결에 있습니다. 당신을 대체 불가능하게 만드는 것에 투자하세요.
 </Callout>
 
-## Final Reflections
+## 마지막 성찰
 
-### What We've Learned
+### 우리가 배운 것
 
-Throughout this book, we've explored:
+이 책 전체에서 우리는 탐구했습니다:
 
-- **Foundations** - How AI models work and what makes prompts effective
-- **Techniques** - Role-based prompting, chain-of-thought, few-shot learning, and more
-- **Advanced strategies** - System prompts, prompt chaining, multimodal interaction
-- **Best practices** - Avoiding pitfalls, ethical considerations, optimization
-- **Applications** - Writing, programming, education, business, creativity, research
+- **기초** - AI 모델이 어떻게 작동하고 무엇이 프롬프트를 효과적으로 만드는지
+- **기법** - 역할 기반 프롬프팅, 연쇄 사고, 퓨샷 학습 등
+- **고급 전략** - 시스템 프롬프트, 프롬프트 체이닝, 멀티모달 상호작용
+- **모범 사례** - 함정 피하기, 윤리적 고려, 최적화
+- **응용** - 글쓰기, 프로그래밍, 교육, 비즈니스, 창의성, 연구
 
-These techniques share common threads:
+이러한 기법들은 공통된 맥락을 공유합니다:
 
-1. **Be clear and specific** - Know what you want and communicate it precisely
-2. **Provide context** - Give AI the information it needs
-3. **Structure your requests** - Organization improves outputs
-4. **Iterate and refine** - First attempts are starting points, not endpoints
-5. **Evaluate critically** - AI output requires human judgment
+1. **명확하고 구체적으로** - 원하는 것을 알고 정확하게 전달
+2. **컨텍스트 제공** - AI에게 필요한 정보 제공
+3. **요청 구조화** - 조직화가 출력을 개선
+4. **반복하고 개선** - 첫 시도는 시작점이지 끝점이 아님
+5. **비판적으로 평가** - AI 출력은 인간의 판단이 필요
 
-### The Art and Science
+### 예술과 과학
 
-Prompting is both **art and science**:
+프롬프팅은 **예술이자 과학**입니다:
 
-- **Science**: Testable hypotheses, measurable outcomes, reproducible techniques
-- **Art**: Intuition, creativity, knowing when to break the rules
+- **과학**: 검증 가능한 가설, 측정 가능한 결과, 재현 가능한 기법
+- **예술**: 직관, 창의성, 규칙을 깨야 할 때를 아는 것
 
-The best practitioners combine rigorous methodology with creative experimentation. They test systematically but also trust their instincts. They follow best practices but know when to deviate.
+최고의 실무자들은 엄격한 방법론과 창의적 실험을 결합합니다. 그들은 체계적으로 테스트하지만 직감도 신뢰합니다. 그들은 모범 사례를 따르지만 언제 벗어날지도 압니다.
 
-### A Call to Create
+### 창작에 대한 요청
 
-This book has given you tools. What you build with them is up to you.
+이 책은 당신에게 도구를 주었습니다. 그것으로 무엇을 만들지는 당신에게 달려 있습니다.
 
-- **Solve problems** that matter to you and others
-- **Create things** that didn't exist before
-- **Help people** do things they couldn't do alone
-- **Push boundaries** of what's possible
-- **Stay curious** as the field evolves
+- 당신과 다른 사람들에게 중요한 **문제를 해결**하세요
+- 전에는 존재하지 않았던 **것들을 창작**하세요
+- 사람들이 혼자서는 할 수 없었던 일을 **도와주세요**
+- 가능한 것의 **한계를 밀어붙이세요**
+- 분야가 진화함에 따라 **호기심을 유지**하세요
 
-The age of AI is just beginning. The most important applications haven't been invented yet. The most powerful techniques haven't been discovered. The future is being written now—by people like you, one prompt at a time.
+AI 시대는 이제 막 시작되었습니다. 가장 중요한 응용 프로그램은 아직 발명되지 않았습니다. 가장 강력한 기법은 아직 발견되지 않았습니다. 미래는 지금 쓰여지고 있습니다—당신과 같은 사람들에 의해, 한 번에 하나의 프롬프트씩.
 
-## Looking Ahead
+## 앞을 바라보며
 
-<TryIt compact prompt={`I've just finished reading "The Interactive Book of Prompting" and want to develop a personal practice plan.
+<TryIt compact prompt={`방금 "프롬프팅의 인터랙티브 북"을 다 읽었고 개인 연습 계획을 세우고 싶습니다.
 
-My background: \${background:describe your experience level and primary use case}
-My goals: \${goals:what do you want to accomplish with AI?}
-Available time: \${time:how much time can you dedicate weekly?}
+나의 배경: \${background:경험 수준과 주요 사용 사례를 설명하세요}
+나의 목표: \${goals:AI로 무엇을 달성하고 싶으신가요?}
+사용 가능한 시간: \${time:주당 얼마나 투자할 수 있나요?}
 
-Create a 30-day practice plan that:
-1. Builds skills progressively
-2. Includes specific exercises
-3. Applies to my actual work
-4. Measures improvement
+다음을 포함하는 30일 연습 계획을 만들어주세요:
+1. 점진적으로 기술 구축
+2. 구체적인 연습 포함
+3. 실제 작업에 적용
+4. 개선 측정
 
-Include: Milestones, resources, and success criteria`} />
+포함: 마일스톤, 리소스, 성공 기준`} />
 
-<Callout type="tip" title="Keep Learning">
-Visit [prompts.chat](https://prompts.chat) for community prompts, new techniques, and to share your own discoveries. The best learning happens in community.
+<Callout type="tip" title="계속 배우기">
+커뮤니티 프롬프트, 새로운 기법, 그리고 당신만의 발견을 공유하려면 [prompts.chat](https://prompts.chat)을 방문하세요. 최고의 학습은 커뮤니티에서 일어납니다.
 </Callout>
 
-## Summary
+## 요약
 
-<Callout type="info" title="Key Takeaways">
-AI will continue evolving rapidly, but core skills of clear communication, critical thinking, and iterative refinement remain valuable. Focus on what makes you irreplaceable: judgment, creativity, ethics, and genuine human connection. The future of prompting is collaborative, multimodal, and integrated into larger systems. Stay curious, keep experimenting, and build things that matter.
+<Callout type="info" title="핵심 요점">
+AI는 계속 빠르게 진화하겠지만, 명확한 의사소통, 비판적 사고, 반복적 개선의 핵심 기술은 가치를 유지합니다. 당신을 대체 불가능하게 만드는 것에 집중하세요: 판단, 창의성, 윤리, 진정한 인간적 연결. 프롬프팅의 미래는 협력적이고, 멀티모달이며, 더 큰 시스템에 통합됩니다. 호기심을 유지하고, 계속 실험하고, 중요한 것을 만드세요.
 </Callout>
 
 <Quiz 
-  question="What is the most important skill to develop as AI continues to evolve?"
+  question="AI가 계속 진화함에 따라 개발해야 할 가장 중요한 기술은 무엇인가요?"
   options={[
-    "Memorizing specific prompt templates",
-    "Learning every new model's specific syntax",
-    "Clear thinking and critical evaluation of AI output",
-    "Avoiding AI entirely to preserve human skills"
+    "특정 프롬프트 템플릿 암기",
+    "모든 새로운 모델의 특정 구문 학습",
+    "명확한 사고와 AI 출력의 비판적 평가",
+    "인간 기술을 보존하기 위해 AI를 완전히 피하기"
   ]}
   correctIndex={2}
-  explanation="While specific techniques change, the ability to think clearly about what you want, communicate it effectively, and critically evaluate AI output remains valuable regardless of how AI evolves. These meta-skills transfer across models and applications."
+  explanation="특정 기법은 변하지만, 원하는 것에 대해 명확하게 생각하고, 효과적으로 전달하고, AI 출력을 비판적으로 평가하는 능력은 AI가 어떻게 진화하든 가치를 유지합니다. 이러한 메타 기술은 모델과 응용 프로그램 전반에 걸쳐 전이됩니다."
 />
 
-Thank you for reading *The Interactive Book of Prompting*. Now go create something amazing.
+*프롬프팅의 인터랙티브 북*을 읽어주셔서 감사합니다. 이제 가서 놀라운 것을 만드세요.
