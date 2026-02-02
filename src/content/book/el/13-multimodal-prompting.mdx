@@ -1,173 +1,173 @@
-For most of history, computers worked with one type of data at a time: text in one program, images in another, audio somewhere else. But humans don't experience the world this way. We see, hear, read, and speak simultaneously, combining all these inputs to understand our environment.
+Για το μεγαλύτερο μέρος της ιστορίας, οι υπολογιστές δούλευαν με έναν τύπο δεδομένων τη φορά: κείμενο σε ένα πρόγραμμα, εικόνες σε άλλο, ήχος κάπου αλλού. Αλλά οι άνθρωποι δεν βιώνουν τον κόσμο με αυτόν τον τρόπο. Βλέπουμε, ακούμε, διαβάζουμε, και μιλάμε ταυτόχρονα, συνδυάζοντας όλες αυτές τις εισόδους για να κατανοήσουμε το περιβάλλον μας.
 
-**Multimodal AI** changes everything. These models can process multiple types of information together—analyzing an image while reading your question about it, or generating images from your text descriptions. This chapter teaches you how to communicate effectively with these powerful systems.
+**Το Multimodal AI** αλλάζει τα πάντα. Αυτά τα μοντέλα μπορούν να επεξεργαστούν πολλαπλούς τύπους πληροφοριών μαζί—αναλύοντας μια εικόνα ενώ διαβάζουν την ερώτησή σου γι' αυτήν, ή δημιουργώντας εικόνες από τις κειμενικές σου περιγραφές. Αυτό το κεφάλαιο σε διδάσκει πώς να επικοινωνείς αποτελεσματικά με αυτά τα ισχυρά συστήματα.
 
-<Callout type="info" title="What Does Multimodal Mean?">
-"Multi" means many, and "modal" refers to modes or types of data. A multimodal model can work with multiple modalities: text, images, audio, video, or even code. Instead of separate tools for each type, one model understands them all together.
+<Callout type="info" title="Τι Σημαίνει Multimodal;">
+"Multi" σημαίνει πολλά, και "modal" αναφέρεται σε τρόπους ή τύπους δεδομένων. Ένα multimodal μοντέλο μπορεί να δουλέψει με πολλαπλές μορφές: κείμενο, εικόνες, ήχο, βίντεο, ή ακόμα και κώδικα. Αντί για ξεχωριστά εργαλεία για κάθε τύπο, ένα μοντέλο τα κατανοεί όλα μαζί.
 </Callout>
 
-## Why Multimodal Matters
+## Γιατί Έχει Σημασία το Multimodal
 
-Traditional AI required you to describe everything in words. Want to ask about an image? You'd have to describe it first. Want to analyze a document? You'd need to transcribe it manually. Multimodal models eliminate these barriers.
+Το παραδοσιακό AI απαιτούσε να περιγράφεις τα πάντα με λέξεις. Θέλεις να ρωτήσεις για μια εικόνα; Έπρεπε πρώτα να την περιγράψεις. Θέλεις να αναλύσεις ένα έγγραφο; Έπρεπε να το μεταγράψεις χειροκίνητα. Τα multimodal μοντέλα εξαλείφουν αυτά τα εμπόδια.
 
 <InfoGrid items={[
-  { label: "See and Understand", description: "Upload an image and ask questions about it directly—no description needed", example: "\"What's wrong with this circuit diagram?\"", color: "blue" },
-  { label: "Create from Words", description: "Describe what you want and generate images, audio, or video", example: "\"A sunset over mountains in watercolor style\"", color: "purple" },
-  { label: "Combine Everything", description: "Mix text, images, and other media in a single conversation", example: "\"Compare these two designs and tell me which is better for mobile\"", color: "green" },
-  { label: "Analyze Documents", description: "Extract information from photos of documents, receipts, or screenshots", example: "\"Extract all the line items from this invoice photo\"", color: "amber" }
+  { label: "Βλέπε και Κατανόησε", description: "Ανέβασε μια εικόνα και κάνε ερωτήσεις γι' αυτήν απευθείας—χωρίς να χρειάζεται περιγραφή", example: "\"Τι είναι λάθος με αυτό το διάγραμμα κυκλώματος;\"", color: "blue" },
+  { label: "Δημιούργησε από Λέξεις", description: "Περίγραψε τι θέλεις και δημιούργησε εικόνες, ήχο, ή βίντεο", example: "\"Ένα ηλιοβασίλεμα πάνω από βουνά σε στυλ ακουαρέλας\"", color: "purple" },
+  { label: "Συνδύασε τα Πάντα", description: "Μίξε κείμενο, εικόνες, και άλλα μέσα σε μια μόνο συνομιλία", example: "\"Σύγκρινε αυτά τα δύο designs και πες μου ποιο είναι καλύτερο για mobile\"", color: "green" },
+  { label: "Ανάλυσε Έγγραφα", description: "Εξαγάγε πληροφορίες από φωτογραφίες εγγράφων, αποδείξεων, ή screenshots", example: "\"Εξαγάγε όλα τα στοιχεία γραμμής από αυτή τη φωτογραφία τιμολογίου\"", color: "amber" }
 ]} />
 
-## Why Prompting Matters Even More for Multimodal
+## Γιατί το Prompting Έχει Ακόμα Μεγαλύτερη Σημασία για Multimodal
 
-With text-only models, the AI receives exactly what you type. But with multimodal models, the AI must interpret visual or audio information—and interpretation requires guidance.
+Με μοντέλα μόνο κειμένου, το AI λαμβάνει ακριβώς αυτό που πληκτρολογείς. Αλλά με multimodal μοντέλα, το AI πρέπει να ερμηνεύσει οπτικές ή ηχητικές πληροφορίες—και η ερμηνεία απαιτεί καθοδήγηση.
 
 <Compare 
-  before={{ label: "Vague multimodal prompt", content: "What do you see in this image?\n\n[image of a complex dashboard]" }}
-  after={{ label: "Guided multimodal prompt", content: "This is a screenshot of our analytics dashboard. Focus on:\n1. The conversion rate graph in the top-right\n2. Any error indicators or warnings\n3. Whether the data looks normal or anomalous\n\n[image of a complex dashboard]" }}
+  before={{ label: "Ασαφές multimodal prompt", content: "Τι βλέπεις σε αυτή την εικόνα;\n\n[εικόνα ενός πολύπλοκου dashboard]" }}
+  after={{ label: "Καθοδηγημένο multimodal prompt", content: "Αυτό είναι screenshot του analytics dashboard μας. Εστίασε σε:\n1. Το γράφημα conversion rate πάνω-δεξιά\n2. Οποιουσδήποτε δείκτες σφαλμάτων ή προειδοποιήσεις\n3. Αν τα δεδομένα φαίνονται κανονικά ή ανώμαλα\n\n[εικόνα ενός πολύπλοκου dashboard]" }}
 />
 
-**Without guidance**, the model might describe colors, layout, or irrelevant details. **With guidance**, it focuses on what actually matters to you.
+**Χωρίς καθοδήγηση**, το μοντέλο μπορεί να περιγράψει χρώματα, διάταξη, ή άσχετες λεπτομέρειες. **Με καθοδήγηση**, εστιάζει σε αυτό που πραγματικά σου ενδιαφέρει.
 
-<Callout type="warning" title="The Interpretation Gap">
-When you look at an image, you instantly know what's important based on your context and goals. The AI doesn't have this context unless you provide it. A photo of a crack in a wall could be: a structural engineering concern, an artistic texture, or irrelevant background. Your prompt determines how the AI interprets it.
+<Callout type="warning" title="Το Κενό Ερμηνείας">
+Όταν κοιτάς μια εικόνα, ξέρεις αμέσως τι είναι σημαντικό βάσει του πλαισίου και των στόχων σου. Το AI δεν έχει αυτό το πλαίσιο εκτός αν το παρέχεις. Μια φωτογραφία ρωγμής σε τοίχο θα μπορούσε να είναι: ανησυχία δομικής μηχανικής, καλλιτεχνική υφή, ή άσχετο φόντο. Το prompt σου καθορίζει πώς το AI θα το ερμηνεύσει.
 </Callout>
 
-## The Multimodal Landscape
+## Το Τοπίο Multimodal
 
-Different models have different capabilities. Here's what's available in 2025:
+Διαφορετικά μοντέλα έχουν διαφορετικές δυνατότητες. Εδώ είναι τι διατίθεται το 2025:
 
-### Understanding Models (Input → Analysis)
+### Μοντέλα Κατανόησης (Είσοδος → Ανάλυση)
 
-These models accept various media types and produce text analysis or responses.
-
-<InfoGrid items={[
-  { label: "GPT-4o / GPT-5", description: "Text + Images + Audio → Text. OpenAI's flagship with 128K context, strong creative and reasoning abilities, reduced hallucination rates.", color: "green" },
-  { label: "Claude 4 Sonnet/Opus", description: "Text + Images → Text. Anthropic's safety-focused model with advanced reasoning, excellent for coding and complex multi-step tasks.", color: "purple" },
-  { label: "Gemini 2.5", description: "Text + Images + Audio + Video → Text. Google's model with 1M token context, self-fact-checking, fast processing for coding and research.", color: "blue" },
-  { label: "LLaMA 4 Scout", description: "Text + Images + Video → Text. Meta's open-source model with massive 10M token context for long documents and codebases.", color: "cyan" },
-  { label: "Grok 4", description: "Text + Images → Text. xAI's model with real-time data access and social media integration for up-to-date responses.", color: "red" }
-]} />
-
-### Generation Models (Text → Media)
-
-These models create images, audio, or video from text descriptions.
+Αυτά τα μοντέλα δέχονται διάφορους τύπους μέσων και παράγουν κειμενική ανάλυση ή απαντήσεις.
 
 <InfoGrid items={[
-  { label: "DALL-E 3", description: "Text → Images. OpenAI's image generator with high accuracy to prompt descriptions.", color: "amber" },
-  { label: "Midjourney", description: "Text + Images → Images. Known for artistic quality, style control, and aesthetic outputs.", color: "pink" },
-  { label: "Sora", description: "Text → Video. OpenAI's video generation model for creating clips from descriptions.", color: "red" },
-  { label: "Whisper", description: "Audio → Text. OpenAI's speech-to-text with high accuracy across languages.", color: "cyan" }
+  { label: "GPT-4o / GPT-5", description: "Κείμενο + Εικόνες + Ήχος → Κείμενο. Η ναυαρχίδα της OpenAI με 128K context, ισχυρές δημιουργικές και συλλογιστικές ικανότητες, μειωμένα ποσοστά ψευδαισθήσεων.", color: "green" },
+  { label: "Claude 4 Sonnet/Opus", description: "Κείμενο + Εικόνες → Κείμενο. Το μοντέλο της Anthropic εστιασμένο στην ασφάλεια με προηγμένη συλλογιστική, εξαιρετικό για coding και πολύπλοκες εργασίες πολλών βημάτων.", color: "purple" },
+  { label: "Gemini 2.5", description: "Κείμενο + Εικόνες + Ήχος + Βίντεο → Κείμενο. Το μοντέλο της Google με 1M token context, αυτο-έλεγχο γεγονότων, γρήγορη επεξεργασία για coding και έρευνα.", color: "blue" },
+  { label: "LLaMA 4 Scout", description: "Κείμενο + Εικόνες + Βίντεο → Κείμενο. Το open-source μοντέλο της Meta με τεράστιο 10M token context για μεγάλα έγγραφα και codebases.", color: "cyan" },
+  { label: "Grok 4", description: "Κείμενο + Εικόνες → Κείμενο. Το μοντέλο της xAI με πρόσβαση σε δεδομένα πραγματικού χρόνου και ενσωμάτωση social media για ενημερωμένες απαντήσεις.", color: "red" }
 ]} />
 
-<Callout type="info" title="Rapid Evolution">
-The multimodal landscape changes quickly. New models launch frequently, and existing models gain capabilities through updates. Always check the latest documentation for current features and limitations.
+### Μοντέλα Δημιουργίας (Κείμενο → Μέσα)
+
+Αυτά τα μοντέλα δημιουργούν εικόνες, ήχο, ή βίντεο από κειμενικές περιγραφές.
+
+<InfoGrid items={[
+  { label: "DALL-E 3", description: "Κείμενο → Εικόνες. Η γεννήτρια εικόνων της OpenAI με υψηλή ακρίβεια στις περιγραφές prompt.", color: "amber" },
+  { label: "Midjourney", description: "Κείμενο + Εικόνες → Εικόνες. Γνωστό για καλλιτεχνική ποιότητα, έλεγχο στυλ, και αισθητικά αποτελέσματα.", color: "pink" },
+  { label: "Sora", description: "Κείμενο → Βίντεο. Το μοντέλο δημιουργίας βίντεο της OpenAI για δημιουργία clips από περιγραφές.", color: "red" },
+  { label: "Whisper", description: "Ήχος → Κείμενο. Η μετατροπή ομιλίας-σε-κείμενο της OpenAI με υψηλή ακρίβεια σε πολλές γλώσσες.", color: "cyan" }
+]} />
+
+<Callout type="info" title="Ταχεία Εξέλιξη">
+Το τοπίο multimodal αλλάζει γρήγορα. Νέα μοντέλα λανσάρονται συχνά, και υπάρχοντα μοντέλα αποκτούν δυνατότητες μέσω ενημερώσεων. Πάντα έλεγχε την πιο πρόσφατη τεκμηρίωση για τρέχοντα χαρακτηριστικά και περιορισμούς.
 </Callout>
 
-## Image Understanding Prompts
+## Prompts Κατανόησης Εικόνας
 
-The most common multimodal use case is asking AI to analyze images. The key is providing context about what you need.
+Η πιο κοινή multimodal χρήση είναι να ζητάς από το AI να αναλύσει εικόνες. Το κλειδί είναι να παρέχεις πλαίσιο για το τι χρειάζεσαι.
 
-### Basic Image Analysis
+### Βασική Ανάλυση Εικόνας
 
-Start with a clear request structure. Tell the model what aspects to focus on.
+Ξεκίνα με σαφή δομή αιτήματος. Πες στο μοντέλο σε ποιες πτυχές να εστιάσει.
 
 <TryIt 
-  title="Structured Image Analysis"
-  description="This prompt provides a clear framework for image analysis. The model knows exactly what information you need."
-  prompt={`Analyze this image and describe:
+  title="Δομημένη Ανάλυση Εικόνας"
+  description="Αυτό το prompt παρέχει σαφές πλαίσιο για ανάλυση εικόνας. Το μοντέλο ξέρει ακριβώς ποιες πληροφορίες χρειάζεσαι."
+  prompt={`Ανάλυσε αυτή την εικόνα και περίγραψε:
 
-1. **Main Subject**: What is the primary focus of this image?
-2. **Setting**: Where does this appear to be? (indoor/outdoor, location type)
-3. **Mood**: What emotional tone or atmosphere does it convey?
-4. **Text Content**: Any visible text, signs, or labels?
-5. **Notable Details**: What might someone miss at first glance?
-6. **Technical Quality**: How is the lighting, focus, and composition?
+1. **Κύριο Θέμα**: Ποια είναι η κύρια εστίαση αυτής της εικόνας;
+2. **Περιβάλλον**: Πού φαίνεται να είναι; (εσωτερικός/εξωτερικός χώρος, τύπος τοποθεσίας)
+3. **Διάθεση**: Ποιον συναισθηματικό τόνο ή ατμόσφαιρα μεταδίδει;
+4. **Κειμενικό Περιεχόμενο**: Υπάρχει ορατό κείμενο, πινακίδες, ή ετικέτες;
+5. **Αξιοσημείωτες Λεπτομέρειες**: Τι μπορεί κάποιος να χάσει με πρώτη ματιά;
+6. **Τεχνική Ποιότητα**: Πώς είναι ο φωτισμός, η εστίαση, και η σύνθεση;
 
-[Paste or describe the image you want to analyze]
+[Επικόλλησε ή περίγραψε την εικόνα που θέλεις να αναλύσεις]
 
-Image description or URL: \${imageDescription}`}
+Περιγραφή εικόνας ή URL: \${imageDescription}`}
 />
 
-### Structured Output for Images
+### Δομημένη Έξοδος για Εικόνες
 
-When you need to process image analysis programmatically, request JSON output.
+Όταν χρειάζεσαι να επεξεργαστείς ανάλυση εικόνας προγραμματιστικά, ζήτησε έξοδο JSON.
 
 <TryIt 
-  title="JSON Image Analysis"
-  description="Get structured data from image analysis that's easy to parse and use in applications."
-  prompt={`Analyze this image and return a JSON object with the following structure:
+  title="Ανάλυση Εικόνας JSON"
+  description="Λάβε δομημένα δεδομένα από ανάλυση εικόνας που είναι εύκολο να αναλυθούν και να χρησιμοποιηθούν σε εφαρμογές."
+  prompt={`Ανάλυσε αυτή την εικόνα και επέστρεψε ένα αντικείμενο JSON με την ακόλουθη δομή:
 
 {
-  "summary": "One sentence description",
-  "objects": ["List of main objects visible"],
+  "summary": "Περιγραφή μιας πρότασης",
+  "objects": ["Λίστα κύριων ορατών αντικειμένων"],
   "people": {
-    "count": "number or 'none'",
-    "activities": ["What they're doing, if any"]
+    "count": "αριθμός ή 'κανένας'",
+    "activities": ["Τι κάνουν, αν υπάρχουν"]
   },
-  "text_detected": ["Any text visible in the image"],
+  "text_detected": ["Οποιοδήποτε ορατό κείμενο στην εικόνα"],
   "colors": {
-    "dominant": ["Top 3 colors"],
-    "mood": "Warm/Cool/Neutral"
+    "dominant": ["Κορυφαία 3 χρώματα"],
+    "mood": "Θερμό/Ψυχρό/Ουδέτερο"
   },
   "setting": {
-    "type": "indoor/outdoor/unknown",
-    "description": "More specific location description"
+    "type": "εσωτερικό/εξωτερικό/άγνωστο",
+    "description": "Πιο συγκεκριμένη περιγραφή τοποθεσίας"
   },
   "technical": {
-    "quality": "high/medium/low",
-    "lighting": "Description of lighting",
-    "composition": "Description of framing/composition"
+    "quality": "υψηλή/μέση/χαμηλή",
+    "lighting": "Περιγραφή φωτισμού",
+    "composition": "Περιγραφή πλαισίωσης/σύνθεσης"
   },
-  "confidence": "high/medium/low"
+  "confidence": "υψηλή/μέση/χαμηλή"
 }
 
-Image to analyze: \${imageDescription}`}
+Εικόνα προς ανάλυση: \${imageDescription}`}
 />
 
-### Comparative Analysis
+### Συγκριτική Ανάλυση
 
-Comparing multiple images requires clear labeling and specific comparison criteria.
+Η σύγκριση πολλαπλών εικόνων απαιτεί σαφή επισήμανση και συγκεκριμένα κριτήρια σύγκρισης.
 
 <TryIt 
-  title="Image Comparison"
-  description="Compare two or more images with specific criteria that matter to your decision."
-  prompt={`Compare these images for \${purpose}:
+  title="Σύγκριση Εικόνων"
+  description="Σύγκρινε δύο ή περισσότερες εικόνες με συγκεκριμένα κριτήρια που έχουν σημασία για την απόφασή σου."
+  prompt={`Σύγκρινε αυτές τις εικόνες για \${purpose}:
 
-**Image A**: \${imageA}
-**Image B**: \${imageB}
+**Εικόνα A**: \${imageA}
+**Εικόνα B**: \${imageB}
 
-Analyze each image on these criteria:
-1. \${criterion1} (importance: high)
-2. \${criterion2} (importance: medium)  
-3. \${criterion3} (importance: low)
+Ανάλυσε κάθε εικόνα σε αυτά τα κριτήρια:
+1. \${criterion1} (σημασία: υψηλή)
+2. \${criterion2} (σημασία: μέση)  
+3. \${criterion3} (σημασία: χαμηλή)
 
-Provide:
-- Side-by-side comparison for each criterion
-- Strengths and weaknesses of each
-- Clear recommendation with reasoning
-- Any concerns or caveats`}
+Παρέχε:
+- Σύγκριση πλάι-πλάι για κάθε κριτήριο
+- Δυνατά σημεία και αδυναμίες κάθε μιας
+- Σαφή σύσταση με αιτιολόγηση
+- Οποιεσδήποτε ανησυχίες ή επιφυλάξεις`}
 />
 
-## Document and Screenshot Analysis
+## Ανάλυση Εγγράφων και Screenshots
 
-One of the most practical applications of multimodal AI is analyzing documents, screenshots, and UI elements. This saves hours of manual transcription and review.
+Μια από τις πιο πρακτικές εφαρμογές του multimodal AI είναι η ανάλυση εγγράφων, screenshots, και στοιχείων UI. Αυτό εξοικονομεί ώρες χειροκίνητης μεταγραφής και αναθεώρησης.
 
-### Document Extraction
+### Εξαγωγή Εγγράφων
 
-Scanned documents, photos of receipts, and PDFs as images can all be processed. The key is telling the model what type of document it is and what information you need.
+Σαρωμένα έγγραφα, φωτογραφίες αποδείξεων, και PDFs ως εικόνες μπορούν όλα να επεξεργαστούν. Το κλειδί είναι να πεις στο μοντέλο τι τύπος εγγράφου είναι και ποιες πληροφορίες χρειάζεσαι.
 
 <TryIt 
-  title="Document Data Extractor"
-  description="Extract structured data from photos of documents, receipts, invoices, or forms."
-  prompt={`This is a photo/scan of a \${documentType}.
+  title="Εξαγωγέας Δεδομένων Εγγράφου"
+  description="Εξαγάγε δομημένα δεδομένα από φωτογραφίες εγγράφων, αποδείξεων, τιμολογίων, ή φορμών."
+  prompt={`Αυτή είναι φωτογραφία/σάρωση ενός \${documentType}.
 
-Extract all information into structured JSON format:
+Εξαγάγε όλες τις πληροφορίες σε δομημένη μορφή JSON:
 
 {
-  "document_type": "detected type",
-  "date": "if present",
+  "document_type": "ανιχνευμένος τύπος",
+  "date": "αν υπάρχει",
   "key_fields": {
-    "field_name": "value"
+    "όνομα_πεδίου": "τιμή"
   },
   "line_items": [
     {"description": "", "amount": ""}
@@ -177,489 +177,489 @@ Extract all information into structured JSON format:
     "tax": "",
     "total": ""
   },
-  "handwritten_notes": ["any handwritten text"],
-  "unclear_sections": ["areas that were hard to read"],
-  "confidence": "high/medium/low"
+  "handwritten_notes": ["οποιοδήποτε χειρόγραφο κείμενο"],
+  "unclear_sections": ["περιοχές που ήταν δύσκολο να διαβαστούν"],
+  "confidence": "υψηλή/μέση/χαμηλή"
 }
 
-IMPORTANT: If any text is unclear, note it in "unclear_sections" rather than guessing. Mark confidence as "low" if significant portions were hard to read.
+ΣΗΜΑΝΤΙΚΟ: Αν οποιοδήποτε κείμενο είναι ασαφές, σημείωσέ το στο "unclear_sections" αντί να μαντεύεις. Σημείωσε confidence ως "χαμηλή" αν σημαντικά τμήματα ήταν δύσκολο να διαβαστούν.
 
-Document description: \${documentDescription}`}
+Περιγραφή εγγράφου: \${documentDescription}`}
 />
 
-### Screenshot and UI Analysis
+### Ανάλυση Screenshot και UI
 
-Screenshots are goldmines for debugging, UX review, and documentation. Guide the AI to focus on what matters.
+Τα screenshots είναι χρυσωρυχεία για debugging, UX review, και τεκμηρίωση. Καθοδήγησε το AI να εστιάσει σε αυτό που έχει σημασία.
 
 <TryIt 
-  title="UI/UX Screenshot Analyzer"
-  description="Get detailed analysis of screenshots for debugging, UX review, or documentation."
-  prompt={`This is a screenshot of \${applicationName}.
+  title="Αναλυτής Screenshot UI/UX"
+  description="Λάβε λεπτομερή ανάλυση screenshots για debugging, UX review, ή τεκμηρίωση."
+  prompt={`Αυτό είναι screenshot της εφαρμογής \${applicationName}.
 
-Analyze this interface:
+Ανάλυσε αυτή τη διεπαφή:
 
-**Identification**
-- What screen/page/state is this?
-- What is the user likely trying to accomplish here?
+**Ταυτοποίηση**
+- Ποια οθόνη/σελίδα/κατάσταση είναι αυτή;
+- Τι προσπαθεί πιθανώς να επιτύχει ο χρήστης εδώ;
 
-**UI Elements**
-- Key interactive elements (buttons, forms, menus)
-- Current state (anything selected, filled in, or expanded?)
-- Any error messages, warnings, or notifications?
+**Στοιχεία UI**
+- Βασικά διαδραστικά στοιχεία (κουμπιά, φόρμες, μενού)
+- Τρέχουσα κατάσταση (κάτι επιλεγμένο, συμπληρωμένο, ή επεκταμένο;)
+- Μηνύματα σφάλματος, προειδοποιήσεις, ή ειδοποιήσεις;
 
-**UX Assessment**
-- Is the layout clear and intuitive?
-- Any confusing elements or unclear labels?
-- Accessibility concerns (contrast, text size, etc.)?
+**Αξιολόγηση UX**
+- Είναι η διάταξη σαφής και διαισθητική;
+- Μπερδεμένα στοιχεία ή ασαφείς ετικέτες;
+- Ανησυχίες προσβασιμότητας (αντίθεση, μέγεθος κειμένου, κλπ.);
 
-**Issues Detected**
-- Visual bugs or misalignments?
-- Truncated text or overflow issues?
-- Inconsistent styling?
+**Εντοπισμένα Ζητήματα**
+- Οπτικά bugs ή κακές ευθυγραμμίσεις;
+- Περικομμένο κείμενο ή ζητήματα overflow;
+- Ασυνεπής styling;
 
-Screenshot description: \${screenshotDescription}`}
+Περιγραφή screenshot: \${screenshotDescription}`}
 />
 
-### Error Message Analysis
+### Ανάλυση Μηνυμάτων Σφάλματος
 
-When you encounter an error, a screenshot often contains more context than copying the error text alone.
+Όταν συναντάς σφάλμα, ένα screenshot συχνά περιέχει περισσότερο πλαίσιο από την αντιγραφή του κειμένου σφάλματος μόνο.
 
 <TryIt 
-  title="Error Diagnosis from Screenshot"
-  description="Get plain-language explanations and fixes for error messages in screenshots."
-  prompt={`I'm seeing this error in \${context}.
+  title="Διάγνωση Σφάλματος από Screenshot"
+  description="Λάβε εξηγήσεις σε απλή γλώσσα και διορθώσεις για μηνύματα σφάλματος σε screenshots."
+  prompt={`Βλέπω αυτό το σφάλμα στο \${context}.
 
-[Describe or paste the error message/screenshot]
-Error details: \${errorDetails}
+[Περίγραψε ή επικόλλησε το μήνυμα σφάλματος/screenshot]
+Λεπτομέρειες σφάλματος: \${errorDetails}
 
-Please provide:
+Παρακαλώ παρέχε:
 
-1. **Plain Language Explanation**: What does this error actually mean?
+1. **Εξήγηση σε Απλή Γλώσσα**: Τι σημαίνει πραγματικά αυτό το σφάλμα;
 
-2. **Likely Causes** (ranked by probability):
-   - Most likely: 
-   - Also possible:
-   - Less common:
+2. **Πιθανές Αιτίες** (κατάταξη κατά πιθανότητα):
+   - Πιθανότερη: 
+   - Επίσης πιθανή:
+   - Λιγότερο κοινή:
 
-3. **Step-by-Step Fix**:
-   - First, try...
-   - If that doesn't work...
-   - As a last resort...
+3. **Διόρθωση Βήμα-προς-Βήμα**:
+   - Πρώτα, δοκίμασε...
+   - Αν αυτό δεν λειτουργήσει...
+   - Ως έσχατη λύση...
 
-4. **Prevention**: How to avoid this error in the future
+4. **Πρόληψη**: Πώς να αποφύγεις αυτό το σφάλμα στο μέλλον
 
-5. **Red Flags**: When this error might indicate a more serious problem`}
+5. **Κόκκινες Σημαίες**: Πότε αυτό το σφάλμα μπορεί να υποδηλώνει πιο σοβαρό πρόβλημα`}
 />
 
-## Image Generation Prompts
+## Prompts Δημιουργίας Εικόνων
 
-Generating images from text descriptions is an art form. The more specific and structured your prompt, the closer the result will match your vision.
+Η δημιουργία εικόνων από κειμενικές περιγραφές είναι μια μορφή τέχνης. Όσο πιο συγκεκριμένο και δομημένο είναι το prompt σου, τόσο πιο κοντά θα είναι το αποτέλεσμα στο όραμά σου.
 
-### The Anatomy of an Image Prompt
+### Η Ανατομία ενός Prompt Εικόνας
 
-Effective image generation prompts have several components:
+Τα αποτελεσματικά prompts δημιουργίας εικόνων έχουν αρκετά συστατικά:
 
 <InfoGrid items={[
-  { label: "Subject", description: "What is the main focus of the image?", example: "A golden retriever playing in autumn leaves", color: "blue" },
-  { label: "Style", description: "What artistic style or medium?", example: "Watercolor painting, digital art, photorealistic", color: "purple" },
-  { label: "Composition", description: "How is the scene arranged?", example: "Close-up portrait, wide landscape, bird's eye view", color: "green" },
-  { label: "Lighting", description: "What's the light source and quality?", example: "Soft morning light, dramatic shadows, neon glow", color: "amber" },
-  { label: "Mood", description: "What feeling should it evoke?", example: "Peaceful, energetic, mysterious, nostalgic", color: "pink" },
-  { label: "Details", description: "Specific elements to include or avoid", example: "Include: flowers. Avoid: text, watermarks", color: "cyan" }
+  { label: "Θέμα", description: "Ποια είναι η κύρια εστίαση της εικόνας;", example: "Ένα golden retriever που παίζει σε φθινοπωρινά φύλλα", color: "blue" },
+  { label: "Στυλ", description: "Ποιο καλλιτεχνικό στυλ ή μέσο;", example: "Ζωγραφική ακουαρέλας, ψηφιακή τέχνη, φωτορεαλιστικό", color: "purple" },
+  { label: "Σύνθεση", description: "Πώς είναι διαρρυθμισμένη η σκηνή;", example: "Κοντινό πορτρέτο, ευρύ τοπίο, εικόνα από ψηλά", color: "green" },
+  { label: "Φωτισμός", description: "Ποια είναι η πηγή και η ποιότητα του φωτός;", example: "Απαλό πρωινό φως, δραματικές σκιές, λάμψη νέον", color: "amber" },
+  { label: "Διάθεση", description: "Τι συναίσθημα πρέπει να προκαλεί;", example: "Ειρηνική, ενεργητική, μυστηριώδης, νοσταλγική", color: "pink" },
+  { label: "Λεπτομέρειες", description: "Συγκεκριμένα στοιχεία να συμπεριληφθούν ή να αποφευχθούν", example: "Συμπεριέλαβε: λουλούδια. Απόφυγε: κείμενο, υδατογραφήματα", color: "cyan" }
 ]} />
 
-### Basic Image Generation
+### Βασική Δημιουργία Εικόνας
 
 <TryIt 
-  title="Structured Image Prompt"
-  description="Use this template to create detailed, specific image generation prompts."
-  prompt={`Create an image with these specifications:
+  title="Δομημένο Prompt Εικόνας"
+  description="Χρησιμοποίησε αυτό το template για να δημιουργήσεις λεπτομερή, συγκεκριμένα prompts δημιουργίας εικόνων."
+  prompt={`Δημιούργησε μια εικόνα με αυτές τις προδιαγραφές:
 
-**Subject**: \${subject}
+**Θέμα**: \${subject}
 
-**Style**: \${style}
-**Medium**: \${medium} (e.g., oil painting, digital art, photograph)
+**Στυλ**: \${style}
+**Μέσο**: \${medium} (π.χ., ελαιογραφία, ψηφιακή τέχνη, φωτογραφία)
 
-**Composition**:
-- Framing: \${framing} (close-up, medium shot, wide angle)
-- Perspective: \${perspective} (eye level, low angle, overhead)
-- Focus: \${focusArea}
+**Σύνθεση**:
+- Πλαισίωση: \${framing} (κοντινό, μεσαία λήψη, ευρεία γωνία)
+- Προοπτική: \${perspective} (επίπεδο ματιού, χαμηλή γωνία, από πάνω)
+- Εστίαση: \${focusArea}
 
-**Lighting**:
-- Source: \${lightSource}
-- Quality: \${lightQuality} (soft, harsh, diffused)
-- Time of day: \${timeOfDay}
+**Φωτισμός**:
+- Πηγή: \${lightSource}
+- Ποιότητα: \${lightQuality} (απαλός, σκληρός, διάχυτος)
+- Ώρα της ημέρας: \${timeOfDay}
 
-**Color Palette**: \${colors}
+**Χρωματική Παλέτα**: \${colors}
 
-**Mood/Atmosphere**: \${mood}
+**Διάθεση/Ατμόσφαιρα**: \${mood}
 
-**Must Include**: \${includeElements}
-**Must Avoid**: \${avoidElements}
+**Πρέπει να Συμπεριλαμβάνει**: \${includeElements}
+**Πρέπει να Αποφεύγει**: \${avoidElements}
 
-**Technical**: \${aspectRatio} aspect ratio, high quality`}
+**Τεχνικά**: αναλογία διαστάσεων \${aspectRatio}, υψηλή ποιότητα`}
 />
 
-### Scene Building
+### Δημιουργία Σκηνής
 
-For complex scenes, describe layers from foreground to background.
+Για πολύπλοκες σκηνές, περίγραψε επίπεδα από πρώτο πλάνο σε φόντο.
 
 <TryIt 
-  title="Layered Scene Description"
-  description="Build complex scenes by describing what appears in each layer of depth."
-  prompt={`Generate a detailed scene:
+  title="Περιγραφή Σκηνής σε Επίπεδα"
+  description="Χτίσε πολύπλοκες σκηνές περιγράφοντας τι εμφανίζεται σε κάθε επίπεδο βάθους."
+  prompt={`Δημιούργησε μια λεπτομερή σκηνή:
 
-**Setting**: \${setting}
+**Περιβάλλον**: \${setting}
 
-**Foreground** (closest to viewer):
+**Πρώτο Πλάνο** (πιο κοντά στον θεατή):
 \${foreground}
 
-**Middle Ground** (main action area):
+**Μεσαίο Πλάνο** (κύρια περιοχή δράσης):
 \${middleGround}
 
-**Background** (distant elements):
+**Φόντο** (μακρινά στοιχεία):
 \${background}
 
-**Atmospheric Details**:
-- Weather/Air: \${weather}
-- Lighting: \${lighting}
-- Time: \${timeOfDay}
+**Ατμοσφαιρικές Λεπτομέρειες**:
+- Καιρός/Αέρας: \${weather}
+- Φωτισμός: \${lighting}
+- Ώρα: \${timeOfDay}
 
-**Style**: \${artisticStyle}
-**Mood**: \${mood}
-**Color Palette**: \${colors}
+**Στυλ**: \${artisticStyle}
+**Διάθεση**: \${mood}
+**Χρωματική Παλέτα**: \${colors}
 
-Additional details to include: \${additionalDetails}`}
+Επιπλέον λεπτομέρειες να συμπεριληφθούν: \${additionalDetails}`}
 />
 
-## Audio Prompting
+## Prompts Ήχου
 
-Audio processing opens up transcription, analysis, and understanding of spoken content. The key is providing context about what the audio contains.
+Η επεξεργασία ήχου ανοίγει τη μεταγραφή, ανάλυση, και κατανόηση προφορικού περιεχομένου. Το κλειδί είναι να παρέχεις πλαίσιο για το τι περιέχει ο ήχος.
 
-### Enhanced Transcription
+### Βελτιωμένη Μεταγραφή
 
-Basic transcription is just the start. With good prompts, you can get speaker identification, timestamps, and domain-specific accuracy.
+Η βασική μεταγραφή είναι μόνο η αρχή. Με καλά prompts, μπορείς να πάρεις αναγνώριση ομιλητών, timestamps, και ακρίβεια ειδικού τομέα.
 
 <TryIt 
-  title="Smart Transcription"
-  description="Get accurate transcriptions with speaker labels, timestamps, and handling of unclear sections."
-  prompt={`Transcribe this audio recording.
+  title="Έξυπνη Μεταγραφή"
+  description="Λάβε ακριβείς μεταγραφές με ετικέτες ομιλητών, timestamps, και χειρισμό ασαφών τμημάτων."
+  prompt={`Μεταγράψε αυτή την ηχογράφηση.
 
-**Context**: \${recordingType} (meeting, interview, podcast, lecture, etc.)
-**Expected Speakers**: \${speakerCount} (\${speakerRoles})
-**Domain**: \${domain} (technical terms to expect: \${technicalTerms})
+**Πλαίσιο**: \${recordingType} (σύσκεψη, συνέντευξη, podcast, διάλεξη, κλπ.)
+**Αναμενόμενοι Ομιλητές**: \${speakerCount} (\${speakerRoles})
+**Τομέας**: \${domain} (τεχνικοί όροι που αναμένονται: \${technicalTerms})
 
-**Output Format**:
-[00:00] **Speaker 1 (Name/Role)**: Transcribed text here.
-[00:15] **Speaker 2 (Name/Role)**: Their response here.
+**Μορφή Εξόδου**:
+[00:00] **Ομιλητής 1 (Όνομα/Ρόλος)**: Μεταγεγραμμένο κείμενο εδώ.
+[00:15] **Ομιλητής 2 (Όνομα/Ρόλος)**: Η απάντησή τους εδώ.
 
-**Instructions**:
-- Include timestamps at natural breaks (every 30-60 seconds or at speaker changes)
-- Mark unclear sections as [inaudible] or [unclear: best guess?]
-- Note non-speech sounds in brackets: [laughter], [phone ringing], [long pause]
-- Preserve filler words only if they're meaningful (um, uh can be removed)
-- Flag any action items or decisions with → symbol
+**Οδηγίες**:
+- Συμπερίλαβε timestamps σε φυσικά διαλείμματα (κάθε 30-60 δευτερόλεπτα ή σε αλλαγές ομιλητή)
+- Σημείωσε ασαφή τμήματα ως [δυσδιάκριτο] ή [ασαφές: καλύτερη εικασία;]
+- Σημείωσε μη-λεκτικούς ήχους σε αγκύλες: [γέλιο], [κουδούνισμα τηλεφώνου], [μεγάλη παύση]
+- Διατήρησε λέξεις-γέμισμα μόνο αν έχουν νόημα (εε, αα μπορούν να αφαιρεθούν)
+- Επισήμανε οποιαδήποτε action items ή αποφάσεις με σύμβολο →
 
-Audio description: \${audioDescription}`}
+Περιγραφή ήχου: \${audioDescription}`}
 />
 
-### Audio Content Analysis
+### Ανάλυση Ηχητικού Περιεχομένου
 
-Beyond transcription, AI can analyze the content, tone, and key moments in audio.
+Πέρα από τη μεταγραφή, το AI μπορεί να αναλύσει το περιεχόμενο, τον τόνο, και τις βασικές στιγμές σε ήχο.
 
 <TryIt 
-  title="Audio Content Analyzer"
-  description="Get a comprehensive analysis of audio content including summary, key moments, and sentiment."
-  prompt={`Analyze this audio recording:
+  title="Αναλυτής Ηχητικού Περιεχομένου"
+  description="Λάβε ολοκληρωμένη ανάλυση ηχητικού περιεχομένου συμπεριλαμβανομένης σύνοψης, βασικών στιγμών, και συναισθήματος."
+  prompt={`Ανάλυσε αυτή την ηχογράφηση:
 
-Audio description: \${audioDescription}
+Περιγραφή ήχου: \${audioDescription}
 
-Provide:
+Παρέχε:
 
-**1. Executive Summary** (2-3 sentences)
-What is this recording about? What's the main takeaway?
+**1. Εκτελεστική Σύνοψη** (2-3 προτάσεις)
+Για τι είναι αυτή η ηχογράφηση; Ποιο είναι το κύριο συμπέρασμα;
 
-**2. Speakers**
-- How many distinct speakers?
-- Characteristics (if discernible): tone, speaking style, expertise level
+**2. Ομιλητές**
+- Πόσοι διακριτοί ομιλητές;
+- Χαρακτηριστικά (αν διακρίνονται): τόνος, στυλ ομιλίας, επίπεδο εξειδίκευσης
 
-**3. Content Breakdown**
-- Main topics discussed (with approximate timestamps)
-- Key points made
-- Questions raised
+**3. Ανάλυση Περιεχομένου**
+- Κύρια θέματα που συζητήθηκαν (με κατά προσέγγιση timestamps)
+- Βασικά σημεία που έγιναν
+- Ερωτήσεις που τέθηκαν
 
-**4. Emotional Analysis**
-- Overall tone (formal, casual, tense, friendly)
-- Notable emotional moments
-- Energy level throughout
+**4. Συναισθηματική Ανάλυση**
+- Συνολικός τόνος (επίσημος, χαλαρός, τεταμένος, φιλικός)
+- Αξιοσημείωτες συναισθηματικές στιγμές
+- Επίπεδο ενέργειας καθ' όλη τη διάρκεια
 
-**5. Actionable Items**
-- Decisions made
-- Action items mentioned
-- Follow-ups needed
+**5. Εφαρμόσιμα Στοιχεία**
+- Αποφάσεις που λήφθηκαν
+- Action items που αναφέρθηκαν
+- Follow-ups που χρειάζονται
 
-**6. Notable Quotes**
-Pull out 2-3 significant quotes with timestamps
+**6. Αξιοσημείωτα Αποσπάσματα**
+Εξαγάγε 2-3 σημαντικά αποσπάσματα με timestamps
 
-**7. Audio Quality**
-- Overall clarity
-- Any issues (background noise, interruptions, technical problems)`}
+**7. Ποιότητα Ήχου**
+- Συνολική καθαρότητα
+- Οποιαδήποτε ζητήματα (θόρυβος περιβάλλοντος, διακοπές, τεχνικά προβλήματα)`}
 />
 
-## Video Prompting
+## Prompts Βίντεο
 
-Video combines visual and audio analysis over time. The challenge is guiding the AI to focus on the relevant aspects across the entire duration.
+Το βίντεο συνδυάζει οπτική και ηχητική ανάλυση με την πάροδο του χρόνου. Η πρόκληση είναι να καθοδηγήσεις το AI να εστιάσει στις σχετικές πτυχές σε όλη τη διάρκεια.
 
-### Video Understanding
+### Κατανόηση Βίντεο
 
 <TryIt 
-  title="Comprehensive Video Analysis"
-  description="Get a structured breakdown of video content including timeline, visual elements, and key moments."
-  prompt={`Analyze this video: \${videoDescription}
+  title="Ολοκληρωμένη Ανάλυση Βίντεο"
+  description="Λάβε δομημένη ανάλυση περιεχομένου βίντεο συμπεριλαμβανομένου timeline, οπτικών στοιχείων, και βασικών στιγμών."
+  prompt={`Ανάλυσε αυτό το βίντεο: \${videoDescription}
 
-Provide a comprehensive analysis:
+Παρέχε ολοκληρωμένη ανάλυση:
 
-**1. Overview** (2-3 sentences)
-What is this video about? What's the main message or purpose?
+**1. Επισκόπηση** (2-3 προτάσεις)
+Για τι είναι αυτό το βίντεο; Ποιο είναι το κύριο μήνυμα ή σκοπός;
 
-**2. Timeline of Key Moments**
-| Timestamp | Event | Significance |
-|-----------|-------|--------------|
+**2. Timeline Βασικών Στιγμών**
+| Timestamp | Γεγονός | Σημασία |
+|-----------|---------|---------|
 | 0:00 | ... | ... |
 
-**3. Visual Analysis**
-- Setting/Location: Where does this take place?
-- People: Who appears? What are they doing?
-- Objects: Key items or props featured
-- Visual style: Quality, editing, graphics used
+**3. Οπτική Ανάλυση**
+- Περιβάλλον/Τοποθεσία: Πού λαμβάνει χώρα;
+- Άνθρωποι: Ποιοι εμφανίζονται; Τι κάνουν;
+- Αντικείμενα: Βασικά αντικείμενα ή props που εμφανίζονται
+- Οπτικό στυλ: Ποιότητα, editing, graphics που χρησιμοποιούνται
 
-**4. Audio Analysis**
-- Speech: Main points made (if any dialogue)
-- Music: Type, mood, how it's used
-- Sound effects: Notable audio elements
+**4. Ηχητική Ανάλυση**
+- Ομιλία: Κύρια σημεία που έγιναν (αν υπάρχει διάλογος)
+- Μουσική: Τύπος, διάθεση, πώς χρησιμοποιείται
+- Ηχητικά εφέ: Αξιοσημείωτα ηχητικά στοιχεία
 
-**5. Production Quality**
-- Video quality and editing
-- Pacing and structure
-- Effectiveness for its purpose
+**5. Ποιότητα Παραγωγής**
+- Ποιότητα βίντεο και editing
+- Ρυθμός και δομή
+- Αποτελεσματικότητα για τον σκοπό του
 
-**6. Target Audience**
-Who is this video made for? Does it serve them well?
+**6. Κοινό-Στόχος**
+Για ποιον είναι φτιαγμένο αυτό το βίντεο; Τους εξυπηρετεί καλά;
 
-**7. Key Takeaways**
-What should a viewer remember from this video?`}
+**7. Βασικά Συμπεράσματα**
+Τι πρέπει να θυμάται ένας θεατής από αυτό το βίντεο;`}
 />
 
-### Video Content Extraction
+### Εξαγωγή Περιεχομένου Βίντεο
 
-For specific information extraction from videos, be precise about what you need.
+Για εξαγωγή συγκεκριμένων πληροφοριών από βίντεο, να είσαι ακριβής για το τι χρειάζεσαι.
 
 <TryIt 
-  title="Video Data Extractor"
-  description="Extract specific information from videos with timestamps and structured output."
-  prompt={`Extract specific information from this video:
+  title="Εξαγωγέας Δεδομένων Βίντεο"
+  description="Εξαγάγε συγκεκριμένες πληροφορίες από βίντεο με timestamps και δομημένη έξοδο."
+  prompt={`Εξαγάγε συγκεκριμένες πληροφορίες από αυτό το βίντεο:
 
-Video type: \${videoType}
-Video description: \${videoDescription}
+Τύπος βίντεο: \${videoType}
+Περιγραφή βίντεο: \${videoDescription}
 
-**Information to Extract**:
+**Πληροφορίες προς Εξαγωγή**:
 1. \${extractItem1}
 2. \${extractItem2}
 3. \${extractItem3}
 
-**Output Format**:
+**Μορφή Εξόδου**:
 {
-  "video_summary": "Brief description",
-  "duration": "estimated length",
+  "video_summary": "Σύντομη περιγραφή",
+  "duration": "εκτιμώμενη διάρκεια",
   "extracted_data": [
     {
       "timestamp": "MM:SS",
-      "item": "What was found",
-      "details": "Additional context",
-      "confidence": "high/medium/low"
+      "item": "Τι βρέθηκε",
+      "details": "Επιπλέον πλαίσιο",
+      "confidence": "υψηλή/μέση/χαμηλή"
     }
   ],
-  "items_not_found": ["List anything requested but not present"],
-  "additional_observations": "Anything relevant not explicitly requested"
+  "items_not_found": ["Λίστα οτιδήποτε ζητήθηκε αλλά δεν υπάρχει"],
+  "additional_observations": "Οτιδήποτε σχετικό που δεν ζητήθηκε ρητά"
 }`}
 />
 
-## Multimodal Combinations
+## Multimodal Συνδυασμοί
 
-The real power of multimodal AI emerges when you combine different types of input. These combinations enable analysis that would be impossible with any single modality.
+Η πραγματική δύναμη του multimodal AI αναδύεται όταν συνδυάζεις διαφορετικούς τύπους εισόδου. Αυτοί οι συνδυασμοί επιτρέπουν ανάλυση που θα ήταν αδύνατη με οποιαδήποτε μεμονωμένη μορφή.
 
-### Image + Text Verification
+### Επαλήθευση Εικόνας + Κειμένου
 
-Check if images and their descriptions match—essential for e-commerce, content moderation, and quality assurance.
+Έλεγξε αν οι εικόνες και οι περιγραφές τους ταιριάζουν—απαραίτητο για e-commerce, μετριασμό περιεχομένου, και διασφάλιση ποιότητας.
 
 <TryIt 
-  title="Image-Text Alignment Checker"
-  description="Verify that images accurately represent their text descriptions and vice versa."
-  prompt={`Analyze this image and its accompanying text for alignment:
+  title="Ελεγκτής Ευθυγράμμισης Εικόνας-Κειμένου"
+  description="Επαλήθευσε ότι οι εικόνες αντιπροσωπεύουν με ακρίβεια τις κειμενικές τους περιγραφές και αντίστροφα."
+  prompt={`Ανάλυσε αυτή την εικόνα και το συνοδευτικό κείμενο για ευθυγράμμιση:
 
-**Image**: \${imageDescription}
-**Text Description**: "\${textDescription}"
+**Εικόνα**: \${imageDescription}
+**Κειμενική Περιγραφή**: "\${textDescription}"
 
-Evaluate:
+Αξιολόγησε:
 
-**1. Accuracy Match**
-- Does the image show what the text describes?
-- Score: [1-10] with explanation
+**1. Ταίριασμα Ακρίβειας**
+- Δείχνει η εικόνα αυτό που περιγράφει το κείμενο;
+- Βαθμολογία: [1-10] με εξήγηση
 
-**2. Text Claims vs. Visual Reality**
-| Claim in Text | Visible in Image? | Notes |
-|---------------|-------------------|-------|
-| ... | Yes/No/Partial | ... |
+**2. Ισχυρισμοί Κειμένου vs. Οπτική Πραγματικότητα**
+| Ισχυρισμός στο Κείμενο | Ορατός στην Εικόνα; | Σημειώσεις |
+|------------------------|---------------------|------------|
+| ... | Ναι/Όχι/Μερικώς | ... |
 
-**3. Visual Elements Not Mentioned**
-What's visible in the image but not described in the text?
+**3. Οπτικά Στοιχεία που δεν Αναφέρονται**
+Τι είναι ορατό στην εικόνα αλλά δεν περιγράφεται στο κείμενο;
 
-**4. Text Claims Not Visible**
-What's described in text but can't be verified from the image?
+**4. Ισχυρισμοί Κειμένου που δεν είναι Ορατοί**
+Τι περιγράφεται στο κείμενο αλλά δεν μπορεί να επαληθευτεί από την εικόνα;
 
-**5. Recommendations**
-- For the text: [improvements to match image]
-- For the image: [improvements to match text]
+**5. Συστάσεις**
+- Για το κείμενο: [βελτιώσεις για ταίριασμα με εικόνα]
+- Για την εικόνα: [βελτιώσεις για ταίριασμα με κείμενο]
 
-**6. Overall Assessment**
-Is this image-text pair trustworthy for \${purpose}?`}
+**6. Συνολική Αξιολόγηση**
+Είναι αυτό το ζεύγος εικόνας-κειμένου αξιόπιστο για \${purpose};`}
 />
 
-### Screenshot + Code Debugging
+### Debugging Screenshot + Κώδικα
 
-One of the most powerful combinations for developers: seeing the visual bug alongside the code.
+Ένας από τους πιο ισχυρούς συνδυασμούς για developers: να βλέπεις το οπτικό bug μαζί με τον κώδικα.
 
 <TryIt 
-  title="Visual Bug Debugger"
-  description="Debug UI issues by analyzing both the visual output and the source code together."
-  prompt={`I have a UI bug. Here's what I see and my code:
+  title="Debugger Οπτικών Bugs"
+  description="Κάνε debug σε ζητήματα UI αναλύοντας ταυτόχρονα την οπτική έξοδο και τον πηγαίο κώδικα."
+  prompt={`Έχω ένα bug UI. Εδώ είναι τι βλέπω και ο κώδικάς μου:
 
-**Screenshot Description**: \${screenshotDescription}
-**What's Wrong**: \${bugDescription}
-**Expected Behavior**: \${expectedBehavior}
+**Περιγραφή Screenshot**: \${screenshotDescription}
+**Τι Είναι Λάθος**: \${bugDescription}
+**Αναμενόμενη Συμπεριφορά**: \${expectedBehavior}
 
-**Relevant Code**:
+**Σχετικός Κώδικας**:
 \`\`\`\${language}
 \${code}
 \`\`\`
 
-Please help me:
+Παρακαλώ βοήθησέ με:
 
-**1. Root Cause Analysis**
-- What in the code is causing this visual issue?
-- Which specific line(s) are responsible?
+**1. Ανάλυση Ρίζας Αιτίας**
+- Τι στον κώδικα προκαλεί αυτό το οπτικό ζήτημα;
+- Ποια συγκεκριμένη γραμμή(ές) είναι υπεύθυνη;
 
-**2. Explanation**
-- Why does this code produce this visual result?
-- What's the underlying mechanism?
+**2. Εξήγηση**
+- Γιατί αυτός ο κώδικας παράγει αυτό το οπτικό αποτέλεσμα;
+- Ποιος είναι ο υποκείμενος μηχανισμός;
 
-**3. The Fix**
+**3. Η Διόρθωση**
 \`\`\`\${language}
-// Corrected code here
+// Διορθωμένος κώδικας εδώ
 \`\`\`
 
-**4. Prevention**
-- How to avoid this type of bug in the future
-- Any related issues to check for`}
+**4. Πρόληψη**
+- Πώς να αποφύγεις αυτόν τον τύπο bug στο μέλλον
+- Σχετικά ζητήματα για έλεγχο`}
 />
 
-### Multi-Image Decision Making
+### Λήψη Αποφάσεων Πολλαπλών Εικόνων
 
-When choosing between options, structured comparison helps make better decisions.
+Όταν επιλέγεις μεταξύ επιλογών, η δομημένη σύγκριση βοηθά στη λήψη καλύτερων αποφάσεων.
 
 <TryIt 
-  title="Visual Option Comparator"
-  description="Compare multiple images systematically against your criteria to make informed decisions."
-  prompt={`I'm choosing between these options for \${purpose}:
+  title="Συγκριτής Οπτικών Επιλογών"
+  description="Σύγκρινε πολλαπλές εικόνες συστηματικά έναντι των κριτηρίων σου για ενημερωμένες αποφάσεις."
+  prompt={`Επιλέγω μεταξύ αυτών των επιλογών για \${purpose}:
 
-**Option A**: \${optionA}
-**Option B**: \${optionB}
-**Option C**: \${optionC}
+**Επιλογή A**: \${optionA}
+**Επιλογή B**: \${optionB}
+**Επιλογή C**: \${optionC}
 
-**My Criteria** (in order of importance):
-1. \${criterion1} (weight: high)
-2. \${criterion2} (weight: medium)
-3. \${criterion3} (weight: low)
+**Τα Κριτήριά μου** (με σειρά σημασίας):
+1. \${criterion1} (βάρος: υψηλό)
+2. \${criterion2} (βάρος: μέσο)
+3. \${criterion3} (βάρος: χαμηλό)
 
-Provide:
+Παρέχε:
 
-**Comparison Matrix**
-| Criterion | Option A | Option B | Option C |
-|-----------|----------|----------|----------|
-| \${criterion1} | Score + notes | ... | ... |
+**Πίνακας Σύγκρισης**
+| Κριτήριο | Επιλογή A | Επιλογή B | Επιλογή C |
+|----------|-----------|-----------|-----------|
+| \${criterion1} | Βαθμολογία + σημειώσεις | ... | ... |
 | \${criterion2} | ... | ... | ... |
 | \${criterion3} | ... | ... | ... |
 
-**Weighted Scores**
-- Option A: X/10
-- Option B: X/10
-- Option C: X/10
+**Σταθμισμένες Βαθμολογίες**
+- Επιλογή A: X/10
+- Επιλογή B: X/10
+- Επιλογή C: X/10
 
-**Recommendation**
-Based on your stated priorities, I recommend [Option] because...
+**Σύσταση**
+Βάσει των δηλωμένων προτεραιοτήτων σου, συνιστώ [Επιλογή] επειδή...
 
-**Caveats**
-- If [condition], consider [alternative] instead
-- Watch out for [potential issue]`}
+**Επιφυλάξεις**
+- Αν [συνθήκη], σκέψου [εναλλακτική] αντ' αυτού
+- Πρόσεξε για [πιθανό ζήτημα]`}
 />
 
-## Best Practices for Multimodal Prompts
+## Βέλτιστες Πρακτικές για Multimodal Prompts
 
-Getting great results from multimodal AI requires understanding both its capabilities and limitations.
+Η απόκτηση εξαιρετικών αποτελεσμάτων από multimodal AI απαιτεί κατανόηση τόσο των δυνατοτήτων όσο και των περιορισμών του.
 
-### What Makes Multimodal Prompts Effective
-
-<InfoGrid items={[
-  { label: "Provide Context", description: "Tell the model what the media is and why you're analyzing it", example: "\"This is a product photo for our e-commerce site...\"", color: "green" },
-  { label: "Be Specific", description: "Ask about particular elements rather than general impressions", example: "\"Focus on the pricing table in the top-right corner\"", color: "green" },
-  { label: "Reference Locations", description: "Point to specific areas using spatial language", example: "\"In the bottom-left quadrant...\"", color: "green" },
-  { label: "State Your Goal", description: "Explain what you'll use the analysis for", example: "\"I need to decide if this image works for our mobile app\"", color: "green" }
-]} />
-
-### Common Pitfalls to Avoid
+### Τι Κάνει τα Multimodal Prompts Αποτελεσματικά
 
 <InfoGrid items={[
-  { label: "Assuming Perfect Vision", description: "Models may miss small details, especially in low-resolution images", example: "Don't ask about 8pt text in a compressed screenshot", color: "red" },
-  { label: "Expecting Perfect OCR", description: "Handwriting, unusual fonts, and complex layouts can cause errors", example: "Verify extracted text from receipts and forms", color: "red" },
-  { label: "Ignoring Content Policies", description: "Models have restrictions on certain types of content", example: "Won't identify specific individuals or analyze inappropriate content", color: "red" },
-  { label: "Skipping Verification", description: "Always verify critical information extracted from media", example: "Double-check numbers, dates, and names from document extraction", color: "red" }
+  { label: "Παρέχε Πλαίσιο", description: "Πες στο μοντέλο τι είναι το μέσο και γιατί το αναλύεις", example: "\"Αυτή είναι φωτογραφία προϊόντος για το e-commerce site μας...\"", color: "green" },
+  { label: "Να Είσαι Συγκεκριμένος", description: "Ρώτα για συγκεκριμένα στοιχεία αντί για γενικές εντυπώσεις", example: "\"Εστίασε στον πίνακα τιμών πάνω-δεξιά\"", color: "green" },
+  { label: "Αναφέρσου σε Τοποθεσίες", description: "Δείξε συγκεκριμένες περιοχές χρησιμοποιώντας χωρική γλώσσα", example: "\"Στο κάτω-αριστερά τεταρτημόριο...\"", color: "green" },
+  { label: "Δήλωσε τον Στόχο σου", description: "Εξήγησε για τι θα χρησιμοποιήσεις την ανάλυση", example: "\"Πρέπει να αποφασίσω αν αυτή η εικόνα λειτουργεί για την mobile εφαρμογή μας\"", color: "green" }
 ]} />
 
-### Handling Limitations Gracefully
+### Κοινές Παγίδες προς Αποφυγή
+
+<InfoGrid items={[
+  { label: "Υποθέτοντας Τέλεια Όραση", description: "Τα μοντέλα μπορεί να χάσουν μικρές λεπτομέρειες, ειδικά σε εικόνες χαμηλής ανάλυσης", example: "Μη ρωτάς για κείμενο 8pt σε συμπιεσμένο screenshot", color: "red" },
+  { label: "Αναμένοντας Τέλειο OCR", description: "Χειρόγραφα, ασυνήθιστες γραμματοσειρές, και πολύπλοκες διατάξεις μπορούν να προκαλέσουν σφάλματα", example: "Επαλήθευσε εξαγμένο κείμενο από αποδείξεις και φόρμες", color: "red" },
+  { label: "Αγνοώντας Πολιτικές Περιεχομένου", description: "Τα μοντέλα έχουν περιορισμούς σε ορισμένους τύπους περιεχομένου", example: "Δεν αναγνωρίζουν συγκεκριμένα άτομα ή αναλύουν ακατάλληλο περιεχόμενο", color: "red" },
+  { label: "Παραλείποντας Επαλήθευση", description: "Πάντα επαλήθευε κρίσιμες πληροφορίες που εξάγονται από μέσα", example: "Διπλοέλεγξε αριθμούς, ημερομηνίες, και ονόματα από εξαγωγή εγγράφων", color: "red" }
+]} />
+
+### Χειρισμός Περιορισμών με Χάρη
 
 <TryIt 
-  title="Uncertainty-Aware Image Analysis"
-  description="This prompt explicitly handles cases where the model can't see clearly or is uncertain."
-  prompt={`Analyze this image: \${imageDescription}
+  title="Ανάλυση Εικόνας με Επίγνωση Αβεβαιότητας"
+  description="Αυτό το prompt χειρίζεται ρητά περιπτώσεις όπου το μοντέλο δεν μπορεί να δει καθαρά ή είναι αβέβαιο."
+  prompt={`Ανάλυσε αυτή την εικόνα: \${imageDescription}
 
-**Instructions for Handling Uncertainty**:
+**Οδηγίες για Χειρισμό Αβεβαιότητας**:
 
-IF YOU CAN'T SEE SOMETHING CLEARLY:
-- Don't guess or make up details
-- Say: "I can see [what's visible] but cannot clearly make out [unclear element]"
-- Suggest what additional information would help
+ΑΝ ΔΕΝ ΜΠΟΡΕΙΣ ΝΑ ΔΕΙΣ ΚΑΤΙ ΚΑΘΑΡΑ:
+- Μη μαντεύεις ή επινοείς λεπτομέρειες
+- Πες: "Μπορώ να δω [τι είναι ορατό] αλλά δεν μπορώ να διακρίνω καθαρά [ασαφές στοιχείο]"
+- Πρότεινε ποιες επιπλέον πληροφορίες θα βοηθούσαν
 
-IF CONTENT SEEMS RESTRICTED:
-- Explain what you can and cannot analyze
-- Focus on permitted aspects of the analysis
+ΑΝ ΤΟ ΠΕΡΙΕΧΟΜΕΝΟ ΦΑΙΝΕΤΑΙ ΠΕΡΙΟΡΙΣΜΕΝΟ:
+- Εξήγησε τι μπορείς και τι δεν μπορείς να αναλύσεις
+- Εστίασε σε επιτρεπόμενες πτυχές της ανάλυσης
 
-IF ASKED ABOUT PEOPLE:
-- Describe actions, positions, and general characteristics
-- Do not attempt to identify specific individuals
-- Focus on: number of people, activities, expressions, attire
+ΑΝ ΡΩΤΗΘΕΙΣ ΓΙΑ ΑΤΟΜΑ:
+- Περίγραψε δράσεις, θέσεις, και γενικά χαρακτηριστικά
+- Μην επιχειρήσεις να αναγνωρίσεις συγκεκριμένα άτομα
+- Εστίασε σε: αριθμό ατόμων, δραστηριότητες, εκφράσεις, ενδυμασία
 
-**Your Analysis**:
-[Proceed with analysis, applying these guidelines]`}
+**Η Ανάλυσή σου**:
+[Προχώρα με ανάλυση, εφαρμόζοντας αυτές τις οδηγίες]`}
 />
 
 <Quiz 
-  question="Why does prompting matter MORE for multimodal models than for text-only models?"
+  question="Γιατί το prompting έχει ΜΕΓΑΛΥΤΕΡΗ σημασία για multimodal μοντέλα από ό,τι για μοντέλα μόνο κειμένου;"
   options={[
-    "Multimodal models are less intelligent and need more help",
-    "Images and audio are inherently ambiguous—the AI needs context to know what aspects matter",
-    "Multimodal models can only process one type of input at a time",
-    "Text prompts don't work with multimodal models"
+    "Τα multimodal μοντέλα είναι λιγότερο έξυπνα και χρειάζονται περισσότερη βοήθεια",
+    "Οι εικόνες και ο ήχος είναι εγγενώς διφορούμενα—το AI χρειάζεται πλαίσιο για να ξέρει ποιες πτυχές έχουν σημασία",
+    "Τα multimodal μοντέλα μπορούν να επεξεργαστούν μόνο έναν τύπο εισόδου τη φορά",
+    "Τα κειμενικά prompts δεν λειτουργούν με multimodal μοντέλα"
   ]}
   correctIndex={1}
-  explanation="When you look at an image, you instantly know what's important based on your goals. The AI doesn't have this context—a photo of a wall crack could be an engineering concern, an artistic texture, or irrelevant background. Your prompt determines how the AI interprets and focuses on the media you provide."
+  explanation="Όταν κοιτάς μια εικόνα, ξέρεις αμέσως τι είναι σημαντικό βάσει των στόχων σου. Το AI δεν έχει αυτό το πλαίσιο—μια φωτογραφία ρωγμής τοίχου θα μπορούσε να είναι ανησυχία μηχανικής, καλλιτεχνική υφή, ή άσχετο φόντο. Το prompt σου καθορίζει πώς το AI ερμηνεύει και εστιάζει στα μέσα που παρέχεις."
 />

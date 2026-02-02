@@ -69,169 +69,169 @@
 
 <ChainFlowDemo />
 
-### Sequential Chain
+### Ακολουθιακή Αλυσίδα
 
-The most straightforward pattern: each step depends on the previous. Think of it as a relay race where each runner passes the baton to the next.
+Το πιο απλό μοτίβο: κάθε βήμα εξαρτάται από το προηγούμενο. Σκέψου το σαν σκυταλοδρομία όπου κάθε δρομέας περνάει τη σκυτάλη στον επόμενο.
 
 <ChainExample 
   type="sequential"
   steps={[
-    { step: "Step 1: Extract", prompt: "Extract all dates, names, and numbers from: [text]", output: '{ dates: ["2024-01-15", "2024-02-20"], names: ["John Smith", "Acme Corp"], numbers: [15000, 42] }' },
-    { step: "Step 2: Analyze", prompt: "Given this extracted data: [step1_output], identify relationships and patterns.", output: '{ patterns: ["Monthly meetings scheduled"], relationships: ["John Smith works at Acme Corp"] }' },
-    { step: "Step 3: Generate", prompt: "Using these patterns: [step2_output], write a summary report highlighting the most significant findings.", output: "Summary Report: Analysis of the document reveals a business relationship between John Smith and Acme Corp, with scheduled monthly meetings..." }
+    { step: "Βήμα 1: Εξαγωγή", prompt: "Εξαγάγε όλες τις ημερομηνίες, ονόματα, και αριθμούς από: [κείμενο]", output: '{ dates: ["2024-01-15", "2024-02-20"], names: ["Γιάννης Παπαδόπουλος", "Acme Corp"], numbers: [15000, 42] }' },
+    { step: "Βήμα 2: Ανάλυση", prompt: "Δεδομένων αυτών των εξαγόμενων δεδομένων: [βήμα1_έξοδος], εντόπισε σχέσεις και μοτίβα.", output: '{ patterns: ["Μηνιαίες συναντήσεις προγραμματισμένες"], relationships: ["Ο Γιάννης Παπαδόπουλος εργάζεται στην Acme Corp"] }' },
+    { step: "Βήμα 3: Δημιουργία", prompt: "Χρησιμοποιώντας αυτά τα μοτίβα: [βήμα2_έξοδος], γράψε μια συνοπτική αναφορά που αναδεικνύει τα πιο σημαντικά ευρήματα.", output: "Συνοπτική Αναφορά: Η ανάλυση του εγγράφου αποκαλύπτει επιχειρηματική σχέση μεταξύ του Γιάννη Παπαδόπουλου και της Acme Corp, με προγραμματισμένες μηνιαίες συναντήσεις..." }
   ]}
 />
 
-### Parallel Chain
+### Παράλληλη Αλυσίδα
 
-When you need multiple perspectives on the same input, run prompts in parallel and merge results. This is faster than sequential chains and provides richer analysis.
+Όταν χρειάζεσαι πολλαπλές προοπτικές στην ίδια είσοδο, εκτέλεσε prompts παράλληλα και συγχώνευσε τα αποτελέσματα. Αυτό είναι ταχύτερο από ακολουθιακές αλυσίδες και παρέχει πλουσιότερη ανάλυση.
 
 <ChainExample 
   type="parallel"
   steps={[
-    { step: "Input", prompt: "Product review text", output: '"I love these earbuds! The battery lasts forever and the display on the case is so convenient. Perfect for my daily commute."' },
-    { step: "Branch A: Sentiment", prompt: "Analyze sentiment: [text]", output: '{ sentiment: "positive", score: 0.85 }' },
-    { step: "Branch B: Features", prompt: "Extract features mentioned: [text]", output: '{ features: ["battery", "display"] }' },
-    { step: "Branch C: Persona", prompt: "Identify user persona: [text]", output: '{ persona: "commuter" }' },
-    { step: "Merge", prompt: "Combine analyses into unified report", output: "Unified Report: Positive review from a commuter highlighting battery and display." }
+    { step: "Είσοδος", prompt: "Κείμενο κριτικής προϊόντος", output: '"Λατρεύω αυτά τα ακουστικά! Η μπαταρία κρατάει για πάντα και η οθόνη στη θήκη είναι τόσο βολική. Τέλεια για την καθημερινή μου μετακίνηση."' },
+    { step: "Κλάδος A: Συναίσθημα", prompt: "Ανάλυσε το συναίσθημα: [κείμενο]", output: '{ sentiment: "positive", score: 0.85 }' },
+    { step: "Κλάδος B: Χαρακτηριστικά", prompt: "Εξαγάγε τα αναφερόμενα χαρακτηριστικά: [κείμενο]", output: '{ features: ["μπαταρία", "οθόνη"] }' },
+    { step: "Κλάδος C: Persona", prompt: "Εντόπισε την persona χρήστη: [κείμενο]", output: '{ persona: "μετακινούμενος" }' },
+    { step: "Συγχώνευση", prompt: "Συνδύασε τις αναλύσεις σε ενοποιημένη αναφορά", output: "Ενοποιημένη Αναφορά: Θετική κριτική από μετακινούμενο που επισημαίνει μπαταρία και οθόνη." }
   ]}
 />
 
-### Conditional Chain
+### Υπό Συνθήκη Αλυσίδα
 
-Route inputs through different paths based on classification. This is like a decision tree where the AI first categorizes the input, then handles each category differently.
+Δρομολόγησε εισόδους μέσω διαφορετικών διαδρομών βάσει ταξινόμησης. Αυτό είναι σαν δέντρο αποφάσεων όπου το AI πρώτα κατηγοριοποιεί την είσοδο, μετά χειρίζεται κάθε κατηγορία διαφορετικά.
 
 <ChainExample 
   type="conditional"
   steps={[
-    { step: "Classify Input", prompt: "Classify this customer message as: complaint, question, feedback, or other.\n\nMessage: [text]", output: '{ classification: "complaint", confidence: 0.92 }' },
-    { step: "Route: Question (skipped)", prompt: "Identify what information is needed", output: "Skipped - input classified as complaint" },
-    { step: "Route: Complaint", prompt: "Identify the issue and severity: [text]", output: '{ issue: "delayed shipping", severity: "medium" }' },
-    { step: "Generate Response", prompt: "Generate empathetic response with resolution: [analysis]", output: "Dear Customer, We sincerely apologize for the delay. Your order has been expedited..." }
+    { step: "Ταξινόμησε Είσοδο", prompt: "Ταξινόμησε αυτό το μήνυμα πελάτη ως: παράπονο, ερώτηση, feedback, ή άλλο.\n\nΜήνυμα: [κείμενο]", output: '{ classification: "complaint", confidence: 0.92 }' },
+    { step: "Διαδρομή: Ερώτηση (παραλείφθηκε)", prompt: "Εντόπισε ποια πληροφορία χρειάζεται", output: "Παραλείφθηκε - η είσοδος ταξινομήθηκε ως παράπονο" },
+    { step: "Διαδρομή: Παράπονο", prompt: "Εντόπισε το ζήτημα και τη σοβαρότητα: [κείμενο]", output: '{ issue: "καθυστερημένη αποστολή", severity: "medium" }' },
+    { step: "Δημιούργησε Απάντηση", prompt: "Δημιούργησε ενσυναισθητική απάντηση με επίλυση: [ανάλυση]", output: "Αγαπητέ Πελάτη, Ζητούμε ειλικρινά συγγνώμη για την καθυστέρηση. Η παραγγελία σας έχει επισπευσθεί..." }
   ]}
 />
 
-### Iterative Chain
+### Επαναληπτική Αλυσίδα
 
-Keep refining output until it meets quality standards. The AI generates, evaluates, and improves in a loop until satisfied or max iterations reached.
+Συνέχισε να βελτιώνεις την έξοδο μέχρι να πληροί τα πρότυπα ποιότητας. Το AI δημιουργεί, αξιολογεί, και βελτιώνει σε βρόχο μέχρι να ικανοποιηθεί ή να φτάσει το μέγιστο επαναλήψεων.
 
-<Callout type="warning" title="Set Iteration Limits">
-Always set a maximum number of iterations (typically 3-5) to prevent infinite loops and control costs. The law of diminishing returns applies: most improvement happens in the first 2-3 iterations.
+<Callout type="warning" title="Θέσε Όρια Επαναλήψεων">
+Πάντα θέτε μέγιστο αριθμό επαναλήψεων (συνήθως 3-5) για να αποτρέψεις άπειρους βρόχους και να ελέγξεις το κόστος. Ο νόμος των φθινουσών αποδόσεων ισχύει: η περισσότερη βελτίωση συμβαίνει στις πρώτες 2-3 επαναλήψεις.
 </Callout>
 
 <ChainExample 
   type="iterative"
   steps={[
-    { step: "Generate Draft", prompt: "Write a product description for: [wireless earbuds]", output: "These wireless earbuds offer good sound quality and comfortable fit for everyday use." },
-    { step: "Evaluate (Score: 5)", prompt: "Rate this description 1-10 on: clarity, persuasiveness, accuracy.\n\nDescription: [current_draft]", output: '{ score: 5, improvements: ["Add specific features", "Include emotional benefits", "Mention battery life", "Add call-to-action"] }' },
-    { step: "Improve Draft", prompt: "Improve this description based on this feedback:\n\nCurrent: [current_draft]\nFeedback: [improvements]", output: "Experience crystal-clear audio with our premium wireless earbuds. Featuring 30-hour battery life, active noise cancellation, and an ergonomic design that stays comfortable all day. Perfect for music lovers and professionals alike. Order now and transform your listening experience." },
-    { step: "Evaluate (Score: 8)", prompt: "Rate this description 1-10 on: clarity, persuasiveness, accuracy.\n\nDescription: [improved_draft]", output: '{ score: 8, improvements: ["Minor: Could add warranty info"] }\n\n✓ Score >= 8: EXIT LOOP' }
+    { step: "Δημιούργησε Προσχέδιο", prompt: "Γράψε περιγραφή προϊόντος για: [ασύρματα ακουστικά]", output: "Αυτά τα ασύρματα ακουστικά προσφέρουν καλή ποιότητα ήχου και άνετη εφαρμογή για καθημερινή χρήση." },
+    { step: "Αξιολόγησε (Βαθμός: 5)", prompt: "Βαθμολόγησε αυτή την περιγραφή 1-10 σε: σαφήνεια, πειστικότητα, ακρίβεια.\n\nΠεριγραφή: [τρέχον_προσχέδιο]", output: '{ score: 5, improvements: ["Πρόσθεσε συγκεκριμένα χαρακτηριστικά", "Συμπερίλαβε συναισθηματικά οφέλη", "Ανάφερε διάρκεια μπαταρίας", "Πρόσθεσε call-to-action"] }' },
+    { step: "Βελτίωσε Προσχέδιο", prompt: "Βελτίωσε αυτή την περιγραφή βάσει αυτού του feedback:\n\nΤρέχον: [τρέχον_προσχέδιο]\nFeedback: [βελτιώσεις]", output: "Ζήσε κρυστάλλινο ήχο με τα premium ασύρματα ακουστικά μας. Με 30 ώρες διάρκεια μπαταρίας, ενεργή ακύρωση θορύβου, και εργονομικό σχεδιασμό που μένει άνετος όλη μέρα. Ιδανικά για λάτρεις της μουσικής και επαγγελματίες. Παράγγειλε τώρα και μετατρέψε την ακουστική σου εμπειρία." },
+    { step: "Αξιολόγησε (Βαθμός: 8)", prompt: "Βαθμολόγησε αυτή την περιγραφή 1-10 σε: σαφήνεια, πειστικότητα, ακρίβεια.\n\nΠεριγραφή: [βελτιωμένο_προσχέδιο]", output: '{ score: 8, improvements: ["Ελάσσον: Θα μπορούσε να προσθέσει πληροφορίες εγγύησης"] }\n\n✓ Βαθμός >= 8: ΕΞΟΔΟΣ ΒΡΟΧΟΥ' }
   ]}
 />
 
-## Common Chain Patterns
+## Κοινά Μοτίβα Αλυσίδων
 
-These battle-tested patterns solve common problems. Use them as starting points and adapt to your needs.
+Αυτά τα δοκιμασμένα στη μάχη μοτίβα λύνουν κοινά προβλήματα. Χρησιμοποίησέ τα ως σημεία εκκίνησης και προσάρμοσέ τα στις ανάγκες σου.
 
-### Extract → Transform → Generate
+### Εξαγωγή → Μετασχηματισμός → Δημιουργία
 
-The workhorse of content processing. Pull data out, reshape it, then create something new.
+Το βαρύ πυροβολικό της επεξεργασίας περιεχομένου. Τράβηξε δεδομένα έξω, αναδιαμόρφωσέ τα, μετά δημιούργησε κάτι νέο.
 
 <div className="mb-4 p-3 rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800">
-  <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 m-0!">Best For</p>
-  <p className="text-sm text-blue-600 dark:text-blue-400 m-0!">Document summarization, report generation, content repurposing, data-to-narrative conversion</p>
+  <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 m-0!">Καλύτερο Για</p>
+  <p className="text-sm text-blue-600 dark:text-blue-400 m-0!">Περίληψη εγγράφων, δημιουργία αναφορών, επαναχρησιμοποίηση περιεχομένου, μετατροπή δεδομένων σε αφήγηση</p>
 </div>
 
 <ChainExample 
   type="sequential"
   steps={[
-    { step: "Extract", prompt: "From this document, extract:\n- Main topic\n- Key arguments (list)\n- Supporting evidence (list)\n- Conclusions\nReturn as JSON.", output: '{ "topic": "Climate change impacts", "arguments": ["Rising temperatures", "Sea level rise"], "evidence": ["NASA data", "IPCC reports"], "conclusions": ["Urgent action needed"] }' },
-    { step: "Transform", prompt: "Reorganize this information for [business executives]:\n[extracted_data]\nFocus on: economic implications\nRemove: technical jargon", output: '{ "summary": "Climate risks to business", "key_points": ["Supply chain disruption", "Insurance costs rising"], "action_items": ["Assess vulnerabilities", "Plan adaptations"] }' },
-    { step: "Generate", prompt: "Using this restructured information, write a [executive brief]:\n[transformed_data]\nTone: professional\nLength: 200 words", output: "Executive Brief: Climate change presents significant operational risks to our business. Key concerns include supply chain disruptions from extreme weather events and rising insurance premiums. We recommend immediate assessment of facility vulnerabilities and development of adaptation strategies..." }
+    { step: "Εξαγωγή", prompt: "Από αυτό το έγγραφο, εξαγάγε:\n- Κύριο θέμα\n- Βασικά επιχειρήματα (λίστα)\n- Υποστηρικτικά στοιχεία (λίστα)\n- Συμπεράσματα\nΕπιστρέψε ως JSON.", output: '{ "topic": "Επιπτώσεις κλιματικής αλλαγής", "arguments": ["Αυξανόμενες θερμοκρασίες", "Άνοδος στάθμης θάλασσας"], "evidence": ["Δεδομένα NASA", "Αναφορές IPCC"], "conclusions": ["Απαιτείται επείγουσα δράση"] }' },
+    { step: "Μετασχηματισμός", prompt: "Αναδιοργάνωσε αυτές τις πληροφορίες για [επιχειρηματικά στελέχη]:\n[εξαγόμενα_δεδομένα]\nΕστίαση σε: οικονομικές επιπτώσεις\nΑφαίρεσε: τεχνική ορολογία", output: '{ "summary": "Κλιματικοί κίνδυνοι για επιχειρήσεις", "key_points": ["Διαταραχή αλυσίδας εφοδιασμού", "Αυξανόμενο κόστος ασφάλισης"], "action_items": ["Αξιολόγηση ευπαθειών", "Σχεδιασμός προσαρμογών"] }' },
+    { step: "Δημιουργία", prompt: "Χρησιμοποιώντας αυτές τις αναδομημένες πληροφορίες, γράψε ένα [εκτελεστικό brief]:\n[μετασχηματισμένα_δεδομένα]\nΤόνος: επαγγελματικός\nΜήκος: 200 λέξεις", output: "Εκτελεστικό Brief: Η κλιματική αλλαγή παρουσιάζει σημαντικούς λειτουργικούς κινδύνους για την επιχείρησή μας. Βασικές ανησυχίες περιλαμβάνουν διαταραχές αλυσίδας εφοδιασμού από ακραία καιρικά φαινόμενα και αυξανόμενα ασφάλιστρα. Συνιστούμε άμεση αξιολόγηση ευπαθειών εγκαταστάσεων και ανάπτυξη στρατηγικών προσαρμογής..." }
   ]}
 />
 
-### Analyze → Plan → Execute
+### Ανάλυση → Σχεδιασμός → Εκτέλεση
 
-Perfect for code refactoring, project planning, or any task where you need to understand before acting.
+Τέλειο για refactoring κώδικα, σχεδιασμό project, ή οποιαδήποτε εργασία όπου χρειάζεται να κατανοήσεις πριν ενεργήσεις.
 
 <div className="mb-4 p-3 rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border border-purple-200 dark:border-purple-800">
-  <p className="text-xs font-semibold text-purple-700 dark:text-purple-300 mb-1 m-0!">Best For</p>
-  <p className="text-sm text-purple-600 dark:text-purple-400 m-0!">Code refactoring, project planning, troubleshooting, strategic decision-making, complex problem solving</p>
+  <p className="text-xs font-semibold text-purple-700 dark:text-purple-300 mb-1 m-0!">Καλύτερο Για</p>
+  <p className="text-sm text-purple-600 dark:text-purple-400 m-0!">Refactoring κώδικα, σχεδιασμός project, αντιμετώπιση προβλημάτων, στρατηγική λήψη αποφάσεων, επίλυση σύνθετων προβλημάτων</p>
 </div>
 
 <ChainExample 
   type="sequential"
   steps={[
-    { step: "Analyze", prompt: "Analyze this codebase structure and identify:\n- Architecture pattern\n- Main components\n- Dependencies\n- Potential issues\n[code]", output: '{ "pattern": "MVC", "components": ["UserController", "AuthService", "Database"], "dependencies": ["express", "mongoose"], "issues": ["No input validation", "Hardcoded secrets"] }' },
-    { step: "Plan", prompt: "Based on this analysis, create a refactoring plan:\n[analysis_output]\nGoal: improve security\nConstraints: no breaking changes", output: '{ "steps": ["1. Add input validation middleware", "2. Move secrets to env vars", "3. Add rate limiting"], "priority": "high", "estimated_time": "4 hours" }' },
-    { step: "Execute", prompt: "Implement step 1 of this plan:\n[plan_output]\nShow the refactored code with explanations.", output: "// Added validation middleware\nconst validateInput = (req, res, next) => {\n  const { email, password } = req.body;\n  if (!email || !isValidEmail(email)) {\n    return res.status(400).json({ error: 'Invalid email' });\n  }\n  next();\n};" }
+    { step: "Ανάλυση", prompt: "Ανάλυσε αυτή τη δομή codebase και εντόπισε:\n- Αρχιτεκτονικό μοτίβο\n- Κύρια components\n- Dependencies\n- Πιθανά ζητήματα\n[κώδικας]", output: '{ "pattern": "MVC", "components": ["UserController", "AuthService", "Database"], "dependencies": ["express", "mongoose"], "issues": ["Χωρίς input validation", "Hardcoded secrets"] }' },
+    { step: "Σχεδιασμός", prompt: "Βάσει αυτής της ανάλυσης, δημιούργησε σχέδιο refactoring:\n[έξοδος_ανάλυσης]\nΣτόχος: βελτίωση ασφάλειας\nΠεριορισμοί: χωρίς breaking changes", output: '{ "steps": ["1. Πρόσθεσε input validation middleware", "2. Μετακίνησε secrets σε env vars", "3. Πρόσθεσε rate limiting"], "priority": "high", "estimated_time": "4 ώρες" }' },
+    { step: "Εκτέλεση", prompt: "Υλοποίησε το βήμα 1 αυτού του σχεδίου:\n[έξοδος_σχεδίου]\nΔείξε τον refactored κώδικα με εξηγήσεις.", output: "// Προστέθηκε validation middleware\nconst validateInput = (req, res, next) => {\n  const { email, password } = req.body;\n  if (!email || !isValidEmail(email)) {\n    return res.status(400).json({ error: 'Invalid email' });\n  }\n  next();\n};" }
   ]}
 />
 
-### Generate → Critique → Refine
+### Δημιουργία → Κριτική → Βελτίωση
 
-The self-improvement loop. Generate content, have the AI evaluate it critically, then improve based on that feedback. This mimics how professional writers and editors work together.
+Ο βρόχος αυτο-βελτίωσης. Δημιούργησε περιεχόμενο, βάλε το AI να το αξιολογήσει κριτικά, μετά βελτίωσε βάσει αυτού του feedback. Αυτό μιμείται πώς επαγγελματίες συγγραφείς και επιμελητές δουλεύουν μαζί.
 
 <div className="mb-4 p-3 rounded-lg bg-green-50/50 dark:bg-green-950/20 border border-green-200 dark:border-green-800">
-  <p className="text-xs font-semibold text-green-700 dark:text-green-300 mb-1 m-0!">Best For</p>
-  <p className="text-sm text-green-600 dark:text-green-400 m-0!">Marketing copy, creative writing, email drafts, presentations, any content that benefits from revision</p>
+  <p className="text-xs font-semibold text-green-700 dark:text-green-300 mb-1 m-0!">Καλύτερο Για</p>
+  <p className="text-sm text-green-600 dark:text-green-400 m-0!">Marketing copy, δημιουργική γραφή, προσχέδια email, παρουσιάσεις, οποιοδήποτε περιεχόμενο που ωφελείται από αναθεώρηση</p>
 </div>
 
 <ChainExample 
   type="iterative"
   steps={[
-    { step: "Generate", prompt: "Write a marketing email for [fitness app] targeting [busy professionals].", output: "Subject: Get Fit Fast!\n\nHey there! Our app helps you exercise. Download it today and start your fitness journey. Thanks!" },
-    { step: "Critique", prompt: "As a marketing expert, critique this email:\n[generated_email]\nEvaluate: subject line, hook, value proposition, CTA, tone\nScore each 1-10.", output: '{ "subject_line": 4, "hook": 3, "value_proposition": 2, "cta": 5, "tone": 4, "feedback": "Too generic, no specific benefits, weak urgency" }' },
-    { step: "Refine", prompt: "Rewrite the email addressing this feedback:\nOriginal: [generated_email]\nCritique: [critique_output]\nFocus on the lowest-scored elements.", output: "Subject: 15-Min Workouts for Your Lunch Break\n\nBusy schedule? We get it. Our app delivers science-backed workouts designed for professionals who have zero time to waste. Join 50,000+ executives who transformed their health in just 15 minutes a day. Start your free trial now—your future self will thank you." },
-    { step: "Final Score", prompt: "Re-evaluate the refined email.", output: '{ "subject_line": 8, "hook": 8, "value_proposition": 9, "cta": 8, "tone": 9, "improvement": "+23 points total" }' }
+    { step: "Δημιουργία", prompt: "Γράψε ένα marketing email για [fitness app] στοχεύοντας [πολυάσχολους επαγγελματίες].", output: "Θέμα: Γίνε Fit Γρήγορα!\n\nΓεια σου! Η εφαρμογή μας βοηθά στην άσκηση. Κατέβασέ την σήμερα και ξεκίνα το fitness ταξίδι σου. Ευχαριστούμε!" },
+    { step: "Κριτική", prompt: "Ως ειδικός marketing, κριτικάρε αυτό το email:\n[δημιουργημένο_email]\nΑξιολόγησε: γραμμή θέματος, hook, value proposition, CTA, τόνο\nΒαθμολόγησε κάθε ένα 1-10.", output: '{ "subject_line": 4, "hook": 3, "value_proposition": 2, "cta": 5, "tone": 4, "feedback": "Πολύ γενικό, χωρίς συγκεκριμένα οφέλη, αδύναμη επείγουσα ανάγκη" }' },
+    { step: "Βελτίωση", prompt: "Ξαναγράψε το email αντιμετωπίζοντας αυτό το feedback:\nΑρχικό: [δημιουργημένο_email]\nΚριτική: [έξοδος_κριτικής]\nΕστίασε στα στοιχεία με τη χαμηλότερη βαθμολογία.", output: "Θέμα: 15-λεπτα Workouts για το Διάλειμμά σου\n\nΠολυάσχολο πρόγραμμα; Το καταλαβαίνουμε. Η εφαρμογή μας παρέχει επιστημονικά τεκμηριωμένα workouts σχεδιασμένα για επαγγελματίες που δεν έχουν χρόνο για χάσιμο. Συμμετέχε σε 50.000+ στελέχη που μετατρέψαν την υγεία τους σε μόλις 15 λεπτά την ημέρα. Ξεκίνα τη δωρεάν δοκιμή τώρα—ο μελλοντικός σου εαυτός θα σε ευχαριστήσει." },
+    { step: "Τελικός Βαθμός", prompt: "Επαναξιολόγησε το βελτιωμένο email.", output: '{ "subject_line": 8, "hook": 8, "value_proposition": 9, "cta": 8, "tone": 9, "improvement": "+23 πόντοι συνολικά" }' }
   ]}
 />
 
-## Implementing Chains
+## Υλοποίηση Αλυσίδων
 
-You can implement chains manually for experimentation, or programmatically for production systems. Start simple and add complexity as needed.
+Μπορείς να υλοποιήσεις αλυσίδες χειροκίνητα για πειραματισμό, ή προγραμματιστικά για συστήματα παραγωγής. Ξεκίνα απλά και πρόσθεσε πολυπλοκότητα όπως χρειάζεται.
 
-### Manual Chaining
+### Χειροκίνητη Αλυσίδωση
 
-The copy-paste approach is perfect for prototyping and experimentation. Run each prompt manually, examine the output, and paste it into the next prompt.
+Η προσέγγιση copy-paste είναι τέλεια για prototyping και πειραματισμό. Εκτέλεσε κάθε prompt χειροκίνητα, εξέτασε την έξοδο, και επικόλλησέ την στο επόμενο prompt.
 
 <CodeEditor 
   language="python"
   filename="manual_chain.py"
-  code={`# Pseudocode for manual chaining
-step1_output = call_ai("Extract entities from: " + input_text)
-step2_output = call_ai("Analyze relationships: " + step1_output)
-final_output = call_ai("Generate report: " + step2_output)`}
+  code={`# Ψευδοκώδικας για χειροκίνητη αλυσίδωση
+step1_output = call_ai("Εξαγάγε οντότητες από: " + input_text)
+step2_output = call_ai("Ανάλυσε σχέσεις: " + step1_output)
+final_output = call_ai("Δημιούργησε αναφορά: " + step2_output)`}
 />
 
-### Programmatic Chaining
+### Προγραμματιστική Αλυσίδωση
 
-For production systems, automate the chain with code. This enables error handling, logging, and integration with your application.
+Για συστήματα παραγωγής, αυτοματοποίησε την αλυσίδα με κώδικα. Αυτό επιτρέπει χειρισμό σφαλμάτων, logging, και ενσωμάτωση με την εφαρμογή σου.
 
 <CodeEditor 
   language="python"
   filename="chain.py"
   code={`def analysis_chain(document):
-    # Step 1: Summarize
+    # Βήμα 1: Σύνοψη
     summary = call_ai(f"""
-        Summarize the key points of this document in 5 bullets:
+        Συνόψισε τα βασικά σημεία αυτού του εγγράφου σε 5 bullets:
         {document}
     """)
     
-    # Step 2: Extract entities
+    # Βήμα 2: Εξαγωγή οντοτήτων
     entities = call_ai(f"""
-        Extract named entities (people, organizations, locations) 
-        from this summary. Return as JSON.
+        Εξαγάγε ονομασμένες οντότητες (άτομα, οργανισμούς, τοποθεσίες) 
+        από αυτή τη σύνοψη. Επέστρεψε ως JSON.
         {summary}
     """)
     
-    # Step 3: Generate insights
+    # Βήμα 3: Δημιουργία insights
     insights = call_ai(f"""
-        Based on this summary and entities, generate 3 actionable 
-        insights for a business analyst.
-        Summary: {summary}
-        Entities: {entities}
+        Βάσει αυτής της σύνοψης και οντοτήτων, δημιούργησε 3 εφαρμόσιμα 
+        insights για επιχειρηματικό αναλυτή.
+        Σύνοψη: {summary}
+        Οντότητες: {entities}
     """)
     
     return {
@@ -241,139 +241,139 @@ For production systems, automate the chain with code. This enables error handlin
     }`}
 />
 
-### Using Chain Templates
+### Χρήση Templates Αλυσίδων
 
-Define chains as configuration files for reusability and easy modification. This separates prompt logic from application code.
+Όρισε αλυσίδες ως αρχεία configuration για επαναχρησιμοποίηση και εύκολη τροποποίηση. Αυτό διαχωρίζει τη λογική prompt από τον κώδικα εφαρμογής.
 
 <CodeEditor 
   language="yaml"
   filename="chain_template.yaml"
-  code={`name: "Document Analysis Chain"
+  code={`name: "Αλυσίδα Ανάλυσης Εγγράφου"
 steps:
   - name: "extract"
     prompt: |
-      Extract key information from this document:
+      Εξαγάγε βασικές πληροφορίες από αυτό το έγγραφο:
       {input}
-      Return JSON with: topics, entities, dates, numbers
+      Επέστρεψε JSON με: θέματα, οντότητες, ημερομηνίες, αριθμούς
     
   - name: "analyze"
     prompt: |
-      Analyze this extracted data for patterns:
+      Ανάλυσε αυτά τα εξαγόμενα δεδομένα για μοτίβα:
       {extract.output}
-      Identify: trends, anomalies, relationships
+      Εντόπισε: τάσεις, ανωμαλίες, σχέσεις
     
   - name: "report"
     prompt: |
-      Generate an executive summary based on:
-      Data: {extract.output}
-      Analysis: {analyze.output}
-      Format: 3 paragraphs, business tone`}
+      Δημιούργησε εκτελεστική σύνοψη βάσει:
+      Δεδομένα: {extract.output}
+      Ανάλυση: {analyze.output}
+      Μορφή: 3 παράγραφοι, επαγγελματικός τόνος`}
 />
 
-## Error Handling in Chains
+## Χειρισμός Σφαλμάτων σε Αλυσίδες
 
-Chains can fail at any step. Build in validation, retries, and fallbacks to make your chains robust.
+Οι αλυσίδες μπορούν να αποτύχουν σε οποιοδήποτε βήμα. Ενσωμάτωσε επικύρωση, επαναπροσπάθειες, και εναλλακτικά για να κάνεις τις αλυσίδες σου ισχυρές.
 
 <ChainErrorDemo />
 
-<Callout type="warning" title="Garbage In, Garbage Out">
-If one step produces bad output, every following step will be affected. Always validate critical intermediate results before passing them forward.
+<Callout type="warning" title="Σκουπίδια Μέσα, Σκουπίδια Έξω">
+Αν ένα βήμα παράγει κακή έξοδο, κάθε επόμενο βήμα θα επηρεαστεί. Πάντα επικύρωνε κρίσιμα ενδιάμεσα αποτελέσματα πριν τα περάσεις μπροστά.
 </Callout>
 
-### Validation Between Steps
+### Επικύρωση Μεταξύ Βημάτων
 
-Add a validation step after any step that produces structured data. This catches errors early before they cascade.
+Πρόσθεσε βήμα επικύρωσης μετά από οποιοδήποτε βήμα που παράγει δομημένα δεδομένα. Αυτό πιάνει σφάλματα νωρίς πριν διαδοθούν.
 
 <ValidationDemo />
 
-### Fallback Chains
+### Εναλλακτικές Αλυσίδες
 
-When your primary approach fails, have a simpler backup ready. Trade capability for reliability.
+Όταν η κύρια προσέγγισή σου αποτύχει, έχε ένα απλούστερο backup έτοιμο. Ανταλλάξε ικανότητα για αξιοπιστία.
 
 <FallbackDemo />
 
-## Chain Optimization
+## Βελτιστοποίηση Αλυσίδων
 
-Once your chain works, optimize for speed, cost, and reliability. These often trade off against each other.
+Μόλις η αλυσίδα σου λειτουργεί, βελτιστοποίησε για ταχύτητα, κόστος, και αξιοπιστία. Αυτά συχνά αντισταθμίζονται μεταξύ τους.
 
 <div className="my-6 grid md:grid-cols-3 gap-4">
   <div className="border rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-900 p-4">
-    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 mb-2 m-0!">Reducing Latency</p>
+    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 mb-2 m-0!">Μείωση Καθυστέρησης</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Parallelize independent steps</p>
-      <p className="m-0!">Cache intermediate results</p>
-      <p className="m-0!">Use smaller models for simple steps</p>
-      <p className="m-0!">Batch similar operations</p>
+      <p className="m-0!">Παραλληλοποίησε ανεξάρτητα βήματα</p>
+      <p className="m-0!">Αποθήκευσε ενδιάμεσα αποτελέσματα σε cache</p>
+      <p className="m-0!">Χρησιμοποίησε μικρότερα μοντέλα για απλά βήματα</p>
+      <p className="m-0!">Ομαδοποίησε παρόμοιες λειτουργίες</p>
     </div>
   </div>
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900 p-4">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 mb-2 m-0!">Reducing Cost</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 mb-2 m-0!">Μείωση Κόστους</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Use cheaper models for classification</p>
-      <p className="m-0!">Limit iterations in loops</p>
-      <p className="m-0!">Short-circuit when possible</p>
-      <p className="m-0!">Cache repeated queries</p>
+      <p className="m-0!">Χρησιμοποίησε φθηνότερα μοντέλα για ταξινόμηση</p>
+      <p className="m-0!">Περιόρισε επαναλήψεις σε βρόχους</p>
+      <p className="m-0!">Short-circuit όπου είναι δυνατόν</p>
+      <p className="m-0!">Αποθήκευσε επαναλαμβανόμενα queries σε cache</p>
     </div>
   </div>
   <div className="border rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-900 p-4">
-    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 mb-2 m-0!">Improving Reliability</p>
+    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 mb-2 m-0!">Βελτίωση Αξιοπιστίας</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Add validation between steps</p>
-      <p className="m-0!">Include retry logic</p>
-      <p className="m-0!">Log intermediate results</p>
-      <p className="m-0!">Implement fallback paths</p>
+      <p className="m-0!">Πρόσθεσε επικύρωση μεταξύ βημάτων</p>
+      <p className="m-0!">Συμπερίλαβε λογική επαναπροσπάθειας</p>
+      <p className="m-0!">Καταγράφε ενδιάμεσα αποτελέσματα</p>
+      <p className="m-0!">Υλοποίησε εναλλακτικές διαδρομές</p>
     </div>
   </div>
 </div>
 
-## Real-World Chain Example
+## Παράδειγμα Αλυσίδας Πραγματικού Κόσμου
 
-Let's walk through a complete production chain. This content pipeline transforms a raw idea into a polished article package.
+Ας δούμε μια πλήρη αλυσίδα παραγωγής. Αυτή η pipeline περιεχομένου μετατρέπει μια ακατέργαστη ιδέα σε πολωμένο πακέτο άρθρου.
 
-### Content Pipeline Chain
+### Αλυσίδα Pipeline Περιεχομένου
 
 <ContentPipelineDemo />
 
-## Summary
+## Σύνοψη
 
-Prompt chaining transforms what AI can accomplish by breaking impossible tasks into achievable steps.
+Το prompt chaining μετασχηματίζει τι μπορεί να επιτύχει το AI σπάζοντας αδύνατες εργασίες σε επιτεύξιμα βήματα.
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-amber-50/50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900 p-4">
-    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 mb-2 m-0!">Chaining Enables</p>
+    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 mb-2 m-0!">Η Αλυσίδωση Επιτρέπει</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Complex multi-step workflows</p>
-      <p className="m-0!">Higher quality through specialization</p>
-      <p className="m-0!">Better error handling and validation</p>
-      <p className="m-0!">Modular, reusable prompt components</p>
+      <p className="m-0!">Πολύπλοκες ροές εργασίας πολλών βημάτων</p>
+      <p className="m-0!">Υψηλότερη ποιότητα μέσω εξειδίκευσης</p>
+      <p className="m-0!">Καλύτερο χειρισμό σφαλμάτων και επικύρωση</p>
+      <p className="m-0!">Αρθρωτά, επαναχρησιμοποιήσιμα components prompt</p>
     </div>
   </div>
   <div className="border rounded-lg bg-cyan-50/50 dark:bg-cyan-950/20 border-cyan-200 dark:border-cyan-900 p-4">
-    <p className="text-sm font-semibold text-cyan-700 dark:text-cyan-400 mb-2 m-0!">Key Principles</p>
+    <p className="text-sm font-semibold text-cyan-700 dark:text-cyan-400 mb-2 m-0!">Βασικές Αρχές</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Break complex tasks into simple steps</p>
-      <p className="m-0!">Design clear interfaces between steps</p>
-      <p className="m-0!">Validate intermediate outputs</p>
-      <p className="m-0!">Build in error handling and fallbacks</p>
-      <p className="m-0!">Optimize for your constraints</p>
+      <p className="m-0!">Χώρισε πολύπλοκες εργασίες σε απλά βήματα</p>
+      <p className="m-0!">Σχεδίασε σαφείς διεπαφές μεταξύ βημάτων</p>
+      <p className="m-0!">Επικύρωνε ενδιάμεσες εξόδους</p>
+      <p className="m-0!">Ενσωμάτωσε χειρισμό σφαλμάτων και εναλλακτικά</p>
+      <p className="m-0!">Βελτιστοποίησε για τους περιορισμούς σου</p>
     </div>
   </div>
 </div>
 
-<Callout type="tip" title="Start Simple">
-Begin with a 2-3 step sequential chain. Get it working reliably before adding complexity. Most tasks don't need elaborate chain architectures.
+<Callout type="tip" title="Ξεκίνα Απλά">
+Ξεκίνα με μια ακολουθιακή αλυσίδα 2-3 βημάτων. Κάνε την να λειτουργεί αξιόπιστα πριν προσθέσεις πολυπλοκότητα. Οι περισσότερες εργασίες δεν χρειάζονται περίπλοκες αρχιτεκτονικές αλυσίδων.
 </Callout>
 
 <Quiz 
-  question="What is the main advantage of prompt chaining over a single complex prompt?"
+  question="Ποιο είναι το κύριο πλεονέκτημα του prompt chaining έναντι ενός μόνο πολύπλοκου prompt;"
   options={[
-    "It uses fewer tokens overall",
-    "It's faster to execute",
-    "Each step can specialize, improving quality and enabling error handling",
-    "It requires less planning"
+    "Χρησιμοποιεί λιγότερα tokens συνολικά",
+    "Εκτελείται πιο γρήγορα",
+    "Κάθε βήμα μπορεί να εξειδικευτεί, βελτιώνοντας την ποιότητα και επιτρέποντας χειρισμό σφαλμάτων",
+    "Απαιτεί λιγότερο σχεδιασμό"
   ]}
   correctIndex={2}
-  explanation="Prompt chaining breaks complex tasks into specialized steps. Each step can focus on one thing well, intermediate results can be validated, errors can be caught and retried, and the overall quality improves through specialization."
+  explanation="Το prompt chaining σπάει πολύπλοκες εργασίες σε εξειδικευμένα βήματα. Κάθε βήμα μπορεί να εστιάσει σε ένα πράγμα καλά, ενδιάμεσα αποτελέσματα μπορούν να επικυρωθούν, σφάλματα μπορούν να πιαστούν και να επαναπροσπαθηθούν, και η συνολική ποιότητα βελτιώνεται μέσω εξειδίκευσης."
 />
 
-In the next chapter, we'll explore multimodal prompting: working with images, audio, and other non-text content.
+Στο επόμενο κεφάλαιο, θα εξερευνήσουμε το multimodal prompting: δουλεύοντας με εικόνες, ήχο, και άλλο μη-κειμενικό περιεχόμενο.
