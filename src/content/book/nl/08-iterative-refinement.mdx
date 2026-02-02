@@ -1,55 +1,55 @@
-Prompt engineering is rarely a one-shot process. The best prompts emerge through iteration—testing, observing, and refining until you achieve the desired results.
+Prompt engineering is zelden een proces dat in één keer slaagt. De beste prompts ontstaan door iteratie—testen, observeren en verfijnen totdat je de gewenste resultaten bereikt.
 
-<Callout type="info" title="First Draft, Not Final Draft">
-Think of your first prompt as a rough draft. Even experienced prompt engineers rarely nail it on the first try.
+<Callout type="info" title="Eerste Versie, Niet Definitieve Versie">
+Beschouw je eerste prompt als een ruwe schets. Zelfs ervaren prompt engineers slagen er zelden in om het de eerste keer perfect te doen.
 </Callout>
 
-## The Iteration Cycle
+## De Iteratiecyclus
 
-Effective prompt refinement follows a predictable cycle: write, test, analyze, and improve. Each iteration brings you closer to a prompt that reliably produces the results you need.
+Effectieve promptverfijning volgt een voorspelbare cyclus: schrijven, testen, analyseren en verbeteren. Elke iteratie brengt je dichter bij een prompt die betrouwbaar de resultaten oplevert die je nodig hebt.
 
 <IterativeRefinementDemo />
 
-## Common Refinement Patterns
+## Veelvoorkomende Verfijningspatronen
 
-Most prompt failures fall into a handful of categories. Learning to recognize these patterns lets you quickly diagnose and fix issues without starting from scratch.
+De meeste prompt-mislukkingen vallen in een handvol categorieën. Door deze patronen te leren herkennen, kun je problemen snel diagnosticeren en oplossen zonder helemaal opnieuw te beginnen.
 
-### Problem: Output Too Long
+### Probleem: Output Te Lang
 
-One of the most common issues. Without explicit constraints, models tend to be thorough rather than concise.
+Een van de meest voorkomende problemen. Zonder expliciete beperkingen hebben modellen de neiging om grondig te zijn in plaats van beknopt.
 
 <DiffView 
   before="Explain how photosynthesis works."
   after={`Explain how photosynthesis works in 3-4 sentences suitable for a 10-year-old.`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="Origineel"
+  afterLabel="Verfijnd"
 />
 
-### Problem: Output Too Vague
+### Probleem: Output Te Vaag
 
-Vague prompts produce vague outputs. The model can't read your mind about what "better" means or which aspects matter most to you.
+Vage prompts produceren vage outputs. Het model kan niet gedachten lezen over wat "beter" betekent of welke aspecten het belangrijkst voor je zijn.
 
 <DiffView 
   before="Give me tips for better presentations."
   after={`Give me 5 specific, actionable tips for improving technical presentations to non-technical stakeholders. For each tip, include a concrete example.`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="Origineel"
+  afterLabel="Verfijnd"
 />
 
-### Problem: Wrong Tone
+### Probleem: Verkeerde Toon
 
-Tone is subjective and varies by context. What sounds "professional" to the model might not match your organization's voice or the relationship with your recipient.
+Toon is subjectief en varieert per context. Wat voor het model "professioneel" klinkt, past mogelijk niet bij de stem van je organisatie of de relatie met je ontvanger.
 
 <DiffView 
   before="Write an apology email for missing a deadline."
   after={`Write a professional but warm apology email for missing a project deadline. The tone should be accountable without being overly apologetic. Include a concrete plan to prevent future delays.`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="Origineel"
+  afterLabel="Verfijnd"
 />
 
-### Problem: Missing Key Information
+### Probleem: Belangrijke Informatie Ontbreekt
 
-Open-ended requests get open-ended responses. If you need specific types of feedback, you must ask for them explicitly.
+Open verzoeken krijgen open antwoorden. Als je specifieke soorten feedback nodig hebt, moet je er expliciet om vragen.
 
 <DiffView 
   before="Review this code."
@@ -62,13 +62,13 @@ Open-ended requests get open-ended responses. If you need specific types of feed
 For each issue found, explain the problem and suggest a fix.
 
 [code]`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="Origineel"
+  afterLabel="Verfijnd"
 />
 
-### Problem: Inconsistent Format
+### Probleem: Inconsistent Formaat
 
-Without a template, the model will structure each response differently, making comparison difficult and automation impossible.
+Zonder een sjabloon zal het model elke reactie anders structureren, waardoor vergelijking moeilijk wordt en automatisering onmogelijk.
 
 <DiffView 
   before="Analyze these three products."
@@ -82,82 +82,82 @@ Without a template, the model will structure each response differently, making c
 **Rating:** X/10
 
 [products]`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="Origineel"
+  afterLabel="Verfijnd"
 />
 
-## Systematic Refinement Approach
+## Systematische Verfijningsaanpak
 
-Random changes waste time. A systematic approach helps you identify problems quickly and fix them efficiently.
+Willekeurige wijzigingen verspillen tijd. Een systematische aanpak helpt je problemen snel te identificeren en efficiënt op te lossen.
 
-### Step 1: Diagnose the Issue
+### Stap 1: Diagnosticeer het Probleem
 
-Before changing anything, identify what's actually wrong. Use this diagnostic table to map symptoms to solutions:
+Voordat je iets verandert, identificeer wat er daadwerkelijk mis is. Gebruik deze diagnostische tabel om symptomen aan oplossingen te koppelen:
 
 <div className="my-4 grid gap-2">
   <div className="grid grid-cols-3 gap-2 p-3 bg-muted/50 rounded-lg text-sm">
-    <span className="font-semibold">Symptom</span>
-    <span className="font-semibold">Likely Cause</span>
-    <span className="font-semibold">Solution</span>
+    <span className="font-semibold">Symptoom</span>
+    <span className="font-semibold">Waarschijnlijke Oorzaak</span>
+    <span className="font-semibold">Oplossing</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Too long</span>
-    <span className="text-muted-foreground">No length constraint</span>
-    <span className="text-green-600 dark:text-green-400">Add word/sentence limits</span>
+    <span>Te lang</span>
+    <span className="text-muted-foreground">Geen lengtebeperking</span>
+    <span className="text-green-600 dark:text-green-400">Voeg woord-/zinlimieten toe</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Too short</span>
-    <span className="text-muted-foreground">Lacks detail request</span>
-    <span className="text-green-600 dark:text-green-400">Ask for elaboration</span>
+    <span>Te kort</span>
+    <span className="text-muted-foreground">Ontbreekt detailverzoek</span>
+    <span className="text-green-600 dark:text-green-400">Vraag om uitwerking</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Off-topic</span>
-    <span className="text-muted-foreground">Vague instructions</span>
-    <span className="text-green-600 dark:text-green-400">Be more specific</span>
+    <span>Niet relevant</span>
+    <span className="text-muted-foreground">Vage instructies</span>
+    <span className="text-green-600 dark:text-green-400">Wees specifieker</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Wrong format</span>
-    <span className="text-muted-foreground">Format not specified</span>
-    <span className="text-green-600 dark:text-green-400">Define exact structure</span>
+    <span>Verkeerd formaat</span>
+    <span className="text-muted-foreground">Formaat niet gespecificeerd</span>
+    <span className="text-green-600 dark:text-green-400">Definieer exacte structuur</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Wrong tone</span>
-    <span className="text-muted-foreground">Audience not clear</span>
-    <span className="text-green-600 dark:text-green-400">Specify audience/style</span>
+    <span>Verkeerde toon</span>
+    <span className="text-muted-foreground">Doelgroep niet duidelijk</span>
+    <span className="text-green-600 dark:text-green-400">Specificeer doelgroep/stijl</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
     <span>Inconsistent</span>
-    <span className="text-muted-foreground">No examples provided</span>
-    <span className="text-green-600 dark:text-green-400">Add few-shot examples</span>
+    <span className="text-muted-foreground">Geen voorbeelden gegeven</span>
+    <span className="text-green-600 dark:text-green-400">Voeg few-shot voorbeelden toe</span>
   </div>
 </div>
 
-### Step 2: Make Targeted Changes
+### Stap 2: Maak Gerichte Wijzigingen
 
-Resist the urge to rewrite everything. Changing multiple variables at once makes it impossible to know what helped and what hurt. Make one change, test it, then proceed:
+Weersta de drang om alles te herschrijven. Het tegelijkertijd wijzigen van meerdere variabelen maakt het onmogelijk om te weten wat hielp en wat schadde. Maak één wijziging, test deze en ga dan verder:
 
 ```
-Iteration 1: Add length constraint
-Iteration 2: Specify format
-Iteration 3: Add example
-Iteration 4: Refine tone instructions
+Iteratie 1: Voeg lengtebeperking toe
+Iteratie 2: Specificeer formaat
+Iteratie 3: Voeg voorbeeld toe
+Iteratie 4: Verfijn tooninstructies
 ```
 
-### Step 3: Document What Works
+### Stap 3: Documenteer Wat Werkt
 
-Prompt engineering knowledge is easily lost. Keep a log of what you tried and why. This saves time when you revisit the prompt later or face similar challenges:
+Kennis over prompt engineering gaat gemakkelijk verloren. Houd een logboek bij van wat je hebt geprobeerd en waarom. Dit bespaart tijd wanneer je later terugkeert naar de prompt of vergelijkbare uitdagingen tegenkomt:
 
 ```markdown
-## Prompt: Customer Email Response
+## Prompt: Klant E-mail Reactie
 
-### Version 1 (too formal)
+### Versie 1 (te formeel)
 "Write a response to this customer complaint."
 
-### Version 2 (better tone, still missing structure)
+### Versie 2 (betere toon, nog steeds geen structuur)
 "Write a friendly but professional response to this complaint. 
 Show empathy first."
 
-### Version 3 (final - good results)
+### Versie 3 (definitief - goede resultaten)
 "Write a response to this customer complaint. Structure:
 1. Acknowledge their frustration (1 sentence)
 2. Apologize specifically (1 sentence)  
@@ -167,25 +167,25 @@ Show empathy first."
 Tone: Friendly, professional, empathetic but not groveling."
 ```
 
-## Real-World Iteration Example
+## Praktijkvoorbeeld van Iteratie
 
-Let's walk through a complete iteration cycle to see how each refinement builds on the last. Notice how each version addresses specific shortcomings of the previous one.
+Laten we een complete iteratiecyclus doorlopen om te zien hoe elke verfijning voortbouwt op de vorige. Let op hoe elke versie specifieke tekortkomingen van de vorige aanpakt.
 
-### Task: Generate Product Names
+### Taak: Genereer Productnamen
 
 <VersionDiff versions={[
   {
-    label: "Version 1",
+    label: "Versie 1",
     content: "Generate names for a new productivity app.",
-    note: "Too generic, no context"
+    note: "Te generiek, geen context"
   },
   {
-    label: "Version 2",
+    label: "Versie 2",
     content: `Generate names for a new productivity app. The app uses AI to automatically schedule your tasks based on energy levels and calendar availability.`,
-    note: "Added context, still generic"
+    note: "Context toegevoegd, nog steeds generiek"
   },
   {
-    label: "Version 3",
+    label: "Versie 3",
     content: `Generate 10 unique, memorable names for a productivity app with these characteristics:
 - Uses AI to schedule tasks based on energy levels
 - Target audience: busy professionals aged 25-40
@@ -193,10 +193,10 @@ Let's walk through a complete iteration cycle to see how each refinement builds 
 - Avoid: generic words like "pro", "smart", "AI", "task"
 
 For each name, explain why it works.`,
-    note: "Added constraints and reasoning"
+    note: "Beperkingen en redenering toegevoegd"
   },
   {
-    label: "Version 4 (final)",
+    label: "Versie 4 (definitief)",
     content: `Generate 10 unique, memorable names for a productivity app.
 
 Context:
@@ -212,61 +212,61 @@ Requirements:
 
 Format:
 Name | Pronunciation | Why It Works | Domain Availability Guess`,
-    note: "Structured format, specific requirements"
+    note: "Gestructureerd formaat, specifieke vereisten"
   }
 ]} />
 
-## Refinement Strategies by Task Type
+## Verfijningsstrategieën per Taaktype
 
-Different tasks fail in predictable ways. Knowing the common failure modes helps you diagnose and fix issues faster.
+Verschillende taken falen op voorspelbare manieren. Het kennen van de veelvoorkomende faalwijzen helpt je problemen sneller te diagnosticeren en op te lossen.
 
-### For Content Generation
+### Voor Contentgeneratie
 
-Content generation often produces generic, off-target, or poorly formatted output. The fix usually involves being more specific about constraints, providing concrete examples, or defining your brand voice explicitly.
-
-<InfoGrid items={[
-  { icon: "target", title: "Too Generic", description: "Add specific constraints and context", example: "\"Write about dogs\" → \"Write about golden retrievers for first-time owners, focusing on training and exercise needs\"" },
-  { icon: "scissors", title: "Too Long", description: "Set word/paragraph limits", example: "Add: \"Keep response under 150 words\" or \"Maximum 3 paragraphs\"" },
-  { icon: "palette", title: "Wrong Style", description: "Provide style examples", example: "\"Write in the style of this example: [paste sample text]\"" },
-  { icon: "megaphone", title: "Off-Brand", description: "Include brand voice guidelines", example: "\"Use friendly, casual tone. Avoid jargon. Address reader as 'you'.\"" }
-]} />
-
-### For Code Generation
-
-Code output can fail technically (syntax errors, wrong language features) or architecturally (poor patterns, missing cases). Technical issues need version/environment specifics; architectural issues need design guidance.
+Contentgeneratie produceert vaak generieke, niet-gerichte of slecht geformatteerde output. De oplossing omvat meestal specifieker zijn over beperkingen, concrete voorbeelden geven of je merkstem expliciet definiëren.
 
 <InfoGrid items={[
-  { icon: "code", title: "Syntax Errors", description: "Specify language version", example: "\"Use Python 3.11+ syntax with type hints\" or \"ES2022 JavaScript\"" },
-  { icon: "git-branch", title: "Wrong Approach", description: "Describe preferred patterns", example: "\"Use functional approach, avoid classes\" or \"Follow repository pattern\"" },
-  { icon: "shield", title: "Missing Edge Cases", description: "List scenarios to handle", example: "\"Handle: empty input, null values, network timeouts, invalid formats\"" },
-  { icon: "tag", title: "Poor Naming", description: "Include naming conventions", example: "\"Use camelCase for variables, PascalCase for classes, UPPER_SNAKE for constants\"" }
+  { icon: "target", title: "Te Generiek", description: "Voeg specifieke beperkingen en context toe", example: "\"Write about dogs\" → \"Write about golden retrievers for first-time owners, focusing on training and exercise needs\"" },
+  { icon: "scissors", title: "Te Lang", description: "Stel woord-/alinealimieten in", example: "Voeg toe: \"Keep response under 150 words\" of \"Maximum 3 paragraphs\"" },
+  { icon: "palette", title: "Verkeerde Stijl", description: "Geef stijlvoorbeelden", example: "\"Write in the style of this example: [paste sample text]\"" },
+  { icon: "megaphone", title: "Niet On-Brand", description: "Voeg richtlijnen voor merkstem toe", example: "\"Use friendly, casual tone. Avoid jargon. Address reader as 'you'.\"" }
 ]} />
 
-### For Analysis
+### Voor Codegeneratie
 
-Analysis tasks often produce surface-level or unstructured results. Guide the model with specific frameworks (SWOT, Porter's Five Forces), request multiple viewpoints, or provide a template for the output structure.
+Code-output kan technisch falen (syntaxfouten, verkeerde taalfuncties) of architecturaal (slechte patronen, ontbrekende gevallen). Technische problemen vereisen versie-/omgevingsspecificaties; architecturale problemen vereisen ontwerpbegeleiding.
 
 <InfoGrid items={[
-  { icon: "layers", title: "Too Shallow", description: "Ask for specific frameworks", example: "\"Analyze using SWOT framework\" or \"Apply Porter's Five Forces\"" },
-  { icon: "scale", title: "Biased", description: "Request multiple perspectives", example: "\"Present arguments for and against\" or \"Include skeptic's viewpoint\"" },
-  { icon: "database", title: "Missing Data", description: "Specify what to analyze", example: "\"Focus on: market size, growth rate, key players, entry barriers\"" },
-  { icon: "layout", title: "Unstructured", description: "Provide analysis template", example: "\"Format as: Summary → Key Findings → Implications → Recommendations\"" }
+  { icon: "code", title: "Syntaxfouten", description: "Specificeer taalversie", example: "\"Use Python 3.11+ syntax with type hints\" of \"ES2022 JavaScript\"" },
+  { icon: "git-branch", title: "Verkeerde Aanpak", description: "Beschrijf gewenste patronen", example: "\"Use functional approach, avoid classes\" of \"Follow repository pattern\"" },
+  { icon: "shield", title: "Ontbrekende Randgevallen", description: "Som scenario's op om af te handelen", example: "\"Handle: empty input, null values, network timeouts, invalid formats\"" },
+  { icon: "tag", title: "Slechte Naamgeving", description: "Voeg naamgevingsconventies toe", example: "\"Use camelCase for variables, PascalCase for classes, UPPER_SNAKE for constants\"" }
 ]} />
 
-### For Q&A
+### Voor Analyse
 
-Question-answering can be too terse or too verbose, and may lack confidence indicators or sources. Specify the detail level you need and whether you want citations or uncertainty expressed.
+Analysetaken produceren vaak oppervlakkige of ongestructureerde resultaten. Begeleid het model met specifieke frameworks (SWOT, Porter's Five Forces), vraag om meerdere standpunten of geef een sjabloon voor de outputstructuur.
 
 <InfoGrid items={[
-  { icon: "plus", title: "Too Short", description: "Ask for elaboration", example: "\"Explain in detail with examples\" or \"Elaborate on each point\"" },
-  { icon: "minus", title: "Too Long", description: "Request concise answer", example: "\"Answer in 2-3 sentences\" or \"Give me the TL;DR\"" },
-  { icon: "help-circle", title: "Uncertain", description: "Ask for confidence level", example: "\"Rate your confidence 1-10\" or \"Note any assumptions made\"" },
-  { icon: "link", title: "Unsourced", description: "Request citations", example: "\"Cite sources for claims\" or \"Include references where possible\"" }
+  { icon: "layers", title: "Te Oppervlakkig", description: "Vraag om specifieke frameworks", example: "\"Analyze using SWOT framework\" of \"Apply Porter's Five Forces\"" },
+  { icon: "scale", title: "Bevooroordeeld", description: "Vraag om meerdere perspectieven", example: "\"Present arguments for and against\" of \"Include skeptic's viewpoint\"" },
+  { icon: "database", title: "Ontbrekende Data", description: "Specificeer wat te analyseren", example: "\"Focus on: market size, growth rate, key players, entry barriers\"" },
+  { icon: "layout", title: "Ongestructureerd", description: "Geef analysesjabloon", example: "\"Format as: Summary → Key Findings → Implications → Recommendations\"" }
 ]} />
 
-## The Feedback Loop Technique
+### Voor Vraag & Antwoord
 
-Here's a meta-technique: use the model itself to help improve your prompts. Share what you tried, what you got, and what you wanted. The model can often suggest improvements you hadn't considered.
+Vraag-en-antwoord kan te beknopt of te uitgebreid zijn, en mist mogelijk betrouwbaarheidsindicatoren of bronnen. Specificeer het detailniveau dat je nodig hebt en of je citaties of uitdrukking van onzekerheid wilt.
+
+<InfoGrid items={[
+  { icon: "plus", title: "Te Kort", description: "Vraag om uitwerking", example: "\"Explain in detail with examples\" of \"Elaborate on each point\"" },
+  { icon: "minus", title: "Te Lang", description: "Vraag om beknopt antwoord", example: "\"Answer in 2-3 sentences\" of \"Give me the TL;DR\"" },
+  { icon: "help-circle", title: "Onzeker", description: "Vraag om betrouwbaarheidsniveau", example: "\"Rate your confidence 1-10\" of \"Note any assumptions made\"" },
+  { icon: "link", title: "Zonder Bron", description: "Vraag om citaties", example: "\"Cite sources for claims\" of \"Include references where possible\"" }
+]} />
+
+## De Feedbackloop-Techniek
+
+Hier is een metatechniek: gebruik het model zelf om je prompts te helpen verbeteren. Deel wat je hebt geprobeerd, wat je kreeg en wat je wilde. Het model kan vaak verbeteringen voorstellen waar je niet aan had gedacht.
 
 ```
 I used this prompt:
@@ -279,9 +279,9 @@ I wanted something more [describe gap]. How should I modify
 my prompt to get better results?
 ```
 
-## A/B Testing Prompts
+## A/B Testen van Prompts
 
-For prompts that will be used repeatedly or at scale, don't just pick the first one that works. Test variations to find the most reliable and highest-quality approach.
+Voor prompts die herhaaldelijk of op schaal worden gebruikt, kies niet zomaar de eerste die werkt. Test variaties om de meest betrouwbare en hoogste kwaliteit aanpak te vinden.
 
 ```
 Prompt A: "Summarize this article in 3 bullet points."
@@ -289,80 +289,80 @@ Prompt B: "Extract the 3 most important insights from this article."
 Prompt C: "What are the key takeaways from this article? List 3."
 ```
 
-Run each multiple times, compare:
-- Consistency of output
-- Quality of information
-- Relevance to your needs
+Voer elke meerdere keren uit en vergelijk:
+- Consistentie van output
+- Kwaliteit van informatie
+- Relevantie voor je behoeften
 
-## When to Stop Iterating
+## Wanneer Stoppen met Itereren
 
-Perfection is the enemy of good enough. Know when your prompt is ready for use and when you're just polishing for diminishing returns.
+Perfectie is de vijand van goed genoeg. Weet wanneer je prompt klaar is voor gebruik en wanneer je alleen maar polijst voor afnemende opbrengsten.
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Ready to Ship</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Klaar voor Lancering</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Output consistently meets requirements</p>
-      <p className="m-0!">Edge cases are handled appropriately</p>
-      <p className="m-0!">Format is reliable and parseable</p>
-      <p className="m-0!">Further improvements show diminishing returns</p>
+      <p className="m-0!">Output voldoet consistent aan vereisten</p>
+      <p className="m-0!">Randgevallen worden correct afgehandeld</p>
+      <p className="m-0!">Formaat is betrouwbaar en te parseren</p>
+      <p className="m-0!">Verdere verbeteringen tonen afnemende opbrengsten</p>
     </div>
   </div>
   <div className="border rounded-lg bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900">
-    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Keep Iterating</p>
+    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Blijf Itereren</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Output is inconsistent across runs</p>
-      <p className="m-0!">Edge cases cause failures</p>
-      <p className="m-0!">Critical requirements are missed</p>
-      <p className="m-0!">You haven't tested enough variations</p>
+      <p className="m-0!">Output is inconsistent tussen runs</p>
+      <p className="m-0!">Randgevallen veroorzaken fouten</p>
+      <p className="m-0!">Kritieke vereisten worden gemist</p>
+      <p className="m-0!">Je hebt niet genoeg variaties getest</p>
     </div>
   </div>
 </div>
 
-## Version Control for Prompts
+## Versiebeheer voor Prompts
 
-Prompts are code. For any prompt used in production, treat it with the same rigor: version control, changelogs, and the ability to roll back if something breaks.
+Prompts zijn code. Behandel elke prompt die in productie wordt gebruikt met dezelfde zorgvuldigheid: versiebeheer, changelogs en de mogelijkheid om terug te draaien als iets kapotgaat.
 
-<Callout type="tip" title="Built-in Versioning">
-prompts.chat includes automatic version history for your prompts. Every edit is saved, so you can compare versions and restore previous iterations with one click.
+<Callout type="tip" title="Ingebouwd Versiebeheer">
+prompts.chat bevat automatische versiegeschiedenis voor je prompts. Elke bewerking wordt opgeslagen, zodat je versies kunt vergelijken en eerdere iteraties met één klik kunt herstellen.
 </Callout>
 
-For self-managed prompts, use a folder structure:
+Voor zelfbeheerde prompts, gebruik een mappenstructuur:
 
 ```
 prompts/
 ├── customer-response/
-│   ├── v1.0.txt    # Initial version
-│   ├── v1.1.txt    # Fixed tone issue
-│   ├── v2.0.txt    # Major restructure
-│   └── current.txt # Symlink to active version
-└── changelog.md    # Document changes
+│   ├── v1.0.txt    # Initiële versie
+│   ├── v1.1.txt    # Toonprobleem opgelost
+│   ├── v2.0.txt    # Grote herstructurering
+│   └── current.txt # Symlink naar actieve versie
+└── changelog.md    # Documenteer wijzigingen
 ```
 
-## Summary
+## Samenvatting
 
-<Callout type="tip" title="Key Takeaways">
-Start simple, observe carefully, change one thing at a time, document what works, and know when to stop. The best prompts aren't written—they're discovered through systematic iteration.
+<Callout type="tip" title="Belangrijkste Punten">
+Begin eenvoudig, observeer zorgvuldig, verander één ding tegelijk, documenteer wat werkt en weet wanneer je moet stoppen. De beste prompts worden niet geschreven—ze worden ontdekt door systematische iteratie.
 </Callout>
 
 <Quiz 
-  question="What's the best approach when refining a prompt that's producing wrong results?"
+  question="Wat is de beste aanpak bij het verfijnen van een prompt die verkeerde resultaten produceert?"
   options={[
-    "Rewrite the entire prompt from scratch",
-    "Add more examples until it works",
-    "Change one thing at a time and test each change",
-    "Make the prompt as long as possible"
+    "Herschrijf de hele prompt vanaf nul",
+    "Voeg meer voorbeelden toe totdat het werkt",
+    "Verander één ding tegelijk en test elke wijziging",
+    "Maak de prompt zo lang mogelijk"
   ]}
   correctIndex={2}
-  explanation="Changing one thing at a time lets you isolate what works and what doesn't. If you change multiple things at once, you won't know which change fixed the problem or which made it worse."
+  explanation="Door één ding tegelijk te veranderen kun je isoleren wat werkt en wat niet. Als je meerdere dingen tegelijk verandert, weet je niet welke wijziging het probleem oploste of welke het erger maakte."
 />
 
-## Practice: Improve This Prompt
+## Oefening: Verbeter Deze Prompt
 
-Try improving this weak prompt yourself. Edit it, then use AI to compare your version with the original:
+Probeer zelf deze zwakke prompt te verbeteren. Bewerk deze en gebruik dan AI om je versie met het origineel te vergelijken:
 
 <BeforeAfterEditor
-  title="Refine This Email Prompt"
+  title="Verfijn Deze E-mail Prompt"
   badPrompt="Write an email."
   idealPrompt={`You are a professional business writer.
 
@@ -381,7 +381,7 @@ Requirements:
 - Keep under 150 words
 
 Format: Subject line + email body`}
-  task="Transform this vague email prompt into something that will produce a professional, effective result."
+  task="Transformeer deze vage e-mail prompt naar iets dat een professioneel, effectief resultaat zal opleveren."
 />
 
-In the next chapter, we'll explore JSON and YAML prompting for structured data applications.
+In het volgende hoofdstuk verkennen we JSON en YAML prompting voor gestructureerde data-toepassingen.

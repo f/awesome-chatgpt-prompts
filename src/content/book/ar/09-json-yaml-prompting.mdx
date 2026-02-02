@@ -1,30 +1,30 @@
-Structured data formats like JSON and YAML are essential for building applications that consume AI outputs programmatically. This chapter covers techniques for reliable structured output generation.
+تُعدّ صيغ البيانات المُهيكلة مثل JSON و YAML ضرورية لبناء التطبيقات التي تستهلك مخرجات الذكاء الاصطناعي برمجياً. يتناول هذا الفصل تقنيات توليد المخرجات المُهيكلة بشكل موثوق.
 
-<Callout type="info" title="From Text to Data">
-JSON and YAML transform AI outputs from freeform text into structured, type-safe data that code can consume directly.
+<Callout type="info" title="من النص إلى البيانات">
+يُحوّل JSON و YAML مخرجات الذكاء الاصطناعي من نص حر إلى بيانات مُهيكلة وآمنة الأنواع يمكن للكود استهلاكها مباشرة.
 </Callout>
 
-## Why Structured Formats?
+## لماذا الصيغ المُهيكلة؟
 
 <JsonYamlDemo />
 
-## JSON Prompting Basics
+## أساسيات التوجيه بصيغة JSON
 
-JSON (JavaScript Object Notation) is the most common format for programmatic AI outputs. Its strict syntax makes it easy to parse, but also means small errors can break your entire pipeline.
+JSON (ترميز كائنات JavaScript) هي الصيغة الأكثر شيوعاً للمخرجات البرمجية من الذكاء الاصطناعي. تركيبها الصارم يجعل تحليلها سهلاً، لكنه يعني أيضاً أن الأخطاء الصغيرة يمكن أن تُعطّل خط الأنابيب بالكامل.
 
-### Do's and Don'ts: Requesting JSON
+### ما يجب فعله وما يجب تجنبه: طلب JSON
 
 <Compare 
-  before={{ label: "❌ Don't: Vague request", content: "Give me the user info as JSON." }}
-  after={{ label: "✓ Do: Show the schema", content: "Extract user info as JSON matching this schema:\n\n{\n  \"name\": \"string\",\n  \"age\": number,\n  \"email\": \"string\"\n}\n\nReturn ONLY valid JSON, no markdown." }}
+  before={{ label: "❌ لا تفعل: طلب غامض", content: "أعطني معلومات المستخدم بصيغة JSON." }}
+  after={{ label: "✓ افعل: أظهر المخطط", content: "استخرج معلومات المستخدم بصيغة JSON وفق هذا المخطط:\n\n{\n  \"name\": \"string\",\n  \"age\": number,\n  \"email\": \"string\"\n}\n\nأرجع JSON صالح فقط، بدون markdown." }}
 />
 
-### Simple JSON Output
+### مخرجات JSON البسيطة
 
-Start with a schema showing the expected structure. The model will fill in values based on the input text.
+ابدأ بمخطط يُظهر البنية المتوقعة. سيملأ النموذج القيم بناءً على النص المُدخل.
 
 ```
-Extract the following information as JSON:
+استخرج المعلومات التالية بصيغة JSON:
 
 {
   "name": "string",
@@ -35,7 +35,7 @@ Extract the following information as JSON:
 Text: "Contact John Smith, 34 years old, at john@example.com"
 ```
 
-Output:
+المخرج:
 ```json
 {
   "name": "John Smith",
@@ -44,12 +44,12 @@ Output:
 }
 ```
 
-### Nested JSON Structures
+### بنى JSON المتداخلة
 
-Real-world data often has nested relationships. Define each level of your schema clearly, especially for arrays of objects.
+غالباً ما تحتوي البيانات الواقعية على علاقات متداخلة. حدّد كل مستوى من مخططك بوضوح، خاصة لمصفوفات الكائنات.
 
 ```
-Parse this order into JSON:
+حلّل هذا الطلب إلى JSON:
 
 {
   "order_id": "string",
@@ -71,33 +71,33 @@ Order: "Order #12345 for Jane Doe (jane@email.com): 2x Widget ($10 each),
 1x Gadget ($25). Total: $45"
 ```
 
-### Ensuring Valid JSON
+### ضمان صحة JSON
 
-<Callout type="warning" title="Common Failure Point">
-Models often wrap JSON in markdown code blocks or add explanatory text. Be explicit about wanting raw JSON only.
+<Callout type="warning" title="نقطة فشل شائعة">
+غالباً ما تُغلّف النماذج JSON في كتل كود markdown أو تُضيف نصاً توضيحياً. كن صريحاً في طلب JSON الخام فقط.
 </Callout>
 
-Add explicit instructions:
+أضف تعليمات صريحة:
 
 ```
-CRITICAL: Return ONLY valid JSON. No markdown, no explanation, 
-no additional text before or after the JSON object.
+هام جداً: أرجع JSON صالح فقط. بدون markdown، بدون شرح،
+بدون نص إضافي قبل أو بعد كائن JSON.
 
-If a field cannot be determined, use null.
-Ensure all strings are properly quoted and escaped.
-Numbers should not be quoted.
+إذا تعذّر تحديد حقل ما، استخدم null.
+تأكد من أن جميع النصوص محاطة بعلامات اقتباس ومُهرّبة بشكل صحيح.
+الأرقام يجب ألا تكون محاطة بعلامات اقتباس.
 ```
 
-## YAML Prompting Basics
+## أساسيات التوجيه بصيغة YAML
 
-YAML is more human-readable than JSON and supports comments. It's the standard for configuration files, especially in DevOps (Docker, Kubernetes, GitHub Actions).
+YAML أكثر قابلية للقراءة البشرية من JSON وتدعم التعليقات. وهي المعيار لملفات التكوين، خاصة في DevOps (Docker، Kubernetes، GitHub Actions).
 
-### Simple YAML Output
+### مخرجات YAML البسيطة
 
-YAML uses indentation instead of braces. Provide a template showing the expected structure.
+تستخدم YAML المسافات البادئة بدلاً من الأقواس. قدّم قالباً يُظهر البنية المتوقعة.
 
 ```
-Generate a configuration file in YAML format:
+أنشئ ملف تكوين بصيغة YAML:
 
 server:
   host: string
@@ -107,10 +107,10 @@ database:
   type: string
   connection_string: string
 
-Requirements: Production server on port 443 with SSL, PostgreSQL database
+المتطلبات: خادم إنتاج على المنفذ 443 مع SSL، قاعدة بيانات PostgreSQL
 ```
 
-Output:
+المخرج:
 ```yaml
 server:
   host: "0.0.0.0"
@@ -121,31 +121,31 @@ database:
   connection_string: "postgresql://user:pass@localhost:5432/prod"
 ```
 
-### Complex YAML Structures
+### بنى YAML المعقدة
 
-For complex configurations, be specific about requirements. The model knows common patterns for tools like GitHub Actions, Docker Compose, and Kubernetes.
+للتكوينات المعقدة، كن محدداً بشأن المتطلبات. يعرف النموذج الأنماط الشائعة لأدوات مثل GitHub Actions و Docker Compose و Kubernetes.
 
 ```
-Generate a GitHub Actions workflow in YAML:
+أنشئ سير عمل GitHub Actions بصيغة YAML:
 
-Requirements:
-- Trigger on push to main and pull requests
-- Run on Ubuntu latest
-- Steps: checkout, setup Node 18, install dependencies, run tests
-- Cache npm dependencies
+المتطلبات:
+- التشغيل عند الدفع إلى main وطلبات السحب
+- التشغيل على أحدث إصدار من Ubuntu
+- الخطوات: checkout، إعداد Node 18، تثبيت التبعيات، تشغيل الاختبارات
+- تخزين تبعيات npm مؤقتاً
 ```
 
-## Type Definitions in Prompts
+## تعريفات الأنواع في الموجّهات
 
-Type definitions give the model a precise contract for output structure. They're more explicit than examples and easier to validate programmatically.
+تمنح تعريفات الأنواع النموذج عقداً دقيقاً لبنية المخرجات. وهي أكثر وضوحاً من الأمثلة وأسهل للتحقق منها برمجياً.
 
-### Using TypeScript-like Types
+### استخدام أنواع شبيهة بـ TypeScript
 
-TypeScript interfaces are familiar to developers and precisely describe optional fields, union types, and arrays. The prompts.chat platform uses this approach for structured prompts.
+واجهات TypeScript مألوفة للمطورين وتصف بدقة الحقول الاختيارية وأنواع الاتحاد والمصفوفات. تستخدم منصة prompts.chat هذا النهج للموجّهات المُهيكلة.
 
 <TryIt 
-  title="TypeScript Interface Extraction"
-  description="Use a TypeScript interface to extract structured data."
+  title="استخراج بواجهة TypeScript"
+  description="استخدم واجهة TypeScript لاستخراج بيانات مُهيكلة."
   prompt={`Extract data according to this type definition:
 
 interface ChatPersona {
@@ -162,16 +162,16 @@ Return as JSON matching this interface.
 Description: "A senior software engineer named Alex who reviews code. They're analytical and thorough, with expertise in backend systems and databases. Professional but approachable tone."`}
 />
 
-### JSON Schema Definition
+### تعريف JSON Schema
 
-<Callout type="info" title="Industry Standard">
-JSON Schema is a formal specification for describing JSON structure. It's supported by many validation libraries and API tools.
+<Callout type="info" title="معيار صناعي">
+JSON Schema هو مواصفة رسمية لوصف بنية JSON. وهو مدعوم من قِبل العديد من مكتبات التحقق وأدوات API.
 </Callout>
 
-JSON Schema provides constraints like min/max values, required fields, and regex patterns:
+يوفر JSON Schema قيوداً مثل القيم الدنيا/القصوى والحقول المطلوبة وأنماط regex:
 
 ```
-Extract data according to this JSON Schema:
+استخرج البيانات وفق JSON Schema هذا:
 
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -197,88 +197,88 @@ Book: "1984 by George Orwell (1949) - A dystopian masterpiece.
 Genres: Science Fiction, Political Fiction. Rated 4.8/5"
 ```
 
-## Handling Arrays
+## التعامل مع المصفوفات
 
-Arrays require special attention. Specify whether you need a fixed number of items or a variable-length list, and how to handle empty cases.
+تتطلب المصفوفات اهتماماً خاصاً. حدّد ما إذا كنت تحتاج عدداً ثابتاً من العناصر أو قائمة متغيرة الطول، وكيفية التعامل مع الحالات الفارغة.
 
-### Fixed-Length Arrays
+### المصفوفات ذات الطول الثابت
 
-When you need exactly N items, state it explicitly. The model will ensure the array has the right length.
+عندما تحتاج بالضبط N عنصر، اذكر ذلك صراحة. سيضمن النموذج أن المصفوفة بالطول الصحيح.
 
 ```
-Extract exactly 3 key points as JSON:
+استخرج بالضبط 3 نقاط رئيسية بصيغة JSON:
 
 {
   "key_points": [
-    "string (first point)",
-    "string (second point)", 
-    "string (third point)"
+    "string (النقطة الأولى)",
+    "string (النقطة الثانية)", 
+    "string (النقطة الثالثة)"
   ]
 }
 
-Article: [article text]
+Article: [نص المقال]
 ```
 
-### Variable-Length Arrays
+### المصفوفات متغيرة الطول
 
-For variable-length arrays, specify what to do when there are zero items. Including a count field helps verify extraction completeness.
+للمصفوفات متغيرة الطول، حدّد ما يجب فعله عندما يكون هناك صفر عناصر. تساعد إضافة حقل العدد في التحقق من اكتمال الاستخراج.
 
 ```
-Extract all mentioned people as JSON:
+استخرج جميع الأشخاص المذكورين بصيغة JSON:
 
 {
   "people": [
     {
       "name": "string",
-      "role": "string or null if not mentioned"
+      "role": "string أو null إذا لم يُذكر"
     }
   ],
   "count": number
 }
 
-If no people are mentioned, return empty array.
+إذا لم يُذكر أي شخص، أرجع مصفوفة فارغة.
 
-Text: [text]
+Text: [النص]
 ```
 
-## Enum Values and Constraints
+## قيم Enum والقيود
 
-Enums restrict values to a predefined set. This is crucial for classification tasks and anywhere you need consistent, predictable outputs.
+تُقيّد Enum القيم إلى مجموعة محددة مسبقاً. هذا ضروري لمهام التصنيف وأي مكان تحتاج فيه مخرجات متسقة وقابلة للتنبؤ.
 
-### Do's and Don'ts: Enum Values
+### ما يجب فعله وما يجب تجنبه: قيم Enum
 
 <Compare 
-  before={{ label: "❌ Don't: Open-ended categories", content: "Classify this text into a category.\n\n{\n  \"category\": \"string\"\n}" }}
-  after={{ label: "✓ Do: Restrict to valid values", content: "Classify this text. Category MUST be exactly one of:\n- \"technical\"\n- \"business\"\n- \"creative\"\n- \"personal\"\n\n{\n  \"category\": \"one of the values above\"\n}" }}
+  before={{ label: "❌ لا تفعل: فئات مفتوحة", content: "صنّف هذا النص إلى فئة.\n\n{\n  \"category\": \"string\"\n}" }}
+  after={{ label: "✓ افعل: قيّد إلى قيم صالحة", content: "صنّف هذا النص. الفئة يجب أن تكون بالضبط واحدة من:\n- \"technical\"\n- \"business\"\n- \"creative\"\n- \"personal\"\n\n{\n  \"category\": \"إحدى القيم أعلاه\"\n}" }}
 />
 
-### String Enums
+### Enum النصية
 
-List allowed values explicitly. Use "MUST be one of" language to enforce strict matching.
+اذكر القيم المسموح بها صراحة. استخدم عبارة "يجب أن تكون واحدة من" لفرض المطابقة الصارمة.
 
 ```
-Classify this text. The category MUST be one of these exact values:
+صنّف هذا النص. الفئة يجب أن تكون واحدة من هذه القيم بالضبط:
 - "technical"
 - "business" 
 - "creative"
 - "personal"
 
-Return JSON:
+أرجع JSON:
 {
-  "text": "original text (truncated to 50 chars)",
-  "category": "one of the enum values above",
-  "confidence": number between 0 and 1
+  "text": "النص الأصلي (مقتطع إلى 50 حرف)",
+  "category": "إحدى قيم enum أعلاه",
+  "confidence": رقم بين 0 و 1
 }
 
-Text: [text to classify]
+Text: [النص المراد تصنيفه]
 ```
 
-### Validated Numbers
+### الأرقام المُتحقق منها
 
-Numeric constraints prevent out-of-range values. Specify the type (integer vs float) and valid range.
+تمنع القيود الرقمية القيم خارج النطاق. حدّد النوع (integer مقابل float) والنطاق الصالح.
 
 ```
-Rate these aspects. Each score MUST be an integer from 1 to 5.
+قيّم هذه الجوانب. كل درجة يجب أن تكون integer من 1 إلى 5.
 
 {
   "quality": 1-5,
@@ -287,40 +287,40 @@ Rate these aspects. Each score MUST be an integer from 1 to 5.
   "overall": 1-5
 }
 
-Review: [review text]
+Review: [نص المراجعة]
 ```
 
-## Handling Missing Data
+## التعامل مع البيانات المفقودة
 
-Real-world text often lacks some information. Define how the model should handle missing data to avoid hallucinated values.
+غالباً ما يفتقر النص الواقعي إلى بعض المعلومات. حدّد كيف يجب أن يتعامل النموذج مع البيانات المفقودة لتجنب القيم المُختلقة.
 
-### Do's and Don'ts: Missing Information
+### ما يجب فعله وما يجب تجنبه: المعلومات المفقودة
 
 <Compare 
-  before={{ label: "❌ Don't: Let AI guess", content: "Extract all company details as JSON:\n{\n  \"revenue\": number,\n  \"employees\": number\n}" }}
-  after={{ label: "✓ Do: Explicitly allow null", content: "Extract company details. Use null for any field NOT explicitly mentioned. Do NOT invent or estimate values.\n\n{\n  \"revenue\": \"number or null\",\n  \"employees\": \"number or null\"\n}" }}
+  before={{ label: "❌ لا تفعل: دع الذكاء الاصطناعي يخمّن", content: "استخرج جميع تفاصيل الشركة بصيغة JSON:\n{\n  \"revenue\": number,\n  \"employees\": number\n}" }}
+  after={{ label: "✓ افعل: اسمح صراحة بـ null", content: "استخرج تفاصيل الشركة. استخدم null لأي حقل غير مذكور صراحة. لا تختلق أو تُقدّر القيم.\n\n{\n  \"revenue\": \"number أو null\",\n  \"employees\": \"number أو null\"\n}" }}
 />
 
-### Null Values
+### قيم Null
 
-Explicitly allow null and instruct the model not to invent information. This is safer than having the model guess.
+اسمح صراحة بـ null وأوعز للنموذج بعدم اختلاق المعلومات. هذا أكثر أماناً من جعل النموذج يخمّن.
 
 ```
-Extract information. Use null for any field that cannot be 
-determined from the text. Do NOT invent information.
+استخرج المعلومات. استخدم null لأي حقل لا يمكن
+تحديده من النص. لا تختلق المعلومات.
 
 {
-  "company": "string or null",
-  "revenue": "number or null",
-  "employees": "number or null",
-  "founded": "number (year) or null",
-  "headquarters": "string or null"
+  "company": "string أو null",
+  "revenue": "number أو null",
+  "employees": "number أو null",
+  "founded": "number (السنة) أو null",
+  "headquarters": "string أو null"
 }
 
 Text: "Apple, headquartered in Cupertino, was founded in 1976."
 ```
 
-Output:
+المخرج:
 ```json
 {
   "company": "Apple",
@@ -331,256 +331,256 @@ Output:
 }
 ```
 
-### Default Values
+### القيم الافتراضية
 
-When defaults make sense, specify them in the schema. This is common for configuration extraction.
+عندما تكون القيم الافتراضية منطقية، حدّدها في المخطط. هذا شائع لاستخراج التكوينات.
 
 ```
-Extract settings with these defaults if not specified:
+استخرج الإعدادات مع هذه القيم الافتراضية إذا لم تُحدد:
 
 {
-  "theme": "light" (default) | "dark",
-  "language": "en" (default) | other ISO code,
-  "notifications": true (default) | false,
-  "fontSize": 14 (default) | number
+  "theme": "light" (افتراضي) | "dark",
+  "language": "en" (افتراضي) | رمز ISO آخر,
+  "notifications": true (افتراضي) | false,
+  "fontSize": 14 (افتراضي) | number
 }
 
-User preferences: "I want dark mode and larger text (18px)"
+تفضيلات المستخدم: "أريد الوضع الداكن ونص أكبر (18px)"
 ```
 
-## Multi-Object Responses
+## استجابات الكائنات المتعددة
 
-Often you need to extract multiple items from a single input. Define the array structure and any sorting/grouping requirements.
+غالباً ما تحتاج إلى استخراج عناصر متعددة من مدخل واحد. حدّد بنية المصفوفة وأي متطلبات للترتيب/التجميع.
 
-### Array of Objects
+### مصفوفة من الكائنات
 
-For lists of similar items, define the object schema once and specify it's an array.
+لقوائم العناصر المتشابهة، حدّد مخطط الكائن مرة واحدة وحدّد أنها مصفوفة.
 
 ```
-Parse this list into JSON array:
+حلّل هذه القائمة إلى مصفوفة JSON:
 
 [
   {
     "task": "string",
     "priority": "high" | "medium" | "low",
-    "due": "ISO date string or null"
+    "due": "نص تاريخ ISO أو null"
   }
 ]
 
-Todo list:
-- Finish report (urgent, due tomorrow)
-- Call dentist (low priority)
-- Review PR #123 (medium, due Friday)
+قائمة المهام:
+- إنهاء التقرير (عاجل، موعد التسليم غداً)
+- الاتصال بطبيب الأسنان (أولوية منخفضة)
+- مراجعة PR #123 (متوسط، موعد التسليم الجمعة)
 ```
 
-### Grouped Objects
+### الكائنات المُجمّعة
 
-Grouping tasks require categorization logic. The model will sort items into the categories you define.
+تتطلب مهام التجميع منطق تصنيف. سيُرتّب النموذج العناصر في الفئات التي تُحدّدها.
 
 ```
-Categorize these items into JSON:
+صنّف هذه العناصر إلى JSON:
 
 {
-  "fruits": ["string array"],
-  "vegetables": ["string array"],
-  "other": ["string array"]
+  "fruits": ["مصفوفة نصية"],
+  "vegetables": ["مصفوفة نصية"],
+  "other": ["مصفوفة نصية"]
 }
 
-Items: apple, carrot, bread, banana, broccoli, milk, orange, spinach
+العناصر: apple, carrot, bread, banana, broccoli, milk, orange, spinach
 ```
 
-## YAML for Configuration Generation
+## YAML لتوليد التكوينات
 
-YAML shines for DevOps configurations. The model knows standard patterns for common tools and can generate production-ready configs.
+تتألق YAML في تكوينات DevOps. يعرف النموذج الأنماط القياسية للأدوات الشائعة ويمكنه توليد تكوينات جاهزة للإنتاج.
 
-### Do's and Don'ts: YAML Configs
+### ما يجب فعله وما يجب تجنبه: تكوينات YAML
 
 <Compare 
-  before={{ label: "❌ Don't: Vague requirements", content: "Generate a docker-compose file for my app." }}
-  after={{ label: "✓ Do: Specify components and needs", content: "Generate docker-compose.yml for:\n- Node.js app (port 3000)\n- PostgreSQL database\n- Redis cache\n\nInclude: health checks, volume persistence, environment from .env file" }}
+  before={{ label: "❌ لا تفعل: متطلبات غامضة", content: "أنشئ ملف docker-compose لتطبيقي." }}
+  after={{ label: "✓ افعل: حدّد المكونات والاحتياجات", content: "أنشئ docker-compose.yml لـ:\n- تطبيق Node.js (المنفذ 3000)\n- قاعدة بيانات PostgreSQL\n- ذاكرة Redis المؤقتة\n\nتضمين: فحوصات الصحة، استمرارية الأقراص، البيئة من ملف .env" }}
 />
 
 ### Docker Compose
 
-Specify the services you need and any special requirements. The model will handle the YAML syntax and best practices.
+حدّد الخدمات التي تحتاجها وأي متطلبات خاصة. سيتولى النموذج تركيب YAML وأفضل الممارسات.
 
 ```
-Generate a docker-compose.yml for:
-- Node.js app on port 3000
-- PostgreSQL database
-- Redis cache
-- Nginx reverse proxy
+أنشئ docker-compose.yml لـ:
+- تطبيق Node.js على المنفذ 3000
+- قاعدة بيانات PostgreSQL
+- ذاكرة Redis المؤقتة
+- وكيل Nginx العكسي
 
-Include:
-- Health checks
-- Volume persistence
-- Environment variables from .env file
-- Network isolation
+تضمين:
+- فحوصات الصحة
+- استمرارية الأقراص
+- متغيرات البيئة من ملف .env
+- عزل الشبكة
 ```
 
-### Kubernetes Manifests
+### ملفات Kubernetes Manifests
 
-Kubernetes manifests are verbose but follow predictable patterns. Provide the key parameters and the model will generate compliant YAML.
+ملفات Kubernetes manifests مُطوّلة لكنها تتبع أنماطاً يمكن التنبؤ بها. قدّم المعاملات الرئيسية وسيُولّد النموذج YAML متوافقة.
 
 ```
-Generate Kubernetes deployment YAML:
+أنشئ YAML لنشر Kubernetes:
 
 Deployment:
-- Name: api-server
-- Image: myapp:v1.2.3
-- Replicas: 3
-- Resources: 256Mi memory, 250m CPU (requests)
-- Health checks: /health endpoint
-- Environment from ConfigMap: api-config
+- الاسم: api-server
+- الصورة: myapp:v1.2.3
+- النسخ المتماثلة: 3
+- الموارد: ذاكرة 256Mi، وحدة معالجة 250m (الطلبات)
+- فحوصات الصحة: نقطة النهاية /health
+- البيئة من ConfigMap: api-config
 
-Also generate matching Service (ClusterIP, port 8080)
+أنشئ أيضاً Service مطابقة (ClusterIP، المنفذ 8080)
 ```
 
-## Validation and Error Handling
+## التحقق ومعالجة الأخطاء
 
-For production systems, build validation into your prompts. This catches errors before they propagate through your pipeline.
+لأنظمة الإنتاج، ادمج التحقق في موجّهاتك. هذا يلتقط الأخطاء قبل انتشارها عبر خط الأنابيب.
 
-### Self-Validation Prompt
+### موجّه التحقق الذاتي
 
-Ask the model to validate its own output against rules you specify. This catches format errors and invalid values.
+اطلب من النموذج التحقق من مخرجاته مقابل القواعد التي تُحدّدها. هذا يلتقط أخطاء الصيغة والقيم غير الصالحة.
 
 ```
-Extract data as JSON, then validate your output.
+استخرج البيانات بصيغة JSON، ثم تحقق من مخرجاتك.
 
-Schema:
+المخطط:
 {
-  "email": "valid email format",
-  "phone": "E.164 format (+1234567890)",
-  "date": "ISO 8601 format (YYYY-MM-DD)"
+  "email": "صيغة بريد إلكتروني صالحة",
+  "phone": "صيغة E.164 (+1234567890)",
+  "date": "صيغة ISO 8601 (YYYY-MM-DD)"
 }
 
-After generating JSON, check:
-1. Email contains @ and valid domain
-2. Phone starts with + and contains only digits
-3. Date is valid and parseable
+بعد توليد JSON، تحقق من:
+1. البريد الإلكتروني يحتوي @ ونطاق صالح
+2. الهاتف يبدأ بـ + ويحتوي أرقام فقط
+3. التاريخ صالح وقابل للتحليل
 
-If validation fails, fix the issues before responding.
+إذا فشل التحقق، أصلح المشكلات قبل الرد.
 
-Text: [contact information]
+Text: [معلومات الاتصال]
 ```
 
-### Error Response Format
+### صيغة استجابة الخطأ
 
-Define separate success and error formats. This makes programmatic handling much easier.
+حدّد صيغ نجاح وخطأ منفصلة. هذا يجعل المعالجة البرمجية أسهل بكثير.
 
 ```
-Attempt to extract data. If extraction fails, return error format:
+حاول استخراج البيانات. إذا فشل الاستخراج، أرجع صيغة الخطأ:
 
-Success format:
+صيغة النجاح:
 {
   "success": true,
-  "data": { ... extracted data ... }
+  "data": { ... البيانات المستخرجة ... }
 }
 
-Error format:
+صيغة الخطأ:
 {
   "success": false,
-  "error": "description of what went wrong",
-  "partial_data": { ... any data that could be extracted ... }
+  "error": "وصف ما حدث خطأ",
+  "partial_data": { ... أي بيانات يمكن استخراجها ... }
 }
 ```
 
-## JSON vs YAML: When to Use Which
+## JSON مقابل YAML: متى تستخدم أيهما
 
 <div className="my-4 grid md:grid-cols-2 gap-4">
   <div className="p-4 bg-amber-50 dark:bg-amber-950/30 rounded-lg border border-amber-200 dark:border-amber-800">
-    <div className="font-semibold text-amber-700 dark:text-amber-300 mb-2">Use JSON When</div>
+    <div className="font-semibold text-amber-700 dark:text-amber-300 mb-2">استخدم JSON عندما</div>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Programmatic parsing needed</p>
-      <p className="m-0!">API responses</p>
-      <p className="m-0!">Strict type requirements</p>
-      <p className="m-0!">JavaScript/Web integration</p>
-      <p className="m-0!">Compact representation</p>
+      <p className="m-0!">التحليل البرمجي مطلوب</p>
+      <p className="m-0!">استجابات API</p>
+      <p className="m-0!">متطلبات أنواع صارمة</p>
+      <p className="m-0!">تكامل JavaScript/الويب</p>
+      <p className="m-0!">تمثيل مُدمج</p>
     </div>
   </div>
   <div className="p-4 bg-purple-50 dark:bg-purple-950/30 rounded-lg border border-purple-200 dark:border-purple-800">
-    <div className="font-semibold text-purple-700 dark:text-purple-300 mb-2">Use YAML When</div>
+    <div className="font-semibold text-purple-700 dark:text-purple-300 mb-2">استخدم YAML عندما</div>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Human readability matters</p>
-      <p className="m-0!">Configuration files</p>
-      <p className="m-0!">Comments are needed</p>
-      <p className="m-0!">DevOps/Infrastructure</p>
-      <p className="m-0!">Deep nested structures</p>
+      <p className="m-0!">القابلية للقراءة البشرية مهمة</p>
+      <p className="m-0!">ملفات التكوين</p>
+      <p className="m-0!">التعليقات مطلوبة</p>
+      <p className="m-0!">DevOps/البنية التحتية</p>
+      <p className="m-0!">البنى المتداخلة العميقة</p>
     </div>
   </div>
 </div>
 
-## Prompts.chat Structured Prompts
+## الموجّهات المُهيكلة في Prompts.chat
 
-On prompts.chat, you can create prompts with structured output formats:
+على prompts.chat، يمكنك إنشاء موجّهات بصيغ مخرجات مُهيكلة:
 
 ```
-When creating a prompt on prompts.chat, you can specify:
+عند إنشاء موجّه على prompts.chat، يمكنك تحديد:
 
 Type: STRUCTURED
-Format: JSON or YAML
+Format: JSON أو YAML
 
-The platform will:
-- Validate outputs against your schema
-- Provide syntax highlighting
-- Enable easy copying of structured output
-- Support template variables in your schema
+ستقوم المنصة بـ:
+- التحقق من المخرجات مقابل مخططك
+- توفير تمييز بناء الجملة
+- تمكين النسخ السهل للمخرجات المُهيكلة
+- دعم متغيرات القالب في مخططك
 ```
 
-## Common Pitfalls
+## المزالق الشائعة
 
-<Callout type="warning" title="Debug These First">
-These three issues cause most JSON parsing failures. Check for them when your code can't parse AI output.
+<Callout type="warning" title="تصحيح هذه أولاً">
+تتسبب هذه المشكلات الثلاث في معظم فشل تحليل JSON. تحقق منها عندما لا يستطيع كودك تحليل مخرجات الذكاء الاصطناعي.
 </Callout>
 
-### 1. Markdown Code Blocks
+### 1. كتل كود Markdown
 
-**Problem:** Model wraps JSON in ```json blocks
+**المشكلة:** يُغلّف النموذج JSON في كتل ```json
 
-**Solution:** 
+**الحل:** 
 ```
-Return ONLY the JSON object. Do not wrap in markdown code blocks.
-Do not include ```json or ``` markers.
-```
-
-### 2. Trailing Commas
-
-**Problem:** Invalid JSON due to trailing commas
-
-**Solution:**
-```
-Ensure valid JSON syntax. No trailing commas after the last 
-element in arrays or objects.
+أرجع كائن JSON فقط. لا تُغلّفه في كتل كود markdown.
+لا تُضمّن علامات ```json أو ```.
 ```
 
-### 3. Unescaped Strings
+### 2. الفواصل الزائدة
 
-**Problem:** Quotes or special characters break JSON
+**المشكلة:** JSON غير صالح بسبب الفواصل الزائدة
 
-**Solution:**
+**الحل:**
 ```
-Properly escape special characters in strings:
-- \" for quotes
-- \\ for backslashes
-- \n for newlines
+تأكد من صحة تركيب JSON. لا فواصل زائدة بعد العنصر
+الأخير في المصفوفات أو الكائنات.
 ```
 
-## Summary
+### 3. النصوص غير المُهرّبة
 
-<Callout type="tip" title="Key Techniques">
-Define schemas explicitly using TypeScript interfaces or JSON Schema. Specify types and constraints, handle nulls and defaults, request self-validation, and choose the right format for your use case.
+**المشكلة:** علامات الاقتباس أو الأحرف الخاصة تُعطّل JSON
+
+**الحل:**
+```
+هرّب الأحرف الخاصة في النصوص بشكل صحيح:
+- \" لعلامات الاقتباس
+- \\ للشرطات المائلة العكسية
+- \n للأسطر الجديدة
+```
+
+## الملخص
+
+<Callout type="tip" title="التقنيات الرئيسية">
+حدّد المخططات صراحة باستخدام واجهات TypeScript أو JSON Schema. حدّد الأنواع والقيود، تعامل مع null والقيم الافتراضية، اطلب التحقق الذاتي، واختر الصيغة المناسبة لحالة الاستخدام.
 </Callout>
 
 <Quiz 
-  question="When should you prefer YAML over JSON for AI outputs?"
+  question="متى يجب تفضيل YAML على JSON لمخرجات الذكاء الاصطناعي؟"
   options={[
-    "When building REST APIs",
-    "When the output needs to be human-readable and may include comments",
-    "When working with JavaScript applications",
-    "When you need the most compact representation"
+    "عند بناء واجهات REST APIs",
+    "عندما يحتاج المخرج أن يكون قابلاً للقراءة البشرية وقد يتضمن تعليقات",
+    "عند العمل مع تطبيقات JavaScript",
+    "عندما تحتاج التمثيل الأكثر إدماجاً"
   ]}
   correctIndex={1}
-  explanation="YAML is preferred when human readability matters, such as configuration files, DevOps manifests, and documentation. It also supports comments, unlike JSON."
+  explanation="يُفضّل YAML عندما تكون القابلية للقراءة البشرية مهمة، مثل ملفات التكوين وملفات DevOps manifests والتوثيق. كما أنها تدعم التعليقات، على عكس JSON."
 />
 
-This completes Part II on techniques. In Part III, we'll explore practical applications across different domains.
+هذا يُكمل الجزء الثاني حول التقنيات. في الجزء الثالث، سنستكشف التطبيقات العملية عبر مجالات مختلفة.

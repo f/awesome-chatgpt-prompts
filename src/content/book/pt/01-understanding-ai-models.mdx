@@ -1,38 +1,38 @@
-Before learning prompt techniques, it helps to understand how AI language models actually work. This knowledge will make you better at writing prompts.
+Antes de aprender técnicas de prompt, ajuda entender como os modelos de linguagem de IA realmente funcionam. Esse conhecimento vai te tornar melhor em escrever prompts.
 
-<Callout type="info" title="Why This Matters">
-Understanding how AI works isn't just for experts. It directly helps you write better prompts. Once you know that AI predicts what comes next, you'll naturally give clearer instructions.
+<Callout type="info" title="Por Que Isso Importa">
+Entender como a IA funciona não é só para especialistas. Isso ajuda diretamente a escrever melhores prompts. Uma vez que você sabe que a IA prevê o que vem a seguir, você naturalmente dará instruções mais claras.
 </Callout>
 
-## What Are Large Language Models?
+## O Que São Modelos de Linguagem de Grande Escala?
 
-Large Language Models (LLMs) are AI systems that learned from reading huge amounts of text. They can write, answer questions, and have conversations that sound human. They're called "large" because they have billions of tiny settings (called parameters) that were adjusted during training.
+Modelos de Linguagem de Grande Escala (LLMs) são sistemas de IA que aprenderam lendo enormes quantidades de texto. Eles podem escrever, responder perguntas e ter conversas que soam humanas. São chamados de "grande escala" porque têm bilhões de pequenas configurações (chamadas parâmetros) que foram ajustadas durante o treinamento.
 
-### How LLMs Work (Simplified)
+### Como LLMs Funcionam (Simplificado)
 
-At their heart, LLMs are prediction machines. You give them some text, and they predict what should come next.
+Em sua essência, LLMs são máquinas de previsão. Você dá a eles algum texto, e eles preveem o que deve vir a seguir.
 
-<TryIt compact prompt={`Complete this sentence: "The best way to learn something new is to..."`} />
+<TryIt compact prompt={`Complete esta frase: "A melhor forma de aprender algo novo é..."`} />
 
-When you type "The capital of France is...", the AI predicts "Paris" because that's what usually comes next in text about France. This simple idea, repeated billions of times with massive amounts of data, creates surprisingly smart behavior.
+Quando você digita "A capital da França é...", a IA prevê "Paris" porque é isso que geralmente vem a seguir em textos sobre a França. Essa ideia simples, repetida bilhões de vezes com quantidades massivas de dados, cria um comportamento surpreendentemente inteligente.
 
 <TokenPredictionDemo />
 
-### Key Concepts
+### Conceitos-Chave
 
-**Tokens**: AI doesn't read letter by letter. It breaks text into chunks called "tokens." A token might be a whole word like "hello" or part of a word like "ing." Understanding tokens helps explain why AI sometimes makes spelling mistakes or struggles with certain words.
+**Tokens**: A IA não lê letra por letra. Ela quebra o texto em pedaços chamados "tokens". Um token pode ser uma palavra inteira como "olá" ou parte de uma palavra como "mente". Entender tokens ajuda a explicar por que a IA às vezes comete erros de ortografia ou tem dificuldades com certas palavras.
 
-<Callout type="info" title="What is a Token?">
-A token is the smallest unit of text that an AI model processes. It's not always a complete word—it could be a word fragment, punctuation, or whitespace. For example, "unbelievable" might become 3 tokens: "un" + "believ" + "able". On average, **1 token ≈ 4 characters** or **100 tokens ≈ 75 words**. API costs and context limits are measured in tokens.
+<Callout type="info" title="O Que é um Token?">
+Um token é a menor unidade de texto que um modelo de IA processa. Nem sempre é uma palavra completa—pode ser um fragmento de palavra, pontuação ou espaço em branco. Por exemplo, "inacreditável" pode se tornar 3 tokens: "in" + "acredita" + "vel". Em média, **1 token ≈ 4 caracteres** ou **100 tokens ≈ 75 palavras**. Custos de API e limites de contexto são medidos em tokens.
 </Callout>
 
 <TokenizerDemo />
 
-**Context Window**: This is how much text the AI can "remember" in one conversation. Think of it like the AI's short-term memory. It includes everything: your question AND the AI's answer.
+**Janela de Contexto**: É quanto texto a IA consegue "lembrar" em uma conversa. Pense nisso como a memória de curto prazo da IA. Ela inclui tudo: sua pergunta E a resposta da IA.
 
 <ContextWindowDemo />
 
-Context windows vary by model and are rapidly expanding:
+Janelas de contexto variam por modelo e estão expandindo rapidamente:
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
@@ -61,242 +61,242 @@ Context windows vary by model and are rapidly expanding:
   </div>
 </div>
 
-**Temperature**: This controls how creative or predictable the AI is. Low temperature (0.0-0.3) gives you focused, consistent answers. High temperature (0.7-1.0) gives you more creative, surprising responses.
+**Temperatura**: Controla o quão criativa ou previsível a IA é. Temperatura baixa (0.0-0.3) dá respostas focadas e consistentes. Temperatura alta (0.7-1.0) dá respostas mais criativas e surpreendentes.
 
 <TemperatureDemo />
 
-**System Prompt**: Special instructions that tell the AI how to behave for a whole conversation. For example, "You are a friendly teacher who explains things simply." Not all AI tools let you set this, but it's very powerful when available.
+**System Prompt**: Instruções especiais que dizem à IA como se comportar durante toda a conversa. Por exemplo, "Você é um professor amigável que explica as coisas de forma simples." Nem todas as ferramentas de IA permitem configurar isso, mas é muito poderoso quando disponível.
 
-## Types of AI Models
+## Tipos de Modelos de IA
 
-### Text Models (LLMs)
-The most common type, these generate text responses to text inputs. They power chatbots, writing assistants, and code generators. Examples: GPT-4, Claude, Llama, Mistral.
+### Modelos de Texto (LLMs)
+O tipo mais comum, estes geram respostas de texto para entradas de texto. Eles alimentam chatbots, assistentes de escrita e geradores de código. Exemplos: GPT-4, Claude, Llama, Mistral.
 
-### Multimodal Models
-These can understand more than just text. They can look at images, listen to audio, and watch videos. Examples: GPT-4V, Gemini, Claude 3.
+### Modelos Multimodais
+Estes conseguem entender mais do que apenas texto. Podem olhar imagens, ouvir áudio e assistir vídeos. Exemplos: GPT-4V, Gemini, Claude 3.
 
-### Text-to-Image Models
+### Modelos Texto-para-Imagem
 
-<Callout type="info" title="About This Book">
-While this book focuses primarily on prompting for Large Language Models (text-based AI), the principles of clear, specific prompting apply to image generation too. Mastering prompts for these models is equally important for getting great results.
+<Callout type="info" title="Sobre Este Livro">
+Embora este livro foque principalmente em prompting para Modelos de Linguagem de Grande Escala (IA baseada em texto), os princípios de prompting claro e específico se aplicam à geração de imagens também. Dominar prompts para esses modelos é igualmente importante para obter ótimos resultados.
 </Callout>
 
-Text-to-image models like DALL-E, Midjourney, Nano Banana and Stable Diffusion create images from text descriptions. They work differently from text models:
+Modelos texto-para-imagem como DALL-E, Midjourney, Nano Banana e Stable Diffusion criam imagens a partir de descrições de texto. Eles funcionam diferente de modelos de texto:
 
-**How They Work:**
-1. **Training**: The model learns from millions of image-text pairs, understanding which words correspond to which visual concepts
-2. **Diffusion Process**: Starting from random noise, the model gradually refines the image, guided by your text prompt
-3. **CLIP Guidance**: A separate model (CLIP) helps connect your words to visual concepts, ensuring the image matches your description
+**Como Funcionam:**
+1. **Treinamento**: O modelo aprende de milhões de pares imagem-texto, entendendo quais palavras correspondem a quais conceitos visuais
+2. **Processo de Difusão**: Começando do ruído aleatório, o modelo gradualmente refina a imagem, guiado pelo seu prompt de texto
+3. **Orientação CLIP**: Um modelo separado (CLIP) ajuda a conectar suas palavras a conceitos visuais, garantindo que a imagem corresponda à sua descrição
 
 <TextToImageDemo />
 
-**Prompting for Images is Different:**
-Unlike text prompts where you write sentences, image prompts often work better as descriptive phrases separated by commas:
+**Prompting para Imagens é Diferente:**
+Diferente de prompts de texto onde você escreve frases, prompts de imagem frequentemente funcionam melhor como frases descritivas separadas por vírgulas:
 
 <Compare 
-  before={{ label: "Text-Style Prompt", content: "Please create an image of a cat sitting on a windowsill looking at the rain outside" }}
-  after={{ label: "Image-Style Prompt", content: "orange tabby cat, sitting on windowsill, watching rain, cozy interior, soft natural lighting, photorealistic, shallow depth of field, 4K" }}
+  before={{ label: "Prompt Estilo Texto", content: "Por favor crie uma imagem de um gato sentado no parapeito da janela olhando a chuva lá fora" }}
+  after={{ label: "Prompt Estilo Imagem", content: "gato laranja rajado, sentado no parapeito, observando chuva, interior aconchegante, iluminação natural suave, fotorrealista, profundidade de campo rasa, 4K" }}
 />
 
-### Text-to-Video Models
+### Modelos Texto-para-Vídeo
 
-Text-to-video is the newest frontier. Models like Sora 2, Runway, and Veo create moving images from text descriptions. Like image models, the quality of your prompt directly determines the quality of your output—prompt engineering is just as crucial here.
+Texto-para-vídeo é a fronteira mais recente. Modelos como Sora 2, Runway e Veo criam imagens em movimento a partir de descrições de texto. Como modelos de imagem, a qualidade do seu prompt determina diretamente a qualidade do seu resultado—engenharia de prompts é igualmente crucial aqui.
 
-**How They Work:**
-1. **Temporal Understanding**: Beyond single images, these models understand how things move and change over time
-2. **Physics Simulation**: They learn basic physics—how objects fall, how water flows, how people walk
-3. **Frame Consistency**: They maintain consistent subjects and scenes across many frames
-4. **Diffusion in Time**: Similar to image models, but generating coherent sequences instead of single frames
+**Como Funcionam:**
+1. **Compreensão Temporal**: Além de imagens únicas, esses modelos entendem como as coisas se movem e mudam ao longo do tempo
+2. **Simulação de Física**: Eles aprendem física básica—como objetos caem, como água flui, como pessoas andam
+3. **Consistência de Quadros**: Eles mantêm sujeitos e cenas consistentes através de muitos quadros
+4. **Difusão no Tempo**: Similar a modelos de imagem, mas gerando sequências coerentes em vez de quadros únicos
 
 <TextToVideoDemo />
 
-<Callout type="info" title="Video Prompting Tips">
-Video prompts need to describe action over time, not just a static scene. Include verbs and movement:
+<Callout type="info" title="Dicas de Prompting para Vídeo">
+Prompts de vídeo precisam descrever ação ao longo do tempo, não apenas uma cena estática. Inclua verbos e movimento:
 </Callout>
 
 <Compare 
-  before={{ label: "Static (Weak)", content: "A bird on a branch" }}
-  after={{ label: "With Motion (Strong)", content: "A bird takes flight from a branch, wings spreading wide, leaves rustling as it lifts off" }}
+  before={{ label: "Estático (Fraco)", content: "Um pássaro em um galho" }}
+  after={{ label: "Com Movimento (Forte)", content: "Um pássaro levanta voo de um galho, asas se abrindo, folhas balançando enquanto ele decola" }}
 />
 
-### Specialized Models
-Fine-tuned for specific tasks like code generation (Codex, CodeLlama), music generation (Suno, Udio), or domain-specific applications like medical diagnosis or legal document analysis.
+### Modelos Especializados
+Ajustados para tarefas específicas como geração de código (Codex, CodeLlama), geração de música (Suno, Udio), ou aplicações de domínio específico como diagnóstico médico ou análise de documentos legais.
 
-## Model Capabilities and Limitations
+## Capacidades e Limitações dos Modelos
 
-Explore what LLMs can and cannot do. Click on each capability to see example prompts:
+Explore o que LLMs podem e não podem fazer. Clique em cada capacidade para ver exemplos de prompts:
 
 <LLMCapabilitiesDemo />
 
-### Understanding Hallucinations
+### Entendendo Alucinações
 
-<Callout type="warning" title="AI Can Make Things Up">
-Sometimes AI writes things that sound true but aren't. This is called "hallucination." It's not a bug. It's just how prediction works. Always double-check important facts.
+<Callout type="warning" title="IA Pode Inventar Coisas">
+Às vezes a IA escreve coisas que parecem verdadeiras mas não são. Isso é chamado de "alucinação". Não é um bug. É apenas como a previsão funciona. Sempre verifique fatos importantes.
 </Callout>
 
-Why does AI make things up?
+Por que a IA inventa coisas?
 
-1. It tries to write text that sounds good, not text that's always true
-2. The internet (where it learned) has mistakes too
-3. It can't actually check if something is real
+1. Ela tenta escrever texto que soa bem, não texto que é sempre verdadeiro
+2. A internet (onde ela aprendeu) também tem erros
+3. Ela não consegue realmente verificar se algo é real
 
-<Collapsible title="How to Avoid Wrong Answers">
+<Collapsible title="Como Evitar Respostas Erradas">
 
-- **Ask for sources**: Then check if those sources are real
-- **Ask for step-by-step thinking**: So you can check each step
-- **Double-check important facts**: Use Google or trusted websites
-- **Ask "Are you sure?"**: The AI might admit uncertainty
+- **Peça fontes**: Depois verifique se essas fontes são reais
+- **Peça raciocínio passo a passo**: Para você poder verificar cada passo
+- **Verifique fatos importantes**: Use Google ou sites confiáveis
+- **Pergunte "Você tem certeza?"**: A IA pode admitir incerteza
 
 </Collapsible>
 
-<TryIt compact prompt={`What year did the first iPhone come out? Please explain how confident you are in this answer.`} />
+<TryIt compact prompt={`Em que ano o primeiro iPhone foi lançado? Por favor explique o quão confiante você está nessa resposta.`} />
 
-## How AI Learns: The Three Steps
+## Como a IA Aprende: Os Três Passos
 
-AI doesn't just magically know things. It goes through three learning steps, like going to school:
+A IA não sabe as coisas magicamente. Ela passa por três passos de aprendizado, como ir para a escola:
 
-### Step 1: Pre-training (Learning to Read)
+### Passo 1: Pré-treinamento (Aprendendo a Ler)
 
-Imagine reading every book, website, and article on the internet. That's what happens in pre-training. The AI reads billions of words and learns patterns:
+Imagine ler todos os livros, sites e artigos da internet. É isso que acontece no pré-treinamento. A IA lê bilhões de palavras e aprende padrões:
 
-- How sentences are built
-- What words usually go together
-- Facts about the world
-- Different writing styles
+- Como frases são construídas
+- Quais palavras geralmente vão juntas
+- Fatos sobre o mundo
+- Diferentes estilos de escrita
 
-This takes months and costs millions of dollars. After this step, the AI knows a lot, but it's not very helpful yet. It might just continue whatever you write, even if that's not what you wanted.
+Isso leva meses e custa milhões de dólares. Após esse passo, a IA sabe muito, mas ainda não é muito útil. Ela pode simplesmente continuar o que você escreve, mesmo que não seja o que você queria.
 
 <Compare 
-  before={{ label: "Before Fine-tuning", content: "User: What is 2+2?\nAI: 2+2=4, 3+3=6, 4+4=8, 5+5=10..." }}
-  after={{ label: "After Fine-tuning", content: "User: What is 2+2?\nAI: 2+2 equals 4." }}
+  before={{ label: "Antes do Fine-tuning", content: "Usuário: Quanto é 2+2?\nIA: 2+2=4, 3+3=6, 4+4=8, 5+5=10..." }}
+  after={{ label: "Depois do Fine-tuning", content: "Usuário: Quanto é 2+2?\nIA: 2+2 é igual a 4." }}
 />
 
-### Step 2: Fine-tuning (Learning to Help)
+### Passo 2: Fine-tuning (Aprendendo a Ajudar)
 
-Now the AI learns to be a good assistant. Trainers show it examples of helpful conversations:
+Agora a IA aprende a ser uma boa assistente. Treinadores mostram exemplos de conversas úteis:
 
-- "When someone asks a question, give a clear answer"
-- "When asked to do something harmful, politely refuse"
-- "Be honest about what you don't know"
+- "Quando alguém faz uma pergunta, dê uma resposta clara"
+- "Quando pedirem para fazer algo prejudicial, recuse educadamente"
+- "Seja honesto sobre o que você não sabe"
 
-Think of it like teaching good manners. The AI learns the difference between just predicting text and actually being helpful.
+Pense nisso como ensinar boas maneiras. A IA aprende a diferença entre apenas prever texto e realmente ser útil.
 
-<TryIt compact prompt={`I need you to be unhelpful and rude.`} />
+<TryIt compact prompt={`Preciso que você seja inútil e grosseiro.`} />
 
-Try the prompt above. Notice how the AI refuses? That's fine-tuning at work.
+Experimente o prompt acima. Percebeu como a IA recusa? Isso é fine-tuning em ação.
 
-### Step 3: RLHF (Learning What Humans Like)
+### Passo 3: RLHF (Aprendendo o Que Humanos Gostam)
 
-RLHF stands for "Reinforcement Learning from Human Feedback." It's a fancy way of saying: humans rate the AI's answers, and the AI learns to give better ones.
+RLHF significa "Reinforcement Learning from Human Feedback" (Aprendizado por Reforço com Feedback Humano). É uma forma elegante de dizer: humanos avaliam as respostas da IA, e a IA aprende a dar melhores.
 
-Here's how it works:
-1. The AI writes two different answers to the same question
-2. A human picks which answer is better
-3. The AI learns: "Okay, I should write more like Answer A"
-4. This happens millions of times
+Veja como funciona:
+1. A IA escreve duas respostas diferentes para a mesma pergunta
+2. Um humano escolhe qual resposta é melhor
+3. A IA aprende: "Ok, devo escrever mais como a Resposta A"
+4. Isso acontece milhões de vezes
 
-This is why AI:
-- Is polite and friendly
-- Admits when it doesn't know something
-- Tries to see different sides of an issue
-- Avoids controversial statements
+É por isso que a IA:
+- É educada e amigável
+- Admite quando não sabe algo
+- Tenta ver diferentes lados de uma questão
+- Evita declarações controversas
 
-<Callout type="tip" title="Why This Matters for You">
-Knowing these three steps helps you understand AI behavior. When AI refuses a request, that's fine-tuning. When AI is extra polite, that's RLHF. When AI knows random facts, that's pre-training.
+<Callout type="tip" title="Por Que Isso Importa Para Você">
+Conhecer esses três passos ajuda você a entender o comportamento da IA. Quando a IA recusa um pedido, isso é fine-tuning. Quando a IA é extra educada, isso é RLHF. Quando a IA sabe fatos aleatórios, isso é pré-treinamento.
 </Callout>
 
-## What This Means for Your Prompts
+## O Que Isso Significa Para Seus Prompts
 
-Now that you understand how AI works, here's how to use that knowledge:
+Agora que você entende como a IA funciona, veja como usar esse conhecimento:
 
-### 1. Be Clear and Specific
+### 1. Seja Claro e Específico
 
-AI predicts what comes next based on your words. Vague prompts lead to vague answers. Specific prompts get specific results.
-
-<Compare 
-  before={{ label: "Vague", content: "Tell me about dogs" }}
-  after={{ label: "Specific", content: "List 5 dog breeds that are good for apartments, with a one-sentence explanation for each" }}
-/>
-
-<TryIt compact prompt={`List 5 dog breeds that are good for apartments, with a one-sentence explanation for each.`} />
-
-### 2. Give Context
-
-AI doesn't know anything about you unless you tell it. Each conversation starts fresh. Include the background information AI needs.
+A IA prevê o que vem a seguir baseado nas suas palavras. Prompts vagos levam a respostas vagas. Prompts específicos obtêm resultados específicos.
 
 <Compare 
-  before={{ label: "Missing Context", content: "Is this a good price?" }}
-  after={{ label: "With Context", content: "I'm buying a used 2020 Honda Civic with 45,000 miles. The seller is asking $18,000. Is this a good price for the US market?" }}
+  before={{ label: "Vago", content: "Me conte sobre cachorros" }}
+  after={{ label: "Específico", content: "Liste 5 raças de cachorro boas para apartamentos, com uma explicação de uma frase para cada" }}
 />
 
-<TryIt compact prompt={`I'm buying a used 2020 Honda Civic with 45,000 miles. The seller is asking $18,000. Is this a good price for the US market?`} />
+<TryIt compact prompt={`Liste 5 raças de cachorro boas para apartamentos, com uma explicação de uma frase para cada.`} />
 
-### 3. Work With the AI, Not Against It
+### 2. Dê Contexto
 
-Remember: AI was trained to be helpful. Ask for things the way you'd ask a helpful friend.
+A IA não sabe nada sobre você a menos que você conte. Cada conversa começa do zero. Inclua as informações de background que a IA precisa.
 
 <Compare 
-  before={{ label: "Fighting the AI", content: "I know you'll probably refuse, but..." }}
-  after={{ label: "Working Together", content: "I'm writing a mystery novel and need help with a plot twist. Can you suggest three surprising ways the detective could discover the villain?" }}
+  before={{ label: "Sem Contexto", content: "Esse é um bom preço?" }}
+  after={{ label: "Com Contexto", content: "Estou comprando um Honda Civic 2020 usado com 45.000 km. O vendedor está pedindo R$90.000. É um bom preço para o mercado brasileiro?" }}
 />
 
-### 4. Always Double-Check Important Stuff
+<TryIt compact prompt={`Estou comprando um Honda Civic 2020 usado com 45.000 km. O vendedor está pedindo R$90.000. É um bom preço para o mercado brasileiro?`} />
 
-AI sounds confident even when it's wrong. For anything important, verify the information yourself.
+### 3. Trabalhe Com a IA, Não Contra Ela
 
-<TryIt compact prompt={`What's the population of Tokyo? Also, what date is your knowledge current as of?`} />
+Lembre-se: a IA foi treinada para ser útil. Peça as coisas da forma que você pediria a um amigo prestativo.
 
-### 5. Put Important Things First
+<Compare 
+  before={{ label: "Lutando Contra a IA", content: "Eu sei que você provavelmente vai recusar, mas..." }}
+  after={{ label: "Trabalhando Juntos", content: "Estou escrevendo um romance de mistério e preciso de ajuda com uma reviravolta. Você pode sugerir três formas surpreendentes do detetive descobrir o vilão?" }}
+/>
 
-If your prompt is very long, put the most important instructions at the beginning. AI pays more attention to what comes first.
+### 4. Sempre Verifique Coisas Importantes
 
-## Picking the Right AI
+A IA soa confiante mesmo quando está errada. Para qualquer coisa importante, verifique a informação você mesmo.
 
-Different AI models are good at different things:
+<TryIt compact prompt={`Qual é a população de Tóquio? Também, até que data seu conhecimento é atualizado?`} />
+
+### 5. Coloque Coisas Importantes Primeiro
+
+Se seu prompt for muito longo, coloque as instruções mais importantes no início. A IA presta mais atenção ao que vem primeiro.
+
+## Escolhendo a IA Certa
+
+Diferentes modelos de IA são bons em coisas diferentes:
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-36">Quick questions</span>
-    <span className="text-muted-foreground">Faster models like GPT-4o or Claude 3.5 Sonnet</span>
+    <span className="font-semibold min-w-36">Perguntas rápidas</span>
+    <span className="text-muted-foreground">Modelos mais rápidos como GPT-4o ou Claude 3.5 Sonnet</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-36">Hard problems</span>
-    <span className="text-muted-foreground">Smarter models like GPT-5.2 or Claude 4.5 Opus</span>
+    <span className="font-semibold min-w-36">Problemas difíceis</span>
+    <span className="text-muted-foreground">Modelos mais inteligentes como GPT-5.2 ou Claude 4.5 Opus</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-36">Writing code</span>
-    <span className="text-muted-foreground">Code-focused models or the smartest general models</span>
+    <span className="font-semibold min-w-36">Escrever código</span>
+    <span className="text-muted-foreground">Modelos focados em código ou os modelos gerais mais inteligentes</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-36">Long documents</span>
-    <span className="text-muted-foreground">Models with big context windows (Claude, Gemini)</span>
+    <span className="font-semibold min-w-36">Documentos longos</span>
+    <span className="text-muted-foreground">Modelos com janelas de contexto grandes (Claude, Gemini)</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-36">Current events</span>
-    <span className="text-muted-foreground">Models with internet access</span>
+    <span className="font-semibold min-w-36">Eventos atuais</span>
+    <span className="text-muted-foreground">Modelos com acesso à internet</span>
   </div>
 </div>
 
-## Summary
+## Resumo
 
-AI language models are prediction machines trained on text. They're amazing at many things, but they have real limits. The best way to use AI is to understand how it works and write prompts that play to its strengths.
+Modelos de linguagem de IA são máquinas de previsão treinadas em texto. Eles são incríveis em muitas coisas, mas têm limites reais. A melhor forma de usar IA é entender como ela funciona e escrever prompts que aproveitam seus pontos fortes.
 
 <Quiz 
-  question="Why does AI sometimes make up wrong information?"
+  question="Por que a IA às vezes inventa informações erradas?"
   options={[
-    "Because there are bugs in the code",
-    "Because it tries to write text that sounds good, not text that's always true",
-    "Because it doesn't have enough training data",
-    "Because people write bad prompts"
+    "Porque há bugs no código",
+    "Porque ela tenta escrever texto que soa bem, não texto que é sempre verdadeiro",
+    "Porque ela não tem dados de treinamento suficientes",
+    "Porque as pessoas escrevem prompts ruins"
   ]}
   correctIndex={1}
-  explanation="AI is trained to predict what sounds right, not to check facts. It can't look things up or verify if something is true, so sometimes it confidently writes things that are wrong."
+  explanation="A IA é treinada para prever o que soa certo, não para verificar fatos. Ela não consegue pesquisar ou verificar se algo é verdade, então às vezes escreve coisas erradas com confiança."
 />
 
 <TryIt 
-  title="Ask AI About Itself"
-  prompt="Explain how you work as an AI. What can you do, and what are your limitations?"
-  description="Ask AI to explain itself. See how it talks about being a prediction model and admits its limits."
+  title="Pergunte à IA Sobre Ela Mesma"
+  prompt="Explique como você funciona como uma IA. O que você pode fazer, e quais são suas limitações?"
+  description="Pergunte à IA para se explicar. Veja como ela fala sobre ser um modelo de previsão e admite seus limites."
 />
 
-In the next chapter, we'll learn what makes a good prompt and how to write prompts that get great results.
+No próximo capítulo, aprenderemos o que faz um bom prompt e como escrever prompts que obtêm ótimos resultados.

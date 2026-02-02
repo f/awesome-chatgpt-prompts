@@ -1,413 +1,413 @@
-AI has transformed software development. This chapter covers prompting techniques for code generation, debugging, review, and development workflows.
+AI heeft softwareontwikkeling getransformeerd. Dit hoofdstuk behandelt prompttechnieken voor codegeneratie, debugging, review en ontwikkelworkflows.
 
-<Callout type="info" title="AI as Coding Partner">
-AI excels at code generation, debugging, and documentation—but always review generated code for security, correctness, and maintainability. Never deploy AI code without testing.
+<Callout type="info" title="AI als Programmeerpartner">
+AI blinkt uit in codegeneratie, debugging en documentatie—maar controleer gegenereerde code altijd op beveiliging, correctheid en onderhoudbaarheid. Zet AI-code nooit in productie zonder testen.
 </Callout>
 
-## Code Generation
+## Codegeneratie
 
-### Do's and Don'ts: Code Prompts
+### Do's en Don'ts: Code Prompts
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Write a function to validate emails." }}
-  after={{ label: "✓ Complete specification", content: "Write a Python function that validates email addresses.\n\nInput: string (potential email)\nOutput: tuple[bool, str | None] - (is_valid, error_message)\nHandle: empty string, None, unicode chars\nUse regex, include type hints and docstring." }}
+  before={{ label: "❌ Vaag verzoek", content: "Schrijf een functie om e-mails te valideren." }}
+  after={{ label: "✓ Volledige specificatie", content: "Schrijf een Python-functie die e-mailadressen valideert.\n\nInput: string (potentiële e-mail)\nOutput: tuple[bool, str | None] - (is_geldig, foutmelding)\nVerwerk: lege string, None, unicode-tekens\nGebruik regex, inclusief type hints en docstring." }}
 />
 
-### Function Generation
+### Functiegeneratie
 
-<TryIt compact prompt={`Write a \${language:Python} function that \${description:validates email addresses}.
+<TryIt compact prompt={`Schrijf een \${language:Python} functie die \${description:e-mailadressen valideert}.
 
-Requirements:
-- Input: \${inputTypes:string (potential email)}
-- Output: \${outputType:boolean and optional error message}
-- Handle edge cases: \${edgeCases:empty string, None, unicode characters}
-- Performance: \${performance:standard}
+Vereisten:
+- Input: \${inputTypes:string (potentiële e-mail)}
+- Output: \${outputType:boolean en optionele foutmelding}
+- Verwerk randgevallen: \${edgeCases:lege string, None, unicode-tekens}
+- Prestaties: \${performance:standaard}
 
-Include:
-- Type hints/annotations
-- Docstring with examples
-- Input validation
-- Error handling`} />
+Inclusief:
+- Type hints/annotaties
+- Docstring met voorbeelden
+- Inputvalidatie
+- Foutafhandeling`} />
 
-### Class/Module Generation
+### Klasse/Module Generatie
 
-<TryIt compact prompt={`Create a \${language:Python} class for \${purpose:managing user sessions}.
+<TryIt compact prompt={`Maak een \${language:Python} klasse voor \${purpose:het beheren van gebruikerssessies}.
 
-Class design:
-- Name: \${className:SessionManager}
-- Responsibility: \${responsibility:handle user session lifecycle}
-- Properties: \${properties:session_id, user_id, created_at, expires_at}
-- Methods: \${methods:create(), validate(), refresh(), destroy()}
+Klasseontwerp:
+- Naam: \${className:SessionManager}
+- Verantwoordelijkheid: \${responsibility:gebruikerssessie-levenscyclus afhandelen}
+- Eigenschappen: \${properties:session_id, user_id, created_at, expires_at}
+- Methoden: \${methods:create(), validate(), refresh(), destroy()}
 
-Requirements:
-- Follow \${designPattern:Singleton} pattern
-- Include proper encapsulation
-- Add comprehensive docstrings
-- Include usage example
+Vereisten:
+- Volg het \${designPattern:Singleton} patroon
+- Inclusief juiste encapsulatie
+- Voeg uitgebreide docstrings toe
+- Inclusief gebruiksvoorbeeld
 
-Testing:
-- Include unit test skeleton`} />
+Testen:
+- Inclusief unit test skelet`} />
 
-### API Endpoint Generation
+### API Endpoint Generatie
 
-<TryIt compact prompt={`Create a REST API endpoint for \${resource:user profiles}.
+<TryIt compact prompt={`Maak een REST API endpoint voor \${resource:gebruikersprofielen}.
 
 Framework: \${framework:FastAPI}
-Method: \${method:GET}
-Path: \${path:/api/users/{id}}
+Methode: \${method:GET}
+Pad: \${path:/api/users/{id}}
 
 Request:
 - Headers: \${headers:Authorization Bearer token}
-- Body schema: \${bodySchema:N/A for GET}
+- Body schema: \${bodySchema:N.v.t. voor GET}
 - Query params: \${queryParams:include_posts (boolean)}
 
 Response:
-- Success: \${successResponse:200 with user object}
-- Errors: \${errorResponses:401 Unauthorized, 404 Not Found}
+- Succes: \${successResponse:200 met gebruikersobject}
+- Fouten: \${errorResponses:401 Unauthorized, 404 Not Found}
 
-Include:
-- Input validation
-- Authentication check
-- Error handling
-- Rate limiting consideration`} />
+Inclusief:
+- Inputvalidatie
+- Authenticatiecontrole
+- Foutafhandeling
+- Rate limiting overweging`} />
 
 ## Debugging
 
-<Callout type="tip" title="Debugging Principle">
-Always include the **expected behavior**, **actual behavior**, and **error message** (if any). The more context you provide, the faster AI can identify the root cause.
+<Callout type="tip" title="Debugging Principe">
+Voeg altijd het **verwachte gedrag**, **werkelijke gedrag** en **foutmelding** (indien aanwezig) toe. Hoe meer context je geeft, hoe sneller AI de hoofdoorzaak kan identificeren.
 </Callout>
 
-### Bug Analysis
+### Bug Analyse
 
-<TryIt compact prompt={`Debug this code. It should \${expectedBehavior:return the sum of all numbers} but instead \${actualBehavior:returns 0 for all inputs}.
+<TryIt compact prompt={`Debug deze code. Het zou \${expectedBehavior:de som van alle getallen moeten retourneren} maar in plaats daarvan \${actualBehavior:retourneert het 0 voor alle inputs}.
 
 Code:
-\${code:paste your code here}
+\${code:plak hier je code}
 
-Error message (if any):
-\${error:none}
+Foutmelding (indien aanwezig):
+\${error:geen}
 
-Steps to debug:
-1. Identify what the code is trying to do
-2. Trace through execution with the given input
-3. Find where expected and actual behavior diverge
-4. Explain the root cause
-5. Provide the fix with explanation`} />
+Stappen om te debuggen:
+1. Identificeer wat de code probeert te doen
+2. Traceer de uitvoering met de gegeven input
+3. Vind waar verwacht en werkelijk gedrag afwijken
+4. Leg de hoofdoorzaak uit
+5. Geef de fix met uitleg`} />
 
-### Error Message Interpretation
+### Foutmelding Interpretatie
 
-<TryIt compact prompt={`Explain this error and how to fix it:
+<TryIt compact prompt={`Leg deze fout uit en hoe je het kunt oplossen:
 
-Error:
-\${errorMessage:paste error message or stack trace here}
+Fout:
+\${errorMessage:plak hier de foutmelding of stack trace}
 
 Context:
-- Language/Framework: \${framework:Python 3.11}
-- What I was trying to do: \${action:reading a JSON file}
-- Relevant code: \${codeSnippet:paste relevant code}
+- Taal/Framework: \${framework:Python 3.11}
+- Wat ik probeerde te doen: \${action:een JSON-bestand lezen}
+- Relevante code: \${codeSnippet:plak relevante code}
 
-Provide:
-1. Plain English explanation of the error
-2. Root cause
-3. Step-by-step fix
-4. How to prevent this in the future`} />
+Lever:
+1. Uitleg van de fout in gewone taal
+2. Hoofdoorzaak
+3. Stap-voor-stap oplossing
+4. Hoe dit in de toekomst te voorkomen`} />
 
-### Performance Debugging
+### Prestatie Debugging
 
-<TryIt compact prompt={`This code is slow. Analyze and optimize:
+<TryIt compact prompt={`Deze code is traag. Analyseer en optimaliseer:
 
 Code:
-\${code:paste your code here}
+\${code:plak hier je code}
 
-Current performance: \${currentPerformance:takes 30 seconds for 1000 items}
-Target performance: \${targetPerformance:under 5 seconds}
-Constraints: \${constraints:memory limit 512MB}
+Huidige prestaties: \${currentPerformance:duurt 30 seconden voor 1000 items}
+Doelprestaties: \${targetPerformance:onder 5 seconden}
+Beperkingen: \${constraints:geheugenlimiet 512MB}
 
-Provide:
-1. Identify bottlenecks
-2. Explain why each is slow
-3. Suggest optimizations (ranked by impact)
-4. Show optimized code
-5. Estimate improvement`} />
+Lever:
+1. Identificeer knelpunten
+2. Leg uit waarom elk traag is
+3. Stel optimalisaties voor (gerangschikt op impact)
+4. Toon geoptimaliseerde code
+5. Schat verbetering in`} />
 
 ## Code Review
 
-### Do's and Don'ts: Code Review Prompts
+### Do's en Don'ts: Code Review Prompts
 
 <Compare 
-  before={{ label: "❌ Generic request", content: "Review this code." }}
-  after={{ label: "✓ Specific criteria", content: "Review this code for a pull request.\n\nCheck for:\n1. Correctness: bugs, logic errors, edge cases\n2. Security: injection risks, auth issues\n3. Performance: N+1 queries, memory leaks\n4. Maintainability: naming, complexity\n\nFormat: 🔴 Critical / 🟡 Important / 🟢 Suggestion" }}
+  before={{ label: "❌ Generiek verzoek", content: "Review deze code." }}
+  after={{ label: "✓ Specifieke criteria", content: "Review deze code voor een pull request.\n\nControleer op:\n1. Correctheid: bugs, logicafouten, randgevallen\n2. Beveiliging: injectierisico's, auth-problemen\n3. Prestaties: N+1 queries, geheugenlekken\n4. Onderhoudbaarheid: naamgeving, complexiteit\n\nFormaat: 🔴 Kritiek / 🟡 Belangrijk / 🟢 Suggestie" }}
 />
 
-### Comprehensive Review
+### Uitgebreide Review
 
-<TryIt compact prompt={`Review this code for a pull request.
-
-Code:
-\${code:paste your code here}
-
-Review for:
-1. **Correctness**: Bugs, logic errors, edge cases
-2. **Security**: Vulnerabilities, injection risks, auth issues
-3. **Performance**: Inefficiencies, N+1 queries, memory leaks
-4. **Maintainability**: Readability, naming, complexity
-5. **Best practices**: \${framework:Python/Django} conventions
-
-Format your review as:
-🔴 Critical: must fix before merge
-🟡 Important: should fix
-🟢 Suggestion: nice to have
-💭 Question: clarification needed`} />
-
-### Security Review
-
-<TryIt compact prompt={`Perform a security review of this code:
+<TryIt compact prompt={`Review deze code voor een pull request.
 
 Code:
-\${code:paste your code here}
+\${code:plak hier je code}
 
-Check for:
-- [ ] Injection vulnerabilities (SQL, XSS, command)
-- [ ] Authentication/authorization flaws
-- [ ] Sensitive data exposure
-- [ ] Insecure dependencies
-- [ ] Cryptographic issues
-- [ ] Input validation gaps
-- [ ] Error handling that leaks info
+Review op:
+1. **Correctheid**: Bugs, logicafouten, randgevallen
+2. **Beveiliging**: Kwetsbaarheden, injectierisico's, auth-problemen
+3. **Prestaties**: Inefficiënties, N+1 queries, geheugenlekken
+4. **Onderhoudbaarheid**: Leesbaarheid, naamgeving, complexiteit
+5. **Best practices**: \${framework:Python/Django} conventies
 
-For each finding:
-- Severity: Critical/High/Medium/Low
-- Location: Line number or function
-- Issue: Description
-- Exploit: How it could be attacked
-- Fix: Recommended remediation`} />
+Formatteer je review als:
+🔴 Kritiek: moet opgelost worden voor merge
+🟡 Belangrijk: zou opgelost moeten worden
+🟢 Suggestie: nice to have
+💭 Vraag: verduidelijking nodig`} />
+
+### Beveiligingsreview
+
+<TryIt compact prompt={`Voer een beveiligingsreview uit van deze code:
+
+Code:
+\${code:plak hier je code}
+
+Controleer op:
+- [ ] Injectiekwetsbaarheden (SQL, XSS, command)
+- [ ] Authenticatie/autorisatie-fouten
+- [ ] Blootstelling van gevoelige gegevens
+- [ ] Onveilige dependencies
+- [ ] Cryptografische problemen
+- [ ] Hiaten in inputvalidatie
+- [ ] Foutafhandeling die info lekt
+
+Voor elke bevinding:
+- Ernst: Kritiek/Hoog/Gemiddeld/Laag
+- Locatie: Regelnummer of functie
+- Probleem: Beschrijving
+- Exploit: Hoe het aangevallen kan worden
+- Fix: Aanbevolen oplossing`} />
 
 ## Refactoring
 
-### Code Smell Detection
+### Code Smell Detectie
 
-<TryIt compact prompt={`Analyze this code for code smells and refactoring opportunities:
-
-Code:
-\${code:paste your code here}
-
-Identify:
-1. Long methods (suggest extraction)
-2. Duplicate code (suggest DRY improvements)
-3. Complex conditionals (suggest simplification)
-4. Poor naming (suggest better names)
-5. Tight coupling (suggest decoupling)
-
-For each issue, show before/after code.`} />
-
-### Design Pattern Application
-
-<TryIt compact prompt={`Refactor this code using the \${patternName:Factory} pattern.
-
-Current code:
-\${code:paste your code here}
-
-Goals:
-- \${whyPattern:decouple object creation from usage}
-- \${benefits:easier testing and extensibility}
-
-Provide:
-1. Explanation of the pattern
-2. How it applies here
-3. Refactored code
-4. Trade-offs to consider`} />
-
-## Testing
-
-### Unit Test Generation
-
-<TryIt compact prompt={`Write unit tests for this function:
-
-Function:
-\${code:paste your function here}
-
-Testing framework: \${testFramework:pytest}
-
-Cover:
-- Happy path (normal inputs)
-- Edge cases (empty, null, boundary values)
-- Error cases (invalid inputs)
-- \${specificScenarios:concurrent access, large inputs}
-
-Format: Arrange-Act-Assert pattern
-Include: Descriptive test names`} />
-
-### Test Case Generation
-
-<TryIt compact prompt={`Generate test cases for this feature:
-
-Feature: \${featureDescription:user registration with email verification}
-Acceptance criteria: \${acceptanceCriteria:user can sign up, receives email, can verify account}
-
-Provide test cases in this format:
-
-| ID | Scenario | Given | When | Then | Priority |
-|----|----------|-------|------|------|----------|
-| TC01 | ... | ... | ... | ... | High |`} />
-
-## Architecture & Design
-
-### System Design
-
-<TryIt compact prompt={`Design a system for \${requirement:real-time chat application}.
-
-Constraints:
-- Expected load: \${expectedLoad:10,000 concurrent users}
-- Latency requirements: \${latency:< 100ms message delivery}
-- Availability: \${availability:99.9%}
-- Budget: \${budget:moderate, prefer open source}
-
-Provide:
-1. High-level architecture diagram (ASCII/text)
-2. Component descriptions
-3. Data flow
-4. Technology choices with rationale
-5. Scaling strategy
-6. Trade-offs and alternatives considered`} />
-
-### Database Schema Design
-
-<TryIt compact prompt={`Design a database schema for \${application:e-commerce platform}.
-
-Requirements:
-- \${feature1:User accounts with profiles and addresses}
-- \${feature2:Product catalog with categories and variants}
-- \${feature3:Orders with line items and payment tracking}
-
-Provide:
-1. Entity-relationship description
-2. Table definitions with columns and types
-3. Indexes for common queries
-4. Foreign key relationships
-5. Sample queries for key operations`} />
-
-## Documentation Generation
-
-### API Documentation
-
-<TryIt compact prompt={`Generate API documentation from this code:
+<TryIt compact prompt={`Analyseer deze code op code smells en refactoring-mogelijkheden:
 
 Code:
-\${code:paste your endpoint code here}
+\${code:plak hier je code}
 
-Format: \${format:OpenAPI/Swagger YAML}
+Identificeer:
+1. Lange methoden (stel extractie voor)
+2. Dubbele code (stel DRY-verbeteringen voor)
+3. Complexe conditionals (stel vereenvoudiging voor)
+4. Slechte naamgeving (stel betere namen voor)
+5. Sterke koppeling (stel ontkoppeling voor)
 
-Include:
-- Endpoint description
-- Request/response schemas
-- Example requests/responses
-- Error codes
-- Authentication requirements`} />
+Toon voor elk probleem de code voor/na.`} />
 
-### Inline Documentation
+### Design Pattern Toepassing
 
-<TryIt compact prompt={`Add comprehensive documentation to this code:
+<TryIt compact prompt={`Refactor deze code met het \${patternName:Factory} patroon.
+
+Huidige code:
+\${code:plak hier je code}
+
+Doelen:
+- \${whyPattern:objectcreatie ontkoppelen van gebruik}
+- \${benefits:eenvoudiger testen en uitbreidbaarheid}
+
+Lever:
+1. Uitleg van het patroon
+2. Hoe het hier van toepassing is
+3. Gerefactorde code
+4. Te overwegen afwegingen`} />
+
+## Testen
+
+### Unit Test Generatie
+
+<TryIt compact prompt={`Schrijf unit tests voor deze functie:
+
+Functie:
+\${code:plak hier je functie}
+
+Testframework: \${testFramework:pytest}
+
+Dek:
+- Happy path (normale inputs)
+- Randgevallen (leeg, null, grenswaarden)
+- Foutgevallen (ongeldige inputs)
+- \${specificScenarios:gelijktijdige toegang, grote inputs}
+
+Formaat: Arrange-Act-Assert patroon
+Inclusief: Beschrijvende testnamen`} />
+
+### Testcase Generatie
+
+<TryIt compact prompt={`Genereer testcases voor deze feature:
+
+Feature: \${featureDescription:gebruikersregistratie met e-mailverificatie}
+Acceptatiecriteria: \${acceptanceCriteria:gebruiker kan zich aanmelden, ontvangt e-mail, kan account verifiëren}
+
+Lever testcases in dit formaat:
+
+| ID | Scenario | Gegeven | Wanneer | Dan | Prioriteit |
+|----|----------|---------|---------|-----|------------|
+| TC01 | ... | ... | ... | ... | Hoog |`} />
+
+## Architectuur & Ontwerp
+
+### Systeemontwerp
+
+<TryIt compact prompt={`Ontwerp een systeem voor \${requirement:real-time chatapplicatie}.
+
+Beperkingen:
+- Verwachte belasting: \${expectedLoad:10.000 gelijktijdige gebruikers}
+- Latentievereisten: \${latency:< 100ms berichtaflevering}
+- Beschikbaarheid: \${availability:99,9%}
+- Budget: \${budget:gemiddeld, voorkeur voor open source}
+
+Lever:
+1. High-level architectuurdiagram (ASCII/tekst)
+2. Componentbeschrijvingen
+3. Gegevensstroom
+4. Technologiekeuzes met onderbouwing
+5. Schaalstrategie
+6. Afwegingen en overwogen alternatieven`} />
+
+### Database Schema Ontwerp
+
+<TryIt compact prompt={`Ontwerp een databaseschema voor \${application:e-commerce platform}.
+
+Vereisten:
+- \${feature1:Gebruikersaccounts met profielen en adressen}
+- \${feature2:Productcatalogus met categorieën en varianten}
+- \${feature3:Bestellingen met regelitems en betalingstracking}
+
+Lever:
+1. Entity-relationship beschrijving
+2. Tabeldefinities met kolommen en types
+3. Indexes voor veelvoorkomende queries
+4. Foreign key relaties
+5. Voorbeeldqueries voor belangrijke operaties`} />
+
+## Documentatiegeneratie
+
+### API Documentatie
+
+<TryIt compact prompt={`Genereer API-documentatie van deze code:
 
 Code:
-\${code:paste your code here}
+\${code:plak hier je endpoint-code}
 
-Add:
-- File/module docstring (purpose, usage)
-- Function/method docstrings (params, returns, raises, examples)
-- Inline comments for complex logic only
-- Type hints if missing
+Formaat: \${format:OpenAPI/Swagger YAML}
 
-Style: \${docStyle:Google}`} />
+Inclusief:
+- Endpoint-beschrijving
+- Request/response schema's
+- Voorbeeld requests/responses
+- Foutcodes
+- Authenticatievereisten`} />
 
-## Prompt Templates from prompts.chat
+### Inline Documentatie
 
-### Act as a Senior Developer
+<TryIt compact prompt={`Voeg uitgebreide documentatie toe aan deze code:
 
-```
-I want you to act as a senior software developer. I will provide 
-code and ask questions about it. You will review the code, suggest 
-improvements, explain concepts, and help debug issues. Your 
-responses should be educational and help me become a better 
-developer.
-```
+Code:
+\${code:plak hier je code}
 
-### Act as a Code Reviewer
+Voeg toe:
+- Bestand/module docstring (doel, gebruik)
+- Functie/methode docstrings (params, returns, raises, voorbeelden)
+- Inline commentaar alleen voor complexe logica
+- Type hints indien ontbrekend
 
-```
-I want you to act as a code reviewer. I will provide pull requests 
-with code changes, and you will review them thoroughly. Check for 
-bugs, security issues, performance problems, and adherence to best 
-practices. Provide constructive feedback that helps the developer 
-improve.
-```
+Stijl: \${docStyle:Google}`} />
 
-### Act as a Software Architect
+## Promptsjablonen van prompts.chat
+
+### Optreden als Senior Developer
 
 ```
-I want you to act as a software architect. I will describe system 
-requirements and constraints, and you will design scalable, 
-maintainable architectures. Explain your design decisions, 
-trade-offs, and provide diagrams where helpful.
+Ik wil dat je optreedt als senior softwareontwikkelaar. Ik zal code 
+verstrekken en er vragen over stellen. Je zult de code reviewen, 
+verbeteringen voorstellen, concepten uitleggen en helpen bij het 
+debuggen van problemen. Je antwoorden moeten educatief zijn en me 
+helpen een betere ontwikkelaar te worden.
 ```
 
-## Development Workflow Integration
+### Optreden als Code Reviewer
 
-### Commit Message Generation
+```
+Ik wil dat je optreedt als code reviewer. Ik zal pull requests 
+met codewijzigingen verstrekken, en je zult ze grondig reviewen. 
+Controleer op bugs, beveiligingsproblemen, prestatieproblemen en 
+naleving van best practices. Geef constructieve feedback die de 
+ontwikkelaar helpt te verbeteren.
+```
 
-<TryIt compact prompt={`Generate a commit message for these changes:
+### Optreden als Software Architect
+
+```
+Ik wil dat je optreedt als software architect. Ik zal 
+systeemvereisten en beperkingen beschrijven, en je zult schaalbare, 
+onderhoudbare architecturen ontwerpen. Leg je ontwerpbeslissingen 
+uit, de afwegingen, en geef waar nuttig diagrammen.
+```
+
+## Ontwikkelworkflow Integratie
+
+### Commit Message Generatie
+
+<TryIt compact prompt={`Genereer een commit message voor deze wijzigingen:
 
 Diff:
-\${diff:paste git diff here}
+\${diff:plak hier git diff}
 
-Format: Conventional Commits
+Formaat: Conventional Commits
 Type: \${commitType:feat}
 
-Provide:
-- Subject line (50 chars max, imperative mood)
-- Body (what and why, wrapped at 72 chars)
-- Footer (references issues if applicable)`} />
+Lever:
+- Onderwerpregel (max 50 tekens, gebiedende wijs)
+- Body (wat en waarom, afgebroken op 72 tekens)
+- Footer (verwijst naar issues indien van toepassing)`} />
 
-### PR Description Generation
+### PR Beschrijving Generatie
 
-<TryIt compact prompt={`Generate a pull request description:
+<TryIt compact prompt={`Genereer een pull request beschrijving:
 
-Changes:
-\${changes:list your changes or paste diff summary}
+Wijzigingen:
+\${changes:som je wijzigingen op of plak diff samenvatting}
 
-Template:
-## Summary
-Brief description of changes
+Sjabloon:
+## Samenvatting
+Korte beschrijving van wijzigingen
 
-## Changes Made
-- Change 1
-- Change 2
+## Aangebrachte Wijzigingen
+- Wijziging 1
+- Wijziging 2
 
-## Testing
-- [ ] Unit tests added/updated
-- [ ] Manual testing completed
+## Testen
+- [ ] Unit tests toegevoegd/bijgewerkt
+- [ ] Handmatig testen voltooid
 
-## Screenshots (if UI changes)
+## Screenshots (bij UI-wijzigingen)
 placeholder
 
-## Related Issues
-Closes #\${issueNumber:123}`} />
+## Gerelateerde Issues
+Sluit #\${issueNumber:123}`} />
 
-## Summary
+## Samenvatting
 
-<Callout type="tip" title="Key Techniques">
-Include full context (language, framework, constraints), specify requirements precisely, request specific output formats, ask for explanations alongside code, and include edge cases to handle.
+<Callout type="tip" title="Belangrijke Technieken">
+Voeg volledige context toe (taal, framework, beperkingen), specificeer vereisten nauwkeurig, vraag om specifieke outputformaten, vraag om uitleg naast code, en neem randgevallen op om te verwerken.
 </Callout>
 
 <Quiz 
-  question="What's the most important element to include when asking AI to debug code?"
+  question="Wat is het belangrijkste element om toe te voegen wanneer je AI vraagt om code te debuggen?"
   options={[
-    "The programming language only",
-    "Expected behavior, actual behavior, and error message",
-    "Just the code snippet",
-    "The file name"
+    "Alleen de programmeertaal",
+    "Verwacht gedrag, werkelijk gedrag en foutmelding",
+    "Alleen het codefragment",
+    "De bestandsnaam"
   ]}
   correctIndex={1}
-  explanation="Debugging requires context: what should happen vs. what actually happens. Error messages and stack traces help AI pinpoint the exact issue quickly."
+  explanation="Debugging vereist context: wat zou er moeten gebeuren versus wat er werkelijk gebeurt. Foutmeldingen en stack traces helpen AI het exacte probleem snel te lokaliseren."
 />
 
-AI is a powerful coding partner—use it for generation, review, debugging, and documentation while maintaining your architectural judgment.
+AI is een krachtige programmeerpartner—gebruik het voor generatie, review, debugging en documentatie terwijl je je architectonische oordeelsvermogen behoudt.

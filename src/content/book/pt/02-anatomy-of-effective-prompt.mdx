@@ -1,343 +1,343 @@
-Every great prompt shares common structural elements. Understanding these components allows you to construct prompts systematically rather than through trial and error.
+Todo grande prompt compartilha elementos estruturais comuns. Entender esses componentes permite que você construa prompts sistematicamente em vez de por tentativa e erro.
 
-<Callout type="tip" title="The Building Blocks">
-Think of these components like LEGO bricks. You don't need all of them for every prompt, but knowing what's available helps you build exactly what you need.
+<Callout type="tip" title="Os Blocos de Construção">
+Pense nesses componentes como peças de LEGO. Você não precisa de todos eles para cada prompt, mas saber o que está disponível ajuda você a construir exatamente o que precisa.
 </Callout>
 
-## The Core Components
+## Os Componentes Principais
 
-An effective prompt typically includes some or all of these elements:
+Um prompt eficaz tipicamente inclui alguns ou todos esses elementos:
 
 <PromptBreakdown parts={[
-  { label: "Role", text: "You are a senior software engineer" },
-  { label: "Context", text: "working on a React application." },
-  { label: "Task", text: "Review this code for bugs" },
-  { label: "Constraints", text: "and focus only on security issues." },
-  { label: "Format", text: "Return findings as a numbered list." },
-  { label: "Example", text: "Like: 1. SQL injection risk on line 42" }
+  { label: "Papel", text: "Você é um engenheiro de software sênior" },
+  { label: "Contexto", text: "trabalhando em uma aplicação React." },
+  { label: "Tarefa", text: "Revise este código para bugs" },
+  { label: "Restrições", text: "e foque apenas em problemas de segurança." },
+  { label: "Formato", text: "Retorne descobertas como lista numerada." },
+  { label: "Exemplo", text: "Tipo: 1. Risco de SQL injection na linha 42" }
 ]} />
 
-Let's examine each component in detail.
+Vamos examinar cada componente em detalhe.
 
-## 1. Role / Persona
+## 1. Papel / Persona
 
-Setting a role focuses the model's responses through the lens of a specific expertise or perspective.
-
-<Compare 
-  before={{ label: "Without Role", content: "Explain quantum computing." }}
-  after={{ label: "With Role", content: "You are a physics professor who specializes in making complex topics accessible to beginners. Explain quantum computing." }}
-/>
-
-The role primes the model to:
-- Use appropriate vocabulary
-- Apply relevant expertise
-- Maintain a consistent perspective
-- Consider the audience appropriately
-
-### Effective Role Patterns
-
-```
-"You are a [profession] with [X years] of experience in [specialty]"
-"Act as a [role] who is [characteristic]"
-"You are an expert [field] helping a [audience type]"
-```
-
-## 2. Context / Background
-
-Context provides the information the model needs to understand your situation. Remember: the model knows nothing about you, your project, or your goals unless you tell it.
+Definir um papel foca as respostas do modelo através da lente de uma expertise ou perspectiva específica.
 
 <Compare 
-  before={{ label: "Weak Context", content: "Fix this bug in my code." }}
-  after={{ label: "Strong Context", content: "I'm building a Node.js REST API using Express.js. The API handles user authentication with JWT tokens. When a user tries to access a protected route, they're getting a 403 error even with a valid token. Here's the relevant code: [code]" }}
+  before={{ label: "Sem Papel", content: "Explique computação quântica." }}
+  after={{ label: "Com Papel", content: "Você é um professor de física especializado em tornar tópicos complexos acessíveis para iniciantes. Explique computação quântica." }}
 />
 
-### What to Include in Context
+O papel prepara o modelo para:
+- Usar vocabulário apropriado
+- Aplicar expertise relevante
+- Manter uma perspectiva consistente
+- Considerar o público apropriadamente
 
-- **Project details** — Technology stack, architecture, constraints
-- **Current state** — What you've tried, what's working, what isn't
-- **Goals** — What you're ultimately trying to achieve
-- **Constraints** — Time limits, technical requirements, style guides
+### Padrões de Papel Eficazes
 
-## 3. Task / Instruction
+```
+"Você é um [profissão] com [X anos] de experiência em [especialidade]"
+"Atue como um [papel] que é [característica]"
+"Você é um especialista em [área] ajudando um [tipo de público]"
+```
 
-The task is the heart of your prompt—what you want the model to do. Be specific and unambiguous.
+## 2. Contexto / Background
 
-### The Specificity Spectrum
+Contexto fornece a informação que o modelo precisa para entender sua situação. Lembre-se: o modelo não sabe nada sobre você, seu projeto ou seus objetivos a menos que você conte.
+
+<Compare 
+  before={{ label: "Contexto Fraco", content: "Corrija esse bug no meu código." }}
+  after={{ label: "Contexto Forte", content: "Estou construindo uma API REST em Node.js usando Express.js. A API lida com autenticação de usuário com tokens JWT. Quando um usuário tenta acessar uma rota protegida, recebe erro 403 mesmo com um token válido. Aqui está o código relevante: [código]" }}
+/>
+
+### O Que Incluir no Contexto
+
+- **Detalhes do projeto** — Stack tecnológico, arquitetura, restrições
+- **Estado atual** — O que você tentou, o que está funcionando, o que não está
+- **Objetivos** — O que você está tentando alcançar no final
+- **Restrições** — Limites de tempo, requisitos técnicos, guias de estilo
+
+## 3. Tarefa / Instrução
+
+A tarefa é o coração do seu prompt—o que você quer que o modelo faça. Seja específico e não ambíguo.
+
+### O Espectro de Especificidade
 
 <SpecificitySpectrum levels={[
-  { level: "Vague", text: "Help me with this essay" },
-  { level: "Better", text: "Edit this essay" },
-  { level: "Good", text: "Edit this essay for grammar and clarity" },
-  { level: "Best", text: "Edit this essay for grammar and clarity, maintaining the original tone but reducing wordiness by 20%" }
+  { level: "Vago", text: "Me ajude com essa redação" },
+  { level: "Melhor", text: "Edite essa redação" },
+  { level: "Bom", text: "Edite essa redação para gramática e clareza" },
+  { level: "Melhor", text: "Edite essa redação para gramática e clareza, mantendo o tom original mas reduzindo palavras desnecessárias em 20%" }
 ]} />
 
-### Action Verbs That Work Well
+### Verbos de Ação Que Funcionam Bem
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Creation</span>
-    <span className="text-muted-foreground">Write, Create, Generate, Compose, Design</span>
+    <span className="font-semibold min-w-32">Criação</span>
+    <span className="text-muted-foreground">Escreva, Crie, Gere, Componha, Projete</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Analysis</span>
-    <span className="text-muted-foreground">Analyze, Evaluate, Compare, Assess, Review</span>
+    <span className="font-semibold min-w-32">Análise</span>
+    <span className="text-muted-foreground">Analise, Avalie, Compare, Examine, Revise</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Transformation</span>
-    <span className="text-muted-foreground">Convert, Translate, Reformat, Summarize, Expand</span>
+    <span className="font-semibold min-w-32">Transformação</span>
+    <span className="text-muted-foreground">Converta, Traduza, Reformate, Resuma, Expanda</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Explanation</span>
-    <span className="text-muted-foreground">Explain, Describe, Clarify, Define, Illustrate</span>
+    <span className="font-semibold min-w-32">Explicação</span>
+    <span className="text-muted-foreground">Explique, Descreva, Esclareça, Defina, Ilustre</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Problem-solving</span>
-    <span className="text-muted-foreground">Solve, Debug, Fix, Optimize, Improve</span>
+    <span className="font-semibold min-w-32">Resolução de problemas</span>
+    <span className="text-muted-foreground">Resolva, Debug, Corrija, Otimize, Melhore</span>
   </div>
 </div>
 
-## 4. Constraints / Rules
+## 4. Restrições / Regras
 
-Constraints bound the model's output. They prevent common issues and ensure relevance.
+Restrições delimitam a saída do modelo. Elas previnem problemas comuns e garantem relevância.
 
-### Types of Constraints
+### Tipos de Restrições
 
-**Length constraints:**
+**Restrições de tamanho:**
 ```
-"Keep your response under 200 words"
-"Provide exactly 5 suggestions"
-"Write 3-4 paragraphs"
-```
-
-**Content constraints:**
-```
-"Do not include any code examples"
-"Focus only on the technical aspects"
-"Avoid marketing language"
+"Mantenha sua resposta abaixo de 200 palavras"
+"Forneça exatamente 5 sugestões"
+"Escreva 3-4 parágrafos"
 ```
 
-**Style constraints:**
+**Restrições de conteúdo:**
 ```
-"Use a formal, academic tone"
-"Write as if speaking to a 10-year-old"
-"Be direct and avoid hedging language"
-```
-
-**Scope constraints:**
-```
-"Only consider options available in Python 3.10+"
-"Limit suggestions to free tools"
-"Focus on solutions that don't require additional dependencies"
+"Não inclua exemplos de código"
+"Foque apenas nos aspectos técnicos"
+"Evite linguagem de marketing"
 ```
 
-## 5. Output Format
-
-Specifying the output format ensures you get responses in a usable structure.
-
-### Common Formats
-
-**Lists:**
+**Restrições de estilo:**
 ```
-"Return as a bulleted list"
-"Provide a numbered list of steps"
+"Use um tom formal e acadêmico"
+"Escreva como se falando com uma criança de 10 anos"
+"Seja direto e evite linguagem evasiva"
 ```
 
-**Structured data:**
+**Restrições de escopo:**
 ```
-"Return as JSON with keys: title, description, priority"
-"Format as a markdown table with columns: Feature, Pros, Cons"
-```
-
-**Specific structures:**
-```
-"Structure your response as:
- ## Summary
- ## Key Points
- ## Recommendations"
+"Considere apenas opções disponíveis em Python 3.10+"
+"Limite sugestões a ferramentas gratuitas"
+"Foque em soluções que não requerem dependências adicionais"
 ```
 
-### JSON Output Example
+## 5. Formato de Saída
+
+Especificar o formato de saída garante que você receba respostas em uma estrutura utilizável.
+
+### Formatos Comuns
+
+**Listas:**
+```
+"Retorne como lista com marcadores"
+"Forneça uma lista numerada de passos"
+```
+
+**Dados estruturados:**
+```
+"Retorne como JSON com chaves: titulo, descricao, prioridade"
+"Formate como tabela markdown com colunas: Recurso, Prós, Contras"
+```
+
+**Estruturas específicas:**
+```
+"Estruture sua resposta como:
+ ## Resumo
+ ## Pontos-Chave
+ ## Recomendações"
+```
+
+### Exemplo de Saída JSON
 
 ```
-Analyze this customer review and return JSON:
+Analise esta avaliação de cliente e retorne JSON:
 {
-  "sentiment": "positive" | "negative" | "neutral",
-  "topics": ["array of main topics"],
-  "rating_prediction": 1-5,
-  "key_phrases": ["notable phrases"]
+  "sentimento": "positivo" | "negativo" | "neutro",
+  "topicos": ["array de tópicos principais"],
+  "previsao_nota": 1-5,
+  "frases_chave": ["frases notáveis"]
 }
 
-Review: "The product arrived quickly and works great, but 
-the instructions were confusing."
+Avaliação: "O produto chegou rápido e funciona muito bem, mas 
+as instruções eram confusas."
 ```
 
-## 6. Examples (Few-Shot Learning)
+## 6. Exemplos (Few-Shot Learning)
 
-Examples are the most powerful way to show the model exactly what you want.
+Exemplos são a forma mais poderosa de mostrar ao modelo exatamente o que você quer.
 
-### One-Shot Example
-
-```
-Convert these sentences to past tense.
-
-Example:
-Input: "She walks to the store"
-Output: "She walked to the store"
-
-Now convert:
-Input: "They run every morning"
-```
-
-### Few-Shot Example
+### Exemplo One-Shot
 
 ```
-Classify these support tickets by urgency.
+Converta essas frases para o passado.
 
-Examples:
-"My account was hacked" → Critical
-"How do I change my password?" → Low
-"Payment failed but I was charged" → High
+Exemplo:
+Entrada: "Ela caminha até a loja"
+Saída: "Ela caminhou até a loja"
 
-Classify: "The app crashes when I open settings"
+Agora converta:
+Entrada: "Eles correm toda manhã"
 ```
 
-## Putting It All Together
+### Exemplo Few-Shot
 
-Here's a complete prompt using all components:
+```
+Classifique esses tickets de suporte por urgência.
+
+Exemplos:
+"Minha conta foi hackeada" → Crítico
+"Como mudo minha senha?" → Baixo
+"Pagamento falhou mas fui cobrado" → Alto
+
+Classifique: "O app trava quando abro configurações"
+```
+
+## Juntando Tudo
+
+Aqui está um prompt completo usando todos os componentes:
 
 <TryIt 
-  title="Complete Prompt Example"
-  description="This prompt demonstrates all six components working together. Try it to see how structured prompts produce professional results."
-  prompt={`# Role
-You are a senior technical writer with 10 years of experience creating developer documentation.
+  title="Exemplo de Prompt Completo"
+  description="Este prompt demonstra todos os seis componentes trabalhando juntos. Experimente para ver como prompts estruturados produzem resultados profissionais."
+  prompt={`# Papel
+Você é um redator técnico sênior com 10 anos de experiência criando documentação para desenvolvedores.
 
-# Context
-I'm documenting a REST API for a payment processing service. The audience is developers integrating our API into their applications. They have intermediate programming knowledge but may be new to payment processing concepts.
+# Contexto
+Estou documentando uma API REST para um serviço de processamento de pagamentos. O público são desenvolvedores integrando nossa API em suas aplicações. Eles têm conhecimento intermediário de programação mas podem ser novos em conceitos de processamento de pagamentos.
 
-# Task
-Write documentation for the following API endpoint that creates a new payment intent.
+# Tarefa
+Escreva documentação para o seguinte endpoint de API que cria uma nova intenção de pagamento.
 
-# Constraints
-- Use clear, concise language
-- Include common error scenarios
-- Do not include implementation details about our backend
-- Assume readers understand HTTP and JSON basics
+# Restrições
+- Use linguagem clara e concisa
+- Inclua cenários de erro comuns
+- Não inclua detalhes de implementação do nosso backend
+- Assuma que leitores entendem básico de HTTP e JSON
 
-# Output Format
-Structure the documentation as:
-1. Endpoint Overview (2-3 sentences)
-2. Request (method, URL, headers, body with example)
-3. Response (success and error examples)
-4. Code Example (in JavaScript/Node.js)
+# Formato de Saída
+Estruture a documentação como:
+1. Visão Geral do Endpoint (2-3 frases)
+2. Requisição (método, URL, headers, body com exemplo)
+3. Resposta (exemplos de sucesso e erro)
+4. Exemplo de Código (em JavaScript/Node.js)
 
-# Endpoint Details
+# Detalhes do Endpoint
 POST /v1/payments/intents
-Body: { "amount": 1000, "currency": "usd", "description": "Order #1234" }`}
+Body: { "amount": 1000, "currency": "brl", "description": "Pedido #1234" }`}
 />
 
-## The Minimal Effective Prompt
+## O Prompt Mínimo Eficaz
 
-Not every prompt needs all components. For simple tasks, a clear instruction may suffice:
+Nem todo prompt precisa de todos os componentes. Para tarefas simples, uma instrução clara pode ser suficiente:
 
 ```
-Translate "Hello, how are you?" to Spanish.
+Traduza "Hello, how are you?" para português.
 ```
 
-Use additional components when:
-- The task is complex or ambiguous
-- You need specific formatting
-- Results aren't matching expectations
-- Consistency across multiple queries matters
+Use componentes adicionais quando:
+- A tarefa é complexa ou ambígua
+- Você precisa de formatação específica
+- Resultados não estão correspondendo às expectativas
+- Consistência entre múltiplas consultas importa
 
-## Common Prompt Patterns
+## Padrões Comuns de Prompt
 
-These frameworks give you a simple checklist to follow when writing prompts. Click on each step to see an example.
+Esses frameworks dão a você uma checklist simples para seguir ao escrever prompts. Clique em cada passo para ver um exemplo.
 
 <CRISPEFramework />
 
 <RTFFramework />
 
-## Summary
+## Resumo
 
-Effective prompts are constructed, not discovered. By understanding and applying these structural components, you can:
+Prompts eficazes são construídos, não descobertos. Ao entender e aplicar esses componentes estruturais, você pode:
 
-- Get better results on the first try
-- Debug prompts that aren't working
-- Create reusable prompt templates
-- Communicate your intentions clearly
+- Obter melhores resultados na primeira tentativa
+- Debugar prompts que não estão funcionando
+- Criar templates de prompt reutilizáveis
+- Comunicar suas intenções claramente
 
 <Quiz 
-  question="Which component has the biggest impact on response quality?"
+  question="Qual componente tem o maior impacto na qualidade da resposta?"
   options={[
-    "Always the role/persona",
-    "Always the output format",
-    "It depends on the task",
-    "The length of the prompt"
+    "Sempre o papel/persona",
+    "Sempre o formato de saída",
+    "Depende da tarefa",
+    "O tamanho do prompt"
   ]}
   correctIndex={2}
-  explanation="Different tasks benefit from different components. A simple translation needs minimal structure, while a complex analysis benefits from detailed role, context, and format specifications."
+  explanation="Diferentes tarefas se beneficiam de diferentes componentes. Uma tradução simples precisa de estrutura mínima, enquanto uma análise complexa se beneficia de especificações detalhadas de papel, contexto e formato."
 />
 
 <TryIt 
-  prompt={`You are a senior product manager with 10 years of experience in SaaS products.
+  prompt={`Você é um gerente de produto sênior com 10 anos de experiência em produtos SaaS.
 
-Context: I'm building a task management app for remote teams. We're a small startup with limited engineering resources.
+Contexto: Estou construindo um app de gerenciamento de tarefas para equipes remotas. Somos uma startup pequena com recursos de engenharia limitados.
 
-Task: Suggest 3 features we should prioritize for our MVP.
+Tarefa: Sugira 3 funcionalidades que devemos priorizar para nosso MVP.
 
-Constraints:
-- Features must be implementable by a team of 2 developers in 4 weeks
-- Focus on what differentiates us from Trello and Asana
+Restrições:
+- Funcionalidades devem ser implementáveis por uma equipe de 2 desenvolvedores em 4 semanas
+- Foque no que nos diferencia do Trello e Asana
 
-Format: For each feature, provide:
-1. Feature name
-2. One-sentence description  
-3. Why it matters for remote teams`}
-  description="This prompt uses all six components. Try it and see how the structured approach produces focused, actionable results."
+Formato: Para cada funcionalidade, forneça:
+1. Nome da funcionalidade
+2. Descrição de uma frase
+3. Por que importa para equipes remotas`}
+  description="Este prompt usa todos os seis componentes. Experimente e veja como a abordagem estruturada produz resultados focados e acionáveis."
 />
 
-## Build Your Own Prompt
+## Construa Seu Próprio Prompt
 
-Now it's your turn! Use this interactive prompt builder to construct your own prompt using the components you've learned:
+Agora é sua vez! Use este construtor interativo de prompts para construir seu próprio prompt usando os componentes que você aprendeu:
 
 <PromptBuilder 
-  title="Interactive Prompt Builder"
-  description="Fill in each section to build a complete, well-structured prompt"
+  title="Construtor Interativo de Prompts"
+  description="Preencha cada seção para construir um prompt completo e bem estruturado"
 />
 
 <PromptChallenge
-  title="Chapter Challenge: Build a Code Review Prompt"
-  task="Write a prompt that asks an AI to review code for security vulnerabilities. Your prompt should be specific enough to get actionable feedback."
+  title="Desafio do Capítulo: Construa um Prompt de Code Review"
+  task="Escreva um prompt que peça a uma IA para revisar código em busca de vulnerabilidades de segurança. Seu prompt deve ser específico o suficiente para obter feedback acionável."
   criteria={[
-    "Includes a clear role or expertise level",
-    "Specifies what type of code review (security focus)",
-    "Defines the expected output format",
-    "Sets appropriate constraints or scope"
+    "Inclui um papel ou nível de expertise claro",
+    "Especifica que tipo de code review (foco em segurança)",
+    "Define o formato de saída esperado",
+    "Define restrições ou escopo apropriados"
   ]}
   hints={[
-    "Think about what expertise a code reviewer should have",
-    "Be specific about what security issues to look for",
-    "Consider asking for a structured response format"
+    "Pense em qual expertise um revisor de código deve ter",
+    "Seja específico sobre quais problemas de segurança procurar",
+    "Considere pedir um formato de resposta estruturado"
   ]}
-  exampleSolution={`You are a senior security engineer with expertise in web application security and OWASP Top 10 vulnerabilities.
+  exampleSolution={`Você é um engenheiro de segurança sênior com expertise em segurança de aplicações web e vulnerabilidades OWASP Top 10.
 
-Task: Review the following code for security vulnerabilities.
+Tarefa: Revise o seguinte código em busca de vulnerabilidades de segurança.
 
-Focus on:
-- SQL injection risks
-- XSS vulnerabilities  
-- Authentication/authorization issues
-- Input validation gaps
+Foque em:
+- Riscos de SQL injection
+- Vulnerabilidades XSS
+- Problemas de autenticação/autorização
+- Gaps de validação de entrada
 
-Output format:
-For each issue found:
-1. Line number(s)
-2. Vulnerability type
-3. Risk level (High/Medium/Low)
-4. Recommended fix
+Formato de saída:
+Para cada problema encontrado:
+1. Número(s) da linha
+2. Tipo de vulnerabilidade
+3. Nível de risco (Alto/Médio/Baixo)
+4. Correção recomendada
 
-[CODE TO REVIEW]`}
+[CÓDIGO PARA REVISAR]`}
   difficulty="intermediate"
 />
 
-In the next chapter, we'll explore the core principles that guide prompt construction decisions.
+No próximo capítulo, exploraremos os princípios fundamentais que guiam as decisões de construção de prompts.

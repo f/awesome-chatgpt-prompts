@@ -1,393 +1,393 @@
-AI excels at writing tasks when properly prompted. This chapter covers techniques for various content creation scenarios.
+AI blinkt uit in schrijftaken wanneer het goed wordt aangestuurd. Dit hoofdstuk behandelt technieken voor verschillende contentcreatie-scenario's.
 
-<Callout type="info" title="AI as Writing Partner">
-AI works best as a collaborative writing tool—use it to generate drafts, then refine with your expertise and voice.
+<Callout type="info" title="AI als Schrijfpartner">
+AI werkt het beste als een collaboratief schrijfhulpmiddel—gebruik het om concepten te genereren en verfijn deze vervolgens met je eigen expertise en stem.
 </Callout>
 
-## Blog Posts and Articles
+## Blogposts en Artikelen
 
-### Do's and Don'ts: Writing Prompts
+### Do's en Don'ts: Schrijfprompts
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Write a blog post about productivity." }}
-  after={{ label: "✓ Specific brief", content: "Write an 800-word blog post about productivity for remote workers.\n\nAudience: Tech professionals working from home\nTone: Conversational but actionable\nInclude: 3 specific techniques with examples\nKeyword: 'remote productivity tips'" }}
+  before={{ label: "❌ Vaag verzoek", content: "Schrijf een blogpost over productiviteit." }}
+  after={{ label: "✓ Specifieke briefing", content: "Schrijf een blogpost van 800 woorden over productiviteit voor thuiswerkers.\n\nDoelgroep: Tech-professionals die vanuit huis werken\nToon: Conversationeel maar actionabel\nIncludeer: 3 specifieke technieken met voorbeelden\nZoekwoord: 'thuiswerk productiviteitstips'" }}
 />
 
-### Blog Post Framework
+### Blogpost Framework
 
 <TryIt 
-  title="Blog Post Generator"
-  description="Generate a structured blog post with SEO optimization."
-  prompt={`Write a blog post about \${topic}.
+  title="Blogpost Generator"
+  description="Genereer een gestructureerde blogpost met SEO-optimalisatie."
+  prompt={`Schrijf een blogpost over \${topic}.
 
-Specifications:
-- Length: \${wordCount:800-1000} words
-- Audience: \${audience}
-- Tone: \${tone:conversational}
-- Purpose: \${purpose:inform and provide actionable advice}
+Specificaties:
+- Lengte: \${wordCount:800-1000} woorden
+- Doelgroep: \${audience}
+- Toon: \${tone:conversationeel}
+- Doel: \${purpose:informeren en actionabel advies geven}
 
-Structure:
-1. Hook opening (grab attention in first 2 sentences)
-2. Introduction (state the problem/opportunity)
-3. Main content (3-4 key points with examples)
-4. Practical takeaways (actionable advice)
-5. Conclusion with call-to-action
+Structuur:
+1. Pakkende opening (grijp de aandacht in de eerste 2 zinnen)
+2. Inleiding (beschrijf het probleem/de kans)
+3. Hoofdinhoud (3-4 kernpunten met voorbeelden)
+4. Praktische conclusies (actionabel advies)
+5. Conclusie met call-to-action
 
-SEO Requirements:
-- Include keyword "\${keyword}" naturally 3-5 times
-- Use H2 headers for main sections
-- Include a meta description (155 chars)`}
+SEO-vereisten:
+- Verwerk zoekwoord "\${keyword}" op natuurlijke wijze 3-5 keer
+- Gebruik H2-koppen voor hoofdsecties
+- Voeg een meta-beschrijving toe (155 tekens)`}
 />
 
-### Article Types
+### Artikeltypen
 
-**How-To Article:**
-<TryIt compact prompt={`Write a step-by-step how-to article on \${topic}.
+**Handleiding:**
+<TryIt compact prompt={`Schrijf een stapsgewijze handleiding over \${topic}.
 
-Requirements:
-- Clear numbered steps
-- Each step: action + explanation + tip
-- Include "what you'll need" section
-- Add troubleshooting section for common issues
-- Estimated time to complete`} />
+Vereisten:
+- Duidelijk genummerde stappen
+- Elke stap: actie + uitleg + tip
+- Voeg een "wat je nodig hebt" sectie toe
+- Voeg een probleemoplossing-sectie toe voor veelvoorkomende problemen
+- Geschatte tijd om te voltooien`} />
 
-**Listicle:**
-<TryIt compact prompt={`Write a listicle: "\${count} \${topic} Tips/Tools/Ideas"
+**Lijstartikel:**
+<TryIt compact prompt={`Schrijf een lijstartikel: "\${count} \${topic} Tips/Tools/Ideeën"
 
-For each item:
-- Catchy subheading
-- 2-3 sentence explanation
-- Concrete example or use case
-- Pro tip or caveat
+Voor elk item:
+- Pakkende subkop
+- 2-3 zinnen uitleg
+- Concreet voorbeeld of toepassing
+- Pro-tip of kanttekening
 
-Order by: \${ordering:most important first}`} />
+Volgorde: \${ordering:belangrijkste eerst}`} />
 
-## Marketing Copy
+## Marketingteksten
 
-<Callout type="tip" title="Marketing Copy Principle">
-Focus on **benefits over features**. Instead of "Our software uses AI algorithms," write "Save 10 hours a week with automated reports." Show readers how their lives improve.
+<Callout type="tip" title="Marketingtekst Principe">
+Focus op **voordelen boven functies**. In plaats van "Onze software gebruikt AI-algoritmen," schrijf "Bespaar 10 uur per week met geautomatiseerde rapporten." Laat lezers zien hoe hun leven verbetert.
 </Callout>
 
-### Landing Page Copy
+### Landingspagina Tekst
 
-<TryIt compact prompt={`Write landing page copy for \${product}.
+<TryIt compact prompt={`Schrijf landingspagina-tekst voor \${product}.
 
-Sections needed:
-1. Hero: Headline (10 words max) + subheadline + CTA button text
-2. Problem: Pain points the audience faces (3 bullet points)
-3. Solution: How your product solves these (with benefits, not features)
-4. Social proof: Placeholder for testimonials
-5. Features: 3 key features with benefit-focused descriptions
-6. CTA: Final call-to-action with urgency
+Benodigde secties:
+1. Hero: Kop (max 10 woorden) + subkop + CTA-knoptekst
+2. Probleem: Pijnpunten waar de doelgroep mee kampt (3 bulletpoints)
+3. Oplossing: Hoe jouw product dit oplost (met voordelen, niet functies)
+4. Sociaal bewijs: Placeholder voor testimonials
+5. Functies: 3 kernfuncties met voordeelgerichte beschrijvingen
+6. CTA: Laatste call-to-action met urgentie
 
-Voice: \${brandVoice}
-Target audience: \${targetAudience}
-Key differentiator: \${differentiator}`} />
+Stem: \${brandVoice}
+Doelgroep: \${targetAudience}
+Belangrijkste onderscheidend kenmerk: \${differentiator}`} />
 
-### Email Sequences
+### E-mailreeksen
 
-<TryIt compact prompt={`Write a 5-email welcome sequence for new subscribers.
+<TryIt compact prompt={`Schrijf een welkomstreeks van 5 e-mails voor nieuwe abonnees.
 
-Brand: \${brand}
-Goal: \${goal:convert to paid}
+Merk: \${brand}
+Doel: \${goal:converteren naar betalend}
 
-For each email provide:
-- Subject line (+ 1 alternative)
-- Preview text
-- Body (150-200 words)
+Lever voor elke e-mail:
+- Onderwerpregel (+ 1 alternatief)
+- Preview-tekst
+- Body (150-200 woorden)
 - CTA
 
-Sequence flow:
-Email 1 (Day 0): Welcome + immediate value
-Email 2 (Day 2): Share story/mission
-Email 3 (Day 4): Educational content
-Email 4 (Day 7): Social proof + soft pitch
-Email 5 (Day 10): Direct offer with urgency`} />
+Reeksverloop:
+E-mail 1 (Dag 0): Welkom + directe waarde
+E-mail 2 (Dag 2): Deel verhaal/missie
+E-mail 3 (Dag 4): Educatieve content
+E-mail 4 (Dag 7): Sociaal bewijs + zachte pitch
+E-mail 5 (Dag 10): Directe aanbieding met urgentie`} />
 
 ### Social Media Posts
 
-<TryIt compact prompt={`Create social media content for \${topic}.
+<TryIt compact prompt={`Creëer social media content voor \${topic}.
 
-Platform-specific versions:
+Platformspecifieke versies:
 
-Twitter/X (280 chars):
-- Hook + key point + hashtags
-- Thread option (5 tweets) for complex topics
+Twitter/X (280 tekens):
+- Hook + kernpunt + hashtags
+- Thread-optie (5 tweets) voor complexe onderwerpen
 
-LinkedIn (1300 chars):
-- Professional angle
-- Story structure
-- End with question for engagement
+LinkedIn (1300 tekens):
+- Professionele invalshoek
+- Verhaalstructuur
+- Eindig met vraag voor engagement
 
 Instagram caption:
-- Opening hook (shows before "more")
-- Value-packed body
+- Openingshook (zichtbaar vóór "meer")
+- Waardevolle body
 - CTA
 - Hashtags (20-30 relevant)`} />
 
-## Technical Writing
+## Technisch Schrijven
 
-<Callout type="info" title="Technical Writing Principle">
-**Clarity over cleverness.** Use simple words, short sentences, and active voice. Every sentence should have one job. If readers have to re-read something, simplify it.
+<Callout type="info" title="Technisch Schrijven Principe">
+**Duidelijkheid boven slimheid.** Gebruik eenvoudige woorden, korte zinnen en actieve stem. Elke zin moet één taak hebben. Als lezers iets opnieuw moeten lezen, vereenvoudig het.
 </Callout>
 
-### Documentation
+### Documentatie
 
-<TryIt compact prompt={`Write documentation for \${feature}.
+<TryIt compact prompt={`Schrijf documentatie voor \${feature}.
 
-Structure:
-## Overview
-Brief description of what it does and why you'd use it.
+Structuur:
+## Overzicht
+Korte beschrijving van wat het doet en waarom je het zou gebruiken.
 
-## Quick Start
-Minimal example to get started in under 2 minutes.
+## Snelstart
+Minimaal voorbeeld om in minder dan 2 minuten te beginnen.
 
-## Installation/Setup
-Step-by-step setup instructions.
+## Installatie/Setup
+Stapsgewijze installatie-instructies.
 
-## Usage
-Detailed usage with examples.
+## Gebruik
+Gedetailleerd gebruik met voorbeelden.
 
-## API Reference
-Parameters, return values, types.
+## API Referentie
+Parameters, returnwaarden, types.
 
-## Examples
-3-4 real-world usage examples.
+## Voorbeelden
+3-4 praktijkvoorbeelden.
 
-## Troubleshooting
-Common issues and solutions.
+## Probleemoplossing
+Veelvoorkomende problemen en oplossingen.
 
-Style: 
-- Second person ("you")
-- Present tense
-- Active voice
-- Code examples for every concept`} />
+Stijl: 
+- Tweede persoon ("je")
+- Tegenwoordige tijd
+- Actieve stem
+- Codevoorbeelden voor elk concept`} />
 
-### README Files
+### README Bestanden
 
 <TryIt 
   title="README Generator"
-  description="Generate a professional README.md for your project."
-  prompt={`Write a README.md for \${project}.
+  description="Genereer een professionele README.md voor je project."
+  prompt={`Schrijf een README.md voor \${project}.
 
-Include these sections:
-# Project Name - One-line description
+Neem deze secties op:
+# Projectnaam - Beschrijving in één regel
 
-## Features
-- Bullet list of key features
+## Functies
+- Bulletlijst van kernfuncties
 
-## Installation
-(bash installation commands)
+## Installatie
+(bash installatie-commando's)
 
-## Quick Start
-(minimal working example)
+## Snelstart
+(minimaal werkend voorbeeld)
 
-## Configuration
-Key configuration options
+## Configuratie
+Belangrijke configuratie-opties
 
-## Documentation
-Link to full docs
+## Documentatie
+Link naar volledige docs
 
-## Contributing
-Brief contribution guidelines
+## Bijdragen
+Korte richtlijnen voor bijdragen
 
-## License
-License type`}
+## Licentie
+Licentietype`}
 />
 
-## Creative Writing
+## Creatief Schrijven
 
-### Do's and Don'ts: Creative Prompts
+### Do's en Don'ts: Creatieve Prompts
 
 <Compare 
-  before={{ label: "❌ Too open-ended", content: "Write me a story." }}
-  after={{ label: "✓ Rich with constraints", content: "Write a 1000-word mystery story set in a small coastal town. The protagonist is a retired detective. Include a twist ending where the victim isn't who we thought. Tone: noir with dark humor." }}
+  before={{ label: "❌ Te open", content: "Schrijf me een verhaal." }}
+  after={{ label: "✓ Rijk aan beperkingen", content: "Schrijf een mysterieverhaal van 1000 woorden dat zich afspeelt in een klein kuststadje. De protagonist is een gepensioneerde detective. Voeg een plotwending toe waarbij het slachtoffer niet is wie we dachten. Toon: noir met donkere humor." }}
 />
 
-### Story Elements
+### Verhaalelementen
 
-<TryIt compact prompt={`Write a \${genre} short story.
+<TryIt compact prompt={`Schrijf een \${genre} kort verhaal.
 
-Elements to include:
+Elementen om op te nemen:
 - Protagonist: \${protagonist}
 - Setting: \${setting}
-- Central conflict: \${conflict}
-- Theme: \${theme}
-- Word count: \${wordCount:1000}
+- Centraal conflict: \${conflict}
+- Thema: \${theme}
+- Woordenaantal: \${wordCount:1000}
 
-Style preferences:
-- POV: \${pov:third person}
-- Tense: \${tense:past}
-- Tone: \${tone:suspenseful}
+Stijlvoorkeuren:
+- POV: \${pov:derde persoon}
+- Tijd: \${tense:verleden}
+- Toon: \${tone:spannend}
 
-Start with: \${openingHook}`} />
+Begin met: \${openingHook}`} />
 
-### Character Development
+### Karakterontwikkeling
 
-<TryIt compact prompt={`Create a detailed character profile for \${characterName}.
+<TryIt compact prompt={`Creëer een gedetailleerd karakterprofiel voor \${characterName}.
 
-Basic Information:
-- Name, age, occupation
-- Physical description
-- Background/history
+Basisinformatie:
+- Naam, leeftijd, beroep
+- Fysieke beschrijving
+- Achtergrond/geschiedenis
 
-Personality:
-- 3 core traits
-- Strengths and flaws
-- Fears and desires
-- How they speak (verbal tics, vocabulary level)
+Persoonlijkheid:
+- 3 kernkenmerken
+- Sterktes en zwaktes
+- Angsten en verlangens
+- Hoe ze spreken (verbale eigenaardigheden, woordenschatniveau)
 
-Relationships:
-- Key relationships
-- How they treat strangers vs friends
+Relaties:
+- Belangrijke relaties
+- Hoe ze vreemden vs vrienden behandelen
 
-Character arc:
-- Starting state
-- What they need to learn
-- Potential transformation`} />
+Karakterontwikkeling:
+- Startsituatie
+- Wat ze moeten leren
+- Potentiële transformatie`} />
 
-## Editing and Rewriting
+## Bewerken en Herschrijven
 
-### Comprehensive Edit
+### Uitgebreide Bewerking
 
-<TryIt compact prompt={`Edit this text for \${purpose}.
+<TryIt compact prompt={`Bewerk deze tekst voor \${purpose}.
 
-Check and improve:
-□ Grammar and spelling
-□ Sentence structure variety
-□ Word choice (eliminate weak words)
-□ Flow and transitions
-□ Clarity and conciseness
-□ Tone consistency
+Controleer en verbeter:
+□ Grammatica en spelling
+□ Zinsbouw variatie
+□ Woordkeuze (elimineer zwakke woorden)
+□ Vloeiendheid en overgangen
+□ Duidelijkheid en beknoptheid
+□ Consistentie in toon
 
-Provide:
-1. Edited version
-2. Summary of major changes
-3. Suggestions for further improvement
+Lever:
+1. Bewerkte versie
+2. Samenvatting van belangrijke wijzigingen
+3. Suggesties voor verdere verbetering
 
-Original text:
+Originele tekst:
 \${text}`} />
 
-### Style Transformation
+### Stijltransformatie
 
 <Compare 
-  before={{ label: "Technical/Formal", content: "The implementation of the new algorithm resulted in a 47% reduction in computational overhead, thereby significantly enhancing system throughput and reducing latency metrics across all measured endpoints." }}
-  after={{ label: "Casual/Accessible", content: "We made the system way faster! The new approach cut processing time nearly in half, which means everything loads quicker for you." }}
+  before={{ label: "Technisch/Formeel", content: "De implementatie van het nieuwe algoritme resulteerde in een vermindering van 47% in computationele overhead, waardoor de systeemcapaciteit aanzienlijk werd verbeterd en latentiegegevens over alle gemeten eindpunten werden verminderd." }}
+  after={{ label: "Informeel/Toegankelijk", content: "We hebben het systeem veel sneller gemaakt! De nieuwe aanpak heeft de verwerkingstijd bijna gehalveerd, wat betekent dat alles sneller laadt voor jou." }}
 />
 
-<TryIt compact prompt={`Rewrite this text in a different style.
+<TryIt compact prompt={`Herschrijf deze tekst in een andere stijl.
 
-Original style: \${originalStyle}
-Target style: \${targetStyle}
+Originele stijl: \${originalStyle}
+Doelstijl: \${targetStyle}
 
-Preserve:
-- Core meaning and information
-- Key terminology
-- Proper nouns
+Behoud:
+- Kernbetekenis en informatie
+- Belangrijke terminologie
+- Eigennamen
 
-Change:
-- Sentence length and structure
-- Vocabulary level
-- Tone and formality
-- Rhetorical devices
+Wijzig:
+- Zinslengte en structuur
+- Woordenschatniveau
+- Toon en formaliteit
+- Retorische middelen
 
-Original:
+Origineel:
 \${text}`} />
 
-### Simplification
+### Vereenvoudiging
 
-<TryIt compact prompt={`Simplify this text for \${audience}.
+<TryIt compact prompt={`Vereenvoudig deze tekst voor \${audience}.
 
-Target reading level: \${readingLevel:8th grade}
+Doelleesniveau: \${readingLevel:groep 8}
 
-Guidelines:
-- Replace jargon with plain language
-- Shorten sentences (aim for 15-20 words average)
-- Use common words
-- Add explanations for necessary technical terms
-- Break complex ideas into steps
+Richtlijnen:
+- Vervang jargon door gewone taal
+- Verkort zinnen (streef naar gemiddeld 15-20 woorden)
+- Gebruik gangbare woorden
+- Voeg uitleg toe voor noodzakelijke technische termen
+- Splits complexe ideeën op in stappen
 
-Original:
+Origineel:
 \${text}`} />
 
-## Prompt Templates from prompts.chat
+## Promptsjablonen van prompts.chat
 
-Here are popular writing prompts from the prompts.chat community:
+Hier zijn populaire schrijfprompts van de prompts.chat community:
 
-### Act as a Copywriter
+### Fungeer als Copywriter
 
-<TryIt compact prompt={`I want you to act as a copywriter. I will provide you with a product or service, and you will create compelling copy that highlights its benefits and persuades potential customers to take action. Your copy should be creative, attention-grabbing, and tailored to the target audience.
+<TryIt compact prompt={`Ik wil dat je fungeert als copywriter. Ik geef je een product of dienst, en jij creëert overtuigende tekst die de voordelen benadrukt en potentiële klanten aanzet tot actie. Je tekst moet creatief, aandachttrekkend en afgestemd op de doelgroep zijn.
 
-Product/Service: \${product}`} />
+Product/Dienst: \${product}`} />
 
-### Act as a Technical Writer
+### Fungeer als Technisch Schrijver
 
-<TryIt compact prompt={`I want you to act as a technical writer. You will create clear, concise documentation for software products. I will provide you with technical information, and you will transform it into user-friendly documentation that is easy to understand for both technical and non-technical audiences.
+<TryIt compact prompt={`Ik wil dat je fungeert als technisch schrijver. Je maakt duidelijke, beknopte documentatie voor softwareproducten. Ik geef je technische informatie, en jij transformeert dit naar gebruiksvriendelijke documentatie die gemakkelijk te begrijpen is voor zowel technische als niet-technische doelgroepen.
 
-Topic: \${topic}`} />
+Onderwerp: \${topic}`} />
 
-### Act as a Storyteller
+### Fungeer als Verhalenverteller
 
-<TryIt compact prompt={`I want you to act as a storyteller. You will come up with entertaining stories that are engaging, imaginative, and captivating for the audience. It can be fairy tales, educational stories, or any other type of story that has the potential to capture people's attention and imagination.
+<TryIt compact prompt={`Ik wil dat je fungeert als verhalenverteller. Je bedenkt vermakelijke verhalen die boeiend, fantasierijk en meeslepend zijn voor het publiek. Het kunnen sprookjes zijn, educatieve verhalen, of elk ander type verhaal dat het potentieel heeft om de aandacht en verbeelding van mensen te vangen.
 
-Story theme: \${theme}`} />
+Verhaalthema: \${theme}`} />
 
-## Writing Workflow Tips
+## Schrijfworkflow Tips
 
-### 1. Outline First
+### 1. Eerst een Outline
 
-<TryIt compact prompt={`Before writing, create an outline:
+<TryIt compact prompt={`Voordat je gaat schrijven, maak een outline:
 
-Topic: \${topic}
+Onderwerp: \${topic}
 
-1. Generate 5 possible angles
-2. Choose the best angle and explain why
-3. Create detailed outline with:
-   - Main sections
-   - Key points per section
-   - Supporting evidence/examples needed
-4. Identify gaps that need research`} />
+1. Genereer 5 mogelijke invalshoeken
+2. Kies de beste invalshoek en leg uit waarom
+3. Maak een gedetailleerde outline met:
+   - Hoofdsecties
+   - Kernpunten per sectie
+   - Benodigde ondersteunende bewijzen/voorbeelden
+4. Identificeer hiaten die onderzoek nodig hebben`} />
 
-### 2. Draft Then Refine
+### 2. Concept en Dan Verfijnen
 
-<TryIt compact prompt={`Phase 1 - Draft:
-"Write a rough draft focusing on getting ideas down. Don't worry about perfection. Just capture the key points."
+<TryIt compact prompt={`Fase 1 - Concept:
+"Schrijf een ruwe versie gericht op het vastleggen van ideeën. Maak je geen zorgen over perfectie. Leg gewoon de kernpunten vast."
 
-Phase 2 - Refine:
-"Now improve this draft: tighten sentences, add transitions, strengthen the opening and closing."
+Fase 2 - Verfijnen:
+"Verbeter nu dit concept: verscherp zinnen, voeg overgangen toe, versterk de opening en afsluiting."
 
-Phase 3 - Polish:
-"Final pass: check grammar, vary sentence structure, ensure consistent tone."
+Fase 3 - Polijsten:
+"Laatste ronde: controleer grammatica, varieer zinsstructuur, zorg voor consistente toon."
 
-Topic: \${topic}`} />
+Onderwerp: \${topic}`} />
 
-### 3. Voice Matching
+### 3. Stem Afstemmen
 
-<TryIt compact prompt={`Analyze this writing sample for voice characteristics:
+<TryIt compact prompt={`Analyseer dit schrijfvoorbeeld op stemkenmerken:
 \${sample}
 
-Then write \${newContent} matching:
-- Sentence length patterns
-- Vocabulary level
-- Rhetorical devices used
-- Tone and personality`} />
+Schrijf vervolgens \${newContent} met overeenkomende:
+- Zinslengtepatronen
+- Woordenschatniveau
+- Gebruikte retorische middelen
+- Toon en persoonlijkheid`} />
 
-## Summary
+## Samenvatting
 
-<Callout type="tip" title="Key Techniques">
-Specify audience and purpose clearly, define structure and format, include style guidelines, provide examples when possible, and request specific deliverables.
+<Callout type="tip" title="Kerntechnieken">
+Specificeer doelgroep en doel duidelijk, definieer structuur en format, voeg stijlrichtlijnen toe, geef waar mogelijk voorbeelden, en vraag om specifieke deliverables.
 </Callout>
 
 <Quiz 
-  question="What's the most effective way to use AI for writing tasks?"
+  question="Wat is de meest effectieve manier om AI te gebruiken voor schrijftaken?"
   options={[
-    "Let AI write the final version without editing",
-    "Use AI to generate drafts, then refine with your expertise",
-    "Only use AI for grammar checking",
-    "Avoid AI for creative writing entirely"
+    "Laat AI de definitieve versie schrijven zonder te bewerken",
+    "Gebruik AI om concepten te genereren, verfijn dan met je eigen expertise",
+    "Gebruik AI alleen voor grammaticacontrole",
+    "Vermijd AI volledig voor creatief schrijven"
   ]}
   correctIndex={1}
-  explanation="AI works best as a collaborative writing tool. Use it to generate drafts and ideas, then apply your expertise, voice, and judgment to refine the output."
+  explanation="AI werkt het beste als een collaboratief schrijfhulpmiddel. Gebruik het om concepten en ideeën te genereren, pas dan je expertise, stem en oordeel toe om de output te verfijnen."
 />
 
-Writing with AI works best as collaboration—let AI generate drafts, then refine with your expertise and voice.
+Schrijven met AI werkt het beste als samenwerking—laat AI concepten genereren en verfijn deze vervolgens met je eigen expertise en stem.

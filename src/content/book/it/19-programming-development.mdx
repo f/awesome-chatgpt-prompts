@@ -1,413 +1,413 @@
-AI has transformed software development. This chapter covers prompting techniques for code generation, debugging, review, and development workflows.
+L'IA ha trasformato lo sviluppo software. Questo capitolo copre tecniche di prompting per generazione codice, debugging, review e workflow di sviluppo.
 
-<Callout type="info" title="AI as Coding Partner">
-AI excels at code generation, debugging, and documentation—but always review generated code for security, correctness, and maintainability. Never deploy AI code without testing.
+<Callout type="info" title="L'IA come Partner di Coding">
+L'IA eccelle nella generazione codice, debugging e documentazione—ma rivedi sempre il codice generato per sicurezza, correttezza e manutenibilità. Mai deployare codice IA senza testing.
 </Callout>
 
-## Code Generation
+## Generazione Codice
 
-### Do's and Don'ts: Code Prompts
+### Do's e Don'ts: Prompt di Codice
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Write a function to validate emails." }}
-  after={{ label: "✓ Complete specification", content: "Write a Python function that validates email addresses.\n\nInput: string (potential email)\nOutput: tuple[bool, str | None] - (is_valid, error_message)\nHandle: empty string, None, unicode chars\nUse regex, include type hints and docstring." }}
+  before={{ label: "❌ Richiesta vaga", content: "Scrivi una funzione per validare email." }}
+  after={{ label: "✓ Specifica completa", content: "Scrivi una funzione Python che valida indirizzi email.\n\nInput: string (potenziale email)\nOutput: tuple[bool, str | None] - (is_valid, error_message)\nGestisci: stringa vuota, None, caratteri unicode\nUsa regex, includi type hint e docstring." }}
 />
 
-### Function Generation
+### Generazione Funzione
 
-<TryIt compact prompt={`Write a \${language:Python} function that \${description:validates email addresses}.
+<TryIt compact prompt={`Scrivi una funzione \${language:Python} che \${description:valida indirizzi email}.
 
-Requirements:
-- Input: \${inputTypes:string (potential email)}
-- Output: \${outputType:boolean and optional error message}
-- Handle edge cases: \${edgeCases:empty string, None, unicode characters}
+Requisiti:
+- Input: \${inputTypes:string (potenziale email)}
+- Output: \${outputType:boolean e messaggio errore opzionale}
+- Gestisci casi limite: \${edgeCases:stringa vuota, None, caratteri unicode}
 - Performance: \${performance:standard}
 
-Include:
-- Type hints/annotations
-- Docstring with examples
-- Input validation
-- Error handling`} />
+Includi:
+- Type hint/annotazioni
+- Docstring con esempi
+- Validazione input
+- Gestione errori`} />
 
-### Class/Module Generation
+### Generazione Classe/Modulo
 
-<TryIt compact prompt={`Create a \${language:Python} class for \${purpose:managing user sessions}.
+<TryIt compact prompt={`Crea una classe \${language:Python} per \${purpose:gestire sessioni utente}.
 
-Class design:
-- Name: \${className:SessionManager}
-- Responsibility: \${responsibility:handle user session lifecycle}
-- Properties: \${properties:session_id, user_id, created_at, expires_at}
-- Methods: \${methods:create(), validate(), refresh(), destroy()}
+Design classe:
+- Nome: \${className:SessionManager}
+- Responsabilità: \${responsibility:gestire ciclo di vita sessione utente}
+- Proprietà: \${properties:session_id, user_id, created_at, expires_at}
+- Metodi: \${methods:create(), validate(), refresh(), destroy()}
 
-Requirements:
-- Follow \${designPattern:Singleton} pattern
-- Include proper encapsulation
-- Add comprehensive docstrings
-- Include usage example
+Requisiti:
+- Segui pattern \${designPattern:Singleton}
+- Includi incapsulamento appropriato
+- Aggiungi docstring complete
+- Includi esempio d'uso
 
 Testing:
-- Include unit test skeleton`} />
+- Includi scheletro unit test`} />
 
-### API Endpoint Generation
+### Generazione Endpoint API
 
-<TryIt compact prompt={`Create a REST API endpoint for \${resource:user profiles}.
+<TryIt compact prompt={`Crea un endpoint API REST per \${resource:profili utente}.
 
 Framework: \${framework:FastAPI}
-Method: \${method:GET}
+Metodo: \${method:GET}
 Path: \${path:/api/users/{id}}
 
 Request:
-- Headers: \${headers:Authorization Bearer token}
-- Body schema: \${bodySchema:N/A for GET}
-- Query params: \${queryParams:include_posts (boolean)}
+- Header: \${headers:Authorization Bearer token}
+- Schema body: \${bodySchema:N/A per GET}
+- Query param: \${queryParams:include_posts (boolean)}
 
 Response:
-- Success: \${successResponse:200 with user object}
-- Errors: \${errorResponses:401 Unauthorized, 404 Not Found}
+- Successo: \${successResponse:200 con oggetto utente}
+- Errori: \${errorResponses:401 Unauthorized, 404 Not Found}
 
-Include:
-- Input validation
-- Authentication check
-- Error handling
-- Rate limiting consideration`} />
+Includi:
+- Validazione input
+- Controllo autenticazione
+- Gestione errori
+- Considerazione rate limiting`} />
 
 ## Debugging
 
-<Callout type="tip" title="Debugging Principle">
-Always include the **expected behavior**, **actual behavior**, and **error message** (if any). The more context you provide, the faster AI can identify the root cause.
+<Callout type="tip" title="Principio di Debugging">
+Includi sempre il **comportamento atteso**, il **comportamento effettivo**, e il **messaggio di errore** (se presente). Più contesto fornisci, più velocemente l'IA può identificare la causa radice.
 </Callout>
 
-### Bug Analysis
+### Analisi Bug
 
-<TryIt compact prompt={`Debug this code. It should \${expectedBehavior:return the sum of all numbers} but instead \${actualBehavior:returns 0 for all inputs}.
+<TryIt compact prompt={`Debug questo codice. Dovrebbe \${expectedBehavior:restituire la somma di tutti i numeri} ma invece \${actualBehavior:restituisce 0 per tutti gli input}.
 
-Code:
-\${code:paste your code here}
+Codice:
+\${code:incolla il tuo codice qui}
 
-Error message (if any):
-\${error:none}
+Messaggio di errore (se presente):
+\${error:nessuno}
 
-Steps to debug:
-1. Identify what the code is trying to do
-2. Trace through execution with the given input
-3. Find where expected and actual behavior diverge
-4. Explain the root cause
-5. Provide the fix with explanation`} />
+Step per debug:
+1. Identifica cosa sta cercando di fare il codice
+2. Traccia l'esecuzione con l'input dato
+3. Trova dove comportamento atteso ed effettivo divergono
+4. Spiega la causa radice
+5. Fornisci la correzione con spiegazione`} />
 
-### Error Message Interpretation
+### Interpretazione Messaggio di Errore
 
-<TryIt compact prompt={`Explain this error and how to fix it:
+<TryIt compact prompt={`Spiega questo errore e come correggerlo:
 
-Error:
-\${errorMessage:paste error message or stack trace here}
+Errore:
+\${errorMessage:incolla messaggio errore o stack trace qui}
 
-Context:
-- Language/Framework: \${framework:Python 3.11}
-- What I was trying to do: \${action:reading a JSON file}
-- Relevant code: \${codeSnippet:paste relevant code}
+Contesto:
+- Linguaggio/Framework: \${framework:Python 3.11}
+- Cosa stavo cercando di fare: \${action:leggere un file JSON}
+- Codice rilevante: \${codeSnippet:incolla codice rilevante}
 
-Provide:
-1. Plain English explanation of the error
-2. Root cause
-3. Step-by-step fix
-4. How to prevent this in the future`} />
+Fornisci:
+1. Spiegazione in italiano semplice dell'errore
+2. Causa radice
+3. Correzione passo-passo
+4. Come prevenire questo in futuro`} />
 
-### Performance Debugging
+### Debugging Performance
 
-<TryIt compact prompt={`This code is slow. Analyze and optimize:
+<TryIt compact prompt={`Questo codice è lento. Analizza e ottimizza:
 
-Code:
-\${code:paste your code here}
+Codice:
+\${code:incolla il tuo codice qui}
 
-Current performance: \${currentPerformance:takes 30 seconds for 1000 items}
-Target performance: \${targetPerformance:under 5 seconds}
-Constraints: \${constraints:memory limit 512MB}
+Performance attuale: \${currentPerformance:impiega 30 secondi per 1000 elementi}
+Performance target: \${targetPerformance:sotto 5 secondi}
+Vincoli: \${constraints:limite memoria 512MB}
 
-Provide:
-1. Identify bottlenecks
-2. Explain why each is slow
-3. Suggest optimizations (ranked by impact)
-4. Show optimized code
-5. Estimate improvement`} />
+Fornisci:
+1. Identifica colli di bottiglia
+2. Spiega perché ognuno è lento
+3. Suggerisci ottimizzazioni (ordinate per impatto)
+4. Mostra codice ottimizzato
+5. Stima miglioramento`} />
 
 ## Code Review
 
-### Do's and Don'ts: Code Review Prompts
+### Do's e Don'ts: Prompt Code Review
 
 <Compare 
-  before={{ label: "❌ Generic request", content: "Review this code." }}
-  after={{ label: "✓ Specific criteria", content: "Review this code for a pull request.\n\nCheck for:\n1. Correctness: bugs, logic errors, edge cases\n2. Security: injection risks, auth issues\n3. Performance: N+1 queries, memory leaks\n4. Maintainability: naming, complexity\n\nFormat: 🔴 Critical / 🟡 Important / 🟢 Suggestion" }}
+  before={{ label: "❌ Richiesta generica", content: "Rivedi questo codice." }}
+  after={{ label: "✓ Criteri specifici", content: "Rivedi questo codice per una pull request.\n\nControlla per:\n1. Correttezza: bug, errori logici, casi limite\n2. Sicurezza: rischi injection, problemi auth\n3. Performance: query N+1, memory leak\n4. Manutenibilità: naming, complessità\n\nFormato: 🔴 Critico / 🟡 Importante / 🟢 Suggerimento" }}
 />
 
-### Comprehensive Review
+### Review Completa
 
-<TryIt compact prompt={`Review this code for a pull request.
+<TryIt compact prompt={`Rivedi questo codice per una pull request.
 
-Code:
-\${code:paste your code here}
+Codice:
+\${code:incolla il tuo codice qui}
 
-Review for:
-1. **Correctness**: Bugs, logic errors, edge cases
-2. **Security**: Vulnerabilities, injection risks, auth issues
-3. **Performance**: Inefficiencies, N+1 queries, memory leaks
-4. **Maintainability**: Readability, naming, complexity
-5. **Best practices**: \${framework:Python/Django} conventions
+Rivedi per:
+1. **Correttezza**: Bug, errori logici, casi limite
+2. **Sicurezza**: Vulnerabilità, rischi injection, problemi auth
+3. **Performance**: Inefficienze, query N+1, memory leak
+4. **Manutenibilità**: Leggibilità, naming, complessità
+5. **Best practice**: convenzioni \${framework:Python/Django}
 
-Format your review as:
-🔴 Critical: must fix before merge
-🟡 Important: should fix
-🟢 Suggestion: nice to have
-💭 Question: clarification needed`} />
+Formatta la tua review come:
+🔴 Critico: deve essere corretto prima del merge
+🟡 Importante: dovrebbe essere corretto
+🟢 Suggerimento: nice to have
+💭 Domanda: serve chiarimento`} />
 
-### Security Review
+### Review Sicurezza
 
-<TryIt compact prompt={`Perform a security review of this code:
+<TryIt compact prompt={`Esegui una review di sicurezza di questo codice:
 
-Code:
-\${code:paste your code here}
+Codice:
+\${code:incolla il tuo codice qui}
 
-Check for:
-- [ ] Injection vulnerabilities (SQL, XSS, command)
-- [ ] Authentication/authorization flaws
-- [ ] Sensitive data exposure
-- [ ] Insecure dependencies
-- [ ] Cryptographic issues
-- [ ] Input validation gaps
-- [ ] Error handling that leaks info
+Controlla per:
+- [ ] Vulnerabilità injection (SQL, XSS, command)
+- [ ] Falle autenticazione/autorizzazione
+- [ ] Esposizione dati sensibili
+- [ ] Dipendenze insicure
+- [ ] Problemi crittografici
+- [ ] Lacune validazione input
+- [ ] Gestione errori che espone info
 
-For each finding:
-- Severity: Critical/High/Medium/Low
-- Location: Line number or function
-- Issue: Description
-- Exploit: How it could be attacked
-- Fix: Recommended remediation`} />
+Per ogni finding:
+- Severità: Critico/Alto/Medio/Basso
+- Posizione: Numero riga o funzione
+- Problema: Descrizione
+- Exploit: Come potrebbe essere attaccato
+- Fix: Rimedio raccomandato`} />
 
 ## Refactoring
 
-### Code Smell Detection
+### Rilevazione Code Smell
 
-<TryIt compact prompt={`Analyze this code for code smells and refactoring opportunities:
+<TryIt compact prompt={`Analizza questo codice per code smell e opportunità di refactoring:
 
-Code:
-\${code:paste your code here}
+Codice:
+\${code:incolla il tuo codice qui}
 
-Identify:
-1. Long methods (suggest extraction)
-2. Duplicate code (suggest DRY improvements)
-3. Complex conditionals (suggest simplification)
-4. Poor naming (suggest better names)
-5. Tight coupling (suggest decoupling)
+Identifica:
+1. Metodi lunghi (suggerisci estrazione)
+2. Codice duplicato (suggerisci miglioramenti DRY)
+3. Condizionali complessi (suggerisci semplificazione)
+4. Naming povero (suggerisci nomi migliori)
+5. Coupling stretto (suggerisci decoupling)
 
-For each issue, show before/after code.`} />
+Per ogni problema, mostra codice prima/dopo.`} />
 
-### Design Pattern Application
+### Applicazione Design Pattern
 
-<TryIt compact prompt={`Refactor this code using the \${patternName:Factory} pattern.
+<TryIt compact prompt={`Refactora questo codice usando il pattern \${patternName:Factory}.
 
-Current code:
-\${code:paste your code here}
+Codice attuale:
+\${code:incolla il tuo codice qui}
 
-Goals:
-- \${whyPattern:decouple object creation from usage}
-- \${benefits:easier testing and extensibility}
+Obiettivi:
+- \${whyPattern:disaccoppiare creazione oggetti dall'uso}
+- \${benefits:testing ed estensibilità più facili}
 
-Provide:
-1. Explanation of the pattern
-2. How it applies here
-3. Refactored code
-4. Trade-offs to consider`} />
+Fornisci:
+1. Spiegazione del pattern
+2. Come si applica qui
+3. Codice refactorato
+4. Trade-off da considerare`} />
 
 ## Testing
 
-### Unit Test Generation
+### Generazione Unit Test
 
-<TryIt compact prompt={`Write unit tests for this function:
+<TryIt compact prompt={`Scrivi unit test per questa funzione:
 
-Function:
-\${code:paste your function here}
+Funzione:
+\${code:incolla la tua funzione qui}
 
-Testing framework: \${testFramework:pytest}
+Framework di testing: \${testFramework:pytest}
 
-Cover:
-- Happy path (normal inputs)
-- Edge cases (empty, null, boundary values)
-- Error cases (invalid inputs)
-- \${specificScenarios:concurrent access, large inputs}
+Copri:
+- Happy path (input normali)
+- Casi limite (vuoti, null, valori boundary)
+- Casi di errore (input invalidi)
+- \${specificScenarios:accesso concorrente, input grandi}
 
-Format: Arrange-Act-Assert pattern
-Include: Descriptive test names`} />
+Formato: pattern Arrange-Act-Assert
+Includi: Nomi test descrittivi`} />
 
-### Test Case Generation
+### Generazione Casi di Test
 
-<TryIt compact prompt={`Generate test cases for this feature:
+<TryIt compact prompt={`Genera casi di test per questa feature:
 
-Feature: \${featureDescription:user registration with email verification}
-Acceptance criteria: \${acceptanceCriteria:user can sign up, receives email, can verify account}
+Feature: \${featureDescription:registrazione utente con verifica email}
+Criteri di accettazione: \${acceptanceCriteria:utente può registrarsi, riceve email, può verificare account}
 
-Provide test cases in this format:
+Fornisci casi di test in questo formato:
 
-| ID | Scenario | Given | When | Then | Priority |
+| ID | Scenario | Given | When | Then | Priorità |
 |----|----------|-------|------|------|----------|
-| TC01 | ... | ... | ... | ... | High |`} />
+| TC01 | ... | ... | ... | ... | Alta |`} />
 
-## Architecture & Design
+## Architettura & Design
 
-### System Design
+### Design di Sistema
 
-<TryIt compact prompt={`Design a system for \${requirement:real-time chat application}.
+<TryIt compact prompt={`Progetta un sistema per \${requirement:applicazione chat real-time}.
 
-Constraints:
-- Expected load: \${expectedLoad:10,000 concurrent users}
-- Latency requirements: \${latency:< 100ms message delivery}
-- Availability: \${availability:99.9%}
-- Budget: \${budget:moderate, prefer open source}
+Vincoli:
+- Carico atteso: \${expectedLoad:10.000 utenti concorrenti}
+- Requisiti latenza: \${latency:< 100ms consegna messaggio}
+- Disponibilità: \${availability:99.9%}
+- Budget: \${budget:moderato, preferisci open source}
 
-Provide:
-1. High-level architecture diagram (ASCII/text)
-2. Component descriptions
-3. Data flow
-4. Technology choices with rationale
-5. Scaling strategy
-6. Trade-offs and alternatives considered`} />
+Fornisci:
+1. Diagramma architettura alto livello (ASCII/testo)
+2. Descrizioni componenti
+3. Flusso dati
+4. Scelte tecnologiche con motivazione
+5. Strategia di scaling
+6. Trade-off e alternative considerate`} />
 
-### Database Schema Design
+### Design Schema Database
 
-<TryIt compact prompt={`Design a database schema for \${application:e-commerce platform}.
+<TryIt compact prompt={`Progetta uno schema database per \${application:piattaforma e-commerce}.
 
-Requirements:
-- \${feature1:User accounts with profiles and addresses}
-- \${feature2:Product catalog with categories and variants}
-- \${feature3:Orders with line items and payment tracking}
+Requisiti:
+- \${feature1:Account utente con profili e indirizzi}
+- \${feature2:Catalogo prodotti con categorie e varianti}
+- \${feature3:Ordini con righe e tracking pagamenti}
 
-Provide:
-1. Entity-relationship description
-2. Table definitions with columns and types
-3. Indexes for common queries
-4. Foreign key relationships
-5. Sample queries for key operations`} />
+Fornisci:
+1. Descrizione entity-relationship
+2. Definizioni tabelle con colonne e tipi
+3. Indici per query comuni
+4. Relazioni foreign key
+5. Query di esempio per operazioni chiave`} />
 
-## Documentation Generation
+## Generazione Documentazione
 
-### API Documentation
+### Documentazione API
 
-<TryIt compact prompt={`Generate API documentation from this code:
+<TryIt compact prompt={`Genera documentazione API da questo codice:
 
-Code:
-\${code:paste your endpoint code here}
+Codice:
+\${code:incolla il tuo codice endpoint qui}
 
-Format: \${format:OpenAPI/Swagger YAML}
+Formato: \${format:OpenAPI/Swagger YAML}
 
-Include:
-- Endpoint description
-- Request/response schemas
-- Example requests/responses
-- Error codes
-- Authentication requirements`} />
+Includi:
+- Descrizione endpoint
+- Schemi request/response
+- Esempi request/response
+- Codici errore
+- Requisiti autenticazione`} />
 
-### Inline Documentation
+### Documentazione Inline
 
-<TryIt compact prompt={`Add comprehensive documentation to this code:
+<TryIt compact prompt={`Aggiungi documentazione completa a questo codice:
 
-Code:
-\${code:paste your code here}
+Codice:
+\${code:incolla il tuo codice qui}
 
-Add:
-- File/module docstring (purpose, usage)
-- Function/method docstrings (params, returns, raises, examples)
-- Inline comments for complex logic only
-- Type hints if missing
+Aggiungi:
+- Docstring file/modulo (scopo, utilizzo)
+- Docstring funzione/metodo (parametri, return, raises, esempi)
+- Commenti inline solo per logica complessa
+- Type hint se mancanti
 
-Style: \${docStyle:Google}`} />
+Stile: \${docStyle:Google}`} />
 
-## Prompt Templates from prompts.chat
+## Template Prompt da prompts.chat
 
-### Act as a Senior Developer
-
-```
-I want you to act as a senior software developer. I will provide 
-code and ask questions about it. You will review the code, suggest 
-improvements, explain concepts, and help debug issues. Your 
-responses should be educational and help me become a better 
-developer.
-```
-
-### Act as a Code Reviewer
+### Agisci come Senior Developer
 
 ```
-I want you to act as a code reviewer. I will provide pull requests 
-with code changes, and you will review them thoroughly. Check for 
-bugs, security issues, performance problems, and adherence to best 
-practices. Provide constructive feedback that helps the developer 
-improve.
+Voglio che tu agisca come senior software developer. Fornirò 
+codice e farò domande su di esso. Revisionerai il codice, suggerirai 
+miglioramenti, spiegherai concetti e aiuterai a debuggare problemi. 
+Le tue risposte dovrebbero essere educative e aiutarmi a diventare 
+un developer migliore.
 ```
 
-### Act as a Software Architect
+### Agisci come Code Reviewer
 
 ```
-I want you to act as a software architect. I will describe system 
-requirements and constraints, and you will design scalable, 
-maintainable architectures. Explain your design decisions, 
-trade-offs, and provide diagrams where helpful.
+Voglio che tu agisca come code reviewer. Fornirò pull request 
+con modifiche al codice, e tu le revisionerai a fondo. Controlla per 
+bug, problemi di sicurezza, problemi di performance e aderenza alle 
+best practice. Fornisci feedback costruttivo che aiuti il developer 
+a migliorare.
 ```
 
-## Development Workflow Integration
+### Agisci come Software Architect
 
-### Commit Message Generation
+```
+Voglio che tu agisca come software architect. Descriverò requisiti 
+di sistema e vincoli, e tu progetterai architetture scalabili e 
+manutenibili. Spiega le tue decisioni di design, i trade-off, 
+e fornisci diagrammi dove utile.
+```
 
-<TryIt compact prompt={`Generate a commit message for these changes:
+## Integrazione Workflow di Sviluppo
+
+### Generazione Messaggio Commit
+
+<TryIt compact prompt={`Genera un messaggio di commit per queste modifiche:
 
 Diff:
-\${diff:paste git diff here}
+\${diff:incolla git diff qui}
 
-Format: Conventional Commits
-Type: \${commitType:feat}
+Formato: Conventional Commits
+Tipo: \${commitType:feat}
 
-Provide:
-- Subject line (50 chars max, imperative mood)
-- Body (what and why, wrapped at 72 chars)
-- Footer (references issues if applicable)`} />
+Fornisci:
+- Riga oggetto (max 50 caratteri, modo imperativo)
+- Body (cosa e perché, wrappato a 72 caratteri)
+- Footer (riferimenti issue se applicabile)`} />
 
-### PR Description Generation
+### Generazione Descrizione PR
 
-<TryIt compact prompt={`Generate a pull request description:
+<TryIt compact prompt={`Genera una descrizione pull request:
 
-Changes:
-\${changes:list your changes or paste diff summary}
+Modifiche:
+\${changes:elenca le tue modifiche o incolla riepilogo diff}
 
 Template:
-## Summary
-Brief description of changes
+## Riepilogo
+Breve descrizione delle modifiche
 
-## Changes Made
-- Change 1
-- Change 2
+## Modifiche Effettuate
+- Modifica 1
+- Modifica 2
 
 ## Testing
-- [ ] Unit tests added/updated
-- [ ] Manual testing completed
+- [ ] Unit test aggiunti/aggiornati
+- [ ] Testing manuale completato
 
-## Screenshots (if UI changes)
+## Screenshot (se modifiche UI)
 placeholder
 
-## Related Issues
-Closes #\${issueNumber:123}`} />
+## Issue Correlate
+Chiude #\${issueNumber:123}`} />
 
-## Summary
+## Riepilogo
 
-<Callout type="tip" title="Key Techniques">
-Include full context (language, framework, constraints), specify requirements precisely, request specific output formats, ask for explanations alongside code, and include edge cases to handle.
+<Callout type="tip" title="Tecniche Chiave">
+Includi contesto completo (linguaggio, framework, vincoli), specifica requisiti precisamente, richiedi formati output specifici, chiedi spiegazioni insieme al codice, e includi casi limite da gestire.
 </Callout>
 
 <Quiz 
-  question="What's the most important element to include when asking AI to debug code?"
+  question="Qual è l'elemento più importante da includere quando chiedi all'IA di debuggare codice?"
   options={[
-    "The programming language only",
-    "Expected behavior, actual behavior, and error message",
-    "Just the code snippet",
-    "The file name"
+    "Solo il linguaggio di programmazione",
+    "Comportamento atteso, comportamento effettivo e messaggio di errore",
+    "Solo lo snippet di codice",
+    "Il nome del file"
   ]}
   correctIndex={1}
-  explanation="Debugging requires context: what should happen vs. what actually happens. Error messages and stack traces help AI pinpoint the exact issue quickly."
+  explanation="Il debugging richiede contesto: cosa dovrebbe succedere vs. cosa succede effettivamente. Messaggi di errore e stack trace aiutano l'IA a individuare il problema esatto velocemente."
 />
 
-AI is a powerful coding partner—use it for generation, review, debugging, and documentation while maintaining your architectural judgment.
+L'IA è un potente partner di coding—usala per generazione, review, debugging e documentazione mantenendo il tuo giudizio architetturale.

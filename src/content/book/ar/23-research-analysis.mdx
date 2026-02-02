@@ -1,323 +1,323 @@
-AI can accelerate research workflows from literature review to data analysis. This chapter covers prompting techniques for academic and professional research.
+يمكن للذكاء الاصطناعي تسريع سير العمل البحثي من مراجعة الأدبيات إلى تحليل البيانات. يغطي هذا الفصل تقنيات كتابة المطالبات للبحث الأكاديمي والمهني.
 
-<Callout type="info" title="AI in Research">
-AI can assist with synthesis, analysis, and writing—but cannot replace critical thinking, ethical judgment, or domain expertise. Always verify claims and cite original sources.
+<Callout type="info" title="الذكاء الاصطناعي في البحث">
+يمكن للذكاء الاصطناعي المساعدة في التوليف والتحليل والكتابة—لكنه لا يمكن أن يحل محل التفكير النقدي أو الحكم الأخلاقي أو الخبرة في المجال. تحقق دائماً من الادعاءات واستشهد بالمصادر الأصلية.
 </Callout>
 
-## Literature & Information Review
+## مراجعة الأدبيات والمعلومات
 
-### Do's and Don'ts: Research Prompts
+### ما يجب فعله وما يجب تجنبه: مطالبات البحث
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Summarize this paper for me." }}
-  after={{ label: "✓ Structured request", content: "Summarize this paper for my literature review on machine learning in healthcare.\n\nProvide:\n1. Main thesis (1-2 sentences)\n2. Methodology\n3. Key findings (bullets)\n4. Limitations\n5. Relevance to my research\n\nReading level: Graduate student" }}
+  before={{ label: "❌ طلب غامض", content: "لخص لي هذه الورقة البحثية." }}
+  after={{ label: "✓ طلب منظم", content: "لخص هذه الورقة البحثية لمراجعة الأدبيات الخاصة بي حول التعلم الآلي في الرعاية الصحية.\n\nقدم:\n1. الأطروحة الرئيسية (1-2 جملة)\n2. المنهجية\n3. النتائج الرئيسية (نقاط)\n4. القيود\n5. الصلة ببحثي\n\nمستوى القراءة: طالب دراسات عليا" }}
 />
 
-### Paper Summarization
+### تلخيص الأوراق البحثية
 
-<TryIt compact prompt={`Summarize this academic paper:
+<TryIt compact prompt={`لخص هذه الورقة الأكاديمية:
 
-[paper abstract or full text]
+[ملخص الورقة أو النص الكامل]
 
-Provide:
-1. **Main thesis** - Central argument (1-2 sentences)
-2. **Methodology** - How they approached it
-3. **Key findings** - Most important results (bullet points)
-4. **Contributions** - What's new/significant
-5. **Limitations** - Acknowledged or apparent weaknesses
-6. **Relevance to [my research topic]** - How it connects
+قدم:
+1. **الأطروحة الرئيسية** - الحجة المركزية (1-2 جملة)
+2. **المنهجية** - كيف تناولوا الموضوع
+3. **النتائج الرئيسية** - أهم النتائج (نقاط)
+4. **المساهمات** - ما هو الجديد/المهم
+5. **القيود** - نقاط الضعف المعترف بها أو الظاهرة
+6. **الصلة بـ [موضوع بحثي]** - كيف يرتبط
 
-Reading level: \${readingLevel:graduate}`} />
+مستوى القراءة: \${readingLevel:دراسات عليا}`} />
 
-### Literature Synthesis
+### توليف الأدبيات
 
-<TryIt compact prompt={`Synthesize these papers on \${topic:the effectiveness of remote work}:
+<TryIt compact prompt={`قم بتوليف هذه الأوراق حول \${topic:فعالية العمل عن بُعد}:
 
-Paper 1: \${paper1:Smith 2021 - found productivity increased 15%}
-Paper 2: \${paper2:Jones 2022 - noted collaboration challenges}
-Paper 3: \${paper3:Chen 2023 - hybrid model showed best outcomes}
+الورقة 1: \${paper1:Smith 2021 - وجد أن الإنتاجية زادت بنسبة 15%}
+الورقة 2: \${paper2:Jones 2022 - لاحظ تحديات في التعاون}
+الورقة 3: \${paper3:Chen 2023 - النموذج الهجين أظهر أفضل النتائج}
 
-Analyze:
-1. **Common themes** - What do they agree on?
-2. **Contradictions** - Where do they disagree?
-3. **Gaps** - What's not addressed?
-4. **Evolution** - How has thinking progressed?
-5. **Synthesis** - Integrated understanding
+حلل:
+1. **المواضيع المشتركة** - ما الذي يتفقون عليه؟
+2. **التناقضات** - أين يختلفون؟
+3. **الفجوات** - ما الذي لم يُتناول؟
+4. **التطور** - كيف تقدم التفكير؟
+5. **التوليف** - فهم متكامل
 
-Format as: Literature review paragraph suitable for \${outputType:thesis}`} />
+صيغ كـ: فقرة مراجعة أدبيات مناسبة لـ \${outputType:أطروحة}`} />
 
-### Research Question Development
+### تطوير أسئلة البحث
 
-<TryIt compact prompt={`Help me develop research questions for \${topic:AI adoption in healthcare}.
+<TryIt compact prompt={`ساعدني في تطوير أسئلة بحثية لـ \${topic:اعتماد الذكاء الاصطناعي في الرعاية الصحية}.
 
-Context:
-- Field: \${field:health informatics}
-- Current knowledge: \${currentKnowledge:AI tools exist but adoption is slow}
-- Gap identified: \${gap:limited understanding of physician resistance factors}
-- My interest: \${interest:organizational change management}
+السياق:
+- المجال: \${field:المعلوماتية الصحية}
+- المعرفة الحالية: \${currentKnowledge:أدوات الذكاء الاصطناعي موجودة لكن الاعتماد بطيء}
+- الفجوة المحددة: \${gap:فهم محدود لعوامل مقاومة الأطباء}
+- اهتمامي: \${interest:إدارة التغيير التنظيمي}
 
-Generate:
-1. **Primary RQ** - Main question to answer
-2. **Sub-questions** - Supporting inquiries (3-4)
-3. **Hypotheses** - Testable predictions (if applicable)
+أنشئ:
+1. **سؤال البحث الرئيسي** - السؤال الرئيسي للإجابة عليه
+2. **الأسئلة الفرعية** - استفسارات داعمة (3-4)
+3. **الفرضيات** - تنبؤات قابلة للاختبار (إن وجدت)
 
-Criteria: Questions should be:
-- Answerable with available methods
-- Significant to the field
-- Appropriately scoped`} />
+المعايير: يجب أن تكون الأسئلة:
+- قابلة للإجابة بالطرق المتاحة
+- ذات أهمية للمجال
+- محددة النطاق بشكل مناسب`} />
 
-## Data Analysis
+## تحليل البيانات
 
-<Callout type="warning" title="AI Cannot Analyze Your Actual Data">
-AI can guide methodology and help interpret results, but it cannot access or process your actual datasets. Never paste sensitive research data into prompts. Use AI for **guidance**, not computation.
+<Callout type="warning" title="الذكاء الاصطناعي لا يستطيع تحليل بياناتك الفعلية">
+يمكن للذكاء الاصطناعي توجيه المنهجية والمساعدة في تفسير النتائج، لكنه لا يستطيع الوصول إلى مجموعات بياناتك الفعلية أو معالجتها. لا تلصق أبداً بيانات بحثية حساسة في المطالبات. استخدم الذكاء الاصطناعي **للتوجيه**، وليس للحساب.
 </Callout>
 
-### Statistical Analysis Guidance
+### إرشادات التحليل الإحصائي
 
-<TryIt compact prompt={`Help me analyze this data:
+<TryIt compact prompt={`ساعدني في تحليل هذه البيانات:
 
-Data description:
-- Variables: \${variables:age (continuous), treatment group (categorical: A/B/C), outcome score (continuous)}
-- Sample size: \${sampleSize:n=150 (50 per group)}
-- Research question: \${researchQuestion:Does treatment type affect outcome scores?}
-- Data characteristics: \${characteristics:normally distributed, no missing values}
+وصف البيانات:
+- المتغيرات: \${variables:العمر (مستمر)، مجموعة العلاج (فئوي: أ/ب/ج)، درجة النتيجة (مستمر)}
+- حجم العينة: \${sampleSize:ن=150 (50 لكل مجموعة)}
+- سؤال البحث: \${researchQuestion:هل يؤثر نوع العلاج على درجات النتائج؟}
+- خصائص البيانات: \${characteristics:توزيع طبيعي، لا توجد قيم مفقودة}
 
-Advise on:
-1. **Appropriate tests** - Which statistical tests to use
-2. **Assumptions to check** - Prerequisites
-3. **How to interpret results** - What different outcomes mean
-4. **Effect size** - Practical significance
-5. **Reporting** - How to present findings
+انصح بخصوص:
+1. **الاختبارات المناسبة** - أي الاختبارات الإحصائية يجب استخدامها
+2. **الافتراضات للتحقق** - المتطلبات المسبقة
+3. **كيفية تفسير النتائج** - ماذا تعني النتائج المختلفة
+4. **حجم التأثير** - الأهمية العملية
+5. **التقرير** - كيفية عرض النتائج
 
-Note: Guide my analysis, don't fabricate results.`} />
+ملاحظة: وجه تحليلي، لا تختلق نتائج.`} />
 
-### Qualitative Analysis
+### التحليل النوعي
 
-<TryIt compact prompt={`Help me analyze these qualitative responses:
+<TryIt compact prompt={`ساعدني في تحليل هذه الاستجابات النوعية:
 
-Responses:
-\${responses:paste interview excerpts or survey responses here}
+الاستجابات:
+\${responses:الصق مقتطفات المقابلات أو استجابات الاستبيان هنا}
 
-Using \${method:thematic analysis}:
+باستخدام \${method:التحليل الموضوعي}:
 
-1. **Initial codes** - Identify recurring concepts
-2. **Categories** - Group related codes
-3. **Themes** - Overarching patterns
-4. **Relationships** - How themes connect
-5. **Representative quotes** - Evidence for each theme
+1. **الرموز الأولية** - حدد المفاهيم المتكررة
+2. **الفئات** - جمّع الرموز المرتبطة
+3. **المواضيع** - الأنماط الشاملة
+4. **العلاقات** - كيف ترتبط المواضيع
+5. **الاقتباسات التمثيلية** - دليل لكل موضوع
 
-Maintain: Participant voice and context`} />
+حافظ على: صوت المشارك والسياق`} />
 
-### Data Interpretation
+### تفسير البيانات
 
-<TryIt compact prompt={`Help me interpret these findings:
+<TryIt compact prompt={`ساعدني في تفسير هذه النتائج:
 
-Results:
-\${results:paste statistical output or data summary here}
+النتائج:
+\${results:الصق المخرجات الإحصائية أو ملخص البيانات هنا}
 
-Context:
-- Research question: \${researchQuestion:Does X predict Y?}
-- Hypothesis: \${hypothesis:X positively predicts Y}
-- Expected results: \${expectedResults:significant positive correlation}
+السياق:
+- سؤال البحث: \${researchQuestion:هل يتنبأ X بـ Y؟}
+- الفرضية: \${hypothesis:X يتنبأ إيجابياً بـ Y}
+- النتائج المتوقعة: \${expectedResults:ارتباط إيجابي ذو دلالة إحصائية}
 
-Provide:
-1. **Plain language interpretation** - What does this mean?
-2. **Statistical significance** - What the p-values tell us
-3. **Practical significance** - Real-world meaning
-4. **Comparison to literature** - How does this fit?
-5. **Alternative explanations** - Other interpretations
-6. **Limitations of interpretation**`} />
+قدم:
+1. **تفسير بلغة بسيطة** - ماذا يعني هذا؟
+2. **الدلالة الإحصائية** - ما الذي تخبرنا به قيم p
+3. **الأهمية العملية** - المعنى في العالم الحقيقي
+4. **المقارنة مع الأدبيات** - كيف يتناسب هذا؟
+5. **التفسيرات البديلة** - تفسيرات أخرى
+6. **قيود التفسير**`} />
 
-## Structured Analysis Frameworks
+## أطر التحليل المنظم
 
-### PESTLE Analysis
+### تحليل PESTLE
 
-<TryIt compact prompt={`Conduct a PESTLE analysis for \${subject:electric vehicle industry in Europe}.
+<TryIt compact prompt={`قم بإجراء تحليل PESTLE لـ \${subject:صناعة السيارات الكهربائية في أوروبا}.
 
-**Political** factors:
-- Government policies, regulations, political stability
+العوامل **السياسية**:
+- السياسات الحكومية، اللوائح، الاستقرار السياسي
 
-**Economic** factors:
-- Economic growth, inflation, exchange rates, unemployment
+العوامل **الاقتصادية**:
+- النمو الاقتصادي، التضخم، أسعار الصرف، البطالة
 
-**Social** factors:
-- Demographics, cultural trends, lifestyle changes
+العوامل **الاجتماعية**:
+- الديموغرافيا، الاتجاهات الثقافية، تغيرات نمط الحياة
 
-**Technological** factors:
-- Innovation, R&D, automation, technology changes
+العوامل **التكنولوجية**:
+- الابتكار، البحث والتطوير، الأتمتة، التغيرات التكنولوجية
 
-**Legal** factors:
-- Legislation, regulatory bodies, employment law
+العوامل **القانونية**:
+- التشريعات، الهيئات التنظيمية، قانون العمل
 
-**Environmental** factors:
-- Climate, sustainability, environmental regulations
+العوامل **البيئية**:
+- المناخ، الاستدامة، اللوائح البيئية
 
-For each: Current state + trends + implications`} />
+لكل عامل: الحالة الحالية + الاتجاهات + التداعيات`} />
 
-### Root Cause Analysis
+### تحليل السبب الجذري
 
-<TryIt compact prompt={`Perform root cause analysis for \${problem:customer churn increased 20% last quarter}.
+<TryIt compact prompt={`قم بإجراء تحليل السبب الجذري لـ \${problem:زاد تسرب العملاء بنسبة 20% في الربع الأخير}.
 
-Problem statement:
-\${problemStatement:Monthly churn rate rose from 3% to 3.6% between Q3 and Q4}
+بيان المشكلة:
+\${problemStatement:ارتفع معدل التسرب الشهري من 3% إلى 3.6% بين الربع الثالث والرابع}
 
-Using 5 Whys:
-1. Why? First level cause
-   2. Why? Deeper cause
-      3. Why? Deeper still
-         4. Why? Approaching root
-            5. Why? Root cause
+باستخدام طريقة الخمسة لماذا:
+1. لماذا؟ السبب من المستوى الأول
+   2. لماذا؟ سبب أعمق
+      3. لماذا؟ أعمق من ذلك
+         4. لماذا؟ الاقتراب من الجذر
+            5. لماذا؟ السبب الجذري
 
-Alternative: Fishbone diagram categories
-- People
-- Process
-- Equipment
-- Materials
-- Environment
-- Management
+البديل: فئات مخطط عظمة السمكة
+- الأشخاص
+- العملية
+- المعدات
+- المواد
+- البيئة
+- الإدارة
 
-Provide: Root cause(s) + recommended actions`} />
+قدم: السبب(الأسباب) الجذرية + الإجراءات الموصى بها`} />
 
-### Gap Analysis
+### تحليل الفجوات
 
-<TryIt compact prompt={`Conduct a gap analysis for \${subject:our customer support operations}.
+<TryIt compact prompt={`قم بإجراء تحليل الفجوات لـ \${subject:عمليات دعم العملاء لدينا}.
 
-**Current State:**
-- \${currentState:Average response time 24 hours, CSAT 3.2/5}
+**الحالة الحالية:**
+- \${currentState:متوسط وقت الاستجابة 24 ساعة، CSAT 3.2/5}
 
-**Desired State:**
-- \${desiredState:Response time under 4 hours, CSAT 4.5/5}
+**الحالة المرغوبة:**
+- \${desiredState:وقت الاستجابة أقل من 4 ساعات، CSAT 4.5/5}
 
-**Gap Identification:**
-| Area | Current | Desired | Gap | Priority |
+**تحديد الفجوات:**
+| المجال | الحالي | المرغوب | الفجوة | الأولوية |
 |------|---------|---------|-----|----------|
-| ... | ... | ... | ... | H/M/L |
+| ... | ... | ... | ... | ع/م/م |
 
-**Action Plan:**
-For each high-priority gap:
-- Specific actions
-- Resources needed
-- Timeline
-- Success metrics`} />
+**خطة العمل:**
+لكل فجوة عالية الأولوية:
+- إجراءات محددة
+- الموارد المطلوبة
+- الجدول الزمني
+- مقاييس النجاح`} />
 
-## Academic Writing Support
+## دعم الكتابة الأكاديمية
 
-### Argument Structure
+### هيكل الحجة
 
-<TryIt compact prompt={`Help me structure an argument for \${topic:why remote work should become permanent policy}.
+<TryIt compact prompt={`ساعدني في هيكلة حجة لـ \${topic:لماذا يجب أن يصبح العمل عن بُعد سياسة دائمة}.
 
-Main claim: \${thesis:Organizations should adopt permanent remote/hybrid policies for knowledge workers}
+الادعاء الرئيسي: \${thesis:يجب على المنظمات تبني سياسات العمل عن بُعد/الهجين الدائمة للعاملين في مجال المعرفة}
 
-Required:
-1. **Premises** - Supporting claims that lead to conclusion
-2. **Evidence** - Data/sources for each premise
-3. **Counterarguments** - Opposing views
-4. **Rebuttals** - Responses to counterarguments
-5. **Logical flow** - How it all connects
+المطلوب:
+1. **المقدمات** - الادعاءات الداعمة التي تؤدي إلى الاستنتاج
+2. **الأدلة** - البيانات/المصادر لكل مقدمة
+3. **الحجج المضادة** - وجهات النظر المعارضة
+4. **الردود** - الاستجابات للحجج المضادة
+5. **التدفق المنطقي** - كيف يرتبط كل ذلك
 
-Check for:
-- Logical fallacies
-- Unsupported claims
-- Gaps in reasoning`} />
+تحقق من:
+- المغالطات المنطقية
+- الادعاءات غير المدعومة
+- الفجوات في التفكير`} />
 
-### Methods Section
+### قسم المنهجية
 
-<TryIt compact prompt={`Help me write a methods section for:
+<TryIt compact prompt={`ساعدني في كتابة قسم المنهجية لـ:
 
-Study type: \${studyType:survey}
-Participants: \${participants:200 undergraduate students, convenience sampling}
-Materials: \${materials:online questionnaire with Likert scales}
-Procedure: \${procedure:participants completed 20-minute survey online}
-Analysis: \${analysis:descriptive statistics and regression analysis}
+نوع الدراسة: \${studyType:استبيان}
+المشاركون: \${participants:200 طالب جامعي، عينة ملائمة}
+المواد: \${materials:استبيان إلكتروني بمقاييس ليكرت}
+الإجراء: \${procedure:أكمل المشاركون استبياناً مدته 20 دقيقة عبر الإنترنت}
+التحليل: \${analysis:الإحصاء الوصفي وتحليل الانحدار}
 
-Standards: Follow \${standards:APA 7th edition} guidelines
-Include: Enough detail for replication
-Tone: Passive voice, past tense`} />
+المعايير: اتبع إرشادات \${standards:APA الإصدار السابع}
+تضمين: تفاصيل كافية للتكرار
+الأسلوب: صيغة المبني للمجهول، الفعل الماضي`} />
 
-### Discussion Section
+### قسم المناقشة
 
-<TryIt compact prompt={`Help me write a discussion section.
+<TryIt compact prompt={`ساعدني في كتابة قسم المناقشة.
 
-Key findings:
-\${findings:1. Significant positive correlation (r=0.45) between X and Y\n2. No significant difference between groups on secondary measure}
+النتائج الرئيسية:
+\${findings:1. ارتباط إيجابي ذو دلالة إحصائية (r=0.45) بين X وY\n2. لا يوجد فرق ذو دلالة بين المجموعات في المقياس الثانوي}
 
-Structure:
-1. **Summary** - Brief restatement of main findings
-2. **Interpretation** - What the findings mean
-3. **Context** - How findings relate to existing literature
-4. **Implications** - Theoretical and practical significance
-5. **Limitations** - Study weaknesses
-6. **Future directions** - What research should follow
-7. **Conclusion** - Take-home message
+الهيكل:
+1. **الملخص** - إعادة صياغة موجزة للنتائج الرئيسية
+2. **التفسير** - ماذا تعني النتائج
+3. **السياق** - كيف ترتبط النتائج بالأدبيات الموجودة
+4. **التداعيات** - الأهمية النظرية والعملية
+5. **القيود** - نقاط ضعف الدراسة
+6. **الاتجاهات المستقبلية** - ما البحث الذي يجب أن يتبع
+7. **الخاتمة** - الرسالة الأساسية
 
-Avoid: Overstating findings or introducing new results`} />
+تجنب: المبالغة في النتائج أو تقديم نتائج جديدة`} />
 
-## Critical Analysis
+## التحليل النقدي
 
-### Source Evaluation
+### تقييم المصادر
 
-<TryIt compact prompt={`Evaluate this source for academic use:
+<TryIt compact prompt={`قيّم هذا المصدر للاستخدام الأكاديمي:
 
-Source: \${source:paste citation or link here}
-Content summary: \${summary:brief description of what the source claims}
+المصدر: \${source:الصق الاستشهاد أو الرابط هنا}
+ملخص المحتوى: \${summary:وصف موجز لما يدعيه المصدر}
 
-Assess using CRAAP criteria:
-- **Currency**: When published? Updated? Current enough?
-- **Relevance**: Relates to my topic? Appropriate level?
-- **Authority**: Author credentials? Publisher reputation?
-- **Accuracy**: Supported by evidence? Peer-reviewed?
-- **Purpose**: Why was it written? Bias evident?
+قيّم باستخدام معايير CRAAP:
+- **الحداثة**: متى نُشر؟ هل تم تحديثه؟ هل هو حديث بما فيه الكفاية؟
+- **الصلة**: هل يتعلق بموضوعي؟ هل هو بالمستوى المناسب؟
+- **المصداقية**: مؤهلات المؤلف؟ سمعة الناشر؟
+- **الدقة**: مدعوم بأدلة؟ محكّم من قبل أقران؟
+- **الغرض**: لماذا كُتب؟ هل التحيز واضح؟
 
-Verdict: Highly credible / Use with caution / Avoid
-How to use: Recommendations for incorporation`} />
+الحكم: موثوق للغاية / استخدم بحذر / تجنب
+كيفية الاستخدام: توصيات للدمج`} />
 
-### Argument Analysis
+### تحليل الحجة
 
-<TryIt compact prompt={`Analyze the argument in this text:
+<TryIt compact prompt={`حلل الحجة في هذا النص:
 
-\${text:paste the text you want to analyze}
+\${text:الصق النص الذي تريد تحليله}
 
-Identify:
-1. **Main claim** - What's being argued
-2. **Supporting evidence** - What backs it up
-3. **Assumptions** - Unstated premises
-4. **Logical structure** - How conclusion follows
-5. **Strengths** - What's compelling
-6. **Weaknesses** - Logical gaps or fallacies
-7. **Alternative interpretations**
+حدد:
+1. **الادعاء الرئيسي** - ما الذي يُجادل فيه
+2. **الأدلة الداعمة** - ما الذي يدعمه
+3. **الافتراضات** - المقدمات غير المذكورة
+4. **البنية المنطقية** - كيف يتبع الاستنتاج
+5. **نقاط القوة** - ما هو مقنع
+6. **نقاط الضعف** - الفجوات المنطقية أو المغالطات
+7. **التفسيرات البديلة**
 
-Provide: Fair, balanced assessment`} />
+قدم: تقييم عادل ومتوازن`} />
 
-## Prompt Templates from prompts.chat
+## قوالب المطالبات من prompts.chat
 
-### Act as a Research Assistant
+### تصرف كمساعد بحثي
 
-<TryIt compact prompt={`I want you to act as a research assistant. Help me explore topics, find information, synthesize sources, and develop arguments. Ask clarifying questions, suggest relevant areas to investigate, and help me think critically about evidence. Be thorough but acknowledge the limits of your knowledge.`} />
+<TryIt compact prompt={`أريدك أن تتصرف كمساعد بحثي. ساعدني في استكشاف المواضيع، والعثور على المعلومات، وتوليف المصادر، وتطوير الحجج. اطرح أسئلة توضيحية، واقترح مجالات ذات صلة للتحقيق، وساعدني على التفكير النقدي في الأدلة. كن شاملاً ولكن اعترف بحدود معرفتك.`} />
 
-### Act as a Data Analyst
+### تصرف كمحلل بيانات
 
-<TryIt compact prompt={`I want you to act as a data analyst. I will describe datasets and research questions, and you will suggest analysis approaches, help interpret results, and identify potential issues. Focus on sound methodology and clear communication of findings.`} />
+<TryIt compact prompt={`أريدك أن تتصرف كمحلل بيانات. سأصف مجموعات البيانات وأسئلة البحث، وستقترح مناهج التحليل، وتساعد في تفسير النتائج، وتحدد المشكلات المحتملة. ركز على المنهجية السليمة والتواصل الواضح للنتائج.`} />
 
-### Act as a Peer Reviewer
+### تصرف كمراجع أقران
 
-<TryIt compact prompt={`I want you to act as an academic peer reviewer. I will share manuscripts or sections, and you will provide constructive feedback on methodology, argument, writing, and contribution to the field. Be rigorous but supportive, noting both strengths and areas for improvement.`} />
+<TryIt compact prompt={`أريدك أن تتصرف كمراجع أقران أكاديمي. سأشارك المخطوطات أو الأقسام، وستقدم تعليقات بناءة على المنهجية والحجة والكتابة والمساهمة في المجال. كن صارماً ولكن داعماً، مع ملاحظة نقاط القوة ومجالات التحسين.`} />
 
-## Summary
+## الملخص
 
-<Callout type="tip" title="Key Techniques">
-Clearly state research context and goals, specify the analytical framework to use, request acknowledgment of limitations, ask for evidence-based reasoning, and maintain academic rigor and honesty.
+<Callout type="tip" title="التقنيات الرئيسية">
+حدد بوضوح سياق البحث والأهداف، وحدد الإطار التحليلي للاستخدام، واطلب الاعتراف بالقيود، واطلب التفكير المبني على الأدلة، وحافظ على الدقة والنزاهة الأكاديمية.
 </Callout>
 
 <Quiz 
-  question="What's the most important thing to remember when using AI for research?"
+  question="ما أهم شيء يجب تذكره عند استخدام الذكاء الاصطناعي للبحث؟"
   options={[
-    "AI can replace the need for primary sources",
-    "AI analysis is always accurate and up-to-date",
-    "Always verify AI claims independently and cite original sources",
-    "AI can access and analyze your actual datasets"
+    "يمكن للذكاء الاصطناعي أن يحل محل الحاجة إلى المصادر الأولية",
+    "تحليل الذكاء الاصطناعي دقيق ومحدث دائماً",
+    "تحقق دائماً من ادعاءات الذكاء الاصطناعي بشكل مستقل واستشهد بالمصادر الأصلية",
+    "يمكن للذكاء الاصطناعي الوصول إلى مجموعات بياناتك الفعلية وتحليلها"
   ]}
   correctIndex={2}
-  explanation="AI can assist with synthesis and structure, but it can hallucinate citations, have outdated information, and cannot access your actual data. Always verify claims against primary sources and maintain academic integrity."
+  explanation="يمكن للذكاء الاصطناعي المساعدة في التوليف والهيكلة، لكنه قد يختلق استشهادات، ويمتلك معلومات قديمة، ولا يستطيع الوصول إلى بياناتك الفعلية. تحقق دائماً من الادعاءات مقابل المصادر الأولية وحافظ على النزاهة الأكاديمية."
 />
 
-Remember: AI can assist research but cannot replace critical thinking, ethical judgment, or domain expertise. Always verify claims independently.
+تذكر: يمكن للذكاء الاصطناعي المساعدة في البحث لكنه لا يستطيع أن يحل محل التفكير النقدي أو الحكم الأخلاقي أو الخبرة في المجال. تحقق دائماً من الادعاءات بشكل مستقل.

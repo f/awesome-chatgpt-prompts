@@ -1,323 +1,323 @@
-AI can accelerate research workflows from literature review to data analysis. This chapter covers prompting techniques for academic and professional research.
+AI kan onderzoeksworkflows versnellen, van literatuuronderzoek tot data-analyse. Dit hoofdstuk behandelt prompttechnieken voor academisch en professioneel onderzoek.
 
-<Callout type="info" title="AI in Research">
-AI can assist with synthesis, analysis, and writing—but cannot replace critical thinking, ethical judgment, or domain expertise. Always verify claims and cite original sources.
+<Callout type="info" title="AI in Onderzoek">
+AI kan helpen bij synthese, analyse en schrijven—maar kan kritisch denken, ethisch oordeel of domeinexpertise niet vervangen. Controleer altijd beweringen en citeer originele bronnen.
 </Callout>
 
-## Literature & Information Review
+## Literatuur- & Informatieonderzoek
 
-### Do's and Don'ts: Research Prompts
+### Do's en Don'ts: Onderzoeksprompts
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Summarize this paper for me." }}
-  after={{ label: "✓ Structured request", content: "Summarize this paper for my literature review on machine learning in healthcare.\n\nProvide:\n1. Main thesis (1-2 sentences)\n2. Methodology\n3. Key findings (bullets)\n4. Limitations\n5. Relevance to my research\n\nReading level: Graduate student" }}
+  before={{ label: "❌ Vage aanvraag", content: "Vat dit artikel voor me samen." }}
+  after={{ label: "✓ Gestructureerde aanvraag", content: "Vat dit artikel samen voor mijn literatuuronderzoek over machine learning in de gezondheidszorg.\n\nLever:\n1. Hoofdthese (1-2 zinnen)\n2. Methodologie\n3. Belangrijkste bevindingen (opsommingen)\n4. Beperkingen\n5. Relevantie voor mijn onderzoek\n\nLeesniveau: Masterstudent" }}
 />
 
-### Paper Summarization
+### Artikelsamenvattingen
 
-<TryIt compact prompt={`Summarize this academic paper:
+<TryIt compact prompt={`Vat dit academische artikel samen:
 
-[paper abstract or full text]
+[abstract of volledige tekst van artikel]
 
-Provide:
-1. **Main thesis** - Central argument (1-2 sentences)
-2. **Methodology** - How they approached it
-3. **Key findings** - Most important results (bullet points)
-4. **Contributions** - What's new/significant
-5. **Limitations** - Acknowledged or apparent weaknesses
-6. **Relevance to [my research topic]** - How it connects
+Lever:
+1. **Hoofdthese** - Centraal argument (1-2 zinnen)
+2. **Methodologie** - Hoe ze het hebben aangepakt
+3. **Belangrijkste bevindingen** - Meest belangrijke resultaten (opsommingen)
+4. **Bijdragen** - Wat is nieuw/significant
+5. **Beperkingen** - Erkende of zichtbare zwaktes
+6. **Relevantie voor [mijn onderzoeksonderwerp]** - Hoe het verbindt
 
-Reading level: \${readingLevel:graduate}`} />
+Leesniveau: \${readingLevel:graduate}`} />
 
-### Literature Synthesis
+### Literatuursynthese
 
-<TryIt compact prompt={`Synthesize these papers on \${topic:the effectiveness of remote work}:
+<TryIt compact prompt={`Synthetiseer deze artikelen over \${topic:de effectiviteit van thuiswerken}:
 
-Paper 1: \${paper1:Smith 2021 - found productivity increased 15%}
-Paper 2: \${paper2:Jones 2022 - noted collaboration challenges}
-Paper 3: \${paper3:Chen 2023 - hybrid model showed best outcomes}
+Artikel 1: \${paper1:Smith 2021 - vond dat productiviteit met 15% steeg}
+Artikel 2: \${paper2:Jones 2022 - noteerde uitdagingen bij samenwerking}
+Artikel 3: \${paper3:Chen 2023 - hybride model toonde beste resultaten}
 
-Analyze:
-1. **Common themes** - What do they agree on?
-2. **Contradictions** - Where do they disagree?
-3. **Gaps** - What's not addressed?
-4. **Evolution** - How has thinking progressed?
-5. **Synthesis** - Integrated understanding
+Analyseer:
+1. **Gemeenschappelijke thema's** - Waar zijn ze het over eens?
+2. **Tegenstellingen** - Waar zijn ze het oneens?
+3. **Lacunes** - Wat wordt niet behandeld?
+4. **Evolutie** - Hoe is het denken geëvolueerd?
+5. **Synthese** - Geïntegreerd begrip
 
-Format as: Literature review paragraph suitable for \${outputType:thesis}`} />
+Formatteer als: Literatuuronderzoek-paragraaf geschikt voor \${outputType:thesis}`} />
 
-### Research Question Development
+### Ontwikkeling van Onderzoeksvragen
 
-<TryIt compact prompt={`Help me develop research questions for \${topic:AI adoption in healthcare}.
+<TryIt compact prompt={`Help me onderzoeksvragen te ontwikkelen voor \${topic:AI-adoptie in de gezondheidszorg}.
 
 Context:
-- Field: \${field:health informatics}
-- Current knowledge: \${currentKnowledge:AI tools exist but adoption is slow}
-- Gap identified: \${gap:limited understanding of physician resistance factors}
-- My interest: \${interest:organizational change management}
+- Vakgebied: \${field:health informatics}
+- Huidige kennis: \${currentKnowledge:AI-tools bestaan maar adoptie verloopt traag}
+- Geïdentificeerde lacune: \${gap:beperkt begrip van weerstandsfactoren bij artsen}
+- Mijn interesse: \${interest:organisatorisch verandermanagement}
 
-Generate:
-1. **Primary RQ** - Main question to answer
-2. **Sub-questions** - Supporting inquiries (3-4)
-3. **Hypotheses** - Testable predictions (if applicable)
+Genereer:
+1. **Primaire onderzoeksvraag** - Hoofdvraag om te beantwoorden
+2. **Deelvragen** - Ondersteunende vragen (3-4)
+3. **Hypotheses** - Toetsbare voorspellingen (indien van toepassing)
 
-Criteria: Questions should be:
-- Answerable with available methods
-- Significant to the field
-- Appropriately scoped`} />
+Criteria: Vragen moeten:
+- Beantwoordbaar zijn met beschikbare methoden
+- Significant zijn voor het vakgebied
+- Passend afgebakend zijn`} />
 
-## Data Analysis
+## Data-analyse
 
-<Callout type="warning" title="AI Cannot Analyze Your Actual Data">
-AI can guide methodology and help interpret results, but it cannot access or process your actual datasets. Never paste sensitive research data into prompts. Use AI for **guidance**, not computation.
+<Callout type="warning" title="AI Kan Je Werkelijke Data Niet Analyseren">
+AI kan methodologie begeleiden en helpen bij het interpreteren van resultaten, maar kan je werkelijke datasets niet benaderen of verwerken. Plak nooit gevoelige onderzoeksdata in prompts. Gebruik AI voor **begeleiding**, niet voor berekeningen.
 </Callout>
 
-### Statistical Analysis Guidance
+### Begeleiding bij Statistische Analyse
 
-<TryIt compact prompt={`Help me analyze this data:
+<TryIt compact prompt={`Help me deze data te analyseren:
 
-Data description:
-- Variables: \${variables:age (continuous), treatment group (categorical: A/B/C), outcome score (continuous)}
-- Sample size: \${sampleSize:n=150 (50 per group)}
-- Research question: \${researchQuestion:Does treatment type affect outcome scores?}
-- Data characteristics: \${characteristics:normally distributed, no missing values}
+Databeschrijving:
+- Variabelen: \${variables:leeftijd (continu), behandelgroep (categorisch: A/B/C), uitkomstscore (continu)}
+- Steekproefgrootte: \${sampleSize:n=150 (50 per groep)}
+- Onderzoeksvraag: \${researchQuestion:Beïnvloedt behandeltype de uitkomstscores?}
+- Datakenmerken: \${characteristics:normaal verdeeld, geen ontbrekende waarden}
 
-Advise on:
-1. **Appropriate tests** - Which statistical tests to use
-2. **Assumptions to check** - Prerequisites
-3. **How to interpret results** - What different outcomes mean
-4. **Effect size** - Practical significance
-5. **Reporting** - How to present findings
+Adviseer over:
+1. **Geschikte toetsen** - Welke statistische toetsen te gebruiken
+2. **Te controleren aannames** - Voorwaarden
+3. **Hoe resultaten te interpreteren** - Wat verschillende uitkomsten betekenen
+4. **Effectgrootte** - Praktische significantie
+5. **Rapportage** - Hoe bevindingen te presenteren
 
-Note: Guide my analysis, don't fabricate results.`} />
+Opmerking: Begeleid mijn analyse, verzin geen resultaten.`} />
 
-### Qualitative Analysis
+### Kwalitatieve Analyse
 
-<TryIt compact prompt={`Help me analyze these qualitative responses:
+<TryIt compact prompt={`Help me deze kwalitatieve antwoorden te analyseren:
 
-Responses:
-\${responses:paste interview excerpts or survey responses here}
+Antwoorden:
+\${responses:plak hier interviewfragmenten of enquêteantwoorden}
 
-Using \${method:thematic analysis}:
+Gebruikmakend van \${method:thematische analyse}:
 
-1. **Initial codes** - Identify recurring concepts
-2. **Categories** - Group related codes
-3. **Themes** - Overarching patterns
-4. **Relationships** - How themes connect
-5. **Representative quotes** - Evidence for each theme
+1. **Initiële codes** - Identificeer terugkerende concepten
+2. **Categorieën** - Groepeer gerelateerde codes
+3. **Thema's** - Overkoepelende patronen
+4. **Relaties** - Hoe thema's verbinden
+5. **Representatieve citaten** - Bewijs voor elk thema
 
-Maintain: Participant voice and context`} />
+Behoud: Stem en context van deelnemers`} />
 
-### Data Interpretation
+### Data-interpretatie
 
-<TryIt compact prompt={`Help me interpret these findings:
+<TryIt compact prompt={`Help me deze bevindingen te interpreteren:
 
-Results:
-\${results:paste statistical output or data summary here}
+Resultaten:
+\${results:plak hier statistische output of datasamenvatting}
 
 Context:
-- Research question: \${researchQuestion:Does X predict Y?}
-- Hypothesis: \${hypothesis:X positively predicts Y}
-- Expected results: \${expectedResults:significant positive correlation}
+- Onderzoeksvraag: \${researchQuestion:Voorspelt X Y?}
+- Hypothese: \${hypothesis:X voorspelt Y positief}
+- Verwachte resultaten: \${expectedResults:significante positieve correlatie}
 
-Provide:
-1. **Plain language interpretation** - What does this mean?
-2. **Statistical significance** - What the p-values tell us
-3. **Practical significance** - Real-world meaning
-4. **Comparison to literature** - How does this fit?
-5. **Alternative explanations** - Other interpretations
-6. **Limitations of interpretation**`} />
+Lever:
+1. **Interpretatie in eenvoudige taal** - Wat betekent dit?
+2. **Statistische significantie** - Wat de p-waarden ons vertellen
+3. **Praktische significantie** - Betekenis in de echte wereld
+4. **Vergelijking met literatuur** - Hoe past dit?
+5. **Alternatieve verklaringen** - Andere interpretaties
+6. **Beperkingen van de interpretatie**`} />
 
-## Structured Analysis Frameworks
+## Gestructureerde Analysekaders
 
-### PESTLE Analysis
+### PESTLE-analyse
 
-<TryIt compact prompt={`Conduct a PESTLE analysis for \${subject:electric vehicle industry in Europe}.
+<TryIt compact prompt={`Voer een PESTLE-analyse uit voor \${subject:de elektrische voertuigindustrie in Europa}.
 
-**Political** factors:
-- Government policies, regulations, political stability
+**Politieke** factoren:
+- Overheidsbeleid, regelgeving, politieke stabiliteit
 
-**Economic** factors:
-- Economic growth, inflation, exchange rates, unemployment
+**Economische** factoren:
+- Economische groei, inflatie, wisselkoersen, werkloosheid
 
-**Social** factors:
-- Demographics, cultural trends, lifestyle changes
+**Sociale** factoren:
+- Demografie, culturele trends, veranderingen in levensstijl
 
-**Technological** factors:
-- Innovation, R&D, automation, technology changes
+**Technologische** factoren:
+- Innovatie, R&D, automatisering, technologische veranderingen
 
-**Legal** factors:
-- Legislation, regulatory bodies, employment law
+**Juridische** factoren:
+- Wetgeving, toezichthoudende instanties, arbeidsrecht
 
-**Environmental** factors:
-- Climate, sustainability, environmental regulations
+**Ecologische** factoren:
+- Klimaat, duurzaamheid, milieuregulering
 
-For each: Current state + trends + implications`} />
+Voor elk: Huidige situatie + trends + implicaties`} />
 
-### Root Cause Analysis
+### Oorzaakanalyse
 
-<TryIt compact prompt={`Perform root cause analysis for \${problem:customer churn increased 20% last quarter}.
+<TryIt compact prompt={`Voer een oorzaakanalyse uit voor \${problem:klantenverloop steeg 20% afgelopen kwartaal}.
 
-Problem statement:
-\${problemStatement:Monthly churn rate rose from 3% to 3.6% between Q3 and Q4}
+Probleemstelling:
+\${problemStatement:Maandelijks verlooppercentage steeg van 3% naar 3,6% tussen Q3 en Q4}
 
-Using 5 Whys:
-1. Why? First level cause
-   2. Why? Deeper cause
-      3. Why? Deeper still
-         4. Why? Approaching root
-            5. Why? Root cause
+Met de 5 Waarom's:
+1. Waarom? Eerste niveau oorzaak
+   2. Waarom? Diepere oorzaak
+      3. Waarom? Nog dieper
+         4. Waarom? Nadert de kern
+            5. Waarom? Kernoorzaak
 
-Alternative: Fishbone diagram categories
-- People
-- Process
-- Equipment
-- Materials
-- Environment
+Alternatief: Visgraatdiagram-categorieën
+- Mensen
+- Proces
+- Apparatuur
+- Materialen
+- Omgeving
 - Management
 
-Provide: Root cause(s) + recommended actions`} />
+Lever: Kernoorzaak/oorzaken + aanbevolen acties`} />
 
-### Gap Analysis
+### Gap-analyse
 
-<TryIt compact prompt={`Conduct a gap analysis for \${subject:our customer support operations}.
+<TryIt compact prompt={`Voer een gap-analyse uit voor \${subject:onze klantenservice-operaties}.
 
-**Current State:**
-- \${currentState:Average response time 24 hours, CSAT 3.2/5}
+**Huidige Situatie:**
+- \${currentState:Gemiddelde responstijd 24 uur, CSAT 3,2/5}
 
-**Desired State:**
-- \${desiredState:Response time under 4 hours, CSAT 4.5/5}
+**Gewenste Situatie:**
+- \${desiredState:Responstijd onder 4 uur, CSAT 4,5/5}
 
-**Gap Identification:**
-| Area | Current | Desired | Gap | Priority |
-|------|---------|---------|-----|----------|
+**Gap-identificatie:**
+| Gebied | Huidig | Gewenst | Gap | Prioriteit |
+|--------|--------|---------|-----|------------|
 | ... | ... | ... | ... | H/M/L |
 
-**Action Plan:**
-For each high-priority gap:
-- Specific actions
-- Resources needed
-- Timeline
-- Success metrics`} />
+**Actieplan:**
+Voor elke hoge-prioriteit gap:
+- Specifieke acties
+- Benodigde middelen
+- Tijdlijn
+- Succesmetrieken`} />
 
-## Academic Writing Support
+## Ondersteuning bij Academisch Schrijven
 
-### Argument Structure
+### Argumentstructuur
 
-<TryIt compact prompt={`Help me structure an argument for \${topic:why remote work should become permanent policy}.
+<TryIt compact prompt={`Help me een argument te structureren voor \${topic:waarom thuiswerken permanent beleid zou moeten worden}.
 
-Main claim: \${thesis:Organizations should adopt permanent remote/hybrid policies for knowledge workers}
+Hoofdstelling: \${thesis:Organisaties zouden permanent remote/hybride beleid moeten invoeren voor kenniswerkers}
 
-Required:
-1. **Premises** - Supporting claims that lead to conclusion
-2. **Evidence** - Data/sources for each premise
-3. **Counterarguments** - Opposing views
-4. **Rebuttals** - Responses to counterarguments
-5. **Logical flow** - How it all connects
+Vereist:
+1. **Premissen** - Ondersteunende stellingen die naar de conclusie leiden
+2. **Bewijs** - Data/bronnen voor elke premisse
+3. **Tegenargumenten** - Tegengestelde standpunten
+4. **Weerleggingen** - Antwoorden op tegenargumenten
+5. **Logische opbouw** - Hoe alles samenhangt
 
-Check for:
-- Logical fallacies
-- Unsupported claims
-- Gaps in reasoning`} />
+Controleer op:
+- Logische drogredenen
+- Ononderbouwde beweringen
+- Gaten in de redenering`} />
 
-### Methods Section
+### Methodensectie
 
-<TryIt compact prompt={`Help me write a methods section for:
+<TryIt compact prompt={`Help me een methodensectie te schrijven voor:
 
-Study type: \${studyType:survey}
-Participants: \${participants:200 undergraduate students, convenience sampling}
-Materials: \${materials:online questionnaire with Likert scales}
-Procedure: \${procedure:participants completed 20-minute survey online}
-Analysis: \${analysis:descriptive statistics and regression analysis}
+Studietype: \${studyType:enquête}
+Deelnemers: \${participants:200 bachelorstudenten, convenience sampling}
+Materialen: \${materials:online vragenlijst met Likert-schalen}
+Procedure: \${procedure:deelnemers vulden 20-minuten enquête online in}
+Analyse: \${analysis:beschrijvende statistieken en regressieanalyse}
 
-Standards: Follow \${standards:APA 7th edition} guidelines
-Include: Enough detail for replication
-Tone: Passive voice, past tense`} />
+Standaarden: Volg \${standards:APA 7e editie} richtlijnen
+Inclusief: Voldoende detail voor replicatie
+Toon: Lijdende vorm, verleden tijd`} />
 
-### Discussion Section
+### Discussiesectie
 
-<TryIt compact prompt={`Help me write a discussion section.
+<TryIt compact prompt={`Help me een discussiesectie te schrijven.
 
-Key findings:
-\${findings:1. Significant positive correlation (r=0.45) between X and Y\n2. No significant difference between groups on secondary measure}
+Belangrijkste bevindingen:
+\${findings:1. Significante positieve correlatie (r=0,45) tussen X en Y\n2. Geen significant verschil tussen groepen op secundaire maat}
 
-Structure:
-1. **Summary** - Brief restatement of main findings
-2. **Interpretation** - What the findings mean
-3. **Context** - How findings relate to existing literature
-4. **Implications** - Theoretical and practical significance
-5. **Limitations** - Study weaknesses
-6. **Future directions** - What research should follow
-7. **Conclusion** - Take-home message
+Structuur:
+1. **Samenvatting** - Korte herformulering van hoofdbevindingen
+2. **Interpretatie** - Wat de bevindingen betekenen
+3. **Context** - Hoe bevindingen zich verhouden tot bestaande literatuur
+4. **Implicaties** - Theoretische en praktische betekenis
+5. **Beperkingen** - Zwaktes van de studie
+6. **Toekomstige richtingen** - Welk onderzoek zou moeten volgen
+7. **Conclusie** - Kernboodschap
 
-Avoid: Overstating findings or introducing new results`} />
+Vermijd: Bevindingen overdrijven of nieuwe resultaten introduceren`} />
 
-## Critical Analysis
+## Kritische Analyse
 
-### Source Evaluation
+### Bronevaluatie
 
-<TryIt compact prompt={`Evaluate this source for academic use:
+<TryIt compact prompt={`Evalueer deze bron voor academisch gebruik:
 
-Source: \${source:paste citation or link here}
-Content summary: \${summary:brief description of what the source claims}
+Bron: \${source:plak hier citatie of link}
+Inhoudsoverzicht: \${summary:korte beschrijving van wat de bron beweert}
 
-Assess using CRAAP criteria:
-- **Currency**: When published? Updated? Current enough?
-- **Relevance**: Relates to my topic? Appropriate level?
-- **Authority**: Author credentials? Publisher reputation?
-- **Accuracy**: Supported by evidence? Peer-reviewed?
-- **Purpose**: Why was it written? Bias evident?
+Beoordeel met CRAAP-criteria:
+- **Actualiteit**: Wanneer gepubliceerd? Bijgewerkt? Actueel genoeg?
+- **Relevantie**: Gerelateerd aan mijn onderwerp? Passend niveau?
+- **Autoriteit**: Auteurskwalificaties? Reputatie uitgever?
+- **Nauwkeurigheid**: Onderbouwd met bewijs? Peer-reviewed?
+- **Doel**: Waarom geschreven? Is er sprake van vooringenomenheid?
 
-Verdict: Highly credible / Use with caution / Avoid
-How to use: Recommendations for incorporation`} />
+Oordeel: Zeer geloofwaardig / Met voorzichtigheid gebruiken / Vermijden
+Hoe te gebruiken: Aanbevelingen voor integratie`} />
 
-### Argument Analysis
+### Argumentanalyse
 
-<TryIt compact prompt={`Analyze the argument in this text:
+<TryIt compact prompt={`Analyseer het argument in deze tekst:
 
-\${text:paste the text you want to analyze}
+\${text:plak de tekst die je wilt analyseren}
 
-Identify:
-1. **Main claim** - What's being argued
-2. **Supporting evidence** - What backs it up
-3. **Assumptions** - Unstated premises
-4. **Logical structure** - How conclusion follows
-5. **Strengths** - What's compelling
-6. **Weaknesses** - Logical gaps or fallacies
-7. **Alternative interpretations**
+Identificeer:
+1. **Hoofdstelling** - Wat wordt beweerd
+2. **Ondersteunend bewijs** - Wat onderbouwt het
+3. **Aannames** - Onuitgesproken premissen
+4. **Logische structuur** - Hoe de conclusie volgt
+5. **Sterke punten** - Wat overtuigend is
+6. **Zwakke punten** - Logische gaten of drogredenen
+7. **Alternatieve interpretaties**
 
-Provide: Fair, balanced assessment`} />
+Lever: Eerlijke, evenwichtige beoordeling`} />
 
-## Prompt Templates from prompts.chat
+## Prompt Sjablonen van prompts.chat
 
-### Act as a Research Assistant
+### Fungeer als Onderzoeksassistent
 
-<TryIt compact prompt={`I want you to act as a research assistant. Help me explore topics, find information, synthesize sources, and develop arguments. Ask clarifying questions, suggest relevant areas to investigate, and help me think critically about evidence. Be thorough but acknowledge the limits of your knowledge.`} />
+<TryIt compact prompt={`Ik wil dat je fungeert als onderzoeksassistent. Help me onderwerpen te verkennen, informatie te vinden, bronnen te synthetiseren en argumenten te ontwikkelen. Stel verhelderende vragen, stel relevante onderzoeksgebieden voor en help me kritisch na te denken over bewijs. Wees grondig maar erken de grenzen van je kennis.`} />
 
-### Act as a Data Analyst
+### Fungeer als Data-analist
 
-<TryIt compact prompt={`I want you to act as a data analyst. I will describe datasets and research questions, and you will suggest analysis approaches, help interpret results, and identify potential issues. Focus on sound methodology and clear communication of findings.`} />
+<TryIt compact prompt={`Ik wil dat je fungeert als data-analist. Ik zal datasets en onderzoeksvragen beschrijven, en jij zult analysebenaderingen voorstellen, helpen bij het interpreteren van resultaten en potentiële problemen identificeren. Focus op gedegen methodologie en duidelijke communicatie van bevindingen.`} />
 
-### Act as a Peer Reviewer
+### Fungeer als Peer Reviewer
 
-<TryIt compact prompt={`I want you to act as an academic peer reviewer. I will share manuscripts or sections, and you will provide constructive feedback on methodology, argument, writing, and contribution to the field. Be rigorous but supportive, noting both strengths and areas for improvement.`} />
+<TryIt compact prompt={`Ik wil dat je fungeert als academisch peer reviewer. Ik zal manuscripten of secties delen, en jij zult constructieve feedback geven over methodologie, argumentatie, schrijfstijl en bijdrage aan het vakgebied. Wees rigoureus maar ondersteunend, en benoem zowel sterke punten als verbeterpunten.`} />
 
-## Summary
+## Samenvatting
 
-<Callout type="tip" title="Key Techniques">
-Clearly state research context and goals, specify the analytical framework to use, request acknowledgment of limitations, ask for evidence-based reasoning, and maintain academic rigor and honesty.
+<Callout type="tip" title="Belangrijke Technieken">
+Vermeld duidelijk de onderzoekscontext en doelen, specificeer het te gebruiken analytisch kader, vraag om erkenning van beperkingen, vraag om evidence-based redenering en behoud academische nauwkeurigheid en eerlijkheid.
 </Callout>
 
 <Quiz 
-  question="What's the most important thing to remember when using AI for research?"
+  question="Wat is het belangrijkste om te onthouden bij het gebruik van AI voor onderzoek?"
   options={[
-    "AI can replace the need for primary sources",
-    "AI analysis is always accurate and up-to-date",
-    "Always verify AI claims independently and cite original sources",
-    "AI can access and analyze your actual datasets"
+    "AI kan de behoefte aan primaire bronnen vervangen",
+    "AI-analyse is altijd accuraat en actueel",
+    "Verifieer AI-beweringen altijd onafhankelijk en citeer originele bronnen",
+    "AI kan je werkelijke datasets benaderen en analyseren"
   ]}
   correctIndex={2}
-  explanation="AI can assist with synthesis and structure, but it can hallucinate citations, have outdated information, and cannot access your actual data. Always verify claims against primary sources and maintain academic integrity."
+  explanation="AI kan helpen bij synthese en structuur, maar kan citaties hallucineren, verouderde informatie hebben en kan je werkelijke data niet benaderen. Verifieer beweringen altijd aan de hand van primaire bronnen en behoud academische integriteit."
 />
 
-Remember: AI can assist research but cannot replace critical thinking, ethical judgment, or domain expertise. Always verify claims independently.
+Onthoud: AI kan onderzoek ondersteunen maar kan kritisch denken, ethisch oordeel of domeinexpertise niet vervangen. Verifieer beweringen altijd onafhankelijk.

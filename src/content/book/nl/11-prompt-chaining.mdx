@@ -1,237 +1,237 @@
-Prompt chaining breaks complex tasks into sequences of simpler prompts, where each step's output feeds into the next. This technique dramatically improves reliability and enables sophisticated workflows that would be impossible with a single prompt.
+Prompt chaining verdeelt complexe taken in reeksen van eenvoudigere prompts, waarbij de uitvoer van elke stap als invoer dient voor de volgende. Deze techniek verbetert de betrouwbaarheid aanzienlijk en maakt geavanceerde workflows mogelijk die onmogelijk zouden zijn met een enkele prompt.
 
-<Callout type="tip" title="Think Assembly Lines">
-Just like a factory assembly line breaks manufacturing into specialized stations, prompt chaining breaks AI tasks into specialized steps. Each step does one thing well, and the combined output is far better than trying to do everything at once.
+<Callout type="tip" title="Denk aan Lopende Banden">
+Net zoals een lopende band in een fabriek productie verdeelt in gespecialiseerde stations, verdeelt prompt chaining AI-taken in gespecialiseerde stappen. Elke stap doet één ding goed, en het gecombineerde resultaat is veel beter dan alles in één keer proberen te doen.
 </Callout>
 
-## Why Chain Prompts?
+## Waarom Prompts Ketenen?
 
-Single prompts struggle with complex tasks because they try to do too much at once. The AI has to simultaneously understand, analyze, plan, and generate, which leads to errors and inconsistencies.
+Enkele prompts hebben moeite met complexe taken omdat ze te veel tegelijk proberen te doen. De AI moet gelijktijdig begrijpen, analyseren, plannen en genereren, wat leidt tot fouten en inconsistenties.
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900">
-    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Single Prompt Struggles</p>
+    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Enkele Prompt Problemen</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Multi-step reasoning gets confused</p>
-      <p className="m-0!">Different "modes" of thinking clash</p>
-      <p className="m-0!">Complex outputs lack consistency</p>
-      <p className="m-0!">No opportunity for quality control</p>
+      <p className="m-0!">Meerstaps-redenering raakt in de war</p>
+      <p className="m-0!">Verschillende "modi" van denken botsen</p>
+      <p className="m-0!">Complexe uitvoer mist consistentie</p>
+      <p className="m-0!">Geen mogelijkheid voor kwaliteitscontrole</p>
     </div>
   </div>
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Chaining Solves This</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Chaining Lost Dit Op</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Each step focuses on one task</p>
-      <p className="m-0!">Specialized prompts for each mode</p>
-      <p className="m-0!">Validate between steps</p>
-      <p className="m-0!">Debug and improve individual steps</p>
+      <p className="m-0!">Elke stap richt zich op één taak</p>
+      <p className="m-0!">Gespecialiseerde prompts voor elke modus</p>
+      <p className="m-0!">Valideer tussen stappen door</p>
+      <p className="m-0!">Debug en verbeter individuele stappen</p>
     </div>
   </div>
 </div>
 
-## Basic Chaining Pattern
+## Basis Chaining Patroon
 
-The simplest chain passes output from one prompt directly to the next. Each step has a clear, focused purpose.
+De eenvoudigste keten geeft uitvoer van de ene prompt direct door naar de volgende. Elke stap heeft een duidelijk, gericht doel.
 
 <div className="my-6 flex items-center justify-center gap-3 p-6 bg-muted/30 rounded-lg overflow-x-auto">
   <div className="flex flex-col items-center">
     <div className="px-4 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
       <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Prompt 1</p>
-      <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">(Extract)</p>
+      <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">(Extraheer)</p>
     </div>
-    <p className="text-xs text-muted-foreground mt-1 m-0!">Input</p>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">Invoer</p>
   </div>
   <div className="text-blue-400 dark:text-blue-500">→</div>
   <div className="flex flex-col items-center">
     <div className="px-4 py-3 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg text-center">
       <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">Prompt 2</p>
-      <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">(Analyze)</p>
+      <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">(Analyseer)</p>
     </div>
-    <p className="text-xs text-muted-foreground mt-1 m-0!">Intermediate</p>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">Tussenresultaat</p>
   </div>
   <div className="text-purple-400 dark:text-purple-500">→</div>
   <div className="flex flex-col items-center">
     <div className="px-4 py-3 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg text-center">
       <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">Prompt 3</p>
-      <p className="text-xs text-green-600 dark:text-green-400 m-0!">(Generate)</p>
+      <p className="text-xs text-green-600 dark:text-green-400 m-0!">(Genereer)</p>
     </div>
-    <p className="text-xs text-muted-foreground mt-1 m-0!">Output</p>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">Uitvoer</p>
   </div>
 </div>
 
-<Callout type="info" title="The ETG Pattern">
-The most common chain pattern is **Extract → Transform → Generate**. First extract raw data, then reshape it for your purpose, then generate the final output. This pattern works for almost any content task.
+<Callout type="info" title="Het ETG Patroon">
+Het meest voorkomende ketenpatroon is **Extraheer → Transformeer → Genereer**. Eerst ruwe data extraheren, dan hervormen voor je doel, en vervolgens de uiteindelijke uitvoer genereren. Dit patroon werkt voor vrijwel elke contenttaak.
 </Callout>
 
-## Chain Types
+## Ketentypes
 
-Different tasks require different chain architectures. Choose the pattern that matches your workflow.
+Verschillende taken vereisen verschillende ketenarchitecturen. Kies het patroon dat bij je workflow past.
 
 <ChainFlowDemo />
 
-### Sequential Chain
+### Sequentiële Keten
 
-The most straightforward pattern: each step depends on the previous. Think of it as a relay race where each runner passes the baton to the next.
+Het meest eenvoudige patroon: elke stap is afhankelijk van de vorige. Zie het als een estafetteloop waarbij elke loper het stokje doorgeeft aan de volgende.
 
 <ChainExample 
   type="sequential"
   steps={[
-    { step: "Step 1: Extract", prompt: "Extract all dates, names, and numbers from: [text]", output: '{ dates: ["2024-01-15", "2024-02-20"], names: ["John Smith", "Acme Corp"], numbers: [15000, 42] }' },
-    { step: "Step 2: Analyze", prompt: "Given this extracted data: [step1_output], identify relationships and patterns.", output: '{ patterns: ["Monthly meetings scheduled"], relationships: ["John Smith works at Acme Corp"] }' },
-    { step: "Step 3: Generate", prompt: "Using these patterns: [step2_output], write a summary report highlighting the most significant findings.", output: "Summary Report: Analysis of the document reveals a business relationship between John Smith and Acme Corp, with scheduled monthly meetings..." }
+    { step: "Stap 1: Extraheer", prompt: "Extraheer alle datums, namen en getallen uit: [tekst]", output: '{ dates: ["2024-01-15", "2024-02-20"], names: ["Jan Smit", "Acme Corp"], numbers: [15000, 42] }' },
+    { step: "Stap 2: Analyseer", prompt: "Gegeven deze geëxtraheerde data: [stap1_uitvoer], identificeer relaties en patronen.", output: '{ patterns: ["Maandelijkse vergaderingen gepland"], relationships: ["Jan Smit werkt bij Acme Corp"] }' },
+    { step: "Stap 3: Genereer", prompt: "Schrijf met deze patronen: [stap2_uitvoer] een samenvattend rapport dat de belangrijkste bevindingen benadrukt.", output: "Samenvattend Rapport: Analyse van het document onthult een zakelijke relatie tussen Jan Smit en Acme Corp, met geplande maandelijkse vergaderingen..." }
   ]}
 />
 
-### Parallel Chain
+### Parallelle Keten
 
-When you need multiple perspectives on the same input, run prompts in parallel and merge results. This is faster than sequential chains and provides richer analysis.
+Wanneer je meerdere perspectieven op dezelfde invoer nodig hebt, voer prompts parallel uit en voeg resultaten samen. Dit is sneller dan sequentiële ketens en biedt rijkere analyse.
 
 <ChainExample 
   type="parallel"
   steps={[
-    { step: "Input", prompt: "Product review text", output: '"I love these earbuds! The battery lasts forever and the display on the case is so convenient. Perfect for my daily commute."' },
-    { step: "Branch A: Sentiment", prompt: "Analyze sentiment: [text]", output: '{ sentiment: "positive", score: 0.85 }' },
-    { step: "Branch B: Features", prompt: "Extract features mentioned: [text]", output: '{ features: ["battery", "display"] }' },
-    { step: "Branch C: Persona", prompt: "Identify user persona: [text]", output: '{ persona: "commuter" }' },
-    { step: "Merge", prompt: "Combine analyses into unified report", output: "Unified Report: Positive review from a commuter highlighting battery and display." }
+    { step: "Invoer", prompt: "Productreview tekst", output: '"Ik ben dol op deze oordopjes! De batterij gaat eeuwig mee en het display op de case is zo handig. Perfect voor mijn dagelijkse woon-werkverkeer."' },
+    { step: "Tak A: Sentiment", prompt: "Analyseer sentiment: [tekst]", output: '{ sentiment: "positief", score: 0.85 }' },
+    { step: "Tak B: Kenmerken", prompt: "Extraheer genoemde kenmerken: [tekst]", output: '{ features: ["batterij", "display"] }' },
+    { step: "Tak C: Persona", prompt: "Identificeer gebruikerspersona: [tekst]", output: '{ persona: "forens" }' },
+    { step: "Samenvoeging", prompt: "Combineer analyses tot een verenigd rapport", output: "Verenigd Rapport: Positieve review van een forens die batterij en display benadrukt." }
   ]}
 />
 
-### Conditional Chain
+### Conditionele Keten
 
-Route inputs through different paths based on classification. This is like a decision tree where the AI first categorizes the input, then handles each category differently.
+Routeer invoer door verschillende paden op basis van classificatie. Dit is als een beslisboom waarbij de AI eerst de invoer categoriseert en vervolgens elke categorie anders behandelt.
 
 <ChainExample 
   type="conditional"
   steps={[
-    { step: "Classify Input", prompt: "Classify this customer message as: complaint, question, feedback, or other.\n\nMessage: [text]", output: '{ classification: "complaint", confidence: 0.92 }' },
-    { step: "Route: Question (skipped)", prompt: "Identify what information is needed", output: "Skipped - input classified as complaint" },
-    { step: "Route: Complaint", prompt: "Identify the issue and severity: [text]", output: '{ issue: "delayed shipping", severity: "medium" }' },
-    { step: "Generate Response", prompt: "Generate empathetic response with resolution: [analysis]", output: "Dear Customer, We sincerely apologize for the delay. Your order has been expedited..." }
+    { step: "Classificeer Invoer", prompt: "Classificeer dit klantbericht als: klacht, vraag, feedback of anders.\n\nBericht: [tekst]", output: '{ classification: "klacht", confidence: 0.92 }' },
+    { step: "Route: Vraag (overgeslagen)", prompt: "Identificeer welke informatie nodig is", output: "Overgeslagen - invoer geclassificeerd als klacht" },
+    { step: "Route: Klacht", prompt: "Identificeer het probleem en de ernst: [tekst]", output: '{ issue: "vertraagde verzending", severity: "gemiddeld" }' },
+    { step: "Genereer Reactie", prompt: "Genereer een empathische reactie met oplossing: [analyse]", output: "Beste Klant, Onze oprechte excuses voor de vertraging. Uw bestelling is versneld verwerkt..." }
   ]}
 />
 
-### Iterative Chain
+### Iteratieve Keten
 
-Keep refining output until it meets quality standards. The AI generates, evaluates, and improves in a loop until satisfied or max iterations reached.
+Blijf uitvoer verfijnen totdat het aan kwaliteitsnormen voldoet. De AI genereert, evalueert en verbetert in een lus totdat deze tevreden is of het maximale aantal iteraties is bereikt.
 
-<Callout type="warning" title="Set Iteration Limits">
-Always set a maximum number of iterations (typically 3-5) to prevent infinite loops and control costs. The law of diminishing returns applies: most improvement happens in the first 2-3 iterations.
+<Callout type="warning" title="Stel Iteratielimieten In">
+Stel altijd een maximum aantal iteraties in (meestal 3-5) om oneindige lussen te voorkomen en kosten te beheersen. De wet van afnemende meeropbrengsten is van toepassing: de meeste verbetering gebeurt in de eerste 2-3 iteraties.
 </Callout>
 
 <ChainExample 
   type="iterative"
   steps={[
-    { step: "Generate Draft", prompt: "Write a product description for: [wireless earbuds]", output: "These wireless earbuds offer good sound quality and comfortable fit for everyday use." },
-    { step: "Evaluate (Score: 5)", prompt: "Rate this description 1-10 on: clarity, persuasiveness, accuracy.\n\nDescription: [current_draft]", output: '{ score: 5, improvements: ["Add specific features", "Include emotional benefits", "Mention battery life", "Add call-to-action"] }' },
-    { step: "Improve Draft", prompt: "Improve this description based on this feedback:\n\nCurrent: [current_draft]\nFeedback: [improvements]", output: "Experience crystal-clear audio with our premium wireless earbuds. Featuring 30-hour battery life, active noise cancellation, and an ergonomic design that stays comfortable all day. Perfect for music lovers and professionals alike. Order now and transform your listening experience." },
-    { step: "Evaluate (Score: 8)", prompt: "Rate this description 1-10 on: clarity, persuasiveness, accuracy.\n\nDescription: [improved_draft]", output: '{ score: 8, improvements: ["Minor: Could add warranty info"] }\n\n✓ Score >= 8: EXIT LOOP' }
+    { step: "Genereer Concept", prompt: "Schrijf een productbeschrijving voor: [draadloze oordopjes]", output: "Deze draadloze oordopjes bieden goede geluidskwaliteit en een comfortabele pasvorm voor dagelijks gebruik." },
+    { step: "Evalueer (Score: 5)", prompt: "Beoordeel deze beschrijving van 1-10 op: duidelijkheid, overtuigingskracht, nauwkeurigheid.\n\nBeschrijving: [huidig_concept]", output: '{ score: 5, improvements: ["Voeg specifieke kenmerken toe", "Voeg emotionele voordelen toe", "Noem batterijduur", "Voeg call-to-action toe"] }' },
+    { step: "Verbeter Concept", prompt: "Verbeter deze beschrijving op basis van deze feedback:\n\nHuidig: [huidig_concept]\nFeedback: [verbeteringen]", output: "Ervaar kristalhelder geluid met onze premium draadloze oordopjes. Met 30 uur batterijduur, actieve ruisonderdrukking en een ergonomisch ontwerp dat de hele dag comfortabel blijft. Perfect voor muziekliefhebbers en professionals. Bestel nu en transformeer je luisterervaring." },
+    { step: "Evalueer (Score: 8)", prompt: "Beoordeel deze beschrijving van 1-10 op: duidelijkheid, overtuigingskracht, nauwkeurigheid.\n\nBeschrijving: [verbeterd_concept]", output: '{ score: 8, improvements: ["Klein: Zou garantie-info kunnen toevoegen"] }\n\n✓ Score >= 8: VERLAAT LUS' }
   ]}
 />
 
-## Common Chain Patterns
+## Veelvoorkomende Ketenpatronen
 
-These battle-tested patterns solve common problems. Use them as starting points and adapt to your needs.
+Deze beproefde patronen lossen veelvoorkomende problemen op. Gebruik ze als startpunt en pas aan naar je behoeften.
 
-### Extract → Transform → Generate
+### Extraheer → Transformeer → Genereer
 
-The workhorse of content processing. Pull data out, reshape it, then create something new.
+De werkezel van contentverwerking. Haal data eruit, hervorm het, en creëer iets nieuws.
 
 <div className="mb-4 p-3 rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800">
-  <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 m-0!">Best For</p>
-  <p className="text-sm text-blue-600 dark:text-blue-400 m-0!">Document summarization, report generation, content repurposing, data-to-narrative conversion</p>
+  <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 m-0!">Beste Voor</p>
+  <p className="text-sm text-blue-600 dark:text-blue-400 m-0!">Documentsamenvatting, rapportgeneratie, content hergebruiken, data-naar-verhaal conversie</p>
 </div>
 
 <ChainExample 
   type="sequential"
   steps={[
-    { step: "Extract", prompt: "From this document, extract:\n- Main topic\n- Key arguments (list)\n- Supporting evidence (list)\n- Conclusions\nReturn as JSON.", output: '{ "topic": "Climate change impacts", "arguments": ["Rising temperatures", "Sea level rise"], "evidence": ["NASA data", "IPCC reports"], "conclusions": ["Urgent action needed"] }' },
-    { step: "Transform", prompt: "Reorganize this information for [business executives]:\n[extracted_data]\nFocus on: economic implications\nRemove: technical jargon", output: '{ "summary": "Climate risks to business", "key_points": ["Supply chain disruption", "Insurance costs rising"], "action_items": ["Assess vulnerabilities", "Plan adaptations"] }' },
-    { step: "Generate", prompt: "Using this restructured information, write a [executive brief]:\n[transformed_data]\nTone: professional\nLength: 200 words", output: "Executive Brief: Climate change presents significant operational risks to our business. Key concerns include supply chain disruptions from extreme weather events and rising insurance premiums. We recommend immediate assessment of facility vulnerabilities and development of adaptation strategies..." }
+    { step: "Extraheer", prompt: "Extraheer uit dit document:\n- Hoofdonderwerp\n- Belangrijkste argumenten (lijst)\n- Ondersteunend bewijs (lijst)\n- Conclusies\nRetourneer als JSON.", output: '{ "topic": "Klimaatverandering impact", "arguments": ["Stijgende temperaturen", "Zeespiegelstijging"], "evidence": ["NASA data", "IPCC rapporten"], "conclusions": ["Dringende actie nodig"] }' },
+    { step: "Transformeer", prompt: "Herorganiseer deze informatie voor [zakelijke leidinggevenden]:\n[geëxtraheerde_data]\nFocus op: economische implicaties\nVerwijder: technisch jargon", output: '{ "summary": "Klimaatrisico\'s voor bedrijven", "key_points": ["Verstoring toeleveringsketen", "Verzekeringspremies stijgen"], "action_items": ["Kwetsbaarheden beoordelen", "Aanpassingen plannen"] }' },
+    { step: "Genereer", prompt: "Schrijf met deze herstructureerde informatie een [directiesamenvatting]:\n[getransformeerde_data]\nToon: professioneel\nLengte: 200 woorden", output: "Directiesamenvatting: Klimaatverandering brengt aanzienlijke operationele risico's voor ons bedrijf met zich mee. Belangrijkste zorgen zijn verstoringen in de toeleveringsketen door extreme weersomstandigheden en stijgende verzekeringspremies. Wij adviseren een onmiddellijke beoordeling van kwetsbaarheden van faciliteiten en ontwikkeling van aanpassingsstrategieën..." }
   ]}
 />
 
-### Analyze → Plan → Execute
+### Analyseer → Plan → Voer Uit
 
-Perfect for code refactoring, project planning, or any task where you need to understand before acting.
+Perfect voor code refactoring, projectplanning, of elke taak waarbij je eerst moet begrijpen voordat je handelt.
 
 <div className="mb-4 p-3 rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border border-purple-200 dark:border-purple-800">
-  <p className="text-xs font-semibold text-purple-700 dark:text-purple-300 mb-1 m-0!">Best For</p>
-  <p className="text-sm text-purple-600 dark:text-purple-400 m-0!">Code refactoring, project planning, troubleshooting, strategic decision-making, complex problem solving</p>
+  <p className="text-xs font-semibold text-purple-700 dark:text-purple-300 mb-1 m-0!">Beste Voor</p>
+  <p className="text-sm text-purple-600 dark:text-purple-400 m-0!">Code refactoring, projectplanning, probleemoplossing, strategische besluitvorming, complexe probleemoplossing</p>
 </div>
 
 <ChainExample 
   type="sequential"
   steps={[
-    { step: "Analyze", prompt: "Analyze this codebase structure and identify:\n- Architecture pattern\n- Main components\n- Dependencies\n- Potential issues\n[code]", output: '{ "pattern": "MVC", "components": ["UserController", "AuthService", "Database"], "dependencies": ["express", "mongoose"], "issues": ["No input validation", "Hardcoded secrets"] }' },
-    { step: "Plan", prompt: "Based on this analysis, create a refactoring plan:\n[analysis_output]\nGoal: improve security\nConstraints: no breaking changes", output: '{ "steps": ["1. Add input validation middleware", "2. Move secrets to env vars", "3. Add rate limiting"], "priority": "high", "estimated_time": "4 hours" }' },
-    { step: "Execute", prompt: "Implement step 1 of this plan:\n[plan_output]\nShow the refactored code with explanations.", output: "// Added validation middleware\nconst validateInput = (req, res, next) => {\n  const { email, password } = req.body;\n  if (!email || !isValidEmail(email)) {\n    return res.status(400).json({ error: 'Invalid email' });\n  }\n  next();\n};" }
+    { step: "Analyseer", prompt: "Analyseer deze codebase structuur en identificeer:\n- Architectuurpatroon\n- Hoofdcomponenten\n- Dependencies\n- Potentiële problemen\n[code]", output: '{ "pattern": "MVC", "components": ["UserController", "AuthService", "Database"], "dependencies": ["express", "mongoose"], "issues": ["Geen invoervalidatie", "Hardcoded secrets"] }' },
+    { step: "Plan", prompt: "Maak op basis van deze analyse een refactoringplan:\n[analyse_uitvoer]\nDoel: beveiliging verbeteren\nBeperkingen: geen breaking changes", output: '{ "steps": ["1. Voeg invoervalidatie middleware toe", "2. Verplaats secrets naar env vars", "3. Voeg rate limiting toe"], "priority": "hoog", "estimated_time": "4 uur" }' },
+    { step: "Voer Uit", prompt: "Implementeer stap 1 van dit plan:\n[plan_uitvoer]\nToon de gerefactorde code met uitleg.", output: "// Validatie middleware toegevoegd\nconst validateInput = (req, res, next) => {\n  const { email, password } = req.body;\n  if (!email || !isValidEmail(email)) {\n    return res.status(400).json({ error: 'Invalid email' });\n  }\n  next();\n};" }
   ]}
 />
 
-### Generate → Critique → Refine
+### Genereer → Bekritiseer → Verfijn
 
-The self-improvement loop. Generate content, have the AI evaluate it critically, then improve based on that feedback. This mimics how professional writers and editors work together.
+De zelfverbeteringslus. Genereer content, laat de AI het kritisch evalueren, en verbeter dan op basis van die feedback. Dit bootst na hoe professionele schrijvers en editors samenwerken.
 
 <div className="mb-4 p-3 rounded-lg bg-green-50/50 dark:bg-green-950/20 border border-green-200 dark:border-green-800">
-  <p className="text-xs font-semibold text-green-700 dark:text-green-300 mb-1 m-0!">Best For</p>
-  <p className="text-sm text-green-600 dark:text-green-400 m-0!">Marketing copy, creative writing, email drafts, presentations, any content that benefits from revision</p>
+  <p className="text-xs font-semibold text-green-700 dark:text-green-300 mb-1 m-0!">Beste Voor</p>
+  <p className="text-sm text-green-600 dark:text-green-400 m-0!">Marketingteksten, creatief schrijven, e-mailconcepten, presentaties, alle content die baat heeft bij revisie</p>
 </div>
 
 <ChainExample 
   type="iterative"
   steps={[
-    { step: "Generate", prompt: "Write a marketing email for [fitness app] targeting [busy professionals].", output: "Subject: Get Fit Fast!\n\nHey there! Our app helps you exercise. Download it today and start your fitness journey. Thanks!" },
-    { step: "Critique", prompt: "As a marketing expert, critique this email:\n[generated_email]\nEvaluate: subject line, hook, value proposition, CTA, tone\nScore each 1-10.", output: '{ "subject_line": 4, "hook": 3, "value_proposition": 2, "cta": 5, "tone": 4, "feedback": "Too generic, no specific benefits, weak urgency" }' },
-    { step: "Refine", prompt: "Rewrite the email addressing this feedback:\nOriginal: [generated_email]\nCritique: [critique_output]\nFocus on the lowest-scored elements.", output: "Subject: 15-Min Workouts for Your Lunch Break\n\nBusy schedule? We get it. Our app delivers science-backed workouts designed for professionals who have zero time to waste. Join 50,000+ executives who transformed their health in just 15 minutes a day. Start your free trial now—your future self will thank you." },
-    { step: "Final Score", prompt: "Re-evaluate the refined email.", output: '{ "subject_line": 8, "hook": 8, "value_proposition": 9, "cta": 8, "tone": 9, "improvement": "+23 points total" }' }
+    { step: "Genereer", prompt: "Schrijf een marketing e-mail voor [fitness app] gericht op [drukke professionals].", output: "Onderwerp: Word Snel Fit!\n\nHallo daar! Onze app helpt je met sporten. Download hem vandaag en begin je fitnessreis. Bedankt!" },
+    { step: "Bekritiseer", prompt: "Bekritiseer als marketingexpert deze e-mail:\n[gegenereerde_email]\nEvalueer: onderwerpregel, hook, waardepropositie, CTA, toon\nScore elk van 1-10.", output: '{ "subject_line": 4, "hook": 3, "value_proposition": 2, "cta": 5, "tone": 4, "feedback": "Te generiek, geen specifieke voordelen, zwakke urgentie" }' },
+    { step: "Verfijn", prompt: "Herschrijf de e-mail met inachtneming van deze feedback:\nOrigineel: [gegenereerde_email]\nKritiek: [kritiek_uitvoer]\nFocus op de laagst gescoorde elementen.", output: "Onderwerp: 15-Minuten Workouts voor je Lunchpauze\n\nDrukke agenda? We begrijpen het. Onze app levert wetenschappelijk onderbouwde workouts ontworpen voor professionals die geen tijd te verliezen hebben. Sluit je aan bij 50.000+ leidinggevenden die hun gezondheid transformeerden in slechts 15 minuten per dag. Start nu je gratis proefperiode—je toekomstige zelf zal je dankbaar zijn." },
+    { step: "Eindscore", prompt: "Evalueer de verfijnde e-mail opnieuw.", output: '{ "subject_line": 8, "hook": 8, "value_proposition": 9, "cta": 8, "tone": 9, "improvement": "+23 punten totaal" }' }
   ]}
 />
 
-## Implementing Chains
+## Ketens Implementeren
 
-You can implement chains manually for experimentation, or programmatically for production systems. Start simple and add complexity as needed.
+Je kunt ketens handmatig implementeren voor experimenten, of programmatisch voor productiesystemen. Begin eenvoudig en voeg complexiteit toe waar nodig.
 
-### Manual Chaining
+### Handmatig Ketenen
 
-The copy-paste approach is perfect for prototyping and experimentation. Run each prompt manually, examine the output, and paste it into the next prompt.
+De kopieer-plak aanpak is perfect voor prototypen en experimenten. Voer elke prompt handmatig uit, bekijk de uitvoer, en plak deze in de volgende prompt.
 
 <CodeEditor 
   language="python"
   filename="manual_chain.py"
-  code={`# Pseudocode for manual chaining
-step1_output = call_ai("Extract entities from: " + input_text)
-step2_output = call_ai("Analyze relationships: " + step1_output)
-final_output = call_ai("Generate report: " + step2_output)`}
+  code={`# Pseudocode voor handmatig ketenen
+step1_output = call_ai("Extraheer entiteiten uit: " + input_text)
+step2_output = call_ai("Analyseer relaties: " + step1_output)
+final_output = call_ai("Genereer rapport: " + step2_output)`}
 />
 
-### Programmatic Chaining
+### Programmatisch Ketenen
 
-For production systems, automate the chain with code. This enables error handling, logging, and integration with your application.
+Voor productiesystemen, automatiseer de keten met code. Dit maakt foutafhandeling, logging en integratie met je applicatie mogelijk.
 
 <CodeEditor 
   language="python"
   filename="chain.py"
   code={`def analysis_chain(document):
-    # Step 1: Summarize
+    # Stap 1: Samenvatten
     summary = call_ai(f"""
-        Summarize the key points of this document in 5 bullets:
+        Vat de belangrijkste punten van dit document samen in 5 bullets:
         {document}
     """)
     
-    # Step 2: Extract entities
+    # Stap 2: Entiteiten extraheren
     entities = call_ai(f"""
-        Extract named entities (people, organizations, locations) 
-        from this summary. Return as JSON.
+        Extraheer named entities (personen, organisaties, locaties) 
+        uit deze samenvatting. Retourneer als JSON.
         {summary}
     """)
     
-    # Step 3: Generate insights
+    # Stap 3: Inzichten genereren
     insights = call_ai(f"""
-        Based on this summary and entities, generate 3 actionable 
-        insights for a business analyst.
-        Summary: {summary}
-        Entities: {entities}
+        Genereer op basis van deze samenvatting en entiteiten 3 
+        bruikbare inzichten voor een business analyst.
+        Samenvatting: {summary}
+        Entiteiten: {entities}
     """)
     
     return {
@@ -241,139 +241,139 @@ For production systems, automate the chain with code. This enables error handlin
     }`}
 />
 
-### Using Chain Templates
+### Keten Templates Gebruiken
 
-Define chains as configuration files for reusability and easy modification. This separates prompt logic from application code.
+Definieer ketens als configuratiebestanden voor herbruikbaarheid en eenvoudige aanpassing. Dit scheidt promptlogica van applicatiecode.
 
 <CodeEditor 
   language="yaml"
   filename="chain_template.yaml"
-  code={`name: "Document Analysis Chain"
+  code={`name: "Document Analyse Keten"
 steps:
   - name: "extract"
     prompt: |
-      Extract key information from this document:
+      Extraheer sleutelinformatie uit dit document:
       {input}
-      Return JSON with: topics, entities, dates, numbers
+      Retourneer JSON met: onderwerpen, entiteiten, datums, getallen
     
   - name: "analyze"
     prompt: |
-      Analyze this extracted data for patterns:
+      Analyseer deze geëxtraheerde data op patronen:
       {extract.output}
-      Identify: trends, anomalies, relationships
+      Identificeer: trends, anomalieën, relaties
     
   - name: "report"
     prompt: |
-      Generate an executive summary based on:
+      Genereer een directiesamenvatting gebaseerd op:
       Data: {extract.output}
-      Analysis: {analyze.output}
-      Format: 3 paragraphs, business tone`}
+      Analyse: {analyze.output}
+      Formaat: 3 paragrafen, zakelijke toon`}
 />
 
-## Error Handling in Chains
+## Foutafhandeling in Ketens
 
-Chains can fail at any step. Build in validation, retries, and fallbacks to make your chains robust.
+Ketens kunnen bij elke stap falen. Bouw validatie, herhaling en terugvalopties in om je ketens robuust te maken.
 
 <ChainErrorDemo />
 
-<Callout type="warning" title="Garbage In, Garbage Out">
-If one step produces bad output, every following step will be affected. Always validate critical intermediate results before passing them forward.
+<Callout type="warning" title="Rommel Erin, Rommel Eruit">
+Als één stap slechte uitvoer produceert, worden alle volgende stappen beïnvloed. Valideer altijd kritische tussenresultaten voordat je ze doorgeeft.
 </Callout>
 
-### Validation Between Steps
+### Validatie Tussen Stappen
 
-Add a validation step after any step that produces structured data. This catches errors early before they cascade.
+Voeg een validatiestap toe na elke stap die gestructureerde data produceert. Dit vangt fouten vroeg op voordat ze doorwerken.
 
 <ValidationDemo />
 
-### Fallback Chains
+### Terugvalketens
 
-When your primary approach fails, have a simpler backup ready. Trade capability for reliability.
+Wanneer je primaire aanpak faalt, heb een eenvoudigere backup klaar. Ruil mogelijkheden in voor betrouwbaarheid.
 
 <FallbackDemo />
 
-## Chain Optimization
+## Ketenoptimalisatie
 
-Once your chain works, optimize for speed, cost, and reliability. These often trade off against each other.
+Zodra je keten werkt, optimaliseer voor snelheid, kosten en betrouwbaarheid. Deze staan vaak op gespannen voet met elkaar.
 
 <div className="my-6 grid md:grid-cols-3 gap-4">
   <div className="border rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-900 p-4">
-    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 mb-2 m-0!">Reducing Latency</p>
+    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 mb-2 m-0!">Latentie Verminderen</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Parallelize independent steps</p>
-      <p className="m-0!">Cache intermediate results</p>
-      <p className="m-0!">Use smaller models for simple steps</p>
-      <p className="m-0!">Batch similar operations</p>
+      <p className="m-0!">Parallelliseer onafhankelijke stappen</p>
+      <p className="m-0!">Cache tussenresultaten</p>
+      <p className="m-0!">Gebruik kleinere modellen voor eenvoudige stappen</p>
+      <p className="m-0!">Batch vergelijkbare operaties</p>
     </div>
   </div>
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900 p-4">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 mb-2 m-0!">Reducing Cost</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 mb-2 m-0!">Kosten Verminderen</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Use cheaper models for classification</p>
-      <p className="m-0!">Limit iterations in loops</p>
-      <p className="m-0!">Short-circuit when possible</p>
-      <p className="m-0!">Cache repeated queries</p>
+      <p className="m-0!">Gebruik goedkopere modellen voor classificatie</p>
+      <p className="m-0!">Beperk iteraties in lussen</p>
+      <p className="m-0!">Short-circuit waar mogelijk</p>
+      <p className="m-0!">Cache herhaalde queries</p>
     </div>
   </div>
   <div className="border rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-900 p-4">
-    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 mb-2 m-0!">Improving Reliability</p>
+    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 mb-2 m-0!">Betrouwbaarheid Verbeteren</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Add validation between steps</p>
-      <p className="m-0!">Include retry logic</p>
-      <p className="m-0!">Log intermediate results</p>
-      <p className="m-0!">Implement fallback paths</p>
+      <p className="m-0!">Voeg validatie toe tussen stappen</p>
+      <p className="m-0!">Voeg herhalingslogica toe</p>
+      <p className="m-0!">Log tussenresultaten</p>
+      <p className="m-0!">Implementeer terugvalpaden</p>
     </div>
   </div>
 </div>
 
-## Real-World Chain Example
+## Praktijkvoorbeeld van een Keten
 
-Let's walk through a complete production chain. This content pipeline transforms a raw idea into a polished article package.
+Laten we een complete productieketen doorlopen. Deze contentpijplijn transformeert een ruw idee in een gepolijst artikelpakket.
 
-### Content Pipeline Chain
+### Content Pijplijn Keten
 
 <ContentPipelineDemo />
 
-## Summary
+## Samenvatting
 
-Prompt chaining transforms what AI can accomplish by breaking impossible tasks into achievable steps.
+Prompt chaining transformeert wat AI kan bereiken door onmogelijke taken op te splitsen in haalbare stappen.
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-amber-50/50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900 p-4">
-    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 mb-2 m-0!">Chaining Enables</p>
+    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 mb-2 m-0!">Chaining Maakt Mogelijk</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Complex multi-step workflows</p>
-      <p className="m-0!">Higher quality through specialization</p>
-      <p className="m-0!">Better error handling and validation</p>
-      <p className="m-0!">Modular, reusable prompt components</p>
+      <p className="m-0!">Complexe meerstaps-workflows</p>
+      <p className="m-0!">Hogere kwaliteit door specialisatie</p>
+      <p className="m-0!">Betere foutafhandeling en validatie</p>
+      <p className="m-0!">Modulaire, herbruikbare promptcomponenten</p>
     </div>
   </div>
   <div className="border rounded-lg bg-cyan-50/50 dark:bg-cyan-950/20 border-cyan-200 dark:border-cyan-900 p-4">
-    <p className="text-sm font-semibold text-cyan-700 dark:text-cyan-400 mb-2 m-0!">Key Principles</p>
+    <p className="text-sm font-semibold text-cyan-700 dark:text-cyan-400 mb-2 m-0!">Belangrijke Principes</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Break complex tasks into simple steps</p>
-      <p className="m-0!">Design clear interfaces between steps</p>
-      <p className="m-0!">Validate intermediate outputs</p>
-      <p className="m-0!">Build in error handling and fallbacks</p>
-      <p className="m-0!">Optimize for your constraints</p>
+      <p className="m-0!">Splits complexe taken in eenvoudige stappen</p>
+      <p className="m-0!">Ontwerp duidelijke interfaces tussen stappen</p>
+      <p className="m-0!">Valideer tussenresultaten</p>
+      <p className="m-0!">Bouw foutafhandeling en terugvalopties in</p>
+      <p className="m-0!">Optimaliseer voor je beperkingen</p>
     </div>
   </div>
 </div>
 
-<Callout type="tip" title="Start Simple">
-Begin with a 2-3 step sequential chain. Get it working reliably before adding complexity. Most tasks don't need elaborate chain architectures.
+<Callout type="tip" title="Begin Eenvoudig">
+Begin met een sequentiële keten van 2-3 stappen. Laat het betrouwbaar werken voordat je complexiteit toevoegt. De meeste taken hebben geen uitgebreide ketenarchitecturen nodig.
 </Callout>
 
 <Quiz 
-  question="What is the main advantage of prompt chaining over a single complex prompt?"
+  question="Wat is het belangrijkste voordeel van prompt chaining ten opzichte van een enkele complexe prompt?"
   options={[
-    "It uses fewer tokens overall",
-    "It's faster to execute",
-    "Each step can specialize, improving quality and enabling error handling",
-    "It requires less planning"
+    "Het gebruikt in totaal minder tokens",
+    "Het is sneller uit te voeren",
+    "Elke stap kan specialiseren, wat kwaliteit verbetert en foutafhandeling mogelijk maakt",
+    "Het vereist minder planning"
   ]}
   correctIndex={2}
-  explanation="Prompt chaining breaks complex tasks into specialized steps. Each step can focus on one thing well, intermediate results can be validated, errors can be caught and retried, and the overall quality improves through specialization."
+  explanation="Prompt chaining verdeelt complexe taken in gespecialiseerde stappen. Elke stap kan zich op één ding goed richten, tussenresultaten kunnen worden gevalideerd, fouten kunnen worden opgevangen en opnieuw geprobeerd, en de algehele kwaliteit verbetert door specialisatie."
 />
 
-In the next chapter, we'll explore multimodal prompting: working with images, audio, and other non-text content.
+In het volgende hoofdstuk verkennen we multimodale prompting: werken met afbeeldingen, audio en andere niet-tekstuele content.

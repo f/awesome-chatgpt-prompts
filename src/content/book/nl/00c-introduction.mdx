@@ -1,130 +1,130 @@
-Welcome to **The Interactive Book of Prompting**, your guide to communicating effectively with AI.
+Welkom bij **Het Interactieve Boek over Prompting**, jouw gids voor effectieve communicatie met AI.
 
-<Callout type="info" title="What You'll Learn">
-By the end of this book, you'll understand how AI works, how to write better prompts, and how to use these skills for writing, coding, research, and creative projects.
+<Callout type="info" title="Wat Je Zult Leren">
+Aan het einde van dit boek begrijp je hoe AI werkt, hoe je betere prompts schrijft, en hoe je deze vaardigheden kunt gebruiken voor schrijven, programmeren, onderzoek en creatieve projecten.
 </Callout>
 
-<Callout type="tip" title="This Is an Interactive Book">
-Unlike traditional books, this guide is fully interactive. You'll find live demos, clickable examples, and "Try It" buttons throughout that let you test prompts instantly. Learning by doing makes complex concepts much easier to understand.
+<Callout type="tip" title="Dit Is een Interactief Boek">
+In tegenstelling tot traditionele boeken is deze gids volledig interactief. Je vindt overal live demo's, klikbare voorbeelden en "Probeer het"-knoppen waarmee je prompts direct kunt testen. Leren door te doen maakt complexe concepten veel makkelijker te begrijpen.
 </Callout>
 
-## What is Prompt Engineering?
+## Wat is Prompt Engineering?
 
-Prompt engineering is the skill of writing good instructions for AI. When you type something to ChatGPT, Claude, Gemini, or other AI tools, that's called a "prompt." The better your prompt, the better the answer you get.
+Prompt engineering is de vaardigheid om goede instructies voor AI te schrijven. Wanneer je iets typt naar ChatGPT, Claude, Gemini of andere AI-tools, noemen we dat een "prompt." Hoe beter je prompt, hoe beter het antwoord dat je krijgt.
 
-Think of it like this: AI is a powerful helper that takes your words very literally. It will do exactly what you ask. The trick is learning how to ask for exactly what you want.
+Zie het zo: AI is een krachtige helper die je woorden heel letterlijk neemt. Het doet precies wat je vraagt. De kunst is om te leren hoe je precies vraagt wat je wilt.
 
 <Compare 
-  before={{ label: "Simple Prompt", content: "Write about dogs" }}
-  after={{ label: "Engineered Prompt", content: "Write a 200-word informative paragraph about the history of dog domestication, suitable for a middle school science textbook, with an engaging opening hook." }}
+  before={{ label: "Eenvoudige Prompt", content: "Schrijf over honden" }}
+  after={{ label: "Engineered Prompt", content: "Schrijf een informatieve alinea van 200 woorden over de geschiedenis van de domesticatie van honden, geschikt voor een middelbare school biologieboek, met een boeiende opening." }}
 />
 
-The difference in output quality between these two prompts can be dramatic.
+Het verschil in kwaliteit van de output tussen deze twee prompts kan dramatisch zijn.
 
 <TryIt 
-  prompt="Write a 200-word informative paragraph about the history of dog domestication, suitable for a middle school science textbook, with an engaging opening hook."
-  description="Try this engineered prompt and compare the result to simply asking 'Write about dogs'."
+  prompt="Schrijf een informatieve alinea van 200 woorden over de geschiedenis van de domesticatie van honden, geschikt voor een middelbare school biologieboek, met een boeiende opening."
+  description="Probeer deze engineered prompt en vergelijk het resultaat met simpelweg vragen 'Schrijf over honden'."
 />
 
-## How Prompt Engineering Has Evolved
+## Hoe Prompt Engineering Is Geëvolueerd
 
-In just three years since ChatGPT launched, prompt engineering has evolved dramatically alongside the technology itself. What started as simply "writing better questions" has grown into something much broader.
+In slechts drie jaar sinds de lancering van ChatGPT is prompt engineering dramatisch geëvolueerd samen met de technologie zelf. Wat begon als simpelweg "betere vragen stellen" is uitgegroeid tot iets veel breders.
 
-Today, we understand that your prompt is just **one part of a larger context**. Modern AI systems work with multiple types of data simultaneously:
+Tegenwoordig begrijpen we dat je prompt slechts **één onderdeel is van een grotere context**. Moderne AI-systemen werken gelijktijdig met meerdere soorten gegevens:
 
-- **System prompts** that define the AI's behavior
-- **Conversation history** from previous messages
-- **Retrieved documents** pulled from databases (RAG)
-- **Tool definitions** that let AI take actions
-- **User preferences** and settings
-- **Your actual prompt** - the question you're asking right now
+- **Systeemprompts** die het gedrag van de AI definiëren
+- **Gespreksgeschiedenis** van eerdere berichten
+- **Opgehaalde documenten** uit databases (RAG)
+- **Tool-definities** waarmee AI acties kan uitvoeren
+- **Gebruikersvoorkeuren** en instellingen
+- **Je daadwerkelijke prompt** - de vraag die je nu stelt
 
-This shift from "prompt engineering" to "context engineering" reflects how we now think about AI interactions. Your prompt matters, but so does everything else the AI sees. The best results come from carefully managing all these pieces together.
+Deze verschuiving van "prompt engineering" naar "context engineering" weerspiegelt hoe we nu denken over AI-interacties. Je prompt is belangrijk, maar alles wat de AI verder ziet ook. De beste resultaten komen voort uit het zorgvuldig beheren van al deze onderdelen samen.
 
-We'll explore these concepts in depth throughout this book, especially in the [Context Engineering](/book/20-context-engineering) chapter.
+We zullen deze concepten diepgaand verkennen in dit boek, vooral in het hoofdstuk [Context Engineering](/book/20-context-engineering).
 
-## Why Does Prompt Engineering Matter?
+## Waarom Is Prompt Engineering Belangrijk?
 
-### 1. Getting Better Answers
+### 1. Betere Antwoorden Krijgen
 
-AI tools are incredibly capable, but they need clear instructions to unlock their full potential. The same AI that gives a mediocre response to a vague question can produce brilliant work when prompted correctly.
+AI-tools zijn ongelooflijk capabel, maar ze hebben duidelijke instructies nodig om hun volledige potentieel te ontsluiten. Dezelfde AI die een middelmatig antwoord geeft op een vage vraag kan briljant werk leveren wanneer correct geprompt.
 
 <Compare 
-  before={{ label: "Vague Prompt", content: "Help me with my resume" }}
-  after={{ label: "Engineered Prompt", content: "Review my resume for a senior software engineer position. Focus on: 1) Impact metrics, 2) Technical skills section, 3) ATS optimization. Suggest specific improvements with examples." }}
+  before={{ label: "Vage Prompt", content: "Help me met mijn cv" }}
+  after={{ label: "Engineered Prompt", content: "Beoordeel mijn cv voor een senior software engineer positie. Focus op: 1) Impact-metrieken, 2) Technische vaardigheden sectie, 3) ATS-optimalisatie. Suggereer specifieke verbeteringen met voorbeelden." }}
 />
 
-### 2. Saving Time and Money
+### 2. Tijd en Geld Besparen
 
-A well-crafted prompt gets results in one try instead of multiple back-and-forth exchanges. This matters even more when you're paying per token or working with rate limits. A 5-minute investment in writing a good prompt can save hours of iteration.
+Een goed opgestelde prompt levert resultaten in één keer in plaats van meerdere heen-en-weer uitwisselingen. Dit is nog belangrijker wanneer je per token betaalt of met rate limits werkt. Een investering van 5 minuten in het schrijven van een goede prompt kan uren aan iteratie besparen.
 
-### 3. Getting Consistent, Reproducible Results
+### 3. Consistente, Reproduceerbare Resultaten Krijgen
 
-Good prompts produce predictable outputs. This is critical for:
-- **Business workflows** where you need the same quality every time
-- **Automation** where prompts run without human review
-- **Teams** where multiple people need similar results
+Goede prompts produceren voorspelbare outputs. Dit is cruciaal voor:
+- **Zakelijke workflows** waar je elke keer dezelfde kwaliteit nodig hebt
+- **Automatisering** waar prompts zonder menselijke beoordeling draaien
+- **Teams** waar meerdere mensen vergelijkbare resultaten nodig hebben
 
-### 4. Unlocking Advanced Capabilities
+### 4. Geavanceerde Mogelijkheden Ontgrendelen
 
-Many powerful AI features only work when you know how to ask:
-- **Chain-of-thought reasoning** for complex problems
-- **Structured output** for data extraction
-- **Role-playing** for specialized expertise
-- **Few-shot learning** for custom tasks
+Veel krachtige AI-functies werken alleen wanneer je weet hoe je moet vragen:
+- **Chain-of-thought redenering** voor complexe problemen
+- **Gestructureerde output** voor data-extractie
+- **Rollenspel** voor gespecialiseerde expertise
+- **Few-shot learning** voor aangepaste taken
 
-Without prompt engineering knowledge, you're only using a fraction of what AI can do.
+Zonder kennis van prompt engineering gebruik je slechts een fractie van wat AI kan doen.
 
-### 5. Staying Safe and Avoiding Pitfalls
+### 5. Veilig Blijven en Valkuilen Vermijden
 
-Good prompting helps you:
-- Avoid hallucinations by asking for sources and verification
-- Get balanced perspectives instead of one-sided answers
-- Prevent the AI from making assumptions you didn't intend
-- Keep sensitive information out of your prompts
+Goed prompten helpt je om:
+- Hallucinaties te vermijden door te vragen om bronnen en verificatie
+- Gebalanceerde perspectieven te krijgen in plaats van eenzijdige antwoorden
+- Te voorkomen dat de AI aannames maakt die je niet bedoelde
+- Gevoelige informatie uit je prompts te houden
 
-### 6. Future-Proofing Your Skills
+### 6. Je Vaardigheden Toekomstbestendig Maken
 
-As AI becomes more integrated into work and life, prompt engineering becomes a fundamental literacy. The principles you learn here apply across all AI tools—ChatGPT, Claude, Gemini, image generators, and future models we haven't seen yet.
+Naarmate AI meer geïntegreerd raakt in werk en leven, wordt prompt engineering een fundamentele geletterdheid. De principes die je hier leert zijn toepasbaar op alle AI-tools—ChatGPT, Claude, Gemini, afbeeldingsgeneratoren en toekomstige modellen die we nog niet gezien hebben.
 
-## Who Is This Book For?
+## Voor Wie Is Dit Boek?
 
-This book is for everyone:
+Dit boek is voor iedereen:
 
-- **Beginners** who want to learn how to use AI tools better
-- **Students** working on homework, research, or creative projects
-- **Writers and creators** using AI for their work
-- **Developers** building apps with AI
-- **Business people** who want to use AI at work
-- **Anyone curious** about getting more out of AI assistants
+- **Beginners** die willen leren hoe ze AI-tools beter kunnen gebruiken
+- **Studenten** die werken aan huiswerk, onderzoek of creatieve projecten
+- **Schrijvers en makers** die AI gebruiken voor hun werk
+- **Ontwikkelaars** die apps bouwen met AI
+- **Zakenmensen** die AI op het werk willen gebruiken
+- **Iedereen die nieuwsgierig is** naar het meer uit AI-assistenten halen
 
-## How This Book Is Organized
+## Hoe Dit Boek Is Georganiseerd
 
 <BookPartsNav />
 
-Plus an **Appendix** with templates, troubleshooting help, glossary, and extra resources.
+Plus een **Appendix** met sjablonen, probleemoplossingshulp, woordenlijst en extra bronnen.
 
-## A Note on AI Models
+## Een Opmerking over AI-Modellen
 
-This book mostly uses examples from ChatGPT (since it's the most popular), but the ideas work with any AI tool like Claude, Gemini, or others. We'll mention when something only works with specific AI models.
+Dit boek gebruikt voornamelijk voorbeelden van ChatGPT (omdat het het populairst is), maar de ideeën werken met elke AI-tool zoals Claude, Gemini of anderen. We vermelden wanneer iets alleen werkt met specifieke AI-modellen.
 
-AI is changing fast. What works today might be replaced by something better tomorrow. That's why this book focuses on core ideas that will stay useful no matter which AI you use.
+AI verandert snel. Wat vandaag werkt kan morgen vervangen worden door iets beters. Daarom focust dit boek op kernideeën die nuttig blijven, ongeacht welke AI je gebruikt.
 
-## Let's Begin
+## Laten We Beginnen
 
-Writing good prompts is a skill that gets better with practice. As you read this book:
+Goede prompts schrijven is een vaardigheid die beter wordt met oefening. Terwijl je dit boek leest:
 
-1. **Try things** - Test the examples, change them, see what happens
-2. **Keep trying** - Don't expect perfect results on your first attempt
-3. **Take notes** - Write down what works and what doesn't
-4. **Share** - Add your discoveries to [prompts.chat](https://prompts.chat)
+1. **Probeer dingen** - Test de voorbeelden, verander ze, kijk wat er gebeurt
+2. **Blijf proberen** - Verwacht geen perfecte resultaten bij je eerste poging
+3. **Maak aantekeningen** - Schrijf op wat werkt en wat niet
+4. **Deel** - Voeg je ontdekkingen toe aan [prompts.chat](https://prompts.chat)
 
-<Callout type="tip" title="Practice Makes Perfect">
-The best way to learn is by doing. Every chapter has examples you can try right away. Don't just read. Try it yourself!
+<Callout type="tip" title="Oefening Baart Kunst">
+De beste manier om te leren is door te doen. Elk hoofdstuk heeft voorbeelden die je direct kunt proberen. Lees niet alleen. Probeer het zelf!
 </Callout>
 
-Ready to transform how you work with AI? Turn the page and let's get started.
+Klaar om te transformeren hoe je met AI werkt? Sla de pagina om en laten we beginnen.
 
 ---
 
-*This book is part of the [Awesome ChatGPT Prompts](https://github.com/f/prompts.chat) project and is licensed under CC0 1.0 Universal (Public Domain).*
+*Dit boek maakt deel uit van het [Awesome ChatGPT Prompts](https://github.com/f/prompts.chat) project en is gelicentieerd onder CC0 1.0 Universal (Publiek Domein).*

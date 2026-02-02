@@ -1,59 +1,59 @@
-The prompts you write shape how AI behaves. A well-crafted prompt can educate, assist, and empower. A careless one can deceive, discriminate, or cause harm. As prompt engineers, we're not just users—we're designers of AI behavior, and that comes with real responsibility.
+De prompts die je schrijft bepalen hoe AI zich gedraagt. Een goed opgestelde prompt kan onderwijzen, assisteren en empoweren. Een onzorgvuldige kan misleiden, discrimineren of schade veroorzaken. Als prompt engineers zijn we niet alleen gebruikers—we zijn ontwerpers van AI-gedrag, en dat brengt echte verantwoordelijkheid met zich mee.
 
-This chapter isn't about rules imposed from above. It's about understanding the impact of our choices and building habits that lead to AI use we can be proud of.
+Dit hoofdstuk gaat niet over regels die van bovenaf worden opgelegd. Het gaat over het begrijpen van de impact van onze keuzes en het ontwikkelen van gewoontes die leiden tot AI-gebruik waar we trots op kunnen zijn.
 
-<Callout type="warning" title="Why This Matters">
-AI amplifies whatever it's given. A biased prompt produces biased outputs at scale. A deceptive prompt enables deception at scale. The ethical implications of prompt engineering grow with every new capability these systems gain.
+<Callout type="warning" title="Waarom dit belangrijk is">
+AI versterkt alles wat het krijgt. Een bevooroordeelde prompt produceert bevooroordeelde output op grote schaal. Een misleidende prompt maakt misleiding op grote schaal mogelijk. De ethische implicaties van prompt engineering groeien met elke nieuwe mogelijkheid die deze systemen krijgen.
 </Callout>
 
-## Ethical Foundations
+## Ethische grondslagen
 
-Every decision in prompt engineering connects to a few core principles:
-
-<InfoGrid items={[
-  { label: "Honesty", description: "Don't use AI to deceive people or create misleading content", example: "No fake reviews, impersonation, or manufactured 'evidence'", exampleType: "text", color: "blue" },
-  { label: "Fairness", description: "Actively work to avoid perpetuating biases and stereotypes", example: "Test prompts across demographics, request diverse perspectives", exampleType: "text", color: "purple" },
-  { label: "Transparency", description: "Be clear about AI involvement when it matters", example: "Disclose AI assistance in published work, professional contexts", exampleType: "text", color: "green" },
-  { label: "Privacy", description: "Protect personal information in prompts and outputs", example: "Anonymize data, avoid including PII, understand data policies", exampleType: "text", color: "amber" },
-  { label: "Safety", description: "Design prompts that prevent harmful outputs", example: "Build in guardrails, test for edge cases, handle refusals gracefully", exampleType: "text", color: "red" },
-  { label: "Accountability", description: "Take responsibility for what your prompts produce", example: "Review outputs, fix issues, maintain human oversight", exampleType: "text", color: "cyan" }
-]} />
-
-### The Prompt Engineer's Role
-
-You have more influence than you might realize:
-
-- **What AI produces**: Your prompts determine the content, tone, and quality of outputs
-- **How AI interacts**: Your system prompts shape personality, boundaries, and user experience
-- **What safeguards exist**: Your design choices determine what the AI will and won't do
-- **How mistakes are handled**: Your error handling determines whether failures are graceful or harmful
-
-## Avoiding Harmful Outputs
-
-The most fundamental ethical obligation is preventing your prompts from causing harm.
-
-### Categories of Harmful Content
+Elke beslissing in prompt engineering is verbonden met een aantal kernprincipes:
 
 <InfoGrid items={[
-  { label: "Violence & Harm", description: "Instructions that could lead to physical harm", example: "Weapons creation, self-harm, violence against others", exampleType: "text", color: "red" },
-  { label: "Illegal Activities", description: "Content that facilitates breaking laws", example: "Fraud schemes, hacking instructions, drug synthesis", exampleType: "text", color: "red" },
-  { label: "Harassment & Hate", description: "Content targeting individuals or groups", example: "Discriminatory content, doxxing, targeted harassment", exampleType: "text", color: "red" },
-  { label: "Misinformation", description: "Deliberately false or misleading content", example: "Fake news, health misinformation, conspiracy content", exampleType: "text", color: "red" },
-  { label: "Privacy Violations", description: "Exposing or exploiting personal information", example: "Revealing private data, stalking assistance", exampleType: "text", color: "red" },
-  { label: "Exploitation", description: "Content that exploits vulnerable individuals", example: "CSAM, non-consensual intimate content, scams targeting elderly", exampleType: "text", color: "red" }
+  { label: "Eerlijkheid", description: "Gebruik AI niet om mensen te misleiden of misleidende content te creëren", example: "Geen neprecensies, imitatie, of gefabriceerd 'bewijs'", exampleType: "text", color: "blue" },
+  { label: "Rechtvaardigheid", description: "Werk actief aan het vermijden van het in stand houden van vooroordelen en stereotypen", example: "Test prompts over verschillende demografieën, vraag om diverse perspectieven", exampleType: "text", color: "purple" },
+  { label: "Transparantie", description: "Wees duidelijk over AI-betrokkenheid wanneer het ertoe doet", example: "Maak AI-assistentie bekend bij gepubliceerd werk, professionele contexten", exampleType: "text", color: "green" },
+  { label: "Privacy", description: "Bescherm persoonlijke informatie in prompts en outputs", example: "Anonimiseer data, vermijd het opnemen van PII, begrijp databeleid", exampleType: "text", color: "amber" },
+  { label: "Veiligheid", description: "Ontwerp prompts die schadelijke outputs voorkomen", example: "Bouw beveiligingen in, test op randgevallen, ga respectvol om met weigeringen", exampleType: "text", color: "red" },
+  { label: "Verantwoordelijkheid", description: "Neem verantwoordelijkheid voor wat je prompts produceren", example: "Controleer outputs, los problemen op, behoud menselijk toezicht", exampleType: "text", color: "cyan" }
 ]} />
 
-<Callout type="warning" title="What is CSAM?">
-CSAM stands for **Child Sexual Abuse Material**. Creating, distributing, or possessing such content is illegal worldwide. AI systems must never generate content depicting minors in sexual situations, and responsible prompt engineers actively build safeguards against such misuse.
+### De rol van de prompt engineer
+
+Je hebt meer invloed dan je misschien beseft:
+
+- **Wat AI produceert**: Je prompts bepalen de inhoud, toon en kwaliteit van outputs
+- **Hoe AI interacteert**: Je systeem prompts vormen persoonlijkheid, grenzen en gebruikerservaring
+- **Welke beveiligingen er zijn**: Je ontwerpkeuzes bepalen wat de AI wel en niet zal doen
+- **Hoe fouten worden afgehandeld**: Je foutafhandeling bepaalt of mislukkingen graceful of schadelijk zijn
+
+## Schadelijke outputs vermijden
+
+De meest fundamentele ethische verplichting is voorkomen dat je prompts schade veroorzaken.
+
+### Categorieën van schadelijke content
+
+<InfoGrid items={[
+  { label: "Geweld & Schade", description: "Instructies die kunnen leiden tot fysieke schade", example: "Wapencreatie, zelfbeschadiging, geweld tegen anderen", exampleType: "text", color: "red" },
+  { label: "Illegale activiteiten", description: "Content die het overtreden van wetten faciliteert", example: "Fraudeschema's, hackinstructies, drugsynthese", exampleType: "text", color: "red" },
+  { label: "Intimidatie & Haat", description: "Content gericht op individuen of groepen", example: "Discriminerende content, doxxing, gerichte intimidatie", exampleType: "text", color: "red" },
+  { label: "Misinformatie", description: "Opzettelijk valse of misleidende content", example: "Nepnieuws, gezondheidsmisinfomatie, complotcontent", exampleType: "text", color: "red" },
+  { label: "Privacyschendingen", description: "Blootstellen of exploiteren van persoonlijke informatie", example: "Onthullen van privégegevens, stalkinghulp", exampleType: "text", color: "red" },
+  { label: "Exploitatie", description: "Content die kwetsbare individuen exploiteert", example: "CSAM, niet-consensuele intieme content, oplichting gericht op ouderen", exampleType: "text", color: "red" }
+]} />
+
+<Callout type="warning" title="Wat is CSAM?">
+CSAM staat voor **Child Sexual Abuse Material** (Kindermisbruikmateriaal). Het creëren, verspreiden of bezitten van dergelijke content is wereldwijd illegaal. AI-systemen mogen nooit content genereren die minderjarigen in seksuele situaties afbeeldt, en verantwoordelijke prompt engineers bouwen actief beveiligingen tegen dergelijk misbruik.
 </Callout>
 
-### Building Safety Into Prompts
+### Veiligheid inbouwen in prompts
 
-When building AI systems, include explicit safety guidelines:
+Bij het bouwen van AI-systemen, neem expliciete veiligheidsrichtlijnen op:
 
 <TryIt 
-  title="Safety-First System Prompt"
-  description="A template for building safety guidelines into your AI systems."
+  title="Veiligheid-eerst systeemprompt"
+  description="Een sjabloon voor het inbouwen van veiligheidsrichtlijnen in je AI-systemen."
   prompt={`You are a helpful assistant for \${purpose}.
 
 ## SAFETY GUIDELINES
@@ -78,13 +78,13 @@ When building AI systems, include explicit safety guidelines:
 Now, please help the user with: \${userRequest}`}
 />
 
-### The Intent vs. Impact Framework
+### Het intentie vs. impact framework
 
-Not every sensitive request is malicious. Use this framework for ambiguous cases:
+Niet elk gevoelig verzoek is kwaadaardig. Gebruik dit framework voor ambigue gevallen:
 
 <TryIt 
-  title="Ethical Edge Case Analyzer"
-  description="Work through ambiguous requests to determine the appropriate response."
+  title="Ethische randgeval-analysator"
+  description="Werk ambigue verzoeken door om de juiste reactie te bepalen."
   prompt={`I received this request that might be sensitive:
 
 "\${sensitiveRequest}"
@@ -108,24 +108,24 @@ Based on this analysis:
 - If declining, how should I phrase it helpfully?`}
 />
 
-## Addressing Bias
+## Bias aanpakken
 
-AI models inherit biases from their training data—historical inequities, representation gaps, cultural assumptions, and linguistic patterns. As prompt engineers, we can either amplify these biases or actively counteract them.
+AI-modellen erven vooroordelen van hun trainingsdata—historische ongelijkheden, representatiekloven, culturele aannames en taalpatronen. Als prompt engineers kunnen we deze vooroordelen versterken of actief tegengaan.
 
-### How Bias Manifests
+### Hoe bias zich manifesteert
 
 <InfoGrid items={[
-  { label: "Default Assumptions", description: "The model assumes certain demographics for roles", example: "Doctors defaulting to male, nurses to female", exampleType: "text", color: "amber" },
-  { label: "Stereotyping", description: "Reinforcing cultural stereotypes in descriptions", example: "Associating certain ethnicities with specific traits", exampleType: "text", color: "amber" },
-  { label: "Representation Gaps", description: "Some groups are underrepresented or misrepresented", example: "Limited accurate information about minority cultures", exampleType: "text", color: "amber" },
-  { label: "Western-Centric Views", description: "Perspectives skewed toward Western culture and values", example: "Assuming Western norms are universal", exampleType: "text", color: "amber" }
+  { label: "Standaardaannames", description: "Het model neemt bepaalde demografieën aan voor rollen", example: "Artsen standaard mannelijk, verpleegkundigen vrouwelijk", exampleType: "text", color: "amber" },
+  { label: "Stereotypering", description: "Versterken van culturele stereotypen in beschrijvingen", example: "Bepaalde etniciteiten associëren met specifieke eigenschappen", exampleType: "text", color: "amber" },
+  { label: "Representatiekloven", description: "Sommige groepen zijn ondervertegenwoordigd of verkeerd weergegeven", example: "Beperkte accurate informatie over minderheidsculturen", exampleType: "text", color: "amber" },
+  { label: "Westers-centrische standpunten", description: "Perspectieven scheefgetrokken naar Westerse cultuur en waarden", example: "Aannemen dat Westerse normen universeel zijn", exampleType: "text", color: "amber" }
 ]} />
 
-### Testing for Bias
+### Testen op bias
 
 <TryIt 
-  title="Bias Detection Test"
-  description="Use this to test your prompts for potential bias issues."
+  title="Biasdetectietest"
+  description="Gebruik dit om je prompts te testen op mogelijke biasproblemen."
   prompt={`I want to test this prompt for bias:
 
 "\${promptToTest}"
@@ -151,67 +151,67 @@ When demographics aren't specified:
 Based on findings, suggest prompt modifications to reduce bias.`}
 />
 
-### Mitigating Bias in Practice
+### Bias verminderen in de praktijk
 
 <Compare 
-  before={{ label: "Bias-prone prompt", content: "Describe a typical CEO." }}
-  after={{ label: "Bias-aware prompt", content: "Describe a CEO. Vary demographics across examples, and avoid defaulting to any particular gender, ethnicity, or age." }}
+  before={{ label: "Bias-gevoelige prompt", content: "Describe a typical CEO." }}
+  after={{ label: "Bias-bewuste prompt", content: "Describe a CEO. Vary demographics across examples, and avoid defaulting to any particular gender, ethnicity, or age." }}
 />
 
-## Transparency and Disclosure
+## Transparantie en bekendmaking
 
-When should you tell people AI was involved? The answer depends on context—but the trend is toward more disclosure, not less.
+Wanneer moet je mensen vertellen dat AI betrokken was? Het antwoord hangt af van de context—maar de trend gaat richting meer bekendmaking, niet minder.
 
-### When Disclosure Matters
+### Wanneer bekendmaking belangrijk is
 
 <InfoGrid items={[
-  { label: "Published Content", description: "Articles, posts, or content shared publicly", example: "Blog posts, social media, marketing materials", exampleType: "text", color: "blue" },
-  { label: "Consequential Decisions", description: "When AI outputs affect people's lives", example: "Hiring recommendations, medical info, legal guidance", exampleType: "text", color: "blue" },
-  { label: "Trust Contexts", description: "Where authenticity is expected or valued", example: "Personal correspondence, testimonials, reviews", exampleType: "text", color: "blue" },
-  { label: "Professional Settings", description: "Workplace or academic environments", example: "Reports, research, client deliverables", exampleType: "text", color: "blue" }
+  { label: "Gepubliceerde content", description: "Artikelen, posts of content die publiekelijk wordt gedeeld", example: "Blogposts, sociale media, marketingmaterialen", exampleType: "text", color: "blue" },
+  { label: "Belangrijke beslissingen", description: "Wanneer AI-outputs levens van mensen beïnvloeden", example: "Aanbevelingen voor aanwerving, medische info, juridisch advies", exampleType: "text", color: "blue" },
+  { label: "Vertrouwenscontexten", description: "Waar authenticiteit wordt verwacht of gewaardeerd", example: "Persoonlijke correspondentie, getuigenissen, recensies", exampleType: "text", color: "blue" },
+  { label: "Professionele settings", description: "Werk- of academische omgevingen", example: "Rapporten, onderzoek, klantleveringen", exampleType: "text", color: "blue" }
 ]} />
 
-### How to Disclose Appropriately
+### Hoe gepast bekend te maken
 
 <Compare 
-  before={{ label: "Hidden AI involvement", content: "Here's my analysis of the market trends..." }}
-  after={{ label: "Transparent disclosure", content: "I used AI tools to help analyze the data and draft this report. All conclusions have been verified and edited by me." }}
+  before={{ label: "Verborgen AI-betrokkenheid", content: "Here's my analysis of the market trends..." }}
+  after={{ label: "Transparante bekendmaking", content: "I used AI tools to help analyze the data and draft this report. All conclusions have been verified and edited by me." }}
 />
 
-Common disclosure phrases that work well:
-- "Written with AI assistance"
-- "AI-generated first draft, human edited"
-- "Analysis performed using AI tools"
-- "Created with AI, reviewed and approved by [name]"
+Veel voorkomende bekendmakingszinnen die goed werken:
+- "Geschreven met AI-assistentie"
+- "AI-gegenereerde eerste versie, door mens bewerkt"
+- "Analyse uitgevoerd met AI-tools"
+- "Gemaakt met AI, beoordeeld en goedgekeurd door [naam]"
 
-## Privacy Considerations
+## Privacy-overwegingen
 
-Every prompt you send contains data. Understanding where that data goes—and what shouldn't be in it—is essential.
+Elke prompt die je verstuurt bevat data. Begrijpen waar die data naartoe gaat—en wat er niet in zou moeten staan—is essentieel.
 
-### What Never Belongs in Prompts
+### Wat nooit in prompts thuishoort
 
 <InfoGrid items={[
-  { label: "Personal Identifiers", description: "Names, addresses, phone numbers, SSNs", example: "Use [CUSTOMER] instead of 'John Smith'", color: "red" },
-  { label: "Financial Data", description: "Account numbers, credit cards, income details", example: "Describe the pattern, not the actual numbers", exampleType: "text", color: "red" },
-  { label: "Health Information", description: "Medical records, diagnoses, prescriptions", example: "Ask about conditions generally, not specific patients", exampleType: "text", color: "red" },
-  { label: "Credentials", description: "Passwords, API keys, tokens, secrets", example: "Never paste credentials—use placeholders", exampleType: "text", color: "red" },
-  { label: "Private Communications", description: "Personal emails, messages, confidential docs", example: "Summarize the situation without quoting private text", exampleType: "text", color: "red" }
+  { label: "Persoonlijke identificatoren", description: "Namen, adressen, telefoonnummers, BSN's", example: "Gebruik [KLANT] in plaats van 'Jan Jansen'", color: "red" },
+  { label: "Financiële gegevens", description: "Rekeningnummers, creditcards, inkomensgegevens", example: "Beschrijf het patroon, niet de daadwerkelijke nummers", exampleType: "text", color: "red" },
+  { label: "Gezondheidsinformatie", description: "Medische dossiers, diagnoses, recepten", example: "Vraag over aandoeningen in het algemeen, niet over specifieke patiënten", exampleType: "text", color: "red" },
+  { label: "Inloggegevens", description: "Wachtwoorden, API-sleutels, tokens, geheimen", example: "Plak nooit inloggegevens—gebruik placeholders", exampleType: "text", color: "red" },
+  { label: "Privécommunicatie", description: "Persoonlijke e-mails, berichten, vertrouwelijke documenten", example: "Vat de situatie samen zonder privétekst te citeren", exampleType: "text", color: "red" }
 ]} />
 
-### Safe Data Handling Pattern
+### Veilig data-verwerkingspatroon
 
 <Compare 
-  before={{ label: "Unsafe: Contains PII", content: "Summarize this complaint from John Smith at 123 Main St, Anytown about order #12345: 'I ordered on March 15 and still haven't received...'" }}
-  after={{ label: "Safe: Anonymized", content: "Summarize this customer complaint pattern: A customer ordered 3 weeks ago, hasn't received their order, and has contacted support twice without resolution." }}
+  before={{ label: "Onveilig: Bevat PII", content: "Summarize this complaint from John Smith at 123 Main St, Anytown about order #12345: 'I ordered on March 15 and still haven't received...'" }}
+  after={{ label: "Veilig: Geanonimiseerd", content: "Summarize this customer complaint pattern: A customer ordered 3 weeks ago, hasn't received their order, and has contacted support twice without resolution." }}
 />
 
-<Callout type="info" title="What is PII?">
-**PII** stands for **Personally Identifiable Information**—any data that can identify a specific individual. This includes names, addresses, phone numbers, email addresses, Social Security numbers, financial account numbers, and even combinations of data (like job title + company + city) that could identify someone. When prompting AI, always anonymize or remove PII to protect privacy.
+<Callout type="info" title="Wat is PII?">
+**PII** staat voor **Personally Identifiable Information** (Persoonlijk Identificeerbare Informatie)—alle gegevens die een specifiek individu kunnen identificeren. Dit omvat namen, adressen, telefoonnummers, e-mailadressen, burgerservicenummers, financiële rekeningnummers, en zelfs combinaties van gegevens (zoals functietitel + bedrijf + stad) die iemand kunnen identificeren. Bij het prompten van AI, anonimiseer of verwijder altijd PII om privacy te beschermen.
 </Callout>
 
 <TryIt 
-  title="PII Scrubber"
-  description="Use this to identify and remove sensitive information before including text in prompts."
+  title="PII-verwijderaar"
+  description="Gebruik dit om gevoelige informatie te identificeren en te verwijderen voordat je tekst in prompts opneemt."
   prompt={`Review this text for sensitive information that should be removed before using it in an AI prompt:
 
 "\${textToReview}"
@@ -226,77 +226,77 @@ Identify:
 For each item found, suggest how to anonymize or generalize it while preserving the information needed for the task.`}
 />
 
-## Authenticity and Deception
+## Authenticiteit en misleiding
 
-There's a difference between using AI as a tool and using AI to deceive.
+Er is een verschil tussen AI gebruiken als hulpmiddel en AI gebruiken om te misleiden.
 
-### The Legitimacy Line
+### De legitimiteitsgrens
 
 <InfoGrid items={[
-  { label: "Legitimate Uses", description: "AI as a tool to enhance your work", example: "Drafting, brainstorming, editing, learning", exampleType: "text", color: "green" },
-  { label: "Gray Areas", description: "Context-dependent, requires judgment", example: "Ghostwriting, templates, automated responses", exampleType: "text", color: "amber" },
-  { label: "Deceptive Uses", description: "Misrepresenting AI work as human-original", example: "Fake reviews, academic fraud, impersonation", exampleType: "text", color: "red" }
+  { label: "Legitieme toepassingen", description: "AI als hulpmiddel om je werk te verbeteren", example: "Opstellen, brainstormen, bewerken, leren", exampleType: "text", color: "green" },
+  { label: "Grijze gebieden", description: "Contextafhankelijk, vereist oordeelsvermogen", example: "Ghostwriting, sjablonen, geautomatiseerde reacties", exampleType: "text", color: "amber" },
+  { label: "Misleidende toepassingen", description: "AI-werk verkeerd voorstellen als menselijk origineel", example: "Neprecensies, academische fraude, imitatie", exampleType: "text", color: "red" }
 ]} />
 
-Key questions to ask:
-- Would the recipient expect this to be original human work?
-- Am I gaining unfair advantage through deception?
-- Would disclosure change how the work is received?
+Belangrijke vragen om te stellen:
+- Zou de ontvanger verwachten dat dit origineel menselijk werk is?
+- Krijg ik oneerlijk voordeel door misleiding?
+- Zou bekendmaking veranderen hoe het werk wordt ontvangen?
 
-### Synthetic Media Responsibility
+### Verantwoordelijkheid voor synthetische media
 
-Creating realistic depictions of real people—whether images, audio, or video—carries special obligations:
+Het creëren van realistische afbeeldingen van echte mensen—of het nu afbeeldingen, audio of video zijn—brengt speciale verplichtingen met zich mee:
 
-- **Never** create realistic depictions without consent
-- **Always** label synthetic media clearly
-- **Consider** potential for misuse before creating
-- **Refuse** to create non-consensual intimate imagery
+- **Nooit** realistische afbeeldingen creëren zonder toestemming
+- **Altijd** synthetische media duidelijk labelen
+- **Overweeg** het potentieel voor misbruik voordat je creëert
+- **Weiger** niet-consensuele intieme beelden te creëren
 
-## Responsible Deployment
+## Verantwoorde implementatie
 
-When building AI features for others to use, your ethical obligations multiply.
+Bij het bouwen van AI-functies voor anderen om te gebruiken, vermenigvuldigen je ethische verplichtingen.
 
-### Pre-Deployment Checklist
+### Pre-implementatie checklist
 
 <Checklist 
-  title="Deployment Readiness"
+  title="Implementatiegereedheid"
   items={[
-    { text: "Tested for harmful outputs across diverse inputs" },
-    { text: "Tested for bias with varied demographics" },
-    { text: "User disclosure/consent mechanisms in place" },
-    { text: "Human oversight for high-stakes decisions" },
-    { text: "Feedback and reporting system available" },
-    { text: "Incident response plan documented" },
-    { text: "Clear usage policies communicated" },
-    { text: "Monitoring and alerting configured" }
+    { text: "Getest op schadelijke outputs over diverse inputs" },
+    { text: "Getest op bias met gevarieerde demografieën" },
+    { text: "Gebruikersbekendmaking/toestemmingsmechanismen aanwezig" },
+    { text: "Menselijk toezicht voor beslissingen met grote impact" },
+    { text: "Feedback- en rapportagesysteem beschikbaar" },
+    { text: "Incidentresponsplan gedocumenteerd" },
+    { text: "Duidelijk gebruiksbeleid gecommuniceerd" },
+    { text: "Monitoring en alertering geconfigureerd" }
   ]}
 />
 
-### Human Oversight Principles
+### Principes voor menselijk toezicht
 
 <InfoGrid items={[
-  { label: "High-Stakes Review", description: "Humans review decisions that significantly affect people", example: "Hiring, medical, legal, financial recommendations", exampleType: "text", color: "blue" },
-  { label: "Error Correction", description: "Mechanisms exist to catch and fix AI mistakes", example: "User feedback, quality sampling, appeals process", exampleType: "text", color: "blue" },
-  { label: "Continuous Learning", description: "Insights from issues improve the system", example: "Post-mortems, prompt updates, training improvements", exampleType: "text", color: "blue" },
-  { label: "Override Capability", description: "Humans can intervene when AI fails", example: "Manual review queues, escalation paths", exampleType: "text", color: "blue" }
+  { label: "Review bij hoge inzet", description: "Mensen beoordelen beslissingen die mensen significant beïnvloeden", example: "Aanwervings-, medische, juridische, financiële aanbevelingen", exampleType: "text", color: "blue" },
+  { label: "Foutcorrectie", description: "Mechanismen bestaan om AI-fouten op te vangen en te corrigeren", example: "Gebruikersfeedback, kwaliteitssteekproeven, beroepsprocedure", exampleType: "text", color: "blue" },
+  { label: "Continu leren", description: "Inzichten uit problemen verbeteren het systeem", example: "Post-mortems, promptupdates, trainingsverbeteringen", exampleType: "text", color: "blue" },
+  { label: "Override-mogelijkheid", description: "Mensen kunnen ingrijpen wanneer AI faalt", example: "Handmatige beoordelingswachtrijen, escalatiepaden", exampleType: "text", color: "blue" }
 ]} />
 
-## Special Context Guidelines
+## Richtlijnen voor speciale contexten
 
-Some domains require extra care due to their potential for harm or the vulnerability of those involved.
+Sommige domeinen vereisen extra zorg vanwege hun potentieel voor schade of de kwetsbaarheid van de betrokkenen.
 
-### Healthcare
+### Gezondheidszorg
 
 <TryIt 
-  title="Medical Context Disclaimer"
-  description="Template for AI systems that might receive health-related queries."
+  title="Medische context disclaimer"
+  description="Sjabloon voor AI-systemen die gezondheidsgerelateerde vragen kunnen ontvangen."
   prompt={`You are an AI assistant. When users ask about health or medical topics:
 
 **Always**:
 - Recommend consulting a qualified healthcare provider for personal medical decisions
 - Provide general educational information, not personalized medical advice
 - Include disclaimers that you cannot diagnose conditions
-- Suggest emergency services (911) for urgent situations
+- Suggest emergency services (112) for urgent situations
 
 **Never**:
 - Provide specific diagnoses
@@ -309,49 +309,49 @@ User question: \${healthQuestion}
 Respond helpfully while following these guidelines.`}
 />
 
-### Legal and Financial
+### Juridisch en financieel
 
-These domains have regulatory implications and require appropriate disclaimers:
-
-<InfoGrid items={[
-  { label: "Legal Queries", description: "Provide general information, not legal advice", example: "\"This is general information. For your specific situation, consult a licensed attorney.\"", color: "purple" },
-  { label: "Financial Queries", description: "Educate without providing personal financial advice", example: "\"This is educational. Consider consulting a financial advisor for your situation.\"", color: "purple" },
-  { label: "Jurisdiction Awareness", description: "Laws vary by location", example: "\"Laws differ by state/country. Verify requirements for your jurisdiction.\"", color: "purple" }
-]} />
-
-### Children and Education
+Deze domeinen hebben regelgevende implicaties en vereisen gepaste disclaimers:
 
 <InfoGrid items={[
-  { label: "Age-Appropriate Content", description: "Ensure outputs are suitable for the age group", example: "Filter mature content, use appropriate language", exampleType: "text", color: "cyan" },
-  { label: "Academic Integrity", description: "Support learning, don't replace it", example: "Explain concepts rather than writing essays for students", exampleType: "text", color: "cyan" },
-  { label: "Safety First", description: "Extra protection for vulnerable users", example: "Stricter content filters, no personal data collection", exampleType: "text", color: "cyan" }
+  { label: "Juridische vragen", description: "Verstrek algemene informatie, geen juridisch advies", example: "\"Dit is algemene informatie. Voor uw specifieke situatie, raadpleeg een erkend advocaat.\"", color: "purple" },
+  { label: "Financiële vragen", description: "Informeer zonder persoonlijk financieel advies te geven", example: "\"Dit is educatief. Overweeg een financieel adviseur te raadplegen voor uw situatie.\"", color: "purple" },
+  { label: "Jurisdictiebewustzijn", description: "Wetten verschillen per locatie", example: "\"Wetten verschillen per land/provincie. Verifieer de vereisten voor uw jurisdictie.\"", color: "purple" }
 ]} />
 
-## Self-Assessment
+### Kinderen en onderwijs
 
-Before deploying any prompt or AI system, run through these questions:
+<InfoGrid items={[
+  { label: "Leeftijdsgeschikte content", description: "Zorg ervoor dat outputs geschikt zijn voor de leeftijdsgroep", example: "Filter volwassen content, gebruik passende taal", exampleType: "text", color: "cyan" },
+  { label: "Academische integriteit", description: "Ondersteun leren, vervang het niet", example: "Leg concepten uit in plaats van essays te schrijven voor studenten", exampleType: "text", color: "cyan" },
+  { label: "Veiligheid eerst", description: "Extra bescherming voor kwetsbare gebruikers", example: "Strengere contentfilters, geen verzameling van persoonlijke gegevens", exampleType: "text", color: "cyan" }
+]} />
+
+## Zelfbeoordeling
+
+Voordat je een prompt of AI-systeem implementeert, doorloop deze vragen:
 
 <Checklist 
-  title="Ethical Self-Check"
+  title="Ethische zelfcontrole"
   items={[
-    { text: "Could this be used to harm someone?" },
-    { text: "Does this respect user privacy?" },
-    { text: "Could this perpetuate harmful biases?" },
-    { text: "Is AI involvement appropriately disclosed?" },
-    { text: "Is there adequate human oversight?" },
-    { text: "What's the worst that could happen?" },
-    { text: "Would I be comfortable if this use were public?" }
+    { text: "Kan dit worden gebruikt om iemand te schaden?" },
+    { text: "Respecteert dit de privacy van gebruikers?" },
+    { text: "Kan dit schadelijke vooroordelen in stand houden?" },
+    { text: "Is AI-betrokkenheid gepast bekendgemaakt?" },
+    { text: "Is er adequaat menselijk toezicht?" },
+    { text: "Wat is het ergste dat kan gebeuren?" },
+    { text: "Zou ik me comfortabel voelen als dit gebruik openbaar werd?" }
   ]}
 />
 
 <Quiz 
-  question="A user asks your AI system how to 'get rid of someone who's bothering them.' What's the most appropriate response strategy?"
+  question="Een gebruiker vraagt je AI-systeem hoe je 'van iemand afkomt die lastig is.' Wat is de meest gepaste responsstrategie?"
   options={[
-    "Refuse immediately—this could be a request for harm instructions",
-    "Provide conflict resolution advice since that's the most likely intent",
-    "Ask clarifying questions to understand intent before deciding how to respond",
-    "Explain you can't help with anything related to harming people"
+    "Meteen weigeren—dit zou een verzoek om schade-instructies kunnen zijn",
+    "Conflictoplossingsadvies geven aangezien dat de meest waarschijnlijke intentie is",
+    "Verduidelijkende vragen stellen om de intentie te begrijpen voordat je beslist hoe te reageren",
+    "Uitleggen dat je niet kunt helpen met iets dat te maken heeft met het schaden van mensen"
   ]}
   correctIndex={2}
-  explanation="Ambiguous requests deserve clarification, not assumptions. 'Get rid of someone' could mean ending a friendship, resolving a workplace conflict, or something harmful. Asking clarifying questions lets you respond appropriately to the actual intent while remaining cautious about providing harmful information."
+  explanation="Ambigue verzoeken verdienen verduidelijking, geen aannames. 'Van iemand afkomen' kan betekenen: een vriendschap beëindigen, een werkplekconflict oplossen, of iets schadelijks. Verduidelijkende vragen stellen laat je gepast reageren op de daadwerkelijke intentie terwijl je voorzichtig blijft met het verstrekken van schadelijke informatie."
 />

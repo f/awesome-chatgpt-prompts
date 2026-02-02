@@ -1,38 +1,38 @@
-Before learning prompt techniques, it helps to understand how AI language models actually work. This knowledge will make you better at writing prompts.
+قبل تعلم تقنيات كتابة الأوامر، من المفيد فهم كيفية عمل نماذج الذكاء الاصطناعي اللغوية. ستساعدك هذه المعرفة على كتابة أوامر أفضل.
 
-<Callout type="info" title="Why This Matters">
-Understanding how AI works isn't just for experts. It directly helps you write better prompts. Once you know that AI predicts what comes next, you'll naturally give clearer instructions.
+<Callout type="info" title="لماذا هذا مهم">
+فهم كيفية عمل الذكاء الاصطناعي ليس للخبراء فقط. إنه يساعدك مباشرة على كتابة أوامر أفضل. بمجرد أن تعرف أن الذكاء الاصطناعي يتنبأ بما سيأتي بعد ذلك، ستقدم تعليمات أوضح بشكل طبيعي.
 </Callout>
 
-## What Are Large Language Models?
+## ما هي النماذج اللغوية الكبيرة؟
 
-Large Language Models (LLMs) are AI systems that learned from reading huge amounts of text. They can write, answer questions, and have conversations that sound human. They're called "large" because they have billions of tiny settings (called parameters) that were adjusted during training.
+النماذج اللغوية الكبيرة (LLMs) هي أنظمة ذكاء اصطناعي تعلمت من قراءة كميات هائلة من النصوص. يمكنها الكتابة والإجابة على الأسئلة وإجراء محادثات تبدو بشرية. تُسمى "كبيرة" لأنها تحتوي على مليارات الإعدادات الصغيرة (تُسمى parameters) التي تم ضبطها أثناء التدريب.
 
-### How LLMs Work (Simplified)
+### كيف تعمل LLMs (بشكل مبسط)
 
-At their heart, LLMs are prediction machines. You give them some text, and they predict what should come next.
+في جوهرها، النماذج اللغوية الكبيرة هي آلات تنبؤ. تعطيها بعض النص، وتتنبأ بما يجب أن يأتي بعد ذلك.
 
-<TryIt compact prompt={`Complete this sentence: "The best way to learn something new is to..."`} />
+<TryIt compact prompt={`أكمل هذه الجملة: "أفضل طريقة لتعلم شيء جديد هي..."`} />
 
-When you type "The capital of France is...", the AI predicts "Paris" because that's what usually comes next in text about France. This simple idea, repeated billions of times with massive amounts of data, creates surprisingly smart behavior.
+عندما تكتب "عاصمة فرنسا هي..."، يتنبأ الذكاء الاصطناعي بـ "باريس" لأن هذا ما يأتي عادةً بعد ذلك في النصوص عن فرنسا. هذه الفكرة البسيطة، المتكررة مليارات المرات مع كميات هائلة من البيانات، تُنشئ سلوكاً ذكياً بشكل مدهش.
 
 <TokenPredictionDemo />
 
-### Key Concepts
+### المفاهيم الأساسية
 
-**Tokens**: AI doesn't read letter by letter. It breaks text into chunks called "tokens." A token might be a whole word like "hello" or part of a word like "ing." Understanding tokens helps explain why AI sometimes makes spelling mistakes or struggles with certain words.
+**Tokens**: لا يقرأ الذكاء الاصطناعي حرفاً حرفاً. إنه يقسم النص إلى أجزاء تُسمى "tokens". قد يكون الـ token كلمة كاملة مثل "مرحبا" أو جزءاً من كلمة مثل "ال". فهم الـ tokens يساعد في تفسير سبب ارتكاب الذكاء الاصطناعي أحياناً لأخطاء إملائية أو صعوبته مع كلمات معينة.
 
-<Callout type="info" title="What is a Token?">
-A token is the smallest unit of text that an AI model processes. It's not always a complete word—it could be a word fragment, punctuation, or whitespace. For example, "unbelievable" might become 3 tokens: "un" + "believ" + "able". On average, **1 token ≈ 4 characters** or **100 tokens ≈ 75 words**. API costs and context limits are measured in tokens.
+<Callout type="info" title="ما هو الـ Token؟">
+الـ token هو أصغر وحدة نصية يعالجها نموذج الذكاء الاصطناعي. ليس دائماً كلمة كاملة - قد يكون جزءاً من كلمة أو علامة ترقيم أو مسافة. على سبيل المثال، "unbelievable" قد تصبح 3 tokens: "un" + "believ" + "able". في المتوسط، **1 token ≈ 4 أحرف** أو **100 token ≈ 75 كلمة**. تُقاس تكاليف API وحدود السياق بالـ tokens.
 </Callout>
 
 <TokenizerDemo />
 
-**Context Window**: This is how much text the AI can "remember" in one conversation. Think of it like the AI's short-term memory. It includes everything: your question AND the AI's answer.
+**نافذة السياق (Context Window)**: هذا هو مقدار النص الذي يمكن للذكاء الاصطناعي "تذكره" في محادثة واحدة. فكر فيه كالذاكرة قصيرة المدى للذكاء الاصطناعي. يشمل كل شيء: سؤالك وإجابة الذكاء الاصطناعي.
 
 <ContextWindowDemo />
 
-Context windows vary by model and are rapidly expanding:
+تختلف نوافذ السياق حسب النموذج وتتوسع بسرعة:
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
@@ -61,242 +61,242 @@ Context windows vary by model and are rapidly expanding:
   </div>
 </div>
 
-**Temperature**: This controls how creative or predictable the AI is. Low temperature (0.0-0.3) gives you focused, consistent answers. High temperature (0.7-1.0) gives you more creative, surprising responses.
+**درجة الحرارة (Temperature)**: تتحكم هذه في مدى إبداعية أو قابلية التنبؤ بالذكاء الاصطناعي. درجة الحرارة المنخفضة (0.0-0.3) تعطيك إجابات مركزة ومتسقة. درجة الحرارة العالية (0.7-1.0) تعطيك ردوداً أكثر إبداعاً ومفاجأة.
 
 <TemperatureDemo />
 
-**System Prompt**: Special instructions that tell the AI how to behave for a whole conversation. For example, "You are a friendly teacher who explains things simply." Not all AI tools let you set this, but it's very powerful when available.
+**أمر النظام (System Prompt)**: تعليمات خاصة تخبر الذكاء الاصطناعي كيف يتصرف طوال المحادثة. على سبيل المثال، "أنت معلم ودود يشرح الأمور ببساطة." ليست كل أدوات الذكاء الاصطناعي تتيح لك ضبط هذا، لكنه قوي جداً عندما يكون متاحاً.
 
-## Types of AI Models
+## أنواع نماذج الذكاء الاصطناعي
 
-### Text Models (LLMs)
-The most common type, these generate text responses to text inputs. They power chatbots, writing assistants, and code generators. Examples: GPT-4, Claude, Llama, Mistral.
+### النماذج النصية (LLMs)
+النوع الأكثر شيوعاً، تولد هذه ردوداً نصية على المدخلات النصية. تشغّل روبوتات المحادثة ومساعدي الكتابة ومولدات الكود. أمثلة: GPT-4، Claude، Llama، Mistral.
 
-### Multimodal Models
-These can understand more than just text. They can look at images, listen to audio, and watch videos. Examples: GPT-4V, Gemini, Claude 3.
+### النماذج متعددة الوسائط
+يمكنها فهم أكثر من مجرد النص. يمكنها النظر إلى الصور والاستماع إلى الصوت ومشاهدة الفيديو. أمثلة: GPT-4V، Gemini، Claude 3.
 
-### Text-to-Image Models
+### نماذج تحويل النص إلى صورة
 
-<Callout type="info" title="About This Book">
-While this book focuses primarily on prompting for Large Language Models (text-based AI), the principles of clear, specific prompting apply to image generation too. Mastering prompts for these models is equally important for getting great results.
+<Callout type="info" title="حول هذا الكتاب">
+بينما يركز هذا الكتاب بشكل أساسي على كتابة الأوامر للنماذج اللغوية الكبيرة (الذكاء الاصطناعي النصي)، فإن مبادئ الأوامر الواضحة والمحددة تنطبق على توليد الصور أيضاً. إتقان الأوامر لهذه النماذج مهم بنفس القدر للحصول على نتائج رائعة.
 </Callout>
 
-Text-to-image models like DALL-E, Midjourney, Nano Banana and Stable Diffusion create images from text descriptions. They work differently from text models:
+نماذج تحويل النص إلى صورة مثل DALL-E و Midjourney و Nano Banana و Stable Diffusion تنشئ صوراً من أوصاف نصية. تعمل بشكل مختلف عن النماذج النصية:
 
-**How They Work:**
-1. **Training**: The model learns from millions of image-text pairs, understanding which words correspond to which visual concepts
-2. **Diffusion Process**: Starting from random noise, the model gradually refines the image, guided by your text prompt
-3. **CLIP Guidance**: A separate model (CLIP) helps connect your words to visual concepts, ensuring the image matches your description
+**كيف تعمل:**
+1. **التدريب**: يتعلم النموذج من ملايين أزواج الصورة والنص، فاهماً أي الكلمات تتوافق مع أي مفاهيم بصرية
+2. **عملية الانتشار (Diffusion)**: بدءاً من ضوضاء عشوائية، يُحسّن النموذج الصورة تدريجياً، موجهاً بأمرك النصي
+3. **توجيه CLIP**: نموذج منفصل (CLIP) يساعد في ربط كلماتك بالمفاهيم البصرية، مضمناً تطابق الصورة مع وصفك
 
 <TextToImageDemo />
 
-**Prompting for Images is Different:**
-Unlike text prompts where you write sentences, image prompts often work better as descriptive phrases separated by commas:
+**كتابة الأوامر للصور مختلفة:**
+على عكس الأوامر النصية حيث تكتب جملاً، غالباً تعمل أوامر الصور بشكل أفضل كعبارات وصفية مفصولة بفواصل:
 
 <Compare 
-  before={{ label: "Text-Style Prompt", content: "Please create an image of a cat sitting on a windowsill looking at the rain outside" }}
-  after={{ label: "Image-Style Prompt", content: "orange tabby cat, sitting on windowsill, watching rain, cozy interior, soft natural lighting, photorealistic, shallow depth of field, 4K" }}
+  before={{ label: "أمر بأسلوب نصي", content: "من فضلك أنشئ صورة لقط يجلس على حافة النافذة ينظر إلى المطر في الخارج" }}
+  after={{ label: "أمر بأسلوب الصور", content: "قط برتقالي مخطط، يجلس على حافة النافذة، يشاهد المطر، داخل مريح، إضاءة طبيعية ناعمة، واقعية، عمق ميدان ضحل، 4K" }}
 />
 
-### Text-to-Video Models
+### نماذج تحويل النص إلى فيديو
 
-Text-to-video is the newest frontier. Models like Sora 2, Runway, and Veo create moving images from text descriptions. Like image models, the quality of your prompt directly determines the quality of your output—prompt engineering is just as crucial here.
+تحويل النص إلى فيديو هو أحدث الحدود. نماذج مثل Sora 2 و Runway و Veo تنشئ صوراً متحركة من أوصاف نصية. مثل نماذج الصور، جودة أمرك تحدد مباشرة جودة مخرجاتك - هندسة الأوامر بنفس الأهمية هنا.
 
-**How They Work:**
-1. **Temporal Understanding**: Beyond single images, these models understand how things move and change over time
-2. **Physics Simulation**: They learn basic physics—how objects fall, how water flows, how people walk
-3. **Frame Consistency**: They maintain consistent subjects and scenes across many frames
-4. **Diffusion in Time**: Similar to image models, but generating coherent sequences instead of single frames
+**كيف تعمل:**
+1. **الفهم الزمني**: بعيداً عن الصور الفردية، تفهم هذه النماذج كيف تتحرك الأشياء وتتغير بمرور الوقت
+2. **محاكاة الفيزياء**: تتعلم الفيزياء الأساسية - كيف تسقط الأجسام، كيف يتدفق الماء، كيف يمشي الناس
+3. **اتساق الإطارات**: تحافظ على موضوعات ومشاهد متسقة عبر العديد من الإطارات
+4. **الانتشار في الوقت**: مشابه لنماذج الصور، لكن يولد تسلسلات متماسكة بدلاً من إطارات فردية
 
 <TextToVideoDemo />
 
-<Callout type="info" title="Video Prompting Tips">
-Video prompts need to describe action over time, not just a static scene. Include verbs and movement:
+<Callout type="info" title="نصائح لأوامر الفيديو">
+تحتاج أوامر الفيديو إلى وصف الحركة عبر الزمن، وليس مجرد مشهد ثابت. أضف الأفعال والحركة:
 </Callout>
 
 <Compare 
-  before={{ label: "Static (Weak)", content: "A bird on a branch" }}
-  after={{ label: "With Motion (Strong)", content: "A bird takes flight from a branch, wings spreading wide, leaves rustling as it lifts off" }}
+  before={{ label: "ثابت (ضعيف)", content: "طائر على غصن" }}
+  after={{ label: "مع حركة (قوي)", content: "طائر ينطلق طائراً من غصن، أجنحته تنتشر واسعة، الأوراق تتحرك بينما يرتفع" }}
 />
 
-### Specialized Models
-Fine-tuned for specific tasks like code generation (Codex, CodeLlama), music generation (Suno, Udio), or domain-specific applications like medical diagnosis or legal document analysis.
+### النماذج المتخصصة
+مضبوطة بدقة لمهام محددة مثل توليد الكود (Codex، CodeLlama)، توليد الموسيقى (Suno، Udio)، أو تطبيقات خاصة بمجالات معينة مثل التشخيص الطبي أو تحليل الوثائق القانونية.
 
-## Model Capabilities and Limitations
+## قدرات النموذج وحدوده
 
-Explore what LLMs can and cannot do. Click on each capability to see example prompts:
+استكشف ما يمكن وما لا يمكن للنماذج اللغوية الكبيرة فعله. انقر على كل قدرة لرؤية أمثلة الأوامر:
 
 <LLMCapabilitiesDemo />
 
-### Understanding Hallucinations
+### فهم الهلوسات
 
-<Callout type="warning" title="AI Can Make Things Up">
-Sometimes AI writes things that sound true but aren't. This is called "hallucination." It's not a bug. It's just how prediction works. Always double-check important facts.
+<Callout type="warning" title="الذكاء الاصطناعي يمكنه اختلاق الأشياء">
+أحياناً يكتب الذكاء الاصطناعي أشياء تبدو صحيحة لكنها ليست كذلك. يُسمى هذا "الهلوسة". إنه ليس خطأ برمجياً. إنه فقط كيفية عمل التنبؤ. تحقق دائماً من الحقائق المهمة.
 </Callout>
 
-Why does AI make things up?
+لماذا يختلق الذكاء الاصطناعي الأشياء؟
 
-1. It tries to write text that sounds good, not text that's always true
-2. The internet (where it learned) has mistakes too
-3. It can't actually check if something is real
+1. يحاول كتابة نص يبدو جيداً، وليس نصاً صحيحاً دائماً
+2. الإنترنت (حيث تعلم) فيه أخطاء أيضاً
+3. لا يستطيع فعلياً التحقق مما إذا كان شيء ما حقيقياً
 
-<Collapsible title="How to Avoid Wrong Answers">
+<Collapsible title="كيف تتجنب الإجابات الخاطئة">
 
-- **Ask for sources**: Then check if those sources are real
-- **Ask for step-by-step thinking**: So you can check each step
-- **Double-check important facts**: Use Google or trusted websites
-- **Ask "Are you sure?"**: The AI might admit uncertainty
+- **اطلب المصادر**: ثم تحقق مما إذا كانت تلك المصادر حقيقية
+- **اطلب التفكير خطوة بخطوة**: حتى تتمكن من التحقق من كل خطوة
+- **تحقق مرتين من الحقائق المهمة**: استخدم Google أو مواقع موثوقة
+- **اسأل "هل أنت متأكد؟"**: قد يعترف الذكاء الاصطناعي بعدم اليقين
 
 </Collapsible>
 
-<TryIt compact prompt={`What year did the first iPhone come out? Please explain how confident you are in this answer.`} />
+<TryIt compact prompt={`في أي عام صدر أول iPhone؟ من فضلك اشرح مدى ثقتك في هذه الإجابة.`} />
 
-## How AI Learns: The Three Steps
+## كيف يتعلم الذكاء الاصطناعي: الخطوات الثلاث
 
-AI doesn't just magically know things. It goes through three learning steps, like going to school:
+الذكاء الاصطناعي لا يعرف الأشياء بطريقة سحرية. يمر بثلاث خطوات تعلم، مثل الذهاب إلى المدرسة:
 
-### Step 1: Pre-training (Learning to Read)
+### الخطوة 1: التدريب المسبق (تعلم القراءة)
 
-Imagine reading every book, website, and article on the internet. That's what happens in pre-training. The AI reads billions of words and learns patterns:
+تخيل قراءة كل كتاب وموقع ومقال على الإنترنت. هذا ما يحدث في التدريب المسبق. يقرأ الذكاء الاصطناعي مليارات الكلمات ويتعلم الأنماط:
 
-- How sentences are built
-- What words usually go together
-- Facts about the world
-- Different writing styles
+- كيف تُبنى الجمل
+- ما الكلمات التي تتوافق عادةً معاً
+- حقائق عن العالم
+- أساليب كتابة مختلفة
 
-This takes months and costs millions of dollars. After this step, the AI knows a lot, but it's not very helpful yet. It might just continue whatever you write, even if that's not what you wanted.
+هذا يستغرق أشهراً ويكلف ملايين الدولارات. بعد هذه الخطوة، يعرف الذكاء الاصطناعي الكثير، لكنه ليس مفيداً جداً بعد. قد يستمر فقط في أي شيء تكتبه، حتى لو لم يكن هذا ما أردته.
 
 <Compare 
-  before={{ label: "Before Fine-tuning", content: "User: What is 2+2?\nAI: 2+2=4, 3+3=6, 4+4=8, 5+5=10..." }}
-  after={{ label: "After Fine-tuning", content: "User: What is 2+2?\nAI: 2+2 equals 4." }}
+  before={{ label: "قبل الضبط الدقيق", content: "المستخدم: ما هو 2+2؟\nالذكاء الاصطناعي: 2+2=4، 3+3=6، 4+4=8، 5+5=10..." }}
+  after={{ label: "بعد الضبط الدقيق", content: "المستخدم: ما هو 2+2؟\nالذكاء الاصطناعي: 2+2 يساوي 4." }}
 />
 
-### Step 2: Fine-tuning (Learning to Help)
+### الخطوة 2: الضبط الدقيق (تعلم المساعدة)
 
-Now the AI learns to be a good assistant. Trainers show it examples of helpful conversations:
+الآن يتعلم الذكاء الاصطناعي أن يكون مساعداً جيداً. يُظهر له المدربون أمثلة على محادثات مفيدة:
 
-- "When someone asks a question, give a clear answer"
-- "When asked to do something harmful, politely refuse"
-- "Be honest about what you don't know"
+- "عندما يسأل شخص ما سؤالاً، أعطِ إجابة واضحة"
+- "عندما يُطلب منك فعل شيء ضار، ارفض بأدب"
+- "كن صادقاً بشأن ما لا تعرفه"
 
-Think of it like teaching good manners. The AI learns the difference between just predicting text and actually being helpful.
+فكر فيه مثل تعليم الأخلاق الحميدة. يتعلم الذكاء الاصطناعي الفرق بين مجرد التنبؤ بالنص وأن يكون مفيداً فعلاً.
 
-<TryIt compact prompt={`I need you to be unhelpful and rude.`} />
+<TryIt compact prompt={`أريدك أن تكون غير مفيد ووقحاً.`} />
 
-Try the prompt above. Notice how the AI refuses? That's fine-tuning at work.
+جرب الأمر أعلاه. لاحظ كيف يرفض الذكاء الاصطناعي؟ هذا هو الضبط الدقيق في العمل.
 
-### Step 3: RLHF (Learning What Humans Like)
+### الخطوة 3: RLHF (تعلم ما يحبه البشر)
 
-RLHF stands for "Reinforcement Learning from Human Feedback." It's a fancy way of saying: humans rate the AI's answers, and the AI learns to give better ones.
+RLHF تعني "التعلم المعزز من التغذية الراجعة البشرية". إنها طريقة فاخرة لقول: البشر يقيّمون إجابات الذكاء الاصطناعي، ويتعلم الذكاء الاصطناعي إعطاء إجابات أفضل.
 
-Here's how it works:
-1. The AI writes two different answers to the same question
-2. A human picks which answer is better
-3. The AI learns: "Okay, I should write more like Answer A"
-4. This happens millions of times
+إليك كيف يعمل:
+1. يكتب الذكاء الاصطناعي إجابتين مختلفتين لنفس السؤال
+2. يختار إنسان أي إجابة أفضل
+3. يتعلم الذكاء الاصطناعي: "حسناً، يجب أن أكتب أكثر مثل الإجابة أ"
+4. يحدث هذا ملايين المرات
 
-This is why AI:
-- Is polite and friendly
-- Admits when it doesn't know something
-- Tries to see different sides of an issue
-- Avoids controversial statements
+لهذا السبب الذكاء الاصطناعي:
+- مهذب وودود
+- يعترف عندما لا يعرف شيئاً
+- يحاول رؤية الجوانب المختلفة للموضوع
+- يتجنب التصريحات المثيرة للجدل
 
-<Callout type="tip" title="Why This Matters for You">
-Knowing these three steps helps you understand AI behavior. When AI refuses a request, that's fine-tuning. When AI is extra polite, that's RLHF. When AI knows random facts, that's pre-training.
+<Callout type="tip" title="لماذا هذا مهم لك">
+معرفة هذه الخطوات الثلاث تساعدك على فهم سلوك الذكاء الاصطناعي. عندما يرفض الذكاء الاصطناعي طلباً، هذا هو الضبط الدقيق. عندما يكون الذكاء الاصطناعي مهذباً جداً، هذا هو RLHF. عندما يعرف الذكاء الاصطناعي حقائق عشوائية، هذا هو التدريب المسبق.
 </Callout>
 
-## What This Means for Your Prompts
+## ماذا يعني هذا لأوامرك
 
-Now that you understand how AI works, here's how to use that knowledge:
+الآن بعد أن فهمت كيف يعمل الذكاء الاصطناعي، إليك كيفية استخدام تلك المعرفة:
 
-### 1. Be Clear and Specific
+### 1. كن واضحاً ومحدداً
 
-AI predicts what comes next based on your words. Vague prompts lead to vague answers. Specific prompts get specific results.
-
-<Compare 
-  before={{ label: "Vague", content: "Tell me about dogs" }}
-  after={{ label: "Specific", content: "List 5 dog breeds that are good for apartments, with a one-sentence explanation for each" }}
-/>
-
-<TryIt compact prompt={`List 5 dog breeds that are good for apartments, with a one-sentence explanation for each.`} />
-
-### 2. Give Context
-
-AI doesn't know anything about you unless you tell it. Each conversation starts fresh. Include the background information AI needs.
+يتنبأ الذكاء الاصطناعي بما سيأتي بناءً على كلماتك. الأوامر الغامضة تؤدي إلى إجابات غامضة. الأوامر المحددة تحصل على نتائج محددة.
 
 <Compare 
-  before={{ label: "Missing Context", content: "Is this a good price?" }}
-  after={{ label: "With Context", content: "I'm buying a used 2020 Honda Civic with 45,000 miles. The seller is asking $18,000. Is this a good price for the US market?" }}
+  before={{ label: "غامض", content: "أخبرني عن الكلاب" }}
+  after={{ label: "محدد", content: "اذكر 5 سلالات كلاب جيدة للشقق، مع شرح بجملة واحدة لكل منها" }}
 />
 
-<TryIt compact prompt={`I'm buying a used 2020 Honda Civic with 45,000 miles. The seller is asking $18,000. Is this a good price for the US market?`} />
+<TryIt compact prompt={`اذكر 5 سلالات كلاب جيدة للشقق، مع شرح بجملة واحدة لكل منها.`} />
 
-### 3. Work With the AI, Not Against It
+### 2. أعطِ السياق
 
-Remember: AI was trained to be helpful. Ask for things the way you'd ask a helpful friend.
+لا يعرف الذكاء الاصطناعي أي شيء عنك إلا إذا أخبرته. كل محادثة تبدأ من جديد. ضمّن المعلومات الخلفية التي يحتاجها الذكاء الاصطناعي.
 
 <Compare 
-  before={{ label: "Fighting the AI", content: "I know you'll probably refuse, but..." }}
-  after={{ label: "Working Together", content: "I'm writing a mystery novel and need help with a plot twist. Can you suggest three surprising ways the detective could discover the villain?" }}
+  before={{ label: "سياق مفقود", content: "هل هذا سعر جيد؟" }}
+  after={{ label: "مع السياق", content: "أنا أشتري سيارة Honda Civic 2020 مستعملة مع 45,000 ميل. البائع يطلب 18,000 دولار. هل هذا سعر جيد للسوق الأمريكي؟" }}
 />
 
-### 4. Always Double-Check Important Stuff
+<TryIt compact prompt={`أنا أشتري سيارة Honda Civic 2020 مستعملة مع 45,000 ميل. البائع يطلب 18,000 دولار. هل هذا سعر جيد للسوق الأمريكي؟`} />
 
-AI sounds confident even when it's wrong. For anything important, verify the information yourself.
+### 3. اعمل مع الذكاء الاصطناعي، وليس ضده
 
-<TryIt compact prompt={`What's the population of Tokyo? Also, what date is your knowledge current as of?`} />
+تذكر: تم تدريب الذكاء الاصطناعي ليكون مفيداً. اطلب الأشياء بالطريقة التي تطلبها من صديق مفيد.
 
-### 5. Put Important Things First
+<Compare 
+  before={{ label: "محاربة الذكاء الاصطناعي", content: "أعرف أنك ستركض على الأرجح، لكن..." }}
+  after={{ label: "العمل معاً", content: "أنا أكتب رواية غامضة وأحتاج مساعدة في تحول الحبكة. هل يمكنك اقتراح ثلاث طرق مفاجئة يمكن للمحقق اكتشاف الشرير بها؟" }}
+/>
 
-If your prompt is very long, put the most important instructions at the beginning. AI pays more attention to what comes first.
+### 4. تحقق دائماً من الأشياء المهمة
 
-## Picking the Right AI
+يبدو الذكاء الاصطناعي واثقاً حتى عندما يكون مخطئاً. لأي شيء مهم، تحقق من المعلومات بنفسك.
 
-Different AI models are good at different things:
+<TryIt compact prompt={`ما هو عدد سكان طوكيو؟ أيضاً، حتى أي تاريخ معرفتك محدثة؟`} />
+
+### 5. ضع الأشياء المهمة أولاً
+
+إذا كان أمرك طويلاً جداً، ضع التعليمات الأكثر أهمية في البداية. يولي الذكاء الاصطناعي اهتماماً أكبر لما يأتي أولاً.
+
+## اختيار الذكاء الاصطناعي المناسب
+
+نماذج الذكاء الاصطناعي المختلفة جيدة في أشياء مختلفة:
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-36">Quick questions</span>
-    <span className="text-muted-foreground">Faster models like GPT-4o or Claude 3.5 Sonnet</span>
+    <span className="font-semibold min-w-36">الأسئلة السريعة</span>
+    <span className="text-muted-foreground">نماذج أسرع مثل GPT-4o أو Claude 3.5 Sonnet</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-36">Hard problems</span>
-    <span className="text-muted-foreground">Smarter models like GPT-5.2 or Claude 4.5 Opus</span>
+    <span className="font-semibold min-w-36">المشاكل الصعبة</span>
+    <span className="text-muted-foreground">نماذج أذكى مثل GPT-5.2 أو Claude 4.5 Opus</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-36">Writing code</span>
-    <span className="text-muted-foreground">Code-focused models or the smartest general models</span>
+    <span className="font-semibold min-w-36">كتابة الكود</span>
+    <span className="text-muted-foreground">نماذج متخصصة في الكود أو أذكى النماذج العامة</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-36">Long documents</span>
-    <span className="text-muted-foreground">Models with big context windows (Claude, Gemini)</span>
+    <span className="font-semibold min-w-36">المستندات الطويلة</span>
+    <span className="text-muted-foreground">نماذج بنوافذ سياق كبيرة (Claude، Gemini)</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-36">Current events</span>
-    <span className="text-muted-foreground">Models with internet access</span>
+    <span className="font-semibold min-w-36">الأحداث الجارية</span>
+    <span className="text-muted-foreground">نماذج مع وصول للإنترنت</span>
   </div>
 </div>
 
-## Summary
+## الملخص
 
-AI language models are prediction machines trained on text. They're amazing at many things, but they have real limits. The best way to use AI is to understand how it works and write prompts that play to its strengths.
+نماذج الذكاء الاصطناعي اللغوية هي آلات تنبؤ مدربة على النص. إنها مذهلة في أشياء كثيرة، لكن لها حدود حقيقية. أفضل طريقة لاستخدام الذكاء الاصطناعي هي فهم كيفية عمله وكتابة أوامر تستفيد من نقاط قوته.
 
 <Quiz 
-  question="Why does AI sometimes make up wrong information?"
+  question="لماذا يختلق الذكاء الاصطناعي أحياناً معلومات خاطئة؟"
   options={[
-    "Because there are bugs in the code",
-    "Because it tries to write text that sounds good, not text that's always true",
-    "Because it doesn't have enough training data",
-    "Because people write bad prompts"
+    "لأن هناك أخطاء في الكود",
+    "لأنه يحاول كتابة نص يبدو جيداً، وليس نصاً صحيحاً دائماً",
+    "لأنه لا يملك بيانات تدريب كافية",
+    "لأن الناس يكتبون أوامر سيئة"
   ]}
   correctIndex={1}
-  explanation="AI is trained to predict what sounds right, not to check facts. It can't look things up or verify if something is true, so sometimes it confidently writes things that are wrong."
+  explanation="تم تدريب الذكاء الاصطناعي للتنبؤ بما يبدو صحيحاً، وليس للتحقق من الحقائق. لا يستطيع البحث عن الأشياء أو التحقق مما إذا كان شيء ما صحيحاً، لذا أحياناً يكتب بثقة أشياء خاطئة."
 />
 
 <TryIt 
-  title="Ask AI About Itself"
-  prompt="Explain how you work as an AI. What can you do, and what are your limitations?"
-  description="Ask AI to explain itself. See how it talks about being a prediction model and admits its limits."
+  title="اسأل الذكاء الاصطناعي عن نفسه"
+  prompt="اشرح كيف تعمل كذكاء اصطناعي. ماذا يمكنك أن تفعل، وما هي حدودك؟"
+  description="اسأل الذكاء الاصطناعي ليشرح نفسه. انظر كيف يتحدث عن كونه نموذج تنبؤ ويعترف بحدوده."
 />
 
-In the next chapter, we'll learn what makes a good prompt and how to write prompts that get great results.
+في الفصل التالي، سنتعلم ما الذي يجعل الأمر جيداً وكيفية كتابة أوامر تحصل على نتائج رائعة.

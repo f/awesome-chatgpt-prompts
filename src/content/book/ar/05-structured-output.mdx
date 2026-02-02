@@ -1,108 +1,108 @@
-Getting consistent, well-formatted output is essential for production applications and efficient workflows. This chapter covers techniques for controlling exactly how AI models format their responses.
+الحصول على مخرجات متسقة ومنسقة بشكل جيد أمر ضروري للتطبيقات الإنتاجية وسير العمل الفعال. يغطي هذا الفصل تقنيات التحكم الدقيق في كيفية تنسيق نماذج الذكاء الاصطناعي لاستجاباتها.
 
-<Callout type="info" title="From Prose to Data">
-Structured output transforms AI responses from freeform text into actionable, parseable data.
+<Callout type="info" title="من النص إلى البيانات">
+المخرجات المهيكلة تحول استجابات الذكاء الاصطناعي من نص حر إلى بيانات قابلة للتنفيذ والتحليل.
 </Callout>
 
-## Why Structure Matters
+## أهمية الهيكلة
 
 <StructuredOutputDemo />
 
-## Basic Formatting Techniques
+## تقنيات التنسيق الأساسية
 
-### Lists
+### القوائم
 
-Lists are perfect for step-by-step instructions, ranked items, or collections of related points. They're easy to scan and parse. Use **numbered lists** when order matters (steps, rankings) and **bullet points** for unordered collections.
-
-<TryIt 
-  compact
-  title="List Formatting"
-  prompt={`Provide 5 tips for better sleep.
-
-Format: Numbered list with a brief explanation for each.
-Each tip should be bold, followed by a dash and explanation.`}
-/>
-
-<Callout type="tip" title="List Best Practices">
-Specify the exact number of items you want, whether to include explanations, and if items should be bold or have a specific structure.
-</Callout>
-
-### Tables
-
-Tables excel at comparing multiple items across the same dimensions. They're ideal for feature comparisons, data summaries, and any information with consistent attributes. Always define your column headers explicitly.
+القوائم مثالية للتعليمات خطوة بخطوة، والعناصر المرتبة، أو مجموعات النقاط المترابطة. يسهل مسحها وتحليلها. استخدم **القوائم المرقمة** عندما يكون الترتيب مهماً (الخطوات، التصنيفات) و**النقاط النقطية** للمجموعات غير المرتبة.
 
 <TryIt 
   compact
-  title="Table Formatting"
-  prompt={`Compare the top 4 Python web frameworks.
+  title="تنسيق القوائم"
+  prompt={`قدم 5 نصائح لنوم أفضل.
 
-Format as a markdown table with columns:
-| Framework | Best For | Learning Curve | Performance |`}
+التنسيق: قائمة مرقمة مع شرح موجز لكل نصيحة.
+يجب أن تكون كل نصيحة بخط عريض، متبوعة بشرطة وتوضيح.`}
 />
 
-<Callout type="tip" title="Table Best Practices">
-Specify column names, expected data types (text, numbers, ratings), and how many rows you need. For complex comparisons, limit to 4-6 columns for readability.
+<Callout type="tip" title="أفضل ممارسات القوائم">
+حدد العدد الدقيق للعناصر التي تريدها، وما إذا كنت تريد تضمين شروحات، وما إذا كان يجب أن تكون العناصر بخط عريض أو لها هيكل معين.
 </Callout>
 
-### Headers and Sections
+### الجداول
 
-Headers create a clear document structure, making long responses scannable and organized. Use them for reports, analyses, or any multi-part response. Hierarchical headers (##, ###) show relationships between sections.
+الجداول تتفوق في مقارنة عناصر متعددة عبر نفس الأبعاد. إنها مثالية لمقارنات الميزات، وملخصات البيانات، وأي معلومات ذات سمات متسقة. حدد دائماً عناوين الأعمدة بشكل صريح.
 
-```
-Analyze this business proposal.
+<TryIt 
+  compact
+  title="تنسيق الجداول"
+  prompt={`قارن بين أفضل 4 أطر عمل Python للويب.
 
-Structure your response with these sections:
-## Executive Summary
-## Strengths
-## Weaknesses
-## Recommendations
-## Risk Assessment
-```
+التنسيق كجدول markdown بأعمدة:
+| إطار العمل | الأفضل لـ | منحنى التعلم | الأداء |`}
+/>
 
-<Callout type="tip" title="Section Best Practices">
-List your sections in the order you want them. For consistency, specify what each section should contain (e.g., "Executive Summary: 2-3 sentences only").
+<Callout type="tip" title="أفضل ممارسات الجداول">
+حدد أسماء الأعمدة، وأنواع البيانات المتوقعة (نص، أرقام، تقييمات)، وعدد الصفوف التي تحتاجها. للمقارنات المعقدة، اقتصر على 4-6 أعمدة لسهولة القراءة.
 </Callout>
 
-### Emphasis with Uppercase Directives
+### العناوين والأقسام
 
-Uppercase words act as strong signals to the model, emphasizing critical constraints or requirements. Use them sparingly for maximum impact—overuse dilutes their effectiveness.
+العناوين تنشئ هيكلاً واضحاً للمستند، مما يجعل الاستجابات الطويلة قابلة للمسح ومنظمة. استخدمها للتقارير، والتحليلات، أو أي استجابة متعددة الأجزاء. العناوين الهرمية (##، ###) تُظهر العلاقات بين الأقسام.
 
-**Common Uppercase Directives:**
+```
+حلل هذا الاقتراح التجاري.
+
+هيكل استجابتك بهذه الأقسام:
+## الملخص التنفيذي
+## نقاط القوة
+## نقاط الضعف
+## التوصيات
+## تقييم المخاطر
+```
+
+<Callout type="tip" title="أفضل ممارسات الأقسام">
+اذكر أقسامك بالترتيب الذي تريده. للاتساق، حدد ما يجب أن يحتويه كل قسم (مثلاً، "الملخص التنفيذي: 2-3 جمل فقط").
+</Callout>
+
+### التأكيد بالتوجيهات بالأحرف الكبيرة
+
+الكلمات بالأحرف الكبيرة تعمل كإشارات قوية للنموذج، مؤكدة على القيود أو المتطلبات الحرجة. استخدمها باعتدال لتحقيق أقصى تأثير—الإفراط في استخدامها يُضعف فعاليتها.
+
+**التوجيهات الشائعة بالأحرف الكبيرة:**
 
 <InfoGrid items={[
-  { label: "NEVER", description: "Absolute prohibition: \"NEVER include personal opinions\"", color: "red" },
-  { label: "ALWAYS", description: "Mandatory requirement: \"ALWAYS cite sources\"", color: "green" },
-  { label: "IMPORTANT", description: "Critical instruction: \"IMPORTANT: Keep responses under 100 words\"", color: "amber" },
-  { label: "DO NOT", description: "Strong prohibition: \"DO NOT make up statistics\"", color: "red" },
-  { label: "MUST", description: "Required action: \"Output MUST be valid JSON\"", color: "blue" },
-  { label: "ONLY", description: "Restriction: \"Return ONLY the code, no explanations\"", color: "purple" },
+  { label: "NEVER", description: "منع مطلق: \"NEVER تضمين آراء شخصية\"", color: "red" },
+  { label: "ALWAYS", description: "متطلب إلزامي: \"ALWAYS اذكر المصادر\"", color: "green" },
+  { label: "IMPORTANT", description: "تعليمات حرجة: \"IMPORTANT: اجعل الاستجابات أقل من 100 كلمة\"", color: "amber" },
+  { label: "DO NOT", description: "منع قوي: \"DO NOT اختلاق إحصائيات\"", color: "red" },
+  { label: "MUST", description: "إجراء مطلوب: \"المخرجات MUST أن تكون JSON صالح\"", color: "blue" },
+  { label: "ONLY", description: "تقييد: \"أرجع ONLY الكود، بدون شروحات\"", color: "purple" },
 ]} />
 
 ```
-Summarize this article.
+لخص هذا المقال.
 
-IMPORTANT: Keep the summary under 100 words.
-NEVER add information not present in the original.
-ALWAYS maintain the original tone and perspective.
-DO NOT include your own opinions or analysis.
+IMPORTANT: اجعل الملخص أقل من 100 كلمة.
+NEVER تضف معلومات غير موجودة في النص الأصلي.
+ALWAYS حافظ على النبرة والمنظور الأصلي.
+DO NOT تضمن آراءك أو تحليلاتك الخاصة.
 ```
 
-<Callout type="warning" title="Use Sparingly">
-If everything is uppercase or marked as critical, nothing stands out. Reserve these directives for genuinely important constraints.
+<Callout type="warning" title="استخدم باعتدال">
+إذا كان كل شيء بأحرف كبيرة أو مُعلّم كحرج، فلن يبرز شيء. احتفظ بهذه التوجيهات للقيود المهمة حقاً.
 </Callout>
 
-## JSON Output
+## مخرجات JSON
 
-JSON (JavaScript Object Notation) is the most popular format for structured AI output. It's machine-readable, widely supported by programming languages, and perfect for APIs, databases, and automation workflows. The key to reliable JSON is providing a clear schema.
+JSON (ترميز كائنات JavaScript) هو الشكل الأكثر شيوعاً للمخرجات المهيكلة من الذكاء الاصطناعي. إنه قابل للقراءة آلياً، مدعوم على نطاق واسع من لغات البرمجة، ومثالي لواجهات API، وقواعد البيانات، وسير عمل الأتمتة. المفتاح للحصول على JSON موثوق هو توفير مخطط واضح.
 
-### Basic JSON Request
+### طلب JSON أساسي
 
-Start with a template showing the exact structure you want. Include field names, data types, and example values. This acts as a contract the model will follow.
+ابدأ بقالب يُظهر الهيكل الدقيق الذي تريده. ضمّن أسماء الحقول، وأنواع البيانات، وقيم المثال. هذا يعمل كعقد سيتبعه النموذج.
 
 <TryIt 
-  title="JSON Extraction"
-  description="Extract structured data from unstructured text."
-  prompt={`Extract information from this text and return as JSON:
+  title="استخراج JSON"
+  description="استخرج بيانات مهيكلة من نص غير مهيكل."
+  prompt={`استخرج المعلومات من هذا النص وأرجعها كـ JSON:
 
 {
     "company_name": "string",
@@ -112,15 +112,15 @@ Start with a template showing the exact structure you want. Include field names,
     "industry": "string"
 }
 
-Text: "Apple Inc., founded in 1976, is headquartered in Cupertino, California. The technology giant employs approximately 164,000 people worldwide."`}
+النص: "شركة Apple Inc.، تأسست عام 1976، ومقرها في كوبرتينو، كاليفورنيا. توظف هذه الشركة التقنية العملاقة حوالي 164,000 شخص حول العالم."`}
 />
 
-### Complex JSON Structures
+### هياكل JSON المعقدة
 
-For nested data, use hierarchical JSON with objects inside objects, arrays of objects, and mixed types. Define each level clearly and use TypeScript-style annotations (`"positive" | "negative"`) to constrain values.
+للبيانات المتداخلة، استخدم JSON هرمي مع كائنات داخل كائنات، ومصفوفات من الكائنات، وأنواع مختلطة. حدد كل مستوى بوضوح واستخدم تعليقات توضيحية بأسلوب TypeScript (`"positive" | "negative"`) لتقييد القيم.
 
 ```
-Analyze this product review and return JSON:
+حلل مراجعة هذا المنتج وأرجع JSON:
 
 {
   "review_id": "string (generate unique)",
@@ -142,270 +142,270 @@ Analyze this product review and return JSON:
   "key_phrases": ["string array of notable phrases"]
 }
 
-Return ONLY valid JSON, no additional text.
+أرجع ONLY JSON صالح، بدون نص إضافي.
 
-Review: "[review text]"
+المراجعة: "[نص المراجعة]"
 ```
 
-### Ensuring Valid JSON
+### ضمان JSON صالح
 
-Models sometimes add explanatory text or markdown formatting around JSON. Prevent this with explicit instructions about output format. You can request raw JSON or JSON inside code blocks—choose based on your parsing needs.
+النماذج أحياناً تضيف نصاً توضيحياً أو تنسيق markdown حول JSON. امنع هذا بتعليمات صريحة حول شكل المخرجات. يمكنك طلب JSON خام أو JSON داخل كتل كود—اختر بناءً على احتياجات التحليل الخاصة بك.
 
-Add explicit instructions:
+أضف تعليمات صريحة:
 
 ```
 IMPORTANT:
-- Return ONLY the JSON object, no markdown code blocks
-- Ensure all strings are properly escaped
-- Use null for missing values, not undefined
-- Validate that the output is parseable JSON
+- أرجع ONLY كائن JSON، بدون كتل كود markdown
+- تأكد من أن جميع السلاسل النصية محذوفة بشكل صحيح
+- استخدم null للقيم المفقودة، وليس undefined
+- تحقق من أن المخرجات قابلة للتحليل كـ JSON
 ```
 
-Or request code blocks by asking the model to wrap its output:
+أو اطلب كتل الكود بأن تطلب من النموذج تغليف مخرجاته:
 
 ````
-Return the result as a JSON code block:
+أرجع النتيجة ككتلة كود JSON:
 ```json
 { ... }
 ```
 ````
 
-## YAML Output
+## مخرجات YAML
 
-YAML is more human-readable than JSON, using indentation instead of brackets. It's the standard for configuration files (Docker, Kubernetes, GitHub Actions) and works well when the output will be read by humans or used in DevOps contexts. YAML is sensitive to indentation, so be specific about formatting requirements.
+YAML أكثر قابلية للقراءة البشرية من JSON، باستخدام المسافات البادئة بدلاً من الأقواس. إنه المعيار لملفات التكوين (Docker، Kubernetes، GitHub Actions) ويعمل جيداً عندما ستُقرأ المخرجات من قبل البشر أو تُستخدم في سياقات DevOps. YAML حساس للمسافات البادئة، لذا كن محدداً بشأن متطلبات التنسيق.
 
 <TryIt 
   compact
-  title="YAML Generation"
-  prompt={`Generate a GitHub Actions workflow for a Node.js project.
+  title="توليد YAML"
+  prompt={`أنشئ سير عمل GitHub Actions لمشروع Node.js.
 
-Return as valid YAML:
-- Include: install, lint, test, build stages
-- Use Node.js 18
-- Cache npm dependencies
-- Run on push to main and pull requests`}
+أرجعه كـ YAML صالح:
+- تضمين: مراحل التثبيت، والفحص، والاختبار، والبناء
+- استخدم Node.js 18
+- تخزين مؤقت لاعتماديات npm
+- تشغيل عند الدفع إلى main وطلبات السحب`}
 />
 
-## XML Output
+## مخرجات XML
 
-XML is still required for many enterprise systems, SOAP APIs, and legacy integrations. It's more verbose than JSON but offers features like attributes, namespaces, and CDATA sections for complex data. Specify element names, nesting structure, and where to use attributes vs. child elements.
-
-```
-Convert this data to XML format:
-
-Requirements:
-- Root element: <catalog>
-- Each item in <book> element
-- Include attributes where appropriate
-- Use CDATA for description text
-
-Data: [book data]
-```
-
-## Custom Formats
-
-Sometimes standard formats don't fit your needs. You can define any custom format by providing a clear template. Custom formats work well for reports, logs, or domain-specific outputs that will be read by humans.
-
-### Structured Analysis Format
-
-Use delimiters (===, ---, [SECTION]) to create scannable documents with clear boundaries between sections. This format is great for code reviews, audits, and analyses.
+XML لا يزال مطلوباً للعديد من أنظمة المؤسسات، وواجهات SOAP API، والتكاملات القديمة. إنه أكثر إسهاباً من JSON لكنه يوفر ميزات مثل السمات، ومساحات الأسماء، وأقسام CDATA للبيانات المعقدة. حدد أسماء العناصر، وهيكل التداخل، ومتى تستخدم السمات مقابل العناصر الفرعية.
 
 ```
-Analyze this code using this exact format:
+حول هذه البيانات إلى تنسيق XML:
+
+المتطلبات:
+- العنصر الجذري: <catalog>
+- كل عنصر في عنصر <book>
+- تضمين السمات حيثما كان مناسباً
+- استخدم CDATA لنص الوصف
+
+البيانات: [بيانات الكتب]
+```
+
+## التنسيقات المخصصة
+
+أحياناً التنسيقات القياسية لا تناسب احتياجاتك. يمكنك تحديد أي تنسيق مخصص من خلال توفير قالب واضح. التنسيقات المخصصة تعمل جيداً للتقارير، والسجلات، أو المخرجات الخاصة بالمجال التي سيقرأها البشر.
+
+### تنسيق التحليل المهيكل
+
+استخدم المحددات (===، ---، [SECTION]) لإنشاء مستندات قابلة للمسح مع حدود واضحة بين الأقسام. هذا التنسيق رائع لمراجعات الكود، والتدقيقات، والتحليلات.
+
+```
+حلل هذا الكود باستخدام هذا التنسيق بالضبط:
 
 === CODE ANALYSIS ===
 
 [SUMMARY]
-One paragraph overview
+فقرة نظرة عامة واحدة
 
 [ISSUES]
-• CRITICAL: [issue] — [file:line]
-• WARNING: [issue] — [file:line]  
-• INFO: [issue] — [file:line]
+• CRITICAL: [المشكلة] — [الملف:السطر]
+• WARNING: [المشكلة] — [الملف:السطر]  
+• INFO: [المشكلة] — [الملف:السطر]
 
 [METRICS]
-Complexity: [Low/Medium/High]
-Maintainability: [score]/10
-Test Coverage: [estimated %]
+التعقيد: [منخفض/متوسط/عالي]
+قابلية الصيانة: [الدرجة]/10
+تغطية الاختبار: [نسبة تقديرية %]
 
 [RECOMMENDATIONS]
-1. [Priority 1 recommendation]
-2. [Priority 2 recommendation]
+1. [توصية الأولوية 1]
+2. [توصية الأولوية 2]
 
 === END ANALYSIS ===
 ```
 
-### Fill-in-the-Blank Format
+### تنسيق ملء الفراغات
 
-Templates with blanks (___) guide the model to fill in specific fields while maintaining exact formatting. This approach is excellent for forms, briefs, and standardized documents where consistency matters.
+القوالب ذات الفراغات (___) توجه النموذج لملء حقول محددة مع الحفاظ على التنسيق الدقيق. هذا النهج ممتاز للنماذج، والموجزات، والمستندات الموحدة حيث يهم الاتساق.
 
 ```
-Complete this template for the given product:
+أكمل هذا القالب للمنتج المُعطى:
 
 PRODUCT BRIEF
 ─────────────
-Name: _______________
-Tagline: _______________
-Target User: _______________
-Problem Solved: _______________
-Key Features:
+الاسم: _______________
+الشعار: _______________
+المستخدم المستهدف: _______________
+المشكلة المحلولة: _______________
+الميزات الرئيسية:
   1. _______________
   2. _______________
   3. _______________
-Differentiator: _______________
+المُميِّز: _______________
 
-Product: [product description]
+المنتج: [وصف المنتج]
 ```
 
-## Typed Responses
+## الاستجابات المُنمَّطة
 
-Typed responses define categories or entity types that the model should recognize and label. This technique is essential for Named Entity Recognition (NER), classification tasks, and any extraction where you need to categorize information consistently. Define your types clearly with examples.
+الاستجابات المُنمَّطة تحدد فئات أو أنواع كيانات يجب على النموذج التعرف عليها وتصنيفها. هذه التقنية ضرورية للتعرف على الكيانات المسماة (NER)، ومهام التصنيف، وأي استخراج حيث تحتاج لتصنيف المعلومات بشكل متسق. حدد أنواعك بوضوح مع أمثلة.
 
 <TryIt 
   compact
-  title="Entity Extraction"
-  prompt={`Extract entities from this text.
+  title="استخراج الكيانات"
+  prompt={`استخرج الكيانات من هذا النص.
 
-Entity Types:
-- PERSON: Full names of people
-- ORG: Organization/company names
-- LOCATION: Cities, countries, addresses
-- DATE: Dates in ISO format (YYYY-MM-DD)
-- MONEY: Monetary amounts with currency
+أنواع الكيانات:
+- PERSON: الأسماء الكاملة للأشخاص
+- ORG: أسماء المنظمات/الشركات
+- LOCATION: المدن، البلدان، العناوين
+- DATE: التواريخ بتنسيق ISO (YYYY-MM-DD)
+- MONEY: المبالغ المالية مع العملة
 
-Format each as: [TYPE]: [value]
+نسق كل واحدة كـ: [TYPE]: [القيمة]
 
-Text: "Tim Cook announced that Apple will invest $1 billion in a new Austin facility by December 2024."`}
+النص: "أعلن تيم كوك أن Apple ستستثمر مليار دولار في منشأة جديدة في أوستن بحلول ديسمبر 2024."`}
 />
 
-## Multi-Part Structured Responses
+## الاستجابات المهيكلة متعددة الأجزاء
 
-When you need comprehensive output covering multiple aspects, define distinct parts with clear boundaries. Specify exactly what goes in each part—format, length, and content type. This prevents the model from blending sections or omitting parts.
+عندما تحتاج مخرجات شاملة تغطي جوانب متعددة، حدد أجزاء مميزة بحدود واضحة. حدد بالضبط ما يدخل في كل جزء—التنسيق، والطول، ونوع المحتوى. هذا يمنع النموذج من خلط الأقسام أو حذف أجزاء.
 
 ```
-Research this topic and provide:
+ابحث في هذا الموضوع وقدم:
 
-### PART 1: EXECUTIVE SUMMARY
-[2-3 sentence overview]
+### الجزء 1: الملخص التنفيذي
+[نظرة عامة من 2-3 جمل]
 
-### PART 2: KEY FINDINGS
-[Exactly 5 bullet points]
+### الجزء 2: النتائج الرئيسية
+[بالضبط 5 نقاط]
 
-### PART 3: DATA TABLE
-| Metric | Value | Source |
+### الجزء 3: جدول البيانات
+| المقياس | القيمة | المصدر |
 |--------|-------|--------|
-[Include 5 rows minimum]
+[تضمين 5 صفوف كحد أدنى]
 
-### PART 4: RECOMMENDATIONS
-[Numbered list of 3 actionable recommendations]
+### الجزء 4: التوصيات
+[قائمة مرقمة من 3 توصيات قابلة للتنفيذ]
 
-### PART 5: FURTHER READING
-[3 suggested resources with brief descriptions]
+### الجزء 5: قراءات إضافية
+[3 موارد مقترحة مع أوصاف موجزة]
 ```
 
-## Conditional Formatting
+## التنسيق الشرطي
 
-Conditional formatting lets you define different output formats based on the input's characteristics. This is powerful for classification, triage, and routing systems where the response format should vary based on what the model detects. Use clear if/then logic with explicit output templates for each case.
+التنسيق الشرطي يتيح لك تحديد تنسيقات مخرجات مختلفة بناءً على خصائص المدخلات. هذا قوي للتصنيف، والفرز، وأنظمة التوجيه حيث يجب أن يختلف تنسيق الاستجابة بناءً على ما يكتشفه النموذج. استخدم منطق if/then واضح مع قوالب مخرجات صريحة لكل حالة.
 
 <TryIt 
   compact
-  title="Ticket Classification"
-  prompt={`Classify this support ticket.
+  title="تصنيف التذاكر"
+  prompt={`صنف تذكرة الدعم هذه.
 
-If URGENT (system down, security issue, data loss):
-  Return: 🔴 URGENT | [Category] | [Suggested Action]
+إذا كانت URGENT (نظام معطل، مشكلة أمنية، فقدان بيانات):
+  أرجع: 🔴 URGENT | [الفئة] | [الإجراء المقترح]
 
-If HIGH (affects multiple users, revenue impact):
-  Return: 🟠 HIGH | [Category] | [Suggested Action]
+إذا كانت HIGH (تؤثر على مستخدمين متعددين، تأثير على الإيرادات):
+  أرجع: 🟠 HIGH | [الفئة] | [الإجراء المقترح]
 
-If MEDIUM (single user affected, workaround exists):
-  Return: 🟡 MEDIUM | [Category] | [Suggested Action]
+إذا كانت MEDIUM (مستخدم واحد متأثر، يوجد حل بديل):
+  أرجع: 🟡 MEDIUM | [الفئة] | [الإجراء المقترح]
 
-If LOW (questions, feature requests):
-  Return: 🟢 LOW | [Category] | [Suggested Action]
+إذا كانت LOW (أسئلة، طلبات ميزات):
+  أرجع: 🟢 LOW | [الفئة] | [الإجراء المقترح]
 
-Ticket: "I can't login to my account. I've tried resetting my password twice but still getting an error. This is blocking my entire team from accessing the dashboard."`}
+التذكرة: "لا أستطيع تسجيل الدخول إلى حسابي. حاولت إعادة تعيين كلمة المرور مرتين لكنني لا زلت أحصل على خطأ. هذا يمنع فريقي بالكامل من الوصول إلى لوحة التحكم."`}
 />
 
-## Arrays and Lists in JSON
+## المصفوفات والقوائم في JSON
 
-Extracting multiple items into arrays requires careful schema definition. Specify the array structure, what each item should contain, and how to handle edge cases (empty arrays, single items). Including a count field helps verify completeness.
+استخراج عناصر متعددة إلى مصفوفات يتطلب تعريف مخطط دقيق. حدد هيكل المصفوفة، وما يجب أن يحتويه كل عنصر، وكيفية التعامل مع الحالات الحدية (المصفوفات الفارغة، العناصر المفردة). تضمين حقل العدد يساعد في التحقق من الاكتمال.
 
 ```
-Extract all action items from this meeting transcript.
+استخرج جميع بنود العمل من محضر هذا الاجتماع.
 
-Return as JSON array:
+أرجع كمصفوفة JSON:
 {
   "action_items": [
     {
-      "task": "string describing the task",
-      "assignee": "person name or 'Unassigned'",
-      "deadline": "date if mentioned, else null",
+      "task": "سلسلة تصف المهمة",
+      "assignee": "اسم الشخص أو 'غير مُعيَّن'",
+      "deadline": "التاريخ إذا ذُكر، وإلا null",
       "priority": "high" | "medium" | "low",
-      "context": "relevant quote from transcript"
+      "context": "اقتباس ذو صلة من المحضر"
     }
   ],
   "total_count": number
 }
 
-Transcript: "[meeting transcript]"
+المحضر: "[محضر الاجتماع]"
 ```
 
-## Validation Instructions
+## تعليمات التحقق
 
-Self-validation prompts the model to check its own output before responding. This catches common issues like missing sections, placeholder text, or constraint violations. The model will iterate internally to fix problems, improving output quality without additional API calls.
-
-```
-Generate the report, then:
-
-VALIDATION CHECKLIST:
-□ All required sections present
-□ No placeholder text remaining
-□ All statistics include sources
-□ Word count within 500-700 words
-□ Conclusion ties back to introduction
-
-If any check fails, fix before responding.
-```
-
-## Handling Optional Fields
-
-Real-world data often has missing values. Explicitly instruct the model on how to handle optional fields—using `null` is cleaner than empty strings and easier to process programmatically. Also prevent "hallucination" of missing data by emphasizing that the model should never invent information.
+التحقق الذاتي يدفع النموذج للتحقق من مخرجاته قبل الاستجابة. هذا يلتقط المشاكل الشائعة مثل الأقسام المفقودة، والنص البديل، أو انتهاكات القيود. النموذج سيكرر داخلياً لإصلاح المشاكل، محسناً جودة المخرجات بدون استدعاءات API إضافية.
 
 ```
-Extract contact information. Use null for missing fields.
+أنشئ التقرير، ثم:
+
+قائمة التحقق:
+□ جميع الأقسام المطلوبة موجودة
+□ لا يوجد نص بديل متبقي
+□ جميع الإحصائيات تتضمن مصادر
+□ عدد الكلمات ضمن 500-700 كلمة
+□ الخاتمة ترتبط بالمقدمة
+
+إذا فشل أي فحص، أصلحه قبل الاستجابة.
+```
+
+## التعامل مع الحقول الاختيارية
+
+البيانات الحقيقية غالباً ما تحتوي على قيم مفقودة. أوجه النموذج صراحةً حول كيفية التعامل مع الحقول الاختيارية—استخدام `null` أنظف من السلاسل الفارغة وأسهل في المعالجة برمجياً. أيضاً امنع "الهلوسة" للبيانات المفقودة بالتأكيد على أن النموذج يجب ألا يخترع معلومات أبداً.
+
+```
+استخرج معلومات الاتصال. استخدم null للحقول المفقودة.
 
 {
-  "name": "string (required)",
-  "email": "string or null",
-  "phone": "string or null", 
-  "company": "string or null",
-  "role": "string or null",
-  "linkedin": "URL string or null"
+  "name": "string (مطلوب)",
+  "email": "string أو null",
+  "phone": "string أو null", 
+  "company": "string أو null",
+  "role": "string أو null",
+  "linkedin": "URL string أو null"
 }
 
 IMPORTANT: 
-- Never invent information not in the source
-- Use null, not empty strings, for missing data
-- Phone numbers in E.164 format if possible
+- لا تخترع أبداً معلومات غير موجودة في المصدر
+- استخدم null، وليس السلاسل الفارغة، للبيانات المفقودة
+- أرقام الهواتف بتنسيق E.164 إن أمكن
 ```
 
-## Summary
+## الملخص
 
-<Callout type="tip" title="Key Techniques">
-Be explicit about format, use examples, specify types, handle edge cases with null values, and ask the model to validate its own output.
+<Callout type="tip" title="التقنيات الرئيسية">
+كن صريحاً بشأن التنسيق، استخدم الأمثلة، حدد الأنواع، تعامل مع الحالات الحدية بقيم null، واطلب من النموذج التحقق من مخرجاته.
 </Callout>
 
 <Quiz 
-  question="What's the main advantage of structured output over unstructured text?"
+  question="ما هي الميزة الرئيسية للمخرجات المهيكلة مقارنة بالنص غير المهيكل؟"
   options={[
-    "It uses fewer tokens",
-    "It's easier for the AI to generate",
-    "It can be parsed programmatically and validated",
-    "It always produces correct information"
+    "تستخدم عدداً أقل من الرموز",
+    "أسهل للذكاء الاصطناعي في توليدها",
+    "يمكن تحليلها برمجياً والتحقق منها",
+    "تنتج دائماً معلومات صحيحة"
   ]}
   correctIndex={2}
-  explanation="Structured outputs like JSON can be parsed by code, compared across queries, integrated into workflows, and validated for completeness—things that are difficult or impossible with freeform text."
+  explanation="المخرجات المهيكلة مثل JSON يمكن تحليلها بالكود، ومقارنتها عبر الاستعلامات، ودمجها في سير العمل، والتحقق من اكتمالها—أشياء صعبة أو مستحيلة مع النص الحر."
 />
 
-Structured outputs are essential for building reliable AI-powered applications. In the next chapter, we'll explore chain-of-thought prompting for complex reasoning tasks.
+المخرجات المهيكلة ضرورية لبناء تطبيقات ذكاء اصطناعي موثوقة. في الفصل التالي، سنستكشف أسلوب التفكير المتسلسل للمهام التي تتطلب استدلالاً معقداً.

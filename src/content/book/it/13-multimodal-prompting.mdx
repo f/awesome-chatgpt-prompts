@@ -1,173 +1,173 @@
-For most of history, computers worked with one type of data at a time: text in one program, images in another, audio somewhere else. But humans don't experience the world this way. We see, hear, read, and speak simultaneously, combining all these inputs to understand our environment.
+Per la maggior parte della storia, i computer hanno lavorato con un tipo di dati alla volta: testo in un programma, immagini in un altro, audio da qualche altra parte. Ma gli umani non sperimentano il mondo così. Vediamo, sentiamo, leggiamo e parliamo simultaneamente, combinando tutti questi input per capire il nostro ambiente.
 
-**Multimodal AI** changes everything. These models can process multiple types of information together—analyzing an image while reading your question about it, or generating images from your text descriptions. This chapter teaches you how to communicate effectively with these powerful systems.
+L'**IA Multimodale** cambia tutto. Questi modelli possono elaborare molteplici tipi di informazioni insieme—analizzando un'immagine mentre leggono la tua domanda su di essa, o generando immagini dalle tue descrizioni testuali. Questo capitolo ti insegna come comunicare efficacemente con questi potenti sistemi.
 
-<Callout type="info" title="What Does Multimodal Mean?">
-"Multi" means many, and "modal" refers to modes or types of data. A multimodal model can work with multiple modalities: text, images, audio, video, or even code. Instead of separate tools for each type, one model understands them all together.
+<Callout type="info" title="Cosa Significa Multimodale?">
+"Multi" significa molti, e "modale" si riferisce a modi o tipi di dati. Un modello multimodale può lavorare con molteplici modalità: testo, immagini, audio, video, o persino codice. Invece di strumenti separati per ogni tipo, un modello li comprende tutti insieme.
 </Callout>
 
-## Why Multimodal Matters
+## Perché il Multimodale È Importante
 
-Traditional AI required you to describe everything in words. Want to ask about an image? You'd have to describe it first. Want to analyze a document? You'd need to transcribe it manually. Multimodal models eliminate these barriers.
+L'IA tradizionale richiedeva di descrivere tutto a parole. Vuoi chiedere di un'immagine? Dovevi prima descriverla. Vuoi analizzare un documento? Dovevi trascriverlo manualmente. I modelli multimodali eliminano queste barriere.
 
 <InfoGrid items={[
-  { label: "See and Understand", description: "Upload an image and ask questions about it directly—no description needed", example: "\"What's wrong with this circuit diagram?\"", color: "blue" },
-  { label: "Create from Words", description: "Describe what you want and generate images, audio, or video", example: "\"A sunset over mountains in watercolor style\"", color: "purple" },
-  { label: "Combine Everything", description: "Mix text, images, and other media in a single conversation", example: "\"Compare these two designs and tell me which is better for mobile\"", color: "green" },
-  { label: "Analyze Documents", description: "Extract information from photos of documents, receipts, or screenshots", example: "\"Extract all the line items from this invoice photo\"", color: "amber" }
+  { label: "Vedere e Capire", description: "Carica un'immagine e fai domande direttamente—nessuna descrizione necessaria", example: "\"Cosa c'è che non va in questo schema circuitale?\"", color: "blue" },
+  { label: "Creare dalle Parole", description: "Descrivi cosa vuoi e genera immagini, audio, o video", example: "\"Un tramonto sulle montagne in stile acquerello\"", color: "purple" },
+  { label: "Combinare Tutto", description: "Mescola testo, immagini e altri media in una singola conversazione", example: "\"Confronta questi due design e dimmi quale è meglio per mobile\"", color: "green" },
+  { label: "Analizzare Documenti", description: "Estrai informazioni da foto di documenti, ricevute o screenshot", example: "\"Estrai tutte le voci da questa foto di fattura\"", color: "amber" }
 ]} />
 
-## Why Prompting Matters Even More for Multimodal
+## Perché il Prompting È Ancora Più Importante per il Multimodale
 
-With text-only models, the AI receives exactly what you type. But with multimodal models, the AI must interpret visual or audio information—and interpretation requires guidance.
+Con modelli solo testo, l'IA riceve esattamente quello che scrivi. Ma con modelli multimodali, l'IA deve interpretare informazioni visive o audio—e l'interpretazione richiede guida.
 
 <Compare 
-  before={{ label: "Vague multimodal prompt", content: "What do you see in this image?\n\n[image of a complex dashboard]" }}
-  after={{ label: "Guided multimodal prompt", content: "This is a screenshot of our analytics dashboard. Focus on:\n1. The conversion rate graph in the top-right\n2. Any error indicators or warnings\n3. Whether the data looks normal or anomalous\n\n[image of a complex dashboard]" }}
+  before={{ label: "Prompt multimodale vago", content: "Cosa vedi in questa immagine?\n\n[immagine di una dashboard complessa]" }}
+  after={{ label: "Prompt multimodale guidato", content: "Questo è uno screenshot della nostra dashboard analytics. Concentrati su:\n1. Il grafico del tasso di conversione in alto a destra\n2. Eventuali indicatori di errore o avvisi\n3. Se i dati sembrano normali o anomali\n\n[immagine di una dashboard complessa]" }}
 />
 
-**Without guidance**, the model might describe colors, layout, or irrelevant details. **With guidance**, it focuses on what actually matters to you.
+**Senza guida**, il modello potrebbe descrivere colori, layout o dettagli irrilevanti. **Con guida**, si concentra su ciò che realmente ti interessa.
 
-<Callout type="warning" title="The Interpretation Gap">
-When you look at an image, you instantly know what's important based on your context and goals. The AI doesn't have this context unless you provide it. A photo of a crack in a wall could be: a structural engineering concern, an artistic texture, or irrelevant background. Your prompt determines how the AI interprets it.
+<Callout type="warning" title="Il Gap di Interpretazione">
+Quando guardi un'immagine, sai istantaneamente cosa è importante basandoti sul tuo contesto e obiettivi. L'IA non ha questo contesto a meno che tu non lo fornisca. Una foto di una crepa in un muro potrebbe essere: un problema di ingegneria strutturale, una texture artistica, o sfondo irrilevante. Il tuo prompt determina come l'IA la interpreta.
 </Callout>
 
-## The Multimodal Landscape
+## Il Panorama Multimodale
 
-Different models have different capabilities. Here's what's available in 2025:
+Modelli diversi hanno capacità diverse. Ecco cosa è disponibile nel 2025:
 
-### Understanding Models (Input → Analysis)
+### Modelli di Comprensione (Input → Analisi)
 
-These models accept various media types and produce text analysis or responses.
-
-<InfoGrid items={[
-  { label: "GPT-4o / GPT-5", description: "Text + Images + Audio → Text. OpenAI's flagship with 128K context, strong creative and reasoning abilities, reduced hallucination rates.", color: "green" },
-  { label: "Claude 4 Sonnet/Opus", description: "Text + Images → Text. Anthropic's safety-focused model with advanced reasoning, excellent for coding and complex multi-step tasks.", color: "purple" },
-  { label: "Gemini 2.5", description: "Text + Images + Audio + Video → Text. Google's model with 1M token context, self-fact-checking, fast processing for coding and research.", color: "blue" },
-  { label: "LLaMA 4 Scout", description: "Text + Images + Video → Text. Meta's open-source model with massive 10M token context for long documents and codebases.", color: "cyan" },
-  { label: "Grok 4", description: "Text + Images → Text. xAI's model with real-time data access and social media integration for up-to-date responses.", color: "red" }
-]} />
-
-### Generation Models (Text → Media)
-
-These models create images, audio, or video from text descriptions.
+Questi modelli accettano vari tipi di media e producono analisi testuale o risposte.
 
 <InfoGrid items={[
-  { label: "DALL-E 3", description: "Text → Images. OpenAI's image generator with high accuracy to prompt descriptions.", color: "amber" },
-  { label: "Midjourney", description: "Text + Images → Images. Known for artistic quality, style control, and aesthetic outputs.", color: "pink" },
-  { label: "Sora", description: "Text → Video. OpenAI's video generation model for creating clips from descriptions.", color: "red" },
-  { label: "Whisper", description: "Audio → Text. OpenAI's speech-to-text with high accuracy across languages.", color: "cyan" }
+  { label: "GPT-4o / GPT-5", description: "Testo + Immagini + Audio → Testo. Il modello di punta di OpenAI con contesto 128K, forti capacità creative e di ragionamento, tassi ridotti di allucinazione.", color: "green" },
+  { label: "Claude 4 Sonnet/Opus", description: "Testo + Immagini → Testo. Modello di Anthropic focalizzato sulla sicurezza con ragionamento avanzato, eccellente per coding e compiti multi-step complessi.", color: "purple" },
+  { label: "Gemini 2.5", description: "Testo + Immagini + Audio + Video → Testo. Modello di Google con contesto 1M token, auto-verifica dei fatti, elaborazione veloce per coding e ricerca.", color: "blue" },
+  { label: "LLaMA 4 Scout", description: "Testo + Immagini + Video → Testo. Modello open-source di Meta con enorme contesto 10M token per documenti lunghi e codebase.", color: "cyan" },
+  { label: "Grok 4", description: "Testo + Immagini → Testo. Modello di xAI con accesso dati in tempo reale e integrazione social media per risposte aggiornate.", color: "red" }
 ]} />
 
-<Callout type="info" title="Rapid Evolution">
-The multimodal landscape changes quickly. New models launch frequently, and existing models gain capabilities through updates. Always check the latest documentation for current features and limitations.
+### Modelli di Generazione (Testo → Media)
+
+Questi modelli creano immagini, audio o video da descrizioni testuali.
+
+<InfoGrid items={[
+  { label: "DALL-E 3", description: "Testo → Immagini. Generatore di immagini di OpenAI con alta accuratezza alle descrizioni del prompt.", color: "amber" },
+  { label: "Midjourney", description: "Testo + Immagini → Immagini. Noto per qualità artistica, controllo dello stile e output estetici.", color: "pink" },
+  { label: "Sora", description: "Testo → Video. Modello di generazione video di OpenAI per creare clip da descrizioni.", color: "red" },
+  { label: "Whisper", description: "Audio → Testo. Speech-to-text di OpenAI con alta accuratezza attraverso le lingue.", color: "cyan" }
+]} />
+
+<Callout type="info" title="Evoluzione Rapida">
+Il panorama multimodale cambia velocemente. Nuovi modelli vengono lanciati frequentemente, e i modelli esistenti acquisiscono capacità attraverso aggiornamenti. Controlla sempre la documentazione più recente per funzionalità e limitazioni attuali.
 </Callout>
 
-## Image Understanding Prompts
+## Prompt per Comprensione Immagini
 
-The most common multimodal use case is asking AI to analyze images. The key is providing context about what you need.
+Il caso d'uso multimodale più comune è chiedere all'IA di analizzare immagini. La chiave è fornire contesto su ciò di cui hai bisogno.
 
-### Basic Image Analysis
+### Analisi Immagini Base
 
-Start with a clear request structure. Tell the model what aspects to focus on.
+Inizia con una struttura di richiesta chiara. Dì al modello su quali aspetti concentrarsi.
 
 <TryIt 
-  title="Structured Image Analysis"
-  description="This prompt provides a clear framework for image analysis. The model knows exactly what information you need."
-  prompt={`Analyze this image and describe:
+  title="Analisi Immagine Strutturata"
+  description="Questo prompt fornisce un framework chiaro per l'analisi delle immagini. Il modello sa esattamente quali informazioni ti servono."
+  prompt={`Analizza questa immagine e descrivi:
 
-1. **Main Subject**: What is the primary focus of this image?
-2. **Setting**: Where does this appear to be? (indoor/outdoor, location type)
-3. **Mood**: What emotional tone or atmosphere does it convey?
-4. **Text Content**: Any visible text, signs, or labels?
-5. **Notable Details**: What might someone miss at first glance?
-6. **Technical Quality**: How is the lighting, focus, and composition?
+1. **Soggetto Principale**: Qual è il focus primario di questa immagine?
+2. **Ambientazione**: Dove sembra essere? (interno/esterno, tipo di luogo)
+3. **Mood**: Che tono emotivo o atmosfera trasmette?
+4. **Contenuto Testuale**: Testo visibile, insegne o etichette?
+5. **Dettagli Notevoli**: Cosa potrebbe sfuggire a prima vista?
+6. **Qualità Tecnica**: Com'è l'illuminazione, la messa a fuoco e la composizione?
 
-[Paste or describe the image you want to analyze]
+[Incolla o descrivi l'immagine che vuoi analizzare]
 
-Image description or URL: \${imageDescription}`}
+Descrizione immagine o URL: \${imageDescription}`}
 />
 
-### Structured Output for Images
+### Output Strutturato per Immagini
 
-When you need to process image analysis programmatically, request JSON output.
+Quando devi elaborare l'analisi delle immagini programmaticamente, richiedi output JSON.
 
 <TryIt 
-  title="JSON Image Analysis"
-  description="Get structured data from image analysis that's easy to parse and use in applications."
-  prompt={`Analyze this image and return a JSON object with the following structure:
+  title="Analisi Immagine JSON"
+  description="Ottieni dati strutturati dall'analisi delle immagini facili da parsare e usare nelle applicazioni."
+  prompt={`Analizza questa immagine e restituisci un oggetto JSON con la seguente struttura:
 
 {
-  "summary": "One sentence description",
-  "objects": ["List of main objects visible"],
+  "summary": "Descrizione in una frase",
+  "objects": ["Lista degli oggetti principali visibili"],
   "people": {
-    "count": "number or 'none'",
-    "activities": ["What they're doing, if any"]
+    "count": "numero o 'nessuno'",
+    "activities": ["Cosa stanno facendo, se presenti"]
   },
-  "text_detected": ["Any text visible in the image"],
+  "text_detected": ["Qualsiasi testo visibile nell'immagine"],
   "colors": {
-    "dominant": ["Top 3 colors"],
-    "mood": "Warm/Cool/Neutral"
+    "dominant": ["Top 3 colori"],
+    "mood": "Caldo/Freddo/Neutro"
   },
   "setting": {
-    "type": "indoor/outdoor/unknown",
-    "description": "More specific location description"
+    "type": "interno/esterno/sconosciuto",
+    "description": "Descrizione più specifica della location"
   },
   "technical": {
-    "quality": "high/medium/low",
-    "lighting": "Description of lighting",
-    "composition": "Description of framing/composition"
+    "quality": "alta/media/bassa",
+    "lighting": "Descrizione dell'illuminazione",
+    "composition": "Descrizione dell'inquadratura/composizione"
   },
-  "confidence": "high/medium/low"
+  "confidence": "alta/media/bassa"
 }
 
-Image to analyze: \${imageDescription}`}
+Immagine da analizzare: \${imageDescription}`}
 />
 
-### Comparative Analysis
+### Analisi Comparativa
 
-Comparing multiple images requires clear labeling and specific comparison criteria.
+Confrontare molteplici immagini richiede etichettatura chiara e criteri di confronto specifici.
 
 <TryIt 
-  title="Image Comparison"
-  description="Compare two or more images with specific criteria that matter to your decision."
-  prompt={`Compare these images for \${purpose}:
+  title="Confronto Immagini"
+  description="Confronta due o più immagini con criteri specifici che contano per la tua decisione."
+  prompt={`Confronta queste immagini per \${purpose}:
 
-**Image A**: \${imageA}
-**Image B**: \${imageB}
+**Immagine A**: \${imageA}
+**Immagine B**: \${imageB}
 
-Analyze each image on these criteria:
-1. \${criterion1} (importance: high)
-2. \${criterion2} (importance: medium)  
-3. \${criterion3} (importance: low)
+Analizza ogni immagine su questi criteri:
+1. \${criterion1} (importanza: alta)
+2. \${criterion2} (importanza: media)  
+3. \${criterion3} (importanza: bassa)
 
-Provide:
-- Side-by-side comparison for each criterion
-- Strengths and weaknesses of each
-- Clear recommendation with reasoning
-- Any concerns or caveats`}
+Fornisci:
+- Confronto fianco a fianco per ogni criterio
+- Punti di forza e debolezza di ciascuna
+- Raccomandazione chiara con ragionamento
+- Eventuali preoccupazioni o avvertenze`}
 />
 
-## Document and Screenshot Analysis
+## Analisi Documenti e Screenshot
 
-One of the most practical applications of multimodal AI is analyzing documents, screenshots, and UI elements. This saves hours of manual transcription and review.
+Una delle applicazioni più pratiche dell'IA multimodale è analizzare documenti, screenshot ed elementi UI. Questo risparmia ore di trascrizione e revisione manuale.
 
-### Document Extraction
+### Estrazione Documenti
 
-Scanned documents, photos of receipts, and PDFs as images can all be processed. The key is telling the model what type of document it is and what information you need.
+Documenti scansionati, foto di ricevute e PDF come immagini possono tutti essere elaborati. La chiave è dire al modello che tipo di documento è e quali informazioni ti servono.
 
 <TryIt 
-  title="Document Data Extractor"
-  description="Extract structured data from photos of documents, receipts, invoices, or forms."
-  prompt={`This is a photo/scan of a \${documentType}.
+  title="Estrattore Dati Documenti"
+  description="Estrai dati strutturati da foto di documenti, ricevute, fatture o moduli."
+  prompt={`Questa è una foto/scansione di un \${documentType}.
 
-Extract all information into structured JSON format:
+Estrai tutte le informazioni in formato JSON strutturato:
 
 {
-  "document_type": "detected type",
-  "date": "if present",
+  "document_type": "tipo rilevato",
+  "date": "se presente",
   "key_fields": {
-    "field_name": "value"
+    "nome_campo": "valore"
   },
   "line_items": [
     {"description": "", "amount": ""}
@@ -177,489 +177,489 @@ Extract all information into structured JSON format:
     "tax": "",
     "total": ""
   },
-  "handwritten_notes": ["any handwritten text"],
-  "unclear_sections": ["areas that were hard to read"],
-  "confidence": "high/medium/low"
+  "handwritten_notes": ["qualsiasi testo scritto a mano"],
+  "unclear_sections": ["aree difficili da leggere"],
+  "confidence": "alta/media/bassa"
 }
 
-IMPORTANT: If any text is unclear, note it in "unclear_sections" rather than guessing. Mark confidence as "low" if significant portions were hard to read.
+IMPORTANTE: Se qualsiasi testo non è chiaro, annotalo in "unclear_sections" invece di indovinare. Marca confidence come "bassa" se porzioni significative erano difficili da leggere.
 
-Document description: \${documentDescription}`}
+Descrizione documento: \${documentDescription}`}
 />
 
-### Screenshot and UI Analysis
+### Analisi Screenshot e UI
 
-Screenshots are goldmines for debugging, UX review, and documentation. Guide the AI to focus on what matters.
+Gli screenshot sono miniere d'oro per debugging, review UX e documentazione. Guida l'IA a concentrarsi su ciò che conta.
 
 <TryIt 
-  title="UI/UX Screenshot Analyzer"
-  description="Get detailed analysis of screenshots for debugging, UX review, or documentation."
-  prompt={`This is a screenshot of \${applicationName}.
+  title="Analizzatore Screenshot UI/UX"
+  description="Ottieni analisi dettagliata degli screenshot per debugging, review UX o documentazione."
+  prompt={`Questo è uno screenshot di \${applicationName}.
 
-Analyze this interface:
+Analizza questa interfaccia:
 
-**Identification**
-- What screen/page/state is this?
-- What is the user likely trying to accomplish here?
+**Identificazione**
+- Che schermata/pagina/stato è questo?
+- Cosa sta probabilmente cercando di fare l'utente qui?
 
-**UI Elements**
-- Key interactive elements (buttons, forms, menus)
-- Current state (anything selected, filled in, or expanded?)
-- Any error messages, warnings, or notifications?
+**Elementi UI**
+- Elementi interattivi chiave (pulsanti, form, menu)
+- Stato corrente (qualcosa selezionato, compilato o espanso?)
+- Eventuali messaggi di errore, avvisi o notifiche?
 
-**UX Assessment**
-- Is the layout clear and intuitive?
-- Any confusing elements or unclear labels?
-- Accessibility concerns (contrast, text size, etc.)?
+**Valutazione UX**
+- Il layout è chiaro e intuitivo?
+- Elementi confusi o etichette poco chiare?
+- Preoccupazioni di accessibilità (contrasto, dimensione testo, ecc.)?
 
-**Issues Detected**
-- Visual bugs or misalignments?
-- Truncated text or overflow issues?
-- Inconsistent styling?
+**Problemi Rilevati**
+- Bug visivi o disallineamenti?
+- Testo troncato o problemi di overflow?
+- Stile inconsistente?
 
-Screenshot description: \${screenshotDescription}`}
+Descrizione screenshot: \${screenshotDescription}`}
 />
 
-### Error Message Analysis
+### Analisi Messaggi di Errore
 
-When you encounter an error, a screenshot often contains more context than copying the error text alone.
+Quando incontri un errore, uno screenshot spesso contiene più contesto che copiare solo il testo dell'errore.
 
 <TryIt 
-  title="Error Diagnosis from Screenshot"
-  description="Get plain-language explanations and fixes for error messages in screenshots."
-  prompt={`I'm seeing this error in \${context}.
+  title="Diagnosi Errore da Screenshot"
+  description="Ottieni spiegazioni in linguaggio semplice e fix per messaggi di errore negli screenshot."
+  prompt={`Sto vedendo questo errore in \${context}.
 
-[Describe or paste the error message/screenshot]
-Error details: \${errorDetails}
+[Descrivi o incolla il messaggio di errore/screenshot]
+Dettagli errore: \${errorDetails}
 
-Please provide:
+Per favore fornisci:
 
-1. **Plain Language Explanation**: What does this error actually mean?
+1. **Spiegazione in Linguaggio Semplice**: Cosa significa realmente questo errore?
 
-2. **Likely Causes** (ranked by probability):
-   - Most likely: 
-   - Also possible:
-   - Less common:
+2. **Cause Probabili** (ordinate per probabilità):
+   - Più probabile: 
+   - Anche possibile:
+   - Meno comune:
 
-3. **Step-by-Step Fix**:
-   - First, try...
-   - If that doesn't work...
-   - As a last resort...
+3. **Fix Passo-Passo**:
+   - Prima, prova...
+   - Se non funziona...
+   - Come ultima risorsa...
 
-4. **Prevention**: How to avoid this error in the future
+4. **Prevenzione**: Come evitare questo errore in futuro
 
-5. **Red Flags**: When this error might indicate a more serious problem`}
+5. **Segnali d'Allarme**: Quando questo errore potrebbe indicare un problema più serio`}
 />
 
-## Image Generation Prompts
+## Prompt per Generazione Immagini
 
-Generating images from text descriptions is an art form. The more specific and structured your prompt, the closer the result will match your vision.
+Generare immagini da descrizioni testuali è una forma d'arte. Più specifico e strutturato è il tuo prompt, più il risultato corrisponderà alla tua visione.
 
-### The Anatomy of an Image Prompt
+### L'Anatomia di un Prompt per Immagini
 
-Effective image generation prompts have several components:
+I prompt efficaci per generazione immagini hanno diversi componenti:
 
 <InfoGrid items={[
-  { label: "Subject", description: "What is the main focus of the image?", example: "A golden retriever playing in autumn leaves", color: "blue" },
-  { label: "Style", description: "What artistic style or medium?", example: "Watercolor painting, digital art, photorealistic", color: "purple" },
-  { label: "Composition", description: "How is the scene arranged?", example: "Close-up portrait, wide landscape, bird's eye view", color: "green" },
-  { label: "Lighting", description: "What's the light source and quality?", example: "Soft morning light, dramatic shadows, neon glow", color: "amber" },
-  { label: "Mood", description: "What feeling should it evoke?", example: "Peaceful, energetic, mysterious, nostalgic", color: "pink" },
-  { label: "Details", description: "Specific elements to include or avoid", example: "Include: flowers. Avoid: text, watermarks", color: "cyan" }
+  { label: "Soggetto", description: "Qual è il focus principale dell'immagine?", example: "Un golden retriever che gioca tra foglie autunnali", color: "blue" },
+  { label: "Stile", description: "Che stile artistico o medium?", example: "Pittura ad acquerello, arte digitale, fotorealistico", color: "purple" },
+  { label: "Composizione", description: "Come è disposta la scena?", example: "Ritratto ravvicinato, paesaggio ampio, vista a volo d'uccello", color: "green" },
+  { label: "Illuminazione", description: "Qual è la fonte di luce e la qualità?", example: "Luce mattutina morbida, ombre drammatiche, bagliore neon", color: "amber" },
+  { label: "Mood", description: "Che sensazione dovrebbe evocare?", example: "Pacifico, energico, misterioso, nostalgico", color: "pink" },
+  { label: "Dettagli", description: "Elementi specifici da includere o evitare", example: "Includi: fiori. Evita: testo, watermark", color: "cyan" }
 ]} />
 
-### Basic Image Generation
+### Generazione Immagini Base
 
 <TryIt 
-  title="Structured Image Prompt"
-  description="Use this template to create detailed, specific image generation prompts."
-  prompt={`Create an image with these specifications:
+  title="Prompt Immagine Strutturato"
+  description="Usa questo template per creare prompt di generazione immagini dettagliati e specifici."
+  prompt={`Crea un'immagine con queste specifiche:
 
-**Subject**: \${subject}
+**Soggetto**: \${subject}
 
-**Style**: \${style}
-**Medium**: \${medium} (e.g., oil painting, digital art, photograph)
+**Stile**: \${style}
+**Medium**: \${medium} (es., pittura a olio, arte digitale, fotografia)
 
-**Composition**:
-- Framing: \${framing} (close-up, medium shot, wide angle)
-- Perspective: \${perspective} (eye level, low angle, overhead)
+**Composizione**:
+- Inquadratura: \${framing} (primo piano, piano medio, grandangolo)
+- Prospettiva: \${perspective} (altezza occhi, dal basso, dall'alto)
 - Focus: \${focusArea}
 
-**Lighting**:
-- Source: \${lightSource}
-- Quality: \${lightQuality} (soft, harsh, diffused)
-- Time of day: \${timeOfDay}
+**Illuminazione**:
+- Fonte: \${lightSource}
+- Qualità: \${lightQuality} (morbida, dura, diffusa)
+- Momento del giorno: \${timeOfDay}
 
-**Color Palette**: \${colors}
+**Palette Colori**: \${colors}
 
-**Mood/Atmosphere**: \${mood}
+**Mood/Atmosfera**: \${mood}
 
-**Must Include**: \${includeElements}
-**Must Avoid**: \${avoidElements}
+**Deve Includere**: \${includeElements}
+**Deve Evitare**: \${avoidElements}
 
-**Technical**: \${aspectRatio} aspect ratio, high quality`}
+**Tecnico**: aspect ratio \${aspectRatio}, alta qualità`}
 />
 
-### Scene Building
+### Costruzione Scene
 
-For complex scenes, describe layers from foreground to background.
+Per scene complesse, descrivi i livelli dal primo piano allo sfondo.
 
 <TryIt 
-  title="Layered Scene Description"
-  description="Build complex scenes by describing what appears in each layer of depth."
-  prompt={`Generate a detailed scene:
+  title="Descrizione Scena a Livelli"
+  description="Costruisci scene complesse descrivendo cosa appare in ogni livello di profondità."
+  prompt={`Genera una scena dettagliata:
 
-**Setting**: \${setting}
+**Ambientazione**: \${setting}
 
-**Foreground** (closest to viewer):
+**Primo Piano** (più vicino allo spettatore):
 \${foreground}
 
-**Middle Ground** (main action area):
+**Piano Medio** (area d'azione principale):
 \${middleGround}
 
-**Background** (distant elements):
+**Sfondo** (elementi distanti):
 \${background}
 
-**Atmospheric Details**:
-- Weather/Air: \${weather}
-- Lighting: \${lighting}
-- Time: \${timeOfDay}
+**Dettagli Atmosferici**:
+- Meteo/Aria: \${weather}
+- Illuminazione: \${lighting}
+- Momento: \${timeOfDay}
 
-**Style**: \${artisticStyle}
+**Stile**: \${artisticStyle}
 **Mood**: \${mood}
-**Color Palette**: \${colors}
+**Palette Colori**: \${colors}
 
-Additional details to include: \${additionalDetails}`}
+Dettagli aggiuntivi da includere: \${additionalDetails}`}
 />
 
-## Audio Prompting
+## Prompting Audio
 
-Audio processing opens up transcription, analysis, and understanding of spoken content. The key is providing context about what the audio contains.
+L'elaborazione audio apre trascrizione, analisi e comprensione del contenuto parlato. La chiave è fornire contesto su cosa contiene l'audio.
 
-### Enhanced Transcription
+### Trascrizione Avanzata
 
-Basic transcription is just the start. With good prompts, you can get speaker identification, timestamps, and domain-specific accuracy.
+La trascrizione base è solo l'inizio. Con buoni prompt, puoi ottenere identificazione speaker, timestamp e accuratezza specifica per dominio.
 
 <TryIt 
-  title="Smart Transcription"
-  description="Get accurate transcriptions with speaker labels, timestamps, and handling of unclear sections."
-  prompt={`Transcribe this audio recording.
+  title="Trascrizione Intelligente"
+  description="Ottieni trascrizioni accurate con etichette speaker, timestamp e gestione delle sezioni poco chiare."
+  prompt={`Trascrivi questa registrazione audio.
 
-**Context**: \${recordingType} (meeting, interview, podcast, lecture, etc.)
-**Expected Speakers**: \${speakerCount} (\${speakerRoles})
-**Domain**: \${domain} (technical terms to expect: \${technicalTerms})
+**Contesto**: \${recordingType} (riunione, intervista, podcast, lezione, ecc.)
+**Speaker Attesi**: \${speakerCount} (\${speakerRoles})
+**Dominio**: \${domain} (termini tecnici da aspettarsi: \${technicalTerms})
 
-**Output Format**:
-[00:00] **Speaker 1 (Name/Role)**: Transcribed text here.
-[00:15] **Speaker 2 (Name/Role)**: Their response here.
+**Formato Output**:
+[00:00] **Speaker 1 (Nome/Ruolo)**: Testo trascritto qui.
+[00:15] **Speaker 2 (Nome/Ruolo)**: La loro risposta qui.
 
-**Instructions**:
-- Include timestamps at natural breaks (every 30-60 seconds or at speaker changes)
-- Mark unclear sections as [inaudible] or [unclear: best guess?]
-- Note non-speech sounds in brackets: [laughter], [phone ringing], [long pause]
-- Preserve filler words only if they're meaningful (um, uh can be removed)
-- Flag any action items or decisions with → symbol
+**Istruzioni**:
+- Includi timestamp alle pause naturali (ogni 30-60 secondi o ai cambi speaker)
+- Marca sezioni poco chiare come [inaudibile] o [poco chiaro: ipotesi migliore?]
+- Annota suoni non-parlato tra parentesi: [risata], [telefono che squilla], [lunga pausa]
+- Preserva le parole riempitive solo se sono significative (ehm, uh possono essere rimosse)
+- Segnala eventuali action item o decisioni con simbolo →
 
-Audio description: \${audioDescription}`}
+Descrizione audio: \${audioDescription}`}
 />
 
-### Audio Content Analysis
+### Analisi Contenuto Audio
 
-Beyond transcription, AI can analyze the content, tone, and key moments in audio.
+Oltre la trascrizione, l'IA può analizzare il contenuto, il tono e i momenti chiave nell'audio.
 
 <TryIt 
-  title="Audio Content Analyzer"
-  description="Get a comprehensive analysis of audio content including summary, key moments, and sentiment."
-  prompt={`Analyze this audio recording:
+  title="Analizzatore Contenuto Audio"
+  description="Ottieni un'analisi completa del contenuto audio incluso riassunto, momenti chiave e sentiment."
+  prompt={`Analizza questa registrazione audio:
 
-Audio description: \${audioDescription}
+Descrizione audio: \${audioDescription}
 
-Provide:
+Fornisci:
 
-**1. Executive Summary** (2-3 sentences)
-What is this recording about? What's the main takeaway?
+**1. Executive Summary** (2-3 frasi)
+Di cosa parla questa registrazione? Qual è il punto principale?
 
-**2. Speakers**
-- How many distinct speakers?
-- Characteristics (if discernible): tone, speaking style, expertise level
+**2. Speaker**
+- Quanti speaker distinti?
+- Caratteristiche (se distinguibili): tono, stile di parlato, livello di expertise
 
-**3. Content Breakdown**
-- Main topics discussed (with approximate timestamps)
-- Key points made
-- Questions raised
+**3. Breakdown Contenuto**
+- Argomenti principali discussi (con timestamp approssimativi)
+- Punti chiave fatti
+- Domande sollevate
 
-**4. Emotional Analysis**
-- Overall tone (formal, casual, tense, friendly)
-- Notable emotional moments
-- Energy level throughout
+**4. Analisi Emotiva**
+- Tono generale (formale, casual, teso, amichevole)
+- Momenti emotivi notevoli
+- Livello di energia durante
 
-**5. Actionable Items**
-- Decisions made
-- Action items mentioned
-- Follow-ups needed
+**5. Elementi Azionabili**
+- Decisioni prese
+- Action item menzionati
+- Follow-up necessari
 
-**6. Notable Quotes**
-Pull out 2-3 significant quotes with timestamps
+**6. Citazioni Notevoli**
+Estrai 2-3 citazioni significative con timestamp
 
-**7. Audio Quality**
-- Overall clarity
-- Any issues (background noise, interruptions, technical problems)`}
+**7. Qualità Audio**
+- Chiarezza generale
+- Eventuali problemi (rumore di fondo, interruzioni, problemi tecnici)`}
 />
 
-## Video Prompting
+## Prompting Video
 
-Video combines visual and audio analysis over time. The challenge is guiding the AI to focus on the relevant aspects across the entire duration.
+Il video combina analisi visiva e audio nel tempo. La sfida è guidare l'IA a concentrarsi sugli aspetti rilevanti attraverso l'intera durata.
 
-### Video Understanding
+### Comprensione Video
 
 <TryIt 
-  title="Comprehensive Video Analysis"
-  description="Get a structured breakdown of video content including timeline, visual elements, and key moments."
-  prompt={`Analyze this video: \${videoDescription}
+  title="Analisi Video Completa"
+  description="Ottieni un breakdown strutturato del contenuto video inclusa timeline, elementi visivi e momenti chiave."
+  prompt={`Analizza questo video: \${videoDescription}
 
-Provide a comprehensive analysis:
+Fornisci un'analisi completa:
 
-**1. Overview** (2-3 sentences)
-What is this video about? What's the main message or purpose?
+**1. Panoramica** (2-3 frasi)
+Di cosa parla questo video? Qual è il messaggio o scopo principale?
 
-**2. Timeline of Key Moments**
-| Timestamp | Event | Significance |
-|-----------|-------|--------------|
+**2. Timeline dei Momenti Chiave**
+| Timestamp | Evento | Significato |
+|-----------|--------|-------------|
 | 0:00 | ... | ... |
 
-**3. Visual Analysis**
-- Setting/Location: Where does this take place?
-- People: Who appears? What are they doing?
-- Objects: Key items or props featured
-- Visual style: Quality, editing, graphics used
+**3. Analisi Visiva**
+- Ambientazione/Location: Dove si svolge?
+- Persone: Chi appare? Cosa stanno facendo?
+- Oggetti: Elementi o prop chiave presenti
+- Stile visivo: Qualità, montaggio, grafiche usate
 
-**4. Audio Analysis**
-- Speech: Main points made (if any dialogue)
-- Music: Type, mood, how it's used
-- Sound effects: Notable audio elements
+**4. Analisi Audio**
+- Parlato: Punti principali fatti (se c'è dialogo)
+- Musica: Tipo, mood, come viene usata
+- Effetti sonori: Elementi audio notevoli
 
-**5. Production Quality**
-- Video quality and editing
-- Pacing and structure
-- Effectiveness for its purpose
+**5. Qualità Produzione**
+- Qualità video e montaggio
+- Ritmo e struttura
+- Efficacia per il suo scopo
 
 **6. Target Audience**
-Who is this video made for? Does it serve them well?
+Per chi è fatto questo video? Li serve bene?
 
-**7. Key Takeaways**
-What should a viewer remember from this video?`}
+**7. Punti Chiave**
+Cosa dovrebbe ricordare uno spettatore da questo video?`}
 />
 
-### Video Content Extraction
+### Estrazione Contenuto Video
 
-For specific information extraction from videos, be precise about what you need.
+Per estrazione di informazioni specifiche dai video, sii preciso su cosa ti serve.
 
 <TryIt 
-  title="Video Data Extractor"
-  description="Extract specific information from videos with timestamps and structured output."
-  prompt={`Extract specific information from this video:
+  title="Estrattore Dati Video"
+  description="Estrai informazioni specifiche dai video con timestamp e output strutturato."
+  prompt={`Estrai informazioni specifiche da questo video:
 
-Video type: \${videoType}
-Video description: \${videoDescription}
+Tipo video: \${videoType}
+Descrizione video: \${videoDescription}
 
-**Information to Extract**:
+**Informazioni da Estrarre**:
 1. \${extractItem1}
 2. \${extractItem2}
 3. \${extractItem3}
 
-**Output Format**:
+**Formato Output**:
 {
-  "video_summary": "Brief description",
-  "duration": "estimated length",
+  "video_summary": "Breve descrizione",
+  "duration": "durata stimata",
   "extracted_data": [
     {
       "timestamp": "MM:SS",
-      "item": "What was found",
-      "details": "Additional context",
-      "confidence": "high/medium/low"
+      "item": "Cosa è stato trovato",
+      "details": "Contesto aggiuntivo",
+      "confidence": "alta/media/bassa"
     }
   ],
-  "items_not_found": ["List anything requested but not present"],
-  "additional_observations": "Anything relevant not explicitly requested"
+  "items_not_found": ["Lista di qualsiasi cosa richiesta ma non presente"],
+  "additional_observations": "Qualsiasi cosa rilevante non esplicitamente richiesta"
 }`}
 />
 
-## Multimodal Combinations
+## Combinazioni Multimodali
 
-The real power of multimodal AI emerges when you combine different types of input. These combinations enable analysis that would be impossible with any single modality.
+Il vero potere dell'IA multimodale emerge quando combini diversi tipi di input. Queste combinazioni abilitano analisi che sarebbero impossibili con qualsiasi singola modalità.
 
-### Image + Text Verification
+### Verifica Immagine + Testo
 
-Check if images and their descriptions match—essential for e-commerce, content moderation, and quality assurance.
+Verifica se le immagini e le loro descrizioni corrispondono—essenziale per e-commerce, moderazione contenuti e quality assurance.
 
 <TryIt 
-  title="Image-Text Alignment Checker"
-  description="Verify that images accurately represent their text descriptions and vice versa."
-  prompt={`Analyze this image and its accompanying text for alignment:
+  title="Verificatore Allineamento Immagine-Testo"
+  description="Verifica che le immagini rappresentino accuratamente le loro descrizioni testuali e viceversa."
+  prompt={`Analizza questa immagine e il suo testo accompagnatorio per allineamento:
 
-**Image**: \${imageDescription}
-**Text Description**: "\${textDescription}"
+**Immagine**: \${imageDescription}
+**Descrizione Testuale**: "\${textDescription}"
 
-Evaluate:
+Valuta:
 
-**1. Accuracy Match**
-- Does the image show what the text describes?
-- Score: [1-10] with explanation
+**1. Match Accuratezza**
+- L'immagine mostra quello che descrive il testo?
+- Punteggio: [1-10] con spiegazione
 
-**2. Text Claims vs. Visual Reality**
-| Claim in Text | Visible in Image? | Notes |
-|---------------|-------------------|-------|
-| ... | Yes/No/Partial | ... |
+**2. Affermazioni Testo vs. Realtà Visiva**
+| Affermazione nel Testo | Visibile nell'Immagine? | Note |
+|------------------------|-------------------------|------|
+| ... | Sì/No/Parziale | ... |
 
-**3. Visual Elements Not Mentioned**
-What's visible in the image but not described in the text?
+**3. Elementi Visivi Non Menzionati**
+Cosa è visibile nell'immagine ma non descritto nel testo?
 
-**4. Text Claims Not Visible**
-What's described in text but can't be verified from the image?
+**4. Affermazioni Testo Non Visibili**
+Cosa è descritto nel testo ma non può essere verificato dall'immagine?
 
-**5. Recommendations**
-- For the text: [improvements to match image]
-- For the image: [improvements to match text]
+**5. Raccomandazioni**
+- Per il testo: [miglioramenti per corrispondere all'immagine]
+- Per l'immagine: [miglioramenti per corrispondere al testo]
 
-**6. Overall Assessment**
-Is this image-text pair trustworthy for \${purpose}?`}
+**6. Valutazione Complessiva**
+Questa coppia immagine-testo è affidabile per \${purpose}?`}
 />
 
-### Screenshot + Code Debugging
+### Screenshot + Debugging Codice
 
-One of the most powerful combinations for developers: seeing the visual bug alongside the code.
+Una delle combinazioni più potenti per sviluppatori: vedere il bug visivo insieme al codice.
 
 <TryIt 
-  title="Visual Bug Debugger"
-  description="Debug UI issues by analyzing both the visual output and the source code together."
-  prompt={`I have a UI bug. Here's what I see and my code:
+  title="Debugger Bug Visivo"
+  description="Debug problemi UI analizzando sia l'output visivo che il codice sorgente insieme."
+  prompt={`Ho un bug UI. Ecco cosa vedo e il mio codice:
 
-**Screenshot Description**: \${screenshotDescription}
-**What's Wrong**: \${bugDescription}
-**Expected Behavior**: \${expectedBehavior}
+**Descrizione Screenshot**: \${screenshotDescription}
+**Cosa c'è che Non Va**: \${bugDescription}
+**Comportamento Atteso**: \${expectedBehavior}
 
-**Relevant Code**:
+**Codice Rilevante**:
 \`\`\`\${language}
 \${code}
 \`\`\`
 
-Please help me:
+Per favore aiutami con:
 
-**1. Root Cause Analysis**
-- What in the code is causing this visual issue?
-- Which specific line(s) are responsible?
+**1. Analisi Causa Radice**
+- Cosa nel codice sta causando questo problema visivo?
+- Quali righe specifiche sono responsabili?
 
-**2. Explanation**
-- Why does this code produce this visual result?
-- What's the underlying mechanism?
+**2. Spiegazione**
+- Perché questo codice produce questo risultato visivo?
+- Qual è il meccanismo sottostante?
 
-**3. The Fix**
+**3. Il Fix**
 \`\`\`\${language}
-// Corrected code here
+// Codice corretto qui
 \`\`\`
 
-**4. Prevention**
-- How to avoid this type of bug in the future
-- Any related issues to check for`}
+**4. Prevenzione**
+- Come evitare questo tipo di bug in futuro
+- Eventuali problemi correlati da controllare`}
 />
 
-### Multi-Image Decision Making
+### Decision Making Multi-Immagine
 
-When choosing between options, structured comparison helps make better decisions.
+Quando scegli tra opzioni, il confronto strutturato aiuta a prendere decisioni migliori.
 
 <TryIt 
-  title="Visual Option Comparator"
-  description="Compare multiple images systematically against your criteria to make informed decisions."
-  prompt={`I'm choosing between these options for \${purpose}:
+  title="Comparatore Opzioni Visivo"
+  description="Confronta molteplici immagini sistematicamente contro i tuoi criteri per prendere decisioni informate."
+  prompt={`Sto scegliendo tra queste opzioni per \${purpose}:
 
-**Option A**: \${optionA}
-**Option B**: \${optionB}
-**Option C**: \${optionC}
+**Opzione A**: \${optionA}
+**Opzione B**: \${optionB}
+**Opzione C**: \${optionC}
 
-**My Criteria** (in order of importance):
-1. \${criterion1} (weight: high)
-2. \${criterion2} (weight: medium)
-3. \${criterion3} (weight: low)
+**I Miei Criteri** (in ordine di importanza):
+1. \${criterion1} (peso: alto)
+2. \${criterion2} (peso: medio)
+3. \${criterion3} (peso: basso)
 
-Provide:
+Fornisci:
 
-**Comparison Matrix**
-| Criterion | Option A | Option B | Option C |
-|-----------|----------|----------|----------|
-| \${criterion1} | Score + notes | ... | ... |
+**Matrice di Confronto**
+| Criterio | Opzione A | Opzione B | Opzione C |
+|----------|-----------|-----------|-----------|
+| \${criterion1} | Punteggio + note | ... | ... |
 | \${criterion2} | ... | ... | ... |
 | \${criterion3} | ... | ... | ... |
 
-**Weighted Scores**
-- Option A: X/10
-- Option B: X/10
-- Option C: X/10
+**Punteggi Pesati**
+- Opzione A: X/10
+- Opzione B: X/10
+- Opzione C: X/10
 
-**Recommendation**
-Based on your stated priorities, I recommend [Option] because...
+**Raccomandazione**
+Basandomi sulle tue priorità dichiarate, raccomando [Opzione] perché...
 
-**Caveats**
-- If [condition], consider [alternative] instead
-- Watch out for [potential issue]`}
+**Avvertenze**
+- Se [condizione], considera [alternativa] invece
+- Fai attenzione a [potenziale problema]`}
 />
 
-## Best Practices for Multimodal Prompts
+## Best Practice per Prompt Multimodali
 
-Getting great results from multimodal AI requires understanding both its capabilities and limitations.
+Ottenere grandi risultati dall'IA multimodale richiede di capire sia le sue capacità che i suoi limiti.
 
-### What Makes Multimodal Prompts Effective
-
-<InfoGrid items={[
-  { label: "Provide Context", description: "Tell the model what the media is and why you're analyzing it", example: "\"This is a product photo for our e-commerce site...\"", color: "green" },
-  { label: "Be Specific", description: "Ask about particular elements rather than general impressions", example: "\"Focus on the pricing table in the top-right corner\"", color: "green" },
-  { label: "Reference Locations", description: "Point to specific areas using spatial language", example: "\"In the bottom-left quadrant...\"", color: "green" },
-  { label: "State Your Goal", description: "Explain what you'll use the analysis for", example: "\"I need to decide if this image works for our mobile app\"", color: "green" }
-]} />
-
-### Common Pitfalls to Avoid
+### Cosa Rende Efficaci i Prompt Multimodali
 
 <InfoGrid items={[
-  { label: "Assuming Perfect Vision", description: "Models may miss small details, especially in low-resolution images", example: "Don't ask about 8pt text in a compressed screenshot", color: "red" },
-  { label: "Expecting Perfect OCR", description: "Handwriting, unusual fonts, and complex layouts can cause errors", example: "Verify extracted text from receipts and forms", color: "red" },
-  { label: "Ignoring Content Policies", description: "Models have restrictions on certain types of content", example: "Won't identify specific individuals or analyze inappropriate content", color: "red" },
-  { label: "Skipping Verification", description: "Always verify critical information extracted from media", example: "Double-check numbers, dates, and names from document extraction", color: "red" }
+  { label: "Fornisci Contesto", description: "Dì al modello cos'è il media e perché lo stai analizzando", example: "\"Questa è una foto prodotto per il nostro sito e-commerce...\"", color: "green" },
+  { label: "Sii Specifico", description: "Chiedi di elementi particolari piuttosto che impressioni generali", example: "\"Concentrati sulla tabella prezzi in alto a destra\"", color: "green" },
+  { label: "Fai Riferimento a Posizioni", description: "Indica aree specifiche usando linguaggio spaziale", example: "\"Nel quadrante in basso a sinistra...\"", color: "green" },
+  { label: "Dichiara il Tuo Obiettivo", description: "Spiega per cosa userai l'analisi", example: "\"Devo decidere se questa immagine funziona per la nostra app mobile\"", color: "green" }
 ]} />
 
-### Handling Limitations Gracefully
+### Errori Comuni da Evitare
+
+<InfoGrid items={[
+  { label: "Assumere Visione Perfetta", description: "I modelli potrebbero perdere piccoli dettagli, specialmente in immagini a bassa risoluzione", example: "Non chiedere di testo 8pt in uno screenshot compresso", color: "red" },
+  { label: "Aspettarsi OCR Perfetto", description: "Scrittura a mano, font inusuali e layout complessi possono causare errori", example: "Verifica il testo estratto da ricevute e moduli", color: "red" },
+  { label: "Ignorare le Policy sui Contenuti", description: "I modelli hanno restrizioni su certi tipi di contenuto", example: "Non identificheranno individui specifici né analizzeranno contenuti inappropriati", color: "red" },
+  { label: "Saltare la Verifica", description: "Verifica sempre informazioni critiche estratte dai media", example: "Ricontrolla numeri, date e nomi dall'estrazione documenti", color: "red" }
+]} />
+
+### Gestire le Limitazioni con Grazia
 
 <TryIt 
-  title="Uncertainty-Aware Image Analysis"
-  description="This prompt explicitly handles cases where the model can't see clearly or is uncertain."
-  prompt={`Analyze this image: \${imageDescription}
+  title="Analisi Immagine Consapevole dell'Incertezza"
+  description="Questo prompt gestisce esplicitamente i casi in cui il modello non può vedere chiaramente o è incerto."
+  prompt={`Analizza questa immagine: \${imageDescription}
 
-**Instructions for Handling Uncertainty**:
+**Istruzioni per Gestire l'Incertezza**:
 
-IF YOU CAN'T SEE SOMETHING CLEARLY:
-- Don't guess or make up details
-- Say: "I can see [what's visible] but cannot clearly make out [unclear element]"
-- Suggest what additional information would help
+SE NON RIESCI A VEDERE QUALCOSA CHIARAMENTE:
+- Non indovinare o inventare dettagli
+- Dì: "Posso vedere [cosa è visibile] ma non riesco a distinguere chiaramente [elemento poco chiaro]"
+- Suggerisci quali informazioni aggiuntive aiuterebbero
 
-IF CONTENT SEEMS RESTRICTED:
-- Explain what you can and cannot analyze
-- Focus on permitted aspects of the analysis
+SE IL CONTENUTO SEMBRA RISTRETTO:
+- Spiega cosa puoi e non puoi analizzare
+- Concentrati sugli aspetti permessi dell'analisi
 
-IF ASKED ABOUT PEOPLE:
-- Describe actions, positions, and general characteristics
-- Do not attempt to identify specific individuals
-- Focus on: number of people, activities, expressions, attire
+SE TI VIENE CHIESTO DI PERSONE:
+- Descrivi azioni, posizioni e caratteristiche generali
+- Non tentare di identificare individui specifici
+- Concentrati su: numero di persone, attività, espressioni, abbigliamento
 
-**Your Analysis**:
-[Proceed with analysis, applying these guidelines]`}
+**La Tua Analisi**:
+[Procedi con l'analisi, applicando queste linee guida]`}
 />
 
 <Quiz 
-  question="Why does prompting matter MORE for multimodal models than for text-only models?"
+  question="Perché il prompting è PIÙ importante per i modelli multimodali che per i modelli solo testo?"
   options={[
-    "Multimodal models are less intelligent and need more help",
-    "Images and audio are inherently ambiguous—the AI needs context to know what aspects matter",
-    "Multimodal models can only process one type of input at a time",
-    "Text prompts don't work with multimodal models"
+    "I modelli multimodali sono meno intelligenti e hanno bisogno di più aiuto",
+    "Immagini e audio sono intrinsecamente ambigui—l'IA ha bisogno di contesto per sapere quali aspetti contano",
+    "I modelli multimodali possono elaborare solo un tipo di input alla volta",
+    "I prompt testuali non funzionano con i modelli multimodali"
   ]}
   correctIndex={1}
-  explanation="When you look at an image, you instantly know what's important based on your goals. The AI doesn't have this context—a photo of a wall crack could be an engineering concern, an artistic texture, or irrelevant background. Your prompt determines how the AI interprets and focuses on the media you provide."
+  explanation="Quando guardi un'immagine, sai istantaneamente cosa è importante basandoti sui tuoi obiettivi. L'IA non ha questo contesto—una foto di una crepa nel muro potrebbe essere un problema ingegneristico, una texture artistica, o sfondo irrilevante. Il tuo prompt determina come l'IA interpreta e si concentra sul media che fornisci."
 />

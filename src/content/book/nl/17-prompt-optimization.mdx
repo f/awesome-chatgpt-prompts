@@ -1,269 +1,269 @@
-A good prompt gets the job done. An optimized prompt gets the job done efficiently—faster, cheaper, more consistently. This chapter teaches you how to systematically improve prompts across multiple dimensions.
+Een goede prompt doet het werk. Een geoptimaliseerde prompt doet het werk efficiënt—sneller, goedkoper, consistenter. Dit hoofdstuk leert je hoe je prompts systematisch kunt verbeteren over meerdere dimensies.
 
-<Callout type="tip" title="Try the Prompt Enhancer">
-Want to optimize your prompts automatically? Use our [Prompt Enhancer](/developers#enhancer) tool. It analyzes your prompt, applies optimization techniques, and shows you similar community prompts for inspiration.
+<Callout type="tip" title="Probeer de Prompt Enhancer">
+Wil je je prompts automatisch optimaliseren? Gebruik onze [Prompt Enhancer](/developers#enhancer) tool. Het analyseert je prompt, past optimalisatietechnieken toe en toont je vergelijkbare community prompts ter inspiratie.
 </Callout>
 
-## The Optimization Trade-offs
+## De Optimalisatie Afwegingen
 
-Every optimization involves trade-offs. Understanding these helps you make intentional choices:
-
-<InfoGrid items={[
-  { label: "Quality vs. Cost", description: "Higher quality often requires more tokens or better models", example: "Adding examples improves accuracy but increases token count", exampleType: "text", color: "blue" },
-  { label: "Speed vs. Quality", description: "Faster models may sacrifice some capability", example: "GPT-4 is smarter but slower than GPT-4o-mini", exampleType: "text", color: "purple" },
-  { label: "Consistency vs. Creativity", description: "Lower temperature = more predictable but less creative", example: "Temperature 0.2 for facts, 0.8 for brainstorming", exampleType: "text", color: "green" },
-  { label: "Simplicity vs. Robustness", description: "Edge case handling adds complexity", example: "Simple prompts fail on unusual inputs", exampleType: "text", color: "amber" }
-]} />
-
-## Measuring What Matters
-
-Before optimizing, define success. What does "better" mean for your use case?
+Elke optimalisatie brengt afwegingen met zich mee. Deze begrijpen helpt je bewuste keuzes te maken:
 
 <InfoGrid items={[
-  { label: "Accuracy", description: "How often is the output correct?", example: "90% of code suggestions compile without errors", exampleType: "text", color: "blue" },
-  { label: "Relevance", description: "Does it address what was actually asked?", example: "Response directly answers the question vs. tangents", exampleType: "text", color: "blue" },
-  { label: "Completeness", description: "Are all requirements covered?", example: "All 5 requested sections included in output", exampleType: "text", color: "blue" },
-  { label: "Latency", description: "How long until the response arrives?", example: "p50 < 2s, p95 < 5s for chat applications", exampleType: "text", color: "purple" },
-  { label: "Token Efficiency", description: "How many tokens for the same result?", example: "500 tokens vs. 1500 tokens for equivalent output", exampleType: "text", color: "purple" },
-  { label: "Consistency", description: "How similar are outputs for similar inputs?", example: "Same question gets structurally similar answers", exampleType: "text", color: "green" }
+  { label: "Kwaliteit vs. Kosten", description: "Hogere kwaliteit vereist vaak meer tokens of betere modellen", example: "Voorbeelden toevoegen verbetert nauwkeurigheid maar verhoogt het aantal tokens", exampleType: "text", color: "blue" },
+  { label: "Snelheid vs. Kwaliteit", description: "Snellere modellen kunnen wat capaciteit opofferen", example: "GPT-4 is slimmer maar langzamer dan GPT-4o-mini", exampleType: "text", color: "purple" },
+  { label: "Consistentie vs. Creativiteit", description: "Lagere temperature = voorspelbaarder maar minder creatief", example: "Temperature 0.2 voor feiten, 0.8 voor brainstormen", exampleType: "text", color: "green" },
+  { label: "Eenvoud vs. Robuustheid", description: "Afhandeling van randgevallen voegt complexiteit toe", example: "Eenvoudige prompts falen bij ongebruikelijke invoer", exampleType: "text", color: "amber" }
 ]} />
 
-<Callout type="info" title="What Do p50 and p95 Mean?">
-Percentile metrics show response time distribution. **p50** (median) means 50% of requests are faster than this value. **p95** means 95% are faster—it catches slow outliers. If your p50 is 1s but p95 is 10s, most users are happy but 5% experience frustrating delays.
+## Meten Wat Ertoe Doet
+
+Voordat je optimaliseert, definieer succes. Wat betekent "beter" voor jouw use case?
+
+<InfoGrid items={[
+  { label: "Nauwkeurigheid", description: "Hoe vaak is de output correct?", example: "90% van de code-suggesties compileert zonder fouten", exampleType: "text", color: "blue" },
+  { label: "Relevantie", description: "Beantwoordt het wat er daadwerkelijk gevraagd werd?", example: "Respons beantwoordt direct de vraag vs. afdwalingen", exampleType: "text", color: "blue" },
+  { label: "Volledigheid", description: "Worden alle vereisten gedekt?", example: "Alle 5 gevraagde secties opgenomen in output", exampleType: "text", color: "blue" },
+  { label: "Latency", description: "Hoe lang duurt het voordat het antwoord aankomt?", example: "p50 < 2s, p95 < 5s voor chat-applicaties", exampleType: "text", color: "purple" },
+  { label: "Token Efficiëntie", description: "Hoeveel tokens voor hetzelfde resultaat?", example: "500 tokens vs. 1500 tokens voor equivalente output", exampleType: "text", color: "purple" },
+  { label: "Consistentie", description: "Hoe vergelijkbaar zijn outputs voor vergelijkbare invoer?", example: "Dezelfde vraag krijgt structureel vergelijkbare antwoorden", exampleType: "text", color: "green" }
+]} />
+
+<Callout type="info" title="Wat Betekenen p50 en p95?">
+Percentielmetrieken tonen de verdeling van responstijden. **p50** (mediaan) betekent dat 50% van de verzoeken sneller is dan deze waarde. **p95** betekent dat 95% sneller is—het vangt langzame uitschieters op. Als je p50 1s is maar p95 10s, zijn de meeste gebruikers tevreden maar ervaart 5% frustrerende vertragingen.
 </Callout>
 
 <TryIt 
-  title="Define Your Success Metrics"
-  description="Use this template to clarify what you're optimizing for before making changes."
-  prompt={`Help me define success metrics for my prompt optimization.
+  title="Definieer Je Succesmetrieken"
+  description="Gebruik dit sjabloon om te verduidelijken waarvoor je optimaliseert voordat je wijzigingen aanbrengt."
+  prompt={`Help me succesmetrieken te definiëren voor mijn prompt optimalisatie.
 
-**My use case**: \${useCase}
-**Current pain points**: \${painPoints}
+**Mijn use case**: \${useCase}
+**Huidige pijnpunten**: \${painPoints}
 
-For this use case, help me define:
+Voor deze use case, help me te definiëren:
 
-1. **Primary metric**: What single metric matters most?
-2. **Secondary metrics**: What else should I track?
-3. **Acceptable trade-offs**: What can I sacrifice for the primary metric?
-4. **Red lines**: What quality level is unacceptable?
-5. **How to measure**: Practical ways to evaluate each metric`}
+1. **Primaire metriek**: Welke enkele metriek is het belangrijkst?
+2. **Secundaire metrieken**: Wat moet ik nog meer bijhouden?
+3. **Acceptabele afwegingen**: Wat kan ik opofferen voor de primaire metriek?
+4. **Rode lijnen**: Welk kwaliteitsniveau is onaanvaardbaar?
+5. **Hoe te meten**: Praktische manieren om elke metriek te evalueren`}
 />
 
-## Token Optimization
+## Token Optimalisatie
 
-Tokens cost money and add latency. Here's how to say the same thing with fewer tokens.
+Tokens kosten geld en voegen latency toe. Hier leer je hoe je hetzelfde kunt zeggen met minder tokens.
 
-### The Compression Principle
+### Het Compressieprincipe
 
 <Compare 
-  before={{ label: "Verbose (67 tokens)", content: "I would like you to please help me with the following task. I need you to take the text that I'm going to provide below and create a summary of it. The summary should capture the main points and be concise. Please make sure to include all the important information. Here is the text:\n\n[text]" }}
-  after={{ label: "Concise (12 tokens)", content: "Summarize this text, capturing main points concisely:\n\n[text]" }}
+  before={{ label: "Uitgebreid (67 tokens)", content: "I would like you to please help me with the following task. I need you to take the text that I'm going to provide below and create a summary of it. The summary should capture the main points and be concise. Please make sure to include all the important information. Here is the text:\n\n[text]" }}
+  after={{ label: "Beknopt (12 tokens)", content: "Summarize this text, capturing main points concisely:\n\n[text]" }}
 />
 
-**Same result, 82% fewer tokens.**
+**Hetzelfde resultaat, 82% minder tokens.**
 
-### Token-Saving Techniques
+### Token-Besparende Technieken
 
 <InfoGrid items={[
-  { label: "Cut Pleasantries", description: "\"Please\" and \"Thank you\" add tokens without improving output", example: "\"Please summarize\" → \"Summarize\"", color: "green" },
-  { label: "Eliminate Redundancy", description: "Don't repeat yourself or state the obvious", example: "\"Write a summary that summarizes\" → \"Summarize\"", color: "green" },
-  { label: "Use Abbreviations", description: "Where meaning is clear, abbreviate", example: "\"for example\" → \"e.g.\"", color: "green" },
-  { label: "Reference by Position", description: "Point to content instead of repeating it", example: "\"the text above\" instead of re-quoting", color: "green" }
+  { label: "Schrap Beleefdheidsfrases", description: "\"Alstublieft\" en \"Dank u\" voegen tokens toe zonder de output te verbeteren", example: "\"Vat alstublieft samen\" → \"Vat samen\"", color: "green" },
+  { label: "Elimineer Redundantie", description: "Herhaal jezelf niet en vermeld niet het voor de hand liggende", example: "\"Schrijf een samenvatting die samenvat\" → \"Vat samen\"", color: "green" },
+  { label: "Gebruik Afkortingen", description: "Waar de betekenis duidelijk is, verkort", example: "\"bijvoorbeeld\" → \"bijv.\"", color: "green" },
+  { label: "Refereer op Positie", description: "Verwijs naar content in plaats van het te herhalen", example: "\"de tekst hierboven\" in plaats van opnieuw citeren", color: "green" }
 ]} />
 
 <TryIt 
   title="Prompt Compressor"
-  description="Paste a verbose prompt to get a token-optimized version."
-  prompt={`Compress this prompt while preserving its meaning and effectiveness:
+  description="Plak een uitgebreide prompt om een token-geoptimaliseerde versie te krijgen."
+  prompt={`Comprimeer deze prompt met behoud van betekenis en effectiviteit:
 
-Original prompt:
+Originele prompt:
 "\${verbosePrompt}"
 
-Instructions:
-1. Remove unnecessary pleasantries and filler words
-2. Eliminate redundancy
-3. Use concise phrasing
-4. Keep all essential instructions and constraints
-5. Maintain clarity—don't sacrifice understanding for brevity
+Instructies:
+1. Verwijder onnodige beleefdheidsfrases en opvulwoorden
+2. Elimineer redundantie
+3. Gebruik beknopte formulering
+4. Behoud alle essentiële instructies en beperkingen
+5. Behoud duidelijkheid—offer begrip niet op voor beknoptheid
 
-Provide:
-- **Compressed version**: The optimized prompt
-- **Token reduction**: Estimated percentage saved
-- **What was cut**: Brief explanation of what was removed and why it was safe to remove`}
+Lever:
+- **Gecomprimeerde versie**: De geoptimaliseerde prompt
+- **Tokenreductie**: Geschat percentage bespaard
+- **Wat werd verwijderd**: Korte uitleg van wat werd verwijderd en waarom het veilig was om te verwijderen`}
 />
 
-## Quality Optimization
+## Kwaliteitsoptimalisatie
 
-Sometimes you need better outputs, not cheaper ones. Here's how to improve quality.
+Soms heb je betere outputs nodig, geen goedkopere. Hier leer je hoe je kwaliteit verbetert.
 
-### Accuracy Boosters
+### Nauwkeurigheidsverbeteraars
 
 <InfoGrid items={[
-  { label: "Add Verification", description: "Ask the model to check its own work", example: "\"...then verify your answer is correct\"", color: "blue" },
-  { label: "Request Confidence", description: "Make uncertainty explicit", example: "\"Rate your confidence 1-10 and explain any uncertainty\"", color: "blue" },
-  { label: "Multiple Approaches", description: "Get different perspectives, then choose", example: "\"Provide 3 approaches and recommend the best one\"", color: "blue" },
-  { label: "Explicit Reasoning", description: "Force step-by-step thinking", example: "\"Think step by step and show your reasoning\"", color: "blue" }
+  { label: "Voeg Verificatie Toe", description: "Vraag het model zijn eigen werk te controleren", example: "\"...verifieer dan dat je antwoord correct is\"", color: "blue" },
+  { label: "Vraag om Vertrouwen", description: "Maak onzekerheid expliciet", example: "\"Beoordeel je vertrouwen 1-10 en leg eventuele onzekerheid uit\"", color: "blue" },
+  { label: "Meerdere Benaderingen", description: "Krijg verschillende perspectieven, kies dan", example: "\"Geef 3 benaderingen en beveel de beste aan\"", color: "blue" },
+  { label: "Expliciete Redenering", description: "Dwing stap-voor-stap denken af", example: "\"Denk stap voor stap en toon je redenering\"", color: "blue" }
 ]} />
 
-### Consistency Boosters
+### Consistentieverbeteraars
 
 <InfoGrid items={[
-  { label: "Detailed Format Specs", description: "Show exactly what output should look like", example: "Include a template or schema", exampleType: "text", color: "purple" },
-  { label: "Few-Shot Examples", description: "Provide 2-3 examples of ideal output", example: "\"Here's what good looks like: [examples]\"", color: "purple" },
-  { label: "Lower Temperature", description: "Reduce randomness for more predictable output", example: "Temperature 0.3-0.5 for consistent results", exampleType: "text", color: "purple" },
-  { label: "Output Validation", description: "Add a validation step for critical fields", example: "\"Verify all required fields are present\"", color: "purple" }
+  { label: "Gedetailleerde Formaatspecificaties", description: "Toon precies hoe de output eruit moet zien", example: "Voeg een sjabloon of schema toe", exampleType: "text", color: "purple" },
+  { label: "Few-Shot Voorbeelden", description: "Geef 2-3 voorbeelden van ideale output", example: "\"Zo ziet goed eruit: [voorbeelden]\"", color: "purple" },
+  { label: "Lagere Temperature", description: "Verminder willekeur voor voorspelbaardere output", example: "Temperature 0.3-0.5 voor consistente resultaten", exampleType: "text", color: "purple" },
+  { label: "Output Validatie", description: "Voeg een validatiestap toe voor kritieke velden", example: "\"Verifieer dat alle vereiste velden aanwezig zijn\"", color: "purple" }
 ]} />
 
 <TryIt 
-  title="Quality Enhancer"
-  description="Add quality-improving elements to your prompt."
-  prompt={`Enhance this prompt for higher quality outputs:
+  title="Kwaliteitsverbeteraar"
+  description="Voeg kwaliteitsverbeterende elementen toe aan je prompt."
+  prompt={`Verbeter deze prompt voor hogere kwaliteit outputs:
 
-Original prompt:
+Originele prompt:
 "\${originalPrompt}"
 
-**What quality issue I'm seeing**: \${qualityIssue}
+**Welk kwaliteitsprobleem ik zie**: \${qualityIssue}
 
-Add appropriate quality boosters:
-1. If accuracy is the issue → add verification steps
-2. If consistency is the issue → add format specifications or examples
-3. If relevance is the issue → add context and constraints
-4. If completeness is the issue → add explicit requirements
+Voeg gepaste kwaliteitsverbeteraars toe:
+1. Als nauwkeurigheid het probleem is → voeg verificatiestappen toe
+2. Als consistentie het probleem is → voeg formaatspecificaties of voorbeelden toe
+3. Als relevantie het probleem is → voeg context en beperkingen toe
+4. Als volledigheid het probleem is → voeg expliciete vereisten toe
 
-Provide the enhanced prompt with explanations for each addition.`}
+Lever de verbeterde prompt met uitleg voor elke toevoeging.`}
 />
 
-## Latency Optimization
+## Latency Optimalisatie
 
-When speed matters, every millisecond counts.
+Wanneer snelheid ertoe doet, telt elke milliseconde.
 
-### Model Selection by Speed Need
-
-<InfoGrid items={[
-  { label: "Real-time (< 500ms)", description: "Use smallest effective model + aggressive caching", example: "GPT-4o-mini, Claude Haiku, cached responses", exampleType: "text", color: "red" },
-  { label: "Interactive (< 2s)", description: "Fast models, streaming enabled", example: "GPT-4o-mini with streaming", exampleType: "text", color: "amber" },
-  { label: "Tolerant (< 10s)", description: "Mid-tier models, balance quality/speed", example: "GPT-4o, Claude Sonnet", exampleType: "text", color: "green" },
-  { label: "Async/Batch", description: "Use best model, process in background", example: "GPT-4, Claude Opus for offline processing", exampleType: "text", color: "blue" }
-]} />
-
-### Speed Techniques
+### Modelselectie op Snelheidsbehoefte
 
 <InfoGrid items={[
-  { label: "Shorter Prompts", description: "Fewer input tokens = faster processing", example: "Compress prompts, remove unnecessary context", exampleType: "text", color: "cyan" },
-  { label: "Limit Output", description: "Set max_tokens to prevent runaway responses", example: "max_tokens: 500 for summaries", exampleType: "text", color: "cyan" },
-  { label: "Use Streaming", description: "Get first tokens faster, better UX", example: "Stream for any response > 100 tokens", exampleType: "text", color: "cyan" },
-  { label: "Cache Aggressively", description: "Don't recompute identical queries", example: "Cache common questions, template outputs", exampleType: "text", color: "cyan" }
+  { label: "Real-time (< 500ms)", description: "Gebruik kleinste effectieve model + agressieve caching", example: "GPT-4o-mini, Claude Haiku, gecachte responses", exampleType: "text", color: "red" },
+  { label: "Interactief (< 2s)", description: "Snelle modellen, streaming ingeschakeld", example: "GPT-4o-mini met streaming", exampleType: "text", color: "amber" },
+  { label: "Tolerant (< 10s)", description: "Mid-tier modellen, balans kwaliteit/snelheid", example: "GPT-4o, Claude Sonnet", exampleType: "text", color: "green" },
+  { label: "Async/Batch", description: "Gebruik beste model, verwerk op achtergrond", example: "GPT-4, Claude Opus voor offline verwerking", exampleType: "text", color: "blue" }
 ]} />
 
-## Cost Optimization
+### Snelheidstechnieken
 
-At scale, small savings multiply into significant budget impact.
+<InfoGrid items={[
+  { label: "Kortere Prompts", description: "Minder input tokens = snellere verwerking", example: "Comprimeer prompts, verwijder onnodige context", exampleType: "text", color: "cyan" },
+  { label: "Beperk Output", description: "Stel max_tokens in om doorlopende responses te voorkomen", example: "max_tokens: 500 voor samenvattingen", exampleType: "text", color: "cyan" },
+  { label: "Gebruik Streaming", description: "Krijg eerste tokens sneller, betere UX", example: "Stream voor elke response > 100 tokens", exampleType: "text", color: "cyan" },
+  { label: "Cache Agressief", description: "Bereken identieke queries niet opnieuw", example: "Cache veelvoorkomende vragen, sjabloon outputs", exampleType: "text", color: "cyan" }
+]} />
 
-### Understanding Costs
+## Kostenoptimalisatie
 
-Use this calculator to estimate your API costs across different models:
+Op schaal vermenigvuldigen kleine besparingen tot significante budgetimpact.
+
+### Kosten Begrijpen
+
+Gebruik deze calculator om je API-kosten over verschillende modellen te schatten:
 
 <CostCalculatorDemo />
 
-### Cost Reduction Strategies
+### Kostenreductiestrategieën
 
 <InfoGrid items={[
-  { label: "Model Routing", description: "Use expensive models only when needed", example: "Simple questions → GPT-4o-mini, Complex → GPT-4", exampleType: "text", color: "green" },
-  { label: "Prompt Efficiency", description: "Shorter prompts = lower cost per request", example: "Cut 50% of tokens = 50% input cost savings", exampleType: "text", color: "green" },
-  { label: "Output Control", description: "Limit response length when full detail isn't needed", example: "\"Answer in 2-3 sentences\" vs. unlimited", color: "green" },
-  { label: "Batching", description: "Combine related queries into single requests", example: "Analyze 10 items in one prompt vs. 10 separate calls", exampleType: "text", color: "green" },
-  { label: "Pre-filtering", description: "Don't send requests that don't need AI", example: "Keyword matching before expensive classification", exampleType: "text", color: "green" }
+  { label: "Model Routing", description: "Gebruik dure modellen alleen wanneer nodig", example: "Eenvoudige vragen → GPT-4o-mini, Complex → GPT-4", exampleType: "text", color: "green" },
+  { label: "Prompt Efficiëntie", description: "Kortere prompts = lagere kosten per verzoek", example: "50% tokens verminderen = 50% input kostenbesparing", exampleType: "text", color: "green" },
+  { label: "Output Controle", description: "Beperk responslengte wanneer volledig detail niet nodig is", example: "\"Antwoord in 2-3 zinnen\" vs. onbeperkt", color: "green" },
+  { label: "Batching", description: "Combineer gerelateerde queries in enkele verzoeken", example: "Analyseer 10 items in één prompt vs. 10 aparte calls", exampleType: "text", color: "green" },
+  { label: "Pre-filtering", description: "Stuur geen verzoeken die geen AI nodig hebben", example: "Keyword matching vóór dure classificatie", exampleType: "text", color: "green" }
 ]} />
 
-## The Optimization Loop
+## De Optimalisatielus
 
-Optimization is iterative. Here's a systematic process:
+Optimalisatie is iteratief. Hier is een systematisch proces:
 
-### Step 1: Establish Baseline
+### Stap 1: Stel een Baseline Vast
 
-You can't improve what you don't measure. Before changing anything, document your starting point rigorously.
+Je kunt niet verbeteren wat je niet meet. Voordat je iets verandert, documenteer je startpunt grondig.
 
 <InfoGrid items={[
-  { label: "Prompt Documentation", description: "Save the exact prompt text, including system prompts and any templates", example: "Version control your prompts like code", exampleType: "text", color: "blue" },
-  { label: "Test Set", description: "Create 20-50 representative inputs that cover common cases and edge cases", example: "Include easy, medium, and hard examples", exampleType: "text", color: "blue" },
-  { label: "Quality Metrics", description: "Score each output against your success criteria", example: "Accuracy %, relevance score, format compliance", exampleType: "text", color: "purple" },
-  { label: "Performance Metrics", description: "Measure tokens and timing for each test case", example: "Avg input: 450 tokens, Avg output: 200 tokens, p50 latency: 1.2s", exampleType: "text", color: "purple" }
+  { label: "Prompt Documentatie", description: "Sla de exacte prompt tekst op, inclusief system prompts en eventuele sjablonen", example: "Versiebeheer je prompts zoals code", exampleType: "text", color: "blue" },
+  { label: "Testset", description: "Maak 20-50 representatieve inputs die veelvoorkomende gevallen en randgevallen dekken", example: "Voeg makkelijke, gemiddelde en moeilijke voorbeelden toe", exampleType: "text", color: "blue" },
+  { label: "Kwaliteitsmetrieken", description: "Scoor elke output tegen je succescriteria", example: "Nauwkeurigheid %, relevantiescore, formaatcompliance", exampleType: "text", color: "purple" },
+  { label: "Prestatiemetrieken", description: "Meet tokens en timing voor elke testcase", example: "Gem. input: 450 tokens, Gem. output: 200 tokens, p50 latency: 1.2s", exampleType: "text", color: "purple" }
 ]} />
 
 <TryIt 
-  title="Baseline Documentation Template"
-  description="Use this to create a comprehensive baseline before optimizing."
-  prompt={`Create a baseline documentation for my prompt optimization project.
+  title="Baseline Documentatie Sjabloon"
+  description="Gebruik dit om een uitgebreide baseline te creëren voordat je optimaliseert."
+  prompt={`Maak een baseline documentatie voor mijn prompt optimalisatieproject.
 
-**Current prompt**:
+**Huidige prompt**:
 "\${currentPrompt}"
 
-**What the prompt does**: \${promptPurpose}
+**Wat de prompt doet**: \${promptPurpose}
 
-**Current issues I'm seeing**: \${currentIssues}
+**Huidige problemen die ik zie**: \${currentIssues}
 
-Generate a baseline documentation template with:
+Genereer een baseline documentatiesjabloon met:
 
-1. **Prompt Snapshot**: The exact prompt text (for version control)
+1. **Prompt Snapshot**: De exacte prompt tekst (voor versiebeheer)
 
-2. **Test Cases**: Suggest 10 representative test inputs I should use, covering:
-   - 3 typical/easy cases
-   - 4 medium complexity cases  
-   - 3 edge cases or difficult inputs
+2. **Testcases**: Stel 10 representatieve test inputs voor die ik zou moeten gebruiken, met:
+   - 3 typische/makkelijke cases
+   - 4 gemiddelde complexiteit cases  
+   - 3 randgevallen of moeilijke inputs
 
-3. **Metrics to Track**:
-   - Quality metrics specific to this use case
-   - Efficiency metrics (tokens, latency)
-   - How to score each metric
+3. **Te Volgen Metrieken**:
+   - Kwaliteitsmetrieken specifiek voor deze use case
+   - Efficiëntiemetrieken (tokens, latency)
+   - Hoe elke metriek te scoren
 
-4. **Baseline Hypothesis**: What do I expect the current performance to be?
+4. **Baseline Hypothese**: Wat verwacht ik dat de huidige prestatie is?
 
-5. **Success Criteria**: What numbers would make me satisfied with optimization?`}
+5. **Succescriteria**: Welke cijfers zouden me tevreden stellen met de optimalisatie?`}
 />
 
-### Step 2: Form a Hypothesis
+### Stap 2: Formuleer een Hypothese
 
 <Compare 
-  before={{ label: "Vague goal", content: "I want to make my prompt better." }}
-  after={{ label: "Testable hypothesis", content: "If I add 2 few-shot examples, accuracy will improve from 75% to 85% because the model will learn the expected pattern." }}
+  before={{ label: "Vaag doel", content: "Ik wil mijn prompt beter maken." }}
+  after={{ label: "Testbare hypothese", content: "Als ik 2 few-shot voorbeelden toevoeg, zal de nauwkeurigheid verbeteren van 75% naar 85% omdat het model het verwachte patroon leert." }}
 />
 
-### Step 3: Test One Change
+### Stap 3: Test Één Wijziging
 
-Change one thing at a time. Run both versions on the same test inputs. Measure the metrics that matter.
+Verander één ding tegelijk. Voer beide versies uit op dezelfde test inputs. Meet de metrieken die ertoe doen.
 
-### Step 4: Analyze and Decide
+### Stap 4: Analyseer en Besluit
 
-Did it work? Keep the change. Did it hurt? Revert. Was it neutral? Revert (simpler is better).
+Werkte het? Behoud de wijziging. Deed het pijn? Draai terug. Was het neutraal? Draai terug (eenvoudiger is beter).
 
-### Step 5: Repeat
+### Stap 5: Herhaal
 
-Generate new hypotheses based on what you learned. Keep iterating until you hit your targets or reach diminishing returns.
+Genereer nieuwe hypotheses op basis van wat je hebt geleerd. Blijf itereren tot je je doelen bereikt of afnemende meeropbrengsten ervaart.
 
-## Optimization Checklist
+## Optimalisatie Checklist
 
 <Checklist 
-  title="Before Deploying an Optimized Prompt"
+  title="Voordat je een Geoptimaliseerde Prompt Deployt"
   items={[
-    { text: "Defined clear success metrics" },
-    { text: "Measured baseline performance" },
-    { text: "Tested changes on representative inputs" },
-    { text: "Verified quality didn't regress" },
-    { text: "Checked edge case handling" },
-    { text: "Calculated cost at expected scale" },
-    { text: "Tested latency under load" },
-    { text: "Documented what changed and why" }
+    { text: "Duidelijke succesmetrieken gedefinieerd" },
+    { text: "Baseline prestatie gemeten" },
+    { text: "Wijzigingen getest op representatieve inputs" },
+    { text: "Geverifieerd dat kwaliteit niet is achteruitgegaan" },
+    { text: "Afhandeling van randgevallen gecontroleerd" },
+    { text: "Kosten berekend op verwachte schaal" },
+    { text: "Latency getest onder belasting" },
+    { text: "Gedocumenteerd wat er is veranderd en waarom" }
   ]}
 />
 
 <Quiz 
-  question="You have a prompt that works well but costs too much at scale. What's the FIRST thing you should do?"
+  question="Je hebt een prompt die goed werkt maar te veel kost op schaal. Wat is het EERSTE wat je moet doen?"
   options={[
-    "Switch to a cheaper model immediately",
-    "Remove words from the prompt to reduce tokens",
-    "Measure which part of the prompt is using the most tokens",
-    "Add caching for all requests"
+    "Direct overschakelen naar een goedkoper model",
+    "Woorden uit de prompt verwijderen om tokens te verminderen",
+    "Meten welk deel van de prompt de meeste tokens gebruikt",
+    "Caching toevoegen voor alle verzoeken"
   ]}
   correctIndex={2}
-  explanation="Before optimizing, measure. You need to understand where the tokens are going before you can effectively reduce them. The prompt might have unnecessary context, verbose instructions, or generate longer outputs than needed. Measurement tells you where to focus your optimization efforts."
+  explanation="Voordat je optimaliseert, meet. Je moet begrijpen waar de tokens naartoe gaan voordat je ze effectief kunt verminderen. De prompt heeft misschien onnodige context, uitgebreide instructies, of genereert langere outputs dan nodig. Meting vertelt je waar je je optimalisatie-inspanningen op moet richten."
 />

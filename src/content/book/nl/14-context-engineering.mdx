@@ -1,258 +1,258 @@
-Understanding context is essential for building AI applications that actually work. This chapter covers everything you need to know about giving AI the right information at the right time.
+Het begrijpen van context is essentieel voor het bouwen van AI-toepassingen die daadwerkelijk werken. Dit hoofdstuk behandelt alles wat je moet weten over het geven van de juiste informatie aan AI op het juiste moment.
 
-<Callout type="info" title="Why Context Matters">
-AI models are stateless. They don't remember past conversations. Every time you send a message, you need to include everything the AI needs to know. This is called "context engineering."
+<Callout type="info" title="Waarom Context Belangrijk Is">
+AI-modellen zijn stateless. Ze onthouden eerdere gesprekken niet. Elke keer dat je een bericht stuurt, moet je alles meesturen wat de AI moet weten. Dit wordt "context engineering" genoemd.
 </Callout>
 
-## What is Context?
+## Wat is Context?
 
-Context is all the information you give to AI alongside your question. Think of it like this:
+Context is alle informatie die je aan AI geeft naast je vraag. Denk er zo over:
 
 <Compare 
-  before={{ label: "No Context", content: "What's the status?" }}
-  after={{ label: "With Context", content: "You are a project manager assistant. The user is working on Project Alpha, which is due Friday. The last update was: 'Backend complete, frontend 80% done.'\n\nUser: What's the status?" }}
+  before={{ label: "Geen Context", content: "Wat is de status?" }}
+  after={{ label: "Met Context", content: "Je bent een projectmanager-assistent. De gebruiker werkt aan Project Alpha, dat vrijdag af moet zijn. De laatste update was: 'Backend compleet, frontend 80% klaar.'\n\nGebruiker: Wat is de status?" }}
 />
 
-Without context, the AI has no idea what "status" you're asking about. With context, it can give a useful answer.
+Zonder context heeft de AI geen idee over welke "status" je vraagt. Met context kan het een bruikbaar antwoord geven.
 
-### The Context Window
+### Het Contextvenster
 
-Remember from earlier chapters: AI has a limited "context window" - the maximum amount of text it can see at once. This includes:
+Onthoud van eerdere hoofdstukken: AI heeft een beperkt "contextvenster" - de maximale hoeveelheid tekst die het tegelijk kan zien. Dit omvat:
 
 <InfoGrid items={[
-  { label: "System Prompt", description: "Instructions that define AI behavior", color: "purple" },
-  { label: "Conversation History", description: "Previous messages in this chat", color: "blue" },
-  { label: "Retrieved Information", description: "Documents, data, or knowledge fetched for this query", color: "green" },
-  { label: "Current Query", description: "The user's actual question", color: "amber" },
-  { label: "AI Response", description: "The answer (also counts toward the limit!)", color: "rose" },
+  { label: "System Prompt", description: "Instructies die het AI-gedrag definiëren", color: "purple" },
+  { label: "Gespreksgeschiedenis", description: "Eerdere berichten in deze chat", color: "blue" },
+  { label: "Opgehaalde Informatie", description: "Documenten, data of kennis opgehaald voor deze vraag", color: "green" },
+  { label: "Huidige Vraag", description: "De daadwerkelijke vraag van de gebruiker", color: "amber" },
+  { label: "AI-Antwoord", description: "Het antwoord (telt ook mee voor de limiet!)", color: "rose" },
 ]} />
 
 ## AI is Stateless
 
-<Callout type="warning" title="Important Concept">
-AI doesn't remember anything between conversations. Every API call starts fresh. If you want the AI to "remember" something, YOU have to include it in the context every time.
+<Callout type="warning" title="Belangrijk Concept">
+AI onthoudt niets tussen gesprekken. Elke API-aanroep begint opnieuw. Als je wilt dat de AI iets "onthoudt", MOET JIJ het elke keer in de context meesturen.
 </Callout>
 
-This is why chatbots send your entire conversation history with each message. It's not that the AI remembers - it's that the app re-sends everything.
+Daarom sturen chatbots je hele gespreksgeschiedenis mee bij elk bericht. Het is niet dat de AI onthoudt - het is dat de app alles opnieuw verstuurt.
 
-<TryIt compact prompt={`Pretend this is a new conversation with no history.
+<TryIt compact prompt={`Doe alsof dit een nieuw gesprek is zonder geschiedenis.
 
-What did I just ask you about?`} />
+Waar heb ik je zojuist over gevraagd?`} />
 
-The AI will say it doesn't know because it truly doesn't have access to any previous context.
+De AI zal zeggen dat het het niet weet, omdat het werkelijk geen toegang heeft tot eerdere context.
 
 ## RAG: Retrieval-Augmented Generation
 
-RAG is a technique for giving AI access to knowledge it wasn't trained on. Instead of trying to fit everything into the AI's training, you:
+RAG is een techniek om AI toegang te geven tot kennis waarop het niet is getraind. In plaats van te proberen alles in de training van de AI te stoppen, doe je het volgende:
 
-1. **Store** your documents in a searchable database
-2. **Search** for relevant documents when a user asks a question
-3. **Retrieve** the most relevant pieces
-4. **Augment** your prompt with those pieces
-5. **Generate** an answer using that context
+1. **Opslaan** van je documenten in een doorzoekbare database
+2. **Zoeken** naar relevante documenten wanneer een gebruiker een vraag stelt
+3. **Ophalen** van de meest relevante stukken
+4. **Uitbreiden** van je prompt met die stukken
+5. **Genereren** van een antwoord met die context
 
 <div className="my-6 p-4 border rounded-lg bg-muted/30">
-  <p className="font-semibold mb-3">How RAG Works:</p>
+  <p className="font-semibold mb-3">Hoe RAG Werkt:</p>
   <div className="flex flex-col gap-2 text-sm">
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">1</span>
-      <span>User asks: "What's our refund policy?"</span>
+      <span>Gebruiker vraagt: "Wat is ons retourbeleid?"</span>
     </div>
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">2</span>
-      <span>System searches your documents for "refund policy"</span>
+      <span>Systeem doorzoekt je documenten op "retourbeleid"</span>
     </div>
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">3</span>
-      <span>Finds relevant section from your policy document</span>
+      <span>Vindt relevante sectie uit je beleidsdocument</span>
     </div>
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">4</span>
-      <span>Sends to AI: "Based on this policy: [text], answer: What's our refund policy?"</span>
+      <span>Stuurt naar AI: "Op basis van dit beleid: [tekst], beantwoord: Wat is ons retourbeleid?"</span>
     </div>
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center text-green-600 font-bold">5</span>
-      <span>AI generates accurate answer using your actual policy</span>
+      <span>AI genereert nauwkeurig antwoord met je daadwerkelijke beleid</span>
     </div>
   </div>
 </div>
 
-### Why RAG?
+### Waarom RAG?
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="p-4 border rounded-lg">
-    <p className="font-semibold text-green-600 dark:text-green-400 mb-2 flex items-center gap-2"><IconCheck className="text-green-600" /> RAG Advantages</p>
+    <p className="font-semibold text-green-600 dark:text-green-400 mb-2 flex items-center gap-2"><IconCheck className="text-green-600" /> RAG Voordelen</p>
     <ul className="text-sm space-y-1 text-muted-foreground">
-      <li>Uses your actual, current data</li>
-      <li>Reduces hallucinations</li>
-      <li>Can cite sources</li>
-      <li>Easy to update (just update documents)</li>
-      <li>No expensive fine-tuning needed</li>
+      <li>Gebruikt je actuele, huidige data</li>
+      <li>Vermindert hallucinaties</li>
+      <li>Kan bronnen citeren</li>
+      <li>Eenvoudig bij te werken (update gewoon documenten)</li>
+      <li>Geen dure fine-tuning nodig</li>
     </ul>
   </div>
   <div className="p-4 border rounded-lg">
-    <p className="font-semibold text-amber-600 dark:text-amber-400 mb-2 flex items-center gap-2"><IconLightbulb className="text-amber-600" /> When to Use RAG</p>
+    <p className="font-semibold text-amber-600 dark:text-amber-400 mb-2 flex items-center gap-2"><IconLightbulb className="text-amber-600" /> Wanneer RAG Gebruiken</p>
     <ul className="text-sm space-y-1 text-muted-foreground">
-      <li>Customer support bots</li>
-      <li>Documentation search</li>
-      <li>Internal knowledge bases</li>
-      <li>Any domain-specific Q&A</li>
-      <li>When accuracy matters</li>
+      <li>Klantenservice bots</li>
+      <li>Documentatie zoeken</li>
+      <li>Interne kennisbanken</li>
+      <li>Elke domeinspecifieke Q&A</li>
+      <li>Wanneer nauwkeurigheid belangrijk is</li>
     </ul>
   </div>
 </div>
 
-## Embeddings: How Search Works
+## Embeddings: Hoe Zoeken Werkt
 
-How does RAG know which documents are "relevant"? It uses **embeddings** - a way to turn text into numbers that capture meaning.
+Hoe weet RAG welke documenten "relevant" zijn? Het gebruikt **embeddings** - een manier om tekst om te zetten in getallen die betekenis vastleggen.
 
-### What Are Embeddings?
+### Wat Zijn Embeddings?
 
-An embedding is a list of numbers (a "vector") that represents the meaning of text. Similar meanings = similar numbers.
+Een embedding is een lijst van getallen (een "vector") die de betekenis van tekst representeert. Vergelijkbare betekenissen = vergelijkbare getallen.
 
 <EmbeddingsDemo />
 
-### Semantic Search
+### Semantisch Zoeken
 
-With embeddings, you can search by meaning, not just keywords:
+Met embeddings kun je zoeken op betekenis, niet alleen op trefwoorden:
 
 <Compare 
-  before={{ label: "Keyword Search", content: "Query: 'return policy'\nFinds: Documents containing 'return' and 'policy'\nMisses: 'How to get a refund'" }}
-  after={{ label: "Semantic Search", content: "Query: 'return policy'\nFinds: All related documents including:\n- 'Refund guidelines'\n- 'How to send items back'\n- 'Money-back guarantee'" }}
+  before={{ label: "Trefwoord Zoeken", content: "Zoekopdracht: 'retourbeleid'\nVindt: Documenten met 'retour' en 'beleid'\nMist: 'Hoe krijg ik geld terug'" }}
+  after={{ label: "Semantisch Zoeken", content: "Zoekopdracht: 'retourbeleid'\nVindt: Alle gerelateerde documenten inclusief:\n- 'Terugbetalingsrichtlijnen'\n- 'Hoe artikelen terugsturen'\n- 'Geld-terug-garantie'" }}
 />
 
-This is why RAG is so powerful - it finds relevant information even when the exact words don't match.
+Dit is waarom RAG zo krachtig is - het vindt relevante informatie zelfs wanneer de exacte woorden niet overeenkomen.
 
 ## Function Calling / Tool Use
 
-Function calling lets AI use external tools - like searching the web, checking a database, or calling an API.
+Function calling laat AI externe tools gebruiken - zoals het web doorzoeken, een database controleren of een API aanroepen.
 
-<Callout type="tip" title="Also Called">
-Different AI providers call this different things: "function calling" (OpenAI), "tool use" (Anthropic/Claude), or "tools" (general term). They all mean the same thing.
+<Callout type="tip" title="Ook Wel Genoemd">
+Verschillende AI-providers noemen dit anders: "function calling" (OpenAI), "tool use" (Anthropic/Claude), of "tools" (algemene term). Ze betekenen allemaal hetzelfde.
 </Callout>
 
-### How It Works
+### Hoe Het Werkt
 
-1. You tell the AI what tools are available
-2. AI decides if it needs a tool to answer
-3. AI outputs a structured request for the tool
-4. Your code runs the tool and returns results
-5. AI uses the results to form its answer
+1. Je vertelt de AI welke tools beschikbaar zijn
+2. AI beslist of het een tool nodig heeft om te antwoorden
+3. AI geeft een gestructureerd verzoek voor de tool
+4. Je code voert de tool uit en geeft resultaten terug
+5. AI gebruikt de resultaten om zijn antwoord te vormen
 
 <TryIt 
-  title="Function Calling Example"
-  description="This prompt shows how AI decides to use a tool:"
-  prompt={`You have access to these tools:
+  title="Function Calling Voorbeeld"
+  description="Deze prompt laat zien hoe AI beslist een tool te gebruiken:"
+  prompt={`Je hebt toegang tot deze tools:
 
-1. get_weather(city: string) - Get current weather for a city
-2. search_web(query: string) - Search the internet
-3. calculate(expression: string) - Do math calculations
+1. get_weather(city: string) - Haal huidig weer op voor een stad
+2. search_web(query: string) - Doorzoek het internet
+3. calculate(expression: string) - Doe wiskundige berekeningen
 
-User: What's the weather like in Tokyo right now?
+Gebruiker: Wat is het weer nu in Tokio?
 
-Think step by step: Do you need a tool? Which one? What parameters?`}
+Denk stap voor stap: Heb je een tool nodig? Welke? Welke parameters?`}
 />
 
-## Summarization: Managing Long Conversations
+## Samenvatting: Lange Gesprekken Beheren
 
-As conversations get longer, you'll hit the context window limit. Since AI is stateless (it doesn't remember anything), long conversations can overflow. The solution? **Summarization**.
+Naarmate gesprekken langer worden, bereik je de contextvenster-limiet. Omdat AI stateless is (het onthoudt niets), kunnen lange gesprekken overlopen. De oplossing? **Samenvatting**.
 
-### The Problem
+### Het Probleem
 
 <Compare 
-  before={{ label: "Without Summarization", content: "Message 1 (500 tokens)\nMessage 2 (800 tokens)\nMessage 3 (600 tokens)\n... 50 more messages ...\n────────────────────\n= 40,000+ tokens\n= OVER THE LIMIT!" }}
-  after={{ label: "With Summarization", content: "[Summary]: 200 tokens\nRecent messages: 2,000 tokens\nCurrent query: 100 tokens\n────────────────────\n= 2,300 tokens\n= Fits perfectly!" }}
+  before={{ label: "Zonder Samenvatting", content: "Bericht 1 (500 tokens)\nBericht 2 (800 tokens)\nBericht 3 (600 tokens)\n... nog 50 berichten ...\n────────────────────\n= 40.000+ tokens\n= OVER DE LIMIET!" }}
+  after={{ label: "Met Samenvatting", content: "[Samenvatting]: 200 tokens\nRecente berichten: 2.000 tokens\nHuidige vraag: 100 tokens\n────────────────────\n= 2.300 tokens\n= Past perfect!" }}
 />
 
-### Summarization Strategies
+### Samenvattingsstrategieën
 
-Different approaches work for different use cases. Click each strategy to see how it processes the same conversation:
+Verschillende benaderingen werken voor verschillende use cases. Klik op elke strategie om te zien hoe het hetzelfde gesprek verwerkt:
 
 <SummarizationDemo />
 
-### What to Capture in Summaries
+### Wat Vast te Leggen in Samenvattingen
 
-A good conversation summary preserves what matters:
+Een goede gesprekssamenvatting behoudt wat belangrijk is:
 
 <Checklist 
-  title="Summary Checklist"
+  title="Samenvatting Checklist"
   items={[
-    { text: "Key decisions made" },
-    { text: "Important facts mentioned" },
-    { text: "User preferences discovered" },
-    { text: "Current task or goal" },
-    { text: "Any pending questions" },
-    { text: "Tone and formality level" }
+    { text: "Genomen belangrijke beslissingen" },
+    { text: "Belangrijke genoemde feiten" },
+    { text: "Ontdekte gebruikersvoorkeuren" },
+    { text: "Huidige taak of doel" },
+    { text: "Eventuele openstaande vragen" },
+    { text: "Toon en formaliteitsniveau" }
   ]}
 />
 
-### Try It: Create a Summary
+### Probeer Het: Maak een Samenvatting
 
 <TryIt 
-  title="Conversation Summarizer"
-  description="Practice creating a context-preserving summary from this conversation:"
-  prompt={`Summarize this conversation for context management. The summary will replace the full conversation in the AI's memory.
+  title="Gesprekssamenvatting"
+  description="Oefen het maken van een contextbehoudende samenvatting van dit gesprek:"
+  prompt={`Vat dit gesprek samen voor contextbeheer. De samenvatting vervangt het volledige gesprek in het geheugen van de AI.
 
-CONVERSATION:
-User: Hi, I'm learning Python for data analysis
-Assistant: Welcome! Python is great for data analysis. What's your current experience level?
-User: I know basic Excel. Complete beginner with programming.
-Assistant: Perfect starting point! Let's begin with variables - they're like Excel cells that store data.
-User: Can you explain variables?
-Assistant: Variables are containers for storing data. In Python: name = "Alice" or age = 25
-User: What about lists? I need to handle multiple values.
-Assistant: Lists are like Excel columns! Create one like: prices = [10, 20, 30]. Access items with prices[0].
-User: Can I do calculations on lists?
-Assistant: Yes! Use sum(prices), len(prices), or max(prices). For complex analysis, we'll use pandas later.
-User: What's pandas?
-Assistant: Pandas is a library for data analysis - think "Excel on steroids". It has DataFrames (like spreadsheets).
+GESPREK:
+Gebruiker: Hoi, ik leer Python voor data-analyse
+Assistent: Welkom! Python is geweldig voor data-analyse. Wat is je huidige ervaringsniveau?
+Gebruiker: Ik ken basis Excel. Complete beginner met programmeren.
+Assistent: Perfect startpunt! Laten we beginnen met variabelen - ze zijn als Excel-cellen die data opslaan.
+Gebruiker: Kun je variabelen uitleggen?
+Assistent: Variabelen zijn containers voor het opslaan van data. In Python: naam = "Alice" of leeftijd = 25
+Gebruiker: Hoe zit het met lijsten? Ik moet meerdere waarden kunnen behandelen.
+Assistent: Lijsten zijn als Excel-kolommen! Maak er een zoals: prijzen = [10, 20, 30]. Benader items met prijzen[0].
+Gebruiker: Kan ik berekeningen doen op lijsten?
+Assistent: Ja! Gebruik sum(prijzen), len(prijzen), of max(prijzen). Voor complexe analyse gebruiken we later pandas.
+Gebruiker: Wat is pandas?
+Assistent: Pandas is een bibliotheek voor data-analyse - denk aan "Excel op steroïden". Het heeft DataFrames (zoals spreadsheets).
 
-CREATE A SUMMARY that captures:
-1. User's goal and background (1 sentence)
-2. Topics covered so far (1 sentence)  
-3. User's learning style/preferences (1 sentence)
-4. What to cover next (1 sentence)`}
+MAAK EEN SAMENVATTING die vastlegt:
+1. Doel en achtergrond van gebruiker (1 zin)
+2. Tot nu toe behandelde onderwerpen (1 zin)  
+3. Leerstijl/voorkeuren van gebruiker (1 zin)
+4. Wat hierna te behandelen (1 zin)`}
 />
 
-### When to Summarize
+### Wanneer Samenvatten
 
-<TryIt compact prompt={`You are managing a conversation's context window. Given these conditions, decide when to trigger summarization:
+<TryIt compact prompt={`Je beheert het contextvenster van een gesprek. Gegeven deze condities, beslis wanneer samenvatting te activeren:
 
-CONTEXT WINDOW: 8,000 tokens max
-CURRENT USAGE:
+CONTEXTVENSTER: 8.000 tokens max
+HUIDIG GEBRUIK:
 - System prompt: 500 tokens
-- Conversation history: 6,200 tokens  
-- Buffer for response: 1,500 tokens
+- Gespreksgeschiedenis: 6.200 tokens  
+- Buffer voor antwoord: 1.500 tokens
 
-RULES:
-- Summarize when history exceeds 70% of available space
-- Keep last 5 messages intact
-- Preserve all user preferences and decisions
+REGELS:
+- Vat samen wanneer geschiedenis 70% van beschikbare ruimte overschrijdt
+- Houd laatste 5 berichten intact
+- Behoud alle gebruikersvoorkeuren en beslissingen
 
-Should you summarize now? If yes, what messages should be summarized vs kept intact?`} />
+Moet je nu samenvatten? Zo ja, welke berichten moeten worden samengevat vs. intact gehouden?`} />
 
 ## MCP: Model Context Protocol
 
-MCP (Model Context Protocol) is a standard way to connect AI to external data and tools. Instead of building custom integrations for each AI provider, MCP provides a universal interface.
+MCP (Model Context Protocol) is een standaard manier om AI te verbinden met externe data en tools. In plaats van aangepaste integraties te bouwen voor elke AI-provider, biedt MCP een universele interface.
 
-### Why MCP?
+### Waarom MCP?
 
 <InfoGrid columns={2} items={[
-  { label: "Without MCP", description: "Build separate integrations for ChatGPT, Claude, Gemini... Maintain multiple codebases. Break when APIs change.", color: "red" },
-  { label: "With MCP", description: "Build once, works everywhere. Standard protocol. AI can discover and use your tools automatically.", color: "green" },
+  { label: "Zonder MCP", description: "Bouw aparte integraties voor ChatGPT, Claude, Gemini... Onderhoud meerdere codebases. Breekt wanneer API's veranderen.", color: "red" },
+  { label: "Met MCP", description: "Bouw één keer, werkt overal. Standaard protocol. AI kan je tools automatisch ontdekken en gebruiken.", color: "green" },
 ]} />
 
-### MCP Provides
+### MCP Biedt
 
-- **Resources**: Data the AI can read (files, database records, API responses)
-- **Tools**: Actions the AI can take (search, create, update, delete)
-- **Prompts**: Pre-built prompt templates
+- **Resources**: Data die de AI kan lezen (bestanden, database-records, API-responses)
+- **Tools**: Acties die de AI kan ondernemen (zoeken, aanmaken, bijwerken, verwijderen)
+- **Prompts**: Vooraf gebouwde prompt-templates
 
-<Callout type="info" title="prompts.chat Uses MCP">
-This platform has an MCP server! You can connect it to Claude Desktop or other MCP-compatible clients to search and use prompts directly from your AI assistant.
+<Callout type="info" title="prompts.chat Gebruikt MCP">
+Dit platform heeft een MCP-server! Je kunt het verbinden met Claude Desktop of andere MCP-compatibele clients om prompts direct vanuit je AI-assistent te zoeken en te gebruiken.
 </Callout>
 
-## Building Context: The Complete Picture
+## Context Bouwen: Het Complete Plaatje
 
 <ContextPlayground />
 
@@ -261,27 +261,27 @@ This platform has an MCP server! You can connect it to Claude Desktop or other M
 <Checklist 
   title="Context Engineering Checklist"
   items={[
-    { text: "Keep system prompts concise but complete" },
-    { text: "Only include relevant context (not everything)" },
-    { text: "Summarize long conversations" },
-    { text: "Use RAG for domain-specific knowledge" },
-    { text: "Give AI tools for real-time data" },
-    { text: "Monitor token usage to stay within limits" },
-    { text: "Test with edge cases (very long inputs, etc.)" }
+    { text: "Houd system prompts beknopt maar compleet" },
+    { text: "Neem alleen relevante context op (niet alles)" },
+    { text: "Vat lange gesprekken samen" },
+    { text: "Gebruik RAG voor domeinspecifieke kennis" },
+    { text: "Geef AI tools voor realtime data" },
+    { text: "Monitor tokengebruik om binnen limieten te blijven" },
+    { text: "Test met edge cases (zeer lange invoer, etc.)" }
   ]}
 />
 
-## Summary
+## Samenvatting
 
-Context engineering is about giving AI the right information:
+Context engineering draait om het geven van de juiste informatie aan AI:
 
-- **AI is stateless** - include everything it needs every time
-- **RAG** retrieves relevant documents to augment prompts
-- **Embeddings** enable semantic search (meaning, not just keywords)
-- **Function calling** lets AI use external tools
-- **Summarization** manages long conversations
-- **MCP** standardizes how AI connects to data and tools
+- **AI is stateless** - neem alles wat het nodig heeft elke keer mee
+- **RAG** haalt relevante documenten op om prompts uit te breiden
+- **Embeddings** maken semantisch zoeken mogelijk (betekenis, niet alleen trefwoorden)
+- **Function calling** laat AI externe tools gebruiken
+- **Samenvatting** beheert lange gesprekken
+- **MCP** standaardiseert hoe AI verbindt met data en tools
 
-<Callout type="tip" title="Remember">
-The quality of AI output depends on the quality of context you provide. Better context = better answers.
+<Callout type="tip" title="Onthoud">
+De kwaliteit van AI-output hangt af van de kwaliteit van de context die je biedt. Betere context = betere antwoorden.
 </Callout>

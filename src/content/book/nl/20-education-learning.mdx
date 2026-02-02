@@ -1,345 +1,345 @@
-AI is a powerful tool for both teaching and learning. This chapter covers prompts for educational contexts—from personalized tutoring to curriculum development.
+AI is een krachtig hulpmiddel voor zowel onderwijs als leren. Dit hoofdstuk behandelt prompts voor educatieve contexten—van gepersonaliseerde begeleiding tot curriculumontwikkeling.
 
-<Callout type="info" title="AI as Learning Partner">
-AI excels as a patient, adaptive tutor that can explain concepts multiple ways, generate unlimited practice problems, and provide instant feedback—available 24/7.
+<Callout type="info" title="AI als Leerpartner">
+AI blinkt uit als een geduldige, adaptieve tutor die concepten op meerdere manieren kan uitleggen, onbeperkt oefenopdrachten kan genereren en directe feedback kan geven—24/7 beschikbaar.
 </Callout>
 
-## Personalized Learning
+## Gepersonaliseerd Leren
 
-### Do's and Don'ts: Learning Prompts
+### Wel en Niet Doen: Leerprompts
 
 <Compare 
-  before={{ label: "❌ Passive request", content: "Explain quantum physics to me." }}
-  after={{ label: "✓ Context-rich request", content: "Explain quantum superposition to me.\n\nMy background: I understand basic chemistry and classical physics.\nLearning style: I learn best through analogies and examples.\nExplain with a simple analogy, then the core concept, then a practical example. Check my understanding with a question." }}
+  before={{ label: "❌ Passief verzoek", content: "Leg kwantumfysica aan mij uit." }}
+  after={{ label: "✓ Contextrijk verzoek", content: "Leg kwantumsuperpositie aan mij uit.\n\nMijn achtergrond: Ik begrijp basisscheikunde en klassieke fysica.\nLeerstijl: Ik leer het beste door analogieën en voorbeelden.\nLeg uit met een simpele analogie, daarna het kernconcept, en dan een praktisch voorbeeld. Toets mijn begrip met een vraag." }}
 />
 
-### Concept Explanation
+### Conceptuitleg
 
-<TryIt compact prompt={`Explain [concept] to me.
+<TryIt compact prompt={`Leg [concept] aan mij uit.
 
-My background:
-- Current level: [beginner/intermediate/advanced]
-- Related knowledge: [what I already know]
-- Learning style: [visual/examples/theoretical]
+Mijn achtergrond:
+- Huidig niveau: [beginner/gemiddeld/gevorderd]
+- Gerelateerde kennis: [wat ik al weet]
+- Leerstijl: [visueel/voorbeelden/theoretisch]
 
-Explain with:
-1. Simple analogy to something familiar
-2. Core concept in plain language
-3. How it connects to what I know
-4. A practical example
-5. Common misconceptions to avoid
+Leg uit met:
+1. Simpele analogie met iets bekends
+2. Kernconcept in eenvoudige taal
+3. Hoe het aansluit bij wat ik weet
+4. Een praktisch voorbeeld
+5. Veelvoorkomende misvattingen om te vermijden
 
-Then check my understanding with a question.`} />
+Toets daarna mijn begrip met een vraag.`} />
 
-### Adaptive Tutoring
+### Adaptieve Begeleiding
 
-<TryIt compact prompt={`You are my tutor for \${subject:calculus}. Teach me \${topic:derivatives} adaptively.
+<TryIt compact prompt={`Je bent mijn tutor voor \${subject:calculus}. Leer mij \${topic:afgeleiden} op adaptieve wijze.
 
-Start with a diagnostic question to assess my level.
-Based on my response:
-- If correct: Move to more advanced aspects
-- If partially correct: Clarify the gap, then continue
-- If incorrect: Step back and build foundation
+Begin met een diagnostische vraag om mijn niveau te bepalen.
+Gebaseerd op mijn antwoord:
+- Als correct: Ga naar meer geavanceerde aspecten
+- Als gedeeltelijk correct: Verduidelijk het hiaat, ga dan verder
+- Als incorrect: Stap terug en bouw het fundament op
 
-After each explanation:
-- Check understanding with a question
-- Adjust difficulty based on my answers
-- Provide encouragement and track progress`} />
+Na elke uitleg:
+- Controleer begrip met een vraag
+- Pas de moeilijkheidsgraad aan op basis van mijn antwoorden
+- Geef aanmoediging en volg de voortgang`} />
 
-### Learning Path Creation
+### Leerpad Creëren
 
-<TryIt compact prompt={`Create a learning path for \${goal:becoming a web developer}.
+<TryIt compact prompt={`Maak een leerpad voor \${goal:webontwikkelaar worden}.
 
-My situation:
-- Current skill level: \${skillLevel:complete beginner}
-- Time available: \${timeAvailable:10 hours per week}
-- Target timeline: \${timeline:6 months}
-- Learning preferences: \${preferences:projects and tutorials}
+Mijn situatie:
+- Huidig vaardigheidsniveau: \${skillLevel:absolute beginner}
+- Beschikbare tijd: \${timeAvailable:10 uur per week}
+- Beoogde tijdlijn: \${timeline:6 maanden}
+- Leervoorkeuren: \${preferences:projecten en tutorials}
 
-Provide:
-1. Prerequisites check (what I need first)
-2. Milestone breakdown (phases with goals)
-3. Resources for each phase (free when possible)
-4. Practice projects at each stage
-5. Assessment criteria (how to know I'm ready to advance)`} />
+Bied:
+1. Voorkennis controle (wat ik eerst nodig heb)
+2. Mijlpalen overzicht (fases met doelen)
+3. Bronnen voor elke fase (gratis waar mogelijk)
+4. Oefenprojecten bij elke fase
+5. Beoordelingscriteria (hoe weet ik dat ik klaar ben om door te gaan)`} />
 
-## Study Assistance
+## Studiehulp
 
-<Callout type="tip" title="Active Learning Principle">
-Don't just read AI explanations passively. Ask it to quiz you, generate problems, and check your understanding. **Active recall beats passive review.**
+<Callout type="tip" title="Actief Leren Principe">
+Lees AI-uitleg niet passief. Vraag het om je te overhoren, problemen te genereren en je begrip te controleren. **Actieve herhaling overtreft passief lezen.**
 </Callout>
 
-### Summary Generation
+### Samenvattingen Genereren
 
-<TryIt compact prompt={`Summarize this \${contentType:chapter} for study purposes.
+<TryIt compact prompt={`Vat dit \${contentType:hoofdstuk} samen voor studiedoeleinden.
 
-Content:
-\${content:paste your content here}
+Inhoud:
+\${content:plak hier je inhoud}
 
-Provide:
-1. **Key Concepts** (5-7 main ideas)
-2. **Important Terms** (with brief definitions)
-3. **Relationships** (how concepts connect)
-4. **Study Questions** (to test understanding)
-5. **Memory Aids** (mnemonics or associations)
+Bied:
+1. **Kernconcepten** (5-7 hoofdideeën)
+2. **Belangrijke Termen** (met korte definities)
+3. **Relaties** (hoe concepten verbonden zijn)
+4. **Studievragen** (om begrip te testen)
+5. **Geheugensteuntjes** (ezelsbruggetjes of associaties)
 
-Format for easy review and memorization.`} />
+Formatteer voor makkelijk herhalen en onthouden.`} />
 
-### Flashcard Generation
+### Flashcards Genereren
 
-<TryIt compact prompt={`Create flashcards for studying \${topic:World War II}.
+<TryIt compact prompt={`Maak flashcards voor het studeren van \${topic:de Tweede Wereldoorlog}.
 
-Source material:
-\${content:paste your study material here}
+Bronmateriaal:
+\${content:plak hier je studiemateriaal}
 
-Format each card:
-Front: Question or term
-Back: Answer or definition
-Hint: Optional memory aid
+Formatteer elke kaart:
+Voorkant: Vraag of term
+Achterkant: Antwoord of definitie
+Hint: Optioneel geheugensteuntje
 
-Categories to cover:
-- Definitions (key terms)
-- Concepts (main ideas)
-- Relationships (how things connect)
-- Applications (real-world uses)
+Categorieën om te behandelen:
+- Definities (kernbegrippen)
+- Concepten (hoofdideeën)
+- Relaties (hoe dingen verbonden zijn)
+- Toepassingen (praktisch gebruik)
 
-Generate \${numberOfCards:20} cards, balanced across categories.`} />
+Genereer \${numberOfCards:20} kaarten, gebalanceerd over categorieën.`} />
 
-### Practice Problems
+### Oefenopdrachten
 
-<TryIt compact prompt={`Generate practice problems for \${topic:quadratic equations}.
+<TryIt compact prompt={`Genereer oefenopdrachten voor \${topic:kwadratische vergelijkingen}.
 
-Difficulty levels:
-- 3 Basic (test fundamental understanding)
-- 3 Intermediate (require application)
-- 2 Advanced (require synthesis/analysis)
+Moeilijkheidsniveaus:
+- 3 Basis (test fundamenteel begrip)
+- 3 Gemiddeld (vereisen toepassing)
+- 2 Gevorderd (vereisen synthese/analyse)
 
-For each problem:
-1. Clear problem statement
-2. Space for student work
-3. Hints available on request
-4. Detailed solution with explanation
+Voor elke opdracht:
+1. Duidelijke probleemstelling
+2. Ruimte voor studentenwerk
+3. Hints beschikbaar op verzoek
+4. Gedetailleerde oplossing met uitleg
 
-Include variety: \${problemTypes:calculation, conceptual, application}`} />
+Inclusief variatie: \${problemTypes:berekening, conceptueel, toepassing}`} />
 
-## Teaching Tools
+## Lestools
 
-### Lesson Plan Creation
+### Lesplan Maken
 
-<TryIt compact prompt={`Create a lesson plan for teaching \${topic:photosynthesis}.
+<TryIt compact prompt={`Maak een lesplan voor het onderwijzen van \${topic:fotosynthese}.
 
 Context:
-- Grade/Level: \${audience:8th grade science}
-- Class duration: \${duration:50 minutes}
-- Class size: \${classSize:25 students}
-- Prior knowledge: \${prerequisites:basic cell structure}
+- Klas/Niveau: \${audience:groep 8 biologie}
+- Lesduur: \${duration:50 minuten}
+- Klasgrootte: \${classSize:25 leerlingen}
+- Voorkennis: \${prerequisites:basiscelstructuur}
 
-Include:
-1. **Learning Objectives** (SMART format)
-2. **Opening Hook** (5 min) - engagement activity
-3. **Instruction** (15-20 min) - core content delivery
-4. **Guided Practice** (10 min) - work with students
-5. **Independent Practice** (10 min) - students work alone
-6. **Assessment** (5 min) - check understanding
-7. **Closure** - summarize and preview
+Inclusief:
+1. **Leerdoelen** (SMART-formaat)
+2. **Openingshaak** (5 min) - activerende activiteit
+3. **Instructie** (15-20 min) - kerninhoud overdracht
+4. **Begeleide Oefening** (10 min) - werk met leerlingen
+5. **Zelfstandige Oefening** (10 min) - leerlingen werken alleen
+6. **Toetsing** (5 min) - begripscontrole
+7. **Afsluiting** - samenvatten en vooruitblik
 
-Materials needed: list
-Differentiation strategies: for various learners`} />
+Benodigde materialen: lijst
+Differentiatiestrategieën: voor verschillende leerlingen`} />
 
-### Assignment Design
+### Opdracht Ontwerpen
 
-<TryIt compact prompt={`Design an assignment for \${learningObjective:analyzing primary sources}.
+<TryIt compact prompt={`Ontwerp een opdracht voor \${learningObjective:het analyseren van primaire bronnen}.
 
 Parameters:
-- Course: \${course:AP US History}
-- Due in: \${dueIn:2 weeks}
-- Individual/Group: \${grouping:individual}
-- Weight: \${weight:15% of grade}
+- Vak: \${course:VWO Geschiedenis}
+- Deadline over: \${dueIn:2 weken}
+- Individueel/Groep: \${grouping:individueel}
+- Weging: \${weight:15% van het cijfer}
 
-Include:
-1. Clear instructions
-2. Grading rubric with criteria
-3. Example of expected quality
-4. Submission requirements
-5. Academic integrity reminders
+Inclusief:
+1. Duidelijke instructies
+2. Beoordelingsrubriek met criteria
+3. Voorbeeld van verwachte kwaliteit
+4. Inleververeisten
+5. Herinneringen over academische integriteit
 
-The assignment should:
-- Assess \${skills:critical thinking and source evaluation}
-- Allow for \${allowFor:analysis and interpretation}
-- Be completable in approximately \${hours:8 hours}`} />
+De opdracht moet:
+- Beoordelen \${skills:kritisch denken en bronnevaluatie}
+- Ruimte bieden voor \${allowFor:analyse en interpretatie}
+- Te voltooien zijn in ongeveer \${hours:8 uur}`} />
 
-### Quiz Generation
+### Toets Genereren
 
-<TryIt compact prompt={`Create a quiz on \${topic:the American Revolution}.
+<TryIt compact prompt={`Maak een toets over \${topic:de Amerikaanse Revolutie}.
 
-Format:
-- [X] Multiple choice questions (4 options each)
-- [X] True/False questions
-- [X] Short answer questions
-- [X] One essay question
+Formaat:
+- [X] Meerkeuzevragen (elk 4 opties)
+- [X] Waar/Onwaar vragen
+- [X] Korte antwoordvragen
+- [X] Één essayvraag
 
-Specifications:
-- Cover all key learning objectives
-- Range from recall to analysis
-- Include answer key with explanations
-- Time estimate: \${timeEstimate:30 minutes}
-- Point values for each section`} />
+Specificaties:
+- Behandel alle belangrijke leerdoelen
+- Varieer van herkenning tot analyse
+- Inclusief antwoordsleutel met uitleg
+- Tijdsinschatting: \${timeEstimate:30 minuten}
+- Puntwaarden voor elke sectie`} />
 
-## Specialized Learning Contexts
+## Gespecialiseerde Leercontexten
 
-### Language Learning
+### Talen Leren
 
-<TryIt compact prompt={`Help me learn \${language:Spanish}.
+<TryIt compact prompt={`Help mij \${language:Spaans} leren.
 
-Current level: \${currentLevel:A2 - elementary}
-Native language: \${nativeLanguage:English}
-Goals: \${goals:conversation for travel}
+Huidig niveau: \${currentLevel:A2 - elementair}
+Moedertaal: \${nativeLanguage:Nederlands}
+Doelen: \${goals:conversatie voor reizen}
 
-Today's lesson: \${focusArea:ordering food at restaurants}
+Vandaag's les: \${focusArea:eten bestellen in restaurants}
 
-Include:
-1. New vocabulary (5-10 words) with:
-   - Pronunciation guide
-   - Example sentences
-   - Common usage notes
-2. Grammar point with clear explanation
-3. Practice exercises
-4. Cultural context note
-5. Conversation practice scenario`} />
+Inclusief:
+1. Nieuwe woordenschat (5-10 woorden) met:
+   - Uitspraakgids
+   - Voorbeeldzinnen
+   - Veelvoorkomende gebruiksnotities
+2. Grammaticapunt met duidelijke uitleg
+3. Oefeningen
+4. Culturele context notitie
+5. Conversatie oefenscenario`} />
 
-### Skill Development
+### Vaardigheidsontwikkeling
 
-<TryIt compact prompt={`I want to learn \${skill:guitar}. Be my coach.
+<TryIt compact prompt={`Ik wil \${skill:gitaar} leren. Wees mijn coach.
 
-My current level: \${currentLevel:complete beginner}
-Goal: \${goal:play 5 songs by ear}
-Practice time available: \${practiceTime:30 minutes per day}
+Mijn huidige niveau: \${currentLevel:absolute beginner}
+Doel: \${goal:5 nummers op gehoor spelen}
+Beschikbare oefentijd: \${practiceTime:30 minuten per dag}
 
-Provide:
-1. Assessment of starting point
-2. Breakdown of sub-skills needed
-3. Practice routine (specific exercises)
-4. Progress markers (how to measure improvement)
-5. Common plateaus and how to overcome them
-6. First week's practice plan in detail`} />
+Bied:
+1. Beoordeling van startpunt
+2. Onderverdeling van benodigde deelvaardigheden
+3. Oefenroutine (specifieke oefeningen)
+4. Voortgangsmarkeringen (hoe verbetering te meten)
+5. Veelvoorkomende plateaus en hoe deze te overwinnen
+6. Gedetailleerd oefenplan voor de eerste week`} />
 
-### Exam Preparation
+### Examenvoorbereiding
 
-<TryIt compact prompt={`Help me prepare for \${examName:the GRE}.
+<TryIt compact prompt={`Help mij voorbereiden op \${examName:het staatsexamen}.
 
-Exam format: \${examFormat:Verbal, Quantitative, Writing sections}
-Time until exam: \${timeUntilExam:8 weeks}
-My weak areas: \${weakAreas:reading comprehension, geometry}
-Target score: \${targetScore:320+}
+Examenformaat: \${examFormat:Verbaal, Kwantitatief, Schrijven secties}
+Tijd tot examen: \${timeUntilExam:8 weken}
+Mijn zwakke punten: \${weakAreas:leesvaardigheid, meetkunde}
+Streefcijfer: \${targetScore:8+}
 
-Create a study plan:
-1. Topics to cover (prioritized)
-2. Daily study schedule
-3. Practice test strategy
-4. Key formulas/facts to memorize
-5. Test-taking tips specific to this exam
-6. Day-before and day-of recommendations`} />
+Maak een studieplan:
+1. Te behandelen onderwerpen (geprioriteerd)
+2. Dagelijks studieschema
+3. Strategie voor proeftoetsen
+4. Belangrijke formules/feiten om te onthouden
+5. Toetsmakingstips specifiek voor dit examen
+6. Aanbevelingen voor de dag ervoor en de dag zelf`} />
 
-## Prompt Templates from prompts.chat
+## Prompt Sjablonen van prompts.chat
 
-### Act as a Socratic Tutor
+### Gedraag je als een Socratische Tutor
 
-<TryIt compact prompt={`I want you to act as a Socratic tutor. You will help me learn by asking probing questions rather than giving direct answers. When I ask about a topic, respond with questions that guide me to discover the answer myself. If I'm stuck, provide hints but not solutions. Help me develop critical thinking skills.`} />
+<TryIt compact prompt={`Ik wil dat je je gedraagt als een Socratische tutor. Je helpt mij leren door indringende vragen te stellen in plaats van directe antwoorden te geven. Wanneer ik over een onderwerp vraag, reageer met vragen die mij begeleiden om zelf het antwoord te ontdekken. Als ik vastloop, geef hints maar geen oplossingen. Help mij kritisch denken te ontwikkelen.`} />
 
-### Act as an Educational Content Creator
+### Gedraag je als een Educatieve Content Creator
 
-<TryIt compact prompt={`I want you to act as an educational content creator. You will create engaging, accurate educational materials for \${subject:biology}. Make complex topics accessible without oversimplifying. Use analogies, examples, and visual descriptions. Include knowledge checks and encourage active learning.`} />
+<TryIt compact prompt={`Ik wil dat je je gedraagt als een educatieve content creator. Je maakt boeiende, accurate educatieve materialen voor \${subject:biologie}. Maak complexe onderwerpen toegankelijk zonder te oversimplificeren. Gebruik analogieën, voorbeelden en visuele beschrijvingen. Voeg kenniscontroles toe en moedig actief leren aan.`} />
 
-### Act as a Study Buddy
+### Gedraag je als een Studiebuddy
 
-<TryIt compact prompt={`I want you to act as my study buddy. We're studying \${subject:organic chemistry} together. Quiz me on concepts, discuss ideas, help me work through problems, and keep me motivated. Be encouraging but also challenge me to think deeper. Let's make studying interactive and effective.`} />
+<TryIt compact prompt={`Ik wil dat je je gedraagt als mijn studiebuddy. We studeren samen \${subject:organische chemie}. Overhoor mij over concepten, bespreek ideeën, help mij door problemen te werken en houd mij gemotiveerd. Wees bemoedigend maar daag mij ook uit om dieper na te denken. Laten we studeren interactief en effectief maken.`} />
 
-## Accessibility in Education
+## Toegankelijkheid in Onderwijs
 
-### Content Adaptation
+### Content Aanpassing
 
-<TryIt compact prompt={`Adapt this educational content for \${accessibilityNeed:dyslexia-friendly format}:
+<TryIt compact prompt={`Pas deze educatieve inhoud aan voor \${accessibilityNeed:dyslexie-vriendelijk formaat}:
 
-Original content:
-\${content:paste your content here}
+Originele inhoud:
+\${content:plak hier je inhoud}
 
-Adaptation needed:
-- [ ] Simplified language (lower reading level)
-- [ ] Visual descriptions (for text-to-speech)
-- [ ] Structured format (for cognitive accessibility)
-- [ ] Extended time considerations
-- [ ] Alternative explanations
+Benodigde aanpassing:
+- [ ] Vereenvoudigde taal (lager leesniveau)
+- [ ] Visuele beschrijvingen (voor tekst-naar-spraak)
+- [ ] Gestructureerd formaat (voor cognitieve toegankelijkheid)
+- [ ] Overwegingen voor extra tijd
+- [ ] Alternatieve uitleg
 
-Maintain:
-- All key learning objectives
-- Accuracy of content
-- Assessment equivalence`} />
+Behoud:
+- Alle belangrijke leerdoelen
+- Nauwkeurigheid van inhoud
+- Gelijkwaardigheid van beoordeling`} />
 
-### Multiple Modalities
+### Meerdere Modaliteiten
 
-<TryIt compact prompt={`Present \${concept:photosynthesis} in multiple ways:
+<TryIt compact prompt={`Presenteer \${concept:fotosynthese} op meerdere manieren:
 
-1. **Text explanation** (clear prose)
-2. **Visual description** (describe a diagram)
-3. **Analogy** (relate to everyday experience)
-4. **Story/Narrative** (embed in a scenario)
-5. **Q&A format** (question and answer)
+1. **Tekstuitleg** (duidelijke tekst)
+2. **Visuele beschrijving** (beschrijf een diagram)
+3. **Analogie** (relateer aan dagelijkse ervaring)
+4. **Verhaal/Narratief** (ingebed in een scenario)
+5. **V&A-formaat** (vraag en antwoord)
 
-This allows learners to engage with their preferred style.`} />
+Dit stelt leerlingen in staat om te leren met hun voorkeursstijl.`} />
 
-## Assessment & Feedback
+## Beoordeling & Feedback
 
-### Providing Feedback
+### Feedback Geven
 
-<TryIt compact prompt={`Provide educational feedback on this student work:
+<TryIt compact prompt={`Geef educatieve feedback op dit studentenwerk:
 
-Assignment: \${assignment:5-paragraph essay on climate change}
-Student submission: \${work:paste student work here}
-Rubric: \${rubric:thesis clarity, evidence, organization, grammar}
+Opdracht: \${assignment:essay van 5 alinea's over klimaatverandering}
+Inlevering student: \${work:plak hier studentenwerk}
+Rubriek: \${rubric:helderheid thesis, bewijs, structuur, grammatica}
 
-Feedback format:
-1. **Strengths** - What they did well (specific)
-2. **Areas for improvement** - What needs work (constructive)
-3. **Suggestions** - How to improve (actionable)
-4. **Grade/Score** - Based on rubric
-5. **Encouragement** - Motivational closing
+Feedback formaat:
+1. **Sterke punten** - Wat ze goed deden (specifiek)
+2. **Verbeterpunten** - Wat werk nodig heeft (constructief)
+3. **Suggesties** - Hoe te verbeteren (uitvoerbaar)
+4. **Cijfer/Score** - Gebaseerd op rubriek
+5. **Aanmoediging** - Motiverende afsluiting
 
-Tone: Supportive, specific, growth-oriented`} />
+Toon: Ondersteunend, specifiek, groei-gericht`} />
 
-### Self-Assessment Prompts
+### Zelfbeoordelingsprompts
 
-<TryIt compact prompt={`Help me assess my understanding of \${topic:the French Revolution}.
+<TryIt compact prompt={`Help mij mijn begrip van \${topic:de Franse Revolutie} te beoordelen.
 
-Ask me 5 questions that test:
-1. Basic recall
-2. Understanding
-3. Application
-4. Analysis
-5. Synthesis/Creation
+Stel mij 5 vragen die testen:
+1. Basis herinnering
+2. Begrip
+3. Toepassing
+4. Analyse
+5. Synthese/Creatie
 
-After each answer, tell me:
-- What I demonstrated understanding of
-- What I should review
-- How to deepen my knowledge
+Na elk antwoord, vertel mij:
+- Wat ik aantoonde te begrijpen
+- Wat ik moet herhalen
+- Hoe ik mijn kennis kan verdiepen
 
-Be honest but encouraging.`} />
+Wees eerlijk maar bemoedigend.`} />
 
-## Summary
+## Samenvatting
 
-<Callout type="tip" title="Key Techniques">
-Adapt to the learner's level, break complex topics into steps, include active practice (not just explanation), provide varied approaches, check understanding regularly, and give constructive feedback.
+<Callout type="tip" title="Kerntechnieken">
+Pas je aan het niveau van de leerling aan, verdeel complexe onderwerpen in stappen, voeg actieve oefening toe (niet alleen uitleg), bied gevarieerde benaderingen, controleer regelmatig het begrip en geef constructieve feedback.
 </Callout>
 
 <Quiz 
-  question="What's the most effective way to use AI for learning?"
+  question="Wat is de meest effectieve manier om AI te gebruiken voor leren?"
   options={[
-    "Read AI explanations passively like a textbook",
-    "Ask AI to quiz you and generate practice problems",
-    "Only use AI for homework answers",
-    "Avoid AI for learning entirely"
+    "AI-uitleg passief lezen zoals een studieboek",
+    "AI vragen om je te overhoren en oefenopdrachten te genereren",
+    "AI alleen gebruiken voor huiswerkantwoorden",
+    "AI volledig vermijden voor leren"
   ]}
   correctIndex={1}
-  explanation="Active recall beats passive review. Have AI quiz you, generate problems, and check your understanding—this builds stronger memory than just reading explanations."
+  explanation="Actieve herhaling overtreft passief lezen. Laat AI je overhoren, problemen genereren en je begrip controleren—dit bouwt sterkere herinneringen op dan alleen uitleg lezen."
 />
 
-AI is a patient, always-available learning partner—use it to supplement, not replace, human instruction.
+AI is een geduldige, altijd beschikbare leerpartner—gebruik het als aanvulling op, niet als vervanging van, menselijke instructie.

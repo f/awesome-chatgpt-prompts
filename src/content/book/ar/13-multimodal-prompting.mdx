@@ -1,173 +1,173 @@
-For most of history, computers worked with one type of data at a time: text in one program, images in another, audio somewhere else. But humans don't experience the world this way. We see, hear, read, and speak simultaneously, combining all these inputs to understand our environment.
+على مدار معظم التاريخ، كانت أجهزة الكمبيوتر تعمل مع نوع واحد من البيانات في كل مرة: النص في برنامج واحد، والصور في برنامج آخر، والصوت في مكان آخر. لكن البشر لا يختبرون العالم بهذه الطريقة. نحن نرى ونسمع ونقرأ ونتحدث في آنٍ واحد، نجمع كل هذه المدخلات لفهم بيئتنا.
 
-**Multimodal AI** changes everything. These models can process multiple types of information together—analyzing an image while reading your question about it, or generating images from your text descriptions. This chapter teaches you how to communicate effectively with these powerful systems.
+**الذكاء الاصطناعي متعدد الوسائط** يغير كل شيء. هذه النماذج يمكنها معالجة أنواع متعددة من المعلومات معًا—تحليل صورة أثناء قراءة سؤالك عنها، أو توليد صور من أوصافك النصية. يعلمك هذا الفصل كيفية التواصل بفعالية مع هذه الأنظمة القوية.
 
-<Callout type="info" title="What Does Multimodal Mean?">
-"Multi" means many, and "modal" refers to modes or types of data. A multimodal model can work with multiple modalities: text, images, audio, video, or even code. Instead of separate tools for each type, one model understands them all together.
+<Callout type="info" title="ماذا يعني متعدد الوسائط؟">
+"متعدد" تعني كثير، و"الوسائط" تشير إلى أنماط أو أنواع البيانات. النموذج متعدد الوسائط يمكنه العمل مع وسائط متعددة: النص والصور والصوت والفيديو أو حتى الكود البرمجي. بدلاً من أدوات منفصلة لكل نوع، نموذج واحد يفهمها جميعًا معًا.
 </Callout>
 
-## Why Multimodal Matters
+## لماذا تعدد الوسائط مهم
 
-Traditional AI required you to describe everything in words. Want to ask about an image? You'd have to describe it first. Want to analyze a document? You'd need to transcribe it manually. Multimodal models eliminate these barriers.
+الذكاء الاصطناعي التقليدي كان يتطلب منك وصف كل شيء بالكلمات. تريد أن تسأل عن صورة؟ كان عليك وصفها أولاً. تريد تحليل مستند؟ كنت بحاجة إلى نسخه يدويًا. النماذج متعددة الوسائط تزيل هذه الحواجز.
 
 <InfoGrid items={[
-  { label: "See and Understand", description: "Upload an image and ask questions about it directly—no description needed", example: "\"What's wrong with this circuit diagram?\"", color: "blue" },
-  { label: "Create from Words", description: "Describe what you want and generate images, audio, or video", example: "\"A sunset over mountains in watercolor style\"", color: "purple" },
-  { label: "Combine Everything", description: "Mix text, images, and other media in a single conversation", example: "\"Compare these two designs and tell me which is better for mobile\"", color: "green" },
-  { label: "Analyze Documents", description: "Extract information from photos of documents, receipts, or screenshots", example: "\"Extract all the line items from this invoice photo\"", color: "amber" }
+  { label: "الرؤية والفهم", description: "ارفع صورة واطرح أسئلة عنها مباشرة—لا حاجة لوصفها", example: "\"ما الخطأ في هذا المخطط الكهربائي؟\"", color: "blue" },
+  { label: "الإنشاء من الكلمات", description: "صف ما تريده وولّد صورًا أو صوتًا أو فيديو", example: "\"غروب الشمس فوق الجبال بأسلوب الألوان المائية\"", color: "purple" },
+  { label: "دمج كل شيء", description: "امزج النص والصور ووسائط أخرى في محادثة واحدة", example: "\"قارن بين هذين التصميمين وأخبرني أيهما أفضل للهاتف المحمول\"", color: "green" },
+  { label: "تحليل المستندات", description: "استخرج المعلومات من صور المستندات والإيصالات ولقطات الشاشة", example: "\"استخرج جميع البنود من صورة هذه الفاتورة\"", color: "amber" }
 ]} />
 
-## Why Prompting Matters Even More for Multimodal
+## لماذا صياغة الأوامر أكثر أهمية للنماذج متعددة الوسائط
 
-With text-only models, the AI receives exactly what you type. But with multimodal models, the AI must interpret visual or audio information—and interpretation requires guidance.
+مع النماذج النصية فقط، يتلقى الذكاء الاصطناعي بالضبط ما تكتبه. لكن مع النماذج متعددة الوسائط، يجب على الذكاء الاصطناعي تفسير المعلومات المرئية أو الصوتية—والتفسير يتطلب توجيهًا.
 
 <Compare 
-  before={{ label: "Vague multimodal prompt", content: "What do you see in this image?\n\n[image of a complex dashboard]" }}
-  after={{ label: "Guided multimodal prompt", content: "This is a screenshot of our analytics dashboard. Focus on:\n1. The conversion rate graph in the top-right\n2. Any error indicators or warnings\n3. Whether the data looks normal or anomalous\n\n[image of a complex dashboard]" }}
+  before={{ label: "أمر متعدد الوسائط غامض", content: "ماذا ترى في هذه الصورة؟\n\n[صورة للوحة تحكم معقدة]" }}
+  after={{ label: "أمر متعدد الوسائط موجه", content: "هذه لقطة شاشة للوحة التحليلات الخاصة بنا. ركز على:\n1. رسم معدل التحويل في أعلى اليمين\n2. أي مؤشرات خطأ أو تحذيرات\n3. هل تبدو البيانات طبيعية أم غير عادية\n\n[صورة للوحة تحكم معقدة]" }}
 />
 
-**Without guidance**, the model might describe colors, layout, or irrelevant details. **With guidance**, it focuses on what actually matters to you.
+**بدون توجيه**، قد يصف النموذج الألوان والتخطيط أو تفاصيل غير ذات صلة. **مع التوجيه**، يركز على ما يهمك فعلاً.
 
-<Callout type="warning" title="The Interpretation Gap">
-When you look at an image, you instantly know what's important based on your context and goals. The AI doesn't have this context unless you provide it. A photo of a crack in a wall could be: a structural engineering concern, an artistic texture, or irrelevant background. Your prompt determines how the AI interprets it.
+<Callout type="warning" title="فجوة التفسير">
+عندما تنظر إلى صورة، تعرف فورًا ما هو المهم بناءً على سياقك وأهدافك. الذكاء الاصطناعي لا يملك هذا السياق إلا إذا قدمته له. صورة لشق في الجدار يمكن أن تكون: مشكلة هندسية إنشائية، أو نسيج فني، أو خلفية غير ذات صلة. أمرك يحدد كيف يفسرها الذكاء الاصطناعي.
 </Callout>
 
-## The Multimodal Landscape
+## المشهد متعدد الوسائط
 
-Different models have different capabilities. Here's what's available in 2025:
+النماذج المختلفة لها قدرات مختلفة. إليك ما هو متاح في عام 2025:
 
-### Understanding Models (Input → Analysis)
+### نماذج الفهم (المدخلات ← التحليل)
 
-These models accept various media types and produce text analysis or responses.
-
-<InfoGrid items={[
-  { label: "GPT-4o / GPT-5", description: "Text + Images + Audio → Text. OpenAI's flagship with 128K context, strong creative and reasoning abilities, reduced hallucination rates.", color: "green" },
-  { label: "Claude 4 Sonnet/Opus", description: "Text + Images → Text. Anthropic's safety-focused model with advanced reasoning, excellent for coding and complex multi-step tasks.", color: "purple" },
-  { label: "Gemini 2.5", description: "Text + Images + Audio + Video → Text. Google's model with 1M token context, self-fact-checking, fast processing for coding and research.", color: "blue" },
-  { label: "LLaMA 4 Scout", description: "Text + Images + Video → Text. Meta's open-source model with massive 10M token context for long documents and codebases.", color: "cyan" },
-  { label: "Grok 4", description: "Text + Images → Text. xAI's model with real-time data access and social media integration for up-to-date responses.", color: "red" }
-]} />
-
-### Generation Models (Text → Media)
-
-These models create images, audio, or video from text descriptions.
+هذه النماذج تقبل أنواعًا مختلفة من الوسائط وتنتج تحليلاً نصيًا أو استجابات.
 
 <InfoGrid items={[
-  { label: "DALL-E 3", description: "Text → Images. OpenAI's image generator with high accuracy to prompt descriptions.", color: "amber" },
-  { label: "Midjourney", description: "Text + Images → Images. Known for artistic quality, style control, and aesthetic outputs.", color: "pink" },
-  { label: "Sora", description: "Text → Video. OpenAI's video generation model for creating clips from descriptions.", color: "red" },
-  { label: "Whisper", description: "Audio → Text. OpenAI's speech-to-text with high accuracy across languages.", color: "cyan" }
+  { label: "GPT-4o / GPT-5", description: "النص + الصور + الصوت ← النص. النموذج الرئيسي من OpenAI مع سياق 128 ألف رمز، قدرات إبداعية واستدلالية قوية، معدلات هلوسة منخفضة.", color: "green" },
+  { label: "Claude 4 Sonnet/Opus", description: "النص + الصور ← النص. نموذج Anthropic المركز على السلامة مع استدلال متقدم، ممتاز للبرمجة والمهام المعقدة متعددة الخطوات.", color: "purple" },
+  { label: "Gemini 2.5", description: "النص + الصور + الصوت + الفيديو ← النص. نموذج Google مع سياق مليون رمز، التحقق الذاتي من الحقائق، معالجة سريعة للبرمجة والبحث.", color: "blue" },
+  { label: "LLaMA 4 Scout", description: "النص + الصور + الفيديو ← النص. نموذج Meta مفتوح المصدر مع سياق ضخم 10 ملايين رمز للمستندات الطويلة وقواعد الكود.", color: "cyan" },
+  { label: "Grok 4", description: "النص + الصور ← النص. نموذج xAI مع وصول للبيانات في الوقت الفعلي وتكامل مع وسائل التواصل الاجتماعي للحصول على ردود محدثة.", color: "red" }
 ]} />
 
-<Callout type="info" title="Rapid Evolution">
-The multimodal landscape changes quickly. New models launch frequently, and existing models gain capabilities through updates. Always check the latest documentation for current features and limitations.
+### نماذج التوليد (النص ← الوسائط)
+
+هذه النماذج تنشئ صورًا أو صوتًا أو فيديو من الأوصاف النصية.
+
+<InfoGrid items={[
+  { label: "DALL-E 3", description: "النص ← الصور. مولد الصور من OpenAI بدقة عالية لوصف الأوامر.", color: "amber" },
+  { label: "Midjourney", description: "النص + الصور ← الصور. معروف بالجودة الفنية والتحكم في الأسلوب والمخرجات الجمالية.", color: "pink" },
+  { label: "Sora", description: "النص ← الفيديو. نموذج توليد الفيديو من OpenAI لإنشاء مقاطع من الأوصاف.", color: "red" },
+  { label: "Whisper", description: "الصوت ← النص. تحويل الكلام إلى نص من OpenAI بدقة عالية عبر اللغات.", color: "cyan" }
+]} />
+
+<Callout type="info" title="تطور سريع">
+المشهد متعدد الوسائط يتغير بسرعة. نماذج جديدة تُطلق بشكل متكرر، والنماذج الحالية تكتسب قدرات من خلال التحديثات. تحقق دائمًا من أحدث الوثائق للميزات والقيود الحالية.
 </Callout>
 
-## Image Understanding Prompts
+## أوامر فهم الصور
 
-The most common multimodal use case is asking AI to analyze images. The key is providing context about what you need.
+حالة الاستخدام متعددة الوسائط الأكثر شيوعًا هي طلب تحليل الصور من الذكاء الاصطناعي. المفتاح هو توفير السياق حول ما تحتاجه.
 
-### Basic Image Analysis
+### تحليل الصور الأساسي
 
-Start with a clear request structure. Tell the model what aspects to focus on.
+ابدأ بهيكل طلب واضح. أخبر النموذج بالجوانب التي يجب التركيز عليها.
 
 <TryIt 
-  title="Structured Image Analysis"
-  description="This prompt provides a clear framework for image analysis. The model knows exactly what information you need."
-  prompt={`Analyze this image and describe:
+  title="تحليل الصور المنظم"
+  description="هذا الأمر يوفر إطارًا واضحًا لتحليل الصور. يعرف النموذج بالضبط ما المعلومات التي تحتاجها."
+  prompt={`حلل هذه الصورة وصف:
 
-1. **Main Subject**: What is the primary focus of this image?
-2. **Setting**: Where does this appear to be? (indoor/outdoor, location type)
-3. **Mood**: What emotional tone or atmosphere does it convey?
-4. **Text Content**: Any visible text, signs, or labels?
-5. **Notable Details**: What might someone miss at first glance?
-6. **Technical Quality**: How is the lighting, focus, and composition?
+1. **الموضوع الرئيسي**: ما هو التركيز الأساسي لهذه الصورة؟
+2. **المكان**: أين يبدو أن هذا يحدث؟ (داخلي/خارجي، نوع الموقع)
+3. **المزاج**: ما النغمة العاطفية أو الأجواء التي تنقلها؟
+4. **المحتوى النصي**: أي نص مرئي أو لافتات أو تسميات؟
+5. **تفاصيل ملحوظة**: ما الذي قد يفوته شخص ما للوهلة الأولى؟
+6. **الجودة التقنية**: كيف هي الإضاءة والتركيز والتكوين؟
 
-[Paste or describe the image you want to analyze]
+[الصق أو صف الصورة التي تريد تحليلها]
 
-Image description or URL: \${imageDescription}`}
+وصف الصورة أو الرابط: \${imageDescription}`}
 />
 
-### Structured Output for Images
+### المخرجات المنظمة للصور
 
-When you need to process image analysis programmatically, request JSON output.
+عندما تحتاج لمعالجة تحليل الصور برمجيًا، اطلب مخرجات JSON.
 
 <TryIt 
-  title="JSON Image Analysis"
-  description="Get structured data from image analysis that's easy to parse and use in applications."
-  prompt={`Analyze this image and return a JSON object with the following structure:
+  title="تحليل الصور بصيغة JSON"
+  description="احصل على بيانات منظمة من تحليل الصور يسهل تحليلها واستخدامها في التطبيقات."
+  prompt={`حلل هذه الصورة وأرجع كائن JSON بالهيكل التالي:
 
 {
-  "summary": "One sentence description",
-  "objects": ["List of main objects visible"],
+  "summary": "وصف من جملة واحدة",
+  "objects": ["قائمة بالأشياء الرئيسية المرئية"],
   "people": {
-    "count": "number or 'none'",
-    "activities": ["What they're doing, if any"]
+    "count": "عدد أو 'لا يوجد'",
+    "activities": ["ماذا يفعلون، إن وجد"]
   },
-  "text_detected": ["Any text visible in the image"],
+  "text_detected": ["أي نص مرئي في الصورة"],
   "colors": {
-    "dominant": ["Top 3 colors"],
-    "mood": "Warm/Cool/Neutral"
+    "dominant": ["أعلى 3 ألوان"],
+    "mood": "دافئ/بارد/محايد"
   },
   "setting": {
-    "type": "indoor/outdoor/unknown",
-    "description": "More specific location description"
+    "type": "داخلي/خارجي/غير معروف",
+    "description": "وصف أكثر تحديدًا للموقع"
   },
   "technical": {
-    "quality": "high/medium/low",
-    "lighting": "Description of lighting",
-    "composition": "Description of framing/composition"
+    "quality": "عالية/متوسطة/منخفضة",
+    "lighting": "وصف الإضاءة",
+    "composition": "وصف الإطار/التكوين"
   },
-  "confidence": "high/medium/low"
+  "confidence": "عالية/متوسطة/منخفضة"
 }
 
-Image to analyze: \${imageDescription}`}
+الصورة للتحليل: \${imageDescription}`}
 />
 
-### Comparative Analysis
+### التحليل المقارن
 
-Comparing multiple images requires clear labeling and specific comparison criteria.
+مقارنة صور متعددة تتطلب تسمية واضحة ومعايير مقارنة محددة.
 
 <TryIt 
-  title="Image Comparison"
-  description="Compare two or more images with specific criteria that matter to your decision."
-  prompt={`Compare these images for \${purpose}:
+  title="مقارنة الصور"
+  description="قارن بين صورتين أو أكثر بمعايير محددة تهم قرارك."
+  prompt={`قارن هذه الصور لـ \${purpose}:
 
-**Image A**: \${imageA}
-**Image B**: \${imageB}
+**الصورة أ**: \${imageA}
+**الصورة ب**: \${imageB}
 
-Analyze each image on these criteria:
-1. \${criterion1} (importance: high)
-2. \${criterion2} (importance: medium)  
-3. \${criterion3} (importance: low)
+حلل كل صورة وفق هذه المعايير:
+1. \${criterion1} (الأهمية: عالية)
+2. \${criterion2} (الأهمية: متوسطة)  
+3. \${criterion3} (الأهمية: منخفضة)
 
-Provide:
-- Side-by-side comparison for each criterion
-- Strengths and weaknesses of each
-- Clear recommendation with reasoning
-- Any concerns or caveats`}
+قدم:
+- مقارنة جنبًا إلى جنب لكل معيار
+- نقاط القوة والضعف لكل صورة
+- توصية واضحة مع التبرير
+- أي مخاوف أو تحفظات`}
 />
 
-## Document and Screenshot Analysis
+## تحليل المستندات ولقطات الشاشة
 
-One of the most practical applications of multimodal AI is analyzing documents, screenshots, and UI elements. This saves hours of manual transcription and review.
+أحد أكثر التطبيقات العملية للذكاء الاصطناعي متعدد الوسائط هو تحليل المستندات ولقطات الشاشة وعناصر واجهة المستخدم. هذا يوفر ساعات من النسخ والمراجعة اليدوية.
 
-### Document Extraction
+### استخراج المستندات
 
-Scanned documents, photos of receipts, and PDFs as images can all be processed. The key is telling the model what type of document it is and what information you need.
+المستندات الممسوحة ضوئيًا وصور الإيصالات وملفات PDF كصور يمكن معالجتها جميعًا. المفتاح هو إخبار النموذج بنوع المستند والمعلومات التي تحتاجها.
 
 <TryIt 
-  title="Document Data Extractor"
-  description="Extract structured data from photos of documents, receipts, invoices, or forms."
-  prompt={`This is a photo/scan of a \${documentType}.
+  title="مستخرج بيانات المستندات"
+  description="استخرج البيانات المنظمة من صور المستندات والإيصالات والفواتير أو النماذج."
+  prompt={`هذه صورة/مسح ضوئي لـ \${documentType}.
 
-Extract all information into structured JSON format:
+استخرج جميع المعلومات بتنسيق JSON منظم:
 
 {
-  "document_type": "detected type",
-  "date": "if present",
+  "document_type": "النوع المكتشف",
+  "date": "إذا وجد",
   "key_fields": {
-    "field_name": "value"
+    "اسم_الحقل": "القيمة"
   },
   "line_items": [
     {"description": "", "amount": ""}
@@ -177,489 +177,489 @@ Extract all information into structured JSON format:
     "tax": "",
     "total": ""
   },
-  "handwritten_notes": ["any handwritten text"],
-  "unclear_sections": ["areas that were hard to read"],
-  "confidence": "high/medium/low"
+  "handwritten_notes": ["أي نص مكتوب بخط اليد"],
+  "unclear_sections": ["المناطق التي صعب قراءتها"],
+  "confidence": "عالية/متوسطة/منخفضة"
 }
 
-IMPORTANT: If any text is unclear, note it in "unclear_sections" rather than guessing. Mark confidence as "low" if significant portions were hard to read.
+هام: إذا كان أي نص غير واضح، دونه في "unclear_sections" بدلاً من التخمين. حدد الثقة بـ "منخفضة" إذا كانت أجزاء كبيرة صعبة القراءة.
 
-Document description: \${documentDescription}`}
+وصف المستند: \${documentDescription}`}
 />
 
-### Screenshot and UI Analysis
+### تحليل لقطات الشاشة وواجهة المستخدم
 
-Screenshots are goldmines for debugging, UX review, and documentation. Guide the AI to focus on what matters.
+لقطات الشاشة كنوز لتصحيح الأخطاء ومراجعة تجربة المستخدم والتوثيق. وجه الذكاء الاصطناعي للتركيز على ما يهم.
 
 <TryIt 
-  title="UI/UX Screenshot Analyzer"
-  description="Get detailed analysis of screenshots for debugging, UX review, or documentation."
-  prompt={`This is a screenshot of \${applicationName}.
+  title="محلل لقطات الشاشة وتجربة المستخدم"
+  description="احصل على تحليل مفصل للقطات الشاشة لتصحيح الأخطاء أو مراجعة تجربة المستخدم أو التوثيق."
+  prompt={`هذه لقطة شاشة لـ \${applicationName}.
 
-Analyze this interface:
+حلل هذه الواجهة:
 
-**Identification**
-- What screen/page/state is this?
-- What is the user likely trying to accomplish here?
+**التعريف**
+- ما هذه الشاشة/الصفحة/الحالة؟
+- ما الذي يحاول المستخدم إنجازه على الأرجح هنا؟
 
-**UI Elements**
-- Key interactive elements (buttons, forms, menus)
-- Current state (anything selected, filled in, or expanded?)
-- Any error messages, warnings, or notifications?
+**عناصر واجهة المستخدم**
+- العناصر التفاعلية الرئيسية (الأزرار، النماذج، القوائم)
+- الحالة الحالية (هل هناك شيء محدد أو معبأ أو موسع؟)
+- أي رسائل خطأ أو تحذيرات أو إشعارات؟
 
-**UX Assessment**
-- Is the layout clear and intuitive?
-- Any confusing elements or unclear labels?
-- Accessibility concerns (contrast, text size, etc.)?
+**تقييم تجربة المستخدم**
+- هل التخطيط واضح وبديهي؟
+- أي عناصر مربكة أو تسميات غير واضحة؟
+- مخاوف إمكانية الوصول (التباين، حجم النص، إلخ)؟
 
-**Issues Detected**
-- Visual bugs or misalignments?
-- Truncated text or overflow issues?
-- Inconsistent styling?
+**المشكلات المكتشفة**
+- أخطاء بصرية أو عدم محاذاة؟
+- نص مقطوع أو مشاكل تجاوز؟
+- تنسيق غير متسق؟
 
-Screenshot description: \${screenshotDescription}`}
+وصف لقطة الشاشة: \${screenshotDescription}`}
 />
 
-### Error Message Analysis
+### تحليل رسائل الخطأ
 
-When you encounter an error, a screenshot often contains more context than copying the error text alone.
+عندما تواجه خطأ، لقطة الشاشة غالبًا تحتوي على سياق أكثر من مجرد نسخ نص الخطأ.
 
 <TryIt 
-  title="Error Diagnosis from Screenshot"
-  description="Get plain-language explanations and fixes for error messages in screenshots."
-  prompt={`I'm seeing this error in \${context}.
+  title="تشخيص الخطأ من لقطة الشاشة"
+  description="احصل على شروحات بلغة بسيطة وحلول لرسائل الخطأ في لقطات الشاشة."
+  prompt={`أرى هذا الخطأ في \${context}.
 
-[Describe or paste the error message/screenshot]
-Error details: \${errorDetails}
+[صف أو الصق رسالة الخطأ/لقطة الشاشة]
+تفاصيل الخطأ: \${errorDetails}
 
-Please provide:
+يرجى تقديم:
 
-1. **Plain Language Explanation**: What does this error actually mean?
+1. **شرح بلغة بسيطة**: ماذا يعني هذا الخطأ فعلاً؟
 
-2. **Likely Causes** (ranked by probability):
-   - Most likely: 
-   - Also possible:
-   - Less common:
+2. **الأسباب المحتملة** (مرتبة حسب الاحتمالية):
+   - الأكثر احتمالاً: 
+   - ممكن أيضًا:
+   - أقل شيوعًا:
 
-3. **Step-by-Step Fix**:
-   - First, try...
-   - If that doesn't work...
-   - As a last resort...
+3. **خطوات الإصلاح**:
+   - أولاً، جرب...
+   - إذا لم ينجح ذلك...
+   - كملاذ أخير...
 
-4. **Prevention**: How to avoid this error in the future
+4. **الوقاية**: كيفية تجنب هذا الخطأ في المستقبل
 
-5. **Red Flags**: When this error might indicate a more serious problem`}
+5. **علامات التحذير**: متى قد يشير هذا الخطأ إلى مشكلة أكثر خطورة`}
 />
 
-## Image Generation Prompts
+## أوامر توليد الصور
 
-Generating images from text descriptions is an art form. The more specific and structured your prompt, the closer the result will match your vision.
+توليد الصور من الأوصاف النصية هو شكل من أشكال الفن. كلما كان أمرك أكثر تحديدًا وتنظيمًا، كلما اقتربت النتيجة من رؤيتك.
 
-### The Anatomy of an Image Prompt
+### تشريح أمر الصورة
 
-Effective image generation prompts have several components:
+أوامر توليد الصور الفعالة لها عدة مكونات:
 
 <InfoGrid items={[
-  { label: "Subject", description: "What is the main focus of the image?", example: "A golden retriever playing in autumn leaves", color: "blue" },
-  { label: "Style", description: "What artistic style or medium?", example: "Watercolor painting, digital art, photorealistic", color: "purple" },
-  { label: "Composition", description: "How is the scene arranged?", example: "Close-up portrait, wide landscape, bird's eye view", color: "green" },
-  { label: "Lighting", description: "What's the light source and quality?", example: "Soft morning light, dramatic shadows, neon glow", color: "amber" },
-  { label: "Mood", description: "What feeling should it evoke?", example: "Peaceful, energetic, mysterious, nostalgic", color: "pink" },
-  { label: "Details", description: "Specific elements to include or avoid", example: "Include: flowers. Avoid: text, watermarks", color: "cyan" }
+  { label: "الموضوع", description: "ما هو التركيز الرئيسي للصورة؟", example: "كلب جولدن ريتريفر يلعب في أوراق الخريف", color: "blue" },
+  { label: "الأسلوب", description: "ما الأسلوب الفني أو الوسيط؟", example: "لوحة مائية، فن رقمي، واقعية تصويرية", color: "purple" },
+  { label: "التكوين", description: "كيف يتم ترتيب المشهد؟", example: "صورة قريبة، منظر طبيعي واسع، رؤية من الأعلى", color: "green" },
+  { label: "الإضاءة", description: "ما مصدر وجودة الضوء؟", example: "ضوء صباحي ناعم، ظلال درامية، توهج نيون", color: "amber" },
+  { label: "المزاج", description: "ما الشعور الذي يجب أن تثيره؟", example: "هادئ، نشيط، غامض، حنين", color: "pink" },
+  { label: "التفاصيل", description: "عناصر محددة للتضمين أو التجنب", example: "تضمين: زهور. تجنب: نص، علامات مائية", color: "cyan" }
 ]} />
 
-### Basic Image Generation
+### توليد الصور الأساسي
 
 <TryIt 
-  title="Structured Image Prompt"
-  description="Use this template to create detailed, specific image generation prompts."
-  prompt={`Create an image with these specifications:
+  title="أمر صورة منظم"
+  description="استخدم هذا القالب لإنشاء أوامر توليد صور مفصلة ومحددة."
+  prompt={`أنشئ صورة بهذه المواصفات:
 
-**Subject**: \${subject}
+**الموضوع**: \${subject}
 
-**Style**: \${style}
-**Medium**: \${medium} (e.g., oil painting, digital art, photograph)
+**الأسلوب**: \${style}
+**الوسيط**: \${medium} (مثل: لوحة زيتية، فن رقمي، صورة فوتوغرافية)
 
-**Composition**:
-- Framing: \${framing} (close-up, medium shot, wide angle)
-- Perspective: \${perspective} (eye level, low angle, overhead)
-- Focus: \${focusArea}
+**التكوين**:
+- الإطار: \${framing} (قريب، لقطة متوسطة، زاوية واسعة)
+- المنظور: \${perspective} (مستوى العين، زاوية منخفضة، من الأعلى)
+- التركيز: \${focusArea}
 
-**Lighting**:
-- Source: \${lightSource}
-- Quality: \${lightQuality} (soft, harsh, diffused)
-- Time of day: \${timeOfDay}
+**الإضاءة**:
+- المصدر: \${lightSource}
+- الجودة: \${lightQuality} (ناعمة، قاسية، منتشرة)
+- وقت اليوم: \${timeOfDay}
 
-**Color Palette**: \${colors}
+**لوحة الألوان**: \${colors}
 
-**Mood/Atmosphere**: \${mood}
+**المزاج/الأجواء**: \${mood}
 
-**Must Include**: \${includeElements}
-**Must Avoid**: \${avoidElements}
+**يجب تضمين**: \${includeElements}
+**يجب تجنب**: \${avoidElements}
 
-**Technical**: \${aspectRatio} aspect ratio, high quality`}
+**تقني**: نسبة العرض إلى الارتفاع \${aspectRatio}، جودة عالية`}
 />
 
-### Scene Building
+### بناء المشهد
 
-For complex scenes, describe layers from foreground to background.
+للمشاهد المعقدة، صف الطبقات من المقدمة إلى الخلفية.
 
 <TryIt 
-  title="Layered Scene Description"
-  description="Build complex scenes by describing what appears in each layer of depth."
-  prompt={`Generate a detailed scene:
+  title="وصف المشهد بالطبقات"
+  description="ابنِ مشاهد معقدة بوصف ما يظهر في كل طبقة من العمق."
+  prompt={`ولّد مشهدًا مفصلاً:
 
-**Setting**: \${setting}
+**المكان**: \${setting}
 
-**Foreground** (closest to viewer):
+**المقدمة** (الأقرب للمشاهد):
 \${foreground}
 
-**Middle Ground** (main action area):
+**الأرضية الوسطى** (منطقة الحدث الرئيسي):
 \${middleGround}
 
-**Background** (distant elements):
+**الخلفية** (العناصر البعيدة):
 \${background}
 
-**Atmospheric Details**:
-- Weather/Air: \${weather}
-- Lighting: \${lighting}
-- Time: \${timeOfDay}
+**التفاصيل الجوية**:
+- الطقس/الهواء: \${weather}
+- الإضاءة: \${lighting}
+- الوقت: \${timeOfDay}
 
-**Style**: \${artisticStyle}
-**Mood**: \${mood}
-**Color Palette**: \${colors}
+**الأسلوب**: \${artisticStyle}
+**المزاج**: \${mood}
+**لوحة الألوان**: \${colors}
 
-Additional details to include: \${additionalDetails}`}
+تفاصيل إضافية للتضمين: \${additionalDetails}`}
 />
 
-## Audio Prompting
+## أوامر الصوت
 
-Audio processing opens up transcription, analysis, and understanding of spoken content. The key is providing context about what the audio contains.
+معالجة الصوت تفتح إمكانيات النسخ والتحليل وفهم المحتوى المنطوق. المفتاح هو توفير السياق حول ما يحتويه الصوت.
 
-### Enhanced Transcription
+### النسخ المحسّن
 
-Basic transcription is just the start. With good prompts, you can get speaker identification, timestamps, and domain-specific accuracy.
+النسخ الأساسي هو مجرد البداية. مع الأوامر الجيدة، يمكنك الحصول على تحديد المتحدثين والطوابع الزمنية والدقة الخاصة بالمجال.
 
 <TryIt 
-  title="Smart Transcription"
-  description="Get accurate transcriptions with speaker labels, timestamps, and handling of unclear sections."
-  prompt={`Transcribe this audio recording.
+  title="النسخ الذكي"
+  description="احصل على نسخ دقيقة مع تسميات المتحدثين والطوابع الزمنية ومعالجة الأقسام غير الواضحة."
+  prompt={`انسخ هذا التسجيل الصوتي.
 
-**Context**: \${recordingType} (meeting, interview, podcast, lecture, etc.)
-**Expected Speakers**: \${speakerCount} (\${speakerRoles})
-**Domain**: \${domain} (technical terms to expect: \${technicalTerms})
+**السياق**: \${recordingType} (اجتماع، مقابلة، بودكاست، محاضرة، إلخ)
+**المتحدثون المتوقعون**: \${speakerCount} (\${speakerRoles})
+**المجال**: \${domain} (المصطلحات التقنية المتوقعة: \${technicalTerms})
 
-**Output Format**:
-[00:00] **Speaker 1 (Name/Role)**: Transcribed text here.
-[00:15] **Speaker 2 (Name/Role)**: Their response here.
+**تنسيق المخرجات**:
+[00:00] **المتحدث 1 (الاسم/الدور)**: النص المنسوخ هنا.
+[00:15] **المتحدث 2 (الاسم/الدور)**: ردهم هنا.
 
-**Instructions**:
-- Include timestamps at natural breaks (every 30-60 seconds or at speaker changes)
-- Mark unclear sections as [inaudible] or [unclear: best guess?]
-- Note non-speech sounds in brackets: [laughter], [phone ringing], [long pause]
-- Preserve filler words only if they're meaningful (um, uh can be removed)
-- Flag any action items or decisions with → symbol
+**التعليمات**:
+- ضمّن الطوابع الزمنية عند الفواصل الطبيعية (كل 30-60 ثانية أو عند تغيير المتحدث)
+- حدد الأقسام غير الواضحة كـ [غير مسموع] أو [غير واضح: أفضل تخمين؟]
+- دوّن الأصوات غير الكلامية بين أقواس: [ضحك]، [رنين هاتف]، [صمت طويل]
+- احتفظ بكلمات الحشو فقط إذا كانت ذات معنى (يمكن إزالة آه، أم)
+- حدد أي عناصر عمل أو قرارات برمز ←
 
-Audio description: \${audioDescription}`}
+وصف الصوت: \${audioDescription}`}
 />
 
-### Audio Content Analysis
+### تحليل محتوى الصوت
 
-Beyond transcription, AI can analyze the content, tone, and key moments in audio.
+بالإضافة إلى النسخ، يمكن للذكاء الاصطناعي تحليل المحتوى والنبرة واللحظات المهمة في الصوت.
 
 <TryIt 
-  title="Audio Content Analyzer"
-  description="Get a comprehensive analysis of audio content including summary, key moments, and sentiment."
-  prompt={`Analyze this audio recording:
+  title="محلل محتوى الصوت"
+  description="احصل على تحليل شامل لمحتوى الصوت يشمل الملخص واللحظات الرئيسية والمشاعر."
+  prompt={`حلل هذا التسجيل الصوتي:
 
-Audio description: \${audioDescription}
+وصف الصوت: \${audioDescription}
 
-Provide:
+قدم:
 
-**1. Executive Summary** (2-3 sentences)
-What is this recording about? What's the main takeaway?
+**1. ملخص تنفيذي** (2-3 جمل)
+عن ماذا هذا التسجيل؟ ما الاستنتاج الرئيسي؟
 
-**2. Speakers**
-- How many distinct speakers?
-- Characteristics (if discernible): tone, speaking style, expertise level
+**2. المتحدثون**
+- كم عدد المتحدثين المميزين؟
+- الخصائص (إذا أمكن تمييزها): النبرة، أسلوب الكلام، مستوى الخبرة
 
-**3. Content Breakdown**
-- Main topics discussed (with approximate timestamps)
-- Key points made
-- Questions raised
+**3. تفصيل المحتوى**
+- المواضيع الرئيسية التي نوقشت (مع الطوابع الزمنية التقريبية)
+- النقاط الرئيسية المطروحة
+- الأسئلة المثارة
 
-**4. Emotional Analysis**
-- Overall tone (formal, casual, tense, friendly)
-- Notable emotional moments
-- Energy level throughout
+**4. التحليل العاطفي**
+- النبرة العامة (رسمية، عادية، متوترة، ودية)
+- اللحظات العاطفية الملحوظة
+- مستوى الطاقة طوال التسجيل
 
-**5. Actionable Items**
-- Decisions made
-- Action items mentioned
-- Follow-ups needed
+**5. العناصر القابلة للتنفيذ**
+- القرارات المتخذة
+- عناصر العمل المذكورة
+- المتابعات المطلوبة
 
-**6. Notable Quotes**
-Pull out 2-3 significant quotes with timestamps
+**6. اقتباسات ملحوظة**
+استخرج 2-3 اقتباسات مهمة مع الطوابع الزمنية
 
-**7. Audio Quality**
-- Overall clarity
-- Any issues (background noise, interruptions, technical problems)`}
+**7. جودة الصوت**
+- الوضوح العام
+- أي مشاكل (ضوضاء خلفية، انقطاعات، مشاكل تقنية)`}
 />
 
-## Video Prompting
+## أوامر الفيديو
 
-Video combines visual and audio analysis over time. The challenge is guiding the AI to focus on the relevant aspects across the entire duration.
+الفيديو يجمع بين التحليل البصري والصوتي عبر الوقت. التحدي هو توجيه الذكاء الاصطناعي للتركيز على الجوانب ذات الصلة طوال المدة الكاملة.
 
-### Video Understanding
+### فهم الفيديو
 
 <TryIt 
-  title="Comprehensive Video Analysis"
-  description="Get a structured breakdown of video content including timeline, visual elements, and key moments."
-  prompt={`Analyze this video: \${videoDescription}
+  title="تحليل الفيديو الشامل"
+  description="احصل على تفصيل منظم لمحتوى الفيديو يشمل الجدول الزمني والعناصر البصرية واللحظات الرئيسية."
+  prompt={`حلل هذا الفيديو: \${videoDescription}
 
-Provide a comprehensive analysis:
+قدم تحليلاً شاملاً:
 
-**1. Overview** (2-3 sentences)
-What is this video about? What's the main message or purpose?
+**1. نظرة عامة** (2-3 جمل)
+عن ماذا هذا الفيديو؟ ما الرسالة أو الغرض الرئيسي؟
 
-**2. Timeline of Key Moments**
-| Timestamp | Event | Significance |
-|-----------|-------|--------------|
+**2. الجدول الزمني للحظات الرئيسية**
+| الطابع الزمني | الحدث | الأهمية |
+|---------------|-------|---------|
 | 0:00 | ... | ... |
 
-**3. Visual Analysis**
-- Setting/Location: Where does this take place?
-- People: Who appears? What are they doing?
-- Objects: Key items or props featured
-- Visual style: Quality, editing, graphics used
+**3. التحليل البصري**
+- المكان/الموقع: أين يحدث هذا؟
+- الأشخاص: من يظهر؟ ماذا يفعلون؟
+- الأشياء: العناصر أو الدعائم الرئيسية المعروضة
+- الأسلوب البصري: الجودة، التحرير، الرسومات المستخدمة
 
-**4. Audio Analysis**
-- Speech: Main points made (if any dialogue)
-- Music: Type, mood, how it's used
-- Sound effects: Notable audio elements
+**4. التحليل الصوتي**
+- الكلام: النقاط الرئيسية المطروحة (إذا كان هناك حوار)
+- الموسيقى: النوع، المزاج، كيفية استخدامها
+- المؤثرات الصوتية: العناصر الصوتية الملحوظة
 
-**5. Production Quality**
-- Video quality and editing
-- Pacing and structure
-- Effectiveness for its purpose
+**5. جودة الإنتاج**
+- جودة الفيديو والتحرير
+- الإيقاع والهيكل
+- الفعالية لغرضه
 
-**6. Target Audience**
-Who is this video made for? Does it serve them well?
+**6. الجمهور المستهدف**
+لمن صُنع هذا الفيديو؟ هل يخدمهم جيدًا؟
 
-**7. Key Takeaways**
-What should a viewer remember from this video?`}
+**7. النقاط الرئيسية**
+ما الذي يجب أن يتذكره المشاهد من هذا الفيديو؟`}
 />
 
-### Video Content Extraction
+### استخراج محتوى الفيديو
 
-For specific information extraction from videos, be precise about what you need.
+لاستخراج معلومات محددة من الفيديوهات، كن دقيقًا حول ما تحتاجه.
 
 <TryIt 
-  title="Video Data Extractor"
-  description="Extract specific information from videos with timestamps and structured output."
-  prompt={`Extract specific information from this video:
+  title="مستخرج بيانات الفيديو"
+  description="استخرج معلومات محددة من الفيديوهات مع الطوابع الزمنية والمخرجات المنظمة."
+  prompt={`استخرج معلومات محددة من هذا الفيديو:
 
-Video type: \${videoType}
-Video description: \${videoDescription}
+نوع الفيديو: \${videoType}
+وصف الفيديو: \${videoDescription}
 
-**Information to Extract**:
+**المعلومات المطلوب استخراجها**:
 1. \${extractItem1}
 2. \${extractItem2}
 3. \${extractItem3}
 
-**Output Format**:
+**تنسيق المخرجات**:
 {
-  "video_summary": "Brief description",
-  "duration": "estimated length",
+  "video_summary": "وصف موجز",
+  "duration": "الطول المقدر",
   "extracted_data": [
     {
       "timestamp": "MM:SS",
-      "item": "What was found",
-      "details": "Additional context",
-      "confidence": "high/medium/low"
+      "item": "ما تم العثور عليه",
+      "details": "سياق إضافي",
+      "confidence": "عالية/متوسطة/منخفضة"
     }
   ],
-  "items_not_found": ["List anything requested but not present"],
-  "additional_observations": "Anything relevant not explicitly requested"
+  "items_not_found": ["قائمة بأي شيء مطلوب لكنه غير موجود"],
+  "additional_observations": "أي شيء ذي صلة لم يُطلب صراحة"
 }`}
 />
 
-## Multimodal Combinations
+## التركيبات متعددة الوسائط
 
-The real power of multimodal AI emerges when you combine different types of input. These combinations enable analysis that would be impossible with any single modality.
+القوة الحقيقية للذكاء الاصطناعي متعدد الوسائط تظهر عندما تجمع أنواعًا مختلفة من المدخلات. هذه التركيبات تمكن من تحليل سيكون مستحيلاً مع وسيط واحد فقط.
 
-### Image + Text Verification
+### التحقق من الصورة + النص
 
-Check if images and their descriptions match—essential for e-commerce, content moderation, and quality assurance.
+تحقق مما إذا كانت الصور وأوصافها متطابقة—ضروري للتجارة الإلكترونية ومراقبة المحتوى وضمان الجودة.
 
 <TryIt 
-  title="Image-Text Alignment Checker"
-  description="Verify that images accurately represent their text descriptions and vice versa."
-  prompt={`Analyze this image and its accompanying text for alignment:
+  title="مدقق توافق الصورة والنص"
+  description="تحقق من أن الصور تمثل أوصافها النصية بدقة والعكس."
+  prompt={`حلل هذه الصورة ونصها المرافق للتوافق:
 
-**Image**: \${imageDescription}
-**Text Description**: "\${textDescription}"
+**الصورة**: \${imageDescription}
+**الوصف النصي**: "\${textDescription}"
 
-Evaluate:
+قيّم:
 
-**1. Accuracy Match**
-- Does the image show what the text describes?
-- Score: [1-10] with explanation
+**1. تطابق الدقة**
+- هل تُظهر الصورة ما يصفه النص؟
+- النتيجة: [1-10] مع التفسير
 
-**2. Text Claims vs. Visual Reality**
-| Claim in Text | Visible in Image? | Notes |
-|---------------|-------------------|-------|
-| ... | Yes/No/Partial | ... |
+**2. الادعاءات النصية مقابل الواقع البصري**
+| الادعاء في النص | مرئي في الصورة؟ | ملاحظات |
+|-----------------|------------------|---------|
+| ... | نعم/لا/جزئي | ... |
 
-**3. Visual Elements Not Mentioned**
-What's visible in the image but not described in the text?
+**3. العناصر البصرية غير المذكورة**
+ما هو المرئي في الصورة لكنه غير موصوف في النص؟
 
-**4. Text Claims Not Visible**
-What's described in text but can't be verified from the image?
+**4. الادعاءات النصية غير المرئية**
+ما هو الموصوف في النص لكن لا يمكن التحقق منه من الصورة؟
 
-**5. Recommendations**
-- For the text: [improvements to match image]
-- For the image: [improvements to match text]
+**5. التوصيات**
+- للنص: [تحسينات لمطابقة الصورة]
+- للصورة: [تحسينات لمطابقة النص]
 
-**6. Overall Assessment**
-Is this image-text pair trustworthy for \${purpose}?`}
+**6. التقييم العام**
+هل هذا الزوج من الصورة والنص موثوق به لـ \${purpose}؟`}
 />
 
-### Screenshot + Code Debugging
+### تصحيح الأخطاء بلقطة الشاشة + الكود
 
-One of the most powerful combinations for developers: seeing the visual bug alongside the code.
+أحد أقوى التركيبات للمطورين: رؤية الخلل البصري إلى جانب الكود.
 
 <TryIt 
-  title="Visual Bug Debugger"
-  description="Debug UI issues by analyzing both the visual output and the source code together."
-  prompt={`I have a UI bug. Here's what I see and my code:
+  title="مصحح الأخطاء البصرية"
+  description="صحح مشاكل واجهة المستخدم بتحليل كل من المخرجات البصرية والكود المصدري معًا."
+  prompt={`لدي خلل في واجهة المستخدم. إليك ما أراه والكود الخاص بي:
 
-**Screenshot Description**: \${screenshotDescription}
-**What's Wrong**: \${bugDescription}
-**Expected Behavior**: \${expectedBehavior}
+**وصف لقطة الشاشة**: \${screenshotDescription}
+**ما هو الخطأ**: \${bugDescription}
+**السلوك المتوقع**: \${expectedBehavior}
 
-**Relevant Code**:
+**الكود ذو الصلة**:
 \`\`\`\${language}
 \${code}
 \`\`\`
 
-Please help me:
+يرجى مساعدتي في:
 
-**1. Root Cause Analysis**
-- What in the code is causing this visual issue?
-- Which specific line(s) are responsible?
+**1. تحليل السبب الجذري**
+- ما في الكود يسبب هذه المشكلة البصرية؟
+- أي سطر (أسطر) مسؤول؟
 
-**2. Explanation**
-- Why does this code produce this visual result?
-- What's the underlying mechanism?
+**2. الشرح**
+- لماذا ينتج هذا الكود هذه النتيجة البصرية؟
+- ما هي الآلية الأساسية؟
 
-**3. The Fix**
+**3. الإصلاح**
 \`\`\`\${language}
-// Corrected code here
+// الكود المصحح هنا
 \`\`\`
 
-**4. Prevention**
-- How to avoid this type of bug in the future
-- Any related issues to check for`}
+**4. الوقاية**
+- كيفية تجنب هذا النوع من الأخطاء في المستقبل
+- أي مشاكل ذات صلة يجب التحقق منها`}
 />
 
-### Multi-Image Decision Making
+### صنع القرار متعدد الصور
 
-When choosing between options, structured comparison helps make better decisions.
+عند الاختيار بين الخيارات، المقارنة المنظمة تساعد في اتخاذ قرارات أفضل.
 
 <TryIt 
-  title="Visual Option Comparator"
-  description="Compare multiple images systematically against your criteria to make informed decisions."
-  prompt={`I'm choosing between these options for \${purpose}:
+  title="مقارن الخيارات البصرية"
+  description="قارن صورًا متعددة بشكل منهجي وفق معاييرك لاتخاذ قرارات مستنيرة."
+  prompt={`أنا أختار بين هذه الخيارات لـ \${purpose}:
 
-**Option A**: \${optionA}
-**Option B**: \${optionB}
-**Option C**: \${optionC}
+**الخيار أ**: \${optionA}
+**الخيار ب**: \${optionB}
+**الخيار ج**: \${optionC}
 
-**My Criteria** (in order of importance):
-1. \${criterion1} (weight: high)
-2. \${criterion2} (weight: medium)
-3. \${criterion3} (weight: low)
+**معاييري** (بترتيب الأهمية):
+1. \${criterion1} (الوزن: عالي)
+2. \${criterion2} (الوزن: متوسط)
+3. \${criterion3} (الوزن: منخفض)
 
-Provide:
+قدم:
 
-**Comparison Matrix**
-| Criterion | Option A | Option B | Option C |
-|-----------|----------|----------|----------|
-| \${criterion1} | Score + notes | ... | ... |
+**مصفوفة المقارنة**
+| المعيار | الخيار أ | الخيار ب | الخيار ج |
+|---------|----------|----------|----------|
+| \${criterion1} | النتيجة + ملاحظات | ... | ... |
 | \${criterion2} | ... | ... | ... |
 | \${criterion3} | ... | ... | ... |
 
-**Weighted Scores**
-- Option A: X/10
-- Option B: X/10
-- Option C: X/10
+**النتائج المرجحة**
+- الخيار أ: X/10
+- الخيار ب: X/10
+- الخيار ج: X/10
 
-**Recommendation**
-Based on your stated priorities, I recommend [Option] because...
+**التوصية**
+بناءً على أولوياتك المذكورة، أوصي بـ [الخيار] لأن...
 
-**Caveats**
-- If [condition], consider [alternative] instead
-- Watch out for [potential issue]`}
+**التحفظات**
+- إذا [الحالة]، فكر في [البديل] بدلاً من ذلك
+- احذر من [المشكلة المحتملة]`}
 />
 
-## Best Practices for Multimodal Prompts
+## أفضل الممارسات للأوامر متعددة الوسائط
 
-Getting great results from multimodal AI requires understanding both its capabilities and limitations.
+الحصول على نتائج رائعة من الذكاء الاصطناعي متعدد الوسائط يتطلب فهم قدراته وقيوده.
 
-### What Makes Multimodal Prompts Effective
-
-<InfoGrid items={[
-  { label: "Provide Context", description: "Tell the model what the media is and why you're analyzing it", example: "\"This is a product photo for our e-commerce site...\"", color: "green" },
-  { label: "Be Specific", description: "Ask about particular elements rather than general impressions", example: "\"Focus on the pricing table in the top-right corner\"", color: "green" },
-  { label: "Reference Locations", description: "Point to specific areas using spatial language", example: "\"In the bottom-left quadrant...\"", color: "green" },
-  { label: "State Your Goal", description: "Explain what you'll use the analysis for", example: "\"I need to decide if this image works for our mobile app\"", color: "green" }
-]} />
-
-### Common Pitfalls to Avoid
+### ما الذي يجعل الأوامر متعددة الوسائط فعالة
 
 <InfoGrid items={[
-  { label: "Assuming Perfect Vision", description: "Models may miss small details, especially in low-resolution images", example: "Don't ask about 8pt text in a compressed screenshot", color: "red" },
-  { label: "Expecting Perfect OCR", description: "Handwriting, unusual fonts, and complex layouts can cause errors", example: "Verify extracted text from receipts and forms", color: "red" },
-  { label: "Ignoring Content Policies", description: "Models have restrictions on certain types of content", example: "Won't identify specific individuals or analyze inappropriate content", color: "red" },
-  { label: "Skipping Verification", description: "Always verify critical information extracted from media", example: "Double-check numbers, dates, and names from document extraction", color: "red" }
+  { label: "قدم السياق", description: "أخبر النموذج ما هي الوسائط ولماذا تحللها", example: "\"هذه صورة منتج لموقع التجارة الإلكترونية الخاص بنا...\"", color: "green" },
+  { label: "كن محددًا", description: "اسأل عن عناصر معينة بدلاً من الانطباعات العامة", example: "\"ركز على جدول الأسعار في الزاوية العلوية اليمنى\"", color: "green" },
+  { label: "أشر إلى المواقع", description: "حدد مناطق معينة باستخدام اللغة المكانية", example: "\"في الربع السفلي الأيسر...\"", color: "green" },
+  { label: "اذكر هدفك", description: "اشرح لماذا ستستخدم التحليل", example: "\"أحتاج أن أقرر إذا كانت هذه الصورة تصلح لتطبيقنا المحمول\"", color: "green" }
 ]} />
 
-### Handling Limitations Gracefully
+### المزالق الشائعة التي يجب تجنبها
+
+<InfoGrid items={[
+  { label: "افتراض الرؤية المثالية", description: "قد تفوت النماذج التفاصيل الصغيرة، خاصة في الصور منخفضة الدقة", example: "لا تسأل عن نص 8 نقاط في لقطة شاشة مضغوطة", color: "red" },
+  { label: "توقع OCR مثالي", description: "الكتابة اليدوية والخطوط غير المعتادة والتخطيطات المعقدة قد تسبب أخطاء", example: "تحقق من النص المستخرج من الإيصالات والنماذج", color: "red" },
+  { label: "تجاهل سياسات المحتوى", description: "النماذج لها قيود على أنواع معينة من المحتوى", example: "لن تحدد أفرادًا محددين أو تحلل محتوى غير لائق", color: "red" },
+  { label: "تخطي التحقق", description: "تحقق دائمًا من المعلومات الحرجة المستخرجة من الوسائط", example: "تحقق مرتين من الأرقام والتواريخ والأسماء من استخراج المستندات", color: "red" }
+]} />
+
+### التعامل مع القيود بأناقة
 
 <TryIt 
-  title="Uncertainty-Aware Image Analysis"
-  description="This prompt explicitly handles cases where the model can't see clearly or is uncertain."
-  prompt={`Analyze this image: \${imageDescription}
+  title="تحليل الصور مع الوعي بعدم اليقين"
+  description="هذا الأمر يتعامل صراحة مع الحالات التي لا يستطيع فيها النموذج الرؤية بوضوح أو غير متأكد."
+  prompt={`حلل هذه الصورة: \${imageDescription}
 
-**Instructions for Handling Uncertainty**:
+**تعليمات للتعامل مع عدم اليقين**:
 
-IF YOU CAN'T SEE SOMETHING CLEARLY:
-- Don't guess or make up details
-- Say: "I can see [what's visible] but cannot clearly make out [unclear element]"
-- Suggest what additional information would help
+إذا لم تستطع رؤية شيء بوضوح:
+- لا تخمن أو تختلق تفاصيل
+- قل: "أستطيع رؤية [ما هو مرئي] لكن لا أستطيع تمييز [العنصر غير الواضح] بوضوح"
+- اقترح ما المعلومات الإضافية التي ستساعد
 
-IF CONTENT SEEMS RESTRICTED:
-- Explain what you can and cannot analyze
-- Focus on permitted aspects of the analysis
+إذا بدا المحتوى مقيدًا:
+- اشرح ما يمكنك وما لا يمكنك تحليله
+- ركز على الجوانب المسموح بها من التحليل
 
-IF ASKED ABOUT PEOPLE:
-- Describe actions, positions, and general characteristics
-- Do not attempt to identify specific individuals
-- Focus on: number of people, activities, expressions, attire
+إذا سُئلت عن أشخاص:
+- صف الأفعال والمواقع والخصائص العامة
+- لا تحاول تحديد أفراد محددين
+- ركز على: عدد الأشخاص، الأنشطة، التعبيرات، الملابس
 
-**Your Analysis**:
-[Proceed with analysis, applying these guidelines]`}
+**تحليلك**:
+[تابع التحليل، مطبقًا هذه الإرشادات]`}
 />
 
 <Quiz 
-  question="Why does prompting matter MORE for multimodal models than for text-only models?"
+  question="لماذا صياغة الأوامر أكثر أهمية للنماذج متعددة الوسائط من النماذج النصية فقط؟"
   options={[
-    "Multimodal models are less intelligent and need more help",
-    "Images and audio are inherently ambiguous—the AI needs context to know what aspects matter",
-    "Multimodal models can only process one type of input at a time",
-    "Text prompts don't work with multimodal models"
+    "النماذج متعددة الوسائط أقل ذكاءً وتحتاج المزيد من المساعدة",
+    "الصور والصوت غامضة بطبيعتها—الذكاء الاصطناعي يحتاج السياق ليعرف أي الجوانب مهمة",
+    "النماذج متعددة الوسائط يمكنها معالجة نوع واحد فقط من المدخلات في كل مرة",
+    "الأوامر النصية لا تعمل مع النماذج متعددة الوسائط"
   ]}
   correctIndex={1}
-  explanation="When you look at an image, you instantly know what's important based on your goals. The AI doesn't have this context—a photo of a wall crack could be an engineering concern, an artistic texture, or irrelevant background. Your prompt determines how the AI interprets and focuses on the media you provide."
+  explanation="عندما تنظر إلى صورة، تعرف فورًا ما هو المهم بناءً على أهدافك. الذكاء الاصطناعي لا يملك هذا السياق—صورة لشق في الجدار يمكن أن تكون مشكلة هندسية، أو نسيج فني، أو خلفية غير ذات صلة. أمرك يحدد كيف يفسر الذكاء الاصطناعي الوسائط التي تقدمها ويركز عليها."
 />

@@ -1,343 +1,343 @@
-Every great prompt shares common structural elements. Understanding these components allows you to construct prompts systematically rather than through trial and error.
+Elke goede prompt deelt gemeenschappelijke structurele elementen. Het begrijpen van deze componenten stelt je in staat om prompts systematisch te construeren in plaats van door trial-and-error.
 
-<Callout type="tip" title="The Building Blocks">
-Think of these components like LEGO bricks. You don't need all of them for every prompt, but knowing what's available helps you build exactly what you need.
+<Callout type="tip" title="De Bouwstenen">
+Beschouw deze componenten als LEGO-blokjes. Je hebt ze niet allemaal nodig voor elke prompt, maar weten wat beschikbaar is helpt je precies te bouwen wat je nodig hebt.
 </Callout>
 
-## The Core Components
+## De Kerncomponenten
 
-An effective prompt typically includes some or all of these elements:
+Een effectieve prompt bevat doorgaans enkele of al deze elementen:
 
 <PromptBreakdown parts={[
-  { label: "Role", text: "You are a senior software engineer" },
-  { label: "Context", text: "working on a React application." },
-  { label: "Task", text: "Review this code for bugs" },
-  { label: "Constraints", text: "and focus only on security issues." },
-  { label: "Format", text: "Return findings as a numbered list." },
-  { label: "Example", text: "Like: 1. SQL injection risk on line 42" }
+  { label: "Rol", text: "Je bent een senior software engineer" },
+  { label: "Context", text: "die werkt aan een React-applicatie." },
+  { label: "Taak", text: "Beoordeel deze code op bugs" },
+  { label: "Beperkingen", text: "en focus alleen op beveiligingsproblemen." },
+  { label: "Formaat", text: "Geef bevindingen als genummerde lijst." },
+  { label: "Voorbeeld", text: "Zoals: 1. SQL-injectierisico op regel 42" }
 ]} />
 
-Let's examine each component in detail.
+Laten we elk component in detail bekijken.
 
-## 1. Role / Persona
+## 1. Rol / Persona
 
-Setting a role focuses the model's responses through the lens of a specific expertise or perspective.
-
-<Compare 
-  before={{ label: "Without Role", content: "Explain quantum computing." }}
-  after={{ label: "With Role", content: "You are a physics professor who specializes in making complex topics accessible to beginners. Explain quantum computing." }}
-/>
-
-The role primes the model to:
-- Use appropriate vocabulary
-- Apply relevant expertise
-- Maintain a consistent perspective
-- Consider the audience appropriately
-
-### Effective Role Patterns
-
-```
-"You are a [profession] with [X years] of experience in [specialty]"
-"Act as a [role] who is [characteristic]"
-"You are an expert [field] helping a [audience type]"
-```
-
-## 2. Context / Background
-
-Context provides the information the model needs to understand your situation. Remember: the model knows nothing about you, your project, or your goals unless you tell it.
+Het instellen van een rol richt de reacties van het model door de lens van een specifieke expertise of perspectief.
 
 <Compare 
-  before={{ label: "Weak Context", content: "Fix this bug in my code." }}
-  after={{ label: "Strong Context", content: "I'm building a Node.js REST API using Express.js. The API handles user authentication with JWT tokens. When a user tries to access a protected route, they're getting a 403 error even with a valid token. Here's the relevant code: [code]" }}
+  before={{ label: "Zonder Rol", content: "Leg quantumcomputing uit." }}
+  after={{ label: "Met Rol", content: "Je bent een natuurkundeprofessor die gespecialiseerd is in het toegankelijk maken van complexe onderwerpen voor beginners. Leg quantumcomputing uit." }}
 />
 
-### What to Include in Context
+De rol bereidt het model voor om:
+- Passend vocabulaire te gebruiken
+- Relevante expertise toe te passen
+- Een consistent perspectief te behouden
+- Het publiek op de juiste manier te benaderen
 
-- **Project details** — Technology stack, architecture, constraints
-- **Current state** — What you've tried, what's working, what isn't
-- **Goals** — What you're ultimately trying to achieve
-- **Constraints** — Time limits, technical requirements, style guides
+### Effectieve Rolpatronen
 
-## 3. Task / Instruction
+```
+"Je bent een [beroep] met [X jaar] ervaring in [specialiteit]"
+"Gedraag je als een [rol] die [kenmerk] is"
+"Je bent een expert [vakgebied] die een [type publiek] helpt"
+```
 
-The task is the heart of your prompt—what you want the model to do. Be specific and unambiguous.
+## 2. Context / Achtergrond
 
-### The Specificity Spectrum
+Context biedt de informatie die het model nodig heeft om jouw situatie te begrijpen. Onthoud: het model weet niets over jou, je project of je doelen tenzij je het vertelt.
+
+<Compare 
+  before={{ label: "Zwakke Context", content: "Los deze bug in mijn code op." }}
+  after={{ label: "Sterke Context", content: "Ik bouw een Node.js REST API met Express.js. De API handelt gebruikersauthenticatie af met JWT-tokens. Wanneer een gebruiker een beveiligde route probeert te openen, krijgt deze een 403-fout, zelfs met een geldig token. Hier is de relevante code: [code]" }}
+/>
+
+### Wat op te nemen in Context
+
+- **Projectdetails** — Technologiestack, architectuur, beperkingen
+- **Huidige status** — Wat je hebt geprobeerd, wat werkt, wat niet
+- **Doelen** — Wat je uiteindelijk wilt bereiken
+- **Beperkingen** — Tijdslimieten, technische vereisten, stijlrichtlijnen
+
+## 3. Taak / Instructie
+
+De taak is het hart van je prompt—wat je wilt dat het model doet. Wees specifiek en ondubbelzinnig.
+
+### Het Specificatiespectrum
 
 <SpecificitySpectrum levels={[
-  { level: "Vague", text: "Help me with this essay" },
-  { level: "Better", text: "Edit this essay" },
-  { level: "Good", text: "Edit this essay for grammar and clarity" },
-  { level: "Best", text: "Edit this essay for grammar and clarity, maintaining the original tone but reducing wordiness by 20%" }
+  { level: "Vaag", text: "Help me met dit essay" },
+  { level: "Beter", text: "Bewerk dit essay" },
+  { level: "Goed", text: "Bewerk dit essay op grammatica en helderheid" },
+  { level: "Best", text: "Bewerk dit essay op grammatica en helderheid, behoud de originele toon maar verminder de woordrijkheid met 20%" }
 ]} />
 
-### Action Verbs That Work Well
+### Actiewerkwoorden die Goed Werken
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Creation</span>
-    <span className="text-muted-foreground">Write, Create, Generate, Compose, Design</span>
+    <span className="font-semibold min-w-32">Creatie</span>
+    <span className="text-muted-foreground">Schrijf, Creëer, Genereer, Componeer, Ontwerp</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Analysis</span>
-    <span className="text-muted-foreground">Analyze, Evaluate, Compare, Assess, Review</span>
+    <span className="font-semibold min-w-32">Analyse</span>
+    <span className="text-muted-foreground">Analyseer, Evalueer, Vergelijk, Beoordeel, Review</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Transformation</span>
-    <span className="text-muted-foreground">Convert, Translate, Reformat, Summarize, Expand</span>
+    <span className="font-semibold min-w-32">Transformatie</span>
+    <span className="text-muted-foreground">Converteer, Vertaal, Herformatteer, Vat samen, Breid uit</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Explanation</span>
-    <span className="text-muted-foreground">Explain, Describe, Clarify, Define, Illustrate</span>
+    <span className="font-semibold min-w-32">Uitleg</span>
+    <span className="text-muted-foreground">Leg uit, Beschrijf, Verduidelijk, Definieer, Illustreer</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Problem-solving</span>
-    <span className="text-muted-foreground">Solve, Debug, Fix, Optimize, Improve</span>
+    <span className="font-semibold min-w-32">Probleemoplossing</span>
+    <span className="text-muted-foreground">Los op, Debug, Repareer, Optimaliseer, Verbeter</span>
   </div>
 </div>
 
-## 4. Constraints / Rules
+## 4. Beperkingen / Regels
 
-Constraints bound the model's output. They prevent common issues and ensure relevance.
+Beperkingen begrenzen de output van het model. Ze voorkomen veelvoorkomende problemen en zorgen voor relevantie.
 
-### Types of Constraints
+### Soorten Beperkingen
 
-**Length constraints:**
+**Lengtebeperkingen:**
 ```
-"Keep your response under 200 words"
-"Provide exactly 5 suggestions"
-"Write 3-4 paragraphs"
-```
-
-**Content constraints:**
-```
-"Do not include any code examples"
-"Focus only on the technical aspects"
-"Avoid marketing language"
+"Houd je antwoord onder 200 woorden"
+"Geef precies 5 suggesties"
+"Schrijf 3-4 alinea's"
 ```
 
-**Style constraints:**
+**Inhoudsbeperkingen:**
 ```
-"Use a formal, academic tone"
-"Write as if speaking to a 10-year-old"
-"Be direct and avoid hedging language"
-```
-
-**Scope constraints:**
-```
-"Only consider options available in Python 3.10+"
-"Limit suggestions to free tools"
-"Focus on solutions that don't require additional dependencies"
+"Voeg geen codevoorbeelden toe"
+"Focus alleen op de technische aspecten"
+"Vermijd marketingtaal"
 ```
 
-## 5. Output Format
-
-Specifying the output format ensures you get responses in a usable structure.
-
-### Common Formats
-
-**Lists:**
+**Stijlbeperkingen:**
 ```
-"Return as a bulleted list"
-"Provide a numbered list of steps"
+"Gebruik een formele, academische toon"
+"Schrijf alsof je tegen een 10-jarige praat"
+"Wees direct en vermijd vage taal"
 ```
 
-**Structured data:**
+**Scopebeperkingen:**
 ```
-"Return as JSON with keys: title, description, priority"
-"Format as a markdown table with columns: Feature, Pros, Cons"
-```
-
-**Specific structures:**
-```
-"Structure your response as:
- ## Summary
- ## Key Points
- ## Recommendations"
+"Overweeg alleen opties beschikbaar in Python 3.10+"
+"Beperk suggesties tot gratis tools"
+"Focus op oplossingen die geen extra dependencies vereisen"
 ```
 
-### JSON Output Example
+## 5. Outputformaat
+
+Het specificeren van het outputformaat zorgt ervoor dat je antwoorden krijgt in een bruikbare structuur.
+
+### Veelvoorkomende Formaten
+
+**Lijsten:**
+```
+"Geef als een opsommingslijst"
+"Geef een genummerde lijst van stappen"
+```
+
+**Gestructureerde data:**
+```
+"Geef als JSON met sleutels: title, description, priority"
+"Formatteer als een markdown-tabel met kolommen: Functie, Voordelen, Nadelen"
+```
+
+**Specifieke structuren:**
+```
+"Structureer je antwoord als:
+ ## Samenvatting
+ ## Belangrijkste Punten
+ ## Aanbevelingen"
+```
+
+### JSON Output Voorbeeld
 
 ```
-Analyze this customer review and return JSON:
+Analyseer deze klantreview en geef JSON terug:
 {
   "sentiment": "positive" | "negative" | "neutral",
-  "topics": ["array of main topics"],
+  "topics": ["array van hoofdonderwerpen"],
   "rating_prediction": 1-5,
-  "key_phrases": ["notable phrases"]
+  "key_phrases": ["opvallende zinnen"]
 }
 
-Review: "The product arrived quickly and works great, but 
-the instructions were confusing."
+Review: "Het product kwam snel aan en werkt geweldig, maar
+de instructies waren verwarrend."
 ```
 
-## 6. Examples (Few-Shot Learning)
+## 6. Voorbeelden (Few-Shot Learning)
 
-Examples are the most powerful way to show the model exactly what you want.
+Voorbeelden zijn de krachtigste manier om het model precies te laten zien wat je wilt.
 
-### One-Shot Example
-
-```
-Convert these sentences to past tense.
-
-Example:
-Input: "She walks to the store"
-Output: "She walked to the store"
-
-Now convert:
-Input: "They run every morning"
-```
-
-### Few-Shot Example
+### One-Shot Voorbeeld
 
 ```
-Classify these support tickets by urgency.
+Zet deze zinnen om naar de verleden tijd.
 
-Examples:
-"My account was hacked" → Critical
-"How do I change my password?" → Low
-"Payment failed but I was charged" → High
+Voorbeeld:
+Input: "Zij loopt naar de winkel"
+Output: "Zij liep naar de winkel"
 
-Classify: "The app crashes when I open settings"
+Zet nu om:
+Input: "Zij rennen elke ochtend"
 ```
 
-## Putting It All Together
+### Few-Shot Voorbeeld
 
-Here's a complete prompt using all components:
+```
+Classificeer deze supporttickets op urgentie.
+
+Voorbeelden:
+"Mijn account is gehackt" → Kritiek
+"Hoe verander ik mijn wachtwoord?" → Laag
+"Betaling mislukt maar ik ben wel belast" → Hoog
+
+Classificeer: "De app crasht wanneer ik instellingen open"
+```
+
+## Alles Samenvoegen
+
+Hier is een complete prompt met alle componenten:
 
 <TryIt 
-  title="Complete Prompt Example"
-  description="This prompt demonstrates all six components working together. Try it to see how structured prompts produce professional results."
-  prompt={`# Role
-You are a senior technical writer with 10 years of experience creating developer documentation.
+  title="Compleet Promptvoorbeeld"
+  description="Deze prompt demonstreert alle zes componenten die samenwerken. Probeer het om te zien hoe gestructureerde prompts professionele resultaten opleveren."
+  prompt={`# Rol
+Je bent een senior technisch schrijver met 10 jaar ervaring in het maken van ontwikkelaarsdocumentatie.
 
 # Context
-I'm documenting a REST API for a payment processing service. The audience is developers integrating our API into their applications. They have intermediate programming knowledge but may be new to payment processing concepts.
+Ik documenteer een REST API voor een betalingsverwerkingsservice. Het publiek bestaat uit ontwikkelaars die onze API integreren in hun applicaties. Ze hebben gemiddelde programmeerkennis maar kunnen nieuw zijn met betalingsverwerkingsconcepten.
 
-# Task
-Write documentation for the following API endpoint that creates a new payment intent.
+# Taak
+Schrijf documentatie voor het volgende API-endpoint dat een nieuwe betalingsintentie aanmaakt.
 
-# Constraints
-- Use clear, concise language
-- Include common error scenarios
-- Do not include implementation details about our backend
-- Assume readers understand HTTP and JSON basics
+# Beperkingen
+- Gebruik duidelijke, beknopte taal
+- Voeg veelvoorkomende foutscenario's toe
+- Voeg geen implementatiedetails over onze backend toe
+- Ga ervan uit dat lezers HTTP en JSON-basis begrijpen
 
-# Output Format
-Structure the documentation as:
-1. Endpoint Overview (2-3 sentences)
-2. Request (method, URL, headers, body with example)
-3. Response (success and error examples)
-4. Code Example (in JavaScript/Node.js)
+# Outputformaat
+Structureer de documentatie als:
+1. Endpoint Overzicht (2-3 zinnen)
+2. Request (methode, URL, headers, body met voorbeeld)
+3. Response (succes- en foutvoorbeelden)
+4. Codevoorbeeld (in JavaScript/Node.js)
 
 # Endpoint Details
 POST /v1/payments/intents
 Body: { "amount": 1000, "currency": "usd", "description": "Order #1234" }`}
 />
 
-## The Minimal Effective Prompt
+## De Minimaal Effectieve Prompt
 
-Not every prompt needs all components. For simple tasks, a clear instruction may suffice:
+Niet elke prompt heeft alle componenten nodig. Voor eenvoudige taken volstaat een duidelijke instructie:
 
 ```
-Translate "Hello, how are you?" to Spanish.
+Vertaal "Hello, how are you?" naar het Spaans.
 ```
 
-Use additional components when:
-- The task is complex or ambiguous
-- You need specific formatting
-- Results aren't matching expectations
-- Consistency across multiple queries matters
+Gebruik extra componenten wanneer:
+- De taak complex of dubbelzinnig is
+- Je specifieke opmaak nodig hebt
+- Resultaten niet aan verwachtingen voldoen
+- Consistentie over meerdere queries belangrijk is
 
-## Common Prompt Patterns
+## Veelvoorkomende Promptpatronen
 
-These frameworks give you a simple checklist to follow when writing prompts. Click on each step to see an example.
+Deze frameworks geven je een eenvoudige checklist om te volgen bij het schrijven van prompts. Klik op elke stap om een voorbeeld te zien.
 
 <CRISPEFramework />
 
 <RTFFramework />
 
-## Summary
+## Samenvatting
 
-Effective prompts are constructed, not discovered. By understanding and applying these structural components, you can:
+Effectieve prompts worden geconstrueerd, niet ontdekt. Door deze structurele componenten te begrijpen en toe te passen, kun je:
 
-- Get better results on the first try
-- Debug prompts that aren't working
-- Create reusable prompt templates
-- Communicate your intentions clearly
+- Betere resultaten krijgen bij de eerste poging
+- Prompts debuggen die niet werken
+- Herbruikbare prompttemplates maken
+- Je intenties duidelijk communiceren
 
 <Quiz 
-  question="Which component has the biggest impact on response quality?"
+  question="Welk component heeft de grootste impact op de kwaliteit van het antwoord?"
   options={[
-    "Always the role/persona",
-    "Always the output format",
-    "It depends on the task",
-    "The length of the prompt"
+    "Altijd de rol/persona",
+    "Altijd het outputformaat",
+    "Het hangt af van de taak",
+    "De lengte van de prompt"
   ]}
   correctIndex={2}
-  explanation="Different tasks benefit from different components. A simple translation needs minimal structure, while a complex analysis benefits from detailed role, context, and format specifications."
+  explanation="Verschillende taken profiteren van verschillende componenten. Een eenvoudige vertaling heeft minimale structuur nodig, terwijl een complexe analyse baat heeft bij gedetailleerde rol-, context- en formaatspecificaties."
 />
 
 <TryIt 
-  prompt={`You are a senior product manager with 10 years of experience in SaaS products.
+  prompt={`Je bent een senior productmanager met 10 jaar ervaring in SaaS-producten.
 
-Context: I'm building a task management app for remote teams. We're a small startup with limited engineering resources.
+Context: Ik bouw een taakbeheer-app voor remote teams. We zijn een kleine startup met beperkte engineeringcapaciteit.
 
-Task: Suggest 3 features we should prioritize for our MVP.
+Taak: Stel 3 functies voor die we moeten prioriteren voor onze MVP.
 
-Constraints:
-- Features must be implementable by a team of 2 developers in 4 weeks
-- Focus on what differentiates us from Trello and Asana
+Beperkingen:
+- Functies moeten implementeerbaar zijn door een team van 2 developers in 4 weken
+- Focus op wat ons onderscheidt van Trello en Asana
 
-Format: For each feature, provide:
-1. Feature name
-2. One-sentence description  
-3. Why it matters for remote teams`}
-  description="This prompt uses all six components. Try it and see how the structured approach produces focused, actionable results."
+Formaat: Geef voor elke functie:
+1. Functienaam
+2. Beschrijving in één zin
+3. Waarom het belangrijk is voor remote teams`}
+  description="Deze prompt gebruikt alle zes componenten. Probeer het en zie hoe de gestructureerde aanpak gerichte, bruikbare resultaten oplevert."
 />
 
-## Build Your Own Prompt
+## Bouw Je Eigen Prompt
 
-Now it's your turn! Use this interactive prompt builder to construct your own prompt using the components you've learned:
+Nu ben jij aan de beurt! Gebruik deze interactieve promptbouwer om je eigen prompt te construeren met de componenten die je hebt geleerd:
 
 <PromptBuilder 
-  title="Interactive Prompt Builder"
-  description="Fill in each section to build a complete, well-structured prompt"
+  title="Interactieve Promptbouwer"
+  description="Vul elke sectie in om een complete, goed gestructureerde prompt te bouwen"
 />
 
 <PromptChallenge
-  title="Chapter Challenge: Build a Code Review Prompt"
-  task="Write a prompt that asks an AI to review code for security vulnerabilities. Your prompt should be specific enough to get actionable feedback."
+  title="Hoofdstuk Uitdaging: Bouw een Code Review Prompt"
+  task="Schrijf een prompt die een AI vraagt om code te reviewen op beveiligingskwetsbaarheden. Je prompt moet specifiek genoeg zijn om bruikbare feedback te krijgen."
   criteria={[
-    "Includes a clear role or expertise level",
-    "Specifies what type of code review (security focus)",
-    "Defines the expected output format",
-    "Sets appropriate constraints or scope"
+    "Bevat een duidelijke rol of expertiseniveau",
+    "Specificeert welk type code review (beveiligingsfocus)",
+    "Definieert het verwachte outputformaat",
+    "Stelt passende beperkingen of scope in"
   ]}
   hints={[
-    "Think about what expertise a code reviewer should have",
-    "Be specific about what security issues to look for",
-    "Consider asking for a structured response format"
+    "Denk na over welke expertise een code reviewer moet hebben",
+    "Wees specifiek over welke beveiligingsproblemen te zoeken",
+    "Overweeg om een gestructureerd antwoordformaat te vragen"
   ]}
-  exampleSolution={`You are a senior security engineer with expertise in web application security and OWASP Top 10 vulnerabilities.
+  exampleSolution={`Je bent een senior security engineer met expertise in webapplicatiebeveiliging en OWASP Top 10 kwetsbaarheden.
 
-Task: Review the following code for security vulnerabilities.
+Taak: Review de volgende code op beveiligingskwetsbaarheden.
 
-Focus on:
-- SQL injection risks
-- XSS vulnerabilities  
-- Authentication/authorization issues
-- Input validation gaps
+Focus op:
+- SQL-injectierisico's
+- XSS-kwetsbaarheden
+- Authenticatie/autorisatieproblemen
+- Input validatie hiaten
 
-Output format:
-For each issue found:
-1. Line number(s)
-2. Vulnerability type
-3. Risk level (High/Medium/Low)
-4. Recommended fix
+Outputformaat:
+Voor elk gevonden probleem:
+1. Regelnummer(s)
+2. Type kwetsbaarheid
+3. Risiconiveau (Hoog/Gemiddeld/Laag)
+4. Aanbevolen oplossing
 
-[CODE TO REVIEW]`}
+[CODE OM TE REVIEWEN]`}
   difficulty="intermediate"
 />
 
-In the next chapter, we'll explore the core principles that guide prompt construction decisions.
+In het volgende hoofdstuk verkennen we de kernprincipes die beslissingen over promptconstructie sturen.

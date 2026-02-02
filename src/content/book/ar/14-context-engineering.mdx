@@ -1,287 +1,287 @@
-Understanding context is essential for building AI applications that actually work. This chapter covers everything you need to know about giving AI the right information at the right time.
+فهم السياق أمر ضروري لبناء تطبيقات الذكاء الاصطناعي التي تعمل فعلياً. يغطي هذا الفصل كل ما تحتاج معرفته حول إعطاء الذكاء الاصطناعي المعلومات الصحيحة في الوقت المناسب.
 
-<Callout type="info" title="Why Context Matters">
-AI models are stateless. They don't remember past conversations. Every time you send a message, you need to include everything the AI needs to know. This is called "context engineering."
+<Callout type="info" title="لماذا يهم السياق">
+نماذج الذكاء الاصطناعي عديمة الحالة. فهي لا تتذكر المحادثات السابقة. في كل مرة ترسل فيها رسالة، تحتاج إلى تضمين كل ما يحتاج الذكاء الاصطناعي لمعرفته. هذا ما يُسمى "هندسة السياق".
 </Callout>
 
-## What is Context?
+## ما هو السياق؟
 
-Context is all the information you give to AI alongside your question. Think of it like this:
+السياق هو كل المعلومات التي تقدمها للذكاء الاصطناعي إلى جانب سؤالك. فكر فيه بهذه الطريقة:
 
 <Compare 
-  before={{ label: "No Context", content: "What's the status?" }}
-  after={{ label: "With Context", content: "You are a project manager assistant. The user is working on Project Alpha, which is due Friday. The last update was: 'Backend complete, frontend 80% done.'\n\nUser: What's the status?" }}
+  before={{ label: "بدون سياق", content: "ما هي الحالة؟" }}
+  after={{ label: "مع سياق", content: "أنت مساعد مدير مشروع. المستخدم يعمل على مشروع ألفا المستحق يوم الجمعة. آخر تحديث كان: 'الواجهة الخلفية مكتملة، الواجهة الأمامية 80% جاهزة.'\n\nالمستخدم: ما هي الحالة؟" }}
 />
 
-Without context, the AI has no idea what "status" you're asking about. With context, it can give a useful answer.
+بدون سياق، لا يعرف الذكاء الاصطناعي عن أي "حالة" تسأل. مع السياق، يمكنه إعطاء إجابة مفيدة.
 
-### The Context Window
+### نافذة السياق
 
-Remember from earlier chapters: AI has a limited "context window" - the maximum amount of text it can see at once. This includes:
+تذكر من الفصول السابقة: الذكاء الاصطناعي لديه "نافذة سياق" محدودة - الحد الأقصى من النص الذي يمكنه رؤيته في وقت واحد. هذا يشمل:
 
 <InfoGrid items={[
-  { label: "System Prompt", description: "Instructions that define AI behavior", color: "purple" },
-  { label: "Conversation History", description: "Previous messages in this chat", color: "blue" },
-  { label: "Retrieved Information", description: "Documents, data, or knowledge fetched for this query", color: "green" },
-  { label: "Current Query", description: "The user's actual question", color: "amber" },
-  { label: "AI Response", description: "The answer (also counts toward the limit!)", color: "rose" },
+  { label: "موجه النظام", description: "التعليمات التي تحدد سلوك الذكاء الاصطناعي", color: "purple" },
+  { label: "سجل المحادثة", description: "الرسائل السابقة في هذه المحادثة", color: "blue" },
+  { label: "المعلومات المسترجعة", description: "المستندات أو البيانات أو المعرفة المُجلبة لهذا الاستعلام", color: "green" },
+  { label: "الاستعلام الحالي", description: "سؤال المستخدم الفعلي", color: "amber" },
+  { label: "استجابة الذكاء الاصطناعي", description: "الإجابة (تُحسب أيضاً ضمن الحد!)", color: "rose" },
 ]} />
 
-## AI is Stateless
+## الذكاء الاصطناعي عديم الحالة
 
-<Callout type="warning" title="Important Concept">
-AI doesn't remember anything between conversations. Every API call starts fresh. If you want the AI to "remember" something, YOU have to include it in the context every time.
+<Callout type="warning" title="مفهوم مهم">
+الذكاء الاصطناعي لا يتذكر أي شيء بين المحادثات. كل استدعاء API يبدأ من الصفر. إذا أردت أن "يتذكر" الذكاء الاصطناعي شيئاً، عليك أنت تضمينه في السياق في كل مرة.
 </Callout>
 
-This is why chatbots send your entire conversation history with each message. It's not that the AI remembers - it's that the app re-sends everything.
+لهذا السبب ترسل روبوتات المحادثة سجل محادثتك بالكامل مع كل رسالة. ليس أن الذكاء الاصطناعي يتذكر - بل أن التطبيق يُعيد إرسال كل شيء.
 
-<TryIt compact prompt={`Pretend this is a new conversation with no history.
+<TryIt compact prompt={`تظاهر أن هذه محادثة جديدة بدون سجل.
 
-What did I just ask you about?`} />
+عن ماذا سألتك للتو؟`} />
 
-The AI will say it doesn't know because it truly doesn't have access to any previous context.
+سيقول الذكاء الاصطناعي أنه لا يعرف لأنه حقاً لا يملك وصولاً لأي سياق سابق.
 
-## RAG: Retrieval-Augmented Generation
+## RAG: التوليد المعزز بالاسترجاع
 
-RAG is a technique for giving AI access to knowledge it wasn't trained on. Instead of trying to fit everything into the AI's training, you:
+RAG هي تقنية لمنح الذكاء الاصطناعي وصولاً للمعرفة التي لم يُدرَّب عليها. بدلاً من محاولة وضع كل شيء في تدريب الذكاء الاصطناعي، أنت:
 
-1. **Store** your documents in a searchable database
-2. **Search** for relevant documents when a user asks a question
-3. **Retrieve** the most relevant pieces
-4. **Augment** your prompt with those pieces
-5. **Generate** an answer using that context
+1. **تخزّن** مستنداتك في قاعدة بيانات قابلة للبحث
+2. **تبحث** عن المستندات ذات الصلة عندما يسأل المستخدم سؤالاً
+3. **تسترجع** القطع الأكثر صلة
+4. **تُعزز** موجهك بتلك القطع
+5. **تُولّد** إجابة باستخدام ذلك السياق
 
 <div className="my-6 p-4 border rounded-lg bg-muted/30">
-  <p className="font-semibold mb-3">How RAG Works:</p>
+  <p className="font-semibold mb-3">كيف يعمل RAG:</p>
   <div className="flex flex-col gap-2 text-sm">
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">1</span>
-      <span>User asks: "What's our refund policy?"</span>
+      <span>المستخدم يسأل: "ما هي سياسة الاسترداد لدينا؟"</span>
     </div>
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">2</span>
-      <span>System searches your documents for "refund policy"</span>
+      <span>النظام يبحث في مستنداتك عن "سياسة الاسترداد"</span>
     </div>
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">3</span>
-      <span>Finds relevant section from your policy document</span>
+      <span>يجد القسم ذي الصلة من وثيقة السياسة الخاصة بك</span>
     </div>
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 font-bold">4</span>
-      <span>Sends to AI: "Based on this policy: [text], answer: What's our refund policy?"</span>
+      <span>يرسل للذكاء الاصطناعي: "بناءً على هذه السياسة: [النص]، أجب: ما هي سياسة الاسترداد لدينا؟"</span>
     </div>
     <div className="flex items-center gap-3">
       <span className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center text-green-600 font-bold">5</span>
-      <span>AI generates accurate answer using your actual policy</span>
+      <span>الذكاء الاصطناعي يُولّد إجابة دقيقة باستخدام سياستك الفعلية</span>
     </div>
   </div>
 </div>
 
-### Why RAG?
+### لماذا RAG؟
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="p-4 border rounded-lg">
-    <p className="font-semibold text-green-600 dark:text-green-400 mb-2 flex items-center gap-2"><IconCheck className="text-green-600" /> RAG Advantages</p>
+    <p className="font-semibold text-green-600 dark:text-green-400 mb-2 flex items-center gap-2"><IconCheck className="text-green-600" /> مزايا RAG</p>
     <ul className="text-sm space-y-1 text-muted-foreground">
-      <li>Uses your actual, current data</li>
-      <li>Reduces hallucinations</li>
-      <li>Can cite sources</li>
-      <li>Easy to update (just update documents)</li>
-      <li>No expensive fine-tuning needed</li>
+      <li>يستخدم بياناتك الفعلية والحالية</li>
+      <li>يقلل الهلوسات</li>
+      <li>يمكنه الاستشهاد بالمصادر</li>
+      <li>سهل التحديث (فقط حدّث المستندات)</li>
+      <li>لا حاجة للضبط الدقيق المكلف</li>
     </ul>
   </div>
   <div className="p-4 border rounded-lg">
-    <p className="font-semibold text-amber-600 dark:text-amber-400 mb-2 flex items-center gap-2"><IconLightbulb className="text-amber-600" /> When to Use RAG</p>
+    <p className="font-semibold text-amber-600 dark:text-amber-400 mb-2 flex items-center gap-2"><IconLightbulb className="text-amber-600" /> متى تستخدم RAG</p>
     <ul className="text-sm space-y-1 text-muted-foreground">
-      <li>Customer support bots</li>
-      <li>Documentation search</li>
-      <li>Internal knowledge bases</li>
-      <li>Any domain-specific Q&A</li>
-      <li>When accuracy matters</li>
+      <li>روبوتات دعم العملاء</li>
+      <li>البحث في التوثيق</li>
+      <li>قواعد المعرفة الداخلية</li>
+      <li>أي أسئلة وأجوبة متخصصة في مجال معين</li>
+      <li>عندما تهم الدقة</li>
     </ul>
   </div>
 </div>
 
-## Embeddings: How Search Works
+## التضمينات: كيف يعمل البحث
 
-How does RAG know which documents are "relevant"? It uses **embeddings** - a way to turn text into numbers that capture meaning.
+كيف يعرف RAG أي المستندات "ذات صلة"؟ يستخدم **التضمينات** - طريقة لتحويل النص إلى أرقام تلتقط المعنى.
 
-### What Are Embeddings?
+### ما هي التضمينات؟
 
-An embedding is a list of numbers (a "vector") that represents the meaning of text. Similar meanings = similar numbers.
+التضمين هو قائمة من الأرقام ("متجه") تمثل معنى النص. المعاني المتشابهة = أرقام متشابهة.
 
 <EmbeddingsDemo />
 
-### Semantic Search
+### البحث الدلالي
 
-With embeddings, you can search by meaning, not just keywords:
+مع التضمينات، يمكنك البحث بالمعنى، وليس فقط بالكلمات المفتاحية:
 
 <Compare 
-  before={{ label: "Keyword Search", content: "Query: 'return policy'\nFinds: Documents containing 'return' and 'policy'\nMisses: 'How to get a refund'" }}
-  after={{ label: "Semantic Search", content: "Query: 'return policy'\nFinds: All related documents including:\n- 'Refund guidelines'\n- 'How to send items back'\n- 'Money-back guarantee'" }}
+  before={{ label: "البحث بالكلمات المفتاحية", content: "الاستعلام: 'سياسة الإرجاع'\nيجد: المستندات التي تحتوي على 'إرجاع' و'سياسة'\nيفقد: 'كيفية الحصول على استرداد'" }}
+  after={{ label: "البحث الدلالي", content: "الاستعلام: 'سياسة الإرجاع'\nيجد: جميع المستندات ذات الصلة بما في ذلك:\n- 'إرشادات الاسترداد'\n- 'كيفية إرجاع العناصر'\n- 'ضمان استرداد الأموال'" }}
 />
 
-This is why RAG is so powerful - it finds relevant information even when the exact words don't match.
+هذا هو سبب قوة RAG - فهو يجد المعلومات ذات الصلة حتى عندما لا تتطابق الكلمات بالضبط.
 
-## Function Calling / Tool Use
+## استدعاء الدوال / استخدام الأدوات
 
-Function calling lets AI use external tools - like searching the web, checking a database, or calling an API.
+استدعاء الدوال يتيح للذكاء الاصطناعي استخدام أدوات خارجية - مثل البحث في الويب، أو التحقق من قاعدة بيانات، أو استدعاء API.
 
-<Callout type="tip" title="Also Called">
-Different AI providers call this different things: "function calling" (OpenAI), "tool use" (Anthropic/Claude), or "tools" (general term). They all mean the same thing.
+<Callout type="tip" title="يُسمى أيضاً">
+مزودو الذكاء الاصطناعي المختلفون يسمون هذا بأسماء مختلفة: "استدعاء الدوال" (OpenAI)، "استخدام الأدوات" (Anthropic/Claude)، أو "الأدوات" (مصطلح عام). جميعها تعني نفس الشيء.
 </Callout>
 
-### How It Works
+### كيف يعمل
 
-1. You tell the AI what tools are available
-2. AI decides if it needs a tool to answer
-3. AI outputs a structured request for the tool
-4. Your code runs the tool and returns results
-5. AI uses the results to form its answer
+1. تخبر الذكاء الاصطناعي بالأدوات المتاحة
+2. الذكاء الاصطناعي يقرر إذا كان يحتاج أداة للإجابة
+3. الذكاء الاصطناعي يُخرج طلباً منظماً للأداة
+4. الكود الخاص بك يُشغّل الأداة ويُرجع النتائج
+5. الذكاء الاصطناعي يستخدم النتائج لتشكيل إجابته
 
 <TryIt 
-  title="Function Calling Example"
-  description="This prompt shows how AI decides to use a tool:"
-  prompt={`You have access to these tools:
+  title="مثال على استدعاء الدوال"
+  description="هذا الموجه يوضح كيف يقرر الذكاء الاصطناعي استخدام أداة:"
+  prompt={`لديك وصول لهذه الأدوات:
 
-1. get_weather(city: string) - Get current weather for a city
-2. search_web(query: string) - Search the internet
-3. calculate(expression: string) - Do math calculations
+1. get_weather(city: string) - الحصول على الطقس الحالي لمدينة
+2. search_web(query: string) - البحث في الإنترنت
+3. calculate(expression: string) - إجراء العمليات الحسابية
 
-User: What's the weather like in Tokyo right now?
+المستخدم: كيف الطقس في طوكيو الآن؟
 
-Think step by step: Do you need a tool? Which one? What parameters?`}
+فكر خطوة بخطوة: هل تحتاج أداة؟ أي واحدة؟ ما المعلمات؟`}
 />
 
-## Summarization: Managing Long Conversations
+## التلخيص: إدارة المحادثات الطويلة
 
-As conversations get longer, you'll hit the context window limit. Since AI is stateless (it doesn't remember anything), long conversations can overflow. The solution? **Summarization**.
+مع طول المحادثات، ستصل إلى حد نافذة السياق. بما أن الذكاء الاصطناعي عديم الحالة (لا يتذكر أي شيء)، يمكن للمحادثات الطويلة أن تفيض. الحل؟ **التلخيص**.
 
-### The Problem
+### المشكلة
 
 <Compare 
-  before={{ label: "Without Summarization", content: "Message 1 (500 tokens)\nMessage 2 (800 tokens)\nMessage 3 (600 tokens)\n... 50 more messages ...\n────────────────────\n= 40,000+ tokens\n= OVER THE LIMIT!" }}
-  after={{ label: "With Summarization", content: "[Summary]: 200 tokens\nRecent messages: 2,000 tokens\nCurrent query: 100 tokens\n────────────────────\n= 2,300 tokens\n= Fits perfectly!" }}
+  before={{ label: "بدون تلخيص", content: "الرسالة 1 (500 رمز)\nالرسالة 2 (800 رمز)\nالرسالة 3 (600 رمز)\n... 50 رسالة أخرى ...\n────────────────────\n= 40,000+ رمز\n= تجاوز الحد!" }}
+  after={{ label: "مع تلخيص", content: "[ملخص]: 200 رمز\nالرسائل الأخيرة: 2,000 رمز\nالاستعلام الحالي: 100 رمز\n────────────────────\n= 2,300 رمز\n= يناسب تماماً!" }}
 />
 
-### Summarization Strategies
+### استراتيجيات التلخيص
 
-Different approaches work for different use cases. Click each strategy to see how it processes the same conversation:
+الأساليب المختلفة تناسب حالات الاستخدام المختلفة. انقر على كل استراتيجية لترى كيف تعالج نفس المحادثة:
 
 <SummarizationDemo />
 
-### What to Capture in Summaries
+### ما يجب التقاطه في الملخصات
 
-A good conversation summary preserves what matters:
+الملخص الجيد للمحادثة يحافظ على ما يهم:
 
 <Checklist 
-  title="Summary Checklist"
+  title="قائمة مراجعة الملخص"
   items={[
-    { text: "Key decisions made" },
-    { text: "Important facts mentioned" },
-    { text: "User preferences discovered" },
-    { text: "Current task or goal" },
-    { text: "Any pending questions" },
-    { text: "Tone and formality level" }
+    { text: "القرارات الرئيسية المتخذة" },
+    { text: "الحقائق المهمة المذكورة" },
+    { text: "تفضيلات المستخدم المكتشفة" },
+    { text: "المهمة أو الهدف الحالي" },
+    { text: "أي أسئلة معلقة" },
+    { text: "النبرة ومستوى الرسمية" }
   ]}
 />
 
-### Try It: Create a Summary
+### جرّبها: أنشئ ملخصاً
 
 <TryIt 
-  title="Conversation Summarizer"
-  description="Practice creating a context-preserving summary from this conversation:"
-  prompt={`Summarize this conversation for context management. The summary will replace the full conversation in the AI's memory.
+  title="ملخص المحادثة"
+  description="تدرب على إنشاء ملخص يحافظ على السياق من هذه المحادثة:"
+  prompt={`لخص هذه المحادثة لإدارة السياق. الملخص سيحل محل المحادثة الكاملة في ذاكرة الذكاء الاصطناعي.
 
-CONVERSATION:
-User: Hi, I'm learning Python for data analysis
-Assistant: Welcome! Python is great for data analysis. What's your current experience level?
-User: I know basic Excel. Complete beginner with programming.
-Assistant: Perfect starting point! Let's begin with variables - they're like Excel cells that store data.
-User: Can you explain variables?
-Assistant: Variables are containers for storing data. In Python: name = "Alice" or age = 25
-User: What about lists? I need to handle multiple values.
-Assistant: Lists are like Excel columns! Create one like: prices = [10, 20, 30]. Access items with prices[0].
-User: Can I do calculations on lists?
-Assistant: Yes! Use sum(prices), len(prices), or max(prices). For complex analysis, we'll use pandas later.
-User: What's pandas?
-Assistant: Pandas is a library for data analysis - think "Excel on steroids". It has DataFrames (like spreadsheets).
+المحادثة:
+المستخدم: مرحباً، أنا أتعلم Python لتحليل البيانات
+المساعد: مرحباً! Python رائع لتحليل البيانات. ما مستوى خبرتك الحالي؟
+المستخدم: أعرف Excel الأساسي. مبتدئ تماماً في البرمجة.
+المساعد: نقطة انطلاق مثالية! لنبدأ بالمتغيرات - إنها مثل خلايا Excel التي تخزن البيانات.
+المستخدم: هل يمكنك شرح المتغيرات؟
+المساعد: المتغيرات هي حاويات لتخزين البيانات. في Python: name = "Alice" أو age = 25
+المستخدم: ماذا عن القوائم؟ أحتاج للتعامل مع قيم متعددة.
+المساعد: القوائم مثل أعمدة Excel! أنشئ واحدة هكذا: prices = [10, 20, 30]. الوصول للعناصر بـ prices[0].
+المستخدم: هل يمكنني إجراء حسابات على القوائم؟
+المساعد: نعم! استخدم sum(prices) أو len(prices) أو max(prices). للتحليل المعقد، سنستخدم pandas لاحقاً.
+المستخدم: ما هو pandas؟
+المساعد: Pandas هي مكتبة لتحليل البيانات - فكر فيها كـ "Excel المعزز". لديها DataFrames (مثل جداول البيانات).
 
-CREATE A SUMMARY that captures:
-1. User's goal and background (1 sentence)
-2. Topics covered so far (1 sentence)  
-3. User's learning style/preferences (1 sentence)
-4. What to cover next (1 sentence)`}
+أنشئ ملخصاً يلتقط:
+1. هدف المستخدم وخلفيته (جملة واحدة)
+2. الموضوعات التي تم تغطيتها حتى الآن (جملة واحدة)
+3. أسلوب/تفضيلات تعلم المستخدم (جملة واحدة)
+4. ما يجب تغطيته بعد ذلك (جملة واحدة)`}
 />
 
-### When to Summarize
+### متى تُلخص
 
-<TryIt compact prompt={`You are managing a conversation's context window. Given these conditions, decide when to trigger summarization:
+<TryIt compact prompt={`أنت تدير نافذة سياق محادثة. بالنظر لهذه الشروط، قرر متى تُفعّل التلخيص:
 
-CONTEXT WINDOW: 8,000 tokens max
-CURRENT USAGE:
-- System prompt: 500 tokens
-- Conversation history: 6,200 tokens  
-- Buffer for response: 1,500 tokens
+نافذة السياق: 8,000 رمز كحد أقصى
+الاستخدام الحالي:
+- موجه النظام: 500 رمز
+- سجل المحادثة: 6,200 رمز
+- مساحة للاستجابة: 1,500 رمز
 
-RULES:
-- Summarize when history exceeds 70% of available space
-- Keep last 5 messages intact
-- Preserve all user preferences and decisions
+القواعد:
+- لخص عندما يتجاوز السجل 70% من المساحة المتاحة
+- احتفظ بآخر 5 رسائل سليمة
+- احفظ جميع تفضيلات وقرارات المستخدم
 
-Should you summarize now? If yes, what messages should be summarized vs kept intact?`} />
+هل يجب أن تُلخص الآن؟ إذا نعم، أي الرسائل يجب تلخيصها مقابل الاحتفاظ بها سليمة؟`} />
 
-## MCP: Model Context Protocol
+## MCP: بروتوكول سياق النموذج
 
-MCP (Model Context Protocol) is a standard way to connect AI to external data and tools. Instead of building custom integrations for each AI provider, MCP provides a universal interface.
+MCP (بروتوكول سياق النموذج) هو طريقة قياسية لربط الذكاء الاصطناعي بالبيانات والأدوات الخارجية. بدلاً من بناء تكاملات مخصصة لكل مزود ذكاء اصطناعي، يوفر MCP واجهة عالمية.
 
-### Why MCP?
+### لماذا MCP؟
 
 <InfoGrid columns={2} items={[
-  { label: "Without MCP", description: "Build separate integrations for ChatGPT, Claude, Gemini... Maintain multiple codebases. Break when APIs change.", color: "red" },
-  { label: "With MCP", description: "Build once, works everywhere. Standard protocol. AI can discover and use your tools automatically.", color: "green" },
+  { label: "بدون MCP", description: "ابنِ تكاملات منفصلة لـ ChatGPT، Claude، Gemini... حافظ على قواعد كود متعددة. ينكسر عندما تتغير الـ APIs.", color: "red" },
+  { label: "مع MCP", description: "ابنِ مرة واحدة، يعمل في كل مكان. بروتوكول قياسي. الذكاء الاصطناعي يمكنه اكتشاف واستخدام أدواتك تلقائياً.", color: "green" },
 ]} />
 
-### MCP Provides
+### ما يوفره MCP
 
-- **Resources**: Data the AI can read (files, database records, API responses)
-- **Tools**: Actions the AI can take (search, create, update, delete)
-- **Prompts**: Pre-built prompt templates
+- **الموارد**: البيانات التي يمكن للذكاء الاصطناعي قراءتها (الملفات، سجلات قاعدة البيانات، استجابات API)
+- **الأدوات**: الإجراءات التي يمكن للذكاء الاصطناعي اتخاذها (بحث، إنشاء، تحديث، حذف)
+- **الموجهات**: قوالب موجهات مُعدة مسبقاً
 
-<Callout type="info" title="prompts.chat Uses MCP">
-This platform has an MCP server! You can connect it to Claude Desktop or other MCP-compatible clients to search and use prompts directly from your AI assistant.
+<Callout type="info" title="prompts.chat يستخدم MCP">
+هذه المنصة لديها خادم MCP! يمكنك توصيله بـ Claude Desktop أو عملاء آخرين متوافقين مع MCP للبحث واستخدام الموجهات مباشرة من مساعد الذكاء الاصطناعي الخاص بك.
 </Callout>
 
-## Building Context: The Complete Picture
+## بناء السياق: الصورة الكاملة
 
 <ContextPlayground />
 
-## Best Practices
+## أفضل الممارسات
 
 <Checklist 
-  title="Context Engineering Checklist"
+  title="قائمة مراجعة هندسة السياق"
   items={[
-    { text: "Keep system prompts concise but complete" },
-    { text: "Only include relevant context (not everything)" },
-    { text: "Summarize long conversations" },
-    { text: "Use RAG for domain-specific knowledge" },
-    { text: "Give AI tools for real-time data" },
-    { text: "Monitor token usage to stay within limits" },
-    { text: "Test with edge cases (very long inputs, etc.)" }
+    { text: "اجعل موجهات النظام موجزة لكن كاملة" },
+    { text: "ضمّن فقط السياق ذي الصلة (ليس كل شيء)" },
+    { text: "لخص المحادثات الطويلة" },
+    { text: "استخدم RAG للمعرفة المتخصصة في المجال" },
+    { text: "أعطِ الذكاء الاصطناعي أدوات للبيانات في الوقت الفعلي" },
+    { text: "راقب استخدام الرموز للبقاء ضمن الحدود" },
+    { text: "اختبر مع الحالات الحدية (مدخلات طويلة جداً، إلخ.)" }
   ]}
 />
 
-## Summary
+## الملخص
 
-Context engineering is about giving AI the right information:
+هندسة السياق هي إعطاء الذكاء الاصطناعي المعلومات الصحيحة:
 
-- **AI is stateless** - include everything it needs every time
-- **RAG** retrieves relevant documents to augment prompts
-- **Embeddings** enable semantic search (meaning, not just keywords)
-- **Function calling** lets AI use external tools
-- **Summarization** manages long conversations
-- **MCP** standardizes how AI connects to data and tools
+- **الذكاء الاصطناعي عديم الحالة** - ضمّن كل ما يحتاجه في كل مرة
+- **RAG** يسترجع المستندات ذات الصلة لتعزيز الموجهات
+- **التضمينات** تُمكّن البحث الدلالي (المعنى، وليس فقط الكلمات المفتاحية)
+- **استدعاء الدوال** يتيح للذكاء الاصطناعي استخدام الأدوات الخارجية
+- **التلخيص** يدير المحادثات الطويلة
+- **MCP** يُوحد كيفية اتصال الذكاء الاصطناعي بالبيانات والأدوات
 
-<Callout type="tip" title="Remember">
-The quality of AI output depends on the quality of context you provide. Better context = better answers.
+<Callout type="tip" title="تذكر">
+جودة مخرجات الذكاء الاصطناعي تعتمد على جودة السياق الذي تقدمه. سياق أفضل = إجابات أفضل.
 </Callout>

@@ -270,110 +270,110 @@ steps:
       Formato: 3 paragrafi, tono business`}
 />
 
-## Error Handling in Chains
+## Gestione Errori nelle Catene
 
-Chains can fail at any step. Build in validation, retries, and fallbacks to make your chains robust.
+Le catene possono fallire a qualsiasi passo. Integra validazione, retry e fallback per rendere le tue catene robuste.
 
 <ChainErrorDemo />
 
-<Callout type="warning" title="Garbage In, Garbage Out">
-If one step produces bad output, every following step will be affected. Always validate critical intermediate results before passing them forward.
+<Callout type="warning" title="Spazzatura Dentro, Spazzatura Fuori">
+Se un passo produce output scadente, ogni passo successivo sarà influenzato. Valida sempre i risultati intermedi critici prima di passarli avanti.
 </Callout>
 
-### Validation Between Steps
+### Validazione tra i Passi
 
-Add a validation step after any step that produces structured data. This catches errors early before they cascade.
+Aggiungi un passo di validazione dopo ogni passo che produce dati strutturati. Questo cattura errori presto prima che si propaghino a cascata.
 
 <ValidationDemo />
 
-### Fallback Chains
+### Catene di Fallback
 
-When your primary approach fails, have a simpler backup ready. Trade capability for reliability.
+Quando il tuo approccio primario fallisce, tieni pronto un backup più semplice. Scambia capacità per affidabilità.
 
 <FallbackDemo />
 
-## Chain Optimization
+## Ottimizzazione delle Catene
 
-Once your chain works, optimize for speed, cost, and reliability. These often trade off against each other.
+Una volta che la tua catena funziona, ottimizza per velocità, costo e affidabilità. Questi spesso entrano in trade-off tra loro.
 
 <div className="my-6 grid md:grid-cols-3 gap-4">
   <div className="border rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-900 p-4">
-    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 mb-2 m-0!">Reducing Latency</p>
+    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 mb-2 m-0!">Ridurre la Latenza</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Parallelize independent steps</p>
-      <p className="m-0!">Cache intermediate results</p>
-      <p className="m-0!">Use smaller models for simple steps</p>
-      <p className="m-0!">Batch similar operations</p>
+      <p className="m-0!">Parallelizza passi indipendenti</p>
+      <p className="m-0!">Metti in cache risultati intermedi</p>
+      <p className="m-0!">Usa modelli più piccoli per passi semplici</p>
+      <p className="m-0!">Raggruppa operazioni simili</p>
     </div>
   </div>
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900 p-4">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 mb-2 m-0!">Reducing Cost</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 mb-2 m-0!">Ridurre i Costi</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Use cheaper models for classification</p>
-      <p className="m-0!">Limit iterations in loops</p>
-      <p className="m-0!">Short-circuit when possible</p>
-      <p className="m-0!">Cache repeated queries</p>
+      <p className="m-0!">Usa modelli più economici per classificazione</p>
+      <p className="m-0!">Limita iterazioni nei loop</p>
+      <p className="m-0!">Interrompi presto quando possibile</p>
+      <p className="m-0!">Metti in cache query ripetute</p>
     </div>
   </div>
   <div className="border rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-900 p-4">
-    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 mb-2 m-0!">Improving Reliability</p>
+    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 mb-2 m-0!">Migliorare l'Affidabilità</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Add validation between steps</p>
-      <p className="m-0!">Include retry logic</p>
-      <p className="m-0!">Log intermediate results</p>
-      <p className="m-0!">Implement fallback paths</p>
+      <p className="m-0!">Aggiungi validazione tra i passi</p>
+      <p className="m-0!">Includi logica di retry</p>
+      <p className="m-0!">Logga risultati intermedi</p>
+      <p className="m-0!">Implementa percorsi di fallback</p>
     </div>
   </div>
 </div>
 
-## Real-World Chain Example
+## Esempio di Catena nel Mondo Reale
 
-Let's walk through a complete production chain. This content pipeline transforms a raw idea into a polished article package.
+Esaminiamo una catena di produzione completa. Questa pipeline di contenuti trasforma un'idea grezza in un pacchetto articolo rifinito.
 
-### Content Pipeline Chain
+### Catena Pipeline Contenuti
 
 <ContentPipelineDemo />
 
-## Summary
+## Riepilogo
 
-Prompt chaining transforms what AI can accomplish by breaking impossible tasks into achievable steps.
+Il prompt chaining trasforma ciò che l'IA può realizzare suddividendo compiti impossibili in passi raggiungibili.
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-amber-50/50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900 p-4">
-    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 mb-2 m-0!">Chaining Enables</p>
+    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 mb-2 m-0!">Il Chaining Abilita</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Complex multi-step workflows</p>
-      <p className="m-0!">Higher quality through specialization</p>
-      <p className="m-0!">Better error handling and validation</p>
-      <p className="m-0!">Modular, reusable prompt components</p>
+      <p className="m-0!">Workflow complessi multi-step</p>
+      <p className="m-0!">Qualità superiore attraverso specializzazione</p>
+      <p className="m-0!">Migliore gestione errori e validazione</p>
+      <p className="m-0!">Componenti prompt modulari e riutilizzabili</p>
     </div>
   </div>
   <div className="border rounded-lg bg-cyan-50/50 dark:bg-cyan-950/20 border-cyan-200 dark:border-cyan-900 p-4">
-    <p className="text-sm font-semibold text-cyan-700 dark:text-cyan-400 mb-2 m-0!">Key Principles</p>
+    <p className="text-sm font-semibold text-cyan-700 dark:text-cyan-400 mb-2 m-0!">Principi Chiave</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Break complex tasks into simple steps</p>
-      <p className="m-0!">Design clear interfaces between steps</p>
-      <p className="m-0!">Validate intermediate outputs</p>
-      <p className="m-0!">Build in error handling and fallbacks</p>
-      <p className="m-0!">Optimize for your constraints</p>
+      <p className="m-0!">Suddividi compiti complessi in passi semplici</p>
+      <p className="m-0!">Progetta interfacce chiare tra i passi</p>
+      <p className="m-0!">Valida output intermedi</p>
+      <p className="m-0!">Integra gestione errori e fallback</p>
+      <p className="m-0!">Ottimizza per i tuoi vincoli</p>
     </div>
   </div>
 </div>
 
-<Callout type="tip" title="Start Simple">
-Begin with a 2-3 step sequential chain. Get it working reliably before adding complexity. Most tasks don't need elaborate chain architectures.
+<Callout type="tip" title="Inizia Semplice">
+Inizia con una catena sequenziale di 2-3 passi. Falla funzionare in modo affidabile prima di aggiungere complessità. La maggior parte dei compiti non ha bisogno di architetture di catena elaborate.
 </Callout>
 
 <Quiz 
-  question="What is the main advantage of prompt chaining over a single complex prompt?"
+  question="Qual è il vantaggio principale del prompt chaining rispetto a un singolo prompt complesso?"
   options={[
-    "It uses fewer tokens overall",
-    "It's faster to execute",
-    "Each step can specialize, improving quality and enabling error handling",
-    "It requires less planning"
+    "Usa meno token in totale",
+    "È più veloce da eseguire",
+    "Ogni passo può specializzarsi, migliorando qualità e abilitando gestione errori",
+    "Richiede meno pianificazione"
   ]}
   correctIndex={2}
-  explanation="Prompt chaining breaks complex tasks into specialized steps. Each step can focus on one thing well, intermediate results can be validated, errors can be caught and retried, and the overall quality improves through specialization."
+  explanation="Il prompt chaining suddivide compiti complessi in passi specializzati. Ogni passo può concentrarsi bene su una cosa, i risultati intermedi possono essere validati, gli errori possono essere catturati e ritentati, e la qualità complessiva migliora attraverso la specializzazione."
 />
 
-In the next chapter, we'll explore multimodal prompting: working with images, audio, and other non-text content.
+Nel prossimo capitolo, esploreremo il prompting multimodale: lavorare con immagini, audio e altri contenuti non testuali.

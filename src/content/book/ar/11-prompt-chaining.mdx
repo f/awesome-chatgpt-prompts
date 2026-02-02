@@ -1,200 +1,200 @@
-Prompt chaining breaks complex tasks into sequences of simpler prompts, where each step's output feeds into the next. This technique dramatically improves reliability and enables sophisticated workflows that would be impossible with a single prompt.
+تسلسل البرومبتات يُقسّم المهام المعقدة إلى سلاسل من برومبتات أبسط، حيث يُغذّي مخرج كل خطوة الخطوة التالية. هذه التقنية تُحسّن الموثوقية بشكل كبير وتُمكّن من سير عمل متطور يستحيل تحقيقه ببرومبت واحد.
 
-<Callout type="tip" title="Think Assembly Lines">
-Just like a factory assembly line breaks manufacturing into specialized stations, prompt chaining breaks AI tasks into specialized steps. Each step does one thing well, and the combined output is far better than trying to do everything at once.
+<Callout type="tip" title="فكّر في خطوط التجميع">
+تمامًا كما يُقسّم خط التجميع في المصنع عملية التصنيع إلى محطات متخصصة، يُقسّم تسلسل البرومبتات مهام الذكاء الاصطناعي إلى خطوات متخصصة. كل خطوة تُنجز شيئًا واحدًا بإتقان، والمخرج المُجمّع أفضل بكثير من محاولة إنجاز كل شيء دفعة واحدة.
 </Callout>
 
-## Why Chain Prompts?
+## لماذا نُسلسل البرومبتات؟
 
-Single prompts struggle with complex tasks because they try to do too much at once. The AI has to simultaneously understand, analyze, plan, and generate, which leads to errors and inconsistencies.
+البرومبتات المفردة تُعاني مع المهام المعقدة لأنها تحاول إنجاز الكثير دفعة واحدة. يتعين على الذكاء الاصطناعي أن يفهم ويُحلل ويُخطط ويُنتج في آنٍ واحد، مما يؤدي إلى أخطاء وتناقضات.
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900">
-    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Single Prompt Struggles</p>
+    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> معاناة البرومبت الواحد</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Multi-step reasoning gets confused</p>
-      <p className="m-0!">Different "modes" of thinking clash</p>
-      <p className="m-0!">Complex outputs lack consistency</p>
-      <p className="m-0!">No opportunity for quality control</p>
+      <p className="m-0!">الاستدلال متعدد الخطوات يتشوش</p>
+      <p className="m-0!">"أنماط" التفكير المختلفة تتعارض</p>
+      <p className="m-0!">المخرجات المعقدة تفتقر للاتساق</p>
+      <p className="m-0!">لا توجد فرصة لمراقبة الجودة</p>
     </div>
   </div>
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Chaining Solves This</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> التسلسل يحل هذا</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Each step focuses on one task</p>
-      <p className="m-0!">Specialized prompts for each mode</p>
-      <p className="m-0!">Validate between steps</p>
-      <p className="m-0!">Debug and improve individual steps</p>
+      <p className="m-0!">كل خطوة تُركّز على مهمة واحدة</p>
+      <p className="m-0!">برومبتات متخصصة لكل نمط</p>
+      <p className="m-0!">التحقق بين الخطوات</p>
+      <p className="m-0!">تصحيح وتحسين الخطوات الفردية</p>
     </div>
   </div>
 </div>
 
-## Basic Chaining Pattern
+## نمط التسلسل الأساسي
 
-The simplest chain passes output from one prompt directly to the next. Each step has a clear, focused purpose.
+أبسط سلسلة تُمرر المخرج من برومبت مباشرة إلى التالي. كل خطوة لها غرض واضح ومُحدد.
 
 <div className="my-6 flex items-center justify-center gap-3 p-6 bg-muted/30 rounded-lg overflow-x-auto">
   <div className="flex flex-col items-center">
     <div className="px-4 py-3 bg-blue-100 dark:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-lg text-center">
-      <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">Prompt 1</p>
-      <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">(Extract)</p>
+      <p className="text-sm font-medium text-blue-700 dark:text-blue-300 m-0!">البرومبت 1</p>
+      <p className="text-xs text-blue-600 dark:text-blue-400 m-0!">(استخراج)</p>
     </div>
-    <p className="text-xs text-muted-foreground mt-1 m-0!">Input</p>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">المدخل</p>
   </div>
   <div className="text-blue-400 dark:text-blue-500">→</div>
   <div className="flex flex-col items-center">
     <div className="px-4 py-3 bg-purple-100 dark:bg-purple-900/50 border border-purple-200 dark:border-purple-800 rounded-lg text-center">
-      <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">Prompt 2</p>
-      <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">(Analyze)</p>
+      <p className="text-sm font-medium text-purple-700 dark:text-purple-300 m-0!">البرومبت 2</p>
+      <p className="text-xs text-purple-600 dark:text-purple-400 m-0!">(تحليل)</p>
     </div>
-    <p className="text-xs text-muted-foreground mt-1 m-0!">Intermediate</p>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">وسيط</p>
   </div>
   <div className="text-purple-400 dark:text-purple-500">→</div>
   <div className="flex flex-col items-center">
     <div className="px-4 py-3 bg-green-100 dark:bg-green-900/50 border border-green-200 dark:border-green-800 rounded-lg text-center">
-      <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">Prompt 3</p>
-      <p className="text-xs text-green-600 dark:text-green-400 m-0!">(Generate)</p>
+      <p className="text-sm font-medium text-green-700 dark:text-green-300 m-0!">البرومبت 3</p>
+      <p className="text-xs text-green-600 dark:text-green-400 m-0!">(توليد)</p>
     </div>
-    <p className="text-xs text-muted-foreground mt-1 m-0!">Output</p>
+    <p className="text-xs text-muted-foreground mt-1 m-0!">المخرج</p>
   </div>
 </div>
 
-<Callout type="info" title="The ETG Pattern">
-The most common chain pattern is **Extract → Transform → Generate**. First extract raw data, then reshape it for your purpose, then generate the final output. This pattern works for almost any content task.
+<Callout type="info" title="نمط ETG">
+أكثر أنماط السلاسل شيوعًا هو **استخراج ← تحويل ← توليد**. أولاً استخرج البيانات الخام، ثم أعد تشكيلها لغرضك، ثم أنتج المخرج النهائي. هذا النمط يعمل مع أي مهمة محتوى تقريبًا.
 </Callout>
 
-## Chain Types
+## أنواع السلاسل
 
-Different tasks require different chain architectures. Choose the pattern that matches your workflow.
+المهام المختلفة تتطلب بنيات سلاسل مختلفة. اختر النمط الذي يتوافق مع سير عملك.
 
 <ChainFlowDemo />
 
-### Sequential Chain
+### السلسلة التتابعية
 
-The most straightforward pattern: each step depends on the previous. Think of it as a relay race where each runner passes the baton to the next.
+النمط الأكثر مباشرة: كل خطوة تعتمد على السابقة. فكّر فيها كسباق تتابع حيث يُمرر كل عدّاء العصا للتالي.
 
 <ChainExample 
   type="sequential"
   steps={[
-    { step: "Step 1: Extract", prompt: "Extract all dates, names, and numbers from: [text]", output: '{ dates: ["2024-01-15", "2024-02-20"], names: ["John Smith", "Acme Corp"], numbers: [15000, 42] }' },
-    { step: "Step 2: Analyze", prompt: "Given this extracted data: [step1_output], identify relationships and patterns.", output: '{ patterns: ["Monthly meetings scheduled"], relationships: ["John Smith works at Acme Corp"] }' },
-    { step: "Step 3: Generate", prompt: "Using these patterns: [step2_output], write a summary report highlighting the most significant findings.", output: "Summary Report: Analysis of the document reveals a business relationship between John Smith and Acme Corp, with scheduled monthly meetings..." }
+    { step: "الخطوة 1: استخراج", prompt: "استخرج جميع التواريخ والأسماء والأرقام من: [text]", output: '{ dates: ["2024-01-15", "2024-02-20"], names: ["John Smith", "Acme Corp"], numbers: [15000, 42] }' },
+    { step: "الخطوة 2: تحليل", prompt: "بالنظر إلى هذه البيانات المستخرجة: [step1_output]، حدد العلاقات والأنماط.", output: '{ patterns: ["اجتماعات شهرية مجدولة"], relationships: ["John Smith يعمل في Acme Corp"] }' },
+    { step: "الخطوة 3: توليد", prompt: "باستخدام هذه الأنماط: [step2_output]، اكتب تقريرًا ملخصًا يُبرز أهم النتائج.", output: "تقرير ملخص: يكشف تحليل الوثيقة عن علاقة عمل بين John Smith و Acme Corp، مع اجتماعات شهرية مجدولة..." }
   ]}
 />
 
-### Parallel Chain
+### السلسلة المتوازية
 
-When you need multiple perspectives on the same input, run prompts in parallel and merge results. This is faster than sequential chains and provides richer analysis.
+عندما تحتاج وجهات نظر متعددة على نفس المدخل، شغّل البرومبتات بالتوازي وادمج النتائج. هذا أسرع من السلاسل التتابعية ويوفر تحليلاً أغنى.
 
 <ChainExample 
   type="parallel"
   steps={[
-    { step: "Input", prompt: "Product review text", output: '"I love these earbuds! The battery lasts forever and the display on the case is so convenient. Perfect for my daily commute."' },
-    { step: "Branch A: Sentiment", prompt: "Analyze sentiment: [text]", output: '{ sentiment: "positive", score: 0.85 }' },
-    { step: "Branch B: Features", prompt: "Extract features mentioned: [text]", output: '{ features: ["battery", "display"] }' },
-    { step: "Branch C: Persona", prompt: "Identify user persona: [text]", output: '{ persona: "commuter" }' },
-    { step: "Merge", prompt: "Combine analyses into unified report", output: "Unified Report: Positive review from a commuter highlighting battery and display." }
+    { step: "المدخل", prompt: "نص مراجعة المنتج", output: '"أحب سماعات الأذن هذه! البطارية تدوم للأبد والشاشة على العلبة مريحة جدًا. مثالية لتنقلاتي اليومية."' },
+    { step: "الفرع أ: المشاعر", prompt: "حلل المشاعر: [text]", output: '{ sentiment: "إيجابي", score: 0.85 }' },
+    { step: "الفرع ب: الميزات", prompt: "استخرج الميزات المذكورة: [text]", output: '{ features: ["البطارية", "الشاشة"] }' },
+    { step: "الفرع ج: الشخصية", prompt: "حدد شخصية المستخدم: [text]", output: '{ persona: "مسافر يومي" }' },
+    { step: "الدمج", prompt: "ادمج التحليلات في تقرير موحد", output: "تقرير موحد: مراجعة إيجابية من مسافر يومي تُبرز البطارية والشاشة." }
   ]}
 />
 
-### Conditional Chain
+### السلسلة الشرطية
 
-Route inputs through different paths based on classification. This is like a decision tree where the AI first categorizes the input, then handles each category differently.
+وجّه المدخلات عبر مسارات مختلفة بناءً على التصنيف. هذا يشبه شجرة القرار حيث يُصنّف الذكاء الاصطناعي المدخل أولاً، ثم يتعامل مع كل فئة بشكل مختلف.
 
 <ChainExample 
   type="conditional"
   steps={[
-    { step: "Classify Input", prompt: "Classify this customer message as: complaint, question, feedback, or other.\n\nMessage: [text]", output: '{ classification: "complaint", confidence: 0.92 }' },
-    { step: "Route: Question (skipped)", prompt: "Identify what information is needed", output: "Skipped - input classified as complaint" },
-    { step: "Route: Complaint", prompt: "Identify the issue and severity: [text]", output: '{ issue: "delayed shipping", severity: "medium" }' },
-    { step: "Generate Response", prompt: "Generate empathetic response with resolution: [analysis]", output: "Dear Customer, We sincerely apologize for the delay. Your order has been expedited..." }
+    { step: "تصنيف المدخل", prompt: "صنّف رسالة العميل هذه إلى: شكوى، سؤال، ملاحظات، أو أخرى.\n\nالرسالة: [text]", output: '{ classification: "شكوى", confidence: 0.92 }' },
+    { step: "المسار: سؤال (تم تخطيه)", prompt: "حدد المعلومات المطلوبة", output: "تم تخطيه - المدخل صُنّف كشكوى" },
+    { step: "المسار: شكوى", prompt: "حدد المشكلة وشدتها: [text]", output: '{ issue: "تأخر الشحن", severity: "متوسط" }' },
+    { step: "توليد الرد", prompt: "أنشئ ردًا متعاطفًا مع حل: [analysis]", output: "عزيزي العميل، نعتذر بصدق عن التأخير. تم تسريع طلبك..." }
   ]}
 />
 
-### Iterative Chain
+### السلسلة التكرارية
 
-Keep refining output until it meets quality standards. The AI generates, evaluates, and improves in a loop until satisfied or max iterations reached.
+استمر في تحسين المخرج حتى يستوفي معايير الجودة. يُنتج الذكاء الاصطناعي ويُقيّم ويُحسّن في حلقة حتى يرضى أو يصل للحد الأقصى من التكرارات.
 
-<Callout type="warning" title="Set Iteration Limits">
-Always set a maximum number of iterations (typically 3-5) to prevent infinite loops and control costs. The law of diminishing returns applies: most improvement happens in the first 2-3 iterations.
+<Callout type="warning" title="حدد حدود التكرار">
+دائمًا حدد عددًا أقصى للتكرارات (عادة 3-5) لمنع الحلقات اللانهائية والتحكم في التكاليف. قانون العوائد المتناقصة ينطبق: معظم التحسين يحدث في أول 2-3 تكرارات.
 </Callout>
 
 <ChainExample 
   type="iterative"
   steps={[
-    { step: "Generate Draft", prompt: "Write a product description for: [wireless earbuds]", output: "These wireless earbuds offer good sound quality and comfortable fit for everyday use." },
-    { step: "Evaluate (Score: 5)", prompt: "Rate this description 1-10 on: clarity, persuasiveness, accuracy.\n\nDescription: [current_draft]", output: '{ score: 5, improvements: ["Add specific features", "Include emotional benefits", "Mention battery life", "Add call-to-action"] }' },
-    { step: "Improve Draft", prompt: "Improve this description based on this feedback:\n\nCurrent: [current_draft]\nFeedback: [improvements]", output: "Experience crystal-clear audio with our premium wireless earbuds. Featuring 30-hour battery life, active noise cancellation, and an ergonomic design that stays comfortable all day. Perfect for music lovers and professionals alike. Order now and transform your listening experience." },
-    { step: "Evaluate (Score: 8)", prompt: "Rate this description 1-10 on: clarity, persuasiveness, accuracy.\n\nDescription: [improved_draft]", output: '{ score: 8, improvements: ["Minor: Could add warranty info"] }\n\n✓ Score >= 8: EXIT LOOP' }
+    { step: "توليد المسودة", prompt: "اكتب وصفًا للمنتج: [سماعات لاسلكية]", output: "سماعات الأذن اللاسلكية هذه توفر جودة صوت جيدة وملاءمة مريحة للاستخدام اليومي." },
+    { step: "التقييم (الدرجة: 5)", prompt: "قيّم هذا الوصف من 1-10 على: الوضوح، الإقناع، الدقة.\n\nالوصف: [current_draft]", output: '{ score: 5, improvements: ["أضف ميزات محددة", "تضمين فوائد عاطفية", "اذكر عمر البطارية", "أضف دعوة للعمل"] }' },
+    { step: "تحسين المسودة", prompt: "حسّن هذا الوصف بناءً على هذه الملاحظات:\n\nالحالي: [current_draft]\nالملاحظات: [improvements]", output: "استمتع بصوت فائق الوضوح مع سماعاتنا اللاسلكية المتميزة. تتميز بعمر بطارية 30 ساعة، وإلغاء الضوضاء النشط، وتصميم مريح يظل مريحًا طوال اليوم. مثالية لعشاق الموسيقى والمحترفين على حد سواء. اطلب الآن وغيّر تجربة الاستماع لديك." },
+    { step: "التقييم (الدرجة: 8)", prompt: "قيّم هذا الوصف من 1-10 على: الوضوح، الإقناع، الدقة.\n\nالوصف: [improved_draft]", output: '{ score: 8, improvements: ["ثانوي: يمكن إضافة معلومات الضمان"] }\n\n✓ الدرجة >= 8: خروج من الحلقة' }
   ]}
 />
 
-## Common Chain Patterns
+## أنماط السلاسل الشائعة
 
-These battle-tested patterns solve common problems. Use them as starting points and adapt to your needs.
+هذه الأنماط المُجربة تحل مشاكل شائعة. استخدمها كنقاط انطلاق وكيّفها حسب احتياجاتك.
 
-### Extract → Transform → Generate
+### استخراج ← تحويل ← توليد
 
-The workhorse of content processing. Pull data out, reshape it, then create something new.
+العمود الفقري لمعالجة المحتوى. استخرج البيانات، أعد تشكيلها، ثم أنشئ شيئًا جديدًا.
 
 <div className="mb-4 p-3 rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800">
-  <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 m-0!">Best For</p>
-  <p className="text-sm text-blue-600 dark:text-blue-400 m-0!">Document summarization, report generation, content repurposing, data-to-narrative conversion</p>
+  <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1 m-0!">الأفضل لـ</p>
+  <p className="text-sm text-blue-600 dark:text-blue-400 m-0!">تلخيص المستندات، إنشاء التقارير، إعادة توظيف المحتوى، تحويل البيانات إلى سرد</p>
 </div>
 
 <ChainExample 
   type="sequential"
   steps={[
-    { step: "Extract", prompt: "From this document, extract:\n- Main topic\n- Key arguments (list)\n- Supporting evidence (list)\n- Conclusions\nReturn as JSON.", output: '{ "topic": "Climate change impacts", "arguments": ["Rising temperatures", "Sea level rise"], "evidence": ["NASA data", "IPCC reports"], "conclusions": ["Urgent action needed"] }' },
-    { step: "Transform", prompt: "Reorganize this information for [business executives]:\n[extracted_data]\nFocus on: economic implications\nRemove: technical jargon", output: '{ "summary": "Climate risks to business", "key_points": ["Supply chain disruption", "Insurance costs rising"], "action_items": ["Assess vulnerabilities", "Plan adaptations"] }' },
-    { step: "Generate", prompt: "Using this restructured information, write a [executive brief]:\n[transformed_data]\nTone: professional\nLength: 200 words", output: "Executive Brief: Climate change presents significant operational risks to our business. Key concerns include supply chain disruptions from extreme weather events and rising insurance premiums. We recommend immediate assessment of facility vulnerabilities and development of adaptation strategies..." }
+    { step: "استخراج", prompt: "من هذا المستند، استخرج:\n- الموضوع الرئيسي\n- الحجج الرئيسية (قائمة)\n- الأدلة الداعمة (قائمة)\n- الاستنتاجات\nأعد كـ JSON.", output: '{ "topic": "تأثيرات تغير المناخ", "arguments": ["ارتفاع درجات الحرارة", "ارتفاع مستوى سطح البحر"], "evidence": ["بيانات NASA", "تقارير IPCC"], "conclusions": ["العمل العاجل مطلوب"] }' },
+    { step: "تحويل", prompt: "أعد تنظيم هذه المعلومات لـ [المديرين التنفيذيين]:\n[extracted_data]\nركّز على: الآثار الاقتصادية\nأزل: المصطلحات التقنية", output: '{ "summary": "مخاطر المناخ على الأعمال", "key_points": ["تعطل سلسلة التوريد", "ارتفاع تكاليف التأمين"], "action_items": ["تقييم نقاط الضعف", "تخطيط التكيفات"] }' },
+    { step: "توليد", prompt: "باستخدام هذه المعلومات المُعاد هيكلتها، اكتب [موجزًا تنفيذيًا]:\n[transformed_data]\nالنبرة: مهنية\nالطول: 200 كلمة", output: "موجز تنفيذي: يُشكّل تغير المناخ مخاطر تشغيلية كبيرة على أعمالنا. تشمل المخاوف الرئيسية اضطرابات سلسلة التوريد من الأحداث الجوية المتطرفة وارتفاع أقساط التأمين. نوصي بتقييم فوري لنقاط ضعف المنشآت ووضع استراتيجيات التكيف..." }
   ]}
 />
 
-### Analyze → Plan → Execute
+### تحليل ← تخطيط ← تنفيذ
 
-Perfect for code refactoring, project planning, or any task where you need to understand before acting.
+مثالي لإعادة هيكلة الكود، وتخطيط المشاريع، أو أي مهمة تحتاج للفهم قبل التصرف.
 
 <div className="mb-4 p-3 rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border border-purple-200 dark:border-purple-800">
-  <p className="text-xs font-semibold text-purple-700 dark:text-purple-300 mb-1 m-0!">Best For</p>
-  <p className="text-sm text-purple-600 dark:text-purple-400 m-0!">Code refactoring, project planning, troubleshooting, strategic decision-making, complex problem solving</p>
+  <p className="text-xs font-semibold text-purple-700 dark:text-purple-300 mb-1 m-0!">الأفضل لـ</p>
+  <p className="text-sm text-purple-600 dark:text-purple-400 m-0!">إعادة هيكلة الكود، تخطيط المشاريع، استكشاف الأخطاء، اتخاذ القرارات الاستراتيجية، حل المشكلات المعقدة</p>
 </div>
 
 <ChainExample 
   type="sequential"
   steps={[
-    { step: "Analyze", prompt: "Analyze this codebase structure and identify:\n- Architecture pattern\n- Main components\n- Dependencies\n- Potential issues\n[code]", output: '{ "pattern": "MVC", "components": ["UserController", "AuthService", "Database"], "dependencies": ["express", "mongoose"], "issues": ["No input validation", "Hardcoded secrets"] }' },
-    { step: "Plan", prompt: "Based on this analysis, create a refactoring plan:\n[analysis_output]\nGoal: improve security\nConstraints: no breaking changes", output: '{ "steps": ["1. Add input validation middleware", "2. Move secrets to env vars", "3. Add rate limiting"], "priority": "high", "estimated_time": "4 hours" }' },
-    { step: "Execute", prompt: "Implement step 1 of this plan:\n[plan_output]\nShow the refactored code with explanations.", output: "// Added validation middleware\nconst validateInput = (req, res, next) => {\n  const { email, password } = req.body;\n  if (!email || !isValidEmail(email)) {\n    return res.status(400).json({ error: 'Invalid email' });\n  }\n  next();\n};" }
+    { step: "تحليل", prompt: "حلل بنية قاعدة الكود هذه وحدد:\n- نمط البنية\n- المكونات الرئيسية\n- التبعيات\n- المشاكل المحتملة\n[code]", output: '{ "pattern": "MVC", "components": ["UserController", "AuthService", "Database"], "dependencies": ["express", "mongoose"], "issues": ["لا يوجد تحقق من المدخلات", "أسرار مُشفرة"] }' },
+    { step: "تخطيط", prompt: "بناءً على هذا التحليل، أنشئ خطة إعادة هيكلة:\n[analysis_output]\nالهدف: تحسين الأمان\nالقيود: لا تغييرات مُعطلة", output: '{ "steps": ["1. إضافة middleware للتحقق من المدخلات", "2. نقل الأسرار إلى متغيرات البيئة", "3. إضافة تحديد المعدل"], "priority": "عالية", "estimated_time": "4 ساعات" }' },
+    { step: "تنفيذ", prompt: "نفّذ الخطوة 1 من هذه الخطة:\n[plan_output]\nاعرض الكود المُعاد هيكلته مع الشرح.", output: "// إضافة middleware للتحقق\nconst validateInput = (req, res, next) => {\n  const { email, password } = req.body;\n  if (!email || !isValidEmail(email)) {\n    return res.status(400).json({ error: 'بريد إلكتروني غير صالح' });\n  }\n  next();\n};" }
   ]}
 />
 
-### Generate → Critique → Refine
+### توليد ← نقد ← تحسين
 
-The self-improvement loop. Generate content, have the AI evaluate it critically, then improve based on that feedback. This mimics how professional writers and editors work together.
+حلقة التحسين الذاتي. أنتج المحتوى، اجعل الذكاء الاصطناعي يُقيّمه بشكل نقدي، ثم حسّنه بناءً على تلك الملاحظات. هذا يُحاكي كيف يعمل الكتّاب والمحررون المحترفون معًا.
 
 <div className="mb-4 p-3 rounded-lg bg-green-50/50 dark:bg-green-950/20 border border-green-200 dark:border-green-800">
-  <p className="text-xs font-semibold text-green-700 dark:text-green-300 mb-1 m-0!">Best For</p>
-  <p className="text-sm text-green-600 dark:text-green-400 m-0!">Marketing copy, creative writing, email drafts, presentations, any content that benefits from revision</p>
+  <p className="text-xs font-semibold text-green-700 dark:text-green-300 mb-1 m-0!">الأفضل لـ</p>
+  <p className="text-sm text-green-600 dark:text-green-400 m-0!">نصوص التسويق، الكتابة الإبداعية، مسودات البريد الإلكتروني، العروض التقديمية، أي محتوى يستفيد من المراجعة</p>
 </div>
 
 <ChainExample 
   type="iterative"
   steps={[
-    { step: "Generate", prompt: "Write a marketing email for [fitness app] targeting [busy professionals].", output: "Subject: Get Fit Fast!\n\nHey there! Our app helps you exercise. Download it today and start your fitness journey. Thanks!" },
-    { step: "Critique", prompt: "As a marketing expert, critique this email:\n[generated_email]\nEvaluate: subject line, hook, value proposition, CTA, tone\nScore each 1-10.", output: '{ "subject_line": 4, "hook": 3, "value_proposition": 2, "cta": 5, "tone": 4, "feedback": "Too generic, no specific benefits, weak urgency" }' },
-    { step: "Refine", prompt: "Rewrite the email addressing this feedback:\nOriginal: [generated_email]\nCritique: [critique_output]\nFocus on the lowest-scored elements.", output: "Subject: 15-Min Workouts for Your Lunch Break\n\nBusy schedule? We get it. Our app delivers science-backed workouts designed for professionals who have zero time to waste. Join 50,000+ executives who transformed their health in just 15 minutes a day. Start your free trial now—your future self will thank you." },
-    { step: "Final Score", prompt: "Re-evaluate the refined email.", output: '{ "subject_line": 8, "hook": 8, "value_proposition": 9, "cta": 8, "tone": 9, "improvement": "+23 points total" }' }
+    { step: "توليد", prompt: "اكتب بريدًا تسويقيًا لـ [تطبيق لياقة] يستهدف [المهنيين المشغولين].", output: "الموضوع: ابقَ لائقًا بسرعة!\n\nمرحبًا! تطبيقنا يساعدك على التمرين. حمّله اليوم وابدأ رحلة لياقتك. شكرًا!" },
+    { step: "نقد", prompt: "كخبير تسويق، انتقد هذا البريد:\n[generated_email]\nقيّم: سطر الموضوع، الخطاف، عرض القيمة، الدعوة للعمل، النبرة\nقيّم كلاً من 1-10.", output: '{ "subject_line": 4, "hook": 3, "value_proposition": 2, "cta": 5, "tone": 4, "feedback": "عام جدًا، لا فوائد محددة، إلحاح ضعيف" }' },
+    { step: "تحسين", prompt: "أعد كتابة البريد معالجًا هذه الملاحظات:\nالأصلي: [generated_email]\nالنقد: [critique_output]\nركّز على العناصر ذات الدرجات الأدنى.", output: "الموضوع: تمارين 15 دقيقة لاستراحة الغداء\n\nجدول مزدحم؟ نحن نتفهم ذلك. تطبيقنا يقدم تمارين مدعومة علميًا مصممة للمهنيين الذين ليس لديهم وقت يضيعونه. انضم إلى أكثر من 50,000 مدير تنفيذي غيّروا صحتهم في 15 دقيقة فقط يوميًا. ابدأ تجربتك المجانية الآن—ذاتك المستقبلية ستشكرك." },
+    { step: "الدرجة النهائية", prompt: "أعد تقييم البريد المُحسّن.", output: '{ "subject_line": 8, "hook": 8, "value_proposition": 9, "cta": 8, "tone": 9, "improvement": "+23 نقطة إجمالاً" }' }
   ]}
 />
 
-## Implementing Chains
+## تنفيذ السلاسل
 
-You can implement chains manually for experimentation, or programmatically for production systems. Start simple and add complexity as needed.
+يمكنك تنفيذ السلاسل يدويًا للتجريب، أو برمجيًا لأنظمة الإنتاج. ابدأ بسيطًا وأضف التعقيد حسب الحاجة.
 
-### Manual Chaining
+### التسلسل اليدوي
 
-The copy-paste approach is perfect for prototyping and experimentation. Run each prompt manually, examine the output, and paste it into the next prompt.
+نهج النسخ واللصق مثالي للنمذجة والتجريب. شغّل كل برومبت يدويًا، افحص المخرج، والصقه في البرومبت التالي.
 
 <CodeEditor 
   language="python"
@@ -205,9 +205,9 @@ step2_output = call_ai("Analyze relationships: " + step1_output)
 final_output = call_ai("Generate report: " + step2_output)`}
 />
 
-### Programmatic Chaining
+### التسلسل البرمجي
 
-For production systems, automate the chain with code. This enables error handling, logging, and integration with your application.
+لأنظمة الإنتاج، أتمت السلسلة بالكود. هذا يُمكّن معالجة الأخطاء والتسجيل والتكامل مع تطبيقك.
 
 <CodeEditor 
   language="python"
@@ -241,9 +241,9 @@ For production systems, automate the chain with code. This enables error handlin
     }`}
 />
 
-### Using Chain Templates
+### استخدام قوالب السلاسل
 
-Define chains as configuration files for reusability and easy modification. This separates prompt logic from application code.
+عرّف السلاسل كملفات تكوين لإعادة الاستخدام والتعديل السهل. هذا يفصل منطق البرومبت عن كود التطبيق.
 
 <CodeEditor 
   language="yaml"
@@ -270,110 +270,110 @@ steps:
       Format: 3 paragraphs, business tone`}
 />
 
-## Error Handling in Chains
+## معالجة الأخطاء في السلاسل
 
-Chains can fail at any step. Build in validation, retries, and fallbacks to make your chains robust.
+يمكن أن تفشل السلاسل في أي خطوة. ادمج التحقق وإعادة المحاولات والبدائل لجعل سلاسلك قوية.
 
 <ChainErrorDemo />
 
-<Callout type="warning" title="Garbage In, Garbage Out">
-If one step produces bad output, every following step will be affected. Always validate critical intermediate results before passing them forward.
+<Callout type="warning" title="القمامة تدخل، القمامة تخرج">
+إذا أنتجت خطوة واحدة مخرجًا سيئًا، ستتأثر كل الخطوات التالية. تحقق دائمًا من النتائج الوسيطة الحرجة قبل تمريرها للأمام.
 </Callout>
 
-### Validation Between Steps
+### التحقق بين الخطوات
 
-Add a validation step after any step that produces structured data. This catches errors early before they cascade.
+أضف خطوة تحقق بعد أي خطوة تُنتج بيانات منظمة. هذا يكتشف الأخطاء مبكرًا قبل أن تتراكم.
 
 <ValidationDemo />
 
-### Fallback Chains
+### سلاسل احتياطية
 
-When your primary approach fails, have a simpler backup ready. Trade capability for reliability.
+عندما يفشل نهجك الأساسي، جهّز بديلاً أبسط. استبدل القدرة بالموثوقية.
 
 <FallbackDemo />
 
-## Chain Optimization
+## تحسين السلاسل
 
-Once your chain works, optimize for speed, cost, and reliability. These often trade off against each other.
+بمجرد أن تعمل سلسلتك، حسّنها للسرعة والتكلفة والموثوقية. هذه غالبًا تتعارض مع بعضها.
 
 <div className="my-6 grid md:grid-cols-3 gap-4">
   <div className="border rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border-blue-200 dark:border-blue-900 p-4">
-    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 mb-2 m-0!">Reducing Latency</p>
+    <p className="text-sm font-semibold text-blue-700 dark:text-blue-400 mb-2 m-0!">تقليل زمن الاستجابة</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Parallelize independent steps</p>
-      <p className="m-0!">Cache intermediate results</p>
-      <p className="m-0!">Use smaller models for simple steps</p>
-      <p className="m-0!">Batch similar operations</p>
+      <p className="m-0!">وازِ الخطوات المستقلة</p>
+      <p className="m-0!">خزّن النتائج الوسيطة مؤقتًا</p>
+      <p className="m-0!">استخدم نماذج أصغر للخطوات البسيطة</p>
+      <p className="m-0!">اجمع العمليات المتشابهة</p>
     </div>
   </div>
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900 p-4">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 mb-2 m-0!">Reducing Cost</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 mb-2 m-0!">تقليل التكلفة</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Use cheaper models for classification</p>
-      <p className="m-0!">Limit iterations in loops</p>
-      <p className="m-0!">Short-circuit when possible</p>
-      <p className="m-0!">Cache repeated queries</p>
+      <p className="m-0!">استخدم نماذج أرخص للتصنيف</p>
+      <p className="m-0!">حدد التكرارات في الحلقات</p>
+      <p className="m-0!">اختصر المسار عند الإمكان</p>
+      <p className="m-0!">خزّن الاستعلامات المتكررة مؤقتًا</p>
     </div>
   </div>
   <div className="border rounded-lg bg-purple-50/50 dark:bg-purple-950/20 border-purple-200 dark:border-purple-900 p-4">
-    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 mb-2 m-0!">Improving Reliability</p>
+    <p className="text-sm font-semibold text-purple-700 dark:text-purple-400 mb-2 m-0!">تحسين الموثوقية</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Add validation between steps</p>
-      <p className="m-0!">Include retry logic</p>
-      <p className="m-0!">Log intermediate results</p>
-      <p className="m-0!">Implement fallback paths</p>
+      <p className="m-0!">أضف التحقق بين الخطوات</p>
+      <p className="m-0!">تضمين منطق إعادة المحاولة</p>
+      <p className="m-0!">سجّل النتائج الوسيطة</p>
+      <p className="m-0!">نفّذ مسارات احتياطية</p>
     </div>
   </div>
 </div>
 
-## Real-World Chain Example
+## مثال سلسلة واقعي
 
-Let's walk through a complete production chain. This content pipeline transforms a raw idea into a polished article package.
+لنمشِ خلال سلسلة إنتاج كاملة. خط أنابيب المحتوى هذا يُحوّل فكرة خام إلى حزمة مقال مصقولة.
 
-### Content Pipeline Chain
+### سلسلة خط أنابيب المحتوى
 
 <ContentPipelineDemo />
 
-## Summary
+## الملخص
 
-Prompt chaining transforms what AI can accomplish by breaking impossible tasks into achievable steps.
+تسلسل البرومبتات يُحوّل ما يمكن للذكاء الاصطناعي إنجازه بتقسيم المهام المستحيلة إلى خطوات قابلة للتحقيق.
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-amber-50/50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-900 p-4">
-    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 mb-2 m-0!">Chaining Enables</p>
+    <p className="text-sm font-semibold text-amber-700 dark:text-amber-400 mb-2 m-0!">التسلسل يُمكّن من</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Complex multi-step workflows</p>
-      <p className="m-0!">Higher quality through specialization</p>
-      <p className="m-0!">Better error handling and validation</p>
-      <p className="m-0!">Modular, reusable prompt components</p>
+      <p className="m-0!">سير عمل معقد متعدد الخطوات</p>
+      <p className="m-0!">جودة أعلى من خلال التخصص</p>
+      <p className="m-0!">معالجة أخطاء وتحقق أفضل</p>
+      <p className="m-0!">مكونات برومبت معيارية قابلة لإعادة الاستخدام</p>
     </div>
   </div>
   <div className="border rounded-lg bg-cyan-50/50 dark:bg-cyan-950/20 border-cyan-200 dark:border-cyan-900 p-4">
-    <p className="text-sm font-semibold text-cyan-700 dark:text-cyan-400 mb-2 m-0!">Key Principles</p>
+    <p className="text-sm font-semibold text-cyan-700 dark:text-cyan-400 mb-2 m-0!">المبادئ الأساسية</p>
     <div className="text-sm space-y-1">
-      <p className="m-0!">Break complex tasks into simple steps</p>
-      <p className="m-0!">Design clear interfaces between steps</p>
-      <p className="m-0!">Validate intermediate outputs</p>
-      <p className="m-0!">Build in error handling and fallbacks</p>
-      <p className="m-0!">Optimize for your constraints</p>
+      <p className="m-0!">قسّم المهام المعقدة إلى خطوات بسيطة</p>
+      <p className="m-0!">صمم واجهات واضحة بين الخطوات</p>
+      <p className="m-0!">تحقق من المخرجات الوسيطة</p>
+      <p className="m-0!">ادمج معالجة الأخطاء والبدائل</p>
+      <p className="m-0!">حسّن وفق قيودك</p>
     </div>
   </div>
 </div>
 
-<Callout type="tip" title="Start Simple">
-Begin with a 2-3 step sequential chain. Get it working reliably before adding complexity. Most tasks don't need elaborate chain architectures.
+<Callout type="tip" title="ابدأ بسيطًا">
+ابدأ بسلسلة تتابعية من 2-3 خطوات. اجعلها تعمل بشكل موثوق قبل إضافة التعقيد. معظم المهام لا تحتاج بنيات سلاسل معقدة.
 </Callout>
 
 <Quiz 
-  question="What is the main advantage of prompt chaining over a single complex prompt?"
+  question="ما هي الميزة الرئيسية لتسلسل البرومبتات مقارنة ببرومبت معقد واحد؟"
   options={[
-    "It uses fewer tokens overall",
-    "It's faster to execute",
-    "Each step can specialize, improving quality and enabling error handling",
-    "It requires less planning"
+    "يستخدم رموزًا أقل إجمالاً",
+    "أسرع في التنفيذ",
+    "كل خطوة يمكنها التخصص، مما يحسّن الجودة ويُمكّن من معالجة الأخطاء",
+    "يتطلب تخطيطًا أقل"
   ]}
   correctIndex={2}
-  explanation="Prompt chaining breaks complex tasks into specialized steps. Each step can focus on one thing well, intermediate results can be validated, errors can be caught and retried, and the overall quality improves through specialization."
+  explanation="تسلسل البرومبتات يُقسّم المهام المعقدة إلى خطوات متخصصة. كل خطوة يمكنها التركيز على شيء واحد بإتقان، ويمكن التحقق من النتائج الوسيطة، ويمكن اكتشاف الأخطاء وإعادة المحاولة، وتتحسن الجودة الإجمالية من خلال التخصص."
 />
 
-In the next chapter, we'll explore multimodal prompting: working with images, audio, and other non-text content.
+في الفصل التالي، سنستكشف البرومبتات متعددة الوسائط: العمل مع الصور والصوت ومحتوى غير نصي آخر.

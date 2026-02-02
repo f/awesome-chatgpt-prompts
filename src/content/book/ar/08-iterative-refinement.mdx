@@ -1,55 +1,55 @@
-Prompt engineering is rarely a one-shot process. The best prompts emerge through iteration—testing, observing, and refining until you achieve the desired results.
+نادراً ما تكون هندسة الأوامر عملية تتم من محاولة واحدة. أفضل الأوامر تظهر من خلال التكرار—الاختبار والملاحظة والتحسين حتى تحقق النتائج المرجوة.
 
-<Callout type="info" title="First Draft, Not Final Draft">
-Think of your first prompt as a rough draft. Even experienced prompt engineers rarely nail it on the first try.
+<Callout type="info" title="مسودة أولى، وليست نهائية">
+فكر في أمرك الأول كمسودة أولية. حتى مهندسو الأوامر ذوو الخبرة نادراً ما يصيبون الهدف من المحاولة الأولى.
 </Callout>
 
-## The Iteration Cycle
+## دورة التكرار
 
-Effective prompt refinement follows a predictable cycle: write, test, analyze, and improve. Each iteration brings you closer to a prompt that reliably produces the results you need.
+يتبع تحسين الأوامر الفعال دورة يمكن التنبؤ بها: الكتابة، والاختبار، والتحليل، والتحسين. كل تكرار يقربك من أمر ينتج النتائج التي تحتاجها بشكل موثوق.
 
 <IterativeRefinementDemo />
 
-## Common Refinement Patterns
+## أنماط التحسين الشائعة
 
-Most prompt failures fall into a handful of categories. Learning to recognize these patterns lets you quickly diagnose and fix issues without starting from scratch.
+تقع معظم إخفاقات الأوامر في فئات محدودة. تعلم التعرف على هذه الأنماط يتيح لك تشخيص المشكلات وإصلاحها بسرعة دون البدء من الصفر.
 
-### Problem: Output Too Long
+### المشكلة: المخرجات طويلة جداً
 
-One of the most common issues. Without explicit constraints, models tend to be thorough rather than concise.
+واحدة من أكثر المشكلات شيوعاً. بدون قيود صريحة، تميل النماذج إلى الشمولية بدلاً من الإيجاز.
 
 <DiffView 
   before="Explain how photosynthesis works."
   after={`Explain how photosynthesis works in 3-4 sentences suitable for a 10-year-old.`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="الأصلي"
+  afterLabel="المحسّن"
 />
 
-### Problem: Output Too Vague
+### المشكلة: المخرجات غامضة جداً
 
-Vague prompts produce vague outputs. The model can't read your mind about what "better" means or which aspects matter most to you.
+الأوامر الغامضة تنتج مخرجات غامضة. النموذج لا يستطيع قراءة أفكارك حول ما تعنيه كلمة "أفضل" أو أي الجوانب تهمك أكثر.
 
 <DiffView 
   before="Give me tips for better presentations."
   after={`Give me 5 specific, actionable tips for improving technical presentations to non-technical stakeholders. For each tip, include a concrete example.`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="الأصلي"
+  afterLabel="المحسّن"
 />
 
-### Problem: Wrong Tone
+### المشكلة: نبرة خاطئة
 
-Tone is subjective and varies by context. What sounds "professional" to the model might not match your organization's voice or the relationship with your recipient.
+النبرة ذاتية وتختلف حسب السياق. ما يبدو "احترافياً" للنموذج قد لا يتطابق مع صوت مؤسستك أو طبيعة العلاقة مع المتلقي.
 
 <DiffView 
   before="Write an apology email for missing a deadline."
   after={`Write a professional but warm apology email for missing a project deadline. The tone should be accountable without being overly apologetic. Include a concrete plan to prevent future delays.`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="الأصلي"
+  afterLabel="المحسّن"
 />
 
-### Problem: Missing Key Information
+### المشكلة: معلومات أساسية مفقودة
 
-Open-ended requests get open-ended responses. If you need specific types of feedback, you must ask for them explicitly.
+الطلبات المفتوحة تحصل على ردود مفتوحة. إذا كنت بحاجة إلى أنواع محددة من الملاحظات، يجب أن تطلبها صراحة.
 
 <DiffView 
   before="Review this code."
@@ -62,13 +62,13 @@ Open-ended requests get open-ended responses. If you need specific types of feed
 For each issue found, explain the problem and suggest a fix.
 
 [code]`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="الأصلي"
+  afterLabel="المحسّن"
 />
 
-### Problem: Inconsistent Format
+### المشكلة: تنسيق غير متسق
 
-Without a template, the model will structure each response differently, making comparison difficult and automation impossible.
+بدون قالب، سيقوم النموذج بهيكلة كل رد بشكل مختلف، مما يجعل المقارنة صعبة والأتمتة مستحيلة.
 
 <DiffView 
   before="Analyze these three products."
@@ -82,59 +82,59 @@ Without a template, the model will structure each response differently, making c
 **Rating:** X/10
 
 [products]`}
-  beforeLabel="Original"
-  afterLabel="Refined"
+  beforeLabel="الأصلي"
+  afterLabel="المحسّن"
 />
 
-## Systematic Refinement Approach
+## نهج التحسين المنهجي
 
-Random changes waste time. A systematic approach helps you identify problems quickly and fix them efficiently.
+التغييرات العشوائية تضيع الوقت. النهج المنهجي يساعدك على تحديد المشكلات بسرعة وإصلاحها بكفاءة.
 
-### Step 1: Diagnose the Issue
+### الخطوة 1: تشخيص المشكلة
 
-Before changing anything, identify what's actually wrong. Use this diagnostic table to map symptoms to solutions:
+قبل تغيير أي شيء، حدد ما هو الخطأ فعلاً. استخدم جدول التشخيص هذا لربط الأعراض بالحلول:
 
 <div className="my-4 grid gap-2">
   <div className="grid grid-cols-3 gap-2 p-3 bg-muted/50 rounded-lg text-sm">
-    <span className="font-semibold">Symptom</span>
-    <span className="font-semibold">Likely Cause</span>
-    <span className="font-semibold">Solution</span>
+    <span className="font-semibold">العَرَض</span>
+    <span className="font-semibold">السبب المحتمل</span>
+    <span className="font-semibold">الحل</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Too long</span>
-    <span className="text-muted-foreground">No length constraint</span>
-    <span className="text-green-600 dark:text-green-400">Add word/sentence limits</span>
+    <span>طويل جداً</span>
+    <span className="text-muted-foreground">لا يوجد قيد على الطول</span>
+    <span className="text-green-600 dark:text-green-400">أضف حدود للكلمات/الجمل</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Too short</span>
-    <span className="text-muted-foreground">Lacks detail request</span>
-    <span className="text-green-600 dark:text-green-400">Ask for elaboration</span>
+    <span>قصير جداً</span>
+    <span className="text-muted-foreground">يفتقر لطلب التفاصيل</span>
+    <span className="text-green-600 dark:text-green-400">اطلب التوسع</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Off-topic</span>
-    <span className="text-muted-foreground">Vague instructions</span>
-    <span className="text-green-600 dark:text-green-400">Be more specific</span>
+    <span>خارج الموضوع</span>
+    <span className="text-muted-foreground">تعليمات غامضة</span>
+    <span className="text-green-600 dark:text-green-400">كن أكثر تحديداً</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Wrong format</span>
-    <span className="text-muted-foreground">Format not specified</span>
-    <span className="text-green-600 dark:text-green-400">Define exact structure</span>
+    <span>تنسيق خاطئ</span>
+    <span className="text-muted-foreground">لم يُحدد التنسيق</span>
+    <span className="text-green-600 dark:text-green-400">حدد الهيكل بالضبط</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Wrong tone</span>
-    <span className="text-muted-foreground">Audience not clear</span>
-    <span className="text-green-600 dark:text-green-400">Specify audience/style</span>
+    <span>نبرة خاطئة</span>
+    <span className="text-muted-foreground">الجمهور غير واضح</span>
+    <span className="text-green-600 dark:text-green-400">حدد الجمهور/الأسلوب</span>
   </div>
   <div className="grid grid-cols-3 gap-2 p-3 bg-red-50 dark:bg-red-950/20 rounded-lg text-sm">
-    <span>Inconsistent</span>
-    <span className="text-muted-foreground">No examples provided</span>
-    <span className="text-green-600 dark:text-green-400">Add few-shot examples</span>
+    <span>غير متسق</span>
+    <span className="text-muted-foreground">لم تُقدم أمثلة</span>
+    <span className="text-green-600 dark:text-green-400">أضف أمثلة توضيحية</span>
   </div>
 </div>
 
-### Step 2: Make Targeted Changes
+### الخطوة 2: قم بتغييرات مستهدفة
 
-Resist the urge to rewrite everything. Changing multiple variables at once makes it impossible to know what helped and what hurt. Make one change, test it, then proceed:
+قاوم الرغبة في إعادة كتابة كل شيء. تغيير متغيرات متعددة في وقت واحد يجعل من المستحيل معرفة ما ساعد وما أضر. قم بتغيير واحد، اختبره، ثم تابع:
 
 ```
 Iteration 1: Add length constraint
@@ -143,9 +143,9 @@ Iteration 3: Add example
 Iteration 4: Refine tone instructions
 ```
 
-### Step 3: Document What Works
+### الخطوة 3: وثّق ما ينجح
 
-Prompt engineering knowledge is easily lost. Keep a log of what you tried and why. This saves time when you revisit the prompt later or face similar challenges:
+معرفة هندسة الأوامر تُفقد بسهولة. احتفظ بسجل لما جربته ولماذا. هذا يوفر الوقت عندما تعود للأمر لاحقاً أو تواجه تحديات مماثلة:
 
 ```markdown
 ## Prompt: Customer Email Response
@@ -167,25 +167,25 @@ Show empathy first."
 Tone: Friendly, professional, empathetic but not groveling."
 ```
 
-## Real-World Iteration Example
+## مثال واقعي على التكرار
 
-Let's walk through a complete iteration cycle to see how each refinement builds on the last. Notice how each version addresses specific shortcomings of the previous one.
+لنستعرض دورة تكرار كاملة لنرى كيف يبني كل تحسين على السابق. لاحظ كيف تعالج كل نسخة أوجه قصور محددة في النسخة السابقة.
 
-### Task: Generate Product Names
+### المهمة: توليد أسماء منتجات
 
 <VersionDiff versions={[
   {
-    label: "Version 1",
+    label: "الإصدار 1",
     content: "Generate names for a new productivity app.",
-    note: "Too generic, no context"
+    note: "عام جداً، لا يوجد سياق"
   },
   {
-    label: "Version 2",
+    label: "الإصدار 2",
     content: `Generate names for a new productivity app. The app uses AI to automatically schedule your tasks based on energy levels and calendar availability.`,
-    note: "Added context, still generic"
+    note: "تمت إضافة سياق، لا يزال عاماً"
   },
   {
-    label: "Version 3",
+    label: "الإصدار 3",
     content: `Generate 10 unique, memorable names for a productivity app with these characteristics:
 - Uses AI to schedule tasks based on energy levels
 - Target audience: busy professionals aged 25-40
@@ -193,10 +193,10 @@ Let's walk through a complete iteration cycle to see how each refinement builds 
 - Avoid: generic words like "pro", "smart", "AI", "task"
 
 For each name, explain why it works.`,
-    note: "Added constraints and reasoning"
+    note: "تمت إضافة قيود وتفسير"
   },
   {
-    label: "Version 4 (final)",
+    label: "الإصدار 4 (النهائي)",
     content: `Generate 10 unique, memorable names for a productivity app.
 
 Context:
@@ -212,61 +212,61 @@ Requirements:
 
 Format:
 Name | Pronunciation | Why It Works | Domain Availability Guess`,
-    note: "Structured format, specific requirements"
+    note: "تنسيق منظم، متطلبات محددة"
   }
 ]} />
 
-## Refinement Strategies by Task Type
+## استراتيجيات التحسين حسب نوع المهمة
 
-Different tasks fail in predictable ways. Knowing the common failure modes helps you diagnose and fix issues faster.
+المهام المختلفة تفشل بطرق يمكن التنبؤ بها. معرفة أوضاع الفشل الشائعة تساعدك على تشخيص المشكلات وإصلاحها بشكل أسرع.
 
-### For Content Generation
+### لتوليد المحتوى
 
-Content generation often produces generic, off-target, or poorly formatted output. The fix usually involves being more specific about constraints, providing concrete examples, or defining your brand voice explicitly.
-
-<InfoGrid items={[
-  { icon: "target", title: "Too Generic", description: "Add specific constraints and context", example: "\"Write about dogs\" → \"Write about golden retrievers for first-time owners, focusing on training and exercise needs\"" },
-  { icon: "scissors", title: "Too Long", description: "Set word/paragraph limits", example: "Add: \"Keep response under 150 words\" or \"Maximum 3 paragraphs\"" },
-  { icon: "palette", title: "Wrong Style", description: "Provide style examples", example: "\"Write in the style of this example: [paste sample text]\"" },
-  { icon: "megaphone", title: "Off-Brand", description: "Include brand voice guidelines", example: "\"Use friendly, casual tone. Avoid jargon. Address reader as 'you'.\"" }
-]} />
-
-### For Code Generation
-
-Code output can fail technically (syntax errors, wrong language features) or architecturally (poor patterns, missing cases). Technical issues need version/environment specifics; architectural issues need design guidance.
+غالباً ما ينتج توليد المحتوى مخرجات عامة أو بعيدة عن الهدف أو سيئة التنسيق. الحل عادة يتضمن أن تكون أكثر تحديداً حول القيود، أو تقديم أمثلة ملموسة، أو تحديد صوت علامتك التجارية صراحة.
 
 <InfoGrid items={[
-  { icon: "code", title: "Syntax Errors", description: "Specify language version", example: "\"Use Python 3.11+ syntax with type hints\" or \"ES2022 JavaScript\"" },
-  { icon: "git-branch", title: "Wrong Approach", description: "Describe preferred patterns", example: "\"Use functional approach, avoid classes\" or \"Follow repository pattern\"" },
-  { icon: "shield", title: "Missing Edge Cases", description: "List scenarios to handle", example: "\"Handle: empty input, null values, network timeouts, invalid formats\"" },
-  { icon: "tag", title: "Poor Naming", description: "Include naming conventions", example: "\"Use camelCase for variables, PascalCase for classes, UPPER_SNAKE for constants\"" }
+  { icon: "target", title: "عام جداً", description: "أضف قيوداً وسياقاً محدداً", example: "\"Write about dogs\" → \"Write about golden retrievers for first-time owners, focusing on training and exercise needs\"" },
+  { icon: "scissors", title: "طويل جداً", description: "حدد حدود الكلمات/الفقرات", example: "Add: \"Keep response under 150 words\" or \"Maximum 3 paragraphs\"" },
+  { icon: "palette", title: "أسلوب خاطئ", description: "قدم أمثلة على الأسلوب", example: "\"Write in the style of this example: [paste sample text]\"" },
+  { icon: "megaphone", title: "بعيد عن الهوية", description: "ضمّن إرشادات صوت العلامة التجارية", example: "\"Use friendly, casual tone. Avoid jargon. Address reader as 'you'.\"" }
 ]} />
 
-### For Analysis
+### لتوليد الكود
 
-Analysis tasks often produce surface-level or unstructured results. Guide the model with specific frameworks (SWOT, Porter's Five Forces), request multiple viewpoints, or provide a template for the output structure.
+يمكن أن يفشل مخرج الكود تقنياً (أخطاء نحوية، ميزات لغة خاطئة) أو معمارياً (أنماط سيئة، حالات مفقودة). المشكلات التقنية تحتاج تحديد الإصدار/البيئة؛ المشكلات المعمارية تحتاج توجيهات التصميم.
 
 <InfoGrid items={[
-  { icon: "layers", title: "Too Shallow", description: "Ask for specific frameworks", example: "\"Analyze using SWOT framework\" or \"Apply Porter's Five Forces\"" },
-  { icon: "scale", title: "Biased", description: "Request multiple perspectives", example: "\"Present arguments for and against\" or \"Include skeptic's viewpoint\"" },
-  { icon: "database", title: "Missing Data", description: "Specify what to analyze", example: "\"Focus on: market size, growth rate, key players, entry barriers\"" },
-  { icon: "layout", title: "Unstructured", description: "Provide analysis template", example: "\"Format as: Summary → Key Findings → Implications → Recommendations\"" }
+  { icon: "code", title: "أخطاء نحوية", description: "حدد إصدار اللغة", example: "\"Use Python 3.11+ syntax with type hints\" or \"ES2022 JavaScript\"" },
+  { icon: "git-branch", title: "نهج خاطئ", description: "صف الأنماط المفضلة", example: "\"Use functional approach, avoid classes\" or \"Follow repository pattern\"" },
+  { icon: "shield", title: "حالات حدية مفقودة", description: "اذكر السيناريوهات للتعامل معها", example: "\"Handle: empty input, null values, network timeouts, invalid formats\"" },
+  { icon: "tag", title: "تسمية سيئة", description: "ضمّن اتفاقيات التسمية", example: "\"Use camelCase for variables, PascalCase for classes, UPPER_SNAKE for constants\"" }
 ]} />
 
-### For Q&A
+### للتحليل
 
-Question-answering can be too terse or too verbose, and may lack confidence indicators or sources. Specify the detail level you need and whether you want citations or uncertainty expressed.
+غالباً ما تنتج مهام التحليل نتائج سطحية أو غير منظمة. وجّه النموذج بأطر عمل محددة (SWOT، قوى بورتر الخمس)، اطلب وجهات نظر متعددة، أو قدم قالباً لهيكل المخرجات.
 
 <InfoGrid items={[
-  { icon: "plus", title: "Too Short", description: "Ask for elaboration", example: "\"Explain in detail with examples\" or \"Elaborate on each point\"" },
-  { icon: "minus", title: "Too Long", description: "Request concise answer", example: "\"Answer in 2-3 sentences\" or \"Give me the TL;DR\"" },
-  { icon: "help-circle", title: "Uncertain", description: "Ask for confidence level", example: "\"Rate your confidence 1-10\" or \"Note any assumptions made\"" },
-  { icon: "link", title: "Unsourced", description: "Request citations", example: "\"Cite sources for claims\" or \"Include references where possible\"" }
+  { icon: "layers", title: "سطحي جداً", description: "اطلب أطر عمل محددة", example: "\"Analyze using SWOT framework\" or \"Apply Porter's Five Forces\"" },
+  { icon: "scale", title: "متحيز", description: "اطلب وجهات نظر متعددة", example: "\"Present arguments for and against\" or \"Include skeptic's viewpoint\"" },
+  { icon: "database", title: "بيانات مفقودة", description: "حدد ما يجب تحليله", example: "\"Focus on: market size, growth rate, key players, entry barriers\"" },
+  { icon: "layout", title: "غير منظم", description: "قدم قالب تحليل", example: "\"Format as: Summary → Key Findings → Implications → Recommendations\"" }
 ]} />
 
-## The Feedback Loop Technique
+### للأسئلة والأجوبة
 
-Here's a meta-technique: use the model itself to help improve your prompts. Share what you tried, what you got, and what you wanted. The model can often suggest improvements you hadn't considered.
+الإجابة على الأسئلة يمكن أن تكون موجزة جداً أو مطولة جداً، وقد تفتقر لمؤشرات الثقة أو المصادر. حدد مستوى التفصيل الذي تحتاجه وما إذا كنت تريد اقتباسات أو التعبير عن عدم اليقين.
+
+<InfoGrid items={[
+  { icon: "plus", title: "قصير جداً", description: "اطلب التوسع", example: "\"Explain in detail with examples\" or \"Elaborate on each point\"" },
+  { icon: "minus", title: "طويل جداً", description: "اطلب إجابة موجزة", example: "\"Answer in 2-3 sentences\" or \"Give me the TL;DR\"" },
+  { icon: "help-circle", title: "غير مؤكد", description: "اطلب مستوى الثقة", example: "\"Rate your confidence 1-10\" or \"Note any assumptions made\"" },
+  { icon: "link", title: "بدون مصادر", description: "اطلب اقتباسات", example: "\"Cite sources for claims\" or \"Include references where possible\"" }
+]} />
+
+## تقنية حلقة التغذية الراجعة
+
+إليك تقنية وصفية: استخدم النموذج نفسه لمساعدتك في تحسين أوامرك. شارك ما جربته، وما حصلت عليه، وما أردته. غالباً ما يستطيع النموذج اقتراح تحسينات لم تفكر فيها.
 
 ```
 I used this prompt:
@@ -279,9 +279,9 @@ I wanted something more [describe gap]. How should I modify
 my prompt to get better results?
 ```
 
-## A/B Testing Prompts
+## اختبار A/B للأوامر
 
-For prompts that will be used repeatedly or at scale, don't just pick the first one that works. Test variations to find the most reliable and highest-quality approach.
+للأوامر التي ستُستخدم بشكل متكرر أو على نطاق واسع، لا تختر فقط أول أمر يعمل. اختبر الاختلافات لإيجاد النهج الأكثر موثوقية وأعلى جودة.
 
 ```
 Prompt A: "Summarize this article in 3 bullet points."
@@ -289,45 +289,45 @@ Prompt B: "Extract the 3 most important insights from this article."
 Prompt C: "What are the key takeaways from this article? List 3."
 ```
 
-Run each multiple times, compare:
-- Consistency of output
-- Quality of information
-- Relevance to your needs
+شغّل كل واحد عدة مرات، وقارن:
+- اتساق المخرجات
+- جودة المعلومات
+- ملاءمتها لاحتياجاتك
 
-## When to Stop Iterating
+## متى تتوقف عن التكرار
 
-Perfection is the enemy of good enough. Know when your prompt is ready for use and when you're just polishing for diminishing returns.
+الكمال عدو الجيد الكافي. اعرف متى يكون أمرك جاهزاً للاستخدام ومتى تكون مجرد تلميع مع عوائد متناقصة.
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Ready to Ship</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> جاهز للإطلاق</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Output consistently meets requirements</p>
-      <p className="m-0!">Edge cases are handled appropriately</p>
-      <p className="m-0!">Format is reliable and parseable</p>
-      <p className="m-0!">Further improvements show diminishing returns</p>
+      <p className="m-0!">المخرجات تلبي المتطلبات باستمرار</p>
+      <p className="m-0!">الحالات الحدية تُعالج بشكل مناسب</p>
+      <p className="m-0!">التنسيق موثوق وقابل للتحليل</p>
+      <p className="m-0!">التحسينات الإضافية تُظهر عوائد متناقصة</p>
     </div>
   </div>
   <div className="border rounded-lg bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900">
-    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Keep Iterating</p>
+    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> استمر في التكرار</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">Output is inconsistent across runs</p>
-      <p className="m-0!">Edge cases cause failures</p>
-      <p className="m-0!">Critical requirements are missed</p>
-      <p className="m-0!">You haven't tested enough variations</p>
+      <p className="m-0!">المخرجات غير متسقة عبر التشغيلات</p>
+      <p className="m-0!">الحالات الحدية تسبب فشلاً</p>
+      <p className="m-0!">المتطلبات الحرجة مفقودة</p>
+      <p className="m-0!">لم تختبر اختلافات كافية</p>
     </div>
   </div>
 </div>
 
-## Version Control for Prompts
+## التحكم في الإصدارات للأوامر
 
-Prompts are code. For any prompt used in production, treat it with the same rigor: version control, changelogs, and the ability to roll back if something breaks.
+الأوامر هي كود. لأي أمر يُستخدم في الإنتاج، عامله بنفس الصرامة: التحكم في الإصدارات، وسجلات التغييرات، والقدرة على التراجع إذا تعطل شيء.
 
-<Callout type="tip" title="Built-in Versioning">
-prompts.chat includes automatic version history for your prompts. Every edit is saved, so you can compare versions and restore previous iterations with one click.
+<Callout type="tip" title="إدارة الإصدارات المدمجة">
+prompts.chat يتضمن سجل إصدارات تلقائي لأوامرك. كل تعديل يُحفظ، لذا يمكنك مقارنة الإصدارات واستعادة التكرارات السابقة بنقرة واحدة.
 </Callout>
 
-For self-managed prompts, use a folder structure:
+للأوامر التي تديرها بنفسك، استخدم هيكل مجلدات:
 
 ```
 prompts/
@@ -339,30 +339,30 @@ prompts/
 └── changelog.md    # Document changes
 ```
 
-## Summary
+## الملخص
 
-<Callout type="tip" title="Key Takeaways">
-Start simple, observe carefully, change one thing at a time, document what works, and know when to stop. The best prompts aren't written—they're discovered through systematic iteration.
+<Callout type="tip" title="النقاط الرئيسية">
+ابدأ ببساطة، راقب بعناية، غيّر شيئاً واحداً في كل مرة، وثّق ما ينجح، واعرف متى تتوقف. أفضل الأوامر لا تُكتب—بل تُكتشف من خلال التكرار المنهجي.
 </Callout>
 
 <Quiz 
-  question="What's the best approach when refining a prompt that's producing wrong results?"
+  question="ما هو أفضل نهج عند تحسين أمر ينتج نتائج خاطئة؟"
   options={[
-    "Rewrite the entire prompt from scratch",
-    "Add more examples until it works",
-    "Change one thing at a time and test each change",
-    "Make the prompt as long as possible"
+    "إعادة كتابة الأمر بالكامل من الصفر",
+    "إضافة المزيد من الأمثلة حتى يعمل",
+    "تغيير شيء واحد في كل مرة واختبار كل تغيير",
+    "جعل الأمر أطول ما يمكن"
   ]}
   correctIndex={2}
-  explanation="Changing one thing at a time lets you isolate what works and what doesn't. If you change multiple things at once, you won't know which change fixed the problem or which made it worse."
+  explanation="تغيير شيء واحد في كل مرة يتيح لك عزل ما يعمل وما لا يعمل. إذا غيرت أشياء متعددة في وقت واحد، لن تعرف أي تغيير أصلح المشكلة أو أي تغيير جعلها أسوأ."
 />
 
-## Practice: Improve This Prompt
+## تدريب: حسّن هذا الأمر
 
-Try improving this weak prompt yourself. Edit it, then use AI to compare your version with the original:
+جرب تحسين هذا الأمر الضعيف بنفسك. عدّله، ثم استخدم الذكاء الاصطناعي لمقارنة نسختك مع الأصل:
 
 <BeforeAfterEditor
-  title="Refine This Email Prompt"
+  title="حسّن أمر البريد الإلكتروني هذا"
   badPrompt="Write an email."
   idealPrompt={`You are a professional business writer.
 
@@ -381,7 +381,7 @@ Requirements:
 - Keep under 150 words
 
 Format: Subject line + email body`}
-  task="Transform this vague email prompt into something that will produce a professional, effective result."
+  task="حوّل أمر البريد الإلكتروني الغامض هذا إلى شيء سينتج نتيجة احترافية وفعالة."
 />
 
-In the next chapter, we'll explore JSON and YAML prompting for structured data applications.
+في الفصل القادم، سنستكشف استخدام JSON و YAML في الأوامر لتطبيقات البيانات المنظمة.

@@ -1,32 +1,32 @@
-Few-shot learning is one of the most powerful prompting techniques. By providing examples of what you want, you can teach the model complex tasks without any fine-tuning.
+يُعد التعلم بالأمثلة القليلة (Few-shot learning) من أقوى تقنيات كتابة الأوامر. من خلال تقديم أمثلة على ما تريده، يمكنك تعليم النموذج مهام معقدة دون أي ضبط دقيق.
 
-<Callout type="info" title="Learn by Example">
-Just like humans learn by seeing examples, AI models can learn patterns from the examples you provide in your prompt.
+<Callout type="info" title="التعلم بالأمثلة">
+تماماً كما يتعلم البشر من رؤية الأمثلة، يمكن لنماذج الذكاء الاصطناعي تعلم الأنماط من الأمثلة التي تقدمها في أمرك.
 </Callout>
 
-## What is Few-Shot Learning?
+## ما هو التعلم بالأمثلة القليلة؟
 
-Few-shot learning shows the model examples of input-output pairs before asking it to perform the same task. The model learns the pattern from your examples and applies it to new inputs.
+يُظهر التعلم بالأمثلة القليلة للنموذج أمثلة من أزواج المدخلات والمخرجات قبل طلب تنفيذ نفس المهمة. يتعلم النموذج النمط من أمثلتك ويطبقه على المدخلات الجديدة.
 
 <Compare 
   before={{ 
-    label: "Zero-Shot (No Examples)", 
-    content: `Classify this review as positive or negative:
+    label: "Zero-Shot (بدون أمثلة)", 
+    content: `صنّف هذه المراجعة إلى إيجابية أو سلبية:
 
-"The battery lasts forever but the screen is too dim."
+"البطارية تدوم طويلاً لكن الشاشة خافتة جداً."
 
-→ Model may be inconsistent with edge cases` 
+← قد يكون النموذج غير متسق مع الحالات الحدية` 
   }}
   after={{ 
-    label: "Few-Shot (With Examples)", 
-    content: `"Love it!" → Positive
-"Terrible quality" → Negative  
-"Good but expensive" → Mixed
+    label: "Few-Shot (مع أمثلة)", 
+    content: `"أحببته!" ← إيجابي
+"جودة سيئة" ← سلبي  
+"جيد لكنه مكلف" ← مختلط
 
-Now classify:
-"The battery lasts forever but the screen is too dim."
+الآن صنّف:
+"البطارية تدوم طويلاً لكن الشاشة خافتة جداً."
 
-→ Model learns your exact categories` 
+← يتعلم النموذج تصنيفاتك بدقة` 
   }}
 />
 
@@ -49,430 +49,430 @@ Now classify:
   </div>
 </div>
 
-## Why Examples Work
+## لماذا تنجح الأمثلة
 
 <FewShotDemo />
 
-Examples communicate:
-- **Format**: How output should be structured
-- **Style**: Tone, length, vocabulary
-- **Logic**: The reasoning pattern to follow
-- **Edge cases**: How to handle special situations
+الأمثلة توصل:
+- **التنسيق**: كيف يجب أن يكون هيكل المخرجات
+- **الأسلوب**: النبرة، الطول، المفردات
+- **المنطق**: نمط التفكير الذي يجب اتباعه
+- **الحالات الحدية**: كيفية التعامل مع المواقف الخاصة
 
-## Basic Few-Shot Pattern
+## النمط الأساسي للتعلم بالأمثلة القليلة
 
-The fundamental structure of few-shot prompting follows a simple pattern: show examples, then ask for the new task. Consistency in formatting between examples is crucial. The model learns from the pattern you establish.
+يتبع الهيكل الأساسي للتعلم بالأمثلة القليلة نمطاً بسيطاً: اعرض الأمثلة، ثم اطلب المهمة الجديدة. الاتساق في التنسيق بين الأمثلة أمر بالغ الأهمية. يتعلم النموذج من النمط الذي تحدده.
 
 ```
-[Example 1]
-Input: [input 1]
-Output: [output 1]
+[مثال 1]
+المدخل: [مدخل 1]
+المخرج: [مخرج 1]
 
-[Example 2]
-Input: [input 2]
-Output: [output 2]
+[مثال 2]
+المدخل: [مدخل 2]
+المخرج: [مخرج 2]
 
-[Example 3]
-Input: [input 3]
-Output: [output 3]
+[مثال 3]
+المدخل: [مدخل 3]
+المخرج: [مخرج 3]
 
-Now do this one:
-Input: [new input]
-Output:
+الآن نفّذ هذا:
+المدخل: [مدخل جديد]
+المخرج:
 ```
 
-## Few-Shot for Classification
+## التعلم بالأمثلة القليلة للتصنيف
 
-Classification is one of the strongest use cases for few-shot learning. By showing examples of each category, you define the boundaries between classes more precisely than instructions alone could achieve.
+يُعد التصنيف من أقوى حالات استخدام التعلم بالأمثلة القليلة. من خلال عرض أمثلة من كل فئة، تحدد الحدود بين الفئات بدقة أكبر مما يمكن أن تحققه التعليمات وحدها.
 
-### Sentiment Analysis
+### تحليل المشاعر
 
-<Callout type="info" title="What is Sentiment Analysis?">
-Sentiment analysis classifies text by emotional tone: positive, negative, neutral, or mixed. It's widely used for customer feedback, social media monitoring, and brand perception tracking.
+<Callout type="info" title="ما هو تحليل المشاعر؟">
+تحليل المشاعر يصنف النص حسب النبرة العاطفية: إيجابي، سلبي، محايد، أو مختلط. يُستخدم على نطاق واسع لتعليقات العملاء ومراقبة وسائل التواصل الاجتماعي وتتبع تصور العلامة التجارية.
 </Callout>
 
-Sentiment classification benefits from showing examples of each sentiment type, especially edge cases like "mixed" sentiment that might be ambiguous.
+يستفيد تصنيف المشاعر من عرض أمثلة لكل نوع من المشاعر، خاصة الحالات الحدية مثل المشاعر "المختلطة" التي قد تكون غامضة.
 
-<TryIt compact prompt={`Classify the sentiment of these customer reviews.
+<TryIt compact prompt={`صنّف مشاعر مراجعات العملاء هذه.
 
-Review: "This product exceeded all my expectations! Will buy again."
-Sentiment: Positive
+المراجعة: "هذا المنتج تجاوز كل توقعاتي! سأشتريه مرة أخرى."
+المشاعر: إيجابي
 
-Review: "Arrived broken and customer service was unhelpful."
-Sentiment: Negative
+المراجعة: "وصل مكسوراً وخدمة العملاء لم تكن مفيدة."
+المشاعر: سلبي
 
-Review: "It works fine, nothing special but does the job."
-Sentiment: Neutral
+المراجعة: "يعمل بشكل جيد، لا شيء مميز لكنه يؤدي الغرض."
+المشاعر: محايد
 
-Review: "The quality is amazing but shipping took forever."
-Sentiment: Mixed
+المراجعة: "الجودة رائعة لكن الشحن استغرق وقتاً طويلاً."
+المشاعر: مختلط
 
-Now classify:
-Review: "Love the design but the battery life is disappointing."
-Sentiment:`} />
+الآن صنّف:
+المراجعة: "أحب التصميم لكن عمر البطارية مخيب للآمال."
+المشاعر:`} />
 
-### Topic Classification
+### تصنيف المواضيع
 
-For multi-class categorization, include at least one example per category. This helps the model understand your specific taxonomy, which may differ from its default understanding.
+للتصنيف متعدد الفئات، قم بتضمين مثال واحد على الأقل لكل فئة. هذا يساعد النموذج على فهم تصنيفك المحدد، الذي قد يختلف عن فهمه الافتراضي.
 
-<TryIt compact prompt={`Categorize these support tickets.
+<TryIt compact prompt={`صنّف تذاكر الدعم هذه.
 
-Ticket: "I can't log into my account, password reset not working"
-Category: Authentication
+التذكرة: "لا أستطيع تسجيل الدخول إلى حسابي، إعادة تعيين كلمة المرور لا تعمل"
+الفئة: المصادقة
 
-Ticket: "How do I upgrade to the premium plan?"
-Category: Billing
+التذكرة: "كيف أقوم بالترقية إلى الخطة المميزة؟"
+الفئة: الفوترة
 
-Ticket: "The app crashes when I try to export data"
-Category: Bug Report
+التذكرة: "التطبيق يتعطل عندما أحاول تصدير البيانات"
+الفئة: تقرير خلل
 
-Ticket: "Can you add dark mode to the mobile app?"
-Category: Feature Request
+التذكرة: "هل يمكنكم إضافة الوضع الداكن للتطبيق المحمول؟"
+الفئة: طلب ميزة
 
-Now categorize:
-Ticket: "My payment was declined but I see the charge on my card"
-Category:`} />
+الآن صنّف:
+التذكرة: "تم رفض دفعتي لكنني أرى الرسوم على بطاقتي"
+الفئة:`} />
 
-## Few-Shot for Transformation
+## التعلم بالأمثلة القليلة للتحويل
 
-Transformation tasks convert input from one form to another while preserving meaning. Examples are essential here because they define exactly what "transformation" means for your use case.
+مهام التحويل تحول المدخلات من شكل إلى آخر مع الحفاظ على المعنى. الأمثلة ضرورية هنا لأنها تحدد بالضبط ما يعنيه "التحويل" لحالة استخدامك.
 
-### Text Rewriting
+### إعادة كتابة النص
 
-Style transformation requires examples that show the exact tone shift you want. Abstract instructions like "make it professional" are interpreted differently. Examples make it concrete.
+يتطلب تحويل الأسلوب أمثلة تُظهر التغيير الدقيق في النبرة الذي تريده. التعليمات المجردة مثل "اجعله رسمياً" تُفسَّر بشكل مختلف. الأمثلة تجعلها ملموسة.
 
-<TryIt compact prompt={`Rewrite these sentences in a professional tone.
+<TryIt compact prompt={`أعد كتابة هذه الجمل بنبرة رسمية.
 
-Casual: "Hey, just wanted to check if you got my email?"
-Professional: "I wanted to follow up regarding my previous email."
+عامي: "مرحباً، أردت فقط التحقق إذا استلمت بريدي الإلكتروني؟"
+رسمي: "أردت المتابعة بخصوص بريدي الإلكتروني السابق."
 
-Casual: "This is super important and needs to be done ASAP!"
-Professional: "This matter requires urgent attention and prompt action."
+عامي: "هذا مهم جداً ويجب إنجازه فوراً!"
+رسمي: "هذا الأمر يتطلب اهتماماً عاجلاً وإجراءً سريعاً."
 
-Casual: "Sorry for the late reply, been swamped!"
-Professional: "I apologize for the delayed response. I've had a particularly demanding schedule."
+عامي: "آسف على الرد المتأخر، كنت مشغولاً جداً!"
+رسمي: "أعتذر عن التأخر في الرد. كان لدي جدول مزدحم بشكل خاص."
 
-Now rewrite:
-Casual: "Can't make it to the meeting, something came up."
-Professional:`} />
+الآن أعد الكتابة:
+عامي: "لا أستطيع حضور الاجتماع، حصل شيء ما."
+رسمي:`} />
 
-### Format Conversion
+### تحويل التنسيق
 
-Format conversion tasks benefit from examples showing edge cases and ambiguous inputs. The model learns your specific conventions for handling tricky cases.
+تستفيد مهام تحويل التنسيق من الأمثلة التي تُظهر الحالات الحدية والمدخلات الغامضة. يتعلم النموذج اصطلاحاتك المحددة للتعامل مع الحالات الصعبة.
 
-<TryIt compact prompt={`Convert these natural language dates to ISO format.
+<TryIt compact prompt={`حوّل هذه التواريخ باللغة الطبيعية إلى تنسيق ISO.
 
-Input: "next Tuesday"
-Output: 2024-01-16 (assuming today is 2024-01-11, Thursday)
+المدخل: "يوم الثلاثاء القادم"
+المخرج: 2024-01-16 (بافتراض أن اليوم هو 2024-01-11، الخميس)
 
-Input: "the day after tomorrow"
-Output: 2024-01-13
+المدخل: "بعد غد"
+المخرج: 2024-01-13
 
-Input: "last day of this month"
-Output: 2024-01-31
+المدخل: "آخر يوم في هذا الشهر"
+المخرج: 2024-01-31
 
-Input: "two weeks from now"
-Output: 2024-01-25
+المدخل: "بعد أسبوعين من الآن"
+المخرج: 2024-01-25
 
-Now convert:
-Input: "the first Monday of next month"
-Output:`} />
+الآن حوّل:
+المدخل: "أول يوم إثنين في الشهر القادم"
+المخرج:`} />
 
-## Few-Shot for Generation
+## التعلم بالأمثلة القليلة للتوليد
 
-Generation tasks create new content following a learned pattern. Examples establish length, structure, tone, and what details to highlight. These are hard to specify in instructions alone.
+مهام التوليد تُنشئ محتوى جديداً يتبع نمطاً متعلَّماً. الأمثلة تحدد الطول والهيكل والنبرة والتفاصيل التي يجب إبرازها. هذه أمور يصعب تحديدها في التعليمات وحدها.
 
-### Product Descriptions
+### أوصاف المنتجات
 
-Marketing copy benefits enormously from examples because they capture brand voice, feature emphasis, and persuasive techniques that are difficult to describe abstractly.
+يستفيد النص التسويقي بشكل كبير من الأمثلة لأنها تلتقط صوت العلامة التجارية والتركيز على الميزات والتقنيات الإقناعية التي يصعب وصفها بشكل مجرد.
 
-<TryIt compact prompt={`Write product descriptions in this style:
+<TryIt compact prompt={`اكتب أوصاف المنتجات بهذا الأسلوب:
 
-Product: Wireless Bluetooth Headphones
-Description: Immerse yourself in crystal-clear sound with our lightweight wireless headphones. Featuring 40-hour battery life, active noise cancellation, and plush memory foam ear cushions for all-day comfort.
+المنتج: سماعات رأس لاسلكية بتقنية Bluetooth
+الوصف: انغمس في صوت نقي كالكريستال مع سماعاتنا اللاسلكية الخفيفة. تتميز ببطارية تدوم 40 ساعة، وإلغاء الضوضاء النشط، ووسائد أذن من الإسفنج الذاكر الناعم للراحة طوال اليوم.
 
-Product: Stainless Steel Water Bottle
-Description: Stay hydrated in style with our double-walled insulated bottle. Keeps drinks cold for 24 hours or hot for 12. Features a leak-proof lid and fits standard cup holders.
+المنتج: زجاجة مياه من الفولاذ المقاوم للصدأ
+الوصف: حافظ على ترطيبك بأناقة مع زجاجتنا المعزولة مزدوجة الجدران. تحافظ على المشروبات باردة لمدة 24 ساعة أو ساخنة لمدة 12 ساعة. تتميز بغطاء مانع للتسرب وتناسب حاملات الأكواب القياسية.
 
-Product: Ergonomic Office Chair
-Description: Transform your workspace with our adjustable ergonomic chair. Breathable mesh back, lumbar support, and 360° swivel combine to keep you comfortable during long work sessions.
+المنتج: كرسي مكتب مريح
+الوصف: حوّل مساحة عملك مع كرسينا المريح القابل للتعديل. ظهر شبكي قابل للتنفس ودعم للظهر ودوران 360 درجة يجتمعون لإبقائك مرتاحاً خلال جلسات العمل الطويلة.
 
-Now write:
-Product: Portable Phone Charger
-Description:`} />
+الآن اكتب:
+المنتج: شاحن هاتف محمول
+الوصف:`} />
 
-### Code Documentation
+### توثيق الكود
 
-<Callout type="info" title="Why Document Code?">
-Good documentation explains what code does, its parameters, return values, and usage examples. Consistent docstrings enable auto-generated API docs and help IDEs provide better code completion.
+<Callout type="info" title="لماذا نوثق الكود؟">
+التوثيق الجيد يشرح ما يفعله الكود ومعاملاته وقيم الإرجاع وأمثلة الاستخدام. سلاسل التوثيق المتسقة تمكّن من إنشاء مستندات API تلقائياً وتساعد بيئات التطوير على توفير إكمال كود أفضل.
 </Callout>
 
-Documentation style varies widely between projects. Examples teach your specific format, what to include (args, returns, examples), and the level of detail expected.
+أسلوب التوثيق يختلف على نطاق واسع بين المشاريع. الأمثلة تُعلّم تنسيقك المحدد وما يجب تضمينه (المعاملات، القيم المُرجَعة، الأمثلة) ومستوى التفصيل المتوقع.
 
-<TryIt compact prompt={`Write documentation comments for these functions:
+<TryIt compact prompt={`اكتب تعليقات توثيقية لهذه الدوال:
 
-Function:
+الدالة:
 def calculate_bmi(weight_kg, height_m):
     return weight_kg / (height_m ** 2)
 
-Documentation:
+التوثيق:
 """
-Calculate Body Mass Index (BMI) from weight and height.
+احسب مؤشر كتلة الجسم (BMI) من الوزن والطول.
 
 Args:
-    weight_kg (float): Weight in kilograms
-    height_m (float): Height in meters
+    weight_kg (float): الوزن بالكيلوغرام
+    height_m (float): الطول بالمتر
 
 Returns:
-    float: BMI value (weight/height²)
+    float: قيمة BMI (الوزن/الطول²)
 
 Example:
     >>> calculate_bmi(70, 1.75)
     22.86
 """
 
-Now document:
-Function:
+الآن وثّق:
+الدالة:
 def is_palindrome(text):
     cleaned = ''.join(c.lower() for c in text if c.isalnum())
     return cleaned == cleaned[::-1]
 
-Documentation:`} />
+التوثيق:`} />
 
-## Few-Shot for Extraction
+## التعلم بالأمثلة القليلة للاستخراج
 
-Extraction tasks pull structured information from unstructured text. Examples define which entities matter, how to format output, and how to handle cases where information is missing or ambiguous.
+مهام الاستخراج تسحب معلومات منظمة من نص غير منظم. الأمثلة تحدد الكيانات المهمة وكيفية تنسيق المخرجات وكيفية التعامل مع الحالات التي تكون فيها المعلومات مفقودة أو غامضة.
 
-### Entity Extraction
+### استخراج الكيانات
 
-<Callout type="info" title="What is Named Entity Recognition?">
-Named Entity Recognition (NER) identifies and classifies named entities in text into categories like persons, organizations, locations, dates, and products. It's fundamental for information retrieval and knowledge graphs.
+<Callout type="info" title="ما هو التعرف على الكيانات المسماة؟">
+التعرف على الكيانات المسماة (NER) يحدد ويصنف الكيانات المسماة في النص إلى فئات مثل الأشخاص والمنظمات والمواقع والتواريخ والمنتجات. وهو أساسي لاسترجاع المعلومات ورسوم المعرفة البيانية.
 </Callout>
 
-NER benefits from examples showing your specific entity types and how to handle entities that could fit multiple categories.
+يستفيد التعرف على الكيانات المسماة من الأمثلة التي تُظهر أنواع كياناتك المحددة وكيفية التعامل مع الكيانات التي قد تناسب فئات متعددة.
 
-<TryIt compact prompt={`Extract named entities from these sentences.
+<TryIt compact prompt={`استخرج الكيانات المسماة من هذه الجمل.
 
-Text: "Apple CEO Tim Cook announced the iPhone 15 in Cupertino."
-Entities:
-- COMPANY: Apple
-- PERSON: Tim Cook
-- PRODUCT: iPhone 15
-- LOCATION: Cupertino
+النص: "أعلن تيم كوك الرئيس التنفيذي لشركة Apple عن iPhone 15 في كوبرتينو."
+الكيانات:
+- شركة: Apple
+- شخص: تيم كوك
+- منتج: iPhone 15
+- موقع: كوبرتينو
 
-Text: "The European Union fined Google €4.34 billion in 2018."
-Entities:
-- ORGANIZATION: European Union
-- COMPANY: Google
-- MONEY: €4.34 billion
-- DATE: 2018
+النص: "فرض الاتحاد الأوروبي غرامة على Google بقيمة 4.34 مليار يورو في عام 2018."
+الكيانات:
+- منظمة: الاتحاد الأوروبي
+- شركة: Google
+- مبلغ مالي: 4.34 مليار يورو
+- تاريخ: 2018
 
-Now extract from:
-Text: "Elon Musk's SpaceX launched 23 Starlink satellites from Cape Canaveral on December 3rd."
-Entities:`} />
+الآن استخرج من:
+النص: "أطلقت شركة SpaceX التابعة لإيلون ماسك 23 قمراً صناعياً من Starlink من كيب كانافيرال في 3 ديسمبر."
+الكيانات:`} />
 
-### Structured Data Extraction
+### استخراج البيانات المنظمة
 
-Extracting structured data from natural language requires examples showing how to handle missing fields, implicit information, and varying input formats.
+استخراج البيانات المنظمة من اللغة الطبيعية يتطلب أمثلة تُظهر كيفية التعامل مع الحقول المفقودة والمعلومات الضمنية وتنسيقات المدخلات المتنوعة.
 
-<TryIt compact prompt={`Extract meeting details into structured format.
+<TryIt compact prompt={`استخرج تفاصيل الاجتماع بتنسيق منظم.
 
-Email: "Let's meet tomorrow at 3pm in Conference Room B to discuss the Q4 budget. Please bring your laptop."
+البريد الإلكتروني: "لنلتقي غداً الساعة 3 مساءً في قاعة المؤتمرات ب لمناقشة ميزانية الربع الرابع. يرجى إحضار حاسوبك المحمول."
 
-Meeting:
-- Date: [tomorrow's date]
-- Time: 3:00 PM
-- Location: Conference Room B
-- Topic: Q4 budget discussion
-- Requirements: Bring laptop
+الاجتماع:
+- التاريخ: [تاريخ الغد]
+- الوقت: 3:00 مساءً
+- الموقع: قاعة المؤتمرات ب
+- الموضوع: مناقشة ميزانية الربع الرابع
+- المتطلبات: إحضار الحاسوب المحمول
 
-Email: "Team sync moved to Friday 10am, we'll use Zoom instead. Link in calendar invite. 30 minutes max."
+البريد الإلكتروني: "تم نقل اجتماع الفريق إلى الجمعة الساعة 10 صباحاً، سنستخدم Zoom بدلاً من ذلك. الرابط في دعوة التقويم. 30 دقيقة كحد أقصى."
 
-Meeting:
-- Date: Friday
-- Time: 10:00 AM
-- Location: Zoom (virtual)
-- Topic: Team sync
-- Duration: 30 minutes
+الاجتماع:
+- التاريخ: الجمعة
+- الوقت: 10:00 صباحاً
+- الموقع: Zoom (افتراضي)
+- الموضوع: اجتماع الفريق
+- المدة: 30 دقيقة
 
-Now extract from:
-Email: "Can we do a quick call Monday morning around 9:30 to go over the client presentation? I'll send a Teams link."
+الآن استخرج من:
+البريد الإلكتروني: "هل يمكننا إجراء مكالمة سريعة صباح الإثنين حوالي الساعة 9:30 لمراجعة عرض العميل؟ سأرسل رابط Teams."
 
-Meeting:`} />
+الاجتماع:`} />
 
-## Advanced Few-Shot Techniques
+## تقنيات متقدمة للتعلم بالأمثلة القليلة
 
-Beyond basic few-shot, several techniques can improve results for complex tasks.
+بالإضافة إلى التعلم الأساسي بالأمثلة القليلة، هناك عدة تقنيات يمكنها تحسين النتائج للمهام المعقدة.
 
-### Diverse Examples
+### أمثلة متنوعة
 
-Diversity in examples is more valuable than quantity. Cover different scenarios, edge cases, and potential ambiguities rather than showing similar examples repeatedly.
+التنوع في الأمثلة أكثر قيمة من الكمية. غطِّ سيناريوهات مختلفة وحالات حدية وغموضات محتملة بدلاً من عرض أمثلة متشابهة بشكل متكرر.
 
-<TryIt compact prompt={`Respond to customer complaints.
+<TryIt compact prompt={`رد على شكاوى العملاء.
 
-Example 1 (Product Issue):
-Customer: "My order arrived damaged."
-Response: "I sincerely apologize for the damaged delivery. I'll immediately send a replacement at no charge. You don't need to return the damaged item. May I confirm your shipping address?"
+مثال 1 (مشكلة في المنتج):
+العميل: "وصل طلبي تالفاً."
+الرد: "أعتذر بصدق عن التسليم التالف. سأرسل فوراً بديلاً دون أي رسوم. لا تحتاج إلى إرجاع المنتج التالف. هل يمكنني تأكيد عنوان الشحن الخاص بك؟"
 
-Example 2 (Service Issue):
-Customer: "I've been on hold for 2 hours!"
-Response: "I'm very sorry for the long wait time. That's unacceptable. I'm here now and will personally ensure your issue is resolved. What can I help you with today?"
+مثال 2 (مشكلة في الخدمة):
+العميل: "كنت في الانتظار لمدة ساعتين!"
+الرد: "أنا آسف جداً على وقت الانتظار الطويل. هذا غير مقبول. أنا هنا الآن وسأضمن شخصياً حل مشكلتك. كيف يمكنني مساعدتك اليوم؟"
 
-Example 3 (Billing Issue):
-Customer: "You charged me twice for the same order!"
-Response: "I apologize for this billing error. I've verified the duplicate charge and initiated a refund of $XX.XX to your original payment method. You should see it within 3-5 business days."
+مثال 3 (مشكلة في الفوترة):
+العميل: "خصمتم مني مرتين لنفس الطلب!"
+الرد: "أعتذر عن هذا الخطأ في الفوترة. لقد تحققت من الرسوم المكررة وبدأت استرداد مبلغ XX.XX دولار إلى طريقة الدفع الأصلية. يجب أن تراه خلال 3-5 أيام عمل."
 
-Now respond to:
-Customer: "The product doesn't match what was shown on the website."
-Response:`} />
+الآن رد على:
+العميل: "المنتج لا يتطابق مع ما كان معروضاً على الموقع."
+الرد:`} />
 
-### Negative Examples
+### الأمثلة السلبية
 
-<Callout type="tip" title="Contrastive Learning">
-Showing "good" vs "bad" examples is called contrastive learning. It helps the model understand not just what you want, but what to avoid. This is especially useful for style and quality judgments.
+<Callout type="tip" title="التعلم التباينيّ">
+إظهار أمثلة "جيدة" مقابل "سيئة" يُسمى التعلم التباينيّ. وهو يساعد النموذج على فهم ليس فقط ما تريده، بل ما يجب تجنبه. هذا مفيد بشكل خاص لأحكام الأسلوب والجودة.
 </Callout>
 
-Sometimes showing what *not* to do is as valuable as showing correct examples. Negative examples help the model understand boundaries and avoid common mistakes.
+أحياناً يكون إظهار ما *لا* يجب فعله بنفس قيمة إظهار الأمثلة الصحيحة. الأمثلة السلبية تساعد النموذج على فهم الحدود وتجنب الأخطاء الشائعة.
 
-<TryIt compact prompt={`Write concise email subject lines.
+<TryIt compact prompt={`اكتب عناوين بريد إلكتروني موجزة.
 
-Good: "Q3 Report Ready for Review"
-Bad: "Hey, I finished that report thing we talked about"
+جيد: "تقرير الربع الثالث جاهز للمراجعة"
+سيء: "مرحباً، انتهيت من ذلك الشيء الذي تحدثنا عنه"
 
-Good: "Action Required: Approve PTO by Friday"
-Bad: "I need you to do something for me please read this"
+جيد: "إجراء مطلوب: الموافقة على الإجازة بحلول الجمعة"
+سيء: "أحتاج منك أن تفعل شيئاً من فضلك اقرأ هذا"
 
-Good: "Meeting Rescheduled: Project Sync → Thursday 2pm"
-Bad: "Change of plans!!!!!"
+جيد: "تم إعادة جدولة الاجتماع: مزامنة المشروع ← الخميس 2 مساءً"
+سيء: "تغيير في الخطط!!!!!"
 
-Now write a subject line for:
-Email about: Requesting feedback on a proposal draft
-Subject:`} />
+الآن اكتب عنواناً لـ:
+بريد إلكتروني حول: طلب ملاحظات على مسودة اقتراح
+العنوان:`} />
 
-### Edge Case Examples
+### أمثلة الحالات الحدية
 
-Edge cases often determine whether a solution works in production. Including unusual inputs in your examples prevents the model from failing on real-world data that doesn't fit the "happy path."
+الحالات الحدية غالباً ما تحدد ما إذا كان الحل يعمل في الإنتاج. تضمين مدخلات غير عادية في أمثلتك يمنع النموذج من الفشل على بيانات العالم الحقيقي التي لا تناسب "المسار السعيد".
 
-<TryIt compact prompt={`Parse names into structured format.
+<TryIt compact prompt={`حلّل الأسماء إلى تنسيق منظم.
 
-Input: "John Smith"
-Output: {"first": "John", "last": "Smith", "middle": null, "suffix": null}
+المدخل: "John Smith"
+المخرج: {"first": "John", "last": "Smith", "middle": null, "suffix": null}
 
-Input: "Mary Jane Watson-Parker"
-Output: {"first": "Mary", "middle": "Jane", "last": "Watson-Parker", "suffix": null}
+المدخل: "Mary Jane Watson-Parker"
+المخرج: {"first": "Mary", "middle": "Jane", "last": "Watson-Parker", "suffix": null}
 
-Input: "Dr. Martin Luther King Jr."
-Output: {"prefix": "Dr.", "first": "Martin", "middle": "Luther", "last": "King", "suffix": "Jr."}
+المدخل: "Dr. Martin Luther King Jr."
+المخرج: {"prefix": "Dr.", "first": "Martin", "middle": "Luther", "last": "King", "suffix": "Jr."}
 
-Input: "Madonna"
-Output: {"first": "Madonna", "last": null, "middle": null, "suffix": null, "mononym": true}
+المدخل: "Madonna"
+المخرج: {"first": "Madonna", "last": null, "middle": null, "suffix": null, "mononym": true}
 
-Now parse:
-Input: "Sir Patrick Stewart III"
-Output:`} />
+الآن حلّل:
+المدخل: "Sir Patrick Stewart III"
+المخرج:`} />
 
-## How Many Examples?
+## كم عدد الأمثلة المطلوبة؟
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Simple classification</span>
+    <span className="font-semibold min-w-40">تصنيف بسيط</span>
     <span className="text-primary font-mono">2-3</span>
-    <span className="text-muted-foreground">One per category minimum</span>
+    <span className="text-muted-foreground">واحد لكل فئة كحد أدنى</span>
   </div>
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Complex formatting</span>
+    <span className="font-semibold min-w-40">تنسيق معقد</span>
     <span className="text-primary font-mono">3-5</span>
-    <span className="text-muted-foreground">Show variations</span>
+    <span className="text-muted-foreground">اعرض الاختلافات</span>
   </div>
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Nuanced style</span>
+    <span className="font-semibold min-w-40">أسلوب دقيق</span>
     <span className="text-primary font-mono">4-6</span>
-    <span className="text-muted-foreground">Capture full range</span>
+    <span className="text-muted-foreground">التقط النطاق الكامل</span>
   </div>
   <div className="flex gap-3 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Edge cases</span>
+    <span className="font-semibold min-w-40">حالات حدية</span>
     <span className="text-primary font-mono">1-2</span>
-    <span className="text-muted-foreground">Alongside normal examples</span>
+    <span className="text-muted-foreground">إلى جانب الأمثلة العادية</span>
   </div>
 </div>
 
-## Example Quality Matters
+## جودة الأمثلة مهمة
 
 <Compare 
   before={{ 
-    label: "Bad Examples", 
-    content: `"Nice product" → Good
-"Nice service" → Good
-"Nice price" → Good
+    label: "أمثلة سيئة", 
+    content: `"منتج جميل" ← جيد
+"خدمة جميلة" ← جيد
+"سعر جميل" ← جيد
 
-✗ All too similar
-✗ Same word repeated
-✗ No edge cases shown` 
+✗ كلها متشابهة جداً
+✗ نفس الكلمة مكررة
+✗ لا حالات حدية` 
   }}
   after={{ 
-    label: "Good Examples", 
-    content: `"Exceeded expectations!" → Positive
-"Broken on arrival" → Negative
-"Works fine, nothing special" → Neutral
-"Great quality but overpriced" → Mixed
+    label: "أمثلة جيدة", 
+    content: `"تجاوز التوقعات!" ← إيجابي
+"مكسور عند الوصول" ← سلبي
+"يعمل بشكل جيد، لا شيء مميز" ← محايد
+"جودة رائعة لكنه غالي الثمن" ← مختلط
 
-✓ Diverse scenarios
-✓ Clear boundaries
-✓ Covers edge cases` 
+✓ سيناريوهات متنوعة
+✓ حدود واضحة
+✓ يغطي الحالات الحدية` 
   }}
 />
 
-## Combining Few-Shot with Other Techniques
+## الجمع بين التعلم بالأمثلة القليلة والتقنيات الأخرى
 
-Few-shot learning combines powerfully with other prompting techniques. The examples provide the "what" while other techniques can add context, reasoning, or structure.
+يتكامل التعلم بالأمثلة القليلة بقوة مع تقنيات الأوامر الأخرى. الأمثلة توفر "ماذا" بينما التقنيات الأخرى يمكنها إضافة السياق أو التفكير أو الهيكل.
 
-### Few-Shot + Role
+### التعلم بالأمثلة القليلة + الدور
 
-Adding a role gives the model context for *why* it's doing the task, which can improve quality and consistency.
-
-```
-You are a legal contract reviewer.
-
-[examples of contract clause analysis]
-
-Now analyze: [new clause]
-```
-
-### Few-Shot + CoT
-
-Combining few-shot with Chain of Thought shows not just *what* answer to give, but *how* to reason through to that answer. This is powerful for tasks requiring judgment.
+إضافة دور يعطي النموذج سياقاً عن *لماذا* يقوم بالمهمة، مما يمكن أن يحسن الجودة والاتساق.
 
 ```
-Classify and explain reasoning.
+أنت مراجع عقود قانونية.
 
-Review: "Great features but overpriced"
-Thinking: The review mentions positive aspects ("great features") 
-but also a significant negative ("overpriced"). The negative seems 
-to outweigh the positive based on the "but" conjunction.
-Classification: Mixed-Negative
+[أمثلة على تحليل بنود العقود]
 
-[more examples with reasoning]
-
-Now classify with reasoning:
-Review: "Exactly what I needed, arrived faster than expected"
+الآن حلّل: [بند جديد]
 ```
 
-## Summary
+### التعلم بالأمثلة القليلة + سلسلة التفكير
 
-<Callout type="tip" title="Key Takeaways">
-Few-shot learning teaches through demonstration and is often more effective than instructions alone. Use 2-5 diverse, correct examples and combine with other techniques for best results.
+الجمع بين التعلم بالأمثلة القليلة وسلسلة التفكير (Chain of Thought) يُظهر ليس فقط *أي* إجابة يجب تقديمها، بل *كيفية* التفكير للوصول إلى تلك الإجابة. هذا قوي للمهام التي تتطلب حكماً.
+
+```
+صنّف واشرح التفكير.
+
+المراجعة: "ميزات رائعة لكنه غالي الثمن"
+التفكير: تذكر المراجعة جوانب إيجابية ("ميزات رائعة") 
+لكن أيضاً سلبية كبيرة ("غالي الثمن"). يبدو أن السلبي 
+يفوق الإيجابي بناءً على أداة الربط "لكن".
+التصنيف: مختلط-سلبي
+
+[المزيد من الأمثلة مع التفكير]
+
+الآن صنّف مع التفكير:
+المراجعة: "بالضبط ما احتجته، وصل أسرع من المتوقع"
+```
+
+## الملخص
+
+<Callout type="tip" title="النقاط الرئيسية">
+التعلم بالأمثلة القليلة يُعلّم من خلال العرض وغالباً ما يكون أكثر فعالية من التعليمات وحدها. استخدم 2-5 أمثلة متنوعة وصحيحة واجمعها مع تقنيات أخرى للحصول على أفضل النتائج.
 </Callout>
 
 <Quiz 
-  question="How many examples should you typically provide in few-shot learning?"
+  question="كم عدد الأمثلة التي يجب تقديمها عادةً في التعلم بالأمثلة القليلة؟"
   options={[
-    "As many as possible (10+)",
-    "Just 1 example is always enough",
-    "2-5 diverse, correct examples",
-    "Examples aren't necessary if instructions are clear"
+    "أكبر عدد ممكن (10+)",
+    "مثال واحد فقط يكفي دائماً",
+    "2-5 أمثلة متنوعة وصحيحة",
+    "الأمثلة غير ضرورية إذا كانت التعليمات واضحة"
   ]}
   correctIndex={2}
-  explanation="2-5 diverse, correct examples typically work best. Too few may not capture the pattern, while too many waste tokens and may confuse the model. Quality and diversity matter more than quantity."
+  explanation="عادةً ما تعمل 2-5 أمثلة متنوعة وصحيحة بشكل أفضل. القليل جداً قد لا يلتقط النمط، بينما الكثير جداً يهدر الرموز وقد يربك النموذج. الجودة والتنوع أهم من الكمية."
 />
 
-In the next chapter, we'll explore iterative refinement: the art of improving prompts through successive attempts.
+في الفصل التالي، سنستكشف التحسين التكراري: فن تحسين الأوامر من خلال المحاولات المتتالية.

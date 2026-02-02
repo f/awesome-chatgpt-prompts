@@ -1,335 +1,335 @@
-AI can dramatically enhance professional productivity. This chapter covers prompts for business communication, analysis, planning, and workflow optimization.
+يمكن للذكاء الاصطناعي تعزيز الإنتاجية المهنية بشكل كبير. يغطي هذا الفصل الأوامر الموجهة للتواصل التجاري والتحليل والتخطيط وتحسين سير العمل.
 
-<Callout type="info" title="AI for Business">
-AI excels at drafting, analysis, and structuring—freeing you to focus on strategy, relationships, and decisions that require human judgment.
+<Callout type="info" title="الذكاء الاصطناعي للأعمال">
+يتفوق الذكاء الاصطناعي في الصياغة والتحليل والهيكلة — مما يتيح لك التركيز على الاستراتيجية والعلاقات والقرارات التي تتطلب الحكم البشري.
 </Callout>
 
-## Business Communication
+## التواصل التجاري
 
-### Do's and Don'ts: Business Emails
+### ما يجب فعله وما يجب تجنبه: رسائل البريد الإلكتروني التجارية
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Write an email to my boss about the project." }}
-  after={{ label: "✓ Complete context", content: "Write an email to my manager (Sarah) updating her on the Q4 marketing project.\n\nKey points: We're on track for the Nov 15 deadline, resolved the vendor issue, need her approval on the $5K budget increase.\nTone: Professional but friendly (we have a good relationship)\nKeep under 150 words with a clear ask at the end." }}
+  before={{ label: "❌ طلب غامض", content: "اكتب بريدًا إلكترونيًا لمديري حول المشروع." }}
+  after={{ label: "✓ سياق كامل", content: "اكتب بريدًا إلكترونيًا لمديرتي (سارة) لإطلاعها على مشروع التسويق للربع الرابع.\n\nالنقاط الرئيسية: نحن على المسار الصحيح للموعد النهائي في 15 نوفمبر، حللنا مشكلة المورد، نحتاج موافقتها على زيادة الميزانية بمقدار 5000 دولار.\nالنبرة: مهنية ولكن ودية (علاقتنا جيدة)\nأبقِها أقل من 150 كلمة مع طلب واضح في النهاية." }}
 />
 
-### Email Drafting
+### صياغة البريد الإلكتروني
 
-<TryIt compact prompt={`Write a professional email.
+<TryIt compact prompt={`اكتب بريدًا إلكترونيًا مهنيًا.
 
-Context:
-- To: [recipient and relationship]
-- Purpose: [request/inform/follow-up/apologize]
-- Key points: [what must be communicated]
-- Tone: [formal/friendly professional/urgent]
+السياق:
+- إلى: [المستلم والعلاقة]
+- الغرض: [طلب/إعلام/متابعة/اعتذار]
+- النقاط الرئيسية: [ما يجب توصيله]
+- النبرة: [رسمية/مهنية ودية/عاجلة]
 
-Constraints:
-- Keep under [X] sentences
-- Clear call-to-action
-- Subject line included`} />
+القيود:
+- أبقِها أقل من [X] جملة
+- دعوة واضحة للعمل
+- تضمين سطر الموضوع`} />
 
-**Examples by purpose:**
+**أمثلة حسب الغرض:**
 
-<TryIt compact prompt={`\${emailType:Meeting Request}: Write an email requesting a meeting with a potential client to discuss partnership opportunities. Keep it brief and make it easy for them to say yes.`} />
+<TryIt compact prompt={`\${emailType:طلب اجتماع}: اكتب بريدًا إلكترونيًا لطلب اجتماع مع عميل محتمل لمناقشة فرص الشراكة. اجعله موجزًا واجعل من السهل عليهم الموافقة.`} />
 
-<TryIt compact prompt={`\${emailType:Difficult Conversation}: Write an email declining a vendor's proposal while maintaining the relationship for future opportunities. Be clear but diplomatic.`} />
+<TryIt compact prompt={`\${emailType:محادثة صعبة}: اكتب بريدًا إلكترونيًا لرفض عرض مورد مع الحفاظ على العلاقة للفرص المستقبلية. كن واضحًا ولكن دبلوماسيًا.`} />
 
-<TryIt compact prompt={`\${emailType:Status Update}: Write a project status email to stakeholders. The project is 2 weeks behind schedule due to scope changes. Present the situation professionally with a recovery plan.`} />
+<TryIt compact prompt={`\${emailType:تحديث الحالة}: اكتب بريدًا إلكترونيًا لتحديث حالة المشروع لأصحاب المصلحة. المشروع متأخر أسبوعين بسبب تغييرات في النطاق. قدم الوضع بشكل مهني مع خطة للتعافي.`} />
 
-### Presentation Content
+### محتوى العرض التقديمي
 
-<TryIt compact prompt={`Create presentation content for \${topic:Q4 sales strategy}.
+<TryIt compact prompt={`أنشئ محتوى عرض تقديمي لـ \${topic:استراتيجية مبيعات الربع الرابع}.
 
-Audience: \${audience:executive leadership}
-Duration: \${duration:15 minutes}
-Goal: \${goal:persuade to approve budget increase}
+الجمهور: \${audience:القيادة التنفيذية}
+المدة: \${duration:15 دقيقة}
+الهدف: \${goal:الإقناع بالموافقة على زيادة الميزانية}
 
-Provide for each slide:
-- Title
-- Key message (one main point)
-- Supporting points (3 max)
-- Speaker notes (what to say)
-- Visual suggestion (chart/image/diagram)
+قدم لكل شريحة:
+- العنوان
+- الرسالة الرئيسية (نقطة رئيسية واحدة)
+- النقاط الداعمة (3 كحد أقصى)
+- ملاحظات المتحدث (ما يجب قوله)
+- اقتراح مرئي (رسم بياني/صورة/مخطط)
 
-Structure:
-1. Hook/Attention grabber
-2. Problem/Opportunity
-3. Solution/Recommendation
-4. Evidence/Support
-5. Call to action`} />
+الهيكل:
+1. جذب الانتباه
+2. المشكلة/الفرصة
+3. الحل/التوصية
+4. الدليل/الدعم
+5. الدعوة للعمل`} />
 
-### Report Writing
+### كتابة التقارير
 
-<TryIt compact prompt={`Write a \${reportType:recommendation} report on \${topic:expanding into European markets}.
+<TryIt compact prompt={`اكتب تقرير \${reportType:توصيات} حول \${topic:التوسع في الأسواق الأوروبية}.
 
-Report type: \${type:recommendation}
-Audience: \${audience:C-suite}
-Length: \${length:5 pages}
+نوع التقرير: \${type:توصيات}
+الجمهور: \${audience:الإدارة العليا}
+الطول: \${length:5 صفحات}
 
-Structure:
-1. Executive Summary (key findings, 1 paragraph)
-2. Background/Context
-3. Methodology (if applicable)
-4. Findings
-5. Analysis
-6. Recommendations
-7. Next Steps
+الهيكل:
+1. الملخص التنفيذي (النتائج الرئيسية، فقرة واحدة)
+2. الخلفية/السياق
+3. المنهجية (إن وجدت)
+4. النتائج
+5. التحليل
+6. التوصيات
+7. الخطوات التالية
 
-Include: Data visualization suggestions where relevant
-Tone: \${tone:formal business}`} />
+تضمين: اقتراحات تصور البيانات حيثما كان ذلك مناسبًا
+النبرة: \${tone:رسمية تجارية}`} />
 
-## Analysis & Decision-Making
+## التحليل واتخاذ القرارات
 
-<Callout type="tip" title="Analysis Principle">
-AI can structure your thinking, but **you provide the real-world context**. The best analyses combine AI's frameworks with your domain knowledge.
+<Callout type="tip" title="مبدأ التحليل">
+يمكن للذكاء الاصطناعي هيكلة تفكيرك، لكن **أنت من يقدم السياق الواقعي**. أفضل التحليلات تجمع بين أطر عمل الذكاء الاصطناعي ومعرفتك بالمجال.
 </Callout>
 
-### SWOT Analysis
+### تحليل SWOT
 
-<TryIt compact prompt={`Conduct a SWOT analysis for \${subject:launching a new mobile app}.
+<TryIt compact prompt={`قم بإجراء تحليل SWOT لـ \${subject:إطلاق تطبيق جوال جديد}.
 
-Context:
-\${context:We're a mid-size fintech company considering a consumer banking app}
+السياق:
+\${context:نحن شركة تقنية مالية متوسطة الحجم ندرس إطلاق تطبيق مصرفي للمستهلكين}
 
-Provide:
+قدم:
 
-**Strengths** (internal positives)
-- At least 4 points with brief explanations
+**نقاط القوة** (الإيجابيات الداخلية)
+- 4 نقاط على الأقل مع شرح موجز
 
-**Weaknesses** (internal negatives)
-- At least 4 points with brief explanations
+**نقاط الضعف** (السلبيات الداخلية)
+- 4 نقاط على الأقل مع شرح موجز
 
-**Opportunities** (external positives)
-- At least 4 points with brief explanations
+**الفرص** (الإيجابيات الخارجية)
+- 4 نقاط على الأقل مع شرح موجز
 
-**Threats** (external negatives)
-- At least 4 points with brief explanations
+**التهديدات** (السلبيات الخارجية)
+- 4 نقاط على الأقل مع شرح موجز
 
-**Strategic Implications**
-- Key insight from analysis
-- Recommended priorities`} />
+**الآثار الاستراتيجية**
+- الرؤية الرئيسية من التحليل
+- الأولويات الموصى بها`} />
 
-### Decision Framework
+### إطار اتخاذ القرار
 
-<TryIt compact prompt={`Help me make a decision about \${decision:which CRM to choose}.
+<TryIt compact prompt={`ساعدني في اتخاذ قرار بشأن \${decision:أي نظام CRM أختار}.
 
-Options:
+الخيارات:
 1. \${optionA:Salesforce}
 2. \${optionB:HubSpot}
 3. \${optionC:Pipedrive}
 
-Criteria that matter to me:
-- \${criterion1:ease of use} (weight: high)
-- \${criterion2:integration with existing tools} (weight: high)
-- \${criterion3:cost} (weight: medium)
+المعايير التي تهمني:
+- \${criterion1:سهولة الاستخدام} (الوزن: مرتفع)
+- \${criterion2:التكامل مع الأدوات الحالية} (الوزن: مرتفع)
+- \${criterion3:التكلفة} (الوزن: متوسط)
 
-Provide:
-1. Score each option against each criterion (1-5)
-2. Weighted analysis
-3. Pros/cons summary for each
-4. Risk assessment
-5. Recommendation with rationale
-6. Questions to consider before deciding`} />
+قدم:
+1. تقييم كل خيار مقابل كل معيار (1-5)
+2. التحليل الموزون
+3. ملخص الإيجابيات والسلبيات لكل خيار
+4. تقييم المخاطر
+5. التوصية مع المبررات
+6. أسئلة يجب مراعاتها قبل اتخاذ القرار`} />
 
-### Competitive Analysis
+### التحليل التنافسي
 
-<TryIt compact prompt={`Analyze \${competitor:Slack} compared to \${ourProduct:our team communication tool}.
+<TryIt compact prompt={`حلل \${competitor:Slack} مقارنة بـ \${ourProduct:أداة التواصل الجماعي لدينا}.
 
-Research their:
-1. **Products/Services** - offerings, pricing, positioning
-2. **Strengths** - what they do well
-3. **Weaknesses** - where they fall short
-4. **Market position** - target segments, market share
-5. **Strategy** - apparent direction and focus
+ابحث عن:
+1. **المنتجات/الخدمات** - العروض، التسعير، الموقع
+2. **نقاط القوة** - ما يفعلونه بشكل جيد
+3. **نقاط الضعف** - أين يقصرون
+4. **الموقع السوقي** - الشرائح المستهدفة، الحصة السوقية
+5. **الاستراتيجية** - الاتجاه والتركيز الظاهر
 
-Compare to us:
-- Where we're stronger
-- Where they're stronger
-- Opportunity gaps
-- Competitive threats
+قارن بنا:
+- أين نحن أقوى
+- أين هم أقوى
+- فجوات الفرص
+- التهديدات التنافسية
 
-Recommend: Actions to improve our competitive position`} />
+التوصية: إجراءات لتحسين موقعنا التنافسي`} />
 
-## Planning & Strategy
+## التخطيط والاستراتيجية
 
-### Goal Setting (OKRs)
+### تحديد الأهداف (OKRs)
 
-<TryIt compact prompt={`Help me set OKRs for \${scope:Q1 marketing team}.
+<TryIt compact prompt={`ساعدني في تحديد OKRs لـ \${scope:فريق التسويق للربع الأول}.
 
-Context:
-- Company goals: \${companyGoals:increase revenue 25% YoY}
-- Current situation: \${currentState:brand awareness is low in new markets}
-- Key priorities: \${priorities:lead generation, content marketing}
+السياق:
+- أهداف الشركة: \${companyGoals:زيادة الإيرادات 25% سنويًا}
+- الوضع الحالي: \${currentState:الوعي بالعلامة التجارية منخفض في الأسواق الجديدة}
+- الأولويات الرئيسية: \${priorities:توليد العملاء المحتملين، تسويق المحتوى}
 
-Create 3 Objectives with 3-4 Key Results each.
+أنشئ 3 أهداف مع 3-4 نتائج رئيسية لكل منها.
 
-Format:
-**Objective 1:** Qualitative goal - inspiring
-- KR 1.1: Quantitative measure (Current: X → Target: Y)
-- KR 1.2: Quantitative measure (Current: X → Target: Y)
-- KR 1.3: Quantitative measure (Current: X → Target: Y)
+الصيغة:
+**الهدف 1:** هدف نوعي - ملهم
+- NR 1.1: مقياس كمي (الحالي: X ← الهدف: Y)
+- NR 1.2: مقياس كمي (الحالي: X ← الهدف: Y)
+- NR 1.3: مقياس كمي (الحالي: X ← الهدف: Y)
 
-Ensure KRs are:
-- Measurable
-- Ambitious but achievable
-- Time-bound
-- Outcome-focused (not tasks)`} />
+تأكد أن النتائج الرئيسية:
+- قابلة للقياس
+- طموحة ولكن قابلة للتحقيق
+- محددة زمنيًا
+- مركزة على النتائج (ليست مهام)`} />
 
-### Project Planning
+### تخطيط المشروع
 
-<TryIt compact prompt={`Create a project plan for \${project:website redesign}.
+<TryIt compact prompt={`أنشئ خطة مشروع لـ \${project:إعادة تصميم الموقع الإلكتروني}.
 
-Scope: \${scope:new homepage, product pages, checkout flow}
-Timeline: \${timeline:3 months}
-Team: \${team:2 developers, 1 designer, 1 PM}
-Budget: \${budget:$50,000}
+النطاق: \${scope:صفحة رئيسية جديدة، صفحات المنتجات، تدفق الدفع}
+الجدول الزمني: \${timeline:3 أشهر}
+الفريق: \${team:2 مطورين، 1 مصمم، 1 مدير مشروع}
+الميزانية: \${budget:50,000 دولار}
 
-Provide:
-1. **Project phases** with milestones
-2. **Work breakdown structure** (major tasks)
-3. **Timeline** (Gantt-style description)
-4. **Dependencies** (what blocks what)
-5. **Risks** (potential issues and mitigation)
-6. **Success criteria** (how we know we're done)`} />
+قدم:
+1. **مراحل المشروع** مع المعالم
+2. **هيكل تقسيم العمل** (المهام الرئيسية)
+3. **الجدول الزمني** (وصف على طريقة Gantt)
+4. **الاعتماديات** (ما يعيق ماذا)
+5. **المخاطر** (المشاكل المحتملة والتخفيف)
+6. **معايير النجاح** (كيف نعرف أننا انتهينا)`} />
 
-### Meeting Agenda
+### جدول أعمال الاجتماع
 
-<TryIt compact prompt={`Create an agenda for \${meetingType:quarterly planning}.
+<TryIt compact prompt={`أنشئ جدول أعمال لـ \${meetingType:التخطيط الربعي}.
 
-Purpose: \${purpose:align on Q2 priorities and resource allocation}
-Attendees: \${attendees:department heads, CEO, COO}
-Duration: \${duration:90 minutes}
+الغرض: \${purpose:التوافق على أولويات الربع الثاني وتخصيص الموارد}
+الحضور: \${attendees:رؤساء الأقسام، الرئيس التنفيذي، مدير العمليات}
+المدة: \${duration:90 دقيقة}
 
-Format:
-| Time | Topic | Owner | Goal |
+الصيغة:
+| الوقت | الموضوع | المسؤول | الهدف |
 |------|-------|-------|------|
-| 5 min | Opening | Facilitator | Context |
+| 5 دقائق | الافتتاح | الميسر | السياق |
 | ... | ... | ... | ... |
 
-Include:
-- Time allocations
-- Clear owner for each item
-- Specific outcomes expected
-- Pre-work required
-- Follow-up action item template`} />
+تضمين:
+- تخصيصات الوقت
+- مسؤول واضح لكل بند
+- النتائج المتوقعة المحددة
+- العمل التحضيري المطلوب
+- قالب بنود المتابعة`} />
 
-## Productivity Workflows
+## سير عمل الإنتاجية
 
-### Task Prioritization
+### ترتيب أولويات المهام
 
-<TryIt compact prompt={`Help me prioritize my tasks using the Eisenhower Matrix.
+<TryIt compact prompt={`ساعدني في ترتيب أولويات مهامي باستخدام مصفوفة أيزنهاور.
 
-My tasks:
-\${tasks:1. Prepare quarterly report (due Friday)\n2. Review job applications\n3. Reply to vendor emails\n4. Plan team offsite\n5. Update LinkedIn profile}
+مهامي:
+\${tasks:1. إعداد التقرير الربعي (الموعد النهائي الجمعة)\n2. مراجعة طلبات التوظيف\n3. الرد على رسائل الموردين\n4. تخطيط رحلة الفريق\n5. تحديث ملف LinkedIn}
 
-Categorize each into:
-1. **Urgent + Important** (Do first)
-2. **Important, Not Urgent** (Schedule)
-3. **Urgent, Not Important** (Delegate)
-4. **Neither** (Eliminate)
+صنف كل منها إلى:
+1. **عاجل + مهم** (افعله أولاً)
+2. **مهم، غير عاجل** (جدوله)
+3. **عاجل، غير مهم** (فوضه)
+4. **لا هذا ولا ذاك** (أزله)
 
-Then provide:
-- Recommended order of execution
-- Time estimates
-- Suggestions for delegation or elimination`} />
+ثم قدم:
+- الترتيب الموصى به للتنفيذ
+- تقديرات الوقت
+- اقتراحات للتفويض أو الإزالة`} />
 
-### Process Documentation
+### توثيق العمليات
 
-<TryIt compact prompt={`Document this business process: \${processName:customer refund request}.
+<TryIt compact prompt={`وثق هذه العملية التجارية: \${processName:طلب استرداد العميل}.
 
-Create:
-1. **Process overview** (1 paragraph)
-2. **Trigger** (what starts this process)
-3. **Steps** (numbered, with responsible party)
-4. **Decision points** (if X then Y format)
-5. **Outputs** (what this process produces)
-6. **Systems involved** (tools/software)
-7. **Exceptions** (edge cases and handling)
+أنشئ:
+1. **نظرة عامة على العملية** (فقرة واحدة)
+2. **المحفز** (ما يبدأ هذه العملية)
+3. **الخطوات** (مرقمة، مع الطرف المسؤول)
+4. **نقاط القرار** (صيغة إذا X فإن Y)
+5. **المخرجات** (ما تنتجه هذه العملية)
+6. **الأنظمة المعنية** (الأدوات/البرامج)
+7. **الاستثناءات** (الحالات الخاصة ومعالجتها)
 
-Format: Clear enough for new employee to follow`} />
+الصيغة: واضحة بما يكفي ليتبعها موظف جديد`} />
 
-### Standard Operating Procedure
+### إجراء التشغيل القياسي
 
-<TryIt compact prompt={`Write an SOP for \${task:onboarding new employees to Slack}.
+<TryIt compact prompt={`اكتب إجراء تشغيل قياسي (SOP) لـ \${task:إعداد الموظفين الجدد على Slack}.
 
-Audience: \${audience:HR administrators}
-Complexity: \${complexity:basic users}
+الجمهور: \${audience:مديرو الموارد البشرية}
+التعقيد: \${complexity:مستخدمون أساسيون}
 
-Include:
-1. Purpose and scope
-2. Prerequisites/requirements
-3. Step-by-step instructions
-4. Screenshots/visual placeholders
-5. Quality checkpoints
-6. Common errors and troubleshooting
-7. Related SOPs/documents
-8. Version history`} />
+تضمين:
+1. الغرض والنطاق
+2. المتطلبات المسبقة
+3. التعليمات خطوة بخطوة
+4. أماكن لقطات الشاشة/المرئيات
+5. نقاط فحص الجودة
+6. الأخطاء الشائعة واستكشاف الأخطاء وإصلاحها
+7. إجراءات التشغيل القياسية/المستندات ذات الصلة
+8. سجل الإصدارات`} />
 
-## Communication Templates
+## قوالب التواصل
 
-### Stakeholder Update
+### تحديث أصحاب المصلحة
 
-<TryIt compact prompt={`Write a stakeholder update for \${project:CRM migration project}.
+<TryIt compact prompt={`اكتب تحديثًا لأصحاب المصلحة لـ \${project:مشروع ترحيل نظام CRM}.
 
-Status: \${status:at risk}
-Period: \${period:Week of Jan 6-10}
+الحالة: \${status:في خطر}
+الفترة: \${period:أسبوع 6-10 يناير}
 
-Format:
-## Project Name Update
+الصيغة:
+## تحديث اسم المشروع
 
-**Status:** 🟢/🟡/🔴
+**الحالة:** 🟢/🟡/🔴
 
-**Progress this period:**
-- Accomplishment 1
-- Accomplishment 2
+**التقدم هذه الفترة:**
+- الإنجاز 1
+- الإنجاز 2
 
-**Next period goals:**
-- Goal 1
-- Goal 2
+**أهداف الفترة القادمة:**
+- الهدف 1
+- الهدف 2
 
-**Risks/Blockers:**
-- If any
+**المخاطر/العوائق:**
+- إن وجدت
 
-**Decisions needed:**
-- If any`} />
+**القرارات المطلوبة:**
+- إن وجدت`} />
 
-### Feedback Request
+### طلب التغذية الراجعة
 
-<TryIt compact prompt={`Write a message requesting feedback on \${deliverable:the new product roadmap document}.
+<TryIt compact prompt={`اكتب رسالة لطلب التغذية الراجعة على \${deliverable:وثيقة خارطة طريق المنتج الجديدة}.
 
-Context: \${context:This will guide our Q2 priorities, I want to make sure I haven't missed anything}
-Specific areas for feedback: \${feedbackAreas:timeline feasibility, resource allocation, missing features}
-Timeline: \${deadline:by Friday EOD}
+السياق: \${context:هذه ستوجه أولويات الربع الثاني، أريد التأكد أنني لم أفوت شيئًا}
+مجالات محددة للتغذية الراجعة: \${feedbackAreas:جدوى الجدول الزمني، تخصيص الموارد، الميزات المفقودة}
+الموعد النهائي: \${deadline:بنهاية يوم الجمعة}
 
-Tone: Professional but not overly formal
-Make it easy to respond with specific questions`} />
+النبرة: مهنية ولكن غير رسمية للغاية
+اجعلها سهلة للرد مع أسئلة محددة`} />
 
-## Prompt Templates from prompts.chat
+## قوالب الأوامر من prompts.chat
 
-### Act as a Business Consultant
+### التصرف كمستشار أعمال
 
-<TryIt compact prompt={`I want you to act as a business consultant. I will describe business situations and challenges, and you will provide strategic advice, frameworks for thinking about problems, and actionable recommendations. Draw on established business principles while being practical and specific.`} />
+<TryIt compact prompt={`أريدك أن تتصرف كمستشار أعمال. سأصف مواقف وتحديات تجارية، وستقدم نصائح استراتيجية وأطر عمل للتفكير في المشاكل وتوصيات قابلة للتنفيذ. استند إلى مبادئ الأعمال الراسخة مع كونك عمليًا ومحددًا.`} />
 
-### Act as a Meeting Facilitator
+### التصرف كميسر اجتماعات
 
-<TryIt compact prompt={`I want you to act as a meeting facilitator. Help me plan and run effective meetings. Create agendas, suggest discussion frameworks, help synthesize conversations, and draft follow-up communications. Focus on making meetings productive and action-oriented.`} />
+<TryIt compact prompt={`أريدك أن تتصرف كميسر اجتماعات. ساعدني في تخطيط وإدارة اجتماعات فعالة. أنشئ جداول أعمال، اقترح أطر عمل للنقاش، ساعد في تلخيص المحادثات، وصغ رسائل المتابعة. ركز على جعل الاجتماعات منتجة وموجهة نحو العمل.`} />
 
-## Summary
+## الملخص
 
-<Callout type="tip" title="Key Techniques">
-Specify the audience and their needs, define the desired outcome clearly, include relevant context and constraints, request specific formats and structures, and consider professional tone requirements.
+<Callout type="tip" title="التقنيات الرئيسية">
+حدد الجمهور واحتياجاتهم، عرّف النتيجة المطلوبة بوضوح، ضمّن السياق والقيود ذات الصلة، اطلب صيغًا وهياكل محددة، وراعِ متطلبات النبرة المهنية.
 </Callout>
 
 <Quiz 
-  question="What should you always include when asking AI to write a business email?"
+  question="ما الذي يجب عليك دائمًا تضمينه عند طلب كتابة بريد إلكتروني تجاري من الذكاء الاصطناعي؟"
   options={[
-    "Just the topic you want to discuss",
-    "Recipient, purpose, key points, and desired tone",
-    "Only the recipient's name",
-    "A template from the internet"
+    "فقط الموضوع الذي تريد مناقشته",
+    "المستلم، الغرض، النقاط الرئيسية، والنبرة المطلوبة",
+    "اسم المستلم فقط",
+    "قالب من الإنترنت"
   ]}
   correctIndex={1}
-  explanation="Effective business emails need context: who you're writing to, why, what must be communicated, and the appropriate tone. AI can't infer your professional relationships or organizational context."
+  explanation="تحتاج رسائل البريد الإلكتروني التجارية الفعالة إلى سياق: من تكتب إليه، لماذا، ما يجب توصيله، والنبرة المناسبة. لا يستطيع الذكاء الاصطناعي استنتاج علاقاتك المهنية أو سياقك التنظيمي."
 />
 
-AI can handle routine business communication while you focus on strategy and relationships.
+يمكن للذكاء الاصطناعي التعامل مع التواصل التجاري الروتيني بينما تركز أنت على الاستراتيجية والعلاقات.

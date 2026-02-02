@@ -1,21 +1,21 @@
-AI is a powerful creative collaborator. This chapter covers prompting techniques for visual arts, music, game design, and other creative domains.
+الذكاء الاصطناعي شريك إبداعي قوي. يغطي هذا الفصل تقنيات كتابة المطالبات للفنون البصرية والموسيقى وتصميم الألعاب والمجالات الإبداعية الأخرى.
 
-<Callout type="info" title="AI as Creative Partner">
-AI expands your creative possibilities—use it to explore variations, overcome blocks, and generate options. The creative vision and final decisions remain yours.
+<Callout type="info" title="الذكاء الاصطناعي كشريك إبداعي">
+يوسع الذكاء الاصطناعي إمكانياتك الإبداعية—استخدمه لاستكشاف التنويعات والتغلب على العوائق وتوليد الخيارات. تبقى الرؤية الإبداعية والقرارات النهائية لك.
 </Callout>
 
-## Visual Art & Design
+## الفن البصري والتصميم
 
-### Do's and Don'ts: Image Prompts
+### ما يجب فعله وما يجب تجنبه: مطالبات الصور
 
 <Compare 
-  before={{ label: "❌ Vague prompt", content: "A wizard in a library" }}
-  after={{ label: "✓ Rich description", content: "A wise elderly wizard reading an ancient tome, sitting in a tower library at sunset, fantasy art style, warm golden lighting, contemplative mood, highly detailed, 4K, by Greg Rutkowski" }}
+  before={{ label: "❌ مطالبة غامضة", content: "A wizard in a library" }}
+  after={{ label: "✓ وصف غني", content: "A wise elderly wizard reading an ancient tome, sitting in a tower library at sunset, fantasy art style, warm golden lighting, contemplative mood, highly detailed, 4K, by Greg Rutkowski" }}
 />
 
-### Image Prompt Crafting
+### صياغة مطالبات الصور
 
-When working with image generation models (DALL-E, Midjourney, Stable Diffusion):
+عند العمل مع نماذج توليد الصور (DALL-E، Midjourney، Stable Diffusion):
 
 <TryIt compact prompt={`Create an image prompt for [concept].
 
@@ -28,7 +28,7 @@ Example:
 tower library at sunset, fantasy art style, warm golden lighting, 
 contemplative mood, highly detailed, 4K"`} />
 
-### Art Direction
+### التوجيه الفني
 
 <TryIt compact prompt={`Describe artwork for \${project:fantasy book cover}.
 
@@ -42,7 +42,7 @@ Include:
 
 Purpose: \${purpose:illustration for book cover}`} />
 
-### Design Critique
+### نقد التصميم
 
 <TryIt compact prompt={`Critique this design from a professional perspective.
 
@@ -62,13 +62,13 @@ Provide:
 - Areas for improvement
 - Actionable suggestions`} />
 
-## Creative Writing
+## الكتابة الإبداعية
 
-<Callout type="tip" title="Creative Constraint Principle">
-**Constraints fuel creativity.** A prompt like "write anything" produces generic results. Specific constraints like genre, tone, and structure force unexpected, interesting solutions.
+<Callout type="tip" title="مبدأ القيود الإبداعية">
+**القيود تغذي الإبداع.** مطالبة مثل "اكتب أي شيء" تنتج نتائج عامة. القيود المحددة مثل النوع الأدبي والنبرة والبنية تفرض حلولاً غير متوقعة ومثيرة للاهتمام.
 </Callout>
 
-### Worldbuilding
+### بناء العوالم
 
 <TryIt compact prompt={`Help me build a world for \${project:a fantasy novel}.
 
@@ -86,7 +86,7 @@ Develop:
 
 Start with broad strokes, then detail one aspect deeply.`} />
 
-### Plot Development
+### تطوير الحبكة
 
 <TryIt compact prompt={`Help me develop a plot for \${storyConcept:a heist gone wrong}.
 
@@ -106,7 +106,7 @@ Using \${structure:three-act} structure:
 
 For each beat, suggest specific scenes.`} />
 
-### Dialogue Writing
+### كتابة الحوار
 
 <TryIt compact prompt={`Write dialogue between \${characters:two siblings} about \${topic:their estranged father returning}.
 
@@ -122,9 +122,9 @@ Guidelines:
 - Build tension or develop relationship
 - Show, don't tell emotions`} />
 
-## Music & Audio
+## الموسيقى والصوت
 
-### Song Structure
+### بنية الأغنية
 
 <TryIt compact prompt={`Help me structure a song.
 
@@ -142,7 +142,7 @@ Provide:
 6. **Chord progression suggestion**
 7. **Melodic direction notes**`} />
 
-### Sound Design Description
+### وصف تصميم الصوت
 
 <TryIt compact prompt={`Describe a sound design for \${scene:a character entering an abandoned space station}.
 
@@ -159,9 +159,9 @@ Layer by layer:
 
 Describe sounds in evocative terms, not just names.`} />
 
-## Game Design
+## تصميم الألعاب
 
-### Game Mechanic Design
+### تصميم آليات اللعبة
 
 <TryIt compact prompt={`Design a game mechanic for \${gameType:a puzzle platformer}.
 
@@ -177,7 +177,7 @@ Describe:
 5. **Balance considerations**
 6. **Edge cases** - unusual scenarios`} />
 
-### Level Design
+### تصميم المراحل
 
 <TryIt compact prompt={`Design a level for \${gameType:a stealth action game}.
 
@@ -194,7 +194,7 @@ Include:
 6. **Teaching moments** - skill introduction
 7. **Environmental storytelling** - narrative through design`} />
 
-### Character/Enemy Design
+### تصميم الشخصيات/الأعداء
 
 <TryIt compact prompt={`Design a \${entityType:boss enemy} for \${game:a dark fantasy action RPG}.
 
@@ -210,9 +210,9 @@ Define:
 6. **Lore/Backstory** - world integration
 7. **Player strategy** - how to interact/defeat`} />
 
-## Brainstorming & Ideation
+## العصف الذهني وتوليد الأفكار
 
-### Creative Brainstorm
+### العصف الذهني الإبداعي
 
 <TryIt compact prompt={`Brainstorm ideas for \${project:a mobile game about mindfulness}.
 
@@ -230,7 +230,7 @@ Generate:
 For each, one sentence description + why it works.
 Don't self-censor—quantity over quality first.`} />
 
-### Creative Constraints
+### القيود الإبداعية
 
 <TryIt compact prompt={`Give me creative constraints for \${projectType:writing a short story}.
 
@@ -246,7 +246,7 @@ Format:
 Then show one example of how applying these constraints 
 transforms a generic concept into something interesting.`} />
 
-### Style Exploration
+### استكشاف الأساليب
 
 <TryIt compact prompt={`Explore different styles for \${concept:a coffee shop logo}.
 
@@ -261,23 +261,23 @@ Show how this concept would manifest in:
 
 For each, describe key characteristics and example.`} />
 
-## Prompt Templates from prompts.chat
+## قوالب المطالبات من prompts.chat
 
-### Act as a Creative Director
+### تصرف كمدير إبداعي
 
 <TryIt compact prompt={`I want you to act as a creative director. I will describe creative projects and you will develop creative visions, guide aesthetic decisions, and ensure conceptual coherence. Draw on art history, design principles, and cultural trends. Help me make bold creative choices with clear rationale.`} />
 
-### Act as a Worldbuilder
+### تصرف كباني عوالم
 
 <TryIt compact prompt={`I want you to act as a worldbuilder. Help me create rich, consistent fictional worlds with detailed histories, cultures, and systems. Ask probing questions to deepen the world. Point out inconsistencies and suggest solutions. Make the world feel lived-in and believable.`} />
 
-### Act as a Dungeon Master
+### تصرف كسيد الزنزانة
 
 <TryIt compact prompt={`I want you to act as a Dungeon Master for a tabletop RPG. Create engaging scenarios, describe vivid settings, roleplay NPCs with distinct personalities, and respond dynamically to player choices. Balance challenge with fun, and keep the narrative compelling.`} />
 
-## Creative Collaboration Tips
+## نصائح التعاون الإبداعي
 
-### Building on Ideas
+### البناء على الأفكار
 
 <TryIt compact prompt={`I have this creative idea: \${idea:a mystery novel set in a space station where the AI is the detective}
 
@@ -290,7 +290,7 @@ Help me develop it by:
 
 Don't replace my vision—enhance it.`} />
 
-### Creative Feedback
+### التغذية الراجعة الإبداعية
 
 <TryIt compact prompt={`Give me feedback on this creative work:
 
@@ -305,22 +305,22 @@ As a \${perspective:fellow creator}:
 
 Be honest but constructive.`} />
 
-## Summary
+## الملخص
 
-<Callout type="tip" title="Key Techniques">
-Provide enough structure to guide without constraining, embrace specificity (vague = generic), include references and inspirations, request variations and alternatives, and maintain your creative vision while exploring possibilities.
+<Callout type="tip" title="التقنيات الرئيسية">
+قدم بنية كافية للتوجيه دون تقييد، واحتضن التحديد (الغموض = العمومية)، وضمّن المراجع والإلهامات، واطلب التنويعات والبدائل، وحافظ على رؤيتك الإبداعية أثناء استكشاف الإمكانيات.
 </Callout>
 
 <Quiz 
-  question="Why do specific constraints often produce better creative results than open-ended prompts?"
+  question="لماذا تنتج القيود المحددة نتائج إبداعية أفضل من المطالبات المفتوحة في كثير من الأحيان؟"
   options={[
-    "AI can only follow strict instructions",
-    "Constraints force unexpected solutions and eliminate obvious choices",
-    "Open-ended prompts are too difficult for AI",
-    "Constraints make the output shorter"
+    "الذكاء الاصطناعي يمكنه فقط اتباع التعليمات الصارمة",
+    "القيود تفرض حلولاً غير متوقعة وتلغي الخيارات الواضحة",
+    "المطالبات المفتوحة صعبة جداً على الذكاء الاصطناعي",
+    "القيود تجعل المخرجات أقصر"
   ]}
   correctIndex={1}
-  explanation="Paradoxically, limitations spark creativity. When obvious solutions are eliminated, you're forced to explore unexpected directions. 'Write a story' produces clichés; 'Write a mystery set in a submarine, told backwards, in under 500 words' produces something unique."
+  explanation="من المفارقة أن القيود تشعل الإبداع. عندما يتم استبعاد الحلول الواضحة، تُجبر على استكشاف اتجاهات غير متوقعة. 'اكتب قصة' تنتج كليشيهات؛ 'اكتب لغزاً يدور في غواصة، يُروى بالعكس، في أقل من 500 كلمة' ينتج شيئاً فريداً."
 />
 
-AI is a collaborator, not a replacement for creative vision. Use it to explore, generate options, and overcome blocks—but the creative decisions remain yours.
+الذكاء الاصطناعي متعاون وليس بديلاً للرؤية الإبداعية. استخدمه للاستكشاف وتوليد الخيارات والتغلب على العوائق—لكن القرارات الإبداعية تبقى لك.

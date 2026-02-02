@@ -1,326 +1,326 @@
-AI is a powerful creative collaborator. This chapter covers prompting techniques for visual arts, music, game design, and other creative domains.
+L'IA è un potente collaboratore creativo. Questo capitolo copre tecniche di prompting per arti visive, musica, game design e altri domini creativi.
 
-<Callout type="info" title="AI as Creative Partner">
-AI expands your creative possibilities—use it to explore variations, overcome blocks, and generate options. The creative vision and final decisions remain yours.
+<Callout type="info" title="L'IA come Partner Creativo">
+L'IA espande le tue possibilità creative—usala per esplorare variazioni, superare blocchi e generare opzioni. La visione creativa e le decisioni finali rimangono tue.
 </Callout>
 
-## Visual Art & Design
+## Arte Visiva & Design
 
-### Do's and Don'ts: Image Prompts
+### Do's e Don'ts: Prompt per Immagini
 
 <Compare 
-  before={{ label: "❌ Vague prompt", content: "A wizard in a library" }}
-  after={{ label: "✓ Rich description", content: "A wise elderly wizard reading an ancient tome, sitting in a tower library at sunset, fantasy art style, warm golden lighting, contemplative mood, highly detailed, 4K, by Greg Rutkowski" }}
+  before={{ label: "❌ Prompt vago", content: "Un mago in una biblioteca" }}
+  after={{ label: "✓ Descrizione ricca", content: "Un saggio mago anziano che legge un antico tomo, seduto in una biblioteca nella torre al tramonto, stile fantasy art, illuminazione calda dorata, mood contemplativo, altamente dettagliato, 4K, stile Greg Rutkowski" }}
 />
 
-### Image Prompt Crafting
+### Creazione Prompt per Immagini
 
-When working with image generation models (DALL-E, Midjourney, Stable Diffusion):
+Quando lavori con modelli di generazione immagini (DALL-E, Midjourney, Stable Diffusion):
 
-<TryIt compact prompt={`Create an image prompt for [concept].
+<TryIt compact prompt={`Crea un prompt immagine per [concetto].
 
-Structure:
-[Subject] + [Action/Pose] + [Setting/Background] + [Style] + 
-[Lighting] + [Mood] + [Technical specs]
+Struttura:
+[Soggetto] + [Azione/Posa] + [Ambientazione/Sfondo] + [Stile] + 
+[Illuminazione] + [Mood] + [Specifiche tecniche]
 
-Example:
-"A wise elderly wizard reading an ancient tome, sitting in a 
-tower library at sunset, fantasy art style, warm golden lighting, 
-contemplative mood, highly detailed, 4K"`} />
+Esempio:
+"Un saggio mago anziano che legge un antico tomo, seduto in una 
+biblioteca nella torre al tramonto, stile fantasy art, illuminazione 
+calda dorata, mood contemplativo, altamente dettagliato, 4K"`} />
 
 ### Art Direction
 
-<TryIt compact prompt={`Describe artwork for \${project:fantasy book cover}.
+<TryIt compact prompt={`Descrivi un'opera d'arte per \${project:copertina libro fantasy}.
 
-Include:
-1. **Composition** - arrangement of elements
-2. **Color palette** - specific colors and their relationships
-3. **Style reference** - similar artists/works/movements
-4. **Focal point** - where the eye should be drawn
-5. **Mood/Atmosphere** - emotional quality
-6. **Technical approach** - medium, technique
+Includi:
+1. **Composizione** - disposizione degli elementi
+2. **Palette colori** - colori specifici e le loro relazioni
+3. **Riferimento stile** - artisti/opere/movimenti simili
+4. **Punto focale** - dove l'occhio dovrebbe essere attirato
+5. **Mood/Atmosfera** - qualità emotiva
+6. **Approccio tecnico** - medium, tecnica
 
-Purpose: \${purpose:illustration for book cover}`} />
+Scopo: \${purpose:illustrazione per copertina libro}`} />
 
-### Design Critique
+### Critica Design
 
-<TryIt compact prompt={`Critique this design from a professional perspective.
+<TryIt compact prompt={`Critica questo design da una prospettiva professionale.
 
-Design: \${design:a landing page with hero section, feature grid, and testimonials}
-Context: \${context:SaaS product for project management}
+Design: \${design:una landing page con sezione hero, griglia feature e testimonianze}
+Contesto: \${context:prodotto SaaS per project management}
 
-Evaluate:
-1. **Visual hierarchy** - Is importance clear?
-2. **Balance** - Is it visually stable?
-3. **Contrast** - Do elements stand out appropriately?
-4. **Alignment** - Is it organized?
-5. **Repetition** - Is there consistency?
-6. **Proximity** - Are related items grouped?
+Valuta:
+1. **Gerarchia visiva** - L'importanza è chiara?
+2. **Equilibrio** - È visivamente stabile?
+3. **Contrasto** - Gli elementi risaltano appropriatamente?
+4. **Allineamento** - È organizzato?
+5. **Ripetizione** - C'è coerenza?
+6. **Prossimità** - Gli elementi correlati sono raggruppati?
 
-Provide:
-- Specific strengths
-- Areas for improvement
-- Actionable suggestions`} />
+Fornisci:
+- Punti di forza specifici
+- Aree di miglioramento
+- Suggerimenti azionabili`} />
 
-## Creative Writing
+## Scrittura Creativa
 
-<Callout type="tip" title="Creative Constraint Principle">
-**Constraints fuel creativity.** A prompt like "write anything" produces generic results. Specific constraints like genre, tone, and structure force unexpected, interesting solutions.
+<Callout type="tip" title="Principio dei Vincoli Creativi">
+**I vincoli alimentano la creatività.** Un prompt come "scrivi qualsiasi cosa" produce risultati generici. Vincoli specifici come genere, tono e struttura forzano soluzioni inaspettate e interessanti.
 </Callout>
 
 ### Worldbuilding
 
-<TryIt compact prompt={`Help me build a world for \${project:a fantasy novel}.
+<TryIt compact prompt={`Aiutami a costruire un mondo per \${project:un romanzo fantasy}.
 
-Genre: \${genre:dark fantasy}
-Scope: \${scope:a kingdom}
+Genere: \${genre:dark fantasy}
+Ambito: \${scope:un regno}
 
-Develop:
-1. **Geography** - physical environment
-2. **History** - key events that shaped this world
-3. **Culture** - customs, values, daily life
-4. **Power structures** - who rules, how
-5. **Economy** - how people survive
-6. **Conflict** - sources of tension
-7. **Unique element** - what makes this world special
+Sviluppa:
+1. **Geografia** - ambiente fisico
+2. **Storia** - eventi chiave che hanno plasmato questo mondo
+3. **Cultura** - usanze, valori, vita quotidiana
+4. **Strutture di potere** - chi governa, come
+5. **Economia** - come le persone sopravvivono
+6. **Conflitto** - fonti di tensione
+7. **Elemento unico** - cosa rende speciale questo mondo
 
-Start with broad strokes, then detail one aspect deeply.`} />
+Inizia con tratti ampi, poi dettaglia un aspetto in profondità.`} />
 
-### Plot Development
+### Sviluppo Trama
 
-<TryIt compact prompt={`Help me develop a plot for \${storyConcept:a heist gone wrong}.
+<TryIt compact prompt={`Aiutami a sviluppare una trama per \${storyConcept:un colpo andato male}.
 
-Genre: \${genre:thriller}
-Tone: \${tone:dark with moments of dark humor}
-Length: \${length:novel}
+Genere: \${genre:thriller}
+Tono: \${tone:dark con momenti di umorismo nero}
+Lunghezza: \${length:romanzo}
 
-Using \${structure:three-act} structure:
+Usando struttura \${structure:in tre atti}:
 
-1. **Setup** - world, character, normal life
-2. **Inciting incident** - what disrupts normalcy
-3. **Rising action** - escalating challenges
-4. **Midpoint** - major shift or revelation
-5. **Crisis** - darkest moment
-6. **Climax** - confrontation
-7. **Resolution** - new normal
+1. **Setup** - mondo, personaggio, vita normale
+2. **Incidente scatenante** - cosa interrompe la normalità
+3. **Azione crescente** - sfide in escalation
+4. **Punto medio** - svolta o rivelazione importante
+5. **Crisi** - momento più buio
+6. **Climax** - confronto
+7. **Risoluzione** - nuova normalità
 
-For each beat, suggest specific scenes.`} />
+Per ogni beat, suggerisci scene specifiche.`} />
 
-### Dialogue Writing
+### Scrittura Dialoghi
 
-<TryIt compact prompt={`Write dialogue between \${characters:two siblings} about \${topic:their estranged father returning}.
+<TryIt compact prompt={`Scrivi un dialogo tra \${characters:due fratelli} su \${topic:il ritorno del padre da cui sono separati}.
 
-Character A: \${characterA:older sister, protective, pragmatic, wants to move on}
-Character B: \${characterB:younger brother, hopeful, emotional, wants to reconnect}
-Relationship: \${relationship:close but with different coping styles}
-Subtext: \${subtext:unspoken resentment about who bore more burden}
+Personaggio A: \${characterA:sorella maggiore, protettiva, pragmatica, vuole andare avanti}
+Personaggio B: \${characterB:fratello minore, speranzoso, emotivo, vuole riconnettersi}
+Relazione: \${relationship:stretta ma con diversi stili di coping}
+Sottotesto: \${subtext:risentimento non espresso su chi ha portato più peso}
 
-Guidelines:
-- Each character has distinct voice
-- Dialogue reveals character, not just information
-- Include beats (actions/reactions)
-- Build tension or develop relationship
-- Show, don't tell emotions`} />
+Linee guida:
+- Ogni personaggio ha voce distinta
+- Il dialogo rivela il personaggio, non solo informazioni
+- Includi beat (azioni/reazioni)
+- Costruisci tensione o sviluppa la relazione
+- Mostra, non dire le emozioni`} />
 
-## Music & Audio
+## Musica & Audio
 
-### Song Structure
+### Struttura Canzone
 
-<TryIt compact prompt={`Help me structure a song.
+<TryIt compact prompt={`Aiutami a strutturare una canzone.
 
-Genre: \${genre:indie folk}
-Mood: \${mood:bittersweet nostalgia}
-Tempo: \${tempo:moderate, around 90 BPM}
-Theme/Message: \${theme:looking back on a hometown you've outgrown}
+Genere: \${genre:indie folk}
+Mood: \${mood:nostalgia agrodolce}
+Tempo: \${tempo:moderato, circa 90 BPM}
+Tema/Messaggio: \${theme:guardare indietro a una città natale che hai superato}
 
-Provide:
-1. **Structure** - verse/chorus/bridge arrangement
-2. **Verse 1** - lyrical concept, 4-8 lines
-3. **Chorus** - hook concept, 4 lines
-4. **Verse 2** - development, 4-8 lines
-5. **Bridge** - contrast/shift, 4 lines
-6. **Chord progression suggestion**
-7. **Melodic direction notes**`} />
+Fornisci:
+1. **Struttura** - disposizione strofa/ritornello/bridge
+2. **Strofa 1** - concetto lirico, 4-8 righe
+3. **Ritornello** - concetto hook, 4 righe
+4. **Strofa 2** - sviluppo, 4-8 righe
+5. **Bridge** - contrasto/svolta, 4 righe
+6. **Suggerimento progressione accordi**
+7. **Note direzione melodica`} />
 
-### Sound Design Description
+### Descrizione Sound Design
 
-<TryIt compact prompt={`Describe a sound design for \${scene:a character entering an abandoned space station}.
+<TryIt compact prompt={`Descrivi un sound design per \${scene:un personaggio che entra in una stazione spaziale abbandonata}.
 
-Context: \${context:protagonist discovers the station has been empty for decades}
-Emotion to evoke: \${emotion:eerie wonder mixed with dread}
-Medium: \${medium:video game}
+Contesto: \${context:il protagonista scopre che la stazione è vuota da decenni}
+Emozione da evocare: \${emotion:meraviglia inquietante mista a terrore}
+Medium: \${medium:videogioco}
 
-Layer by layer:
-1. **Foundation** - ambient/background
-2. **Mid-ground** - environmental sounds
-3. **Foreground** - focal sounds
-4. **Accents** - punctuation sounds
-5. **Music** - score suggestions
+Layer per layer:
+1. **Base** - ambiente/sottofondo
+2. **Piano medio** - suoni ambientali
+3. **Primo piano** - suoni focali
+4. **Accenti** - suoni di punteggiatura
+5. **Musica** - suggerimenti colonna sonora
 
-Describe sounds in evocative terms, not just names.`} />
+Descrivi i suoni in termini evocativi, non solo nomi.`} />
 
 ## Game Design
 
-### Game Mechanic Design
+### Design Meccanica di Gioco
 
-<TryIt compact prompt={`Design a game mechanic for \${gameType:a puzzle platformer}.
+<TryIt compact prompt={`Progetta una meccanica di gioco per \${gameType:un puzzle platformer}.
 
-Core loop: \${coreLoop:manipulate gravity to solve spatial puzzles}
-Player motivation: \${motivation:mastery and discovery}
-Skill involved: \${skill:spatial reasoning and timing}
+Core loop: \${coreLoop:manipolare la gravità per risolvere puzzle spaziali}
+Motivazione giocatore: \${motivation:padronanza e scoperta}
+Abilità coinvolta: \${skill:ragionamento spaziale e timing}
 
-Describe:
-1. **The mechanic** - how it works
-2. **Player input** - what they control
-3. **Feedback** - how they know the result
-4. **Progression** - how it evolves/deepens
-5. **Balance considerations**
-6. **Edge cases** - unusual scenarios`} />
+Descrivi:
+1. **La meccanica** - come funziona
+2. **Input giocatore** - cosa controllano
+3. **Feedback** - come sanno il risultato
+4. **Progressione** - come evolve/si approfondisce
+5. **Considerazioni di bilanciamento**
+6. **Casi limite** - scenari inusuali`} />
 
 ### Level Design
 
-<TryIt compact prompt={`Design a level for \${gameType:a stealth action game}.
+<TryIt compact prompt={`Progetta un livello per \${gameType:un gioco stealth action}.
 
-Setting: \${setting:corporate headquarters at night}
-Objectives: \${objectives:infiltrate the server room and extract data}
-Difficulty: \${difficulty:mid-game, player has basic abilities}
+Ambientazione: \${setting:quartier generale aziendale di notte}
+Obiettivi: \${objectives:infiltrare la server room ed estrarre dati}
+Difficoltà: \${difficulty:metà gioco, giocatore ha abilità base}
 
-Include:
-1. **Layout overview** - spatial description
-2. **Pacing graph** - tension over time
-3. **Challenges** - obstacles and how to overcome
-4. **Rewards** - what player gains
-5. **Secrets** - optional discoveries
-6. **Teaching moments** - skill introduction
-7. **Environmental storytelling** - narrative through design`} />
+Includi:
+1. **Panoramica layout** - descrizione spaziale
+2. **Grafico pacing** - tensione nel tempo
+3. **Sfide** - ostacoli e come superarli
+4. **Ricompense** - cosa ottiene il giocatore
+5. **Segreti** - scoperte opzionali
+6. **Momenti didattici** - introduzione abilità
+7. **Storytelling ambientale** - narrativa attraverso design`} />
 
-### Character/Enemy Design
+### Design Personaggi/Nemici
 
-<TryIt compact prompt={`Design a \${entityType:boss enemy} for \${game:a dark fantasy action RPG}.
+<TryIt compact prompt={`Progetta un \${entityType:boss nemico} per \${game:un action RPG dark fantasy}.
 
-Role: \${role:mid-game boss}
-Context: \${context:guards a corrupted forest temple}
+Ruolo: \${role:boss metà gioco}
+Contesto: \${context:custodisce un tempio nella foresta corrotta}
 
-Define:
-1. **Visual concept** - appearance description
-2. **Abilities** - what they can do
-3. **Behavior patterns** - how they act
-4. **Weaknesses** - vulnerabilities
-5. **Personality** - if relevant
-6. **Lore/Backstory** - world integration
-7. **Player strategy** - how to interact/defeat`} />
+Definisci:
+1. **Concept visivo** - descrizione aspetto
+2. **Abilità** - cosa possono fare
+3. **Pattern comportamentali** - come agiscono
+4. **Debolezze** - vulnerabilità
+5. **Personalità** - se rilevante
+6. **Lore/Backstory** - integrazione nel mondo
+7. **Strategia giocatore** - come interagire/sconfiggere`} />
 
-## Brainstorming & Ideation
+## Brainstorming & Ideazione
 
-### Creative Brainstorm
+### Brainstorm Creativo
 
-<TryIt compact prompt={`Brainstorm ideas for \${project:a mobile game about mindfulness}.
+<TryIt compact prompt={`Fai brainstorming di idee per \${project:un gioco mobile sulla mindfulness}.
 
-Constraints:
-- \${constraint1:must be playable in 2-minute sessions}
-- \${constraint2:no violence or competition}
-- \${constraint3:nature themes}
+Vincoli:
+- \${constraint1:deve essere giocabile in sessioni di 2 minuti}
+- \${constraint2:niente violenza o competizione}
+- \${constraint3:temi natura}
 
-Generate:
-1. **10 conventional ideas** - solid, expected
-2. **5 unusual ideas** - unexpected angles
-3. **3 wild ideas** - boundary-pushing
-4. **1 combination** - merge best elements
+Genera:
+1. **10 idee convenzionali** - solide, attese
+2. **5 idee inusuali** - angolazioni inaspettate
+3. **3 idee pazze** - che spingono i limiti
+4. **1 combinazione** - unisci i migliori elementi
 
-For each, one sentence description + why it works.
-Don't self-censor—quantity over quality first.`} />
+Per ciascuna, descrizione in una frase + perché funziona.
+Non auto-censurarti—quantità prima della qualità.`} />
 
-### Creative Constraints
+### Vincoli Creativi
 
-<TryIt compact prompt={`Give me creative constraints for \${projectType:writing a short story}.
+<TryIt compact prompt={`Dammi vincoli creativi per \${projectType:scrivere un racconto breve}.
 
-I want constraints that:
-- Force unexpected choices
-- Eliminate obvious solutions
-- Create productive limitations
+Voglio vincoli che:
+- Forzino scelte inaspettate
+- Eliminino soluzioni ovvie
+- Creino limitazioni produttive
 
-Format:
-1. Constraint - Why it helps creativity
+Formato:
+1. Vincolo - Perché aiuta la creatività
 2. ...
 
-Then show one example of how applying these constraints 
-transforms a generic concept into something interesting.`} />
+Poi mostra un esempio di come applicare questi vincoli 
+trasforma un concetto generico in qualcosa di interessante.`} />
 
-### Style Exploration
+### Esplorazione Stili
 
-<TryIt compact prompt={`Explore different styles for \${concept:a coffee shop logo}.
+<TryIt compact prompt={`Esplora diversi stili per \${concept:un logo per caffetteria}.
 
-Show how this concept would manifest in:
-1. **Minimalist** - stripped to essence
-2. **Maximalist** - abundant and detailed
-3. **Retro 1950s** - period-specific
-4. **Futuristic** - forward-looking
-5. **Folk/Traditional** - cultural roots
-6. **Abstract** - non-representational
-7. **Surrealist** - dreamlike logic
+Mostra come questo concetto si manifesterebbe in:
+1. **Minimalista** - ridotto all'essenza
+2. **Massimalista** - abbondante e dettagliato
+3. **Retro anni '50** - specifico del periodo
+4. **Futuristico** - orientato al futuro
+5. **Folk/Tradizionale** - radici culturali
+6. **Astratto** - non rappresentazionale
+7. **Surrealista** - logica onirica
 
-For each, describe key characteristics and example.`} />
+Per ciascuno, descrivi caratteristiche chiave ed esempio.`} />
 
-## Prompt Templates from prompts.chat
+## Template Prompt da prompts.chat
 
-### Act as a Creative Director
+### Agisci come Direttore Creativo
 
-<TryIt compact prompt={`I want you to act as a creative director. I will describe creative projects and you will develop creative visions, guide aesthetic decisions, and ensure conceptual coherence. Draw on art history, design principles, and cultural trends. Help me make bold creative choices with clear rationale.`} />
+<TryIt compact prompt={`Voglio che tu agisca come direttore creativo. Descriverò progetti creativi e tu svilupperai visioni creative, guiderai decisioni estetiche e assicurerai coerenza concettuale. Attingi dalla storia dell'arte, principi di design e trend culturali. Aiutami a fare scelte creative audaci con motivazioni chiare.`} />
 
-### Act as a Worldbuilder
+### Agisci come Worldbuilder
 
-<TryIt compact prompt={`I want you to act as a worldbuilder. Help me create rich, consistent fictional worlds with detailed histories, cultures, and systems. Ask probing questions to deepen the world. Point out inconsistencies and suggest solutions. Make the world feel lived-in and believable.`} />
+<TryIt compact prompt={`Voglio che tu agisca come worldbuilder. Aiutami a creare mondi fittizi ricchi e coerenti con storie dettagliate, culture e sistemi. Fai domande approfondite per arricchire il mondo. Indica inconsistenze e suggerisci soluzioni. Rendi il mondo vissuto e credibile.`} />
 
-### Act as a Dungeon Master
+### Agisci come Dungeon Master
 
-<TryIt compact prompt={`I want you to act as a Dungeon Master for a tabletop RPG. Create engaging scenarios, describe vivid settings, roleplay NPCs with distinct personalities, and respond dynamically to player choices. Balance challenge with fun, and keep the narrative compelling.`} />
+<TryIt compact prompt={`Voglio che tu agisca come Dungeon Master per un GdR da tavolo. Crea scenari coinvolgenti, descrivi ambientazioni vivide, interpreta NPC con personalità distinte, e rispondi dinamicamente alle scelte dei giocatori. Bilancia sfida con divertimento, e mantieni la narrativa avvincente.`} />
 
-## Creative Collaboration Tips
+## Suggerimenti Collaborazione Creativa
 
-### Building on Ideas
+### Sviluppare Idee
 
-<TryIt compact prompt={`I have this creative idea: \${idea:a mystery novel set in a space station where the AI is the detective}
+<TryIt compact prompt={`Ho questa idea creativa: \${idea:un romanzo mystery ambientato in una stazione spaziale dove l'IA è il detective}
 
-Help me develop it by:
-1. What's working well
-2. Questions to explore
-3. Unexpected directions
-4. Potential challenges
-5. First three development steps
+Aiutami a svilupparla:
+1. Cosa funziona bene
+2. Domande da esplorare
+3. Direzioni inaspettate
+4. Sfide potenziali
+5. Primi tre step di sviluppo
 
-Don't replace my vision—enhance it.`} />
+Non sostituire la mia visione—migliorala.`} />
 
-### Creative Feedback
+### Feedback Creativo
 
-<TryIt compact prompt={`Give me feedback on this creative work:
+<TryIt compact prompt={`Dammi feedback su questo lavoro creativo:
 
-\${work:paste your creative work here}
+\${work:incolla il tuo lavoro creativo qui}
 
-As a \${perspective:fellow creator}:
-1. What resonates most strongly
-2. What feels underdeveloped
-3. What's confusing or unclear
-4. One bold suggestion
-5. What would make this unforgettable
+Come \${perspective:fellow creator}:
+1. Cosa risuona più fortemente
+2. Cosa sembra sottosviluppato
+3. Cosa è confuso o poco chiaro
+4. Un suggerimento audace
+5. Cosa renderebbe questo indimenticabile
 
-Be honest but constructive.`} />
+Sii onesto ma costruttivo.`} />
 
-## Summary
+## Riepilogo
 
-<Callout type="tip" title="Key Techniques">
-Provide enough structure to guide without constraining, embrace specificity (vague = generic), include references and inspirations, request variations and alternatives, and maintain your creative vision while exploring possibilities.
+<Callout type="tip" title="Tecniche Chiave">
+Fornisci abbastanza struttura per guidare senza vincolare, abbraccia la specificità (vago = generico), includi riferimenti e ispirazioni, richiedi variazioni e alternative, e mantieni la tua visione creativa mentre esplori possibilità.
 </Callout>
 
 <Quiz 
-  question="Why do specific constraints often produce better creative results than open-ended prompts?"
+  question="Perché vincoli specifici spesso producono risultati creativi migliori rispetto a prompt aperti?"
   options={[
-    "AI can only follow strict instructions",
-    "Constraints force unexpected solutions and eliminate obvious choices",
-    "Open-ended prompts are too difficult for AI",
-    "Constraints make the output shorter"
+    "L'IA può seguire solo istruzioni strette",
+    "I vincoli forzano soluzioni inaspettate ed eliminano scelte ovvie",
+    "I prompt aperti sono troppo difficili per l'IA",
+    "I vincoli rendono l'output più corto"
   ]}
   correctIndex={1}
-  explanation="Paradoxically, limitations spark creativity. When obvious solutions are eliminated, you're forced to explore unexpected directions. 'Write a story' produces clichés; 'Write a mystery set in a submarine, told backwards, in under 500 words' produces something unique."
+  explanation="Paradossalmente, le limitazioni accendono la creatività. Quando le soluzioni ovvie sono eliminate, sei forzato a esplorare direzioni inaspettate. 'Scrivi una storia' produce cliché; 'Scrivi un mystery ambientato in un sottomarino, raccontato al contrario, in meno di 500 parole' produce qualcosa di unico."
 />
 
-AI is a collaborator, not a replacement for creative vision. Use it to explore, generate options, and overcome blocks—but the creative decisions remain yours.
+L'IA è un collaboratore, non un sostituto della visione creativa. Usala per esplorare, generare opzioni e superare blocchi—ma le decisioni creative rimangono tue.

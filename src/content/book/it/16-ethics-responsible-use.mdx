@@ -1,357 +1,357 @@
-The prompts you write shape how AI behaves. A well-crafted prompt can educate, assist, and empower. A careless one can deceive, discriminate, or cause harm. As prompt engineers, we're not just users—we're designers of AI behavior, and that comes with real responsibility.
+I prompt che scrivi modellano come si comporta l'IA. Un prompt ben fatto può educare, assistere e potenziare. Uno sbadato può ingannare, discriminare o causare danni. Come prompt engineer, non siamo solo utenti—siamo designer del comportamento dell'IA, e questo comporta una vera responsabilità.
 
-This chapter isn't about rules imposed from above. It's about understanding the impact of our choices and building habits that lead to AI use we can be proud of.
+Questo capitolo non riguarda regole imposte dall'alto. Riguarda capire l'impatto delle nostre scelte e costruire abitudini che portano a un uso dell'IA di cui possiamo essere orgogliosi.
 
-<Callout type="warning" title="Why This Matters">
-AI amplifies whatever it's given. A biased prompt produces biased outputs at scale. A deceptive prompt enables deception at scale. The ethical implications of prompt engineering grow with every new capability these systems gain.
+<Callout type="warning" title="Perché Questo È Importante">
+L'IA amplifica qualsiasi cosa le venga data. Un prompt biased produce output biased su larga scala. Un prompt ingannevole abilita l'inganno su larga scala. Le implicazioni etiche del prompt engineering crescono con ogni nuova capacità che questi sistemi acquisiscono.
 </Callout>
 
-## Ethical Foundations
+## Fondamenta Etiche
 
-Every decision in prompt engineering connects to a few core principles:
-
-<InfoGrid items={[
-  { label: "Honesty", description: "Don't use AI to deceive people or create misleading content", example: "No fake reviews, impersonation, or manufactured 'evidence'", exampleType: "text", color: "blue" },
-  { label: "Fairness", description: "Actively work to avoid perpetuating biases and stereotypes", example: "Test prompts across demographics, request diverse perspectives", exampleType: "text", color: "purple" },
-  { label: "Transparency", description: "Be clear about AI involvement when it matters", example: "Disclose AI assistance in published work, professional contexts", exampleType: "text", color: "green" },
-  { label: "Privacy", description: "Protect personal information in prompts and outputs", example: "Anonymize data, avoid including PII, understand data policies", exampleType: "text", color: "amber" },
-  { label: "Safety", description: "Design prompts that prevent harmful outputs", example: "Build in guardrails, test for edge cases, handle refusals gracefully", exampleType: "text", color: "red" },
-  { label: "Accountability", description: "Take responsibility for what your prompts produce", example: "Review outputs, fix issues, maintain human oversight", exampleType: "text", color: "cyan" }
-]} />
-
-### The Prompt Engineer's Role
-
-You have more influence than you might realize:
-
-- **What AI produces**: Your prompts determine the content, tone, and quality of outputs
-- **How AI interacts**: Your system prompts shape personality, boundaries, and user experience
-- **What safeguards exist**: Your design choices determine what the AI will and won't do
-- **How mistakes are handled**: Your error handling determines whether failures are graceful or harmful
-
-## Avoiding Harmful Outputs
-
-The most fundamental ethical obligation is preventing your prompts from causing harm.
-
-### Categories of Harmful Content
+Ogni decisione nel prompt engineering si connette a pochi principi fondamentali:
 
 <InfoGrid items={[
-  { label: "Violence & Harm", description: "Instructions that could lead to physical harm", example: "Weapons creation, self-harm, violence against others", exampleType: "text", color: "red" },
-  { label: "Illegal Activities", description: "Content that facilitates breaking laws", example: "Fraud schemes, hacking instructions, drug synthesis", exampleType: "text", color: "red" },
-  { label: "Harassment & Hate", description: "Content targeting individuals or groups", example: "Discriminatory content, doxxing, targeted harassment", exampleType: "text", color: "red" },
-  { label: "Misinformation", description: "Deliberately false or misleading content", example: "Fake news, health misinformation, conspiracy content", exampleType: "text", color: "red" },
-  { label: "Privacy Violations", description: "Exposing or exploiting personal information", example: "Revealing private data, stalking assistance", exampleType: "text", color: "red" },
-  { label: "Exploitation", description: "Content that exploits vulnerable individuals", example: "CSAM, non-consensual intimate content, scams targeting elderly", exampleType: "text", color: "red" }
+  { label: "Onestà", description: "Non usare l'IA per ingannare le persone o creare contenuti fuorvianti", example: "Niente recensioni false, impersonificazione o 'prove' fabbricate", exampleType: "text", color: "blue" },
+  { label: "Equità", description: "Lavora attivamente per evitare di perpetuare bias e stereotipi", example: "Testa i prompt attraverso demografie, richiedi prospettive diverse", exampleType: "text", color: "purple" },
+  { label: "Trasparenza", description: "Sii chiaro sul coinvolgimento dell'IA quando conta", example: "Dichiara l'assistenza IA in lavori pubblicati, contesti professionali", exampleType: "text", color: "green" },
+  { label: "Privacy", description: "Proteggi le informazioni personali nei prompt e negli output", example: "Anonimizza i dati, evita di includere PII, comprendi le policy sui dati", exampleType: "text", color: "amber" },
+  { label: "Sicurezza", description: "Progetta prompt che prevengono output dannosi", example: "Costruisci guardrail, testa per casi limite, gestisci i rifiuti con grazia", exampleType: "text", color: "red" },
+  { label: "Responsabilità", description: "Assumi la responsabilità di ciò che i tuoi prompt producono", example: "Rivedi gli output, correggi i problemi, mantieni la supervisione umana", exampleType: "text", color: "cyan" }
 ]} />
 
-<Callout type="warning" title="What is CSAM?">
-CSAM stands for **Child Sexual Abuse Material**. Creating, distributing, or possessing such content is illegal worldwide. AI systems must never generate content depicting minors in sexual situations, and responsible prompt engineers actively build safeguards against such misuse.
+### Il Ruolo del Prompt Engineer
+
+Hai più influenza di quanto potresti realizzare:
+
+- **Cosa produce l'IA**: I tuoi prompt determinano il contenuto, il tono e la qualità degli output
+- **Come interagisce l'IA**: I tuoi system prompt modellano personalità, confini ed esperienza utente
+- **Quali salvaguardie esistono**: Le tue scelte di design determinano cosa farà e non farà l'IA
+- **Come vengono gestiti gli errori**: La tua gestione errori determina se i fallimenti sono eleganti o dannosi
+
+## Evitare Output Dannosi
+
+L'obbligo etico più fondamentale è prevenire che i tuoi prompt causino danni.
+
+### Categorie di Contenuto Dannoso
+
+<InfoGrid items={[
+  { label: "Violenza e Danno", description: "Istruzioni che potrebbero portare a danno fisico", example: "Creazione armi, autolesionismo, violenza verso altri", exampleType: "text", color: "red" },
+  { label: "Attività Illegali", description: "Contenuto che facilita la violazione di leggi", example: "Schemi di frode, istruzioni hacking, sintesi droghe", exampleType: "text", color: "red" },
+  { label: "Molestie e Odio", description: "Contenuto che prende di mira individui o gruppi", example: "Contenuto discriminatorio, doxxing, molestie mirate", exampleType: "text", color: "red" },
+  { label: "Disinformazione", description: "Contenuto deliberatamente falso o fuorviante", example: "Fake news, disinformazione sanitaria, contenuto complottista", exampleType: "text", color: "red" },
+  { label: "Violazioni Privacy", description: "Esporre o sfruttare informazioni personali", example: "Rivelare dati privati, assistenza stalking", exampleType: "text", color: "red" },
+  { label: "Sfruttamento", description: "Contenuto che sfrutta individui vulnerabili", example: "CSAM, contenuto intimo non consensuale, truffe verso anziani", exampleType: "text", color: "red" }
+]} />
+
+<Callout type="warning" title="Cos'è il CSAM?">
+CSAM sta per **Child Sexual Abuse Material** (Materiale di Abuso Sessuale su Minori). Creare, distribuire o possedere tale contenuto è illegale in tutto il mondo. I sistemi IA non devono mai generare contenuto che raffigura minori in situazioni sessuali, e i prompt engineer responsabili costruiscono attivamente salvaguardie contro tale uso improprio.
 </Callout>
 
-### Building Safety Into Prompts
+### Costruire la Sicurezza nei Prompt
 
-When building AI systems, include explicit safety guidelines:
+Quando costruisci sistemi IA, includi linee guida di sicurezza esplicite:
 
 <TryIt 
-  title="Safety-First System Prompt"
-  description="A template for building safety guidelines into your AI systems."
-  prompt={`You are a helpful assistant for \${purpose}.
+  title="System Prompt Safety-First"
+  description="Un template per costruire linee guida di sicurezza nei tuoi sistemi IA."
+  prompt={`Sei un assistente utile per \${purpose}.
 
-## SAFETY GUIDELINES
+## LINEE GUIDA DI SICUREZZA
 
-**Content Restrictions**:
-- Never provide instructions that could cause physical harm
-- Decline requests for illegal information or activities
-- Don't generate discriminatory or hateful content
-- Don't create deliberately misleading information
+**Restrizioni Contenuto**:
+- Mai fornire istruzioni che potrebbero causare danno fisico
+- Rifiuta richieste di informazioni o attività illegali
+- Non generare contenuto discriminatorio o di odio
+- Non creare informazioni deliberatamente fuorvianti
 
-**When You Must Decline**:
-- Acknowledge you understood the request
-- Briefly explain why you can't help with this specific thing
-- Offer constructive alternatives when possible
-- Be respectful—don't lecture or be preachy
+**Quando Devi Rifiutare**:
+- Riconosci di aver capito la richiesta
+- Spiega brevemente perché non puoi aiutare con questa cosa specifica
+- Offri alternative costruttive quando possibile
+- Sii rispettoso—non fare la predica o essere moralista
 
-**When Uncertain**:
-- Ask clarifying questions about intent
-- Err on the side of caution
-- Suggest the user consult appropriate professionals
+**Quando Sei Incerto**:
+- Fai domande chiarificatrici sull'intento
+- Pecca per eccesso di cautela
+- Suggerisci all'utente di consultare professionisti appropriati
 
-Now, please help the user with: \${userRequest}`}
+Ora, per favore aiuta l'utente con: \${userRequest}`}
 />
 
-### The Intent vs. Impact Framework
+### Il Framework Intento vs. Impatto
 
-Not every sensitive request is malicious. Use this framework for ambiguous cases:
+Non ogni richiesta sensibile è malevola. Usa questo framework per casi ambigui:
 
 <TryIt 
-  title="Ethical Edge Case Analyzer"
-  description="Work through ambiguous requests to determine the appropriate response."
-  prompt={`I received this request that might be sensitive:
+  title="Analizzatore Casi Limite Etici"
+  description="Lavora attraverso richieste ambigue per determinare la risposta appropriata."
+  prompt={`Ho ricevuto questa richiesta che potrebbe essere sensibile:
 
 "\${sensitiveRequest}"
 
-Help me think through whether and how to respond:
+Aiutami a pensare se e come rispondere:
 
-**1. Intent Analysis**
-- What are the most likely reasons someone would ask this?
-- Could this be legitimate? (research, fiction, education, professional need)
-- Are there red flags suggesting malicious intent?
+**1. Analisi Intento**
+- Quali sono le ragioni più probabili per cui qualcuno chiederebbe questo?
+- Potrebbe essere legittimo? (ricerca, fiction, educazione, necessità professionale)
+- Ci sono segnali d'allarme che suggeriscono intento malevolo?
 
-**2. Impact Assessment**
-- What's the worst case if this information is misused?
-- How accessible is this information elsewhere?
-- Does providing it meaningfully increase risk?
+**2. Valutazione Impatto**
+- Qual è il caso peggiore se questa informazione viene usata male?
+- Quanto è accessibile questa informazione altrove?
+- Fornirla aumenta significativamente il rischio?
 
-**3. Recommendation**
-Based on this analysis:
-- Should I respond, decline, or ask for clarification?
-- If responding, what safeguards should I include?
-- If declining, how should I phrase it helpfully?`}
+**3. Raccomandazione**
+Basandomi su questa analisi:
+- Dovrei rispondere, rifiutare, o chiedere chiarimenti?
+- Se rispondo, quali salvaguardie dovrei includere?
+- Se rifiuto, come dovrei formularlo in modo utile?`}
 />
 
-## Addressing Bias
+## Affrontare i Bias
 
-AI models inherit biases from their training data—historical inequities, representation gaps, cultural assumptions, and linguistic patterns. As prompt engineers, we can either amplify these biases or actively counteract them.
+I modelli IA ereditano bias dai loro dati di training—disuguaglianze storiche, gap di rappresentazione, assunzioni culturali e pattern linguistici. Come prompt engineer, possiamo sia amplificare questi bias che contrastarli attivamente.
 
-### How Bias Manifests
+### Come si Manifesta il Bias
 
 <InfoGrid items={[
-  { label: "Default Assumptions", description: "The model assumes certain demographics for roles", example: "Doctors defaulting to male, nurses to female", exampleType: "text", color: "amber" },
-  { label: "Stereotyping", description: "Reinforcing cultural stereotypes in descriptions", example: "Associating certain ethnicities with specific traits", exampleType: "text", color: "amber" },
-  { label: "Representation Gaps", description: "Some groups are underrepresented or misrepresented", example: "Limited accurate information about minority cultures", exampleType: "text", color: "amber" },
-  { label: "Western-Centric Views", description: "Perspectives skewed toward Western culture and values", example: "Assuming Western norms are universal", exampleType: "text", color: "amber" }
+  { label: "Assunzioni di Default", description: "Il modello assume certe demografie per ruoli", example: "Dottori che defaultano a maschi, infermiere a femmine", exampleType: "text", color: "amber" },
+  { label: "Stereotipizzazione", description: "Rinforzare stereotipi culturali nelle descrizioni", example: "Associare certe etnie a tratti specifici", exampleType: "text", color: "amber" },
+  { label: "Gap di Rappresentazione", description: "Alcuni gruppi sono sottorappresentati o mal rappresentati", example: "Informazioni accurate limitate su culture minoritarie", exampleType: "text", color: "amber" },
+  { label: "Visioni Occidentocentriche", description: "Prospettive sbilanciate verso cultura e valori occidentali", example: "Assumere che le norme occidentali siano universali", exampleType: "text", color: "amber" }
 ]} />
 
-### Testing for Bias
+### Testare per i Bias
 
 <TryIt 
-  title="Bias Detection Test"
-  description="Use this to test your prompts for potential bias issues."
-  prompt={`I want to test this prompt for bias:
+  title="Test Rilevazione Bias"
+  description="Usa questo per testare i tuoi prompt per potenziali problemi di bias."
+  prompt={`Voglio testare questo prompt per bias:
 
 "\${promptToTest}"
 
-Run these bias checks:
+Esegui questi controlli di bias:
 
-**1. Demographic Variation Test**
-Run the prompt with different demographic descriptors (gender, ethnicity, age, etc.) and note any differences in:
-- Tone or respect level
-- Assumed competence or capabilities
-- Stereotypical associations
+**1. Test Variazione Demografica**
+Esegui il prompt con diversi descrittori demografici (genere, etnia, età, ecc.) e nota eventuali differenze in:
+- Tono o livello di rispetto
+- Competenza o capacità assunte
+- Associazioni stereotipiche
 
-**2. Default Assumption Check**
-When demographics aren't specified:
-- What does the model assume?
-- Are these assumptions problematic?
+**2. Controllo Assunzioni di Default**
+Quando le demografie non sono specificate:
+- Cosa assume il modello?
+- Queste assunzioni sono problematiche?
 
-**3. Representation Analysis**
-- Are different groups represented fairly?
-- Are any groups missing or marginalized?
+**3. Analisi Rappresentazione**
+- I diversi gruppi sono rappresentati equamente?
+- Qualche gruppo è mancante o marginalizzato?
 
-**4. Recommendations**
-Based on findings, suggest prompt modifications to reduce bias.`}
+**4. Raccomandazioni**
+Basandoti sui risultati, suggerisci modifiche al prompt per ridurre i bias.`}
 />
 
-### Mitigating Bias in Practice
+### Mitigare i Bias in Pratica
 
 <Compare 
-  before={{ label: "Bias-prone prompt", content: "Describe a typical CEO." }}
-  after={{ label: "Bias-aware prompt", content: "Describe a CEO. Vary demographics across examples, and avoid defaulting to any particular gender, ethnicity, or age." }}
+  before={{ label: "Prompt incline al bias", content: "Descrivi un tipico CEO." }}
+  after={{ label: "Prompt consapevole dei bias", content: "Descrivi un CEO. Varia le demografie tra gli esempi, ed evita di defaultare a qualsiasi genere, etnia o età particolare." }}
 />
 
-## Transparency and Disclosure
+## Trasparenza e Divulgazione
 
-When should you tell people AI was involved? The answer depends on context—but the trend is toward more disclosure, not less.
+Quando dovresti dire alle persone che l'IA era coinvolta? La risposta dipende dal contesto—ma la tendenza è verso più divulgazione, non meno.
 
-### When Disclosure Matters
+### Quando la Divulgazione Conta
 
 <InfoGrid items={[
-  { label: "Published Content", description: "Articles, posts, or content shared publicly", example: "Blog posts, social media, marketing materials", exampleType: "text", color: "blue" },
-  { label: "Consequential Decisions", description: "When AI outputs affect people's lives", example: "Hiring recommendations, medical info, legal guidance", exampleType: "text", color: "blue" },
-  { label: "Trust Contexts", description: "Where authenticity is expected or valued", example: "Personal correspondence, testimonials, reviews", exampleType: "text", color: "blue" },
-  { label: "Professional Settings", description: "Workplace or academic environments", example: "Reports, research, client deliverables", exampleType: "text", color: "blue" }
+  { label: "Contenuto Pubblicato", description: "Articoli, post o contenuto condiviso pubblicamente", example: "Blog post, social media, materiali marketing", exampleType: "text", color: "blue" },
+  { label: "Decisioni Consequenziali", description: "Quando gli output IA influenzano la vita delle persone", example: "Raccomandazioni assunzioni, info mediche, guida legale", exampleType: "text", color: "blue" },
+  { label: "Contesti di Fiducia", description: "Dove l'autenticità è attesa o valorizzata", example: "Corrispondenza personale, testimonianze, recensioni", exampleType: "text", color: "blue" },
+  { label: "Contesti Professionali", description: "Ambienti lavorativi o accademici", example: "Report, ricerche, deliverable per clienti", exampleType: "text", color: "blue" }
 ]} />
 
-### How to Disclose Appropriately
+### Come Divulgare Appropriatamente
 
 <Compare 
-  before={{ label: "Hidden AI involvement", content: "Here's my analysis of the market trends..." }}
-  after={{ label: "Transparent disclosure", content: "I used AI tools to help analyze the data and draft this report. All conclusions have been verified and edited by me." }}
+  before={{ label: "Coinvolgimento IA nascosto", content: "Ecco la mia analisi dei trend di mercato..." }}
+  after={{ label: "Divulgazione trasparente", content: "Ho usato strumenti IA per aiutare ad analizzare i dati e redigere questo report. Tutte le conclusioni sono state verificate e modificate da me." }}
 />
 
-Common disclosure phrases that work well:
-- "Written with AI assistance"
-- "AI-generated first draft, human edited"
-- "Analysis performed using AI tools"
-- "Created with AI, reviewed and approved by [name]"
+Frasi di divulgazione comuni che funzionano bene:
+- "Scritto con assistenza IA"
+- "Prima bozza generata da IA, modificata da umano"
+- "Analisi eseguita usando strumenti IA"
+- "Creato con IA, revisionato e approvato da [nome]"
 
-## Privacy Considerations
+## Considerazioni sulla Privacy
 
-Every prompt you send contains data. Understanding where that data goes—and what shouldn't be in it—is essential.
+Ogni prompt che invii contiene dati. Capire dove vanno quei dati—e cosa non dovrebbe esserci—è essenziale.
 
-### What Never Belongs in Prompts
+### Cosa Non Appartiene Mai ai Prompt
 
 <InfoGrid items={[
-  { label: "Personal Identifiers", description: "Names, addresses, phone numbers, SSNs", example: "Use [CUSTOMER] instead of 'John Smith'", color: "red" },
-  { label: "Financial Data", description: "Account numbers, credit cards, income details", example: "Describe the pattern, not the actual numbers", exampleType: "text", color: "red" },
-  { label: "Health Information", description: "Medical records, diagnoses, prescriptions", example: "Ask about conditions generally, not specific patients", exampleType: "text", color: "red" },
-  { label: "Credentials", description: "Passwords, API keys, tokens, secrets", example: "Never paste credentials—use placeholders", exampleType: "text", color: "red" },
-  { label: "Private Communications", description: "Personal emails, messages, confidential docs", example: "Summarize the situation without quoting private text", exampleType: "text", color: "red" }
+  { label: "Identificatori Personali", description: "Nomi, indirizzi, numeri di telefono, codici fiscali", example: "Usa [CLIENTE] invece di 'Mario Rossi'", color: "red" },
+  { label: "Dati Finanziari", description: "Numeri conto, carte di credito, dettagli reddito", example: "Descrivi il pattern, non i numeri effettivi", exampleType: "text", color: "red" },
+  { label: "Informazioni Sanitarie", description: "Cartelle cliniche, diagnosi, prescrizioni", example: "Chiedi di condizioni in generale, non pazienti specifici", exampleType: "text", color: "red" },
+  { label: "Credenziali", description: "Password, chiavi API, token, segreti", example: "Mai incollare credenziali—usa placeholder", exampleType: "text", color: "red" },
+  { label: "Comunicazioni Private", description: "Email personali, messaggi, documenti confidenziali", example: "Riassumi la situazione senza citare testo privato", exampleType: "text", color: "red" }
 ]} />
 
-### Safe Data Handling Pattern
+### Pattern Gestione Dati Sicura
 
 <Compare 
-  before={{ label: "Unsafe: Contains PII", content: "Summarize this complaint from John Smith at 123 Main St, Anytown about order #12345: 'I ordered on March 15 and still haven't received...'" }}
-  after={{ label: "Safe: Anonymized", content: "Summarize this customer complaint pattern: A customer ordered 3 weeks ago, hasn't received their order, and has contacted support twice without resolution." }}
+  before={{ label: "Non sicuro: Contiene PII", content: "Riassumi questo reclamo da Mario Rossi di Via Roma 123, Città sull'ordine #12345: 'Ho ordinato il 15 marzo e ancora non ho ricevuto...'" }}
+  after={{ label: "Sicuro: Anonimizzato", content: "Riassumi questo pattern di reclamo cliente: Un cliente ha ordinato 3 settimane fa, non ha ricevuto l'ordine, e ha contattato il supporto due volte senza risoluzione." }}
 />
 
-<Callout type="info" title="What is PII?">
-**PII** stands for **Personally Identifiable Information**—any data that can identify a specific individual. This includes names, addresses, phone numbers, email addresses, Social Security numbers, financial account numbers, and even combinations of data (like job title + company + city) that could identify someone. When prompting AI, always anonymize or remove PII to protect privacy.
+<Callout type="info" title="Cosa sono i PII?">
+**PII** sta per **Personally Identifiable Information** (Informazioni di Identificazione Personale)—qualsiasi dato che può identificare un individuo specifico. Questo include nomi, indirizzi, numeri di telefono, indirizzi email, codici fiscali, numeri di conto finanziario, e persino combinazioni di dati (come titolo lavorativo + azienda + città) che potrebbero identificare qualcuno. Quando prompting l'IA, anonimizza sempre o rimuovi i PII per proteggere la privacy.
 </Callout>
 
 <TryIt 
-  title="PII Scrubber"
-  description="Use this to identify and remove sensitive information before including text in prompts."
-  prompt={`Review this text for sensitive information that should be removed before using it in an AI prompt:
+  title="Scrubber PII"
+  description="Usa questo per identificare e rimuovere informazioni sensibili prima di includere testo nei prompt."
+  prompt={`Rivedi questo testo per informazioni sensibili che dovrebbero essere rimosse prima di usarlo in un prompt IA:
 
 "\${textToReview}"
 
-Identify:
-1. **Personal Identifiers**: Names, addresses, phone numbers, emails, SSNs
-2. **Financial Data**: Account numbers, amounts that could identify someone
-3. **Health Information**: Medical details, conditions, prescriptions
-4. **Credentials**: Any passwords, keys, or tokens
-5. **Private Details**: Information someone would reasonably expect to be confidential
+Identifica:
+1. **Identificatori Personali**: Nomi, indirizzi, numeri di telefono, email, codici fiscali
+2. **Dati Finanziari**: Numeri conto, importi che potrebbero identificare qualcuno
+3. **Informazioni Sanitarie**: Dettagli medici, condizioni, prescrizioni
+4. **Credenziali**: Qualsiasi password, chiave o token
+5. **Dettagli Privati**: Informazioni che qualcuno si aspetterebbe ragionevolmente fossero confidenziali
 
-For each item found, suggest how to anonymize or generalize it while preserving the information needed for the task.`}
+Per ogni elemento trovato, suggerisci come anonimizzarlo o generalizzarlo preservando le informazioni necessarie per il compito.`}
 />
 
-## Authenticity and Deception
+## Autenticità e Inganno
 
-There's a difference between using AI as a tool and using AI to deceive.
+C'è una differenza tra usare l'IA come strumento e usare l'IA per ingannare.
 
-### The Legitimacy Line
+### La Linea della Legittimità
 
 <InfoGrid items={[
-  { label: "Legitimate Uses", description: "AI as a tool to enhance your work", example: "Drafting, brainstorming, editing, learning", exampleType: "text", color: "green" },
-  { label: "Gray Areas", description: "Context-dependent, requires judgment", example: "Ghostwriting, templates, automated responses", exampleType: "text", color: "amber" },
-  { label: "Deceptive Uses", description: "Misrepresenting AI work as human-original", example: "Fake reviews, academic fraud, impersonation", exampleType: "text", color: "red" }
+  { label: "Usi Legittimi", description: "IA come strumento per migliorare il tuo lavoro", example: "Bozze, brainstorming, editing, apprendimento", exampleType: "text", color: "green" },
+  { label: "Aree Grigie", description: "Dipendente dal contesto, richiede giudizio", example: "Ghostwriting, template, risposte automatizzate", exampleType: "text", color: "amber" },
+  { label: "Usi Ingannevoli", description: "Presentare lavoro IA come originale umano", example: "Recensioni false, frode accademica, impersonificazione", exampleType: "text", color: "red" }
 ]} />
 
-Key questions to ask:
-- Would the recipient expect this to be original human work?
-- Am I gaining unfair advantage through deception?
-- Would disclosure change how the work is received?
+Domande chiave da porsi:
+- Il destinatario si aspetterebbe che questo sia lavoro umano originale?
+- Sto guadagnando un vantaggio ingiusto attraverso l'inganno?
+- La divulgazione cambierebbe come viene recepito il lavoro?
 
-### Synthetic Media Responsibility
+### Responsabilità sui Media Sintetici
 
-Creating realistic depictions of real people—whether images, audio, or video—carries special obligations:
+Creare raffigurazioni realistiche di persone reali—che siano immagini, audio o video—comporta obblighi speciali:
 
-- **Never** create realistic depictions without consent
-- **Always** label synthetic media clearly
-- **Consider** potential for misuse before creating
-- **Refuse** to create non-consensual intimate imagery
+- **Mai** creare raffigurazioni realistiche senza consenso
+- **Sempre** etichettare chiaramente i media sintetici
+- **Considera** il potenziale di uso improprio prima di creare
+- **Rifiuta** di creare immagini intime non consensuali
 
-## Responsible Deployment
+## Deployment Responsabile
 
-When building AI features for others to use, your ethical obligations multiply.
+Quando costruisci funzionalità IA per l'uso di altri, i tuoi obblighi etici si moltiplicano.
 
-### Pre-Deployment Checklist
+### Checklist Pre-Deployment
 
 <Checklist 
-  title="Deployment Readiness"
+  title="Prontezza al Deployment"
   items={[
-    { text: "Tested for harmful outputs across diverse inputs" },
-    { text: "Tested for bias with varied demographics" },
-    { text: "User disclosure/consent mechanisms in place" },
-    { text: "Human oversight for high-stakes decisions" },
-    { text: "Feedback and reporting system available" },
-    { text: "Incident response plan documented" },
-    { text: "Clear usage policies communicated" },
-    { text: "Monitoring and alerting configured" }
+    { text: "Testato per output dannosi attraverso input diversi" },
+    { text: "Testato per bias con demografie variate" },
+    { text: "Meccanismi di divulgazione/consenso utente in atto" },
+    { text: "Supervisione umana per decisioni ad alto impatto" },
+    { text: "Sistema feedback e segnalazione disponibile" },
+    { text: "Piano risposta incidenti documentato" },
+    { text: "Policy di utilizzo chiare comunicate" },
+    { text: "Monitoraggio e alerting configurati" }
   ]}
 />
 
-### Human Oversight Principles
+### Principi di Supervisione Umana
 
 <InfoGrid items={[
-  { label: "High-Stakes Review", description: "Humans review decisions that significantly affect people", example: "Hiring, medical, legal, financial recommendations", exampleType: "text", color: "blue" },
-  { label: "Error Correction", description: "Mechanisms exist to catch and fix AI mistakes", example: "User feedback, quality sampling, appeals process", exampleType: "text", color: "blue" },
-  { label: "Continuous Learning", description: "Insights from issues improve the system", example: "Post-mortems, prompt updates, training improvements", exampleType: "text", color: "blue" },
-  { label: "Override Capability", description: "Humans can intervene when AI fails", example: "Manual review queues, escalation paths", exampleType: "text", color: "blue" }
+  { label: "Revisione Alto Impatto", description: "Gli umani revisionano decisioni che influenzano significativamente le persone", example: "Assunzioni, raccomandazioni mediche, legali, finanziarie", exampleType: "text", color: "blue" },
+  { label: "Correzione Errori", description: "Esistono meccanismi per catturare e correggere errori IA", example: "Feedback utente, campionamento qualità, processo appelli", exampleType: "text", color: "blue" },
+  { label: "Apprendimento Continuo", description: "Gli insight dai problemi migliorano il sistema", example: "Post-mortem, aggiornamenti prompt, miglioramenti training", exampleType: "text", color: "blue" },
+  { label: "Capacità di Override", description: "Gli umani possono intervenire quando l'IA fallisce", example: "Code revisione manuale, percorsi di escalation", exampleType: "text", color: "blue" }
 ]} />
 
-## Special Context Guidelines
+## Linee Guida per Contesti Speciali
 
-Some domains require extra care due to their potential for harm or the vulnerability of those involved.
+Alcuni domini richiedono cure extra a causa del loro potenziale di danno o della vulnerabilità delle persone coinvolte.
 
-### Healthcare
+### Sanità
 
 <TryIt 
-  title="Medical Context Disclaimer"
-  description="Template for AI systems that might receive health-related queries."
-  prompt={`You are an AI assistant. When users ask about health or medical topics:
+  title="Disclaimer Contesto Medico"
+  description="Template per sistemi IA che potrebbero ricevere query relative alla salute."
+  prompt={`Sei un assistente IA. Quando gli utenti chiedono di argomenti di salute o medici:
 
-**Always**:
-- Recommend consulting a qualified healthcare provider for personal medical decisions
-- Provide general educational information, not personalized medical advice
-- Include disclaimers that you cannot diagnose conditions
-- Suggest emergency services (911) for urgent situations
+**Sempre**:
+- Raccomanda di consultare un operatore sanitario qualificato per decisioni mediche personali
+- Fornisci informazioni educative generali, non consigli medici personalizzati
+- Includi disclaimer che non puoi diagnosticare condizioni
+- Suggerisci servizi di emergenza (118) per situazioni urgenti
 
-**Never**:
-- Provide specific diagnoses
-- Recommend specific medications or dosages
-- Discourage someone from seeking professional care
-- Make claims about treatments without noting uncertainty
+**Mai**:
+- Fornire diagnosi specifiche
+- Raccomandare medicinali o dosaggi specifici
+- Scoraggiare qualcuno dal cercare cure professionali
+- Fare affermazioni sui trattamenti senza notare incertezza
 
-User question: \${healthQuestion}
+Domanda utente: \${healthQuestion}
 
-Respond helpfully while following these guidelines.`}
+Rispondi in modo utile seguendo queste linee guida.`}
 />
 
-### Legal and Financial
+### Legale e Finanziario
 
-These domains have regulatory implications and require appropriate disclaimers:
-
-<InfoGrid items={[
-  { label: "Legal Queries", description: "Provide general information, not legal advice", example: "\"This is general information. For your specific situation, consult a licensed attorney.\"", color: "purple" },
-  { label: "Financial Queries", description: "Educate without providing personal financial advice", example: "\"This is educational. Consider consulting a financial advisor for your situation.\"", color: "purple" },
-  { label: "Jurisdiction Awareness", description: "Laws vary by location", example: "\"Laws differ by state/country. Verify requirements for your jurisdiction.\"", color: "purple" }
-]} />
-
-### Children and Education
+Questi domini hanno implicazioni regolamentari e richiedono disclaimer appropriati:
 
 <InfoGrid items={[
-  { label: "Age-Appropriate Content", description: "Ensure outputs are suitable for the age group", example: "Filter mature content, use appropriate language", exampleType: "text", color: "cyan" },
-  { label: "Academic Integrity", description: "Support learning, don't replace it", example: "Explain concepts rather than writing essays for students", exampleType: "text", color: "cyan" },
-  { label: "Safety First", description: "Extra protection for vulnerable users", example: "Stricter content filters, no personal data collection", exampleType: "text", color: "cyan" }
+  { label: "Query Legali", description: "Fornisci informazioni generali, non consulenza legale", example: "\"Queste sono informazioni generali. Per la tua situazione specifica, consulta un avvocato abilitato.\"", color: "purple" },
+  { label: "Query Finanziarie", description: "Educa senza fornire consulenza finanziaria personale", example: "\"Questo è educativo. Considera di consultare un consulente finanziario per la tua situazione.\"", color: "purple" },
+  { label: "Consapevolezza Giurisdizione", description: "Le leggi variano per località", example: "\"Le leggi differiscono per stato/paese. Verifica i requisiti per la tua giurisdizione.\"", color: "purple" }
 ]} />
 
-## Self-Assessment
+### Bambini e Educazione
 
-Before deploying any prompt or AI system, run through these questions:
+<InfoGrid items={[
+  { label: "Contenuto Appropriato all'Età", description: "Assicurati che gli output siano adatti alla fascia d'età", example: "Filtra contenuto maturo, usa linguaggio appropriato", exampleType: "text", color: "cyan" },
+  { label: "Integrità Accademica", description: "Supporta l'apprendimento, non sostituirlo", example: "Spiega i concetti piuttosto che scrivere saggi per gli studenti", exampleType: "text", color: "cyan" },
+  { label: "Sicurezza Prima", description: "Protezione extra per utenti vulnerabili", example: "Filtri contenuto più stretti, nessuna raccolta dati personali", exampleType: "text", color: "cyan" }
+]} />
+
+## Auto-Valutazione
+
+Prima di deployare qualsiasi prompt o sistema IA, passa attraverso queste domande:
 
 <Checklist 
-  title="Ethical Self-Check"
+  title="Auto-Verifica Etica"
   items={[
-    { text: "Could this be used to harm someone?" },
-    { text: "Does this respect user privacy?" },
-    { text: "Could this perpetuate harmful biases?" },
-    { text: "Is AI involvement appropriately disclosed?" },
-    { text: "Is there adequate human oversight?" },
-    { text: "What's the worst that could happen?" },
-    { text: "Would I be comfortable if this use were public?" }
+    { text: "Questo potrebbe essere usato per danneggiare qualcuno?" },
+    { text: "Questo rispetta la privacy dell'utente?" },
+    { text: "Questo potrebbe perpetuare bias dannosi?" },
+    { text: "Il coinvolgimento IA è appropriatamente divulgato?" },
+    { text: "C'è supervisione umana adeguata?" },
+    { text: "Qual è la cosa peggiore che potrebbe succedere?" },
+    { text: "Mi sentirei a mio agio se questo uso fosse pubblico?" }
   ]}
 />
 
 <Quiz 
-  question="A user asks your AI system how to 'get rid of someone who's bothering them.' What's the most appropriate response strategy?"
+  question="Un utente chiede al tuo sistema IA come 'liberarsi di qualcuno che lo sta infastidendo.' Qual è la strategia di risposta più appropriata?"
   options={[
-    "Refuse immediately—this could be a request for harm instructions",
-    "Provide conflict resolution advice since that's the most likely intent",
-    "Ask clarifying questions to understand intent before deciding how to respond",
-    "Explain you can't help with anything related to harming people"
+    "Rifiutare immediatamente—questa potrebbe essere una richiesta di istruzioni per far del male",
+    "Fornire consigli di risoluzione conflitti dato che è l'intento più probabile",
+    "Fare domande chiarificatrici per capire l'intento prima di decidere come rispondere",
+    "Spiegare che non puoi aiutare con nulla relativo al fare del male alle persone"
   ]}
   correctIndex={2}
-  explanation="Ambiguous requests deserve clarification, not assumptions. 'Get rid of someone' could mean ending a friendship, resolving a workplace conflict, or something harmful. Asking clarifying questions lets you respond appropriately to the actual intent while remaining cautious about providing harmful information."
+  explanation="Le richieste ambigue meritano chiarimenti, non assunzioni. 'Liberarsi di qualcuno' potrebbe significare terminare un'amicizia, risolvere un conflitto lavorativo, o qualcosa di dannoso. Fare domande chiarificatrici ti permette di rispondere appropriatamente all'intento reale rimanendo cauto sul fornire informazioni dannose."
 />

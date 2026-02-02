@@ -1,413 +1,410 @@
-AI has transformed software development. This chapter covers prompting techniques for code generation, debugging, review, and development workflows.
+لقد أحدث الذكاء الاصطناعي تحولاً في تطوير البرمجيات. يتناول هذا الفصل تقنيات كتابة الأوامر لتوليد الأكواد وتصحيح الأخطاء والمراجعة وسير عمل التطوير.
 
-<Callout type="info" title="AI as Coding Partner">
-AI excels at code generation, debugging, and documentation—but always review generated code for security, correctness, and maintainability. Never deploy AI code without testing.
+<Callout type="info" title="الذكاء الاصطناعي كشريك في البرمجة">
+يتفوق الذكاء الاصطناعي في توليد الأكواد وتصحيح الأخطاء والتوثيق - لكن راجع دائماً الكود المُولَّد من حيث الأمان والصحة وقابلية الصيانة. لا تنشر أبداً كوداً من الذكاء الاصطناعي دون اختباره.
 </Callout>
 
-## Code Generation
+## توليد الأكواد
 
-### Do's and Don'ts: Code Prompts
+### ما يجب فعله وما يجب تجنبه: أوامر الأكواد
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Write a function to validate emails." }}
-  after={{ label: "✓ Complete specification", content: "Write a Python function that validates email addresses.\n\nInput: string (potential email)\nOutput: tuple[bool, str | None] - (is_valid, error_message)\nHandle: empty string, None, unicode chars\nUse regex, include type hints and docstring." }}
+  before={{ label: "❌ طلب غامض", content: "اكتب دالة للتحقق من صحة البريد الإلكتروني." }}
+  after={{ label: "✓ مواصفات كاملة", content: "اكتب دالة Python للتحقق من صحة عناوين البريد الإلكتروني.\n\nالمدخل: سلسلة نصية (بريد إلكتروني محتمل)\nالمخرج: tuple[bool, str | None] - (صالح، رسالة_الخطأ)\nالتعامل مع: سلسلة فارغة، None، أحرف يونيكود\nاستخدم regex، وأضف تلميحات الأنواع وسلسلة التوثيق." }}
 />
 
-### Function Generation
+### توليد الدوال
 
-<TryIt compact prompt={`Write a \${language:Python} function that \${description:validates email addresses}.
+<TryIt compact prompt={`اكتب دالة \${language:Python} تقوم بـ \${description:التحقق من صحة عناوين البريد الإلكتروني}.
 
-Requirements:
-- Input: \${inputTypes:string (potential email)}
-- Output: \${outputType:boolean and optional error message}
-- Handle edge cases: \${edgeCases:empty string, None, unicode characters}
-- Performance: \${performance:standard}
+المتطلبات:
+- المدخل: \${inputTypes:سلسلة نصية (بريد إلكتروني محتمل)}
+- المخرج: \${outputType:قيمة منطقية ورسالة خطأ اختيارية}
+- التعامل مع الحالات الحدية: \${edgeCases:سلسلة فارغة، None، أحرف يونيكود}
+- الأداء: \${performance:قياسي}
 
-Include:
-- Type hints/annotations
-- Docstring with examples
-- Input validation
-- Error handling`} />
+يتضمن:
+- تلميحات الأنواع/التعليقات التوضيحية
+- سلسلة توثيق مع أمثلة
+- التحقق من صحة المدخلات
+- معالجة الأخطاء`} />
 
-### Class/Module Generation
+### توليد الأصناف/الوحدات
 
-<TryIt compact prompt={`Create a \${language:Python} class for \${purpose:managing user sessions}.
+<TryIt compact prompt={`أنشئ صنف \${language:Python} لـ \${purpose:إدارة جلسات المستخدمين}.
 
-Class design:
-- Name: \${className:SessionManager}
-- Responsibility: \${responsibility:handle user session lifecycle}
-- Properties: \${properties:session_id, user_id, created_at, expires_at}
-- Methods: \${methods:create(), validate(), refresh(), destroy()}
+تصميم الصنف:
+- الاسم: \${className:SessionManager}
+- المسؤولية: \${responsibility:التعامل مع دورة حياة جلسة المستخدم}
+- الخصائص: \${properties:session_id، user_id، created_at، expires_at}
+- الدوال: \${methods:create()، validate()، refresh()، destroy()}
 
-Requirements:
-- Follow \${designPattern:Singleton} pattern
-- Include proper encapsulation
-- Add comprehensive docstrings
-- Include usage example
+المتطلبات:
+- اتبع نمط \${designPattern:Singleton}
+- تضمين التغليف المناسب
+- إضافة سلاسل توثيق شاملة
+- تضمين مثال للاستخدام
 
-Testing:
-- Include unit test skeleton`} />
+الاختبار:
+- تضمين هيكل اختبارات الوحدة`} />
 
-### API Endpoint Generation
+### توليد نقاط نهاية API
 
-<TryIt compact prompt={`Create a REST API endpoint for \${resource:user profiles}.
+<TryIt compact prompt={`أنشئ نقطة نهاية REST API لـ \${resource:ملفات تعريف المستخدمين}.
 
-Framework: \${framework:FastAPI}
-Method: \${method:GET}
-Path: \${path:/api/users/{id}}
+الإطار: \${framework:FastAPI}
+الطريقة: \${method:GET}
+المسار: \${path:/api/users/{id}}
 
-Request:
-- Headers: \${headers:Authorization Bearer token}
-- Body schema: \${bodySchema:N/A for GET}
-- Query params: \${queryParams:include_posts (boolean)}
+الطلب:
+- الترويسات: \${headers:Authorization Bearer token}
+- مخطط الجسم: \${bodySchema:غير متاح لـ GET}
+- معاملات الاستعلام: \${queryParams:include_posts (منطقي)}
 
-Response:
-- Success: \${successResponse:200 with user object}
-- Errors: \${errorResponses:401 Unauthorized, 404 Not Found}
+الاستجابة:
+- النجاح: \${successResponse:200 مع كائن المستخدم}
+- الأخطاء: \${errorResponses:401 غير مصرح، 404 غير موجود}
 
-Include:
-- Input validation
-- Authentication check
-- Error handling
-- Rate limiting consideration`} />
+يتضمن:
+- التحقق من صحة المدخلات
+- فحص المصادقة
+- معالجة الأخطاء
+- مراعاة تحديد معدل الطلبات`} />
 
-## Debugging
+## تصحيح الأخطاء
 
-<Callout type="tip" title="Debugging Principle">
-Always include the **expected behavior**, **actual behavior**, and **error message** (if any). The more context you provide, the faster AI can identify the root cause.
+<Callout type="tip" title="مبدأ تصحيح الأخطاء">
+قم دائماً بتضمين **السلوك المتوقع** و**السلوك الفعلي** و**رسالة الخطأ** (إن وجدت). كلما قدمت سياقاً أكثر، كلما تمكن الذكاء الاصطناعي من تحديد السبب الجذري بشكل أسرع.
 </Callout>
 
-### Bug Analysis
+### تحليل الأخطاء
 
-<TryIt compact prompt={`Debug this code. It should \${expectedBehavior:return the sum of all numbers} but instead \${actualBehavior:returns 0 for all inputs}.
+<TryIt compact prompt={`صحح هذا الكود. يجب أن \${expectedBehavior:يعيد مجموع جميع الأرقام} لكنه بدلاً من ذلك \${actualBehavior:يعيد 0 لجميع المدخلات}.
 
-Code:
-\${code:paste your code here}
+الكود:
+\${code:الصق الكود الخاص بك هنا}
 
-Error message (if any):
-\${error:none}
+رسالة الخطأ (إن وجدت):
+\${error:لا يوجد}
 
-Steps to debug:
-1. Identify what the code is trying to do
-2. Trace through execution with the given input
-3. Find where expected and actual behavior diverge
-4. Explain the root cause
-5. Provide the fix with explanation`} />
+خطوات التصحيح:
+1. تحديد ما يحاول الكود فعله
+2. تتبع التنفيذ مع المدخل المعطى
+3. إيجاد نقطة التباين بين السلوك المتوقع والفعلي
+4. شرح السبب الجذري
+5. تقديم الإصلاح مع الشرح`} />
 
-### Error Message Interpretation
+### تفسير رسائل الخطأ
 
-<TryIt compact prompt={`Explain this error and how to fix it:
+<TryIt compact prompt={`اشرح هذا الخطأ وكيفية إصلاحه:
 
-Error:
-\${errorMessage:paste error message or stack trace here}
+الخطأ:
+\${errorMessage:الصق رسالة الخطأ أو تتبع المكدس هنا}
 
-Context:
-- Language/Framework: \${framework:Python 3.11}
-- What I was trying to do: \${action:reading a JSON file}
-- Relevant code: \${codeSnippet:paste relevant code}
+السياق:
+- اللغة/الإطار: \${framework:Python 3.11}
+- ما كنت أحاول فعله: \${action:قراءة ملف JSON}
+- الكود ذو الصلة: \${codeSnippet:الصق الكود ذو الصلة}
 
-Provide:
-1. Plain English explanation of the error
-2. Root cause
-3. Step-by-step fix
-4. How to prevent this in the future`} />
+قدم:
+1. شرح بسيط للخطأ
+2. السبب الجذري
+3. إصلاح خطوة بخطوة
+4. كيفية منع هذا في المستقبل`} />
 
-### Performance Debugging
+### تصحيح الأداء
 
-<TryIt compact prompt={`This code is slow. Analyze and optimize:
+<TryIt compact prompt={`هذا الكود بطيء. حلله وحسّنه:
 
-Code:
-\${code:paste your code here}
+الكود:
+\${code:الصق الكود الخاص بك هنا}
 
-Current performance: \${currentPerformance:takes 30 seconds for 1000 items}
-Target performance: \${targetPerformance:under 5 seconds}
-Constraints: \${constraints:memory limit 512MB}
+الأداء الحالي: \${currentPerformance:يستغرق 30 ثانية لـ 1000 عنصر}
+الأداء المستهدف: \${targetPerformance:أقل من 5 ثوانٍ}
+القيود: \${constraints:حد الذاكرة 512 ميغابايت}
 
-Provide:
-1. Identify bottlenecks
-2. Explain why each is slow
-3. Suggest optimizations (ranked by impact)
-4. Show optimized code
-5. Estimate improvement`} />
+قدم:
+1. تحديد نقاط الاختناق
+2. شرح سبب بطء كل منها
+3. اقتراح التحسينات (مرتبة حسب التأثير)
+4. عرض الكود المحسّن
+5. تقدير التحسين`} />
 
-## Code Review
+## مراجعة الأكواد
 
-### Do's and Don'ts: Code Review Prompts
+### ما يجب فعله وما يجب تجنبه: أوامر مراجعة الأكواد
 
 <Compare 
-  before={{ label: "❌ Generic request", content: "Review this code." }}
-  after={{ label: "✓ Specific criteria", content: "Review this code for a pull request.\n\nCheck for:\n1. Correctness: bugs, logic errors, edge cases\n2. Security: injection risks, auth issues\n3. Performance: N+1 queries, memory leaks\n4. Maintainability: naming, complexity\n\nFormat: 🔴 Critical / 🟡 Important / 🟢 Suggestion" }}
+  before={{ label: "❌ طلب عام", content: "راجع هذا الكود." }}
+  after={{ label: "✓ معايير محددة", content: "راجع هذا الكود لطلب سحب.\n\nتحقق من:\n1. الصحة: الأخطاء، أخطاء المنطق، الحالات الحدية\n2. الأمان: مخاطر الحقن، مشاكل المصادقة\n3. الأداء: استعلامات N+1، تسريبات الذاكرة\n4. قابلية الصيانة: التسمية، التعقيد\n\nالتنسيق: 🔴 حرج / 🟡 مهم / 🟢 اقتراح" }}
 />
 
-### Comprehensive Review
+### المراجعة الشاملة
 
-<TryIt compact prompt={`Review this code for a pull request.
+<TryIt compact prompt={`راجع هذا الكود لطلب سحب.
 
-Code:
-\${code:paste your code here}
+الكود:
+\${code:الصق الكود الخاص بك هنا}
 
-Review for:
-1. **Correctness**: Bugs, logic errors, edge cases
-2. **Security**: Vulnerabilities, injection risks, auth issues
-3. **Performance**: Inefficiencies, N+1 queries, memory leaks
-4. **Maintainability**: Readability, naming, complexity
-5. **Best practices**: \${framework:Python/Django} conventions
+راجع من حيث:
+1. **الصحة**: الأخطاء، أخطاء المنطق، الحالات الحدية
+2. **الأمان**: الثغرات، مخاطر الحقن، مشاكل المصادقة
+3. **الأداء**: عدم الكفاءة، استعلامات N+1، تسريبات الذاكرة
+4. **قابلية الصيانة**: القراءة، التسمية، التعقيد
+5. **أفضل الممارسات**: اتفاقيات \${framework:Python/Django}
 
-Format your review as:
-🔴 Critical: must fix before merge
-🟡 Important: should fix
-🟢 Suggestion: nice to have
-💭 Question: clarification needed`} />
+نسّق مراجعتك كالتالي:
+🔴 حرج: يجب إصلاحه قبل الدمج
+🟡 مهم: يجب إصلاحه
+🟢 اقتراح: من الجيد وجوده
+💭 سؤال: يحتاج توضيحاً`} />
 
-### Security Review
+### المراجعة الأمنية
 
-<TryIt compact prompt={`Perform a security review of this code:
+<TryIt compact prompt={`قم بمراجعة أمنية لهذا الكود:
 
-Code:
-\${code:paste your code here}
+الكود:
+\${code:الصق الكود الخاص بك هنا}
 
-Check for:
-- [ ] Injection vulnerabilities (SQL, XSS, command)
-- [ ] Authentication/authorization flaws
-- [ ] Sensitive data exposure
-- [ ] Insecure dependencies
-- [ ] Cryptographic issues
-- [ ] Input validation gaps
-- [ ] Error handling that leaks info
+تحقق من:
+- [ ] ثغرات الحقن (SQL، XSS، الأوامر)
+- [ ] عيوب المصادقة/التفويض
+- [ ] كشف البيانات الحساسة
+- [ ] التبعيات غير الآمنة
+- [ ] مشاكل التشفير
+- [ ] ثغرات التحقق من المدخلات
+- [ ] معالجة الأخطاء التي تسرب المعلومات
 
-For each finding:
-- Severity: Critical/High/Medium/Low
-- Location: Line number or function
-- Issue: Description
-- Exploit: How it could be attacked
-- Fix: Recommended remediation`} />
+لكل اكتشاف:
+- الخطورة: حرج/عالي/متوسط/منخفض
+- الموقع: رقم السطر أو الدالة
+- المشكلة: الوصف
+- الاستغلال: كيف يمكن مهاجمته
+- الإصلاح: العلاج الموصى به`} />
 
-## Refactoring
+## إعادة الهيكلة
 
-### Code Smell Detection
+### اكتشاف روائح الكود
 
-<TryIt compact prompt={`Analyze this code for code smells and refactoring opportunities:
+<TryIt compact prompt={`حلل هذا الكود بحثاً عن روائح الكود وفرص إعادة الهيكلة:
 
-Code:
-\${code:paste your code here}
+الكود:
+\${code:الصق الكود الخاص بك هنا}
 
-Identify:
-1. Long methods (suggest extraction)
-2. Duplicate code (suggest DRY improvements)
-3. Complex conditionals (suggest simplification)
-4. Poor naming (suggest better names)
-5. Tight coupling (suggest decoupling)
+حدد:
+1. الدوال الطويلة (اقترح الاستخراج)
+2. الكود المكرر (اقترح تحسينات DRY)
+3. الشروط المعقدة (اقترح التبسيط)
+4. التسمية السيئة (اقترح أسماء أفضل)
+5. الترابط الشديد (اقترح فك الترابط)
 
-For each issue, show before/after code.`} />
+لكل مشكلة، أظهر الكود قبل وبعد.`} />
 
-### Design Pattern Application
+### تطبيق أنماط التصميم
 
-<TryIt compact prompt={`Refactor this code using the \${patternName:Factory} pattern.
+<TryIt compact prompt={`أعد هيكلة هذا الكود باستخدام نمط \${patternName:Factory}.
 
-Current code:
-\${code:paste your code here}
+الكود الحالي:
+\${code:الصق الكود الخاص بك هنا}
 
-Goals:
-- \${whyPattern:decouple object creation from usage}
-- \${benefits:easier testing and extensibility}
+الأهداف:
+- \${whyPattern:فصل إنشاء الكائنات عن الاستخدام}
+- \${benefits:سهولة الاختبار والتوسعة}
 
-Provide:
-1. Explanation of the pattern
-2. How it applies here
-3. Refactored code
-4. Trade-offs to consider`} />
+قدم:
+1. شرح النمط
+2. كيفية تطبيقه هنا
+3. الكود المُعاد هيكلته
+4. المقايضات للنظر فيها`} />
 
-## Testing
+## الاختبار
 
-### Unit Test Generation
+### توليد اختبارات الوحدة
 
-<TryIt compact prompt={`Write unit tests for this function:
+<TryIt compact prompt={`اكتب اختبارات وحدة لهذه الدالة:
 
-Function:
-\${code:paste your function here}
+الدالة:
+\${code:الصق الدالة الخاصة بك هنا}
 
-Testing framework: \${testFramework:pytest}
+إطار الاختبار: \${testFramework:pytest}
 
-Cover:
-- Happy path (normal inputs)
-- Edge cases (empty, null, boundary values)
-- Error cases (invalid inputs)
-- \${specificScenarios:concurrent access, large inputs}
+غطِّ:
+- المسار السعيد (مدخلات عادية)
+- الحالات الحدية (فارغ، null، قيم حدية)
+- حالات الخطأ (مدخلات غير صالحة)
+- \${specificScenarios:الوصول المتزامن، مدخلات كبيرة}
 
-Format: Arrange-Act-Assert pattern
-Include: Descriptive test names`} />
+التنسيق: نمط Arrange-Act-Assert
+تضمين: أسماء اختبارات وصفية`} />
 
-### Test Case Generation
+### توليد حالات الاختبار
 
-<TryIt compact prompt={`Generate test cases for this feature:
+<TryIt compact prompt={`ولّد حالات اختبار لهذه الميزة:
 
-Feature: \${featureDescription:user registration with email verification}
-Acceptance criteria: \${acceptanceCriteria:user can sign up, receives email, can verify account}
+الميزة: \${featureDescription:تسجيل المستخدم مع التحقق من البريد الإلكتروني}
+معايير القبول: \${acceptanceCriteria:يمكن للمستخدم التسجيل، يتلقى بريداً إلكترونياً، يمكنه التحقق من الحساب}
 
-Provide test cases in this format:
+قدم حالات الاختبار بهذا التنسيق:
 
-| ID | Scenario | Given | When | Then | Priority |
-|----|----------|-------|------|------|----------|
-| TC01 | ... | ... | ... | ... | High |`} />
+| المعرف | السيناريو | بالنظر إلى | عندما | ثم | الأولوية |
+|--------|----------|----------|------|-----|----------|
+| TC01 | ... | ... | ... | ... | عالية |`} />
 
-## Architecture & Design
+## الهندسة المعمارية والتصميم
 
-### System Design
+### تصميم النظام
 
-<TryIt compact prompt={`Design a system for \${requirement:real-time chat application}.
+<TryIt compact prompt={`صمم نظاماً لـ \${requirement:تطبيق دردشة في الوقت الفعلي}.
 
-Constraints:
-- Expected load: \${expectedLoad:10,000 concurrent users}
-- Latency requirements: \${latency:< 100ms message delivery}
-- Availability: \${availability:99.9%}
-- Budget: \${budget:moderate, prefer open source}
+القيود:
+- الحمل المتوقع: \${expectedLoad:10,000 مستخدم متزامن}
+- متطلبات زمن الاستجابة: \${latency:< 100 مللي ثانية لتسليم الرسائل}
+- التوفر: \${availability:99.9%}
+- الميزانية: \${budget:معتدلة، تفضيل المصادر المفتوحة}
 
-Provide:
-1. High-level architecture diagram (ASCII/text)
-2. Component descriptions
-3. Data flow
-4. Technology choices with rationale
-5. Scaling strategy
-6. Trade-offs and alternatives considered`} />
+قدم:
+1. مخطط الهندسة المعمارية عالي المستوى (ASCII/نص)
+2. أوصاف المكونات
+3. تدفق البيانات
+4. اختيارات التقنية مع المبررات
+5. استراتيجية التوسع
+6. المقايضات والبدائل المدروسة`} />
 
-### Database Schema Design
+### تصميم مخطط قاعدة البيانات
 
-<TryIt compact prompt={`Design a database schema for \${application:e-commerce platform}.
+<TryIt compact prompt={`صمم مخطط قاعدة بيانات لـ \${application:منصة تجارة إلكترونية}.
 
-Requirements:
-- \${feature1:User accounts with profiles and addresses}
-- \${feature2:Product catalog with categories and variants}
-- \${feature3:Orders with line items and payment tracking}
+المتطلبات:
+- \${feature1:حسابات المستخدمين مع الملفات الشخصية والعناوين}
+- \${feature2:كتالوج المنتجات مع الفئات والمتغيرات}
+- \${feature3:الطلبات مع عناصر السطر وتتبع الدفع}
 
-Provide:
-1. Entity-relationship description
-2. Table definitions with columns and types
-3. Indexes for common queries
-4. Foreign key relationships
-5. Sample queries for key operations`} />
+قدم:
+1. وصف العلاقات بين الكيانات
+2. تعريفات الجداول مع الأعمدة والأنواع
+3. الفهارس للاستعلامات الشائعة
+4. علاقات المفاتيح الأجنبية
+5. استعلامات نموذجية للعمليات الرئيسية`} />
 
-## Documentation Generation
+## توليد التوثيق
 
-### API Documentation
+### توثيق API
 
-<TryIt compact prompt={`Generate API documentation from this code:
+<TryIt compact prompt={`ولّد توثيق API من هذا الكود:
 
-Code:
-\${code:paste your endpoint code here}
+الكود:
+\${code:الصق كود نقطة النهاية الخاصة بك هنا}
 
-Format: \${format:OpenAPI/Swagger YAML}
+التنسيق: \${format:OpenAPI/Swagger YAML}
 
-Include:
-- Endpoint description
-- Request/response schemas
-- Example requests/responses
-- Error codes
-- Authentication requirements`} />
+يتضمن:
+- وصف نقطة النهاية
+- مخططات الطلب/الاستجابة
+- أمثلة على الطلبات/الاستجابات
+- رموز الخطأ
+- متطلبات المصادقة`} />
 
-### Inline Documentation
+### التوثيق المضمن
 
-<TryIt compact prompt={`Add comprehensive documentation to this code:
+<TryIt compact prompt={`أضف توثيقاً شاملاً لهذا الكود:
 
-Code:
-\${code:paste your code here}
+الكود:
+\${code:الصق الكود الخاص بك هنا}
 
-Add:
-- File/module docstring (purpose, usage)
-- Function/method docstrings (params, returns, raises, examples)
-- Inline comments for complex logic only
-- Type hints if missing
+أضف:
+- سلسلة توثيق الملف/الوحدة (الغرض، الاستخدام)
+- سلاسل توثيق الدوال/الدوال (المعاملات، القيم المرجعة، الاستثناءات، أمثلة)
+- تعليقات مضمنة للمنطق المعقد فقط
+- تلميحات الأنواع إذا كانت مفقودة
 
-Style: \${docStyle:Google}`} />
+النمط: \${docStyle:Google}`} />
 
-## Prompt Templates from prompts.chat
+## قوالب الأوامر من prompts.chat
 
-### Act as a Senior Developer
-
-```
-I want you to act as a senior software developer. I will provide 
-code and ask questions about it. You will review the code, suggest 
-improvements, explain concepts, and help debug issues. Your 
-responses should be educational and help me become a better 
-developer.
-```
-
-### Act as a Code Reviewer
+### تصرف كمطور أول
 
 ```
-I want you to act as a code reviewer. I will provide pull requests 
-with code changes, and you will review them thoroughly. Check for 
-bugs, security issues, performance problems, and adherence to best 
-practices. Provide constructive feedback that helps the developer 
-improve.
+أريدك أن تتصرف كمطور برمجيات أول. سأقدم كوداً وأطرح 
+أسئلة عنه. ستراجع الكود وتقترح تحسينات وتشرح المفاهيم 
+وتساعد في تصحيح الأخطاء. يجب أن تكون ردودك تعليمية 
+وتساعدني على أن أصبح مطوراً أفضل.
 ```
 
-### Act as a Software Architect
+### تصرف كمراجع أكواد
 
 ```
-I want you to act as a software architect. I will describe system 
-requirements and constraints, and you will design scalable, 
-maintainable architectures. Explain your design decisions, 
-trade-offs, and provide diagrams where helpful.
+أريدك أن تتصرف كمراجع أكواد. سأقدم طلبات سحب مع 
+تغييرات في الكود، وستراجعها بدقة. تحقق من الأخطاء 
+ومشاكل الأمان ومشاكل الأداء والالتزام بأفضل الممارسات. 
+قدم ملاحظات بناءة تساعد المطور على التحسن.
 ```
 
-## Development Workflow Integration
+### تصرف كمهندس برمجيات
 
-### Commit Message Generation
+```
+أريدك أن تتصرف كمهندس برمجيات. سأصف متطلبات النظام 
+والقيود، وستصمم هندسات قابلة للتوسع وسهلة الصيانة. 
+اشرح قرارات التصميم والمقايضات وقدم مخططات عند الحاجة.
+```
 
-<TryIt compact prompt={`Generate a commit message for these changes:
+## دمج سير عمل التطوير
 
-Diff:
-\${diff:paste git diff here}
+### توليد رسائل الإيداع
 
-Format: Conventional Commits
-Type: \${commitType:feat}
+<TryIt compact prompt={`ولّد رسالة إيداع لهذه التغييرات:
 
-Provide:
-- Subject line (50 chars max, imperative mood)
-- Body (what and why, wrapped at 72 chars)
-- Footer (references issues if applicable)`} />
+الفرق:
+\${diff:الصق git diff هنا}
 
-### PR Description Generation
+التنسيق: Conventional Commits
+النوع: \${commitType:feat}
 
-<TryIt compact prompt={`Generate a pull request description:
+قدم:
+- سطر الموضوع (50 حرفاً كحد أقصى، صيغة الأمر)
+- الجسم (ماذا ولماذا، ملفوف عند 72 حرفاً)
+- التذييل (يشير إلى المشاكل إن وجدت)`} />
 
-Changes:
-\${changes:list your changes or paste diff summary}
+### توليد وصف طلب السحب
 
-Template:
-## Summary
-Brief description of changes
+<TryIt compact prompt={`ولّد وصف طلب سحب:
 
-## Changes Made
-- Change 1
-- Change 2
+التغييرات:
+\${changes:اذكر تغييراتك أو الصق ملخص الفرق}
 
-## Testing
-- [ ] Unit tests added/updated
-- [ ] Manual testing completed
+القالب:
+## الملخص
+وصف موجز للتغييرات
 
-## Screenshots (if UI changes)
+## التغييرات المُجراة
+- التغيير 1
+- التغيير 2
+
+## الاختبار
+- [ ] تمت إضافة/تحديث اختبارات الوحدة
+- [ ] تم إكمال الاختبار اليدوي
+
+## لقطات الشاشة (إذا كانت هناك تغييرات في الواجهة)
 placeholder
 
-## Related Issues
-Closes #\${issueNumber:123}`} />
+## المشاكل ذات الصلة
+يغلق #\${issueNumber:123}`} />
 
-## Summary
+## الملخص
 
-<Callout type="tip" title="Key Techniques">
-Include full context (language, framework, constraints), specify requirements precisely, request specific output formats, ask for explanations alongside code, and include edge cases to handle.
+<Callout type="tip" title="التقنيات الأساسية">
+قم بتضمين السياق الكامل (اللغة، الإطار، القيود)، وحدد المتطلبات بدقة، واطلب تنسيقات إخراج محددة، واطلب الشروحات مع الكود، وضمّن الحالات الحدية للتعامل معها.
 </Callout>
 
 <Quiz 
-  question="What's the most important element to include when asking AI to debug code?"
+  question="ما هو أهم عنصر يجب تضمينه عند طلب تصحيح الأخطاء من الذكاء الاصطناعي؟"
   options={[
-    "The programming language only",
-    "Expected behavior, actual behavior, and error message",
-    "Just the code snippet",
-    "The file name"
+    "لغة البرمجة فقط",
+    "السلوك المتوقع والسلوك الفعلي ورسالة الخطأ",
+    "مقطع الكود فقط",
+    "اسم الملف"
   ]}
   correctIndex={1}
-  explanation="Debugging requires context: what should happen vs. what actually happens. Error messages and stack traces help AI pinpoint the exact issue quickly."
+  explanation="يتطلب تصحيح الأخطاء سياقاً: ما يجب أن يحدث مقابل ما يحدث فعلياً. تساعد رسائل الخطأ وتتبعات المكدس الذكاء الاصطناعي على تحديد المشكلة بالضبط بسرعة."
 />
 
-AI is a powerful coding partner—use it for generation, review, debugging, and documentation while maintaining your architectural judgment.
+الذكاء الاصطناعي شريك برمجة قوي - استخدمه للتوليد والمراجعة وتصحيح الأخطاء والتوثيق مع الحفاظ على حكمك المعماري.

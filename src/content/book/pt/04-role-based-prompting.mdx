@@ -1,328 +1,328 @@
-Role-based prompting is one of the most powerful and widely-used techniques in prompt engineering. By assigning a specific role or persona to the AI, you can dramatically influence the quality, style, and relevance of responses.
+Prompting baseado em papel é uma das técnicas mais poderosas e amplamente usadas em engenharia de prompts. Ao atribuir um papel ou persona específica à IA, você pode influenciar dramaticamente a qualidade, estilo e relevância das respostas.
 
-<Callout type="tip" title="The Power of Personas">
-Think of roles as filters for AI's vast knowledge. The right role focuses responses like a lens focuses light.
+<Callout type="tip" title="O Poder das Personas">
+Pense em papéis como filtros para o vasto conhecimento da IA. O papel certo foca respostas como uma lente foca luz.
 </Callout>
 
-## Why Roles Work
+## Por Que Papéis Funcionam
 
-When you assign a role, you're essentially telling the model: "Filter your vast knowledge through this specific lens." The model adjusts its:
+Quando você atribui um papel, você está essencialmente dizendo ao modelo: "Filtre seu vasto conhecimento através desta lente específica." O modelo ajusta seu:
 
-- **Vocabulary**: Using terminology appropriate to the role
-- **Perspective**: Considering problems from that viewpoint
-- **Expertise depth**: Providing role-appropriate detail levels
-- **Communication style**: Matching how that role would communicate
+- **Vocabulário**: Usando terminologia apropriada ao papel
+- **Perspectiva**: Considerando problemas daquele ponto de vista
+- **Profundidade de expertise**: Fornecendo níveis de detalhe apropriados ao papel
+- **Estilo de comunicação**: Combinando com como aquele papel se comunicaria
 
-### The Technical Explanation
+### A Explicação Técnica
 
-LLMs work by predicting the most likely next token based on the context they're given. When you specify a role, you're fundamentally changing what "likely" means.
+LLMs funcionam prevendo o token mais provável baseado no contexto que recebem. Quando você especifica um papel, você está fundamentalmente mudando o que "provável" significa.
 
-**Activating Relevant Knowledge**: The role primes specific regions of the model's learned associations. Saying "You are a doctor" activates medical terminology, diagnostic reasoning patterns, and clinical communication styles from the training data.
+**Ativando Conhecimento Relevante**: O papel prepara regiões específicas das associações aprendidas do modelo. Dizer "Você é um médico" ativa terminologia médica, padrões de raciocínio diagnóstico e estilos de comunicação clínica dos dados de treinamento.
 
-**Statistical Conditioning**: LLMs learned from millions of documents written by real experts. When you assign a role, the model conditions its probability distributions to match patterns it saw from that type of author.
+**Condicionamento Estatístico**: LLMs aprenderam de milhões de documentos escritos por especialistas reais. Quando você atribui um papel, o modelo condiciona suas distribuições de probabilidade para combinar padrões que viu daquele tipo de autor.
 
-**Reducing Ambiguity**: Without a role, the model averages across all possible responders. With a role, it narrows to a specific subset, making responses more focused and consistent.
+**Reduzindo Ambiguidade**: Sem um papel, o modelo calcula a média entre todos os possíveis respondentes. Com um papel, ele restringe a um subconjunto específico, tornando respostas mais focadas e consistentes.
 
-**Context Anchoring**: The role creates a persistent context anchor throughout the conversation. Every subsequent response is influenced by this initial framing.
+**Ancoragem de Contexto**: O papel cria uma âncora de contexto persistente ao longo da conversa. Cada resposta subsequente é influenciada por esse enquadramento inicial.
 
-Think of it this way: if you ask "What should I do about this cough?" the model could respond as a doctor, a friend, a pharmacist, or a worried parent. Each would give different advice. By specifying the role upfront, you're telling the model which "voice" to use from its training data.
+Pense assim: se você perguntar "O que devo fazer sobre essa tosse?" o modelo poderia responder como um médico, um amigo, um farmacêutico ou um pai preocupado. Cada um daria conselhos diferentes. Ao especificar o papel antecipadamente, você está dizendo ao modelo qual "voz" usar dos seus dados de treinamento.
 
-<Callout type="info" title="Why This Matters">
-The model isn't pretending or role-playing in a theatrical sense. It's statistically biasing its outputs toward patterns it learned from real experts, professionals, and specialists during training. A "doctor" role activates medical knowledge pathways; a "poet" role activates literary patterns.
+<Callout type="info" title="Por Que Isso Importa">
+O modelo não está fingindo ou fazendo role-play em sentido teatral. Ele está estatisticamente enviesando suas saídas em direção a padrões que aprendeu de especialistas, profissionais e especialistas reais durante o treinamento. Um papel de "médico" ativa caminhos de conhecimento médico; um papel de "poeta" ativa padrões literários.
 </Callout>
 
-## Basic Role Patterns
+## Padrões Básicos de Papel
 
-These foundational patterns work across most use cases. Start with these templates and customize them for your needs.
+Esses padrões fundamentais funcionam na maioria dos casos de uso. Comece com esses templates e personalize-os para suas necessidades.
 
-### The Expert Pattern
+### O Padrão Especialista
 
-The most versatile pattern. Specify the field of expertise and years of experience to get authoritative, in-depth responses. Works well for technical questions, analysis, and professional advice.
+O padrão mais versátil. Especifique a área de expertise e anos de experiência para obter respostas autoritativas e aprofundadas. Funciona bem para questões técnicas, análises e conselhos profissionais.
 
-<TryIt compact prompt={`You are an expert \${field} with \${years:10} years of experience in \${specialty}.
-
-\${task}`} />
-
-### The Professional Pattern
-
-Ground the role in a real-world context by specifying a job title and organization type. This adds institutional knowledge and professional norms to the response.
-
-<TryIt compact prompt={`You are a \${profession} working at \${organization}.
+<TryIt compact prompt={`Você é um especialista em \${field} com \${years:10} anos de experiência em \${specialty}.
 
 \${task}`} />
 
-### The Teacher Pattern
+### O Padrão Profissional
 
-Perfect for learning and explanations. Specifying the audience level ensures the response matches the learner's background, from beginners to advanced practitioners.
+Fundamente o papel em um contexto do mundo real especificando um cargo e tipo de organização. Isso adiciona conhecimento institucional e normas profissionais à resposta.
 
-<TryIt compact prompt={`You are a \${subject} teacher who specializes in explaining complex concepts to \${audience}.
+<TryIt compact prompt={`Você é um \${profession} trabalhando em \${organization}.
 
 \${task}`} />
 
-## Advanced Role Constructions
+### O Padrão Professor
 
-### Compound Roles
+Perfeito para aprendizado e explicações. Especificar o nível do público garante que a resposta combine com o background do aprendiz, de iniciantes a praticantes avançados.
 
-Combine multiple identities to get responses that blend different perspectives. This pediatrician-parent combination produces advice that's both medically sound and practically tested.
+<TryIt compact prompt={`Você é um professor de \${subject} especializado em explicar conceitos complexos para \${audience}.
 
-<TryIt compact prompt={`You are a pediatrician who is also a parent of three children. You understand both the medical and practical aspects of childhood health issues. You communicate with empathy and without medical jargon.
+\${task}`} />
+
+## Construções Avançadas de Papel
+
+### Papéis Compostos
+
+Combine múltiplas identidades para obter respostas que mesclam perspectivas diferentes. Essa combinação pediatra-pai produz conselhos que são tanto medicamente sólidos quanto praticamente testados.
+
+<TryIt compact prompt={`Você é um pediatra que também é pai de três filhos. Você entende tanto os aspectos médicos quanto práticos de questões de saúde infantil. Você se comunica com empatia e sem jargão médico.
 
 \${question}`} />
 
-### Situational Roles
+### Papéis Situacionais
 
-Place the role in a specific scenario to shape both content and tone. Here, the code review context makes the AI constructive and educational rather than just critical.
+Coloque o papel em um cenário específico para moldar tanto conteúdo quanto tom. Aqui, o contexto de code review torna a IA construtiva e educacional em vez de apenas crítica.
 
-<TryIt compact prompt={`You are a senior developer conducting a code review for a junior team member. You want to be helpful and educational, not critical. You explain not just what to fix, but why.
+<TryIt compact prompt={`Você é um desenvolvedor sênior conduzindo um code review para um membro júnior da equipe. Você quer ser útil e educativo, não crítico. Você explica não apenas o que corrigir, mas por quê.
 
-Code to review:
+Código para revisar:
 \${code}`} />
 
-### Perspective Roles
+### Papéis de Perspectiva
 
-Get feedback from a specific stakeholder's point of view. A VC perspective evaluates viability and scalability differently than a customer or engineer would.
+Obtenha feedback do ponto de vista de um stakeholder específico. Uma perspectiva de VC avalia viabilidade e escalabilidade de forma diferente de um cliente ou engenheiro.
 
-<TryIt compact prompt={`You are a venture capitalist evaluating startup pitches. You've seen thousands of pitches and can quickly identify strengths, weaknesses, and red flags. Be direct but constructive.
+<TryIt compact prompt={`Você é um capitalista de risco avaliando pitches de startups. Você já viu milhares de pitches e consegue rapidamente identificar pontos fortes, fracos e sinais de alerta. Seja direto mas construtivo.
 
 Pitch: \${pitch}`} />
 
-## Role Categories and Examples
+## Categorias de Papéis e Exemplos
 
-Different domains benefit from different types of roles. Here are proven examples organized by category that you can adapt for your tasks.
+Diferentes domínios se beneficiam de diferentes tipos de papéis. Aqui estão exemplos comprovados organizados por categoria que você pode adaptar para suas tarefas.
 
-### Technical Roles
+### Papéis Técnicos
 
-**Software Architect**: Best for system design decisions, technology choices, and architectural trade-offs. The focus on maintainability steers responses toward practical, long-term solutions.
+**Arquiteto de Software**: Melhor para decisões de design de sistemas, escolhas de tecnologia e trade-offs arquiteturais. O foco em manutenibilidade direciona respostas para soluções práticas e de longo prazo.
 
-<TryIt compact prompt={`You are a software architect specializing in scalable distributed systems. You prioritize maintainability, performance, and team productivity in your recommendations.
-
-\${question}`} />
-
-**Security Specialist**: The attacker mindset is key here. This role produces threat-focused analysis that identifies vulnerabilities a defensive-only perspective might miss.
-
-<TryIt compact prompt={`You are a cybersecurity specialist who conducts penetration testing. You think like an attacker to identify vulnerabilities.
-
-Analyze: \${target}`} />
-
-**DevOps Engineer**: Ideal for deployment, automation, and infrastructure questions. The emphasis on reliability ensures production-ready recommendations.
-
-<TryIt compact prompt={`You are a DevOps engineer focused on CI/CD pipelines and infrastructure as code. You value automation and reliability.
+<TryIt compact prompt={`Você é um arquiteto de software especializado em sistemas distribuídos escaláveis. Você prioriza manutenibilidade, performance e produtividade da equipe em suas recomendações.
 
 \${question}`} />
 
-### Creative Roles
+**Especialista em Segurança**: A mentalidade de atacante é chave aqui. Este papel produz análise focada em ameaças que identifica vulnerabilidades que uma perspectiva apenas defensiva poderia perder.
 
-**Copywriter**: The "award-winning" qualifier and conversion focus produce punchy, persuasive copy rather than generic marketing text.
+<TryIt compact prompt={`Você é um especialista em cibersegurança que conduz testes de penetração. Você pensa como um atacante para identificar vulnerabilidades.
 
-<TryIt compact prompt={`You are an award-winning copywriter known for creating compelling headlines and persuasive content that drives conversions.
+Analise: \${target}`} />
 
-Write copy for: \${product}`} />
+**Engenheiro DevOps**: Ideal para perguntas sobre deployment, automação e infraestrutura. A ênfase em confiabilidade garante recomendações prontas para produção.
 
-**Screenwriter**: Activates knowledge of dramatic structure, pacing, and dialogue conventions. Great for any narrative writing that needs tension and character voice.
+<TryIt compact prompt={`Você é um engenheiro DevOps focado em pipelines de CI/CD e infraestrutura como código. Você valoriza automação e confiabilidade.
 
-<TryIt compact prompt={`You are a screenwriter who has written for popular TV dramas. You understand story structure, dialogue, and character development.
+\${question}`} />
 
-Write: \${scene}`} />
+### Papéis Criativos
 
-**UX Writer**: A specialized role for interface text. The focus on brevity and user guidance produces concise, action-oriented copy.
+**Copywriter**: O qualificador "premiado" e o foco em conversão produzem copy impactante e persuasivo em vez de texto de marketing genérico.
 
-<TryIt compact prompt={`You are a UX writer specializing in microcopy. You make interfaces feel human and guide users with minimal text.
+<TryIt compact prompt={`Você é um copywriter premiado conhecido por criar títulos atraentes e conteúdo persuasivo que gera conversões.
 
-Write microcopy for: \${element}`} />
+Escreva copy para: \${product}`} />
 
-### Analytical Roles
+**Roteirista**: Ativa conhecimento de estrutura dramática, ritmo e convenções de diálogo. Ótimo para qualquer escrita narrativa que precisa de tensão e voz de personagem.
 
-**Business Analyst**: Bridges the gap between technical and non-technical stakeholders. Useful for requirement gathering, spec writing, and identifying gaps in project plans.
+<TryIt compact prompt={`Você é um roteirista que escreveu para dramas de TV populares. Você entende estrutura de história, diálogo e desenvolvimento de personagem.
 
-<TryIt compact prompt={`You are a business analyst who translates between technical teams and stakeholders. You clarify requirements and identify edge cases.
+Escreva: \${scene}`} />
 
-Analyze: \${requirement}`} />
+**UX Writer**: Um papel especializado para texto de interface. O foco em brevidade e orientação do usuário produz copy conciso e orientado a ação.
 
-**Research Scientist**: The emphasis on evidence and uncertainty acknowledgment produces balanced, well-sourced responses that distinguish facts from speculation.
+<TryIt compact prompt={`Você é um UX writer especializado em microcopy. Você faz interfaces parecerem humanas e guia usuários com texto mínimo.
 
-<TryIt compact prompt={`You are a research scientist who values empirical evidence and acknowledges uncertainty. You distinguish between established facts and hypotheses.
+Escreva microcopy para: \${element}`} />
 
-Research question: \${question}`} />
+### Papéis Analíticos
 
-**Financial Analyst**: Combines quantitative analysis with risk assessment. The dual focus on returns and risk produces more balanced investment perspectives.
+**Analista de Negócios**: Faz a ponte entre stakeholders técnicos e não técnicos. Útil para levantamento de requisitos, escrita de specs e identificação de gaps em planos de projeto.
 
-<TryIt compact prompt={`You are a financial analyst who evaluates investments using fundamental and technical analysis. You consider risk alongside potential returns.
+<TryIt compact prompt={`Você é um analista de negócios que traduz entre equipes técnicas e stakeholders. Você esclarece requisitos e identifica casos limite.
 
-Evaluate: \${investment}`} />
+Analise: \${requirement}`} />
 
-### Educational Roles
+**Cientista Pesquisador**: A ênfase em evidências e reconhecimento de incerteza produz respostas equilibradas e bem fundamentadas que distinguem fatos de especulação.
 
-**Socratic Tutor**: Instead of giving answers, this role asks guiding questions. Excellent for deeper learning and helping students develop critical thinking skills.
+<TryIt compact prompt={`Você é um cientista pesquisador que valoriza evidências empíricas e reconhece incerteza. Você distingue entre fatos estabelecidos e hipóteses.
 
-<TryIt compact prompt={`You are a tutor using the Socratic method. Instead of giving answers directly, you guide students to discover answers through thoughtful questions.
+Pergunta de pesquisa: \${question}`} />
 
-Topic: \${topic}`} />
+**Analista Financeiro**: Combina análise quantitativa com avaliação de risco. O foco duplo em retornos e risco produz perspectivas de investimento mais equilibradas.
 
-**Instructional Designer**: Structures learning for maximum retention. Use this role when you need to break down complex topics into teachable chunks with clear progression.
+<TryIt compact prompt={`Você é um analista financeiro que avalia investimentos usando análise fundamental e técnica. Você considera risco junto com retornos potenciais.
 
-<TryIt compact prompt={`You are an instructional designer who creates engaging learning experiences. You break complex topics into digestible modules with clear learning objectives.
+Avalie: \${investment}`} />
 
-Create curriculum for: \${topic}`} />
+### Papéis Educacionais
 
-## The Role Stack Technique
+**Tutor Socrático**: Em vez de dar respostas, este papel faz perguntas guiadoras. Excelente para aprendizado mais profundo e ajudar estudantes a desenvolver habilidades de pensamento crítico.
 
-For complex tasks, combine multiple role aspects into a single, layered identity. This technique stacks expertise, audience awareness, and style guidelines to create highly specialized responses.
+<TryIt compact prompt={`Você é um tutor usando o método Socrático. Em vez de dar respostas diretamente, você guia estudantes a descobrir respostas através de perguntas reflexivas.
 
-This example layers three elements: domain expertise (API documentation), audience (junior developers), and style guide (Google's conventions). Each layer constrains the output further.
+Tópico: \${topic}`} />
 
-<TryIt compact prompt={`You are a technical writer with expertise in API documentation. You write for developers who are new to REST APIs. Follow the Google developer documentation style guide: use second person ("you"), active voice, present tense, and keep sentences under 26 words.
+**Designer Instrucional**: Estrutura aprendizado para máxima retenção. Use este papel quando precisar dividir tópicos complexos em partes ensináveis com progressão clara.
 
-Document: \${apiEndpoint}`} />
+<TryIt compact prompt={`Você é um designer instrucional que cria experiências de aprendizado envolventes. Você divide tópicos complexos em módulos digeríveis com objetivos de aprendizado claros.
 
-## Roles for Different Tasks
+Crie currículo para: \${topic}`} />
+
+## A Técnica de Empilhamento de Papéis
+
+Para tarefas complexas, combine múltiplos aspectos de papel em uma identidade única e em camadas. Esta técnica empilha expertise, consciência do público e diretrizes de estilo para criar respostas altamente especializadas.
+
+Este exemplo empilha três elementos: expertise de domínio (documentação de API), público (desenvolvedores júnior) e guia de estilo (convenções do Google). Cada camada restringe ainda mais a saída.
+
+<TryIt compact prompt={`Você é um redator técnico com expertise em documentação de API. Você escreve para desenvolvedores que são novos em APIs REST. Siga o guia de estilo de documentação para desenvolvedores do Google: use segunda pessoa ("você"), voz ativa, tempo presente, e mantenha frases com menos de 26 palavras.
+
+Documente: \${apiEndpoint}`} />
+
+## Papéis para Diferentes Tarefas
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
     <span className="font-semibold min-w-40">Code review</span>
-    <span className="text-muted-foreground">Senior developer + mentor</span>
+    <span className="text-muted-foreground">Desenvolvedor sênior + mentor</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Writing feedback</span>
-    <span className="text-muted-foreground">Editor + target audience member</span>
+    <span className="font-semibold min-w-40">Feedback de escrita</span>
+    <span className="text-muted-foreground">Editor + membro do público-alvo</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Business strategy</span>
-    <span className="text-muted-foreground">Consultant + industry expert</span>
+    <span className="font-semibold min-w-40">Estratégia de negócios</span>
+    <span className="text-muted-foreground">Consultor + especialista do setor</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Learning new topic</span>
-    <span className="text-muted-foreground">Patient teacher + practitioner</span>
+    <span className="font-semibold min-w-40">Aprender novo tópico</span>
+    <span className="text-muted-foreground">Professor paciente + praticante</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Creative writing</span>
-    <span className="text-muted-foreground">Specific genre author</span>
+    <span className="font-semibold min-w-40">Escrita criativa</span>
+    <span className="text-muted-foreground">Autor de gênero específico</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Technical explanation</span>
-    <span className="text-muted-foreground">Expert + communicator</span>
+    <span className="font-semibold min-w-40">Explicação técnica</span>
+    <span className="text-muted-foreground">Especialista + comunicador</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Problem-solving</span>
-    <span className="text-muted-foreground">Domain specialist + generalist</span>
+    <span className="font-semibold min-w-40">Resolução de problemas</span>
+    <span className="text-muted-foreground">Especialista de domínio + generalista</span>
   </div>
 </div>
 
-## Anti-Patterns to Avoid
+## Anti-Padrões a Evitar
 
-### Overly Generic Roles
-
-<Compare 
-  before={{ label: "Weak", content: "You are a helpful assistant." }}
-  after={{ label: "Better", content: "You are a helpful assistant specializing in Python development, particularly web applications with Flask and Django." }}
-/>
-
-### Conflicting Roles
+### Papéis Excessivamente Genéricos
 
 <Compare 
-  before={{ label: "Problematic", content: "You are a creative writer who always follows strict templates." }}
-  after={{ label: "Better", content: "You are a creative writer who works within established story structures while adding original elements." }}
+  before={{ label: "Fraco", content: "Você é um assistente útil." }}
+  after={{ label: "Melhor", content: "Você é um assistente útil especializado em desenvolvimento Python, particularmente aplicações web com Flask e Django." }}
 />
 
-### Unrealistic Expertise
+### Papéis Conflitantes
 
 <Compare 
-  before={{ label: "Problematic", content: "You are an expert in everything." }}
-  after={{ label: "Better", content: "You are a T-shaped professional: deep expertise in machine learning with broad knowledge of software engineering practices." }}
+  before={{ label: "Problemático", content: "Você é um escritor criativo que sempre segue templates rígidos." }}
+  after={{ label: "Melhor", content: "Você é um escritor criativo que trabalha dentro de estruturas de história estabelecidas enquanto adiciona elementos originais." }}
 />
 
-## Real-World Prompt Examples
+### Expertise Irrealista
 
-### Technical Documentation
+<Compare 
+  before={{ label: "Problemático", content: "Você é um especialista em tudo." }}
+  after={{ label: "Melhor", content: "Você é um profissional em T: expertise profunda em machine learning com conhecimento amplo de práticas de engenharia de software." }}
+/>
+
+## Exemplos de Prompts do Mundo Real
+
+### Documentação Técnica
 
 <TryIt 
-  title="Technical Writer Role"
-  description="Try this technical documentation prompt with your own API endpoint."
-  prompt={`You are a senior technical writer at a developer tools company. You have 10 years of experience writing API documentation, SDK guides, and developer tutorials.
+  title="Papel de Redator Técnico"
+  description="Experimente este prompt de documentação técnica com seu próprio endpoint de API."
+  prompt={`Você é um redator técnico sênior em uma empresa de ferramentas para desenvolvedores. Você tem 10 anos de experiência escrevendo documentação de API, guias de SDK e tutoriais para desenvolvedores.
 
-Your documentation style:
-- Clear, scannable structure with headers and code examples
-- Explains the "why" alongside the "how"
-- Anticipates common questions and edge cases
-- Uses consistent terminology defined in a glossary
-- Includes working code examples that users can copy-paste
+Seu estilo de documentação:
+- Estrutura clara e escaneável com cabeçalhos e exemplos de código
+- Explica o "porquê" junto com o "como"
+- Antecipa perguntas comuns e casos limite
+- Usa terminologia consistente definida em glossário
+- Inclui exemplos de código funcionais que usuários podem copiar e colar
 
-Document this API endpoint: GET /api/users/:id - Returns user profile data`}
+Documente este endpoint de API: GET /api/users/:id - Retorna dados do perfil do usuário`}
 />
 
-### Creative Writing
+### Escrita Criativa
 
 <TryIt 
-  title="Novelist Role"
-  description="This role combines genre expertise with specific stylistic traits."
-  prompt={`You are a novelist who writes in the style of literary fiction with elements of magical realism. Your prose is known for:
-- Lyrical but accessible language
-- Deep psychological character portraits
-- Subtle magical elements woven into everyday settings
-- Themes of memory, identity, and transformation
+  title="Papel de Romancista"
+  description="Este papel combina expertise de gênero com traços estilísticos específicos."
+  prompt={`Você é um romancista que escreve no estilo de ficção literária com elementos de realismo mágico. Sua prosa é conhecida por:
+- Linguagem lírica mas acessível
+- Retratos psicológicos profundos de personagens
+- Elementos mágicos sutis entrelaçados em cenários cotidianos
+- Temas de memória, identidade e transformação
 
-Write the opening scene of a story about a librarian who discovers that books in her library are slowly changing their endings.`}
+Escreva a cena de abertura de uma história sobre uma bibliotecária que descobre que os livros em sua biblioteca estão lentamente mudando seus finais.`}
 />
 
-### Business Communication
+### Comunicação Empresarial
 
 <TryIt 
-  title="Executive Coach Role"
-  description="This role helps with sensitive business communications."
-  prompt={`You are an executive communications coach who has worked with Fortune 500 CEOs. You help leaders communicate complex ideas simply and build trust with their teams.
+  title="Papel de Coach Executivo"
+  description="Este papel ajuda com comunicações empresariais sensíveis."
+  prompt={`Você é um coach de comunicação executiva que trabalhou com CEOs da Fortune 500. Você ajuda líderes a comunicar ideias complexas de forma simples e construir confiança com suas equipes.
 
-Review this message for a team meeting about budget cuts. Suggest improvements that:
-- Acknowledge the difficulty while maintaining confidence
-- Are transparent without creating panic  
-- Show empathy while being professional
-- Include clear next steps
+Revise esta mensagem para uma reunião de equipe sobre cortes orçamentários. Sugira melhorias que:
+- Reconheçam a dificuldade mantendo a confiança
+- Sejam transparentes sem criar pânico
+- Mostrem empatia sendo profissionais
+- Incluam próximos passos claros
 
-Draft message: "Due to budget constraints, we need to reduce project scope. Some initiatives will be paused."`}
+Rascunho da mensagem: "Devido a restrições orçamentárias, precisamos reduzir o escopo do projeto. Algumas iniciativas serão pausadas."`}
 />
 
-## Combining Roles with Other Techniques
+## Combinando Papéis com Outras Técnicas
 
-Roles work even better when combined with other prompting techniques:
+Papéis funcionam ainda melhor quando combinados com outras técnicas de prompting:
 
-### Role + Few-Shot
+### Papel + Few-Shot
 
-Combine a role with an example to show exactly how the role should respond. The example teaches tone and format while the role provides context and expertise.
+Combine um papel com um exemplo para mostrar exatamente como o papel deve responder. O exemplo ensina tom e formato enquanto o papel fornece contexto e expertise.
 
-<TryIt compact prompt={`You are a customer support specialist trained to de-escalate angry customers.
+<TryIt compact prompt={`Você é um especialista em suporte ao cliente treinado para desescalar clientes irritados.
 
-Example response to angry customer:
-Customer: "This is ridiculous! I've been waiting 2 weeks!"
-You: "I completely understand your frustration, and I apologize for the delay. Let me look into this right now and find out exactly where your order is. Can I have your order number?"
+Exemplo de resposta a cliente irritado:
+Cliente: "Isso é ridículo! Estou esperando há 2 semanas!"
+Você: "Entendo completamente sua frustração, e peço desculpas pelo atraso. Deixe-me verificar isso agora mesmo e descobrir exatamente onde está seu pedido. Pode me passar o número do pedido?"
 
-Now respond to:
-Customer: "\${customerMessage}"`} />
+Agora responda a:
+Cliente: "\${customerMessage}"`} />
 
-### Role + Chain of Thought
+### Papel + Chain of Thought
 
-The detective role naturally encourages step-by-step reasoning. Combining roles with chain-of-thought produces more transparent, verifiable problem-solving.
+O papel de detetive naturalmente encoraja raciocínio passo a passo. Combinar papéis com chain-of-thought produz resolução de problemas mais transparente e verificável.
 
-<TryIt compact prompt={`You are a detective solving a logic puzzle. Think through each clue methodically, stating your reasoning at each step.
+<TryIt compact prompt={`Você é um detetive resolvendo um quebra-cabeça lógico. Pense em cada pista metodicamente, declarando seu raciocínio a cada passo.
 
-Clues:
+Pistas:
 \${clues}
 
-Solve step by step, explaining your deductions.`} />
+Resolva passo a passo, explicando suas deduções.`} />
 
-## Summary
+## Resumo
 
-<Callout type="info" title="Key Takeaways">
-Role-based prompting is powerful because it focuses the model's vast knowledge, sets expectations for tone and style, provides implicit context, and makes outputs more consistent.
+<Callout type="info" title="Principais Conclusões">
+Prompting baseado em papel é poderoso porque foca o vasto conhecimento do modelo, define expectativas de tom e estilo, fornece contexto implícito e torna saídas mais consistentes.
 </Callout>
 
 <Quiz 
-  question="What makes a role-based prompt more effective?"
+  question="O que torna um prompt baseado em papel mais eficaz?"
   options={[
-    "Using generic role titles like 'expert'",
-    "Adding specific expertise, experience, and perspective details",
-    "Keeping the role description as short as possible",
-    "Asking the AI to switch roles frequently"
+    "Usar títulos de papel genéricos como 'especialista'",
+    "Adicionar detalhes específicos de expertise, experiência e perspectiva",
+    "Manter a descrição do papel o mais curta possível",
+    "Pedir à IA para trocar de papel frequentemente"
   ]}
   correctIndex={1}
-  explanation="The more detailed and realistic the role, the better the results. Specificity helps the model understand exactly what knowledge, tone, and perspective to apply."
+  explanation="Quanto mais detalhado e realista o papel, melhores os resultados. Especificidade ajuda o modelo a entender exatamente qual conhecimento, tom e perspectiva aplicar."
 />
 
-The key is **specificity**: the more detailed and realistic the role, the better the results. In the next chapter, we'll explore how to get consistent, structured outputs from your prompts.
+A chave é **especificidade**: quanto mais detalhado e realista o papel, melhores os resultados. No próximo capítulo, exploraremos como obter saídas estruturadas e consistentes dos seus prompts.

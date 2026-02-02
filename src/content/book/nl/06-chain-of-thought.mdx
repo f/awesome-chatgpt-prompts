@@ -1,226 +1,226 @@
-Chain of Thought (CoT) prompting is a technique that dramatically improves AI performance on complex reasoning tasks by asking the model to show its work step by step.
+Chain of Thought (CoT) prompting is een techniek die de AI-prestaties bij complexe redeneertaken drastisch verbetert door het model te vragen zijn werk stap voor stap te tonen.
 
-<Callout type="info" title="Show Your Work">
-Just like a math teacher asking students to show their work, CoT prompting asks the AI to make its reasoning visible.
+<Callout type="info" title="Toon Je Werk">
+Net zoals een wiskundeleraar leerlingen vraagt hun werk te tonen, vraagt CoT prompting de AI om zijn redenering zichtbaar te maken.
 </Callout>
 
-## The Problem CoT Solves
+## Het Probleem Dat CoT Oplost
 
-AI models can struggle with multi-step reasoning when asked to jump directly to an answer.
+AI-modellen kunnen moeite hebben met redeneren in meerdere stappen wanneer ze gevraagd worden direct naar een antwoord te springen.
 
 <Compare 
-  before={{ label: "Direct Answer (Often Wrong)", content: "Question: A store sells apples for $2 each. If you buy 5 or more, you get 20% off. How much do 7 apples cost?\n\nAnswer: $14 ❌" }}
-  after={{ label: "Chain of Thought (Correct)", content: "Question: A store sells apples for $2 each. If you buy 5 or more, you get 20% off. How much do 7 apples cost?\n\nLet's work through this step by step:\n1. Regular price per apple: $2\n2. Number of apples: 7\n3. Since 7 ≥ 5, the discount applies\n4. Regular total: 7 × $2 = $14\n5. Discount: 20% of $14 = $2.80\n6. Final price: $14 - $2.80 = $11.20\n\nAnswer: $11.20 ✓" }}
+  before={{ label: "Direct Antwoord (Vaak Fout)", content: "Vraag: Een winkel verkoopt appels voor €2 per stuk. Als je 5 of meer koopt, krijg je 20% korting. Hoeveel kosten 7 appels?\n\nAntwoord: €14 ❌" }}
+  after={{ label: "Chain of Thought (Correct)", content: "Vraag: Een winkel verkoopt appels voor €2 per stuk. Als je 5 of meer koopt, krijg je 20% korting. Hoeveel kosten 7 appels?\n\nLaten we dit stap voor stap doorwerken:\n1. Normale prijs per appel: €2\n2. Aantal appels: 7\n3. Aangezien 7 ≥ 5, is de korting van toepassing\n4. Normaal totaal: 7 × €2 = €14\n5. Korting: 20% van €14 = €2,80\n6. Eindprijs: €14 - €2,80 = €11,20\n\nAntwoord: €11,20 ✓" }}
 />
 
-## Basic CoT Prompts
+## Basis CoT Prompts
 
-### Simple Trigger Phrases
+### Eenvoudige Triggerzinnen
 
-Add one of these to your prompts:
+Voeg een van deze toe aan je prompts:
 
 <div className="my-4 grid gap-2">
-  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Let's think step by step."</div>
-  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Think through this carefully."</div>
-  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Work through this problem methodically."</div>
-  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Show your reasoning at each step."</div>
-  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Explain your thought process."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Laten we stap voor stap denken."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Denk hier zorgvuldig over na."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Werk dit probleem methodisch door."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Toon je redenering bij elke stap."</div>
+  <div className="p-3 bg-muted/50 rounded-lg font-mono text-sm">"Leg je denkproces uit."</div>
 </div>
 
-### Explicit Step Request
+### Expliciete Stapverzoek
 
 <TryIt 
-  title="Try Chain of Thought"
-  description="Ask the AI to solve a problem step by step."
-  prompt={`Solve this problem:
+  title="Probeer Chain of Thought"
+  description="Vraag de AI om een probleem stap voor stap op te lossen."
+  prompt={`Los dit probleem op:
 
-A car rental costs $40 per day plus $0.25 per mile. If someone rents a car for 3 days and drives 200 miles, what is the total cost?
+Een autoverhuur kost €40 per dag plus €0,25 per kilometer. Als iemand een auto huurt voor 3 dagen en 200 kilometer rijdt, wat zijn de totale kosten?
 
-Before giving your final answer:
-1. Identify what information is given
-2. Determine what we need to find
-3. Plan your approach
-4. Execute each step, showing work
-5. Verify your answer`}
+Voordat je je definitieve antwoord geeft:
+1. Identificeer welke informatie gegeven is
+2. Bepaal wat we moeten vinden
+3. Plan je aanpak
+4. Voer elke stap uit en toon je werk
+5. Verifieer je antwoord`}
 />
 
 ## Zero-Shot vs Few-Shot CoT
 
-There are two main approaches to Chain of Thought prompting, each with different trade-offs between simplicity and control.
+Er zijn twee hoofdbenaderingen voor Chain of Thought prompting, elk met verschillende afwegingen tussen eenvoud en controle.
 
 ### Zero-Shot CoT
 
-The simplest approach—just add a trigger phrase and let the model figure out how to reason. No examples needed. This works surprisingly well for many problems, though you have less control over the reasoning format.
+De eenvoudigste aanpak—voeg gewoon een triggerzin toe en laat het model uitzoeken hoe te redeneren. Geen voorbeelden nodig. Dit werkt verrassend goed voor veel problemen, hoewel je minder controle hebt over het redeneringsformaat.
 
 <TryIt 
   compact
   title="Zero-Shot CoT"
-  prompt={`If John has 3 apples and gives half to Mary, then buys 4 more, how many does he have?
+  prompt={`Als Jan 3 appels heeft en de helft aan Marie geeft, en daarna 4 meer koopt, hoeveel heeft hij er dan?
 
-Let's think step by step.`}
+Laten we stap voor stap denken.`}
 />
 
-**Example Output:**
+**Voorbeelduitvoer:**
 ```
-Let's think step by step.
-- John starts with 3 apples
-- Half of 3 is 1.5, but we can't split apples
-- If we round down: John gives 1 apple, keeps 2
-- After buying 4 more: 2 + 4 = 6 apples
+Laten we stap voor stap denken.
+- Jan begint met 3 appels
+- De helft van 3 is 1,5, maar we kunnen appels niet splitsen
+- Als we naar beneden afronden: Jan geeft 1 appel, houdt 2 over
+- Na het kopen van 4 meer: 2 + 4 = 6 appels
 
-Answer: 6 apples
+Antwoord: 6 appels
 ```
 
 ### Few-Shot CoT
 
-For more consistent results, show the model exactly how you want it to reason by providing worked examples. This gives you control over the reasoning style, format, and level of detail. The model will mimic your demonstrated pattern.
+Voor consistentere resultaten, laat je het model precies zien hoe je wilt dat het redeneert door uitgewerkte voorbeelden te geven. Dit geeft je controle over de redeneerstijl, het formaat en het detailniveau. Het model zal je gedemonstreerde patroon nabootsen.
 
 <TryIt 
   compact
   title="Few-Shot CoT"
-  prompt={`Example 1:
-Q: A baker has 24 cupcakes. She puts them equally into 4 boxes. Then she eats 2 cupcakes from one box. How many cupcakes total remain?
+  prompt={`Voorbeeld 1:
+V: Een bakker heeft 24 cupcakes. Ze verdeelt ze gelijk over 4 dozen. Daarna eet ze 2 cupcakes uit één doos. Hoeveel cupcakes zijn er in totaal over?
 
-A: Let's work through this:
-- Total cupcakes: 24
-- Cupcakes per box: 24 ÷ 4 = 6
-- After eating 2 from one box: 6 - 2 = 4 cupcakes in that box
-- Total remaining: (3 boxes × 6) + 4 = 18 + 4 = 22 cupcakes
+A: Laten we dit doorwerken:
+- Totaal aantal cupcakes: 24
+- Cupcakes per doos: 24 ÷ 4 = 6
+- Na het eten van 2 uit één doos: 6 - 2 = 4 cupcakes in die doos
+- Totaal over: (3 dozen × 6) + 4 = 18 + 4 = 22 cupcakes
 
-Example 2:
-Q: A train travels at 60 mph for 2 hours, then 40 mph for 3 hours. What is its average speed?
+Voorbeeld 2:
+V: Een trein rijdt 2 uur met 60 km/u, daarna 3 uur met 40 km/u. Wat is de gemiddelde snelheid?
 
-A: Let's work through this:
-- Distance at 60 mph: 60 × 2 = 120 miles
-- Distance at 40 mph: 40 × 3 = 120 miles
-- Total distance: 120 + 120 = 240 miles
-- Total time: 2 + 3 = 5 hours
-- Average speed: 240 ÷ 5 = 48 mph
+A: Laten we dit doorwerken:
+- Afstand bij 60 km/u: 60 × 2 = 120 kilometer
+- Afstand bij 40 km/u: 40 × 3 = 120 kilometer
+- Totale afstand: 120 + 120 = 240 kilometer
+- Totale tijd: 2 + 3 = 5 uur
+- Gemiddelde snelheid: 240 ÷ 5 = 48 km/u
 
-Now solve:
-Q: A store sells notebooks for $3 each. If you buy 10 or more, you get 25% off. How much do 12 notebooks cost?`}
+Los nu op:
+V: Een winkel verkoopt schriften voor €3 per stuk. Als je 10 of meer koopt, krijg je 25% korting. Hoeveel kosten 12 schriften?`}
 />
 
-**Example Output:**
+**Voorbeelduitvoer:**
 ```
-A: Let's work through this:
-- Regular price: $3, Quantity: 12
-- Since 12 ≥ 10, the 25% discount applies
-- Regular total: 12 × $3 = $36
-- Discount: 25% of $36 = $9
-- Final price: $36 - $9 = $27
+A: Laten we dit doorwerken:
+- Normale prijs: €3, Aantal: 12
+- Aangezien 12 ≥ 10, is de 25% korting van toepassing
+- Normaal totaal: 12 × €3 = €36
+- Korting: 25% van €36 = €9
+- Eindprijs: €36 - €9 = €27
 ```
 
-## Structured CoT Formats
+## Gestructureerde CoT Formaten
 
-For consistent, reproducible reasoning, use structured formats with named steps. These frameworks ensure the model doesn't skip important stages and makes outputs easier to parse and verify.
+Voor consistente, reproduceerbare redenering, gebruik gestructureerde formaten met benoemde stappen. Deze frameworks zorgen ervoor dat het model geen belangrijke fasen overslaat en maken uitvoer gemakkelijker te ontleden en verifiëren.
 
-### The BREAK Format
+### Het BREAK Formaat
 
-A memorable acronym that guides the model through a complete problem-solving cycle, from understanding to verification.
+Een makkelijk te onthouden acroniem dat het model door een volledige probleemoplossingscyclus leidt, van begrip tot verificatie.
 
 <BREAKFramework />
 
-### The Reasoning Template
+### Het Redeneringssjabloon
 
-A more formal structure that separates inputs, goals, and execution. Excellent for technical problems where you need clear documentation of the solution process.
+Een meer formele structuur die invoer, doelen en uitvoering scheidt. Uitstekend voor technische problemen waar je duidelijke documentatie van het oplossingsproces nodig hebt.
 
 <TryIt 
   compact
-  title="Reasoning Template"
-  prompt={`Use this template to solve the problem:
+  title="Redeneringssjabloon"
+  prompt={`Gebruik dit sjabloon om het probleem op te lossen:
 
-GIVEN: [List known information]
-GOAL: [What we need to find]
-APPROACH: [Strategy we'll use]
-STEPS:
-  1. [First step with reasoning]
-  2. [Second step with reasoning]
+GEGEVEN: [Som bekende informatie op]
+DOEL: [Wat we moeten vinden]
+AANPAK: [Strategie die we gaan gebruiken]
+STAPPEN:
+  1. [Eerste stap met redenering]
+  2. [Tweede stap met redenering]
   ...
-VERIFICATION: [Check the answer]
-ANSWER: [Final answer]
+VERIFICATIE: [Controleer het antwoord]
+ANTWOORD: [Definitief antwoord]
 
-Problem: A car uses 8 liters of fuel per 100 km. If the tank holds 45 liters and fuel costs $1.50 per liter, how much does it cost to drive 300 km?`}
+Probleem: Een auto verbruikt 8 liter brandstof per 100 km. Als de tank 45 liter bevat en brandstof €1,50 per liter kost, hoeveel kost het om 300 km te rijden?`}
 />
 
-**Example Output:**
+**Voorbeelduitvoer:**
 ```
-GIVEN: 8L/100km, tank 45L, $1.50/L, drive 300km
-GOAL: Calculate fuel cost
-APPROACH: Fuel needed × cost per liter
-STEPS:
-1. Fuel = (300 ÷ 100) × 8 = 24 liters
-2. Cost = 24 × $1.50 = $36
-VERIFICATION: 24L < 45L tank ✓
-ANSWER: $36
+GEGEVEN: 8L/100km, tank 45L, €1,50/L, rijd 300km
+DOEL: Bereken brandstofkosten
+AANPAK: Benodigde brandstof × prijs per liter
+STAPPEN:
+1. Brandstof = (300 ÷ 100) × 8 = 24 liter
+2. Kosten = 24 × €1,50 = €36
+VERIFICATIE: 24L < 45L tank ✓
+ANTWOORD: €36
 ```
 
-## CoT for Different Problem Types
+## CoT voor Verschillende Probleemtypes
 
-Different problem types benefit from different CoT approaches. Here are patterns optimized for common scenarios.
+Verschillende probleemtypes profiteren van verschillende CoT-benaderingen. Hier zijn patronen geoptimaliseerd voor veelvoorkomende scenario's.
 
-### Mathematical Reasoning
+### Wiskundig Redeneren
 
-Math problems benefit most from CoT because each step builds on the previous one. Errors compound, so showing work helps catch mistakes early. The model should clearly label each calculation.
+Wiskundeproblemen profiteren het meest van CoT omdat elke stap voortbouwt op de vorige. Fouten stapelen zich op, dus werk tonen helpt fouten vroeg op te vangen. Het model moet elke berekening duidelijk labelen.
 
 <TryIt 
   compact
-  title="Math with CoT"
-  prompt={`A company's revenue was $1.2M in Q1. It grew 15% in Q2, declined 10% in Q3, and grew 25% in Q4. What was the total annual revenue?
+  title="Wiskunde met CoT"
+  prompt={`De omzet van een bedrijf was €1,2M in Q1. Het groeide 15% in Q2, daalde 10% in Q3, en groeide 25% in Q4. Wat was de totale jaaromzet?
 
-Think through each quarter, showing your calculations clearly.`}
+Denk door elk kwartaal en toon je berekeningen duidelijk.`}
 />
 
-**Example Output:**
+**Voorbeelduitvoer:**
 ```
-Q1: $1,200,000 (given)
-Q2: $1,200,000 × 1.15 = $1,380,000
-Q3: $1,380,000 × 0.90 = $1,242,000
-Q4: $1,242,000 × 1.25 = $1,552,500
+Q1: €1.200.000 (gegeven)
+Q2: €1.200.000 × 1,15 = €1.380.000
+Q3: €1.380.000 × 0,90 = €1.242.000
+Q4: €1.242.000 × 1,25 = €1.552.500
 
-Total: $5,374,500
+Totaal: €5.374.500
 ```
 
-### Logical Reasoning
+### Logisch Redeneren
 
-Logic puzzles require systematic elimination and hypothesis testing. CoT helps the model track constraints, test possibilities, and verify that all conditions are satisfied. The key is methodical exploration rather than guessing.
+Logische puzzels vereisen systematische eliminatie en hypothesetesten. CoT helpt het model beperkingen bij te houden, mogelijkheden te testen en te verifiëren dat aan alle voorwaarden is voldaan. De sleutel is methodische verkenning in plaats van gokken.
 
 <TryIt 
   compact
-  title="Logic Puzzle"
-  prompt={`Three friends—Alice, Bob, and Carol—each have different pets (cat, dog, fish) and different jobs (teacher, engineer, doctor).
+  title="Logische Puzzel"
+  prompt={`Drie vrienden—Alice, Bob en Carol—hebben elk verschillende huisdieren (kat, hond, vis) en verschillende banen (leraar, ingenieur, dokter).
 
-Clues:
-1. Alice doesn't have a cat
-2. The engineer has a dog
-3. Bob is a teacher
-4. Carol doesn't have a fish
+Aanwijzingen:
+1. Alice heeft geen kat
+2. De ingenieur heeft een hond
+3. Bob is leraar
+4. Carol heeft geen vis
 
-Who has which pet and job? Reason through this systematically, testing hypotheses and verifying against all clues.`}
+Wie heeft welk huisdier en welke baan? Redeneer hier systematisch doorheen, test hypotheses en verifieer tegen alle aanwijzingen.`}
 />
 
-**Example Output:**
+**Voorbeelduitvoer:**
 ```
-From clue 3: Bob = teacher
-→ Alice and Carol are engineer/doctor
+Uit aanwijzing 3: Bob = leraar
+→ Alice en Carol zijn ingenieur/dokter
 
-If Carol = engineer:
-- Carol has dog (clue 2)
-- Alice = doctor, has fish (clue 1)
-- Bob has cat
+Als Carol = ingenieur:
+- Carol heeft hond (aanwijzing 2)
+- Alice = dokter, heeft vis (aanwijzing 1)
+- Bob heeft kat
 
-Verify: All 4 clues satisfied ✓
-Answer: Alice (doctor, fish), Bob (teacher, cat), Carol (engineer, dog)
+Verificatie: Alle 4 aanwijzingen voldaan ✓
+Antwoord: Alice (dokter, vis), Bob (leraar, kat), Carol (ingenieur, hond)
 ```
 
-### Code Debugging
+### Code Debuggen
 
-Debugging benefits from CoT because it forces the model to trace execution rather than guess at bugs. By walking through the code with concrete values, the actual behavior becomes visible and discrepancies with expected behavior are exposed.
+Debuggen profiteert van CoT omdat het het model dwingt de uitvoering te traceren in plaats van te gokken naar bugs. Door de code met concrete waarden te doorlopen, wordt het daadwerkelijke gedrag zichtbaar en worden afwijkingen van verwacht gedrag blootgelegd.
 
 <TryIt 
   compact
-  title="Debug with CoT"
-  prompt={`This function should return the sum of even numbers in a list, but it's returning wrong values. Debug step by step by tracing through with the input [2, 3, 4, 6]:
+  title="Debuggen met CoT"
+  prompt={`Deze functie zou de som van even getallen in een lijst moeten retourneren, maar geeft verkeerde waarden terug. Debug stap voor stap door te traceren met de invoer [2, 3, 4, 6]:
 
 def sum_evens(numbers):
     total = 0
@@ -229,135 +229,135 @@ def sum_evens(numbers):
             total += 1
     return total
 
-Trace each step, find the bug, and provide the fix.`}
+Traceer elke stap, vind de bug en geef de oplossing.`}
 />
 
-**Example Output:**
+**Voorbeelduitvoer:**
 ```
-Trace [2, 3, 4, 6]:
-n=2: total += 1 → 1 (wait, adding 1 not n!)
-n=3: skip (odd)
+Traceer [2, 3, 4, 6]:
+n=2: total += 1 → 1 (wacht, voegt 1 toe niet n!)
+n=3: overslaan (oneven)
 n=4: total = 2
 n=6: total = 3
 
-BUG: "total += 1" should be "total += n"
-Expected: 12, Got: 3
-Fix: Change to "total += n"
+BUG: "total += 1" zou "total += n" moeten zijn
+Verwacht: 12, Kreeg: 3
+Oplossing: Verander naar "total += n"
 ```
 
-## Self-Consistency with CoT
+## Zelfconsistentie met CoT
 
-For critical problems, don't rely on a single reasoning path. Generate multiple independent solutions and compare results. If different approaches converge on the same answer, confidence is high. Disagreement signals the need for careful review.
+Voor kritieke problemen, vertrouw niet op één enkel redeneerpad. Genereer meerdere onafhankelijke oplossingen en vergelijk resultaten. Als verschillende benaderingen convergeren naar hetzelfde antwoord, is het vertrouwen hoog. Onenigheid signaleert de noodzaak voor zorgvuldige beoordeling.
 
 <TryIt 
   compact
-  title="Self-Consistency"
-  prompt={`Solve this problem 3 different ways, then give your final answer based on which solution appears most correct:
+  title="Zelfconsistentie"
+  prompt={`Los dit probleem op 3 verschillende manieren op, en geef dan je definitieve antwoord gebaseerd op welke oplossing het meest correct lijkt:
 
-Problem: A farmer has chickens and cows. Together they have 30 heads and 74 legs. How many chickens and how many cows does the farmer have?
+Probleem: Een boer heeft kippen en koeien. Samen hebben ze 30 koppen en 74 poten. Hoeveel kippen en hoeveel koeien heeft de boer?
 
-Approach 1: Algebra
-Approach 2: Guess and check
-Approach 3: Logical reasoning
+Aanpak 1: Algebra
+Aanpak 2: Gokken en controleren
+Aanpak 3: Logisch redeneren
 
-Then compare and give your final answer.`}
+Vergelijk dan en geef je definitieve antwoord.`}
 />
 
-**Example Output:**
+**Voorbeelduitvoer:**
 ```
-Approach 1 (Algebra): c + w = 30, 2c + 4w = 74 → c=23, w=7
-Approach 2 (Guess): Try 23/7 → 46 + 28 = 74 ✓
-Approach 3 (Logic): 30 chickens = 60 legs, need 14 more → 7 cows
+Aanpak 1 (Algebra): k + ko = 30, 2k + 4ko = 74 → k=23, ko=7
+Aanpak 2 (Gokken): Probeer 23/7 → 46 + 28 = 74 ✓
+Aanpak 3 (Logica): 30 kippen = 60 poten, 14 meer nodig → 7 koeien
 
-All agree: 23 chickens, 7 cows
+Alle komen overeen: 23 kippen, 7 koeien
 ```
 
-## CoT for Decision Making
+## CoT voor Besluitvorming
 
-Decisions involve weighing trade-offs across multiple dimensions. CoT ensures all relevant factors are considered systematically rather than jumping to conclusions. This structured approach also documents the reasoning for future reference.
+Beslissingen omvatten het afwegen van trade-offs over meerdere dimensies. CoT zorgt ervoor dat alle relevante factoren systematisch worden overwogen in plaats van naar conclusies te springen. Deze gestructureerde aanpak documenteert ook de redenering voor toekomstige referentie.
 
 <TryIt 
   compact
-  title="Decision Analysis"
-  prompt={`Should we adopt microservices architecture for our application?
+  title="Beslissingsanalyse"
+  prompt={`Moeten we microservices-architectuur adopteren voor onze applicatie?
 
 Context:
-- Monolithic application with 50,000 lines of code
-- Team of 5 developers
-- 100 daily active users
-- Planning for 10x growth in 2 years
+- Monolithische applicatie met 50.000 regels code
+- Team van 5 ontwikkelaars
+- 100 dagelijks actieve gebruikers
+- Plannen voor 10x groei in 2 jaar
 
-Think through this systematically:
-1. List the current state
-2. Identify factors to consider (team size, scale, velocity, future growth)
-3. Weigh each factor as for/against
-4. Give a recommendation with reasoning`}
+Denk hier systematisch over na:
+1. Som de huidige staat op
+2. Identificeer factoren om te overwegen (teamgrootte, schaal, snelheid, toekomstige groei)
+3. Weeg elke factor af als voor/tegen
+4. Geef een aanbeveling met redenering`}
 />
 
-**Example Output:**
+**Voorbeelduitvoer:**
 ```
-FACTORS:
-- Team size (5): Too small for microservices ❌
-- Scale (100 DAU): No scaling need ❌  
-- Velocity: Monolith = faster iteration ❌
-- Future growth: Uncertain timeline ⚠️
+FACTOREN:
+- Teamgrootte (5): Te klein voor microservices ❌
+- Schaal (100 DAU): Geen schaalbehoefte ❌  
+- Snelheid: Monoliet = snellere iteratie ❌
+- Toekomstige groei: Onzekere tijdlijn ⚠️
 
-WEIGHING: 3 strong against, 1 weak for
+AFWEGING: 3 sterk tegen, 1 zwak voor
 
-RECOMMENDATION: Stay monolith, use clear module 
-boundaries to ease future transition.
+AANBEVELING: Blijf bij monoliet, gebruik duidelijke 
+modulegrenzen om toekomstige overgang te vergemakkelijken.
 ```
 
-## When to Use CoT
+## Wanneer CoT Gebruiken
 
 <div className="my-6 grid md:grid-cols-2 gap-4">
   <div className="border rounded-lg bg-green-50/50 dark:bg-green-950/20 border-green-200 dark:border-green-900">
-    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Use CoT For</p>
+    <p className="text-sm font-semibold text-green-700 dark:text-green-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconCheck className="h-4 w-4" /> Gebruik CoT Voor</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">**Math problems** — Reduces calculation errors</p>
-      <p className="m-0!">**Logic puzzles** — Prevents skipped steps</p>
-      <p className="m-0!">**Complex analysis** — Organizes thinking</p>
-      <p className="m-0!">**Code debugging** — Traces execution</p>
-      <p className="m-0!">**Decision making** — Weighs trade-offs</p>
+      <p className="m-0!">**Wiskundeproblemen** — Vermindert rekenfouten</p>
+      <p className="m-0!">**Logische puzzels** — Voorkomt overgeslagen stappen</p>
+      <p className="m-0!">**Complexe analyse** — Organiseert denken</p>
+      <p className="m-0!">**Code debuggen** — Traceert uitvoering</p>
+      <p className="m-0!">**Besluitvorming** — Weegt trade-offs af</p>
     </div>
   </div>
   <div className="border rounded-lg bg-red-50/50 dark:bg-red-950/20 border-red-200 dark:border-red-900">
-    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Skip CoT For</p>
+    <p className="text-sm font-semibold text-red-700 dark:text-red-400 px-4 pt-3 flex items-center gap-2 m-0!"><IconX className="h-4 w-4" /> Sla CoT Over Voor</p>
     <div className="text-sm p-4 pt-2 space-y-1">
-      <p className="m-0!">**Simple Q&A** — Unnecessary overhead</p>
-      <p className="m-0!">**Creative writing** — Can constrain creativity</p>
-      <p className="m-0!">**Factual lookups** — No reasoning needed</p>
-      <p className="m-0!">**Translation** — Direct task</p>
-      <p className="m-0!">**Summarization** — Usually straightforward</p>
+      <p className="m-0!">**Eenvoudige V&A** — Onnodige overhead</p>
+      <p className="m-0!">**Creatief schrijven** — Kan creativiteit beperken</p>
+      <p className="m-0!">**Feitelijke opzoekingen** — Geen redenering nodig</p>
+      <p className="m-0!">**Vertaling** — Directe taak</p>
+      <p className="m-0!">**Samenvatten** — Meestal eenvoudig</p>
     </div>
   </div>
 </div>
 
-## CoT Limitations
+## CoT Beperkingen
 
-While powerful, Chain of Thought isn't a silver bullet. Understanding its limitations helps you apply it appropriately.
+Hoewel krachtig, is Chain of Thought geen wondermiddel. Het begrijpen van de beperkingen helpt je het op de juiste manier toe te passen.
 
-1. **Increased token usage** — More output means higher costs
-2. **Not always needed** — Simple tasks don't benefit
-3. **Can be verbose** — May need to ask for conciseness
-4. **Reasoning can be flawed** — CoT doesn't guarantee correctness
+1. **Verhoogd tokengebruik** — Meer uitvoer betekent hogere kosten
+2. **Niet altijd nodig** — Eenvoudige taken profiteren er niet van
+3. **Kan wijdlopig zijn** — Mogelijk moet je om beknoptheid vragen
+4. **Redenering kan gebrekkig zijn** — CoT garandeert geen correctheid
 
-## Summary
+## Samenvatting
 
-<Callout type="tip" title="Key Takeaways">
-CoT dramatically improves complex reasoning by making implicit steps explicit. Use it for math, logic, analysis, and debugging. Trade-off: better accuracy for more tokens.
+<Callout type="tip" title="Belangrijkste Punten">
+CoT verbetert complex redeneren drastisch door impliciete stappen expliciet te maken. Gebruik het voor wiskunde, logica, analyse en debuggen. Trade-off: betere nauwkeurigheid voor meer tokens.
 </Callout>
 
 <Quiz 
-  question="When should you NOT use Chain of Thought prompting?"
+  question="Wanneer zou je Chain of Thought prompting NIET moeten gebruiken?"
   options={[
-    "Math problems requiring multiple steps",
-    "Simple factual questions like 'What is the capital of France?'",
-    "Debugging code with complex logic",
-    "Analyzing a business decision"
+    "Wiskundeproblemen die meerdere stappen vereisen",
+    "Eenvoudige feitelijke vragen zoals 'Wat is de hoofdstad van Frankrijk?'",
+    "Code debuggen met complexe logica",
+    "Een zakelijke beslissing analyseren"
   ]}
   correctIndex={1}
-  explanation="Chain of Thought adds unnecessary overhead for simple Q&A. It's best reserved for complex reasoning tasks like math, logic puzzles, code debugging, and analysis where showing work improves accuracy."
+  explanation="Chain of Thought voegt onnodige overhead toe voor eenvoudige V&A. Het is het beste gereserveerd voor complexe redeneertaken zoals wiskunde, logische puzzels, code debuggen en analyse waar werk tonen de nauwkeurigheid verbetert."
 />
 
-In the next chapter, we'll explore few-shot learning—teaching the model through examples.
+In het volgende hoofdstuk verkennen we few-shot learning—het model leren door middel van voorbeelden.

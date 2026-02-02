@@ -1,278 +1,278 @@
-Beyond structure, effective prompt engineering is guided by principles—fundamental truths that apply across models, tasks, and contexts. Master these principles, and you'll be able to adapt to any prompting challenge.
+Naast structuur wordt effectieve prompt engineering geleid door principes—fundamentele waarheden die van toepassing zijn op alle modellen, taken en contexten. Beheers deze principes, en je kunt je aanpassen aan elke prompt-uitdaging.
 
-<Callout type="info" title="The 8 Core Principles">
-These principles apply to every AI model and every task. Learn them once, use them everywhere.
+<Callout type="info" title="De 8 Kernprincipes">
+Deze principes zijn van toepassing op elk AI-model en elke taak. Leer ze één keer, gebruik ze overal.
 </Callout>
 
-## Principle 1: Clarity Over Cleverness
+## Principe 1: Duidelijkheid Boven Slimheid
 
-The best prompts are clear, not clever. AI models are literal interpreters—they work with exactly what you give them.
+De beste prompts zijn duidelijk, niet slim. AI-modellen zijn letterlijke interpreters—ze werken met precies wat je ze geeft.
 
-### Be Explicit
-
-<Compare 
-  before={{ label: "Implicit (problematic)", content: "Make this better." }}
-  after={{ label: "Explicit (effective)", content: "Improve this email by:\n1. Making the subject line more compelling\n2. Shortening paragraphs to 2-3 sentences max\n3. Adding a clear call-to-action at the end" }}
-/>
-
-### Avoid Ambiguity
-
-Words can have multiple meanings. Choose precise language.
+### Wees Expliciet
 
 <Compare 
-  before={{ label: "Ambiguous", content: "Give me a short summary.\n(How short? 1 sentence? 1 paragraph? 1 page?)" }}
-  after={{ label: "Precise", content: "Summarize in exactly 3 bullet points, each under 20 words." }}
+  before={{ label: "Impliciet (problematisch)", content: "Maak dit beter." }}
+  after={{ label: "Expliciet (effectief)", content: "Verbeter deze e-mail door:\n1. De onderwerpregel aantrekkelijker te maken\n2. Paragrafen te verkorten tot maximaal 2-3 zinnen\n3. Een duidelijke call-to-action aan het einde toe te voegen" }}
 />
 
-### State the Obvious
+### Vermijd Dubbelzinnigheid
 
-What's obvious to you isn't obvious to the model. Spell out assumptions.
+Woorden kunnen meerdere betekenissen hebben. Kies precieze taal.
+
+<Compare 
+  before={{ label: "Dubbelzinnig", content: "Geef me een korte samenvatting.\n(Hoe kort? 1 zin? 1 paragraaf? 1 pagina?)" }}
+  after={{ label: "Precies", content: "Vat samen in exact 3 opsommingstekens, elk onder de 20 woorden." }}
+/>
+
+### Benoem het Vanzelfsprekende
+
+Wat voor jou vanzelfsprekend is, is niet vanzelfsprekend voor het model. Verwoord aannames expliciet.
 
 ```
-You're helping me write a cover letter.
+Je helpt me een sollicitatiebrief te schrijven.
 
-Important context:
-- I'm applying for a Software Engineer position at Google
-- I have 5 years of experience in Python and distributed systems
-- The role requires leadership experience (I've led a team of 4)
-- I want to emphasize my open-source contributions
+Belangrijke context:
+- Ik solliciteer naar een Software Engineer positie bij Google
+- Ik heb 5 jaar ervaring in Python en gedistribueerde systemen
+- De rol vereist leiderschapservaring (ik heb een team van 4 geleid)
+- Ik wil mijn open-source bijdragen benadrukken
 ```
 
-## Principle 2: Specificity Yields Quality
+## Principe 2: Specificiteit Levert Kwaliteit
 
-Vague inputs produce vague outputs. Specific inputs produce specific, useful outputs.
+Vage input produceert vage output. Specifieke input produceert specifieke, bruikbare output.
 
-### The Specificity Ladder
+### De Specificiteitsladder
 
 <SpecificitySpectrum levels={[
-  { level: "Level 1", text: "Write about climate change" },
-  { level: "Level 2", text: "Write an article about climate change effects" },
-  { level: "Level 3", text: "Write a 500-word article about how climate change affects coral reefs" },
-  { level: "Level 4", text: "Write a 500-word article explaining how rising ocean temperatures cause coral bleaching, aimed at high school students, with 2 specific examples from the Great Barrier Reef, in an engaging but scientifically accurate tone" }
+  { level: "Niveau 1", text: "Schrijf over klimaatverandering" },
+  { level: "Niveau 2", text: "Schrijf een artikel over de effecten van klimaatverandering" },
+  { level: "Niveau 3", text: "Schrijf een artikel van 500 woorden over hoe klimaatverandering koraalriffen beïnvloedt" },
+  { level: "Niveau 4", text: "Schrijf een artikel van 500 woorden waarin wordt uitgelegd hoe stijgende oceaantemperaturen koraalverbleking veroorzaken, gericht op middelbare scholieren, met 2 specifieke voorbeelden van het Great Barrier Reef, in een boeiende maar wetenschappelijk nauwkeurige toon" }
 ]} />
 
-Each level adds specificity and dramatically improves output quality.
+Elk niveau voegt specificiteit toe en verbetert de outputkwaliteit drastisch.
 
-### Specify These Elements
+### Specificeer Deze Elementen
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Audience</span>
-    <span className="text-muted-foreground">Who will read/use this?</span>
+    <span className="font-semibold min-w-24">Doelgroep</span>
+    <span className="text-muted-foreground">Wie gaat dit lezen/gebruiken?</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Length</span>
-    <span className="text-muted-foreground">How long/short should it be?</span>
+    <span className="font-semibold min-w-24">Lengte</span>
+    <span className="text-muted-foreground">Hoe lang/kort moet het zijn?</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Tone</span>
-    <span className="text-muted-foreground">Formal? Casual? Technical?</span>
+    <span className="font-semibold min-w-24">Toon</span>
+    <span className="text-muted-foreground">Formeel? Informeel? Technisch?</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Format</span>
-    <span className="text-muted-foreground">Prose? List? Table? Code?</span>
+    <span className="font-semibold min-w-24">Formaat</span>
+    <span className="text-muted-foreground">Proza? Lijst? Tabel? Code?</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Scope</span>
-    <span className="text-muted-foreground">What to include/exclude?</span>
+    <span className="font-semibold min-w-24">Omvang</span>
+    <span className="text-muted-foreground">Wat moet worden opgenomen/uitgesloten?</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Purpose</span>
-    <span className="text-muted-foreground">What should this accomplish?</span>
+    <span className="font-semibold min-w-24">Doel</span>
+    <span className="text-muted-foreground">Wat moet dit bereiken?</span>
   </div>
 </div>
 
-## Principle 3: Context Is King
+## Principe 3: Context Is Koning
 
-Models have no memory, no access to your files, and no knowledge of your situation. Everything relevant must be in the prompt.
+Modellen hebben geen geheugen, geen toegang tot je bestanden en geen kennis van je situatie. Alles wat relevant is, moet in de prompt staan.
 
-### Provide Sufficient Context
+### Geef Voldoende Context
 
 <Compare 
-  before={{ label: "Insufficient context", content: "Why isn't my function working?" }}
-  after={{ label: "Sufficient context", content: "I have a Python function that should filter a list of dictionaries by a specific key value. It's returning an empty list when it should return 3 items.\n\nFunction:\ndef filter_items(items, key, value):\n    return [item for item in items if item[key] = value]\n\nCall: filter_items(items, 'status', 'active')\nExpected: 2 items, Got: empty list" }}
+  before={{ label: "Onvoldoende context", content: "Waarom werkt mijn functie niet?" }}
+  after={{ label: "Voldoende context", content: "Ik heb een Python-functie die een lijst van dictionaries moet filteren op een specifieke sleutelwaarde. Het retourneert een lege lijst terwijl het 3 items zou moeten retourneren.\n\nFunctie:\ndef filter_items(items, key, value):\n    return [item for item in items if item[key] = value]\n\nAanroep: filter_items(items, 'status', 'active')\nVerwacht: 2 items, Gekregen: lege lijst" }}
 />
 
-### The Context Checklist
+### De Context Checklist
 
-<Callout type="tip" title="Before You Submit">
-Ask yourself: Would a smart stranger understand this request? If not, add more context.
+<Callout type="tip" title="Voordat Je Indient">
+Vraag jezelf af: Zou een slimme vreemde dit verzoek begrijpen? Zo niet, voeg meer context toe.
 </Callout>
 
 <Checklist 
   title="Context Checklist"
   items={[
-    { text: "Does the model know what I'm working on?" },
-    { text: "Does it know my goal?" },
-    { text: "Does it have all necessary information?" },
-    { text: "Does it understand the constraints?" },
-    { text: "Would a smart stranger understand this request?" }
+    { text: "Weet het model waaraan ik werk?" },
+    { text: "Kent het mijn doel?" },
+    { text: "Heeft het alle benodigde informatie?" },
+    { text: "Begrijpt het de beperkingen?" },
+    { text: "Zou een slimme vreemde dit verzoek begrijpen?" }
   ]}
 />
 
-## Principle 4: Guide, Don't Just Ask
+## Principe 4: Begeleid, Vraag Niet Alleen
 
-Don't just ask for an answer—guide the model toward the answer you want.
+Vraag niet alleen om een antwoord—begeleid het model naar het antwoord dat je wilt.
 
-### Use Instructional Framing
+### Gebruik Instructieve Framing
 
 <Compare 
-  before={{ label: "Just Asking", content: "What are the pros and cons of microservices?" }}
-  after={{ label: "Guiding", content: "List 5 advantages and 5 disadvantages of microservices architecture.\n\nFor each point:\n- State the point clearly in one sentence\n- Provide a brief explanation (2-3 sentences)\n- Give a concrete example\n\nConsider perspectives of: small startups, large enterprises, and teams transitioning from monoliths." }}
+  before={{ label: "Alleen Vragen", content: "Wat zijn de voor- en nadelen van microservices?" }}
+  after={{ label: "Begeleiden", content: "Noem 5 voordelen en 5 nadelen van microservices-architectuur.\n\nVoor elk punt:\n- Formuleer het punt duidelijk in één zin\n- Geef een korte uitleg (2-3 zinnen)\n- Geef een concreet voorbeeld\n\nOverweeg de perspectieven van: kleine startups, grote ondernemingen en teams die overstappen van monoliths." }}
 />
 
-### Provide Reasoning Scaffolds
+### Bied Redeneerstructuren
 
-For complex tasks, guide the reasoning process:
+Voor complexe taken, begeleid het redeneerproces:
 
 <TryIt 
-  title="Reasoning Scaffold Example"
-  description="This prompt guides the AI through a systematic decision-making process."
-  prompt={`I need to choose between PostgreSQL and MongoDB for my e-commerce project.
+  title="Voorbeeld van Redeneerstructuur"
+  description="Deze prompt begeleidt de AI door een systematisch besluitvormingsproces."
+  prompt={`Ik moet kiezen tussen PostgreSQL en MongoDB voor mijn e-commerce project.
 
-Think through this systematically:
-1. First, list the typical requirements for an e-commerce database
-2. Then, evaluate each database against each requirement
-3. Consider trade-offs specific to my use case
-4. Make a recommendation with clear justification`}
+Denk hier systematisch over na:
+1. Noem eerst de typische vereisten voor een e-commerce database
+2. Evalueer vervolgens elke database tegen elke vereiste
+3. Overweeg afwegingen specifiek voor mijn use case
+4. Doe een aanbeveling met duidelijke onderbouwing`}
 />
 
-## Principle 5: Iterate and Refine
+## Principe 5: Itereer en Verfijn
 
-Prompt engineering is an iterative process. Your first prompt is rarely your best.
+Prompt engineering is een iteratief proces. Je eerste prompt is zelden je beste.
 
-### The Iteration Cycle
+### De Iteratiecyclus
 
 ```
-1. Write initial prompt
-2. Review output
-3. Identify gaps or issues
-4. Refine prompt
-5. Repeat until satisfied
+1. Schrijf initiële prompt
+2. Bekijk de output
+3. Identificeer hiaten of problemen
+4. Verfijn de prompt
+5. Herhaal tot je tevreden bent
 ```
 
-### Common Refinements
+### Veelvoorkomende Verfijningen
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Too verbose</span>
-    <span className="text-muted-foreground">Add "Be concise" or length limits</span>
+    <span className="font-semibold min-w-32">Te uitgebreid</span>
+    <span className="text-muted-foreground">Voeg "Wees beknopt" of lengtelimieten toe</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Too vague</span>
-    <span className="text-muted-foreground">Add specific examples or constraints</span>
+    <span className="font-semibold min-w-32">Te vaag</span>
+    <span className="text-muted-foreground">Voeg specifieke voorbeelden of beperkingen toe</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Wrong format</span>
-    <span className="text-muted-foreground">Specify exact output structure</span>
+    <span className="font-semibold min-w-32">Verkeerd formaat</span>
+    <span className="text-muted-foreground">Specificeer exacte outputstructuur</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Missing aspects</span>
-    <span className="text-muted-foreground">Add "Make sure to include..."</span>
+    <span className="font-semibold min-w-32">Ontbrekende aspecten</span>
+    <span className="text-muted-foreground">Voeg "Zorg ervoor dat je opneemt..." toe</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Wrong tone</span>
-    <span className="text-muted-foreground">Specify audience and style</span>
+    <span className="font-semibold min-w-32">Verkeerde toon</span>
+    <span className="text-muted-foreground">Specificeer doelgroep en stijl</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Inaccurate</span>
-    <span className="text-muted-foreground">Request citations or step-by-step reasoning</span>
+    <span className="font-semibold min-w-32">Onnauwkeurig</span>
+    <span className="text-muted-foreground">Vraag om bronvermeldingen of stapsgewijze redenering</span>
   </div>
 </div>
 
-### Keep a Prompt Journal
+### Houd een Prompt Dagboek Bij
 
-Document what works:
+Documenteer wat werkt:
 ```
-Task: Code review
-Version 1: "Review this code" → Too generic
-Version 2: Added specific review criteria → Better
-Version 3: Added example of good review → Excellent
-Final: [Save successful prompt as template]
+Taak: Code review
+Versie 1: "Review deze code" → Te generiek
+Versie 2: Specifieke reviewcriteria toegevoegd → Beter
+Versie 3: Voorbeeld van goede review toegevoegd → Uitstekend
+Definitief: [Sla succesvolle prompt op als template]
 ```
 
-## Principle 6: Leverage the Model's Strengths
+## Principe 6: Benut de Sterke Punten van het Model
 
-Work with how models are trained, not against them.
+Werk mee met hoe modellen zijn getraind, niet ertegen.
 
-### Models Want to Be Helpful
+### Modellen Willen Behulpzaam Zijn
 
-Frame requests as things a helpful assistant would naturally do:
+Formuleer verzoeken als dingen die een behulpzame assistent van nature zou doen:
 
 <Compare 
-  before={{ label: "Against the grain", content: "I know you can't do this, but try to..." }}
-  after={{ label: "With the grain", content: "Help me understand...\nI'm working on X and need assistance with...\nCould you walk me through..." }}
+  before={{ label: "Tegen de stroom in", content: "Ik weet dat je dit niet kunt, maar probeer..." }}
+  after={{ label: "Met de stroom mee", content: "Help me te begrijpen...\nIk werk aan X en heb hulp nodig met...\nKun je me door ... leiden..." }}
 />
 
-### Models Excel at Patterns
+### Modellen Blinken Uit in Patronen
 
-If you need consistent output, show the pattern:
+Als je consistente output nodig hebt, toon het patroon:
 
 <TryIt 
-  title="Pattern Example"
-  description="This prompt shows the AI exactly what format you want for book recommendations."
-  prompt={`Recommend 3 science fiction books. Format each recommendation as:
+  title="Voorbeeld van Patroon"
+  description="Deze prompt toont de AI precies welk formaat je wilt voor boekaanbevelingen."
+  prompt={`Beveel 3 sciencefictionboeken aan. Formatteer elke aanbeveling als:
 
-📚 **[Title]** by [Author]
-*[Genre] | [Publication Year]*
-[2-sentence description]
-Why you'll love it: [1 sentence hook]
+📚 **[Titel]** door [Auteur]
+*[Genre] | [Publicatiejaar]*
+[Beschrijving van 2 zinnen]
+Waarom je het geweldig zult vinden: [1 zin hook]
 
 ---`}
 />
 
-### Models Can Role-Play
+### Modellen Kunnen Rollenspel
 
-Use personas to access different "modes" of response:
-
-```
-As a devil's advocate, argue against my proposal...
-As a supportive mentor, help me improve...
-As a skeptical investor, question this business plan...
-```
-
-## Principle 7: Control Output Structure
-
-Structured outputs are more useful than free-form text.
-
-### Request Specific Formats
+Gebruik persona's om verschillende "modi" van respons te activeren:
 
 ```
-Return your analysis as:
-
-SUMMARY: [1 sentence]
-
-KEY FINDINGS:
-• [Finding 1]
-• [Finding 2]
-• [Finding 3]
-
-RECOMMENDATION: [1-2 sentences]
-
-CONFIDENCE: [Low/Medium/High] because [reason]
+Als advocaat van de duivel, argumenteer tegen mijn voorstel...
+Als ondersteunende mentor, help me te verbeteren...
+Als sceptische investeerder, bekritiseer dit businessplan...
 ```
 
-### Use Delimiters
+## Principe 7: Beheers de Outputstructuur
 
-Clearly separate sections of your prompt:
+Gestructureerde outputs zijn nuttiger dan vrije tekst.
+
+### Vraag Specifieke Formaten
+
+```
+Retourneer je analyse als:
+
+SAMENVATTING: [1 zin]
+
+BELANGRIJKSTE BEVINDINGEN:
+• [Bevinding 1]
+• [Bevinding 2]
+• [Bevinding 3]
+
+AANBEVELING: [1-2 zinnen]
+
+ZEKERHEID: [Laag/Gemiddeld/Hoog] omdat [reden]
+```
+
+### Gebruik Scheidingstekens
+
+Scheid secties van je prompt duidelijk:
 
 ```
 ### CONTEXT ###
-[Your context here]
+[Je context hier]
 
-### TASK ###
-[Your task here]
+### TAAK ###
+[Je taak hier]
 
-### FORMAT ###
-[Desired format here]
+### FORMAAT ###
+[Gewenst formaat hier]
 ```
 
-### Request Machine-Readable Output
+### Vraag Machine-Leesbare Output
 
-For programmatic use:
+Voor programmatisch gebruik:
 
 ```
-Return only valid JSON, no explanation:
+Retourneer alleen geldige JSON, geen uitleg:
 {
   "decision": "approve" | "reject" | "review",
   "confidence": 0.0-1.0,
@@ -280,94 +280,94 @@ Return only valid JSON, no explanation:
 }
 ```
 
-## Principle 8: Verify and Validate
+## Principe 8: Verifieer en Valideer
 
-Never blindly trust model outputs, especially for important tasks.
+Vertrouw nooit blindelings op modeloutputs, vooral niet voor belangrijke taken.
 
-### Ask for Reasoning
-
-```
-Solve this problem and show your work step by step.
-After solving, verify your answer by [checking method].
-```
-
-### Request Multiple Perspectives
+### Vraag om Redenering
 
 ```
-Give me three different approaches to solve this problem.
-For each, explain the trade-offs.
+Los dit probleem op en toon je werk stap voor stap.
+Controleer na het oplossen je antwoord door [controlemethode].
 ```
 
-### Build in Self-Checking
+### Vraag Meerdere Perspectieven
 
 ```
-After generating the code, review it for:
-- Syntax errors
-- Edge cases
-- Security vulnerabilities
-List any issues found.
+Geef me drie verschillende benaderingen om dit probleem op te lossen.
+Leg voor elke benadering de afwegingen uit.
 ```
 
-## Summary: The Principles at a Glance
+### Bouw Zelfcontrole In
+
+```
+Na het genereren van de code, review deze op:
+- Syntaxfouten
+- Randgevallen
+- Beveiligingskwetsbaarheden
+Noem eventuele gevonden problemen.
+```
+
+## Samenvatting: De Principes in Één Oogopslag
 
 <PrinciplesSummary />
 
 <Quiz 
-  question="Which principle suggests you should include all relevant background information in your prompt?"
+  question="Welk principe suggereert dat je alle relevante achtergrondinformatie in je prompt moet opnemen?"
   options={[
-    "Clarity Over Cleverness",
-    "Specificity Yields Quality",
-    "Context Is King",
-    "Iterate and Refine"
+    "Duidelijkheid Boven Slimheid",
+    "Specificiteit Levert Kwaliteit",
+    "Context Is Koning",
+    "Itereer en Verfijn"
   ]}
   correctIndex={2}
-  explanation="Context Is King emphasizes that AI models have no memory between sessions and cannot read your mind. Including relevant background, constraints, and goals helps the model understand your needs."
+  explanation="Context Is Koning benadrukt dat AI-modellen geen geheugen hebben tussen sessies en je gedachten niet kunnen lezen. Het opnemen van relevante achtergrond, beperkingen en doelen helpt het model je behoeften te begrijpen."
 />
 
-## Practice: Fill in the Blanks
+## Oefening: Vul de Lege Plekken In
 
-Test your understanding of the core principles by completing this prompt template:
+Test je begrip van de kernprincipes door deze prompt-template in te vullen:
 
 <FillInTheBlank
-  title="Apply the Principles"
-  description="Fill in the blanks to create a well-structured prompt — write anything you want!"
+  title="Pas de Principes Toe"
+  description="Vul de lege plekken in om een goed gestructureerde prompt te maken — schrijf wat je maar wilt!"
   useAI={true}
   openEnded={true}
-  template={`You are a {{role}} with expertise in {{expertise}}.
+  template={`Je bent een {{role}} met expertise in {{expertise}}.
 
-Context: I'm working on {{context}}.
+Context: Ik werk aan {{context}}.
 
-Task: {{task}}
+Taak: {{task}}
 
-Constraints:
-- Keep your response under {{length}} words
-- Focus only on {{focus}}
+Beperkingen:
+- Houd je antwoord onder {{length}} woorden
+- Focus alleen op {{focus}}
 
-Format: Return your answer as {{format}}.`}
+Formaat: Retourneer je antwoord als {{format}}.`}
   blanks={[
-    { id: "role", correctAnswers: [], hint: "What professional role should the AI assume?", context: "A job title or professional role" },
-    { id: "expertise", correctAnswers: [], hint: "What specific domain knowledge is needed?", context: "A skill or domain that matches the role" },
-    { id: "context", correctAnswers: [], hint: "What's the project or situation?", context: "A project that someone with this expertise would work on" },
-    { id: "task", correctAnswers: [], hint: "What specific action should the AI take?", context: "An action appropriate for the role and context" },
-    { id: "length", correctAnswers: [], hint: "How long should the response be?", context: "A number (word count)" },
-    { id: "focus", correctAnswers: [], hint: "What aspect should be prioritized?", context: "A quality or aspect relevant to the task" },
-    { id: "format", correctAnswers: [], hint: "How should the output be structured?", context: "An output format type" }
+    { id: "role", correctAnswers: [], hint: "Welke professionele rol moet de AI aannemen?", context: "Een functietitel of professionele rol" },
+    { id: "expertise", correctAnswers: [], hint: "Welke specifieke domeinkennis is nodig?", context: "Een vaardigheid of domein dat past bij de rol" },
+    { id: "context", correctAnswers: [], hint: "Wat is het project of de situatie?", context: "Een project waar iemand met deze expertise aan zou werken" },
+    { id: "task", correctAnswers: [], hint: "Welke specifieke actie moet de AI ondernemen?", context: "Een actie die past bij de rol en context" },
+    { id: "length", correctAnswers: [], hint: "Hoe lang moet het antwoord zijn?", context: "Een getal (aantal woorden)" },
+    { id: "focus", correctAnswers: [], hint: "Welk aspect moet prioriteit krijgen?", context: "Een kwaliteit of aspect relevant voor de taak" },
+    { id: "format", correctAnswers: [], hint: "Hoe moet de output gestructureerd zijn?", context: "Een type outputformaat" }
   ]}
-  explanation="A well-structured prompt includes: a clear role (Principle 1), sufficient context (Principle 3), specific task (Principle 2), constraints (Principle 4), and output format (Principle 5). The AI checks if your choices are internally consistent."
+  explanation="Een goed gestructureerde prompt bevat: een duidelijke rol (Principe 1), voldoende context (Principe 3), specifieke taak (Principe 2), beperkingen (Principe 4) en outputformaat (Principe 5). De AI controleert of je keuzes intern consistent zijn."
 />
 
 <InteractiveChecklist
-  title="Principles Checklist"
+  title="Principes Checklist"
   items={[
-    { id: "clarity", label: "Clarity Over Cleverness", description: "Is your prompt explicit and unambiguous?" },
-    { id: "specificity", label: "Specificity Yields Quality", description: "Have you included audience, length, tone, and format?" },
-    { id: "context", label: "Context Is King", description: "Does the prompt include all necessary background information?" },
-    { id: "examples", label: "Examples Beat Explanations", description: "Have you shown what you want, not just described it?" },
-    { id: "constraints", label: "Constraints Focus Output", description: "Are there clear boundaries on scope and format?" },
-    { id: "iteration", label: "Iterate and Refine", description: "Are you prepared to improve based on results?" },
-    { id: "persona", label: "Persona Shapes Perspective", description: "Does the AI know what role to play?" },
-    { id: "verify", label: "Verify and Validate", description: "Have you built in checks for accuracy?" }
+    { id: "clarity", label: "Duidelijkheid Boven Slimheid", description: "Is je prompt expliciet en ondubbelzinnig?" },
+    { id: "specificity", label: "Specificiteit Levert Kwaliteit", description: "Heb je doelgroep, lengte, toon en formaat opgenomen?" },
+    { id: "context", label: "Context Is Koning", description: "Bevat de prompt alle benodigde achtergrondinformatie?" },
+    { id: "examples", label: "Voorbeelden Overtreffen Uitleg", description: "Heb je getoond wat je wilt, niet alleen beschreven?" },
+    { id: "constraints", label: "Beperkingen Focussen Output", description: "Zijn er duidelijke grenzen aan omvang en formaat?" },
+    { id: "iteration", label: "Itereer en Verfijn", description: "Ben je bereid te verbeteren op basis van resultaten?" },
+    { id: "persona", label: "Persona Bepaalt Perspectief", description: "Weet de AI welke rol hij moet spelen?" },
+    { id: "verify", label: "Verifieer en Valideer", description: "Heb je controles voor nauwkeurigheid ingebouwd?" }
   ]}
 />
 
-These principles form the foundation for everything that follows. In Part II, we'll apply them to specific techniques that dramatically enhance prompt effectiveness.
+Deze principes vormen de basis voor alles wat volgt. In Deel II passen we ze toe op specifieke technieken die de effectiviteit van prompts drastisch verbeteren.

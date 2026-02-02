@@ -1,373 +1,373 @@
-Beyond structure, effective prompt engineering is guided by principles—fundamental truths that apply across models, tasks, and contexts. Master these principles, and you'll be able to adapt to any prompting challenge.
+بعيداً عن الهيكلة، تسترشد هندسة المطالبات الفعّالة بمبادئ أساسية—حقائق جوهرية تنطبق على جميع النماذج والمهام والسياقات. أتقن هذه المبادئ، وستتمكن من التكيف مع أي تحدٍّ في كتابة المطالبات.
 
-<Callout type="info" title="The 8 Core Principles">
-These principles apply to every AI model and every task. Learn them once, use them everywhere.
+<Callout type="info" title="المبادئ الثمانية الأساسية">
+تنطبق هذه المبادئ على كل نموذج ذكاء اصطناعي وكل مهمة. تعلّمها مرة واحدة، واستخدمها في كل مكان.
 </Callout>
 
-## Principle 1: Clarity Over Cleverness
+## المبدأ الأول: الوضوح قبل الذكاء
 
-The best prompts are clear, not clever. AI models are literal interpreters—they work with exactly what you give them.
+أفضل المطالبات هي الواضحة، وليست الذكية. نماذج الذكاء الاصطناعي مفسّرات حرفية—تعمل بالضبط مع ما تقدمه لها.
 
-### Be Explicit
-
-<Compare 
-  before={{ label: "Implicit (problematic)", content: "Make this better." }}
-  after={{ label: "Explicit (effective)", content: "Improve this email by:\n1. Making the subject line more compelling\n2. Shortening paragraphs to 2-3 sentences max\n3. Adding a clear call-to-action at the end" }}
-/>
-
-### Avoid Ambiguity
-
-Words can have multiple meanings. Choose precise language.
+### كن صريحاً
 
 <Compare 
-  before={{ label: "Ambiguous", content: "Give me a short summary.\n(How short? 1 sentence? 1 paragraph? 1 page?)" }}
-  after={{ label: "Precise", content: "Summarize in exactly 3 bullet points, each under 20 words." }}
+  before={{ label: "ضمني (إشكالي)", content: "اجعل هذا أفضل." }}
+  after={{ label: "صريح (فعّال)", content: "حسّن هذا البريد الإلكتروني من خلال:\n1. جعل سطر الموضوع أكثر جاذبية\n2. تقصير الفقرات إلى 2-3 جمل كحد أقصى\n3. إضافة دعوة واضحة لاتخاذ إجراء في النهاية" }}
 />
 
-### State the Obvious
+### تجنب الغموض
 
-What's obvious to you isn't obvious to the model. Spell out assumptions.
+يمكن أن يكون للكلمات معانٍ متعددة. اختر لغة دقيقة.
+
+<Compare 
+  before={{ label: "غامض", content: "أعطني ملخصاً قصيراً.\n(كم قصيراً؟ جملة واحدة؟ فقرة واحدة؟ صفحة واحدة؟)" }}
+  after={{ label: "دقيق", content: "لخّص في 3 نقاط بالضبط، كل نقطة أقل من 20 كلمة." }}
+/>
+
+### اذكر ما هو واضح
+
+ما هو واضح لك ليس واضحاً للنموذج. وضّح الافتراضات.
 
 ```
-You're helping me write a cover letter.
+أنت تساعدني في كتابة خطاب تقديمي.
 
-Important context:
-- I'm applying for a Software Engineer position at Google
-- I have 5 years of experience in Python and distributed systems
-- The role requires leadership experience (I've led a team of 4)
-- I want to emphasize my open-source contributions
+سياق مهم:
+- أتقدم لوظيفة مهندس برمجيات في Google
+- لدي 5 سنوات من الخبرة في Python والأنظمة الموزعة
+- تتطلب الوظيفة خبرة قيادية (قدت فريقاً من 4 أشخاص)
+- أريد التأكيد على مساهماتي في المصادر المفتوحة
 ```
 
-## Principle 2: Specificity Yields Quality
+## المبدأ الثاني: الدقة تؤدي إلى الجودة
 
-Vague inputs produce vague outputs. Specific inputs produce specific, useful outputs.
+المدخلات الغامضة تنتج مخرجات غامضة. المدخلات المحددة تنتج مخرجات محددة ومفيدة.
 
-### The Specificity Ladder
+### سلّم الدقة
 
 <SpecificitySpectrum levels={[
-  { level: "Level 1", text: "Write about climate change" },
-  { level: "Level 2", text: "Write an article about climate change effects" },
-  { level: "Level 3", text: "Write a 500-word article about how climate change affects coral reefs" },
-  { level: "Level 4", text: "Write a 500-word article explaining how rising ocean temperatures cause coral bleaching, aimed at high school students, with 2 specific examples from the Great Barrier Reef, in an engaging but scientifically accurate tone" }
+  { level: "المستوى 1", text: "اكتب عن تغير المناخ" },
+  { level: "المستوى 2", text: "اكتب مقالاً عن آثار تغير المناخ" },
+  { level: "المستوى 3", text: "اكتب مقالاً من 500 كلمة عن كيفية تأثير تغير المناخ على الشعاب المرجانية" },
+  { level: "المستوى 4", text: "اكتب مقالاً من 500 كلمة يشرح كيف يتسبب ارتفاع درجة حرارة المحيطات في ابيضاض المرجان، موجهاً لطلاب المرحلة الثانوية، مع مثالين محددين من الحاجز المرجاني العظيم، بأسلوب جذاب ولكن دقيق علمياً" }
 ]} />
 
-Each level adds specificity and dramatically improves output quality.
+كل مستوى يضيف دقة ويحسّن جودة المخرجات بشكل كبير.
 
-### Specify These Elements
+### حدد هذه العناصر
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Audience</span>
-    <span className="text-muted-foreground">Who will read/use this?</span>
+    <span className="font-semibold min-w-24">الجمهور</span>
+    <span className="text-muted-foreground">من سيقرأ/يستخدم هذا؟</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Length</span>
-    <span className="text-muted-foreground">How long/short should it be?</span>
+    <span className="font-semibold min-w-24">الطول</span>
+    <span className="text-muted-foreground">كم يجب أن يكون طويلاً/قصيراً؟</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Tone</span>
-    <span className="text-muted-foreground">Formal? Casual? Technical?</span>
+    <span className="font-semibold min-w-24">النبرة</span>
+    <span className="text-muted-foreground">رسمية؟ غير رسمية؟ تقنية؟</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Format</span>
-    <span className="text-muted-foreground">Prose? List? Table? Code?</span>
+    <span className="font-semibold min-w-24">التنسيق</span>
+    <span className="text-muted-foreground">نص؟ قائمة؟ جدول؟ كود؟</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Scope</span>
-    <span className="text-muted-foreground">What to include/exclude?</span>
+    <span className="font-semibold min-w-24">النطاق</span>
+    <span className="text-muted-foreground">ماذا يجب تضمينه/استبعاده؟</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Purpose</span>
-    <span className="text-muted-foreground">What should this accomplish?</span>
+    <span className="font-semibold min-w-24">الغرض</span>
+    <span className="text-muted-foreground">ماذا يجب أن يحقق هذا؟</span>
   </div>
 </div>
 
-## Principle 3: Context Is King
+## المبدأ الثالث: السياق هو الملك
 
-Models have no memory, no access to your files, and no knowledge of your situation. Everything relevant must be in the prompt.
+النماذج ليس لديها ذاكرة، ولا وصول إلى ملفاتك، ولا معرفة بوضعك. كل شيء ذو صلة يجب أن يكون في المطالبة.
 
-### Provide Sufficient Context
+### قدم سياقاً كافياً
 
 <Compare 
-  before={{ label: "Insufficient context", content: "Why isn't my function working?" }}
-  after={{ label: "Sufficient context", content: "I have a Python function that should filter a list of dictionaries by a specific key value. It's returning an empty list when it should return 3 items.\n\nFunction:\ndef filter_items(items, key, value):\n    return [item for item in items if item[key] = value]\n\nCall: filter_items(items, 'status', 'active')\nExpected: 2 items, Got: empty list" }}
+  before={{ label: "سياق غير كافٍ", content: "لماذا لا تعمل دالتي؟" }}
+  after={{ label: "سياق كافٍ", content: "لدي دالة Python يجب أن تفلتر قائمة من القواميس حسب قيمة مفتاح محدد. إنها تعيد قائمة فارغة بينما يجب أن تعيد 3 عناصر.\n\nالدالة:\ndef filter_items(items, key, value):\n    return [item for item in items if item[key] = value]\n\nالاستدعاء: filter_items(items, 'status', 'active')\nالمتوقع: عنصران، النتيجة: قائمة فارغة" }}
 />
 
-### The Context Checklist
+### قائمة التحقق من السياق
 
-<Callout type="tip" title="Before You Submit">
-Ask yourself: Would a smart stranger understand this request? If not, add more context.
+<Callout type="tip" title="قبل الإرسال">
+اسأل نفسك: هل سيفهم شخص غريب ذكي هذا الطلب؟ إذا لم يكن كذلك، أضف المزيد من السياق.
 </Callout>
 
 <Checklist 
-  title="Context Checklist"
+  title="قائمة التحقق من السياق"
   items={[
-    { text: "Does the model know what I'm working on?" },
-    { text: "Does it know my goal?" },
-    { text: "Does it have all necessary information?" },
-    { text: "Does it understand the constraints?" },
-    { text: "Would a smart stranger understand this request?" }
+    { text: "هل يعرف النموذج ما أعمل عليه؟" },
+    { text: "هل يعرف هدفي؟" },
+    { text: "هل لديه جميع المعلومات الضرورية؟" },
+    { text: "هل يفهم القيود؟" },
+    { text: "هل سيفهم شخص غريب ذكي هذا الطلب؟" }
   ]}
 />
 
-## Principle 4: Guide, Don't Just Ask
+## المبدأ الرابع: وجّه، لا تسأل فقط
 
-Don't just ask for an answer—guide the model toward the answer you want.
+لا تطلب إجابة فحسب—وجّه النموذج نحو الإجابة التي تريدها.
 
-### Use Instructional Framing
+### استخدم الإطار التوجيهي
 
 <Compare 
-  before={{ label: "Just Asking", content: "What are the pros and cons of microservices?" }}
-  after={{ label: "Guiding", content: "List 5 advantages and 5 disadvantages of microservices architecture.\n\nFor each point:\n- State the point clearly in one sentence\n- Provide a brief explanation (2-3 sentences)\n- Give a concrete example\n\nConsider perspectives of: small startups, large enterprises, and teams transitioning from monoliths." }}
+  before={{ label: "مجرد سؤال", content: "ما هي إيجابيات وسلبيات الخدمات المصغرة؟" }}
+  after={{ label: "توجيه", content: "اذكر 5 مزايا و5 عيوب لهندسة الخدمات المصغرة.\n\nلكل نقطة:\n- اذكر النقطة بوضوح في جملة واحدة\n- قدم شرحاً موجزاً (2-3 جمل)\n- أعطِ مثالاً ملموساً\n\nضع في الاعتبار وجهات نظر: الشركات الناشئة الصغيرة، والمؤسسات الكبيرة، والفرق المنتقلة من التطبيقات المتجانسة." }}
 />
 
-### Provide Reasoning Scaffolds
+### قدم سقالات للتفكير
 
-For complex tasks, guide the reasoning process:
+للمهام المعقدة، وجّه عملية التفكير:
 
 <TryIt 
-  title="Reasoning Scaffold Example"
-  description="This prompt guides the AI through a systematic decision-making process."
-  prompt={`I need to choose between PostgreSQL and MongoDB for my e-commerce project.
+  title="مثال على سقالات التفكير"
+  description="هذه المطالبة توجه الذكاء الاصطناعي عبر عملية اتخاذ قرار منهجية."
+  prompt={`أحتاج للاختيار بين PostgreSQL وMongoDB لمشروع التجارة الإلكترونية الخاص بي.
 
-Think through this systematically:
-1. First, list the typical requirements for an e-commerce database
-2. Then, evaluate each database against each requirement
-3. Consider trade-offs specific to my use case
-4. Make a recommendation with clear justification`}
+فكّر في هذا بشكل منهجي:
+1. أولاً، اذكر المتطلبات النموذجية لقاعدة بيانات التجارة الإلكترونية
+2. ثم، قيّم كل قاعدة بيانات مقابل كل متطلب
+3. ضع في الاعتبار المفاضلات الخاصة بحالة استخدامي
+4. قدم توصية مع تبرير واضح`}
 />
 
-## Principle 5: Iterate and Refine
+## المبدأ الخامس: كرر وحسّن
 
-Prompt engineering is an iterative process. Your first prompt is rarely your best.
+هندسة المطالبات عملية تكرارية. مطالبتك الأولى نادراً ما تكون الأفضل.
 
-### The Iteration Cycle
+### دورة التكرار
 
 ```
-1. Write initial prompt
-2. Review output
-3. Identify gaps or issues
-4. Refine prompt
-5. Repeat until satisfied
+1. اكتب المطالبة الأولية
+2. راجع المخرجات
+3. حدد الثغرات أو المشكلات
+4. حسّن المطالبة
+5. كرر حتى الرضا
 ```
 
-### Common Refinements
+### التحسينات الشائعة
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Too verbose</span>
-    <span className="text-muted-foreground">Add "Be concise" or length limits</span>
+    <span className="font-semibold min-w-32">مطوّل جداً</span>
+    <span className="text-muted-foreground">أضف "كن موجزاً" أو حدود للطول</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Too vague</span>
-    <span className="text-muted-foreground">Add specific examples or constraints</span>
+    <span className="font-semibold min-w-32">غامض جداً</span>
+    <span className="text-muted-foreground">أضف أمثلة محددة أو قيود</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Wrong format</span>
-    <span className="text-muted-foreground">Specify exact output structure</span>
+    <span className="font-semibold min-w-32">تنسيق خاطئ</span>
+    <span className="text-muted-foreground">حدد هيكل المخرجات بالضبط</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Missing aspects</span>
-    <span className="text-muted-foreground">Add "Make sure to include..."</span>
+    <span className="font-semibold min-w-32">جوانب مفقودة</span>
+    <span className="text-muted-foreground">أضف "تأكد من تضمين..."</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Wrong tone</span>
-    <span className="text-muted-foreground">Specify audience and style</span>
+    <span className="font-semibold min-w-32">نبرة خاطئة</span>
+    <span className="text-muted-foreground">حدد الجمهور والأسلوب</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-32">Inaccurate</span>
-    <span className="text-muted-foreground">Request citations or step-by-step reasoning</span>
+    <span className="font-semibold min-w-32">غير دقيق</span>
+    <span className="text-muted-foreground">اطلب الاستشهادات أو التفكير خطوة بخطوة</span>
   </div>
 </div>
 
-### Keep a Prompt Journal
+### احتفظ بسجل للمطالبات
 
-Document what works:
+وثّق ما يعمل:
 ```
-Task: Code review
-Version 1: "Review this code" → Too generic
-Version 2: Added specific review criteria → Better
-Version 3: Added example of good review → Excellent
-Final: [Save successful prompt as template]
+المهمة: مراجعة الكود
+الإصدار 1: "راجع هذا الكود" → عام جداً
+الإصدار 2: إضافة معايير مراجعة محددة → أفضل
+الإصدار 3: إضافة مثال على مراجعة جيدة → ممتاز
+النهائي: [احفظ المطالبة الناجحة كقالب]
 ```
 
-## Principle 6: Leverage the Model's Strengths
+## المبدأ السادس: استفد من نقاط قوة النموذج
 
-Work with how models are trained, not against them.
+اعمل مع طريقة تدريب النماذج، وليس ضدها.
 
-### Models Want to Be Helpful
+### النماذج تريد أن تكون مفيدة
 
-Frame requests as things a helpful assistant would naturally do:
+صغ الطلبات كأشياء سيفعلها مساعد مفيد بشكل طبيعي:
 
 <Compare 
-  before={{ label: "Against the grain", content: "I know you can't do this, but try to..." }}
-  after={{ label: "With the grain", content: "Help me understand...\nI'm working on X and need assistance with...\nCould you walk me through..." }}
+  before={{ label: "ضد التيار", content: "أعلم أنك لا تستطيع فعل هذا، لكن حاول..." }}
+  after={{ label: "مع التيار", content: "ساعدني في فهم...\nأعمل على X وأحتاج مساعدة في...\nهل يمكنك إرشادي خلال..." }}
 />
 
-### Models Excel at Patterns
+### النماذج تتفوق في الأنماط
 
-If you need consistent output, show the pattern:
+إذا كنت بحاجة لمخرجات متسقة، أظهر النمط:
 
 <TryIt 
-  title="Pattern Example"
-  description="This prompt shows the AI exactly what format you want for book recommendations."
-  prompt={`Recommend 3 science fiction books. Format each recommendation as:
+  title="مثال على النمط"
+  description="هذه المطالبة تُظهر للذكاء الاصطناعي بالضبط التنسيق الذي تريده لتوصيات الكتب."
+  prompt={`أوصِ بـ 3 كتب خيال علمي. نسّق كل توصية كالتالي:
 
-📚 **[Title]** by [Author]
-*[Genre] | [Publication Year]*
-[2-sentence description]
-Why you'll love it: [1 sentence hook]
+📚 **[العنوان]** بقلم [المؤلف]
+*[النوع] | [سنة النشر]*
+[وصف من جملتين]
+لماذا ستحبه: [جملة جذابة واحدة]
 
 ---`}
 />
 
-### Models Can Role-Play
+### النماذج يمكنها لعب الأدوار
 
-Use personas to access different "modes" of response:
-
-```
-As a devil's advocate, argue against my proposal...
-As a supportive mentor, help me improve...
-As a skeptical investor, question this business plan...
-```
-
-## Principle 7: Control Output Structure
-
-Structured outputs are more useful than free-form text.
-
-### Request Specific Formats
+استخدم الشخصيات للوصول إلى "أوضاع" استجابة مختلفة:
 
 ```
-Return your analysis as:
-
-SUMMARY: [1 sentence]
-
-KEY FINDINGS:
-• [Finding 1]
-• [Finding 2]
-• [Finding 3]
-
-RECOMMENDATION: [1-2 sentences]
-
-CONFIDENCE: [Low/Medium/High] because [reason]
+كمحامي الشيطان، اعترض على اقتراحي...
+كمرشد داعم، ساعدني في التحسين...
+كمستثمر متشكك، استجوب خطة العمل هذه...
 ```
 
-### Use Delimiters
+## المبدأ السابع: تحكم في هيكل المخرجات
 
-Clearly separate sections of your prompt:
+المخرجات المهيكلة أكثر فائدة من النص الحر.
 
-```
-### CONTEXT ###
-[Your context here]
-
-### TASK ###
-[Your task here]
-
-### FORMAT ###
-[Desired format here]
-```
-
-### Request Machine-Readable Output
-
-For programmatic use:
+### اطلب تنسيقات محددة
 
 ```
-Return only valid JSON, no explanation:
+أعد تحليلك كالتالي:
+
+الملخص: [جملة واحدة]
+
+النتائج الرئيسية:
+• [النتيجة 1]
+• [النتيجة 2]
+• [النتيجة 3]
+
+التوصية: [1-2 جملة]
+
+الثقة: [منخفضة/متوسطة/عالية] لأن [السبب]
+```
+
+### استخدم الفواصل
+
+افصل أقسام مطالبتك بوضوح:
+
+```
+### السياق ###
+[سياقك هنا]
+
+### المهمة ###
+[مهمتك هنا]
+
+### التنسيق ###
+[التنسيق المطلوب هنا]
+```
+
+### اطلب مخرجات قابلة للقراءة الآلية
+
+للاستخدام البرمجي:
+
+```
+أعد JSON صالح فقط، بدون شرح:
 {
   "decision": "approve" | "reject" | "review",
   "confidence": 0.0-1.0,
-  "reasons": ["string array"]
+  "reasons": ["مصفوفة نصية"]
 }
 ```
 
-## Principle 8: Verify and Validate
+## المبدأ الثامن: تحقق وتأكد
 
-Never blindly trust model outputs, especially for important tasks.
+لا تثق بشكل أعمى في مخرجات النموذج، خاصة للمهام المهمة.
 
-### Ask for Reasoning
-
-```
-Solve this problem and show your work step by step.
-After solving, verify your answer by [checking method].
-```
-
-### Request Multiple Perspectives
+### اطلب التفكير
 
 ```
-Give me three different approaches to solve this problem.
-For each, explain the trade-offs.
+حل هذه المشكلة وأظهر عملك خطوة بخطوة.
+بعد الحل، تحقق من إجابتك عن طريق [طريقة التحقق].
 ```
 
-### Build in Self-Checking
+### اطلب وجهات نظر متعددة
 
 ```
-After generating the code, review it for:
-- Syntax errors
-- Edge cases
-- Security vulnerabilities
-List any issues found.
+أعطني ثلاث طرق مختلفة لحل هذه المشكلة.
+لكل طريقة، اشرح المفاضلات.
 ```
 
-## Summary: The Principles at a Glance
+### أدرج التحقق الذاتي
+
+```
+بعد إنشاء الكود، راجعه بحثاً عن:
+- أخطاء في الصياغة
+- الحالات الحدية
+- الثغرات الأمنية
+اذكر أي مشكلات وجدتها.
+```
+
+## الملخص: المبادئ في لمحة
 
 <PrinciplesSummary />
 
 <Quiz 
-  question="Which principle suggests you should include all relevant background information in your prompt?"
+  question="أي مبدأ يقترح أن تضمّن جميع المعلومات الخلفية ذات الصلة في مطالبتك؟"
   options={[
-    "Clarity Over Cleverness",
-    "Specificity Yields Quality",
-    "Context Is King",
-    "Iterate and Refine"
+    "الوضوح قبل الذكاء",
+    "الدقة تؤدي إلى الجودة",
+    "السياق هو الملك",
+    "كرر وحسّن"
   ]}
   correctIndex={2}
-  explanation="Context Is King emphasizes that AI models have no memory between sessions and cannot read your mind. Including relevant background, constraints, and goals helps the model understand your needs."
+  explanation="يؤكد مبدأ 'السياق هو الملك' أن نماذج الذكاء الاصطناعي ليس لديها ذاكرة بين الجلسات ولا يمكنها قراءة أفكارك. تضمين الخلفية والقيود والأهداف ذات الصلة يساعد النموذج على فهم احتياجاتك."
 />
 
-## Practice: Fill in the Blanks
+## التمرين: املأ الفراغات
 
-Test your understanding of the core principles by completing this prompt template:
+اختبر فهمك للمبادئ الأساسية من خلال إكمال قالب المطالبة هذا:
 
 <FillInTheBlank
-  title="Apply the Principles"
-  description="Fill in the blanks to create a well-structured prompt — write anything you want!"
+  title="طبّق المبادئ"
+  description="املأ الفراغات لإنشاء مطالبة جيدة الهيكلة — اكتب ما تريد!"
   useAI={true}
   openEnded={true}
-  template={`You are a {{role}} with expertise in {{expertise}}.
+  template={`أنت {{role}} ذو خبرة في {{expertise}}.
 
-Context: I'm working on {{context}}.
+السياق: أعمل على {{context}}.
 
-Task: {{task}}
+المهمة: {{task}}
 
-Constraints:
-- Keep your response under {{length}} words
-- Focus only on {{focus}}
+القيود:
+- اجعل ردك أقل من {{length}} كلمة
+- ركز فقط على {{focus}}
 
-Format: Return your answer as {{format}}.`}
+التنسيق: أعد إجابتك كـ {{format}}.`}
   blanks={[
-    { id: "role", correctAnswers: [], hint: "What professional role should the AI assume?", context: "A job title or professional role" },
-    { id: "expertise", correctAnswers: [], hint: "What specific domain knowledge is needed?", context: "A skill or domain that matches the role" },
-    { id: "context", correctAnswers: [], hint: "What's the project or situation?", context: "A project that someone with this expertise would work on" },
-    { id: "task", correctAnswers: [], hint: "What specific action should the AI take?", context: "An action appropriate for the role and context" },
-    { id: "length", correctAnswers: [], hint: "How long should the response be?", context: "A number (word count)" },
-    { id: "focus", correctAnswers: [], hint: "What aspect should be prioritized?", context: "A quality or aspect relevant to the task" },
-    { id: "format", correctAnswers: [], hint: "How should the output be structured?", context: "An output format type" }
+    { id: "role", correctAnswers: [], hint: "ما الدور المهني الذي يجب أن يتقمصه الذكاء الاصطناعي؟", context: "مسمى وظيفي أو دور مهني" },
+    { id: "expertise", correctAnswers: [], hint: "ما المعرفة التخصصية المطلوبة؟", context: "مهارة أو مجال يتناسب مع الدور" },
+    { id: "context", correctAnswers: [], hint: "ما هو المشروع أو الموقف؟", context: "مشروع يعمل عليه شخص بهذه الخبرة" },
+    { id: "task", correctAnswers: [], hint: "ما الإجراء المحدد الذي يجب أن يتخذه الذكاء الاصطناعي؟", context: "إجراء مناسب للدور والسياق" },
+    { id: "length", correctAnswers: [], hint: "كم يجب أن يكون طول الرد؟", context: "رقم (عدد الكلمات)" },
+    { id: "focus", correctAnswers: [], hint: "ما الجانب الذي يجب إعطاؤه الأولوية؟", context: "جودة أو جانب متعلق بالمهمة" },
+    { id: "format", correctAnswers: [], hint: "كيف يجب هيكلة المخرجات؟", context: "نوع تنسيق المخرجات" }
   ]}
-  explanation="A well-structured prompt includes: a clear role (Principle 1), sufficient context (Principle 3), specific task (Principle 2), constraints (Principle 4), and output format (Principle 5). The AI checks if your choices are internally consistent."
+  explanation="المطالبة جيدة الهيكلة تتضمن: دوراً واضحاً (المبدأ 1)، سياقاً كافياً (المبدأ 3)، مهمة محددة (المبدأ 2)، قيوداً (المبدأ 4)، وتنسيق المخرجات (المبدأ 5). يتحقق الذكاء الاصطناعي مما إذا كانت اختياراتك متسقة داخلياً."
 />
 
 <InteractiveChecklist
-  title="Principles Checklist"
+  title="قائمة التحقق من المبادئ"
   items={[
-    { id: "clarity", label: "Clarity Over Cleverness", description: "Is your prompt explicit and unambiguous?" },
-    { id: "specificity", label: "Specificity Yields Quality", description: "Have you included audience, length, tone, and format?" },
-    { id: "context", label: "Context Is King", description: "Does the prompt include all necessary background information?" },
-    { id: "examples", label: "Examples Beat Explanations", description: "Have you shown what you want, not just described it?" },
-    { id: "constraints", label: "Constraints Focus Output", description: "Are there clear boundaries on scope and format?" },
-    { id: "iteration", label: "Iterate and Refine", description: "Are you prepared to improve based on results?" },
-    { id: "persona", label: "Persona Shapes Perspective", description: "Does the AI know what role to play?" },
-    { id: "verify", label: "Verify and Validate", description: "Have you built in checks for accuracy?" }
+    { id: "clarity", label: "الوضوح قبل الذكاء", description: "هل مطالبتك صريحة وغير غامضة؟" },
+    { id: "specificity", label: "الدقة تؤدي إلى الجودة", description: "هل ضمّنت الجمهور والطول والنبرة والتنسيق؟" },
+    { id: "context", label: "السياق هو الملك", description: "هل تتضمن المطالبة جميع المعلومات الخلفية الضرورية؟" },
+    { id: "examples", label: "الأمثلة تتفوق على الشرح", description: "هل أظهرت ما تريد، وليس فقط وصفته؟" },
+    { id: "constraints", label: "القيود تركز المخرجات", description: "هل هناك حدود واضحة للنطاق والتنسيق؟" },
+    { id: "iteration", label: "كرر وحسّن", description: "هل أنت مستعد للتحسين بناءً على النتائج؟" },
+    { id: "persona", label: "الشخصية تشكل المنظور", description: "هل يعرف الذكاء الاصطناعي الدور الذي يجب أن يلعبه؟" },
+    { id: "verify", label: "تحقق وتأكد", description: "هل أدرجت فحوصات للدقة؟" }
   ]}
 />
 
-These principles form the foundation for everything that follows. In Part II, we'll apply them to specific techniques that dramatically enhance prompt effectiveness.
+تشكل هذه المبادئ الأساس لكل ما يأتي لاحقاً. في الجزء الثاني، سنطبقها على تقنيات محددة تعزز فعالية المطالبات بشكل كبير.
