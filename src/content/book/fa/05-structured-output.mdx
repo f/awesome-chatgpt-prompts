@@ -1,52 +1,52 @@
-Getting consistent, well-formatted output is essential for production applications and efficient workflows. This chapter covers techniques for controlling exactly how AI models format their responses.
+دریافت خروجی منسجم و با قالب‌بندی مناسب برای برنامه‌های تولیدی و جریان‌های کاری کارآمد ضروری است. این فصل تکنیک‌هایی را برای کنترل دقیق نحوه قالب‌بندی پاسخ‌های مدل‌های هوش مصنوعی پوشش می‌دهد.
 
-<Callout type="info" title="From Prose to Data">
-Structured output transforms AI responses from freeform text into actionable, parseable data.
+<Callout type="info" title="از متن آزاد به داده">
+خروجی ساختاریافته، پاسخ‌های هوش مصنوعی را از متن آزاد به داده‌های قابل پردازش و عملیاتی تبدیل می‌کند.
 </Callout>
 
-## Why Structure Matters
+## چرا ساختار اهمیت دارد
 
 <StructuredOutputDemo />
 
-## Basic Formatting Techniques
+## تکنیک‌های پایه قالب‌بندی
 
-### Lists
+### لیست‌ها
 
-Lists are perfect for step-by-step instructions, ranked items, or collections of related points. They're easy to scan and parse. Use **numbered lists** when order matters (steps, rankings) and **bullet points** for unordered collections.
+لیست‌ها برای دستورالعمل‌های گام‌به‌گام، موارد رتبه‌بندی‌شده یا مجموعه‌ای از نکات مرتبط ایده‌آل هستند. آن‌ها به راحتی قابل مرور و پردازش هستند. از **لیست‌های شماره‌دار** زمانی که ترتیب مهم است (مراحل، رتبه‌بندی‌ها) و از **نقاط گلوله‌ای** برای مجموعه‌های بدون ترتیب استفاده کنید.
 
 <TryIt 
   compact
-  title="List Formatting"
+  title="قالب‌بندی لیست"
   prompt={`Provide 5 tips for better sleep.
 
 Format: Numbered list with a brief explanation for each.
 Each tip should be bold, followed by a dash and explanation.`}
 />
 
-<Callout type="tip" title="List Best Practices">
-Specify the exact number of items you want, whether to include explanations, and if items should be bold or have a specific structure.
+<Callout type="tip" title="بهترین شیوه‌های لیست">
+تعداد دقیق موارد مورد نظر، اینکه آیا توضیحات شامل شوند یا نه، و اینکه آیا موارد باید پررنگ باشند یا ساختار خاصی داشته باشند را مشخص کنید.
 </Callout>
 
-### Tables
+### جداول
 
-Tables excel at comparing multiple items across the same dimensions. They're ideal for feature comparisons, data summaries, and any information with consistent attributes. Always define your column headers explicitly.
+جداول در مقایسه چندین مورد در ابعاد یکسان عالی هستند. آن‌ها برای مقایسه ویژگی‌ها، خلاصه داده‌ها و هرگونه اطلاعات با ویژگی‌های منسجم ایده‌آل هستند. همیشه سرستون‌های خود را به صراحت تعریف کنید.
 
 <TryIt 
   compact
-  title="Table Formatting"
+  title="قالب‌بندی جدول"
   prompt={`Compare the top 4 Python web frameworks.
 
 Format as a markdown table with columns:
 | Framework | Best For | Learning Curve | Performance |`}
 />
 
-<Callout type="tip" title="Table Best Practices">
-Specify column names, expected data types (text, numbers, ratings), and how many rows you need. For complex comparisons, limit to 4-6 columns for readability.
+<Callout type="tip" title="بهترین شیوه‌های جدول">
+نام ستون‌ها، انواع داده مورد انتظار (متن، اعداد، امتیازها) و تعداد سطرهای مورد نیاز را مشخص کنید. برای مقایسه‌های پیچیده، برای خوانایی بهتر به ۴ تا ۶ ستون محدود شوید.
 </Callout>
 
-### Headers and Sections
+### سرتیترها و بخش‌ها
 
-Headers create a clear document structure, making long responses scannable and organized. Use them for reports, analyses, or any multi-part response. Hierarchical headers (##, ###) show relationships between sections.
+سرتیترها ساختار واضحی برای سند ایجاد می‌کنند و پاسخ‌های طولانی را قابل مرور و سازمان‌یافته می‌سازند. از آن‌ها برای گزارش‌ها، تحلیل‌ها یا هر پاسخ چندبخشی استفاده کنید. سرتیترهای سلسله‌مراتبی (##، ###) روابط بین بخش‌ها را نشان می‌دهند.
 
 ```
 Analyze this business proposal.
@@ -59,23 +59,23 @@ Structure your response with these sections:
 ## Risk Assessment
 ```
 
-<Callout type="tip" title="Section Best Practices">
-List your sections in the order you want them. For consistency, specify what each section should contain (e.g., "Executive Summary: 2-3 sentences only").
+<Callout type="tip" title="بهترین شیوه‌های بخش‌بندی">
+بخش‌های خود را به ترتیب مورد نظر لیست کنید. برای یکپارچگی، مشخص کنید هر بخش باید شامل چه چیزی باشد (مثلاً «خلاصه اجرایی: فقط ۲-۳ جمله»).
 </Callout>
 
-### Emphasis with Uppercase Directives
+### تأکید با دستورات حروف بزرگ
 
-Uppercase words act as strong signals to the model, emphasizing critical constraints or requirements. Use them sparingly for maximum impact—overuse dilutes their effectiveness.
+کلمات با حروف بزرگ به عنوان سیگنال‌های قوی برای مدل عمل می‌کنند و محدودیت‌ها یا الزامات مهم را برجسته می‌سازند. برای حداکثر تأثیر از آن‌ها به صورت محدود استفاده کنید—استفاده بیش از حد تأثیر آن‌ها را کاهش می‌دهد.
 
-**Common Uppercase Directives:**
+**دستورات رایج حروف بزرگ:**
 
 <InfoGrid items={[
-  { label: "NEVER", description: "Absolute prohibition: \"NEVER include personal opinions\"", color: "red" },
-  { label: "ALWAYS", description: "Mandatory requirement: \"ALWAYS cite sources\"", color: "green" },
-  { label: "IMPORTANT", description: "Critical instruction: \"IMPORTANT: Keep responses under 100 words\"", color: "amber" },
-  { label: "DO NOT", description: "Strong prohibition: \"DO NOT make up statistics\"", color: "red" },
-  { label: "MUST", description: "Required action: \"Output MUST be valid JSON\"", color: "blue" },
-  { label: "ONLY", description: "Restriction: \"Return ONLY the code, no explanations\"", color: "purple" },
+  { label: "NEVER", description: "ممنوعیت مطلق: «NEVER include personal opinions»", color: "red" },
+  { label: "ALWAYS", description: "الزام ضروری: «ALWAYS cite sources»", color: "green" },
+  { label: "IMPORTANT", description: "دستور حیاتی: «IMPORTANT: Keep responses under 100 words»", color: "amber" },
+  { label: "DO NOT", description: "ممنوعیت قوی: «DO NOT make up statistics»", color: "red" },
+  { label: "MUST", description: "عمل الزامی: «Output MUST be valid JSON»", color: "blue" },
+  { label: "ONLY", description: "محدودیت: «Return ONLY the code, no explanations»", color: "purple" },
 ]} />
 
 ```
@@ -87,21 +87,21 @@ ALWAYS maintain the original tone and perspective.
 DO NOT include your own opinions or analysis.
 ```
 
-<Callout type="warning" title="Use Sparingly">
-If everything is uppercase or marked as critical, nothing stands out. Reserve these directives for genuinely important constraints.
+<Callout type="warning" title="با احتیاط استفاده کنید">
+اگر همه چیز با حروف بزرگ باشد یا به عنوان حیاتی علامت‌گذاری شود، هیچ چیز برجسته نمی‌شود. این دستورات را برای محدودیت‌های واقعاً مهم ذخیره کنید.
 </Callout>
 
-## JSON Output
+## خروجی JSON
 
-JSON (JavaScript Object Notation) is the most popular format for structured AI output. It's machine-readable, widely supported by programming languages, and perfect for APIs, databases, and automation workflows. The key to reliable JSON is providing a clear schema.
+JSON (نشانه‌گذاری شیء جاوا اسکریپت) محبوب‌ترین قالب برای خروجی ساختاریافته هوش مصنوعی است. این قالب توسط ماشین قابل خواندن است، به طور گسترده توسط زبان‌های برنامه‌نویسی پشتیبانی می‌شود و برای APIها، پایگاه‌های داده و جریان‌های کاری خودکار ایده‌آل است. کلید JSON قابل اعتماد، ارائه یک طرح (schema) واضح است.
 
-### Basic JSON Request
+### درخواست پایه JSON
 
-Start with a template showing the exact structure you want. Include field names, data types, and example values. This acts as a contract the model will follow.
+با یک الگو که ساختار دقیق مورد نظر را نشان می‌دهد شروع کنید. نام فیلدها، انواع داده و مقادیر نمونه را شامل کنید. این به عنوان یک قرارداد عمل می‌کند که مدل از آن پیروی خواهد کرد.
 
 <TryIt 
-  title="JSON Extraction"
-  description="Extract structured data from unstructured text."
+  title="استخراج JSON"
+  description="استخراج داده‌های ساختاریافته از متن غیرساختاریافته."
   prompt={`Extract information from this text and return as JSON:
 
 {
@@ -115,9 +115,9 @@ Start with a template showing the exact structure you want. Include field names,
 Text: "Apple Inc., founded in 1976, is headquartered in Cupertino, California. The technology giant employs approximately 164,000 people worldwide."`}
 />
 
-### Complex JSON Structures
+### ساختارهای پیچیده JSON
 
-For nested data, use hierarchical JSON with objects inside objects, arrays of objects, and mixed types. Define each level clearly and use TypeScript-style annotations (`"positive" | "negative"`) to constrain values.
+برای داده‌های تودرتو، از JSON سلسله‌مراتبی با اشیاء درون اشیاء، آرایه‌هایی از اشیاء و انواع ترکیبی استفاده کنید. هر سطح را به وضوح تعریف کنید و از حاشیه‌نویسی‌های سبک TypeScript (`"positive" | "negative"`) برای محدود کردن مقادیر استفاده کنید.
 
 ```
 Analyze this product review and return JSON:
@@ -147,11 +147,11 @@ Return ONLY valid JSON, no additional text.
 Review: "[review text]"
 ```
 
-### Ensuring Valid JSON
+### اطمینان از JSON معتبر
 
-Models sometimes add explanatory text or markdown formatting around JSON. Prevent this with explicit instructions about output format. You can request raw JSON or JSON inside code blocks—choose based on your parsing needs.
+مدل‌ها گاهی متن توضیحی یا قالب‌بندی Markdown اطراف JSON اضافه می‌کنند. با دستورالعمل‌های صریح درباره قالب خروجی از این جلوگیری کنید. می‌توانید JSON خام یا JSON داخل بلوک‌های کد درخواست کنید—بر اساس نیازهای پردازش خود انتخاب کنید.
 
-Add explicit instructions:
+دستورالعمل‌های صریح اضافه کنید:
 
 ```
 IMPORTANT:
@@ -161,7 +161,7 @@ IMPORTANT:
 - Validate that the output is parseable JSON
 ```
 
-Or request code blocks by asking the model to wrap its output:
+یا با درخواست از مدل برای قرار دادن خروجی در بلوک کد:
 
 ````
 Return the result as a JSON code block:
@@ -170,13 +170,13 @@ Return the result as a JSON code block:
 ```
 ````
 
-## YAML Output
+## خروجی YAML
 
-YAML is more human-readable than JSON, using indentation instead of brackets. It's the standard for configuration files (Docker, Kubernetes, GitHub Actions) and works well when the output will be read by humans or used in DevOps contexts. YAML is sensitive to indentation, so be specific about formatting requirements.
+YAML نسبت به JSON خواناتر برای انسان است و از تورفتگی به جای براکت استفاده می‌کند. این قالب استاندارد فایل‌های پیکربندی (Docker، Kubernetes، GitHub Actions) است و زمانی که خروجی توسط انسان خوانده می‌شود یا در زمینه‌های DevOps استفاده می‌شود، به خوبی کار می‌کند. YAML به تورفتگی حساس است، بنابراین در مورد الزامات قالب‌بندی دقیق باشید.
 
 <TryIt 
   compact
-  title="YAML Generation"
+  title="تولید YAML"
   prompt={`Generate a GitHub Actions workflow for a Node.js project.
 
 Return as valid YAML:
@@ -186,9 +186,9 @@ Return as valid YAML:
 - Run on push to main and pull requests`}
 />
 
-## XML Output
+## خروجی XML
 
-XML is still required for many enterprise systems, SOAP APIs, and legacy integrations. It's more verbose than JSON but offers features like attributes, namespaces, and CDATA sections for complex data. Specify element names, nesting structure, and where to use attributes vs. child elements.
+XML هنوز برای بسیاری از سیستم‌های سازمانی، APIهای SOAP و یکپارچه‌سازی‌های قدیمی مورد نیاز است. این قالب نسبت به JSON پرحجم‌تر است اما ویژگی‌هایی مانند خصوصیات، فضاهای نام و بخش‌های CDATA را برای داده‌های پیچیده ارائه می‌دهد. نام عناصر، ساختار تودرتو و جایی که از خصوصیات در مقابل عناصر فرزند استفاده کنید را مشخص کنید.
 
 ```
 Convert this data to XML format:
@@ -202,13 +202,13 @@ Requirements:
 Data: [book data]
 ```
 
-## Custom Formats
+## قالب‌های سفارشی
 
-Sometimes standard formats don't fit your needs. You can define any custom format by providing a clear template. Custom formats work well for reports, logs, or domain-specific outputs that will be read by humans.
+گاهی قالب‌های استاندارد با نیازهای شما مطابقت ندارند. می‌توانید هر قالب سفارشی را با ارائه یک الگوی واضح تعریف کنید. قالب‌های سفارشی برای گزارش‌ها، لاگ‌ها یا خروجی‌های خاص دامنه که توسط انسان خوانده می‌شوند به خوبی کار می‌کنند.
 
-### Structured Analysis Format
+### قالب تحلیل ساختاریافته
 
-Use delimiters (===, ---, [SECTION]) to create scannable documents with clear boundaries between sections. This format is great for code reviews, audits, and analyses.
+از جداکننده‌ها (===، ---، [SECTION]) برای ایجاد اسناد قابل مرور با مرزهای واضح بین بخش‌ها استفاده کنید. این قالب برای بررسی کد، ممیزی‌ها و تحلیل‌ها عالی است.
 
 ```
 Analyze this code using this exact format:
@@ -235,9 +235,9 @@ Test Coverage: [estimated %]
 === END ANALYSIS ===
 ```
 
-### Fill-in-the-Blank Format
+### قالب جای‌خالی پر کن
 
-Templates with blanks (___) guide the model to fill in specific fields while maintaining exact formatting. This approach is excellent for forms, briefs, and standardized documents where consistency matters.
+الگوهای با جای خالی (___) مدل را راهنمایی می‌کنند تا فیلدهای خاصی را پر کند و در عین حال قالب‌بندی دقیق را حفظ کند. این روش برای فرم‌ها، خلاصه‌ها و اسناد استاندارد که یکپارچگی در آن‌ها مهم است عالی است.
 
 ```
 Complete this template for the given product:
@@ -257,13 +257,13 @@ Differentiator: _______________
 Product: [product description]
 ```
 
-## Typed Responses
+## پاسخ‌های نوع‌دار
 
-Typed responses define categories or entity types that the model should recognize and label. This technique is essential for Named Entity Recognition (NER), classification tasks, and any extraction where you need to categorize information consistently. Define your types clearly with examples.
+پاسخ‌های نوع‌دار دسته‌ها یا انواع موجودیت را تعریف می‌کنند که مدل باید آن‌ها را شناسایی و برچسب‌گذاری کند. این تکنیک برای تشخیص موجودیت نام‌دار (NER)، وظایف طبقه‌بندی و هر استخراجی که نیاز به دسته‌بندی منسجم اطلاعات دارید ضروری است. انواع خود را به وضوح با مثال‌ها تعریف کنید.
 
 <TryIt 
   compact
-  title="Entity Extraction"
+  title="استخراج موجودیت"
   prompt={`Extract entities from this text.
 
 Entity Types:
@@ -278,9 +278,9 @@ Format each as: [TYPE]: [value]
 Text: "Tim Cook announced that Apple will invest $1 billion in a new Austin facility by December 2024."`}
 />
 
-## Multi-Part Structured Responses
+## پاسخ‌های ساختاریافته چندبخشی
 
-When you need comprehensive output covering multiple aspects, define distinct parts with clear boundaries. Specify exactly what goes in each part—format, length, and content type. This prevents the model from blending sections or omitting parts.
+وقتی به خروجی جامعی نیاز دارید که جنبه‌های متعددی را پوشش دهد، بخش‌های مجزا با مرزهای واضح تعریف کنید. دقیقاً مشخص کنید چه چیزی در هر بخش قرار می‌گیرد—قالب، طول و نوع محتوا. این از ترکیب بخش‌ها توسط مدل یا حذف بخش‌ها جلوگیری می‌کند.
 
 ```
 Research this topic and provide:
@@ -303,13 +303,13 @@ Research this topic and provide:
 [3 suggested resources with brief descriptions]
 ```
 
-## Conditional Formatting
+## قالب‌بندی شرطی
 
-Conditional formatting lets you define different output formats based on the input's characteristics. This is powerful for classification, triage, and routing systems where the response format should vary based on what the model detects. Use clear if/then logic with explicit output templates for each case.
+قالب‌بندی شرطی به شما امکان می‌دهد قالب‌های خروجی مختلفی را بر اساس ویژگی‌های ورودی تعریف کنید. این برای سیستم‌های طبقه‌بندی، اولویت‌بندی و مسیریابی که قالب پاسخ باید بر اساس آنچه مدل تشخیص می‌دهد متفاوت باشد قدرتمند است. از منطق if/then واضح با الگوهای خروجی صریح برای هر مورد استفاده کنید.
 
 <TryIt 
   compact
-  title="Ticket Classification"
+  title="طبقه‌بندی تیکت"
   prompt={`Classify this support ticket.
 
 If URGENT (system down, security issue, data loss):
@@ -327,9 +327,9 @@ If LOW (questions, feature requests):
 Ticket: "I can't login to my account. I've tried resetting my password twice but still getting an error. This is blocking my entire team from accessing the dashboard."`}
 />
 
-## Arrays and Lists in JSON
+## آرایه‌ها و لیست‌ها در JSON
 
-Extracting multiple items into arrays requires careful schema definition. Specify the array structure, what each item should contain, and how to handle edge cases (empty arrays, single items). Including a count field helps verify completeness.
+استخراج چندین مورد در آرایه‌ها نیاز به تعریف دقیق طرح دارد. ساختار آرایه، آنچه هر مورد باید شامل شود و نحوه مدیریت موارد خاص (آرایه‌های خالی، موارد تکی) را مشخص کنید. شامل کردن یک فیلد تعداد به تأیید کامل بودن کمک می‌کند.
 
 ```
 Extract all action items from this meeting transcript.
@@ -351,9 +351,9 @@ Return as JSON array:
 Transcript: "[meeting transcript]"
 ```
 
-## Validation Instructions
+## دستورالعمل‌های اعتبارسنجی
 
-Self-validation prompts the model to check its own output before responding. This catches common issues like missing sections, placeholder text, or constraint violations. The model will iterate internally to fix problems, improving output quality without additional API calls.
+اعتبارسنجی خودکار از مدل می‌خواهد خروجی خود را قبل از پاسخ‌دهی بررسی کند. این مشکلات رایج مانند بخش‌های گم‌شده، متن جای‌نگهدار یا نقض محدودیت‌ها را تشخیص می‌دهد. مدل به صورت داخلی برای رفع مشکلات تکرار می‌کند و کیفیت خروجی را بدون فراخوانی API اضافی بهبود می‌بخشد.
 
 ```
 Generate the report, then:
@@ -368,9 +368,9 @@ VALIDATION CHECKLIST:
 If any check fails, fix before responding.
 ```
 
-## Handling Optional Fields
+## مدیریت فیلدهای اختیاری
 
-Real-world data often has missing values. Explicitly instruct the model on how to handle optional fields—using `null` is cleaner than empty strings and easier to process programmatically. Also prevent "hallucination" of missing data by emphasizing that the model should never invent information.
+داده‌های دنیای واقعی اغلب مقادیر گم‌شده دارند. به صراحت به مدل آموزش دهید که چگونه فیلدهای اختیاری را مدیریت کند—استفاده از `null` تمیزتر از رشته‌های خالی است و پردازش برنامه‌نویسی را آسان‌تر می‌کند. همچنین با تأکید بر اینکه مدل هرگز نباید اطلاعات را جعل کند، از «توهم» داده‌های گم‌شده جلوگیری کنید.
 
 ```
 Extract contact information. Use null for missing fields.
@@ -390,22 +390,22 @@ IMPORTANT:
 - Phone numbers in E.164 format if possible
 ```
 
-## Summary
+## خلاصه
 
-<Callout type="tip" title="Key Techniques">
-Be explicit about format, use examples, specify types, handle edge cases with null values, and ask the model to validate its own output.
+<Callout type="tip" title="تکنیک‌های کلیدی">
+درباره قالب صریح باشید، از مثال‌ها استفاده کنید، انواع را مشخص کنید، موارد خاص را با مقادیر null مدیریت کنید و از مدل بخواهید خروجی خود را اعتبارسنجی کند.
 </Callout>
 
 <Quiz 
-  question="What's the main advantage of structured output over unstructured text?"
+  question="مزیت اصلی خروجی ساختاریافته نسبت به متن غیرساختاریافته چیست؟"
   options={[
-    "It uses fewer tokens",
-    "It's easier for the AI to generate",
-    "It can be parsed programmatically and validated",
-    "It always produces correct information"
+    "توکن‌های کمتری استفاده می‌کند",
+    "تولید آن برای هوش مصنوعی آسان‌تر است",
+    "می‌توان آن را به صورت برنامه‌نویسی پردازش و اعتبارسنجی کرد",
+    "همیشه اطلاعات صحیح تولید می‌کند"
   ]}
   correctIndex={2}
-  explanation="Structured outputs like JSON can be parsed by code, compared across queries, integrated into workflows, and validated for completeness—things that are difficult or impossible with freeform text."
+  explanation="خروجی‌های ساختاریافته مانند JSON می‌توانند توسط کد پردازش شوند، در بین پرس‌وجوها مقایسه شوند، در جریان‌های کاری یکپارچه شوند و برای کامل بودن اعتبارسنجی شوند—چیزهایی که با متن آزاد دشوار یا غیرممکن هستند."
 />
 
-Structured outputs are essential for building reliable AI-powered applications. In the next chapter, we'll explore chain-of-thought prompting for complex reasoning tasks.
+خروجی‌های ساختاریافته برای ساخت برنامه‌های قابل اعتماد مبتنی بر هوش مصنوعی ضروری هستند. در فصل بعدی، پرامپتینگ زنجیره تفکر را برای وظایف استدلال پیچیده بررسی خواهیم کرد.

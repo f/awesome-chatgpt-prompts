@@ -1,242 +1,242 @@
-Role-based prompting is one of the most powerful and widely-used techniques in prompt engineering. By assigning a specific role or persona to the AI, you can dramatically influence the quality, style, and relevance of responses.
+הנחיה מבוססת תפקידים היא אחת הטכניקות החזקות והנפוצות ביותר בהנדסת הנחיות. על ידי הקצאת תפקיד או פרסונה ספציפיים לבינה המלאכותית, ניתן להשפיע באופן משמעותי על האיכות, הסגנון והרלוונטיות של התגובות.
 
-<Callout type="tip" title="The Power of Personas">
-Think of roles as filters for AI's vast knowledge. The right role focuses responses like a lens focuses light.
+<Callout type="tip" title="עוצמת הפרסונות">
+חשבו על תפקידים כמסננים לידע העצום של הבינה המלאכותית. התפקיד הנכון ממקד תגובות כמו עדשה שממקדת אור.
 </Callout>
 
-## Why Roles Work
+## למה תפקידים עובדים
 
-When you assign a role, you're essentially telling the model: "Filter your vast knowledge through this specific lens." The model adjusts its:
+כאשר אתם מקצים תפקיד, אתם למעשה אומרים למודל: "סנן את הידע העצום שלך דרך העדשה הספציפית הזו." המודל מתאים את:
 
-- **Vocabulary**: Using terminology appropriate to the role
-- **Perspective**: Considering problems from that viewpoint
-- **Expertise depth**: Providing role-appropriate detail levels
-- **Communication style**: Matching how that role would communicate
+- **אוצר המילים**: שימוש בטרמינולוגיה המתאימה לתפקיד
+- **נקודת המבט**: התייחסות לבעיות מזווית הראייה הזו
+- **עומק המומחיות**: מתן רמות פירוט מתאימות לתפקיד
+- **סגנון התקשורת**: התאמה לאופן שבו אותו תפקיד היה מתקשר
 
-### The Technical Explanation
+### ההסבר הטכני
 
-LLMs work by predicting the most likely next token based on the context they're given. When you specify a role, you're fundamentally changing what "likely" means.
+מודלי LLM עובדים על ידי חיזוי הטוקן הסביר ביותר בהתבסס על ההקשר שניתן להם. כאשר אתם מציינים תפקיד, אתם משנים באופן מהותי את המשמעות של "סביר".
 
-**Activating Relevant Knowledge**: The role primes specific regions of the model's learned associations. Saying "You are a doctor" activates medical terminology, diagnostic reasoning patterns, and clinical communication styles from the training data.
+**הפעלת ידע רלוונטי**: התפקיד מכין אזורים ספציפיים של האסוציאציות הנלמדות של המודל. אמירה כמו "אתה רופא" מפעילה טרמינולוגיה רפואית, דפוסי חשיבה אבחנתיים וסגנונות תקשורת קליניים מנתוני האימון.
 
-**Statistical Conditioning**: LLMs learned from millions of documents written by real experts. When you assign a role, the model conditions its probability distributions to match patterns it saw from that type of author.
+**התניה סטטיסטית**: מודלי LLM למדו ממיליוני מסמכים שנכתבו על ידי מומחים אמיתיים. כאשר אתם מקצים תפקיד, המודל מתנה את התפלגויות ההסתברות שלו כדי להתאים לדפוסים שראה מסוג המחבר הזה.
 
-**Reducing Ambiguity**: Without a role, the model averages across all possible responders. With a role, it narrows to a specific subset, making responses more focused and consistent.
+**הפחתת עמימות**: ללא תפקיד, המודל מחשב ממוצע על פני כל המגיבים האפשריים. עם תפקיד, הוא מצמצם לתת-קבוצה ספציפית, מה שהופך את התגובות לממוקדות ועקביות יותר.
 
-**Context Anchoring**: The role creates a persistent context anchor throughout the conversation. Every subsequent response is influenced by this initial framing.
+**עיגון הקשר**: התפקיד יוצר עוגן הקשר מתמשך לאורך כל השיחה. כל תגובה עוקבת מושפעת ממסגור ראשוני זה.
 
-Think of it this way: if you ask "What should I do about this cough?" the model could respond as a doctor, a friend, a pharmacist, or a worried parent. Each would give different advice. By specifying the role upfront, you're telling the model which "voice" to use from its training data.
+חשבו על זה כך: אם תשאלו "מה עלי לעשות לגבי השיעול הזה?" המודל יכול להגיב כרופא, כחבר, כרוקח או כהורה מודאג. כל אחד ייתן עצה שונה. על ידי ציון התפקיד מראש, אתם אומרים למודל באיזה "קול" להשתמש מנתוני האימון שלו.
 
-<Callout type="info" title="Why This Matters">
-The model isn't pretending or role-playing in a theatrical sense. It's statistically biasing its outputs toward patterns it learned from real experts, professionals, and specialists during training. A "doctor" role activates medical knowledge pathways; a "poet" role activates literary patterns.
+<Callout type="info" title="למה זה חשוב">
+המודל לא מעמיד פנים או משחק תפקיד במובן התיאטרלי. הוא מטה סטטיסטית את הפלטים שלו לעבר דפוסים שלמד ממומחים, אנשי מקצוע ומתמחים אמיתיים במהלך האימון. תפקיד "רופא" מפעיל מסלולי ידע רפואי; תפקיד "משורר" מפעיל דפוסים ספרותיים.
 </Callout>
 
-## Basic Role Patterns
+## דפוסי תפקיד בסיסיים
 
-These foundational patterns work across most use cases. Start with these templates and customize them for your needs.
+דפוסי יסוד אלה עובדים ברוב מקרי השימוש. התחילו עם תבניות אלה והתאימו אותן לצרכים שלכם.
 
-### The Expert Pattern
+### דפוס המומחה
 
-The most versatile pattern. Specify the field of expertise and years of experience to get authoritative, in-depth responses. Works well for technical questions, analysis, and professional advice.
+הדפוס הרב-תכליתי ביותר. ציינו את תחום המומחיות ושנות הניסיון כדי לקבל תגובות סמכותיות ומעמיקות. עובד היטב לשאלות טכניות, ניתוח וייעוץ מקצועי.
 
 <TryIt compact prompt={`You are an expert \${field} with \${years:10} years of experience in \${specialty}.
 
 \${task}`} />
 
-### The Professional Pattern
+### דפוס איש המקצוע
 
-Ground the role in a real-world context by specifying a job title and organization type. This adds institutional knowledge and professional norms to the response.
+עגנו את התפקיד בהקשר מהעולם האמיתי על ידי ציון תפקיד וסוג ארגון. זה מוסיף ידע מוסדי ונורמות מקצועיות לתגובה.
 
 <TryIt compact prompt={`You are a \${profession} working at \${organization}.
 
 \${task}`} />
 
-### The Teacher Pattern
+### דפוס המורה
 
-Perfect for learning and explanations. Specifying the audience level ensures the response matches the learner's background, from beginners to advanced practitioners.
+מושלם ללמידה והסברים. ציון רמת הקהל מבטיח שהתגובה תתאים לרקע של הלומד, ממתחילים ועד למתרגלים מתקדמים.
 
 <TryIt compact prompt={`You are a \${subject} teacher who specializes in explaining complex concepts to \${audience}.
 
 \${task}`} />
 
-## Advanced Role Constructions
+## בניית תפקידים מתקדמת
 
-### Compound Roles
+### תפקידים מורכבים
 
-Combine multiple identities to get responses that blend different perspectives. This pediatrician-parent combination produces advice that's both medically sound and practically tested.
+שלבו זהויות מרובות כדי לקבל תגובות שמשלבות נקודות מבט שונות. השילוב הזה של רופא ילדים והורה מייצר עצות שהן גם נכונות רפואית וגם נבדקו מעשית.
 
 <TryIt compact prompt={`You are a pediatrician who is also a parent of three children. You understand both the medical and practical aspects of childhood health issues. You communicate with empathy and without medical jargon.
 
 \${question}`} />
 
-### Situational Roles
+### תפקידים מצביים
 
-Place the role in a specific scenario to shape both content and tone. Here, the code review context makes the AI constructive and educational rather than just critical.
+מקמו את התפקיד בתרחיש ספציפי כדי לעצב הן תוכן והן טון. כאן, הקשר של סקירת קוד הופך את הבינה המלאכותית לבונה וחינוכית במקום רק ביקורתית.
 
 <TryIt compact prompt={`You are a senior developer conducting a code review for a junior team member. You want to be helpful and educational, not critical. You explain not just what to fix, but why.
 
 Code to review:
 \${code}`} />
 
-### Perspective Roles
+### תפקידי פרספקטיבה
 
-Get feedback from a specific stakeholder's point of view. A VC perspective evaluates viability and scalability differently than a customer or engineer would.
+קבלו משוב מנקודת המבט של בעל עניין ספציפי. פרספקטיבה של משקיע הון סיכון מעריכה כדאיות וסקלביליות באופן שונה ממה שלקוח או מהנדס היו עושים.
 
 <TryIt compact prompt={`You are a venture capitalist evaluating startup pitches. You've seen thousands of pitches and can quickly identify strengths, weaknesses, and red flags. Be direct but constructive.
 
 Pitch: \${pitch}`} />
 
-## Role Categories and Examples
+## קטגוריות תפקידים ודוגמאות
 
-Different domains benefit from different types of roles. Here are proven examples organized by category that you can adapt for your tasks.
+תחומים שונים נהנים מסוגי תפקידים שונים. הנה דוגמאות מוכחות מאורגנות לפי קטגוריה שתוכלו להתאים למשימות שלכם.
 
-### Technical Roles
+### תפקידים טכניים
 
-**Software Architect**: Best for system design decisions, technology choices, and architectural trade-offs. The focus on maintainability steers responses toward practical, long-term solutions.
+**ארכיטקט תוכנה**: הטוב ביותר להחלטות עיצוב מערכת, בחירות טכנולוגיה ופשרות ארכיטקטוניות. ההתמקדות בתחזוקתיות מכוונת תגובות לפתרונות מעשיים לטווח ארוך.
 
 <TryIt compact prompt={`You are a software architect specializing in scalable distributed systems. You prioritize maintainability, performance, and team productivity in your recommendations.
 
 \${question}`} />
 
-**Security Specialist**: The attacker mindset is key here. This role produces threat-focused analysis that identifies vulnerabilities a defensive-only perspective might miss.
+**מומחה אבטחה**: חשיבה כתוקף היא המפתח כאן. תפקיד זה מייצר ניתוח ממוקד איומים שמזהה פגיעויות שנקודת מבט הגנתית בלבד עלולה לפספס.
 
 <TryIt compact prompt={`You are a cybersecurity specialist who conducts penetration testing. You think like an attacker to identify vulnerabilities.
 
 Analyze: \${target}`} />
 
-**DevOps Engineer**: Ideal for deployment, automation, and infrastructure questions. The emphasis on reliability ensures production-ready recommendations.
+**מהנדס DevOps**: אידיאלי לשאלות פריסה, אוטומציה ותשתיות. הדגש על אמינות מבטיח המלצות מוכנות לייצור.
 
 <TryIt compact prompt={`You are a DevOps engineer focused on CI/CD pipelines and infrastructure as code. You value automation and reliability.
 
 \${question}`} />
 
-### Creative Roles
+### תפקידים יצירתיים
 
-**Copywriter**: The "award-winning" qualifier and conversion focus produce punchy, persuasive copy rather than generic marketing text.
+**קופירייטר**: התואר "זוכה פרסים" והמיקוד בהמרות מייצרים טקסט קליט ומשכנע במקום טקסט שיווקי גנרי.
 
 <TryIt compact prompt={`You are an award-winning copywriter known for creating compelling headlines and persuasive content that drives conversions.
 
 Write copy for: \${product}`} />
 
-**Screenwriter**: Activates knowledge of dramatic structure, pacing, and dialogue conventions. Great for any narrative writing that needs tension and character voice.
+**תסריטאי**: מפעיל ידע במבנה דרמטי, קצב ומוסכמות דיאלוג. מעולה לכל כתיבה נרטיבית שדורשת מתח וקול דמות.
 
 <TryIt compact prompt={`You are a screenwriter who has written for popular TV dramas. You understand story structure, dialogue, and character development.
 
 Write: \${scene}`} />
 
-**UX Writer**: A specialized role for interface text. The focus on brevity and user guidance produces concise, action-oriented copy.
+**כותב UX**: תפקיד מתמחה לטקסט ממשק. ההתמקדות בקיצור ובהנחיית משתמש מייצרת טקסט תמציתי ומכוון פעולה.
 
 <TryIt compact prompt={`You are a UX writer specializing in microcopy. You make interfaces feel human and guide users with minimal text.
 
 Write microcopy for: \${element}`} />
 
-### Analytical Roles
+### תפקידים אנליטיים
 
-**Business Analyst**: Bridges the gap between technical and non-technical stakeholders. Useful for requirement gathering, spec writing, and identifying gaps in project plans.
+**אנליסט עסקי**: מגשר בין בעלי עניין טכניים ולא-טכניים. שימושי לאיסוף דרישות, כתיבת מפרטים וזיהוי פערים בתוכניות פרויקט.
 
 <TryIt compact prompt={`You are a business analyst who translates between technical teams and stakeholders. You clarify requirements and identify edge cases.
 
 Analyze: \${requirement}`} />
 
-**Research Scientist**: The emphasis on evidence and uncertainty acknowledgment produces balanced, well-sourced responses that distinguish facts from speculation.
+**מדען מחקר**: הדגש על ראיות והכרה באי-ודאות מייצר תגובות מאוזנות ומבוססות מקורות שמבדילות בין עובדות להשערות.
 
 <TryIt compact prompt={`You are a research scientist who values empirical evidence and acknowledges uncertainty. You distinguish between established facts and hypotheses.
 
 Research question: \${question}`} />
 
-**Financial Analyst**: Combines quantitative analysis with risk assessment. The dual focus on returns and risk produces more balanced investment perspectives.
+**אנליסט פיננסי**: משלב ניתוח כמותי עם הערכת סיכונים. המיקוד הכפול בתשואות ובסיכון מייצר פרספקטיבות השקעה מאוזנות יותר.
 
 <TryIt compact prompt={`You are a financial analyst who evaluates investments using fundamental and technical analysis. You consider risk alongside potential returns.
 
 Evaluate: \${investment}`} />
 
-### Educational Roles
+### תפקידים חינוכיים
 
-**Socratic Tutor**: Instead of giving answers, this role asks guiding questions. Excellent for deeper learning and helping students develop critical thinking skills.
+**מדריך סוקרטי**: במקום לתת תשובות, תפקיד זה שואל שאלות מנחות. מצוין ללמידה מעמיקה ולעזרה לתלמידים לפתח מיומנויות חשיבה ביקורתית.
 
 <TryIt compact prompt={`You are a tutor using the Socratic method. Instead of giving answers directly, you guide students to discover answers through thoughtful questions.
 
 Topic: \${topic}`} />
 
-**Instructional Designer**: Structures learning for maximum retention. Use this role when you need to break down complex topics into teachable chunks with clear progression.
+**מעצב הוראה**: מבנה למידה לשימור מרבי. השתמשו בתפקיד זה כאשר אתם צריכים לפרק נושאים מורכבים לחלקים ניתנים ללימוד עם התקדמות ברורה.
 
 <TryIt compact prompt={`You are an instructional designer who creates engaging learning experiences. You break complex topics into digestible modules with clear learning objectives.
 
 Create curriculum for: \${topic}`} />
 
-## The Role Stack Technique
+## טכניקת ערימת התפקידים
 
-For complex tasks, combine multiple role aspects into a single, layered identity. This technique stacks expertise, audience awareness, and style guidelines to create highly specialized responses.
+למשימות מורכבות, שלבו היבטי תפקיד מרובים לזהות אחת ורב-שכבתית. טכניקה זו עורמת מומחיות, מודעות לקהל והנחיות סגנון כדי ליצור תגובות מתמחות במיוחד.
 
-This example layers three elements: domain expertise (API documentation), audience (junior developers), and style guide (Google's conventions). Each layer constrains the output further.
+דוגמה זו מרבדת שלושה אלמנטים: מומחיות תחום (תיעוד API), קהל (מפתחים חדשים) ומדריך סגנון (מוסכמות Google). כל שכבה מצמצמת עוד יותר את הפלט.
 
 <TryIt compact prompt={`You are a technical writer with expertise in API documentation. You write for developers who are new to REST APIs. Follow the Google developer documentation style guide: use second person ("you"), active voice, present tense, and keep sentences under 26 words.
 
 Document: \${apiEndpoint}`} />
 
-## Roles for Different Tasks
+## תפקידים למשימות שונות
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Code review</span>
-    <span className="text-muted-foreground">Senior developer + mentor</span>
+    <span className="font-semibold min-w-40">סקירת קוד</span>
+    <span className="text-muted-foreground">מפתח בכיר + מנטור</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Writing feedback</span>
-    <span className="text-muted-foreground">Editor + target audience member</span>
+    <span className="font-semibold min-w-40">משוב על כתיבה</span>
+    <span className="text-muted-foreground">עורך + חבר בקהל היעד</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Business strategy</span>
-    <span className="text-muted-foreground">Consultant + industry expert</span>
+    <span className="font-semibold min-w-40">אסטרטגיה עסקית</span>
+    <span className="text-muted-foreground">יועץ + מומחה תעשייה</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Learning new topic</span>
-    <span className="text-muted-foreground">Patient teacher + practitioner</span>
+    <span className="font-semibold min-w-40">למידת נושא חדש</span>
+    <span className="text-muted-foreground">מורה סבלני + מתרגל</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Creative writing</span>
-    <span className="text-muted-foreground">Specific genre author</span>
+    <span className="font-semibold min-w-40">כתיבה יצירתית</span>
+    <span className="text-muted-foreground">מחבר בז'אנר ספציפי</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Technical explanation</span>
-    <span className="text-muted-foreground">Expert + communicator</span>
+    <span className="font-semibold min-w-40">הסבר טכני</span>
+    <span className="text-muted-foreground">מומחה + מתקשר</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Problem-solving</span>
-    <span className="text-muted-foreground">Domain specialist + generalist</span>
+    <span className="font-semibold min-w-40">פתרון בעיות</span>
+    <span className="text-muted-foreground">מומחה תחום + גנרליסט</span>
   </div>
 </div>
 
-## Anti-Patterns to Avoid
+## אנטי-דפוסים להימנעות
 
-### Overly Generic Roles
-
-<Compare 
-  before={{ label: "Weak", content: "You are a helpful assistant." }}
-  after={{ label: "Better", content: "You are a helpful assistant specializing in Python development, particularly web applications with Flask and Django." }}
-/>
-
-### Conflicting Roles
+### תפקידים גנריים מדי
 
 <Compare 
-  before={{ label: "Problematic", content: "You are a creative writer who always follows strict templates." }}
-  after={{ label: "Better", content: "You are a creative writer who works within established story structures while adding original elements." }}
+  before={{ label: "חלש", content: "You are a helpful assistant." }}
+  after={{ label: "טוב יותר", content: "You are a helpful assistant specializing in Python development, particularly web applications with Flask and Django." }}
 />
 
-### Unrealistic Expertise
+### תפקידים סותרים
 
 <Compare 
-  before={{ label: "Problematic", content: "You are an expert in everything." }}
-  after={{ label: "Better", content: "You are a T-shaped professional: deep expertise in machine learning with broad knowledge of software engineering practices." }}
+  before={{ label: "בעייתי", content: "You are a creative writer who always follows strict templates." }}
+  after={{ label: "טוב יותר", content: "You are a creative writer who works within established story structures while adding original elements." }}
 />
 
-## Real-World Prompt Examples
+### מומחיות לא ריאליסטית
 
-### Technical Documentation
+<Compare 
+  before={{ label: "בעייתי", content: "You are an expert in everything." }}
+  after={{ label: "טוב יותר", content: "You are a T-shaped professional: deep expertise in machine learning with broad knowledge of software engineering practices." }}
+/>
+
+## דוגמאות הנחיות מהעולם האמיתי
+
+### תיעוד טכני
 
 <TryIt 
-  title="Technical Writer Role"
-  description="Try this technical documentation prompt with your own API endpoint."
+  title="תפקיד כותב טכני"
+  description="נסו הנחיית תיעוד טכני זו עם נקודת קצה API משלכם."
   prompt={`You are a senior technical writer at a developer tools company. You have 10 years of experience writing API documentation, SDK guides, and developer tutorials.
 
 Your documentation style:
@@ -249,11 +249,11 @@ Your documentation style:
 Document this API endpoint: GET /api/users/:id - Returns user profile data`}
 />
 
-### Creative Writing
+### כתיבה יצירתית
 
 <TryIt 
-  title="Novelist Role"
-  description="This role combines genre expertise with specific stylistic traits."
+  title="תפקיד רומנאי"
+  description="תפקיד זה משלב מומחיות ז'אנר עם תכונות סגנוניות ספציפיות."
   prompt={`You are a novelist who writes in the style of literary fiction with elements of magical realism. Your prose is known for:
 - Lyrical but accessible language
 - Deep psychological character portraits
@@ -263,11 +263,11 @@ Document this API endpoint: GET /api/users/:id - Returns user profile data`}
 Write the opening scene of a story about a librarian who discovers that books in her library are slowly changing their endings.`}
 />
 
-### Business Communication
+### תקשורת עסקית
 
 <TryIt 
-  title="Executive Coach Role"
-  description="This role helps with sensitive business communications."
+  title="תפקיד מאמן מנהלים"
+  description="תפקיד זה עוזר בתקשורת עסקית רגישה."
   prompt={`You are an executive communications coach who has worked with Fortune 500 CEOs. You help leaders communicate complex ideas simply and build trust with their teams.
 
 Review this message for a team meeting about budget cuts. Suggest improvements that:
@@ -279,13 +279,13 @@ Review this message for a team meeting about budget cuts. Suggest improvements t
 Draft message: "Due to budget constraints, we need to reduce project scope. Some initiatives will be paused."`}
 />
 
-## Combining Roles with Other Techniques
+## שילוב תפקידים עם טכניקות אחרות
 
-Roles work even better when combined with other prompting techniques:
+תפקידים עובדים אפילו טוב יותר כאשר משלבים אותם עם טכניקות הנחיה אחרות:
 
-### Role + Few-Shot
+### תפקיד + דוגמאות מועטות
 
-Combine a role with an example to show exactly how the role should respond. The example teaches tone and format while the role provides context and expertise.
+שלבו תפקיד עם דוגמה כדי להראות בדיוק איך התפקיד צריך להגיב. הדוגמה מלמדת טון ופורמט בעוד התפקיד מספק הקשר ומומחיות.
 
 <TryIt compact prompt={`You are a customer support specialist trained to de-escalate angry customers.
 
@@ -296,9 +296,9 @@ You: "I completely understand your frustration, and I apologize for the delay. L
 Now respond to:
 Customer: "\${customerMessage}"`} />
 
-### Role + Chain of Thought
+### תפקיד + שרשרת חשיבה
 
-The detective role naturally encourages step-by-step reasoning. Combining roles with chain-of-thought produces more transparent, verifiable problem-solving.
+תפקיד הבלש מעודד באופן טבעי חשיבה צעד-אחר-צעד. שילוב תפקידים עם שרשרת חשיבה מייצר פתרון בעיות שקוף וניתן לאימות יותר.
 
 <TryIt compact prompt={`You are a detective solving a logic puzzle. Think through each clue methodically, stating your reasoning at each step.
 
@@ -307,22 +307,22 @@ Clues:
 
 Solve step by step, explaining your deductions.`} />
 
-## Summary
+## סיכום
 
-<Callout type="info" title="Key Takeaways">
-Role-based prompting is powerful because it focuses the model's vast knowledge, sets expectations for tone and style, provides implicit context, and makes outputs more consistent.
+<Callout type="info" title="נקודות מפתח">
+הנחיה מבוססת תפקידים היא חזקה מכיוון שהיא ממקדת את הידע העצום של המודל, קובעת ציפיות לטון וסגנון, מספקת הקשר מרומז והופכת את הפלטים לעקביים יותר.
 </Callout>
 
 <Quiz 
-  question="What makes a role-based prompt more effective?"
+  question="מה הופך הנחיה מבוססת תפקיד ליעילה יותר?"
   options={[
-    "Using generic role titles like 'expert'",
-    "Adding specific expertise, experience, and perspective details",
-    "Keeping the role description as short as possible",
-    "Asking the AI to switch roles frequently"
+    "שימוש בכותרות תפקיד גנריות כמו 'מומחה'",
+    "הוספת פרטי מומחיות, ניסיון ופרספקטיבה ספציפיים",
+    "שמירה על תיאור התפקיד קצר ככל האפשר",
+    "בקשה מהבינה המלאכותית להחליף תפקידים לעתים קרובות"
   ]}
   correctIndex={1}
-  explanation="The more detailed and realistic the role, the better the results. Specificity helps the model understand exactly what knowledge, tone, and perspective to apply."
+  explanation="ככל שהתפקיד מפורט וריאליסטי יותר, כך התוצאות טובות יותר. ספציפיות עוזרת למודל להבין בדיוק איזה ידע, טון ופרספקטיבה להפעיל."
 />
 
-The key is **specificity**: the more detailed and realistic the role, the better the results. In the next chapter, we'll explore how to get consistent, structured outputs from your prompts.
+המפתח הוא **ספציפיות**: ככל שהתפקיד מפורט וריאליסטי יותר, כך התוצאות טובות יותר. בפרק הבא, נחקור כיצד לקבל פלטים עקביים ומובנים מההנחיות שלכם.

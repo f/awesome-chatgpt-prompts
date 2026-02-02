@@ -1,108 +1,108 @@
-Getting consistent, well-formatted output is essential for production applications and efficient workflows. This chapter covers techniques for controlling exactly how AI models format their responses.
+קבלת פלט עקבי ומעוצב היטב היא חיונית עבור יישומי ייצור וזרימות עבודה יעילות. פרק זה מכסה טכניקות לשליטה מדויקת באופן שבו מודלי AI מעצבים את תגובותיהם.
 
-<Callout type="info" title="From Prose to Data">
-Structured output transforms AI responses from freeform text into actionable, parseable data.
+<Callout type="info" title="מטקסט חופשי לנתונים">
+פלט מובנה הופך תגובות AI מטקסט חופשי לנתונים ניתנים לפעולה ולניתוח.
 </Callout>
 
-## Why Structure Matters
+## למה מבנה חשוב
 
 <StructuredOutputDemo />
 
-## Basic Formatting Techniques
+## טכניקות עיצוב בסיסיות
 
-### Lists
+### רשימות
 
-Lists are perfect for step-by-step instructions, ranked items, or collections of related points. They're easy to scan and parse. Use **numbered lists** when order matters (steps, rankings) and **bullet points** for unordered collections.
-
-<TryIt 
-  compact
-  title="List Formatting"
-  prompt={`Provide 5 tips for better sleep.
-
-Format: Numbered list with a brief explanation for each.
-Each tip should be bold, followed by a dash and explanation.`}
-/>
-
-<Callout type="tip" title="List Best Practices">
-Specify the exact number of items you want, whether to include explanations, and if items should be bold or have a specific structure.
-</Callout>
-
-### Tables
-
-Tables excel at comparing multiple items across the same dimensions. They're ideal for feature comparisons, data summaries, and any information with consistent attributes. Always define your column headers explicitly.
+רשימות מתאימות בצורה מושלמת להוראות צעד-אחר-צעד, פריטים מדורגים, או אוספים של נקודות קשורות. הן קלות לסריקה ולניתוח. השתמשו ב**רשימות ממוספרות** כאשר הסדר חשוב (שלבים, דירוגים) וב**נקודות תבליט** עבור אוספים לא מסודרים.
 
 <TryIt 
   compact
-  title="Table Formatting"
-  prompt={`Compare the top 4 Python web frameworks.
+  title="עיצוב רשימות"
+  prompt={`ספק 5 טיפים לשינה טובה יותר.
 
-Format as a markdown table with columns:
-| Framework | Best For | Learning Curve | Performance |`}
+פורמט: רשימה ממוספרת עם הסבר קצר לכל טיפ.
+כל טיפ צריך להיות מודגש, ואחריו מקף והסבר.`}
 />
 
-<Callout type="tip" title="Table Best Practices">
-Specify column names, expected data types (text, numbers, ratings), and how many rows you need. For complex comparisons, limit to 4-6 columns for readability.
+<Callout type="tip" title="שיטות עבודה מומלצות לרשימות">
+ציינו את מספר הפריטים המדויק שאתם רוצים, האם לכלול הסברים, והאם הפריטים צריכים להיות מודגשים או בעלי מבנה מסוים.
 </Callout>
 
-### Headers and Sections
+### טבלאות
 
-Headers create a clear document structure, making long responses scannable and organized. Use them for reports, analyses, or any multi-part response. Hierarchical headers (##, ###) show relationships between sections.
+טבלאות מצטיינות בהשוואת פריטים מרובים על פני אותם ממדים. הן אידיאליות להשוואות תכונות, סיכומי נתונים, וכל מידע עם מאפיינים עקביים. הגדירו תמיד את כותרות העמודות שלכם במפורש.
 
-```
-Analyze this business proposal.
+<TryIt 
+  compact
+  title="עיצוב טבלאות"
+  prompt={`השווה בין 4 מסגרות Web מובילות של Python.
 
-Structure your response with these sections:
-## Executive Summary
-## Strengths
-## Weaknesses
-## Recommendations
-## Risk Assessment
-```
+עצב כטבלת Markdown עם עמודות:
+| Framework | הכי מתאים ל | עקומת למידה | ביצועים |`}
+/>
 
-<Callout type="tip" title="Section Best Practices">
-List your sections in the order you want them. For consistency, specify what each section should contain (e.g., "Executive Summary: 2-3 sentences only").
+<Callout type="tip" title="שיטות עבודה מומלצות לטבלאות">
+ציינו שמות עמודות, סוגי נתונים צפויים (טקסט, מספרים, דירוגים), וכמה שורות אתם צריכים. להשוואות מורכבות, הגבילו ל-4-6 עמודות לקריאות.
 </Callout>
 
-### Emphasis with Uppercase Directives
+### כותרות וסעיפים
 
-Uppercase words act as strong signals to the model, emphasizing critical constraints or requirements. Use them sparingly for maximum impact—overuse dilutes their effectiveness.
+כותרות יוצרות מבנה מסמך ברור, מה שהופך תגובות ארוכות לניתנות לסריקה ומאורגנות. השתמשו בהן לדוחות, ניתוחים, או כל תגובה מרובת חלקים. כותרות היררכיות (##, ###) מראות יחסים בין סעיפים.
 
-**Common Uppercase Directives:**
+```
+נתח את ההצעה העסקית הזו.
+
+מבנה התגובה שלך עם הסעיפים הבאים:
+## תקציר מנהלים
+## חוזקות
+## חולשות
+## המלצות
+## הערכת סיכונים
+```
+
+<Callout type="tip" title="שיטות עבודה מומלצות לסעיפים">
+רשמו את הסעיפים שלכם בסדר הרצוי. לעקביות, ציינו מה כל סעיף צריך להכיל (למשל, "תקציר מנהלים: 2-3 משפטים בלבד").
+</Callout>
+
+### הדגשה באמצעות הנחיות באותיות גדולות
+
+מילים באותיות גדולות משמשות כאותות חזקים למודל, המדגישים אילוצים או דרישות קריטיים. השתמשו בהן במשורה להשפעה מרבית — שימוש יתר מדלל את האפקטיביות שלהן.
+
+**הנחיות נפוצות באותיות גדולות:**
 
 <InfoGrid items={[
-  { label: "NEVER", description: "Absolute prohibition: \"NEVER include personal opinions\"", color: "red" },
-  { label: "ALWAYS", description: "Mandatory requirement: \"ALWAYS cite sources\"", color: "green" },
-  { label: "IMPORTANT", description: "Critical instruction: \"IMPORTANT: Keep responses under 100 words\"", color: "amber" },
-  { label: "DO NOT", description: "Strong prohibition: \"DO NOT make up statistics\"", color: "red" },
-  { label: "MUST", description: "Required action: \"Output MUST be valid JSON\"", color: "blue" },
-  { label: "ONLY", description: "Restriction: \"Return ONLY the code, no explanations\"", color: "purple" },
+  { label: "NEVER", description: "איסור מוחלט: \"NEVER include personal opinions\"", color: "red" },
+  { label: "ALWAYS", description: "דרישה חובה: \"ALWAYS cite sources\"", color: "green" },
+  { label: "IMPORTANT", description: "הוראה קריטית: \"IMPORTANT: Keep responses under 100 words\"", color: "amber" },
+  { label: "DO NOT", description: "איסור חזק: \"DO NOT make up statistics\"", color: "red" },
+  { label: "MUST", description: "פעולה נדרשת: \"Output MUST be valid JSON\"", color: "blue" },
+  { label: "ONLY", description: "הגבלה: \"Return ONLY the code, no explanations\"", color: "purple" },
 ]} />
 
 ```
-Summarize this article.
+סכם את המאמר הזה.
 
-IMPORTANT: Keep the summary under 100 words.
-NEVER add information not present in the original.
-ALWAYS maintain the original tone and perspective.
-DO NOT include your own opinions or analysis.
+IMPORTANT: שמור על הסיכום מתחת ל-100 מילים.
+NEVER הוסף מידע שלא קיים במקור.
+ALWAYS שמור על הטון והפרספקטיבה המקוריים.
+DO NOT כלול את דעותיך או הניתוח שלך.
 ```
 
-<Callout type="warning" title="Use Sparingly">
-If everything is uppercase or marked as critical, nothing stands out. Reserve these directives for genuinely important constraints.
+<Callout type="warning" title="השתמשו במשורה">
+אם הכל באותיות גדולות או מסומן כקריטי, שום דבר לא בולט. שמרו הנחיות אלו לאילוצים באמת חשובים.
 </Callout>
 
-## JSON Output
+## פלט JSON
 
-JSON (JavaScript Object Notation) is the most popular format for structured AI output. It's machine-readable, widely supported by programming languages, and perfect for APIs, databases, and automation workflows. The key to reliable JSON is providing a clear schema.
+JSON (JavaScript Object Notation) הוא הפורמט הפופולרי ביותר לפלט AI מובנה. הוא קריא למכונה, נתמך באופן נרחב על ידי שפות תכנות, ומושלם עבור APIs, מסדי נתונים, וזרימות עבודה אוטומטיות. המפתח ל-JSON אמין הוא מתן סכמה ברורה.
 
-### Basic JSON Request
+### בקשת JSON בסיסית
 
-Start with a template showing the exact structure you want. Include field names, data types, and example values. This acts as a contract the model will follow.
+התחילו עם תבנית המראה את המבנה המדויק שאתם רוצים. כללו שמות שדות, סוגי נתונים, וערכים לדוגמה. זה משמש כחוזה שהמודל יעקוב אחריו.
 
 <TryIt 
-  title="JSON Extraction"
-  description="Extract structured data from unstructured text."
-  prompt={`Extract information from this text and return as JSON:
+  title="חילוץ JSON"
+  description="חילוץ נתונים מובנים מטקסט לא מובנה."
+  prompt={`חלץ מידע מהטקסט הזה והחזר כ-JSON:
 
 {
     "company_name": "string",
@@ -115,12 +115,12 @@ Start with a template showing the exact structure you want. Include field names,
 Text: "Apple Inc., founded in 1976, is headquartered in Cupertino, California. The technology giant employs approximately 164,000 people worldwide."`}
 />
 
-### Complex JSON Structures
+### מבני JSON מורכבים
 
-For nested data, use hierarchical JSON with objects inside objects, arrays of objects, and mixed types. Define each level clearly and use TypeScript-style annotations (`"positive" | "negative"`) to constrain values.
+עבור נתונים מקוננים, השתמשו ב-JSON היררכי עם אובייקטים בתוך אובייקטים, מערכים של אובייקטים, וסוגים מעורבים. הגדירו כל רמה בבירור והשתמשו בהערות בסגנון TypeScript (`"positive" | "negative"`) כדי להגביל ערכים.
 
 ```
-Analyze this product review and return JSON:
+נתח את ביקורת המוצר הזו והחזר JSON:
 
 {
   "review_id": "string (generate unique)",
@@ -147,11 +147,11 @@ Return ONLY valid JSON, no additional text.
 Review: "[review text]"
 ```
 
-### Ensuring Valid JSON
+### הבטחת JSON תקין
 
-Models sometimes add explanatory text or markdown formatting around JSON. Prevent this with explicit instructions about output format. You can request raw JSON or JSON inside code blocks—choose based on your parsing needs.
+מודלים לפעמים מוסיפים טקסט הסברי או עיצוב Markdown סביב JSON. מנעו זאת עם הוראות מפורשות לגבי פורמט הפלט. תוכלו לבקש JSON גולמי או JSON בתוך בלוקי קוד — בחרו בהתאם לצרכי הניתוח שלכם.
 
-Add explicit instructions:
+הוסיפו הוראות מפורשות:
 
 ```
 IMPORTANT:
@@ -161,37 +161,37 @@ IMPORTANT:
 - Validate that the output is parseable JSON
 ```
 
-Or request code blocks by asking the model to wrap its output:
+או בקשו בלוקי קוד על ידי בקשה מהמודל לעטוף את הפלט שלו:
 
 ````
-Return the result as a JSON code block:
+החזר את התוצאה כבלוק קוד JSON:
 ```json
 { ... }
 ```
 ````
 
-## YAML Output
+## פלט YAML
 
-YAML is more human-readable than JSON, using indentation instead of brackets. It's the standard for configuration files (Docker, Kubernetes, GitHub Actions) and works well when the output will be read by humans or used in DevOps contexts. YAML is sensitive to indentation, so be specific about formatting requirements.
+YAML קריא יותר לבני אדם מאשר JSON, משתמש בהזחה במקום סוגריים. זהו הסטנדרט עבור קבצי תצורה (Docker, Kubernetes, GitHub Actions) ועובד היטב כאשר הפלט ייקרא על ידי בני אדם או ישמש בהקשרי DevOps. YAML רגיש להזחה, אז היו ספציפיים לגבי דרישות העיצוב.
 
 <TryIt 
   compact
-  title="YAML Generation"
-  prompt={`Generate a GitHub Actions workflow for a Node.js project.
+  title="יצירת YAML"
+  prompt={`צור workflow של GitHub Actions עבור פרויקט Node.js.
 
-Return as valid YAML:
-- Include: install, lint, test, build stages
-- Use Node.js 18
-- Cache npm dependencies
-- Run on push to main and pull requests`}
+החזר כ-YAML תקין:
+- כלול: שלבי install, lint, test, build
+- השתמש ב-Node.js 18
+- אחסן במטמון תלויות npm
+- הרץ בעת push ל-main ו-pull requests`}
 />
 
-## XML Output
+## פלט XML
 
-XML is still required for many enterprise systems, SOAP APIs, and legacy integrations. It's more verbose than JSON but offers features like attributes, namespaces, and CDATA sections for complex data. Specify element names, nesting structure, and where to use attributes vs. child elements.
+XML עדיין נדרש עבור מערכות ארגוניות רבות, APIs של SOAP, ואינטגרציות legacy. הוא יותר מפורט מ-JSON אך מציע תכונות כמו attributes, namespaces, וסעיפי CDATA לנתונים מורכבים. ציינו שמות אלמנטים, מבנה קינון, והיכן להשתמש ב-attributes לעומת אלמנטים צאצאים.
 
 ```
-Convert this data to XML format:
+המר את הנתונים האלה לפורמט XML:
 
 Requirements:
 - Root element: <catalog>
@@ -202,16 +202,16 @@ Requirements:
 Data: [book data]
 ```
 
-## Custom Formats
+## פורמטים מותאמים אישית
 
-Sometimes standard formats don't fit your needs. You can define any custom format by providing a clear template. Custom formats work well for reports, logs, or domain-specific outputs that will be read by humans.
+לפעמים פורמטים סטנדרטיים לא מתאימים לצרכים שלכם. תוכלו להגדיר כל פורמט מותאם אישית על ידי מתן תבנית ברורה. פורמטים מותאמים אישית עובדים היטב לדוחות, לוגים, או פלטים ספציפיים לתחום שייקראו על ידי בני אדם.
 
-### Structured Analysis Format
+### פורמט ניתוח מובנה
 
-Use delimiters (===, ---, [SECTION]) to create scannable documents with clear boundaries between sections. This format is great for code reviews, audits, and analyses.
+השתמשו במפרידים (===, ---, [SECTION]) כדי ליצור מסמכים ניתנים לסריקה עם גבולות ברורים בין סעיפים. פורמט זה מצוין לסקירות קוד, ביקורות, וניתוחים.
 
 ```
-Analyze this code using this exact format:
+נתח את הקוד הזה באמצעות הפורמט המדויק הזה:
 
 === CODE ANALYSIS ===
 
@@ -235,12 +235,12 @@ Test Coverage: [estimated %]
 === END ANALYSIS ===
 ```
 
-### Fill-in-the-Blank Format
+### פורמט מילוי חללים
 
-Templates with blanks (___) guide the model to fill in specific fields while maintaining exact formatting. This approach is excellent for forms, briefs, and standardized documents where consistency matters.
+תבניות עם חללים (___) מנחות את המודל למלא שדות ספציפיים תוך שמירה על עיצוב מדויק. גישה זו מצוינת לטפסים, תקצירים, ומסמכים סטנדרטיים שבהם עקביות חשובה.
 
 ```
-Complete this template for the given product:
+השלם את התבנית הזו עבור המוצר הנתון:
 
 PRODUCT BRIEF
 ─────────────
@@ -257,33 +257,33 @@ Differentiator: _______________
 Product: [product description]
 ```
 
-## Typed Responses
+## תגובות מוקלדות
 
-Typed responses define categories or entity types that the model should recognize and label. This technique is essential for Named Entity Recognition (NER), classification tasks, and any extraction where you need to categorize information consistently. Define your types clearly with examples.
+תגובות מוקלדות מגדירות קטגוריות או סוגי ישויות שהמודל צריך לזהות ולתייג. טכניקה זו חיונית לזיהוי ישויות בשם (NER), משימות סיווג, וכל חילוץ שבו אתם צריכים לסווג מידע באופן עקבי. הגדירו את הסוגים שלכם בבירור עם דוגמאות.
 
 <TryIt 
   compact
-  title="Entity Extraction"
-  prompt={`Extract entities from this text.
+  title="חילוץ ישויות"
+  prompt={`חלץ ישויות מהטקסט הזה.
 
-Entity Types:
-- PERSON: Full names of people
-- ORG: Organization/company names
-- LOCATION: Cities, countries, addresses
-- DATE: Dates in ISO format (YYYY-MM-DD)
-- MONEY: Monetary amounts with currency
+סוגי ישויות:
+- PERSON: שמות מלאים של אנשים
+- ORG: שמות ארגונים/חברות
+- LOCATION: ערים, מדינות, כתובות
+- DATE: תאריכים בפורמט ISO (YYYY-MM-DD)
+- MONEY: סכומי כסף עם מטבע
 
-Format each as: [TYPE]: [value]
+עצב כל אחד כ: [TYPE]: [value]
 
 Text: "Tim Cook announced that Apple will invest $1 billion in a new Austin facility by December 2024."`}
 />
 
-## Multi-Part Structured Responses
+## תגובות מובנות מרובות חלקים
 
-When you need comprehensive output covering multiple aspects, define distinct parts with clear boundaries. Specify exactly what goes in each part—format, length, and content type. This prevents the model from blending sections or omitting parts.
+כאשר אתם צריכים פלט מקיף המכסה היבטים מרובים, הגדירו חלקים נפרדים עם גבולות ברורים. ציינו בדיוק מה נכנס לכל חלק — פורמט, אורך, וסוג תוכן. זה מונע מהמודל לערבב סעיפים או להשמיט חלקים.
 
 ```
-Research this topic and provide:
+חקור את הנושא הזה וספק:
 
 ### PART 1: EXECUTIVE SUMMARY
 [2-3 sentence overview]
@@ -303,38 +303,38 @@ Research this topic and provide:
 [3 suggested resources with brief descriptions]
 ```
 
-## Conditional Formatting
+## עיצוב מותנה
 
-Conditional formatting lets you define different output formats based on the input's characteristics. This is powerful for classification, triage, and routing systems where the response format should vary based on what the model detects. Use clear if/then logic with explicit output templates for each case.
+עיצוב מותנה מאפשר לכם להגדיר פורמטי פלט שונים בהתבסס על מאפייני הקלט. זה חזק עבור מערכות סיווג, טריאז', וניתוב שבהן פורמט התגובה צריך להשתנות בהתבסס על מה שהמודל מזהה. השתמשו בלוגיקת if/then ברורה עם תבניות פלט מפורשות לכל מקרה.
 
 <TryIt 
   compact
-  title="Ticket Classification"
-  prompt={`Classify this support ticket.
+  title="סיווג פניות"
+  prompt={`סווג את פנית התמיכה הזו.
 
-If URGENT (system down, security issue, data loss):
-  Return: 🔴 URGENT | [Category] | [Suggested Action]
+אם URGENT (מערכת קרסה, בעיית אבטחה, אובדן נתונים):
+  החזר: 🔴 URGENT | [Category] | [Suggested Action]
 
-If HIGH (affects multiple users, revenue impact):
-  Return: 🟠 HIGH | [Category] | [Suggested Action]
+אם HIGH (משפיע על משתמשים מרובים, השפעה על הכנסות):
+  החזר: 🟠 HIGH | [Category] | [Suggested Action]
 
-If MEDIUM (single user affected, workaround exists):
-  Return: 🟡 MEDIUM | [Category] | [Suggested Action]
+אם MEDIUM (משתמש יחיד מושפע, קיים פתרון עוקף):
+  החזר: 🟡 MEDIUM | [Category] | [Suggested Action]
 
-If LOW (questions, feature requests):
-  Return: 🟢 LOW | [Category] | [Suggested Action]
+אם LOW (שאלות, בקשות תכונות):
+  החזר: 🟢 LOW | [Category] | [Suggested Action]
 
 Ticket: "I can't login to my account. I've tried resetting my password twice but still getting an error. This is blocking my entire team from accessing the dashboard."`}
 />
 
-## Arrays and Lists in JSON
+## מערכים ורשימות ב-JSON
 
-Extracting multiple items into arrays requires careful schema definition. Specify the array structure, what each item should contain, and how to handle edge cases (empty arrays, single items). Including a count field helps verify completeness.
+חילוץ פריטים מרובים למערכים דורש הגדרת סכמה זהירה. ציינו את מבנה המערך, מה כל פריט צריך להכיל, ואיך לטפל במקרי קצה (מערכים ריקים, פריטים בודדים). הכללת שדה ספירה עוזרת לאמת שלמות.
 
 ```
-Extract all action items from this meeting transcript.
+חלץ את כל פריטי הפעולה מתמליל הפגישה הזה.
 
-Return as JSON array:
+החזר כמערך JSON:
 {
   "action_items": [
     {
@@ -351,12 +351,12 @@ Return as JSON array:
 Transcript: "[meeting transcript]"
 ```
 
-## Validation Instructions
+## הוראות אימות
 
-Self-validation prompts the model to check its own output before responding. This catches common issues like missing sections, placeholder text, or constraint violations. The model will iterate internally to fix problems, improving output quality without additional API calls.
+אימות עצמי מנחה את המודל לבדוק את הפלט שלו לפני התגובה. זה תופס בעיות נפוצות כמו סעיפים חסרים, טקסט placeholder, או הפרות אילוצים. המודל יתקן פנימית כדי לתקן בעיות, ישפר את איכות הפלט ללא קריאות API נוספות.
 
 ```
-Generate the report, then:
+צור את הדוח, ואז:
 
 VALIDATION CHECKLIST:
 □ All required sections present
@@ -368,12 +368,12 @@ VALIDATION CHECKLIST:
 If any check fails, fix before responding.
 ```
 
-## Handling Optional Fields
+## טיפול בשדות אופציונליים
 
-Real-world data often has missing values. Explicitly instruct the model on how to handle optional fields—using `null` is cleaner than empty strings and easier to process programmatically. Also prevent "hallucination" of missing data by emphasizing that the model should never invent information.
+לנתונים בעולם האמיתי יש לעתים קרובות ערכים חסרים. הורו למודל במפורש איך לטפל בשדות אופציונליים — שימוש ב-`null` נקי יותר ממחרוזות ריקות וקל יותר לעיבוד תכנותי. כמו כן, מנעו "הזיה" של נתונים חסרים על ידי הדגשה שהמודל לעולם לא צריך להמציא מידע.
 
 ```
-Extract contact information. Use null for missing fields.
+חלץ מידע ליצירת קשר. השתמש ב-null עבור שדות חסרים.
 
 {
   "name": "string (required)",
@@ -390,22 +390,22 @@ IMPORTANT:
 - Phone numbers in E.164 format if possible
 ```
 
-## Summary
+## סיכום
 
-<Callout type="tip" title="Key Techniques">
-Be explicit about format, use examples, specify types, handle edge cases with null values, and ask the model to validate its own output.
+<Callout type="tip" title="טכניקות מפתח">
+היו מפורשים לגבי הפורמט, השתמשו בדוגמאות, ציינו סוגים, טפלו במקרי קצה עם ערכי null, ובקשו מהמודל לאמת את הפלט שלו.
 </Callout>
 
 <Quiz 
-  question="What's the main advantage of structured output over unstructured text?"
+  question="מהו היתרון העיקרי של פלט מובנה על פני טקסט לא מובנה?"
   options={[
-    "It uses fewer tokens",
-    "It's easier for the AI to generate",
-    "It can be parsed programmatically and validated",
-    "It always produces correct information"
+    "הוא משתמש בפחות tokens",
+    "קל יותר ל-AI לייצר אותו",
+    "ניתן לנתח אותו תכנותית ולאמת אותו",
+    "הוא תמיד מייצר מידע נכון"
   ]}
   correctIndex={2}
-  explanation="Structured outputs like JSON can be parsed by code, compared across queries, integrated into workflows, and validated for completeness—things that are difficult or impossible with freeform text."
+  explanation="פלטים מובנים כמו JSON ניתנים לניתוח על ידי קוד, להשוואה בין שאילתות, לאינטגרציה בזרימות עבודה, ולאימות שלמות — דברים שקשים או בלתי אפשריים עם טקסט חופשי."
 />
 
-Structured outputs are essential for building reliable AI-powered applications. In the next chapter, we'll explore chain-of-thought prompting for complex reasoning tasks.
+פלטים מובנים חיוניים לבניית יישומים מונעי AI אמינים. בפרק הבא, נחקור הנחיית שרשרת מחשבה למשימות הסקה מורכבות.

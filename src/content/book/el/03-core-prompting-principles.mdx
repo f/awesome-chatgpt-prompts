@@ -1,140 +1,140 @@
-Beyond structure, effective prompt engineering is guided by principles—fundamental truths that apply across models, tasks, and contexts. Master these principles, and you'll be able to adapt to any prompting challenge.
+Πέρα από τη δομή, το αποτελεσματικό prompt engineering καθοδηγείται από αρχές—θεμελιώδεις αλήθειες που ισχύουν σε όλα τα μοντέλα, εργασίες, και πλαίσια. Κατακτήστε αυτές τις αρχές, και θα μπορείτε να προσαρμοστείτε σε οποιαδήποτε πρόκληση prompting.
 
-<Callout type="info" title="The 8 Core Principles">
-These principles apply to every AI model and every task. Learn them once, use them everywhere.
+<Callout type="info" title="Οι 8 Βασικές Αρχές">
+Αυτές οι αρχές ισχύουν για κάθε μοντέλο AI και κάθε εργασία. Μάθετέ τις μια φορά, χρησιμοποιήστε τις παντού.
 </Callout>
 
-## Principle 1: Clarity Over Cleverness
+## Αρχή 1: Σαφήνεια πάνω από Εξυπνάδα
 
-The best prompts are clear, not clever. AI models are literal interpreters—they work with exactly what you give them.
+Τα καλύτερα prompts είναι σαφή, όχι έξυπνα. Τα μοντέλα AI είναι κυριολεκτικοί ερμηνευτές—δουλεύουν με ακριβώς αυτό που τους δίνετε.
 
-### Be Explicit
-
-<Compare 
-  before={{ label: "Implicit (problematic)", content: "Make this better." }}
-  after={{ label: "Explicit (effective)", content: "Improve this email by:\n1. Making the subject line more compelling\n2. Shortening paragraphs to 2-3 sentences max\n3. Adding a clear call-to-action at the end" }}
-/>
-
-### Avoid Ambiguity
-
-Words can have multiple meanings. Choose precise language.
+### Να Είστε Ρητοί
 
 <Compare 
-  before={{ label: "Ambiguous", content: "Give me a short summary.\n(How short? 1 sentence? 1 paragraph? 1 page?)" }}
-  after={{ label: "Precise", content: "Summarize in exactly 3 bullet points, each under 20 words." }}
+  before={{ label: "Σιωπηρό (προβληματικό)", content: "Κάνε αυτό καλύτερο." }}
+  after={{ label: "Ρητό (αποτελεσματικό)", content: "Βελτίωσε αυτό το email:\n1. Κάνοντας τη γραμμή θέματος πιο ελκυστική\n2. Συντομεύοντας τις παραγράφους σε 2-3 προτάσεις μέγιστο\n3. Προσθέτοντας σαφή κλήση για δράση στο τέλος" }}
 />
 
-### State the Obvious
+### Αποφύγετε την Ασάφεια
 
-What's obvious to you isn't obvious to the model. Spell out assumptions.
+Οι λέξεις μπορούν να έχουν πολλαπλές σημασίες. Επιλέξτε ακριβή γλώσσα.
+
+<Compare 
+  before={{ label: "Ασαφές", content: "Δώσε μου μια σύντομη περίληψη.\n(Πόσο σύντομη; 1 πρόταση; 1 παράγραφος; 1 σελίδα;)" }}
+  after={{ label: "Ακριβές", content: "Συνόψισε σε ακριβώς 3 κουκκίδες, κάθε μία κάτω από 20 λέξεις." }}
+/>
+
+### Δηλώστε το Προφανές
+
+Αυτό που είναι προφανές για εσάς δεν είναι προφανές για το μοντέλο. Εξηγήστε τις υποθέσεις.
 
 ```
-You're helping me write a cover letter.
+Με βοηθάς να γράψω μια συνοδευτική επιστολή.
 
-Important context:
-- I'm applying for a Software Engineer position at Google
-- I have 5 years of experience in Python and distributed systems
-- The role requires leadership experience (I've led a team of 4)
-- I want to emphasize my open-source contributions
+Σημαντικό πλαίσιο:
+- Κάνω αίτηση για θέση Software Engineer στη Google
+- Έχω 5 χρόνια εμπειρία σε Python και κατανεμημένα συστήματα
+- Ο ρόλος απαιτεί ηγετική εμπειρία (έχω ηγηθεί ομάδας 4 ατόμων)
+- Θέλω να τονίσω τις συνεισφορές μου σε open-source
 ```
 
-## Principle 2: Specificity Yields Quality
+## Αρχή 2: Η Εξειδίκευση Αποδίδει Ποιότητα
 
-Vague inputs produce vague outputs. Specific inputs produce specific, useful outputs.
+Αόριστες είσοδοι παράγουν αόριστες εξόδους. Εξειδικευμένες είσοδοι παράγουν εξειδικευμένες, χρήσιμες εξόδους.
 
-### The Specificity Ladder
+### Η Σκάλα Εξειδίκευσης
 
 <SpecificitySpectrum levels={[
-  { level: "Level 1", text: "Write about climate change" },
-  { level: "Level 2", text: "Write an article about climate change effects" },
-  { level: "Level 3", text: "Write a 500-word article about how climate change affects coral reefs" },
-  { level: "Level 4", text: "Write a 500-word article explaining how rising ocean temperatures cause coral bleaching, aimed at high school students, with 2 specific examples from the Great Barrier Reef, in an engaging but scientifically accurate tone" }
+  { level: "Επίπεδο 1", text: "Γράψε για την κλιματική αλλαγή" },
+  { level: "Επίπεδο 2", text: "Γράψε ένα άρθρο για τις επιπτώσεις της κλιματικής αλλαγής" },
+  { level: "Επίπεδο 3", text: "Γράψε ένα άρθρο 500 λέξεων για το πώς η κλιματική αλλαγή επηρεάζει τα κοράλλια" },
+  { level: "Επίπεδο 4", text: "Γράψε ένα άρθρο 500 λέξεων εξηγώντας πώς οι αυξανόμενες θερμοκρασίες του ωκεανού προκαλούν λεύκανση κοραλλιών, απευθυνόμενο σε μαθητές λυκείου, με 2 συγκεκριμένα παραδείγματα από τον Μεγάλο Κοραλλιογενή Ύφαλο, με ελκυστικό αλλά επιστημονικά ακριβή τόνο" }
 ]} />
 
-Each level adds specificity and dramatically improves output quality.
+Κάθε επίπεδο προσθέτει εξειδίκευση και βελτιώνει δραματικά την ποιότητα εξόδου.
 
-### Specify These Elements
+### Καθορίστε αυτά τα Στοιχεία
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Audience</span>
-    <span className="text-muted-foreground">Who will read/use this?</span>
+    <span className="font-semibold min-w-24">Κοινό</span>
+    <span className="text-muted-foreground">Ποιος θα διαβάσει/χρησιμοποιήσει αυτό;</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Length</span>
-    <span className="text-muted-foreground">How long/short should it be?</span>
+    <span className="font-semibold min-w-24">Μήκος</span>
+    <span className="text-muted-foreground">Πόσο μεγάλο/μικρό πρέπει να είναι;</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Tone</span>
-    <span className="text-muted-foreground">Formal? Casual? Technical?</span>
+    <span className="font-semibold min-w-24">Τόνος</span>
+    <span className="text-muted-foreground">Επίσημος; Ανεπίσημος; Τεχνικός;</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Format</span>
-    <span className="text-muted-foreground">Prose? List? Table? Code?</span>
+    <span className="font-semibold min-w-24">Μορφή</span>
+    <span className="text-muted-foreground">Πεζός λόγος; Λίστα; Πίνακας; Κώδικας;</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Scope</span>
-    <span className="text-muted-foreground">What to include/exclude?</span>
+    <span className="font-semibold min-w-24">Εύρος</span>
+    <span className="text-muted-foreground">Τι να συμπεριληφθεί/εξαιρεθεί;</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-24">Purpose</span>
-    <span className="text-muted-foreground">What should this accomplish?</span>
+    <span className="font-semibold min-w-24">Σκοπός</span>
+    <span className="text-muted-foreground">Τι πρέπει να πετύχει αυτό;</span>
   </div>
 </div>
 
-## Principle 3: Context Is King
+## Αρχή 3: Το Πλαίσιο Είναι Βασιλιάς
 
-Models have no memory, no access to your files, and no knowledge of your situation. Everything relevant must be in the prompt.
+Τα μοντέλα δεν έχουν μνήμη, πρόσβαση στα αρχεία σας, και καμία γνώση της κατάστασής σας. Ό,τι είναι σχετικό πρέπει να είναι στο prompt.
 
-### Provide Sufficient Context
+### Δώστε Επαρκές Πλαίσιο
 
 <Compare 
-  before={{ label: "Insufficient context", content: "Why isn't my function working?" }}
-  after={{ label: "Sufficient context", content: "I have a Python function that should filter a list of dictionaries by a specific key value. It's returning an empty list when it should return 3 items.\n\nFunction:\ndef filter_items(items, key, value):\n    return [item for item in items if item[key] = value]\n\nCall: filter_items(items, 'status', 'active')\nExpected: 2 items, Got: empty list" }}
+  before={{ label: "Ανεπαρκές πλαίσιο", content: "Γιατί δεν λειτουργεί η συνάρτησή μου;" }}
+  after={{ label: "Επαρκές πλαίσιο", content: "Έχω μια συνάρτηση Python που πρέπει να φιλτράρει μια λίστα λεξικών κατά συγκεκριμένη τιμή κλειδιού. Επιστρέφει κενή λίστα ενώ θα έπρεπε να επιστρέψει 3 στοιχεία.\n\nΣυνάρτηση:\ndef filter_items(items, key, value):\n    return [item for item in items if item[key] = value]\n\nΚλήση: filter_items(items, 'status', 'active')\nΑναμενόμενο: 2 στοιχεία, Αποτέλεσμα: κενή λίστα" }}
 />
 
-### The Context Checklist
+### Η Λίστα Ελέγχου Πλαισίου
 
-<Callout type="tip" title="Before You Submit">
-Ask yourself: Would a smart stranger understand this request? If not, add more context.
+<Callout type="tip" title="Πριν Υποβάλετε">
+Ρωτήστε τον εαυτό σας: Θα καταλάβαινε ένας έξυπνος ξένος αυτό το αίτημα; Αν όχι, προσθέστε περισσότερο πλαίσιο.
 </Callout>
 
 <Checklist 
-  title="Context Checklist"
+  title="Λίστα Ελέγχου Πλαισίου"
   items={[
-    { text: "Does the model know what I'm working on?" },
-    { text: "Does it know my goal?" },
-    { text: "Does it have all necessary information?" },
-    { text: "Does it understand the constraints?" },
-    { text: "Would a smart stranger understand this request?" }
+    { text: "Ξέρει το μοντέλο σε τι δουλεύω;" },
+    { text: "Ξέρει τον στόχο μου;" },
+    { text: "Έχει όλες τις απαραίτητες πληροφορίες;" },
+    { text: "Κατανοεί τους περιορισμούς;" },
+    { text: "Θα καταλάβαινε ένας έξυπνος ξένος αυτό το αίτημα;" }
   ]}
 />
 
-## Principle 4: Guide, Don't Just Ask
+## Αρχή 4: Καθοδηγήστε, Μην Απλά Ρωτάτε
 
-Don't just ask for an answer—guide the model toward the answer you want.
+Μην ρωτάτε απλά για μια απάντηση—καθοδηγήστε το μοντέλο προς την απάντηση που θέλετε.
 
-### Use Instructional Framing
+### Χρησιμοποιήστε Καθοδηγητικό Πλαίσιο
 
 <Compare 
-  before={{ label: "Just Asking", content: "What are the pros and cons of microservices?" }}
-  after={{ label: "Guiding", content: "List 5 advantages and 5 disadvantages of microservices architecture.\n\nFor each point:\n- State the point clearly in one sentence\n- Provide a brief explanation (2-3 sentences)\n- Give a concrete example\n\nConsider perspectives of: small startups, large enterprises, and teams transitioning from monoliths." }}
+  before={{ label: "Απλά Ρωτώντας", content: "Ποια είναι τα πλεονεκτήματα και μειονεκτήματα των microservices;" }}
+  after={{ label: "Καθοδηγώντας", content: "Κατονόμασε 5 πλεονεκτήματα και 5 μειονεκτήματα της αρχιτεκτονικής microservices.\n\nΓια κάθε σημείο:\n- Δήλωσε το σημείο ξεκάθαρα σε μία πρόταση\n- Δώσε σύντομη εξήγηση (2-3 προτάσεις)\n- Δώσε ένα συγκεκριμένο παράδειγμα\n\nΛάβε υπόψη τις προοπτικές: μικρών startups, μεγάλων επιχειρήσεων, και ομάδων που μεταβαίνουν από monoliths." }}
 />
 
-### Provide Reasoning Scaffolds
+### Δώστε Σκαλωσιές Συλλογισμού
 
-For complex tasks, guide the reasoning process:
+Για πολύπλοκες εργασίες, καθοδηγήστε τη διαδικασία συλλογισμού:
 
 <TryIt 
-  title="Reasoning Scaffold Example"
-  description="This prompt guides the AI through a systematic decision-making process."
-  prompt={`I need to choose between PostgreSQL and MongoDB for my e-commerce project.
+  title="Παράδειγμα Σκαλωσιάς Συλλογισμού"
+  description="Αυτό το prompt καθοδηγεί την AI μέσα από μια συστηματική διαδικασία λήψης αποφάσεων."
+  prompt={`Πρέπει να επιλέξω μεταξύ PostgreSQL και MongoDB για το e-commerce project μου.
 
-Think through this systematically:
-1. First, list the typical requirements for an e-commerce database
-2. Then, evaluate each database against each requirement
-3. Consider trade-offs specific to my use case
-4. Make a recommendation with clear justification`}
+Σκέψου το συστηματικά:
+1. Πρώτα, κατονόμασε τις τυπικές απαιτήσεις για μια βάση δεδομένων e-commerce
+2. Μετά, αξιολόγησε κάθε βάση δεδομένων έναντι κάθε απαίτησης
+3. Λάβε υπόψη τα trade-offs ειδικά για τη χρήση μου
+4. Κάνε μια σύσταση με σαφή αιτιολόγηση`}
 />
 
 ## Principle 5: Iterate and Refine

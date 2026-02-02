@@ -1,242 +1,242 @@
-Role-based prompting is one of the most powerful and widely-used techniques in prompt engineering. By assigning a specific role or persona to the AI, you can dramatically influence the quality, style, and relevance of responses.
+پرامپت‌نویسی مبتنی بر نقش یکی از قدرتمندترین و پرکاربردترین تکنیک‌ها در مهندسی پرامپت است. با اختصاص یک نقش یا شخصیت خاص به هوش مصنوعی، می‌توانید کیفیت، سبک و ارتباط پاسخ‌ها را به طور چشمگیری تحت تأثیر قرار دهید.
 
-<Callout type="tip" title="The Power of Personas">
-Think of roles as filters for AI's vast knowledge. The right role focuses responses like a lens focuses light.
+<Callout type="tip" title="قدرت شخصیت‌ها">
+نقش‌ها را به عنوان فیلترهایی برای دانش گسترده هوش مصنوعی در نظر بگیرید. نقش مناسب پاسخ‌ها را مانند عدسی که نور را متمرکز می‌کند، متمرکز می‌سازد.
 </Callout>
 
-## Why Roles Work
+## چرا نقش‌ها مؤثر هستند
 
-When you assign a role, you're essentially telling the model: "Filter your vast knowledge through this specific lens." The model adjusts its:
+وقتی یک نقش اختصاص می‌دهید، اساساً به مدل می‌گویید: «دانش گسترده خود را از این دریچه خاص فیلتر کن.» مدل موارد زیر را تنظیم می‌کند:
 
-- **Vocabulary**: Using terminology appropriate to the role
-- **Perspective**: Considering problems from that viewpoint
-- **Expertise depth**: Providing role-appropriate detail levels
-- **Communication style**: Matching how that role would communicate
+- **واژگان**: استفاده از اصطلاحات مناسب نقش
+- **دیدگاه**: بررسی مسائل از آن زاویه دید
+- **عمق تخصص**: ارائه سطوح جزئیات متناسب با نقش
+- **سبک ارتباطی**: تطبیق با نحوه ارتباط آن نقش
 
-### The Technical Explanation
+### توضیح فنی
 
-LLMs work by predicting the most likely next token based on the context they're given. When you specify a role, you're fundamentally changing what "likely" means.
+مدل‌های زبانی بزرگ (LLM) با پیش‌بینی محتمل‌ترین توکن بعدی بر اساس زمینه داده شده کار می‌کنند. وقتی یک نقش مشخص می‌کنید، اساساً معنای «محتمل» را تغییر می‌دهید.
 
-**Activating Relevant Knowledge**: The role primes specific regions of the model's learned associations. Saying "You are a doctor" activates medical terminology, diagnostic reasoning patterns, and clinical communication styles from the training data.
+**فعال‌سازی دانش مرتبط**: نقش، نواحی خاصی از ارتباطات آموخته‌شده مدل را فعال می‌کند. گفتن «تو یک پزشک هستی» اصطلاحات پزشکی، الگوهای استدلال تشخیصی و سبک‌های ارتباط بالینی از داده‌های آموزشی را فعال می‌کند.
 
-**Statistical Conditioning**: LLMs learned from millions of documents written by real experts. When you assign a role, the model conditions its probability distributions to match patterns it saw from that type of author.
+**شرطی‌سازی آماری**: مدل‌های زبانی بزرگ از میلیون‌ها سند نوشته شده توسط متخصصان واقعی یاد گرفته‌اند. وقتی یک نقش اختصاص می‌دهید، مدل توزیع‌های احتمالی خود را برای تطبیق با الگوهایی که از آن نوع نویسنده دیده، شرطی می‌کند.
 
-**Reducing Ambiguity**: Without a role, the model averages across all possible responders. With a role, it narrows to a specific subset, making responses more focused and consistent.
+**کاهش ابهام**: بدون نقش، مدل میانگین تمام پاسخ‌دهندگان ممکن را می‌گیرد. با نقش، به زیرمجموعه خاصی محدود می‌شود و پاسخ‌ها را متمرکزتر و سازگارتر می‌کند.
 
-**Context Anchoring**: The role creates a persistent context anchor throughout the conversation. Every subsequent response is influenced by this initial framing.
+**لنگر زمینه**: نقش یک لنگر زمینه پایدار در طول مکالمه ایجاد می‌کند. هر پاسخ بعدی تحت تأثیر این چارچوب‌بندی اولیه قرار می‌گیرد.
 
-Think of it this way: if you ask "What should I do about this cough?" the model could respond as a doctor, a friend, a pharmacist, or a worried parent. Each would give different advice. By specifying the role upfront, you're telling the model which "voice" to use from its training data.
+این‌گونه فکر کنید: اگر بپرسید «درباره این سرفه چه کار کنم؟» مدل می‌تواند به عنوان یک پزشک، یک دوست، یک داروساز یا یک والد نگران پاسخ دهد. هر کدام توصیه متفاوتی می‌دهند. با مشخص کردن نقش از ابتدا، به مدل می‌گویید از کدام «صدا» در داده‌های آموزشی‌اش استفاده کند.
 
-<Callout type="info" title="Why This Matters">
-The model isn't pretending or role-playing in a theatrical sense. It's statistically biasing its outputs toward patterns it learned from real experts, professionals, and specialists during training. A "doctor" role activates medical knowledge pathways; a "poet" role activates literary patterns.
+<Callout type="info" title="چرا این مهم است">
+مدل در حال تظاهر یا نقش‌بازی به معنای تئاتری نیست. در واقع خروجی‌های خود را به صورت آماری به سمت الگوهایی که از متخصصان، حرفه‌ای‌ها و متخصصان واقعی در طول آموزش یاد گرفته، سوگیری می‌دهد. نقش «پزشک» مسیرهای دانش پزشکی را فعال می‌کند؛ نقش «شاعر» الگوهای ادبی را فعال می‌کند.
 </Callout>
 
-## Basic Role Patterns
+## الگوهای پایه نقش
 
-These foundational patterns work across most use cases. Start with these templates and customize them for your needs.
+این الگوهای بنیادی در بیشتر موارد استفاده کار می‌کنند. با این قالب‌ها شروع کنید و آن‌ها را برای نیازهای خود سفارشی کنید.
 
-### The Expert Pattern
+### الگوی متخصص
 
-The most versatile pattern. Specify the field of expertise and years of experience to get authoritative, in-depth responses. Works well for technical questions, analysis, and professional advice.
+متنوع‌ترین الگو. حوزه تخصص و سال‌های تجربه را مشخص کنید تا پاسخ‌های معتبر و عمیق دریافت کنید. برای سؤالات فنی، تحلیل و مشاوره حرفه‌ای به خوبی کار می‌کند.
 
 <TryIt compact prompt={`You are an expert \${field} with \${years:10} years of experience in \${specialty}.
 
 \${task}`} />
 
-### The Professional Pattern
+### الگوی حرفه‌ای
 
-Ground the role in a real-world context by specifying a job title and organization type. This adds institutional knowledge and professional norms to the response.
+نقش را در یک زمینه واقعی با مشخص کردن عنوان شغلی و نوع سازمان پایه‌گذاری کنید. این کار دانش سازمانی و هنجارهای حرفه‌ای را به پاسخ اضافه می‌کند.
 
 <TryIt compact prompt={`You are a \${profession} working at \${organization}.
 
 \${task}`} />
 
-### The Teacher Pattern
+### الگوی معلم
 
-Perfect for learning and explanations. Specifying the audience level ensures the response matches the learner's background, from beginners to advanced practitioners.
+عالی برای یادگیری و توضیحات. مشخص کردن سطح مخاطب تضمین می‌کند که پاسخ با پیش‌زمینه یادگیرنده مطابقت دارد، از مبتدیان گرفته تا متخصصان پیشرفته.
 
 <TryIt compact prompt={`You are a \${subject} teacher who specializes in explaining complex concepts to \${audience}.
 
 \${task}`} />
 
-## Advanced Role Constructions
+## ساختارهای پیشرفته نقش
 
-### Compound Roles
+### نقش‌های ترکیبی
 
-Combine multiple identities to get responses that blend different perspectives. This pediatrician-parent combination produces advice that's both medically sound and practically tested.
+چندین هویت را برای دریافت پاسخ‌هایی که دیدگاه‌های مختلف را ترکیب می‌کنند، با هم ادغام کنید. این ترکیب متخصص اطفال-والد، مشاوره‌ای تولید می‌کند که هم از نظر پزشکی معتبر است و هم عملاً آزمایش شده.
 
 <TryIt compact prompt={`You are a pediatrician who is also a parent of three children. You understand both the medical and practical aspects of childhood health issues. You communicate with empathy and without medical jargon.
 
 \${question}`} />
 
-### Situational Roles
+### نقش‌های موقعیتی
 
-Place the role in a specific scenario to shape both content and tone. Here, the code review context makes the AI constructive and educational rather than just critical.
+نقش را در یک سناریوی خاص قرار دهید تا هم محتوا و هم لحن را شکل دهید. در اینجا، زمینه بازبینی کد باعث می‌شود هوش مصنوعی سازنده و آموزشی باشد نه صرفاً انتقادی.
 
 <TryIt compact prompt={`You are a senior developer conducting a code review for a junior team member. You want to be helpful and educational, not critical. You explain not just what to fix, but why.
 
 Code to review:
 \${code}`} />
 
-### Perspective Roles
+### نقش‌های دیدگاهی
 
-Get feedback from a specific stakeholder's point of view. A VC perspective evaluates viability and scalability differently than a customer or engineer would.
+بازخورد از دیدگاه یک ذینفع خاص دریافت کنید. دیدگاه سرمایه‌گذار خطرپذیر، قابلیت اجرا و مقیاس‌پذیری را متفاوت از یک مشتری یا مهندس ارزیابی می‌کند.
 
 <TryIt compact prompt={`You are a venture capitalist evaluating startup pitches. You've seen thousands of pitches and can quickly identify strengths, weaknesses, and red flags. Be direct but constructive.
 
 Pitch: \${pitch}`} />
 
-## Role Categories and Examples
+## دسته‌بندی نقش‌ها و مثال‌ها
 
-Different domains benefit from different types of roles. Here are proven examples organized by category that you can adapt for your tasks.
+حوزه‌های مختلف از انواع مختلف نقش‌ها بهره می‌برند. در اینجا مثال‌های اثبات‌شده‌ای بر اساس دسته‌بندی آورده شده که می‌توانید برای وظایف خود تطبیق دهید.
 
-### Technical Roles
+### نقش‌های فنی
 
-**Software Architect**: Best for system design decisions, technology choices, and architectural trade-offs. The focus on maintainability steers responses toward practical, long-term solutions.
+**معمار نرم‌افزار**: بهترین برای تصمیمات طراحی سیستم، انتخاب‌های فناوری و مصالحه‌های معماری. تمرکز بر قابلیت نگهداری، پاسخ‌ها را به سمت راه‌حل‌های عملی و بلندمدت هدایت می‌کند.
 
 <TryIt compact prompt={`You are a software architect specializing in scalable distributed systems. You prioritize maintainability, performance, and team productivity in your recommendations.
 
 \${question}`} />
 
-**Security Specialist**: The attacker mindset is key here. This role produces threat-focused analysis that identifies vulnerabilities a defensive-only perspective might miss.
+**متخصص امنیت**: ذهنیت مهاجم در اینجا کلیدی است. این نقش تحلیل متمرکز بر تهدید تولید می‌کند که آسیب‌پذیری‌هایی را شناسایی می‌کند که دیدگاه صرفاً دفاعی ممکن است از دست بدهد.
 
 <TryIt compact prompt={`You are a cybersecurity specialist who conducts penetration testing. You think like an attacker to identify vulnerabilities.
 
 Analyze: \${target}`} />
 
-**DevOps Engineer**: Ideal for deployment, automation, and infrastructure questions. The emphasis on reliability ensures production-ready recommendations.
+**مهندس DevOps**: ایده‌آل برای سؤالات استقرار، اتوماسیون و زیرساخت. تأکید بر قابلیت اطمینان، توصیه‌های آماده تولید را تضمین می‌کند.
 
 <TryIt compact prompt={`You are a DevOps engineer focused on CI/CD pipelines and infrastructure as code. You value automation and reliability.
 
 \${question}`} />
 
-### Creative Roles
+### نقش‌های خلاقانه
 
-**Copywriter**: The "award-winning" qualifier and conversion focus produce punchy, persuasive copy rather than generic marketing text.
+**تبلیغ‌نویس**: صفت «برنده جایزه» و تمرکز بر تبدیل، متن تبلیغاتی جذاب و متقاعدکننده تولید می‌کند نه متن بازاریابی عمومی.
 
 <TryIt compact prompt={`You are an award-winning copywriter known for creating compelling headlines and persuasive content that drives conversions.
 
 Write copy for: \${product}`} />
 
-**Screenwriter**: Activates knowledge of dramatic structure, pacing, and dialogue conventions. Great for any narrative writing that needs tension and character voice.
+**فیلمنامه‌نویس**: دانش ساختار دراماتیک، ریتم و قراردادهای دیالوگ را فعال می‌کند. عالی برای هر نوشته روایی که نیاز به تنش و صدای شخصیت دارد.
 
 <TryIt compact prompt={`You are a screenwriter who has written for popular TV dramas. You understand story structure, dialogue, and character development.
 
 Write: \${scene}`} />
 
-**UX Writer**: A specialized role for interface text. The focus on brevity and user guidance produces concise, action-oriented copy.
+**نویسنده UX**: یک نقش تخصصی برای متن رابط کاربری. تمرکز بر اختصار و راهنمایی کاربر، متن مختصر و عمل‌گرا تولید می‌کند.
 
 <TryIt compact prompt={`You are a UX writer specializing in microcopy. You make interfaces feel human and guide users with minimal text.
 
 Write microcopy for: \${element}`} />
 
-### Analytical Roles
+### نقش‌های تحلیلی
 
-**Business Analyst**: Bridges the gap between technical and non-technical stakeholders. Useful for requirement gathering, spec writing, and identifying gaps in project plans.
+**تحلیلگر کسب‌وکار**: پل بین ذینفعان فنی و غیرفنی. مفید برای جمع‌آوری نیازمندی‌ها، نوشتن مشخصات و شناسایی شکاف‌ها در برنامه‌های پروژه.
 
 <TryIt compact prompt={`You are a business analyst who translates between technical teams and stakeholders. You clarify requirements and identify edge cases.
 
 Analyze: \${requirement}`} />
 
-**Research Scientist**: The emphasis on evidence and uncertainty acknowledgment produces balanced, well-sourced responses that distinguish facts from speculation.
+**دانشمند پژوهشی**: تأکید بر شواهد و اذعان به عدم قطعیت، پاسخ‌های متعادل و مستند تولید می‌کند که حقایق را از حدس و گمان متمایز می‌کند.
 
 <TryIt compact prompt={`You are a research scientist who values empirical evidence and acknowledges uncertainty. You distinguish between established facts and hypotheses.
 
 Research question: \${question}`} />
 
-**Financial Analyst**: Combines quantitative analysis with risk assessment. The dual focus on returns and risk produces more balanced investment perspectives.
+**تحلیلگر مالی**: تحلیل کمی را با ارزیابی ریسک ترکیب می‌کند. تمرکز دوگانه بر بازده و ریسک، دیدگاه‌های سرمایه‌گذاری متعادل‌تری تولید می‌کند.
 
 <TryIt compact prompt={`You are a financial analyst who evaluates investments using fundamental and technical analysis. You consider risk alongside potential returns.
 
 Evaluate: \${investment}`} />
 
-### Educational Roles
+### نقش‌های آموزشی
 
-**Socratic Tutor**: Instead of giving answers, this role asks guiding questions. Excellent for deeper learning and helping students develop critical thinking skills.
+**مربی سقراطی**: به جای دادن پاسخ، سؤالات راهنما می‌پرسد. عالی برای یادگیری عمیق‌تر و کمک به دانش‌آموزان در توسعه مهارت‌های تفکر انتقادی.
 
 <TryIt compact prompt={`You are a tutor using the Socratic method. Instead of giving answers directly, you guide students to discover answers through thoughtful questions.
 
 Topic: \${topic}`} />
 
-**Instructional Designer**: Structures learning for maximum retention. Use this role when you need to break down complex topics into teachable chunks with clear progression.
+**طراح آموزشی**: یادگیری را برای حداکثر یادداری ساختاربندی می‌کند. از این نقش زمانی استفاده کنید که نیاز دارید موضوعات پیچیده را به بخش‌های قابل آموزش با پیشرفت واضح تقسیم کنید.
 
 <TryIt compact prompt={`You are an instructional designer who creates engaging learning experiences. You break complex topics into digestible modules with clear learning objectives.
 
 Create curriculum for: \${topic}`} />
 
-## The Role Stack Technique
+## تکنیک پشته نقش
 
-For complex tasks, combine multiple role aspects into a single, layered identity. This technique stacks expertise, audience awareness, and style guidelines to create highly specialized responses.
+برای وظایف پیچیده، جنبه‌های متعدد نقش را در یک هویت واحد و لایه‌ای ترکیب کنید. این تکنیک تخصص، آگاهی از مخاطب و دستورالعمل‌های سبک را برای ایجاد پاسخ‌های بسیار تخصصی روی هم می‌چیند.
 
-This example layers three elements: domain expertise (API documentation), audience (junior developers), and style guide (Google's conventions). Each layer constrains the output further.
+این مثال سه عنصر را لایه‌بندی می‌کند: تخصص حوزه (مستندسازی API)، مخاطب (توسعه‌دهندگان تازه‌کار) و راهنمای سبک (قراردادهای Google). هر لایه خروجی را بیشتر محدود می‌کند.
 
 <TryIt compact prompt={`You are a technical writer with expertise in API documentation. You write for developers who are new to REST APIs. Follow the Google developer documentation style guide: use second person ("you"), active voice, present tense, and keep sentences under 26 words.
 
 Document: \${apiEndpoint}`} />
 
-## Roles for Different Tasks
+## نقش‌ها برای وظایف مختلف
 
 <div className="my-4 grid gap-2">
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Code review</span>
-    <span className="text-muted-foreground">Senior developer + mentor</span>
+    <span className="font-semibold min-w-40">بازبینی کد</span>
+    <span className="text-muted-foreground">توسعه‌دهنده ارشد + مربی</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Writing feedback</span>
-    <span className="text-muted-foreground">Editor + target audience member</span>
+    <span className="font-semibold min-w-40">بازخورد نوشتاری</span>
+    <span className="text-muted-foreground">ویراستار + عضو مخاطب هدف</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Business strategy</span>
-    <span className="text-muted-foreground">Consultant + industry expert</span>
+    <span className="font-semibold min-w-40">استراتژی کسب‌وکار</span>
+    <span className="text-muted-foreground">مشاور + متخصص صنعت</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Learning new topic</span>
-    <span className="text-muted-foreground">Patient teacher + practitioner</span>
+    <span className="font-semibold min-w-40">یادگیری موضوع جدید</span>
+    <span className="text-muted-foreground">معلم صبور + کارورز</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Creative writing</span>
-    <span className="text-muted-foreground">Specific genre author</span>
+    <span className="font-semibold min-w-40">نوشتن خلاقانه</span>
+    <span className="text-muted-foreground">نویسنده ژانر خاص</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Technical explanation</span>
-    <span className="text-muted-foreground">Expert + communicator</span>
+    <span className="font-semibold min-w-40">توضیح فنی</span>
+    <span className="text-muted-foreground">متخصص + ارتباط‌دهنده</span>
   </div>
   <div className="flex gap-2 p-3 bg-muted/50 rounded-lg">
-    <span className="font-semibold min-w-40">Problem-solving</span>
-    <span className="text-muted-foreground">Domain specialist + generalist</span>
+    <span className="font-semibold min-w-40">حل مسئله</span>
+    <span className="text-muted-foreground">متخصص حوزه + تعمیم‌گرا</span>
   </div>
 </div>
 
-## Anti-Patterns to Avoid
+## ضدالگوهایی که باید اجتناب کرد
 
-### Overly Generic Roles
-
-<Compare 
-  before={{ label: "Weak", content: "You are a helpful assistant." }}
-  after={{ label: "Better", content: "You are a helpful assistant specializing in Python development, particularly web applications with Flask and Django." }}
-/>
-
-### Conflicting Roles
+### نقش‌های بیش از حد عمومی
 
 <Compare 
-  before={{ label: "Problematic", content: "You are a creative writer who always follows strict templates." }}
-  after={{ label: "Better", content: "You are a creative writer who works within established story structures while adding original elements." }}
+  before={{ label: "ضعیف", content: "You are a helpful assistant." }}
+  after={{ label: "بهتر", content: "You are a helpful assistant specializing in Python development, particularly web applications with Flask and Django." }}
 />
 
-### Unrealistic Expertise
+### نقش‌های متناقض
 
 <Compare 
-  before={{ label: "Problematic", content: "You are an expert in everything." }}
-  after={{ label: "Better", content: "You are a T-shaped professional: deep expertise in machine learning with broad knowledge of software engineering practices." }}
+  before={{ label: "مشکل‌ساز", content: "You are a creative writer who always follows strict templates." }}
+  after={{ label: "بهتر", content: "You are a creative writer who works within established story structures while adding original elements." }}
 />
 
-## Real-World Prompt Examples
+### تخصص غیرواقعی
 
-### Technical Documentation
+<Compare 
+  before={{ label: "مشکل‌ساز", content: "You are an expert in everything." }}
+  after={{ label: "بهتر", content: "You are a T-shaped professional: deep expertise in machine learning with broad knowledge of software engineering practices." }}
+/>
+
+## مثال‌های پرامپت دنیای واقعی
+
+### مستندسازی فنی
 
 <TryIt 
-  title="Technical Writer Role"
-  description="Try this technical documentation prompt with your own API endpoint."
+  title="نقش نویسنده فنی"
+  description="این پرامپت مستندسازی فنی را با endpoint API خود امتحان کنید."
   prompt={`You are a senior technical writer at a developer tools company. You have 10 years of experience writing API documentation, SDK guides, and developer tutorials.
 
 Your documentation style:
@@ -249,11 +249,11 @@ Your documentation style:
 Document this API endpoint: GET /api/users/:id - Returns user profile data`}
 />
 
-### Creative Writing
+### نوشتن خلاقانه
 
 <TryIt 
-  title="Novelist Role"
-  description="This role combines genre expertise with specific stylistic traits."
+  title="نقش رمان‌نویس"
+  description="این نقش تخصص ژانر را با ویژگی‌های سبکی خاص ترکیب می‌کند."
   prompt={`You are a novelist who writes in the style of literary fiction with elements of magical realism. Your prose is known for:
 - Lyrical but accessible language
 - Deep psychological character portraits
@@ -263,11 +263,11 @@ Document this API endpoint: GET /api/users/:id - Returns user profile data`}
 Write the opening scene of a story about a librarian who discovers that books in her library are slowly changing their endings.`}
 />
 
-### Business Communication
+### ارتباطات تجاری
 
 <TryIt 
-  title="Executive Coach Role"
-  description="This role helps with sensitive business communications."
+  title="نقش مربی اجرایی"
+  description="این نقش به ارتباطات تجاری حساس کمک می‌کند."
   prompt={`You are an executive communications coach who has worked with Fortune 500 CEOs. You help leaders communicate complex ideas simply and build trust with their teams.
 
 Review this message for a team meeting about budget cuts. Suggest improvements that:
@@ -279,13 +279,13 @@ Review this message for a team meeting about budget cuts. Suggest improvements t
 Draft message: "Due to budget constraints, we need to reduce project scope. Some initiatives will be paused."`}
 />
 
-## Combining Roles with Other Techniques
+## ترکیب نقش‌ها با سایر تکنیک‌ها
 
-Roles work even better when combined with other prompting techniques:
+نقش‌ها وقتی با سایر تکنیک‌های پرامپت‌نویسی ترکیب شوند، بهتر کار می‌کنند:
 
-### Role + Few-Shot
+### نقش + چند نمونه
 
-Combine a role with an example to show exactly how the role should respond. The example teaches tone and format while the role provides context and expertise.
+یک نقش را با یک مثال ترکیب کنید تا دقیقاً نشان دهید نقش چگونه باید پاسخ دهد. مثال لحن و فرمت را آموزش می‌دهد در حالی که نقش زمینه و تخصص را فراهم می‌کند.
 
 <TryIt compact prompt={`You are a customer support specialist trained to de-escalate angry customers.
 
@@ -296,9 +296,9 @@ You: "I completely understand your frustration, and I apologize for the delay. L
 Now respond to:
 Customer: "\${customerMessage}"`} />
 
-### Role + Chain of Thought
+### نقش + زنجیره تفکر
 
-The detective role naturally encourages step-by-step reasoning. Combining roles with chain-of-thought produces more transparent, verifiable problem-solving.
+نقش کارآگاه به طور طبیعی استدلال گام به گام را تشویق می‌کند. ترکیب نقش‌ها با زنجیره تفکر، حل مسئله شفاف‌تر و قابل تأییدتر تولید می‌کند.
 
 <TryIt compact prompt={`You are a detective solving a logic puzzle. Think through each clue methodically, stating your reasoning at each step.
 
@@ -307,22 +307,22 @@ Clues:
 
 Solve step by step, explaining your deductions.`} />
 
-## Summary
+## خلاصه
 
-<Callout type="info" title="Key Takeaways">
-Role-based prompting is powerful because it focuses the model's vast knowledge, sets expectations for tone and style, provides implicit context, and makes outputs more consistent.
+<Callout type="info" title="نکات کلیدی">
+پرامپت‌نویسی مبتنی بر نقش قدرتمند است زیرا دانش گسترده مدل را متمرکز می‌کند، انتظارات برای لحن و سبک را تعیین می‌کند، زمینه ضمنی فراهم می‌کند و خروجی‌ها را سازگارتر می‌سازد.
 </Callout>
 
 <Quiz 
-  question="What makes a role-based prompt more effective?"
+  question="چه چیزی یک پرامپت مبتنی بر نقش را مؤثرتر می‌کند؟"
   options={[
-    "Using generic role titles like 'expert'",
-    "Adding specific expertise, experience, and perspective details",
-    "Keeping the role description as short as possible",
-    "Asking the AI to switch roles frequently"
+    "استفاده از عناوین نقش عمومی مانند 'متخصص'",
+    "افزودن جزئیات خاص تخصص، تجربه و دیدگاه",
+    "تا حد امکان کوتاه نگه داشتن توضیح نقش",
+    "درخواست از هوش مصنوعی برای تغییر مکرر نقش‌ها"
   ]}
   correctIndex={1}
-  explanation="The more detailed and realistic the role, the better the results. Specificity helps the model understand exactly what knowledge, tone, and perspective to apply."
+  explanation="هرچه نقش جزئی‌تر و واقعی‌تر باشد، نتایج بهتر است. ویژگی‌های خاص به مدل کمک می‌کند دقیقاً بفهمد چه دانش، لحن و دیدگاهی را اعمال کند."
 />
 
-The key is **specificity**: the more detailed and realistic the role, the better the results. In the next chapter, we'll explore how to get consistent, structured outputs from your prompts.
+کلید **ویژگی خاص بودن** است: هرچه نقش جزئی‌تر و واقعی‌تر باشد، نتایج بهتر است. در فصل بعدی، بررسی خواهیم کرد که چگونه خروجی‌های سازگار و ساختاریافته از پرامپت‌های خود دریافت کنید.
