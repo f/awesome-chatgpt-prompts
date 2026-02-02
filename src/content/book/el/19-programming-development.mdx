@@ -1,56 +1,56 @@
-AI has transformed software development. This chapter covers prompting techniques for code generation, debugging, review, and development workflows.
+Το AI έχει μεταμορφώσει την ανάπτυξη λογισμικού. Αυτό το κεφάλαιο καλύπτει τεχνικές prompting για δημιουργία κώδικα, debugging, review, και ροές εργασίας ανάπτυξης.
 
-<Callout type="info" title="AI as Coding Partner">
-AI excels at code generation, debugging, and documentation—but always review generated code for security, correctness, and maintainability. Never deploy AI code without testing.
+<Callout type="info" title="AI ως Συνεργάτης Κωδικοποίησης">
+Το AI διαπρέπει στη δημιουργία κώδικα, debugging, και τεκμηρίωση—αλλά πάντα αναθεώρησε τον παραγμένο κώδικα για ασφάλεια, ορθότητα, και συντηρησιμότητα. Ποτέ μην αναπτύσσεις AI κώδικα χωρίς δοκιμή.
 </Callout>
 
-## Code Generation
+## Δημιουργία Κώδικα
 
-### Do's and Don'ts: Code Prompts
+### Τι να Κάνεις και Τι Όχι: Prompts Κώδικα
 
 <Compare 
-  before={{ label: "❌ Vague request", content: "Write a function to validate emails." }}
-  after={{ label: "✓ Complete specification", content: "Write a Python function that validates email addresses.\n\nInput: string (potential email)\nOutput: tuple[bool, str | None] - (is_valid, error_message)\nHandle: empty string, None, unicode chars\nUse regex, include type hints and docstring." }}
+  before={{ label: "❌ Ασαφές αίτημα", content: "Γράψε μια function για επικύρωση emails." }}
+  after={{ label: "✓ Πλήρης προδιαγραφή", content: "Γράψε μια Python function που επικυρώνει διευθύνσεις email.\n\nInput: string (πιθανό email)\nOutput: tuple[bool, str | None] - (is_valid, error_message)\nΧειρίσου: κενό string, None, unicode χαρακτήρες\nΧρησιμοποίησε regex, συμπεριέλαβε type hints και docstring." }}
 />
 
-### Function Generation
+### Δημιουργία Function
 
-<TryIt compact prompt={`Write a \${language:Python} function that \${description:validates email addresses}.
+<TryIt compact prompt={`Γράψε μια \${language:Python} function που \${description:επικυρώνει διευθύνσεις email}.
 
-Requirements:
-- Input: \${inputTypes:string (potential email)}
-- Output: \${outputType:boolean and optional error message}
-- Handle edge cases: \${edgeCases:empty string, None, unicode characters}
-- Performance: \${performance:standard}
+Απαιτήσεις:
+- Input: \${inputTypes:string (πιθανό email)}
+- Output: \${outputType:boolean και προαιρετικό μήνυμα σφάλματος}
+- Χειρίσου ακραίες περιπτώσεις: \${edgeCases:κενό string, None, unicode χαρακτήρες}
+- Απόδοση: \${performance:τυπική}
 
-Include:
+Συμπεριέλαβε:
 - Type hints/annotations
-- Docstring with examples
-- Input validation
-- Error handling`} />
+- Docstring με παραδείγματα
+- Επικύρωση εισόδου
+- Χειρισμό σφαλμάτων`} />
 
-### Class/Module Generation
+### Δημιουργία Class/Module
 
-<TryIt compact prompt={`Create a \${language:Python} class for \${purpose:managing user sessions}.
+<TryIt compact prompt={`Δημιούργησε μια \${language:Python} class για \${purpose:διαχείριση user sessions}.
 
-Class design:
-- Name: \${className:SessionManager}
-- Responsibility: \${responsibility:handle user session lifecycle}
+Σχεδιασμός class:
+- Όνομα: \${className:SessionManager}
+- Ευθύνη: \${responsibility:χειρισμός κύκλου ζωής user session}
 - Properties: \${properties:session_id, user_id, created_at, expires_at}
 - Methods: \${methods:create(), validate(), refresh(), destroy()}
 
-Requirements:
-- Follow \${designPattern:Singleton} pattern
-- Include proper encapsulation
-- Add comprehensive docstrings
-- Include usage example
+Απαιτήσεις:
+- Ακολούθησε \${designPattern:Singleton} pattern
+- Συμπεριέλαβε σωστή encapsulation
+- Πρόσθεσε ολοκληρωμένα docstrings
+- Συμπεριέλαβε παράδειγμα χρήσης
 
-Testing:
-- Include unit test skeleton`} />
+Δοκιμές:
+- Συμπεριέλαβε σκελετό unit test`} />
 
-### API Endpoint Generation
+### Δημιουργία API Endpoint
 
-<TryIt compact prompt={`Create a REST API endpoint for \${resource:user profiles}.
+<TryIt compact prompt={`Δημιούργησε REST API endpoint για \${resource:user profiles}.
 
 Framework: \${framework:FastAPI}
 Method: \${method:GET}
@@ -58,233 +58,233 @@ Path: \${path:/api/users/{id}}
 
 Request:
 - Headers: \${headers:Authorization Bearer token}
-- Body schema: \${bodySchema:N/A for GET}
+- Body schema: \${bodySchema:N/A για GET}
 - Query params: \${queryParams:include_posts (boolean)}
 
 Response:
-- Success: \${successResponse:200 with user object}
-- Errors: \${errorResponses:401 Unauthorized, 404 Not Found}
+- Επιτυχία: \${successResponse:200 με user object}
+- Σφάλματα: \${errorResponses:401 Unauthorized, 404 Not Found}
 
-Include:
-- Input validation
-- Authentication check
-- Error handling
-- Rate limiting consideration`} />
+Συμπεριέλαβε:
+- Επικύρωση εισόδου
+- Έλεγχο authentication
+- Χειρισμό σφαλμάτων
+- Εκτίμηση rate limiting`} />
 
 ## Debugging
 
-<Callout type="tip" title="Debugging Principle">
-Always include the **expected behavior**, **actual behavior**, and **error message** (if any). The more context you provide, the faster AI can identify the root cause.
+<Callout type="tip" title="Αρχή Debugging">
+Πάντα συμπεριέλαβε την **αναμενόμενη συμπεριφορά**, **πραγματική συμπεριφορά**, και **μήνυμα σφάλματος** (αν υπάρχει). Όσο περισσότερο context παρέχεις, τόσο πιο γρήγορα το AI μπορεί να αναγνωρίσει τη ρίζα του προβλήματος.
 </Callout>
 
-### Bug Analysis
+### Ανάλυση Bug
 
-<TryIt compact prompt={`Debug this code. It should \${expectedBehavior:return the sum of all numbers} but instead \${actualBehavior:returns 0 for all inputs}.
+<TryIt compact prompt={`Κάνε debug αυτόν τον κώδικα. Πρέπει να \${expectedBehavior:επιστρέφει το άθροισμα όλων των αριθμών} αλλά αντ' αυτού \${actualBehavior:επιστρέφει 0 για όλες τις εισόδους}.
 
-Code:
-\${code:paste your code here}
+Κώδικας:
+\${code:επικόλλησε τον κώδικά σου εδώ}
 
-Error message (if any):
-\${error:none}
+Μήνυμα σφάλματος (αν υπάρχει):
+\${error:κανένα}
 
-Steps to debug:
-1. Identify what the code is trying to do
-2. Trace through execution with the given input
-3. Find where expected and actual behavior diverge
-4. Explain the root cause
-5. Provide the fix with explanation`} />
+Βήματα debugging:
+1. Αναγνώρισε τι προσπαθεί να κάνει ο κώδικας
+2. Ακολούθησε την εκτέλεση με τη δεδομένη είσοδο
+3. Βρες πού αποκλίνουν αναμενόμενη και πραγματική συμπεριφορά
+4. Εξήγησε τη ρίζα του προβλήματος
+5. Παρέχε τη διόρθωση με εξήγηση`} />
 
-### Error Message Interpretation
+### Ερμηνεία Μηνύματος Σφάλματος
 
-<TryIt compact prompt={`Explain this error and how to fix it:
+<TryIt compact prompt={`Εξήγησε αυτό το σφάλμα και πώς να το διορθώσεις:
 
-Error:
-\${errorMessage:paste error message or stack trace here}
+Σφάλμα:
+\${errorMessage:επικόλλησε μήνυμα σφάλματος ή stack trace εδώ}
 
 Context:
-- Language/Framework: \${framework:Python 3.11}
-- What I was trying to do: \${action:reading a JSON file}
-- Relevant code: \${codeSnippet:paste relevant code}
+- Γλώσσα/Framework: \${framework:Python 3.11}
+- Τι προσπαθούσα να κάνω: \${action:ανάγνωση JSON αρχείου}
+- Σχετικός κώδικας: \${codeSnippet:επικόλλησε σχετικό κώδικα}
 
-Provide:
-1. Plain English explanation of the error
-2. Root cause
-3. Step-by-step fix
-4. How to prevent this in the future`} />
+Παρέχε:
+1. Εξήγηση του σφάλματος σε απλή γλώσσα
+2. Ρίζα του προβλήματος
+3. Διόρθωση βήμα-βήμα
+4. Πώς να το αποτρέψεις στο μέλλον`} />
 
-### Performance Debugging
+### Debugging Απόδοσης
 
-<TryIt compact prompt={`This code is slow. Analyze and optimize:
+<TryIt compact prompt={`Αυτός ο κώδικας είναι αργός. Ανάλυσε και βελτιστοποίησε:
 
-Code:
-\${code:paste your code here}
+Κώδικας:
+\${code:επικόλλησε τον κώδικά σου εδώ}
 
-Current performance: \${currentPerformance:takes 30 seconds for 1000 items}
-Target performance: \${targetPerformance:under 5 seconds}
-Constraints: \${constraints:memory limit 512MB}
+Τρέχουσα απόδοση: \${currentPerformance:παίρνει 30 δευτερόλεπτα για 1000 στοιχεία}
+Στόχος απόδοσης: \${targetPerformance:κάτω από 5 δευτερόλεπτα}
+Περιορισμοί: \${constraints:όριο μνήμης 512MB}
 
-Provide:
-1. Identify bottlenecks
-2. Explain why each is slow
-3. Suggest optimizations (ranked by impact)
-4. Show optimized code
-5. Estimate improvement`} />
+Παρέχε:
+1. Αναγνώρισε bottlenecks
+2. Εξήγησε γιατί το καθένα είναι αργό
+3. Πρότεινε βελτιστοποιήσεις (κατάταξη κατά αντίκτυπο)
+4. Δείξε βελτιστοποιημένο κώδικα
+5. Εκτίμησε βελτίωση`} />
 
 ## Code Review
 
-### Do's and Don'ts: Code Review Prompts
+### Τι να Κάνεις και Τι Όχι: Prompts Code Review
 
 <Compare 
-  before={{ label: "❌ Generic request", content: "Review this code." }}
-  after={{ label: "✓ Specific criteria", content: "Review this code for a pull request.\n\nCheck for:\n1. Correctness: bugs, logic errors, edge cases\n2. Security: injection risks, auth issues\n3. Performance: N+1 queries, memory leaks\n4. Maintainability: naming, complexity\n\nFormat: 🔴 Critical / 🟡 Important / 🟢 Suggestion" }}
+  before={{ label: "❌ Γενικό αίτημα", content: "Κάνε review αυτόν τον κώδικα." }}
+  after={{ label: "✓ Συγκεκριμένα κριτήρια", content: "Κάνε review αυτόν τον κώδικα για pull request.\n\nΈλεγξε για:\n1. Ορθότητα: bugs, λογικά λάθη, ακραίες περιπτώσεις\n2. Ασφάλεια: κίνδυνοι injection, ζητήματα auth\n3. Απόδοση: N+1 queries, memory leaks\n4. Συντηρησιμότητα: ονομασία, πολυπλοκότητα\n\nFormat: 🔴 Κρίσιμο / 🟡 Σημαντικό / 🟢 Πρόταση" }}
 />
 
-### Comprehensive Review
+### Ολοκληρωμένο Review
 
-<TryIt compact prompt={`Review this code for a pull request.
+<TryIt compact prompt={`Κάνε review αυτόν τον κώδικα για pull request.
 
-Code:
-\${code:paste your code here}
+Κώδικας:
+\${code:επικόλλησε τον κώδικά σου εδώ}
 
-Review for:
-1. **Correctness**: Bugs, logic errors, edge cases
-2. **Security**: Vulnerabilities, injection risks, auth issues
-3. **Performance**: Inefficiencies, N+1 queries, memory leaks
-4. **Maintainability**: Readability, naming, complexity
-5. **Best practices**: \${framework:Python/Django} conventions
+Review για:
+1. **Ορθότητα**: Bugs, λογικά λάθη, ακραίες περιπτώσεις
+2. **Ασφάλεια**: Ευπάθειες, κίνδυνοι injection, ζητήματα auth
+3. **Απόδοση**: Αναποτελεσματικότητες, N+1 queries, memory leaks
+4. **Συντηρησιμότητα**: Αναγνωσιμότητα, ονομασία, πολυπλοκότητα
+5. **Βέλτιστες πρακτικές**: \${framework:Python/Django} conventions
 
-Format your review as:
-🔴 Critical: must fix before merge
-🟡 Important: should fix
-🟢 Suggestion: nice to have
-💭 Question: clarification needed`} />
+Μορφοποίησε το review σου ως:
+🔴 Κρίσιμο: πρέπει να διορθωθεί πριν το merge
+🟡 Σημαντικό: πρέπει να διορθωθεί
+🟢 Πρόταση: καλό να έχεις
+💭 Ερώτηση: χρειάζεται διευκρίνιση`} />
 
 ### Security Review
 
-<TryIt compact prompt={`Perform a security review of this code:
+<TryIt compact prompt={`Εκτέλεσε security review αυτού του κώδικα:
 
-Code:
-\${code:paste your code here}
+Κώδικας:
+\${code:επικόλλησε τον κώδικά σου εδώ}
 
-Check for:
-- [ ] Injection vulnerabilities (SQL, XSS, command)
-- [ ] Authentication/authorization flaws
-- [ ] Sensitive data exposure
-- [ ] Insecure dependencies
-- [ ] Cryptographic issues
-- [ ] Input validation gaps
-- [ ] Error handling that leaks info
+Έλεγξε για:
+- [ ] Ευπάθειες injection (SQL, XSS, command)
+- [ ] Ελαττώματα authentication/authorization
+- [ ] Έκθεση ευαίσθητων δεδομένων
+- [ ] Μη ασφαλείς εξαρτήσεις
+- [ ] Κρυπτογραφικά ζητήματα
+- [ ] Κενά επικύρωσης εισόδου
+- [ ] Χειρισμός σφαλμάτων που διαρρέει πληροφορίες
 
-For each finding:
-- Severity: Critical/High/Medium/Low
-- Location: Line number or function
-- Issue: Description
-- Exploit: How it could be attacked
-- Fix: Recommended remediation`} />
+Για κάθε εύρημα:
+- Σοβαρότητα: Κρίσιμη/Υψηλή/Μέτρια/Χαμηλή
+- Τοποθεσία: Αριθμός γραμμής ή function
+- Ζήτημα: Περιγραφή
+- Exploit: Πώς θα μπορούσε να επιτεθεί
+- Διόρθωση: Συνιστώμενη αποκατάσταση`} />
 
 ## Refactoring
 
-### Code Smell Detection
+### Ανίχνευση Code Smells
 
-<TryIt compact prompt={`Analyze this code for code smells and refactoring opportunities:
+<TryIt compact prompt={`Ανάλυσε αυτόν τον κώδικα για code smells και ευκαιρίες refactoring:
 
-Code:
-\${code:paste your code here}
+Κώδικας:
+\${code:επικόλλησε τον κώδικά σου εδώ}
 
-Identify:
-1. Long methods (suggest extraction)
-2. Duplicate code (suggest DRY improvements)
-3. Complex conditionals (suggest simplification)
-4. Poor naming (suggest better names)
-5. Tight coupling (suggest decoupling)
+Αναγνώρισε:
+1. Μακριές μεθόδους (πρότεινε εξαγωγή)
+2. Διπλό κώδικα (πρότεινε DRY βελτιώσεις)
+3. Πολύπλοκες συνθήκες (πρότεινε απλοποίηση)
+4. Κακή ονομασία (πρότεινε καλύτερα ονόματα)
+5. Στενή σύζευξη (πρότεινε αποσύνδεση)
 
-For each issue, show before/after code.`} />
+Για κάθε ζήτημα, δείξε κώδικα πριν/μετά.`} />
 
-### Design Pattern Application
+### Εφαρμογή Design Pattern
 
-<TryIt compact prompt={`Refactor this code using the \${patternName:Factory} pattern.
+<TryIt compact prompt={`Κάνε refactor αυτόν τον κώδικα χρησιμοποιώντας το \${patternName:Factory} pattern.
 
-Current code:
-\${code:paste your code here}
+Τρέχων κώδικας:
+\${code:επικόλλησε τον κώδικά σου εδώ}
 
-Goals:
-- \${whyPattern:decouple object creation from usage}
-- \${benefits:easier testing and extensibility}
+Στόχοι:
+- \${whyPattern:αποσύνδεση δημιουργίας αντικειμένου από χρήση}
+- \${benefits:ευκολότερη δοκιμή και επεκτασιμότητα}
 
-Provide:
-1. Explanation of the pattern
-2. How it applies here
-3. Refactored code
-4. Trade-offs to consider`} />
+Παρέχε:
+1. Εξήγηση του pattern
+2. Πώς εφαρμόζεται εδώ
+3. Refactored κώδικας
+4. Ανταλλαγές να εξετάσεις`} />
 
-## Testing
+## Δοκιμές
 
-### Unit Test Generation
+### Δημιουργία Unit Tests
 
-<TryIt compact prompt={`Write unit tests for this function:
+<TryIt compact prompt={`Γράψε unit tests για αυτή τη function:
 
 Function:
-\${code:paste your function here}
+\${code:επικόλλησε τη function σου εδώ}
 
 Testing framework: \${testFramework:pytest}
 
-Cover:
-- Happy path (normal inputs)
-- Edge cases (empty, null, boundary values)
-- Error cases (invalid inputs)
-- \${specificScenarios:concurrent access, large inputs}
+Κάλυψε:
+- Happy path (κανονικές είσοδοι)
+- Ακραίες περιπτώσεις (κενό, null, οριακές τιμές)
+- Περιπτώσεις σφάλματος (μη έγκυρες είσοδοι)
+- \${specificScenarios:ταυτόχρονη πρόσβαση, μεγάλες είσοδοι}
 
 Format: Arrange-Act-Assert pattern
-Include: Descriptive test names`} />
+Συμπεριέλαβε: Περιγραφικά ονόματα tests`} />
 
-### Test Case Generation
+### Δημιουργία Test Cases
 
-<TryIt compact prompt={`Generate test cases for this feature:
+<TryIt compact prompt={`Δημιούργησε test cases για αυτό το feature:
 
-Feature: \${featureDescription:user registration with email verification}
-Acceptance criteria: \${acceptanceCriteria:user can sign up, receives email, can verify account}
+Feature: \${featureDescription:εγγραφή χρήστη με επαλήθευση email}
+Κριτήρια αποδοχής: \${acceptanceCriteria:ο χρήστης μπορεί να εγγραφεί, λαμβάνει email, μπορεί να επαληθεύσει λογαριασμό}
 
-Provide test cases in this format:
+Παρέχε test cases σε αυτή τη μορφή:
 
-| ID | Scenario | Given | When | Then | Priority |
-|----|----------|-------|------|------|----------|
-| TC01 | ... | ... | ... | ... | High |`} />
+| ID | Σενάριο | Δεδομένου | Όταν | Τότε | Προτεραιότητα |
+|----|---------|-----------|------|------|---------------|
+| TC01 | ... | ... | ... | ... | Υψηλή |`} />
 
-## Architecture & Design
+## Αρχιτεκτονική & Σχεδιασμός
 
-### System Design
+### Σχεδιασμός Συστήματος
 
-<TryIt compact prompt={`Design a system for \${requirement:real-time chat application}.
+<TryIt compact prompt={`Σχεδίασε ένα σύστημα για \${requirement:εφαρμογή real-time chat}.
 
-Constraints:
-- Expected load: \${expectedLoad:10,000 concurrent users}
-- Latency requirements: \${latency:< 100ms message delivery}
-- Availability: \${availability:99.9%}
-- Budget: \${budget:moderate, prefer open source}
+Περιορισμοί:
+- Αναμενόμενο φορτίο: \${expectedLoad:10.000 ταυτόχρονοι χρήστες}
+- Απαιτήσεις καθυστέρησης: \${latency:< 100ms παράδοση μηνύματος}
+- Διαθεσιμότητα: \${availability:99.9%}
+- Προϋπολογισμός: \${budget:μέτριος, προτίμηση open source}
 
-Provide:
-1. High-level architecture diagram (ASCII/text)
-2. Component descriptions
-3. Data flow
-4. Technology choices with rationale
-5. Scaling strategy
-6. Trade-offs and alternatives considered`} />
+Παρέχε:
+1. Διάγραμμα αρχιτεκτονικής υψηλού επιπέδου (ASCII/text)
+2. Περιγραφές στοιχείων
+3. Ροή δεδομένων
+4. Επιλογές τεχνολογίας με αιτιολόγηση
+5. Στρατηγική κλιμάκωσης
+6. Ανταλλαγές και εναλλακτικές που εξετάστηκαν`} />
 
-### Database Schema Design
+### Σχεδιασμός Database Schema
 
-<TryIt compact prompt={`Design a database schema for \${application:e-commerce platform}.
+<TryIt compact prompt={`Σχεδίασε database schema για \${application:e-commerce πλατφόρμα}.
 
-Requirements:
-- \${feature1:User accounts with profiles and addresses}
-- \${feature2:Product catalog with categories and variants}
-- \${feature3:Orders with line items and payment tracking}
+Απαιτήσεις:
+- \${feature1:Λογαριασμοί χρηστών με προφίλ και διευθύνσεις}
+- \${feature2:Κατάλογος προϊόντων με κατηγορίες και παραλλαγές}
+- \${feature3:Παραγγελίες με στοιχεία γραμμής και παρακολούθηση πληρωμών}
 
-Provide:
-1. Entity-relationship description
-2. Table definitions with columns and types
-3. Indexes for common queries
-4. Foreign key relationships
-5. Sample queries for key operations`} />
+Παρέχε:
+1. Περιγραφή entity-relationship
+2. Ορισμοί πινάκων με στήλες και τύπους
+3. Indexes για κοινά queries
+4. Σχέσεις foreign key
+5. Δείγματα queries για βασικές λειτουργίες`} />
 
 ## Documentation Generation
 

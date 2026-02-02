@@ -1,269 +1,269 @@
-A good prompt gets the job done. An optimized prompt gets the job done efficiently—faster, cheaper, more consistently. This chapter teaches you how to systematically improve prompts across multiple dimensions.
+Ένα καλό prompt ολοκληρώνει τη δουλειά. Ένα βελτιστοποιημένο prompt ολοκληρώνει τη δουλειά αποτελεσματικά—πιο γρήγορα, φθηνότερα, πιο συνεπή. Αυτό το κεφάλαιο σε διδάσκει πώς να βελτιώνεις συστηματικά prompts σε πολλαπλές διαστάσεις.
 
-<Callout type="tip" title="Try the Prompt Enhancer">
-Want to optimize your prompts automatically? Use our [Prompt Enhancer](/developers#enhancer) tool. It analyzes your prompt, applies optimization techniques, and shows you similar community prompts for inspiration.
+<Callout type="tip" title="Δοκίμασε τον Βελτιωτή Prompts">
+Θέλεις να βελτιστοποιήσεις τα prompts σου αυτόματα; Χρησιμοποίησε το εργαλείο [Βελτιωτής Prompts](/developers#enhancer). Αναλύει το prompt σου, εφαρμόζει τεχνικές βελτιστοποίησης, και σου δείχνει παρόμοια prompts κοινότητας για έμπνευση.
 </Callout>
 
-## The Optimization Trade-offs
+## Οι Ανταλλαγές της Βελτιστοποίησης
 
-Every optimization involves trade-offs. Understanding these helps you make intentional choices:
-
-<InfoGrid items={[
-  { label: "Quality vs. Cost", description: "Higher quality often requires more tokens or better models", example: "Adding examples improves accuracy but increases token count", exampleType: "text", color: "blue" },
-  { label: "Speed vs. Quality", description: "Faster models may sacrifice some capability", example: "GPT-4 is smarter but slower than GPT-4o-mini", exampleType: "text", color: "purple" },
-  { label: "Consistency vs. Creativity", description: "Lower temperature = more predictable but less creative", example: "Temperature 0.2 for facts, 0.8 for brainstorming", exampleType: "text", color: "green" },
-  { label: "Simplicity vs. Robustness", description: "Edge case handling adds complexity", example: "Simple prompts fail on unusual inputs", exampleType: "text", color: "amber" }
-]} />
-
-## Measuring What Matters
-
-Before optimizing, define success. What does "better" mean for your use case?
+Κάθε βελτιστοποίηση περιλαμβάνει ανταλλαγές. Η κατανόησή τους σε βοηθά να κάνεις σκόπιμες επιλογές:
 
 <InfoGrid items={[
-  { label: "Accuracy", description: "How often is the output correct?", example: "90% of code suggestions compile without errors", exampleType: "text", color: "blue" },
-  { label: "Relevance", description: "Does it address what was actually asked?", example: "Response directly answers the question vs. tangents", exampleType: "text", color: "blue" },
-  { label: "Completeness", description: "Are all requirements covered?", example: "All 5 requested sections included in output", exampleType: "text", color: "blue" },
-  { label: "Latency", description: "How long until the response arrives?", example: "p50 < 2s, p95 < 5s for chat applications", exampleType: "text", color: "purple" },
-  { label: "Token Efficiency", description: "How many tokens for the same result?", example: "500 tokens vs. 1500 tokens for equivalent output", exampleType: "text", color: "purple" },
-  { label: "Consistency", description: "How similar are outputs for similar inputs?", example: "Same question gets structurally similar answers", exampleType: "text", color: "green" }
+  { label: "Ποιότητα vs. Κόστος", description: "Υψηλότερη ποιότητα συχνά απαιτεί περισσότερα tokens ή καλύτερα μοντέλα", example: "Η προσθήκη παραδειγμάτων βελτιώνει την ακρίβεια αλλά αυξάνει τον αριθμό tokens", exampleType: "text", color: "blue" },
+  { label: "Ταχύτητα vs. Ποιότητα", description: "Ταχύτερα μοντέλα μπορεί να θυσιάζουν κάποια ικανότητα", example: "Το GPT-4 είναι πιο έξυπνο αλλά πιο αργό από το GPT-4o-mini", exampleType: "text", color: "purple" },
+  { label: "Συνέπεια vs. Δημιουργικότητα", description: "Χαμηλότερο temperature = πιο προβλέψιμο αλλά λιγότερο δημιουργικό", example: "Temperature 0.2 για γεγονότα, 0.8 για καταιγισμό ιδεών", exampleType: "text", color: "green" },
+  { label: "Απλότητα vs. Ευρωστία", description: "Ο χειρισμός ακραίων περιπτώσεων προσθέτει πολυπλοκότητα", example: "Απλά prompts αποτυγχάνουν σε ασυνήθιστες εισόδους", exampleType: "text", color: "amber" }
 ]} />
 
-<Callout type="info" title="What Do p50 and p95 Mean?">
-Percentile metrics show response time distribution. **p50** (median) means 50% of requests are faster than this value. **p95** means 95% are faster—it catches slow outliers. If your p50 is 1s but p95 is 10s, most users are happy but 5% experience frustrating delays.
+## Μέτρηση Αυτού που Έχει Σημασία
+
+Πριν βελτιστοποιήσεις, όρισε την επιτυχία. Τι σημαίνει "καλύτερο" για την περίπτωση χρήσης σου;
+
+<InfoGrid items={[
+  { label: "Ακρίβεια", description: "Πόσο συχνά είναι σωστή η έξοδος;", example: "90% των προτάσεων κώδικα μεταγλωττίζονται χωρίς σφάλματα", exampleType: "text", color: "blue" },
+  { label: "Συνάφεια", description: "Απαντά σε αυτό που πραγματικά ρωτήθηκε;", example: "Η απάντηση απαντά άμεσα στην ερώτηση vs. παρεκκλίσεις", exampleType: "text", color: "blue" },
+  { label: "Πληρότητα", description: "Καλύπτονται όλες οι απαιτήσεις;", example: "Όλες οι 5 ζητούμενες ενότητες περιλαμβάνονται στην έξοδο", exampleType: "text", color: "blue" },
+  { label: "Καθυστέρηση", description: "Πόσος χρόνος μέχρι να φτάσει η απάντηση;", example: "p50 < 2s, p95 < 5s για εφαρμογές chat", exampleType: "text", color: "purple" },
+  { label: "Αποδοτικότητα Token", description: "Πόσα tokens για το ίδιο αποτέλεσμα;", example: "500 tokens vs. 1500 tokens για ισοδύναμη έξοδο", exampleType: "text", color: "purple" },
+  { label: "Συνέπεια", description: "Πόσο παρόμοιες είναι οι έξοδοι για παρόμοιες εισόδους;", example: "Η ίδια ερώτηση παίρνει δομικά παρόμοιες απαντήσεις", exampleType: "text", color: "green" }
+]} />
+
+<Callout type="info" title="Τι Σημαίνουν τα p50 και p95;">
+Οι μετρικές εκατοστημορίων δείχνουν την κατανομή χρόνου απόκρισης. **p50** (διάμεσος) σημαίνει ότι 50% των αιτημάτων είναι ταχύτερα από αυτή την τιμή. **p95** σημαίνει ότι 95% είναι ταχύτερα—πιάνει αργές ακραίες τιμές. Αν το p50 σου είναι 1s αλλά το p95 είναι 10s, οι περισσότεροι χρήστες είναι ικανοποιημένοι αλλά 5% βιώνουν απογοητευτικές καθυστερήσεις.
 </Callout>
 
 <TryIt 
-  title="Define Your Success Metrics"
-  description="Use this template to clarify what you're optimizing for before making changes."
-  prompt={`Help me define success metrics for my prompt optimization.
+  title="Όρισε τις Μετρικές Επιτυχίας σου"
+  description="Χρησιμοποίησε αυτό το πρότυπο για να διευκρινίσεις για τι βελτιστοποιείς πριν κάνεις αλλαγές."
+  prompt={`Βοήθησέ με να ορίσω μετρικές επιτυχίας για τη βελτιστοποίηση prompt μου.
 
-**My use case**: \${useCase}
-**Current pain points**: \${painPoints}
+**Η περίπτωση χρήσης μου**: \${useCase}
+**Τρέχοντα προβλήματα**: \${painPoints}
 
-For this use case, help me define:
+Για αυτή την περίπτωση χρήσης, βοήθησέ με να ορίσω:
 
-1. **Primary metric**: What single metric matters most?
-2. **Secondary metrics**: What else should I track?
-3. **Acceptable trade-offs**: What can I sacrifice for the primary metric?
-4. **Red lines**: What quality level is unacceptable?
-5. **How to measure**: Practical ways to evaluate each metric`}
+1. **Κύρια μετρική**: Ποια μόνη μετρική έχει τη μεγαλύτερη σημασία;
+2. **Δευτερεύουσες μετρικές**: Τι άλλο πρέπει να παρακολουθώ;
+3. **Αποδεκτές ανταλλαγές**: Τι μπορώ να θυσιάσω για την κύρια μετρική;
+4. **Κόκκινες γραμμές**: Ποιο επίπεδο ποιότητας είναι απαράδεκτο;
+5. **Πώς να μετρήσω**: Πρακτικοί τρόποι αξιολόγησης κάθε μετρικής`}
 />
 
-## Token Optimization
+## Βελτιστοποίηση Tokens
 
-Tokens cost money and add latency. Here's how to say the same thing with fewer tokens.
+Τα tokens κοστίζουν χρήματα και προσθέτουν καθυστέρηση. Δες πώς να πεις το ίδιο πράγμα με λιγότερα tokens.
 
-### The Compression Principle
+### Η Αρχή της Συμπίεσης
 
 <Compare 
-  before={{ label: "Verbose (67 tokens)", content: "I would like you to please help me with the following task. I need you to take the text that I'm going to provide below and create a summary of it. The summary should capture the main points and be concise. Please make sure to include all the important information. Here is the text:\n\n[text]" }}
-  after={{ label: "Concise (12 tokens)", content: "Summarize this text, capturing main points concisely:\n\n[text]" }}
+  before={{ label: "Αναλυτικό (67 tokens)", content: "Θα ήθελα παρακαλώ να με βοηθήσεις με την ακόλουθη εργασία. Χρειάζομαι να πάρεις το κείμενο που θα σου δώσω παρακάτω και να δημιουργήσεις μια περίληψη του. Η περίληψη πρέπει να καταγράφει τα βασικά σημεία και να είναι συνοπτική. Παρακαλώ βεβαιώσου να συμπεριλάβεις όλες τις σημαντικές πληροφορίες. Εδώ είναι το κείμενο:\n\n[κείμενο]" }}
+  after={{ label: "Συνοπτικό (12 tokens)", content: "Συνόψισε αυτό το κείμενο, καταγράφοντας βασικά σημεία συνοπτικά:\n\n[κείμενο]" }}
 />
 
-**Same result, 82% fewer tokens.**
+**Ίδιο αποτέλεσμα, 82% λιγότερα tokens.**
 
-### Token-Saving Techniques
+### Τεχνικές Εξοικονόμησης Tokens
 
 <InfoGrid items={[
-  { label: "Cut Pleasantries", description: "\"Please\" and \"Thank you\" add tokens without improving output", example: "\"Please summarize\" → \"Summarize\"", color: "green" },
-  { label: "Eliminate Redundancy", description: "Don't repeat yourself or state the obvious", example: "\"Write a summary that summarizes\" → \"Summarize\"", color: "green" },
-  { label: "Use Abbreviations", description: "Where meaning is clear, abbreviate", example: "\"for example\" → \"e.g.\"", color: "green" },
-  { label: "Reference by Position", description: "Point to content instead of repeating it", example: "\"the text above\" instead of re-quoting", color: "green" }
+  { label: "Κόψε Ευγένειες", description: "\"Παρακαλώ\" και \"Ευχαριστώ\" προσθέτουν tokens χωρίς να βελτιώνουν την έξοδο", example: "\"Παρακαλώ συνόψισε\" → \"Συνόψισε\"", color: "green" },
+  { label: "Εξάλειψε Επανάληψη", description: "Μην επαναλαμβάνεσαι ή δηλώνεις το προφανές", example: "\"Γράψε μια περίληψη που συνοψίζει\" → \"Συνόψισε\"", color: "green" },
+  { label: "Χρησιμοποίησε Συντομογραφίες", description: "Όπου το νόημα είναι σαφές, συντόμευσε", example: "\"για παράδειγμα\" → \"π.χ.\"", color: "green" },
+  { label: "Αναφορά με Θέση", description: "Δείξε περιεχόμενο αντί να το επαναλαμβάνεις", example: "\"το κείμενο παραπάνω\" αντί να ξανα-αναφέρεις", color: "green" }
 ]} />
 
 <TryIt 
-  title="Prompt Compressor"
-  description="Paste a verbose prompt to get a token-optimized version."
-  prompt={`Compress this prompt while preserving its meaning and effectiveness:
+  title="Συμπιεστής Prompts"
+  description="Επικόλλησε ένα αναλυτικό prompt για να πάρεις μια token-βελτιστοποιημένη έκδοση."
+  prompt={`Συμπίεσε αυτό το prompt διατηρώντας το νόημα και την αποτελεσματικότητά του:
 
-Original prompt:
+Αρχικό prompt:
 "\${verbosePrompt}"
 
-Instructions:
-1. Remove unnecessary pleasantries and filler words
-2. Eliminate redundancy
-3. Use concise phrasing
-4. Keep all essential instructions and constraints
-5. Maintain clarity—don't sacrifice understanding for brevity
+Οδηγίες:
+1. Αφαίρεσε περιττές ευγένειες και λέξεις γεμίσματος
+2. Εξάλειψε επανάληψη
+3. Χρησιμοποίησε συνοπτική διατύπωση
+4. Κράτησε όλες τις βασικές οδηγίες και περιορισμούς
+5. Διατήρησε σαφήνεια—μην θυσιάσεις κατανόηση για συντομία
 
-Provide:
-- **Compressed version**: The optimized prompt
-- **Token reduction**: Estimated percentage saved
-- **What was cut**: Brief explanation of what was removed and why it was safe to remove`}
+Παρέχε:
+- **Συμπιεσμένη έκδοση**: Το βελτιστοποιημένο prompt
+- **Μείωση tokens**: Εκτιμώμενο ποσοστό εξοικονόμησης
+- **Τι αφαιρέθηκε**: Σύντομη εξήγηση τι αφαιρέθηκε και γιατί ήταν ασφαλές να αφαιρεθεί`}
 />
 
-## Quality Optimization
+## Βελτιστοποίηση Ποιότητας
 
-Sometimes you need better outputs, not cheaper ones. Here's how to improve quality.
+Μερικές φορές χρειάζεσαι καλύτερες εξόδους, όχι φθηνότερες. Δες πώς να βελτιώσεις την ποιότητα.
 
-### Accuracy Boosters
+### Ενισχυτές Ακρίβειας
 
 <InfoGrid items={[
-  { label: "Add Verification", description: "Ask the model to check its own work", example: "\"...then verify your answer is correct\"", color: "blue" },
-  { label: "Request Confidence", description: "Make uncertainty explicit", example: "\"Rate your confidence 1-10 and explain any uncertainty\"", color: "blue" },
-  { label: "Multiple Approaches", description: "Get different perspectives, then choose", example: "\"Provide 3 approaches and recommend the best one\"", color: "blue" },
-  { label: "Explicit Reasoning", description: "Force step-by-step thinking", example: "\"Think step by step and show your reasoning\"", color: "blue" }
+  { label: "Πρόσθεσε Επαλήθευση", description: "Ζήτα από το μοντέλο να ελέγξει τη δουλειά του", example: "\"...μετά επαλήθευσε ότι η απάντησή σου είναι σωστή\"", color: "blue" },
+  { label: "Ζήτα Εμπιστοσύνη", description: "Κάνε την αβεβαιότητα ρητή", example: "\"Βαθμολόγησε την εμπιστοσύνη σου 1-10 και εξήγησε τυχόν αβεβαιότητα\"", color: "blue" },
+  { label: "Πολλαπλές Προσεγγίσεις", description: "Πάρε διαφορετικές οπτικές, μετά διάλεξε", example: "\"Παρέχε 3 προσεγγίσεις και σύστησε την καλύτερη\"", color: "blue" },
+  { label: "Ρητή Αιτιολόγηση", description: "Επίβαλε σκέψη βήμα-βήμα", example: "\"Σκέψου βήμα-βήμα και δείξε τη λογική σου\"", color: "blue" }
 ]} />
 
-### Consistency Boosters
+### Ενισχυτές Συνέπειας
 
 <InfoGrid items={[
-  { label: "Detailed Format Specs", description: "Show exactly what output should look like", example: "Include a template or schema", exampleType: "text", color: "purple" },
-  { label: "Few-Shot Examples", description: "Provide 2-3 examples of ideal output", example: "\"Here's what good looks like: [examples]\"", color: "purple" },
-  { label: "Lower Temperature", description: "Reduce randomness for more predictable output", example: "Temperature 0.3-0.5 for consistent results", exampleType: "text", color: "purple" },
-  { label: "Output Validation", description: "Add a validation step for critical fields", example: "\"Verify all required fields are present\"", color: "purple" }
+  { label: "Λεπτομερείς Προδιαγραφές Μορφής", description: "Δείξε ακριβώς πώς πρέπει να φαίνεται η έξοδος", example: "Συμπεριέλαβε πρότυπο ή σχήμα", exampleType: "text", color: "purple" },
+  { label: "Παραδείγματα Few-Shot", description: "Παρέχε 2-3 παραδείγματα ιδανικής εξόδου", example: "\"Δες πώς φαίνεται καλό: [παραδείγματα]\"", color: "purple" },
+  { label: "Χαμηλότερο Temperature", description: "Μείωσε την τυχαιότητα για πιο προβλέψιμη έξοδο", example: "Temperature 0.3-0.5 για συνεπή αποτελέσματα", exampleType: "text", color: "purple" },
+  { label: "Επικύρωση Εξόδου", description: "Πρόσθεσε βήμα επικύρωσης για κρίσιμα πεδία", example: "\"Επαλήθευσε ότι όλα τα απαιτούμενα πεδία υπάρχουν\"", color: "purple" }
 ]} />
 
 <TryIt 
-  title="Quality Enhancer"
-  description="Add quality-improving elements to your prompt."
-  prompt={`Enhance this prompt for higher quality outputs:
+  title="Ενισχυτής Ποιότητας"
+  description="Πρόσθεσε στοιχεία βελτίωσης ποιότητας στο prompt σου."
+  prompt={`Ενίσχυσε αυτό το prompt για υψηλότερης ποιότητας εξόδους:
 
-Original prompt:
+Αρχικό prompt:
 "\${originalPrompt}"
 
-**What quality issue I'm seeing**: \${qualityIssue}
+**Ποιο πρόβλημα ποιότητας βλέπω**: \${qualityIssue}
 
-Add appropriate quality boosters:
-1. If accuracy is the issue → add verification steps
-2. If consistency is the issue → add format specifications or examples
-3. If relevance is the issue → add context and constraints
-4. If completeness is the issue → add explicit requirements
+Πρόσθεσε κατάλληλους ενισχυτές ποιότητας:
+1. Αν η ακρίβεια είναι το ζήτημα → πρόσθεσε βήματα επαλήθευσης
+2. Αν η συνέπεια είναι το ζήτημα → πρόσθεσε προδιαγραφές μορφής ή παραδείγματα
+3. Αν η συνάφεια είναι το ζήτημα → πρόσθεσε context και περιορισμούς
+4. Αν η πληρότητα είναι το ζήτημα → πρόσθεσε ρητές απαιτήσεις
 
-Provide the enhanced prompt with explanations for each addition.`}
+Παρέχε το ενισχυμένο prompt με εξηγήσεις για κάθε προσθήκη.`}
 />
 
-## Latency Optimization
+## Βελτιστοποίηση Καθυστέρησης
 
-When speed matters, every millisecond counts.
+Όταν η ταχύτητα έχει σημασία, κάθε χιλιοστό του δευτερολέπτου μετράει.
 
-### Model Selection by Speed Need
-
-<InfoGrid items={[
-  { label: "Real-time (< 500ms)", description: "Use smallest effective model + aggressive caching", example: "GPT-4o-mini, Claude Haiku, cached responses", exampleType: "text", color: "red" },
-  { label: "Interactive (< 2s)", description: "Fast models, streaming enabled", example: "GPT-4o-mini with streaming", exampleType: "text", color: "amber" },
-  { label: "Tolerant (< 10s)", description: "Mid-tier models, balance quality/speed", example: "GPT-4o, Claude Sonnet", exampleType: "text", color: "green" },
-  { label: "Async/Batch", description: "Use best model, process in background", example: "GPT-4, Claude Opus for offline processing", exampleType: "text", color: "blue" }
-]} />
-
-### Speed Techniques
+### Επιλογή Μοντέλου ανά Ανάγκη Ταχύτητας
 
 <InfoGrid items={[
-  { label: "Shorter Prompts", description: "Fewer input tokens = faster processing", example: "Compress prompts, remove unnecessary context", exampleType: "text", color: "cyan" },
-  { label: "Limit Output", description: "Set max_tokens to prevent runaway responses", example: "max_tokens: 500 for summaries", exampleType: "text", color: "cyan" },
-  { label: "Use Streaming", description: "Get first tokens faster, better UX", example: "Stream for any response > 100 tokens", exampleType: "text", color: "cyan" },
-  { label: "Cache Aggressively", description: "Don't recompute identical queries", example: "Cache common questions, template outputs", exampleType: "text", color: "cyan" }
+  { label: "Πραγματικού χρόνου (< 500ms)", description: "Χρησιμοποίησε το μικρότερο αποτελεσματικό μοντέλο + επιθετικό caching", example: "GPT-4o-mini, Claude Haiku, cached απαντήσεις", exampleType: "text", color: "red" },
+  { label: "Διαδραστικό (< 2s)", description: "Γρήγορα μοντέλα, streaming ενεργοποιημένο", example: "GPT-4o-mini με streaming", exampleType: "text", color: "amber" },
+  { label: "Ανεκτικό (< 10s)", description: "Μεσαίου επιπέδου μοντέλα, ισορροπία ποιότητας/ταχύτητας", example: "GPT-4o, Claude Sonnet", exampleType: "text", color: "green" },
+  { label: "Async/Batch", description: "Χρησιμοποίησε καλύτερο μοντέλο, επεξεργασία στο παρασκήνιο", example: "GPT-4, Claude Opus για offline επεξεργασία", exampleType: "text", color: "blue" }
 ]} />
 
-## Cost Optimization
+### Τεχνικές Ταχύτητας
 
-At scale, small savings multiply into significant budget impact.
+<InfoGrid items={[
+  { label: "Συντομότερα Prompts", description: "Λιγότερα input tokens = ταχύτερη επεξεργασία", example: "Συμπίεσε prompts, αφαίρεσε περιττό context", exampleType: "text", color: "cyan" },
+  { label: "Περιόρισε την Έξοδο", description: "Θέσε max_tokens για αποτροπή ατελείωτων απαντήσεων", example: "max_tokens: 500 για περιλήψεις", exampleType: "text", color: "cyan" },
+  { label: "Χρησιμοποίησε Streaming", description: "Πάρε πρώτα tokens πιο γρήγορα, καλύτερη UX", example: "Stream για οποιαδήποτε απάντηση > 100 tokens", exampleType: "text", color: "cyan" },
+  { label: "Cache Επιθετικά", description: "Μην ξαναυπολογίζεις πανομοιότυπα ερωτήματα", example: "Cache κοινές ερωτήσεις, πρότυπα εξόδων", exampleType: "text", color: "cyan" }
+]} />
 
-### Understanding Costs
+## Βελτιστοποίηση Κόστους
 
-Use this calculator to estimate your API costs across different models:
+Σε κλίμακα, μικρές εξοικονομήσεις πολλαπλασιάζονται σε σημαντικό αντίκτυπο προϋπολογισμού.
+
+### Κατανόηση Κόστους
+
+Χρησιμοποίησε αυτόν τον υπολογιστή για εκτίμηση του κόστους API σου σε διαφορετικά μοντέλα:
 
 <CostCalculatorDemo />
 
-### Cost Reduction Strategies
+### Στρατηγικές Μείωσης Κόστους
 
 <InfoGrid items={[
-  { label: "Model Routing", description: "Use expensive models only when needed", example: "Simple questions → GPT-4o-mini, Complex → GPT-4", exampleType: "text", color: "green" },
-  { label: "Prompt Efficiency", description: "Shorter prompts = lower cost per request", example: "Cut 50% of tokens = 50% input cost savings", exampleType: "text", color: "green" },
-  { label: "Output Control", description: "Limit response length when full detail isn't needed", example: "\"Answer in 2-3 sentences\" vs. unlimited", color: "green" },
-  { label: "Batching", description: "Combine related queries into single requests", example: "Analyze 10 items in one prompt vs. 10 separate calls", exampleType: "text", color: "green" },
-  { label: "Pre-filtering", description: "Don't send requests that don't need AI", example: "Keyword matching before expensive classification", exampleType: "text", color: "green" }
+  { label: "Δρομολόγηση Μοντέλων", description: "Χρησιμοποίησε ακριβά μοντέλα μόνο όταν χρειάζεται", example: "Απλές ερωτήσεις → GPT-4o-mini, Σύνθετες → GPT-4", exampleType: "text", color: "green" },
+  { label: "Αποδοτικότητα Prompt", description: "Συντομότερα prompts = χαμηλότερο κόστος ανά αίτημα", example: "Κόψε 50% tokens = 50% εξοικονόμηση κόστους εισόδου", exampleType: "text", color: "green" },
+  { label: "Έλεγχος Εξόδου", description: "Περιόρισε μήκος απάντησης όταν δεν χρειάζεται πλήρης λεπτομέρεια", example: "\"Απάντησε σε 2-3 προτάσεις\" vs. απεριόριστο", color: "green" },
+  { label: "Batching", description: "Συνδύασε σχετικά ερωτήματα σε μονές αιτήσεις", example: "Ανάλυσε 10 στοιχεία σε ένα prompt vs. 10 ξεχωριστές κλήσεις", exampleType: "text", color: "green" },
+  { label: "Προ-φιλτράρισμα", description: "Μην στέλνεις αιτήματα που δεν χρειάζονται AI", example: "Αντιστοίχιση λέξεων-κλειδιών πριν ακριβή ταξινόμηση", exampleType: "text", color: "green" }
 ]} />
 
-## The Optimization Loop
+## Ο Βρόχος Βελτιστοποίησης
 
-Optimization is iterative. Here's a systematic process:
+Η βελτιστοποίηση είναι επαναληπτική. Δες μια συστηματική διαδικασία:
 
-### Step 1: Establish Baseline
+### Βήμα 1: Καθιέρωσε Βάση Αναφοράς
 
-You can't improve what you don't measure. Before changing anything, document your starting point rigorously.
+Δεν μπορείς να βελτιώσεις αυτό που δεν μετράς. Πριν αλλάξεις οτιδήποτε, τεκμηρίωσε αυστηρά το σημείο εκκίνησης.
 
 <InfoGrid items={[
-  { label: "Prompt Documentation", description: "Save the exact prompt text, including system prompts and any templates", example: "Version control your prompts like code", exampleType: "text", color: "blue" },
-  { label: "Test Set", description: "Create 20-50 representative inputs that cover common cases and edge cases", example: "Include easy, medium, and hard examples", exampleType: "text", color: "blue" },
-  { label: "Quality Metrics", description: "Score each output against your success criteria", example: "Accuracy %, relevance score, format compliance", exampleType: "text", color: "purple" },
-  { label: "Performance Metrics", description: "Measure tokens and timing for each test case", example: "Avg input: 450 tokens, Avg output: 200 tokens, p50 latency: 1.2s", exampleType: "text", color: "purple" }
+  { label: "Τεκμηρίωση Prompt", description: "Αποθήκευσε το ακριβές κείμενο prompt, συμπεριλαμβανομένων system prompts και προτύπων", example: "Κάνε version control τα prompts σαν κώδικα", exampleType: "text", color: "blue" },
+  { label: "Σύνολο Δοκιμών", description: "Δημιούργησε 20-50 αντιπροσωπευτικές εισόδους που καλύπτουν κοινές και ακραίες περιπτώσεις", example: "Συμπεριέλαβε εύκολα, μέτρια, και δύσκολα παραδείγματα", exampleType: "text", color: "blue" },
+  { label: "Μετρικές Ποιότητας", description: "Βαθμολόγησε κάθε έξοδο έναντι των κριτηρίων επιτυχίας", example: "Ακρίβεια %, βαθμός συνάφειας, συμμόρφωση μορφής", exampleType: "text", color: "purple" },
+  { label: "Μετρικές Απόδοσης", description: "Μέτρησε tokens και χρονισμό για κάθε περίπτωση δοκιμής", example: "Μ.Ο. εισόδου: 450 tokens, Μ.Ο. εξόδου: 200 tokens, p50 καθυστέρηση: 1.2s", exampleType: "text", color: "purple" }
 ]} />
 
 <TryIt 
-  title="Baseline Documentation Template"
-  description="Use this to create a comprehensive baseline before optimizing."
-  prompt={`Create a baseline documentation for my prompt optimization project.
+  title="Πρότυπο Τεκμηρίωσης Βάσης Αναφοράς"
+  description="Χρησιμοποίησέ το για δημιουργία ολοκληρωμένης βάσης αναφοράς πριν τη βελτιστοποίηση."
+  prompt={`Δημιούργησε τεκμηρίωση βάσης αναφοράς για το έργο βελτιστοποίησης prompt μου.
 
-**Current prompt**:
+**Τρέχον prompt**:
 "\${currentPrompt}"
 
-**What the prompt does**: \${promptPurpose}
+**Τι κάνει το prompt**: \${promptPurpose}
 
-**Current issues I'm seeing**: \${currentIssues}
+**Τρέχοντα ζητήματα που βλέπω**: \${currentIssues}
 
-Generate a baseline documentation template with:
+Δημιούργησε πρότυπο τεκμηρίωσης βάσης αναφοράς με:
 
-1. **Prompt Snapshot**: The exact prompt text (for version control)
+1. **Στιγμιότυπο Prompt**: Το ακριβές κείμενο prompt (για version control)
 
-2. **Test Cases**: Suggest 10 representative test inputs I should use, covering:
-   - 3 typical/easy cases
-   - 4 medium complexity cases  
-   - 3 edge cases or difficult inputs
+2. **Περιπτώσεις Δοκιμής**: Πρότεινε 10 αντιπροσωπευτικές εισόδους δοκιμής που πρέπει να χρησιμοποιήσω, καλύπτοντας:
+   - 3 τυπικές/εύκολες περιπτώσεις
+   - 4 περιπτώσεις μέτριας πολυπλοκότητας
+   - 3 ακραίες ή δύσκολες εισόδους
 
-3. **Metrics to Track**:
-   - Quality metrics specific to this use case
-   - Efficiency metrics (tokens, latency)
-   - How to score each metric
+3. **Μετρικές για Παρακολούθηση**:
+   - Μετρικές ποιότητας συγκεκριμένες για αυτή την περίπτωση χρήσης
+   - Μετρικές αποδοτικότητας (tokens, καθυστέρηση)
+   - Πώς να βαθμολογήσω κάθε μετρική
 
-4. **Baseline Hypothesis**: What do I expect the current performance to be?
+4. **Υπόθεση Βάσης Αναφοράς**: Τι περιμένω να είναι η τρέχουσα απόδοση;
 
-5. **Success Criteria**: What numbers would make me satisfied with optimization?`}
+5. **Κριτήρια Επιτυχίας**: Ποιοι αριθμοί θα με ικανοποιούσαν με τη βελτιστοποίηση;`}
 />
 
-### Step 2: Form a Hypothesis
+### Βήμα 2: Διαμόρφωσε Υπόθεση
 
 <Compare 
-  before={{ label: "Vague goal", content: "I want to make my prompt better." }}
-  after={{ label: "Testable hypothesis", content: "If I add 2 few-shot examples, accuracy will improve from 75% to 85% because the model will learn the expected pattern." }}
+  before={{ label: "Ασαφής στόχος", content: "Θέλω να κάνω το prompt μου καλύτερο." }}
+  after={{ label: "Ελέγξιμη υπόθεση", content: "Αν προσθέσω 2 few-shot παραδείγματα, η ακρίβεια θα βελτιωθεί από 75% σε 85% γιατί το μοντέλο θα μάθει το αναμενόμενο μοτίβο." }}
 />
 
-### Step 3: Test One Change
+### Βήμα 3: Δοκίμασε Μία Αλλαγή
 
-Change one thing at a time. Run both versions on the same test inputs. Measure the metrics that matter.
+Άλλαξε ένα πράγμα κάθε φορά. Τρέξε και τις δύο εκδόσεις στις ίδιες εισόδους δοκιμής. Μέτρησε τις μετρικές που έχουν σημασία.
 
-### Step 4: Analyze and Decide
+### Βήμα 4: Ανάλυσε και Αποφάσισε
 
-Did it work? Keep the change. Did it hurt? Revert. Was it neutral? Revert (simpler is better).
+Λειτούργησε; Κράτησε την αλλαγή. Έβλαψε; Επαναφορά. Ήταν ουδέτερη; Επαναφορά (το απλούστερο είναι καλύτερο).
 
-### Step 5: Repeat
+### Βήμα 5: Επανάλαβε
 
-Generate new hypotheses based on what you learned. Keep iterating until you hit your targets or reach diminishing returns.
+Δημιούργησε νέες υποθέσεις βάσει αυτού που έμαθες. Συνέχισε να επαναλαμβάνεις μέχρι να πετύχεις τους στόχους ή να φτάσεις φθίνουσες αποδόσεις.
 
-## Optimization Checklist
+## Λίστα Ελέγχου Βελτιστοποίησης
 
 <Checklist 
-  title="Before Deploying an Optimized Prompt"
+  title="Πριν την Ανάπτυξη Βελτιστοποιημένου Prompt"
   items={[
-    { text: "Defined clear success metrics" },
-    { text: "Measured baseline performance" },
-    { text: "Tested changes on representative inputs" },
-    { text: "Verified quality didn't regress" },
-    { text: "Checked edge case handling" },
-    { text: "Calculated cost at expected scale" },
-    { text: "Tested latency under load" },
-    { text: "Documented what changed and why" }
+    { text: "Ορίστηκαν σαφείς μετρικές επιτυχίας" },
+    { text: "Μετρήθηκε η απόδοση βάσης αναφοράς" },
+    { text: "Δοκιμάστηκαν αλλαγές σε αντιπροσωπευτικές εισόδους" },
+    { text: "Επαληθεύτηκε ότι η ποιότητα δεν υποβαθμίστηκε" },
+    { text: "Ελέγχθηκε ο χειρισμός ακραίων περιπτώσεων" },
+    { text: "Υπολογίστηκε το κόστος στην αναμενόμενη κλίμακα" },
+    { text: "Δοκιμάστηκε η καθυστέρηση υπό φορτίο" },
+    { text: "Τεκμηριώθηκε τι άλλαξε και γιατί" }
   ]}
 />
 
 <Quiz 
-  question="You have a prompt that works well but costs too much at scale. What's the FIRST thing you should do?"
+  question="Έχεις ένα prompt που λειτουργεί καλά αλλά κοστίζει πολύ σε κλίμακα. Ποιο είναι το ΠΡΩΤΟ πράγμα που πρέπει να κάνεις;"
   options={[
-    "Switch to a cheaper model immediately",
-    "Remove words from the prompt to reduce tokens",
-    "Measure which part of the prompt is using the most tokens",
-    "Add caching for all requests"
+    "Άλλαξε σε φθηνότερο μοντέλο αμέσως",
+    "Αφαίρεσε λέξεις από το prompt για μείωση tokens",
+    "Μέτρησε ποιο μέρος του prompt χρησιμοποιεί τα περισσότερα tokens",
+    "Πρόσθεσε caching για όλα τα αιτήματα"
   ]}
   correctIndex={2}
-  explanation="Before optimizing, measure. You need to understand where the tokens are going before you can effectively reduce them. The prompt might have unnecessary context, verbose instructions, or generate longer outputs than needed. Measurement tells you where to focus your optimization efforts."
+  explanation="Πριν βελτιστοποιήσεις, μέτρησε. Πρέπει να καταλάβεις πού πηγαίνουν τα tokens πριν μπορέσεις να τα μειώσεις αποτελεσματικά. Το prompt μπορεί να έχει περιττό context, αναλυτικές οδηγίες, ή να παράγει μακρύτερες εξόδους από ό,τι χρειάζεται. Η μέτρηση σου λέει πού να εστιάσεις τις προσπάθειες βελτιστοποίησής σου."
 />

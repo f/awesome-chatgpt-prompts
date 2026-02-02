@@ -1,357 +1,357 @@
-The prompts you write shape how AI behaves. A well-crafted prompt can educate, assist, and empower. A careless one can deceive, discriminate, or cause harm. As prompt engineers, we're not just users—we're designers of AI behavior, and that comes with real responsibility.
+Τα prompts που γράφεις διαμορφώνουν πώς συμπεριφέρεται το AI. Ένα καλοφτιαγμένο prompt μπορεί να εκπαιδεύσει, να βοηθήσει, και να ενδυναμώσει. Ένα απρόσεκτο μπορεί να εξαπατήσει, να διακρίνει, ή να προκαλέσει βλάβη. Ως μηχανικοί prompts, δεν είμαστε απλά χρήστες—είμαστε σχεδιαστές συμπεριφοράς AI, και αυτό συνοδεύεται από πραγματική ευθύνη.
 
-This chapter isn't about rules imposed from above. It's about understanding the impact of our choices and building habits that lead to AI use we can be proud of.
+Αυτό το κεφάλαιο δεν αφορά κανόνες που επιβάλλονται από πάνω. Αφορά την κατανόηση του αντίκτυπου των επιλογών μας και τη δημιουργία συνηθειών που οδηγούν σε χρήση AI για την οποία μπορούμε να είμαστε περήφανοι.
 
-<Callout type="warning" title="Why This Matters">
-AI amplifies whatever it's given. A biased prompt produces biased outputs at scale. A deceptive prompt enables deception at scale. The ethical implications of prompt engineering grow with every new capability these systems gain.
+<Callout type="warning" title="Γιατί Έχει Σημασία">
+Το AI ενισχύει ό,τι του δίνεται. Ένα προκατειλημμένο prompt παράγει προκατειλημμένα αποτελέσματα σε κλίμακα. Ένα παραπλανητικό prompt επιτρέπει εξαπάτηση σε κλίμακα. Οι ηθικές επιπτώσεις του prompt engineering αυξάνονται με κάθε νέα ικανότητα που αποκτούν αυτά τα συστήματα.
 </Callout>
 
-## Ethical Foundations
+## Ηθικές Βάσεις
 
-Every decision in prompt engineering connects to a few core principles:
-
-<InfoGrid items={[
-  { label: "Honesty", description: "Don't use AI to deceive people or create misleading content", example: "No fake reviews, impersonation, or manufactured 'evidence'", exampleType: "text", color: "blue" },
-  { label: "Fairness", description: "Actively work to avoid perpetuating biases and stereotypes", example: "Test prompts across demographics, request diverse perspectives", exampleType: "text", color: "purple" },
-  { label: "Transparency", description: "Be clear about AI involvement when it matters", example: "Disclose AI assistance in published work, professional contexts", exampleType: "text", color: "green" },
-  { label: "Privacy", description: "Protect personal information in prompts and outputs", example: "Anonymize data, avoid including PII, understand data policies", exampleType: "text", color: "amber" },
-  { label: "Safety", description: "Design prompts that prevent harmful outputs", example: "Build in guardrails, test for edge cases, handle refusals gracefully", exampleType: "text", color: "red" },
-  { label: "Accountability", description: "Take responsibility for what your prompts produce", example: "Review outputs, fix issues, maintain human oversight", exampleType: "text", color: "cyan" }
-]} />
-
-### The Prompt Engineer's Role
-
-You have more influence than you might realize:
-
-- **What AI produces**: Your prompts determine the content, tone, and quality of outputs
-- **How AI interacts**: Your system prompts shape personality, boundaries, and user experience
-- **What safeguards exist**: Your design choices determine what the AI will and won't do
-- **How mistakes are handled**: Your error handling determines whether failures are graceful or harmful
-
-## Avoiding Harmful Outputs
-
-The most fundamental ethical obligation is preventing your prompts from causing harm.
-
-### Categories of Harmful Content
+Κάθε απόφαση στο prompt engineering συνδέεται με μερικές βασικές αρχές:
 
 <InfoGrid items={[
-  { label: "Violence & Harm", description: "Instructions that could lead to physical harm", example: "Weapons creation, self-harm, violence against others", exampleType: "text", color: "red" },
-  { label: "Illegal Activities", description: "Content that facilitates breaking laws", example: "Fraud schemes, hacking instructions, drug synthesis", exampleType: "text", color: "red" },
-  { label: "Harassment & Hate", description: "Content targeting individuals or groups", example: "Discriminatory content, doxxing, targeted harassment", exampleType: "text", color: "red" },
-  { label: "Misinformation", description: "Deliberately false or misleading content", example: "Fake news, health misinformation, conspiracy content", exampleType: "text", color: "red" },
-  { label: "Privacy Violations", description: "Exposing or exploiting personal information", example: "Revealing private data, stalking assistance", exampleType: "text", color: "red" },
-  { label: "Exploitation", description: "Content that exploits vulnerable individuals", example: "CSAM, non-consensual intimate content, scams targeting elderly", exampleType: "text", color: "red" }
+  { label: "Ειλικρίνεια", description: "Μην χρησιμοποιείς AI για εξαπάτηση ανθρώπων ή δημιουργία παραπλανητικού περιεχομένου", example: "Όχι ψεύτικες κριτικές, πλαστοπροσωπία, ή κατασκευασμένες 'αποδείξεις'", exampleType: "text", color: "blue" },
+  { label: "Δικαιοσύνη", description: "Εργάσου ενεργά για να αποφύγεις τη διαιώνιση προκαταλήψεων και στερεοτύπων", example: "Δοκίμασε prompts σε δημογραφικές ομάδες, ζήτα διαφορετικές οπτικές", exampleType: "text", color: "purple" },
+  { label: "Διαφάνεια", description: "Να είσαι σαφής για τη συμμετοχή AI όταν έχει σημασία", example: "Αποκάλυψε τη βοήθεια AI σε δημοσιευμένο έργο, επαγγελματικά πλαίσια", exampleType: "text", color: "green" },
+  { label: "Ιδιωτικότητα", description: "Προστάτευσε προσωπικές πληροφορίες σε prompts και εξόδους", example: "Ανωνυμοποίησε δεδομένα, απόφυγε συμπερίληψη PII, κατανόησε πολιτικές δεδομένων", exampleType: "text", color: "amber" },
+  { label: "Ασφάλεια", description: "Σχεδίασε prompts που αποτρέπουν επιβλαβείς εξόδους", example: "Ενσωμάτωσε προστατευτικά, δοκίμασε ακραίες περιπτώσεις, χειρίσου αρνήσεις με χάρη", exampleType: "text", color: "red" },
+  { label: "Υπευθυνότητα", description: "Ανάλαβε ευθύνη για ό,τι παράγουν τα prompts σου", example: "Αναθεώρησε εξόδους, διόρθωσε ζητήματα, διατήρησε ανθρώπινη εποπτεία", exampleType: "text", color: "cyan" }
 ]} />
 
-<Callout type="warning" title="What is CSAM?">
-CSAM stands for **Child Sexual Abuse Material**. Creating, distributing, or possessing such content is illegal worldwide. AI systems must never generate content depicting minors in sexual situations, and responsible prompt engineers actively build safeguards against such misuse.
+### Ο Ρόλος του Μηχανικού Prompts
+
+Έχεις περισσότερη επιρροή από ό,τι ίσως συνειδητοποιείς:
+
+- **Τι παράγει το AI**: Τα prompts σου καθορίζουν το περιεχόμενο, τόνο, και ποιότητα εξόδων
+- **Πώς αλληλεπιδρά το AI**: Τα system prompts σου διαμορφώνουν προσωπικότητα, όρια, και εμπειρία χρήστη
+- **Ποια προστατευτικά υπάρχουν**: Οι σχεδιαστικές σου επιλογές καθορίζουν τι θα κάνει και τι δεν θα κάνει το AI
+- **Πώς χειρίζονται τα λάθη**: Ο χειρισμός σφαλμάτων σου καθορίζει αν οι αποτυχίες είναι ομαλές ή επιβλαβείς
+
+## Αποφυγή Επιβλαβών Εξόδων
+
+Η πιο θεμελιώδης ηθική υποχρέωση είναι η αποτροπή των prompts σου από το να προκαλέσουν βλάβη.
+
+### Κατηγορίες Επιβλαβούς Περιεχομένου
+
+<InfoGrid items={[
+  { label: "Βία & Βλάβη", description: "Οδηγίες που θα μπορούσαν να οδηγήσουν σε σωματική βλάβη", example: "Κατασκευή όπλων, αυτοτραυματισμός, βία κατά άλλων", exampleType: "text", color: "red" },
+  { label: "Παράνομες Δραστηριότητες", description: "Περιεχόμενο που διευκολύνει παράβαση νόμων", example: "Σχέδια απάτης, οδηγίες hacking, σύνθεση ναρκωτικών", exampleType: "text", color: "red" },
+  { label: "Παρενόχληση & Μίσος", description: "Περιεχόμενο που στοχεύει άτομα ή ομάδες", example: "Διακριτικό περιεχόμενο, doxxing, στοχευμένη παρενόχληση", exampleType: "text", color: "red" },
+  { label: "Παραπληροφόρηση", description: "Σκόπιμα ψευδές ή παραπλανητικό περιεχόμενο", example: "Ψεύτικες ειδήσεις, υγειονομική παραπληροφόρηση, περιεχόμενο συνωμοσίας", exampleType: "text", color: "red" },
+  { label: "Παραβιάσεις Ιδιωτικότητας", description: "Αποκάλυψη ή εκμετάλλευση προσωπικών πληροφοριών", example: "Αποκάλυψη ιδιωτικών δεδομένων, βοήθεια παρακολούθησης", exampleType: "text", color: "red" },
+  { label: "Εκμετάλλευση", description: "Περιεχόμενο που εκμεταλλεύεται ευάλωτα άτομα", example: "CSAM, μη συναινετικό ερωτικό περιεχόμενο, απάτες στοχεύοντας ηλικιωμένους", exampleType: "text", color: "red" }
+]} />
+
+<Callout type="warning" title="Τι είναι το CSAM;">
+Το CSAM σημαίνει **Υλικό Σεξουαλικής Κακοποίησης Παιδιών** (Child Sexual Abuse Material). Η δημιουργία, διανομή, ή κατοχή τέτοιου περιεχομένου είναι παράνομη παγκοσμίως. Τα συστήματα AI δεν πρέπει ποτέ να παράγουν περιεχόμενο που απεικονίζει ανήλικους σε σεξουαλικές καταστάσεις, και οι υπεύθυνοι μηχανικοί prompts χτίζουν ενεργά προστατευτικά κατά τέτοιας κατάχρησης.
 </Callout>
 
-### Building Safety Into Prompts
+### Ενσωμάτωση Ασφάλειας στα Prompts
 
-When building AI systems, include explicit safety guidelines:
+Όταν χτίζεις συστήματα AI, συμπεριέλαβε ρητές οδηγίες ασφάλειας:
 
 <TryIt 
-  title="Safety-First System Prompt"
-  description="A template for building safety guidelines into your AI systems."
-  prompt={`You are a helpful assistant for \${purpose}.
+  title="System Prompt με Προτεραιότητα στην Ασφάλεια"
+  description="Πρότυπο για ενσωμάτωση οδηγιών ασφάλειας στα συστήματα AI σου."
+  prompt={`Είσαι ένας χρήσιμος βοηθός για \${purpose}.
 
-## SAFETY GUIDELINES
+## ΟΔΗΓΙΕΣ ΑΣΦΑΛΕΙΑΣ
 
-**Content Restrictions**:
-- Never provide instructions that could cause physical harm
-- Decline requests for illegal information or activities
-- Don't generate discriminatory or hateful content
-- Don't create deliberately misleading information
+**Περιορισμοί Περιεχομένου**:
+- Ποτέ μην παρέχεις οδηγίες που θα μπορούσαν να προκαλέσουν σωματική βλάβη
+- Αρνήσου αιτήματα για παράνομες πληροφορίες ή δραστηριότητες
+- Μην δημιουργείς διακριτικό ή μισητικό περιεχόμενο
+- Μην δημιουργείς σκόπιμα παραπλανητικές πληροφορίες
 
-**When You Must Decline**:
-- Acknowledge you understood the request
-- Briefly explain why you can't help with this specific thing
-- Offer constructive alternatives when possible
-- Be respectful—don't lecture or be preachy
+**Όταν Πρέπει να Αρνηθείς**:
+- Αναγνώρισε ότι κατάλαβες το αίτημα
+- Εξήγησε σύντομα γιατί δεν μπορείς να βοηθήσεις με αυτό το συγκεκριμένο πράγμα
+- Πρόσφερε εποικοδομητικές εναλλακτικές όταν είναι δυνατόν
+- Να είσαι ευγενικός—μην κηρύττεις ή γίνεσαι υπεροπτικός
 
-**When Uncertain**:
-- Ask clarifying questions about intent
-- Err on the side of caution
-- Suggest the user consult appropriate professionals
+**Όταν είσαι Αβέβαιος**:
+- Κάνε διευκρινιστικές ερωτήσεις για την πρόθεση
+- Κλίνε προς την προσοχή
+- Πρότεινε ο χρήστης να συμβουλευτεί κατάλληλους επαγγελματίες
 
-Now, please help the user with: \${userRequest}`}
+Τώρα, παρακαλώ βοήθησε τον χρήστη με: \${userRequest}`}
 />
 
-### The Intent vs. Impact Framework
+### Το Πλαίσιο Πρόθεσης vs. Αντίκτυπου
 
-Not every sensitive request is malicious. Use this framework for ambiguous cases:
+Όχι κάθε ευαίσθητο αίτημα είναι κακόβουλο. Χρησιμοποίησε αυτό το πλαίσιο για διφορούμενες περιπτώσεις:
 
 <TryIt 
-  title="Ethical Edge Case Analyzer"
-  description="Work through ambiguous requests to determine the appropriate response."
-  prompt={`I received this request that might be sensitive:
+  title="Αναλυτής Ηθικών Ακραίων Περιπτώσεων"
+  description="Επεξεργάσου διφορούμενα αιτήματα για να καθορίσεις την κατάλληλη απάντηση."
+  prompt={`Έλαβα αυτό το αίτημα που μπορεί να είναι ευαίσθητο:
 
 "\${sensitiveRequest}"
 
-Help me think through whether and how to respond:
+Βοήθησέ με να σκεφτώ αν και πώς να απαντήσω:
 
-**1. Intent Analysis**
-- What are the most likely reasons someone would ask this?
-- Could this be legitimate? (research, fiction, education, professional need)
-- Are there red flags suggesting malicious intent?
+**1. Ανάλυση Πρόθεσης**
+- Ποιοι είναι οι πιο πιθανοί λόγοι που κάποιος θα ρωτούσε αυτό;
+- Θα μπορούσε να είναι νόμιμο; (έρευνα, μυθοπλασία, εκπαίδευση, επαγγελματική ανάγκη)
+- Υπάρχουν κόκκινες σημαίες που υποδεικνύουν κακόβουλη πρόθεση;
 
-**2. Impact Assessment**
-- What's the worst case if this information is misused?
-- How accessible is this information elsewhere?
-- Does providing it meaningfully increase risk?
+**2. Αξιολόγηση Αντίκτυπου**
+- Ποια είναι η χειρότερη περίπτωση αν αυτή η πληροφορία κακοχρησιμοποιηθεί;
+- Πόσο προσβάσιμη είναι αυτή η πληροφορία αλλού;
+- Η παροχή της αυξάνει ουσιαστικά τον κίνδυνο;
 
-**3. Recommendation**
-Based on this analysis:
-- Should I respond, decline, or ask for clarification?
-- If responding, what safeguards should I include?
-- If declining, how should I phrase it helpfully?`}
+**3. Σύσταση**
+Βάσει αυτής της ανάλυσης:
+- Πρέπει να απαντήσω, να αρνηθώ, ή να ζητήσω διευκρίνιση;
+- Αν απαντήσω, ποια προστατευτικά πρέπει να συμπεριλάβω;
+- Αν αρνηθώ, πώς πρέπει να το διατυπώσω βοηθητικά;`}
 />
 
-## Addressing Bias
+## Αντιμετώπιση Προκατάληψης
 
-AI models inherit biases from their training data—historical inequities, representation gaps, cultural assumptions, and linguistic patterns. As prompt engineers, we can either amplify these biases or actively counteract them.
+Τα μοντέλα AI κληρονομούν προκαταλήψεις από τα δεδομένα εκπαίδευσής τους—ιστορικές ανισότητες, κενά αντιπροσώπευσης, πολιτισμικές υποθέσεις, και γλωσσικά μοτίβα. Ως μηχανικοί prompts, μπορούμε είτε να ενισχύσουμε αυτές τις προκαταλήψεις είτε να τις αντιμετωπίσουμε ενεργά.
 
-### How Bias Manifests
+### Πώς Εκδηλώνεται η Προκατάληψη
 
 <InfoGrid items={[
-  { label: "Default Assumptions", description: "The model assumes certain demographics for roles", example: "Doctors defaulting to male, nurses to female", exampleType: "text", color: "amber" },
-  { label: "Stereotyping", description: "Reinforcing cultural stereotypes in descriptions", example: "Associating certain ethnicities with specific traits", exampleType: "text", color: "amber" },
-  { label: "Representation Gaps", description: "Some groups are underrepresented or misrepresented", example: "Limited accurate information about minority cultures", exampleType: "text", color: "amber" },
-  { label: "Western-Centric Views", description: "Perspectives skewed toward Western culture and values", example: "Assuming Western norms are universal", exampleType: "text", color: "amber" }
+  { label: "Προεπιλεγμένες Υποθέσεις", description: "Το μοντέλο υποθέτει συγκεκριμένα δημογραφικά για ρόλους", example: "Γιατροί προεπιλέγονται άνδρες, νοσοκόμες γυναίκες", exampleType: "text", color: "amber" },
+  { label: "Στερεοτυπία", description: "Ενίσχυση πολιτισμικών στερεοτύπων σε περιγραφές", example: "Συσχέτιση συγκεκριμένων εθνοτήτων με συγκεκριμένα χαρακτηριστικά", exampleType: "text", color: "amber" },
+  { label: "Κενά Αντιπροσώπευσης", description: "Ορισμένες ομάδες υποεκπροσωπούνται ή παρερμηνεύονται", example: "Περιορισμένη ακριβής πληροφορία για μειονοτικούς πολιτισμούς", exampleType: "text", color: "amber" },
+  { label: "Δυτικοκεντρικές Απόψεις", description: "Οπτικές στρεβλωμένες προς δυτικό πολιτισμό και αξίες", example: "Υπόθεση ότι τα δυτικά πρότυπα είναι καθολικά", exampleType: "text", color: "amber" }
 ]} />
 
-### Testing for Bias
+### Έλεγχος για Προκατάληψη
 
 <TryIt 
-  title="Bias Detection Test"
-  description="Use this to test your prompts for potential bias issues."
-  prompt={`I want to test this prompt for bias:
+  title="Τεστ Ανίχνευσης Προκατάληψης"
+  description="Χρησιμοποίησέ το για να ελέγξεις τα prompts σου για πιθανά ζητήματα προκατάληψης."
+  prompt={`Θέλω να ελέγξω αυτό το prompt για προκατάληψη:
 
 "\${promptToTest}"
 
-Run these bias checks:
+Εκτέλεσε αυτούς τους ελέγχους προκατάληψης:
 
-**1. Demographic Variation Test**
-Run the prompt with different demographic descriptors (gender, ethnicity, age, etc.) and note any differences in:
-- Tone or respect level
-- Assumed competence or capabilities
-- Stereotypical associations
+**1. Τεστ Δημογραφικής Μεταβολής**
+Τρέξε το prompt με διαφορετικούς δημογραφικούς περιγραφείς (φύλο, εθνικότητα, ηλικία, κλπ.) και σημείωσε τυχόν διαφορές σε:
+- Τόνο ή επίπεδο σεβασμού
+- Υποτιθέμενη ικανότητα ή δυνατότητες
+- Στερεοτυπικές συσχετίσεις
 
-**2. Default Assumption Check**
-When demographics aren't specified:
-- What does the model assume?
-- Are these assumptions problematic?
+**2. Έλεγχος Προεπιλεγμένων Υποθέσεων**
+Όταν δεν καθορίζονται δημογραφικά:
+- Τι υποθέτει το μοντέλο;
+- Είναι αυτές οι υποθέσεις προβληματικές;
 
-**3. Representation Analysis**
-- Are different groups represented fairly?
-- Are any groups missing or marginalized?
+**3. Ανάλυση Αντιπροσώπευσης**
+- Αντιπροσωπεύονται διαφορετικές ομάδες δίκαια;
+- Λείπουν ή περιθωριοποιούνται κάποιες ομάδες;
 
-**4. Recommendations**
-Based on findings, suggest prompt modifications to reduce bias.`}
+**4. Συστάσεις**
+Βάσει ευρημάτων, πρότεινε τροποποιήσεις prompt για μείωση προκατάληψης.`}
 />
 
-### Mitigating Bias in Practice
+### Μετριασμός Προκατάληψης στην Πράξη
 
 <Compare 
-  before={{ label: "Bias-prone prompt", content: "Describe a typical CEO." }}
-  after={{ label: "Bias-aware prompt", content: "Describe a CEO. Vary demographics across examples, and avoid defaulting to any particular gender, ethnicity, or age." }}
+  before={{ label: "Prompt επιρρεπές σε προκατάληψη", content: "Περίγραψε έναν τυπικό CEO." }}
+  after={{ label: "Prompt με επίγνωση προκατάληψης", content: "Περίγραψε έναν CEO. Ποίκιλε δημογραφικά μεταξύ παραδειγμάτων, και απόφυγε να προεπιλέγεις συγκεκριμένο φύλο, εθνικότητα, ή ηλικία." }}
 />
 
-## Transparency and Disclosure
+## Διαφάνεια και Αποκάλυψη
 
-When should you tell people AI was involved? The answer depends on context—but the trend is toward more disclosure, not less.
+Πότε πρέπει να λες στους ανθρώπους ότι εμπλέκεται AI; Η απάντηση εξαρτάται από το πλαίσιο—αλλά η τάση είναι προς περισσότερη αποκάλυψη, όχι λιγότερη.
 
-### When Disclosure Matters
+### Πότε Έχει Σημασία η Αποκάλυψη
 
 <InfoGrid items={[
-  { label: "Published Content", description: "Articles, posts, or content shared publicly", example: "Blog posts, social media, marketing materials", exampleType: "text", color: "blue" },
-  { label: "Consequential Decisions", description: "When AI outputs affect people's lives", example: "Hiring recommendations, medical info, legal guidance", exampleType: "text", color: "blue" },
-  { label: "Trust Contexts", description: "Where authenticity is expected or valued", example: "Personal correspondence, testimonials, reviews", exampleType: "text", color: "blue" },
-  { label: "Professional Settings", description: "Workplace or academic environments", example: "Reports, research, client deliverables", exampleType: "text", color: "blue" }
+  { label: "Δημοσιευμένο Περιεχόμενο", description: "Άρθρα, αναρτήσεις, ή περιεχόμενο που μοιράζεται δημόσια", example: "Αναρτήσεις blog, social media, υλικό marketing", exampleType: "text", color: "blue" },
+  { label: "Αποφάσεις με Συνέπειες", description: "Όταν οι έξοδοι AI επηρεάζουν ζωές ανθρώπων", example: "Συστάσεις πρόσληψης, ιατρικές πληροφορίες, νομική καθοδήγηση", exampleType: "text", color: "blue" },
+  { label: "Πλαίσια Εμπιστοσύνης", description: "Όπου αναμένεται ή εκτιμάται η αυθεντικότητα", example: "Προσωπική αλληλογραφία, μαρτυρίες, κριτικές", exampleType: "text", color: "blue" },
+  { label: "Επαγγελματικά Πλαίσια", description: "Εργασιακά ή ακαδημαϊκά περιβάλλοντα", example: "Αναφορές, έρευνα, παραδοτέα πελατών", exampleType: "text", color: "blue" }
 ]} />
 
-### How to Disclose Appropriately
+### Πώς να Αποκαλύπτεις Κατάλληλα
 
 <Compare 
-  before={{ label: "Hidden AI involvement", content: "Here's my analysis of the market trends..." }}
-  after={{ label: "Transparent disclosure", content: "I used AI tools to help analyze the data and draft this report. All conclusions have been verified and edited by me." }}
+  before={{ label: "Κρυμμένη συμμετοχή AI", content: "Εδώ είναι η ανάλυσή μου για τις τάσεις της αγοράς..." }}
+  after={{ label: "Διαφανής αποκάλυψη", content: "Χρησιμοποίησα εργαλεία AI για να βοηθήσω στην ανάλυση δεδομένων και σύνταξη αυτής της αναφοράς. Όλα τα συμπεράσματα έχουν επαληθευτεί και επεξεργαστεί από εμένα." }}
 />
 
-Common disclosure phrases that work well:
-- "Written with AI assistance"
-- "AI-generated first draft, human edited"
-- "Analysis performed using AI tools"
-- "Created with AI, reviewed and approved by [name]"
+Κοινές φράσεις αποκάλυψης που λειτουργούν καλά:
+- "Γράφτηκε με βοήθεια AI"
+- "AI-παραγμένο πρώτο σχέδιο, επεξεργασμένο από άνθρωπο"
+- "Ανάλυση που εκτελέστηκε με εργαλεία AI"
+- "Δημιουργήθηκε με AI, αναθεωρήθηκε και εγκρίθηκε από [όνομα]"
 
-## Privacy Considerations
+## Ζητήματα Ιδιωτικότητας
 
-Every prompt you send contains data. Understanding where that data goes—and what shouldn't be in it—is essential.
+Κάθε prompt που στέλνεις περιέχει δεδομένα. Η κατανόηση του πού πηγαίνουν αυτά τα δεδομένα—και τι δεν πρέπει να περιέχουν—είναι απαραίτητη.
 
-### What Never Belongs in Prompts
+### Τι δεν Ανήκει Ποτέ σε Prompts
 
 <InfoGrid items={[
-  { label: "Personal Identifiers", description: "Names, addresses, phone numbers, SSNs", example: "Use [CUSTOMER] instead of 'John Smith'", color: "red" },
-  { label: "Financial Data", description: "Account numbers, credit cards, income details", example: "Describe the pattern, not the actual numbers", exampleType: "text", color: "red" },
-  { label: "Health Information", description: "Medical records, diagnoses, prescriptions", example: "Ask about conditions generally, not specific patients", exampleType: "text", color: "red" },
-  { label: "Credentials", description: "Passwords, API keys, tokens, secrets", example: "Never paste credentials—use placeholders", exampleType: "text", color: "red" },
-  { label: "Private Communications", description: "Personal emails, messages, confidential docs", example: "Summarize the situation without quoting private text", exampleType: "text", color: "red" }
+  { label: "Προσωπικά Αναγνωριστικά", description: "Ονόματα, διευθύνσεις, τηλέφωνα, ΑΜΚΑ", example: "Χρησιμοποίησε [ΠΕΛΑΤΗΣ] αντί για 'Γιάννης Παπαδόπουλος'", color: "red" },
+  { label: "Οικονομικά Δεδομένα", description: "Αριθμοί λογαριασμών, πιστωτικές κάρτες, λεπτομέρειες εισοδήματος", example: "Περίγραψε το μοτίβο, όχι τους πραγματικούς αριθμούς", exampleType: "text", color: "red" },
+  { label: "Πληροφορίες Υγείας", description: "Ιατρικά αρχεία, διαγνώσεις, συνταγές", example: "Ρώτα για καταστάσεις γενικά, όχι συγκεκριμένους ασθενείς", exampleType: "text", color: "red" },
+  { label: "Διαπιστευτήρια", description: "Κωδικοί, API keys, tokens, μυστικά", example: "Ποτέ μην επικολλάς διαπιστευτήρια—χρησιμοποίησε placeholders", exampleType: "text", color: "red" },
+  { label: "Ιδιωτικές Επικοινωνίες", description: "Προσωπικά emails, μηνύματα, εμπιστευτικά έγγραφα", example: "Σύνοψε την κατάσταση χωρίς να αναφέρεις ιδιωτικό κείμενο", exampleType: "text", color: "red" }
 ]} />
 
-### Safe Data Handling Pattern
+### Μοτίβο Ασφαλούς Χειρισμού Δεδομένων
 
 <Compare 
-  before={{ label: "Unsafe: Contains PII", content: "Summarize this complaint from John Smith at 123 Main St, Anytown about order #12345: 'I ordered on March 15 and still haven't received...'" }}
-  after={{ label: "Safe: Anonymized", content: "Summarize this customer complaint pattern: A customer ordered 3 weeks ago, hasn't received their order, and has contacted support twice without resolution." }}
+  before={{ label: "Μη ασφαλές: Περιέχει PII", content: "Συνόψισε αυτό το παράπονο από τον Γιάννη Παπαδόπουλο στην οδό Σταδίου 123, Αθήνα για παραγγελία #12345: 'Παρήγγειλα στις 15 Μαρτίου και ακόμα δεν έχω λάβει...'" }}
+  after={{ label: "Ασφαλές: Ανωνυμοποιημένο", content: "Συνόψισε αυτό το μοτίβο παραπόνου πελάτη: Ένας πελάτης παρήγγειλε πριν 3 εβδομάδες, δεν έχει λάβει την παραγγελία του, και έχει επικοινωνήσει με υποστήριξη δύο φορές χωρίς επίλυση." }}
 />
 
-<Callout type="info" title="What is PII?">
-**PII** stands for **Personally Identifiable Information**—any data that can identify a specific individual. This includes names, addresses, phone numbers, email addresses, Social Security numbers, financial account numbers, and even combinations of data (like job title + company + city) that could identify someone. When prompting AI, always anonymize or remove PII to protect privacy.
+<Callout type="info" title="Τι είναι το PII;">
+**PII** σημαίνει **Προσωπικά Αναγνωρίσιμες Πληροφορίες** (Personally Identifiable Information)—οποιαδήποτε δεδομένα που μπορούν να αναγνωρίσουν ένα συγκεκριμένο άτομο. Αυτό περιλαμβάνει ονόματα, διευθύνσεις, τηλέφωνα, email, ΑΜΚΑ, αριθμούς οικονομικών λογαριασμών, ακόμα και συνδυασμούς δεδομένων (όπως θέση εργασίας + εταιρεία + πόλη) που θα μπορούσαν να αναγνωρίσουν κάποιον. Όταν κάνεις prompting σε AI, πάντα ανωνυμοποίησε ή αφαίρεσε PII για προστασία της ιδιωτικότητας.
 </Callout>
 
 <TryIt 
-  title="PII Scrubber"
-  description="Use this to identify and remove sensitive information before including text in prompts."
-  prompt={`Review this text for sensitive information that should be removed before using it in an AI prompt:
+  title="Καθαριστής PII"
+  description="Χρησιμοποίησέ το για να αναγνωρίσεις και αφαιρέσεις ευαίσθητες πληροφορίες πριν συμπεριλάβεις κείμενο σε prompts."
+  prompt={`Αναθεώρησε αυτό το κείμενο για ευαίσθητες πληροφορίες που πρέπει να αφαιρεθούν πριν χρησιμοποιηθεί σε AI prompt:
 
 "\${textToReview}"
 
-Identify:
-1. **Personal Identifiers**: Names, addresses, phone numbers, emails, SSNs
-2. **Financial Data**: Account numbers, amounts that could identify someone
-3. **Health Information**: Medical details, conditions, prescriptions
-4. **Credentials**: Any passwords, keys, or tokens
-5. **Private Details**: Information someone would reasonably expect to be confidential
+Αναγνώρισε:
+1. **Προσωπικά Αναγνωριστικά**: Ονόματα, διευθύνσεις, τηλέφωνα, emails, ΑΜΚΑ
+2. **Οικονομικά Δεδομένα**: Αριθμοί λογαριασμών, ποσά που θα μπορούσαν να αναγνωρίσουν κάποιον
+3. **Πληροφορίες Υγείας**: Ιατρικές λεπτομέρειες, καταστάσεις, συνταγές
+4. **Διαπιστευτήρια**: Οποιοιδήποτε κωδικοί, keys, ή tokens
+5. **Ιδιωτικές Λεπτομέρειες**: Πληροφορίες που κάποιος θα περίμενε εύλογα να είναι εμπιστευτικές
 
-For each item found, suggest how to anonymize or generalize it while preserving the information needed for the task.`}
+Για κάθε στοιχείο που βρέθηκε, πρότεινε πώς να το ανωνυμοποιήσεις ή γενικεύσεις διατηρώντας τις πληροφορίες που χρειάζονται για την εργασία.`}
 />
 
-## Authenticity and Deception
+## Αυθεντικότητα και Εξαπάτηση
 
-There's a difference between using AI as a tool and using AI to deceive.
+Υπάρχει διαφορά μεταξύ της χρήσης AI ως εργαλείο και της χρήσης AI για εξαπάτηση.
 
-### The Legitimacy Line
+### Η Γραμμή Νομιμότητας
 
 <InfoGrid items={[
-  { label: "Legitimate Uses", description: "AI as a tool to enhance your work", example: "Drafting, brainstorming, editing, learning", exampleType: "text", color: "green" },
-  { label: "Gray Areas", description: "Context-dependent, requires judgment", example: "Ghostwriting, templates, automated responses", exampleType: "text", color: "amber" },
-  { label: "Deceptive Uses", description: "Misrepresenting AI work as human-original", example: "Fake reviews, academic fraud, impersonation", exampleType: "text", color: "red" }
+  { label: "Νόμιμες Χρήσεις", description: "AI ως εργαλείο για ενίσχυση της δουλειάς σου", example: "Σύνταξη, καταιγισμός ιδεών, επεξεργασία, μάθηση", exampleType: "text", color: "green" },
+  { label: "Γκρίζες Ζώνες", description: "Εξαρτώνται από το πλαίσιο, απαιτούν κρίση", example: "Ghostwriting, πρότυπα, αυτοματοποιημένες απαντήσεις", exampleType: "text", color: "amber" },
+  { label: "Παραπλανητικές Χρήσεις", description: "Παρουσίαση AI έργου ως ανθρώπινου-πρωτότυπου", example: "Ψεύτικες κριτικές, ακαδημαϊκή απάτη, πλαστοπροσωπία", exampleType: "text", color: "red" }
 ]} />
 
-Key questions to ask:
-- Would the recipient expect this to be original human work?
-- Am I gaining unfair advantage through deception?
-- Would disclosure change how the work is received?
+Βασικές ερωτήσεις να κάνεις:
+- Θα περίμενε ο παραλήπτης αυτό να είναι πρωτότυπο ανθρώπινο έργο;
+- Κερδίζω αθέμιτο πλεονέκτημα μέσω εξαπάτησης;
+- Θα άλλαζε η αποκάλυψη τον τρόπο που λαμβάνεται το έργο;
 
-### Synthetic Media Responsibility
+### Ευθύνη Συνθετικών Μέσων
 
-Creating realistic depictions of real people—whether images, audio, or video—carries special obligations:
+Η δημιουργία ρεαλιστικών απεικονίσεων πραγματικών ανθρώπων—είτε εικόνες, ήχο, ή βίντεο—συνοδεύεται από ειδικές υποχρεώσεις:
 
-- **Never** create realistic depictions without consent
-- **Always** label synthetic media clearly
-- **Consider** potential for misuse before creating
-- **Refuse** to create non-consensual intimate imagery
+- **Ποτέ** μην δημιουργείς ρεαλιστικές απεικονίσεις χωρίς συναίνεση
+- **Πάντα** σήμανε συνθετικά μέσα ξεκάθαρα
+- **Σκέψου** το δυναμικό κατάχρησης πριν δημιουργήσεις
+- **Αρνήσου** να δημιουργήσεις μη συναινετικές ερωτικές εικόνες
 
-## Responsible Deployment
+## Υπεύθυνη Ανάπτυξη
 
-When building AI features for others to use, your ethical obligations multiply.
+Όταν χτίζεις λειτουργίες AI για χρήση από άλλους, οι ηθικές σου υποχρεώσεις πολλαπλασιάζονται.
 
-### Pre-Deployment Checklist
+### Λίστα Ελέγχου Πριν την Ανάπτυξη
 
 <Checklist 
-  title="Deployment Readiness"
+  title="Ετοιμότητα Ανάπτυξης"
   items={[
-    { text: "Tested for harmful outputs across diverse inputs" },
-    { text: "Tested for bias with varied demographics" },
-    { text: "User disclosure/consent mechanisms in place" },
-    { text: "Human oversight for high-stakes decisions" },
-    { text: "Feedback and reporting system available" },
-    { text: "Incident response plan documented" },
-    { text: "Clear usage policies communicated" },
-    { text: "Monitoring and alerting configured" }
+    { text: "Δοκιμάστηκε για επιβλαβείς εξόδους σε ποικίλες εισόδους" },
+    { text: "Δοκιμάστηκε για προκατάληψη με ποικίλα δημογραφικά" },
+    { text: "Μηχανισμοί αποκάλυψης/συναίνεσης χρήστη στη θέση τους" },
+    { text: "Ανθρώπινη εποπτεία για αποφάσεις υψηλού ρίσκου" },
+    { text: "Σύστημα ανατροφοδότησης και αναφοράς διαθέσιμο" },
+    { text: "Σχέδιο αντιμετώπισης περιστατικών τεκμηριωμένο" },
+    { text: "Σαφείς πολιτικές χρήσης επικοινωνημένες" },
+    { text: "Παρακολούθηση και ειδοποιήσεις ρυθμισμένες" }
   ]}
 />
 
-### Human Oversight Principles
+### Αρχές Ανθρώπινης Εποπτείας
 
 <InfoGrid items={[
-  { label: "High-Stakes Review", description: "Humans review decisions that significantly affect people", example: "Hiring, medical, legal, financial recommendations", exampleType: "text", color: "blue" },
-  { label: "Error Correction", description: "Mechanisms exist to catch and fix AI mistakes", example: "User feedback, quality sampling, appeals process", exampleType: "text", color: "blue" },
-  { label: "Continuous Learning", description: "Insights from issues improve the system", example: "Post-mortems, prompt updates, training improvements", exampleType: "text", color: "blue" },
-  { label: "Override Capability", description: "Humans can intervene when AI fails", example: "Manual review queues, escalation paths", exampleType: "text", color: "blue" }
+  { label: "Αναθεώρηση Υψηλού Ρίσκου", description: "Άνθρωποι αναθεωρούν αποφάσεις που επηρεάζουν σημαντικά ανθρώπους", example: "Προσλήψεις, ιατρικές, νομικές, οικονομικές συστάσεις", exampleType: "text", color: "blue" },
+  { label: "Διόρθωση Σφαλμάτων", description: "Υπάρχουν μηχανισμοί για εντοπισμό και διόρθωση λαθών AI", example: "Ανατροφοδότηση χρήστη, δειγματοληψία ποιότητας, διαδικασία έφεσης", exampleType: "text", color: "blue" },
+  { label: "Συνεχής Μάθηση", description: "Οι γνώσεις από ζητήματα βελτιώνουν το σύστημα", example: "Post-mortems, ενημερώσεις prompts, βελτιώσεις εκπαίδευσης", exampleType: "text", color: "blue" },
+  { label: "Δυνατότητα Παράκαμψης", description: "Οι άνθρωποι μπορούν να επέμβουν όταν αποτυγχάνει το AI", example: "Ουρές χειροκίνητης αναθεώρησης, διαδρομές κλιμάκωσης", exampleType: "text", color: "blue" }
 ]} />
 
-## Special Context Guidelines
+## Οδηγίες Ειδικού Πλαισίου
 
-Some domains require extra care due to their potential for harm or the vulnerability of those involved.
+Ορισμένοι τομείς απαιτούν επιπλέον προσοχή λόγω του δυναμικού τους για βλάβη ή της ευπάθειας όσων εμπλέκονται.
 
-### Healthcare
+### Υγειονομική Περίθαλψη
 
 <TryIt 
-  title="Medical Context Disclaimer"
-  description="Template for AI systems that might receive health-related queries."
-  prompt={`You are an AI assistant. When users ask about health or medical topics:
+  title="Αποποίηση Ιατρικού Πλαισίου"
+  description="Πρότυπο για συστήματα AI που μπορεί να λάβουν ερωτήσεις σχετικές με υγεία."
+  prompt={`Είσαι βοηθός AI. Όταν οι χρήστες ρωτούν για θέματα υγείας ή ιατρικά:
 
-**Always**:
-- Recommend consulting a qualified healthcare provider for personal medical decisions
-- Provide general educational information, not personalized medical advice
-- Include disclaimers that you cannot diagnose conditions
-- Suggest emergency services (911) for urgent situations
+**Πάντα**:
+- Σύστηνε συμβουλή από εξειδικευμένο πάροχο υγειονομικής περίθαλψης για προσωπικές ιατρικές αποφάσεις
+- Παρέχε γενικές εκπαιδευτικές πληροφορίες, όχι εξατομικευμένες ιατρικές συμβουλές
+- Συμπεριέλαβε αποποιήσεις ότι δεν μπορείς να διαγνώσεις καταστάσεις
+- Πρότεινε υπηρεσίες έκτακτης ανάγκης (166) για επείγουσες καταστάσεις
 
-**Never**:
-- Provide specific diagnoses
-- Recommend specific medications or dosages
-- Discourage someone from seeking professional care
-- Make claims about treatments without noting uncertainty
+**Ποτέ**:
+- Μην παρέχεις συγκεκριμένες διαγνώσεις
+- Μην συστήνεις συγκεκριμένα φάρμακα ή δοσολογίες
+- Μην αποθαρρύνεις κάποιον από το να αναζητήσει επαγγελματική περίθαλψη
+- Μην κάνεις ισχυρισμούς για θεραπείες χωρίς να σημειώνεις αβεβαιότητα
 
-User question: \${healthQuestion}
+Ερώτηση χρήστη: \${healthQuestion}
 
-Respond helpfully while following these guidelines.`}
+Απάντησε βοηθητικά ακολουθώντας αυτές τις οδηγίες.`}
 />
 
-### Legal and Financial
+### Νομικά και Οικονομικά
 
-These domains have regulatory implications and require appropriate disclaimers:
-
-<InfoGrid items={[
-  { label: "Legal Queries", description: "Provide general information, not legal advice", example: "\"This is general information. For your specific situation, consult a licensed attorney.\"", color: "purple" },
-  { label: "Financial Queries", description: "Educate without providing personal financial advice", example: "\"This is educational. Consider consulting a financial advisor for your situation.\"", color: "purple" },
-  { label: "Jurisdiction Awareness", description: "Laws vary by location", example: "\"Laws differ by state/country. Verify requirements for your jurisdiction.\"", color: "purple" }
-]} />
-
-### Children and Education
+Αυτοί οι τομείς έχουν ρυθμιστικές επιπτώσεις και απαιτούν κατάλληλες αποποιήσεις:
 
 <InfoGrid items={[
-  { label: "Age-Appropriate Content", description: "Ensure outputs are suitable for the age group", example: "Filter mature content, use appropriate language", exampleType: "text", color: "cyan" },
-  { label: "Academic Integrity", description: "Support learning, don't replace it", example: "Explain concepts rather than writing essays for students", exampleType: "text", color: "cyan" },
-  { label: "Safety First", description: "Extra protection for vulnerable users", example: "Stricter content filters, no personal data collection", exampleType: "text", color: "cyan" }
+  { label: "Νομικά Ερωτήματα", description: "Παρέχε γενικές πληροφορίες, όχι νομικές συμβουλές", example: "\"Αυτές είναι γενικές πληροφορίες. Για τη συγκεκριμένη σου κατάσταση, συμβουλεύσου αδειοδοτημένο δικηγόρο.\"", color: "purple" },
+  { label: "Οικονομικά Ερωτήματα", description: "Εκπαίδευσε χωρίς να παρέχεις προσωπικές οικονομικές συμβουλές", example: "\"Αυτό είναι εκπαιδευτικό. Σκέψου να συμβουλευτείς οικονομικό σύμβουλο για την κατάστασή σου.\"", color: "purple" },
+  { label: "Επίγνωση Δικαιοδοσίας", description: "Οι νόμοι διαφέρουν ανά τοποθεσία", example: "\"Οι νόμοι διαφέρουν ανά χώρα. Επαλήθευσε τις απαιτήσεις για τη δικαιοδοσία σου.\"", color: "purple" }
 ]} />
 
-## Self-Assessment
+### Παιδιά και Εκπαίδευση
 
-Before deploying any prompt or AI system, run through these questions:
+<InfoGrid items={[
+  { label: "Κατάλληλο Περιεχόμενο για Ηλικία", description: "Εξασφάλισε ότι οι έξοδοι είναι κατάλληλες για την ηλικιακή ομάδα", example: "Φιλτράρισμα ώριμου περιεχομένου, χρήση κατάλληλης γλώσσας", exampleType: "text", color: "cyan" },
+  { label: "Ακαδημαϊκή Ακεραιότητα", description: "Υποστήριξε τη μάθηση, μην την αντικαταστήσεις", example: "Εξήγησε έννοιες αντί να γράφεις εκθέσεις για μαθητές", exampleType: "text", color: "cyan" },
+  { label: "Ασφάλεια Πρώτα", description: "Επιπλέον προστασία για ευάλωτους χρήστες", example: "Αυστηρότερα φίλτρα περιεχομένου, καμία συλλογή προσωπικών δεδομένων", exampleType: "text", color: "cyan" }
+]} />
+
+## Αυτοαξιολόγηση
+
+Πριν αναπτύξεις οποιοδήποτε prompt ή σύστημα AI, πέρνα από αυτές τις ερωτήσεις:
 
 <Checklist 
-  title="Ethical Self-Check"
+  title="Ηθικός Αυτοέλεγχος"
   items={[
-    { text: "Could this be used to harm someone?" },
-    { text: "Does this respect user privacy?" },
-    { text: "Could this perpetuate harmful biases?" },
-    { text: "Is AI involvement appropriately disclosed?" },
-    { text: "Is there adequate human oversight?" },
-    { text: "What's the worst that could happen?" },
-    { text: "Would I be comfortable if this use were public?" }
+    { text: "Θα μπορούσε αυτό να χρησιμοποιηθεί για να βλάψει κάποιον;" },
+    { text: "Σέβεται αυτό την ιδιωτικότητα του χρήστη;" },
+    { text: "Θα μπορούσε αυτό να διαιωνίσει επιβλαβείς προκαταλήψεις;" },
+    { text: "Αποκαλύπτεται κατάλληλα η συμμετοχή AI;" },
+    { text: "Υπάρχει επαρκής ανθρώπινη εποπτεία;" },
+    { text: "Ποιο είναι το χειρότερο που θα μπορούσε να συμβεί;" },
+    { text: "Θα ήμουν άνετος αν αυτή η χρήση ήταν δημόσια;" }
   ]}
 />
 
 <Quiz 
-  question="A user asks your AI system how to 'get rid of someone who's bothering them.' What's the most appropriate response strategy?"
+  question="Ένας χρήστης ρωτά το σύστημα AI σου πώς να 'ξεφορτωθεί κάποιον που τον ενοχλεί.' Ποια είναι η καταλληλότερη στρατηγική απάντησης;"
   options={[
-    "Refuse immediately—this could be a request for harm instructions",
-    "Provide conflict resolution advice since that's the most likely intent",
-    "Ask clarifying questions to understand intent before deciding how to respond",
-    "Explain you can't help with anything related to harming people"
+    "Αρνήσου αμέσως—αυτό θα μπορούσε να είναι αίτημα για οδηγίες βλάβης",
+    "Παρέχε συμβουλές επίλυσης συγκρούσεων αφού αυτή είναι η πιθανότερη πρόθεση",
+    "Κάνε διευκρινιστικές ερωτήσεις για να κατανοήσεις την πρόθεση πριν αποφασίσεις πώς να απαντήσεις",
+    "Εξήγησε ότι δεν μπορείς να βοηθήσεις με οτιδήποτε σχετίζεται με βλάβη ανθρώπων"
   ]}
   correctIndex={2}
-  explanation="Ambiguous requests deserve clarification, not assumptions. 'Get rid of someone' could mean ending a friendship, resolving a workplace conflict, or something harmful. Asking clarifying questions lets you respond appropriately to the actual intent while remaining cautious about providing harmful information."
+  explanation="Τα διφορούμενα αιτήματα αξίζουν διευκρίνιση, όχι υποθέσεις. 'Ξεφορτωθώ κάποιον' θα μπορούσε να σημαίνει τερματισμό φιλίας, επίλυση σύγκρουσης στη δουλειά, ή κάτι επιβλαβές. Οι διευκρινιστικές ερωτήσεις σου επιτρέπουν να απαντήσεις κατάλληλα στην πραγματική πρόθεση παραμένοντας προσεκτικός για παροχή επιβλαβών πληροφοριών."
 />
